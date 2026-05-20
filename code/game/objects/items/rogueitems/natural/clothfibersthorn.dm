@@ -1,8 +1,8 @@
 /obj/item/natural/fibers
-	name = "fibers"
+	name = "纤维"
 	icon_state = "fibers"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Plant fibers. Peasants make their living turning these into clothing."
+	desc = "植物纤维。农民们将它制成衣物来谋生。"
 	force = 0
 	throwforce = 0
 	obj_flags = null
@@ -61,7 +61,7 @@
 		is_legendary = TRUE //they do
 	if(is_legendary)
 		bundling_time = 2 //if legendary skill, the move_after is fast, 0.2 seconds
-	to_chat(user, span_warning("I start to collect [src]..."))
+	to_chat(user, span_warning("我开始收集[src]..."))
 	if(move_after(user, bundling_time, target = src))
 		var/fibercount = 0
 		for(var/obj/item/natural/fibers/F in get_turf(src))
