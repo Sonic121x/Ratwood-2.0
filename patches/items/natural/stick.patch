@@ -67,7 +67,7 @@ index 699aa0b053..4679aa0827 100644
  		var/obj/item/natural/B = I
  		var/obj/item/natural/bundle/stick/N = new(src.loc)
 -		to_chat(user, "I tie the sticks into a bundle.")
-+		to_chat(user, "我把木棍捆在一起。")
++		to_chat(user, "我把木棍捆在了一起。")
  		qdel(B)
  		qdel(src)
  		user.put_in_hands(N)
