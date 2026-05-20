@@ -254,9 +254,9 @@
 		)
 
 /obj/item/grown/log/tree/stick
-	name = "stick"
+	name = "木棍"
 	icon_state = "stick1"
-	desc = "A tree branch perhaps."
+	desc = "可能是根树枝。"
 	blade_dulling = 0
 	max_integrity = 20
 	static_debris = null
@@ -309,7 +309,7 @@
 		)
 
 /obj/item/grown/log/tree/stick/attack_self(mob/living/user)
-	user.visible_message(span_warning("[user] snaps [src]."))
+	user.visible_message(span_warning("[user]折断了[src]。"))
 	playsound(user,'sound/items/seedextract.ogg', 100, FALSE)
 	qdel(src)
 
@@ -317,7 +317,7 @@
 	. = ..()
 	if(user.get_active_held_item())
 		return
-	to_chat(user, span_warning("I start to collect [src]..."))
+	to_chat(user, span_warning("我开始收集[src]..."))
 	if(move_after(user, 4 SECONDS, target = src))
 		var/stackcount = 0
 		for(var/obj/item/grown/log/tree/stick/F in get_turf(src))
@@ -342,21 +342,21 @@
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
-		user.visible_message(span_notice("[user] starts sharpening [src]."))
+		user.visible_message(span_notice("[user]开始削尖[src]。"))
 		if(do_after(user, 4 SECONDS))
-			user.visible_message(span_notice("[user] sharpens [src]."))
+			user.visible_message(span_notice("[user]削尖了[src]。"))
 			var/obj/item/grown/log/tree/stake/S = new /obj/item/grown/log/tree/stake(get_turf(src.loc))
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
 				user.put_in_hands(S)
 			qdel(src)
 		else
-			user.visible_message(span_warning("[user] sharpens [src]."))
+			user.visible_message(span_warning("[user]削尖了[src]。"))
 		return
 	if(istype(I, /obj/item/grown/log/tree/stick))
 		var/obj/item/natural/B = I
 		var/obj/item/natural/bundle/stick/N = new(src.loc)
-		to_chat(user, "I tie the sticks into a bundle.")
+		to_chat(user, "我把木棍捆在了一起。")
 		qdel(B)
 		qdel(src)
 		user.put_in_hands(N)
@@ -366,10 +366,10 @@
 			if(B.amount < B.maxamount)
 				B.amount++
 				B.update_bundle()
-				user.visible_message("[user] adds [src] to [I].", "I add [src] to [I].")
+				user.visible_message("[user]把[src]塞进[I]。", "我把[src]塞进[I].")
 				qdel(src)
 			else
-				to_chat(user, "I can't add any more sticks to the bundle without it falling apart.")
+				to_chat(user, "我不能再往这捆里加木棍了，不然它就要散架了。")
 			return
 
 /obj/item/grown/log/tree/stake
