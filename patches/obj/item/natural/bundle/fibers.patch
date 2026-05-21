@@ -1,36 +1,32 @@
-From 01187efcef8459b7bb2b890f0a3ef6d1af63974e Mon Sep 17 00:00:00 2001
+From 52b489fd9914345c52b2ac2ae7d9fb4d519319a4 Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Wed, 20 May 2026 20:17:49 +0800
-Subject: [PATCH] fibers
+Date: Thu, 21 May 2026 22:38:45 +0800
+Subject: [PATCH] =?UTF-8?q?=E6=B7=BB=E5=8A=A0=E7=BA=A4=E7=BB=B4=E6=8D=86?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 ---
- .../objects/items/rogueitems/natural/clothfibersthorn.dm    | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .../game/objects/items/rogueitems/natural/clothfibersthorn.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
-index c58b811304..2998429366 100644
+index c58b811304..2f4e24d9a7 100644
 --- a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
 +++ b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
-@@ -1,8 +1,8 @@
- /obj/item/natural/fibers
--	name = "fibers"
-+	name = "纤维"
- 	icon_state = "fibers"
+@@ -366,10 +366,10 @@
+ 				L.consider_ambush()
+ 
+ /obj/item/natural/bundle/fibers
+-	name = "fiber bundle"
++	name = "纤维捆"
+ 	icon_state = "fibersroll1"
  	possible_item_intents = list(/datum/intent/use)
--	desc = "Plant fibers. Peasants make their living turning these into clothing."
-+	desc = "植物纤维。农民们将它制成衣物来谋生。"
+-	desc = "Numerous plant fibers are bundled together in a tight coil."
++	desc = "许多的植物纤维被紧紧地捆成了一个线圈。"
  	force = 0
  	throwforce = 0
- 	obj_flags = null
-@@ -61,7 +61,7 @@
- 		is_legendary = TRUE //they do
- 	if(is_legendary)
- 		bundling_time = 2 //if legendary skill, the move_after is fast, 0.2 seconds
--	to_chat(user, span_warning("I start to collect [src]..."))
-+	to_chat(user, span_warning("我开始收集[src]..."))
- 	if(move_after(user, bundling_time, target = src))
- 		var/fibercount = 0
- 		for(var/obj/item/natural/fibers/F in get_turf(src))
+ 	maxamount = 6
 -- 
 2.54.0.windows.1
 
