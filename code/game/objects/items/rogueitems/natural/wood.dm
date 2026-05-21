@@ -108,8 +108,8 @@
 	..()
 
 /obj/item/grown/log/tree/small
-	name = "small log"
-	desc = "Piece of lumber cut from a larger log. Suitable for building."
+	name = "小原木"
+	desc = "一段从大原木上锯下的木料。可用于建造。"
 	icon_state = "logsmall"
 	grid_width = 64
 	grid_height = 96
@@ -188,7 +188,7 @@
 		woodtotal += pick(1,2)
 	if(I.tool_behaviour == TOOL_SAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
-		user.visible_message("<span class='notice'>[user] starts sawing planks from [src].</span>")
+		user.visible_message("<span class='notice'>[user]开始把[src]锯成木板。</span>")
 		if(do_after(user, planking_time))
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
