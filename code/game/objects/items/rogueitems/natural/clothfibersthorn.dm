@@ -366,10 +366,10 @@
 				L.consider_ambush()
 
 /obj/item/natural/bundle/fibers
-	name = "纤维捆"
+	name = "fiber bundle"
 	icon_state = "fibersroll1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "许多的植物纤维被紧紧地捆成了一个线圈。"
+	desc = "Numerous plant fibers are bundled together in a tight coil."
 	force = 0
 	throwforce = 0
 	maxamount = 6
