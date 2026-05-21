@@ -635,21 +635,29 @@
 			volume = 4
 		else
 			volume = 3
-	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
-		volume = floor(volume * 1.5)
 
 	var/obj/item/organ/penis/shaft = user.getorganslot(ORGAN_SLOT_PENIS)
 	if(shaft?.penis_type in list(PENIS_TYPE_KNOTTED, PENIS_TYPE_EQUINE, PENIS_TYPE_EQUINE_KNOTTED, PENIS_TYPE_TAPERED_KNOTTED, PENIS_TYPE_TAPERED_DOUBLE_KNOTTED, PENIS_TYPE_BARBED_KNOTTED))
 		volume += 1
-		
-	return volume
+
+	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
+		volume *= 1.5
+	if(HAS_TRAIT(user, TRAIT_BIGGUY))
+		volume *= 1.5
+	if(is_species(user, /datum/species/gnoll))
+		volume *= 1.5
+	return floor(volume)
 
 /datum/sex_controller/proc/get_max_loads()
 	var/con = user.STACON
 	var/loads = 2 + floor(clamp((con - 10) * 2, 0, 99) / 2)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
-		loads = floor(loads * 1.5)
-	return loads
+		loads *= 1.5
+	if(HAS_TRAIT(user, TRAIT_BIGGUY))
+		loads *= 1.5
+	if(is_species(user, /datum/species/gnoll))
+		loads *= 1.5
+	return floor(loads)
 
 /// Returns the max charge based on dynamic load count
 /datum/sex_controller/proc/get_max_charge()
