@@ -460,3 +460,42 @@
       by about fifty percent
   - rscadd: bathmatrons can buy scrolls of mirror transform from their vendor for
       all your gock forming needs
+2026-05-21:
+  2whatever2:
+  - balance: Clamps now actually reduce bloodloss on attached limbs.
+  CloverIsLucky:
+  - balance: Adventurer Paladin can choose a different silver weapon if you choose
+      the Crusader Path.
+  Jamdrawers:
+  - rscadd: more crafting recipes for statues
+  - bugfix: fixes templars getting their buff where they shouldn't, cleans up areatypes
+  MarioTheShiba:
+  - bugfix: fixed a playsound(url) bug.
+  Mryourface13:
+  - rscadd: Added 3 pink colors :3
+  SneakySlinky:
+  - rscadd: Added a cum volume/max loads multiplier to characters with the BIGGUY
+      trait
+  - rscadd: Added a cum volume/max loads multiplier to gnolls
+  - rscadd: Added an examine descriptor for characters with small penises that would
+      have sheaths
+  The-Sun-In-Splendour:
+  - rscadd: ancient champion now has lesser calcic outburst
+  ToothyDeer:
+  - rscadd: Adds a Grenzelhoft plumehat w/ no armor values so it may be worn over
+      helmets.
+  gatorceres:
+  - rscadd: Deadite saigas and volfs may be commanded by necromancers
+  ophaq:
+  - bugfix: Fixes the fancy sandals in the loadout to give the actual fancy sandals
+      item (not the gladiator ones) and not the regular sandals.
+  - rscadd: Adds half-hare &  half-rabbit to half-kin race titles.
+  - rscadd: Adds harevolk and cabbitvolk for critterkin's titles.
+  - rscadd: Adds hare-kin and cabbit-kin for wildkin.
+  - rscadd: Adds the padded and studded hood to the tailor silverface.
+  - rscadd: Adds studded hood to the merchant goldface.
+  - rscadd: Allows the hoods to be worn on the neck slot (not just the head).
+  - bugfix: Fixes a FoV issue with certain masks like the jester, oni and kitsune
+      ones not updating the FoV at times when they were removed.
+  - rscadd: The posh accent is now available. It's an accent with a fancy speaking
+      font for fancy people with their fancy tongues.
