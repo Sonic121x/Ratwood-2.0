@@ -1,0 +1,32 @@
+From 52b489fd9914345c52b2ac2ae7d9fb4d519319a4 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 21 May 2026 22:38:45 +0800
+Subject: [PATCH] =?UTF-8?q?=E6=B7=BB=E5=8A=A0=E7=BA=A4=E7=BB=B4=E6=8D=86?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../game/objects/items/rogueitems/natural/clothfibersthorn.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
+index c58b811304..2f4e24d9a7 100644
+--- a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
++++ b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
+@@ -366,10 +366,10 @@
+ 				L.consider_ambush()
+ 
+ /obj/item/natural/bundle/fibers
+-	name = "fiber bundle"
++	name = "纤维捆"
+ 	icon_state = "fibersroll1"
+ 	possible_item_intents = list(/datum/intent/use)
+-	desc = "Numerous plant fibers are bundled together in a tight coil."
++	desc = "许多的植物纤维被紧紧地捆成了一个线圈。"
+ 	force = 0
+ 	throwforce = 0
+ 	maxamount = 6
+-- 
+2.54.0.windows.1
+

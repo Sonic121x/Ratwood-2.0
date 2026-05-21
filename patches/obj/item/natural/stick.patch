@@ -80,7 +80,7 @@ index 699aa0b053..4679aa0827 100644
  				qdel(src)
  			else
 -				to_chat(user, "I can't add any more sticks to the bundle without it falling apart.")
-+				to_chat(user, "我没法再往这捆里加木棍了，会散的。")
++				to_chat(user, "我不能再往这捆里加木棍了，不然它就要散架了。")
  			return
  
  /obj/item/grown/log/tree/stake
