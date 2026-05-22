@@ -1,18 +1,18 @@
-From ddb4244045bf37756bd7f8d9d45c5273df10e2f1 Mon Sep 17 00:00:00 2001
+From dfe794b4b5994cda682ed4f76f267d34f74ab43c Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Fri, 22 May 2026 20:08:57 +0800
-Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20Light=20buff=20=E7=9A=84?=
- =?UTF-8?q?=E6=A3=80=E8=A7=86=E6=96=87=E6=9C=AC?=
+Date: Sat, 23 May 2026 00:29:49 +0800
+Subject: [PATCH] =?UTF-8?q?=E8=A1=A5=E5=85=85=E9=81=97=E6=BC=8F=E7=9A=84?=
+ =?UTF-8?q?=E7=BF=BB=E8=AF=91?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- modular_azurepeak/code/modules/spells/orison.dm | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ modular_azurepeak/code/modules/spells/orison.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/modular_azurepeak/code/modules/spells/orison.dm b/modular_azurepeak/code/modules/spells/orison.dm
-index 2523e18240..a6f8e375c5 100644
+index 2523e18240..6988e1488f 100644
 --- a/modular_azurepeak/code/modules/spells/orison.dm
 +++ b/modular_azurepeak/code/modules/spells/orison.dm
 @@ -81,7 +81,7 @@
@@ -24,6 +24,24 @@ index 2523e18240..a6f8e375c5 100644
  	var/outline_colour = "#ffffff"
  	/// The object attached to the mob that emits light
  	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj
+@@ -103,7 +103,7 @@
+ 	if (!.)
+ 		return
+ 	playsound(owner, 'sound/magic/whiteflame.ogg', 75, FALSE)
+-	to_chat(owner, span_notice("Light blossoms into being around me!"))
++	to_chat(owner, span_notice("光芒在我周围绽放！"))
+ 	var/filter = owner.get_filter(BLESSINGOFLIGHT_FILTER)
+ 	if (!filter)
+ 		owner.add_filter(BLESSINGOFLIGHT_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
+@@ -113,7 +113,7 @@
+ 
+ /datum/status_effect/light_buff/on_remove()
+ 	playsound(owner, 'sound/items/firesnuff.ogg', 75, FALSE)
+-	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
++	to_chat(owner, span_notice("环绕我的奇迹之光消散了..."))
+ 	owner.remove_filter(BLESSINGOFLIGHT_FILTER)
+ 	QDEL_NULL(mob_light_obj)
+ 
 -- 
 2.53.0
 
