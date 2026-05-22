@@ -1,0 +1,29 @@
+From ddb4244045bf37756bd7f8d9d45c5273df10e2f1 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 22 May 2026 20:08:57 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20Light=20buff=20=E7=9A=84?=
+ =?UTF-8?q?=E6=A3=80=E8=A7=86=E6=96=87=E6=9C=AC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_azurepeak/code/modules/spells/orison.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modular_azurepeak/code/modules/spells/orison.dm b/modular_azurepeak/code/modules/spells/orison.dm
+index 2523e18240..a6f8e375c5 100644
+--- a/modular_azurepeak/code/modules/spells/orison.dm
++++ b/modular_azurepeak/code/modules/spells/orison.dm
+@@ -81,7 +81,7 @@
+ 	alert_type = /atom/movable/screen/alert/status_effect/light_buff
+ 	duration = 5 MINUTES
+ 	status_type = STATUS_EFFECT_REFRESH
+-	examine_text = "SUBJECTPRONOUN is surrounded by an aura of gentle light."
++	examine_text = "SUBJECTPRONOUN周身环绕着柔和的光晕。"
+ 	var/outline_colour = "#ffffff"
+ 	/// The object attached to the mob that emits light
+ 	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj
+-- 
+2.53.0
+
