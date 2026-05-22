@@ -1,0 +1,32 @@
+From f2d816f0f41a27a834f9c7a50e2a4709b3b212be Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 22 May 2026 20:13:09 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20Light=20buff=20=E7=8A=B6?=
+ =?UTF-8?q?=E6=80=81=E6=95=88=E6=9E=9C=E7=9A=84=E5=90=8D=E7=A7=B0=E4=B8=8E?=
+ =?UTF-8?q?=E6=A3=80=E8=A7=86=E6=96=87=E6=9C=AC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_azurepeak/code/modules/spells/orison.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_azurepeak/code/modules/spells/orison.dm b/modular_azurepeak/code/modules/spells/orison.dm
+index 2523e18240..eccadde253 100644
+--- a/modular_azurepeak/code/modules/spells/orison.dm
++++ b/modular_azurepeak/code/modules/spells/orison.dm
+@@ -72,8 +72,8 @@
+ #define BLESSINGOFLIGHT_FILTER "bol_glow"
+ 
+ /atom/movable/screen/alert/status_effect/light_buff
+-	name = "Miraculous Light"
+-	desc = "A blessing of light wards off the darkness surrounding me."
++	name = "奇迹之光"
++	desc = "光明的祝福驱散了我周围的黑暗。"
+ 	icon_state = "stressvg"
+ 
+ /datum/status_effect/light_buff
+-- 
+2.53.0
+
