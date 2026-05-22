@@ -1,10 +1,10 @@
 /obj/effect/proc_holder/spell/targeted/touch/orison
-	name = "Orison"
+	name = "祈祷"
 	overlay_state = "thaumaturgy"
-	desc = "The basic precept of holy magic orients around the power of prayer and soliciting a Divine Patron for a tiny sliver of Their might."
+	desc = "神圣魔法的基本法则围绕着祈祷的力量，向一位神祇祈求祂的一丝威能。"
 	clothes_req = FALSE
-	drawmessage = "I calm my mind and prepare to draw upon an orison."
-	dropmessage = "I return my mind to the now."
+	drawmessage = "我平复心神，准备施展一个祈祷。"
+	dropmessage = "我将心神收回当下。"
 	school = "transmutation"
 	chargedrain = 0
 	chargetime = 0
