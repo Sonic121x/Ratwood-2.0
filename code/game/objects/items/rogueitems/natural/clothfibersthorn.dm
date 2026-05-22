@@ -333,9 +333,9 @@
 		user.visible_message(span_notice("[user]用绷带包扎好了[M]的[affecting]。"), span_notice("我用绷带包扎好了[M]的[affecting.name]。"))
 
 /obj/item/natural/thorn
-	name = "thorn"
+	name = "荆棘"
 	icon_state = "thorn"
-	desc = "The sharp and pointy growth of many a bush. It's somewhat shaped like a needle."
+	desc = "许多灌木上长出的尖锐突起，形状有点像针。"
 	force = 10
 	throwforce = 0
 	possible_item_intents = list(/datum/intent/stab)
