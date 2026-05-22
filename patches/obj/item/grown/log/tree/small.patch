@@ -1,0 +1,40 @@
+From e973a094e614e405296ae8e2baa4df00d7d8419c Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 22 May 2026 02:35:58 +0800
+Subject: [PATCH] =?UTF-8?q?=E6=B7=BB=E5=8A=A0=E6=8D=86=E7=9A=84=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/natural/wood.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/wood.dm b/code/game/objects/items/rogueitems/natural/wood.dm
+index 699aa0b053..ecdddc8e5d 100644
+--- a/code/game/objects/items/rogueitems/natural/wood.dm
++++ b/code/game/objects/items/rogueitems/natural/wood.dm
+@@ -108,8 +108,8 @@
+ 	..()
+ 
+ /obj/item/grown/log/tree/small
+-	name = "small log"
+-	desc = "Piece of lumber cut from a larger log. Suitable for building."
++	name = "小原木"
++	desc = "一段从大原木上锯下的木料。可用于建造。"
+ 	icon_state = "logsmall"
+ 	grid_width = 64
+ 	grid_height = 96
+@@ -188,7 +188,7 @@
+ 		woodtotal += pick(1,2)
+ 	if(I.tool_behaviour == TOOL_SAW)
+ 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
+-		user.visible_message("<span class='notice'>[user] starts sawing planks from [src].</span>")
++		user.visible_message("<span class='notice'>[user]开始把[src]锯成木板。</span>")
+ 		if(do_after(user, planking_time))
+ 			if(user.is_holding(src))
+ 				user.dropItemToGround(src)
+-- 
+2.54.0.windows.1
+
