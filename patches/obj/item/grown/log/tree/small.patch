@@ -31,7 +31,7 @@ index 699aa0b053..ecdddc8e5d 100644
  	if(I.tool_behaviour == TOOL_SAW)
  		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
 -		user.visible_message("<span class='notice'>[user] starts sawing planks from [src].</span>")
-+		user.visible_message("<span class='notice'>[user] 开始把 [src] 锯成木板。</span>")
++		user.visible_message("<span class='notice'>[user]开始把[src]锯成木板。</span>")
  		if(do_after(user, planking_time))
  			if(user.is_holding(src))
  				user.dropItemToGround(src)
