@@ -1612,6 +1612,7 @@
 #include "code\modules\clothing\rogueclothes\wrists.dm"
 #include "code\modules\clothing\rogueclothes\armor\_armor.dm"
 #include "code\modules\clothing\rogueclothes\armor\armordress.dm"
+#include "code\modules\clothing\rogueclothes\armor\baotha.dm"
 #include "code\modules\clothing\rogueclothes\armor\blacksteel.dm"
 #include "code\modules\clothing\rogueclothes\armor\brigandine.dm"
 #include "code\modules\clothing\rogueclothes\armor\chainmail.dm"
