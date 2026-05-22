@@ -81,7 +81,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/light_buff
 	duration = 5 MINUTES
 	status_type = STATUS_EFFECT_REFRESH
-	examine_text = "SUBJECTPRONOUN is surrounded by an aura of gentle light."
+	examine_text = "SUBJECTPRONOUN周身环绕着柔和的光晕。"
 	var/outline_colour = "#ffffff"
 	/// The object attached to the mob that emits light
 	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj
@@ -103,7 +103,7 @@
 	if (!.)
 		return
 	playsound(owner, 'sound/magic/whiteflame.ogg', 75, FALSE)
-	to_chat(owner, span_notice("Light blossoms into being around me!"))
+	to_chat(owner, span_notice("光芒在我周围绽放！"))
 	var/filter = owner.get_filter(BLESSINGOFLIGHT_FILTER)
 	if (!filter)
 		owner.add_filter(BLESSINGOFLIGHT_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
@@ -113,7 +113,7 @@
 
 /datum/status_effect/light_buff/on_remove()
 	playsound(owner, 'sound/items/firesnuff.ogg', 75, FALSE)
-	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
+	to_chat(owner, span_notice("环绕我的奇迹之光消散了..."))
 	owner.remove_filter(BLESSINGOFLIGHT_FILTER)
 	QDEL_NULL(mob_light_obj)
 
