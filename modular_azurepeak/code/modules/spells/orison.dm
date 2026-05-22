@@ -72,8 +72,8 @@
 #define BLESSINGOFLIGHT_FILTER "bol_glow"
 
 /atom/movable/screen/alert/status_effect/light_buff
-	name = "Miraculous Light"
-	desc = "A blessing of light wards off the darkness surrounding me."
+	name = "奇迹之光"
+	desc = "光明的祝福驱散了我周围的黑暗。"
 	icon_state = "stressvg"
 
 /datum/status_effect/light_buff
