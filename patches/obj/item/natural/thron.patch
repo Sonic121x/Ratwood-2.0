@@ -1,0 +1,28 @@
+From dfcdfa63ce2e630f84a8f1335f007ff62e18f742 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 22 May 2026 15:55:48 +0800
+Subject: [PATCH] a
+
+---
+ .../game/objects/items/rogueitems/natural/clothfibersthorn.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
+index c58b811304..49e0ed36b4 100644
+--- a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
++++ b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
+@@ -332,9 +332,9 @@
+ 		user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting.name]."))
+ 
+ /obj/item/natural/thorn
+-	name = "thorn"
++	name = "荆棘"
+ 	icon_state = "thorn"
+-	desc = "The sharp and pointy growth of many a bush. It's somewhat shaped like a needle."
++	desc = "许多灌木上长出的尖锐突起，形状有点像针。"
+ 	force = 10
+ 	throwforce = 0
+ 	possible_item_intents = list(/datum/intent/stab)
+-- 
+2.54.0.windows.1
+
