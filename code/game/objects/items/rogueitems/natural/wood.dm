@@ -1,7 +1,7 @@
 /obj/item/grown/log/tree
 	icon = 'icons/roguetown/items/natural.dmi'
-	name = "log"
-	desc = "A big tree log. It's very heavy and cumbersome, best cut into pieces for more uses."
+	name = "原木"
+	desc = "一根巨大的原木。它非常沉重且笨拙，最好劈成小块，以便派上更多用场。"
 	icon_state = "log"
 	blade_dulling = DULLING_CUT
 	attacked_sound = 'sound/misc/woodhit.ogg'
@@ -25,7 +25,7 @@
 	if(blessed)
 		return FALSE
 	blessed = TRUE
-	name = "blessed log"
+	name = "受祝福的原木"
 	add_atom_colour("#88ffaa", FIXED_COLOUR_PRIORITY)
 	add_filter("blessed_log_outline", 2, list("type" = "outline", "color" = "#58C86A", "alpha" = 95, "size" = 1))
 	return TRUE
@@ -37,8 +37,8 @@
 /obj/item/grown/log/tree/examine(mob/user)
 	. = ..()
 	if(blessed)
-		. += span_green("This log bears Dendor's blessing.")
-		. += span_info("Blessed timber has a big chance to yield 1 extra small log, and a smaller chance to yield 2 extra small logs when chopped.")
+		. += span_green("这根原木承载着 Dendor 的祝福。")
+		. += span_info("受祝福的原木在劈开时，有较高概率额外产出1根小原木，并有较低概率额外产出2根小原木。")
 
 /obj/item/grown/log/tree/Initialize(mapload)
 	. = ..()
@@ -58,7 +58,7 @@
 	var/planking_time = (40 - (skill_level * 5))
 	if(lumber_amount && I.tool_behaviour == TOOL_SAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
-		user.visible_message("<span class='notice'>[user] starts sawing [src] to smaller pieces.</span>")
+		user.visible_message("<span class='notice'>[user]开始将[src]锯成小块。</span>")
 		if(do_after(user, planking_time))
 			new /obj/item/grown/log/tree/small(get_turf(src.loc))
 			new /obj/item/grown/log/tree/small(get_turf(src.loc))
@@ -93,14 +93,14 @@
 					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 		if(blessed)
 			if(prob(50))
-				to_chat(user, span_notice("Dendor's blessing preserves abundant timber, nearly doubling my yield."))
+				to_chat(user, span_notice("Dendor 的祝福保留了大量的木材，让我的收获几乎翻倍。"))
 				new /obj/item/grown/log/tree/small(get_turf(src))
 				new /obj/item/grown/log/tree/small(get_turf(src))
 			else if(prob(80))
-				to_chat(user, span_notice("Dendor's blessing preserves more usable timber for my efforts."))
+				to_chat(user, span_notice("Dendor 的祝福为我留下了更多可用的木材。"))
 				new /obj/item/grown/log/tree/small(get_turf(src))
 		if(!skill_level)
-			to_chat(user, span_info("Due to inexperience, I ruin some of the timber..."))
+			to_chat(user, span_info("由于经验不足，我糟蹋了一些木材..."))
 		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 		playsound(src, destroy_sound, 100, TRUE)
 		qdel(src)
