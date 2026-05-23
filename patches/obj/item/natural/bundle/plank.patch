@@ -1,0 +1,31 @@
+From d98663a29b9ef86c0e4a1b5fd2c045db67d798bb Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:52:40 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E4=B8=80=E5=8F=A0=E6=9C=A8=E6=9D=BF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/natural/wood.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/wood.dm b/code/game/objects/items/rogueitems/natural/wood.dm
+index 699aa0b053..6ef7395e16 100644
+--- a/code/game/objects/items/rogueitems/natural/wood.dm
++++ b/code/game/objects/items/rogueitems/natural/wood.dm
+@@ -467,8 +467,8 @@
+ 			qdel(F)
+ 
+ /obj/item/natural/bundle/plank
+-	name = "stack of wooden planks"
+-	desc = "Several planks in a neat pile."
++	name = "一叠木板"
++	desc = "几块木板整齐地堆叠在一起。"
+ 	icon_state = "plankbundle1"
+ 	item_state = "plankbundle"
+ 	icon = 'icons/roguetown/items/crafting.dmi'
+-- 
+2.53.0
+
