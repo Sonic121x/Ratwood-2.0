@@ -1,0 +1,33 @@
+From 75b62906ee0e2f83abbb97f7c365408aff46de08 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 15:27:40 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E7=85=A4=E7=82=AD=E7=9A=84=E5=90=8D=E5=AD=97=E4=B8=8E?=
+ =?UTF-8?q?=E8=AF=B4=E6=98=8E=E6=96=87=E6=9C=AC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguejobs/miner/rogueores.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguejobs/miner/rogueores.dm b/code/modules/roguetown/roguejobs/miner/rogueores.dm
+index 8f258e1aa3..15d9094ea4 100644
+--- a/code/modules/roguetown/roguejobs/miner/rogueores.dm
++++ b/code/modules/roguetown/roguejobs/miner/rogueores.dm
+@@ -102,9 +102,9 @@
+ 	..()
+ 
+ /obj/item/rogueore/coal/charcoal
+-	name = "charcoal"
++	name = "木炭"
+ 	icon_state = "oreada"
+-	desc = "Wood that has been burnt and transformed into charcoal. Can be used to fuel fires or used to smelt iron."
++	desc = "木材燃烧后转化而成的木炭。可以用来生火，也可以用来冶炼铁器。"
+ 	dropshrink = 0.8
+ 	color = "#929292"
+ 	firefuel = 15 MINUTES
+-- 
+2.53.0
+
