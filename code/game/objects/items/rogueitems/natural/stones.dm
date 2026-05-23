@@ -358,8 +358,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		return ..()
 
 /obj/item/natural/rock
-	name = "boulder"
-	desc = "A rock protudes from the ground."
+	name = "巨石"
+	desc = "一块露出地面的岩石。"
 	icon_state = "stonebig1"
 	dropshrink = 0
 	throwforce = 25
@@ -390,7 +390,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/rock/Crossed(mob/living/L)
 	if(istype(L) && !L.throwing)
 		if(L.m_intent == MOVE_INTENT_RUN)
-			L.visible_message(span_warning("[L] trips over the boulder!"),span_warning("I trip over the boulder!"))
+			L.visible_message(span_warning("[L] 被巨石绊倒了！"),span_warning("我被巨石绊倒了！"))
 			L.Knockdown(10)
 			L.consider_ambush(always = TRUE)
 	..()
@@ -430,7 +430,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	var/skill_level = user.get_skill_level(/datum/skill/craft/masonry)
 	var/work_time = (120 - (skill_level * 15))
 	if(istype(W, /obj/item/natural/stone))
-		user.visible_message(span_info("[user] strikes the stone against the boulder."))
+		user.visible_message(span_info("[user]用石头敲击巨石。"))
 		playsound(src.loc, 'sound/items/stonestone.ogg', 100)
 		if(prob(35))
 			var/datum/effect_system/spark_spread/S = new()
@@ -440,7 +440,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		return
 	if(istype(W, /obj/item/natural/rock))
 		playsound(src.loc, pick('sound/items/stonestone.ogg'), 100)
-		user.visible_message(span_info("[user] strikes the boulders together."))
+		user.visible_message(span_info("[user]将两块巨石互相敲击。"))
 		if(prob(10))
 			var/datum/effect_system/spark_spread/S = new()
 			var/turf/front = get_turf(src)
@@ -449,7 +449,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		return
 	if( user.used_intent.type == /datum/intent/chisel )
 		playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
-		user.visible_message("<span class='info'>[user] chisels the boulder into blocks.</span>")
+		user.visible_message("<span class='info'>[user]将巨石凿成石块。</span>")
 		if(do_after(user, work_time))
 			new /obj/item/natural/stoneblock(get_turf(src.loc))
 			new /obj/item/natural/stoneblock(get_turf(src.loc))
@@ -464,7 +464,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			qdel(src)
 		return
 	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
-		to_chat(user, span_warning("You most use both hands to chisel blocks."))
+		to_chat(user, span_warning("你必须用双手来凿方块。"))
 	..()
 
 //begin ore loot rocks
