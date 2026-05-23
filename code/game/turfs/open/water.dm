@@ -649,8 +649,8 @@
 	return ..()
 
 /turf/open/water/ocean
-	name = "salt water"
-	desc = "The waves lap at the coast, hungry to swallow the land. Doesn't look too deep."
+	name = "海水"
+	desc = "海浪拍打着海岸，贪婪地想要吞噬陆地。看起来并不太深。"
 	icon_state = "ash"
 	icon = 'icons/turf/roguefloor.dmi'
 	water_level = 2
