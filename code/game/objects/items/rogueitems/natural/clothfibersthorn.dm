@@ -135,10 +135,10 @@
 #endif
 
 /obj/item/natural/cloth
-	name = "cloth"
+	name = "布"
 	icon_state = "cloth"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "A bolt of woven fibers. Useful as bandages and in dozens upon dozens of crafts."
+	desc = "一匹织成的纤维。可用作绷带，以及数十种工艺的原料。"
 	force = 0
 	throwforce = 0
 	obj_flags = null
@@ -172,7 +172,7 @@
 /obj/item/natural/cloth/attack_right(mob/user)
 	if(user.get_active_held_item())
 		return
-	to_chat(user, span_warning("I start to collect [src]..."))
+	to_chat(user, span_warning("我开始收集[src]..."))
 	if(move_after(user, bundling_time, target = src))
 		var/clothcount = 0
 		for(var/obj/item/natural/cloth/F in get_turf(src))
@@ -194,14 +194,14 @@
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()
 	if(wet)
-		. += span_notice("It's wet!")
+		. += span_notice("它是湿的！")
 
 // CLEANING
 
 /obj/item/natural/cloth/attack_obj(obj/O, mob/living/user)
 	testing("attackobj")
 	if(user.client && ((O in user.client.screen) && !user.is_holding(O)))
-		to_chat(user, span_warning("I need to take that [O.name] off before cleaning it!"))
+		to_chat(user, span_warning("我需要先把[O.name]取下来才能清理！"))
 		return
 	if(istype(O, /obj/effect/decal/cleanable))
 		var/cleanme = TRUE
@@ -211,12 +211,12 @@
 			add_blood_DNA(O.return_blood_DNA())
 		if(prob(33 + (wet*10)) && cleanme)
 			wet = max(wet-1, 0)
-			user.visible_message(span_info("[user] wipes \the [O.name] with [src]."), span_info("I wipe \the [O.name] with [src]."))
+			user.visible_message(span_info("[user]用[src]擦拭[O.name]。"))
 			qdel(O)
 		playsound(user, "clothwipe", 100, TRUE)
 	else
 		if(prob(30 + (wet*10)))
-			user.visible_message(span_info("[user] wipes \the [O.name] with [src]."), span_info("I wipe \the [O.name] with [src]."))
+			user.visible_message(span_info("[user]用[src]擦拭[O.name]。"), span_info("我用[src]擦拭[O.name]。"))
 
 			if(O.return_blood_DNA())
 				add_blood_DNA(O.return_blood_DNA())
@@ -233,7 +233,7 @@
 	if(istype(T, /turf/open/water))
 		return ..()
 	if(prob(30 + (wet*10)))
-		user.visible_message(span_info("[user] wipes \the [T.name] with [src]."), span_info("I wipe \the [T.name] with [src]."))
+		user.visible_message(span_info("[user]用[src]擦拭[T.name]。"), span_info("我用[src]擦拭[T.name]。"))
 		if(wet)
 			for(var/obj/effect/decal/cleanable/C in T)
 				qdel(C)
@@ -259,39 +259,39 @@
 	if(!istype(C))
 		return ..()
 	if(C.reagents.has_reagent(/datum/reagent/medicine/healthpot, 10) && !medicine_amount)
-		to_chat(user, span_notice("Soaking the [src] in lyfeblood..."))
+		to_chat(user, span_notice("将[src]浸泡在治疗药水中..."))
 		if(do_after(user, 3 SECONDS, target = src))
 			C.reagents.remove_reagent(/datum/reagent/medicine/healthpot, 10)
 			medicine_quality = 1
 			medicine_amount += 10
-			desc += " It has been soaked in lyfeblood."
+			desc += " 它已被治疗药水浸泡。"
 			detail_color = "#ff0000"
 			update_icon()
 	if(C.reagents.has_reagent(/datum/reagent/medicine/stronghealth, 10) && !medicine_amount)
-		to_chat(user, span_notice("Soaking the [src] in strong lyfeblood..."))
+		to_chat(user, span_notice("将[src]浸泡在强效治疗药水中..."))
 		if(do_after(user, 3 SECONDS, target = src))
 			C.reagents.remove_reagent(/datum/reagent/medicine/stronghealth, 10)
 			medicine_quality = 2
 			medicine_amount += 10
-			desc += " It has been soaked in strong lyfeblood."
+			desc += " 它已被强效治疗药水浸泡。."
 			detail_color = "#820000"
 			update_icon()
 	if(C.reagents.has_reagent(/datum/reagent/consumable/ethanol/aqua_vitae, 10) && !medicine_amount)
-		to_chat(user, span_notice("Soaking the [src] in aqua vitae..."))
+		to_chat(user, span_notice("将[src]浸泡在生命之水中..."))
 		if(do_after(user, 3 SECONDS, target = src))
 			C.reagents.remove_reagent(/datum/reagent/consumable/ethanol/aqua_vitae, 10)
 			medicine_quality = 0.5 //slower than health potions, more healing overall. Good for fractures or other big wounds.
 			medicine_amount += 60
-			desc += " It has been soaked in aqua vitae."
+			desc += " 它已被生命之水浸泡。"
 			detail_color = "#6e6e6e"
 			update_icon()
 	if(C.reagents.has_reagent(/datum/reagent/water/blessed, 10) && !medicine_amount)
-		to_chat(user, span_notice("Soaking the [src] in blessed water..."))
+		to_chat(user, span_notice("将[src]浸泡在圣水中..."))
 		if(do_after(user, 3 SECONDS, target = src))
 			C.reagents.remove_reagent(/datum/reagent/water/blessed, 10)
 			medicine_quality = 0.2 //cheap, easy to get, doesn't even heal wounds if it's not on a bandage
 			medicine_amount += 20
-			desc += " It has been soaked in blessed water."
+			desc += " 它已被祝福之水浸泡。"
 			detail_color = "#6a9295"
 			update_icon()
 
@@ -314,7 +314,7 @@
 	if(!affecting)
 		return
 	if(affecting.bandage)
-		to_chat(user, span_warning("There is already a bandage."))
+		to_chat(user, span_warning("那里已经有一块绷带了。"))
 		return
 	var/used_time = bandage_speed
 	used_time -= ((user.get_skill_level(/datum/skill/misc/medicine) * 0.15) * bandage_speed) //15% time reduction per level
@@ -328,9 +328,9 @@
 	H.update_damage_overlays()
 
 	if(M == user)
-		user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting]."), span_notice("I bandage my [affecting.name]."))
+		user.visible_message(span_notice("[user]用绷带包扎好了自己的[affecting]。"), span_notice("我用绷带包扎好了自己的[affecting.name]。"))
 	else
-		user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting.name]."))
+		user.visible_message(span_notice("[user]用绷带包扎好了[M]的[affecting]。"), span_notice("我用绷带包扎好了[M]的[affecting.name]。"))
 
 /obj/item/natural/thorn
 	name = "thorn"
