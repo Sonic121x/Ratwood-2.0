@@ -694,8 +694,8 @@
 		bloodiness = 20
 
 /turf/open/floor/rogue/dirt/road
-	name = "dirt"
-	desc = "The dirt is pocked with the scars of countless steps."
+	name = "土路"
+	desc = "泥土上布满了无数脚步踩踏的痕迹。"
 	icon_state = "road"
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_SAND
