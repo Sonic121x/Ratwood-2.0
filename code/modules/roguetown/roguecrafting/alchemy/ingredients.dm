@@ -65,7 +65,7 @@
 				if(alch_skill >= SKILL_LEVEL_EXPERT || perint >= 16)
 					. += span_notice(" 散发着微弱的[minor_smell]气味。")
 /obj/item/alch/viscera
-	name = "viscera"
+	name = "内脏"
 	icon_state = "viscera"
 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
 	med_pot = /datum/alch_cauldron_recipe/health_potion
