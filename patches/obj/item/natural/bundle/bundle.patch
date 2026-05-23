@@ -28,11 +28,11 @@ index b3615034fb..4d51ae5699 100644
  				B.amount++
  				B.update_bundle()
 -				user.visible_message("[user] adds [src] to [W].")
-+				user.visible_message("[user]将[src]添加进[W]。")
++				user.visible_message("[user]将[src]添加进[W]中。")
  				qdel(src)
  			else
 -				to_chat(user, "There's not enough space in [W].")
-+				to_chat(user, "[W]已经没有空间了。")
++				to_chat(user, "[W]里已经没有空间了。")
  			return
  	else if(istype(W, /obj/item/natural/))
  		var/obj/item/natural/B = W

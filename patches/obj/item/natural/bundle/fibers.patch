@@ -19,7 +19,7 @@ index c58b811304..2f4e24d9a7 100644
  
  /obj/item/natural/bundle/fibers
 -	name = "fiber bundle"
-+	name = "纤维捆"
++	name = "一捆纤维"
  	icon_state = "fibersroll1"
  	possible_item_intents = list(/datum/intent/use)
 -	desc = "Numerous plant fibers are bundled together in a tight coil."

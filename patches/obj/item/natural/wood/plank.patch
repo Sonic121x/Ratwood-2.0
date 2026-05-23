@@ -1,0 +1,31 @@
+From 318f6a10f5865e03c6894777aedec269467505a9 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:47:34 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E6=9C=A8=E6=9D=BF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/natural/wood.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/wood.dm b/code/game/objects/items/rogueitems/natural/wood.dm
+index 699aa0b053..35c01db437 100644
+--- a/code/game/objects/items/rogueitems/natural/wood.dm
++++ b/code/game/objects/items/rogueitems/natural/wood.dm
+@@ -422,8 +422,8 @@
+ ////////////
+ 
+ /obj/item/natural/wood/plank
+-	name = "wooden plank"
+-	desc = "A flat piece of wood, useful for flooring."
++	name = "木板"
++	desc = "一块扁平的木头，适合铺设地板。"
+ 	icon = 'icons/roguetown/items/crafting.dmi'
+ 	icon_state = "plank"
+ 	grid_width = 64
+-- 
+2.53.0
+
