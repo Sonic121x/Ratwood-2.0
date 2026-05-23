@@ -562,8 +562,8 @@
 	.  = ..()
 
 /turf/open/water/river
-	name = "river"
-	desc = "A river of crystal clear water flows swiftly along the contours of the land."
+	name = "河流"
+	desc = "一条清澈见底的河流沿着大地的轮廓奔流不息。"
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "rivermove"
 	water_level = 3
