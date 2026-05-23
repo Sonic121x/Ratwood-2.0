@@ -468,8 +468,8 @@
 			qdel(F)
 
 /obj/item/natural/bundle/plank
-	name = "stack of wooden planks"
-	desc = "Several planks in a neat pile."
+	name = "一叠木板"
+	desc = "几块木板整齐地堆叠在一起。"
 	icon_state = "plankbundle1"
 	item_state = "plankbundle"
 	icon = 'icons/roguetown/items/crafting.dmi'
@@ -482,7 +482,7 @@
 	throw_range = 2
 	firefuel = 10 MINUTES
 	w_class = WEIGHT_CLASS_BULKY
-	stackname = "plank"
+	stackname = "块木板"
 	stacktype = /obj/item/natural/wood/plank
 	maxamount = 6
 	icon1 = "plankbundle2"
