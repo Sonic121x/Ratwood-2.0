@@ -278,8 +278,8 @@
 	abstract_type = /turf/open/floor/rogue/deserttile
 
 /turf/open/floor/rogue/naturalstone/sandstone
-	name = "rough sandstone ground"
-	desc = "Rough sandstone that's been exposed to the air either through erosion or the swing of a pickaxe. Dust wisps through the cracks."
+	name = "粗糙的砂岩地面"
+	desc = "因侵蚀或镐头的敲击而暴露在空气中的粗糙砂岩。灰尘从裂缝中飘出。"
 	icon = 'modular_deserttown/icons/desertfloor.dmi'
 	smooth = SMOOTH_MORE
 	canSmoothWith = list(/turf/open/floor/rogue,
