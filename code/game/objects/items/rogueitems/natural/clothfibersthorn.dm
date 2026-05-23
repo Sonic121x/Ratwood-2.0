@@ -442,10 +442,10 @@
 	dropshrink = 0.9
 
 /obj/item/natural/bundle/stick
-	name = "bundle of sticks"
+	name = "一捆木棍"
 	icon_state = "stickbundle1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Stick alone: Weak. Stick together: Strong."
+	desc = "一棍易折，十棍难断。"
 	maxamount = 10
 	force = 0
 	throwforce = 0
@@ -456,7 +456,7 @@
 	spitoutmouth = FALSE
 	experimental_inhand = FALSE
 	stacktype = /obj/item/grown/log/tree/stick
-	stackname = "sticks"
+	stackname = "根木棍"
 	icon1 = "stickbundle1"
 	icon1step = 4
 	icon2 = "stickbundle2"
@@ -468,7 +468,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
-		user.visible_message(span_info("[user] starts sharpening the sticks in [src]..."), span_info("I start sharpening the sticks in [src]...."))
+		user.visible_message(span_info("[user]开始削尖[src]里的木棍..."), span_info("我开始削尖[src]里的木棍..."))
 		for(var/i in 1 to (amount - 1))
 			if(!do_after(user, 20))
 				break
