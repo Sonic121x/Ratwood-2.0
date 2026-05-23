@@ -498,10 +498,10 @@
 		return
 
 /obj/item/natural/bundle/bone
-	name = "stack of bones"
+	name = "一堆骨头"
 	icon_state = "bonestack1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "These remains of the dead have been bundled together."
+	desc = "这些死者的遗骸被捆在了一起。"
 	force = 0
 	throwforce = 0
 	maxamount = 6
@@ -516,7 +516,7 @@
 	spitoutmouth = FALSE
 	experimental_inhand = FALSE
 	stacktype = /obj/item/natural/bone
-	stackname = "bones"
+	stackname = "根骨头"
 	icon1 = "bonestack1"
 	icon2 = "bonestack2"
 
