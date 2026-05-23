@@ -1,6 +1,6 @@
-From 874e397b2823554597794862d59ccbce5d6f1e3a Mon Sep 17 00:00:00 2001
+From 0b39c4740002a92101c92bd7374f26ed843dc134 Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Sat, 23 May 2026 14:41:15 +0800
+Date: Sat, 23 May 2026 20:18:50 +0800
 Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E4=B8=80=E6=8D=86=E6=9C=A8?=
  =?UTF-8?q?=E6=A3=8D=E7=9A=84=E6=96=87=E6=9C=AC?=
 MIME-Version: 1.0
@@ -8,11 +8,11 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- .../objects/items/rogueitems/natural/clothfibersthorn.dm    | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .../objects/items/rogueitems/natural/clothfibersthorn.dm  | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
-index c58b811304..1866cacb9e 100644
+index c58b811304..d916b13440 100644
 --- a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
 +++ b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
 @@ -440,10 +440,10 @@
@@ -28,6 +28,15 @@ index c58b811304..1866cacb9e 100644
  	maxamount = 10
  	force = 0
  	throwforce = 0
+@@ -454,7 +454,7 @@
+ 	spitoutmouth = FALSE
+ 	experimental_inhand = FALSE
+ 	stacktype = /obj/item/grown/log/tree/stick
+-	stackname = "sticks"
++	stackname = "根木棍"
+ 	icon1 = "stickbundle1"
+ 	icon1step = 4
+ 	icon2 = "stickbundle2"
 @@ -466,7 +466,7 @@
  	user.changeNext_move(CLICK_CD_MELEE)
  	if(user.used_intent?.blade_class == BCLASS_CUT)
