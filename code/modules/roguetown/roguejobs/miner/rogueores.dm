@@ -102,9 +102,9 @@
 	..()
 
 /obj/item/rogueore/coal/charcoal
-	name = "charcoal"
+	name = "木炭"
 	icon_state = "oreada"
-	desc = "Wood that has been burnt and transformed into charcoal. Can be used to fuel fires or used to smelt iron."
+	desc = "木材燃烧后转化而成的木炭。可以用来生火，也可以用来冶炼铁器。"
 	dropshrink = 0.8
 	color = "#929292"
 	firefuel = 15 MINUTES
