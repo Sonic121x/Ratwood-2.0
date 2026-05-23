@@ -1,0 +1,32 @@
+From f3f53c6a0f28d7de4a72df41a302b2b0fa848f72 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 15:05:19 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E9=AA=A8=E5=A4=B4=E7=9A=84=E6=96=87=E6=9C=AC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/natural/animals.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/animals.dm b/code/game/objects/items/rogueitems/natural/animals.dm
+index 6dd77b64a1..c9559447e9 100644
+--- a/code/game/objects/items/rogueitems/natural/animals.dm
++++ b/code/game/objects/items/rogueitems/natural/animals.dm
+@@ -120,9 +120,9 @@
+ 	var/simple_detect_bonus = 0 // A flat percentage bonus to our ability to detect sneaking people only. Use in lieu of giving mobs huge STAPER bonuses if you want them to be observant.
+ 
+ /obj/item/natural/bone
+-	name = "bone"
++	name = "骨头"
+ 	icon_state = "bone"
+-	desc = "The meatless remains of the dead. Whether it came from an animal or a person, it all looks the same now."
++	desc = "无肉的遗骸。不论来自动物还是人，如今看来都别无二致。"
+ 	blade_dulling = 0
+ 	max_integrity = 20
+ 	static_debris = null
+-- 
+2.53.0
+
