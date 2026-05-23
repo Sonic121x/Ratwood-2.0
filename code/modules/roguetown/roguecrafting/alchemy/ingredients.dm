@@ -196,7 +196,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/fire_potion
 
 /obj/item/alch/sinew
-	name = "sinew"
+	name = "肌腱"
 	icon_state = "sinew"
 	dropshrink = 0.9
 	major_pot = /datum/alch_cauldron_recipe/aphrodisiac
