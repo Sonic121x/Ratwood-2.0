@@ -20,7 +20,7 @@ index 5239f7077c..f579a697c1 100644
 -	name = "sand"
 -	desc = "Its course and rough, and it gets everywhere."
 +	name = "沙子"
-+	desc = "又粗又糙，还会钻得到处都是。"
++	desc = "它又粗又糙，而且无处不在。"
  	icon = 'modular_deserttown/icons/desertfloor.dmi'
  	icon_state = "dune1"
  	footstep = FOOTSTEP_SAND
