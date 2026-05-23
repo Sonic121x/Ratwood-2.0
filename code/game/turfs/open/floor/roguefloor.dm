@@ -498,8 +498,8 @@
 	roguesmooth(adjacencies)
 
 /turf/open/floor/rogue/dirt/ambush
-	name = "dirt"
-	desc = "The dirt is pocked with the scars of countless wars."
+	name = "泥土"
+	desc = "泥土上布满了无数战争留下的疮痍。"
 	icon_state = "dirt"
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_GRASS
