@@ -547,8 +547,8 @@
 				return .
 
 /turf/open/water/cleanshallow
-	name = "water"
-	desc = "Clear and shallow water, what a blessing!"
+	name = "水"
+	desc = "清澈的浅水，真是天赐之福！"
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "rockw2"
 	water_level = 2
