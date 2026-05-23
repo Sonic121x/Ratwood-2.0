@@ -199,8 +199,8 @@
 	mouse_opacity = 0
 
 /turf/open/floor/rogue/desert_grass
-	name = "desert grass"
-	desc = "Grass, barely."
+	name = "沙漠草"
+	desc = "勉强能算是草。"
 	icon = 'modular_deserttown/icons/desertfloor.dmi'
 	icon_state = "desertgrass1"
 	layer = MID_TURF_LAYER
