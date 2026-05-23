@@ -239,9 +239,9 @@
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
 /obj/item/alch/bone
-	name = "tail bone"
+	name = "尾骨"
 	icon_state = "bone"
-	desc = "The only bone in creachers with alchemical properties."
+	desc = "唯一具有炼金特性的生物骨头。"
 	force = 7
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
