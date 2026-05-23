@@ -1,0 +1,33 @@
+From a53c33b8b809ad8b203324513f8eee11f09eb0f5 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 17:42:26 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E9=AA=A8=E5=A4=B4=E5=A0=86=E7=9A=84=E6=96=87=E6=9C=AC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../game/objects/items/rogueitems/natural/clothfibersthorn.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
+index c58b811304..64da8c68b2 100644
+--- a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
++++ b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
+@@ -496,10 +496,10 @@
+ 		return
+ 
+ /obj/item/natural/bundle/bone
+-	name = "stack of bones"
++	name = "一堆骨头"
+ 	icon_state = "bonestack1"
+ 	possible_item_intents = list(/datum/intent/use)
+-	desc = "These remains of the dead have been bundled together."
++	desc = "这些死者的遗骸被捆在了一起。"
+ 	force = 0
+ 	throwforce = 0
+ 	maxamount = 6
+-- 
+2.53.0
+
