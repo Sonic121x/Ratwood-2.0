@@ -122,9 +122,9 @@
 	var/simple_detect_bonus = 0 // A flat percentage bonus to our ability to detect sneaking people only. Use in lieu of giving mobs huge STAPER bonuses if you want them to be observant.
 
 /obj/item/natural/bone
-	name = "bone"
+	name = "骨头"
 	icon_state = "bone"
-	desc = "The meatless remains of the dead. Whether it came from an animal or a person, it all looks the same now."
+	desc = "无肉的遗骸。不论来自动物还是人，如今看来都别无二致。"
 	blade_dulling = 0
 	max_integrity = 20
 	static_debris = null
