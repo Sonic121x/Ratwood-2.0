@@ -1,0 +1,29 @@
+From a3bac9a99b8ae441c3334c94a59bb3e1eddec20e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:03:07 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E6=B2=99=E5=AD=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertfloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_deserttown/desertfloor.dm b/modular_deserttown/desertfloor.dm
+index 5239f7077c..f579a697c1 100644
+--- a/modular_deserttown/desertfloor.dm
++++ b/modular_deserttown/desertfloor.dm
+@@ -1,6 +1,6 @@
+ /turf/open/floor/rogue/dunes
+-	name = "sand"
+-	desc = "Its course and rough, and it gets everywhere."
++	name = "沙子"
++	desc = "它又粗又糙，而且无处不在。"
+ 	icon = 'modular_deserttown/icons/desertfloor.dmi'
+ 	icon_state = "dune1"
+ 	footstep = FOOTSTEP_SAND
+-- 
+2.53.0
+

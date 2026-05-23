@@ -1,0 +1,31 @@
+From 1809492b4b29296a8ce8d142e4ed3ca93879ea6c Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:05:35 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E6=B2=BC=E6=B3=BD?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/water.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/water.dm b/code/game/turfs/open/water.dm
+index 13a80b625a..a659b1c4d2 100644
+--- a/code/game/turfs/open/water.dm
++++ b/code/game/turfs/open/water.dm
+@@ -436,8 +436,8 @@
+ 	.  = ..()
+ 
+ /turf/open/water/swamp
+-	name = "murk"
+-	desc = "Weeds and algae cover the surface of the water."
++	name = "浑浊死水"
++	desc = "水面上覆盖着杂草和藻类。"
+ 	icon = 'icons/turf/roguefloor.dmi'
+ 	icon_state = "dirtW2"
+ 	water_level = 2
+-- 
+2.53.0
+

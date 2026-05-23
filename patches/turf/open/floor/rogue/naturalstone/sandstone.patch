@@ -1,0 +1,31 @@
+From f1f7594ae8cc8a4f4bc739102e284c5f1b8bb30e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:16:28 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E7=A0=82=E5=B2=A9=E5=9C=B0=E9=9D=A2?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertfloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_deserttown/desertfloor.dm b/modular_deserttown/desertfloor.dm
+index 5239f7077c..1b2e9f0d1d 100644
+--- a/modular_deserttown/desertfloor.dm
++++ b/modular_deserttown/desertfloor.dm
+@@ -278,8 +278,8 @@
+ 	abstract_type = /turf/open/floor/rogue/deserttile
+ 
+ /turf/open/floor/rogue/naturalstone/sandstone
+-	name = "rough sandstone ground"
+-	desc = "Rough sandstone that's been exposed to the air either through erosion or the swing of a pickaxe. Dust wisps through the cracks."
++	name = "粗糙的砂岩地面"
++	desc = "因侵蚀或镐头的敲击而暴露在空气中的粗糙砂岩。灰尘从裂缝中飘出。"
+ 	icon = 'modular_deserttown/icons/desertfloor.dmi'
+ 	smooth = SMOOTH_MORE
+ 	canSmoothWith = list(/turf/open/floor/rogue,
+-- 
+2.53.0
+

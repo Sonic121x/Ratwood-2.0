@@ -1,0 +1,31 @@
+From eee957ea8b6176dd71a37d7ea42517364c7d0713 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:12:13 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E6=B7=B1=E6=B5=B7=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/water.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/water.dm b/code/game/turfs/open/water.dm
+index 13a80b625a..2e8498683e 100644
+--- a/code/game/turfs/open/water.dm
++++ b/code/game/turfs/open/water.dm
+@@ -661,8 +661,8 @@
+ 	water_reagent = /datum/reagent/water/salty
+ 
+ /turf/open/water/ocean/deep
+-	name = "salt water"
+-	desc = "Deceptively deep, be careful not to find yourself this far out."
++	name = "海水"
++	desc = "深不可测，当心别让自己漂到如此遥远的海面上。"
+ 	icon_state = "water"
+ 	icon = 'icons/turf/roguefloor.dmi'
+ 	water_level = 3
+-- 
+2.53.0
+
