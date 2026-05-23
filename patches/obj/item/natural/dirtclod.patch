@@ -1,0 +1,29 @@
+From def3a448f58a4f6ff4182d283f5b2b9f0d9c6613 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 17:54:34 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E5=9C=9F=E5=9D=97?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/natural/dirtclod.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/dirtclod.dm b/code/game/objects/items/rogueitems/natural/dirtclod.dm
+index c19f53d1ac..59a9510884 100644
+--- a/code/game/objects/items/rogueitems/natural/dirtclod.dm
++++ b/code/game/objects/items/rogueitems/natural/dirtclod.dm
+@@ -1,6 +1,6 @@
+ /obj/item/natural/dirtclod
+-	name = "clod"
+-	desc = "A handful of earth."
++	name = "土块"
++	desc = "一把泥土。"
+ 	icon_state = "clod1"
+ 	dropshrink = 0
+ 	throwforce = 0
+-- 
+2.53.0
+
