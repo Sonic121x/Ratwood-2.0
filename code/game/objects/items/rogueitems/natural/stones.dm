@@ -520,8 +520,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 //................	Stone blocks	............... //
 /obj/item/natural/stoneblock
-	name = "stone block"
-	desc = "A rectangular stone block for building."
+	name = "石块"
+	desc = "一块用于建造的长方形石块。"
 	icon = 'icons/roguetown/items/crafting.dmi'
 	icon_state = "stoneblock"
 	drop_sound = 'sound/foley/brickdrop.ogg'
@@ -542,7 +542,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	. = ..()
 	if(user.get_active_held_item())
 		return
-	to_chat(user, span_warning("I start to collect [src]..."))
+	to_chat(user, span_warning("我开始收集[src]..."))
 	if(move_after(user, bundling_time, target = src))
 		var/stackcount = 0
 		for(var/obj/item/natural/stoneblock/F in get_turf(src))
