@@ -1,0 +1,46 @@
+From 072be6958e518513b7e4d7afa8c5d1534c805d84 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 20:06:26 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E6=B1=89?=
+ =?UTF-8?q?=E5=8C=96=E7=9F=B3=E5=9D=97?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/natural/stones.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural/stones.dm b/code/game/objects/items/rogueitems/natural/stones.dm
+index 8c01a27fe0..ce2c0b1eb3 100644
+--- a/code/game/objects/items/rogueitems/natural/stones.dm
++++ b/code/game/objects/items/rogueitems/natural/stones.dm
+@@ -564,8 +564,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
+ 
+ //................ Stone block stack	............... //
+ /obj/item/natural/bundle/stoneblock
+-	name = "stack of stone blocks"
+-	desc = "A stack of stone blocks."
++	name = "一堆石块"
++	desc = "一堆石块"
+ 	icon_state = "stoneblockbundle1"
+ 	icon = 'icons/roguetown/items/crafting.dmi'
+ 	item_state = "block"
+@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
+ 	throwforce = 0	// useless for throwing unless solo
+ 	throw_range = 2
+ 	w_class = WEIGHT_CLASS_NORMAL
+-	stackname = "stone blocks"
++	stackname = "个石块"
+ 	stacktype = /obj/item/natural/stoneblock
+ 	maxamount = 4
+ 	icon1 = "stoneblockbundle2"
+@@ -607,4 +607,4 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
+ 			qdel(src)
+ 		return
+ 	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
+-		to_chat(user, span_warning("You most use both hands to chisel blocks."))
++		to_chat(user, span_warning("你必须用双手来凿石块。"))
+-- 
+2.53.0
+
