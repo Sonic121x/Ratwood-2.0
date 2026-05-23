@@ -1,18 +1,18 @@
-From a53c33b8b809ad8b203324513f8eee11f09eb0f5 Mon Sep 17 00:00:00 2001
+From f1627438c99425a90aadc26a8fb269b7391d9178 Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Sat, 23 May 2026 17:42:26 +0800
-Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
- =?UTF-8?q?=E8=AF=91=E9=AA=A8=E5=A4=B4=E5=A0=86=E7=9A=84=E6=96=87=E6=9C=AC?=
+Date: Sat, 23 May 2026 20:34:51 +0800
+Subject: [PATCH] =?UTF-8?q?=E4=B8=BA=E9=AA=A8=E5=A4=B4=E8=A1=A5=E5=85=85?=
+ =?UTF-8?q?=E9=87=8F=E8=AF=8D?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- .../game/objects/items/rogueitems/natural/clothfibersthorn.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../objects/items/rogueitems/natural/clothfibersthorn.dm    | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
-index c58b811304..64da8c68b2 100644
+index c58b811304..2e8fd87834 100644
 --- a/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
 +++ b/code/game/objects/items/rogueitems/natural/clothfibersthorn.dm
 @@ -496,10 +496,10 @@
@@ -28,6 +28,15 @@ index c58b811304..64da8c68b2 100644
  	force = 0
  	throwforce = 0
  	maxamount = 6
+@@ -514,7 +514,7 @@
+ 	spitoutmouth = FALSE
+ 	experimental_inhand = FALSE
+ 	stacktype = /obj/item/natural/bone
+-	stackname = "bones"
++	stackname = "根骨头"
+ 	icon1 = "bonestack1"
+ 	icon2 = "bonestack2"
+ 
 -- 
 2.53.0
 
