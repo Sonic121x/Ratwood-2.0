@@ -661,8 +661,8 @@
 	water_reagent = /datum/reagent/water/salty
 
 /turf/open/water/ocean/deep
-	name = "salt water"
-	desc = "Deceptively deep, be careful not to find yourself this far out."
+	name = "海水"
+	desc = "深不可测，当心别让自己漂到如此遥远的海面上。"
 	icon_state = "water"
 	icon = 'icons/turf/roguefloor.dmi'
 	water_level = 3
