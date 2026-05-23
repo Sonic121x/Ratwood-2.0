@@ -1,0 +1,31 @@
+From f9cf94d3b55c4e8a0657cba3705adcb73d4b649d Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:18:08 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E5=9C=86=E7=9F=B3=E8=B7=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..14ce1415f8 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -1323,8 +1323,8 @@
+ 
+ /turf/open/floor/rogue/cobble
+ 	icon_state = "cobblestone1"
+-	name = "cobblestone"
+-	desc = "Stone bricks carefully inlaid upon the ground for a more refined and resilient path."
++	name = "圆石路"
++	desc = "精心铺设在地面上的石砖，铺成了一条更精致、更经久耐用的道路。"
+ 	footstep = FOOTSTEP_STONE
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+ 	clawfootstep = FOOTSTEP_HARD_CLAW
+-- 
+2.53.0
+

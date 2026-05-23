@@ -1,0 +1,31 @@
+From 52f8b0dd2be7e678b8071f5fbfae97f11cd9c38d Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:00:33 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E6=B2=99=E6=BC=A0=E8=8D=89?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertfloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_deserttown/desertfloor.dm b/modular_deserttown/desertfloor.dm
+index 5239f7077c..d3eabedd77 100644
+--- a/modular_deserttown/desertfloor.dm
++++ b/modular_deserttown/desertfloor.dm
+@@ -199,8 +199,8 @@
+ 	mouse_opacity = 0
+ 
+ /turf/open/floor/rogue/desert_grass
+-	name = "desert grass"
+-	desc = "Grass, barely."
++	name = "沙漠草"
++	desc = "勉强能算是草。"
+ 	icon = 'modular_deserttown/icons/desertfloor.dmi'
+ 	icon_state = "desertgrass1"
+ 	layer = MID_TURF_LAYER
+-- 
+2.53.0
+

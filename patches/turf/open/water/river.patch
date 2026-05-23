@@ -1,0 +1,31 @@
+From 47a29dde4ffb8e261080d962266bd3ebc1a45a40 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:15:20 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E6=B2=B3=E6=B5=81?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/water.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/water.dm b/code/game/turfs/open/water.dm
+index 13a80b625a..bb931e50b1 100644
+--- a/code/game/turfs/open/water.dm
++++ b/code/game/turfs/open/water.dm
+@@ -562,8 +562,8 @@
+ 	.  = ..()
+ 
+ /turf/open/water/river
+-	name = "river"
+-	desc = "A river of crystal clear water flows swiftly along the contours of the land."
++	name = "河流"
++	desc = "一条清澈见底的河流沿着大地的轮廓奔流不息。"
+ 	icon = 'icons/turf/roguefloor.dmi'
+ 	icon_state = "rivermove"
+ 	water_level = 3
+-- 
+2.53.0
+

@@ -1,0 +1,31 @@
+From 74557a292b578f8c568e6a245b3a9c5801c43800 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:11:18 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E6=B5=B7=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/water.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/water.dm b/code/game/turfs/open/water.dm
+index 13a80b625a..f3f5c0c0b6 100644
+--- a/code/game/turfs/open/water.dm
++++ b/code/game/turfs/open/water.dm
+@@ -649,8 +649,8 @@
+ 	return ..()
+ 
+ /turf/open/water/ocean
+-	name = "salt water"
+-	desc = "The waves lap at the coast, hungry to swallow the land. Doesn't look too deep."
++	name = "海水"
++	desc = "海浪拍打着海岸，贪婪地想要吞噬陆地。看起来并不太深。"
+ 	icon_state = "ash"
+ 	icon = 'icons/turf/roguefloor.dmi'
+ 	water_level = 2
+-- 
+2.53.0
+

@@ -1,0 +1,30 @@
+From 597ee57a6f1a7489b94419d07036ba29eef287ab Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 18:14:21 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/water.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/water.dm b/code/game/turfs/open/water.dm
+index 13a80b625a..7d0ffef530 100644
+--- a/code/game/turfs/open/water.dm
++++ b/code/game/turfs/open/water.dm
+@@ -547,8 +547,8 @@
+ 				return .
+ 
+ /turf/open/water/cleanshallow
+-	name = "water"
+-	desc = "Clear and shallow water, what a blessing!"
++	name = "水"
++	desc = "清澈的浅水，真是天赐之福！"
+ 	icon = 'icons/turf/roguefloor.dmi'
+ 	icon_state = "rockw2"
+ 	water_level = 2
+-- 
+2.53.0
+
