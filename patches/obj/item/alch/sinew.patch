@@ -1,0 +1,25 @@
+From f4289902f7b700b9ef1aee912c1c6f0fadf202c8 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 15:10:26 +0800
+Subject: [PATCH] a
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/ingredients.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+index 4e7593f548..53d6a8aba7 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+@@ -195,7 +195,7 @@
+ 	minor_pot = /datum/alch_cauldron_recipe/fire_potion
+ 
+ /obj/item/alch/sinew
+-	name = "sinew"
++	name = "肌腱"
+ 	icon_state = "sinew"
+ 	dropshrink = 0.9
+ 	major_pot = /datum/alch_cauldron_recipe/aphrodisiac
+-- 
+2.53.0
+
