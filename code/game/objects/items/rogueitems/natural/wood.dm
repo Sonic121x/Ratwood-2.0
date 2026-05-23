@@ -423,8 +423,8 @@
 ////////////
 
 /obj/item/natural/wood/plank
-	name = "wooden plank"
-	desc = "A flat piece of wood, useful for flooring."
+	name = "木板"
+	desc = "一块扁平的木头，适合铺设地板。"
 	icon = 'icons/roguetown/items/crafting.dmi'
 	icon_state = "plank"
 	grid_width = 64
