@@ -436,8 +436,8 @@
 	.  = ..()
 
 /turf/open/water/swamp
-	name = "murk"
-	desc = "Weeds and algae cover the surface of the water."
+	name = "浑浊死水"
+	desc = "水面上覆盖着杂草和藻类。"
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "dirtW2"
 	water_level = 2
