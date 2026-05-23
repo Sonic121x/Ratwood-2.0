@@ -564,8 +564,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 //................ Stone block stack	............... //
 /obj/item/natural/bundle/stoneblock
-	name = "stack of stone blocks"
-	desc = "A stack of stone blocks."
+	name = "一堆石块"
+	desc = "一堆石块"
 	icon_state = "stoneblockbundle1"
 	icon = 'icons/roguetown/items/crafting.dmi'
 	item_state = "block"
@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	throwforce = 0	// useless for throwing unless solo
 	throw_range = 2
 	w_class = WEIGHT_CLASS_NORMAL
-	stackname = "stone blocks"
+	stackname = "个石块"
 	stacktype = /obj/item/natural/stoneblock
 	maxamount = 4
 	icon1 = "stoneblockbundle2"
@@ -607,4 +607,4 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			qdel(src)
 		return
 	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
-		to_chat(user, span_warning("You most use both hands to chisel blocks."))
+		to_chat(user, span_warning("你必须用双手来凿石块。"))
