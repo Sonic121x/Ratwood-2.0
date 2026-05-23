@@ -1,0 +1,29 @@
+From e877892a450e222b1623e150787d6610f4ea0309 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 23 May 2026 15:18:15 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E5=86=85=E8=84=8F=E7=9A=84=E5=90=8D=E5=AD=97?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/ingredients.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+index 4e7593f548..99ab60bdb1 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+@@ -64,7 +64,7 @@
+ 				if(alch_skill >= SKILL_LEVEL_EXPERT || perint >= 16)
+ 					. += span_notice(" Smells weakly of [minor_smell].")
+ /obj/item/alch/viscera
+-	name = "viscera"
++	name = "内脏"
+ 	icon_state = "viscera"
+ 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
+ 	med_pot = /datum/alch_cauldron_recipe/health_potion
+-- 
+2.53.0
+
