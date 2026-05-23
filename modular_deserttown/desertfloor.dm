@@ -1,6 +1,6 @@
 /turf/open/floor/rogue/dunes
-	name = "sand"
-	desc = "Its course and rough, and it gets everywhere."
+	name = "沙子"
+	desc = "它又粗又糙，而且无处不在。"
 	icon = 'modular_deserttown/icons/desertfloor.dmi'
 	icon_state = "dune1"
 	footstep = FOOTSTEP_SAND
