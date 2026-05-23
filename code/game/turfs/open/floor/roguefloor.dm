@@ -1323,8 +1323,8 @@
 
 /turf/open/floor/rogue/cobble
 	icon_state = "cobblestone1"
-	name = "cobblestone"
-	desc = "Stone bricks carefully inlaid upon the ground for a more refined and resilient path."
+	name = "圆石路"
+	desc = "精心铺设在地面上的石砖，铺成了一条更精致、更经久耐用的道路。"
 	footstep = FOOTSTEP_STONE
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
