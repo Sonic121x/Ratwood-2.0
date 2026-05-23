@@ -120,10 +120,10 @@ index b3615034fb..4d51ae5699 100644
  	. = ..()
  	if(amount == maxamount )
 -		to_chat(user, span_notice("There are [amount] [stackname] in this bundle. It can not take any more."))
-+		to_chat(user, span_notice("这捆[stackname]里面有 [amount] [stackname]，已经不能再加入任何东西了。"))
++		to_chat(user, span_notice("这堆里面有 [amount] [stackname]，已经不能再加入任何东西了。"))
  	else
 -		to_chat(user, span_notice("There are [amount] [stackname] in this bundle."))
-+		to_chat(user, span_notice("这捆[stackname]里面有 [amount] [stackname]"))
++		to_chat(user, span_notice("这堆里面有 [amount] [stackname]。"))
  
  /obj/item/natural/bundle/proc/update_bundle()
  	if(firefuel != 0)
