@@ -418,10 +418,10 @@
 	icon2step = 6
 
 /obj/item/natural/bundle/cloth
-	name = "bundle of cloth"
+	name = "一捆布"
 	icon_state = "clothroll1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Multiple bolts of fabric have been rolled up together for easier transport."
+	desc = "多匹布料被卷在一起，以便运输。"
 	force = 0
 	throwforce = 0
 	maxamount = 10
@@ -432,7 +432,7 @@
 	spitoutmouth = FALSE
 	experimental_inhand = FALSE
 	stacktype = /obj/item/natural/cloth
-	stackname = "cloth"
+	stackname = "匹布"
 	icon1 = "clothroll1"
 	icon1step = 5
 	icon2 = "clothroll2"
