@@ -28,7 +28,7 @@ index 8dce678bf3..571a7d0296 100644
  			var/static/fumbling_seed = text2num(GLOB.rogue_round_id)
  			var/fumbled_value = max(1, round(real_value + (real_value * clamp(noise_hash(real_value, fumbling_seed) - 0.25, -0.25, 0.25)), 1))
 -			. += span_info("Value: [fumbled_value] mammon... <i>I think</i>")
-+			. += span_info("价值：[fumbled_value] 玛门……<i>我觉得</i>")
++			. += span_info("价值：[fumbled_value] 玛门...<i>大概</i>")
  
  	if(smeltresult)
  		var/obj/item/smelted = smeltresult
