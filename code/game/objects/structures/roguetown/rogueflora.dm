@@ -413,8 +413,8 @@
 	max_integrity = 5
 
 /obj/structure/flora/roguegrass/water/reeds
-	name = "reeds"
-	desc = "This plant thrives in water, and shelters dangers."
+	name = "芦苇"
+	desc = "这种植物在水中繁茂生长，掩藏着危险。"
 	icon_state = "reeds"
 	opacity = 1
 	max_integrity = 10
