@@ -1,0 +1,29 @@
+From 48dd0acd052f0e4c1e822e31840ba250aa1f5e07 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 00:04:34 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=83=A1=E6=A4=92=E7=A0=94?=
+ =?UTF-8?q?=E7=A3=A8=E5=99=A8?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/cookware/peppermill.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular/Neu_Food/code/cookware/peppermill.dm b/modular/Neu_Food/code/cookware/peppermill.dm
+index 458df82bd7..13a0340094 100644
+--- a/modular/Neu_Food/code/cookware/peppermill.dm
++++ b/modular/Neu_Food/code/cookware/peppermill.dm
+@@ -1,6 +1,6 @@
+ /obj/item/reagent_containers/peppermill // new with some animated art
+-	name = "pepper mill"
+-	desc = "Let the lord have his snack; Twist the head until it cracks."
++	name = "胡椒研磨器"
++	desc = "让领主享用他的点心吧；转动研磨器顶部，直到它噼啪作响。"
+ 	icon = 'modular/Neu_Food/icons/cookware/peppermill.dmi'
+ 	icon_state = "peppermill"
+ 	layer = CLOSED_BLASTDOOR_LAYER // obj layer + a little, small obj layering above convenient
+-- 
+2.53.0
+
