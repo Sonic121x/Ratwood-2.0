@@ -1,0 +1,41 @@
+From 5d541dd5fdeb6726f5ae84466d38a0b5aab76a0a Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 20:35:15 +0800
+Subject: [PATCH] =?UTF-8?q?=E5=88=A0=E9=99=A4a?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/atoms.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/game/atoms.dm b/code/game/atoms.dm
+index cb0eda2a78..1540b5bab2 100644
+--- a/code/game/atoms.dm
++++ b/code/game/atoms.dm
+@@ -374,17 +374,17 @@
+  * COMSIG_ATOM_GET_EXAMINE_NAME signal
+  */
+ /atom/proc/get_examine_name(mob/user)
+-	. = "\a [src]"
+-	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
++	. = "[src]"
++	var/list/override = list(gender == PLURAL ? "一些" : "", "", "[name]")
+ 	if(article)
+-		. = "[article] [src]"
++		. = "[article][src]"
+ 		override[EXAMINE_POSITION_ARTICLE] = article
+ 	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
+ 		. = override.Join("")
+ 
+ ///Generate the full examine string of this atom (including icon for goonchat)
+ /atom/proc/get_examine_string(mob/user, thats = FALSE)
+-	return "[thats? "That's ":""][get_examine_name(user)]"
++	return "[thats? "那是":""][get_examine_name(user)]"
+ 
+ /atom/proc/get_inspect_button()
+ 	return ""
+-- 
+2.53.0
+
