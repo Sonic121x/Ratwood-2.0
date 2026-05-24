@@ -1,0 +1,30 @@
+From 63d13799b3649731170c6d848cb7d9590074a7ec Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 20:57:04 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B4=97=E6=BE=A1=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/water.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/water.dm b/code/game/turfs/open/water.dm
+index 13a80b625a..0f90a79dbb 100644
+--- a/code/game/turfs/open/water.dm
++++ b/code/game/turfs/open/water.dm
+@@ -404,8 +404,8 @@
+ 
+ 
+ /turf/open/water/bath
+-	name = "water"
+-	desc = "Soothing water, with soapy bubbles on the surface."
++	name = "水"
++	desc = "令人舒缓的水，表面漂浮着肥皂泡。"
+ 	icon = 'icons/turf/roguefloor.dmi'
+ 	icon_state = "bathtileW"
+ 	water_level = 2
+-- 
+2.53.0
+
