@@ -1595,8 +1595,8 @@
 
 /turf/open/floor/rogue/concrete
 	icon_state = "concretefloor1"
-	name = "slab flooring"
-	desc = "Solid stone slabs have been carefully carved and laid to rest with nary a hair's breadth between them."
+	name = "石板地板"
+	desc = "坚固的石板经过精心雕刻铺设，彼此之间几乎没有一丝缝隙。"
 	landsound = 'sound/foley/jumpland/stoneland.wav'
 	footstep = FOOTSTEP_STONE
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
