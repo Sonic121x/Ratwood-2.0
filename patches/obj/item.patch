@@ -1,21 +1,19 @@
-From 6440fedc8f94496b30d124e7e265028345fed4ac Mon Sep 17 00:00:00 2001
+From 28b1f818a1c0bedee82784eac94b2f3ef78aeb4b Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Sun, 24 May 2026 16:03:51 +0800
-Subject: [PATCH] =?UTF-8?q?=E6=96=B0=E5=A2=9E=E7=89=A9=E5=93=81=E8=A2=AB?=
- =?UTF-8?q?=E7=87=83=E7=83=A7=E6=88=90=E7=81=B0=E7=83=AC=E6=97=B6=EF=BC=8C?=
- =?UTF-8?q?=E5=8E=9F=E6=9C=AC=E7=9A=84=E7=89=A9=E5=93=81=E6=8F=90=E7=A4=BA?=
- =?UTF-8?q?=E6=96=87=E6=9C=AC?=
+Date: Sun, 24 May 2026 16:53:58 +0800
+Subject: [PATCH] =?UTF-8?q?=E8=A1=A5=E5=85=85=E9=81=97=E6=BC=8F=E7=9A=84?=
+ =?UTF-8?q?=E8=A1=A3=E7=89=A9=E7=A0=B4=E6=8D=9F=E6=A3=80=E8=A7=86?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- code/game/objects/examine.dm | 28 ++++++++++++++--------------
+ code/game/objects/examine.dm | 30 +++++++++++++++---------------
  code/game/objects/items.dm   |  2 +-
- 2 files changed, 15 insertions(+), 15 deletions(-)
+ 2 files changed, 16 insertions(+), 16 deletions(-)
 
 diff --git a/code/game/objects/examine.dm b/code/game/objects/examine.dm
-index 8dce678bf3..1e4f32d215 100644
+index 8dce678bf3..76720165dc 100644
 --- a/code/game/objects/examine.dm
 +++ b/code/game/objects/examine.dm
 @@ -12,23 +12,23 @@
@@ -47,12 +45,12 @@ index 8dce678bf3..1e4f32d215 100644
  
  	for(var/datum/examine_effect/E in examine_effects)
  		E.trigger(user)
-@@ -43,16 +43,16 @@
+@@ -43,21 +43,21 @@
  	var/result
  
  	if(obj_broken)
 -		return span_warning("It's broken.")
-+		return span_warning("它坏了。")
++		return span_warning("它完全损坏了。")
  	switch(int_percent)
  		if(1 to 15)
 -			result = span_warning("It's nearly broken.")
@@ -69,6 +67,12 @@ index 8dce678bf3..1e4f32d215 100644
  	return result
  
  /obj/item/clothing/integrity_check(elaborate = FALSE)
+ 	if(obj_broken)
+-		return span_warning("It's broken.")
++		return span_warning("它完全损坏了。")
+ 
+ 	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
+ 	var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
 @@ -67,12 +67,12 @@
  	if(percent < 100)
  		switch(percent)
