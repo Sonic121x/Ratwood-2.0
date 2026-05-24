@@ -438,8 +438,8 @@
 	roguesmooth(adjacencies)
 
 /turf/open/floor/rogue/grassyel
-	name = "yellow grass"
-	desc = "Grass, blessed by Astrata's light."
+	name = "黄草地"
+	desc = "受到 Astrata 之光祝福的草地。"
 	icon_state = "grass_yel"
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_GRASS
