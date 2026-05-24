@@ -1382,7 +1382,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		// Override for children that want more than 1 ash per item (Bundle as pseudo-stack)
 		for(var/i in 1 to amount)
 			var/obj/item/ash/A = new ash_type(T)
-			A.desc += "\nLooks like this used to be \an [name] some time ago."
+			A.desc += "\n这看起来曾经是[name]。"
 		..()
 
 /obj/item/acid_melt()
