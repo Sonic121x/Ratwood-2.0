@@ -367,8 +367,8 @@
 	icon_state = "bushshrub[pick(1,2)]"
 
 /obj/structure/flora/roguetree/palm
-	name = "palm tree"
-	desc = "Scant, precious shade."
+	name = "棕榈树"
+	desc = "稀少而宝贵的荫凉。"
 	icon = 'modular_deserttown/icons/bigpalm.dmi'
 	icon_state = "palm1"
 	stump_type = /obj/structure/flora/roguetree/stump/palm
