@@ -57,8 +57,8 @@
 	else ..()
 
 /obj/structure/well/fountain
-	name = "water fountain"
-	desc = "A slightly more civilized alternative to drinking straight from a river."
+	name = "饮水喷泉"
+	desc = "一个比直接从河里喝水稍微文明一点的选择。"
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "fountain"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -74,7 +74,7 @@
 			var/mob/living/carbon/C = user
 			if(C.is_mouth_covered())
 				return
-		user.visible_message(span_info("[user] starts to drink from [src]."))
+		user.visible_message(span_info("[user]开始从[src]喝水。"))
 		drink_act(user, L)
 		return
 	..()
