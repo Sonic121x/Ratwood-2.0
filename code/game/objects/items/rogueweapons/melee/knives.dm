@@ -216,8 +216,8 @@
 
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
-	name = "cleaver"
-	desc = "Chop, chop, chop!"
+	name = "切肉刀"
+	desc = "剁！剁！剁！"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleaver"
 	icon = 'icons/roguetown/weapons/daggers32.dmi'
