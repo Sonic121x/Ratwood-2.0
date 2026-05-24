@@ -72,8 +72,8 @@
 	slowdown = 0
 
 /turf/open/floor/rogue/twig
-	name = "twig flooring"
-	desc = "Bundles of twigs have been laid flat against the ground. They creak and crackle with the slightest weight."
+	name = "树枝地板"
+	desc = "一捆捆树枝被平铺在地面上，稍一承重便吱嘎作响、噼啪开裂。"
 	icon_state = "twig"
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_SOFT_BAREFOOT
