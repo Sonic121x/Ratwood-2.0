@@ -253,7 +253,7 @@
  */
 
 /obj/structure/table/wood
-	name = "wooden table"
+	name = "木桌"
 	desc = ""
 	icon = 'icons/roguetown/misc/tables.dmi'
 	icon_state = "tablewood"
