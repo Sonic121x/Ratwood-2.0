@@ -1,8 +1,8 @@
 //separate dm since hydro is getting bloated already
 
 /obj/structure/glowshroom
-	name = "kneestingers"
-	desc = "Deceptively-delicate stalks sprout from the ground in luminous-green repose. Some scholars claim they're not really a fungus, even if the Dendorites insist otherwise. Either way they hurt like hell."
+	name = "膝刺菇"
+	desc = "看似娇弱的茎从地面长出，泛着幽幽绿光。有些学者声称它们并非真菌，尽管 Dendor 信徒坚持认为它们是。无论如何，碰到它会让人疼得要命。"
 	anchored = TRUE
 	opacity = 0
 	density = FALSE
