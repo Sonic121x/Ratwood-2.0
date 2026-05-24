@@ -21,8 +21,8 @@
 
 /turf/open/floor/rogue/ruinedwood
 	icon_state = "wooden_floor"
-	name = "wooden floorboards"
-	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+	name = "木地板"
+	desc = "互相咬合的木地板上布满了万千脚步留下的划痕。"
 	footstep = FOOTSTEP_WOOD
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_WOOD_CLAW
