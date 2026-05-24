@@ -1,0 +1,28 @@
+From f37ccd12eb3bad14d72763ebd4679a1f8297a9d1 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 23:10:08 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9C=A8=E6=A1=8C?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/tables_racks.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/tables_racks.dm b/code/game/objects/structures/tables_racks.dm
+index 274daf5b76..744de02900 100644
+--- a/code/game/objects/structures/tables_racks.dm
++++ b/code/game/objects/structures/tables_racks.dm
+@@ -288,7 +288,7 @@
+  */
+ 
+ /obj/structure/table/wood
+-	name = "wooden table"
++	name = "木桌"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/tables.dmi'
+ 	icon_state = "tablewood"
+-- 
+2.53.0
+

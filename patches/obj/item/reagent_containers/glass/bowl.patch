@@ -1,0 +1,28 @@
+From 49c7ddcb33e75f9ccda572b62d35a14dfce23cf7 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 00:07:05 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9C=A8=E7=A2=97?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/cookware/bowl.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular/Neu_Food/code/cookware/bowl.dm b/modular/Neu_Food/code/cookware/bowl.dm
+index 3702928d8b..e99524798e 100644
+--- a/modular/Neu_Food/code/cookware/bowl.dm
++++ b/modular/Neu_Food/code/cookware/bowl.dm
+@@ -1,6 +1,6 @@
+ /obj/item/reagent_containers/glass/bowl
+-	name = "wooden bowl"
+-	desc = "It is the empty space that makes the bowl useful."
++	name = "木碗"
++	desc = "埏埴以为器，当其无，有器之用"
+ 	icon = 'modular/Neu_Food/icons/cookware/bowl.dmi'
+ 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+ 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+-- 
+2.53.0
+

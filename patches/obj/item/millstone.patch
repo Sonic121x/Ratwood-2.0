@@ -1,0 +1,29 @@
+From 0055b725e57d7dca5077a127e98e0d519cd71e20 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 23:03:22 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=A3=A8=E7=9F=B3?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguejobs/cook/tools/grinding.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguejobs/cook/tools/grinding.dm b/code/modules/roguetown/roguejobs/cook/tools/grinding.dm
+index 7aafcfedd2..d4c217d7d3 100644
+--- a/code/modules/roguetown/roguejobs/cook/tools/grinding.dm
++++ b/code/modules/roguetown/roguejobs/cook/tools/grinding.dm
+@@ -1,7 +1,7 @@
+ #define BASE_GRIND_TIME 1 SECONDS
+ /obj/item/millstone // Previous structure path means it cannot be crafted on tables
+-	name = "millstone"
+-	desc = "A millstone used to grind grain into flour."
++	name = "磨石"
++	desc = "用来把谷物磨成面粉的磨石。"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "millstone"
+ 	density = FALSE
+-- 
+2.53.0
+

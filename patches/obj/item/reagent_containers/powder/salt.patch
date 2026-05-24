@@ -1,0 +1,28 @@
+From 971eef43ee32b8f967a5e19de7c3a1b91e4e83bd Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 23:20:24 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=9B=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/NeuFood.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modular/Neu_Food/code/NeuFood.dm b/modular/Neu_Food/code/NeuFood.dm
+index f632b6d5c6..690f508d3a 100644
+--- a/modular/Neu_Food/code/NeuFood.dm
++++ b/modular/Neu_Food/code/NeuFood.dm
+@@ -161,7 +161,7 @@
+ 
+ // -------------- SALT -----------------
+ /obj/item/reagent_containers/powder/salt
+-	name = "salt"
++	name = "盐"
+ 	desc = ""
+ 	gender = PLURAL
+ 	icon_state = "salt"
+-- 
+2.53.0
+
