@@ -407,8 +407,8 @@
 	icon_state = "reedbush_[rand(1, 4)]"
 
 /obj/structure/flora/roguegrass/water
-	name = "grass"
-	desc = "This grass is sodden and muddy."
+	name = "草"
+	desc = "这片草地湿漉漉的，满是泥泞。"
 	icon_state = "swampgrass"
 	max_integrity = 5
 
