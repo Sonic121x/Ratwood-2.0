@@ -1,0 +1,30 @@
+From 829183caea20b13ef235602dbc84db3c000fd0cd Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 21:20:27 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B2=99=E7=A0=96=E5=A2=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertwalls.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_deserttown/desertwalls.dm b/modular_deserttown/desertwalls.dm
+index afcf837539..de8302a338 100644
+--- a/modular_deserttown/desertwalls.dm
++++ b/modular_deserttown/desertwalls.dm
+@@ -26,8 +26,8 @@
+ 	craftdiff = 2
+ 
+ /turf/closed/wall/mineral/rogue/sandbrick
+-	name = "sandbrick wall"
+-	desc = "A wall of smooth, unyielding bricks."
++	name = "沙砖墙"
++	desc = "一堵由光滑而坚硬的砖块砌成的墙。"
+ 	icon = 'modular_deserttown/icons/sandbrick_wall.dmi'
+ 	icon_state = "sandbrick"
+ 	smooth = SMOOTH_MORE
+-- 
+2.53.0
+
