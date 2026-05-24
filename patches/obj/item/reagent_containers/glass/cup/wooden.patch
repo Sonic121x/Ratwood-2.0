@@ -1,0 +1,31 @@
+From f3221635a0b989b50d8437914fca325d998e30c2 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 22:30:04 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9C=A8=E5=A4=B4=E6=9D=AF?=
+ =?UTF-8?q?=E5=AD=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/cookware/cup.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular/Neu_Food/code/cookware/cup.dm b/modular/Neu_Food/code/cookware/cup.dm
+index cc93ab6fb9..0978d03510 100644
+--- a/modular/Neu_Food/code/cookware/cup.dm
++++ b/modular/Neu_Food/code/cookware/cup.dm
+@@ -145,8 +145,8 @@
+ 
+ 
+ /obj/item/reagent_containers/glass/cup/wooden
+-	name = "wooden cup"
+-	desc = "This cup whispers tales of drunken battles and feasts."
++	name = "木杯"
++	desc = "这只杯子低语着酒后斗殴与盛宴的传说。"
+ 	resistance_flags = FLAMMABLE
+ 	icon_state = "wooden"
+ 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+-- 
+2.53.0
+
