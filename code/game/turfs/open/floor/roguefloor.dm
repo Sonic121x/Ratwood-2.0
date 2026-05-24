@@ -997,8 +997,8 @@
 
 /turf/open/floor/rogue/blocks/stonered
 	icon_state = "stoneredlarge"
-	name = "large red tiles"
-	desc = "Large red earthen tiles carefully set in a pleasantly symmetrical pattern."
+	name = "大块红地砖"
+	desc = "精心铺设的大块红色陶土砖，构成令人愉悦的对称图案。"
 /turf/open/floor/rogue/blocks/stonered/tiny
 	icon_state = "stoneredtiny"
 	name = "square red tiles"
