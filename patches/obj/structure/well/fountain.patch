@@ -1,0 +1,39 @@
+From 0dfb2278a46e203caa6bec78c097b1001b0231a1 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 20:55:00 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=96=B7=E6=B3=89?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/well.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/objects/structures/well.dm b/code/game/objects/structures/well.dm
+index 992e1bbd64..e2ee590b03 100644
+--- a/code/game/objects/structures/well.dm
++++ b/code/game/objects/structures/well.dm
+@@ -57,8 +57,8 @@
+ 	else ..()
+ 
+ /obj/structure/well/fountain
+-	name = "water fountain"
+-	desc = "A slightly more civilized alternative to drinking straight from a river."
++	name = "饮水喷泉"
++	desc = "一个比直接从河里喝水稍微文明一点的选择。"
+ 	icon = 'icons/roguetown/misc/64x64.dmi'
+ 	icon_state = "fountain"
+ 	layer = ABOVE_ALL_MOB_LAYER
+@@ -74,7 +74,7 @@
+ 			var/mob/living/carbon/C = user
+ 			if(C.is_mouth_covered())
+ 				return
+-		user.visible_message(span_info("[user] starts to drink from [src]."))
++		user.visible_message(span_info("[user]开始从[src]喝水。"))
+ 		drink_act(user, L)
+ 		return
+ 	..()
+-- 
+2.53.0
+
