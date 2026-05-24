@@ -1,0 +1,30 @@
+From 6663441fceb44955ce73823ddd38fb4d04f6bb94 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 16:07:45 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B0=B4=E8=8D=89?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguetown/rogueflora.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/roguetown/rogueflora.dm b/code/game/objects/structures/roguetown/rogueflora.dm
+index 0d6940b2e0..730d0121a8 100644
+--- a/code/game/objects/structures/roguetown/rogueflora.dm
++++ b/code/game/objects/structures/roguetown/rogueflora.dm
+@@ -430,8 +430,8 @@
+ 	icon_state = "sparsegrass_[rand(1, 3)]"
+ 
+ /obj/structure/flora/roguegrass/water
+-	name = "grass"
+-	desc = "This grass is sodden and muddy."
++	name = "草"
++	desc = "这片草地湿漉漉的，满是泥泞。"
+ 	icon_state = "swampgrass"
+ 	max_integrity = 5
+ 
+-- 
+2.53.0
+
