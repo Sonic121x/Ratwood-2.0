@@ -264,7 +264,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/railing/border
-	name = "border"
+	name = "护栏"
 	desc = ""
 	icon_state = "border"
 	pass_crawl = FALSE
