@@ -1,0 +1,29 @@
+From b29cfa315b0e1f210afa9a59aea2f130e43d62d1 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 21:03:08 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=A3=8B=E7=9B=98=E5=9C=B0?=
+ =?UTF-8?q?=E6=9D=BF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..89990239dd 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -1517,7 +1517,7 @@
+ 
+ /turf/open/floor/rogue/tile
+ 	icon_state = "chess"
+-	desc = "Feet march across a grid of plots and schemes."
++	desc = "脚步踏过布满阴谋与诡计的棋盘格地板。"
+ 	landsound = 'sound/foley/jumpland/tileland.wav'
+ 	footstep = FOOTSTEP_FLOOR
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+-- 
+2.53.0
+

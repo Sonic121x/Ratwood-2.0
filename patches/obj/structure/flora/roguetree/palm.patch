@@ -1,0 +1,30 @@
+From b04466c565b33b7efcad4eb9819ae4a761771d04 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 21:05:59 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=A3=95=E6=A6=88=E6=A0=91?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertstuff.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_deserttown/desertstuff.dm b/modular_deserttown/desertstuff.dm
+index e834e04c84..d5e4e7aa65 100644
+--- a/modular_deserttown/desertstuff.dm
++++ b/modular_deserttown/desertstuff.dm
+@@ -367,8 +367,8 @@
+ 	icon_state = "bushshrub[pick(1,2)]"
+ 
+ /obj/structure/flora/roguetree/palm
+-	name = "palm tree"
+-	desc = "Scant, precious shade."
++	name = "棕榈树"
++	desc = "稀少而宝贵的荫凉。"
+ 	icon = 'modular_deserttown/icons/bigpalm.dmi'
+ 	icon_state = "palm1"
+ 	stump_type = /obj/structure/flora/roguetree/stump/palm
+-- 
+2.53.0
+
