@@ -1,0 +1,28 @@
+From eb3c008b6a567305be906b85c4925315d9ac29ec Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 16:49:02 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=8A=A4=E6=A0=8F?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/fluff.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/fluff.dm b/code/game/objects/structures/fluff.dm
+index 9c082a99c0..a7b64b4a69 100644
+--- a/code/game/objects/structures/fluff.dm
++++ b/code/game/objects/structures/fluff.dm
+@@ -264,7 +264,7 @@
+ 	layer = ABOVE_MOB_LAYER
+ 
+ /obj/structure/fluff/railing/border
+-	name = "border"
++	name = "护栏"
+ 	desc = ""
+ 	icon_state = "border"
+ 	pass_crawl = FALSE
+-- 
+2.53.0
+
