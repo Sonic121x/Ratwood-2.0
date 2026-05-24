@@ -314,8 +314,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	return family_guy.real_name
 
 /obj/effect/proc_holder/spell/self/grant_title
-	name = "册封头衔"
-	desc = "赐予某人一个彰显荣耀的头衔……抑或是耻辱头衔。"
+	name = "Grant Title"
+	desc = "Grant someone a title of honor... Or shame."
 	overlay_state = "recruit_titlegrant"
 	antimagic_allowed = TRUE
 	recharge_time = 100
@@ -326,7 +326,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /obj/effect/proc_holder/spell/self/grant_title/cast(list/targets, mob/user = usr)
 	. = ..()
-	var/granted_title = input(user, "你想赐予什么样的头衔？", "[name]") as null|text
+	var/granted_title = input(user, "What title do you wish to grant?", "[name]") as null|text
 	granted_title = reject_bad_text(granted_title, title_length)
 	if(!granted_title)
 		return
@@ -337,17 +337,17 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			continue
 		recruitment[village_idiot.name] = village_idiot
 	if(!length(recruitment))
-		to_chat(user, span_warning("范围内没有可以接受册封的目标。"))
+		to_chat(user, span_warning("There are no potential honoraries in range."))
 		return
-	var/inputty = input(user, "选择一位接受册封的人！", "[name]") as anything in recruitment
+	var/inputty = input(user, "Select an honorary!", "[name]") as anything in recruitment
 	if(inputty)
 		var/mob/living/carbon/human/recruit = recruitment[inputty]
 		if(!QDELETED(recruit) && (recruit in get_hearers_in_view(title_range, user)))
 			INVOKE_ASYNC(src, PROC_REF(village_idiotify), recruit, user, granted_title)
 		else
-			to_chat(user, span_warning("册封失败！"))
+			to_chat(user, span_warning("Honorific failed!"))
 	else
-		to_chat(user, span_warning("册封已取消。"))
+		to_chat(user, span_warning("Honorific cancelled."))
 
 /obj/effect/proc_holder/spell/self/grant_title/proc/can_title(mob/living/carbon/human/recruit)
 	//wtf
@@ -365,10 +365,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	if(QDELETED(recruit) || QDELETED(recruiter) || !granted_title)
 		return FALSE
 	if(GLOB.lord_titles[recruit.real_name])
-		recruiter.say("我在此剥夺你, [uppertext(recruit.name)] 那 [uppertext(GLOB.lord_titles[recruit.real_name])]的头衔!")
+		recruiter.say("I HEREBY STRIP YOU, [uppertext(recruit.name)], OF THE TITLE OF [uppertext(GLOB.lord_titles[recruit.real_name])]!")
 		GLOB.lord_titles -= recruit.real_name
 		return FALSE
-	recruiter.say("我在此赐予你, [uppertext(recruit.name)] , [uppertext(granted_title)]的头衔!")
+	recruiter.say("I HEREBY GRANT YOU, [uppertext(recruit.name)], THE TITLE OF [uppertext(granted_title)]!")
 	REMOVE_TRAIT(recruit, TRAIT_OUTLANDER, ADVENTURER_TRAIT)
 	REMOVE_TRAIT(recruit, TRAIT_OUTLANDER, TRAIT_GENERIC)
 	GLOB.lord_titles[recruit.real_name] = granted_title
