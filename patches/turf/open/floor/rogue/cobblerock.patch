@@ -1,0 +1,31 @@
+From 04bd3ac9e507f181b33b20a818dfe15c1deed931 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 15:46:17 +0800
+Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
+ =?UTF-8?q?=E8=AF=91=E7=A2=8E=E7=9F=B3=E5=B0=8F=E8=B7=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..4ba588582e 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -1421,8 +1421,8 @@
+ 
+ /turf/open/floor/rogue/cobblerock
+ 	icon_state = "cobblerock"
+-	name = "cobbled rock path"
+-	desc = "A crude path of lumpy rocks that allows feet and cart wheels alike to escape the treacherous mud."
++	name = "碎石小路"
++	desc = "一条由坑洼不平的石头铺成的简陋小路，让行人和车轮都能逃脱泥泞的困扰。"
+ 	footstep = FOOTSTEP_STONE
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+ 	clawfootstep = FOOTSTEP_HARD_CLAW
+-- 
+2.53.0
+
