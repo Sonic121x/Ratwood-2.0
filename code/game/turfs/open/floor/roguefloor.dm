@@ -1517,7 +1517,7 @@
 
 /turf/open/floor/rogue/tile
 	icon_state = "chess"
-	desc = "Feet march across a grid of plots and schemes."
+	desc = "脚步踏过布满阴谋与诡计的棋盘格地板。"
 	landsound = 'sound/foley/jumpland/tileland.wav'
 	footstep = FOOTSTEP_FLOOR
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
