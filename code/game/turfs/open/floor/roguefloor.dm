@@ -1421,8 +1421,8 @@
 
 /turf/open/floor/rogue/cobblerock
 	icon_state = "cobblerock"
-	name = "cobbled rock path"
-	desc = "A crude path of lumpy rocks that allows feet and cart wheels alike to escape the treacherous mud."
+	name = "碎石小路"
+	desc = "一条由坑洼不平的石头铺成的简陋小路，让行人和车轮都能逃脱泥泞的困扰。"
 	footstep = FOOTSTEP_STONE
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
