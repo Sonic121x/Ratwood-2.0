@@ -1,14 +1,17 @@
-From 695eace03ebd608b2c2659719bad2bb27e7c1458 Mon Sep 17 00:00:00 2001
+From 09fe86b8bf2a37d5b59c73f8f78267aea71c2410 Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Mon, 25 May 2026 00:42:16 +0800
-Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9C=A8=E6=A1=B6?=
+Date: Mon, 25 May 2026 01:00:18 +0800
+Subject: [PATCH] =?UTF-8?q?=E6=96=B0=E5=A2=9E=E5=88=B6=E4=BD=9C=E5=92=B8?=
+ =?UTF-8?q?=E7=89=9B=E5=A5=B6=EF=BC=8C=E9=BB=84=E6=B2=B9=E4=BB=A5=E5=8F=8A?=
+ =?UTF-8?q?=E5=A5=B6=E9=85=AA=E7=9A=84=E6=96=87=E6=9C=AC?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- code/modules/reagents/reagent_containers/glass.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ code/modules/reagents/reagent_containers/glass.dm |  4 ++--
+ modular/Neu_Food/code/others/dairy.dm             | 10 +++++-----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/code/modules/reagents/reagent_containers/glass.dm b/code/modules/reagents/reagent_containers/glass.dm
 index 1d12b77f81..159957a023 100644
@@ -32,6 +35,43 @@ index 1d12b77f81..159957a023 100644
  			reagents.reaction(user, TOUCH)
  			reagents.clear_reagents()
  		reagents.flags = NONE
+diff --git a/modular/Neu_Food/code/others/dairy.dm b/modular/Neu_Food/code/others/dairy.dm
+index 79ee258f23..2fc0098f94 100644
+--- a/modular/Neu_Food/code/others/dairy.dm
++++ b/modular/Neu_Food/code/others/dairy.dm
+@@ -14,9 +14,9 @@
+ 	update_cooktime(user)
+ 	if(istype(I, /obj/item/reagent_containers/powder/salt))
+ 		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 15))
+-			to_chat(user, span_warning("Not enough milk."))
++			to_chat(user, span_warning("牛奶不足。"))
+ 			return
+-		to_chat(user, span_warning("Adding salt to the milk."))
++		to_chat(user, span_warning("往牛奶里加盐。"))
+ 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
+ 		if(do_after(user,short_cooktime, target = src))
+ 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+@@ -29,9 +29,9 @@
+ 	update_cooktime(user)
+ 	if(istype(I, /obj/item/kitchen/spoon))
+ 		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 15))
+-			to_chat(user, span_warning("Not enough salted milk."))
++			to_chat(user, span_warning("咸牛奶不足。"))
+ 			return
+-		user.visible_message(span_info("[user] churns butter..."))
++		user.visible_message(span_info("[user]搅拌起黄油..."))
+ 		playsound(get_turf(user), 'modular/Neu_Food/sound/churn.ogg', 100, TRUE, -1)
+ 		if(do_after(user,long_cooktime, target = src))
+ 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+@@ -106,7 +106,7 @@
+ 	update_cooktime(user)
+ 	if(istype(I, /obj/item/natural/cloth))
+ 		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 5))
+-			user.visible_message(span_info("[user] strains fresh cheese..."))
++			user.visible_message(span_info("[user]滤出新鲜的奶酪..."))
+ 			playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
+ 			if(do_after(user,long_cooktime, target = src))
+ 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 -- 
 2.53.0
 
