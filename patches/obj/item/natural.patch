@@ -1,0 +1,49 @@
+From 08a91e35f9f8e6867e231e4df293196449b69567 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 06:21:59 +0800
+Subject: [PATCH] =?UTF-8?q?=E6=8B=86=E5=88=86=20natural.dm=20=E7=9A=84?=
+ =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=A1=A5=E4=B8=81=EF=BC=8C=E6=8C=89=E8=B7=AF?=
+ =?UTF-8?q?=E5=BE=84=E5=8C=BA=E5=88=86?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/natural.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/natural.dm b/code/game/objects/items/rogueitems/natural.dm
+index b3615034fb..0cdacfdfaf 100644
+--- a/code/game/objects/items/rogueitems/natural.dm
++++ b/code/game/objects/items/rogueitems/natural.dm
+@@ -16,23 +16,23 @@
+ /obj/item/natural/attackby(obj/item/W, mob/living/user)
+ 	if(istype(W, /obj/item/natural/bundle))
+ 		if(item_flags & IN_STORAGE)
+-			to_chat(user, span_warning("It's hard to find [W] in my bag."))
++			to_chat(user, span_warning("在我的包里寻找[W]太困难了。"))
+ 			return
+ 		var/obj/item/natural/bundle/B = W
+ 		if(istype(src, B.stacktype))
+ 			if(B.amount < B.maxamount)
+ 				B.amount++
+ 				B.update_bundle()
+-				user.visible_message("[user] adds [src] to [W].")
++				user.visible_message("[user]将[src]添加进[W]中。")
+ 				qdel(src)
+ 			else
+-				to_chat(user, "There's not enough space in [W].")
++				to_chat(user, "[W]里已经没有空间了。")
+ 			return
+ 	else if(istype(W, /obj/item/natural/))
+ 		var/obj/item/natural/B = W
+ 		if(B.bundletype == src.bundletype && src.bundletype != null)
+ 			var/obj/item/natural/bundle/N = new bundletype(src.loc)
+-			to_chat(user, "You tie the [N.stackname] into a bundle.")
++			to_chat(user, "你把[N.stackname]缠成捆。")
+ 			qdel(B)
+ 			qdel(src)
+ 			user.put_in_hands(N)
+-- 
+2.53.0
+
