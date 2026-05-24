@@ -1,0 +1,31 @@
+From 2e5750a41f37baf7156406c2c41f2fb57c27a4aa Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 20:58:45 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=A0=91=E6=9E=9D=E5=9C=B0?=
+ =?UTF-8?q?=E6=9D=BF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..4110014374 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -72,8 +72,8 @@
+ 	slowdown = 0
+ 
+ /turf/open/floor/rogue/twig
+-	name = "twig flooring"
+-	desc = "Bundles of twigs have been laid flat against the ground. They creak and crackle with the slightest weight."
++	name = "树枝地板"
++	desc = "一捆捆树枝被平铺在地面上，稍一承重便吱嘎作响、噼啪开裂。"
+ 	icon_state = "twig"
+ 	footstep = FOOTSTEP_GRASS
+ 	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+-- 
+2.53.0
+
