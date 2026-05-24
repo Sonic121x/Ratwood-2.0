@@ -1,0 +1,30 @@
+From 1371045150676bef66c2c66fd6580db983983f63 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 21:00:56 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=9F=B3=E6=9D=BF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..d6eac151e8 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -1595,8 +1595,8 @@
+ 
+ /turf/open/floor/rogue/concrete
+ 	icon_state = "concretefloor1"
+-	name = "slab flooring"
+-	desc = "Solid stone slabs have been carefully carved and laid to rest with nary a hair's breadth between them."
++	name = "石板地板"
++	desc = "坚固的石板经过精心雕刻铺设，彼此之间几乎没有一丝缝隙。"
+ 	landsound = 'sound/foley/jumpland/stoneland.wav'
+ 	footstep = FOOTSTEP_STONE
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+-- 
+2.53.0
+
