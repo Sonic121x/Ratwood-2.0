@@ -1,0 +1,29 @@
+From 38a5a0235547733aeba5bf28febd3467dbefb2f8 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 23:29:56 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9F=93=E8=A1=80=E8=AF=8D?=
+ =?UTF-8?q?=E7=BC=80?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/components/decals/blood.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/datums/components/decals/blood.dm b/code/datums/components/decals/blood.dm
+index f3f852d81f..8453bd098b 100644
+--- a/code/datums/components/decals/blood.dm
++++ b/code/datums/components/decals/blood.dm
+@@ -40,6 +40,6 @@
+ 
+ /datum/component/decal/blood/proc/get_examine_name(datum/source, mob/user, list/override)
+ 	var/atom/A = parent
+-	override[EXAMINE_POSITION_ARTICLE] = A.gender == PLURAL? "some" : "a"
+-	override[EXAMINE_POSITION_BEFORE] = " <span class='bloody'>bloody</span> "
++	override[EXAMINE_POSITION_ARTICLE] = A.gender == PLURAL? "一些" : ""
++	override[EXAMINE_POSITION_BEFORE] = " <span class='bloody'>染血的</span> "
+ 	return COMPONENT_EXNAME_CHANGED
+-- 
+2.53.0
+
