@@ -16,23 +16,23 @@
 /obj/item/natural/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/natural/bundle))
 		if(item_flags & IN_STORAGE)
-			to_chat(user, span_warning("It's hard to find [W] in my bag."))
+			to_chat(user, span_warning("在我的包里寻找[W]太困难了。"))
 			return
 		var/obj/item/natural/bundle/B = W
 		if(istype(src, B.stacktype))
 			if(B.amount < B.maxamount)
 				B.amount++
 				B.update_bundle()
-				user.visible_message("[user] adds [src] to [W].")
+				user.visible_message("[user]将[src]添加进[W]中。")
 				qdel(src)
 			else
-				to_chat(user, "There's not enough space in [W].")
+				to_chat(user, "[W]里已经没有空间了。")
 			return
 	else if(istype(W, /obj/item/natural/))
 		var/obj/item/natural/B = W
 		if(B.bundletype == src.bundletype && src.bundletype != null)
 			var/obj/item/natural/bundle/N = new bundletype(src.loc)
-			to_chat(user, "You tie the [N.stackname] into a bundle.")
+			to_chat(user, "你把[N.stackname]缠成捆。")
 			qdel(B)
 			qdel(src)
 			user.put_in_hands(N)
