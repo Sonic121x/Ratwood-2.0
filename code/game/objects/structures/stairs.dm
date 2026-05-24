@@ -6,7 +6,7 @@
 // multiple stair objects can be chained together; the Z level transition will happen on the final stair object in the chain
 
 /obj/structure/stairs
-	name = "stairs"
+	name = "楼梯"
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	anchored = TRUE
