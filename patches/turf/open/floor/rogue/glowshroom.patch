@@ -1,0 +1,30 @@
+From e3def4a2cfc27f5f447a5a0a2c5c8478c6848e80 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 15:53:44 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=86=9D=E5=88=BA=E8=8F=87?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/effects/glowshroom.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/effects/glowshroom.dm b/code/game/objects/effects/glowshroom.dm
+index 7793154671..56bf4326d1 100644
+--- a/code/game/objects/effects/glowshroom.dm
++++ b/code/game/objects/effects/glowshroom.dm
+@@ -1,8 +1,8 @@
+ //separate dm since hydro is getting bloated already
+ 
+ /obj/structure/glowshroom
+-	name = "kneestingers"
+-	desc = "Deceptively-delicate stalks sprout from the ground in luminous-green repose. Some scholars claim they're not really a fungus, even if the Dendorites insist otherwise. Either way they hurt like hell."
++	name = "膝刺菇"
++	desc = "看似娇弱的茎从地面长出，泛着幽幽绿光。有些学者声称它们并非真菌，尽管 Dendor 信徒坚持认为它们是。无论如何，碰到它会让人疼得要命。"
+ 	anchored = TRUE
+ 	opacity = 0
+ 	density = FALSE
+-- 
+2.53.0
+
