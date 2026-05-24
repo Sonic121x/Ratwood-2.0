@@ -1,0 +1,37 @@
+From 695eace03ebd608b2c2659719bad2bb27e7c1458 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 00:42:16 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9C=A8=E6=A1=B6?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/reagents/reagent_containers/glass.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/reagents/reagent_containers/glass.dm b/code/modules/reagents/reagent_containers/glass.dm
+index 1d12b77f81..159957a023 100644
+--- a/code/modules/reagents/reagent_containers/glass.dm
++++ b/code/modules/reagents/reagent_containers/glass.dm
+@@ -308,7 +308,7 @@
+ /obj/item/reagent_containers/glass/proc/onfill(obj/target, mob/user, silent = FALSE)
+ 
+ /obj/item/reagent_containers/glass/bucket
+-	name = "bucket"
++	name = "木桶"
+ 	desc = ""
+ 	icon = 'icons/roguetown/items/misc.dmi'
+ 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+@@ -375,7 +375,7 @@
+ 	..()
+ 	if (slot == SLOT_HEAD)
+ 		if(reagents.total_volume)
+-			to_chat(user, span_danger("[src]'s contents spill all over you!"))
++			to_chat(user, span_danger("[src]里的东西全洒在你身上了！"))
+ 			reagents.reaction(user, TOUCH)
+ 			reagents.clear_reagents()
+ 		reagents.flags = NONE
+-- 
+2.53.0
+
