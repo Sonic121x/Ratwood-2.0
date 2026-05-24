@@ -1,0 +1,30 @@
+From 32a2390115cc7dcd4d7258abe2bb118b78db8986 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 16:34:43 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=8A=A6=E8=8B=87?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguetown/rogueflora.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/roguetown/rogueflora.dm b/code/game/objects/structures/roguetown/rogueflora.dm
+index 0d6940b2e0..fd81a6987c 100644
+--- a/code/game/objects/structures/roguetown/rogueflora.dm
++++ b/code/game/objects/structures/roguetown/rogueflora.dm
+@@ -436,8 +436,8 @@
+ 	max_integrity = 5
+ 
+ /obj/structure/flora/roguegrass/water/reeds
+-	name = "reeds"
+-	desc = "This plant thrives in water, and shelters dangers."
++	name = "芦苇"
++	desc = "这种植物在水中繁茂生长，掩藏着危险。"
+ 	icon_state = "reeds"
+ 	opacity = 1
+ 	max_integrity = 10
+-- 
+2.53.0
+
