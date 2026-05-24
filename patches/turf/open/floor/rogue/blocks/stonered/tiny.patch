@@ -1,0 +1,31 @@
+From ba43932ca52d29da558e2675e255af06d579ea6d Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 21:17:01 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=96=B9=E5=9E=8B=E7=BA=A2?=
+ =?UTF-8?q?=E5=9C=B0=E7=A0=96?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..186634b854 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -1001,8 +1001,8 @@
+ 	desc = "Large red earthen tiles carefully set in a pleasantly symmetrical pattern."
+ /turf/open/floor/rogue/blocks/stonered/tiny
+ 	icon_state = "stoneredtiny"
+-	name = "square red tiles"
+-	desc = "Small square earthen tiles carefully arranged in a somewhat plain pattern."
++	name = "方形红地砖"
++	desc = "精心排列的小方形陶土砖，图案略显朴素。"
+ 
+ /turf/open/floor/rogue/blocks/green
+ 	icon_state = "greenblocks"
+-- 
+2.53.0
+
