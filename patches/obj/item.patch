@@ -1,19 +1,21 @@
-From 96f9f9faeacc9000ee9aee6313dd956371b3824a Mon Sep 17 00:00:00 2001
+From 6440fedc8f94496b30d124e7e265028345fed4ac Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Sat, 23 May 2026 15:47:21 +0800
-Subject: [PATCH] =?UTF-8?q?=E3=80=90=E6=96=87=E6=9C=AC=E3=80=91=E7=BF=BB?=
- =?UTF-8?q?=E8=AF=91=E7=89=A9=E5=93=81=E7=9A=84=E6=A3=80=E8=A7=86=E6=96=87?=
- =?UTF-8?q?=E6=9C=AC?=
+Date: Sun, 24 May 2026 16:03:51 +0800
+Subject: [PATCH] =?UTF-8?q?=E6=96=B0=E5=A2=9E=E7=89=A9=E5=93=81=E8=A2=AB?=
+ =?UTF-8?q?=E7=87=83=E7=83=A7=E6=88=90=E7=81=B0=E7=83=AC=E6=97=B6=EF=BC=8C?=
+ =?UTF-8?q?=E5=8E=9F=E6=9C=AC=E7=9A=84=E7=89=A9=E5=93=81=E6=8F=90=E7=A4=BA?=
+ =?UTF-8?q?=E6=96=87=E6=9C=AC?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
  code/game/objects/examine.dm | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ code/game/objects/items.dm   |  2 +-
+ 2 files changed, 15 insertions(+), 15 deletions(-)
 
 diff --git a/code/game/objects/examine.dm b/code/game/objects/examine.dm
-index 8dce678bf3..571a7d0296 100644
+index 8dce678bf3..1e4f32d215 100644
 --- a/code/game/objects/examine.dm
 +++ b/code/game/objects/examine.dm
 @@ -12,23 +12,23 @@
@@ -84,6 +86,19 @@ index 8dce678bf3..571a7d0296 100644
 +				result = span_warning("它有一点损坏。")
  	return result
  	
+diff --git a/code/game/objects/items.dm b/code/game/objects/items.dm
+index c0b326b89a..b79cbb7e20 100644
+--- a/code/game/objects/items.dm
++++ b/code/game/objects/items.dm
+@@ -1382,7 +1382,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
+ 		// Override for children that want more than 1 ash per item (Bundle as pseudo-stack)
+ 		for(var/i in 1 to amount)
+ 			var/obj/item/ash/A = new ash_type(T)
+-			A.desc += "\nLooks like this used to be \an [name] some time ago."
++			A.desc += "\n这看起来曾经是[name]。"
+ 		..()
+ 
+ /obj/item/acid_melt()
 -- 
 2.53.0
 
