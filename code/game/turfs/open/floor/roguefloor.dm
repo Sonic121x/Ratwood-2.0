@@ -463,8 +463,8 @@
 	roguesmooth(adjacencies)
 
 /turf/open/floor/rogue/grass
-	name = "grass"
-	desc = "Grass, sodden with mud and bogwater."
+	name = "草地"
+	desc = "浸透了泥浆和沼泽水的草地。"
 	icon_state = "grass"
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_GRASS
