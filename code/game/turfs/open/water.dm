@@ -404,8 +404,8 @@
 
 
 /turf/open/water/bath
-	name = "water"
-	desc = "Soothing water, with soapy bubbles on the surface."
+	name = "水"
+	desc = "令人舒缓的水，表面漂浮着肥皂泡。"
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "bathtileW"
 	water_level = 2
