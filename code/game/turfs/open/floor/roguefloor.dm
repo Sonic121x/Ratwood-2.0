@@ -1001,8 +1001,8 @@
 	desc = "精心铺设的大块红色陶土砖，构成令人愉悦的对称图案。"
 /turf/open/floor/rogue/blocks/stonered/tiny
 	icon_state = "stoneredtiny"
-	name = "square red tiles"
-	desc = "Small square earthen tiles carefully arranged in a somewhat plain pattern."
+	name = "方形红地砖"
+	desc = "精心排列的小方形陶土砖，图案略显朴素。"
 
 /turf/open/floor/rogue/blocks/green
 	icon_state = "greenblocks"
