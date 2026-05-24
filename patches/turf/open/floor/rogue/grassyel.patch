@@ -1,0 +1,30 @@
+From 122c70d3dd0af75164d37101326b8a8c11de4196 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 15:50:18 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=BB=84=E8=8D=89=E5=9C=B0?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..3e17b56d47 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -438,8 +438,8 @@
+ 	roguesmooth(adjacencies)
+ 
+ /turf/open/floor/rogue/grassyel
+-	name = "yellow grass"
+-	desc = "Grass, blessed by Astrata's light."
++	name = "黄草地"
++	desc = "受到 Astrata 之光祝福的草地。"
+ 	icon_state = "grass_yel"
+ 	layer = MID_TURF_LAYER
+ 	footstep = FOOTSTEP_GRASS
+-- 
+2.53.0
+

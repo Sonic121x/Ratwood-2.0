@@ -1,0 +1,30 @@
+From 621b8dae69577f96e780230fcad8e169b8117b56 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 15:56:30 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9C=A8=E5=9C=B0=E6=9D=BF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..cf268623d6 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -21,8 +21,8 @@
+ 
+ /turf/open/floor/rogue/ruinedwood
+ 	icon_state = "wooden_floor"
+-	name = "wooden floorboards"
+-	desc = "Interlocking wooden floorboards scratched with thousands of steps."
++	name = "木地板"
++	desc = "互相咬合的木地板上布满了万千脚步留下的划痕。"
+ 	footstep = FOOTSTEP_WOOD
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+ 	clawfootstep = FOOTSTEP_WOOD_CLAW
+-- 
+2.53.0
+
