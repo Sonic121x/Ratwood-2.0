@@ -1,0 +1,28 @@
+From 298028559607f0ec333bfdcf4be6d6bb724ca129 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sun, 24 May 2026 16:45:36 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=A5=BC=E6=A2=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/stairs.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/stairs.dm b/code/game/objects/structures/stairs.dm
+index 93645b2291..0f3c0c5175 100644
+--- a/code/game/objects/structures/stairs.dm
++++ b/code/game/objects/structures/stairs.dm
+@@ -6,7 +6,7 @@
+ // multiple stair objects can be chained together; the Z level transition will happen on the final stair object in the chain
+ 
+ /obj/structure/stairs
+-	name = "stairs"
++	name = "楼梯"
+ 	icon = 'icons/obj/stairs.dmi'
+ 	icon_state = "stairs"
+ 	anchored = TRUE
+-- 
+2.53.0
+
