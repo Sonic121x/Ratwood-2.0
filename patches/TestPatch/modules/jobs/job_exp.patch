@@ -1,0 +1,86 @@
+From 9f75a3b113a91a9f213aac066b804d5918ca8048 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_exp.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_exp.dm | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/code/modules/jobs/job_exp.dm b/code/modules/jobs/job_exp.dm
+index fe51dab4fe1f..6b4ac5542ea2 100644
+--- a/code/modules/jobs/job_exp.dm
++++ b/code/modules/jobs/job_exp.dm
+@@ -116,7 +116,7 @@
+ 		return_text += jobs_unlocked.Join("</LI><LI>")
+ 		return_text += "</LI></UL>"
+ 	if(jobs_locked.len)
+-		return_text += "<BR><BR>Jobs Not Unlocked:<UL><LI>"
++		return_text += "<BR><BR>尚未解锁的职业：<UL><LI>"
+ 		return_text += jobs_locked.Join("</LI><LI>")
+ 		return_text += "</LI></UL>"
+ 	return return_text
+@@ -124,7 +124,7 @@
+ 
+ /client/proc/get_exp_living()
+ 	if(!prefs.exp)
+-		return "No data"
++		return "无数据"
+ 	var/exp_living = text2num(prefs.exp[EXP_TYPE_LIVING])
+ 	return get_exp_format(exp_living)
+ 
+@@ -216,41 +216,41 @@
+ 			var/rolefound = FALSE
+ 			play_records[EXP_TYPE_LIVING] += minutes
+ 			if(announce_changes)
+-				to_chat(src,span_notice("I got: [minutes] Living EXP!"))
++				to_chat(src,span_notice("我获得了：[minutes] 分钟生存经验！"))
+ 			if(mob.mind.assigned_role)
+ 				for(var/job in SSjob.name_occupations)
+ 					if(mob.mind.assigned_role == job)
+ 						rolefound = TRUE
+ 						play_records[job] += minutes
+ 						if(announce_changes)
+-							to_chat(src,span_notice("I got: [minutes] [job] EXP!"))
++							to_chat(src,span_notice("我获得了：[minutes] 分钟 [job] 经验！"))
+ 				if(!rolefound)
+ 					for(var/role in GLOB.exp_specialmap[EXP_TYPE_SPECIAL])
+ 						if(mob.mind.assigned_role == role)
+ 							rolefound = TRUE
+ 							play_records[role] += minutes
+ 							if(announce_changes)
+-								to_chat(mob,span_notice("I got: [minutes] [role] EXP!"))
++								to_chat(mob,span_notice("我获得了：[minutes] 分钟 [role] 经验！"))
+ 				if(mob.mind.special_role && !(mob.mind.datum_flags & DF_VAR_EDITED))
+ 					var/trackedrole = mob.mind.special_role
+ 					play_records[trackedrole] += minutes
+ 					if(announce_changes)
+-						to_chat(src,span_notice("I got: [minutes] [trackedrole] EXP!"))
++						to_chat(src,span_notice("我获得了：[minutes] 分钟 [trackedrole] 经验！"))
+ 			if(!rolefound)
+-				play_records["Unknown"] += minutes
++				play_records["未知"] += minutes
+ 		else
+ 			if(holder && !holder.deadmined)
+ 				play_records[EXP_TYPE_ADMIN] += minutes
+ 				if(announce_changes)
+-					to_chat(src,span_notice("I got: [minutes] Admin EXP!"))
++					to_chat(src,span_notice("我获得了：[minutes] 分钟管理经验！"))
+ 			else
+ 				play_records[EXP_TYPE_GHOST] += minutes
+ 				if(announce_changes)
+-					to_chat(src,span_notice("I got: [minutes] Ghost EXP!"))
++					to_chat(src,span_notice("我获得了：[minutes] 分钟幽魂经验！"))
+ 	else if(isobserver(mob))
+ 		play_records[EXP_TYPE_GHOST] += minutes
+ 		if(announce_changes)
+-			to_chat(src,span_notice("I got: [minutes] Ghost EXP!"))
++			to_chat(src,span_notice("我获得了：[minutes] 分钟幽魂经验！"))
+ 	else if(minutes)	//Let "refresh" checks go through
+ 		return
+ 
+-- 
+Translation Patch Toolkit

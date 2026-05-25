@@ -1,0 +1,52 @@
+From 583a4b4f71bda49452535f2c4d9b7cf09c7a877c Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/bardic/suffocating_seliloquy.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/bardic/suffocating_seliloquy.dm | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/bardic/suffocating_seliloquy.dm b/code/modules/spells/spell_types/bardic/suffocating_seliloquy.dm
+index 34d8e670200e..f1dfc2d20bcc 100644
+--- a/code/modules/spells/spell_types/bardic/suffocating_seliloquy.dm
++++ b/code/modules/spells/spell_types/bardic/suffocating_seliloquy.dm
+@@ -1,10 +1,10 @@
+ /obj/effect/proc_holder/spell/invoked/song/suffocating_seliloquy
+-	name = "Suffocating Seliloquy"
+-	desc = "Play a dirge inspired by Abyssor, slowly suffocating with its call."
++	name = "窒息独咏"
++	desc = "奏出一曲受 Abyssor 启发的哀歌，让闻者在呼唤中缓缓窒息。"
+ 	overlay_state = "dirge_t3_base"
+ 	action_icon_state = "dirge_t3_base"
+ 	song_tier = 3
+-	invocations = list("Suffocating seliloquy, snuff the sinners' breath!") 
++	invocations = list("窒息独咏，熄灭罪人的呼吸！") 
+ 	invocation_type = "shout"
+ 	overlay_state = "dirge_t3_base"
+ 	action_icon_state = "dirge_t3_base"
+@@ -21,7 +21,7 @@
+ 		return TRUE
+ 	else
+ 		revert_cast()
+-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
++		to_chat(user, span_warning("我必须先演奏起来，才能影响我的听众！"))
+ 		return
+ 
+ 
+@@ -34,8 +34,8 @@
+ 
+ 
+ /atom/movable/screen/alert/status_effect/debuff/song/suffocationsong
+-	name = "Musical Suffocation!"
+-	desc = "I am suffocating on the song!"
++	name = "乐律窒息！"
++	desc = "这首曲子正让我喘不过气来！"
+ 	icon_state = "debuff"
+ 
+ /datum/status_effect/debuff/song/suffocationsong
+-- 
+Translation Patch Toolkit

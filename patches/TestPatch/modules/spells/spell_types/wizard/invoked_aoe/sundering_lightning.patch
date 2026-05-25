@@ -1,0 +1,53 @@
+From 1e09ebff3ceee51744b45c6816a567e0d1a7892f Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm b/code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm
+index 6c6c0235677f..55e163713e48 100644
+--- a/code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm
++++ b/code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm
+@@ -1,6 +1,6 @@
+ /obj/effect/proc_holder/spell/invoked/sundering_lightning
+-	name = "Sundering Lightning"
+-	desc = "Summons forth dangerous rapid lightning strikes."
++	name = "裂空雷击"
++	desc = "召下危险而迅疾的连环雷击。"
+ 	overlay_state = "lightning_sunder"
+ 	cost = 9
+ 	spell_tier = 4 // Highest tier AOE
+@@ -22,7 +22,7 @@
+ 	var/turf/T = get_turf(targets[1])
+ //	var/list/affected_turfs = list()
+ 	playsound(T,'sound/weather/rain/thunder_1.ogg', 80, TRUE)
+-	T.visible_message(span_boldwarning("The air feels crackling and charged!"))
++	T.visible_message(span_boldwarning("空气中满是噼啪作响的电荷！"))
+ 	sleep(30)
+ 	create_lightning(T)
+ 
+@@ -46,8 +46,8 @@
+ /obj/effect/temp_visual/lightning
+ 	icon = 'icons/effects/32x96.dmi'
+ 	icon_state = "lightning"
+-	name = "lightningbolt"
+-	desc = "ZAPP!!"
++	name = "雷击"
++	desc = "噼啪作响！！"
+ 	layer = FLY_LAYER
+ 	plane = GAME_PLANE_UPPER
+ 	randomdir = FALSE
+@@ -79,4 +79,4 @@
+ 		if(L.anti_magic_check())
+ 			continue
+ 		L.electrocute_act(65)	//a little over half the damage of thunderstrike, but doesn't degrade on each subsequent ring.
+-		to_chat(L, span_userdanger("You're hit by lightning!!!"))
++		to_chat(L, span_userdanger("我被雷霆击中了！！！"))
+-- 
+Translation Patch Toolkit

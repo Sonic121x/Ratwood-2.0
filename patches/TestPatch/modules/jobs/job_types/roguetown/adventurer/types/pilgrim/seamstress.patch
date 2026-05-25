@@ -1,0 +1,27 @@
+From 55769e366cce03b16d8ac33b118553d3fd53ec87 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/seamstress.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/seamstress.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/seamstress.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/seamstress.dm
+index 93aeaafeb6a9..4ab13d2a21d9 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/seamstress.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/seamstress.dm
+@@ -1,6 +1,6 @@
+ /datum/advclass/seamstress
+-	name = "Seamster"
+-	tutorial = "You know your trade by the passage of a needle through cloth and leather alike. Mend and sew garments for the townsfolk - Coats, pants, hats, hoods, and so much more. So what if you overcharge? You're the reason everyone looks good in the first place."
++	name = "裁缝"
++	tutorial = "你熟知这门手艺，一针既能穿过布匹，也能穿透皮革。为镇民缝补、裁制衣裳吧，外套、裤子、帽子、兜帽，还有更多。收贵一点又怎样？反正大家能穿得体面，全靠你。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/adventurer/seamstress
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,38 @@
+From f836ba71108e1e5ad704d80ba0171ade53b6145d Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
+index ca5e575febb3..9cfe54fe2e4b 100644
+--- a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
++++ b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
+@@ -1,7 +1,7 @@
+ /datum/advclass/vagabond_original
+-	name = "The Vagabond"
+-	examine_name = "Vagabond"
+-	tutorial = "Fate's twists and turns lead many towards a wanderer's life. Find your fortunes in the shadows or in the pockets of another."
++	name = "流民"
++	examine_name = "流民"
++	tutorial = "命运的拐折总会把许多人逼上漂泊之路。去阴影里找你的活路，或者去别人兜里找。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/vagabond/original
+@@ -15,7 +15,7 @@
+ 		/datum/skill/misc/stealing = SKILL_LEVEL_EXPERT,
+ 		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+ 	)
+-	extra_context = "FOR and INT are randomised."
++	extra_context = "力量与智力为随机生成。"
+ 
+ /datum/outfit/job/roguetown/vagabond/original/pre_equip(mob/living/carbon/human/H)
+ 	..()
+-- 
+Translation Patch Toolkit

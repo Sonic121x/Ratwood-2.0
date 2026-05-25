@@ -1,0 +1,36 @@
+From c179121f7c62899b1d06f796c213ac4c0d9c409c Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/wizard/buffs_debuffs/darkvision.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/wizard/buffs_debuffs/darkvision.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/wizard/buffs_debuffs/darkvision.dm b/code/modules/spells/spell_types/wizard/buffs_debuffs/darkvision.dm
+index 3aaf8aeae4a1..dc48c757d31c 100644
+--- a/code/modules/spells/spell_types/wizard/buffs_debuffs/darkvision.dm
++++ b/code/modules/spells/spell_types/wizard/buffs_debuffs/darkvision.dm
+@@ -1,6 +1,6 @@
+ /obj/effect/proc_holder/spell/invoked/darkvision
+-	name = "Darkvision"
+-	desc = "Enhance the night vision of yourself and everyone around you for 5 minutes per level in the associated skill."
++	name = "黑暗视觉"
++	desc = "强化你与周围所有人的夜视能力，持续时间为关联技能每级 5 分钟。"
+ 	overlay_state = "darkvision"
+ 	clothes_req = FALSE
+ 	school = "transmutation"
+@@ -12,7 +12,7 @@
+ 	chargedloop = /datum/looping_sound/invokegen
+ 	associated_skill = /datum/skill/magic/arcane
+ 	spell_tier = 1
+-	invocations = list("Nox Oculus")
++	invocations = list("黑夜之眼，向我敞开。")
+ 	invocation_type = "whisper"
+ 	glow_color = GLOW_COLOR_BUFF
+ 	glow_intensity = GLOW_INTENSITY_LOW
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,36 @@
+From 5c2a94b44128e45488a808beda9717e1e4f1b612 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/trader/jeweler.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/trader/jeweler.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/trader/jeweler.dm b/code/modules/jobs/job_types/roguetown/trader/jeweler.dm
+index e53bab0d2de1..bbf7e0c389e9 100644
+--- a/code/modules/jobs/job_types/roguetown/trader/jeweler.dm
++++ b/code/modules/jobs/job_types/roguetown/trader/jeweler.dm
+@@ -1,6 +1,6 @@
+ /datum/advclass/trader/jeweler
+-	name = "Jeweler"
+-	tutorial = "You make your coin peddling exotic jewelry, gems, and shiny things."
++	name = "珠宝匠"
++	tutorial = "你靠兜售异域首饰、宝石和一切亮闪闪的玩意儿来赚钱。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	category_tags = list(CTAG_PILGRIM, CTAG_COURTAGENT, CTAG_LICKER_WRETCH)
+@@ -30,7 +30,7 @@
+ 
+ /datum/outfit/job/roguetown/adventurer/trader/pre_equip(mob/living/carbon/human/H)
+ 	..()
+-	to_chat(H, span_warning("You make your coin peddling exotic jewelry, gems, and shiny things."))
++	to_chat(H, span_warning("你靠兜售异域首饰、宝石和一切亮闪闪的玩意儿来赚钱。"))
+ 	mask = /obj/item/clothing/mask/rogue/lordmask
+ 	shoes = /obj/item/clothing/shoes/roguetown/boots
+ 	pants = /obj/item/clothing/under/roguetown/tights/black
+-- 
+Translation Patch Toolkit

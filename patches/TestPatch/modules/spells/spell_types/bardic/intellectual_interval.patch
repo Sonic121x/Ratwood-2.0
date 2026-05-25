@@ -1,0 +1,47 @@
+From 112a54977cb531b64fca06e7fca359b81e9ff498 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/bardic/intellectual_interval.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/bardic/intellectual_interval.dm | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/bardic/intellectual_interval.dm b/code/modules/spells/spell_types/bardic/intellectual_interval.dm
+index c2c764fb0ff9..4afa0babd7f6 100644
+--- a/code/modules/spells/spell_types/bardic/intellectual_interval.dm
++++ b/code/modules/spells/spell_types/bardic/intellectual_interval.dm
+@@ -1,6 +1,6 @@
+ /obj/effect/proc_holder/spell/invoked/song/intellectual_interval
+-	name = "Intellectual Interval"
+-	desc = "A song for thinkers, +3 INT"
++	name = "睿思间奏"
++	desc = "献给思考者的曲子，`+3 智力`。"
+ 	song_tier = 1
+ 	warnie = "spellwarning"
+ 	no_early_release = TRUE
+@@ -19,7 +19,7 @@
+ 		return TRUE
+ 	else
+ 		revert_cast()
+-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
++		to_chat(user, span_warning("我必须先演奏起来，才能鼓舞我的听众！"))
+ 		return
+ 
+ /datum/status_effect/buff/playing_melody/intellectual_interval
+@@ -28,8 +28,8 @@
+ 
+ 
+ /atom/movable/screen/alert/status_effect/buff/song/intellectual_interval
+-	name = "Intellectual Interval"
+-	desc = "This tune is intellectually stimulating."
++	name = "睿思间奏"
++	desc = "这段旋律正不断激发我的思维。"
+ 	icon_state = "buff"
+ 	
+ 
+-- 
+Translation Patch Toolkit

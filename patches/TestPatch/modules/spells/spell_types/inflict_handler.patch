@@ -1,0 +1,25 @@
+From f40946017b7fced59bd2e965dc6294cad061cbc7 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/inflict_handler.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/inflict_handler.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/inflict_handler.dm b/code/modules/spells/spell_types/inflict_handler.dm
+index dd82b8c25506..4f5387b1b8d4 100644
+--- a/code/modules/spells/spell_types/inflict_handler.dm
++++ b/code/modules/spells/spell_types/inflict_handler.dm
+@@ -1,5 +1,5 @@
+ /obj/effect/proc_holder/spell/targeted/inflict_handler
+-	name = "Inflict Handler"
++	name = "效果施加器"
+ 	desc = ""
+ 
+ 	var/amt_paralyze = 0
+-- 
+Translation Patch Toolkit

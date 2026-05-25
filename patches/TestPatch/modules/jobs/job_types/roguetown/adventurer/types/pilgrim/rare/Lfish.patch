@@ -1,0 +1,29 @@
+From 447b10389b0846b62063d3f1628153f5d6669f82 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lfish.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lfish.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lfish.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lfish.dm
+index 50cc7bc31c08..0914c8546188 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lfish.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lfish.dm
+@@ -1,8 +1,8 @@
+ //human master fisher
+ 
+ /datum/advclass/fishermaster
+-	name = "Master Fisher"
+-	tutorial = "You are a Master Fisher, you cast your rod with might, and are able to pull fish larger than Eoras Bosom."
++	name = "渔艺大师"
++	tutorial = "你是一名渔艺大师，挥竿有力，连大过 Eoras Bosom 的鱼都能给你钓上来。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/adventurer/fishermaster
+-- 
+Translation Patch Toolkit

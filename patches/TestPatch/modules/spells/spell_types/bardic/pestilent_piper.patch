@@ -1,0 +1,53 @@
+From 39d662b0d8924d9fc0d9974cbd25dbdf80b9fcbc Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/bardic/pestilent_piper.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/bardic/pestilent_piper.dm | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/bardic/pestilent_piper.dm b/code/modules/spells/spell_types/bardic/pestilent_piper.dm
+index b14b4809c6ee..4781cfbbdbd7 100644
+--- a/code/modules/spells/spell_types/bardic/pestilent_piper.dm
++++ b/code/modules/spells/spell_types/bardic/pestilent_piper.dm
+@@ -1,11 +1,11 @@
+ /obj/effect/proc_holder/spell/invoked/song/pestilent_piedpiper
+-	name = "Pestilent Pied Piper"
+-	desc = "Play a dirge inspired by Pestra. Leaving the droning of insects in their ears! (-1 WIL -2 CON non-audience members)"
++	name = "疫病吹笛人"
++	desc = "奏出一曲受 Pestra 启发的哀歌，让虫群的嗡鸣残留在敌人耳畔！非听众成员将受到 `-1 意志 -2 体质`。"
+ 	overlay_state = "dirge_t2_base"
+ 	action_icon_state = "dirge_t2_base"
+ 	song_tier = 2
+ 	warnie = "spellwarning"
+-	invocations = list("A festering performance!") 
++	invocations = list("奏一曲腐烂化脓之音！") 
+ 	invocation_type = "shout"
+ 	sound = list('sound/magic/debuffroll.ogg')
+ 
+@@ -20,7 +20,7 @@
+ 		return TRUE
+ 	else
+ 		revert_cast()
+-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
++		to_chat(user, span_warning("我必须先演奏起来，才能影响我的听众！"))
+ 		return
+ 
+ 
+@@ -33,8 +33,8 @@
+ 
+ 
+ /atom/movable/screen/alert/status_effect/debuff/song/pestilentpiper
+-	name = "Musical Droning!"
+-	desc = "I am weakened by the song!"
++	name = "虫鸣缠耳！"
++	desc = "这首曲子正在削弱我！"
+ 	icon_state = "debuff"
+ 
+ /datum/status_effect/debuff/song/pestilentpiper
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,40 @@
+From 44260e27979a8760a92a6d30a57aa9bc57d909ef Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/bardic/melody-dirges.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/bardic/melody-dirges.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/bardic/melody-dirges.dm b/code/modules/spells/spell_types/bardic/melody-dirges.dm
+index 89b8c84541d2..caa946a843ea 100644
+--- a/code/modules/spells/spell_types/bardic/melody-dirges.dm
++++ b/code/modules/spells/spell_types/bardic/melody-dirges.dm
+@@ -26,8 +26,8 @@
+ 
+ 
+ /atom/movable/screen/alert/status_effect/buff/playing_dirge
+-	name = "Playing Dirge"
+-	desc = "Terrorizing the world with my craft."
++	name = "正在演奏挽歌"
++	desc = "我正以技艺向世界散播恐惧。"
+ 	icon_state = "buff"
+ 
+ 
+@@ -57,8 +57,8 @@
+ 
+ 
+ /atom/movable/screen/alert/status_effect/buff/playing_melody
+-	name = "Playing Melody"
+-	desc = "Healing the world with my craft."
++	name = "正在演奏旋律"
++	desc = "我正以技艺抚慰这个世界。"
+ 	icon_state = "buff"
+ 
+ 
+-- 
+Translation Patch Toolkit

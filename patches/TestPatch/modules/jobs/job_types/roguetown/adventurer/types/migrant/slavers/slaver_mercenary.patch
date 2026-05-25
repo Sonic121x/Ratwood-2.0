@@ -1,0 +1,114 @@
+From 1beba982d7bd99a65bb3aa0e631105c4c839ac8a Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_mercenary.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_mercenary.dm | 42 +++++++++++++++++++++---------------------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_mercenary.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_mercenary.dm
+index 62d45f96e2be..b907080d3ac3 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_mercenary.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_mercenary.dm
+@@ -1,8 +1,8 @@
+ // Blade
+ 
+ /datum/advclass/slaver/mercenary/blade
+-	name = "Zybantynian Blade Mercenary"
+-	tutorial = "A hired arm for the Zybantine Slave troop. You have come from the deserts of Zybantine and are hired under contract by the Zybantynian Master."
++	name = "Zybantu 刀锋佣兵"
++	tutorial = "你是 Zybantu 奴隶商队雇来的打手。你来自 Zybantu 的沙漠，在 Zybantu 主人的契约之下受雇行事。"
+ 	outfit = /datum/outfit/job/roguetown/slaver/mercenary/blade
+ 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_SLEUTH, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
+ 	category_tags = list(CTAG_SLAVER_MERC)
+@@ -42,15 +42,15 @@
+ 	)
+ 
+ 	subclass_stashed_items = list( 
+-		"Spare Chain" = /obj/item/rope/chain,
+-		"Bedroll" = /obj/item/bedroll,
+-		"Handpie (Meat)" = /obj/item/reagent_containers/food/snacks/rogue/handpie/meat,
++		"备用锁链" = /obj/item/rope/chain,
++		"铺盖卷" = /obj/item/bedroll,
++		"手派（肉）" = /obj/item/reagent_containers/food/snacks/rogue/handpie/meat,
+ 	) // Gear to allow them to stay in the bog in case they are outlawed.
+ 
+ /datum/outfit/job/roguetown/slaver/mercenary/blade/pre_equip(mob/living/carbon/human/H)
+ 	..()
+-	to_chat(H, span_info("I can speak Sama'glos with ,c before my speech."))
+-	to_chat(H, span_info("I start with a stash of items used for slave catching and survival."))
++	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 Sama'glos。"))
++	to_chat(H, span_info("我开局会携带一批用于捕奴与野外求生的物资。"))
+ 	head = /obj/item/clothing/head/roguetown/helmet/sallet
+ 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
+ 	neck = /obj/item/clothing/neck/roguetown/chaincoif/full		//no need for two pouches of coin, get SOME neck armor
+@@ -77,8 +77,8 @@
+ // Whip
+ 
+ /datum/advclass/slaver/mercenary/whip
+-	name = "Zybantynian Whip Mercenary"
+-	tutorial = "A hired arm for the Zybantine Slave troop. You have come from the deserts of Zybantine and are hired under contract by the Zybantynian Master."
++	name = "Zybantu 长鞭佣兵"
++	tutorial = "你是 Zybantu 奴隶商队雇来的打手。你来自 Zybantu 的沙漠，在 Zybantu 主人的契约之下受雇行事。"
+ 	outfit = /datum/outfit/job/roguetown/slaver/mercenary/whip
+ 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_SLEUTH, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
+ 	category_tags = list(CTAG_SLAVER_MERC)
+@@ -118,15 +118,15 @@
+ 	)
+ 
+ 	subclass_stashed_items = list(
+-		"Spare Chain" = /obj/item/rope/chain,
+-		"Bedroll" = /obj/item/bedroll,
+-		"Handpie (Meat)" = /obj/item/reagent_containers/food/snacks/rogue/handpie/meat,
++		"备用锁链" = /obj/item/rope/chain,
++		"铺盖卷" = /obj/item/bedroll,
++		"手派（肉）" = /obj/item/reagent_containers/food/snacks/rogue/handpie/meat,
+ 	) // Gear to allow them to stay in the bog in case they are outlawed.
+ 
+ /datum/outfit/job/roguetown/slaver/mercenary/whip/pre_equip(mob/living/carbon/human/H)
+ 	..()
+-	to_chat(H, span_info("I can speak Sama'glos with ,c before my speech."))
+-	to_chat(H, span_info("I start with a stash of items used for slave catching and survival."))
++	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 Sama'glos。"))
++	to_chat(H, span_info("我开局会携带一批用于捕奴与野外求生的物资。"))
+ 	head = /obj/item/clothing/head/roguetown/helmet/sallet
+ 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
+ 	neck = /obj/item/clothing/neck/roguetown/chaincoif/full		//ditto as blade mercs: some neck armor. No need for so much coin
+@@ -153,8 +153,8 @@
+ // Crossbow
+ 
+ /datum/advclass/slaver/mercenary/crossbow
+-	name = "Zybantynian Light Crossbow Mercenary"
+-	tutorial = "A hired arm for the Zybantine Slave troop. You have come from the deserts of Zybantine and are hired under contract by the Zybantynian Master."
++	name = "Zybantu 轻弩佣兵"
++	tutorial = "你是 Zybantu 奴隶商队雇来的打手。你来自 Zybantu 的沙漠，在 Zybantu 主人的契约之下受雇行事。"
+ 	outfit = /datum/outfit/job/roguetown/slaver/mercenary/crossbow
+ 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_SLEUTH, TRAIT_DODGEEXPERT, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
+ 	category_tags = list(CTAG_SLAVER_MERC)
+@@ -192,15 +192,15 @@
+ 	)
+ 
+ 	subclass_stashed_items = list(
+-		"Spare Chain" = /obj/item/rope/chain,
+-		"Bedroll" = /obj/item/bedroll,
+-		"Handpie (Meat)" = /obj/item/reagent_containers/food/snacks/rogue/handpie/meat,
++		"备用锁链" = /obj/item/rope/chain,
++		"铺盖卷" = /obj/item/bedroll,
++		"手派（肉）" = /obj/item/reagent_containers/food/snacks/rogue/handpie/meat,
+ 	) // Gear to allow them to stay in the bog in case they are outlawed.
+ 
+ /datum/outfit/job/roguetown/slaver/mercenary/crossbow/pre_equip(mob/living/carbon/human/H)
+ 	..()
+-	to_chat(H, span_info("I can speak Sama'glos with ,c before my speech."))
+-	to_chat(H, span_info("I start with a stash of items used for slave catching and survival."))
++	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 Sama'glos。"))
++	to_chat(H, span_info("我开局会携带一批用于捕奴与野外求生的物资。"))
+ 	head = /obj/item/clothing/head/roguetown/helmet/sallet
+ 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
+ 	neck = /obj/item/clothing/neck/roguetown/gorget
+-- 
+Translation Patch Toolkit

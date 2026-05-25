@@ -1,0 +1,47 @@
+From b16a78e711becb767a7adce7f03e9c2c89f4f54c Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/ethereal_jaunt.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/ethereal_jaunt.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/ethereal_jaunt.dm b/code/modules/spells/spell_types/ethereal_jaunt.dm
+index 805d2e0274e7..d1daadcde9dd 100644
+--- a/code/modules/spells/spell_types/ethereal_jaunt.dm
++++ b/code/modules/spells/spell_types/ethereal_jaunt.dm
+@@ -1,5 +1,5 @@
+ /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
+-	name = "Ethereal Jaunt"
++	name = "虚灵遁行"
+ 	desc = ""
+ 
+ 	school = "transmutation"
+@@ -62,7 +62,7 @@
+ 	steam.start()
+ 
+ /obj/effect/dummy/phased_mob/spell_jaunt
+-	name = "water"
++	name = "虚灵流迹"
+ 	icon = 'icons/effects/effects.dmi'
+ 	icon_state = "nothing"
+ 	var/reappearing = FALSE
+@@ -88,10 +88,10 @@
+ 	movedelay = world.time + movespeed
+ 
+ 	if(newLoc.flags_1 & NOJAUNT_1)
+-		to_chat(user, span_warning("Some strange aura is blocking the way."))
++		to_chat(user, span_warning("有一股奇异的气场挡住了去路。"))
+ 		return
+ 	if (locate(/obj/effect/blessing, newLoc))
+-		to_chat(user, span_warning("Holy energies block your path!"))
++		to_chat(user, span_warning("神圣能量阻挡了你的去路！"))
+ 		return
+ 
+ 	forceMove(newLoc)
+-- 
+Translation Patch Toolkit

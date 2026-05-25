@@ -1,0 +1,38 @@
+From d830f1c08599ac934857b8cd91df131e830f4805 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/manorguard/manorguard.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/garrison/manorguard/manorguard.dm | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/garrison/manorguard/manorguard.dm b/code/modules/jobs/job_types/roguetown/garrison/manorguard/manorguard.dm
+index 1e9ff95a7ced..2bc8c0759a1b 100644
+--- a/code/modules/jobs/job_types/roguetown/garrison/manorguard/manorguard.dm
++++ b/code/modules/jobs/job_types/roguetown/garrison/manorguard/manorguard.dm
+@@ -1,5 +1,6 @@
+ /datum/job/roguetown/manorguard
+ 	title = "Man at Arms"
++	display_title = "披甲兵"
+ 	flag = MANATARMS
+ 	department_flag = GARRISON
+ 	faction = "Station"
+@@ -10,9 +11,9 @@
+ 	allowed_races = ACCEPTED_RACES
+ 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
+ 	job_traits = list(TRAIT_GUARDSMAN, TRAIT_STEELHEARTED)
+-	tutorial = "Having proven yourself loyal and capable, you are entrusted to defend the town and enforce its laws. \
+-				Trained regularly in combat and siege warfare, you deal with threats - both within and without. \
+-				Obey your Sergeant-at-Arms, the Marshal, and the Crown. Show the nobles and knights your respect, so that you may earn it in turn. Not as a commoner, but as a soldier.."
++	tutorial = "你既已证明自己忠诚可靠又能胜任其职，于是被托付守卫城镇并执行法度。\
++				你定期接受战斗与攻守战训练，要应对内外一切威胁。\
++				服从你的军士长、元帅与王权。向贵族与骑士献上应有敬意，这样你才能以士兵而非平民的身份，换来他们的尊重。"
+ 	display_order = JDO_CASTLEGUARD
+ 	whitelist_req = TRUE
+ 
+-- 
+Translation Patch Toolkit

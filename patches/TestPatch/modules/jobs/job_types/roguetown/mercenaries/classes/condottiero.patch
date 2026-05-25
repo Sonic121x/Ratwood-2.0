@@ -1,0 +1,27 @@
+From 9d272515f50a64a472bebb8dbb02f3e1aa45b425 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/condottiero.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/mercenaries/classes/condottiero.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/condottiero.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/condottiero.dm
+index 0bee0820c163..9518ee7eaeff 100644
+--- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/condottiero.dm
++++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/condottiero.dm
+@@ -1,6 +1,6 @@
+ /datum/advclass/mercenary/condottiero
+-	name = "Condottiero Guildsman"
+-	tutorial = "Hailing from the Kingdom of Etrusca, Condottieri are soldiers of fortune oft found in the employ of powerful merchants. Without a war to fight back home, the Grand Duchy has become a much-needed source of contracts. Afterall, this land is rich in coin yet poor in manpower..."
++	name = "孔多蒂耶罗佣兵"
++	tutorial = "你来自 Etrusca 王国。孔多蒂耶罗是典型的职业佣兵，常受雇于势力雄厚的商人。故乡眼下无大战可打，这片大公国便成了亟需的新契约来源。毕竟，这里钱财丰厚，却偏偏缺人卖命……"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/mercenary/condottiero
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,27 @@
+From 240684ac3061dccaec3cfd675d0dac8ab3982403 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/roguetown.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/roguetown.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/roguetown.dm b/code/modules/jobs/job_types/roguetown/roguetown.dm
+index 8306be3d4ac8..34f83ce589a6 100644
+--- a/code/modules/jobs/job_types/roguetown/roguetown.dm
++++ b/code/modules/jobs/job_types/roguetown/roguetown.dm
+@@ -66,7 +66,7 @@
+ 			H.set_patron(default_patron || pick(preferredgods))
+ 		else
+ 			H.set_patron(default_patron || pick(possiblegods))
+-		var/change_message = span_warning("[old_patron] had not endorsed my practices in my younger years. I've since grown accustomed to [H.patron].")
++		var/change_message = span_warning("[old_patron] 在我年轻时并不认可我的行径。时至今日，我已逐渐适应了 [H.patron] 的道路。")
+ 		if(H.client)
+ 			to_chat(H, change_message)
+ 		else
+-- 
+Translation Patch Toolkit

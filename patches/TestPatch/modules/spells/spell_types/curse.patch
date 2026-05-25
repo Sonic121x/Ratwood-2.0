@@ -1,0 +1,51 @@
+From f09157c7953d930424320714794fed551a47d5e7 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/curse.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/curse.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/curse.dm b/code/modules/spells/spell_types/curse.dm
+index c9dd7f88b5cf..7c7922d53513 100644
+--- a/code/modules/spells/spell_types/curse.dm
++++ b/code/modules/spells/spell_types/curse.dm
+@@ -2,13 +2,13 @@
+ 
+ /proc/curse_of_madness(mob/user, message)
+ 	if(user) //in this case either someone holding a spellbook or a badmin
+-		to_chat(user, span_warning("I sent a curse of madness with the message \"[message]\"!"))
++		to_chat(user, span_warning("我已送出一则附带信息“[message]”的疯狂诅咒！"))
+ 		message_admins("[ADMIN_LOOKUPFLW(user)] sent a curse of madness with the message \"[message]\"!")
+ 		log_game("[key_name(user)] sent a curse of madness with the message \"[message]\"!")
+ 
+ 	GLOB.curse_of_madness_triggered = message // So latejoiners are also afflicted.
+ 
+-	deadchat_broadcast("A <span class='name'>Curse of Madness</span> has stricken the station, shattering their minds with the awful secret: \"<span class='big hypnophrase'>[message]</span>\"")
++	deadchat_broadcast("<span class='name'>疯狂诅咒</span> 已降临此地，那可怖的秘密击碎了他们的心智：\"<span class='big hypnophrase'>[message]</span>\"")
+ 
+ 	for(var/mob/living/carbon/human/H in GLOB.player_list)
+ 		if(H.stat == DEAD)
+@@ -17,14 +17,14 @@
+ 		if(T && !is_station_level(T.z))
+ 			continue
+ 		if(H.anti_magic_check(TRUE, FALSE, TRUE))
+-			to_chat(H, span_notice("I have a strange feeling for a moment, but then it passes."))
++			to_chat(H, span_notice("我有那么一瞬间感到异样，但很快便过去了。"))
+ 			continue
+ 		give_madness(H, message)
+ 
+ /proc/give_madness(mob/living/carbon/human/H, message)
+ 	H.playsound_local(H,'sound/blank.ogg',40,1)
+ 	to_chat(H, span_reallybighypnophrase("[message]"))
+-	to_chat(H, span_warning("My mind shatters!"))
++	to_chat(H, span_warning("我的心智崩裂了！"))
+ 	switch(rand(1,10))
+ 		if(1 to 3)
+ 			H.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_LOBOTOMY)
+-- 
+Translation Patch Toolkit

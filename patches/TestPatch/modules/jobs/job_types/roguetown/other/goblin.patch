@@ -1,0 +1,36 @@
+From d16bb235d8489495f5729f6117d052e61dd2fe15 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/other/goblin.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/other/goblin.dm | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/other/goblin.dm b/code/modules/jobs/job_types/roguetown/other/goblin.dm
+index 0efb1ba98c32..df745c02f157 100644
+--- a/code/modules/jobs/job_types/roguetown/other/goblin.dm
++++ b/code/modules/jobs/job_types/roguetown/other/goblin.dm
+@@ -1,5 +1,6 @@
+ /datum/job/roguetown/goblin
+ 	title = "Goblin"
++	display_title = "地精"
+ 	flag = GOBLIN
+ 	department_flag = SLOP
+ 	faction = "Station"
+@@ -66,8 +67,8 @@
+ 			QDEL_NULL(H.charflaw)
+ 		H.update_body()
+ 		H.faction = list("orcs")
+-		H.name = "goblin"
+-		H.real_name = "goblin"
++		H.name = "地精"
++		H.real_name = "地精"
+ 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
+ 		ADD_TRAIT(H, TRAIT_NOHUNGER, TRAIT_GENERIC)
+ 		ADD_TRAIT(H, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+-- 
+Translation Patch Toolkit

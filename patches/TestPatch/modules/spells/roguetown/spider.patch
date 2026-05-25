@@ -1,0 +1,26 @@
+From 95750740b017c4c5b2a6b938bf43463b440a40a6 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/roguetown/spider.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/roguetown/spider.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/spells/roguetown/spider.dm b/code/modules/spells/roguetown/spider.dm
+index 3e9ec016c1f5..9f32700bb6f7 100644
+--- a/code/modules/spells/roguetown/spider.dm
++++ b/code/modules/spells/roguetown/spider.dm
+@@ -1,6 +1,6 @@
+ 
+ /obj/effect/proc_holder/spell/targeted/spiderconjur
+-	name = "Conjure Web"
++	name = "结网术"
+ 	range = 8
+ 	overlay_state = "null"
+ 	releasedrain = 5
+-- 
+Translation Patch Toolkit

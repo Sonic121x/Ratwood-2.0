@@ -1,0 +1,33 @@
+From 1c4fc3744ff1ea78076a60b314dbbebd7ec140d8 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/the_traps.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/the_traps.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/the_traps.dm b/code/modules/spells/spell_types/the_traps.dm
+index 6696058fe493..e716c8e87c01 100644
+--- a/code/modules/spells/spell_types/the_traps.dm
++++ b/code/modules/spells/spell_types/the_traps.dm
+@@ -1,12 +1,12 @@
+ /obj/effect/proc_holder/spell/aoe_turf/conjure/the_traps
+-	name = "The Traps!"
++	name = "陷阱阵！"
+ 	desc = ""
+ 
+ 	recharge_time = 250
+ 	cooldown_min = 50
+ 
+ 	clothes_req = TRUE
+-	invocations = list("CAVERE INSIDIAS")
++	invocations = list("陷阱，现形！")
+ 	invocation_type = "shout"
+ 	range = 3
+ 
+-- 
+Translation Patch Toolkit

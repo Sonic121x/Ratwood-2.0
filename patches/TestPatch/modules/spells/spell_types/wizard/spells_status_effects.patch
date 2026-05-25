@@ -1,0 +1,79 @@
+From fe03ae641af9a1d450be7ac6af0409f7ebd4c711 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/wizard/spells_status_effects.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/wizard/spells_status_effects.dm | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/wizard/spells_status_effects.dm b/code/modules/spells/spell_types/wizard/spells_status_effects.dm
+index d28f8ef17763..14cca8d5d4af 100644
+--- a/code/modules/spells/spell_types/wizard/spells_status_effects.dm
++++ b/code/modules/spells/spell_types/wizard/spells_status_effects.dm
+@@ -6,8 +6,8 @@
+ 	effectedstats = list("speed" = -1)
+ 
+ /atom/movable/screen/alert/status_effect/buff/frost
+-	name = "Shivering"
+-	desc = "My body can't stop shaking."
++	name = "战栗"
++	desc = "我的身体止不住地发抖。"
+ 	icon_state = "debuff"
+ 
+ /datum/status_effect/buff/frost/tick()
+@@ -28,8 +28,8 @@
+ 	effectedstats = list("speed" = -2)
+ 
+ /atom/movable/screen/alert/status_effect/buff/frostbite
+-	name = "Frostbite"
+-	desc = "My limbs are frozen stiff!"
++	name = "冻僵"
++	desc = "我的四肢都冻得僵硬了！"
+ 	icon_state = "debuff"
+ 
+ /datum/status_effect/buff/frostbite/on_apply()
+@@ -59,15 +59,15 @@
+ 	effectedstats = list(STATKEY_SPD = -2,STATKEY_STR = -2,STATKEY_CON= -2,STATKEY_WIL = -2)
+ 
+ /atom/movable/screen/alert/status_effect/buff/witherd
+-	name = "Withering"
+-	desc = "I can feel my physical prowess waning."
++	name = "衰朽"
++	desc = "我能感觉到自己的体魄正在衰弱。"
+ 	icon_state = "debuff"
+ 	color = "#b884f8" //talk about a coder sprite x2
+ 
+ 
+ /datum/status_effect/buff/witherd/on_apply()
+ 	. = ..()
+-	to_chat(owner, span_warning("I feel sapped of vitality!"))
++	to_chat(owner, span_warning("我感觉生命力正被抽走！"))
+ 	var/mob/living/target = owner
+ 	target.update_vision_cone()
+ 	var/newcolor = rgb(207, 135, 255)
+@@ -76,7 +76,7 @@
+ 
+ /datum/status_effect/buff/witherd/on_remove()
+ 	. = ..()
+-	to_chat(owner, span_warning("I feel my physical prowess returning."))
++	to_chat(owner, span_warning("我的体魄正在恢复。"))
+ 
+ /datum/status_effect/buff/lightningstruck
+ 	id = "lightningstruck"
+@@ -85,8 +85,8 @@
+ 	effectedstats = list(STATKEY_SPD = -2)
+ 
+ /atom/movable/screen/alert/status_effect/buff/lightningstruck
+-	name = "Lightning Struck"
+-	desc = "I can feel the electricity coursing through me."
++	name = "雷击余痕"
++	desc = "我能感觉到电流仍在体内窜动。"
+ 	icon_state = "debuff"
+ 	color = "#ffff00"
+ 
+-- 
+Translation Patch Toolkit

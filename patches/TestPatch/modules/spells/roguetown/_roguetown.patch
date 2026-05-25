@@ -1,0 +1,36 @@
+From 705d5a9376381bdfe93a8cdc80124c1a37e49d63 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/roguetown/_roguetown.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/roguetown/_roguetown.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/spells/roguetown/_roguetown.dm b/code/modules/spells/roguetown/_roguetown.dm
+index fb7fec7eccbd..696d8c48c21c 100644
+--- a/code/modules/spells/roguetown/_roguetown.dm
++++ b/code/modules/spells/roguetown/_roguetown.dm
+@@ -2,7 +2,7 @@
+ 
+ 
+ /obj/effect/proc_holder/spell/invoked
+-	name = "invoked spell"
++	name = "引导法术"
+ 	range = 7
+ 	selection_type = "range"
+ 	no_early_release = TRUE
+@@ -63,7 +63,7 @@
+ 	var/goal = src.get_chargetime() //if we have no chargetime then we can freely cast (and no early release flag was not set)
+ 	if(src.no_early_release) //This is to stop half-channeled spells from casting as the repeated-casts somehow bypass into this function.
+ 		if(percentage_progress < 100 && charge_progress < goal)//Conditions for failure: a) not 100% progress, b) charge progress less than goal
+-			to_chat(usr, span_warning("[src.name] was not finished charging! It fizzles."))
++			to_chat(usr, span_warning("[src.name] 尚未完成蓄力！它就此溃散了。"))
+ 			src.revert_cast()
+ 			return FALSE
+ 	if(perform(list(target), TRUE, user = ranged_ability_user))
+-- 
+Translation Patch Toolkit

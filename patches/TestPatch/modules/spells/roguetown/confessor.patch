@@ -1,0 +1,25 @@
+From dc1f670727de75e91ed43d19d177f79d2a38f61f Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/roguetown/confessor.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/roguetown/confessor.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/spells/roguetown/confessor.dm b/code/modules/spells/roguetown/confessor.dm
+index d373d76aa5a9..1314a9173832 100644
+--- a/code/modules/spells/roguetown/confessor.dm
++++ b/code/modules/spells/roguetown/confessor.dm
+@@ -1,5 +1,5 @@
+ /obj/effect/proc_holder/spell/invoked/shepherd
+-	name = "Shepherd"
++	name = "牧引"
+ 	range = 7
+ 	overlay_state = "psy"
+ 	releasedrain = 50
+-- 
+Translation Patch Toolkit

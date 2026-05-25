@@ -1,0 +1,25 @@
+From 4ea56c05b068ac9197ee066324a8a8c67f08f107 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/emplosion.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/emplosion.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/emplosion.dm b/code/modules/spells/spell_types/emplosion.dm
+index 8fcb64be381c..b77af6bff03e 100644
+--- a/code/modules/spells/spell_types/emplosion.dm
++++ b/code/modules/spells/spell_types/emplosion.dm
+@@ -1,5 +1,5 @@
+ /obj/effect/proc_holder/spell/targeted/emplosion
+-	name = "Emplosion"
++	name = "电磁爆震"
+ 	desc = ""
+ 
+ 	var/emp_heavy = 2
+-- 
+Translation Patch Toolkit

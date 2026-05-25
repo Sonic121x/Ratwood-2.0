@@ -1,0 +1,38 @@
+From 02cde77424511627a5ce9e260f93d9af1545fb58 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/wizard/invoked_single_target/frostbite.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/wizard/invoked_single_target/frostbite.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/wizard/invoked_single_target/frostbite.dm b/code/modules/spells/spell_types/wizard/invoked_single_target/frostbite.dm
+index 8efd027161d4..a156f8b59eee 100644
+--- a/code/modules/spells/spell_types/wizard/invoked_single_target/frostbite.dm
++++ b/code/modules/spells/spell_types/wizard/invoked_single_target/frostbite.dm
+@@ -1,8 +1,8 @@
+ // Spell is disabled because of snap freeze + frost bolt existing at the same time
+ //Or, was. Now used by Sojourners as an invoked single target spell.
+ /obj/effect/proc_holder/spell/invoked/frostbite
+-	name = "Frostbite"
+-	desc = "Freeze your enemy with an icy blast that does low damage, but reduces the target's Speed for a considerable length of time."
++	name = "冻伤术"
++	desc = "以一股寒流冻结敌人，伤害不高，但会在相当长一段时间内降低目标的速度。"
+ 	overlay_state = "frostbite"
+ 	releasedrain = 50
+ 	chargetime = 12
+@@ -17,7 +17,7 @@
+ 	gesture_required = TRUE
+ 	associated_skill = /datum/skill/magic/arcane
+ 	spell_tier = 2
+-	invocations = list("Congelationis!")
++	invocations = list("寒流，侵体！")
+ 	invocation_type = "shout"
+ 	glow_color = GLOW_COLOR_ICE
+ 	glow_intensity = GLOW_INTENSITY_LOW
+-- 
+Translation Patch Toolkit

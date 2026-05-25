@@ -1,0 +1,33 @@
+From 5b3b46029250722700e1e8cea4070a9da6316beb Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/santa.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/santa.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/santa.dm b/code/modules/spells/spell_types/santa.dm
+index 0977574cf26f..ae9d0541442b 100644
+--- a/code/modules/spells/spell_types/santa.dm
++++ b/code/modules/spells/spell_types/santa.dm
+@@ -1,12 +1,12 @@
+ //Santa spells!
+ /obj/effect/proc_holder/spell/aoe_turf/conjure/presents
+-	name = "Conjure Presents!"
++	name = "召来礼物！"
+ 	desc = ""
+ 	school = "santa"
+ 	recharge_time = 600
+ 	clothes_req = FALSE
+ 	antimagic_allowed = TRUE
+-	invocations = list("HO HO HO")
++	invocations = list("礼物现身！")
+ 	invocation_type = "shout"
+ 	range = 3
+ 	cooldown_min = 50
+-- 
+Translation Patch Toolkit

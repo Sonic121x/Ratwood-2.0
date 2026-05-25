@@ -1,0 +1,65 @@
+From 15f719ff39aeefce0eef8df1b399b1efe661b2ef Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/bardic/accelerating_akathist.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/bardic/accelerating_akathist.dm | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/bardic/accelerating_akathist.dm b/code/modules/spells/spell_types/bardic/accelerating_akathist.dm
+index 6354e52078a3..215ea082bf86 100644
+--- a/code/modules/spells/spell_types/bardic/accelerating_akathist.dm
++++ b/code/modules/spells/spell_types/bardic/accelerating_akathist.dm
+@@ -1,8 +1,8 @@
+ /obj/effect/proc_holder/spell/invoked/song/accelakathist
+-	name = "Accelerating Akathist"
+-	desc = "Accelerate your allies with your bardic song!"
++	name = "加速圣颂"
++	desc = "用你的吟游之歌加速盟友！"
+ 	song_tier = 3
+-	invocations = list("Time to accelerate!") 
++	invocations = list("现在，提速吧！") 
+ 	invocation_type = "shout"
+ 	overlay_state = "bardsong_t3_base"
+ 	action_icon_state = "bardsong_t3_base"
+@@ -18,7 +18,7 @@
+ 		return TRUE
+ 	else
+ 		revert_cast()
+-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
++		to_chat(user, span_warning("我必须先演奏点什么，才能激励我的听众！"))
+ 		return
+ 
+ 
+@@ -28,8 +28,8 @@
+ 	buff_to_apply = /datum/status_effect/buff/song/accelakathist
+ 	
+ /atom/movable/screen/alert/status_effect/buff/song/accelakathist
+-	name = "Accelerating Akathist"
+-	desc = "I am musically hastened."
++	name = "加速圣颂"
++	desc = "乐声令我迅捷。"
+ 	icon_state = "buff"
+ 
+ #define ACCELAKATHIST_FILTER "akathist_glow"
+@@ -46,12 +46,12 @@
+ 	var/filter = owner.get_filter(ACCELAKATHIST_FILTER)
+ 	if (!filter)
+ 		owner.add_filter(ACCELAKATHIST_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 25, "size" = 1))
+-	to_chat(owner, span_warning("My limbs move with uncanny swiftness."))
++	to_chat(owner, span_warning("我的四肢以不可思议的速度动了起来。"))
+ 
+ /datum/status_effect/buff/song/accelakathist/on_remove()
+ 	. = ..()
+ 	owner.remove_filter(ACCELAKATHIST_FILTER)
+-	to_chat(owner, span_warning("My body move slowly again..."))
++	to_chat(owner, span_warning("我的身体又慢了下来......"))
+ 
+ #undef ACCELAKATHIST_FILTER
+ 
+-- 
+Translation Patch Toolkit

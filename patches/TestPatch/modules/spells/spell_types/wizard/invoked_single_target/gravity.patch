@@ -1,0 +1,79 @@
+From 00771f4b24b05e658df2711d58ce5a150d8f3f30 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/wizard/invoked_single_target/gravity.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/wizard/invoked_single_target/gravity.dm | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/wizard/invoked_single_target/gravity.dm b/code/modules/spells/spell_types/wizard/invoked_single_target/gravity.dm
+index 4fa28dcad1a0..44f8b76b230e 100644
+--- a/code/modules/spells/spell_types/wizard/invoked_single_target/gravity.dm
++++ b/code/modules/spells/spell_types/wizard/invoked_single_target/gravity.dm
+@@ -1,6 +1,6 @@
+ /obj/effect/proc_holder/spell/invoked/gravity // to do: get scroll icon
+-	name = "Gravity"
+-	desc = "Weighten space around someone, crushing them and knocking them to the floor. Stronger opponents will resist and be off-balanced."
++	name = "重压术"
++	desc = "扭曲一人周围的空间，以重压将其砸向地面。更强壮的对手能勉强抗住，但也会失去平衡。"
+ 	cost = 3
+ 	overlay_state = "hierophant"
+ 	xp_gain = TRUE
+@@ -16,7 +16,7 @@
+ 	chargedloop = /datum/looping_sound/invokegen
+ 	associated_skill = /datum/skill/magic/arcane
+ 	spell_tier = 2
+-	invocations = list("Pondus!")
++	invocations = list("重压，降临！")
+ 	invocation_type = "shout"
+ 	glow_color = GLOW_COLOR_DISPLACEMENT
+ 	glow_intensity = GLOW_INTENSITY_MEDIUM
+@@ -46,26 +46,26 @@
+ 		new /obj/effect/temp_visual/gravity(affected_turf)
+ 		for(var/mob/living/L in affected_turf.contents) 
+ 			if(L.anti_magic_check())
+-				visible_message(span_warning("The gravity fades away around you [L] "))  //antimagic needs some testing
++				visible_message(span_warning("[L] 周围的重压魔力消散了！"))  //antimagic needs some testing
+ 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+ 				return TRUE
+ 
+ 			if(L.STASTR <= 15)
+ 				L.adjustBruteLoss(60)
+ 				L.Knockdown(5)
+-				to_chat(L, "<span class='userdanger'>You're magically weighed down, losing your footing!</span>")
++				to_chat(L, "<span class='userdanger'>魔力重压猛然加身，我脚下一滑，站立不稳！</span>")
+ 			else
+ 				L.OffBalance(10)
+ 				L.adjustBruteLoss(15)
+-				to_chat(L, "<span class='userdanger'>You're magically weighed down, and your strength resist!</span>")
++				to_chat(L, "<span class='userdanger'>魔力重压压在我身上，但我勉强顶住了！</span>")
+ 			
+ 			
+ 	return TRUE
+ /obj/effect/temp_visual/gravity
+ 	icon = 'icons/effects/effects.dmi'
+ 	icon_state = "hierophant_squares"
+-	name = "gravity magic"
+-	desc = "Get out of the way!"
++	name = "重压魔力"
++	desc = "快闪开！"
+ 	randomdir = FALSE
+ 	duration = 3 SECONDS
+ 	layer = MASSIVE_OBJ_LAYER
+@@ -76,8 +76,8 @@
+ 	icon = 'icons/effects/effects.dmi'
+ 	icon_state = "hierophant_blast"
+ 	dir = NORTH
+-	name = "rippling arcyne energy"
+-	desc = "Get out of the way!"
++	name = "荡开的奥术波纹"
++	desc = "快闪开！"
+ 	randomdir = FALSE
+ 	duration = 5 SECONDS
+ 	layer = MASSIVE_OBJ_LAYER
+-- 
+Translation Patch Toolkit

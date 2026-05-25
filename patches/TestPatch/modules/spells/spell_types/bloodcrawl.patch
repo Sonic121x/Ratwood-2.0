@@ -1,0 +1,40 @@
+From 5cc887857df813e5262108a8dbde6efdd7d8eaf7 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/bloodcrawl.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/bloodcrawl.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/bloodcrawl.dm b/code/modules/spells/spell_types/bloodcrawl.dm
+index ab47dda42ebe..c879961bed7b 100644
+--- a/code/modules/spells/spell_types/bloodcrawl.dm
++++ b/code/modules/spells/spell_types/bloodcrawl.dm
+@@ -1,5 +1,5 @@
+ /obj/effect/proc_holder/spell/bloodcrawl
+-	name = "Blood Crawl"
++	name = "血爬"
+ 	desc = ""
+ 	recharge_time = 0
+ 	clothes_req = FALSE
+@@ -19,7 +19,7 @@
+ 			perform(target)
+ 			return
+ 	revert_cast()
+-	to_chat(user, span_warning("There must be a nearby source of blood!"))
++	to_chat(user, span_warning("附近必须有可供穿行的血源！"))
+ 
+ /obj/effect/proc_holder/spell/bloodcrawl/perform(obj/effect/decal/cleanable/target, recharge = 1, mob/living/user = usr)
+ 	if(istype(user))
+@@ -32,4 +32,4 @@
+ 		start_recharge()
+ 		return
+ 	revert_cast()
+-	to_chat(user, span_warning("I are unable to blood crawl!"))
++	to_chat(user, span_warning("我无法施展血爬！"))
+-- 
+Translation Patch Toolkit

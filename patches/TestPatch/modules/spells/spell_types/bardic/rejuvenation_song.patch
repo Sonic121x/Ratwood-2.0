@@ -1,0 +1,39 @@
+From 5912f02277cc548b9290a4e6ca8d6513e5b8cbf0 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/bardic/rejuvenation_song.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/bardic/rejuvenation_song.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/bardic/rejuvenation_song.dm b/code/modules/spells/spell_types/bardic/rejuvenation_song.dm
+index f796928a4138..7aceb0bc9f77 100644
+--- a/code/modules/spells/spell_types/bardic/rejuvenation_song.dm
++++ b/code/modules/spells/spell_types/bardic/rejuvenation_song.dm
+@@ -1,8 +1,8 @@
+ /obj/effect/proc_holder/spell/invoked/song/rejuvenation_song
+-	name = "Healing Hymn"
+-	desc = "Recuperate your allies bodies with your song! Refills health slowly over time!"
++	name = "愈疗圣咏"
++	desc = "以歌声疗愈盟友的身躯！会在一段时间内缓慢恢复生命。"
+ 	song_tier = 3
+-	invocations = list("Broken bones mend, flesh knits, to the hymn!") 
++	invocations = list("断骨愈合，血肉重连，皆随此歌而复原！") 
+ 	invocation_type = "shout"
+ 	overlay_state = "melody_t3_base"
+ 	action_icon_state = "melody_t3_base"
+@@ -18,7 +18,7 @@
+ 		return TRUE
+ 	else
+ 		revert_cast()
+-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
++		to_chat(user, span_warning("我必须先演奏起来，才能鼓舞我的听众！"))
+ 		return
+ 
+ 
+-- 
+Translation Patch Toolkit

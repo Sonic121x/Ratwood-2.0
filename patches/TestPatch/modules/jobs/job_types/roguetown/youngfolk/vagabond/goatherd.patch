@@ -1,0 +1,29 @@
+From e4c71c698b8a9743ec5b2c462d6754471128f136 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/vagabond/goatherd.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/youngfolk/vagabond/goatherd.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/goatherd.dm b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/goatherd.dm
+index 59853b19409f..f45c0c7599a0 100644
+--- a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/goatherd.dm
++++ b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/goatherd.dm
+@@ -1,7 +1,7 @@
+ /datum/advclass/vagabond_goatherd
+-	name = "Lone Herder"
+-	examine_name = "Beggar"
+-	tutorial = "Having lost your idyllic pastoral existence, only a solitary member of your herd now remains as a reminder of what was. Is your sole charge a friend, or is it food? You decide."
++	name = "孤牧人"
++	examine_name = "乞丐"
++	tutorial = "你那安逸的牧野生活早已不复存在，如今只剩羊群里孤零零的一只，提醒着你曾经拥有什么。它是朋友，还是粮食？由你决定。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/vagabond/goatherd
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,37 @@
+From 0e0e4427681a7c08b5101621fa8b851d1e029371 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/godhand.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/godhand.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/godhand.dm b/code/modules/spells/spell_types/godhand.dm
+index 98557e9b5bc7..d473534f31ac 100644
+--- a/code/modules/spells/spell_types/godhand.dm
++++ b/code/modules/spells/spell_types/godhand.dm
+@@ -1,7 +1,7 @@
+ /obj/item/melee/touch_attack
+-	name = "\improper outstretched hand"
++	name = "\improper 伸出的手掌"
+ 	desc = ""
+-	var/catchphrase = "High Five!"
++	var/catchphrase = "击掌！"
+ 	var/on_use_sound = null
+ 	var/obj/effect/proc_holder/spell/targeted/touch/attached_spell
+ 	icon = 'icons/obj/balloons.dmi'
+@@ -25,7 +25,7 @@
+ 	if(!iscarbon(user)) //Look ma, no hands
+ 		return
+ 	if(!(user.mobility_flags & MOBILITY_USE))
+-		to_chat(user, "<span class='warning'>I can't reach out!</span>")
++		to_chat(user, "<span class='warning'>我伸不出手！</span>")
+ 		return
+ 	..()
+ 
+-- 
+Translation Patch Toolkit

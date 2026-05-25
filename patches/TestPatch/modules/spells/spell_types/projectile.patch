@@ -1,0 +1,54 @@
+From 1d38ef66f5556f8ce667919c72f8ee24e6c406cb Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/spells/spell_types/projectile.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/spells/spell_types/projectile.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/spells/spell_types/projectile.dm b/code/modules/spells/spell_types/projectile.dm
+index 82235391b858..0c2965790453 100644
+--- a/code/modules/spells/spell_types/projectile.dm
++++ b/code/modules/spells/spell_types/projectile.dm
+@@ -1,7 +1,7 @@
+ 
+ 
+ /obj/projectile/magic/spell
+-	name = "custom spell projectile"
++	name = "自定义法术投射物"
+ 	var/list/ignored_factions //Do not hit these
+ 	var/check_holy = FALSE
+ 	var/check_antimagic = FALSE
+@@ -55,7 +55,7 @@
+ //NEEDS MAJOR CODE CLEANUP.
+ 
+ /obj/effect/proc_holder/spell/targeted/projectile
+-	name = "Projectile"
++	name = "投射法术"
+ 	desc = ""
+ 
+ 
+@@ -67,7 +67,7 @@
+ 	//Below only apply if update_projectile is true
+ 	var/proj_icon = 'icons/obj/projectiles.dmi'
+ 	var/proj_icon_state = "spell"
+-	var/proj_name = "Magic Missle"
++	var/proj_name = "魔法飞弹"
+ 	var/proj_trail = TRUE //if it leaves a trail
+ 	var/proj_trail_lifespan = 3 //deciseconds
+ 	var/proj_trail_icon = 'icons/obj/wizard.dmi'
+@@ -118,7 +118,7 @@
+ 
+ //This one just pops one projectile in direction user is facing, irrelevant of max_targets etc
+ /obj/effect/proc_holder/spell/targeted/projectile/dumbfire
+-	name = "Dumbfire projectile"
++	name = "直射投射物"
+ 
+ /obj/effect/proc_holder/spell/targeted/projectile/dumbfire/choose_targets(mob/user = usr)
+ 	var/turf/T = get_turf(user)
+-- 
+Translation Patch Toolkit
