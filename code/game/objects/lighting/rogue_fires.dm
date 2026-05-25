@@ -63,7 +63,7 @@
 /obj/machinery/light/rogue/firebowl/stump
 	icon_state = "stumpfire1"
 	base_state = "stumpfire"
-	desc = "Somewhat crude, but it lights the long winding paths throughout the land."
+	desc = "有些简陋，却照亮了这片土地上蜿蜒漫长的小路。"
 
 /obj/machinery/light/rogue/firebowl/church
 	desc = "一个宽阔的金属火盆，架在底座上，燃起旺盛的火焰。"
