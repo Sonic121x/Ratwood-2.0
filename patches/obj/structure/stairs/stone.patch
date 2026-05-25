@@ -1,0 +1,28 @@
+From aba6a7b8143c1a17e23fd8f6679d968a1b6261f3 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:26:48 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20stone=20stairs?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/stairs.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/stairs.dm b/code/game/objects/structures/stairs.dm
+index 93645b2291..ed7cbc3c68 100644
+--- a/code/game/objects/structures/stairs.dm
++++ b/code/game/objects/structures/stairs.dm
+@@ -57,7 +57,7 @@
+ 	return FALSE
+ 
+ /obj/structure/stairs/stone
+-	name = "stone stairs"
++	name = "石阶"
+ 	icon = 'icons/obj/stairs.dmi'
+ 	icon_state = "stonestairs"
+ 	max_integrity = 600
+-- 
+2.53.0
+

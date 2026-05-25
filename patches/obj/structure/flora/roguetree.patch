@@ -1,0 +1,30 @@
+From de1bf0b584f7bba93a33c23280003ba6d37c2dfd Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:49:08 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=8F=A4=E6=A0=91?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguetown/rogueflora.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/roguetown/rogueflora.dm b/code/game/objects/structures/roguetown/rogueflora.dm
+index 0d6940b2e0..f7bd4bae39 100644
+--- a/code/game/objects/structures/roguetown/rogueflora.dm
++++ b/code/game/objects/structures/roguetown/rogueflora.dm
+@@ -2,8 +2,8 @@
+ //newtree
+ 
+ /obj/structure/flora/roguetree
+-	name = "old tree"
+-	desc = "An old wicked tree that not even elves could love."
++	name = "古树"
++	desc = "一棵连精灵都爱不起来的古老邪树。"
+ 	icon = 'icons/roguetown/misc/foliagetall.dmi'
+ 	icon_state = "t1"
+ 	opacity = 1
+-- 
+2.53.0
+

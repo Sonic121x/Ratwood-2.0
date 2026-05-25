@@ -1,0 +1,30 @@
+From f6d7a2c8a4f535302f4b28c5e6ace2a3429598ed Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:45:43 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=81=AB=E6=8A=8A=E6=9E=B6?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/lighting/rogue_fires.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/lighting/rogue_fires.dm b/code/game/objects/lighting/rogue_fires.dm
+index 00fa7c456c..c8219b384f 100644
+--- a/code/game/objects/lighting/rogue_fires.dm
++++ b/code/game/objects/lighting/rogue_fires.dm
+@@ -317,8 +317,8 @@
+ 	bulb_colour = "#ff13d8ff"
+ 
+ /obj/machinery/light/rogue/torchholder
+-	name = "sconce"
+-	desc = "A wall-mounted fixture that allows a torch to illuminate the area while freeing the hands for other tasks."
++	name = "壁式火把架"
++	desc = "一个安装在墙上的装置，可将火把置于其上照亮周围，同时腾出双手从事其他工作。"
+ 	icon_state = "torchwall1"
+ 	var/torch_off_state = "torchwall0"
+ 	base_state = "torchwall"
+-- 
+2.53.0
+

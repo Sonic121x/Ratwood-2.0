@@ -1,0 +1,49 @@
+From e24b6e7ecfe2f40f6b4f1163555ab2b47b6863c4 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:30:05 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=A2=99=E4=BD=93=E7=9A=84?=
+ =?UTF-8?q?=E6=A3=80=E8=A7=86=E6=96=87=E6=9C=AC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/closed/_closed.dm | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/code/game/turfs/closed/_closed.dm b/code/game/turfs/closed/_closed.dm
+index 8f0dce7e65..7709a08513 100644
+--- a/code/game/turfs/closed/_closed.dm
++++ b/code/game/turfs/closed/_closed.dm
+@@ -313,20 +313,20 @@
+ 	if(wallclimb)
+ 		var/skill = user.get_skill_level(/datum/skill/misc/climbing)
+ 		if(skill >= climbdiff)
+-			. += span_info("I <b>can</b> climb this wall.")
++			. += span_info("我<b>可以</b>爬上这堵墙。")
+ 			if(skill == 6)
+-				. += span_info("I <b>can</b> move along the ledge here.")
++				. += span_info("我<b>可以</b>沿着这里的岩架移动。")
+ 			else if(skill > climbdiff)
+-				. += span_info("I <b>can</b> move along the ledge here.")
++				. += span_info("我<b>可以</b>沿着这里的岩架移动。")
+ 			else
+-				. += span_info("I <b>cannot</b> move along the ledge here.")
++				. += span_info("我<b>不能</b>沿着这里的岩架移动。")
+ 		else if(abs(skill - climbdiff) == 1)
+-			. += span_info("I cannot climb this wall, but I could with the help of a table or a chair.")
+-			. += span_info("I <b>cannot</b> move along the ledge here.")
++			. += span_info("我爬不上这堵墙，但借助桌子或椅子也许可以。")
++			. += span_info("我<b>不能</b>沿着这里的岩架移动。")
+ 		else
+-			. += span_info("I <b>cannot</b> climb this wall.")
++			. += span_info("我<b>不能</b>爬上这堵墙。")
+ 	else
+-		. += span_info("This wall cannot be climbed.")
++		. += span_info("这堵墙无法攀爬。")
+ 
+ /turf/closed/attack_ghost(mob/dead/observer/user)
+ 	if(!user.Adjacent(src))
+-- 
+2.53.0
+

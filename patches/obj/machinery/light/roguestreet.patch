@@ -1,0 +1,28 @@
+From ffd772f8cccaa8ac6b4d144ba4740118cecaa325 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:18:55 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=A1=97=E7=81=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/lighting/_base_roguestreet.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/lighting/_base_roguestreet.dm b/code/game/objects/lighting/_base_roguestreet.dm
+index 3329bdcdd5..7bc11f34b8 100644
+--- a/code/game/objects/lighting/_base_roguestreet.dm
++++ b/code/game/objects/lighting/_base_roguestreet.dm
+@@ -1,6 +1,6 @@
+ /obj/machinery/light/roguestreet
+-	name = "street lamp" // Crafted through metalizing brazier(/obj/machinery/light/rogue/firebowl) and Standing Fire (/obj/machinery/light/rogue/firebowl/standing)
+-	desc = "An obelisk of caste iron with an eerily glowing lamp attached to it. A promise of new technology at the dawn of a new age."
++	name = "街灯" // Crafted through metalizing brazier(/obj/machinery/light/rogue/firebowl) and Standing Fire (/obj/machinery/light/rogue/firebowl/standing)
++	desc = "一座铸铁方尖碑，上面附着一盏发出诡异光芒的灯。这是新时代曙光中新技术的前景。"
+ 	icon = 'icons/roguetown/misc/tallstructure.dmi'
+ 	icon_state = "slamp1"
+ 	base_state = "slamp"
+-- 
+2.53.0
+

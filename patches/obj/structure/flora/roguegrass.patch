@@ -1,0 +1,30 @@
+From d6fe3bdc8e7d5898774309c560499df77ed2f9ba Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:30:54 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=8D=89?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguetown/rogueflora.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/roguetown/rogueflora.dm b/code/game/objects/structures/roguetown/rogueflora.dm
+index 0d6940b2e0..aeeee3131a 100644
+--- a/code/game/objects/structures/roguetown/rogueflora.dm
++++ b/code/game/objects/structures/roguetown/rogueflora.dm
+@@ -400,8 +400,8 @@
+ //newbushes
+ 
+ /obj/structure/flora/roguegrass
+-	name = "grass"
+-	desc = "Green, soft, and lively."
++	name = "草"
++	desc = "翠绿、柔软，充满生机。"
+ 	icon = 'icons/roguetown/misc/foliage.dmi'
+ 	icon_state = "grass1"
+ 	attacked_sound = "plantcross"
+-- 
+2.53.0
+

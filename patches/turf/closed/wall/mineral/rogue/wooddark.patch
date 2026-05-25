@@ -1,0 +1,31 @@
+From 3162d01d879b446e15a406f7c22af4c3758374db Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:43:49 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B7=B1=E8=89=B2=E6=9C=A8?=
+ =?UTF-8?q?=E5=A2=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/closed/wall/roguewalls.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/closed/wall/roguewalls.dm b/code/game/turfs/closed/wall/roguewalls.dm
+index c191948243..03a9f8cebe 100644
+--- a/code/game/turfs/closed/wall/roguewalls.dm
++++ b/code/game/turfs/closed/wall/roguewalls.dm
+@@ -213,8 +213,8 @@
+ 	spread_chance = 9
+ 
+ /turf/closed/wall/mineral/rogue/wooddark
+-	name = "dark wood wall"
+-	desc = "Made from durable, somewhat darker wood." // i am not sure if the wood is really dark
++	name = "深色木墙"
++	desc = "由结实、色泽略深的木头制成。"
+ 	icon = 'icons/turf/roguewall.dmi'
+ 	icon_state = "corner"
+ 	smooth = SMOOTH_FALSE
+-- 
+2.53.0
+

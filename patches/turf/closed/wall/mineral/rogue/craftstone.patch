@@ -1,0 +1,30 @@
+From 70bbe802b21e4f5401c7854f58f6f47c9e6e4514 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:19:53 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=9F=B3=E5=A2=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/closed/wall/roguewalls.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/closed/wall/roguewalls.dm b/code/game/turfs/closed/wall/roguewalls.dm
+index c191948243..a105b8b4d4 100644
+--- a/code/game/turfs/closed/wall/roguewalls.dm
++++ b/code/game/turfs/closed/wall/roguewalls.dm
+@@ -113,8 +113,8 @@
+ 	return FALSE
+ 
+ /turf/closed/wall/mineral/rogue/craftstone
+-	name = "stone wall"
+-	desc = "A durable wall made from specially-crafted stone."
++	name = "石墙"
++	desc = "一堵由特制石块砌成的坚固墙壁。"
+ 	icon = 'icons/turf/walls/craftstone.dmi'
+ 	icon_state = "box"
+ 	smooth = SMOOTH_MORE
+-- 
+2.53.0
+

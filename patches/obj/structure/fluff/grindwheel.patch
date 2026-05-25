@@ -1,0 +1,37 @@
+From 76ee9a756e0a5f437f3b4f83bf6be88aec32f48c Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 23:02:53 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=A3=A8=E8=BD=AE?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguejobs/blacksmith/grindwheel.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/roguetown/roguejobs/blacksmith/grindwheel.dm b/code/modules/roguetown/roguejobs/blacksmith/grindwheel.dm
+index 8498db020e..2a63ff6e56 100644
+--- a/code/modules/roguetown/roguejobs/blacksmith/grindwheel.dm
++++ b/code/modules/roguetown/roguejobs/blacksmith/grindwheel.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/fluff/grindwheel
+-	name = "grinding wheel"
+-	desc = "Steadily hums when operated, a massive wheel of grinding stone."
++	name = "磨轮"
++	desc = "运转时发出稳定的嗡嗡声，一块巨大的磨石轮。"
+ 	icon = 'icons/roguetown/misc/forge.dmi'
+ 	icon_state = "grindwheel"
+ 	density = TRUE
+@@ -20,7 +20,7 @@
+ 		playsound(src, pick('sound/misc/slide_wood (2).ogg', 'sound/misc/slide_wood (1).ogg'), 100, FALSE)
+ 		if(do_after(user, wood_time, target = src))
+ 			if(prob(max(40 - (skill_level * 10), 0)) || !skill_level) //Chance maxes at level 4
+-				to_chat(user, span_info("Curses! I ruined this piece of wood..."))
++				to_chat(user, span_info("该死！我把这块木头弄坏了……"))
+ 				playsound(src,'sound/combat/hits/onwood/destroyfurniture.ogg', 100, FALSE)
+ 			else
+ 				new /obj/item/natural/wood/plank(get_turf(src))
+-- 
+2.53.0
+
