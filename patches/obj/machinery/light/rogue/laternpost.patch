@@ -1,0 +1,28 @@
+From f92bb8d7b1a2288d7e4f2c133bb81048d3455022 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:28:24 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=81=AF=E7=AC=BC=E6=9F=B1?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/lighting/lantern_post.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/lighting/lantern_post.dm b/code/game/objects/lighting/lantern_post.dm
+index 400d3d6d63..6eaf7d0f31 100644
+--- a/code/game/objects/lighting/lantern_post.dm
++++ b/code/game/objects/lighting/lantern_post.dm
+@@ -1,6 +1,6 @@
+ /obj/machinery/light/rogue/lanternpost
+-	name = "lantern post"
+-	desc = "A small lamptern dangles from a wooden post. The metal frame around the inner flame casts shadows on its surroundings."
++	name = "灯笼柱"
++	desc = "一盏小灯笼悬挂在木柱上。火焰周围的金属框架向四周投下斑驳的影子。"
+ 	icon = 'icons/roguetown/misc/tallstructure.dmi'
+ 	icon_state = "streetlantern1"
+ 	base_state = "streetlantern"
+-- 
+2.53.0
+
