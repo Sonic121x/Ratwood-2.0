@@ -5,8 +5,8 @@
 #define OIL_CONSUMED 5 // Amount of oil consumed per deep fry (1 fat = 4 fry)
 
 /obj/machinery/light/rogue/firebowl
-	name = "brazier"
-	desc = "A solid stone brazier. It's as sturdy as the mountains themselves."
+	name = "火盆"
+	desc = "一个坚固的石制火盆，像山岳一样牢靠。"
 	icon = 'icons/roguetown/misc/lighting.dmi'
 	icon_state = "stonefire1"
 	bulb_colour = "#ffa35c"
@@ -40,7 +40,7 @@
 		var/mob/living/carbon/human/H = user
 
 		if(istype(H))
-			H.visible_message("<span class='info'>[H] warms [user.p_their()] hand over the fire.</span>")
+			H.visible_message("<span class='info'>[H]在火边暖手。</span>")
 
 			if(do_after(H, 15, target = src) && H.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT - 75)
 				H.adjust_bodytemperature(75)
@@ -48,8 +48,8 @@
 
 	else
 		if(icon_state == "[base_state]over")
-			user.visible_message("<span class='notice'>[user] starts to pick up [src]...</span>", \
-				"<span class='notice'>I start to pick up [src]...</span>")
+			user.visible_message("<span class='notice'>[user]开始搬起[src]...</span>", \
+				"<span class='notice'>我开始搬起[src]...</span>")
 			if(do_after(user, 30, target = src))
 				icon_state = "[base_state]0"
 			return
