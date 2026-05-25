@@ -224,8 +224,8 @@
 	return ..()
 
 /obj/structure/flora/roguetree/burnt
-	name = "burnt tree"
-	desc = "Maybe lightning, maybe war, took the life of this once lively tree."
+	name = "烧焦的树"
+	desc = "也许是闪电，也许是战火，夺去了这棵曾经生机勃勃的树木的生命。"
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "t1"
 	stump_type = /obj/structure/flora/roguetree/stump/burnt
