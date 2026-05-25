@@ -186,8 +186,8 @@
 	cookonme = TRUE
 
 /obj/machinery/light/rogue/candle
-	name = "candles"
-	desc = "Tiny flames flicker to the slightest breeze and offer enough light to see."
+	name = "蜡烛"
+	desc = "微弱的火焰随风摇曳，提供足够的光亮让人看清周围。"
 	icon_state = "wallcandle1"
 	base_state = "wallcandle"
 	crossfire = FALSE
