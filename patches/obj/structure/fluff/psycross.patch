@@ -1,0 +1,37 @@
+From 9699b53a5d29a8de1e517804725668d7d8b6e8d4 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:37:29 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=8D=81=E5=AD=97=E6=9E=B6?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/fluff.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/fluff.dm b/code/game/objects/structures/fluff.dm
+index 9c082a99c0..4a415bdd04 100644
+--- a/code/game/objects/structures/fluff.dm
++++ b/code/game/objects/structures/fluff.dm
+@@ -1201,7 +1201,7 @@
+ 	..()
+ 
+ /obj/structure/fluff/psycross
+-	name = "pantheon cross"
++	name = "万神殿十字架"
+ 	icon_state = "psycross"
+ 	icon = 'icons/roguetown/misc/tallstructure.dmi'
+ 	break_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+@@ -1212,7 +1212,7 @@
+ 	layer = BELOW_MOB_LAYER
+ 	max_integrity = 100
+ 	var/chance2hear = 30
+-	buckleverb = "crucifie"
++	buckleverb = "钉上十字架"
+ 	can_buckle = 1
+ 	buckle_lying = 0
+ 	breakoutextra = 10 MINUTES
+-- 
+2.53.0
+
