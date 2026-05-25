@@ -1,0 +1,30 @@
+From 702a7df4a810e412d46a944ec4e320c2049f69d7 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:25:03 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20mossy=20cobblestone?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..1b756b1af6 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -1356,8 +1356,8 @@
+ 	icon_state = "cobblestone[rand(1,3)]"
+ 
+ /turf/open/floor/rogue/cobble/mossy
+-	name = "mossy cobblestone"
+-	desc = "Dirt and moss have crept between the gaps of this stone-brick flooring."
++	name = "长满苔藓的鹅卵石"
++	desc = "泥土和苔藓爬满了这石砖地面的缝隙。"
+ 	icon_state = "mossystone1"
+ 	footstep = FOOTSTEP_STONE
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+-- 
+2.53.0
+
