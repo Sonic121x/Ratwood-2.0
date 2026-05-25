@@ -214,8 +214,8 @@
 	spread_chance = 9
 
 /turf/closed/wall/mineral/rogue/wooddark
-	name = "dark wood wall"
-	desc = "Made from durable, somewhat darker wood." // i am not sure if the wood is really dark
+	name = "深色木墙"
+	desc = "由结实、色泽略深的木头制成。"
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "corner"
 	smooth = SMOOTH_FALSE
