@@ -1,7 +1,7 @@
 // Lesser miracle
 /obj/effect/proc_holder/spell/invoked/lesser_heal
-	name = "Miracle"
-	desc = "Heals target over time, causes damage if something is embedded in target. Burns undead instead of healing them if you worship the Ten.<br>Does not work on those worshipping the dead god."
+	name = "奇迹"
+	desc = "随时间治疗目标，若目标体内有异物嵌入则会造成伤害。若你信仰十神，则可灼烧亡灵而非治疗。<br>对信仰已死之神的对象无效。"
 	overlay_state = "lesserheal"
 	releasedrain = 30
 	chargedrain = 0
@@ -35,19 +35,19 @@
 				C.apply_status_effect(/datum/status_effect/buff/fortify)
 
 	if(HAS_TRAIT(target, TRAIT_PSYDONITE))
-		target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+		target.visible_message(span_info("[target]动了动，奇迹消散了。"), span_notice("一阵迟钝的暖意在你心中膨胀，却又转瞬即逝。"))
 		user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 		playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 		return FALSE
 
 	if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD))
-		target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+		target.visible_message(span_danger("[target]被圣光灼伤！"), span_userdanger("我被圣光灼伤了！"))
 		target.adjustFireLoss(10)
 		target.fire_act(1, 10)
 		return TRUE
 
 	if(target.has_status_effect(/datum/status_effect/buff/healing))
-		to_chat(user, span_warning("They are already under the effects of a healing aura!"))
+		to_chat(user, span_warning("目标已受到治疗光环的影响！"))
 		revert_cast()
 		return FALSE
 
@@ -55,8 +55,8 @@
 	var/situational_bonus = 1
 	var/is_inhumen = FALSE
 
-	var/message_out = span_info("A choral sound comes from above and [target] is healed!")
-	var/message_self = span_notice("I am bathed in healing choral hymns!")
+	var/message_out = span_info("一阵合唱自天穹传来，[target]获得了治愈！")
+	var/message_self = span_notice("我沐浴在治愈的合唱圣诗中！")
 
 	user.patron.on_lesser_heal(user, target, &message_out, &message_self, &conditional_buff, &situational_bonus, &is_inhumen)
 
@@ -64,7 +64,7 @@
 
 	if(conditional_buff)
 		if(situational_bonus > 0)
-			to_chat(user, "Channeling my patron's power is easier in these conditions!")
+			to_chat(user, "在这样的环境下引导我神的力量更加容易！")
 		healing += situational_bonus
 
 	if(!ishuman(target))
@@ -83,7 +83,7 @@
 		break
 
 	if(!no_embeds)
-		target.visible_message("The wounds tear and rip around the embedded objects!", "Agonising pain shoots through your body as magycks try to sew around the embedded objects!")
+		target.visible_message("嵌入的物体周围的伤口撕裂开来！", "当魔法试图绕过嵌入的物体缝合时，剧痛贯穿你的身体！")
 		human.adjustBruteLoss(20)
 		playsound(target, 'sound/combat/dismemberment/dismem (2).ogg', 100)
 		human.emote("agony")
