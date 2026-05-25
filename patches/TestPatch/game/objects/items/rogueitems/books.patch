@@ -485,23 +485,6 @@ index e8d0de34243c..f81d5adcd60c 100644
 +		if(alert("确认？:\n标题：[player_book_title]\n作者：[player_book_author]\n封面：[player_book_icon]", "", "是", "否") == "否")
  			player_book_author_ckey = null
  		message_admins("[player_book_author_ckey]([in_round_player_mob.real_name]) has generated the player book: [player_book_title]")
-+
-+	name = "[player_book_title]"
-+	desc = "作者：[player_book_author]"
-+	icon_state = "[player_book_icon]_0"
-+	base_icon_state = "[player_book_icon]"
-+	pages = list("<b3><h3>Title: [player_book_title]<br>Author: [player_book_author]</b><h3>[player_book_text]")
-+
-+/obj/item/book/rogue/playerbook/proc/pick_random_book()
-+	var/list/player_book_titles = SSlibrarian.pull_player_book_titles()
-+	var/list/chosen_book = SSlibrarian.file2playerbook(pick(player_book_titles))
-+
-+	player_book_title = chosen_book["book_title"]
-+	player_book_author = chosen_book["author"]
-+	player_book_author_ckey = chosen_book["author_ckey"]
-+	player_book_icon = chosen_book["icon"]
-+	player_book_text = chosen_book["text"]
- 
  	name = "[player_book_title]"
  	desc = "By [player_book_author]"
 @@ -548,7 +548,7 @@
