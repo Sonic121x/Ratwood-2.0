@@ -66,7 +66,7 @@ index 52571b4447..c0764b5555 100644
 +	tutorial = "你是一位高贵的武勋领主。无论是身先士卒率领部下，还是与他们并肩作战，你都是凭借自身的卓越力量与精湛武艺一步步登此高位。又或许你并非草莽出身，而是一位接受过严格训练、顺理成章继承大统的贵族子嗣。你精通重甲的使用之道，且对剑术剑理了如指掌。"
  	outfit = /datum/outfit/job/roguetown/lord/warrior
  	category_tags = list(CTAG_LORD)
- 	traits_applied = list(TRAIT_NOBLE, TRAIT_DNR, TRAIT_HEAVYARMOR)
+ 	traits_applied = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR)
 @@ -177,9 +177,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
  	Has a high noble income plus a starting pouch with insane amount of money.
  */
@@ -90,7 +90,7 @@ index 52571b4447..c0764b5555 100644
 +	tutorial = "一位优秀的统治者必定有强权作为后盾。而你，恰好对这片大陆上最强大的力量运用自如——那就是魔法。当然，为了治理领地，你无法像那些隐世的传奇巫师一样潜心钻研奥秘，但正是凭借这手狡黠多变的巫术，才让你稳稳地坐上了这尊王座。"
  	outfit = /datum/outfit/job/roguetown/lord/wizard
  	category_tags = list(CTAG_LORD)
- 	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_DNR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
+ 	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
 @@ -262,8 +262,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
  	can get into heavy armor and try to fight is hilarious.
  */
@@ -101,7 +101,7 @@ index 52571b4447..c0764b5555 100644
 +	tutorial = "赛顿与阿斯特拉塔正对你展露微笑。因为尽管你因近亲结婚而身体孱弱、畸形丑陋，且面对着整个家族企图剥夺你继承权的重重阴谋，你最终居然奇迹般地成为了烂木谷的领主。愿你的统治能延续百年。"
  	outfit = /datum/outfit/job/roguetown/lord/inbred
  	category_tags = list(CTAG_LORD)
- 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_DNR, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)
+ 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)
 -- 
 2.51.0.windows.2
 
