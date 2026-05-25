@@ -1,0 +1,109 @@
+From 6474dcd472a6babcd79a337f3be4db8e81059e9f Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:35:21 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=81=8C=E6=9C=A8=E4=B8=9B?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../structures/roguetown/rogueflora.dm        | 26 +++++++++----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/code/game/objects/structures/roguetown/rogueflora.dm b/code/game/objects/structures/roguetown/rogueflora.dm
+index 0d6940b2e0..887e0aea4b 100644
+--- a/code/game/objects/structures/roguetown/rogueflora.dm
++++ b/code/game/objects/structures/roguetown/rogueflora.dm
+@@ -469,8 +469,8 @@
+ 
+ 
+ /obj/structure/flora/roguegrass/bush
+-	name = "bush"
+-	desc = "A bush. It's crawling with spiders, but maybe there’s something useful inside..."
++	name = "灌木丛"
++	desc = "一丛灌木。上面爬满了蜘蛛，但也许里面藏着什么有用的东西..."
+ 	icon_state = "bush2"
+ 	layer = ABOVE_ALL_MOB_LAYER
+ 	var/res_replenish
+@@ -493,7 +493,7 @@
+ 						/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison=3,
+ 						/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed=1))
+ 		else
+-			desc += "Sadly, years of harvest inside this town have left it fruitless."
++			desc += "可惜，在这座城镇里多年的采摘已让它寸草不生。"
+ 	loot_replenish()
+ 	pixel_x += rand(-3,3)
+ 	return ..()
+@@ -512,7 +512,7 @@
+ 		var/mob/living/L = AM
+ 		if(L.m_intent == MOVE_INTENT_RUN && (L.mobility_flags & MOBILITY_STAND))
+ 			if(!ishuman(L))
+-				to_chat(L, span_warning("I'm cut on a thorn!"))
++				to_chat(L, span_warning("我被荆棘划伤了！"))
+ 				L.apply_damage(5, BRUTE)
+ 
+ 			else
+@@ -524,10 +524,10 @@
+ 						var/obj/item/natural/thorn/TH = new(src.loc)
+ 						BP.add_embedded_object(TH, silent = TRUE)
+ 						BP.receive_damage(10)
+-						to_chat(H, span_danger("\A [TH] impales my [BP.name]!"))
++						to_chat(H, span_danger("[TH]刺穿了我的[BP.name]！"))
+ 				else
+ 					var/obj/item/bodypart/BP = pick(H.bodyparts)
+-					to_chat(H, span_warning("A thorn [pick("slices","cuts","nicks")] my [BP.name]."))
++					to_chat(H, span_warning("一根荆棘[pick("划过","割破","划伤")]了我的[BP.name]。"))
+ 					BP.receive_damage(10)
+ 
+ /obj/structure/flora/roguegrass/bush/attack_hand(mob/user)
+@@ -548,17 +548,17 @@
+ 				if(B)
+ 					B = new B(user.loc)
+ 					user.put_in_hands(B)
+-					user.visible_message(span_notice("[user] finds [B] in [src]."))
++					user.visible_message(span_notice("[user]在[src]中找到了[B]。"))
+ 					return
+-			user.visible_message(span_warning("[user] searches through [src]."))
++			user.visible_message(span_warning("[user]在[src]里摸索着。"))
+ 			if(looty.len)
+ 				attack_hand(user)
+ 			if(!looty.len)
+-				to_chat(user, span_warning("Picked clean... I should try later."))
++				to_chat(user, span_warning("被摘光了... 我该晚点再来。"))
+ 
+ /obj/structure/flora/roguegrass/bush/examine(mob/user)
+ 	. = ..()
+-	. += span_info("Some structures can be used as hiding places. Toggle the 'SNEAK' button on your HUD, then click the structure to hide in it. You can stop hiding by clicking the structure again, or by moving out of it.")
++	. += span_info("有些结构可以作为藏身之处。切换 HUD 上的“潜行”按钮，然后点击结构即可躲入其中。你可以通过再次点击该结构，或走出其中来停止躲藏。")
+ 
+ /obj/structure/flora/roguegrass/bush/proc/hideinside(mob/living/user)
+ 	var/sneak_level = user.get_skill_level(/datum/skill/misc/sneaking) || 0
+@@ -567,14 +567,14 @@
+ 		unhide(user)
+ 		return
+ 	if(occupied)
+-		to_chat(user, span_warning("Someone is already hiding in [src]!"))
++		to_chat(user, span_warning("已经有人藏在[src]里了！"))
+ 		return
+ 	if(!do_after(user, sneaktime, src))
+ 		return
+ 	user.forceMove(src)
+ 	occupied = TRUE
+ 	hiddenguy = user
+-	to_chat(user, span_warning("I hide in [src]!"))
++	to_chat(user, span_warning("我躲进了[src]！"))
+ 
+ /obj/structure/flora/roguegrass/bush/proc/unhide(mob/living/user)
+ 	var/turf/T = get_turf(src)
+@@ -582,7 +582,7 @@
+ 	user.forceMove(T)
+ 	occupied = FALSE
+ 	hiddenguy = null
+-	to_chat(user, span_warning("I come out from [src]!"))
++	to_chat(user, span_warning("我从[src]里出来了！"))
+ 
+ /obj/structure/flora/roguegrass/bush/relaymove(mob/user)
+ 	if(user.loc == src)
+-- 
+2.53.0
+
