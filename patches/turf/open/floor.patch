@@ -1,29 +1,16 @@
-From ab31067ea55da3a8b0faa8d167930c1555a14a81 Mon Sep 17 00:00:00 2001
+From f35a521b97f942210baa5b32ed6b7885d2a5305c Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Sun, 24 May 2026 20:33:06 +0800
-Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=9C=B0=E9=9D=A2?=
+Date: Mon, 25 May 2026 12:40:09 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=A7=BB=E9=99=A4=E9=94=99=E8=AF=AF=E5=8C=85?=
+ =?UTF-8?q?=E5=90=AB=E7=9A=84atom.dm?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- code/game/atoms.dm            | 2 +-
  code/game/turfs/open/floor.dm | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/code/game/atoms.dm b/code/game/atoms.dm
-index cb0eda2a78..e416693a41 100644
---- a/code/game/atoms.dm
-+++ b/code/game/atoms.dm
-@@ -374,7 +374,7 @@
-  * COMSIG_ATOM_GET_EXAMINE_NAME signal
-  */
- /atom/proc/get_examine_name(mob/user)
--	. = "\a [src]"
-+	. = "个[src]"
- 	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
- 	if(article)
- 		. = "[article] [src]"
 diff --git a/code/game/turfs/open/floor.dm b/code/game/turfs/open/floor.dm
 index 286f0842a9..1131818aaa 100644
 --- a/code/game/turfs/open/floor.dm
