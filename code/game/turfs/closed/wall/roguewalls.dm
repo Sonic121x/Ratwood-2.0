@@ -350,8 +350,8 @@
 	icon_state = "decowood-vert"
 
 /turf/closed/wall/mineral/rogue/decostone
-	name = "decorated stone wall"
-	desc = "The mason did an excellent job etching details into this wall."
+	name = "雕花石墙"
+	desc = "石匠在这面墙上雕刻了精美的细节。"
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "decostone-b"
 	smooth = SMOOTH_MORE
