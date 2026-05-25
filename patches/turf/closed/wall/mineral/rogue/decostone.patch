@@ -1,0 +1,31 @@
+From 6307e011101860f0cc64e32aed0680f8516b3c18 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:21:05 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=9B=95=E8=8A=B1=E7=9F=B3?=
+ =?UTF-8?q?=E5=A2=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/closed/wall/roguewalls.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/closed/wall/roguewalls.dm b/code/game/turfs/closed/wall/roguewalls.dm
+index c191948243..27b7b69968 100644
+--- a/code/game/turfs/closed/wall/roguewalls.dm
++++ b/code/game/turfs/closed/wall/roguewalls.dm
+@@ -349,8 +349,8 @@
+ 	icon_state = "decowood-vert"
+ 
+ /turf/closed/wall/mineral/rogue/decostone
+-	name = "decorated stone wall"
+-	desc = "The mason did an excellent job etching details into this wall."
++	name = "雕花石墙"
++	desc = "石匠在这面墙上雕刻了精美的细节。"
+ 	icon = 'icons/turf/roguewall.dmi'
+ 	icon_state = "decostone-b"
+ 	smooth = SMOOTH_MORE
+-- 
+2.53.0
+
