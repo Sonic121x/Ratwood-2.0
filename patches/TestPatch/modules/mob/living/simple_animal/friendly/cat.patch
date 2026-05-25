@@ -1,0 +1,29 @@
+From 56ad507dc32b293b7d09454aababe59faa8dfdae Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/simple_animal/friendly/cat.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/simple_animal/friendly/cat.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/mob/living/simple_animal/friendly/cat.dm b/code/modules/mob/living/simple_animal/friendly/cat.dm
+index 1da4f0394f1e..df2bb5562953 100644
+--- a/code/modules/mob/living/simple_animal/friendly/cat.dm
++++ b/code/modules/mob/living/simple_animal/friendly/cat.dm
+@@ -88,8 +88,8 @@
+ 	maxHealth = 5000
+ 
+ /mob/living/simple_animal/pet/cat/rogue/black
+-	name = "black cat"
+-	desc = "Possessed of lamplike eyes and a meow that sounds like the rattle of bones. Black cats are sacred to Necra, said to bring wandering spirits to the Carriageman."
++	name = "黑猫"
++	desc = "它有着灯火般的眼睛，叫声则像骨节相碰般喀啦作响。黑猫被视作 Necra 的圣兽，据说会将迷失的灵魂引向摆渡人。"
+ 	gender = FEMALE
+ 	icon = 'icons/roguetown/topadd/takyon/Cat.dmi'
+ 	icon_state = "cat"
+-- 
+Translation Patch Toolkit

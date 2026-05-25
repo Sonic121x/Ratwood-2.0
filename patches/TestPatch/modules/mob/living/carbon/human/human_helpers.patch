@@ -1,0 +1,86 @@
+From ef8465fd245bbd805f175e640d7f31a10441fc91 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/human_helpers.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/human_helpers.dm | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/human_helpers.dm b/code/modules/mob/living/carbon/human/human_helpers.dm
+index 117562a8afbd..fe1fb1a71828 100644
+--- a/code/modules/mob/living/carbon/human/human_helpers.dm
++++ b/code/modules/mob/living/carbon/human/human_helpers.dm
+@@ -24,12 +24,12 @@
+ 
+ //gets assignment from ID or ID inside PDA or PDA itself
+ //Useful when player do something with computers
+-/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job", hand_first = TRUE)
++/mob/living/carbon/human/proc/get_assignment(if_no_id = "无身份", if_no_job = "无职业", hand_first = TRUE)
+ 	return if_no_job
+ 
+ //gets name from ID or ID inside PDA or PDA itself
+ //Useful when player do something with computers
+-/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
++/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "未知")
+ 	return if_no_id
+ 
+ //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
+@@ -40,7 +40,7 @@
+ 		return name_override
+ 	if(face_name)
+ 		if(id_name && (id_name != face_name))
+-			return "Unknown [(gender == FEMALE) ? "Woman" : "Man"]"
++			return "未知[(gender == FEMALE) ? "女性" : "男性"]"
+ 		return face_name
+ 	if(id_name)
+ 		return id_name
+@@ -50,10 +50,10 @@
+ 	var/descriptor_name = "[trait_desc] [stature_desc]"
+ 	if(descriptor_name != " ")
+ 		return descriptor_name
+-	return "Unknown"
++	return "未知"
+ 
+ //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when Fluacided or when updating a human's name variable
+-/mob/living/carbon/human/proc/get_face_name(if_no_face="Unknown")
++/mob/living/carbon/human/proc/get_face_name(if_no_face="未知")
+ 	if( wear_mask && (wear_mask.flags_inv&HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
+ 		return if_no_face
+ 	if( head && (head.flags_inv&HIDEFACE) )
+@@ -71,7 +71,7 @@
+ 
+ //gets name from ID or PDA itself, ID inside PDA doesn't matter
+ //Useful when player is being seen by other mobs
+-/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
++/mob/living/carbon/human/proc/get_id_name(if_no_id = "未知")
+ 	. = if_no_id	//to prevent null-names making the mob unclickable
+ 	return
+ 
+@@ -97,10 +97,10 @@
+ 	. = ..()
+ 	if(G.trigger_guard == TRIGGER_GUARD_NORMAL)
+ 		if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) || HAS_TRAIT(src, TRAIT_GNARLYDIGITS))
+-			to_chat(src, span_warning("My meaty finger is much too large for the trigger guard!"))
++			to_chat(src, span_warning("我那粗壮的手指实在塞不进扳机护圈里！"))
+ 			return FALSE
+ 	if(HAS_TRAIT(src, TRAIT_NOGUNS))
+-		to_chat(src, span_warning("I can't bring myself to use a ranged weapon!"))
++		to_chat(src, span_warning("我实在没法逼自己去使用远程武器！"))
+ 		return FALSE
+ 
+ /mob/living/carbon/human/get_policy_keywords()
+@@ -220,7 +220,7 @@
+ 	animate(src, alpha = 0, time = 0 SECONDS, easing = EASE_IN)
+ 	src.mob_timers[MT_INVISIBILITY] = world.time + timeinvis
+ 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, update_sneak_invis), TRUE), timeinvis)
+-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[src] fades back into view."), span_notice("You become visible again.")), timeinvis)
++	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[src] 渐渐重新显现在众人眼前。"), span_notice("你重新显露了身形。")), timeinvis)
+ 
+ /mob/living/carbon/human/proc/create_walk_to(duration, mob/living/walk_to)
+ 	ADD_TRAIT(src, TRAIT_MOVEMENT_BLOCKED, VAMPIRE_TRAIT)
+-- 
+Translation Patch Toolkit

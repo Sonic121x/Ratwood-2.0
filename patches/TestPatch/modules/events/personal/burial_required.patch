@@ -1,0 +1,36 @@
+From 82ce9a0bab55bdda606602a220fd2103434a77d0 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/events/personal/burial_required.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/events/personal/burial_required.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/events/personal/burial_required.dm b/code/modules/events/personal/burial_required.dm
+index 8f669fdc93dc..6b80489d03ce 100644
+--- a/code/modules/events/personal/burial_required.dm
++++ b/code/modules/events/personal/burial_required.dm
+@@ -1,5 +1,5 @@
+ /datum/round_event_control/necra_burials
+-	name = "Burial Demand"
++	name = "葬仪之求"
+ 	track = EVENT_TRACK_PERSONAL
+ 	typepath = /datum/round_event/necra_burials
+ 	weight = 10
+@@ -47,8 +47,8 @@
+ 	var/datum/objective/proper_burial/new_objective = new(owner = chosen_one.mind)
+ 	chosen_one.mind.add_personal_objective(new_objective)
+ 
+-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
+-	to_chat(chosen_one, span_notice("Necra demands proper rites for the departed! Give enough corpses a proper burial to earn Necra's favor!"))
++	to_chat(chosen_one, span_userdanger("你是神明所选之人！"))
++	to_chat(chosen_one, span_notice("Necra 要求你为逝者施以得体的葬仪！为足够多的尸体举行安葬，方可赢得 Necra 的眷顾！"))
+ 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
+ 
+ 	chosen_one.mind.announce_personal_objectives()
+-- 
+Translation Patch Toolkit

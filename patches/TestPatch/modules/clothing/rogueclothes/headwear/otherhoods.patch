@@ -1,0 +1,29 @@
+From 574c306bde4e79e2fa5ab93ea71ab0be0000ff46 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/clothing/rogueclothes/headwear/otherhoods.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/headwear/otherhoods.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/headwear/otherhoods.dm b/code/modules/clothing/rogueclothes/headwear/otherhoods.dm
+index 64a6404661c5..5f14fba2eeb2 100644
+--- a/code/modules/clothing/rogueclothes/headwear/otherhoods.dm
++++ b/code/modules/clothing/rogueclothes/headwear/otherhoods.dm
+@@ -66,8 +66,8 @@
+ 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
+ 
+ /obj/item/clothing/head/roguetown/necramask
+-	name = "death mask"
+-	desc = "A hood with a decorated jaw bone at the chin, normally worn by some followers of Necra as a form of devotion"
++	name = "死者面具"
++	desc = "一顶在下巴处饰有颌骨装饰的兜帽，一些 Necra 的追随者会将其作为虔敬的象征佩戴。"
+ 	color = null
+ 	icon_state = "deathface"
+ 	item_state = "deathface"
+-- 
+Translation Patch Toolkit

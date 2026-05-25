@@ -1,0 +1,27 @@
+From ab1df4bbdb08447599bbcfa6f45cb4fcd8e5582d Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/furry/lupian.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/furry/lupian.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/furry/lupian.dm b/code/modules/mob/living/carbon/human/species_types/furry/lupian.dm
+index f5706ad6c57f..399cec4ad420 100644
+--- a/code/modules/mob/living/carbon/human/species_types/furry/lupian.dm
++++ b/code/modules/mob/living/carbon/human/species_types/furry/lupian.dm
+@@ -11,7 +11,7 @@
+ 	warriors to those who earn their loyalty. Thanks to their pack minded nature they are slow to trust the other races \
+ 	but form deep connections with those they do. In recent years they have been driven from the forests by unrest and the \
+ 	inevitable spread of the rot and pressed into cohabitation with races they'd deem lesser.<br>\
+-	(+1 Constitution, +1 Intelligence, Sleuth Trait)"
++	(+1 Constitution, +1 Intelligence, 追缉者特性)"
+ 
+ 	expanded_desc = "Lupians live under elective monarchies, forms of feudalism where the king of a pack is chosen from, and by, the military council. \
+ 	The leader of the pack is a philosopher king, a paragon of virtue and one who should inspire awe and loyalty among the population \
+-- 
+Translation Patch Toolkit

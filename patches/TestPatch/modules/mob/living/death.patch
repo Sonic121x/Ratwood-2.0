@@ -1,0 +1,27 @@
+From e17ead59b6e63315536e2beb636d42ad8e5be075 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/death.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/death.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/death.dm b/code/modules/mob/living/death.dm
+index 7ecb334e1a6b..18df4edfc8cc 100644
+--- a/code/modules/mob/living/death.dm
++++ b/code/modules/mob/living/death.dm
+@@ -169,7 +169,7 @@
+ 					if (HAS_TRAIT(player, TRAIT_CABAL))
+ 						to_chat(player, span_warning("I feel the faint passage of disjointed life essence as it flees [locale]."))
+ 					else
+-						to_chat(player, span_warning("Veiled whispers herald the Undermaiden's gaze in my mind's eye as it turn towards [locale] for but a brief, singular moment."))
++						to_chat(player, span_warning("朦胧低语在我心眼中预示着冥下侍女的目光，曾于转瞬之间投向 [locale]。"))
+ 	// AZURE EDIT END
+ 
+ 	return TRUE
+-- 
+Translation Patch Toolkit

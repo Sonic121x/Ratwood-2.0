@@ -1,0 +1,27 @@
+From a0fa10be477522580acaa4041d1939dd62517e15 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/paperwork/rogue.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/paperwork/rogue.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/paperwork/rogue.dm b/code/modules/paperwork/rogue.dm
+index 558b0c1cd9f6..4f635f7976d1 100644
+--- a/code/modules/paperwork/rogue.dm
++++ b/code/modules/paperwork/rogue.dm
+@@ -268,7 +268,7 @@
+ 
+ 	if(signedname)
+ 		info += "SIGNED,<br/>"
+-		info += "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[signedname] the [signedjob] of Rotwood Vale</font>"
++		info += "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>谷地的[signedjob] [signedname]</font>"
+ 
+ /obj/item/paper/inqslip
+ 	name = "inquisition slip"
+-- 
+Translation Patch Toolkit

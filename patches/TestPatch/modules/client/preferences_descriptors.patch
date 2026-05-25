@@ -1,0 +1,63 @@
+From fda9453263ba39ea094fdf899f61ca09ff4dc99d Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/client/preferences_descriptors.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/client/preferences_descriptors.dm | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/code/modules/client/preferences_descriptors.dm b/code/modules/client/preferences_descriptors.dm
+index 408d057b91c6..c7703cdc2d9a 100644
+--- a/code/modules/client/preferences_descriptors.dm
++++ b/code/modules/client/preferences_descriptors.dm
+@@ -56,7 +56,7 @@
+ 			for(var/desc_type in choice.descriptors)
+ 				var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
+ 				picklist[descriptor.name] = desc_type
+-			var/picked_descriptor_name = input(user, "Describe my [LOWER_TEXT(choice.name)]", "Describe myself") as null|anything in picklist
++			var/picked_descriptor_name = input(user, "描述我的[LOWER_TEXT(choice.name)]", "描述自己") as null|anything in picklist
+ 
+ 			if(!picked_descriptor_name)
+ 				return
+@@ -69,7 +69,7 @@
+ 			var/index = text2num(href_list["index"])
+ 			var/datum/custom_descriptor_entry/custom_entry = custom_descriptors[index]
+ 			var/current_prefix_text = translation["[custom_entry.prefix_type ]"]
+-			var/new_prefix_text = input(user, "Choose the prefix", "Describe myself", current_prefix_text) as null|anything in input_list
++			var/new_prefix_text = input(user, "选择前缀", "描述自己", current_prefix_text) as null|anything in input_list
+ 			if(!new_prefix_text)
+ 				return
+ 			var/new_prefix_type = input_list[new_prefix_text]
+@@ -77,7 +77,7 @@
+ 		if("custom_descriptor_content")
+ 			var/index = text2num(href_list["index"])
+ 			var/datum/custom_descriptor_entry/custom_entry = custom_descriptors[index]
+-			var/new_content = input(user, "Describe the feature", "Describe myself") as text|null
++			var/new_content = input(user, "描述这个特征", "描述自己") as text|null
+ 			if(!new_content)
+ 				return
+ 			new_content = STRIP_HTML_SIMPLE(LOWER_TEXT(new_content), CUSTOM_DESCRIPTOR_TEXT_LENGTH)
+@@ -105,7 +105,7 @@
+ 		if(custom_data)
+ 			dat += custom_data
+ 
+-	dat += "<br><br><center>Descriptors can vary based on gender<br>Some don't appear if you don't match a requirement<center>"
++	dat += "<br><br><center>描述词会因性别而变化<br>若你不满足条件，有些选项不会出现<center>"
+ 	return dat
+ 
+ /datum/preferences/proc/print_custom_descriptor_customization(index)
+@@ -118,7 +118,7 @@
+ /datum/preferences/proc/show_descriptors_ui(mob/user)
+ 	var/list/dat = list()
+ 	dat += print_descriptors_page()
+-	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>Describe myself</div>", 350, 510)
++	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>描述自己</div>", 350, 510)
+ 	popup.set_content(dat.Join())
+ 	popup.open(FALSE)
+ 
+-- 
+Translation Patch Toolkit

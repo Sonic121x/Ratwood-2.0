@@ -1,0 +1,25 @@
+From 40b0a9f968d9a2a46bad07fff849d9cfb00b39af Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/events/god_intervention/necra.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/events/god_intervention/necra.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/events/god_intervention/necra.dm b/code/modules/events/god_intervention/necra.dm
+index 8a532f131169..1419008ece3a 100644
+--- a/code/modules/events/god_intervention/necra.dm
++++ b/code/modules/events/god_intervention/necra.dm
+@@ -1,5 +1,5 @@
+ /datum/round_event_control/necra_requiem
+-	name = "Necra's Requiem"
++	name = "Necra 的安魂曲"
+ 	track = EVENT_TRACK_INTERVENTION
+ 	typepath = /datum/round_event/necra_requiem
+ 	weight = 8
+-- 
+Translation Patch Toolkit

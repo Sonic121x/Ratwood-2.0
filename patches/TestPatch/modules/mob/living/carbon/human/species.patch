@@ -1,0 +1,27 @@
+From d05d8cd1a74f949e5ee6800332b0c8cd3ff7f76c Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species.dm b/code/modules/mob/living/carbon/human/species.dm
+index e596ab7274b3..04badb6b49df 100644
+--- a/code/modules/mob/living/carbon/human/species.dm
++++ b/code/modules/mob/living/carbon/human/species.dm
+@@ -1293,7 +1293,7 @@
+ 					user.ignite_mob()
+ 				else
+ 					if(prob(30))
+-						to_chat(user, span_warning("The foul blessing of the Undermaiden hurts us!"))
++						to_chat(user, span_warning("冥下侍女那污秽的赐福正在灼伤我们！"))
+ 				user.adjust_blurriness(2)
+ 				user.adjustBruteLoss(rand(5, 10))
+ 				user.apply_status_effect(/datum/status_effect/churned, target)
+-- 
+Translation Patch Toolkit

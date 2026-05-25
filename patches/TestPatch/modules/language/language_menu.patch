@@ -1,0 +1,27 @@
+From d06addd0d8e4cb1c675edbf6ac72d0272f93823d Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/language/language_menu.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/language/language_menu.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/language/language_menu.dm b/code/modules/language/language_menu.dm
+index cc698a65b194..b4826819faa3 100644
+--- a/code/modules/language/language_menu.dm
++++ b/code/modules/language/language_menu.dm
+@@ -11,7 +11,7 @@
+ /datum/language_menu/ui_interact(mob/user, datum/tgui/ui)
+ 	ui = SStgui.try_update_ui(user, src, ui)
+ 	if(!ui)
+-		ui = new(user, src, "LanguageMenu", "Language Menu")
++		ui = new(user, src, "LanguageMenu", "语言菜单")
+ 		ui.set_state(GLOB.language_menu_state)
+ 		ui.open()
+ 
+-- 
+Translation Patch Toolkit

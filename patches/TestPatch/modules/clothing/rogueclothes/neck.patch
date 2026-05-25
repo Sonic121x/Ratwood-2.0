@@ -1,0 +1,29 @@
+From cc0d821c7c5b929bbaae84255982394c929b9c09 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/clothing/rogueclothes/neck.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/neck.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/neck.dm b/code/modules/clothing/rogueclothes/neck.dm
+index 6c0c20418011..59cd137466e1 100644
+--- a/code/modules/clothing/rogueclothes/neck.dm
++++ b/code/modules/clothing/rogueclothes/neck.dm
+@@ -504,8 +504,8 @@
+ 	icon_state = "dendor"
+ 
+ /obj/item/clothing/neck/roguetown/psicross/necra
+-	name = "amulet of Necra"
+-	desc = "The certainty of death is a reminder to enjoy the time you have."
++	name = "Necra 护符"
++	desc = "死亡的必然提醒着你，要珍惜自己仍握在手中的时光。"
+ 	icon_state = "necra"
+ 
+ /obj/item/clothing/neck/roguetown/psicross/pestra
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,169 @@
+From 73dca053ef8a553306ab4062f0579f94868256e5 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/deathsdoor/deathsdoor.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/deathsdoor/deathsdoor.dm | 42 +++++++++++++++++++++---------------------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/code/modules/deathsdoor/deathsdoor.dm b/code/modules/deathsdoor/deathsdoor.dm
+index 1a8ef73352f6..1bc169b2f8fa 100644
+--- a/code/modules/deathsdoor/deathsdoor.dm
++++ b/code/modules/deathsdoor/deathsdoor.dm
+@@ -2,8 +2,8 @@
+ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
+ 
+ /obj/structure/deaths_door_shrine
+-	name = "A Way Out"
+-	desc = "The eerie calm comes to an end, one way or another."
++	name = "归途"
++	desc = "这片诡异的死寂终将迎来尽头，无论以何种方式。"
+ 	icon = 'icons/roguetown/misc/foliagetall.dmi'
+ 	icon_state = "doorway"
+ 	opacity = FALSE
+@@ -11,12 +11,12 @@
+ 	max_integrity = 0
+ 
+ /obj/structure/deaths_door_shrine/attack_hand(mob/living/user)
+-	to_chat(user, span_notice("You reach for the glowing portal..."))
++	to_chat(user, span_notice("你朝那道发光的门扉伸出手……"))
+ 	if(!do_after(user, 2 SECONDS, src))
+ 		return
+ 
+ 	if(user.mob_biotypes & MOB_UNDEAD)
+-		user.visible_message(span_danger("The Undermaiden churns the undead!"))
++		user.visible_message(span_danger("冥下侍女翻搅起不死者！"))
+ 		explosion(get_turf(user), light_impact_range = 1, flame_range = 1, smoke = FALSE)
+ 		return
+ 
+@@ -28,7 +28,7 @@
+ 	var/mob/living/target = O
+ 
+ 	if(target.mob_biotypes & MOB_UNDEAD)
+-		target.visible_message(span_danger("The Undermaiden churns the undead!"))
++		target.visible_message(span_danger("冥下侍女翻搅起不死者！"))
+ 		explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
+ 		return
+ 
+@@ -42,7 +42,7 @@
+ 	exit_deaths_door(user, target)
+ 
+ 	user.visible_message(
+-		span_notice("[user] guides [target] through Necra's shrine.")
++		span_notice("[user] 引着 [target] 穿过了 Necra 的神龛。")
+ 	)
+ 
+ /obj/structure/deaths_door_shrine/proc/exit_deaths_door(mob/living/user, mob/living/target = null)
+@@ -57,11 +57,11 @@
+ 
+ 	// Always allow shrine exit
+ 	if(GLOB.deaths_door_exit)
+-		dests[GLOB.deaths_door_exit] = "Necra's Shrine"
++		dests[GLOB.deaths_door_exit] = "Necra 的神龛"
+ 	// Warn Necra followers without sight
+ 	if(!user.mind?.has_spell(/obj/effect/proc_holder/spell/invoked/necras_sight))
+ 		if(user.patron == /datum/patron/divine/necra)
+-			to_chat(user, span_warning("Necra's paths blur before you. You lack the sight to choose."))
++			to_chat(user, span_warning("Necra 的道路在你眼前一片模糊。你缺乏作出选择的视野。"))
+ 
+ 	if(!length(dests))
+ 		message_admins("Death's Door Shrine: No exit destinations! Inform a mapper!")	//You're missing /obj/effect/landmark/deaths_door/exit from the map
+@@ -72,7 +72,7 @@
+ 		return
+ 	target.forceMove(T)
+ 	playsound(get_turf(target), 'sound/misc/portalenter.ogg', 50, TRUE, -2, ignore_walls = TRUE)
+-	target.visible_message(span_danger("The air warps and rapidly chills as [user] stumbles out of a deathly calm realm."))
++	target.visible_message(span_danger("[user] 跌跌撞撞地自一片死寂安宁之境中走出时，空气随之扭曲并迅速冰冷下来。"))
+ 
+ /proc/prompt_deaths_door_exit(mob/living/user, list/dests)
+ 	if(!length(dests))
+@@ -89,7 +89,7 @@
+ 			label = "[get_area(T)]"
+ 		named[label] = T
+ 
+-	var/choice = input(user, "Choose a path from Death's Edge:", "Necra's Way") \
++	var/choice = input(user, "选择一条离开死亡边缘的道路：", "Necra 之路") \
+ 		as null|anything in named
+ 	if(!choice)
+ 		return null
+@@ -124,7 +124,7 @@
+ 	return targets
+ 
+ /obj/structure/deaths_door_portal
+-	name = "death's door"
++	name = "死门"
+ 	icon = 'icons/mob/actions/necramiracles.dmi'
+ 	icon_state = "necraportal"
+ 	anchored = TRUE
+@@ -144,13 +144,13 @@
+ /obj/structure/deaths_door_portal/proc/expire()
+ 	if(QDELETED(src))
+ 		return
+-	visible_message(span_notice("The glowing portal closes shut!"))
++	visible_message(span_notice("那道发光的门扉闭合了！"))
+ 	playsound(get_turf(src), 'sound/misc/deadbell.ogg', 50, TRUE, -2)
+ 	qdel(src)
+ 
+ /obj/structure/deaths_door_portal/attack_hand(mob/living/user)
+ 	playsound(get_turf(src), 'sound/misc/carriage2.ogg', 50, TRUE, -2, ignore_walls = TRUE)
+-	to_chat(user, span_notice("You reach for the glowing portal..."))
++	to_chat(user, span_notice("你朝那道发光的门扉伸出手……"))
+ 	if(!do_after(user, 2 SECONDS, src))
+ 		return
+ 	enter_portal(user)
+@@ -169,14 +169,14 @@
+ 		return
+ 
+ 	if(M.mob_biotypes & MOB_UNDEAD)
+-		to_chat(user, span_danger("The Undermaiden churns the undead!"))
++		to_chat(user, span_danger("冥下侍女翻搅起不死者！"))
+ 		explosion(get_turf(M), light_impact_range = 1, flame_range = 1, smoke = FALSE)
+ 		return
+ 
+ 	enter_portal(M, user)
+ 
+ 	user.visible_message(
+-		span_warning("[user] drags [M] into Death's Door!")
++		span_warning("[user] 将 [M] 拖进了死门！")
+ 	)
+ 
+ /obj/structure/deaths_door_portal/proc/enter_portal(mob/living/target, mob/living/forcer)
+@@ -228,8 +228,8 @@
+ 
+ 	start_timer()
+ /obj/item/soulthread/deathsdoor
+-	name = "shimmering lux-thread"
+-	desc = "Eerie glowing thread, cometh from the grave"
++	name = "微耀的灵辉丝"
++	desc = "一缕诡异发光的丝线，仿佛自坟墓深处而来。"
+ 	var/should_track = TRUE
+ 
+ /obj/item/soulthread/deathsdoor/Initialize(mapload)
+@@ -263,8 +263,8 @@
+ 		return
+ 
+ 	visible_message(
+-		span_danger("[src] collapses as Necra's grasp tightens."),
+-		span_cultboldtalic("The last thing you see before you collapse is a spirit tugging strands of lux straight out of your chest.")
++		span_danger("[src] 在 Necra 的掌握收紧之际颓然倒下。"),
++		span_cultboldtalic("在你倒下前看到的最后景象，是一只灵体正从你的胸膛里硬生生抽出一缕缕灵辉。")
+ 	)
+ 
+ 	src.forceMove(T)
+@@ -282,8 +282,8 @@
+ 	return pick(candidates)
+ 
+ /obj/structure/waywardspirit
+-	name = "A Wayward Soul"
+-	desc = "Lost in the deathly tranquility, never to return."
++	name = "迷途亡魂"
++	desc = "迷失在那片死亡般的宁寂之中，再也无法归来。"
+ 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
+ 	icon_state = "hollow"
+ 	opacity = FALSE
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,27 @@
+From 3cb4caee7f373e08b0f78c4d00b8f035c20f5e63 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/cargo/packsrogue/merchant/apparel.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/cargo/packsrogue/merchant/apparel.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/cargo/packsrogue/merchant/apparel.dm b/code/modules/cargo/packsrogue/merchant/apparel.dm
+index 39a8e6c5a088..e6fcc1661813 100644
+--- a/code/modules/cargo/packsrogue/merchant/apparel.dm
++++ b/code/modules/cargo/packsrogue/merchant/apparel.dm
+@@ -49,7 +49,7 @@
+ 					/obj/item/clothing/neck/roguetown/psicross/pestra,)
+ 
+ /datum/supply_pack/rogue/apparel/crosses/divinepantheonnecra
+-	name = "Necran Amulet"
++	name = "Necra 护符"
+ 	cost = 10
+ 	contains = list(
+ 					/obj/item/clothing/neck/roguetown/psicross/necra,)
+-- 
+Translation Patch Toolkit

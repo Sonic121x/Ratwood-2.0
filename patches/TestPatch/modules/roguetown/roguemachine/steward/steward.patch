@@ -1,0 +1,27 @@
+From 4ebd311abfd4f1a97f2b8d8201968d2199ba6ca9 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/roguetown/roguemachine/steward/steward.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguemachine/steward/steward.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/roguetown/roguemachine/steward/steward.dm b/code/modules/roguetown/roguemachine/steward/steward.dm
+index 51f61ab9274f..e53ec3a798c4 100644
+--- a/code/modules/roguetown/roguemachine/steward/steward.dm
++++ b/code/modules/roguetown/roguemachine/steward/steward.dm
+@@ -122,7 +122,7 @@
+ 		SStreasury.log_to_steward("-[amt] imported [D.name]")
+ 		record_round_statistic(STATS_STOCKPILE_IMPORTS_VALUE, amt)
+ 		if(amt >= 100) //Only announce big spending.
+-			scom_announce("Rotwood Vale imports [D.name] for [amt] mammon.", )
++			scom_announce("谷地以 [amt] 枚 Mammon 的价格进口了 [D.name]。", )
+ 		D.raise_demand()
+ 		addtimer(CALLBACK(src, PROC_REF(do_import), D.type), 10 SECONDS)
+ 	if(href_list["export"])
+-- 
+Translation Patch Toolkit

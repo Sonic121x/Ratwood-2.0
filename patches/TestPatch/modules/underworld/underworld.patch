@@ -1,0 +1,78 @@
+From 50f73260c506a5b307a9e8a87feb3dcc1b02cec4 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/underworld/underworld.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/underworld/underworld.dm | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/code/modules/underworld/underworld.dm b/code/modules/underworld/underworld.dm
+index 941e1bdbffb8..6b0bb1cc1291 100644
+--- a/code/modules/underworld/underworld.dm
++++ b/code/modules/underworld/underworld.dm
+@@ -84,16 +84,16 @@
+ 		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+ 
+ /obj/structure/underworld/barrier //Blocks sprite locations
+-	name = "DONT STAND HERE"
+-	desc = "The Undermaiden awaits."
++	name = "勿立于此"
++	desc = "冥下侍女正在等待。"
+ 	icon = 'icons/roguetown/underworld/underworld.dmi'
+ 	icon_state = "spiritpart"
+ 	density = TRUE
+ 	anchored = TRUE
+ 
+ /obj/structure/underworld/carriage_normal
+-	name = "Carriage"
+-	desc = "The vale awaits."
++	name = "灵车"
++	desc = "幽谷正在等待。"
+ 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
+ 	icon_state = "carriage_normal"
+ 	anchored = TRUE
+@@ -104,8 +104,8 @@
+ 	set_light(5, 3, 30, l_color = LIGHT_COLOR_WHITE)
+ 
+ /obj/structure/underworld/carriage
+-	name = "Carriage"
+-	desc = "The Undermaiden awaits."
++	name = "灵车"
++	desc = "冥下侍女正在等待。"
+ 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
+ 	icon_state = "carriage_lit"
+ 	layer = ABOVE_MOB_LAYER
+@@ -120,20 +120,20 @@
+ 
+ /obj/structure/underworld/carriage/attack_hand(mob/living/carbon/spirit/user)
+ 	if(user.paid)
+-		switch(alert("Are you ready to be judged?",,"Yes","No"))
+-			if("Yes")
++		switch(alert("你准备好接受审判了吗？",,"是","否"))
++			if("是")
+ 				playsound(user, 'sound/misc/deadbell.ogg', 50, TRUE, -2, ignore_walls = TRUE)
+ 				user.returntolobby()
+-			if("No")
+-				usr << "You delay fate."
++			if("否")
++				usr << "你延缓了命运的到来。"
+ 	else
+-		to_chat(user, "<B><font size=3 color=red>It's LOCKED.</font></B>")
++		to_chat(user, "<B><font size=3 color=red>它被锁住了。</font></B>")
+ 
+ GLOBAL_VAR_INIT(underworld_coins, 0)
+ 
+ /obj/item/underworld/coin
+-	name = "The Toll"
+-	desc = "This is more than just a coin."
++	name = "渡资"
++	desc = "这远不只是一枚硬币。"
+ 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
+ 	icon_state = "soultoken_floor"
+ 	var/should_track = TRUE
+-- 
+Translation Patch Toolkit

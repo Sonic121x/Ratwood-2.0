@@ -1,0 +1,26 @@
+From c93ac80d25d1b90bed05d9e7ea85176ef814ed15 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/simple_animal/hostile/roguetown/crow.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/simple_animal/hostile/roguetown/crow.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/simple_animal/hostile/roguetown/crow.dm b/code/modules/mob/living/simple_animal/hostile/roguetown/crow.dm
+index 3c60f476293f..fc4fc07e7b68 100644
+--- a/code/modules/mob/living/simple_animal/hostile/roguetown/crow.dm
++++ b/code/modules/mob/living/simple_animal/hostile/roguetown/crow.dm
+@@ -1,6 +1,6 @@
+ /obj/item/reagent_containers/food/snacks/crow
+ 	name = "zad"
+-	desc = "A black bird commonly associated with Necra. They were once trained for use in carrying messages around and respected for their cleverness, but are nowadays considered no better than vermin."
++	desc = "一种常与 Necra 联系在一起的黑鸟。它们曾被训练来传递消息，并因聪慧而受人敬重，但如今已被视作与害兽无异。"
+ 	icon_state = "crow"
+ 	icon = 'icons/roguetown/mob/monster/crow.dmi'
+ 	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
+-- 
+Translation Patch Toolkit

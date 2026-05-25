@@ -1,0 +1,49 @@
+From 8e04d9be476792f33a85059ecf5e1e15563ec422 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/clothing/rogueclothes/headwear/helmet/heavy_helmet.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/headwear/helmet/heavy_helmet.dm | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/headwear/helmet/heavy_helmet.dm b/code/modules/clothing/rogueclothes/headwear/helmet/heavy_helmet.dm
+index f1328180709a..9b10e41d90d8 100644
+--- a/code/modules/clothing/rogueclothes/headwear/helmet/heavy_helmet.dm
++++ b/code/modules/clothing/rogueclothes/headwear/helmet/heavy_helmet.dm
+@@ -85,7 +85,7 @@
+ 
+ /obj/item/clothing/head/roguetown/helmet/heavy/guard/bogman
+ 	name = "steel bogman's helmet"
+-	desc = "A helmet featuring the face of a snarling goblin. Once worn by the Bogmen, now a relic of old Rotwood Vale."
++	desc = "一顶面甲雕成咆哮地精模样的头盔。它曾由 Bogmen 佩戴，如今已是古老谷地留下的遗物。"
+ 	icon_state = "guardhelm"
+ 
+ /obj/item/clothing/head/roguetown/helmet/heavy/guard/aalloy
+@@ -509,8 +509,8 @@
+ 	smelt_bar_num = 2
+ 
+ /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
+-	name = "necra helmet"
+-	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life: You will die."
++	name = "Necra 头盔"
++	desc = "侍奉 Necra 的圣殿武士常戴的一种头盔。愿它骸骨般的轮廓提醒你，人生唯一注定之事便是死亡。"
+ 	icon_state = "necrahelm"
+ 	item_state = "necrahelm"
+ 	emote_environment = 3
+@@ -520,8 +520,8 @@
+ 	smelt_bar_num = 2
+ 
+ /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm/hooded
+-	name = "hooded necra helmet"
+-	desc = "Grim as the faces who wear it. For their duty is sacred, as they know the one truth of this lyfe. They're to perish, just as you are."
++	name = "兜帽 Necra 头盔"
++	desc = "它如佩戴者的面容般阴沉肃穆。因为他们知晓这段 lyfe 唯一的真理，故其职责亦神圣无比。终有一死的，不止是他们，也包括你。"
+ 	icon_state = "necrahelm_hooded"
+ 	item_state = "necrahelm_hooded"
+ 	adjustable = CAN_CADJUST
+-- 
+Translation Patch Toolkit

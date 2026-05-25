@@ -1,0 +1,36 @@
+From c0f2eac5de2388a4d2100cdc5cfa01f56ce4bc3a Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/surgery/surgeries/prosthetic_replacement.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/surgery/surgeries/prosthetic_replacement.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/surgery/surgeries/prosthetic_replacement.dm b/code/modules/surgery/surgeries/prosthetic_replacement.dm
+index 5ed47ea73b9f..8aa7f26b9282 100644
+--- a/code/modules/surgery/surgeries/prosthetic_replacement.dm
++++ b/code/modules/surgery/surgeries/prosthetic_replacement.dm
+@@ -51,7 +51,7 @@
+ 
+ 	if(bodypart.original_owner != target)
+ 		if(target.has_status_effect(/datum/status_effect/buff/necras_vow) || HAS_TRAIT(target, TRAIT_NECRAS_VOW))	//Status effects are cleared upon death, just in case you want to... attach a permakilled corpse's limbs.
+-			to_chat(user, span_warning("This one has pledged a vow to Necra. The sinews reject the false flesh. It requires their own flesh and blood."))
++			to_chat(user, span_warning("此人已向 Necra 立下誓约。筋络会排斥虚假的血肉，唯有他们自己的血肉方可接纳。"))
+ 			return FALSE
+ 
+ 	display_results(user, target, span_notice("I begin to replace [target]'s [parse_zone(target_zone)] with [bodypart]..."),
+@@ -112,7 +112,7 @@
+ 
+ 	if(bodypart.original_owner != target)
+ 		if(target.has_status_effect(/datum/status_effect/buff/necras_vow) || HAS_TRAIT(target, TRAIT_NECRAS_VOW))	//Status effects are cleared upon death, just in case you want to... attach a permakilled corpse's limbs.
+-			to_chat(user, span_warning("This one has pledged a vow to Necra. The sinews reject the false flesh. It requires their own flesh and blood."))
++			to_chat(user, span_warning("此人已向 Necra 立下誓约。筋络会排斥虚假的血肉，唯有他们自己的血肉方可接纳。"))
+ 			return FALSE
+ 
+ 	// Dullahan-specific refusal should only apply when attaching a head
+-- 
+Translation Patch Toolkit

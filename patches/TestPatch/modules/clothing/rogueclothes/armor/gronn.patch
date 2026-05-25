@@ -1,0 +1,31 @@
+From 31b3d4f134325da1895d9bc54d99e570f03f4967 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/clothing/rogueclothes/armor/gronn.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/armor/gronn.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/armor/gronn.dm b/code/modules/clothing/rogueclothes/armor/gronn.dm
+index 00c476435966..63a0a153bc8b 100644
+--- a/code/modules/clothing/rogueclothes/armor/gronn.dm
++++ b/code/modules/clothing/rogueclothes/armor/gronn.dm
+@@ -2,9 +2,9 @@
+ 
+ /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn
+ 	name = "gronnic ravager helm"
+-	desc = "A helmet of hardened leather with a carved animal skull to appear similar to a human, A unique design of The Empty North. \
+-			The visage is said in Iskarn to scare the spirits of those defeated in the battle field \
+-			and prevent Necra or The Moose from allowing them to haunt."
++	desc = "一顶由硬化皮革与雕刻兽骨制成、轮廓近似人面的头盔，是 Empty North 独有的设计。\
++			据说在 Iskarn，这副面容足以震慑战场上败亡者的幽魂，\
++			从而阻止 Necra 或 The Moose 让他们徘徊不散。"
+ 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
+ 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/gronn.dmi'
+ 	icon_state = "gronnleatherhelm"
+-- 
+Translation Patch Toolkit

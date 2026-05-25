@@ -1,0 +1,29 @@
+From 84f2ded3fca6e0e1319637d6b26d3a6ee4cfb6e4 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/roguetown/roguejobs/gravedigger/tools.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguejobs/gravedigger/tools.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguejobs/gravedigger/tools.dm b/code/modules/roguetown/roguejobs/gravedigger/tools.dm
+index 286d98c9de52..b38818b63cff 100644
+--- a/code/modules/roguetown/roguejobs/gravedigger/tools.dm
++++ b/code/modules/roguetown/roguejobs/gravedigger/tools.dm
+@@ -657,8 +657,8 @@
+ //This is effectively an iron quarterstaff, with silver quality, arc intent and chopping. It's a weird thing, but fluff and soulful for Necrans.
+ /obj/item/rogueweapon/shovel/mort_staff
+ 	name = "\improper mortician's staff"
+-	desc = "A heavy, silver shovel's head, paired with a length of silver and boswellia wood. \
+-	As with standard Necran practice in the many sects, it has been anointed in censer soot, permitting it to act as a focus."
++	desc = "一颗沉重的银质铲头，装在一截银材与乳香木制成的长柄之上。\
++	依照诸多 Necra 教派的惯常做法，它已受香炉烟灰涂抹祝圣，因此能作为施法焦点。"
+ 	force = 16//Iron quarterstaff level.
+ 	force_wielded = 22//See above.
+ 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)//One hand lets you arc divine blast and such.
+-- 
+Translation Patch Toolkit

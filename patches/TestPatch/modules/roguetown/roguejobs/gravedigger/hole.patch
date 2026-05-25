@@ -1,0 +1,40 @@
+From ddeee6e01365a3cb7abd3f3a5c402c40f1f52ca3 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/roguetown/roguejobs/gravedigger/hole.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguejobs/gravedigger/hole.dm | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/code/modules/roguetown/roguejobs/gravedigger/hole.dm b/code/modules/roguetown/roguejobs/gravedigger/hole.dm
+index 03494f93cc3f..112ec20421ea 100644
+--- a/code/modules/roguetown/roguejobs/gravedigger/hole.dm
++++ b/code/modules/roguetown/roguejobs/gravedigger/hole.dm
+@@ -109,16 +109,16 @@
+ 		var/atom/movable/coffin = src
+ 		for(var/mob/living/corpse in coffin)
+ 			if(!corpse.stat == DEAD)
+-				to_chat(user, "That one hasn't truly passed on yet?!")
++				to_chat(user, "这具尸体还没有真正离世吗？！")
+ 				return
+ 			if(corpse.burialrited)
+-				to_chat(user, "This grave has already been consecrated...")
++				to_chat(user, "这座坟墓已经被祝圣过了……")
+ 				return
+ 			else
+-				to_chat(user, "I begin my burial rites...")
++				to_chat(user, "我开始施行葬仪……")
+ 				if(do_after(user, 50))
+-					user.say("#Rest thy soul for all aeon within Necra's embrace!")
+-					to_chat(user, "I have extracted a strand of luxthread, proof of passing.")
++					user.say("#愿你的灵魂在 Necra 的怀抱中永世安息！")
++					to_chat(user, "我抽取出了一缕灵辉丝线，作为已然离世的证明。")
+ 					playsound(user, 'sound/misc/bellold.ogg', 20)
+ 					new /obj/item/soulthread((get_turf(user)))
+ 					corpse.burialrited = TRUE
+-- 
+Translation Patch Toolkit

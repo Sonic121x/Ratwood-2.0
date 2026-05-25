@@ -1,0 +1,38 @@
+From cddd8c69fe1d25b50f5f2c1a80bb11d6d39509ff Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/clothing/rogueclothes/cloaks.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/cloaks.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/cloaks.dm b/code/modules/clothing/rogueclothes/cloaks.dm
+index dc39fc739eba..367c2f71dca7 100644
+--- a/code/modules/clothing/rogueclothes/cloaks.dm
++++ b/code/modules/clothing/rogueclothes/cloaks.dm
+@@ -1319,8 +1319,8 @@
+ 	flags_inv = HIDECROTCH|HIDEBOOB
+ 
+ /obj/item/clothing/cloak/templar/necra
+-	name = "necra tabard"
+-	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Necra on it."
++	name = "Necra 战袍"
++	desc = "士兵们常穿的一种外袍。这件上面饰有 Necra 的徽记。"
+ 	icon_state = "tabard_necra"
+ 	alternate_worn_layer = TABARD_LAYER
+ 	body_parts_covered = CHEST|GROIN
+@@ -1930,7 +1930,7 @@
+ 
+ /obj/item/clothing/cloak/kazengun
+ 	name = "jinbaori"
+-	desc = "A simple kind of Kazengunite surcoat, worn here in the distant battlefields of Rotwood Vale to differentiate friend from foe."
++	desc = "一种简朴的 Kazengun 外罩甲衣，在谷地遥远的战场上，人们靠它来区分敌我。"
+ 	icon_state = "kazenguncoat"
+ 	item_state = "kazenguncoat"
+ 	detail_tag = "_detail"
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,36 @@
+From e0a3fb9d1c18817b6a02487cb140f940063a238c Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/events/personal/hear_cries.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/events/personal/hear_cries.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/events/personal/hear_cries.dm b/code/modules/events/personal/hear_cries.dm
+index 6006ea89b134..f624d3738920 100644
+--- a/code/modules/events/personal/hear_cries.dm
++++ b/code/modules/events/personal/hear_cries.dm
+@@ -1,5 +1,5 @@
+ /datum/round_event_control/dead_whispers
+-	name = "Whispers of the Dead"
++	name = "亡者低语"
+ 	track = EVENT_TRACK_PERSONAL
+ 	typepath = /datum/round_event/dead_whispers
+ 	weight = 7
+@@ -48,8 +48,8 @@
+ 	var/datum/objective/listen_whispers/new_objective = new(owner = chosen_one.mind)
+ 	chosen_one.mind.add_personal_objective(new_objective)
+ 
+-	to_chat(chosen_one, span_userdanger("YOU ARE NECRA'S CHOSEN!"))
+-	to_chat(chosen_one, span_notice("You must understand death better to be able to prepare for it. For that purpose, go to the church and listen to the whispers of the dead while wearing amulet of Necra."))
++	to_chat(chosen_one, span_userdanger("你是 NECRA 所选之人！"))
++	to_chat(chosen_one, span_notice("你必须先更深刻地理解死亡，才能为它做好准备。为此，请佩戴 Necra 的护符前往教堂，聆听死者的低语。"))
+ 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
+ 
+ 	chosen_one.mind.announce_personal_objectives()
+-- 
+Translation Patch Toolkit

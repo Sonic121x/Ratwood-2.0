@@ -1,0 +1,27 @@
+From db23784349234e8c64948a8a4265d57c66b63902 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/living.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/living.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/living.dm b/code/modules/mob/living/living.dm
+index 49571f1f3935..f3a741266933 100644
+--- a/code/modules/mob/living/living.dm
++++ b/code/modules/mob/living/living.dm
+@@ -811,7 +811,7 @@
+ 		to_chat(user, span_danger("None of the divine have them. Their only chance is spent. Where did they go?"))
+ 		return FALSE
+ 	if(HAS_TRAIT(src, TRAIT_NECRAS_VOW))
+-		to_chat(user, span_warning("This one has pledged themselves whole to Necra. They are Hers."))
++		to_chat(user, span_warning("此人已将自身完整誓献于 Necra。他们属于她。"))
+ 		return FALSE
+ 
+ 	var/obj/item/bodypart/head = get_bodypart("head")
+-- 
+Translation Patch Toolkit
