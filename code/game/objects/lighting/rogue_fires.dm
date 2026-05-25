@@ -66,7 +66,7 @@
 	desc = "Somewhat crude, but it lights the long winding paths throughout the land."
 
 /obj/machinery/light/rogue/firebowl/church
-	desc = "A wide metal bowl mounted on a stand for a healthy roaring flame."
+	desc = "一个宽阔的金属火盆，架在底座上，燃起旺盛的火焰。"
 	icon_state = "churchfire1"
 	base_state = "churchfire"
 
