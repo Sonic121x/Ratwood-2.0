@@ -317,8 +317,8 @@
 	bulb_colour = "#ff13d8ff"
 
 /obj/machinery/light/rogue/torchholder
-	name = "sconce"
-	desc = "A wall-mounted fixture that allows a torch to illuminate the area while freeing the hands for other tasks."
+	name = "壁式火把架"
+	desc = "一个安装在墙上的装置，可将火把置于其上照亮周围，同时腾出双手从事其他工作。"
 	icon_state = "torchwall1"
 	var/torch_off_state = "torchwall0"
 	base_state = "torchwall"
