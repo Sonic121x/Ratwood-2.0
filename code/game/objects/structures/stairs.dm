@@ -57,7 +57,7 @@
 	return FALSE
 
 /obj/structure/stairs/stone
-	name = "stone stairs"
+	name = "石阶"
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stonestairs"
 	max_integrity = 600
