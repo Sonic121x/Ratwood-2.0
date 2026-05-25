@@ -1,0 +1,30 @@
+From 3bf0d0a9e954a6b807fe820d4f8c7c941697c483 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:22:21 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=9C=A1=E7=83=9B?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/lighting/rogue_fires.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/lighting/rogue_fires.dm b/code/game/objects/lighting/rogue_fires.dm
+index 00fa7c456c..2d31969fbc 100644
+--- a/code/game/objects/lighting/rogue_fires.dm
++++ b/code/game/objects/lighting/rogue_fires.dm
+@@ -186,8 +186,8 @@
+ 	cookonme = TRUE
+ 
+ /obj/machinery/light/rogue/candle
+-	name = "candles"
+-	desc = "Tiny flames flicker to the slightest breeze and offer enough light to see."
++	name = "蜡烛"
++	desc = "微弱的火焰随风摇曳，提供足够的光亮让人看清周围。"
+ 	icon_state = "wallcandle1"
+ 	base_state = "wallcandle"
+ 	crossfire = FALSE
+-- 
+2.53.0
+
