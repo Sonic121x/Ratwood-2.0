@@ -30,7 +30,7 @@ index 941e1bdbffb8..6b0bb1cc1291 100644
  /obj/structure/underworld/carriage_normal
 -	name = "Carriage"
 -	desc = "The vale awaits."
-+	name = "冥骸马车"
++	name = "马车"
 +	desc = "幽谷正在等待。"
  	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
  	icon_state = "carriage_normal"
