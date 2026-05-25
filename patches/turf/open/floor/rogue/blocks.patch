@@ -1,0 +1,31 @@
+From da2477f0c709c93863cfb4e23976d6039d292ae6 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:17:27 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=9F=B3=E6=9D=BF=E5=9C=B0?=
+ =?UTF-8?q?=E9=9D=A2?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..b6788ce942 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -961,8 +961,8 @@
+ 
+ /turf/open/floor/rogue/blocks
+ 	icon_state = "blocks"
+-	name = "stone flooring"
+-	desc = "These rough stone slabs have been arranged in a neat grid for a rustic yet tidy charm."
++	name = "石板地面"
++	desc = "这些粗糙的石板被整齐地排列成网格，兼具质朴与整洁的魅力。"
+ 	footstep = FOOTSTEP_STONE
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+ 	clawfootstep = FOOTSTEP_HARD_CLAW
+-- 
+2.53.0
+
