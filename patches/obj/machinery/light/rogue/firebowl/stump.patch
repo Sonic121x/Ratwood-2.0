@@ -1,0 +1,29 @@
+From 613ade6502403a1d180b03a7dca7a9e4e7a613bf Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:47:17 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=81=AB=E7=9B=86=E5=8F=98?=
+ =?UTF-8?q?=E4=BD=93?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/lighting/rogue_fires.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/lighting/rogue_fires.dm b/code/game/objects/lighting/rogue_fires.dm
+index 00fa7c456c..491f84e66e 100644
+--- a/code/game/objects/lighting/rogue_fires.dm
++++ b/code/game/objects/lighting/rogue_fires.dm
+@@ -63,7 +63,7 @@
+ /obj/machinery/light/rogue/firebowl/stump
+ 	icon_state = "stumpfire1"
+ 	base_state = "stumpfire"
+-	desc = "Somewhat crude, but it lights the long winding paths throughout the land."
++	desc = "有些简陋，却照亮了这片土地上蜿蜒漫长的小路。"
+ 
+ /obj/machinery/light/rogue/firebowl/church
+ 	desc = "A wide metal bowl mounted on a stand for a healthy roaring flame."
+-- 
+2.53.0
+
