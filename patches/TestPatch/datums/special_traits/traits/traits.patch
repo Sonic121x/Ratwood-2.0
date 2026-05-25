@@ -1,0 +1,642 @@
+From 7b772ac4b912a530f4771e0a6ce13d337fbb6540 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/special_traits/traits/traits.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/special_traits/traits/traits.dm | 272 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 136 insertions(+), 136 deletions(-)
+
+diff --git a/code/datums/special_traits/traits/traits.dm b/code/datums/special_traits/traits/traits.dm
+index 502238759c83..50d3b84fb18a 100644
+--- a/code/datums/special_traits/traits/traits.dm
++++ b/code/datums/special_traits/traits/traits.dm
+@@ -1,7 +1,7 @@
+ //// Sleep Specials
+ //// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
+ /datum/special_trait/nothing
+-	name = "Nothing"
+-	greet_text = span_notice("You're not special")
++	name = "平平无奇"
++	greet_text = span_notice("你并没有什么特别之处。")
+ 	weight = 7 //As rare as Vengant Bum, just to remind you it could have been it
+ 
+@@ -20,6 +8,6 @@
+ /datum/special_trait/nightvision
+-	name = "Night Vision"
+-	greet_text = span_notice("I can easily see in the dark.")
++	name = "夜视"
++	greet_text = span_notice("我能轻松看清黑暗中的事物。")
+ 	weight = 100
+ 
+ /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
+@@ -31,8 +19,8 @@
+ 	character.update_sight()
+ 
+ /datum/special_trait/thickskin
+-	name = "Tough"
+-	greet_text = span_notice("I feel it. Thick Skin. Dense Flesh. Durable Bones. I'm a punch-taking machine.")
++	name = "皮糙肉厚"
++	greet_text = span_notice("我能感觉到。厚皮、实肉、硬骨。我就是个挨打机器。")
+ 	weight = 100
+ 
+ /datum/special_trait/thickskin/on_apply(mob/living/carbon/human/character, silent)
+@@ -40,8 +28,8 @@
+ 	character.change_stat(STATKEY_CON, 2)
+ 
+ /datum/special_trait/curseofcain
+-	name = "Flawed Immortality"
+-	greet_text = span_notice("I feel like I don't need to eat anymore, and my veins feel empty... Is this normal?")
++	name = "残缺不朽"
++	greet_text = span_notice("我感觉自己再也不需要进食了，连血管里都像是空的……这正常吗？")
+ 	weight = 25
+ 
+ /datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
+@@ -49,8 +37,8 @@
+ 	ADD_TRAIT(character, TRAIT_NOBREATH, "[type]")
+ 
+ /datum/special_trait/deadened
+-	name = "Deadened"
+-	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out")
++	name = "麻木"
++	greet_text = span_notice("自从<b>那件事</b>发生后，我便再也感受不到任何东西了。无论内外。")
+ 	weight = 25
+ 
+ /datum/special_trait/deadened/on_apply(mob/living/carbon/human/character, silent)
+@@ -58,16 +46,16 @@
+ 	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]")
+ 
+ /datum/special_trait/latentmagic
+-	name = "Latent Magic"
+-	greet_text = span_notice("I have innate magical potential.")
++	name = "潜藏魔性"
++	greet_text = span_notice("我体内蕴藏着与生俱来的魔法潜力。")
+ 	weight = 25
+ 
+ /datum/special_trait/latentmagic/on_apply(mob/living/carbon/human/character, silent)
+ 	character.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+ 
+ /datum/special_trait/value
+-	name = "Coin Counter"
+-	greet_text = span_notice("I know how to estimate an item's value.")
++	name = "识价人"
++	greet_text = span_notice("我知道该如何估算一件物品的价值。")
+ 	weight = 100
+ 	restricted_traits = list(TRAIT_SEEPRICES)
+ 
+@@ -75,24 +63,24 @@
+ 	ADD_TRAIT(character, TRAIT_SEEPRICES, "[type]")
+ 
+ /datum/special_trait/lightstep
+-	name = "Light Step"
+-	greet_text = span_notice("I am quiet, nobody can hear my steps.")
++	name = "轻步"
++	greet_text = span_notice("我走路悄无声息，没人能听见我的脚步。")
+ 	weight = 100
+ 
+ /datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+ 
+ /datum/special_trait/night_owl
+-	name = "Night Owl"
+-	greet_text = span_notice("I've always preferred Noc over his other half.")
++	name = "夜猫子"
++	greet_text = span_notice("比起她的另一半，我一直更偏爱 Noc。")
+ 	weight = 100
+ 
+ /datum/special_trait/night_owl/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_NIGHT_OWL, "[type]")
+ 
+ /datum/special_trait/beautiful
+-	name = "Beautiful"
+-	greet_text = span_notice("My face is a work of art")
++	name = "美貌"
++	greet_text = span_notice("我的容颜便是一件艺术品。")
+ 	weight = 100
+ 
+ /datum/special_trait/beautiful/on_apply(mob/living/carbon/human/character, silent)
+@@ -100,42 +88,42 @@
+ 
+ //positive
+ /datum/special_trait/duelist
+-	name = "Swordmaster Apprentice"
+-	greet_text = span_notice("I was the student of a legendary sword master, my skill is rivalled by few! I've also hidden a rapier.")
++	name = "剑术宗师门徒"
++	greet_text = span_notice("我曾是传奇剑术大师的学生，能与我比剑者寥寥无几！我还藏了一柄刺剑。")
+ 	weight = 50
+ 
+ /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
+ 	character.cmode_music = 'sound/music/cmode/adventurer/combat_outlander4.ogg'
+ 	character.change_stat(STATKEY_SPD, 2)
+ 	character.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE) //will make a unique trait later on
+-	character.mind.special_items["Rapier"] = /obj/item/rogueweapon/sword/rapier
++	character.mind.special_items["刺剑"] = /obj/item/rogueweapon/sword/rapier
+ 
+ /datum/special_trait/eagle_eyed
+-	name = "Eagle Eyed"
+-	greet_text = span_notice("With my sharp aim I could always hit distant targets, I've also hidden a crossbow and some bolts.")
++	name = "鹰眼"
++	greet_text = span_notice("我的准头极佳，总能射中远处目标。我还藏了一把十字弩和几支弩矢。")
+ 	weight = 50
+ 
+ /datum/special_trait/eagle_eyed/on_apply(mob/living/carbon/human/character, silent)
+ 	character.change_stat(STATKEY_PER, 2)
+ 	character.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)
+ 	character.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
+-	character.mind.special_items["Crossbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+-	character.mind.special_items["Bolts"] = /obj/item/quiver/bolts
++	character.mind.special_items["十字弩"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
++	character.mind.special_items["弩矢"] = /obj/item/quiver/bolts
+ 
+ /datum/special_trait/mule
+-	name = "Mule"
+-	greet_text = span_notice("I've been dealing drugs and I have a stash hidden away")
++	name = "骡子"
++	greet_text = span_notice("我一直在倒卖药物，还藏了一处私货。")
+ 	weight = 100
+ 
+ /datum/special_trait/mule/on_apply(mob/living/carbon/human/character, silent)
+-	character.mind.special_items["Stash One"] = /obj/item/storage/backpack/rogue/satchel/mule
+-	character.mind.special_items["Stash Two"] = /obj/item/storage/backpack/rogue/satchel/mule
+-	character.mind.special_items["Dagger"] = /obj/item/rogueweapon/huntingknife/idagger
++	character.mind.special_items["藏匿点一"] = /obj/item/storage/backpack/rogue/satchel/mule
++	character.mind.special_items["藏匿点二"] = /obj/item/storage/backpack/rogue/satchel/mule
++	character.mind.special_items["匕首"] = /obj/item/rogueweapon/huntingknife/idagger
+ 	character.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
+ 
+ /datum/special_trait/cunning_linguist
+-	name = "Cunning Linguist"
+-	greet_text = span_notice("I know an extra language, and I can be quite seductive")
++	name = "狡黠语者"
++	greet_text = span_notice("我会一门额外的语言，而且相当会勾人。")
+ 	weight = 100
+ 
+ /datum/special_trait/cunning_linguist/on_apply(mob/living/carbon/human/character, silent)
+@@ -149,8 +137,8 @@
+ 			character.grant_language(/datum/language/draconic)
+ 
+ /datum/special_trait/corn_fed
+-	name = "Corn Fed"
+-	greet_text = span_notice("My diet was quite rich in corn.")
++	name = "玉米养大"
++	greet_text = span_notice("我的饮食里向来少不了玉米。")
+ 	weight = 100
+ 
+ /datum/special_trait/corn_fed/on_apply(mob/living/carbon/human/character, silent)
+@@ -158,56 +146,56 @@
+ 	character.change_stat(STATKEY_INT, -2)
+ 
+ /datum/special_trait/bookworm
+-	name = "Bookworm"
+-	greet_text = span_notice("I'm a fan of books and I enjoy reading them regularly.")
++	name = "书虫"
++	greet_text = span_notice("我喜欢书，也乐于时常翻阅它们。")
+ 	weight = 100
+ 
+ /datum/special_trait/bookworm/on_apply(mob/living/carbon/human/character, silent)
+ 	character.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
+ 
+ /datum/special_trait/limpdick
+-	name = "Lazy Soldier"
+-	greet_text = span_crit("My 'little soldier' can't seem to stand at attention! Curses!")
++	name = "疲软之枪"
++	greet_text = span_crit("我那‘小兵’怎么也立不起来！该死！")
+ 	weight = 100
+ 
+ /datum/special_trait/screenshake
+-	name = "Tremors"
+-	greet_text = span_crit("I'm not too steady any more...")
++	name = "颤抖"
++	greet_text = span_crit("我已经没法再稳住自己了……")
+ 	weight = 100
+ 
+ /datum/special_trait/maniac_awoken
+-	name = "HELP ME"
+-	greet_text = span_cult("THEY'RE COMING FOR ME")
++	name = "救救我"
++	greet_text = span_cult("他们来抓我了")
+ 	weight = 100
+ 
+ /datum/special_trait/schizo_ambience
+-	name = "Shizophrenic"
+-	greet_text = span_suicide("MY TUMOR gives me sight BEYOND THE VEIL!")
++	name = "精神错乱"
++	greet_text = span_suicide("我的肿瘤让我看见了帷幕之外的东西！")
+ 	weight = 100
+ 
+ /datum/special_trait/arsonist
+-	name = "Arsonist"
+-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs.")
++	name = "纵火狂"
++	greet_text = span_notice("我喜欢看东西燃烧起火。我还藏了两枚燃烧弹。")
+ 	weight = 100
+ 
+ /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
+-	character.mind.special_items["Firebomb One"] = /obj/item/bomb
+-	character.mind.special_items["Firebomb Two"] = /obj/item/bomb
++	character.mind.special_items["燃烧弹一"] = /obj/item/bomb
++	character.mind.special_items["燃烧弹二"] = /obj/item/bomb
+ 	character.adjust_skillrank_up_to(/datum/skill/craft/alchemy, 1, TRUE)
+ 
+ /datum/special_trait/pineapple
+-	name = "The safeword is \"Pineapple\""
+-	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip")
++	name = "暗号是“菠萝”"
++	greet_text = span_notice("我喜欢把人抽打到扭动呻吟，他们的痛苦让我愉悦。我还藏了一条鞭子。")
+ 	weight = 50
+ 
+ /datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
+-	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
++	character.mind.special_items["鞭子"] = /obj/item/rogueweapon/whip
+ 	character.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 6, TRUE)
+ 
+ /datum/special_trait/psydons_rider
+-	name = "Psydon's Drunkest Rider"
+-	greet_text = span_notice("I ride! None of the laws shall stop me for that is Psydon's divine will!")
+-	req_text = "Worship Psydon"
++	name = "Psydon 最醉的骑手"
++	greet_text = span_notice("我要策骑！任何法律都休想阻拦，因为这正是 Psydon 的神圣意志！")
++	req_text = "信奉 Psydon"
+ 	allowed_patrons = list(/datum/patron/old_god)
+ 	weight = 100
+ 
+@@ -221,24 +209,24 @@
+ 	new /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled(get_turf(character))
+ 
+ /datum/special_trait/spring_in_my_step
+-	name = "Spring in my Step"
+-	greet_text = span_notice("My legs are quite strong and where most have to climb, I can just jump")
++	name = "步履轻弹"
++	greet_text = span_notice("我的双腿相当有力，别人得攀爬的地方，我一跃便过。")
+ 	weight = 25
+ 
+ /datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
+ 
+ /datum/special_trait/tolerant
+-	name = "Tolerant"
+-	greet_text = span_notice("I dream of an ideal future, one with peace between all races")
++	name = "宽容"
++	greet_text = span_notice("我梦想着一个理想的未来，一个诸族和平共处的未来。")
+ 	weight = 100
+ 
+ /datum/special_trait/tolerant/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_TOLERANT, "[type]")
+ 
+ /datum/special_trait/thief
+-	name = "Thief"
+-	greet_text = span_notice("Life's not easy around here, but I've made mine a little easier by taking things of others")
++	name = "盗贼"
++	greet_text = span_notice("这地方的日子并不容易，但我靠顺走别人的东西，让自己好过了些。")
+ 	weight = 100
+ 
+ /datum/special_trait/thief/on_apply(mob/living/carbon/human/character, silent)
+@@ -247,8 +235,8 @@
+ 	character.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+ 
+ /datum/special_trait/languagesavant
+-	name = "Polyglot"
+-	greet_text = span_notice("I have always picked up on languages easily, even those that are forbidden to mortals... except that accursed beastial chatter. What even is that nonsense?")
++	name = "通晓众语"
++	greet_text = span_notice("我向来很容易学会语言，哪怕是凡人本不该掌握的那些……唯独那该死的野兽叽喳话除外。那到底是什么鬼东西？")
+ 	weight = 100
+ 
+ /datum/special_trait/languagesavant/on_apply(mob/living/carbon/human/character, silent)
+@@ -260,17 +248,17 @@
+ 	character.grant_language(/datum/language/draconic)
+ 
+ /datum/special_trait/civilizedbarbarian
+-	name = "Tavern Brawler"
+-	greet_text = span_notice("My fists feel heavier!")
++	name = "酒馆斗士"
++	greet_text = span_notice("我的拳头感觉更沉更狠了！")
+ 	weight = 100
+ 
+ /datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
+ 
+ /datum/special_trait/mastercraftsmen
+-	name = "Master Crasftman"
+-	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
+-	req_text = "Middle-aged or Old"
++	name = "百工巧匠"
++	greet_text = "年轻时，我便决定要掌握每一种手艺，于是一路钻研那十门工艺。"
++	req_text = "中年或老年"
+ 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+ 	weight = 100
+ 
+@@ -286,8 +274,8 @@
+ 	character.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+ 
+ /datum/special_trait/bleublood
+-	name = "Noble Lineage"
+-	greet_text = span_notice("I come of noble blood.")
++	name = "贵胄血统"
++	greet_text = span_notice("我出身于高贵血脉。")
+ 	restricted_traits = list(TRAIT_NOBLE)
+ 	weight = 100
+ 
+@@ -296,8 +284,8 @@
+ 	character.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
+ 
+ /datum/special_trait/richpouch
+-	name = "Rich Pouch"
+-	greet_text = span_notice("I've recently found a pouch filled with mammons, probably belonging to some noble.")
++	name = "满囊财货"
++	greet_text = span_notice("我最近捡到了一只装满钱币的袋子，多半是哪个贵族丢的。")
+ 	weight = 100
+ 
+ /datum/special_trait/richpouch/on_apply(mob/living/carbon/human/character, silent)
+@@ -305,8 +293,8 @@
+ 	character.put_in_hands(pouch, forced = TRUE)
+ 
+ /datum/special_trait/swift
+-	name = "Speedster"
+-	greet_text = span_notice("I feel like the fastest person alive and I can probably dodge anything, as long as I'm not weighed down by medium or heavy armor")
++	name = "迅捷者"
++	greet_text = span_notice("我感觉自己是世上最快的人，只要不被中甲或重甲拖累，什么都躲得开。")
+ 	weight = 50
+ 
+ /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
+@@ -315,17 +303,17 @@
+ 	character.change_stat(STATKEY_SPD, 3)
+ 
+ /datum/special_trait/gourmand
+-	name = "Gourmand"
+-	greet_text = span_notice("I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies..")
++	name = "饕客"
++	greet_text = span_notice("哪怕是最腐坏、生冷甚至带毒的食物和水，我也能像品尝珍馐一样吃下去……")
+ 	weight = 100
+ 
+ /datum/special_trait/gourmand/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_NASTY_EATER, "[type]")
+ 
+ /datum/special_trait/lucky
+-	name = "Fortune's Grace"
+-	greet_text = span_notice("Xylix favor me, I am extremely lucky.")
+-	req_text = "Have Xylix as your Patron"
++	name = "幸运垂青"
++	greet_text = span_notice("Xylix 眷顾着我，我的运气极好。")
++	req_text = "以 Xylix 为庇主"
+ 	allowed_patrons = list(/datum/patron/divine/xylix)
+ 	weight = 7
+ 
+@@ -334,9 +322,9 @@
+ 
+ //neutral
+ /datum/special_trait/backproblems
+-	name = "Giant"
+-	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
+-	req_text = "Not a kobold, verminvolk or a dwarf"
++	name = "巨汉"
++	greet_text = span_notice("别人总说我像个巨人。我的体格让人看重，可这个为矮小之民打造的世界，也逼得我不得不更加小心行事。")
++	req_text = "非狗头人、害兽民或矮人"
+ 	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold)
+ 	weight = 50
+ 
+@@ -349,9 +337,9 @@
+ 	character.update_transform()
+ 
+ /datum/special_trait/atheism
+-	name = "Godless"
+-	greet_text = span_notice("Gods may exist, but know what? I care not.")
+-	req_text = "Non-Church Role"
++	name = "无神论者"
++	greet_text = span_notice("神祇或许存在，但那又如何？我并不在乎。")
++	req_text = "非教会职业"
+ 	restricted_jobs = list(CHURCH_ROLES)
+ 	weight = 100
+ 
+@@ -360,8 +348,8 @@
+ 
+ //negative
+ /datum/special_trait/nimrod
+-	name = "Nimrod"
+-	greet_text = span_boldwarning("In the past I learned slower than my peers, and I tend to be clumsy.")
++	name = "迟钝之人"
++	greet_text = span_boldwarning("从前我学什么都比同龄人慢，而且还总是笨手笨脚。")
+ 	weight = 100
+ 
+ /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
+@@ -369,8 +357,8 @@
+ 	character.change_stat(STATKEY_INT, -4)
+ 
+ /datum/special_trait/nopouch
+-	name = "No Pouch"
+-	greet_text = span_boldwarning("I lost my pouch recently, I'm without a zenny..")
++	name = "囊空如洗"
++	greet_text = span_boldwarning("我最近把钱袋弄丢了，身上一文不剩……")
+ 	weight = 200
+ 
+ /datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
+@@ -384,9 +372,9 @@
+ 	qdel(pouch)
+ 
+ /datum/special_trait/hussite
+-	name = "Known Heretic"
+-	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
+-	req_text = "Non-church role"
++	name = "知名异端"
++	greet_text = span_boldwarning("教会已经公开谴责了我，不管理由是否站得住脚！")
++	req_text = "非教会职业"
+ 	weight = 20
+ 	restricted_jobs = list(CHURCH_ROLES)
+ 
+@@ -394,54 +382,54 @@
+ 	GLOB.excommunicated_players += character.real_name
+ 
+ /datum/special_trait/bounty
+-	name = "Hunted Man"
+-	greet_text = span_boldwarning("Someone put a bounty on my head!")
++	name = "悬赏在身"
++	greet_text = span_boldwarning("有人悬赏要我的脑袋！")
+ 	weight = 20
+ 
+ /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
+ 	var/reason = ""
+-	var/employer = "unknown employer"
++	var/employer = "不知名雇主"
+ 	var/employer_gender
+ 	if(prob(65))
+ 		employer_gender = MALE
+ 	else
+ 		employer_gender = FEMALE
+ 	if(employer_gender == MALE)
+-		employer = pick(list("Baron", "Lord", "Nobleman", "Prince"))
++		employer = pick(list("男爵", "领主", "贵族老爷", "王子"))
+ 	else
+-		employer = pick(list("Duchess", "Lady", "Noblelady", "Princess"))
++		employer = pick(list("女公爵", "贵妇", "贵族小姐", "公主"))
+ 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
+ 	var/amount = rand(40,100)
+ 	switch(rand(1,7))
+ 		if(1)
+-			reason = "murder"
++			reason = "谋杀"
+ 		if(2)
+-			reason = "kinslaying"
++			reason = "弑亲"
+ 		if(3)
+-			reason = "besmirching a noble's name"
++			reason = "污蔑贵族名誉"
+ 		if(4)
+-			reason = "treason"
++			reason = "叛逆"
+ 		if(5)
+-			reason = "arson"
++			reason = "纵火"
+ 		if(6)
+-			reason = "heresy"
++			reason = "异端"
+ 		if(7)
+-			reason = "robbing a noble"
++			reason = "劫掠贵族"
+ 	add_bounty(character.real_name, amount, FALSE, reason, employer)
+ 	if(!silent)
+-		to_chat(character, span_notice("Whether I done it or not, I have been accused of [reason], and the [employer] put a bounty on my head!"))
++		to_chat(character, span_notice("不管是不是我干的，我都被指控犯下了[reason]，而那位[employer]已经悬赏通缉我！"))
+ 
+ /datum/special_trait/outlaw
+-	name = "Known Outlaw"
+-	greet_text = span_boldwarning("Whether for crimes I did or was accused of, I have been declared an outlaw!")
++	name = "知名亡命徒"
++	greet_text = span_boldwarning("无论是真犯过还是被栽赃，我都已被宣告为亡命徒！")
+ 	weight = 20
+ 
+ /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
+ 	make_outlaw(character.real_name, TRUE)
+ 
+ /datum/special_trait/unlucky
+-	name = "Unlucky"
+-	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
++	name = "霉运缠身"
++	greet_text = span_boldwarning("自从你打翻那只玻璃花瓶后，你就总觉得……哪里不太对劲。")
+ 	weight = 100
+ 
+ /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
+@@ -449,16 +437,16 @@
+ 
+ 
+ /datum/special_trait/jesterphobia
+-	name = "Jesterphobic"
+-	greet_text = span_boldwarning("I have a severe, irrational fear of Jesters")
++	name = "弄臣恐惧症"
++	greet_text = span_boldwarning("我对弄臣怀有一种严重而非理性的恐惧。")
+ 	weight = 50
+ 
+ /datum/special_trait/jesterphobia/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_JESTERPHOBIA, "[type]")
+ 
+ /datum/special_trait/wild_night
+-	name = "Wild Night"
+-	greet_text = span_boldwarning("I don't remember what I did last night, and now I'm lost!")
++	name = "荒唐一夜"
++	greet_text = span_boldwarning("我根本不记得昨晚做了什么，而现在我迷路了！")
+ 	weight = 200
+ 
+ /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
+@@ -467,8 +455,8 @@
+ 	grant_lit_torch(character)
+ 
+ /datum/special_trait/atrophy
+-	name = "Atrophy"
+-	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
++	name = "萎弱"
++	greet_text = span_boldwarning("小时候我连喂饱自己都做不到……这让我变得虚弱又脆弱。")
+ 	weight = 50
+ 
+ /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
+@@ -477,8 +465,8 @@
+ 	character.change_stat(STATKEY_WIL, -1)
+ 
+ /datum/special_trait/lazy
+-	name = "Lazy"
+-	greet_text = span_boldwarning("I don't care, never did")
++	name = "懒惰"
++	greet_text = span_boldwarning("我不在乎，从来都不在乎。")
+ 	weight = 50
+ 
+ /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
+@@ -489,16 +477,16 @@
+ 	character.change_stat(STATKEY_PER, -1)
+ 
+ /datum/special_trait/bad_week
+-	name = "Bad Week"
+-	greet_text = span_boldwarning("Everything just seems to piss me off")
++	name = "倒霉一周"
++	greet_text = span_boldwarning("这一切都让我火大。")
+ 	weight = 100
+ 
+ /datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
+ 	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
+ 
+ /datum/special_trait/nude_sleeper
+-	name = "Picky Sleeper"
+-	greet_text = span_boldwarning("I just can't seem to fall asleep unless I'm <i>truly</i> comfortable...")
++	name = "挑剔睡客"
++	greet_text = span_boldwarning("除非我感到<i>真正</i>舒适，否则我就是睡不着……")
+ 	weight = 25
+ 
+ /datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
+@@ -506,9 +494,9 @@
+ 
+ //job specials
+ /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
+-	name = "Rebellous Daughter"
+-	greet_text = span_notice("I am quite rebellious for a princess. Screw Noble Customs!")
+-	req_text = "Be a princess"
++	name = "叛逆公主"
++	greet_text = span_notice("作为公主来说，我可真够叛逆的。去他的贵族规矩！")
++	req_text = "成为公主"
+ 	allowed_sexes = list(FEMALE)
+ 	allowed_jobs = list(/datum/job/roguetown/prince)
+ 	weight = 50
+@@ -542,9 +530,9 @@
+ 	character.adjust_skillrank(/datum/skill/misc/stealing, -2, TRUE)
+ 
+ /datum/special_trait/vengantbum
+-	name = "Vengant Bum"
+-	greet_text = span_notice("I was once a nobleman, high on life until my father was murdered right in front of me. Thankfully, my mentor took me to safety and taught me all I needed to survive in these disgusting lands. They think I am a lowlife, but that's just an advantage.")
+-	req_text = "Be a beggar"
++	name = "复仇乞儿"
++	greet_text = span_notice("我曾经是个贵族，意气风发，直到父亲在我眼前被人谋杀。幸好导师将我带到安全之地，还教会了我在这片肮脏土地上活下去所需的一切。他们以为我是个下等货色，可那反倒成了我的优势。")
++	req_text = "成为乞丐"
+ 	allowed_jobs = list(/datum/job/roguetown/beggar)
+ 	weight = 7
+ 
+@@ -558,9 +546,9 @@
+ 	character.STAWIL = 20
+ 
+ /datum/special_trait/my_precious
+-	name = "My Precious"
+-	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
+-	req_text = "Be a beggar"
++	name = "我的宝贝"
++	greet_text = span_notice("这枚戒指，真是闪闪发亮……如此珍贵，我能感受到它的力量。它是我的，全是我的！")
++	req_text = "成为乞丐"
+ 	allowed_jobs = list(/datum/job/roguetown/beggar)
+ 	weight = 50
+ 
+@@ -574,12 +562,12 @@
+ 	character.put_in_hands(ring, forced = TRUE)
+ 
+ /datum/special_trait/illicit_merchant
+-	name = "Illicit Merchant"
+-	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device")
+-	req_text = "Be a Shophand"
++	name = "私商"
++	greet_text = span_notice("我受够了给别人当下手，我要自己开一家商号。我已经弄到了一把藏起来的商人钥匙，还有一件古怪的魔法装置。")
++	req_text = "成为店员"
+ 	allowed_jobs = list(/datum/job/roguetown/shophand)
+ 	weight = 50
+ 
+ /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
+-	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
+-	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
++	character.mind.special_items["商人钥匙"] = /obj/item/roguekey/merchant
++	character.mind.special_items["金面宝石"] = /obj/item/gem_device/goldface
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,36 @@
+From 6f8888784585811a9f14d8488af508fce08ec891 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/world_traits/event_traits.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/world_traits/event_traits.dm | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/code/datums/world_traits/event_traits.dm b/code/datums/world_traits/event_traits.dm
+index 7e7bd0510cad..737952631e33 100644
+--- a/code/datums/world_traits/event_traits.dm
++++ b/code/datums/world_traits/event_traits.dm
+@@ -1,11 +1,11 @@
+ /datum/world_trait/fertility
+-	name = "Fertile Lands"
+-	desc = "Crops are growing faster."
++	name = "沃饶之地"
++	desc = "作物生长得更快。"
+ 
+ /datum/world_trait/fishing_increase
+-	name = "Rainy Day Boon"
+-	desc = "Fishes are easier to catch."
++	name = "雨日恩泽"
++	desc = "鱼类更容易上钩。"
+ 
+ /datum/world_trait/fishing_decrease
+-	name = "River Drought"
+-	desc = "Fishes are harder to catch."
++	name = "河流干涸"
++	desc = "鱼类更难捕获。"
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,60 @@
+From 70d673266b96917daa9d808debf10ee40f3c9cd8 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/migrants/migrant_waves/runaway_prisoners.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/migrants/migrant_waves/runaway_prisoners.dm | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/code/datums/migrants/migrant_waves/runaway_prisoners.dm b/code/datums/migrants/migrant_waves/runaway_prisoners.dm
+index 00cfce09d4c8..3b3b245b9cf9 100644
+--- a/code/datums/migrants/migrant_waves/runaway_prisoners.dm
++++ b/code/datums/migrants/migrant_waves/runaway_prisoners.dm
+@@ -153,10 +153,10 @@
+ 	var/descriptor_height = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_HEIGHT), "%DESC1%")
+ 	var/descriptor_body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
+ 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
+-	var/my_crime = input(H, "What is your crime?", "Crime") as text|null
++	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
+ 	if (!my_crime)
+-		my_crime = "crimes against the Crown"
+-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "The Justiciary of Rotwood Vale")
++		my_crime = "冒犯王冠之罪"
++	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭")
+ 	if(should_wear_femme_clothes(H))
+ 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+ 	else if(should_wear_masc_clothes(H))
+@@ -174,10 +174,10 @@
+ 	var/descriptor_height = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_HEIGHT), "%DESC1%")
+ 	var/descriptor_body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
+ 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
+-	var/my_crime = input(H, "What is your crime?", "Crime") as text|null
++	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
+ 	if (!my_crime)
+-		my_crime = "crimes against the Crown"
+-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "The Justiciary of Rotwood Vale")
++		my_crime = "冒犯王冠之罪"
++	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭")
+ 	if(should_wear_femme_clothes(H))
+ 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+ 	else if(should_wear_masc_clothes(H))
+@@ -195,10 +195,10 @@
+ 	var/descriptor_height = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_HEIGHT), "%DESC1%")
+ 	var/descriptor_body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
+ 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
+-	var/my_crime = input(H, "What is your crime?", "Crime") as text|null
++	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
+ 	if (!my_crime)
+-		my_crime = "crimes against the Crown"
+-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "The Justiciary of Rotwood Vale")
++		my_crime = "冒犯王冠之罪"
++	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭")
+ 	if(should_wear_femme_clothes(H))
+ 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+ 	else if(should_wear_masc_clothes(H))
+-- 
+Translation Patch Toolkit

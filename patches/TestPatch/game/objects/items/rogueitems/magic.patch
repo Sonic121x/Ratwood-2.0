@@ -1,0 +1,29 @@
+From ba7e900c718cdc22fb16721cd4692f37da2830bc Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/objects/items/rogueitems/magic.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/magic.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/magic.dm b/code/game/objects/items/rogueitems/magic.dm
+index b5722494b1cd..64afd6256bb3 100644
+--- a/code/game/objects/items/rogueitems/magic.dm
++++ b/code/game/objects/items/rogueitems/magic.dm
+@@ -365,8 +365,8 @@
+ */
+ 
+ /obj/item/necra_censer
+-	name = "Necra's censer"
+-	desc = "A small bronze censer that expels an otherworldly mist."
++	name = "Necra 的香炉"
++	desc = "一只小巧的青铜香炉，会不断吐出异界般的雾气。"
+ 	icon = 'icons/roguetown/items/misc.dmi'
+ 	icon_state ="necra_censer"
+ 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,30 @@
+From 23a941323d20202bb85e874991ccdbf6d3690f3d Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/area/mountdecap.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/area/mountdecap.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/area/mountdecap.dm b/code/game/area/mountdecap.dm
+index d7f0aa2df46c..82b5483263e2 100644
+--- a/code/game/area/mountdecap.dm
++++ b/code/game/area/mountdecap.dm
+@@ -112,9 +112,9 @@
+ 	detail_text = DETAIL_TEXT_DECAP_GOBLIN_FORTRESS
+ 
+ /area/rogue/under/cave/scarymaze
+-	name = "Necran Labyrinth"
++	name = "Necra 迷宫"
+ 	icon_state = "spidercave"
+-	first_time_text = "NECRAN LABYRINTH"
++	first_time_text = "NECRA 迷宫"
+ 	droning_sound = 'sound/music/area/underworlddrone.ogg'
+ 	droning_sound_dusk = 'sound/music/area/underworlddrone.ogg'
+ 	droning_sound_night = 'sound/music/area/underworlddrone.ogg'
+-- 
+Translation Patch Toolkit

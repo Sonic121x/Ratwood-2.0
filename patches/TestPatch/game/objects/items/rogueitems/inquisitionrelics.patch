@@ -1,0 +1,55 @@
+From ec9cd92722f8eb57edf1df4b3ff6240e87dcf859 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/objects/items/rogueitems/inquisitionrelics.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/inquisitionrelics.dm | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/inquisitionrelics.dm b/code/game/objects/items/rogueitems/inquisitionrelics.dm
+index 2a1b5d501f23..5c9e9963cb09 100644
+--- a/code/game/objects/items/rogueitems/inquisitionrelics.dm
++++ b/code/game/objects/items/rogueitems/inquisitionrelics.dm
+@@ -130,21 +130,21 @@
+ 	var/effect_color
+ 	var/pulse = 0
+ 	var/ticks_to_apply = 10
+-	var/astratanlines =list("'HER LIGHT HAS LEFT ME! WHERE AM I?!'", "'SHATTER THIS CONTRAPTION, SO I MAY FEEL HER WARMTH ONE LAST TIME!'", "'I am royal.. Why did they do this to me...?'")
+-	var/noclines =list("'Colder than moonlight...'", "'No wisdom can reach me here...'", "'Please help me, I miss the stars...'")
+-	var/necralines =list("'They snatched me from her grasp, for eternal torment...'", "'Necra! Please! I am so tired! Release me!'", "'I am lost, lost in a sea of stolen ends.'")
+-	var/abyssorlines =list("'I cannot feel the coast's breeze...'", "'We churn tighter here than schooling fish...'", "'Free me, please, so I may return to the sea...'")
+-	var/ravoxlines =list("'Ravoxian kin! Tear this Otavan dog's head off! Free me from this damnable witchery!'", "'There is no justice nor glory to be found here, just endless fatigue...'", "'I begged for a death by the sword...'")
+-	var/pestralines =list("'I only wanted to perfect my cures...'", "'A thousand plagues upon the holder of this accursed machine! Pestra! Can you not hear me?!'", "'I can feel their suffering as they brush against me...'")
+-	var/eoralines =list("'Every caress feels like a thousand splintering bones...'", "'She was a heretic, but how could I hurt her?!'", "'I'm sorry! I only wanted peace! Please release me!'")
+-	var/dendorlines =list("'HIS MADNESS CALLS FOR ME! RRGHNN...'", "'SHATTER THIS BOX, SO WE MAY CHOKE THIS OTAVAN ON DIRT AND ROOTS!'", "'I miss His voice in the leaves... Free me, please...'")
+-	var/xylixlines =list("'ONE, TWO, THREE, FOUR- TWO, TWO, THREE, FOUR. --What do you mean, annoying?'", "'There are thirteen others in here, you know! What a good audience- they literally can't get out of their seats!'", "'Of course I went all-in! I thought he had an ace-high!'", "'No, the XYLIX'S FORTUNE was right- this definitely is quite bad.'")
+-	var/malumlines =list("'The structure of this cursed machine is malleable.. Shatter it, please...'", "'My craft could've changed the world...'", "'Free me, so I may return to my apprentice, please...'")
+-	var/matthioslines =list("'My final transaction... He will never receive my value... Stolen away by these monsters...'", "'Comrade, I have been shackled into this HORRIFIC CONTRAPTION, FREE ME!'", "'I feel our shackles twist with eachother's...'")
+-	var/zizolines =list("'ZIZO! MY MAGICKS FAIL ME! STRIKE DOWN THESE PSYDONIAN DOGS!'", "'CABALIST? There is TWISTED MAGICK HERE, BEWARE THE MUSIC! OUR VOICES ARE FORCED!'", "'DESTROY THE BOX, KILL THE WIELDER. YOUR MAGICKS WILL BE FREE.'")
+-	var/graggarlines =list("'ANOINTED! TEAR THIS OTAVAN'S HEAD OFF!'", "'ANOINTED! SHATTER THE BOX, AND WE WILL KILL THEM TOGETHER!'", "'GRAGGAR, GIVE ME STRENGTH TO BREAK MY BONDS!'")
+-	var/baothalines =list("'I miss the warmth of ozium... There is no feeling in here for me...'", "'Debauched one, rescue me from this contraption, I have such things to share with you.'", "'MY PERFECTION WAS TAKEN FROM ME BY THESE OTAVAN MONSTERS!'")
+-	var/psydonianlines =list("'FREE US! FREE US! WE HAVE SUFFERED ENOUGH!'", "'PLEASE, RELEASE US!", "WE MISS OUR FAMILIES!'", "'WHEN WE ESCAPE, WE ARE GOING TO CHASE YOU INTO YOUR GRAVE.'")
++	var/astratanlines =list("'她的光已离我而去！我这是在哪？！'", "'砸碎这鬼东西吧，让我最后再感受一次她的温暖！'", "'我是王族……他们为什么要这样对我……？'")
++	var/noclines =list("'比月光还要寒冷……'", "'再没有任何智慧能触及我了……'", "'求求你帮帮我，我想念群星……'")
++	var/necralines =list("'他们把我从她的掌握中夺走了，只留下永恒的折磨……'", "'Necra！求求你！我太累了！放我走吧！'", "'我迷失了，迷失在一片被窃取的终局之海里。'")
++	var/abyssorlines =list("'我再也感受不到海岸上的风了……'", "'我们在这里被搅得比鱼群还要紧密……'", "'求你放了我吧，让我回到大海……'")
++	var/ravoxlines =list("'Ravox 的同道！砍下这个 Otava 狗崽子的脑袋！把我从这该死的妖术里放出去！'", "'这里既无公义，也无荣耀，只有无穷无尽的疲惫……'", "'我曾祈求一场死于刀剑之下的结局……'")
++	var/pestralines =list("'我只是想让自己的药方更加完善……'", "'愿千重瘟疫降临在这台被诅咒机器的持有者身上！Pestra！你听不见我吗？！'", "'我能感到他们从我身边擦过时所承受的痛苦……'")
++	var/eoralines =list("'每一次抚触都像有千万根骨头同时碎裂……'", "'她是异端，可我又怎么下得去手伤害她？！'", "'对不起！我只是想要和平！求你放了我！'")
++	var/dendorlines =list("'祂的疯狂正在呼唤我！呃啊啊……'", "'砸碎这口箱子吧，好让我们用泥土与根须呛死这个 Otava 人！'", "'我想念叶间回响的祂之声……求你放我出去……'")
++	var/xylixlines =list("'一、二、三、四，二、二、三、四。怎么，你觉得这很烦？'", "'你知道吗，这里面还有十三个别的家伙！多棒的观众啊，他们甚至连座位都离不开！'", "'我当然全押了！我还以为他手里只是高牌 A 呢！'", "'不，XYLIX'S FORTUNE 没说错，这回的情况确实糟得很。'")
++	var/malumlines =list("'这台遭诅咒机器的结构是可以被重塑的……求你把它砸开……'", "'我的技艺本能改变整个世界……'", "'放我出去吧，让我回到我的学徒身边，求你了……'")
++	var/matthioslines =list("'我最后一笔交易……他再也收不到我应有的价值了……全被这些怪物夺走了……'", "'同道啊，我被锁进了这可怖的机关里，放我出去！'", "'我能感觉到我们的镣铐正彼此纠缠着……'")
++	var/zizolines =list("'ZIZO！我的魔法失灵了！把这些 PSYDONIAN 狗崽子全都劈死！'", "'密教徒？这里有扭曲的魔法，提防那音乐！我们的声音全被强迫着唱了出来！'", "'毁掉这口箱子，杀了持有者。你们的魔法就能得到自由。'")
++	var/graggarlines =list("'受膏者！砍下这个 Otava 人的脑袋！'", "'受膏者！砸碎这口箱子，我们就能一起把他们杀光！'", "'GRAGGAR，赐我力量，让我挣断自己的枷锁！'")
++	var/baothalines =list("'我怀念 ozium 的温度……在这里我什么也感觉不到……'", "'放纵之徒，把我从这机关里救出去吧，我有的是东西想与你分享。'", "'我的完美，全被这些 Otava 怪物夺走了！'")
++	var/psydonianlines =list("'放我们出去！放我们出去！我们受的苦已经够多了！'", "'求求你，放了我们！", "我们想念自己的家人！'", "'等我们逃出去，就会一路追杀你到坟墓里。'")
+ /datum/status_effect/buff/cranking_soulchurner/on_creation(mob/living/new_owner, stress, colour)
+ 	effect_color = "#800000"
+ 	return ..()
+-- 
+Translation Patch Toolkit

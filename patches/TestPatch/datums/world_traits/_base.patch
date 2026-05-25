@@ -1,0 +1,27 @@
+From 591ec3c70e1c93e889148241d2661bdeb5277d84 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/world_traits/_base.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/world_traits/_base.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/datums/world_traits/_base.dm b/code/datums/world_traits/_base.dm
+index b1ba511ada6f..1ab16e8d1d57 100644
+--- a/code/datums/world_traits/_base.dm
++++ b/code/datums/world_traits/_base.dm
+@@ -1,6 +1,6 @@
+ /datum/world_trait
+-	var/name = "World Trait"
+-	var/desc = "World Trait Description"
++	var/name = "世界特性"
++	var/desc = "世界特性描述"
+ 	var/processes = FALSE
+ 
+ 	var/list/tracked_items = list()
+-- 
+Translation Patch Toolkit

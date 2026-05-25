@@ -1,0 +1,42 @@
+From 3e4861142bbb317b5958f575f7b3921a817c15af Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/_globalvars/special_traits.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/_globalvars/special_traits.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/_globalvars/special_traits.dm b/code/_globalvars/special_traits.dm
+index a03b0bab7fca..68699edeef2d 100644
+--- a/code/_globalvars/special_traits.dm
++++ b/code/_globalvars/special_traits.dm
+@@ -15,7 +15,7 @@
+ 	to_chat(user, span_notice("<b>[special.name]</b>"))
+ 	to_chat(user, special.greet_text)
+ 	if(special.req_text)
+-		to_chat(user, span_boldwarning("Requirements: [special.req_text]"))
++		to_chat(user, span_boldwarning("需求： [special.req_text]"))
+ 
+ /proc/try_apply_character_post_equipment(mob/living/carbon/human/character, client/player)
+ 	var/datum/job/job
+@@ -104,12 +104,12 @@
+ 		if(virtue_check(virtue_type, heretic))
+ 			apply_virtue(character, virtue_type)
+ 		else
+-			to_chat(character, "Incorrect Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
++			to_chat(character, "美德参数不正确！（向非异端角色应用异端美德）该美德不会生效。")
+ 	if(virtuetwo_type && virtuous)
+ 		if(virtue_check(virtuetwo_type, heretic))
+ 			apply_virtue(character, virtuetwo_type)
+ 		else
+-			to_chat(character, "Incorrect Second Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
++			to_chat(character, "第二美德参数不正确！（向非异端角色应用异端美德）该美德不会生效。")
+ 
+ /proc/apply_prefs_race_bonus(mob/living/carbon/human/character, client/player)
+ 	if (!player)
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,72 @@
+From 94ce37781fb13f6af3556fef8d734f7d78eb4434 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/area/woods.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/area/woods.dm | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/code/game/area/woods.dm b/code/game/area/woods.dm
+index 24637fccfb28..e804793f977b 100644
+--- a/code/game/area/woods.dm
++++ b/code/game/area/woods.dm
+@@ -34,7 +34,7 @@
+ 	// droning_sound_night = 'sound/music/area/forestnight.ogg'
+ 
+ /area/rogue/outdoors/woods/north
+-	name = "Rotwood Vale - North"
++	name = "谷地 - 北部"
+ 	// This section shouldn't have any sea mobs, but is close to the old warden tower
+ 	// So should be relatively easy
+ 	ambush_mobs = list(
+@@ -47,7 +47,7 @@
+ 	threat_region = THREAT_REGION_AZURE_GROVE
+ 
+ /area/rogue/outdoors/woods/northeast
+-	name = "Rotwood Vale - Northeast"
++	name = "谷地 - 东北部"
+ 	// Ambush list here is "easier" with some pirates mob, possibility of sea goblin
+ 	ambush_mobs = list(
+ 			/mob/living/simple_animal/hostile/retaliate/rogue/wolf/badger = 10,
+@@ -61,7 +61,7 @@
+ 	threat_region = THREAT_REGION_AZURE_GROVE
+ 
+ /area/rogue/outdoors/woods/southeast
+-	name = "Rotwood Vale - Southeast"
++	name = "谷地 - 东南部"
+ 	ambush_mobs = list(
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/badger = 10,
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/raccoon = 30,
+@@ -73,7 +73,7 @@
+ 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30)
+ 
+ /area/rogue/outdoors/woods/south
+-	name = "Rotwood Vale - South"
++	name = "谷地 - 南部"
+ 	ambush_mobs = list(
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/badger = 10,
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/raccoon = 30,
+@@ -84,7 +84,7 @@
+ 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20)
+ 
+ /area/rogue/outdoors/woods/southwest
+-	name = "Rotwood Vale - Southwest"
++	name = "谷地 - 西南部"
+ 	ambush_mobs = list(
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/badger = 10,
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/raccoon = 30,
+@@ -95,7 +95,7 @@
+ 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20)
+ 
+ /area/rogue/outdoors/woods/northwest
+-	name = "Rotwood Vale - Northwest"
++	name = "谷地 - 西北部"
+ 	ambush_mobs = list(
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/badger = 10,
+ 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/raccoon = 30,
+-- 
+Translation Patch Toolkit

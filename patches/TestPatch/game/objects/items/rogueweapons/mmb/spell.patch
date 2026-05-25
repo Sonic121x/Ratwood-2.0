@@ -1,0 +1,34 @@
+From 1dca620ea04c89eed9cd3c6a948ed47670adf2c8 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/objects/items/rogueweapons/mmb/spell.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueweapons/mmb/spell.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueweapons/mmb/spell.dm b/code/game/objects/items/rogueweapons/mmb/spell.dm
+index a7dfa7ec7a75..be10d6fcae91 100644
+--- a/code/game/objects/items/rogueweapons/mmb/spell.dm
++++ b/code/game/objects/items/rogueweapons/mmb/spell.dm
+@@ -1,5 +1,5 @@
+ /datum/intent/spell
+-	name = "spell"
++	name = "法术"
+ 	tranged = 1
+ 	chargedrain = 0
+ 	chargetime = 0
+@@ -9,7 +9,7 @@
+ /datum/intent/spell/can_charge()
+ 	if(mastermob?.next_move > world.time)
+ 		if(mastermob.client.last_cooldown_warn + 10 < world.time)
+-			to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
++			to_chat(mastermob, span_warning("我还没准备好这么做！"))
+ 			mastermob.client.last_cooldown_warn = world.time
+ 		return FALSE
+ 	return TRUE
+-- 
+Translation Patch Toolkit

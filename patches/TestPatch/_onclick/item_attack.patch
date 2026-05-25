@@ -1,0 +1,27 @@
+From efc9f6c1869bf26f15527006fa4724d8edbbec2b Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/_onclick/item_attack.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/_onclick/item_attack.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/_onclick/item_attack.dm b/code/_onclick/item_attack.dm
+index 119e4c5f192e..b4f17b43299f 100644
+--- a/code/_onclick/item_attack.dm
++++ b/code/_onclick/item_attack.dm
+@@ -205,7 +205,7 @@
+ 				user.ignite_mob()
+ 			else
+ 				if(prob(30))
+-					to_chat(M, span_warning("The foul blessing of the Undermaiden hurts us!"))
++					to_chat(M, span_warning("冥下侍女那污秽的赐福正在灼伤我们！"))
+ 			user.adjust_blurriness(3)
+ 			user.adjustBruteLoss(5)
+ 			user.apply_status_effect(/datum/status_effect/churned, M)
+-- 
+Translation Patch Toolkit

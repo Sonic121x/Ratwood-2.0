@@ -1,0 +1,49 @@
+From 7ee16caabb01e84ff0a02089a39113132496f77b Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/area/town/town.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/area/town/town.dm | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/code/game/area/town/town.dm b/code/game/area/town/town.dm
+index 24594e556443..f537cb586c45 100644
+--- a/code/game/area/town/town.dm
++++ b/code/game/area/town/town.dm
+@@ -14,9 +14,9 @@
+ 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
+ 	droning_sound_night = 'sound/music/area/sleeping.ogg'
+ 	converted_type = /area/rogue/indoors/shelter/town
+-	first_time_text = "THE CITY OF ROTWOOD VALE"
+-	town_area = TRUE
+-	deathsight_message = "the city of Rotwood Vale and all its bustling souls"
++	first_time_text = "谷地之城"
++	town_area = TRUE
++	deathsight_message = "谷地之城，以及其中无数熙攘喧闹的灵魂"
+ 
+ /area/rogue/outdoors/town/graveyard
+ 	name = "town graveyard"
+@@ -46,7 +46,7 @@
+ 	droning_sound_night = 'sound/music/area/sleeping.ogg'
+ 	converted_type = /area/rogue/outdoors/exposed/town
+ 	town_area = TRUE
+-	deathsight_message = "the city of Rotwood vale and all its bustling souls, behind closed doors"
++	deathsight_message = "谷地之城，以及那一扇扇紧闭门户之后依旧熙攘喧闹的灵魂"
+ 	detail_text = DETAIL_TEXT_AZURE_PEAK
+ 
+ /area/rogue/outdoors/exposed/town
+@@ -76,7 +76,7 @@
+ 	droning_sound_dusk = null
+ 	droning_sound_night = null
+ 	converted_type = /area/rogue/outdoors/exposed/manorgarri
+-	first_time_text = "THE KEEP OF ROTWOOD VALE"
++	first_time_text = "谷地要塞"
+ 	keep_area = TRUE
+ 	detail_text = DETAIL_TEXT_MANOR
+ 	deathsight_message = "sequestered behind royal doors, amidst fine carpets and power"
+-- 
+Translation Patch Toolkit

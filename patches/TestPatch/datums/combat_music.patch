@@ -1,0 +1,27 @@
+From 773caf86b39eb5b948a9382ab603bd64158888ff Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/combat_music.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/combat_music.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/datums/combat_music.dm b/code/datums/combat_music.dm
+index 1a491cee6d5a..2b1daba9a6fb 100644
+--- a/code/datums/combat_music.dm
++++ b/code/datums/combat_music.dm
+@@ -405,7 +405,7 @@
+ 	musicpath = list('sound/music/combat_holy.ogg')
+ 
+ /datum/combat_music/necra
+-	name = "Necran Clergy"
++	name = "Necra 教士"
+ 	desc = ""
+ 	shortname = "Necra"
+ 	credits = "T-87 SULFURHEAD - Formerly Known as Toulouse Lautrec (https://www.youtube.com/@T87-Sulfurhead)"
+-- 
+Translation Patch Toolkit

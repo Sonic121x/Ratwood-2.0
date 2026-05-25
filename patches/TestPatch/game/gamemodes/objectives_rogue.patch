@@ -1,0 +1,29 @@
+From e78228ed71e470f824997dd7af66ec3e85682dff Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/gamemodes/objectives_rogue.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/gamemodes/objectives_rogue.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/gamemodes/objectives_rogue.dm b/code/game/gamemodes/objectives_rogue.dm
+index a4840bb897f0..e34dca290479 100644
+--- a/code/game/gamemodes/objectives_rogue.dm
++++ b/code/game/gamemodes/objectives_rogue.dm
+@@ -35,8 +35,8 @@
+ 
+ /datum/objective/vampire
+ 	name = "conquer"
+-	explanation_text = "Put an end to the werewolf menace in Rotwood Vale, or unite with them against the forces of the Nine."
+-	team_explanation_text = "The feud between werewolves and vampires reaches back to the dawn of time. Will the two factions destroy each other, or find a way to coexist and face the mortals of Rotwood Vale together?"
++	explanation_text = "终结谷地中的狼人威胁，或与他们联手，一同对抗九神的势力。"
++	team_explanation_text = "狼人与吸血鬼之间的仇怨，自太古之初便已结下。这两方究竟会互相毁灭，还是寻得共存之道，并肩面对谷地中的凡人？"
+ 	triumph_count = 5
+ 
+ /datum/objective/vampire/check_completion()
+-- 
+Translation Patch Toolkit

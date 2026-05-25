@@ -1,0 +1,66 @@
+From 01c9b58660e889a10f8e8cca7f50470df419cd35 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/migrants/migrant_waves/heartfelt roles.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/migrants/migrant_waves/heartfelt roles.dm | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/code/datums/migrants/migrant_waves/heartfelt roles.dm b/code/datums/migrants/migrant_waves/heartfelt roles.dm
+index 244ccb389509..3be73ccbcc5a 100644
+--- a/code/datums/migrants/migrant_waves/heartfelt roles.dm
++++ b/code/datums/migrants/migrant_waves/heartfelt roles.dm
+@@ -1,12 +1,12 @@
+ /datum/migrant_role/heartfelt/lord
+-	name = "Lord of Heartfelt"
++	name = "Heartfelt 领主"
+ 	advclass_cat_rolls = list(CTAG_HFT_LORD = 20)
+ 	allowed_races = RACES_NO_CONSTRUCT
+ 	show_wanderer_examine = FALSE
+ 	advjob_examine = FALSE
+ 
+ /datum/migrant_role/heartfelt/hand
+-	name = "Hand of Heartfelt"
++	name = "Heartfelt 执政之手"
+ 	advclass_cat_rolls = list(CTAG_HFT_HAND = 20)
+ 	allowed_races = ACCEPTED_RACES
+ 	grant_lit_torch = TRUE
+@@ -14,7 +14,7 @@
+ 	advjob_examine = FALSE
+ 
+ /datum/migrant_role/heartfelt/knight
+-	name = "Knight of Heartfelt"
++	name = "Heartfelt 骑士"
+ 	advclass_cat_rolls = list(CTAG_HFT_KNIGHT = 20)
+ 	allowed_races = RACES_NO_CONSTRUCT
+ 	grant_lit_torch = FALSE
+@@ -33,19 +33,19 @@
+ 				index = copytext(H.real_name, 1,index)
+ 			if(!index)
+ 				index = H.real_name
+-			S.name = "knight tabard ([index])"
++			S.name = "骑士罩袍（[index]）"
+ 		var/prev_real_name = H.real_name
+ 		var/prev_name = H.name
+-		var/honorary = "Ser"
++		var/honorary = "爵士"
+ 		if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
+-			honorary = "Dame"
++			honorary = "女爵"
+ 		GLOB.chosen_names -= prev_real_name
+ 		H.real_name = "[honorary] [prev_real_name]"
+ 		H.name = "[honorary] [prev_name]"
+ 		GLOB.chosen_names += H.real_name
+ 
+ /datum/migrant_role/heartfelt/retinue
+-	name = "Heartfeltian Retinue"
++	name = "Heartfelt 扈从"
+ 	advclass_cat_rolls = list(CTAG_HFT_RETINUE = 20)
+ 	allowed_races = ACCEPTED_RACES
+ 	grant_lit_torch = FALSE
+-- 
+Translation Patch Toolkit

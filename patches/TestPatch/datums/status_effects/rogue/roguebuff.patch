@@ -1,0 +1,75 @@
+From 54a6aebc5225eff806724622a0eed7cb97ad0eb1 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/status_effects/rogue/roguebuff.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/status_effects/rogue/roguebuff.dm | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/code/datums/status_effects/rogue/roguebuff.dm b/code/datums/status_effects/rogue/roguebuff.dm
+index 9171a0aab962..cda1c67b13c7 100644
+--- a/code/datums/status_effects/rogue/roguebuff.dm
++++ b/code/datums/status_effects/rogue/roguebuff.dm
+@@ -1308,8 +1308,8 @@
+ 
+ 
+ /atom/movable/screen/alert/status_effect/buff/undermaidenbargain
+-	name = "Undermaiden's Bargain"
+-	desc = "A horrible deal was struck in my name..."
++	name = "冥下侍女的契约"
++	desc = "一桩可怖的交易以我的名义被立下了……"
+ 	icon_state = "buff"
+ 
+ /datum/status_effect/buff/undermaidenbargain
+@@ -1319,7 +1319,7 @@
+ 
+ /datum/status_effect/buff/undermaidenbargain/on_apply()
+ 	. = ..()
+-	to_chat(owner, span_danger("You feel as though some horrible deal has been prepared in your name. May you never see it fulfilled..."))
++	to_chat(owner, span_danger("你感觉仿佛有某桩可怖的交易正以你的名义被筹备着。愿你永远不要见到它实现……"))
+ 	playsound(owner, 'sound/misc/bell.ogg', 100, FALSE, -1)
+ 	ADD_TRAIT(owner, TRAIT_DEATHBARGAIN, id)
+ 
+@@ -1331,28 +1331,28 @@
+ /datum/status_effect/buff/undermaidenbargainheal/on_apply()
+ 	. = ..()
+ 	owner.remove_status_effect(/datum/status_effect/buff/undermaidenbargain)
+-	to_chat(owner, span_warning("You feel the deal struck in your name is being fulfilled..."))
++	to_chat(owner, span_warning("你感觉那桩以你之名立下的交易，正在被兑现……"))
+ 	playsound(owner, 'sound/misc/deadbell.ogg', 100, FALSE, -1)
+ 	ADD_TRAIT(owner, TRAIT_NODEATH, id)
+ 	var/dirgeline = rand(1,6)
+ 	spawn(15)
+ 		switch(dirgeline)
+ 			if(1)
+-				to_chat(owner, span_cultsmall("She watches the city skyline as her crimson pours into the drain."))
++				to_chat(owner, span_cultsmall("她望着城市天际线，任由自己殷红的鲜血流入沟渠。"))
+ 			if(2)
+-				to_chat(owner, span_cultsmall("He only wanted more for his family. He feels comfort on the pavement, the Watchman's blade having met its mark."))
++				to_chat(owner, span_cultsmall("他只是想为家人争来更多。守夜人的刀已然命中，他倒在石地上，竟感到一丝安宁。"))
+ 			if(3)
+-				to_chat(owner, span_cultsmall("A sailor's leg is caught in naval rope. Their last thoughts are of home."))
++				to_chat(owner, span_cultsmall("一名水手的腿被缆绳死死绞住。他最后的念头，是家。"))
+ 			if(4)
+-				to_chat(owner, span_cultsmall("She sobbed over the Venardine's corpse. The Brigand's mace stemmed her tears."))
++				to_chat(owner, span_cultsmall("她伏在 Venardine 的尸身上哭泣。流寇的钉头锤替她止住了眼泪。"))
+ 			if(5)
+-				to_chat(owner, span_cultsmall("A farm son chokes up his last. At his bedside, a sister and mother weep."))
++				to_chat(owner, span_cultsmall("一位农家之子在窒息中吐出最后一口气。床边，姐妹与母亲正失声痛哭。"))
+ 			if(6)
+-				to_chat(owner, span_cultsmall("A woman begs at a Headstone. It is your fault."))
++				to_chat(owner, span_cultsmall("一个女人跪在墓碑前苦苦哀求。而这一切，都是你的错。"))
+ 
+ /datum/status_effect/buff/undermaidenbargainheal/on_remove()
+ 	. = ..()
+-	to_chat(owner, span_warning("The Bargain struck in my name has been fulfilled... I am thrown from Necra's embrace, another in my place..."))
++	to_chat(owner, span_warning("那桩以我之名立下的契约已经完成……我被抛出了 Necra 的怀抱，由另一个人代我承受……"))
+ 	playsound(owner, 'sound/misc/deadbell.ogg', 100, FALSE, -1)
+ 	REMOVE_TRAIT(owner, TRAIT_NODEATH, id)
+ 
+-- 
+Translation Patch Toolkit

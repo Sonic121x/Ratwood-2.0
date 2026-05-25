@@ -1,0 +1,141 @@
+From 87ccad76842167b41eb507b53b88665d2c75b6e3 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/objects/items/rogueweapons/melee/special.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueweapons/melee/special.dm | 58 +++++++++++++++++++++++++++++-----------------------------
+ 1 file changed, 29 insertions(+), 29 deletions(-)
+
+diff --git a/code/game/objects/items/rogueweapons/melee/special.dm b/code/game/objects/items/rogueweapons/melee/special.dm
+index 8c170bd3bd1d..c9aa5e9bedd1 100644
+--- a/code/game/objects/items/rogueweapons/melee/special.dm
++++ b/code/game/objects/items/rogueweapons/melee/special.dm
+@@ -568,7 +568,7 @@
+ /obj/item/rogueweapon/huntingknife/idagger/steel/profane/examine(mob/user)
+ 	. = ..()
+ 	if(HAS_TRAIT(user, TRAIT_ASSASSIN))
+-		. += "profane dagger whispers, \"[span_danger("Here we are!")]\""
++		. += "亵渎匕首低语道：“[span_danger("我们到了！")]”"
+ 
+ /obj/item/rogueweapon/huntingknife/idagger/steel/profane/pickup(mob/living/M)
+ 	. = ..()
+@@ -576,30 +576,30 @@
+ 		var/mob/living/carbon/human/H = M
+ 		if (!HAS_TRAIT(H, TRAIT_ASSASSIN)) // Non-assassins don't like holding the profane dagger.
+ 			H.add_stress(/datum/stressevent/profane)
+-			to_chat(M, "<span class='danger'>Your breath chills as you pick up the dagger. You feel a sense of morbid wrongness!</span>")
++			to_chat(M, "<span class='danger'>当你拾起这把匕首时，呼吸都变得冰冷。你感到一种不祥而悖逆的异样！</span>")
+ 			var/message = pick(
+-				"<span class='danger'>Help me...</span>",
+-				"<span class='danger'>Save me...</span>",
+-				"<span class='danger'>It's cold...</span>",
+-				"<span class='danger'>Free us...please...</span>",
+-				"<span class='danger'>Necra...deliver...us...</span>")
++				"<span class='danger'>救救我……</span>",
++				"<span class='danger'>救我出去……</span>",
++				"<span class='danger'>好冷……</span>",
++				"<span class='danger'>放了我们吧……求你了……</span>",
++				"<span class='danger'>Necra……带……我们走……</span>")
+ //			H.visible_message("profane dagger whispers, \"[message]\"")
+-			to_chat(M, "profane dagger whispers, \"[message]\"")
++			to_chat(M, "亵渎匕首低语道：“[message]”")
+ 		else
+ 			var/message = pick(
+-				"<span class='danger'>Why...</span>",
+-				"<span class='danger'>...Who sent you?</span>",
+-				"<span class='danger'>...You will burn for what you've done...</span>",
+-				"<span class='danger'>I hate you...</span>",
+-				"<span class='danger'>Someone stop them!</span>",
+-				"<span class='danger'>Guards! Help!</span>",
+-				"<span class='danger'>...What's that in your hand?</span>",
+-				"<span class='danger'>...You love me...don't you?</span>",
+-				"<span class='danger'>Wait...don't I know you?</span>",
+-				"<span class='danger'>I thought you were...my friend...</span>",
+-				"<span class='danger'>How long have I been in here...</span>")
++				"<span class='danger'>为什么……</span>",
++				"<span class='danger'>……是谁派你来的？</span>",
++				"<span class='danger'>……你会为自己做过的事付出代价……</span>",
++				"<span class='danger'>我恨你……</span>",
++				"<span class='danger'>谁来阻止他们！</span>",
++				"<span class='danger'>卫兵！救命！</span>",
++				"<span class='danger'>……你手里拿着什么？</span>",
++				"<span class='danger'>……你爱我……不是吗？</span>",
++				"<span class='danger'>等等……我是不是认识你？</span>",
++				"<span class='danger'>我还以为你是……我的朋友……</span>",
++				"<span class='danger'>我已经被困在这里多久了……</span>")
+ //			H.visible_message("profane dagger whispers, \"[message]\"")
+-			to_chat(M, "profane dagger whispers, \"[message]\"")
++			to_chat(M, "亵渎匕首低语道：“[message]”")
+ 
+ /obj/item/rogueweapon/huntingknife/idagger/steel/profane/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
+ 	if(!istype(target))
+@@ -617,11 +617,11 @@
+ 	if(target.stat == DEAD || (target.health < target.crit_threshold)) // Trigger soul steal or identity theft if the target is either dead or in crit
+ 		if(istype(user.used_intent, /datum/intent/peculate))
+ 			if(!ishuman(user)) // carbons don't have all features of a human
+-				to_chat(user, span_danger("You can't do that!"))
++				to_chat(user, span_danger("你做不到那样！"))
+ 				return
+ 			var/obj/item/bodypart/head/target_head = target.get_bodypart(BODY_ZONE_HEAD)
+ 			if(QDELETED(target_head))
+-				to_chat(user, span_notice("I need their head or else I can't confirm the blood-bounty!"))
++				to_chat(user, span_notice("我得拿到他们的头，否则就没法确认这笔血赏！"))
+ 				return
+ 
+ 			var/datum/beam/transfer_beam = user.Beam(target, icon_state = "drain_life", time = 6 SECONDS)
+@@ -631,7 +631,7 @@
+ 				get_sfx("changeling_absorb"), //todo: turn sound keys into defines.
+ 				100,
+ 			)
+-			to_chat(user, span_danger("I start absorbing [target]'s identity."))
++			to_chat(user, span_danger("我开始吸收 [target] 的身份。"))
+ 			if(!do_after(user, 3 SECONDS, target = target))
+ 				qdel(transfer_beam)
+ 				return
+@@ -654,14 +654,14 @@
+ 			var/mob/living/carbon/human/human_user = user
+ 
+ 			human_user.copy_physical_features(target)
+-			to_chat(user, span_purple("I take on a new face.."))
++			to_chat(user, span_purple("我披上了一张新的面孔……"))
+ 			ADD_TRAIT(target, TRAIT_DISFIGURED, TRAIT_GENERIC)
+ 
+ 			return
+ 
+ 		if(target.has_flaw(/datum/charflaw/hunted)) // The profane dagger only thirsts for those who are hunted, by flaw or by zizoid curse.
+ 			if(target.client == null) //See if the target's soul has left their body
+-				to_chat(user, "<span class='danger'>Your target's soul has already escaped its corpse...you try to call it back!</span>")
++				to_chat(user, "<span class='danger'>你目标的灵魂早已逃离尸身……你试图把它重新唤回来！</span>")
+ 				get_profane_ghost(target,user) //Proc to capture a soul that has left the body.
+ 			else
+ 				user.adjust_triumphs(1)
+@@ -678,7 +678,7 @@
+ 	S.ManualFollow(src)
+ 	S.key = target.key
+ 	S.language_holder = target.language_holder.copy(S)
+-	target.visible_message("<span class='danger'>[target]'s soul is pulled from their body and sucked into the profane dagger!</span>", "<span class='danger'>My soul is trapped within the profane dagger. Damnation!</span>")
++	target.visible_message("<span class='danger'>[target] 的灵魂被硬生生从体内扯出，吸进了那把亵渎匕首！</span>", "<span class='danger'>我的灵魂被困进了亵渎匕首里。该死！</span>")
+ 	playsound(src, 'sound/magic/soulsteal.ogg', 100, extrarange = 5)
+ 	blade_int = max_blade_int // Stealing a soul successfully sharpens the blade.
+ 	obj_fix(max_integrity) // And fixes the dagger. No blacksmith required!
+@@ -701,11 +701,11 @@
+ /obj/item/rogueweapon/huntingknife/idagger/steel/profane/proc/release_profane_souls(mob/user) // For ways to release the souls trapped within a profane dagger, such as a Necrite burial rite. Returns the number of freed souls.
+ 	var/freed_souls = 0
+ 	for(var/mob/dead/observer/profane/A in src) // for every trapped soul in the dagger, whether they have left the game or not
+-		to_chat(A, "<b>I have been freed from my vile prison, I await Necra's cold grasp. Salvation!</b>")
++		to_chat(A, "<b>我已从那可憎的牢笼中解脱，如今只待 Necra 冰冷的掌握降临。得救了！</b>")
+ 		A.returntolobby() //Send the trapped soul back to the lobby
+-		user.visible_message("<span class='warning'>The [A.name] flows out from the profane dagger, finally free of its grasp.</span>")
++		user.visible_message("<span class='warning'>[A.name] 自亵渎匕首中流泻而出，终于摆脱了它的掌控。</span>")
+ 		freed_souls += 1
+-	user.visible_message("<span class='warning'>The profane dagger shatters into putrid smoke!</span>")
++	user.visible_message("<span class='warning'>亵渎匕首炸裂成一团腐臭烟雾！</span>")
+ 	qdel(src) // Delete the dagger. Forevermore.
+ 	return freed_souls
+ 
+-- 
+Translation Patch Toolkit

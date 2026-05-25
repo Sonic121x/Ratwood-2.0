@@ -1,0 +1,29 @@
+From 22d1e12b6bc2ceb4b09efa17f90bc7818706e0a7 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/storytellers/gods.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/storytellers/gods.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/datums/storytellers/gods.dm b/code/datums/storytellers/gods.dm
+index d552bbd7d285..13b5f440df5b 100644
+--- a/code/datums/storytellers/gods.dm
++++ b/code/datums/storytellers/gods.dm
+@@ -220,8 +220,8 @@
+ 
+ /datum/storyteller/necra
+ 	name = "Necra"
+-	vote_desc = "Death reigns. Occurrences happen less often, and villains are less likely. Her favor shines upon those who put the deathless back into their graves."
+-	desc = "Necra takes things very slow, rarely bringing in newcomers."
++	vote_desc = "死亡主宰一切。事件发生得更少，恶徒出现的概率也更低。她的眷顾会照耀那些把不死之物重新送回坟墓的人。"
++	desc = "Necra 的步调极其缓慢，鲜少引来新的来客。"
+ 	welcome_text = "\"In the fief of Zenmarke, there was the odor of decay..\""
+ 	weight = 4
+ 	always_votable = TRUE
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,54 @@
+From 91d651e65e0f2d188d6cb12c2f4e832e1cfaeb5e Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/datums/migrants/migrant_wave.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/migrants/migrant_wave.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/datums/migrants/migrant_wave.dm b/code/datums/migrants/migrant_wave.dm
+index ef40a65ff40a..8c8392a5f172 100644
+--- a/code/datums/migrants/migrant_wave.dm
++++ b/code/datums/migrants/migrant_wave.dm
+@@ -83,7 +83,7 @@
+ 	roles = list(
+ 		/datum/migrant_role/adventurer = 4,
+ 	)
+-	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rotwood Vale, perhaps getting ourselves into more than what we bargained for."
++	greet_text = "你与一群值得信赖的伙伴结伴远行，追寻刺激、荣耀与财富，最终闯进了谷地下方那片迷雾弥漫、湿冷阴郁的沼泽，也许还把自己卷进了远超预想的麻烦之中。"
+ 
+ /datum/migrant_wave/adventurer_down_one
+ 	name = "Adventure Party"
+@@ -92,7 +92,7 @@
+ 	roles = list(
+ 		/datum/migrant_role/adventurer = 3,
+ 	)
+-	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rotwood Vale, perhaps getting ourselves into more than what we bargained for."
++	greet_text = "你与一群值得信赖的伙伴结伴远行，追寻刺激、荣耀与财富，最终闯进了谷地下方那片迷雾弥漫、湿冷阴郁的沼泽，也许还把自己卷进了远超预想的麻烦之中。"
+ 
+ /datum/migrant_wave/adventurer_down_two
+ 	name = "Adventure Party"
+@@ -101,7 +101,7 @@
+ 	roles = list(
+ 		/datum/migrant_role/adventurer = 2,
+ 	)
+-	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rotwood Vale, perhaps getting ourselves into more than what we bargained for."
++	greet_text = "你与一群值得信赖的伙伴结伴远行，追寻刺激、荣耀与财富，最终闯进了谷地下方那片迷雾弥漫、湿冷阴郁的沼泽，也许还把自己卷进了远超预想的麻烦之中。"
+ 
+ /datum/migrant_wave/adventurer_down_three
+ 	name = "Adventure Party"
+@@ -109,7 +109,7 @@
+ 	roles = list(
+ 		/datum/migrant_role/adventurer = 1,
+ 	)
+-	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rotwood Vale, perhaps getting ourselves into more than what we bargained for."
++	greet_text = "你与一群值得信赖的伙伴结伴远行，追寻刺激、荣耀与财富，最终闯进了谷地下方那片迷雾弥漫、湿冷阴郁的沼泽，也许还把自己卷进了远超预想的麻烦之中。"
+ 
+ /datum/migrant_wave/bandit
+ 	name = "Bandit Raid"
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,27 @@
+From 3e60bbe258c42b7ba2b8316766d6906dfdc6540e Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/objects/items/rogueitems/instruments.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/instruments.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/instruments.dm b/code/game/objects/items/rogueitems/instruments.dm
+index eebfc699edee..238fec7f2a09 100644
+--- a/code/game/objects/items/rogueitems/instruments.dm
++++ b/code/game/objects/items/rogueitems/instruments.dm
+@@ -887,7 +887,7 @@
+ 	desc = "This talisman emanates a soft shimmer of light. When held, it can amplify and even change a bard's voice."
+ 	icon_state = "vtalisman"
+ 	song_list = list("Harpy's Call (Feminine)" = 'sound/music/instruments/vocalsf (1).ogg',
+-	"Necra's Lullaby (Feminine)" = 'sound/music/instruments/vocalsf (2).ogg',
++	"Necra 的摇篮曲（女声）" = 'sound/music/instruments/vocalsf (2).ogg',
+ 	"Death Touched Aasimar (Feminine)" = 'sound/music/instruments/vocalsf (3).ogg',
+ 	"Our Mother, Our Divine (Feminine)" = 'sound/music/instruments/vocalsf (4).ogg',
+ 	"Wed, Forever More (Feminine)" = 'sound/music/instruments/vocalsf (5).ogg',
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,40 @@
+From f02fe04d6c62202f1defa2a2ac7953ce78c0a395 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/game/gamemodes/personal_objectives/necra/listen_whispers.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/gamemodes/personal_objectives/necra/listen_whispers.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/gamemodes/personal_objectives/necra/listen_whispers.dm b/code/game/gamemodes/personal_objectives/necra/listen_whispers.dm
+index 823fc25e0e91..4d1433217529 100644
+--- a/code/game/gamemodes/personal_objectives/necra/listen_whispers.dm
++++ b/code/game/gamemodes/personal_objectives/necra/listen_whispers.dm
+@@ -1,5 +1,5 @@
+ /datum/objective/listen_whispers
+-	name = "Listen to Whispers"
++	name = "聆听低语"
+ 	triumph_count = 2
+ 	var/time_required = 5 MINUTES
+ 	var/time_spent = 0
+@@ -53,7 +53,7 @@
+ 		complete_objective()
+ 
+ /datum/objective/listen_whispers/proc/complete_objective()
+-	to_chat(owner.current, span_greentext("You have listened to the whispers of the dead long enough to satisfy Necra!"))
++	to_chat(owner.current, span_greentext("你已聆听死者低语足够久，令 Necra 感到满意！"))
+ 	owner.current.adjust_triumphs(triumph_count)
+ 	completed = TRUE
+ 	adjust_storyteller_influence("Necra", 15)
+@@ -61,4 +61,4 @@
+ 	STOP_PROCESSING(SSprocessing, src)
+ 
+ /datum/objective/listen_whispers/update_explanation_text()
+-	explanation_text = "Necra wants you to understand death better. Spend at least [time_required / (1 MINUTES)] minutes in the church listening to the whispers of the dead while wearing an amulet of Necra."
++	explanation_text = "Necra 希望你能更深刻地理解死亡。佩戴 Necra 的护符，在教堂中至少聆听 [time_required / (1 MINUTES)] 分钟死者的低语。"
+-- 
+Translation Patch Toolkit

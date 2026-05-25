@@ -1,0 +1,29 @@
+From 8b47bb15abcdf1d36c6b76470c9aa73ed9959edc Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/_onclick/other_mobs.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/_onclick/other_mobs.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/_onclick/other_mobs.dm b/code/_onclick/other_mobs.dm
+index fdc758a2dd06..64ad58b8b130 100644
+--- a/code/_onclick/other_mobs.dm
++++ b/code/_onclick/other_mobs.dm
+@@ -50,8 +50,8 @@
+ 					ignite_mob()
+ 				else
+ 					if(prob(30))
+-						to_chat(src, span_warning("The Undermaiden protects me!"))
+-						to_chat(L, span_warning("The foul blessing of the Undermaiden hurts us!"))
++						to_chat(src, span_warning("冥下侍女正在庇护我！"))
++						to_chat(L, span_warning("冥下侍女那污秽的赐福正在灼伤我们！"))
+ 				adjust_blurriness(2)
+ 				adjustBruteLoss(rand(5, 10))
+ 				apply_status_effect(/datum/status_effect/churned, L)
+-- 
+Translation Patch Toolkit

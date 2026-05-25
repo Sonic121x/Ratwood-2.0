@@ -1,0 +1,36 @@
+From 9972b30d8a7daf297a887ce9faf8fc263fbbeee3 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/controllers/subsystem/rogue/treasury.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/controllers/subsystem/rogue/treasury.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/controllers/subsystem/rogue/treasury.dm b/code/controllers/subsystem/rogue/treasury.dm
+index fabcee53b8ba..fd62985061a6 100644
+--- a/code/controllers/subsystem/rogue/treasury.dm
++++ b/code/controllers/subsystem/rogue/treasury.dm
+@@ -272,7 +272,7 @@
+ 	SStreasury.log_to_steward("+[amt] exported [D.name]")
+ 	record_round_statistic(STATS_STOCKPILE_EXPORTS_VALUE, amt)
+ 	if(!silent && amt >= EXPORT_ANNOUNCE_THRESHOLD) //Only announce big spending.
+-		scom_announce("Rotwood Vale exports [D.name] for [amt] mammon.")
++		scom_announce("谷地以 [amt] 枚 Mammon 的价格出口了 [D.name]。")
+ 	D.lower_demand()
+ 	return amt
+ 
+@@ -290,7 +290,7 @@
+ 			var/exported = do_export(D, TRUE)
+ 			total_value_exported += exported
+ 	if(total_value_exported >= EXPORT_ANNOUNCE_THRESHOLD)
+-		scom_announce("Rotwood Vale exports [total_value_exported] mammons of surplus goods.")
++		scom_announce("谷地出口了价值 [total_value_exported] 枚 Mammon 的盈余货物。")
+ 
+ /datum/controller/subsystem/treasury/proc/remove_person(mob/living/person)
+ 	noble_incomes -= person
+-- 
+Translation Patch Toolkit
