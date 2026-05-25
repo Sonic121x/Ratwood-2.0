@@ -1,6 +1,6 @@
 /obj/machinery/light/roguestreet
-	name = "street lamp" // Crafted through metalizing brazier(/obj/machinery/light/rogue/firebowl) and Standing Fire (/obj/machinery/light/rogue/firebowl/standing)
-	desc = "An obelisk of caste iron with an eerily glowing lamp attached to it. A promise of new technology at the dawn of a new age."
+	name = "街灯" // Crafted through metalizing brazier(/obj/machinery/light/rogue/firebowl) and Standing Fire (/obj/machinery/light/rogue/firebowl/standing)
+	desc = "一座铸铁方尖碑，上面附着一盏发出诡异光芒的灯。这是新时代曙光中新技术的前景。"
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "slamp1"
 	base_state = "slamp"
