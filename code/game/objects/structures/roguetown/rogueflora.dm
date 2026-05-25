@@ -364,8 +364,8 @@
 //newbushes
 
 /obj/structure/flora/roguegrass
-	name = "grass"
-	desc = "Green, soft, and lively."
+	name = "草"
+	desc = "翠绿、柔软，充满生机。"
 	icon = 'icons/roguetown/misc/foliage.dmi'
 	icon_state = "grass1"
 	attacked_sound = "plantcross"
