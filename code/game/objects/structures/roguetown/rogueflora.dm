@@ -2,8 +2,8 @@
 //newtree
 
 /obj/structure/flora/roguetree
-	name = "old tree"
-	desc = "An old wicked tree that not even elves could love."
+	name = "古树"
+	desc = "一棵连精灵都爱不起来的古老邪树。"
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "t1"
 	opacity = 1
