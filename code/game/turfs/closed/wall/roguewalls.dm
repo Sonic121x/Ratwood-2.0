@@ -114,8 +114,8 @@
 	return FALSE
 
 /turf/closed/wall/mineral/rogue/craftstone
-	name = "stone wall"
-	desc = "A durable wall made from specially-crafted stone."
+	name = "石墙"
+	desc = "一堵由特制石块砌成的坚固墙壁。"
 	icon = 'icons/turf/walls/craftstone.dmi'
 	icon_state = "box"
 	smooth = SMOOTH_MORE
