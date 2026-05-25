@@ -1356,8 +1356,8 @@
 	icon_state = "cobblestone[rand(1,3)]"
 
 /turf/open/floor/rogue/cobble/mossy
-	name = "mossy cobblestone"
-	desc = "Dirt and moss have crept between the gaps of this stone-brick flooring."
+	name = "长满苔藓的鹅卵石"
+	desc = "泥土和苔藓爬满了这石砖地面的缝隙。"
 	icon_state = "mossystone1"
 	footstep = FOOTSTEP_STONE
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
