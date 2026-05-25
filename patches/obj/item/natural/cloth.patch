@@ -28,13 +28,6 @@ index c58b811304..490510ddd4 100644
  	force = 0
  	throwforce = 0
  	obj_flags = null
-@@ -155,6 +155,7 @@
- 	experimental_inhand = FALSE
- 	nudist_approved = TRUE
- 	bundletype = /obj/item/natural/bundle/cloth
- 	sellprice = 4
- 	detail_tag = "_soaked"
- 	var/wet = 0
 @@ -171,7 +172,7 @@
  /obj/item/natural/cloth/attack_right(mob/user)
  	if(user.get_active_held_item())
