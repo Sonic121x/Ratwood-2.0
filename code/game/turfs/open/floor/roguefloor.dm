@@ -961,8 +961,8 @@
 
 /turf/open/floor/rogue/blocks
 	icon_state = "blocks"
-	name = "stone flooring"
-	desc = "These rough stone slabs have been arranged in a neat grid for a rustic yet tidy charm."
+	name = "石板地面"
+	desc = "这些粗糙的石板被整齐地排列成网格，兼具质朴与整洁的魅力。"
 	footstep = FOOTSTEP_STONE
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
