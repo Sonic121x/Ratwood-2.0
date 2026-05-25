@@ -1,0 +1,31 @@
+From f951a7f8a677fac413c1c26948e12c113508d694 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Mon, 25 May 2026 22:42:36 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=83=A7=E7=84=A6=E7=9A=84?=
+ =?UTF-8?q?=E6=A0=91?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguetown/rogueflora.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/roguetown/rogueflora.dm b/code/game/objects/structures/roguetown/rogueflora.dm
+index 0d6940b2e0..4a1c6b3e41 100644
+--- a/code/game/objects/structures/roguetown/rogueflora.dm
++++ b/code/game/objects/structures/roguetown/rogueflora.dm
+@@ -224,8 +224,8 @@
+ 	return ..()
+ 
+ /obj/structure/flora/roguetree/burnt
+-	name = "burnt tree"
+-	desc = "Maybe lightning, maybe war, took the life of this once lively tree."
++	name = "烧焦的树"
++	desc = "也许是闪电，也许是战火，夺去了这棵曾经生机勃勃的树木的生命。"
+ 	icon = 'icons/roguetown/misc/96x96.dmi'
+ 	icon_state = "t1"
+ 	stump_type = /obj/structure/flora/roguetree/stump/burnt
+-- 
+2.53.0
+
