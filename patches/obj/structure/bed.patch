@@ -1,0 +1,30 @@
+From 4e41401658cf87ce72a28ce5449820d40618f964 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:15:49 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=BA=8A?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/beds_chairs/bed.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/beds_chairs/bed.dm b/code/game/objects/structures/beds_chairs/bed.dm
+index d67bcf1764..7897fe8068 100644
+--- a/code/game/objects/structures/beds_chairs/bed.dm
++++ b/code/game/objects/structures/beds_chairs/bed.dm
+@@ -8,8 +8,8 @@
+  * Beds
+  */
+ /obj/structure/bed
+-	name = "bed"
+-	desc = "A soft warm bed complete with sheets and pillows."
++	name = "床"
++	desc = "一张铺着床单和枕头的柔软温暖的床。"
+ 	icon_state = "bed"
+ 	icon = 'icons/obj/objects.dmi'
+ 	anchored = TRUE
+-- 
+2.53.0
+
