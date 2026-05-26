@@ -1,0 +1,37 @@
+From 4632a1cfb8a45c5e6b14b795a057f43743dd7e75 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:27:13 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=93=83=E9=93=9B?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguetown/bell_common.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/objects/structures/roguetown/bell_common.dm b/code/game/objects/structures/roguetown/bell_common.dm
+index f81ea19df6..fd437a367a 100644
+--- a/code/game/objects/structures/roguetown/bell_common.dm
++++ b/code/game/objects/structures/roguetown/bell_common.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/bell_common
+-	name = "bell"
+-	desc = "A good way to get someone's attention... or piss them off."
++	name = "铃铛"
++	desc = "引起某人注意的好方法...或者激怒他们。"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "bell_common"
+ 	density = FALSE
+@@ -11,7 +11,7 @@
+ /obj/structure/bell_common/attack_hand(mob/user)
+ 	if(world.time < last_ring + 15)
+ 		return
+-	user.visible_message(span_info("[user] starts ringing the bell."))
++	user.visible_message(span_info("[user]开始摇铃铛。"))
+ 	playsound(src, 'sound/misc/bell_common.ogg', 100, extrarange = 8, ignore_walls = TRUE)
+ 	flick("bell_commonpressed", src)
+ 	last_ring = world.time
+-- 
+2.53.0
+
