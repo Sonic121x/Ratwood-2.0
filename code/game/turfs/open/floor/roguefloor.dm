@@ -1138,8 +1138,8 @@
 
 /turf/open/floor/rogue/church
 	icon_state = "church"
-	name = "polished tile floor"
-	desc = "Glazed tiling that has withstood the decades with barely a scratch despite the steady accumulation of dirt and grime."
+	name = "抛光瓷砖地板"
+	desc = "尽管灰尘和污垢不断堆积，这些釉面瓷砖历经数十年却几乎毫无刮痕。"
 	footstep = FOOTSTEP_STONE
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
