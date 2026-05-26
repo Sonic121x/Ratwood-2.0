@@ -1,8 +1,8 @@
 /obj/item/natural/cloth/bandage
-	name = "bandage"
+	name = "绷带"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "bandageroll"
-	desc = "A fabric treated and specially made to help with bleeding wounds. Better and faster at stopping bleeding than your regular piece of cloth."
+	desc = "一种经过处理的特殊布料，专门用来处理流血的伤口。比起普通的布片，它能更好更快地止血。"
 	bundletype = /obj/item/natural/bundle/cloth/bandage
 	bandage_effectiveness = 0.25
 	bandage_health = 300 //High HP so it can last some time on more serious wounds like arteries, total of 225 blood soaked
