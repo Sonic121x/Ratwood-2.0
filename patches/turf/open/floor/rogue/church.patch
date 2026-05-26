@@ -1,0 +1,31 @@
+From 19716ca726c8a67d4b64c17d55f99936dd94884e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:08:24 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=93=B7=E7=A0=96=E5=9C=B0?=
+ =?UTF-8?q?=E6=9D=BF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/turfs/open/floor/roguefloor.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/turfs/open/floor/roguefloor.dm b/code/game/turfs/open/floor/roguefloor.dm
+index d087f185d7..66979731e7 100644
+--- a/code/game/turfs/open/floor/roguefloor.dm
++++ b/code/game/turfs/open/floor/roguefloor.dm
+@@ -1138,8 +1138,8 @@
+ 
+ /turf/open/floor/rogue/church
+ 	icon_state = "church"
+-	name = "polished tile floor"
+-	desc = "Glazed tiling that has withstood the decades with barely a scratch despite the steady accumulation of dirt and grime."
++	name = "抛光瓷砖地板"
++	desc = "尽管灰尘和污垢不断堆积，这些釉面瓷砖历经数十年却几乎毫无刮痕。"
+ 	footstep = FOOTSTEP_STONE
+ 	barefootstep = FOOTSTEP_HARD_BAREFOOT
+ 	clawfootstep = FOOTSTEP_HARD_CLAW
+-- 
+2.53.0
+

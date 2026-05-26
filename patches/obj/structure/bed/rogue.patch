@@ -1,0 +1,29 @@
+From d80b7c7c512dbbd4ea8cd0cbd596a4ac48d24e23 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:18:54 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=BA=8A=E7=9A=84=E9=9A=90?=
+ =?UTF-8?q?=E8=97=8F=E6=A3=80=E8=A7=86=E4=BF=A1=E6=81=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/beds_chairs/roguechair.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/beds_chairs/roguechair.dm b/code/game/objects/structures/beds_chairs/roguechair.dm
+index 83e81592bc..9f28348c01 100644
+--- a/code/game/objects/structures/beds_chairs/roguechair.dm
++++ b/code/game/objects/structures/beds_chairs/roguechair.dm
+@@ -373,7 +373,7 @@
+ 
+ /obj/structure/bed/rogue/examine(mob/user)
+ 	. = ..()
+-	. += span_info("Some structures can be used as hiding places. Toggle the 'SNEAK' button on your HUD, then click the structure to hide in it. You can stop hiding by clicking the structure again, or by moving out of it.")
++	. += span_info("有些结构可以作为藏身之处。切换 HUD 上的‘潜行’按钮，然后点击该结构即可躲入其中。再次点击该结构，或直接从中走出来，便能停止躲藏。")
+ 
+ /obj/structure/bed/rogue/proc/damage_bed(dam_value)
+ 	if(broken_matress)
+-- 
+2.53.0
+

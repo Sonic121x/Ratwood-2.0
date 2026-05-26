@@ -1,0 +1,29 @@
+From 5d8c63dafaa1f1644e5783c1debf94ac4fdb8d21 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:12:11 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=AA=97=E6=88=B7?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguewindow.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/roguewindow.dm b/code/game/objects/structures/roguewindow.dm
+index fa60a1c4d9..70ba42fbce 100644
+--- a/code/game/objects/structures/roguewindow.dm
++++ b/code/game/objects/structures/roguewindow.dm
+@@ -1,7 +1,7 @@
+ 
+ /obj/structure/roguewindow
+-	name = "window"
+-	desc = "A glass window."
++	name = "窗户"
++	desc = "一扇玻璃窗。"
+ 	icon = 'icons/roguetown/misc/roguewindow.dmi'
+ 	icon_state = "window-solid"
+ 	layer = TABLE_LAYER
+-- 
+2.53.0
+

@@ -1,0 +1,37 @@
+From e5639df97d2906d591a6a53385356aa867b68f43 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 20:00:08 +0800
+Subject: [PATCH] =?UTF-8?q?=E4=B8=BA=E7=BB=B7=E5=B8=A6=E5=8D=B7=E5=A2=9E?=
+ =?UTF-8?q?=E5=8A=A0=E9=87=8F=E8=AF=8D?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/bandage.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/bandage.dm b/code/game/objects/items/rogueitems/bandage.dm
+index 102fb2f3fb..58e5317f42 100644
+--- a/code/game/objects/items/rogueitems/bandage.dm
++++ b/code/game/objects/items/rogueitems/bandage.dm
+@@ -12,13 +12,13 @@
+ 	return
+ 
+ /obj/item/natural/bundle/cloth/bandage
+-	name = "roll of bandages"
++	name = "绷带卷"
+ 	icon = 'icons/roguetown/items/surgery.dmi'
+ 	icon_state = "bandageroll1"
+-	desc = "A roll of joined bandages for easier carrying. A bleeding man's best friend."
++	desc = "一卷拼接好的绷带，方便携带。流血者的最佳伙伴。"
+ 	maxamount = 4 //balanced...? You'd die of bloodloss before all of them were dirty.
+ 	stacktype = /obj/item/natural/cloth/bandage
+-	stackname = "bandages"
++	stackname = "卷绷带"
+ 	icon1 = "bandageroll1"
+ 	icon1step = 3
+ 	icon2 = "bandageroll2"
+-- 
+2.53.0
+

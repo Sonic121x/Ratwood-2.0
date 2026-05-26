@@ -1,0 +1,30 @@
+From 0a9215b42a5256f271e44af26cb3640b4c78f380 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 16:40:57 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=8E=A8=E5=88=80?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueweapons/melee/knives.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueweapons/melee/knives.dm b/code/game/objects/items/rogueweapons/melee/knives.dm
+index e894d71e93..fac130a98a 100644
+--- a/code/game/objects/items/rogueweapons/melee/knives.dm
++++ b/code/game/objects/items/rogueweapons/melee/knives.dm
+@@ -261,8 +261,8 @@
+ 
+ /obj/item/rogueweapon/huntingknife/chefknife
+ 	force = 15
+-	name = "chef's knife"
+-	desc = "Keep it in the kitchen!"
++	name = "厨刀"
++	desc = "把它留在厨房里！"
+ 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
+ 	icon_state = "chefsknife"
+ 	icon = 'icons/roguetown/weapons/daggers32.dmi'
+-- 
+2.53.0
+

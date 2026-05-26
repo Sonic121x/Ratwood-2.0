@@ -1,0 +1,29 @@
+From 88fa2281cd3d0ee6966548cf390f95d3427701d3 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:20:26 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=A4=B4=E9=AA=A8=E8=9C=A1?=
+ =?UTF-8?q?=E7=83=9B?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/candle.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/items/candle.dm b/code/game/objects/items/candle.dm
+index 58843e0b1f..a2e76b8979 100644
+--- a/code/game/objects/items/candle.dm
++++ b/code/game/objects/items/candle.dm
+@@ -115,7 +115,7 @@
+ /obj/item/candle/skull
+ 	icon = 'icons/roguetown/items/lighting.dmi'
+ 	icon_state = "skullcandle"
+-	desc = "A rather macabre way to hold a candle. Fit for crypts and old dusty libraries."
++	desc = "一种相当骇人的持烛方式。适合墓穴和尘封的古老图书馆。"
+ 	infinite = TRUE
+ 
+ /obj/item/candle/skull/update_icon()
+-- 
+2.53.0
+

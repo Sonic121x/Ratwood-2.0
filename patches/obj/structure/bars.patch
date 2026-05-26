@@ -1,0 +1,28 @@
+From 1f7e92da02389bf648ac2c836bc5b05754b4569e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:30:48 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=93=81=E6=A0=8F=E6=9D=86?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/fluff.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/fluff.dm b/code/game/objects/structures/fluff.dm
+index 9c082a99c0..1075e6e75b 100644
+--- a/code/game/objects/structures/fluff.dm
++++ b/code/game/objects/structures/fluff.dm
+@@ -331,7 +331,7 @@
+ 	color = "#cccac5"
+ 
+ /obj/structure/bars
+-	name = "bars"
++	name = "铁栏杆"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "bars"
+-- 
+2.53.0
+
