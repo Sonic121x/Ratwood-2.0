@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000002 Mon Sep 17 00:00:00 2001
+From: Trae Patch Bot <patchbot@example.com>
+Date: Thu, 21 May 2026 23:31:00 +0800
+Subject: [PATCH 2/2] Register modular admin verbs
+
+Generated from the current mod admin integration layer.
+
+---
+diff --git a/code/modules/admin/admin_verbs.dm b/code/modules/admin/admin_verbs.dm
+--- a/code/modules/admin/admin_verbs.dm
++++ b/code/modules/admin/admin_verbs.dm
+@@
+ 	/datum/admins/proc/admin_revive,
+ 	/datum/admins/proc/admin_sleep,
+ 	/client/proc/jumptoarea,
+ 	/client/proc/jumptokey,
++	/client/proc/bless,
++	/client/proc/god,
++	/client/proc/adminspell,
++	/client/proc/removeadminspell,
+ 	/client/proc/mass_direct,
+ 	/client/proc/local_lightsout,
+ 	/datum/admins/proc/checkpq,
+-- 
+2.45.0

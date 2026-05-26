@@ -1,0 +1,6 @@
+roguetown.dme
+tools/build/build.ts
+code/modules/spells/spell.dm
+code/modules/spells/spell_types/wizard/spell_list.dm
+code/modules/spells/spell_types/wizard/learnspell.dm
+code/modules/admin/admin_verbs.dm
