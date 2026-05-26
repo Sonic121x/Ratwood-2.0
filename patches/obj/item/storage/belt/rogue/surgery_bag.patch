@@ -1,0 +1,28 @@
+From 095c953c1006cdc365fc8cccc7fae44b738bb5aa Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:46:08 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=89=8B=E6=9C=AF=E5=8C=85?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_azurepeak/code/game/objects/items/surgery_bag.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_azurepeak/code/game/objects/items/surgery_bag.dm b/modular_azurepeak/code/game/objects/items/surgery_bag.dm
+index 7bc7ba8b65..bb3f64643a 100644
+--- a/modular_azurepeak/code/game/objects/items/surgery_bag.dm
++++ b/modular_azurepeak/code/game/objects/items/surgery_bag.dm
+@@ -1,6 +1,6 @@
+ /obj/item/storage/belt/rogue/surgery_bag
+-	name = "surgeon's bag"
+-	desc = "Made to hold everything a people-butcher will need. Contains a list of implements... what even IS a Sisrat?"
++	name = "外科医生包"
++	desc = "专为容纳人肉裁缝所需的一切而制作。内含一系列工具... Sisrat 到底是个什么？"
+ 	icon = 'icons/roguetown/clothing/storage.dmi'
+ 	mob_overlay_icon = null
+ 	icon_state = "surgery_bag"
+-- 
+2.53.0
+
