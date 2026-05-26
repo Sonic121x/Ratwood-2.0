@@ -1,0 +1,30 @@
+From c97f76ef3f46c9c684e161bb1d2e50f0acf20ae6 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 19:14:05 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=87=B3=E5=AD=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/beds_chairs/roguechair.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/beds_chairs/roguechair.dm b/code/game/objects/structures/beds_chairs/roguechair.dm
+index 83e81592bc..c3d5b57814 100644
+--- a/code/game/objects/structures/beds_chairs/roguechair.dm
++++ b/code/game/objects/structures/beds_chairs/roguechair.dm
+@@ -317,8 +317,8 @@
+ 
+ 
+ /obj/structure/chair/stool/rogue
+-	name = "stool"
+-	desc = "Three stubby legs nailed to the underside of a small round seat. Stable, if simple."
++	name = "凳子"
++	desc = "三条粗短的木凳腿钉在一个小圆座的底面。虽然简陋，但很稳当。"
+ 	icon_state = "barstool"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	item_chair = /obj/item/chair/stool/bar/rogue
+-- 
+2.53.0
+
