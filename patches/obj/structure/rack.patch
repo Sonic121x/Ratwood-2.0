@@ -1,0 +1,28 @@
+From ad561d68813247c009a47f9d3056277a95ffb645 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Tue, 26 May 2026 16:46:56 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9E=B6=E5=AD=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/tables_racks.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/tables_racks.dm b/code/game/objects/structures/tables_racks.dm
+index 274daf5b76..8ae9be6e8d 100644
+--- a/code/game/objects/structures/tables_racks.dm
++++ b/code/game/objects/structures/tables_racks.dm
+@@ -565,7 +565,7 @@
+  * Racks
+  */
+ /obj/structure/rack
+-	name = "rack"
++	name = "架子"
+ 	desc = ""
+ 	icon = 'icons/obj/objects.dmi'
+ 	icon_state = "rack"
+-- 
+2.53.0
+
