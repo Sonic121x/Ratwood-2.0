@@ -331,7 +331,7 @@
 	color = "#cccac5"
 
 /obj/structure/bars
-	name = "bars"
+	name = "铁栏杆"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "bars"
