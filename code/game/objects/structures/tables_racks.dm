@@ -530,7 +530,7 @@
  * Racks
  */
 /obj/structure/rack
-	name = "rack"
+	name = "架子"
 	desc = ""
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
