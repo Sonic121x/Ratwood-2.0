@@ -116,7 +116,7 @@
 /obj/item/candle/skull
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "skullcandle"
-	desc = "A rather macabre way to hold a candle. Fit for crypts and old dusty libraries."
+	desc = "一种相当骇人的持烛方式。适合墓穴和尘封的古老图书馆。"
 	infinite = TRUE
 
 /obj/item/candle/skull/update_icon()
