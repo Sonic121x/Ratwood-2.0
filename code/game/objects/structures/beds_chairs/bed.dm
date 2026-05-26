@@ -8,8 +8,8 @@
  * Beds
  */
 /obj/structure/bed
-	name = "bed"
-	desc = "A soft warm bed complete with sheets and pillows."
+	name = "床"
+	desc = "一张铺着床单和枕头的柔软温暖的床。"
 	icon_state = "bed"
 	icon = 'icons/obj/objects.dmi'
 	anchored = TRUE
