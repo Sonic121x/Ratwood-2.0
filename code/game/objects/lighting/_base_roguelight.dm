@@ -40,13 +40,13 @@
 			var/minsleft = fueluse / 600
 			minsleft = round(minsleft)
 			if(minsleft <= 1)
-				minsleft = "less than a minute"
+				minsleft = "不到一分钟"
 			else
-				minsleft = "[round(minsleft)] minutes"
-			. += span_info("The fire will last for [minsleft].")
+				minsleft = "[round(minsleft)]分钟"
+			. += span_info("火焰还能持续[minsleft]。")
 		else
 			if(initial(fueluse) > 0)
-				. += span_warning("The fire is burned out and hungry...")
+				. += span_warning("火焰已经燃尽，正渴望燃料...")
 
 
 /obj/machinery/light/rogue/extinguish()
