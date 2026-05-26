@@ -261,8 +261,8 @@
 
 /obj/item/rogueweapon/huntingknife/chefknife
 	force = 15
-	name = "chef's knife"
-	desc = "Keep it in the kitchen!"
+	name = "厨刀"
+	desc = "把它留在厨房里！"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "chefsknife"
 	icon = 'icons/roguetown/weapons/daggers32.dmi'
