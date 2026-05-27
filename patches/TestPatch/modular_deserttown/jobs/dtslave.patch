@@ -18,8 +18,8 @@ index b3c4a54cbf0f..945c123d34f8 100644
  /datum/job/roguetown/slave
 -	title = "Palace Slave"
 -	f_title = "Palace Slave"
-+	title = "Palace Slave 宫廷奴隶"
-+	f_title = "Palace Slave 宫廷奴隶"
++	title = "宫廷奴隶"
++	f_title = "宫廷奴隶"
  	flag = SLAVE
  	department_flag = YOUNGFOLK
  	faction = "Station"
