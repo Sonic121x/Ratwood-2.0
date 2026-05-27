@@ -7,8 +7,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- code/modules/jobs/job_types/roguetown/church/priest.dm | 242 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 121 insertions(+), 121 deletions(-)
+ code/modules/jobs/job_types/roguetown/church/priest.dm | 246 ++++++++++++++---------------
+ 1 file changed, 123 insertions(+), 123 deletions(-)
 
 diff --git a/code/modules/jobs/job_types/roguetown/church/priest.dm b/code/modules/jobs/job_types/roguetown/church/priest.dm
 index eb07798e1b75..c6354089e1da 100644
@@ -146,7 +146,7 @@ index eb07798e1b75..c6354089e1da 100644
  		return FALSE
  	for(var/mob/living/carbon/human/HU in get_step(src, src.dir))
  		if(!HU.mind)
-@@ -266,80 +266,80 @@
+@@ -266,80 +266,80 ... @@
  		SSticker.regentmob = null
  		var/dispjob = mind.assigned_role
  		removeomen(OMEN_NOLORD)
@@ -259,7 +259,7 @@ index eb07798e1b75..c6354089e1da 100644
  	playsound(src.loc, 'sound/magic/bless.ogg', 80, TRUE)
  	COOLDOWN_START(src, priest_sermon, PRIEST_SERMON_COOLDOWN)
  
-@@ -350,58 +350,58 @@
+@@ -350,19 +350,19 @@
  		if (istype(H.patron, /datum/patron/divine))
  			H.apply_status_effect(/datum/status_effect/buff/sermon)
  			H.add_stress(/datum/stressevent/sermon)
@@ -284,6 +284,10 @@ index eb07798e1b75..c6354089e1da 100644
 -		to_chat(src, span_warning("This one's connection to the ten is too shallow."))
 +		to_chat(src, span_warning("此人与十神的联系太过浅薄。"))
  		return FALSE
+ 
+ 	//Flavor messages for cursing certain god's faithful.
+@@ -375,13 +375,13 @@
+ 		ADD_TRAIT(H, TRAIT_CURSE_RESIST, TRAIT_GENERIC)
  
  	//Let's not curse heretical antags.
  	if(HAS_TRAIT(H, TRAIT_HERESIARCH))
@@ -329,7 +333,7 @@ index eb07798e1b75..c6354089e1da 100644
  		message_admins("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
  		log_game("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
  
-@@ -414,7 +414,7 @@
+@@ -394,7 +394,7 @@
  
  	if (H.real_name == inputty)
  		if (!COOLDOWN_FINISHED(src, priest_apostasy))
@@ -338,7 +342,7 @@ index eb07798e1b75..c6354089e1da 100644
  			return
  
  		//Check if we can curse this person.
-@@ -428,11 +428,11 @@
+@@ -408,11 +408,11 @@
  		if (istype(H.patron, /datum/patron/divine))
  			H.apply_status_effect(/datum/status_effect/debuff/apostasy)
  			H.add_stress(/datum/stressevent/apostasy)
@@ -354,7 +358,7 @@ index eb07798e1b75..c6354089e1da 100644
  		message_admins("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
  		log_game("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
  		return TRUE
-@@ -443,32 +443,32 @@
+@@ -423,32 +423,32 @@
  	return
  
  /mob/living/carbon/human/proc/churchexcommunicate(mob/living/carbon/human/H in GLOB.player_list)
@@ -393,7 +397,7 @@ index eb07798e1b75..c6354089e1da 100644
  		message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
  		log_game("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
  
-@@ -479,14 +479,14 @@
+@@ -459,14 +459,14 @@
  				if (istype(H.patron, /datum/patron/divine))
  					H.remove_stress(/datum/stressevent/excommunicated)
  					H.remove_status_effect(/datum/status_effect/debuff/excomm)
@@ -410,7 +414,7 @@ index eb07798e1b75..c6354089e1da 100644
  			return // Anybody can still be excommunicated, so no extra checks here since it's purely RP and not mechanical.
  		found = TRUE
  		ADD_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
-@@ -496,7 +496,7 @@
+@@ -476,7 +476,7 @@
  			if (istype(H.patron, /datum/patron/divine))
  				H.add_stress(/datum/stressevent/excommunicated)
  				H.apply_status_effect(/datum/status_effect/debuff/excomm)
@@ -419,7 +423,7 @@ index eb07798e1b75..c6354089e1da 100644
  			else
  				return
  
-@@ -504,7 +504,7 @@
+@@ -484,7 +484,7 @@
  			return FALSE
  
  	GLOB.excommunicated_players += inputty
@@ -428,7 +432,7 @@ index eb07798e1b75..c6354089e1da 100644
  	message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
  	log_game("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
  
-@@ -513,42 +513,42 @@
+@@ -493,42 +493,42 @@
  /* PRIEST CURSE - powerful debuffs to punish ppl outside church otherwise use apostasy
  code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep that updated if this gets any changes.*/
  /mob/living/carbon/human/proc/churchpriestcurse(mob/living/carbon/human/H in GLOB.player_list)
@@ -487,7 +491,7 @@ index eb07798e1b75..c6354089e1da 100644
  	if (!curse_pick)
  		return
  
-@@ -559,18 +559,18 @@
+@@ -539,18 +539,18 @@
  
  		if (H.is_cursed(temp))
  			H.remove_curse(temp)
@@ -509,7 +513,7 @@ index eb07798e1b75..c6354089e1da 100644
  				return
  
  			//Check if we can curse this person.
-@@ -580,21 +580,21 @@
+@@ -560,21 +560,21 @@
  			COOLDOWN_START(src, priest_curse, PRIEST_CURSE_COOLDOWN)
  			H.add_curse(curse_type)
  
@@ -535,7 +539,7 @@ index eb07798e1b75..c6354089e1da 100644
  		return
  
  	var/key = REF(src)
-@@ -603,7 +603,7 @@
+@@ -583,7 +583,7 @@
  		next_swap = 0
  
  	if(world.time < next_swap)
@@ -544,7 +548,7 @@ index eb07798e1b75..c6354089e1da 100644
  		return
  
  	var/list/god_choice = list()
-@@ -624,22 +624,22 @@
+@@ -604,22 +604,22 @@
  	if(!new_patron_type)
  		return
  	if(patron && istype(patron, new_patron_type))
@@ -574,7 +578,7 @@ index eb07798e1b75..c6354089e1da 100644
  	invocation_type = "whisper"
  	sound = 'sound/magic/bless.ogg'
  	devotion_cost = 100
-@@ -656,12 +656,12 @@
+@@ -636,12 +636,12 @@
  		return FALSE
  
  	if(!HAS_TRAIT(target, TRAIT_HERESIARCH))
@@ -590,7 +594,7 @@ index eb07798e1b75..c6354089e1da 100644
  		revert_cast()
  		return FALSE
  
-@@ -705,11 +705,11 @@
+@@ -685,11 +705,11 @@
  	user.apply_status_effect(/datum/status_effect/debuff/devitalised)
  	target.apply_status_effect(/datum/status_effect/debuff/devitalised)
  
