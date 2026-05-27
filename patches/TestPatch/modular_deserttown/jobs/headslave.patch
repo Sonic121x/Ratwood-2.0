@@ -1,0 +1,44 @@
+From 1d81057ed682ef7309d9d109aa187831e7c9934c Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Wed, 27 May 2026 11:59:38 +0800
+Subject: [PATCH] 翻译 modular_deserttown/jobs/headslave.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/jobs/headslave.dm | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/modular_deserttown/jobs/headslave.dm b/modular_deserttown/jobs/headslave.dm
+index 35d6af797404..022d990b2611 100644
+--- a/modular_deserttown/jobs/headslave.dm
++++ b/modular_deserttown/jobs/headslave.dm
+@@ -8,10 +8,10 @@
+ 
+ 	allowed_races = ACCEPTED_RACES
+ 
+-	tutorial = "Servitude unto death; that is your motto. You are the manor's head slave, commanding over the lesser slaves and seeing to the administrative affairs,\
+-	 day to day of the estate. While you will always be understood as what you are - a slave - your many years of hard work have proven you to be a loyal, trusted, valuable,\
+-	  and, to a certain degree, respected member of the court, trained far beyond need of the whip. Indeed, you are entrusted to take the whip to those slaves beneath you.\
+-	  You love your masters."
++	tutorial = "至死服侍，这便是你的箴言。你是庄园中的首席奴隶，统领那些更低贱的奴隶，也负责处理这片产业的日常杂务。\
++	 虽然所有人都明白你终究还是个奴隶，但多年苦役已经证明你忠诚、可靠而有用，\
++	  甚至在某种程度上已成为宫廷中受人默认与敬重的一员，早已无需再受鞭笞。\
++	  反倒是你被托付去鞭策那些比你更低下的奴隶。你爱你的主人们。"
+ 	outfit = /datum/outfit/job/roguetown/headslave
+ 	advclass_cat_rolls = list(CTAG_HEADSLAVE = 20)
+ 	display_order = JDO_BUTLER
+@@ -30,8 +30,8 @@
+ /datum/advclass/headslave
+ 	traits_applied = list(TRAIT_CICERONE, TRAIT_HOMESTEAD_EXPERT, TRAIT_SEWING_EXPERT, TRAIT_ROYALSERVANT, TRAIT_FOOD_STIPEND) // They have Expert Sewing
+ 	category_tags = list(CTAG_HEADSLAVE)
+-	name = "Head Slave"
+-	tutorial = "While still expected to fill in for the duties of the household slaves as needed, you have styled yourself as a figure beyond them."
++	name = "首席奴隶"
++	tutorial = "尽管你仍需在必要时补上宅邸奴隶们的差事，但你早已把自己塑造成凌驾于他们之上的人物。"
+ 	outfit = /datum/outfit/job/roguetown/headslave/headslave
+ 	subclass_stats = list(
+ 		STATKEY_INT = 2,
+-- 
+Translation Patch Toolkit

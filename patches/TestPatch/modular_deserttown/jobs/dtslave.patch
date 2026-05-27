@@ -1,0 +1,88 @@
+From 6e30c0a6d7c55976689a99841f71cf09dd2a28fe Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Wed, 27 May 2026 11:59:38 +0800
+Subject: [PATCH] 翻译 modular_deserttown/jobs/dtslave.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/jobs/dtslave.dm | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/modular_deserttown/jobs/dtslave.dm b/modular_deserttown/jobs/dtslave.dm
+index b3c4a54cbf0f..622ebfdfe4f9 100644
+--- a/modular_deserttown/jobs/dtslave.dm
++++ b/modular_deserttown/jobs/dtslave.dm
+@@ -10,7 +10,7 @@
+ 	allowed_races = ACCEPTED_RACES
+ 	allowed_ages = ALL_AGES_LIST
+ 
+-	tutorial = "Whether you were once a free soul or were born into chattel servitude, you're one of the many abused and mistreated slaves whipped by the Task Master to keep the Sultan's palace running smooth. Each day is marked by a scar on your back, and it is your back that carries the dirty, menial work required to keep the royal family content and decadent."
++	tutorial = "无论你曾经是自由之身，还是生来便是可供买卖的财产，你都只是众多被工头挥鞭驱使的受虐奴隶之一，只为让苏丹的宫殿照常运转。你背上的每一道伤痕都在记录日子，而也正是你的脊背，扛起了那些肮脏卑微、却足以维持王室奢靡享乐的一切劳作。"
+ 	
+ 	outfit = /datum/outfit/job/roguetown/slave
+ 	advclass_cat_rolls = list(CTAG_PSLAVE = 20)
+@@ -36,8 +36,8 @@
+ 	traits_applied = list(TRAIT_CICERONE)
+ 
+ /datum/advclass/slave/servant
+-	name = "Servant"
+-	tutorial = "You are a humdrum servant, dressed the part; lowly and best out of sight. It's practical, however."
++	name = "侍役"
++	tutorial = "你只是个不起眼的侍役，穿着也合乎身份；卑微、低调，最好别引人注意。不过这样倒也实用。"
+ 	outfit = /datum/outfit/job/roguetown/slave/servant
+ 	category_tags = list(CTAG_PSLAVE)
+ 	subclass_stats = list(
+@@ -84,8 +84,8 @@
+ 		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+ 
+ /datum/advclass/slave/pleasure
+-	name = "Exotic Slave"
+-	tutorial = "Not one really mentions how hard it is to do yardwork in a dress and stockings, but at least you still look really good."
++	name = "异域侍奴"
++	tutorial = "没人真会提起穿着长裙和丝袜做庭院杂活究竟有多辛苦，但至少你看起来确实相当漂亮。"
+ 	outfit = /datum/outfit/job/roguetown/slave/pleasure
+ 	category_tags = list(CTAG_PSLAVE)
+ 	subclass_stats = list(
+@@ -129,27 +129,27 @@
+ 
+ 	if(H.mind)
+ 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/massage)
+-		var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman","Flute", "Psyaltery")
+-		var/weapon_choice = input(H, "Choose your instrument.", "TAKE UP ARMS") as anything in weapons
++		var/weapons = list("竖琴","鲁特琴","手风琴","吉他","手摇琴","中提琴","歌咏护符","长笛", "诗琴")
++		var/weapon_choice = input(H, "选择你的乐器。", "整备行装") as anything in weapons
+ 		H.set_blindness(0)
+ 		switch(weapon_choice)
+-			if("Harp")
++			if("竖琴")
+ 				backr = /obj/item/rogue/instrument/harp
+-			if("Lute")
++			if("鲁特琴")
+ 				backr = /obj/item/rogue/instrument/lute
+-			if("Accordion")
++			if("手风琴")
+ 				backr = /obj/item/rogue/instrument/accord
+-			if("Guitar")
++			if("吉他")
+ 				backr = /obj/item/rogue/instrument/guitar
+-			if("Hurdy-Gurdy")
++			if("手摇琴")
+ 				backr = /obj/item/rogue/instrument/hurdygurdy
+-			if("Viola")
++			if("中提琴")
+ 				backr = /obj/item/rogue/instrument/viola
+-			if("Vocal Talisman")
++			if("歌咏护符")
+ 				backr = /obj/item/rogue/instrument/vocals
+-			if("Flute")
++			if("长笛")
+ 				backr = /obj/item/rogue/instrument/flute
+-			if("Psyaltery")
++			if("诗琴")
+ 				backr = /obj/item/rogue/instrument/psyaltery
+ 
+ 	if(H.age == AGE_MIDDLEAGED)
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,57 @@
+From b66c6f63a9258c4f631937ca8a067b5912cad331 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Wed, 27 May 2026 11:59:38 +0800
+Subject: [PATCH] 翻译 modular_deserttown/jobs/garrison/janissary/jezail.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/jobs/garrison/janissary/jezail.dm | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/modular_deserttown/jobs/garrison/janissary/jezail.dm b/modular_deserttown/jobs/garrison/janissary/jezail.dm
+index b921e30bfef1..6538f7562ee2 100644
+--- a/modular_deserttown/jobs/garrison/janissary/jezail.dm
++++ b/modular_deserttown/jobs/garrison/janissary/jezail.dm
+@@ -1,7 +1,7 @@
+ // In exchange for martial skills beyond ranged, they can now set traps, too.
+ /datum/advclass/janissary/jezail
+-	name = "Janissary Jezail"
+-	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
++	name = "耶尼切里火枪手"
++	tutorial = "你是王国中受过正规训练的职业士兵，专精于远程武器。你目光锐利，总能迅速捕捉敌人的破绽。"
+ 	outfit = /datum/outfit/job/roguetown/janissary/jezail
+ 
+ 	maximum_possible_slots = 2//One always tells the truth, the other only lies. Guess wrong and they both shoot you.
+@@ -59,7 +59,7 @@
+ 	H.adjust_blindness(-3)
+ 	if(H.mind)
+ 		// var/weapons = list("Long Rifle","Blunderbuss")
+-		// var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
++		// var/weapon_choice = input(H, "Choose your weapon.", "整备武装") as anything in weapons
+ 		H.set_blindness(0)
+ 		// switch(weapon_choice)
+ 		// 	if("Long Rifle")
+@@ -69,14 +69,14 @@
+ 		// 		beltr = /obj/item/quiver/bullet/grapeshot
+ 		// 		r_hand = /obj/item/gun/ballistic/firearm/blunderbuss
+ 				
+-		var/weapons2 = list("Scimitar","Whip","Club")
+-		var/weapon_choice2 = input(H, "Choose your sidearm.", "TAKE UP ARMS") as anything in weapons2
++		var/weapons2 = list("弯刀","长鞭","棍棒")
++		var/weapon_choice2 = input(H, "选择你的副武器。", "整备武装") as anything in weapons2
+ 		switch(weapon_choice2)
+-			if("Scimitar")
++			if("弯刀")
+ 				beltl = /obj/item/rogueweapon/scabbard/sword
+ 				l_hand = /obj/item/rogueweapon/sword/sabre/iron
+-			if("Whip") 
++			if("长鞭") 
+ 				beltl = /obj/item/rogueweapon/whip
+-			if("Club")
++			if("棍棒")
+ 				beltl = /obj/item/rogueweapon/mace/cudgel
+ 		H.verbs |= /mob/proc/haltyell
+-- 
+Translation Patch Toolkit

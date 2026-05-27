@@ -1,0 +1,27 @@
+From ca09839fed97685a1d49ff53eb3742aa4d9da296 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Wed, 27 May 2026 11:59:38 +0800
+Subject: [PATCH] 翻译 modular_deserttown/jobs/courtslave.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/jobs/courtslave.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/modular_deserttown/jobs/courtslave.dm b/modular_deserttown/jobs/courtslave.dm
+index 4fece2af408d..de040b9fc563 100644
+--- a/modular_deserttown/jobs/courtslave.dm
++++ b/modular_deserttown/jobs/courtslave.dm
+@@ -6,7 +6,7 @@
+ 	total_positions = 3
+ 	spawn_positions = 3
+ 	round_contrib_points = 2
+-	tutorial = "Woe has befallen thee - whether by falling on the wrong side of the law or needing to pay off a debt, you have found yourself under the underhanded employ of the Slavemaster. Fulfill desires and whims of the court that they would rather not be publicly known. Your position is anything but secure, and any mistake can leave you bound, flogged or worse. Garrison and Court members know who you are."
++	tutorial = "灾厄已降于你身。无论是站错了律法的一边，还是为了偿还债务，你都落入了奴隶主见不得光的差遣之下。去满足宫廷那些不愿公之于众的欲望与怪癖吧。你的地位毫无稳固可言，任何一次失手都可能让你被锁链束缚、惨遭鞭打，甚至更糟。卫队与宫廷成员都知道你是谁。"
+ 	min_pq = 5
+ 	job_reopens_slots_on_death = FALSE
+ 	always_show_on_latechoices = TRUE
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,38 @@
+From 3e295e2f4e2f9ce654a1ba4da7cc8c9527330156 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Wed, 27 May 2026 11:59:38 +0800
+Subject: [PATCH] 翻译 modular_deserttown/jobs/garrison/slavemaster.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/jobs/garrison/slavemaster.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/modular_deserttown/jobs/garrison/slavemaster.dm b/modular_deserttown/jobs/garrison/slavemaster.dm
+index 92ac687cbbdc..87d160465c56 100644
+--- a/modular_deserttown/jobs/garrison/slavemaster.dm
++++ b/modular_deserttown/jobs/garrison/slavemaster.dm
+@@ -13,7 +13,7 @@
+ 	display_order = JDO_DUNGEONEER
+ 	advclass_cat_rolls = list(CTAG_SLAVEMASTER = 2)
+ 
+-	tutorial = "CHANGE THIS!! something something WHIPS something something keeping the rabble in line something something sterin guiding hand. You have a swanky room in the keep, you catch escaped slaves, and you put existing slaves to work. Check the jails for prisoners to enslave."
++	tutorial = "鞭子、锁链与威吓，便是你维持秩序的手段。你是城堡中专门管束奴隶之人，住着体面的房间，负责追捕逃奴，也要驱使现有的奴隶持续劳作。别忘了巡看牢房，那里常有新的囚犯可被贬作奴隶。"
+ 
+ 	announce_latejoin = FALSE
+ 	outfit = /datum/outfit/job/roguetown/slavemaster
+@@ -49,8 +49,8 @@
+ 	job_bitflag = BITFLAG_GARRISON
+ 
+ /datum/advclass/slavemaster
+-	name = "Slavemaster"
+-	tutorial = "CHANGE THIS!! something something WHIPS something something keeping the rabble in line something something sterin guiding hand"
++	name = "奴隶主"
++	tutorial = "你手持鞭索，以冷酷手段约束那些低贱之徒。逃奴要由你追捕，现有的奴隶也要由你驱使；你的职责，就是让所有锁链都绷得足够紧。"
+ 	outfit = /datum/outfit/job/roguetown/slavemaster/base
+ 
+ 	category_tags = list(CTAG_SLAVEMASTER)
+-- 
+Translation Patch Toolkit
