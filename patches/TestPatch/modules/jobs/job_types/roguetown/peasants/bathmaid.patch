@@ -1,17 +1,17 @@
-From 860056764103f33c3774ea5f06b6f93d03e105cf Mon Sep 17 00:00:00 2001
+From 0f405a62eb1125c8e19c92260f79da3bb1912a47 Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm
+Date: Wed, 27 May 2026 11:55:25 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20bathmaid?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm | 95 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 48 insertions(+), 47 deletions(-)
+ .../job_types/roguetown/peasants/bathmaid.dm  | 105 ++++++++++--------
+ 1 file changed, 58 insertions(+), 47 deletions(-)
 
 diff --git a/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm b/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm
-index 23b6b2cd4600..3b99fb7d27f0 100644
+index 0a364fd..cdba97d 100644
 --- a/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm
 +++ b/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm
 @@ -1,6 +1,6 @@
@@ -140,7 +140,7 @@ index 23b6b2cd4600..3b99fb7d27f0 100644
  	outfit = /datum/outfit/job/roguetown/nightmaiden/courtesan
  	category_tags = list(CTAG_NIGHTMAIDEN)
  	traits_applied = list(TRAIT_KEENEARS, TRAIT_BEAUTIFUL)
-@@ -293,47 +294,47 @@
+@@ -293,44 +294,54 @@
  		shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short
  
  	if(H.mind)
@@ -201,11 +201,19 @@ index 23b6b2cd4600..3b99fb7d27f0 100644
  
  /obj/item/soap/bath
 -	name = "herbal soap"
--	desc = "A soap made from various herbs"
+-	desc = "A soap made from various herbs."
 +	name = "草本香皂"
 +	desc = "由多种草药制成的香皂。"
- 	icon = 'icons/obj/items_and_weapons.dmi'
- 	icon_state = "soap"
- 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
++	icon = 'icons/obj/items_and_weapons.dmi'
++	icon_state = "soap"
++	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
++	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
++	w_class = WEIGHT_CLASS_TINY
++	item_flags = NOBLUDGEON
++
++/obj/item/bath/soap/ComponentInitialize()
++	. = ..()
++	AddComponent(/datum/component/slippery, 80)
 -- 
-Translation Patch Toolkit
+2.47.1.windows.2
+
