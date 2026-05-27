@@ -18,8 +18,8 @@ index 7f12c8a6f673..a5d4b72dd9ef 100644
  /datum/job/roguetown/sultan
 -	title = "Sultan"
 -	f_title = "Sultana"
-+	title = "Sultan 苏丹"
-+	f_title = "Sultana 苏丹娜"
++	title = "苏丹"
++	f_title = "苏丹娜"
  	flag = SULTAN
  	department_flag = NOBLEMEN
  	faction = "Station"
