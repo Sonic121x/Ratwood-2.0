@@ -18398,7 +18398,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/shelter)
 "dRp" = (
-/obj/random/loot/spider_cave,
+/obj/effect/spawner/lootdrop/spider_cave,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "dRw" = (

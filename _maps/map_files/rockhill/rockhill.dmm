@@ -39548,6 +39548,9 @@
 /area/rogue/under/cavewet)
 "iYH" = (
 /obj/machinery/light/roguestreet/walllamp,
+/obj/structure/stairs{
+	dir = 4
+	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/physician)
 "iYN" = (
@@ -63827,6 +63830,12 @@
 "oAh" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/exposed/town/keep)
+"oAj" = (
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/floor/rogue/greenstone,
+/area/rogue/indoors/town/physician)
 "oAk" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -94534,6 +94543,13 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
+"vOL" = (
+/obj/structure/fluff/walldeco/church/line,
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/physician)
 "vON" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -103645,6 +103661,12 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor/rockhill)
+"xTn" = (
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/indoors/town/physician)
 "xTt" = (
 /obj/structure/fluff/nest,
 /obj/item/reagent_containers/food/snacks/crow,
@@ -517851,7 +517873,7 @@ uXg
 xRI
 wTO
 pjs
-bAT
+xTn
 fZJ
 fjX
 pkE
@@ -518280,8 +518302,8 @@ fZJ
 pcx
 mBg
 aCB
-xRI
-mNw
+vOL
+oAj
 mNw
 uqG
 fZJ
@@ -518712,7 +518734,7 @@ fZJ
 fdq
 aaq
 aCB
-xRI
+vOL
 mNw
 mNw
 uqG
