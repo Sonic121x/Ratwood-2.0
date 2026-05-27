@@ -17,7 +17,7 @@ index 70c59debf129..2e3e3b356647 100644
 @@ -1,5 +1,5 @@
  /datum/job/roguetown/janissarysergeant
 -	title = "Janissary Sergeant"// Googling terms Naqib seems to mean something like Captain and has a nice ring to it?
-+	title = "Janissary Sergeant 耶尼切里军士长"// Googling terms Naqib seems to mean something like Captain and has a nice ring to it?
++	title = "禁卫军士官"// Googling terms Naqib seems to mean something like Captain and has a nice ring to it?
  	flag = JANISSARYSERGEANT
  	department_flag = GARRISON
  	faction = "Station"
@@ -39,7 +39,7 @@ index 70c59debf129..2e3e3b356647 100644
 -	name = "Sergeant-at-Arms"
 -	tutorial = "You are the most experienced of the SULTAN's Soldiery, leading the Janissary in maintaining order and attending to threats and crimes below the PALACE's attention. \
 -				See to those under your command and fill in the gaps CATAPHRACTS leave in their wake. Obey the orders of your Marshal and the SULTAN."
-+	name = "军士长"
++	name = "禁卫军士长"
 +	tutorial = "你是苏丹麾下最老练的军士，负责率领耶尼切里维持秩序，处理那些还不值得惊动宫廷的威胁与罪案。\
 +				照看好你指挥下的人手，并填补具装骑士离开后留下的空缺。服从你的元帅与苏丹的命令。"
  	outfit = /datum/outfit/job/roguetown/janissarysergeant/janissarysergeant
