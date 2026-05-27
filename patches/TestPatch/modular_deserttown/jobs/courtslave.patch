@@ -1,20 +1,26 @@
-From ca09839fed97685a1d49ff53eb3742aa4d9da296 Mon Sep 17 00:00:00 2001
+From 94417cf8554a2ee3e49391a7304b872876fd04c2 Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:59:38 +0800
+Date: Wed, 27 May 2026 20:07:25 +0800
 Subject: [PATCH] 翻译 modular_deserttown/jobs/courtslave.dm
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- modular_deserttown/jobs/courtslave.dm | 2 +-
- 1 file changed, 1 insertions(+), 1 deletions(-)
+ modular_deserttown/jobs/courtslave.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modular_deserttown/jobs/courtslave.dm b/modular_deserttown/jobs/courtslave.dm
-index 4fece2af408d..de040b9fc563 100644
+index 4fece2af408d..d8cbd82a7d60 100644
 --- a/modular_deserttown/jobs/courtslave.dm
 +++ b/modular_deserttown/jobs/courtslave.dm
-@@ -6,7 +6,7 @@
+@@ -1,12 +1,12 @@
+ /datum/job/roguetown/adventurer/courtslave
+-	title = "Enslaved Adventurer"
++	title = "Enslaved Adventurer 受缚冒险者"
+ 	flag = ADVENTURER
+ 	display_order = JDO_COURTAGENT
+ 	allowed_races = RACES_ALL_KINDS
  	total_positions = 3
  	spawn_positions = 3
  	round_contrib_points = 2

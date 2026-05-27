@@ -1,19 +1,28 @@
-From 3d1e06ad84d29433461ffd117b74aad4d066a2c5 Mon Sep 17 00:00:00 2001
+From 23f3bd2056bf57cfa02b2a9c6a68424470484f2e Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:59:38 +0800
+Date: Wed, 27 May 2026 20:07:25 +0800
 Subject: [PATCH] 翻译 modular_deserttown/jobs/sultan.dm
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- modular_deserttown/jobs/sultan.dm | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ modular_deserttown/jobs/sultan.dm | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/modular_deserttown/jobs/sultan.dm b/modular_deserttown/jobs/sultan.dm
-index 7f12c8a6f673..5eab1d53d58f 100644
+index 7f12c8a6f673..a5d4b72dd9ef 100644
 --- a/modular_deserttown/jobs/sultan.dm
 +++ b/modular_deserttown/jobs/sultan.dm
+@@ -1,6 +1,6 @@
+ /datum/job/roguetown/sultan
+-	title = "Sultan"
+-	f_title = "Sultana"
++	title = "Sultan 苏丹"
++	f_title = "Sultana 苏丹娜"
+ 	flag = SULTAN
+ 	department_flag = NOBLEMEN
+ 	faction = "Station"
 @@ -22,7 +22,7 @@
  	visuals_only_outfit = /datum/outfit/job/roguetown/sultan/visuals
  

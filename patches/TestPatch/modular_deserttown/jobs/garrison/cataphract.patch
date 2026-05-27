@@ -1,19 +1,26 @@
-From fb108645fdaaa500d06d28cd04daed767c398ff1 Mon Sep 17 00:00:00 2001
+From 0e4e8f04ca1b611c18d44176ffd281171a2b8e96 Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:59:38 +0800
+Date: Wed, 27 May 2026 20:07:25 +0800
 Subject: [PATCH] 翻译 modular_deserttown/jobs/garrison/cataphract.dm
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- modular_deserttown/jobs/garrison/cataphract.dm | 84 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 42 insertions(+), 42 deletions(-)
+ modular_deserttown/jobs/garrison/cataphract.dm | 86 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 43 insertions(+), 43 deletions(-)
 
 diff --git a/modular_deserttown/jobs/garrison/cataphract.dm b/modular_deserttown/jobs/garrison/cataphract.dm
-index 6265183f951d..099623d71500 100644
+index 6265183f951d..a370c9538236 100644
 --- a/modular_deserttown/jobs/garrison/cataphract.dm
 +++ b/modular_deserttown/jobs/garrison/cataphract.dm
+@@ -1,5 +1,5 @@
+ /datum/job/roguetown/cataphract
+-	title = "Cataphract"
++	title = "Cataphract 具装骑士"
+ 	flag = CATAPHRACT
+ 	department_flag = GARRISON
+ 	faction = "Station"
 @@ -8,9 +8,9 @@
  	allowed_races = RACES_TOLERATED_UP
  	allowed_sexes = list(MALE, FEMALE)

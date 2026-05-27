@@ -1,19 +1,26 @@
-From db1c28bc1841d416838df2e17d71ff2e944c3244 Mon Sep 17 00:00:00 2001
+From 67c4564ab80d7e2e280a30f133ee091f19deee69 Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:59:38 +0800
+Date: Wed, 27 May 2026 20:07:25 +0800
 Subject: [PATCH] 翻译 modular_deserttown/jobs/garrison/azeb.dm
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- modular_deserttown/jobs/garrison/azeb.dm | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ modular_deserttown/jobs/garrison/azeb.dm | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/modular_deserttown/jobs/garrison/azeb.dm b/modular_deserttown/jobs/garrison/azeb.dm
-index 734ebdba85df..3cf9c27b0175 100644
+index 734ebdba85df..8f263fe90cb4 100644
 --- a/modular_deserttown/jobs/garrison/azeb.dm
 +++ b/modular_deserttown/jobs/garrison/azeb.dm
+@@ -1,5 +1,5 @@
+ /datum/job/roguetown/azeb
+-	title = "Azeb"
++	title = "Azeb 阿泽布"
+ 	flag = BOGGUARD
+ 	department_flag = GARRISON
+ 	faction = "Station"
 @@ -9,9 +9,9 @@
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = ACCEPTED_RACES

@@ -1,19 +1,26 @@
-From 3e295e2f4e2f9ce654a1ba4da7cc8c9527330156 Mon Sep 17 00:00:00 2001
+From a22f30e35b8e4bffa31d21f677e33a726cce9ca0 Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:59:38 +0800
+Date: Wed, 27 May 2026 20:07:25 +0800
 Subject: [PATCH] 翻译 modular_deserttown/jobs/garrison/slavemaster.dm
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- modular_deserttown/jobs/garrison/slavemaster.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ modular_deserttown/jobs/garrison/slavemaster.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/modular_deserttown/jobs/garrison/slavemaster.dm b/modular_deserttown/jobs/garrison/slavemaster.dm
-index 92ac687cbbdc..87d160465c56 100644
+index 92ac687cbbdc..9c8aa230b984 100644
 --- a/modular_deserttown/jobs/garrison/slavemaster.dm
 +++ b/modular_deserttown/jobs/garrison/slavemaster.dm
+@@ -1,5 +1,5 @@
+ /datum/job/roguetown/slavemaster
+-	title = "Slave Master"
++	title = "Slave Master 奴隶主"
+ 	flag = SLAVEMASTER
+ 	department_flag = GARRISON
+ 	faction = "Station"
 @@ -13,7 +13,7 @@
  	display_order = JDO_DUNGEONEER
  	advclass_cat_rolls = list(CTAG_SLAVEMASTER = 2)
