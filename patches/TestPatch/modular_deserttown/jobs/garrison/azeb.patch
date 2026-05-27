@@ -17,7 +17,7 @@ index 734ebdba85df..8f263fe90cb4 100644
 @@ -1,5 +1,5 @@
  /datum/job/roguetown/azeb
 -	title = "Azeb"
-+	title = "Azeb 阿泽布"
++	title = "步兵"
  	flag = BOGGUARD
  	department_flag = GARRISON
  	faction = "Station"
