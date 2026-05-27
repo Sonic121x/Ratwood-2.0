@@ -17,7 +17,7 @@ index 4fece2af408d..d8cbd82a7d60 100644
 @@ -1,12 +1,12 @@
  /datum/job/roguetown/adventurer/courtslave
 -	title = "Enslaved Adventurer"
-+	title = "Enslaved Adventurer 受缚冒险者"
++	title = "受缚冒险者"
  	flag = ADVENTURER
  	display_order = JDO_COURTAGENT
  	allowed_races = RACES_ALL_KINDS
