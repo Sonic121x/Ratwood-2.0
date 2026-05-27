@@ -1,25 +1,24 @@
-From 4e22c62865b58d1825523821db1154f3124ec7ad Mon Sep 17 00:00:00 2001
+From b78bd253589bec23a7bbe603cd5d5cea3abb793b Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/priest.dm
+Date: Wed, 27 May 2026 11:55:24 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20priest?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- code/modules/jobs/job_types/roguetown/church/priest.dm | 246 ++++++++++++++---------------
- 1 file changed, 123 insertions(+), 123 deletions(-)
+ .../jobs/job_types/roguetown/church/priest.dm | 240 +++++++++---------
+ 1 file changed, 114 insertions(+), 126 deletions(-)
 
 diff --git a/code/modules/jobs/job_types/roguetown/church/priest.dm b/code/modules/jobs/job_types/roguetown/church/priest.dm
-index eb07798e1b75..c6354089e1da 100644
+index ec40494..9081a61 100644
 --- a/code/modules/jobs/job_types/roguetown/church/priest.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/priest.dm
-@@ -12,20 +12,20 @@
- 
+@@ -13,19 +13,20 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  
  /datum/job/roguetown/priest
--	title = "Bishop"
-+	title = "主教"
+ 	title = "Bishop"
++	display_title = "主教"
  	flag = PRIEST
  	department_flag = CHURCHMEN
  	faction = "Station"
@@ -40,7 +39,7 @@ index eb07798e1b75..c6354089e1da 100644
  	whitelist_req = FALSE
  	cmode_music = 'sound/music/cmode/church/combat_astrata.ogg'
  
-@@ -63,7 +63,7 @@
+@@ -63,7 +64,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  //Name stuff.
  		var/prev_real_name = H.real_name
  		var/prev_name = H.name
@@ -49,7 +48,7 @@ index eb07798e1b75..c6354089e1da 100644
  		H.real_name = "[title] [prev_real_name]"
  		H.name = "[title] [prev_name]"
  
-@@ -72,10 +72,10 @@
+@@ -72,10 +73,10 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  				_delayed_path_choice(H)
  
  /datum/advclass/bishop
@@ -64,7 +63,7 @@ index eb07798e1b75..c6354089e1da 100644
  	outfit = /datum/outfit/job/roguetown/priest/basic
  	subclass_languages = list(/datum/language/grenzelhoftian)
  	category_tags = list(CTAG_BISHOP)
-@@ -100,7 +100,7 @@
+@@ -100,7 +101,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
  	)
  	subclass_stashed_items = list(
@@ -73,7 +72,7 @@ index eb07798e1b75..c6354089e1da 100644
  	)
  
  /datum/outfit/job/roguetown/priest
-@@ -163,12 +163,12 @@
+@@ -163,12 +164,12 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  	for(var/miracle in t3)
  		if(H.mind.has_spell(t3[miracle]))
  			t3.Remove(miracle)
@@ -88,20 +87,19 @@ index eb07798e1b75..c6354089e1da 100644
  		if(t3_choice)
  			var/obj/effect/proc_holder/chosen_miracle = t3[t3_choice]
  			H.mind.AddSpell(new chosen_miracle)
-@@ -179,9 +179,9 @@
+@@ -179,9 +180,9 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  	if(!H || !H.client || !H.mind)
  		return
  
 -	var/choice = alert(H, "Choose your path.", "Bishop Doctrine", "Loyalist", "Radical")
--
--	if(choice == "Radical")
 +	var/choice = alert(H, "选择你的道路。", "主教教义", "守旧派", "激进派")
-+
+ 
+-	if(choice == "Radical")
 +	if(choice == "激进派")
  		src.grant_radical_path(H)
  	else
  		src.grant_old_path(H)
-@@ -193,7 +193,7 @@
+@@ -193,7 +194,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  	H.verbs -= /mob/living/carbon/human/proc/change_patron
  	H.reset_clergy_devotion(CLERIC_T4, CLERIC_REGEN_MAJOR, TRUE, CLERIC_REQ_4)
  	_pick_loyalist_miracles(H)
@@ -110,7 +108,7 @@ index eb07798e1b75..c6354089e1da 100644
  
  /datum/job/roguetown/priest/proc/grant_radical_path(mob/living/carbon/human/H)
  	if(!H || !H.mind || !H.patron)
-@@ -217,27 +217,27 @@
+@@ -217,27 +218,28 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/wound_heal, H)
  	if(!H.mind.has_spell(/obj/effect/proc_holder/spell/invoked/takeapprentice))
  		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/takeapprentice, H)
@@ -118,9 +116,9 @@ index eb07798e1b75..c6354089e1da 100644
 +	to_chat(H, span_notice("我拥抱激进之道。"))
  
  /datum/job/priest/vice //just used to change the priest title
--	title = "Vice Priest"
+ 	title = "Vice Priest"
 -	f_title = "Vice Priestess"
-+	title = "副司祭"
++	display_title = "副司祭"
 +	f_title = "副司祭"
  	flag = PRIEST
  	department_flag = CHURCHMEN
@@ -146,7 +144,7 @@ index eb07798e1b75..c6354089e1da 100644
  		return FALSE
  	for(var/mob/living/carbon/human/HU in get_step(src, src.dir))
  		if(!HU.mind)
-@@ -266,80 +266,80 ... @@
+@@ -265,80 +267,80 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  		SSticker.regentmob = null
  		var/dispjob = mind.assigned_role
  		removeomen(OMEN_NOLORD)
@@ -169,12 +167,10 @@ index eb07798e1b75..c6354089e1da 100644
  
  	if (!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
 -		to_chat(src, span_warning("I need to do this in the chapel."))
--		return FALSE
--
--	var/announcementinput = input("Bellow to the vale", "Make an Announcement") as text|null
 +		to_chat(src, span_warning("我得在礼拜堂里进行此事。"))
-+		return FALSE
-+
+ 		return FALSE
+ 
+-	var/announcementinput = input("Bellow to the vale", "Make an Announcement") as text|null
 +	var/announcementinput = input("向整个山谷高声宣告", "发布布告") as text|null
  	if(announcementinput)
  		if(!src.can_speak_vocal())
@@ -239,27 +235,23 @@ index eb07798e1b75..c6354089e1da 100644
  
  	if (!COOLDOWN_FINISHED(src, priest_sermon))
 -		to_chat(src, span_warning("You cannot inspire others so early."))
--		return
--
--	src.visible_message(span_notice("[src] begins preaching a sermon..."))
 +		to_chat(src, span_warning("你现在还不能如此早地激励众人。"))
-+		return
-+
+ 		return
+ 
+-	src.visible_message(span_notice("[src] begins preaching a sermon..."))
 +	src.visible_message(span_notice("[src] 开始布道宣讲……"))
  
  	if (!do_after(src, 120, target = src)) // 120 seconds
 -		src.visible_message(span_warning("[src] stops preaching."))
--		return
--
--	src.visible_message(span_notice("[src] finishes the sermon, inspiring those nearby!"))
 +		src.visible_message(span_warning("[src] 停止了布道。"))
-+		return
-+
+ 		return
+ 
+-	src.visible_message(span_notice("[src] finishes the sermon, inspiring those nearby!"))
 +	src.visible_message(span_notice("[src] 完成了布道，激励了附近众人！"))
  	playsound(src.loc, 'sound/magic/bless.ogg', 80, TRUE)
  	COOLDOWN_START(src, priest_sermon, PRIEST_SERMON_COOLDOWN)
  
-@@ -350,19 +350,19 @@
+@@ -349,70 +351,58 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  		if (istype(H.patron, /datum/patron/divine))
  			H.apply_status_effect(/datum/status_effect/buff/sermon)
  			H.add_stress(/datum/stressevent/sermon)
@@ -285,10 +277,18 @@ index eb07798e1b75..c6354089e1da 100644
 +		to_chat(src, span_warning("此人与十神的联系太过浅薄。"))
  		return FALSE
  
- 	//Flavor messages for cursing certain god's faithful.
-@@ -375,13 +375,13 @@
- 		ADD_TRAIT(H, TRAIT_CURSE_RESIST, TRAIT_GENERIC)
- 
+-	//Flavor messages for cursing certain god's faithful.
+-	//Dendor works in mysterious ways.
+-	if (istype(H.patron, /datum/patron/divine/dendor))
+-		to_chat(src, span_warning("The mad god Dendor is felt strongly. The wolf in this one balks and trashes as it is faintly restrained."))
+-		//If we check this here there's no need to apply this trait preemtively to a bunch of people, and allows for greater fluff feedback.
+-		ADD_TRAIT(H, TRAIT_CURSE_RESIST, TRAIT_GENERIC)
+-
+-	//Abyssor's clergy are gripped by his dream.
+-	if (istype(H.patron, /datum/patron/divine/abyssor))
+-		to_chat(src, span_warning("The Dreamer, Abyssor has his clutches grasped firmly around this one. The light of the ten only barely penetrates the depths."))
+-		ADD_TRAIT(H, TRAIT_CURSE_RESIST, TRAIT_GENERIC)
+-
  	//Let's not curse heretical antags.
  	if(HAS_TRAIT(H, TRAIT_HERESIARCH))
 -		to_chat(src, span_warning("The patron of this one shields them from being suppressed."))
@@ -333,7 +333,7 @@ index eb07798e1b75..c6354089e1da 100644
  		message_admins("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
  		log_game("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
  
-@@ -394,7 +394,7 @@
+@@ -425,7 +415,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  
  	if (H.real_name == inputty)
  		if (!COOLDOWN_FINISHED(src, priest_apostasy))
@@ -342,23 +342,28 @@ index eb07798e1b75..c6354089e1da 100644
  			return
  
  		//Check if we can curse this person.
-@@ -408,11 +408,11 @@
+@@ -436,16 +426,14 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+ 		GLOB.apostasy_players += inputty
+ 		COOLDOWN_START(src, priest_apostasy, PRIEST_APOSTASY_COOLDOWN)
+ 
+-		var/curse_resist = HAS_TRAIT(H, TRAIT_CURSE_RESIST)
+-
  		if (istype(H.patron, /datum/patron/divine))
- 			H.apply_status_effect(/datum/status_effect/debuff/apostasy)
+-			H.apply_status_effect(/datum/status_effect/debuff/apostasy, curse_resist)
++			H.apply_status_effect(/datum/status_effect/debuff/apostasy)
  			H.add_stress(/datum/stressevent/apostasy)
 -			to_chat(H, span_warning("A holy silence falls upon you. Your Patron cannot hear you anymore..."))
 +			to_chat(H, span_warning("一阵神圣的寂静降临在你身上。你的神祇再也听不见你的祈祷了……"))
  		else
 -			to_chat(H, span_warning("A holy silence falls upon you..."))
--
--		priority_announce("[real_name] has placed mark of shame upon [inputty]. Their prayers fall on deaf ears.", title = "APOSTASY", sound = 'sound/misc/excomm.ogg')
 +			to_chat(H, span_warning("一阵神圣的寂静降临在你身上……"))
-+
+ 
+-		priority_announce("[real_name] has placed mark of shame upon [inputty]. Their prayers fall on deaf ears.", title = "APOSTASY", sound = 'sound/misc/excomm.ogg')
 +		priority_announce("[real_name] 已将羞耻烙印加诸 [inputty]。他们的祈祷自此无人垂听。", title = "叛教", sound = 'sound/misc/excomm.ogg')
  		message_admins("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
  		log_game("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
  		return TRUE
-@@ -423,32 +423,32 @@
+@@ -456,32 +444,32 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  	return
  
  /mob/living/carbon/human/proc/churchexcommunicate(mob/living/carbon/human/H in GLOB.player_list)
@@ -397,7 +402,7 @@ index eb07798e1b75..c6354089e1da 100644
  		message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
  		log_game("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
  
-@@ -459,14 +459,14 @@
+@@ -492,14 +480,14 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  				if (istype(H.patron, /datum/patron/divine))
  					H.remove_stress(/datum/stressevent/excommunicated)
  					H.remove_status_effect(/datum/status_effect/debuff/excomm)
@@ -414,7 +419,7 @@ index eb07798e1b75..c6354089e1da 100644
  			return // Anybody can still be excommunicated, so no extra checks here since it's purely RP and not mechanical.
  		found = TRUE
  		ADD_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
-@@ -476,7 +476,7 @@
+@@ -509,7 +497,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  			if (istype(H.patron, /datum/patron/divine))
  				H.add_stress(/datum/stressevent/excommunicated)
  				H.apply_status_effect(/datum/status_effect/debuff/excomm)
@@ -423,7 +428,7 @@ index eb07798e1b75..c6354089e1da 100644
  			else
  				return
  
-@@ -484,7 +484,7 @@
+@@ -517,7 +505,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  			return FALSE
  
  	GLOB.excommunicated_players += inputty
@@ -432,7 +437,7 @@ index eb07798e1b75..c6354089e1da 100644
  	message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
  	log_game("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
  
-@@ -493,42 +493,42 @@
+@@ -526,42 +514,42 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  /* PRIEST CURSE - powerful debuffs to punish ppl outside church otherwise use apostasy
  code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep that updated if this gets any changes.*/
  /mob/living/carbon/human/proc/churchpriestcurse(mob/living/carbon/human/H in GLOB.player_list)
@@ -491,7 +496,7 @@ index eb07798e1b75..c6354089e1da 100644
  	if (!curse_pick)
  		return
  
-@@ -539,18 +539,18 @@
+@@ -572,18 +560,18 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  
  		if (H.is_cursed(temp))
  			H.remove_curse(temp)
@@ -513,7 +518,7 @@ index eb07798e1b75..c6354089e1da 100644
  				return
  
  			//Check if we can curse this person.
-@@ -560,21 +560,21 @@
+@@ -593,21 +581,21 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  			COOLDOWN_START(src, priest_curse, PRIEST_CURSE_COOLDOWN)
  			H.add_curse(curse_type)
  
@@ -539,7 +544,7 @@ index eb07798e1b75..c6354089e1da 100644
  		return
  
  	var/key = REF(src)
-@@ -583,7 +583,7 @@
+@@ -616,7 +604,7 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  		next_swap = 0
  
  	if(world.time < next_swap)
@@ -548,7 +553,7 @@ index eb07798e1b75..c6354089e1da 100644
  		return
  
  	var/list/god_choice = list()
-@@ -604,22 +604,22 @@
+@@ -637,22 +625,22 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  	if(!new_patron_type)
  		return
  	if(patron && istype(patron, new_patron_type))
@@ -578,7 +583,7 @@ index eb07798e1b75..c6354089e1da 100644
  	invocation_type = "whisper"
  	sound = 'sound/magic/bless.ogg'
  	devotion_cost = 100
-@@ -636,12 +636,12 @@
+@@ -669,12 +657,12 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  		return FALSE
  
  	if(!HAS_TRAIT(target, TRAIT_HERESIARCH))
@@ -594,7 +599,7 @@ index eb07798e1b75..c6354089e1da 100644
  		revert_cast()
  		return FALSE
  
-@@ -685,11 +705,11 @@
+@@ -718,11 +706,11 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  	user.apply_status_effect(/datum/status_effect/debuff/devitalised)
  	target.apply_status_effect(/datum/status_effect/debuff/devitalised)
  
@@ -611,4 +616,5 @@ index eb07798e1b75..c6354089e1da 100644
  
  	return TRUE
 -- 
-Translation Patch Toolkit
+2.47.1.windows.2
+
