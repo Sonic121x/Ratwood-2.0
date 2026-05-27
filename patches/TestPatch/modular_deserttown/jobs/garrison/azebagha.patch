@@ -17,7 +17,7 @@ index f23f796e3171..f0122a34a00c 100644
 @@ -1,5 +1,5 @@
  /datum/job/roguetown/azebagha
 -	title = "Azeb Agha"
-+	title = "Azeb Agha 阿泽布阿迦"
++	title = "步兵长官"
  	flag = AZEBAGHA
  	department_flag = GARRISON
  	faction = "Station"
