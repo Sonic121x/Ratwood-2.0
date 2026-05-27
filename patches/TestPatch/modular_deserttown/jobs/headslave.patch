@@ -17,7 +17,7 @@ index 35d6af797404..8b194e9cfbe3 100644
 @@ -1,5 +1,5 @@
  /datum/job/roguetown/headslave // really need to re-name all these when the codebase isn't a fork and search will update for the peasants...
 -	title = "Head Slave"
-+	title = "Head Slave 首席奴隶"
++	title = "首席奴隶"
  	flag = HEADSLAVE
  	department_flag = COURTIERS
  	faction = "Station"
