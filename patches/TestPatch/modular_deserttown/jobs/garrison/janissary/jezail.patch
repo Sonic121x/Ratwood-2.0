@@ -19,7 +19,7 @@ index b921e30bfef1..6538f7562ee2 100644
  /datum/advclass/janissary/jezail
 -	name = "Janissary Jezail"
 -	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
-+	name = "耶尼切里火枪手"
++	name = "禁卫军火枪手"
 +	tutorial = "你是王国中受过正规训练的职业士兵，专精于远程武器。你目光锐利，总能迅速捕捉敌人的破绽。"
  	outfit = /datum/outfit/job/roguetown/janissary/jezail
  
