@@ -19,7 +19,7 @@ index 023cb61e836e..d80a08eed16a 100644
  /datum/advclass/janissary/footman
 -	name = "Janissary Footman"
 -	tutorial = "You are a member of the Sultans Retinue. Ensure the safety of the Sultan and their subjects, defend the powers that be from the horrors of the outside world, and keep the Sultanate alive."
-+	name = "耶尼切里步兵"
++	name = "禁卫军步兵"
 +	tutorial = "你是苏丹亲卫队中的一员。确保苏丹及其臣民的安全，替掌权者抵御外界的恐怖威胁，并让苏丹国得以延续。"
  	outfit = /datum/outfit/job/roguetown/janissary/footman
  
