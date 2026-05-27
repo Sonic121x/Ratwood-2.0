@@ -18,7 +18,7 @@ index 0cac7e4667f4..cabdf486d9f8 100644
  // Wretch, soft antagonists. Giving them a significant boon in stats due to their general presence as driving antagonists.
  /datum/job/roguetown/wretch
  	title = "Wretch"
-+	display_title = "流寇"
++	display_title = "流放者"
  	flag = WRETCH
  	department_flag = WANDERERS
  	faction = "Station"
