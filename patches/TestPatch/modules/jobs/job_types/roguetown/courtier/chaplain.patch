@@ -11,7 +11,6 @@ Content-Transfer-Encoding: 8bit
  1 file changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm b/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm
-index 96a0c67b8bb6..dfed4b054744 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm
 @@ -3,6 +3,7 @@
