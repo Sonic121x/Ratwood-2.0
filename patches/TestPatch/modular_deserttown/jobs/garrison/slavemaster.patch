@@ -17,7 +17,7 @@ index 92ac687cbbdc..9c8aa230b984 100644
 @@ -1,5 +1,5 @@
  /datum/job/roguetown/slavemaster
 -	title = "Slave Master"
-+	title = "Slave Master 奴隶主"
++	title = "奴隶主"
  	flag = SLAVEMASTER
  	department_flag = GARRISON
  	faction = "Station"
