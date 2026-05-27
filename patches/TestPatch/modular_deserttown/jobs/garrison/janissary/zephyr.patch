@@ -19,7 +19,7 @@ index 7913216b17e4..56d04ea1c97f 100644
  /datum/advclass/janissary/zephyr
 -	name = "Janissary Zephyr"
 -	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
-+	name = "耶尼切里风矢手"
++	name = "禁卫军风矢手"
 +	tutorial = "你是王国中受过正规训练的职业士兵，专精于远程武器。你目光锐利，总能迅速捕捉敌人的破绽。"
  	outfit = /datum/outfit/job/roguetown/janissary/zephyr
  
