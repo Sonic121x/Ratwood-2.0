@@ -1,0 +1,37 @@
+From 945d5b961b98b0052b147f890e7da660933e5e92 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:30:52 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../modules/reagents/chemistry/reagents/other_reagents.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/reagents/chemistry/reagents/other_reagents.dm b/code/modules/reagents/chemistry/reagents/other_reagents.dm
+index 19bc6d65c1..646f4750a5 100644
+--- a/code/modules/reagents/chemistry/reagents/other_reagents.dm
++++ b/code/modules/reagents/chemistry/reagents/other_reagents.dm
+@@ -98,13 +98,13 @@
+ 	shot_glass_icon_state = "shotglassred"
+ 
+ /datum/reagent/water
+-	name = "Water"
+-	description = "An ubiquitous chemical substance that is composed of hydrogen and oxygen."
++	name = "水"
++	description = "一种由氢和氧组成的无处不在的化学物质。"
+ 	color = "#6a9295"
+-	taste_description = "water"
++	taste_description = "水"
+ 	var/cooling_temperature = 2
+ 	glass_icon_state = "glass_clear"
+-	glass_name = "glass of water"
++	glass_name = "一杯水"
+ 	glass_desc = ""
+ 	shot_glass_icon_state = "shotglassclear"
+ 	var/hydration = 12
+-- 
+2.53.0
+
