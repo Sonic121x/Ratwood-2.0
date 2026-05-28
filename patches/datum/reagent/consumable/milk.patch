@@ -1,0 +1,36 @@
+From fe1f0c0285c5d7f8389b7ae11ba79e4d041f494f Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:31:48 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=89=9B=E5=A5=B6?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../modules/reagents/chemistry/reagents/drink_reagents.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/reagents/chemistry/reagents/drink_reagents.dm b/code/modules/reagents/chemistry/reagents/drink_reagents.dm
+index e1fe65d78d..27e56b78f2 100644
+--- a/code/modules/reagents/chemistry/reagents/drink_reagents.dm
++++ b/code/modules/reagents/chemistry/reagents/drink_reagents.dm
+@@ -78,12 +78,12 @@
+ 		container.reagents.del_reagent(/datum/reagent/water)
+ 
+ /datum/reagent/consumable/milk
+-	name = "Milk"
+-	description = "An opaque white liquid produced by the mammary glands of mammals."
++	name = "牛奶"
++	description = "一种由哺乳动物乳腺产生的白色不透明液体。"
+ 	color = "#DFDFDF" // rgb: 223, 223, 223
+-	taste_description = "milk"
++	taste_description = "牛奶"
+ 	glass_icon_state = "glass_white"
+-	glass_name = "glass of milk"
++	glass_name = "一杯牛奶"
+ 	glass_desc = ""
+ 
+ /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
+-- 
+2.53.0
+

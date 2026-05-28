@@ -1,0 +1,35 @@
+From 6a6e90df7f00b312007ed64bb5a76d141de5a915 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:33:24 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=95=A4=E9=85=92?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../reagents/chemistry/reagents/rt_alcohol_reagents.dm      | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/reagents/chemistry/reagents/rt_alcohol_reagents.dm b/code/modules/reagents/chemistry/reagents/rt_alcohol_reagents.dm
+index 9bf8f8ad77..c8036c8f92 100644
+--- a/code/modules/reagents/chemistry/reagents/rt_alcohol_reagents.dm
++++ b/code/modules/reagents/chemistry/reagents/rt_alcohol_reagents.dm
+@@ -1,12 +1,12 @@
+ // Just store all of the alcohol reagents that isn't base tg here
+ /datum/reagent/consumable/ethanol/beer
+-	name = "Beer"
++	name = "啤酒"
+ 	description = ""
+ 	color = "#a17c10" // rgb: 102, 67, 0
+ 	nutriment_factor = 0.1
+ 	boozepwr = 25
+-	taste_description = "ale"
+-	glass_name = "glass of beer"
++	taste_description = "麦芽酒"
++	glass_name = "一杯啤酒"
+ 	glass_desc = ""
+ 
+ /datum/reagent/consumable/ethanol/rum
+-- 
+2.53.0
+

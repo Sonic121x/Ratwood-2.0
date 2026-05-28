@@ -1,0 +1,35 @@
+From fc9eec33e3309083fecdeffb19d99080b9955092 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:21:55 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=94=9F=E5=91=BD=E8=8D=AF?=
+ =?UTF-8?q?=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..e6079e1377 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -5,11 +5,11 @@
+ 
+ //Potions
+ /datum/reagent/medicine/healthpot
+-	name = "Health Potion"
+-	description = "Gradually regenerates all types of damage."
++	name = "生命药水"
++	description = "逐渐恢复所有类型的伤害。"
+ 	reagent_state = LIQUID
+ 	color = "#ff0000"
+-	taste_description = "lifeblood"
++	taste_description = "生命之血"
+ 	overdose_threshold = 0
+ 	metabolization_rate = REAGENTS_METABOLISM
+ 	alpha = 173
+-- 
+2.53.0
+

@@ -1,0 +1,26 @@
+From 2adf0e180554c479e108aacee025ac31766b3097 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:43:41 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9C=A8=E5=8F=89?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/cookware/fork.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modular/Neu_Food/code/cookware/fork.dm b/modular/Neu_Food/code/cookware/fork.dm
+index 98206ae5ad..2089713ed7 100644
+--- a/modular/Neu_Food/code/cookware/fork.dm
++++ b/modular/Neu_Food/code/cookware/fork.dm
+@@ -1,5 +1,5 @@
+ /obj/item/kitchen/fork
+-	name = "wooden fork"
++	name = "木叉"
+ 	icon = 'modular/Neu_Food/icons/cookware/fork.dmi'
+ 	icon_state = "fork_wooden"
+ 	flags_1 = CONDUCT_1
+-- 
+2.53.0
+
