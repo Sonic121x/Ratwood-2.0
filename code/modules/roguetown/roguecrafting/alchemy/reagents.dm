@@ -72,10 +72,10 @@
 	..()
 
 /datum/reagent/medicine/strongmana
-	name = "Strong Mana Potion"
-	description = "Rapidly regenerates energy."
+	name = "强效魔力药水"
+	description = "快速恢复能量。"
 	color = "#0000ff"
-	taste_description = "raw power"
+	taste_description = "纯粹的力量"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/strongmana/on_mob_life(mob/living/carbon/M)
