@@ -57,11 +57,11 @@
 	. = 1
 
 /datum/reagent/medicine/manapot
-	name = "Mana Potion"
-	description = "Gradually regenerates energy."
+	name = "魔力药水"
+	description = "逐渐恢复能量。"
 	reagent_state = LIQUID
 	color = "#000042"
-	taste_description = "sweet mana"
+	taste_description = "甜美的魔力"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
