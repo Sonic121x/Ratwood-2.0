@@ -1,0 +1,35 @@
+From 9d88c2457d33c53df4106c6d17949477d93b0e31 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:24:18 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=AD=94=E5=8A=9B=E8=8D=AF?=
+ =?UTF-8?q?=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..3356a5e960 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -57,11 +57,11 @@
+ 	. = 1
+ 
+ /datum/reagent/medicine/manapot
+-	name = "Mana Potion"
+-	description = "Gradually regenerates energy."
++	name = "魔力药水"
++	description = "逐渐恢复能量。"
+ 	reagent_state = LIQUID
+ 	color = "#000042"
+-	taste_description = "sweet mana"
++	taste_description = "甜美的魔力"
+ 	overdose_threshold = 0
+ 	metabolization_rate = REAGENTS_METABOLISM
+ 	alpha = 173
+-- 
+2.53.0
+
