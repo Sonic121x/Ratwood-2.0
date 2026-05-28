@@ -138,11 +138,11 @@
 
 // About 3 time as potent as antidote
 /datum/reagent/medicine/strong_antidote
-	name = "Strong Antidote"
+	name = "强效解毒剂"
 	description = ""
 	reagent_state = LIQUID
 	color = "#004200"
-	taste_description = "dirt"
+	taste_description = "泥土"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 
 /datum/reagent/medicine/strong_antidote/on_mob_life(mob/living/carbon/M)
