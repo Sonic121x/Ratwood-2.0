@@ -63830,12 +63830,6 @@
 "oAh" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/exposed/town/keep)
-"oAj" = (
-/obj/structure/stairs/stone{
-	dir = 4
-	},
-/turf/open/floor/rogue/greenstone,
-/area/rogue/indoors/town/physician)
 "oAk" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -94543,13 +94537,6 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
-"vOL" = (
-/obj/structure/fluff/walldeco/church/line,
-/obj/structure/stairs/stone{
-	dir = 4
-	},
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/physician)
 "vON" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -518302,8 +518289,8 @@ fZJ
 pcx
 mBg
 aCB
-vOL
-oAj
+xRI
+mNw
 mNw
 uqG
 fZJ
@@ -518734,7 +518721,7 @@ fZJ
 fdq
 aaq
 aCB
-vOL
+xRI
 mNw
 mNw
 uqG
