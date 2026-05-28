@@ -1,0 +1,29 @@
+From 01aee67698287839c1a8a1f29850a9aee9aaaae4 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:36:20 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=93=81=E9=94=85?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/cookware/pot.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular/Neu_Food/code/cookware/pot.dm b/modular/Neu_Food/code/cookware/pot.dm
+index f555a8b40f..6b2516d096 100644
+--- a/modular/Neu_Food/code/cookware/pot.dm
++++ b/modular/Neu_Food/code/cookware/pot.dm
+@@ -1,7 +1,7 @@
+ /obj/item/reagent_containers/glass/bucket/pot
+ 	force = 10
+-	name = "pot"
+-	desc = "A pot made out of iron. It can hold a lot of liquid."
++	name = "锅"
++	desc = "一口铁制的锅，能装很多液体。"
+ 	icon = 'modular/Neu_Food/icons/cookware/pot.dmi'
+ 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+ 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+-- 
+2.53.0
+
