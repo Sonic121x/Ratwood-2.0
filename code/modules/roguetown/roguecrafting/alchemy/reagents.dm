@@ -100,10 +100,10 @@
 	. = 1
 
 /datum/reagent/medicine/strongstam
-	name = "Strong Stamina Potion"
-	description = "Rapidly regenerates stamina."
+	name = "强效耐力药水"
+	description = "快速恢复耐力。"
 	color = "#13df00"
-	taste_description = "sparkly static"
+	taste_description = "噼啪作响的静电"
 	metabolization_rate = REAGENTS_METABOLISM
 
 /datum/reagent/medicine/strongstam/on_mob_life(mob/living/carbon/M)
