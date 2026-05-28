@@ -1,0 +1,28 @@
+From 6a535c703e9da63e42119b0d925ae41242ce12b6 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:34:47 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=85=8E=E9=94=85?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/cookware/pan.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular/Neu_Food/code/cookware/pan.dm b/modular/Neu_Food/code/cookware/pan.dm
+index 5156886337..9451c94663 100644
+--- a/modular/Neu_Food/code/cookware/pan.dm
++++ b/modular/Neu_Food/code/cookware/pan.dm
+@@ -1,6 +1,6 @@
+ /obj/item/cooking/pan
+-	name = "frypan"
+-	desc = "Two in one: Cook and smash heads."
++	name = "煎锅"
++	desc = "一物两用：既能烹饪，又能砸头。"
+ 	icon = 'modular/Neu_Food/icons/cookware/pan.dmi'
+ 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+ 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+-- 
+2.53.0
+
