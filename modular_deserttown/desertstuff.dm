@@ -74,8 +74,8 @@
 
 
 /obj/structure/fermentation_keg/sandpot
-	name = "sand pot"
-	desc = "A common clay pot used for storing and sometimes fermenting fluids. Favoured over wooden barrels in the desert of Zybantium due to the relative scarcity of wood."
+	name = "沙陶罐"
+	desc = "一种常见的黏土罐，用于储存，有时也用于发酵液体。在兹班提姆沙漠中，因木材相对稀缺，它比木桶更受欢迎。"
 	icon = 'modular_deserttown/icons/pots.dmi'
 	icon_state = "sandpot1"
 
