@@ -1,0 +1,30 @@
+From cda89490423c3adf4f178e143103ab92fdd13534 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:39:00 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B2=99=E9=99=B6=E7=BD=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertstuff.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modular_deserttown/desertstuff.dm b/modular_deserttown/desertstuff.dm
+index e834e04c84..7cf2b85591 100644
+--- a/modular_deserttown/desertstuff.dm
++++ b/modular_deserttown/desertstuff.dm
+@@ -74,8 +74,8 @@
+ 
+ 
+ /obj/structure/fermentation_keg/sandpot
+-	name = "sand pot"
+-	desc = "A common clay pot used for storing and sometimes fermenting fluids. Favoured over wooden barrels in the desert of Zybantium due to the relative scarcity of wood."
++	name = "沙陶罐"
++	desc = "一种常见的黏土罐，用于储存，有时也用于发酵液体。在兹班提姆沙漠中，因木材相对稀缺，它比木桶更受欢迎。"
+ 	icon = 'modular_deserttown/icons/pots.dmi'
+ 	icon_state = "sandpot1"
+ 
+-- 
+2.53.0
+
