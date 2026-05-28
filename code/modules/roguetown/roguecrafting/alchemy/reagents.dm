@@ -84,11 +84,11 @@
 	..()
 
 /datum/reagent/medicine/stampot
-	name = "Stamina Potion"
-	description = "Gradually regenerates stamina."
+	name = "耐力药水"
+	description = "逐渐恢复耐力。"
 	reagent_state = LIQUID
 	color = "#129c00"
-	taste_description = "sweet tea"
+	taste_description = "甜茶"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
