@@ -1,0 +1,30 @@
+From 7596faaeb48bfd310b51b875ffa7cd2be3c19be2 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:40:47 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9F=B3=E6=9D=A1=E7=AF=AE?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/crates_lockers/roguetown.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/structures/crates_lockers/roguetown.dm b/code/game/objects/structures/crates_lockers/roguetown.dm
+index eff522cee6..5fab712965 100644
+--- a/code/game/objects/structures/crates_lockers/roguetown.dm
++++ b/code/game/objects/structures/crates_lockers/roguetown.dm
+@@ -173,8 +173,8 @@
+ 	icon_state = "woodchest"
+ 
+ /obj/structure/closet/crate/chest/wicker
+-	name = "wicker basket"
+-	desc = "Fibers interwoven to make a cheap storage bin."
++	name = "柳条篮"
++	desc = "纤维编织而成的廉价储物箱。"
+ 	base_icon_state = "wicker"
+ 	icon_state = "wicker"
+ 	open_sound = 'sound/items/book_open.ogg'
+-- 
+2.53.0
+
