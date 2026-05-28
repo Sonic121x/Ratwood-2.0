@@ -1,0 +1,72 @@
+From ed20ed6947c521e7f2568a0cf424ceab218df11d Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:45:01 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=8F=A3=E7=B2=AE=E5=8C=85?=
+ =?UTF-8?q?=E8=A3=85=E7=BA=B8?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular/Neu_Food/code/cookware/ration.dm | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/modular/Neu_Food/code/cookware/ration.dm b/modular/Neu_Food/code/cookware/ration.dm
+index a98e439812..c7b13433df 100644
+--- a/modular/Neu_Food/code/cookware/ration.dm
++++ b/modular/Neu_Food/code/cookware/ration.dm
+@@ -3,9 +3,8 @@
+ // This is a flavorful way to provide more reasons for adventurers to buy from innkeep instead of doing their own raisins.
+ // FOR GODS SAKE DO NOT GIVE THIS ROUNDSTART TO ANYONE BUT INNKEEP ON MAP.
+ /obj/item/ration // Ration. Sprites and Concept by Pintlewaiver.
+-	name = "ration wrapping paper"
+-	desc = "A piece of paper greased with a thin layer of oil, used to wrap food and preserve it for a long journey. \
+-	The final size of the ration depends on the size of the original food item. The food will last as long as the ration is wrapped."
++	name = "口粮包装纸"
++	desc = "一张涂有薄层油脂的纸，用来包裹食物并长期保存以便于长途旅行。\
++	口粮的最终大小取决于原先食物的尺寸。只要包裹完好，食物就不会变质。"
+ 	icon = 'modular/Neu_food/icons/cookware/ration.dmi'
+ 	icon_state = "ration_wrapper"
+ 	w_class = WEIGHT_CLASS_TINY
+@@ -19,23 +18,23 @@
+ 	if(istype(I, /obj/item/reagent_containers/food/snacks))
+ 		var/obj/item/reagent_containers/food/snacks/F = I
+ 		if(food)
+-			to_chat(user, span_warning("There is already something wrapped in [src]."))
++			to_chat(user, span_warning("[src]里已经包裹了东西。"))
+ 			return
+ 		if(do_after(user, 2 SECONDS, target = src))
+ 			user.transferItemToLoc(F, src)
+ 			food = I
+-			to_chat(user, span_notice("You wrap [F] in the ration wrapper."))
++			to_chat(user, span_notice("你把[F]用口粮包装纸包了起来。"))
+ 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+ 			F.rotprocess = null
+ 			if(I.w_class >= WEIGHT_CLASS_NORMAL)
+-				name = "large ration pack ([food.name])"
+-				desc = "A large ration pack containing a [food.name]."
++				name = "大口粮包 ([food.name])"
++				desc = "一个包含[food.name]的大份口粮包。"
+ 				icon_state = "ration_large"
+ 				dropshrink = 1
+ 				// No need to change grid size cuz cakes are 1x1 huh??
+ 			else
+-				name = "small ration pack ([food.name])"
+-				desc = "A small ration pack containing a [food.name]."
++				name = "小口粮包 ([food.name])"
++				desc = "一个包含[food.name]的小份口粮包。"
+ 				icon_state = "ration_small"
+ 				dropshrink = 1
+ 			update_icon()
+@@ -44,7 +43,7 @@
+ 	. = ..()
+ 	if(food)
+ 		if(do_after(user, 2 SECONDS, target = src))
+-			to_chat(user, span_notice("You unwrap [food] from the ration wrapper."))
++			to_chat(user, span_notice("你从口粮包装纸中取出了[food]。"))
+ 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+ 			var/obj/item/reagent_containers/food/snacks/F = food
+ 			user.put_in_hands(F)
+-- 
+2.53.0
+
