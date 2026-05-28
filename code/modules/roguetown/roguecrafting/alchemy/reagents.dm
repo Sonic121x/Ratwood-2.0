@@ -5,11 +5,11 @@
 
 //Potions
 /datum/reagent/medicine/healthpot
-	name = "Health Potion"
-	description = "Gradually regenerates all types of damage."
+	name = "生命药水"
+	description = "逐渐恢复所有类型的伤害。"
 	reagent_state = LIQUID
 	color = "#ff0000"
-	taste_description = "lifeblood"
+	taste_description = "生命之血"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
