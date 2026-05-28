@@ -1,6 +1,6 @@
 /obj/item/storage/roguebag
-	name = "sack"
-	desc = "A sack of rough cloth meant for peasantry."
+	name = "麻袋"
+	desc = "一个粗布缝制的袋子，为平民百姓所用。"
 	icon_state = "cbag"
 	item_state = "cbag"
 	icon = 'icons/roguetown/items/misc.dmi'
@@ -18,7 +18,7 @@
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()
 	if(contents.len)
-		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
+		. += span_notice("麻袋里有 [contents.len] 件东西。")
 
 /obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
