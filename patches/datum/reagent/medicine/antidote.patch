@@ -1,0 +1,33 @@
+From 5ecbd99857730e6b004138e87e558f6584c2ad51 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:28:03 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=A7=A3=E6=AF=92=E5=89=82?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..352c322023 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -119,11 +119,11 @@
+  * Previously, antidote did not have a dylovene-like effect and just purged toxin damage while poison will outlast them.
+ **/
+ /datum/reagent/medicine/antidote
+-	name = "Antidote"
++	name = "解毒剂"
+ 	description = ""
+ 	reagent_state = LIQUID
+ 	color = "#00ff00"
+-	taste_description = "sickly sweet"
++	taste_description = "甜得发腻"
+ 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+ 
+ /datum/reagent/medicine/antidote/on_mob_life(mob/living/carbon/M)
+-- 
+2.53.0
+
