@@ -119,11 +119,11 @@
  * Previously, antidote did not have a dylovene-like effect and just purged toxin damage while poison will outlast them.
 **/
 /datum/reagent/medicine/antidote
-	name = "Antidote"
+	name = "解毒剂"
 	description = ""
 	reagent_state = LIQUID
 	color = "#00ff00"
-	taste_description = "sickly sweet"
+	taste_description = "甜得发腻"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 
 /datum/reagent/medicine/antidote/on_mob_life(mob/living/carbon/M)
