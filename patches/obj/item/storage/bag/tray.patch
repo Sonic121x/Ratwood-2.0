@@ -1,0 +1,32 @@
+From bb29317a94124cbd41fea8fa87f63c7cd6809c65 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:37:34 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=89=98=E7=9B=98?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/storage/bags.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/storage/bags.dm b/code/game/objects/items/storage/bags.dm
+index f0d3c58f42..b3d986bd40 100644
+--- a/code/game/objects/items/storage/bags.dm
++++ b/code/game/objects/items/storage/bags.dm
+@@ -5,10 +5,10 @@
+  * Trays - Agouri
+  *///wip
+ /obj/item/storage/bag/tray
+-	name = "tray"
++	name = "托盘"
+ 	icon = 'icons/obj/food/containers.dmi'
+ 	icon_state = "tray"
+-	desc = "A servant's most treasured helper, able to hold several platters of food, cutlery, bottles and cups. Don't trip!"
++	desc = "仆人们最为珍视的得力帮手，能盛放好几盘食物、餐具、瓶子和杯子。可别绊倒了！"
+ 	force = 5
+ 	throwforce = 10
+ 	throw_speed = 3
+-- 
+2.53.0
+
