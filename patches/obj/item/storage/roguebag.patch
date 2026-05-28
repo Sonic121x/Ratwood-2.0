@@ -1,0 +1,37 @@
+From b3db7c2444ff0241c45984492cf4d52bb3893461 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:42:34 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=BA=BB=E8=A2=8B?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/bags.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/bags.dm b/code/game/objects/items/rogueitems/bags.dm
+index 71455043b6..c4375a37a4 100644
+--- a/code/game/objects/items/rogueitems/bags.dm
++++ b/code/game/objects/items/rogueitems/bags.dm
+@@ -1,6 +1,6 @@
+ /obj/item/storage/roguebag
+-	name = "sack"
+-	desc = "A sack of rough cloth meant for peasantry."
++	name = "麻袋"
++	desc = "一个粗布缝制的袋子，为平民百姓所用。"
+ 	icon_state = "cbag"
+ 	item_state = "cbag"
+ 	icon = 'icons/roguetown/items/misc.dmi'
+@@ -18,7 +18,7 @@
+ /obj/item/storage/roguebag/examine(mob/user)
+ 	. = ..()
+ 	if(contents.len)
+-		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
++		. += span_notice("麻袋里有 [contents.len] 件东西。")
+ 
+ /obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot)
+ 	. = ..()
+-- 
+2.53.0
+
