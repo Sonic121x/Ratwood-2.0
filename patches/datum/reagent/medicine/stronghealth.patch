@@ -1,0 +1,34 @@
+From 457df547f3920b0e7ac6593379d5dc42c0b648c1 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Thu, 28 May 2026 18:23:34 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=BC=BA=E6=95=88=E7=94=9F?=
+ =?UTF-8?q?=E5=91=BD=E8=8D=AF=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..62f34928a7 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -32,10 +32,10 @@
+ 	..()
+ 
+ /datum/reagent/medicine/stronghealth
+-	name = "Strong Health Potion"
+-	description = "Quickly regenerates all types of damage."
++	name = "强效生命药水"
++	description = "快速恢复所有类型的伤害。"
+ 	color = "#820000"
+-	taste_description = "rich lifeblood"
++	taste_description = "浓郁的生命之血"
+ 	metabolization_rate = REAGENTS_METABOLISM * 3
+ 
+ /datum/reagent/medicine/stronghealth/on_mob_life(mob/living/carbon/M)
+-- 
+2.53.0
+
