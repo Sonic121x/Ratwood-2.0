@@ -5,10 +5,10 @@
  * Trays - Agouri
  *///wip
 /obj/item/storage/bag/tray
-	name = "tray"
+	name = "托盘"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray"
-	desc = "A servant's most treasured helper, able to hold several platters of food, cutlery, bottles and cups. Don't trip!"
+	desc = "仆人们最为珍视的得力帮手，能盛放好几盘食物、餐具、瓶子和杯子。可别绊倒了！"
 	force = 5
 	throwforce = 10
 	throw_speed = 3
