@@ -32,10 +32,10 @@
 	..()
 
 /datum/reagent/medicine/stronghealth
-	name = "Strong Health Potion"
-	description = "Quickly regenerates all types of damage."
+	name = "强效生命药水"
+	description = "快速恢复所有类型的伤害。"
 	color = "#820000"
-	taste_description = "rich lifeblood"
+	taste_description = "浓郁的生命之血"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/stronghealth/on_mob_life(mob/living/carbon/M)
