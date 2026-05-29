@@ -166,7 +166,7 @@
 	icon_state = base_state
 
 /obj/structure/roguewindow/harem1
-	name = "harem window"
+	name = "后庭窗"
 	icon_state = "harem1-solid"
 	base_state = "harem1-solid"
 	repair_costs = list(/obj/item/natural/glass, /obj/item/natural/glass)
