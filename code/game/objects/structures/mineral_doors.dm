@@ -1135,7 +1135,7 @@
 	lockdifficulty = 3
 
 /obj/structure/mineral_door/wood/donjon/tough
-	name = "tough reinforce door"
+	name = "tough reinforced door"
 	desc = "this one has a stronger lock than usual"
 	locked = TRUE
 	max_integrity = 2500

@@ -1,0 +1,4 @@
+author: "Jamdrawers"
+delete-after: True
+changes:
+  - bugfix: "rockhill harbor now counts as a 'town' area"
