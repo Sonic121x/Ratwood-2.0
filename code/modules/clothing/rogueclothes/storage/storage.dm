@@ -236,8 +236,8 @@
 	component_type = /datum/component/storage/concrete/roguetown/satchel
 
 /obj/item/storage/backpack/rogue/backpack
-	name = "backpack"
-	desc = "One of the best ways to carry many things while keeping your hands free."
+	name = "背包"
+	desc = "携带大量物品同时解放双手的最佳方式之一。"
 	icon_state = "backpack"
 	item_state = "backpack"
 	icon = 'icons/roguetown/clothing/storage.dmi'
