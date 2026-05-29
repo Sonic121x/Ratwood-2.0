@@ -1160,7 +1160,7 @@
 //bushes
 
 /obj/structure/flora/roguegrass/bush/jungle
-	name = "jungle bush"
+	name = "丛林灌木"
 	desc = ""
 	color = "#b9c4bd"
 	icon = 'icons/obj/flora/jungleflora.dmi'
