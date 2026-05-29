@@ -166,8 +166,8 @@
 	sewrepair = TRUE
 
 /obj/item/storage/backpack/rogue/satchel
-	name = "satchel"
-	desc = "Modest, easy on the shoulders, and holds a respectable amount."
+	name = "挎包"
+	desc = "朴素轻便，对肩膀友好，且容量可观。"
 	icon_state = "satchel"
 	item_state = "satchel"
 	icon = 'icons/roguetown/clothing/storage.dmi'
