@@ -863,7 +863,7 @@
 	..()
 
 /obj/structure/fluff/alch
-	name = "alchemical lab"
+	name = "炼金台"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "alch"
