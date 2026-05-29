@@ -18653,8 +18653,8 @@
 /area/rogue/indoors/town/dwarfin/desert)
 "hnV" = (
 /obj/structure/fluff/signage{
-	name = "Al Ashur - West";
-	dir = 8
+	name = "Al Ashur - East";
+	dir = 4
 	},
 /turf/open/floor/rogue/dunes,
 /area/rogue/outdoors/desert)
@@ -39735,10 +39735,6 @@
 /obj/structure/fluff/walldeco/vinez/red,
 /turf/closed/wall/mineral/rogue/sandstone,
 /area/rogue/outdoors/town/desert)
-"pOR" = (
-/obj/structure/chair/wood/zybantine,
-/turf/open/floor/rogue/sandbrick,
-/area/rogue/outdoors/desert)
 "pOW" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/cobble,
@@ -56049,10 +56045,6 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin/desert)
-"wjR" = (
-/obj/structure/chair/wood/rogue/throne/zybantine,
-/turf/open/floor/rogue/sandbrick,
-/area/rogue/outdoors/desert)
 "wjT" = (
 /obj/structure/bed/rogue/shit,
 /obj/effect/decal/cleanable/vomit/old,
@@ -394666,7 +394658,7 @@ adk
 adk
 adk
 adk
-pOR
+adk
 adk
 cRY
 cRY
@@ -395290,7 +395282,7 @@ adk
 adk
 adk
 adk
-wjR
+adk
 adk
 cRY
 cRY
