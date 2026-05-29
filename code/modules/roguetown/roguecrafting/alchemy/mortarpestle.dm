@@ -1,6 +1,6 @@
 /obj/item/pestle
-	name = "pestle"
-	desc = "A small, round-end stone tool oft used by physicians to crush and mix medicine."
+	name = "研杵"
+	desc = "一种小巧的、圆头石制工具，常被医师用来捣碎和混合药物。"
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "pestle"
 	force = 7
