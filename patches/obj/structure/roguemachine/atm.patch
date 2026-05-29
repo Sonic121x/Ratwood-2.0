@@ -1,0 +1,224 @@
+From 721ee6f5fff25209bcc737f2590e09918235eb7a Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 17:59:24 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=A5=9E=E7=BB=8F=E9=94=81?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguemachine/ATM.dm | 68 +++++++++++-----------
+ 1 file changed, 34 insertions(+), 34 deletions(-)
+
+diff --git a/code/modules/roguetown/roguemachine/ATM.dm b/code/modules/roguetown/roguemachine/ATM.dm
+index b302029408..d08e00a5e4 100644
+--- a/code/modules/roguetown/roguemachine/ATM.dm
++++ b/code/modules/roguetown/roguemachine/ATM.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/roguemachine/atm
+-	name = "nervelock"
+-	desc = "Stores and withdraws currency for accounts managed by the Grand Duchy of the vale."
++	name = "神经锁"
++	desc = "为谷地大公管理的账户存取货币。"
+ 	icon = 'icons/roguetown/misc/machines.dmi'
+ 	icon_state = "atm"
+ 	density = FALSE
+@@ -17,7 +17,7 @@
+ 		return
+ 	var/mob/living/carbon/human/H = user
+ 	if(HAS_TRAIT(user, TRAIT_OUTLAW))
+-		to_chat(H, span_warning("The machine rejects you, sensing your status as an outlaw in these lands."))
++		to_chat(H, span_warning("这台机器拒绝了你，它感应到你在这片土地上是法外之徒。"))
+ 		return
+ //Remove the comment on the below block to re-enable outsiders and such not having access.
+ //Mind that this makes it impossible for adventurers and the like to engage with quests.
+@@ -33,46 +33,46 @@
+ 			if(!HAS_TRAIT(H, TRAIT_COMMIE))
+ 				var/def_zone = "[(H.active_hand_index == 2) ? "r" : "l" ]_arm"
+ 				playsound(src, 'sound/items/beartrap.ogg', 100, TRUE)
+-				to_chat(user, "<font color='red'>The nervelock craves my Noble blood!</font>")
+-				loc.visible_message(span_warning("The nervelock locks onto [H]'s arm!"))
++				to_chat(user, "<font color='red'>神经锁渴望我的贵族之血！</font>")
++				loc.visible_message(span_warning("神经锁锁住了[H]的手臂！"))
+ 				H.Stun(80)
+ 				H.apply_damage(50, BRUTE, def_zone)
+ 				H.emote("agony")
+ 				spawn(5)
+-				say("Blueblood for the Freefolk!")
++				say("为自由民献上蓝血！")
+ 				playsound(src, 'sound/vo/mobs/ghost/laugh (5).ogg', 100, TRUE)
+ 				return
+ 	if(H in SStreasury.bank_accounts)
+ 		var/amt = SStreasury.bank_accounts[H]
+ 		if(!amt)
+-			say("Your balance is nothing.")
++			say("您的余额为零。")
+ 			return
+ 		if(amt < 0)
+-			say("Your balance is NEGATIVE.")
++			say("您的余额为负。")
+ 			return
+ 		var/list/choicez = list()
+ 		if(amt > 10)
+-			choicez += "GOLD"
++			choicez += "金"
+ 		if(amt > 5)
+-			choicez += "SILVER"
+-		choicez += "BRONZE"
+-		var/selection = input(user, "You have [amt] mammon in your account. Choose which currency you'd like to withdraw.", src) as null|anything in choicez
++			choicez += "银"
++		choicez += "铜"
++		var/selection = input(user, "你的账户中有 [amt] 玛门。选择你想提取的货币。", src) as null|anything in choicez
+ 		if(!selection)
+ 			return
+ 		amt = SStreasury.bank_accounts[H]
+ 		var/mod = 1
+-		if(selection == "GOLD")
++		if(selection == "金")
+ 			mod = 10
+-		if(selection == "SILVER")
++		if(selection == "银")
+ 			mod = 5
+-		var/coin_amt = input(user, "There is [SStreasury.treasury_value] mammon in the treasury, and [amt] mammon in your account. You may withdraw [floor(amt/mod)] [selection] COINS from your account.", src) as null|num
++		var/coin_amt = input(user, "国库中有 [SStreasury.treasury_value] 玛门，你的账户中有 [amt] 玛门。你可以提取 [floor(amt/mod)] 枚 [selection]币。", src) as null|num
+ 		coin_amt = round(coin_amt)
+ 		if(coin_amt < 1)
+ 			return
+ 		// checks the maximum coin limit before deducting balance; prevents stacks of >=20
+ 		var/max_coins = 20
+ 		if(coin_amt > max_coins)
+-			to_chat(user, span_warning("Maximum withdrawal limit exceeded. You can only withdraw up to [max_coins] coins at once."))
++			to_chat(user, span_warning("超过最大提款限额。你一次最多只能提取 [max_coins] 枚硬币。"))
+ 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+ 			return
+ 		amt = SStreasury.bank_accounts[H]
+@@ -87,7 +87,7 @@
+ 		record_round_statistic(STATS_MAMMONS_WITHDRAWN, coin_amt * mod)
+ 		budget2change(coin_amt*mod, user, selection)
+ 	else
+-		to_chat(user, span_warning("The machine bites my finger."))
++		to_chat(user, span_warning("这台机器咬了我的手指。"))
+ 		if(!drilled)
+ 			icon_state = "atm-b"
+ 		H.flash_fullscreen("redflash3")
+@@ -98,7 +98,7 @@
+ 			if(target_job && target_job.noble_income)
+ 				SStreasury.noble_incomes[H] = target_job.noble_income
+ 		spawn(5)
+-			say("New account created.")
++			say("新账户已创建。")
+ 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+ 
+ /*
+@@ -124,7 +124,7 @@
+ 				if(islist(deposit_results))
+ 					record_round_statistic(STATS_MAMMONS_DEPOSITED, deposit_results[1] - deposit_results[2])
+ 				if(deposit_results[2] != 0)
+-					say("Your deposit was taxed [deposit_results[2]] mammon.")
++					say("您的存款被征税 [deposit_results[2]] 玛门。")
+ 					record_featured_stat(FEATURED_STATS_TAX_PAYERS, H, deposit_results[2])
+ 					record_round_statistic(STATS_TAXES_COLLECTED, deposit_results[2])
+ 				qdel(P)
+@@ -134,26 +134,26 @@
+ 		if(istype(P, /obj/item/coveter))
+ 			var/mob/living/carbon/human/H = user
+ 			if(!HAS_TRAIT(H, TRAIT_COMMIE))
+-				to_chat(user, "<font color='red'>I don't know what I'm doing with this thing!</font>")
++				to_chat(user, "<font color='red'>我不知道该拿这东西怎么办！</font>")
+ 				return
+ 			var/can_anyone_know = FALSE
+ 			for(var/mob/living/carbon/human/HJ in GLOB.player_list)
+ 				if(HJ.job == "Steward" || HJ.job == "Grand Duke")
+ 					can_anyone_know = TRUE
+ 			if(!can_anyone_know)
+-				to_chat(user, span_info("There is no one important for the transaction to flow through."))
++				to_chat(user, span_info("没有重要人物来处理这笔交易。"))
+ 				return
+ 			if(SStreasury.treasury_value <50)
+-				to_chat(user, "<font color='red'>These fools are completely broke. We'll get nothing out of this...</font>")
++				to_chat(user, "<font color='red'>这些傻瓜彻底破产了。我们从中捞不到任何好处...</font>")
+ 				return
+ 			if(mammonsiphoned >499)
+-				to_chat(user, "<font color='red'>This one has already been siphoned dry...</font>")
++				to_chat(user, "<font color='red'>这台机器已经被榨干了...</font>")
+ 				return
+ 			else
+-				user.visible_message(span_warning("[user] is mounting the Crown onto the Nervelock!"))
++				user.visible_message(span_warning("[user]正在把王冠装到神经锁上！"))
+ 				if(do_after(user, 50))
+ 					if(!drilling)
+-						user.visible_message(span_warning("[user] mounts the Crown atop the Nervelock!"))
++						user.visible_message(span_warning("[user]把王冠装在了神经锁顶上！"))
+ 						icon_state = "atm_crown"
+ 						has_reported = FALSE
+ 						drilling = TRUE
+@@ -162,12 +162,12 @@
+ 						message_admins("[usr.key] has applied the Crustacean to a Nervelock.")
+ 						return
+ 		else
+-			say("No account found. Submit your fingers for inspection.")
++			say("未找到账户。请放入手指进行检查。")
+ 	return ..()
+ 
+ /obj/structure/roguemachine/atm/examine(mob/user)
+ 	. += ..()
+-	. += span_info("The current tax rate on deposits is [SStreasury.tax_value * 100] percent. Nobles exempt.")
++	. += span_info("目前存款税率为 [SStreasury.tax_value * 100]%。贵族免税。")
+ 
+ 
+ /obj/structure/roguemachine/atm/proc/drill(obj/structure/roguemachine/atm)
+@@ -175,7 +175,7 @@
+ 		return
+ 	if(SStreasury.treasury_value <50)
+ 		new /obj/item/coveter(loc)
+-		loc.visible_message(span_warning("The Crown grinds to a halt as the last of the treasury spills from the Nervelock!"))
++		loc.visible_message(span_warning("随着国库的最后一点钱从神经锁中涌出，王冠嘎然而止！"))
+ 		playsound(src, 'sound/misc/DrillDone.ogg', 70, TRUE)
+ 		icon_state = "atm"
+ 		drilling = FALSE
+@@ -183,7 +183,7 @@
+ 		return
+ 	if(mammonsiphoned >199) // The cap variable for siphoning.
+ 		new /obj/item/coveter(loc)
+-		loc.visible_message(span_warning("Maximum withdrawal reached! The Nervelock weeps."))
++		loc.visible_message(span_warning("达到最大提款限额！神经锁在哭泣。"))
+ 		playsound(src, 'sound/misc/DrillDone.ogg', 70, TRUE)
+ 		icon_state = "atm_broken"
+ 		drilled = TRUE
+@@ -191,28 +191,28 @@
+ 		has_reported = FALSE
+ 		return
+ 	else
+-		loc.visible_message(span_warning("A horrible scraping sound emanates from the Crown as it does its work..."))
++		loc.visible_message(span_warning("当王冠工作时，发出可怕的刮擦声..."))
+ 		if(!has_reported)
+ 			send_ooc_note("A parasite of the Freefolk is draining a Nervelock! Location: [location_tag ? location_tag : "Unknown"]", job = list("Grand Duke", "Steward", "Clerk"))
+ 			has_reported = TRUE
+ 		playsound(src, 'sound/misc/TheDrill.ogg', 70, TRUE)
+ 		spawn(100) // The time it takes to complete an interval. If you adjust this, please adjust the sound too. It's 'about' perfect at 100. Anything less It'll start overlapping.
+-			loc.visible_message(span_warning("The Nervelock spills its bounty!"))
++			loc.visible_message(span_warning("神经锁倾泻出它的赏金！"))
+ 			SStreasury.treasury_value -= 20 // Takes from the treasury
+ 			mammonsiphoned += 20
+-			budget2change(20, null, "SILVER")
++			budget2change(20, null, "银")
+ 			playsound(src, 'sound/misc/coindispense.ogg', 70, TRUE)
+ 			SStreasury.log_to_steward("-[20] exported mammon to the Freefolks!")
+ 			drill(src)
+ 
+ /obj/structure/roguemachine/atm/attack_right(mob/living/carbon/human/user)
+ 	if(drilling)
+-		to_chat(user,"<font color='yellow'>I begin dismounting the Crown from the Nervelock...</font>" )
++		to_chat(user,"<font color='yellow'>我开始从神经锁上卸下王冠...</font>" )
+ 		if(do_after(user, 30, src))
+ 			if(!drilling)
+ 				return
+ 			new /obj/item/coveter(loc)
+-			user.visible_message(span_warning("[user] dismounts the Crown!"))
++			user.visible_message(span_warning("[user]卸下了王冠！"))
+ 			icon_state = "atm"
+ 			drilling = !drilling
+ 	else
+-- 
+2.53.0
+
