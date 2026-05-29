@@ -1,0 +1,29 @@
+From d3ee4f3159814d6f90da2b2887360145b4571732 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:27:31 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B2=99=E6=BC=A0=E5=9D=90?=
+ =?UTF-8?q?=E5=9E=AB?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertstuff.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modular_deserttown/desertstuff.dm b/modular_deserttown/desertstuff.dm
+index e834e04c84..5640ba4032 100644
+--- a/modular_deserttown/desertstuff.dm
++++ b/modular_deserttown/desertstuff.dm
+@@ -41,7 +41,7 @@
+ 	icon_state = "desertcushion1"
+ 
+ /obj/item/cushion/desert2
+-	name = "desert cushion"
++	name = "沙漠坐垫"
+ 	icon = 'modular_deserttown/icons/cushions.dmi'
+ 	icon_state = "desertcushion2"
+ 
+-- 
+2.53.0
+
