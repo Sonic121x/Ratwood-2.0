@@ -1,0 +1,30 @@
+From 2d7a78ce693641acb638000787c5327786b16733 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:59:16 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=9A=AE=E5=B8=A6?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/storage/storage.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/storage/storage.dm b/code/modules/clothing/rogueclothes/storage/storage.dm
+index ab83383491..234def807f 100644
+--- a/code/modules/clothing/rogueclothes/storage/storage.dm
++++ b/code/modules/clothing/rogueclothes/storage/storage.dm
+@@ -39,8 +39,8 @@
+ 	..()	
+ 
+ /obj/item/storage/belt/rogue/leather
+-	name = "belt"
+-	desc = "A fine leather strap notched with holes for a buckle to secure itself."
++	name = "腰带"
++	desc = "一条优质皮带，上面打好了孔，用以扣合固定。"
+ 	icon_state = "leather"
+ 	item_state = "leather"
+ 	equip_sound = 'sound/blank.ogg'
+-- 
+2.53.0
+
