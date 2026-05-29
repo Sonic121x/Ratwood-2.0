@@ -1,0 +1,28 @@
+From 37364b6722b8bdf8a081dfc06f0ab627d448671d Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:09:32 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=A0=94=E6=9D=B5?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/mortarpestle.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/mortarpestle.dm b/code/modules/roguetown/roguecrafting/alchemy/mortarpestle.dm
+index fe062251f9..3a3dd70d1b 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/mortarpestle.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/mortarpestle.dm
+@@ -1,6 +1,6 @@
+ /obj/item/pestle
+-	name = "pestle"
+-	desc = "A small, round-end stone tool oft used by physicians to crush and mix medicine."
++	name = "研杵"
++	desc = "一种小巧的、圆头石制工具，常被医师用来捣碎和混合药物。"
+ 	icon = 'icons/roguetown/misc/alchemy.dmi'
+ 	icon_state = "pestle"
+ 	force = 7
+-- 
+2.53.0
+
