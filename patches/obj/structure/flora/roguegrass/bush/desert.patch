@@ -1,0 +1,28 @@
+From bcdbfc3fedc1bd9ec2e366f055a4ab1e5b308476 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 17:38:42 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B2=99=E7=BE=9A=E8=A7=92?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ modular_deserttown/desertstuff.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modular_deserttown/desertstuff.dm b/modular_deserttown/desertstuff.dm
+index e834e04c84..d0d253d1f9 100644
+--- a/modular_deserttown/desertstuff.dm
++++ b/modular_deserttown/desertstuff.dm
+@@ -344,7 +344,7 @@
+ //bush
+ 
+ /obj/structure/flora/roguegrass/bush/desert
+-	name = "saigahorn"
++	name = "沙羚角"
+ 	desc = ""
+ 	icon = 'modular_deserttown/icons/flora.dmi'
+ 	icon_state = "saigahorn1"
+-- 
+2.53.0
+

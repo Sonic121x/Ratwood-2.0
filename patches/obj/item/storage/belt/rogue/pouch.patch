@@ -1,0 +1,28 @@
+From 5ecec6c751b2ec67f369a7abf6ff9e0bc409146b Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:53:52 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=9D=9F=E5=8F=A3=E8=A2=8B?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/storage/pouch.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/storage/pouch.dm b/code/modules/clothing/rogueclothes/storage/pouch.dm
+index dceac10ad5..76ded67702 100644
+--- a/code/modules/clothing/rogueclothes/storage/pouch.dm
++++ b/code/modules/clothing/rogueclothes/storage/pouch.dm
+@@ -1,6 +1,6 @@
+ /obj/item/storage/belt/rogue/pouch
+-	name = "pouch"
+-	desc = "A small sack with a drawstring that allows it to be worn around the neck. Or at the hips, provided you have a belt."
++	name = "束口袋"
++	desc = "一个带拉绳的小袋子，可以挂在脖子上。如果有腰带，也可以挂在腰间。"
+ 	icon = 'icons/roguetown/clothing/storage.dmi'
+ 	mob_overlay_icon = null
+ 	icon_state = "pouch"
+-- 
+2.53.0
+

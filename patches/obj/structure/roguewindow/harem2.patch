@@ -1,0 +1,28 @@
+From 3d8dc9b082f3233e8815d50a89e61027a53f5a7e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:20:37 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=90=8E=E5=BA=AD=E7=AA=97?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguewindow.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/roguewindow.dm b/code/game/objects/structures/roguewindow.dm
+index fa60a1c4d9..de8d800b02 100644
+--- a/code/game/objects/structures/roguewindow.dm
++++ b/code/game/objects/structures/roguewindow.dm
+@@ -172,7 +172,7 @@
+ 	repair_costs = list(/obj/item/natural/glass, /obj/item/natural/glass)
+ 
+ /obj/structure/roguewindow/harem2
+-	name = "harem window"
++	name = "后庭窗"
+ 	icon_state = "harem2-solid"
+ 	base_state = "harem2-solid"
+ 	opacity = TRUE
+-- 
+2.53.0
+

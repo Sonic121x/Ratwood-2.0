@@ -1,0 +1,30 @@
+From 5c45012785feb32ae7159c28295ce7debb78b2da Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:30:13 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=83=8C=E5=8C=85?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/storage/storage.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/storage/storage.dm b/code/modules/clothing/rogueclothes/storage/storage.dm
+index ab83383491..e842c2c65a 100644
+--- a/code/modules/clothing/rogueclothes/storage/storage.dm
++++ b/code/modules/clothing/rogueclothes/storage/storage.dm
+@@ -236,8 +236,8 @@
+ 	component_type = /datum/component/storage/concrete/roguetown/satchel
+ 
+ /obj/item/storage/backpack/rogue/backpack
+-	name = "backpack"
+-	desc = "One of the best ways to carry many things while keeping your hands free."
++	name = "背包"
++	desc = "携带大量物品同时解放双手的最佳方式之一。"
+ 	icon_state = "backpack"
+ 	item_state = "backpack"
+ 	icon = 'icons/roguetown/clothing/storage.dmi'
+-- 
+2.53.0
+

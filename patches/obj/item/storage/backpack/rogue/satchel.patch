@@ -1,0 +1,30 @@
+From acaa8d896fc4b795f4a660359b47c195e7de0418 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:31:41 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=8C=8E=E5=8C=85?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/clothing/rogueclothes/storage/storage.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/clothing/rogueclothes/storage/storage.dm b/code/modules/clothing/rogueclothes/storage/storage.dm
+index ab83383491..084e4b5cf7 100644
+--- a/code/modules/clothing/rogueclothes/storage/storage.dm
++++ b/code/modules/clothing/rogueclothes/storage/storage.dm
+@@ -166,8 +166,8 @@
+ 	sewrepair = TRUE
+ 
+ /obj/item/storage/backpack/rogue/satchel
+-	name = "satchel"
+-	desc = "Modest, easy on the shoulders, and holds a respectable amount."
++	name = "挎包"
++	desc = "朴素轻便，对肩膀友好，且容量可观。"
+ 	icon_state = "satchel"
+ 	item_state = "satchel"
+ 	icon = 'icons/roguetown/clothing/storage.dmi'
+-- 
+2.53.0
+

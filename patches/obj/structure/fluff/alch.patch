@@ -1,0 +1,28 @@
+From 00e55f71cdd99b92a4b0b5b5580e422edda4ebd2 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:07:57 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=82=BC=E9=87=91=E5=8F=B0?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/fluff.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/fluff.dm b/code/game/objects/structures/fluff.dm
+index 9c082a99c0..55817f1fe8 100644
+--- a/code/game/objects/structures/fluff.dm
++++ b/code/game/objects/structures/fluff.dm
+@@ -854,7 +854,7 @@
+ 	..()
+ 
+ /obj/structure/fluff/alch
+-	name = "alchemical lab"
++	name = "炼金台"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "alch"
+-- 
+2.53.0
+

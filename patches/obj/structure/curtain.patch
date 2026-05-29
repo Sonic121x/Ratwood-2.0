@@ -1,0 +1,26 @@
+From e04648c70f6f7bf24371fb7520b3a99e5c554e18 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:17:23 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=B8=98=E5=AD=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/curtain.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/curtain.dm b/code/game/objects/structures/curtain.dm
+index ef1fef0e66..028348f175 100644
+--- a/code/game/objects/structures/curtain.dm
++++ b/code/game/objects/structures/curtain.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/curtain
+-	name = "curtain"
++	name = "帘子"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	var/icon_type = "curtain" // used in making the icon state
+-- 
+2.53.0
+

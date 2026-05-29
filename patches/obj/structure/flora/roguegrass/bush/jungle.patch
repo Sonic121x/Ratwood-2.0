@@ -1,0 +1,29 @@
+From 64595035a94c8280cdd69ee84b34c19e53b70062 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 17:51:48 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E4=B8=9B=E6=9E=97=E7=81=8C?=
+ =?UTF-8?q?=E6=9C=A8?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/structures/roguetown/rogueflora.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/game/objects/structures/roguetown/rogueflora.dm b/code/game/objects/structures/roguetown/rogueflora.dm
+index 684c21c27d..4fb720a1d7 100644
+--- a/code/game/objects/structures/roguetown/rogueflora.dm
++++ b/code/game/objects/structures/roguetown/rogueflora.dm
+@@ -1229,7 +1229,7 @@
+ //bushes
+ 
+ /obj/structure/flora/roguegrass/bush/jungle
+-	name = "jungle bush"
++	name = "丛林灌木"
+ 	desc = ""
+ 	color = "#b9c4bd"
+ 	icon = 'icons/obj/flora/jungleflora.dmi'
+-- 
+2.53.0
+
