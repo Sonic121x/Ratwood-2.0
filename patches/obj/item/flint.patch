@@ -1,0 +1,28 @@
+From e717a6bd691eaeb129982092e76f7eba2245b784 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Fri, 29 May 2026 18:15:02 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=89=93=E7=81=AB=E7=9F=B3?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/flintsparker.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/flintsparker.dm b/code/game/objects/items/rogueitems/flintsparker.dm
+index befbe4f826..3accc7c17e 100644
+--- a/code/game/objects/items/rogueitems/flintsparker.dm
++++ b/code/game/objects/items/rogueitems/flintsparker.dm
+@@ -1,6 +1,6 @@
+ /obj/item/flint
+-	name = "flint sparker"
+-	desc = "A piece of flint and an iron striker, witness to the dances of fire and stone."
++	name = "打火石"
++	desc = "一块燧石和一根铁制打火器，见证了火与石的共舞。"
+ 	icon_state = "flint"
+ 	gripped_intents = null
+ 	//dropshrink = 0.75
+-- 
+2.53.0
+
