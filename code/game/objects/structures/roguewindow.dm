@@ -172,7 +172,7 @@
 	repair_costs = list(/obj/item/natural/glass, /obj/item/natural/glass)
 
 /obj/structure/roguewindow/harem2
-	name = "harem window"
+	name = "后庭窗"
 	icon_state = "harem2-solid"
 	base_state = "harem2-solid"
 	opacity = TRUE
