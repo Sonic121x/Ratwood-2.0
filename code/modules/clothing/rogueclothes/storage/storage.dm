@@ -39,8 +39,8 @@
 	..()	
 
 /obj/item/storage/belt/rogue/leather
-	name = "belt"
-	desc = "A fine leather strap notched with holes for a buckle to secure itself."
+	name = "腰带"
+	desc = "一条优质皮带，上面打好了孔，用以扣合固定。"
 	icon_state = "leather"
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
