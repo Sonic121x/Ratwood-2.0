@@ -1,17 +1,20 @@
-From 97620dacdee2422609b51f5008dd42c94b74976d Mon Sep 17 00:00:00 2001
-From: unknown <ALTFFT@163.COM>
-Date: Thu, 21 May 2026 19:33:20 +0800
-Subject: [PATCH] AAA
+From 7989f25529cbf1db7cc45a00f4cabe911c03cd29 Mon Sep 17 00:00:00 2001
+From: Sonic121x <ALTFFT@163.com>
+Date: Fri, 29 May 2026 15:00:08 +0800
+Subject: [PATCH] =?UTF-8?q?Preference=E7=BF=BB=E8=AF=91=E6=9B=B4=E6=96=B0?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 ---
- code/modules/client/preferences.dm | 916 ++++++++++++++---------------
- 1 file changed, 458 insertions(+), 458 deletions(-)
+ code/modules/client/preferences.dm | 918 ++++++++++++++---------------
+ 1 file changed, 459 insertions(+), 459 deletions(-)
 
 diff --git a/code/modules/client/preferences.dm b/code/modules/client/preferences.dm
-index a1e222692c..09d28e7ccc 100644
+index 5b40e4b11f..6e206bca3a 100644
 --- a/code/modules/client/preferences.dm
 +++ b/code/modules/client/preferences.dm
-@@ -456,35 +456,35 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -461,35 +461,35 @@ GLOBAL_LIST_EMPTY(chosen_names)
  	var/used_title
  	switch(current_tab)
  		if (0) // Character Settings#
@@ -54,7 +57,7 @@ index a1e222692c..09d28e7ccc 100644
  			dat += "</td>"
  
  			dat += "<td style='width:33%;text-align:right'>"
-@@ -494,19 +494,19 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -499,19 +499,19 @@ GLOBAL_LIST_EMPTY(chosen_names)
  			// ANOTHER ROW HOLY SHIT WE FINALLY A GOD DAMN GRID NOW! WHOA!
  			dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
  			dat += "<td style='width:33%; text-align:left'>"
@@ -80,7 +83,7 @@ index a1e222692c..09d28e7ccc 100644
  
  			// Encapsulating table
  			dat += "<table width = '100%'>"
-@@ -516,51 +516,51 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -521,51 +521,51 @@ GLOBAL_LIST_EMPTY(chosen_names)
  			dat += "<td width=40% valign='top'>"
  
  // 			-----------START OF IDENT TABLE-----------
@@ -153,7 +156,7 @@ index a1e222692c..09d28e7ccc 100644
  			if(length(pref_species.custom_selection))
  				var/race_bonus_display
  				if(race_bonus)
-@@ -568,7 +568,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -573,7 +573,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
  						if(pref_species.custom_selection[bonus] == race_bonus)
  							race_bonus_display = bonus
  							break
@@ -162,7 +165,7 @@ index a1e222692c..09d28e7ccc 100644
  			else
  				race_bonus = null
  				dat += "<BR>"
-@@ -579,26 +579,26 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -584,26 +584,26 @@ GLOBAL_LIST_EMPTY(chosen_names)
  			if(!(AGENDER in pref_species.species_traits))
  				var/dispGender
  				if(gender == MALE)
@@ -202,7 +205,7 @@ index a1e222692c..09d28e7ccc 100644
  
  //			dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
  //			if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-@@ -613,21 +613,21 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -618,21 +618,21 @@ GLOBAL_LIST_EMPTY(chosen_names)
  					virtuetwo = GLOB.virtues[/datum/virtue/none]
  			if(statpack.name != "Virtuous")
  				virtuetwo = GLOB.virtues[/datum/virtue/none]
@@ -233,7 +236,7 @@ index a1e222692c..09d28e7ccc 100644
  
  /*
  			dat += "<br><br><b>Special Names:</b><BR>"
-@@ -648,12 +648,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -653,12 +653,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
  */
  			var/datum/bark/B = GLOB.bark_list[bark_id]
  			dat += "<br>"
@@ -252,7 +255,7 @@ index a1e222692c..09d28e7ccc 100644
  			dat += "</td>"
  			dat += "</tr></table>"
  // 			-----------END OF IDENT TABLE-----------
-@@ -667,65 +667,65 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -672,65 +672,65 @@ GLOBAL_LIST_EMPTY(chosen_names)
  				if(job_preferences[job] > highest_pref)
  					highest_pref = SSjob.GetJob(job)
  			if(!isnull(highest_pref) && !istype(highest_pref, /datum/job/roguetown/jester))
@@ -349,7 +352,7 @@ index a1e222692c..09d28e7ccc 100644
  
  			dat += "</td>"
  
-@@ -736,11 +736,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -741,11 +741,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
  			dat += "</table>"
  
  		if (1) // Game Preferences
@@ -364,7 +367,7 @@ index a1e222692c..09d28e7ccc 100644
  //			dat += "<b>tgui Style:</b> <a href='?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy" : "No Frills"]</a><br>"
  //			dat += "<b>Show Runechat Chat Bubbles:</b> <a href='?_src_=prefs;preference=chat_on_map'>[chat_on_map ? "Enabled" : "Disabled"]</a><br>"
  //			dat += "<b>Runechat message char limit:</b> <a href='?_src_=prefs;preference=max_chat_length;task=input'>[max_chat_length]</a><br>"
-@@ -787,7 +787,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -792,7 +792,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
  			dat += "<b>Income Updates:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
  			dat += "<br>"
  */
@@ -373,7 +376,7 @@ index a1e222692c..09d28e7ccc 100644
  /*
  			dat += "<b>Parallax (Fancy Space):</b> <a href='?_src_=prefs;preference=parallaxdown' oncontextmenu='window.location.href=\"?_src_=prefs;preference=parallaxup\";return false;'>"
  			switch (parallax)
-@@ -831,25 +831,25 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -836,25 +836,25 @@ GLOBAL_LIST_EMPTY(chosen_names)
  
  			dat += "</td><td width='300px' height='300px' valign='top'>"
  
@@ -404,7 +407,7 @@ index a1e222692c..09d28e7ccc 100644
  //			dat += "<br>"
  //			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
  			dat += "</td></tr></table>"
-@@ -857,65 +857,65 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -862,65 +862,65 @@ GLOBAL_LIST_EMPTY(chosen_names)
  		if(2) //OOC Preferences
  			used_title = "ooc"
  			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -494,7 +497,7 @@ index a1e222692c..09d28e7ccc 100644
  			// Create an inverted list of keybindings -> key
  			var/list/user_binds = list()
  			for (var/key in key_bindings)
-@@ -946,26 +946,26 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -951,26 +951,26 @@ GLOBAL_LIST_EMPTY(chosen_names)
  							bound_key = user_binds[kb.name][bound_key_index]
  							dat += " | <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
  						if(length(user_binds[kb.name]) < MAX_KEYS_PER_KEYBIND)
@@ -527,7 +530,7 @@ index a1e222692c..09d28e7ccc 100644
  	dat += "</td>"
  	dat += "<td width='33%' align='center'>"
  	var/mob/dead/new_player/N = user
-@@ -974,25 +974,25 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -979,25 +979,25 @@ GLOBAL_LIST_EMPTY(chosen_names)
  		if(SSticker.current_state <= GAME_STATE_PREGAME)
  			switch(N.ready)
  				if(PLAYER_NOT_READY)
@@ -563,7 +566,7 @@ index a1e222692c..09d28e7ccc 100644
  	dat += "</td>"
  	dat += "</tr>"
  	dat += "</table>"
-@@ -1000,7 +1000,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1005,7 +1005,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
  
  
  	if(user.client?.is_new_player())
@@ -572,7 +575,7 @@ index a1e222692c..09d28e7ccc 100644
  
  	winshow(user, "preferencess_window", TRUE)
  	winset(user, "preferencess_window", "size=820x850")
-@@ -1017,7 +1017,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1022,7 +1022,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
  
  /datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, old_key)
  	var/HTML = {"
@@ -581,7 +584,7 @@ index a1e222692c..09d28e7ccc 100644
  	<script>
  	var deedDone = false;
  	document.onkeyup = function(e) {
-@@ -1044,12 +1044,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1049,12 +1049,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
  	</script>
  	"}
  	winshow(user, "capturekeypress", TRUE)
@@ -596,7 +599,7 @@ index a1e222692c..09d28e7ccc 100644
  	if(!SSjob)
  		return
  
-@@ -1063,16 +1063,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1068,16 +1068,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
  	var/HTML = "<center>"
  	if(SSjob.occupations.len <= 0)
  //		HTML += "The job SSticker is not yet finished creating jobs, please try again later"
@@ -617,7 +620,7 @@ index a1e222692c..09d28e7ccc 100644
  		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
  		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
  		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
-@@ -1106,23 +1106,23 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1111,23 +1111,23 @@ GLOBAL_LIST_EMPTY(chosen_names)
  				used_name = "[job.f_title]"
  			lastJob = job
  			if(is_banned_from(user.ckey, rank))
@@ -646,7 +649,7 @@ index a1e222692c..09d28e7ccc 100644
  				continue
  			if(length(job.virtue_restrictions) && length(job.vice_restrictions))
  				var/name
-@@ -1143,7 +1143,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1148,7 +1148,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
  						else
  							name = vice.name
  				if(!isnull(name))
@@ -655,7 +658,7 @@ index a1e222692c..09d28e7ccc 100644
  			if(length(job.virtue_restrictions))
  				var/name
  				if(virtue.type in job.virtue_restrictions)
-@@ -1155,7 +1155,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1160,7 +1160,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
  					else
  						name = virtuetwo.name
  				if(!isnull(name))
@@ -664,7 +667,7 @@ index a1e222692c..09d28e7ccc 100644
  					continue
  			if(length(job.vice_restrictions))
  				var/list/restricted_vices = list()
-@@ -1164,7 +1164,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
+@@ -1169,7 +1169,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
  					if(vice?.type in job.vice_restrictions)
  						restricted_vices += vice.name
  				if(length(restricted_vices))
@@ -673,7 +676,7 @@ index a1e222692c..09d28e7ccc 100644
  					continue
  			var/job_unavailable = JOB_AVAILABLE
  			if(isnewplayer(parent?.mob))
-@@ -1238,7 +1238,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1243,7 +1243,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  			switch(job_preferences[job.title])
  				if(JP_HIGH)
@@ -682,7 +685,7 @@ index a1e222692c..09d28e7ccc 100644
  					prefLevelColor = "slateblue"
  					prefUpperLevel = 4
  					prefLowerLevel = 2
-@@ -1246,17 +1246,17 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1251,17 +1251,17 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					if(istype(P))
  						P.topjob = job.title
  				if(JP_MEDIUM)
@@ -703,7 +706,7 @@ index a1e222692c..09d28e7ccc 100644
  					prefLevelColor = "red"
  					prefUpperLevel = 3
  					prefLowerLevel = 1
-@@ -1287,12 +1287,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1292,12 +1292,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  //			message = "Return to lobby if preferences unavailable"
  //		HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>[message]</a></center>"
  		if(user.client.prefs.lastclass)
@@ -719,7 +722,7 @@ index a1e222692c..09d28e7ccc 100644
  	popup.set_window_options("can_close=0")
  	popup.set_content(HTML)
  	popup.open(FALSE)
-@@ -1343,7 +1343,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1348,7 +1348,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  			var/used_name = job.display_title || job.title
  			if((pronouns == SHE_HER || pronouns == THEY_THEM_F) && job.f_title)
  				used_name = "[job.f_title]"
@@ -728,7 +731,7 @@ index a1e222692c..09d28e7ccc 100644
  			jpval = JP_LOW
  	#endif
  
-@@ -1360,15 +1360,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1365,15 +1365,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  	if(user.client?.prefs)
  		if(!user.client.prefs.lastclass)
  			return
@@ -747,12 +750,12 @@ index a1e222692c..09d28e7ccc 100644
  				return
  			user.adjust_triumphs(-2)
  			user.client.prefs.lastclass = null
-@@ -1390,12 +1390,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1398,12 +1398,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  	dat += "<style>label { display: inline-block; width: 200px; }</style><body>"
  
--	dat += "<center><a href='?_src_=prefs;preference=keybinds;task=close'>Done</a></center><br>"
-+	dat += "<center><a href='?_src_=prefs;preference=keybinds;task=close'>完成</a></center><br>"
+-	dat += "<center><a href='?_src_=prefs;preference=keybinds;task=close;return_to_prefs=[return_flag]'>Done</a></center><br>"
++	dat += "<center><a href='?_src_=prefs;preference=keybinds;task=close;return_to_prefs=[return_flag]'>完成</a></center><br>"
  	for (var/category in kb_categories)
  		for (var/i in kb_categories[category])
  			var/datum/keybinding/kb = i
@@ -762,7 +765,7 @@ index a1e222692c..09d28e7ccc 100644
  //						var/list/default_keys = hotkeys ? kb.hotkey_keys : kb.classic_keys
  //						if(LAZYLEN(default_keys))
  //							dat += "| Default: [default_keys.Join(", ")]"
-@@ -1407,14 +1407,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1415,14 +1415,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					bound_key = user_binds[kb.name][bound_key_index]
  					dat += " | <a href ='?_src_=prefs;preference=keybinds;task=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
  				if(length(user_binds[kb.name]) < MAX_KEYS_PER_KEYBIND)
@@ -780,7 +783,7 @@ index a1e222692c..09d28e7ccc 100644
  	popup.set_window_options("can_close=0")
  	popup.set_content(dat.Join())
  	popup.open(FALSE)
-@@ -1424,31 +1424,31 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1432,31 +1432,31 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  	dat += "<style>label { display: inline-block; width: 200px; }</style><body>"
  
@@ -818,7 +821,7 @@ index a1e222692c..09d28e7ccc 100644
  	popup.set_window_options("can_close=0")
  	popup.set_content(dat.Join())
  	popup.open(FALSE)
-@@ -1482,10 +1482,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1490,10 +1490,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  			ban_details = i
  			break //we only want to get the most recent ban's details
  		if(ban_details && ban_details.len)
@@ -832,7 +835,7 @@ index a1e222692c..09d28e7ccc 100644
  			return
  	if(href_list["preference"] == "job")
  		switch(href_list["task"])
-@@ -1556,9 +1556,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1564,9 +1564,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  	else if(href_list["preference"] == "agevet")
  		if(!user.check_agevet())
@@ -844,7 +847,7 @@ index a1e222692c..09d28e7ccc 100644
  
  	else if(href_list["preference"] == "culinary")
  		show_culinary_ui(user)
-@@ -1650,11 +1650,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1661,11 +1661,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  				SetKeybinds(user)
  
  			if("keybindings_reset")
@@ -852,14 +855,14 @@ index a1e222692c..09d28e7ccc 100644
 -				if(choice == "Cancel")
 +				var/choice = tgalert(user, "您真的想要重置按键绑定吗？", "设置按键绑定", "确认", "取消")
 +				if(choice == "取消")
- 					ShowChoices(user,3)
+ 					SetKeybinds(user)
  					return
 -				hotkeys = (choice == "Do It")
 +				hotkeys = (choice == "确认")
  				key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
  				user.client.update_movement_keys()
  				SetKeybinds(user)
-@@ -1709,17 +1709,17 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1720,17 +1720,17 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  			switch(href_list["preference"])
  				if("ghostform")
  					if(unlock_content)
@@ -880,7 +883,7 @@ index a1e222692c..09d28e7ccc 100644
  					switch(new_ghost_accs)
  						if(GHOST_ACCS_FULL_NAME)
  							ghost_accs = GHOST_ACCS_FULL
-@@ -1729,7 +1729,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1740,7 +1740,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  							ghost_accs = GHOST_ACCS_NONE
  
  				if("ghostothers")
@@ -889,7 +892,7 @@ index a1e222692c..09d28e7ccc 100644
  					switch(new_ghost_others)
  						if(GHOST_OTHERS_THEIR_SETTING_NAME)
  							ghost_others = GHOST_OTHERS_THEIR_SETTING
-@@ -1739,39 +1739,39 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1750,39 +1750,39 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  							ghost_others = GHOST_OTHERS_SIMPLE
  
  				if("name")
@@ -937,7 +940,7 @@ index a1e222692c..09d28e7ccc 100644
  							preview_subclass = choices[new_choice]
  							update_preview_icon()
  						else
-@@ -1784,7 +1784,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1795,7 +1795,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  //						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
  
  				if("age")
@@ -946,7 +949,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_age)
  						age = new_age
  						var/list/hairs
-@@ -1797,68 +1797,68 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1808,68 +1808,68 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						// LETHALSTONE EDIT: let players know what this shit does stats-wise
  						switch (age)
  							if (AGE_ADULT)
@@ -1032,7 +1035,7 @@ index a1e222692c..09d28e7ccc 100644
  
  				if("origin")
  					open_origin_map(user)
-@@ -1871,12 +1871,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1882,12 +1882,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						if(!faith.name)
  							continue
  						faiths_named[faith.name] = faith
@@ -1049,7 +1052,7 @@ index a1e222692c..09d28e7ccc 100644
  						selected_patron = GLOB.patronlist[faith.godhead] || GLOB.patronlist[pick(GLOB.patrons_by_faith[faith_input])]
  
  				if("patron")
-@@ -1888,42 +1888,42 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1899,49 +1899,49 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						if(patron.disabled_patron)
  							continue
  						patrons_named[patron.name] = patron
@@ -1081,12 +1084,20 @@ index a1e222692c..09d28e7ccc 100644
 +						该音乐受您的职业、反派状态或某些事件影响。\n\
 +						您可以稍后通过选项选项卡中的“战斗模式音乐”进行更改。\"</span>")
  						combat_music_helptext_shown = TRUE
--					var/track_select = tgui_input_list(user, "To you, the Signal sounds like:", "COMBAT MUSIC", GLOB.cmode_tracks_by_name, combat_music?.name)
-+					var/track_select = tgui_input_list(user, "对您而言，信号听起来像：", "战斗音乐", GLOB.cmode_tracks_by_name, combat_music?.name)
- 					if(track_select)
- 						combat_music = GLOB.cmode_tracks_by_name[track_select]
--						to_chat(user, span_notice("Selected track: <b>[track_select]</b>."))
-+						to_chat(user, span_notice("已选择曲目：<b>[track_select]</b>。"))
+ 					var/client/C = user?.client
+ 					if(!C)
+ 						return
+ 					var/datum/combat_music/selected_track = C.pick_combat_music_with_listen(
+-						"To you, the Signal sounds like:",
+-						"COMBAT MUSIC",
++						"对您而言，信号听起来像：",
++						"战斗音乐",
+ 						combat_music?.name,
+ 					)
+ 					if(selected_track)
+ 						combat_music = selected_track
+-						to_chat(user, span_notice("Selected track: <b>[selected_track.name]</b>."))
++						to_chat(user, span_notice("已选择曲目： <b>[selected_track.name]</b>."))
  						if(combat_music.desc)
  							to_chat(user, "<i>[combat_music.desc]</i>")
  						if(combat_music.credits)
@@ -1109,7 +1120,7 @@ index a1e222692c..09d28e7ccc 100644
  							return
  						voice_color = sanitize_hexcolor(new_voice)
  
-@@ -1944,16 +1944,16 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1962,16 +1962,16 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						/datum/language/aavnic,
  						/datum/language/merar
  					)
@@ -1129,7 +1140,7 @@ index a1e222692c..09d28e7ccc 100644
  							extra_language = "None"
  						else
  							extra_language = choices[chosen_language]
-@@ -1961,25 +1961,25 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -1979,25 +1979,25 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  				if("race_title")
  					var/list/titles = pref_species.race_titles
@@ -1160,7 +1171,7 @@ index a1e222692c..09d28e7ccc 100644
  							return
  						voice_pitch = new_voice_pitch
  
-@@ -1994,7 +1994,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2012,7 +2012,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  							if(!allowed.Find(user.client.ckey))
  								continue
  						woof_woof[initial(B.name)] = initial(B.id)
@@ -1169,7 +1180,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_bork)
  						bark_id = woof_woof[new_bork]
  						var/datum/bark/B = GLOB.bark_list[bark_id] //Now we need sanitization to take into account bark-specific min/max values
-@@ -2004,25 +2004,25 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2022,25 +2022,25 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  				if("barkspeed")
  					var/datum/bark/B = GLOB.bark_list[bark_id]
@@ -1199,7 +1210,7 @@ index a1e222692c..09d28e7ccc 100644
  						return
  					if(!COOLDOWN_FINISHED(src, bark_previewing))
  						return
-@@ -2038,15 +2038,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2056,15 +2056,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					QDEL_IN(barkbox, total_delay)
  
  				if("highlight_color")
@@ -1220,7 +1231,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_headshot_link == null)
  						return
  					if(new_headshot_link == "")
-@@ -2058,40 +2058,40 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2076,40 +2076,40 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						ShowChoices(user)
  						return
  					headshot_link = new_headshot_link
@@ -1282,7 +1293,7 @@ index a1e222692c..09d28e7ccc 100644
  					dat += "<br>"
  					for(var/tone in pref_species.get_skin_list_tooltip())
  						dat += "[tone]<br>"
-@@ -2099,8 +2099,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2117,8 +2117,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					popup.set_content(dat.Join())
  					popup.open(FALSE)
  				if("flavortext")
@@ -1293,7 +1304,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_flavortext == null)
  						return
  					if(new_flavortext == "")
-@@ -2108,11 +2108,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2126,11 +2126,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						ShowChoices(user)
  						return
  					flavortext = new_flavortext
@@ -1309,7 +1320,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_ooc_notes == null)
  						return
  					if(new_ooc_notes == "")
-@@ -2120,12 +2120,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2138,12 +2138,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						ShowChoices(user)
  						return
  					ooc_notes = new_ooc_notes
@@ -1326,7 +1337,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_rumour == null)
  						return
  					if(new_rumour == "")
-@@ -2133,16 +2133,16 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2151,16 +2151,16 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						ShowChoices(user)
  						return
  					if(length(new_rumour) > 400)
@@ -1348,7 +1359,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_gossip == null)
  						return
  					if(new_gossip == "")
-@@ -2150,56 +2150,56 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2168,56 +2168,56 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						ShowChoices(user)
  						return
  					if(length(new_gossip) > 400)
@@ -1426,7 +1437,7 @@ index a1e222692c..09d28e7ccc 100644
  
  					if(new_galleryimg == null)
  						return
-@@ -2208,26 +2208,26 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2226,26 +2226,26 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						ShowChoices(user)
  						return
  					if(!valid_headshot_link(user, new_galleryimg))
@@ -1462,7 +1473,7 @@ index a1e222692c..09d28e7ccc 100644
  
  					if(new_galleryimg == null)
  						return
-@@ -2236,37 +2236,37 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2254,37 +2254,37 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						ShowChoices(user)
  						return
  					if(!valid_headshot_link(user, new_galleryimg))
@@ -1513,7 +1524,7 @@ index a1e222692c..09d28e7ccc 100644
  
  				if("ooc_preview")
  					var/datum/examine_panel/preview_examine_panel = new(user)
-@@ -2281,29 +2281,29 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2299,29 +2299,29 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						var/rumour_display = rumour
  						rumour_display = html_encode(rumour_display)
  						rumour_display = parsemarkdown_basic(rumour_display, hyperlink = TRUE)
@@ -1551,7 +1562,7 @@ index a1e222692c..09d28e7ccc 100644
  						ShowChoices(user)
  						return
  					var/static/list/valid_extensions = list("mp3")
-@@ -2318,48 +2318,48 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2336,48 +2336,48 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					var/extension = value_split[length(value_split)]
  					if((extension in valid_extensions))
  						ooc_extra = new_extra_link
@@ -1616,7 +1627,7 @@ index a1e222692c..09d28e7ccc 100644
  						ShowChoices(user)
  						return
  					var/static/list/valid_ext = list("jpg", "jpeg", "png", "gif", "mp4")
-@@ -2373,30 +2373,30 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2391,30 +2391,30 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					switch(ext)
  						if("jpg", "jpeg", "png", "gif")
  							ooc_extra_img = "<div align='center'><br><img src='[link]' style='max-width: 100%;'/></div>"
@@ -1659,7 +1670,7 @@ index a1e222692c..09d28e7ccc 100644
  						ShowChoices(user)
  						return
  					var/static/list/valid_ext = list("jpg", "jpeg", "png", "gif", "mp4")
-@@ -2410,12 +2410,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2428,12 +2428,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					switch(ext)
  						if("jpg", "jpeg", "png", "gif")
  							nsfw_ooc_extra_img = "<div align='center'><br><img src='[link]' style='max-width: 100%;'/></div>"
@@ -1676,7 +1687,7 @@ index a1e222692c..09d28e7ccc 100644
  
  				if("familiar_prefs")
  					familiar_prefs.fam_show_ui()
-@@ -2437,7 +2437,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2455,7 +2455,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  					species = sortNames(species)
  
@@ -1685,7 +1696,7 @@ index a1e222692c..09d28e7ccc 100644
  
  					if(result)
  						set_new_race(result, user)
-@@ -2450,7 +2450,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2468,7 +2468,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  				if("charflaw")
  					var/list/coom = GLOB.character_flaws.Copy()
@@ -1694,7 +1705,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(result)
  						result = coom[result]
  						var/datum/charflaw/C = new result()
-@@ -2464,60 +2464,60 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2482,60 +2482,60 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  
  				if("race_bonus_select")
  					if(length(pref_species.custom_selection))
@@ -1768,7 +1779,7 @@ index a1e222692c..09d28e7ccc 100644
  						if(new_mutantcolor)
  							features["mcolor"] = listy[new_mutantcolor]
  							try_update_mutant_colors()
-@@ -2536,14 +2536,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2554,14 +2554,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  */
  				if("s_tone")
  					var/listy = pref_species.get_skin_list()
@@ -1785,7 +1796,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(selectedflaw)
  						charflaw = GLOB.character_flaws[selectedflaw]
  						charflaw = new charflaw()
-@@ -2551,16 +2551,16 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2569,16 +2569,16 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  							to_chat(user, span_info("[charflaw.desc]"))
  
  				if("char_accent")
@@ -1805,7 +1816,7 @@ index a1e222692c..09d28e7ccc 100644
  
  						var/list/accent_preview_spans = GLOB.accent_spans?[selectedaccent]
  						if(accent_preview_spans?.len)
-@@ -2568,20 +2568,20 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2586,20 +2586,20 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  							if(accent_preview_span)
  								preview_text = "<span class='[accent_preview_span]'>[preview_text]</span>"
  
@@ -1830,7 +1841,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(new_backpack)
  						backpack = new_backpack
  
-@@ -2592,23 +2592,23 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2610,23 +2610,23 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						jumpsuit_style = PREF_SUIT
  
  				if("uplink_loc")
@@ -1858,7 +1869,7 @@ index a1e222692c..09d28e7ccc 100644
  					if (config.defaultmap)
  						default += " ([config.defaultmap.map_name])"
  					for (var/M in config.maplist)
-@@ -2617,35 +2617,35 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2635,35 +2635,35 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  							continue
  						var/friendlyname = "[VM.map_name] "
  						if (VM.voteweight <= 0)
@@ -1901,7 +1912,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(phobiaType)
  						phobia = phobiaType
  
-@@ -2655,7 +2655,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2673,7 +2673,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					if(unlock_content)
  						toggles ^= MEMBER_PUBLIC
  				if ("max_chat_length")
@@ -1910,7 +1921,7 @@ index a1e222692c..09d28e7ccc 100644
  					if (!isnull(desiredlength))
  						max_chat_length = clamp(desiredlength, 1, CHAT_MESSAGE_MAX_LENGTH)
  				if("gender")
-@@ -2664,7 +2664,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2682,7 +2682,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						pickedGender = "female"
  					if(pickedGender && pickedGender != gender)
  						gender = pickedGender
@@ -1919,7 +1930,7 @@ index a1e222692c..09d28e7ccc 100644
  						//random_character(gender)
  					genderize_customizer_entries()
  				if("domhand")
-@@ -2673,17 +2673,17 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2691,17 +2691,17 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					else
  						domhand = 1
  				if("family")
@@ -1946,7 +1957,7 @@ index a1e222692c..09d28e7ccc 100644
  
  					else if(new_family)
  						family = new_family
-@@ -2692,7 +2692,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2710,7 +2710,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  						xenophobe_pref = 0
  				//Setspouse is part of the family subsystem. It will check existing families for this character and attempt to place you in this family.
  				if("setspouse")
@@ -1955,7 +1966,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(newspouse)
  						setspouse = newspouse
  					else
-@@ -2701,33 +2701,33 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2719,33 +2719,33 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  				if("gender_choice")
  					// If pronouns are neutral, lock to ANY_GENDER
  					if(pronouns == THEY_THEM || pronouns == IT_ITS)
@@ -2000,7 +2011,7 @@ index a1e222692c..09d28e7ccc 100644
  				if("hotkeys")
  					hotkeys = !hotkeys
  					if(hotkeys)
-@@ -2792,11 +2792,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2810,11 +2810,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  					save_preferences()
  
  				if("keybindings_reset")
@@ -2015,7 +2026,7 @@ index a1e222692c..09d28e7ccc 100644
  					key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
  					user.client.update_movement_keys()
  				if("chat_on_map")
-@@ -2915,11 +2915,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2933,11 +2933,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  				if("schizo_voice")
  					toggles ^= SCHIZO_VOICE
  					if(toggles & SCHIZO_VOICE)
@@ -2031,7 +2042,7 @@ index a1e222692c..09d28e7ccc 100644
  
  				if("migrants")
  					migrant.show_ui()
-@@ -2952,7 +2952,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2970,7 +2970,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  				if("save")
  					save_preferences()
  					save_character()
@@ -2040,7 +2051,7 @@ index a1e222692c..09d28e7ccc 100644
  
  				if("load")
  					load_preferences()
-@@ -2968,9 +2968,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -2986,9 +2986,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  								S.cd = "/character[i]"
  								S["real_name"] >> name
  								if(!name)
@@ -2052,7 +2063,7 @@ index a1e222692c..09d28e7ccc 100644
  					if(choice)
  						choice = choices[choice]
  						if(!load_character(choice))
-@@ -3282,7 +3282,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -3300,7 +3300,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  	if(!namedata)
  		return
  
@@ -2061,7 +2072,7 @@ index a1e222692c..09d28e7ccc 100644
  	if(!raw_name)
  		if(namedata["allow_null"])
  			custom_names[name_id] = get_default_name(name_id)
-@@ -3291,15 +3291,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -3309,15 +3309,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  	else
  		var/sanitized_name = reject_bad_name(raw_name,namedata["allow_numbers"])
  		if(!sanitized_name)
@@ -2080,7 +2091,7 @@ index a1e222692c..09d28e7ccc 100644
  	force_reset_keybindings_direct(hotkeys)
  
  /// Does the actual reset
-@@ -3326,12 +3326,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -3344,12 +3344,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  	var/find_index = findtext(value, "https://")
  	if(find_index != 1)
  		if(!silent)
@@ -2095,7 +2106,7 @@ index a1e222692c..09d28e7ccc 100644
  		return FALSE
  	var/list/value_split = splittext(value, ".")
  
-@@ -3339,13 +3339,13 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -3357,13 +3357,13 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  	var/extension = value_split[length(value_split)]
  	if(!(extension in valid_extensions))
  		if(!silent)
@@ -2111,7 +2122,7 @@ index a1e222692c..09d28e7ccc 100644
  		return FALSE
  	return TRUE
  
-@@ -3361,26 +3361,26 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
+@@ -3379,26 +3379,26 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
  	if(V.desc)
  		dat += "<font size = 3>[span_purple(V.desc)]</font><br>"
  	if(length(V.added_skills))
@@ -2145,3 +2156,4 @@ index a1e222692c..09d28e7ccc 100644
  	return dat
 -- 
 2.51.0.windows.2
+
