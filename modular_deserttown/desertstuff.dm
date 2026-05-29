@@ -344,7 +344,7 @@
 //bush
 
 /obj/structure/flora/roguegrass/bush/desert
-	name = "saigahorn"
+	name = "沙羚角"
 	desc = ""
 	icon = 'modular_deserttown/icons/flora.dmi'
 	icon_state = "saigahorn1"
