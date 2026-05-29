@@ -1,29 +1,159 @@
-From 56ad507dc32b293b7d09454aababe59faa8dfdae Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/mob/living/simple_animal/friendly/cat.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/mob/living/simple_animal/friendly/cat.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/mob/living/simple_animal/friendly/cat.dm b/code/modules/mob/living/simple_animal/friendly/cat.dm
-index 1da4f0394f1e..df2bb5562953 100644
 --- a/code/modules/mob/living/simple_animal/friendly/cat.dm
 +++ b/code/modules/mob/living/simple_animal/friendly/cat.dm
-@@ -88,8 +88,8 @@
+@@ -1,16 +1,16 @@
+ //Cat
+ /mob/living/simple_animal/pet/cat
+-	name = "cat"
+-	desc = "A nuisance and a valued, pest-killing companion. Also symbols of the benevolent side of Saint Pestra for their enmity with vermin."
++	name = "猫"
++	desc = "一种既惹人厌又备受珍视、能够捕杀害兽的同伴。由于它们与害鼠为敌，也被视作圣佩斯特拉慈悲一面的象征。"
+ 	icon = 'icons/mob/pets.dmi'
+ 	icon_state = "cat2"
+ 	icon_living = "cat2"
+ 	icon_dead = "cat2_dead"
+ 	gender = MALE
+-	speak = list("Meow!", "Esp!", "Purr!", "HSSSSS")
+-	speak_emote = list("purrs", "meows")
+-	emote_hear = list("meows.", "mews.")
+-	emote_see = list("shakes its head.", "shivers.")
++	speak = list("喵！", "嘶！", "呼噜！", "嘶嘶嘶！")
++	speak_emote = list("呼噜着", "喵喵叫着")
++	emote_hear = list("喵了一声。", "咪呜了一声。")
++	emote_see = list("甩了甩头。", "抖了抖身子。")
+ 	speak_chance = 1
+ 	turns_per_move = 5
+ 	see_in_dark = 6
+@@ -30,12 +30,12 @@
+ 					/obj/item/organ/ears/cat = 1,
+ 					/obj/item/organ/tail/cat = 1,
+ 					)
+-	response_help_continuous = "pets"
+-	response_help_simple = "pet"
+-	response_disarm_continuous = "gently pushes aside"
+-	response_disarm_simple = "gently push aside"
+-	response_harm_continuous = "kicks"
+-	response_harm_simple = "kick"
++	response_help_continuous = "抚摸"
++	response_help_simple = "抚摸"
++	response_disarm_continuous = "轻轻拨开"
++	response_disarm_simple = "轻轻拨开"
++	response_harm_continuous = "踢踹"
++	response_harm_simple = "踢踹"
+ 	STASTR = 3
+ 	STAWIL = 4
+ 	STASPD = 3
+@@ -82,8 +82,8 @@
+ 		return
+ 
+ /mob/living/simple_animal/pet/cat/rogue/inn
+-	name = "inn cat"
+-	desc = "This old, fat cat keeps the inn free of rats... allegedly. It seems like he mostly lazes about in the sun and asks for treats."
++	name = "旅店猫"
++	desc = "这只又老又胖的猫据说让旅店免受鼠患侵扰……大概吧。看起来它大多数时候只是躺在阳光下晒肚皮，顺便讨点零嘴。"
+ 	health = 5000
  	maxHealth = 5000
  
- /mob/living/simple_animal/pet/cat/rogue/black
--	name = "black cat"
--	desc = "Possessed of lamplike eyes and a meow that sounds like the rattle of bones. Black cats are sacred to Necra, said to bring wandering spirits to the Carriageman."
-+	name = "黑猫"
-+	desc = "它有着灯火般的眼睛，叫声则像骨节相碰般喀啦作响。黑猫被视作 Necra 的圣兽，据说会将迷失的灵魂引向摆渡人。"
- 	gender = FEMALE
- 	icon = 'icons/roguetown/topadd/takyon/Cat.dmi'
- 	icon_state = "cat"
--- 
-Translation Patch Toolkit
+@@ -98,23 +98,23 @@
+ 
+ /mob/living/simple_animal/pet/cat/rogue/archibald
+ 	name = "Archibald"
+-	desc = "Rare toothless spider from the north - won't bite but will stare you down!"
++	desc = "来自北方的稀有无牙蜘蛛，不会咬人，但会死死盯着你！"
+ 	icon = 'icons/roguetown/mob/monster/spider.dmi'
+ 	icon_state = "honeys"
+ 	icon_living = "honeys"
+ 	icon_dead = "honeys-dead"
+-	speak_emote = list("chitters")
+-	emote_hear = list("chitters")
++	speak_emote = list("咔哒作响")
++	emote_hear = list("咔哒作响")
+ 
+ /mob/living/simple_animal/pet/cat/rogue/rat
+ 	name = "Boris"
+-	desc = "Sated on lifetimes of the Keep's grain, there is simply no longer any point in slaying this beast. For it has already won."
++	desc = "它靠着城堡世世代代积存的粮食吃得心满意足，如今再杀这头野兽也毫无意义了，因为它早已赢了。"
+ 	icon = 'icons/roguetown/mob/monster/bigrat.dmi'
+ 	icon_state = "rat"
+ 	icon_living = "rat"
+ 	icon_dead = "rat1"
+-	speak_emote = list("squeaks")
+-	emote_hear = list("squeaks")
++	speak_emote = list("吱吱叫")
++	emote_hear = list("吱吱叫")
+ 
+ /mob/living/simple_animal/pet/cat/original
+ 	name = "Batsy"
+@@ -126,7 +126,7 @@
+ 	unique_pet = TRUE
+ 
+ /mob/living/simple_animal/pet/cat/kitten
+-	name = "kitten"
++	name = "小猫"
+ 	desc = ""
+ 	icon_state = "kitten"
+ 	icon_living = "kitten"
+@@ -223,20 +223,20 @@
+ /mob/living/simple_animal/pet/cat/Life()
+ 	if(!stat && !buckled && !client)
+ 		if(prob(1))
+-			emote("me", 1, pick("stretches out for a belly rub.", "wags its tail.", "lies down."))
++			emote("me", 1, pick("伸展开身子，等着别人挠肚皮。", "摇了摇尾巴。", "躺了下来。"))
+ 			icon_state = "[icon_living]_rest"
+ 			set_resting(TRUE)
+ 		else if (prob(1))
+-			emote("me", 1, pick("sits down.", "crouches on its hind legs.", "looks alert."))
++			emote("me", 1, pick("坐了下来。", "蹲坐在后腿上。", "看起来警觉了起来。"))
+ 			icon_state = "[icon_living]_sit"
+ 			set_resting(TRUE)
+ 		else if (prob(2))
+ 			if (resting)
+-				emote("me", 1, pick("gets up and meows.", "walks around.", "stops resting."))
++				emote("me", 1, pick("起身喵了一声。", "四处走了走。", "不再歇着了。"))
+ 				icon_state = "[icon_living]"
+ 				set_resting(FALSE)
+ 			else
+-				emote("me", 1, pick("grooms its fur.", "twitches its whiskers.", "shakes out its coat."))
++				emote("me", 1, pick("梳理着自己的毛发。", "抖了抖胡须。", "甩了甩身上的毛。"))
+ 
+ 		else if (prob(1))
+ 			playsound(src, pick(
+@@ -264,7 +264,7 @@
+ 					if(!M.dead)
+ 						walk_towards(src, M, 1)
+ 						sleep(3)
+-						visible_message("<span class='notice'>\The [src] kills the rat!</span>")
++						visible_message("<span class='notice'>\The [src] 咬死了那只老鼠！</span>")
+ 						M.obj_destruction()
+ 						stop_automated_movement = 0
+ 						break
+@@ -290,17 +290,17 @@
+ 		if(change > 0)
+ 			if(M && stat != DEAD)
+ 				new /obj/effect/temp_visual/heart(loc)
+-				emote("me", 1, "purrs!")
++				emote("me", 1, "呼噜着！")
+ 				if(flags_1 & HOLOGRAM_1)
+ 					return
+ 		else
+ 			if(M && stat != DEAD)
+-				emote("me", 1, "hisses!")
++				emote("me", 1, "发出嘶嘶声！")
+ 
+ /mob/living/simple_animal/pet/cat/inn/attack_hand(mob/living/carbon/human/M) // Gato Basado - not all pets are welcome
+ 	. = ..()
+ 	if((isdarkelf(M)))  // l´cursed bonbonbon
+-		visible_message("<span class='notice'>The cat hisses at [M] and recoils in disgust.</span>")
++		visible_message("<span class='notice'>猫朝着 [M] 发出嘶嘶声，并嫌恶地往后缩去。</span>")
+ 		icon_state = "[icon_living]"
+ 		set_resting(FALSE)
+ 		update_mobility()
+@@ -310,7 +310,7 @@
+ 		personal_space()
+ 
+ 	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampire))
+-		visible_message("<span class='notice'>The cat hisses at [M] and recoils in disgust.</span>")
++		visible_message("<span class='notice'>猫朝着 [M] 发出嘶嘶声，并嫌恶地往后缩去。</span>")
+ 		icon_state = "[icon_living]"
+ 		set_resting(FALSE)
+ 		update_mobility()

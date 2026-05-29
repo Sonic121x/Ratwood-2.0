@@ -1,0 +1,159 @@
+From 7c492933069b7a56c152c9504e4485fc6c140091 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Fri, 29 May 2026 23:05:07 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/examine.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/examine.dm | 52 ++++++++++++++++++++++++++--------------------------
+ 1 file changed, 26 insertions(+), 26 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/examine.dm b/code/modules/mob/living/carbon/examine.dm
+index 318bf1d458b1..525857ba6dec 100644
+--- a/code/modules/mob/living/carbon/examine.dm
++++ b/code/modules/mob/living/carbon/examine.dm
+@@ -4,7 +4,7 @@
+ 	var/t_has = p_have()
+ 	var/t_is = p_are()
+ 
+-	. = list("<span class='info'>✠ ------------ ✠\nThis is \a <EM>[src]</EM>!")
++	. = list("<span class='info'>✠ ------------ ✠\n这是 \a <EM>[src]</EM>！")
+ 	var/list/obscured = check_obscured_slots()
+ 
+ 	var/m1 = "[t_He] [t_is]"
+@@ -16,20 +16,20 @@
+ 		m3 = "I have"
+ 
+ 	if (handcuffed)
+-		. += span_warning("[m1] tied up with \a [handcuffed]!")
++		. += span_warning("[m1] 被 \a [handcuffed] 捆住了！")
+ 	if (head)
+-		. += "[m3] [head.get_examine_string(user)] on [m2] head. "
++		. += "[m3] [head.get_examine_string(user)] 戴在[m2]头上。 "
+ 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
+-		. += "[m3] [wear_mask.get_examine_string(user)] on [m2] face."
++		. += "[m3] [wear_mask.get_examine_string(user)] 戴在[m2]脸上。"
+ 	if(wear_neck && !(SLOT_NECK in obscured))
+-		. += "[m3] [wear_neck.get_examine_string(user)] around [m2] neck."
++		. += "[m3] [wear_neck.get_examine_string(user)] 挂在[m2]脖子上。"
+ 
+ 	for(var/obj/item/I in held_items)
+ 		if(!(I.item_flags & ABSTRACT))
+-			. += "[m1] holding [I.get_examine_string(user)] in [m2] [get_held_index_name(get_held_index_of_item(I))]."
++			. += "[m1] 正用[m2] [get_held_index_name(get_held_index_of_item(I))]拿着 [I.get_examine_string(user)]。"
+ 
+ 	if (back)
+-		. += "[m3] [back.get_examine_string(user)] on [m2] back."
++		. += "[m3] [back.get_examine_string(user)] 在[m2]背上。"
+ 	var/appears_dead = 0
+ /*	if (stat == DEAD)
+ 		appears_dead = 1
+@@ -41,45 +41,45 @@
+ 	var/list/missing = get_missing_limbs()
+ 	for(var/t in missing)
+ 		if(t==BODY_ZONE_HEAD)
+-			. += span_dead("<B>[capitalize(m2)] [parse_zone(t)] is gone.</B>")
++			. += span_dead("<B>[capitalize(m2)] [parse_zone(t)] 已缺失。</B>")
+ 			continue
+-		. += span_warning("<B>[capitalize(m2)] [parse_zone(t)] is gone.</B>")
++		. += span_warning("<B>[capitalize(m2)] [parse_zone(t)] 已缺失。</B>")
+ 
+ 	var/list/msg = list("<span class='warning'>")
+ 	var/temp = getBruteLoss()
+ 	if(!(user == src && src.hal_screwyhud == SCREWYHUD_HEALTHY)) //fake healthy
+-		var/brute_text = get_damage_descriptor_text(temp, "[m3] some bruises.\n", "[m3] a lot of bruises!\n", "<B>[m1] black and blue!!</B>\n")
++		var/brute_text = get_damage_descriptor_text(temp, "[m3] 有一些瘀伤。\n", "[m3] 有很多瘀伤！\n", "<B>[m1] 遍体鳞伤！！</B>\n")
+ 		if(brute_text)
+ 			msg += brute_text
+ 
+ 		temp = getFireLoss()
+-		var/fire_text = get_damage_descriptor_text(temp, "[m3] some burns.\n", "[m3] many burns!\n", "<B>[m1] dragon food!!</B>\n")
++		var/fire_text = get_damage_descriptor_text(temp, "[m3] 有一些烧伤。\n", "[m3] 有多处烧伤！\n", "<B>[m1] 快被烧得不成样子了！！</B>\n")
+ 		if(fire_text)
+ 			msg += fire_text
+ 
+ 		temp = getCloneLoss()
+ 		if(temp)
+ 			if(temp < 25)
+-				msg += "[t_He] [t_is] slightly deformed.\n"
++				msg += "[t_He] [t_is] 有些变形。\n"
+ 			else if (temp < 50)
+-				msg += "[t_He] [t_is] <b>moderately</b> deformed!\n"
++				msg += "[t_He] [t_is] <b>中度</b>变形！\n"
+ 			else
+-				msg += "<b>[t_He] [t_is] severely deformed!</b>\n"
++				msg += "<b>[t_He] [t_is] 严重变形！</b>\n"
+ 
+ 	if(HAS_TRAIT(src, TRAIT_DUMB))
+-		msg += "[t_He] seem[p_s()] to be clumsy and unable to think.\n"
++		msg += "[t_He] 看起来笨手笨脚，而且无法思考。\n"
+ 	
+ 	var/list/modular_lines = carbon_modular_examine_lines(user, t_He, m1, m2, m3)
+ 	if(length(modular_lines))
+ 		msg += modular_lines
+ 
+ 	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks))
+-		msg += "[t_He] [t_is] covered in something flammable.\n"
++		msg += "[t_He] [t_is] 浑身沾满了易燃物。\n"
+ 	if(has_status_effect(/datum/status_effect/fire_handler/wet_stacks))
+-		msg += "[t_He] look[p_s()] a little soaked.\n"
++		msg += "[t_He] 看起来有点湿透了。\n"
+ 
+ 	if(pulledby && pulledby.grab_state)
+-		msg += "[m1] restrained by [pulledby]'s grip.\n"
++		msg += "[m1] 被 [pulledby] 牢牢控制住了。\n"
+ 
+ 	msg += "</span>"
+ 
+@@ -87,12 +87,12 @@
+ 
+ 	if(!appears_dead)
+ 		if(stat == UNCONSCIOUS)
+-			. += span_warning("[m1] unconscious.")
++			. += span_warning("[m1] 失去意识了。")
+ 		else if(InCritical())
+-			. += span_warning("[m1] barely conscious.")
++			. += span_warning("[m1] 勉强保持清醒。")
+ 	if (stat == DEAD)
+ 		appears_dead = 1
+-		. += span_warning("[m1] unconscious.")
++		. += span_warning("[m1] 失去意识了。")
+ 	var/trait_exam = common_trait_examine()
+ 	if (!isnull(trait_exam))
+ 		. += trait_exam
+@@ -101,9 +101,9 @@
+ 		var/mob/living/L = user
+ 		if(STASTR > L.STASTR)
+ 			if(STASTR > 15)
+-				. += span_warning("[t_He] look[p_s()] stronger than I.")
++				. += span_warning("[t_He] 看起来比我更强壮。")
+ 			else
+-				. += span_warning("<B>[t_He] look[p_s()] stronger than I.</B>")
++				. += span_warning("<B>[t_He] 看起来比我更强壮。</B>")
+ 
+ 	. += "✠ ------------ ✠</span>"
+ 
+@@ -122,16 +122,16 @@
+ /mob/living/carbon/proc/get_damage_condition_summary()
+ 	var/list/conditions = list()
+ 
+-	var/brute_condition = get_damage_descriptor_text(getBruteLoss(), "some bruises", "a lot of bruises", "black and blue")
++	var/brute_condition = get_damage_descriptor_text(getBruteLoss(), "一些瘀伤", "很多瘀伤", "遍体鳞伤")
+ 	if(brute_condition)
+ 		conditions += brute_condition
+ 
+-	var/fire_condition = get_damage_descriptor_text(getFireLoss(), "some burns", "many burns", "dragon food")
++	var/fire_condition = get_damage_descriptor_text(getFireLoss(), "一些烧伤", "多处烧伤", "烧得不成样子")
+ 	if(fire_condition)
+ 		conditions += fire_condition
+ 
+ 	if(!length(conditions))
+-		return "No obvious bruises or burns"
++		return "没有明显的瘀伤或烧伤"
+ 
+ 	return capitalize(jointext(conditions, "; "))
+ 
+-- 
+Translation Patch Toolkit

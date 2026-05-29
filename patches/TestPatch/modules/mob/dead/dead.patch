@@ -1,0 +1,98 @@
+From ed0a7f699dfa1395d5437725916b91a6a24e1543 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Fri, 29 May 2026 23:05:07 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/dead.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/dead/dead.dm | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/code/modules/mob/dead/dead.dm b/code/modules/mob/dead/dead.dm
+index a487bc5e9618..ffc7fd6be91d 100644
+--- a/code/modules/mob/dead/dead.dm
++++ b/code/modules/mob/dead/dead.dm
+@@ -72,26 +72,26 @@
+ 	// UPDATE TIMER -- Script in html\lobby\lobby.html / .js
+ 	var/timer_text
+ 	if (time_remaining > 0)
+-		timer_text = "Time To Start: [round(time_remaining/10)]s"
++		timer_text = "开始倒计时：[round(time_remaining/10)]秒"
+ 	else if (time_remaining == -10)
+-		timer_text = "Time To Start: DELAYED"
++		timer_text = "开始倒计时：已延后"
+ 	else
+-		timer_text = "Time To Start: SOON"
++		timer_text = "开始倒计时：即将开始"
+ 		client << browse(null, "window=lobby_window")
+ 		return
+ 	client << output(timer_text, "lobby_window.browser:update_timer")
+ 
+ 	// Update players ready!!
+ 	client << output(
+-	"Total players ready: [SSticker.totalPlayersReady]",
++	"已准备玩家总数：[SSticker.totalPlayersReady]",
+ 	"lobby_window.browser:update_ready_count"
+ 	)
+ 	// Ready bonus
+ 	var/bonus_html
+ 	if (src.ready)
+-		bonus_html = span_good("Ready Bonus!")
++		bonus_html = span_good("准备奖励！")
+ 	else
+-		bonus_html = span_highlight("No bonus! Ready up!")
++		bonus_html = span_highlight("没有奖励！快准备！")
+ 	client << output(bonus_html, "lobby_window.browser:update_ready_bonus")
+ 	var/list/dat = list()
+ 	var/list/ready_players_by_job = list()
+@@ -100,7 +100,7 @@
+ 		"Wretch",
+ 		"Court Agent"
+ 	)
+-	dat += "<center><b>Classes:</b></center><hr>"
++	dat += "<center><b>职业：</b></center><hr>"
+ 	for (var/mob/dead/new_player/player in GLOB.player_list)
+ 		if (player.client?.ckey in GLOB.hiderole)
+ 			continue
+@@ -158,8 +158,8 @@
+ 	)
+ /mob/dead/proc/server_hop()
+ 	set category = "OOC"
+-	set name = "Server Hop!"
+-	set desc= "Jump to the other server"
++	set name = "跨服跳转！"
++	set desc= "跳转到另一台服务器"
+ 	set hidden = 1
+ 	if(notransform)
+ 		return
+@@ -168,22 +168,22 @@
+ 	switch(csa.len)
+ 		if(0)
+ 			verbs -= /mob/dead/proc/server_hop
+-			to_chat(src, span_notice("Server Hop has been disabled."))
++			to_chat(src, span_notice("跨服跳转已被禁用。"))
+ 		if(1)
+ 			pick = csa[1]
+ 		else
+-			pick = input(src, "Pick a server to jump to", "Server Hop") as null|anything in csa
++			pick = input(src, "选择要跳转的服务器", "跨服跳转") as null|anything in csa
+ 
+ 	if(!pick)
+ 		return
+ 
+ 	var/addr = csa[pick]
+ 
+-	if(alert(src, "Jump to server [pick] ([addr])?", "Server Hop", "Yes", "No") != "Yes")
++	if(alert(src, "要跳转到服务器 [pick]（[addr]）吗？", "跨服跳转", "Yes", "No") != "Yes")
+ 		return
+ 
+ 	var/client/C = client
+-	to_chat(C, span_notice("Sending you to [pick]."))
++	to_chat(C, span_notice("正在将你发送到 [pick]。"))
+ 	new /atom/movable/screen/splash(C)
+ 
+ 	notransform = TRUE
+-- 
+Translation Patch Toolkit

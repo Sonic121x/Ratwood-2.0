@@ -1,0 +1,199 @@
+From ac49c22164dd08aee42b091f2040886beb27bc8f Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Fri, 29 May 2026 23:02:41 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/living_defense.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/living_defense.dm | 80 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 40 insertions(+), 40 deletions(-)
+
+diff --git a/code/modules/mob/living/living_defense.dm b/code/modules/mob/living/living_defense.dm
+index 0934235fcb88..07756a44c600 100644
+--- a/code/modules/mob/living/living_defense.dm
++++ b/code/modules/mob/living/living_defense.dm
+@@ -64,7 +64,7 @@
+ 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
+ 		if(!apply_damage(P.damage, P.damage_type, def_zone, armor))
+ 			nodmg = TRUE
+-			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
++			next_attack_msg += " <span class='warning'>护甲挡下了伤害。</span>"
+ 		apply_effects(stun = P.stun, knockdown = P.knockdown, unconscious = P.unconscious, slur = P.slur, stutter = P.stutter, eyeblur = P.eyeblur, drowsy = P.drowsy, blocked = armor, stamina = P.stamina, jitter = P.jitter, paralyze = P.paralyze, immobilize = P.immobilize)
+ 		if(!nodmg)
+ 			if(P.dismemberment)
+@@ -79,7 +79,7 @@
+ 					var/mob/living/carbon/M = src
+ 					M.reagents.add_reagent(P.poisontype, P.poisonamount)
+ 					if(P.poisonfeel)
+-						M.show_message(span_danger("You feel an intense [P.poisonfeel] sensation spreading swiftly from the area!"))
++						M.show_message(span_danger("你感到一阵强烈的[P.poisonfeel]感正迅速从受创处扩散开来！"))
+ 
+ 			if(P.embedchance && !check_projectile_embed(P, def_zone))
+ 				P.handle_drop()
+@@ -94,8 +94,8 @@
+ 	if(P.hitsound && !nodmg)
+ 		var/volume = P.vol_by_damage()
+ 		playsound(loc, pick(P.hitsound), volume, TRUE, -1)
+-	visible_message(span_danger("[src] is hit by \a [P][organ_hit_text]![next_attack_msg.Join()]"), \
+-			span_danger("I'm hit by \a [P][organ_hit_text]![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
++	visible_message(span_danger("[src]被\a [P][organ_hit_text]击中了！[next_attack_msg.Join()]"), \
++			span_danger("我被\a [P][organ_hit_text]击中了！[next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+ 	next_attack_msg.Cut()
+ 
+ 
+@@ -134,7 +134,7 @@
+ 			var/nodmg = FALSE
+ 			if(!apply_damage(I.throwforce, I.damtype, zone, armor))
+ 				nodmg = TRUE
+-				next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
++				next_attack_msg += " <span class='warning'>护甲挡下了伤害。</span>"
+ 			if(!nodmg)
+ 				if(iscarbon(src))
+ 					var/obj/item/bodypart/affecting = get_bodypart(zone)
+@@ -150,8 +150,8 @@
+ 						if(can_embed(I) && prob(I.embedding.embed_chance) && HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
+ 							simple_add_embedded_object(I, silent = FALSE, crit_message = TRUE)
+ 					I.do_special_attack_effect(I.thrownby, null, null, src, null, thrown = TRUE)
+-			visible_message("<span class='danger'>[src] is hit by [I]![next_attack_msg.Join()]</span>", \
+-							"<span class='danger'>I'm hit by [I]![next_attack_msg.Join()]</span>")
++			visible_message("<span class='danger'>[src]被[I]砸中了！[next_attack_msg.Join()]</span>", \
++							"<span class='danger'>我被[I]砸中了！[next_attack_msg.Join()]</span>")
+ 			next_attack_msg.Cut()
+ 			if(I.thrownby)
+ 				log_combat(I.thrownby, src, "threw and hit", I)
+@@ -231,12 +231,12 @@
+ 		probby = 100
+ 
+ 	if(!prob(probby) && !instant && !stat)
+-		visible_message(span_warning("[user] struggles with [src]!"),
+-						span_warning("[user] struggles to restrain me!"), span_hear("I hear aggressive shuffling!"), null, user)
++		visible_message(span_warning("[user]正与[src]激烈角力！"),
++						span_warning("[user]正试图按住我！"), span_hear("我听见一阵激烈的扭打声！"), null, user)
+ 		if(src.client?.prefs.showrolls)
+-			to_chat(user, span_warning("I struggle with [src]! [probby]%"))
+-		else
+-			to_chat(user, span_warning("I struggle with [src]!"))
++			to_chat(user, span_warning("我与[src]激烈角力！[probby]%"))
++		else
++			to_chat(user, span_warning("我与[src]激烈角力！"))
+ 		playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
+ 		user.Immobilize(2 SECONDS)
+ 		user.changeNext_move(2 SECONDS)
+@@ -317,13 +317,13 @@
+ 	if(HAS_TRAIT(user, TRAIT_NOTIGHTGRABMESSAGE))	
+ 		return
+ 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
+-		visible_message(span_danger("[user] firmly grips [src]!"),
+-						span_danger("[user] firmly grips me!"), span_hear("I hear aggressive shuffling!"), null, user)
+-		to_chat(user, span_danger("I firmly grip [src]!"))
++		visible_message(span_danger("[user]牢牢抓住了[src]！"),
++						span_danger("[user]牢牢抓住了我！"), span_hear("我听见一阵激烈的扭打声！"), null, user)
++		to_chat(user, span_danger("我牢牢抓住了[src]！"))
+ 	else
+-		visible_message(span_danger("[user] tightens [user.p_their()] grip on [src]!"), \
+-						span_danger("[user] tightens [user.p_their()] grip on me!"), span_hear("I hear aggressive shuffling!"), null, user)
+-		to_chat(user, span_danger("I tighten my grip on [src]!"))
++		visible_message(span_danger("[user]收紧了对[src]的抓握！"), \
++						span_danger("[user]收紧了对我的抓握！"), span_hear("我听见一阵激烈的扭打声！"), null, user)
++		to_chat(user, span_danger("我收紧了对[src]的抓握！"))
+ 
+ /mob/living/attack_animal(mob/living/simple_animal/M)
+ 	if(M.swinging)
+@@ -331,11 +331,11 @@
+ 	M.swinging = TRUE
+ 	M.face_atom(src)
+ 	if(M.melee_damage_upper == 0)
+-		visible_message(span_notice("\The [M] [pick(M.a_intent.attack_verb)] [src]."), \
+-						span_notice("\The [M] [pick(M.a_intent.attack_verb)] me!"), null, COMBAT_MESSAGE_RANGE)
++		visible_message(span_notice("\The [M][pick(M.a_intent.attack_verb)]了[src]。"), \
++						span_notice("\The [M][pick(M.a_intent.attack_verb)]了我！"), null, COMBAT_MESSAGE_RANGE)
+ 		return FALSE
+ 	if(HAS_TRAIT(M, TRAIT_PACIFISM))
+-		to_chat(M, span_warning("I don't want to hurt anyone!"))
++		to_chat(M, span_warning("我不想伤害任何人！"))
+ 		return FALSE
+ 
+ 	M.do_attack_animation(src, visual_effect_icon = M.a_intent.animname)
+@@ -375,24 +375,24 @@
+ 
+ 	if (M.used_intent.type == INTENT_HARM)
+ 		if(HAS_TRAIT(M, TRAIT_PACIFISM))
+-			to_chat(M, span_info("I don't want to hurt anyone!"))
++			to_chat(M, span_info("我不想伤害任何人！"))
+ 			return FALSE
+ 
+ 		if(M.is_muzzled() || M.is_mouth_covered(FALSE, TRUE))
+-			to_chat(M, span_warning("I can't bite with my mouth covered!"))
++			to_chat(M, span_warning("嘴被遮住了，我咬不到！"))
+ 			return FALSE
+ 		M.do_attack_animation(src, ATTACK_EFFECT_BITE)
+ 		if (prob(75))
+ 			log_combat(M, src, "attacked")
+ 			playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
+-			visible_message(span_danger("[M.name] bites [src]!"), \
+-							span_danger("[M.name] bites you!"), span_hear("I hear a chomp!"), COMBAT_MESSAGE_RANGE, M)
+-			to_chat(M, span_danger("I bite [src]!"))
++			visible_message(span_danger("[M.name]咬了[src]一口！"), \
++							span_danger("[M.name]咬了你一口！"), span_hear("我听见一声咬合声！"), COMBAT_MESSAGE_RANGE, M)
++			to_chat(M, span_danger("我咬了[src]一口！"))
+ 			return TRUE
+ 		else
+-			visible_message(span_danger("[M.name]'s bite misses [src]!"), \
+-							span_danger("I avoid [M.name]'s bite!"), span_hear("I hear the sound of jaws snapping shut!"), COMBAT_MESSAGE_RANGE, M)
+-			to_chat(M, span_warning("My bite misses [src]!"))
++			visible_message(span_danger("[M.name]咬向[src]却落空了！"), \
++							span_danger("我躲开了[M.name]的撕咬！"), span_hear("我听见牙关猛然咬合的声响！"), COMBAT_MESSAGE_RANGE, M)
++			to_chat(M, span_warning("我咬向[src]却落空了！"))
+ 	return FALSE
+ 
+ /mob/living/ex_act(severity, target)
+@@ -405,24 +405,24 @@
+ 
+ 	if (M.used_intent.type == INTENT_HARM)
+ 		if(HAS_TRAIT(M, TRAIT_PACIFISM))
+-			to_chat(M, span_info("I don't want to hurt anyone!"))
++			to_chat(M, span_info("我不想伤害任何人！"))
+ 			return FALSE
+ 
+ 		if(M.is_muzzled() || M.is_mouth_covered(FALSE, TRUE))
+-			to_chat(M, span_warning("I can't bite with my mouth covered!"))
++			to_chat(M, span_warning("嘴被遮住了，我咬不到！"))
+ 			return FALSE
+ 		M.do_attack_animation(src, ATTACK_EFFECT_BITE)
+ 		if (prob(75))
+ 			log_combat(M, src, "attacked")
+ 			playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
+-			visible_message(span_danger("[M.name] bites [src]!"), \
+-							span_danger("[M.name] bites you!"), span_hear("I hear a chomp!"), COMBAT_MESSAGE_RANGE, M)
+-			to_chat(M, span_danger("I bite [src]!"))
++			visible_message(span_danger("[M.name]咬了[src]一口！"), \
++							span_danger("[M.name]咬了你一口！"), span_hear("我听见一声咬合声！"), COMBAT_MESSAGE_RANGE, M)
++			to_chat(M, span_danger("我咬了[src]一口！"))
+ 			return TRUE
+ 		else
+-			visible_message(span_danger("[M.name]'s bite misses [src]!"), \
+-							span_danger("I avoid [M.name]'s bite!"), span_hear("I hear the sound of jaws snapping shut!"), COMBAT_MESSAGE_RANGE, M)
+-			to_chat(M, span_warning("My bite misses [src]!"))
++			visible_message(span_danger("[M.name]咬向[src]却落空了！"), \
++							span_danger("我躲开了[M.name]的撕咬！"), span_hear("我听见牙关猛然咬合的声响！"), COMBAT_MESSAGE_RANGE, M)
++			to_chat(M, span_warning("我咬向[src]却落空了！"))
+ 	return FALSE
+ 
+ //Looking for irradiate()? It's been moved to radiation.dm under the rad_act() for mobs.
+@@ -446,9 +446,9 @@
+ 	else
+ 		adjustStaminaLoss(shock_damage)
+ 	visible_message(
+-		span_danger("[src] was shocked by \the [source]!"), \
+-		span_danger("I feel a powerful shock coursing through my body!"), \
+-		span_hear("I hear a heavy electrical crack.") \
++		span_danger("[src]被\the [source]电到了！"), \
++		span_danger("我感到一股强烈电流窜遍全身！"), \
++		span_hear("我听见一声沉重的电爆声。") \
+ 	)
+ 	playsound(get_turf(src), pick('sound/misc/elec (1).ogg', 'sound/misc/elec (2).ogg', 'sound/misc/elec (3).ogg'), 100, FALSE)
+ 	// Home alone 2 Marv scream on electrocution — rare easter egg, 5% chance so it's not common but not impossibly rare.
+-- 
+Translation Patch Toolkit
