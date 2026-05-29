@@ -36,7 +36,7 @@
 
 //cushion
 /obj/item/cushion/desert1
-	name = "desert cushion"
+	name = "沙漠坐垫"
 	icon = 'modular_deserttown/icons/cushions.dmi'
 	icon_state = "desertcushion1"
 
