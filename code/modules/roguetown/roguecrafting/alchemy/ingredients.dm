@@ -377,7 +377,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/stam_poison
 
 /obj/item/alch/matricaria
-	name = "matricaria"
+	name = "母菊"
 	icon_state = "matricaria"
 
 	major_pot = /datum/alch_cauldron_recipe/berrypoison
