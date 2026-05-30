@@ -1,0 +1,31 @@
+From 2d6c5028dd8abe145fd78bc2294eff1ec3ed5e75 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:28:09 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=EF=BC=8C=E9=AD=94=E5=8A=9B?=
+ =?UTF-8?q?=E7=81=B5=E8=8D=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+index 2dd6be0faa..699f892765 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+@@ -46,8 +46,8 @@
+ 	output_reagents = list(/datum/reagent/medicine/stronghealth = 50)//it has an extremely easy recipe compared to regular red
+ 
+ /datum/alch_cauldron_recipe/mana_potion
+-	name = "Elixir of Mana"
+-	smells_like = "power"
++	name = "魔力灵药"
++	smells_like = "力量"
+ 	output_reagents = list(/datum/reagent/medicine/manapot = 100)//recipe is harder to make than regular blue
+ 
+ /datum/alch_cauldron_recipe/big_mana_potion
+-- 
+2.53.0
+
