@@ -1,0 +1,34 @@
+From f9f0ff540690943f2cdb15ad709bc7a6965cf2b8 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:52:37 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=BC=BA=E6=95=88=E6=AF=92?=
+ =?UTF-8?q?=E8=8D=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..79cbcde5e5 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -286,11 +286,11 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
+ 
+ 
+ /datum/reagent/strongpoison		// Strong poison, meant to be somewhat difficult to produce using alchemy or spawned with select antags. Designed to kill in one full dose (5u) better drink antidote fast
+-	name = "Strong Poison"
++	name = "强效毒药"
+ 	description = ""
+ 	reagent_state = LIQUID
+ 	color = "#1a1616"
+-	taste_description = "burning"
++	taste_description = "灼烧感"
+ 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+ 	harmful = TRUE
+ 
+-- 
+2.53.0
+
