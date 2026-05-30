@@ -40,8 +40,8 @@
 	output_reagents = list(/datum/reagent/medicine/healthpot = 100)
 
 /datum/alch_cauldron_recipe/big_health_potion
-	name = "Elixir of Health (Strong)"
-	smells_like = "berry pie"
+	name = "强效生命灵药"
+	smells_like = "浆果派"
 	skill_required = SKILL_LEVEL_EXPERT // If it has "Strong", lock it roundstart for Apothecary or above
 	output_reagents = list(/datum/reagent/medicine/stronghealth = 50)//it has an extremely easy recipe compared to regular red
 
