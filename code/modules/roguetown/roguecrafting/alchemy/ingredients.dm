@@ -1,5 +1,5 @@
 /obj/item/alch
-	name = "dust"
+	name = "粉末"
 	desc = ""
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "irondust"
@@ -49,21 +49,21 @@
 			perint = FLOOR((lmob.STAPER + lmob.STAINT)/2,1)
 		if(HAS_TRAIT(user,TRAIT_LEGENDARY_ALCHEMIST))
 			if(!isnull(major_name))
-				. += span_notice(" Strongly attuned to making [major_name].")
+				. += span_notice(" 与制作[major_name]的亲和度极高。")
 			if(!isnull(med_name))
-				. += span_notice(" Moderately attuned to making [med_name].")
+				. += span_notice(" 与制作[med_name]的亲和度适中。")
 			if(!isnull(minor_name))
-				. += span_notice(" Minorly attuned to making [minor_name].")
+				. += span_notice(" 与制作[minor_name]有微弱的亲和度。")
 		else
 			if(!isnull(major_smell))
 				if(alch_skill >= SKILL_LEVEL_NOVICE || perint >= 6)
-					. += span_notice(" Smells strongly of [major_smell].")
+					. += span_notice(" 散发着浓烈的[major_smell]气味。")
 			if(!isnull(med_smell))
 				if(alch_skill >= SKILL_LEVEL_APPRENTICE || perint >= 10)
-					. += span_notice(" Smells slightly of [med_smell].")
+					. += span_notice(" 散发着淡淡的[med_smell]气味。")
 			if(!isnull(minor_smell))
 				if(alch_skill >= SKILL_LEVEL_EXPERT || perint >= 16)
-					. += span_notice(" Smells weakly of [minor_smell].")
+					. += span_notice(" 散发着微弱的[minor_smell]气味。")
 /obj/item/alch/viscera
 	name = "viscera"
 	icon_state = "viscera"
