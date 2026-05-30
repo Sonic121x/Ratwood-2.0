@@ -286,11 +286,11 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 
 /datum/reagent/strongpoison		// Strong poison, meant to be somewhat difficult to produce using alchemy or spawned with select antags. Designed to kill in one full dose (5u) better drink antidote fast
-	name = "Strong Poison"
+	name = "强效毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#1a1616"
-	taste_description = "burning"
+	taste_description = "灼烧感"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	harmful = TRUE
 
