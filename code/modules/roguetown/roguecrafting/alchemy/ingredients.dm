@@ -393,7 +393,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/antidote
 
 /obj/item/alch/taraxacum
-	name = "taraxacum"
+	name = "蒲公英"
 	icon_state = "taraxacum"
 
 	major_pot = /datum/alch_cauldron_recipe/stam_poison
