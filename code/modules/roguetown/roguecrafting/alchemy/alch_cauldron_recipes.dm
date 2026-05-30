@@ -35,8 +35,8 @@
 
 //Healing potions
 /datum/alch_cauldron_recipe/health_potion
-	name = "Elixir of Health"
-	smells_like = "sweet berries"
+	name = "生命灵药"
+	smells_like = "甜浆果"
 	output_reagents = list(/datum/reagent/medicine/healthpot = 100)
 
 /datum/alch_cauldron_recipe/big_health_potion
