@@ -231,9 +231,9 @@
 	return ..()
 
 /datum/reagent/buff/endurance
-	name = STATKEY_WIL
+	name = "坚韧"
 	color = "#e2c3e1"
-	taste_description = "oversweetened milk"
+	taste_description = "过甜的牛奶"
 
 /datum/reagent/buff/endurance/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/endurancepot)
