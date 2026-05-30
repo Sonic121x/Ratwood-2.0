@@ -41,7 +41,7 @@ index 8adea93c76eb..d05f452ce0c9 100644
  	)
  	stress_examine = TRUE
 -	stress_desc = span_red("Horrid little goblin...")
-+	stress_desc = span_red("可憎的小地精……")
++	stress_desc = span_red("可憎的哥布林……")
  	descriptor_choices = list(
  		/datum/descriptor_choice/height,
  		/datum/descriptor_choice/body,
