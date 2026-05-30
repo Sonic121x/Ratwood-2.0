@@ -79,7 +79,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/per_potion
 
 /obj/item/alch/bonemeal
-	name = "bone meal"
+	name = "骨粉"
 	icon_state = "bonemeal"
 	major_pot = /datum/alch_cauldron_recipe/mana_potion
 	med_pot = /datum/alch_cauldron_recipe/per_potion
