@@ -1,0 +1,30 @@
+From ac4df8bf31f98fe75a9e3975715d1b52ba34635e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:58:51 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=94=9C=E6=B5=86=E6=9E=9C?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+index 2dd6be0faa..ee7dce9a8a 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+@@ -35,8 +35,8 @@
+ 
+ //Healing potions
+ /datum/alch_cauldron_recipe/health_potion
+-	name = "Elixir of Health"
+-	smells_like = "sweet berries"
++	name = "生命灵药"
++	smells_like = "甜浆果"
+ 	output_reagents = list(/datum/reagent/medicine/healthpot = 100)
+ 
+ /datum/alch_cauldron_recipe/big_health_potion
+-- 
+2.53.0
+
