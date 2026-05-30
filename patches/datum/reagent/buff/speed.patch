@@ -1,0 +1,31 @@
+From c639fad75d23f592ffa2ead7eec982ca9be34aab Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:20:56 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=80=9F=E5=BA=A6?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..169217c1f6 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -240,9 +240,9 @@
+ 	return ..()
+ 
+ /datum/reagent/buff/speed
+-	name = STATKEY_SPD
++	name = "速度"
+ 	color = "#cea63a"
+-	taste_description = "raw egg yolk"
++	taste_description = "生蛋黄"
+ 
+ /datum/reagent/buff/speed/on_mob_life(mob/living/carbon/M)
+ 	M.apply_status_effect(/datum/status_effect/buff/alch/speedpot)
+-- 
+2.53.0
+
