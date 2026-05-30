@@ -10,8 +10,8 @@
 	output_reagents = list(/datum/reagent/medicine/strong_antidote = 100)
 
 /datum/alch_cauldron_recipe/berrypoison
-	name = "Poison (Berry)"
-	smells_like = "death"
+	name = "毒药（浆果）"
+	smells_like = "死亡"
 	skill_required = SKILL_LEVEL_JOURNEYMAN // Basic poison should be harder to handle
 	output_reagents = list(/datum/reagent/berrypoison = 100)
 
