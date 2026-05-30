@@ -237,12 +237,12 @@
 
 // COPPER
 /obj/item/roguecoin/copper
-	name = "zenny"
-	desc = "A brand-new bronze coin minted by the capital in an effort to be rid of the financial use of silver."
+	name = "泽尼"
+	desc = "一枚崭新的铜币，由首都铸造，意在摆脱对银的财政依赖。"
 	icon_state = "c1"
 	sellprice = 1
 	base_type = CTYPE_COPP
-	plural_name = "zennies"
+	plural_name = "泽尼斯"
 
 // ANCIENT
 /obj/item/roguecoin/gilbranze
