@@ -20,15 +20,16 @@ index 52571b4447..c0764b5555 100644
  /datum/job/roguetown/lord
 -	title = "Grand Duke"
 -	f_title = "Grand Duchess"
-+	title = "大公"
++	title = "Grand Duke"
 +	f_title = "女大公"
  	flag = LORD
  	department_flag = NOBLEMEN
  	faction = "Station"
-@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
+@@ -25,7 +25,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
  	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
  
  	display_order = JDO_LORD
++	display_title = "大公"
 -	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error of their ways."
 +	tutorial = "借由纵横交错的阴谋与政治剧变，你登上了至高无上的王座。你是这片土地的绝对主宰，亦是所有权力漩涡的中心。这里的男女老少都对你的宝座垂涎三尺，恨不能取而代之——去用行动告诉他们，这种想法是多么愚蠢。"
  	whitelist_req = FALSE
@@ -104,4 +105,3 @@ index 52571b4447..c0764b5555 100644
  	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)
 -- 
 2.51.0.windows.2
-
