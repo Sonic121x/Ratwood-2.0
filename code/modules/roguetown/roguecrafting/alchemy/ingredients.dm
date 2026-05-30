@@ -417,7 +417,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/stam_poison
 
 /obj/item/alch/calendula
-	name = "calendula"
+	name = "金盏花"
 	icon_state = "calendula"
 
 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
