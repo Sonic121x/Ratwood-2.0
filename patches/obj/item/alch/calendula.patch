@@ -1,0 +1,28 @@
+From 3405a834b38e230384abd307d5671a35a79fc320 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:13:08 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=87=91=E7=9B=8F=E8=8A=B1?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/ingredients.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+index 570ac0de5e..5f1fb2a0b2 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+@@ -417,7 +417,7 @@
+ 	minor_pot = /datum/alch_cauldron_recipe/stam_poison
+ 
+ /obj/item/alch/calendula
+-	name = "calendula"
++	name = "金盏花"
+ 	icon_state = "calendula"
+ 
+ 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
+-- 
+2.53.0
+
