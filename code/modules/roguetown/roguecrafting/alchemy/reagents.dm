@@ -266,11 +266,11 @@ A dose of ingested potion is defined as 5u, projectile deliver at most 2u, you a
 If you want to expand on poisons theres tons of fun effects TG chemistry has that could be added, randomzied damage values for more unpredictable poison, add trait based resists instead of the clunky race check etc.*/
 
 /datum/reagent/berrypoison	// Weaker poison, balanced to make you wish for death and incapacitate but not kill
-	name = "Berry Poison"
+	name = "浆果毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#47b2e0"
-	taste_description = "bitterness"
+	taste_description = "苦涩"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	harmful = TRUE
 
