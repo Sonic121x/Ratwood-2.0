@@ -25,13 +25,14 @@ index 8adea93c76eb..d05f452ce0c9 100644
 -	town square or out on a well-traveled road, as even the most backwater peasant can tell the difference between a sapient one and portal-spawn. Usually.<br>\
 -	(+1 Speed, Dark Vision Trait)"
 -	species_traits = list(EYECOLOR,LIPS,STUBBLE)
-+	desc = "<b>地精</b><br>\
-+	若要替地精说点好话，“机灵”和“倔强”或许还算得上；至于“诡计多端”与“自私自利”，就没那么体面了。\
-+	邪堂诸神将他们当作恶意的化身，从月亮传送门中驱出一波又一波失去心智、受其奴役的地精去袭击文明世界。\
-+	这也让大多数地精只能蜇缩在隐秘的部落中，靠拾荒偷窃苟活，既惧怕报复，又驱赶外人。\
-+	人类城市通常排斥他们，但偶尔也能见到某个地精在镇上广场或常走的道路上碰碰运气；\
-+	毕竟就连最闭塞的乡下农夫，通常也分得清有理智的地精和从传送门里钻出来的怪物。通常如此。<br>\
-+	(+1 速度, 黑暗视觉特性)"	species_traits = list(EYECOLOR,LIPS,STUBBLE)
++	desc = "<b>哥布林</b><br>\
++	若要替哥布林说点好话，“机灵”和“倔强”或许还算得上；至于“诡计多端”与“自私自利”，就没那么体面了。\
++	邪堂诸神将他们当作恶意的化身，从月亮传送门中驱出一波又一波失去心智、受其奴役的哥布林去袭击文明世界。\
++	这也让大多数哥布林只能蜇缩在隐秘的部落中，靠拾荒偷窃苟活，既惧怕报复，又驱赶外人。\
++	人类城市通常排斥他们，但偶尔也能见到某个哥布林在镇上广场或常走的道路上碰碰运气；\
++	毕竟就连最闭塞的乡下农夫，通常也分得清有理智的哥布林和从传送门里钻出来的怪物。通常如此。<br>\
++	(+1 速度, 黑暗视觉特性)"	
++	species_traits = list(EYECOLOR,LIPS,STUBBLE)
  	possible_ages = ALL_AGES_LIST
  	use_skintones = TRUE
  	skin_tone_wording = "Skin Color"
