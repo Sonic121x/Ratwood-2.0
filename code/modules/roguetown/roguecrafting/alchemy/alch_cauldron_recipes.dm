@@ -16,8 +16,8 @@
 	output_reagents = list(/datum/reagent/berrypoison = 100)
 
 /datum/alch_cauldron_recipe/doompoison
-	name = "Poison (Doom)"
-	smells_like = "doom"
+	name = "毒药（毁灭）"
+	smells_like = "毁灭"
 	skill_required = SKILL_LEVEL_EXPERT // Strong poison should be more difficult to make
 	output_reagents = list(/datum/reagent/strongpoison = 100)
 
