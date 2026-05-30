@@ -46,8 +46,8 @@
 	output_reagents = list(/datum/reagent/medicine/stronghealth = 50)//it has an extremely easy recipe compared to regular red
 
 /datum/alch_cauldron_recipe/mana_potion
-	name = "Elixir of Mana"
-	smells_like = "power"
+	name = "魔力灵药"
+	smells_like = "力量"
 	output_reagents = list(/datum/reagent/medicine/manapot = 100)//recipe is harder to make than regular blue
 
 /datum/alch_cauldron_recipe/big_mana_potion
