@@ -240,9 +240,9 @@
 	return ..()
 
 /datum/reagent/buff/speed
-	name = STATKEY_SPD
+	name = "速度"
 	color = "#cea63a"
-	taste_description = "raw egg yolk"
+	taste_description = "生蛋黄"
 
 /datum/reagent/buff/speed/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/speedpot)
