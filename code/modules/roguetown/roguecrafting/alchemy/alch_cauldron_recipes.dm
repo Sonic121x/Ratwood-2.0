@@ -117,8 +117,8 @@
 	output_reagents = list(/datum/reagent/buff/fortune = 30)
 
 /datum/alch_cauldron_recipe/aphrodisiac
-	name = "Aphrodisiac Wine"
-	smells_like = "ardent sweetness"
+	name = "催情酒"
+	smells_like = "炽热的甜香"
 	output_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 60)
 
 /datum/alch_cauldron_recipe/fire_potion
