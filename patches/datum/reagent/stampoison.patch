@@ -1,0 +1,34 @@
+From 3f772533a615e9af77ce5dfc23f1143987e2599d Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:57:20 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=80=90=E5=8A=9B=E6=AF=92?=
+ =?UTF-8?q?=E8=8D=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..032d59ff18 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -345,11 +345,11 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
+ 	return ..()
+ 
+ /datum/reagent/stampoison
+-	name = "Stamina Poison"
++	name = "耐力毒药"
+ 	description = ""
+ 	reagent_state = LIQUID
+ 	color = "#083b1c"
+-	taste_description = "breathlessness"
++	taste_description = "窒息感"
+ 	metabolization_rate = 0.1 * REAGENTS_METABOLISM * 3
+ 	harmful = TRUE
+ 
+-- 
+2.53.0
+

@@ -1,0 +1,28 @@
+From 507f75f26c1a7c30a06c332d14fb11daa3d2469d Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:18:49 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E8=8D=A8=E9=BA=BB?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/ingredients.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+index 570ac0de5e..8012a6eb94 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+@@ -433,7 +433,7 @@
+ 	minor_pot = /datum/alch_cauldron_recipe/stamina_potion
+ 
+ /obj/item/alch/urtica
+-	name = "urtica"
++	name = "荨麻"
+ 	icon_state = "urtica"
+ 
+ 	major_pot = /datum/alch_cauldron_recipe/health_potion
+-- 
+2.53.0
+

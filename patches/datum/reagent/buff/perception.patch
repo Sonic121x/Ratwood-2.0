@@ -1,0 +1,31 @@
+From 612577e6327a09f18d53ed6d862dfc414571bbf7 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:49:07 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=84=9F=E7=9F=A5?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..9d83dcec36 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -202,9 +202,9 @@
+ 	return ..()
+ 
+ /datum/reagent/buff/perception
+-	name = STATKEY_PER
++	name = "感知"
+ 	color = "#e9e98c"
+-	taste_description = "cat piss"
++	taste_description = "猫尿"
+ 	metabolization_rate = REAGENTS_METABOLISM * 0.05
+ 
+ /datum/reagent/buff/perception/on_mob_life(mob/living/carbon/M)
+-- 
+2.53.0
+

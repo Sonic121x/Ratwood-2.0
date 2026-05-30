@@ -1,0 +1,31 @@
+From 396c79c3cb56b00daee2198465d1f2f40c80c633 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:16:26 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E5=9D=9A=E9=9F=A7=E8=8D=AF?=
+ =?UTF-8?q?=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+index 2dd6be0faa..8d771a3b8f 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+@@ -87,8 +87,8 @@
+ 	output_reagents = list(/datum/reagent/buff/perception = 30)
+ 
+ /datum/alch_cauldron_recipe/end_potion
+-	name = "Potion of Enduring Fortitude"
+-	smells_like = "mountain air"
++	name = "坚韧药水"
++	smells_like = "山间空气"
+ 	skill_required = SKILL_LEVEL_EXPERT
+ 	output_reagents = list(/datum/reagent/buff/endurance = 30)
+ 
+-- 
+2.53.0
+

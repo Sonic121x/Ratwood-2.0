@@ -1,0 +1,31 @@
+From a67a2ba9d7da8adbfe578bd5fc8529671785962a Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:47:46 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=94=90=E7=9C=BC=E8=8D=AF?=
+ =?UTF-8?q?=E6=B0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+index 2dd6be0faa..22afb876e5 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipes.dm
+@@ -81,8 +81,8 @@
+ 	output_reagents = list(/datum/reagent/buff/strength = 30)
+ 
+ /datum/alch_cauldron_recipe/per_potion
+-	name = "Potion of Keen Eye"
+-	smells_like = "fire"
++	name = "锐眼药水"
++	smells_like = "火焰"
+ 	skill_required = SKILL_LEVEL_EXPERT
+ 	output_reagents = list(/datum/reagent/buff/perception = 30)
+ 
+-- 
+2.53.0
+

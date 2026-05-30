@@ -1,0 +1,34 @@
+From b0ae3dd15bf9c0175c1b9b4131b4e1b744d20808 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:50:31 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=B5=86=E6=9E=9C=E6=AF=92?=
+ =?UTF-8?q?=E8=8D=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..dd245c219d 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -266,11 +266,11 @@ A dose of ingested potion is defined as 5u, projectile deliver at most 2u, you a
+ If you want to expand on poisons theres tons of fun effects TG chemistry has that could be added, randomzied damage values for more unpredictable poison, add trait based resists instead of the clunky race check etc.*/
+ 
+ /datum/reagent/berrypoison	// Weaker poison, balanced to make you wish for death and incapacitate but not kill
+-	name = "Berry Poison"
++	name = "浆果毒药"
+ 	description = ""
+ 	reagent_state = LIQUID
+ 	color = "#47b2e0"
+-	taste_description = "bitterness"
++	taste_description = "苦涩"
+ 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+ 	harmful = TRUE
+ 
+-- 
+2.53.0
+

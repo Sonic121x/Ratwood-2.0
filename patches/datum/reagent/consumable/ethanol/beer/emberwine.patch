@@ -1,0 +1,29 @@
+From fdcffa8d778e1490d45b7e4f3a37997b61c79ed8 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:23:06 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E4=BD=99=E7=83=AC=E9=85=92?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/datums/sexcon/sexcon_reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/datums/sexcon/sexcon_reagents.dm b/code/datums/sexcon/sexcon_reagents.dm
+index a5ff2a21b8..7a9a99cc54 100644
+--- a/code/datums/sexcon/sexcon_reagents.dm
++++ b/code/datums/sexcon/sexcon_reagents.dm
+@@ -1,7 +1,7 @@
+ /datum/reagent/consumable/ethanol/beer/emberwine
+-	name = "Emberwine"
++	name = "余烬酒"
+ 	boozepwr = 20
+-	taste_description = "searing sweetness"
++	taste_description = "灼热的甜味"
+ 	taste_mult = 0.5
+ 	quality = DRINK_VERYGOOD
+ 	metabolization_rate = 0.02 * REAGENTS_METABOLISM
+-- 
+2.53.0
+
