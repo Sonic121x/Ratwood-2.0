@@ -1,0 +1,77 @@
+From 4981ae50f4bdf1bb8c50df9a701687b983747530 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/inventory.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/inventory.dm | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/inventory.dm b/code/modules/mob/living/carbon/human/inventory.dm
+--- a/code/modules/mob/living/carbon/human/inventory.dm
++++ b/code/modules/mob/living/carbon/human/inventory.dm
+@@ -407,7 +407,7 @@
+ 		return
+ 	if(!equipped_back) // We also let you equip a backpack like this
+ 		if(!thing)
+-			to_chat(src, span_warning("I have no backpack to take something out of!"))
++			to_chat(src, span_warning("我身上没有背包，没法从里面拿东西出来！"))
+ 			return
+ 		if(equip_to_slot_if_possible(thing, slot_id))
+ 			update_inv_hands()
+@@ -416,17 +416,17 @@
+ 		if(!thing)
+ 			equipped_back.attack_hand(src)
+ 		else
+-			to_chat(src, span_warning("I can't fit anything in!"))
++			to_chat(src, span_warning("我塞不进去任何东西！"))
+ 		return
+ 	if(thing) // put thing in backpack
+ 		if(thing.inv_storage_delay)
+ 			if(!move_after(src, thing.inv_storage_delay, target = thing, progress = TRUE))
+ 				return
+ 		if(!SEND_SIGNAL(equipped_back, COMSIG_TRY_STORAGE_INSERT, thing, src))
+-			to_chat(src, span_warning("I can't fit anything in!"))
++			to_chat(src, span_warning("我塞不进去任何东西！"))
+ 		return
+ 	if(!equipped_back.contents.len) // nothing to take out
+-		to_chat(src, span_warning("There's nothing in your backpack to take out!"))
++		to_chat(src, span_warning("你的背包里没有东西可取！"))
+ 		return
+ 	var/obj/item/stored = equipped_back.contents[equipped_back.contents.len]
+ 	if(!stored || stored.on_found(src))
+@@ -443,7 +443,7 @@
+ 		return
+ 	if(!equipped_belt) // We also let you equip a belt like this
+ 		if(!thing)
+-			to_chat(src, span_warning("I have no belt to take something out of!"))
++			to_chat(src, span_warning("我身上没有腰带，没法从里面拿东西出来！"))
+ 			return
+ 		if(equip_to_slot_if_possible(thing, SLOT_BELT))
+ 			update_inv_hands()
+@@ -452,17 +452,17 @@
+ 		if(!thing)
+ 			equipped_belt.attack_hand(src)
+ 		else
+-			to_chat(src, span_warning("I can't fit anything in!"))
++			to_chat(src, span_warning("我塞不进去任何东西！"))
+ 		return
+ 	if(thing) // put thing in belt
+ 		if(thing.inv_storage_delay)
+ 			if(!move_after(src, thing.inv_storage_delay, target = thing, progress = TRUE))
+ 				return
+ 		if(!SEND_SIGNAL(equipped_belt, COMSIG_TRY_STORAGE_INSERT, thing, src))
+-			to_chat(src, span_warning("I can't fit anything in!"))
++			to_chat(src, span_warning("我塞不进去任何东西！"))
+ 		return
+ 	if(!equipped_belt.contents.len) // nothing to take out
+-		to_chat(src, span_warning("There's nothing in your belt to take out!"))
++		to_chat(src, span_warning("你的腰带里没有东西可取！"))
+ 		return
+ 	var/obj/item/stored = equipped_belt.contents[equipped_belt.contents.len]
+ 	if(!stored || stored.on_found(src))
+-- 
+Translation Patch Toolkit

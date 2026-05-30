@@ -1,0 +1,47 @@
+From f8d863cf059800a8df3d4a41b2ab14778e39e852 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/human/_human.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/human/_human.dm | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/human/_human.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/human/_human.dm
+index 843abdda5c5d..22c303c13c14 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/human/_human.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/human/_human.dm
+@@ -1,5 +1,5 @@
+ /datum/species/human
+-	name = "Humanb"
++	name = "人类基型"
+ 	id = "human"
+ 
+ /datum/species/human/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+@@ -15,15 +15,15 @@
+ 
+ /datum/species/human/get_skin_list()
+ 	return sortList(list(
+-	"skin1" = "ffe0d1",
+-	"skin2" = "fcccb3"
++	"肤色1" = "ffe0d1",
++	"肤色2" = "fcccb3"
+ 	))
+ 
+ /datum/species/human/get_hairc_list()
+ 	return sortList(list(
+-	"black - nightsky" = "0a0707",
+-	"brown - treebark" = "362e25",
+-	"blonde - moonlight" = "dfc999",
+-	"red - autumn" = "a34332"
++	"黑色 - 夜空" = "0a0707",
++	"棕色 - 树皮" = "362e25",
++	"金色 - 月光" = "dfc999",
++	"红色 - 秋叶" = "a34332"
+ 	))
+ 
+-- 
+Translation Patch Toolkit

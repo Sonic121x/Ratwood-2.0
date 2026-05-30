@@ -1,0 +1,27 @@
+From 39a6c1eb09fc836af3747db19b2d39ba699c3bdd Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/special/torso.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/special/torso.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/special/torso.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/special/torso.dm
+index 76296cbb097b..5a4987132140 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/special/torso.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/special/torso.dm
+@@ -1,6 +1,6 @@
+ /datum/advclass/torso
+-	name = "Torso"
+-	tutorial = "Some horrible accident in the forest away all of your limbs!\nSurvival will be a true TRIUMPH."
++	name = "躯干求生者"
++	tutorial = "森林里那场可怕的意外夺走了你的全部四肢！\n想活下去，将会是一场真正的壮举。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/adventurer/torso
+-- 
+Translation Patch Toolkit

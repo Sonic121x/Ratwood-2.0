@@ -1,0 +1,26 @@
+From 8af9b9bc9be4d24f040bcb1c3ea24c3dc7b613e1 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/retinue.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/retinue.dm | 1 +
+ 1 file changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/retinue.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/retinue.dm
+index 53dfd7ce200b..dba3850d7b79 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/retinue.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/retinue.dm
+@@ -1,6 +1,7 @@
+ 
+ /datum/job/roguetown/heartfelt/retinue
+ 	title = "Heartfeltian Retinue"
++	display_title = "Heartfelt 扈从"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = ACCEPTED_RACES
+ 	job_traits = list(TRAIT_HEARTFELT)
+-- 
+Translation Patch Toolkit

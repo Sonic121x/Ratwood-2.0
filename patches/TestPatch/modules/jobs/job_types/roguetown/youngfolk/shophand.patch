@@ -1,0 +1,49 @@
+From f8091e993fdfd22faeb7ef835bb6e6b16b42420b Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm b/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
+index 065c62edd73a..7204f09f84a9 100644
+--- a/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
++++ b/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
+@@ -1,5 +1,6 @@
+ /datum/job/roguetown/shophand
+ 	title = "Shophand"
++	display_title = "店铺帮工"
+ 	flag = SHOPHAND
+ 	department_flag = YOUNGFOLK
+ 	faction = "Station"
+@@ -10,7 +11,7 @@
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_ages = list(AGE_ADULT)
+ 
+-	tutorial = "You work the largest store in the vale by grace of the Merchant who has shackled you to this drudgery. The work of stocking shelves and taking inventory for your employer is mind-numbing and repetitive--but at least you have a roof over your head and comfortable surroundings. With time, perhaps you will one day be more than a glorified servant."
++	tutorial = "你在谷地最大的铺子里做活，全凭那位商人把你捆死在这份苦差上。替老板补货上架、盘点存货的工作既单调又磨人心神，不过至少你还有屋顶遮头，也不必受太多风吹雨打。时日久了，也许你总有一天能不只是个穿得体面的仆役。"
+ 
+ 	outfit = /datum/outfit/job/roguetown/shophand
+ 	display_order = JDO_SHOPHAND
+@@ -28,10 +29,10 @@
+ 	)
+ 
+ /datum/advclass/shophand
+-	name = "Shophand"
+-	tutorial = "You work the largest store in the Peaks by grace of the Merchant who has shackled you to this drudgery. \
+-	The work of stocking shelves and taking inventory for your employer is mind-numbing and repetitive--but at least you have a roof over your head and comfortable surroundings. \
+-	With time, perhaps you will one day be more than a glorified servant."
++	name = "店铺帮工"
++	tutorial = "你在 Peaks 最大的铺子里做活，全凭那位商人把你捆死在这份苦差上。\
++	替老板补货上架、盘点存货的工作既单调又磨人心神，不过至少你还有屋顶遮头，也不必受太多风吹雨打。\
++	时日久了，也许你总有一天能不只是个穿得体面的仆役。"
+ 	outfit = /datum/outfit/job/roguetown/shophand/basic
+ 	category_tags = list(CTAG_SHOPHAND)
+ 	subclass_stats = list(
+-- 
+Translation Patch Toolkit

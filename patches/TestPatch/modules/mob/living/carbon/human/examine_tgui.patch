@@ -1,0 +1,73 @@
+From 4981ae50f4bdf1bb8c50df9a701687b983747530 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/examine_tgui.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/examine_tgui.dm | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/examine_tgui.dm b/code/modules/mob/living/carbon/human/examine_tgui.dm
+--- a/code/modules/mob/living/carbon/human/examine_tgui.dm
++++ b/code/modules/mob/living/carbon/human/examine_tgui.dm
+@@ -24,7 +24,7 @@
+ 	return GLOB.always_state
+ 
+ /atom/movable/screen/map_view/examine_panel_screen
+-	name = "examine panel screen"
++	name = "检视面板屏幕"
+ 
+ /datum/examine_panel/ui_interact(mob/user, datum/tgui/ui)
+ 	ui = SStgui.try_update_ui(user, src, ui)
+@@ -56,8 +56,8 @@
+ 		if(!(holder.wear_armor && holder.wear_armor.flags_inv) && !(holder.wear_shirt && holder.wear_shirt.flags_inv) && !(holder_human.underwear))
+ 			is_naked = TRUE
+ 		obscured = ((!isobserver(user)) && !holder_human.client?.prefs?.masked_examine) && ((holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE)))
+-		flavor_text = obscured ? "Obscured" : holder.flavortext
+-		flavor_text_nsfw = obscured ? "Obscured" : holder.nsfwflavortext
++		flavor_text = obscured ? "已遮蔽" : holder.flavortext
++		flavor_text_nsfw = obscured ? "已遮蔽" : holder.nsfwflavortext
+ 		nsfw_examine_always = holder_human.client?.prefs?.nsfw_examine_always
+ 		ooc_notes += holder.ooc_notes
+ 		ooc_notes_nsfw += holder.erpprefs
+@@ -107,7 +107,7 @@
+ 
+ 	var/list/data = list(
+ 		// Identity
+-		"character_name" = obscured ? "Unknown" : char_name,
++		"character_name" = obscured ? "未知" : char_name,
+ 		"headshot" = headshot,
+ 		"obscured" = obscured ? TRUE : FALSE,
+ 		// Descriptions
+@@ -139,7 +139,7 @@
+ 
+ 	var/client/C
+ 	var/web_sound_url
+-	var/artist_name = "Song Artist Hidden"
++	var/artist_name = "歌曲作者已隐藏"
+ 	var/song_title
+ 	var/list/music_extra_data = list()
+ 
+@@ -169,7 +169,7 @@
+ 				is_playing = TRUE
+ 				music_extra_data["link"] = web_sound_url
+ 				music_extra_data["title"] = song_title
+-				music_extra_data["duration"] = "Song Duration Hidden"
++				music_extra_data["duration"] = "歌曲时长已隐藏"
+ 				music_extra_data["artist"] = artist_name
+ 				C.tgui_panel?.play_music(web_sound_url, music_extra_data)
+ 			else
+@@ -177,7 +177,7 @@
+ 				C.tgui_panel?.stop_music()
+ 			return TRUE
+ 		if("vet_chat")
+-			to_chat(viewing, span_boldgreen("This player is age-verified!"))
++			to_chat(viewing, span_boldgreen("该玩家已通过年龄验证！"))
+ 			return TRUE
+ 
+ /datum/examine_panel/ui_close()
+-- 
+Translation Patch Toolkit

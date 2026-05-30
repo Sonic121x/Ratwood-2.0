@@ -1,0 +1,48 @@
+From 02bf883ca523b51ace620033d1f7cba78f0c8d8c Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/energystamina.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/carbon/energystamina.dm b/code/modules/mob/living/carbon/energystamina.dm
+--- a/code/modules/mob/living/carbon/energystamina.dm
++++ b/code/modules/mob/living/carbon/energystamina.dm
+@@ -127,20 +127,20 @@
+ 		var/y_offset
+ 		var/stamratio = stamina / max_stamina
+ 		if(stamratio >= 0.25 && ((stamina - added) / max_stamina) < 0.25)
+-			text = "<font color = '#a8af9b'>Winded</font>"
++			text = "<font color = '#a8af9b'>气喘</font>"
+ 			y_offset = BALLOON_Y_OFFSET_TIER1
+ 		if(stamratio >= 0.5 && ((stamina - added) / max_stamina) < 0.5)
+-			text = "<font color = '#d4d36c'>Drained</font>"
++			text = "<font color = '#d4d36c'>透支</font>"
+ 			y_offset = BALLOON_Y_OFFSET_TIER2
+ 		if(stamratio >= 0.75 && ((stamina - added) / max_stamina) < 0.75)
+-			text = "<font color = '#a8665a'>Fatigued</font>"
++			text = "<font color = '#a8665a'>疲惫</font>"
+ 			y_offset = BALLOON_Y_OFFSET_TIER3
+ 		if(text)
+ 			if(!HAS_TRAIT(H, TRAIT_DECEIVING_MEEKNESS))
+ 				H.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, x_offset, y_offset)
+ 			else
+ 				if(prob(10))
+-					text = "<i>Tired...?</i>"
++					text = "<i>累了吗……？</i>"
+ 					H.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, x_offset, y_offset)
+ 
+ 	if(stamina >= max_stamina)
+@@ -194,7 +194,7 @@
+ 		heart_attacking = TRUE
+ 		shake_camera(src, 1, 3)
+ 		blur_eyes(10)
+-		var/stuffy = list("ZIZO GRABS MY WEARY HEART!","ARGH! MY HEART BEATS NO MORE!","NO... MY HEART HAS BEAT IT'S LAST!","MY HEART HAS GIVEN UP!","MY HEART BETRAYS ME!","THE METRONOME OF MY LIFE STILLS!")
++		var/stuffy = list("齐佐攥住了我疲惫的心脏！","啊！我的心脏不再跳动了！","不……我的心脏已跳完最后一下！","我的心脏放弃了！","我的心脏背叛了我！","我生命的节拍器静止了！")
+ 		to_chat(src, span_userdanger("[pick(stuffy)]"))
+ 		emote("breathgasp", forced = TRUE)
+ 		addtimer(CALLBACK(src, PROC_REF(adjustOxyLoss), 110), 30)
+-- 
+Translation Patch Toolkit

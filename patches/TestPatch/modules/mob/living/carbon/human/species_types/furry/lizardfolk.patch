@@ -1,0 +1,60 @@
+From 910267123796b9cd77fdbb60bffa9c268a023f26 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/furry/lizardfolk.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/furry/lizardfolk.dm | 33 ++++++++++++++++++---------------
+ 1 file changed, 18 insertions(+), 15 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/furry/lizardfolk.dm b/code/modules/mob/living/carbon/human/species_types/furry/lizardfolk.dm
+index 23d366888293..185d6237a92b 100644
+--- a/code/modules/mob/living/carbon/human/species_types/furry/lizardfolk.dm
++++ b/code/modules/mob/living/carbon/human/species_types/furry/lizardfolk.dm
+@@ -2,23 +2,26 @@
+ 	race = /datum/species/lizardfolk
+ 
+ /datum/species/lizardfolk
+-	name = "Sissean"
++	name = "希斯人"
+ 	id = "lizardfolk"
+-	desc = "<b>Sissean</b><br>\
+-	Sissean are hardy, reptilian people that share a unique bond among their kind due to being the target \
+-	of oppression and enslavement by other races, particularly by Humans and Drakians. They take pride in \
+-	their resilience and adaptability, and they can be found all over the world for one reason or another.<br>\
+-	(+1 Constitution, +1 Willpower, Wild Eater Trait)"
+-	expanded_desc = "Sissean are hardy, reptilian people that share a unique bond among their kind due to being the target of oppression \
+-	and enslavement by other races, particularly by Humans and Drakians. They take pride in their resilience and adaptability,\
+-	and they can be found all over the world for one reason or another. Once a nomadic, tribal people, Sissean are often forced \
+-	to hide and settle in deserts, swamps, bogs, and other typically inhospitable lands. Their appearance changes based on the lands \
+-	they adapt to, allowing for crocodilian appearance if from the swamp to lizard-like appearances if from the desert. \
++	desc = "<b>希斯人</b><br>\
++	希斯人是坚韧的爬行族群。由于长期遭受其他种族，尤其是人类与德拉基安人的压迫与奴役，\
++	他们在族人之间形成了独特的纽带。\
++	他们以自己的韧性与适应力为荣，也因此出于各种原因遍布世界各地。<br>\
++	(+1 体质, +1 意志, 野食特性)"
++	expanded_desc = "希斯人是坚韧的爬行族群。由于长期遭受其他种族，尤其是人类与德拉基安人的压迫与奴役，\
++	他们在族人之间形成了独特的纽带。他们以自己的韧性与适应力为荣，\
++	也因此出于各种原因遍布世界各地。希斯人曾是游牧而部族化的民族，\
++	因此常被迫躲藏并定居于沙漠、沼泽、泥潭与其他通常并不宜居的土地。\
++	他们的外貌会随着所适应的环境而改变：来自沼泽的希斯人可能更接近鳄类，\
++	来自沙漠的则更像蜥蜴。 \
+ 	<br><br> \
+-	They can also be found in large, bustling cities, particularly slave cities where their strength, toughness, and endurance \
+-	makes them particularly valuable. Sissean often despise weakness and instead find solace in suffering. They tend to be \
+-	highly religious, although of course, no race is monolithic. In fact, some Sissean have become successful with some rising to \
+-	the rank of nobility in many different kingdoms despite all adversity, but this often makes them targets of their jealous peers."
++	他们也可以在庞大而繁忙的城市中见到，尤其是在奴隶城市里，\
++	在那里，他们的力量、坚韧与耐力让他们格外“值钱”。\
++	希斯人往往鄙视软弱，反而从苦难中寻得安慰。\
++	他们大都极为虔诚，当然，没有哪个种族真的是铁板一块。\
++	事实上，也有不少希斯人获得了成功，有些人甚至顶着重重逆境在许多王国中跻身贵族之列，\
++	只是这往往也让他们成为嫉妒同侪的眼中钉。"
+ 	skin_tone_wording = "Skin Colors"
+ 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
+ 	possible_ages = ALL_AGES_LIST
+-- 
+Translation Patch Toolkit

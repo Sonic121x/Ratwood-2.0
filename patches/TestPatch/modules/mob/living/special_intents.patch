@@ -1,0 +1,206 @@
+From f8cd42fe13f9d7617ca6015d5b51ad8298cc3a69 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/special_intents.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/special_intents.dm b/code/modules/mob/living/special_intents.dm
+--- a/code/modules/mob/living/special_intents.dm
++++ b/code/modules/mob/living/special_intents.dm
+@@ -10,8 +10,8 @@
+ This allows the devs to draw whatever shape they want at the cost of it feeling a little quirky.
+ */
+ /datum/special_intent
+-	var/name = "special intent"
+-	var/desc = "desc"
++	var/name = "特殊招式"
++	var/desc = "描述"
+ 
+ 	var/mob/living/howner
+ 	var/atom/movable/iparent
+@@ -96,11 +96,11 @@
+ 		return TRUE
+ 
+ /datum/special_intent/proc/get_examine()
+-	var/str = "<details><summary><b>SPECIAL:</b> [name]</summary>"
++	var/str = "<details><summary><b>特殊招式：</b>[name]</summary>"
+ 	str +="<i>[desc]</i>"
+ 	if(range)
+-		str += "\n<i>Max Range: ["\Roman [range]"]"
+-	str +="\n<i><font size = 1>This ability can be used by right clicking while in STRONG stance or by using the Special MMB.</font></i></details>"
++		str += "\n<i>最大距离：["\Roman [range]"]"
++	str +="\n<i><font size = 1>该能力可在 STRONG 架势下右键使用，或通过特殊中键技能施放。</font></i></details>"
+ 	return str
+ 
+ ///Called by external sources -- likely an rclick or mmb. By default the 'target' will be stored as a turf.
+@@ -144,7 +144,7 @@
+ /datum/special_intent/proc/check_range(atom/source, atom/target)
+ 	if(range)
+ 		if((get_dist(get_turf(source), get_turf(target)) > range) || source.z != target.z)
+-			to_chat(source, span_warning("It's too far!"))
++			to_chat(source, span_warning("太远了！"))
+ 			return FALSE
+ 	return TRUE
+ 
+@@ -252,7 +252,7 @@
+ 		succeeded = TRUE	//We only want to succeed one do after, cus otherwise it'll try to repeat it per-tile / timer. Glitchy!
+ 		return TRUE
+ 	else
+-		to_chat(howner, span_warning("I was interrupted!"))
++		to_chat(howner, span_warning("我被打断了！"))
+ 		cancelled = TRUE
+ 		return FALSE
+ 
+@@ -274,7 +274,7 @@
+ 				respect_adjacency = FALSE //This ensures multi-timer patterns that call this proc won't get tripped up.
+ 				break
+ 		if(!is_adjacent)
+-			to_chat(howner, span_danger("I moved too far from my manoeuvre!"))
++			to_chat(howner, span_danger("我离自己的招式动作太远了！"))
+ 			return
+ 	if(post_icon_state)
+ 		for(var/turf/T in turfs)
+@@ -308,7 +308,7 @@
+ 	if(!istype(iparent, /obj/item/rogueweapon))
+ 		return
+ 	var/obj/item/rogueweapon/W = iparent
+-	var/msg = "<font color = '#c2663c'>[name] strikes [target]!"
++	var/msg = "<font color = '#c2663c'>[name]击中了[target]！"
+ 	if(ishuman(target))
+ 		var/mob/living/carbon/human/HT = target
+ 		var/obj/item/bodypart/affecting = HT.get_bodypart(zone)
+@@ -319,7 +319,7 @@
+ 			armor_block = 0		//You block NOTHING, sir!
+ 		if(HT.apply_damage(dam, W.damtype, affecting, armor_block))
+ 			affecting.bodypart_attacked_by(bclass, dam, howner, armor = armor_block, crit_message = TRUE, weapon = W)
+-			msg += "<b> It pierces through to their flesh!</b>"
++			msg += "<b> 它贯穿了对方的血肉！</b>"
+ 			playsound(HT, pick(W.hitsound), 80, TRUE)
+ 	else
+ 		target.attacked_by(W, howner)
+@@ -331,8 +331,8 @@
+ //Consequently, however, it does NOT support custom timers and will only work with the default delay var.
+ //If you want a pattern with multiple rectangles you'll either have to deploy multiples of these, or use a custom, tile-by-tile one.
+ /datum/special_intent/rectangle
+-	name = "base type of a rectangle preset"
+-	desc = "do not use me, use my children"
++	name = "矩形预设基类"
++	desc = "不要直接使用我，请使用我的子类"
+ 	tile_coordinates = list()
+ 	use_clickloc = TRUE
+ 	respect_adjacency = FALSE
+@@ -388,8 +388,8 @@
+ */
+ 
+ /datum/special_intent/side_sweep
+-	name = "Distracting Swipe"
+-	desc = "Swings at your primary flank in a distracting fashion. Anyone caught in it will be exposed for a short while."
++	name = "扰敌横挥"
++	desc = "朝主要侧翼做出扰敌横扫。被卷入其中的目标会在短时间内暴露破绽。"
+ 	tile_coordinates = list(list(0,0), list(1,0), list(1,-1))	//L shape that hugs our -right- flank.
+ 	post_icon_state = "sweep_fx"
+ 	pre_icon_state = "trap"
+@@ -432,8 +432,8 @@
+ 	..()
+ 
+ /datum/special_intent/shin_swipe
+-	name = "Shin Prod"
+-	desc = "A hasty attack at the legs, extending ourselves. Slows down the opponent if hit."
++	name = "胫骨突刺"
++	desc = "迅疾地向腿部发起延展攻击。命中时会减缓对手速度。"
+ 	tile_coordinates = list(list(0,0), list(1,0), list(-1,0))
+ 	post_icon_state = "sweep_fx"
+ 	pre_icon_state = "trap"
+@@ -460,8 +460,8 @@
+ 	..()
+ 
+ /datum/special_intent/piercing_lunge
+-	name = "Piercing Lunge"
+-	desc = "A planned attack at the chest, extending ourselves. Pierces our enemy's armor and knocks the wind from them."
++	name = "穿刺突进"
++	desc = "朝胸口预判而发的延展突刺。可穿透敌人的护甲并令其气息一滞。"
+ 	tile_coordinates = list(list(0,0), list(0,1))
+ 	post_icon_state = "stab"
+ 	pre_icon_state = "trap"
+@@ -487,8 +487,8 @@
+ 
+ //Hard to hit, freezes you in place. Offbalances & slows the targets hit. If they're already offbalanced they get knocked down.
+ /datum/special_intent/ground_smash
+-	name = "Ground Smash"
+-	desc = "Swings downward, leaving a traveling quake for a few tiles. Anyone struck by it will be slowed and offbalanced, or knocked down if they're already off-balanced."
++	name = "震地猛击"
++	desc = "向下猛砸，在数格范围内留下蔓延的震波。命中者会被减速并失衡；若已失衡，则会被击倒。"
+ 	tile_coordinates = list(list(0,0), list(0,1, 0.1 SECONDS), list(0,2, 0.2 SECONDS))
+ 	post_icon_state = "kick_fx"
+ 	pre_icon_state = "trap"
+@@ -533,8 +533,8 @@
+ 
+ 
+ /datum/special_intent/flail_sweep
+-	name = "Flail Sweep"
+-	desc = "Swings in a perfect circle all around you, pushing people aside. The more are struck, the more powerful the effect."
++	name = "链枷横扫"
++	desc = "以自身为中心做出完美圆形横扫，将周围的人尽数拨开。命中的目标越多，效果越强。"
+ 	tile_coordinates = SPECIAL_AOE_AROUND_ORIGIN
+ 	post_icon_state = "sweep_fx"
+ 	pre_icon_state = "trap"
+@@ -602,8 +602,8 @@
+ #define AXE_SWING_GRID_MIRROR	list(list(-1,0, 0.4 SECONDS), list(0,0, 0.2 SECONDS), list(1,0))
+ 
+ /datum/special_intent/axe_swing
+-	name = "Hefty Swing"
+-	desc = "Swings from left to right. Anyone caught in the swing get immobilized and exposed."
++	name = "沉重挥击"
++	desc = "自左向右挥出重击。任何被扫中的目标都会被定住并暴露破绽。"
+ 	tile_coordinates = AXE_SWING_GRID_DEFAULT
+ 	post_icon_state = "sweep_fx"
+ 	pre_icon_state = "trap"
+@@ -649,8 +649,8 @@
+ #undef AXE_SWING_GRID_MIRROR
+ 
+ /datum/special_intent/whip_coil
+-	name = "Whip Coil"
+-	desc = "A long-range lash that coils around the ankles of the target, immobilizing them."
++	name = "长鞭缠足"
++	desc = "一次远距离抽击，缠住目标脚踝，使其动弹不得。"
+ 	tile_coordinates = list(list(0,0))	//Just one tile exactly where our cursor is.
+ 	post_icon_state = "strike"
+ 	pre_icon_state = "trap"
+@@ -682,8 +682,8 @@
+ #define GAREN_WAVE2 1.4 SECONDS
+ 
+ /datum/special_intent/greatsword_swing
+-	name = "Great Swing"
+-	desc = "Swing your greatsword all around you in a ring of Judgement."
++	name = "巨刃回环"
++	desc = "挥舞巨剑，在周身划出一圈审判之环。"
+ 	tile_coordinates = list(
+ 		list(0,0), list(1,0), list(1,-1),list(1,-2),list(0,-2),list(-1,-2),list(-1,-1),list(-1,0),\
+ 		list(0,1, GAREN_WAVE1), list(1,1, GAREN_WAVE1), list(-1,1, GAREN_WAVE1),list(1,-3, GAREN_WAVE1),list(0,-3, GAREN_WAVE1),list(-1,-3, GAREN_WAVE1),list(-2,0, GAREN_WAVE1),list(-2,-1, GAREN_WAVE1),list(-2,-2, GAREN_WAVE1),list(2,0, GAREN_WAVE1),list(2,-1, GAREN_WAVE1),list(2,-2, GAREN_WAVE1),\
+@@ -747,8 +747,8 @@
+ #undef GAREN_WAVE2
+ 
+ /datum/special_intent/upper_cut // 1x1 combo finisher, exposed targets get knocked down and take alot of damage, others take low damage.
+-	name = "Upper Cut"
+-	desc = "Charge up a devastating strike infront of you, if the target is Exposed they will fall over and be flung back with tremendous damage, if not exposed they will be pushed slightly back.."
++	name = "上勾重击"
++	desc = "在身前蓄力打出毁灭性一击。若目标处于暴露状态，将被击倒并重重轰飞；若未暴露，则只会被稍微击退。"
+ 	tile_coordinates = list(list(0,0))
+ 	post_icon_state = "kick_fx"
+ 	pre_icon_state = "trap"
+@@ -804,8 +804,8 @@
+ 
+ 
+ /datum/special_intent/polearm_backstep
+-	name = "Backstep"
+-	desc = "A defensive used to quickly gain distance, shoving back any pursuer backwards, slowing and exposing them."
++	name = "后撤步"
++	desc = "一种用来迅速拉开距离的防御技巧，会将追击者向后推开，并使其减速、暴露破绽。"
+ 	tile_coordinates = list(
+ 		list(0,-1), list(1,-1), list(-1,-1)
+ 		)
+-- 
+Translation Patch Toolkit

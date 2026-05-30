@@ -1,0 +1,27 @@
+From 850d8b626d3ab7128b9985b9aee26ac8fab0f781 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/vagabond/failed_apprentice.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/youngfolk/vagabond/failed_apprentice.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/failed_apprentice.dm b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/failed_apprentice.dm
+index 4eea3d57f51d..50504b9791da 100644
+--- a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/failed_apprentice.dm
++++ b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/failed_apprentice.dm
+@@ -1,6 +1,6 @@
+ /datum/advclass/vagabond_mage
+-	name = "Exiled Apprentice"
+-	tutorial = "Your master found you talentless, and cast you from their tower with nothing but your staff and dreams of what could've been."
++	name = "放逐学徒"
++	tutorial = "你的导师认定你毫无天赋，于是把你连同那根法杖和对未竟前程的妄想一起赶出了高塔。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/vagabond/mage
+-- 
+Translation Patch Toolkit

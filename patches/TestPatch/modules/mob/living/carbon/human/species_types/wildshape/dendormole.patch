@@ -1,0 +1,122 @@
+From d2fc71108c391b9519af6fcb530492afbdb47ef6 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/wildshape/dendormole.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/wildshape/dendormole.dm | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/wildshape/dendormole.dm b/code/modules/mob/living/carbon/human/species_types/wildshape/dendormole.dm
+index 42b302d420a6..f4c0ecd249d0 100644
+--- a/code/modules/mob/living/carbon/human/species_types/wildshape/dendormole.dm
++++ b/code/modules/mob/living/carbon/human/species_types/wildshape/dendormole.dm
+@@ -1,5 +1,5 @@
+ /mob/living/carbon/human/species/wildshape/dendormole //The baseline and tracker of the wildshapes
+-	name = "Moss Crawler"
++	name = "苔爬兽"
+ 	race = /datum/species/dendormole
+ 	footstep_type = FOOTSTEP_MOB_CLAW
+ 	ambushable = FALSE
+@@ -31,12 +31,12 @@
+ 		src.STASPD = 13
+ 
+ 		AddSpell(new /obj/effect/proc_holder/spell/self/moleclaw)
+-		real_name = "moss crawler"
++		real_name = "苔爬兽"
+ 
+ 
+ // dendormole SPECIES DATUM //
+ /datum/species/dendormole
+-	name = "Moss Crawler"
++	name = "苔爬兽"
+ 	id = "dendormole"
+ 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
+ 	inherent_traits = list(
+@@ -97,7 +97,7 @@
+ // MOLE SPECIFIC ITEMS //
+ /obj/item/clothing/suit/roguetown/armor/skin_armor/moss_skin
+ 	slot_flags = null
+-	name = "aged moss shell"
++	name = "古老苔壳"
+ 	desc = ""
+ 	icon_state = null
+ 	body_parts_covered = FULL_BODY
+@@ -111,39 +111,39 @@
+ 	item_flags = DROPDEL
+ 
+ /datum/intent/simple/mole 
+-	name = "MAUL"
++	name = "撕咬"
+ 	clickcd = 10
+ 	icon_state = "incut"
+ 	blade_class = BCLASS_CUT
+-	attack_verb = list("claws", "mauls", "eviscerates")
++	attack_verb = list("抓挠", "撕扯", "开膛")
+ 	animname = "cut"
+ 	hitsound = "genslash"
+ 	penfactor = 15
+ 	candodge = TRUE
+ 	canparry = TRUE
+-	miss_text = "slashes the air!"
++	miss_text = "扑了个空！"
+ 	miss_sound = "bluntswoosh"
+ 	item_d_type = "slash"
+ 
+ /datum/intent/simple/mole/dig
+-	name = "DIG"
++	name = "挖掘"
+ 	clickcd = 14
+ 	damfactor = 1.2
+ 	swingdelay = 6
+ 	icon_state = "insmash"
+ 	blade_class = BCLASS_SMASH
+-	attack_verb = list("digs", "excavates", "perforates")
++	attack_verb = list("挖掘", "掘开", "穿凿")
+ 	animname = "cut"
+ 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+ 	penfactor = BLUNT_DEFAULT_PENFACTOR
+ 	candodge = TRUE
+ 	canparry = TRUE
+-	miss_text = "smashes the air!"
++	miss_text = "砸了个空！"
+ 	miss_sound = "bluntswoosh"
+ 	item_d_type = "blunt"
+ 
+ /obj/item/rogueweapon/mole_claw //Like a less defense dagger
+-	name = "mole claw"
++	name = "鼹爪"
+ 	desc = ""
+ 	item_state = null
+ 	lefthand_file = null
+@@ -187,8 +187,8 @@
+ 		user.dropItemToGround(inactive, TRUE)
+ 
+ /obj/effect/proc_holder/spell/self/moleclaw
+-	name = "Burrow Claws"
+-	desc = "Extend your digging claws."
++	name = "掘地利爪"
++	desc = "伸出你用于掘地的利爪。"
+ 	overlay_state = "claws"
+ 	antimagic_allowed = TRUE
+ 	recharge_time = 40
+@@ -207,12 +207,12 @@
+ 			user.dropItemToGround(active, TRUE)
+ 		if(istype(inactive, /obj/item/rogueweapon/mole_claw) && inactive != active)
+ 			user.dropItemToGround(inactive, TRUE)
+-		to_chat(user, span_notice("My claws retract."))
++		to_chat(user, span_notice("我的利爪收了回去。"))
+ 		extended = FALSE
+ 	else
+ 		l = new(user, 1)
+ 		r = new(user, 2)
+ 		user.put_in_hands(l, TRUE, FALSE, TRUE)
+ 		user.put_in_hands(r, TRUE, FALSE, TRUE)
+-		to_chat(user, span_notice("My claws extend."))
++		to_chat(user, span_notice("我的利爪伸了出来。"))
+ 		extended = TRUE
+-- 
+Translation Patch Toolkit

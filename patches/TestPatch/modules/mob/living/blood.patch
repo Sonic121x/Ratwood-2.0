@@ -1,0 +1,86 @@
+From dd2ca84c0e0b18dcd8e26ec6715654d9a0be540e Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/blood.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/blood.dm b/code/modules/mob/living/blood.dm
+--- a/code/modules/mob/living/blood.dm
++++ b/code/modules/mob/living/blood.dm
+@@ -12,7 +12,7 @@
+ /mob/living/proc/resume_bleeding()
+ 	bleedsuppress = 0
+ 	if(stat != DEAD && bleed_rate)
+-		to_chat(src, span_warning("The blood soaks through my bandage."))
++		to_chat(src, span_warning("鲜血浸透了我的绷带。"))
+ 
+ /mob/living/carbon/monkey/handle_blood()
+ 	if(HAS_TRAIT(src, TRAIT_HUSK)) //husked people do not pump the blood.
+@@ -34,24 +34,24 @@
+ 			switch(blood_volume)
+ 				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+ 					if(prob(3))
+-						to_chat(src, span_warning("I feel dizzy."))
++						to_chat(src, span_warning("我感到一阵眩晕。"))
+ 					remove_status_effect(/datum/status_effect/debuff/bleedingworse)
+ 					remove_status_effect(/datum/status_effect/debuff/bleedingworst)
+ 					apply_status_effect(/datum/status_effect/debuff/bleeding)
+ 				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+ 					if(prob(3))
+ 						blur_eyes(6)
+-						to_chat(src, span_warning("I feel faint."))
++						to_chat(src, span_warning("我感到头昏眼花。"))
+ 					remove_status_effect(/datum/status_effect/debuff/bleeding)
+ 					remove_status_effect(/datum/status_effect/debuff/bleedingworst)
+ 					apply_status_effect(/datum/status_effect/debuff/bleedingworse)
+ 				if(0 to BLOOD_VOLUME_BAD)
+ 					if(prob(3))
+ 						blur_eyes(6)
+-						to_chat(src, span_warning("I feel faint."))
++						to_chat(src, span_warning("我感到头昏眼花。"))
+ 					if(prob(3) && !IsUnconscious())
+ 						Unconscious(rand(5 SECONDS,10 SECONDS))
+-						to_chat(src, span_warning("I feel drained."))
++						to_chat(src, span_warning("我感到精疲力竭。"))
+ 					remove_status_effect(/datum/status_effect/debuff/bleedingworse)
+ 					remove_status_effect(/datum/status_effect/debuff/bleeding)
+ 					apply_status_effect(/datum/status_effect/debuff/bleedingworst)
+@@ -127,20 +127,20 @@
+ 				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+ 					current_bleeding_tier = 1
+ 					if(prob(3))
+-						to_chat(src, span_warning("I feel dizzy."))
++						to_chat(src, span_warning("我感到一阵眩晕。"))
+ 				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+ 					current_bleeding_tier = 2
+ 					if(prob(3))
+ 						blur_eyes(6)
+-						to_chat(src, span_warning("I feel faint."))
++						to_chat(src, span_warning("我感到头昏眼花。"))
+ 				if(0 to BLOOD_VOLUME_BAD)
+ 					current_bleeding_tier = 3
+ 					if(prob(3))
+ 						blur_eyes(6)
+-						to_chat(src, span_warning("I feel faint."))
++						to_chat(src, span_warning("我感到头昏眼花。"))
+ 					if(prob(3))
+ 						Unconscious(rand(5 SECONDS,10 SECONDS))
+-						to_chat(src, span_warning("I feel drained."))
++						to_chat(src, span_warning("我感到精疲力竭。"))
+ 				else
+ 					current_bleeding_tier = bleeding_tier
+ 
+@@ -233,7 +233,7 @@
+ 	var/old_volume = blood_volume
+ 	blood_volume = max(blood_volume - amt, 0)
+ 	if (old_volume > 0 && !blood_volume) // it looks like we've just bled out. bummer.
+-		to_chat(src, span_userdanger("The last of your lyfeblood ebbs from your ravaged body and soaks the cold earth below..."))
++		to_chat(src, span_userdanger("你残破身体中最后的生血缓缓流尽，渗入下方冰冷的泥土……"))
+ 	record_round_statistic(STATS_BLOOD_SPILT, amt)
+ 	if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
+ 		add_drip_floor(src.loc, amt)
+-- 
+Translation Patch Toolkit

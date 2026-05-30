@@ -1,7 +1,16 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/new_player/new_player.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
 diff --git a/code/modules/mob/dead/new_player/new_player.dm b/code/modules/mob/dead/new_player/new_player.dm
 --- a/code/modules/mob/dead/new_player/new_player.dm
 +++ b/code/modules/mob/dead/new_player/new_player.dm
-@@ -218,7 +218,7 @@
+@@ -218,6 +218,6 @@
  			return
  /*#ifdef MATURESERVER
  		if(key && (world.time < GLOB.respawntimes[key] + RESPAWNTIME))
@@ -9,7 +18,6 @@ diff --git a/code/modules/mob/dead/new_player/new_player.dm b/code/modules/mob/d
 +			to_chat(usr, span_warning("我会在 [GLOB.respawntimes[key] + RESPAWNTIME - world.time] 后返回。"))
  			return
  #else*/
- 
 @@ -364,43 +364,43 @@
  /proc/get_job_unavailable_error_message(retval, jobtitle)
  	switch(retval)
@@ -166,3 +174,5 @@ diff --git a/code/modules/mob/dead/new_player/new_player.dm b/code/modules/mob/d
  		ineligible_for_roles = TRUE
  		ready = PLAYER_NOT_READY
  		if(has_antags)
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,42 @@
+From 190a1290c4f18ca1c3b62b9eb779cb27b4912b7f Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/human/humen.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/human/humen.dm | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/human/humen.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/human/humen.dm
+index 49598dd6d69c..ed49c53e864f 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/human/humen.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/human/humen.dm
+@@ -4,16 +4,13 @@
+ /datum/species/human/northern
+ 	name = "Humen"
+ 	id = "humen"
+-	desc = "<b>Humen</b><br>\
+-	Humens (or \"Humans\") are the eldest of the Weeping God's creations. Noted for their \
+-	tenacity and overwhelming population, humens are the most commonly seen race across the lands, \
+-	at a rate of about ten to one in regions such as Grenzelhoft. However, to the west \
+-	the opposite is true. Humens come from a vast swathe of cultures and ethnicities, most of which \
+-	have historically been at odds with one another. Being the eldest creations of the Weeping God, humens \
+-	tend to find fortune easier than the other races, and are so diverse that no other racial traits \
+-	are dominant in their species.<br>\
+-	(+1 Willpower, +1 Intelligence, Humen Ingenuity Trait)"
+-
++	desc = "<b>人类</b><br>\
++	人类是泣神最古老的造物。他们以坚韧与庞大人口著称，\
++	是这片大地上最常见的种族；在格伦泽尔霍夫特等地区，其比例大约能达到十比一。\
++	然而在西方，情况则恰好相反。人类来自极其广阔的文化与族裔谱系，\
++	其中大多数在历史上互相对立。作为泣神最早的造物，人类往往比其他种族更容易得到机运，\
++	而且其内部差异极为丰富，以至于没有任何单一的种族特征能主导整个人类族群。<br>\
++	(+1 意志, +1 智力, 人类巧思特性)"
+ 	skin_tone_wording = "Ancestry"
+ 
+ 	default_color = "FFFFFF"
+-- 
+Translation Patch Toolkit

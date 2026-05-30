@@ -1,0 +1,34 @@
+From d48c431ea5293513121d12d2a9413107158d1943 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm b/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
+index ca5952ff4799..73eef7857d77 100644
+--- a/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
++++ b/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
+@@ -1,5 +1,6 @@
+ /datum/job/roguetown/mercenary
+ 	title = "Mercenary"
++	display_title = "佣兵"
+ 	flag = WANDERERS
+ 	department_flag = WANDERERS
+ 	faction = "Station"
+@@ -7,7 +8,7 @@
+ 	spawn_positions = 8
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+-	tutorial = "Blood stains your hands and the coins you hold. You are a sell-sword, a mercenary, a contractor of war. Where you come from, what you are, who you serve.. none of it matters. What matters is that the mammon flows to your pocket."
++	tutorial = "鲜血沾在你的双手上，也浸在你握着的钱币里。你是卖剑为生之人，是佣兵，是把战争当差事接下来的承包者。你来自何方、是何出身、效忠何人……都不重要。真正重要的，只有钱财是否流进了你的口袋。"
+ 	display_order = JDO_MERCENARY
+ 	selection_color = JCOLOR_WANDERER
+ 	min_pq = 2		//Will be handled by classes if PQ limiting is needed. --But Until then, learn escalation, mercs.
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,31 @@
+From 16afc9fbc9c9fa2126bce780443c076f1243fba5 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
+index 4fd2a00dff6e..a0d470548d7b 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
+@@ -1,8 +1,8 @@
+ /datum/advclass/farmermaster
+-	name = "Master Farmer"
+-	tutorial = "A master farmer, a story simlar to the likes of Goliath and David, \
+-	You, a simple peasent, through sheer determination have conquered nature \
+-	and made it bow before your green thumb."
++	name = "农耕大师"
++	tutorial = "你是一名农耕大师，活像大卫战胜歌利亚那般的传奇。\
++	你本只是个朴素农人，却凭着一股狠劲征服了自然。\
++	如今万物都要向你那双绿拇指低头。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/adventurer/farmermaster
+-- 
+Translation Patch Toolkit

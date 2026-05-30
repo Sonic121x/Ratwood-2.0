@@ -1,0 +1,48 @@
+From 388e081f1880f5905c3302e7bba15fd077d97780 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/goblin/goblinp.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/goblin/goblinp.dm | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/goblin/goblinp.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/goblin/goblinp.dm
+index 8adea93c76eb..d05f452ce0c9 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/goblin/goblinp.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/goblin/goblinp.dm
+@@ -4,13 +4,13 @@
+ /datum/species/goblinp
+ 	name = "Goblin"
+ 	id = "goblinp"
+-	desc = "<b>Goblin</b><br>\
+-	A clever and stubborn nature are two charitable qualities of a goblin - scheming and selfish are less so. The Fell Gods use them as an avatar of malice, sending out \
+-	mindless, enthralled waves of the creatures to attack civilization from lunar portals. It leaves the typical goblinoid to cloister in their hidden away tribes, stealing \
+-	from the scraps out of fear of reprisal while shooing away outsiders. The cities of Man typically shun them, but it's not unheard of to see one pushing their luck in a \
+-	town square or out on a well-traveled road, as even the most backwater peasant can tell the difference between a sapient one and portal-spawn. Usually.<br>\
+-	(+1 Speed, Dark Vision Trait)"
+-	species_traits = list(EYECOLOR,LIPS,STUBBLE)
++	desc = "<b>地精</b><br>\
++	若要替地精说点好话，“机灵”和“倔强”或许还算得上；至于“诡计多端”与“自私自利”，就没那么体面了。\
++	邪堂诸神将他们当作恶意的化身，从月亮传送门中驱出一波又一波失去心智、受其奴役的地精去袭击文明世界。\
++	这也让大多数地精只能蜇缩在隐秘的部落中，靠拾荒偷窃苟活，既惧怕报复，又驱赶外人。\
++	人类城市通常排斥他们，但偶尔也能见到某个地精在镇上广场或常走的道路上碰碰运气；\
++	毕竟就连最闭塞的乡下农夫，通常也分得清有理智的地精和从传送门里钻出来的怪物。通常如此。<br>\
++	(+1 速度, 黑暗视觉特性)"	species_traits = list(EYECOLOR,LIPS,STUBBLE)
+ 	possible_ages = ALL_AGES_LIST
+ 	use_skintones = TRUE
+ 	skin_tone_wording = "Skin Color"
+@@ -78,7 +78,7 @@
+ 		/datum/language/orcish
+ 	)
+ 	stress_examine = TRUE
+-	stress_desc = span_red("Horrid little goblin...")
++	stress_desc = span_red("可憎的小地精……")
+ 	descriptor_choices = list(
+ 		/datum/descriptor_choice/height,
+ 		/datum/descriptor_choice/body,
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,161 @@
+From 7e6615e9643277cfdcb8056b7a116a8e6a937d5f Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/new_player/sprite_accessory/neck_features.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+diff --git a/code/modules/mob/dead/new_player/sprite_accessory/neck_features.dm b/code/modules/mob/dead/new_player/sprite_accessory/neck_features.dm
+index 1d919501c152..d970b00108a3 100644
+--- a/code/modules/mob/dead/new_player/sprite_accessory/neck_features.dm
++++ b/code/modules/mob/dead/new_player/sprite_accessory/neck_features.dm
+@@ -7,117 +7,117 @@
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff
+ 	abstract_type = /datum/sprite_accessory/neck_feature/moth_fluff
+-	color_key_name = "Fluff"
++	color_key_name = "绒毛"
+ 	icon = 'icons/mob/sprite_accessory/neck_features/moth_fluff.dmi'
+ 	default_colors = list("#FFFFFF")
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/plain
+-	name = "Plain"
++	name = "普通"
+ 	icon_state = "plain"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/monarch
+-	name = "Monarch"
++	name = "帝王斑蝶"
+ 	icon_state = "monarch"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/luna
+-	name = "Luna"
++	name = "月神蛾"
+ 	icon_state = "luna"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/atlas
+-	name = "Atlas"
++	name = "阿特拉斯蛾"
+ 	icon_state = "atlas"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/reddish
+-	name = "Reddish"
++	name = "泛红"
+ 	icon_state = "redish"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/royal
+-	name = "Royal"
++	name = "皇家"
+ 	icon_state = "royal"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/gothic
+-	name = "Gothic"
++	name = "哥特"
+ 	icon_state = "gothic"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/lovers
+-	name = "Lovers"
++	name = "恋人"
+ 	icon_state = "lovers"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/whitefly
+-	name = "White Fly"
++	name = "白粉虱"
+ 	icon_state = "whitefly"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/punished
+-	name = "Burnt Off"
++	name = "烧焦残翼"
+ 	icon_state = "burnt_off"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/firewatch
+-	name = "Firewatch"
++	name = "火焰守望"
+ 	icon_state = "firewatch"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/deathhead
+-	name = "Deathshead"
++	name = "骷髅纹"
+ 	icon_state = "deathhead"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/poison
+-	name = "Poison"
++	name = "毒纹"
+ 	icon_state = "poison"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/ragged
+-	name = "Ragged"
++	name = "破损"
+ 	icon_state = "ragged"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/moonfly
+-	name = "Moon Fly"
++	name = "月蛾"
+ 	icon_state = "moonfly"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/snow
+-	name = "Snow"
++	name = "雪白"
+ 	icon_state = "snow"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/oakworm
+-	name = "Oak Worm"
++	name = "栎蚕蛾"
+ 	icon_state = "oakworm"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/jungle
+-	name = "Jungle"
++	name = "丛林"
+ 	icon_state = "jungle"
+ 
+ /datum/sprite_accessory/neck_feature/moth_fluff/witchwing
+-	name = "Witch Wing"
++	name = "女巫之翼"
+ 	icon_state = "witchwing"
+ 
+ /datum/sprite_accessory/neck_feature/mammal_fluff
+ 	abstract_type = /datum/sprite_accessory/neck_feature/mammal_fluff
+-	color_key_name = "Fluff"
++	color_key_name = "绒毛"
+ 	icon = 'icons/mob/sprite_accessory/neck_features/mammal_fluff.dmi'
+ 
+ /datum/sprite_accessory/neck_feature/mammal_fluff/fluff
+-	name = "Fluff"
++	name = "绒毛"
+ 	icon_state = "fluff"
+ 
+ /datum/sprite_accessory/neck_feature/mammal_fluff/fluff_front
+-	name = "Fluff (Top)"
++	name = "绒毛（上方）"
+ 	icon_state = "ffluff"
+ 	relevant_layers = list(BODY_FRONT_LAYER)
+ 
+ /datum/sprite_accessory/neck_feature/mammal_fluff/fluff_dual
+-	name = "Fluff Dual"
++	name = "双色绒毛"
+ 	icon_state = "fluffdual"
+ 	color_keys = 2
+-	color_key_names = list("Fluff", "Front")
++	color_key_names = list("绒毛", "前部")
+ 
+ /datum/sprite_accessory/neck_feature/mammal_fluff/fluff_dual_front
+-	name = "Fluff Dual (Top)"
++	name = "双色绒毛（上方）"
+ 	icon_state = "ffluffdual"
+ 	relevant_layers = list(BODY_FRONT_LAYER)
+ 	color_keys = 2
+-	color_key_names = list("Fluff", "Front")
++	color_key_names = list("绒毛", "前部")
+ 
+ /datum/sprite_accessory/neck_feature/mammal_fluff/insect_m
+-	name = "Insect (Male)"
++	name = "昆虫（雄）"
+ 	icon_state = "insectm"
+ 
+ /datum/sprite_accessory/neck_feature/mammal_fluff/insect_f
+-	name = "Insect (Female)"
++	name = "昆虫（雌）"
+ 	icon_state = "insectf"
+-- 
+Translation Patch Toolkit

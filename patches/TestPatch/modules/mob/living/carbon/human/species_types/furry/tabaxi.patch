@@ -1,0 +1,57 @@
+From d648c4581447cf9a60bea02901665d86c7891813 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/furry/tabaxi.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/furry/tabaxi.dm | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/furry/tabaxi.dm b/code/modules/mob/living/carbon/human/species_types/furry/tabaxi.dm
+index 619a5d57ab97..cbe978e5de57 100644
+--- a/code/modules/mob/living/carbon/human/species_types/furry/tabaxi.dm
++++ b/code/modules/mob/living/carbon/human/species_types/furry/tabaxi.dm
+@@ -2,24 +2,24 @@
+ 	race = /datum/species/tabaxi
+ 
+ /datum/species/tabaxi
+-	name = "Tabaxi"
++	name = "塔巴西"
+ 	id = "tabaxi"
+ 
+ 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | SLIME_EXTRACT
+ 
+-	desc = "<b>Tabaxi</b><br>\
+-	Tabaxi are taller than most humans at six to seven feet. \
+-	Their bodies are slender and covered in spotted or striped fur. \
+-	Like most felines, Tabaxi have long tails and retractable claws.<br>\
+-	(+1 Speed, Light Steps Trait)"
+-
+-	expanded_desc = "Tabaxi are taller than most humans at six to seven feet. \
+-	Their bodies are slender and covered in spotted or striped fur. \
+-	Like most felines, Tabaxi have long tails and retractable claws. \
+-	Tabaxi fur color ranges from light yellow to brownish red. \
+-	Tabaxi eyes are slit-pupilled and usually green or yellow. \
+-	Tabaxi are competent swimmers and climbers as well as speedy runners. \
+-	They have a good sense of balance and an acute sense of smell."
++	desc = "<b>塔巴西</b><br>\
++	塔巴西通常比大多数人类更高，身高大致在六到七英尺之间。\
++	他们身形修长，全身覆盖着斑点或条纹皮毛。\
++	与大多数猫科生物一样，塔巴西拥有长尾与可伸缩的利爪。<br>\
++	(+1 速度, 轻步特性)"
++
++	expanded_desc = "塔巴西通常比大多数人类更高，身高大致在六到七英尺之间。\
++	他们身形修长，全身覆盖着斑点或条纹皮毛。\
++	与大多数猫科生物一样，塔巴西拥有长尾与可伸缩的利爪。\
++	塔巴西的毛色从浅黄色到棕红色不等。\
++	他们的眼睛是竖瞳，通常呈绿色或黄色。\
++	塔巴西既善于游泳与攀爬，也拥有迅捷的奔跑能力。\
++	他们具备良好的平衡感与极其敏锐的嗅觉。"
+ 
+ 
+ 	skin_tone_wording = "Fur Colors"
+-- 
+Translation Patch Toolkit

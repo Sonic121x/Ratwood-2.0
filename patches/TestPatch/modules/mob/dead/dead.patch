@@ -85,7 +85,7 @@ index a487bc5e9618..ffc7fd6be91d 100644
  	var/addr = csa[pick]
  
 -	if(alert(src, "Jump to server [pick] ([addr])?", "Server Hop", "Yes", "No") != "Yes")
-+	if(alert(src, "要跳转到服务器 [pick]（[addr]）吗？", "跨服跳转", "Yes", "No") != "Yes")
++	if(alert(src, "要跳转到服务器 [pick]（[addr]）吗？", "跨服跳转", "是", "否") != "是")
  		return
  
  	var/client/C = client

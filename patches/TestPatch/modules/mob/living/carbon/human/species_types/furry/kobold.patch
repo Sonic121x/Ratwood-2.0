@@ -1,0 +1,71 @@
+From 4833511024671a888ddb9745ddb80a02d1506681 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/furry/kobold.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/furry/kobold.dm | 35 +++++++++++++++++------------------
+ 1 file changed, 17 insertions(+), 18 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/furry/kobold.dm b/code/modules/mob/living/carbon/human/species_types/furry/kobold.dm
+index 9e898c1a73a7..3f3195fab9a4 100644
+--- a/code/modules/mob/living/carbon/human/species_types/furry/kobold.dm
++++ b/code/modules/mob/living/carbon/human/species_types/furry/kobold.dm
+@@ -2,27 +2,26 @@
+ 	race = /datum/species/kobold
+ 
+ /datum/species/kobold
+-	name = "Kobold"
++	name = "狗头人"
+ 	id = "kobold"
+-	desc = "<b>Kobold</b><br>\
+-	Kobolds are a nomadic tribal people known for their small stature and swift speed. \
+-	They prefer mountainous terrain or underground cave systems, but they are adaptable \
+-	to new environments. They are often found in the service of dragons or Drakian rulers.<br>\
+-	(+1 Fortune, Eating Rocks and Gems Trait)"
++	desc = "<b>狗头人</b><br>\
++	狗头人是游牧的部落民族，以身材矮小与动作敏捷著称。\
++	他们偏好山地地形或地下洞穴系统，但也能适应新的环境。\
++	人们经常能见到他们侍奉巨龙或德拉基安统治者。<br>\
++	(+1 幸运, 啖石食宝特性)"
+ 
+-	expanded_desc =	"Kobolds are a nomadic tribal people known for their small stature and swift speed. \
+-	They prefer mountainous terrain or underground cave systems, but they are adaptable \
+-	to new environments. They are often found in the service of dragons or Drakian rulers. \
++	expanded_desc =	"狗头人是游牧的部落民族，以身材矮小与动作敏捷著称。\
++	他们偏好山地地形或地下洞穴系统，但也能适应新的环境。\
++	人们经常能见到他们侍奉巨龙或德拉基安统治者。 \
+ 	<br><br> \
+-	It is said that Kobolds were created by Matthios, who upon achieving godhood assumed a new form, \
+-	that of the first dragon. Kobolds were the last race Matthios created before his defeat and ultimate \
+-	banishment to the hells. It is believed they were made to be subservient to dragons and Drakians \
+-	due to their servile nature. \
++	据说狗头人由马西奥斯所造；在登神之后，他化作新的形态，\
++	成为第一头巨龙。狗头人是马西奥斯在战败并被最终放逐至地狱之前创造的最后一个种族。\
++	人们相信，他们生来便是为了服从巨龙与德拉基安人，这与其驯顺的天性有关。 \
+ 	<br><br> \
+-	However, Kobolds suffered from fleeting loyalty and faith in Matthios \
+-	and the task they were created for. Consequently, many Kobolds sought new purposes and beliefs. Many \
+-	even sought refuge in civilized societies. Yet, they remain bound by their nature and often take to \
+-	thievery and pickpocketing, further cementing hatred and distrust toward them by civilized folk."
++	然而，狗头人对马西奥斯及其赋予的使命始终缺乏长久忠诚与坚定信仰。\
++	因此，许多狗头人开始寻找新的目标与信念，甚至有人投身文明社会寻求庇护。\
++	可他们终究仍受本性束缚，常会沦为盗窃与扒窃之徒，\
++	进一步加深了文明居民对他们的憎恶与不信任。"
+ 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
+ 	possible_ages = ALL_AGES_LIST
+ 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
+@@ -115,7 +114,7 @@
+ 		/datum/language/draconic
+ 	)
+ 	stress_examine = TRUE
+-	stress_desc = span_red("Thieving little kobold...")
++	stress_desc = span_red("偷鸡摸狗的小狗头人……")
+ 	descriptor_choices = list(
+ 		/datum/descriptor_choice/trait,
+ 		/datum/descriptor_choice/stature,
+-- 
+Translation Patch Toolkit

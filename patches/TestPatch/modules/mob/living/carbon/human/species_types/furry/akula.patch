@@ -1,0 +1,69 @@
+From 2051e00b4bb41b475836e51400d28d9c462380ce Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/furry/akula.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/furry/akula.dm | 41 +++++++++++++++++++++--------------------
+ 1 file changed, 21 insertions(+), 20 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/furry/akula.dm b/code/modules/mob/living/carbon/human/species_types/furry/akula.dm
+index ca6cf61f983d..7e1ccbfc84b5 100644
+--- a/code/modules/mob/living/carbon/human/species_types/furry/akula.dm
++++ b/code/modules/mob/living/carbon/human/species_types/furry/akula.dm
+@@ -2,29 +2,30 @@
+ 	race = /datum/species/akula
+ 
+ /datum/species/akula
+-	name = "Axian"
++	name = "阿克西亚人"
+ 	id = "akula"
+-	desc = "<b>Axian</b><br>\
+-	Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. \
+-	While known for being strong in spirit and promoting robust commercial practices, they have gained infamy for \
+-	possessing an intense distaste for both the nobility and taxes, making them a prime target of discrimination and suspicion.<br>\
+-	(+1 Constitution, +1 Willpower, Waterbreathing, Sea Water Drinking Trait)"
+-	expanded_desc =	"Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. While known for \
+-	being strong in spirit and promoting robust commercial practices, they have gained infamy for possessing an intense distaste for \
+-	both the nobility and taxes, making them a prime target of discrimination and suspicion. They are oftentimes scapegoats for crime \
+-	and are often blamed for any signs of dissent, oftentimes becoming the first to be persecuted for any rebellious activities present \
+-	in the region. Furthermore, they often are accused of being Matthiosan, oftentimes having their assets forcibly seized by opportunistic schemers. \
++	desc = "<b>阿克西亚人</b><br>\
++	阿克西亚人是骄傲的鲨类族群，其传承建立于海贸、逃税与海盗生涯之上。\
++	他们素以意志坚定、善于经商著称，但也因对贵族与税赋抱有强烈厌恶而恶名远扬，\
++	因此常成为歧视与猜疑的首要目标。<br>\
++	(+1 体质, +1 意志, 水下呼吸, 海水饮用特性)"
++	expanded_desc =	"阿克西亚人是骄傲的鲨类族群，其传承建立于海贸、逃税与海盗生涯之上。\
++	他们素以意志坚定、善于经商著称，但也因对贵族与税赋抱有强烈厌恶而恶名远扬，\
++	因此常成为歧视与猜疑的首要目标。他们常被当作罪行的替罪羊，\
++	一旦地方上出现不满与叛意，也往往最先遭到迫害。\
++	此外，他们还时常被指控为马西奥斯信徒，财产也常被投机之徒强行侵吞。\
+ 	<br><br> \
+-	Due to their penchant for trade, travel, and being kicked out of various kingdoms, they can be found all over the world, oftentimes \
+-	seeing places most could not even dream of. They look down at those they considered the \"settled\" and often uproot themselves quite \
+-	often in their lifetimes, particularly when it proves to be most profitable. However, many Axians often find their sanity being clawed \
+-	away as they sometimes find themselves stuck in one place. \
++	由于他们热衷贸易、旅行，以及屡屡被各个王国驱逐，他们几乎遍布整个世界，\
++	足迹常常抵达多数人做梦都不敢想的地方。\
++	他们轻视那些自认“定居安稳”的人，并且一生中常常主动迁徙，尤其是在这样做最有利可图的时候。\
++	然而，许多阿克西亚人若被迫长久困在一地，也会逐渐感到理智被一点点撕扯殆尽。\
+ 	<br><br> \
+-	Axians were once unified under the Grand Ainoan Republic but have since scattered in recent times. Ainoa was a dominant maritime power, \
+-	controlling key trade goods and routes that rivaled those of Giza and the Zybantinians. However, the disruption of the slave trade following \
+-	the Great Sissean Uprisings plunged the republic into economic and moral chaos with many leaders accused of Matthiosan worship. This turmoil \
+-	eventually sparked the brutal Ainoan Crusade, splintering the republic into several rump states led by merchant warlords and so-called pirate kings. \
+-	However, instead of trying to reclaim the glory of the past, Axians embrace their new lifestyle and thrive in the chaos."
++	阿克西亚人曾统一于大艾诺亚共和国之下，但近来已四散各方。艾诺亚曾是海上霸权，\
++	掌控着足以与吉萨与扎班庭诸国抗衡的关键贸易品与航路。\
++	然而，随着大希斯起义后奴隶贸易遭到破坏，共和国陷入经济与道德上的双重混乱，\
++	许多领袖都被控崇拜马西奥斯。最终，这场动荡引发了残酷的艾诺亚十字军内战，\
++	令共和国裂解成数个由商人军阀与所谓海盗王统治的残余政权。\
++	不过，阿克西亚人并未执着于恢复往昔荣光，而是拥抱了这种新的生活方式，并在混乱中如鱼得水。"
+ 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
+ 	inherent_traits = list(TRAIT_WATERBREATHING, TRAIT_SEA_DRINKER)
+ 	possible_ages = ALL_AGES_LIST
+-- 
+Translation Patch Toolkit

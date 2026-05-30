@@ -1,0 +1,91 @@
+From f02647f2dc28a0b5b3b58ce5387dd97d17a322c8 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/wildshape/mirecrawler.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/wildshape/mirecrawler.dm | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/wildshape/mirecrawler.dm b/code/modules/mob/living/carbon/human/species_types/wildshape/mirecrawler.dm
+index ad3d0d341ce1..3a397c92d703 100644
+--- a/code/modules/mob/living/carbon/human/species_types/wildshape/mirecrawler.dm
++++ b/code/modules/mob/living/carbon/human/species_types/wildshape/mirecrawler.dm
+@@ -1,5 +1,5 @@
+ /mob/living/carbon/human/species/wildshape/mirecrawler //The baseline and tracker of the wildshapes
+-	name = "Mire Crawler"
++	name = "泥沼爬行者"
+ 	race = /datum/species/mirecrawler
+ 	footstep_type = FOOTSTEP_MOB_CLAW
+ 	ambushable = FALSE
+@@ -30,12 +30,12 @@
+ 
+ 		AddSpell(new /obj/effect/proc_holder/spell/self/spiderfangs/mire)
+ 		AddSpell(new /obj/effect/proc_holder/spell/self/weaveweb)
+-		real_name = "lesser mire crawler"
++		real_name = "次级泥沼爬行者"
+ 
+ 
+ // mirecrawler SPECIES DATUM //
+ /datum/species/mirecrawler
+-	name = "Lesser Mire Crawler"
++	name = "次级泥沼爬行者"
+ 	id = "dendormirecrawler"
+ 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
+ 	inherent_traits = list(
+@@ -95,7 +95,7 @@
+ // WOLF SPECIFIC ITEMS //
+ /obj/item/clothing/suit/roguetown/armor/skin_armor/spider_skin
+ 	slot_flags = null
+-	name = "pitiful carapace"
++	name = "可怜的甲壳"
+ 	desc = ""
+ 	icon_state = null
+ 	body_parts_covered = FULL_BODY
+@@ -126,7 +126,7 @@
+ 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
+ 
+ /obj/effect/proc_holder/spell/self/spiderfangs/mire
+-	name = "Spider Fangs"
++	name = "蛛牙"
+ 	desc = "!"
+ 	overlay_state = "claws"
+ 	antimagic_allowed = TRUE
+@@ -145,27 +145,27 @@
+ 			user.dropItemToGround(active, TRUE)
+ 		if(istype(inactive, /obj/item/rogueweapon/spider_fang/mire) && inactive != active)
+ 			user.dropItemToGround(inactive, TRUE)
+-		to_chat(user, span_notice("My fangs retract."))
++		to_chat(user, span_notice("我的尖牙收了回去。"))
+ 		extendid = FALSE
+ 	else
+ 		l = new(user, 1)
+ 		r = new(user, 2)
+ 		user.put_in_hands(l, TRUE, FALSE, TRUE)
+ 		user.put_in_hands(r, TRUE, FALSE, TRUE)
+-		to_chat(user, span_notice("My fangs extend."))
++		to_chat(user, span_notice("我的尖牙伸了出来。"))
+ 		extendid = TRUE
+ 
+ /datum/intent/simple/spider/mire
+-	name = "monch"
++	name = "啃咬"
+ 	clickcd = 6 //Very fast.
+ 	icon_state = "incut"
+ 	blade_class = BCLASS_CUT
+-	attack_verb = list("bites, chomps")
++	attack_verb = list("撕咬", "啃噬")
+ 	animname = "cut"
+ 	hitsound = "genslash"
+ 	penfactor = 5
+ 	candodge = TRUE
+ 	canparry = TRUE
+-	miss_text = "slashes the air with its fangs!"
++	miss_text = "尖牙咬了个空！"
+ 	miss_sound = "bluntswoosh"
+ 	item_d_type = "slash"
+-- 
+Translation Patch Toolkit

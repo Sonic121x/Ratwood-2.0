@@ -1,0 +1,104 @@
+From 780e4f5be967fdad63e8cdc52e73a3fd960ccc56 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/spirit/spirit.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/carbon/spirit/spirit.dm b/code/modules/mob/living/carbon/spirit/spirit.dm
+--- a/code/modules/mob/living/carbon/spirit/spirit.dm
++++ b/code/modules/mob/living/carbon/spirit/spirit.dm
+@@ -1,6 +1,6 @@
+ /mob/living/carbon/spirit
+-	name = "Wanderer"
+-	verb_say = "moans"
++	name = "徘徊者"
++	verb_say = "哀鸣"
+ 	initial_language_holder = /datum/language_holder/universal
+ 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
+ 	icon_state = "hollow"
+@@ -50,8 +50,8 @@
+ 	verbs += /mob/living/proc/mob_sleep
+ 	verbs += /mob/living/proc/lay_down
+ 	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_GENERIC)
+-	var/first_part = pick("Sorrowful", "Forlorn", "Regretful", "Piteous", "Rueful", "Dejected", "Desolate", "Mournful", "Melancholic", "Woeful")
+-	var/second_part = pick("Wanderer", "Traveler", "Pilgrim", "Vagabond", "Nomad", "Wayfarer", "Spirit", "Specter", "Wraith", "Phantom")
++	var/first_part = pick("哀恸的", "凄惶的", "悔恨的", "可悲的", "懊悔的", "沮丧的", "荒凉的", "哀悼的", "忧郁的", "悲怆的")
++	var/second_part = pick("漂泊者", "旅者", "朝圣者", "流浪者", "游牧者", "行路人", "幽魂", "魂影", "怨灵", "幻魂")
+ 	name = first_part + " " + second_part
+ 
+ 	//initialize limbs
+@@ -75,9 +75,9 @@
+ 			return
+ 	put_in_hands(new /obj/item/underworld/coin/notracking(get_turf(src)))
+ 	if(patron)
+-		to_chat(src, span_danger("Your suffering has not gone unnoticed, [patron] has rewarded you with your toll."))
++		to_chat(src, span_danger("你的苦难并未被忽视，[patron]已将你的过路费赐予你。"))
+ 	else
+-		to_chat(src, span_danger("Your suffering has not gone unnoticed, your patron has rewarded you with your toll."))
++		to_chat(src, span_danger("你的苦难并未被忽视，你的主神已将过路费赐予你。"))
+ 	playsound(src, 'sound/combat/caught.ogg', 80, TRUE, -1)
+ 
+ /mob/living/carbon/spirit/create_internal_organs()
+@@ -108,8 +108,8 @@
+ /mob/living/carbon/spirit/Stat()
+ 	..()
+ 	if(statpanel("Status"))
+-		stat(null, "Intent: [a_intent]")
+-		stat(null, "Move Mode: [m_intent]")
++		stat(null, "意图：[a_intent]")
++		stat(null, "移动模式：[m_intent]")
+ 	return
+ 
+ /mob/living/carbon/spirit/toggle_move_intent(mob/user) // Override so they can't run.
+@@ -122,7 +122,7 @@
+ 	return
+ 
+ /mob/living/carbon/spirit/returntolobby()
+-	set name = "{RETURN TO LOBBY}"
++	set name = "{返回大厅}"
+ 	set category = "Options"
+ 	set hidden = 1
+ 
+@@ -131,7 +131,7 @@
+ 
+ 	log_game("[key_name(usr)] respawned from underworld")
+ 
+-	to_chat(src, span_info("Returned to lobby successfully."))
++	to_chat(src, span_info("已成功返回大厅。"))
+ 
+ 	if(!client)
+ 		log_game("[key_name(usr)] AM failed due to disconnect.")
+@@ -161,7 +161,7 @@
+ 	if(beingmoved)
+ 		return
+ 	beingmoved = TRUE
+-	to_chat(src, "<B><font size=3 color=red>Your soul is dragged to an infathomably cruel place where it endures severe torment. You've all but given up hope when you feel a presence drag you back to that Forest.</font></B>")
++	to_chat(src, "<B><font size=3 color=red>你的灵魂被拖往一处残酷到无法想象之地，在那里承受着无尽折磨。就在你几乎彻底绝望之时，你感到某种存在又把你拽回了那片森林。</font></B>")
+ 	playsound(src, 'sound/combat/caught.ogg', 80, TRUE, -1)
+ 	for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
+ 		forceMove(A.loc)
+@@ -224,7 +224,7 @@
+ 					var/turf/fallen = get_turf(coin_spawn)
+ 					fallen = locate(fallen.x + rand(-3, 3), fallen.y + rand(-3, 3), fallen.z)
+ 					new /obj/item/underworld/coin/notracking(fallen)
+-					fallen.visible_message(span_warning("A coin falls from above!"))
++					fallen.visible_message(span_warning("一枚硬币自上方坠落！"))
+ 					if(coin_pq && user?.ckey && (user.ckey != attacker_ckey))
+ 						adjust_playerquality(coin_pq, user.ckey)
+ 					qdel(human_corpse.mouth)
+@@ -246,8 +246,8 @@
+ 
+ 	if(ghost)
+ 		testing("pacify_corpse success ([corpse.mind?.key || "no key"])")
+-		var/user_acknowledgement = user ? user.real_name : "a mysterious force"
+-		to_chat(ghost, span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement]."))
++		var/user_acknowledgement = user ? user.real_name : "某种神秘力量"
++		to_chat(ghost, span_rose("多亏了[user_acknowledgement]，我的灵魂在归葬于造化之中后得到了安宁。"))
+ 		burial_rite_return_ghost_to_lobby(ghost)
+ 		return TRUE
+ 
+-- 
+Translation Patch Toolkit

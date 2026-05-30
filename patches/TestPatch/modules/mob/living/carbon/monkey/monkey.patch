@@ -1,0 +1,52 @@
+From dcf6ec7ffce7ec0835753b7131c0c63cb02b0470 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/monkey/monkey.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/carbon/monkey/monkey.dm b/code/modules/mob/living/carbon/monkey/monkey.dm
+--- a/code/modules/mob/living/carbon/monkey/monkey.dm
++++ b/code/modules/mob/living/carbon/monkey/monkey.dm
+@@ -1,6 +1,6 @@
+ /mob/living/carbon/monkey
+-	name = "monkey"
+-	verb_say = "chimpers"
++	name = "猴子"
++	verb_say = "吱叫"
+ 	initial_language_holder = /datum/language_holder/monkey
+ 	icon = 'icons/mob/monkey.dmi'
+ 	icon_state = "monkey1"
+@@ -34,7 +34,7 @@
+ 		var/cap = CONFIG_GET(number/monkeycap)
+ 		if (LAZYLEN(SSmobs.cubemonkeys) > cap)
+ 			if (spawner)
+-				to_chat(spawner, "<span class='warning'>Bluespace harmonics prevent the spawning of more than [cap] monkeys on the station at one time!</span>")
++				to_chat(spawner, "<span class='warning'>蓝空谐波阻止了同时在站内生成超过 [cap] 只猴子！</span>")
+ 			return INITIALIZE_HINT_QDEL
+ 		SSmobs.cubemonkeys += src
+ 
+@@ -83,8 +83,8 @@
+ /mob/living/carbon/monkey/Stat()
+ 	..()
+ 	if(statpanel("Status"))
+-		stat(null, "Intent: [a_intent]")
+-		stat(null, "Move Mode: [m_intent]")
++		stat(null, "意图：[a_intent]")
++		stat(null, "移动模式：[m_intent]")
+ 	return
+ 
+ /mob/living/carbon/monkey/IsAdvancedToolUser()//Unless its monkey mode monkeys can't use advanced tools
+@@ -94,7 +94,7 @@
+ 
+ /mob/living/carbon/monkey/can_use_guns(obj/item/G)
+ 	if(G.trigger_guard == TRIGGER_GUARD_NONE)
+-		to_chat(src, "<span class='warning'>I are unable to fire this!</span>")
++		to_chat(src, "<span class='warning'>我没法发射这个！</span>")
+ 		return FALSE
+ 	return TRUE
+ 
+-- 
+Translation Patch Toolkit

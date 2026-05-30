@@ -1,0 +1,25 @@
+From 69c00f2b37cb7fc6425f9625a3734d88c8ee5f38 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/dullahan/dullahan_vision.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/dullahan/dullahan_vision.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/dullahan/dullahan_vision.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/dullahan/dullahan_vision.dm
+index 76d9f3269e97..a484a49d4462 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/dullahan/dullahan_vision.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/dullahan/dullahan_vision.dm
+@@ -1,5 +1,5 @@
+ /obj/item/organ/dullahan_vision
+-	name = "Revenant Vision"
++	name = "还魂者视界"
+ 	actions_types = list(/datum/action/item_action/organ_action/use)
+ 	slot = ORGAN_SLOT_HUD
+ 	organ_flags = ORGAN_SURGERY_HIDDEN | ORGAN_INTERNAL_ONLY
+-- 
+Translation Patch Toolkit

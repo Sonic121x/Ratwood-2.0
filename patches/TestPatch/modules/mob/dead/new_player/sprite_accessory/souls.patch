@@ -1,0 +1,30 @@
+From 0c92fd8e647e6fb37245d13a7ed1791d99e017f4 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/new_player/sprite_accessory/souls.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+diff --git a/code/modules/mob/dead/new_player/sprite_accessory/souls.dm b/code/modules/mob/dead/new_player/sprite_accessory/souls.dm
+index 4d75957a6a95..a1657650308b 100644
+--- a/code/modules/mob/dead/new_player/sprite_accessory/souls.dm
++++ b/code/modules/mob/dead/new_player/sprite_accessory/souls.dm
+@@ -1,7 +1,7 @@
+ /datum/sprite_accessory/soul
+ 	abstract_type = /datum/sprite_accessory/soul
+ 	icon = 'icons/mob/sprite_accessory/souls/souls.dmi'
+-	color_key_name = "Soul"
++	color_key_name = "灵魂"
+ 
+ /datum/sprite_accessory/soul/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+ 	if(!isdullahan(owner))
+@@ -13,5 +13,5 @@
+ 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
+ 
+ /datum/sprite_accessory/soul/fire
+-	name = "Fire"
++	name = "火焰"
+ 	icon_state = "neckfire"
+-- 
+Translation Patch Toolkit

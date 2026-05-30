@@ -1,0 +1,27 @@
+From 869f3677c3428a1d0a0092f3c1c86ea5021d846a Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/elf/_elf.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/elf/_elf.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/elf/_elf.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/elf/_elf.dm
+index e2dca281058a..96713ef43a64 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/elf/_elf.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/elf/_elf.dm
+@@ -27,7 +27,7 @@
+ 
+ /datum/species/elf/after_creation(mob/living/carbon/C)
+ 	..()
+-	to_chat(C, "<span class='info'>I can speak Elfish with ,e before my speech.</span>")
++	to_chat(C, "<span class='info'>我可以在发言前输入 ,e 来说精灵语。</span>")
+ 
+ /datum/species/elf/on_species_loss(mob/living/carbon/C)
+ 	. = ..()
+-- 
+Translation Patch Toolkit

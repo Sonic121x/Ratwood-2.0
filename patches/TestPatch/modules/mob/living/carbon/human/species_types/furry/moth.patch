@@ -1,0 +1,57 @@
+From 4e553dc9dd02df72556e1e1aa5fd8c7e5f5433e4 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/furry/moth.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/furry/moth.dm | 29 ++++++++++++++++-------------
+ 1 file changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/furry/moth.dm b/code/modules/mob/living/carbon/human/species_types/furry/moth.dm
+index 927deb1007bb..844674628c39 100644
+--- a/code/modules/mob/living/carbon/human/species_types/furry/moth.dm
++++ b/code/modules/mob/living/carbon/human/species_types/furry/moth.dm
+@@ -2,22 +2,25 @@
+ 	race = /datum/species/moth
+ 
+ /datum/species/moth
+-	name = "Fluvian"
++	name = "弗卢维安"
+ 	id = "moth"
+-	desc = "<b>Fluvian</b><br> \
+-	Fluvians are a diverse race of moth-like creechers that live in sparse, nomadic communities across Grimoria. \
+-	Aside from their obsession with the concept of their propensity with esoteric and seemingly inhumen rites and \
+-	rituals, not much is known about the moth-kin. These so-called \"mystics\" are rarely seen within humen and \
+-	beastkin settlements, but those that find themselves in civilisation are oft ascended to nobility.<br>\
+-	(+1 Speed, Blackleg Trait)"
++	desc = "<b>弗卢维安</b><br> \
++	弗卢维安人是多样化的蛾类族群，散居在格里莫里亚各地稀疏而游牧的群落之中。\
++	除了他们对玄秘概念的执迷，以及那些显得隐秘又近乎异人的仪式与礼法之外，\
++	世人对这些蛾裔知之甚少。这些所谓的“秘修者”极少出现在人类与兽裔的聚落中，\
++	但若有谁进入文明社会，往往反而会被抬举为贵族。<br>\
++	(+1 速度, 黑腿特性)"
+ 
+-	expanded_desc = "Fluvians are a diverse race of moth-like creechers that live in sparse, nomadic communities across Grimoria. \
+-	Aside from their obsession with the concept of their propensity with esoteric and seemingly inhumen rites and rituals, not much \
+-	is known about the moth-kin.\ These so-called \"mystics\" are rarely seen within humen and beastkin settlements. \
++	expanded_desc = "弗卢维安人是多样化的蛾类族群，散居在格里莫里亚各地稀疏而游牧的群落之中。\
++	除了他们对玄秘概念的执迷，以及那些显得隐秘又近乎异人的仪式与礼法之外，\
++	世人对这些蛾裔知之甚少。所谓的“秘修者”极少出现在人类与兽裔的聚落之中。 \
+ 	<br><br> \
+-	Scholars frequently argue about the patron god of the Fluvian race, erring towards either the twin of Astrata, Noc, or the God-Head \
+-	Herself, Zizo. In truth however, the moth-kin forsake the paths of the Ten and the Inhumen, worshipping instead the whims of fate. \
+-	As such, they oft find themselves as fortune tellers, mystics and spirit mediums, being the origin of mysticism in Grimoria as a whole."
++	学者们经常争论弗卢维安一族究竟侍奉哪位神祇，\
++	有人倾向于认为是阿斯特拉塔的孪生神诺克，也有人认为是神首齐佐本人。\
++	然而事实上，这些蛾裔既不遵从十神之道，也不追随异人之道，\
++	他们所崇奉的，是命运本身的无常与 whim。\
++	正因如此，他们常成为占卜师、秘修者与通灵媒介，\
++	而格里莫里亚整体意义上的神秘学传统，也正起源于他们。"
+ 
+ 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS,HAIR)
+ 	possible_ages = ALL_AGES_LIST
+-- 
+Translation Patch Toolkit

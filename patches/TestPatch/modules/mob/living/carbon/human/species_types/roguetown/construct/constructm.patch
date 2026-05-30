@@ -1,0 +1,38 @@
+From f9ab02a09ff6371f4f837d654a47b869711f2c2e Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/construct/constructm.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/construct/constructm.dm | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/construct/constructm.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/construct/constructm.dm
+index fb38bcf6a04a..0511ef49f285 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/construct/constructm.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/construct/constructm.dm
+@@ -5,11 +5,14 @@
+ /datum/species/construct/metal
+ 	name = "Metal Construct"
+ 	id = "constructm"
+-	desc = "<b>Metallic Construct</b><br>\
+-	Masterworks of artifice, metal constructs are as the name implies- entirely constructed by mortal hands. They are beings not of flesh and blood, but cold metal and the arcyne. Constructs are said to originate from works of Zizo, and they hail from the far-off lands of the Southern Empty- a great city of artifice, where the only artificers capable of understanding what is necessary to create the constructs live. For some reason, they have found themselves travelling out of the empty, as of late. Children of the Resonator Siphon.<br>\
+-	(+1 Willpower, -2 Speed)<br>\
+-	(Insomnia, No hunger, no blood.)"
+-
++	desc = "<b>金属构装体</b><br>\
++	金属构装体是技艺与匠造的杰作，正如其名，它们完全由凡人之手制造而成。\
++	它们并非血肉生命，而是由冰冷金属与奥术构成的存在。\
++	据说构装体源自齐佐的造物，来自遥远的南方荒空之地——一座伟大的工艺之城，\
++	唯有那里的工匠才真正明白制造构装体所需的一切。\
++	不知为何，近来它们开始离开那片空寂之地，踏上旅途。它们是“共鸣虹吸器”的子嗣。<br>\
++	(+1 意志, -2 速度)<br>\
++	(失眠, 无饥饿, 无血。)"
+ 	construct = 1
+ 	skin_tone_wording = "Material"
+ 	default_color = "FFFFFF"
+-- 
+Translation Patch Toolkit

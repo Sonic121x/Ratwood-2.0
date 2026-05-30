@@ -1,0 +1,27 @@
+From 1007d352fdde171e25feabe0bfa10d77d036efee Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/vagabond/excommunicado.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/youngfolk/vagabond/excommunicado.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/excommunicado.dm b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/excommunicado.dm
+index be2001d5caa1..ef02d2240694 100644
+--- a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/excommunicado.dm
++++ b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/excommunicado.dm
+@@ -1,6 +1,6 @@
+ /datum/advclass/vagabond_excommunicated
+-	name = "Excommunicated"
+-	tutorial = "The Church has found you bereft of mercy, and you walk the lands of the vale with nothing but the tattered shreds of the faith you cling to."
++	name = "被逐教者"
++	tutorial = "教会已认定你不配怜悯，如今你只能带着那点残破不堪、却仍死抓不放的信仰，在谷地四处漂行。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/vagabond/excommunicated
+-- 
+Translation Patch Toolkit

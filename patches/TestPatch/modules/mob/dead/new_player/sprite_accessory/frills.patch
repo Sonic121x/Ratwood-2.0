@@ -1,0 +1,133 @@
+From 2789170d6255aea335f4dcfe6fcebeda06706f7b Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/new_player/sprite_accessory/frills.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+diff --git a/code/modules/mob/dead/new_player/sprite_accessory/frills.dm b/code/modules/mob/dead/new_player/sprite_accessory/frills.dm
+index ccf57712540a..f4db94e14154 100644
+--- a/code/modules/mob/dead/new_player/sprite_accessory/frills.dm
++++ b/code/modules/mob/dead/new_player/sprite_accessory/frills.dm
+@@ -1,7 +1,7 @@
+ /datum/sprite_accessory/frills
+ 	abstract_type = /datum/sprite_accessory/frills
+ 	icon = 'icons/mob/sprite_accessory/frills/frills.dmi'
+-	color_key_name = "Frills"
++	color_key_name = "颈鳍"
+ 	relevant_layers = list(BODY_ADJ_LAYER)
+ 
+ /datum/sprite_accessory/frills/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+@@ -11,85 +11,85 @@
+ 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
+ 
+ /datum/sprite_accessory/frills/simple
+-	name = "Simple"
++	name = "简单"
+ 	icon_state = "simple"
+ 
+ /datum/sprite_accessory/frills/simpledualcolor
+-	name = "Simple - Dual Color"
++	name = "简单 - 双配色"
+ 	icon_state = "m_frills_simple"
+ 	color_keys = 2
+-	color_key_names = list("Outer", "Inner")
++	color_key_names = list("外侧", "内侧")
+ 
+ /datum/sprite_accessory/frills/short
+-	name = "Short"
++	name = "短"
+ 	icon_state = "short"
+ 
+ /datum/sprite_accessory/frills/shortdualcolor
+-	name = "Short - Dual Color"
++	name = "短 - 双配色"
+ 	icon_state = "m_frills_short"
+ 	color_keys = 2
+-	color_key_names = list("Outer", "Inner")
++	color_key_names = list("外侧", "内侧")
+ 
+ /datum/sprite_accessory/frills/aquatic
+-	name = "Aquatic"
++	name = "水生"
+ 	icon_state = "aqua"
+ 
+ /datum/sprite_accessory/frills/aquaticdualcolor
+-	name = "Aquatic - Dual Color"
++	name = "水生 - 双配色"
+ 	icon_state = "m_frills_aqua"
+ 	color_keys = 2
+-	color_key_names = list("Outer", "Inner")
++	color_key_names = list("外侧", "内侧")
+ 
+ /datum/sprite_accessory/frills/divinity
+-	name = "Divinity"
++	name = "神圣"
+ 	icon_state = "divinity"
+ 
+ /datum/sprite_accessory/frills/horns
+-	name = "Horns"
++	name = "角状"
+ 	icon_state = "horns"
+ 
+ /datum/sprite_accessory/frills/horns_double
+-	name = "Horns Double"
++	name = "双角状"
+ 	icon_state = "hornsdouble"
+ 
+ /datum/sprite_accessory/frills/big
+-	name = "Big"
++	name = "大"
+ 	icon_state = "big"
+ 
+ /datum/sprite_accessory/frills/cobrahood
+-	name = "Cobra Hood"
++	name = "眼镜蛇头罩"
+ 	icon_state = "cobrahood"
+ 	color_keys = 2
+-	color_key_names = list("Hood", "Inner")
++	color_key_names = list("头罩", "内侧")
+ 
+ /datum/sprite_accessory/frills/cobrahood_ears
+-	name = "Cobra Hood (Ears)"
++	name = "眼镜蛇头罩（带耳）"
+ 	icon_state = "cobraears"
+ 	color_keys = 2
+-	color_key_names = list("Hood", "Inner")
++	color_key_names = list("头罩", "内侧")
+ 
+ /datum/sprite_accessory/frills/split
+-	name = "Split"
++	name = "分叉"
+ 	icon_state = "split"
+ 
+ /datum/sprite_accessory/frills/split_big
+-	name = "Split (Big)"
++	name = "分叉（大）"
+ 	icon_state = "split_big"
+ 
+ /datum/sprite_accessory/frills/split_slim
+-	name = "Split (Slim)"
++	name = "分叉（纤细）"
+ 	icon_state = "split_slim"
+ 
+ /datum/sprite_accessory/frills/earlike
+-	name = "Earlike"
++	name = "类耳"
+ 	icon_state = "earlike"
+ 	color_keys = 2
+-	color_key_names = list("Outer", "Inner")
++	color_key_names = list("外侧", "内侧")
+ 
+ /datum/sprite_accessory/frills/earlike_thick
+-	name = "Earlike (Thick)"
++	name = "类耳（厚）"
+ 	icon_state = "earlike_thick"
+ 
+ /datum/sprite_accessory/frills/earlike_angled
+-	name = "Earlike (Angled)"
++	name = "类耳（倾斜）"
+ 	icon_state = "earlike_angled"
+-- 
+Translation Patch Toolkit

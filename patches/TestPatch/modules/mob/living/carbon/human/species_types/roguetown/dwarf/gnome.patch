@@ -1,0 +1,40 @@
+From 4011b79f187e90a69e432ae3f043ec00cbea0185 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/dwarf/gnome.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/dwarf/gnome.dm | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/dwarf/gnome.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/dwarf/gnome.dm
+index d6d76db81473..6a32fe3eeb4c 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/dwarf/gnome.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/dwarf/gnome.dm
+@@ -4,14 +4,13 @@
+ /datum/species/dwarf/gnome
+ 	name = "Gnome"
+ 	id = "gnome"
+-	desc = "<b>Gnome</b><br>\
+-	Gnomes are short delicate creatures known for their quick thinking and wit.<br>\
+-The naturally inquisitive mind of a Gnome inclines them towards arcane pursuits, artificing and teaching others.\
+-Gnomish folk have an earned reputation for being brilliant tradespeople and crafters, although their rapid thoughts often lead to them seeming scatterbrained to the other beings of The Vale.<br>\
+-Gnomes are typically a mixed race of Dwarves and a magical race, typically Elves when the two aren't arguing, but some are born with fae blood as well. <br>\
+-Even though they are of mixed blood and smaller than typical dwarves, most gnomes and dwarves still regard each other as kin.<br>\
+-	(+1 Intelligence, +1 Perception)"
+-
++	desc = "<b>侏儒</b><br>\
++	侏儒是身形矮小而纤细的生灵，以机敏与巧思著称。<br>\
++	侏儒天生好奇，这使他们倾向于钻研奥术、发明造物，并乐于授人以知。\
++	侏儒一族向来以杰出手艺人与工匠著称，不过他们飞快的思绪也常让山谷中的其他人觉得他们有些心不在焉。<br>\
++	侏儒通常是矮人与某种魔法种族的混血；若两族没有闹别扭，多半是与精灵结合而生，也有一些人带着仙灵之血。 <br>\
++	尽管他们血统混杂，身形也比典型矮人更为娇小，大多数侏儒与矮人依旧彼此视为亲族。<br>\
++	(+1 智力, +1 感知)"
+ 	skin_tone_wording = "Skintone"
+ 
+ 	default_color = "FFFFFF"
+-- 
+Translation Patch Toolkit

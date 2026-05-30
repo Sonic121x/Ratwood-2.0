@@ -1,0 +1,49 @@
+From 1c64e94e8125ec661215d71908d9e068e7081791 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/other/halfelf.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/other/halfelf.dm | 24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/other/halfelf.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/other/halfelf.dm
+index 285cf46716cc..9bb652ea5f3a 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/other/halfelf.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/other/halfelf.dm
+@@ -4,19 +4,17 @@
+ /datum/species/human/halfelf
+ 	name = "Half-Elf"
+ 	id = "helf"
+-	desc = "<b>Half Elf</b><br>\
+-	The child of an Elf and Humen, Half-Elves are generally frowned \
+-	upon by the more conservatively minded. However, as racial tensions lower, \
+-	the rate of Half-Elf births has continues to increase. So common has it become that some scholars \
+-	worry that someday it may be impossible to distinguish the Humens and Elves from one another. \
+-	From physical to cultural characteristics, Half-Elves are an incredibly diverse people, \
+-	thanks in no small part to the incredibly varied nature of their Humen halves. Indeed, no other race \
+-	embodies the term \"melting pot\" quite like the Half-Elves. Due to their half-breed nature, their physical \
+-	characteristics can be either more Elvish or more Humen, depending on which of their parents' genes \
+-	are more predominant. In terms of cultural identity, a Half-Elf will typically choose to lean more \
+-	towards either their Humen or Elvish heritages.<br>\
+-	(+1 Constitution, +1 Perception)"
+-
++	desc = "<b>半精灵</b><br>\
++	半精灵是精灵与人类的子嗣，通常会遭到较为保守者的轻视。\
++	然而，随着种族间紧张关系缓和，半精灵的出生率也在不断上升。\
++	如今他们已经常见到让一些学者忧心：终有一日，人类与精灵或许将再也难以彼此区分。\
++	从外貌到文化特征，半精灵都呈现出惊人的多样性，\
++	而这在很大程度上要归功于他们人类一侧血脉的极端丰富。\
++	的确，没有哪个种族比半精灵更能体现“熔炉”这一说法。\
++	由于混血本质，他们的身体特征可以更偏向精灵，也可以更偏向人类，\
++	取决于哪一方父母的基因更为显性。\
++	在文化认同上，半精灵通常也会更倾向于自己的人类或精灵传承之一。<br>\
++	(+1 体质, +1 感知)"
+ 	skin_tone_wording = "Identity"
+ 	default_color = "FFFFFF"
+ 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
+-- 
+Translation Patch Toolkit

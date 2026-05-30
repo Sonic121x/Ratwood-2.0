@@ -1,0 +1,161 @@
+From 497c5422c0027f2aa58643d3a6b1090390fdcb69 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm | 61 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 31 insertions(+), 30 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm b/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
+index 6e331e3bcf54..34c673123341 100644
+--- a/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
++++ b/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
+@@ -5,8 +5,9 @@
+ 
+ /datum/job/roguetown/greater_skeleton/lich
+ 	title = "Fortified Skeleton"
++	display_title = "坚骸"
+ 	advclass_cat_rolls = list(CTAG_LSKELETON = 20)
+-	tutorial = "You are bygone. Your will belongs to your master. Fulfil and kill."
++	tutorial = "你早已死去。你的意志属于主人。去完成命令，去屠戮。"
+ 
+ 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich
+ 
+@@ -23,8 +24,8 @@
+ 
+ // Melee goon w/ javelins. All-rounder.
+ /datum/advclass/greater_skeleton/lich/legionnaire
+-	name = "Ancient Legionnaire"
+-	tutorial = "A veteran lineman. How far you've fallen."
++	name = "古代军团兵"
++	tutorial = "你曾是久经沙场的老兵。如今却沦落至此。"
+ 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/legionnaire
+ 
+ 	category_tags = list(CTAG_LSKELETON)
+@@ -67,30 +68,30 @@
+ 	backr = /obj/item/rogueweapon/shield/wood
+ 	beltl = /obj/item/quiver/javelin/paalloy
+ 	H.adjust_blindness(-3)
+-	var/weapons = list("Gladius","Kopesh","Shortsword","Axe", "Flail")
+-	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
++	var/weapons = list("短剑","Kopesh 弯刃剑","短剑式直剑","战斧", "链枷")
++	var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
+ 	H.set_blindness(0)
+ 	switch(weapon_choice)
+-		if("Gladius")
++		if("短剑")
+ 			beltr = /obj/item/rogueweapon/sword/short/gladius/pagladius
+ 			beltl = /obj/item/rogueweapon/scabbard
+-		if("Kopesh")
++		if("Kopesh 弯刃剑")
+ 			beltr = /obj/item/rogueweapon/sword/sabre/palloy
+ 			beltl = /obj/item/rogueweapon/scabbard
+-		if("Shortsword")
++		if("短剑式直剑")
+ 			beltr = /obj/item/rogueweapon/sword/short/pashortsword
+ 			beltl = /obj/item/rogueweapon/scabbard
+-		if("Axe")
++		if("战斧")
+ 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel/paaxe
+-		if("Flail")
++		if("链枷")
+ 			beltr = /obj/item/rogueweapon/flail/sflail/paflail
+ 
+ 	H.energy = H.max_energy
+ 
+ // Ranged goon w/ a dumb bow. Ranger, what else is there to say.
+ /datum/advclass/greater_skeleton/lich/ballistiares
+-	name = "Ancient Ballistiares"
+-	tutorial = "Your frame has wept off your skin. Your fingers are mere peaks. Yet your aim remains true."
++	name = "古代弩炮兵"
++	tutorial = "你的血肉早已从骨架上流尽，指节只剩尖峭白骨，可你的准头依旧分毫不差。"
+ 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/ballistiares
+ 
+ 	category_tags = list(CTAG_LSKELETON)
+@@ -132,20 +133,20 @@
+ 
+ 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/padagger
+ 	H.adjust_blindness(-3)
+-	var/weapons = list("Recurve Bow","Yew Longbow", "Crossbow", "Sling")
+-	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
++	var/weapons = list("反曲弓","紫杉长弓", "十字弩", "投石索")
++	var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
+ 	H.set_blindness(0)
+ 	switch(weapon_choice)
+-		if("Recurve Bow")
++		if("反曲弓")
+ 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+ 			beltl = /obj/item/quiver/paalloy
+-		if("Crossbow")
++		if("十字弩")
+ 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+ 			beltl = /obj/item/quiver/bolts/paalloy
+-		if("Yew Longbow")
++		if("紫杉长弓")
+ 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
+ 			beltl = /obj/item/quiver/paalloy
+-		if("Sling")
++		if("投石索")
+ 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+ 			beltl = /obj/item/quiver/sling/paalloy
+ 
+@@ -153,8 +154,8 @@
+ 
+ // Heavy/Tanky goon. Not heavy armor but due to the steel + weapons they'll fare just fine.
+ /datum/advclass/greater_skeleton/lich/bulwark
+-	name = "Ancient Death Bulwark"
+-	tutorial = "All throughout, you've borne the brunt. And even in death, will you continue."
++	name = "古代死之壁垒"
++	tutorial = "自始至终，你都在承受最沉重的冲击。即便死后，你也仍将如此。"
+ 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/bulwark
+ 
+ 	category_tags = list(CTAG_LSKELETON)
+@@ -195,23 +196,23 @@
+ 	gloves = /obj/item/clothing/gloves/roguetown/chain/paalloy
+ 
+ 	H.adjust_blindness(-3)
+-	var/weapons = list("Greatsword", "Bardiche", "Grand Mace", "Mace + Shield","Spear + Shield", "Warhammer + Shield")
+-	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
++	var/weapons = list("巨剑", "长柄战斧", "巨型权杖", "钉锤与盾","长矛与盾", "战锤与盾")
++	var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
+ 	H.set_blindness(0)
+ 	switch(weapon_choice)
+-		if("Greatsword")
++		if("巨剑")
+ 			r_hand = /obj/item/rogueweapon/greatsword/paalloy
+-		if("Bardiche")
++		if("长柄战斧")
+ 			r_hand = /obj/item/rogueweapon/halberd/bardiche/paalloy
+-		if("Grand Mace")
++		if("巨型权杖")
+ 			r_hand = /obj/item/rogueweapon/mace/goden/steel/paalloy
+-		if("Mace + Shield")
++		if("钉锤与盾")
+ 			r_hand = /obj/item/rogueweapon/mace/steel/palloy
+ 			l_hand = /obj/item/rogueweapon/shield/wood
+-		if("Spear + Shield")
++		if("长矛与盾")
+ 			r_hand = /obj/item/rogueweapon/spear/paalloy
+ 			l_hand = /obj/item/rogueweapon/shield/wood
+-		if("Warhammer + Shield")
++		if("战锤与盾")
+ 			r_hand = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
+ 			l_hand = /obj/item/rogueweapon/shield/wood
+ 
+@@ -219,8 +220,8 @@
+ 
+ // non-Combat crafter goon. Worse weapons + armor but does base-building. Fortnite.
+ /datum/advclass/greater_skeleton/lich/sapper
+-	name = "Broken-Bone Sapper"
+-	tutorial = "Simple. Obedient. Like an ant in a colony."
++	name = "断骨工兵"
++	tutorial = "简单。顺从。像蚁群里的一只工蚁。"
+ 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/sapper
+ 
+ 	category_tags = list(CTAG_LSKELETON)
+-- 
+Translation Patch Toolkit

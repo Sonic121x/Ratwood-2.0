@@ -1,0 +1,30 @@
+From d217b05e0668ee5698fcc716cd637c8009311077 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltcourtier.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltcourtier.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltcourtier.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltcourtier.dm
+index 38c939ea463a..1e8ac5c79825 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltcourtier.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltcourtier.dm
+@@ -1,8 +1,8 @@
+ 
+ /datum/advclass/heartfelt/retinue/courtier
+-	name = "Heartfeltian Courtier"
+-	tutorial = "You are a Courtier of Heartfelt, once a respected noblewoman now struggling to survive in a desolate landscape. \
+-	With your home in ruins, you look to the Vale, hoping to find new purpose or refuge amidst the chaos."
++	name = "Heartfelt 廷臣"
++	tutorial = "你是 Heartfelt 的廷臣，曾是一位备受敬重的贵族女子，如今却只能在荒凉的土地上挣扎求生。\
++	故乡已成废墟，你望向谷地，希望能在这片混乱中找到新的使命，或一处容身之所。"
+ 	allowed_sexes = list(FEMALE)
+ 	allowed_races = RACES_NO_CONSTRUCT
+ 	outfit = /datum/outfit/job/roguetown/heartfelt/retinue/courtier
+-- 
+Translation Patch Toolkit

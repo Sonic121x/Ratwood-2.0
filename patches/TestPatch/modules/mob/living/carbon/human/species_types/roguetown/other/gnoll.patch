@@ -1,0 +1,36 @@
+From ba741676dd053f321fca1e455848fd11ae283e8a Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/other/gnoll.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/other/gnoll.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/other/gnoll.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/other/gnoll.dm
+index 89f3c5592569..1d6dff569089 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/other/gnoll.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/other/gnoll.dm
+@@ -15,7 +15,7 @@
+ 	gender = FEMALE
+ 
+ /datum/species/gnoll
+-	name = "gnoll"
++	name = "豺狼人"
+ 	id = "gnoll"
+ 	custom_rotation_icon = TRUE
+ 	custom_base_icon = "firepelt"
+@@ -71,7 +71,7 @@
+ 		/datum/language/beast,
+ 	)
+ 	stress_examine = TRUE
+-	stress_desc = span_red("Gods above... a Gnoll!!")
++	stress_desc = span_red("诸神在上……是豺狼人！！")
+ 	examine_stress_event = /datum/stressevent/gnoll_examine
+ 	examine_stress_event_xenophobic = /datum/stressevent/gnoll_examine
+ 	examine_stress_always = TRUE
+-- 
+Translation Patch Toolkit

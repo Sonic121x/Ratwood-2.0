@@ -1,0 +1,101 @@
+From 6875c9e08e85f3f8a359e635b826c3f5f97ed974 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/new_player/body_markings/construct_plating.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+diff --git a/code/modules/mob/dead/new_player/body_markings/construct_plating.dm b/code/modules/mob/dead/new_player/body_markings/construct_plating.dm
+index 5555ad57a6e2..ffabbf665e83 100644
+--- a/code/modules/mob/dead/new_player/body_markings/construct_plating.dm
++++ b/code/modules/mob/dead/new_player/body_markings/construct_plating.dm
+@@ -4,7 +4,7 @@
+ 
+ /datum/body_marking/construct_plating_light
+ 	icon = 'icons/mob/body_markings/construct_plating.dmi'
+-	name = "Light Plating"
++	name = "轻型装甲板"
+ 	icon_state = "light_plating"
+ 	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+ 	default_color = DEFAULT_SECONDARY
+@@ -13,7 +13,7 @@
+ 
+ /datum/body_marking/construct_plating_medium
+ 	icon = 'icons/mob/body_markings/construct_plating.dmi'
+-	name = "Medium Plating"
++	name = "中型装甲板"
+ 	icon_state = "medium_plating"
+ 	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+ 	default_color = DEFAULT_SECONDARY
+@@ -22,7 +22,7 @@
+ 
+ /datum/body_marking/construct_plating_heavy
+ 	icon = 'icons/mob/body_markings/construct_plating.dmi'
+-	name = "Heavy Plating"
++	name = "重型装甲板"
+ 	icon_state = "heavy_plating"
+ 	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+ 	default_color = DEFAULT_SECONDARY
+@@ -30,20 +30,20 @@
+ 	gendered = FALSE
+ 
+ /datum/body_marking_set/construct_plating_light
+-	name = "Light Plating"
++	name = "轻型装甲板"
+ 	body_marking_list = list(/datum/body_marking/construct_plating_light)
+ 
+ /datum/body_marking_set/construct_plating_medium
+-	name = "Medium Plating"
++	name = "中型装甲板"
+ 	body_marking_list = list(/datum/body_marking/construct_plating_medium)
+ 
+ /datum/body_marking_set/construct_plating_heavy
+-	name = "Heavy Plating"
++	name = "重型装甲板"
+ 	body_marking_list = list(/datum/body_marking/construct_plating_heavy)
+ 
+ /datum/body_marking/construct_head_standard
+ 	icon = 'icons/mob/body_markings/construct_heads.dmi'
+-	name = "Standard Head"
++	name = "标准头部"
+ 	icon_state = "standard"
+ 	affected_bodyparts = HEAD
+ 	default_color = DEFAULT_SECONDARY
+@@ -51,14 +51,14 @@
+ 
+ /datum/body_marking/construct_head_round
+ 	icon = 'icons/mob/body_markings/construct_heads.dmi'
+-	name = "Round Head"
++	name = "圆形头部"
+ 	icon_state = "round"
+ 	affected_bodyparts = HEAD
+ 	default_color = DEFAULT_SECONDARY
+ 	gendered = FALSE
+ 
+ /datum/body_marking/construct_standard_eyes
+-	name = "Standard Eyes"
++	name = "标准眼部"
+ 	icon = 'icons/mob/body_markings/construct_eyes.dmi'
+ 	icon_state = "standard"
+ 	affected_bodyparts = HEAD
+@@ -66,7 +66,7 @@
+ 	gendered = FALSE
+ 
+ /datum/body_marking/construct_visor_eyes
+-	name = "Visored Eyes"
++	name = "护目镜眼部"
+ 	icon = 'icons/mob/body_markings/construct_eyes.dmi'
+ 	icon_state = "visor"
+ 	affected_bodyparts = HEAD
+@@ -74,7 +74,7 @@
+ 	gendered = FALSE
+ 
+ /datum/body_marking/construct_psyclops_eye
+-	name = "Psyclopean Eye"
++	name = "独眼眼部"
+ 	icon = 'icons/mob/body_markings/construct_eyes.dmi'
+ 	icon_state = "psyclops"
+ 	affected_bodyparts = HEAD
+-- 
+Translation Patch Toolkit

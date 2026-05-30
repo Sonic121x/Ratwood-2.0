@@ -1,0 +1,133 @@
+From d0d6758c9b35a04b9b9e50f62e5784cb906e902e Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/emote.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/carbon/emote.dm b/code/modules/mob/living/carbon/emote.dm
+--- a/code/modules/mob/living/carbon/emote.dm
++++ b/code/modules/mob/living/carbon/emote.dm
+@@ -7,36 +7,36 @@
+ 	emote_type = EMOTE_AUDIBLE
+ 	only_forced_audio = TRUE
+ 	vary = TRUE
+-	message = "gasps out their last breath."
+-	message_simple =  "falls limp."
++	message = "喘出了最后一口气。"
++	message_simple =  "瘫软倒下。"
+ 	stat_allowed = UNCONSCIOUS
+ 	mob_type_ignore_stat_typecache = list(/mob/living/carbon/human)
+ 
+ /datum/emote/living/carbon/airguitar
+ 	key = "airguitar"
+-	message = "strums an invisible lute."
++	message = "拨弄起一把无形的鲁特琴。"
+ 	restraint_check = TRUE
+ 
+ /datum/emote/living/carbon/blink
+ 	key = "blink"
+ 	key_third_person = "blinks"
+-	message = "blinks."
++	message = "眨了眨眼。"
+ 
+ /datum/emote/living/carbon/blink_r
+ 	key = "blink_r"
+-	message = "blinks rapidly."
++	message = "飞快地眨着眼。"
+ 
+ /datum/emote/living/carbon/clap
+ 	key = "clap"
+ 	key_third_person = "claps"
+-	message = "claps."
++	message = "拍了拍手。"
+ 	muzzle_ignore = TRUE
+ 	restraint_check = TRUE
+ 	emote_type = EMOTE_AUDIBLE
+ 	vary = TRUE
+ 
+ /mob/living/carbon/human/verb/emote_clap()
+-	set name = "Clap"
++	set name = "拍手"
+ 	set category = "Noises"
+ 
+ 	emote("clap", intentional = TRUE)
+@@ -44,18 +44,18 @@
+ /datum/emote/living/carbon/gnarl
+ 	key = "gnarl"
+ 	key_third_person = "gnarls"
+-	message = "gnarls and shows its teeth..."
++	message = "龇起牙来，露出威吓神情……"
+ 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
+ 
+ /datum/emote/living/moan
+ 	key = "moan"
+ 	key_third_person = "moans"
+-	message = "moans."
+-	message_mime = "appears to moan!"
++	message = "呻吟了一声。"
++	message_mime = "看起来像是在呻吟！"
+ 	emote_type = EMOTE_AUDIBLE
+ 
+ /mob/living/carbon/human/verb/emote_moan()
+-	set name = "Moan"
++	set name = "呻吟"
+ 	set category = "Noises"
+ 
+ 	emote("moan")
+@@ -63,27 +63,27 @@
+ /datum/emote/living/carbon/roll
+ 	key = "roll"
+ 	key_third_person = "rolls"
+-	message = "rolls."
++	message = "翻滚了一下。"
+ 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
+ 	restraint_check = TRUE
+ 
+ /datum/emote/living/carbon/scratch
+ 	key = "scratch"
+ 	key_third_person = "scratches"
+-	message = "scratches."
++	message = "抓挠了一下。"
+ 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
+ 	restraint_check = TRUE
+ 
+ /datum/emote/living/carbon/screech
+ 	key = "screech"
+ 	key_third_person = "screeches"
+-	message = "screeches."
++	message = "尖厉地叫了一声。"
+ 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
+ 
+ /datum/emote/living/carbon/sign
+ 	key = "sign"
+ 	key_third_person = "signs"
+-	message_param = "signs the number %t."
++	message_param = "比出了数字 %t。"
+ 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
+ 	restraint_check = TRUE
+ 
+@@ -95,16 +95,16 @@
+ /datum/emote/living/carbon/sign/signal
+ 	key = "signal"
+ 	key_third_person = "signals"
+-	message_param = "raises %t fingers."
++	message_param = "举起了 %t 根手指。"
+ 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
+ 	restraint_check = TRUE
+ 
+ /datum/emote/living/carbon/tail
+ 	key = "tail"
+-	message = "waves their tail."
++	message = "摆了摆尾巴。"
+ 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
+ 
+ /datum/emote/living/carbon/wink
+ 	key = "wink"
+ 	key_third_person = "winks"
+-	message = "winks."
++	message = "眨了眨眼示意。"
+-- 
+Translation Patch Toolkit

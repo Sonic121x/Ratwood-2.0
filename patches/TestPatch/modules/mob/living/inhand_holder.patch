@@ -1,0 +1,38 @@
+From 6d96359247af63916a50b4fa802af2aebec9a4cd Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/inhand_holder.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/inhand_holder.dm b/code/modules/mob/living/inhand_holder.dm
+--- a/code/modules/mob/living/inhand_holder.dm
++++ b/code/modules/mob/living/inhand_holder.dm
+@@ -1,7 +1,7 @@
+ //Generic system for picking up mobs.
+ //Currently works for head and hands.
+ /obj/item/clothing/head/mob_holder
+-	name = "bugged mob"
++	name = "故障持握体"
+ 	desc = ""
+ 	icon = null
+ 	icon_state = ""
+@@ -52,12 +52,12 @@
+ 		return FALSE
+ 	if(isliving(loc))
+ 		var/mob/living/L = loc
+-		to_chat(L, span_warning("[held_mob] wriggles free!"))
++		to_chat(L, span_warning("[held_mob]挣脱了出来！"))
+ 		L.dropItemToGround(src)
+ 	held_mob.forceMove(get_turf(held_mob))
+ 	held_mob.reset_perspective()
+ 	held_mob.setDir(SOUTH)
+-	held_mob.visible_message(span_warning("[held_mob] uncurls!"))
++	held_mob.visible_message(span_warning("[held_mob]舒展开了身体！"))
+ 	held_mob = null
+ 	if(del_on_release && !destroying)
+ 		qdel(src)
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,27 @@
+From dab1d9ba8a2acf9be55e5ce684246579519140b0 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Mon, 25 May 2026 12:43:47 +0800
+Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/fisher.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/fisher.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/fisher.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/fisher.dm
+index d7e46600a468..eddff3c3a218 100644
+--- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/fisher.dm
++++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/fisher.dm
+@@ -1,6 +1,6 @@
+ /datum/advclass/fisher
+-	name = "Fisher"
+-	tutorial = "You are a fisherman, with your bag of bait and your fishing rod, you are one of few who can reliably get a stable source of meat around here"
++	name = "渔夫"
++	tutorial = "你是一名渔夫。带着装满鱼饵的袋子和钓竿，你是这地方少数几个能稳定弄到肉食来源的人之一。"
+ 	allowed_sexes = list(MALE, FEMALE)
+ 	allowed_races = RACES_ALL_KINDS
+ 	outfit = /datum/outfit/job/roguetown/adventurer/fisher
+-- 
+Translation Patch Toolkit

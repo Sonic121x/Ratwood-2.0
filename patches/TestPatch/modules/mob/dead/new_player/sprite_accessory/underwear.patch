@@ -1,0 +1,123 @@
+From 3ccee11299ed740dd32afa53a5b33c0319cf946b Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/new_player/sprite_accessory/underwear.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+diff --git a/code/modules/mob/dead/new_player/sprite_accessory/underwear.dm b/code/modules/mob/dead/new_player/sprite_accessory/underwear.dm
+index 9b5f37a703e5..52c39d574ff0 100644
+--- a/code/modules/mob/dead/new_player/sprite_accessory/underwear.dm
++++ b/code/modules/mob/dead/new_player/sprite_accessory/underwear.dm
+@@ -1,7 +1,7 @@
+ /datum/sprite_accessory/underwear
+ 	abstract_type = /datum/sprite_accessory/underwear
+ 	icon = 'icons/mob/sprite_accessory/underwear.dmi'
+-	color_key_name = "Underwear"
++	color_key_name = "内衣"
+ 	var/underwear_type
+ 	///Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
+ 	var/hides_breasts = FALSE
+@@ -16,7 +16,7 @@
+ 	return is_human_part_visible(owner, HIDECROTCH)
+ 
+ /datum/sprite_accessory/underwear/briefs
+-	name = "Briefs"
++	name = "内裤"
+ 	icon_state = "male_reg"
+ 	underwear_type = /obj/item/undies
+ 
+@@ -28,7 +28,7 @@
+ 	return "male_reg"
+ 
+ /datum/sprite_accessory/underwear/bikini
+-	name = "Bikini"
++	name = "比基尼"
+ 	icon_state = "female_bikini"
+ 	underwear_type = /obj/item/undies/bikini
+ 	hides_breasts = TRUE
+@@ -41,12 +41,12 @@
+ 	return "bikini_f_" + "[breasts.breast_size]"
+ 
+ /datum/sprite_accessory/underwear/panties
+-	name = "Panties"
++	name = "三角内裤"
+ 	icon_state = "panties"
+ 	underwear_type = /obj/item/undies/panties
+ 
+ /datum/sprite_accessory/underwear/leotard
+-	name = "Leotard"
++	name = "连体紧身衣"
+ 	icon_state = "female_leotard"
+ 	underwear_type = /obj/item/undies/leotard
+ 	hides_breasts = TRUE
+@@ -72,7 +72,7 @@
+ 		return "male_leotard"
+ 
+ /datum/sprite_accessory/underwear/athletic_leotard
+-	name = "Athletic Leotard"
++	name = "运动连体衣"
+ 	icon_state = "female_sleeved_leotard"
+ 	underwear_type = /obj/item/undies/athletic_leotard
+ 	hides_breasts = TRUE
+@@ -83,7 +83,7 @@
+ 	return "female_athletic_leotard"
+ 
+ /datum/sprite_accessory/underwear/braies
+-	name = "Braies"
++	name = "麻布内裤"
+ 	icon_state = "braies"
+ 	underwear_type = /obj/item/undies
+ 
+@@ -93,14 +93,14 @@
+ 	return "braies"
+ 
+ /datum/sprite_accessory/underwear/loinclothunder
+-	name = "Small Loincloth"
++	name = "小型裆布"
+ 	icon_state = "loinclothunder"
+ 	underwear_type = /obj/item/undies/loinclothunder
+ 
+ /datum/sprite_accessory/legwear
+ 	abstract_type = /datum/sprite_accessory/legwear
+ 	icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/stockings.dmi'
+-	color_key_name = "Legwear"
++	color_key_name = "腿饰"
+ 	layer = LEGWEAR_LAYER
+ 	var/legwear_type
+ 	//Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
+@@ -127,26 +127,26 @@
+ 	return is_human_part_visible(owner, HIDEJUMPSUIT)
+ 
+ /datum/sprite_accessory/legwear/stockings
+-	name = "stockings"
++	name = "丝袜"
+ 	icon_state = "stockings"
+ 	legwear_type = /obj/item/legwears
+ 
+ /datum/sprite_accessory/legwear/stockings/silk
+-	name = "silk stockings"
++	name = "丝绸丝袜"
+ 	icon_state = "silk"
+ 	legwear_type = /obj/item/legwears/silk
+ //Fishnets
+ /datum/sprite_accessory/legwear/stockings/fishnet
+-	name = "fishnet stockings"
++	name = "渔网丝袜"
+ 	icon_state = "fishnet"
+ 	legwear_type = /obj/item/legwears/fishnet
+ 
+ /datum/sprite_accessory/legwear/stockings/thigh_high
+-	name = "thigh-high stockings"
++	name = "过膝长丝袜"
+ 	icon_state = "thigh"
+ 	legwear_type = /obj/item/legwears/thigh_high
+ 
+ /datum/sprite_accessory/legwear/stockings/knee_high
+-	name = "knee-high stockings"
++	name = "及膝丝袜"
+ 	icon_state = "knee"
+ 	legwear_type = /obj/item/legwears/knee_high
+-- 
+Translation Patch Toolkit

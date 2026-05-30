@@ -1,0 +1,41 @@
+From a3223d5d2ada869f904eaf68172861cb2c74be24 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/dead/new_player/sprite_accessory/crests.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+diff --git a/code/modules/mob/dead/new_player/sprite_accessory/crests.dm b/code/modules/mob/dead/new_player/sprite_accessory/crests.dm
+index fc5b55ed4bc1..446a174b8c45 100644
+--- a/code/modules/mob/dead/new_player/sprite_accessory/crests.dm
++++ b/code/modules/mob/dead/new_player/sprite_accessory/crests.dm
+@@ -8,21 +8,21 @@
+ 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
+ 
+ /datum/sprite_accessory/crests/rubyb
+-	name = "Rontz-Brass Crest"
++	name = "Rontz 黄铜冠饰"
+ 	icon_state = "rontzb"
+ 
+ /datum/sprite_accessory/crests/ironc
+-	name = "Iron Crown Crest"
++	name = "铁冠冠饰"
+ 	icon_state = "ironc"
+ 
+ /datum/sprite_accessory/crests/bronzer
+-	name = "Bronze Rune Crest"
++	name = "青铜符文冠饰"
+ 	icon_state = "bronzer"
+ 
+ /datum/sprite_accessory/crests/steelt
+-	name = "Steel Thorn Crest"
++	name = "钢棘冠饰"
+ 	icon_state = "steelt"	
+ 
+ /datum/sprite_accessory/crests/astratan
+-	name = "astratan crown Crest"
++	name = "Astratan 王冠冠饰"
+ 	icon_state = "astratan"	
+-- 
+Translation Patch Toolkit

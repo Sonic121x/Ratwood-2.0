@@ -1,0 +1,56 @@
+From cb4cd705771cc231d0bd7d048bf6461cae4ba5aa Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/other/halforc.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/other/halforc.dm | 24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/other/halforc.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/other/halforc.dm
+index bd34737042ee..827009ea17dd 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/other/halforc.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/other/halforc.dm
+@@ -4,18 +4,16 @@
+ /datum/species/halforc
+ 	name = "Half Orc"
+ 	id = "halforc"
+-	desc = "<b>Half Orcs</b><br>\
+-	With the Ironmask clan on a centuries-long warpath to consolidate all orcs beneath their banner, \
+-	crushed orc tribes have lost their menfolk, and war-widows have been scattered to the hinterlands. \
+-	Between humen civilization and orc savagery, orc-women opting for exile over dishonor have become \
+-	more common visitors to fur trading posts and prospecting camps, eventually leading to half-orcs \
+-	being born in these rough places otherwise devoid of a fairer sex. Your mother-clan is in thrall \
+-	to the Ironmask. True orcs would kill you on sight, seeing you as a mongrel dog, and non-orcish \
+-	people cannot decide between regarding you with either mere distrust or outright disgust. Yet \
+-	somehow your wandering feet came to the vale, where half-orcs ply muscle and their hardiness \
+-	in the rough underbelly or outer reaches of society.<br>\
+-	(+1 Strength, Big Guy Trait, Bed Breaker Trait)"
+-
++	desc = "<b>半兽人</b><br>\
++	铁面氏族在数百年的战争中，始终试图将所有兽人统一于其旗帜之下。\
++	被击溃的兽人部族失去了男丁，而寡妇们则被驱散到边地荒野。\
++	在人类文明与兽人蛮性之间，那些宁可流亡也不愿受辱的兽人女性，逐渐更频繁地出没于毛皮商站与勘探营地附近，\
++	最终使半兽人诞生于这些原本几乎不见女性踪影的粗砖之地。\
++	你的母族仍受铁面氏族奴役。真正的兽人会将你视作杂种野狗，一见面便欲杀之；\
++	而非兽人族群的人们，也往往在单纯不信任与彻底厌恶之间摇摆不定地看待你。\
++	即便如此，你漂泊的脚步还是将你带到了山谷，\
++	在这里，半兽人以自己的力量与坚韧，在社会阴暗的夹缝与边缘地带谋生。<br>\
++	(+1 力量, 大块头特性, 碎床者特性)"
+ 	skin_tone_wording = "Clan"
+ 
+ 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
+@@ -108,7 +106,7 @@
+ 
+ /datum/species/halforc/after_creation(mob/living/carbon/C)
+ 	..()
+-	to_chat(C, "<span class='info'>I can speak Orcish with ,o before my speech.</span>")
++	to_chat(C, "<span class='info'>我可以在发言前输入 ,o 来说兽人语。</span>")
+ 
+ /datum/species/halforc/on_species_loss(mob/living/carbon/C)
+ 	. = ..()
+-- 
+Translation Patch Toolkit

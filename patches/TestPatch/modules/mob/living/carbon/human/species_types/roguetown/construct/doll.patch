@@ -1,0 +1,46 @@
+From 95ed6d6037b11e32c28c1a0d3db46c7056a1085a Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/construct/doll.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/construct/doll.dm | 21 ++++++++++-----------
+ 1 file changed, 10 insertions(+), 11 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/construct/doll.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/construct/doll.dm
+index 7f5bd161b328..4ab438a8c0fe 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/construct/doll.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/construct/doll.dm
+@@ -7,17 +7,16 @@
+ 	id = "doll"
+ 	use_titles = TRUE
+ 	race_titles = list("Homunculus", "Mannequin", "Marionette", "Puppet")
+-	desc = "<b>Porcelain Doll</b><br>\
+-	The pinnacle of both art and craftsmanship, originally made to provide companionship for ladies and wealthy women \
+-	alike. Created to be simply toys or novelty decorations for the wealthy, they do not sleep, eat or bleed. However, \
+-	due to their dark magic and heretical origin that even their stronger cousin share; They were made to be incredibly \
+-	brittle as to promote their subservience and remove any chance these somber creations have of killing their masters. \
+-	Over time, they were seen to prove as valuable asset and advisory role due to their intellectual prowess, it is \
+-	unknown what provided them with such a gift. A master wanting more engaging conversation? A lord wanting a more \
+-	efficient clerk? Regardless, who knows what them eyes made of glass truly reflect...<br> \
+-	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>-2 STR</span> |<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'> +2 INT | +1 SPD</b></span> </br> \
+-	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b><span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>Hungerless, Insomnia, Bloodless. Extremely fragile.</span></b></br>"
+-
++	desc = "<b>瓷偶</b><br>\
++	她们是艺术与工艺的巅峰之作，最初被制造出来，为贵妇与富家小姐们提供陪伴。\
++	起初，她们不过是供富人赏玩的玩具与新奇摆设，不会睡眠、进食，也不会流血。\
++	然而，由于她们与更为强大的同类一样，源自黑魔法与异端之术；\
++	制造者将她们塑得格外脆弱，以强化其顺从本性，并尽可能折去这些忧郁造物弑主的可能。\
++	随着时间推移，凭借出众的智识，她们也被证明能成为宝贵的资产与顾问；\
++	至于这种天赋究竟从何而来，至今无人知晓。是主人想要更有趣的谈话？还是领主想要一位更高效的书记官？\
++	无论如何，谁又知道那双玻璃眼眸里真正映照着什么……<br> \
++	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>-2 力量</span> |<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'> +2 智力 | +1 速度</b></span> </br> \
++	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b><span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>无饥饿、失眠、无血。极其脆弱。</span></b></br>"
+ 
+ 	construct = 1
+ 	skin_tone_wording = "Material"
+-- 
+Translation Patch Toolkit

@@ -1,27 +1,51 @@
-From e1874bbff56c04e7a62e4e1a1a82bc9836a0db28 Mon Sep 17 00:00:00 2001
+From 201edbd1f4caa64aa630bc24e84094939f010ec7 Mon Sep 17 00:00:00 2001
 From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
+Date: Sat, 30 May 2026 12:00:00 +0800
 Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/elf/elfs.dm
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- code/modules/mob/living/carbon/human/species_types/roguetown/elf/elfs.dm | 2 +-
- 1 file changed, 1 insertions(+), 1 deletions(-)
+ code/modules/mob/living/carbon/human/species_types/roguetown/elf/elfs.dm | 26 +++++++++++---------------
+ 1 file changed, 11 insertions(+), 15 deletions(-)
 
 diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/elf/elfs.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/elf/elfs.dm
-index 8c4c5fea6a4c..2dd635059bfe 100644
+index e13ff554d8a8..b218a7eab5c9 100644
 --- a/code/modules/mob/living/carbon/human/species_types/roguetown/elf/elfs.dm
 +++ b/code/modules/mob/living/carbon/human/species_types/roguetown/elf/elfs.dm
-@@ -17,7 +17,7 @@
- 	relationships, which are capable of producing half-elven children. Elves are known for \
- 	their intelligence and sharp eyes, but their graceful nature typically leaves their bodies \
- 	more frail and fagile than most. In these lands, only a handful of the many Elvish tribes are seen.<br>\
+@@ -4,21 +4,17 @@
+ /datum/species/elf/wood
+ 	name = "Elf"
+ 	id = "elfw"
+-	desc = "<b>Elf</b><br>\
+-	\"Elf\" is a catch-all term used for tall, pointy-eared humanoids who can trace \
+-	their heritage to the ancient and mysterious Snow Elves. This particular species \
+-	of elf are what most imagine when they hear the word, and are also known among \
+-	the elder races as \"Wood-Elves\". Considering their diverse history, it is extremely \
+-	difficult for other mortals to even conceive the various intricacies found in elven \
+-	society, thanks in no small part to the hundreds if not thousands of tribes that exist \
+-	within their culture. Although ancient and complex, Elves tend to be looked poorly upon by \
+-	Humens, as historically the two races have been rivals in various conflicts and \
+-	territorial disputes. This, however, does not stop many Humens and Elves from forming \
+-	relationships, which are capable of producing half-elven children. Elves are known for \
+-	their intelligence and sharp eyes, but their graceful nature typically leaves their bodies \
+-	more frail and fagile than most. In these lands, only a handful of the many Elvish tribes are seen.<br>\
 -	(+1 Speed, Woodwalker Trait)"
-+	(+1 Speed, 林行者特性)"
- 
+-
++	desc = "<b>精灵</b><br>\
++	“精灵”是对所有高挑、尖耳，且能追溯自身血脉至古老神秘雪精灵的人形种族之统称。\
++	这一支精灵正是大多数人在听到“精灵”时首先想到的形象，在古老种族中也被称作“木精灵”。\
++	由于历史繁复，其他凡人几乎难以真正理解精灵社会的种种微妙之处；\
++	这很大程度上要归因于其文化中成百上千、甚至更多的部族。\
++	尽管古老而复杂，精灵在人类眼中往往名声不佳，\
++	因为历史上两族曾在许多冲突与领土争端中互为敌手。\
++	不过，这并不妨碍许多人类与精灵结合，并诞下半精灵子嗣。\
++	精灵以聪慧与锐利目光闻名，但他们优雅的天性通常也使肉体比大多数种族更为纤细脆弱。\
++	在这片土地上，人们只会见到众多精灵部族中的少数几支。<br>\
++	(+1 速度, 林行者特性)"
  	skin_tone_wording = "Tribal Identity"
  
+ 	default_color = "FFFFFF"
 -- 
 Translation Patch Toolkit

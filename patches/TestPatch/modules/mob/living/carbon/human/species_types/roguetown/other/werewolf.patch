@@ -1,0 +1,27 @@
+From 9b29567e5c1da1153ff6b3f28c43aa987e7bf356 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 12:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/carbon/human/species_types/roguetown/other/werewolf.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/mob/living/carbon/human/species_types/roguetown/other/werewolf.dm | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/code/modules/mob/living/carbon/human/species_types/roguetown/other/werewolf.dm b/code/modules/mob/living/carbon/human/species_types/roguetown/other/werewolf.dm
+index fdc8c41cebdb..cff9819285b7 100644
+--- a/code/modules/mob/living/carbon/human/species_types/roguetown/other/werewolf.dm
++++ b/code/modules/mob/living/carbon/human/species_types/roguetown/other/werewolf.dm
+@@ -18,7 +18,7 @@
+ 	gender = FEMALE
+ 
+ /datum/species/werewolf
+-	name = "verewolf"
++	name = "狼人"
+ 	id = "werewolf"
+ 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
+ 	inherent_traits = list(
+-- 
+Translation Patch Toolkit

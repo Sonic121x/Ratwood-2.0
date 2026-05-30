@@ -1,0 +1,74 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:30:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/inventory.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/inventory.dm b/code/modules/mob/inventory.dm
+--- a/code/modules/mob/inventory.dm
++++ b/code/modules/mob/inventory.dm
+@@ -119,14 +119,14 @@
+ /mob/proc/get_held_index_name(i)
+ 	var/list/hand = list()
+ 	if(i > 2)
+-		hand += "upper "
++		hand += "上方"
+ 	var/num = 0
+ 	if(!(i % 2))
+ 		num = i-2
+-		hand += "right hand"
++		hand += "右手"
+ 	else
+ 		num = i-1
+-		hand += "left hand"
++		hand += "左手"
+ 	num -= (num*0.5)
+ 	if(num > 1) //"upper left hand #1" seems weird, but "upper left hand #2" is A-ok
+ 		hand += " #[num]"
+@@ -194,7 +194,7 @@
+ 	if((I.is_silver || I.smeltresult == /obj/item/ingot/silver) && (HAS_TRAIT(src, TRAIT_SILVER_WEAK) &&  !has_status_effect(STATUS_EFFECT_ANTIMAGIC)))
+ 		var/datum/antagonist/vampire/V_lord = mind?.has_antag_datum(/datum/antagonist/vampire)
+ 		if(!istype(V_lord) || V_lord?.generation < GENERATION_METHUSELAH)
+-			to_chat(src, span_userdanger("I can't pick up the silver, it is my BANE!"))
++			to_chat(src, span_userdanger("我拿不起银器，它是我的克星！"))
+ 			Knockdown(10)
+ 			Paralyze(10)
+ 			adjustFireLoss(25)
+@@ -312,7 +312,7 @@
+ 				var/mob/living/carbon/human/H = src
+ 				for(var/Item in H.get_equipped_items()) // Find this item
+ 					if(Item == I)
+-						to_chat(src, span_warn("I can't remove \the [I.name]!"))
++						to_chat(src, span_warn("我无法取下\the [I.name]！"))
+ 						return FALSE
+ 	var/hand_index = get_held_index_of_item(I)
+ 	if(hand_index)
+@@ -440,7 +440,7 @@
+ 
+ /obj/item/proc/equip_to_best_slot(mob/M)
+ 	if(src != M.get_active_held_item())
+-		to_chat(M, span_warning("I are not holding anything to equip!"))
++		to_chat(M, span_warning("我手里没有任何可装备的东西！"))
+ 		return FALSE
+ 
+ 	if(M.equip_to_appropriate_slot(src))
+@@ -461,12 +461,12 @@
+ 		if(SEND_SIGNAL(I, COMSIG_TRY_STORAGE_INSERT, src, M))
+ 			return TRUE
+ 
+-	to_chat(M, span_warning("I couldn't equip that."))
++	to_chat(M, span_warning("我没法装备那个。"))
+ 	return FALSE
+ 
+ 
+ /mob/verb/quick_equip()
+-	set name = "quick-equip"
++	set name = "快速装备"
+ 	set hidden = 1
+ 
+ 	var/obj/item/I = get_active_held_item()
+-- 
+Translation Patch Toolkit

@@ -1,0 +1,140 @@
+From 9c7ef0ea9d59f9521d88f69859351096ae8c92c2 Mon Sep 17 00:00:00 2001
+From: Translation Patch Toolkit <translation@local>
+Date: Sat, 30 May 2026 13:00:00 +0800
+Subject: [PATCH] 翻译 code/modules/mob/living/living_descriptors.dm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+diff --git a/code/modules/mob/living/living_descriptors.dm b/code/modules/mob/living/living_descriptors.dm
+--- a/code/modules/mob/living/living_descriptors.dm
++++ b/code/modules/mob/living/living_descriptors.dm
+@@ -90,11 +90,11 @@
+ 	var/list/lines = list()
+ 	var/list/desc_copy = descriptors.Copy()
+ 
+-	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "You see %DESC1%, %DESC2% %DESC3% with %DESC4%, %DESC5%")
++	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "你看到的是%DESC1%、%DESC2%%DESC3%，有着%DESC4%、%DESC5%")
+ 	if(first_line)
+ 		lines += first_line
+ 
+-	var/second_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_AGE, MOB_DESCRIPTOR_SLOT_SKIN, MOB_DESCRIPTOR_SLOT_VOICE), "%THEY% %DESC1%, %DESC2% and %DESC3%.")
++	var/second_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_AGE, MOB_DESCRIPTOR_SLOT_SKIN, MOB_DESCRIPTOR_SLOT_VOICE), "%THEY%%DESC1%、%DESC2%，并且%DESC3%。")
+ 	if(second_line)
+ 		lines += second_line
+ 
+@@ -125,7 +125,7 @@
+ 	var/list/lines = list()
+ 	var/list/desc_copy = descriptors.Copy()
+ 
+-	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE), "You see %DESC1%, %DESC2% %DESC3%.")
++	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE), "你看到的是%DESC1%、%DESC2%%DESC3%。")
+ 	if(first_line)
+ 		lines += first_line
+ 
+@@ -191,62 +191,62 @@
+ /proc/treat_mob_descriptor_string(string, mob/living/described)
+ 	var/they_replace
+ 	if(described.gender == MALE)
+-		they_replace = "he"
+-	else
+-		they_replace = "she"
++		they_replace = "他"
++	else
++		they_replace = "她"
+ 	var/man_replace
+ 	if(described.gender == MALE)
+-		man_replace = "man"
+-	else
+-		man_replace = "woman"
++		man_replace = "男人"
++	else
++		man_replace = "女人"
+ 	var/him_replace
+ 	if(described.gender == MALE)
+-		him_replace = "him"
+-	else
+-		him_replace = "her"
++		him_replace = "他"
++	else
++		him_replace = "她"
+ 	// LETHALSTONE EDIT: pronoun support
+ 	if (described.pronouns)
+ 		switch (described.pronouns)
+ 			if (HE_HIM)
+-				they_replace = "he"
+-				man_replace = "man"
+-				him_replace = "him"
++				they_replace = "他"
++				man_replace = "男人"
++				him_replace = "他"
+ 			if (HE_HIM_F)
+-				they_replace = "he"
+-				man_replace = "man"
+-				him_replace = "him"
++				they_replace = "他"
++				man_replace = "男人"
++				him_replace = "他"
+ 			if (SHE_HER)
+-				they_replace = "she"
+-				man_replace = "woman"
+-				him_replace = "her"
++				they_replace = "她"
++				man_replace = "女人"
++				him_replace = "她"
+ 			if (SHE_HER_M)
+-				they_replace = "she"
+-				man_replace = "woman"
+-				him_replace = "her"
++				they_replace = "她"
++				man_replace = "女人"
++				him_replace = "她"
+ 			if (THEY_THEM)
+-				they_replace = "they"
+-				man_replace = "person"
+-				him_replace = "them"
++				they_replace = "TA们"
++				man_replace = "人"
++				him_replace = "TA们"
+ 			if (THEY_THEM_F)
+-				they_replace = "they"
+-				man_replace = "person"
+-				him_replace = "them"
++				they_replace = "TA们"
++				man_replace = "人"
++				him_replace = "TA们"
+ 			if (IT_ITS)
+-				they_replace = "it"
+-				man_replace = "creacher"
+-				him_replace = "it"
++				they_replace = "它"
++				man_replace = "生物"
++				him_replace = "它"
+ 	// LETHALSTONE EDIT END
+ 	string = replacetext(string, "%THEY%", they_replace)
+-	if(they_replace == "they")
+-		string = replacetext(string, "%HAVE%", "have")
+-		string = replacetext(string, "%ARE%", "are")
+-		string = replacetext(string, "%LOOK%", "look")
+-		string = replacetext(string, "%SPEAK%", "speak with")
+-	else
+-		string = replacetext(string, "%HAVE%", "has")
+-		string = replacetext(string, "%ARE%", "is")
+-		string = replacetext(string, "%LOOK%", "looks")
+-		string = replacetext(string, "%SPEAK%", "speaks with")
++	if(they_replace == "TA们")
++		string = replacetext(string, "%HAVE%", "有")
++		string = replacetext(string, "%ARE%", "是")
++		string = replacetext(string, "%LOOK%", "看起来")
++		string = replacetext(string, "%SPEAK%", "说话时带着")
++	else
++		string = replacetext(string, "%HAVE%", "有")
++		string = replacetext(string, "%ARE%", "是")
++		string = replacetext(string, "%LOOK%", "看起来")
++		string = replacetext(string, "%SPEAK%", "说话时带着")
+ 	string = replacetext(string, "%MAN%", man_replace)
+ 	string = replacetext(string, "%HIM%", him_replace)
+ 	string = capitalize(string)
+-- 
+Translation Patch Toolkit
