@@ -1,0 +1,35 @@
+From 98ce86be15718312f57354338e3559633a4a91f3 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:24:58 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=93=9C=E5=B8=81?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/coins.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/coins.dm b/code/game/objects/items/rogueitems/coins.dm
+index b47cbd8509..062dccad06 100644
+--- a/code/game/objects/items/rogueitems/coins.dm
++++ b/code/game/objects/items/rogueitems/coins.dm
+@@ -237,12 +237,12 @@
+ 
+ // COPPER
+ /obj/item/roguecoin/copper
+-	name = "zenny"
+-	desc = "A brand-new bronze coin minted by the capital in an effort to be rid of the financial use of silver."
++	name = "泽尼"
++	desc = "一枚崭新的铜币，由首都铸造，意在摆脱对银的财政依赖。"
+ 	icon_state = "c1"
+ 	sellprice = 1
+ 	base_type = CTYPE_COPP
+-	plural_name = "zennies"
++	plural_name = "泽尼斯"
+ 
+ // ANCIENT
+ /obj/item/roguecoin/gilbranze
+-- 
+2.53.0
+

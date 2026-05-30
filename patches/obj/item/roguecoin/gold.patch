@@ -1,0 +1,35 @@
+From d4cfe395bee62fa6131c70928c242ac246a39521 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:24:01 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E9=87=91=E5=B8=81?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/game/objects/items/rogueitems/coins.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/game/objects/items/rogueitems/coins.dm b/code/game/objects/items/rogueitems/coins.dm
+index b47cbd8509..81d5eb96d3 100644
+--- a/code/game/objects/items/rogueitems/coins.dm
++++ b/code/game/objects/items/rogueitems/coins.dm
+@@ -218,12 +218,12 @@
+ 
+ //GOLD
+ /obj/item/roguecoin/gold
+-	name = "zenar"
+-	desc = "A gold coin bearing the symbol of the Taurus and the pre-kingdom psycross. These were in the best condition of the provincial gold mints, the rest were melted down."
++	name = "泽纳"
++	desc = "一枚金币，上有金牛座与前王国万神殿十字架的符号。这些是省立金铸局中品相最好的，其余的都被熔掉了。"
+ 	icon_state = "g1"
+ 	sellprice = 10
+ 	base_type = CTYPE_GOLD
+-	plural_name = "zenarii"
++	plural_name = "泽纳里"
+ 
+ 
+ // SILVER
+-- 
+2.53.0
+

@@ -1,7 +1,7 @@
-From 721ee6f5fff25209bcc737f2590e09918235eb7a Mon Sep 17 00:00:00 2001
+From 7fc5bf38e3ce2db6d18889acc4a2df2333943cde Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Fri, 29 May 2026 17:59:24 +0800
-Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=A5=9E=E7=BB=8F=E9=94=81?=
+Date: Sat, 30 May 2026 14:15:49 +0800
+Subject: [PATCH] =?UTF-8?q?=E4=BF=AE=E6=94=B9=E7=BF=BB=E8=AF=91?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -11,7 +11,7 @@ Content-Transfer-Encoding: 8bit
  1 file changed, 34 insertions(+), 34 deletions(-)
 
 diff --git a/code/modules/roguetown/roguemachine/ATM.dm b/code/modules/roguetown/roguemachine/ATM.dm
-index b302029408..d08e00a5e4 100644
+index b302029408..69e24a5e9d 100644
 --- a/code/modules/roguetown/roguemachine/ATM.dm
 +++ b/code/modules/roguetown/roguemachine/ATM.dm
 @@ -1,6 +1,6 @@
@@ -61,23 +61,23 @@ index b302029408..d08e00a5e4 100644
  		var/list/choicez = list()
  		if(amt > 10)
 -			choicez += "GOLD"
-+			choicez += "金"
++			choicez += "金币"
  		if(amt > 5)
 -			choicez += "SILVER"
 -		choicez += "BRONZE"
 -		var/selection = input(user, "You have [amt] mammon in your account. Choose which currency you'd like to withdraw.", src) as null|anything in choicez
-+			choicez += "银"
-+		choicez += "铜"
++			choicez += "银币"
++		choicez += "铜币"
 +		var/selection = input(user, "你的账户中有 [amt] 玛门。选择你想提取的货币。", src) as null|anything in choicez
  		if(!selection)
  			return
  		amt = SStreasury.bank_accounts[H]
  		var/mod = 1
 -		if(selection == "GOLD")
-+		if(selection == "金")
++		if(selection == "金币")
  			mod = 10
 -		if(selection == "SILVER")
-+		if(selection == "银")
++		if(selection == "银币")
  			mod = 5
 -		var/coin_amt = input(user, "There is [SStreasury.treasury_value] mammon in the treasury, and [amt] mammon in your account. You may withdraw [floor(amt/mod)] [selection] COINS from your account.", src) as null|num
 +		var/coin_amt = input(user, "国库中有 [SStreasury.treasury_value] 玛门，你的账户中有 [amt] 玛门。你可以提取 [floor(amt/mod)] 枚 [selection]币。", src) as null|num
