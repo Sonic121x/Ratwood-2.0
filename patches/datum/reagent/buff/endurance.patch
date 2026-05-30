@@ -1,0 +1,32 @@
+From 7479e67960433d5446edc0686e127e3031ab23dc Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:17:24 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=89=A9=E8=B4=A8=E5=9D=9A?=
+ =?UTF-8?q?=E9=9F=A7?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/reagents.dm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+index 808356e506..cd81951bf5 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/reagents.dm
+@@ -231,9 +231,9 @@
+ 	return ..()
+ 
+ /datum/reagent/buff/endurance
+-	name = STATKEY_WIL
++	name = "坚韧"
+ 	color = "#e2c3e1"
+-	taste_description = "oversweetened milk"
++	taste_description = "过甜的牛奶"
+ 
+ /datum/reagent/buff/endurance/on_mob_life(mob/living/carbon/M)
+ 	M.apply_status_effect(/datum/status_effect/buff/alch/endurancepot)
+-- 
+2.53.0
+
