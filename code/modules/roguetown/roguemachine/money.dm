@@ -134,13 +134,13 @@ GLOBAL_VAR(moneymaster)
 	var/zenars_to_put
 	if(specify)
 		switch(specify)
-			if("GOLD")
+			if("金币")
 				zenars_to_put = budget/10
 				type_to_put = /obj/item/roguecoin/gold
-			if("SILVER")
+			if("银币")
 				zenars_to_put = budget/5
 				type_to_put = /obj/item/roguecoin/silver
-			if("BRONZE")
+			if("铜币")
 				zenars_to_put = budget
 				type_to_put = /obj/item/roguecoin/copper
 			if("MARQUE")
