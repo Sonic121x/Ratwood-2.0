@@ -470,7 +470,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/int_potion
 
 /obj/item/alch/valeriana
-	name = "valeriana"
+	name = "缬草"
 	icon_state = "valeriana"
 
 	major_pot = /datum/alch_cauldron_recipe/health_potion
