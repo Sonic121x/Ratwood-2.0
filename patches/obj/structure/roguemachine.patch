@@ -1,0 +1,36 @@
+From 7367122ea9ca594e57535c5f9b4623d75c0e1d4e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:17:45 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91money?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguemachine/money.dm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/code/modules/roguetown/roguemachine/money.dm b/code/modules/roguetown/roguemachine/money.dm
+index 4176b2f84e..9498237afe 100644
+--- a/code/modules/roguetown/roguemachine/money.dm
++++ b/code/modules/roguetown/roguemachine/money.dm
+@@ -134,13 +134,13 @@ GLOBAL_VAR(moneymaster)
+ 	var/zenars_to_put
+ 	if(specify)
+ 		switch(specify)
+-			if("GOLD")
++			if("金币")
+ 				zenars_to_put = budget/10
+ 				type_to_put = /obj/item/roguecoin/gold
+-			if("SILVER")
++			if("银币")
+ 				zenars_to_put = budget/5
+ 				type_to_put = /obj/item/roguecoin/silver
+-			if("BRONZE")
++			if("铜币")
+ 				zenars_to_put = budget
+ 				type_to_put = /obj/item/roguecoin/copper
+ 			if("MARQUE")
+-- 
+2.53.0
+
