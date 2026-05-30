@@ -87,8 +87,8 @@
 	output_reagents = list(/datum/reagent/buff/perception = 30)
 
 /datum/alch_cauldron_recipe/end_potion
-	name = "Potion of Enduring Fortitude"
-	smells_like = "mountain air"
+	name = "坚韧药水"
+	smells_like = "山间空气"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/endurance = 30)
 
