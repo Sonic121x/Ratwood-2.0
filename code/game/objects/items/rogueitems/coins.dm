@@ -228,12 +228,12 @@
 
 // SILVER
 /obj/item/roguecoin/silver
-	name = "ziliqua"
-	desc = "An ancient silver coin still in use due to their remarkable ability to last the ages."
+	name = "兹利夸"
+	desc = "一种仍在使用的古银币，因其历经岁月而不朽的卓越品质得以流传。"
 	icon_state = "s1"
 	sellprice = 5
 	base_type = CTYPE_SILV
-	plural_name = "ziliquae"
+	plural_name = "兹利夸伊"
 
 // COPPER
 /obj/item/roguecoin/copper
