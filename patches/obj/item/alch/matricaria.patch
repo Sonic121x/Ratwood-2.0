@@ -1,0 +1,28 @@
+From fbbc4e18c098a7462fd7c8f949fd5237f2180285 Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 14:44:18 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E6=AF=8D=E8=8F=8A?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/ingredients.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+index 570ac0de5e..4a754f028c 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+@@ -377,7 +377,7 @@
+ 	minor_pot = /datum/alch_cauldron_recipe/stam_poison
+ 
+ /obj/item/alch/matricaria
+-	name = "matricaria"
++	name = "母菊"
+ 	icon_state = "matricaria"
+ 
+ 	major_pot = /datum/alch_cauldron_recipe/berrypoison
+-- 
+2.53.0
+
