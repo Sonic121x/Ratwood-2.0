@@ -88,7 +88,7 @@
 		src.preview_owner = user?.client
 	var/list/repeat_items = list()
 	// Gets rid of illegal characters
-	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"})
+	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\uffff]+)"})//尝试修复TGUI吞字
 	for(var/i in items)
 		if(!i)
 			continue
