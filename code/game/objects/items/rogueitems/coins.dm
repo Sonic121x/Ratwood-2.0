@@ -218,12 +218,12 @@
 
 //GOLD
 /obj/item/roguecoin/gold
-	name = "zenar"
-	desc = "A gold coin bearing the symbol of the Taurus and the pre-kingdom psycross. These were in the best condition of the provincial gold mints, the rest were melted down."
+	name = "泽纳"
+	desc = "一枚金币，上有金牛座与前王国万神殿十字架的符号。这些是省立金铸局中品相最好的，其余的都被熔掉了。"
 	icon_state = "g1"
 	sellprice = 10
 	base_type = CTYPE_GOLD
-	plural_name = "zenarii"
+	plural_name = "泽纳里"
 
 
 // SILVER
