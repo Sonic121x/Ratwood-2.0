@@ -22,8 +22,8 @@
 	output_reagents = list(/datum/reagent/strongpoison = 100)
 
 /datum/alch_cauldron_recipe/stam_poison
-	name = "Stamina Poison"
-	smells_like = "a slow breeze"
+	name = "耐力毒药"
+	smells_like = "缓慢的微风"
 	skill_required = SKILL_LEVEL_JOURNEYMAN // Basic poison should be harder to handle
 	output_reagents = list(/datum/reagent/stampoison = 100)
 
