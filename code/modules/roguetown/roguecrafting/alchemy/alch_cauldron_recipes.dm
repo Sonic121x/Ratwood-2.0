@@ -81,8 +81,8 @@
 	output_reagents = list(/datum/reagent/buff/strength = 30)
 
 /datum/alch_cauldron_recipe/per_potion
-	name = "Potion of Keen Eye"
-	smells_like = "fire"
+	name = "锐眼药水"
+	smells_like = "火焰"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/perception = 30)
 
