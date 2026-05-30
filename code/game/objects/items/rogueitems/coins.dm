@@ -60,7 +60,7 @@
 /obj/item/roguecoin/examine(mob/user)
 	. = ..()
 	if(quantity > 1)
-		. += span_info("\Roman [quantity] coins.")
+		. += span_info("\Roman [quantity] 枚硬币。")
 
 /obj/item/roguecoin/proc/merge(obj/item/roguecoin/G, mob/user)
 	if(!G)
@@ -89,12 +89,12 @@
 		return ..()
 	if(quantity == 1)
 		if(HAS_TRAIT(user, TRAIT_BLACKLEG))
-			switch(alert(user, "What will you rig the next coin flip to?","XYLIX","Heads","Tails","Play fair"))
-				if("Heads")
+			switch(alert(user, "你要如何操纵下一次掷硬币的结果？","XYLIX","正面","反面","公平游戏"))
+				if("正面")
 					rigged_outcome = 1
-				if("Tails")
+				if("反面")
 					rigged_outcome = 2
-				if("Play fair")
+				if("公平游戏")
 					rigged_outcome = 0
 		return
 	var/obj/item/roguecoin/new_coin = new type()
@@ -109,7 +109,7 @@
 		var/amt_text = " (1 to [quantity])"
 		if(quantity == 1)
 			amt_text = ""
-		var/amount = input(user, "How many [plural_name] to split?[amt_text]", null, round(quantity/2, 1)) as null|num
+		var/amount = input(user, "要分出多少[plural_name]？[amt_text]", null, round(quantity/2, 1)) as null|num
 		if(QDELETED(user) || QDELETED(src) || !user.Adjacent(src)) // if coins were consumed/user was deleted/moved away, don't split
 			return
 		amount = clamp(amount, 0, quantity)
@@ -137,10 +137,10 @@
 	flip_cd = world.time
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)
 	if(prob(50))
-		user.visible_message(span_info("[user] flips the coin. Heads!"))
+		user.visible_message(span_info("[user]抛起硬币。正面！"))
 		heads_tails = TRUE
 	else
-		user.visible_message(span_info("[user] flips the coin. Tails!"))
+		user.visible_message(span_info("[user]抛起硬币。反面！"))
 		heads_tails = FALSE
 	update_icon()
 
@@ -153,10 +153,10 @@
 	flip_cd = world.time
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)	
 	if(prob(50))
-		user.visible_message(span_info("[user] flips the coin. ENDVRE!"))
+		user.visible_message(span_info("[user]抛起硬币。ENDVRE！"))
 		heads_tails = TRUE
 	else
-		user.visible_message(span_info("[user] flips the coin. LYVE!"))
+		user.visible_message(span_info("[user]抛起硬币。LYVE！"))
 		heads_tails = FALSE
 	update_icon()
 
