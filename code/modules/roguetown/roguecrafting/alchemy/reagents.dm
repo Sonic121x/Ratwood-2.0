@@ -345,11 +345,11 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/stampoison
-	name = "Stamina Poison"
+	name = "耐力毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#083b1c"
-	taste_description = "breathlessness"
+	taste_description = "窒息感"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM * 3
 	harmful = TRUE
 
