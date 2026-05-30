@@ -1,7 +1,7 @@
 //vial = 30, bottle = 50
 /datum/alch_cauldron_recipe/antidote
-	name = "Antidote"
-	smells_like = "wet moss"
+	name = "解毒剂"
+	smells_like = "潮湿的苔藓"
 	output_reagents = list(/datum/reagent/medicine/antidote = 100)
 
 /datum/alch_cauldron_recipe/strong_antidote
