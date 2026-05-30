@@ -105,8 +105,8 @@
 	output_reagents = list(/datum/reagent/buff/intelligence = 30)
 
 /datum/alch_cauldron_recipe/spd_potion
-	name = "Potion of Fleet Foot"
-	smells_like = "clean air"
+	name = "疾行药水"
+	smells_like = "清新的空气"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/speed = 30)
 
