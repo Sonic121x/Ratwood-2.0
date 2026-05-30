@@ -433,7 +433,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/stamina_potion
 
 /obj/item/alch/urtica
-	name = "urtica"
+	name = "荨麻"
 	icon_state = "urtica"
 
 	major_pot = /datum/alch_cauldron_recipe/health_potion
