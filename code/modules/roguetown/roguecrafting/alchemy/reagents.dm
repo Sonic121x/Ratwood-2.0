@@ -202,9 +202,9 @@
 	return ..()
 
 /datum/reagent/buff/perception
-	name = STATKEY_PER
+	name = "感知"
 	color = "#e9e98c"
-	taste_description = "cat piss"
+	taste_description = "猫尿"
 	metabolization_rate = REAGENTS_METABOLISM * 0.05
 
 /datum/reagent/buff/perception/on_mob_life(mob/living/carbon/M)
