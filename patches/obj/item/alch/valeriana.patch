@@ -1,0 +1,28 @@
+From 99c2bf9587823895deb22084e7a1a19b11a04d0e Mon Sep 17 00:00:00 2001
+From: WitherVictor <number42@yeah.net>
+Date: Sat, 30 May 2026 15:24:36 +0800
+Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=BC=AC=E8=8D=89?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ code/modules/roguetown/roguecrafting/alchemy/ingredients.dm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+index 570ac0de5e..e3c56ff7ff 100644
+--- a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+@@ -470,7 +470,7 @@
+ 	minor_pot = /datum/alch_cauldron_recipe/int_potion
+ 
+ /obj/item/alch/valeriana
+-	name = "valeriana"
++	name = "缬草"
+ 	icon_state = "valeriana"
+ 
+ 	major_pot = /datum/alch_cauldron_recipe/health_potion
+-- 
+2.53.0
+
