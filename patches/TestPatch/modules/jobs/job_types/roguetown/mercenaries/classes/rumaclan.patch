@@ -1,17 +1,4 @@
-From bfd15ab407c7e04259dabf710dd37fe7568d7765 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/rumaclan.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/rumaclan.dm | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/rumaclan.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/rumaclan.dm
-index fa73a351396e..e9d4f0526729 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/rumaclan.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/rumaclan.dm
 @@ -1,6 +1,6 @@
@@ -57,5 +44,3 @@ index fa73a351396e..e9d4f0526729 100644
  	belt = /obj/item/storage/belt/rogue/leather
  	beltr = /obj/item/quiver/arrows
  	beltl = /obj/item/flashlight/flare/torch/lantern
--- 
-Translation Patch Toolkit

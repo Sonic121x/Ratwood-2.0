@@ -1,17 +1,4 @@
-From 798dc0d036d768ddc052b9a20b1b729f81427493 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelthand.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelthand.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelthand.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelthand.dm
-index 898b553872e5..298e607c51f0 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelthand.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelthand.dm
 @@ -1,7 +1,7 @@
@@ -25,5 +12,3 @@ index 898b553872e5..298e607c51f0 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = ACCEPTED_RACES
  	outfit = /datum/outfit/job/roguetown/adventurer/heartfelthand
--- 
-Translation Patch Toolkit

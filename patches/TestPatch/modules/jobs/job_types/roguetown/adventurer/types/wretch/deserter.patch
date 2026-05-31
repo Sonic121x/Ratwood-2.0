@@ -1,17 +1,4 @@
-From 6af4aedd9894ad70d6166a2bc77c888e93d5e5c2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/deserter.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/deserter.dm | 289 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 144 insertions(+), 145 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/deserter.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/deserter.dm
-index 837fca0f2854..aba0ef0fc7f0 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/deserter.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/deserter.dm
 @@ -1,6 +1,6 @@
@@ -622,5 +609,3 @@ index 837fca0f2854..aba0ef0fc7f0 100644
 +	recruitment_message = "从现在起，我们同进共退，%RECRUIT！"
 +	accept_message = "为了兄弟会！"
 +	refuse_message = "我拒绝。"
--- 
-Translation Patch Toolkit

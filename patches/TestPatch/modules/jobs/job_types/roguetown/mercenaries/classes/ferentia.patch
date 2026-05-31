@@ -1,17 +1,4 @@
-From 1b63382a14f4d6628bc70d6052a4fb3227b4151d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/ferentia.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/ferentia.dm | 186 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 93 insertions(+), 93 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/ferentia.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/ferentia.dm
-index eba369beeca5..038bcdc382f1 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/ferentia.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/ferentia.dm
 @@ -1,15 +1,15 @@
@@ -329,5 +316,3 @@ index eba369beeca5..038bcdc382f1 100644
  				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
  				beltl = /obj/item/rogueweapon/scabbard/sheath
  				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
--- 
-Translation Patch Toolkit

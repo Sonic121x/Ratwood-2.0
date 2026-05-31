@@ -1,17 +1,4 @@
-From 7efa1cdfd380a06b18dcfa9b38ade0edf3dde2c6 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/lunacyembracer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/lunacyembracer.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/lunacyembracer.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/lunacyembracer.dm
-index 89a5b17524d7..e3b54d051aff 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/lunacyembracer.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/lunacyembracer.dm
 @@ -1,6 +1,6 @@
@@ -30,5 +17,3 @@ index 89a5b17524d7..e3b54d051aff 100644
 -	to_chat(H, span_danger("You have abandoned your humanity to run wild under the moon. The call of nature fills your soul!"))
 +	to_chat(H, span_danger("你已舍弃自己的人性，只为在月下狂奔肆虐。自然的呼唤正充满你的灵魂！"))
  	wretch_select_bounty(H)
--- 
-Translation Patch Toolkit

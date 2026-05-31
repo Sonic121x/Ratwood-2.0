@@ -1,17 +1,4 @@
-From 7077b068ad8002d6f1d44ac0ece13d83d8fa05a3 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/woodcutter.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/woodcutter.dm | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/woodcutter.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/woodcutter.dm
-index 7815ceebcdff..59a3c9217cdf 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/woodcutter.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/woodcutter.dm
 @@ -1,7 +1,6 @@
@@ -24,5 +11,3 @@ index 7815ceebcdff..59a3c9217cdf 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_ALL_KINDS
  	outfit = /datum/outfit/job/roguetown/adventurer/woodworker
--- 
-Translation Patch Toolkit

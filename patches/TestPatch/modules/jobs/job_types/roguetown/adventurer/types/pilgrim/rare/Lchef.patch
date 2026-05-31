@@ -1,17 +1,4 @@
-From dfb73d919d774a9572ea2ce194978595eaf4e289 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lchef.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lchef.dm | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lchef.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lchef.dm
-index 2f4b2600263e..c51c0970e061 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lchef.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lchef.dm
 @@ -1,10 +1,10 @@
@@ -29,5 +16,3 @@ index 2f4b2600263e..c51c0970e061 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_ALL_KINDS
  	outfit = /datum/outfit/job/roguetown/adventurer/masterchef
--- 
-Translation Patch Toolkit

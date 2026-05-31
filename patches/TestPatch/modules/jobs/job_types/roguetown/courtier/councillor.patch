@@ -1,17 +1,4 @@
-From dfa9362fecb4056119601054842a2f64109d9ef3 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/councillor.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/councillor.dm | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/councillor.dm b/code/modules/jobs/job_types/roguetown/courtier/councillor.dm
-index 7d85290c7828..199a64b2687a 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/councillor.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/councillor.dm
 @@ -1,5 +1,6 @@
@@ -41,5 +28,3 @@ index 7d85290c7828..199a64b2687a 100644
  	outfit = /datum/outfit/job/roguetown/councillor/basic
  	category_tags = list(CTAG_COUNCILLOR)
  	subclass_stats = list(
--- 
-Translation Patch Toolkit

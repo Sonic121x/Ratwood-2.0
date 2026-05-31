@@ -1,17 +1,4 @@
-From e2364530fe9e78e7ce41b24091e447cf435011b0 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm
-index 362658a500e9..8d406ff29aeb 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm
 @@ -1,6 +1,6 @@
@@ -23,5 +10,3 @@ index 362658a500e9..8d406ff29aeb 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_ALL_KINDS
  	outfit = /datum/outfit/job/roguetown/adventurer/artificer
--- 
-Translation Patch Toolkit

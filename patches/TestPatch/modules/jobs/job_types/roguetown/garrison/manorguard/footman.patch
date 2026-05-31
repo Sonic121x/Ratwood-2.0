@@ -1,17 +1,4 @@
-From af1e9a35b0d6927b59f033a4bd9e157d23c08ad2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/manorguard/footman.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/manorguard/footman.dm | 42 +++++++++++++++++++++---------------------
- 1 file changed, 21 insertions(+), 21 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/manorguard/footman.dm b/code/modules/jobs/job_types/roguetown/garrison/manorguard/footman.dm
-index dbeda3397bad..1f9d0ec9ef1c 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/manorguard/footman.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/manorguard/footman.dm
 @@ -1,7 +1,7 @@
@@ -96,5 +83,3 @@ index dbeda3397bad..1f9d0ec9ef1c 100644
 +		var/helmchoice = input(H, "选择你的头盔。", "戴上头盔") as anything in helmets
 +		if(helmchoice != "无")
  			head = helmets[helmchoice]
--- 
-Translation Patch Toolkit

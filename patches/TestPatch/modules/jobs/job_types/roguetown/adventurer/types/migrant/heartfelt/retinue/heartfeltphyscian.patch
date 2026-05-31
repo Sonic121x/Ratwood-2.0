@@ -1,17 +1,4 @@
-From cc140e0432b537b64deaea298c9a8c1f2538f566 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltphyscian.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltphyscian.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltphyscian.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltphyscian.dm
-index 73ff5e2d0177..fc709ddd8075 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltphyscian.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltphyscian.dm
 @@ -1,8 +1,8 @@
@@ -26,5 +13,3 @@ index 73ff5e2d0177..fc709ddd8075 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_NO_CONSTRUCT
  	outfit = /datum/outfit/job/roguetown/heartfelt/retinue/physician
--- 
-Translation Patch Toolkit

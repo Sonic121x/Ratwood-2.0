@@ -1,17 +1,4 @@
-From 99043ba27c29ce31474b92d2da44ca1625480623 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/grenzelhoft.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/grenzelhoft.dm | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/grenzelhoft.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/grenzelhoft.dm
-index b6ce55db7e59..75aa0565e829 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/grenzelhoft.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/grenzelhoft.dm
 @@ -2,12 +2,12 @@
@@ -63,5 +50,3 @@ index b6ce55db7e59..75aa0565e829 100644
 +			if("鹰嘴锤")
  				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
  				r_hand = /obj/item/rogueweapon/eaglebeak
--- 
-Translation Patch Toolkit

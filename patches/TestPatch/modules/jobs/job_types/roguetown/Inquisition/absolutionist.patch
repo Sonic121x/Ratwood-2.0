@@ -1,23 +1,10 @@
-From 6fdc0b79fe581bfb910af2e463909df42e04ac1a Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/absolutionist.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/absolutionist.dm | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/absolutionist.dm b/code/modules/jobs/job_types/roguetown/Inquisition/absolutionist.dm
-index ca969fa92a93..706a0c32ad08 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/absolutionist.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/absolutionist.dm
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,6 @@
  /datum/job/roguetown/absolver
--	title = "Absolver"
-+	title = "赦罪师"
+ 	title = "Absolver"
++	display_title = "赦罪师"
  	flag = ABSOLVER
  	department_flag = INQUISITION
  	faction = "Station"
@@ -50,5 +37,3 @@ index ca969fa92a93..706a0c32ad08 100644
  	)
  
  // REMEMBER FLAGELLANT? REMEMBER LASZLO? THIS IS HIM NOW. FEEL OLD YET?
--- 
-Translation Patch Toolkit

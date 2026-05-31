@@ -1,17 +1,4 @@
-From 65914ff74ac172209964fbb2d4fe5dfa93260fe2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/ranger.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/ranger.dm | 54 +++++++++++++++++++++++++++---------------------------
- 1 file changed, 27 insertions(+), 27 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/ranger.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/ranger.dm
-index 432e26aa25c5..0fdeb2d6f3b0 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/ranger.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/ranger.dm
 @@ -1,6 +1,6 @@
@@ -161,5 +148,3 @@ index 432e26aa25c5..0fdeb2d6f3b0 100644
  				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
  				pants = /obj/item/clothing/under/roguetown/chainlegs/iron
  				gloves = /obj/item/clothing/gloves/roguetown/chain/iron
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 1572ad34f6e2fbb9ce224755f97b0bdc24163c70 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/etrusca.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/etrusca.dm | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/etrusca.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/etrusca.dm
-index 92907a83b272..3a37b6839d2f 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/etrusca.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/etrusca.dm
 @@ -3,12 +3,12 @@
@@ -69,5 +56,3 @@ index 92907a83b272..3a37b6839d2f 100644
  				var/datum/inspiration/I = new /datum/inspiration(H)
  				I.grant_inspiration(H, bard_tier = BARD_T1)
  				H.change_stat(STATKEY_PER, 1)
--- 
-Translation Patch Toolkit

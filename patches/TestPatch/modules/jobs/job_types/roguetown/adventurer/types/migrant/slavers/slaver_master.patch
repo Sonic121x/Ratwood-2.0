@@ -1,17 +1,4 @@
-From 235600845c6a3fa9963d42d33fd42fc7a11e7193 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_master.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_master.dm | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_master.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_master.dm
-index 31b321c47e75..d2a74355d7b1 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_master.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_master.dm
 @@ -1,8 +1,8 @@
@@ -47,5 +34,3 @@ index 31b321c47e75..d2a74355d7b1 100644
  	head = /obj/item/clothing/head/roguetown/helmet/sallet/zyb		// thematic as it is the same helmet jannisaries use. Maybe a retired soldier with hired goons?
  	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
  	neck = /obj/item/clothing/neck/roguetown/bevor
--- 
-Translation Patch Toolkit

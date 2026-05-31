@@ -1,17 +1,4 @@
-From f8b19f298ee2077a373b63936013d18107371268 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/underdweller.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/underdweller.dm | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/underdweller.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/underdweller.dm
-index 4fe482767282..8d8c27734dce 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/underdweller.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/underdweller.dm
 @@ -1,8 +1,8 @@
@@ -66,5 +53,3 @@ index 4fe482767282..8d8c27734dce 100644
  	icon_state = "strapbag"
  	item_state = "strapbag"
  	icon = 'icons/roguetown/clothing/storage.dmi'
--- 
-Translation Patch Toolkit

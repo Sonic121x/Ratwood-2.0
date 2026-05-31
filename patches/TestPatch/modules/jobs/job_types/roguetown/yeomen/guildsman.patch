@@ -1,17 +1,4 @@
-From 85cbede659cc3441085ca688bd2ba0c2aa3a3c53 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/yeomen/guildsman.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/yeomen/guildsman.dm | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/yeomen/guildsman.dm b/code/modules/jobs/job_types/roguetown/yeomen/guildsman.dm
-index 865ced6f4977..8bd05e2febe4 100644
 --- a/code/modules/jobs/job_types/roguetown/yeomen/guildsman.dm
 +++ b/code/modules/jobs/job_types/roguetown/yeomen/guildsman.dm
 @@ -2,6 +2,7 @@
@@ -71,5 +58,3 @@ index 865ced6f4977..8bd05e2febe4 100644
  	outfit = /datum/outfit/job/roguetown/guildsman/architect
  
  	category_tags = list(CTAG_GUILDSMEN)
--- 
-Translation Patch Toolkit

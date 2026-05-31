@@ -1,17 +1,4 @@
-From 93cca90ecbb82e9ac187b3c2e32a7e31a3726330 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/routier.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/routier.dm | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/routier.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/routier.dm
-index 2845db9ce791..07f44bf9c950 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/routier.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/routier.dm
 @@ -1,6 +1,6 @@
@@ -54,5 +41,3 @@ index 2845db9ce791..07f44bf9c950 100644
  				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
  				r_hand = /obj/item/rogueweapon/spear/lance
  	wrists = /obj/item/clothing/wrists/roguetown/bracers
--- 
-Translation Patch Toolkit

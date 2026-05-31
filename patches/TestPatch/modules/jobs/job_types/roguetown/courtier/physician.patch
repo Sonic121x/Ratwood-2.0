@@ -1,17 +1,4 @@
-From 4260c808614debf7684dc6367141d4e98cdbd03c Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/physician.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/physician.dm | 17 +++++++++--------
- 1 file changed, 9 insertions(+), 8 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/physician.dm b/code/modules/jobs/job_types/roguetown/courtier/physician.dm
-index e6bfab07e22c..76bded62d108 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/physician.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/physician.dm
 @@ -1,5 +1,6 @@
@@ -58,5 +45,3 @@ index e6bfab07e22c..76bded62d108 100644
  	jobtype = /datum/job/roguetown/physician
  
  /datum/outfit/job/roguetown/physician/basic/pre_equip(mob/living/carbon/human/H)
--- 
-Translation Patch Toolkit

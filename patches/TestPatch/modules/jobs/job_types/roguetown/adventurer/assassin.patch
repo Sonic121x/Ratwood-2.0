@@ -1,17 +1,4 @@
-From 38f3b0f0bb91f3b9427ff9722f3489dea85ebe6e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/assassin.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/assassin.dm | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/assassin.dm b/code/modules/jobs/job_types/roguetown/adventurer/assassin.dm
-index 84afd1ea5ef3..5f6a99386cb9 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/assassin.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/assassin.dm
 @@ -1,5 +1,6 @@
@@ -46,5 +33,3 @@ index 84afd1ea5ef3..5f6a99386cb9 100644
 -			if("I am a nobody") //Nothing ever happens
 +			if("我是无名之辈") //Nothing ever happens
  				return
--- 
-Translation Patch Toolkit

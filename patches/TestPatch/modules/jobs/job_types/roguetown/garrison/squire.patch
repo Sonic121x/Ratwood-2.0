@@ -1,17 +1,4 @@
-From 72feff7c5fba71f35daf543fce40e4524bd5e799 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/squire.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/squire.dm | 32 +++++++++++++++-----------------
- 1 file changed, 15 insertions(+), 17 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/squire.dm b/code/modules/jobs/job_types/roguetown/garrison/squire.dm
-index 6b3641d3169a..3650ebd06255 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/squire.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/squire.dm
 @@ -1,5 +1,6 @@
@@ -87,5 +74,3 @@ index 6b3641d3169a..3650ebd06255 100644
  	outfit = /datum/outfit/job/roguetown/squire/skirmisher
  
  	category_tags = list(CTAG_SQUIRE)
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 322e780b4a2ea780425d40f18e1df4b9f274c31f Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/byos/tribalvillager.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/byos/tribalvillager.dm | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/byos/tribalvillager.dm b/code/modules/jobs/job_types/roguetown/byos/tribalvillager.dm
-index 37159adc85a3..5016bcc0eeb2 100644
 --- a/code/modules/jobs/job_types/roguetown/byos/tribalvillager.dm
 +++ b/code/modules/jobs/job_types/roguetown/byos/tribalvillager.dm
 @@ -1,5 +1,6 @@
@@ -33,6 +20,3 @@ index 37159adc85a3..5016bcc0eeb2 100644
 +	确保人人有饭吃、身体撑得住、没有怨言，同时心里还要盼着，也许总有一天你能变得不止如此。"
  	display_order = JDO_TRIBALVILLAGER
  	whitelist_req = TRUE
- 
--- 
-Translation Patch Toolkit

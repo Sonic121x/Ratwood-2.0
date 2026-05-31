@@ -1,17 +1,4 @@
-From f2197cbf9bd575c1e839c59994408d120120a6d9 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_impure.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_impure.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_impure.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_impure.dm
-index 361cd7dd4453..5e02411131b2 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_impure.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_impure.dm
 @@ -1,7 +1,7 @@
@@ -23,12 +10,9 @@ index 361cd7dd4453..5e02411131b2 100644
 +	tutorial = "你已向 Graggar 证明了自己的价值，而他也赐下了至高的祝福。如今你要去追猎配得上你的对手，寻找那些强到足以让你流血的人。"
  	min_pq = 0
  	applies_post_equipment = FALSE
- 
 @@ -51,4 +51,4 @@
  		H.AddSpell(new /obj/effect/proc_holder/spell/self/claws/gnoll)
  		H.set_patron(/datum/patron/inhumen/graggar)
  
 -		to_chat(H, span_bignotice("Born out of echoes of violence, I am no true champion of graggar. But whoever summoned me is, even if they don't heed his call. They've bested his mightiests gnolls, ready to provide a worthy challenge. As long as they don't deny me worthy duels, I shall serve them."))
 +		to_chat(H, span_bignotice("我诞生于暴力的余响，并非 Graggar 真正的冠军。可召来我的那人却是，即便他们并未回应他的呼唤。他们击败了他最强大的豺狼人，足以献上一场配得上的挑战。只要他们不拒绝我应得的决斗，我便会为其效力。"))
--- 
-Translation Patch Toolkit

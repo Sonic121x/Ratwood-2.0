@@ -1,17 +1,4 @@
-From df112c9038f5d206a8e1a8a3d3588239780f94a7 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/cheesemaker.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/cheesemaker.dm | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/cheesemaker.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/cheesemaker.dm
-index 6eab73d8c4c4..555578519a65 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/cheesemaker.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/cheesemaker.dm
 @@ -1,8 +1,8 @@
@@ -27,5 +14,3 @@ index 6eab73d8c4c4..555578519a65 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_ALL_KINDS
  	outfit = /datum/outfit/job/roguetown/adventurer/cheesemaker
--- 
-Translation Patch Toolkit

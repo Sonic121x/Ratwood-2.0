@@ -1,17 +1,4 @@
-From 946923b8918506fc18fc413b780ea25856193b21 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/butler.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/butler.dm | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/butler.dm b/code/modules/jobs/job_types/roguetown/courtier/butler.dm
-index 31f22f2d88f2..a146be61445c 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/butler.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/butler.dm
 @@ -1,5 +1,6 @@
@@ -63,5 +50,3 @@ index 31f22f2d88f2..a146be61445c 100644
  	outfit = /datum/outfit/job/roguetown/seneschal/chiefbutler
  	subclass_stats = list(
  		STATKEY_INT = 2,
--- 
-Translation Patch Toolkit

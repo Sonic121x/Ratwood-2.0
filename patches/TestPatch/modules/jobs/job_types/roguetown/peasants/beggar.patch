@@ -1,17 +1,4 @@
-From c0df5b3a69448bb6cb19ec4870d20deca37598a8 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/peasants/beggar.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/peasants/beggar.dm | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/peasants/beggar.dm b/code/modules/jobs/job_types/roguetown/peasants/beggar.dm
-index cf054ae2e56b..7326175e6aee 100644
 --- a/code/modules/jobs/job_types/roguetown/peasants/beggar.dm
 +++ b/code/modules/jobs/job_types/roguetown/peasants/beggar.dm
 @@ -1,5 +1,6 @@
@@ -54,5 +41,3 @@ index cf054ae2e56b..7326175e6aee 100644
 -	name = "Wise Beggar"
 +	name = "贤者乞丐"
  	is_wise = TRUE
--- 
-Translation Patch Toolkit

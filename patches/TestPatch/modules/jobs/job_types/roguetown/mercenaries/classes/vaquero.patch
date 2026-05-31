@@ -1,17 +1,4 @@
-From 1fcdcb8bf85758b74436ef77ef515364bd90d73d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/vaquero.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/vaquero.dm | 38 +++++++++++++++++++-------------------
- 1 file changed, 19 insertions(+), 19 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/vaquero.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/vaquero.dm
-index a463ac021e02..847bff566bbf 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/vaquero.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/vaquero.dm
 @@ -1,6 +1,6 @@
@@ -81,6 +68,3 @@ index a463ac021e02..847bff566bbf 100644
 +			if("咏声护符")
  				backr = /obj/item/rogue/instrument/vocals
  	H.merctype = 13
- 	
--- 
-Translation Patch Toolkit

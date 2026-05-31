@@ -1,17 +1,4 @@
-From eeb2c5af9aa7761b90fe23313dac94dfd92e2b0e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/servant.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/servant.dm | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/servant.dm b/code/modules/jobs/job_types/roguetown/courtier/servant.dm
-index 2e0fd5de0949..b39e63fa2c86 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/servant.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/servant.dm
 @@ -10,7 +10,8 @@
@@ -57,5 +44,3 @@ index 2e0fd5de0949..b39e63fa2c86 100644
  	outfit = /datum/outfit/job/roguetown/servant/butler
  	category_tags = list(CTAG_SERVANT)
  	subclass_stats = list(
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 705aa5c0d050a7e7009d30f3278ecbd4712d0814 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/crocs.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/crocs.dm | 44 ++++++++++++++++++++++----------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/crocs.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/crocs.dm
-index 3bfc09416947..b62bc93b1c88 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/crocs.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/crocs.dm
 @@ -1,6 +1,6 @@
@@ -29,9 +16,6 @@ index 3bfc09416947..b62bc93b1c88 100644
  	)
 -	extra_context = "This subclass is race-limited to: Dark Elves Only."
 +	extra_context = "该分支仅限黑暗精灵使用。"
- 	
- 
- 
 @@ -84,27 +84,27 @@
  
  /datum/outfit/job/roguetown/mercenary/crocs/choose_loadout(mob/living/carbon/human/H)
@@ -105,5 +89,3 @@ index 3bfc09416947..b62bc93b1c88 100644
  			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
  			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sheath, SLOT_BELT_R, TRUE)
  			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/dirk, TRUE)
--- 
-Translation Patch Toolkit

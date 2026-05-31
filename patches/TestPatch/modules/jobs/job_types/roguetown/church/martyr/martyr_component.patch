@@ -1,17 +1,4 @@
-From 6b0b335b14b0ef62d481c33aaa5c7815eee77903 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/martyr/martyr_component.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/church/martyr/martyr_component.dm | 64 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 32 insertions(+), 32 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/martyr/martyr_component.dm b/code/modules/jobs/job_types/roguetown/church/martyr/martyr_component.dm
-index b47bb0015e52..1fe0af901256 100644
 --- a/code/modules/jobs/job_types/roguetown/church/martyr/martyr_component.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/martyr/martyr_component.dm
 @@ -63,14 +63,14 @@
@@ -56,7 +43,6 @@ index b47bb0015e52..1fe0af901256 100644
 +		current_holder.visible_message(span_info("[current_holder] 渐渐消散了。"), span_info("你的一生都将你引向这一刻。面对世界的腐朽，你始终坚持至今。如今，你终于得以安息。你感到灵魂正褪去凡胎束缚，投入 [H.patron.name] 的怀抱。"))
  		H.dust(drop_items = TRUE)
  		is_dying = FALSE
- 
 @@ -125,18 +125,18 @@
  /datum/component/martyrweapon/proc/timehint()
  	var/result = round((end_activation - world.time) / 600)	//Minutes
@@ -78,7 +64,6 @@ index b47bb0015e52..1fe0af901256 100644
 +				to_chat(current_holder,span_crit("还剩 10 秒！"))
  				last_time = resultadv
  	return 0
- 
 @@ -172,21 +172,21 @@
  		if(ishuman(user))
  			var/mob/living/carbon/human/H = user
@@ -171,7 +156,6 @@ index b47bb0015e52..1fe0af901256 100644
 +				current_holder.visible_message(span_warning("[current_holder] 再度起身，重新获得了神力加持！"), span_warningbig("我再次站起来了！我能感觉到神明的力量正流淌于我体内！"))
  				flash_lightning(current_holder)
  				current_holder.revive(full_heal = TRUE, admin_revive = TRUE)
- 
 @@ -330,7 +330,7 @@
  		if(istype(M.patron, /datum/patron/inhumen))
  			var/turf/T = get_step(get_step(M, NORTH), NORTH)
@@ -206,5 +190,3 @@ index b47bb0015e52..1fe0af901256 100644
  					ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
  					ADD_TRAIT(H, TRAIT_NOFALLDAMAGE2, TRAIT_GENERIC)
  			adjust_traits(remove = FALSE)
--- 
-Translation Patch Toolkit

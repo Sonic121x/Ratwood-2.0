@@ -1,24 +1,10 @@
-From 447a21e35f53f4a78937bb0db132b1e6da4d532f Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/druid.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/church/druid.dm | 23 ++++++++++++-----------
- 1 file changed, 12 insertions(+), 11 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/druid.dm b/code/modules/jobs/job_types/roguetown/church/druid.dm
-index eecf4622a82f..86af9421cd29 100644
 --- a/code/modules/jobs/job_types/roguetown/church/druid.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/druid.dm
 @@ -1,6 +1,6 @@
  /datum/job/roguetown/druid
  	title = "Druid"
--	f_title = "Druidess"
-+	f_title = "德鲁伊祭女"
+ 	f_title = "Druidess"
  	flag = DRUID
  	department_flag = CHURCHMEN
  	faction = "Station"
@@ -84,5 +70,3 @@ index eecf4622a82f..86af9421cd29 100644
  		grant_radical_path(H)
  	else
  		grant_old_path(H)
--- 
-Translation Patch Toolkit

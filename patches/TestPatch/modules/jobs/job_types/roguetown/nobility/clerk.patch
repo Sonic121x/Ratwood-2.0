@@ -1,17 +1,4 @@
-From dd52aeb7c3375313f0357c307e9421683f1db2b8 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/clerk.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/clerk.dm | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/clerk.dm b/code/modules/jobs/job_types/roguetown/nobility/clerk.dm
-index 2a9f496d1ed9..0734fda1e6bb 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/clerk.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/clerk.dm
 @@ -1,5 +1,6 @@
@@ -41,5 +28,3 @@ index 2a9f496d1ed9..0734fda1e6bb 100644
  	subclass_stats = list(
  		STATKEY_LCK = 2,
  		STATKEY_INT = 2,
--- 
-Translation Patch Toolkit

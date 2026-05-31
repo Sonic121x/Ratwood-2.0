@@ -1,17 +1,4 @@
-From 9877a664e419b8d0aa5141a4bc8c9a67a9022fd2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/blackoak.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/blackoak.dm | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/blackoak.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/blackoak.dm
-index 3724c66ad5c8..9b81caf77567 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/blackoak.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/blackoak.dm
 @@ -1,7 +1,7 @@
@@ -51,5 +38,3 @@ index 3724c66ad5c8..9b81caf77567 100644
 +			if("精灵弯刃大剑与短剑")
  				r_hand = /obj/item/rogueweapon/greatsword/elf
  				l_hand = /obj/item/rogueweapon/sword/short/elf
--- 
-Translation Patch Toolkit

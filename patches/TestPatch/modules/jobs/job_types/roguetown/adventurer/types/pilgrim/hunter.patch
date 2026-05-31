@@ -1,17 +1,4 @@
-From d1d73e12c892c78cf1b4670a4ce207d213265b2b Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm
-index 1d795167f068..799f23b74e4b 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm
 @@ -1,6 +1,6 @@
@@ -60,5 +47,3 @@ index 1d795167f068..799f23b74e4b 100644
  	pants = /obj/item/clothing/under/roguetown/trou/leather
  	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
  	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
--- 
-Translation Patch Toolkit

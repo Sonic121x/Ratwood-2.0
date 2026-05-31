@@ -1,17 +1,4 @@
-From 3410462477767540625051d3a687b77c702a8943 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm
-index b0cda7b690e0..f9f0db09ae8e 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm
 @@ -1,7 +1,7 @@
@@ -51,5 +38,3 @@ index b0cda7b690e0..f9f0db09ae8e 100644
  			if (i == 1)
  				l_hand = molds[mold_choice]
  			else
--- 
-Translation Patch Toolkit

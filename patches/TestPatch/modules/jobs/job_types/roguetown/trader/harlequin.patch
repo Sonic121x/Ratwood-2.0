@@ -1,17 +1,4 @@
-From d5d20d5d0a01940a8b2a221edadf3ddffc27b76e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/trader/harlequin.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/trader/harlequin.dm | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/trader/harlequin.dm b/code/modules/jobs/job_types/roguetown/trader/harlequin.dm
-index ad911ef97c3b..ad0c9fdeb615 100644
 --- a/code/modules/jobs/job_types/roguetown/trader/harlequin.dm
 +++ b/code/modules/jobs/job_types/roguetown/trader/harlequin.dm
 @@ -1,6 +1,6 @@
@@ -89,5 +76,3 @@ index ad911ef97c3b..ad0c9fdeb615 100644
 -			if("Vocal Talisman")
 +			if("咏声护符")
  				backr = /obj/item/rogue/instrument/vocals
--- 
-Translation Patch Toolkit

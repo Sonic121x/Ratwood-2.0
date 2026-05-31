@@ -1,17 +1,4 @@
-From e31f3a8be2b9fd2ac090fc6772e6571d519f480c Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/trader/cuisiner.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/trader/cuisiner.dm | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/trader/cuisiner.dm b/code/modules/jobs/job_types/roguetown/trader/cuisiner.dm
-index 8c8d061629f6..6160d4092a26 100644
 --- a/code/modules/jobs/job_types/roguetown/trader/cuisiner.dm
 +++ b/code/modules/jobs/job_types/roguetown/trader/cuisiner.dm
 @@ -1,7 +1,7 @@
@@ -36,5 +23,3 @@ index 8c8d061629f6..6160d4092a26 100644
  	if(H.age == AGE_MIDDLEAGED)
  		H.adjust_skillrank_up_to(/datum/skill/craft/cooking, SKILL_LEVEL_MASTER, TRUE)
  		H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
--- 
-Translation Patch Toolkit

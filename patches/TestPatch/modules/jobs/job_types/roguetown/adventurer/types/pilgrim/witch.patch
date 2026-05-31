@@ -1,17 +1,4 @@
-From 5ff0afd0b1e26fedb4180ceef01ce72cb3e4f23d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/witch.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/witch.dm | 106 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 53 insertions(+), 53 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/witch.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/witch.dm
-index ac626197f998..737fd7e24a25 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/witch.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/witch.dm
 @@ -1,6 +1,6 @@
@@ -123,7 +110,6 @@ index ac626197f998..737fd7e24a25 100644
 +		to_chat(caster, span_warning("变形被打断了！"))
  		revert_cast(caster)  // Refund the cooldown
  		return
- 
 @@ -210,21 +210,21 @@
  /obj/effect/proc_holder/spell/targeted/shapeshift/witch/Restore(mob/living/shape)
  	// Check if restrained before allowing revert
@@ -291,5 +277,3 @@ index ac626197f998..737fd7e24a25 100644
  	desc = ""
  	overlay_state = "blindness"
  	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab/frog
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From d48c431ea5293513121d12d2a9413107158d1943 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm b/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
-index ca5952ff4799..73eef7857d77 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/mercenary.dm
 @@ -1,5 +1,6 @@
@@ -30,5 +17,3 @@ index ca5952ff4799..73eef7857d77 100644
  	display_order = JDO_MERCENARY
  	selection_color = JCOLOR_WANDERER
  	min_pq = 2		//Will be handled by classes if PQ limiting is needed. --But Until then, learn escalation, mercs.
--- 
-Translation Patch Toolkit

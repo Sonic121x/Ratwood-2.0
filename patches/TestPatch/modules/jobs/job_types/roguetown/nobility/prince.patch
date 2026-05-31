@@ -1,31 +1,16 @@
-From 82df6aca4711f3edfdbdcb13f153751daf5bcf4e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/prince.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/prince.dm | 63 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 32 insertions(+), 31 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/prince.dm b/code/modules/jobs/job_types/roguetown/nobility/prince.dm
-index fd6a0d90a0ef..17476a58de05 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/prince.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/prince.dm
 @@ -1,18 +1,19 @@
  /datum/job/roguetown/prince
  	title = "Prince"
--	f_title = "Princess"
-+	f_title = "公主"
+ 	f_title = "Princess"
  	flag = PRINCE
  	department_flag = NOBLEMEN
  	faction = "Station"
  	total_positions = 2
  	spawn_positions = 2
--	f_title = "Princess"
-+	f_title = "公主"
+ 	f_title = "Princess"
  	allowed_races = RACES_TOLERATED_UP //the duke isn't giving up their throne to a goblin
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_ages = list(AGE_ADULT)
@@ -183,5 +168,3 @@ index fd6a0d90a0ef..17476a58de05 100644
  	icon_state = "buff"
  
  /datum/status_effect/buff/ward/tick()
--- 
-Translation Patch Toolkit

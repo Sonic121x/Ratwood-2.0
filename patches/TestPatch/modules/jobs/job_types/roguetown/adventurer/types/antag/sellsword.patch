@@ -1,17 +1,4 @@
-From 1ae64e0a11c9bcc60a26ab3e6e3ce85605629ff6 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm
-index ac73dde671c2..9278b12de6aa 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm
 @@ -1,8 +1,8 @@
@@ -60,5 +47,3 @@ index ac73dde671c2..9278b12de6aa 100644
  				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
  				beltl = /obj/item/quiver/arrows
  				beltr = /obj/item/rogueweapon/stoneaxe/battle
--- 
-Translation Patch Toolkit

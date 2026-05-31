@@ -1,17 +1,4 @@
-From 18d8f2896e8b05492e30c50dc24ef0e61830fc60 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm
-index 33c39bf95af4..90a2d2682510 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm
 @@ -1,6 +1,6 @@
@@ -32,5 +19,3 @@ index 33c39bf95af4..90a2d2682510 100644
  		H.set_patron(/datum/patron/inhumen/matthios)
  	belt = /obj/item/storage/belt/rogue/leather
  	pants = /obj/item/clothing/under/roguetown/trou/leather
--- 
-Translation Patch Toolkit

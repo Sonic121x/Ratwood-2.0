@@ -1,17 +1,4 @@
-From be6d1a2e5f957966ebfa0a812c42c2be46ea54af Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/byos/tribalshaman.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/byos/tribalshaman.dm | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/byos/tribalshaman.dm b/code/modules/jobs/job_types/roguetown/byos/tribalshaman.dm
-index 397b63ea67f8..6bd804527cf5 100644
 --- a/code/modules/jobs/job_types/roguetown/byos/tribalshaman.dm
 +++ b/code/modules/jobs/job_types/roguetown/byos/tribalshaman.dm
 @@ -1,5 +1,6 @@
@@ -47,5 +34,3 @@ index 397b63ea67f8..6bd804527cf5 100644
  	outfit = /datum/outfit/job/roguetown/tribalshaman/basic
  
  	subclass_spellpoints = 33
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 4b134037181c595d4cdd6ab09c0dcc41d8a7bc08 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lsmith.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lsmith.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lsmith.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lsmith.dm
-index a70a9b5cdbbd..cf9145eb3f5b 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lsmith.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lsmith.dm
 @@ -1,9 +1,9 @@
@@ -27,5 +14,3 @@ index a70a9b5cdbbd..cf9145eb3f5b 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_ALL_KINDS
  	outfit = /datum/outfit/job/roguetown/adventurer/masterblacksmith
--- 
-Translation Patch Toolkit

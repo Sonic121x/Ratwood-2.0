@@ -1,17 +1,4 @@
-From b36e6e573a646e8de255871226bac38afc52d9ac Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/byos/triballackey.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/byos/triballackey.dm | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/byos/triballackey.dm b/code/modules/jobs/job_types/roguetown/byos/triballackey.dm
-index 7e9b8c4e10b6..98cf9e867cef 100644
 --- a/code/modules/jobs/job_types/roguetown/byos/triballackey.dm
 +++ b/code/modules/jobs/job_types/roguetown/byos/triballackey.dm
 @@ -1,6 +1,7 @@
@@ -36,7 +23,6 @@ index 7e9b8c4e10b6..98cf9e867cef 100644
 +	说不定只要你献上新鲜的奴隶和更多财货……巨龙终会注意到你。"
  	display_order = JDO_TRIBALRABBLE
  	whitelist_req = TRUE
- 
 @@ -44,8 +45,8 @@
  	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/padagger
  
@@ -48,5 +34,3 @@ index 7e9b8c4e10b6..98cf9e867cef 100644
  	outfit = /datum/outfit/job/roguetown/tribalrabble/rabble
  	category_tags = list(CTAG_TRIBALRABBLE)
  	traits_applied = list(TRAIT_DODGEEXPERT)
--- 
-Translation Patch Toolkit

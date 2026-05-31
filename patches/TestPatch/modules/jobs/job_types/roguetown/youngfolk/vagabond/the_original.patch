@@ -1,17 +1,4 @@
-From f836ba71108e1e5ad704d80ba0171ade53b6145d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
-index ca5e575febb3..9cfe54fe2e4b 100644
 --- a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
 +++ b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/the_original.dm
 @@ -1,7 +1,7 @@
@@ -34,5 +21,3 @@ index ca5e575febb3..9cfe54fe2e4b 100644
  
  /datum/outfit/job/roguetown/vagabond/original/pre_equip(mob/living/carbon/human/H)
  	..()
--- 
-Translation Patch Toolkit

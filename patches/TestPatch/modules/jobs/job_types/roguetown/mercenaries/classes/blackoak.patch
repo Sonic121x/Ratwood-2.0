@@ -1,17 +1,4 @@
-From 5372a4abd135cae2d8f14347cfceab68371fa191 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/blackoak.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/blackoak.dm | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/blackoak.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/blackoak.dm
-index c58ec27b6ca2..92895730d816 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/blackoak.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/blackoak.dm
 @@ -1,7 +1,7 @@
@@ -61,5 +48,3 @@ index c58ec27b6ca2..92895730d816 100644
  	outfit = /datum/outfit/job/roguetown/mercenary/blackoak_ranger
  	traits_applied = list(TRAIT_AZURENATIVE, TRAIT_OUTDOORSMAN, TRAIT_RACISMISBAD, TRAIT_DODGEEXPERT)
  	subclass_stats = list(
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 13f5e618fd23c4a74b3e0b75c5a8389859e624eb Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/templar.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/church/templar.dm | 117 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 59 insertions(+), 58 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/templar.dm b/code/modules/jobs/job_types/roguetown/church/templar.dm
-index 711a34d288de..75b1deb442a7 100644
 --- a/code/modules/jobs/job_types/roguetown/church/templar.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/templar.dm
 @@ -4,7 +4,7 @@
@@ -293,5 +280,3 @@ index 711a34d288de..75b1deb442a7 100644
  					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/ravox_visor(H), SLOT_HEAD)
  				else
  					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/ravoxhelm(H), SLOT_HEAD)
--- 
-Translation Patch Toolkit

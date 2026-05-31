@@ -1,17 +1,4 @@
-From 513465380880ef28877e8f7ce2d6fb3f4a6e5838 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/rookie.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/rookie.dm | 43 ++++++++++++++++++++++---------------------
- 1 file changed, 22 insertions(+), 21 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/rookie.dm b/code/modules/jobs/job_types/roguetown/garrison/rookie.dm
-index 251771e57ec3..21b47057e127 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/rookie.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/rookie.dm
 @@ -1,5 +1,6 @@
@@ -113,5 +100,3 @@ index 251771e57ec3..21b47057e127 100644
 +			if("中甲")
  				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
  				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
--- 
-Translation Patch Toolkit

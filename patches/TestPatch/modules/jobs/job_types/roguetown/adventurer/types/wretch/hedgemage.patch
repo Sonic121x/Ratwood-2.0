@@ -1,17 +1,4 @@
-From 95d833611276384b7ede5b5827b4ba993895d4ef Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/hedgemage.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/hedgemage.dm | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/hedgemage.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/hedgemage.dm
-index 99f8bf8918d0..2c04eba97d5f 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/hedgemage.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/hedgemage.dm
 @@ -1,7 +1,7 @@
@@ -62,5 +49,3 @@ index 99f8bf8918d0..2c04eba97d5f 100644
 -		if("toper-focused staff")
 +		if("toper 系法杖")
  			backr = /obj/item/rogueweapon/woodstaff/toper
--- 
-Translation Patch Toolkit

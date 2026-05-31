@@ -1,17 +1,4 @@
-From 97b59b26c489d5fc8236a9039d980bd9383e52a2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_templar.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_templar.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_templar.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_templar.dm
-index d86ff776d993..fa0986b574a4 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_templar.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_templar.dm
 @@ -1,7 +1,7 @@
@@ -24,5 +11,3 @@ index d86ff776d993..fa0986b574a4 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = list(/datum/species/gnoll)
  	outfit = /datum/outfit/job/roguetown/gnoll/templar
--- 
-Translation Patch Toolkit

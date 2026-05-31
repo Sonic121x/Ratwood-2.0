@@ -1,17 +1,4 @@
-From a434c26a61f77541e0de00781ff323625fa302aa Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/heretic.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/heretic.dm | 108 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 54 insertions(+), 54 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/heretic.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/heretic.dm
-index 1448e51eb833..5fab6e5998ba 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/heretic.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/heretic.dm
 @@ -1,6 +1,6 @@
@@ -260,7 +247,6 @@ index 1448e51eb833..5fab6e5998ba 100644
 +		to_chat(user, span_warning("[target] 拒绝了你的转化提议。"))
  		revert_cast()
  		return FALSE
- 
 @@ -467,7 +467,7 @@
  		absolvable = TRUE
  
@@ -289,5 +275,3 @@ index 1448e51eb833..5fab6e5998ba 100644
 +	to_chat(target, span_danger("你感到古老的力量正在从你的灵魂上卸去神罚的重担……"))
  
  	return TRUE
--- 
-Translation Patch Toolkit

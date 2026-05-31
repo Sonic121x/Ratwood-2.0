@@ -1,17 +1,4 @@
-From 393d75ec7135b122f2eb2d3f5e68dab5f040599c Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/trader/peddler.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/trader/peddler.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/trader/peddler.dm b/code/modules/jobs/job_types/roguetown/trader/peddler.dm
-index c761fa3c1409..238b510ab85e 100644
 --- a/code/modules/jobs/job_types/roguetown/trader/peddler.dm
 +++ b/code/modules/jobs/job_types/roguetown/trader/peddler.dm
 @@ -1,6 +1,6 @@
@@ -32,5 +19,3 @@ index c761fa3c1409..238b510ab85e 100644
  	head = /obj/item/clothing/head/roguetown/roguehood
  	mask = /obj/item/clothing/mask/rogue/facemask/steel
  	shoes = /obj/item/clothing/shoes/roguetown/boots
--- 
-Translation Patch Toolkit

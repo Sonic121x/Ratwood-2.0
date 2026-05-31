@@ -1,17 +1,4 @@
-From 9e26f6d8ee5827b0f36bb52e9882aea008fe5a23 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/bailiff.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/bailiff.dm | 87 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 44 insertions(+), 43 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/bailiff.dm b/code/modules/jobs/job_types/roguetown/nobility/bailiff.dm
-index 7d702807e1df..653dcee760eb 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/bailiff.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/bailiff.dm
 @@ -9,8 +9,9 @@
@@ -178,5 +165,3 @@ index 7d702807e1df..653dcee760eb 100644
  
  	emote("haltyell")
  	stamina_add(rand(5,15))
--- 
-Translation Patch Toolkit

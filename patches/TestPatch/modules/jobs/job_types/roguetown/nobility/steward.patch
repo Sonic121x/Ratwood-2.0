@@ -1,17 +1,4 @@
-From 07a94db4f3b0e79d3c2f70cd9e074493d9b50b85 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/steward.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/steward.dm | 17 +++++++++--------
- 1 file changed, 9 insertions(+), 8 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/steward.dm b/code/modules/jobs/job_types/roguetown/nobility/steward.dm
-index abf25a228e37..e8fccc7c0775 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/steward.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/steward.dm
 @@ -1,5 +1,6 @@
@@ -63,5 +50,3 @@ index abf25a228e37..e8fccc7c0775 100644
 -	var/datum/taxsetter/taxsetter = new("The Diligent Steward Intervenes", "The Greedy Steward Imposes")
 +	var/datum/taxsetter/taxsetter = new("勤勉的总管出手干预", "贪婪的总管强加税负")
  	taxsetter.ui_interact(src)
--- 
-Translation Patch Toolkit

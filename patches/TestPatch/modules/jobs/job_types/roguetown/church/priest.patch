@@ -1,20 +1,7 @@
-From b78bd253589bec23a7bbe603cd5d5cea3abb793b Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:55:24 +0800
-Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20priest?=
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- .../jobs/job_types/roguetown/church/priest.dm | 240 +++++++++---------
- 1 file changed, 114 insertions(+), 126 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/priest.dm b/code/modules/jobs/job_types/roguetown/church/priest.dm
-index ec40494..9081a61 100644
 --- a/code/modules/jobs/job_types/roguetown/church/priest.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/priest.dm
-@@ -13,19 +13,20 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -13,18 +13,19 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  
  /datum/job/roguetown/priest
  	title = "Bishop"
@@ -25,8 +12,7 @@ index ec40494..9081a61 100644
  	total_positions = 1
  	spawn_positions = 1
  	selection_color = JCOLOR_CHURCH
--	f_title = "Bishop"
-+	f_title = "主教"
+ 	f_title = "Bishop"
  	allowed_races = RACES_NO_CONSTRUCT		//Too recent arrivals to ascend to priesthood.
  	allowed_patrons = ALL_DIVINE_PATRONS
  	allowed_sexes = list(MALE, FEMALE)
@@ -38,8 +24,7 @@ index ec40494..9081a61 100644
 +	无信者正日渐增多。你必须将他们引向一个敬畏诸神的未来，因为你是圣座的主教。"
  	whitelist_req = FALSE
  	cmode_music = 'sound/music/cmode/church/combat_astrata.ogg'
- 
-@@ -63,7 +64,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -63,6 +64,6 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  //Name stuff.
  		var/prev_real_name = H.real_name
  		var/prev_name = H.name
@@ -47,7 +32,6 @@ index ec40494..9081a61 100644
 +		var/title = "教长"
  		H.real_name = "[title] [prev_real_name]"
  		H.name = "[title] [prev_name]"
- 
 @@ -72,10 +73,10 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  				_delayed_path_choice(H)
  
@@ -117,9 +101,8 @@ index ec40494..9081a61 100644
  
  /datum/job/priest/vice //just used to change the priest title
  	title = "Vice Priest"
--	f_title = "Vice Priestess"
 +	display_title = "副司祭"
-+	f_title = "副司祭"
+ 	f_title = "Vice Priestess"
  	flag = PRIEST
  	department_flag = CHURCHMEN
  	total_positions = 0
@@ -144,7 +127,7 @@ index ec40494..9081a61 100644
  		return FALSE
  	for(var/mob/living/carbon/human/HU in get_step(src, src.dir))
  		if(!HU.mind)
-@@ -265,80 +267,80 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -265,79 +267,79 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  		SSticker.regentmob = null
  		var/dispjob = mind.assigned_role
  		removeomen(OMEN_NOLORD)
@@ -250,8 +233,7 @@ index ec40494..9081a61 100644
 +	src.visible_message(span_notice("[src] 完成了布道，激励了附近众人！"))
  	playsound(src.loc, 'sound/magic/bless.ogg', 80, TRUE)
  	COOLDOWN_START(src, priest_sermon, PRIEST_SERMON_COOLDOWN)
- 
-@@ -349,70 +351,58 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -349,69 +351,57 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  		if (istype(H.patron, /datum/patron/divine))
  			H.apply_status_effect(/datum/status_effect/buff/sermon)
  			H.add_stress(/datum/stressevent/sermon)
@@ -332,7 +314,6 @@ index ec40494..9081a61 100644
 +		priority_announce("[real_name] 已宽恕 [inputty]。他们的祈祷再次能被神祇听见！", title = "叛教解除", sound = 'sound/misc/bell.ogg')
  		message_admins("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
  		log_game("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
- 
 @@ -425,7 +415,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  
  	if (H.real_name == inputty)
@@ -363,7 +344,7 @@ index ec40494..9081a61 100644
  		message_admins("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
  		log_game("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
  		return TRUE
-@@ -456,32 +444,32 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -456,31 +444,31 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  	return
  
  /mob/living/carbon/human/proc/churchexcommunicate(mob/living/carbon/human/H in GLOB.player_list)
@@ -401,7 +382,6 @@ index ec40494..9081a61 100644
 +		priority_announce("[real_name] 已让 [inputty] 与教会重归于好。他们再度回到了羊群之中！", title = "和解", sound = 'sound/misc/bell.ogg')
  		message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
  		log_game("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
- 
 @@ -492,14 +480,14 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  				if (istype(H.patron, /datum/patron/divine))
  					H.remove_stress(/datum/stressevent/excommunicated)
@@ -419,7 +399,7 @@ index ec40494..9081a61 100644
  			return // Anybody can still be excommunicated, so no extra checks here since it's purely RP and not mechanical.
  		found = TRUE
  		ADD_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
-@@ -509,7 +497,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -509,6 +497,6 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  			if (istype(H.patron, /datum/patron/divine))
  				H.add_stress(/datum/stressevent/excommunicated)
  				H.apply_status_effect(/datum/status_effect/debuff/excomm)
@@ -427,8 +407,7 @@ index ec40494..9081a61 100644
 +				to_chat(H, span_warning("你的神圣之光已被斩断。诸神都将背对你而去。"))
  			else
  				return
- 
-@@ -517,7 +505,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -517,6 +505,6 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  			return FALSE
  
  	GLOB.excommunicated_players += inputty
@@ -436,8 +415,7 @@ index ec40494..9081a61 100644
 +	priority_announce("[real_name] 已将 [inputty] 逐出教门！可耻！", title = "逐出教门", sound = 'sound/misc/excomm.ogg')
  	message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
  	log_game("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
- 
-@@ -526,42 +514,42 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
+@@ -526,41 +514,41 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
  /* PRIEST CURSE - powerful debuffs to punish ppl outside church otherwise use apostasy
  code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep that updated if this gets any changes.*/
  /mob/living/carbon/human/proc/churchpriestcurse(mob/living/carbon/human/H in GLOB.player_list)
@@ -495,7 +473,6 @@ index ec40494..9081a61 100644
 +	var/curse_pick = input("选择要施加或解除的诅咒。", "选择诅咒") as null|anything in curse_choices
  	if (!curse_pick)
  		return
- 
 @@ -572,18 +560,18 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  
  		if (H.is_cursed(temp))
@@ -583,7 +560,7 @@ index ec40494..9081a61 100644
  	invocation_type = "whisper"
  	sound = 'sound/magic/bless.ogg'
  	devotion_cost = 100
-@@ -669,12 +657,12 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
+@@ -669,11 +657,11 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  		return FALSE
  
  	if(!HAS_TRAIT(target, TRAIT_HERESIARCH))
@@ -598,7 +575,6 @@ index ec40494..9081a61 100644
 +		to_chat(user, span_warning("[target] 拒绝了你的归正提议。"))
  		revert_cast()
  		return FALSE
- 
 @@ -718,11 +706,11 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep
  	user.apply_status_effect(/datum/status_effect/debuff/devitalised)
  	target.apply_status_effect(/datum/status_effect/debuff/devitalised)
@@ -615,6 +591,3 @@ index ec40494..9081a61 100644
 +	to_chat(target, span_danger("当你拥抱 [user.patron.name] 时，你感到异端之重正从灵魂中悄然剥落！"))
  
  	return TRUE
--- 
-2.47.1.windows.2
-

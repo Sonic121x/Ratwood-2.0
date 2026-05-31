@@ -1,17 +1,4 @@
-From bf5c122a575f1c0e87a8ec6a074044d3becfbee6 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/cleric.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/cleric.dm | 196 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 98 insertions(+), 98 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/cleric.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/cleric.dm
-index 7c4e0bf7c551..9560d36e6d84 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/cleric.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/cleric.dm
 @@ -1,6 +1,6 @@
@@ -107,7 +94,6 @@ index 7c4e0bf7c551..9560d36e6d84 100644
 +			if("壮举之誓 | +2 力量，重创抗性")
  				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
  				H.change_stat(STATKEY_STR, 2)
- 
 @@ -191,10 +191,10 @@
  			H.cmode_music = 'sound/music/combat_jester.ogg'
  
@@ -398,7 +384,6 @@ index 7c4e0bf7c551..9560d36e6d84 100644
 +	tutorial = "PSYDON 在悲泣。你是全父最虔诚的教士之一，甘愿将他人的苦难背负到自己身上。你已弃绝暴力。你将受苦。你将忍耐。"
  	outfit = /datum/outfit/job/roguetown/adventurer/stigmata
  	allowed_races = RACES_NO_CONSTRUCT
- 
 @@ -775,9 +775,9 @@
  		/datum/skill/magic/holy = SKILL_LEVEL_JOURNEYMAN,
  	)
@@ -412,5 +397,3 @@ index 7c4e0bf7c551..9560d36e6d84 100644
  
  /datum/outfit/job/roguetown/adventurer/stigmata
  	allowed_patrons = list(/datum/patron/old_god)
--- 
-Translation Patch Toolkit

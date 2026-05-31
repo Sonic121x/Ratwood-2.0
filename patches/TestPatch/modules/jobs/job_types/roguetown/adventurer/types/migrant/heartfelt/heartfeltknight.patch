@@ -1,17 +1,4 @@
-From eae55668558316337f19650b130c82f803fc1637 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltknight.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltknight.dm | 65 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 33 insertions(+), 32 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltknight.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltknight.dm
-index a9d736dcad5f..2991d498d182 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltknight.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltknight.dm
 @@ -1,8 +1,9 @@
@@ -137,5 +124,3 @@ index a9d736dcad5f..2991d498d182 100644
  			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle
  		else //In case they DC or don't choose close the panel, etc
  			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
--- 
-Translation Patch Toolkit

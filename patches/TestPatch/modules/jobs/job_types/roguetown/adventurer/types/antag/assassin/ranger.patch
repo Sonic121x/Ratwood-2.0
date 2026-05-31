@@ -1,17 +1,4 @@
-From 37ea444fd1d26f3dac78abf42f04f059292f689d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/ranger.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/ranger.dm | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/ranger.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/ranger.dm
-index 445fc257c5d6..24ddf18251f5 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/ranger.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/ranger.dm
 @@ -1,6 +1,6 @@
@@ -52,5 +39,3 @@ index 445fc257c5d6..24ddf18251f5 100644
 +		if(inputty == "是")
 +			to_chat(H, span_warning("我先前侍奉的神明已弃我而去……如今，Graggar 才是我的新主人。"))
  			H.set_patron(/datum/patron/inhumen/graggar)
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 11fdbb22e10d811ee1d81c139da8f99eb3583834 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/jester.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/jester.dm | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/jester.dm b/code/modules/jobs/job_types/roguetown/courtier/jester.dm
-index 342a9af58f79..cdbb8763d7e1 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/jester.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/jester.dm
 @@ -1,5 +1,6 @@
@@ -36,5 +23,3 @@ index 342a9af58f79..cdbb8763d7e1 100644
  
  	allowed_ages = ALL_AGES_LIST
  	outfit = /datum/outfit/job/roguetown/jester
--- 
-Translation Patch Toolkit

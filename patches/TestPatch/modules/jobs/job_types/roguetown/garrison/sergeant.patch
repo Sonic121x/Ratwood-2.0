@@ -1,17 +1,4 @@
-From d74656b9668b8dd67a6a2ce5e132d39418790af3 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/sergeant.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/sergeant.dm | 161 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 81 insertions(+), 80 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/sergeant.dm b/code/modules/jobs/job_types/roguetown/garrison/sergeant.dm
-index 0d2b25d11e5c..9cab063cda55 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/sergeant.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/sergeant.dm
 @@ -1,5 +1,6 @@
@@ -286,8 +273,6 @@ index 0d2b25d11e5c..9cab063cda55 100644
 +	name = "顶住！"
 +	desc = "命令你的下属坚守。意志与体质 +2。"
  	overlay_state = "hold"
- 
- 
 @@ -347,40 +348,40 @@
  		var/mob/living/target = targets[1]//someone remind me to make version for desertmap classes
  		var/msg = user.mind.holdtext
@@ -360,8 +345,6 @@ index 0d2b25d11e5c..9cab063cda55 100644
 +	name = "集火目标！"
 +	desc = "告诉你的下属锁定敌人的破绽。令敌人更易遭受重创，并使其幸运 -2。"
  	overlay_state = "focustarget"
- 
- 
 @@ -419,10 +420,10 @@
  		var/mob/living/target = targets[1]
  		var/msg = user.mind.focustargettext
@@ -400,8 +383,6 @@ index 0d2b25d11e5c..9cab063cda55 100644
 -	name = "Focus target!"
 +	name = "集火目标！"
  	overlay_state = "focustarget"
- 
- 
 @@ -464,25 +465,25 @@
  
  
@@ -440,5 +421,3 @@ index 0d2b25d11e5c..9cab063cda55 100644
 -		to_chat(src, "I must rehearse something for this order...")
 +		to_chat(src, "我必须先为这道命令预演一段口令……")
  		return
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From b7beae7dad2818c3f057a10c623b3f5423bb3778 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm | 42 +++++++++++++++++++++---------------------
- 1 file changed, 21 insertions(+), 21 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm
-index 521f012fc9eb..d07e8821b220 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm
 @@ -1,7 +1,7 @@
@@ -58,7 +45,6 @@ index 521f012fc9eb..d07e8821b220 100644
 +		to_chat(user, span_warning("我要有工具才能布设这个陷阱。"))
  		revert_cast()
  		return FALSE
- 
 @@ -135,23 +135,23 @@
  		return FALSE
  
@@ -114,7 +100,6 @@ index 521f012fc9eb..d07e8821b220 100644
 +		to_chat(user, span_warning("我得找个更合适的地方来布设陷阱。"))
  		revert_cast()
  		return FALSE
- 
 @@ -182,8 +182,8 @@
  	_spawn_bogtrap(T, trap_path)
  
@@ -125,6 +110,3 @@ index 521f012fc9eb..d07e8821b220 100644
 +		span_notice("[choice]沼泽陷阱已在我脚下完成布设。")
  	)
  	playsound(T, 'sound/misc/chains.ogg', 50, TRUE)
- 
--- 
-Translation Patch Toolkit

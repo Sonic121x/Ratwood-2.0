@@ -1,25 +1,20 @@
-From d95f520c89baa474899fd646dc30cee2d94d5f40 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/lord.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/lord.dm | 85 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 43 insertions(+), 42 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/lord.dm b/code/modules/jobs/job_types/roguetown/nobility/lord.dm
-index 7e565cc314af..773014b025be 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/lord.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/lord.dm
+@@ -2,8 +2,8 @@ GLOBAL_VAR(lordsurname)
+ GLOBAL_LIST_EMPTY(lord_titles)
+ 
+ /datum/job/roguetown/lord
+ 	title = "Grand Duke"
+ 	f_title = "Grand Duchess"
+ 	flag = LORD
+ 	department_flag = NOBLEMEN
+ 	faction = "Station"
 @@ -3,7 +3,7 @@
  
  /datum/job/roguetown/lord
  	title = "Grand Duke"
--	f_title = "Grand Duchess"
-+	f_title = "女大公"
+ 	f_title = "Grand Duchess"
  	flag = LORD
  	department_flag = NOBLEMEN
  	faction = "Station"
@@ -33,6 +28,29 @@ index 7e565cc314af..773014b025be 100644
  	whitelist_req = FALSE
  	min_pq = 10
  	max_pq = null
+@@ -25,7 +25,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
+ 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
+ 
+ 	display_order = JDO_LORD
++	display_title = "大公"
+-	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error of their ways."
++	tutorial = "借由纵横交错的阴谋与政治剧变，你登上了至高无上的王座。你是这片土地的绝对主宰，亦是所有权力漩涡的中心。这里的男女老少都对你的宝座垂涎三尺，恨不能取而代之——去用行动告诉他们，这种想法是多么愚蠢。"
+ 	whitelist_req = FALSE
+ 	min_pq = 10
+ 	max_pq = null
+@@ -57,10 +57,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
+ 		else
+ 			GLOB.lordsurname = "of [L.real_name]"
+ 		SSticker.set_ruler_mob(L)
+-		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is [SSticker.rulertype] of Rotwood Vale.</span></span></b>")
++		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] 已作为腐木谷的 [SSticker.rulertype] 执掌大权。</span></span></b>")
+ 		if(istype(SSticker.regentmob, /mob/living/carbon/human))
+ 			var/mob/living/carbon/human/regentbuddy = SSticker.regentmob
+-			to_chat(L, span_notice("Word reached me on the approach that [regentbuddy.real_name], the [regentbuddy.job], served as regent in my absence."))
++			to_chat(L, span_notice("在赶来的路上，我听闻在我不在期间，担任 [regentbuddy.job] 的 [regentbuddy.real_name] 曾代为摄政。"))
+ 		SSticker.regentmob = null //Time for regent to give up the position.
+ 
+ 		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_marriage_choice)), 50)
 @@ -57,10 +58,10 @@
  		else
  			GLOB.lordsurname = "of [L.real_name]"
@@ -46,6 +64,15 @@ index 7e565cc314af..773014b025be 100644
  		SSticker.regentmob = null //Time for regent to give up the position.
  
  		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_marriage_choice)), 50)
+@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
+ 		SSroguemachine.crown = null
+ 		head = /obj/item/clothing/head/roguetown/crown/serpcrown
+ 	else
+-		to_chat(H, span_warning("My crown must be yet in the realm. I shall search it out."))
++		to_chat(H, span_warning("我的皇冠一定还留在这片领地里的某个地方。我必须把它搜寻出来。"))
+ 	if(should_wear_femme_clothes(H))
+ 		pants = /obj/item/clothing/under/roguetown/tights/black
+ 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 @@ -80,7 +81,7 @@
  		SSroguemachine.crown = null
  		head = /obj/item/clothing/head/roguetown/crown/serpcrown
@@ -55,6 +82,17 @@ index 7e565cc314af..773014b025be 100644
  	if(should_wear_femme_clothes(H))
  		pants = /obj/item/clothing/under/roguetown/tights/black
  		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+@@ -134,8 +134,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
+ 	Warrior Lord subclass. An evolution from the Daring Twit. This is the original Lord Class.
+ */
+ /datum/advclass/lord/warrior
+-	name = "Valiant Warrior"
+-	tutorial = "You're a noble warrior. You rose to your rank through your own strength and skill, whether by leading your men or by fighting alongside them. Or perhaps you are none of that, but simply a well-trained heir elevated to the position of Lord. You're trained in the usage of heavy armor, and knows swordsmanship well."
++	name = "骁勇战士"
++	tutorial = "你是一位高贵的武勋领主。无论是身先士卒率领部下，还是与他们并肩作战，你都是凭借自身的卓越力量与精湛武艺一步步登此高位。又或许你并非草莽出身，而是一位接受过严格训练、顺理成章继承大统的贵族子嗣。你精通重甲的使用之道，且对剑术剑理了如指掌。"
+ 	outfit = /datum/outfit/job/roguetown/lord/warrior
+ 	category_tags = list(CTAG_LORD)
+ 	traits_applied = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR)
 @@ -134,8 +135,8 @@
  	Warrior Lord subclass. An evolution from the Daring Twit. This is the original Lord Class.
  */
@@ -66,6 +104,19 @@ index 7e565cc314af..773014b025be 100644
  	outfit = /datum/outfit/job/roguetown/lord/warrior
  	category_tags = list(CTAG_LORD)
  	traits_applied = list(TRAIT_NOBLE, TRAIT_DNR, TRAIT_HEAVYARMOR)
+@@ -177,9 +177,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
+ 	Has a high noble income plus a starting pouch with insane amount of money.
+ */
+ /datum/advclass/lord/merchant
+-	name = "Merchant Lord"
+-	tutorial = "You were always talented with coins and trade. And your talents have brought you to the position of the Lord of Rotwood Vale. You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins. Fighting directly is not your forte\
+-	But you have plenty of wealth, keen ears, and know a good deal from a bad one."
++	name = "商人王"
++	tutorial = "你自幼便在金钱与贸易方面展露出过人的天赋。而这份才华最终将你推上了腐木谷领主的宝座。你可能是一位用财富买通权贵、跻身贵族阶层的豪商，也可能是一位天生对金钱敏锐的世袭贵族。亲临一线战斗并非你的强项，\
++    但你坐拥无数财富、耳目极其灵通，且一眼就能在波谲云诡的局势中分辨出利益的得失。"
+ 	outfit = /datum/outfit/job/roguetown/lord/merchant
+ 	category_tags = list(CTAG_LORD)
+ 	noble_income = 400 // Let's go crazy. This is +400 per day for a total of 2400 per round at the end of a day. This is probably equal to doubling passive incomes of the keep.
 @@ -177,9 +178,9 @@
  	Has a high noble income plus a starting pouch with insane amount of money.
  */
@@ -79,6 +130,17 @@ index 7e565cc314af..773014b025be 100644
  	outfit = /datum/outfit/job/roguetown/lord/merchant
  	category_tags = list(CTAG_LORD)
  	noble_income = 400 // Let's go crazy. This is +400 per day for a total of 2400 per round at the end of a day. This is probably equal to doubling passive incomes of the keep.
+@@ -223,8 +223,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
+ 	but if a warrior duke can be about as strong as a Knight, then a wizard duke could probably afford to be as strong as a mage's associate. They'll get T3, no armor prof.
+ */
+ /datum/advclass/lord/wizard
+-	name = "Magocrat"
+-	tutorial = "A good ruler is backed with force. You just happen to have a keen amount of mastery over the world's strongest forces: Magic. Of course, having to manage your realm has meant that you aren't as studied as the realm's greatest wizards- but your cunning sorcery is what has you sat upon the throne."
++	name = "魔政官"
++	tutorial = "一位优秀的统治者必定有强权作为后盾。而你，恰好对这片大陆上最强大的力量运用自如——那就是魔法。当然，为了治理领地，你无法像那些隐世的传奇巫师一样潜心钻研奥秘，但正是凭借这手狡黠多变的巫术，才让你稳稳地坐上了这尊王座。"
+ 	outfit = /datum/outfit/job/roguetown/lord/wizard
+ 	category_tags = list(CTAG_LORD)
+ 	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
 @@ -223,8 +224,8 @@
  	but if a warrior duke can be about as strong as a Knight, then a wizard duke could probably afford to be as strong as a mage's associate. They'll get T3, no armor prof.
  */
@@ -90,6 +152,17 @@ index 7e565cc314af..773014b025be 100644
  	outfit = /datum/outfit/job/roguetown/lord/wizard
  	category_tags = list(CTAG_LORD)
  	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_DNR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
+@@ -262,8 +262,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
+ 	can get into heavy armor and try to fight is hilarious.
+ */
+ /datum/advclass/lord/inbred
+-	name = "Inbred Lord"
+-	tutorial = "Psydon and Astrata smiles upon you. For despite your inbred and weak body, and your family's conspiracies to remove you from succession, you have somehow become the Lord of Rotwood Vale. May your reign lasts a hundred years."
++	name = "近亲大公"
++	tutorial = "赛顿与阿斯特拉塔正对你展露微笑。因为尽管你因近亲结婚而身体孱弱、畸形丑陋，且面对着整个家族企图剥夺你继承权的重重阴谋，你最终居然奇迹般地成为了烂木谷的领主。愿你的统治能延续百年。"
+ 	outfit = /datum/outfit/job/roguetown/lord/inbred
+ 	category_tags = list(CTAG_LORD)
+ 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)
 @@ -262,8 +263,8 @@
  	can get into heavy armor and try to fight is hilarious.
  */
@@ -233,5 +306,3 @@ index 7e565cc314af..773014b025be 100644
 +	recruitment_message = "为守林人效力，%RECRUIT！"
 +	accept_message = "为了林苑！"
 +	refuse_message = "我拒绝。"
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From b6c2beb5b036549787ef59759ae5c6dcf3a359e2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/confessor.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/confessor.dm | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/confessor.dm b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/confessor.dm
-index 52d347c826fe..7de8cc698525 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/confessor.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/confessor.dm
 @@ -1,9 +1,9 @@
@@ -72,5 +59,3 @@ index 52d347c826fe..7de8cc698525 100644
  				beltl = /obj/item/quiver/holybolts
  
  	head = /obj/item/clothing/head/roguetown/roguehood/psydon/confessor
--- 
-Translation Patch Toolkit

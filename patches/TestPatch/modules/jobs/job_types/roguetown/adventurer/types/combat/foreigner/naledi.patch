@@ -1,17 +1,4 @@
-From 331518e593a734b7c83a983199682adee26a2cf5 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/naledi.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/naledi.dm | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/naledi.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/naledi.dm
-index 4eb9fbddd2a1..f518a9e6c784 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/naledi.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/naledi.dm
 @@ -1,6 +1,6 @@
@@ -34,5 +21,3 @@ index 4eb9fbddd2a1..f518a9e6c784 100644
  	mask = /obj/item/clothing/mask/rogue/lordmask/tarnished
  	r_hand = /obj/item/rogueweapon/spear/assegai
  	backl = /obj/item/rogueweapon/scabbard/gwstrap
--- 
-Translation Patch Toolkit

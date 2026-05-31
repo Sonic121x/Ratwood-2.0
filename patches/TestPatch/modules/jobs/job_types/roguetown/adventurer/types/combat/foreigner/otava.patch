@@ -1,17 +1,4 @@
-From fca4754c5e6caa04df10e23938695dfc78af1dd9 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/otava.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/otava.dm | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/otava.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/otava.dm
-index 2d9141e5028f..834991de698c 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/otava.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/otava.dm
 @@ -1,8 +1,8 @@
@@ -40,5 +27,3 @@ index 2d9141e5028f..834991de698c 100644
  	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy/mad_touched
  	wrists = /obj/item/clothing/neck/roguetown/psicross
  	shirt = /obj/item/clothing/cloak/psydontabard
--- 
-Translation Patch Toolkit

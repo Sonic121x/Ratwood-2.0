@@ -1,17 +1,4 @@
-From bdc27f64897211e1ac8b73d4bf48f435623bd23d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/suitor.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/suitor.dm | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/suitor.dm b/code/modules/jobs/job_types/roguetown/nobility/suitor.dm
-index b44bf7b8e5e6..27b288e79e2b 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/suitor.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/suitor.dm
 @@ -1,5 +1,6 @@
@@ -29,7 +16,6 @@ index b44bf7b8e5e6..27b288e79e2b 100644
 +	tutorial = "你是一名来自异国宫廷的贵族，远赴谷地，只为赢得谷地中最炙手可热之人的婚约，并为你的家族争取一位政治盟友。竞争激烈，而看起来，盯上公爵青睐的人显然不止你一个……"
  
  	outfit = /datum/outfit/job/roguetown/suitor
- 
 @@ -27,8 +28,8 @@
  	job_bitflag = BITFLAG_ROYALTY
  
@@ -63,5 +49,3 @@ index b44bf7b8e5e6..27b288e79e2b 100644
  	outfit = /datum/outfit/job/roguetown/suitor/gallant
  	category_tags = list(CTAG_CONSORT)
  	traits_applied = list(TRAIT_MEDIUMARMOR)
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From a1ed5ccc469c964b8663051e7f5796a7e5c8f286 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/warrior.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/warrior.dm | 320 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 160 insertions(+), 160 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/warrior.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/warrior.dm
-index 07e6b9ee7fa4..d345d0d86e50 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/warrior.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/warrior.dm
 @@ -1,6 +1,6 @@
@@ -757,5 +744,3 @@ index 07e6b9ee7fa4..d345d0d86e50 100644
  					H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
  					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
  					r_hand = /obj/item/rogueweapon/shield/tower
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 739b2123b9768dc23b8a8beb4834b581d27d546a Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm
-index 1f3d83283732..1622281e3001 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm
 @@ -1,10 +1,10 @@
@@ -27,5 +14,3 @@ index 1f3d83283732..1622281e3001 100644
  	outfit = /datum/outfit/job/roguetown/elder
  	subclass_social_rank = SOCIAL_RANK_MINOR_NOBLE	//not a noble, but similar ranking
  	cmode_music = 'sound/music/cmode/towner/combat_retired.ogg'
--- 
-Translation Patch Toolkit

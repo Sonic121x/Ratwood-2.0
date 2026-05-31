@@ -1,17 +1,4 @@
-From 69b1349541551f105f7d1424472688d07e6a7025 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/ordinator.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/ordinator.dm | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/ordinator.dm b/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/ordinator.dm
-index 925ea260aa1e..b2e725205e99 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/ordinator.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/ordinator.dm
 @@ -2,8 +2,8 @@
@@ -89,5 +76,3 @@ index 925ea260aa1e..b2e725205e99 100644
  			H.put_in_hands(new /obj/item/rogueweapon/flail/sflail/psyflail/relic(H), TRUE)
  			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/tower/metal/psy, SLOT_BACK_L, TRUE)
  			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 5, TRUE)
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From b90ef04205d2552e1d9058d5613e202e51e01351 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/yeomen/crier.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/yeomen/crier.dm | 27 ++++++++++++++-------------
- 1 file changed, 14 insertions(+), 13 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/yeomen/crier.dm b/code/modules/jobs/job_types/roguetown/yeomen/crier.dm
-index 0ebf877f43a9..107fab2b8c01 100644
 --- a/code/modules/jobs/job_types/roguetown/yeomen/crier.dm
 +++ b/code/modules/jobs/job_types/roguetown/yeomen/crier.dm
 @@ -2,7 +2,8 @@
@@ -74,5 +61,3 @@ index 0ebf877f43a9..107fab2b8c01 100644
 -			to_chat(src, span_warning("Your announcement was interrupted!"))
 +			to_chat(src, span_warning("我的公告被打断了！"))
  			return FALSE
--- 
-Translation Patch Toolkit

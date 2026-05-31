@@ -1,17 +1,4 @@
-From 52a7be58dd9a83879a717db66c9ac37e82ac3933 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltlord.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltlord.dm | 127 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 64 insertions(+), 63 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltlord.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltlord.dm
-index 040d32faa3ce..67dcd4690f0e 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltlord.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltlord.dm
 @@ -1,8 +1,9 @@
@@ -150,7 +137,6 @@ index 040d32faa3ce..67dcd4690f0e 100644
 +	name = "Heartfelt 军令"
  	var/effect_to_apply
  	var/message_varname
- 
 @@ -402,7 +403,7 @@
  	var/msg = user.mind.vars[message_varname]
  
@@ -333,5 +319,3 @@ index 040d32faa3ce..67dcd4690f0e 100644
 +	ORDER_INPUT(focustargettext, "击溃他们的士气，把他们标记为必杀目标！！")
  
  	#undef ORDER_INPUT
--- 
-Translation Patch Toolkit

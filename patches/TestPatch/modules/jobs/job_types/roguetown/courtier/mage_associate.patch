@@ -1,17 +1,4 @@
-From 9c13b0f672669574aec8de5817eed5cc943b19f5 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/mage_associate.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/mage_associate.dm | 23 ++++++++++++-----------
- 1 file changed, 12 insertions(+), 11 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/mage_associate.dm b/code/modules/jobs/job_types/roguetown/courtier/mage_associate.dm
-index 3622ae22aa83..7510daf3af7a 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/mage_associate.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/mage_associate.dm
 @@ -1,5 +1,6 @@
@@ -29,7 +16,6 @@ index 3622ae22aa83..7510daf3af7a 100644
 +	tutorial = "你的导师曾在你身上看见过潜力，尽管以如今这般严苛艰难的学业来看，你也不确定他们是否仍这么想。魔法之路危险难驯，而你距离能自称这一行的熟手，恐怕还差上数十年。听令，服侍，总有一天你会赢得属于自己的帽子。"
  
  	outfit = /datum/outfit/job/roguetown/wapprentice
- 
 @@ -41,8 +42,8 @@
  	shoes = /obj/item/clothing/shoes/roguetown/gladiator // FANCY SANDALS
  
@@ -79,5 +65,3 @@ index 3622ae22aa83..7510daf3af7a 100644
  	outfit = /datum/outfit/job/roguetown/wapprentice/apprentice
  
  	category_tags = list(CTAG_WASSOCIATE)
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From e50f78ffbeb2f9f1ad3250b644f3411a34b2d9d2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/peasants/prisoner.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/peasants/prisoner.dm | 47 ++++++++++++++++++++++++-----------------------
- 1 file changed, 24 insertions(+), 23 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/peasants/prisoner.dm b/code/modules/jobs/job_types/roguetown/peasants/prisoner.dm
-index 208f91bb6dca..abbffd5f4ea4 100644
 --- a/code/modules/jobs/job_types/roguetown/peasants/prisoner.dm
 +++ b/code/modules/jobs/job_types/roguetown/peasants/prisoner.dm
 @@ -1,5 +1,6 @@
@@ -202,5 +189,3 @@ index 208f91bb6dca..abbffd5f4ea4 100644
  	category_tags = list(CTAG_PRISONER)
  
  /datum/outfit/job/roguetown/prisoner_woodcutter/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
--- 
-Translation Patch Toolkit

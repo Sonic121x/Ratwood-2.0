@@ -1,17 +1,4 @@
-From 13ffbd552234327cff043138cfd95d2c585e64e5 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/licker.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/licker.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/licker.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/licker.dm
-index a6af688308b2..bdad1ccd6612 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/licker.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/licker.dm
 @@ -1,6 +1,6 @@
@@ -32,5 +19,3 @@ index a6af688308b2..bdad1ccd6612 100644
  		C.equipme(H)
  
  		H.adjust_skillrank_up_to(/datum/skill/magic/blood, 4, TRUE)
--- 
-Translation Patch Toolkit

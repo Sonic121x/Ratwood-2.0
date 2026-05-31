@@ -1,17 +1,4 @@
-From 774eba021349513e7e763a3ffc457bb8c0a17397 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/psyalmist.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/psyalmist.dm | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/psyalmist.dm b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/psyalmist.dm
-index 72e680e971ff..150a0b6a40c3 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/psyalmist.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/psyalmist.dm
 @@ -2,8 +2,8 @@
@@ -93,5 +80,3 @@ index 72e680e971ff..150a0b6a40c3 100644
  				backr = /obj/item/rogue/instrument/vocals
  
  /datum/outfit/job/roguetown/psyaltrist
--- 
-Translation Patch Toolkit

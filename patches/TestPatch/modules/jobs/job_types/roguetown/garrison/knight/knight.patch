@@ -1,17 +1,4 @@
-From ad643a69a629bb9ec064af92f679af009682d1d3 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/knight/knight.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/knight/knight.dm | 47 ++++++++++++++++++++++++-----------------------
- 1 file changed, 24 insertions(+), 23 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/knight/knight.dm b/code/modules/jobs/job_types/roguetown/garrison/knight/knight.dm
-index b39a38c0f746..4434e3d8ed55 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/knight/knight.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/knight/knight.dm
 @@ -8,9 +8,10 @@
@@ -39,7 +26,6 @@ index b39a38c0f746..4434e3d8ed55 100644
 +			honorary = "女爵"
  		H.real_name = "[honorary] [prev_real_name]"
  		H.name = "[honorary] [prev_name]"
- 
 @@ -72,8 +73,8 @@
  	H.verbs |= /mob/living/carbon/human/proc/take_squire
  
@@ -143,5 +129,3 @@ index b39a38c0f746..4434e3d8ed55 100644
 -	desc = span_green("I am near my squire.")
 +	desc = span_green("我就在我的侍从身旁。")
  	timer = 1 MINUTES
--- 
-Translation Patch Toolkit

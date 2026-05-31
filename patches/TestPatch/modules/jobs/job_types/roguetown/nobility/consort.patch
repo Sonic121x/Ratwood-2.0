@@ -1,17 +1,4 @@
-From b5c56b31684b078f5f4f78997dc7c0d81a0c507a Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/consort.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/consort.dm | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/consort.dm b/code/modules/jobs/job_types/roguetown/nobility/consort.dm
-index b5324a321dd9..55598b64ab24 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/consort.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/consort.dm
 @@ -1,5 +1,6 @@
@@ -46,5 +33,3 @@ index b5324a321dd9..55598b64ab24 100644
 +	accept_message = "为了王冠！"
 +	refuse_message = "我拒绝。"
  	recharge_time = 100
--- 
-Translation Patch Toolkit

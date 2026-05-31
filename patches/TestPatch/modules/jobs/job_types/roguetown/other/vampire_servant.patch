@@ -1,17 +1,4 @@
-From 88ac3011406ed94caaefa621aeba5fbbc5e47513 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/other/vampire_servant.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/other/vampire_servant.dm | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/other/vampire_servant.dm b/code/modules/jobs/job_types/roguetown/other/vampire_servant.dm
-index c028daa249b7..8d2d6bdedbc3 100644
 --- a/code/modules/jobs/job_types/roguetown/other/vampire_servant.dm
 +++ b/code/modules/jobs/job_types/roguetown/other/vampire_servant.dm
 @@ -1,5 +1,6 @@
@@ -30,5 +17,3 @@ index c028daa249b7..8d2d6bdedbc3 100644
  	C.equipme(H)
  
  	H.adjust_skillrank_up_to(/datum/skill/magic/blood, 3, TRUE)
--- 
-Translation Patch Toolkit

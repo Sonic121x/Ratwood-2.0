@@ -1,17 +1,4 @@
-From b93b6a468230850b349905207408b75aeaa0c055 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/captain.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/captain.dm | 67 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 33 insertions(+), 34 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/captain.dm b/code/modules/jobs/job_types/roguetown/nobility/captain.dm
-index a2c0275c30f0..518b7babecfc 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/captain.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/captain.dm
 @@ -8,10 +8,10 @@
@@ -28,7 +15,6 @@ index a2c0275c30f0..518b7babecfc 100644
 +	display_title = "骑士队长"
  	display_order = JDO_GUARD_CAPTAIN
  	advclass_cat_rolls = list(CTAG_CAPTAIN = 20)
- 
 @@ -55,12 +55,12 @@
  				index = copytext(H.real_name, 1,index)
  			if(!index)
@@ -44,7 +30,6 @@ index a2c0275c30f0..518b7babecfc 100644
 +			honorary = "女爵"
  		H.real_name = "[honorary] [prev_real_name]"
  		H.name = "[honorary] [prev_name]"
- 
 @@ -71,10 +71,9 @@
  					H.mind.person_knows_me(MF)
  
@@ -176,5 +161,3 @@ index a2c0275c30f0..518b7babecfc 100644
  
  /obj/effect/proc_holder/spell/self/convertrole/guard/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
  	. = ..()
--- 
-Translation Patch Toolkit

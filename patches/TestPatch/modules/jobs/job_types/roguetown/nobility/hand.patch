@@ -1,17 +1,4 @@
-From 1a456ecd186a425eb9b85326aa782bd4281c214e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/nobility/hand.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/nobility/hand.dm | 37 +++++++++++++++++++------------------
- 1 file changed, 19 insertions(+), 18 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/nobility/hand.dm b/code/modules/jobs/job_types/roguetown/nobility/hand.dm
-index 6e9c3aaa93b5..258677e590c9 100644
 --- a/code/modules/jobs/job_types/roguetown/nobility/hand.dm
 +++ b/code/modules/jobs/job_types/roguetown/nobility/hand.dm
 @@ -1,5 +1,6 @@
@@ -105,5 +92,3 @@ index 6e9c3aaa93b5..258677e590c9 100644
  	recharge_time = 100
  
  /obj/effect/proc_holder/spell/self/convertrole/agent/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
--- 
-Translation Patch Toolkit

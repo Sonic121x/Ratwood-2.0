@@ -1,17 +1,4 @@
-From 05636f1a5cd9335d641982b8c3b7b0f999361b50 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/hitman.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/hitman.dm | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/hitman.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/hitman.dm
-index 372ab9dd4b40..b0a69a176b1b 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/hitman.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/hitman.dm
 @@ -1,6 +1,6 @@
@@ -34,5 +21,3 @@ index 372ab9dd4b40..b0a69a176b1b 100644
 +		if(inputty == "是")
 +			to_chat(H, span_warning("我先前侍奉的神明已弃我而去……如今，Graggar 才是我的新主人。"))
  			H.set_patron(/datum/patron/inhumen/graggar)
--- 
-Translation Patch Toolkit

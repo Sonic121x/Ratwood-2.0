@@ -1,17 +1,4 @@
-From 0e96ffa9d67ad402b4671921e80d75d6e3a6d8ac Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/inspector.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/inspector.dm | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/inspector.dm b/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/inspector.dm
-index 80b62b0022b6..2da069826441 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/inspector.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/inspector.dm
 @@ -2,8 +2,8 @@
@@ -78,5 +65,3 @@ index 80b62b0022b6..2da069826441 100644
 -		if("Sunderbolts - Silver-Tipped, Halved Damage")
 +		if("裂甲弩矢 - 银尖，伤害减半")
  			H.equip_to_slot_or_del(new /obj/item/quiver/holybolts, SLOT_BELT_R, TRUE)
--- 
-Translation Patch Toolkit

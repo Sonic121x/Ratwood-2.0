@@ -1,17 +1,4 @@
-From fa24854ae031f35b58b8a49c7f0d8443a1f4391a Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/pilgrim.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/pilgrim.dm | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/pilgrim.dm b/code/modules/jobs/job_types/roguetown/adventurer/pilgrim.dm
-index 0578feea1eb0..056a5730b616 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/pilgrim.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/pilgrim.dm
 @@ -1,12 +1,13 @@
@@ -29,5 +16,3 @@ index 0578feea1eb0..056a5730b616 100644
  
  	outfit = null
  	outfit_female = null
--- 
-Translation Patch Toolkit

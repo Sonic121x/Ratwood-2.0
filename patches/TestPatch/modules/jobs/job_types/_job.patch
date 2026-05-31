@@ -1,17 +1,4 @@
-From a22d69f21ba93c6683d92236fd7b29e73b6d0223 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/_job.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/_job.dm | 33 ++++++++++++++++-----------------
- 1 file changed, 16 insertions(+), 17 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/_job.dm b/code/modules/jobs/job_types/_job.dm
-index 0c58466144a3..cd7429a0275f 100644
 --- a/code/modules/jobs/job_types/_job.dm
 +++ b/code/modules/jobs/job_types/_job.dm
 @@ -194,7 +194,7 @@
@@ -62,7 +49,6 @@ index 0c58466144a3..cd7429a0275f 100644
 +	name = "标准装备"
  
  	var/jobtype = null
- 
 @@ -480,7 +478,7 @@
  		for(var/stat in statcl)
  			if(statcl[stat] < H.get_stat(stat))
@@ -128,5 +114,3 @@ index 0c58466144a3..cd7429a0275f 100644
  		if(istype(src,/datum/job/roguetown/jester))
  			LAZYCLEARLIST(dat)
  			dat = list("<font color = '#d151ab'><center>Come one, come all, where Psydon Lies! <br>Let Xylix roll the dice, <br>unto our untimely demise! <br>Ahahaha!</center>")
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 1189bce85eef62bb562ae7f2c61e56942e4e26bb Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/sojourner.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/sojourner.dm | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/sojourner.dm b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/sojourner.dm
-index bb18eb39ff7f..b246a701f9e9 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/sojourner.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/sojourner.dm
 @@ -2,10 +2,10 @@
@@ -43,5 +30,3 @@ index bb18eb39ff7f..b246a701f9e9 100644
  
  /datum/outfit/job/roguetown/sojourner
  	job_bitflag = BITFLAG_HOLY_WARRIOR
--- 
-Translation Patch Toolkit

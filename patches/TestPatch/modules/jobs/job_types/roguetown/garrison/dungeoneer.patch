@@ -1,17 +1,4 @@
-From 1ff6f89ff42022ea52c0815056a47bb52dc0e3e2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/dungeoneer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/dungeoneer.dm | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/dungeoneer.dm b/code/modules/jobs/job_types/roguetown/garrison/dungeoneer.dm
-index 7d23c5a9189e..caf2a1905c87 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/dungeoneer.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/dungeoneer.dm
 @@ -1,5 +1,6 @@
@@ -45,5 +32,3 @@ index 7d23c5a9189e..caf2a1905c87 100644
  	outfit = /datum/outfit/job/roguetown/dungeoneer/base
  
  	category_tags = list(CTAG_DUNGEONEER)
--- 
-Translation Patch Toolkit

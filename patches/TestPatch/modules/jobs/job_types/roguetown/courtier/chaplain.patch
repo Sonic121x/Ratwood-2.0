@@ -1,15 +1,3 @@
-From 29d5b69346054572e60cd4bf3fa265257d95eb2d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:02:35 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/chaplain.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/chaplain.dm | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm b/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm
 --- a/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm
@@ -58,5 +46,3 @@ diff --git a/code/modules/jobs/job_types/roguetown/courtier/chaplain.dm b/code/m
  	jobtype = /datum/job/roguetown/chaplain
  	has_loadout = TRUE
  	job_bitflag = BITFLAG_HOLY_WARRIOR
--- 
-Translation Patch Toolkit

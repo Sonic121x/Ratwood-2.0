@@ -1,17 +1,4 @@
-From 80b9c1d5cd43b35194d8ab4f8efe8a7494bb858c Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_berserker.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_berserker.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_berserker.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_berserker.dm
-index 2342b93d20bf..479aa1f94954 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_berserker.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll/gnoll_berserker.dm
 @@ -1,6 +1,6 @@
@@ -23,5 +10,3 @@ index 2342b93d20bf..479aa1f94954 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = list(/datum/species/gnoll)
  	outfit = /datum/outfit/job/roguetown/gnoll/berserker
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 0a4c2220c0e674c7966be97a9f9bda7058c0848a Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/atgervi.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/atgervi.dm | 52 ++++++++++++++++++++++++++--------------------------
- 1 file changed, 26 insertions(+), 26 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/atgervi.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/atgervi.dm
-index d1768d6adf49..d5de67fa3871 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/atgervi.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/atgervi.dm
 @@ -1,6 +1,6 @@
@@ -147,5 +134,3 @@ index d1768d6adf49..d5de67fa3871 100644
  	icon_state = "atgervi_axe"
  	item_state = "atgervi_axe"
  	lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
--- 
-Translation Patch Toolkit

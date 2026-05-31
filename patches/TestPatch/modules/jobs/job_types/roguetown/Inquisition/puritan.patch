@@ -1,23 +1,10 @@
-From 467c0c8d0335fce34d729b68845c65a5f28357b2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/puritan.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/puritan.dm | 71 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 36 insertions(+), 35 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/puritan.dm b/code/modules/jobs/job_types/roguetown/Inquisition/puritan.dm
-index c36c8fcbe7c0..093a69621ca6 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/puritan.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/puritan.dm
 @@ -1,5 +1,6 @@
  /datum/job/roguetown/puritan
 -	title = "Inquisitor"
-+	title = "Puritan"
++	title = "Inquisitor"
 +	display_title = "审判官"
  	flag = PURITAN
  	department_flag = INQUISITION
@@ -174,5 +161,3 @@ index c36c8fcbe7c0..093a69621ca6 100644
  		return
 -	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
 +	to_chat(src, span_warning("这人现在还没到能受审的状态……"))
--- 
-Translation Patch Toolkit

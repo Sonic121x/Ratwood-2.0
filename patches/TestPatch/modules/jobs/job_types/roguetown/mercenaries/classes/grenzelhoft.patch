@@ -1,17 +1,4 @@
-From 588987dbe7e35bd47b94e52c9a39a9dc855bc298 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/grenzelhoft.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/grenzelhoft.dm | 50 +++++++++++++++++++++++++-------------------------
- 1 file changed, 25 insertions(+), 25 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/grenzelhoft.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/grenzelhoft.dm
-index 787ce94c556e..0865180d380b 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/grenzelhoft.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/grenzelhoft.dm
 @@ -1,6 +1,6 @@
@@ -135,5 +122,3 @@ index 787ce94c556e..0865180d380b 100644
  	belt = /obj/item/storage/belt/rogue/leather/battleskirt
  	backl = /obj/item/rogueweapon/woodstaff/emerald/blacksteelstaff
  	cloak = /obj/item/clothing/cloak/stabard/grenzelmage
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 19130cdc970b12434b4b7ad60fbba88ddda6a5d9 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/czwarteki/czwartekiheir.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/czwarteki/czwartekiheir.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/czwarteki/czwartekiheir.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/czwarteki/czwartekiheir.dm
-index d62145c960cd..6af008f1c577 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/czwarteki/czwartekiheir.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/czwarteki/czwartekiheir.dm
 @@ -1,6 +1,6 @@
@@ -23,5 +10,3 @@ index d62145c960cd..6af008f1c577 100644
  	outfit = /datum/outfit/job/roguetown/czwarteki/heir
  	traits_applied = list(TRAIT_NOBLE, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
  	category_tags = list(CTAG_CZWAR_HEIR)
--- 
-Translation Patch Toolkit

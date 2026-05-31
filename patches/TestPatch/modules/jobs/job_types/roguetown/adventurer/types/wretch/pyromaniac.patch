@@ -1,17 +1,4 @@
-From c8dd90e4515a879e45b5167a4541aefbda9f723e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/pyromaniac.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/pyromaniac.dm | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/pyromaniac.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/pyromaniac.dm
-index b553f15c6d70..c80e47b21657 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/pyromaniac.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/pyromaniac.dm
 @@ -1,6 +1,6 @@
@@ -48,5 +35,3 @@ index b553f15c6d70..c80e47b21657 100644
  				H.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
  				backr = /obj/item/rogueweapon/woodstaff/toper
  				if(H.mind)
--- 
-Translation Patch Toolkit

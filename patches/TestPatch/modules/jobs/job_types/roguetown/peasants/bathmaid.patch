@@ -1,24 +1,10 @@
-From 0f405a62eb1125c8e19c92260f79da3bb1912a47 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Wed, 27 May 2026 11:55:25 +0800
-Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=20bathmaid?=
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- .../job_types/roguetown/peasants/bathmaid.dm  | 105 ++++++++++--------
- 1 file changed, 58 insertions(+), 47 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm b/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm
-index 0a364fd..cdba97d 100644
 --- a/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm
 +++ b/code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm
 @@ -1,6 +1,6 @@
  /datum/job/roguetown/nightmaiden
  	title = "Bathhouse Attendant"
--	f_title = "Bathhouse Attendant"
-+	f_title = "浴场侍者"
+ 	f_title = "Bathhouse Attendant"
  	flag = WENCH
  	department_flag = PEASANTS
  	faction = "Station"
@@ -214,6 +200,3 @@ index 0a364fd..cdba97d 100644
 +/obj/item/bath/soap/ComponentInitialize()
 +	. = ..()
 +	AddComponent(/datum/component/slippery, 80)
--- 
-2.47.1.windows.2
-

@@ -1,17 +1,4 @@
-From db7ed047ddf682ba6aac6cfa45d4bbc4e42ff226 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/wardenmaster.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/wardenmaster.dm | 41 +++++++++++++++++++++--------------------
- 1 file changed, 21 insertions(+), 20 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/wardenmaster.dm b/code/modules/jobs/job_types/roguetown/garrison/wardenmaster.dm
-index d348e5c4bf19..98aea860068d 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/wardenmaster.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/wardenmaster.dm
 @@ -1,5 +1,6 @@
@@ -100,5 +87,3 @@ index d348e5c4bf19..98aea860068d 100644
 +	recruitment_message = "为先锋而战，%RECRUIT！"
 +	accept_message = "为了王权！"
 +	refuse_message = "我拒绝。"
--- 
-Translation Patch Toolkit

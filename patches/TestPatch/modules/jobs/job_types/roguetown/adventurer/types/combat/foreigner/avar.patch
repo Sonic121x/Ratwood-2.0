@@ -1,17 +1,4 @@
-From 01d1421a3fa0249472e0f3cd4ff208d690f63d9a Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/avar.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/avar.dm | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/avar.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/avar.dm
-index 3e2c7eeb2e4d..fda720cd92d2 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/avar.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/avar.dm
 @@ -1,11 +1,11 @@
@@ -91,5 +78,3 @@ index 3e2c7eeb2e4d..fda720cd92d2 100644
  
  /obj/item/rogueweapon/scabbard/sheath/aavnik/Initialize(mapload)
  	. = ..()
--- 
-Translation Patch Toolkit

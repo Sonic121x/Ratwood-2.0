@@ -1,25 +1,12 @@
-From 4fab706e99bf743b9072e3eda9956a8f621842c4 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/orthodoxist.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/orthodoxist.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/orthodoxist.dm b/code/modules/jobs/job_types/roguetown/Inquisition/orthodoxist.dm
-index 977f0126bdb8..5085ddfb3eac 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/orthodoxist.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/orthodoxist.dm
-@@ -2,7 +2,7 @@
+@@ -2,7 +2,8 @@
  //Only Adjudicators get decent regen, at 0.5, with the rest at 0.1.
  //Standard stat spread is 8 across the board. Broken up by classes that don't fit this.
  /datum/job/roguetown/orthodoxist
--	title = "Orthodoxist"
-+	title = "正教徒"
+ 	title = "Orthodoxist"
++	display_title = "正教徒"
  	flag = ORTHODOXIST
  	department_flag = INQUISITION
  	faction = "Station"
@@ -32,5 +19,3 @@ index 977f0126bdb8..5085ddfb3eac 100644
  	selection_color = JCOLOR_INQUISITION
  	outfit = null
  	outfit_female = null
--- 
-Translation Patch Toolkit

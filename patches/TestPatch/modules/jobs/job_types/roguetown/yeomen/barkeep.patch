@@ -1,17 +1,4 @@
-From a8725de1145f2f34a7747f4c5b7d85d923ff7bc6 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/yeomen/barkeep.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/yeomen/barkeep.dm | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/yeomen/barkeep.dm b/code/modules/jobs/job_types/roguetown/yeomen/barkeep.dm
-index b154da1256b5..01d0868e3d5d 100644
 --- a/code/modules/jobs/job_types/roguetown/yeomen/barkeep.dm
 +++ b/code/modules/jobs/job_types/roguetown/yeomen/barkeep.dm
 @@ -1,5 +1,6 @@
@@ -41,5 +28,3 @@ index b154da1256b5..01d0868e3d5d 100644
  	outfit = /datum/outfit/job/roguetown/barkeep/basic
  	category_tags = list(CTAG_INNKEEPER)
  	subclass_stats = list(
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 409c97ce33a367618f2eb1c88ea0598fd418f261 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/hangyaku.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/hangyaku.dm | 58 +++++++++++++++++++++++++++++-----------------------------
- 1 file changed, 29 insertions(+), 29 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/hangyaku.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/hangyaku.dm
-index 57724c0d3747..5d7f4a20e225 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/hangyaku.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/hangyaku.dm
 @@ -1,6 +1,6 @@
@@ -173,5 +160,3 @@ index 57724c0d3747..5d7f4a20e225 100644
  			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
  			H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
  			H.put_in_hands(new /obj/item/rogueweapon/spear/naginata, TRUE)
--- 
-Translation Patch Toolkit

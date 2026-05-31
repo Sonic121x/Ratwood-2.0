@@ -1,17 +1,4 @@
-From dc8d6801de94df3dd20fc0b543b4e35079014e59 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/forlorn.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/forlorn.dm | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/forlorn.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/forlorn.dm
-index 645cead6485b..2c43599f34ae 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/forlorn.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/forlorn.dm
 @@ -1,6 +1,6 @@
@@ -53,5 +40,3 @@ index 645cead6485b..2c43599f34ae 100644
  			H.equip_to_slot_or_del(new /obj/item/quiver/bolts, SLOT_BELT_L)
  			H.equip_to_slot_or_del(new /obj/item/rogueweapon/sword/short/falchion, SLOT_BELT_R)
  			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow, SLOT_BACK_L)
--- 
-Translation Patch Toolkit

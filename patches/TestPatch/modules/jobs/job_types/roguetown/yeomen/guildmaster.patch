@@ -1,17 +1,4 @@
-From 9ea86e73fc8de38dbdd3427b4d4770fdea79d849 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/yeomen/guildmaster.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/yeomen/guildmaster.dm | 27 ++++++++++++++-------------
- 1 file changed, 14 insertions(+), 13 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/yeomen/guildmaster.dm b/code/modules/jobs/job_types/roguetown/yeomen/guildmaster.dm
-index 96bb92eb9710..a84f49c5d8f8 100644
 --- a/code/modules/jobs/job_types/roguetown/yeomen/guildmaster.dm
 +++ b/code/modules/jobs/job_types/roguetown/yeomen/guildmaster.dm
 @@ -2,6 +2,7 @@
@@ -81,5 +68,3 @@ index 96bb92eb9710..a84f49c5d8f8 100644
 -			to_chat(src, span_warning("Your announcement was interrupted!"))
 +			to_chat(src, span_warning("我的公告被打断了！"))
  			return FALSE
--- 
-Translation Patch Toolkit

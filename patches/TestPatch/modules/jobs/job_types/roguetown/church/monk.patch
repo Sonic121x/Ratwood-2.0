@@ -1,23 +1,10 @@
-From 25b51cbe4064fcaa155a5a777d9849e2e2f0ff75 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/monk.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/church/monk.dm | 32 ++++++++++++++++----------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/monk.dm b/code/modules/jobs/job_types/roguetown/church/monk.dm
-index cae3f4dbfb18..322af1d66717 100644
 --- a/code/modules/jobs/job_types/roguetown/church/monk.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/monk.dm
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,6 @@
  /datum/job/roguetown/monk
--	title = "Acolyte"
-+	title = "侍僧"
+ 	title = "Acolyte"
++	display_title = "侍僧"
  	flag = MONK
  	department_flag = CHURCHMEN
  	faction = "Station"
@@ -107,5 +94,3 @@ index cae3f4dbfb18..322af1d66717 100644
  	jobtype = /datum/job/roguetown/monk
  	has_loadout = TRUE
  	job_bitflag = BITFLAG_HOLY_WARRIOR
--- 
-Translation Patch Toolkit

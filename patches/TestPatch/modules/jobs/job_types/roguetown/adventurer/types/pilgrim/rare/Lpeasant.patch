@@ -1,17 +1,4 @@
-From 16afc9fbc9c9fa2126bce780443c076f1243fba5 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
-index 4fd2a00dff6e..a0d470548d7b 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
 @@ -1,8 +1,8 @@
@@ -27,5 +14,3 @@ index 4fd2a00dff6e..a0d470548d7b 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_ALL_KINDS
  	outfit = /datum/outfit/job/roguetown/adventurer/farmermaster
--- 
-Translation Patch Toolkit

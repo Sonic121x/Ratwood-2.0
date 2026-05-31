@@ -1,17 +1,4 @@
-From 3491a65ef047ba621478733a6922e812961b9bcd Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/martyr/martyr_items.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/church/martyr/martyr_items.dm | 34 +++++++++++++++++-----------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/martyr/martyr_items.dm b/code/modules/jobs/job_types/roguetown/church/martyr/martyr_items.dm
-index 319936450652..1f3ceea4ae74 100644
 --- a/code/modules/jobs/job_types/roguetown/church/martyr/martyr_items.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/martyr/martyr_items.dm
 @@ -8,8 +8,8 @@
@@ -115,5 +102,3 @@ index 319936450652..1f3ceea4ae74 100644
  	if(overarmor)
  		alternate_worn_layer = TABARD_LAYER
  	else
--- 
-Translation Patch Toolkit

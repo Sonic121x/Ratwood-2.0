@@ -1,17 +1,4 @@
-From fb657bd04275ad75488979d56404041d81e9bb04 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm
-index 125df9e1d5e5..943df86833c9 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm
 @@ -1,6 +1,6 @@
@@ -55,5 +42,3 @@ index 125df9e1d5e5..943df86833c9 100644
  				beltl = /obj/item/rogueweapon/mace/steel
  				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
  				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
--- 
-Translation Patch Toolkit

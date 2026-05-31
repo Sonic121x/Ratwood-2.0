@@ -1,17 +1,4 @@
-From b0e15b3fa96c868cd44b29a2ccee4cc114395d58 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/vagabond/deprived.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/youngfolk/vagabond/deprived.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/deprived.dm b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/deprived.dm
-index 778a1d37e49e..41809fe4f3f3 100644
 --- a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/deprived.dm
 +++ b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/deprived.dm
 @@ -1,7 +1,7 @@
@@ -25,5 +12,3 @@ index 778a1d37e49e..41809fe4f3f3 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_ALL_KINDS
  	outfit = /datum/outfit/job/roguetown/vagabond/deprived
--- 
-Translation Patch Toolkit

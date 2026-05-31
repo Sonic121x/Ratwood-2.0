@@ -1,23 +1,10 @@
-From b13f1db5cb05d332445ceb9cc2d327a56a38618e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll.dm | 32 ++++++++++++++++----------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll.dm
-index 3ed5c98920c7..6212d4e20f0b 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/gnoll.dm
-@@ -1,12 +1,12 @@
+@@ -1,12 +1,13 @@
  /datum/job/roguetown/gnoll
--	title = "Gnoll"
-+	title = "豺狼人"
+ 	title = "Gnoll"
++	display_title = "豺狼人"
  	flag = GNOLL
  	antag_job = TRUE
  	faction = "Station"
@@ -74,5 +61,3 @@ index 3ed5c98920c7..6212d4e20f0b 100644
  		return
  	var/obj/item/clothing/suit/roguetown/armor/regenerating/skin/gnoll_armor/GA = skin_armor
  	GA.Topic(null, list("inspect" = "1"), src)
--- 
-Translation Patch Toolkit

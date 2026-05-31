@@ -1,17 +1,4 @@
-From fe064f9c58701895db71f206caf81e3e3a8e6edb Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/noble.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/noble.dm | 92 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 46 insertions(+), 46 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/noble.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/noble.dm
-index 5d28e23be77a..5cc211784d2d 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/noble.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/noble.dm
 @@ -1,6 +1,6 @@
@@ -206,5 +193,3 @@ index 5d28e23be77a..5cc211784d2d 100644
  				r_hand = /obj/item/rogueweapon/spear
  				backl = /obj/item/rogueweapon/scabbard/gwstrap
  	H.set_blindness(0)
--- 
-Translation Patch Toolkit

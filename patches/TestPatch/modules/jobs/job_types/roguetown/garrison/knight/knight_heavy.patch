@@ -1,17 +1,4 @@
-From f9b2dde236282eefd447500e4c6d57ed14f07a66 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/knight/knight_heavy.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/knight/knight_heavy.dm | 66 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 33 insertions(+), 33 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/knight/knight_heavy.dm b/code/modules/jobs/job_types/roguetown/garrison/knight/knight_heavy.dm
-index 661d820facb4..fc8df65aa94f 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/knight/knight_heavy.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/knight/knight_heavy.dm
 @@ -1,7 +1,7 @@
@@ -122,5 +109,3 @@ index 661d820facb4..fc8df65aa94f 100644
  		armor = armors[armorchoice]
  
  	backpack_contents = list(
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 3f0c31655dc83a44d0ae74816f45f74f9acc2799 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/bandit.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/bandit.dm | 49 +++++++++++++++++++++++++------------------------
- 1 file changed, 25 insertions(+), 24 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/bandit.dm b/code/modules/jobs/job_types/roguetown/adventurer/bandit.dm
-index 24b15d814946..dec493e259bd 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/bandit.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/bandit.dm
 @@ -1,5 +1,6 @@
@@ -109,5 +96,3 @@ index 24b15d814946..dec493e259bd 100644
  
  /proc/update_bandit_slots()
  	var/datum/job/bandit_job = SSjob.GetJob("Bandit")
--- 
-Translation Patch Toolkit

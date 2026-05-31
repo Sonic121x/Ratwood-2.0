@@ -1,17 +1,4 @@
-From f8091e993fdfd22faeb7ef835bb6e6b16b42420b Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm b/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
-index 065c62edd73a..7204f09f84a9 100644
 --- a/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
 +++ b/code/modules/jobs/job_types/roguetown/youngfolk/shophand.dm
 @@ -1,5 +1,6 @@
@@ -45,5 +32,3 @@ index 065c62edd73a..7204f09f84a9 100644
  	outfit = /datum/outfit/job/roguetown/shophand/basic
  	category_tags = list(CTAG_SHOPHAND)
  	subclass_stats = list(
--- 
-Translation Patch Toolkit

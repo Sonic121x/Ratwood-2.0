@@ -1,17 +1,4 @@
-From 5b77d5fb0028be6d82808cb6e9f14cad8bc4dae6 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltjester.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltjester.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltjester.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltjester.dm
-index d359cd0384e5..d0c9efbce2a8 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltjester.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltjester.dm
 @@ -1,8 +1,8 @@
@@ -26,5 +13,3 @@ index d359cd0384e5..d0c9efbce2a8 100644
  	allowed_sexes = list(MALE, FEMALE)
  	allowed_races = RACES_NO_CONSTRUCT
  	outfit = /datum/outfit/job/roguetown/heartfelt/retinue/jester
--- 
-Translation Patch Toolkit

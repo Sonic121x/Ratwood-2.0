@@ -1,17 +1,4 @@
-From 026f875c815ccc0cfa86d83d8dabf99d570c8cd7 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/keeper.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/church/keeper.dm | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/keeper.dm b/code/modules/jobs/job_types/roguetown/church/keeper.dm
-index c999dbbf6224..e627bd58d73f 100644
 --- a/code/modules/jobs/job_types/roguetown/church/keeper.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/keeper.dm
 @@ -1,12 +1,13 @@
@@ -86,5 +73,3 @@ index c999dbbf6224..e627bd58d73f 100644
 -	to_chat(H, span_notice("I embrace Pestra's radical doctrine."))
 -
 +	to_chat(H, span_notice("我拥抱 Pestra 的激进教义。"))
--- 
-Translation Patch Toolkit

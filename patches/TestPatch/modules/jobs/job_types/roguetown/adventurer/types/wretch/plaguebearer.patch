@@ -1,17 +1,4 @@
-From c8fed009a7654380d1f54312f9a1eebbf832d894 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/plaguebearer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/plaguebearer.dm | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/plaguebearer.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/plaguebearer.dm
-index f43b65ed5d73..83c7fbb1c4a2 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/plaguebearer.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/plaguebearer.dm
 @@ -1,6 +1,6 @@
@@ -67,5 +54,3 @@ index f43b65ed5d73..83c7fbb1c4a2 100644
  				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
  				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
  				beltl = /obj/item/rogueweapon/scabbard/sword
--- 
-Translation Patch Toolkit

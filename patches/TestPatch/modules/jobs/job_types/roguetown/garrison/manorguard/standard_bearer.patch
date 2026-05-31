@@ -1,17 +1,4 @@
-From f88fe1064167f0178a1b0b0a2e8f3077344d19c7 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/manorguard/standard_bearer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/manorguard/standard_bearer.dm | 50 +++++++++++++++++++++++++-------------------------
- 1 file changed, 25 insertions(+), 25 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/manorguard/standard_bearer.dm b/code/modules/jobs/job_types/roguetown/garrison/manorguard/standard_bearer.dm
-index 7b2ce5853352..1029ca5263e7 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/manorguard/standard_bearer.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/manorguard/standard_bearer.dm
 @@ -4,9 +4,9 @@
@@ -60,7 +47,6 @@ index 7b2ce5853352..1029ca5263e7 100644
 +	message = "把军旗立了起来！"
  	emote_type = EMOTE_VISIBLE
  	show_runechat = TRUE
- 
 @@ -77,19 +77,19 @@
  		if(.)
  			for(var/mob/living/carbon/human/L in viewers(7,user))
@@ -84,7 +70,6 @@ index 7b2ce5853352..1029ca5263e7 100644
 +	message = "把军旗高高立起！"
  	emote_type = EMOTE_VISIBLE
  	show_runechat = TRUE
- 
 @@ -120,7 +120,7 @@
  									strz = "far above"
  					var/dir = get_dir(L, user)
@@ -112,7 +97,6 @@ index 7b2ce5853352..1029ca5263e7 100644
 +	message = "把军旗稳稳立定！"
  	emote_type = EMOTE_VISIBLE
  	show_runechat = TRUE
- 
 @@ -147,7 +147,7 @@
  		if(.)
  			for(var/mob/living/carbon/human/L in viewers(7,user))
@@ -140,7 +124,6 @@ index 7b2ce5853352..1029ca5263e7 100644
 +	message = "把军旗稳稳立起！"
  	emote_type = EMOTE_VISIBLE
  	show_runechat = TRUE
- 
 @@ -174,12 +174,12 @@
  		if(.)
  			for(var/mob/living/carbon/human/L in viewers(7,user))
@@ -157,5 +140,3 @@ index 7b2ce5853352..1029ca5263e7 100644
  	icon_state = "buff"
  
  /datum/status_effect/buff/standard_steady
--- 
-Translation Patch Toolkit

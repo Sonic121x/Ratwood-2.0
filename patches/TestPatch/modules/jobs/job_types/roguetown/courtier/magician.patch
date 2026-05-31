@@ -1,17 +1,4 @@
-From 5d898e840f1fcf904cc4b2b9d3c67da54f1054c1 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/courtier/magician.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/courtier/magician.dm | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/courtier/magician.dm b/code/modules/jobs/job_types/roguetown/courtier/magician.dm
-index 1129f1dffeb8..db20702be6a4 100644
 --- a/code/modules/jobs/job_types/roguetown/courtier/magician.dm
 +++ b/code/modules/jobs/job_types/roguetown/courtier/magician.dm
 @@ -1,5 +1,6 @@
@@ -49,5 +36,3 @@ index 1129f1dffeb8..db20702be6a4 100644
  	outfit = /datum/outfit/job/roguetown/magician/basic
  
  	subclass_spellpoints = 36
--- 
-Translation Patch Toolkit

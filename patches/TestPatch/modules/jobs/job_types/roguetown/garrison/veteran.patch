@@ -1,17 +1,4 @@
-From 7bde1d7b2424a375fc2111d5cc6a72994f7f3021 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/veteran.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/veteran.dm | 151 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 76 insertions(+), 75 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/veteran.dm b/code/modules/jobs/job_types/roguetown/garrison/veteran.dm
-index 56b6fbcd9c8d..d2d97fd84150 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/veteran.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/veteran.dm
 @@ -1,5 +1,6 @@
@@ -45,7 +32,6 @@ index 56b6fbcd9c8d..d2d97fd84150 100644
 +	tutorial = "你曾在百位主君麾下效力，有贤主，也有暴君。你曾当过将军，也做过元帅、队长。有人把你当英雄，有人把你视作怪物，总归都差不多。你曾制定战略、推演战术，发明新的战争技艺，为一个人去杀另一个人找出千百种新法子。直到今天，这些事依旧会让你夜不能寐。"
  	outfit = /datum/outfit/job/roguetown/vet/battlemaster
  	cmode_music = 'sound/music/cmode/towner/combat_retired.ogg'
- 
 @@ -107,56 +108,56 @@
  	. = ..()
  	H.adjust_blindness(-3)
@@ -400,5 +386,3 @@ index 56b6fbcd9c8d..d2d97fd84150 100644
 +			if("继续旧日训练")
  				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
  				H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)
--- 
-Translation Patch Toolkit

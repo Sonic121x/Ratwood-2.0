@@ -1,17 +1,4 @@
-From 053a684b3513a550ecb0f35a53f40c26bd7aeab6 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/disciple.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/disciple.dm | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/disciple.dm b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/disciple.dm
-index 0289a7ef2772..e97b1db88d13 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/disciple.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/disciple.dm
 @@ -1,8 +1,8 @@
@@ -68,5 +55,3 @@ index 0289a7ef2772..e97b1db88d13 100644
  				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 4, TRUE)
  				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
  				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/psy
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 4004f7f6d7656a772fcc1cea2ce38c3da48b1424 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/gronn.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/gronn.dm | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/gronn.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/gronn.dm
-index 7266fd7b3c7f..ab9e5e8affd4 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/gronn.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/gronn.dm
 @@ -1,10 +1,10 @@
@@ -76,5 +63,3 @@ index 7266fd7b3c7f..ab9e5e8affd4 100644
  				//Equipment
  				head = /obj/item/clothing/head/roguetown/hatfur
  				armor = /obj/item/clothing/suit/roguetown/armor/leather/Huus_quyaq
--- 
-Translation Patch Toolkit

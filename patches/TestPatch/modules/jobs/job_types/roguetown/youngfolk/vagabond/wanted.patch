@@ -1,17 +1,4 @@
-From 1e2d85f92cba3a2f27dc68fcdcf59aab26045a2f Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/youngfolk/vagabond/wanted.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/youngfolk/vagabond/wanted.dm | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/wanted.dm b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/wanted.dm
-index b4515a988741..25d0548c2d7c 100644
 --- a/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/wanted.dm
 +++ b/code/modules/jobs/job_types/roguetown/youngfolk/vagabond/wanted.dm
 @@ -1,7 +1,7 @@
@@ -68,5 +55,3 @@ index b4515a988741..25d0548c2d7c 100644
 -		to_chat(H, span_notice("I'm on the run from the law, and there's a [LOWER_TEXT(bounty_amount)] sum of mammons out on my head... better lay low."))
 +		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, "谷地司法庭")
 +		to_chat(H, span_notice("我正被官府追缉，脑袋上挂着一笔[bounty_amount]的马蒙赏金……最好先低调些。"))
--- 
-Translation Patch Toolkit

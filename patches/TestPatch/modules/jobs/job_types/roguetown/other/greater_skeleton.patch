@@ -1,17 +1,4 @@
-From 47b2944675def39e525715359e776441bd4ab4be Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/other/greater_skeleton.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/other/greater_skeleton.dm | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/other/greater_skeleton.dm b/code/modules/jobs/job_types/roguetown/other/greater_skeleton.dm
-index 8e5217e9bddf..9ec386f1a8f4 100644
 --- a/code/modules/jobs/job_types/roguetown/other/greater_skeleton.dm
 +++ b/code/modules/jobs/job_types/roguetown/other/greater_skeleton.dm
 @@ -1,5 +1,6 @@
@@ -41,5 +28,3 @@ index 8e5217e9bddf..9ec386f1a8f4 100644
  	outfit = /datum/outfit/job/roguetown/greater_skeleton/necro/shambler
  
  	category_tags = list(CTAG_NSKELETON)
--- 
-Translation Patch Toolkit

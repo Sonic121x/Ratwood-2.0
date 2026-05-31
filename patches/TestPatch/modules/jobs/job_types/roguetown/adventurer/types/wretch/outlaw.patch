@@ -1,17 +1,4 @@
-From 83fddafb765dad561b5b90071221999a947d297b Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/outlaw.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/outlaw.dm | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/outlaw.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/outlaw.dm
-index 82e2b46ff2e0..db7f6bb923d1 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/outlaw.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/outlaw.dm
 @@ -1,6 +1,6 @@
@@ -120,5 +107,3 @@ index 82e2b46ff2e0..db7f6bb923d1 100644
  				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
  				l_hand = /obj/item/rogueweapon/flail/sflail
  				backr = /obj/item/rogueweapon/shield/heater
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 1f1bcaeaef96657518cd58ac1a198cc5977822f5 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/manorguard/cavalry.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/manorguard/cavalry.dm | 38 +++++++++++++++++++-------------------
- 1 file changed, 19 insertions(+), 19 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/manorguard/cavalry.dm b/code/modules/jobs/job_types/roguetown/garrison/manorguard/cavalry.dm
-index df2a2ec76662..617bcefe8aab 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/manorguard/cavalry.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/manorguard/cavalry.dm
 @@ -1,8 +1,8 @@
@@ -91,5 +78,3 @@ index df2a2ec76662..617bcefe8aab 100644
  			head = helmets[helmchoice]
  
  	if (H.mind)
--- 
-Translation Patch Toolkit

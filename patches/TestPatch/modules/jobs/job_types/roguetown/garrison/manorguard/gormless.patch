@@ -1,17 +1,4 @@
-From 3559b6981c4458ca184335056c22888434b897af Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/manorguard/gormless.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/manorguard/gormless.dm | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/manorguard/gormless.dm b/code/modules/jobs/job_types/roguetown/garrison/manorguard/gormless.dm
-index b3148e902872..bd2381a0fc64 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/manorguard/gormless.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/manorguard/gormless.dm
 @@ -3,9 +3,9 @@
@@ -45,7 +32,6 @@ index b3148e902872..bd2381a0fc64 100644
 +			if("大槌，需至少 14 力量")
  				r_hand = /obj/item/rogueweapon/mace/maul
  				backl = /obj/item/rogueweapon/scabbard/gwstrap
- 
 @@ -64,12 +64,12 @@
  //All iron exclusive, as with the armour.
  	if(H.mind)
@@ -66,5 +52,3 @@ index b3148e902872..bd2381a0fc64 100644
 +		var/helmchoice = input(H, "选择你的头盔。", "戴上头盔") as anything in helmets
 +		if(helmchoice != "无")
  			head = helmets[helmchoice]
--- 
-Translation Patch Toolkit

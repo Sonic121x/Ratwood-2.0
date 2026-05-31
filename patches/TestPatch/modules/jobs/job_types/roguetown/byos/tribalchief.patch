@@ -1,30 +1,16 @@
-From 6c180aa580c7e4c76aa41206feab97b50be845ed Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/byos/tribalchief.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/byos/tribalchief.dm | 36 +++++++++++++++++++-----------------
- 1 file changed, 19 insertions(+), 17 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/byos/tribalchief.dm b/code/modules/jobs/job_types/roguetown/byos/tribalchief.dm
-index 9b6b8054bdb0..afddcc98bedd 100644
 --- a/code/modules/jobs/job_types/roguetown/byos/tribalchief.dm
 +++ b/code/modules/jobs/job_types/roguetown/byos/tribalchief.dm
 @@ -1,7 +1,8 @@
  
  /datum/job/roguetown/tribalchieftain
  	title = "Chieftain"
--	f_title = "Tribe Chieftess"
 +	display_title = "酋长"
-+	f_title = "女酋长"
+ 	f_title = "Tribe Chieftess"
  	flag = TRIBALCHIEFTAIN
  	department_flag = TRIBAL
  	faction = "Station"
-@@ -9,9 +10,10 @@
+@@ -9,8 +10,9 @@
  	spawn_positions = 1
  	selection_color = JCOLOR_TRIBAL
  	allowed_races = list(/datum/species/goblinp, /datum/species/anthromorphsmall, /datum/species/kobold, /datum/species/dracon, /datum/species/halforc)
@@ -37,7 +23,6 @@ index 9b6b8054bdb0..afddcc98bedd 100644
 +	命你的族人穿行洞穴与荒野，劫掠路人、绑走俘虏，将金子与奴隶带回部族，奉献于巨龙之名！"
  	allowed_sexes = list(MALE, FEMALE)
  	advclass_cat_rolls = list(CTAG_TRIBALCHIEFTAIN = 20)
- 
 @@ -71,36 +73,36 @@
  	if(H.age == AGE_OLD)
  		H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -88,5 +73,3 @@ index 9b6b8054bdb0..afddcc98bedd 100644
  	// outfit = /datum/outfit/job/roguetown/tribalchieftain/warrior
  	category_tags = list(CTAG_TRIBALCHIEFTAIN)
  	traits_applied = list(TRAIT_DNR, TRAIT_HEAVYARMOR, TRAIT_TRIBAL, TRAIT_DARKVISION)
--- 
-Translation Patch Toolkit

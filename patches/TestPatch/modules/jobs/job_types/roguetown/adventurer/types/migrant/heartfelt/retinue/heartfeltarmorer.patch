@@ -1,17 +1,4 @@
-From bed916cdfabd475b14178ecf9e50b575ec729c30 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltarmorer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltarmorer.dm | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltarmorer.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltarmorer.dm
-index 79a2bffcb7bc..eebd2c211e65 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltarmorer.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltarmorer.dm
 @@ -1,8 +1,8 @@
@@ -67,5 +54,3 @@ index 79a2bffcb7bc..eebd2c211e65 100644
  			if (i == 1)
  				l_hand = molds[mold_choice]
  			else
--- 
-Translation Patch Toolkit

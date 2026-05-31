@@ -1,17 +1,4 @@
-From 8ff476e3cde079db3e8266cb04b8c9810e138df9 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/special/courtagent.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/special/courtagent.dm | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/special/courtagent.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/special/courtagent.dm
-index 805f78644b32..9c9f3e03d0b3 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/special/courtagent.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/special/courtagent.dm
 @@ -1,12 +1,13 @@
@@ -29,5 +16,3 @@ index 805f78644b32..9c9f3e03d0b3 100644
  	min_pq = 5
  	job_reopens_slots_on_death = FALSE
  	always_show_on_latechoices = TRUE
--- 
-Translation Patch Toolkit

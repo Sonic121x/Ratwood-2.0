@@ -1,17 +1,4 @@
-From 5cd94fe4cf5aa889bf245a2de6c38d9619f84776 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm
-index 4733bf06391f..d859fabb8ca8 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm
 @@ -1,6 +1,6 @@
@@ -48,5 +35,3 @@ index 4733bf06391f..d859fabb8ca8 100644
  				backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
  				l_hand = /obj/item/rogueweapon/sword/short
  				r_hand = /obj/item/restraints/legcuffs/beartrap
--- 
-Translation Patch Toolkit

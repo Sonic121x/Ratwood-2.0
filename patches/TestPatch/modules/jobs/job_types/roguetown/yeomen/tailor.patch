@@ -1,17 +1,4 @@
-From f3b4a94c5b9330e0395b760fea907b5ce0d8b9c9 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/yeomen/tailor.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/yeomen/tailor.dm | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/yeomen/tailor.dm b/code/modules/jobs/job_types/roguetown/yeomen/tailor.dm
-index 48981bc6887d..13ec9ab0c22b 100644
 --- a/code/modules/jobs/job_types/roguetown/yeomen/tailor.dm
 +++ b/code/modules/jobs/job_types/roguetown/yeomen/tailor.dm
 @@ -1,9 +1,10 @@
@@ -37,5 +24,3 @@ index 48981bc6887d..13ec9ab0c22b 100644
  	outfit = /datum/outfit/job/roguetown/tailor/basic
  	category_tags = list(CTAG_TAILOR)
  	subclass_stats = list(
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 632f77297c9214fc5b53968f8b481bb30f076cce Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_slave.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_slave.dm | 100 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 50 insertions(+), 50 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_slave.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_slave.dm
-index 0763d166b90a..ff56bab60d33 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_slave.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_slave.dm
 @@ -1,6 +1,6 @@
@@ -174,5 +161,3 @@ index 0763d166b90a..ff56bab60d33 100644
 +			H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_EXPERT, TRUE)
 +		if("平民（+2 幸运）")
 +			H.change_stat(STATKEY_LCK, 2)
--- 
-Translation Patch Toolkit

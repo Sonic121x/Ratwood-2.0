@@ -1,17 +1,4 @@
-From 52b93b09d81c3e78460d8d549e273ede0cb1a298 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/desertrider.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/desertrider.dm | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/desertrider.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/desertrider.dm
-index 65bf6db9c0ca..3785b42f084e 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/desertrider.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/desertrider.dm
 @@ -1,6 +1,6 @@
@@ -132,5 +119,3 @@ index 65bf6db9c0ca..3785b42f084e 100644
  	if(H.mind)
  		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/repulse)
  		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
--- 
-Translation Patch Toolkit

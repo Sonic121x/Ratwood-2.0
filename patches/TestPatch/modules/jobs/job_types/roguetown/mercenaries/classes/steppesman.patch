@@ -1,17 +1,4 @@
-From 3df753663f822e4be2a4de2344d60b8b89f3fb95 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/steppesman.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/steppesman.dm | 128 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 64 insertions(+), 64 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/steppesman.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/steppesman.dm
-index cf067d2bec39..849afb5fd463 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/steppesman.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/steppesman.dm
 @@ -1,8 +1,8 @@
@@ -219,5 +206,3 @@ index cf067d2bec39..849afb5fd463 100644
  						beltl = /obj/item/rogueweapon/flail
  						beltr = /obj/item/rogueweapon/shield/buckler //Doesn't get good shield skill + no armor, so they get this to compensate for no parry on whip.
  						H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)	//Old whip skill.
--- 
-Translation Patch Toolkit

@@ -1,17 +1,4 @@
-From 6e601890fd6bb052926dc41f8999553d10dfaddc Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/knight/knight_champion.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/knight/knight_champion.dm | 58 +++++++++++++++++++++++++++++-----------------------------
- 1 file changed, 29 insertions(+), 29 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/knight/knight_champion.dm b/code/modules/jobs/job_types/roguetown/garrison/knight/knight_champion.dm
-index d88292c83cec..fb22e7a9e165 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/knight/knight_champion.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/knight/knight_champion.dm
 @@ -1,8 +1,8 @@
@@ -122,5 +109,3 @@ index d88292c83cec..fb22e7a9e165 100644
  			head = helmets[helmchoice]
  	backpack_contents = list(
  		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
--- 
-Translation Patch Toolkit

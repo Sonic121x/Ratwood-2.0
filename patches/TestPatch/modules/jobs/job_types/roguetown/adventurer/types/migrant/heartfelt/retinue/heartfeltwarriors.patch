@@ -1,17 +1,4 @@
-From 986f88cbe981c7d8113a0bbe9e99e93458f5667d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm | 120 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 60 insertions(+), 60 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm
-index 0386487f6545..264d85d70c93 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm
 @@ -1,8 +1,8 @@
@@ -243,5 +230,3 @@ index 0386487f6545..264d85d70c93 100644
  			head = /obj/item/clothing/head/roguetown/helmet/winged
  		else //In case they DC or don't choose close the panel, etc
  			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
--- 
-Translation Patch Toolkit

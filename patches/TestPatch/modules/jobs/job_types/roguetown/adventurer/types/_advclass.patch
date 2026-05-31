@@ -1,17 +1,4 @@
-From 26d3b6af0168c39850b63b1fd540dddfcfd2d83f Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/_advclass.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/_advclass.dm | 2 +-
- 1 file changed, 1 insertions(+), 1 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/_advclass.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/_advclass.dm
-index 914430c9010f..7216fdcbe4a3 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/_advclass.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/_advclass.dm
 @@ -3,7 +3,7 @@
@@ -23,5 +10,3 @@ index 914430c9010f..7216fdcbe4a3 100644
  	var/list/allowed_sexes
  	var/list/allowed_races = RACES_ALL_KINDS
  	var/list/disallowed_races = null
--- 
-Translation Patch Toolkit

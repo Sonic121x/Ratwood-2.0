@@ -1,17 +1,4 @@
-From 47de13a0ea8ce8ae472dfcd2e9c4612dbc87b058 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm
-index ed8896fca0c3..cbdab04403a5 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm
 @@ -1,6 +1,6 @@
@@ -56,5 +43,3 @@ index ed8896fca0c3..cbdab04403a5 100644
  				beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
  				backl = /obj/item/rogueweapon/whip
  				beltl = /obj/item/lockpickring/mundane
--- 
-Translation Patch Toolkit

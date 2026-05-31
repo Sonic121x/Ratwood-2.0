@@ -1,17 +1,4 @@
-From b9a4c4ab9cc99bfce4e51b946f7fd70d75235dbd Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/wretch/antipope.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/wretch/antipope.dm | 72 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 36 insertions(+), 36 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/antipope.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/antipope.dm
-index b519292f75f0..3abc4496d5ee 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/antipope.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/wretch/antipope.dm
 @@ -3,10 +3,10 @@
@@ -110,7 +97,6 @@ index b519292f75f0..3abc4496d5ee 100644
 +	src.visible_message(span_notice("[src] 完成了布道，激励了附近的人！"))
  	playsound(src.loc, 'sound/magic/ahh2.ogg', 80, TRUE)
  	COOLDOWN_START(src, evil_priest_sermon, EVIL_PRIEST_SERMON_COOLDOWN)
- 
 @@ -192,50 +192,50 @@
  		if (istype(H.patron, /datum/patron/divine) && !HAS_TRAIT(H, TRAIT_HERESIARCH)) //Tennite Wretches won't be affected for the sake of convenience.
  			H.apply_status_effect(/datum/status_effect/debuff/hereticsermon)
@@ -176,12 +162,9 @@ index b519292f75f0..3abc4496d5ee 100644
 +		src.visible_message(span_warning("[src] 将 [S] 狠狠抵进了 [H] 的灵火之处！"))
  		say(pick(faith_lines), spans = list("torture"))
  		H.emote("agony", forced = TRUE)
- 
 @@ -243,4 +243,4 @@
  			return
  		H.confess_sins("patron")
  		return
 -	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
 +	to_chat(src, span_warning("这家伙现在还没到能被拷问的状态……"))
--- 
-Translation Patch Toolkit

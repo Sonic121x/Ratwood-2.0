@@ -1,17 +1,4 @@
-From 7f4149dd471520ed77109033cdce75c59f9df3e1 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/mercenaries/classes/warscholar.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/mercenaries/classes/warscholar.dm | 96 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 48 insertions(+), 48 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/mercenaries/classes/warscholar.dm b/code/modules/jobs/job_types/roguetown/mercenaries/classes/warscholar.dm
-index db8d4eab49d4..c159e5422cc6 100644
 --- a/code/modules/jobs/job_types/roguetown/mercenaries/classes/warscholar.dm
 +++ b/code/modules/jobs/job_types/roguetown/mercenaries/classes/warscholar.dm
 @@ -1,6 +1,6 @@
@@ -168,5 +155,3 @@ index db8d4eab49d4..c159e5422cc6 100644
  		detailcolor = naledicolors[detailcolor]
  		H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/lesser_heal)
  		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/arcynebolt) // because other clerics get holy bolt and so you're not entirely pressured to take combat spells
--- 
-Translation Patch Toolkit

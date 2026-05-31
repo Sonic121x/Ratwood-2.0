@@ -1,17 +1,4 @@
-From 266b73870e974c56e4a1bb9babae9e7d899d63e8 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/knight/knight_foot.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/knight/knight_foot.dm | 60 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 30 insertions(+), 30 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/knight/knight_foot.dm b/code/modules/jobs/job_types/roguetown/garrison/knight/knight_foot.dm
-index 53bf5a2ee5da..1a53699937c4 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/knight/knight_foot.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/knight/knight_foot.dm
 @@ -1,7 +1,7 @@
@@ -107,5 +94,3 @@ index 53bf5a2ee5da..1a53699937c4 100644
  		armor = armors[armorchoice]
  
  	backpack_contents = list(
--- 
-Translation Patch Toolkit

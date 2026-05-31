@@ -1,17 +1,4 @@
-From 9a5c2ed308c57b419d632abe5982a01ce399bc67 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/arbiter.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/arbiter.dm | 72 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 36 insertions(+), 36 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/arbiter.dm b/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/arbiter.dm
-index a4eec95f724b..4a3586a884b7 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/arbiter.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/arbiter.dm
 @@ -3,10 +3,10 @@
@@ -188,5 +175,3 @@ index a4eec95f724b..4a3586a884b7 100644
  	icon_state = "overseerpants"
  	item_state = "overseerpants"
  	icon = 'icons/roguetown/clothing/special/overseer/overseer.dmi'
--- 
-Translation Patch Toolkit

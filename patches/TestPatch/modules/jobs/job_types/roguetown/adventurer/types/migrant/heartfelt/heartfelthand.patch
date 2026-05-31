@@ -1,17 +1,4 @@
-From 7f04f0a9dd843849f93d92c9a817e03598b47895 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfelthand.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfelthand.dm | 37 +++++++++++++++++++------------------
- 1 file changed, 19 insertions(+), 18 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfelthand.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfelthand.dm
-index a973386c516d..13cf302c2c55 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfelthand.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfelthand.dm
 @@ -1,7 +1,8 @@
@@ -89,5 +76,3 @@ index a973386c516d..13cf302c2c55 100644
  	outfit = /datum/outfit/job/roguetown/heartfelt/hand/advisor
  	category_tags = list(CTAG_HFT_HAND)
  	subclass_social_rank = SOCIAL_RANK_NOBLE
--- 
-Translation Patch Toolkit

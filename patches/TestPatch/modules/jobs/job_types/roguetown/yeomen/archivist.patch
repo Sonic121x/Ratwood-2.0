@@ -1,17 +1,4 @@
-From 7d63133b16d0b8d5900130c251b9fff6e266fbd5 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/yeomen/archivist.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/yeomen/archivist.dm | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/yeomen/archivist.dm b/code/modules/jobs/job_types/roguetown/yeomen/archivist.dm
-index 43f46f95b036..b396666f363f 100644
 --- a/code/modules/jobs/job_types/roguetown/yeomen/archivist.dm
 +++ b/code/modules/jobs/job_types/roguetown/yeomen/archivist.dm
 @@ -1,6 +1,7 @@
@@ -36,5 +23,3 @@ index 43f46f95b036..b396666f363f 100644
  	outfit = /datum/outfit/job/roguetown/archivist/basic
  	subclass_languages = list(
  		/datum/language/elvish,
--- 
-Translation Patch Toolkit

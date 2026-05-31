@@ -1,17 +1,4 @@
-From 83dfa2daeeb41860699ba3708ce1e8b44224b25e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/church/martyr/martyr.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/church/martyr/martyr.dm | 33 +++++++++++++++++----------------
- 1 file changed, 17 insertions(+), 16 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/church/martyr/martyr.dm b/code/modules/jobs/job_types/roguetown/church/martyr/martyr.dm
-index 92ebd2202269..96da33b2bdb3 100644
 --- a/code/modules/jobs/job_types/roguetown/church/martyr/martyr.dm
 +++ b/code/modules/jobs/job_types/roguetown/church/martyr/martyr.dm
 @@ -5,12 +5,13 @@
@@ -82,5 +69,3 @@ index 92ebd2202269..96da33b2bdb3 100644
  			ADD_TRAIT(H, TRAIT_ANTIMAGIC, TRAIT_GENERIC)//While you're immune to it...
  			ADD_TRAIT(H, TRAIT_SPELLCOCKBLOCK, TRAIT_GENERIC)//... you may NEVER cast magic.
  			ADD_TRAIT(H, TRAIT_COUNTERCOUNTERSPELL, TRAIT_GENERIC)//Because it's funny.
--- 
-Translation Patch Toolkit

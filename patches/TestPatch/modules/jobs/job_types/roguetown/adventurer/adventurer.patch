@@ -1,17 +1,4 @@
-From 9452148934c619dc7714a7e6428b34ae66349dba Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/adventurer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/adventurer.dm | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/adventurer.dm b/code/modules/jobs/job_types/roguetown/adventurer/adventurer.dm
-index a67ba8095c83..bd1809b7e034 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/adventurer.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/adventurer.dm
 @@ -5,13 +5,14 @@
@@ -54,5 +41,3 @@ index a67ba8095c83..bd1809b7e034 100644
  	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
 -	to_chat(src, span_danger("My joy is gone! Danger surrounds me."))
 +	to_chat(src, span_danger("我的安逸结束了！危险已将我包围。"))
--- 
-Translation Patch Toolkit

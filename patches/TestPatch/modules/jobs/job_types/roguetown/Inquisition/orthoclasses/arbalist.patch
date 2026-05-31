@@ -1,17 +1,4 @@
-From 5cfe475843f5c0b9f210533d9da1fe91c3126893 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/arbalist.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/arbalist.dm | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/arbalist.dm b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/arbalist.dm
-index 7c41c60ecb5f..94facf1ecc3c 100644
 --- a/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/arbalist.dm
 +++ b/code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/arbalist.dm
 @@ -4,9 +4,9 @@
@@ -58,7 +45,6 @@ index 7c41c60ecb5f..94facf1ecc3c 100644
 +			to_chat(loc, span_warning("满了！"))
  		return
  	..()
- 
 @@ -114,7 +114,7 @@
  /obj/item/storage/belt/rogue/leather/stakebelt/examine(mob/user)
  	. = ..()
@@ -68,5 +54,3 @@ index 7c41c60ecb5f..94facf1ecc3c 100644
  
  /obj/item/storage/belt/rogue/leather/stakebelt/Initialize(mapload)
  	. = ..()
--- 
-Translation Patch Toolkit

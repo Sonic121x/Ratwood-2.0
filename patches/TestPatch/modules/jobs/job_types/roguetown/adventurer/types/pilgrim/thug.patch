@@ -1,17 +1,4 @@
-From 1f0b493683026775ad4ce772542a0ce7b6ba9c3d Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/thug.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/thug.dm | 81 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 40 insertions(+), 41 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/thug.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/thug.dm
-index d21324b66390..210ddd474e99 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/thug.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/thug.dm
 @@ -1,6 +1,6 @@
@@ -175,5 +162,3 @@ index d21324b66390..210ddd474e99 100644
 -		if("Neverminde")
 +		if("算了")
  			return null
--- 
-Translation Patch Toolkit

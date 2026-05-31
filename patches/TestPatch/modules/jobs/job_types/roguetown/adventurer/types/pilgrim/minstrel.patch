@@ -1,17 +1,4 @@
-From a98d4de94e5d201d08812d4e7c81ff4fcc968e35 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm | 36 ++++++++++++++++++------------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm
-index 7989bcd26267..50d74f90910f 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm
 @@ -1,6 +1,6 @@
@@ -77,5 +64,3 @@ index 7989bcd26267..50d74f90910f 100644
  				backr = /obj/item/rogue/instrument/vocals
  	if(H.age == AGE_OLD)
  		H.adjust_skillrank_up_to(/datum/skill/misc/music, 6, TRUE)
--- 
-Translation Patch Toolkit

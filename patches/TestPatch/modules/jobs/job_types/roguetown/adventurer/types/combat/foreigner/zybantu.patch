@@ -1,17 +1,4 @@
-From 37e79b0877c947255bfaed96ea552f25d79d6067 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/zybantu.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/zybantu.dm | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/zybantu.dm b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/zybantu.dm
-index adf4c6d93416..150b8c0d36e5 100644
 --- a/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/zybantu.dm
 +++ b/code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/zybantu.dm
 @@ -1,10 +1,10 @@
@@ -81,5 +68,3 @@ index adf4c6d93416..150b8c0d36e5 100644
  	color = CLOTHING_DARKDRAB
  
  /obj/item/clothing/head/roguetown/roguehood/shalal/nomad
--- 
-Translation Patch Toolkit

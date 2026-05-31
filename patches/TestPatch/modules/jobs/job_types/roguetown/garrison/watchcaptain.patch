@@ -1,17 +1,4 @@
-From b2ab06989d1842d4893a81e1ed48a57109abb991 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/watchcaptain.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/watchcaptain.dm | 29 +++++++++++++++--------------
- 1 file changed, 15 insertions(+), 14 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/watchcaptain.dm b/code/modules/jobs/job_types/roguetown/garrison/watchcaptain.dm
-index 5affa6b86775..1c05e6a208b7 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/watchcaptain.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/watchcaptain.dm
 @@ -1,5 +1,6 @@
@@ -84,5 +71,3 @@ index 5affa6b86775..1c05e6a208b7 100644
 +	recruitment_message = "为城市而战，%RECRUIT！"
 +	accept_message = "为了城市！"
 +	refuse_message = "我拒绝。"
--- 
-Translation Patch Toolkit

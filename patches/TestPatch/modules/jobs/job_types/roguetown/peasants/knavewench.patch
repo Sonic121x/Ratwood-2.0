@@ -1,25 +1,11 @@
-From d5f9c895a064519dbbe29d06090db15cf7a9f2a1 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/peasants/knavewench.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/peasants/knavewench.dm | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/peasants/knavewench.dm b/code/modules/jobs/job_types/roguetown/peasants/knavewench.dm
-index 70f12e04e45b..ad92fa1a2878 100644
 --- a/code/modules/jobs/job_types/roguetown/peasants/knavewench.dm
 +++ b/code/modules/jobs/job_types/roguetown/peasants/knavewench.dm
 @@ -1,6 +1,7 @@
  /datum/job/roguetown/knavewench // The most aggressively rude name yet.
  	title = "Tapster"
--	f_title = "Tapster"
 +	display_title = "酒馆侍者"
-+	f_title = "酒馆侍女"
+ 	f_title = "Tapster"
  	flag = KNAVEWENCH
  	department_flag = PEASANTS
  	faction = "Station"
@@ -43,5 +29,3 @@ index 70f12e04e45b..ad92fa1a2878 100644
  	outfit = /datum/outfit/job/roguetown/knavewench/basic
  	category_tags = list(CTAG_TAPSTER)
  	// 5 points weighted
--- 
-Translation Patch Toolkit

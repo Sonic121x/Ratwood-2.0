@@ -1,17 +1,4 @@
-From 497c5422c0027f2aa58643d3a6b1090390fdcb69 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm | 61 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 31 insertions(+), 30 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm b/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
-index 6e331e3bcf54..34c673123341 100644
 --- a/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
 +++ b/code/modules/jobs/job_types/roguetown/other/lich_skeleton.dm
 @@ -5,8 +5,9 @@
@@ -24,7 +11,6 @@ index 6e331e3bcf54..34c673123341 100644
 +	tutorial = "你早已死去。你的意志属于主人。去完成命令，去屠戮。"
  
  	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich
- 
 @@ -23,8 +24,8 @@
  
  // Melee goon w/ javelins. All-rounder.
@@ -102,7 +88,6 @@ index 6e331e3bcf54..34c673123341 100644
 +		if("投石索")
  			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
  			beltl = /obj/item/quiver/sling/paalloy
- 
 @@ -153,8 +154,8 @@
  
  // Heavy/Tanky goon. Not heavy armor but due to the steel + weapons they'll fare just fine.
@@ -145,7 +130,6 @@ index 6e331e3bcf54..34c673123341 100644
 +		if("战锤与盾")
  			r_hand = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
  			l_hand = /obj/item/rogueweapon/shield/wood
- 
 @@ -219,8 +220,8 @@
  
  // non-Combat crafter goon. Worse weapons + armor but does base-building. Fortnite.
@@ -157,5 +141,3 @@ index 6e331e3bcf54..34c673123341 100644
  	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/sapper
  
  	category_tags = list(CTAG_LSKELETON)
--- 
-Translation Patch Toolkit

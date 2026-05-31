@@ -1,17 +1,4 @@
-From 4f808c692633c2e73271952dc52f8b5d1928ac23 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/trader/brewer.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/trader/brewer.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/trader/brewer.dm b/code/modules/jobs/job_types/roguetown/trader/brewer.dm
-index 0c7660cd9fb6..06eda4ece0fe 100644
 --- a/code/modules/jobs/job_types/roguetown/trader/brewer.dm
 +++ b/code/modules/jobs/job_types/roguetown/trader/brewer.dm
 @@ -1,6 +1,6 @@
@@ -32,5 +19,3 @@ index 0c7660cd9fb6..06eda4ece0fe 100644
  	mask = /obj/item/clothing/mask/rogue/ragmask/black
  	shoes = /obj/item/clothing/shoes/roguetown/boots
  	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
--- 
-Translation Patch Toolkit

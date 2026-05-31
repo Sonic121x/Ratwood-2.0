@@ -1,17 +1,4 @@
-From a4f02f39ed67e213378b457990b556c6ba692327 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/jobs/job_types/roguetown/garrison/vanguard.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/jobs/job_types/roguetown/garrison/vanguard.dm | 21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
-
 diff --git a/code/modules/jobs/job_types/roguetown/garrison/vanguard.dm b/code/modules/jobs/job_types/roguetown/garrison/vanguard.dm
-index ece60cd10472..c56e3ec09526 100644
 --- a/code/modules/jobs/job_types/roguetown/garrison/vanguard.dm
 +++ b/code/modules/jobs/job_types/roguetown/garrison/vanguard.dm
 @@ -1,5 +1,6 @@
@@ -35,7 +22,6 @@ index ece60cd10472..c56e3ec09526 100644
 +	按他们的意志行事，充当文明边境之外第一道防线，守住先锋堡垒，再努力多活一天。说不定哪天你也能跻身守林人之列。"
  	display_order = JDO_TOWNGUARD
  	whitelist_req = TRUE
- 
 @@ -46,9 +47,9 @@
  	job_bitflag = BITFLAG_GARRISON
  
@@ -62,5 +48,3 @@ index ece60cd10472..c56e3ec09526 100644
  	outfit = /datum/outfit/job/roguetown/vanguard/footman
  	category_tags = list(CTAG_VANGUARD)
  	traits_applied = list(TRAIT_MEDIUMARMOR)
--- 
-Translation Patch Toolkit
