@@ -1,7 +1,8 @@
-From 7904ae5a41241db6859cb52d25b2a6fa0dc5b27e Mon Sep 17 00:00:00 2001
+From 8124aac5e278f7fda6ecb4c9e2ef443aa35c0e25 Mon Sep 17 00:00:00 2001
 From: WitherVictor <number42@yeah.net>
-Date: Mon, 25 May 2026 00:25:10 +0800
-Subject: [PATCH] =?UTF-8?q?=E7=BF=BB=E8=AF=91=E7=82=89=E7=81=B6?=
+Date: Sun, 31 May 2026 16:19:54 +0800
+Subject: [PATCH] =?UTF-8?q?=E4=BF=AE=E5=A4=8D=E6=96=87=E6=9C=AC=E9=87=8D?=
+ =?UTF-8?q?=E5=8F=A0=E9=97=AE=E9=A2=98?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -11,7 +12,7 @@ Content-Transfer-Encoding: 8bit
  1 file changed, 22 insertions(+), 22 deletions(-)
 
 diff --git a/code/game/objects/lighting/rogue_fires.dm b/code/game/objects/lighting/rogue_fires.dm
-index 00fa7c456c..126f277d78 100644
+index 00fa7c456c..fe44d34ddc 100644
 --- a/code/game/objects/lighting/rogue_fires.dm
 +++ b/code/game/objects/lighting/rogue_fires.dm
 @@ -480,8 +480,8 @@
@@ -38,7 +39,7 @@ index 00fa7c456c..126f277d78 100644
  			var/isboiling = attachment.reagents.chem_temp > MIN_STEW_TEMPERATURE
  			if(isboiling)
 -				. += "There's \a [attachment.name] on it, it is boiling." // This is common shorthand for the contents don't nitpick
-+				. += . += "上面有一个[attachment.name]，正在沸腾。" // This is common shorthand for the contents don't nitpick
++				. += "上面有一个[attachment.name]，正在沸腾。" // This is common shorthand for the contents don't nitpick
  			else
 -				. += "There's \a [attachment.name] on it. It is not boiling"
 -		. += span_notice("Right click to start fanning the flame and make it cook faster.")
