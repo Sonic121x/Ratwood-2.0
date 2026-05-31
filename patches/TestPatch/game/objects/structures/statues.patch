@@ -1,0 +1,10 @@
+diff --git a/code/game/objects/structures/statues.dm b/code/game/objects/structures/statues.dm
+--- a/code/game/objects/structures/statues.dm
++++ b/code/game/objects/structures/statues.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/statue
+-	name = "statue"
++	name = "雕像"
+ 	desc = ""
+ 	icon_state = ""
+ 	density = TRUE

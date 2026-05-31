@@ -1,0 +1,21 @@
+diff --git a/code/game/objects/structures/guillotine.dm b/code/game/objects/structures/guillotine.dm
+--- a/code/game/objects/structures/guillotine.dm
++++ b/code/game/objects/structures/guillotine.dm
+@@ -14,7 +14,7 @@
+ #define GUILLOTINE_ACTION_WRENCH     6
+ 
+ /obj/structure/guillotine
+-	name = "guillotine"
++	name = "断头台"
+ 	desc = ""
+ 	icon = 'icons/obj/guillotine.dmi'
+ 	icon_state = "guillotine_raised"
+@@ -224,7 +224,7 @@
+ 					blade_status = GUILLOTINE_BLADE_RAISED
+ 					return
+ 			else
+-				to_chat(user, span_warning("The blade is sharp enough!"))
++				to_chat(user, span_warning("刀刃已经够锋利了！"))
+ 				return
+ 		else
+ 			to_chat(user, span_warning("I need to raise the blade in order to sharpen it!"))

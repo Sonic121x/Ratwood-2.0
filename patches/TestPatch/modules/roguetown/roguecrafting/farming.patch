@@ -1,0 +1,12 @@
+diff --git a/code/modules/roguetown/roguecrafting/farming.dm b/code/modules/roguetown/roguecrafting/farming.dm
+--- a/code/modules/roguetown/roguecrafting/farming.dm
++++ b/code/modules/roguetown/roguecrafting/farming.dm
+@@ -5,7 +5,7 @@
+ 	subtype_reqs = TRUE
+ 
+ /datum/crafting_recipe/roguetown/farming/fertilizer
+-	name = "fertilizer"
++	name = "肥料"
+ 	result = /obj/item/fertilizer
+ 	reqs = list(/obj/item/compost = 1, /obj/item/natural/bone = 1, /obj/item/natural/poo = 1)
+ 	craftdiff = 3

@@ -1,0 +1,21 @@
+diff --git a/code/game/objects/structures/barricades.dm b/code/game/objects/structures/barricades.dm
+--- a/code/game/objects/structures/barricades.dm
++++ b/code/game/objects/structures/barricades.dm
+@@ -57,7 +57,7 @@
+ /////BARRICADE TYPES///////
+ 
+ /obj/structure/barricade
+-	name = "wooden barricade"
++	name = "木制路障"
+ 	desc = ""
+ 	icon = 'icons/obj/structures.dmi'
+ 	icon_state = "woodenbarricade"
+@@ -74,7 +74,7 @@
+ 	drop_amount = 0
+ 
+ /obj/structure/barricade/rogue/crude
+-	name = "crude plank barricade"
++	name = "粗陋木板路障"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "woodenbarricade_r2"
+ 	max_integrity = 40

@@ -1,0 +1,13 @@
+diff --git a/code/game/objects/structures/crates_lockers/crates_preloaded.dm b/code/game/objects/structures/crates_lockers/crates_preloaded.dm
+--- a/code/game/objects/structures/crates_lockers/crates_preloaded.dm
++++ b/code/game/objects/structures/crates_lockers/crates_preloaded.dm
+@@ -1,7 +1,7 @@
+ // Help apothecary kickstart, one of each seed. Don't want to make it too easy.
+ /obj/structure/closet/crate/chest/old_crate/apothseed
+-	name = "apothecary's herb seed crate"
+-	desc = "A wooden crate used to store basic herbs."
++	name = "药剂师草药种子箱"
++	desc = "用于存放基础草药的木箱。"
+ 
+ /obj/structure/closet/crate/chest/old_crate/apothseed/Initialize(mapload)
+ 	. = ..()

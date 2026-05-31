@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/roguetown/treesapling.dm b/code/game/objects/structures/roguetown/treesapling.dm
+--- a/code/game/objects/structures/roguetown/treesapling.dm
++++ b/code/game/objects/structures/roguetown/treesapling.dm
+@@ -17,8 +17,8 @@
+ #define TREESAP_DEATH_TICKS  60   // negative-progress seconds before dying
+ 
+ /obj/structure/tree_sapling
+-	name = "tree sapling"
+-	desc = "A tender sapling bedded in mounded soil. It needs regular watering to take root."
++	name = "树苗"
++	desc = "一株栽在土堆里的柔嫩树苗。它需要定期浇水才能扎根。"
+ 	anchored = TRUE
+ 	density = FALSE
+ 	opacity = FALSE

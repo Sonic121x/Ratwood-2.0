@@ -1,0 +1,158 @@
+diff --git a/code/modules/farming/crafting_recipes.dm b/code/modules/farming/crafting_recipes.dm
+--- a/code/modules/farming/crafting_recipes.dm
++++ b/code/modules/farming/crafting_recipes.dm
+@@ -1,121 +1,121 @@
+ /datum/crafting_recipe/roguetown/structure/composter
+-	name = "composter"
++	name = "堆肥箱"
+ 	result = /obj/structure/composter
+ 	reqs = list(/obj/item/grown/log/tree/small = 1)
+-	verbage_simple = "build"
+-	verbage = "builds"
++	verbage_simple = "搭建"
++	verbage = "搭建"
+ 	craftdiff = 0
+ 	time = 2 SECONDS
+ 
+ /datum/crafting_recipe/roguetown/structure/plough
+-	name = "plough"
++	name = "犁"
+ 	result = /obj/structure/plough
+ 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/ingot/iron = 1)
+-	verbage_simple = "construct"
+-	verbage = "constructs"
++	verbage_simple = "制作"
++	verbage = "制作"
+ 	skillcraft = /datum/skill/craft/carpentry
+ 	time = 4 SECONDS
+ 
+ /datum/crafting_recipe/roguetown/survival/dryleaf
+-	name = "dry swampweed"
++	name = "干燥沼烟草"
+ 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry
+ 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/swampweed = 1)
+ 	structurecraft = /obj/machinery/tanningrack
+ 	time = 2 SECONDS
+-	verbage_simple = "dry"
+-	verbage = "dries"
++	verbage_simple = "晾干"
++	verbage = "晾干"
+ 	craftsound = null
+ 	skillcraft = null
+ 
+ /datum/crafting_recipe/roguetown/survival/drytea
+-	name = "dry tea leaves"
++	name = "干茶叶"
+ 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_dry
+ 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/tea = 1)
+ 	structurecraft = /obj/machinery/tanningrack
+ 	time = 2 SECONDS
+-	verbage_simple = "dry"
+-	verbage = "dries"
++	verbage_simple = "晾干"
++	verbage = "晾干"
+ 	craftsound = null
+ 	skillcraft = null
+ 
+ /datum/crafting_recipe/roguetown/survival/dryweed
+-	name = "dry westleach leaf"
++	name = "干燥威斯利奇叶"
+ 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
+ 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1)
+ 	structurecraft = /obj/machinery/tanningrack
+ 	time = 2 SECONDS
+-	verbage_simple = "dry"
+-	verbage = "dries"
++	verbage_simple = "晾干"
++	verbage = "晾干"
+ 	craftsound = null
+ 	skillcraft = null
+ 
+ /datum/crafting_recipe/roguetown/survival/dryrosa
+-	name = "dry rosa petals"
++	name = "干燥罗莎花瓣"
+ 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_dried
+ 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals = 1)
+ 	structurecraft = /obj/machinery/tanningrack
+ 	time = 2 SECONDS
+-	verbage_simple = "dry"
+-	verbage = "dries"
++	verbage_simple = "晾干"
++	verbage = "晾干"
+ 	craftsound = null
+ 	skillcraft = null
+ 
+ /datum/crafting_recipe/roguetown/survival/sigsweet
+-	name = "swampweed zig"
++	name = "沼烟草卷烟"
+ 	result = /obj/item/clothing/mask/cigarette/rollie/cannabis
+ 	reqs = list(
+ 		/obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry = 1,
+ 		/obj/item/paper = 1,
+ 		)
+ 	time = 10 SECONDS
+-	verbage_simple = "roll"
+-	verbage = "rolls"
++	verbage_simple = "卷制"
++	verbage = "卷制"
+ 	craftdiff = 0
+ 
+ /datum/crafting_recipe/roguetown/survival/sigsweet/cheroot
+-	name = "swampweed cheroot"
++	name = "沼烟草小雪茄"
+ 	result = /obj/item/clothing/mask/cigarette/rollie/cannabis/cheroot
+ 	reqs = list(
+ 		/obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry = 1,
+ 		/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
+ 		)
+ 	time = 10 SECONDS
+-	verbage_simple = "roll"
+-	verbage = "rolls"
++	verbage_simple = "卷制"
++	verbage = "卷制"
+ 	craftdiff = 0
+ 
+ /datum/crafting_recipe/roguetown/survival/sigdry
+-	name = "westleach zig"
++	name = "威斯利奇卷烟"
+ 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine
+ 	reqs = list(
+ 		/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
+ 		/obj/item/paper = 1,
+ 		)
+ 	time = 10 SECONDS
+-	verbage_simple = "roll"
+-	verbage = "rolls"
++	verbage_simple = "卷制"
++	verbage = "卷制"
+ 	craftdiff = 0
+ 
+ /datum/crafting_recipe/roguetown/survival/sigdry/cheroot
+-	name = "westleach cheroot"
++	name = "威斯利奇小雪茄"
+ 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine/cheroot
+ 	reqs = list(
+ 		/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
+ 		/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1,
+ 		)
+ 	time = 10 SECONDS
+-	verbage_simple = "roll"
+-	verbage = "rolls"
++	verbage_simple = "卷制"
++	verbage = "卷制"
+ 	craftdiff = 0
+ 
+ /datum/crafting_recipe/roguetown/survival/rocknutdry
+-	name = "rocknut zig"
++	name = "岩坚果卷烟"
+ 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine
+ 	reqs = list(
+ 		/obj/item/reagent_containers/powder/rocknut = 1,
+ 		/obj/item/paper = 1,
+ 		)
+ 	time = 10 SECONDS
+-	verbage_simple = "roll"
+-	verbage = "rolls"
++	verbage_simple = "卷制"
++	verbage = "卷制"
+ 	craftdiff = 0

@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/maneater.dm b/code/game/objects/structures/maneater.dm
+--- a/code/game/objects/structures/maneater.dm
++++ b/code/game/objects/structures/maneater.dm
+@@ -140,8 +140,8 @@
+ 
+ /obj/structure/flora/roguegrass/maneater/real/update_icon()
+ 	if(obj_broken)
+-		name = "MANEATER"
+-		desc = "This cunning creature is thankfully defeated."
++		name = "食人草"
++		desc = "幸好，这只狡猾的生物已经被击败了。"
+ 		icon_state = "maneater-dead"
+ 		return
+ 	if(aggroed)

@@ -1,0 +1,33 @@
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/alch_grind_recipe_base.dm b/code/modules/roguetown/roguecrafting/alchemy/alch_grind_recipe_base.dm
+--- a/code/modules/roguetown/roguecrafting/alchemy/alch_grind_recipe_base.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/alch_grind_recipe_base.dm
+@@ -23,11 +23,11 @@
+ 		    <h1>[name]</h1>
+ 		"}
+ 	
+-	html += "Put [initial(valid_input.name)] in an Alchemical Mortar.<br>"
+-	html += "Grind with a pestle to create:<br>"
++	html += "将[initial(valid_input.name)]放入炼金研钵中。<br>"
++	html += "用杵研磨，可制成：<br>"
+ 
+ 	if(valid_outputs.len)
+-		html += "<div><strong>Guaranteed Outputs</strong><br>"
++		html += "<div><strong>固定产出</strong><br>"
+ 		for(var/path as anything in valid_outputs)
+ 			var/count = valid_outputs[path]
+ 			if(ispath(path, /obj))
+@@ -36,12 +36,12 @@
+ 		html += "</div>"
+ 
+ 	if(bonus_chance_outputs.len)
+-		html += "<div><strong>Bonus Outputs</strong><br>"
++		html += "<div><strong>额外产出</strong><br>"
+ 		for(var/path as anything in bonus_chance_outputs)
+ 			var/chance = bonus_chance_outputs[path]
+ 			if(ispath(path, /obj))
+ 				var/atom/atom = path
+-				html += "- [initial(atom.name)] (Chance: [chance]%)<br>"
++				html += "- [initial(atom.name)]（概率：[chance]%）<br>"
+ 		html += "</div>"
+ 
+ 	html += {"

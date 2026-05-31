@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/roguetown/mushroom_circle.dm b/code/game/objects/structures/roguetown/mushroom_circle.dm
+--- a/code/game/objects/structures/roguetown/mushroom_circle.dm
++++ b/code/game/objects/structures/roguetown/mushroom_circle.dm
+@@ -23,8 +23,8 @@
+ //==============================================================================
+ 
+ /obj/structure/mushroom_sprout
+-	name = "fey mushroom sprout"
+-	desc = "A colony of tiny pale shoots, faintly alive with fey energy. Water it and it should bloom."
++	name = "妖精蘑菇幼芽"
++	desc = "一簇细小苍白的幼芽，隐隐流动着妖精能量。给它浇水，它应该就会绽放。"
+ 	anchored = TRUE
+ 	density = FALSE
+ 	opacity = FALSE

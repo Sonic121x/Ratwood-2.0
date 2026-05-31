@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/beds_chairs/chair.dm b/code/game/objects/structures/beds_chairs/chair.dm
+--- a/code/game/objects/structures/beds_chairs/chair.dm
++++ b/code/game/objects/structures/beds_chairs/chair.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/chair
+-	name = "chair"
++	name = "椅子"
+ 	desc = ""
+ 	icon = 'icons/obj/chairs.dmi'
+ 	icon_state = "chair"
+@@ -133,7 +133,7 @@
+ 	item_chair = /obj/item/chair/wood/wings
+ 
+ /obj/structure/chair/comfy
+-	name = "comfy chair"
++	name = "舒适椅"
+ 	desc = ""
+ 	icon_state = "comfychair"
+ 	color = rgb(255,255,255)

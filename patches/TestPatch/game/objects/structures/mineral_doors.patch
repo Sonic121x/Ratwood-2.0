@@ -1,0 +1,21 @@
+diff --git a/code/game/objects/structures/mineral_doors.dm b/code/game/objects/structures/mineral_doors.dm
+--- a/code/game/objects/structures/mineral_doors.dm
++++ b/code/game/objects/structures/mineral_doors.dm
+@@ -2,7 +2,7 @@
+ //machineryness
+ 
+ /obj/structure/mineral_door
+-	name = "metal door"
++	name = "金属门"
+ 	density = TRUE
+ 	anchored = TRUE
+ 	opacity = TRUE
+@@ -272,7 +272,7 @@
+ 		if(isliving(user))
+ 			var/mob/living/L = user
+ 			if(L.m_intent == MOVE_INTENT_SNEAK)
+-				to_chat(user, span_warning("This door is locked."))
++				to_chat(user, span_warning("这扇门锁着。"))
+ 				return
+ 		if(world.time >= last_bump+20)
+ 			last_bump = world.time

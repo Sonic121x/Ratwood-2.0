@@ -1,0 +1,33 @@
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+--- a/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/ingredients.dm
+@@ -64,7 +64,7 @@
+ 				if(alch_skill >= SKILL_LEVEL_EXPERT || perint >= 16)
+ 					. += span_notice(" Smells weakly of [minor_smell].")
+ /obj/item/alch/viscera
+-	name = "viscera"
++	name = "内脏"
+ 	icon_state = "viscera"
+ 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
+ 	med_pot = /datum/alch_cauldron_recipe/health_potion
+@@ -195,7 +195,7 @@
+ 	minor_pot = /datum/alch_cauldron_recipe/fire_potion
+ 
+ /obj/item/alch/sinew
+-	name = "sinew"
++	name = "肌腱"
+ 	icon_state = "sinew"
+ 	dropshrink = 0.9
+ 	major_pot = /datum/alch_cauldron_recipe/aphrodisiac
+@@ -238,9 +238,9 @@
+ 	minor_pot = /datum/alch_cauldron_recipe/str_potion
+ 
+ /obj/item/alch/bone
+-	name = "tail bone"
++	name = "尾骨"
+ 	icon_state = "bone"
+-	desc = "The only bone in creachers with alchemical properties."
++	desc = "唯一具有炼金特性的生物骨头。"
+ 	force = 7
+ 	throwforce = 5
+ 	w_class = WEIGHT_CLASS_SMALL

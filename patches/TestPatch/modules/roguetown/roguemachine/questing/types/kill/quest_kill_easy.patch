@@ -1,0 +1,16 @@
+diff --git a/code/modules/roguetown/roguemachine/questing/types/kill/quest_kill_easy.dm b/code/modules/roguetown/roguemachine/questing/types/kill/quest_kill_easy.dm
+--- a/code/modules/roguetown/roguemachine/questing/types/kill/quest_kill_easy.dm
++++ b/code/modules/roguetown/roguemachine/questing/types/kill/quest_kill_easy.dm
+@@ -8,10 +8,10 @@
+ /datum/quest/kill/easy/get_title()
+ 	if(title)
+ 		return title
+-	return "Slay [pick("a dangerous", "a fearsome", "a troublesome", "an elusive")] [pick("beast", "monster", "brigand", "creature")]"
++	return "猎杀[pick("一头危险的", "一头可怖的", "一个棘手的", "一个难觅的")][pick("野兽", "怪物", "歹徒", "生物")]"
+ 
+ /datum/quest/kill/easy/get_objective_text()
+-	return "Slay [progress_required] [initial(target_mob_type.name)]."
++	return "猎杀 [progress_required] 个 [initial(target_mob_type.name)]。"
+ 
+ /datum/quest/kill/easy/generate(obj/effect/landmark/quest_spawner/landmark)
+ 	..()

@@ -1,19 +1,24 @@
-From 42b1811198b4dbedefca7c4eb3c9c2fbdcc3c02e Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/game/objects/structures/fluff.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/game/objects/structures/fluff.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/game/objects/structures/fluff.dm b/code/game/objects/structures/fluff.dm
-index 3a0b1400b11d..79d5da2ea019 100644
 --- a/code/game/objects/structures/fluff.dm
 +++ b/code/game/objects/structures/fluff.dm
+@@ -264,7 +264,7 @@
+ 	layer = ABOVE_MOB_LAYER
+ 
+ /obj/structure/fluff/railing/border
+-	name = "border"
++	name = "护栏"
+ 	desc = ""
+ 	icon_state = "border"
+ 	pass_crawl = FALSE
+@@ -331,7 +331,7 @@
+ 	color = "#cccac5"
+ 
+ /obj/structure/bars
+-	name = "bars"
++	name = "铁栏杆"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "bars"
 @@ -778,9 +778,9 @@
  /obj/structure/fluff/signage/examine(mob/user)
  	. = ..()
@@ -26,5 +31,30 @@ index 3a0b1400b11d..79d5da2ea019 100644
  
  /obj/structure/fluff/buysign
  	icon_state = "signwrote"
--- 
-Translation Patch Toolkit
+@@ -854,7 +854,7 @@
+ 	..()
+ 
+ /obj/structure/fluff/alch
+-	name = "alchemical lab"
++	name = "炼金台"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "alch"
+@@ -1201,7 +1201,7 @@
+ 	..()
+ 
+ /obj/structure/fluff/psycross
+-	name = "pantheon cross"
++	name = "万神殿十字架"
+ 	icon_state = "psycross"
+ 	icon = 'icons/roguetown/misc/tallstructure.dmi'
+ 	break_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+@@ -1212,7 +1212,7 @@
+ 	layer = BELOW_MOB_LAYER
+ 	max_integrity = 100
+ 	var/chance2hear = 30
+-	buckleverb = "crucifie"
++	buckleverb = "钉上十字架"
+ 	can_buckle = 1
+ 	buckle_lying = 0
+ 	breakoutextra = 10 MINUTES

@@ -1,0 +1,10 @@
+diff --git a/code/game/objects/structures/toilet.dm b/code/game/objects/structures/toilet.dm
+--- a/code/game/objects/structures/toilet.dm
++++ b/code/game/objects/structures/toilet.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/toilet
+-	name = "toilet"
++	name = "马桶"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "toilet"

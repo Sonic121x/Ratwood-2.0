@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/roguetown/handcart.dm b/code/game/objects/structures/roguetown/handcart.dm
+--- a/code/game/objects/structures/roguetown/handcart.dm
++++ b/code/game/objects/structures/roguetown/handcart.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/handcart
+-	name = "cart"
+-	desc = "A wooden cart that will help you carry many things."
++	name = "手推车"
++	desc = "一辆能帮你运送许多东西的木制手推车。"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "cart-empty"
+ 	density = TRUE

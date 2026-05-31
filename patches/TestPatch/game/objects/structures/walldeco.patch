@@ -1,17 +1,4 @@
-From 65b18d0523d0c3c475ddac23daa43a9444f0cad2 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/game/objects/structures/walldeco.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/game/objects/structures/walldeco.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/game/objects/structures/walldeco.dm b/code/game/objects/structures/walldeco.dm
-index c2c1def53765..21b0cabb0c5e 100644
 --- a/code/game/objects/structures/walldeco.dm
 +++ b/code/game/objects/structures/walldeco.dm
 @@ -214,8 +214,8 @@
@@ -25,5 +12,3 @@ index c2c1def53765..21b0cabb0c5e 100644
  	icon_state = "wallflag"
  
  /obj/structure/fluff/walldeco/customflag/Initialize(mapload)
--- 
-Translation Patch Toolkit

@@ -1,0 +1,78 @@
+diff --git a/code/modules/roguetown/roguemachine/heartbeast/heart_personalities.dm b/code/modules/roguetown/roguemachine/heartbeast/heart_personalities.dm
+--- a/code/modules/roguetown/roguemachine/heartbeast/heart_personalities.dm
++++ b/code/modules/roguetown/roguemachine/heartbeast/heart_personalities.dm
+@@ -1,6 +1,6 @@
+ /datum/flesh_archetype
+-	var/name = "base archetype"
+-	var/description = "A personality archetype"
++	var/name = "????"
++	var/description = "??????"
+ 	var/list/possible_traits = list()
+ 	var/list/possible_quirks = list()
+ 	var/list/discharge_colors = list()
+@@ -9,8 +9,8 @@
+ 	var/calibration_required = 5
+ 
+ /datum/flesh_archetype/fearful
+-	name = "Fearful"
+-	description = "Anxious and easily frightened"
++	name = "??"
++	description = "???????"
+ 	color = "#373777"
+ 	required_item = /obj/item/alch/valeriana
+ 	possible_traits = list(
+@@ -32,8 +32,8 @@
+ 	discharge_colors = list("#373777", "#435f92", "#3c523c")
+ 
+ /datum/flesh_archetype/authoritarian
+-	name = "Authoritarian"
+-	description = "Demands order and respect"
++	name = "??"
++	description = "???????"
+ 	color = "#880000"
+ 	required_item = /obj/item/alch/salvia
+ 	possible_traits = list(
+@@ -56,8 +56,8 @@
+ 	discharge_colors = list("#880000", "#373777", "#d7d8a6")
+ 
+ /datum/flesh_archetype/aggressive
+-	name = "Aggressive"
+-	description = "Prone to anger and violence"
++	name = "???"
++	description = "?????????"
+ 	color = "#dc143c"
+ 	required_item = /obj/item/alch/urtica
+ 	possible_traits = list(
+@@ -81,8 +81,8 @@
+ 	discharge_colors = list("#d7d8a6", "#6d4b25", "#880000")
+ 
+ /datum/flesh_archetype/arbitrary
+-	name = "Arbitrary"
+-	description = "Unpredictable and whimsical"
++	name = "????"
++	description = "??????????"
+ 	color = "#9370db"
+ 	required_item = /obj/item/alch/artemisia
+ 	possible_traits = list(
+@@ -114,8 +114,8 @@
+ 	discharge_colors = list("#43516b", "#6d4b25", "#d7d8a6")
+ 
+ /datum/flesh_archetype/inquisitive
+-	name = "Inquisitive"
+-	description = "Constantly seeking knowledge"
++	name = "??"
++	description = "??????"
+ 	color = "#1e90ff"
+ 	required_item = /obj/item/alch/mentha
+ 	possible_traits = list(
+@@ -142,8 +142,8 @@
+ 	discharge_colors = list("#3c523c", "#435f92", "#d7d8a6")
+ 
+ /datum/flesh_archetype/split_personality
+-	name = "Split personality"
+-	description = "A constantly shifting and contradictory inner self"
++	name = "????"
++	description = "????????????????"
+ 	color = "#00ff7f"
+ 	required_item = /obj/item/alch/rosa
+ 	possible_traits = list(

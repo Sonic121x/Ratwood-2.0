@@ -1,0 +1,10 @@
+diff --git a/code/modules/farming/trash.dm b/code/modules/farming/trash.dm
+--- a/code/modules/farming/trash.dm
++++ b/code/modules/farming/trash.dm
+@@ -1,5 +1,5 @@
+ /obj/item/trash/applecore
+-	name = "apple core"
++	name = "苹果核"
+ 	icon_state = "applecore"
+ 	icon = 'icons/roguetown/items/produce.dmi'
+ 

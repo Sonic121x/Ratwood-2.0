@@ -1,17 +1,4 @@
-From 2f1b5d05ac9646ad0bf2fb9577b8ef44d89f62ba Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/armor.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/armor.dm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/armor.dm b/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/armor.dm
-index 9441300dba7f..8214769c3c13 100644
 --- a/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/armor.dm
 +++ b/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/armor.dm
 @@ -644,7 +644,7 @@
@@ -22,7 +9,6 @@ index 9441300dba7f..8214769c3c13 100644
 +	name = "Necra 头盔（+1 钢锭）"
  	additional_items = list(/obj/item/ingot/steel)
  	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
- 
 @@ -694,7 +694,7 @@
  	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/malum
  
@@ -31,7 +17,6 @@ index 9441300dba7f..8214769c3c13 100644
 +	name = "Necra 圣殿头盔（+1 鞣制皮革）"
  	additional_items = list(/obj/item/natural/hide/cured)
  	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necran
- 
 @@ -719,7 +719,7 @@
  	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
  
@@ -40,6 +25,3 @@ index 9441300dba7f..8214769c3c13 100644
 +	name = "Necra 头盔（+1 鞣制皮革）"
  	additional_items = list(/obj/item/natural/hide/cured)
  	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
- 
--- 
-Translation Patch Toolkit

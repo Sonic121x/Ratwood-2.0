@@ -1,0 +1,35 @@
+diff --git a/code/modules/roguetown/roguemachine/questing/types/quest_courier.dm b/code/modules/roguetown/roguemachine/questing/types/quest_courier.dm
+--- a/code/modules/roguetown/roguemachine/questing/types/quest_courier.dm
++++ b/code/modules/roguetown/roguemachine/questing/types/quest_courier.dm
+@@ -12,16 +12,16 @@
+ /datum/quest/courier/get_title()
+ 	if(title)
+ 		return title
+-	return "Deliver [pick("an important", "a sealed", "a confidential", "a valuable")] [pick("package", "parcel", "letter", "delivery")]"
++	return "递送[pick("一份重要的", "一份密封的", "一份机密的", "一份贵重的")][pick("包裹", "邮包", "信件", "货件")]"
+ 
+ /datum/quest/courier/get_objective_text()
+-	return "Deliver [initial(target_delivery_item.name)] to [initial(target_delivery_location.name)]."
++	return "将 [initial(target_delivery_item.name)] 送到 [initial(target_delivery_location.name)]。"
+ 
+ /datum/quest/courier/get_location_text()
+ 	var/text = ""
+ 	if(target_spawn_area)
+-		text += "Pickup location: Reported sighting in [target_spawn_area] region.<br>"
+-	text += "Destination: [initial(target_delivery_location.name)]."
++		text += "取件地点：据报位于 [target_spawn_area] 区域。<br>"
++	text += "目的地：[initial(target_delivery_location.name)]。"
+ 	return text
+ 
+ /datum/quest/courier/get_additional_reward(target_turf)
+@@ -92,8 +92,8 @@
+ 	delivery_parcel.contained_item = contained_item
+ 	delivery_parcel.delivery_area_type = delivery_area
+ 	delivery_parcel.allowed_jobs = delivery_parcel.get_area_jobs(delivery_area)
+-	delivery_parcel.name = "Delivery for [initial(delivery_area.name)]"
+-	delivery_parcel.desc = "A securely wrapped parcel addressed to [initial(delivery_area.name)]. [pick("Handle with care.", "Do not bend.", "Confidential contents.", "Urgent delivery.")]"
++	delivery_parcel.name = "寄往 [initial(delivery_area.name)] 的投递件"
++	delivery_parcel.desc = "一个包裹严实、寄往 [initial(delivery_area.name)] 的邮包。[pick("轻拿轻放。", "请勿折叠。", "内含机密。", "紧急投递。")]"
+ 	delivery_parcel.icon_state = contained_item.w_class >= WEIGHT_CLASS_NORMAL ? "ration_large" : "ration_small"
+ 	delivery_parcel.dropshrink = 1
+ 	delivery_parcel.update_icon()

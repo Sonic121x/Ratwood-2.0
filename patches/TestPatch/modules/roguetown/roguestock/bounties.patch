@@ -1,0 +1,20 @@
+diff --git a/code/modules/roguetown/roguestock/bounties.dm b/code/modules/roguetown/roguestock/bounties.dm
+--- a/code/modules/roguetown/roguestock/bounties.dm
++++ b/code/modules/roguetown/roguestock/bounties.dm
+@@ -1,10 +1,10 @@
+ /datum/roguestock/bounty/treasure
+-	name = "Collectable Treasures"
+-	desc = "Treasures are minted for 80% of its value, which is deposited into the treasury. \
+-	Weapons, ores and clothings are excluded. \
+-	Any item worth more than 30 mammons is accepted, \
+-	and statues, cups, rings, platters, and candlesticks are always accepted \
+-	regardless of value."
++	name = "可征收宝物"
++	desc = "宝物会按其价值的 80% 铸币，并存入国库。 \
++	武器、矿石和衣物不予接受。 \
++	任何价值超过 30 玛门的物品都可接受， \
++	而雕像、杯子、戒指、托盘和烛台始终接受， \
++	无论其价值多少。"
+ 	item_type = /obj
+ 	payout_price = 70
+ 	mint_item = TRUE

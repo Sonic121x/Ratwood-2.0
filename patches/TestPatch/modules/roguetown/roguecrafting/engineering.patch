@@ -1,0 +1,363 @@
+diff --git a/code/modules/roguetown/roguecrafting/engineering.dm b/code/modules/roguetown/roguecrafting/engineering.dm
+--- a/code/modules/roguetown/roguecrafting/engineering.dm
++++ b/code/modules/roguetown/roguecrafting/engineering.dm
+@@ -2,7 +2,7 @@
+ 	abstract_type = /datum/crafting_recipe/roguetown/engineering
+ 
+ /datum/crafting_recipe/roguetown/engineering/coolingtable
+-	name = "cooling table"
++	name = "冷却台"
+ 	result = /obj/structure/table/cooling
+ 	reqs = list(/obj/item/grown/log/tree/small = 1,
+ 				/obj/item/ingot/iron = 1,
+@@ -13,7 +13,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/potionseller
+-	name = "potion seller peddler"
++	name = "药剂贩售摊"
+ 	result = /obj/structure/roguemachine/potionseller/crafted
+ 	reqs = list(/obj/item/grown/log/tree/small = 1,
+ 				/obj/item/ingot/iron = 1,
+@@ -25,7 +25,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/lever
+-	name = "lever"
++	name = "拉杆"
+ 	result = /obj/structure/lever
+ 	reqs = list(/obj/item/roguegear/bronze = 1)
+ 	verbage_simple = "engineer"
+@@ -33,7 +33,7 @@
+ 	skillcraft = /datum/skill/craft/engineering
+ 
+ /datum/crafting_recipe/roguetown/engineering/trapdoor
+-	name = "floorhatch"
++	name = "地板活板门"
+ 	result = /obj/structure/floordoor
+ 	reqs = list(/obj/item/grown/log/tree/small = 1,
+ 					/obj/item/roguegear/bronze = 1)
+@@ -43,7 +43,7 @@
+ 	craftdiff = 2
+ 
+ /datum/crafting_recipe/roguetown/engineering/bars
+-	name = "metal bars"
++	name = "金属栅栏"
+ 	result = /obj/structure/bars
+ 	reqs = list(/obj/item/ingot/iron = 1)
+ 	verbage_simple = "engineer"
+@@ -52,7 +52,7 @@
+ 	skillcraft = /datum/skill/craft/engineering
+ 
+ /datum/crafting_recipe/roguetown/engineering/shopbars
+-	name = "shop bars"
++	name = "店铺栅栏"
+ 	result = /obj/structure/bars/shop
+ 	reqs = list(/obj/item/ingot/iron = 1)
+ 	verbage_simple = "engineer"
+@@ -61,7 +61,7 @@
+ 	skillcraft = /datum/skill/craft/engineering
+ 
+ /datum/crafting_recipe/roguetown/engineering/distiller
+-	name = "copper distiller"
++	name = "铜制蒸馏器"
+ 	result = /obj/structure/fermentation_keg/distiller
+ 	reqs = list(/obj/item/rogueore/copper = 2, /obj/item/reagent_containers/glass/bucket/pot/stone = 1) // changed to be craftable by cooks and provisoners. this is rarely ever used.
+ 	verbage_simple = "engineer"
+@@ -79,7 +79,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/passage
+-	name = "passage"
++	name = "通道"
+ 	result = /obj/structure/bars/passage
+ 	reqs = list(/obj/item/ingot/iron = 1,
+ 					/obj/item/roguegear/bronze = 1)
+@@ -98,7 +98,7 @@
+ 	return ..()
+ 
+ /datum/crafting_recipe/roguetown/engineering/shutters
+-	name = "shutters"
++	name = "百叶窗"
+ 	result = /obj/structure/bars/passage/shutter
+ 	reqs = list(/obj/item/ingot/iron = 1,
+ 					/obj/item/roguegear/bronze = 1)
+@@ -119,7 +119,7 @@
+ //crossbows, crossbow bolts, and specialized arrows and bolts
+ //adding in crossbows and bolts at a reduced cost and seeing if this upsets any balance. If it works I may add in other bows and arrows using planks
+ /datum/crafting_recipe/roguetown/engineering/crossbow
+-	name = "Crossbow"
++	name = "十字弩"
+ 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+ 	reqs = list(/obj/item/ingot/steel = 1, /obj/item/natural/fibers = 1, /obj/item/natural/wood/plank = 2)
+ 	structurecraft = /obj/machinery/artificer_table
+@@ -127,7 +127,7 @@
+ 	craftdiff = 3
+ 
+ /datum/crafting_recipe/roguetown/engineering/slurbow
+-	name = "Slurbow"
++	name = "泥浆弓"
+ 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
+ 	reqs = list(/obj/item/ingot/steel = 2, /obj/item/natural/fibers = 1, /obj/item/natural/wood/plank = 4)
+ 	structurecraft = /obj/machinery/artificer_table
+@@ -135,7 +135,7 @@
+ 	craftdiff = 5
+ 
+ /datum/crafting_recipe/roguetown/engineering/twentybolts
+-	name = "Crossbow Bolts 20x"
++	name = "十字弩箭 20 支"
+ 	reqs = list(/obj/item/natural/wood/plank = 3, /obj/item/ingot/iron)
+ 	result = list(/obj/item/ammo_casing/caseless/rogue/bolt,
+ 						/obj/item/ammo_casing/caseless/rogue/bolt,
+@@ -164,7 +164,7 @@
+ 	
+ //pyro arrow crafting, from stonekeep
+ /datum/crafting_recipe/roguetown/engineering/pyrobolt
+-	name = "pyroclastic bolt"
++	name = "火山碎屑弩箭"
+ 	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
+ 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+ 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
+@@ -173,7 +173,7 @@
+ 	skillcraft = /datum/skill/craft/engineering
+ 
+ /datum/crafting_recipe/roguetown/engineering/pyrobolt_five
+-	name = "pyroclastic bolt"
++	name = "火山碎屑弩箭"
+ 	result = list(
+ 				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+ 				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+@@ -188,7 +188,7 @@
+ 	skillcraft = /datum/skill/craft/engineering
+ 
+ /datum/crafting_recipe/roguetown/engineering/pyroarrow
+-	name = "pyroclastic arrow"
++	name = "火山碎屑箭"
+ 	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
+ 	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
+ 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
+@@ -197,7 +197,7 @@
+ 	skillcraft = /datum/skill/craft/engineering
+ 
+ /datum/crafting_recipe/roguetown/engineering/pyroarrow_five
+-	name = "pyroclastic arrow"
++	name = "火山碎屑箭"
+ 	result = list(
+ 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+ 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+@@ -212,7 +212,7 @@
+ 	skillcraft = /datum/skill/craft/engineering
+ 
+ /datum/crafting_recipe/roguetown/structure/pressure_plate
+-	name = "pressure plate"
++	name = "压力板"
+ 	result = /obj/structure/pressure_plate
+ 	reqs = list(/obj/item/roguegear/bronze = 1, /obj/item/natural/wood/plank = 2)
+ 	verbage_simple = "engineer"
+@@ -221,7 +221,7 @@
+ 	craftdiff = 2
+ 
+ /datum/crafting_recipe/roguetown/structure/activator
+-	name = "engineer's launcher"
++	name = "工程师发射器"
+ 	result = /obj/structure/englauncher
+ 	reqs = list(/obj/item/roguegear/bronze = 1, /obj/item/natural/wood/plank = 4, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow = 1)
+ 	verbage_simple = "engineer"
+@@ -231,7 +231,7 @@
+ 
+ //rotational and minecart parts
+ /datum/crafting_recipe/roguetown/engineering/shaft
+-	name = "wooden shaft(4x)"
++	name = "木杆（x4）"
+ 	category = "Rotational"
+ 	result = list(/obj/item/rotation_contraption/shaft,
+ 				  /obj/item/rotation_contraption/shaft,
+@@ -245,7 +245,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/stickshaft
+-	name = "wooden shaft"
++	name = "木杆"
+ 	category = "Rotational"
+ 	result = list(/obj/item/rotation_contraption/shaft)
+ 	reqs = list(/obj/item/grown/log/tree/stick = 2)
+@@ -256,7 +256,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/cog
+-	name = "wooden cogwheel(2x)"
++	name = "木齿轮（x2）"
+ 	category = "Rotational"
+ 	result = list(/obj/item/rotation_contraption/cog,
+ 				  /obj/item/rotation_contraption/cog)
+@@ -269,7 +269,7 @@
+ 
+ 
+ /datum/crafting_recipe/roguetown/engineering/waterwheel
+-	name = "wooden waterwheel"
++	name = "木水轮"
+ 	category = "Rotational"
+ 	result = /obj/item/rotation_contraption/waterwheel
+ 	reqs = list(/obj/item/natural/wood/plank = 3, /obj/item/grown/log/tree/stick = 2)
+@@ -280,7 +280,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/large_cog
+-	name = "large wooden cogwheel"
++	name = "大型木齿轮"
+ 	category = "Rotational"
+ 	result = /obj/item/rotation_contraption/large_cog
+ 	reqs = list(/obj/item/grown/log/tree/small = 1, /obj/item/ingot/bronze = 1, /obj/item/grown/log/tree/stick = 1)
+@@ -291,7 +291,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/gearbox
+-	name = "gearbox"
++	name = "齿轮箱"
+ 	category = "Rotational"
+ 	result = /obj/item/rotation_contraption/horizontal
+ 	reqs = list(/obj/item/roguegear/bronze = 2, /obj/item/natural/stoneblock = 2,/obj/item/grown/log/tree/stick = 2)
+@@ -301,7 +301,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/vertical_gearbox
+-	name = "vertical gearbox"
++	name = "垂直齿轮箱"
+ 	category = "Rotational"
+ 	result = /obj/item/rotation_contraption/vertical
+ 	reqs = list(/obj/item/roguegear/bronze = 2, /obj/item/natural/stoneblock = 2, /obj/item/grown/log/tree/stick = 2)
+@@ -311,7 +311,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/rails
+-	name = "minecart rails (10x)"
++	name = "矿车轨道（x10）"
+ 	category = "Minecarts"
+ 	result = list(/obj/item/rotation_contraption/minecart_rail,
+ 				  /obj/item/rotation_contraption/minecart_rail,
+@@ -330,7 +330,7 @@
+ 	craftdiff = 3
+ 
+ /datum/crafting_recipe/roguetown/engineering/railbreak
+-	name = "minecart rail break (4x)"
++	name = "矿车阻轨器（x4）"
+ 	category = "Minecarts"
+ 	result = list(/obj/item/rotation_contraption/minecart_rail/railbreak,
+ 				  /obj/item/rotation_contraption/minecart_rail/railbreak,
+@@ -344,7 +344,7 @@
+ 
+ 
+ /datum/crafting_recipe/roguetown/engineering/minecart
+-	name = "minecart"
++	name = "矿车"
+ 	category = "Minecarts"
+ 	result = /obj/structure/closet/crate/miningcar
+ 	reqs = list(/obj/item/grown/log/tree/small = 1, /obj/item/ingot/iron = 1, /obj/item/grown/log/tree/stick = 4, /obj/item/roguegear/bronze = 2)
+@@ -360,7 +360,7 @@
+ 
+ 
+ /datum/crafting_recipe/roguetown/engineering/sawbladetrap
+-	name = "saw blades trap"
++	name = "锯刃陷阱"
+ 	category = "traps"
+ 	result = /obj/structure/trap/saw_blades
+ 	reqs =  list(/obj/item/roguegear/bronze = 3, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 2, /obj/item/alch/irondust =1, /obj/item/natural/whetstone = 1)
+@@ -368,7 +368,7 @@
+ 	craftdiff = 5
+ 
+ /datum/crafting_recipe/roguetown/engineering/flametrap
+-	name = "flame trap"
++	name = "火焰陷阱"
+ 	category = "traps"
+ 	result = /obj/structure/trap/flame
+ 	reqs =  list(/obj/item/roguegear/bronze = 1, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 2, /obj/item/alch/irondust =1, /obj/item/alch/firedust =1)
+@@ -376,7 +376,7 @@
+ 	craftdiff = 5
+ 
+ /datum/crafting_recipe/roguetown/engineering/shocktrap
+-	name = "shock trap"
++	name = "电击陷阱"
+ 	category = "traps"
+ 	result = /obj/structure/trap/shock
+ 	reqs =  list(/obj/item/roguegear/bronze = 1, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 2, /obj/item/alch/irondust =1, /obj/item/alch/magicdust =1)
+@@ -387,7 +387,7 @@
+ // Mostly here to avoid having to use spark-generating 6 step recipes around impact grenades and other instant explosives
+ 
+ /datum/crafting_recipe/roguetown/engineering/tntbomb
+-	name = "blastsand sticks"
++	name = "爆砂棒"
+ 	category = "Explosives"
+ 	result = /obj/item/tntstick
+ 	reqs = list(/obj/item/paper = 2, /obj/item/alch/coaldust = 2, /obj/item/compost = 1, /obj/item/natural/fibers = 1)
+@@ -397,7 +397,7 @@
+ 
+ 
+ /datum/crafting_recipe/roguetown/engineering/satchelbomb
+-	name = "blastsand satchel"
++	name = "爆砂袋"
+ 	category = "Explosives"
+ 	result = /obj/item/satchel_bomb
+ 	reqs = list(/obj/item/storage/backpack/rogue/satchel  = 1, /obj/item/tntstick = 3, /obj/item/alch/firedust = 1, /obj/item/natural/fibers = 1)
+@@ -406,7 +406,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/impactexplosive
+-	name = "impact grenades (x3)"
++	name = "撞击手雷（x3）"
+ 	category = "Explosives"
+ 	result = list(/obj/item/impact_grenade/explosion,
+ 				  /obj/item/impact_grenade/explosion,
+@@ -417,7 +417,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/impactsmoke
+-	name = "smoke grenades (x3)"
++	name = "烟雾手雷（x3）"
+ 	category = "Explosives"
+ 	result = list(/obj/item/impact_grenade/smoke, 
+ 				  /obj/item/impact_grenade/smoke,
+@@ -428,7 +428,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/impactpoisonsmoke
+-	name = "smoke grenades, poisonous (x3)"
++	name = "毒烟手雷（x3）"
+ 	category = "Explosives"
+ 	result = list(/obj/item/impact_grenade/smoke/poison_gas,
+ 				  /obj/item/impact_grenade/smoke/poison_gas,
+@@ -439,7 +439,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/impactfiresmoke
+-	name = "smoke grenades, incendiary (x3)"
++	name = "燃烧烟雾手雷（x3）"
+ 	category = "Explosives"
+ 	result = list(/obj/item/impact_grenade/smoke/fire_gas,
+ 				  /obj/item/impact_grenade/smoke/fire_gas,
+@@ -450,7 +450,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/impactblindingsmoke
+-	name = "smoke grenades, blinding (x3)"
++	name = "致盲烟雾手雷（x3）"
+ 	category = "Explosives"
+ 	result = list(/obj/item/impact_grenade/smoke/blind_gas,
+ 				  /obj/item/impact_grenade/smoke/blind_gas,
+@@ -461,7 +461,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/impactmutesmoke
+-	name = "smoke grenades, muting (x3)"
++	name = "沉默烟雾手雷（x3）"
+ 	category = "Explosives"
+ 	result = list(/obj/item/impact_grenade/smoke/mute_gas,
+ 				  /obj/item/impact_grenade/smoke/mute_gas,
+@@ -472,7 +472,7 @@
+ 	craftdiff = 4
+ 
+ /datum/crafting_recipe/roguetown/engineering/impacthealingsmoke
+-	name = "smoke grenades, healing (x3)"
++	name = "治疗烟雾手雷（x3）"
+ 	category = "Explosives"
+ 	result = list(/obj/item/impact_grenade/smoke/healing_gas,
+ 				  /obj/item/impact_grenade/smoke/healing_gas,

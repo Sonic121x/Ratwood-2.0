@@ -1,0 +1,21 @@
+diff --git a/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/kazengunite.dm b/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/kazengunite.dm
+--- a/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/kazengunite.dm
++++ b/code/modules/roguetown/roguejobs/blacksmith/anvil_recipes/kazengunite.dm
+@@ -14,7 +14,7 @@
+ 
+ 
+ /datum/anvil_recipe/kazengunite/kabuto
+-	name = "Kabuto (+1 Steel, +1 Cured Leather)"
++	name = "Kabuto (+1 钢, +1 熟皮)"
+ 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
+ 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/kabuto
+ 
+@@ -30,7 +30,7 @@
+ 
+ 
+ /datum/anvil_recipe/kazengunite/samsibsa
+-	name = "Samsibsa Scaleplate (+1 Half-Plate, Steel, +1 Steel, +2 Cured Leather)"
++	name = "Samsibsa Scaleplate (+1 Half-Plate, 钢, +1 钢, +2 熟皮)"
+ 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
+ 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
+ 

@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/roguetown/newtreealt.dm b/code/game/objects/structures/roguetown/newtreealt.dm
+--- a/code/game/objects/structures/roguetown/newtreealt.dm
++++ b/code/game/objects/structures/roguetown/newtreealt.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/flora/newtreealt//a visually different version for use in sunnier brighter environments. Would have wanted to make it an easy subtype but it has separate branches and leaves
+-	name = "tree"
+-	desc = "The thick core of a tree."
++	name = "树"
++	desc = "树木粗壮的主干。"
+ 	icon = 'icons/roguetown/misc/treealt.dmi'
+ 	icon_state = "tree1"
+ 	var/tree_type = 1

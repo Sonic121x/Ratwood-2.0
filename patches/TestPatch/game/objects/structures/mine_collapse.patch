@@ -1,0 +1,21 @@
+diff --git a/code/game/objects/structures/mine_collapse.dm b/code/game/objects/structures/mine_collapse.dm
+--- a/code/game/objects/structures/mine_collapse.dm
++++ b/code/game/objects/structures/mine_collapse.dm
+@@ -51,7 +51,7 @@
+ 	if(found_near_support_beam(SUPPORT_BEAM_DISTANCE_CHECK))
+ 		return
+ 	var/mob/living/carbon/human/steve = AM
+-	to_chat(steve, span_danger("You feel rocks fall from the ceiling!"))
++	to_chat(steve, span_danger("你感觉到有岩石从天花板坠落！"))
+ 	trigger_collapse()
+ 
+ /obj/structure/mine_collapse/proc/found_near_support_beam(radius)
+@@ -127,7 +127,7 @@
+ 		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+ 		if(BP)
+ 			L.visible_message(span_boldwarning("Rocks comes crashing down on [L]'s [BP.name]!"), \
+-					span_userdanger("Rocks crushes my [BP.name]!"))
++					span_userdanger("岩石压碎了我的[BP.name]！"))
+ 			L.emote("paincrit", forced = TRUE)
+ 			BP.add_wound(/datum/wound/fracture)
+ 			BP.update_disabled()

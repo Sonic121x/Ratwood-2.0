@@ -1,0 +1,23 @@
+diff --git a/code/game/objects/structures/beds_chairs/roguechair.dm b/code/game/objects/structures/beds_chairs/roguechair.dm
+--- a/code/game/objects/structures/beds_chairs/roguechair.dm
++++ b/code/game/objects/structures/beds_chairs/roguechair.dm
+@@ -317,8 +317,8 @@
+ 
+ 
+ /obj/structure/chair/stool/rogue
+-	name = "stool"
+-	desc = "Three stubby legs nailed to the underside of a small round seat. Stable, if simple."
++	name = "凳子"
++	desc = "三条粗短的木凳腿钉在一个小圆座的底面。虽然简陋，但很稳当。"
+ 	icon_state = "barstool"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	item_chair = /obj/item/chair/stool/bar/rogue
+@@ -373,7 +373,7 @@
+ 
+ /obj/structure/bed/rogue/examine(mob/user)
+ 	. = ..()
+-	. += span_info("Some structures can be used as hiding places. Toggle the 'SNEAK' button on your HUD, then click the structure to hide in it. You can stop hiding by clicking the structure again, or by moving out of it.")
++	. += span_info("有些结构可以作为藏身之处。切换 HUD 上的‘潜行’按钮，然后点击该结构即可躲入其中。再次点击该结构，或直接从中走出来，便能停止躲藏。")
+ 
+ /obj/structure/bed/rogue/proc/damage_bed(dam_value)
+ 	if(broken_matress)

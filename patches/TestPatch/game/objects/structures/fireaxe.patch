@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/fireaxe.dm b/code/game/objects/structures/fireaxe.dm
+--- a/code/game/objects/structures/fireaxe.dm
++++ b/code/game/objects/structures/fireaxe.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/fireaxecabinet
+-	name = "Sword rack"
+-	desc = "A fitting resting place for a sword etched and scratched by tales long past."
++	name = "剑架"
++	desc = "一把历经久远传说、刻痕斑驳之剑的恰当归处。"
+ 	icon = 'icons/obj/wallmounts.dmi'
+ 	icon_state = "fireaxe"
+ 	anchored = TRUE

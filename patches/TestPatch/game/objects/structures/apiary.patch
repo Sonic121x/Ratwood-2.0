@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/apiary.dm b/code/game/objects/structures/apiary.dm
+--- a/code/game/objects/structures/apiary.dm
++++ b/code/game/objects/structures/apiary.dm
+@@ -205,8 +205,8 @@
+ 	create_new_queen()
+ 
+ /obj/structure/apiary
+-	name = "apiary"
+-	desc = "A structure housing bees that produce honey and pollinate plants."
++	name = "蜂箱"
++	desc = "一座饲养蜜蜂、产蜜并为植物授粉的设施。"
+ 	icon = 'icons/obj/structures/apiary.dmi'
+ 	icon_state = "beebox-empty"
+ 

@@ -1,0 +1,51 @@
+diff --git a/code/modules/roguetown/roguemachine/questing/items/quest_scroll.dm b/code/modules/roguetown/roguemachine/questing/items/quest_scroll.dm
+--- a/code/modules/roguetown/roguemachine/questing/items/quest_scroll.dm
++++ b/code/modules/roguetown/roguemachine/questing/items/quest_scroll.dm
+@@ -1,6 +1,6 @@
+ #define WHISPER_COOLDOWN 10 SECONDS
+ /obj/item/paper/scroll/quest
+-	name = "enchanted contract scroll"
++	name = "附魔契约卷轴"
+ 	desc = "A scroll oft known as a \"whispering scroll\". Enchanted with magicks to make it whisper to its bearer when opened the location of its target.\n\
+ 	The magical protections make it resistant to damage and tampering. It will only whisper when carried on the person of the contract bearer."
+ 	icon = 'code/modules/roguetown/roguemachine/questing/questing.dmi'
+@@ -82,7 +82,7 @@
+ 		message = "[last_compass_direction]"
+ 		if(last_z_level_hint)
+ 			message += " ([last_z_level_hint])"
+-		to_chat(quest_bearer, span_info("The scroll whispers to you, the target is [message]"))
++		to_chat(quest_bearer, span_info("卷轴低语着告诉你，目标位于 [message]。"))
+ 
+ /obj/item/paper/scroll/quest/examine(mob/user)
+ 	. = ..()
+@@ -98,17 +98,17 @@
+ 
+ /obj/item/paper/scroll/quest/attackby(obj/item/P, mob/living/carbon/human/user, params)
+ 	if(P.get_sharpness())
+-		to_chat(user, span_warning("The enchanted scroll resists your attempts to tear it."))
++		to_chat(user, span_warning("这张附魔卷轴抗拒你撕毁它的尝试。"))
+ 		return
+ 	if(istype(P, /obj/item/paper)) // Prevent merging with other papers/scrolls
+-		to_chat(user, span_warning("The magical energies prevent you from combining this with other scrolls."))
++		to_chat(user, span_warning("魔法能量阻止你将它与其他卷轴合并。"))
+ 		return
+ 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
+ 		if(!open)
+-			to_chat(user, span_warning("You need to open the scroll first."))
++			to_chat(user, span_warning("你得先打开卷轴。"))
+ 			return
+ 		if(!assigned_quest)
+-			to_chat(user, span_warning("This contract scroll doesn't accept modifications."))
++			to_chat(user, span_warning("这张契约卷轴不接受修改。"))
+ 			return
+ 	..()
+ 
+@@ -137,7 +137,7 @@
+ 	assigned_quest.quest_receiver_reference = WEAKREF(user)
+ 	assigned_quest.quest_receiver_name = user.real_name
+ 
+-	to_chat(user, span_notice("You claim this contract for yourself!"))
++	to_chat(user, span_notice("你将这份契约据为己有！"))
+ 	update_quest_text()
+ 	refresh_compass(user) // Update compass after claiming
+ 

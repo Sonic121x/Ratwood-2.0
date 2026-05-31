@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/roguetown/bondage.dm b/code/game/objects/structures/roguetown/bondage.dm
+--- a/code/game/objects/structures/roguetown/bondage.dm
++++ b/code/game/objects/structures/roguetown/bondage.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/bondage
+-	name = "restraint"
+-	desc = "A crude restraint meant to hold someone in place."
++	name = "束具"
++	desc = "一种粗糙的束具，用来把人固定在原地。"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	anchored = TRUE
+ 	density = TRUE

@@ -1,0 +1,30 @@
+diff --git a/code/modules/roguetown/roguemachine/stockpile/withdraw_tab.dm b/code/modules/roguetown/roguemachine/stockpile/withdraw_tab.dm
+--- a/code/modules/roguetown/roguemachine/stockpile/withdraw_tab.dm
++++ b/code/modules/roguetown/roguemachine/stockpile/withdraw_tab.dm
+@@ -76,7 +76,7 @@
+ 		if(D.withdraw_disabled)
+ 			return FALSE
+ 		if(D.held_items[source_stockpile] <= 0)
+-			parent_structure.say("Insufficient stock.")
++			parent_structure.say("库存不足。")
+ 		else if(total_price > budget)
+ 			var/mob/living/user = usr
+ 			if (user && HAS_TRAIT(user, TRAIT_FOOD_STIPEND))
+@@ -85,14 +85,14 @@
+ 					SStreasury.log_to_steward("-[D.withdraw_price]m worth of goods withdrawn direct from vomitorium (keep stipend)")
+ 					var/obj/item/I = new D.item_type(parent_structure.loc)
+ 					I.from_stockpile = TRUE
+-					to_chat(user, span_info("[parent_structure] chitters and squeaks into the treasury ratlines."))
++					to_chat(user, span_info("[parent_structure]朝着国库鼠道发出叽喳吱叫。"))
+ 					if(!user.put_in_hands(I))
+ 						I.forceMove(get_turf(user))
+ 					playsound(parent_structure.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+ 				else
+-					parent_structure.say("The treasury is barren. Please insert coinage.")
++					parent_structure.say("国库空空如也。请投入硬币。")
+ 			else
+-				parent_structure.say("Insufficient mammon.")
++				parent_structure.say("玛门不足。")
+ 		else
+ 			D.held_items[source_stockpile]--
+ 			budget -= total_price

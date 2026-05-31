@@ -1,17 +1,4 @@
-From 84f2ded3fca6e0e1319637d6b26d3a6ee4cfb6e4 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/roguetown/roguejobs/gravedigger/tools.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/roguetown/roguejobs/gravedigger/tools.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/roguetown/roguejobs/gravedigger/tools.dm b/code/modules/roguetown/roguejobs/gravedigger/tools.dm
-index 286d98c9de52..b38818b63cff 100644
 --- a/code/modules/roguetown/roguejobs/gravedigger/tools.dm
 +++ b/code/modules/roguetown/roguejobs/gravedigger/tools.dm
 @@ -657,8 +657,8 @@
@@ -25,5 +12,3 @@ index 286d98c9de52..b38818b63cff 100644
  	force = 16//Iron quarterstaff level.
  	force_wielded = 22//See above.
  	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)//One hand lets you arc divine blast and such.
--- 
-Translation Patch Toolkit

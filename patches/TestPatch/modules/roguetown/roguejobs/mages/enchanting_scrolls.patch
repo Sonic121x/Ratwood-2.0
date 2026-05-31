@@ -1,0 +1,554 @@
+diff --git a/code/modules/roguetown/roguejobs/mages/enchanting_scrolls.dm b/code/modules/roguetown/roguejobs/mages/enchanting_scrolls.dm
+--- a/code/modules/roguetown/roguejobs/mages/enchanting_scrolls.dm
++++ b/code/modules/roguetown/roguejobs/mages/enchanting_scrolls.dm
+@@ -4,8 +4,8 @@
+ T1 Enchantments below here*/
+ 
+ /obj/item/enchantmentscroll
+-	name = "scroll of enchanting"
+-	desc = "A scroll imbued with an arcane enchantment. Can be used on certain items to imbue them."
++	name = "附魔卷轴"
++	desc = "一张灌注了奥术附魔的卷轴。可用于某些物品，为其赋予魔力。"
+ 	icon = 'icons/roguetown/items/misc.dmi'
+ 	icon_state = "enchantment"
+ 	var/component
+@@ -18,12 +18,12 @@
+ 	var/datum/component/magic_item/M = O.GetComponent(/datum/component/magic_item, component)
+ 	if(M)
+ 		if(length(M.magical_effects) >= M.enchanting_capacity)
+-			to_chat(user, span_warning("This item is already enchanted to its full capacity."))
++			to_chat(user, span_warning("这件物品已经附魔到了极限。"))
+ 			return FALSE
+ 	return TRUE
+ 
+ /obj/item/enchantmentscroll/woodcut
+-	name = "enchanting scroll of woodcutting"
++	name = "伐木附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of woodcutting. Good for cutting wood."
+ 	component = /datum/magic_item/mundane/woodcut
+ 
+@@ -31,17 +31,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon/stoneaxe))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of woodcutting"
+ 		qdel(src)
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/mining
+-	name = "enchanting scroll of mining"
++	name = "采矿附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of mining. Good for mining rock."
+ 	component = /datum/magic_item/mundane/mining
+ 
+@@ -49,17 +49,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon/pick))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of mining"
+ 		qdel(src)
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/xylix
+-	name = "enchanting scroll of xylix's grace"
++	name = "希利克斯恩典附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of luck. Grants luck to its wearer."
+ 	component = /datum/magic_item/mundane/xylix
+ 
+@@ -67,17 +67,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of xylixs grace"
+ 		qdel(src)
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/light
+-	name = "enchanting scroll of unyielding light"
++	name = "不屈之光附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of unyielding light. Causes an enchanted item to glow with light."
+ 	component = /datum/magic_item/mundane/unyieldinglight
+ 
+@@ -85,17 +85,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of unyielding light"
+ 		qdel(src)
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/holding
+-	name = "enchanting scroll of storage"
++	name = "储存附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of storage. Doubles the storage space of a container."
+ 	component = /datum/magic_item/mundane/holding
+ 	w_class = WEIGHT_CLASS_HUGE
+@@ -104,17 +104,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/storage))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of storage"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/revealing
+-	name = "enchanting scroll of revealing"
++	name = "揭示附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of revealing. Doubles the range of lightsources."
+ 	component = /datum/magic_item/mundane/revealing
+ 
+@@ -122,19 +122,19 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/flashlight/flare/torch))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of revealing"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ //T2 Enchantments below
+ 
+ /obj/item/enchantmentscroll/nightvision
+-	name = "enchanting scroll of darkvision"
++	name = "暗视附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of darkvision. Good for seeing in the dark."
+ 	component = /datum/magic_item/superior/nightvision
+ 
+@@ -142,17 +142,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of darkvision"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/unbreaking
+-	name = "enchanting scroll of unbreaking"
++	name = "坚固附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of unbreakingt. Causes an enchanted item to be able to take more punishment.."
+ 	component = /datum/magic_item/superior/unbreaking
+ 
+@@ -160,17 +160,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of unbreaking"
+ 		qdel(src)
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/featherstep
+-	name = "enchanting scroll of featherstep"
++	name = "羽步附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of featherstep. Makes you speedier, and makes your footfalls silent."
+ 	component = /datum/magic_item/superior/featherstep
+ 
+@@ -178,17 +178,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing/shoes)||istype(O,/obj/item/clothing/ring|| istype(O,/obj/item/clothing/neck/roguetown/psicross)))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of featherstep"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/fireresist
+-	name = "enchanting scroll of fire resistance"
++	name = "抗火附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of fire resistance. Prevents you from catching fire."
+ 	component = /datum/magic_item/superior/fireresist
+ 
+@@ -196,17 +196,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of fire resistance"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/climbing
+-	name = "enchanting scroll of spider-climbing"
++	name = "攀蛛附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of spider-climbing. Helps you clamber up difficult surfaces."
+ 	component = /datum/magic_item/superior/climbing
+ 
+@@ -214,17 +214,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of spider-climbing"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/thievery
+-	name = "enchanting scroll of nimble fingers"
++	name = "巧手附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of thievery. Helps you steal and pick locks."
+ 	component = /datum/magic_item/superior/thievery
+ 
+@@ -232,17 +232,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing/gloves)||istype(O,/obj/item/clothing/ring|| istype(O,/obj/item/clothing/neck/roguetown/psicross)))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of nimble fingers"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/trekk
+-	name = "enchanting scroll of longstriding"
++	name = "长步附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of longstriding. Provides easy movement through swamps."
+ 	component = /datum/magic_item/superior/trekk
+ 
+@@ -250,17 +250,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing/shoes)||istype(O,/obj/item/clothing/ring|| istype(O,/obj/item/clothing/neck/roguetown/psicross)))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of longstriding"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/smithing
+-	name = "enchanting scroll of smithing"
++	name = "锻造附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of smithing. Provides more effective hammer strikes on anvils."
+ 	component = /datum/magic_item/superior/smithing
+ 
+@@ -268,19 +268,19 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon/hammer))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of smithing"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ //T3 Enchantments below
+ 
+ /obj/item/enchantmentscroll/lifesteal
+-	name = "enchanting scroll of lyfestealing"
++	name = "生命窃取附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of lyfe stealing. Heals you occasionally when you hit a living foe."
+ 	component = /datum/magic_item/greater/lifesteal
+ 
+@@ -288,17 +288,17 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of lyfestealing"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/lightning
+-	name = "enchanting scroll of lightning"
++	name = "雷击附魔卷轴"
+ 	desc = "A scroll imbued with an enchantment of lightning. This enchantment shocks foes with a chance to spread to nearby friends and foes alike."
+ 	component = /datum/magic_item/greater/lightning
+ 
+@@ -306,32 +306,32 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of lightning"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/voidtouched
+-	name = "enchanting scroll of voidtouched"
+-	desc = "A scroll imbued with an enchantment of voidtouched. This enchantment pulls foes briefly into the void, and spits them out nearby."
++	name = "enchanting scroll of 虚空之触"
++	desc = "A scroll imbued with an enchantment of 虚空之触. This enchantment pulls foes briefly into the void, and spits them out nearby."
+ 	component = /datum/magic_item/greater/void
+ 
+ /obj/item/enchantmentscroll/voidtouched/attack_obj(obj/item/O, mob/living/user)
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of voidtouched"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/frostveil
+ 	name = "enchanting scroll of frostveil"
+@@ -342,14 +342,14 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of frostveil"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ /obj/item/enchantmentscroll/phoenixguard
+ 	name = "enchanting scroll of phoenix guard"
+ 	desc = "A scroll imbued with an enchantment of phoenixguard. Sets those that strike you on fire."
+@@ -358,14 +358,14 @@
+ /obj/item/enchantmentscroll/phoenixguard/attack_obj(obj/item/O, mob/living/user)
+ 	.=..()
+ 	if(istype(O,/obj/item/clothing))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of phoenix guard"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/woundclosing
+ 	name = "enchanting scroll of wound closure"
+@@ -375,14 +375,14 @@
+ /obj/item/enchantmentscroll/woundclosing/attack_obj(obj/item/O, mob/living/user)
+ 	.=..()
+ 	if(istype(O,/obj/item/clothing/ring))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of wound closure"
+ 		qdel(src)
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/returningweapon
+ 	name = "enchanting scroll of returning weapon"
+@@ -393,14 +393,14 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing/ring)|| istype(O,/obj/item/clothing/neck/roguetown/psicross)||istype(O,/obj/item/clothing/gloves))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of returning weapon"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/archery
+ 	name = "enchanting scroll of archery"
+@@ -411,14 +411,14 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/clothing/ring)|| istype(O,/obj/item/clothing/neck/roguetown/psicross)||istype(O,/obj/item/clothing/gloves)|| istype(O, /obj/item/clothing/wrists/roguetown/bracers))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of archery"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ //T4 below here
+ 
+@@ -430,14 +430,14 @@
+ /obj/item/enchantmentscroll/infernalflame/attack_obj(obj/item/O, mob/living/user)
+ 	.=..()
+ 	if(istype(O,/obj/item/gun/ballistic/revolver/grenadelauncher)|| istype(O,/obj/item/rogueweapon)|| istype(O,/obj/item/clothing))	//bow and crossbows included
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of infernal flame"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/freeze
+ 	name = "enchanting scroll of freezing"
+@@ -447,14 +447,14 @@
+ /obj/item/enchantmentscroll/freeze/attack_obj(obj/item/O, mob/living/user)
+ 	.=..()
+ 	if(istype(O,/obj/item/gun/ballistic/revolver/grenadelauncher)||istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))//bow and crossbows included
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of freezing"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/rewind
+ 	name = "enchanting scroll of temporal rewind"
+@@ -464,14 +464,14 @@
+ /obj/item/enchantmentscroll/rewind/attack_obj(obj/item/O, mob/living/user)
+ 	.=..()
+ 	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of temporal rewind"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/briars
+ 	name = "enchanting scroll of briar's curse"
+@@ -482,14 +482,14 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of briar's curse"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
+ 
+ /obj/item/enchantmentscroll/chaos_storm
+ 	name = "enchanting scroll of chaos storm"
+@@ -500,11 +500,11 @@
+ 	if(!..())
+ 		return
+ 	if(istype(O,/obj/item/rogueweapon))
+-		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
++		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
+ 		var/magiceffect= new component
+ 		O.AddComponent(/datum/component/magic_item, magiceffect)
+ 		O.name += " of chaos storm"
+ 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+ 		qdel(src)
+ 	else
+-		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
++		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))

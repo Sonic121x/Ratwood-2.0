@@ -1,0 +1,13 @@
+diff --git a/code/game/objects/structures/mirror.dm b/code/game/objects/structures/mirror.dm
+--- a/code/game/objects/structures/mirror.dm
++++ b/code/game/objects/structures/mirror.dm
+@@ -1,7 +1,7 @@
+ //wip wip wup
+ /obj/structure/mirror
+-	name = "mirror"
+-	desc = "Mirror, mirror, on the wall..."
++	name = "镜子"
++	desc = "镜子啊镜子，墙上的镜子……"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "mirror"
+ 	density = FALSE

@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/roguetown/traps.dm b/code/game/objects/structures/roguetown/traps.dm
+--- a/code/game/objects/structures/roguetown/traps.dm
++++ b/code/game/objects/structures/roguetown/traps.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/spike_pit
+-	name = "spike pit"
+-	desc = "A hole filled with sharp wooden ends that protrude upwards."
++	name = "尖桩陷坑"
++	desc = "一个坑洞，里面满是朝上突出的尖锐木桩。"
+ 	icon_state = "spike_pit"
+ 	can_buckle = TRUE
+ 	icon = 'icons/turf/roguefloor.dmi'

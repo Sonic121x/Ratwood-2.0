@@ -1,0 +1,31 @@
+diff --git a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipe_base.dm b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipe_base.dm
+--- a/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipe_base.dm
++++ b/code/modules/roguetown/roguecrafting/alchemy/alch_cauldron_recipe_base.dm
+@@ -23,14 +23,14 @@
+ 		    <h1>[name]</h1>
+ 		"}
+ 
+-	html += "Requires [SSskills.level_names_plain[skill_required]] level of skills<br>"
++	html += "需要[SSskills.level_names_plain[skill_required]]级技能<br>"
+ 	
+-	html += "Boil 30+ ounces of water in a Cauldron.<br>"
++	html += "在炼药锅中煮沸 30 盎司以上的水。<br>"
+ 
+-	html += "Add at least two ingredients with the smell of [smells_like]<br>"
++	html += "加入至少两种带有[smells_like]气味的材料<br>"
+ 
+ 	if(output_reagents.len)
+-		html += "<div><strong>Creates:</strong><br>"
++		html += "<div><strong>产出：</strong><br>"
+ 		for(var/path as anything in output_reagents)
+ 			var/count = output_reagents[path]
+ 			if(ispath(path, /datum/reagent))
+@@ -39,7 +39,7 @@
+ 		html += "</div>"
+ 
+ 	if(output_items.len)
+-		html += "<div><strong>Guaranteed Outputs</strong><br>"
++		html += "<div><strong>固定产出</strong><br>"
+ 		for(var/path as anything in output_items)
+ 			var/count = output_items[path]
+ 			if(ispath(path, /obj))

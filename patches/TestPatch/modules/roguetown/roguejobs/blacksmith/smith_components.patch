@@ -1,0 +1,99 @@
+diff --git a/code/modules/roguetown/roguejobs/blacksmith/smith_components.dm b/code/modules/roguetown/roguejobs/blacksmith/smith_components.dm
+--- a/code/modules/roguetown/roguejobs/blacksmith/smith_components.dm
++++ b/code/modules/roguetown/roguejobs/blacksmith/smith_components.dm
+@@ -60,12 +60,12 @@
+ /datum/component/forging/proc/on_placed_on_anvil(datum/source, obj/machinery/anvil/anvil)
+ 	SIGNAL_HANDLER
+ 	forging_stage = FORGING_STAGE_ACTIVE
+-	to_chat(usr, span_notice("You place [parent] on the anvil, ready for forging."))
++	to_chat(usr, span_notice("你把[parent]放到了铁砧上，准备锻打。"))
+ 
+ /datum/component/forging/proc/on_removed_from_anvil(datum/source, obj/machinery/anvil/anvil)
+ 	SIGNAL_HANDLER
+ 	forging_stage = FORGING_STAGE_READY
+-	to_chat(usr, span_notice("You remove [parent] from the anvil."))
++	to_chat(usr, span_notice("你把[parent]从铁砧上取了下来。"))
+ 
+ /datum/component/forging/proc/on_hammered_on_anvil(datum/source, obj/machinery/anvil/anvil, mob/user, obj/item/hammer, breakthrough = FALSE)
+ 	SIGNAL_HANDLER
+@@ -76,7 +76,7 @@
+ 
+ 	if(success)
+ 		if(needed_item)
+-			to_chat(user, span_notice("\The [parent] needs a [needed_item_text] to continue."))
++			to_chat(user, span_notice("[parent]还需要一个[needed_item_text]才能继续。"))
+ 
+ 		// Check if recipe is complete
+ 		if(progress >= current_recipe.max_progress && !needed_item)
+@@ -91,7 +91,7 @@
+ 	needed_item_text = null
+ 	progress = 0 // Reset progress for next stage
+ 
+-	to_chat(user, span_notice("You add \the [added_item] to \the [parent]."))
++	to_chat(user, span_notice("你把[added_item]加到了[parent]里。"))
+ 	qdel(added_item) // Consume the added item
+ 
+ 	return TRUE
+@@ -102,12 +102,12 @@
+ 	var/skill_level = user.get_skill_level(current_recipe.appro_skill)
+ 
+ 	if(progress >= current_recipe.max_progress && !needed_item)
+-		to_chat(user, span_info("It's ready."))
+-		user.visible_message(span_warning("[user] strikes the bar!"))
++		to_chat(user, span_info("它已经准备好了。"))
++		user.visible_message(span_warning("[user]敲击了这块锭材！"))
+ 		return TRUE
+ 	if(needed_item)
+-		to_chat(user, span_info("Now it's time to add a [needed_item_text]."))
+-		user.visible_message(span_warning("[user] strikes the bar!"))
++		to_chat(user, span_info("现在该加入一个[needed_item_text]了。"))
++		user.visible_message(span_warning("[user]敲击了这块锭材！"))
+ 		return FALSE
+ 	if(current_recipe.using_blade)
+ 		// Blades are partially pre-formed, so easier to work with
+@@ -144,7 +144,7 @@
+ 	if(!moveup)
+ 		user.mind?.add_sleep_experience(current_recipe.appro_skill, user.STAINT/(current_recipe.craftdiff+3), FALSE) //Pity XP
+ 		if(!prob(proab)) // Roll again, this time negatively, for consequences.
+-			user.visible_message(span_warning("[user] ruins the bar!"))
++			user.visible_message(span_warning("[user]把这块锭材打坏了！"))
+ 			skill_quality -= 1 // The more you fuck up, the less quality the end result will be.
+ 			bar_health -= current_recipe.craftdiff // Difficulty of the recipe adds to how critical the failure is
+ 
+@@ -160,11 +160,11 @@
+ 						bar_health -= current_recipe.craftdiff
+ 
+ 			if(bar_health <= 0)
+-				user.visible_message(span_danger("[user] destroys the bar!"))
++				user.visible_message(span_danger("[user]彻底毁掉了这块锭材！"))
+ 				qdel(parent)
+ 			return FALSE
+ 		else
+-			user.visible_message(span_warning("[user] fumbles the bar!"))
++			user.visible_message(span_warning("[user]失手打偏了这块锭材！"))
+ 			return FALSE
+ 
+ 	else
+@@ -173,11 +173,11 @@
+ 			user.mind.add_sleep_experience(current_recipe.appro_skill, user.STAINT/(current_recipe.craftdiff+1), FALSE)
+ 
+ 		if(breakthrough)
+-			user.visible_message(span_deadsay("[user] deftly strikes the bar!"))
++			user.visible_message(span_deadsay("[user]巧妙地敲中了这块锭材！"))
+ 			if(bar_health < 100)
+ 				bar_health += 20 // Correcting the mistakes, ironing the kinks. Low chance, so rewarding.
+ 		else
+-			user.visible_message(span_info("[user] strikes the bar!"))
++			user.visible_message(span_info("[user]敲击了这块锭材！"))
+ 
+ 		if(progress >= current_recipe.max_progress && !current_recipe.additional_items.len)
+ 			return TRUE
+@@ -193,7 +193,7 @@
+ 	else
+ 		// Make the item quenchable for final processing
+ 		parent.AddComponent(/datum/component/anvil_quenchable, current_recipe, parent)
+-		to_chat(user, span_notice("The [parent] is ready to be quenched in a water bin."))
++		to_chat(user, span_notice("[parent]已经可以放进水桶里淬火了。"))
+ 
+ 	// Clean up anvil
+ 	if(if_created)

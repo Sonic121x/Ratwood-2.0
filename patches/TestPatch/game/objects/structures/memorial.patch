@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/memorial.dm b/code/game/objects/structures/memorial.dm
+--- a/code/game/objects/structures/memorial.dm
++++ b/code/game/objects/structures/memorial.dm
+@@ -13,7 +13,7 @@
+ */
+ 
+ /obj/structure/fluff/arc
+-	name = "Tomb of the Unknown Employee"
++	name = "无名员工之墓"
+ 	desc = ""
+ 	icon_state = "memorial"
+ 	density = TRUE
+@@ -39,6 +39,6 @@
+ /obj/item/clothing/accessory/medal/gold/ordom
+-	name = "Tomb of the Paperwork Employee"
++	name = "文书员工之墓"
+ 	desc = ""
+ 	icon_state = "memorial"
+ 	density = TRUE

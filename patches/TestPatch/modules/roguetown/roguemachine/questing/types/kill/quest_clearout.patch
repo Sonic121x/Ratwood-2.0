@@ -1,0 +1,20 @@
+diff --git a/code/modules/roguetown/roguemachine/questing/types/kill/quest_clearout.dm b/code/modules/roguetown/roguemachine/questing/types/kill/quest_clearout.dm
+--- a/code/modules/roguetown/roguemachine/questing/types/kill/quest_clearout.dm
++++ b/code/modules/roguetown/roguemachine/questing/types/kill/quest_clearout.dm
+@@ -7,13 +7,13 @@
+ /datum/quest/kill/clearout/get_title()
+ 	if(title)
+ 		return title
+-	return "Clear out [pick("a nest of", "a den of", "a group of", "a pack of")] [pick("monsters", "bandits", "creatures", "vermin")]"
++	return "清剿[pick("一窝", "一巢", "一伙", "一群")][pick("怪物", "匪徒", "生物", "害兽")]"
+ 
+ /datum/quest/kill/clearout/get_objective_text()
+-	return "Eliminate [progress_required] [initial(target_mob_type.name)]."
++	return "消灭 [progress_required] 个 [initial(target_mob_type.name)]。"
+ 
+ /datum/quest/kill/clearout/get_location_text()
+-	return target_spawn_area ? "Reported infestation in [target_spawn_area] region." : "Reported infestations in The Vale region."
++	return target_spawn_area ? "据报 [target_spawn_area] 区域有怪物滋生。" : "据报山谷地区有怪物滋生。"
+ 
+ /datum/quest/kill/clearout/generate(obj/effect/landmark/quest_spawner/landmark)
+ 	..()

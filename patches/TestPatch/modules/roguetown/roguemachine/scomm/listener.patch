@@ -1,0 +1,57 @@
+diff --git a/code/modules/roguetown/roguemachine/scomm/listener.dm b/code/modules/roguetown/roguemachine/scomm/listener.dm
+--- a/code/modules/roguetown/roguemachine/scomm/listener.dm
++++ b/code/modules/roguetown/roguemachine/scomm/listener.dm
+@@ -1,6 +1,6 @@
+ /obj/item/listeningdevice
+-	name = "listener"
+-	desc = "An ever-attentive ear..."
++	name = "窃听耳"
++	desc = "一只永远在倾听的耳朵……"
+ 	icon = 'icons/roguetown/items/misc.dmi'
+ 	icon_state = "listenstone"
+ 	dropshrink = 0.6
+@@ -31,29 +31,29 @@
+ /obj/item/listeningdevice/Initialize(mapload)
+ 	. = ..()
+ 	become_hearing_sensitive()
+-	inqdesc = "An ever-attentive ear... [span_notice("This ear hasn't been bent. It's unlabelled.")]"
++	inqdesc = "一只永远在倾听的耳朵…… [span_notice("这只耳朵还没被掰弯。它没有标签。")]"
+ 
+ /obj/item/listeningdevice/Destroy()
+ 	lose_hearing_sensitivity()
+ 	return ..()
+ 
+ /obj/item/listeningdevice/attack_self(mob/living/user)
+-	var/input = input(user, "SIX LETTERS", "BEND AN EAR")
++	var/input = input(user, "六个字符", "给耳朵做记号")
+ 	if(!input)
+ 		label = null
+-		inqdesc = "An ever-attentive ear... [span_notice("This ear hasn't been bent. It's unlabelled.")]"
++		inqdesc = "一只永远在倾听的耳朵…… [span_notice("这只耳朵还没被掰弯。它没有标签。")]"
+ 		desc = inqdesc
+ 		return
+ 	label = uppertext(trim(input, 7))
+-	inqdesc = "An ever-attentive ear... [span_notice("This ear's been bent. It's labelled as [label].")]"
++	inqdesc = "一只永远在倾听的耳朵…… [span_notice("这只耳朵已经被掰弯了。它的标签是 [label]。")]"
+ 	desc = inqdesc
+ 	return
+ 
+ /obj/item/listeningdevice/attack_right(mob/living/user)
+ 	if(!hidden)
+ 		alpha = 30
+-		name = "thing"
+-		desc = "What is that thing?.."
++		name = "东西"
++		desc = "那是什么东西？.."
+ 		hidden = TRUE
+ 		return TRUE
+ 	alpha = 255
+@@ -88,7 +88,7 @@
+ 		icon_state = "[initial(icon_state)]_active"
+ 	else
+ 		icon_state = initial(icon_state)
+-	to_chat(user, span_info("I [active ? "undeafen" : "deafen"] the Listener."))
++	to_chat(user, span_info("我将窃听耳[active ? "开启" : "关闭"]。"))
+ 	update_icon()
+ 	return
+ 

@@ -1,0 +1,17 @@
+diff --git a/code/modules/roguetown/roguemachine/questing/types/__quest.dm b/code/modules/roguetown/roguemachine/questing/types/__quest.dm
+--- a/code/modules/roguetown/roguemachine/questing/types/__quest.dm
++++ b/code/modules/roguetown/roguemachine/questing/types/__quest.dm
+@@ -83,11 +83,11 @@
+ 
+ /// Get objective text for scroll display
+ /datum/quest/proc/get_objective_text()
+-	return "Complete the objective."
++	return "完成任务目标。"
+ 
+ /// Get location text for scroll display
+ /datum/quest/proc/get_location_text()
+-	return target_spawn_area ? "Reported sighting in [target_spawn_area] region." : "Location unknown."
++	return target_spawn_area ? "据报目标出现在 [target_spawn_area] 区域。" : "位置未知。"
+ 
+ /// Check if quest objectives are complete
+ /datum/quest/proc/check_completion()

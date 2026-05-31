@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/roguetown/loot.dm b/code/game/objects/structures/roguetown/loot.dm
+--- a/code/game/objects/structures/roguetown/loot.dm
++++ b/code/game/objects/structures/roguetown/loot.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/loot/pile
+-	name = "loot pile"
+-	desc = "Looters don't read, and readers don't loot"
++	name = "战利品堆"
++	desc = "劫掠者不读书，读书人不劫掠。"
+ 	icon = 'icons/roguetown/mob/monster/wraith.dmi'
+ 	icon_state = "hauntpile"
+ 	layer = ABOVE_ALL_MOB_LAYER

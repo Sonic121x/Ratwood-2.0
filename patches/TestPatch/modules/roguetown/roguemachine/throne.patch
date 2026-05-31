@@ -1,17 +1,4 @@
-From 8be0b84337b555d7bfa528a85fe603e2baa9fc15 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/roguetown/roguemachine/throne.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/roguetown/roguemachine/throne.dm | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/code/modules/roguetown/roguemachine/throne.dm b/code/modules/roguetown/roguemachine/throne.dm
-index 8bb0fe159641..21465f1f741c 100644
 --- a/code/modules/roguetown/roguemachine/throne.dm
 +++ b/code/modules/roguetown/roguemachine/throne.dm
 @@ -1,8 +1,8 @@
@@ -25,5 +12,3 @@ index 8bb0fe159641..21465f1f741c 100644
  	icon = 'icons/roguetown/misc/96x96.dmi'
  	icon_state = "throne"
  	density = FALSE
--- 
-Translation Patch Toolkit

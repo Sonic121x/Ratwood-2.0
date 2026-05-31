@@ -1,0 +1,10 @@
+diff --git a/code/game/objects/structures/deer_trophy.dm b/code/game/objects/structures/deer_trophy.dm
+--- a/code/game/objects/structures/deer_trophy.dm
++++ b/code/game/objects/structures/deer_trophy.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/rogue/trophy/deer
+-	name = "deer trophy"
++	name = "鹿头标本"
+ 	desc = "A deer's head, stuffed and mounted for the wall. A skilled hunter must have slain this creature."
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "deer_trophy"

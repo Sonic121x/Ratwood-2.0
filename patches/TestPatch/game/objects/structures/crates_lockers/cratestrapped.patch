@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/crates_lockers/cratestrapped.dm b/code/game/objects/structures/crates_lockers/cratestrapped.dm
+--- a/code/game/objects/structures/crates_lockers/cratestrapped.dm
++++ b/code/game/objects/structures/crates_lockers/cratestrapped.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/closet/crate/chest/trapped
+-	name = "chest"
++	name = "宝箱"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "chest3s"
+@@ -51,7 +51,7 @@
+ 		if(!BP)
+ 			return FALSE
+ 		if(locked)
+-			C.visible_message(span_notice("\the [src] is locked."))
++			C.visible_message(span_notice("[src]被锁住了。"))
+ 			playsound(src, 'sound/foley/doors/lock.ogg', 100)
+ 			return FALSE
+ 		if(C.get_skill_level(/datum/skill/craft/crafting) < 1)

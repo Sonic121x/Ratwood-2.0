@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/roguetown/sanctified_tree.dm b/code/game/objects/structures/roguetown/sanctified_tree.dm
+--- a/code/game/objects/structures/roguetown/sanctified_tree.dm
++++ b/code/game/objects/structures/roguetown/sanctified_tree.dm
+@@ -123,8 +123,8 @@
+ // Sanctified Tree
+ //==============================================================================
+ /obj/structure/flora/roguetree/wise/sanctified
+-	name = "sanctified tree"
+-	desc = "A great tree consecrated by the Treefather. Its bark glows with faint light, and the air around it thrums with primal holiness. A nexus of druidic power."
++	name = "圣化之树"
++	desc = "一棵由树父祝圣的伟大树木。它的树皮泛着微光，周围空气回荡着原始的神圣气息。这里是德鲁伊力量的枢纽。"
+ 	examine_plays_music = FALSE
+ 	pixel_x = -11
+ 	/// Base max_integrity before nearby-tree bonus.

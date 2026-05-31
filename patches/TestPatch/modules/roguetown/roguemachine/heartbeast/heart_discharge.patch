@@ -1,0 +1,22 @@
+diff --git a/code/modules/roguetown/roguemachine/heartbeast/heart_discharge.dm b/code/modules/roguetown/roguemachine/heartbeast/heart_discharge.dm
+--- a/code/modules/roguetown/roguemachine/heartbeast/heart_discharge.dm
++++ b/code/modules/roguetown/roguemachine/heartbeast/heart_discharge.dm
+@@ -9,7 +9,7 @@
+ 	projectile.fire()
+ 
+ /obj/projectile/discharge
+-	name = "discharge"
++	name = "???"
+ 	icon = 'icons/effects/tomatodecal.dmi'
+ 	icon_state = "smashed_plant"
+ 	nodamage = TRUE
+@@ -80,7 +80,7 @@
+ 		color = discharge_color
+ 
+ /obj/effect/decal/cleanable/discharge
+-	name = "discharge"
+-	desc = "What? Ewww!"
++	name = "???"
++	desc = "?????????"
+ 	icon = 'icons/effects/tomatodecal.dmi'
+ 	icon_state = "smashed_plant"

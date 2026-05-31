@@ -1,0 +1,16 @@
+diff --git a/code/game/objects/structures/kitchen_spike.dm b/code/game/objects/structures/kitchen_spike.dm
+--- a/code/game/objects/structures/kitchen_spike.dm
++++ b/code/game/objects/structures/kitchen_spike.dm
+@@ -11,10 +11,10 @@
+ 	max_integrity = 200
+ 
+ /obj/structure/kitchenspike
+-	name = "meat spike"
++	name = "肉钩"
+ 	icon = 'icons/obj/kitchen.dmi'
+ 	icon_state = "spike"
+-	desc = "A slender curved hook designed for suspending corpses. Found in kitchens, butcheries, and dungeons alike."
++	desc = "一只细长弯曲的钩子，专为悬挂尸体而设计。厨房、屠宰场和地牢里都能见到。"
+ 	density = TRUE
+ 	anchored = TRUE
+ 	buckle_lying = 0

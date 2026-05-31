@@ -1,17 +1,4 @@
-From ebfc1644a32de387db068345915258f823b55b6b Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/roguetown/roguemachine/heartbeast/heart_traits.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/roguetown/roguemachine/heartbeast/heart_traits.dm | 80 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 40 insertions(+), 40 deletions(-)
-
 diff --git a/code/modules/roguetown/roguemachine/heartbeast/heart_traits.dm b/code/modules/roguetown/roguemachine/heartbeast/heart_traits.dm
-index f9446c083b41..20b19893ab9e 100644
 --- a/code/modules/roguetown/roguemachine/heartbeast/heart_traits.dm
 +++ b/code/modules/roguetown/roguemachine/heartbeast/heart_traits.dm
 @@ -1,6 +1,6 @@
@@ -232,5 +219,3 @@ index f9446c083b41..20b19893ab9e 100644
  	conflicting_traits = list(/datum/flesh_trait/impulsive)
  	preferred_approaches = list("min_words" = 6, "max_words" = 25, "punctuation" = ".")
  	liked_concepts = list(/datum/flesh_concept/truth)
--- 
-Translation Patch Toolkit

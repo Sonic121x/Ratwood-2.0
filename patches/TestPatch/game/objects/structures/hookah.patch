@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/hookah.dm b/code/game/objects/structures/hookah.dm
+--- a/code/game/objects/structures/hookah.dm
++++ b/code/game/objects/structures/hookah.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/shisha
+-	name = "shisha pipe"
+-	desc = "A traditional shisha pipe."
++	name = "水烟壶"
++	desc = "传统的水烟壶。"
+ 	icon = 'icons/roguetown/misc/64x64.dmi'
+ 	icon_state = "zbuski"
+ 	density = FALSE

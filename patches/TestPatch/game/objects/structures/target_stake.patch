@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/target_stake.dm b/code/game/objects/structures/target_stake.dm
+--- a/code/game/objects/structures/target_stake.dm
++++ b/code/game/objects/structures/target_stake.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/target_stake
+-	name = "target stake"
++	name = "靶桩"
+ 	desc = ""
+ 	icon = 'icons/obj/objects.dmi'
+ 	icon_state = "target_stake"
+@@ -46,7 +46,7 @@
+ 		T.density = TRUE
+ 		T.layer = OBJ_LAYER + 0.01
+ 		handle_density()
+-		to_chat(user, span_notice("I slide the target into the stake."))
++		to_chat(user, span_notice("我把靶子插进了靶桩。"))
+ 
+ /obj/structure/target_stake/attack_hand(mob/user)
+ 	. = ..()

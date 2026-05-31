@@ -1,0 +1,10 @@
+diff --git a/code/game/objects/structures/displaycase.dm b/code/game/objects/structures/displaycase.dm
+--- a/code/game/objects/structures/displaycase.dm
++++ b/code/game/objects/structures/displaycase.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/displaycase
+-	name = "display case"
++	name = "展示柜"
+ 	icon_state = "glassbox0"
+ 	desc = ""
+ 	density = TRUE

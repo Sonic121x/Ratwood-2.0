@@ -1,0 +1,20 @@
+diff --git a/code/game/objects/structures/roguetent.dm b/code/game/objects/structures/roguetent.dm
+--- a/code/game/objects/structures/roguetent.dm
++++ b/code/game/objects/structures/roguetent.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/roguetent
+ 	parent_type = /obj/structure/tent_component
+-	name = "tent flap"
++	name = "帐篷门帘"
+ 	icon = 'icons/turf/roguewall.dmi'
+ 	icon_state = "tent_door1"
+ 	layer = WALL_OBJ_LAYER
+@@ -25,7 +25,7 @@
+ 		to_chat(user, span_warning("You are too far away!"))
+ 		return TRUE
+ 
+-	var/confirm = alert(user, "Are you sure you want to pack up the [parent_tent.name]?", "Dismantle", "Yes", "No")
++	var/confirm = alert(user, "你确定要收起[parent_tent.name]吗？", "Dismantle", "Yes", "No")
+ 	if(confirm == "Yes" && get_dist(user, src) <= 1)
+ 		parent_tent.disassemble_tent(user)
+ 	return TRUE

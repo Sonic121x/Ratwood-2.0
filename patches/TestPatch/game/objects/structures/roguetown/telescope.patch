@@ -1,17 +1,4 @@
-From 778a64c6862192b0dfcd9d7b3e295ad3ee2e8286 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/game/objects/structures/roguetown/telescope.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/game/objects/structures/roguetown/telescope.dm | 2 +-
- 1 file changed, 1 insertions(+), 1 deletions(-)
-
 diff --git a/code/game/objects/structures/roguetown/telescope.dm b/code/game/objects/structures/roguetown/telescope.dm
-index d1597751f3c8..c285fbeedf1a 100644
 --- a/code/game/objects/structures/roguetown/telescope.dm
 +++ b/code/game/objects/structures/roguetown/telescope.dm
 @@ -38,5 +38,5 @@
@@ -21,5 +8,3 @@ index d1597751f3c8..c285fbeedf1a 100644
 -	var/random_message = pick("you spin the globe!", "You land on Rotwood Vale!", "You land on Rockhill!", "You land on Al-Ashur!", "You land on Avar!", "You land on Zybantium!", "You land on port Ice cube!.", "You land on port Thornvale!", "You land on Grenzelhoft!", "You land on Gronn!", "You land on Otava!", "You land on Giza!", "You land on Hammerhold!", "You land on Kingsfield!", "You land on Fablefield!", "You land on Avar!", "You land on Etrusca!", "You land on Kazengun! You think? Probably.")
 +	var/random_message = pick("你转动了地球仪！", "你停在了谷地！", "你停在了 Rockhill！", "你停在了 Al-Ashur！", "你停在了 Avar！", "你停在了 Zybantium！", "你停在了 Ice Cube 港！", "你停在了 Thornvale 港！", "你停在了 Grenzelhoft！", "你停在了 Gronn！", "你停在了 Otava！", "你停在了 Giza！", "你停在了 Hammerhold！", "你停在了 Kingsfield！", "你停在了 Fablefield！", "你停在了 Avar！", "你停在了 Etrusca！", "你停在了 Kazengun！大概吧。")
  	to_chat(H, span_notice("[random_message]"))
--- 
-Translation Patch Toolkit

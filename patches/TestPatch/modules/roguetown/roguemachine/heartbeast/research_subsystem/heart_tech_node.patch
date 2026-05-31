@@ -1,0 +1,186 @@
+diff --git a/code/modules/roguetown/roguemachine/heartbeast/research_subsystem/heart_tech_node.dm b/code/modules/roguetown/roguemachine/heartbeast/research_subsystem/heart_tech_node.dm
+--- a/code/modules/roguetown/roguemachine/heartbeast/research_subsystem/heart_tech_node.dm
++++ b/code/modules/roguetown/roguemachine/heartbeast/research_subsystem/heart_tech_node.dm
+@@ -1,7 +1,7 @@
+ /datum/chimeric_tech_node
+ 	// Make sure this identifier is unique
+-	var/name = "Base Node"
+-	var/description = "This is the default description."
++	var/name = "????"
++	var/description = "???????"
+ 	var/tech_path // The path of the actual implementation datum/object
+ 	var/string_id = "BASE_NODE" // Used to find the datums in the tech subsytem
+ 
+@@ -17,16 +17,16 @@
+ 
+ /// HEALING MIRACLE TECHS
+ /datum/chimeric_tech_node/awaken_healing
+-	name = "Awaken divine regeneration"
+-	description = "Increases the healing of most healing miracles significantly."
++	name = "??????"
++	description = "???????????????"
+ 	string_id = "HEAL_TIER1"
+ 	required_tier = 1
+ 	cost = 15
+ 	selection_weight = 15
+ 
+ /datum/chimeric_tech_node/enhanced_healing
+-	name = "Enhance divine regeneration"
+-	description = "Increases the healing of most healing miracles slightly."
++	name = "??????"
++	description = "???????????????"
+ 	string_id = "HEAL_TIER2"
+ 	required_tier = 3
+ 	cost = 85
+@@ -34,8 +34,8 @@
+ 	prerequisites = list("HEAL_TIER1")
+ 
+ /datum/chimeric_tech_node/awaken_resurrection
+-	name = "Awaken divine resurrection"
+-	description = "Decreases the cooldown of resurrection miracles significantly."
++	name = "??????"
++	description = "??????????????"
+ 	string_id = "REVIVE_TIER1"
+ 	required_tier = 2
+ 	cost = 40
+@@ -43,8 +43,8 @@
+ 	prerequisites = list("HEAL_TIER1")
+ 
+ /datum/chimeric_tech_node/enhanced_resurrection
+-	name = "Enhance divine resurrection"
+-	description = "Decreases the cost of resurrection miracles significantly."
++	name = "??????"
++	description = "????????????"
+ 	string_id = "REVIVE_TIER2"
+ 	required_tier = 3
+ 	cost = 120
+@@ -53,8 +53,8 @@
+ 
+ // CRAFTING RECIPE TECHS
+ /datum/chimeric_tech_node/residual_frankenbrew
+-	name = "Impure lux filtration"
+-	description = "Allows making a small amount of revival elixer for fulmenor chairs out of impure lux."
++	name = "??????"
++	description = "????????????????????????"
+ 	string_id = "LUX_FILTRATION"
+ 	required_tier = 1
+ 	cost = 5
+@@ -62,8 +62,8 @@
+ 	is_recipe_node = TRUE
+ 
+ /datum/chimeric_tech_node/meat_decoy
+-	name = "meat decoys"
+-	description = "Allows making flesh decoys out of fresh meat to distract hostile, unintelligent creechurs."
++	name = "???"
++	description = "??????????????????????????????"
+ 	string_id = "FLESH_DECOYS"
+ 	required_tier = 1
+ 	cost = 5
+@@ -71,8 +71,8 @@
+ 	is_recipe_node = TRUE
+ 
+ /datum/chimeric_tech_node/viscera_decoy
+-	name = "Visceral decoys"
+-	description = "Allows making flesh decoys out of viscera instead of fresh meat."
++	name = "????"
++	description = "???????????????????"
+ 	string_id = "VISCERA_DECOYS"
+ 	required_tier = 1
+ 	cost = 5
+@@ -81,8 +81,8 @@
+ 	prerequisites = list("FLESH_DECOYS")
+ 
+ /datum/chimeric_tech_node/black_rose
+-	name = "Black Rose Synthesis"
+-	description = "Allows crafting of black roses from corrupted flesh and beast blood. It is believed heartbeasts were in part created by Pestra herself to control the black rot that lingers within these roses."
++	name = "?????"
++	description = "????????????????????????????????????????????????"
+ 	string_id = "BLACK_ROSE"
+ 	required_tier = 4
+ 	cost = 100
+@@ -91,8 +91,8 @@
+ 	is_recipe_node = TRUE
+ 
+ /datum/chimeric_tech_node/corpse_ticks
+-	name = "Corpse Ticks"
+-	description = "Allows leechticks to attach to dead bodies to extract their lux"
++	name = "??"
++	description = "????????????????????"
+ 	string_id = "CORPSE_TICKS"
+ 	required_tier = 1
+ 	cost = 5
+@@ -100,16 +100,16 @@
+ 
+ /// INFESTATION CHARGE CAPACITY TECHS
+ /datum/chimeric_tech_node/infestation_capacity_1
+-	name = "Enhanced Infestation Capacity"
+-	description = "Increases maximum infestation charges to 5."
++	name = "??????"
++	description = "???????????5??"
+ 	string_id = "INFESTATION_TIER1"
+ 	required_tier = 1
+ 	cost = 20
+ 	selection_weight = 10
+ 
+ /datum/chimeric_tech_node/infestation_capacity_2
+-	name = "Superior Infestation Capacity"
+-	description = "Increases maximum infestation charges to 9."
++	name = "??????"
++	description = "???????????9??"
+ 	string_id = "INFESTATION_TIER2"
+ 	required_tier = 2
+ 	cost = 30
+@@ -117,8 +117,8 @@
+ 	prerequisites = list("INFESTATION_TIER1")
+ 
+ /datum/chimeric_tech_node/infestation_capacity_3
+-	name = "Reveal The Divine Gift Of Pestra"
+-	description = "Increases maximum infestation charges to 10. At 10 charges, Master pestrans gain access to Divine Rebirth."
++	name = "?????????"
++	description = "???????????10????10???????????????????"
+ 	string_id = "INFESTATION_TIER3"
+ 	required_tier = 3
+ 	cost = 50
+@@ -126,16 +126,16 @@
+ 	prerequisites = list("INFESTATION_TIER2")
+ 
+ /datum/chimeric_tech_node/infestation_rot_snacks
+-	name = "Food Contamination"
+-	description = "Allows infestation to be cast on food items, rotting them and granting half a charge."
++	name = "????"
++	description = "?????????????????????????"
+ 	string_id = "INFESTATION_ROT_SNACKS"
+ 	required_tier = 1
+ 	cost = 8
+ 	selection_weight = 4
+ 
+ /datum/chimeric_tech_node/infestation_rot_multiple_1
+-	name = "Spread Contamination"
+-	description = "Infestation now affects 1 additional nearby food item when cast on snacks."
++	name = "????"
++	description = "??????????????????1????"
+ 	string_id = "INFESTATION_ROT_MULTIPLE_1"
+ 	required_tier = 2
+ 	cost = 25
+@@ -143,8 +143,8 @@
+ 	prerequisites = list("INFESTATION_ROT_SNACKS")
+ 
+ /datum/chimeric_tech_node/infestation_rot_multiple_2
+-	name = "Mass Contamination"
+-	description = "Infestation now affects 3 additional nearby food items when cast on snacks."
++	name = "?????"
++	description = "??????????????????3????"
+ 	string_id = "INFESTATION_ROT_MULTIPLE_2"
+ 	required_tier = 3
+ 	cost = 40
+@@ -152,8 +152,8 @@
+ 	prerequisites = list("INFESTATION_ROT_MULTIPLE_1")
+ 
+ /datum/chimeric_tech_node/infestation_attack_vector
+-	name = "Virulent blade"
+-	description = "Pestilent blade now has a small chance to trigger when landing a successful blow, even whilst the target isn't infected."
++	name = "????"
++	description = "?????????????????????????????"
+ 	string_id = "INFESTATION_ATTACK_VECTOR"
+ 	required_tier = 1
+ 	cost = 5

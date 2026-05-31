@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/artstuff.dm b/code/game/objects/structures/artstuff.dm
+--- a/code/game/objects/structures/artstuff.dm
++++ b/code/game/objects/structures/artstuff.dm
+@@ -1,6 +1,6 @@
+ /obj/item/canvas
+-	name = "canvas"
+-	desc = "A perfect place to paint"
++	name = "画布"
++	desc = "作画的绝佳之处。"
+ 
+ 	icon = 'icons/roguetown/items/paint_supplies/canvas_32.dmi'
+ 	icon_state = "canvas"

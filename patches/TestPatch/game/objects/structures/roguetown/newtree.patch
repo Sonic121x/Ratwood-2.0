@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/roguetown/newtree.dm b/code/game/objects/structures/roguetown/newtree.dm
+--- a/code/game/objects/structures/roguetown/newtree.dm
++++ b/code/game/objects/structures/roguetown/newtree.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/flora/newtree
+-	name = "tree"
+-	desc = "The thick core of a tree."
++	name = "树"
++	desc = "树木粗壮的主干。"
+ 	icon = 'icons/roguetown/misc/tree.dmi'
+ 	icon_state = "tree1"
+ 	var/tree_type = 1

@@ -1,0 +1,126 @@
+--- a/code/modules/roguetown/roguemachine/merchant/_goldface.dm
++++ b/code/modules/roguetown/roguemachine/merchant/_goldface.dm
+@@ -13,8 +13,8 @@
+ #define UPGRADE_NOTAX		(1<<0)
+ 
+ /obj/structure/roguemachine/goldface
+-	name = "GOLDFACE"
+-	desc = "Gilded tombs do worms enfold."
++	name = "金面"
++	desc = "镀金的墓穴，终会被蠕虫包裹。"
+ 	icon = 'icons/roguetown/misc/machines.dmi'
+ 	icon_state = "streetvendor1"
+ 	density = TRUE
+@@ -27,7 +27,7 @@
+ 	var/upgrade_flags
+ 	var/current_cat = "1"
+ 	// Motto displayed at the top of the vendor interface
+-	var/motto = "GOLDFACE - In the name of greed."
++	var/motto = "金面 - 以贪欲之名。"
+ 	lockid = "merchant"
+ 	// Which job can access profit from this vendor
+ 	var/profit_id = list("Merchant", "Shophand")
+@@ -72,12 +72,12 @@
+ 	var/extra_fee = 0 // Extra Guild Fees on purchases. Meant to make publicface very unprofitable.
+ 
+ /obj/structure/roguemachine/goldface/public
+-	name = "SILVERFACE"
++	name = "银面"
+ 	extra_fee = 0.5
+ 	profit_margin = 0.5
+ 	is_public = TRUE
+ 	locked = FALSE
+-	motto = "SILVERFACE - Commerce for all."
++	motto = "银面 - 人人皆可经商。"
+ 	// There's no profit but this is for futureproofing
+ 	profit_id = list("Merchant", "Shophand")
+ 	value_record_key = STATS_SILVERFACE_VALUE_SPENT
+@@ -107,7 +107,7 @@
+ 	. += "<span class='info'>The vendor can be locked by a key. The merchant make no profit whatsoever from the public vendor as the guild charges an exorbitant markup for automated handling.</span>"
+ 
+ /obj/structure/roguemachine/goldface/public/smith
+-	name = "Smithy's SILVERFACE"
++	name = "铁匠的银面"
+ 	lockid = "crafterguild"
+ 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
+ 	categories = list(
+@@ -122,10 +122,10 @@
+ 
+ /obj/structure/roguemachine/goldface/public/smith/examine()
+ 	. = ..()
+-	. += span_info("This can be locked by a guild's key")
++	. += span_info("它可以用公会钥匙锁上。")
+ 
+ /obj/structure/roguemachine/goldface/public/tailor
+-	name = "Tailor's SILVERFACE"
++	name = "裁缝的银面"
+ 	lockid = "tailor"
+ 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
+ 	categories = list(
+@@ -138,10 +138,10 @@
+ 
+ /obj/structure/roguemachine/goldface/public/tailor/examine()
+ 	. = ..()
+-	. += span_info("This can be locked by a tailor's key")
++	. += span_info("它可以用裁缝钥匙锁上。")
+ 
+ /obj/structure/roguemachine/goldface/public/apothecary
+-	name = "Apothecary's SILVERFACE"
++	name = "药剂师的银面"
+ 	lockid = "physician"
+ 	profit_id = list("Head Physician","Apothecary")
+ 	categories = list(
+@@ -151,7 +151,7 @@
+ 
+ /obj/structure/roguemachine/goldface/public/apothecary/examine()
+ 	. = ..()
+-	. += span_info("This can be locked by a physician's key")
++	. += span_info("它可以用医师钥匙锁上。")
+ 
+ /obj/structure/roguemachine/goldface/Initialize(mapload)
+ 	. = ..()
+@@ -175,7 +175,7 @@
+ 			update_icon()
+ 			return attack_hand(user)
+ 		else
+-			to_chat(user, span_warning("Wrong key."))
++			to_chat(user, span_warning("钥匙不对。"))
+ 			return
+ 	else if(istype(P, /obj/item/storage/keyring))
+ 		var/right_key = FALSE
+@@ -187,7 +187,7 @@
+ 				update_icon()
+ 				return attack_hand(user)
+ 		if(!right_key)
+-			to_chat(user, span_warning("Wrong key."))
++			to_chat(user, span_warning("钥匙不对。"))
+ 			return
+ 	if(istype(P, /obj/item/roguecoin/gilbranze))
+ 		return
+@@ -222,7 +222,7 @@
+ 			cost = cost + tax_amt
+ 		cost = round(cost)
+ 		if(budget < cost)
+-			say("Not enough!")
++			say("不够！")
+ 			return
+ 		budget -= cost
+ 		wgain += profit
+@@ -262,7 +262,7 @@
+ 			options += "Enable Paying Taxes"
+ 		else
+ 			options += "Stop Paying Taxes"
+-		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
++		var/select = input(usr, "请选择一个选项。", "", null) as null|anything in options
+ 		if(!select)
+ 			return
+ 		if(!usr.canUseTopic(src, BE_CLOSE) || (locked & !is_public))
+@@ -283,7 +283,7 @@
+ 	if(!ishuman(user))
+ 		return
+ 	if(locked && !is_public)
+-		to_chat(user, span_warning("It's locked. Of course."))
++		to_chat(user, span_warning("锁着呢，当然。"))
+ 		return
+ 	user.changeNext_move(CLICK_CD_INTENTCAP)
+ 	playsound(loc, 'sound/misc/gold_menu.ogg', 100, FALSE, -1)

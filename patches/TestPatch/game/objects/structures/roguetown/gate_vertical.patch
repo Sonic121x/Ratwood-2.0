@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/roguetown/gate_vertical.dm b/code/game/objects/structures/roguetown/gate_vertical.dm
+--- a/code/game/objects/structures/roguetown/gate_vertical.dm
++++ b/code/game/objects/structures/roguetown/gate_vertical.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/gate_vertical
+-	name = "vertical gate"
+-	desc = "A steel gate that blocks north-south."
++	name = "竖直闸门"
++	desc = "一道阻挡南北通行的钢制闸门。"
+ 	icon = 'icons/roguetown/misc/verticalgate.dmi'
+ 	icon_state = "gate1"
+ 	density = TRUE

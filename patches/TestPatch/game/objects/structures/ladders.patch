@@ -1,0 +1,20 @@
+diff --git a/code/game/objects/structures/ladders.dm b/code/game/objects/structures/ladders.dm
+--- a/code/game/objects/structures/ladders.dm
++++ b/code/game/objects/structures/ladders.dm
+@@ -1,6 +1,6 @@
+ // Basic ladder. By default links to the z-level above/below.
+ /obj/structure/ladder
+-	name = "ladder"
++	name = "梯子"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "ladder11"
+@@ -93,7 +93,7 @@
+ 		return
+ 
+ 	if (up && down)
+-		var/result = alert("Go up or down [src]?", "Ladder", "Up", "Down", "Cancel")
++		var/result = alert("要沿着[src]向上还是向下？", "Ladder", "Up", "Down", "Cancel")
+ 		if (!in_range(src, user))
+ 			return  // nice try
+ 		switch(result)

@@ -1,0 +1,10 @@
+diff --git a/code/game/objects/structures/spawner.dm b/code/game/objects/structures/spawner.dm
+--- a/code/game/objects/structures/spawner.dm
++++ b/code/game/objects/structures/spawner.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/spawner
+-	name = "monster nest"
++	name = "怪物巢穴"
+ 	icon = 'icons/mob/animal.dmi'
+ 	icon_state = "hole"
+ 	max_integrity = 100

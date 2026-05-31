@@ -1,17 +1,4 @@
-From ddeee6e01365a3cb7abd3f3a5c402c40f1f52ca3 Mon Sep 17 00:00:00 2001
-From: Translation Patch Toolkit <translation@local>
-Date: Mon, 25 May 2026 12:43:47 +0800
-Subject: [PATCH] 翻译 code/modules/roguetown/roguejobs/gravedigger/hole.dm
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
----
- code/modules/roguetown/roguejobs/gravedigger/hole.dm | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/code/modules/roguetown/roguejobs/gravedigger/hole.dm b/code/modules/roguetown/roguejobs/gravedigger/hole.dm
-index 03494f93cc3f..112ec20421ea 100644
 --- a/code/modules/roguetown/roguejobs/gravedigger/hole.dm
 +++ b/code/modules/roguetown/roguejobs/gravedigger/hole.dm
 @@ -109,16 +109,16 @@
@@ -36,5 +23,3 @@ index 03494f93cc3f..112ec20421ea 100644
  					playsound(user, 'sound/misc/bellold.ogg', 20)
  					new /obj/item/soulthread((get_turf(user)))
  					corpse.burialrited = TRUE
--- 
-Translation Patch Toolkit

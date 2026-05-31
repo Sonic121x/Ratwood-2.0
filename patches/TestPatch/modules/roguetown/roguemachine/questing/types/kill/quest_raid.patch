@@ -1,0 +1,20 @@
+diff --git a/code/modules/roguetown/roguemachine/questing/types/kill/quest_raid.dm b/code/modules/roguetown/roguemachine/questing/types/kill/quest_raid.dm
+--- a/code/modules/roguetown/roguemachine/questing/types/kill/quest_raid.dm
++++ b/code/modules/roguetown/roguemachine/questing/types/kill/quest_raid.dm
+@@ -7,13 +7,13 @@
+ /datum/quest/kill/raid/get_title()
+ 	if(title)
+ 		return title
+-	return "Stop a raid of [pick("slavers", "bandits", "brigands", "raiders")]"
++	return "阻止一场[pick("奴隶贩子", "匪徒", "强盗", "劫掠者")]的袭击"
+ 
+ /datum/quest/kill/raid/get_objective_text()
+-	return "Eliminate [progress_required] [initial(target_mob_type.name)]."
++	return "消灭 [progress_required] 个 [initial(target_mob_type.name)]。"
+ 
+ /datum/quest/kill/raid/get_location_text()
+-	return target_spawn_area ? "Reported raid in [target_spawn_area] region." : "Reported infestations in The Vale region."
++	return target_spawn_area ? "据报 [target_spawn_area] 区域遭遇了袭扰。" : "据报山谷地区遭遇了袭扰。"
+ 
+ /datum/quest/kill/raid/generate(obj/effect/landmark/quest_spawner/landmark)
+ 	..()

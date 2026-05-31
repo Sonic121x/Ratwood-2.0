@@ -1,0 +1,16 @@
+diff --git a/code/game/objects/structures/roguetown/meathook.dm b/code/game/objects/structures/roguetown/meathook.dm
+--- a/code/game/objects/structures/roguetown/meathook.dm
++++ b/code/game/objects/structures/roguetown/meathook.dm
+@@ -2,10 +2,10 @@
+ #define VIABLE_MOB_CHECK(X) (isliving(X))
+ 
+ /obj/structure/meathook
+-	name = "meathook"
++	name = "肉钩"
+ 	icon = 'icons/roguetown/misc/tallstructure.dmi'
+ 	icon_state = "meathook"
+-	desc = "A hook used to secure livestock for butchering."
++	desc = "一种用来固定牲畜、便于屠宰的钩子。"
+ 	density = TRUE
+ 	anchored = TRUE
+ 	max_integrity = 250

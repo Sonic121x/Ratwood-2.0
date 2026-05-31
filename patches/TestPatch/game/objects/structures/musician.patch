@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/musician.dm b/code/game/objects/structures/musician.dm
+--- a/code/game/objects/structures/musician.dm
++++ b/code/game/objects/structures/musician.dm
+@@ -208,7 +208,7 @@
+ 		else
+ 			tempo = sanitize_tempo(5) // default 120 BPM
+ 		if(lines.len > MUSIC_MAXLINES)
+-			to_chat(usr, "Too many lines!")
++			to_chat(usr, "行数太多！")
+ 			lines.Cut(MUSIC_MAXLINES + 1)
+ 		var/linenum = 1
+ 		for(var/l in lines)

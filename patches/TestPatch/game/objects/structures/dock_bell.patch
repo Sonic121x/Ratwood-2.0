@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/dock_bell.dm b/code/game/objects/structures/dock_bell.dm
+--- a/code/game/objects/structures/dock_bell.dm
++++ b/code/game/objects/structures/dock_bell.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/dock_bell
+-	name = "Dock Bell"
+-	desc = "A loud bell that carries its sound to the nearby ports. Signals merchants we are looking to trade."
++	name = "码头钟"
++	desc = "一口声音能传到附近港口的大钟。它向商人传达我们正在寻求交易。"
+ 
+ 
+ 	icon = 'icons/roguetown/misc/tallstructure.dmi'

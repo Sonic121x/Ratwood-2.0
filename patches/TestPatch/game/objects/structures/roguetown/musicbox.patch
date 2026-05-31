@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/roguetown/musicbox.dm b/code/game/objects/structures/roguetown/musicbox.dm
+--- a/code/game/objects/structures/roguetown/musicbox.dm
++++ b/code/game/objects/structures/roguetown/musicbox.dm
+@@ -47,8 +47,8 @@
+ 			L.add_stress(stress2give)
+ 
+ /obj/structure/roguemachine/musicbox
+-	name = "wax music device"
+-	desc = "A marvelous device invented to record sermons. Aleksandar Gemrald Sparks invented this machine to discover prophecies of Psydon's return but failed. It now brings us strange music from another realm."
++	name = "蜡筒音乐机"
++	desc = "一台为了记录布道而发明的奇妙装置。它如今为我们带来了来自异界的奇异音乐。"
+ 	icon = 'icons/roguetown/misc/machines.dmi'
+ 	icon_state = "music0"
+ 	density = TRUE

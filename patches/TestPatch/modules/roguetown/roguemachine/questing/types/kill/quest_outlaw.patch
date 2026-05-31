@@ -1,0 +1,16 @@
+diff --git a/code/modules/roguetown/roguemachine/questing/types/kill/quest_outlaw.dm b/code/modules/roguetown/roguemachine/questing/types/kill/quest_outlaw.dm
+--- a/code/modules/roguetown/roguemachine/questing/types/kill/quest_outlaw.dm
++++ b/code/modules/roguetown/roguemachine/questing/types/kill/quest_outlaw.dm
+@@ -9,10 +9,10 @@
+ /datum/quest/kill/outlaw/get_title()
+ 	if(title)
+ 		return title
+-	return "Defeat [pick("the terrible", "the dreadful", "the monstrous", "the infamous")] [pick("warlord", "beast", "sorcerer", "abomination")]"
++	return "击败[pick("那个可怕的", "那个骇人的", "那个畸恶的", "那个恶名昭彰的")][pick("战酋", "凶兽", "巫师", "孽畜")]"
+ 
+ /datum/quest/kill/outlaw/get_objective_text()
+-	return "Slay [initial(target_mob_type.name)]."
++	return "猎杀 [initial(target_mob_type.name)]。"
+ 
+ /datum/quest/kill/outlaw/generate(obj/effect/landmark/quest_spawner/landmark)
+ 	..()

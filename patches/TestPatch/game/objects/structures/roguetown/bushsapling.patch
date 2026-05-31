@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/roguetown/bushsapling.dm b/code/game/objects/structures/roguetown/bushsapling.dm
+--- a/code/game/objects/structures/roguetown/bushsapling.dm
++++ b/code/game/objects/structures/roguetown/bushsapling.dm
+@@ -20,8 +20,8 @@
+ //==============================================================================
+ 
+ /obj/structure/bush_sapling
+-	name = "bush sapling"
+-	desc = "A small bush sapling, ready for planting. It draws from the soil while it takes root."
++	name = "灌木幼苗"
++	desc = "一株可供种植的小灌木幼苗。它会在扎根时从土壤中汲取养分。"
+ 	anchored = TRUE
+ 	density = FALSE
+ 	opacity = FALSE

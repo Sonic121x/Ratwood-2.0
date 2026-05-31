@@ -1,0 +1,11 @@
+diff --git a/code/game/objects/structures/traveltile.dm b/code/game/objects/structures/traveltile.dm
+--- a/code/game/objects/structures/traveltile.dm
++++ b/code/game/objects/structures/traveltile.dm
+@@ -1,6 +1,6 @@
+ 
+ /obj/structure/fluff/testportal
+-	name = "portal"
++	name = "传送门"
+ 	icon_state = "shitportal"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	density = FALSE

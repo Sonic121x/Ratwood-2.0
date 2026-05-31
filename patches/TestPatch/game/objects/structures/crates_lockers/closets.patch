@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/crates_lockers/closets.dm b/code/game/objects/structures/crates_lockers/closets.dm
+--- a/code/game/objects/structures/crates_lockers/closets.dm
++++ b/code/game/objects/structures/crates_lockers/closets.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/closet
+-	name = "closet"
++	name = "储物柜"
+ 	desc = ""
+ 	icon_state = "generic"
+ 	density = TRUE
+@@ -131,7 +131,7 @@
+ /obj/structure/closet/proc/can_open(mob/living/user)
+ 	if(welded || locked)
+ 		if(user)
+-			to_chat(user, span_warning("Locked.") )
++			to_chat(user, span_warning("锁着。") )
+ 		return FALSE
+ //	var/turf/T = get_turf(src)
+ //	for(var/mob/living/L in T)

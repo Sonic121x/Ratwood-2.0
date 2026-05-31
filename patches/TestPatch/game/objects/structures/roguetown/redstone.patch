@@ -1,0 +1,21 @@
+diff --git a/code/game/objects/structures/roguetown/redstone.dm b/code/game/objects/structures/roguetown/redstone.dm
+--- a/code/game/objects/structures/roguetown/redstone.dm
++++ b/code/game/objects/structures/roguetown/redstone.dm
+@@ -41,7 +41,7 @@
+ 	if (istype(src, /obj/structure/englauncher))
+ 		var obj/structure/englauncher/launchercheck = src
+ 		if(launchercheck.locked)
+-			to_chat(user, span_warning("It's locked!"))
++			to_chat(user, span_warning("它锁住了！"))
+ 			playsound(loc, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+ 			return
+ 	//check if the buffer is a trigger or reaction
+@@ -134,7 +134,7 @@
+ 	return
+ 
+ /obj/structure/lever
+-	name = "lever"
++	name = "拉杆"
+ 	desc = "I want to pull it."
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "leverfloor0"

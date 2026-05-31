@@ -1,0 +1,12 @@
+diff --git a/code/game/objects/structures/plasticflaps.dm b/code/game/objects/structures/plasticflaps.dm
+--- a/code/game/objects/structures/plasticflaps.dm
++++ b/code/game/objects/structures/plasticflaps.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/plasticflaps
+-	name = "iron bars"
+-	desc = "It seems pretty rusty."
++	name = "铁栏杆"
++	desc = "看起来相当锈。"
+ 	gender = PLURAL
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "bars_passage"

@@ -1,0 +1,21 @@
+diff --git a/code/game/objects/structures/decorations/stone_path.dm b/code/game/objects/structures/decorations/stone_path.dm
+--- a/code/game/objects/structures/decorations/stone_path.dm
++++ b/code/game/objects/structures/decorations/stone_path.dm
+@@ -4,7 +4,7 @@
+ #define UNIQUE_EFFECT 3 //The tile has some sort of unique effect when crossed.
+ //stone tiles for boss arenas
+ /obj/structure/stone_tile
+-	name = "stone tile"
++	name = "石砖"
+ 	icon = 'icons/turf/boss_floors.dmi'
+ 	icon_state = "pristine_tile1"
+ 	layer = ABOVE_OPEN_TURF_LAYER
+@@ -115,7 +115,7 @@
+ 	tile_key = "cracked_block"
+ 
+ /obj/structure/stone_tile/slab/cracked
+-	name = "cracked stone slab"
++	name = "裂纹石板"
+ 	icon_state = "cracked_slab1"
+ 	tile_key = "cracked_slab"
+ 	tile_random_sprite_max = 1

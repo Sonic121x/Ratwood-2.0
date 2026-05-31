@@ -1,0 +1,311 @@
+diff --git a/code/modules/farming/plant_def.dm b/code/modules/farming/plant_def.dm
+--- a/code/modules/farming/plant_def.dm
++++ b/code/modules/farming/plant_def.dm
+@@ -9,9 +9,9 @@
+ /datum/plant_def
+ 	abstract_type = /datum/plant_def
+ 	/// Name of the plant
+-	var/name = "Some plant"
++	var/name = "某种植物"
+ 	/// Description of the plant
+-	var/desc = "Sure is a plant."
++	var/desc = "看起来确实是一株植物。"
+ 	var/icon = 'icons/roguetown/misc/crops.dmi'
+ 	var/icon_state
+ 	/// Loot the plant will yield for uprooting it
+@@ -48,7 +48,7 @@
+ 
+ //................ Quick-growing plants ...............................
+ /datum/plant_def/cabbage
+-	name = "cabbages"
++	name = "卷心菜"
+ 	icon_state = "cabbage"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+ 	produce_amount_min = 3
+@@ -56,7 +56,7 @@
+ 	maturation_time = FAST_GROWING
+ 
+ /datum/plant_def/onion
+-	name = "onion patch"
++	name = "洋葱地"
+ 	icon_state = "onion"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
+ 	produce_amount_min = 3
+@@ -64,7 +64,7 @@
+ 	maturation_time = FAST_GROWING
+ 
+ /datum/plant_def/wheat
+-	name = "wheat stalks"
++	name = "小麦秸秆"
+ 	icon_state = "wheat"
+ 	produce_type = /obj/item/natural/chaff/wheat
+ 	produce_amount_min = 3
+@@ -74,7 +74,7 @@
+ 	produce_time = 2 MINUTES
+ 
+ /datum/plant_def/oat
+-	name = "oat stalks"
++	name = "燕麦秸秆"
+ 	icon_state = "oat"
+ 	produce_type = /obj/item/natural/chaff/oat
+ 	produce_amount_min = 3
+@@ -85,7 +85,7 @@
+ 
+ // Rice are faster growing but drain way more water
+ /datum/plant_def/rice
+-	name = "rice stalks"
++	name = "稻秆"
+ 	icon_state = "rice"
+ 	produce_type = /obj/item/natural/chaff/rice
+ 	produce_amount_min = 3
+@@ -96,7 +96,7 @@
+ 	water_drain_rate = 4 / (1 MINUTES)
+ 
+ /datum/plant_def/pipeweed
+-	name = "westleach plant"
++	name = "威斯利奇植株"
+ 	icon_state = "westleach"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
+ 	produce_amount_min = 3
+@@ -107,7 +107,7 @@
+ //................ Perennial Trees ............................... (No replanting needed)
+ // Long growth time, fast-ish produce time. High initial nutrition cost.
+ /datum/plant_def/tree
+-	name = "Testing Plant Do Not Use"
++	name = "测试植物，请勿使用"
+ 	perennial = TRUE
+ 	produce_amount_min = 2
+ 	produce_amount_max = 4
+@@ -117,32 +117,32 @@
+ 	produce_time = 3 MINUTES
+ 
+ /datum/plant_def/tree/apple
+-	name = "apple tree"
++	name = "苹果树"
+ 	icon_state = "apple"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/apple
+ 
+ /datum/plant_def/tree/pear
+-	name = "pear tree"
++	name = "梨树"
+ 	icon_state = "pear"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/pear
+ 
+ /datum/plant_def/tree/plum
+-	name = "plum tree"
++	name = "李子树"
+ 	icon_state = "plum"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/plum
+ 
+ /datum/plant_def/tree/tangerine
+-	name = "tangerine tree"
++	name = "蜜柑树"
+ 	icon_state = "tangerine"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine
+ 
+ /datum/plant_def/tree/lime
+-	name = "lime tree"
++	name = "青柠树"
+ 	icon_state = "lime"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/lime
+ 
+ /datum/plant_def/tree/lemon
+-	name = "lemon tree"
++	name = "柠檬树"
+ 	icon_state = "lemon"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/lemon
+ 
+@@ -150,7 +150,7 @@
+ // Medium growth time, fast-ish produce time. Moderate Initial Nutrition Cost. Less Harvest. Stick
+ 
+ /datum/plant_def/bush/
+-	name = "Testing Bush Do Not Use"
++	name = "测试灌木，请勿使用"
+ 	perennial = TRUE
+ 	produce_amount_min = 2
+ 	produce_amount_max = 3
+@@ -160,37 +160,37 @@
+ 	maturation_time = FAST_GROWING
+ 
+ /datum/plant_def/bush/berry
+-	name = "jackberry bush"
++	name = "杰克莓灌木"
+ 	icon_state = "berry"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue
+ 
+ /datum/plant_def/bush/berry_poison
+-	name = "jackberry bush"
++	name = "杰克莓灌木"
+ 	icon_state = "berry"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison
+ 
+ /datum/plant_def/bush/strawberry
+-	name = "strawberry bush"
++	name = "草莓丛"
+ 	icon_state = "strawberry"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/strawberry
+ 
+ /datum/plant_def/bush/blackberry
+-	name = "blackberry bush"
++	name = "黑莓丛"
+ 	icon_state = "blackberry"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry
+ 
+ /datum/plant_def/bush/raspberry
+-	name = "raspberry bush"
++	name = "覆盆子丛"
+ 	icon_state = "raspberry"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/raspberry
+ 
+ /datum/plant_def/bush/tomato
+-	name = "tomato vines"
++	name = "番茄藤"
+ 	icon_state = "tomato"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
+ 
+ /datum/plant_def/sugarcane
+-	name = "sugarcane"
++	name = "甘蔗"
+ 	icon_state = "sugarcane"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/sugarcane
+ 	perennial = TRUE
+@@ -199,7 +199,7 @@
+ 
+ //................ Nutrition-efficient plants ...............................
+ /datum/plant_def/potato
+-	name = "potato plant"
++	name = "土豆植株"
+ 	icon_state = "potato"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
+ 	produce_amount_min = 3
+@@ -208,7 +208,7 @@
+ 	water_drain_rate = 1 / (1 MINUTES)
+ 
+ /datum/plant_def/turnip
+-	name = "turnip patch"
++	name = "芜菁地"
+ 	icon_state = "turnip"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/vegetable/turnip
+ 	produce_amount_min = 4
+@@ -219,7 +219,7 @@
+ 
+ //................ Water-efficient plants ...............................
+ /datum/plant_def/swampweed
+-	name = "swampweed plant"
++	name = "沼烟草植株"
+ 	icon_state = "swampweed"
+ 	produce_amount_min = 3
+ 	produce_amount_max = 5
+@@ -228,7 +228,7 @@
+ 
+ //................ Flowers ...............................
+ /datum/plant_def/sunflower
+-	name = "sunflowers"
++	name = "向日葵"
+ 	icon_state = "sunflower"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/sunflower
+ 	produce_amount_min = 3
+@@ -238,7 +238,7 @@
+ 	water_drain_rate = 1 / (2 MINUTES)
+ 
+ /datum/plant_def/fyritiusflower
+-	name = "fyritius flowers"
++	name = "菲里提乌斯花"
+ 	icon_state = "fyritius"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+ 	produce_amount_min = 1
+@@ -246,7 +246,7 @@
+ 	maturation_time = FAST_GROWING
+ 
+ /datum/plant_def/manabloom
+-	name = "manabloom"
++	name = "法力花"
+ 	icon_state = "manabloom"
+ 	produce_amount_min = 1
+ 	produce_amount_max = 3
+@@ -254,7 +254,7 @@
+ 	maturation_time = FAST_GROWING
+ 
+ // /datum/plant_def/manabloom
+-// 	name = "manabloom"
++// 	name = "法力花"
+ // 	icon_state = "manabloom"
+ // 	produce_type = /obj/item/reagent_containers/food/snacks/grown/manabloom
+ // 	produce_amount_min = 1
+@@ -264,14 +264,14 @@
+ // 	can_grow_underground = TRUE
+ 
+ /datum/plant_def/garlick
+-	name = "garlick sprouts"
++	name = "蒜苗"
+ 	icon_state = "onion"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+ 	produce_amount_min = 2
+ 	produce_amount_max = 3
+ 
+ /datum/plant_def/poppy
+-	name = "poppies"
++	name = "罂粟"
+ 	icon_state = "poppy"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/poppy
+ 	produce_amount_min = 1
+@@ -280,7 +280,7 @@
+ 	water_drain_rate = 1 / (2 MINUTES)
+ 
+ /datum/plant_def/nut
+-	name = "rocknut tree"
++	name = "岩坚果树"
+ 	icon_state = "nuts"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/nut
+ 	uproot_loot = list(/obj/item/grown/log/tree/small)
+@@ -293,21 +293,21 @@
+ 	water_drain_rate = 1 / (2 MINUTES)
+ 
+ /datum/plant_def/coffee
+-	name = "coffee bush"
++	name = "咖啡灌木"
+ 	icon_state = "coffee"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/coffee
+ 	produce_amount_min = 2
+ 	produce_amount_max = 3
+ 
+ /datum/plant_def/tea
+-	name = "tea bush"
++	name = "茶树丛"
+ 	icon_state = "tea"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/tea
+ 	produce_amount_min = 2
+ 	produce_amount_max = 3
+ 
+ /datum/plant_def/pumpkin
+-	name = "pumpkin plant"
++	name = "南瓜藤"
+ 	icon_state = "pumpkin"
+ 	produce_type = /obj/item/natural/shellplant/pumpkin
+ 	produce_amount_min = 2
+@@ -318,7 +318,7 @@
+ 	produce_time = 3 MINUTES
+ 
+ /datum/plant_def/carrot
+-	name = "carrot tops"
++	name = "胡萝卜叶丛"
+ 	icon_state = "carrot"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/carrot
+ 	produce_amount_min = 1
+@@ -327,14 +327,14 @@
+ 	maturation_time = SLOW_GROWING
+ 
+ /datum/plant_def/cucumber
+-	name = "cucumber vines"
++	name = "黄瓜藤"
+ 	icon_state = "cucumber"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/cucumber
+ 	produce_amount_min = 2
+ 	produce_amount_max = 3
+ 
+ /datum/plant_def/eggplant
+-	name = "eggplant stalk"
++	name = "茄子植株"
+ 	icon_state = "eggplant"
+ 	produce_type = /obj/item/reagent_containers/food/snacks/grown/eggplant
+ 	produce_amount_min = 2

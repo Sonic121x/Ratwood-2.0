@@ -1,0 +1,155 @@
+diff --git a/code/modules/farming/big_liquid_containers.dm b/code/modules/farming/big_liquid_containers.dm
+--- a/code/modules/farming/big_liquid_containers.dm
++++ b/code/modules/farming/big_liquid_containers.dm
+@@ -13,7 +13,7 @@
+ 
+ // Water
+ /obj/structure/fermentation_keg/random/water
+-	name = "water barrel"
++	name = "水桶"
+ 
+ /obj/structure/fermentation_keg/random/water/Initialize(mapload)
+ 	. = ..()
+@@ -24,14 +24,14 @@
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, rand(0,900))
+ 
+ /obj/structure/fermentation_keg/water
+-	name = "water barrel"
++	name = "水桶"
+ 
+ /obj/structure/fermentation_keg/water/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/water,900)
+ 
+ /obj/structure/fermentation_keg/beer
+-	desc = "A barrel containing a generic housebrewed small-beer."
++	desc = "一桶装着普通家酿淡啤酒的木桶。"
+ 
+ /obj/structure/fermentation_keg/beer/Initialize(mapload)
+ 	. = ..()
+@@ -40,21 +40,21 @@
+ 
+ // Alcohol 
+ /obj/structure/fermentation_keg/zagul
+-	desc = "A barrel marked with a coastal zagul. An extremely cheap lager hailing from a local brewery."
++	desc = "桶身印着沿海扎古尔的标记。这是一款出自本地酒坊、便宜得惊人的拉格啤酒。"
+ 
+ /obj/structure/fermentation_keg/zagul/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/zagul,900)
+ 
+ /obj/structure/fermentation_keg/blackgoat
+-	desc = "A barrel marked with the Black Goat Kriek emblem. A fruit-sour beer brewed with jackberries for a tangy taste."
++	desc = "桶身印着黑山羊克里克的徽记。这是一种以杰克莓酿成、酸中带果香的啤酒。"
+ 
+ /obj/structure/fermentation_keg/blackgoat/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/blackgoat,900)
+ 
+ /obj/structure/fermentation_keg/hagwoodbitter
+-	desc = "A barrel marked with the Hagwood Bitters emblem. The least bitter thing to be exported from the Grenzelhoft occupied state of Zorn."
++	desc = "桶身印着女巫林苦啤的徽记。这大概是佐恩这片被格伦泽尔霍夫占据之地出口过最不苦的东西了。"
+ 
+ /obj/structure/fermentation_keg/hagwoodbitter/Initialize(mapload)
+ 	. = ..()
+@@ -63,28 +63,28 @@
+ 
+ 
+ /obj/structure/fermentation_keg/jagt
+-	desc = "A barrel with a Saigabuck mark. This dark liquid is the strongest alcohol coming out of Grenzelhoft available. A herbal schnapps, sure to burn out any disease."
++	desc = "桶身带有赛加雄鹿的标记。这种深色酒液是如今能买到的最烈格伦泽尔霍夫酒之一。一种草本烈酒，仿佛能把病都烧干净。"
+ 
+ /obj/structure/fermentation_keg/jagt/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/jagdtrunk,900)
+ 
+ /obj/structure/fermentation_keg/sourwine
+-	desc = "A barrel that contains a Grenzelhoftian classic. An extremely sour wine that is watered down with mineral water."
++	desc = "桶里装着格伦泽尔霍夫的经典酒款。一种酸得惊人的葡萄酒，还掺了矿泉水稀释。"
+ 
+ /obj/structure/fermentation_keg/sourwine/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/sourwine,900)
+ 
+ /obj/structure/fermentation_keg/whitewine
+-	desc = "A barrel that contains an Otavan luxury. A sweeter tasting wine that often serves to highlight and enhance savoury notes. The rarer the vintage, the harder the find. The names of the ingredients often grow more ostentatious the closer you get to the capital."
++	desc = "桶里装着奥塔瓦的奢侈佳酿。这是一种偏甜的葡萄酒，常被用来衬托和加强咸鲜风味。年份越稀有越难寻，越靠近首都，配料名也越爱夸耀排场。"
+ 
+ /obj/structure/fermentation_keg/whitewine/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/whitewine,900)
+ 
+ /obj/structure/fermentation_keg/redwine
+-	desc = "A barrel that contains an Otavan luxury. It was originally served as part of Psydonic communion, eventually becoming wildly enjoyed within Otava to the point of being oft paired with EVERY meal."
++	desc = "桶里装着奥塔瓦的奢侈饮品。它原本是普赛多尼克圣餐的一部分，后来在奥塔瓦风靡到几乎顿顿都有人拿来配餐。"
+ 
+ /obj/structure/fermentation_keg/redwine/Initialize(mapload)
+ 	. = ..()
+@@ -92,21 +92,21 @@
+ 
+ 
+ /obj/structure/fermentation_keg/onion
+-	desc = "A barrel with surprisingly no maker's mark. On the wood is carved the word \"ONI-N\", the 'O' seems to have been scratched out completely. Dubious. On the barrel is a paper glued to it showing an illustration of rats guarding a cellar filled with bottles against a hoard of beggars."
++	desc = "这只桶出奇地没有酿造者标记。木板上刻着\"ONI-N\"一词，其中字母\"O\"似乎被完全刮掉了。相当可疑。桶上还糊着一张纸，画的是一群老鼠守着装满酒瓶的地窖，抵挡一大群乞丐。"
+ 
+ /obj/structure/fermentation_keg/onion/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/onion,900)
+ 
+ /obj/structure/fermentation_keg/saigamilk
+-	desc = "A barrel with a Running Saiga mark. A form of alcohol brewed from the milk of a saiga and salt. Common drink of the nomads living in the steppe."
++	desc = "桶身印着奔跑赛加的标记。这是一种以赛加奶和盐酿成的酒，是草原游牧民常见的饮品。"
+ 
+ /obj/structure/fermentation_keg/saigamilk/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/saigamilk,900)
+ 
+ /obj/structure/fermentation_keg/kgsunsake
+-	desc = "A barrel with a Golden Swan mark. A translucient, pale-blue liquid made from rice. A favourite drink of the warlords and nobles of Kazengun."
++	desc = "桶身印着金天鹅的标记。这种半透明的淡蓝酒液以稻米酿成，是风间郡军阀与贵族们钟爱的饮品。"
+ 
+ /obj/structure/fermentation_keg/kgsunsake/Initialize(mapload)
+ 	. = ..()
+@@ -114,7 +114,7 @@
+ 
+ 
+ /obj/structure/fermentation_keg/avarrice
+-	desc = "A barrel with a simple mark. A murky, white wine made from rice grown in the steppes of Avar."
++	desc = "桶身带着一个朴素标记。这是一种用阿瓦尔草原稻米酿成的浑浊白酒。"
+ 
+ /obj/structure/fermentation_keg/avarrice/Initialize(mapload)
+ 	. = ..()
+@@ -122,29 +122,28 @@
+ 
+ 
+ /obj/structure/fermentation_keg/gronmead
+-	desc = "A barrel with a Shieldmaiden Brewery mark. A deep red honey-wine, refined with the red berries native to Gronns highlands."
++	desc = "桶身印着盾侍女酒坊的标记。这是一种深红色的蜜酒，用格隆高地特有的红莓调制而成。"
+ 
+ /obj/structure/fermentation_keg/gronmead/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/ethanol/gronnmead,900)
+ 
+ /obj/structure/fermentation_keg/coffee
+-	desc = "A barrel with the mark of a brewed cup of coffee.  A strong, bitter drink that rejuvenates the body and mind."
++	desc = "桶身印着一杯热咖啡的图案。这是一种浓烈苦涩、却能提振身心的饮品。"
+ 
+ /obj/structure/fermentation_keg/coffee/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/caffeine/coffee, 900)
+ 
+ /obj/structure/fermentation_keg/tea
+-	desc = "A barrel with several Kazengunese characters on it indicating the vintage of the tea within. A mild, refreshing drink that calms the mind and body. Hopefully its quality is \
+-	still intact after being stored in a barrel."
++	desc = "桶身写着几行风间郡文字，标明里面茶叶的年份。这是一种温和清爽、能安神宁心的饮品。希望它在桶里存放这么久后品质还没坏。"
+ 
+ /obj/structure/fermentation_keg/tea/Initialize(mapload)
+ 	. = ..()
+ 	reagents.add_reagent(/datum/reagent/consumable/caffeine/tea, 900)
+ 
+ /obj/structure/fermentation_keg/rose_tea
+-	desc = "A barrel with a mark of a rose over it. Generic rose tea brewed with rose. Refreshing and calming, with minor restorative effects."
++	desc = "桶身印着一朵玫瑰。这是以玫瑰冲泡的普通玫瑰茶，清爽安神，并带有轻微恢复效果。"
+ 
+ /obj/structure/fermentation_keg/rose_tea/Initialize(mapload)
+ 	. = ..()

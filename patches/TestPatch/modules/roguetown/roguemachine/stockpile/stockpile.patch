@@ -1,0 +1,62 @@
+--- a/code/modules/roguetown/roguemachine/stockpile/stockpile.dm
++++ b/code/modules/roguetown/roguemachine/stockpile/stockpile.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/roguemachine/stockpile
+-	name = "stockpile"
++	name = "仓储机"
+ 	desc = ""
+ 	icon = 'icons/roguetown/misc/machines.dmi'
+ 	icon_state = "stockpile_vendor"
+@@ -23,7 +23,7 @@
+ 
+ /obj/structure/roguemachine/stockpile/examine(mob/user)
+ 	. = ..()
+-	. += span_info("Right click to sell everything in front of the stockpile.")
++	. += span_info("右键可出售仓储机前方的全部物品。")
+ 
+ /obj/structure/roguemachine/stockpile/Topic(href, href_list)
+ 	. = ..()
+@@ -153,7 +153,7 @@
+ 					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+ 				if(nopay)
+ 					SStreasury.economic_output += R.export_price * B.amount // Still count
+-					say("Stockpile is full, no payment.")
++					say("仓储机已满，不予付款。")
+ 				else
+ 					var/amt = R.payout_price * B.amount
+ 					SStreasury.economic_output += R.export_price * B.amount
+@@ -162,7 +162,7 @@
+ 					SStreasury.treasury_value += taxed
+ 					amt -= taxed
+ 					if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty. [taxed]m taxed") && message == TRUE)
+-						say("No account found. Submit your fingers to a Meister for inspection.")
++						say("未找到账户。请把手指交给 Meister 检查。")
+ 					else
+ 						record_round_statistic(STATS_STOCKPILE_EXPANSES, amt)
+ 			continue
+@@ -190,7 +190,7 @@
+ 			var/true_value = I.get_real_price()
+ 			if(nopay)
+ 				SStreasury.economic_output += true_value // Still count as economic output hah
+-				say("Stockpile is full, no payment.")
++				say("仓储机已满，不予付款。")
+ 			else if(amt)
+ 				SStreasury.economic_output += true_value
+ 				var/tax_rate = SStreasury.get_tax_value_for(H)
+@@ -198,7 +198,7 @@
+ 				SStreasury.treasury_value += taxed
+ 				amt -= taxed
+ 				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty. [taxed]m taxed") && message == TRUE)
+-					say("No account found. Submit your fingers to a Meister for inspection.")
++					say("未找到账户。请把手指交给 Meister 检查。")
+ 			record_round_statistic(STATS_STOCKPILE_EXPANSES, amt) // Unlike deposit, a treasure minting is equal to both expending and profiting at the same time
+ 			record_round_statistic(STATS_STOCKPILE_REVENUE, true_value)
+ 			return
+@@ -221,6 +221,6 @@
+ 	if(ishuman(user))
+ 		for(var/obj/I in get_turf(src))
+ 			attemptsell(I, user, FALSE, FALSE)
+-		say("Bulk selling in progress...")
++		say("批量出售进行中……")
+ 		playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+ 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)

@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/roguetown/wooden_horse.dm b/code/game/objects/structures/roguetown/wooden_horse.dm
+--- a/code/game/objects/structures/roguetown/wooden_horse.dm
++++ b/code/game/objects/structures/roguetown/wooden_horse.dm
+@@ -203,8 +203,8 @@
+ 				to_chat(victim, span_warning("The sharp edge of the [name] digs agonizingly into your nethers!"))
+ 
+ /obj/structure/wooden_horse/mobile
+-	name = "wooden horse"
+-	desc = "An affordable means of transportation for all walks of life, though few wish to ride. Watching the galloping of unlucky riders is one of the favorite pastimes of local nobility."
++	name = "木马"
++	desc = "对各阶层来说都算负担得起的“代步工具”，不过几乎没人真想骑上去。看那些倒霉骑手颠簸受罪，是本地贵族最爱的消遣之一。"
+ 	icon = 'icons/roguetown/misc/structure.dmi'
+ 	icon_state = "wooden_horse2"
+ 	anchored = FALSE

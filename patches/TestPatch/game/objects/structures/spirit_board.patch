@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/spirit_board.dm b/code/game/objects/structures/spirit_board.dm
+--- a/code/game/objects/structures/spirit_board.dm
++++ b/code/game/objects/structures/spirit_board.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/spirit_board
+-	name = "spirit board"
++	name = "通灵板"
+ 	desc = ""
+ 	icon = 'icons/obj/objects.dmi'
+ 	icon_state = "spirit_board"
+@@ -34,7 +34,7 @@
+ 		virgin = FALSE
+ 		notify_ghosts("Someone has begun playing with a [src.name] in [get_area(src)]!", source = src, header = "Spirit board")
+ 
+-	planchette = input("Choose the letter.", "Seance!") as null|anything in list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
++	planchette = input("选择字母。", "Seance!") as null|anything in list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
+ 	if(!planchette || !Adjacent(M) || next_use > world.time)
+ 		return
+ 	M.log_message("picked a letter on [src], which was \"[planchette]\".", LOG_GAME)

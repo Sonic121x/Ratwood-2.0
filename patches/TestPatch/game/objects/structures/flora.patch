@@ -1,0 +1,21 @@
+diff --git a/code/game/objects/structures/flora.dm b/code/game/objects/structures/flora.dm
+--- a/code/game/objects/structures/flora.dm
++++ b/code/game/objects/structures/flora.dm
+@@ -29,7 +29,7 @@
+ 
+ //trees
+ /obj/structure/flora/tree
+-	name = "tree"
++	name = "树"
+ 	desc = ""
+ 	density = TRUE
+ 	pixel_x = -16
+@@ -320,7 +320,7 @@
+ 	. = ..()
+ 
+ /obj/item/twohanded/required/kirbyplants
+-	name = "potted plant"
++	name = "盆栽"
+ 	icon = 'icons/obj/flora/plants.dmi'
+ 	icon_state = "plant-01"
+ 	desc = ""

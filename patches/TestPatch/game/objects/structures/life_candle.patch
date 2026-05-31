@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/life_candle.dm b/code/game/objects/structures/life_candle.dm
+--- a/code/game/objects/structures/life_candle.dm
++++ b/code/game/objects/structures/life_candle.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/life_candle
+-	name = "life candle"
++	name = "生命蜡烛"
+ 	desc = ""
+ 	icon = 'icons/obj/candle.dmi'
+ 	icon_state = "candle1"
+@@ -31,7 +31,7 @@
+ 	if(!user.mind)
+ 		return
+ 	if(user.mind in linked_minds)
+-		user.visible_message(span_notice("[user] reaches out and pinches the flame of [src]."), span_warning("I sever the connection between myself and [src]."))
++		user.visible_message(span_notice("[user] reaches out and pinches the flame of [src]."), span_warning("我切断了自己与[src]之间的联系。"))
+ 		linked_minds -= user.mind
+ 	else
+ 		user.visible_message(span_notice("[user] touches [src]. It seems to respond to [user.p_their()] presence!"), span_warning("I create a connection between you and [src]."))

@@ -1,0 +1,19 @@
+diff --git a/code/game/objects/structures/divine.dm b/code/game/objects/structures/divine.dm
+--- a/code/game/objects/structures/divine.dm
++++ b/code/game/objects/structures/divine.dm
+@@ -1,5 +1,5 @@
+ /obj/structure/sacrificealtar
+-	name = "sacrificial altar"
++	name = "献祭祭坛"
+ 	desc = ""
+ 	icon = 'icons/obj/hand_of_god_structures.dmi'
+ 	icon_state = "sacrificealtar"
+@@ -21,7 +21,7 @@
+ 	message_admins("[ADMIN_LOOKUPFLW(user)] has sacrificed [key_name_admin(L)] on the sacrificial altar at [AREACOORD(src)].")
+ 
+ /obj/structure/healingfountain
+-	name = "healing fountain"
++	name = "治疗喷泉"
+ 	desc = ""
+ 	icon = 'icons/obj/hand_of_god_structures.dmi'
+ 	icon_state = "fountain"

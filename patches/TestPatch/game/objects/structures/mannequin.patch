@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/mannequin.dm b/code/game/objects/structures/mannequin.dm
+--- a/code/game/objects/structures/mannequin.dm
++++ b/code/game/objects/structures/mannequin.dm
+@@ -726,8 +726,8 @@
+ 
+ ////Subtypes/////
+ /obj/structure/mannequin/male
+-	name = "mannequin"
+-	desc = "It's unnvervingly still..."
++	name = "人体模特"
++	desc = "它安静得让人不安……"
+ 	icon_state = "man"
+ 
+ /*

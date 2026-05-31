@@ -1,0 +1,21 @@
+diff --git a/code/modules/farming/plough.dm b/code/modules/farming/plough.dm
+--- a/code/modules/farming/plough.dm
++++ b/code/modules/farming/plough.dm
+@@ -1,6 +1,6 @@
+ /obj/structure/plough
+-	name = "plough"
+-	desc = "A wooden plough with iron blades to till the earth for crops."
++	name = "犁"
++	desc = "一把装有铁刃的木犁，用来翻地种庄稼。"
+ 	icon = 'icons/obj/structures/plough.dmi'
+ 	icon_state = "plough"
+ 	density = TRUE
+@@ -12,7 +12,7 @@
+ 
+ /obj/structure/plough/examine(mob/user)
+ 	. = ..()
+-	. += span_notice("TILTS any dirt/grass tile it's dragged over - requires user to drag it while having SNEAK active.")
++	. += span_notice("在潜行状态下拖动它，经过任意泥地/草地时都会自动翻土。")
+ 
+ /obj/structure/plough/Moved(oldLoc, movement_dir)
+ 	. = ..()

@@ -1,0 +1,14 @@
+diff --git a/code/game/objects/structures/roguetown/gate.dm b/code/game/objects/structures/roguetown/gate.dm
+--- a/code/game/objects/structures/roguetown/gate.dm
++++ b/code/game/objects/structures/roguetown/gate.dm
+@@ -1,8 +1,8 @@
+ GLOBAL_LIST_EMPTY(biggates)
+ 
+ /obj/structure/gate
+-	name = "gate"
+-	desc = "A strong steel gate."
++	name = "闸门"
++	desc = "一道坚固的钢制闸门。"
+ 	icon = 'icons/roguetown/misc/gate.dmi'
+ 	icon_state = "gate1"
+ 	density = TRUE
