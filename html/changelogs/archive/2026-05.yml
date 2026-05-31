@@ -663,3 +663,16 @@
       paalloy before into ancient subtypes of steel, and aalloy into decrepit which
       are subtypes of ancient whenever applicable, not player facing at all but dramatically
       improves the appearance and organization of the code
+2026-05-30:
+  2whatever2:
+  - balance: Gnolls can now take statpacks.
+  Jamdrawers:
+  - refactor: cleaned up some area-code for some dungeons
+  - bugfix: rockhill harbor now counts as a 'town' area
+  coffeecoffeecoffee:
+  - rscadd: Added Watchman Blue and Midnight Violet as default colors, added a new
+      Astrata's Yellow, renaming the old.
+  - rscdel: Removed Xylix Pink as a default selectable color.
+  zeroisthebiggay:
+  - balance: significantly reduced the price of emberwine in the wretch camp's copperface
+      vendor for your gooning needs
