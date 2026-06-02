@@ -1,0 +1,4 @@
+author: "Gamer-Johnson"
+delete-after: True
+changes:
+  - bugfix: "fixed the new door from #1735"
