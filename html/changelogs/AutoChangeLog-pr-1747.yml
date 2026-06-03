@@ -1,0 +1,5 @@
+author: "Xander3359"
+delete-after: True
+changes:
+  - code_imp: "Turns hiding spots into a component"
+  - bugfix: "Breaking a bush while someone is hiding inside it no longer deletes them"
