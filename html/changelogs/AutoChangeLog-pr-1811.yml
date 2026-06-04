@@ -1,0 +1,4 @@
+author: "wikimody"
+delete-after: True
+changes:
+  - rscadd: "Inquisitors designated trackers now have the easier tracking trait"

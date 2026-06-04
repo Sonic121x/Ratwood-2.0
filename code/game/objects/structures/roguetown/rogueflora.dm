@@ -391,7 +391,10 @@
 
 /obj/structure/flora/roguegrass/verdant/Initialize(mapload)
 	. = ..()
-	icon_state = "sparsegrass_[rand(1, 3)]"
+	if(prob(60))
+		icon_state = "sparsegrass_[rand(1, 3)]"
+	else
+		icon_state = "fullgrass_[rand(1, 3)]"
 
 /obj/structure/flora/roguegrass/reedbush
 	name = "reed bush"

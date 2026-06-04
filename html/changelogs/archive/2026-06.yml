@@ -38,3 +38,15 @@
 2026-06-03:
   WolfOrion:
   - bugfix: gives goblins a physical descriptor, just like most everyone else
+2026-06-04:
+  DelineFortune:
+  - rscadd: graggar's net fixed
+  Guidesu:
+  - rscadd: Port Nova Sector shadekin ear and tail (not all of them) for wild-kin
+      in specific.
+  Xander3359:
+  - bugfix: Fixed some regenerating skin only being repairable once
+  - code_imp: Adds the controller overview, which is a debug verb that can visualize
+      subsystem costs
+  - code_imp: Turns hiding spots into a component
+  - bugfix: Breaking a bush while someone is hiding inside it no longer deletes them
