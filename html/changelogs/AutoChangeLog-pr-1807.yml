@@ -1,4 +1,0 @@
-author: "DelineFortune"
-delete-after: True
-changes:
-  - bugfix: "hemophages actually heal hp and stamina from blood feeding"

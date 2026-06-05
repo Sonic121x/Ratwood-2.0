@@ -50,3 +50,8 @@
       subsystem costs
   - code_imp: Turns hiding spots into a component
   - bugfix: Breaking a bush while someone is hiding inside it no longer deletes them
+2026-06-05:
+  DelineFortune:
+  - bugfix: hemophages actually heal hp and stamina from blood feeding
+  wikimody:
+  - rscadd: Inquisitors designated trackers now have the easier tracking trait
