@@ -27,5 +27,5 @@ jobs:
 
       - name: 编译源码
         run: |
-          echo "$HOME/BYOND/byond/bin" >> $GITHUB_PATH
+          source $HOME/BYOND/byond/bin/byondsetup
           bash tools/build/build.sh
