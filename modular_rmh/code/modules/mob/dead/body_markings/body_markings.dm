@@ -21,7 +21,7 @@
 
 /datum/body_marking/diagonal_eyes
 	icon = 'modular_rmh/icons/mob/body_markings/marks.dmi'
-	name = "Diagonal Eyes"
+	name = "再来一次试试"
 	icon_state = "diagonal_eyes"
 	default_color = "FF0000"
 	affected_bodyparts = HEAD
