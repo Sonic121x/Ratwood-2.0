@@ -92,13 +92,6 @@
 		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 			qdel(H)
 
-/obj/item/storage/belt/rogue/pouch/coins/gilbranze/Initialize(mapload)
-	. = ..()
-	var/obj/item/roguecoin/gilbranze/pile/H = new(loc)
-	if(istype(H))
-		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
-			qdel(H)
-
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
 	new /obj/effect/spawner/lootdrop/roguetown/dungeon/food(src)
 
@@ -122,8 +115,8 @@
 	new /obj/item/needle(src)
 
 /obj/item/storage/belt/rogue/pouch/zigarrete
-	name = "zig box"
-	desc = "Used to hold someone's zigs and flints."
+	name = "烟盒"
+	desc = "用来装烟卷和打火石。"
 	icon_state = "smokebox"
 	item_state = "smokebox"
 	component_type = /datum/component/storage/concrete/grid/zigbox

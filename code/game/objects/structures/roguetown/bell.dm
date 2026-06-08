@@ -1,6 +1,6 @@
 /obj/structure/boatbell
-	name = "bell"
-	desc = "This is the doomspeller of Roguetown."
+	name = "钟"
+	desc = "这是 Roguetown 的丧钟。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "bell"
 	density = FALSE
@@ -17,14 +17,14 @@
 /obj/structure/boatbell/attack_hand(mob/user)
 	if(world.time < last_ring + 50)
 		return
-	user.visible_message(span_info("[user] rings the bell."))
+	user.visible_message(span_info("[user]敲响了钟。"))
 	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
 	last_ring = world.time
 
 /obj/structure/boatbell/fluff/attack_hand(mob/user)
 	if(world.time < last_ring + 50)
 		return
-	user.visible_message(span_info("[user] rings the bell."))
+	user.visible_message(span_info("[user]敲响了钟。"))
 	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
 	last_ring = world.time
 
