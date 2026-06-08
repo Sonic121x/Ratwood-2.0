@@ -1,4 +1,4 @@
-name: PR Build Check
+name: PR 编译检查
 
 on:
   pull_request:
