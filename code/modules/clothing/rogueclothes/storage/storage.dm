@@ -39,8 +39,8 @@
 	..()	
 
 /obj/item/storage/belt/rogue/leather
-	name = "belt"
-	desc = "A fine leather strap notched with holes for a buckle to secure itself."
+	name = "腰带"
+	desc = "一条优质皮带，上面打好了孔，用以扣合固定。"
 	icon_state = "leather"
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
@@ -166,8 +166,8 @@
 	sewrepair = TRUE
 
 /obj/item/storage/backpack/rogue/satchel
-	name = "satchel"
-	desc = "Modest, easy on the shoulders, and holds a respectable amount."
+	name = "挎包"
+	desc = "朴素轻便，对肩膀友好，且容量可观。"
 	icon_state = "satchel"
 	item_state = "satchel"
 	icon = 'icons/roguetown/clothing/storage.dmi'
@@ -236,8 +236,8 @@
 	component_type = /datum/component/storage/concrete/roguetown/satchel
 
 /obj/item/storage/backpack/rogue/backpack
-	name = "backpack"
-	desc = "One of the best ways to carry many things while keeping your hands free."
+	name = "背包"
+	desc = "携带大量物品同时解放双手的最佳方式之一。"
 	icon_state = "backpack"
 	item_state = "backpack"
 	icon = 'icons/roguetown/clothing/storage.dmi'

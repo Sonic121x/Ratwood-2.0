@@ -60,7 +60,7 @@
 /obj/item/roguecoin/examine(mob/user)
 	. = ..()
 	if(quantity > 1)
-		. += span_info("\Roman [quantity] coins.")
+		. += span_info("\Roman [quantity] 枚硬币。")
 
 /obj/item/roguecoin/proc/merge(obj/item/roguecoin/G, mob/user)
 	if(!G)
@@ -89,12 +89,12 @@
 		return ..()
 	if(quantity == 1)
 		if(HAS_TRAIT(user, TRAIT_BLACKLEG))
-			switch(alert(user, "What will you rig the next coin flip to?","XYLIX","Heads","Tails","Play fair"))
-				if("Heads")
+			switch(alert(user, "你要如何操纵下一次掷硬币的结果？","XYLIX","正面","反面","公平游戏"))
+				if("正面")
 					rigged_outcome = 1
-				if("Tails")
+				if("反面")
 					rigged_outcome = 2
-				if("Play fair")
+				if("公平游戏")
 					rigged_outcome = 0
 		return
 	var/obj/item/roguecoin/new_coin = new type()
@@ -109,7 +109,7 @@
 		var/amt_text = " (1 to [quantity])"
 		if(quantity == 1)
 			amt_text = ""
-		var/amount = input(user, "How many [plural_name] to split?[amt_text]", null, round(quantity/2, 1)) as null|num
+		var/amount = input(user, "要分出多少[plural_name]？[amt_text]", null, round(quantity/2, 1)) as null|num
 		if(QDELETED(user) || QDELETED(src) || !user.Adjacent(src)) // if coins were consumed/user was deleted/moved away, don't split
 			return
 		amount = clamp(amount, 0, quantity)
@@ -137,10 +137,10 @@
 	flip_cd = world.time
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)
 	if(prob(50))
-		user.visible_message(span_info("[user] flips the coin. Heads!"))
+		user.visible_message(span_info("[user]抛起硬币。正面！"))
 		heads_tails = TRUE
 	else
-		user.visible_message(span_info("[user] flips the coin. Tails!"))
+		user.visible_message(span_info("[user]抛起硬币。反面！"))
 		heads_tails = FALSE
 	update_icon()
 
@@ -153,10 +153,10 @@
 	flip_cd = world.time
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)	
 	if(prob(50))
-		user.visible_message(span_info("[user] flips the coin. ENDVRE!"))
+		user.visible_message(span_info("[user]抛起硬币。ENDVRE！"))
 		heads_tails = TRUE
 	else
-		user.visible_message(span_info("[user] flips the coin. LYVE!"))
+		user.visible_message(span_info("[user]抛起硬币。LYVE！"))
 		heads_tails = FALSE
 	update_icon()
 
@@ -218,31 +218,31 @@
 
 //GOLD
 /obj/item/roguecoin/gold
-	name = "zenar"
-	desc = "A gold coin bearing the symbol of the Taurus and the pre-kingdom psycross. These were in the best condition of the provincial gold mints, the rest were melted down."
+	name = "泽纳"
+	desc = "一枚金币，上有金牛座与前王国万神殿十字架的符号。这些是省立金铸局中品相最好的，其余的都被熔掉了。"
 	icon_state = "g1"
 	sellprice = 10
 	base_type = CTYPE_GOLD
-	plural_name = "zenarii"
+	plural_name = "泽纳里"
 
 
 // SILVER
 /obj/item/roguecoin/silver
-	name = "ziliqua"
-	desc = "An ancient silver coin still in use due to their remarkable ability to last the ages."
+	name = "兹利夸"
+	desc = "一种仍在使用的古银币，因其历经岁月而不朽的卓越品质得以流传。"
 	icon_state = "s1"
 	sellprice = 5
 	base_type = CTYPE_SILV
-	plural_name = "ziliquae"
+	plural_name = "兹利夸伊"
 
 // COPPER
 /obj/item/roguecoin/copper
-	name = "zenny"
-	desc = "A brand-new bronze coin minted by the capital in an effort to be rid of the financial use of silver."
+	name = "泽尼"
+	desc = "一枚崭新的铜币，由首都铸造，意在摆脱对银的财政依赖。"
 	icon_state = "c1"
 	sellprice = 1
 	base_type = CTYPE_COPP
-	plural_name = "zennies"
+	plural_name = "泽尼斯"
 
 // ANCIENT
 /obj/item/roguecoin/gilbranze

@@ -5,8 +5,8 @@
 #define OIL_CONSUMED 5 // Amount of oil consumed per deep fry (1 fat = 4 fry)
 
 /obj/machinery/light/rogue/firebowl
-	name = "brazier"
-	desc = "A solid stone brazier. It's as sturdy as the mountains themselves."
+	name = "火盆"
+	desc = "一个坚固的石制火盆，像山岳一样牢靠。"
 	icon = 'icons/roguetown/misc/lighting.dmi'
 	icon_state = "stonefire1"
 	bulb_colour = "#ffa35c"
@@ -40,7 +40,7 @@
 		var/mob/living/carbon/human/H = user
 
 		if(istype(H))
-			H.visible_message("<span class='info'>[H] warms [user.p_their()] hand over the fire.</span>")
+			H.visible_message("<span class='info'>[H]在火边暖手。</span>")
 
 			if(do_after(H, 15, target = src) && H.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT - 75)
 				H.adjust_bodytemperature(75)
@@ -48,8 +48,8 @@
 
 	else
 		if(icon_state == "[base_state]over")
-			user.visible_message("<span class='notice'>[user] starts to pick up [src]...</span>", \
-				"<span class='notice'>I start to pick up [src]...</span>")
+			user.visible_message("<span class='notice'>[user]开始搬起[src]...</span>", \
+				"<span class='notice'>我开始搬起[src]...</span>")
 			if(do_after(user, 30, target = src))
 				icon_state = "[base_state]0"
 			return
@@ -63,10 +63,10 @@
 /obj/machinery/light/rogue/firebowl/stump
 	icon_state = "stumpfire1"
 	base_state = "stumpfire"
-	desc = "Somewhat crude, but it lights the long winding paths throughout the land."
+	desc = "有些简陋，却照亮了这片土地上蜿蜒漫长的小路。"
 
 /obj/machinery/light/rogue/firebowl/church
-	desc = "A wide metal bowl mounted on a stand for a healthy roaring flame."
+	desc = "一个宽阔的金属火盆，架在底座上，燃起旺盛的火焰。"
 	icon_state = "churchfire1"
 	base_state = "churchfire"
 
@@ -186,8 +186,8 @@
 	cookonme = TRUE
 
 /obj/machinery/light/rogue/candle
-	name = "candles"
-	desc = "Tiny flames flicker to the slightest breeze and offer enough light to see."
+	name = "蜡烛"
+	desc = "微弱的火焰随风摇曳，提供足够的光亮让人看清周围。"
 	icon_state = "wallcandle1"
 	base_state = "wallcandle"
 	crossfire = FALSE
@@ -317,8 +317,8 @@
 	bulb_colour = "#ff13d8ff"
 
 /obj/machinery/light/rogue/torchholder
-	name = "sconce"
-	desc = "A wall-mounted fixture that allows a torch to illuminate the area while freeing the hands for other tasks."
+	name = "壁式火把架"
+	desc = "一个安装在墙上的装置，可将火把置于其上照亮周围，同时腾出双手从事其他工作。"
 	icon_state = "torchwall1"
 	var/torch_off_state = "torchwall0"
 	base_state = "torchwall"
@@ -480,8 +480,8 @@
 
 
 /obj/machinery/light/rogue/hearth
-	name = "hearth"
-	desc = "A hearth of stones carefully arranged to support a pan or a pot above a steady bed of embers."
+	name = "炉灶"
+	desc = "用石头精心砌成的炉灶，可将煎锅或炖锅稳稳地架在余烬之上。"
 	icon_state = "hearth1"
 	base_state = "hearth"
 	density = TRUE
@@ -517,22 +517,22 @@
 	if(attachment)
 		if(istype(attachment, /obj/item/cooking/pan))
 			if(food)
-				. += "There's \a [attachment.name] on it with \a [food.name] in it."
+				. += "上面有一个[attachment.name]，里面放着[food.name]。"
 			else
-				. += "There's \a [attachment.name] on it."
+				. += "上面有一个[attachment.name]。"
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/isboiling = attachment.reagents.chem_temp > MIN_STEW_TEMPERATURE
 			if(isboiling)
-				. += "There's \a [attachment.name] on it, it is boiling." // This is common shorthand for the contents don't nitpick
+				. += "上面有一个[attachment.name]，正在沸腾。" // This is common shorthand for the contents don't nitpick
 			else
-				. += "There's \a [attachment.name] on it. It is not boiling"
-		. += span_notice("Right click to start fanning the flame and make it cook faster.")
+				. += "上面有一个[attachment.name]，没有沸腾。"
+		. += span_notice("右键点击煽火，加快烹饪速度。")
 
 /obj/machinery/light/rogue/hearth/attack_right(mob/user)
 	var/datum/skill/craft/cooking/cs = user?.get_skill_level(/datum/skill/craft/cooking)
 	var/cooktime_divisor = get_cooktime_divisor(cs)
 	if(do_after(user, 2 SECONDS / cooktime_divisor, target = src))
-		to_chat(user, span_info("I fan the flame on [src].")) // Until line combine is on by default gotta do this to avoid spam
+		to_chat(user, span_info("我煽了煽[src]的火焰。")) // Until line combine is on by default gotta do this to avoid spam
 		try_cook(cooktime_divisor)
 		attack_right(user)
 
@@ -553,22 +553,22 @@
 		if(istype(attachment, /obj/item/reagent_containers/glass/crucible))
 			var/obj/item/reagent_containers/glass/crucible/crucible = attachment
 			if(crucible.hot)
-				to_chat(user, span_warning("The crucible is too hot to add ingots! Wait for it to cool down."))
+				to_chat(user, span_warning("坩埚太烫了，无法放入锭！等它冷却下来。"))
 				return
 
 			if(istype(W, /obj/item/ingot/iron) || istype(W, /obj/item/ingot/steel))
 				if(crucible.get_total_ingots() >= crucible.max_ingots)
-					to_chat(user, span_warning("The crucible is full."))
+					to_chat(user, span_warning("坩埚已满。"))
 					return
 
-				user.visible_message(span_info("[user] places an ingot into the crucible."))
+				user.visible_message(span_info("[user]将一块锭放入坩埚中。"))
 				if(do_after(user, 10, target = src))
 					var/ingot_type = W.type
 					if(crucible.add_ingot(ingot_type, user) > 0)
 						qdel(W)
 				return
 		if(istype(W, /obj/item/reagent_containers/glass/bowl))
-			to_chat(user, "<span class='notice'>Remove the pot from the hearth first.</span>")
+			to_chat(user, "<span class='notice'>先把锅从炉灶上拿开。</span>")
 			return
 		if(istype(attachment, /obj/item/cooking/pan))
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
@@ -599,22 +599,22 @@
 				var/obj/item/reagent_containers/food/snacks/S = W
 				if(S.fat_yield)
 					if(pot.reagents.has_reagent(/datum/reagent/water))
-						to_chat(user, span_warning("You can't render fat in a pot with water!"))
+						to_chat(user, span_warning("你不能在有水的锅里炼油！"))
 						return
 					if(do_after(user, 2 SECONDS / cooktime_divisor, target = src))
-						user.visible_message(span_info("[user] melts [S] in the pot.</span>"))
+						user.visible_message(span_info("[user]在锅里融化[S]。"))
 						qdel(S)
 						pot.reagents.add_reagent(/datum/reagent/consumable/oil/tallow, S.fat_yield)
 						return
 				if(pot.reagents.has_reagent(/datum/reagent/consumable/oil/tallow) && S.deep_fried_type)
 					if(!pot.reagents.has_reagent(/datum/reagent/consumable/oil/tallow, OIL_CONSUMED))
-						to_chat(user, span_notice("Not enough tallow."))
+						to_chat(user, span_notice("油不够。"))
 						return
 					if(pot.reagents.has_reagent(/datum/reagent/water))
-						to_chat(user, span_warning("You can't deep fry in a pot with water!"))
+						to_chat(user, span_warning("你不能在有水的锅里油炸！"))
 						return
 					if(do_after(user, DEEP_FRY_TIME / cooktime_divisor, target = src))
-						user.visible_message(span_info("[user] deep fries [S] in the pot.</span>"))
+						user.visible_message(span_info("[user]在锅里油炸了[S]。"))
 						add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 						new S.deep_fried_type(src.loc)
 						qdel(S)
@@ -624,13 +624,13 @@
 				for(var/I in R.inputs)
 					if(istype(W, I))
 						if(!pot.reagents.has_reagent(/datum/reagent/water, VOLUME_PER_STEW_COOK + VOLUME_PER_STEW_COOK_AFTER))
-							to_chat(user, span_notice("Not enough water."))
+							to_chat(user, span_notice("水不够。"))
 							return
 						if(pot.reagents.chem_temp < MIN_STEW_TEMPERATURE)
-							to_chat(user, span_notice("[pot] isn't boiling!</span>"))
+							to_chat(user, span_notice("[pot]还没沸腾！"))
 							return
 						if(do_after(user, 2 SECONDS / cooktime_divisor, target = src))
-							user.visible_message(span_info("[user] places [W] into the pot.</span>"))
+							user.visible_message(span_info("[user]把[W]放入锅中。"))
 							add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 							qdel(W)
 							playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
@@ -686,7 +686,7 @@
 		if(on)
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				H.visible_message("<span class='info'>[H] warms [user.p_their()] hand over the fire.</span>")
+				H.visible_message("<span class='info'>[H]在火边暖手。</span>")
 
 				if(do_after(H, 15, target = src) && H.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT - 75)
 					H.adjust_bodytemperature(75)
@@ -734,7 +734,7 @@
 
 /obj/machinery/light/rogue/hearth/onkick(mob/user)
 	if(isliving(user) && on)
-		user.visible_message(span_info("[user] snuffs [src]."))
+		user.visible_message(span_info("[user]踢灭了[src]。"))
 		burn_out()
 
 /obj/machinery/light/rogue/hearth/Destroy()

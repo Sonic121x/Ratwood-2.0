@@ -1,6 +1,6 @@
 /obj/item/storage/belt/rogue/pouch
-	name = "pouch"
-	desc = "A small sack with a drawstring that allows it to be worn around the neck. Or at the hips, provided you have a belt."
+	name = "束口袋"
+	desc = "一个带拉绳的小袋子，可以挂在脖子上。如果有腰带，也可以挂在腰间。"
 	icon = 'icons/roguetown/clothing/storage.dmi'
 	mob_overlay_icon = null
 	icon_state = "pouch"
@@ -88,6 +88,13 @@
 /obj/item/storage/belt/rogue/pouch/coins/readyuppouch/Initialize(mapload)
 	. = ..()
 	var/obj/item/roguecoin/silver/pile/readyuppile/H = new(loc)
+	if(istype(H))
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
+			qdel(H)
+
+/obj/item/storage/belt/rogue/pouch/coins/gilbranze/Initialize(mapload)
+	. = ..()
+	var/obj/item/roguecoin/gilbranze/pile/H = new(loc)
 	if(istype(H))
 		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 			qdel(H)

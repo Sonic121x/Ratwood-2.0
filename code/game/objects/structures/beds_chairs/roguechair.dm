@@ -279,8 +279,8 @@
 
 
 /obj/structure/chair/stool/rogue
-	name = "stool"
-	desc = "Three stubby legs nailed to the underside of a small round seat. Stable, if simple."
+	name = "凳子"
+	desc = "三条粗短的木凳腿钉在一个小圆座的底面。虽然简陋，但很稳当。"
 	icon_state = "barstool"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	item_chair = /obj/item/chair/stool/bar/rogue

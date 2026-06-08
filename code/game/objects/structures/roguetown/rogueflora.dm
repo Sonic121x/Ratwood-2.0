@@ -2,8 +2,8 @@
 //newtree
 
 /obj/structure/flora/roguetree
-	name = "old tree"
-	desc = "An old wicked tree that not even elves could love."
+	name = "古树"
+	desc = "一棵连精灵都爱不起来的古老邪树。"
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "t1"
 	opacity = 1
@@ -224,8 +224,8 @@
 	return ..()
 
 /obj/structure/flora/roguetree/burnt
-	name = "burnt tree"
-	desc = "Maybe lightning, maybe war, took the life of this once lively tree."
+	name = "烧焦的树"
+	desc = "也许是闪电，也许是战火，夺去了这棵曾经生机勃勃的树木的生命。"
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "t1"
 	stump_type = /obj/structure/flora/roguetree/stump/burnt
@@ -364,8 +364,8 @@
 //newbushes
 
 /obj/structure/flora/roguegrass
-	name = "grass"
-	desc = "Green, soft, and lively."
+	name = "草"
+	desc = "翠绿、柔软，充满生机。"
 	icon = 'icons/roguetown/misc/foliage.dmi'
 	icon_state = "grass1"
 	attacked_sound = "plantcross"
@@ -407,14 +407,14 @@
 	icon_state = "reedbush_[rand(1, 4)]"
 
 /obj/structure/flora/roguegrass/water
-	name = "grass"
-	desc = "This grass is sodden and muddy."
+	name = "草"
+	desc = "这片草地湿漉漉的，满是泥泞。"
 	icon_state = "swampgrass"
 	max_integrity = 5
 
 /obj/structure/flora/roguegrass/water/reeds
-	name = "reeds"
-	desc = "This plant thrives in water, and shelters dangers."
+	name = "芦苇"
+	desc = "这种植物在水中繁茂生长，掩藏着危险。"
 	icon_state = "reeds"
 	opacity = 1
 	max_integrity = 10
@@ -1160,7 +1160,7 @@
 //bushes
 
 /obj/structure/flora/roguegrass/bush/jungle
-	name = "jungle bush"
+	name = "丛林灌木"
 	desc = ""
 	color = "#b9c4bd"
 	icon = 'icons/obj/flora/jungleflora.dmi'

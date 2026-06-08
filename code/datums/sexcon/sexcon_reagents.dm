@@ -1,7 +1,7 @@
 /datum/reagent/consumable/ethanol/beer/emberwine
-	name = "Emberwine"
+	name = "余烬酒"
 	boozepwr = 20
-	taste_description = "searing sweetness"
+	taste_description = "灼热的甜味"
 	taste_mult = 0.5
 	quality = DRINK_VERYGOOD
 	metabolization_rate = 0.02 * REAGENTS_METABOLISM

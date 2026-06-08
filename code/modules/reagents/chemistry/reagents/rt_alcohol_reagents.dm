@@ -1,12 +1,12 @@
 // Just store all of the alcohol reagents that isn't base tg here
 /datum/reagent/consumable/ethanol/beer
-	name = "Beer"
+	name = "啤酒"
 	description = ""
 	color = "#a17c10" // rgb: 102, 67, 0
 	nutriment_factor = 0.1
 	boozepwr = 25
-	taste_description = "ale"
-	glass_name = "glass of beer"
+	taste_description = "麦芽酒"
+	glass_name = "一杯啤酒"
 	glass_desc = ""
 
 /datum/reagent/consumable/ethanol/rum
@@ -568,7 +568,7 @@
 
 /datum/reagent/consumable/ethanol/whipwine // dont ask
 	name = "Magickal Whip Wine"
-	description = "A recipe recently floated into the vale. Magickal Whip Wine is said to increase one's potence and stamina sevenfold."
+	description = "A recipe recently floated into these lands. Magickal Whip Wine is said to increase one's potence and stamina sevenfold."
 	boozepwr = 10 // it's a whip. it's an actual whip.
 	taste_description = "leather, bitter herbs, and regret" // what did you expect
 	color = "#3a1d18"

@@ -50,6 +50,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/job/roguetown/lord/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
 	if(L)
+		var/realmname = SSmapping.map_adjustment.realm_name
 		var/list/chopped_name = splittext(L.real_name, " ")
 		if(length(chopped_name) > 1)
 			chopped_name -= chopped_name[1]
@@ -57,7 +58,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.set_ruler_mob(L)
-		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is [SSticker.rulertype] of Rotwood Vale.</span></span></b>")
+		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is [SSticker.rulertype] of [realmname].</span></span></b>")
 		if(istype(SSticker.regentmob, /mob/living/carbon/human))
 			var/mob/living/carbon/human/regentbuddy = SSticker.regentmob
 			to_chat(L, span_notice("Word reached me on the approach that [regentbuddy.real_name], the [regentbuddy.job], served as regent in my absence."))
@@ -165,7 +166,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/outfit/job/roguetown/lord/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
 	l_hand = /obj/item/rogueweapon/lordscepter
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/seal/crown = 1)
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 
@@ -178,7 +179,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/merchant
 	name = "Merchant Lord"
-	tutorial = "You were always talented with coins and trade. And your talents have brought you to the position of the Lord of Rotwood Vale. You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins. Fighting directly is not your forte\
+	tutorial = "You were always talented with coins and trade. And your talents have brought you to the position of the Lord of the Realm. You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins. Fighting directly is not your forte\
 	But you have plenty of wealth, keen ears, and know a good deal from a bad one."
 	outfit = /datum/outfit/job/roguetown/lord/merchant
 	category_tags = list(CTAG_LORD)
@@ -263,7 +264,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/inbred
 	name = "Inbred Lord"
-	tutorial = "Psydon and Astrata smiles upon you. For despite your inbred and weak body, and your family's conspiracies to remove you from succession, you have somehow become the Lord of Rotwood Vale. May your reign lasts a hundred years."
+	tutorial = "Psydon and Astrata smiles upon you. For despite your inbred and weak body, and your family's conspiracies to remove you from succession, you have somehow become the Lord of the Realm. May your reign lasts a hundred years."
 	outfit = /datum/outfit/job/roguetown/lord/inbred
 	category_tags = list(CTAG_LORD)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_DNR, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)
@@ -314,8 +315,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	return family_guy.real_name
 
 /obj/effect/proc_holder/spell/self/grant_title
-	name = "Grant Title"
-	desc = "Grant someone a title of honor... Or shame."
+	name = "册封头衔"
+	desc = "赐予某人一个彰显荣耀的头衔……抑或是耻辱头衔。"
 	overlay_state = "recruit_titlegrant"
 	antimagic_allowed = TRUE
 	recharge_time = 100
@@ -326,7 +327,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /obj/effect/proc_holder/spell/self/grant_title/cast(list/targets, mob/user = usr)
 	. = ..()
-	var/granted_title = input(user, "What title do you wish to grant?", "[name]") as null|text
+	var/granted_title = input(user, "你想赐予什么样的头衔？", "[name]") as null|text
 	granted_title = reject_bad_text(granted_title, title_length)
 	if(!granted_title)
 		return
@@ -337,17 +338,17 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			continue
 		recruitment[village_idiot.name] = village_idiot
 	if(!length(recruitment))
-		to_chat(user, span_warning("There are no potential honoraries in range."))
+		to_chat(user, span_warning("范围内没有可以接受册封的目标。"))
 		return
-	var/inputty = input(user, "Select an honorary!", "[name]") as anything in recruitment
+	var/inputty = input(user, "选择一位接受册封的人！", "[name]") as anything in recruitment
 	if(inputty)
 		var/mob/living/carbon/human/recruit = recruitment[inputty]
 		if(!QDELETED(recruit) && (recruit in get_hearers_in_view(title_range, user)))
 			INVOKE_ASYNC(src, PROC_REF(village_idiotify), recruit, user, granted_title)
 		else
-			to_chat(user, span_warning("Honorific failed!"))
+			to_chat(user, span_warning("册封失败！"))
 	else
-		to_chat(user, span_warning("Honorific cancelled."))
+		to_chat(user, span_warning("册封已取消。"))
 
 /obj/effect/proc_holder/spell/self/grant_title/proc/can_title(mob/living/carbon/human/recruit)
 	//wtf
@@ -365,10 +366,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	if(QDELETED(recruit) || QDELETED(recruiter) || !granted_title)
 		return FALSE
 	if(GLOB.lord_titles[recruit.real_name])
-		recruiter.say("I HEREBY STRIP YOU, [uppertext(recruit.name)], OF THE TITLE OF [uppertext(GLOB.lord_titles[recruit.real_name])]!")
+		recruiter.say("我在此剥夺你, [uppertext(recruit.name)] 那 [uppertext(GLOB.lord_titles[recruit.real_name])]的头衔!")
 		GLOB.lord_titles -= recruit.real_name
 		return FALSE
-	recruiter.say("I HEREBY GRANT YOU, [uppertext(recruit.name)], THE TITLE OF [uppertext(granted_title)]!")
+	recruiter.say("我在此赐予你, [uppertext(recruit.name)] , [uppertext(granted_title)]的头衔!")
 	REMOVE_TRAIT(recruit, TRAIT_OUTLANDER, ADVENTURER_TRAIT)
 	REMOVE_TRAIT(recruit, TRAIT_OUTLANDER, TRAIT_GENERIC)
 	GLOB.lord_titles[recruit.real_name] = granted_title

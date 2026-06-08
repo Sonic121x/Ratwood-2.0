@@ -264,7 +264,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/railing/border
-	name = "border"
+	name = "护栏"
 	desc = ""
 	icon_state = "border"
 	pass_crawl = FALSE
@@ -331,7 +331,7 @@
 	color = "#cccac5"
 
 /obj/structure/bars
-	name = "bars"
+	name = "铁栏杆"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "bars"
@@ -777,10 +777,11 @@
 
 /obj/structure/fluff/signage/examine(mob/user)
 	. = ..()
+	var/realmname = SSmapping.map_adjustment.realm_name
 	if(!user.is_literate())
 		. += "I have no idea what it says."
 	else
-		. += "It says \"ROTWOOD VALE\""
+		. += "It says \"[realmname]\""
 
 /obj/structure/fluff/buysign
 	icon_state = "signwrote"
@@ -859,7 +860,7 @@
 	..()
 
 /obj/structure/fluff/alch
-	name = "alchemical lab"
+	name = "炼金台"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "alch"
@@ -1206,7 +1207,7 @@
 	..()
 
 /obj/structure/fluff/psycross
-	name = "pantheon cross"
+	name = "万神殿十字架"
 	icon_state = "psycross"
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	break_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
@@ -1217,7 +1218,7 @@
 	layer = BELOW_MOB_LAYER
 	max_integrity = 100
 	var/chance2hear = 30
-	buckleverb = "crucifie"
+	buckleverb = "钉上十字架"
 	can_buckle = 1
 	buckle_lying = 0
 	breakoutextra = 10 MINUTES

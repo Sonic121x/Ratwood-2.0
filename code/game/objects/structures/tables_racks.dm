@@ -253,7 +253,7 @@
  */
 
 /obj/structure/table/wood
-	name = "wooden table"
+	name = "木桌"
 	desc = ""
 	icon = 'icons/roguetown/misc/tables.dmi'
 	icon_state = "tablewood"
@@ -530,7 +530,7 @@
  * Racks
  */
 /obj/structure/rack
-	name = "rack"
+	name = "架子"
 	desc = ""
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"

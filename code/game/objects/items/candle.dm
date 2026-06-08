@@ -1,7 +1,7 @@
 #define CANDLE_LUMINOSITY	3
 /obj/item/candle
-	name = "candle"
-	desc = "A wick repeatedly dipped into melted beespiderwax to form a candle."
+	name = "蜡烛"
+	desc = "一根烛芯反复浸入熔化的蜂蛛蜡中制成的蜡烛。"
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
 	item_state = "candle1"
@@ -88,7 +88,7 @@
 
 /obj/item/candle/attack_self(mob/user)
 	if(put_out_candle())
-		user.visible_message(span_notice("[user] snuffs [src]."))
+		user.visible_message(span_notice("[user]吹灭了[src]。"))
 
 /obj/item/candle/yellow
 	icon = 'icons/roguetown/items/lighting.dmi'
@@ -116,7 +116,7 @@
 /obj/item/candle/skull
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "skullcandle"
-	desc = "A rather macabre way to hold a candle. Fit for crypts and old dusty libraries."
+	desc = "一种相当骇人的持烛方式。适合墓穴和尘封的古老图书馆。"
 	infinite = TRUE
 
 /obj/item/candle/skull/update_icon()

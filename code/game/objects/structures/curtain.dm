@@ -1,5 +1,5 @@
 /obj/structure/curtain
-	name = "curtain"
+	name = "帘子"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	var/icon_type = "curtain" // used in making the icon state

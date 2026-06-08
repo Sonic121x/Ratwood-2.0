@@ -1,6 +1,6 @@
 /obj/item/natural/dirtclod
-	name = "clod"
-	desc = "A handful of earth."
+	name = "土块"
+	desc = "一把泥土。"
 	icon_state = "clod1"
 	dropshrink = 0
 	throwforce = 0

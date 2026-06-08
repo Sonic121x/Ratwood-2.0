@@ -1,5 +1,5 @@
 /obj/item/alch
-	name = "dust"
+	name = "粉末"
 	desc = ""
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "irondust"
@@ -49,23 +49,23 @@
 			perint = FLOOR((lmob.STAPER + lmob.STAINT)/2,1)
 		if(HAS_TRAIT(user,TRAIT_LEGENDARY_ALCHEMIST))
 			if(!isnull(major_name))
-				. += span_notice(" Strongly attuned to making [major_name].")
+				. += span_notice(" 与制作[major_name]的亲和度极高。")
 			if(!isnull(med_name))
-				. += span_notice(" Moderately attuned to making [med_name].")
+				. += span_notice(" 与制作[med_name]的亲和度适中。")
 			if(!isnull(minor_name))
-				. += span_notice(" Minorly attuned to making [minor_name].")
+				. += span_notice(" 与制作[minor_name]有微弱的亲和度。")
 		else
 			if(!isnull(major_smell))
 				if(alch_skill >= SKILL_LEVEL_NOVICE || perint >= 6)
-					. += span_notice(" Smells strongly of [major_smell].")
+					. += span_notice(" 散发着浓烈的[major_smell]气味。")
 			if(!isnull(med_smell))
 				if(alch_skill >= SKILL_LEVEL_APPRENTICE || perint >= 10)
-					. += span_notice(" Smells slightly of [med_smell].")
+					. += span_notice(" 散发着淡淡的[med_smell]气味。")
 			if(!isnull(minor_smell))
 				if(alch_skill >= SKILL_LEVEL_EXPERT || perint >= 16)
-					. += span_notice(" Smells weakly of [minor_smell].")
+					. += span_notice(" 散发着微弱的[minor_smell]气味。")
 /obj/item/alch/viscera
-	name = "viscera"
+	name = "内脏"
 	icon_state = "viscera"
 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
 	med_pot = /datum/alch_cauldron_recipe/health_potion
@@ -79,7 +79,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/per_potion
 
 /obj/item/alch/bonemeal
-	name = "bone meal"
+	name = "骨粉"
 	icon_state = "bonemeal"
 	major_pot = /datum/alch_cauldron_recipe/mana_potion
 	med_pot = /datum/alch_cauldron_recipe/per_potion
@@ -196,7 +196,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/fire_potion
 
 /obj/item/alch/sinew
-	name = "sinew"
+	name = "肌腱"
 	icon_state = "sinew"
 	dropshrink = 0.9
 	major_pot = /datum/alch_cauldron_recipe/aphrodisiac
@@ -239,9 +239,9 @@
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
 /obj/item/alch/bone
-	name = "tail bone"
+	name = "尾骨"
 	icon_state = "bone"
-	desc = "The only bone in creachers with alchemical properties."
+	desc = "唯一具有炼金特性的生物骨头。"
 	force = 7
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
@@ -377,7 +377,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/stam_poison
 
 /obj/item/alch/matricaria
-	name = "matricaria"
+	name = "母菊"
 	icon_state = "matricaria"
 
 	major_pot = /datum/alch_cauldron_recipe/berrypoison
@@ -393,7 +393,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/antidote
 
 /obj/item/alch/taraxacum
-	name = "taraxacum"
+	name = "蒲公英"
 	icon_state = "taraxacum"
 
 	major_pot = /datum/alch_cauldron_recipe/stam_poison
@@ -417,7 +417,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/stam_poison
 
 /obj/item/alch/calendula
-	name = "calendula"
+	name = "金盏花"
 	icon_state = "calendula"
 
 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
@@ -433,7 +433,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/stamina_potion
 
 /obj/item/alch/urtica
-	name = "urtica"
+	name = "荨麻"
 	icon_state = "urtica"
 
 	major_pot = /datum/alch_cauldron_recipe/health_potion
@@ -470,7 +470,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/int_potion
 
 /obj/item/alch/valeriana
-	name = "valeriana"
+	name = "缬草"
 	icon_state = "valeriana"
 
 	major_pot = /datum/alch_cauldron_recipe/health_potion

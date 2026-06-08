@@ -173,8 +173,8 @@
 	icon_state = "woodchest"
 
 /obj/structure/closet/crate/chest/wicker
-	name = "wicker basket"
-	desc = "Fibers interwoven to make a cheap storage bin."
+	name = "柳条篮"
+	desc = "纤维编织而成的廉价储物箱。"
 	base_icon_state = "wicker"
 	icon_state = "wicker"
 	open_sound = 'sound/items/book_open.ogg'

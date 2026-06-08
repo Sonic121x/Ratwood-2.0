@@ -1,7 +1,7 @@
 
 /obj/structure/roguewindow
-	name = "window"
-	desc = "A glass window."
+	name = "窗户"
+	desc = "一扇玻璃窗。"
 	icon = 'icons/roguetown/misc/roguewindow.dmi'
 	icon_state = "window-solid"
 	layer = TABLE_LAYER
@@ -166,20 +166,20 @@
 	icon_state = base_state
 
 /obj/structure/roguewindow/harem1
-	name = "harem window"
+	name = "后庭窗"
 	icon_state = "harem1-solid"
 	base_state = "harem1-solid"
 	repair_costs = list(/obj/item/natural/glass, /obj/item/natural/glass)
 
 /obj/structure/roguewindow/harem2
-	name = "harem window"
+	name = "后庭窗"
 	icon_state = "harem2-solid"
 	base_state = "harem2-solid"
 	opacity = TRUE
 	repair_costs = list(/obj/item/natural/glass, /obj/item/natural/glass)
 
 /obj/structure/roguewindow/harem3
-	name = "harem window"
+	name = "后庭窗"
 	icon_state = "harem3-solid"
 	base_state = "harem3-solid"
 	repair_costs = list(/obj/item/natural/glass, /obj/item/natural/glass)
