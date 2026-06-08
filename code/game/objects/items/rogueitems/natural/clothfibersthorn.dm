@@ -80,10 +80,10 @@
 			qdel(F)
 
 /obj/item/natural/silk
-	name = "silk"
+	name = "蛛丝"
 	icon_state = "fibers"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Strands of spider silk. Clothing made with this is considered exotic in all places but the Underdark."
+	desc = "一缕缕蜘蛛丝。除深地之外，用它制成的衣物在任何地方都算得上异域珍品。"
 	force = 0
 	throwforce = 0
 	obj_flags = null
@@ -100,7 +100,7 @@
 	bundletype = /obj/item/natural/bundle/silk
 
 /obj/item/natural/silk/attack_right(mob/user)
-	to_chat(user, span_warning("I start to collect [src]..."))
+	to_chat(user, span_warning("我开始收集[src]..."))
 	if(move_after(user, bundling_time, target = src))
 		var/silkcount = 0
 		for(var/obj/item/natural/silk/F in get_turf(src))
@@ -121,7 +121,7 @@
 
 /client/verb/bloodnda()
 	set category = "DEBUGTEST"
-	set name = "bloodnda"
+	set name = "血液 DNA"
 	set desc = ""
 
 	var/obj/item/I
@@ -345,7 +345,7 @@
 	max_integrity = 20
 
 /obj/item/natural/thorn/attack_self(mob/living/user)
-	user.visible_message(span_warning("[user] snaps [src]."))
+	user.visible_message(span_warning("[user]折断了[src]。"))
 	playsound(user,'sound/items/seedextract.ogg', 100, FALSE)
 	qdel(src)
 
@@ -397,10 +397,10 @@
 	grid_width = 64
 
 /obj/item/natural/bundle/silk
-	name = "silken weave"
+	name = "蛛丝卷"
 	icon_state = "fibersroll1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Multiple lengths of spider silk have been tied neatly together into a tight coil."
+	desc = "多缕蜘蛛丝被整齐束起，卷成紧实的一团。"
 	force = 0
 	throwforce = 0
 	maxamount = 6
@@ -534,21 +534,21 @@
 	if(istype(I, /obj/item/natural/bone))
 		var/obj/item/natural/bundle/bone/F = new(src.loc)
 		H.put_in_hands(F)
-		H.visible_message("[user] ties the bones into a bundle.")
+		H.visible_message("[user]把骨头扎成了一捆。")
 		qdel(I)
 		qdel(src)
 	if(istype(I, /obj/item/natural/bundle/bone))
 		var/obj/item/natural/bundle/bone/B = I
 		if(B.amount < B.maxamount)
-			H.visible_message("[user] adds the [src] to the bundle.")
+			H.visible_message("[user]把[src]加进了骨捆里。")
 			B.amount += 1
 			B.update_bundle()
 			qdel(src)
 	..()*/
 
 /obj/item/natural/bowstring
-	name = "fibre bowstring"
-	desc = "Wax-fed fibrous thread has been spun and dressed into a continuous loop."
+	name = "纤维弓弦"
+	desc = "浸蜡后的纤维丝线被绞成一体，制成了闭合的弓弦。"
 	icon_state = "fibers"
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
@@ -578,8 +578,8 @@
 		)
 
 /obj/item/natural/bundle/worms
-	name = "worms"
-	desc = "Multiple tiny creatures of the earth squirm and writhe together in a small pile."
+	name = "一堆蠕虫"
+	desc = "一小堆泥土中的微小生物正在其中蠕动翻卷。"
 	color = "#964B00"
 	maxamount = 12
 	icon_state = "worm2"
@@ -589,11 +589,11 @@
 	icon2step = 12
 	icon3 = "worm6"
 	stacktype = /obj/item/natural/worms
-	stackname = "worms"
+	stackname = "蠕虫"
 	bundling_time = 1 SECONDS
 
 /obj/item/natural/worms/attack_right(mob/user)
-	to_chat(user, span_warning("I start to collect [src]..."))
+	to_chat(user, span_warning("我开始收集[src]……"))
 	if(move_after(user, bundling_time, target = src))
 		var/wormcount = 0
 		for(var/obj/item/natural/worms/F in get_turf(src))
@@ -610,5 +610,3 @@
 				user.put_in_hands(B)
 		for(var/obj/item/natural/worms/F in get_turf(src))
 			qdel(F)
-
-

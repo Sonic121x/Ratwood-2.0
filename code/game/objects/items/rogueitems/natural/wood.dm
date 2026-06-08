@@ -89,7 +89,7 @@
 				new /obj/item/grown/log/tree/small/essence(get_turf(user))
 				if(!sound_played)
 					sound_played = TRUE
-					to_chat(user, span_warning("Dendor weeps..."))
+					to_chat(user, span_warning("Dendor 在哭泣……"))
 					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 		if(blessed)
 			if(prob(50))
@@ -197,7 +197,7 @@
 			var/lumber_skill = user.get_skill_level(/datum/skill/labor/lumberjacking)
 			if(prob(lumber_skill + user.goodluck(2)))
 				new /obj/item/grown/log/tree/small/essence(get_turf(src.loc))
-				to_chat(user, span_warning("Dendor weeps..."))
+				to_chat(user, span_warning("Dendor 在哭泣……"))
 				playsound(src, pick('sound/items/gem.ogg'), 100, FALSE)
 			user.mind.add_sleep_experience(/datum/skill/craft/carpentry, (user.STAINT*0.5))
 			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
@@ -206,8 +206,8 @@
 	..()
 
 /obj/item/grown/log/tree/bowpartial
-	name = "crude bowstave"
-	desc = "A partially completed bow, waiting to be strung."
+	name = "粗制弓胚"
+	desc = "一把尚未完成的弓，正等待上弦。"
 	icon_state = "bowpartial"
 	max_integrity = 30
 	firefuel = 10 MINUTES
@@ -230,8 +230,8 @@
 		)
 
 /obj/item/grown/log/tree/bowpartial/recurve
-	name = "recurve bowstave"
-	desc = "An incomplete recurve bow, waiting to be strung."
+	name = "反曲弓胚"
+	desc = "一把尚未完成的反曲弓，正等待上弦。"
 	icon = 'icons/roguetown/items/64x.dmi'
 	icon_state = "recurve_bowstave"
 
@@ -242,8 +242,8 @@
 		)
 
 /obj/item/grown/log/tree/bowpartial/longbow
-	name = "long bowstave"
-	desc = "An incomplete longbow, waiting to be strung."
+	name = "长弓弓胚"
+	desc = "一把尚未完成的长弓，正等待上弦。"
 	icon = 'icons/roguetown/items/64x.dmi'
 	icon_state = "long_bowstave"
 
@@ -366,16 +366,16 @@
 			if(B.amount < B.maxamount)
 				B.amount++
 				B.update_bundle()
-				user.visible_message("[user]把[src]塞进[I]。", "我把[src]塞进[I].")
+				user.visible_message("[user]把[src]塞进[I]。", "我把[src]塞进[I]。")
 				qdel(src)
 			else
 				to_chat(user, "我不能再往这捆里加木棍了，不然它就要散架了。")
 			return
 
 /obj/item/grown/log/tree/stake
-	name = "stake"
+	name = "木桩"
 	icon_state = "stake"
-	desc = "A sharpened piece of wood, fantastic for piercing"
+	desc = "一截削尖的木头，非常适合用来穿刺。"
 	grid_width = 32
 	grid_height = 64
 	force = 10
@@ -407,8 +407,8 @@
 
 //................	Lumber essence	............... //
 /obj/item/grown/log/tree/small/essence
-	name = "essence of lumber"
-	desc = "A mystical essence embued with the power of Dendor. Very good source of fuel."
+	name = "木材精华"
+	desc = "一种注入了 Dendor 力量的神秘精华。是极佳的燃料来源。"
 	icon_state = "lessence"
 	static_debris = null
 	firefuel = 60 MINUTES // Extremely poweful fuel.
@@ -447,7 +447,7 @@
 /obj/item/natural/wood/plank/attack_right(mob/living/user)
 	if(user.get_active_held_item())
 		return
-	to_chat(user, span_warning("I start to collect [src]..."))
+	to_chat(user, span_warning("我开始收集[src]……"))
 	if(move_after(user, 4 SECONDS, target = src))
 		var/stackcount = 0
 		for(var/obj/item/natural/wood/plank/F in get_turf(src))

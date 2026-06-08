@@ -21,7 +21,7 @@
 	var/buildstacktype
 	var/buildstackamount = 2
 	var/bolts = TRUE
-	buckleverb = "lay"
+	buckleverb = "躺上"
 
 /obj/structure/bed/ComponentInitialize()
 	. = ..()

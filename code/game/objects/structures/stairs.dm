@@ -168,7 +168,7 @@
 //purely cosmetic curved stairs (kinda confusing to set up right, compare the DIR to regular chairs. Correct version depends on if it's going up or down)
 
 /obj/structure/stairs/cw
-	name = "curved stairs"
+	name = "弧形楼梯"
 	icon = 'icons/obj/stairscurve.dmi'
 	icon_state = "woodCW"
 
@@ -177,7 +177,7 @@
 	icon_state = "woodCWdown"
 
 /obj/structure/stairs/ccw
-	name = "curved stairs"
+	name = "弧形楼梯"
 	icon = 'icons/obj/stairscurve.dmi'
 	icon_state = "woodCCW"
 	
@@ -186,7 +186,7 @@
 	icon_state = "woodCCWdown"
 
 /obj/structure/stairs/stone/ccw
-	name = "curved stairs"
+	name = "弧形楼梯"
 	icon = 'icons/obj/stairscurve.dmi'
 	icon_state = "stoneCCW"
 
@@ -195,7 +195,7 @@
 	icon_state = "stoneCCWdown"
 
 /obj/structure/stairs/stone/cw
-	name = "curved stairs"
+	name = "弧形楼梯"
 	icon = 'icons/obj/stairscurve.dmi'
 	icon_state = "stoneCW"
 
