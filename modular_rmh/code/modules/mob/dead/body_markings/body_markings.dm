@@ -28,7 +28,7 @@
 
 /datum/body_marking/wide_eyes
 	icon = 'modular_rmh/icons/mob/body_markings/marks.dmi'
-	name = "Wide Eyes"
+	name = "Not again pls"
 	icon_state = "wide_eyes"
 	default_color = "FF0000"
 	affected_bodyparts = HEAD
