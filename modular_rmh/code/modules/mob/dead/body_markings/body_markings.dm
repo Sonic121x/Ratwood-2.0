@@ -7,7 +7,7 @@
 
 /datum/body_marking/butterfly
 	icon = 'modular_rmh/icons/mob/body_markings/marks.dmi'
-	name = "Butterfly"
+	name = "蝴蝶"
 	icon_state = "butterfly"
 	default_color = "FF0000"
 	affected_bodyparts = CHEST
