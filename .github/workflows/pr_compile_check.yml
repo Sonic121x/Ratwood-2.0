@@ -1,27 +1,30 @@
-name: PR 编译检查
+name: PR Build Check
 
 on:
   pull_request:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+
+    env:
+      BYOND_MAJOR: 516
+      BYOND_MINOR: 1673
+
     steps:
       - name: 获取含 PR 源码
         uses: actions/checkout@v4
 
-      - name: 安装 BYOND
-        shell: powershell
+      - name: 安装依赖
         run: |
-          Invoke-WebRequest `
-            -Uri "https://www.byond.com/download/build/516/516.1673_byond.zip" `
-            -OutFile byond.zip
+          sudo dpkg --add-architecture i386
+          sudo apt-get update -qq
+          sudo apt-get install -y make gcc unzip libcurl4:i386
 
-          Expand-Archive byond.zip byond -Force
+      - name: 下载 Byond
+        run: |
+          bash tools/ci/install_byond.sh
 
-          echo "$pwd\byond\byond\bin" >> $env:GITHUB_PATH
-
-      - name: 运行编译脚本
-        shell: cmd
-        working-directory: tools/build
-        run: build.bat
+      - name: 编译源码
+        run: |
+          bash tools/build/build.sh
