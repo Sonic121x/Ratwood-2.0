@@ -1,0 +1,27 @@
+name: PR 编译检查
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: 获取含 PR 源码
+        uses: actions/checkout@v4
+
+      - name: 安装 BYOND
+        shell: powershell
+        run: |
+          Invoke-WebRequest `
+            -Uri "https://www.byond.com/download/build/516/516.1673_byond.zip" `
+            -OutFile byond.zip
+
+          Expand-Archive byond.zip byond -Force
+
+          echo "$pwd\byond\byond\bin" >> $env:GITHUB_PATH
+
+      - name: 运行编译脚本
+        shell: cmd
+        working-directory: tools/build
+        run: build.bat
