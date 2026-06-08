@@ -89,7 +89,7 @@
 		return ..()
 	if(quantity == 1)
 		if(HAS_TRAIT(user, TRAIT_BLACKLEG))
-			switch(alert(user, "你要如何操纵下一次掷硬币的结果？","XYLIX","正面","反面","公平游戏"))
+			switch(alert(user, "你想把下一次掷硬币操纵成什么结果？","XYLIX","正面","反面","公平游戏"))
 				if("正面")
 					rigged_outcome = 1
 				if("反面")
@@ -106,7 +106,7 @@
 
 /obj/item/roguecoin/attack_hand(mob/user)
 	if(user.get_inactive_held_item() == src && quantity > 1)
-		var/amt_text = " (1 to [quantity])"
+		var/amt_text = "（1 到 [quantity]）"
 		if(quantity == 1)
 			amt_text = ""
 		var/amount = input(user, "要分出多少[plural_name]？[amt_text]", null, round(quantity/2, 1)) as null|num
@@ -209,12 +209,12 @@
 
 //OTAVAN MARQUE - WORTHLESS TO ANYONE BUT INQ.
 /obj/item/roguecoin/inqcoin
-	name = "otavan marque"
-	desc = "A blessed silver coin finished with a unique wash of black dye, bearing the post-kingdom Psycross. Kingsfield has denied the existence of such a coin when queried, as such coinage is rumoured to be used internally by the Otavan Inquisition."
+	name = "奥塔凡马克"
+	desc = "一枚受祝福的银币，表面覆有独特的黑色染层，铸着后王国时代的灵十字。金斯菲尔德在被问及时否认此币存在，因此传闻这类钱币仅供奥塔凡宗教裁判所内部使用。"
 	icon_state = "i1"
 	sellprice = 0
 	base_type = CTYPE_ICOIN
-	plural_name = "otavan marques"	
+	plural_name = "奥塔凡马克"	
 
 //GOLD
 /obj/item/roguecoin/gold
@@ -246,12 +246,12 @@
 
 // ANCIENT
 /obj/item/roguecoin/gilbranze
-	name = "psilen"
-	desc = "A coin of polished gilbranze, beheld to a fallen kingdom that hadn't endured the passage of tyme."
+	name = "普西伦"
+	desc = "一枚以抛光吉布兰泽铸成的硬币，属于一个未能熬过时光流转而覆灭的王国。"
 	icon_state = "a1"
 	sellprice = 3 //Dungeon-specific coinage - valued by historians, collectors, and smelters. 
 	base_type = CTYPE_ANCIENT
-	plural_name = "psila"
+	plural_name = "普西拉"
 
 /obj/item/roguecoin/inqcoin/pile/Initialize(mapload)
 	. = ..()

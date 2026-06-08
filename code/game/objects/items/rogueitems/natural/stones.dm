@@ -165,9 +165,9 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		)
 
 /obj/item/natural/whetstone
-	name = "whetstone"
+	name = "磨刀石"
 	icon_state = "whetstone"
-	desc = "A honed slab made for sharpening blades and striking flames."
+	desc = "一块磨制好的石片，可用于打磨刀刃和击出火花。"
 	force = 12
 	throwforce = 18
 	slot_flags = ITEM_SLOT_MOUTH
@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	Yakub from BBC lore has inspired me
 */
 /obj/item/natural/stone/proc/stone_lore()
-	var/stone_title = "石头" // Our stones title
+	var/stone_title = "stone" // Our stones title
 	var/stone_desc = "[desc]" // Total Bonus desc the stone will be getting
 
 	icon_state = "stone[rand(1,5)]"
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		to_chat(user, span_warning("你必须用双手来凿方块。"))
 	else if(user.used_intent.type == /datum/intent/wing/shred && !user.cmode || user.used_intent.type == /datum/intent/wing/cut && !user.cmode)
 		playsound(src.loc, pick('sound/items/sharpen_long1.ogg','sound/items/sharpen_long2.ogg'), 100, TRUE)
-		user.visible_message(span_notice("[user] sharpens [W]!"))
+		user.visible_message(span_notice("[user]打磨了[W]！"))
 		W.add_bintegrity(12, user)
 		if(prob(35))
 			var/datum/effect_system/spark_spread/S = new()
@@ -499,8 +499,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	mineralType = /obj/item/roguegem/random
 
 /obj/item/natural/rock/random_ore
-	name = "rock?"
-	desc = "Wait, this shouldn't be here?"
+	name = "石头？"
+	desc = "等等，这东西不该出现在这里吧？"
 	icon_state = "stonerandom"
 
 /obj/item/natural/rock/random/Initialize(mapload)
@@ -597,7 +597,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		stonetotal += stonetotal
 	if( user.used_intent.type == /datum/intent/chisel )
 		playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
-		user.visible_message("<span class='info'>[user] chisels the rock into blocks.</span>")
+		user.visible_message("<span class='info'>[user]将岩石凿成了石块。</span>")
 		if(do_after(user, 10 SECONDS))
 			for(var/i=1, i<=stonetotal, ++i)
 				new /obj/item/natural/stoneblock(get_turf(src.loc))

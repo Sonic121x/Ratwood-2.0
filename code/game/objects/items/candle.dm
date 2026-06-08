@@ -99,8 +99,8 @@
 
 /obj/item/candle/eora
 	icon = 'icons/roguetown/items/lighting.dmi'
-	name = "eora's candle"
-	desc = "A rather lovely candle with a reddish hue."
+	name = "艾欧拉之烛"
+	desc = "一支相当可爱的蜡烛，泛着淡淡红晕。"
 	color = "#f858b5ff"
 	light_color = "#ff13d8ff"
 	infinite = TRUE
@@ -127,17 +127,17 @@
 	icon_state = "skullcandle_lit"
 
 /obj/item/candle/candlestick
-	name = "parent candlestick"
+	name = "烛台原型"
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "gcandelabra"
 	infinite = TRUE
-	desc = "The parent candlestick that gave all of the little, real candlesticks their traits. You should not be seeing this, report this."
+	desc = "赋予所有小型真烛台特性的烛台原型。你本不该看到这个，请上报。"
 	possible_item_intents = list(/datum/intent/use, /datum/intent/hit) //so you can bash someone's head in with a candlestick
 	force = 12 //slightly higher than a silver goblet, good improvised weapon, it even has a handle!
 
 /obj/item/candle/candlestick/gold
-	name = "three-stick gold candlestick"
-	desc = "The three-headed golden version of the candlestick, now with more sticks and candles per candlestick."
+	name = "三头金烛台"
+	desc = "烛台的三头金制版本，每个烛台现在有更多烛臂和蜡烛。"
 	icon_state = "gcandelabra"
 	sellprice = 40
 
@@ -149,8 +149,8 @@
 	start_lit = TRUE
 
 /obj/item/candle/candlestick/silver
-	name = "three-stick silver candlestick"
-	desc = "The three-headed silver version of the candlestick, now with more sticks and candles per candlestick."
+	name = "三头银烛台"
+	desc = "烛台的三头银制版本，每个烛台现在有更多烛臂和蜡烛。"
 	icon_state = "scandelabra"
 	sellprice = 60
 	is_silver = TRUE
@@ -163,8 +163,8 @@
 	start_lit = TRUE
 
 /obj/item/candle/candlestick/gold/single
-	name = "one-stick gold candlestick"
-	desc = "A golden stick with a little prick at the end made to hold candles on a comfortable way. You could also probably whack someone with it if you're really desperate."
+	name = "单头金烛台"
+	desc = "一根金色烛杆，末端有个小尖托，能稳稳插住蜡烛。真要走投无路，大概也能拿它敲人。"
 	icon_state = "singlegcandelabra"
 	sellprice = 30
 
@@ -176,8 +176,8 @@
 	start_lit = TRUE
 
 /obj/item/candle/candlestick/silver/single
-	name = "one-stick silver candlestick"
-	desc = "A golden stick with a little prick at the end made to hold candles on a comfortable way. You could also probably whack someone with it if you're really desperate."
+	name = "单头银烛台"
+	desc = "一根金色烛杆，末端有个小尖托，能稳稳插住蜡烛。真要走投无路，大概也能拿它敲人。"
 	icon_state = "singlescandelabra"
 	sellprice = 50
 
@@ -189,7 +189,7 @@
 	start_lit = TRUE
 
 /obj/item/candle/gold
-	name = "gold candle"
+	name = "金蜡烛"
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "gcandle"
 	sellprice = 30
@@ -202,7 +202,7 @@
 	start_lit = TRUE
 
 /obj/item/candle/silver
-	name = "silver candle"
+	name = "银蜡烛"
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "scandle"
 	infinite = TRUE

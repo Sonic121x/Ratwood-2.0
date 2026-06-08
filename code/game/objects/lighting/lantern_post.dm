@@ -63,11 +63,11 @@
 		if(torchy)
 			if(LR.on && !on)
 				if(torchy.fuel <= 0)
-					to_chat(user, span_warning("The mounted lantern is burned out."))
+					to_chat(user, span_warning("固定在上面的灯笼已经烧尽了。"))
 					return
 				else
 					torchy.spark_act()
-					user.visible_message(span_info("[user] lights [src]."))
+					user.visible_message(span_info("[user]点燃了[src]。"))
 					playsound(src.loc, 'sound/items/firelight.ogg', 100)
 					on = TRUE
 					update()
@@ -77,7 +77,7 @@
 			if(!LR.on && on)
 				if(LR.fuel > 0)
 					LR.spark_act()
-					user.visible_message(span_info("[user] lights [LR] in [src]."))
+					user.visible_message(span_info("[user]点燃了[src]中的[LR]。"))
 					user.update_inv_hands()
 		else
 			if(LR.on)

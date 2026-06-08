@@ -141,8 +141,8 @@
 		/obj/item/rogueweapon/surgery/cautery/branding/crude
 	)
 /obj/item/storage/roguebag/gambling_kit_bundle
-	name = "gambling kit bundle"
-	desc = "A stuffed sack containing gaming essentials for a full table night."
+	name = "赌博套装包"
+	desc = "一个塞得满满的布袋，装着能让整桌人玩上一晚的赌具。"
 	populate_contents = list(
 		/obj/item/storage/pill_bottle/dice,
 		/obj/item/storage/pill_bottle/dice/farkle,
