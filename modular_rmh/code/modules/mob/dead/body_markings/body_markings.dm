@@ -14,7 +14,7 @@
 
 /datum/body_marking/waist
 	icon = 'modular_rmh/icons/mob/body_markings/marks.dmi'
-	name = "Waist"
+	name = "再来一个
 	icon_state = "waist"
 	default_color = "FF0000"
 	affected_bodyparts = CHEST
