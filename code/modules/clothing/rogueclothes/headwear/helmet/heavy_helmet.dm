@@ -166,6 +166,20 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+	
+/obj/item/clothing/head/roguetown/helmet/heavy/knight/ancient
+	name = "古老的中型骑士盔"
+	desc = "一顶由打磨过的吉尔青铜制成的古老重盔。没有比看到一位早已屈服于不死邪恶势力的崇高骑士更令人心惊胆颤的景象了。插上一根羽毛，展示你的家族或效忠色彩。"
+	icon_state = "ancientknight"
+	item_state = "ancientknight"
+	smeltresult = /obj/item/ingot/aaslag
+
+/obj/item/clothing/head/roguetown/helmet/heavy/knight/ancient/decrepit
+	name = "破旧的中型骑士盔"
+	desc = "一顶由磨损青铜制成的残破重盔。每当你试着上下掀动它那半生锈的面罩时，配件都会发出刺耳的吱呀声。插上一根羽毛，展示你的家族或效忠色彩。"
+	max_integrity = ARMOR_INT_HELMET_HEAVY_DECREPIT
+	color = "#bb9696"
+	anvilrepair = null
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/fluted
 	name = "褶纹阿米特盔"

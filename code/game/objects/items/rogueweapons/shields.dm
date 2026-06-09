@@ -250,6 +250,15 @@
 	icon_state = "ancientsh"
 	smeltresult = /obj/item/ingot/aaslag
 
+/obj/item/rogueweapon/shield/tower/metal/ancient/getonmobprop(tag)
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.8,"sx" = -5,"sy" = -1,"nx" = 6,"ny" = -1,"wx" = 0,"wy" = -2,"ex" = 0,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
+			if("onback")
+				return list("shrink" = 0.8,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+	return ..()
+
 /obj/item/rogueweapon/shield/tower/metal/ancient/decrepit
 	name = "破旧盾"
 	desc = "一面由磨损青铜打造的沉重塔盾。其上缠着干枯海藻，散发咸腥海味，让人不禁以为它是从某艘沉没已久的战船残骸里打捞出来的……连同它昔日的主人一起。"
@@ -380,6 +389,14 @@
 	锈蚀与腐朽连这点记忆都不肯放过。"
 	icon_state = "ancient_buckler"
 	smeltresult = /obj/item/ingot/aaslag
+
+/obj/item/rogueweapon/shield/buckler/ancient/decrepit
+	name = "破旧的小圆盾"
+	desc = "它曾领先于时代，如今却已被时代抛下。工匠锤击留下的痕迹仍在斑驳表面上可见，然而 \
+	锈蚀与腐朽连这点记忆都不肯放过。"
+	force = 12
+	throwforce = 6
+	max_integrity = 40
 
 /obj/item/rogueweapon/shield/heater
 	name = "熨斗盾"

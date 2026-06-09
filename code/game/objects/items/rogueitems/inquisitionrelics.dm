@@ -731,7 +731,8 @@ Inquisitorial armory down here
 	w_class = WEIGHT_CLASS_SMALL
 	intdamage_factor = 0
 	embedding = null
-	var/tallow
+	var/obj/item/reagent_containers/food/snacks/tallow/loaded_tallow
+	var/loaded_inquisitorial_tallow = FALSE
 	var/remaining
 	var/heatedup
 	var/messageshown = 1
@@ -742,36 +743,46 @@ Inquisitorial armory down here
 	START_PROCESSING(SSobj, src)	// For making sure it melts.
 
 /obj/item/inqarticles/tallowpot/Destroy()
+	loaded_tallow = null
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/inqarticles/tallowpot/process()
+	if(loaded_tallow && QDELETED(loaded_tallow))
+		loaded_tallow = null
+		loaded_inquisitorial_tallow = FALSE
+		remaining = 0
+		update_icon()
+
 	if(heatedup > 0)
 		heatedup -= 4
 		remaining = max(remaining - -20, 0)
 		messageshown = 0
 	else
-		if(tallow)
+		if(loaded_tallow)
 			if(!messageshown)
-				visible_message(span_info("[src]里的红脂蜡又重新凝固了。"))
+				visible_message(span_info("The [loaded_tallow] in [src] hardens again."))
 				messageshown = 1
 			update_icon()
 	if(remaining == 0)
-		qdel(tallow)
-		tallow = initial(tallow)
+		if(loaded_tallow && !QDELETED(loaded_tallow))
+			QDEL_NULL(loaded_tallow)
+		else
+			loaded_tallow = null
+		loaded_inquisitorial_tallow = FALSE
 		update_icon()
 
 /obj/item/inqarticles/tallowpot/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
-	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow/red))
-		if(!tallow)
-			var/obj/item/reagent_containers/food/snacks/tallow/red/Q = I
-			tallow = Q
-			user.transferItemToLoc(Q, src, TRUE)
-			remaining = 300
-			update_icon()
+	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow))
+		if(!loaded_tallow)
+			if(user.transferItemToLoc(I, src, TRUE))
+				loaded_tallow = I
+				loaded_inquisitorial_tallow = istype(I, /obj/item/reagent_containers/food/snacks/tallow/red)
+				remaining = 300
+				update_icon()
 		else
-			to_chat(user, span_info("[src]里已经有红脂蜡了。"))
+			to_chat(user, span_info("[src]里已经有 [loaded_tallow]了。"))
 
 	if(istype(I, /obj/item/flashlight/flare/torch/))
 		heatedup = 28
@@ -784,18 +795,48 @@ Inquisitorial armory down here
 		update_icon()
 
 	if(istype(I, /obj/item/clothing/ring/signet))
-		if(tallow && heatedup)
+		if(loaded_tallow && !loaded_inquisitorial_tallow)
+			to_chat(user, span_warning("我必须使用审判庭蜡油来签署官方公文。"))
+			return
+		if(heatedup)
 			var/obj/item/clothing/ring/signet/ring = I
 			ring.tallowed = TRUE
 			ring.update_icon()
 
+	if(istype(I, /obj/item/seal))
+		if(loaded_tallow && heatedup)
+			var/obj/item/seal/seal = I
+			seal.tallowed = TRUE
+			seal.update_icon()
+
+/obj/item/inqarticles/tallowpot/examine(mob/user)
+	. = ..()
+	if(!loaded_tallow || QDELETED(loaded_tallow))
+		. += span_info("它是空的。")
+		return
+	if(loaded_inquisitorial_tallow)
+		. += span_info("它当前装有审判庭火漆。")
+	else if(istype(loaded_tallow, /obj/item/reagent_containers/food/snacks/tallow/soft))
+		. += span_info("它当前装有软动物脂。")
+	else
+		. += span_info("它当前装有动物脂。")
+	if(heatedup)
+		. += span_notice("火漆已融化，可以进行盖印。")
+	else
+		. += span_warning("火漆已凝固，必须重新加热才能进行盖印。")
+
 
 /obj/item/inqarticles/tallowpot/update_icon()
 	. = ..()
-	if(tallow)
-		icon_state = "[initial(icon_state)]_filled"
-		if(heatedup)
-			icon_state = "[initial(icon_state)]_melted"
+	if(loaded_tallow && !QDELETED(loaded_tallow))
+		if(istype(loaded_tallow, /obj/item/reagent_containers/food/snacks/tallow/soft))
+			icon_state = "tallowpot_filled_soft"
+			if(heatedup)
+				icon_state = "tallowpot_melted_soft"
+		else
+			icon_state = "[initial(icon_state)]_filled"
+			if(heatedup)
+				icon_state = "[initial(icon_state)]_melted"
 	else
 		icon_state = "[initial(icon_state)]"
 
