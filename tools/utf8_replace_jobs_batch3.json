@@ -1,0 +1,490 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/yeomen/barkeep.dm",
+      "replacements": [
+        {
+          "old": "\ttitle = \"Innkeeper\"",
+          "new": "\ttitle = \"Innkeeper\"\n\tdisplay_title = \"酒馆老板\""
+        },
+        {
+          "old": "\ttutorial = \"Adventurers and warriors alike have two exit plans; the early grave or even earlier retirement. As the proud owner of this fine establishment, you took the latter: The local tavern, inn, and bathhouse! You even have an assortment of staff to help you, and plenty of business from the famished townsfolk looking to eat, weary travelers looking to rest, and characters of dubious repute seeking their own sort of success. Your bladework has gotten a little rusty, and the church across the street gives you the odd evil eye for the extra 'delights' of the bathhouse--but, well...you can't win 'em all!\"",
+          "new": "\ttutorial = \"无论是冒险者还是战士，人生的退路通常只有两条：要么早早埋进土里，要么更早金盆洗手。身为这间体面产业的主人，你选了后者：本地的酒馆、旅店与浴场都归你打理！你手下还有一批帮工，既不缺前来填饱肚子的饥饿镇民，也不缺想歇脚的疲惫旅人，更少不了那些名声暧昧、来此谋求自己那份“成就”的人物。你的刀法多少有些生疏了，而街对面的教会也总会因浴场里那些额外的“乐子”朝你投来嫌恶目光，不过嘛……人总不能样样都占全。\""
+        },
+        {
+          "old": "\ttutorial = \"Adventurers and warriors alike have two exit plans; the early grave or even earlier retirement. As the proud owner of this fine establishment, you took the latter: The local tavern, inn, and bathhouse! You even have an assortment of staff to help you, and plenty of business from the famished townsfolk looking to eat, weary travelers looking to rest, and characters of dubious repute seeking their own sort of success. Your bladework has gotten a little rusty, and the church across the street gives you the odd evil eye for the extra 'delights' of the bathhouse--but, well...you can't win 'em all!\"",
+          "new": "\ttutorial = \"无论是冒险者还是战士，人生的退路通常只有两条：要么早早埋进土里，要么更早金盆洗手。身为这间体面产业的主人，你选了后者：本地的酒馆、旅店与浴场都归你打理！你手下还有一批帮工，既不缺前来填饱肚子的饥饿镇民，也不缺想歇脚的疲惫旅人，更少不了那些名声暧昧、来此谋求自己那份“成就”的人物。你的刀法多少有些生疏了，而街对面的教会也总会因浴场里那些额外的“乐子”朝你投来嫌恶目光，不过嘛……人总不能样样都占全。\""
+        },
+        {
+          "old": "\tname = \"Innkeeper\"",
+          "new": "\tname = \"酒馆老板\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm",
+      "replacements": [
+        {
+          "old": "\ttitle = \"Bathhouse Attendant\"",
+          "new": "\ttitle = \"Bathhouse Attendant\"\n\tdisplay_title = \"浴场侍者\""
+        },
+        {
+          "old": "\ttutorial = \"Dancing, music, or practicioners of the body. You've worked up a reputation as an entertainer, and sometime in life, the bathmaster has chosen to onboard you for one of these talents. In the bathhouse, your place on the hierarchy is determined by how long you've been in the game - and how much mammon you're worth.\"",
+          "new": "\ttutorial = \"舞蹈、乐曲，或是侍奉肉身的技艺。你已靠这些本事积攒出了一点取悦他人的名声，也正因如此，在某个人生节点上，浴场主人看中了你，招你来施展其中一门长处。在浴场里，你在阶序中的位置，取决于你混迹这行有多久，以及你到底值多少马蒙。\""
+        },
+        {
+          "old": "\tname = \"Bath Attendant\"",
+          "new": "\tname = \"浴场侍者\""
+        },
+        {
+          "old": "\ttutorial = \"A fresh initiate, most would decry the humble bath maid as a desperate fool tempting others into bedsheets for money--only sometimes, you say! You work underneath your betters in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Wash laundry, tend mild wounds, and deftly wash your patrons with soap, for this is your craft.\"",
+          "new": "\ttutorial = \"你还是个新入行的学徒。大多数人会把卑微的浴场女侍骂成那种为钱引人上床的可怜蠢货，不过你会辩解说，那也只是偶尔！你在公共浴场里侍奉地位高于你的人，按客人的心意把场子与来客都收拾得妥妥帖帖。洗衣、处理些轻伤，再熟练地用香皂为客人擦洗身子，这便是你的手艺。\""
+        },
+        {
+          "old": "\tname = \"Concubine\"",
+          "new": "\tname = \"侍妾\""
+        },
+        {
+          "old": "\ttutorial = \"Unlike your fellow bath attendants who maintain a professional facade, you have abandoned all pretense. You are a prized possession of the nobility, adorned in exotic silks and gold. Your role is to provide companionship, entertainment, and pleasure. Working underneath the finespun courtesans, you're a step above the bath attendants in your craft.\"",
+          "new": "\ttutorial = \"与你那些还维持着体面门面的浴场同伴不同，你已把所有伪装都抛开了。你是贵族们珍爱的私产，披戴着异域丝绸与黄金饰物。你的职责就是提供陪伴、取乐与欢愉。在那些精致名妓手下做事时，你的行当地位也确实比普通浴场侍者高上一层。\""
+        },
+        {
+          "old": "\t\tvar/weapons = list(\"Accordion\",\"Bagpipe\", \"Banjo\",\"Drum\",\"Flute\",\"Guitar\",\"Harmonica\",\"Harp\",\"Hurdy-Gurdy\",\"Jaw Harp\",\"Lute\",\"Psyaltery\",\"Shamisen\",\"Trumpet\",\"Viola\",\"Vocal Talisman\")",
+          "new": "\t\tvar/weapons = list(\"手风琴\",\"风笛\", \"班卓琴\",\"鼓\",\"长笛\",\"吉他\",\"口琴\",\"竖琴\",\"手摇琴\",\"口簧琴\",\"鲁特琴\",\"Psyaltery\",\"三味线\",\"小号\",\"中提琴\",\"咏声护符\")"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your instrument.\", \"TAKE UP ARMS\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的乐器。\", \"拿起家伙\") as anything in weapons"
+        },
+        {
+          "old": "\t\t\tif(\"Accordion\")",
+          "new": "\t\t\tif(\"手风琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Bagpipe\")",
+          "new": "\t\t\tif(\"风笛\")"
+        },
+        {
+          "old": "\t\t\tif(\"Banjo\")",
+          "new": "\t\t\tif(\"班卓琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Drum\")",
+          "new": "\t\t\tif(\"鼓\")"
+        },
+        {
+          "old": "\t\t\tif(\"Flute\")",
+          "new": "\t\t\tif(\"长笛\")"
+        },
+        {
+          "old": "\t\t\tif(\"Guitar\")",
+          "new": "\t\t\tif(\"吉他\")"
+        },
+        {
+          "old": "\t\t\tif(\"Harmonica\")",
+          "new": "\t\t\tif(\"口琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Harp\")",
+          "new": "\t\t\tif(\"竖琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Hurdy-Gurdy\")",
+          "new": "\t\t\tif(\"手摇琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Jaw Harp\")",
+          "new": "\t\t\tif(\"口簧琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Lute\")",
+          "new": "\t\t\tif(\"鲁特琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Shamisen\")",
+          "new": "\t\t\tif(\"三味线\")"
+        },
+        {
+          "old": "\t\t\tif(\"Trumpet\")",
+          "new": "\t\t\tif(\"小号\")"
+        },
+        {
+          "old": "\t\t\tif(\"Viola\")",
+          "new": "\t\t\tif(\"中提琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Vocal Talisman\")",
+          "new": "\t\t\tif(\"咏声护符\")"
+        },
+        {
+          "old": "\tname = \"Tickler\"",
+          "new": "\tname = \"调教师\""
+        },
+        {
+          "old": "\ttutorial = \"There is a thin, blurred line where pain meets pleasure. You cater to a specific kind of client, the kind who like to walk that line. You have practiced the art of pain and domination and made it your own. Still, you will always be the whore and they the client. What power do you really have?\"",
+          "new": "\ttutorial = \"痛楚与欢愉相接之处，有一道纤细而模糊的界线。你服侍的，正是那类喜欢踩在线上的客人。你将疼痛与支配的技艺练成了自己的本事。可说到底，你始终还是妓子，而他们仍旧是客人。你真正握有的权力，又有多少呢？\""
+        },
+        {
+          "old": "\tname = \"Courtesan\"",
+          "new": "\tname = \"名妓\""
+        },
+        {
+          "old": "\ttutorial = \"Overcoming mind games, deceit and competition, you came into your own as one of the bathhouse's most prized moneymakers and socialites. Dressed in lavish gifts left behind by your patrons, not just anyone can have you. Under the matron, you do most of the social heavylifting and provide entertainment of all forms - behind a heavy price tag. \"",
+          "new": "\ttutorial = \"你熬过了心机、欺骗与竞争，终于成长为浴场里最值钱、也最擅交际的摇钱树之一。你穿戴着恩客们遗留下来的华美赠礼，不是谁都能轻易碰得到你。在鸨母手下，你承担了大半对外应酬的重担，也提供形形色色的娱乐，只不过一切都标着高昂的价码。 \""
+        },
+        {
+          "old": "\t\tvar/weapons = list(\"Accordion\",\"Bagpipe\", \"Banjo\",\"Drum\",\"Flute\",\"Guitar\",\"Harmonica\",\"Harp\",\"Hurdy-Gurdy\",\"Jaw Harp\",\"Lute\",\"Psyaltery\",\"Shamisen\",\"Trumpet\",\"Viola\",\"Vocal Talisman\")",
+          "new": "\t\tvar/weapons = list(\"手风琴\",\"风笛\", \"班卓琴\",\"鼓\",\"长笛\",\"吉他\",\"口琴\",\"竖琴\",\"手摇琴\",\"口簧琴\",\"鲁特琴\",\"Psyaltery\",\"三味线\",\"小号\",\"中提琴\",\"咏声护符\")"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your instrument.\", \"TAKE UP ARMS\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的乐器。\", \"拿起家伙\") as anything in weapons"
+        },
+        {
+          "old": "\t\t\tif(\"Accordion\")",
+          "new": "\t\t\tif(\"手风琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Bagpipe\")",
+          "new": "\t\t\tif(\"风笛\")"
+        },
+        {
+          "old": "\t\t\tif(\"Banjo\")",
+          "new": "\t\t\tif(\"班卓琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Drum\")",
+          "new": "\t\t\tif(\"鼓\")"
+        },
+        {
+          "old": "\t\t\tif(\"Flute\")",
+          "new": "\t\t\tif(\"长笛\")"
+        },
+        {
+          "old": "\t\t\tif(\"Guitar\")",
+          "new": "\t\t\tif(\"吉他\")"
+        },
+        {
+          "old": "\t\t\tif(\"Harmonica\")",
+          "new": "\t\t\tif(\"口琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Harp\")",
+          "new": "\t\t\tif(\"竖琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Hurdy-Gurdy\")",
+          "new": "\t\t\tif(\"手摇琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Jaw Harp\")",
+          "new": "\t\t\tif(\"口簧琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Lute\")",
+          "new": "\t\t\tif(\"鲁特琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Shamisen\")",
+          "new": "\t\t\tif(\"三味线\")"
+        },
+        {
+          "old": "\t\t\tif(\"Trumpet\")",
+          "new": "\t\t\tif(\"小号\")"
+        },
+        {
+          "old": "\t\t\tif(\"Viola\")",
+          "new": "\t\t\tif(\"中提琴\")"
+        },
+        {
+          "old": "\t\t\tif(\"Vocal Talisman\")",
+          "new": "\t\t\tif(\"咏声护符\")"
+        },
+        {
+          "old": "\tname = \"herbal soap\"",
+          "new": "\tname = \"草本香皂\""
+        },
+        {
+          "old": "\tdesc = \"A soap made from various herbs.\"",
+          "new": "\tdesc = \"由多种草药制成的香皂。\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/peasants/beggar.dm",
+      "replacements": [
+        {
+          "old": "\ttitle = \"Beggar\"",
+          "new": "\ttitle = \"Beggar\"\n\tdisplay_title = \"乞丐\""
+        },
+        {
+          "old": "\ttutorial = \"The stench of your piss-laden clothes doesn't bug you anymore, the glances of disgust and loathing others give you is just a friendly greeting after all! The only reason you've not been killed already is because Volfs are known to be repelled by the stench of decaying flesh. You're going to be a solemn reminder what happens when something unwanted is born into this world.\"",
+          "new": "\ttutorial = \"你那身浸透尿骚味的破衣早已熏不着自己了，旁人投来的厌恶与嫌憎目光，如今在你眼里都像是一种亲切问候！你之所以还没被人顺手宰掉，不过是因为据说 Volf 会厌恶腐肉的臭气。你会成为一个活生生的沉痛提醒，告诉世人：这世上若有不该降生之物落地，会变成什么模样。\""
+        },
+        {
+          "old": "\t\tH.real_name = \"[H.real_name] the Wise\"",
+          "new": "\t\tH.real_name = \"[H.real_name] 贤者\""
+        },
+        {
+          "old": "\t\tH.name = \"[H.name] the Wise\"",
+          "new": "\t\tH.name = \"[H.name] 贤者\""
+        },
+        {
+          "old": "\tname = \"Wise Beggar\"",
+          "new": "\tname = \"贤者乞丐\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/youngfolk/vagabond/beggar.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Beggar\"",
+          "new": "\tname = \"乞丐\""
+        },
+        {
+          "old": "\texamine_name = \"Beggar\"",
+          "new": "\texamine_name = \"乞丐\""
+        },
+        {
+          "old": "\ttutorial = \"You are without coin and without worth. The pity of others is your bread, and their mercy is your butter. Having sat by waystones and watched many a traveller pass in the hopes for alms, you've nursed a surprising talent for thievery, and have even cajoled knowledge of lockpicking out of an especially sentimental rogue.\"",
+          "new": "\ttutorial = \"你身无分文，也一文不值。别人的怜悯是你的面包，他们的慈悲就是你的黄油。你常年蹲在路碑边，眼巴巴望着旅人经过乞求施舍，也因此养出了惊人的偷窃本事，甚至还从某个格外心软的流氓嘴里哄来了几手撬锁技巧。\""
+        },
+        {
+          "old": "\textra_context = \"Fortune is randomised.\"",
+          "new": "\textra_context = \"运势为随机生成。\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/wretch/berserker.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Berserker\"",
+          "new": "\tname = \"狂战士\""
+        },
+        {
+          "old": "\ttutorial = \"You are a warrior feared for your brutality, dedicated to using your might for your own gain. Might equals right, and you are the reminder of such a saying.\"",
+          "new": "\ttutorial = \"你是因残暴而令人畏惧的战士，执意将自己的力量用于满足私欲。强权即公理，而你便是这句老话的活生生写照。\""
+        },
+        {
+          "old": "\t\tvar/weapons = list(\"Discipline - Unarmed\",\"Katar\",\"Knuckledusters\",\"Punch Dagger\",\"Battle Axe\",\"Grand Mace\",\"Falx\")",
+          "new": "\t\tvar/weapons = list(\"武修徒手\",\"拳刃\",\"指虎\",\"冲拳匕首\",\"战斧\",\"巨锤\",\"法尔克斯弯刃\")"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your WEAPON.\", \"SPILL THEIR ENTRAILS.\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的武器。\", \"掏出他们的内脏。\") as anything in weapons"
+        },
+        {
+          "old": "\t\t\tif(\"Discipline - Unarmed\")",
+          "new": "\t\t\tif(\"武修徒手\")"
+        },
+        {
+          "old": "\t\t\tif(\"Katar\")",
+          "new": "\t\t\tif(\"拳刃\")"
+        },
+        {
+          "old": "\t\t\tif(\"Knuckledusters\")",
+          "new": "\t\t\tif(\"指虎\")"
+        },
+        {
+          "old": "\t\t\tif(\"Punch Dagger\")",
+          "new": "\t\t\tif(\"冲拳匕首\")"
+        },
+        {
+          "old": "\t\t\tif(\"Battle Axe\")",
+          "new": "\t\t\tif(\"战斧\")"
+        },
+        {
+          "old": "\t\t\tif(\"Grand Mace\")",
+          "new": "\t\t\tif(\"巨锤\")"
+        },
+        {
+          "old": "\t\t\tif(\"Falx\")",
+          "new": "\t\t\tif(\"法尔克斯弯刃\")"
+        },
+        {
+          "old": "\t\tvar/helmets = list(\"Berserker's Volfskulle Bascinet\",\"Steel Kettle + Wildguard\")",
+          "new": "\t\tvar/helmets = list(\"狂战士狼颅盆盔\",\"钢锅盔加荒卫面具\")"
+        },
+        {
+          "old": "\t\tvar/helmet_choice = input(H, \"Choose your HELMET.\", \"STEEL YOURSELF.\") as anything in helmets",
+          "new": "\t\tvar/helmet_choice = input(H, \"选择你的头盔。\", \"武装自己。\") as anything in helmets"
+        },
+        {
+          "old": "\t\t\tif(\"Berserker's Volfskulle Bascinet\")",
+          "new": "\t\t\tif(\"狂战士狼颅盆盔\")"
+        },
+        {
+          "old": "\t\t\tif(\"Steel Kettle + Wildguard\")",
+          "new": "\t\t\tif(\"钢锅盔加荒卫面具\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/wretch/blackoak.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Black Oak Pariah\"",
+          "new": "\tname = \"Black Oak 弃徒\""
+        },
+        {
+          "old": "\ttutorial = \"Carrying extreme beliefs not even befit of the Black Oaks, you have decided to secede yourself from the group and everyone else. This land was once great...and now, wave after wave of monsters and outsiders trample your home. Your people were the ones that settled these lands, and the foreign-backed Crown, deceitful and arrogant, has denied your people the rewards they deserve! Your extensive training in the Black Oaks has given you skill in both glaives and magycks. A bounty from the crown follows you, as you had already done enough to be officially condemned by the group that was not committed to the cause due to the lure of coin.\"",
+          "new": "\ttutorial = \"你怀抱着连 Black Oak 都无法容忍的极端信念，于是决定背离这个团体，也背离所有其他人。这片土地曾经伟大……而如今，一波又一波的怪物与外来者正践踏着你的家园。最初在这片土地上定居的是你们的族人，可那个受外邦支持、虚伪又傲慢的王冠却拒绝给予你们应得的报偿！你在 Black Oak 中接受过广泛训练，精通长柄武器与魔法。王冠的悬赏一路跟随着你，因为你早已做下足够多的事，正式被那些受金钱诱惑、对大业不够忠诚的人判为有罪。\""
+        },
+        {
+          "old": "\textra_context = \"This subclass is race-limited to: Half-Elves, Elves, Dark Elves.\"",
+          "new": "\textra_context = \"该子职业的种族限制为：半精灵、精灵、黑暗精灵。\""
+        },
+        {
+          "old": "\t\tvar/weapons = list(\"Elven Swordspear and Longsword\",\"Elven Curveblade and Shortsword\",)",
+          "new": "\t\tvar/weapons = list(\"精灵剑矛与长剑\",\"精灵弯刃大剑与短剑\",)"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your weapon.\", \"TAKE UP ARMS\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的武器。\", \"披甲执兵\") as anything in weapons"
+        },
+        {
+          "old": "\t\t\tif(\"Elven Swordspear and Longsword\")",
+          "new": "\t\t\tif(\"精灵剑矛与长剑\")"
+        },
+        {
+          "old": "\t\t\tif(\"Elven Curveblade and Shortsword\")",
+          "new": "\t\t\tif(\"精灵弯刃大剑与短剑\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/mercenaries/classes/blackoak.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Black Oak's Guardian\"",
+          "new": "\tname = \"Black Oak 守卫\""
+        },
+        {
+          "old": "\ttutorial = \"A shady guardian of the Black Oaks. Half mercenary band, half irregular militia fighting for control of their ancestral elven homeland of the Peaks. Thankfully, you are not here today to shed the blood of the Duke's men — unless someone pays you to...\"",
+          "new": "\ttutorial = \"你是 Black Oak 阵营中一名潜行的守卫者。这支人马一半是佣兵团，一半是为争夺群峰间祖传精灵故土而战的非正规民兵。所幸，你今天来这里并不是为了屠戮公爵麾下的人马，除非……有人出钱让你这么做。\""
+        },
+        {
+          "old": "\textra_context = \"This subclass is race-restricted to: Half-Elves, Elves, Dark Elves.\"",
+          "new": "\textra_context = \"该分支仅限半精灵、精灵与黑暗精灵选择。\""
+        },
+        {
+          "old": "\t\tvar/weapons = list(\"Elven Swordspear and Longsword\",\"Elven Curveblade and Shortsword\",)",
+          "new": "\t\tvar/weapons = list(\"精灵剑矛与长剑\",\"精灵曲刃大剑与短剑\",)"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your weapon.\", \"TAKE UP ARMS\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的武器。\", \"整备武装\") as anything in weapons"
+        },
+        {
+          "old": "\t\t\tif(\"Elven Swordspear and Longsword\")",
+          "new": "\t\t\tif(\"精灵剑矛与长剑\")"
+        },
+        {
+          "old": "\t\t\tif(\"Elven Curveblade and Shortsword\")",
+          "new": "\t\t\tif(\"精灵曲刃大剑与短剑\")"
+        },
+        {
+          "old": "\tname = \"Black Oak's Ranger\"",
+          "new": "\tname = \"Black Oak 游侠\""
+        },
+        {
+          "old": "\ttutorial = \"A shady guardian of the Black Oaks. Half mercenary band, half irregular militia fighting for control of their ancestral elven homeland of the Peaks. Thankfully, you are not here today to shed the blood of the Duke's men — unless someone pays you to...\"",
+          "new": "\ttutorial = \"你是 Black Oak 阵营中一名潜行的守卫者。这支人马一半是佣兵团，一半是为争夺群峰间祖传精灵故土而战的非正规民兵。所幸，你今天来这里并不是为了屠戮公爵麾下的人马，除非……有人出钱让你这么做。\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Blacksmith\"",
+          "new": "\tname = \"铁匠\""
+        },
+        {
+          "old": "\ttutorial = \"A skilled blacksmith, able to forge capable weapons for warriors in the bog, \\\n\tonly after building a forge for themselves of course\"",
+          "new": "\ttutorial = \"你是一名手艺娴熟的铁匠，能为沼泽中的战士打造称手的兵器，\\\n\t当然，前提是你得先给自己搭起一座铁匠炉。\""
+        },
+        {
+          "old": "\t\t\t\"Iron sword mold\" = /obj/item/mold/sword,",
+          "new": "\t\t\t\"铁剑模具\" = /obj/item/mold/sword,"
+        },
+        {
+          "old": "\t\t\t\"Iron axe mold\" = /obj/item/mold/axe,",
+          "new": "\t\t\t\"铁斧模具\" = /obj/item/mold/axe,"
+        },
+        {
+          "old": "\t\t\t\"Iron mace mold\" = /obj/item/mold/mace,",
+          "new": "\t\t\t\"铁锤模具\" = /obj/item/mold/mace,"
+        },
+        {
+          "old": "\t\t\t\"Iron knife mold\" = /obj/item/mold/knife,",
+          "new": "\t\t\t\"铁刀模具\" = /obj/item/mold/knife,"
+        },
+        {
+          "old": "\t\t\t\"Iron polearm mold\" = /obj/item/mold/polearm,",
+          "new": "\t\t\t\"铁杆武器模具\" = /obj/item/mold/polearm,"
+        },
+        {
+          "old": "\t\t\t\"Iron plate\" = /obj/item/mold/plate",
+          "new": "\t\t\t\"铁板模具\" = /obj/item/mold/plate"
+        },
+        {
+          "old": "\t\t\tvar/mold_choice = input(H, \"Choose your starting molds\", \"Select\") as anything in mold_names",
+          "new": "\t\t\tvar/mold_choice = input(H, \"选择你的起始模具\", \"选择\") as anything in mold_names"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/trader/brewer.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Brewer\"",
+          "new": "\tname = \"酒商\""
+        },
+        {
+          "old": "\ttutorial = \"You make your coin peddling imported alcohols from all over the world, though you're no stranger to the craft, and have experience brewing your own ale in a pinch. You have the equipments and know how on how to make your own distiller, too.\"",
+          "new": "\ttutorial = \"你靠贩卖来自世界各地的进口酒水赚钱，不过你自己也并非不懂这门手艺，真到急用时也能亲手酿出自己的麦酒。你甚至还有造一台蒸馏器所需的设备与门道。\""
+        },
+        {
+          "old": "\tto_chat(H, span_warning(\"You make your coin peddling imported alcohols from all over the world, though you're no stranger to the craft, and have experience brewing your own ale in a pinch. You have the equipments and know how on how to make your own distiller, too.\"))",
+          "new": "\tto_chat(H, span_warning(\"你靠贩卖来自世界各地的进口酒水赚钱，不过你自己也并非不懂这门手艺，真到急用时也能亲手酿出自己的麦酒。你甚至还有造一台蒸馏器所需的设备与门道。\"))"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Brigand\"",
+          "new": "\tname = \"悍匪\""
+        },
+        {
+          "old": "\ttutorial = \"Cast from society, you use your powerful physical might and endurance to take from those who are weaker from you.\"",
+          "new": "\ttutorial = \"你被社会所遗弃，于是便靠着强横的体魄与耐力，从那些比你更弱的人手里掠夺一切。\""
+        },
+        {
+          "old": "\tvar/weapons = list(\"The Brigand (Axes, Maces & Whips/Flails)\",\"Common Soldiery (Polearms & Swords)\", \"The Nefarious Dusthead (Knives, Climbing & Athletics)\")",
+          "new": "\tvar/weapons = list(\"悍匪路数（斧、锤与鞭枷）\",\"兵卒路数（长柄与刀剑）\", \"恶棍路数（匕首、攀爬与体能）\")"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your expert-level proficiencies.\", \"HOW DOTH THOU WALK THROUGH LYFE, BRIGAND?\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的专精路线。\", \"悍匪，你要走哪条路？\") as anything in weapons"
+        },
+        {
+          "old": "\t\t\tif(\"The Brigand (Axes, Maces & Whips/Flails)\")",
+          "new": "\t\t\tif(\"悍匪路数（斧、锤与鞭枷）\")"
+        },
+        {
+          "old": "\t\t\tif(\"Common Soldiery (Polearms & Swords)\")",
+          "new": "\t\t\tif(\"兵卒路数（长柄与刀剑）\")"
+        },
+        {
+          "old": "\t\t\tif(\"The Nefarious Dusthead (Knives, Climbing & Athletics)\")",
+          "new": "\t\t\tif(\"恶棍路数（匕首、攀爬与体能）\")"
+        }
+      ]
+    }
+  ]
+}
