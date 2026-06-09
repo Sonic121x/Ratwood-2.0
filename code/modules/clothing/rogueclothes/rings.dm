@@ -197,6 +197,9 @@
 	desc = "一枚奢华的金戒指，上面刻有普希顿的符号。将其浸入熔化的红脂后，便可为宗教文书盖印密封，这类门道通常更为宗教裁判所所熟知，而非教会或王室。"
 	sellprice = 135
 	var/tallowed = FALSE
+	var/seal_label = "Otavan驻河谷地带代表团大审判官"
+	var/seal_color = "#6b0000"
+	var/seal_is_official = TRUE
 
 /obj/item/clothing/ring/signet/silver
 	name = "银印戒"

@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"孤僻"=/datum/charflaw/isolationist,
 	"瘾君子"=/datum/charflaw/addiction/junkie,
 	"无法无天"=/datum/charflaw/lawless,
-	"Baotha 之印" =/datum/charflaw/marked_by_baotha,
+	"欲望之印" =/datum/charflaw/marked_by_baotha,
 	"麻风病人 (+1 TRI)"=/datum/charflaw/leprosy,
 	"受虐狂"=/datum/charflaw/addiction/masochist,
 	"失鼻"=/datum/charflaw/missing_nose,
@@ -417,16 +417,17 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		H.compliance = 0
 		H.remove_status_effect(/datum/status_effect/compliance)
 
-/datum/charflaw/hunted
-	name = "被追猎"
-	desc = "我过去的某些事让我成了目标。我总得不停回头张望。你的刺客可以在不进行升级冲突的情况下永久将你逐出本局！"
+/datum/charflaw/assassintarget
+	name = "Marked for Death"
+	desc = "我过去的某些事让我成了目标。我总得不停回头张望。<br>\
+	你的刺客可以在不进行升级冲突的情况下永久将你逐出本局！"
 	var/logged = FALSE
 
-/datum/charflaw/hunted/on_mob_creation(mob/user)
-	..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		H.adjust_triumphs(1)
+/datum/charflaw/hunted
+	name = "豺狼人的猎物"
+	desc = "出于某种原因，我被视为了配得上格拉加尔（Graggar）冠军勇士出手的猎物。无论走到哪里，我都能听到他们的怪笑声。<br>\
+	<small>此特质会吸引豺狼人对你展开追杀。在此过程中，你可能会被直接杀死。</small>"
+	var/logged = FALSE
 
 /datum/charflaw/ugly
 	name = "丑陋"
@@ -864,7 +865,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	insane_fool.adjust_triumphs(1)
 
 /datum/charflaw/marked_by_baotha
-	name = "Baotha 之印"
+	name = "欲望之印"
 	desc = "不论是我主动寻上异端仪式术士，还是在违背意愿的情况下，我都已被 Baotha 打上印记。我的腹股沟处留下了清晰可见的烙印，也因此无论身体原本处于何种通常无法受孕的状态，都仍可能受孕。为了避免压力，我得时常满足这股新生的欲望……"
 
 /datum/charflaw/marked_by_baotha/on_mob_creation(mob/user)

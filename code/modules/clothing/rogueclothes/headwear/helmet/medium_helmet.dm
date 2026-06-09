@@ -92,6 +92,19 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_IRON
 
+/obj/item/clothing/head/roguetown/helmet/kettle/ancient
+	name = "古老的锅盔"
+	desc = "一顶经过打磨的吉尔青铜锅盔，保护着头顶和两侧。当涉及不洁之战时，绝不能阻挡 ZIZO 的凝视。不死弩炮手们践行着一种奇特的方法，将染色的布料系在盔檐周围；难道他们，也能思考和产生联想吗？"
+	icon_state = "ancientkettle"
+	smeltresult = /obj/item/ingot/aaslag
+
+/obj/item/clothing/head/roguetown/helmet/kettle/ancient/decrepit
+	name = "破旧的锅盔"
+	desc = "一顶磨损的青铜锅盔，保护着头顶和两侧。戴在复活的征召兵头皮上，这是极恶势力即将围城的前兆；而戴在毫无血肉的弩炮手头骨上，这多半意味着你该趴下了。"
+	max_integrity = ARMOR_INT_HELMET_DECREPIT
+	color = "#bb9696"
+	anvilrepair = null
+
 /obj/item/clothing/head/roguetown/helmet/kettle/wide
 	name = "宽檐锅盔"
 	desc = "一顶保护头顶与两侧的钢盔。这顶看起来比其他同类更宽。"

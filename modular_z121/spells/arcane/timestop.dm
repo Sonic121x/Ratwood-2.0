@@ -4,9 +4,9 @@
 #define TIMESTOP_HOLD_DURATION (1 SECONDS)
 #define TIMESTOP_NULL_COLOR "__timestop_null_color__"
 #define TIMESTOP_MUTE_SOURCE "timestop"
-#define TIMESTOP_ACTION_ICON 'modular/custom/assets/spells/timestop/actions_spells.dmi'
-#define TIMESTOP_FIELD_ICON 'modular/custom/assets/spells/timestop/160x160.dmi'
-#define TIMESTOP_SOUND 'modular/custom/assets/spells/timestop/timeparadox2.ogg'
+#define TIMESTOP_ACTION_ICON 'modular_z121/custom/assets/spells/timestop/actions_spells.dmi'
+#define TIMESTOP_FIELD_ICON 'modular_z121/custom/assets/spells/timestop/160x160.dmi'
+#define TIMESTOP_SOUND 'modular_z121/custom/assets/spells/timestop/timeparadox2.ogg'
 
 /proc/timestop_gray_color()
 	return "#D3D3D3"
