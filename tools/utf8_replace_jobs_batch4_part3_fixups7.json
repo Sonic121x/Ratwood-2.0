@@ -1,0 +1,71 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/courtier/magician.dm",
+      "replacements": [
+        {
+          "old": "\ttutorial = \"Your creed is one dedicated to the conquering of the arcane arts and the constant thrill of knowledge. \\\n\t\tYou owe your life to the Lord, for it was his coin that allowed you to continue your studies in these dark times. \\\n\t\tIn return, you have proven time and time again as justicar and trusted advisor to their reign.\"",
+          "new": "\ttutorial = \"你的信条在于征服奥术之艺，并永远追逐知识带来的悸动。\\\n\t\t你这条命都欠着领主，因为正是他的金钱让你得以在这黑暗时代继续钻研学问。\\\n\t\t作为回报，你一次又一次证明了自己既是其统治下的裁断者，也是值得信赖的顾问。\"",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/courtier/physician.dm",
+      "replacements": [
+        {
+          "old": "\ttutorial = \"You are a master physician and the current head of the clinic. \\\n\t\tOversee your clinic and the apothecaries under you. \\\n\t\tAs a member of the upper class, expect to treat nobility. You have access to accommodate this.\"",
+          "new": "\ttutorial = \"你是一位医术高超的大医者，也是当前诊所的负责人。\\\n\t\t管理你的诊所，以及你麾下的药剂师们。\\\n\t\t身为上层阶级的一员，你应当准备好为贵族诊治，而你也拥有与之相称的权限。\"",
+          "count": 2
+        },
+        {
+          "old": "\tname = \"Physician\"",
+          "new": "\tname = \"医师\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/byos/triballackey.dm",
+      "replacements": [
+        {
+          "old": "\ttutorial = \"A gremlin among many other gremlins. You worship the chief as the representation of The Dragon, his chosen as the biggest and the strongest. \\\n\tThere's little to say about you, aside from your proclivity for skullduggery over outright skull smashing, much to your chief's disappointment. Obey when called upon. \\\n\tThis is The Dragon's island, and there's rumor of newcomers, which means more gold for him. \\\n\tPerhaps if you brought a fresh slave or mammons... The Dragon would finally notice you.\"",
+          "new": "\ttutorial = \"在一群小怪胎里，你也只是其中一个小怪胎。你崇拜酋长，将其视作巨龙意志在人间的化身，因为祂所拣选的，自然就是最大最强的那个。 \\\n\t除了比起正面砸烂别人脑袋，你更偏爱鬼祟伎俩之外，实在没什么特别之处，而这也常叫酋长失望。听到召唤就乖乖服从。 \\\n\t这里是巨龙之岛，而今有传闻说外来者已抵达，这意味着又有更多金子可供祂攫取。 \\\n\t说不定只要你献上新鲜的奴隶和更多财货……巨龙终会注意到你。\""
+        },
+        {
+          "old": "\tname = \"Hunter\"",
+          "new": "\tname = \"潜猎者\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/byos/tribalshaman.dm",
+      "replacements": [
+        {
+          "old": "\ttutorial = \"You've seen visions of fire and magma, gnashing claws and red scales. The Dragon's will burns behind your eyes, and Graggar's voice echoes in your dreams. \\\n\tYour wild hallucinations and prophetic trances set you apart from the rest of your tribe—some fear you, others revere you, but all know you are touched by something greater. \\\n\tYou serve as the spiritual heart of the tribe, guiding the Chief and your kin with fervent, sometimes unsettling, devotion. \\\n\tLet no one doubt your faith: you are the Dragon's chosen, and you will do anything, no matter how mad, to see Graggar's vision made real.\"",
+          "new": "\ttutorial = \"你见过火焰与熔岩的幻景，见过撕咬的利爪与猩红鳞片。巨龙的意志灼烧在你的眼后，而 Graggar 的低语夜夜回荡在你的梦中。 \\\n\t你狂乱的幻觉与预言般的出神使你与族人截然不同，有人惧你，有人敬你，但所有人都知道，你已被更伟大的存在所触碰。 \\\n\t你是部族的灵魂核心，以狂热而有时令人不安的虔诚，引导着酋长与同胞。 \\\n\t不要让任何人怀疑你的信仰：你是巨龙拣选之人，为了让 Graggar 的异象化作现实，无论多么疯狂的事，你都会去做。\""
+        },
+        {
+          "old": "\tname = \"Tribe Shaman\"",
+          "new": "\tname = \"部落萨满\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/courtier/servant.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Servant\"",
+          "new": "\tname = \"仆役\""
+        },
+        {
+          "old": "\tname = \"Maid\"",
+          "new": "\tname = \"女仆\""
+        },
+        {
+          "old": "\tname = \"Butler\"",
+          "new": "\tname = \"男仆\""
+        }
+      ]
+    }
+  ]
+}

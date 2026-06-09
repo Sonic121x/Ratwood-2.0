@@ -1,0 +1,593 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/arbalist.dm",
+      "replacements": [
+        {
+          "old": "name = \"Arbalist\"",
+          "new": "name = \"劲弩手\""
+        },
+        {
+          "old": "tutorial = \"They'd pulled you from the line. To be a Confessor was your fate. Now? You're one of the Inquisitor's sharpest, of eye and steady hand alike. \\\n\tArmed with your beloved sauterelle, you'll drive back the dark. One stake at a time.\"",
+          "new": "tutorial = \"你曾被从队列中抽调出来，本该成为一名告解官。如今？你已成了审判官手下眼最锐、手最稳的人之一。 \\\n\t手执你心爱的 sauterelle，你会一枚一枚地将圣桩送出，把黑暗逐步逼退。\""
+        },
+        {
+          "old": "\"Tome of Psydon\" = /obj/item/book/rogue/bibble/psy",
+          "new": "\"《Psydon 圣典》\" = /obj/item/book/rogue/bibble/psy"
+        },
+        {
+          "old": "name = \"stake bolt belt\"",
+          "new": "name = \"圣桩弩矢腰带\""
+        },
+        {
+          "old": "desc = \"A five-slotted belt meant for stake bolts. Little room left over.\"",
+          "new": "desc = \"一条专为圣桩弩矢设计的五槽腰带，几乎没有多余空间。\""
+        },
+        {
+          "old": "to_chat(usr, span_notice(\"I discreetly slip [A] into [src].\"))",
+          "new": "to_chat(usr, span_notice(\"我不动声色地把 [A] 塞进了 [src]。\"))"
+        },
+        {
+          "old": "to_chat(loc, span_warning(\"Full!\"))",
+          "new": "to_chat(loc, span_warning(\"已满！\"))"
+        },
+        {
+          "old": ". += span_notice(\"[stakes.len] inside.\")",
+          "new": ". += span_notice(\"里面有 [stakes.len] 支。\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/arbiter.dm",
+      "replacements": [
+        {
+          "old": "name = \"Arbiter\"",
+          "new": "name = \"裁决官\""
+        },
+        {
+          "old": "tutorial = \"Unlike Ordinators or Inspectors, Arbiters serve an entirely different purpose. \\\n\tDrawn from a flock of warrior-priests, they still fight to this day within rot-scoured lands. Uniquely attuned to the rot's touch. \\\n\tWith the aid of rare and dangerous greater miracles, they sniff out the taint. One heretic at a time, to be put to a pyre.\"",
+          "new": "tutorial = \"不同于 Ordinator 或 Inspector，Arbiter 所承担的是截然不同的职责。 \\\n\t你出身于战斗祭司之列，至今仍在被腐败侵蚀的土地上作战，对那份腐朽之触有着异乎寻常的感应。 \\\n\t借助稀有而危险的大能神迹，你能嗅出污秽，再把异端一个接一个送上火刑架。\""
+        },
+        {
+          "old": "\"Tome of Psydon\" = /obj/item/book/rogue/bibble/psy",
+          "new": "\"《Psydon 圣典》\" = /obj/item/book/rogue/bibble/psy"
+        },
+        {
+          "old": "var/weapons = list(\"Psydonic Broadsword\", \"Daybreak (Whip)\", \"Stigmata (Halberd)\", \"Consecratia (Flail)\")",
+          "new": "var/weapons = list(\"Psydonic 阔剑\", \"Daybreak（鞭）\", \"Stigmata（长戟）\", \"Consecratia（连枷）\")"
+        },
+        {
+          "old": "var/weapon_choice = input(H,\"FIND YOUR TRUTHS.\", \"WIELD THEM IN HIS NAME.\") as anything in weapons",
+          "new": "var/weapon_choice = input(H,\"寻得你的真理。\", \"以祂之名执兵。\") as anything in weapons"
+        },
+        {
+          "old": "if(\"Psydonic Broadsword\")",
+          "new": "if(\"Psydonic 阔剑\")"
+        },
+        {
+          "old": "if(\"Daybreak (Whip)\")",
+          "new": "if(\"Daybreak（鞭）\")"
+        },
+        {
+          "old": "if(\"Stigmata (Halberd)\")",
+          "new": "if(\"Stigmata（长戟）\")"
+        },
+        {
+          "old": "if(\"Consecratia (Flail)\")",
+          "new": "if(\"Consecratia（连枷）\")"
+        },
+        {
+          "old": "var/sect = list(\"Ancient - Gilbranze, Gambesons & Speed\", \"New Age - Silver, Overcoats & Strength\")",
+          "new": "var/sect = list(\"古派 - Gilbranze、棉甲与速度\", \"新派 - 白银、外袍与力量\")"
+        },
+        {
+          "old": "var/sect_choice = input(H,\"FIND YOUR SECT\", \"WHAT ARE WE?\") as anything in sect",
+          "new": "var/sect_choice = input(H,\"择定你的教派。\", \"我们是谁？\") as anything in sect"
+        },
+        {
+          "old": "if(\"Ancient - Gilbranze, Gambesons & Speed\")",
+          "new": "if(\"古派 - Gilbranze、棉甲与速度\")"
+        },
+        {
+          "old": "if(\"New Age - Silver, Overcoats & Strength\")",
+          "new": "if(\"新派 - 白银、外袍与力量\")"
+        },
+        {
+          "old": "name = \"webbing\"",
+          "new": "name = \"织带腰具\""
+        },
+        {
+          "old": "desc = \"A leather belt, paired with some Otavan style webbing and pouches. <br>\\\n\tA style pioneered by an arbiters, a century or two ago. Maintained by those who require much of the same.\"",
+          "new": "desc = \"一条皮带，搭配若干 Otavan 风格的织带与小袋。<br>\\\n\t这种样式由早年某位 Arbiter 首创，历经一两百年后，仍被那些有相同需求的人沿用至今。\""
+        },
+        {
+          "old": "name = \"arbiter gambeson\"",
+          "new": "name = \"裁决官棉甲\""
+        },
+        {
+          "old": "desc = \"A heavy, padded gambeson that provides adequate protection against unarmed innocents. \\\n\tIt reeks of smokepowder and sulphur. Common of sanctification rituals.\"",
+          "new": "desc = \"一件厚实的衬垫棉甲，足以抵御那些赤手空拳的“无辜者”。\\\n\t它散发着火药与硫磺的刺鼻气味，那正是圣化仪式里常见的味道。\""
+        },
+        {
+          "old": "name = \"arbiter brigandine\"",
+          "new": "name = \"裁决官布面甲\""
+        },
+        {
+          "old": "desc = \"A heavy, reinforced brigandine coat. Set in a tasteful burgundy covering, backed by silver plating. \\\n\tIt's sure not to leave anyone indifferent, for they'll come to know it. In time.\"",
+          "new": "desc = \"一件厚重而加固的布面甲外袍，外覆得体的酒红色织料，内衬银质甲片。\\\n\t没人会对它无动于衷，因为迟早，他们都会认得它。\""
+        },
+        {
+          "old": "name = \"arbiter gloves\"",
+          "new": "name = \"裁决官手套\""
+        },
+        {
+          "old": "desc = \"Heavy, thick leather gloves, adorned with bright strips.\"",
+          "new": "desc = \"厚实沉重的皮手套，上面缀着醒目的饰带。\""
+        },
+        {
+          "old": "name = \"arbiter mask\"",
+          "new": "name = \"裁决官面具\""
+        },
+        {
+          "old": "desc = \"An iconic gilbranze mask, depicting the visage of HIM. Weeping, as HE is.\"",
+          "new": "desc = \"一副极具辨识度的 Gilbranze 面具，描绘着祂的面容，正如祂自己那般垂泪。\""
+        },
+        {
+          "old": "desc = \"An iconic, silver mask depicting the visage of HIM. Weeping, as HE is.\"",
+          "new": "desc = \"一副极具辨识度的银面具，描绘着祂的面容，正如祂自己那般垂泪。\""
+        },
+        {
+          "old": "to_chat(user, span_red(\"With such a mask over your face, all judgement is waived. For who but a heretic might argue your purpose?\"))",
+          "new": "to_chat(user, span_red(\"当这副面具覆上你的脸，一切迟疑的审判都会被豁免。除了异端，又有谁敢质疑你的意志？\"))"
+        },
+        {
+          "old": "to_chat(user, span_red(\"As if flooded with sudden clarity, perhaps your actions might require a steady hand...\"))",
+          "new": "to_chat(user, span_red(\"仿佛骤然清醒过来一般，你开始意识到，自己的举止或许还是该稳当些……\"))"
+        },
+        {
+          "old": "name = \"arbiter hood\"",
+          "new": "name = \"裁决官兜帽\""
+        },
+        {
+          "old": "desc = \"You wouldn't hide your face if there was another way. It's not as if you've no reason for it. \\\n\tWould they ever understand? Truly?\"",
+          "new": "desc = \"若还有别的路可走，你本不会遮住自己的脸。你这么做并非毫无缘由。\\\n\t可他们真的会懂吗？当真会吗？\""
+        },
+        {
+          "old": "name = \"heavy trousers\"",
+          "new": "name = \"厚长裤\""
+        },
+        {
+          "old": "desc = \"A pair of heavy, washed-out trousers in grey colors.\"",
+          "new": "desc = \"一条厚实、颜色洗得发灰的长裤。\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/yeomen/archivist.dm",
+      "replacements": [
+        {
+          "old": "\ttitle = \"Archivist\"",
+          "new": "\ttitle = \"Archivist\"\n\tdisplay_title = \"档案官\""
+        },
+        {
+          "old": "\ttutorial = \"The Archivist meticulously preserves and organizes ancient scrolls and tomes, safeguarding the collective knowledge of the realm for generations to come. Nobles and Peasants alike often seek your expertise on matters of history and fact, and your keenly-kept records on the events of this week will likely stand a testament to your Duke's benevolence and their realm's prosperity...or not. After all, you hold the true power: The power to dictate how the future generations will look back on these coming days.\"",
+          "new": "\ttutorial = \"你谨慎地保存并整理古老卷轴与典籍，将这片土地累积的知识封存下来，留待后世承继。无论贵族还是农夫，都会为了历史与事实前来向你求证；而你为本周诸事留下的详尽记录，终将成为公爵仁德与领地繁荣的见证……又或者并非如此。毕竟，真正握着权力的人是你：由你来决定后世会如何回望这些时日。\""
+        },
+        {
+          "old": "name = \"Archivist\"",
+          "new": "name = \"档案官\""
+        },
+        {
+          "old": "tutorial = \"The Archivist meticulously preserves and organizes ancient scrolls and tomes, safeguarding the collective knowledge of the realm for generations to come. Nobles and Peasants alike often seek your expertise on matters of history and fact, and your keenly-kept records on the events of this week will likely stand a testament to your Duke's benevolence and their realm's prosperity...or not. After all, you hold the true power: \\\n\tThe power to dictate how the future generations will look back on these coming days.\"",
+          "new": "tutorial = \"你谨慎地保存并整理古老卷轴与典籍，将这片土地累积的知识封存下来，留待后世承继。无论贵族还是农夫，都会为了历史与事实前来向你求证；而你为本周诸事留下的详尽记录，终将成为公爵仁德与领地繁荣的见证……又或者并非如此。毕竟，真正握着权力的人是你：\\\n\t由你来决定后世会如何回望这些时日。\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm",
+      "replacements": [
+        {
+          "old": "name = \"Tinkerer\"",
+          "new": "name = \"巧匠\""
+        },
+        {
+          "old": "tutorial = \"One of the brilliant minds that survived the disaster that befell Heartfelt. Perhaps you weren't able to prevent what happened in your homeland, but with your knowledge and skill, perhaps you can shape what happens from now on in your life as you venture towards a new beginning.\"",
+          "new": "tutorial = \"你是少数从降临在 Heartfelt 的那场灾祸中幸存下来的聪慧之士之一。也许你没能阻止故土发生的一切，但凭借你的知识与技艺，在踏上这段通往新生的旅途后，往后的人生会走向何方，或许还能由你亲手塑造。\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/assassin.dm",
+      "replacements": [
+        {
+          "old": "\ttitle = \"Assassin\"",
+          "new": "\ttitle = \"Assassin\"\n\tdisplay_title = \"刺客\""
+        },
+        {
+          "old": "\ttutorial = \"Long ago you did a crime worthy of your bounty being hung on the wall outside of the local inn. You now live with your fellow freemen in the bog, and generally get up to no good.\"",
+          "new": "\ttutorial = \"很久以前，你犯下了足以让悬赏令被钉在本地酒馆外墙上的罪行。如今你与同伙一同栖身于沼泽，平日里也净干些见不得光的勾当。\""
+        },
+        {
+          "old": "\t\tvar/wanted = list(\"I am a notorious criminal\", \"I am a nobody\")",
+          "new": "\t\tvar/wanted = list(\"我是臭名昭著的罪犯\", \"我是无名之辈\")"
+        },
+        {
+          "old": "\t\tvar/wanted_choice = input(\"Are you a known criminal?\") as anything in wanted",
+          "new": "\t\tvar/wanted_choice = input(\"你是否是个知名罪犯？\") as anything in wanted"
+        },
+        {
+          "old": "\t\t\tif(\"I am a notorious criminal\") //Extra challenge for those who want it",
+          "new": "\t\t\tif(\"我是臭名昭著的罪犯\") //Extra challenge for those who want it"
+        },
+        {
+          "old": "\t\t\tif(\"I am a nobody\") //Nothing ever happens",
+          "new": "\t\t\tif(\"我是无名之辈\") //Nothing ever happens"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/mercenaries/classes/atgervi.dm",
+      "replacements": [
+        {
+          "old": "tutorial = \"You are a Varangian of the Gronn Highlands. Warrior-Traders whose exploits into the Zybantine Empire will be forever remembered by historians.\"",
+          "new": "tutorial = \"你是来自 Gronn 高地的 Varangian，是兼具战士与商旅身份的远征者。你们深入 Zybantine Empire 的事迹，将永远被史家铭记。\""
+        },
+        {
+          "old": "to_chat(H, span_warning(\"You are a Varangian of the Gronn Highlands. Warrior-Traders whose exploits into the Zybantine Empire will be forever remembered by historians.\"))",
+          "new": "to_chat(H, span_warning(\"你是来自 Gronn 高地的 Varangian，是兼具战士与商旅身份的远征者。你们深入 Zybantine Empire 的事迹，将永远被史家铭记。\"))"
+        },
+        {
+          "old": "name = \"Atgervi Shaman\"",
+          "new": "name = \"Atgervi 萨满\""
+        },
+        {
+          "old": "tutorial = \"You are a Shaman of the Fjall, The Northern Empty. Savage combatants who commune with the Ecclesical Beast gods through ritualistic violence, rather than idle prayer.\"",
+          "new": "tutorial = \"你是 Fjall，也即“北方荒原”之地的萨满。你们是凶悍的战士，不以空洞祈祷侍奉 Ecclesical 兽神，而是借由仪式性的暴力与祂们沟通。\""
+        },
+        {
+          "old": "to_chat(H, span_warning(\"You are a Shaman of the Fjall, The Northern Empty. Savage combatants who commune with the Ecclesical Beast gods through ritualistic violence, rather than idle prayer.\"))",
+          "new": "to_chat(H, span_warning(\"你是 Fjall，也即“北方荒原”之地的萨满。你们是凶悍的战士，不以空洞祈祷侍奉 Ecclesical 兽神，而是借由仪式性的暴力与祂们沟通。\"))"
+        },
+        {
+          "old": "name = \"vagarian hauberk\"",
+          "new": "name = \"Varangian 锁甲袍\""
+        },
+        {
+          "old": "desc = \"The pride of the Hammerhold mercenaries a well crafted blend of chain and leather into a dense protective coat.\"",
+          "new": "desc = \"这是 Hammerhold 佣兵引以为傲的护具，以锁链与皮革精巧结合而成，编成一件厚实而坚韧的防护外袍。\""
+        },
+        {
+          "old": "name = \"shamanic coat\"",
+          "new": "name = \"萨满外袍\""
+        },
+        {
+          "old": "desc = \"A furred protective coat, Often made by hand it embodies the second trial of the Iskarn Shamans. To honor the leopard is too desire for more.\"",
+          "new": "desc = \"一件覆着毛皮的防护外袍，往往由亲手缝制而成，象征着 Iskarn 萨满的第二道试炼。敬奉豹兽，便意味着渴求更多。\""
+        },
+        {
+          "old": "name = \"fur pants\"",
+          "new": "name = \"毛皮裤\""
+        },
+        {
+          "old": "desc = \"Thick fur pants made to endure the coldest winds, offering a share of protection from fang and claw of beast or men alike.\"",
+          "new": "desc = \"厚实的毛皮长裤，专为抵御最刺骨的寒风而制，也能在野兽与人类的牙爪之下提供一层像样的防护。\""
+        },
+        {
+          "old": "name = \"fur-lined leather gloves\"",
+          "new": "name = \"毛衬皮手套\""
+        },
+        {
+          "old": "desc = \"Thick, padded gloves made for the harshest of climates, and wildest of beasts encountered in the untamed lands.\"",
+          "new": "desc = \"厚实而填衬充足的手套，为最酷烈的气候与荒野中最凶猛的野兽而制。\""
+        },
+        {
+          "old": "name = \"beast claws\"",
+          "new": "name = \"兽爪拳甲\""
+        },
+        {
+          "old": "desc = \"A menacing pair of plated claws, A closely protected tradition of the Shamans. The four claws embodying the four great beasts. Decorated with symbols of the gods they praise and the Gods they reject.\"",
+          "new": "desc = \"一对骇人的覆甲利爪，是萨满严守不外传的古老传统。四根利爪象征着四头伟兽，其上镌饰着他们所敬奉之神与所摒弃之神的符号。\""
+        },
+        {
+          "old": "name = \"owl helmet\"",
+          "new": "name = \"鸮形盔\""
+        },
+        {
+          "old": "desc = \"A carefully forged steel helmet in the shape of an owl's face, with added chain to cover the face and neck against many blows.\"",
+          "new": "desc = \"一顶精心锻造、形如猫头鹰面容的钢盔，并加缀锁链以遮护面部与颈项，抵御连番打击。\""
+        },
+        {
+          "old": "name = \"moose hood\"",
+          "new": "name = \"驼鹿兜帽\""
+        },
+        {
+          "old": "desc = \"A deceptively strong hood of hide with a pair of large heavy antlers. It is the reward of the fourth trial of the Iskarn Shamans, To slay a Grinning moose in the final hunt alone and fashion a hood from it's head.\"",
+          "new": "desc = \"一顶看似朴拙却异常结实的皮革兜帽，上面带着一对沉重巨大的鹿角。这是 Iskarn 萨满第四重试炼的奖赏，唯有独自完成最后的狩猎，猎杀一头咧笑驼鹿，并以其首级制成兜帽者，方能佩戴。\""
+        },
+        {
+          "old": "name = \"atgervi leather boots\"",
+          "new": "name = \"Atgervi 皮靴\""
+        },
+        {
+          "old": "desc = \"A pair of strong leather boots, designed to endure battle and the chill of the frozen north both.\"",
+          "new": "desc = \"一双结实耐穿的皮靴，既能撑过战斗，也扛得住北地冰寒。\""
+        },
+        {
+          "old": "name = \"kite shield\"",
+          "new": "name = \"鸢盾\""
+        },
+        {
+          "old": "desc = \"A large but light wooden shield with a steel boss in the center to deflect blows more easily.\"",
+          "new": "desc = \"一面硕大却轻便的木盾，中央包着钢制凸钉，更便于拨偏来袭的打击。\""
+        },
+        {
+          "old": "name = \"Bearded Axe\"",
+          "new": "name = \"胡须战斧\""
+        },
+        {
+          "old": "desc = \"A large axe easily wielded in one hand or two, With a large hooked axehead to tearing into flesh and armor and ripping it away brutally.\"",
+          "new": "desc = \"一柄既可单手也可双手挥使的大斧，斧刃下缘带着夸张的勾形突出，既能撕开血肉，也能残暴地扯裂护甲。\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/avar.dm",
+      "replacements": [
+        {
+          "old": "tutorial = \"A niktov. The slang for one who's done much, against both common good and their fellow man. \\\n\tYou're a brigand, of some sort. Perhaps not known, or violent in the same nature as all the others. \\\n\tYet, all the same, you're outcast from the people you'd once called your own. \\\n\tWhat could you have done for them to toss you aside? Where had you failed?\"",
+          "new": "tutorial = \"Niktov，是对那种做下太多坏事、既害了公义也害了同胞之人的俚语称呼。\\\n\t你算是某种意义上的匪徒，也许并不出名，也不似别的恶棍那般嗜血凶残。\\\n\t可无论如何，你终究还是被那些你曾视作自己人的族群所放逐。\\\n\t你究竟做了什么，才会让他们把你弃若敝履？你又是在哪一步走岔了路？\""
+        },
+        {
+          "old": "extra_context = \"This subclass provides the player with four loadouts. \\\n\tChoosing the path of the saiga provides the Equestrian trait. \\\n\tAll others provide medium armour training.\"",
+          "new": "extra_context = \"该子职业为玩家提供四种配置。\\\n\t选择 Saiga 骑射手之路会获得骑术特质。\\\n\t其余路线则都会提供中甲训练。\""
+        },
+        {
+          "old": "\t\tvar/aavnik_purpose = list(\"Saiga Archer\",\"Footman\",\"Axeman\",\"Pikeman\")",
+          "new": "\t\tvar/aavnik_purpose = list(\"Saiga 骑射手\",\"步战兵\",\"斧兵\",\"长枪兵\")"
+        },
+        {
+          "old": "\t\tvar/purpose_choice = input(H, \"Choose your FALL\", \"WHY YOU LEFT\") as anything in aavnik_purpose",
+          "new": "\t\tvar/purpose_choice = input(H, \"选择你的求生之道。\", \"你为何离开\") as anything in aavnik_purpose"
+        },
+        {
+          "old": "\t\t\tif(\"Saiga Archer\")",
+          "new": "\t\t\tif(\"Saiga 骑射手\")"
+        },
+        {
+          "old": "\t\t\tif(\"Footman\")",
+          "new": "\t\t\tif(\"步战兵\")"
+        },
+        {
+          "old": "\t\t\tif(\"Axeman\")",
+          "new": "\t\t\tif(\"斧兵\")"
+        },
+        {
+          "old": "\t\t\tif(\"Pikeman\")",
+          "new": "\t\t\tif(\"长枪兵\")"
+        },
+        {
+          "old": "name = \"dagger sheath\"",
+          "new": "name = \"匕首鞘\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/nobility/bailiff.dm",
+      "replacements": [
+        {
+          "old": "\ttitle = \"Marshal\"",
+          "new": "\ttitle = \"Marshal\"\n\tdisplay_title = \"执法官\""
+        },
+        {
+          "old": "\ttutorial = \"You are an agent of the crown in matters of law and military, making sure that laws are pushed, verified and carried out by the retinue upon the citizenry of the realm. \\\n\t\t\t\tWhile you preside over the knights and men-at-arms, much of your work happens behind a desk, deferring to the Sergeant-at-Arms or the Knight Captain to make sure your will is carried out in the field.\"",
+          "new": "\ttutorial = \"你是王权在法律与军务上的代理人，负责确保法令得以制定、核准，并由侍从与卫队贯彻到这片土地的臣民身上。 \\\n\t\t\t\t尽管你统辖骑士与披甲兵，但你大量的工作都在案牍之后进行，并交由军士长或骑士队长在前线替你贯彻意志。\""
+        },
+        {
+          "old": "name = \"Marshal\"\t//One focused on crossbows and maces. And knives. Just in case.",
+          "new": "name = \"执法官\"\t//One focused on crossbows and maces. And knives. Just in case."
+        },
+        {
+          "old": "tutorial = \"You've spent your daes in the courts and garrisons of the city. You've studied the law tome from back to front and enforce your word with the iron hand of justice, and the iron mace in your hands. More men have spent days rotting in the dungeon than that Knight Commander could ever have claimed, and every person in the realm respects your authority in matters of law and order.\"",
+          "new": "tutorial = \"你多年周旋于城中的法庭与驻军之间，将法典从头到尾翻得滚瓜烂熟，并以正义的铁腕和手中的铁锤贯彻自己的裁断。蹲过地牢的人远比那位骑士统领亲手押进去的还多，而王国上下每个人都敬畏你在法纪与秩序上的权威。\""
+        },
+        {
+          "old": "name = \"Knight Commander\"\t//One focused on swords and better riding. You get SOME knives skill too but swords are better in general.",
+          "new": "name = \"骑士统领\"\t//One focused on swords and better riding. You get SOME knives skill too but swords are better in general."
+        },
+        {
+          "old": "tutorial = \"You spent your daes as a dutiful knight in the service of the crown. Earning your accolades through military tactics and victories, you're reknown for your warfaring. Now retired from your days afield, you enforce the same iron law you once practiced at war in your home. You run the garrison, knights and the town's laws with a military strictness, and no-one can claim you are weaker on crime than any of those weak Marshals.\"",
+          "new": "tutorial = \"你曾是忠心侍奉王权的骑士，以军略与战功赢得声望，在沙场上赫赫有名。如今自前线退下后，你把昔日战场上的铁律搬回故土，以军纪般的严苛统辖驻军、骑士与城中法令，谁也别想说你在打击罪行上会输给那些软弱的执法官。\""
+        },
+        {
+          "old": "set name = \"Request Law\"",
+          "new": "set name = \"请求立法\""
+        },
+        {
+          "old": "set category = \"Voice of Command\"",
+          "new": "set category = \"号令\"",
+          "count": 4
+        },
+        {
+          "old": "var/inputty = input(\"Write a new law\", \"SHERIFF\") as text|null",
+          "new": "var/inputty = input(\"拟定一条新法。\", \"执法官\") as text|null"
+        },
+        {
+          "old": "set name = \"Request Law Removal\"",
+          "new": "set name = \"请求废法\""
+        },
+        {
+          "old": "var/inputty = input(\"Remove a law\", \"SHERIFF\") as text|null",
+          "new": "var/inputty = input(\"移除一条现行法令。\", \"执法官\") as text|null"
+        },
+        {
+          "old": "set name = \"Request Purge\"",
+          "new": "set name = \"请求清法\""
+        },
+        {
+          "old": "set name = \"Request Outlaw\"",
+          "new": "set name = \"请求宣告亡命\""
+        },
+        {
+          "old": "var/inputty = input(\"Outlaw a person\", \"SHERIFF\") as text|null",
+          "new": "var/inputty = input(\"宣告某人为亡命徒。\", \"执法官\") as text|null"
+        },
+        {
+          "old": "var/choice = alert(lord, \"The sheriff requests a new law!\\n[requested_law]\", \"SHERIFF LAW REQUEST\", \"Yes\", \"No\")",
+          "new": "var/choice = alert(lord, \"执法官请求颁布一条新法！\\n[requested_law]\", \"立法请求\", \"Yes\", \"No\")"
+        },
+        {
+          "old": "to_chat(bailiff, span_warning(\"The lord has denied the request for a new law!\"))",
+          "new": "to_chat(bailiff, span_warning(\"领主驳回了这条新法请求！\"))"
+        },
+        {
+          "old": "var/choice = alert(lord, \"The sheriff requests the removal of a law!\\n[GLOB.laws_of_the_land[requested_law]]\", \"SHERIFF LAW REQUEST\", \"Yes\", \"No\")",
+          "new": "var/choice = alert(lord, \"执法官请求废除一条法令！\\n[GLOB.laws_of_the_land[requested_law]]\", \"废法请求\", \"Yes\", \"No\")"
+        },
+        {
+          "old": "to_chat(bailiff, span_warning(\"The lord has denied the request for a law removal!\"))",
+          "new": "to_chat(bailiff, span_warning(\"领主驳回了这条废法请求！\"))"
+        },
+        {
+          "old": "var/choice = alert(lord, \"The sheriff requests a purge of all laws!\", \"SHERIFF PURGE REQUEST\", \"Yes\", \"No\")",
+          "new": "var/choice = alert(lord, \"执法官请求清除全部法令！\", \"清法请求\", \"Yes\", \"No\")"
+        },
+        {
+          "old": "to_chat(bailiff, span_warning(\"The lord has denied the request for a purge of all laws!\"))",
+          "new": "to_chat(bailiff, span_warning(\"领主驳回了清除全部法令的请求！\"))"
+        },
+        {
+          "old": "var/choice = alert(lord, \"The sheriff requests to outlaw someone!\\n[requested_outlaw]\", \"SHERIFF OUTLAW REQUEST\", \"Yes\", \"No\")",
+          "new": "var/choice = alert(lord, \"执法官请求宣告某人为亡命徒！\\n[requested_outlaw]\", \"亡命宣告请求\", \"Yes\", \"No\")"
+        },
+        {
+          "old": "to_chat(bailiff, span_warning(\"The lord has denied the request for declaring an outlaw!\"))",
+          "new": "to_chat(bailiff, span_warning(\"领主驳回了亡命宣告请求！\"))"
+        },
+        {
+          "old": "set name = \"HALT!\"",
+          "new": "set name = \"止步！\"",
+          "count": 2
+        },
+        {
+          "old": "set category = \"Noises\"",
+          "new": "set category = \"呼喝\"",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/bandit.dm",
+      "replacements": [
+        {
+          "old": "\ttitle = \"Bandit\"",
+          "new": "\ttitle = \"Bandit\"\n\tdisplay_title = \"强盗\""
+        },
+        {
+          "old": "\ttutorial = \"At some point in your lyfe, you'd fallen to the wrong side of the carriage. Whether by butchery or finesse, you're known throughout the land. \\\n\tYet one of many faces in a tavern, hung up on a wall. A tale told by the locals. Now, you lyve in a camp with your fellows, to avoid an unpleasant end.\"",
+          "new": "\ttutorial = \"在你人生的某个节点，你走上了歧路。无论靠的是蛮横杀戮还是狡诈手段，你的恶名都已传遍四方。\\\n\t如今你只是酒馆墙上众多通缉面孔中的一张，是本地人嘴里流传的故事。为了躲开凄惨的下场，你与同伙一同栖身营地。\""
+        },
+        {
+          "old": "\tvar/wanted = list(\"Yes\", \"No\")",
+          "new": "\tvar/wanted = list(\"是\", \"否\")"
+        },
+        {
+          "old": "\tvar/wanted_choice = input(H, \"Are you wanted by the kingdom?\", \"You will be more skilled from your experience\") as anything in wanted",
+          "new": "\tvar/wanted_choice = input(H, \"你是否正被王国通缉？\", \"你的阅历将让你更加老练\") as anything in wanted"
+        },
+        {
+          "old": "\t\tif(\"Yes\")",
+          "new": "\t\tif(\"是\")"
+        },
+        {
+          "old": "\t\tif(\"No\") ",
+          "new": "\t\tif(\"否\") "
+        },
+        {
+          "old": "\t\t\tto_chat(H, span_warning(\"I am still relatively new to the gang. My crimes have gone unnoticed so far, but I lack experience.\"))",
+          "new": "\t\t\tto_chat(H, span_warning(\"我入伙还不算久。到目前为止，我的罪行尚未引起注意，但也因此缺了些历练。\"))"
+        },
+        {
+          "old": "\tvar/bounty_poster = input(H, \"Who placed a bounty on you?\", \"Bounty Poster\") as anything in list(\"The Justiciary of [SSmapping.map_adjustment.realm_name]\", \"The Grenzelhoftian Holy See\")",
+          "new": "\tvar/bounty_poster = input(H, \"是谁悬赏缉拿你？\", \"悬赏发布者\") as anything in list(\"[SSmapping.map_adjustment.realm_name] 司法庭\", \"Grenzelhoftian Holy See\")"
+        },
+        {
+          "old": "\tvar/bounty_severity = input(H, \"How notorious are you?\", \"Bounty Amount\") as anything in list(\"Small Game\", \"Highwayman\", \"Realm Boogeyman\")",
+          "new": "\tvar/bounty_severity = input(H, \"你的恶名有多响？\", \"悬赏金额\") as anything in list(\"小角色\", \"拦路匪\", \"国境梦魇\")"
+        },
+        {
+          "old": "\tvar/my_crime = input(H, \"What is your crime?\", \"Crime\") as text|null",
+          "new": "\tvar/my_crime = input(H, \"你的罪名是什么？\", \"罪名\") as text|null"
+        },
+        {
+          "old": "\t\tmy_crime = \"Brigandry\"",
+          "new": "\t\tmy_crime = \"劫掠\""
+        },
+        {
+          "old": "\t\tif(\"Small Game\")",
+          "new": "\t\tif(\"小角色\")"
+        },
+        {
+          "old": "\t\tif(\"Highwayman\")",
+          "new": "\t\tif(\"拦路匪\")"
+        },
+        {
+          "old": "\t\tif(\"Vale Boogeyman\")",
+          "new": "\t\tif(\"国境梦魇\")"
+        },
+        {
+          "old": "\tif(bounty_severity == \"Small Game\")",
+          "new": "\tif(bounty_severity == \"小角色\")"
+        },
+        {
+          "old": "\telse if(bounty_severity == \"Highwayman\")",
+          "new": "\telse if(bounty_severity == \"拦路匪\")"
+        },
+        {
+          "old": "\t\tvar/skillbuff = input(H, \"Your experience grants you a boon\", \"Choose An Attribute\") as anything in list(\"Strength\", \"Perception\", \"Intelligence\", \"Constitution\", \"Willpower\", \"Speed\")",
+          "new": "\t\tvar/skillbuff = input(H, \"你的阅历为你带来恩惠\", \"选择一项属性\") as anything in list(\"力量\", \"感知\", \"智力\", \"体质\", \"意志\", \"速度\")"
+        },
+        {
+          "old": "\t\t\tif(\"Strength\")",
+          "new": "\t\t\tif(\"力量\")"
+        },
+        {
+          "old": "\t\t\tif(\"Perception\")",
+          "new": "\t\t\tif(\"感知\")"
+        },
+        {
+          "old": "\t\t\tif(\"Intelligence\")",
+          "new": "\t\t\tif(\"智力\")"
+        },
+        {
+          "old": "\t\t\tif(\"Constitution\")",
+          "new": "\t\t\tif(\"体质\")"
+        },
+        {
+          "old": "\t\t\tif(\"Willpower\")",
+          "new": "\t\t\tif(\"意志\")"
+        },
+        {
+          "old": "\t\t\tif(\"Speed\")",
+          "new": "\t\t\tif(\"速度\")"
+        },
+        {
+          "old": "\tto_chat(H, span_danger(\"You are playing an Antagonist role. By choosing to spawn as a Bandit, you are expected to actively create conflict with other players regardless of bounty status. Failing to play this role with the appropriate gravitas may result in punishment for Low Roleplay standards.\"))",
+          "new": "\tto_chat(H, span_danger(\"你正在扮演反派角色。选择以强盗身份生成后，无论是否背负悬赏，你都应主动与其他玩家制造冲突。若未能以足够分量演好此角色，可能会因低质量角色扮演而受到处罚。\"))"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/barbersurgeon.dm",
+      "replacements": [
+        {
+          "old": "name = \"Barber Surgeon\"",
+          "new": "name = \"理发外科医\""
+        },
+        {
+          "old": "tutorial = \"Wielding crude tools and accumulated knowledge, you are something of a 'freelance physician' even if the local apothecary declined your application, and over the yils have probably cut into more people than the average knight.\"",
+          "new": "tutorial = \"靠着粗陋的器具和多年积攒下来的经验，你勉强也算得上是一名“自由行医者”，哪怕本地药师根本没收你的申请。年复一年下来，你大概已经给更多人开过刀，甚至比大多数骑士砍过的人还多。\""
+        }
+      ]
+    }
+  ]
+}
