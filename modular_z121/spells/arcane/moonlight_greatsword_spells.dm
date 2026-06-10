@@ -1,4 +1,5 @@
 #define MOONLIGHT_ACTION_ICON 'modular_z121/assets/spells/moonlight_greatsword/actions_spells.dmi'
+#define MOONLIGHT_WAVE_DURATION (5 SECONDS)
 
 /atom/movable/screen/alert/status_effect/buff/moonlight_blessing
 	name = "月之祝福"
@@ -60,7 +61,7 @@
 	set_light_color("#77dfff")
 	set_light_on(TRUE)
 	START_PROCESSING(SSfastprocess, src)
-	QDEL_IN(src, 10 SECONDS)
+	QDEL_IN(src, MOONLIGHT_WAVE_DURATION)
 
 /obj/effect/moonlight_wave_segment/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
@@ -188,6 +189,7 @@
 	last_segment.icon_state = "obeliskbeam_end"
 
 	playsound(origin, 'sound/magic/obeliskbeam.ogg', 100, FALSE, 0, 3)
+	user.Paralyze(MOONLIGHT_WAVE_DURATION)
 	user.visible_message(span_warning("[user] 将月光大剑朝前一引，幽蓝洪流沿着夜色轰然奔涌！"), span_notice("我将月色压入剑身，再一口气把它释放成奔腾的月光洪流。"))
 	return TRUE
 
@@ -228,4 +230,5 @@
 		to_chat(user, span_notice("月光如潮水般浸透我的身躯，希斯遗留的祝福正在强化我的每一寸血肉。"))
 	return TRUE
 
+#undef MOONLIGHT_WAVE_DURATION
 #undef MOONLIGHT_ACTION_ICON

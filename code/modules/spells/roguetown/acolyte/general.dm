@@ -55,8 +55,8 @@
 	var/situational_bonus = 1
 	var/is_inhumen = FALSE
 
-	var/message_out = span_info("一阵合唱自天穹传来，[target]获得了治愈！")
-	var/message_self = span_notice("我沐浴在治愈的合唱圣诗中！")
+	var/message_out = span_info("上方传来圣咏之声，[target] 的伤势开始愈合！")
+	var/message_self = span_notice("我沐浴在疗愈的圣咏之中！")
 
 	user.patron.on_lesser_heal(user, target, &message_out, &message_self, &conditional_buff, &situational_bonus, &is_inhumen)
 
@@ -64,7 +64,7 @@
 
 	if(conditional_buff)
 		if(situational_bonus > 0)
-			to_chat(user, "在这样的环境下引导我神的力量更加容易！")
+			to_chat(user, "在这种环境下，引导我主的力量更加轻松！")
 		healing += situational_bonus
 
 	if(!ishuman(target))
@@ -96,8 +96,8 @@
 
 // Miracle
 /obj/effect/proc_holder/spell/invoked/heal
-	name = "Fortify"
-	desc = "Improves the targets ability to receive healing, buffing all healing done on them by 50%<br>Burns undead instead of healing them if you worship the Ten."
+	name = "疗愈加护"
+	desc = "提升目标承受治疗的能力，使其受到的全部治疗效果提高 50%<br>若你信奉十神，它会灼烧亡灵而非治疗他们。"
 	overlay_state = "astrata"
 	releasedrain = 30
 	chargedrain = 0
@@ -121,16 +121,16 @@
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(HAS_TRAIT(target, TRAIT_PSYDONITE))
-			target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+			target.visible_message(span_info("[target] 微微一颤，圣迹随之消散。"), span_notice("一股黯淡的暖意在我心中涌起，却又转瞬即逝。"))
 			user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 			playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 			return FALSE
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+			target.visible_message(span_danger("[target] 被圣光灼烧！"), span_userdanger("我被圣光灼烧了！"))
 			target.adjustFireLoss(25)
 			target.fire_act(1,10)
 			return TRUE
-		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
+		target.visible_message(span_info("一圈柔和的光辉拂过 [target]！"), span_notice("我沐浴在圣光之中！"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			C.apply_status_effect(/datum/status_effect/buff/fortify)
@@ -142,8 +142,8 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/regression
-	name = "Regression"
-	desc = "Rewinds the target wounds, Healing them over time."
+	name = "回溯"
+	desc = "令目标的伤势倒回，随时间逐步愈合。"
 	overlay_state = "regression"
 	releasedrain = 30
 	chargedrain = 0
@@ -163,7 +163,7 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		target.visible_message(span_info("Order filled magic rewind [target]'s wounds!"), span_notice("My wounds, undone!"))
+		target.visible_message(span_info("秩序充盈的魔力回溯了 [target] 的伤势！"), span_notice("我的伤势正在倒退！"))
 		var/healing = 2.5
 		target.apply_status_effect(/datum/status_effect/buff/healing, healing)
 		return TRUE
@@ -171,8 +171,8 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/convergence
-	name = "Convergence"
-	desc = "Converges the targets past and present, causing them to heal 50% more."
+	name = "汇流"
+	desc = "让目标的过去与现在汇于一体，使其受到的治疗效果提高 50%。"
 	overlay_state = "convergence"
 	releasedrain = 30
 	chargedrain = 0
@@ -195,7 +195,7 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		target.visible_message(span_info("A convergence of fates surrounds [target]!"), span_notice("My past and present converge as one!"))
+		target.visible_message(span_info("命运的汇流环绕着 [target]！"), span_notice("我的过去与现在合而为一！"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			C.apply_status_effect(/datum/status_effect/buff/convergence)
@@ -209,8 +209,8 @@
 
 
 /obj/effect/proc_holder/spell/invoked/stasis
-	name = "Stasis"
-	desc = "You capture your target's current state in time, reverting them to such a state several seconds later. If under Convergence  when expiring, your target will keep any healing they receive."
+	name = "停时"
+	desc = "你将目标当前的状态封存于时间之中，数秒后令其回归那一刻。若效果结束时目标仍处于“汇流”之下，他们会保留期间获得的治疗。"
 	releasedrain = 35
 	chargedrain = 1
 	chargetime = 30
@@ -252,7 +252,7 @@
 		sunderfirestacks = sunder_status?.stacks
 		var/datum/status_effect/fire_handler/fire_stacks/divine/divine_status = target.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/divine)
 		divinefirestacks = divine_status?.stacks
-		to_chat(target, span_warning("I feel a part of me was left behind..."))
+		to_chat(target, span_warning("我感觉自己仿佛有一部分被留在了原地……"))
 		play_indicator(target,'icons/mob/overhead_effects.dmi', "timestop", 100, OBJ_LAYER)
 		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = 10 SECONDS)
 		return TRUE
@@ -318,8 +318,8 @@
 // Instantly heals all wounds & damage on a selected limb.
 // Long CD (so a Medical class would still outpace this if there's more than one patient to heal)
 /obj/effect/proc_holder/spell/invoked/wound_heal
-	name = "Wound Miracle"
-	desc = "Heals all wounds on a targeted limb."
+	name = "疗伤圣迹"
+	desc = "治疗目标肢体上的全部伤口。"
 	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
 	overlay_state = "woundheal"
 	action_icon_state = "woundheal"
@@ -365,12 +365,12 @@
 				if(!istype(object, /obj/item/natural/worms/leech))	//Leeches and surgical cheeles are made an exception.
 					no_embeds = FALSE
 			if(!no_embeds)
-				to_chat(user, span_warning("We cannot seal wounds with objects inside this limb!"))
+				to_chat(user, span_warning("这条肢体里还有异物，我们无法封合伤口！"))
 				revert_cast()
 				return FALSE
 		if(!do_after(user, (delay - (0.5 SECONDS * HU.get_skill_level(associated_skill)))))
 			revert_cast()
-			to_chat(user, span_warning("We were interrupted!"))
+			to_chat(user, span_warning("我们被打断了！"))
 			return FALSE
 		var/foundwound = FALSE
 		if(length(affecting.wounds))
@@ -378,7 +378,7 @@
 				if(!isnull(wound) && wound.healable_by_miracles)
 					wound.heal_wound(wound.whp)
 					foundwound = TRUE
-					user.visible_message(("<font color = '#488f33'>[capitalize(wound.name)] oozes a clear fluid and closes shut, forming into a sore bruise!</font>"))
+					user.visible_message(("<font color = '#488f33'>[capitalize(wound.name)] 渗出澄澈液体，缓缓闭合，最终只留下酸痛的瘀痕！</font>"))
 					affecting.add_wound(/datum/wound/bruise/woundheal)
 			if(foundwound)
 				playsound(target, 'sound/magic/woundheal_crunch.ogg', 100, TRUE)
@@ -386,7 +386,7 @@
 			affecting.update_disabled()
 			return TRUE
 		else
-			to_chat(user, span_warning("The limb is free of wounds."))
+			to_chat(user, span_warning("这条肢体没有伤口。"))
 			revert_cast()
 			return FALSE
 	revert_cast()
@@ -423,7 +423,7 @@
 		var/mob/living/carbon/human/target = targets[1]
 		var/mob/living/carbon/human/UH = user
 		if(NOBLOOD in UH.dna?.species?.species_traits)
-			to_chat(UH, span_warning("我身上没有可供转移的血液。"))
+			to_chat(UH, span_warning("I have no blood to provide."))
 			revert_cast()
 			return FALSE
 
@@ -463,14 +463,14 @@
 					target.blood_volume = min((target.blood_volume + blood_vol_restore), BLOOD_VOLUME_NORMAL)
 					UH.blood_volume = max((UH.blood_volume - blood_price), 0)
 					if(target.blood_volume >= BLOOD_VOLUME_NORMAL && !user_informed)
-						to_chat(UH, span_info("他们的血液水平已处于健康状态，但我还能继续。"))
+						to_chat(UH, span_info("对方的血量已恢复健康水平，但我还能继续输送。"))
 						user_informed = TRUE
 				else
-					UH.visible_message(span_warning("切断了与[target]的血链！"))
+					UH.visible_message(span_warning("与 [target] 相连的血链断开了！"))
 					bloodbeam.End()
 					return TRUE
 			else
-				UH.visible_message(span_warning("切断了与[target]的血链！"))
+				UH.visible_message(span_warning("Severs the bloodlink from [target]!"))
 				bloodbeam.End()
 				return TRUE
 		bloodbeam.End()
