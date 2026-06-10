@@ -74,8 +74,8 @@
 		if("No") 
 			to_chat(H, span_warning("I am still relatively new to the gang. My crimes have gone unnoticed so far, but I lack experience."))
 			return null
-	var/bounty_poster = input(H, "Who placed a bounty on you?", "Bounty Poster") as anything in list("The Justiciary of [SSmapping.map_adjustment.realm_name]", "The Grenzelhoftian Holy See")
-	var/bounty_severity = input(H, "How notorious are you?", "Bounty Amount") as anything in list("Small Game", "Highwayman", "Realm Boogeyman")
+	var/bounty_poster = input(H, "是谁悬赏缉拿你？", "悬赏发布者") as anything in list("[SSmapping.map_adjustment.realm_name]司法庭", "格伦泽尔霍夫特 神圣教廷")
+	var/bounty_severity = input(H, "你的恶名有多响？", "悬赏金额") as anything in list("小角色", "拦路匪", "山谷梦魇")
 	var/race = H.dna.species
 	var/gender = H.gender
 	var/list/d_list = H.get_mob_descriptors()

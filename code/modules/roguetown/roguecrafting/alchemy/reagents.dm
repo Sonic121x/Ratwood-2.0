@@ -460,7 +460,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 /datum/reagent/infection
 	name = "excess choleric humour"
-	description = "Red-yellow pustulence - the carrier of disease, the enemy of all Pestrans."
+	description = "Red-yellow pustulence - the carrier of disease, the enemy of all 佩斯特拉信徒."
 	reagent_state = LIQUID
 	color = "#dfe36f"
 	metabolization_rate = 0.1
@@ -489,7 +489,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 /datum/reagent/infection/major
 	name = "excess melancholic humour"
-	description = "Kingsfield's Bane. Excess melancholic has killed thousands, and even Pestra's greatest struggle against its insidious advance."
+	description = "Kingsfield's Bane. Excess melancholic has killed thousands, and even 佩斯特拉最伟大的抗争也未能阻止它阴险的蔓延。"
 	damage_tick = 1
 	lethal_fever = TRUE
 	fever_multiplier = 3
