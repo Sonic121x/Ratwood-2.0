@@ -369,7 +369,7 @@
 //BEGIN THE HERBS
 
 /obj/item/alch/atropa
-	name = "atropa"
+	name = "颠茄"
 	icon_state = "atropa"
 
 	major_pot = /datum/alch_cauldron_recipe/doompoison
@@ -385,7 +385,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/doompoison
 
 /obj/item/alch/symphitum
-	name = "symphitum"
+	name = "聚合草"
 	icon_state = "symphitum"
 
 	major_pot = /datum/alch_cauldron_recipe/health_potion
@@ -401,7 +401,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/antidote
 
 /obj/item/alch/euphrasia
-	name = "euphrasia"
+	name = "小米草"
 	icon_state = "euphrasia"
 
 	major_pot = /datum/alch_cauldron_recipe/spd_potion
@@ -409,7 +409,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/int_potion
 
 /obj/item/alch/paris
-	name = "paris"
+	name = "巴黎"
 	icon_state = "paris"
 
 	major_pot = /datum/alch_cauldron_recipe/big_stam_poison
@@ -425,7 +425,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/health_potion
 
 /obj/item/alch/mentha
-	name = "mentha"
+	name = "薄荷"
 	icon_state = "mentha"
 
 	major_pot = /datum/alch_cauldron_recipe/per_potion
@@ -441,7 +441,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/aphrodisiac
 
 /obj/item/alch/salvia
-	name = "salvia"
+	name = "欧鼠尾草"
 	icon_state = "salvia"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
@@ -454,7 +454,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/end_potion
 
 /obj/item/alch/hypericum
-	name = "hypericum"
+	name = "金丝桃"
 	icon_state = "hypericum"
 
 	major_pot = /datum/alch_cauldron_recipe/stamina_potion
@@ -462,7 +462,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/antidote
 
 /obj/item/alch/benedictus
-	name = "benedictus"
+	name = "藏掖花"
 	icon_state = "benedictus"
 
 	major_pot = /datum/alch_cauldron_recipe/big_stamina_potion
@@ -478,7 +478,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/stam_poison
 
 /obj/item/alch/artemisia
-	name = "artemisia"
+	name = "艾蒿"
 	icon_state = "artemisia"
 
 	major_pot = /datum/alch_cauldron_recipe/lck_potion
@@ -494,7 +494,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/big_mana_potion
 
 /obj/item/alch/rosa
-	name = "rosa"
+	name = "玫瑰"
 	icon_state = "rosa"
 	item_state = "rosa"
 	desc = "It is said that these were white - until Graggar bled on its fields."
