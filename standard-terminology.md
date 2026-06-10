@@ -13,6 +13,7 @@
 | Ferentine | 费伦提亚的 |
 | Fjall | 菲亚尔 |
 | Grenzelhoft | 格伦泽尔霍夫特 |
+| Grenzel | 格伦泽尔 |
 | Gronn | 格隆恩 |
 | Hammerhold | 铁锤堡 |
 | Heartfelt | 赤心 |
@@ -58,6 +59,10 @@
 | Djinn | 灯灵 |
 | Excidium | 灭绝兽 |
 | Inhumen | 异民 |
+| Lupian | 卢皮安 |
+| Tabaxi | 塔巴西 |
+| tabaxi | 塔巴西 |
+| Venardine | 维纳丁 |
 | Arcyne | 奥术 |
 | leyline | 地脉 |
 | leylines | 地脉 |
@@ -162,6 +167,9 @@
 | Adonai | 阿多奈 |
 | Aeon | 永世 |
 | Archdevil | 大魔君 |
+| Gizan | 吉赞 |
+| Grimoria | 格里莫里亚 |
+| Grimorian | 格里莫里亚 |
 | COMET SYON | 彗星西昂 |
 | EA-Hasir | 艾亚-哈希尔 |
 | Fart Grimness | 法特·格里姆尼斯 |

@@ -1,9 +1,9 @@
 /datum/language/hellspeak
-	name = "Infernal"
-	desc = "The dark and sinister language of the hells, spoken by demons and those who deal with infernal powers. Its words carry an unnatural weight."
-	speech_verb = "says"
-	ask_verb = "asks"
-	exclaim_verb = "yells"
+	name = "炼狱语"
+	desc = "地狱中黑暗而邪恶的语言，为恶魔以及与炼狱之力打交道者所说。它的话语带着一种不自然的沉重感。"
+	speech_verb = "说道"
+	ask_verb = "问道"
+	exclaim_verb = "高喊"
 	key = "h"
 	space_chance = 66
 	default_priority = 80
