@@ -9,7 +9,7 @@
 	export_price = 3
 	importexport_amt = 10
 	stockpile_limit = 50
-	category = "Seafood"
+	category = "海产"
 	generation_price = 2
 
 /datum/roguestock/stockpile/fishfilet
@@ -24,7 +24,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4 
 	remote_limit = 8 //same as regular meat!
 
@@ -39,7 +39,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4 
 	remote_limit = 5
 
@@ -54,7 +54,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4
 	remote_limit = 5
 
@@ -69,7 +69,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 15
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4 
 	remote_limit = 5
 
@@ -84,7 +84,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4
 	remote_limit = 5
 
@@ -99,7 +99,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4
 	remote_limit = 5
 
@@ -115,7 +115,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4
 	remote_limit = 5
 
@@ -131,7 +131,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4
 	remote_limit = 5
 
@@ -147,7 +147,7 @@
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4
 	remote_limit = 5
 
@@ -163,6 +163,6 @@
 	export_price = 4
 	importexport_amt = 10
 	stockpile_limit = 10
-	category = "Seafood"
+	category = "海产"
 	generation_price = 4
 	remote_limit = 5
