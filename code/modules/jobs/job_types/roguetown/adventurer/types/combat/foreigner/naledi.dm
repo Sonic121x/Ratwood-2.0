@@ -1,6 +1,6 @@
 /datum/advclass/foreigner/refugee
-	name = "Naledi 难民"
-	tutorial = "你是来自战火摧残之地 Naledi 荒漠的避难者。故土仍在与 Djinn 的无尽战火中被反复蹂躏，于是你一路被逼向北方。"
+	name = "Naledi Refugee"
+	tutorial = "An asylum-seeker from the war-torn deserts of Naledi, driven north as your homeland continues to be ravaged by an endless conflict against the Djinn."
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/refugee
 	subclass_languages = list(/datum/language/celestial)
@@ -24,8 +24,8 @@
 
 /datum/outfit/job/roguetown/adventurer/refugee/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是来自战火摧残之地 Naledi 荒漠的避难者，\
-	故土仍在与 Djinn 的无尽战火中被反复蹂躏，于是你一路被逼向北方。"))
+	to_chat(H, span_warning("An asylum-seeker from the war-torn deserts of Naledi, \
+	driven north as your homeland continues to be ravaged by an endless conflict against the Djinn."))
 	mask = /obj/item/clothing/mask/rogue/lordmask/tarnished
 	r_hand = /obj/item/rogueweapon/spear/assegai
 	backl = /obj/item/rogueweapon/scabbard/gwstrap

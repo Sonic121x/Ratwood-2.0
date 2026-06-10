@@ -11,8 +11,8 @@
 // This provides especially wretches reasons to harrass adventurers and get vital items they usually can't out of town like lockpicks, red or prosthetics
 
 /obj/structure/roguemachine/blackmarket
-	name = "铜面"
-	desc = "不知疲倦，不问缘由，只有些许被动过手脚的痕迹。唉，可惜是用劣质铜铸成的。"
+	name = "COPPERFACE"
+	desc = "Never gets tired, does not ask questions, only minor signs of tampering. Alas, fashioned with copper of low quality."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "copperface"
 	density = TRUE
@@ -74,7 +74,7 @@
 		if(budget >= cost)
 			budget -= cost
 		else
-			say("不够！")
+			say("Not enough!")
 			return
 		var/shoplength = PA.contains.len
 		var/l

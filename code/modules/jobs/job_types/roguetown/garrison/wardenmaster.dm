@@ -1,6 +1,5 @@
 /datum/job/roguetown/wardenmaster
 	title = "Master Warden"
-	display_title = "守林总长"
 	flag = BOGMASTER
 	department_flag = GARRISON
 	faction = "Station"
@@ -9,10 +8,10 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)//I like the idea of making it set you to middle aged, but having the requirement removes it from the latejoin menu which I think is bad for visibility
-	tutorial = "你是守林人中资历最深的一位。这些精锐巡林者巡逻、侦察，并凶狠守卫着下城区与周边荒野，处理那些尚不值得惊动城市高层的威胁与罪案。\
-				你的职责是率领这群冷淡的守林人，管束桀骜不驯的先锋守卒，在城墙南方的混乱中劈出秩序。\
-				服从元帅与王权的命令，在墙外充当文明边境之外第一道防线。\
-				守住道路，守住先锋堡垒。王权正指望着你。"
+	tutorial = "You are the most experienced of the Wardens, the elite rangers that patrol, scout and fiercely defend the lower city and wilderness surrounding it, attending to threats and crimes below the city's attention. \
+				Your job is to lead the aloof Wardens and wrangle the unruly vanguard, carving order out of the chaos south of the city's wals.\
+				Obey the orders of your Marshal and the Crown, and enact their will beyond the wall as the first line of defence from threats beyond the borders of civilisation. \
+				Keep the roads safe, and hold the vanguard fortress. The Crown is counting on you."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
 	round_contrib_points = 3
@@ -51,8 +50,8 @@
 
 //Rare-ish anti-armor two hander sword. Kinda alternative of a bastard sword type. Could be cool.
 /datum/advclass/wardenmaster/wardenmaster
-	name = "守林总长"
-	tutorial = "你可不是什么无名之辈，而是下城区堡垒的守林总长。也许你最初只是个农夫，或是一介佣兵，但你一路从底层爬到了如今这等既能赢得敬重、也能发号施令的位置。执起兵刃吧，守林总长！"
+	name = "Master Warden"
+	tutorial = "You are a not just anybody but the Master Warden of the lowtown fortress. While you may have started as some peasant or mercenary, you have advanced through the ranks to that of someone who commands respect and wields it. Take up arms, WARDENMASTER!"
 	outfit = /datum/outfit/job/roguetown/wardenmaster/wardenmaster
 
 	category_tags = list(CTAG_BOGMASTER)
@@ -110,38 +109,38 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("双手巨斧","标枪与盾","黑角长弓","手炮")	//competent at both sides of wardenry so it's more a matter of what weapon you start with
-		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
-		var/armor_options = list("轻甲", "中甲")
-		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
+		var/weapons = list("Greataxe","Javelins & Shield","Blackhorn Longbow","Handgonne")	//competent at both sides of wardenry so it's more a matter of what weapon you start with
+		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/armor_options = list("Light Armor", "Medium Armor")
+		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)//feel it'd be nice to have a sword version for a real Jeor Mormont?
-			if("双手巨斧")			
+			if("Greataxe")			
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				l_hand = /obj/item/rogueweapon/greataxe/steel
-			if("标枪与盾")
+			if("Javelins & Shield")
 				beltr = /obj/item/quiver/javelin/steel
 				backl = /obj/item/rogueweapon/shield/tower/
-			if("黑角长弓")
+			if("Blackhorn Longbow")
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden
-			if("手炮")//okay I can remove this later but I think it would be... just... so based
+			if("Handgonne")//okay I can remove this later but I think it would be... just... so based
 				r_hand = /obj/item/gun/ballistic/firearm/handgonne
 				l_hand = /obj/item/powderflask
 				beltr = /obj/item/quiver/bullet/lead
 		switch(armor_choice)
-			if("轻甲")
+			if("Light Armor")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
-			if("中甲")
+			if("Medium Armor")
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 
 /obj/effect/proc_holder/spell/self/convertrole/vanguard
-	name = "征募先锋"
+	name = "Recruit Vanguard"
 	new_role = "Vanguard"
 	overlay_state = "recruit_guard"
 	recruitment_faction = "Vanguard"
-	recruitment_message = "为先锋而战，%RECRUIT！"
-	accept_message = "为了王权！"
-	refuse_message = "我拒绝。"
+	recruitment_message = "Serve the vanguard, %RECRUIT!"
+	accept_message = "FOR THE CROWN!"
+	refuse_message = "I refuse."

@@ -9,7 +9,7 @@
 #define TIMESTOP_SOUND 'modular_z121/assets/spells/timestop/timeparadox2.ogg'
 
 /proc/timestop_gray_color()
-	return "#F5F5F5"
+	return "#D3D3D3"
 
 /proc/timestop_square_turfs(atom/center, half_size = TIMESTOP_FIELD_HALF_SIZE)
 	. = list()
@@ -237,12 +237,12 @@
 	action_icon = TIMESTOP_ACTION_ICON
 	action_icon_state = "time"
 	overlay_state = "time"
-	cost = 16
+	cost = 12
 	releasedrain = 500
 	chargedrain = 10
-	chargetime = 0
-	recharge_time = 2 MINUTES
-	cooldown_min = 2 MINUTES
+	chargetime = 10 SECONDS
+	recharge_time = 5 MINUTES
+	cooldown_min = 5 MINUTES
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
@@ -259,31 +259,6 @@
 	miracle = FALSE
 	xp_gain = TRUE
 
-/obj/effect/proc_holder/spell/self/timestop/choose_targets(mob/user = usr)
-	if(!user)
-		revert_cast()
-		return
-
-	var/cast_time = get_chargetime()
-	if(cast_time > 0)
-		user.visible_message(span_warning("[user] 高举魔力，仿佛要将整个世界都拽入静止！"), span_notice("我高举魔力，世界啊，准备静止吧......"))
-		if(!do_after(user, cast_time, target = user, progress = TRUE))
-			to_chat(user, span_warning("我的时流操控被打断了！"))
-			revert_cast(user)
-			return
-
-	user.visible_message(
-		span_warning("[user] 宛如君临世界的魔王般张狂高喝：\"THE WORLD!\""),
-		span_notice("我张狂地高喝：\"THE WORLD!\" 世界啊，停下吧！")
-	)
-	var/list/original_invocations = invocations
-	var/original_invocation_type = invocation_type
-	invocations = null
-	invocation_type = "none"
-	perform(null, user = user)
-	invocations = original_invocations
-	invocation_type = original_invocation_type
-
 
 /obj/effect/proc_holder/spell/self/timestop/cast(list/targets, mob/living/user = usr)
 	. = ..()
@@ -293,7 +268,7 @@
 		return FALSE
 
 	new /obj/effect/timestop_field(origin, user)
-	user.visible_message(span_warning("[user] 将周遭的时流生生扭入一片灰白死寂的静止之中！"), span_notice("我将身边一小片区域的时间彻底暂停，而自己仍游离于静止之外。"))
+	user.visible_message(span_warning("[user] twists the local flow of time into a dead gray stillness!"), span_notice("I stop time in the space around me while remaining outside its hold."))
 	return TRUE
 
 #undef TIMESTOP_FIELD_HALF_SIZE

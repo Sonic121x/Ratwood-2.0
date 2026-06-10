@@ -1,7 +1,7 @@
 /datum/advclass/gnoll/templar
-	name = "豺狼人圣殿武士"
+	name = "Gnoll Templar"
 	maximum_possible_slots = 1
-	tutorial = "若论守护 Graggar 信仰，谁都不如他亲自拣选的豺狼人勇士更受器重。"
+	tutorial = "None are as valued to protect graggarite worship as his gnoll champions themselves."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/gnoll)
 	outfit = /datum/outfit/job/roguetown/gnoll/templar

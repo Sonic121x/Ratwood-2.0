@@ -4,8 +4,8 @@
 	req_table = FALSE
 	subtype_reqs = TRUE
 	craftsound = 'sound/foley/Building-01.ogg'
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "construct"
+	verbage = "constructs"
 
 /datum/crafting_recipe/roguetown/structure/TurfCheck(mob/user, turf/T)
 	if(istype(T,/turf/open/transparent/openspace))
@@ -15,16 +15,16 @@
 	return ..()
 
 /datum/crafting_recipe/roguetown/structure/handcart
-	name = "手推车"
+	name = "handcart"
 	result = /obj/structure/handcart
 	reqs = list(/obj/item/grown/log/tree/small = 3,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/structure/noose
-	name = "绞索"
+	name = "noose"
 	result = /obj/structure/noose
 	reqs = list(/obj/item/rope = 1)
-	verbage = "系绑"
+	verbage = "tie"
 	craftsound = 'sound/foley/noose_idle.ogg'
 	ontile = TRUE
 
@@ -39,42 +39,42 @@
 	return TRUE
 
 /datum/crafting_recipe/roguetown/structure/wooden_horse
-	name = "固定木马"
+	name = "static wooden horse"
 	result = /obj/structure/wooden_horse
 	reqs = list(/obj/item/natural/wood/plank = 3)
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "construct"
+	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/wooden_horse/small
-	name = "固定小木马"
+	name = "static wooden horse (small)"
 	result = /obj/structure/wooden_horse/small
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/wooden_horse/iron
-	name = "固定铁制木马"
+	name = "static wooden horse (iron)"
 	result = /obj/structure/wooden_horse/iron
 	reqs = list(
 		/obj/item/natural/wood/plank = 2,
 		/obj/item/ingot/iron = 1,
 	)
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "construct"
+	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/wooden_horse/mobile
-	name = "活动木马"
+	name = "mobile wooden horse"
 	result = /obj/structure/wooden_horse/mobile
 	reqs = list(/obj/item/natural/wood/plank = 3)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/torture_table
-	name = "拷问台"
+	name = "torture table"
 	result = /obj/structure/bondage/torture_table
 	reqs = list(
 		/obj/item/natural/wood/plank = 3,
@@ -84,7 +84,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/torture_table/lever
-	name = "拷问台拉杆"
+	name = "torture table lever"
 	result = /obj/structure/bondage/torture_table/lever
 	reqs = list(
 		/obj/item/natural/wood/plank = 3,
@@ -94,7 +94,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/x_pillory
-	name = "X 字枷台"
+	name = "x-pillory"
 	result = /obj/structure/bondage/x_pillory
 	reqs = list(
 		/obj/item/grown/log/tree/small = 2,
@@ -104,38 +104,38 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/gloryhole
-	name = "窥孔刑架"
+	name = "gloryhole"
 	result = /obj/structure/bondage/gloryhole
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/chains
-	name = "锁链"
+	name = "chains"
 	result = /obj/structure/bondage/chains
 	reqs = list(/obj/item/rope/chain = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/psycrss
-	name = "木十字架"
+	name = "wooden cross"
 	result = /obj/structure/fluff/psycross/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/grown/log/tree/stake = 3)
 
 /datum/crafting_recipe/roguetown/structure/psycruci
-	name = "木制 Psydon 十字架"
+	name = "wooden psydonic cross"
 	result = /obj/structure/fluff/psycross/psycrucifix
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/grown/log/tree/stake = 3)
 
 /datum/crafting_recipe/roguetown/structure/stonepsycruci
-	name = "石制 Psydon 十字架"
+	name = "stone psydonic cross"
 	result = /obj/structure/fluff/psycross/psycrucifix/stone
 	reqs =	list(/obj/item/natural/stone = 3)
 
 /datum/crafting_recipe/roguetown/structure/silverpsycruci
-	name = "银制 Psydon 十字架"
+	name = "silver psydonic cross"
 	result = /obj/structure/fluff/psycross/psycrucifix/silver
 	reqs = list(/obj/item/ingot/silverblessed = 1,
 				/obj/item/ingot/steel = 2)
@@ -143,12 +143,12 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/stonepsycrss
-	name = "石十字架"
+	name = "stone cross"
 	result = /obj/structure/fluff/psycross
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/structure/zizo_shrine
-	name = "木制倒十字架"
+	name = "wooden inverse cross"
 	reqs = list(
 		/obj/item/grown/log/tree/small = 1,
 		/obj/item/natural/stone = 2,
@@ -157,27 +157,27 @@
 	result = /obj/structure/fluff/psycross/zizocross
 
 /datum/crafting_recipe/roguetown/structure/swing_door
-	name = "摆门"
+	name = "swing door"
 	result = /obj/structure/mineral_door/swing_door
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/door
-	name = "木门"
+	name = "wooden door"
 	result = /obj/structure/mineral_door/wood
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/stonedoor
-	name = "石门"
+	name = "stone door"
 	result = /obj/structure/mineral_door/wood/donjon/stone
 	reqs = list(/obj/item/natural/stone = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 
 /datum/crafting_recipe/roguetown/structure/doorbolt
-	name = "木门（横闩）"
+	name = "wooden door (deadbolt)"
 	result = /obj/structure/mineral_door/wood/deadbolt
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/grown/log/tree/stick = 1)
@@ -185,43 +185,43 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/fancydoor
-	name = "华丽门"
+	name = "fancy door"
 	result = /obj/structure/mineral_door/wood/fancywood
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/glassdoor
-	name = "木制玻璃门"
+	name = "Wooden Glass Door"
 	result = /obj/structure/mineral_door/wood/window
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/glass = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/barrel
-	name = "木桶"
+	name = "wooden barrel"
 	result = /obj/structure/fermentation_keg/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "make"
+	verbage = "makes"
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/display_stand
-	name = "展示架"
+	name = "display stand"
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/grown/log/tree/stick = 2)
 	result = /obj/structure/mannequin
 	craftdiff = 2
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/mannequin_female
-	name = "人台（女）"
+	name = "mannequin (female)"
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/grown/log/tree/stick = 2)
 	result = /obj/structure/mannequin/male/female
 	craftdiff = 2
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/mannequin_male
-	name = "人台（男）"
+	name = "mannequin (male)"
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/grown/log/tree/stick = 2)
 	result = /obj/structure/mannequin/male
 	craftdiff = 2
@@ -231,7 +231,7 @@
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/structure/meathook
-	name = "肉钩"
+	name = "meat hook"
 	result = /obj/structure/meathook
 	reqs = list(/obj/item/grown/log/tree = 2,
 				/obj/item/rope = 1)
@@ -239,22 +239,22 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/roguebin
-	name = "木箱"
+	name = "wooden bin"
 	result = /obj/item/roguebin
 	reqs = list(/obj/item/grown/log/tree/small = 2)
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "make"
+	verbage = "makes"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/chair
-	name = "木椅"
+	name = "wooden chair"
 	result = /obj/item/chair/rogue/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/chairthrone
-	name = "小王座"
+	name = "small throne"
 	result = /obj/structure/chair/wood/rogue/throne
 	reqs = list(/obj/item/natural/wood/plank = 2, /obj/item/natural/silk = 2)
 	skillcraft = /datum/skill/craft/carpentry
@@ -263,25 +263,25 @@
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/structure/parkbenchleft
-	name = "公园长椅（左）"
+	name = "park bench (left)"
 	result = /obj/structure/chair/hotspring_bench/left
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/parkbenchmiddle
-	name = "公园长椅（中）"
+	name = "park bench (middle)"
 	result = /obj/structure/chair/hotspring_bench
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/parkbenchright
-	name = "公园长椅（右）"
+	name = "park bench (right)"
 	result = /obj/structure/chair/hotspring_bench/right
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/fancychair
-	name = "华丽木椅"
+	name = "fancy wooden chair"
 	result = /obj/item/chair/rogue/fancy/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/silk = 1)
@@ -291,7 +291,7 @@
 	sellprice = 12
 
 /datum/crafting_recipe/roguetown/structure/stool
-	name = "木凳"
+	name = "wooden stool"
 	result = /obj/item/chair/stool/bar/rogue/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
@@ -300,83 +300,83 @@
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/structure/anvil
-	name = "铁砧"
+	name = "anvil"
 	result = /obj/machinery/anvil
 	reqs = list(/obj/item/ingot/iron = 1)
 	skillcraft = /datum/skill/craft/blacksmithing
-	verbage_simple = "锻炉"
-	verbage = "锻造"
+	verbage_simple = "forge"
+	verbage = "forges"
 
 /datum/crafting_recipe/roguetown/structure/smelter
-	name = "矿石熔炉"
+	name = "ore furnace"
 	result = /obj/machinery/light/rogue/smelter
 	reqs = list(/obj/item/natural/stone = 4,
 			/obj/item/rogueore/coal = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/structure/smelterhiron
-	name = "炼铁炉"
+	name = "iron bloomery"
 	result = /obj/machinery/light/rogue/smelter/hiron
 	reqs = list(/obj/item/natural/stone = 7,
 			/obj/item/rogueore/coal = 2,
 			/obj/item/rogueore/iron = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/structure/smelterbronze
-	name = "青铜熔炉"
+	name = "bronze melter"
 	result = /obj/machinery/light/rogue/smelter/bronze
 	reqs = list(/obj/item/natural/stone = 6,
 			/obj/item/rogueore/coal = 1,
 			/obj/item/rogueore/iron = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/structure/greatsmelter
-	name = "大熔炉"
+	name = "great furnace"
 	result = /obj/machinery/light/rogue/smelter/great
 	reqs = list(/obj/item/ingot/iron = 2,
 				/obj/item/riddleofsteel = 1,
 				/obj/item/rogueore/coal = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	craftsound = null
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/forge
-	name = "锻炉"
+	name = "forge"
 	result = /obj/machinery/light/rogue/forge
 	reqs = list(/obj/item/natural/stone = 4,
 				/obj/item/rogueore/coal = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/structure/sharpwheel
-	name = "砂轮"
+	name = "sharpening wheel"
 	result = /obj/structure/fluff/grindwheel
 	reqs = list(/obj/item/ingot/iron = 1,
 				/obj/item/natural/stone = 1)
 	skillcraft = /datum/skill/craft/blacksmithing
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	craftsound = null
 
 
 /datum/crafting_recipe/roguetown/structure/art_table
-	name = "工艺师工作台"
+	name = "artificer table"
 	result = /obj/machinery/artificer_table
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	skillcraft = /datum/skill/craft/engineering
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "constructs"
+	verbage = "constructs"
 
 /datum/crafting_recipe/roguetown/structure/loom
-	name = "织机"
+	name = "loom"
 	result = /obj/machinery/loom
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/grown/log/tree/stick = 2,
@@ -384,30 +384,30 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/alch
-	name = "炼金台"
+	name = "alchemy station"
 	result = /obj/structure/fluff/alch
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/stone = 4,
 				/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/alchemy
 	craftdiff = 0
-	verbage_simple = "组装"
-	verbage = "组装"
+	verbage_simple = "assemble"
+	verbage = "assembles"
 
 /datum/crafting_recipe/roguetown/structure/dyestation
-	name = "染色台"
+	name = "dye station"
 	result = /obj/machinery/gear_painter
 	reqs = list(/obj/item/natural/stone = 2)
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "make"
+	verbage = "makes"
 	craftdiff = 0
 /*
 /datum/crafting_recipe/roguetown/structure/stairs
-	name = "楼梯（上）"
+	name = "stairs (up)"
 	result = /obj/structure/stairs
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
-	verbage = "制作"
+	verbage = "constructs"
 	craftsound = 'sound/foley/Building-01.ogg'
 	ontile = TRUE
 
@@ -432,7 +432,7 @@
 	return TRUE
 */
 /datum/crafting_recipe/roguetown/structure/stairsd
-	name = "木楼梯（下）"
+	name = "wooden stairs (down)"
 	result = /obj/structure/stairs/d
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
@@ -460,13 +460,13 @@
 	return TRUE
 
 /datum/crafting_recipe/roguetown/structure/stonestairsd
-	name = "石楼梯（下）"
+	name = "stone stairs (down)"
 	result = /obj/structure/stairs/stone/d
 	reqs = list(/obj/item/natural/stone = 2)
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 2
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "builds"
+	verbage = "builds"
 	ontile = TRUE
 
 /datum/crafting_recipe/roguetown/structure/stonestairsd/TurfCheck(mob/user, turf/T)
@@ -490,7 +490,7 @@
 	return TRUE
 
 /datum/crafting_recipe/roguetown/structure/bordercorner
-	name = "边框角件"
+	name = "border corner"
 	result = /obj/structure/fluff/railing/corner
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	ontile = TRUE
@@ -500,7 +500,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/border
-	name = "边框"
+	name = "border"
 	result = /obj/structure/fluff/railing/border
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	ontile = TRUE
@@ -509,7 +509,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/railing
-	name = "栏杆"
+	name = "railing"
 	result = /obj/structure/fluff/railing/wood
 	reqs = list(/obj/item/grown/log/tree/stick = 2)
 	ontile = TRUE
@@ -517,7 +517,7 @@
 	buildsame = TRUE
 
 /datum/crafting_recipe/roguetown/structure/wallshelf
-	name = "壁架（1 块木板）"
+	name = "wall shelf (1 plank)"
 	result = /obj/structure/rack/rogue/shelf
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	wallcraft = TRUE
@@ -525,52 +525,52 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/mineshaft_support
-	name = "矿井支架"
+	name = "mineshaft support"
 	result = /obj/structure/barricade/mineshaft
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	ontile = TRUE
-	verbage_simple = "架设"
-	verbage = "架设"
+	verbage_simple = "set up"
+	verbage = "sets up"
 	buildsame = TRUE
 
 /datum/crafting_recipe/roguetown/structure/fence
-	name = "栅栏（木桩）"
+	name = "palisade (stakes)"
 	result = /obj/structure/fluff/railing/fence
 	reqs = list(/obj/item/grown/log/tree/stake = 2)
 	ontile = TRUE
-	verbage_simple = "架设"
-	verbage = "架设"
+	verbage_simple = "set up"
+	verbage = "sets up"
 	buildsame = TRUE
 
 /datum/crafting_recipe/roguetown/structure/headstake
-	name = "头颅木桩"
+	name = "head stake"
 	result = /obj/structure/fluff/headstake
 	reqs = list(/obj/item/grown/log/tree/stake = 1,
 				/obj/item/bodypart/head = 1)
 	parts = list(/obj/item/bodypart/head = 1,
 			/obj/item/grown/log/tree/stake = 1)
-	verbage_simple = "架设"
-	verbage = "架设"
+	verbage_simple = "set up"
+	verbage = "sets up"
 	craftdiff = 0
 
 
 /datum/crafting_recipe/roguetown/structure/fencealt
-	name = "栅栏（圆木）"
+	name = "palisade (log)"
 	result = /obj/structure/fluff/railing/fence
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	ontile = TRUE
-	verbage_simple = "架设"
-	verbage = "架设"
+	verbage_simple = "set up"
+	verbage = "sets up"
 	buildsame = TRUE
 
 /datum/crafting_recipe/roguetown/structure/rack
-	name = "架子"
+	name = "rack"
 	result = /obj/structure/rack/rogue
 	reqs = list(/obj/item/grown/log/tree/stick = 3)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/chest
-	name = "箱子"
+	name = "chest"
 	result = /obj/structure/closet/crate/chest/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
@@ -581,20 +581,20 @@
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/structure/closet
-	name = "柜子"
+	name = "closet"
 	result = /obj/structure/closet/crate/roguecloset
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/coffin
-	name = "木棺"
+	name = "wooden coffin"
 	result = /obj/structure/closet/crate/coffin
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sleepcoffin
-	name = "睡棺"
+	name = "sleep coffin"
 	result = /obj/structure/closet/crate/coffin/vampire
 	reqs = list(/obj/item/natural/wood/plank = 2, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
@@ -604,68 +604,68 @@
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/structure/campfire
-	name = "营火"
+	name = "campfire"
 	result = /obj/machinery/light/rogue/campfire
 	reqs = list(/obj/item/grown/log/tree/stick = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/densefire
-	name = "大营火"
+	name = "greater campfire"
 	result = /obj/machinery/light/rogue/campfire/densefire
 	reqs = list(/obj/item/grown/log/tree/stick = 2,
 				/obj/item/natural/stone = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 
 /datum/crafting_recipe/roguetown/structure/cookpit
-	name = "壁炉"
+	name = "hearth"
 	result = /obj/machinery/light/rogue/hearth
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 3)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 
 /datum/crafting_recipe/roguetown/structure/brazier
-	name = "火盆"
+	name = "brazier"
 	result = /obj/machinery/light/rogue/firebowl/stump
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rogueore/coal = 1)
-	verbage_simple = "组装"
-	verbage = "组装"
+	verbage_simple = "assembles"
+	verbage = "assembles"
 
 /datum/crafting_recipe/roguetown/structure/standing
-	name = "立式火盆"
+	name = "standing fire"
 	result = /obj/machinery/light/rogue/firebowl/standing
 	reqs = list(/obj/item/natural/stone = 1,
 				/obj/item/rogueore/coal = 1)
 
 /datum/crafting_recipe/roguetown/structure/standingblue
-	name = "立式蓝火"
+	name = "standing blue fire"
 	result = /obj/machinery/light/rogue/firebowl/standing/blue
 	reqs = list(/obj/item/natural/stone = 1,
 				/obj/item/rogueore/coal = 1,
 				/obj/item/ash = 1)
 
 /datum/crafting_recipe/roguetown/structure/oven
-	name = "烤炉"
+	name = "oven"
 	result = /obj/machinery/light/rogue/oven
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/stone = 3)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 
 /datum/crafting_recipe/roguetown/structure/tanningrack
-	name = "晾架"
+	name = "drying rack"
 	result = /obj/machinery/tanningrack
 	reqs = list(/obj/item/grown/log/tree/stick = 3)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/strawbed
-	name = "稻草床"
+	name = "bed, straw"
 	result = /obj/structure/bed/rogue/shit
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/fibers = 1)
@@ -673,7 +673,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/bed
-	name = "舒适床"
+	name = "bed, nice"
 	result = /obj/structure/bed/rogue/inn
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/cloth = 2)
@@ -682,7 +682,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/woolbed
-	name = "木床"
+	name = "bed, wood"
 	result = /obj/structure/bed/rogue/inn/wool
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/cloth = 1)
@@ -691,7 +691,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/doublebed
-	name = "双人舒适床"
+	name = "bed, double nice"
 	result = /obj/structure/bed/rogue/inn/double
 	reqs = list(/obj/item/grown/log/tree/small = 3,
 				/obj/item/natural/cloth = 4)
@@ -701,7 +701,7 @@
 
 
 /datum/crafting_recipe/roguetown/structure/wooldoublebed
-	name = "双人羊毛床"
+	name = "bed, double wool"
 	result = /obj/structure/bed/rogue/inn/wooldouble
 	reqs = list(/obj/item/grown/log/tree/small = 3,
 				/obj/item/natural/cloth = 3)
@@ -710,124 +710,124 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/table
-	name = "木桌"
+	name = "wooden table"
 	result = /obj/structure/table/wood/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/fancytableblack
-	name = "华丽木桌（黑色）"
+	name = "fancy wooden table(black)"
 	result = /obj/structure/table/wood/fancy/black
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/fancytableblue
-	name = "华丽木桌（蓝色）"
+	name = "fancy wooden table(blue)"
 	result = /obj/structure/table/wood/fancy/blue
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/fancytablecyan
-	name = "华丽木桌（青色）"
+	name = "fancy wooden table(cyan)"
 	result = /obj/structure/table/wood/fancy/cyan
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/fancytablegreen
-	name = "华丽木桌（绿色）"
+	name = "fancy wooden table(green)"
 	result = /obj/structure/table/wood/fancy/green
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/fancytableorange
-	name = "华丽木桌（橙色）"
+	name = "fancy wooden table(orange)"
 	result = /obj/structure/table/wood/fancy/orange
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/fancytablepurple
-	name = "华丽木桌（紫色）"
+	name = "fancy wooden table(purple)"
 	result = /obj/structure/table/wood/fancy/purple
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/fancytablered
-	name = "华丽木桌（红色）"
+	name = "fancy wooden table(red)"
 	result = /obj/structure/table/wood/fancy/red
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/fancytableroyalblack
-	name = "华丽木桌（皇家黑）"
+	name = "fancy wooden table(royal black)"
 	result = /obj/structure/table/wood/fancy/royalblack
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/fancytableroyalblue
-	name = "华丽木桌（皇家蓝）"
+	name = "fancy wooden table(royal blue)"
 	result = /obj/structure/table/wood/fancy/royalblue
 	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/silk = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/longtable
-	name = "精致长桌"
+	name = "nice long table"
 	result = /obj/structure/table/wood/long_table
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/longtablealt
-	name = "精致长桌（中）"
+	name = "nice long table(middle)"
 	result = /obj/structure/table/wood/long_table/mid/alt
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/largetable
-	name = "大桌"
+	name = "large table"
 	result = /obj/structure/table/wood/large_table
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/operatingtable
-	name = "手术台"
+	name = "operating table"
 	result = /obj/structure/table/optable
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/stonetable
-	name = "石桌"
+	name = "stone table"
 	result = /obj/structure/table/church
 	reqs = list(/obj/item/natural/stone = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 
 /datum/crafting_recipe/roguetown/structure/finestonetable
-	name = "精致石桌"
+	name = "fine stone table"
 	result = /obj/structure/table/finestone
 	reqs = list(/obj/item/natural/stoneblock = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/millstone
-	name = "磨盘"
+	name = "millstone"
 	result = /obj/item/millstone
 	reqs = list(/obj/item/natural/stone = 3)
-	verbage = "组装"
+	verbage = "assembles"
 	craftsound = null
 	skillcraft = /datum/skill/craft/masonry
 
@@ -840,12 +840,12 @@
 	return ..()
 
 /datum/crafting_recipe/roguetown/structure/floorgrille
-	name = "地格栅"
+	name = "floorgrille"
 	result = /obj/structure/bars/grille
 	reqs = list(/obj/item/ingot/iron = 1,
 					/obj/item/roguegear/bronze = 1)
-	verbage_simple = "装配"
-	verbage = "装配"
+	verbage_simple = "engineer"
+	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
@@ -858,14 +858,14 @@
 
 
 /datum/crafting_recipe/roguetown/structure/sign
-	name = "定制招牌"
+	name = "custom sign"
 	result = /obj/structure/fluff/customsign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/dummy
-	name = "训练假人"
+	name = "training dummy"
 	result = /obj/structure/fluff/statue/tdummy
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/grown/log/tree/stick = 1,
@@ -876,7 +876,7 @@
 
 
 /datum/crafting_recipe/roguetown/structure/wallladder
-	name = "壁梯"
+	name = "wall ladder"
 	result = /obj/structure/wallladder
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
@@ -884,59 +884,59 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/torchholder
-	name = "壁灯"
+	name = "sconce"
 	result = /obj/machinery/light/rogue/torchholder
 	reqs = list(/obj/item/natural/stone = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/stonelantern
-	name = "落地石灯"
+	name = "stone lantern on ground"
 	result = /obj/machinery/light/rogue/torchholder/hotspring
 	reqs = list(/obj/item/natural/stone = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	wallcraft = FALSE
 	skillcraft = /datum/skill/craft/masonry
 
 /datum/crafting_recipe/roguetown/structure/stonelanternstanding
-	name = "立式石灯"
+	name = "stone lantern standing"
 	result = /obj/machinery/light/rogue/torchholder/hotspring/standing
 	reqs = list(/obj/item/natural/stone = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	wallcraft = FALSE
 	skillcraft = /datum/skill/craft/masonry
 
 /datum/crafting_recipe/roguetown/structure/wallcandle
-	name = "壁式蜡烛"
+	name = "wall candles"
 	result = /obj/machinery/light/rogue/candle
 	reqs = list(/obj/item/natural/stone = 1, /obj/item/candle/yellow = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/wallcandleblue
-	name = "蓝色壁式蜡烛"
+	name = "wall candles blue"
 	result = /obj/machinery/light/rogue/candle/blue
 	reqs = list(/obj/item/natural/stone = 1, /obj/item/candle/yellow = 1, /obj/item/ash = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/stonewalldeco
-	name = "石墙装饰"
+	name = "stone wall decoration"
 	result = /obj/structure/fluff/walldeco/stone
 	reqs = list(/obj/item/natural/stone = 1)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 	craftdiff = 2
@@ -947,123 +947,123 @@
 	result = /obj/structure/roguemachine/scomm/receive_only
 	reqs = list(/obj/item/ingot/iron = 1,
 					/obj/item/reagent_containers/food/snacks/smallrat = 1)
-	verbage_simple = "组装"
-	verbage = "组装"
+	verbage_simple = "assemble"
+	verbage = "assembles"
 	skillcraft = /datum/skill/magic/arcane
 	craftdiff = 3
 	wallcraft = TRUE
 	ontile = TRUE
 
 /datum/crafting_recipe/roguetown/structure/cauldronalchemy
-	name = "炼金坩埚"
+	name = "alchemy cauldron"
 	result = /obj/machinery/light/rogue/cauldron
 	reqs = list(/obj/item/grown/log/tree/stick = 2, /obj/item/natural/stone = 3, /obj/item/reagent_containers/glass/bucket/pot/stone = 1) // changed to ore because this can be bought or mined. witches or even doctors who dont get a house get badly screwed over not having this.
-	verbage_simple = "组装"
-	verbage = "组装"
+	verbage_simple = "assemble"
+	verbage = "assembles"
 	skillcraft = /datum/skill/craft/alchemy
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/ceramicswheel
-	name = "陶轮"
+	name = "potter's wheel"
 	result = /obj/structure/fluff/ceramicswheel
 	reqs = list(/obj/item/natural/stone = 2, /obj/item/grown/log/tree/small = 2, /obj/item/cooking/platter = 1) // changed to platter. not always artificer to make cogs or anyone to even make bronze.
-	verbage_simple = "制作"
+	verbage_simple = "construct"
 	craftdiff = 2
-	verbage = "制作"
+	verbage = "constructs"
 
 /datum/crafting_recipe/roguetown/structure/bearrug
-	name = "熊皮地毯"
+	name = "bearpelt rug"
 	result = /obj/structure/bearpelt
 	reqs = list(/obj/item/natural/fur/direbear = 2, /obj/item/natural/head/direbear = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/foxrug
-	name = "狐皮地毯"
+	name = "foxpelt rug"
 	result = /obj/structure/foxpelt
 	reqs = list(/obj/item/natural/fur/fox = 2, /obj/item/natural/head/fox = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/bobcatrug
-	name = "猞猁皮地毯"
+	name = "lynxpelt rug"
 	result = /obj/structure/bobcatpelt
 	reqs = list(/obj/item/natural/fur/bobcat = 2)	//Gives no head for lynx, plus it's the smallest rug anyway.
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/curtain
-	name = "窗帘"
+	name = "curtain"
 	result = /obj/structure/curtain
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 0
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtaindirectional
-	name = "定向窗帘"
+	name = "curtain (directional)"
 	result = /obj/structure/curtain/directional/crafted
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 1
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtainblack
-	name = "窗帘（黑色）"
+	name = "curtain(black)"
 	result = /obj/structure/curtain/black
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 1 )
 	craftdiff = 3
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtainblue
-	name = "窗帘（蓝色）"
+	name = "curtain(blue)"
 	result = /obj/structure/curtain/blue
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 1 )
 	craftdiff = 3
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtainbrown
-	name = "窗帘（棕色）"
+	name = "curtain(brown)"
 	result = /obj/structure/curtain/brown
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 1 )
 	craftdiff = 3
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtaingreen
-	name = "窗帘（绿色）"
+	name = "curtain(green)"
 	result = /obj/structure/curtain/green
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 1 )
 	craftdiff = 3
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtainmagenta
-	name = "窗帘（洋红色）"
+	name = "curtain(magenta)"
 	result = /obj/structure/curtain/magenta
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 1 )
 	craftdiff = 3
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtainpurple
-	name = "窗帘（紫色）"
+	name = "curtain(purple)"
 	result = /obj/structure/curtain/purple
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 1 )
 	craftdiff = 3
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/curtainred
-	name = "窗帘（红色）"
+	name = "curtain(red)"
 	result = /obj/structure/curtain/red
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 1 )
 	craftdiff = 3
 	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/structure/apiary
-	name = "蜂箱"
+	name = "apiary"
 	result = /obj/structure/apiary
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/grown/log/tree/stick = 4)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 // Here for now until we get a new file for anything trap related.
 /datum/crafting_recipe/roguetown/structure/spike_pit
-	name = "尖刺坑（需要泥土地板）"
+	name = "spike pit (Dirt Floor needed)"
 	result = list(/obj/structure/spike_pit)
 	tools = list(/obj/item/rogueweapon/shovel = 1)
 	reqs = list(/obj/item/grown/log/tree/stake = 3)
@@ -1073,29 +1073,29 @@
 /datum/crafting_recipe/roguetown/structure/spike_pit/TurfCheck(mob/user, turf/T)
 	var/turf/to_check = get_step(user.loc, user.dir)
 	if(!istype(to_check, /turf/open/floor/rogue/dirt))
-		to_chat(user, span_info("我需要泥土地板才能这么做。"))
+		to_chat(user, span_info("I need a dirt floor to do this."))
 		return FALSE
 	for(var/obj/O in T.contents)
 		if(istype(O, /obj/structure/spike_pit))
-			to_chat(user, span_info("这里已经有一个尖刺坑了。"))
+			to_chat(user, span_info("There's already a pit of spikes here."))
 			return FALSE
 	return TRUE
 
 /datum/crafting_recipe/roguetown/structure/wicker
-	name = "藤篮"
+	name = "wicker basket"
 	result = /obj/structure/closet/crate/chest/wicker
 	reqs = list(/obj/item/grown/log/tree/stick = 4,
 				/obj/item/natural/fibers = 3)
-	verbage_simple = "编织"
-	verbage = "编织"
+	verbage_simple = "weave"
+	verbage = "weaves"
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/noose
-	name = "绞索"
+	name = "noose"
 	result = /obj/structure/noose
 	reqs = list(/obj/item/rope = 1)
 	craftdiff = 1
-	verbage = "系绑"
+	verbage = "tie"
 	craftsound = 'sound/foley/noose_idle.ogg'
 	ontile = TRUE
 
@@ -1110,7 +1110,7 @@
 	return TRUE
 
 /datum/crafting_recipe/roguetown/structure/gallows
-	name = "绞刑架"
+	name = "gallows"
 	result = /obj/structure/noose/gallows
 	reqs = list(/obj/item/rope = 1, /obj/item/grown/log/tree/small = 2)
 	craftdiff = 2
@@ -1118,7 +1118,7 @@
 	ontile = TRUE
 
 /datum/crafting_recipe/roguetown/structure/pillory
-	name = "枷台"
+	name = "pillory"
 	result = /obj/structure/pillory
 	reqs = list(/obj/item/ingot/iron = 1, /obj/item/grown/log/tree/small = 1)
 	craftdiff = 2
@@ -1128,7 +1128,7 @@
 // Sofas and other furnishing
 
 /datum/crafting_recipe/roguetown/structure/couchleft
-	name = "沙发（左）"
+	name = "couch (left)"
 	result = /obj/structure/chair/bench/couch
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1136,7 +1136,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/couchright
-	name = "沙发（右）"
+	name = "couch (right)"
 	result = /obj/structure/chair/bench/couch/r
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1144,7 +1144,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/blackcouchleft
-	name = "黑色沙发（左）"
+	name = "black couch (left)"
 	result = /obj/structure/chair/bench/couchablack
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1152,7 +1152,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/blackcouchright
-	name = "黑色沙发（右）"
+	name = "black couch (right)"
 	result = /obj/structure/chair/bench/couchablack/r
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1160,7 +1160,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/ultimacouchleft
-	name = "终极沙发（左）"
+	name = "ultima couch (left)"
 	result = /obj/structure/chair/bench/ultimacouch
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1168,7 +1168,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/ultimacouchright
-	name = "终极沙发（右）"
+	name = "ultima couch (right)"
 	result = /obj/structure/chair/bench/ultimacouch/r
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1176,7 +1176,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/altcouchleft
-	name = "备用沙发（左）"
+	name = "couch alt (left)"
 	result = /obj/structure/chair/bench/coucha
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1184,7 +1184,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/altcouchright
-	name = "备用沙发（右）"
+	name = "couch alt (right)"
 	result = /obj/structure/chair/bench/coucha/r
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1192,7 +1192,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/magentacouchleft
-	name = "洋红沙发（左）"
+	name = "magenta couch (left)"
 	result = /obj/structure/chair/bench/couchamagenta
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1200,7 +1200,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/magentacouchright
-	name = "洋红沙发（右）"
+	name = "magenta couch (right)"
 	result = /obj/structure/chair/bench/couchamagenta/r
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1208,28 +1208,28 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/fireplace
-	name = "壁炉（北）"
+	name = "Fireplace (North)"
 	result = /obj/machinery/light/rogue/campfire/fireplace/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/stoneblock = 3)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 
 /datum/crafting_recipe/roguetown/structure/mirror
-	name = "镜子（北）"
+	name = "mirror (north)"
 	result = /obj/structure/mirror
 	reqs = list(/obj/item/natural/wood/plank = 2,
 				/obj/item/ingot/iron = 1,
 				/obj/item/natural/glass = 1)
 	skillcraft = /datum/skill/craft/carpentry
-	verbage = "制作"
+	verbage = "constructs"
 	wallcraft = TRUE
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/fancymirror
-	name = "华丽镜子（北）"
+	name = "fancy mirror (north)"
 	result = /obj/structure/mirror/fancy
 	reqs = list(/obj/item/natural/wood/plank = 1,
 				/obj/item/ingot/silver = 1,
@@ -1240,14 +1240,14 @@
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/structure/floorclock
-	name = "落地钟"
+	name = "Floor Clock"
 	result = /obj/structure/fluff/clock
 	reqs = list(/obj/item/natural/wood/plank = 2,/obj/item/roguegear/bronze = 1, /obj/item/ingot/iron = 1)
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/wallclock
-	name = "挂钟（北）"
+	name = "Wall Clock (North)"
 	result = /obj/structure/fluff/wallclock
 	reqs = list(/obj/item/natural/wood/plank = 2,/obj/item/roguegear/bronze = 1, /obj/item/ingot/iron = 1)
 	skillcraft = /datum/skill/craft/engineering
@@ -1255,63 +1255,63 @@
 	wallcraft = TRUE
 
 /datum/crafting_recipe/roguetown/structure/drawer1// oh boy time to add drawers for all five of them, drawers are randomized and theres five different sprites that are all unique enough
-	name = "长梳妆柜"
+	name = "Long Dresser"
 	result = /obj/structure/closet/crate/drawer/drawer2
 	reqs= list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/drawer2
-	name = "长梳妆柜（备用款）"
+	name = "Long Dresser (Alt)"
 	result = /obj/structure/closet/crate/drawer/drawer2
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/drawer3
-	name = "高长梳妆柜"
+	name = "Tall and long Dresser"
 	result = /obj/structure/closet/crate/drawer/drawer3
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/drawer4
-	name = "高窄梳妆柜"
+	name = "Tall and skinny Dresser"
 	result = /obj/structure/closet/crate/drawer/drawer4
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/drawer5
-	name = "床头柜"
+	name = "Bedside Drawer"
 	result = /obj/structure/closet/crate/drawer
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/telescope
-	name = "望远镜"
+	name = "Telescope"
 	result = /obj/structure/telescope
 	reqs = list(/obj/item/grown/log/tree/stick = 2, /obj/item/ingot/iron = 1, /obj/item/natural/glass = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/globe
-	name = "地球仪"
+	name = "Globe"
 	result = /obj/structure/globe
 	reqs = list(/obj/item/grown/log/tree/stick = 2, /obj/item/natural/wood/plank = 3)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/tablewood3
-	name = "木桌（备用款）"
+	name = "Wooden Table (Alt)"
 	result = /obj/structure/table/wood/poor/alt_alt
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/ornatetable
-	name = "华饰木桌"
+	name = "Ornate Wooden Table"
 	result = /obj/structure/table/fine
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
@@ -1320,7 +1320,7 @@
 // hanging chains
 
 /datum/crafting_recipe/roguetown/structure/hangingchains
-	name = "悬挂锁链"
+	name = "Hanging Chains"
 	result = /obj/structure/fluff/walldeco/chains
 	reqs = list(/obj/item/rope/chain = 2)
 	skillcraft = /datum/skill/craft/engineering
@@ -1329,44 +1329,44 @@
 // floor candles
 
 /datum/crafting_recipe/roguetown/structure/floorcandle
-	name = "落地蜡烛"
+	name = "floor candles"
 	result = /obj/machinery/light/rogue/candle/floorcandle
 	reqs = list(/obj/item/candle/yellow = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = FALSE
 	craftdiff = 0
 
 
 /datum/crafting_recipe/roguetown/structure/floorcandlealt
-	name = "备用落地蜡烛"
+	name = "alt floor candles"
 	result = /obj/machinery/light/rogue/candle/floorcandle/alt
 	reqs = list(/obj/item/candle/yellow = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = FALSE
 	craftdiff = 0
 
 
 /datum/crafting_recipe/roguetown/structure/floorcandlepink
-	name = "Eora 落地蜡烛"
+	name = "eoran floor candles"
 	result = /obj/machinery/light/rogue/candle/floorcandle/pink
 	reqs = list(/obj/item/candle/eora = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = FALSE
 	craftdiff = 0
 
 
 /datum/crafting_recipe/roguetown/structure/floorcandlealtpink
-	name = "备用 Eora 落地蜡烛"
+	name = "alt eoran floor candles"
 	result = /obj/machinery/light/rogue/candle/floorcandle/alt/pink
 	reqs = list(/obj/item/candle/eora = 2)
-	verbage_simple = "建造"
-	verbage = "建造"
+	verbage_simple = "build"
+	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = FALSE
 	craftdiff = 0
@@ -1374,49 +1374,49 @@
 // floor pillows
 
 /datum/crafting_recipe/roguetown/structure/redpillows
-	name = "红色靠枕（2 块布）"
+	name = "red pillows (2 cloth)"
 	result = /obj/structure/fluff/pillow/red
 	reqs = list(/obj/item/natural/cloth = 2)
 	skillcraft = /datum/skill/craft/sewing
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/bluepillows
-	name = "蓝色靠枕（2 块布）"
+	name = "blue pillows (2 cloth)"
 	result = /obj/structure/fluff/pillow/blue
 	reqs = list(/obj/item/natural/cloth = 2)
 	skillcraft = /datum/skill/craft/sewing
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/greenpillows
-	name = "绿色靠枕（2 块布）"
+	name = "green pillows (2 cloth)"
 	result = /obj/structure/fluff/pillow/green
 	reqs = list(/obj/item/natural/cloth = 2)
 	skillcraft = /datum/skill/craft/sewing
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/brownpillows
-	name = "棕色靠枕（2 块布）"
+	name = "brown pillows (2 cloth)"
 	result = /obj/structure/fluff/pillow/brown
 	reqs = list(/obj/item/natural/cloth = 2)
 	skillcraft = /datum/skill/craft/sewing
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/magentapillows
-	name = "洋红靠枕（2 块布）"
+	name = "magenta pillows (2 cloth)"
 	result = /obj/structure/fluff/pillow/magenta
 	reqs = list(/obj/item/natural/cloth = 2)
 	skillcraft = /datum/skill/craft/sewing
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/purplepillows
-	name = "紫色靠枕（2 块布）"
+	name = "purple pillows (2 cloth)"
 	result = /obj/structure/fluff/pillow/purple
 	reqs = list(/obj/item/natural/cloth = 2)
 	skillcraft = /datum/skill/craft/sewing
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/blackpillows
-	name = "黑色靠枕（2 块布）"
+	name = "black pillows (2 cloth)"
 	result = /obj/structure/fluff/pillow/black
 	reqs = list(/obj/item/natural/cloth = 2)
 	skillcraft = /datum/skill/craft/sewing

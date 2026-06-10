@@ -1,9 +1,10 @@
 /datum/advclass/mercenary/newmoon
-	name = "New Moon 咒剑士"
-	tutorial = "Zybantia 的 New Moon 咒剑士，是 Lalvestine 某片未知地域中一座已然覆灭的 Noc 修道院残党， \
-	那曾是 Zybantian 帝国境内“十杰”最后一处重要据点。 \
-	在腐败之灾的重压下，他们的修院生活与虔诚信念迅速崩塌，被迫从孤绝苦修的日子里跌入普通佣兵的生涯；而 Noc 的赐福，在斩杀怪物与人类时倒是意外地好用。 \
-	无论出于何种缘由，你如今来到了这片地界，向出价最高者献上自己的技艺。知识即力量。"
+	name = "New Moon Spellblade"
+	tutorial = "The New Moon Spellblades of Zybantia are the remnants of a fallen Nocite monastery in an unknown region of Lalvestine, \
+	the last major stronghold of the Ten in the Zybantian Empire. \
+	Their monastic lyfestyle and devotion collapsed quickly under the weight of the Rot, and they were forced from a lyfe of devout solitude \
+	into that of a common sellsword; Noc�s blessings proving rather useful when slaying monsters and men alike. \
+	For whatever reason, you find yourself in the region, offering your skills to the highest bidder. Knowledge is power."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/tabaxi,
@@ -40,7 +41,7 @@
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_NOVICE,
 	)
 
-	extra_context = "该分支仅限：Tabaxi | Wild-Kin | Half-Kin | Elves | Tiefling。"
+	extra_context = "Restricted to: Tabaxi | Wild-Kin | Half-Kin | Elves | Tiefling."
 
 /datum/outfit/job/roguetown/mercenary/newmoon
 	allowed_patrons = list(/datum/patron/divine/noc)
@@ -78,8 +79,8 @@
 //Their sabre. Peel capable when off. Does burn when on. OldRW rage inducing classic, returned.
 //Now properly inflicts burn wounds, on top of the burn type damage. Very painful.
 /obj/item/rogueweapon/sword/sabre/newmoon
-	name = "寒雾军刀"
-	desc = "一柄缭绕着亮蓝色冻雾的纤薄军刀。仅仅握住这把刀，都让人觉得手指快要被冻伤。"
+	name = "freezing saber"
+	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "nm_saber"
 	force = 22//Dropped to 14 when on. Fire damage is a hell of a thing. -8, overall.
@@ -91,9 +92,9 @@
 	var/on = FALSE
 
 /datum/intent/sword/freeze
-	name = "冰封"
+	name = "freeze"
 	icon_state = "insmoke"//Is it funny yet? Get it?
-	attack_verb = list("冰封")
+	attack_verb = list("freezes")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg')
 	penfactor = 60
@@ -114,7 +115,7 @@
 		possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
 		force = 22
 	else
-		user.visible_message(span_warning("[user] 的刀刃亮起了幽蓝寒焰。"))
+		user.visible_message(span_warning("[user]'s blade lights up with a blue flame."))
 		on = TRUE
 		damtype = BURN
 		possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/freeze, /datum/intent/sword/strike)
@@ -129,8 +130,8 @@
 
 //The clothing.
 /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
-	name = "New Moon 外袍"
-	desc = "这件青绿色外袍轻便、华丽，却仍有相当的防护性。它是 New Moon 圣团的标志装束，胸前中央还缀着一枚 Noc 护符。"
+	name = "New Moon coat"
+	desc = "Light, fancy, yet still fairly protective. This teal coat is a signature of the New Moon Holy Order with a noc amulet upon the middle of the chestpiece."
 	icon_state = "newmoon_jacket"
 	item_state = "newmoon_jacket"
 	armor = ARMOR_SPELLSINGER//Better than the old, but, whatever. By a bit.
