@@ -5,13 +5,12 @@
 //You'll die for it, too.
 /datum/job/roguetown/martyr
 	title = "Martyr"
-	display_title = "殉道者"
 	department_flag = CHURCHMEN
 	faction = "Station"
-	tutorial = "祈祷。信念。意志。 \
-	这些词自你入教那一刻起，直到被指派为高阶主教的侍卫之前，始终被人一遍遍灌进你的脑海。 \
-	你的灵魂已覆上一层洗不掉的猩红鎏印。因为你是圣座的兵刃，仅此而已。 \
-	守护高阶主教。寸土不让。为十神而死。"
+	tutorial = "Prayer. Conviction. Intent. \
+	Words they'd drilled into your skull, from the moment of induction, up until your assignment as the Prelate's ward. \
+	A crimson gild upon your soul, a taint that can't be cleared. For you are a weapon of the Holy See. No more. No less. \
+	Defend the Prelate. Give up no hallowed ground. Die for the Ten."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	allowed_patrons = ALL_DIVINE_PATRONS
@@ -50,11 +49,11 @@
 	)
 
 /datum/advclass/martyr
-	name = "殉道者"
-	tutorial = "祈祷。信念。意志。 \
-	这些词自你入教那一刻起，直到被指派为高阶主教的侍卫之前，始终被人一遍遍灌进你的脑海。 \
-	你的灵魂已覆上一层洗不掉的猩红鎏印。因为你是圣座的兵刃，仅此而已。 \
-	守护高阶主教。寸土不让。为十神而死。"
+	name = "Martyr"
+	tutorial = "Prayer. Conviction. Intent. \
+	Words they'd drilled into your skull, from the moment of induction, up until your assignment as the Prelate's ward. \
+	A crimson gild upon your soul, a taint that can't be cleared. For you are a weapon of the Holy See. No more. No less. \
+	Defend the Prelate. Give up no hallowed ground. Die for the Ten."
 	outfit = /datum/outfit/job/roguetown/martyr/basic
 	subclass_languages = list(/datum/language/grenzelhoftian)
 	category_tags = list(CTAG_MARTYR)
@@ -82,9 +81,9 @@
 		/datum/skill/misc/sneaking = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"十神箴言与行传" = /obj/item/book/rogue/bibble,
+		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
 	)
-	extra_context = "该职业允许玩家在出生时选择一项独特恩赐，以获取稀有特质。"
+	extra_context = "This class allows the player to choose a unique boon on spawn, providing access to rare traits."
 
 /datum/outfit/job/roguetown/martyr
 	job_bitflag = BITFLAG_HOLY_WARRIOR
@@ -118,8 +117,8 @@
 
 /datum/outfit/job/roguetown/martyr/basic/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/boons = list("坚忍", "不屈", "空壳")
-	var/boon_choice = input(H,"选择你的恩赐。", "领受圣座赐礼") as anything in boons
+	var/boons = list("Endurance", "Indefatigable", "Hollow")
+	var/boon_choice = input(H,"Choose your BOON.", "TAKE UP THE SEE'S GIFT") as anything in boons
 	switch(boon_choice)
 //Generic boons.
 		if("Endurance")//Hard dismemberment. Pair with ult for funny results.

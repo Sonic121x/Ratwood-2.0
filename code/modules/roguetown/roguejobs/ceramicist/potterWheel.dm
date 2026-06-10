@@ -1,6 +1,6 @@
 /obj/structure/fluff/ceramicswheel
-	name = "陶轮"
-	desc = "一座供熟练工匠塑形与成型黏土用的旋转工作台。"
+	name = "Potter's Wheel"
+	desc = "A rotating platform used by skilled artisans to mold and shape clay."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "potwheel"
 	density = TRUE
@@ -40,47 +40,47 @@
 /obj/structure/fluff/ceramicswheel/attackby(obj/item/W, mob/living/user, params)
 	if(loaded_clay && istype(W, /obj/item/reagent_containers))
 		if(!selected_recipe || !needs_rewet)
-			to_chat(user, span_warning("这团黏土暂时还不需要加更多水。"))
+			to_chat(user, span_warning("The clay does not need more water yet."))
 			return
 		var/obj/item/reagent_containers/container = W
 		if(loaded_clay.consume_wetting_water(container))
-			to_chat(user, span_notice("我把轮上的黏土润湿了。"))
+			to_chat(user, span_notice("I moisten the clay on the wheel."))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 80, TRUE, -1)
 			needs_rewet = FALSE
 		else
-			to_chat(user, span_warning("还需要更多水，才能继续塑形。"))
+			to_chat(user, span_warning("Needs more water to keep shaping."))
 		return
 
 	if(istype(W, /obj/item/natural/clay))
 		if(loaded_clay)
-			to_chat(user, span_warning("轮上已经有黏土了。"))
+			to_chat(user, span_warning("There is already clay on the wheel."))
 			return
 		if(W.type == /obj/item/natural/clay)
-			to_chat(user, span_warning("这东西太粗糙，不能直接上轮。我得先准备揉制黏土。"))
+			to_chat(user, span_warning("This is too rough for wheel work. I need kneaded clay first."))
 			return
 		if(!istype(W, /obj/item/natural/clay/kneaded) && !istype(W, /obj/item/natural/clay/refined))
-			to_chat(user, span_warning("只有揉制黏土或精炼黏土才能在轮上加工。"))
+			to_chat(user, span_warning("Only kneaded or refined clay can be worked on the wheel."))
 			return
 		if(!user.transferItemToLoc(W, src))
-			to_chat(user, span_warning("[W]粘在我手上了。"))
+			to_chat(user, span_warning("[W] is stuck to my hand."))
 			return
 		loaded_clay = W
 		reset_shaping_progress()
-		to_chat(user, span_notice("我把[W]放到了陶轮上。"))
+		to_chat(user, span_notice("I place [W] on the wheel."))
 		update_icon()
 		return
 
 /obj/structure/fluff/ceramicswheel/attack_hand(mob/living/user)
 	if(loaded_clay)
 		if(selected_recipe)
-			to_chat(user, span_warning("我正在塑形，不能在这时候把黏土取下来！"))
+			to_chat(user, span_warning("I can't remove the clay while I'm in the middle of shaping it!"))
 			return
 		var/obj/item/natural/clay/removed = loaded_clay
 		loaded_clay = null
 		reset_shaping_progress()
 		removed.forceMove(get_turf(src))
 		user.put_in_hands(removed)
-		to_chat(user, span_notice("我把[removed]从陶轮上取了下来。"))
+		to_chat(user, span_notice("I take [removed] off the wheel."))
 		update_icon()
 		return
 
@@ -126,10 +126,10 @@
 	if(user.get_active_held_item())
 		return ..()
 	if(!loaded_clay)
-		to_chat(user, span_warning("我得先把黏土放到陶轮上。"))
+		to_chat(user, span_warning("I need to place clay on the wheel first."))
 		return
 	if(needs_rewet)
-		to_chat(user, span_warning("黏土正在变干。我得先加点水，再继续转。"))
+		to_chat(user, span_warning("The clay is drying out. I should add water before spinning again."))
 		return
 
 	if(!selected_recipe)
@@ -151,7 +151,7 @@
 			radial_choices[choice_label] = image(icon = preview_icon, icon_state = preview_icon_state)
 
 		if(!recipe_map.len)
-			to_chat(user, span_warning("这团黏土没法塑造成什么有用的东西。"))
+			to_chat(user, span_warning("This clay cannot be shaped into anything useful."))
 			for(var/datum/pottery_wheel_recipe/R_cleanup0 in generated_recipes)
 				qdel(R_cleanup0)
 			return
@@ -173,13 +173,13 @@
 				qdel(R_cleanup_keep)
 
 	if(!selected_recipe.valid_for_clay(loaded_clay))
-		to_chat(user, span_warning("这团黏土已经不适合当前选择的造型了。"))
+		to_chat(user, span_warning("This clay is no longer suitable for the selected shape."))
 		reset_shaping_progress()
 		return
 
 	var/skill_level = user.get_skill_level(/datum/skill/craft/ceramics)
 	if(skill_level < selected_recipe.craftdiff)
-		to_chat(user, span_warning("这需要我具备 [SSskills.level_names_plain[selected_recipe.craftdiff]] 级陶艺技能。"))
+		to_chat(user, span_warning("I need [SSskills.level_names_plain[selected_recipe.craftdiff]] pottery skill for this."))
 		reset_shaping_progress()
 		return
 
@@ -188,12 +188,12 @@
 	// Journeyman (skill 3) is the baseline speed; lower skills take longer, higher are faster
 	var/base_per_spin = max(1, round(selected_recipe.base_time / total_spins))
 	var/time_to_spin = max(6, base_per_spin + (SKILL_LEVEL_JOURNEYMAN - skill_level) * 4)
-	to_chat(user, span_notice("我转动陶轮，塑造[loaded_clay]（[spin_progress + 1]/[total_spins]）……"))
+	to_chat(user, span_notice("I spin the wheel and shape [loaded_clay] ([spin_progress + 1]/[total_spins])..."))
 	playsound(src, 'sound/foley/grindblade.ogg', 80, FALSE)
 	if(!do_after(user, time_to_spin, target = src))
 		return
 	if(!loaded_clay || !selected_recipe || !selected_recipe.valid_for_clay(loaded_clay))
-		to_chat(user, span_warning("这团黏土已经不再适合继续加工了。"))
+		to_chat(user, span_warning("The clay is no longer suitable."))
 		reset_shaping_progress()
 		return
 
@@ -212,7 +212,7 @@
 			if(SKILL_LEVEL_EXPERT)
 				ruin_chance = 5
 		if(prob(ruin_chance))
-			user.visible_message(span_warning("[user]失去了对轮上黏土的控制，它塌掉了！"), span_warning("我失去了对旋转中黏土的控制，它塌坏了！"))
+			user.visible_message(span_warning("[user] loses control of the clay on the wheel — it collapses!"), span_warning("I lose control of the spinning clay — it collapses and is ruined!"))
 			playsound(src, 'modular/Neu_Food/sound/kneading.ogg', 80, TRUE)
 			qdel(loaded_clay)
 			loaded_clay = null
@@ -226,7 +226,7 @@
 	var/required_rewets = get_required_rewet_count()
 	if(spin_progress <= required_rewets)
 		needs_rewet = TRUE
-		to_chat(user, span_notice("这团黏土还需要更多水，我才能继续（[spin_progress]/[selected_recipe.spins_required]）。"))
+		to_chat(user, span_notice("The clay needs more water before I can continue ([spin_progress]/[selected_recipe.spins_required])."))
 		return
 
 	var/turf/drop_turf = get_turf(src)
@@ -236,7 +236,7 @@
 			var/obj/item/natural/clay/clay_item = I
 			clay_item.creator_skill = skill_level
 			clay_item.pottery_quality = calculate_pottery_quality(skill_level)
-	user.visible_message(span_notice("[user]把[loaded_clay]塑形成了[selected_recipe.name]。"), span_notice("我把[loaded_clay]塑形成了[selected_recipe.name]。"))
+	user.visible_message(span_notice("[user] shapes [loaded_clay] into [selected_recipe.name]."), span_notice("I shape [loaded_clay] into [selected_recipe.name]."))
 	var/final_craftdiff = selected_recipe.craftdiff
 	qdel(loaded_clay)
 	loaded_clay = null
@@ -252,7 +252,7 @@
 
 /datum/pottery_wheel_recipe
 	abstract_type = /datum/pottery_wheel_recipe
-	var/name = "轮制配方"
+	var/name = "wheel recipe"
 	var/craftdiff = SKILL_LEVEL_NOVICE
 	var/base_time = 40
 	var/result_type = /obj/item/natural/clay
@@ -271,7 +271,7 @@
 	spins_required = 2  // Basic kneaded clay only needs 1 rewet, so 2 total spins
 
 /datum/pottery_wheel_recipe/basic/brick
-	name = "黏土砖 x2"
+	name = "clay brick x2"
 	craftdiff = 0
 	base_time = 30
 	result_type = /obj/item/natural/clay/claybrick
@@ -279,49 +279,49 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/cup
-	name = "陶罐"
+	name = "clay canister"
 	craftdiff = 0
 	base_time = 30
 	result_type = /obj/item/natural/clay/claycup
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/bottle
-	name = "陶瓶"
+	name = "clay bottle"
 	craftdiff = 0
 	base_time = 35
 	result_type = /obj/item/natural/clay/claybottle
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/vase
-	name = "陶花瓶"
+	name = "clay vase"
 	craftdiff = 0
 	base_time = 40
 	result_type = /obj/item/natural/clay/clayvase
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/fancy_vase
-	name = "华饰陶花瓶"
+	name = "fancy clay vase"
 	craftdiff = 0
 	base_time = 45
 	result_type = /obj/item/natural/clay/clayfancyvase
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/teapot
-	name = "茶壶"
+	name = "teapot"
 	craftdiff = 0
 	base_time = 45
 	result_type = /obj/item/natural/clay/rawteapot
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/teacup
-	name = "茶杯"
+	name = "teacup"
 	craftdiff = 0
 	base_time = 35
 	result_type = /obj/item/natural/clay/rawteacup
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_1
-	name = "陶像（款式 I）"
+	name = "clay statue (style I)"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design1
@@ -330,7 +330,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_2
-	name = "陶像（款式 II）"
+	name = "clay statue (style II)"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design2
@@ -339,7 +339,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_3
-	name = "陶像（款式 III）"
+	name = "clay statue (style III)"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design3
@@ -348,7 +348,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_4
-	name = "陶像（款式 IV）"
+	name = "clay statue (style IV)"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design4
@@ -357,7 +357,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_5
-	name = "陶像（款式 V）"
+	name = "clay statue (style V)"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design5
@@ -372,51 +372,51 @@
 	base_time = 50
 
 /datum/pottery_wheel_recipe/porcelain/cameo
-	name = "瓷浮雕"
+	name = "porcelain cameo"
 	result_type = /obj/item/natural/clay/porcelain/cameo
 
 /datum/pottery_wheel_recipe/porcelain/figurine
-	name = "瓷雕小像"
+	name = "porcelain figurine"
 	result_type = /obj/item/natural/clay/porcelain/figurine
 
 /datum/pottery_wheel_recipe/porcelain/fish
-	name = "瓷鱼摆件"
+	name = "porcelain fish figurine"
 	result_type = /obj/item/natural/clay/porcelain/fish
 
 /datum/pottery_wheel_recipe/porcelain/tablet
-	name = "瓷板"
+	name = "porcelain tablet"
 	result_type = /obj/item/natural/clay/porcelain/tablet
 
 /datum/pottery_wheel_recipe/porcelain/vase
-	name = "瓷花瓶"
+	name = "porcelain vase"
 	result_type = /obj/item/natural/clay/porcelain/vase
 
 /datum/pottery_wheel_recipe/porcelain/fork
-	name = "瓷叉"
+	name = "porcelain fork"
 	result_type = /obj/item/natural/clay/porcelain/fork
 
 /datum/pottery_wheel_recipe/porcelain/spoon
-	name = "瓷勺"
+	name = "porcelain spoon"
 	result_type = /obj/item/natural/clay/porcelain/spoon
 
 /datum/pottery_wheel_recipe/porcelain/bowl
-	name = "瓷碗"
+	name = "porcelain bowl"
 	result_type = /obj/item/natural/clay/porcelain/bowl
 
 /datum/pottery_wheel_recipe/porcelain/cup
-	name = "瓷茶杯"
+	name = "porcelain teacup"
 	result_type = /obj/item/natural/clay/porcelain/cup
 
 /datum/pottery_wheel_recipe/porcelain/platter
-	name = "瓷盘"
+	name = "porcelain platter"
 	result_type = /obj/item/natural/clay/porcelain/platter
 
 /datum/pottery_wheel_recipe/porcelain/teapot
-	name = "瓷茶壶"
+	name = "porcelain teapot"
 	result_type = /obj/item/natural/clay/porcelain/teapot
 
 /datum/pottery_wheel_recipe/porcelain/fancy_teapot
-	name = "华饰瓷茶壶"
+	name = "fancy porcelain teapot"
 	result_type = /obj/item/natural/clay/porcelain/fancyteapot
 
 /datum/pottery_wheel_recipe/porcelain/advanced
@@ -425,53 +425,53 @@
 	base_time = 60
 
 /datum/pottery_wheel_recipe/porcelain/advanced/bust
-	name = "瓷半身像"
+	name = "porcelain bust"
 	result_type = /obj/item/natural/clay/porcelain/bust
 
 /datum/pottery_wheel_recipe/porcelain/advanced/fancy_vase
-	name = "华饰瓷花瓶"
+	name = "fancy porcelain vase"
 	result_type = /obj/item/natural/clay/porcelain/fancyvase
 
 /datum/pottery_wheel_recipe/porcelain/advanced/comb
-	name = "瓷梳"
+	name = "porcelain comb"
 	result_type = /obj/item/natural/clay/porcelain/comb
 
 /datum/pottery_wheel_recipe/porcelain/advanced/duck
-	name = "瓷鸭摆件"
+	name = "porcelain duck"
 	result_type = /obj/item/natural/clay/porcelain/duck
 
 /datum/pottery_wheel_recipe/porcelain/advanced/fancy_cup
-	name = "华饰瓷杯"
+	name = "fancy porcelain cup"
 	result_type = /obj/item/natural/clay/porcelain/fancycup
 
 /datum/pottery_wheel_recipe/porcelain/advanced/fancy_teacup
-	name = "华饰瓷茶杯"
+	name = "fancy porcelain teacup"
 	result_type = /obj/item/natural/clay/porcelain/fancyteacup
 
 /datum/pottery_wheel_recipe/porcelain/advanced/mask
-	name = "瓷面具"
+	name = "porcelain mask"
 	result_type = /obj/item/natural/clay/porcelain/mask
 
 /datum/pottery_wheel_recipe/porcelain/advanced/urn
-	name = "瓷骨灰瓮"
+	name = "porcelain urn"
 	result_type = /obj/item/natural/clay/porcelain/urn
 
 /datum/pottery_wheel_recipe/porcelain/advanced/statue
-	name = "瓷雕像"
+	name = "porcelain statue"
 	result_type = /obj/item/natural/clay/porcelain/statue
 
 /datum/pottery_wheel_recipe/porcelain/advanced/obelisk
-	name = "瓷方尖碑"
+	name = "porcelain obelisk"
 	result_type = /obj/item/natural/clay/porcelain/obelisk
 
 /datum/pottery_wheel_recipe/porcelain/advanced/turtle
-	name = "瓷海龟雕饰"
+	name = "porcelain turtle carving"
 	result_type = /obj/item/natural/clay/porcelain/turtle
 
 /datum/pottery_wheel_recipe/porcelain/advanced/bauble
-	name = "瓷饰球"
+	name = "porcelain bauble"
 	result_type = /obj/item/natural/clay/porcelain/bauble
 
 /datum/pottery_wheel_recipe/porcelain/advanced/rungu
-	name = "瓷 rungu"
+	name = "porcelain rungu"
 	result_type = /obj/item/natural/clay/porcelain/rungu

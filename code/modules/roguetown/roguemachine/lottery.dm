@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/lottery_roguetown
-	name = "希利克斯的鸿运"
-	desc = "一个深不见底、能成就也能毁掉人的巨洞。来玩吧！"
+	name = "XYLIX'S FORTUNE"
+	desc = "An infinite, yawning hole that makes or breaks men. Come and play!"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "lottery"
 	density = FALSE
@@ -25,7 +25,7 @@
 
 /obj/structure/roguemachine/lottery_roguetown/attack_hand(mob/living/user) //empty hand
 
-	src.say("你当前的贡金是 [src.gamblingprice] 玛门。要来转一把吗？")
+	src.say("Your current tithe is [src.gamblingprice] mammons. Care to spin?")
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 	return
 
@@ -41,18 +41,18 @@
 		return
 	if(istype(P, /obj/item/roguecoin))
 		if(src.gamblingprice + (P.sellprice * P.quantity) > src.maxtithing)
-			say("这会让起始贡金超过 [src.maxtithing] 玛门。")
+			say("This puts the starting tithe over [src.maxtithing] mammons.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		if(src.gamblingprice + (P.sellprice * P.quantity) < src.mintithing)
-			say("这低于 [src.mintithing] 玛门。")
+			say("This is below [src.mintithing] mammons.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 
 		else
 			src.gamblingprice += (P.sellprice * P.quantity)
 			qdel(P)
-			src.say("你当前的贡金现在是 [src.gamblingprice] 玛门。要来转一把吗？")
+			src.say("Your current tithe is now [src.gamblingprice] mammons. Care to spin?")
 			playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 			return
 
@@ -128,10 +128,10 @@
 
 	else
 		if(gamblingprice <= 0)
-			say("可怜的小东西，你一枚硬币都没有。")
+			say("Poor thing, you are coinless.")
 			return
 		if(gamblingprice < 0)
-			say("你的平民贡金是负数。")
+			say("Your peasant's tithe is NEGATIVE.")
 			return
 		var/list/choicez = list()
 		if(gamblingprice > 10)
@@ -139,7 +139,7 @@
 		if(gamblingprice > 5)
 			choicez += "SILVER"
 		choicez += "BRONZE"
-		var/selection = input(user, "进行选择", src) as null|anything in choicez
+		var/selection = input(user, "Make a Selection", src) as null|anything in choicez
 		if(!selection)
 			return
 		var/mod = 1
@@ -147,7 +147,7 @@
 			mod = 10
 		if(selection == "SILVER")
 			mod = 5
-		var/coin_amt = input(user, "大人，你有 [src.gamblingprice] 玛门贡金。你可以提取 [floor(gamblingprice/mod)] 枚[selection]币。", src) as null|num
+		var/coin_amt = input(user, "Sayyid, you have [src.gamblingprice] mammon in tithes. You may withdraw [floor(gamblingprice/mod)] [selection] COINS.", src) as null|num
 		coin_amt = round(coin_amt)
 		if(coin_amt < 1)
 			return

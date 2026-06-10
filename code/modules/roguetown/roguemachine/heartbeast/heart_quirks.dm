@@ -1,6 +1,6 @@
 /datum/flesh_quirk
-	var/name = "基础怪癖"
-	var/description = "一种行为怪癖"
+	var/name = "base quirk"
+	var/description = "A behavioral quirk"
 	var/list/conflicting_quirks = list()
 	var/rarity = 10 // Higher = more common
 	var/quirk_type = QUIRK_LANGUAGE
@@ -21,8 +21,8 @@
 	return null
 
 /datum/flesh_quirk/obedient
-	name = "顺从"
-	description = "被人吼叫时反而会回应得更好。"
+	name = "Obedient"
+	description = "Responds better to being shouted at."
 	conflicting_quirks = list(/datum/flesh_quirk/stubborn, /datum/flesh_quirk/timid, /datum/flesh_quirk/curious)
 	quirk_type = QUIRK_LANGUAGE
 	color = "#8b4513"
@@ -41,8 +41,8 @@
 	return effects
 
 /datum/flesh_quirk/curious
-	name = "好奇"
-	description = "期待别人用带有疑问的语气来引导它。"
+	name = "Curious"
+	description = "Expects to be enticed with a questioning tone."
 	conflicting_quirks = list(/datum/flesh_quirk/timid, /datum/flesh_quirk/obedient)
 	rarity = 5
 	quirk_type = QUIRK_LANGUAGE
@@ -62,8 +62,8 @@
 	return effects
 
 /datum/flesh_quirk/impatient
-	name = "急躁"
-	description = "偏好迅速回应，延迟会让它烦躁。与其互动后需在10秒内作答。"
+	name = "Impatient"
+	description = "Prefers quick responses and gets frustrated by delays, answer within 10 seconds of interacting."
 	conflicting_quirks = list(/datum/flesh_quirk/patient)
 	quirk_type = QUIRK_LANGUAGE
 	color = "#ff4500"
@@ -79,8 +79,8 @@
 	return effects
 
 /datum/flesh_quirk/royal
-	name = "尊贵"
-	description = "要求别人用特定称谓称呼它，否则可能被冒犯。可能的称谓有：陛下、伟大者、主人、霸主、尊上。对低智心兽无效。"
+	name = "Royal"
+	description = "Demands to be addressed by a specific title. Can get offended. Possible titles are: Majesty, Great one, Master, Overlord, Eminence. Inactive on stupid beasts."
 	quirk_type = QUIRK_LANGUAGE
 	rarity = 5
 	color = "#daa520"
@@ -106,17 +106,17 @@
 		if(prob(feedback_chance))
 			switch(beast.language_tier)
 				if(2)
-					heart_beast.visible_message(span_warning("[heart_beast]显得被冒犯了！"))
+					heart_beast.visible_message(span_warning("[heart_beast] seems offended!"))
 				if(3)
-					heart_beast.visible_message(span_warning("[heart_beast]看起来受到了极大的冒犯！"))
+					heart_beast.visible_message(span_warning("[heart_beast] appears deeply offended!"))
 				if(4)
-					heart_beast.visible_message(span_cultlarge("[heart_beast]散发出不悦的气息！"))
+					heart_beast.visible_message(span_cultlarge("[heart_beast] radiates displeasure!"))
 
 	return effects
 
 /datum/flesh_quirk/discharge
-	name = "分泌"
-	description = "情绪激动时会喷出彩色分泌物。"
+	name = "Discharge"
+	description = "Produces colored discharge when emotional."
 	quirk_type = QUIRK_BEHAVIOR
 	color = "#9370db"
 	required_item = /obj/item/alch/manabloompowder
@@ -156,8 +156,8 @@
 	return base_chance
 
 /datum/flesh_quirk/repetitive
-	name = "重复"
-	description = "常会连续两次重复相近的话题，之后才可能中断。"
+	name = "Repetitive"
+	description = "Often repeats similar topics twice in a row, after which the streak can break."
 	quirk_type = QUIRK_BEHAVIOR
 	color = "#808080"
 	required_item = /obj/item/alch/paris
@@ -168,8 +168,8 @@
 	return score
 
 /datum/flesh_quirk/timid
-	name = "胆怯"
-	description = "很容易被吼叫吓到，对这种语气的回应更差。"
+	name = "Timid"
+	description = "Easily frightened by shouting, responding worse to such a tone."
 	conflicting_quirks = list(/datum/flesh_quirk/royal, /datum/flesh_quirk/obedient, /datum/flesh_quirk/curious)
 	quirk_type = QUIRK_LANGUAGE
 	color = "#add8e6"
@@ -192,8 +192,8 @@
 	return effects
 
 /datum/flesh_quirk/ambitious
-	name = "雄心勃勃"
-	description = "对有头衔或权势的人回应更好，也可能被冒犯。对低智心兽无效。"
+	name = "Ambitious"
+	description = "Responds better to people with titles or authority, may get offended. Inactive on stupid beasts."
 	rarity = 1
 	quirk_type = QUIRK_LANGUAGE
 	color = "#b22222"
@@ -213,15 +213,15 @@
 		if(prob(feedback_chance))
 			switch(beast.language_tier)
 				if(3)
-					beast.heart_beast.visible_message(span_warning("[beast.heart_beast]发出轻蔑的冷笑！"))
+					beast.heart_beast.visible_message(span_warning("[beast.heart_beast] sneers!"))
 				if(4)
-					beast.heart_beast.visible_message(span_cultlarge("[beast.heart_beast]轻蔑地嗤了一声！"))
+					beast.heart_beast.visible_message(span_cultlarge("[beast.heart_beast] scoffs!"))
 
 	return effects
 
 /datum/flesh_quirk/forgetful
-	name = "健忘"
-	description = "它可能会忘记你的回答，不管答得多好都给出负面结果。智力越高越不容易触发，5个词以内的回答不会被忘。"
+	name = "Forgetful"
+	description = "Might forget what you answered, giving you a negative result regardless of how good your answer was. Lessens with intelligence, can't forget 5 words or fewer."
 	quirk_type = QUIRK_LANGUAGE
 	var/forget_chance = 25
 	color = "#d3d3d3"
@@ -270,13 +270,13 @@
 	if(prob(beast.language_tier * 25))
 		switch(beast.language_tier)
 			if(1)
-				beast.heart_beast.say("什么……？")
+				beast.heart_beast.say("What...?")
 			if(2)
-				beast.heart_beast.say("我忘了……")
+				beast.heart_beast.say("I've forgotten...")
 			if(3)
-				beast.heart_beast.say("我的思绪散开了……")
+				beast.heart_beast.say("My thoughts have scattered...")
 			if(4)
-				beast.heart_beast.say("我们对话的线索从我手中溜走了……")
+				beast.heart_beast.say("The thread of our discourse has escaped me...")
 
 	beast.current_task = null
 	beast.clear_listener()
@@ -285,8 +285,8 @@
 	beast.last_task_time = world.time - (beast.task_cooldown * 0.75)
 
 /datum/flesh_quirk/affectionate
-	name = "依恋"
-	description = "希望你在回答时紧紧站在它身边。"
+	name = "Affectionate"
+	description = "Wishes you stand very close to it whilst answering."
 	quirk_type = QUIRK_LANGUAGE
 	color = "#ff69b4"
 	required_item = /obj/item/alch/calendula
@@ -302,8 +302,8 @@
 	return effects
 
 /datum/flesh_quirk/territorial
-	name = "护地"
-	description = "可能攻击任何靠近的人。新鲜屠宰的肉能让它平静下来。"
+	name = "Territorial"
+	description = "May attack anyone who steps near. Calmed by freshly butchered meat."
 	quirk_type = QUIRK_ENVIRONMENT
 	var/last_attack_time = 0
 	var/attack_cooldown = 0
@@ -342,7 +342,7 @@
 			if(L.stat == DEAD)
 				if(!iscarbon(L))
 					L.gib()
-					beast.heart_beast.visible_message(span_danger("[beast.heart_beast]把[L]撕成了碎片！它看起来……无比满足。"))
+					beast.heart_beast.visible_message(span_danger("[beast.heart_beast] tears [L] apart! It seems... deeply satisfied."))
 					beast.heart_beast.recently_fed = TRUE
 				continue
 			var/has_meat = FALSE
@@ -353,7 +353,7 @@
 							has_meat = TRUE
 							break
 						else
-							beast.heart_beast.visible_message(span_infection("巨兽用一根触须碰了碰那块肉，随即缩了回去。也许它还不够新鲜？"))
+							beast.heart_beast.visible_message(span_infection("The beast touches the meat with one of it's tentacles, and recoils. Maybe it isn't fresh enough?"))
 
 				if(has_meat)
 					attack_cooldown = 20 SECONDS
@@ -372,7 +372,7 @@
 			break
 
 /datum/flesh_quirk/territorial/proc/trigger_territorial_attack(mob/living/target, datum/component/chimeric_heart_beast/beast, grace_period = FALSE)
-	beast.heart_beast.visible_message(span_userdanger("[beast.heart_beast]的触须猛地抽向[target]！"))
+	beast.heart_beast.visible_message(span_userdanger("Tendrils from [beast.heart_beast] lash out at [target]!"))
 	playsound(beast.heart_beast, 'sound/misc/murderbeast.ogg', 100, FALSE)
 	var/happiness_percent = round((beast.happiness / beast.max_happiness) * 100)
 	var/attack_prob = 100 - happiness_percent
@@ -383,7 +383,7 @@
 	if(grace_period)
 		spawn(base_attack_time)
 			if(get_dist(beast.heart_beast, target) > 2)
-				beast.heart_beast.visible_message(span_infection("[beast.heart_beast]的触须险些够到[target]！真是惊险……"))
+				beast.heart_beast.visible_message(span_infection("Tendrils from [beast.heart_beast] barely can't reach [target]! That was close..."))
 				base_attack_time = max(5, base_attack_time - 10)
 				return
 			target.apply_status_effect(/datum/status_effect/territorial_rage, beast.heart_beast)
@@ -399,8 +399,8 @@
 		base_attack_time = initial(base_attack_time)
 
 /datum/flesh_quirk/mimic
-	name = "模仿"
-	description = "倾向于复述并广播他人的话。"
+	name = "Mimic"
+	description = "Tends to copy and announce speech."
 	rarity = 1
 	quirk_type = QUIRK_BEHAVIOR
 	var/base_mimic_chance = 4
@@ -428,7 +428,7 @@
 
 /datum/flesh_quirk/mimic/proc/trigger_mimic_announcement(message, mob/speaker, datum/component/chimeric_heart_beast/beast)
 	var/announcement_text = generate_mimic_text(message, speaker, beast)
-	var/speaker_name = speaker ? speaker.real_name : "未知"
+	var/speaker_name = speaker ? speaker.real_name : "Unknown"
 	minor_announce(html_decode(announcement_text), "[speaker_name]", TRUE)
 	playsound(beast.heart_beast, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 
@@ -474,8 +474,8 @@
 	return jointext(chars, "")
 
 /datum/flesh_quirk/stubborn
-	name = "固执"
-	description = "常会否定那些不够相近的回答，而且通常会连续发生两次。"
+	name = "Stubborn"
+	description = "Will often deny answers that aren't similar enough. Only occurs in streaks of two."
 	conflicting_quirks = list(/datum/flesh_quirk/obedient)
 	quirk_type = QUIRK_LANGUAGE
 	var/last_successful_score = null
@@ -493,8 +493,8 @@
 	return score
 
 /datum/flesh_quirk/patient
-	name = "耐心"
-	description = "希望你在互动后至少等待10秒，再回答问题。"
+	name = "Patient"
+	description = "Wishes for you to wait at least 10 seconds after interacting before answering a question."
 	conflicting_quirks = list(/datum/flesh_quirk/impatient)
 	quirk_type = QUIRK_LANGUAGE
 	rarity = 5

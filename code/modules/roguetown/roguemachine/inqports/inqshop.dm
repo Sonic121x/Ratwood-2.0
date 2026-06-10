@@ -15,23 +15,23 @@
 
 
 /obj/structure/closet/crate/chest/inqcrate/supplies/
-	name = "宗审补给箱"
+	name = "inquisitorial supply crate"
 
 /obj/structure/closet/crate/chest/inqcrate/articles/
-	name = "宗审文书箱"
+	name = "inquisitorial article crate"
 
 /obj/structure/closet/crate/chest/inqreliquary/relic/
 
 /obj/structure/closet/crate/chest/inqcrate/equipment/
-	name = "宗审装备箱"
+	name = "inquisitorial equipment crate"
 
 /obj/structure/closet/crate/chest/inqcrate/wardrobe/
-	name = "奥塔瓦精品衣箱"
+	name = "otava's finest wardrobe crate"
 
 /// ✤ SUPPLIES ✤ START HERE! WOW!
 
 /datum/inqports/supplies/extrafunding
-	name = "（80 银币）额外经费"
+	name = "(80 Silvers) Extra Funding"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/extrafunding
 	marquescost = 16
 	maximum = 1
@@ -48,12 +48,12 @@
 	new /obj/item/roguecoin/silver/inqpile(src)
 
 /datum/inqports/supplies/stampstuff
-	name = "1 块红脂"
+	name = "1 Lump of Inquisitorial Tallow"
 	item_type = /obj/item/reagent_containers/food/snacks/tallow/red
 	marquescost = 2
 
 /datum/inqports/supplies/medical
-	name = "5 卷布与针"
+	name = "5 Rolls of Cloth and Needles"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/medical
 	marquescost = 8
 
@@ -76,12 +76,12 @@
 	new /obj/item/natural/bundle/cloth/bandage/full(src)
 
 /datum/inqports/supplies/chains
-	name = "2 段锁链"
+	name = "2 Lengths of Chain"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/chains
 	marquescost = 6
 
 /datum/inqports/supplies/blessedbolts
-	name = "1 箭袋圣水弩矢"
+	name = "1 Quiver of Holy Water Bolts"
 	item_type = /obj/item/quiver/holybolts
 	marquescost = 2
 
@@ -91,7 +91,7 @@
 	new /obj/item/rope/chain(src)
 
 /datum/inqports/supplies/redpotions
-	name = "3 瓶红药"
+	name = "3 Bottles of Red"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/redpots
 	marquescost = 6
 
@@ -102,7 +102,7 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 
 /datum/inqports/supplies/lifebloodvials
-	name = "3 瓶强效红药"
+	name = "3 Vials of Strong Red"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/sredvials
 	maximum = 1
 	marquescost = 10
@@ -114,7 +114,7 @@
 	new /obj/item/reagent_containers/glass/bottle/alchemical/healthpotnew(src)
 
 /datum/inqports/supplies/bluepotions
-	name = "3 瓶蓝药"
+	name = "3 Bottles of Blue"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/bluepots
 	marquescost = 8
 
@@ -125,7 +125,7 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/manapot(src)
 
 /datum/inqports/supplies/strongbluevials
-	name = "3 瓶强效蓝药"
+	name = "3 Vials of Strong Blue"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/sbluevials
 	maximum = 1
 	marquescost = 16
@@ -137,7 +137,7 @@
 	new /obj/item/reagent_containers/glass/bottle/alchemical/strongmanapot(src)
 
 /datum/inqports/supplies/smokes
-	name = "4 枚烟雾弹"
+	name = "4 Smokebombs"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/smokes
 	marquescost = 8
 
@@ -149,7 +149,7 @@
 	new /obj/item/bomb/smoke(src)
 
 /datum/inqports/supplies/psybuns
-	name = "奥塔瓦面包坊特供"
+	name = "The Otavan Bakery Special"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/psybuns
 	marquescost = 8
 
@@ -177,7 +177,7 @@
 	new /obj/item/reagent_containers/glass/bottle/alchemical/blessedwater(src)
 
 /datum/inqports/supplies/bottlebombs
-	name = "3 枚瓶装炸弹"
+	name = "3 Bottlebombs"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/bottlebombs
 	marquescost = 12
 
@@ -188,7 +188,7 @@
 	new /obj/item/bomb(src)
 
 /datum/inqports/supplies/bullion
-	name = "6 块祝圣银锭"
+	name = "6 Blessed Silver Bullion"
 	item_type = /obj/structure/closet/crate/chest/inqreliquary/relic/bullion/
 	marquescost = 16
 
@@ -205,23 +205,23 @@
 // ✤ ARTICLES ✤ RIGHT HERE! THAT'S RIGHT!
 
 /datum/inqports/articles/quicksilver
-	name = "1 份应急药膏"
+	name = "1 Emergency Poultice"
 	item_type = /obj/item/quicksilver
 	maximum = 1
 	marquescost = 12
 
 /datum/inqports/articles/psycrosssilver
-	name = "1 枚银制灵十字"
+	name = "1 Silver Psycross"
 	item_type = /obj/item/clothing/neck/roguetown/psicross/silver
 	marquescost = 14
 
 /datum/inqports/articles/psycross
-	name = "1 枚灵十字"
+	name = "1 Psycross"
 	item_type = /obj/item/clothing/neck/roguetown/psicross
 	marquescost = 2
 
 /datum/inqports/articles/indexaccused
-	name = "3 个 INDEXER、3 份控诉书"
+	name = "3 INDEXERs, 3 Accusations"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/indexaccused
 	marquescost = 6
 
@@ -236,7 +236,7 @@
 
 /*
 /datum/inqports/articles/indexers
-	name = "3 个 INDEXER"
+	name = "3 INDEXERs"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/indexers
 	marquescost = 4
 
@@ -248,7 +248,7 @@
 */
 /*
 /datum/inqports/articles/accusations
-	name = "3 份控诉书"
+	name = "3 Accusations"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/accusations
 	marquescost = 8
 
@@ -260,7 +260,7 @@
 */
 
 /datum/inqports/articles/confessions
-	name = "3 份供词"
+	name = "3 Confessions"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/confessions
 	marquescost = 12
 
@@ -271,7 +271,7 @@
 	new /obj/item/paper/inqslip/confession(src)
 
 /datum/inqports/articles/psybles
-	name = "3 本普赛登圣书"
+	name = "3 Books Of Psydon"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/psybles
 	marquescost = 6
 
@@ -282,17 +282,17 @@
 	new /obj/item/book/rogue/bibble/psy(src)
 
 /datum/inqports/articles/bmirror
-	name = "1 面黑镜"
+	name = "1 Black Mirror"
 	item_type = /obj/item/inqarticles/bmirror
 	marquescost = 8
 
 /datum/inqports/articles/listener
-	name = "1 只留神之耳"
+	name = "1 Attentive Ear"
 	item_type = /obj/item/listeningdevice
 	marquescost = 4
 
 /datum/inqports/articles/whisperer
-	name = "1 个密语低语器"
+	name = "1 Secret Whisperer"
 	item_type = /obj/item/speakerinq
 	marquescost = 8
 
@@ -300,32 +300,32 @@
 // ✤ EQUIPMENT ✤ BELONGS HERE! JUST BELOW!
 
 /datum/inqports/equipment/psydonthorns
-	name = "1 副普赛登荆棘腕甲"
+	name = "1 Psydonian Thorns"
 	item_type = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 	marquescost = 12
 
 /datum/inqports/equipment/garrote
-	name = "1 条绞喉索"
+	name = "1 Seizing Garrote"
 	item_type = /obj/item/inqarticles/garrote
 	marquescost = 4
 
 /datum/inqports/equipment/strangemask
-	name = "1 张告解面具"
+	name = "1 Confessional Mask"
 	item_type = /obj/item/clothing/mask/rogue/facemask/steel/confessor
 	marquescost = 10
 
 /datum/inqports/equipment/otavansatchel
-	name = "1 个奥塔瓦皮挎包"
+	name = "1 Otavan Leather Satchel"
 	item_type = /obj/item/storage/backpack/rogue/satchel/otavan
 	marquescost = 8
 
 /datum/inqports/equipment/psysack
-	name = "1 个身份遮蔽器"
+	name = "1 Identity Concealer"
 	item_type = /obj/item/clothing/mask/rogue/sack/psy
 	marquescost = 6
 
 /datum/inqports/equipment/inqcordage
-	name = "2 卷审讯绳索"
+	name = "2 Spools of Inquiry Cordage"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/inqcordage
 	marquescost = 4
 
@@ -335,7 +335,7 @@
 	new /obj/item/rope/inqarticles/inquirycord(src)
 
 /datum/inqports/equipment/blackbags
-	name = "3 个黑头套"
+	name = "3 Black Bags"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/blackbags
 	marquescost = 8
 
@@ -347,7 +347,7 @@
 
 
 /datum/inqports/equipment/psydonhelms
-	name = "普赛登头盔组"
+	name = "Helms of Psydon"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/psydonhelms
 	marquescost = 12
 	maximum = 1
@@ -360,7 +360,7 @@
 	new /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm(src)
 
 /datum/inqports/equipment/crankbox
-	name = "摇柄匣"
+	name = "The Crankbox"
 	item_type = /obj/structure/closet/crate/chest/inqreliquary/relic/crankbox/
 	marquescost = 16
 	maximum = 1
@@ -370,7 +370,7 @@
 	new /obj/item/psydonmusicbox(src)
 
 /datum/inqports/equipment/nocshades
-	name = "1 副夜影镜片"
+	name = "1 Nocshade Lens-Pair"
 	item_type = /obj/item/clothing/mask/rogue/spectacles/inq
 	marquescost = 12
 
@@ -385,7 +385,7 @@
 	detail_color = "#99b2b1"
 
 /datum/inqports/wardrobe/fencerset
-	name = "奥塔瓦击剑师精品套装箱"
+	name = "The Otavan Fencer's Finest Set Crate"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/fencerset
 	marquescost = 12
 
@@ -398,7 +398,7 @@
 	new /obj/item/clothing/shoes/roguetown/boots/otavan(src)
 
 /datum/inqports/wardrobe/confessionalcombo
-	name = "告解套装"
+	name = "The Confessional Combination"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/confessionalcombo
 	marquescost = 10
 
@@ -408,7 +408,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/confessor(src)
 
 /datum/inqports/wardrobe/inspectorcoat
-	name = "宗审精品大衣与帽饰"
+	name = "The Inquisition's Finest Coats and Hats"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/inspectorcoats
 	marquescost = 10
 
@@ -420,7 +420,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat(src)
 
 /datum/inqports/wardrobe/inspector
-	name = "宗审巡察官精选箱"
+	name = "The Inquisitorial Inspector's Best Crate"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/inspector
 	marquescost = 10
 
@@ -432,7 +432,7 @@
 	new /obj/item/clothing/shoes/roguetown/boots/otavan/inqboots(src)
 
 /datum/inqports/wardrobe/fencersthree
-	name = "击剑师护身棉甲三件套"
+	name = "The Fencer's Gambeson Three-Pack"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/fencersthree
 	marquescost = 12
 
@@ -443,7 +443,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan/inq(src)
 
 /datum/inqports/wardrobe/psydonianstandard
-	name = "宗审标准配装"
+	name = "The Inquisitorial Standard"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/psydonian
 	marquescost = 10
 
@@ -455,7 +455,7 @@
 	new /obj/item/clothing/shoes/roguetown/boots/psydonboots(src)
 
 /datum/inqports/wardrobe/nobledressup
-	name = "贵族代价箱"
+	name = "The Cost of Nobility Crate"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/nobledressup
 	marquescost = 18
 

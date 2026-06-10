@@ -1,6 +1,6 @@
 /obj/structure/stone_rack
-	name = "属性架"
-	desc = "一种用于稳固容纳嵌合属性罐的专用支架。其上的晶体会强化生物的人格，提升其思考能力。晶体红光越明亮，说明这些属性与生物越匹配。"
+	name = "Aspect rack"
+	desc = "A specialized holder designed to securely hold chimeric aspect canisters. The crystal reinforces the creature's personality, increases it's thinking capacity. The brighter the red glow of the crystal, the better the aspects match the creature."
 	icon = 'icons/obj/structures/heart_rack.dmi'
 	icon_state = "rack"
 	var/datum/component/chimeric_heart_beast/heart_component
@@ -37,11 +37,11 @@
 		var/obj/item/heart_canister/canister = I
 
 		if(!canister.filled)
-			to_chat(user, span_warning("这个罐子得先装满才行！"))
+			to_chat(user, span_warning("The canister needs to be filled first!"))
 			return TRUE
 
 		if(has_duplicate_aspect(canister.aspect_datum_ref))
-			to_chat(user, span_warning("架子里已经有一个完全相同属性的罐子了！"))
+			to_chat(user, span_warning("A canister with that exact aspect is already in the rack!"))
 			return TRUE
 
 		// Determine what type of aspect this canister holds
@@ -53,7 +53,7 @@
 		else if(istype(canister.aspect_datum_ref, /datum/flesh_quirk))
 			canister_type = "quirk"
 		else
-			to_chat(user, span_warning("这个罐子里似乎没有有效的属性。"))
+			to_chat(user, span_warning("This canister doesn't seem to hold a valid aspect."))
 			return TRUE
 
 		// Find empty slot of the right type
@@ -64,7 +64,7 @@
 				break
 
 		if(!slot_number)
-			to_chat(user, span_warning("架子上没有可用的[canister_type]槽位了。"))
+			to_chat(user, span_warning("No available [canister_type] slots in the rack."))
 			return TRUE
 
 		// Insert the canister
@@ -72,7 +72,7 @@
 			slots[slot_number] = canister
 			canister.forceMove(src)
 			canister.parent_rack = src
-			to_chat(user, span_notice("你将[canister.name]放进了架子里。"))
+			to_chat(user, span_notice("You place the [canister.name] into the rack."))
 			update_icon()
 			return TRUE
 
@@ -98,16 +98,16 @@
 	for(var/i in 1 to 6)
 		var/obj/item/heart_canister/canister = slots[i]
 		if(canister)
-			options["取出[canister.name]"] = i
+			options["Remove [canister.name]"] = i
 
 	if(!options.len)
-		to_chat(user, span_warning("架子是空的。"))
+		to_chat(user, span_warning("The rack is empty."))
 		return
 
-	options["取消"] = 0
+	options["Cancel"] = 0
 
-	var/choice = input(user, "选择要取出的罐子：", "架内内容") as null|anything in options
-	if(!choice || choice == "取消")
+	var/choice = input(user, "Select a canister to remove:", "Rack Contents") as null|anything in options
+	if(!choice || choice == "Cancel")
 		return
 
 	var/slot_number = options[choice]
@@ -117,7 +117,7 @@
 	var/obj/item/heart_canister/canister = slots[slot_number]
 	if(canister && user.put_in_hands(canister))
 		slots[slot_number] = null
-		to_chat(user, span_notice("你从架子上取下了[canister.name]。"))
+		to_chat(user, span_notice("You remove the [canister.name] from the rack."))
 		canister.parent_rack = null
 		update_icon()
 
@@ -129,14 +129,14 @@
 		var/obj/item/heart_canister/canister = slots[i]
 		if(canister)
 			if(!has_canisters)
-				. += span_notice("其中装有：")
+				. += span_notice("It contains:")
 				has_canisters = TRUE
-			. += span_notice("- [slot_types[i]]槽位中放着[canister.name]")
+			. += span_notice("- [canister.name] in the [slot_types[i]] slot")
 		else
-			. += span_notice("- [slot_types[i]]槽位为空")
+			. += span_notice("- an empty void in the [slot_types[i]] slot")
 
 	if(!has_canisters)
-		. += span_notice("所有槽位都是空的。")
+		. += span_notice("All slots are empty.")
 
 /obj/structure/stone_rack/proc/advance_calibration()
 	for(var/obj/item/heart_canister/canister in slots)

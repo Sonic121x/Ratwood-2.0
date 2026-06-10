@@ -1,6 +1,5 @@
 /datum/job/roguetown/apothecary
 	title = "Apothecary"
-	display_title = "药剂师"
 	flag = APOTHECARY
 	department_flag = COURTIERS
 	faction = "Station"
@@ -10,7 +9,7 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "你是一名技艺娴熟的医者，受过系统训练，也在行医之道上积累了经验。你听命于首席医师，由其准许你开展诊疗。谁若落到你的手术刀下，最好自求多福。"
+	tutorial = "You are an accomplished physician, trained and practiced in the art of medicine. You answer to the Head Physician, who enables your practice. Woe betide the one who suffers your scalpel."
 
 	outfit = /datum/outfit/job/roguetown/apothecary
 
@@ -31,8 +30,8 @@
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
 
 /datum/advclass/apothecary
-	name = "药剂师"
-	tutorial = "你是一名技艺娴熟的医者，受过系统训练，也在行医之道上积累了经验。你听命于首席医师，由其准许你开展诊疗。谁若落到你的手术刀下，最好自求多福。"
+	name = "Apothecary"
+	tutorial = "You are an accomplished physician, trained and practiced in the art of medicine. You answer to the Head Physician, who enables your practice. Woe betide the one who suffers your scalpel."
 	outfit = /datum/outfit/job/roguetown/apothecary/basic
 	category_tags = list(CTAG_APOTH)
 	subclass_stats = list(

@@ -1,7 +1,7 @@
 //challenge class, spawns with no items at all
 /datum/advclass/nudist
-	name = "裸修者"
-	tutorial = "人们都说，Dendor 最虔诚的信徒会舍弃衣物，让肉身直接经受自然元素的磨砺。而你，恰好就是其中之一！"
+	name = "Nudist"
+	tutorial = "They say that the most devout of Dendor forgo clothing in order to weather their body to the natural elements. You happen to be one of them!"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	allowed_patrons = list(/datum/patron/divine/dendor)

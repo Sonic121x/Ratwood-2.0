@@ -1,8 +1,8 @@
 
 /datum/job/roguetown/heartfelt/lord
 	title = "Lord of Heartfelt"
-	tutorial = "你是 Heartfelt 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
-	在 Magos 的指引下，你踏上前往山巅的旅程，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
+	tutorial = "You are the Lord of Heartfelt, ruler of a once-prosperous barony now in ruin. \
+	Guided by your Magos, you journey to the Peak, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = null
@@ -21,9 +21,9 @@
 // DEFAULT - STANDARD OLD CLASS
 
 /datum/advclass/heartfelt/lord/lord
-	name = "Heartfelt 领主"
-	tutorial = "你是 Heartfelt 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
-	在 Magos 的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
+	name = "Lord of Heartfelt"
+	tutorial = "You are the Lord of Heartfelt, ruler of a once-prosperous barony now in ruin. \
+	Guided by your Magos, you journey to these lands, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
 	outfit = /datum/outfit/job/heartfelt/lord/lord
@@ -99,9 +99,9 @@
 		H.verbs |= list(/mob/living/carbon/human/mind/proc/setordersheartfelt)
 
 /datum/advclass/heartfelt/lord/archmage
-	name = "Heartfelt 大法师领主"
-	tutorial = "你是 Heartfelt 的大 Magos，统治着一座昔日繁荣、如今却已倾颓的奥术男爵领。\
-	在来自彼岸的幻视引领下，你踏上前往边疆的旅程，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
+	name = "Archmagos of Heartfelt"
+	tutorial = "You are the Archmagos of Heartfelt, ruler of a once-prosperous acryne-barony now in ruin. \
+	Guided by visions of the great beyond, you journey to the Reach, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
 	outfit = /datum/outfit/job/heartfelt/lord/archmage
@@ -247,9 +247,9 @@
 // Funny role I thought I'd make. Reminded me of Canute and his Jarldom
 
 /datum/advclass/heartfelt/lord/chief
-	name = "Heartfelt 酋长"
-	tutorial = "你是 Heartfelt 的酋长，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
-	在 Magos 的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
+	name = "Chief of Heartfelt"
+	tutorial = "You are the Chieftain of Heartfelt, ruler of a once-prosperous barony now in ruin. \
+	Guided by your Magos, you journey to these lands, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
 	outfit = /datum/outfit/job/heartfelt/lord/chief
@@ -325,18 +325,18 @@
 		H.mind.AddSpell(new/obj/effect/proc_holder/spell/invoked/order/heartfelt/focustarget)
 		H.verbs |= list(/mob/living/carbon/human/mind/proc/setordersheartfelt)
 
-	var/weapons = list("双头巨斧", "巨型钉锤", "战斧加盾", , "战锤加盾")
-	var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
+	var/weapons = list("Double-head Greataxe", "Great Mace", "Battle Axe + Shield", , "Warhammer + Shield")
+	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("双头巨斧")
+		if("Double-head Greataxe")
 			r_hand = /obj/item/rogueweapon/greataxe/steel/doublehead
-		if("巨型钉锤")
+		if("Great Mace")
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
-		if("战斧加盾")
+		if("Battle Axe + Shield")
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
-		if("战锤加盾")
+		if("Warhammer + Shield")
 			r_hand = /obj/item/rogueweapon/mace/warhammer
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
 		else //In case they DC or don't choose close the panel, etc
@@ -346,48 +346,48 @@
 // Spells + Orders (Orders are ONLY For HFT Lord job and the Hand Marshal Subclass)
 
 /obj/effect/proc_holder/spell/self/convertrole/heartfelt
-	name = "招募扈从"
+	name = "Recruit Retinue"
 	new_role = "Heartfeltian Retinue"
 	overlay_state = "recruit_brother"
 	recruitment_faction = "Heartfelt"
-	recruitment_message = "为 Heartfelt 效命吧，%RECRUIT！"
-	accept_message = "为了 Heartfelt！"
-	refuse_message = "我拒绝。"
+	recruitment_message = "Join in the service of Heartfelt, %RECRUIT!"
+	accept_message = "For Heartfelt!"
+	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/heartfelt/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	if(HAS_TRAIT(recruit, TRAIT_HEARTFELT))
-		to_chat(recruiter, span_warning("他们已经属于我们的事业了！"))
+		to_chat(recruiter, span_warning("They're already part of our cause!"))
 		return FALSE
 	if(HAS_TRAIT(recruit, TRAIT_GUARDSMAN))
-		to_chat(recruiter, span_warning("他们已经是谷地卫队的一员了！不能加入我们的事业！"))
+		to_chat(recruiter, span_warning("They're already part of these lands's guard! They can't join our cause!"))
 		return FALSE
 	if(HAS_TRAIT(recruit, TRAIT_INQUISITION))
-		to_chat(recruiter, span_warning("他们只忠于 Psydon！不能加入我们的事业！"))
+		to_chat(recruiter, span_warning("Their loyalty is to Psydon alone! They can't join our cause!"))
 		return FALSE
 	//If you're reading this, please refactor this once we have TRAIT_CLERGY thanks
 	if(recruit.job in list("Priest", "Priestess", "Templar", "Acolyte", "Martyr"))
-		to_chat(recruiter, span_warning("神职者不能加入我们的事业！他们忠于十神！"))
+		to_chat(recruiter, span_warning("Clergy cannot join our cause! Their loyalty is to the Ten!"))
 		return FALSE
 	..()
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt/proc/can_order(mob/living/target, mob/living/user)
 	if(target == user)
-		to_chat(user, span_alert("我不能命令我自己！"))
+		to_chat(user, span_alert("I cannot order myself!"))
 		return 0
 	if(HAS_TRAIT(target, TRAIT_HEARTFELT))
 		if(target == user)
-			to_chat(user, span_alert("我不能命令我自己！"))
+			to_chat(user, span_alert("I cannot order myself!"))
 			return 0
 		else
 			return 1
 	if(!(target.job in list("Heartfeltian Retinue", "Knight of Heartfelt")))
-		to_chat(user, span_alert("我不能命令不属于我们事业的人！"))
+		to_chat(user, span_alert("I cannot order one not in our cause!"))
 		return 0
 	return 1
 
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt
-	name = "Heartfelt 军令"
+	name = "Heartfelt Order"
 	var/effect_to_apply
 	var/message_varname
 
@@ -401,7 +401,7 @@
 	var/msg = user.mind.vars[message_varname]
 
 	if(!msg)
-		to_chat(user, span_alert("我必须先说些什么，才能下达命令！"))
+		to_chat(user, span_alert("I must say something to give an order!"))
 		return
 
 	var/allowed = can_order(target, user)
@@ -421,7 +421,7 @@
  ***************************************************************/
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt/retreat
-	name = "后撤！"
+	name = "Retreat!"
 	overlay_state = "movemovemove"
 	effect_to_apply = /datum/status_effect/buff/order/heartfelt/retreat
 	message_varname = "retreattext"
@@ -434,18 +434,18 @@
 
 /datum/status_effect/buff/order/heartfelt/retreat/on_apply()
 	. = ..()
-	to_chat(owner, span_blue("我的指挥官命令我后撤！"))
+	to_chat(owner, span_blue("My commander orders me to fall back!"))
 
 /atom/movable/screen/alert/status_effect/buff/order/heartfelt/retreat
-	name = "后撤！"
-	desc = "我的指挥官命令我后撤！"
+	name = "Retreat!"
+	desc = "My commander orders me to fall back!"
 	icon_state = "buff"
 
 /***************************************************************/
 
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt/bolster
-	name = "稳住战线！"
+	name = "Hold the Line!"
 	overlay_state = "bolster"
 	effect_to_apply = /datum/status_effect/buff/order/heartfelt/bolster
 	message_varname = "bolstertext"
@@ -458,17 +458,17 @@
 
 /datum/status_effect/buff/order/heartfelt/bolster/on_apply()
 	. = ..()
-	to_chat(owner, span_blue("我的指挥官命令我稳住战线！"))
+	to_chat(owner, span_blue("My commander orders me to hold the line!"))
 
 /atom/movable/screen/alert/status_effect/buff/order/heartfelt/bolster
-	name = "稳住战线！"
-	desc = "我的指挥官鼓舞我再坚持一会儿，撑得更久！"
+	name = "Hold the Line!"
+	desc = "My commander inspires me to endure and last a little longer!"
 	icon_state = "buff"
 
 /***************************************************************/
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt/forheartfelt
-	name = "起身死战！"
+	name = "Stand and fight!"
 	overlay_state = "onfeet"
 	effect_to_apply = /datum/status_effect/buff/order/heartfelt/forheartfelt
 	message_varname = "onfeettext"
@@ -490,7 +490,7 @@
 
 /datum/status_effect/buff/order/heartfelt/forheartfelt/on_apply()
 	. = ..()
-	to_chat(owner, span_blue("我必须起身死战！"))
+	to_chat(owner, span_blue("I must stand and fight!"))
 	ADD_TRAIT(owner, TRAIT_NOPAIN, MAGIC_TRAIT)
 
 /datum/status_effect/buff/order/heartfelt/forheartfelt/on_remove()
@@ -498,14 +498,14 @@
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/order/heartfelt/forheartfelt
-	name = "坚守阵地！"
-	desc = "我的指挥官命令我为 Heartfelt 骄傲地站住脚跟！"
+	name = "Stand your Ground!"
+	desc = "My commander has ordered me to stand proud for Heartfelt!"
 	icon_state = "buff"
 
 /***************************************************************/
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt/charge
-	name = "冲锋！"
+	name = "Charge!"
 	overlay_state = "charge"
 	effect_to_apply = /datum/status_effect/buff/order/heartfelt/charge
 	message_varname = "chargetext"
@@ -518,11 +518,11 @@
 
 /datum/status_effect/buff/order/heartfelt/charge/on_apply()
 	. = ..()
-	to_chat(owner, span_blue("我的指挥官命令我冲锋！为了 Heartfelt！"))
+	to_chat(owner, span_blue("My commander orders me to charge! For Heartfelt!"))
 
 /atom/movable/screen/alert/status_effect/buff/order/heartfelt/charge
-	name = "冲锋！"
-	desc = "我的指挥官意志已下，现在就是冲锋的时候！"
+	name = "Charge!"
+	desc = "My commander wills it - now is the time to charge!"
 	icon_state = "buff"
 
 /***************************************************************/
@@ -537,10 +537,10 @@
 		var/mob/living/target = targets[1]
 		var/msg = user.mind.focustargettext
 		if(!msg)
-			to_chat(user, span_alert("我必须先说些什么，才能下达命令！"))
+			to_chat(user, span_alert("I must say something to give an order!"))
 			return
 		if(target == user)
-			to_chat(user, span_alert("我不能命令别人来杀我自己！"))
+			to_chat(user, span_alert("I cannot order myself to be killed!"))
 			return
 		user.say("[msg]")
 		target.apply_status_effect(/datum/status_effect/debuff/order/focustarget)
@@ -549,7 +549,7 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt/focustarget
-	name = "集火目标！"
+	name = "Focus Target!"
 	overlay_state = "focustarget"
 	effect_to_apply = /datum/status_effect/debuff/order/heartfelt/focustarget
 	message_varname = "focustargettext"
@@ -562,14 +562,14 @@
 	var/outline_colour = "#69050a"
 
 /atom/movable/screen/alert/status_effect/debuff/order/heartfelt/focustarget
-	name = "被标记"
-	desc = "一名军官已经将我标记为必杀目标！"
+	name = "Targetted"
+	desc = "A officer has marked me for death!"
 	icon_state = "targetted"
 
 /datum/status_effect/debuff/order/heartfelt/focustarget/on_apply()
 	. = ..()
 	var/filter = owner.get_filter(TARGET_FILTER)
-	to_chat(owner, span_alert("我已被一名军官标记为必杀目标！"))
+	to_chat(owner, span_alert("I have been marked for death by a officer!"))
 	ADD_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	if (!filter)
 		owner.add_filter(TARGET_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 200, "size" = 1))
@@ -581,7 +581,7 @@
 	owner.remove_filter(TARGET_FILTER)
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt/focustarget
-	name = "集火目标！"
+	name = "Focus target!"
 	overlay_state = "focustarget"
 
 #undef TARGET_FILTER
@@ -591,17 +591,17 @@
  ***************************************************************/
 
 /mob/living/carbon/human/mind/proc/setordersheartfelt()
-	set name = "预设军令"
-	set category = "统御之声"
+	set name = "Rehearse Orders"
+	set category = "Voice of Command"
 
 	#define ORDER_INPUT(varname, prompt) \
-		mind.varname = input("输入一段话。", prompt) as text|null; \
-		if(!mind.varname) { to_chat(src, "我必须先为这道命令预备一句话……"); return }
+		mind.varname = input("Send a message.", prompt) as text|null; \
+		if(!mind.varname) { to_chat(src, "I must rehearse something for this order..."); return }
 
-	ORDER_INPUT(retreattext, "向后撤！！")
-	ORDER_INPUT(chargetext, "把他们顶回去！！")
-	ORDER_INPUT(bolstertext, "稳住战线！！")
-	ORDER_INPUT(onfeettext, "为了 Heartfelt 骄傲地站起来！！")
-	ORDER_INPUT(focustargettext, "击溃他们的士气，把他们标记为必杀目标！！")
+	ORDER_INPUT(retreattext, "Fall back!!")
+	ORDER_INPUT(chargetext, "Push them back!!")
+	ORDER_INPUT(bolstertext, "Hold the line!!")
+	ORDER_INPUT(onfeettext, "Stand proud for Heartfelt!!")
+	ORDER_INPUT(focustargettext, "Break their spirits and mark them for death!!")
 
 	#undef ORDER_INPUT

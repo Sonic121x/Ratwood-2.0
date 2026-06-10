@@ -1,5 +1,5 @@
 /datum/advclass/whitecheese
-	name = "白色奶酪"
+	name = "WHITE CHEESE"
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/human/northern)
 	outfit = /datum/outfit/job/roguetown/adventurer/whitecheese
@@ -43,7 +43,7 @@
 	)
 
 /datum/outfit/job/roguetown/adventurer/whitecheese
-	name = "白色奶酪"
+	name = "WHITE CHEESE"
 
 /datum/outfit/job/roguetown/adventurer/whitecheese/pre_equip(mob/living/carbon/human/H)
 	..()

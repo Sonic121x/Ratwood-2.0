@@ -9,7 +9,7 @@
 	projectile.fire()
 
 /obj/projectile/discharge
-	name = "分泌液"
+	name = "discharge"
 	icon = 'icons/effects/tomatodecal.dmi'
 	icon_state = "smashed_plant"
 	nodamage = TRUE
@@ -80,7 +80,7 @@
 		color = discharge_color
 
 /obj/effect/decal/cleanable/discharge
-	name = "分泌液"
-	desc = "这啥玩意？太恶心了！"
+	name = "discharge"
+	desc = "What? Ewww!"
 	icon = 'icons/effects/tomatodecal.dmi'
 	icon_state = "smashed_plant"

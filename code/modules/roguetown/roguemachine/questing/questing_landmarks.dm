@@ -1,5 +1,5 @@
 /obj/effect/landmark/quest_spawner
-	name = "任务地标"
+	name = "quest landmark"
 	icon = 'code/modules/roguetown/roguemachine/questing/questing.dmi'
 	icon_state = "quest_marker"
 	var/quest_difficulty = list(QUEST_DIFFICULTY_EASY, QUEST_DIFFICULTY_MEDIUM, QUEST_DIFFICULTY_HARD)
@@ -42,19 +42,19 @@
 	return length(possible_turfs) ? pick(possible_turfs) : get_turf(src)
 
 /obj/effect/landmark/quest_spawner/easy
-	name = "简单任务地标"
+	name = "easy quest landmark"
 	icon_state = "quest_marker_low"
 	quest_difficulty = "Easy"
 	quest_type = list(QUEST_RETRIEVAL, QUEST_COURIER, QUEST_KILL_EASY, QUEST_BEACON)
 
 /obj/effect/landmark/quest_spawner/medium
-	name = "中等任务地标"
+	name = "medium quest landmark"
 	icon_state = "quest_marker_mid"
 	quest_difficulty = "Medium"
 	quest_type = list(QUEST_KILL_EASY, QUEST_CLEAR_OUT, QUEST_BEACON)
 
 /obj/effect/landmark/quest_spawner/hard
-	name = "困难任务地标"
+	name = "hard quest landmark"
 	icon_state = "quest_marker_high"
 	quest_difficulty = "Hard"
 	quest_type = list(QUEST_CLEAR_OUT, QUEST_RAID, QUEST_BEACON, QUEST_OUTLAW)

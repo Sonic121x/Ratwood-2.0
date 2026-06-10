@@ -2,8 +2,8 @@
 #define NON_TOWNER_BROADCAST_COST 5
 
 /obj/structure/broadcast_horn
-	name = "\improper 街巷传声筒"
-	desc = "也被称作“人民之口”，前提是人民掏得起喂鼠的饲料钱。"
+	name = "\improper Streetpipe"
+	desc = "Also known as the People's Mouth, so long as the people can afford the ratfeed to pay for it."
 	icon_state = "broadcaster_crass"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	blade_dulling = DULLING_BASH
@@ -20,11 +20,11 @@
 /obj/structure/broadcast_horn/examine(mob/user)
 	. = ..()
 	if(listening)
-		. += span_info("里面隐约传出窸窸窣窣的爬动声。")
+		. += span_info("There's a faint skittering coming out of it.")
 	else
-		. += span_info("里面的老鼠很安静。")
+		. += span_info("The rats within are quiet.")
 	if(broadcaster_tag)
-		. += span_info("它[broadcaster_tag ? " 的标识为 [broadcaster_tag]" : ""]。")
+		. += span_info("It's[broadcaster_tag ? " labeled as [broadcaster_tag]" : ""].")
 
 /obj/structure/broadcast_horn/redstone_triggered()
 	toggle_horn()
@@ -32,11 +32,11 @@
 /obj/structure/broadcast_horn/proc/toggle_horn()
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	if(listening)
-		visible_message(span_notice("[src]的嗡鸣声停了下来。"))
+		visible_message(span_notice("[src]'s whine stills."))
 		listening = FALSE
 	else
 		listening = TRUE
-		visible_message(span_notice("[src]吱吱作响地活了过来。"))
+		visible_message(span_notice("[src] squeaks alive."))
 
 /obj/structure/broadcast_horn/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 	if(!ishuman(speaker))
@@ -84,11 +84,11 @@
 		playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 
 /obj/structure/broadcast_horn/loudmouth
-	name = "\improper 金尊之口"
-	desc = "金口者专用的闪亮号角，表面镌刻着公爵纹章。"
+	name = "\improper Golden Mouth"
+	desc = "The Loudmouth's own gleaming horn, its surface engraved with the ducal crest."
 	icon_state = "broadcaster"
 	speech_color = COLOR_ASSEMBLY_GOLD
-	broadcaster_tag = "金尊之口"
+	broadcaster_tag = "Golden Mouth"
 	loudmouth = TRUE
 
 /obj/structure/broadcast_horn/loudmouth/attack_hand(mob/living/user)
@@ -99,22 +99,22 @@
 	toggle_horn()
 
 /obj/structure/broadcast_horn/loudmouth/guest
-	name = "\improper 银舌"
-	desc = "宾客用的号角。虽不如金口者本人那般浮华，但依旧是件做工精良的器物。"
-	broadcaster_tag = "银舌"
+	name = "\improper Silver Tongue"
+	desc = "A guest's horn. Not as gaudy as the Loudmouth's own, but still a fine piece of craftsmanship. "
+	broadcaster_tag = "Silver Tongue"
 	icon_state = "broadcaster_crass"
 	speech_color = COLOR_ASSEMBLY_GURKHA
 
 /obj/structure/broadcast_horn/paid
-	name = "\improper 街巷传声筒"
-	desc = "也被称作“人民之口”，前提是人民掏得起喂鼠的饲料钱。"
+	name = "\improper Streetpipe"
+	desc = "Also known as the People's Mouth, so long as the people can afford the ratfeed to pay for it."
 	icon_state = "broadcaster_crass"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	var/is_locked = FALSE
 
 /obj/structure/broadcast_horn/paid/examine()
 	. = ..()
-	. += span_info("贵族、自由民、教士、随从成员或廷臣可花 1 枚泽尼使用；其他人必须投入 1 枚兹利夸。")
+	. += span_info("A noble, yeoman, churchman, retinue member, or courtier can use this for a zenny. Others must insert a ziliqua.")
 
 /obj/structure/broadcast_horn/paid/proc/get_broadcast_cost(mob/user)
 	var/datum/job/user_job = SSjob.GetJob(user.job)
@@ -133,26 +133,26 @@
 		is_locked = !is_locked
 		listening = FALSE
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-		say(is_locked ? "街巷传声筒已上锁。" : "街巷传声筒已解锁。")
+		say(is_locked ? "Streetpipe has been locked." : "Streetpipe has been unlocked.")
 		return
 
 	// Handle coin payment
 	if(istype(P, /obj/item/roguecoin))
 		var/obj/item/roguecoin/C = P
 		if(is_locked)
-			say("街巷传声筒已上锁。请去找报信官。")
+			say("Streetpipe is locked. Consult the crier.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 
 		if(listening)
-			say("硬币已经投进去了。")
+			say("Coin already loaded.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		
 		var/cost = get_broadcast_cost(user)
 
 		if(C.get_real_price() != cost)
-			to_chat(user, span_warning("支付无效！请投入面值 [cost] 玛门的硬币。"))
+			to_chat(user, span_warning("Invalid payment! Insert coin worth [cost] mammon."))
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 
