@@ -22,9 +22,11 @@
 | Kazengun | 风郡 |
 | Naledi | 纳莱迪 |
 | New Moon | 新月 |
+| Blortz Volves | 布洛兹狼帮 |
 | The Syndicate | 辛迪加 |
 | Otava | 奥塔瓦 |
 | Psydonia | 普赛多尼亚 |
+| Rontz Ratz | 隆兹鼠帮 |
 | Rotwood | 腐木谷 |
 | Xinyi | 信义 |
 | Zenitstadt | 天顶城 |
@@ -37,6 +39,7 @@
 | 英文 | 中文 |
 |---|---|
 | Abyssor | 阿比索尔 |
+| Baotha | 巴奥莎 |
 | Psydonians | 普赛顿信徒 |
 | Astrata | 阿斯特拉塔 |
 | Dendor | 登多尔 |
@@ -59,6 +62,9 @@
 | Djinn | 灯灵 |
 | Excidium | 灭绝兽 |
 | Inhumen | 异民 |
+| Kneestinger | 刺膝草 |
+| Kneestingers | 刺膝草 |
+| Lycker | 莱克 |
 | Lupian | 卢皮安 |
 | Tabaxi | 塔巴西 |
 | tabaxi | 塔巴西 |
@@ -105,6 +111,7 @@
 | 英文 | 中文 |
 |---|---|
 | Kriegmesser | 战刀 |
+| Zenny | 泽尼 |
 | Arcanic meld | 奥术融印 |
 | arcanic meld | 奥术融印 |
 | BINDING SHACKLES | 束缚镣铐 |
@@ -124,6 +131,7 @@
 | 英文 | 中文 |
 |---|---|
 | CASTIFICO | 惩戒机 |
+| Castifico | 惩戒机 |
 | EXCIDIUM | 灭绝机 |
 | INDEXER | 编目机 |
 | LIBERTAS | 自由机 |
@@ -134,6 +142,7 @@
 | RCOM | RCOM传讯网 |
 | SCOM | SCOM传讯网 |
 | ZAD | ZAD告示台 |
+| Nervelock | 神经锁 |
 
 ## 材料、工艺、武器样式与宝石名
 | 英文 | 中文 |
