@@ -1,0 +1,48 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Bow-Hunter\"",
+          "new": "\tname = \"弓猎人\""
+        },
+        {
+          "old": "\tname = \"Spear-Hunter\"",
+          "new": "\tname = \"矛猎人\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/miner.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Miner\"",
+          "new": "\tname = \"矿工\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Minstrel\"",
+          "new": "\tname = \"吟游艺人\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/peasant.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Farmer\"",
+          "new": "\tname = \"农夫\""
+        },
+        {
+          "old": "\ttutorial = \"As a Peasant, you are a skilled farmer, able to grow a variety of crops \\\n\tJoin the local Soilsmen at their farm, or make your own little orchard.\"",
+          "new": "\ttutorial = \"作为农夫，你是经验娴熟的耕作者，能种出各式各样的作物。\\\n\t你可以去加入本地的 Soilsmen，在他们的农场里劳作，也可以自己经营一片小小果园。\""
+        }
+      ]
+    }
+  ]
+}

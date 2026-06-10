@@ -1,0 +1,45 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm",
+      "replacements": [
+        {
+          "old": "\tvar/helmet = list(\"Etruscan Bascinet\",\"Volf Plate Helmet\",\"Visored Sallet\",\"Slitted Kettle\",\"Simple Helmet\",\"Kettle Helmet\",\"Sallet Helmet\",\"Winged Helmet\",)",
+          "new": "\tvar/helmet = list(\"伊特鲁斯卡盆盔\",\"沃尔夫板甲盔\",\"带面罩萨雷特盔\",\"开缝锅盔\",\"简易头盔\",\"锅盔\",\"萨雷特盔\",\"翼盔\",)"
+        },
+        {
+          "old": "\t\tif(\"Etruscan Bascinet\")",
+          "new": "\t\tif(\"伊特鲁斯卡盆盔\")"
+        },
+        {
+          "old": "\t\tif(\"Visored Sallet\")\t",
+          "new": "\t\tif(\"带面罩萨雷特盔\")\t"
+        },
+        {
+          "old": "\t\tif(\"Volf Plate Helmet\") ",
+          "new": "\t\tif(\"沃尔夫板甲盔\") "
+        },
+        {
+          "old": "\t\tif(\"Slitted Kettle\") ",
+          "new": "\t\tif(\"开缝锅盔\") "
+        },
+        {
+          "old": "\t\tif(\"Simple Helmet\")\t\t",
+          "new": "\t\tif(\"简易头盔\")\t\t"
+        },
+        {
+          "old": "\t\tif(\"Kettle Helmet\")\t\t",
+          "new": "\t\tif(\"锅盔\")\t\t"
+        },
+        {
+          "old": "\t\tif(\"Sallet Helmet\")\t\t",
+          "new": "\t\tif(\"萨雷特盔\")\t\t"
+        },
+        {
+          "old": "\t\tif(\"Winged Helmet\") ",
+          "new": "\t\tif(\"翼盔\") "
+        }
+      ]
+    }
+  ]
+}
