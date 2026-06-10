@@ -1,6 +1,5 @@
 /datum/job/roguetown/clerk
 	title = "Clerk"
-	display_title = "文书官"
 	flag = CLERK
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -11,7 +10,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "文书官、税吏、天选倒霉蛋。你要协助总管处理一切所需事务，并在对方不在时替其执行职责。虽说你不是贵族，但这差事倒也不算最糟。问题在于，一旦钱款有误或不翼而飞，贵族多半还能从牢里钻出去，你呢？嗯……只能说，伊特鲁斯卡 这个时节风景挺好。"
+	tutorial = "Clerk, tax-collector, blessed fool. You help the Steward with anything they need and perform their tasks when they are unavailable. Although you aren't a noble, it's not the worst position. The caveat? If money is misplaced or goes missing, a noble could probably weasel out of the stockades as punishment. You? Eh...well, Etrusca is lovely this time of year."
 
 	outfit = /datum/outfit/job/roguetown/clerk
 	display_order = JDO_CLERK
@@ -28,8 +27,8 @@
 
 
 /datum/advclass/clerk
-	name = "文书官"
-	tutorial = "文书官、税吏、天选倒霉蛋。你要协助总管处理一切所需事务，并在对方不在时替其执行职责。虽说你不是贵族，但这差事倒也不算最糟。问题在于，一旦钱款有误或不翼而飞，贵族多半还能从牢里钻出去，你呢？嗯……只能说，伊特鲁斯卡 这个时节风景挺好。"
+	name = "Clerk"
+	tutorial = "Clerk, tax-collector, blessed fool. You help the Steward with anything they need and perform their tasks when they are unavailable. Although you aren't a noble, it's not the worst position. The caveat? If money is misplaced or goes missing, a noble could probably weasel out of the stockades as punishment. You? Eh...well, Etrusca is lovely this time of year."
 	subclass_stats = list(
 		STATKEY_LCK = 2,
 		STATKEY_INT = 2,

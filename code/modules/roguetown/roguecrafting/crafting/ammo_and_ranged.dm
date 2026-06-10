@@ -1,47 +1,47 @@
 /datum/crafting_recipe/roguetown/survival/net
-	name = "网"
-	category = "远程"
+	name = "net"
+	category = "Ranged"
 	result = /obj/item/net
 	craftdiff = 2
 	reqs = list(
 		/obj/item/rope = 2,
 		/obj/item/natural/stone = 3,
 		)
-	verbage_simple = "编织"
-	verbage = "编织"
+	verbage_simple = "braid"
+	verbage = "braids"
 
 /datum/crafting_recipe/roguetown/survival/bowstring
-	name = "纤维弓弦"
-	category = "远程"
+	name = "fiber bowstring"
+	category = "Ranged"
 	result = /obj/item/natural/bowstring
 	reqs = list(/obj/item/natural/fibers = 2)
-	verbage_simple = "搓制"
-	verbage = "搓制"
+	verbage_simple = "twist"
+	verbage = "twists"
 
 /datum/crafting_recipe/roguetown/survival/bowpartial
-	name = "未上弦短弓"
-	category = "远程"
+	name = "unstrung bow"
+	category = "Ranged"
 	result = /obj/item/grown/log/tree/bowpartial
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	tools = /obj/item/rogueweapon/huntingknife
-	verbage_simple = "雕刻"
-	verbage = "雕刻"
+	verbage_simple = "carve"
+	verbage = "carves"
 
 /datum/crafting_recipe/roguetown/survival/bow
-	name = "木弓"
-	category = "远程"
+	name = "wooden bow"
+	category = "Ranged"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	reqs = list(
 		/obj/item/natural/bowstring = 1,
 		/obj/item/grown/log/tree/bowpartial = 1,
 		)
-	verbage_simple = "装弦"
-	verbage = "装弦"
+	verbage_simple = "string together"
+	verbage = "strings together"
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/recurvepartial
-	name = "未上弦反曲弓"
-	category = "远程"
+	name = "unstrung recurve bow"
+	category = "Ranged"
 	result = /obj/item/grown/log/tree/bowpartial/recurve
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
@@ -50,25 +50,25 @@
 		/obj/item/natural/fibers = 2,
 		)
 	tools = /obj/item/rogueweapon/huntingknife
-	verbage_simple = "雕刻"
-	verbage = "雕刻"
+	verbage_simple = "carve"
+	verbage = "carves"
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/recurvebow
-	name = "反曲弓"
-	category = "远程"
+	name = "recurve bow"
+	category = "Ranged"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	reqs = list(
 		/obj/item/natural/bowstring = 1,
 		/obj/item/grown/log/tree/bowpartial/recurve = 1,
 		)
-	verbage_simple = "装弦"
-	verbage = "装弦"
+	verbage_simple = "string together"
+	verbage = "strings together"
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/longbowpartial
-	name = "未上弦长弓"
-	category = "远程"
+	name = "unstrung long bow"
+	category = "Ranged"
 	result = /obj/item/grown/log/tree/bowpartial/longbow
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
@@ -77,37 +77,37 @@
 		/obj/item/natural/fibers = 2,
 		)
 	tools = /obj/item/rogueweapon/huntingknife
-	verbage_simple = "雕刻"
-	verbage = "雕刻"
+	verbage_simple = "carve"
+	verbage = "carves"
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/survival/longbow
-	name = "长弓"
-	category = "远程"
+	name = "long bow"
+	category = "Ranged"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	reqs = list(
 		/obj/item/natural/bowstring = 1,
 		/obj/item/grown/log/tree/bowpartial/longbow = 1,
 		)
-	verbage_simple = "装弦"
-	verbage = "装弦"
+	verbage_simple = "string together"
+	verbage = "strings together"
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/survival/longbow_warden
-	name = "Blackhorn 长弓"
-	category = "远程"
+	name = "blackhorn longbow"
+	category = "Ranged"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden
 	reqs = list(
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow = 1,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden = 1,
 	)
-	verbage_simple = "重新装弦"
-	verbage = "重新装弦"
+	verbage_simple = "re-string"
+	verbage = "re-strings"
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/stonearrow
-	name = "石箭"
-	category = "远程"
+	name = "stone arrow"
+	category = "Ranged"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 1,
@@ -116,8 +116,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/stonearrow_five
-	name = "石箭（x5）"
-	category = "远程"
+	name = "stone arrow (x5)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/stone,
 		/obj/item/ammo_casing/caseless/rogue/arrow/stone,
@@ -132,8 +132,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/bluntarrow
-	name = "钝头箭"
-	category = "远程"
+	name = "blunt arrow"
+	category = "Ranged"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/blunt
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 1,
@@ -142,8 +142,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/bluntarrow_five
-	name = "钝头箭（x5）"
-	category = "远程"
+	name = "blunt arrow (x5)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/blunt,
 		/obj/item/ammo_casing/caseless/rogue/arrow/blunt,
@@ -158,8 +158,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow
-	name = "毒箭"
-	category = "远程"
+	name = "poisoned arrow"
+	category = "Ranged"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
@@ -168,8 +168,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/blessedbolt
-	name = "圣水弩箭"
-	category = "远程"
+	name = "holy water bolt"
+	category = "Ranged"
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/holy
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/bolt = 1,
@@ -178,8 +178,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow_stone
-	name = "毒石箭"
-	category = "远程"
+	name = "poisoned stone arrow"
+	category = "Ranged"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
@@ -188,8 +188,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow_five //Arrows and bolts can be smithed in batches of five. Makes sense for them to be dipped in batches of five, too
-	name = "毒箭（x5）"
-	category = "远程"
+	name = "poisoned arrow (x5)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 		/obj/item/ammo_casing/caseless/rogue/arrow/poison,
@@ -205,8 +205,8 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow_five_stone
-	name = "毒石箭（x5）"
-	category = "远程"
+	name = "poisoned stone arrow (x5)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/stone/poison,
 		/obj/item/ammo_casing/caseless/rogue/arrow/stone/poison,
@@ -223,8 +223,8 @@
 
 
 /datum/crafting_recipe/roguetown/survival/waterbolt_ten
-	name = "水弩箭（x10）"
-	category = "远程"
+	name = "water bolt (x10)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,
@@ -246,8 +246,8 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/survival/waterbolt_twenty
-	name = "水弩箭（x20）"
-	category = "远程"
+	name = "water bolt (x20)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,
@@ -280,8 +280,8 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/survival/waterarrow_ten
-	name = "水箭（x10）"
-	category = "远程"
+	name = "water arrow (x10)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/water,
 		/obj/item/ammo_casing/caseless/rogue/arrow/water,
@@ -303,8 +303,8 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/survival/waterarrow_twenty
-	name = "水箭（x20）"
-	category = "远程"
+	name = "water arrow (x20)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/water,
 		/obj/item/ammo_casing/caseless/rogue/arrow/water,
@@ -336,41 +336,41 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/survival/slingcraft
-	name = "投石索"
-	category = "远程"
+	name = "sling"
+	category = "Ranged"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 	reqs = list(/obj/item/natural/fibers = 6)
-	verbage_simple = "搓制"
-	verbage = "搓制"
+	verbage_simple = "twist"
+	verbage = "twists"
 	craftdiff = 1 //you should make some ammo first!
 
 /datum/crafting_recipe/roguetown/survival/slingpouchcraft
-	name = "投石索弹袋"
-	category = "远程"
+	name = "sling bullet pouch"
+	category = "Ranged"
 	result = /obj/item/quiver/sling/
 	reqs = list(
 		/obj/item/natural/fibers = 1,
 		/obj/item/natural/cloth = 1,
 		)
-	verbage_simple = "制作"
-	verbage = "制作"
+	verbage_simple = "craft"
+	verbage = "crafts"
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/stonebullets
-	name = "投石索石弹（x2）"
-	category = "远程"
+	name = "sling bullets - stone (x2)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
 		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
 		)
 	reqs = list(/obj/item/natural/stone = 1)
-	verbage_simple = "磨制"
-	verbage = "磨制"
+	verbage_simple = "smooth"
+	verbage = "smooths"
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/stonebullets10x
-	name = "投石索石弹（x10）"
-	category = "远程"
+	name = "sling bullets - stone (x10)"
+	category = "Ranged"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
 		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
@@ -384,6 +384,6 @@
 		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
 		)
 	reqs = list(/obj/item/natural/stone = 5)
-	verbage_simple = "磨制"
-	verbage = "磨制"
+	verbage_simple = "smooth"
+	verbage = "smooths"
 	craftdiff = 0

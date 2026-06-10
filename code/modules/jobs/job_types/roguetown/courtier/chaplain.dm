@@ -5,7 +5,6 @@
 
 /datum/job/roguetown/chaplain
 	title = "Court Chaplain"
-	display_title = "宫廷司祭"
 	flag = CHAPLAIN
 	department_flag = COURTIERS
 	faction = "Station"
@@ -16,8 +15,8 @@
 	allowed_patrons = COURTCHAPLAIN_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/chaplain
-	tutorial = "当大多数侍僧都把时间花在钻研魔法与神迹之道时，你却把精力投向了历史与人脉。你周旋于教会与宫廷之间，是处理灵性事务的顾问与外交使者。你的职责，是协商、调停，并劝谏宫廷莫作不敬神之举。\
-	有人说你是满腹算计的操纵者，是替其他教会效力的密探。也有人怀疑，大公终有一日会更愿听信你温言细语的耳语，而非主教的训诫。又或者，你不过是被宫廷生活的安全与奢华所吸引。"
+	tutorial = "The time most acolytes put towards the ways of magic and miracle, you spent studying history and building connections. Liasing between church and court, you are an advisor and diplomat on spiritual matters. Your task is to negotiate, mediate and advise the court against unpious decisions. \
+	Some call you a scheming manipulator, a spy on the other church's behalf. Others suspect the Duke may come to prefer your sweet whispers to the Bishop's. Perhaps you are simply drawn to the safety and luxury of court-living."
 	display_order = JDO_CHAPLAIN
 	give_bank_account = TRUE
 	min_pq = 5
@@ -32,9 +31,9 @@
 	)
 
 /datum/advclass/chaplain
-	name = "宫廷司祭"
-	tutorial = "当大多数侍僧都把时间花在钻研魔法与神迹之道时，你却把精力投向了历史与人脉。你周旋于教会与宫廷之间，是处理灵性事务的顾问与外交使者。你的职责，是协商、调停，并劝谏宫廷莫作不敬神之举。\
-	有人说你是满腹算计的操纵者，是替其他教会效力的密探。也有人怀疑，大公终有一日会更愿听信你温言细语的耳语，而非主教的训诫。又或者，你不过是被宫廷生活的安全与奢华所吸引。"
+	name = "Court Chaplain"
+	tutorial = "The time most acolytes put towards the ways of magic and miracle, you spent studying history and building connections. Liasing between church and court, you are an advisor and diplomat on spiritual matters. Your task is to negotiate, mediate and advise the court against unpious decisions. \
+	Some call you a scheming manipulator, a spy on the other church's behalf. Others suspect the Duke may come to prefer your sweet whispers to the Bishop's. Perhaps you are simply drawn to the safety and luxury of court-living."
 	outfit = /datum/outfit/job/roguetown/chaplain
 	subclass_languages = list(/datum/language/grenzelhoftian)
 	category_tags = list(CTAG_CHAPLAIN)
@@ -55,11 +54,11 @@
 		/datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,//fancy lad school
 	)
 	subclass_stashed_items = list(
-		"十圣箴言与行传" = /obj/item/book/rogue/bibble,
+		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
 	)
 
 /datum/outfit/job/roguetown/chaplain
-	name = "宫廷司祭"
+	name = "Court Chaplain"
 	jobtype = /datum/job/roguetown/chaplain
 	has_loadout = TRUE
 	job_bitflag = BITFLAG_HOLY_WARRIOR

@@ -2,8 +2,7 @@
 
 /datum/job/roguetown/crier
 	title = "Town Crier"
-	display_title = "镇报官"
-	tutorial = "你是号角的执掌者、传声线的主人，也是自封的理性之声。坐在 SCOM传讯网 工坊的案前，你决定哪些话语会轰鸣着传遍全境，哪些则会因请愿人没交够鼠粮而烂死在喉咙里。楼上的播报间里，你主持辩论、传述流言、编织故事，让余波荡遍镇上每个角落。人人都把耳朵朝向你，所以，谨言吧。"
+	tutorial = "Keeper of the Horn, Master of the Jabberline, and self-appointed Voice of Reason. From your desk in the SCOM atelier, you decide which words will thunder across the realm and which will die in the throats of petitioners who didn't pay enough ratfeed. In your upstairs studio, you host debates, recite gossip, and spin tales that will ripple through every corner of town. All ears are turned toward you - so speak wisely."
 	flag = CRIER
 	department_flag = YEOMEN
 	faction = "Station"
@@ -28,10 +27,10 @@
 	)
 
 /datum/advclass/towncrier
-	name = "镇报官"
-	tutorial = "你是号角的执掌者、传声线的主人，也是自封的理性之声。\
-	坐在 SCOM传讯网 工坊的案前，你决定哪些话语会轰鸣着传遍全境，哪些则会因请愿人没交够鼠粮而烂死在喉咙里。\
-	楼上的播报间里，你主持辩论、传述流言、编织故事，让余波荡遍镇上每个角落。人人都把耳朵朝向你，所以，谨言吧。"
+	name = "Town Crier"
+	tutorial = "Keeper of the Horn, Master of the Jabberline, and self-appointed Voice of Reason. \
+	From your desk in the SCOM atelier, you decide which words will thunder across the realm and which will die in the throats of petitioners who didn't pay enough ratfeed. \
+	In your upstairs studio, you host debates, recite gossip, and spin tales that will ripple through every corner of town. All ears are turned toward you - so speak wisely."
 	outfit = /datum/outfit/job/roguetown/loudmouth/basic
 	subclass_languages = list(
 		/datum/language/elvish,
@@ -92,26 +91,26 @@
 		H.change_stat(STATKEY_INT, 1)
 
 /mob/living/carbon/human/proc/crier_announcement()
-	set name = "公告播报"
-	set category = "镇报官"
+	set name = "Announcement"
+	set category = "CRIER"
 	if(stat)
 		return
-	var/announcementinput = input("向群峰高声宣告", "发布公告") as text|null
+	var/announcementinput = input("Bellow to the Peaks", "Make an Announcement") as text|null
 	if(announcementinput)
 		if(!src.can_speak_vocal())
-			to_chat(src,span_warning("我发不出声音！"))
+			to_chat(src,span_warning("I can't speak!"))
 			return FALSE
 		if(!istype(get_area(src), /area/rogue/outdoors/town))//Go touch grass
-			to_chat(src, span_warning("我只能在镇区范围内发言。"))
+			to_chat(src, span_warning("I can only speak from within premises of the Town."))
 			return FALSE
 		if(!COOLDOWN_FINISHED(src, crier_announcement))
-			to_chat(src, span_warning("我得等一会儿才能再次发言。"))
+			to_chat(src, span_warning("You must wait before speaking again."))
 			return FALSE
-		visible_message(span_warning("[src] 深吸一口气，准备发布公告……"))
+		visible_message(span_warning("[src] takes a deep breath, preparing to make an announcement.."))
 		if(do_after(src, 15 SECONDS, target = src)) // Reduced to 15 seconds from 30 on the original Herald PR. 15 is well enough time for sm1 to shove you.
 			say(announcementinput)
-			priority_announce("[announcementinput]", "镇报官宣告", 'sound/misc/bell.ogg', sender = src)
+			priority_announce("[announcementinput]", "The Crier Pontificates", 'sound/misc/bell.ogg', sender = src)
 			COOLDOWN_START(src, crier_announcement, CRIER_ANNOUNCEMENT_COOLDOWN)
 		else
-			to_chat(src, span_warning("我的公告被打断了！"))
+			to_chat(src, span_warning("Your announcement was interrupted!"))
 			return FALSE

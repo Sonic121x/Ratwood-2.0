@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/mail
-	name = "赫尔墨斯"
-	desc = "自从这种液压气动邮递系统问世后，信差 ZAD告示台 就严重过时了。投币槽会启动机关，分发羊皮纸（一枚 zenny）和羽毛笔（一枚 ziliqua）。"
+	name = "HERMES"
+	desc = "Carrier zads have fallen severely out of fashion ever since the advent of this hydropneumatic mail system. A coin slot activates the mechanism for dispensing parchment(a zenny) and quills(a ziliqua)."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "mail"
 	density = FALSE
@@ -55,30 +55,30 @@
 					user.put_in_hands(I)
 					addl_mail = TRUE
 				else
-					say("你还有额外邮件可取。")
+					say("You have additional mail available.")
 					break
 		if(!any_additional_mail(M, H.real_name))
 			if(!addl_mail && H.has_status_effect(/datum/status_effect/ugotmail)) // we apparently got mail, but never got mail (hint: it was stolen by someone with access to the master mailer)
-				to_chat(user, span_notice("我往机器里一看，居然没有信，真是奇怪。"))
+				to_chat(user, span_notice("I look inside the machine and find no letter, how strange."))
 			H.remove_status_effect(/datum/status_effect/ugotmail)
 	if(!ishuman(user))
 		return
 	if(HAS_TRAIT(user, TRAIT_INQUISITION))
 		if(!coin_loaded && !inqcoins)
-			to_chat(user, span_notice("它需要一枚 印记。"))
+			to_chat(user, span_notice("It needs a Marque."))
 			return
 		user.changeNext_move(CLICK_CD_MELEE)
 		display_marquette(usr)
 
 /obj/structure/roguemachine/mail/examine(mob/user)
 	. = ..()
-	. += span_info("先投入一枚硬币，再右键发送信件。")
-	. += span_info("手持纸张左键点击，可免费寄出预先写好的信。")
+	. += span_info("Load a coin inside, then right click to send a letter.")
+	. += span_info("Left click with a paper to send a prewritten letter for free.")
 	if(HAS_TRAIT(user, TRAIT_INQUISITION))
-		. += span_info("<br>印记终端 可通过赫尔墨斯内部的暗格进入。装入一枚 印记 即可访问。")
+		. += span_info("<br>The MARQUETTE can be accessed via a secret compartment fitted within the HERMES. Load a Marque to access it.")
 
-		. += span_info("你可以在这里寄送到达单、控诉单、已填满的 编目机 或供词。")
-		. += span_info("请正确署名。需要时附上 编目机。加盖印章需额外两枚 印记。")
+		. += span_info("You can send arrival slips, accusation slips, fully loaded INDEXERs or confessions here.")
+		. += span_info("Properly sign them. Include an INDEXER where needed. Stamp them for two additional Marques.")
 
 /obj/structure/roguemachine/mail/attack_right(mob/user)
 	. = ..()
@@ -86,21 +86,21 @@
 		return
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	if(!coin_loaded)
-		to_chat(user, span_warning("机器没有反应。它需要一枚硬币。"))
+		to_chat(user, span_warning("The machine doesn't respond. It needs a coin."))
 		return
 	if(inqcoins)
-		to_chat(user, span_warning("机器没有反应。"))
+		to_chat(user, span_warning("The machine doesn't respond."))
 		return
-	var/send2place = input(user, "寄往何处？（人名或 #编号）", "ROGUETOWN", null)
+	var/send2place = input(user, "Where to? (Person or #number)", "ROGUETOWN", null)
 	if(!send2place)
 		return
-	var/sentfrom = input(user, "这封信是谁寄出的？", "ROGUETOWN", null)
+	var/sentfrom = input(user, "Who is this letter from?", "ROGUETOWN", null)
 	if(!sentfrom)
-		sentfrom = "匿名"
-	var/t = stripped_multiline_input("书写你的信件", "ROGUETOWN", no_trim=TRUE)
+		sentfrom = "Anonymous"
+	var/t = stripped_multiline_input("Write Your Letter", "ROGUETOWN", no_trim=TRUE)
 	if(t)
 		if(length(t) > 2000)
-			to_chat(user, span_warning("太长了。请重试。"))
+			to_chat(user, span_warning("Too long. Try again."))
 			return
 	if(!coin_loaded)
 		return
@@ -121,18 +121,18 @@
 				P.mailedto = send2place
 				P.update_icon()
 				P.forceMove(X.loc)
-				X.say("有新邮件！")
+				X.say("New mail!")
 				playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 				break
 		if(found)
-			visible_message(span_warning("[user]寄出了东西。"))
+			visible_message(span_warning("[user] sends something."))
 			playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 			SStreasury.give_money_treasury(coin_loaded, "Mail Income")
 			coin_loaded = FALSE
 			update_icon()
 			return
 		else
-			to_chat(user, span_warning("发送失败。编号不对？"))
+			to_chat(user, span_warning("Failed to send it. Bad number?"))
 	else
 		if(!send2place)
 			return
@@ -152,9 +152,9 @@
 					H.apply_status_effect(/datum/status_effect/ugotmail)
 					H.playsound_local(H, 'sound/misc/mail.ogg', 100, FALSE, -1)
 		else
-			to_chat(user, span_warning("邮务总管已经不在了？"))
+			to_chat(user, span_warning("The master of mails has perished?"))
 			return
-		visible_message(span_warning("[user]寄出了东西。"))
+		visible_message(span_warning("[user] sends something."))
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 		SStreasury.give_money_treasury(coin_loaded, "Mail")
 		coin_loaded = FALSE
@@ -165,21 +165,21 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.mind.assigned_role != "Mercenary")
-				to_chat(H, "<span class='warning'>这东西对我没用，我可以把它交给佣兵，让他们自己寄出去。</span>")
+				to_chat(H, "<span class='warning'>This is of no use to me - I may give this to a mercenary so they may send it themselves.</span>")
 				return
 			if(H.mind.assigned_role == "Mercenary")
 				if(H.tokenclaimed == TRUE)
-					to_chat(H, "<span class='warning'>我已经领过表彰了。期待下周吧！</span>")
+					to_chat(H, "<span class='warning'>I have already received my commendation. There's always next week to look forward to!</span>")
 					return
 			var/obj/item/merctoken/C = P
 			if(C.signed == 1)
 				qdel(C)
-				visible_message("<span class='warning'>[H]寄出了东西。</span>")
+				visible_message("<span class='warning'>[H] sends something.</span>")
 				playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 				sleep(20)
 				playsound(loc, 'sound/misc/triumph.ogg', 100, FALSE, -1)
 				playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-				H.visible_message("<span class='warning'>一件小饰物从机器里滚落下来。这是你功绩的证明。</span>")
+				H.visible_message("<span class='warning'>A trinket comes tumbling down from the machine. Proof of your distinction.</span>")
 				H.adjust_triumphs(3)
 				H.tokenclaimed = TRUE
 				switch(H.merctype)
@@ -218,7 +218,7 @@
 					if(16)
 						new /obj/item/clothing/neck/roguetown/luckcharm/mercmedal/oathmarked(src.loc)
 			if(C.signed == 0)
-				to_chat(H, "<span class='warning'>我不能寄出一枚未签名的凭证。</span>")
+				to_chat(H, "<span class='warning'>I cannot send an unsigned token.</span>")
 				return
 	if(HAS_TRAIT(user, TRAIT_INQUISITION))
 		if(istype(P, /obj/item/roguekey))
@@ -227,9 +227,9 @@
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				for(var/obj/structure/roguemachine/mail/everyhermes in SSroguemachine.hermailers)
 					everyhermes.inqlock()
-				to_chat(user, span_warning("我[inqonly ? "启用" : "停用"]了清教徒锁。"))
+				to_chat(user, span_warning("I [inqonly ? "enable" : "disable"] the Puritan's Lock."))
 				return display_marquette(user)
-			to_chat(user, span_warning("钥匙不对。"))
+			to_chat(user, span_warning("Wrong key."))
 			return
 		if(istype(P, /obj/item/storage/keyring))
 			var/obj/item/storage/keyring/K = P
@@ -241,14 +241,14 @@
 					playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 					for(var/obj/structure/roguemachine/mail/everyhermes in SSroguemachine.hermailers)
 						everyhermes.inqlock()
-					to_chat(user, span_warning("我[inqonly ? "启用" : "停用"]了清教徒锁。"))
+					to_chat(user, span_warning("I [inqonly ? "enable" : "disable"] the Puritan's Lock."))
 					return display_marquette(user)
 
 	if(istype(P, /obj/item/inqarticles/bmirror))
 		if((HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_PURITAN)))
 			var/obj/item/inqarticles/bmirror/I = P
 			if(I.broken && !I.bloody)
-				visible_message(span_warning("[user]寄出了东西。"))
+				visible_message(span_warning("[user] sends something."))
 				budget2change(2, user, "MARQUE")
 				qdel(I)
 				record_round_statistic(STATS_MARQUES_MADE, 2)
@@ -256,9 +256,9 @@
 				playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 			else
 				if(!I.broken)
-					to_chat(user, (span_warning("它并没有坏。")))
+					to_chat(user, (span_warning("It isn't broken.")))
 				if(I.broken)
-					to_chat(user, (span_warning("先把它清理干净。")))
+					to_chat(user, (span_warning("Clean it first.")))
 
 	if(istype(P, /obj/item/paper/inqslip/confession))
 		if((HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_PURITAN)))
@@ -318,16 +318,16 @@
 					if(I.paired)
 						qdel(I.paired)
 					qdel(I)
-					visible_message(span_warning("[user]寄出了东西。"))
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					if(no)
-						to_chat(user, span_notice("他们已经招供了。"))
+						to_chat(user, span_notice("They've already confessed."))
 					else if(stopfarming)
-						to_chat(user, span_notice("我们已经采集过他们那被诅咒的血样了。"))
+						to_chat(user, span_notice("We already have a sample of their accursed blood."))
 					if(selfreport)
-						to_chat(user, span_notice("为什么那份供词会由一名裁判所成员签署？什么情况？"))
+						to_chat(user, span_notice("Why was that confession signed by an inquisition member? What?"))
 					if(indexed)
-						visible_message(span_warning("[user]收到了一样东西。"))
+						visible_message(span_warning("[user] recieves something."))
 						var/obj/item/inqarticles/indexer/replacement = new /obj/item/inqarticles/indexer/
 						user.put_in_hands(replacement)
 					return
@@ -357,19 +357,19 @@
 					if(I.paired)
 						qdel(I.paired)
 					qdel(I)
-					visible_message(span_warning("[user]寄出了东西。"))
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/otavanlament.ogg', 100, FALSE, -1)
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 			return
 
 	if(istype(P, /obj/item/inqarticles/indexer))
 		if((HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_PURITAN)))
-			to_chat(user, span_warning("它必须和单据或供词配套使用。"))
+			to_chat(user, span_warning("It needs to be paired with a slip or confession."))
 			return
 
 	if(istype(P, /obj/item/paper/inqslip/arrival))
 		if(!(HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_PURITAN)))
-			to_chat(user, span_warning("只有裁判所才能提交到达单。"))
+			to_chat(user, span_warning("Only the Inquisition can submit arrival slips."))
 			return
 		var/obj/item/paper/inqslip/arrival/I = P
 		if(I.signee && I.signed)
@@ -378,14 +378,14 @@
 			budget2change(I.marquevalue, user, "MARQUE")
 			record_round_statistic(STATS_MARQUES_MADE, I.marquevalue)
 			qdel(I)
-			visible_message(span_warning("[user]寄出了东西。"))
+			visible_message(span_warning("[user] sends something."))
 			playsound(loc, 'sound/misc/otavasent.ogg', 100, FALSE, -1)
 			playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 		return
 
 	if(istype(P, /obj/item/paper/inqslip/accusation))
 		if(!(HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_PURITAN)))
-			to_chat(user, span_warning("只有裁判所才能提交控诉单。"))
+			to_chat(user, span_warning("Only the Inquisition can submit accusation slips."))
 			return
 		var/obj/item/paper/inqslip/accusation/I = P
 		if(I.paired)
@@ -445,20 +445,20 @@
 				if(no || selfreport || stopfarming)
 					qdel(I.paired)
 					qdel(I)
-					visible_message(span_warning("[user]寄出了东西。"))
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					if(!cursedblood)
-						visible_message(span_warning("[user]收到了一样东西。"))
+						visible_message(span_warning("[user] recieves something."))
 						var/obj/item/inqarticles/indexer/replacement = new /obj/item/inqarticles/indexer/
 						user.put_in_hands(replacement)
 						if(specialno)
-							to_chat(user, span_notice("他们已经招供了。"))
+							to_chat(user, span_notice("They've confessed."))
 						else if(selfreport)
-							to_chat(user, span_notice("我们怎么开始控诉自己人了？事情怎么会变成这样？"))
+							to_chat(user, span_notice("Why are we accusing our own? What have we come to?"))
 						else if(stopfarming)
-							to_chat(user, span_notice("我们已经采集过他们那被诅咒的血样了。"))
+							to_chat(user, span_notice("We've already collected a sample of their accursed blood."))
 						else
-							to_chat(user, span_notice("他们已经被控诉过了。"))
+							to_chat(user, span_notice("They've already been accused."))
 					return
 				else
 					if(!indexed && !correct && !cursedblood)
@@ -472,29 +472,29 @@
 						record_round_statistic(STATS_MARQUES_MADE, I.marquevalue)
 					qdel(I.paired)
 					qdel(I)
-					visible_message(span_warning("[user]寄出了东西。"))
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/otavanlament.ogg', 100, FALSE, -1)
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					return
 			else
 				if(!I.paired.full)
-					to_chat(user, span_warning("[I.paired]里必须装满被告者的血。"))
+					to_chat(user, span_warning("[I.paired] needs to be full of the accused's blood."))
 					return
-				to_chat(user, span_warning("[I]缺少签名。"))
+				to_chat(user, span_warning("[I] is missing a signature."))
 				return
 		else
-			to_chat(user, span_warning("[I]缺少 编目机。"))
+			to_chat(user, span_warning("[I] is missing an INDEXER."))
 			return
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/smallDelivery))
 		if(inqcoins)
-			to_chat(user, span_warning("机器没有反应。"))
+			to_chat(user, span_warning("The machine doesn't respond."))
 			return
-		if(alert(user, "寄送邮件？",,"是","否") == "是")
-			var/send2place = input(user, "寄往何处？（人名或 #编号）", "ROGUETOWN", null)
-			var/sentfrom = input(user, "这是谁寄来的？（留空则匿名寄出）", "ROGUETOWN", null)
+		if(alert(user, "Send Mail?",,"YES","NO") == "YES")
+			var/send2place = input(user, "Where to? (Person or #number)", "ROGUETOWN", null)
+			var/sentfrom = input(user, "Who is this from? (Leave blank to send anonymously)", "ROGUETOWN", null)
 			if(!sentfrom)
-				sentfrom = "匿名"
+				sentfrom = "Anonymous"
 			if(findtext(send2place, "#"))
 				var/box2find = text2num(copytext(send2place, findtext(send2place, "#")+1))
 				testing("box2find [box2find]")
@@ -506,15 +506,15 @@
 						P.mailedto = send2place
 						P.update_icon()
 						P.forceMove(X.loc)
-						X.say("有新邮件！")
+						X.say("New mail!")
 						playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 						break
 				if(found)
-					visible_message(span_warning("[user]寄出了东西。"))
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					return
 				else
-					to_chat(user, span_warning("无法寄出。编号不对？"))
+					to_chat(user, span_warning("Cannot send it. Bad number?"))
 			else
 				if(!send2place)
 					return
@@ -522,7 +522,7 @@
 				for(var/mob/living/carbon/human/H in GLOB.human_list)
 					if(H.real_name == send2place)
 						mailrecipient = H
-				if(!mailrecipient && (alert("找不到收件人 [send2place]。仍要寄出这封信吗？", "", "是", "否") == "否")) // ask player if they still want to send a letter to a non-found character
+				if(!mailrecipient && (alert("Could not find recipient [send2place]. Still send the letter?", "", "YES", "NO") == "NO")) // ask player if they still want to send a letter to a non-found character
 					return
 				var/findmaster
 				if(SSroguemachine.hermailermaster)
@@ -538,9 +538,9 @@
 					X.update_icon()
 					playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 				if(!findmaster)
-					to_chat(user, span_warning("邮务总管已经不在了？"))
+					to_chat(user, span_warning("The master of mails has perished?"))
 				else
-					visible_message(span_warning("[user]寄出了东西。"))
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					send_ooc_note("New letter from <b>[sentfrom].</b>", name = send2place)
 					if(mailrecipient)
@@ -577,7 +577,7 @@
 				var/obj/item/natural/feather/quill = new
 				user.put_in_hands(quill)
 			else
-				to_chat(user, span_warning("币值无效！投入 1 玛门可买纸张，投入 5 玛门可买羽毛笔。"))
+				to_chat(user, span_warning("Not a valid denomination! Insert 1 mammon for paper, 5 mammon for a quill."))
 				return
 		playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 		return
@@ -606,7 +606,7 @@
 
 /obj/structure/roguemachine/mail/examine(mob/user)
 	. = ..()
-	. += "<a href='?src=[REF(src)];directory=1'>目录：</a> [mailtag]"
+	. += "<a href='?src=[REF(src)];directory=1'>Directory:</a> [mailtag]"
 
 /obj/structure/roguemachine/mail/Topic(href, href_list)
 	..()
@@ -627,12 +627,12 @@
 		else
 			dat += "#[X.ournum] [capitalize(get_area_name(X))]<br>"
 
-	var/datum/browser/popup = new(user, "hermes_directory", "<center>赫尔墨斯目录</center>", 387, 420)
+	var/datum/browser/popup = new(user, "hermes_directory", "<center>HERMES DIRECTORY</center>", 387, 420)
 	popup.set_content(dat)
 	popup.open(FALSE)
 
 /obj/item/roguemachine/mastermail
-	name = "邮务总管"
+	name = "MASTER OF MAILS"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "mailspecial"
 	pixel_y = 32
@@ -678,7 +678,7 @@
 			PA.cached_mailer = null
 			PA.cached_mailedto = null
 			PA.update_icon()
-			to_chat(user, span_warning("我小心地重新封好这封信，把它放回机器里，没人会知道。"))
+			to_chat(user, span_warning("I carefully re-seal the letter and place it back in the machine, no one will know."))
 		if(PA.mailer && PA.mailedto)
 			for(var/mob/living/carbon/human/H in GLOB.human_list)
 				if(H.real_name == PA.mailedto && !H.has_status_effect(/datum/status_effect/ugotmail)) // quietly readd the status if they tried to check their mail while the letter was being spied on
@@ -716,18 +716,18 @@
 	PA.remaining -= 1
 	PA.name = "[initial(PA.name)] ([PA.remaining]/[PA.maximum]) - ᛉ [PA.marquescost] ᛉ"
 	if(!PA.remaining)
-		PA.name = "[initial(PA.name)] (已售罄) - ᛉ [PA.marquescost] ᛉ"
+		PA.name = "[initial(PA.name)] (OUT OF STOCK) - ᛉ [PA.marquescost] ᛉ"
 	return
 
 /obj/structure/roguemachine/mail/proc/display_marquette(mob/user)
 	var/contents
-	contents = "<center>✤ ── 奥塔瓦裁判所配给册 ── ✤<BR>"
-	contents += "为根除异端，只要 普赛顿 仍在。<BR>"
+	contents = "<center>✤ ── L'INQUISITION MARQUETTE D'OTAVA ── ✤<BR>"
+	contents += "POUR L'ÉRADICATION DE L'HÉRÉSIE, TANT QUE PSYDON ENDURE.<BR>"
 	if(HAS_TRAIT(user, TRAIT_PURITAN))
-		contents += "✤ ── <a href='?src=[REF(src)];locktoggle=1]'> 清教徒锁：[inqonly ? "开":"关"]</a> ── ✤<BR>"
+		contents += "✤ ── <a href='?src=[REF(src)];locktoggle=1]'> PURITAN'S LOCK: [inqonly ? "OUI":"NON"]</a> ── ✤<BR>"
 	else
-		contents += "✤ ── 清教徒锁：[inqonly ? "开":"关"] ── ✤<BR>"
-	contents += "ᛉ <a href='?src=[REF(src)];eject=1'>已装入 印记：[inqcoins]</a>ᛉ<BR>"
+		contents += "✤ ── PURITAN'S LOCK: [inqonly ? "OUI":"NON"] ── ✤<BR>"
+	contents += "ᛉ <a href='?src=[REF(src)];eject=1'>MARQUES LOADED: [inqcoins]</a>ᛉ<BR>"
 
 	if(cat_current == "1")
 		contents += "<BR> <table style='width: 100%' line-height: 40px;'>"
@@ -747,7 +747,7 @@
 		contents += "</table>"
 	else
 		contents += "<center>[cat_current]<BR></center>"
-		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[返回\]</a><BR><BR></center>"
+		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
 		contents += "<center>"
 		var/list/items = list()
 		for(var/pack in GLOB.inqsupplies)
@@ -799,7 +799,7 @@
 		inqcoins -= PA.marquescost
 		if(PA.maximum)
 			decreaseremaining(PA)
-		visible_message(span_warning("[usr]寄出了东西。"))
+		visible_message(span_warning("[usr] sends something."))
 		if(!inqcoins)
 			coin_loaded = FALSE
 			update_icon()

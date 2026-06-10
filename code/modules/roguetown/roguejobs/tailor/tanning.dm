@@ -70,7 +70,7 @@
 					new /obj/item/natural/cured/essence(get_turf(user))
 					if(!sound_played)
 						sound_played = TRUE
-						to_chat(user, span_warning("登多尔 降下恩惠……"))
+						to_chat(user, span_warning("Dendor 赐予恩惠..."))
 						playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 				new /obj/item/natural/hide/cured(get_turf(user))
 			return

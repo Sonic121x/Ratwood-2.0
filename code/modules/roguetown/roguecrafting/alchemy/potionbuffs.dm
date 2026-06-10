@@ -1,5 +1,5 @@
 /atom/movable/screen/alert/status_effect/buff/alch
-	desc = "力量在你的血脉中奔涌。"
+	desc = "Power rushes through your veins."
 	icon_state = "buff"
 
 /datum/status_effect/buff/alch/temperaturepot
@@ -9,8 +9,8 @@
 	duration = 15 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/temperaturepot
-	name = "体温平衡"
-	desc = "力量在你的血脉中奔涌。"
+	name = "Temperature Equilibrium"
+	desc = "Power rushes through your veins."
 	icon_state = "buff"
 
 /datum/status_effect/buff/alch/temperaturepot/process()
@@ -106,6 +106,6 @@
 	REMOVE_TRAIT(owner, TRAIT_NOFIRE, TRAIT_STATUS_EFFECT)
 
 /atom/movable/screen/alert/status_effect/buff/alch/fire_resist
-	name = "抗火"
-	desc = "我的皮肤对火焰更坚韧了。"
+	name = "Fire Resistance"
+	desc = "My hide toughens to fire."
 	icon_state = "buff"

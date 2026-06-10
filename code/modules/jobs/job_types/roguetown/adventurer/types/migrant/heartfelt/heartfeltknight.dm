@@ -1,8 +1,8 @@
 
 /datum/job/roguetown/heartfelt/knight
 	title = "Knight of Heartfelt"
-	tutorial = "你是 赤心 的骑士，曾是效忠领主的骑士团一员。\
-	如今你孤身一人，仍誓要护住宫廷残余之人，于是策马前往山巅，决心确保他们平安抵达。"
+	tutorial = "You are a Knight of Heartfelt, once part of a brotherhood in service to your Lord. \
+	Now, alone and committed to safeguarding what remains of your court, you ride to the Peak, resolved to ensure their safe arrival."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	total_positions = 1
@@ -25,12 +25,12 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "骑士罩袍（[index]）"
+			S.name = "knight tabard ([index])"
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		var/honorary = "爵士"
+		var/honorary = "Ser"
 		if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
-			honorary = "女爵"
+			honorary = "Dame"
 		GLOB.chosen_names -= prev_real_name
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
@@ -43,9 +43,9 @@
 					H.mind.person_knows_me(MF)
 
 /datum/advclass/heartfelt/knight
-	name = "赤心 骑士"
-	tutorial = "你是 赤心 的骑士，曾是效忠领主的骑士团一员。\
-	如今你孤身一人，仍誓要护住宫廷残余之人，于是来到这片土地，决心确保他们平安抵达。"
+	name = "Knight of Heartfelt"
+	tutorial = "You are a Knight of Heartfelt, once part of a brotherhood in service to your Lord. \
+	Now, alone and committed to safeguarding what remains of your court, you ride to these lands, resolved to ensure their safe arrival."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/heartfelt/knight
@@ -116,57 +116,57 @@
 	// IT WORKS :TM: still gives them a helm and grandmace, just not the choice
 	
 	H.adjust_blindness(-3)
-	var/weapons = list("装饰长剑加盾","双手剑","巨型钉锤","战斧","巨斧","刺剑","鹰喙锤", "长戟矛", "关刀")
-	var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
+	var/weapons = list("Dec Sword + Shield","Zweihander","Great Mace","Battle Axe","Greataxe","Estoc","Eagle's Beak", "Partizan", "Glaive")
+	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("装饰长剑加盾")
+		if("Dec Sword + Shield")
 			l_hand = /obj/item/rogueweapon/sword/long/dec
 			backl = /obj/item/rogueweapon/shield/tower/metal
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-		if("双手剑")
+		if("Zweihander")
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
-		if("巨型钉锤")
+		if("Great Mace")
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
-		if("战斧")
+		if("Battle Axe")
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
-		if("巨斧")
+		if("Greataxe")
 			r_hand = /obj/item/rogueweapon/greataxe/steel
-		if("刺剑")
+		if("Estoc")
 			r_hand = /obj/item/rogueweapon/estoc
-		if("鹰喙锤")
+		if("Eagle's Beak")
 			r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
-		if("长戟矛")
+		if("Partizan")
 			r_hand = /obj/item/rogueweapon/spear/partizan
-		if("关刀")
+		if("Glaive")
 			r_hand = /obj/item/rogueweapon/halberd/glaive
 		else //In case they DC or don't choose close the panel, etc
 			r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 
-	var/helmet = list("猪面盆盔","卫兵头盔","栅栏盔","桶盔","骑士盔","沃尔夫板甲盔" ,"带面罩萨雷特盔","阿米特盔","犬首盆盔", "伊特鲁斯卡盆盔", "开缝锅盔")
-	var/helmet_choice = input(H, "选择你的头盔。", "披挂头盔") as anything in helmet
+	var/helmet = list("Pigface Bascinet","Guard Helmet","Barred Helmet","Bucket Helmet","Knight Helmet","Volf Plate Helmet" ,"Visored Sallet","Armet","Hounskull Bascinet", "Etruscan Bascinet", "Slitted Kettle")
+	var/helmet_choice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmet
 	switch(helmet_choice)
-		if("猪面盆盔") 
+		if("Pigface Bascinet") 
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
-		if("卫兵头盔")	
+		if("Guard Helmet")	
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/guard
-		if("栅栏盔")		
+		if("Barred Helmet")		
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/sheriff
-		if("桶盔")		
+		if("Bucket Helmet")		
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
-		if("骑士盔")		
+		if("Knight Helmet")		
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
-		if("沃尔夫板甲盔") 
+		if("Volf Plate Helmet") 
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩萨雷特盔")	
+		if("Visored Sallet")	
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("阿米特盔")			
+		if("Armet")			
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet
-		if("犬首盆盔")
+		if("Hounskull Bascinet")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull
-		if("伊特鲁斯卡盆盔")
+		if("Etruscan Bascinet")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("开缝锅盔") 
+		if("Slitted Kettle") 
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle
 		else //In case they DC or don't choose close the panel, etc
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
