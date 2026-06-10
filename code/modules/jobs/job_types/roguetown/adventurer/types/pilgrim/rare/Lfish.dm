@@ -2,7 +2,7 @@
 
 /datum/advclass/fishermaster
 	name = "渔艺大师"
-	tutorial = "你是一名渔艺大师，挥竿有力，连大过 Eoras Bosom 的鱼都能给你钓上来。"
+	tutorial = "你是一名渔艺大师，挥竿有力，连大过 伊欧拉s Bosom 的鱼都能给你钓上来。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/fishermaster

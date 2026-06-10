@@ -1,7 +1,7 @@
 //The League, but in space. Or something.
 //Whip-javelin saiga-archer maniacs!
 /datum/advclass/foreigner/aavnik
-	name = "Aavnik 流逐者"
+	name = "阿夫尼克 流逐者"
 	tutorial = "Niktov，是对那种做下太多坏事、既害了公义也害了同胞之人的俚语称呼。\
 	你算是某种意义上的匪徒，也许并不出名，也不似别的恶棍那般嗜血凶残。\
 	可无论如何，你终究还是被那些你曾视作自己人的族群所放逐。\

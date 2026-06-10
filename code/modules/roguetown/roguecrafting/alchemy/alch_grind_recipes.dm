@@ -213,25 +213,25 @@
 // Start of gem dust section - I've included gold dust as an additional product because of lesser alchemy, grinding up a gem should give you a bit extra (I mean come on it's a gem)
 
 /datum/alch_grind_recipe/mineraldustyellow  // costs two gold to make
-	name = "矿物粉（Toper）"
+	name = "矿物粉（托珀石）"
 	valid_input = /obj/item/roguegem/yellow
 	valid_outputs = list(/obj/item/alch/mineraldust = 1, /obj/item/alch/golddust = 1)
 	bonus_chance_outputs = list(/obj/item/alch/golddust = 66)
 
 /datum/alch_grind_recipe/mineraldustgreen  // costs 4 gold to make
-	name = "矿物粉（Gemerald）"
+	name = "矿物粉（翠晶）"
 	valid_input = /obj/item/roguegem/green
 	valid_outputs = list(/obj/item/alch/mineraldust = 1, /obj/item/alch/earthdust = 1, /obj/item/alch/golddust = 2)
 	bonus_chance_outputs = list(/obj/item/alch/earthdust = 66)
 
 /datum/alch_grind_recipe/mineraldustviolet // costs 6 gold to make
-	name = "矿物粉（Saffira）"
+	name = "矿物粉（蓝晶）"
 	valid_input = /obj/item/roguegem/violet
 	valid_outputs = list(/obj/item/alch/mineraldust = 1, /obj/item/alch/magicdust = 1, /obj/item/alch/golddust = 3)
 	bonus_chance_outputs = list(/obj/item/alch/magicdust = 66)
 
 /datum/alch_grind_recipe/mineraldustblue // costs 8 gold to make
-	name = "矿物粉（Blortz）"
+	name = "矿物粉（布洛兹石）"
 	valid_input = /obj/item/roguegem/blue
 	valid_outputs = list(/obj/item/alch/mineraldust = 1, /obj/item/alch/waterdust = 2, /obj/item/alch/golddust = 4)
 	bonus_chance_outputs = list(/obj/item/alch/waterdust = 66)

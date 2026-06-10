@@ -1,7 +1,7 @@
 
 /datum/advclass/heartfelt/retinue/armorer
-	name = "Heartfelt 铸甲师"
-	tutorial = "你是 Heartfelt 的铸甲师，本该成就一番伟业，却被男爵领的覆灭生生打断。\
+	name = "赤心 铸甲师"
+	tutorial = "你是 赤心 的铸甲师，本该成就一番伟业，却被男爵领的覆灭生生打断。\
 	如今故土已成废墟，你望向这片土地，希望能在混乱之中寻得新的使命，或至少一处容身之所。"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/heartfelt/retinue/armorer

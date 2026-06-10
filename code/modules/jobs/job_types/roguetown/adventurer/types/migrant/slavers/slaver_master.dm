@@ -1,7 +1,7 @@
 
 /datum/advclass/slaver/master
-	name = "Zybantynian 奴隶主"
-	tutorial = "你是 Zybantynian 奴隶商队的首领。你自 Zybantine 西方荒漠来到大陆，希望靠训练与买卖那些不幸的劳工来积攒财富。 \
+	name = "兹班图裔 奴隶主"
+	tutorial = "你是 兹班图裔 奴隶商队的首领。你自 兹班图的 西方荒漠来到大陆，希望靠训练与买卖那些不幸的劳工来积攒财富。 \
 	在有些人眼中，这门行当卑劣可憎；但毫无疑问，在你回到 Zybantynian 沙海之前，它最能让你的钱袋鼓起来。"
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_PERFECT_TRACKER, TRAIT_SLEUTH, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
@@ -49,7 +49,7 @@
 
 /datum/outfit/job/roguetown/slaver/master/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 Sama'glos。"))
+	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 萨玛格罗斯语。"))
 	to_chat(H, span_info("我开局会携带一批用于捕奴与野外求生的物资。"))
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/zyb		// thematic as it is the same helmet jannisaries use. Maybe a retired soldier with hired goons?
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple

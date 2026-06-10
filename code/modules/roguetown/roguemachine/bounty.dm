@@ -1,5 +1,5 @@
 /obj/structure/roguemachine/bounty
-	name = "EXCIDIUM"
+	name = "灭绝机"
 	desc = "这台机器由一支狂热崇奉拉沃克斯的虔信教派打造，用于设立悬赏。"
 	icon = 'icons/roguetown/topadd/statue1.dmi'
 	icon_state = "baldguy"
@@ -40,7 +40,7 @@
 
 	// Main Menu
 	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties", "Remove Bounty", "Collect Change")
-	var/selection = input(user, "Excidium 正在聆听", src) as null|anything in choices
+	var/selection = input(user, "灭绝兽 正在聆听", src) as null|anything in choices
 
 	if(!Adjacent(user, src)) // User can move while selecting, sanity check
 		return
@@ -198,7 +198,7 @@
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-	var/bounty_announcement = "The Excidium hungers for [target]."
+	var/bounty_announcement = "The 灭绝兽 hungers for [target]."
 	say(bounty_announcement)
 	scom_announce(bounty_announcement)
 
@@ -367,7 +367,7 @@
 
 /obj/item/paper/scroll/bounty
 	name = "附魔悬赏卷轴"
-	desc = "一卷附魔的风化卷轴，用于列出 Excidium 当前的有效悬赏。"
+	desc = "一卷附魔的风化卷轴，用于列出 灭绝兽 当前的有效悬赏。"
 	icon_state = "scroll"
 	open = FALSE
 
@@ -377,7 +377,7 @@
 		update_bounty_text()
 
 /obj/item/paper/scroll/bounty/proc/update_bounty_text()
-	var/scroll_text = "<center>EXCIDIUM 悬赏名单</center><br><br>"
+	var/scroll_text = "<center>灭绝机 悬赏名单</center><br><br>"
 
 	for(var/datum/bounty/saved_bounty in GLOB.head_bounties)
 		scroll_text += saved_bounty.banner
@@ -386,7 +386,7 @@
 	info = scroll_text
 
 /obj/structure/chair/freedomchair
-	name = "LIBERTAS"
+	name = "自由机"
 	desc = "A chair-shaped machine normally used to place cursed collars onto a prisoner's neck. \
 	This one's been tampered with, and now does the opposite - re-purposed to remove those wretched iron collars."
 	icon = 'icons/roguetown/misc/machines.dmi'
@@ -459,7 +459,7 @@
 		return
 
 /obj/structure/chair/arrestchair
-	name = "CASTIFICO"
+	name = "惩戒机"
 	desc = "这是一台用于领取悬赏的椅形机器，能换来更高报酬，但代价在某些人看来比死亡更可怕。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "evilchair"
@@ -563,8 +563,8 @@
 			say("检测到反抗……")
 			src.Shake()
 			var/obj/item/bodypart/head/victim_head = M.get_bodypart(BODY_ZONE_HEAD)
-			message_admins("[M.real_name] was killed by the Excidium.")
-			log_admin("[M.real_name] was killed by the Excidium.")
+			message_admins("[M.real_name] was killed by the 灭绝兽.")
+			log_admin("[M.real_name] was killed by the 灭绝兽.")
 			playsound(src, 'sound/combat/vite.ogg', 100, FALSE, -1)
 			victim_head.skeletonize()
 			submission = TRUE
@@ -576,8 +576,8 @@
 
 /obj/structure/chair/arrestchair/proc/giveup(mob/living/carbon/human/M)
 	if(alert(M, "Do you submit to the Mask, or do you die? You have 10 seconds to decide.", "CHOICE OF LYFE", "Submit", "Perish") == "Perish")
-		message_admins("[M.real_name] chose to die to the Excidium.")
-		log_admin("[M.real_name] opted to die to the Excidium.")
+		message_admins("[M.real_name] chose to die to the 灭绝兽.")
+		log_admin("[M.real_name] opted to die to the 灭绝兽.")
 		if(M.Adjacent(src))	//No buffering this for later
 			submission = FALSE
 

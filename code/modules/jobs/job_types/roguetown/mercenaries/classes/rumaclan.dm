@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/rumaclan
 	name = "流马氏族军人"
-	tutorial = "你是一名出身 Kazengite 异乡武团的剑士。流马氏族是被 Xinyi 王朝放逐的流亡者，世人相信他们曾与当时的叛军有所牵连。为避祸患，整个氏族选择远走他乡。他们并非一支严整有序的军队，而更像是一群经验老到的战士松散聚成的团体。"
+	tutorial = "你是一名出身 风郡裔 异乡武团的剑士。流马氏族是被 信义 王朝放逐的流亡者，世人相信他们曾与当时的叛军有所牵连。为避祸患，整个氏族选择远走他乡。他们并非一支严整有序的军队，而更像是一群经验老到的战士松散聚成的团体。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = NON_DWARVEN_RACE_TYPES //no dwarf sprites
 	outfit = /datum/outfit/job/roguetown/mercenary/rumaclan
@@ -32,7 +32,7 @@
 
 /datum/outfit/job/roguetown/mercenary/rumaclan/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是氏族中的剑士，刀剑之艺罕有敌手。只要报酬够好，你便不介意为了自己、为了领头的 Seonjang，或为了整个氏族去接下大多数差事。"))
+	to_chat(H, span_warning("你是氏族中的剑士，刀剑之艺罕有敌手。只要报酬够好，你便不介意为了自己、为了领头的 首将，或为了整个氏族去接下大多数差事。"))
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/steel
 	beltl = /obj/item/rogueweapon/sword/sabre/mulyeog/rumahench
@@ -52,7 +52,7 @@
 
 /datum/advclass/mercenary/rumaclan/sasu
 	name = "流马氏族射手"
-	tutorial = "你是一名出身 Kazengite 异乡武团的弓手。流马氏族是被 Xinyi 王朝放逐的流亡者，世人相信他们曾与当时的叛军有所牵连。为避祸患，整个氏族选择远走他乡。他们并非一支严整有序的军队，而更像是一群经验老到的战士松散聚成的团体。"
+	tutorial = "你是一名出身 风郡裔 异乡武团的弓手。流马氏族是被 信义 王朝放逐的流亡者，世人相信他们曾与当时的叛军有所牵连。为避祸患，整个氏族选择远走他乡。他们并非一支严整有序的军队，而更像是一群经验老到的战士松散聚成的团体。"
 	outfit = /datum/outfit/job/roguetown/mercenary/rumaclan_sasu
 	subclass_stats = list(
 		STATKEY_SPD = 4,
@@ -78,7 +78,7 @@
 /datum/outfit/job/roguetown/mercenary/rumaclan_sasu/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.set_blindness(0)
-	to_chat(H, span_warning("你是氏族中的弓手，弓艺无双。只要报酬够好，你便不介意为了自己、为了领头的 Seonjang，或为了整个氏族去接下大多数差事。"))
+	to_chat(H, span_warning("你是氏族中的弓手，弓艺无双。只要报酬够好，你便不介意为了自己、为了领头的 首将，或为了整个氏族去接下大多数差事。"))
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/quiver/arrows
 	beltl = /obj/item/flashlight/flare/torch/lantern

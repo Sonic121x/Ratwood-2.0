@@ -2,7 +2,7 @@
 //I'm another genius and too lazy to work around it.
 /datum/advclass/foreigner
 	name = "东方武者"
-	tutorial = "你是一名来自遥远 Kazengun 国度的武者，渡海而来，自东海彼岸踏上这片土地。"
+	tutorial = "你是一名来自遥远 风郡 国度的武者，渡海而来，自东海彼岸踏上这片土地。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = NON_DWARVEN_RACE_TYPES // Clothing has no dwarf sprites.
 	outfit = /datum/outfit/job/roguetown/adventurer/kazengun
@@ -28,7 +28,7 @@
 
 /datum/outfit/job/roguetown/adventurer/kazengun/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是一名来自遥远 Kazengun 国度的武者，渡海而来，自东海彼岸踏上这片土地。"))
+	to_chat(H, span_warning("你是一名来自遥远 风郡 国度的武者，渡海而来，自东海彼岸踏上这片土地。"))
 	head = /obj/item/clothing/head/roguetown/mentorhat
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
@@ -63,7 +63,7 @@
 
 /datum/advclass/foreigner/yoruku
 	name = "东方刺客"
-	tutorial = "Yoruku 是 Kazengun 所培养出的特务，专精暗杀、破坏与非常规战斗。你配备的是匕首或短剑，最适合在城堡逼仄的走廊与后巷狭窄的阴影里出手。"
+	tutorial = "Yoruku 是 风郡 所培养出的特务，专精暗杀、破坏与非常规战斗。你配备的是匕首或短剑，最适合在城堡逼仄的走廊与后巷狭窄的阴影里出手。"
 	allowed_races = NON_DWARVEN_RACE_TYPES //Clothing has no dwarf sprites.
 	outfit = /datum/outfit/job/roguetown/adventurer/yoruku
 	subclass_languages = list(/datum/language/kazengunese)
@@ -87,7 +87,7 @@
 
 /datum/outfit/job/roguetown/adventurer/yoruku/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Yoruku 是 Kazengun 所培养出的特务，专精暗杀、破坏与非常规战斗。你配备的是匕首或短剑，最适合在城堡逼仄的走廊与后巷狭窄的阴影里出手。"))
+	to_chat(H, span_warning("Yoruku 是 风郡 所培养出的特务，专精暗杀、破坏与非常规战斗。你配备的是匕首或短剑，最适合在城堡逼仄的走廊与后巷狭窄的阴影里出手。"))
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/yoruku
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(

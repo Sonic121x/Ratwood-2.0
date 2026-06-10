@@ -81,7 +81,7 @@
 
 /datum/advclass/mercenary/desert_rider/zeybek
 	name = "沙海骑手泽伊贝克"
-	tutorial = "Zybantu 的“刃舞者”闻名天下，也令世人畏惧。他们在长短兵刃上的造诣众所周知。"
+	tutorial = "兹班图 的“刃舞者”闻名天下，也令世人畏惧。他们在长短兵刃上的造诣众所周知。"
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider_zeybek
 	traits_applied = list(TRAIT_DODGEEXPERT,TRAIT_DUALWIELDER)
 	subclass_stats = list(
@@ -109,7 +109,7 @@
 
 /datum/outfit/job/roguetown/mercenary/desert_rider_zeybek/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Zybantu 的“刃舞者”闻名天下，也令世人畏惧。他们在长短兵刃上的造诣众所周知。"))
+	to_chat(H, span_warning("兹班图 的“刃舞者”闻名天下，也令世人畏惧。他们在长短兵刃上的造诣众所周知。"))
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/zyb
 	neck = /obj/item/clothing/neck/roguetown/leather
 	mask = /obj/item/clothing/mask/rogue/facemask/ancient

@@ -23,7 +23,7 @@
 	result_atoms = list(/obj/item/enchantmentscroll/mining)
 
 /datum/runeritual/enchanting/xylix
-	name = "希利克斯的恩典"
+	name = "赛利克斯的恩典"
 	desc = "何其幸运！"
 	blacklisted = FALSE
 	tier = 1

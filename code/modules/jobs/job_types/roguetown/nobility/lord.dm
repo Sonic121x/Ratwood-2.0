@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/inbred
 	name = "近亲领主"
-	tutorial = "Psydon 与 Astrata 似乎仍对你露出了微笑。尽管你身躯孱弱、血统畸败，家族中也从未停止过想把你排除出继承序列的阴谋，你却还是莫名其妙地坐上了谷地领主之位。愿你的统治长存百年。"
+	tutorial = "普赛顿 与 阿斯特拉塔 似乎仍对你露出了微笑。尽管你身躯孱弱、血统畸败，家族中也从未停止过想把你排除出继承序列的阴谋，你却还是莫名其妙地坐上了谷地领主之位。愿你的统治长存百年。"
 	outfit = /datum/outfit/job/roguetown/lord/inbred
 	category_tags = list(CTAG_LORD)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_DNR, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)

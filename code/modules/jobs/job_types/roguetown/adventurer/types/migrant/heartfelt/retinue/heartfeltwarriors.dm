@@ -1,7 +1,7 @@
 
 /datum/advclass/heartfelt/retinue/houseguard
-	name = "Heartfelt 家卫"
-	tutorial = "你是侍奉 Heartfelt 领主的家卫，是那座昔日繁盛、如今却已沦为废墟的男爵领的勇武守护者。\
+	name = "赤心 家卫"
+	tutorial = "你是侍奉 赤心 领主的家卫，是那座昔日繁盛、如今却已沦为废墟的男爵领的勇武守护者。\
 	在 Magos 的引领下，你来到这片土地，寻求援助以重振旧日领土的荣光，或许也为自己夺下一座新的王座。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
@@ -109,8 +109,8 @@
 
 // Ranged weapons
 /datum/advclass/heartfelt/retinue/housearb
-	name = "Heartfelt 射手"
-	tutorial = "你是侍奉 Heartfelt 领主的射手，是那座昔日繁盛、如今沦为废墟的男爵领的远程战士。\
+	name = "赤心 射手"
+	tutorial = "你是侍奉 赤心 领主的射手，是那座昔日繁盛、如今沦为废墟的男爵领的远程战士。\
 	在 Magos 的引领下，你来到这片土地，寻求援助以重振旧日领土的荣光，或许也为自己夺下一座新的王座。"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/heartfelt/retinue/housearb
@@ -217,8 +217,8 @@
 //  SQUIRE - Pseudo Cavalry/MAA/Skirmisher. Jack of All Trades. Master of None.
 
 /datum/advclass/heartfelt/retinue/squire
-	name = "Heartfelt 侍从"
-	tutorial = "你是 Heartfelt 骑士麾下的侍从，是那座昔日繁盛、如今沦为废墟的男爵领勇武卫士中的见习者。\
+	name = "赤心 侍从"
+	tutorial = "你是 赤心 骑士麾下的侍从，是那座昔日繁盛、如今沦为废墟的男爵领勇武卫士中的见习者。\
 	在 Magos 的引领下，你来到这片土地，寻求援助以重振旧日领土的荣光，或许也为自己夺下一座新的王座。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT

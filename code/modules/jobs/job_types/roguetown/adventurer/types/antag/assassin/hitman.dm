@@ -59,7 +59,7 @@
 	beltl = /obj/item/rogueweapon/knuckles
 
 	if(!istype(H.patron, /datum/patron/inhumen/graggar))
-		var/inputty = input(H, "你要将自己的信仰改为 Graggar 吗？", "兽吼回荡", "否") as anything in list("是", "否")
+		var/inputty = input(H, "你要将自己的信仰改为 格拉加 吗？", "兽吼回荡", "否") as anything in list("是", "否")
 		if(inputty == "是")
-			to_chat(H, span_warning("我先前侍奉的神明已弃我而去……如今，Graggar 才是我的新主人。"))
+			to_chat(H, span_warning("我先前侍奉的神明已弃我而去……如今，格拉加 才是我的新主人。"))
 			H.set_patron(/datum/patron/inhumen/graggar)

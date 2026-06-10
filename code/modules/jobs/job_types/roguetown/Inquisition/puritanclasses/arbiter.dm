@@ -116,7 +116,7 @@ Here because they're unused elsewhere.
 */
 /obj/item/storage/belt/rogue/leather/arbiter
 	name = "织带腰具"
-	desc = "一条皮带，搭配若干 Otavan 风格的织带与小袋。<br>\
+	desc = "一条皮带，搭配若干 奥塔万 风格的织带与小袋。<br>\
 	这种样式由早年某位 Arbiter 首创，历经一两百年后，仍被那些有相同需求的人沿用至今。"
 	icon_state = "overseerbelt"
 	item_state = "overseerbelt"
@@ -163,7 +163,7 @@ Here because they're unused elsewhere.
 
 /obj/item/clothing/head/roguetown/helmet/arbiter
 	name = "裁决官面具"
-	desc = "一副标志性的 gilbranze 面具，描绘着祂的面容，正如祂一般悲泣不止。"
+	desc = "一副标志性的吉尔青铜面具，描绘着祂的面容，正如祂一般悲泣不止。"
 	icon_state = "overseermask"
 	item_state = "overseermask"
 	icon = 'icons/roguetown/clothing/special/overseer/overseer.dmi'

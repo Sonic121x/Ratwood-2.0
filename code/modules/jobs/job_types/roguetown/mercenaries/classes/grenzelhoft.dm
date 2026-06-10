@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/grenzelhoft
 	name = "双饷佣兵"
-	tutorial = "你是一名 Doppelsoldner，也就是所谓的“双饷佣兵”，是由 Zenitstadt 剑术行会训练出的资深前线剑士。"
+	tutorial = "你是一名 双饷佣兵，也就是所谓的“双饷佣兵”，是由 天顶城 剑术行会训练出的资深前线剑士。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
@@ -35,16 +35,16 @@
 
 /datum/outfit/job/roguetown/mercenary/grenzelhoft/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是一名 Doppelsöldner，也就是所谓的“双饷佣兵”，是由 Zenitstadt 剑术行会训练出的资深前线剑士。"))
+	to_chat(H, span_warning("你是一名 双饷佣兵，也就是所谓的“双饷佣兵”，是由 天顶城 剑术行会训练出的资深前线剑士。"))
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate
 	if(H.mind)
-		var/weapons = list("双手巨剑", "Kriegmesser 与小圆盾")
+		var/weapons = list("双手巨剑", "战刀与小圆盾")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
 			if("双手巨剑")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/greatsword/grenz
-			if("Kriegmesser 与小圆盾") // Buckler cuz they have no shield skill.
+			if("战刀与小圆盾") // Buckler cuz they have no shield skill.
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser
 				backl = /obj/item/rogueweapon/shield/buckler
@@ -197,8 +197,8 @@
 	H.merctype = 7
 
 /datum/advclass/mercenary/grenzelhoft/mage
-	name = "战斗学者"
-	tutorial = "你是一名 Gefechtsgelehrter，也就是“战斗学者”，是出身 Celestial Academy of Magos 的骄傲法师，其在攻城魔法与奥术力学上的造诣无可匹敌。"
+	name = "战阵学者"
+	tutorial = "你是一名 战阵学者，也就是“战阵学者”，是出身 天穹魔导学院 的骄傲法师，其在攻城魔法与奥术力学上的造诣无可匹敌。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_mage
@@ -232,7 +232,7 @@
 
 /datum/outfit/job/roguetown/mercenary/grenzelhoft_mage/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是一名 Gefechtsgelehrter，也就是“战斗学者”，是出身 Celestial Academy of Magos 的骄傲法师，其在攻城魔法与奥术力学上的造诣无可匹敌。"))
+	to_chat(H, span_warning("你是一名 战阵学者，也就是“战阵学者”，是出身 天穹魔导学院 的骄傲法师，其在攻城魔法与奥术力学上的造诣无可匹敌。"))
 	belt = /obj/item/storage/belt/rogue/leather/battleskirt
 	backl = /obj/item/rogueweapon/woodstaff/emerald/blacksteelstaff
 	cloak = /obj/item/clothing/cloak/stabard/grenzelmage

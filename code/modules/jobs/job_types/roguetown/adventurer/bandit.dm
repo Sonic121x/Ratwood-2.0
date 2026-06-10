@@ -75,7 +75,7 @@
 		if("否") 
 			to_chat(H, span_warning("我入伙还不算久。到目前为止，我的罪行尚未引起注意，但也因此缺了些历练。"))
 			return null
-	var/bounty_poster = input(H, "是谁悬赏缉拿你？", "悬赏发布者") as anything in list("Rotwood 司法庭", "Grenzelhoft 神圣教廷")
+	var/bounty_poster = input(H, "是谁悬赏缉拿你？", "悬赏发布者") as anything in list("腐木谷 司法庭", "格伦泽尔霍夫特 神圣教廷")
 	var/bounty_severity = input(H, "你的恶名有多响？", "悬赏金额") as anything in list("小角色", "拦路匪", "山谷梦魇")
 	var/race = H.dna.species
 	var/gender = H.gender

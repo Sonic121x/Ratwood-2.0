@@ -2,7 +2,7 @@
 //Capable of torture and intended for espionage.
 /datum/advclass/confessor
 	name = "告解官"
-	tutorial = "你是 Psydon 的猎手，在潜行与侦缉之道上无人能及。\
+	tutorial = "你是 普赛顿 的猎手，在潜行与侦缉之道上无人能及。\
 	没有哪个嫌犯强大到无法调查，没有哪个房间戒备森严到无法潜入，也没有哪处弱点隐秘到无法利用。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -49,7 +49,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	if(H.mind)
 		var/weapons = list("受祝 Psydonic 匕首", "Psydonic 手锤", "Psydonic 短剑")
-		var/weapon_choice = input(H,"选择你的武器。", "执起 Psydon 的兵刃。") as anything in weapons
+		var/weapon_choice = input(H,"选择你的武器。", "执起 普赛顿 的兵刃。") as anything in weapons
 		switch(weapon_choice)
 			if("受祝 Psydonic 匕首")
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
@@ -63,7 +63,7 @@
 				r_hand = /obj/item/rogueweapon/scabbard/sword
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 		var/quivers = list("弩矢 - 钢尖", "裂甲弩矢 - 银尖，伤害减半")
-		var/bolt_choice = input(H,"选择你的弹药。", "执起 Psydon 的飞矢。") as anything in quivers
+		var/bolt_choice = input(H,"选择你的弹药。", "执起 普赛顿 的飞矢。") as anything in quivers
 		switch(bolt_choice)
 			if("弩矢 - 钢尖")
 				beltl = /obj/item/quiver/bolts

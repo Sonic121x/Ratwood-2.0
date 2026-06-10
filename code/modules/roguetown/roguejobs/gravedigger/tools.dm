@@ -383,7 +383,7 @@
 /obj/item/rogueweapon/shovel/silver
 	force = 25
 	name = "银铲"
-	desc = "人之所以异于野兽，唯有共情之心。无论死者生前做过什么，亵渎遗体都会招致神怒。让他们安眠于交覆的泥土之下，将其灵魂渡往 Psydonia 之外的世界，迎向最终的审判。"
+	desc = "人之所以异于野兽，唯有共情之心。无论死者生前做过什么，亵渎遗体都会招致神怒。让他们安眠于交覆的泥土之下，将其灵魂渡往 普赛多尼亚 之外的世界，迎向最终的审判。"
 	icon_state = "silvershovel"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	is_silver = TRUE
@@ -578,7 +578,7 @@
 		qdel(src)
 
 /obj/item/rogueweapon/shovel/saperka
-	name = "Saperka"
+	name = "萨佩尔卡"
 	desc = "一把紧凑的钢头手铲，深受开拓者喜爱。\
 	历经百次野外作业，它的套口因撬挖而满是缺痕，刃口也被磨得足以在紧要关头劈开树根，甚至护甲。"
 	force = 12//It has a gripped state. USE IT!!!!!

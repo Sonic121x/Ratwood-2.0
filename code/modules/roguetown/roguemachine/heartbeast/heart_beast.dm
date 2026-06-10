@@ -22,10 +22,10 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/c = user
 		if(c.patron.type == /datum/patron/divine/pestra)
-			. += span_info("佩斯特拉的神圣之兽。难以计数的岁月里，这些巨兽一直被封存在重门之后，让 Pestra 教派得以延长寿命。")
+			. += span_info("佩斯特拉的神圣之兽。难以计数的岁月里，这些巨兽一直被封存在重门之后，让 佩斯特拉 教派得以延长寿命。")
 			. += span_infection("但其余的人终究坐不住了，渴求将纯净 lux 据为己有……")
 			. += span_info("如今，在十光照耀的大多数地区，都能见到它们被投入使用，以此减轻痛苦。")
-			. += span_infection("因为这头由 humenkind 奇思巧技造就的 Pestra 巨兽，会影响一整个地区内的所有神圣法术。")
+			. += span_infection("因为这头由 humenkind 奇思巧技造就的 佩斯特拉 巨兽，会影响一整个地区内的所有神圣法术。")
 
 /obj/structure/roguemachine/chimeric_heart_beast/proc/initialize_personality()
 	// Pick random archetype

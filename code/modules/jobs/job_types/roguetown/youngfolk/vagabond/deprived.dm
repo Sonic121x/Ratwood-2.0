@@ -1,7 +1,7 @@
 /datum/advclass/vagabond_deprived
 	name = "失乡者"
 	examine_name = "乞丐"
-	tutorial = "你如今只剩下那面可信的盾和一根木棒。战争夺走了你拥有的一切，但你究竟还能夺回本该属于自己的东西，还是终会屈服于 Psydonia 的恐怖之下？"
+	tutorial = "你如今只剩下那面可信的盾和一根木棒。战争夺走了你拥有的一切，但你究竟还能夺回本该属于自己的东西，还是终会屈服于 普赛多尼亚 的恐怖之下？"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/vagabond/deprived

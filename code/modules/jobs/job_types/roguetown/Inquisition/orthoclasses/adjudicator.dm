@@ -3,7 +3,7 @@
 //They get combination setups. The backbone of the Inquisitor's sect.
 /datum/advclass/psydoniantemplar // A templar, but for the Inquisition
 	name = "裁律骑士"
-	tutorial = "你是 Psydon 的骑士，身披纵棱锁甲，并被赐予施行低阶神迹的能力。\
+	tutorial = "你是 普赛顿 的骑士，身披纵棱锁甲，并被赐予施行低阶神迹的能力。\
 	虽然无缘更高阶的奇迹与仪式，但你以严整武艺与受祝兵装弥补了这一切。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -68,7 +68,7 @@
 /datum/outfit/job/roguetown/psydoniantemplar/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
 	var/helmets = list("巴布塔盔", "萨莱特盔", "阿米特盔", "桶盔")
-	var/helmet_choice = input(H,"选择你的头盔。", "戴上 Psydon 的圣盔。") as anything in helmets
+	var/helmet_choice = input(H,"选择你的头盔。", "戴上 普赛顿 的圣盔。") as anything in helmets
 	switch(helmet_choice)
 		if("巴布塔盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute, SLOT_HEAD, TRUE)
@@ -80,7 +80,7 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psybucket, SLOT_HEAD, TRUE)
 
 	var/armors = list("锁子甲袍", "胸甲")
-	var/armor_choice = input(H, "选择你的护甲。", "披上 Psydon 的圣衣。") as anything in armors
+	var/armor_choice = input(H, "选择你的护甲。", "披上 普赛顿 的圣衣。") as anything in armors
 	switch(armor_choice)
 		if("锁子甲袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate, SLOT_ARMOR, TRUE)
@@ -90,7 +90,7 @@
 	var/weapons = list("Psydonic 长剑 + 盾", "Psydonic 战斧 + 盾", "Psydonic 鞭 + 盾",
 		"Psydonic 连枷 + 盾", "Psydonic 大钉锤 + 短剑", "Psydonic 长矛 + 手锤", "Psydonic 长柄斧 + 短剑",
 		"Psydonic 戟 + 短剑", "Psydonic 巨剑 + 手锤")
-	var/weapon_choice = input(H,"选择你的武器。", "执起 Psydon 的兵刃。") as anything in weapons
+	var/weapon_choice = input(H,"选择你的武器。", "执起 普赛顿 的兵刃。") as anything in weapons
 	switch(weapon_choice)
 		//Typical arms and such.
 		if("Psydonic 长剑 + 盾")

@@ -1,7 +1,7 @@
 
 /datum/advclass/heartfeltlord
-	name = "Heartfelt 领主"
-	tutorial = "你是 Heartfelt 的骄傲领主。 \
+	name = "赤心 领主"
+	tutorial = "你是 赤心 的骄傲领主。 \
 	可你为何会来到 Enigma 之岛？"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT

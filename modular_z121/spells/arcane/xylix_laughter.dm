@@ -1,5 +1,5 @@
 /obj/effect/proc_holder/spell/invoked/xylix_laughter
-	name = "Xylix狂笑术"
+	name = "赛利克斯笑术"
 	desc = "以戏谑的奥术冲击目标心神，迫使其进行意志检定。失败者将失声狂笑并狼狈倒地。"
 	cost = 3
 	xp_gain = TRUE

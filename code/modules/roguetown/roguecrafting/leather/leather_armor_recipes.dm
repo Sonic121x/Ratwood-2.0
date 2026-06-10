@@ -31,14 +31,14 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/armor/volfhelm
-	name = "Volf 头盔"
+	name = "沃尔夫 头盔"
 	result = list(/obj/item/clothing/head/roguetown/helmet/leather/volfhelm)
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fur/wolf = 1, /obj/item/natural/head/volf = 1)
 	sellprice = 20
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/armor/volfmantle
-	name = "Volf 披肩"
+	name = "沃尔夫 披肩"
 	result = /obj/item/clothing/cloak/volfmantle
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,

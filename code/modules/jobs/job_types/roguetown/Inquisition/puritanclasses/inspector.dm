@@ -103,7 +103,7 @@
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 	var/quivers = list("弩矢 - 钢尖", "裂甲弩矢 - 银尖，伤害减半")
-	var/bolt_choice = input(H,"选择你的弹药。", "执起 Psydon 的飞矢。") as anything in quivers
+	var/bolt_choice = input(H,"选择你的弹药。", "执起 普赛顿 的飞矢。") as anything in quivers
 	switch(bolt_choice)
 		if("弩矢 - 钢尖")
 			H.equip_to_slot_or_del(new /obj/item/quiver/bolts, SLOT_BELT_R, TRUE)

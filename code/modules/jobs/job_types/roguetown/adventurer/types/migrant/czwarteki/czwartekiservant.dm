@@ -1,5 +1,5 @@
 /datum/advclass/czwarteki/servant
-	name = "Czwarteki 仆役"
+	name = "兹瓦尔特基 仆役"
 	tutorial = "你是领主身边的仆役，随扈从一同踏上穿越谷地的旅程。你唯一的职责，就是确保领主及其继承人在这趟途中安然无恙。"
 	outfit = /datum/outfit/job/roguetown/czwarteki/servant
 	traits_applied = list(TRAIT_SLEUTH, TRAIT_KEENEARS, TRAIT_CICERONE, TRAIT_HOMESTEAD_EXPERT)

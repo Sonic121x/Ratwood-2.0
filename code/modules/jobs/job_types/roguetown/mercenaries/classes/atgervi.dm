@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/atgervi
 	name = "阿特格维"
-	tutorial = "你是来自 Gronn 高地的瓦兰吉亚人，是兼具战士与商旅身份的远征者。你们深入 Zybantu 帝国的事迹，将永远被史家铭记。"
+	tutorial = "你是来自 格隆恩 高地的瓦兰吉亚人，是兼具战士与商旅身份的远征者。你们深入 兹班图 帝国的事迹，将永远被史家铭记。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/atgervi
@@ -39,7 +39,7 @@
 
 /datum/outfit/job/roguetown/mercenary/atgervi/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是来自 Gronn 高地的瓦兰吉亚人，是兼具战士与商旅身份的远征者。你们深入 Zybantu 帝国的事迹，将永远被史家铭记。"))
+	to_chat(H, span_warning("你是来自 格隆恩 高地的瓦兰吉亚人，是兼具战士与商旅身份的远征者。你们深入 兹班图 帝国的事迹，将永远被史家铭记。"))
 	if(H.mind?.current)
 		H.mind.current.faction += "[H.name]_faction"
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
@@ -67,7 +67,7 @@
 
 /datum/advclass/mercenary/atgervi/shaman
 	name = "阿特格维萨满"
-	tutorial = "你是 Fjall，也即“北方荒原”之地的萨满。你们是凶悍的战士，不以空洞祈祷侍奉诸位兽神，而是借由仪式性的暴力与祂们沟通。"
+	tutorial = "你是 菲亚尔，也即“北方荒原”之地的萨满。你们是凶悍的战士，不以空洞祈祷侍奉诸位兽神，而是借由仪式性的暴力与祂们沟通。"
 	outfit = /datum/outfit/job/roguetown/mercenary/atgervishaman
 	subclass_languages = list(/datum/language/gronnic)
 	cmode_music = 'sound/music/combat_shaman2.ogg'
@@ -98,7 +98,7 @@
 /datum/outfit/job/roguetown/mercenary/atgervishaman/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.set_blindness(0)
-	to_chat(H, span_warning("你是 Fjall，也即“北方荒原”之地的萨满。你们是凶悍的战士，不以空洞祈祷侍奉诸位兽神，而是借由仪式性的暴力与祂们沟通。"))
+	to_chat(H, span_warning("你是 菲亚尔，也即“北方荒原”之地的萨满。你们是凶悍的战士，不以空洞祈祷侍奉诸位兽神，而是借由仪式性的暴力与祂们沟通。"))
 	if(H.mind?.current)
 		H.mind.current.faction += "[H.name]_faction"
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
@@ -128,7 +128,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
 	name = "Varangian 锁甲袍"
-	desc = "这是 Hammerhold 佣兵引以为傲的护具，以锁链与皮革精巧结合而成，编成一件厚实而坚韧的防护外袍。"
+	desc = "这是 铁锤堡 佣兵引以为傲的护具，以锁链与皮革精巧结合而成，编成一件厚实而坚韧的防护外袍。"
 	icon_state = "atgervi_raider_mail"
 	item_state = "atgervi_raider_mail"
 	max_integrity = 400
@@ -188,7 +188,7 @@
 	dropshrink = 0.8
 
 /obj/item/clothing/shoes/roguetown/boots/leather/atgervi
-	name = "Atgervi 皮靴"
+	name = "阿特格维 皮靴"
 	desc = "一双结实耐穿的皮靴，既能撑过战斗，也扛得住北地冰寒。"
 	icon_state = "atgervi_boots"
 	item_state = "atgervi_boots"

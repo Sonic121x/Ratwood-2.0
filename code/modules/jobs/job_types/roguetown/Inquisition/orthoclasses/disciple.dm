@@ -2,7 +2,7 @@
 //These guys get some absurd power.
 /datum/advclass/disciple
 	name = "门徒"
-	tutorial = "你是 Psydon 的修士，既通武艺，也习经文。神职者将圣地流血视作一种“罪”，但若只是把人打得不省人事，他们可不会有半点顾忌。"
+	tutorial = "你是 普赛顿 的修士，既通武艺，也习经文。神职者将圣地流血视作一种“罪”，但若只是把人打得不省人事，他们可不会有半点顾忌。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/disciple
@@ -44,7 +44,7 @@
 	..()
 	if(H.mind)
 		var/weapons = list("修行 - 徒手", "拳刃", "指虎", "四分杖")
-		var/weapon_choice = input(H,"选择你的武器。", "执起 Psydon 的兵刃。") as anything in weapons
+		var/weapon_choice = input(H,"选择你的武器。", "执起 普赛顿 的兵刃。") as anything in weapons
 		switch(weapon_choice)
 			if("修行 - 徒手")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)

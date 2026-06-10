@@ -211,7 +211,7 @@
 		)
 
 /datum/crafting_recipe/roguetown/survival/abyssoramulet
-	name = "Abyssor 护符"
+	name = "阿比索尔 护符"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/abyssor
 	reqs = list(
@@ -220,7 +220,7 @@
 		)
 
 /datum/crafting_recipe/roguetown/survival/woodcross
-	name = "木制 Psydon 十字架"
+	name = "木制 普赛顿 十字架"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/wood
 	reqs = list(

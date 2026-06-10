@@ -42,7 +42,7 @@
 	// Add druidic skill for Dendor followers
 	if(istype(H.patron, /datum/patron/divine/dendor))
 		H.adjust_skillrank(/datum/skill/magic/druidic, 3, TRUE)
-		to_chat(H, span_notice("作为 Dendor 的信徒，我天生便知晓德鲁伊秘法。"))
+		to_chat(H, span_notice("作为 登多尔 的信徒，我天生便知晓德鲁伊秘法。"))
 
 	to_chat(H, span_warning("你是一名云游侍僧，既通神迹，也习武艺。\
 	你舍弃了圣骑士所穿的锁子长罩甲，转而以不见血的打击折服对手。\
@@ -764,7 +764,7 @@
 
 /datum/advclass/cleric/stigmata
 	name = "圣痕者"
-	tutorial = "PSYDON 在悲泣。你是全父最虔诚的教士之一，甘愿将他人的苦难背负到自己身上。你已弃绝暴力。你将受苦。你将忍耐。"
+	tutorial = "普赛顿 在悲泣。你是全父最虔诚的教士之一，甘愿将他人的苦难背负到自己身上。你已弃绝暴力。你将受苦。你将忍耐。"
 	outfit = /datum/outfit/job/roguetown/adventurer/stigmata
 	allowed_races = RACES_NO_CONSTRUCT
 
@@ -796,7 +796,7 @@
 	subclass_stashed_items = list(
 		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
 	)
-	extra_context = "这是 Psydon 信徒专属的子职业；若你当前并非其信徒，它会强制将你改为该信仰。你将成为和平主义者，并能调用 Psydon 赦罪者能力的较弱版本。"
+	extra_context = "这是 普赛顿 信徒专属的子职业；若你当前并非其信徒，它会强制将你改为该信仰。你将成为和平主义者，并能调用 普赛顿 赦罪者能力的较弱版本。"
 
 /datum/outfit/job/roguetown/adventurer/stigmata
 	allowed_patrons = list(/datum/patron/old_god)

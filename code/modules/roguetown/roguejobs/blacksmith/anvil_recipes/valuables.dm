@@ -92,28 +92,28 @@
 
 //Gold Rings
 /datum/anvil_recipe/valuables/emeringg
-	name = "Gemerald 戒指, 黄金 (+1 Gemerald)"
+	name = "翠晶 戒指, 黄金 (+1 翠晶)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/green)
 	craftdiff = SKILL_LEVEL_EXPERT
 	created_item = /obj/item/clothing/ring/emerald
 
 /datum/anvil_recipe/valuables/rubyg
-	name = "Rontz 戒指, 黄金 (+1 Rontz)"
+	name = "隆兹石 戒指, 黄金 (+1 隆兹石)"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/ruby)
 	created_item = /obj/item/clothing/ring/ruby
 
 /datum/anvil_recipe/valuables/topazg
-	name = "Toper 戒指, 黄金 (+1 Toper)"
+	name = "托珀石 戒指, 黄金 (+1 托珀石)"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/yellow)
 	created_item = /obj/item/clothing/ring/topaz
 
 /datum/anvil_recipe/valuables/quartzg
-	name = "Blortz 戒指, 黄金 (+1 Blortz)"
+	name = "布洛兹石 戒指, 黄金 (+1 布洛兹石)"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/blue)
@@ -121,14 +121,14 @@
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/sapphireg
-	name = "Saffira 戒指, 黄金 (+1 Saffira)"
+	name = "蓝晶 戒指, 黄金 (+1 蓝晶)"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/violet)
 	created_item = /obj/item/clothing/ring/sapphire
 
 /datum/anvil_recipe/valuables/diamondg
-	name = "Dorpel 戒指, 黄金 (+1 Dorpel)"
+	name = "多佩尔石 戒指, 黄金 (+1 多佩尔石)"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/diamond)
@@ -155,49 +155,49 @@
 // Silver ingots are now in play, and as such, the steel rings have been converted to silver with their value adjusted accordingly. -Kyogon
 
 /datum/anvil_recipe/valuables/emerings
-	name = "Gemerald 戒指, 白银 (+1 Gemerald)"
+	name = "翠晶 戒指, 白银 (+1 翠晶)"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/green)
 	created_item = /obj/item/clothing/ring/emeralds
 
 /datum/anvil_recipe/valuables/rubys
-	name = "Rontz 戒指, 白银 (+1 Rontz)"
+	name = "隆兹石 戒指, 白银 (+1 隆兹石)"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/ruby)
 	created_item = /obj/item/clothing/ring/rubys
 
 /datum/anvil_recipe/valuables/topazs
-	name = "Toper 戒指, 白银 (+1 Toper)"
+	name = "托珀石 戒指, 白银 (+1 托珀石)"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/yellow)
 	created_item = /obj/item/clothing/ring/topazs
 
 /datum/anvil_recipe/valuables/quartzs
-	name = "Blortz 戒指, 白银 (+1 Blortz)"
+	name = "布洛兹石 戒指, 白银 (+1 布洛兹石)"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/blue)
 	created_item = /obj/item/clothing/ring/quartzs
 
 /datum/anvil_recipe/valuables/sapphires
-	name = "Saffira 戒指, 白银 (+1 Saffira)"
+	name = "蓝晶 戒指, 白银 (+1 蓝晶)"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/violet)
 	created_item = /obj/item/clothing/ring/sapphires
 
 /datum/anvil_recipe/valuables/diamonds
-	name = "Dorpel 戒指, 白银 (+1 Dorpel)"
+	name = "多佩尔石 戒指, 白银 (+1 多佩尔石)"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/diamond)
 	created_item = /obj/item/clothing/ring/diamonds
 
 /datum/anvil_recipe/valuables/terminus
-	name = "特米努斯之终 (+1 黄金 Bar, +1 钢, +1 Rontz)"
+	name = "特米努斯之终 (+1 黄金 Bar, +1 钢, +1 隆兹石)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem/ruby)
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth
@@ -221,38 +221,38 @@
 
 //blacksteel Rings
 /datum/anvil_recipe/valuables/emeringbs
-	name = "Gemerald 戒指, 黑钢 (+1 Gemerald)"
+	name = "翠晶 戒指, 黑钢 (+1 翠晶)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/green)
 	created_item = /obj/item/clothing/ring/emeraldbs
 
 /datum/anvil_recipe/valuables/rubybs
-	name = "Rontz 戒指, 黑钢 (+1 Rontz)"
+	name = "隆兹石 戒指, 黑钢 (+1 隆兹石)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/ruby)
 	created_item = /obj/item/clothing/ring/rubybs
 
 /datum/anvil_recipe/valuables/topazbs
-	name = "Toper 戒指, 黑钢 (+1 Toper)"
+	name = "托珀石 戒指, 黑钢 (+1 托珀石)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/yellow)
 	created_item = /obj/item/clothing/ring/topazbs
 
 /datum/anvil_recipe/valuables/quartzbs
-	name = "Blortz 戒指, 黑钢 (+1 Blortz)"
+	name = "布洛兹石 戒指, 黑钢 (+1 布洛兹石)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/blue)
 	created_item = /obj/item/clothing/ring/quartzbs
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/sapphirebs
-	name = "Saffira 戒指, 黑钢 (+1 Saffira)"
+	name = "蓝晶 戒指, 黑钢 (+1 蓝晶)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/violet)
 	created_item = /obj/item/clothing/ring/sapphirebs
 
 /datum/anvil_recipe/valuables/diamondbs
-	name = "Dorpel 戒指, 黑钢 (+1 Dorpel)"
+	name = "多佩尔石 戒指, 黑钢 (+1 多佩尔石)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/diamond)
 	created_item = /obj/item/clothing/ring/diamondbs

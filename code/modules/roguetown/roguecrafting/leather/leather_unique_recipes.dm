@@ -31,7 +31,7 @@
 	sellprice = 12
 
 /datum/crafting_recipe/roguetown/leather/unique/grenzelboots
-	name = "Grenzelhoftian 靴子"
+	name = "格伦泽尔霍夫特ian 靴子"
 	result = list(/obj/item/clothing/shoes/roguetown/boots/grenzelhoft)
 	reqs = list(/obj/item/natural/hide/cured = 1,
 	            /obj/item/reagent_containers/food/snacks/tallow = 1,
@@ -42,7 +42,7 @@
 	sellprice = 15
 
 /datum/crafting_recipe/roguetown/leather/unique/otavanleatherpants
-	name = "Otavan 皮裤"
+	name = "奥塔万 皮裤"
 	result = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/otavan)
 	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1,
 	            /obj/item/natural/fibers = 1,
@@ -63,7 +63,7 @@
 	sellprice = 20
 
 /datum/crafting_recipe/roguetown/leather/unique/otavanboots
-	name = "Otavan 皮靴"
+	name = "奥塔万 皮靴"
 	result = list(/obj/item/clothing/shoes/roguetown/boots/otavan)
 	reqs = list(/obj/item/natural/hide/cured = 1,
 	            /obj/item/reagent_containers/food/snacks/tallow = 1,

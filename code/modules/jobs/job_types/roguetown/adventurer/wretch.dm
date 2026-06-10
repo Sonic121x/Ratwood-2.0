@@ -64,7 +64,7 @@
 
 // Proc for wretch to select a bounty
 /proc/wretch_select_bounty(mob/living/carbon/human/H)
-	var/bounty_poster = input(H, "是谁悬赏通缉了你？", "悬赏发布者") as anything in list("谷地司法厅", "Grenzelhoft 神圣教廷", "Otava 正教会")
+	var/bounty_poster = input(H, "是谁悬赏通缉了你？", "悬赏发布者") as anything in list("谷地司法厅", "格伦泽尔霍夫特 神圣教廷", "奥塔瓦 正教会")
 	// Felinid said we should gate it at 100 or so on at the lowest, so that wretch cannot ezmode it.
 	var/bounty_severity = input(H, "你的罪行有多严重？", "悬赏金额") as anything in list("轻罪", "伤人害命（+1 幸运）", "骇人暴行（全属性+1）")
 	var/race = H.dna.species

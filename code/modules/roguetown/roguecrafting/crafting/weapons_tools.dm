@@ -303,7 +303,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/survival/quarterstaff_psydonic
-	name = "Psydon 银箍长棍"
+	name = "普赛顿 银箍长棍"
 	category = "工具"
 	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff/psy)
 	reqs = list(

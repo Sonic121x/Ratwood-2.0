@@ -124,18 +124,18 @@
 				/obj/item/grown/log/tree/stake = 3)
 
 /datum/crafting_recipe/roguetown/structure/psycruci
-	name = "木制 Psydon 十字架"
+	name = "木制 普赛顿 十字架"
 	result = /obj/structure/fluff/psycross/psycrucifix
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/grown/log/tree/stake = 3)
 
 /datum/crafting_recipe/roguetown/structure/stonepsycruci
-	name = "石制 Psydon 十字架"
+	name = "石制 普赛顿 十字架"
 	result = /obj/structure/fluff/psycross/psycrucifix/stone
 	reqs =	list(/obj/item/natural/stone = 3)
 
 /datum/crafting_recipe/roguetown/structure/silverpsycruci
-	name = "银制 Psydon 十字架"
+	name = "银制 普赛顿 十字架"
 	result = /obj/structure/fluff/psycross/psycrucifix/silver
 	reqs = list(/obj/item/ingot/silverblessed = 1,
 				/obj/item/ingot/steel = 2)
@@ -943,7 +943,7 @@
 
 // SCOM is not constructable, only the receive only version is constructable to prevent unactionable sneeding.
 /datum/crafting_recipe/roguetown/structure/rcom
-	name = "RCOM"
+	name = "RCOM传讯网"
 	result = /obj/structure/roguemachine/scomm/receive_only
 	reqs = list(/obj/item/ingot/iron = 1,
 					/obj/item/reagent_containers/food/snacks/smallrat = 1)
@@ -1351,7 +1351,7 @@
 
 
 /datum/crafting_recipe/roguetown/structure/floorcandlepink
-	name = "Eora 落地蜡烛"
+	name = "伊欧拉 落地蜡烛"
 	result = /obj/machinery/light/rogue/candle/floorcandle/pink
 	reqs = list(/obj/item/candle/eora = 2)
 	verbage_simple = "建造"
@@ -1362,7 +1362,7 @@
 
 
 /datum/crafting_recipe/roguetown/structure/floorcandlealtpink
-	name = "备用 Eora 落地蜡烛"
+	name = "备用 伊欧拉 落地蜡烛"
 	result = /obj/machinery/light/rogue/candle/floorcandle/alt/pink
 	reqs = list(/obj/item/candle/eora = 2)
 	verbage_simple = "建造"

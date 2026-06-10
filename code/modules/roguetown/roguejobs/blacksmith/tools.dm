@@ -257,7 +257,7 @@
 
 /obj/item/rogueweapon/hammer/ancient
 	name = "古代锤"
-	desc = "一把以抛光 Gilbronze 打造的锤子。被巧妙地重新装在光滑握柄上，它将继续塑造 HER 军团士兵的武备与伟大造物……"
+	desc = "一把以抛光 吉尔青铜 打造的锤子。被巧妙地重新装在光滑握柄上，它将继续塑造 HER 军团士兵的武备与伟大造物……"
 	icon_state = "ahammer"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -431,7 +431,7 @@
 
 /obj/item/rogueweapon/tongs/ancient
 	name = "古代钳子"
-	desc = "Gilbranze 锻成的钳口夹起熔融合金，将其送到铁砧与锤下。很快，它就会锻出新的传奇；一个不再被这教条千年所玷污的传奇。"
+	desc = "吉尔青铜 锻成的钳口夹起熔融合金，将其送到铁砧与锤下。很快，它就会锻出新的传奇；一个不再被这教条千年所玷污的传奇。"
 	icon_state = "atongs"
 	smeltresult = /obj/item/ingot/aaslag
 

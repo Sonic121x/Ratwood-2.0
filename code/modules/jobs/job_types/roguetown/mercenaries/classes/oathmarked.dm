@@ -199,7 +199,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked
-	name = "Astrata 誓印护符"
+	name = "阿斯特拉塔 誓印护符"
 	desc = "一枚属于暴君的护符。无论佩戴者是否真心信奉其教义，誓印者终究仍以她之名侍奉。 \
 	而这一枚护符还承载着白银的祝福。"
 

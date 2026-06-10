@@ -70,7 +70,7 @@
 	craftdiff = 1 // so if above average int you can craft it without having to dedicate to artificering shit.
 
 /datum/crafting_recipe/roguetown/engineering/freedomchair
-	name = "LIBERTAS"
+	name = "自由机"
 	result = /obj/structure/chair/freedomchair/crafted
 	reqs = list(/obj/item/ingot/gold = 1, /obj/item/roguegear/bronze = 3)
 	verbage_simple = "装配"

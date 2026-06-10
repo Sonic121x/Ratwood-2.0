@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/vaquero
 	name = "瓦克罗"
-	tutorial = "“Vaquero”一词最早源于繁盛的 Etrusca 王国，本只是赶牛人的称呼……但如今，它已成了四处游走的浪客豪侠之名。无论他们是以庇护平民为志，还是靠割人钱袋过活，Vaquero 的价值都由他们横跨大陆刻下的传闻来定义，当然，更常见的则是由一场暴烈的横死为故事收尾。"
+	tutorial = "“牧侠”一词最早源于繁盛的 伊特鲁斯卡 王国，本只是赶牛人的称呼……但如今，它已成了四处游走的浪客豪侠之名。无论他们是以庇护平民为志，还是靠割人钱袋过活，牧侠 的价值都由他们横跨大陆刻下的传闻来定义，当然，更常见的则是由一场暴烈的横死为故事收尾。"
 	outfit = /datum/outfit/job/roguetown/mercenary/vaquero
 	class_select_category = CLASS_CAT_ETRUSCA
 	cmode_music = 'sound/music/combat_vaquero.ogg'

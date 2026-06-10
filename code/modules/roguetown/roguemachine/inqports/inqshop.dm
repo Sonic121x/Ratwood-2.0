@@ -211,17 +211,17 @@
 	marquescost = 12
 
 /datum/inqports/articles/psycrosssilver
-	name = "1 枚银制灵十字"
+	name = "1 枚银制普赛圣十字"
 	item_type = /obj/item/clothing/neck/roguetown/psicross/silver
 	marquescost = 14
 
 /datum/inqports/articles/psycross
-	name = "1 枚灵十字"
+	name = "1 枚普赛圣十字"
 	item_type = /obj/item/clothing/neck/roguetown/psicross
 	marquescost = 2
 
 /datum/inqports/articles/indexaccused
-	name = "3 个 INDEXER、3 份控诉书"
+	name = "3 个 编目机、3 份控诉书"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/indexaccused
 	marquescost = 6
 
@@ -236,7 +236,7 @@
 
 /*
 /datum/inqports/articles/indexers
-	name = "3 个 INDEXER"
+	name = "3 个 编目机"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/indexers
 	marquescost = 4
 

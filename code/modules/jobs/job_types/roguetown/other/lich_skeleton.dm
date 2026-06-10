@@ -536,7 +536,7 @@ LICH SKELETONS
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/lich
 	name = "古旧兜帽"
-	desc = "来自你生前时代之外的粗纺布料，被用来阻隔 Astrata 的光辉，不让它照到那些遭她嫌弃之人。"
+	desc = "来自你生前时代之外的粗纺布料，被用来阻隔 阿斯特拉塔 的光辉，不让它照到那些遭她嫌弃之人。"
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/cloak/stabard/surcoat/lich
@@ -567,7 +567,7 @@ LICH SKELETONS
 
 /obj/item/rogueweapon/shield/gilbranze
 	name = "古旧圆盾"
-	desc = "标枪与短剑最完美的搭档，一面以 gilbronze 制成、看似轻薄却异常坚固的圆盾。这种合金即便薄如斯时，也曾在耐久上胜过钢铁，可纵使岁月桎梏已解，它也再不会如往昔般闪耀。"
+	desc = "标枪与短剑最完美的搭档，一面以吉尔青铜制成、看似轻薄却异常坚固的圆盾。这种合金即便薄如斯时，也曾在耐久上胜过钢铁，可纵使岁月桎梏已解，它也再不会如往昔般闪耀。"
 	icon_state = "ancientshlegion"
 	dropshrink = 0.8
 	force = 15

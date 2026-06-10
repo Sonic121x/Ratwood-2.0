@@ -1,7 +1,7 @@
 /datum/advclass/mercenary/steppesman
-	name = "Aavnik 联盟军"
-	tutorial = "作为对你所属 Kozak 赫特曼履行的强制服役之一环，你在这一年的轮调中离开故土先锋军， \
-	转而加入北方草原的统一佣兵军 Aavnik 联盟，并投身 Ferentine 战线。 \
+	name = "阿夫尼克 联盟军"
+	tutorial = "作为对你所属 哥萨克 赫特曼履行的强制服役之一环，你在这一年的轮调中离开故土先锋军， \
+	转而加入北方草原的统一佣兵军 阿夫尼克 联盟，并投身 费伦提亚的 战线。 \
 	为祖国带回黄金与荣耀。Chest' cherez pobedu."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -49,16 +49,16 @@
 	H.adjust_blindness(-3)
 	var/classchoice
 	if(H.mind)
-		var/classes = list("Starshina - 军刀老兵", "Obyvatel' - 精锐工兵", "Gromoverzhets - 爆破工兵", "Zastrel'shchik - 轻装弓手", "Plastunsky - 轻步战士")
+		var/classes = list("Starshina - 军士长", "Obyvatel' - 精锐工兵", "Gromoverzhets - 爆雷工兵", "Zastrel'shchik - 轻装弓手", "Plastunsky - 潜踪步兵")
 		classchoice = input(H, "选择你的战斗流派。", "可选流派") as anything in classes
 	
 	if (H.mind)
 		H.AddSpell(new /obj/effect/proc_holder/spell/self/choose_riding_virtue_mount)
 
 		switch(classchoice)
-			if("Starshina - 军刀老兵")	//Tl;dr - medium armor class for Mount and Blade larpers who still get a saiga. Akin to Vaquero with specific drip.
+			if("Starshina - 军士长")	//Tl;dr - medium armor class for Mount and Blade larpers who still get a saiga. Akin to Vaquero with specific drip.
 				H.set_blindness(0)
-				to_chat(H, span_warning("Starshina 是北方草原 Kozak 中的初级军官阶层，历经 Grimoria 各地战火的老兵。 \
+				to_chat(H, span_warning("军士长 是北方草原 哥萨克 中的初级军官阶层，历经 Grimoria 各地战火的老兵。 \
 				漫长的服役岁月为你赢来了你的尖顶盔、盾牌与甲胄，但别搞错了。 \
 				你可不是什么坐着喝苦酒的 Grenzel 贵族。带头冲锋吧，Zoloto i slava。"))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
@@ -96,7 +96,7 @@
 
 			if("Obyvatel' - 精锐工兵")	//Tl;dr - medium armor sappers with less mobility in exchange for their different statblock and equipment.
 				H.set_blindness(0)
-				to_chat(H, span_warning("Obyvatel' 是一支训练方式独特的 Kozak 步兵部队，精于破坏与筑垒之术。 \
+				to_chat(H, span_warning("精锐工兵 是一支训练方式独特的 哥萨克 步兵部队，精于破坏与筑垒之术。 \
 				他们往往最先跟随 Starshina 投入战斗，也往往最先倒下。 \
 				你是盾，而你的弟兄们是剑。Dvigaytes' ni dlya kogo." ))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
@@ -141,9 +141,9 @@
 				if(maskchoice != "无")
 					mask = masks[maskchoice]
 
-			if("Gromoverzhets - 爆破工兵")	//Tl;dr - these guys fucking EXPLODE. No whip. No dagger. Less skills. Three TNT sticks. Impact of choice. Godspeed.
+			if("Gromoverzhets - 爆雷工兵")	//Tl;dr - these guys fucking EXPLODE. No whip. No dagger. Less skills. Three TNT sticks. Impact of choice. Godspeed.
 				H.set_blindness(0)
-				to_chat(H, span_warning("Gromoverzhets 是 Obyvatel' 中规模较小的一支， \
+				to_chat(H, span_warning("爆雷工兵 是 精锐工兵 中规模较小的一支， \
 				专门负责连队爆炸物的保管与频繁使用。 \
 				让常识指引你，也让你的投掷手臂足够有力。Ne ubivay sebya, pozhaluysta."))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
@@ -207,7 +207,7 @@
 
 			if("Zastrel'shchik - 轻装弓手")	//Tl;dr - light armor class for Tatar-style archery.
 				H.set_blindness(0)
-				to_chat(H, span_warning("Zastrel'shchik 是北方草原上精于游骑与射术的轻装弓手。 \
+				to_chat(H, span_warning("轻装弓手 是北方草原上精于游骑与射术的轻装弓手。 \
 				他们依赖速度、视野与精准，在战场边缘不断消磨敌人。 \
 				保持机动，别让任何人追上你。"))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
@@ -235,9 +235,9 @@
 				H.change_stat(STATKEY_SPD, 2)
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
-			if("Plastunsky - 轻步战士")		//Tl;dr - Old Steppesman whip build, light armor, be the glass canon you always wanted to be. Live your life, king.
+			if("Plastunsky - 潜踪步兵")		//Tl;dr - Old Steppesman whip build, light armor, be the glass canon you always wanted to be. Live your life, king.
 				H.set_blindness(0)
-				to_chat(H, span_warning("成为 Aavnic、成为 Kozak，并非一种头衔，也非单靠出身就能拥有，而是一种活法。 \
+				to_chat(H, span_warning("成为 阿夫尼克的、成为 哥萨克，并非一种头衔，也非单靠出身就能拥有，而是一种活法。 \
 				这些离经叛道的边地人看待贵族与农夫时，目光里并无差别。 \
 				新近征召而来的他们以 Plastunsky 之名上阵，带着自己能拿得出的全部家当投入战斗。 \
 				他们看似不过是农兵杂牌，却正是文明战士最厌恶的克星。Pust' chetyre zverya vedut tebya." ))

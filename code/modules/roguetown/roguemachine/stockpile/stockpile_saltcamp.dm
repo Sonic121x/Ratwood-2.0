@@ -4,8 +4,8 @@
 GLOBAL_LIST_EMPTY(saltmineticketmachines)
 
 /obj/structure/roguemachine/stockpile_saltcamp
-	name = "希利克斯的赎罪"
-	desc = "是否能被赐予自由，还是被永世无视，全由希利克斯裁定。"
+	name = "赛利克斯的赎罪"
+	desc = "是否能被赐予自由，还是被永世无视，全由赛利克斯裁定。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "stockpile_vendor"
 	density = FALSE
@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 				src.say(pick("急什么，蠢货；你得有盐才能为自由豪赌。", "你没有盐。", "没有盐的罪犯根本算不上罪犯。", "要玩这场游戏，你得先让地面尝到盐。"))
 				return
 			close_ui(usr)
-			src.say("向希利克斯俯首，愿好运眷顾你。")
+			src.say("向赛利克斯俯首，愿好运眷顾你。")
 			if(!roll_for_ticket(usr)) // if we lost the game (like you just did lol), add to spent counter and reset account back to zero
 				salt_spent_on_gambling += get_salt_balance(usr)
 				set_salt_balance(usr, 0)

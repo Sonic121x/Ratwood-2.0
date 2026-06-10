@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(colorlist, list(
 	"Yarrow" = "#f0cb76",
 	"Yellow Ochre" = "#cb9d06",
 	"Mage Yellow" = "#c1b144",
-	"Astrata's Yellow"="#ffe333",
+	"阿斯特拉塔之黄"="#ffe333",
 	"Pale Gold"="#FFFD8D",
 	"Olive" = "#98bf64",
 	"Royal Green" = "#264d26",
@@ -693,4 +693,3 @@ GLOBAL_LIST_INIT(pridelist, list(
 		return
 	dye = null
 	update_icon()
-

@@ -3,7 +3,7 @@
 //Superb for one-on-one clashes, but relies on a full sect - and a saiga - for maximum effectiveness.
 /datum/advclass/puritan/ordinator
 	name = "裁断官"
-	tutorial = "你们是来自邻近 Psydon 修会的裁断军士。受圣化板甲拖累而行动迟缓，常被人误认成魔像；可这些圣骑士早已舍弃其余一切追求，只为一个目的而活：将异种折断在膝下。"
+	tutorial = "你们是来自邻近 普赛顿 修会的裁断军士。受圣化板甲拖累而行动迟缓，常被人误认成魔像；可这些圣骑士早已舍弃其余一切追求，只为一个目的而活：将异种折断在膝下。"
 	outfit = /datum/outfit/job/roguetown/puritan/ordinator
 	subclass_languages = list(/datum/language/otavan)
 	cmode_music = 'sound/music/combat_inqordinator.ogg'

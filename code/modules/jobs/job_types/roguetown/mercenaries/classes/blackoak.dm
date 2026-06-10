@@ -1,7 +1,7 @@
 // Elven unique mercenary type; should be scary in a way solo but easy to kill with a group or bow.
 /datum/advclass/mercenary/blackoak
-	name = "Black Oak 守卫"
-	tutorial = "你是 Black Oak 阵营中一名潜行的守卫者。这支人马一半是佣兵团，一半是为争夺群峰间祖传精灵故土而战的非正规民兵。所幸，你今天来这里并不是为了屠戮公爵麾下的人马，除非……有人出钱让你这么做。"
+	name = "黑橡 守卫"
+	tutorial = "你是 黑橡 阵营中一名潜行的守卫者。这支人马一半是佣兵团，一半是为争夺群峰间祖传精灵故土而战的非正规民兵。所幸，你今天来这里并不是为了屠戮公爵麾下的人马，除非……有人出钱让你这么做。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/human/halfelf,
@@ -76,8 +76,8 @@
 
 	H.merctype = 2
 /datum/advclass/mercenary/blackoak/ranger
-	name = "Black Oak 游侠"
-	tutorial = "你是 Black Oak 阵营中一名潜行的守卫者。这支人马一半是佣兵团，一半是为争夺群峰间祖传精灵故土而战的非正规民兵。所幸，你今天来这里并不是为了屠戮公爵麾下的人马，除非……有人出钱让你这么做。"
+	name = "黑橡 游侠"
+	tutorial = "你是 黑橡 阵营中一名潜行的守卫者。这支人马一半是佣兵团，一半是为争夺群峰间祖传精灵故土而战的非正规民兵。所幸，你今天来这里并不是为了屠戮公爵麾下的人马，除非……有人出钱让你这么做。"
 	outfit = /datum/outfit/job/roguetown/mercenary/blackoak_ranger
 	traits_applied = list(TRAIT_AZURENATIVE, TRAIT_OUTDOORSMAN, TRAIT_RACISMISBAD, TRAIT_DODGEEXPERT)
 	subclass_stats = list(

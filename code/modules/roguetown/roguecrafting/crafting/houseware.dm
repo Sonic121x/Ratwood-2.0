@@ -100,7 +100,7 @@
 	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1)
 
 /datum/crafting_recipe/roguetown/survival/candle/eora
-	name = "Eora 蜡烛（x3）（1 份兽脂，1 朵 Rosa，25 圣水）"
+	name = "伊欧拉 蜡烛（x3）（1 份兽脂，1 朵 Rosa，25 圣水）"
 	category = "家居"
 	result = list(
 		/obj/item/candle/eora,

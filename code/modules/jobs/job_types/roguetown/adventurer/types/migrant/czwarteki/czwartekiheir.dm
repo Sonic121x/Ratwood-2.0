@@ -1,6 +1,6 @@
 /datum/advclass/czwarteki/heir
-	name = "Czwarteki 继承人"
-	tutorial = "你是 Czwarteki 领主的继承人。也许只是众多继承人之一。你的父母带着你一同踏上这场远行，让你在故土之外的诸国中历练见识。"
+	name = "兹瓦尔特基 继承人"
+	tutorial = "你是 兹瓦尔特基 领主的继承人。也许只是众多继承人之一。你的父母带着你一同踏上这场远行，让你在故土之外的诸国中历练见识。"
 	outfit = /datum/outfit/job/roguetown/czwarteki/heir
 	traits_applied = list(TRAIT_NOBLE, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
 	category_tags = list(CTAG_CZWAR_HEIR)

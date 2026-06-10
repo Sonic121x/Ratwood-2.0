@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/newmoon
-	name = "New Moon 咒剑士"
-	tutorial = "Zybantia 的 New Moon 咒剑士，是 Lalvestine 某片未知地域中一座已然覆灭的 Noc 修道院残党， \
+	name = "新月 咒剑士"
+	tutorial = "Zybantia 的 新月 咒剑士，是 Lalvestine 某片未知地域中一座已然覆灭的 诺克 修道院残党， \
 	那曾是 Zybantian 帝国境内“十杰”最后一处重要据点。 \
 	在腐败之灾的重压下，他们的修院生活与虔诚信念迅速崩塌，被迫从孤绝苦修的日子里跌入普通佣兵的生涯；而 Noc 的赐福，在斩杀怪物与人类时倒是意外地好用。 \
 	无论出于何种缘由，你如今来到了这片地界，向出价最高者献上自己的技艺。知识即力量。"
@@ -129,8 +129,8 @@
 
 //The clothing.
 /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
-	name = "New Moon 外袍"
-	desc = "这件青绿色外袍轻便、华丽，却仍有相当的防护性。它是 New Moon 圣团的标志装束，胸前中央还缀着一枚 Noc 护符。"
+	name = "新月 外袍"
+	desc = "这件青绿色外袍轻便、华丽，却仍有相当的防护性。它是 新月 圣团的标志装束，胸前中央还缀着一枚 诺克 护符。"
 	icon_state = "newmoon_jacket"
 	item_state = "newmoon_jacket"
 	armor = ARMOR_SPELLSINGER//Better than the old, but, whatever. By a bit.

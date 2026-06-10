@@ -108,7 +108,7 @@
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 	listening = !listening
 	speaking = !speaking
-	to_chat(user, span_info("我将马西安通讯石[speaking ? "取消静音" : "静音"]了。"))
+	to_chat(user, span_info("我将马西奥斯通讯石[speaking ? "取消静音" : "静音"]了。"))
 	update_icon()
 
 /obj/item/mattcoin/Destroy()

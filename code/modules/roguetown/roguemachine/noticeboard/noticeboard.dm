@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/noticeboard
 	name = "告示板"
-	desc = "一块巨大的木制告示板，上面贴满了来自整个王国的告示。顶部还设有一只 ZAD 的栖架。"
+	desc = "一块巨大的木制告示板，上面贴满了来自整个王国的告示。顶部还设有一只 ZAD告示台 的栖架。"
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "noticeboard0"
 	density = TRUE
@@ -153,7 +153,7 @@
 	for(var/obj/structure/roguemachine/noticeboard/board in SSroguemachine.noticeboards)
 		if(board != src)
 			playsound(board, 'sound/ambience/noises/birds (7).ogg', 50, FALSE, -1)
-			board.visible_message(span_smallred("一只 ZAD 落下，送来了一张新告示！"))
+			board.visible_message(span_smallred("一只 ZAD告示台 落下，送来了一张新告示！"))
 			board.update_icon()
 
 /obj/structure/roguemachine/noticeboard/proc/make_post(mob/living/carbon/human/guy)
@@ -164,12 +164,12 @@
 	if(!inputtitle)
 		return
 	if(length(inputtitle) > 50)
-		to_chat(guy, span_warning("太长了！你这是要让那只 ZAD 驮着小说跑腿吗！"))
+		to_chat(guy, span_warning("太长了！你这是要让那只 ZAD告示台 驮着小说跑腿吗！"))
 		return
 	var/inputmessage = stripped_multiline_input(guy, "What shall I write for this posting?", "NOTICEBOARD", no_trim=TRUE)
 	if(inputmessage)
 		if(length(inputmessage) > 2000)
-			to_chat(guy, span_warning("太长了！你这是要让那只 ZAD 驮着小说跑腿吗！"))
+			to_chat(guy, span_warning("太长了！你这是要让那只 ZAD告示台 驮着小说跑腿吗！"))
 			return
 	else
 		return
@@ -177,11 +177,11 @@
 	if(!inputname)
 		return
 	if(length(inputname) > 50)
-		to_chat(guy, span_warning("太长了！你这是要让那只 ZAD 驮着小说跑腿吗！"))
+		to_chat(guy, span_warning("太长了！你这是要让那只 ZAD告示台 驮着小说跑腿吗！"))
 		return
 	var/inputrole = stripped_input(guy, "What personal title shall I use on the posting?", "NOTICEBOARD", null)
 	if(length(inputrole) > 50)
-		to_chat(guy, span_warning("太长了！你这是要让那只 ZAD 驮着小说跑腿吗！"))
+		to_chat(guy, span_warning("太长了！你这是要让那只 ZAD告示台 驮着小说跑腿吗！"))
 		return
 	add_post(inputmessage, inputtitle, inputname, inputrole, guy.real_name, FALSE)
 	guy.apply_status_effect(/datum/status_effect/debuff/postcooldown)
@@ -190,7 +190,7 @@
 		board.update_icon()
 		if(board != src)
 			playsound(board, 'sound/ambience/noises/birds (7).ogg', 50, FALSE, -1)
-			board.visible_message(span_smallred("一只 ZAD 落下，送来了一张新告示！"))
+			board.visible_message(span_smallred("一只 ZAD告示台 落下，送来了一张新告示！"))
 
 /obj/structure/roguemachine/noticeboard/proc/remove_post(mob/living/carbon/human/guy)
 	var/list/myposts_list = list()
@@ -220,7 +220,7 @@
 		board.update_icon()
 		if(board != src)
 			playsound(board, 'sound/ambience/noises/birds (7).ogg', 50, FALSE, -1)
-			board.visible_message(span_smallred("一只 ZAD 落下，撤走了一张旧告示！"))
+			board.visible_message(span_smallred("一只 ZAD告示台 落下，撤走了一张旧告示！"))
 
 /obj/structure/roguemachine/noticeboard/proc/authority_removepost(mob/living/carbon/human/guy)
 	var/list/posts_list = list()

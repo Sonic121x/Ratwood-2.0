@@ -1,6 +1,6 @@
 /datum/advclass/slaver/slave/service
 	name = "侍役奴隶"
-	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 Zybantu 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
+	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 兹班图 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
 	outfit = /datum/outfit/job/roguetown/slaver/slave/service
 	traits_applied = list(TRAIT_GOODLOVER, TRAIT_EMPATH, TRAIT_BEAUTIFUL, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_SLAVE)
@@ -57,7 +57,7 @@
 
 /datum/advclass/slaver/slave/battle
 	name = "战斗奴隶"
-	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 Zybantu 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
+	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 兹班图 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
 	outfit = /datum/outfit/job/roguetown/slaver/slave/battle
 	traits_applied = list(TRAIT_GOODLOVER, TRAIT_BREADY, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_SLAVE)
@@ -149,7 +149,7 @@
 
 /datum/advclass/slaver/slave/arcyne
 	name = "奥术奴隶"
-	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 Zybantu 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
+	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 兹班图 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
 	outfit = /datum/outfit/job/roguetown/slaver/slave/arcyne
 	traits_applied = list(TRAIT_GOODLOVER, TRAIT_ARCYNE_T3, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_SLAVE)
@@ -202,7 +202,7 @@
 
 /datum/advclass/slaver/slave/craftsman
 	name = "工匠奴隶"
-	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 Zybantu 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
+	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 兹班图 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
 	outfit = /datum/outfit/job/roguetown/slaver/slave/craftsman
 	traits_applied = list(TRAIT_GOODLOVER, TRAIT_TRAINED_SMITH, TRAIT_SMITHING_EXPERT, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_SLAVE)

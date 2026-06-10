@@ -82,7 +82,7 @@
 
 /datum/chimeric_tech_node/black_rose
 	name = "黑玫瑰合成"
-	description = "允许用腐化血肉与兽血制作黑玫瑰。人们相信，heartbeasts 某种程度上正是由 Pestra 亲手塑造，以压制这些玫瑰中潜伏的黑腐。"
+	description = "允许用腐化血肉与兽血制作黑玫瑰。人们相信，heartbeasts 某种程度上正是由 佩斯特拉 亲手塑造，以压制这些玫瑰中潜伏的黑腐。"
 	string_id = "BLACK_ROSE"
 	required_tier = 4
 	cost = 100
@@ -117,8 +117,8 @@
 	prerequisites = list("INFESTATION_TIER1")
 
 /datum/chimeric_tech_node/infestation_capacity_3
-	name = "揭示 Pestra 的神赐"
-	description = "将感染的最大充能提升至 10。达到 10 层充能时，高阶 Pestra 信徒可获得 Divine Rebirth。"
+	name = "揭示 佩斯特拉 的神赐"
+	description = "将感染的最大充能提升至 10。达到 10 层充能时，高阶 佩斯特拉 信徒可获得 Divine Rebirth。"
 	string_id = "INFESTATION_TIER3"
 	required_tier = 3
 	cost = 50

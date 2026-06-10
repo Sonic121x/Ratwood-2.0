@@ -1,7 +1,7 @@
 /datum/advclass/vagabond_wanted
 	name = "通缉犯"
 	examine_name = "乞儿"
-	tutorial = "法网正朝你伸来。这一回你还能从它手里滑出去吗，还是说你的脑袋注定要落进某头 Excidium 的嘴里？"
+	tutorial = "法网正朝你伸来。这一回你还能从它手里滑出去吗，还是说你的脑袋注定要落进某头 灭绝兽 的嘴里？"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/vagabond/wanted

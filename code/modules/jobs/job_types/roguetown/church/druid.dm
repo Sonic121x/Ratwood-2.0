@@ -13,7 +13,7 @@
 	allowed_patrons = ALL_DIVINE_PATRONS //gets set to dendor on the outfit anyways lol
 	outfit = /datum/outfit/job/roguetown/druid
 	social_rank = SOCIAL_RANK_YEOMAN
-	tutorial = "你始终被荒野吸引，而荒野也同样回应着你。当那份召唤真正降临时，它来自 Dendor。你的庇主宣称自己统御一切自然，并承诺赐福给那些以祂之名为其领域带回平衡的人。森林才是你最自在的归处，你在那里与农家子弟们一同劳作……尽管有时，高墙之外的世界仍会在你灵魂深处唤起一股野性的渴望。"
+	tutorial = "你始终被荒野吸引，而荒野也同样回应着你。当那份召唤真正降临时，它来自 登多尔。你的庇主宣称自己统御一切自然，并承诺赐福给那些以祂之名为其领域带回平衡的人。森林才是你最自在的归处，你在那里与农家子弟们一同劳作……尽管有时，高墙之外的世界仍会在你灵魂深处唤起一股野性的渴望。"
 
 	display_order = JDO_DRUID
 	give_bank_account = TRUE
@@ -33,7 +33,7 @@
 
 /datum/advclass/druid
 	name = "德鲁伊"
-	tutorial = "你始终被荒野吸引，而荒野也同样回应着你。当那份召唤真正降临时，它来自 Dendor。 \
+	tutorial = "你始终被荒野吸引，而荒野也同样回应着你。当那份召唤真正降临时，它来自 登多尔。 \
 	你的庇主宣称自己统御一切自然，并承诺赐福给那些以祂之名为其领域带回平衡的人。 \
 	森林才是你最自在的归处，你在那里与农家子弟们一同劳作……尽管有时，高墙之外的世界仍会在你灵魂深处唤起一股野性的渴望。"
 	outfit = /datum/outfit/job/roguetown/druid/basic

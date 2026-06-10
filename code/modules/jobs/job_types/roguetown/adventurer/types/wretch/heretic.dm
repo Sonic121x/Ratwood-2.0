@@ -180,12 +180,12 @@
 			var/heavypsyfashion_choice = input(H, "你对祂的信仰为何种模样？", "祂长存，祂忍受，祂死去") as anything in heavypsyfashion
 			switch(heavypsyfashion_choice)
 				if("传统派") //You look like any other Heretic.
-					to_chat(H, span_warning("PSYDON 长存，但祂为我们献出了自己。我们听不见祂，祂也听不见我们，可一切道路终将通向祂，也将由祂回到我们身边。终有一日，PSYDON 会归来，而创造万物也将再度安宁，化作真正的 PARADYSE。正统教会与圣座早已扭曲了经文与传说。十神只想把世界捏造成自己的模样，不愿帮助我们的主苏醒。与此同时，正统派还假借祂之名说谎，偏离和平之路，让整个世界充满痛苦，而祂借由万物共同感受着这一切，这也拖慢了祂的苏醒。"))
+					to_chat(H, span_warning("普赛顿 长存，但祂为我们献出了自己。我们听不见祂，祂也听不见我们，可一切道路终将通向祂，也将由祂回到我们身边。终有一日，普赛顿 会归来，而创造万物也将再度安宁，化作真正的 极乐境。正统教会与圣座早已扭曲了经文与传说。十神只想把世界捏造成自己的模样，不愿帮助我们的主苏醒。与此同时，正统派还假借祂之名说谎，偏离和平之路，让整个世界充满痛苦，而祂借由万物共同感受着这一切，这也拖慢了祂的苏醒。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/bucket, SLOT_HEAD, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/cloak/templar/psydon, SLOT_CLOAK, TRUE)
 				if("正统派") //You look like an Orthodoxist-Adjudicator. The best set mechanically, but a high risk of getting attacked by your fellow Wretches or Bandits.
-					to_chat(H, span_warning("你曾是令人畏惧又遭人憎恨的 Otava 宗教裁判所一员，如今却躲避着他们，身上仍穿着他们的甲胄。怀旧？怨恨？绝望？……你就是放不下这身制服。"))
+					to_chat(H, span_warning("你曾是令人畏惧又遭人憎恨的 奥塔瓦 宗教裁判所一员，如今却躲避着他们，身上仍穿着他们的甲胄。怀旧？怨恨？绝望？……你就是放不下这身制服。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq, SLOT_SHIRT, TRUE)
@@ -193,7 +193,7 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/psydonboots, SLOT_SHOES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/cloak/psydontabard, SLOT_CLOAK, TRUE)
 					var/helmets = list("巴布塔盔", "萨雷特盔", "阿米特盔", "桶盔")
-					var/helmet_choice = input(H,"选择你的 PSYDON 头盔。", "披挂 PSYDON 之盔") as anything in helmets
+					var/helmet_choice = input(H,"选择你的 普赛顿 头盔。", "披挂 普赛顿 之盔") as anything in helmets
 					switch(helmet_choice)
 						if("巴布塔盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute, SLOT_HEAD, TRUE)
@@ -204,7 +204,7 @@
 						if("桶盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psybucket, SLOT_HEAD, TRUE)
 				if("改革派") //You look like as if somebody dressed Freifechter into a lot of armour. Better chestpiece, but worse gloves and boots, and worse padded gambeson.
-					to_chat(H, span_warning ("PSYDON 在与伟大邪恶的战斗后陨落了。但祂仍借由我们而长存，活在我们的记忆与流血的心中。只要我们还活着，祂也将借由我们而长存。万事都应如祂所定，如祂所行，皆以祂之名。"))
+					to_chat(H, span_warning ("普赛顿 在与伟大邪恶的战斗后陨落了。但祂仍借由我们而长存，活在我们的记忆与流血的心中。只要我们还活着，祂也将借由我们而长存。万事都应如祂所定，如祂所行，皆以祂之名。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/reform, SLOT_RING, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet, SLOT_HEAD, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/fluted, SLOT_ARMOR, TRUE)
@@ -378,7 +378,7 @@
 			var/lightpsyfashion_choice = input(H, "你对祂的信仰为何种模样？", "祂长存，祂忍受，祂死去") as anything in lightpsyfashion
 			switch(lightpsyfashion_choice)
 				if("传统派") //You look like any other Heretic Spy.
-					to_chat(H, span_warning("Otava 的正统教会已经把信仰扭曲到面目全非。他们崇拜的不是祂，而只是伪造出来的偶像与所谓真神的塑像。回归传统，回归本真。"))
+					to_chat(H, span_warning("奥塔瓦 的正统教会已经把信仰扭曲到面目全非。他们崇拜的不是祂，而只是伪造出来的偶像与所谓真神的塑像。回归传统，回归本真。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/heavy_leather_pants, SLOT_PANTS, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson, SLOT_SHIRT, TRUE)
@@ -386,7 +386,7 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/leather/reinforced, SLOT_SHOES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
 				if("正统派") //You look like an Orthodoxist-Confessor. The best set mechanically, but a high risk of getting attacked by your fellow Wretches or Bandits.
-					to_chat(H, span_warning("你曾是令人畏惧又遭人憎恨的 Otava 宗教裁判所一员，如今却躲避着他们，身上仍披着他们的长袍。怀旧？怨恨？绝望？……你就是放不下这身制服。"))
+					to_chat(H, span_warning("你曾是令人畏惧又遭人憎恨的 奥塔瓦 宗教裁判所一员，如今却躲避着他们，身上仍披着他们的长袍。怀旧？怨恨？绝望？……你就是放不下这身制服。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/roguehood/psydon/confessor, SLOT_HEAD, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/confessor, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq, SLOT_SHIRT, TRUE)
@@ -397,7 +397,7 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/facemask/steel/confessor/lensed, SLOT_WEAR_MASK, TRUE) //Dark vision but bad. Still better than being entirely blind in the dark.
 					//Perceptive players will see past your disguise: you lack the beltpack and the silver signet ring, and your gas mask is lensed from get-go.
 				if("改革派") //You look like a Reformist Freifechter.
-					to_chat(H, span_warning("神已死去，但祂留下的这个世界依然美丽，仍值得去热爱。别让那些来自 Otava 的屠夫告诉你不是这样。"))
+					to_chat(H, span_warning("神已死去，但祂留下的这个世界依然美丽，仍值得去热爱。别让那些来自 奥塔瓦 的屠夫告诉你不是这样。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/half/fencer, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/freifechter, SLOT_SHIRT, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/fingerless_leather, SLOT_GLOVES, TRUE)

@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/gronnheavy
-	name = "Fjall 铁铠武士"
-	tutorial = "即便在 Fjall，真正见过 Jarnklaeddur 那副带角面容的人也寥寥无几；他们是披铁而战的勇士，专门抵挡自“赤色暴雪”中涌出的亡灵军势。那些在北方荒原中得不到 Iskarn 萨满庇护的人，往往也会不惜高价寻求 Jarnklaeddur 的保护。"
+	name = "菲亚尔 铁铠武士"
+	tutorial = "即便在 菲亚尔，真正见过 铁披者 那副带角面容的人也寥寥无几；他们是披铁而战的勇士，专门抵挡自“赤色暴雪”中涌出的亡灵军势。那些在北方荒原中得不到 Iskarn 萨满庇护的人，往往也会不惜高价寻求 铁披者 的保护。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	maximum_possible_slots = 2 //Hopefully this works.

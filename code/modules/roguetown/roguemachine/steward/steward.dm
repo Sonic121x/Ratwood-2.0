@@ -197,7 +197,7 @@
 		if(!D)
 			return              //Cheaper prices, no taxes, the price? Commitment. You can only change the rates at day. I'd like to make the window shorter,
 		if(GLOB.tod == "night") //less chance to micromanage, incentivize doing other things at later hours, make it unable to be changed at dusk too, but this needs testing first
-			say("只有在 Astrata 照耀之时，供应商才愿意修改交易。")
+			say("只有在 阿斯特拉塔 照耀之时，供应商才愿意修改交易。")
 			return
 		var/newrate = input(usr, "为 [D.name] 设置新的远程进口速率", src, D.passive_generation) as null|num
 		if(!isnull(newrate))

@@ -1,5 +1,5 @@
 /obj/structure/roguemachine/lottery_roguetown
-	name = "希利克斯的鸿运"
+	name = "赛利克斯的鸿运"
 	desc = "一个深不见底、能成就也能毁掉人的巨洞。来玩吧！"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "lottery"
@@ -71,7 +71,7 @@
 
 	else
 		src.diceroll = rand(1,100)
-		src.say(pick("Around and around I go, where I stop, only I know.", "Xylix smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you cheer..", "I will be your fool; I'll perform for you...", "Let's go gambling!", "Around and around, folly abounds.", "Dance with ruin and wealth."))
+		src.say(pick("Around and around I go, where I stop, only I know.", "赛利克斯 smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you cheer..", "I will be your fool; I'll perform for you...", "Let's go gambling!", "Around and around, folly abounds.", "Dance with ruin and wealth."))
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 		playsound(src, 'sound/misc/letsgogambling.ogg', 100, FALSE, -1)
 		src.gamblingprob += (user.STALUC - src.probpenalty)
@@ -206,7 +206,7 @@
 			src.say("...though 'tis difficult to argue what happened after that didn't benefit Her.")
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
 		if(5)
-			src.say("Oh, Psydon?")
+			src.say("Oh, 普赛顿?")
 			playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 			sleep(30)
 			src.say("To be honest, I'm about PSY-DONE with this whole debate! Ha-ha-h- ...No? Too soon? Alright.")

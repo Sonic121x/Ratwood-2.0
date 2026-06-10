@@ -35,7 +35,7 @@
 		/datum/skill/craft/sewing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
 	)
-	extra_context = "仅限 Inhumen。无 wretch 悬赏，便于渗透与传播末日预言。拥有邪恶布道、拷问能力、所属神祇的满级神迹，以及来自其他 Inhumen 神祇的额外神迹。"
+	extra_context = "仅限 异民。无 wretch 悬赏，便于渗透与传播末日预言。拥有邪恶布道、拷问能力、所属神祇的满级神迹，以及来自其他 异民 神祇的额外神迹。"
 
 /datum/outfit/job/roguetown/wretch/antipope
 	has_loadout = TRUE
@@ -220,7 +220,7 @@
 		to_chat(src, span_warning ("要这样做，我的受害者必须先被束缚住！"))
 		return
 	if(!istype(S, /obj/item/clothing/neck/roguetown/psicross/inhumen/))
-		to_chat(src, span_warning("我要手持一件 Inhumen 护符，才能逼出这道启示！"))
+		to_chat(src, span_warning("我要手持一件 异民 护符，才能逼出这道启示！"))
 		return
 	for(var/obj/structure/fluff/psycross/zizocross/N in oview(5, src))
 		found = N

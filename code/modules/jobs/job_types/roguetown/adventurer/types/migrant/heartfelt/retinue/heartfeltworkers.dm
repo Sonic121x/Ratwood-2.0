@@ -1,6 +1,6 @@
 /datum/advclass/heartfelt/retinue/servant
-	name = "Heartfelt 仆役"		
-	tutorial = "你是 Heartfelt 的仆役，侍奉着一座昔日繁荣、如今却已倾颓的男爵领。\
+	name = "赤心 仆役"		
+	tutorial = "你是 赤心 的仆役，侍奉着一座昔日繁荣、如今却已倾颓的男爵领。\
 	在 Magos 的引领下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES

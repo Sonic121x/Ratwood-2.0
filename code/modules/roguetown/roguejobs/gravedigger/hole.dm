@@ -117,7 +117,7 @@
 			else
 				to_chat(user, "我开始施行葬仪……")
 				if(do_after(user, 50))
-					user.say("#愿你的灵魂在 Necra 的怀抱中永世安息！")
+					user.say("#愿你的灵魂在 内克拉 的怀抱中永世安息！")
 					to_chat(user, "我抽取出了一缕灵辉丝线，作为已然离世的证明。")
 					playsound(user, 'sound/misc/bellold.ogg', 20)
 					new /obj/item/soulthread((get_turf(user)))

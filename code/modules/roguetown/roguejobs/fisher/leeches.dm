@@ -304,4 +304,4 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/V = user
 		if(prob(3))
-			V.say(pick("赞美 Abyssor！", "铭记 Abyssor！", "Abyssor 长存！", "荣耀归于 Abyssor！", "Abyssor 即将降临！"))
+			V.say(pick("赞美 阿比索尔！", "铭记 阿比索尔！", "阿比索尔 长存！", "荣耀归于 阿比索尔！", "阿比索尔 即将降临！"))

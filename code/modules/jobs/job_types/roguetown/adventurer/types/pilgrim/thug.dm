@@ -154,7 +154,7 @@
 					r_hand = /obj/item/rogueweapon/mace
 
 		if("码头汉")
-			to_chat(H, span_warning("你年轻时回应了 Abyssor 的呼唤，只不过走的是不怎么体面的路子，\
+			to_chat(H, span_warning("你年轻时回应了 阿比索尔 的呼唤，只不过走的是不怎么体面的路子，\
 	见谁挡路就劫谁的财。如今你的船长要从罪恶生涯里抽身上岸，你也一样。不过陆地上，照样有钱可赚。"))
 			H.set_blindness(0)
 
@@ -195,13 +195,13 @@
 
 	switch(gang_choice)
 		if("帮派 Rontz Ratz")
-			to_chat(H, span_warning("我是街头帮派 Rontz Ratz 的一员，已经过去了太久太久，现在我们得重新壮大势力。\
+			to_chat(H, span_warning("我是街头帮派 隆兹石 Ratz 的一员，已经过去了太久太久，现在我们得重新壮大势力。\
 			Blortz Volves 那帮杂种迟早得付出代价。\
 			Rontz Rats 会咬人, 来感受这场恶斗吧！"))
 			ADD_TRAIT(H, TRAIT_GANG_A, TRAIT_GENERIC)
 			mask = /obj/item/clothing/mask/rogue/ragmask/red
 		if("帮派 Blortz Volves")
-			to_chat(H, span_warning("我是街头帮派 Blortz Volves 的一员，已经过去了太久太久，现在我们得重新壮大势力。\
+			to_chat(H, span_warning("我是街头帮派 布洛兹石 Volves 的一员，已经过去了太久太久，现在我们得重新壮大势力。\
 			Rontz Ratz 那帮杂种迟早得付出代价。 \
 			Blortz Wolves 一嚎叫, 敌人就得发抖！"))
 			ADD_TRAIT(H, TRAIT_GANG_B, TRAIT_GENERIC)

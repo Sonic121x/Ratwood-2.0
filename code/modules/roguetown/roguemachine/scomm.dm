@@ -1,7 +1,7 @@
 #define GARRISON_SCOM_COLOR "#FF4242"
 
 /obj/structure/roguemachine/scomm
-	name = "SCOM"
+	name = "SCOM传讯网"
 	desc = "超自然光学通讯机是魔法与技术的奇迹。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "scomm1"
@@ -89,11 +89,11 @@
 		return
 	if(calling)
 		listening = !listening
-		to_chat(user, span_info("我将 SCOM 的输入[listening ? "取消静音" : "静音"]了。"))
+		to_chat(user, span_info("我将 SCOM传讯网 的输入[listening ? "取消静音" : "静音"]了。"))
 		return
 	listening = !listening
 	speaking = listening
-	to_chat(user, span_info("我将 SCOM[speaking ? "取消静音" : "静音"]了。"))
+	to_chat(user, span_info("我将 SCOM传讯网[speaking ? "取消静音" : "静音"]了。"))
 	update_icon()
 
 /obj/structure/roguemachine/scomm/attack_right(mob/user)
@@ -109,7 +109,7 @@
 		return
 	if(calling)
 		speaking = !speaking
-		to_chat(user, span_info("我将 SCOM 的输出[speaking ? "取消静音" : "静音"]了。"))
+		to_chat(user, span_info("我将 SCOM传讯网 的输出[speaking ? "取消静音" : "静音"]了。"))
 		return
 	var/canread = user.can_read(src, TRUE)
 	var/contents
@@ -153,7 +153,7 @@
 		say("密语线已断开。", spans = list("info"))
 		update_icon()
 	else
-		say("输入 SCOM 编号。", spans = list("info"))
+		say("输入 SCOM传讯网 编号。", spans = list("info"))
 		var/nightcall = input(user, "输入分配给你的编号。", "联络") as null|num
 		if(!nightcall)
 			return
@@ -273,7 +273,7 @@
 		if(length(raw_message) > 100) //When these people talk too much, put that shit in slow motion, yeah
 			/*if(length(raw_message) > 200)
 				if(!spawned_rat)
-					visible_message(span_warning("一只被激怒的 rous 从 SCOM 线路里冲了出来！"))
+					visible_message(span_warning("一只被激怒的 rous 从 SCOM传讯网 线路里冲了出来！"))
 					new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(get_turf(src))
 					spawned_rat = TRUE
 				return*/
@@ -570,7 +570,7 @@
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 	listening = !listening
 	speaking = !speaking
-	to_chat(user, span_info("我将马西安通讯石[speaking ? "取消静音" : "静音"]了。"))
+	to_chat(user, span_info("我将马西奥斯通讯石[speaking ? "取消静音" : "静音"]了。"))
 	update_icon()
 
 /obj/item/mattcoin/Destroy()

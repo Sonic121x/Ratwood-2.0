@@ -105,15 +105,15 @@
 			return
 		if((to_grind.type == /obj/item/seeds/treesap) && reagents.get_reagent_amount(/datum/reagent/water/blessed) >= 10)
 			if(!ishuman(user) || user.get_skill_level(/datum/skill/magic/druidic) < SKILL_LEVEL_NOVICE)
-				to_chat(user, span_warning("我缺乏德鲁伊的知识，无法从这些种子中提取 Dendor 的祝福。"))
+				to_chat(user, span_warning("我缺乏德鲁伊的知识，无法从这些种子中提取 登多尔 的祝福。"))
 				return
-			user.visible_message(span_info("[user]将[to_grind]研磨进圣水，提取出 Dendor 的祝福。"))
+			user.visible_message(span_info("[user]将[to_grind]研磨进圣水，提取出 登多尔 的祝福。"))
 			playsound(loc, 'sound/foley/mortarpestle.ogg', 100, FALSE)
 			if(do_after(user, 10, target = src))
 				reagents.remove_reagent(/datum/reagent/water/blessed, 10)
 				new /obj/item/alch/blessedseedpowder(get_turf(src))
 				QDEL_NULL(to_grind)
-				to_chat(user, span_notice("种子吸收了 Dendor 的祝福，形成了发光粉末。"))
+				to_chat(user, span_notice("种子吸收了 登多尔 的祝福，形成了发光粉末。"))
 				if(user.mind)
 					user.mind.add_sleep_experience(/datum/skill/magic/druidic, 5)
 			return

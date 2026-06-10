@@ -1,5 +1,5 @@
 /datum/advclass/czwarteki/retainer
-	name = "Czwarteki 侍从"
+	name = "兹瓦尔特基 侍从"
 	tutorial = "你是那位骠骑兵的侍从，应召随行奔赴前线。你深谙骑术，也负责照料自己骠骑兵主人的诸般需求。"
 	outfit = /datum/outfit/job/roguetown/czwarteki/retainer
 	traits_applied = list(TRAIT_NOBLE, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)

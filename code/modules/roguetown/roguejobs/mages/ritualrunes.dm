@@ -860,8 +860,8 @@ GLOBAL_LIST(teleport_runes)
 		continue
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid// 96x96 rune t2(3x3 tile)
-	name = "sealate 拘束矩阵"
-	desc = "一座通过加入 sealate 矩阵改良过的娴熟拘束矩阵，用于在召唤时囚禁目标。"
+	name = "海印石 拘束矩阵"
+	desc = "一座通过加入 海印石 矩阵改良过的娴熟拘束矩阵，用于在召唤时囚禁目标。"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "sealate"
 	runesize = 1
@@ -872,8 +872,8 @@ GLOBAL_LIST(teleport_runes)
 	can_be_scribed = TRUE
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/adv	//160x160 rune t2(5x5 tile)
-	name = "warded sealate 拘束矩阵"
-	desc = "一座以 sealate 矩阵强化、且被充分施加结界的拘束矩阵，用于在召唤时囚禁更大、更危险的目标。"
+	name = "warded 海印石 拘束矩阵"
+	desc = "一座以 海印石 矩阵强化、且被充分施加结界的拘束矩阵，用于在召唤时囚禁更大、更危险的目标。"
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "warded"
 	runesize = 2
@@ -884,8 +884,8 @@ GLOBAL_LIST(teleport_runes)
 	can_be_scribed = TRUE
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/max	//224x224 rune t3(7x7 tile)
-	name = "Noc's eye warded sealate 拘束矩阵"
-	desc = "一座以 Noc's eye 封印与 sealate 矩阵双重强化、并施加了重重结界的拘束矩阵，用于囚禁可召唤出的最大、最危险之物。"
+	name = "诺克之眼 warded 海印石 拘束矩阵"
+	desc = "一座以 诺克之眼 封印与 海印石 矩阵双重强化、并施加了重重结界的拘束矩阵，用于囚禁可召唤出的最大、最危险之物。"
 	icon = 'icons/effects/224x224.dmi'
 	icon_state = "huge_runeblued"
 	runesize = 3

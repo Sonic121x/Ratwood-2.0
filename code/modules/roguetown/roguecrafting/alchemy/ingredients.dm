@@ -94,7 +94,7 @@
 
 /obj/item/alch/blessedseedpowder
 	name = "祝圣种子粉"
-	desc = "以圣水制成的发光种子粉末，其中仍留有 Dendor 的气息。"
+	desc = "以圣水制成的发光种子粉末，其中仍留有 登多尔 的气息。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "flour"
 	color = "#BFFFC4"
@@ -350,7 +350,7 @@
 
 /obj/item/alch/solardust
 	name = "太阳尘"
-	desc = "一撮融入 Astrata 光辉之力的尘末，直视它会刺痛双眼。"
+	desc = "一撮融入 阿斯特拉塔 光辉之力的尘末，直视它会刺痛双眼。"
 	icon_state = "solardust"
 
 	major_pot = /datum/alch_cauldron_recipe/fire_potion
@@ -497,7 +497,7 @@
 	name = "rosa"
 	icon_state = "rosa"
 	item_state = "rosa"
-	desc = "据说它们原本是白色的，直到 Graggar 的鲜血染遍了它生长的原野。"
+	desc = "据说它们原本是白色的，直到 格拉加尔 的鲜血染遍了它生长的原野。"
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK|ITEM_SLOT_MOUTH

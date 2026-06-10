@@ -4,7 +4,7 @@
 #define CHEESE_QUIET_TIME 2 MINUTES // How long stuffing a slice of cheese in quieten the SCOM
 
 /obj/structure/roguemachine/scomm
-	name = "SCOM"
+	name = "SCOM传讯网"
 	desc = "超自然光学通讯机是魔法与技术共同造就的奇迹，能够在远距离间收发消息。中间的按钮可用于建立私密的密语线连接。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "scomm1"
@@ -55,8 +55,8 @@
 	pixel_x = -32
 
 /obj/structure/roguemachine/scomm/receive_only
-	name = "RCOM"
-	desc = "接收型光学通讯机是 SCOM 更廉价、更常见的版本，只能接收远距离消息。它们常见于城外，尤其是古老遗迹附近。"
+	name = "RCOM传讯网"
+	desc = "接收型光学通讯机是 SCOM传讯网 更廉价、更常见的版本，只能接收远距离消息。它们常见于城外，尤其是古老遗迹附近。"
 	receive_only = TRUE
 
 /obj/structure/roguemachine/scomm/receive_only/r
@@ -126,15 +126,15 @@
 		return
 	if(calling)
 		listening = !listening
-		to_chat(user, span_info("我将 SCOM 的输入[listening ? "解除静音" : "静音"]了。"))
+		to_chat(user, span_info("我将 SCOM传讯网 的输入[listening ? "解除静音" : "静音"]了。"))
 		return
 	if(loudmouth_listening)
-		to_chat(user, span_info("我压下了 SCOM 上金口者的聒噪。你仍可将其彻底静音。"))
+		to_chat(user, span_info("我压下了 SCOM传讯网 上金口者的聒噪。你仍可将其彻底静音。"))
 		loudmouth_listening = FALSE
 	else
 		listening = !listening
 		speaking = listening
-		to_chat(user, span_info("我将 SCOM[speaking ? "解除静音" : "静音"]了。"))
+		to_chat(user, span_info("我将 SCOM传讯网[speaking ? "解除静音" : "静音"]了。"))
 		if(listening)
 			loudmouth_listening = TRUE
 	update_icon()
@@ -142,7 +142,7 @@
 /obj/structure/roguemachine/scomm/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/cheddarslice))
-		to_chat(user, span_smallnotice("你悄悄往 SCOM 里塞了一块奶酪，让里面的老鼠暂时安静了下来……"))
+		to_chat(user, span_smallnotice("你悄悄往 SCOM传讯网 里塞了一块奶酪，让里面的老鼠暂时安静了下来……"))
 		last_cheese = world.time
 		qdel(W)
 
@@ -159,7 +159,7 @@
 		return
 	if(calling)
 		speaking = !speaking
-		to_chat(user, span_info("我将 SCOM 的输出[speaking ? "解除静音" : "静音"]了。"))
+		to_chat(user, span_info("我将 SCOM传讯网 的输出[speaking ? "解除静音" : "静音"]了。"))
 		return
 	var/canread = user.can_read(src, TRUE)
 	var/contents
@@ -200,7 +200,7 @@
 		say("密语线已切断。", spans = list("info"))
 		update_icon()
 	else
-		say("请输入 SCOM 编号。", spans = list("info"))
+		say("请输入 SCOM传讯网 编号。", spans = list("info"))
 		var/nightcall = input(user, "输入你拿到的编号。", "连接界面") as null|num
 		if(!nightcall)
 			return
@@ -213,7 +213,7 @@
 			return
 		var/obj/structure/roguemachine/scomm/S = SSroguemachine.scomm_machines[nightcall]
 		if(istype(S, /obj/structure/roguemachine/scomm/receive_only))
-			say("RCOM 里没有老鼠能回应密语线。")
+			say("RCOM传讯网 里没有老鼠能回应密语线。")
 			return
 		if(istype(S, /obj/item/scomstone))
 			say("这条密语线的老鼠到不了传讯石。") //Check prevents a runtime and leaves room to potentially make scomstones callable by ID later.
@@ -248,7 +248,7 @@
 		update_icon()
 
 /obj/structure/roguemachine/scomm/receive_only/MiddleClick(mob/living/carbon/human/user)
-	to_chat(user, span_warning("RCOM 里没有能送信的老鼠，它只能接收消息。"))
+	to_chat(user, span_warning("RCOM传讯网 里没有能送信的老鼠，它只能接收消息。"))
 	return
 
 /obj/structure/roguemachine/scomm/obj_break(damage_flag)
@@ -324,14 +324,14 @@
 	if(!listening)
 		return
 	if(receive_only)
-		to_chat(speaker, span_warning("这台 RCOM 只能接收消息！"))
+		to_chat(speaker, span_warning("这台 RCOM传讯网 只能接收消息！"))
 		return
 	if(last_cheese && (last_cheese + CHEESE_QUIET_TIME >= world.time))
 		to_chat(speaker, span_warning("那些老鼠似乎正忙着啃什么东西！"))
 		return
 	if(world.time < last_message + NORMAL_SCOM_PER_MESSAGE_DELAY)
 		var/time_remaining = round((last_message + NORMAL_SCOM_PER_MESSAGE_DELAY - world.time) / 10)
-		to_chat(speaker, span_warning("SCOM 里的老鼠还在恢复。再等 [time_remaining] 秒。"))
+		to_chat(speaker, span_warning("SCOM传讯网 里的老鼠还在恢复。再等 [time_remaining] 秒。"))
 		return
 	var/mob/living/carbon/human/H = speaker
 	var/usedcolor = H.voice_color

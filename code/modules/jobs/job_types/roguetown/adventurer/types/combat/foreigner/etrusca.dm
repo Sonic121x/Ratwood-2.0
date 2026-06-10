@@ -3,8 +3,8 @@
 //Navigator, focused on survival skills.
 //Castaway, focused on fancy footwork.
 /datum/advclass/foreigner/nostromo
-	name = "Etrusca 失途水手"
-	tutorial = "Nostromo，这个词从通俗 Etrusca 语中被硬生生扯了出来，又被帝国语言嚼得面目全非。\
+	name = "伊特鲁斯卡 失途水手"
+	tutorial = "Nostromo，这个词从通俗 伊特鲁斯卡 语中被硬生生扯了出来，又被帝国语言嚼得面目全非。\
 	它原本的含义，平民们早已无人知晓。你既不是什么海上浪客，也不是什么浪漫人物，因为你根本不是英雄。\
 	被贴上“Nostromo”这个名号，便意味着你已经失了自己的位置，成了个只会夸夸其谈、却不肯拔剑的人。\
 	也许你曾是伟大的船长？也许你在更好的年岁里，是个快活水手？\

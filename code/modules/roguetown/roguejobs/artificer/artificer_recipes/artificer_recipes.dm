@@ -187,14 +187,14 @@
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/scomstone
-	name = "SCOM 石 (+1 齿轮, +1 Gemerald, Arcyne)"
+	name = "SCOM传讯网 石 (+1 齿轮, +1 翠晶, Arcyne)"
 	required_item = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegem/green)
 	created_item = /obj/item/scomstone
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/emeraldchoker
-	name = "绿宝石项圈 (+1 齿轮, +黄金, +1 Gemerald, Arcyne)"
+	name = "绿宝石项圈 (+1 齿轮, +黄金, +1 翠晶, Arcyne)"
 	required_item = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/ingot/gold, /obj/item/roguegem/green)
 	created_item = /obj/item/listenstone
@@ -290,7 +290,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/artificerarmor
-	name = "工匠护甲 (+3 Gilbranze, +2 青铜齿轮)"
+	name = "工匠护甲 (+3 吉尔青铜, +2 青铜齿轮)"
 	required_item = /obj/item/ingot/gilbranze
 	additional_items = list(/obj/item/ingot/gilbranze,/obj/item/ingot/gilbranze, /obj/item/roguegear/bronze,/obj/item/roguegear/bronze)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/ancient/artificer

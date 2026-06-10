@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/condottiero
 	name = "孔多蒂耶罗佣兵"
-	tutorial = "你来自 Etrusca 王国。孔多蒂耶罗是典型的职业佣兵，常受雇于势力雄厚的商人。故乡眼下无大战可打，这片大公国便成了亟需的新契约来源。毕竟，这里钱财丰厚，却偏偏缺人卖命……"
+	tutorial = "你来自 伊特鲁斯卡 王国。孔多蒂耶罗是典型的职业佣兵，常受雇于势力雄厚的商人。故乡眼下无大战可打，这片大公国便成了亟需的新契约来源。毕竟，这里钱财丰厚，却偏偏缺人卖命……"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/condottiero

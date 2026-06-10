@@ -94,11 +94,11 @@
 	created_item = /obj/item/rogueweapon/sword/short/ancient/decrepit
 
 /datum/anvil_recipe/weapons/ancient/gladius
-	name = "Gladius, 古代"
+	name = "短罗马剑, 古代"
 	created_item = /obj/item/rogueweapon/sword/short/gladius/ancient
 
 /datum/anvil_recipe/weapons/decrepit/gladius
-	name = "Gladius, 衰朽"
+	name = "短罗马剑, 衰朽"
 	created_item = /obj/item/rogueweapon/sword/short/gladius/ancient/decrepit
 
 /datum/anvil_recipe/weapons/ancient/khopesh
@@ -144,7 +144,7 @@
 	createditem_num = 4
 
 /datum/anvil_recipe/weapons/ancient/gsw
-	name = "巨剑, 古代 (+2 Gilbranze)"
+	name = "巨剑, 古代 (+2 吉尔青铜)"
 	created_item = /obj/item/rogueweapon/greatsword/ancient
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze)
 
@@ -154,7 +154,7 @@
 	additional_items = list(/obj/item/ingot/decrepit, /obj/item/ingot/decrepit)
 
 /datum/anvil_recipe/weapons/ancient/bardiche
-	name = "长柄刀斧，古代 (+1 小原木, +1 Gilbranze)"
+	name = "长柄刀斧，古代 (+1 小原木, +1 吉尔青铜)"
 	created_item = /obj/item/rogueweapon/halberd/bardiche/ancient
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 
@@ -164,7 +164,7 @@
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 
 /datum/anvil_recipe/weapons/ancient/grandmace
-	name = "巨型钉锤, 净化 (+1 Gilbranze, +1 小原木)"
+	name = "巨型钉锤, 净化 (+1 吉尔青铜, +1 小原木)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden/steel/ancient
 
@@ -318,7 +318,7 @@
 	created_item = /obj/item/rogueweapon/greatsword/iron
 
 /datum/anvil_recipe/weapons/iron/claymore
-	name = "Claymore，铁 (+2 铁)"
+	name = "双手阔剑，铁 (+2 铁)"
 	req_blade = /obj/item/blade/iron_sword
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/greatsword/zwei
@@ -809,7 +809,7 @@
 	created_item = /obj/item/rogueweapon/shield/tower/metal
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "鸢盾, 古代 (+1 Gilbranze, +1 熟皮)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/ancient
 
@@ -819,7 +819,7 @@
 	created_item = /obj/item/rogueweapon/shield/tower/metal/ancient/decrepit
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "鸢盾, 古代 (+1 Gilbranze, +1 熟皮)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/rogueweapon/shield/gilbranze
 
@@ -829,7 +829,7 @@
 	created_item = /obj/item/rogueweapon/shield/gilbranze/decrepit
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "鸢盾, 古代 (+1 Gilbranze, +1 熟皮)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/gilbranze/great
 
@@ -844,12 +844,12 @@
 	created_item = /obj/item/rogueweapon/shield/buckler
 
 /datum/anvil_recipe/weapons/ancient/buckler
-	name = "圆盾, 古代 (+1 Gilbranze)"
+	name = "圆盾, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/rogueweapon/shield/buckler/ancient
 
 /datum/anvil_recipe/weapons/decrepit/buckler
-	name = "圆盾, 衰朽 (+1 Gilbranze)"
+	name = "圆盾, 衰朽 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/decrepit)
 	created_item = /obj/item/rogueweapon/shield/buckler/ancient/decrepit
 
@@ -988,83 +988,83 @@
 // HOLY STEEL
 
 /datum/anvil_recipe/weapons/holysteel/church_longsword
-	name = "长剑, Templaric"
+	name = "长剑, 圣堂式"
 	created_item = /obj/item/rogueweapon/sword/long/church
 
 /datum/anvil_recipe/weapons/holysteel/church_spear
-	name = "长矛, Templaric (+1 Holy 钢)"
+	name = "长矛, 圣堂式 (+1 Holy 钢)"
 	additional_items = list(/obj/item/ingot/steelholy)
 	created_item = /obj/item/rogueweapon/spear/holysee
 
 /datum/anvil_recipe/weapons/holysteel/decasword
-	name = "长剑, Decablessed (+1 Holy 钢)"
+	name = "长剑, 十重祝圣 (+1 Holy 钢)"
 	additional_items = list(/obj/item/ingot/steelholy)
 	created_item = /obj/item/rogueweapon/sword/long/undivided
 
 /datum/anvil_recipe/weapons/holysteel/decashield
-	name = "盾, Decablessed (+1 Holy 钢)"
+	name = "盾, 十重祝圣 (+1 Holy 钢)"
 	additional_items = list(/obj/item/ingot/steelholy)
 	created_item = /obj/item/rogueweapon/shield/tower/holysee
 
 // BLESSED SILVER
 
 /datum/anvil_recipe/weapons/psy/axe
-	name = "Psydonic 战斧 (+1 祝福白银, +1 木棍)"
+	name = "普赛顿式 战斧 (+1 祝福白银, +1 木棍)"
 	created_item = /obj/item/rogueweapon/stoneaxe/battle/psyaxe
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/stick)
 
 /datum/anvil_recipe/weapons/psy/poleaxe
-	name = "Psydonic 长柄战斧 (+2 祝福 白银, +1 小原木)"
+	name = "普赛顿式 长柄战斧 (+2 祝福 白银, +1 小原木)"
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greataxe/psy
 
 /datum/anvil_recipe/weapons/psy/mace
-	name = "Psydonic 巨型钉锤 (+1 祝福 白银, +1 小原木)"
+	name = "普赛顿式 巨型钉锤 (+1 祝福 白银, +1 小原木)"
 	created_item = /obj/item/rogueweapon/mace/goden/psy
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 
 /datum/anvil_recipe/weapons/psy/spear
-	name = "Psydonic 长矛 (+1 祝福 白银, +1 小原木)"
+	name = "普赛顿式 长矛 (+1 祝福 白银, +1 小原木)"
 	created_item = /obj/item/rogueweapon/spear/psyspear
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 
 /datum/anvil_recipe/weapons/psy/dagger
-	name = "Psydonic 匕首"
+	name = "普赛顿式 匕首"
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
 
 /datum/anvil_recipe/weapons/psy/shortsword
-	name = "Psydonic 短剑"
+	name = "普赛顿式 短剑"
 	created_item = /obj/item/rogueweapon/sword/short/psy
 
 /datum/anvil_recipe/weapons/psy/katar
-	name = "Psydonic 卡塔拳刃"
+	name = "普赛顿式 卡塔拳刃"
 	created_item = /obj/item/rogueweapon/katar/psydon
 
 /datum/anvil_recipe/weapons/psy/knuckles
-	name = "Psydonic 指节套"
+	name = "普赛顿式 指节套"
 	created_item = /obj/item/rogueweapon/knuckles/psydon
 
 /datum/anvil_recipe/weapons/psy/cudgel
-	name = "Psydonic 手锤"
+	name = "普赛顿式 手锤"
 	created_item = /obj/item/rogueweapon/mace/cudgel/psy
 
 /datum/anvil_recipe/weapons/psy/halberd
-	name = "Psydonic 戟 (+2 祝福 白银, +1 小原木)"
+	name = "普赛顿式 戟 (+2 祝福 白银, +1 小原木)"
 	created_item = /obj/item/rogueweapon/halberd/psyhalberd
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 
 /datum/anvil_recipe/weapons/psy/gsword
-	name = "Psydonic 巨剑 (+2 祝福 白银)"
+	name = "普赛顿式 巨剑 (+2 祝福 白银)"
 	created_item = /obj/item/rogueweapon/greatsword/psygsword
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed)
 
 /datum/anvil_recipe/weapons/psy/sword
-	name = "Psydonic 长剑 (+1 祝福 白银)"
+	name = "普赛顿式 长剑 (+1 祝福 白银)"
 	created_item = /obj/item/rogueweapon/sword/long/psysword
 	additional_items = list(/obj/item/ingot/silverblessed)
 
 /datum/anvil_recipe/weapons/psy/whip
-	name = "Psydonic 鞭 (+3 熟皮)"
+	name = "普赛顿式 鞭 (+3 熟皮)"
 	created_item = /obj/item/rogueweapon/whip/psywhip_lesser
 	additional_items = list(/obj/item/natural/hide/cured, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 

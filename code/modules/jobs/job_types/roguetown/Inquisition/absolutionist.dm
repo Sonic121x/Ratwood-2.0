@@ -8,7 +8,7 @@
 	spawn_positions = 1
 	allowed_races = RACES_NO_CONSTRUCT
 	allowed_patrons = list(/datum/patron/old_god) //Requires the character to be a practicing Psydonite.
-	tutorial = "曾经，这座修道院里只有你一人；一座石砌小堂，守护着 Psydon 神性的一枚碎片。如今，你要牧领整整一个教派，而他们天性中的暴烈，常常与你自己的不杀誓愿相冲。以你的智慧节制教众，以你的祝福抽走他们的伤痛，再引领那些迷途者走向赦罪。"
+	tutorial = "曾经，这座修道院里只有你一人；一座石砌小堂，守护着 普赛顿 神性的一枚碎片。如今，你要牧领整整一个教派，而他们天性中的暴烈，常常与你自己的不杀誓愿相冲。以你的智慧节制教众，以你的祝福抽走他们的伤痛，再引领那些迷途者走向赦罪。"
 	selection_color = JCOLOR_INQUISITION
 	outfit = /datum/outfit/job/roguetown/absolver
 	display_order = JDO_ABSOLVER
@@ -38,7 +38,7 @@
 
 /datum/advclass/absolver
 	name = "赦罪师"
-	tutorial = "曾经，这座修道院里只有你一人；一座石砌小堂，守护着 Psydon 神性的一枚碎片。如今，你要牧领整整一个教派，而他们天性中的暴烈，常常与你自己的不杀誓愿相冲。以你的智慧节制教众，以你的祝福抽走他们的伤痛，再引领那些迷途者走向赦罪。"
+	tutorial = "曾经，这座修道院里只有你一人；一座石砌小堂，守护着 普赛顿 神性的一枚碎片。如今，你要牧领整整一个教派，而他们天性中的暴烈，常常与你自己的不杀誓愿相冲。以你的智慧节制教众，以你的祝福抽走他们的伤痛，再引领那些迷途者走向赦罪。"
 	outfit = /datum/outfit/job/roguetown/absolver/basic
 	subclass_languages = list(/datum/language/otavan)
 	category_tags = list(CTAG_ABSOLVER)

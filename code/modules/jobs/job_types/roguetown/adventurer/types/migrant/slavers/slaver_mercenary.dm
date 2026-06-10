@@ -1,8 +1,8 @@
 // Blade
 
 /datum/advclass/slaver/mercenary/blade
-	name = "Zybantynian 刀客佣兵"
-	tutorial = "你是 Zybantu 奴隶商队雇来的打手。你来自 Zybantu 的沙漠，在 Zybantu 主人的契约之下受雇行事。"
+	name = "兹班图裔 刀客佣兵"
+	tutorial = "你是 兹班图 奴隶商队雇来的打手。你来自 兹班图 的沙漠，在 兹班图 主人的契约之下受雇行事。"
 	outfit = /datum/outfit/job/roguetown/slaver/mercenary/blade
 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_SLEUTH, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_MERC)
@@ -49,7 +49,7 @@
 
 /datum/outfit/job/roguetown/slaver/mercenary/blade/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 Sama'glos。"))
+	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 萨玛格罗斯语。"))
 	to_chat(H, span_info("我开局会携带一批用于捕奴与野外求生的物资。"))
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
@@ -77,8 +77,8 @@
 // Whip
 
 /datum/advclass/slaver/mercenary/whip
-	name = "Zybantynian 鞭手佣兵"
-	tutorial = "你是 Zybantine 奴隶部队雇来的佣兵，自 Zybantine 荒漠而来，受 Zybantynian 主人的契约雇佣。"
+	name = "兹班图裔 鞭手佣兵"
+	tutorial = "你是 兹班图的 奴隶部队雇来的佣兵，自 兹班图的 荒漠而来，受 兹班图裔 主人的契约雇佣。"
 	outfit = /datum/outfit/job/roguetown/slaver/mercenary/whip
 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_SLEUTH, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_MERC)
@@ -125,7 +125,7 @@
 
 /datum/outfit/job/roguetown/slaver/mercenary/whip/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 Sama'glos。"))
+	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 萨玛格罗斯语。"))
 	to_chat(H, span_info("我开局会携带一批用于捕奴与野外求生的物资。"))
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
@@ -153,8 +153,8 @@
 // Crossbow
 
 /datum/advclass/slaver/mercenary/crossbow
-	name = "Zybantynian 轻弩佣兵"
-	tutorial = "你是 Zybantine 奴隶部队雇来的佣兵，自 Zybantine 荒漠而来，受 Zybantynian 主人的契约雇佣。"
+	name = "兹班图裔 轻弩佣兵"
+	tutorial = "你是 兹班图的 奴隶部队雇来的佣兵，自 兹班图的 荒漠而来，受 兹班图裔 主人的契约雇佣。"
 	outfit = /datum/outfit/job/roguetown/slaver/mercenary/crossbow
 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_SLEUTH, TRAIT_DODGEEXPERT, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_MERC)
@@ -199,7 +199,7 @@
 
 /datum/outfit/job/roguetown/slaver/mercenary/crossbow/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 Sama'glos。"))
+	to_chat(H, span_info("我可以在说话前输入 ,c 来使用 萨玛格罗斯语。"))
 	to_chat(H, span_info("我开局会携带一批用于捕奴与野外求生的物资。"))
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/purple

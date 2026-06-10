@@ -243,7 +243,7 @@
 	do_gib = FALSE
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_wolf
-	name = "小型 Volf 形态"
+	name = "小型 沃尔夫 形态"
 	desc = ""
 	overlay_state = "volf_transform"
 	gesture_required = TRUE
@@ -257,8 +257,8 @@
 	show_true_name = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/witch_shifted
-	name = "小型 volf"
-	desc = "经典 volf 的一种更小、更瘦弱的变种，时常在附近林地间游荡。这里很少见到它们，而它看上去也远没有那些体型更大的同类危险。只是这只黄色眼睛里，透着股异样的灵性……"
+	name = "小型 沃尔夫"
+	desc = "经典 沃尔夫 的一种更小、更瘦弱的变种，时常在附近林地间游荡。这里很少见到它们，而它看上去也远没有那些体型更大的同类危险。只是这只黄色眼睛里，透着股异样的灵性……"
 	STASPD = 15
 	STASTR = 3
 	STACON = 5
@@ -280,7 +280,7 @@
 
 /mob/living/simple_animal/pet/cat/rogue/black/witch_shifted
 	name = "漆黑猫"
-	desc = "据说是 Necra 所钟爱的圣兽，对老鼠的兴趣也不比其他同类少。它那双漆黑而圆睁的眼睛后头，藏着种古怪的聪慧……"
+	desc = "据说是 内克拉 所钟爱的圣兽，对老鼠的兴趣也不比其他同类少。它那双漆黑而圆睁的眼睛后头，藏着种古怪的聪慧……"
 	defprob = 90
 	STASPD = 18
 	STASTR = 1
@@ -326,7 +326,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/smallrat/witch_shifted
 	name = "小型 rous"
-	desc = "据说这些小小的、有时还会传播疫病的生灵是 Pestra 的圣物，通常出没于食品储藏间和船只之中。可这一只看起来似乎比其他同类更聪明一些……"
+	desc = "据说这些小小的、有时还会传播疫病的生灵是 佩斯特拉 的圣物，通常出没于食品储藏间和船只之中。可这一只看起来似乎比其他同类更聪明一些……"
 	defprob = 90
 	STASPD = 18
 	STASTR = 1
@@ -337,7 +337,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab/cabbit/witch_shifted
 	name = "小型卡比特"
-	desc = "据说只要见到这种迅捷的小兽，再加上它们的脚，就能招来 Xylix 的好运。它看上去弱小无辜，而且可爱得过分。"
+	desc = "据说只要见到这种迅捷的小兽，再加上它们的脚，就能招来 赛利克斯 的好运。它看上去弱小无辜，而且可爱得过分。"
 	defprob = 90
 	STASPD = 20
 	STASTR = 1

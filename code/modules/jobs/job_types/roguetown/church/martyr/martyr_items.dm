@@ -104,7 +104,7 @@
 
 /obj/item/clothing/cloak/martyr
 	name = "殉道披风"
-	desc = "一件采用 Astrata 配色的优雅披风，看起来只适合人类体型的人穿着。"
+	desc = "一件采用 阿斯特拉塔 配色的优雅披风，看起来只适合人类体型的人穿着。"
 	color = null
 	icon_state = "martyrcloak"
 	item_state = "martyrcloak"

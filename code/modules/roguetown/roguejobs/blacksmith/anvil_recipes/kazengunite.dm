@@ -25,7 +25,7 @@
 
 
 /datum/anvil_recipe/kazengunite/gorget
-	name = "Kazengunite 护喉"
+	name = "风钢岩 护喉"
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/kazengun
 
 

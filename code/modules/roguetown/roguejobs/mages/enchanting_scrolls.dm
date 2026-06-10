@@ -59,7 +59,7 @@ T1 Enchantments below here*/
 		to_chat(user, span_notice("什么也没有发生。也许这张卷轴不能给[O]附魔？"))
 
 /obj/item/enchantmentscroll/xylix
-	name = "希利克斯恩典附魔卷轴"
+	name = "赛利克斯恩典附魔卷轴"
 	desc = "一张灌注了幸运附魔的卷轴。会为佩戴者带来好运。"
 	component = /datum/magic_item/mundane/xylix
 
@@ -70,7 +70,7 @@ T1 Enchantments below here*/
 		to_chat(user, span_notice("你展开[src]并将[O]置于其中。片刻后，奥术蓝光一闪，[src]便碎成了尘土。"))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += "（希利克斯恩典）"
+		O.name += "（赛利克斯恩典）"
 		qdel(src)
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 	else

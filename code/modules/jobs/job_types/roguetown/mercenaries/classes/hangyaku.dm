@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/hangyaku
 	name = "叛逆公卿"
-	tutorial = "叛徒。亡命徒。失败者。昔日的你在 Kazengun 上层社会中并不只是个“武士”，你曾是冠军、德行的旗帜，是一段传奇的雏形。如今你流落遥远的 Psydonia，寻求新的开始……至少，也得先弄到新的钱财。"
+	tutorial = "叛徒。亡命徒。失败者。昔日的你在 风郡 上层社会中并不只是个“武士”，你曾是冠军、德行的旗帜，是一段传奇的雏形。如今你流落遥远的 普赛多尼亚，寻求新的开始……至少，也得先弄到新的钱财。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT //do they have constructs in kazengun?
 	outfit = /datum/outfit/job/roguetown/mercenary/hangyaku
@@ -38,7 +38,7 @@
 	..()
 	H.adjust_blindness(-3)
 	has_loadout = TRUE
-	to_chat(H, span_warning("叛徒。亡命徒。失败者。昔日的你在 Kazengun 上层社会中并不只是个“武士”，你曾是冠军、德行的旗帜，是一段传奇的雏形。如今你流落遥远的 Psydonia，寻求新的开始……至少，也得先弄到新的钱财。"))
+	to_chat(H, span_warning("叛徒。亡命徒。失败者。昔日的你在 风郡 上层社会中并不只是个“武士”，你曾是冠军、德行的旗帜，是一段传奇的雏形。如今你流落遥远的 普赛多尼亚，寻求新的开始……至少，也得先弄到新的钱财。"))
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/kabuto
 	belt = /obj/item/storage/belt/rogue/leather/cloth
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel/kazengun

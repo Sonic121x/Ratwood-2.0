@@ -1,8 +1,8 @@
 //Gronnic Itinerant is a combination subclass.
 //A choice between polearms, ranged, or miracles.
 /datum/advclass/foreigner/gronn
-	name = "Gronn 流徙者"
-	tutorial = "不论你是与族群失散，还是被故土抛弃，你终究还是来到了 Ferentia。\
+	name = "格隆恩 流徙者"
+	tutorial = "不论你是与族群失散，还是被故土抛弃，你终究还是来到了 费伦提亚。\
 	血誓、暴力，以及你族裔一并携来的疯狂仍缠着你不放；你究竟要怎样适应这里？\
 	也许，只要还有另一位酋长愿意接纳你……"
 	allowed_races = RACES_ALL_KINDS
@@ -23,7 +23,7 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
 	)
-	extra_context = "仅限 Inhumen。\
+	extra_context = "仅限 异民。\
 	打手提供：+3 力量 / -2 智力，中甲训练，熟练长柄与骑术，并附带暴击抗性。\
 	射手提供：+3 感知 / +2 力量，中甲训练，大师弓术，熟练追踪。\
 	狂信者提供：+2 速度 / +2 力量，闪避专精，T2 神迹。"

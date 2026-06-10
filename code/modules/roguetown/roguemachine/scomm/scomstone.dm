@@ -61,7 +61,7 @@
 	//Log message to global broadcast list.
 	GLOB.broadcast_list += list(list(
 	"message"   = input_text,
-	"tag"		= "SCOMSTONE #[scomstone_number]",
+	"tag"		= "SCOM传讯网STONE #[scomstone_number]",
 	"timestamp" = station_time_timestamp("hh:mm:ss")
 	))
 

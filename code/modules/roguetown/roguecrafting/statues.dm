@@ -69,28 +69,28 @@
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/structure/statue/grand/zizo
-	name = "雕像（宏伟，Zizo）"
+	name = "雕像（宏伟，齐佐）"
 	result = /obj/structure/fluff/statue/zizo
 
 /datum/crafting_recipe/roguetown/structure/statue/grand/astrata
-	name = "雕像（宏伟，Astrata）"
+	name = "雕像（宏伟，阿斯特拉塔）"
 	result = /obj/structure/fluff/statue/astrata/gold
 
 /datum/crafting_recipe/roguetown/structure/statue/grand/eora
-	name = "雕像（宏伟，Eora）"
+	name = "雕像（宏伟，伊欧拉）"
 	result = /obj/structure/fluff/statue/eora
 
 /datum/crafting_recipe/roguetown/structure/statue/grand/noc
-	name = "雕像（宏伟，Noc）"
+	name = "雕像（宏伟，诺克）"
 	result = /obj/structure/fluff/statue/noc
 
 /datum/crafting_recipe/roguetown/structure/statue/grand/abyssor
-	name = "雕像（宏伟，Abyssor）"
+	name = "雕像（宏伟，阿比索尔）"
 	result = /obj/structure/fluff/statue/abyssor
 	reqs = list(/obj/item/natural/stone = 5)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/structure/statue/grand/abyssor/dolomite
-	name = "雕像（宏伟，Abyssor，白云石）"
+	name = "雕像（宏伟，阿比索尔，白云石）"
 	result = /obj/structure/fluff/statue/abyssor/dolomite
 

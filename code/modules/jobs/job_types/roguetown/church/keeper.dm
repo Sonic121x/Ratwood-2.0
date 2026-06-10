@@ -1,7 +1,7 @@
 /datum/job/roguetown/keeper
 	title = "Keeper"
 	display_title = "守护人"
-	tutorial = "有人容貌残缺、遭人厌弃，也有人只是满怀对 Pestra 的使命感与虔敬。 \
+	tutorial = "有人容貌残缺、遭人厌弃，也有人只是满怀对 佩斯特拉 的使命感与虔敬。 \
 	你们之中有些人严重畸变、毁容，或身染恶疾。 \
 	但无论如何，即便是外表完好的人，也都能感受到那份代价正让自己的力量日渐萎缩。 \
 	总得有人去采集净化 lux 所需的圣血，让 Pestra 赐下的医道得以延续。 \
@@ -41,7 +41,7 @@
 
 /datum/advclass/keeper
 	name = "守护人"
-	tutorial = "有人容貌残缺、遭人厌弃，也有人只是满怀对 Pestra 的使命感与虔敬。 \
+	tutorial = "有人容貌残缺、遭人厌弃，也有人只是满怀对 佩斯特拉 的使命感与虔敬。 \
 	你们之中有些人严重畸变、毁容，或身染恶疾。 \
 	但无论如何，即便是外表完好的人，也都能感受到那份代价正让自己的力量日渐萎缩。 \
 	总得有人去采集净化 lux 所需的圣血，让 Pestra 赐下的医道得以延续。 \
@@ -140,7 +140,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T3, passive_gain = CLERIC_REGEN_MINOR, start_maxed = TRUE)
 
-	to_chat(H, span_notice("我仍走在 Pestra 旧有的虔敬之道上。"))
+	to_chat(H, span_notice("我仍走在 佩斯特拉 旧有的虔敬之道上。"))
 
 
 /datum/job/roguetown/keeper/proc/grant_radical_path(mob/living/carbon/human/H)
@@ -160,4 +160,4 @@
 	if(!H.mind.has_spell(/obj/effect/proc_holder/spell/invoked/resurrect/pestra))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/resurrect/pestra, H)
 
-	to_chat(H, span_notice("我拥抱 Pestra 的激进教义。"))
+	to_chat(H, span_notice("我拥抱 佩斯特拉 的激进教义。"))

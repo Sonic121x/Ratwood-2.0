@@ -217,7 +217,7 @@
 
 /obj/item/ingot/bronze
 	name = "青铜锭"
-	desc = "一种坚硬耐久的合金，深受工程师与 Ravox 信徒喜爱。"
+	desc = "一种坚硬耐久的合金，深受工程师与 拉沃克斯 信徒喜爱。"
 	icon_state = "ingotbronze"
 	smeltresult = /obj/item/ingot/bronze
 	sellprice = 25
@@ -246,21 +246,21 @@
 //Blessed Ingots
 /obj/item/ingot/steelholy/
 	name = "圣钢锭"
-	desc = "这块钢锭曾受 Malum 触碰。即使不在熔炉中，它也在持续散发热量。"
+	desc = "这块钢锭曾受 玛勒姆 触碰。即使不在熔炉中，它也在持续散发热量。"
 	icon_state = "ingotsteelholy"
 	smeltresult = /obj/item/ingot/steel //Smelting it removes the blessing
 	sellprice = 20
 
 /obj/item/ingot/silverblessed/
 	name = "祝圣银锭"
-	desc = "这块锭散发着神圣的纯净气息，为诸国所珍视，也常见于 Psydonic 武装之中。"
+	desc = "这块锭散发着神圣的纯净气息，为诸国所珍视，也常见于 普赛顿式 武装之中。"
 	icon_state = "ingotsilvblessed"
 	smeltresult = /obj/item/ingot/silver //Smelting it removes the blessing
 	sellprice = 100
 
 /obj/item/ingot/silverblessed/bullion
 	name = "祝圣银条"
-	desc = "这块银条散发着神圣的纯净气息。表面的 Psycross 与铸字表明，它出自 Otavan 宗教裁判所。"
+	desc = "这块银条散发着神圣的纯净气息。表面的 普赛圣十字 与铸字表明，它出自 奥塔万 宗教裁判所。"
 	icon_state = "ingotsilvblessed_psy"
 	smeltresult = /obj/item/ingot/silver //Smelting it removes the blessing
 	sellprice = 100
@@ -274,14 +274,14 @@
 	sellprice = 33
 
 /obj/item/ingot/gilbranze
-	name = "gilbranze 锭"
-	desc = "一种由黄金与青铜构成的永恒合金，因此得名 gilbranze。它表面的倒影并不是你自己；那张脸正带着永恒的恶意朝你微笑。"
+	name = "吉尔青铜锭"
+	desc = "一种由黄金与青铜构成的永恒合金，因此得名吉尔青铜。它表面的倒影并不是你自己；那张脸正带着永恒的恶意朝你微笑。"
 	icon_state = "ingotancient"
 	smeltresult = /obj/item/ingot/gilbranze
 	sellprice = 111
 
 /obj/item/ingot/gilbranze/eahasir
-	name = "EA-Hasir 高品质金锭"
+	name = "艾亚-哈希尔 高品质金锭"
 	desc = "沉甸甸的财富就在你手中......等等，这根本不是金子！"
 
 /obj/item/ingot/aaslag
@@ -294,7 +294,7 @@
 //Anomalous Smeltings
 /obj/item/ingot/weeping
 	name = "恒久锭"
-	desc = "一块历经岁月、毫无修饰的金属板。你终于知道它是什么了，却找不到任何词语来描述它。 </br>'..无人会真正知晓最伟大的真相；Aeon 的掌控，Adonai 的存在，以及 Psydon 的命运..' </br>'..但也许，这样反而更好。病灶虽已消散，可这世上的邪恶依旧真实存在..' </br>'..去设法让残骸获得新的 lyfe；一具或许仍能令 Archdevil 落泪的新容器..'"
+	desc = "一块历经岁月、毫无修饰的金属板。你终于知道它是什么了，却找不到任何词语来描述它。 </br>'..无人会真正知晓最伟大的真相；永世 的掌控，阿多奈 的存在，以及 普赛顿 的命运..' </br>'..但也许，这样反而更好。病灶虽已消散，可这世上的邪恶依旧真实存在..' </br>'..去设法让残骸获得新的 lyfe；一具或许仍能令 大魔君 落泪的新容器..'"
 	icon_state = "ingotsilv"
 	smeltresult = /obj/item/ingot/weeping
 	color = "#CECA9C"
@@ -306,7 +306,7 @@
 
 /obj/item/ingot/draconic
 	name = "龙铸锭"
-	desc = "一块噼啪作响、充盈着能量的黑曜石板。它玻璃般的表面持续辐出骇人高热，令你的手指灼起水泡。 </br>'..无论圣徒还是罪人，都无法真正承受这等力量..' </br>'..但也许，你是不同的..' </br>'..去设法让残骸获得新的 lyfe；一具或许仍能令 Archdevil 落泪的新容器..'"
+	desc = "一块噼啪作响、充盈着能量的黑曜石板。它玻璃般的表面持续辐出骇人高热，令你的手指灼起水泡。 </br>'..无论圣徒还是罪人，都无法真正承受这等力量..' </br>'..但也许，你是不同的..' </br>'..去设法让残骸获得新的 lyfe；一具或许仍能令 大魔君 落泪的新容器..'"
 	icon_state = "ingotblacksteel"
 	smeltresult = /obj/item/ingot/draconic
 	color = "#70b8ff"

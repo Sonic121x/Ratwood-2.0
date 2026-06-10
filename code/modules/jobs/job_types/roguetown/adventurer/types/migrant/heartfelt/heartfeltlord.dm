@@ -1,7 +1,7 @@
 
 /datum/job/roguetown/heartfelt/lord
 	title = "Lord of Heartfelt"
-	tutorial = "你是 Heartfelt 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
+	tutorial = "你是 赤心 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
 	在 Magos 的指引下，你踏上前往山巅的旅程，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
@@ -21,8 +21,8 @@
 // DEFAULT - STANDARD OLD CLASS
 
 /datum/advclass/heartfelt/lord/lord
-	name = "Heartfelt 领主"
-	tutorial = "你是 Heartfelt 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
+	name = "赤心 领主"
+	tutorial = "你是 赤心 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
 	在 Magos 的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
@@ -99,8 +99,8 @@
 		H.verbs |= list(/mob/living/carbon/human/mind/proc/setordersheartfelt)
 
 /datum/advclass/heartfelt/lord/archmage
-	name = "Heartfelt 大法师领主"
-	tutorial = "你是 Heartfelt 的大 Magos，统治着一座昔日繁荣、如今却已倾颓的奥术男爵领。\
+	name = "赤心 大法师领主"
+	tutorial = "你是 赤心 的大 Magos，统治着一座昔日繁荣、如今却已倾颓的奥术男爵领。\
 	在来自彼岸的幻视引领下，你踏上前往边疆的旅程，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
@@ -247,8 +247,8 @@
 // Funny role I thought I'd make. Reminded me of Canute and his Jarldom
 
 /datum/advclass/heartfelt/lord/chief
-	name = "Heartfelt 酋长"
-	tutorial = "你是 Heartfelt 的酋长，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
+	name = "赤心 酋长"
+	tutorial = "你是 赤心 的酋长，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
 	在 Magos 的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
@@ -350,8 +350,8 @@
 	new_role = "Heartfeltian Retinue"
 	overlay_state = "recruit_brother"
 	recruitment_faction = "Heartfelt"
-	recruitment_message = "为 Heartfelt 效命吧，%RECRUIT！"
-	accept_message = "为了 Heartfelt！"
+	recruitment_message = "为 赤心 效命吧，%RECRUIT！"
+	accept_message = "为了 赤心！"
 	refuse_message = "我拒绝。"
 
 /obj/effect/proc_holder/spell/self/convertrole/heartfelt/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
@@ -362,7 +362,7 @@
 		to_chat(recruiter, span_warning("他们已经是谷地卫队的一员了！不能加入我们的事业！"))
 		return FALSE
 	if(HAS_TRAIT(recruit, TRAIT_INQUISITION))
-		to_chat(recruiter, span_warning("他们只忠于 Psydon！不能加入我们的事业！"))
+		to_chat(recruiter, span_warning("他们只忠于 普赛顿！不能加入我们的事业！"))
 		return FALSE
 	//If you're reading this, please refactor this once we have TRAIT_CLERGY thanks
 	if(recruit.job in list("Priest", "Priestess", "Templar", "Acolyte", "Martyr"))
@@ -387,7 +387,7 @@
 
 
 /obj/effect/proc_holder/spell/invoked/order/heartfelt
-	name = "Heartfelt 军令"
+	name = "赤心 军令"
 	var/effect_to_apply
 	var/message_varname
 
@@ -499,7 +499,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/order/heartfelt/forheartfelt
 	name = "坚守阵地！"
-	desc = "我的指挥官命令我为 Heartfelt 骄傲地站住脚跟！"
+	desc = "我的指挥官命令我为 赤心 骄傲地站住脚跟！"
 	icon_state = "buff"
 
 /***************************************************************/
@@ -518,7 +518,7 @@
 
 /datum/status_effect/buff/order/heartfelt/charge/on_apply()
 	. = ..()
-	to_chat(owner, span_blue("我的指挥官命令我冲锋！为了 Heartfelt！"))
+	to_chat(owner, span_blue("我的指挥官命令我冲锋！为了 赤心！"))
 
 /atom/movable/screen/alert/status_effect/buff/order/heartfelt/charge
 	name = "冲锋！"
@@ -601,7 +601,7 @@
 	ORDER_INPUT(retreattext, "向后撤！！")
 	ORDER_INPUT(chargetext, "把他们顶回去！！")
 	ORDER_INPUT(bolstertext, "稳住战线！！")
-	ORDER_INPUT(onfeettext, "为了 Heartfelt 骄傲地站起来！！")
+	ORDER_INPUT(onfeettext, "为了 赤心 骄傲地站起来！！")
 	ORDER_INPUT(focustargettext, "击溃他们的士气，把他们标记为必杀目标！！")
 
 	#undef ORDER_INPUT

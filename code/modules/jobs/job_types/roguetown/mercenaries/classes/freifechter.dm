@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/freelancer
 	name = "自由剑士"
-	tutorial = "你毕业于 Aavnic 的 Freifechters，也就是“自由战士”行会。这座享有盛名的武斗公会坐落于独立城邦 Szorendnizina，并被教廷视作献给 Ravox 的一份颂礼。它建立不过三十来年，却已吸引整个西 Psydonia 的访客慕名而来。你将同一件兵器挥练过上万次，而非样样浅尝辄止。这个职业属于真正有经验的战士，懂得步法与体力调配的人；光靠大师级技能，还救不了你的命。"
+	tutorial = "你毕业于 阿夫尼克的 的 自由斗剑团，也就是“自由战士”行会。这座享有盛名的武斗公会坐落于独立城邦 Szorendnizina，并被教廷视作献给 拉沃克斯 的一份颂礼。它建立不过三十来年，却已吸引整个西 普赛多尼亚 的访客慕名而来。你将同一件兵器挥练过上万次，而非样样浅尝辄止。这个职业属于真正有经验的战士，懂得步法与体力调配的人；光靠大师级技能，还救不了你的命。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/freelancer
@@ -25,7 +25,7 @@
 
 /datum/outfit/job/roguetown/mercenary/freelancer/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是 Freifechters 行会的正式毕业生。"))
+	to_chat(H, span_warning("你是 自由斗剑团 行会的正式毕业生。"))
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fencer	//Experimental.
 	var/weapons = list("改制训练剑！！！挑战模式！！！", "Etrusca 长剑", "Kriegsmesser", "野战长剑", "煎锅", "农夫镰刀")
 	if(H.mind)

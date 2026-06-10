@@ -2,7 +2,7 @@
 	icon = 'icons/obj/structures/heart_items.dmi'
 	icon_state = "leechtick"
 	name = "水蛭蜱"
-	desc = "一种来自 Abyssor 神圣之海、受 Pestra 影响的入侵生物。众所周知，它们会附着在海中巨兽的尸骸上。它们不只是害虫，任何惊扰它们的人都会被吸走灵魂与灵辉。"
+	desc = "一种来自 阿比索尔 神圣之海、受 佩斯特拉 影响的入侵生物。众所周知，它们会附着在海中巨兽的尸骸上。它们不只是害虫，任何惊扰它们的人都会被吸走灵魂与灵辉。"
 	// Don't lower the size, they'll make effective throwing weapons otherwise.
 	w_class = WEIGHT_CLASS_NORMAL
 

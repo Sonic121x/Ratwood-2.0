@@ -1,6 +1,6 @@
 /datum/advclass/knave //sneaky bastards - ranged classes of two flavors archers and rogues
 	name = "无赖"
-	tutorial = "并非所有 Matthios 的追随者都会明抢。窃贼、偷猎者和各色不三不四之徒都懂得藏身暗处，从别人手里偷走东西，等受害者回过神来时，他们早已远走高飞。"
+	tutorial = "并非所有 马西奥斯 的追随者都会明抢。窃贼、偷猎者和各色不三不四之徒都懂得藏身暗处，从别人手里偷走东西，等受害者回过神来时，他们早已远走高飞。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/knave

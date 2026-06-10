@@ -108,7 +108,7 @@
 // DECREPIT/ANCIENT ALLOY
 
 /datum/anvil_recipe/armor/ancient/barbute
-	name = "Barbute, 古代 (+1 Gilbranze)"
+	name = "Barbute, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/ancient
 
@@ -118,7 +118,7 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/ancient/decrepit
 
 /datum/anvil_recipe/armor/ancient/savoyard
-	name = "Savoyard, 古代 (+1 Gilbranze)"
+	name = "Savoyard, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/guard/ancient
 
@@ -128,7 +128,7 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/guard/ancient/decrepit
 
 /datum/anvil_recipe/armor/ancient/bascinet
-	name = "尖顶盔, 古代 (+1 Gilbranze)"
+	name = "尖顶盔, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = 	/obj/item/clothing/head/roguetown/helmet/heavy/knight/ancient
 
@@ -170,7 +170,7 @@
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/ancient/decrepit
 
 /datum/anvil_recipe/armor/ancient/cuirass
-	name = "胸甲, 古代 (+1 Gilbranze)"
+	name = "胸甲, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/ancient
 
@@ -198,7 +198,7 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/ancient/decrepit
 
 /datum/anvil_recipe/armor/ancient/hauberk
-	name = "长身锁子甲, 古代 (+1 Gilbranze)"
+	name = "长身锁子甲, 古代 (+1 吉尔青铜)"
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ancient
 	additional_items = list(/obj/item/ingot/gilbranze)
 
@@ -250,7 +250,7 @@
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/kilt/ancient/decrepit
 
 /datum/anvil_recipe/armor/ancient/platelegs
-	name = "板甲腿甲, 古代 (+1 Gilbranze)"
+	name = "板甲腿甲, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/clothing/under/roguetown/platelegs/ancient
 
@@ -597,7 +597,7 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet
 
 /datum/anvil_recipe/armor/steel/etruscanbascinet
-	name = "Etruscan 尖顶盔, 钢 (+1 钢)"
+	name = "伊特鲁斯卡n 尖顶盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
 
@@ -655,27 +655,27 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel/hound
 
 /datum/anvil_recipe/armor/steel/astratahelm
-	name = "Astratan Helmet (+1 钢)"
+	name = "阿斯特拉塔头盔 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 
 /datum/anvil_recipe/armor/steel/abyssorhelm
-	name = "Abyssorite Helmet (+1 钢)"
+	name = "阿比索尔头盔 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
 
 /datum/anvil_recipe/armor/steel/necrahelm
-	name = "Necra 头盔（+1 钢锭）"
+	name = "内克拉 头盔（+1 钢锭）"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
 
 /datum/anvil_recipe/armor/steel/nochelm
-	name = "Noccian Helmet (+1 钢)"
+	name = "诺克头盔 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 
 /datum/anvil_recipe/armor/steel/dendorhelm
-	name = "Dendorite Helmet (+1 钢)"
+	name = "登多尔头盔 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 
@@ -705,67 +705,67 @@
 // HOLY STEEL
 
 /datum/anvil_recipe/armor/holysteel/astratahelmtemplar
-	name = "Astratan 圣殿头盔 (+1 熟皮)"
+	name = "阿斯特拉塔圣殿头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
 
 /datum/anvil_recipe/armor/holysteel/malumhelmtemplar
-	name = "Malumite 圣殿头盔 (+1 熟皮)"
+	name = "玛勒姆圣殿头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/malum
 
 /datum/anvil_recipe/armor/holysteel/necrahelmtemplar
-	name = "Necra 圣殿头盔（+1 鞣制皮革）"
+	name = "内克拉 圣殿头盔（+1 鞣制皮革）"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necran
 
 /datum/anvil_recipe/armor/holysteel/pestrahelmtemplar
-	name = "Pestran 圣殿头盔 (+1 熟皮)"
+	name = "佩斯特拉圣殿头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/pestran
 
 /datum/anvil_recipe/armor/holysteel/eorahelmtemplar
-	name = "Eoran 圣殿头盔 (+1 熟皮)"
+	name = "伊欧拉圣殿头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/eoran
 
 /datum/anvil_recipe/armor/holysteel/astratahelm
-	name = "Astratan Helmet (+1 熟皮)"
+	name = "阿斯特拉塔头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 
 /datum/anvil_recipe/armor/holysteel/abyssorhelm
-	name = "Abyssorite Helmet (+1 熟皮)"
+	name = "阿比索尔头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
 
 /datum/anvil_recipe/armor/holysteel/necrahelm
-	name = "Necra 头盔（+1 鞣制皮革）"
+	name = "内克拉 头盔（+1 鞣制皮革）"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
 
 /datum/anvil_recipe/armor/holysteel/nochelm
-	name = "Noccian Helmet (+1 熟皮)"
+	name = "诺克头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 
 /datum/anvil_recipe/armor/holysteel/dendorhelm
-	name = "Dendorite Helmet (+1 熟皮)"
+	name = "登多尔头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 
 /datum/anvil_recipe/armor/holysteel/ravoxhelm
-	name = "Ravoxian Helmet (+1 熟皮)"
+	name = "拉沃克斯头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/ravoxhelm
 
 /datum/anvil_recipe/armor/holysteel/xylixhelm
-	name = "Xylixian Helmet (+1 熟皮)"
+	name = "赛利克斯头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/xylixhelm
 
 /datum/anvil_recipe/armor/holysteel/eorahelm
-	name = "Eoran Helmet (+1 熟皮)"
+	name = "伊欧拉头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 
@@ -780,44 +780,44 @@
 // BLESSED SILVER
 
 /datum/anvil_recipe/armor/blessedsilver/psychestplate
-	name = "Psydonic 胸板甲 (+1 熟皮)"
+	name = "普赛顿式 胸板甲 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/fencer/psydon
 
 /datum/anvil_recipe/armor/blessedsilver/psycuirass
-	name = "Psydonic 胸甲 (+2 熟皮, +1 祝福白银)"
+	name = "普赛顿式 胸甲 (+2 熟皮, +1 祝福白银)"
 	additional_items = list(/obj/item/natural/hide/cured, /obj/item/natural/hide/cured, /obj/item/ingot/silverblessed)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted/ornate
 
 /datum/anvil_recipe/armor/blessedsilver/armetpsy
-	name = "Psydonic Armet 头盔"
+	name = "普赛顿式 Armet 头盔"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
 
 /datum/anvil_recipe/armor/blessedsilver/helmsallpsy
-	name = "Psydonic Sallet (+1 祝福白银)"
+	name = "普赛顿式 Sallet (+1 祝福白银)"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/psysallet
 
 /datum/anvil_recipe/armor/blessedsilver/helmbucketpsy
-	name = "Psydonic 桶盔 (+1 祝福白银)"
+	name = "普赛顿式 桶盔 (+1 祝福白银)"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/psybucket
 
 /datum/anvil_recipe/armor/blessedsilver/helmetabso
-	name = "Psydonian 圆锥盔 (+2 祝福白银)"
+	name = "普赛多尼亚n 圆锥盔 (+2 祝福白银)"
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/absolver
 
 /datum/anvil_recipe/armor/blessedsilver/psyhalfplate
-	name = "Psydonic 半身板甲 (+Psydonic 胸甲, +2 熟皮)"
+	name = "普赛顿式 半身板甲 (+普赛顿式 胸甲, +2 熟皮)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/half/fluted/ornate, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
 
 /datum/anvil_recipe/armor/blessedsilver/psyfullplate
-	name = "Psydonic 全身板甲 (+Psydonic 半身板甲, +2 熟皮)"
+	name = "普赛顿式 全身板甲 (+普赛顿式 半身板甲, +2 熟皮)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate
 
 /datum/anvil_recipe/armor/blessedsilver/psyfullplatealt
-	name = "Psydonic 全身板甲, 长身锁子甲ed (+Psydonic 长身锁子甲, +2 祝福白银, +2 熟皮)"
+	name = "普赛顿式 全身板甲, 长身锁子甲ed (+普赛顿式 长身锁子甲, +2 祝福白银, +2 熟皮)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate, /obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate
 

@@ -372,13 +372,13 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 	//Flavor messages for cursing certain god's faithful.
 	//Dendor works in mysterious ways.
 	if (istype(H.patron, /datum/patron/divine/dendor))
-		to_chat(src, span_warning("你能强烈感受到疯狂之神 Dendor 的存在。此人体内的狼性在微弱的束缚下挣扎翻腾、躁动不安。"))
+		to_chat(src, span_warning("你能强烈感受到疯狂之神 登多尔 的存在。此人体内的狼性在微弱的束缚下挣扎翻腾、躁动不安。"))
 		//If we check this here there's no need to apply this trait preemtively to a bunch of people, and allows for greater fluff feedback.
 		ADD_TRAIT(H, TRAIT_CURSE_RESIST, TRAIT_GENERIC)
 
 	//Abyssor's clergy are gripped by his dream.
 	if (istype(H.patron, /datum/patron/divine/abyssor))
-		to_chat(src, span_warning("梦者 Abyssor 已将这人牢牢攥在掌中。十神之光也只能勉强刺入那深渊般的黑暗。"))
+		to_chat(src, span_warning("梦者 阿比索尔 已将这人牢牢攥在掌中。十神之光也只能勉强刺入那深渊般的黑暗。"))
 		ADD_TRAIT(H, TRAIT_CURSE_RESIST, TRAIT_GENERIC)
 
 	//Let's not curse heretical antags.

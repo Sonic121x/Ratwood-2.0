@@ -48,7 +48,7 @@
 	sellprice = 30
 
 /datum/crafting_recipe/roguetown/weaving/astratarobe
-	name = "Astrata 长袍"
+	name = "阿斯特拉塔 长袍"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/astrata)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
@@ -56,7 +56,7 @@
 	sellprice = 25
 
 /datum/crafting_recipe/roguetown/weaving/abyssorrobe
-	name = "Abyssor 长袍"
+	name = "阿比索尔 长袍"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/abyssor)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
@@ -64,7 +64,7 @@
 	sellprice = 25
 
 /datum/crafting_recipe/roguetown/weaving/abyssorhood
-	name = "Abyssor 兜帽"
+	name = "阿比索尔 兜帽"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/abyssor)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
@@ -80,7 +80,7 @@
 	sellprice = 25
 
 /datum/crafting_recipe/roguetown/weaving/nocrobe
-	name = "Noc 长袍"
+	name = "诺克 长袍"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/noc)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
@@ -96,7 +96,7 @@
 	sellprice = 25
 
 /datum/crafting_recipe/roguetown/weaving/dendorrobe
-	name = "Dendor 长袍"
+	name = "登多尔 长袍"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/dendor)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
@@ -104,7 +104,7 @@
 	sellprice = 25
 
 /datum/crafting_recipe/roguetown/weaving/necrarobe
-	name = "Necra 长袍"
+	name = "内克拉 长袍"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/necra)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
@@ -112,7 +112,7 @@
 	sellprice = 25
 
 /datum/crafting_recipe/roguetown/weaving/necrahood
-	name = "Necra 兜帽"
+	name = "内克拉 兜帽"
 	result = list(/obj/item/clothing/head/roguetown/necrahood)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
@@ -146,7 +146,7 @@
 
 //Eora content from Stonekeep
 /datum/crafting_recipe/roguetown/weaving/eoramask
-	name = "Eora 面具"
+	name = "伊欧拉 面具"
 	result = list(/obj/item/clothing/head/roguetown/eoramask)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 2)
@@ -154,7 +154,7 @@
 	sellprice = 20
 
 /datum/crafting_recipe/roguetown/weaving/eorarobes
-	name = "Eora 长袍"
+	name = "伊欧拉 长袍"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/eora)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)

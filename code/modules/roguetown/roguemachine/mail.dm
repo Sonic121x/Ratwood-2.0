@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/mail
 	name = "赫尔墨斯"
-	desc = "自从这种液压气动邮递系统问世后，信差 zad 就严重过时了。投币槽会启动机关，分发羊皮纸（一枚 zenny）和羽毛笔（一枚 ziliqua）。"
+	desc = "自从这种液压气动邮递系统问世后，信差 ZAD告示台 就严重过时了。投币槽会启动机关，分发羊皮纸（一枚 zenny）和羽毛笔（一枚 ziliqua）。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "mail"
 	density = FALSE
@@ -65,7 +65,7 @@
 		return
 	if(HAS_TRAIT(user, TRAIT_INQUISITION))
 		if(!coin_loaded && !inqcoins)
-			to_chat(user, span_notice("它需要一枚 Marque。"))
+			to_chat(user, span_notice("它需要一枚 印记。"))
 			return
 		user.changeNext_move(CLICK_CD_MELEE)
 		display_marquette(usr)
@@ -75,10 +75,10 @@
 	. += span_info("先投入一枚硬币，再右键发送信件。")
 	. += span_info("手持纸张左键点击，可免费寄出预先写好的信。")
 	if(HAS_TRAIT(user, TRAIT_INQUISITION))
-		. += span_info("<br>MARQUETTE 可通过赫尔墨斯内部的暗格进入。装入一枚 Marque 即可访问。")
+		. += span_info("<br>印记终端 可通过赫尔墨斯内部的暗格进入。装入一枚 印记 即可访问。")
 
-		. += span_info("你可以在这里寄送到达单、控诉单、已填满的 INDEXER 或供词。")
-		. += span_info("请正确署名。需要时附上 INDEXER。加盖印章需额外两枚 Marques。")
+		. += span_info("你可以在这里寄送到达单、控诉单、已填满的 编目机 或供词。")
+		. += span_info("请正确署名。需要时附上 编目机。加盖印章需额外两枚 印记。")
 
 /obj/structure/roguemachine/mail/attack_right(mob/user)
 	. = ..()
@@ -483,7 +483,7 @@
 				to_chat(user, span_warning("[I]缺少签名。"))
 				return
 		else
-			to_chat(user, span_warning("[I]缺少 INDEXER。"))
+			to_chat(user, span_warning("[I]缺少 编目机。"))
 			return
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/smallDelivery))
@@ -722,12 +722,12 @@
 /obj/structure/roguemachine/mail/proc/display_marquette(mob/user)
 	var/contents
 	contents = "<center>✤ ── 奥塔瓦裁判所配给册 ── ✤<BR>"
-	contents += "为根除异端，只要 Psydon 仍在。<BR>"
+	contents += "为根除异端，只要 普赛顿 仍在。<BR>"
 	if(HAS_TRAIT(user, TRAIT_PURITAN))
 		contents += "✤ ── <a href='?src=[REF(src)];locktoggle=1]'> 清教徒锁：[inqonly ? "开":"关"]</a> ── ✤<BR>"
 	else
 		contents += "✤ ── 清教徒锁：[inqonly ? "开":"关"] ── ✤<BR>"
-	contents += "ᛉ <a href='?src=[REF(src)];eject=1'>已装入 Marques：[inqcoins]</a>ᛉ<BR>"
+	contents += "ᛉ <a href='?src=[REF(src)];eject=1'>已装入 印记：[inqcoins]</a>ᛉ<BR>"
 
 	if(cat_current == "1")
 		contents += "<BR> <table style='width: 100%' line-height: 40px;'>"

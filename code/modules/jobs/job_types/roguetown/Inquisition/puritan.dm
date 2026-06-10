@@ -9,7 +9,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT		//Would you trust a machine to handle a role that requires non-logical intuition and commanding? Maybe. Could undo this if the community likes it. Purpose-built supermachines sound cool, too.
 	allowed_patrons = list(/datum/patron/old_god) //Requires your character's patron to be Psydon. This role is explicitly designed to be played by Psydonites, only, and almost everything they have - down to the equipment and statblock - is rooted in Psydonism. Do NOT make this accessable to other faiths, unless you go through the efforts of redesigning it from the ground up.
-	tutorial = "你是一名才干无双的清教审判者，恪守 Psydon 教义，并被赋予统领一支地方教派的权柄。Otava 作为这世上仅存最大的 Psydon 王国，将你视作一枝银尖橄榄枝，赠往谷地以阻挡步步紧逼的黑暗。执行使命时务必谨慎，免得那些无信者也把你绑上火刑柱。"
+	tutorial = "你是一名才干无双的清教审判者，恪守 普赛顿 教义，并被赋予统领一支地方教派的权柄。奥塔瓦 作为这世上仅存最大的 普赛顿 王国，将你视作一枝银尖橄榄枝，赠往谷地以阻挡步步紧逼的黑暗。执行使命时务必谨慎，免得那些无信者也把你绑上火刑柱。"
 	whitelist_req = TRUE
 	cmode_music = 'sound/music/inquisitorcombat.ogg'
 	selection_color = JCOLOR_INQUISITION
@@ -64,12 +64,12 @@
 		to_chat(src, span_warning ("要这么做，我的受审者必须先被束缚住！"))
 		return
 	if(!istype(S, /obj/item/clothing/neck/roguetown/psicross/silver))
-		to_chat(src, span_warning("我必须手持一枚银制 Psycross，才能逼出这道神谕！"))
+		to_chat(src, span_warning("我必须手持一枚银制 普赛圣十字，才能逼出这道神谕！"))
 		return
 	for(var/obj/structure/fluff/psycross/N in oview(5, src))
 		found = N
 	if(!found)
-		to_chat(src, span_warning("我附近必须有一座大型 Psycross 构造，才能逼出这道神谕！"))
+		to_chat(src, span_warning("我附近必须有一座大型 普赛圣十字 构造，才能逼出这道神谕！"))
 		return
 	if(!H.stat)
 		var/static/list/faith_lines = list(
@@ -78,13 +78,13 @@
 			"你可还忠信！？",
 			"谁是你的牧者！？",
 		)
-		src.visible_message(span_warning("[src] 把银制 Psycross 猛地杵到 [H] 脸上！"))
+		src.visible_message(span_warning("[src] 把银制 普赛圣十字 猛地杵到 [H] 脸上！"))
 		say(pick(faith_lines), spans = list("torture"))
 		H.emote("agony", forced = TRUE)
 
 		if(!(do_mob(src, H, 10 SECONDS)))
 			return
-		src.visible_message(span_warning("[src] 手中的银制 Psycross 猛然起火，转瞬便烧成灰烬！"))
+		src.visible_message(span_warning("[src] 手中的银制 普赛圣十字 猛然起火，转瞬便烧成灰烬！"))
 		H.confess_sins("patron")
 		qdel(S)
 		return
@@ -130,12 +130,12 @@
 		to_chat(src, span_warning ("要这么做，我的受审者必须先被束缚住！"))
 		return
 	if(!istype(S, /obj/item/clothing/neck/roguetown/psicross/silver))
-		to_chat(src, span_warning("我必须手持一枚银制 Psycross，才能逼出这道神谕！"))
+		to_chat(src, span_warning("我必须手持一枚银制 普赛圣十字，才能逼出这道神谕！"))
 		return
 	for(var/obj/structure/fluff/psycross/N in oview(5, src))
 		found = N
 	if(!found)
-		to_chat(src, span_warning("我附近必须有一座大型 Psycross 构造，才能逼出这道神谕！"))
+		to_chat(src, span_warning("我附近必须有一座大型 普赛圣十字 构造，才能逼出这道神谕！"))
 		return
 	if(!H.stat)
 		var/static/list/torture_lines = list(
@@ -150,7 +150,7 @@
 
 		if(!(do_mob(src, H, 10 SECONDS)))
 			return
-		src.visible_message(span_warning("[src] 手中的银制 Psycross 猛然起火，转瞬便烧成灰烬！"))
+		src.visible_message(span_warning("[src] 手中的银制 普赛圣十字 猛然起火，转瞬便烧成灰烬！"))
 		H.confess_sins("antag")
 		qdel(S)
 		return

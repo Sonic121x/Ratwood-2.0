@@ -1,6 +1,6 @@
 /datum/advclass/wretch/lunacyembracer
 	name = "拥月狂徒"
-	tutorial = "你以自然之名拒斥并恐吓文明。你在月下肆意奔行，是镇民眼中的噩梦，也是 Dendor 荒野领域的狂热斗士。"
+	tutorial = "你以自然之名拒斥并恐吓文明。你在月下肆意奔行，是镇民眼中的噩梦，也是 登多尔 荒野领域的狂热斗士。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	disallowed_races = list(

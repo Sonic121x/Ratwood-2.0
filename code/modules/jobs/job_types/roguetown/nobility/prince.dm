@@ -233,7 +233,7 @@
 
 /datum/advclass/heir/inbred
 	name = "近亲废裔"
-	tutorial = "按理说，你的血统本该让 Psydon 因神授正统而向你微笑，这便是贵族的祝福……至少在你出生之前一直如此。你是被命运遗弃的孩子，纵然你终日病骨缠身、脊背咯吱作响、涎水横流，还得让人不知疲倦地伺候着，你在地位上依旧比那些让城镇吃饱穿暖的农民更重要。等你今天咳得没那么厉害时，记得把这点提醒给他们。"
+	tutorial = "按理说，你的血统本该让 普赛顿 因神授正统而向你微笑，这便是贵族的祝福……至少在你出生之前一直如此。你是被命运遗弃的孩子，纵然你终日病骨缠身、脊背咯吱作响、涎水横流，还得让人不知疲倦地伺候着，你在地位上依旧比那些让城镇吃饱穿暖的农民更重要。等你今天咳得没那么厉害时，记得把这点提醒给他们。"
 	outfit = /datum/outfit/job/roguetown/heir/inbred
 	traits_applied = list(TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_GOODLOVER)
 	category_tags = list(CTAG_HEIR)

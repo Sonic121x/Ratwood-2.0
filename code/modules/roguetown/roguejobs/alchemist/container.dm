@@ -295,7 +295,7 @@
 	desc = "一只带有山口酒坊瓶塞的酒瓶。里面是远方风间郡酿造的淡色拉格，并以绿茶精修出独特风味，甚至比精灵酒还要清淡！"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake
-	name = "Aavnic White 酒瓶"
+	name = "阿夫尼克的 White 酒瓶"
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "white_wine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kgunsake = 50)
@@ -374,7 +374,7 @@
 
 /obj/item/reagent_containers/glass/bottle/claybottle/whitewine
 	list_reagents = list(/datum/reagent/consumable/ethanol/whitewine = 75)
-	desc = "一只带有 Otavan Merchant Guild 瓶塞的酒瓶。标签表明这是一瓶来自寒冷北地的甜酒。"
+	desc = "一只带有 奥塔万 Merchant Guild 瓶塞的酒瓶。标签表明这是一瓶来自寒冷北地的甜酒。"
 
 /obj/item/reagent_containers/glass/bottle/rogue/emberwine
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 24)

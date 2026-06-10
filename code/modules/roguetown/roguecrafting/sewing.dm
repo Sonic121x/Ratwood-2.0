@@ -348,119 +348,119 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/abyssortemplartabard
-	name = "战袍，abyssorite 圣殿骑士"
+	name = "战袍，阿比索尔圣殿骑士"
 	result = list(/obj/item/clothing/cloak/abyssortabard)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/psydon
-	name = "战袍，psydon"
+	name = "战袍，普赛顿"
 	result = list(/obj/item/clothing/cloak/templar/psydon)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/psydon
-	name = "战袍，psydon 正统派"
+	name = "战袍，普赛顿 正统派"
 	result = list(/obj/item/clothing/cloak/psydontabard)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/astrata
-	name = "战袍，astrata"
+	name = "战袍，阿斯特拉塔"
 	result = list(/obj/item/clothing/cloak/templar/astrata)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/noc
-	name = "战袍，noc"
+	name = "战袍，诺克"
 	result = list(/obj/item/clothing/cloak/templar/noc)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/dendor
-	name = "战袍，dendor"
+	name = "战袍，登多尔"
 	result = list(/obj/item/clothing/cloak/templar/dendor)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/necra
-	name = "战袍，necra"
+	name = "战袍，内克拉"
 	result = list(/obj/item/clothing/cloak/templar/necra)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/abyssor
-	name = "战袍，abyssor"
+	name = "战袍，阿比索尔"
 	result = list(/obj/item/clothing/cloak/templar/abyssor)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/malum
-	name = "战袍，malum"
+	name = "战袍，玛勒姆"
 	result = list(/obj/item/clothing/cloak/templar/malum)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/eora
-	name = "战袍，eora"
+	name = "战袍，伊欧拉"
 	result = list(/obj/item/clothing/cloak/templar/eora)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/pestra
-	name = "战袍，pestran 圣殿骑士"
+	name = "战袍，佩斯特拉圣殿骑士"
 	result = list(/obj/item/clothing/cloak/templar/pestra)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/pestran
-	name = "战袍，pestran"
+	name = "战袍，佩斯特拉"
 	result = list(/obj/item/clothing/cloak/templar/pestran)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/ravox
-	name = "战袍，ravox"
+	name = "战袍，拉沃克斯"
 	result = list(/obj/item/clothing/cloak/cleric/ravox)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/ravoxtemplar
-	name = "战袍，ravox 圣殿骑士"
+	name = "战袍，拉沃克斯圣殿骑士"
 	result = list(/obj/item/clothing/cloak/templar/ravox)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/ravoxgorget
-	name = "ravox 护颈"
+	name = "拉沃克斯护颈"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/ravoxgorget)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/xylix
-	name = "战袍，xylix"
+	name = "战袍，赛利克斯"
 	result = list(/obj/item/clothing/cloak/templar/xylix)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/xylixian
-	name = "战袍，xylix 圣殿骑士"
+	name = "战袍，赛利克斯圣殿骑士"
 	result = list(/obj/item/clothing/cloak/templar/xylixian)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
@@ -1154,7 +1154,7 @@
 	sellprice = 15
 
 /datum/crafting_recipe/roguetown/sewing/otavangambeson
-	name = "otavan 棉甲"
+	name = "奥塔万棉甲"
 	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan)
 	reqs = list(/obj/item/natural/cloth = 5,
 				/obj/item/natural/silk = 2,

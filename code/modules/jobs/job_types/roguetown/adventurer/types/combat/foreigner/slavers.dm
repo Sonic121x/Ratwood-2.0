@@ -1,7 +1,7 @@
 //Why is this not in the Zybantium file? We'll be expanding this to other groups.
 /datum/advclass/foreigner/slaver
-	name = "Zybantine 奴贩"
-	tutorial = "在 Psydonia 的某些地方，奴隶买卖依旧司空见惯。\
+	name = "兹班图的 奴贩"
+	tutorial = "在 普赛多尼亚 的某些地方，奴隶买卖依旧司空见惯。\
 	你来自 Zybantine 帝国，那里的血肉市场古老而从未断绝，而你的钱财正是靠贩卖活生生的灵魂换来的。"
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/slaver
@@ -27,7 +27,7 @@
 
 /datum/outfit/job/roguetown/adventurer/slaver/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("在 Psydonia 的某些地方，奴隶买卖依旧司空见惯。\
+	to_chat(H, span_warning("在 普赛多尼亚 的某些地方，奴隶买卖依旧司空见惯。\
 	你来自 Zybantine 帝国，那里的血肉市场古老而从未断绝，而你的钱财正是靠贩卖活生生的灵魂换来的。"))
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
@@ -51,7 +51,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/hierophant/civilian
 	name = "披巾"
-	desc = "厚实而护身，却依旧轻便透气；正是用来抵御 Naledi 炽烈日头与粗砺风沙的理想衣装。"
+	desc = "厚实而护身，却依旧轻便透气；正是用来抵御 纳莱迪 炽烈日头与粗砺风沙的理想衣装。"
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/black

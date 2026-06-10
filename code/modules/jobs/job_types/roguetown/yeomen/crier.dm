@@ -3,7 +3,7 @@
 /datum/job/roguetown/crier
 	title = "Town Crier"
 	display_title = "镇报官"
-	tutorial = "你是号角的执掌者、传声线的主人，也是自封的理性之声。坐在 SCOM 工坊的案前，你决定哪些话语会轰鸣着传遍全境，哪些则会因请愿人没交够鼠粮而烂死在喉咙里。楼上的播报间里，你主持辩论、传述流言、编织故事，让余波荡遍镇上每个角落。人人都把耳朵朝向你，所以，谨言吧。"
+	tutorial = "你是号角的执掌者、传声线的主人，也是自封的理性之声。坐在 SCOM传讯网 工坊的案前，你决定哪些话语会轰鸣着传遍全境，哪些则会因请愿人没交够鼠粮而烂死在喉咙里。楼上的播报间里，你主持辩论、传述流言、编织故事，让余波荡遍镇上每个角落。人人都把耳朵朝向你，所以，谨言吧。"
 	flag = CRIER
 	department_flag = YEOMEN
 	faction = "Station"
@@ -30,7 +30,7 @@
 /datum/advclass/towncrier
 	name = "镇报官"
 	tutorial = "你是号角的执掌者、传声线的主人，也是自封的理性之声。\
-	坐在 SCOM 工坊的案前，你决定哪些话语会轰鸣着传遍全境，哪些则会因请愿人没交够鼠粮而烂死在喉咙里。\
+	坐在 SCOM传讯网 工坊的案前，你决定哪些话语会轰鸣着传遍全境，哪些则会因请愿人没交够鼠粮而烂死在喉咙里。\
 	楼上的播报间里，你主持辩论、传述流言、编织故事，让余波荡遍镇上每个角落。人人都把耳朵朝向你，所以，谨言吧。"
 	outfit = /datum/outfit/job/roguetown/loudmouth/basic
 	subclass_languages = list(

@@ -230,7 +230,7 @@
 	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/g2top
-	name = "黄金转 Toper"
+	name = "黄金转 托珀石"
 	category = "转化"
 	result = list(/obj/item/roguegem/yellow = 1)
 	reqs = list(/obj/item/rogueore/gold = 2, /obj/item/natural/stone = 1)
@@ -238,7 +238,7 @@
 	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/t2gem
-	name = "Toper 转 Gemerald"
+	name = "托珀石 转 翠晶"
 	category = "转化"
 	result = list(/obj/item/roguegem/green = 1)
 	reqs = list(/obj/item/roguegem/yellow = 1, /obj/item/rogueore/gold = 2)
@@ -246,7 +246,7 @@
 	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/g2saf
-	name = "Gemerald 转 Saffira"
+	name = "翠晶 转 蓝晶"
 	category = "转化"
 	result = list(/obj/item/roguegem/violet = 1)
 	reqs = list(/obj/item/roguegem/green = 1, /obj/item/rogueore/gold = 2)
@@ -254,7 +254,7 @@
 	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/s2blo
-	name = "Saffira 转 Blortz"
+	name = "蓝晶 转 布洛兹石"
 	category = "转化"
 	result = list(/obj/item/roguegem/blue = 1)
 	reqs = list(/obj/item/roguegem/violet = 1, /obj/item/rogueore/gold = 2)
@@ -262,7 +262,7 @@
 	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/r2dia
-	name = "Blortz 转钻石"
+	name = "布洛兹石 转钻石"
 	category = "转化"
 	result = list(/obj/item/roguegem/diamond = 1)
 	reqs = list(/obj/item/roguegem/blue = 2, /obj/item/rogueore/gold = 2)

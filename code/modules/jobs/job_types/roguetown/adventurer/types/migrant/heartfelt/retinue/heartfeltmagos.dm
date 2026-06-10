@@ -1,7 +1,7 @@
 
 /datum/advclass/heartfelt/retinue/magos
-	name = "Heartfelt 魔导师"
-	tutorial = "你是 Heartfelt 的魔导师，以渊博的奥术学识闻名，却依旧未能预见故土将遭逢的惨祸。\
+	name = "赤心 魔导师"
+	tutorial = "你是 赤心 的魔导师，以渊博的奥术学识闻名，却依旧未能预见故土将遭逢的惨祸。\
 	如今在一颗指路之星的牵引下，你来到这片土地，试图在毁灭余波之后寻得答案，也或许寻得新的使命。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT

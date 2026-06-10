@@ -1,6 +1,6 @@
 /datum/job/roguetown/heartfelt/hand
 	title = "Hand of Heartfelt"
-	tutorial = "你是 Heartfelt 的执政之手，背负着未能守住领主疆土的骂名。\
+	tutorial = "你是 赤心 的执政之手，背负着未能守住领主疆土的骂名。\
 	纵使旁人对你心存怀疑，你依旧忠诚不改，踏上前往此地的旅程，决意履行自己的职责。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
@@ -34,8 +34,8 @@
 
 
 /datum/advclass/heartfelt/hand/marshal
-	name = "Heartfelt 战帅"
-	tutorial = "你以统兵善战闻名，曾在和平岁月里放下兵刃，但随着 Heartfelt 的衰亡，和平也一并死去了。\
+	name = "赤心 战帅"
+	tutorial = "你以统兵善战闻名，曾在和平岁月里放下兵刃，但随着 赤心 的衰亡，和平也一并死去了。\
 	悲剧再度将你推回役途，你于是踏上前往此地的道路。"
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand/marshal
 	category_tags = list(CTAG_HFT_HAND)
@@ -114,8 +114,8 @@
 /***************************************************************/
 
 /datum/advclass/heartfelt/hand/steward
-	name = "Heartfelt 总管"
-	tutorial = "你是 Heartfelt 的总管，曾是这座男爵领秩序背后沉默的营造者。\
+	name = "赤心 总管"
+	tutorial = "你是 赤心 的总管，曾是这座男爵领秩序背后沉默的营造者。\
 	账册、收成，以及维系子民生计的一切脉络，都曾由你掌管。\
 	悲剧再度将你推回役途，你于是踏上前往此地的道路。"
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand/steward
@@ -178,8 +178,8 @@
 /***************************************************************/
 
 /datum/advclass/heartfelt/hand/advisor
-	name = "Heartfelt 顾问"
-	tutorial = "你是 Heartfelt 的顾问，因沉稳的谏言与敏锐的政务洞察而深受信赖。\
+	name = "赤心 顾问"
+	tutorial = "你是 赤心 的顾问，因沉稳的谏言与敏锐的政务洞察而深受信赖。\
 	在故土倾覆之后，你再度被命运束缚于侍奉之责，并踏上前往此地的道路。"
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand/advisor
 	category_tags = list(CTAG_HFT_HAND)

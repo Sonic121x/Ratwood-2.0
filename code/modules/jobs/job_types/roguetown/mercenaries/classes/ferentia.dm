@@ -317,7 +317,7 @@
 
 /datum/outfit/job/roguetown/mercenary/ferentia_crossbowman/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("也许你曾是某支卫队的一员，接受过棍棒与十字弩的训练，如今则以 Ferentia 人中常见却可靠的远程战力身份，为佣兵行会效劳。"))
+	to_chat(H, span_warning("也许你曾是某支卫队的一员，接受过棍棒与十字弩的训练，如今则以 费伦提亚 人中常见却可靠的远程战力身份，为佣兵行会效劳。"))
 	if(H.mind)
 		var/armor_options = list("轻型布面甲", "铆钉皮背心")
 		var/armor_choice = input(H, "选择你的护甲。", "整备着装") as anything in armor_options

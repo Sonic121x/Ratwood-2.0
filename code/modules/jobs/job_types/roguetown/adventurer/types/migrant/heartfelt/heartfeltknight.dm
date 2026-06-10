@@ -1,7 +1,7 @@
 
 /datum/job/roguetown/heartfelt/knight
 	title = "Knight of Heartfelt"
-	tutorial = "你是 Heartfelt 的骑士，曾是效忠领主的骑士团一员。\
+	tutorial = "你是 赤心 的骑士，曾是效忠领主的骑士团一员。\
 	如今你孤身一人，仍誓要护住宫廷残余之人，于是策马前往山巅，决心确保他们平安抵达。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
@@ -43,8 +43,8 @@
 					H.mind.person_knows_me(MF)
 
 /datum/advclass/heartfelt/knight
-	name = "Heartfelt 骑士"
-	tutorial = "你是 Heartfelt 的骑士，曾是效忠领主的骑士团一员。\
+	name = "赤心 骑士"
+	tutorial = "你是 赤心 的骑士，曾是效忠领主的骑士团一员。\
 	如今你孤身一人，仍誓要护住宫廷残余之人，于是来到这片土地，决心确保他们平安抵达。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT

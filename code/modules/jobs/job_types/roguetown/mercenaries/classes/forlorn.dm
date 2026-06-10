@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/forlorn
 	name = "绝望先锋佣兵"
-	tutorial = "绝望先锋团原是奉 Noc 之名、以驱逐腐败为誓建立的圣战修会。如今其中却充斥着伤残者、老兵，以及 Vakran 内战后失去土地的人。你既可以再度举起旗帜，以十神之名重返战场，也可以借着信仰与狂热的幌子，不择手段地混口饭吃。"
+	tutorial = "绝望先锋团原是奉 诺克 之名、以驱逐腐败为誓建立的圣战修会。如今其中却充斥着伤残者、老兵，以及 Vakran 内战后失去土地的人。你既可以再度举起旗帜，以十神之名重返战场，也可以借着信仰与狂热的幌子，不择手段地混口饭吃。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/lupian,

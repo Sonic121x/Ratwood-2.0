@@ -2,8 +2,8 @@
 //Big sword. Lack of armour. Tear that guy in half and toss him across the room!!!!
 //Before you complain, go look at Battlemaster.
 /datum/advclass/foreigner/bluthund
-	name = "Grenzelhoft 血犬"
-	tutorial = "Grenzelhoft 的佣兵自成一格。 \
+	name = "格伦泽尔霍夫特 血犬"
+	tutorial = "格伦泽尔霍夫特 的佣兵自成一格。 \
 	在这充满欺诈、无赖与背誓者的世道里，他们仍会站稳脚跟。 \
 	那是一个由个体组成的行会，一旦签下契约，便会逐字逐句履行到底。 \
 	可不知是出于荣耀还是疯狂，你偏偏违逆了这一切，于是被烙成弃徒, 一条“血犬”。 \

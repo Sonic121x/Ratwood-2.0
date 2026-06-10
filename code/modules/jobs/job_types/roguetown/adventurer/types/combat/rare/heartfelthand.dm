@@ -1,5 +1,5 @@
 /datum/advclass/heartfelthand
-	name = "Heartfelt 之手"
+	name = "赤心 之手"
 	tutorial = "你作为王室之手侍奉领主，负责领地里的一切外交事务。 \
 	也许终有一日，你也会成为领主。"
 	allowed_sexes = list(MALE, FEMALE)

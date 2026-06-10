@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_races = RACES_NO_CONSTRUCT
-	tutorial = "你已向 Graggar 证明了自己的价值，而他也赐下了至高的祝福。如今你要去追猎配得上你的对手，寻找那些强到足以让你流血的人。"
+	tutorial = "你已向 格拉加 证明了自己的价值，而他也赐下了至高的祝福。如今你要去追猎配得上你的对手，寻找那些强到足以让你流血的人。"
 	outfit = null
 	outfit_female = null
 	display_order = JDO_GNOLL
