@@ -11,7 +11,7 @@
 	passive_generation = 2 // Famous food, wildly used, and also who doesn't like apples?
 	generation_price = 2
 	stockpile_limit = 50
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/pear
 	name = "梨"
@@ -24,7 +24,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/lemon
 	name = "柠檬"
@@ -37,7 +37,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/lime
 	name = "青柠"
@@ -50,7 +50,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/tangerine
 	name = "橘子"
@@ -63,7 +63,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/plum
 	name = "李子"
@@ -76,7 +76,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/strawberry
 	name = "草莓"
@@ -90,7 +90,7 @@
 	passive_generation = 1 //strangely a lot of people actually use strawberries? So, yeah
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/blackberry
 	name = "黑莓"
@@ -103,7 +103,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/raspberry
 	name = "覆盆子"
@@ -116,7 +116,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/tomato
 	name = "番茄"
@@ -129,7 +129,7 @@
 	importexport_amt = 5
 	generation_price = 2
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/pumpkin
 	name = "南瓜"
@@ -142,7 +142,7 @@
 	importexport_amt = 5
 	generation_price = 3
 	stockpile_limit = 25
-	category = "Fruits"
+	category = "水果"
 
 /datum/roguestock/stockpile/jacksberry
 	name = "杰克莓"
@@ -157,4 +157,4 @@
 	stockpile_limit = 50 // Jackberries are used to mass produce raisins so higher limit
 	passive_generation = 2
 	generation_price = 2
-	category = "Fruits"
+	category = "水果"
