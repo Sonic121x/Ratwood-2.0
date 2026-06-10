@@ -28,6 +28,7 @@
 | Xinyi | 信义 |
 | Zenitstadt | 天顶城 |
 | Zybantu | 兹班图 |
+| Zybantium | 兹班图 |
 | Zybantine | 兹班图的 |
 | Zybantynian | 兹班图裔 |
 
@@ -35,6 +36,7 @@
 | 英文 | 中文 |
 |---|---|
 | Abyssor | 阿比索尔 |
+| Psydonians | 普赛顿信徒 |
 | Astrata | 阿斯特拉塔 |
 | Dendor | 登多尔 |
 | Eora | 伊欧拉 |
@@ -56,6 +58,10 @@
 | Djinn | 灯灵 |
 | Excidium | 灭绝兽 |
 | Inhumen | 异民 |
+| Arcyne | 奥术 |
+| leyline | 地脉 |
+| leylines | 地脉 |
+| leyline lycan | 地脉狼人 |
 | PARADYSE | 极乐境 |
 | Verevolf | 维尔沃夫 |
 | Volf | 沃尔夫 |
@@ -65,6 +71,7 @@
 |---|---|
 | Celestial Academy of Magos | 天穹魔导学院 |
 | Freifechters | 自由斗剑团 |
+| Lirvas | 利尔瓦斯 |
 | Sama'glos | 萨玛格罗斯语 |
 
 ## 专名化称谓与兵种
@@ -93,6 +100,18 @@
 | 英文 | 中文 |
 |---|---|
 | Kriegmesser | 战刀 |
+| Arcanic meld | 奥术融印 |
+| arcanic meld | 奥术融印 |
+| BINDING SHACKLES | 束缚镣铐 |
+| Binding shackles | 束缚镣铐 |
+| binding shackles | 束缚镣铐 |
+| Planar Binding Shackles | 位面束缚镣铐 |
+| Greater Planar Binding Shackles | 高等位面束缚镣铐 |
+| Woven Planar Binding Shackles | 织纹位面束缚镣铐 |
+| Confluent Planar Binding Shackles | 汇流位面束缚镣铐 |
+| Aberrant Planar Binding Shackles | 畸变位面束缚镣铐 |
+| prestidigitation | 戏法术 |
+| psicross | 普赛圣十字 |
 | Psycross | 普赛圣十字 |
 | Psydonic | 普赛顿式 |
 
@@ -105,6 +124,8 @@
 | LIBERTAS | 自由机 |
 | MARQUETTE | 印记终端 |
 | Marque | 印记 |
+| mana fountain | 法力泉 |
+| manafountains | 法力泉 |
 | RCOM | RCOM传讯网 |
 | SCOM | SCOM传讯网 |
 | ZAD | ZAD告示台 |
@@ -121,8 +142,13 @@
 | Gilbronze | 吉尔青铜 |
 | Gladius | 短罗马剑 |
 | Kazengunite | 风钢岩 |
+| Leyline Shards | 地脉碎片 |
+| Manabloom flowers | 法绽花 |
+| Manacrystals | 法力晶体 |
 | Noc's eye | 诺克之眼 |
+| Obsidian shards | 黑曜石碎片 |
 | Rontz | 隆兹石 |
+| Runed Artifacts | 符文遗物 |
 | Saffira | 蓝晶 |
 | Saperka | 萨佩尔卡 |
 | sealate | 海印石 |
