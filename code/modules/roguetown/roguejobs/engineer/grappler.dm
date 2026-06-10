@@ -9,8 +9,8 @@ Reel teleports the attached atom to the grabbed turf.
 #define GRAPPLER_NOZ 3
 
 /obj/item/grapplinghook
-	name = "青铜抓钩发射器"
-	desc = "矮人工业工程学最杰出的创新之一。用于在矿车难以通行的陡峭坑道中拖运木箱与桶子，也可对体型不算太大的人使用。\n在同一平面上的射程为 VI 格，跨平面的射程为 III 格。\n同一平面内的抓取会被任何致密物体阻挡。"
+	name = "bronze grappler"
+	desc = "The finest innovation in industrial dwarven Engineering. Used to haul crates and kegs in shafts too steep for railcarts. Can be used on people who aren't too large.\nHas a range of VI tiles on the same plane, and a range of III tiles across planes.\nGrappling in the same plane will be blocked by any dense objects."
 	icon = 'icons/roguetown/misc/gadgets.dmi'
 	icon_state = "grappler_used"
 	item_state = "grappler"
@@ -56,34 +56,34 @@ Reel teleports the attached atom to the grabbed turf.
 
 //Grappler intents. Not meant to be functional outside of the tool.
 /datum/intent/grapple
-	name = "抓取"
+	name = "grapple"
 	icon_state = "ingrab"
-	desc = "用于将钩爪射向一块开阔且无阻挡的地块。"
+	desc = "Used to grapple onto an open, unobstructed tile."
 	no_attack = TRUE
 
 /datum/intent/attach
-	name = "附着"
+	name = "attach"
 	icon_state = "inattach"
-	desc = "用于把目标挂到钩爪上以便卷回。目标不能太重、太大，也不能被固定。"
+	desc = "Used to attach an entity to the hook for reeling. Must not be heavy, large, or anchored."
 	no_attack = TRUE
 
 /datum/intent/reel
-	name = "卷回"
+	name = "reel"
 	icon_state = "inreel"
-	desc = "用于将已挂上的目标卷回到抓住的地块处。"
+	desc = "Used to reel the attached entity to the grappled tile."
 	no_attack = TRUE
 
 /obj/item/grapplinghook/examine()
 	. = ..()
 	if(is_loaded && !in_use)
-		. += span_warning("它已准备就绪。对你上方的地块执行<b>抓取</b>即可。")
+		. += span_warning("It's ready to use. <b>GRAB</b> onto a turf above you.")
 	else if(!is_loaded && !in_use)
-		. += span_warning("它已经耗尽，必须重新装填。")
+		. += span_warning("It's expended. It must be reloaded.")
 	else if(!is_loaded && grappled_turf && in_use)
-		. += span_warning("它已部署。你现在可以把钩子<b>附着</b>到某个目标上。")
-		. += span_info("我可以在手中启动它来重置。")
+		. += span_warning("It's deployed. You can <b>ATTACH</b> a hook to an entity.")
+		. += span_info("I may activate this in my hand to reset.")
 	if(attached && grappled_turf && in_use && !is_loaded)
-		. += span_warning("它已准备就绪。你现在可以把[attached]<b>卷回</b>。")
+		. += span_warning("It's ready to use. You may <b>REEL</b> in \the [attached].")
 
 /obj/item/grapplinghook/obj_break(damage_flag)
 	reset_tile()
@@ -109,28 +109,28 @@ Reel teleports the attached atom to the grabbed turf.
 		stat += (user.get_skill_level(/datum/skill/craft/engineering)) * 5	//And finally their Engineering level.
 		stat = clamp(stat, 10, 70)	//Clamp to a very loud second just in case you're a superhuman engineer
 		if(!isloading)
-			user.visible_message(span_info("[user]开始转动[src]的摇柄……"))
+			user.visible_message(span_info("[user] begins cranking the [src]..."))
 			isloading = TRUE
 			playsound(user, 'sound/misc/grapple_crank.ogg', 100, FALSE, 3)
 			if(move_after(user, (70 - stat), FALSE, user))
 				playsound(src, 'sound/foley/trap_arm.ogg', 100, FALSE , 5)
-				to_chat(user, span_info("已经装填好了！"))
+				to_chat(user, span_info("It's loaded!"))
 				isloading = FALSE
 				is_loaded = TRUE
 				update_icon()
 			else
 				isloading = FALSE
-				user.visible_message(span_info("[user]被打断了！"))
+				user.visible_message(span_info("[user] gets interrupted!"))
 	else if(istype(user.used_intent, /datum/intent/reel))	//Alternative to clicking on an empty tile. You can self-use it to reel instead.
 		if(attached && in_use)
 			if(get_dist(attached, grappled_turf) <= (user.z != grappled_turf.z ? max_range_z : max_range_noz))
-				user.visible_message("[user]把[src]卷了回来！")
+				user.visible_message("[user] reels in the [src]!")
 				if(do_after(user, 10))
 					reel()
 			else
-				to_chat(user, span_info("[attached]太远了！"))
+				to_chat(user, span_info("[attached] is too far!"))
 	else if(!is_loaded && in_use && grappled_turf && tile_effect)	//Reset option.
-		user.visible_message("[user]把钩爪从地块上解开了。")
+		user.visible_message("[user] unhooks from the tile.")
 		reset_tile()
 		reset_target()
 
@@ -252,12 +252,12 @@ Reel teleports the attached atom to the grabbed turf.
 					var/reason
 					if(max_range_z >= get_dist(user, T) && !T.density)
 						if(check_path(get_turf(user), T, T.z > user.z ? GRAPPLER_ZUP : GRAPPLER_ZDOWN))	//We check for opaque turfs or non-climbable windows in the way via a simple pathfind.
-							to_chat(user, span_info("抓钩落在了那块地面上！"))
+							to_chat(user, span_info("The grapple lands on the tile!"))
 							grapple_to(T)
 							attached = user
 							return
 						else
-							to_chat(user, span_info("路径被挡住了！"))
+							to_chat(user, span_info("The path is blocked!"))
 							return
 					else if(get_dist(user, T) > max_range_z)
 						reason = "It's too far."
@@ -269,17 +269,17 @@ Reel teleports the attached atom to the grabbed turf.
 				else if(T.z == user.z)
 					if(max_range_noz >= get_dist(user, T) && !T.density)
 						if(check_path(get_turf(user), T, GRAPPLER_NOZ))	//We check for opaque turfs and ANY dense objects in the way
-							to_chat(user, span_info("抓钩落在了那块地面上！"))
+							to_chat(user, span_info("The grapple lands on the tile!"))
 							grapple_to(T)
 							attached = user
 							return
 						else
-							to_chat(user, span_info("路径被挡住了！"))
+							to_chat(user, span_info("The path is blocked!"))
 							return
 			else
-				to_chat(user, span_info("目标不正确！它需要一块空旷的地面来抓住。"))
+				to_chat(user, span_info("Incorrect target! It needs a clear floor tile to grapple onto."))
 		else if(!is_loaded)
-			to_chat(user, span_info("它已经用过了。"))
+			to_chat(user, span_info("It's been used already."))
 	if(istype(user.used_intent, /datum/intent/attach))	//Second step. Once we have a turf we've grappled onto, we can use this to attach to an entity.
 		if(in_use && !istype(target, /turf/))	//Can't use the feature unless it's grappled already
 			var/safe_to_teleport = TRUE
@@ -293,27 +293,27 @@ Reel teleports the attached atom to the grabbed turf.
 				if(HAS_TRAIT(H, TRAIT_BIGGUY))	//Too fat.
 					safe_to_teleport = FALSE
 			if(safe_to_teleport)
-				to_chat(user, span_info("我开始把钩子挂上去……"))
+				to_chat(user, span_info("I begin to attach the hook..."))
 				if(do_after(user, 30))
 					if(target != user)
-						user.visible_message(span_warning("[user]把钩子挂到了[target]上。"))
+						user.visible_message(span_warning("[user] attaches the hook to [target]."))
 					if(target == user)
-						user.visible_message(span_warning("[user]把钩子挂到了自己身上！"))
+						user.visible_message(span_warning("[user] attaches the hook to themselves!"))
 					attach(target)
 			else
-				to_chat(user, span_warning("[target]太大或太难摆弄，没法挂上去！"))
+				to_chat(user, span_warning("[target] is too large or unwieldy to attach!"))
 		else
-			to_chat(user, span_info("我得先把它钩到一块地面上。"))
+			to_chat(user, span_info("I need to have it hooked onto a tile first."))
 	if(istype(user.used_intent, /datum/intent/reel))	//Last step, we reel in the attached entity to the grappled turf.
 		if(attached && in_use)
 			if(get_dist(attached, grappled_turf) <= (user.z != grappled_turf.z ? max_range_z : max_range_noz))
-				user.visible_message("[user]卷回了[src]！")
+				user.visible_message("[user] reels in \the [src]!")
 				if(do_after(user, 10))
 					reel()
 			else
-				to_chat(user, span_info("[target]太远了！"))
+				to_chat(user, span_info("[target] is too far!"))
 		else
-			to_chat(user, span_info("我得先挂上某个目标。"))
+			to_chat(user, span_info("I need to have something attached."))
 	. = ..()
 
 //Attaches a hook to an atom. Used with the "ATTACH" intent.

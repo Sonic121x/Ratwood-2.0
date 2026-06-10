@@ -1,6 +1,5 @@
 /datum/job/roguetown/servant
 	title = "Servant"
-	display_title = "仆役"
 //	f_title = "Maid"
 	flag = SERVANT
 	department_flag = COURTIERS
@@ -11,7 +10,7 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = ALL_AGES_LIST
 
-	tutorial = "你得以在公爵宅邸中过上一种还算舒适的服侍生活，听从总管的命令，把整天耗在那些必要却低微的杂务上。这个职位提供劳役仆从、女仆与男仆三种外观风格。"
+	tutorial = "Granted a life of comfortable servitude in the Duke's manor, you follow the Seneschal's commands and spend your day performing necessary but menial tasks. This role offers an aesthetic choice between labor-servant, maid, and butler."
 
 	outfit = /datum/outfit/job/roguetown/servant
 	advclass_cat_rolls = list(CTAG_SERVANT = 20)
@@ -31,8 +30,8 @@
 	)
 
 /datum/advclass/servant/servant
-	name = "仆役"
-	tutorial = "你只是个平凡无奇的仆役，穿得也像那么回事：卑微，且最好别太显眼。不过这身打扮倒也实用。"
+	name = "Servant"
+	tutorial = "You are a humdrum servant, dressed the part; lowly and best out of sight. It's practical, however."
 	outfit = /datum/outfit/job/roguetown/servant/servant
 	category_tags = list(CTAG_SERVANT)
 	traits_applied = list(TRAIT_CICERONE, TRAIT_KEENEARS, TRAIT_SLEUTH, TRAIT_ROYALSERVANT, TRAIT_FOOD_STIPEND)
@@ -76,8 +75,8 @@
 		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 
 /datum/advclass/servant/maid
-	name = "女仆"
-	tutorial = "没人真的会提起，穿着裙子和长袜做庭院杂活到底有多折腾人，不过至少你看起来确实相当体面。"
+	name = "Maid"
+	tutorial = "Not one really mentions how hard it is to do yardwork in a dress and stockings, but at least you still look really good."
 	outfit = /datum/outfit/job/roguetown/servant/maid
 	category_tags = list(CTAG_SERVANT)
 	subclass_stats = list(
@@ -120,8 +119,8 @@
 		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 
 /datum/advclass/servant/butler
-	name = "男仆"
-	tutorial = "无可挑剔的外表就是你的立身之本。你照样还是得下地沾泥，只不过洗衣服的次数更多了。"
+	name = "Butler"
+	tutorial = "An impeccable appearance is your core being. You still dig through the mud, though, you just do the laundry more."
 	outfit = /datum/outfit/job/roguetown/servant/butler
 	category_tags = list(CTAG_SERVANT)
 	subclass_stats = list(

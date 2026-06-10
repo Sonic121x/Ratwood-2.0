@@ -192,8 +192,8 @@
 	return ..()
 
 /obj/machinery/light/rogue/cauldron/folding
-	name = "折叠炼药锅"
-	desc = "咕嘟咕嘟，辛劳与烦恼。一口适合炼制魔药的大号便携青铜锅。"
+	name = "folding cauldron"
+	desc = "Bubble, Bubble, toil and trouble. A great protable bronze cauldron for brewing potions."
 	icon = 'icons/roguetown/misc/gadgets.dmi'
 	icon_state = "FoldingCauldronDeployed1"
 	base_state = "FoldingCauldronDeployed"
@@ -203,11 +203,11 @@
 
 /obj/machinery/light/rogue/cauldron/folding/examine()
 	. = ..()
-	. += span_blue("右键折叠炼药锅。请先清空它。")
+	. += span_blue("Right-Click to fold the cauldron. Empty it first.")
 
 /obj/machinery/light/rogue/cauldron/folding/attack_right(mob/user)
 	if(do_after(user, 5 SECONDS, target = src))
-		user.visible_message(span_notice("[user]折叠了[src]。"), span_notice("我折叠了[src]。"))
+		user.visible_message(span_notice("[user] folds [src]."), span_notice("You fold [src]."))
 		new /obj/item/folding_table_stored/alchcauldron(drop_location())
 		qdel(src)
 		return ..()

@@ -20,12 +20,12 @@
 	always_availible = TRUE      // shows for anyone who has the ingredients; craftdiff gates who can actually make it
 	skillcraft = /datum/skill/magic/druidic
 	subtype_reqs = FALSE
-	verbage_simple = "制备"
-	verbage = "制备"
+	verbage_simple = "prepare"
+	verbage = "prepares"
 	craftsound = 'sound/foley/mortarpestle.ogg'
 
 /datum/crafting_recipe/roguetown/druidic/blessedseedpowder
-	name = "祝圣种子粉"
+	name = "blessed seed powder"
 	result = list(/obj/item/alch/blessedseedpowder)
 	reqs = list(
 		/obj/item/seeds/treesap = 1,

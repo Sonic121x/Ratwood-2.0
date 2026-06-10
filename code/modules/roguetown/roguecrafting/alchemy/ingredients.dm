@@ -72,7 +72,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/antidote
 
 /obj/item/alch/waterdust
-	name = "水之精质"
+	name = "water essentia"
 	icon_state = "water_runedust"
 	major_pot = /datum/alch_cauldron_recipe/int_potion
 	med_pot = /datum/alch_cauldron_recipe/big_mana_potion
@@ -86,15 +86,15 @@
 	minor_pot = /datum/alch_cauldron_recipe/antidote
 
 /obj/item/alch/seeddust
-	name = "种子粉"
+	name = "seed dust"
 	icon_state = "seeddust"
 	major_pot = /datum/alch_cauldron_recipe/big_stamina_potion
 	med_pot = /datum/alch_cauldron_recipe/stamina_potion
 	minor_pot = /datum/alch_cauldron_recipe/strong_antidote
 
 /obj/item/alch/blessedseedpowder
-	name = "祝圣种子粉"
-	desc = "以圣水制成的发光种子粉末，其中仍留有 Dendor 的气息。"
+	name = "blessed seed powder"
+	desc = "Luminous seed dust prepared with sanctified water. Dendor's touch lingers within it."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "flour"
 	color = "#BFFFC4"
@@ -119,7 +119,7 @@
 //==============================================================================
 /obj/item/alch/bloomstone
 	name = "harvest bloomstone"
-	desc = "一块浸润着 Treefather 生机之力的光滑石头。手持它施展 Bless Crops 奇迹时，会像祝圣种子粉一样生效，并消耗 1 层充能而不是被直接消耗，足够使用二十次后才会碎裂。"
+	desc = "A smooth stone suffused with the Treefather's living power. When held during while using the Bless Crops miracle it functions like blessed seed powder and spends a charge instead of being consumed — good for twenty uses before it shatters."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "cutgem_shell"
 	color = "#228B22"
@@ -135,7 +135,7 @@
 
 /obj/item/alch/bloomstone/examine(mob/user)
 	. = ..()
-	. += span_info("还剩 [charges] 层充能。")
+	. += span_info("It has [charges] charge\s remaining.")
 
 /obj/item/alch/bloomstone/Destroy()
 	remove_filter("bloomstone_glow")
@@ -148,33 +148,33 @@
 	new /obj/item/alch/stonedust(get_turf(src))
 	if(loc && isliving(loc))
 		var/mob/living/holder = loc
-		to_chat(holder, span_warning("Harvest Bloomstone 的光芒黯淡下去，石头在我手中碎成了粉末！"))
+		to_chat(holder, span_warning("The Harvest Bloomstone's light gutters and the stone crumbles to dust in my hand!"))
 	return ..()
 
 /obj/item/alch/runedust
-	name = "原初精质"
+	name = "raw essentia"
 	icon_state = "runedust"
 	major_pot = /datum/alch_cauldron_recipe/int_potion
 	med_pot = /datum/alch_cauldron_recipe/big_mana_potion
 	minor_pot = /datum/alch_cauldron_recipe/per_potion
 
 /obj/item/alch/coaldust
-	name = "煤尘"
+	name = "coal dust"
 	icon_state = "coaldust"
 	major_pot = /datum/alch_cauldron_recipe/antidote
 	med_pot = /datum/alch_cauldron_recipe/end_potion
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
 /obj/item/alch/stonedust
-	name = "石粉"
-	desc = "用于玻璃黏土精炼的细磨矿粉。"
+	name = "stone dust"
+	desc = "Finely ground mineral dust used for glass clay refinement."
 	icon_state = "coaldust"
 	major_pot = null
 	med_pot = null
 	minor_pot = null
 
 /obj/item/alch/silverdust
-	name = "银粉"
+	name = "silver dust"
 	icon_state = "silverdust"
 	major_pot = /datum/alch_cauldron_recipe/strong_antidote
 	med_pot = /datum/alch_cauldron_recipe/antidote
@@ -182,14 +182,14 @@
 	is_silver = TRUE
 
 /obj/item/alch/magicdust
-	name = "纯净精质"
+	name = "pure essentia"
 	icon_state = "magic_runedust"
 	major_pot = /datum/alch_cauldron_recipe/big_mana_potion
 	med_pot = /datum/alch_cauldron_recipe/end_potion
 	minor_pot = /datum/alch_cauldron_recipe/con_potion
 
 /obj/item/alch/firedust
-	name = "火之精质"
+	name = "fire essentia"
 	icon_state = "fire_runedust"
 	major_pot = /datum/alch_cauldron_recipe/str_potion
 	med_pot = /datum/alch_cauldron_recipe/con_potion
@@ -204,35 +204,35 @@
 	minor_pot = /datum/alch_cauldron_recipe/health_potion
 
 /obj/item/alch/irondust
-	name = "铁粉"
+	name = "iron dust"
 	icon_state = "irondust"
 	major_pot = /datum/alch_cauldron_recipe/end_potion
 	med_pot = /datum/alch_cauldron_recipe/con_potion
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
 /obj/item/alch/airdust
-	name = "风之精质"
+	name = "air essentia"
 	icon_state = "air_runedust"
 	major_pot = /datum/alch_cauldron_recipe/spd_potion
 	med_pot = /datum/alch_cauldron_recipe/stamina_potion
 	minor_pot = /datum/alch_cauldron_recipe/int_potion
 
 /obj/item/alch/swampdust
-	name = "Swampweed 粉"
+	name = "swampweed dust"
 	icon_state = "swampdust"
 	major_pot = /datum/alch_cauldron_recipe/temp_potion
 	med_pot = /datum/alch_cauldron_recipe/aphrodisiac
 	minor_pot = /datum/alch_cauldron_recipe/end_potion
 
 /obj/item/alch/tobaccodust
-	name = "Westleach 粉"
+	name = "westleach dust"
 	icon_state = "tobaccodust"
 	major_pot = /datum/alch_cauldron_recipe/per_potion
 	med_pot = /datum/alch_cauldron_recipe/stamina_potion
 	minor_pot = /datum/alch_cauldron_recipe/spd_potion
 
 /obj/item/alch/earthdust
-	name = "土之精质"
+	name = "earth essentia"
 	icon_state = "earth_runedust"
 	major_pot = /datum/alch_cauldron_recipe/con_potion
 	med_pot = /datum/alch_cauldron_recipe/end_potion
@@ -253,9 +253,9 @@
 	minor_pot = /datum/alch_cauldron_recipe/con_potion
 
 /obj/item/alch/horn
-	name = "巨魔角"
+	name = "troll horn"
 	icon_state = "horn"
-	desc = "沼泽巨魔的角。"
+	desc = "The horn of a bog troll."
 	force = 7
 	throwforce = 5
 	w_class = WEIGHT_CLASS_NORMAL
@@ -267,7 +267,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/end_potion
 
 /obj/item/alch/golddust
-	name = "金粉"
+	name = "gold dust"
 	icon_state = "golddust"
 
 	major_pot = /datum/alch_cauldron_recipe/big_mana_potion
@@ -283,8 +283,8 @@
 	minor_pot = /datum/alch_cauldron_recipe/strong_antidote
 
 /obj/item/alch/ozium
-	name = "炼金 ozium"
-	desc = "炼金处理已使其不适合食用。"
+	name = "alchemical ozium"
+	desc = "Alchemical processing has left it unfit for consumption."
 	icon_state = "darkredpowder"
 
 	major_pot = /datum/alch_cauldron_recipe/big_stamina_potion
@@ -293,37 +293,37 @@
 
 /obj/item/alch/transisdust
 	name = "sui dust"
-	desc = "多种草药长时间混合后形成的特殊粉末。手持使用即可。"
+	desc = "A long mix of herbs resulting in a special dust. For you. Use it while held."
 	icon_state = "transisdust"
 
 /obj/item/alch/transisdust/attack_self(mob/living/user)
 	..()
 
-	if(alert("你想改变自己吗？", "自我之尘", "是", "否") != "是")
+	if(alert("Do you wish to change your self?", "Dust of Self", "Yes", "No") != "Yes")
 		return
 	user.visible_message(
-		span_warn("[user]开始使用[src]。"),
-		span_warn("我开始把[src]用在自己身上。")
+		span_warn("[user] begins to use [src]."),
+		span_warn("I begin to apply [src] on myself.")
 	)
 	if(!do_after(user, 5 SECONDS))
 		return
 
-	var/p_input = input(user, "选择角色的代词", "代词") as null|anything in GLOB.pronouns_list
+	var/p_input = input(user, "Choose your character's pronouns", "Pronouns") as null|anything in GLOB.pronouns_list
 	if(p_input)
 		user.pronouns = p_input
-	if(alert("你想改变体型吗？", "体型", "是", "否") == "是")
+	if(alert("Do you wish to change your frame?", "Body Type", "Yes", "No") == "Yes")
 		user.gender = "male" ? "female" : "male"
 
 	if(!do_after(user, 5 SECONDS))
 		return
 
 	user.regenerate_icons()
-	to_chat(user, span_notice("完成了。"))
+	to_chat(user, span_notice("Tis' complete."))
 	qdel(src)
 
 /obj/item/alch/puresalt
-	name = "精制盐"
-	desc = "经过细筛的盐，能增强其疗愈特性，并强化它与 arcyne 的联系。"
+	name = "purified salts"
+	desc = "Salts that have been finely sifted to enhance their healing properties and to bolster their connection to the arcyne."
 	icon_state = "puresalt"
 
 	major_pot = /datum/alch_cauldron_recipe/antidote
@@ -331,8 +331,8 @@
 	minor_pot = /datum/alch_cauldron_recipe/big_mana_potion
 
 /obj/item/alch/mineraldust
-	name = "矿物粉"
-	desc = "由宝石研磨并筛去杂质所得，有助于提炼其中有用的炼金矿质。"
+	name = "mineral dusts"
+	desc = "Elements of gems ground and sifted of impurities to help draw out its useful alchemical minerals."
 	icon_state = "mineraldust"
 
 	major_pot = /datum/alch_cauldron_recipe/doompoison
@@ -340,8 +340,8 @@
 	minor_pot = /datum/alch_cauldron_recipe/big_stam_poison
 
 /obj/item/alch/infernaldust
-	name = "地狱尘"
-	desc = "深渊与此界连接残留下来的遗骸，无论是被放逐还是被杀死后都会留下。最好戴着手套处理。"
+	name = "infernal dust"
+	desc = "The remains of an abyssal tether to this plane, banished or slain. Best handled with gloves."
 	icon_state = "infernaldust"
 
 	major_pot = /datum/alch_cauldron_recipe/fire_potion
@@ -349,8 +349,8 @@
 	minor_pot = /datum/alch_cauldron_recipe/int_potion
 
 /obj/item/alch/solardust
-	name = "太阳尘"
-	desc = "一撮融入 Astrata 光辉之力的尘末，直视它会刺痛双眼。"
+	name = "solar dust"
+	desc = "A pinch of Astrata worked into radiant matter. Looking at it hurts your eyes."
 	icon_state = "solardust"
 
 	major_pot = /datum/alch_cauldron_recipe/fire_potion
@@ -358,8 +358,8 @@
 	minor_pot = /datum/alch_cauldron_recipe/per_potion
 
 /obj/item/alch/berrypowder
-	name = "浆果粉"
-	desc = "浆果研磨并晒干后形成的柔软芳香粉末。"
+	name = "berry powder"
+	desc = "Berries ground and dried into a soft fragrant powder."
 	icon_state = "berrypowder"
 
 	major_pot = /datum/alch_cauldron_recipe/berrypoison
@@ -486,7 +486,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/aphrodisiac
 
 /obj/item/alch/manabloompowder
-	name = "Manabloom 粉"
+	name = "manabloom powder"
 	icon_state = "bluepowder"
 
 	major_pot = /datum/alch_cauldron_recipe/mana_potion
@@ -497,7 +497,7 @@
 	name = "rosa"
 	icon_state = "rosa"
 	item_state = "rosa"
-	desc = "据说它们原本是白色的，直到 Graggar 的鲜血染遍了它生长的原野。"
+	desc = "It is said that these were white - until Graggar bled on its fields."
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK|ITEM_SLOT_MOUTH
@@ -528,18 +528,18 @@
 	reqs = list(/obj/item/alch/irondust = 2,
 				/obj/item/alch/golddust = 1)
 	structurecraft = /obj/structure/table/wood
-	verbage = "调配"
+	verbage = "mixes"
 	craftsound = 'sound/foley/scribble.ogg'
 	skillcraft = /datum/skill/craft/alchemy
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/alch/magicdust
-	name = "纯净精质"
+	name = "pure essentia"
 	result = list(/obj/item/alch/magicdust)
 	reqs = list(/obj/item/alch/waterdust = 1, /obj/item/alch/firedust = 1,
 				/obj/item/alch/airdust = 1, /obj/item/alch/earthdust = 1)
 	structurecraft = /obj/structure/table/wood
-	verbage = "调配"
+	verbage = "mixes"
 	craftsound = 'sound/foley/scribble.ogg'
 	skillcraft = /datum/skill/craft/alchemy
 	craftdiff = 0

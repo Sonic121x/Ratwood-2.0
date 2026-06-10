@@ -1,6 +1,6 @@
 /obj/item/blade
 	name = "blade"
-	desc = "一块等待完成加工的铸造刀刃。"
+	desc = "A cast blade waiting to be finished."
 	icon = 'icons/roguetown/items/anvil_casting.dmi'
 	var/quality = SMELTERY_LEVEL_POOR
 	var/datum/anvil_recipe/currecipe
@@ -40,7 +40,7 @@
 	name = "iron plate"
 	icon_state = "blade_plate"
 	overlay_color = "#808080"
-	desc = "一块等待完成加工的铸造甲片。"
+	desc = "A cast plate waiting to be finished."
 
 /obj/item/blade/steel_axe
 	name = "steel axe blade"
@@ -65,4 +65,4 @@
 /obj/item/blade/steel_plate
 	name = "steel plate"
 	icon_state = "blade_plate"
-	desc = "一块等待完成加工的铸造甲片。"
+	desc = "A cast plate waiting to be finished."

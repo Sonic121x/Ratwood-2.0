@@ -239,7 +239,7 @@
 			var/datum/component/forging/existing_forging = current_workpiece.GetComponent(/datum/component/forging)
 			var/recipe_reset = FALSE
 			if(existing_forging)
-				if(alert(user, "该物品已有一个激活的配方（[existing_forging.current_recipe.name]）。是否更改为[recipe.name]？","更改配方？","确认","取消") != "CONFIRM")
+				if(alert(user, "该物品已有一个激活的配方（[existing_forging.current_recipe.name]）。是否更改为[recipe.name]？","更改配方？","确认","取消") != "确认")
 					return TRUE
 
 				// Remove existing forging component and any quenchable components

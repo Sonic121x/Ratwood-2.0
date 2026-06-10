@@ -1,6 +1,6 @@
 /datum/roguestock/stockpile/apple
-	name = "苹果"
-	desc = "收获而来的农产品。"
+	name = "Apple"
+	desc = "Harvested produce."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/apple
 	held_items = list(0, 0)
 	payout_price = 2
@@ -14,8 +14,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/pear
-	name = "梨"
-	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
+	name = "Pear"
+	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/pear
 	held_items = list(0, 8)
 	payout_price = 2
@@ -27,8 +27,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/lemon
-	name = "柠檬"
-	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
+	name = "Lemon"
+	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/lemon
 	held_items = list(0, 8)
 	payout_price = 2
@@ -40,8 +40,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/lime
-	name = "青柠"
-	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
+	name = "Lime"
+	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/lime
 	held_items = list(0, 8)
 	payout_price = 2
@@ -53,8 +53,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/tangerine
-	name = "橘子"
-	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
+	name = "Tangerine"
+	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine
 	held_items = list(0, 8)
 	payout_price = 2
@@ -66,8 +66,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/plum
-	name = "李子"
-	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
+	name = "Plum"
+	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/plum
 	held_items = list(0, 8)
 	payout_price = 2
@@ -79,8 +79,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/strawberry
-	name = "草莓"
-	desc = "一种小巧的红色水果，味道香甜，常用于甜点。"
+	name = "Strawberry"
+	desc = "A small, red fruit with a sweet taste. It is often used in desserts."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/strawberry
 	held_items = list(0, 8)
 	payout_price = 2
@@ -93,8 +93,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/blackberry
-	name = "黑莓"
-	desc = "一种小巧的深色水果，味甜微酸，常用于甜点。"
+	name = "Blackberry"
+	desc = "A small, dark fruit with a sweet and slightly tart taste. It is often used in desserts."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry
 	held_items = list(0, 8)
 	payout_price = 2
@@ -106,8 +106,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/raspberry
-	name = "覆盆子"
-	desc = "一种小巧的红色水果，味甜微酸，常用于甜点。"
+	name = "Raspberry"
+	desc = "A small, red fruit with a sweet and slightly tart taste. It is often used in desserts."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/raspberry
 	held_items = list(0, 8)
 	payout_price = 2
@@ -119,8 +119,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/tomato
-	name = "番茄"
-	desc = "一种常被误认为蔬菜的红色水果，常用于沙拉和酱汁。"
+	name = "Tomato"
+	desc = "A red fruit that is often mistaken for a vegetable. It is commonly used in salads and sauces."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
 	held_items = list(0, 8)
 	payout_price = 2
@@ -132,8 +132,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/pumpkin
-	name = "南瓜"
-	desc = "厚实的南瓜外皮包裹着出乎意料紧实的果肉。"
+	name = "Pumpkin"
+	desc = "The thick pumpkin rind shields a surprisingly dense fleshy interior."
 	item_type = /obj/item/natural/shellplant/pumpkin
 	held_items = list(0, 4)
 	payout_price = 2
@@ -145,8 +145,8 @@
 	category = "水果"
 
 /datum/roguestock/stockpile/jacksberry
-	name = "杰克莓"
-	desc = "甜美的浆果，非常适合酿酒。"
+	name = "Jacksberries"
+	desc = "Sweet berries, prime for winemaking."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue
 	held_items = list(0, 0)
 	payout_price = 2

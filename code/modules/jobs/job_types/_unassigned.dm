@@ -6,4 +6,3 @@
 
 /datum/job/unassigned
 	title = "Unassigned"
-	display_title = "未分配"
