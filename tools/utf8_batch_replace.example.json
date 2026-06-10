@@ -1,0 +1,14 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/_job.dm",
+      "replacements": [
+        {
+          "old": "to_chat(player, span_notice(\"You are the <b>[used_title]</b>\"))",
+          "new": "to_chat(player, span_notice(\"你的身份是 <b>[used_title]</b>\"))",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

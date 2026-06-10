@@ -1,0 +1,93 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/garrison/knight/knight.dm",
+      "replacements": [
+        {
+          "old": "\tset name = \"Take Squire\"",
+          "new": "\tset name = \"收侍从\""
+        },
+        {
+          "old": "\t\t\tvar/prompt = alert(guy, \"你愿意成为[src]的侍从吗？\", \"Squire\", \"愿意，大人！\", \"不愿，大人！\")",
+          "new": "\t\t\tvar/prompt = alert(guy, \"你愿意成为[src]的侍从吗？\", \"侍从\", \"愿意，大人！\", \"不愿，大人！\")"
+        },
+        {
+          "old": "\tname = \"Oath of Service\"",
+          "new": "\tname = \"效忠誓约\"",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/church/priest.dm",
+      "replacements": [
+        {
+          "old": "\tset name = \"Coronate\"",
+          "new": "\tset name = \"加冕\""
+        },
+        {
+          "old": "\tset name = \"Announcement\"",
+          "new": "\tset name = \"布告\""
+        },
+        {
+          "old": "\tname = \"Recruit Templar\"",
+          "new": "\tname = \"招募圣殿武士\""
+        },
+        {
+          "old": "\tname = \"Recruit Acolyte\"",
+          "new": "\tname = \"招募侍僧\""
+        },
+        {
+          "old": "\trecruitment_message = \"Serve the ten, %RECRUIT!\"",
+          "new": "\trecruitment_message = \"侍奉十神吧，%RECRUIT！\""
+        },
+        {
+          "old": "\taccept_message = \"FOR THE TEN!\"",
+          "new": "\taccept_message = \"为了十神！\""
+        },
+        {
+          "old": "\trefuse_message = \"I refuse.\"",
+          "new": "\trefuse_message = \"我拒绝。\""
+        },
+        {
+          "old": "\t\tto_chat(src, span_warning(\"I need to do this in the chapel.\"))",
+          "new": "\t\tto_chat(src, span_warning(\"我得在礼拜堂里举行此事。\"))"
+        },
+        {
+          "old": "\t\tto_chat(src, span_warning(\"The mad god Dendor is felt strongly. The wolf in this one balks and trashes as it is faintly restrained.\"))",
+          "new": "\t\tto_chat(src, span_warning(\"你能强烈感受到疯狂之神 Dendor 的存在。此人体内的狼性在微弱的束缚下挣扎翻腾、躁动不安。\"))"
+        },
+        {
+          "old": "\t\tto_chat(src, span_warning(\"The Dreamer, Abyssor has his clutches grasped firmly around this one. The light of the ten only barely penetrates the depths.\"))",
+          "new": "\t\tto_chat(src, span_warning(\"梦者 Abyssor 已将这人牢牢攥在掌中。十神之光也只能勉强刺入那深渊般的黑暗。\"))"
+        },
+        {
+          "old": "\tset name = \"Apostasy\"",
+          "new": "\tset name = \"判为叛教\""
+        },
+        {
+          "old": "\tvar/inputty = input(\"将某人逐出十神信众之列……（再次施加可解除）\", \"Sinner Name\") as text|null",
+          "new": "\tvar/inputty = input(\"将某人逐出十神信众之列……（再次施加可解除）\", \"罪人之名\") as text|null"
+        },
+        {
+          "old": "\t\tto_chat(src, span_warning(\"I need to do this from the House of the Ten.\"))",
+          "new": "\t\tto_chat(src, span_warning(\"我得在十神圣堂中执行此事。\"))",
+          "count": 2
+        },
+        {
+          "old": "\t\tto_chat(src, span_warning(\"I don't know anyone by that name.\"))",
+          "new": "\t\tto_chat(src, span_warning(\"我不认识这个名字的人。\"))",
+          "count": 2
+        },
+        {
+          "old": "\tset name = \"Divine Curse\"",
+          "new": "\tset name = \"神罚诅咒\""
+        },
+        {
+          "old": "\tvar/target_name = input(\"Who shall receive a curse?\", \"Target Name\") as text|null",
+          "new": "\tvar/target_name = input(\"谁将承受诅咒？\", \"目标姓名\") as text|null"
+        }
+      ]
+    }
+  ]
+}

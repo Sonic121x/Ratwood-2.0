@@ -15,6 +15,7 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/obj/effect/proc_holder/spell/invoked/pain,
 	/obj/effect/proc_holder/spell/invoked/small_bet,
 	/obj/effect/proc_holder/spell/self/timestop,
+	/obj/effect/proc_holder/spell/self/void_clone,
 	/obj/effect/proc_holder/spell/invoked/xylix_laughter,
 	/obj/effect/proc_holder/spell/invoked/xray_vision,
 	/obj/effect/proc_holder/spell/invoked/yixinghuanying,

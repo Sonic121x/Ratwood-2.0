@@ -1,0 +1,109 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_slave.dm",
+      "replacements": [
+        {
+          "old": "name = \"Service Slave\"",
+          "new": "name = \"侍役奴隶\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Battle Slave\"",
+          "new": "name = \"战斗奴隶\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Arcyne Slave\"",
+          "new": "name = \"奥术奴隶\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Craftsman Slave\"",
+          "new": "name = \"工匠奴隶\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_mercenary.dm",
+      "replacements": [
+        {
+          "old": "name = \"Zybantynian Blade Mercenary\"",
+          "new": "name = \"Zybantynian 刀客佣兵\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Zybantynian Whip Mercenary\"",
+          "new": "name = \"Zybantynian 鞭手佣兵\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Zybantynian Light Crossbow Mercenary\"",
+          "new": "name = \"Zybantynian 轻弩佣兵\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/migrant/slavers/slaver_master.dm",
+      "replacements": [
+        {
+          "old": "name = \"Zybantynian Master\"",
+          "new": "name = \"Zybantynian 奴隶主\"",
+          "count": 1
+        },
+        {
+          "old": "tutorial = \"The leader of the Zybantynian slave troop. You have came to the mainlands from the western deserts of Zybantine in the hopes of gathering wealth \\\n\tthrough the training of and trade of unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling your pockets before you return to the deserts of the Zybantines\"",
+          "new": "tutorial = \"你是 Zybantynian 奴隶商队的首领。你自 Zybantine 西方荒漠来到大陆，希望靠训练与买卖那些不幸的劳工来积攒财富。 \\\n\t在有些人眼中，这门行当卑劣可憎；但毫无疑问，在你回到 Zybantynian 沙海之前，它最能让你的钱袋鼓起来。\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/garrison/dungeoneer.dm",
+      "replacements": [
+        {
+          "old": "title = \"Dungeoneer\"\n\tflag = DUNGEONEER",
+          "new": "title = \"Dungeoneer\"\n\tdisplay_title = \"典狱官\"\n\tflag = DUNGEONEER",
+          "count": 1
+        },
+        {
+          "old": "name = \"Dungeoneer\"",
+          "new": "name = \"典狱官\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/church/druid.dm",
+      "replacements": [
+        {
+          "old": "title = \"Druid\"\n\tf_title = \"Druidess\"",
+          "new": "title = \"Druid\"\n\tdisplay_title = \"德鲁伊\"\n\tf_title = \"Druidess\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Druid\"",
+          "new": "name = \"德鲁伊\"",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/Inquisition/puritan.dm",
+      "replacements": [
+        {
+          "old": "title = \"Inquisitor\"\n\tflag = PURITAN",
+          "new": "title = \"Inquisitor\"\n\tdisplay_title = \"审判官\"\n\tflag = PURITAN",
+          "count": 1
+        },
+        {
+          "old": "name = \"Inquisitor\"",
+          "new": "name = \"审判官\"",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

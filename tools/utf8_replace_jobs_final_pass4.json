@@ -1,0 +1,149 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/psyalmist.dm",
+      "replacements": [
+        {
+          "old": "var/weapons = list(\"Psydonic Whip\", \"Psydonic Rapier\")",
+          "new": "var/weapons = list(\"Psydonic 长鞭\", \"Psydonic 刺剑\")",
+          "count": 1
+        },
+        {
+          "old": "var/weapon_choice = tgui_input_list(H, \"Choose your WEAPON.\", \"TAKE UP PSYDON'S ARMS.\", weapons)",
+          "new": "var/weapon_choice = tgui_input_list(H, \"选择你的武器。\", \"执起 Psydon 兵刃\", weapons)",
+          "count": 1
+        },
+        {
+          "old": "if(\"Psydonic Whip\")",
+          "new": "if(\"Psydonic 长鞭\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Psydonic Rapier\")",
+          "new": "if(\"Psydonic 刺剑\")",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelt.dm",
+      "replacements": [
+        {
+          "old": "name = \"Lord of Heartfelt\"",
+          "new": "name = \"Heartfelt 领主\"",
+          "count": 1
+        },
+        {
+          "old": "tutorial = \"You are the proud lord of heartfelt \\\n\tbut why did you come to the isle of enigma?\"",
+          "new": "tutorial = \"你是 Heartfelt 的骄傲领主。 \\\n\t可你为何会来到 Enigma 之岛？\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/combat/rare/heartfelthand.dm",
+      "replacements": [
+        {
+          "old": "name = \"Hand of Heartfelt\"",
+          "new": "name = \"Heartfelt 之手\"",
+          "count": 1
+        },
+        {
+          "old": "tutorial = \"You serve your lord as the royal hand, taking care of all diplomatic actions in your relm. \\\n\tmaybe one day you will become lord too.\"",
+          "new": "tutorial = \"你作为王室之手侍奉领主，负责领地里的一切外交事务。 \\\n\t也许终有一日，你也会成为领主。\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/peasants/beggar.dm",
+      "replacements": [
+        {
+          "old": "/datum/outfit/job/roguetown/vagrant\n\tname = \"Beggar\"\n\t/// Whether or not we get wise gear and stats",
+          "new": "/datum/outfit/job/roguetown/vagrant\n\tname = \"乞丐\"\n\t/// Whether or not we get wise gear and stats",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/peasants/bathmaid.dm",
+      "replacements": [
+        {
+          "old": "/datum/outfit/job/roguetown/nightmaiden\n\tname = \"Bathhouse Attendant\"\n\t// This is just a base outfit, the actual outfits are defined in the advclasses",
+          "new": "/datum/outfit/job/roguetown/nightmaiden\n\tname = \"浴场侍者\"\n\t// This is just a base outfit, the actual outfits are defined in the advclasses",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/slavers.dm",
+      "replacements": [
+        {
+          "old": "name = \"shawl\"",
+          "new": "name = \"披巾\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/zybantu.dm",
+      "replacements": [
+        {
+          "old": "name = \"nomad shawl\"",
+          "new": "name = \"游民披巾\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm",
+      "replacements": [
+        {
+          "old": "name = \"Heartfeltian Missilite\"",
+          "new": "name = \"Heartfelt 射手\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Heartfeltian Squire\"",
+          "new": "name = \"Heartfelt 侍从\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm",
+      "replacements": [
+        {
+          "old": "name = \"Iconoclast\"",
+          "new": "name = \"破像者\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/mercenaries/classes/grenzelhoft.dm",
+      "replacements": [
+        {
+          "old": "name = \"Doppelsoldner\"",
+          "new": "name = \"双饷佣兵\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Hellebardier\"",
+          "new": "name = \"戟兵\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Armbrustschütze\"",
+          "new": "name = \"弩手\"",
+          "count": 1
+        },
+        {
+          "old": "name = \"Gefechtsgelehrter\"",
+          "new": "name = \"战斗学者\"",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}
