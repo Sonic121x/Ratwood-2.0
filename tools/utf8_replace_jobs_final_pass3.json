@@ -1,0 +1,209 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/naledi.dm",
+      "replacements": [
+        {
+          "old": "name = \"Naledi Refugee\"",
+          "new": "name = \"Naledi 难民\"",
+          "count": 1
+        },
+        {
+          "old": "to_chat(H, span_warning(\"An asylum-seeker from the war-torn deserts of Naledi, \\\n\tdriven north as your homeland continues to be ravaged by an endless conflict against the Djinn.\"))",
+          "new": "to_chat(H, span_warning(\"你是来自战火摧残之地 Naledi 荒漠的避难者，\\\n\t故土仍在与 Djinn 的无尽战火中被反复蹂躏，于是你一路被逼向北方。\"))",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/combat/foreigner/grenzelhoft.dm",
+      "replacements": [
+        {
+          "old": "name = \"Grenzelhoft Bluthund\"",
+          "new": "name = \"Grenzelhoft 血犬\"",
+          "count": 1
+        },
+        {
+          "old": "tutorial = \"Grenzelhoftian mercenaries are one of a kind. \\\n\tIn a world of cheats, blaggards and broken oaths? They stand firm. \\\n\tA guild of individuals who, once under contract, will follow it to the letter. \\\n\tFor some reason, whether glory or madness, you'd gone against that. Branded an outcast - a 'bluthund'. \\\n\tYou yet retain your equipment, for they could not strip that of you. Unlike your titles.\"",
+          "new": "tutorial = \"Grenzelhoft 的佣兵自成一格。 \\\n\t在这充满欺诈、无赖与背誓者的世道里，他们仍会站稳脚跟。 \\\n\t那是一个由个体组成的行会，一旦签下契约，便会逐字逐句履行到底。 \\\n\t可不知是出于荣耀还是疯狂，你偏偏违逆了这一切，于是被烙成弃徒, 一条“血犬”。 \\\n\t不过他们终究没能夺走你的装备，只夺走了你的头衔。\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/sawbones.dm",
+      "replacements": [
+        {
+          "old": "name = \"Sawbones\"",
+          "new": "name = \"锯骨郎中\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/roguemage.dm",
+      "replacements": [
+        {
+          "old": "name = \"Rogue Mage\"",
+          "new": "name = \"野法师\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm",
+      "replacements": [
+        {
+          "old": "name = \"Hedge Knight\"",
+          "new": "name = \"落魄骑士\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm",
+      "replacements": [
+        {
+          "old": "name = \"Knave\"",
+          "new": "name = \"无赖\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/ranger.dm",
+      "replacements": [
+        {
+          "old": "name = \"Assassin - Ranger\"",
+          "new": "name = \"刺客 - 猎人\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/poisoner.dm",
+      "replacements": [
+        {
+          "old": "name = \"Assassin - Poisoner\"",
+          "new": "name = \"刺客 - 毒师\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/antag/assassin/hitman.dm",
+      "replacements": [
+        {
+          "old": "name = \"Assassin - Professional Hitman\"",
+          "new": "name = \"刺客 - 职业杀手\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/inspector.dm",
+      "replacements": [
+        {
+          "old": "name = \"Inspector\"",
+          "new": "name = \"监察官\"",
+          "count": 1
+        },
+        {
+          "old": "if(\"Psydonic Longsword\")",
+          "new": "if(\"Psydonic 长剑\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Psydonic Rapier\")",
+          "new": "if(\"Psydonic 刺剑\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Daybreak (Whip)\")",
+          "new": "if(\"Daybreak（鞭）\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Stigmata (Halberd)\")",
+          "new": "if(\"Stigmata（长戟）\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Eucharist (Rapier)\")",
+          "new": "if(\"Eucharist（刺剑）\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Bolts - Steel-Tipped\")",
+          "new": "if(\"弩矢 - 钢尖\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Sunderbolts - Silver-Tipped, Halved Damage\")",
+          "new": "if(\"裂甲弩矢 - 银尖，伤害减半\")",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/Inquisition/puritanclasses/ordinator.dm",
+      "replacements": [
+        {
+          "old": "name = \"Ordinator\"",
+          "new": "name = \"裁断官\"",
+          "count": 1
+        },
+        {
+          "old": "if(\"Psydonic Broadsword + Dagger\")",
+          "new": "if(\"Psydonic 阔剑 + 匕首\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Psydonic Poleaxe + Dagger\")",
+          "new": "if(\"Psydonic 长柄斧 + 匕首\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Psydonic Grand Mace + Dagger\")",
+          "new": "if(\"Psydonic 巨钉锤 + 匕首\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Apocrypha (Greatsword) + Dagger\")",
+          "new": "if(\"Apocrypha（巨剑）+ 匕首\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Covenant And Creed (Broadsword + Shield)\")",
+          "new": "if(\"Covenant And Creed（阔剑 + 盾）\")",
+          "count": 1
+        },
+        {
+          "old": "if(\"Covenant and Consecratia (Flail + Shield)\")",
+          "new": "if(\"Covenant and Consecratia（连枷 + 盾）\")",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/Inquisition/orthoclasses/sojourner.dm",
+      "replacements": [
+        {
+          "old": "name = \"Sojourner\"",
+          "new": "name = \"旅居者\"",
+          "count": 1
+        },
+        {
+          "old": "tutorial = \"Naledi scholars, bereft of their home, were sent around Grimoria searching for purpose. They'd found it in Otava, \\\n\twithin the hallowed halls that honed their gifts and refined the knowledge they'd held. Attached to the Inquisitor, you've one purpose. \\\n\tShow them that the fall wasn't pointless.\"",
+          "new": "tutorial = \"失去故土的 Naledi 学者被送往 Grimoria 各地寻找意义。他们最终在 Otava 找到了答案， \\\n\t在那片神圣殿堂之中，他们磨砺天赋，也淬炼自己原本掌握的学识。追随审判官的你如今只有一个目标。 \\\n\t向世人证明，那场沦亡并非毫无意义。\"",
+          "count": 1
+        },
+        {
+          "old": "extra_context = \"This subclass has multiple unique spells, including one in the form of an 'arcyne barrier'. \\\n\tSo long as it's active, the user is immune to magic, yet still capable of casting it.\"",
+          "new": "extra_context = \"该子职业拥有多种独特法术，其中一种表现为“奥术屏障”。 \\\n\t只要它处于激活状态，使用者便会免疫魔法，同时仍可继续施法。\"",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

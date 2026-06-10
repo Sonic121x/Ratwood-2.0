@@ -1,0 +1,104 @@
+{
+  "operations": [
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/wretch/heretic.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Heretic\"",
+          "new": "\tname = \"异端\""
+        },
+        {
+          "old": "\tto_chat(H, span_warning(\"You father your unholy cause through the most time-tested of ways: hard, heavy steel in both arms and armor.\"))",
+          "new": "\tto_chat(H, span_warning(\"你以最古老、也最经得起考验的方式来扶持自己亵渎的事业：双臂执重钢，周身披重甲。\"))"
+        },
+        {
+          "old": "\t\t\tif(\"Longsword\")",
+          "new": "\t\t\tif(\"长剑\")"
+        },
+        {
+          "old": "\t\t\tif(\"Mace\")",
+          "new": "\t\t\tif(\"钉锤\")"
+        },
+        {
+          "old": "\t\t\tif(\"Flail\")",
+          "new": "\t\t\tif(\"链枷\")"
+        },
+        {
+          "old": "\t\t\tif(\"Axe\")",
+          "new": "\t\t\tif(\"战斧\")"
+        },
+        {
+          "old": "\t\t\tif(\"Billhook\")",
+          "new": "\t\t\tif(\"钩镰枪\")"
+        },
+        {
+          "old": "\tname = \"Heretic Spy\"",
+          "new": "\tname = \"异端密探\""
+        },
+        {
+          "old": "\tto_chat(H, span_warning(\"Nimble of dagger and foot both, you are the shadowy herald of the cabal. They will not see you coming.\"))",
+          "new": "\tto_chat(H, span_warning(\"无论匕首还是步伐，你都同样轻捷。你是密教组织潜伏于阴影中的使者，他们根本来不及看见你的到来。\"))"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your weapon.\", \"TAKE UP ARMS\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的武器。\", \"披甲执兵\") as anything in weapons"
+        },
+        {
+          "old": "\tname = \"Convert The Downtrodden\"",
+          "new": "\tname = \"引渡失落之人\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/adventurer/types/wretch/outlaw.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Outlaw\"",
+          "new": "\tname = \"亡命徒\""
+        },
+        {
+          "old": "\tto_chat(H, span_warning(\"You are the person folk fear at night - use your cunning and speed to strike fast and get out with your spoils before anyone notices.\"))",
+          "new": "\tto_chat(H, span_warning(\"你是夜里令人闻风丧胆的家伙，用你的狡诈与速度迅速出手，在任何人察觉前带着赃物全身而退。\"))"
+        },
+        {
+          "old": "\tname = \"Marauder\"",
+          "new": "\tname = \"掠夺者\""
+        },
+        {
+          "old": "\tto_chat(H, span_warning(\"You are a brigand and a pillager - you prefer to get your coins with direct means from unfortunate victims.\"))",
+          "new": "\tto_chat(H, span_warning(\"你是强盗与劫掠者，更喜欢用最直接的手段从那些倒霉受害者身上榨出钱财。\"))"
+        },
+        {
+          "old": "\t\tvar/weapon_choice = input(H, \"Choose your weapon.\", \"TAKE UP ARMS\") as anything in weapons",
+          "new": "\t\tvar/weapon_choice = input(H, \"选择你的武器。\", \"披甲执兵\") as anything in weapons"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/courtier/mage_associate.dm",
+      "replacements": [
+        {
+          "old": "\tname = \"Magician Associate\"",
+          "new": "\tname = \"法师侍从\""
+        },
+        {
+          "old": "\tname = \"Alchemist Associate\"",
+          "new": "\tname = \"炼金侍从\""
+        },
+        {
+          "old": "\tname = \"Magician Apprentice\"",
+          "new": "\tname = \"法师学徒\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/jobs/job_types/roguetown/courtier/jester.dm",
+      "replacements": [
+        {
+          "old": "\ttutorial = \"The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \\\n\t\tYou command a position of a fool, envious of the position your superiors have upon you. \\\n\t\tYour cheap tricks and illusions of intelligence will only work for so long, \\\n\t\tand someday you'll find yourself at the end of something sharper than you.\"",
+          "new": "\ttutorial = \"Grenzelhoft 家族向来以他们的弄臣闻名，那些人机敏过人，舌头与脑子一样锋利。\\\n\t\t你坐在小丑的位置上，嫉妒着上位者凌驾于你头顶的权势。\\\n\t\t你那些廉价把戏与装出来的聪明终究骗不了太久，\\\n\t\t总有一天，你会撞上比自己更锋利的东西。\""
+        }
+      ]
+    }
+  ]
+}
