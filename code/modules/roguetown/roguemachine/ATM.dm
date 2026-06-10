@@ -52,18 +52,18 @@
 			return
 		var/list/choicez = list()
 		if(amt > 10)
-			choicez += "GOLD"
+			choicez += "金币"
 		if(amt > 5)
-			choicez += "SILVER"
-		choicez += "BRONZE"
+			choicez += "银币"
+		choicez += "铜币"
 		var/selection = input(user, "你的账户中有 [amt] 玛门。选择你想提取的货币。", src) as null|anything in choicez
 		if(!selection)
 			return
 		amt = SStreasury.bank_accounts[H]
 		var/mod = 1
-		if(selection == "GOLD")
+		if(selection == "金币")
 			mod = 10
-		if(selection == "SILVER")
+		if(selection == "银币")
 			mod = 5
 		var/coin_amt = input(user, "国库中有 [SStreasury.treasury_value] 玛门，你的账户中有 [amt] 玛门。你可以提取 [floor(amt/mod)] 枚 [selection]币。", src) as null|num
 		coin_amt = round(coin_amt)
