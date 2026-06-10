@@ -1,7 +1,7 @@
 /obj/item/rogueweapon/greatsword/moonlight_greatsword
 	name = "月光大剑"
 	desc = "过去背叛同胞的“无鳞”古龙 - 白龙希斯，其尾巴化成的武器。稀少的龙武器之一。为魔法始祖希斯的魔力结晶，那股力量能化为月光波动释放出来。"
-	icon = 'modular/custom/assets/weapons/frostgreatsword.dmi'
+	icon = 'modular_z121/assets/weapons/frostgreatsword.dmi'
 	icon_state = "frostgreatsword"
 	force = 18
 	force_wielded = 30

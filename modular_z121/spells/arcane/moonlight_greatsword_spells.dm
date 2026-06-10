@@ -1,4 +1,4 @@
-#define MOONLIGHT_ACTION_ICON 'modular/custom/assets/spells/moonlight_greatsword/actions_spells.dmi'
+#define MOONLIGHT_ACTION_ICON 'modular_z121/assets/spells/moonlight_greatsword/actions_spells.dmi'
 
 /atom/movable/screen/alert/status_effect/buff/moonlight_blessing
 	name = "月之祝福"

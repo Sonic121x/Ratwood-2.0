@@ -5,8 +5,8 @@
 	output_reagents = list(/datum/reagent/medicine/antidote = 100)
 
 /datum/alch_cauldron_recipe/strong_antidote
-	name = "Antidote (Strong)"
-	smells_like = "purity"
+	name = "强效解毒剂"
+	smells_like = "纯净"
 	output_reagents = list(/datum/reagent/medicine/strong_antidote = 100)
 
 /datum/alch_cauldron_recipe/berrypoison
@@ -28,8 +28,8 @@
 	output_reagents = list(/datum/reagent/stampoison = 100)
 
 /datum/alch_cauldron_recipe/big_stam_poison
-	name = "Stamina Poison (Strong)"
-	smells_like = "stagnant air"
+	name = "强效耐力毒药"
+	smells_like = "停滞的空气"
 	skill_required = SKILL_LEVEL_EXPERT // Strong poison should be more difficult to make
 	output_reagents = list(/datum/reagent/strongstampoison = 100)
 
@@ -51,32 +51,32 @@
 	output_reagents = list(/datum/reagent/medicine/manapot = 100)//recipe is harder to make than regular blue
 
 /datum/alch_cauldron_recipe/big_mana_potion
-	name = "Elixir of Mana (Strong)"
-	smells_like = "fear"
+	name = "强效魔力灵药"
+	smells_like = "恐惧"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/medicine/strongmana = 100)
 
 /datum/alch_cauldron_recipe/stamina_potion
-	name = "Elixir of Stamina"
-	smells_like = "fresh air"
+	name = "耐力灵药"
+	smells_like = "清新空气"
 	output_reagents = list(/datum/reagent/medicine/stampot = 100)
 
 /datum/alch_cauldron_recipe/big_stamina_potion
-	name = "Elixir of Stamina (Strong)"
-	smells_like = "clean winds"
+	name = "强效耐力灵药"
+	smells_like = "洁净的风"
 	skill_required = SKILL_LEVEL_JOURNEYMAN
 	output_reagents = list(/datum/reagent/medicine/strongstam = 100)
 
 //S.P.E.C.I.A.L. potions - Expert or above (roundstart Witch etc.)
 /datum/alch_cauldron_recipe/temp_potion
-	name = "Potion of Equilibrium"
-	smells_like = "spring time"
+	name = "平衡药剂"
+	smells_like = "春日"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/temperature_normalize = 30)
 
 /datum/alch_cauldron_recipe/str_potion
-	name = "Potion of Mountain Muscles"
-	smells_like = "petrichor"
+	name = "山岳肌力药剂"
+	smells_like = "雨后泥土"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/strength = 30)
 
@@ -93,14 +93,14 @@
 	output_reagents = list(/datum/reagent/buff/endurance = 30)
 
 /datum/alch_cauldron_recipe/con_potion
-	name = "Potion of Stone Flesh"
-	smells_like = "earth"
+	name = "石肤药剂"
+	smells_like = "大地"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/constitution = 30)
 
 /datum/alch_cauldron_recipe/int_potion
-	name = "Potion of Keen Mind"
-	smells_like = "water"
+	name = "锐思药剂"
+	smells_like = "水"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/intelligence = 30)
 
@@ -111,8 +111,8 @@
 	output_reagents = list(/datum/reagent/buff/speed = 30)
 
 /datum/alch_cauldron_recipe/lck_potion
-	name = "Potion of Seven Clovers"
-	smells_like = "calming"
+	name = "七叶草药剂"
+	smells_like = "平静"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/fortune = 30)
 
@@ -122,7 +122,7 @@
 	output_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 60)
 
 /datum/alch_cauldron_recipe/fire_potion
-	name = "Potion of Fire Warding"
-	smells_like = "authority"
+	name = "抗火药剂"
+	smells_like = "威仪"
 	skill_required = SKILL_LEVEL_MASTER
 	output_reagents =list(/datum/reagent/fire_resist = 30)
