@@ -151,3 +151,8 @@
   - rscdel: staves skill, now everyone who used it previously has had their polearms
       skill upped to compensate
   - balance: quarterstaves are now polearms
+2026-06-10:
+  Fantasiuss:
+  - rscadd: Ursine Features descriptor
+  coffeecoffeecoffee:
+  - balance: Changed grapple cooldown from a whopping 5 seconds to 1 second
