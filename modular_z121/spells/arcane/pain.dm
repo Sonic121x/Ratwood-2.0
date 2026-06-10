@@ -44,6 +44,9 @@
 	gesture_required = TRUE
 
 /obj/effect/proc_holder/spell/invoked/pain/cast(list/targets, mob/living/user = usr)
+	if(user?.curplaying)
+		user.curplaying.on_mouse_up()
+
 	var/atom/target_atom = targets[1]
 	if(!isliving(target_atom))
 		revert_cast()
