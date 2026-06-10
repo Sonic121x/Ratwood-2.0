@@ -14,7 +14,7 @@
 	importexport_amt = 5
 	passive_generation = 2
 	stockpile_limit = 25
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 6
 
 /datum/roguestock/stockpile/grain
@@ -29,7 +29,7 @@
 	importexport_amt = 10
 	passive_generation = 3
 	stockpile_limit = 50
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 3
 	remote_limit = 15 //Just in case there is litterally nobody else making food
 
@@ -45,7 +45,7 @@
 	importexport_amt = 10
 	passive_generation = 1 //fancy, unused grain
 	stockpile_limit = 50
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 3
 	remote_limit = 15
 
@@ -60,7 +60,7 @@
 	export_price = 3
 	importexport_amt = 10
 	stockpile_limit = 50
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 
 /datum/roguestock/stockpile/meat
@@ -75,7 +75,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 8 //getting meat consistently every day is hard!
 	remote_limit = 8 //storing it is also a problem
 
@@ -91,7 +91,7 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	passive_generation = 1
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 8
 	remote_limit = 8
 
@@ -106,7 +106,7 @@
 	export_price = 5
 	importexport_amt = 5
 	stockpile_limit = 25
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 5
 	remote_limit = 8
 
@@ -121,7 +121,7 @@
 	export_price = 10
 	importexport_amt = 5
 	stockpile_limit = 25
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 10 //luxury meat
 	remote_limit = 8
 
@@ -137,7 +137,7 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	passive_generation = 2
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 4
 	remote_limit = 8 //also rots, and you can easily get tons from buying one chicken or soilsons
 
@@ -153,7 +153,7 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	passive_generation = 1 //not really used that much, and also only comes from certain animals, but good tallow source, so it keeps a generation
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 4
 
 /datum/roguestock/stockpile/tallow
@@ -168,7 +168,7 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	passive_generation = 2
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2 //should probably just process fat
 
 /datum/roguestock/stockpile/butter
@@ -182,7 +182,7 @@
 	export_price = 13
 	importexport_amt = 5
 	stockpile_limit = 25
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 12 //high-ish price, no initial generation, buttered stuff is a good sign that the economy's doing good!
 
 /datum/roguestock/stockpile/honey
@@ -196,7 +196,7 @@
 	export_price = 9
 	importexport_amt = 5
 	stockpile_limit = 25
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 8 //mostly a luxury, no generation, still decent price though
 
 /datum/roguestock/stockpile/cheese
@@ -211,7 +211,7 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	passive_generation = 1
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 4 
 
 /datum/roguestock/stockpile/onion
@@ -226,7 +226,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 2
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 
 /datum/roguestock/stockpile/turnip
@@ -241,7 +241,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1 //almost never used outside of soups
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 
 /datum/roguestock/stockpile/cabbage
@@ -256,7 +256,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1 //almost never used outside of soups
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 
 /datum/roguestock/stockpile/potato
@@ -271,7 +271,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 2
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 
 /datum/roguestock/stockpile/rice
@@ -286,7 +286,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 2
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 	remote_limit = 15 //grain
 
@@ -302,7 +302,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1 //still used on some recipes, rarely, so no removal
-	category = "Foodstuffs"
+	category = "食材"
 
 /datum/roguestock/stockpile/eggplant
 	name = "茄子"
@@ -316,7 +316,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1 //same as above
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 
 /datum/roguestock/stockpile/carrot
@@ -331,7 +331,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1 //used on more recipes than the above two, but those recipes are usually full meals
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 2
 
 /datum/roguestock/stockpile/poppy
@@ -345,7 +345,7 @@
 	export_price = 4
 	importexport_amt = 10
 	stockpile_limit = 50
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 3
 
 /datum/roguestock/stockpile/rocknut
@@ -359,7 +359,7 @@
 	export_price = 4
 	importexport_amt = 10
 	stockpile_limit = 50
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 3
 
 /datum/roguestock/stockpile/sugarcane
@@ -374,7 +374,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	passive_generation = 1
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 3 //should be 2 considering the export price but... everything's the same for some reason? Not touching the others just in case
 
 /datum/roguestock/stockpile/coffee
@@ -388,7 +388,7 @@
 	export_price = 3
 	importexport_amt = 10
 	stockpile_limit = 50
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 3 //same as sugarcane
 
 /datum/roguestock/stockpile/tea
@@ -402,5 +402,5 @@
 	export_price = 3
 	importexport_amt = 10
 	stockpile_limit = 50
-	category = "Foodstuffs"
+	category = "食材"
 	generation_price = 3 //same as sugarcane
