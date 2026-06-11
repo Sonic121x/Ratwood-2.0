@@ -203,7 +203,7 @@ window "statwindow"
 		tab-text-color = #d6dbd5
 		tab-background-color = #000000
 		tab-font-family = "山海万花哥特 W"
-		tab-font-size = 10
+		tab-font-size = 12 //状态选项框字体 原:20
 		prefix-color = #f9bb00
 		suffix-color = #d6dbd5
 
