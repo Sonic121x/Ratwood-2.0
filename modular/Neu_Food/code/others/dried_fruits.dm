@@ -1,16 +1,16 @@
 
 // -------------- RAISINS, GIBLETS, SWEETGLASS ------------------
 /obj/item/reagent_containers/food/snacks/rogue/raisins
-	name = "raisins"
-	desc = "Jackberries that've been pruned of their juiciness, and turned into flavorful nuggets. Like the humble hardtack, so \
-	too will these raisins outlast their creators.  When combined with honey and doused in a pot of boiling fat, it can birth \
-	'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "葡萄干"
+	desc = "杰克莓脱去水分后，变成了风味浓郁的小块。就像朴实的硬面包一样，这些葡萄干也会比它们的创造者更持久。\
+	当与蜂蜜混合并投入一锅沸腾的油脂中时，便能诞生“甜晶”——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "raisins5"
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried jackberries" = 1, "shriveled bursts of sweetness" = 1)
+	tastes = list("干杰克莓" = 1, "缩皱的甜味爆发" = 1)
 	faretype = FARE_POOR
 	eat_effect = null
 	rotprocess = null
