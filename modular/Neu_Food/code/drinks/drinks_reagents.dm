@@ -1,9 +1,9 @@
 /datum/reagent/water/rosewater
-	name = "rosa tea"
-	description = "Steeped rosa petals with mild health regeneration and antidotal properties."
+	name = "玫瑰茶"
+	description = "以玫瑰花瓣浸泡而成，带有轻微的恢复效果。"
 	reagent_state = LIQUID
 	color = "#f398b6"
-	taste_description = "floral sweetness"
+	taste_description = "花香甜味"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
@@ -50,8 +50,8 @@
 
 // Reagents system don't have the idea of solute and solvent so we need a type for each
 /datum/reagent/consumable/caffeine/
-	name = "caffeine"
-	description = "Why are you seeing this?"
+	name = "咖啡因"
+	description = "你为什么会看到这个？"
 	hydration_factor = 5
 	overdose_threshold = 60
 
@@ -68,11 +68,11 @@
 		M.heart_attack()
 	
 /datum/reagent/consumable/caffeine/coffee
-	name = "coffee"
-	description = "Coffee beans brewed into a hot drink. With a hint of bitterness. Rejuvenating."
+	name = "咖啡"
+	description = "咖啡豆煮成的热饮，带着一丝苦味，能提振精神。"
 	reagent_state = LIQUID
 	color = "#482000"
-	taste_description = "caramelized bitterness" // coffee has so many flavors I am going for one
+	taste_description = "焦糖般的苦味" // coffee has so many flavors I am going for one
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 200
 	quality = DRINK_NICE
@@ -102,11 +102,11 @@
 				M.update_damage_overlays()
 
 /datum/reagent/consumable/caffeine/tea
-	name = "tea"
-	description = "Tea leaves brewed into a hot drink. Slight hint of bitterness. Smooth."
+	name = "茶"
+	description = "茶叶煮成的热饮，略带一丝苦味，口感顺滑。"
 	reagent_state = LIQUID
 	color = "#508141" // Deeper green to make it look better
-	taste_description = "smooth grassiness" // Yeah, uh.
+	taste_description = "顺滑的草木气息" // Yeah, uh.
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 	quality = DRINK_NICE
@@ -136,11 +136,11 @@
 				M.update_damage_overlays()
 
 /datum/reagent/consumable/poppy_milk
-	name = "poppy milk"
-	description = "Infused liquid of the Poppy, this one leaves your mouth and mind numb after drinking. Drinking more than a cup might not be good for your health..."
+	name = "罂粟奶"
+	description = "浸入罂粟后的饮液，喝下后会让你的口舌与神智一同麻木。喝上一杯以上可能不太利于健康......"
 	reagent_state = LIQUID
 	color = "#dbd7d5"
-	taste_description = "instant numbness"
+	taste_description = "瞬间的麻木感"
 	metabolization_rate = REAGENTS_METABOLISM
 	overdose_threshold = 25 // one cup is safe, anything more and it's an OD
 	alpha = 200
@@ -158,10 +158,10 @@
 
 // Tea ported from Vanderlin from Misc Fixes PR #862
 /datum/reagent/consumable/golden_calendula_tea
-	name = "Golden Calendula Tea"
-	description = "A refreshing tea, great to soothe wounds and relieve fatigue."
+	name = "金盏花茶"
+	description = "一种清爽的茶饮，很适合舒缓伤势并缓解疲劳。"
 	color = "#b38e17"
-	taste_description = "herbal flavor"
+	taste_description = "草本风味"
 	quality = DRINK_VERYGOOD
 	alpha = 173
 
@@ -227,11 +227,11 @@
 	return ..()
 
 /datum/reagent/consumable/soothing_valerian_tea
-	name = "Soothing Valerian Tea"
-	description = "A refreshing tea, great to ease fatigue and relieve stress."
+	name = "舒缓缬草茶"
+	description = "一种清爽的茶饮，很适合缓解疲劳并减轻压力。"
 	color = "#3b9146"
 	quality = DRINK_FANTASTIC
-	taste_description = "herbal flavor"
+	taste_description = "草本风味"
 	alpha = 173
 
 /datum/reagent/consumable/soothing_valerian_tea/on_mob_life(mob/living/carbon/M)
