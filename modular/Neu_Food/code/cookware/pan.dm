@@ -46,8 +46,8 @@
 
 
 /obj/item/cooking/pan/decrepit
-	name = "decrepit pan"
-	desc = "Frayed bronze, wrought into a handheld griddle. Just a little oil's more than enough to slicken the surprisingly-unmarred surface."
+	name = "破旧煎锅"
+	desc = "磨损的青铜被锻成一口手持煎锅。只需一点点油，就足以让这片出奇平整的表面变得滑润。"
 	icon_state = "apan"
 	color = "#bb9696"
 	sellprice = 25

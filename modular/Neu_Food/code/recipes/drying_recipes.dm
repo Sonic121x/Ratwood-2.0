@@ -1,6 +1,6 @@
 /*	........   Drying Rack recipes   ................ */
 /datum/crafting_recipe/roguetown/cooking/salami
-	name = "salumoi"
+	name = "烟熏香肠"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage = 1,
@@ -10,7 +10,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/cooking/coppiette
-	name = "coppiette"
+	name = "风干肉条"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
@@ -20,7 +20,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/salo
-	name = "salo"
+	name = "盐腌肥膘"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/fat = 1,
@@ -63,7 +63,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/raisins
-	name = "raisins"
+	name = "葡萄干"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
 	parts = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
@@ -150,7 +150,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/cooking/fish
-	name = "dried fish filet"
+	name = "风干鱼片"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/fish = 1,
@@ -160,7 +160,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/frybirdbucket
-	name = "frybird bucket"
+	name = "炸鸟桶"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried = 3,
