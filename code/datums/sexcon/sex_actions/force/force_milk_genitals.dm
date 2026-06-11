@@ -1,5 +1,5 @@
 /datum/sex_action/force_milk_genitals
-	name = "Forcibly milk cock"
+	name = "强行榨取下体"
 	check_same_tile = FALSE
 	category = SEX_CATEGORY_HANDS
 	/// Target's genitals are being stimulated; set so modular_emit_received_sex_action_signal can resolve receiver_part.
@@ -14,13 +14,13 @@
 	return TRUE
 
 /datum/sex_action/force_milk_genitals/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] starts masturbating [target] over [user.get_active_held_item()]..."))
+	user.visible_message(span_warning("[user]开始隔着[user.get_active_held_item()]撸弄[target]的下体……"))
 
 /datum/sex_action/force_milk_genitals/proc/get_perform_message(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] jerks [target]'s cock into the [user.get_active_held_item()]...")
+	return user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]把[target]的阴茎撸进[user.get_active_held_item()]里……")
 
 /datum/sex_action/force_milk_genitals/proc/get_finish_message(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return span_warning("[user] stops jerking [target] into the container.")
+	return span_warning("[user]停止了把[target]撸向容器。")
 
 /datum/sex_action/force_milk_genitals/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.sexcon_action_message(get_perform_message(user, target))
@@ -39,11 +39,11 @@
 	return FALSE
 
 /datum/sex_action/force_milk_genitals/cunt
-	name = "Forcibly milk cunt"
+	name = "强行榨取小穴"
 	target_sex_part = SEX_PART_CUNT
 
 /datum/sex_action/force_milk_genitals/cunt/get_finish_message(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return span_warning("[user] stops fingering [target] over the container.")
+	return span_warning("[user]停止了隔着容器抠弄[target]。")
 
 /datum/sex_action/force_milk_genitals/cunt/get_perform_message(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fingers [target]'s cunt over the [user.get_active_held_item()]...")
+	return user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]隔着[user.get_active_held_item()]抠弄[target]的小穴……")

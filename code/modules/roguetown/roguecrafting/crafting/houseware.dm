@@ -1,7 +1,7 @@
 /datum/crafting_recipe/roguetown/survival/spoon
 	display_category = ITEM_CAT_DECORATION
-	name = "spoon (x3) (1 small log)"
-	category = "Houseware"
+	name = "木勺（x3）（1 根小圆木）"
+	category = "家居"
 	result = list(
 		/obj/item/kitchen/spoon,
 		/obj/item/kitchen/spoon,
@@ -11,8 +11,8 @@
 
 /datum/crafting_recipe/roguetown/survival/fork
 	display_category = ITEM_CAT_DECORATION
-	name = "fork (x3) (1 small log)"
-	category = "Houseware"
+	name = "木叉（x3）（1 根小圆木）"
+	category = "家居"
 	result = list(
 		/obj/item/kitchen/fork,
 		/obj/item/kitchen/fork,
@@ -22,8 +22,8 @@
 
 /datum/crafting_recipe/roguetown/survival/platter
 	display_category = ITEM_CAT_DECORATION
-	name = "platter (x2) (1 small log)"
-	category = "Houseware"
+	name = "木盘（x2）（1 根小圆木）"
+	category = "家居"
 	result = list(
 		/obj/item/cooking/platter,
 		/obj/item/cooking/platter,
@@ -32,15 +32,15 @@
 
 /datum/crafting_recipe/roguetown/survival/rollingpin
 	display_category = ITEM_CAT_DECORATION
-	name = "rollingpin (1 small log)"
-	category = "Houseware"
+	name = "擀面杖（1 根小圆木）"
+	category = "家居"
 	result = /obj/item/kitchen/rollingpin
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/survival/woodbucket
 	display_category = ITEM_CAT_DECORATION
-	name = "bucket (1 small log)"
-	category = "Houseware"
+	name = "木桶（1 根小圆木）"
+	category = "家居"
 	result = /obj/item/reagent_containers/glass/bucket
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
@@ -48,8 +48,8 @@
 
 /datum/crafting_recipe/roguetown/survival/woodcup
 	display_category = ITEM_CAT_DECORATION
-	name = "wooden cups (x3) (1 small log)"
-	category = "Houseware"
+	name = "木杯（x3）（1 根小圆木）"
+	category = "家居"
 	result = list(
 		/obj/item/reagent_containers/glass/cup/wooden/crafted,
 		/obj/item/reagent_containers/glass/cup/wooden/crafted,
@@ -62,8 +62,8 @@
 
 /datum/crafting_recipe/roguetown/survival/woodtray
 	display_category = ITEM_CAT_DECORATION
-	name = "wooden trays (x2) (1 small log)"
-	category = "Houseware"
+	name = "木托盘（x2）（1 根小圆木）"
+	category = "家居"
 	result = list(
 		/obj/item/storage/bag/tray,
 		/obj/item/storage/bag/tray,
@@ -72,8 +72,8 @@
 
 /datum/crafting_recipe/roguetown/survival/woodbowl
 	display_category = ITEM_CAT_DECORATION
-	name = "wooden bowls (x3) (1 small log)"
-	category = "Houseware"
+	name = "木碗（x3）（1 根小圆木）"
+	category = "家居"
 	result = list(
 		/obj/item/reagent_containers/glass/bowl,
 		/obj/item/reagent_containers/glass/bowl,
@@ -83,15 +83,15 @@
 
 /datum/crafting_recipe/roguetown/survival/pot
 	display_category = ITEM_CAT_DECORATION
-	name = "stone pot (2 stones)"
-	category = "Houseware"
+	name = "石锅（2 块石料）"
+	category = "家居"
 	result = /obj/item/reagent_containers/glass/bucket/pot/stone
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/survival/soap
 	display_category = ITEM_CAT_DECORATION
-	name = "soap (3x) (1 tallow)"
-	category = "Houseware"
+	name = "肥皂（x3）（1 份兽脂）"
+	category = "家居"
 	result = list(
 		/obj/item/soap,
 		/obj/item/soap,
@@ -101,8 +101,8 @@
 
 /datum/crafting_recipe/roguetown/survival/candle
 	display_category = ITEM_CAT_DECORATION
-	name = "candle (x3) (1 tallow)"
-	category = "Houseware"
+	name = "蜡烛（x3）（1 份兽脂）"
+	category = "家居"
 	result = list(
 		/obj/item/candle/yellow,
 		/obj/item/candle/yellow,
@@ -112,8 +112,8 @@
 
 /datum/crafting_recipe/roguetown/survival/candle/eora
 	display_category = ITEM_CAT_DECORATION
-	name = "eora's candle (x3) (1 tallow, 1 rosa, 25 blessed water)"
-	category = "Houseware"
+	name = "伊欧拉 蜡烛（x3）（1 份兽脂，1 朵玫瑰，25 圣水）"
+	category = "家居"
 	result = list(
 		/obj/item/candle/eora,
 		/obj/item/candle/eora,

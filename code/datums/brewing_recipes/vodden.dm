@@ -1,8 +1,8 @@
 /datum/brewing_recipe/voddena
 	name = "Voddena"
-	category = "Grain"
+	category = "谷物"
 	bottle_name = "voddena"
-	bottle_desc = "A bottle of locally-brewed voddena. Brewed from potatoes. It has a clean flavor."
+	bottle_desc = "一瓶本地酿制的 Voddena。以土豆酿成，口感清冽。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/voddena
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/voddena
 	needed_reagents = list(/datum/reagent/water = 198)

@@ -1,8 +1,8 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	has_item_quality = TRUE
-	name = "crossbow"
-	desc = "A deadly weapon that shoots a bolt with terrific power."
+	name = "十字弩"
+	desc = "一种能以惊人威力射出弩矢的致命武器。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "crossbow0"
 	item_state = "crossbow"
@@ -119,7 +119,7 @@
 		..()
 	else
 		if(!cocked)
-			to_chat(user, span_info("I step on the stirrup and use all my might..."))
+			to_chat(user, span_info("我踩住弩镫，使出全身力气上弦……"))
 			if(!movingreload)
 				if(do_after(user, reloadtime - user.STASTR, target = user))
 					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
@@ -129,7 +129,7 @@
 					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
 					cocked = TRUE
 		else
-			to_chat(user, span_warning("I carefully de-cock the crossbow."))
+			to_chat(user, span_warning("我小心地让十字弩退弦。"))
 			cocked = FALSE
 	update_icon()
 
@@ -140,7 +140,7 @@
 				return
 			..()
 		else
-			to_chat(user, span_warning("I need to cock the bow first."))
+			to_chat(user, span_warning("我得先给弩上弦。"))
 
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -218,8 +218,8 @@
 	damfactor = 1 // Lower than starting
 	
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
-	name = "slurbow"
-	desc = "A lighter weight crossbow with a distinct barrel shroud holding the bolt in place. Light enough to arm by hand. <br>They're popular among among highwaymen and the patrolling lamplighters of Otava."
+	name = "轻弩"
+	desc = "一种较轻的十字弩，带有明显的导槽护罩以固定弩矢。轻到可以徒手上弦。<br>它很受拦路盗匪与奥塔瓦巡夜点灯人欢迎。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "slurbow0"
 	item_state = "slurbow"
@@ -317,9 +317,9 @@
 //Retains an identical damage to the standard crossbow. The pen is what makes this.
 //That's an aside to the silver stake, which does 50, instead of the sunderbolt's 35, AND keeps the pen.
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/arbalest
-	name = "sauterelle"
-	desc = "An incredibly heavy crossbow, designed for a dedicated arbalist to wield. \
-	Modified to be loaded by hand. A tedious affair."
+	name = "索特雷尔重弩"
+	desc = "一种重得惊人的十字弩，专为专业弩手打造。 \
+	它经过改造，可以徒手上弦，不过过程相当折磨人。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "psyheavycrossbow0"
 	item_state = "psyheavycrossbow"
@@ -335,4 +335,3 @@
 	caliber = "heabolt"
 	max_ammo = 1
 	start_empty = TRUE
-
