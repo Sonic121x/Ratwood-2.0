@@ -5,7 +5,7 @@
 /datum/group_mindlink_custom/New(list/new_participants)
 	participants = list()
 	for(var/mob/living/member as anything in new_participants)
-		if(!istype(member) || member in participants)
+		if(!istype(member) || (member in participants))
 			continue
 		participants += member
 		RegisterSignal(member, COMSIG_MOB_SAY, PROC_REF(handle_speech))
