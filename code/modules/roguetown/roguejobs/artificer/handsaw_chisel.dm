@@ -1,11 +1,11 @@
-#define BCLASS_CHISEL			"chisel"
+#define BCLASS_CHISEL			"凿子"
 //................	Handsaw	............... //
 /obj/item/rogueweapon/handsaw
 	force = 5
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	gripped_intents = null
-	name = "handsaw"
-	desc = "Iron tool for woodworking."
+	name = "手锯"
+	desc = "用于木工活的铁制工具。"
 	icon_state = "handsaw"
 	icon = 'icons/roguetown/items/crafting.dmi'
 	grid_width = 32
@@ -32,8 +32,8 @@
 
 //................	Chisel	............... //
 /obj/item/rogueweapon/chisel
-	name = "chisel"
-	desc = "Add something to strike it with before doing stonework. Like a mallet or a stone."
+	name = "凿子"
+	desc = "在进行石工活之前，先给它配个能敲击的东西，比如木槌或石头。"
 	icon_state = "chisel"
 	icon = 'icons/roguetown/items/crafting.dmi'
 	grid_width = 32
@@ -92,7 +92,7 @@
 		return ..()
 
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100, TRUE)
-	user.visible_message(span_info("[user] adds a striking tool to the chisel set."))
+	user.visible_message(span_info("[user]为凿具组装上了敲击工具。"))
 
 	var/obj/item/rogueweapon/chisel/assembly/A = new(src.loc)
 	A.chisel_type = src.type
@@ -109,8 +109,8 @@
 // ==========================================
 
 /obj/item/rogueweapon/chisel/assembly
-	name = "chisel set"
-	desc = "Ready to shape stones when held in a steady grip. Can be separated easily."
+	name = "凿具组"
+	desc = "稳稳握住时便可用于雕琢石材，也能轻松拆开。"
 	grid_width = 64
 	grid_height = 64
 	already_assembled = TRUE
@@ -137,7 +137,7 @@
 // ==========================================
 
 /datum/intent/chisel
-	name = "chisel"
+	name = "凿刻"
 	icon_state = "inchisel"
 	attack_verb = list("chisels")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')

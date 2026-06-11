@@ -1,5 +1,5 @@
 /obj/item/rogueweapon/scabbard
-	name = "scabbard"
+	name = "剑鞘"
 	desc = ""
 
 	icon = 'modular_azurepeak/icons/obj/items/scabbard.dmi'
@@ -48,7 +48,7 @@
 
 
 /obj/item/rogueweapon/scabbard/attack_turf(turf/T, mob/living/user)
-	to_chat(user, span_notice("I search for my sword..."))
+	to_chat(user, span_notice("我开始寻找自己的剑......"))
 	for(var/obj/item/rogueweapon/sword/sword in T.contents)
 		if(eat_sword(user, sword))
 			break
@@ -58,21 +58,21 @@
 
 /obj/item/rogueweapon/scabbard/proc/weapon_check(mob/living/user, obj/A)
 	if(sheathed)
-		to_chat(user, span_warning("The sheath is occupied!"))
+		to_chat(user, span_warning("鞘里已经有东西了！"))
 		return FALSE
 	if(HAS_TRAIT(A, TRAIT_NODROP))
 		to_chat(user, span_warning("I cannot sheath [A] while it is bound."))
 		return FALSE
 	if(valid_blade && !istype(A, valid_blade))
-		to_chat(user, span_warning("[A] won't fit in there."))
+		to_chat(user, span_warning("[A]塞不进去。"))
 		return FALSE
 	if(valid_blades)
 		if(!(A.type in valid_blades))
-			to_chat(user, span_warning("[A] won't fit in there."))
+			to_chat(user, span_warning("[A]塞不进去。"))
 			return FALSE
 	if(invalid_blades)
 		if(A.type in invalid_blades)
-			to_chat(user, span_warning("[A] won't fit in there."))
+			to_chat(user, span_warning("[A]塞不进去。"))
 			return FALSE
 	return TRUE
 
@@ -83,7 +83,7 @@
 	if(obj_broken)
 		user.visible_message(
 			span_warning("[user] begins to force [A] into [src]!"),
-			span_warningbig("I begin to force [A] into [src].")
+			span_warningbig("我开始把[A]硬塞进[src]。")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -97,8 +97,8 @@
 
 	if(!sheathing_from_belt)
 		user.visible_message(
-			span_notice("[user] sheathes [A] into [src]."),
-			span_notice("I sheathe [A] into [src].")
+			span_notice("[user]将[A]收入[src]中。"),
+			span_notice("我将[A]收入[src]中。")
 		)
 
 	playsound(src, sheathe_sound, 100, TRUE)
@@ -112,7 +112,7 @@
 	if(obj_broken)
 		user.visible_message(
 			span_warning("[user] begins to force [sheathed] out of [src]!"),
-			span_warningbig("I begin to force [sheathed] out of [src].")
+			span_warningbig("我开始把[sheathed]硬从[src]里拽出来。")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -126,8 +126,8 @@
 	update_icon(user)
 
 	user.visible_message(
-		span_warning("[user] draws out of [src]!"),
-		span_notice("I draw out of [src].")
+		span_warning("[user]从[src]中拔出了武器！"),
+		span_notice("我从[src]中拔出了武器。")
 	)
 	return TRUE
 
@@ -161,7 +161,7 @@
 	. = ..()
 
 	if(sheathed)
-		. += span_notice("The sheath is occupied by [sheathed]. Left-click to pull it out.")
+		. += span_notice("鞘里装着[sheathed]。左键即可将它拔出。")
 
 
 /obj/item/rogueweapon/scabbard/update_icon(mob/living/user)
@@ -261,8 +261,8 @@
 
 
 /obj/item/rogueweapon/scabbard/sheath
-	name = "dagger sheath"
-	desc = "A slingable sheath made of leather, meant to host surprises in smaller sizes."
+	name = "匕首套"
+	desc = "一个可悬挂的皮制刀套，专门收纳那些更小巧的惊喜。"
 	sewrepair = TRUE
 
 	icon_state = "sheath"
@@ -377,7 +377,7 @@
 
 
 /obj/item/rogueweapon/scabbard/gwstrap
-	name = "greatweapon strap"
+	name = "巨型武器背带"
 	desc = ""
 
 	icon_state = "gws0"
@@ -495,8 +495,8 @@
 ///////////////////////
 
 /obj/item/rogueweapon/scabbard/sword
-	name = "simple scabbard"
-	desc = "The natural evolution to the advent of longblades."
+	name = "简易剑鞘"
+	desc = "长剑出现后，自然而然演化出的配套之物。"
 
 	icon_state = "scabbard"
 	item_state = "scabbard"
@@ -682,8 +682,8 @@
 
 
 /obj/item/rogueweapon/scabbard/sword/kazengun
-	name = "simple kazengun scabbard"
-	desc = "A piece of steel lined with wood. Great for batting away blows."
+	name = "简式风军剑鞘"
+	desc = "木衬钢鞘。很适合用来格挡来袭打击。"
 	icon_state = "kazscab"
 	item_state = "kazscab"
 	// Only accept Kazengun swords
@@ -703,8 +703,8 @@
 	max_integrity = 220
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/noparry
-	name = "ceremonial kazengun scabbard"
-	desc = "A simple wooden scabbard, trimmed with bronze. Unlike its steel cousins, this one cannot parry."
+	name = "仪式风军剑鞘"
+	desc = "一把以青铜修边的简易木鞘。不同于它的钢制同类，这把无法招架。"
 	// Accept Kazengun short/sabre swords and longswords
 	valid_blades = list(
 		/obj/item/rogueweapon/sword/short/kazengun,
@@ -717,8 +717,8 @@
 	can_parry = FALSE
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/noparry/loadout
-	name = "ceremonial scabbard"
-	desc = "A simple wooden scabbard, trimmed with bronze. Unlike its steel cousins, this one cannot parry."
+	name = "仪式剑鞘"
+	desc = "一把以青铜修边的简易木鞘。不同于它的钢制同类，这把无法招架。"
 	// Accept Kazengun short/sabre swords and longswords
 	valid_blades = list(
 		/obj/item/rogueweapon/sword/short/kazengun,
@@ -730,8 +730,8 @@
 	)
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/steel
-	name = "hwang scabbard"
-	desc = "A cloud-patterned scabbard with a cloth sash. Used for blocking."
+	name = "云纹剑鞘"
+	desc = "一把带有云纹与布绶带的剑鞘。可用于格挡。"
 	icon_state = "kazscab_steel"
 	item_state = "kazscab_steel"
 	// Only accept Kazengun swords
@@ -744,8 +744,8 @@
 	)
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/gold
-	name = "gold-stained Xinyi scabbard"
-	desc = "An ornate, wooden scabbard with a sash. Great for parrying."
+	name = "鎏金心意剑鞘"
+	desc = "一把带绶带的华丽木鞘。很适合用来招架。"
 	icon_state = "kazscab_gold"
 	item_state = "kazscab_gold"
 	// Only accept Kazengun swords
@@ -760,8 +760,8 @@
 	sellprice = 50
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/kodachi
-	name = "plain lacquer scabbard"
-	desc = "A plain lacquered scabbard with simple steel hardware. A plain dark cloth serves to hang it from a belt."
+	name = "素漆剑鞘"
+	desc = "一把朴素上漆的剑鞘，配有简洁钢制配件。以一条深色素布悬挂在腰带上。"
 	icon_state = "kazscabyuruku"
 	item_state = "kazscabyuruku"
 	// Only accept Kazengun swords (kodachi variant)
@@ -775,8 +775,8 @@
 	wdefense = 4
 
 /obj/item/rogueweapon/scabbard/sheath/kazengun
-	name = "plain lacquer sheath"
-	desc = "A simple lacquered sheath, for shorter eastern-styled blades."
+	name = "素漆刀套"
+	desc = "一个简洁的上漆刀套，适用于较短的东方风格刀刃。"
 	icon_state = "kazscabdagger"
 	item_state = "kazscabdagger"
 	// Only accept Kazengun daggers

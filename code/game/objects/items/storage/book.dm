@@ -1,5 +1,5 @@
 /obj/item/storage/book
-	name = "hollowed book"
+	name = "镂空书"
 	desc = ""
 	icon = 'icons/obj/library.dmi'
 	icon_state ="book"
@@ -8,7 +8,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FLAMMABLE
 	component_type = /datum/component/storage/concrete/roguetown/book
-	var/title = "book"
+	var/title = "书"
 
 /obj/item/storage/book/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
+	to_chat(user, "<span class='notice'>[title]的书页已经被挖空了！</span>")

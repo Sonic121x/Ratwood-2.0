@@ -4,39 +4,39 @@
 	show_obscured = TRUE
 
 /datum/mob_descriptor/height/moderate
-	name = "Moderate"
-	prefix = "a"
+	name = "中等"
+	prefix = ""
 
 /datum/mob_descriptor/height/middling
-	name = "Middling"
-	prefix = "a"
+	name = "不上不下"
+	prefix = ""
 
 /datum/mob_descriptor/height/tall
-	name = "Tall"
-	prefix = "a"
+	name = "高挑"
+	prefix = ""
 
 /datum/mob_descriptor/height/short
-	name = "Short"
-	prefix = "a"
+	name = "矮小"
+	prefix = ""
 
 /datum/mob_descriptor/height/towering
-	name = "Towering"
-	prefix = "a"
+	name = "高耸"
+	prefix = ""
 
 /datum/mob_descriptor/height/giant
-	name = "Giant"
-	prefix = "a"
+	name = "巨人般"
+	prefix = ""
 
 /datum/mob_descriptor/height/tiny
-	name = "Tiny"
-	prefix = "a"
+	name = "娇小"
+	prefix = ""
 
 /datum/mob_descriptor/height/giant
-	name = "Giant"
-	prefix = "a"
+	name = "巨人般"
+	prefix = ""
 
 /datum/mob_descriptor/height/custom
-	name = "Custom Height"
+	name = "自定义身高"
 	custom_index = 7
 
 /datum/mob_descriptor/height/custom/can_describe(mob/living/described)

@@ -1,5 +1,5 @@
 /obj/item/clothing/shoes/roguetown
-	name = "shoes"
+	name = "鞋子"
 	icon = 'icons/roguetown/clothing/feet.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/feet.dmi'
 	desc = ""
@@ -16,7 +16,7 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/shoes/roguetown/boots
-	name = "dark boots"
+	name = "深色长靴"
 	//dropshrink = 0.75
 	color = "#d5c2aa"
 	desc = ""
@@ -50,14 +50,14 @@
 
 /obj/item/clothing/shoes/roguetown/boots/examine()
 	. = ..()
-	. += span_smallnotice("Knives and lockpicks can be stowed inside.")
+	. += span_smallnotice("匕首和撬锁器可以藏在里面。")
 
 /obj/item/clothing/shoes/roguetown/boots/attackby(obj/item/storing_item, mob/living/carbon/user, params)
 	if(istype(storing_item, /obj/item/rogueweapon/huntingknife))
 		if(!isnull(holdingknife))
-			to_chat(user, span_warning("My boot already holds a knife."))
+			to_chat(user, span_warning("我的靴子里已经藏着一把刀了。"))
 			return
-		to_chat(user, span_warning("I quickly slot [storing_item] into [src]!"))
+		to_chat(user, span_warning("我迅速把[storing_item]塞进[src]!"))
 		user.transferItemToLoc(storing_item, holdingknife)
 		holdingknife = storing_item
 		playsound(user, 'sound/foley/equip/swordsmall1.ogg')
@@ -65,9 +65,9 @@
 
 	if(istype(storing_item, /obj/item/lockpick))
 		if(!isnull(holdinglockpick))
-			to_chat(user, span_warning("My boot already holds a lockpick."))
+			to_chat(user, span_warning("我的靴子里已经藏着一根撬锁器了。"))
 			return
-		to_chat(user, span_warning("I quickly slot [storing_item] into [src]!"))
+		to_chat(user, span_warning("我迅速把[storing_item]塞进[src]!"))
 		user.transferItemToLoc(storing_item, holdinglockpick)
 		holdinglockpick = storing_item
 		playsound(user, 'sound/foley/equip/rummaging-01.ogg')
@@ -78,7 +78,7 @@
 /obj/item/clothing/shoes/roguetown/boots/attack_right(mob/user)
 	if(isnull(holdingknife))
 		return
-	user.visible_message(span_warning("[user] is drawing something from [src]!"), span_warning("I begin drawing a knife from [src]!"))
+	user.visible_message(span_warning("[user]正从[src]里抽出什么！"), span_warning("我开始从[src]里抽出一把刀！"))
 	if(!do_after(user, 2 SECONDS))
 		return
 	user.put_in_hands(holdingknife)
@@ -89,7 +89,7 @@
 /obj/item/clothing/shoes/roguetown/boots/MiddleClick(mob/user)
 	if(isnull(holdinglockpick))
 		return
-	user.visible_message(span_warning("[user] is drawing something from [src]!"), span_warning("I begin drawing a lockpick from [src]!"))
+	user.visible_message(span_warning("[user]正从[src]里抽出什么！"), span_warning("我开始从[src]里抽出一根撬锁器！"))
 	if(!do_after(user, 2 SECONDS))
 		return
 	user.put_in_hands(holdinglockpick)
@@ -98,8 +98,8 @@
 	return TRUE
 
 /obj/item/clothing/shoes/roguetown/boots/psydonboots
-	name = "psydonic leather boots"
-	desc = "Blacksteel-heeled boots. The leather refuses to be worn down, no matter how far you march through these lands."
+	name = "Psydon皮靴"
+	desc = "黑钢跟皮靴。无论你在这片土地上行军多远，皮革都几乎不会磨损。"
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
@@ -112,10 +112,10 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/shoes/roguetown/boots/nobleboot
-	name = "noble boots"
+	name = "贵族长靴"
 	//dropshrink = 0.75
 	color = "#d5c2aa"
-	desc = "Fine dark leather boots."
+	desc = "精致的深色皮靴。"
 	gender = PLURAL
 	icon_state = "nobleboots"
 	item_state = "nobleboots"
@@ -127,14 +127,14 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
-	name = "aavnic riding boots"
-	desc = "A pair of sturdy riding boots with an iron heel and brass spurs."
+	name = "阿夫尼骑靴"
+	desc = "一双结实的骑靴，配有铁跟和黄铜马刺。"
 	armor = ARMOR_LEATHER_GOOD
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
 
 /obj/item/clothing/shoes/roguetown/shortboots
-	name = "shortboots"
+	name = "短靴"
 	color = "#d5c2aa"
 	desc = ""
 	gender = PLURAL
@@ -144,7 +144,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/ridingboots
-	name = "riding boots"
+	name = "骑靴"
 	color = "#d5c2aa"
 	desc = ""
 	gender = PLURAL
@@ -158,7 +158,7 @@
 //	AddComponent(/datum/component/squeak, list('sound/foley/spurs (1).ogg'sound/blank.ogg'=1), 50)
 
 /obj/item/clothing/shoes/roguetown/simpleshoes
-	name = "shoes"
+	name = "鞋子"
 	desc = ""
 	gender = PLURAL
 	icon_state = "simpleshoe"
@@ -173,13 +173,13 @@
 
 
 /obj/item/clothing/shoes/roguetown/simpleshoes/buckle
-	name = "buckled shoes"
+	name = "扣带鞋"
 	icon_state = "buckleshoes"
 	color = null
 
 /obj/item/clothing/shoes/roguetown/simpleshoes/lord
-	name = "shoes"
-	desc = "Common shoes for everyday wear by the peasantry."
+	name = "鞋子"
+	desc = "农民日常穿着的普通鞋子。"
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
@@ -187,7 +187,7 @@
 	color = "#cbcac9"
 
 /obj/item/clothing/shoes/roguetown/gladiator
-	name = "leather sandals"
+	name = "皮凉鞋"
 	desc = ""
 	gender = PLURAL
 	icon_state = "gladiator"
@@ -195,8 +195,8 @@
 	nudist_approved = TRUE
 
 /obj/item/clothing/shoes/roguetown/sandals
-	name = "sandals"
-	desc = "A humble pair of sandals with adjustable straps that allow a snug fit for almost anyone."
+	name = "凉鞋"
+	desc = "一双朴素的凉鞋，带有可调节绑带，几乎任何人都能穿得合脚。"
 	gender = PLURAL
 	icon_state = "sandals"
 	item_state = "sandals"
@@ -204,8 +204,8 @@
 	dropshrink = null
 
 /obj/item/clothing/shoes/roguetown/sandals/ancient
-	name = "ancient armored sandals"
-	desc = "Polished gilbranze platforms, curled about to cradle the feet. Gladiators from an era lost, reborn to serve. These sandals were never meant to march 'pon sands, but to stand tall over the bodies of one's enemies."
+	name = "远古甲胄凉鞋"
+	desc = "抛光的gilbranze高底凉鞋向上卷起，恰好托住双足。它曾属于失落时代的角斗士，如今再度被唤醒来服役。这双凉鞋从不是为踏过沙地而造，而是为了高高站在敌人的尸体之上。"
 	icon_state = "ancientsandals"
 	max_integrity = 200
 	armor = ARMOR_PLATE
@@ -213,14 +213,14 @@
 	nudist_approved = TRUE
 
 /obj/item/clothing/shoes/roguetown/sandals/ancient/decrepit
-	name = "decrepit armored sandals"
-	desc = "Frayed bronze platforms, curled about to cradle the feet. The beaches that these sandals once treaded are no more; pearly sands, long since turnt to glass from the Comet Syon's impact."
+	name = "残破甲胄凉鞋"
+	desc = "破旧的青铜高底凉鞋向上卷起，托住双足。它曾踏过的海滩早已不复存在；珍珠般的沙地早在Syon彗星撞击时化为了琉璃。"
 	max_integrity = 50
 	color = "#bb9696"
 	anvilrepair = null
 
 /obj/item/clothing/shoes/roguetown/shalal
-	name = "babouche"
+	name = "巴布什鞋"
 	desc = ""
 	gender = PLURAL
 	icon_state = "shalal"
@@ -230,9 +230,9 @@
 	max_heat_protection_temperature = BODYTEMP_HEAT_LEVEL_ONE_MAX
 
 /obj/item/clothing/shoes/roguetown/boots/leather
-	name = "leather boots"
+	name = "皮靴"
 	//dropshrink = 0.75
-	desc = "Sturdy boots stitched together from tanned leather. They leak a little."
+	desc = "用鞣制皮革缝成的结实靴子，只是稍微有点漏水。"
 	gender = PLURAL
 	icon_state = "leatherboots"
 	item_state = "leatherboots"
@@ -244,8 +244,8 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
-	name = "heavy leather boots"
-	desc = "Sturdy boots stitched together from cured leather. Stylish, firm, and sport a satisfying 'squeek' with each step."
+	name = "硬化皮靴"
+	desc = "由熟皮缝制而成的结实靴子。样式体面、包裹牢靠，每一步都会发出令人满足的吱呀声。"
 	icon_state = "alboots"
 	item_state = "alboots"
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)	//Same as gloves
@@ -256,14 +256,14 @@
 	min_cold_protection_temperature = 50
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short
-	name = "dress boots"
-	desc = "A pair of sturdy boots stitched together from cured leather. These are shorter than usual, made for casual wear and dueling."
+	name = "礼靴"
+	desc = "一双用熟皮缝成的结实靴子。比常见款更短，适合日常穿着和决斗。"
 	icon_state = "albootsb"
 	item_state = "albootsb"
 
 /obj/item/clothing/shoes/roguetown/boots/otavan
-	name = "otavan leather boots"
-	desc = "Boots of outstanding craft, your fragile feet have never felt so protected and comfortable before."
+	name = "Otava皮靴"
+	desc = "工艺出众的靴子，你脆弱的双脚从未感受过如此的保护与舒适。"
 	body_parts_covered = FEET
 	icon_state = "fencerboots"
 	item_state = "fencerboots"
@@ -279,7 +279,7 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/shoes/roguetown/boots/grenzelhoft
-	name = "grenzelhoft boots"
+	name = "Grenzelhoft长靴"
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
@@ -289,8 +289,8 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/boots/leather/elven_boots
-	name = "woad elven boots"
-	desc = "The living trunks still blossom in the spring. They let water through, but it is never cold."
+	name = "靛纹精灵靴"
+	desc = "活木树干在春天仍会开花。它们会让水透过，却从不冰冷。"
 	armor = list("blunt" = 100, "slash" = 10, "stab" = 100, "piercing" = 20, "fire" = 0, "acid" = 0) //Resistant to blunt and stab, but very weak to slash.
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
@@ -301,8 +301,8 @@
 
 /// Dendor ritual variant of the woad elven boots — blessed by the Treefather's Nature's Temper ritual.
 /obj/item/clothing/shoes/roguetown/boots/leather/elven_boots/druidic
-	name = "blessed druid boots"
-	desc = "Boots shaped from consecrated root-wood, still pulsing with the Treefather's vigour. They offer firm footing and resist both thrust and cut slightly better than common elven craft."
+	name = "赐福德鲁伊靴"
+	desc = "以圣化根木塑成的靴子，至今仍脉动着树父的活力。它们给予稳固踏感，对刺击和斩击的抵御也略胜普通精灵工艺。"
 	armor = list("blunt" = 100, "slash" = 65, "stab" = 130, "piercing" = 20, "fire" = 0, "acid" = 0)
 	max_integrity = 200
 
@@ -320,11 +320,11 @@
 		return
 	H.electrocute_act(30, src)
 	H.mob_timers["kneestinger"] = world.time
-	to_chat(H, span_warning("[name] rejects my grasp — only the Treefather's faithful may bear such a gift!"))
+	to_chat(H, span_warning("[name] 拒绝了我的触碰，唯有树父的信徒才配承受这份恩赐！"))
 
 /obj/item/clothing/shoes/roguetown/boots/armor
-	name = "plated boots"
-	desc = "Boots forged of a set of steel plates to protect your fragile toes."
+	name = "板甲靴"
+	desc = "由多片钢板锻成的靴子，用来保护你脆弱的脚趾。"
 	body_parts_covered = FEET
 	icon_state = "armorboots"
 	item_state = "armorboots"
@@ -346,21 +346,21 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/shoes/roguetown/boots/armor/ancient
-	name = "ancient boots"
-	desc = "Polished gilbranze greaves, layered atop one-another to protect the ankles and feet. The marching, metallic stomps of those who yet walk without lyfe heralds destruction wherever it is heard."
+	name = "远古战靴"
+	desc = "抛光的gilbranze胫甲层层叠压，以保护脚踝与双足。那些无生而行者踏出的金属脚步声，无论在哪里响起，都预示着毁灭。"
 	icon_state = "ancientboots"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/clothing/shoes/roguetown/boots/armor/ancient/decrepit
-	name = "decrepit boots"
-	desc = "Frayed bronze greaves, shingled atop boots of rotted leather. The toebones of its former legionnaire remain within, rattling about with every step taken."
+	name = "残破战靴"
+	desc = "破旧的青铜胫甲叠覆在腐朽皮靴之上。昔日军团士兵的趾骨仍留在其中，每走一步都会在里头作响。"
 	max_integrity = ARMOR_INT_SIDE_DECREPIT
 	color = "#bb9696"
 	anvilrepair = null
 
 /obj/item/clothing/shoes/roguetown/boots/armor/graggar
-	name = "vicious boots"
-	desc = "Plated boots which stir with the same violence driving our world. They have treaded a thousand skulls."
+	name = "凶暴战靴"
+	desc = "这双板甲靴涌动着推动世界前行的同一种暴力。它们已踩碎过无数头骨。"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_ASCENDANT
 	icon_state = "graggarplateboots"
@@ -372,8 +372,8 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/matthios
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	name = "gilded boots"
-	desc = "Gilded tombs do worm enfold."
+	name = "镀金战靴"
+	desc = "镀金的坟墓终将为蠕虫所拥。"
 	icon_state = "matthiosboots"
 	armor = ARMOR_ASCENDANT
 
@@ -389,8 +389,8 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/zizo
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	name = "avantyne boots"
-	desc = "Plate boots. Called forth from the edge of what should be known. In Her name."
+	name = "Avantyne战靴"
+	desc = "板甲战靴。自本不该被知晓的边界被召来。奉她之名。"
 	icon_state = "zizoboots"
 	armor = ARMOR_ASCENDANT
 
@@ -405,10 +405,9 @@
 	qdel(src)
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron
-	name = "iron plated boots"
-	desc = "Antiquated sabatons, fitted to leather boots that've been reinforced with layers of iron maille. While it has largely fallen \
-	out of favor with Psydonia's knights since the advent of custom-fitted steel sabatons, it nevertheless remains an excellent choice \
-	for those who'd rather not catch an career-ending arrow to the knee."
+	name = "铁板靴"
+	desc = "古老的铁靴，贴合皮革靴面，并以多层铁链甲加固。虽然自定制钢制铁靴问世以来，普赛顿的骑士们已大多弃用此物，\
+	但它依然是那些不愿因膝盖中箭而断送前程之人的绝佳选择。"
 	body_parts_covered = FEET
 	icon_state = "soldierboots"
 	item_state = "iplateboots"
@@ -420,8 +419,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/boots/armor/bronze
-	name = "bronze greaves"
-	desc = "Padded sabatons of bronze, tightly strapped together and padded with hide from a fearsome beaste. The sandals clack about, yet they do not feel obstructive; if anything, you've never felt more agile while beplated."
+	name = "青铜胫甲"
+	desc = "青铜制的带衬垫铁靴，用皮带紧紧束扎，内衬凶猛野兽的皮革。这双凉鞋行走时咔嗒作响，却并不碍事；要说有什么不同，披甲之后你从未感到如此敏捷。"
 	icon_state = "bronzegreaves"
 	body_parts_covered = FEET | LEGS
 	smeltresult = /obj/item/ingot/bronze
@@ -429,10 +428,9 @@
 	max_integrity = ARMOR_INT_SIDE_BRONZE
 
 /obj/item/clothing/shoes/roguetown/boots/maille
-	name = "maille boots"
-	desc = "A pair of leather boots, reinforced with smaller steel plates along the feet and ankles. Woven into the top of each boot's cuff is a \
-	thick layer of chainmail, which further protects the wearer's lower legs from harm. A favorite amongst men-at-arms and clerics, alongside the \
-	occassional plucky squire that's a few sizes too short to properly wade in them."
+	name = "链甲靴"
+	desc = "一双皮革靴子，脚面和脚踝处镶有小型钢板加固。每只靴口上方编织了一层厚实的链甲，进一步保护穿戴者的小腿免受伤害。\
+	深受兵士与教士们喜爱，偶尔也会被某些个头还不够高、穿着它们走起路来略显滑稽的勇敢侍从所青睐。"
 	body_parts_covered = FEET
 	icon_state = "shalfplateboots"
 	item_state = "shalfplateboots"
@@ -452,10 +450,9 @@
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 
 /obj/item/clothing/shoes/roguetown/boots/maille/iron
-	name = "iron maille boots"
-	desc = "A pair of leather boots, reinforced with smaller iron plates along the feet and ankles. A thick layer of chainmail has been woven across \
-	the cuffs of each boot, and tastefully riveted into place. Colloquially known as 'soldier's boots', due to its widespread usage amongst Psydonia's \
-	oft-conscripted levies."
+	name = "铁链甲靴"
+	desc = "一双皮革靴子，脚面和脚踝处镶有小型铁板加固。每只靴口处编织了一层厚实的链甲，并用铆钉巧妙固定。\
+	因其在普赛顿常被征召的民兵中广泛使用，俗称为‘士兵靴’。"
 	icon_state = "soldierboots"
 	item_state = "soldierboots"
 	max_integrity = ARMOR_INT_SIDE_IRON
@@ -473,8 +470,8 @@
 	armor = ARMOR_BRONZE
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/kazengun
-	name = "armored sandals"
-	desc = "Leather sandals, with steel ankle-protectors and socks of sturdy cloth."
+	name = "甲片凉鞋"
+	desc = "皮凉鞋，配有钢制踝甲和结实布袜。"
 	icon_state = "kazengunboots"
 	item_state = "kazengunboots"
 	detail_tag = "_detail"
@@ -485,7 +482,7 @@
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/kazengun/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Uniform colors") as anything in GLOB.colorlist
+		var/choice = input(user, "选择一种颜色。", "卡曾贡配色") as anything in GLOB.colorlist
 		var/playerchoice = GLOB.colorlist[choice]
 		picked = TRUE
 		detail_color = playerchoice
@@ -506,8 +503,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/shoes/roguetown/jester
-	name = "funny shoes"
-	desc = "The bells add a jostling jingle jangle to each step."
+	name = "滑稽鞋"
+	desc = "铃铛让每一步都伴着叮叮当当的晃响。"
 	icon_state = "jestershoes"
 	detail_tag = "_detail"
 	resistance_flags = null
@@ -541,8 +538,8 @@
 	return ..()
 
 /obj/item/clothing/shoes/roguetown/boots/furlinedboots
-	name = "fur lined boots"
-	desc = "Leather boots lined with fur."
+	name = "毛衬长靴"
+	desc = "内衬毛皮的皮靴。"
 	gender = PLURAL
 	icon_state = "furlinedboots"
 	item_state = "furlinedboots"
@@ -554,8 +551,8 @@
 	min_cold_protection_temperature = 50
 
 /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
-	name = "fur lined anklets"
-	desc = "Leather anklets lined with fur for a little extra protection while leaving the feet bare."
+	name = "毛衬踝套"
+	desc = "内衬毛皮的皮制踝套，在裸足的同时提供少许额外防护。"
 	gender = PLURAL
 	icon_state = "furlinedanklets"
 	item_state = "furlinedanklets"
@@ -566,8 +563,8 @@
 	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/shoes/roguetown/boots/clothlinedanklets
-	name = "cloth lined anklets"
-	desc = "Cloth anklets lined with fibers for warmth while leaving the feet bare."
+	name = "布衬踝套"
+	desc = "内衬纤维的布质踝套，在裸足的同时提供温暖。"
 	gender = PLURAL
 	icon_state = "furlinedanklets"
 	item_state = "furlinedanklets"
@@ -575,8 +572,8 @@
 	armor = ARMOR_CLOTHING
 
 /obj/item/clothing/shoes/roguetown/boots/otavan/inqboots
-	name = "inquisitorial boots"
-	desc = "Finely crafted boots, made to stomp out darkness."
+	name = "审判官长靴"
+	desc = "做工精良的长靴，生来便是为了将黑暗踩灭。"
 	icon_state = "inqboots"
 	item_state = "inqboots"
 	allowed_race = ALL_RACES_TYPES
@@ -585,8 +582,8 @@
 // ----------------- BLACKSTEEL -----------------------
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/modern/plateboots
-	name = "blacksteel plate boots"
-	desc = "Boots forged of durable blacksteel, using a modern design."
+	name = "黑钢板甲靴"
+	desc = "以耐用黑钢锻造的靴子，采用现代样式。"
 	body_parts_covered = FEET
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -605,8 +602,8 @@
 	min_cold_protection_temperature = BODYTEMP_NORMAL_MIN
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
-	name = "ancient blacksteel plate boots"
-	desc = "Boots forged of durable blacksteel."
+	name = "远古黑钢板甲靴"
+	desc = "以耐用黑钢锻造的靴子。"
 	body_parts_covered = FEET
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -627,8 +624,8 @@
 // ----------------- BLACKSTEEL END -----------------------
 
 /obj/item/clothing/shoes/roguetown/anklets
-	name = "golden anklets"
-	desc = "Luxurious anklets made of the finest gold. They leave the feet bare while adding an exotic flair."
+	name = "金质踝饰"
+	desc = "用上等黄金制成的奢华踝饰。它让双足裸露，却平添几分异域风情。"
 	gender = PLURAL
 	icon_state = "anklets"
 	item_state = "anklets"
@@ -643,8 +640,8 @@
 
 //kazen update
 /obj/item/clothing/shoes/roguetown/armor/rumaclan
-	name = "raised sandals"
-	desc = "A pair of strange sandals that push you off the ground."
+	name = "高底凉鞋"
+	desc = "一双古怪的凉鞋，能把你整个人抬离地面。"
 	icon_state = "eastsandals"
 	item_state = "eastsandals"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
@@ -652,8 +649,8 @@
 	nudist_approved = TRUE
 
 /obj/item/clothing/shoes/roguetown/boots/horsey
-	name = "leg harness"
-	desc = "A set of reinforced leather straps and bindings for the legs."
+	name = "腿部束具"
+	desc = "一套用于腿部的加固皮带与绑带。"
 	icon_state = "hlegs"
 	item_state = "hlegs"
 	body_parts_covered = LEGS|FEET

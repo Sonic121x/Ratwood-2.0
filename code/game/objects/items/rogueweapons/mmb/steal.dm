@@ -164,7 +164,7 @@
 	qdel(src)
 
 /datum/intent/steal
-	name = "steal"
+	name = "扒窃"
 	dodgeable_intent = FALSE
 	parriable_intent = FALSE
 	chargedrain = 0
@@ -183,16 +183,16 @@
 	var/list/stealablezones = list("chest", "neck", "groin", "r_hand", "l_hand", "r_leg", "l_leg")
 	// Pickpocketting checks
 	if(get_dist(thief, victim) > steal_radius)
-		to_chat(thief, span_warning("[victim] is too far away."))
+		to_chat(thief, span_warning("[victim]离得太远了。"))
 		return
 	if(thief.get_active_held_item())
-		to_chat(thief, span_warning("I can't pickpocket while my hand is full!"))
+		to_chat(thief, span_warning("手里拿着东西时我没法扒窃！"))
 		return
 	if(victim.cmode)
-		to_chat(thief, "<span class='warning'>[victim] is alert. I can't pickpocket them like this.</span>")
+		to_chat(thief, "<span class='warning'>[victim]正保持警觉。我这样没法扒窃[victim.p_them()]。</span>")
 		return
 	if(!(thief.zone_selected in stealablezones))
-		to_chat(thief, span_warning("What am I going to steal from there?"))
+		to_chat(thief, span_warning("那地方能偷到什么？"))
 		return
 
 	var/thiefskill = thief.get_pickpocket_skill()
@@ -203,28 +203,28 @@
 	if(chance_add > 0)
 		effective_targetperception = max(0, round(victim.STAPER * (100 - chance_add) / 100))
 	var/exp_to_gain = thief.STAINT
-	to_chat(thief, span_notice("I try to steal from [victim]..."))
+	to_chat(thief, span_notice("我试着从[victim]身上摸点东西……"))
 	if(!do_after(thief, 1 SECONDS, target = victim, progress = 0))
 		return
 	// Pickpocketting checks after the channel in case something changed
 	if(get_dist(thief, victim) > steal_radius)
-		to_chat(thief, span_warning("[victim] is too far away."))
+		to_chat(thief, span_warning("[victim]离得太远了。"))
 		return
 	if(thief.get_active_held_item())
-		to_chat(thief, span_warning("I can't pickpocket while my hand is full!"))
+		to_chat(thief, span_warning("手里拿着东西时我没法扒窃！"))
 		return
 	if(victim.cmode)
-		to_chat(thief, "<span class='warning'>[victim] is alert. I can't pickpocket them like this.</span>")
+		to_chat(thief, "<span class='warning'>[victim]正保持警觉。我这样没法扒窃[victim.p_them()]。</span>")
 		return
 	if(!(thief.zone_selected in stealablezones))
-		to_chat(thief, span_warning("What am I going to steal from there?"))
+		to_chat(thief, span_warning("那地方能偷到什么？"))
 		return
 
 	// No lifting from the front - it has to be from behind, or off someone who can't see at all.
 	var/victim_unaware = victim.IsUnconscious() || victim.eyesclosed || victim.eye_blind || victim.eye_blurry || !(victim.mobility_flags & MOBILITY_STAND)
 	var/list/mobsbehind = cone(victim, list(turn(victim.dir, 180)), list(thief))
 	if(!victim_unaware && !mobsbehind.Find(thief))
-		to_chat(thief, span_warning("They can see me!"))
+		to_chat(thief, span_warning("他们看得见我！"))
 		thief.changeNext_move(clickcd)
 		return
 
@@ -241,13 +241,13 @@
 		victim.log_message("has had an attempted pickpocket by [key_name(thief)]", LOG_ATTACK, color="white", meta = list(LOG_META_ATTACKER = thief.ckey))
 		thief.log_message("has attempted to pickpocket [key_name(victim)]", LOG_ATTACK, color="white", meta = list(LOG_META_TARGET = victim.ckey))
 		if(margin < PICKPOCKET_FUMBLE_FLOOR)
-			thief.visible_message(span_danger("[thief] is caught rummaging through [victim]'s belongings!"))
-			victim.balloon_alert(victim, "thief!")
-			to_chat(victim, span_danger("[thief] tried to rob me!"))
+			thief.visible_message(span_danger("[thief]被抓到在翻[victim]的财物！"))
+			victim.balloon_alert(victim, "贼！")
+			to_chat(victim, span_danger("[thief]想抢劫我！"))
 		else
-			to_chat(thief, span_warning("I can't get at it without being noticed. Best stop here."))
+			to_chat(thief, span_warning("我没法在不被发现的情况下拿到它。最好就此收手。"))
 			victim.balloon_alert(victim, "...?")
-			to_chat(victim, span_danger("Someone's fumbling at my belongings!"))
+			to_chat(victim, span_danger("有人在翻我的东西！"))
 		thief.changeNext_move(clickcd)
 		return
 
@@ -275,7 +275,7 @@
 				stealpos.Add(victim.get_item_by_slot(SLOT_RING))
 
 	if(!length(stealpos))
-		to_chat(thief, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
+		to_chat(thief, span_warning("我什么都没找到。也许该换个地方看看。"))
 		thief.changeNext_move(clickcd)
 		return
 
@@ -283,12 +283,12 @@
 
 	if(thief.zone_selected == "r_hand" || thief.zone_selected == "l_hand")
 		var/ring_chance = clamp(8 + (thiefskill * 7), 3, 90)
-		to_chat(thief, span_info("[target]: [ring_chance]% to slip free."))
+		to_chat(thief, span_info("[target]:有[ring_chance]% 的几率得手。"))
 		var/success = prob(ring_chance)
 		if(success)
 			victim.dropItemToGround(target)
 		else
-			to_chat(thief, span_warning("I can't work [target] loose without them noticing."))
+			to_chat(thief, span_warning("我没法在不被注意的情况下把[target]弄下来。"))
 		thief.pickpocket_feedback(victim, margin, target)
 		if(success)
 			thief.finalize_pickpocket_steal(victim, target, exp_to_gain)
@@ -299,7 +299,7 @@
 		var/obj/item/storage/container = target
 		var/datum/component/storage/storage = container.GetComponent(/datum/component/storage)
 		if(!storage || !length(storage.contents()))
-			to_chat(thief, span_warning("There's nothing in [container] worth taking."))
+			to_chat(thief, span_warning("[container]里没什么值得拿的。"))
 			thief.changeNext_move(clickcd)
 			return
 		thief.changeNext_move(clickcd)
