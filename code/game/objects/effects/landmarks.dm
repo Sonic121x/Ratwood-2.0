@@ -84,7 +84,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/banditlate
-	name = "强盗"
+	name = "Bandit"
 	icon_state = "arrow"
 	jobspawn_override = list("Bandit")
 	delete_after_roundstart = FALSE
@@ -144,144 +144,144 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "大公爵"
+	name = "Grand Duke"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
-	name = "骑士"
+	name = "Knight"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/sheriff
-	name = "卫队队长"
+	name = "Watch Captain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guard_captain
-	name = "骑士统领"
+	name = "Knight Captain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/barkeep
-	name = "酒保"
+	name = "Barkeep"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/cook
-	name = "厨师"
+	name = "Cook"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/steward
-	name = "总管"
+	name = "Steward"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/clerk
-	name = "文书"
+	name = "Clerk"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/magician
-	name = "宫廷法师"
+	name = "Court Magician"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/physician
-	name = "首席医师"
+	name = "Head Physician"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/chaplain
-	name = "宫廷司祭"
+	name = "Court Chaplain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guardsman
-	name = "城卫兵"
+	name = "City Guard"
 	icon_state = "arrow"
 	
 /obj/effect/landmark/start/rookie
-	name = "新兵"
+	name = "Rookie"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/manorguardsman
-	name = "披甲兵"
+	name = "Man at Arms"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogmaster
-	name = "总守望官"
+	name = "Master Warden"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogguardsman
-	name = "泥沼守卫"
+	name = "Bog Guard"
 	icon_state = "arrow"
 	jobspawn_override = list("Bog Guard", "Vanguard")
 
 /obj/effect/landmark/start/warden
-	name = "守望者"
+	name = "Warden"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/vanguard
-	name = "先锋"
+	name = "Vanguard"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/marshal
-	name = "元帅"
+	name = "Marshal"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/councillor
-	name = "顾问"
+	name = "Councillor"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/veteran
-	name = "老兵"
+	name = "Veteran"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/dungeoneer
-	name = "地牢看守"
+	name = "Dungeoneer"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/watchman
-	name = "守门官"
+	name = "Gatemaster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/villager
-	name = "镇民"
+	name = "Towner"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/crier
-	name = "报信人"
+	name = "Town Crier"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/keeper
-	name = "看守"
+	name = "Keeper"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/priest
-	name = "主教"
+	name = "Bishop"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/cleric
-	name = "教士"
+	name = "Cleric"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/monk
-	name = "侍僧"
+	name = "Acolyte"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/druid
-	name = "德鲁伊"
+	name = "Druid"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/templar
-	name = "圣殿骑士"
+	name = "Templar"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/martyr
-	name = "殉道者"
+	name = "Martyr"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/puritan
-	name = "审判官"
+	name = "Inquisitor"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/orthodoxist
-	name = "正统派教士"
+	name = "Orthodoxist"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/absolver
-	name = "赦罪者"
+	name = "Absolver"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/inqlate
@@ -290,188 +290,188 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Absolver", "Orthodoxist", "Inquisitor")
 
 /obj/effect/landmark/start/sergeant
-	name = "中士"
+	name = "Sergeant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightman
-	name = "浴场主管"
+	name = "Bathmaster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightmaiden
-	name = "浴场侍者"
+	name = "Bathhouse Attendant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/merchant
-	name = "商人"
+	name = "Merchant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/shophand
-	name = "店员"
+	name = "Shophand"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "抓手"
+	name = "Grabber"
 	icon_state = "arrow"
 
 
 /obj/effect/landmark/start/innkeep
-	name = "旅店老板"
+	name = "Innkeep"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/archivist
-	name = "档案官"
+	name = "Archivist"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guildsman
-	name = "行会成员"
+	name = "Guildsman"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guildmaster
-	name = "行会会长"
+	name = "Guildmaster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/tailor
-	name = "裁缝"
+	name = "Tailor"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alchemist
-	name = "炼金术士"
+	name = "Alchemist"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/scribe
-	name = "抄写员"
+	name = "Scribe"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/farmer
-	name = "农夫"
+	name = "Soilson"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/beastmonger
-	name = "屠夫"
+	name = "Butcher"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/cook
-	name = "厨师"
+	name = "Cook"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knavewench
-	name = "酒馆伙计"
+	name = "Tapster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/gravedigger
-	name = "入殓师"
+	name = "Mortician"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/mercenary
-	name = "雇佣兵"
+	name = "Mercenary"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/vagrant
-	name = "乞丐"
+	name = "Beggar"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/suitor
-	name = "求婚者"
+	name = "Suitor"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "配偶"
+	name = "Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
-	name = "王子"
+	name = "Prince"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerr
-	name = "囚犯（城镇）"
+	name = "Prisoner (Town)"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerb
-	name = "囚犯（泥沼）"
+	name = "Prisoner (Bog)"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/hostage
-	name = "人质"
+	name = "Hostage"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/jester
-	name = "弄臣"
+	name = "Jester"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/hand
-	name = "亲随"
+	name = "Hand"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/hunter
-	name = "猎人"
+	name = "Hunter"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/fisher
-	name = "渔夫"
+	name = "Fisher"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lumberjack
-	name = "伐木工"
+	name = "Lumberjack"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/butler
-	name = "管家长"
+	name = "Seneschal"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/barkeeper
-	name = "旅馆老板"
+	name = "Innkeeper"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/adventurer
-	name = "冒险者"
+	name = "Adventurer"
 	icon_state = "arrow"
 
 //Remove this at some point. Vestigial.
 /obj/effect/landmark/start/trader
-	name = "难民"
+	name = "Refugee"
 	icon_state = "arrow"
 //End of remove.
 
 /obj/effect/landmark/start/courtagent
-	name = "宫廷密探"
+	name = "Court Agent"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lunatic
-	name = "疯子"
+	name = "Lunatic"
 	icon_state = "arrow"
 
 //yrf
 
 /obj/effect/landmark/start/squire
-	name = "侍从骑士"
+	name = "Squire"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/wapprentice
-	name = "法师助理"
+	name = "Magicians Associate"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/apothecary
-	name = "药剂师"
+	name = "Apothecary"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/servant
-	name = "仆役"
+	name = "Servant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/churchling
-	name = "教会侍童"
+	name = "Churchling"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/orphan
-	name = "流浪儿"
+	name = "Vagabond"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/sapprentice
-	name = "铁匠学徒"
+	name = "Smithy Apprentice"
 	icon_state = "arrow"
 	
 /obj/effect/landmark/start/lich
-	name = "巫妖"
+	name = "lich"
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
 
@@ -482,23 +482,23 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 //tribal
 
 /obj/effect/landmark/start/tribalchieftain
-	name = "酋长"
+	name = "Chieftain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/tribalshaman
-	name = "部落萨满"
+	name = "Tribal Shaman"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/tribalguard
-	name = "部落卫士"
+	name = "Tribal Guard"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/tribalrabble
-	name =  "部落杂兵"
+	name =  "Tribal Rabble"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/tribalvillager
-	name = "部落民"
+	name = "Tribal"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/tribelate
@@ -509,7 +509,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 //Antagonist spawns
 
 /obj/effect/landmark/start/wizard
-	name = "巫师"
+	name = "wizard"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "wiznerd_spawn"
 
@@ -527,7 +527,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	GLOB.nukeop_start += loc
 
 /obj/effect/landmark/start/bandit
-	name = "强盗"
+	name = "bandit"
 	icon = 'icons/mob/landmarks.dmi'
 	icon_state = "arrow"
 	jobspawn_override = list("Bandit")
@@ -539,7 +539,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 
 /obj/effect/landmark/start/delf
-	name = "暗精灵"
+	name = "delf"
 	icon = 'icons/mob/landmarks.dmi'
 	icon_state = "arrow"
 
@@ -548,23 +548,23 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	GLOB.delf_starts += loc
 
 /obj/effect/landmark/start/wretch
-	name = "悲惨者"
+	name = "wretch"
 	icon_state = "arrow"
 	jobspawn_override = list("Wretch")
 
 /obj/effect/landmark/start/wretchlate
-	name = "悲惨者"
+	name = "wretch"
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
 	jobspawn_override = list("Wretch")
 
 /obj/effect/landmark/start/gnoll
-	name = "豺狼人"
+	name = "gnoll"
 	icon_state = "arrow"
 	jobspawn_override = list("Gnoll")
 
 /obj/effect/landmark/start/gnolllate
-	name = "豺狼人"
+	name = "gnoll"
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
 	jobspawn_override = list("Gnoll")
@@ -583,7 +583,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 /obj/effect/landmark/start/new_player
-	name = "新玩家"
+	name = "New Player"
 
 /obj/effect/landmark/start/new_player/Initialize(mapload)
 	. = ..()
