@@ -23,11 +23,11 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 
 /// Called after region_id is set. Return the order's display name.
 /datum/standing_order/proc/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - STANDING ORDER"
+	return "[uppertext(region.name)] - 常备订单"
 
 /// Called after region_id is set. Return a flavor paragraph.
 /datum/standing_order/proc/generate_description(datum/economic_region/region)
-	return "A standing order has been posted from [region.name]."
+	return "[region.name] 张贴了一份常备订单。"
 
 
 // ============================================================================
@@ -35,10 +35,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_rations
 	var/list/project_by_region = list(
-		TRADE_REGION_BLEAKCOAST = list("a ship's company victualling", "a privateer's crew", "the harbor watch"),
-		TRADE_REGION_NORTHFORT = list("a frontier garrison", "a watch sergeant restocking", "a militia muster"),
-		TRADE_REGION_HEARTFELT = list("the count's retinue", "a roving warden party", "a local adventuring fellowship"),
-		TRADE_REGION_KINGSFIELD = list("a market town", "a village feast committee", "a granary keeper"),
+		TRADE_REGION_BLEAKCOAST = list("一船水手的给养", "一名私掠者的船员", "港口的守望队"),
+		TRADE_REGION_NORTHFORT = list("一处边境驻军", "一名补充物资的守望军士", "一次民兵集结"),
+		TRADE_REGION_HEARTFELT = list("伯爵的随从", "一支巡游守林队", "一支本地冒险团"),
+		TRADE_REGION_KINGSFIELD = list("一座集镇", "一个村庄宴席委员会", "一名粮仓看守"),
 	)
 
 /datum/standing_order/demand_rations/generate_item_mix()
@@ -51,13 +51,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_rations/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - RATIONS REQUISITION"
+	return "[uppertext(region.name)] - 口粮征调"
 
 /datum/standing_order/demand_rations/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] calls for provisions urgently."
-	return "Provisioners in [region.name] require rations to feed their charges."
+		return "[region.name] 的[capitalize(pick(projects))]紧急征调补给。"
+	return "[region.name] 的军需官需要口粮来供养部众。"
 
 
 // ============================================================================
@@ -65,9 +65,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_armaments
 	var/list/project_by_region = list(
-		TRADE_REGION_BLEAKCOAST = list("a galley's fighting men", "a corsair's company outfitting", "the harbor watch"),
-		TRADE_REGION_NORTHFORT = list("a frontier garrison", "a band of border irregulars", "a watch sergeant"),
-		TRADE_REGION_HEARTFELT = list("the count's retinue", "a local mercenary band", "a roving warden party"),
+		TRADE_REGION_BLEAKCOAST = list("一艘桨帆船的战士", "一支海盗团的装备", "港口的守望队"),
+		TRADE_REGION_NORTHFORT = list("一处边境驻军", "一伙边境游兵", "一名守望军士"),
+		TRADE_REGION_HEARTFELT = list("伯爵的随从", "一支本地的雇佣团", "一支巡游守林队"),
 	)
 
 /datum/standing_order/demand_armaments/generate_item_mix()
@@ -80,13 +80,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_armaments/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - ARMAMENT REQUISITION"
+	return "[uppertext(region.name)] - 军备征调"
 
 /datum/standing_order/demand_armaments/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] must be rearmed before the next campaign season."
-	return "The arms-masters of [region.name] require ingots and hide to outfit soldiers."
+		return "[region.name] 的[capitalize(pick(projects))]必须在下一个战季来临前重新武装。"
+	return "[region.name] 的军械官需要铸锭与兽皮来装备士兵。"
 
 
 // ============================================================================
@@ -94,8 +94,8 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_textile
 	var/list/project_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("a local tailor", "a market stall", "a travelling merchant"),
-		TRADE_REGION_HEARTFELT = list("a banner-maker's commission", "a tabard-maker outfitting a retinue", "a name-day wardrobe order"),
+		TRADE_REGION_KINGSFIELD = list("一位本地裁缝", "一个集市摊位", "一名行商"),
+		TRADE_REGION_HEARTFELT = list("一份制旗委托", "一名为随从制衣的纹章裁缝", "一份命名日衣装订单"),
 	)
 
 /datum/standing_order/demand_textile/generate_item_mix()
@@ -106,13 +106,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_textile/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - TAILORS' REQUISITION"
+	return "[uppertext(region.name)] - 裁缝征调"
 
 /datum/standing_order/demand_textile/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires bolts of cloth and fiber."
-	return "A tailors' guild in [region.name] is accepting commissions of cloth and fibers."
+		return "[region.name] 的[capitalize(pick(projects))]需要成匹的布料与纤维。"
+	return "[region.name] 的裁缝行会正在接受布料与纤维的委托。"
 
 
 // ============================================================================
@@ -120,8 +120,8 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_smithing
 	var/list/project_by_region = list(
-		TRADE_REGION_DAFTSMARCH = list("the smiths' guild", "the foundry works", "a master smith with a backlog"),
-		TRADE_REGION_KINGSFIELD = list("a village smithy", "a farm-tool maker", "a local farrier"),
+		TRADE_REGION_DAFTSMARCH = list("铁匠行会", "铸造工坊", "一位订单积压的匠师"),
+		TRADE_REGION_KINGSFIELD = list("一座村庄铁匠铺", "一名农具匠", "一位本地蹄铁匠"),
 	)
 
 /datum/standing_order/demand_smithing/generate_item_mix()
@@ -132,31 +132,31 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_smithing/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - SMITHY SUPPLY"
+	return "[uppertext(region.name)] - 铁匠铺补给"
 
 /datum/standing_order/demand_smithing/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] seeks ingots for the month's labor."
-	return "A smithy in [region.name] is ordering ingots for the month's labor."
+		return "[region.name] 的[capitalize(pick(projects))]为本月的活计征购铸锭。"
+	return "[region.name] 的一座铁匠铺为本月的活计订购铸锭。"
 
 
 // ============================================================================
 // demand_construction
 // ============================================================================
 /datum/standing_order/demand_construction_bulk
-	pair_label = "Construction"
+	pair_label = "建造"
 	pair_sibling_type = /datum/standing_order/demand_construction_smithy
 	var/list/project_by_region = list(
-		TRADE_REGION_BLEAKCOAST = list("a harbor wall reinforcement", "a coastal garrison's repairs"),
-		TRADE_REGION_NORTHFORT = list("a frontier garrison expanding its keep", "a watchtower rebuild"),
-		TRADE_REGION_HEARTFELT = list("a cathedral renovation", "a count's hall expansion"),
-		TRADE_REGION_KINGSFIELD = list("a market town's roadworks", "a granary expansion"),
-		TRADE_REGION_DAFTSMARCH = list("a mine shaft reinforcement", "the foundry's expansion"),
-		TRADE_REGION_ROSAWOOD = list("a lumber mill rebuild", "a trade road repair"),
-		TRADE_REGION_ROCKHILL = list("a terraced wall rebuild", "a press house expansion"),
-		TRADE_REGION_BLACKHOLT = list("a tower rebuild after a working went wrong", "an outer sanctum rebuild"),
-		TRADE_REGION_SALTWICK = list("a salt-house rebuild", "wharf reinforcements"),
+		TRADE_REGION_BLEAKCOAST = list("一段港口护墙的加固", "一处海岸驻军的修缮"),
+		TRADE_REGION_NORTHFORT = list("一处扩建堡垒的边境驻军", "一座瞭望塔的重建"),
+		TRADE_REGION_HEARTFELT = list("一座大教堂的翻新", "伯爵厅堂的扩建"),
+		TRADE_REGION_KINGSFIELD = list("一座集镇的道路工程", "一座粮仓的扩建"),
+		TRADE_REGION_DAFTSMARCH = list("一处矿井巷道的加固", "铸造厂的扩建"),
+		TRADE_REGION_ROSAWOOD = list("一座锯木厂的重建", "一条商道的修复"),
+		TRADE_REGION_ROCKHILL = list("一段梯田墙的重建", "一座压榨坊的扩建"),
+		TRADE_REGION_BLACKHOLT = list("一次事故后高塔的重建", "外圣所的 rebuild"),
+		TRADE_REGION_SALTWICK = list("一座盐屋的重建", "码头的加固"),
 	)
 
 /datum/standing_order/demand_construction_bulk/generate_item_mix()
@@ -167,16 +167,16 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_construction_bulk/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - CONSTRUCTION: MASONRY"
+	return "[uppertext(region.name)] - 建造：石作"
 
 /datum/standing_order/demand_construction_bulk/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires stone and timber from the yards."
-	return "Builders in [region.name] require stone and timber from the yards."
+		return "[region.name] 的[capitalize(pick(projects))]需要从料场调运石料与木料。"
+	return "[region.name] 的建造者需要从料场调运石料与木料。"
 
 /datum/standing_order/demand_construction_smithy
-	pair_label = "Construction"
+	pair_label = "建造"
 	pair_sibling_type = /datum/standing_order/demand_construction_bulk
 
 /datum/standing_order/demand_construction_smithy/generate_item_mix()
@@ -185,10 +185,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_construction_smithy/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - CONSTRUCTION: METAL"
+	return "[uppertext(region.name)] - 建造：金属"
 
 /datum/standing_order/demand_construction_smithy/generate_description(datum/economic_region/region)
-	return "The same works in [region.name] need ironmongery from the smithy."
+	return "[region.name] 的同一批工程还需要铁匠铺提供铁件。"
 
 
 // ============================================================================
@@ -196,8 +196,8 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_exotic
 	var/list/project_by_region = list(
-		TRADE_REGION_BLACKHOLT = list("a wizards' coven", "a hermit reagent-buyer", "an oddly pale aristocrat with academic interests"),
-		TRADE_REGION_ROSAWOOD = list("a druidic circle", "a forest hermit", "a wandering hedge witch"),
+		TRADE_REGION_BLACKHOLT = list("一个巫师结社", "一位隐居的试剂买家", "一位肤色苍白得古怪、醉心学术的贵族"),
+		TRADE_REGION_ROSAWOOD = list("一个德鲁伊圈社", "一位林中隐士", "一位流浪的草药巫"),
 	)
 
 /datum/standing_order/demand_exotic/generate_item_mix()
@@ -210,13 +210,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_exotic/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - WIZARDS' REQUISITION"
+	return "[uppertext(region.name)] - 巫师征调"
 
 /datum/standing_order/demand_exotic/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires exotic reagents without delay."
-	return "An arcane party in [region.name] is paying well for exotic reagents."
+		return "[region.name] 的[capitalize(pick(projects))]急需异域试剂。"
+	return "[region.name] 的一个奥术团体为异域试剂出价不菲。"
 
 
 // ============================================================================
@@ -224,9 +224,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_fishery
 	var/list/project_by_region = list(
-		TRADE_REGION_SALTWICK = list("the fishmongers' guild", "a salt-curer with a backlog", "a wharf-side preserver"),
-		TRADE_REGION_BLEAKCOAST = list("a ship's company victualling", "a privateer's crew", "the harbor watch"),
-		TRADE_REGION_KINGSFIELD = list("a market fishmonger", "a village preserver", "a travelling fish-trader"),
+		TRADE_REGION_SALTWICK = list("鱼贩行会", "一位订单积压的盐渍匠", "一位码头旁的腌制作坊主"),
+		TRADE_REGION_BLEAKCOAST = list("一船水手的给养", "一名私掠者的船员", "港口的守望队"),
+		TRADE_REGION_KINGSFIELD = list("一名集市鱼贩", "一位村中腌制匠", "一名鱼货行商"),
 	)
 
 /datum/standing_order/demand_fishery/generate_item_mix()
@@ -236,13 +236,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_fishery/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - FISHMONGERS' ORDER"
+	return "[uppertext(region.name)] - 鱼贩订单"
 
 /datum/standing_order/demand_fishery/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] has laid in an order for fish and salt."
-	return "A fishmongers' shop in [region.name] is taking orders for fish and salt."
+		return "[region.name] 的[capitalize(pick(projects))]已下单订购鱼与盐。"
+	return "[region.name] 的一家鱼铺正在接受鱼与盐的订单。"
 
 
 // ============================================================================
@@ -250,9 +250,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_orchard
 	var/list/project_by_region = list(
-		TRADE_REGION_ROCKHILL = list("an orchard-master's harvest", "a valley apothecary", "a cider press"),
-		TRADE_REGION_KINGSFIELD = list("a market preserver", "a village apothecary", "a travelling herbalist"),
-		TRADE_REGION_HEARTFELT = list("a chapel almsgiving", "a garrison apothecary", "a hospitaller buying for the road"),
+		TRADE_REGION_ROCKHILL = list("一位果园主的收成", "一位山谷药剂师", "一座苹果酒压榨坊"),
+		TRADE_REGION_KINGSFIELD = list("一位集市腌制匠", "一位村中药剂师", "一名草药行商"),
+		TRADE_REGION_HEARTFELT = list("一次教堂施粥", "一位驻军药剂师", "一位为路途采买的济贫院修士"),
 	)
 
 /datum/standing_order/demand_orchard/generate_item_mix()
@@ -265,13 +265,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_orchard/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - ORCHARD DEMAND"
+	return "[uppertext(region.name)] - 果园需求"
 
 /datum/standing_order/demand_orchard/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] needs orchard produce and healing calendula."
-	return "A preserver or apothecary in [region.name] is buying orchard goods."
+		return "[region.name] 的[capitalize(pick(projects))]需要果园产物与疗伤用的金盏花。"
+	return "[region.name] 的一位腌制匠或药剂师正在收购果园货物。"
 
 
 // ============================================================================
@@ -281,15 +281,15 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	var/datum/weakref/source_event_ref
 
 /datum/standing_order/urgent/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - URGENT REQUISITION"
+	return "[uppertext(region.name)] - 紧急征调"
 
 /datum/standing_order/urgent/generate_description(datum/economic_region/region)
-	var/list/buyers = list("Local notables", "A merchants' consortium", "The guild elders", "A desperate burgher", "Local magnates")
+	var/list/buyers = list("本地权贵", "一个商人联合体", "行会长老", "一位走投无路的市民", "本地豪绅")
 	var/buyer = pick(buyers)
 	var/datum/economic_event/E = source_event_ref?.resolve()
 	if(E)
-		return "[region.name] is suffering from [E.name]. [buyer] are paying a premium to resolve the crisis."
-	return "[buyer] in [region.name] have declared an emergency requisition."
+		return "[region.name] 正深受[E.name]之苦。[buyer]愿出高价化解这场危机。"
+	return "[region.name] 的[buyer]已宣布紧急征调。"
 
 
 // ============================================================================
@@ -298,10 +298,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_equipment_armaments
 	roll_weight = 3
 	var/list/project_by_region = list(
-		TRADE_REGION_BLEAKCOAST = list("a privateer captain outfitting", "a corsair's company", "a harbor watch armsmaster"),
-		TRADE_REGION_NORTHFORT = list("a frontier garrison", "a watch sergeant outfitting", "a band of border irregulars"),
-		TRADE_REGION_HEARTFELT = list("the count's retinue", "a local mercenary band", "a warband outfitting for the road"),
-		TRADE_REGION_KINGSFIELD = list("a market armsmaster", "a knight-errant outfitting", "a back-room arms-broker"),
+		TRADE_REGION_BLEAKCOAST = list("一位整装待发的私掠船长", "一支海盗团", "一位港口守望队的军械长"),
+		TRADE_REGION_NORTHFORT = list("一处边境驻军", "一位正在装备的守望军士", "一伙边境游兵"),
+		TRADE_REGION_HEARTFELT = list("伯爵的随从", "一支本地的雇佣团", "一支为远征整装的战团"),
+		TRADE_REGION_KINGSFIELD = list("一位集市军械长", "一位整装待发的游侠骑士", "一名暗巷军火掮客"),
 	)
 	var/list/one_ingot_pool = list(
 		TRADE_GOOD_STEEL_ARMING_SWORD,
@@ -330,13 +330,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_equipment_armaments/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - ARMS ORDER"
+	return "[uppertext(region.name)] - 武器订单"
 
 /datum/standing_order/demand_equipment_armaments/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires finished arms, to be left at the warehouse."
-	return "A garrison at [region.name] requires finished arms, to be left at the warehouse."
+		return "[region.name] 的[capitalize(pick(projects))]需要成品武器，请送至仓库。"
+	return "[region.name] 的一处驻军需要成品武器，请送至仓库。"
 
 
 // ============================================================================
@@ -345,10 +345,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_equipment_armor_heavy
 	roll_weight = 3
 	var/list/project_by_region = list(
-		TRADE_REGION_BLEAKCOAST = list("a galley's fighting men", "a privateer captain outfitting", "a harbor watch armsmaster"),
-		TRADE_REGION_NORTHFORT = list("a frontier garrison", "a watch sergeant outfitting", "a relieved company restocking"),
-		TRADE_REGION_HEARTFELT = list("the count's retinue", "a local mercenary band", "a knightly house outfitting"),
-		TRADE_REGION_KINGSFIELD = list("a market armsmaster", "a knightly house", "a tournament-bound knight"),
+		TRADE_REGION_BLEAKCOAST = list("一艘桨帆船的战士", "一位整装待发的私掠船长", "一位港口守望队的军械长"),
+		TRADE_REGION_NORTHFORT = list("一处边境驻军", "一位正在装备的守望军士", "一支换防归来的连队"),
+		TRADE_REGION_HEARTFELT = list("伯爵的随从", "一支本地的雇佣团", "一个正在整装的骑士家族"),
+		TRADE_REGION_KINGSFIELD = list("一位集市军械长", "一个骑士家族", "一位将赴比武的骑士"),
 	)
 	var/list/chain_pool = list(
 		TRADE_GOOD_STEEL_CHAINMAIL,
@@ -387,13 +387,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_equipment_armor_heavy/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - HARNESS ORDER"
+	return "[uppertext(region.name)] - 甲胄订单"
 
 /datum/standing_order/demand_equipment_armor_heavy/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires finished plate harness, to be left at the warehouse."
-	return "A garrison at [region.name] requires finished plate harness, to be left at the warehouse."
+		return "[region.name] 的[capitalize(pick(projects))]需要成品板甲，请送至仓库。"
+	return "[region.name] 的一处驻军需要成品板甲，请送至仓库。"
 
 
 // ============================================================================
@@ -402,10 +402,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_equipment_armor_light
 	roll_weight = 3
 	var/list/project_by_region = list(
-		TRADE_REGION_BLEAKCOAST = list("the harbor watch", "a coastal levy mustering", "a corsair's company outfitting"),
-		TRADE_REGION_NORTHFORT = list("a watch sergeant outfitting", "a band of border irregulars", "a frontier reservist call-up"),
-		TRADE_REGION_HEARTFELT = list("a roving warden party", "the count's footsergeants", "a local adventuring fellowship"),
-		TRADE_REGION_KINGSFIELD = list("a country muster", "a market company", "a yeoman captain outfitting"),
+		TRADE_REGION_BLEAKCOAST = list("港口守望队", "一支正在集结的海岸民兵", "一支正在整装的海盗团"),
+		TRADE_REGION_NORTHFORT = list("一位正在装备的守望军士", "一伙边境游兵", "一次边境后备征召"),
+		TRADE_REGION_HEARTFELT = list("一支巡游守林队", "伯爵的步兵军士", "一支本地冒险团"),
+		TRADE_REGION_KINGSFIELD = list("一次乡村集结", "一支集镇连队", "一位正在整装的自耕农上尉"),
 	)
 	var/list/body_pool = list(
 		TRADE_GOOD_PADDED_GAMBESON,
@@ -433,13 +433,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_equipment_armor_light/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - COMPANY TUNICS"
+	return "[uppertext(region.name)] - 连队战袍"
 
 /datum/standing_order/demand_equipment_armor_light/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires sewn and boiled-leather kit, to be left at the warehouse."
-	return "A company at [region.name] requires sewn and boiled-leather kit, to be left at the warehouse."
+		return "[region.name] 的[capitalize(pick(projects))]需要缝制装备与煮革装备，请送至仓库。"
+	return "[region.name] 的一支连队需要缝制装备与煮革装备，请送至仓库。"
 
 
 // ============================================================================
@@ -447,8 +447,8 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_salt
 	var/list/project_by_region = list(
-		TRADE_REGION_SALTWICK = list("a salt-curer's bulk order", "a curing-shed expansion", "the preservers' guild"),
-		TRADE_REGION_KINGSFIELD = list("a market preserver", "a village smokehouse", "a roadside chapmen restocking"),
+		TRADE_REGION_SALTWICK = list("一位盐渍匠的大宗订单", "一次腌制棚的扩建", "腌制匠行会"),
+		TRADE_REGION_KINGSFIELD = list("一位集市腌制匠", "一座村中熏制房", "一名补货的路边商贩"),
 	)
 
 /datum/standing_order/demand_salt/generate_item_mix()
@@ -457,13 +457,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_salt/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - SALT REQUISITION"
+	return "[uppertext(region.name)] - 盐业征调"
 
 /datum/standing_order/demand_salt/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] require salt in bulk for the preserving of flesh and fish."
-	return "Preservers in [region.name] require salt in bulk."
+		return "[region.name] 的[capitalize(pick(projects))]需要大宗盐货以腌制肉与鱼。"
+	return "[region.name] 的腌制匠们需要大宗盐货。"
 
 
 // ============================================================================
@@ -483,13 +483,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_victualling_fleet/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - FLEET VICTUALLING"
+	return "[uppertext(region.name)] - 舰队给养"
 
 /datum/standing_order/demand_victualling_fleet/generate_description(datum/economic_region/region)
 	var/list/flavors = list(
-		"The fishing fleet at [region.name] lays in stores for the season's run.",
-		"The wharvesmen at [region.name] need victuals for a month at sea.",
-		"A captain at [region.name] takes on stores before his vessel sails.",
+		"[region.name] 的渔船队正为当季的出海储备物资。",
+		"[region.name] 的码头工需要够海上吃用一个月的给养。",
+		"[region.name] 的一位船长在船只启航前装载给养。",
 	)
 	return pick(flavors)
 
@@ -500,9 +500,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_victualling_garrison
 	roll_weight = 2
 	var/list/project_by_region = list(
-		TRADE_REGION_NORTHFORT = list("a frontier garrison", "a watch sergeant restocking", "a keep's quartermaster"),
-		TRADE_REGION_BLEAKCOAST = list("a ship's company victualling", "a coastal garrison's larder", "a privateer's crew"),
-		TRADE_REGION_HEARTFELT = list("the count's retinue", "a roving warden party", "a local adventuring fellowship"),
+		TRADE_REGION_NORTHFORT = list("一处边境驻军", "一位补充物资的守望军士", "一座堡垒的军需官"),
+		TRADE_REGION_BLEAKCOAST = list("一船水手的给养", "一处海岸驻军的储藏室", "一名私掠者的船员"),
+		TRADE_REGION_HEARTFELT = list("伯爵的随从", "一支巡游守林队", "一支本地冒险团"),
 	)
 
 /datum/standing_order/demand_victualling_garrison/generate_item_mix()
@@ -517,13 +517,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_victualling_garrison/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - GARRISON VICTUALLING"
+	return "[uppertext(region.name)] - 驻军给养"
 
 /datum/standing_order/demand_victualling_garrison/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] calls for preserved rations that will last the garrison."
-	return "A garrison at [region.name] lays in preserved rations for the next rotation."
+		return "[region.name] 的[capitalize(pick(projects))]征调足以支撑驻军的耐储口粮。"
+	return "[region.name] 的一处驻军正为下一轮换防储备耐储口粮。"
 
 
 // ============================================================================
@@ -544,13 +544,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_victualling_mines/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - MINERS' VICTUALLING"
+	return "[uppertext(region.name)] - 矿工给养"
 
 /datum/standing_order/demand_victualling_mines/generate_description(datum/economic_region/region)
 	var/list/flavors = list(
-		"The foremen at [region.name] feed the miners through the long night-shifts underground.",
-		"The mineworks at [region.name] need stout fare to see their crews through the week.",
-		"A shift-boss at [region.name] lays in dry goods that will not spoil in the shafts.",
+		"[region.name] 的工头们要在地下漫长的夜班中喂养矿工。",
+		"[region.name] 的矿场需要扎实的口粮让工队撑过这一周。",
+		"[region.name] 的一位班头在储备不会在矿井里腐坏的干粮。",
 	)
 	return pick(flavors)
 
@@ -561,11 +561,11 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_alchemical
 	roll_weight = 3
 	var/list/project_by_region = list(
-		TRADE_REGION_HEARTFELT = list("a chapel infirmary", "a hospitaller buying for the road", "a garrison surgeon"),
-		TRADE_REGION_BLACKHOLT = list("a wizards' coven", "a hermit reagent-buyer", "an oddly red-eyed aristocrat"),
-		TRADE_REGION_BLEAKCOAST = list("a galley's surgeon", "a privateer's crew laying in stores", "a coastal garrison's apothecary"),
-		TRADE_REGION_NORTHFORT = list("a frontier surgeon", "a watch sergeant restocking", "a band of border irregulars"),
-		TRADE_REGION_KINGSFIELD = list("a market apothecary", "a village healer", "a travelling herbalist"),
+		TRADE_REGION_HEARTFELT = list("一间教堂医务室", "一位为路途采买的济贫院修士", "一位驻军军医"),
+		TRADE_REGION_BLACKHOLT = list("一个巫师结社", "一位隐居的试剂买家", "一位眼睛红得古怪的贵族"),
+		TRADE_REGION_BLEAKCOAST = list("一位桨帆船上的军医", "一名正在储备物资的私掠者船员", "一位海岸驻军的药剂师"),
+		TRADE_REGION_NORTHFORT = list("一位边境军医", "一位补充物资的守望军士", "一伙边境游兵"),
+		TRADE_REGION_KINGSFIELD = list("一位集市药剂师", "一位村中治疗者", "一名草药行商"),
 	)
 	var/list/medicinal_pool = list(
 		TRADE_GOOD_HEALTH_POTION,
@@ -590,13 +590,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_alchemical/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - APOTHECARY ORDER"
+	return "[uppertext(region.name)] - 药剂订单"
 
 /datum/standing_order/demand_alchemical/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires finished potions, to be left at the warehouse."
-	return "An apothecary at [region.name] will pay handsomely for finished potions, left at the warehouse."
+		return "[region.name] 的[capitalize(pick(projects))]需要成品药水，请送至仓库。"
+	return "[region.name] 的一位药剂师愿为送至仓库的成品药水付出厚酬。"
 
 
 // ============================================================================
@@ -605,10 +605,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_alchemical_warband
 	roll_weight = 1
 	var/list/project_by_region = list(
-		TRADE_REGION_BLACKHOLT = list("a wizards' coven", "a battle-mage's hireling outfit", "a sun-starved aristocrat's hunting party"),
-		TRADE_REGION_HEARTFELT = list("the count's chosen retinue", "a temple's champions", "a roving warden party"),
-		TRADE_REGION_KINGSFIELD = list("a knight-errants' convocation", "a mercenary captain's warband", "a noble's hunting party"),
-		TRADE_REGION_NORTHFORT = list("a frontier strike-band", "a watch sergeant's chosen", "a local adventuring fellowship"),
+		TRADE_REGION_BLACKHOLT = list("一个巫师结社", "一支战斗法师的雇佣队伍", "一位久不见阳光的贵族的狩猎团"),
+		TRADE_REGION_HEARTFELT = list("伯爵的精锐随从", "神殿的勇士", "一支巡游守林队"),
+		TRADE_REGION_KINGSFIELD = list("一次游侠骑士集会", "一位雇佣兵队长的战团", "一位贵族的狩猎团"),
+		TRADE_REGION_NORTHFORT = list("一支边境突击队", "守望军士的精锐", "一支本地冒险团"),
 	)
 	var/list/buff_pool = list(
 		// TRADE_GOOD_TRANSIS_DUST removed: no transis dust trade good defined in ES
@@ -635,13 +635,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_alchemical_warband/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - WARBAND DRAUGHTS"
+	return "[uppertext(region.name)] - 战团药剂"
 
 /datum/standing_order/demand_alchemical_warband/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] commissions draughts of stat and strong potion."
-	return "An elite party at [region.name] commissions draughts of stat and strong potion."
+		return "[region.name] 的[capitalize(pick(projects))]委托一批属性药剂与强效药剂。"
+	return "[region.name] 的一支精锐队伍委托一批属性药剂与强效药剂。"
 
 
 // ============================================================================
@@ -682,13 +682,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_birthday_gift/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - BIRTHDAY TRIBUTE"
+	return "[uppertext(region.name)] - 寿辰贡礼"
 
 /datum/standing_order/demand_birthday_gift/generate_description(datum/economic_region/region)
 	var/list/celebrants = region.order_celebrants
 	if(length(celebrants))
-		return "A name-day approaches for [pick(celebrants)] of [region.name]. Their household commissions a fitting tribute."
-	return "A noble of [region.name] keeps a name-day. Their household commissions a fitting tribute."
+		return "[region.name] 的[pick(celebrants)]寿辰将至。其家族委托备办一份相称的贺礼。"
+	return "[region.name] 的一位贵族即将过寿辰。其家族委托备办一份相称的贺礼。"
 
 
 // ============================================================================
@@ -696,14 +696,14 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_great_feast_proteins
 	roll_weight = 2
-	pair_label = "The Great Feast"
+	pair_label = "盛宴"
 	pair_sibling_type = /datum/standing_order/demand_great_feast_carbs
 	var/list/feast_for_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("a market town's harvest feast", "the manor of a country knight", "a wedding banquet"),
-		TRADE_REGION_HEARTFELT = list("the count's high table", "a chapter feast of the march guard"),
-		TRADE_REGION_BLEAKCOAST = list("a sea-lord's high table", "a captains' banquet aboard the flagship", "a privateer's homecoming feast"),
-		TRADE_REGION_NORTHFORT = list("the garrison's midwinter feast", "a watchcommander's table"),
-		TRADE_REGION_ROCKHILL = list("the orchard-masters' harvest hall", "a press-house celebration"),
+		TRADE_REGION_KINGSFIELD = list("一座集镇的丰收宴", "一位乡绅的庄园", "一场婚宴"),
+		TRADE_REGION_HEARTFELT = list("伯爵的高桌", "边地卫队的会堂宴"),
+		TRADE_REGION_BLEAKCOAST = list("一位海主的高桌", "一场旗舰上的船长宴", "一次私掠者的归乡宴"),
+		TRADE_REGION_NORTHFORT = list("驻军的冬至宴", "一位守望统领的餐桌"),
+		TRADE_REGION_ROCKHILL = list("果园主的丰收厅", "一次压榨坊的庆典"),
 	)
 
 /datum/standing_order/demand_great_feast_proteins/generate_item_mix()
@@ -717,19 +717,19 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_great_feast_proteins/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - GREAT FEAST: BUTCHERY"
+	return "[uppertext(region.name)] - 盛宴：肉铺"
 
 /datum/standing_order/demand_great_feast_proteins/generate_description(datum/economic_region/region)
 	if(prob(33))
-		return "Lord Harlause sets the table at [region.name]. His house calls for butter and beef from the shambles."
+		return "哈劳斯领主在[region.name]设下餐桌。其家族向肉铺征调黄油与牛肉。"
 	var/list/feasts = feast_for_by_region[region.region_id]
 	if(length(feasts))
-		return "[capitalize(pick(feasts))] at [region.name] calls for butter and beef from the shambles."
-	return "A great feast at [region.name] calls for butter and beef from the shambles."
+		return "[region.name] 的[capitalize(pick(feasts))]向肉铺征调黄油与牛肉。"
+	return "[region.name] 的一场盛宴向肉铺征调黄油与牛肉。"
 
 /datum/standing_order/demand_great_feast_carbs
 	roll_weight = 2
-	pair_label = "The Great Feast"
+	pair_label = "盛宴"
 	pair_sibling_type = /datum/standing_order/demand_great_feast_proteins
 
 /datum/standing_order/demand_great_feast_carbs/generate_item_mix()
@@ -742,10 +742,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_great_feast_carbs/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - GREAT FEAST: PANTRY"
+	return "[uppertext(region.name)] - 盛宴：膳房"
 
 /datum/standing_order/demand_great_feast_carbs/generate_description(datum/economic_region/region)
-	return "The same feast at [region.name] needs bread, cheese, and orchard fruit from the pantry."
+	return "[region.name] 的同一场盛宴还需要膳房提供面包、奶酪与果园水果。"
 
 
 // ============================================================================
@@ -754,10 +754,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_frontier_gear
 	roll_weight = 3
 	var/list/project_by_region = list(
-		TRADE_REGION_NORTHFORT = list("a watch sergeant outfitting", "a band of border irregulars", "a frontier reservist call-up"),
-		TRADE_REGION_BLEAKCOAST = list("the harbor watch", "a coastal patrol mustering", "a privateer's crew outfitting"),
-		TRADE_REGION_HEARTFELT = list("a roving warden party", "a temple's guard", "a local adventuring fellowship"),
-		TRADE_REGION_KINGSFIELD = list("a country sheriff's posse", "a local muster", "a yeoman captain outfitting"),
+		TRADE_REGION_NORTHFORT = list("一位正在装备的守望军士", "一伙边境游兵", "一次边境后备征召"),
+		TRADE_REGION_BLEAKCOAST = list("港口守望队", "一支正在集结的海岸巡队", "一支正在整装的海盗团"),
+		TRADE_REGION_HEARTFELT = list("一支巡游守林队", "神殿的守卫", "一支本地冒险团"),
+		TRADE_REGION_KINGSFIELD = list("一队乡村治安官", "一次本地集结", "一位正在整装的自耕农上尉"),
 	)
 	var/list/body_pool = list(
 		TRADE_GOOD_PADDED_GAMBESON,
@@ -776,13 +776,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_frontier_gear/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - FRONTIER GARRISON KIT"
+	return "[uppertext(region.name)] - 边境驻军装备"
 
 /datum/standing_order/demand_frontier_gear/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires light kit fit for irregular service."
-	return "A frontier muster at [region.name] requires light kit for the watch."
+		return "[region.name] 的[capitalize(pick(projects))]需要适合游兵勤务的轻型装备。"
+	return "[region.name] 的一次边境集结需要供守望队使用的轻型装备。"
 
 
 // ============================================================================
@@ -791,9 +791,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_court_finery
 	roll_weight = 2
 	var/list/project_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("a noble household's wardrobe", "a court tailor's commission", "a market tailor"),
-		TRADE_REGION_HEARTFELT = list("the count's wardrobe", "a noble investiture", "a wedding-bound house"),
-		TRADE_REGION_ROCKHILL = list("a country estate's spring wardrobe", "a noble's name-day finery", "a sun-shy aristocrat's seasonal fitting"),
+		TRADE_REGION_KINGSFIELD = list("一个贵族家族的衣橱", "一份宫廷裁缝委托", "一位集市裁缝"),
+		TRADE_REGION_HEARTFELT = list("伯爵的衣橱", "一次贵族授职典礼", "一个即将迎亲的家族"),
+		TRADE_REGION_ROCKHILL = list("一处乡间庄园的春季衣橱", "一位贵族的寿辰华服", "一位怕晒的贵族当季试装"),
 	)
 	var/list/finery_pool = list(
 		TRADE_GOOD_NOBLECOAT,
@@ -835,13 +835,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_court_finery/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - COURT FINERY ORDER"
+	return "[uppertext(region.name)] - 宫廷华服订单"
 
 /datum/standing_order/demand_court_finery/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] commissions finished tailoring for the season."
-	return "A noble household at [region.name] commissions finished tailoring."
+		return "[region.name] 的[capitalize(pick(projects))]委托制作当季的成品衣装。"
+	return "[region.name] 的一个贵族家族委托制作成品衣装。"
 
 
 // ============================================================================
@@ -849,10 +849,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_fine_joinery
 	var/list/project_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("a country estate's joiner", "a manor house refurnish", "a temple's furnishings order"),
-		TRADE_REGION_ROSAWOOD = list("a master joiner's workshop", "a roadside furniture maker"),
-		TRADE_REGION_ROCKHILL = list("an orchard estate's joiner", "a press-house refit"),
-		TRADE_REGION_HEARTFELT = list("the count's hall furnishings", "a garrison hall refit"),
+		TRADE_REGION_KINGSFIELD = list("一位乡间庄园的木匠", "一处庄园的家具翻新", "一份神殿陈设订单"),
+		TRADE_REGION_ROSAWOOD = list("一位木作大师的工坊", "一位路边家具匠"),
+		TRADE_REGION_ROCKHILL = list("一处果园庄园的木匠", "一次压榨坊的整修"),
+		TRADE_REGION_HEARTFELT = list("伯爵厅堂的陈设", "一处驻军厅堂的整修"),
 	)
 
 /datum/standing_order/demand_fine_joinery/generate_item_mix()
@@ -866,13 +866,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_fine_joinery/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - JOINER'S COMMISSION"
+	return "[uppertext(region.name)] - 木作委托"
 
 /datum/standing_order/demand_fine_joinery/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires joinery materials - wood, cloth, and iron."
-	return "A joiner at [region.name] requires materials for fine furnishings."
+		return "[region.name] 的[capitalize(pick(projects))]需要木作材料——木料、布料与铁。"
+	return "[region.name] 的一位木匠需要制作精致家具的材料。"
 
 
 // ============================================================================
@@ -881,10 +881,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_artificery
 	roll_weight = 2
 	var/list/project_by_region = list(
-		TRADE_REGION_DAFTSMARCH = list("the artificers' guild", "a master smith's workshop", "a foundry-master's commission"),
-		TRADE_REGION_KINGSFIELD = list("a court artificer's workshop", "a guild engineer's workshop", "a back-alley contraption maker"),
-		TRADE_REGION_BLACKHOLT = list("a coven's contraption shop", "an arcane engineer's workshop", "a hermit tinkerer's bulk order"),
-		TRADE_REGION_NORTHFORT = list("a garrison's engineer", "a siege-engineer at the keep", "a frontier sapper outfitting"),
+		TRADE_REGION_DAFTSMARCH = list("机关师行会", "一位匠师的工作坊", "一份铸造师傅的委托"),
+		TRADE_REGION_KINGSFIELD = list("一位宫廷机关师的工坊", "一位行会工程师的工坊", "一位暗巷机关匠"),
+		TRADE_REGION_BLACKHOLT = list("一家结社的机关铺", "一位奥术工程师的工坊", "一位隐士工匠的大宗订单"),
+		TRADE_REGION_NORTHFORT = list("一位驻军的工程师", "一位堡垒里的攻城工程师", "一支正在整装的边境工兵"),
 	)
 
 /datum/standing_order/demand_artificery/generate_item_mix()
@@ -899,13 +899,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_artificery/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - ARTIFICER'S WORKSHOP"
+	return "[uppertext(region.name)] - 机关师工坊"
 
 /datum/standing_order/demand_artificery/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires bronze-stock and tin for the next batch."
-	return "An artificer at [region.name] is buying bronze-stock and tin."
+		return "[region.name] 的[capitalize(pick(projects))]为下一批产品需要青铜料与锡。"
+	return "[region.name] 的一位机关师正在收购青铜料与锡。"
 
 
 // ============================================================================
@@ -914,9 +914,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_jewelry
 	roll_weight = 3 // was 2 - players report jewelry commissions almost never appear
 	var/list/project_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("a court jeweler", "a master goldsmith", "a noble household's wardrobe"),
-		TRADE_REGION_HEARTFELT = list("the count's jeweler", "a temple reliquary's commission", "a wedding-bound house"),
-		TRADE_REGION_ROCKHILL = list("a country estate's jeweler", "a name-day finery commission", "a sun-shy aristocrat's heirloom resetting"),
+		TRADE_REGION_KINGSFIELD = list("一位宫廷珠宝匠", "一位金匠大师", "一个贵族家族的衣橱"),
+		TRADE_REGION_HEARTFELT = list("伯爵的珠宝匠", "一份神殿圣物匣的委托", "一个即将迎亲的家族"),
+		TRADE_REGION_ROCKHILL = list("一位乡间庄园的珠宝匠", "一份寿辰华服的委托", "一位怕晒的贵族重镶传家宝"),
 	)
 	var/list/ring_pool = list(
 		TRADE_GOOD_GOLD_RING,
@@ -975,13 +975,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_jewelry/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - JEWELERS' COMMISSION"
+	return "[uppertext(region.name)] - 珠宝匠委托"
 
 /datum/standing_order/demand_jewelry/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires finished jewelry - rings, amulets, bracelets, and circlets - for their stock."
-	return "A jeweler at [region.name] is buying finished jewelry - rings, amulets, bracelets, and circlets."
+		return "[region.name] 的[capitalize(pick(projects))]需要成品珠宝——戒指、护符、手镯与额饰——以充实存货。"
+	return "[region.name] 的一位珠宝匠正在收购成品珠宝——戒指、护符、手镯与额饰。"
 
 
 // ============================================================================
@@ -990,10 +990,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_curio_collection
 	roll_weight = 2
 	var/list/project_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("a court curio collector", "a guildhall's display commission", "a merchant prince's parlor"),
-		TRADE_REGION_ROCKHILL = list("a grandee's trophy room", "a country estate's parlor", "an oddly pale-skinned aristocrat's gallery"),
-		TRADE_REGION_HEARTFELT = list("the count's manor hall", "a temple reliquary's commission", "a wedding-bound house"),
-		TRADE_REGION_ROSAWOOD = list("a woodland shrine's offering", "a reclusive collector's agent"),
+		TRADE_REGION_KINGSFIELD = list("一位宫廷古玩收藏家", "一份行会大厅的陈列委托", "一位商界巨子的会客厅"),
+		TRADE_REGION_ROCKHILL = list("一位大亨的战利品室", "一处乡间庄园的会客厅", "一位肤色苍白得古怪的贵族的画廊"),
+		TRADE_REGION_HEARTFELT = list("伯爵的庄园大厅", "一份神殿圣物匣的委托", "一个即将迎亲的家族"),
+		TRADE_REGION_ROSAWOOD = list("一份林中神龛的供品", "一位隐居收藏家的代理人"),
 	)
 	var/list/small_curio_pool = list(
 		TRADE_GOOD_CARVED_CAMEO,
@@ -1016,13 +1016,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_curio_collection/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - COLLECTOR'S COMMISSION"
+	return "[uppertext(region.name)] - 收藏家委托"
 
 /datum/standing_order/demand_curio_collection/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] commissions carved gemstone curios - any stone will serve."
-	return "A collector at [region.name] commissions carved gemstone curios - any stone will serve."
+		return "[region.name] 的[capitalize(pick(projects))]委托制作宝石雕刻古玩——任何石料皆可。"
+	return "[region.name] 的一位收藏家委托制作宝石雕刻古玩——任何石料皆可。"
 
 
 // ============================================================================
@@ -1031,9 +1031,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_prosthetic_run
 	roll_weight = 2
 	var/list/project_by_region = list(
-		TRADE_REGION_HEARTFELT = list("a chapel infirmary", "a hospitaller's wounded-house", "a battlefield surgeon's bulk order"),
-		TRADE_REGION_NORTHFORT = list("a frontier surgeon", "a garrison infirmary", "a band of border irregulars come back broken"),
-		TRADE_REGION_BLEAKCOAST = list("a galley's surgeon", "a harbor wounded-house", "a privateer's crew limping in"),
+		TRADE_REGION_HEARTFELT = list("一间教堂医务室", "一处济贫院的伤兵所", "一位战地军医的大宗订单"),
+		TRADE_REGION_NORTHFORT = list("一位边境军医", "一处驻军医务室", "一伙伤退回乡的边境游兵"),
+		TRADE_REGION_BLEAKCOAST = list("一位桨帆船上的军医", "一处港口伤兵所", "一名蹒跚归港的私掠者船员"),
 	)
 
 /datum/standing_order/demand_prosthetic_run/generate_item_mix()
@@ -1046,13 +1046,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_prosthetic_run/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - INFIRMARY'S ORDER"
+	return "[uppertext(region.name)] - 医务室订单"
 
 /datum/standing_order/demand_prosthetic_run/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] tends many wounded - prosthetics and draughts are needed."
-	return "An infirmary at [region.name] tends to wounded soldiers and pilgrims."
+		return "[region.name] 的[capitalize(pick(projects))]照料着大批伤员——急需义肢与药剂。"
+	return "[region.name] 的一间医务室正在照料受伤的士兵与朝圣者。"
 
 
 // ============================================================================
@@ -1061,9 +1061,9 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_artificed_panoply
 	roll_weight = 1
 	var/list/project_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("a duke's master-of-arms", "a knight-artificer's commission", "a tournament-bound champion"),
-		TRADE_REGION_DAFTSMARCH = list("a master smith's signature contract", "a foundry-master's masterpiece", "a guild's exhibition piece"),
-		TRADE_REGION_HEARTFELT = list("the count's chosen champion", "a knightly investiture", "a roving warden captain"),
+		TRADE_REGION_KINGSFIELD = list("一位公爵的军械总管", "一位骑士机关师的委托", "一位将赴比武的冠军"),
+		TRADE_REGION_DAFTSMARCH = list("一份匠师的署名契约", "一份铸造师傅的杰作", "一件行会的展出作品"),
+		TRADE_REGION_HEARTFELT = list("伯爵选定的冠军", "一次骑士授职典礼", "一位巡游守林队长"),
 	)
 
 /datum/standing_order/demand_artificed_panoply/generate_item_mix()
@@ -1077,13 +1077,13 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_artificed_panoply/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - ARTIFICED PANOPLY"
+	return "[uppertext(region.name)] - 机关甲胄"
 
 /datum/standing_order/demand_artificed_panoply/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] commissions a panoply of artificed plate. Masterwork pays masterwork's price."
-	return "A patron at [region.name] commissions a panoply of artificed plate."
+		return "[region.name] 的[capitalize(pick(projects))]委托一套机关板甲。杰作自有杰作的价钱。"
+	return "[region.name] 的一位赞助人委托一套机关板甲。"
 
 
 // ============================================================================
@@ -1091,12 +1091,12 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 // ============================================================================
 /datum/standing_order/demand_tournament_arms
 	roll_weight = 2
-	pair_label = "Tournament"
+	pair_label = "比武大会"
 	pair_sibling_type = /datum/standing_order/demand_tournament_provisions
 	var/list/project_by_region = list(
-		TRADE_REGION_KINGSFIELD = list("the Tournament of the Three Hills", "the lists at Cherrybrook", "a knight-errants' convocation"),
-		TRADE_REGION_HEARTFELT = list("the March Tourney", "the count's lists at Heartfelt"),
-		TRADE_REGION_ROCKHILL = list("the Orchard Lists", "a midsummer tourney at the county seat"),
+		TRADE_REGION_KINGSFIELD = list("三山比武大会", "樱溪比武场", "一次游侠骑士集会"),
+		TRADE_REGION_HEARTFELT = list("边地比武大会", "伯爵在赤心城的比武场"),
+		TRADE_REGION_ROCKHILL = list("果园比武大会", "县治的仲夏比武"),
 	)
 	var/list/weapon_pool = list(
 		TRADE_GOOD_STEEL_ARMING_SWORD,
@@ -1119,17 +1119,17 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_tournament_arms/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - TOURNAMENT: ARMS"
+	return "[uppertext(region.name)] - 比武：兵装"
 
 /datum/standing_order/demand_tournament_arms/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
 	if(length(projects))
-		return "[capitalize(pick(projects))] at [region.name] requires arms and armor for the lists. The patrons pay accordingly."
-	return "A great tournament at [region.name] requires arms and armor for the lists. The patrons pay accordingly."
+		return "[region.name] 的[capitalize(pick(projects))]需要比武用的武器与护甲。主办者自会按价付酬。"
+	return "[region.name] 的一场比武大会需要比武用的武器与护甲。主办者自会按价付酬。"
 
 /datum/standing_order/demand_tournament_provisions
 	roll_weight = 2
-	pair_label = "Tournament"
+	pair_label = "比武大会"
 	pair_sibling_type = /datum/standing_order/demand_tournament_arms
 
 /datum/standing_order/demand_tournament_provisions/generate_item_mix()
@@ -1144,10 +1144,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 	return mix
 
 /datum/standing_order/demand_tournament_provisions/generate_name(datum/economic_region/region)
-	return "[uppertext(region.name)] - TOURNAMENT: PROVISIONS"
+	return "[uppertext(region.name)] - 比武：给养"
 
 /datum/standing_order/demand_tournament_provisions/generate_description(datum/economic_region/region)
-	return "The same tournament at [region.name] calls for draughts, feast-fare, and finery for the champions."
+	return "[region.name] 的同一场比武大会还需要为冠军们备好药剂、宴席膳食与华服。"
 
 
 // ============================================================================
@@ -1156,10 +1156,10 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_arcane_commission
 	roll_weight = 2
 	var/list/project_by_region = list(
-		TRADE_REGION_HEARTFELT = list("a temple's bookbinder", "a knightly house outfitting", "a hospitaller buying for the road"),
-		TRADE_REGION_ROCKHILL = list("a grandee's library", "a country estate's curio collector", "an oddly pale-skinned aristocrat with academic interests"),
-		TRADE_REGION_KINGSFIELD = list("a knight-errant outfitting for the road", "a guild's bulk order", "a market wand-seller"),
-		TRADE_REGION_NORTHFORT = list("a frontier scout-captain", "a band of border irregulars", "a local adventuring fellowship"),
+		TRADE_REGION_HEARTFELT = list("一位神殿的装帧师", "一个正在整装的骑士家族", "一位为路途采买的济贫院修士"),
+		TRADE_REGION_ROCKHILL = list("一位大亨的书房", "一位乡间庄园的古玩收藏家", "一位肤色苍白得古怪、醉心学术的贵族"),
+		TRADE_REGION_KINGSFIELD = list("一位为路途整装的游侠骑士", "一份行会的大宗订单", "一位集市法杖商"),
+		TRADE_REGION_NORTHFORT = list("一位边境斥候队长", "一伙边境游兵", "一支本地冒险团"),
 	)
 	var/rolled_tier = "basic"
 
@@ -1180,22 +1180,22 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_arcane_commission/generate_name(datum/economic_region/region)
 	switch(rolled_tier)
 		if("superior")
-			return "[uppertext(region.name)] - SUPERIOR ARCANA"
+			return "[uppertext(region.name)] - 高阶奥术"
 		if("greater")
-			return "[uppertext(region.name)] - GREATER ARCANA"
+			return "[uppertext(region.name)] - 至臻奥术"
 		else
-			return "[uppertext(region.name)] - ARCANE COMMISSION"
+			return "[uppertext(region.name)] - 奥术委托"
 
 /datum/standing_order/demand_arcane_commission/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
-	var/patron = length(projects) ? capitalize(pick(projects)) : "A patron"
+	var/patron = length(projects) ? capitalize(pick(projects)) : "一位赞助人"
 	switch(rolled_tier)
 		if("superior")
-			return "[patron] at [region.name] commissions superior enchantment scrolls - fulfilled at the warehouse, any scrolls will serve."
+			return "[region.name] 的[patron]委托高阶附魔卷轴——送至仓库即可，任何卷轴皆可。"
 		if("greater")
-			return "[patron] at [region.name] commissions greater enchantment scrolls - fulfilled at the warehouse - any types will serve."
+			return "[region.name] 的[patron]委托至臻附魔卷轴——送至仓库即可，任何种类皆可。"
 		else
-			return "[patron] at [region.name] commissions basic enchantment scrolls - any school of magic, sealed at the warehouse."
+			return "[region.name] 的[patron]委托基础附魔卷轴——任何法术流派皆可，送至仓库封存。"
 
 
 // ============================================================================
@@ -1204,8 +1204,8 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_trophy_heads
 	roll_weight = 1
 	var/list/project_by_region = list(
-		TRADE_REGION_HEARTFELT = list("the count's manor hall", "a marcher lord's gallery", "a heralds' lodge"),
-		TRADE_REGION_ROCKHILL = list("a hunt-master's trophy hall", "the master of hounds at the great lodge", "a grandee's trophy room"),
+		TRADE_REGION_HEARTFELT = list("伯爵的庄园大厅", "一位边地领主的画廊", "一座纹章官会所"),
+		TRADE_REGION_ROCKHILL = list("一位猎主的战利品厅", "大猎场里的猎犬总管", "一位大亨的战利品室"),
 	)
 	var/rolled_variant = "minotaur"
 
@@ -1225,15 +1225,15 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 /datum/standing_order/demand_trophy_heads/generate_name(datum/economic_region/region)
 	switch(rolled_variant)
 		if("troll")
-			return "[uppertext(region.name)] - TROLL HEADS"
+			return "[uppertext(region.name)] - 巨魔首级"
 		else
-			return "[uppertext(region.name)] - MANOR TROPHIES"
+			return "[uppertext(region.name)] - 庄园战利品"
 
 /datum/standing_order/demand_trophy_heads/generate_description(datum/economic_region/region)
 	var/list/projects = project_by_region[region.region_id]
-	var/patron = length(projects) ? capitalize(pick(projects)) : "A noble house"
+	var/patron = length(projects) ? capitalize(pick(projects)) : "一个贵族家族"
 	switch(rolled_variant)
 		if("troll")
-			return "[patron] at [region.name] would line their hall with troll heads - a warning to any who would test the marches."
+			return "[region.name] 的[patron]想用巨魔首级装点厅堂——以儆效尤，警示任何胆敢试探边地之人。"
 		else
-			return "[patron] at [region.name] commissions trophies for their gallery - heads of the wild brought to heel."
+			return "[region.name] 的[patron]为画廊委托战利品——将荒野的兽首驯服陈列。"

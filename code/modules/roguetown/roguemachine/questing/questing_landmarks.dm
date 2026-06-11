@@ -1,5 +1,5 @@
 /obj/effect/landmark/quest_spawner
-	name = "quest landmark"
+	name = "任务地标"
 	icon = 'code/modules/roguetown/roguemachine/questing/questing.dmi'
 	icon_state = "quest_marker"
 	var/list/quest_type = list(QUEST_RETRIEVAL, QUEST_COURIER, QUEST_CLEAR_OUT, QUEST_RAID, QUEST_KILL_EASY, QUEST_BOUNTY, QUEST_RECOVERY, QUEST_BLOCKADE_DEFENSE, QUEST_TOWNER_SMITH_CARAVAN, QUEST_TOWNER_MINER_OREVEIN)
@@ -74,17 +74,17 @@
 // types at runtime, so without these subtypes every mapped spawner silently vanishes
 // and the quest pool seeds empty. Tier lists are Quest 1's, mapped onto Quest 2 types.
 /obj/effect/landmark/quest_spawner/easy
-	name = "easy quest landmark"
+	name = "简单任务地标"
 	icon_state = "quest_marker_low"
 	quest_type = list(QUEST_RETRIEVAL, QUEST_COURIER, QUEST_KILL_EASY)
 
 /obj/effect/landmark/quest_spawner/medium
-	name = "medium quest landmark"
+	name = "中等任务地标"
 	icon_state = "quest_marker_mid"
 	quest_type = list(QUEST_RETRIEVAL, QUEST_COURIER, QUEST_KILL_EASY, QUEST_CLEAR_OUT, QUEST_RECOVERY)
 
 /obj/effect/landmark/quest_spawner/hard// Meant for the cursed mire- no blockade.
-	name = "hard quest landmark"
+	name = "困难任务地标"
 	icon_state = "quest_marker_high"
 	quest_type = list(QUEST_CLEAR_OUT, QUEST_RAID, QUEST_BOUNTY, QUEST_RECOVERY)
 

@@ -1,7 +1,7 @@
 
 /obj/structure/roguemachine/noticeboard
-	name = "Notice Board"
-	desc = "A large wooden notice board, carrying postings from all across Rotwood Vale. A ZAD perch sits atop it."
+	name = "告示板"
+	desc = "一块巨大的木制告示板，上面贴满了来自整个腐木谷的告示。顶部还设有一处 ZAD告示台 的栖架。"
 	icon = 'icons/roguetown/structure/noticeboard64.dmi'
 	icon_state = "noticeboard0"
 	density = TRUE
@@ -72,7 +72,7 @@
 		return
 	GLOB.board_viewers += user
 	if(length(GLOB.noticeboard_notices) || length(GLOB.noticeboard_listings))
-		to_chat(user, span_smallred("A new posting has been made since I last checked!"))
+		to_chat(user, span_smallred("自我上次查看后，又新增了告示！"))
 
 /obj/structure/roguemachine/noticeboard/update_icon()
 	. = ..()
@@ -380,20 +380,20 @@
 /obj/structure/roguemachine/noticeboard/proc/format_posted_at_label(posted_at)
 	var/elapsed = world.time - posted_at
 	if(elapsed < 1 MINUTES)
-		return "just now"
+		return "刚刚"
 	var/minutes = round(elapsed / (1 MINUTES))
 	if(minutes < 60)
-		return "[minutes]m ago"
+		return "[minutes]分钟前"
 	var/hours = round(minutes / 60)
-	return "[hours]h ago"
+	return "[hours]小时前"
 
 /obj/structure/roguemachine/noticeboard/proc/format_expires_in_label(posted_at)
 	var/expires_at = posted_at + NOTICEBOARD_NOTICE_LIFETIME
 	var/remaining = expires_at - world.time
 	if(remaining <= 0)
-		return "any moment"
+		return "随时"
 	var/minutes = CEILING(remaining / (1 MINUTES), 1)
-	return "in [minutes]m"
+	return "[minutes]分钟后"
 
 /obj/structure/roguemachine/noticeboard/ui_act(action, list/params)
 	. = ..()
@@ -407,7 +407,7 @@
 	switch(action)
 		if("refresh_market")
 			if(world.time < last_market_refresh + 5 SECONDS)
-				to_chat(H, span_warning("The factors haven't tallied fresh numbers yet. Wait a moment."))
+				to_chat(H, span_warning("商行管事还没算好最新的数字。请稍候片刻。"))
 				return TRUE
 			last_market_refresh = world.time
 			update_static_data(H)
@@ -435,17 +435,17 @@
 /obj/structure/roguemachine/noticeboard/proc/handle_make_post(mob/living/carbon/human/H, list/params)
 	var/tier = "[params["tier"]]"
 	if(tier != POSTING_TIER_NOTICE && tier != POSTING_TIER_LISTING)
-		to_chat(H, span_warning("Unknown posting kind."))
+		to_chat(H, span_warning("未知的张贴类型。"))
 		return
 	if(tier == POSTING_TIER_LISTING && !(H.job in NOTICEBOARD_LISTING_ROLES))
-		to_chat(H, span_warning("Only certain offices may pin a Standing Listing."))
+		to_chat(H, span_warning("只有特定职位才能张贴常设告示。"))
 		return
 	var/title = sanitize_input("[params["title"]]", NOTICEBOARD_TITLE_MAX_LENGTH)
 	var/body = sanitize_input("[params["body"]]", NOTICEBOARD_BODY_MAX_LENGTH, multiline = TRUE)
 	var/poster_name = sanitize_input("[params["poster_name"]]", NOTICEBOARD_NAME_MAX_LENGTH)
 	var/poster_title = sanitize_input("[params["poster_title"]]", NOTICEBOARD_ROLE_MAX_LENGTH)
 	if(!title || !body || !poster_name)
-		to_chat(H, span_warning("The posting must bear a title, a body, and a name."))
+		to_chat(H, span_warning("张贴内容须包含标题、正文与署名。"))
 		return
 	noticeboard_add_posting(tier, title, body, poster_name, poster_title, H)
 	message_admins("[ADMIN_LOOKUPFLW(H)] has made a [tier] noticeboard post. The message was: [body]")
@@ -456,16 +456,16 @@
 	if(!P)
 		return
 	if(P.truename != H.real_name)
-		to_chat(H, span_warning("That posting is not yours to take down."))
+		to_chat(H, span_warning("那张告示不是你贴的，你无权撕下。"))
 		return
 	playsound(loc, 'sound/foley/dropsound/paper_drop.ogg', 50, FALSE, -1)
-	loc.visible_message(span_smallred("[H] tears down a posting!"))
+	loc.visible_message(span_smallred("[H]撕下了一张告示！"))
 	noticeboard_remove_posting(P)
 	message_admins("[ADMIN_LOOKUPFLW(H)] has removed their noticeboard post.")
 
 /obj/structure/roguemachine/noticeboard/proc/handle_authority_remove_post(mob/living/carbon/human/H, list/params)
 	if(!(H.job in NOTICEBOARD_AUTHORITY_ROLES))
-		to_chat(H, span_warning("You hold no authority to take down another's posting."))
+		to_chat(H, span_warning("你无权撕下他人的告示。"))
 		return
 	var/posting_id = "[params["posting_id"]]"
 	var/datum/noticeboard_posting/P = noticeboard_find_post_by_id(posting_id)

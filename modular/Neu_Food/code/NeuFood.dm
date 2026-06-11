@@ -323,7 +323,7 @@
 
 // -------------- SALT -----------------
 /obj/item/reagent_containers/powder/salt
-	name = "salt"
+	name = "盐"
 	desc = ""
 	gender = PLURAL
 	icon_state = "salt"

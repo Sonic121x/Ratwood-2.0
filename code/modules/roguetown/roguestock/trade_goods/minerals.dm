@@ -1,6 +1,6 @@
 /datum/trade_good/iron_ore
 	id = TRADE_GOOD_IRON_ORE
-	name = "Iron Ore"
+	name = "铁矿石"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_IRON_ORE
@@ -9,7 +9,7 @@
 
 /datum/trade_good/copper_ore
 	id = TRADE_GOOD_COPPER_ORE
-	name = "Copper Ore"
+	name = "铜矿石"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_COPPER_ORE
@@ -18,7 +18,7 @@
 
 /datum/trade_good/tin_ore
 	id = TRADE_GOOD_TIN_ORE
-	name = "Tin Ore"
+	name = "锡矿石"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_TIN_ORE
@@ -27,7 +27,7 @@
 
 /datum/trade_good/coal
 	id = TRADE_GOOD_COAL
-	name = "Coal"
+	name = "煤"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_COAL
@@ -36,7 +36,7 @@
 
 /datum/trade_good/stone
 	id = TRADE_GOOD_STONE
-	name = "Stone"
+	name = "石头"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_STONE
@@ -45,7 +45,7 @@
 
 /datum/trade_good/clay
 	id = TRADE_GOOD_CLAY
-	name = "Clay"
+	name = "黏土"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_CLAY
@@ -54,7 +54,7 @@
 
 /datum/trade_good/cinnabar
 	id = TRADE_GOOD_CINNABAR
-	name = "Cinnabar"
+	name = "朱砂"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_CINNABAR
@@ -63,7 +63,7 @@
 
 /datum/trade_good/salt
 	id = TRADE_GOOD_SALT
-	name = "Salt"
+	name = "盐"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_SALT
@@ -72,7 +72,7 @@
 
 /datum/trade_good/glass_batch
 	id = TRADE_GOOD_GLASS_BATCH
-	name = "Glass Batch"
+	name = "玻璃原料"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_GLASS_BATCH

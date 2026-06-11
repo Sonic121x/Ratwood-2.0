@@ -4,57 +4,57 @@
 
 /datum/trade_good/equipment/crafted/amber_ring
 	id = TRADE_GOOD_AMBER_RING
-	name = "petriamber ring"
+	name = "琥珀戒指"
 	item_type = /obj/item/clothing/ring/amber
 
 /datum/trade_good/equipment/crafted/gold_ring
 	id = TRADE_GOOD_GOLD_RING
-	name = "gold ring"
+	name = "金戒指"
 	item_type = /obj/item/clothing/ring/gold
 
 /datum/trade_good/equipment/crafted/emerald_ring
 	id = TRADE_GOOD_EMERALD_RING
-	name = "gemerald ring"
+	name = "翠晶戒指"
 	item_type = /obj/item/clothing/ring/emerald
 
 /datum/trade_good/equipment/crafted/diamond_ring
 	id = TRADE_GOOD_DIAMOND_RING
-	name = "dorpel ring"
+	name = "多佩尔石戒指"
 	item_type = /obj/item/clothing/ring/diamond
 
 /datum/trade_good/equipment/crafted/jade_ring
 	id = TRADE_GOOD_JADE_RING
-	name = "joapstone ring"
+	name = "玉戒指"
 	item_type = /obj/item/clothing/ring/jade
 
 /datum/trade_good/equipment/crafted/shell_ring
 	id = TRADE_GOOD_SHELL_RING
-	name = "shell ring"
+	name = "蛤蜊壳戒指"
 	item_type = /obj/item/clothing/ring/shell
 
 /datum/trade_good/equipment/crafted/rose_ring
 	id = TRADE_GOOD_ROSE_RING
-	name = "rosellusk ring"
+	name = "蔷薇石戒指"
 	item_type = /obj/item/clothing/ring/rose
 
 /datum/trade_good/equipment/crafted/onyxa_ring
 	id = TRADE_GOOD_ONYXA_RING
-	name = "onyxa ring"
+	name = "奥尼克萨戒指"
 	item_type = /obj/item/clothing/ring/onyxa
 
 /datum/trade_good/equipment/crafted/turq_ring
 	id = TRADE_GOOD_TURQ_RING
-	name = "ceruleabaster ring"
+	name = "蔚青石戒指"
 	item_type = /obj/item/clothing/ring/turq
 
 /datum/trade_good/equipment/crafted/coral_ring
 	id = TRADE_GOOD_CORAL_RING
-	name = "aoetal ring"
+	name = "心石戒指"
 	item_type = /obj/item/clothing/ring/coral
 
 /datum/trade_good/equipment/crafted/opal_ring
 	id = TRADE_GOOD_OPAL_RING
-	name = "opaloise ring"
+	name = "欧泊戒指"
 	item_type = /obj/item/clothing/ring/opal
 
 // ============================================================================
@@ -63,42 +63,42 @@
 
 /datum/trade_good/equipment/crafted/amber_amulet
 	id = TRADE_GOOD_AMBER_AMULET
-	name = "petriamber amulet"
+	name = "琥珀护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/amberamulet
 
 /datum/trade_good/equipment/crafted/jade_amulet
 	id = TRADE_GOOD_JADE_AMULET
-	name = "joapstone amulet"
+	name = "玉护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/jadeamulet
 
 /datum/trade_good/equipment/crafted/shell_amulet
 	id = TRADE_GOOD_SHELL_AMULET
-	name = "shell amulet"
+	name = "蛤蜊壳护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/shellamulet
 
 /datum/trade_good/equipment/crafted/rose_amulet
 	id = TRADE_GOOD_ROSE_AMULET
-	name = "rosellusk amulet"
+	name = "蔷薇石护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/roseamulet
 
 /datum/trade_good/equipment/crafted/onyxa_amulet
 	id = TRADE_GOOD_ONYXA_AMULET
-	name = "onyxa amulet"
+	name = "奥尼克萨护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/onyxaamulet
 
 /datum/trade_good/equipment/crafted/turq_amulet
 	id = TRADE_GOOD_TURQ_AMULET
-	name = "ceruleabaster amulet"
+	name = "蔚青石护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/turqamulet
 
 /datum/trade_good/equipment/crafted/coral_amulet
 	id = TRADE_GOOD_CORAL_AMULET
-	name = "aoetal amulet"
+	name = "心石护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/coralamulet
 
 /datum/trade_good/equipment/crafted/opal_amulet
 	id = TRADE_GOOD_OPAL_AMULET
-	name = "opaloise amulet"
+	name = "欧泊护符"
 	item_type = /obj/item/clothing/neck/roguetown/carved/opalamulet
 
 // ============================================================================
@@ -107,42 +107,42 @@
 
 /datum/trade_good/equipment/crafted/amber_bracelets
 	id = TRADE_GOOD_AMBER_BRACELETS
-	name = "petriamber bracelets"
+	name = "琥珀手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/amberbracelet
 
 /datum/trade_good/equipment/crafted/jade_bracelets
 	id = TRADE_GOOD_JADE_BRACELETS
-	name = "joapstone bracelets"
+	name = "玉手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/jadebracelet
 
 /datum/trade_good/equipment/crafted/shell_bracelets
 	id = TRADE_GOOD_SHELL_BRACELETS
-	name = "shell bracelets"
+	name = "蛤蜊壳手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/shellbracelet
 
 /datum/trade_good/equipment/crafted/rose_bracelets
 	id = TRADE_GOOD_ROSE_BRACELETS
-	name = "rosellusk bracelets"
+	name = "蔷薇石手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/rosebracelet
 
 /datum/trade_good/equipment/crafted/onyxa_bracelets
 	id = TRADE_GOOD_ONYXA_BRACELETS
-	name = "onyxa bracelets"
+	name = "奥尼克萨手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/onyxabracelet
 
 /datum/trade_good/equipment/crafted/turq_bracelets
 	id = TRADE_GOOD_TURQ_BRACELETS
-	name = "ceruleabaster bracelets"
+	name = "蔚青石手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/turqbracelet
 
 /datum/trade_good/equipment/crafted/coral_bracelets
 	id = TRADE_GOOD_CORAL_BRACELETS
-	name = "aoetal bracelets"
+	name = "心石手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/coralbracelet
 
 /datum/trade_good/equipment/crafted/opal_bracelets
 	id = TRADE_GOOD_OPAL_BRACELETS
-	name = "opaloise bracelets"
+	name = "欧泊手镯"
 	item_type = /obj/item/clothing/wrists/roguetown/gem/opalbracelet
 
 // ============================================================================
@@ -151,42 +151,42 @@
 
 /datum/trade_good/equipment/crafted/amber_circlet
 	id = TRADE_GOOD_AMBER_CIRCLET
-	name = "petriamber circlet"
+	name = "琥珀额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/amber
 
 /datum/trade_good/equipment/crafted/jade_circlet
 	id = TRADE_GOOD_JADE_CIRCLET
-	name = "joapstone circlet"
+	name = "玉额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/jade
 
 /datum/trade_good/equipment/crafted/shell_circlet
 	id = TRADE_GOOD_SHELL_CIRCLET
-	name = "shell circlet"
+	name = "蛤蜊壳额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/shell
 
 /datum/trade_good/equipment/crafted/rose_circlet
 	id = TRADE_GOOD_ROSE_CIRCLET
-	name = "rosellusk circlet"
+	name = "蔷薇石额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/rose
 
 /datum/trade_good/equipment/crafted/onyxa_circlet
 	id = TRADE_GOOD_ONYXA_CIRCLET
-	name = "onyxa circlet"
+	name = "奥尼克萨额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/onyxa
 
 /datum/trade_good/equipment/crafted/turq_circlet
 	id = TRADE_GOOD_TURQ_CIRCLET
-	name = "ceruleabaster circlet"
+	name = "蔚青石额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/turq
 
 /datum/trade_good/equipment/crafted/coral_circlet
 	id = TRADE_GOOD_CORAL_CIRCLET
-	name = "aoetal circlet"
+	name = "心石额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/coral
 
 /datum/trade_good/equipment/crafted/opal_circlet
 	id = TRADE_GOOD_OPAL_CIRCLET
-	name = "opaloise circlet"
+	name = "欧泊额饰"
 	item_type = /obj/item/clothing/head/roguetown/circlet/carvedgem/opal
 
 // ============================================================================
@@ -197,7 +197,7 @@
 
 /datum/trade_good/equipment/crafted/carved_cameo
 	id = TRADE_GOOD_CARVED_CAMEO
-	name = "carved gemstone cameo (any stone)"
+	name = "宝石雕刻浮雕（任意石料）"
 	item_type = /obj/item/carvedgem/jade/cameo
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/cameo,
@@ -211,7 +211,7 @@
 
 /datum/trade_good/equipment/crafted/carved_figurine
 	id = TRADE_GOOD_CARVED_FIGURINE
-	name = "carved gemstone figurine (any stone)"
+	name = "宝石雕刻小雕像（任意石料）"
 	item_type = /obj/item/carvedgem/jade/figurine
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/figurine,
@@ -225,7 +225,7 @@
 
 /datum/trade_good/equipment/crafted/carved_vase
 	id = TRADE_GOOD_CARVED_VASE
-	name = "carved gemstone vase (any stone)"
+	name = "宝石雕刻花瓶（任意石料）"
 	item_type = /obj/item/carvedgem/jade/vase
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/vase,
@@ -239,7 +239,7 @@
 
 /datum/trade_good/equipment/crafted/carved_fancy_vase
 	id = TRADE_GOOD_CARVED_FANCY_VASE
-	name = "fancy carved gemstone vase (any stone)"
+	name = "宝石雕刻华美花瓶（任意石料）"
 	item_type = /obj/item/carvedgem/jade/fancyvase
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/fancyvase,
@@ -253,7 +253,7 @@
 
 /datum/trade_good/equipment/crafted/carved_bust
 	id = TRADE_GOOD_CARVED_BUST
-	name = "carved gemstone bust (any stone)"
+	name = "宝石雕刻半身像（任意石料）"
 	item_type = /obj/item/carvedgem/jade/bust
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/bust,
@@ -267,7 +267,7 @@
 
 /datum/trade_good/equipment/crafted/carved_statue
 	id = TRADE_GOOD_CARVED_STATUE
-	name = "carved gemstone statue (any stone)"
+	name = "宝石雕刻雕像（任意石料）"
 	item_type = /obj/item/carvedgem/jade/statue
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/statue,

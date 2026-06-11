@@ -1,14 +1,14 @@
 #define CTAG_CRUSADE "CTAG_CRUSADE"
 
 /datum/migrant_role/crusader
-	name = "117th Crusade-er"
+	name = "第117次十字军东征者"
 	advclass_cat_rolls = list(CTAG_CRUSADE = 20)
 
 /datum/advclass/crusader_Captain
 	townie_contract_gate_exempt = TRUE
 	townie_contract_gate_hide_in_list = TRUE
-	name = "Crusader Captain"
-	tutorial = "Crusader Leader of the true faith, you came from Grenzelhoft on the orders of the holy see. FIND Psydon's holy chalice- and pillage your way into riches, for the glory of astrata!"
+	name = "十字军队长"
+	tutorial = "你是真正信仰的十字军领袖，奉圣座之命自格伦泽尔霍夫特而来。找到普赛顿的圣杯——再一路劫掠夺取财富，彰显阿斯特拉塔的荣光！"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	maximum_possible_slots = 1
@@ -53,7 +53,7 @@
 /datum/outfit/job/roguetown/crusader/captain/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata, the Absolute Order of the lands embraces me; We shall take what is rightfully ours, For she wills it."))
+		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -81,8 +81,8 @@
 /datum/advclass/crusader_cleric
 	townie_contract_gate_exempt = TRUE
 	townie_contract_gate_hide_in_list = TRUE
-	name = "Crusader Cleric"
-	tutorial = "Crusader of the true faith, you came from Grenzelhoft on the orders of the holy see. FIND Psydon's holy chalice- and pillage your way into riches, for the glory of astrata!"
+	name = "十字军牧师"
+	tutorial = "你是真正信仰的十字军，奉圣座之命自格伦泽尔霍夫特而来。找到普赛顿的圣杯——再一路劫掠夺取财富，彰显阿斯特拉塔的荣光！"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	maximum_possible_slots = 2
@@ -123,7 +123,7 @@
 
 /datum/outfit/job/roguetown/crusader/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Astrata, the Absolute Order of the lands embraces me; We shall take what is rightfully ours, For she wills it."))
+	to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 	cloak = /obj/item/clothing/cloak/cape/crusader
@@ -153,8 +153,8 @@
 /datum/advclass/crusader_paladin
 	townie_contract_gate_exempt = TRUE
 	townie_contract_gate_hide_in_list = TRUE
-	name = "Crusader Paladin"
-	tutorial = "Crusader of the true faith, you came from Grenzelhoft on the orders of the holy see. FIND Psydon's holy chalice- and pillage your way into riches, for the glory of astrata!"
+	name = "十字军圣骑士"
+	tutorial = "你是真正信仰的十字军，奉圣座之命自格伦泽尔霍夫特而来。找到普赛顿的圣杯——再一路劫掠夺取财富，彰显阿斯特拉塔的荣光！"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	maximum_possible_slots = 2
@@ -198,7 +198,7 @@
 /datum/outfit/job/roguetown/crusader/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata, the Absolute Order of the lands embraces me; We shall take what is rightfully ours, For she wills it."))
+		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -228,8 +228,8 @@
 /datum/advclass/crusader_footman
 	townie_contract_gate_exempt = TRUE
 	townie_contract_gate_hide_in_list = TRUE
-	name = "Crusader Footman"
-	tutorial = "Heavily armored Crusader of the true faith, you came from Grenzelhoft on the orders of the holy see. FIND Psydon's holy chalice- and pillage your way into riches, for the glory of astrata!"
+	name = "十字军步卒"
+	tutorial = "你是身披重甲、真正信仰的十字军，奉圣座之命自格伦泽尔霍夫特而来。找到普赛顿的圣杯——再一路劫掠夺取财富，彰显阿斯特拉塔的荣光！"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/crusader/footman
@@ -261,7 +261,7 @@
 /datum/outfit/job/roguetown/crusader/footman/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata, the Absolute Order of the lands embraces me; We shall take what is rightfully ours, For she wills it."))
+		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
@@ -290,8 +290,8 @@
 /datum/advclass/crusader_marksman
 	townie_contract_gate_exempt = TRUE
 	townie_contract_gate_hide_in_list = TRUE
-	name = "Crusader Marksman"
-	tutorial = "Crusader of the true faith, you came from Grenzelhoft on the orders of the holy see. FIND Psydon's holy chalice- and pillage your way into riches, for the glory of astrata!"
+	name = "十字军射手"
+	tutorial = "你是真正信仰的十字军，奉圣座之命自格伦泽尔霍夫特而来。找到普赛顿的圣杯——再一路劫掠夺取财富，彰显阿斯特拉塔的荣光！"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/crusader/marksman
@@ -325,7 +325,7 @@
 /datum/outfit/job/roguetown/crusader/marksman/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata, the Absolute Order of the lands embraces me; We shall take what is rightfully ours, For she wills it."))
+		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -353,8 +353,8 @@
 
 
 /obj/item/reagent_containers/glass/cup/golden/psydon
-	name = "Psydon's Chalice"
+	name = "Psydon的圣杯"
 	icon_state = "psydon_golden"
 	sellprice = 600
-	desc = "A glimmering chalice made from silver and gold, it has an inlade gem unlike any other. It was said to be once psydon's very own chalice."
+	desc = "这是一只由银与金打造、闪闪发光的圣杯，其上镶着独一无二的宝石。据说，它曾是 Psydon 本人所用的圣杯。"
 #undef CTAG_CRUSADE

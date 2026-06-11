@@ -1,6 +1,6 @@
 /obj/item/canvas
-	name = "canvas"
-	desc = "A perfect place to paint"
+	name = "画布"
+	desc = "作画的绝佳之处。"
 
 	icon = 'icons/roguetown/items/paint_supplies/canvas_32.dmi'
 	icon_state = "canvas"
@@ -57,11 +57,11 @@
 	. = ..()
 	if(user.cmode)
 		if(anchored)
-			to_chat(user, "You start unmounting [src]")
+			to_chat(user, "我开始取下[src]。")
 			if(!do_after(user, 3 SECONDS, target = src))
 				return
 			anchored = FALSE
-			to_chat(user, "You unmount [src]")
+			to_chat(user, "我取下了[src]。")
 
 /obj/item/canvas/attack_right(mob/user)
 	. = ..()
@@ -76,13 +76,13 @@
 /obj/item/canvas/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/natural/feather))
-		author = input("Who's the author of this painting?")
+		author = input("这幅画的作者是谁？")
 		author_ckey = user.ckey
-		title = input("What's the title of this painting.")
+		title = input("这幅画的标题是什么？")
 		if(title)
 			name = title
 		if(author)
-			desc = "Painted by: [author]."
+			desc = "作者：[author]。"
 
 		return
 
@@ -100,14 +100,14 @@
 
 /obj/item/canvas/attack_turf(turf/T, mob/living/user)
 	. = ..()
-	to_chat(user, "You start mounting [src] to [T]")
+	to_chat(user, "我开始把[src]挂到[T]上。")
 	if(!do_after(user, 3 SECONDS, target = T))
 		return
 	forceMove(T)
 	pixel_x = 0
 	pixel_y = 0
 	anchored = TRUE
-	to_chat(user, "You mount [src] to [T]")
+	to_chat(user, "我把[src]挂到了[T]上。")
 
 /obj/item/canvas/proc/remove_shower(mob/source)
 	showers -= source
@@ -233,7 +233,7 @@
 ///////////
 
 /obj/structure/easel
-	name = "easel"
+	name = "画架"
 	desc = ""
 	icon = 'icons/roguetown/items/paint_supplies/paint_items.dmi'
 	icon_state = "easel"
@@ -253,7 +253,7 @@
 		painting.pixel_y = painting.easel_offset
 		C.forceMove(get_turf(src))
 		C.layer = layer+0.1
-		user.visible_message("<span class='notice'>[user] puts \the [C] on \the [src].</span>","<span class='notice'>I place \the [C] on \the [src].</span>")
+		user.visible_message("<span class='notice'>[user]把[C]放到了[src]上。</span>","<span class='notice'>我把[C]放到了[src]上。</span>")
 	else
 		return ..()
 
@@ -272,8 +272,8 @@
 ///////////
 
 /obj/item/paint_brush
-	name = "paint brush"
-	desc = "A tool used for painting"
+	name = "画笔"
+	desc = "用于绘画的工具。"
 	icon = 'icons/roguetown/items/paint_supplies/paint_items.dmi'
 	icon_state = "paintbrush"
 
@@ -295,7 +295,7 @@
 /obj/item/paint_brush/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
 	. = ..()
 	if(istype(target, /obj/item/paint_palette))
-		var/merge_color = input(user, "Choose a color to blend") as anything in target:colors
+		var/merge_color = input(user, "选择要混合的颜色") as anything in target:colors
 		if(!merge_color)
 			return
 		var/list/colors = target:colors
@@ -313,7 +313,7 @@
 		return
 
 	if(target.reagents.has_reagent(/datum/reagent/water))
-		to_chat(user, span_notice("You start to wash [src] in [target]."))
+		to_chat(user, span_notice("我开始在[target]里清洗[src]。"))
 		if(!do_after(user, 1 SECONDS, target = target))
 			return
 		current_color = null
@@ -321,11 +321,11 @@
 
 /obj/item/paint_palette/filled
 	colors = list(
-		"Red" = COLOR_RED,
-		"Blue" = COLOR_BLUE,
-		"Green" = COLOR_GREEN,
-		"Purple" = COLOR_PURPLE,
-		"Cyan" = COLOR_CYAN
+		"红色" = COLOR_RED,
+		"蓝色" = COLOR_BLUE,
+		"绿色" = COLOR_GREEN,
+		"紫色" = COLOR_PURPLE,
+		"青色" = COLOR_CYAN
 	)
 
 ///////////
@@ -333,8 +333,8 @@
 ///////////
 
 /obj/item/paint_palette
-	name = "paint palette"
-	desc = "A tool used for painting"
+	name = "调色板"
+	desc = "用于绘画的工具。"
 	icon = 'icons/roguetown/items/paint_supplies/paint_items.dmi'
 	icon_state = "palette"
 
@@ -350,10 +350,10 @@
 /obj/item/paint_palette/proc/add_color(mob/user)
 	if(length(colors) >= 5)
 		return
-	var/add_color = input(user, "Choose a color to add") as color|null
+	var/add_color = input(user, "选择要添加的颜色") as color|null
 	if(!add_color)
 		return
-	var/color_name = input(user, "Choose a name for this color")
+	var/color_name = input(user, "给这种颜色起个名字")
 	if(!color_name)
 		return
 	if(length(colors) >= 5)
@@ -363,7 +363,7 @@
 	update_overlays()
 
 /obj/item/paint_palette/proc/remove_color(mob/user)
-	var/remove_color = input(user, "Choose a color to remove") as anything in colors
+	var/remove_color = input(user, "选择要移除的颜色") as anything in colors
 	if(!remove_color)
 		return
 	colors -= remove_color

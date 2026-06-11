@@ -1,6 +1,6 @@
 /datum/advclass/wretch/ancientchampion
-	name = "Ancient Champion"
-	tutorial = "In life, you were a mortal warrior shedding blood for Her Majesty, a veteran of countless battles and razings. In death, you have been rewarded with a privilege to serve Her forever more. You awaken once again, wielding blade and arcyne, to complete Her Grandest Work."
+	name = "远古勇士"
+	tutorial = "生前，你曾是为她的陛下浴血厮杀的凡人战士，是历经无数战役与焚掠的老兵。死后，你被赐予了永远侍奉她的殊荣。如今你再度苏醒，手执刀剑与奥术，只为完成她最伟大的伟业。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP //Can't be Revenant (because bugs) and can't be Construct (also bugs). You get force-set to Skeleton Human anyway.
 	outfit = /datum/outfit/job/roguetown/wretch/ancientchampion
@@ -72,23 +72,23 @@
 	H.set_blindness(0)
 	H.energy = H.max_energy //Just in case.
 	REMOVE_TRAIT(H, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
-	to_chat(H, span_danger("You are an ancient warrior risen from death, not a comedic skeleton. Be menacing and play with gravitas rather than humour."))
-	var/helmets = list("BARBUTE - VISORED", "FROGMOUTH - NECK PROTECTION", "BASCINET", "VOLF-FACE - VISORED")
-	var/helmet_choice = input(H, "Choose your helmet.", "PROTECTION FROM THE LADY") as anything in helmets
+	to_chat(H, span_danger("你是自死亡中归来的远古战士，不是什么滑稽骷髅。请以威严与压迫感来扮演，而非靠搞笑。"))
+	var/helmets = list("巴布塔盔 - 带面罩", "蛙嘴盔 - 强化护颈", "尖顶盔", "狼面盔 - 带面罩")
+	var/helmet_choice = input(H, "选择你的头盔。", "来自女士的庇护") as anything in helmets
 	switch(helmet_choice)
-		if("BARBUTE - VISORED")
+		if("巴布塔盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
-		if("FROGMOUTH - NECK PROTECTION")
+		if("蛙嘴盔 - 强化护颈")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo
-		if("BASCINET")
+		if("尖顶盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo
-		if("VOLF-FACE - VISORED")
+		if("狼面盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo
 
-	var/armors = list("HEAVY ARMOR", "MEDIUM ARMOR")
-	var/armors_choice = input(H, "Choose your ARMOR.", "PROTECTION FROM THE LADY") as anything in armors
+	var/armors = list("重型护甲", "中型护甲")
+	var/armors_choice = input(H, "选择你的护甲。", "来自女士的庇护") as anything in armors
 	switch(armors_choice)
-		if("HEAVY ARMOR")
+		if("重型护甲")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/zizo
 			gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
@@ -96,7 +96,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
-		if("MEDIUM ARMOR")
+		if("中型护甲")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/medium/zizo
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo
@@ -105,41 +105,41 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
 
-	var/weapons = list("Absolutio - (greatsword)", "Vindicatio - (longsword)", "Damnatio - (rapier)", "Perditio - (kriegmesser)", "Messis - (billhook)", "Devotio - (arming sword)")
-	var/weapons_choice = input(H, "Choose your ARMS.", "ARMS FROM THE LADY") as anything in weapons
+var/weapons = list("赦免 - (巨剑)", "复仇 - (长剑)", "定罪 - (刺剑)", "毁灭 - (战争大砍刀)", "收获 - (钩镰)", "虔诚 - (骑士剑)")
+	var/weapons_choice = input(H, "选择你的武器。", "来自女士的兵刃") as anything in weapons
 	switch(weapons_choice)
-		if("Absolutio - (greatsword)")
+		if("赦免 - (巨剑)")
 			r_hand = /obj/item/rogueweapon/greatsword/zizo
 			l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 			H.adjust_skillrank_down_to(/datum/skill/combat/swords, 5, TRUE)
-		if("Vindicatio - (longsword)")
+		if("复仇 - (长剑)")
 			r_hand = /obj/item/rogueweapon/sword/long/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_down_to(/datum/skill/combat/swords, 5, TRUE)
-		if("Damnatio - (rapier)")
+		if("定罪 - (刺剑)")
 			r_hand = /obj/item/rogueweapon/sword/rapier/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_down_to(/datum/skill/combat/swords, 5, TRUE)
-		if("Perditio - (kriegmesser)")
+		if("毁灭 - (战争大砍刀)")
 			r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_down_to(/datum/skill/combat/swords, 5, TRUE)
-		if("Messis - (billhook)")
+		if("收获 - (钩镰)")
 			r_hand = /obj/item/rogueweapon/spear/billhook/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
 			backr = /obj/item/rogueweapon/scabbard/gwstrap
-		if("Devotio - (arming sword)")
+		if("虔诚 - (骑士剑)")
 			r_hand = /obj/item/rogueweapon/sword/arming/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
-			H.adjust_skillrank_down_to(/datum/skill/combat/swords, 5, TRUE)	
+			H.adjust_skillrank_down_to(/datum/skill/combat/swords, 5, TRUE)
 
 /datum/outfit/job/roguetown/wretch/ancientchampion/choose_loadout(mob/living/carbon/human/H)
 	if(H.mind)
-		var/paths = list("The Path of Might (+1 ALL STATS)", "The Path of Magic (More Spells)")
-		var/path_choice = input(H, "What did you excel at in life?", "IN HER NAME.") as anything in paths
+		var/paths = list("力量之路（全属性+1）", "魔法之路（更多法术）")
+		var/path_choice = input(H, "你生前最擅长什么？", "以她之名。") as anything in paths
 		switch(path_choice)
-			if("The Path of Might (+1 ALL STATS)") //Omnistat for maximum bounty. You are already supervalid.
+			if("力量之路（全属性+1）") //Omnistat for maximum bounty. You are already supervalid.
 				H.change_stat("strength", 1)
 				H.change_stat("perception", 1)
 				H.change_stat("intelligence", 1)
@@ -147,21 +147,21 @@
 				H.change_stat("willpower", 1)
 				H.change_stat("speed", 1)
 				H.change_stat("fortune", 1)
-			if("The Path of Magic (More Spells)") //Silence & Raise Deadite, plus choice between Bolt of Lightning and Ensnare.
+			if("魔法之路（更多法术）") //Silence & Raise Deadite, plus choice between Bolt of Lightning and Ensnare.
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/silence)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_deadite)
-				var/extraspell = list("Bolt of Lightning", "Ensnare")
-				var/spell_choice = input(H,"Choose your offensive spell.", "INEVITABILITY OF AMBITION") as anything in extraspell
+				var/extraspell = list("闪电箭", "束缚")
+				var/spell_choice = input(H,"选择你的进攻法术。", "野心的必然性") as anything in extraspell
 				switch(spell_choice)
-					if("Bolt of Lightning")
+					if("闪电箭")
 						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
-					if("Ensnare")
+					if("束缚")
 						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/ensnare)
 
 
 /obj/effect/proc_holder/spell/invoked/bonemend
-	name = "Bone Mend"
-	desc = "Mend the chosen target's bones with a burst of necrotic magick. Requires standing still for a few seconds"
+	name = "续骨术"
+	desc = "以一阵死灵魔力修补目标的骨骼。需要站立不动数秒。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	cost = 3
@@ -192,6 +192,6 @@
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(user.zone_selected))
 		if(affecting && (affecting.heal_damage(50, 50) || affecting.heal_wounds(50)))
 			target.update_damage_overlays()
-		target.visible_message(span_danger("[target] reforms under the vile energy!"), span_notice("I'm remade by dark magic!"))
+		target.visible_message(span_danger("[target] 在污秽能量下重塑成形！"), span_notice("我正被黑暗魔法重新塑造！"))
 		return TRUE
 	return TRUE

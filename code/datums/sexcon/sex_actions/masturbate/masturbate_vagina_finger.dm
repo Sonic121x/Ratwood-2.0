@@ -1,12 +1,12 @@
 /datum/sex_action/masturbate_vagina_finger
-	name = "Finger pussy"
+	name = "指弄小穴"
 	category = SEX_CATEGORY_HANDS
 	user_sex_part = SEX_PART_CUNT
 	subtle_supported = TRUE
 	solo = TRUE
 
 /datum/sex_action/masturbate_vagina_finger/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] starts fingering [user.p_their()] [pick("slit","cunt","pussy","snatch")]..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]开始指弄[user.p_their()]自己的[pick("裂缝","小穴","嫩穴","蜜处")]……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/masturbate_vagina_finger/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -14,7 +14,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] fingers [user.p_their()] [pick("slit","cunt","pussy","snatch")]..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]指弄着[user.p_their()]自己的[pick("裂缝","小穴","嫩穴","蜜处")]……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.generic_sex_noise()
 
@@ -25,7 +25,7 @@
 	user.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/masturbate_vagina_finger/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] stops fingering."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]停下了指弄小穴的动作。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/masturbate_vagina_finger/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

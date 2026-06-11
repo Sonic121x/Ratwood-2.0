@@ -1,6 +1,6 @@
 /datum/trade_good/wood
 	id = TRADE_GOOD_WOOD
-	name = "Wood"
+	name = "木料"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_WOOD
@@ -9,7 +9,7 @@
 
 /datum/trade_good/dendor_essence
 	id = TRADE_GOOD_DENDOR_ESSENCE
-	name = "Essence of Wilderness"
+	name = "荒野精华"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_DENDOR_ESSENCE
@@ -18,7 +18,7 @@
 
 /datum/trade_good/viscera
 	id = TRADE_GOOD_VISCERA
-	name = "Viscera"
+	name = "内脏"
 	category = TRADE_CATEGORY_ANIMAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_VISCERA
@@ -27,7 +27,7 @@
 
 /datum/trade_good/sinew
 	id = TRADE_GOOD_SINEW
-	name = "Sinew"
+	name = "筋腱"
 	category = TRADE_CATEGORY_ANIMAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_SINEW

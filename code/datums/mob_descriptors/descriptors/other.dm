@@ -1,5 +1,5 @@
 /datum/mob_descriptor/age
-	name = "Age"
+	name = "年龄"
 	slot = MOB_DESCRIPTOR_SLOT_AGE
 	verbage = "%LOOK%"
 
@@ -11,16 +11,16 @@
 /datum/mob_descriptor/age/get_description(mob/living/described)
 	var/mob/living/carbon/human/H = described
 	if(H.age == AGE_OLD)
-		return "old"
+		return "年迈"
 	else if (H.age == AGE_MIDDLEAGED)
-		return "middle-aged"
+		return "中年"
 	else
-		return "adult"
+		return "成年"
 
 /datum/mob_descriptor/penis
-	name = "penis"
+	name = "阴茎"
 	slot = MOB_DESCRIPTOR_SLOT_PENIS
-	verbage = "has"
+	verbage = "有着"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
@@ -50,35 +50,35 @@
 	var/arousal_modifier
 	switch(penis.penis_size)
 		if(1)
-			adjective = "a small"
+			adjective = "小巧的"
 		if(2)
-			adjective = "an average"
+			adjective = "普通的"
 		if(3)
-			adjective = "a large"
+			adjective = "硕大的"
 	if(H.sexcon)
 		switch(H.sexcon.arousal)
 			if(80 to INFINITY)
-				arousal_modifier = ", throbbing violently"
+				arousal_modifier = "，正在剧烈搏动"
 			if(50 to 80)
-				arousal_modifier = ", turgid and leaky"
+				arousal_modifier = "，胀硬而渗液"
 			if(20 to 50)
-				arousal_modifier = ", stiffened and twitching"
+				arousal_modifier = "，绷紧并微微抽搐"
 			else
-				arousal_modifier = ", soft and flaccid"
+				arousal_modifier = "，柔软而松弛"
 	else
-		arousal_modifier = ", soft and flaccid"
+		arousal_modifier = "，柔软而松弛"
 	var/used_name
 	if(penis.erect_state != ERECT_STATE_HARD && penis.sheath_type != SHEATH_TYPE_NONE)
 		switch(penis.sheath_type)
 			if(SHEATH_TYPE_NORMAL)
 				if(penis.penis_size == 3)
-					used_name = "a fat sheath"
+					used_name = "肥厚的鞘皮"
 				else if(penis.penis_size == 1)
-					used_name = "a meager sheath"
+					used_name = "瘦小的鞘皮"
 				else
-					used_name = "a sheath"
+					used_name = "鞘皮"
 			if(SHEATH_TYPE_SLIT)
-				used_name = "a genital slit"
+				used_name = "生殖裂缝"
 	else
 		used_name = "[adjective] [penis.name][arousal_modifier]"
 	var/branded = ""
@@ -86,11 +86,11 @@
 	if(length(penis.branded_writing))
 		brand_text = penis.branded_writing
 		if(penis.enslavement_mark)
-			brand_text = "[brand_text], a mark of ownership"
+			brand_text = "[brand_text], 一个所有权的标记"
 	else if(penis.enslavement_mark)
-		brand_text = "a mark of ownership"
+		brand_text = "一个所有权的标记"
 	if(length(brand_text))
-		branded = ", branded with <span style='font-size:150%;'>[span_boldwarning(brand_text)]</span>"
+		branded = ",烙有<span style='font-size:150%;'>[span_boldwarning(brand_text)]</span>"
 	var/base_description = "[used_name][branded]"
 	var/obj/item/organ/testicles/testes = H.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(testes && penis.sheath_type != SHEATH_TYPE_SLIT)
@@ -99,9 +99,9 @@
 	return pubes_descriptor.append_to_genital_description(base_description, H, watcher)
 
 /datum/mob_descriptor/testicles
-	name = "balls"
+	name = "睾丸"
 	slot = MOB_DESCRIPTOR_SLOT_TESTICLES
-	verbage = "has"
+	verbage = "有着"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
@@ -133,29 +133,29 @@
 	var/adjective
 	switch(testes.ball_size)
 		if(1)
-			adjective = "a small"
+			adjective = "一对小巧的"
 		if(2)
-			adjective = "an average"
+			adjective = "一对普通的"
 		if(3)
-			adjective = "a large"
+			adjective = "一对硕大的"
 	var/branded = ""
 	var/brand_text = ""
 	if(length(testes.branded_writing))
 		brand_text = testes.branded_writing
 		if(testes.enslavement_mark)
-			brand_text = "[brand_text], a mark of ownership"
+			brand_text = "[brand_text],一个所有权的标记"
 	else if(testes.enslavement_mark)
-		brand_text = "a mark of ownership"
+		brand_text = "一个所有权的标记"
 	if(length(brand_text))
-		branded = ", branded with <span style='font-size:125%;'>[span_boldwarning(brand_text)]</span>"
-	var/base_description = "[adjective] pair of balls[branded]"
+		branded = ",烙有<span style='font-size:125%;'>[span_boldwarning(brand_text)]</span>"
+	var/base_description = "[adjective]睾丸[branded]"
 	var/datum/mob_descriptor/pubes/pubes_descriptor = MOB_DESCRIPTOR(/datum/mob_descriptor/pubes)
 	return pubes_descriptor.append_to_genital_description(base_description, H, watcher)
 
 /datum/mob_descriptor/vagina
-	name = "vagina"
+	name = "阴道"
 	slot = MOB_DESCRIPTOR_SLOT_VAGINA
-	verbage = "has"
+	verbage = "有着"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
@@ -185,36 +185,36 @@
 	var/arousal_modifier
 	switch(vagina.accessory_type)
 		if(/datum/sprite_accessory/vagina/human)
-			vagina_type = "plain vagina"
+			vagina_type = "普通阴道"
 		if(/datum/sprite_accessory/vagina/hairy)
-			vagina_type = "hairy vagina"
+			vagina_type = "多毛阴道"
 		if(/datum/sprite_accessory/vagina/trimmed)
-			vagina_type = "trimmed vagina"
+			vagina_type = "修整过的阴道"
 		if(/datum/sprite_accessory/vagina/spade)
-			vagina_type = "spade vagina"
+			vagina_type = "铲形阴道"
 		if(/datum/sprite_accessory/vagina/furred)
-			vagina_type = "furred vagina"
+			vagina_type = "覆毛阴道"
 		if(/datum/sprite_accessory/vagina/gaping)
-			vagina_type = "gaping vagina"
+			vagina_type = "张开的阴道"
 		if(/datum/sprite_accessory/vagina/cloaca)
-			vagina_type = "cloaca"
+			vagina_type = "泄殖腔"
 	switch(H.sexcon.arousal)
 		if(80 to INFINITY)
-			arousal_modifier = ", gushing with arousal"
+			arousal_modifier = "，正因情动而汩汩泛湿"
 		if(50 to 80)
-			arousal_modifier = ", slickened with arousal"
+			arousal_modifier = "，正因情动而变得滑润"
 		if(20 to 50)
-			arousal_modifier = ", wet with arousal"
+			arousal_modifier = "，正因情动而湿润"
 	var/branded = ""
 	var/brand_text = ""
 	if(length(vagina.branded_writing))
 		brand_text = vagina.branded_writing
 		if(vagina.enslavement_mark)
-			brand_text = "[brand_text], a mark of ownership"
+			brand_text = "[brand_text],一个所有权的标记"
 	else if(vagina.enslavement_mark)
-		brand_text = "a mark of ownership"
+		brand_text = "一个所有权的标记"
 	if(length(brand_text))
-		branded = ", branded with <span style='font-size:125%;'>[span_boldwarning(brand_text)]</span>"
+		branded = ",烙有<span style='font-size:125%;'>[span_boldwarning(brand_text)]</span>"
 	var/base_description = "a [vagina_type][arousal_modifier][branded]"
 	if(H.getorganslot(ORGAN_SLOT_PENIS) || H.getorganslot(ORGAN_SLOT_TESTICLES))
 		return base_description
@@ -222,9 +222,9 @@
 	return pubes_descriptor.append_to_genital_description(base_description, H, watcher)
 
 /datum/mob_descriptor/breasts
-	name = "breasts"
+	name = "乳房"
 	slot = MOB_DESCRIPTOR_SLOT_BREASTS
-	verbage = "has"
+	verbage = "有着"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
@@ -248,47 +248,47 @@
 	var/adjective
 	switch(breasts.breast_size)
 		if(0)
-			adjective = "a flat chest"
+			adjective = "平坦的胸膛"
 		if(1)
-			adjective = "a slight"
+			adjective = "一对纤小的"
 		if(2)
-			adjective = "a small"
+			adjective = "一对小巧的"
 		if(3)
-			adjective = "a moderate"
+			adjective = "一对中等的"
 		if(4)
-			adjective = "a large"
+			adjective = "一对丰满的"
 		if(5)
-			adjective = "a generous"
+			adjective = "一对丰硕的"
 		if(6)
-			adjective = "a heavy"
+			adjective = "一对沉甸甸的"
 		if(7)
-			adjective = "a massive"
+			adjective = "一对巨大的"
 		if(8)
-			adjective = "a heaping"
+			adjective = "一对夸张丰满的"
 		if(9)
-			adjective = "an obscene"
+			adjective = "一对过于夸张的"
 		if(10)
-			adjective = "a backbreaking"
+			adjective = "一对压弯脊背的"
 		if(11)
-			adjective = "a stomach-hiding"
+			adjective = "一对遮住腹部的"
 		if(12)
-			adjective = "a torso-sized"
+			adjective = "一对有躯干般大小的"
 	var/branded = ""
 	var/brand_text = ""
 	if(length(breasts.branded_writing))
 		brand_text = breasts.branded_writing
 		if(breasts.enslavement_mark)
-			brand_text = "[brand_text], a mark of ownership"
+			brand_text = "[brand_text],一个所有权的标记"
 	else if(breasts.enslavement_mark)
-		brand_text = "a mark of ownership"
+		brand_text = "一个所有权的标记"
 	if(length(brand_text))
-		branded = ", branded with <span style='font-size:125%;'>[span_boldwarning(brand_text)]</span>"
+		branded = ",烙有<span style='font-size:125%;'>[span_boldwarning(brand_text)]</span>"
 	if(breasts.breast_size == 0)
 		return "[adjective][branded]"
-	return "[adjective] pair of breasts[branded]"
+	return "[adjective]乳房[branded]"
 
 /datum/mob_descriptor/pubes
-	name = "pubes"
+	name = "阴毛"
 	slot = MOB_DESCRIPTOR_SLOT_PUBES
 	verbage = "has"
 	show_obscured = TRUE
@@ -336,17 +336,17 @@
 	var/adjective
 	switch(feature.accessory_type)
 		if(/datum/sprite_accessory/pubes/hairy)
-			adjective = "a dense bushel of [material_description]"
+			adjective = "一丛浓密的[material_description]"
 		if(/datum/sprite_accessory/pubes/trim)
-			adjective = "[material_description] manicured neatly save for some wayward stubble"
+			adjective = "[material_description]修剪得整整齐齐，只有些许杂乱短茬"
 		if(/datum/sprite_accessory/pubes/strip)
-			adjective = "[material_description] shaved bare save for an inviting strip"
+			adjective = "[material_description]剃得精光，只留下一道诱人的细条"
 		if(/datum/sprite_accessory/pubes/heart)
-			adjective = "a heart shaped mound of [material_description]"
+			adjective = "一丛心形的[material_description]"
 		if(/datum/sprite_accessory/pubes/extreme)
-			adjective = "a luridly unkempt jungle of [material_description]"
+			adjective = "一片杂乱茂盛的[material_description]丛林"
 		if(/datum/sprite_accessory/pubes/cross)
-			adjective ="[material_description] shaved into the shape of the Psycross"
+			adjective = "[material_description]剃成了普赛圣十字的形状"
 		else//someone add more bush sprites but they forget to set the examine text? Just default to our descriptor name.
 			adjective ="[material_description]"
 	return "[adjective]"
@@ -360,10 +360,10 @@
 	var/pubes_description = get_description_for_watcher(H, watcher)
 	if(!pubes_description)
 		return base_description
-	return "[base_description], framed by [pubes_description]"//we use pube_description and not just adjective so we can have the colors seperate
+	return "[base_description],周围衬着[pubes_description]"//we use pube_description and not just adjective so we can have the colors seperate
 
 /datum/mob_descriptor/pits
-	name = "armpits"
+	name = "腋毛"
 	slot = MOB_DESCRIPTOR_SLOT_PITS
 	verbage = "has"
 	show_obscured = TRUE
@@ -409,13 +409,13 @@
 	var/adjective
 	switch(feature.accessory_type)
 		if(/datum/sprite_accessory/pits/trim)
-			adjective = "a trim, prickly spatter of"
+			adjective = "一小撮修剪整齐、扎人的"
 		if(/datum/sprite_accessory/pits/moderate)
-			adjective = "a few wispy strands of"
+			adjective = "几缕稀疏的"
 		if(/datum/sprite_accessory/pits/hairy)
-			adjective = "a dense bush of"
+			adjective = "一丛茂密的"
 		if(/datum/sprite_accessory/pits/extreme)
-			adjective = "an utterly unkempt jungle of"
+			adjective = "一片完全未经打理的丛林般的"
 		else
-			adjective = "an average crop of"
+			adjective = "一茬普通的"
 	return "[adjective] [material_description]"

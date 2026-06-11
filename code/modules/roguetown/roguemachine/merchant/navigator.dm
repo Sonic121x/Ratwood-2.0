@@ -2,8 +2,8 @@
 #define EXPORT_TIME_TESTING 5 SECONDS
 
 /obj/item/roguemachine/navigator
-	name = "navigator"
-	desc = "A machine that attracts the attention of trading balloons."
+	name = "引航机"
+	desc = "一台会吸引贸易气球注意的机器。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "ballooner"
 	density = TRUE
@@ -25,7 +25,7 @@
 	var/levy_collected_here = 0
 	var/is_bm_export = FALSE
 	/// Motto displayed at the top of the vendor interface
-	var/motto = "NAVIGATOR - Your goods, airborne."
+	var/motto = "引航机 - 让你的货物飞上天空。"
 	/// Throttle for player-initiated market refresh actions; 5 seconds between refreshes per machine.
 	var/last_market_refresh = 0
 
@@ -35,7 +35,7 @@
 	#ifdef LOCALTEST
 	export_time = EXPORT_TIME_TESTING
 	#endif
-	. += span_notice("This machine attracts trading balloons every [DisplayTimeText(export_time)]. Goods are sucked into the air and mammons are dropped after tax has been collected.")
+	. += span_notice("这台机器每隔 [DisplayTimeText(export_time)] 就会吸引来贸易气球。货物会被吸上天空，在扣税后投下玛门。")
 
 /obj/item/roguemachine/navigator/get_mechanics_examine(mob/user)
 	. = ..()
@@ -51,8 +51,8 @@
 
 // Note: this is AP's navigator/smuggler under the path our maps already place.
 /obj/item/roguemachine/navigator/blackmarket
-	name = "suspicious navigator"
-	desc = "Freedom has a price."
+	name = "可疑引航机"
+	desc = "自由是有代价的。"
 	motto = "NA?!G@#OR - ████ ██████ █████████ - FREEDOM OF TRANSACTION."
 	fixed_tax = 0.5 // 50% taxation and rip off to encourage people to risk it with merchant / others
 	// Smuggler-grade: dodges the Crown's export duty (recorded as evaded), pays no Guild levy,
@@ -378,7 +378,7 @@
 					play_sound=TRUE
 					budgie += prize
 					credit_pool(bucket, base_price)
-					I.visible_message(span_warning("[I] is sucked into the air!"))
+					I.visible_message(span_warning("[I]被吸上了天空！"))
 					if(bucket)
 						if(saturation_mult < 0.6 && !(bucket in penalty_categories))
 							penalty_categories += bucket

@@ -1,5 +1,6 @@
 /datum/job/roguetown/steward
 	title = "Steward"
+	display_title = "总管"
 	flag = STEWARD
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -9,7 +10,7 @@
 	allowed_races = RACES_NO_CONSTRUCT
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_STEWARD
-	tutorial = "Coin, Coin, Coin! Oh beautiful coin: You're addicted to it, and you hold the position as the Grand Duke's personal treasurer of both coin and information. You know the power silver and gold has on a man's mortal soul, and you know just what lengths they'll go to in order to get even more. Keep your festering economy alive- for it is the only thing you can weigh any trust into anymore."
+	tutorial = "钱，钱，钱！啊，甜美的钱：你早已沉迷其中，而你如今正担任大公私人的财库与情报管家。你深知金银对凡人灵魂有何等诱惑，也明白人们会为了得到更多而做到什么地步。让这腐败溃烂的经济继续运转下去吧，因为如今它已是你唯一还能寄托些许信任的东西。"
 	outfit = /datum/outfit/job/roguetown/steward
 	give_bank_account = 22
 	noble_income = 16
@@ -28,8 +29,8 @@
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
 
 /datum/advclass/steward
-	name = "Steward"
-	tutorial = "Coin, Coin, Coin! Oh beautiful coin: You're addicted to it, and you hold the position as the Grand Duke's personal treasurer of both coin and information. You know the power silver and gold has on a man's mortal soul, and you know just what lengths they'll go to in order to get even more. Keep your festering economy alive- for it is the only thing you can weigh any trust into anymore."
+	name = "总管"
+	tutorial = "钱，钱，钱！啊，甜美的钱：你早已沉迷其中，而你如今正担任大公私人的财库与情报管家。你深知金银对凡人灵魂有何等诱惑，也明白人们会为了得到更多而做到什么地步。让这腐败溃烂的经济继续运转下去吧，因为如今它已是你唯一还能寄托些许信任的东西。"
 	outfit = /datum/outfit/job/roguetown/steward/basic
 
 	category_tags = list(CTAG_STEWARD)
@@ -85,14 +86,14 @@
 
 GLOBAL_VAR_INIT(steward_tax_cooldown, -50000) // Antispam
 /mob/living/carbon/human/proc/adjust_taxes()
-	set name = "Adjust Taxes"
-	set category = "Stewardry"
+	set name = "调整税率"
+	set category = "总管事务"
 	if(stat)
 		return
 	if(world.time < GLOB.steward_tax_cooldown + 600 SECONDS)
-		to_chat(src, span_warning("You must wait [round((GLOB.steward_tax_cooldown + 600 SECONDS - world.time)/600, 0.1)] minutes before adjusting taxes again! Think of the realm."))
+		to_chat(src, span_warning("我还得等上[round((GLOB.steward_tax_cooldown + 600 SECONDS - world.time)/600, 0.1)]分钟，才能再次调整税率！为这片领地想想吧。"))
 		return FALSE
-	var/datum/taxsetter/taxsetter = new("The Diligent Steward Intervenes", "The Greedy Steward Imposes")
+	var/datum/taxsetter/taxsetter = new("勤勉的总管出手干预", "贪婪的总管强加税负")
 	taxsetter.requesting_steward = src
 	taxsetter.ui_interact(src)
 
@@ -103,11 +104,11 @@ GLOBAL_VAR_INIT(steward_tax_cooldown, -50000) // Antispam
 			continue
 		var/pretty = SStreasury.get_tax_category_pretty_name(entry["category"])
 		lines += "[pretty]: [entry["rate"]]%"
-	var/summary = length(lines) ? jointext(lines, "\n") : "No changes specified."
-	var/choice = alert(lord, "The steward requests new levy rates!\n[summary]", "STEWARD TAX REQUEST", "Yes", "No")
-	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
+	var/summary = length(lines) ? jointext(lines, "\n") : "未指定任何改动。"
+	var/choice = alert(lord, "总管请求调整新的征税税率！\n[summary]", "总管征税请求", "是", "否")
+	if(choice != "是" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(steward)
-			to_chat(steward, span_warning("The lord has denied the request to adjust levy rates!"))
+			to_chat(steward, span_warning("领主已拒绝调整征税税率的请求！"))
 		return
 	SStreasury.apply_rate_adjustments(category_rates, steward, good_announcement_text, bad_announcement_text)
 
@@ -117,11 +118,11 @@ GLOBAL_VAR_INIT(steward_tax_cooldown, -50000) // Antispam
 		if(!islist(entry))
 			continue
 		var/pretty = SStreasury.get_poll_tax_category_pretty_name(entry["category"])
-		lines += "[pretty]: [entry["rate"]]m/day"
-	var/summary = length(lines) ? jointext(lines, "\n") : "No changes specified."
-	var/choice = alert(lord, "The steward requests new poll tax rates!\n[summary]", "STEWARD POLL TAX REQUEST", "Yes", "No")
-	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
+		lines += "[pretty]: [entry["rate"]]玛门/天"
+	var/summary = length(lines) ? jointext(lines, "\n") : "未指定任何改动。"
+	var/choice = alert(lord, "总管请求调整新的人头税税率！\n[summary]", "总管人头税请求", "是", "否")
+	if(choice != "是" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(steward)
-			to_chat(steward, span_warning("The lord has denied the request to adjust poll tax rates!"))
+			to_chat(steward, span_warning("领主已拒绝调整人头税税率的请求！"))
 		return
 	SStreasury.apply_poll_rate_adjustments(poll_rates, steward, good_announcement_text, bad_announcement_text)

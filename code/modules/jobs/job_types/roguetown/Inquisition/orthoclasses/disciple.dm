@@ -1,8 +1,8 @@
 //Unarmed central, with a singular exception.
 //These guys get some absurd power.
 /datum/advclass/disciple
-	name = "Disciple"
-	tutorial = "Psydonite monks, practiced in both martiality and scripture. Spilling blood on sacred grounds is considered 'sinful' to the clergymen, though no qualms are spared towards knocking someone's lights out."
+	name = "门徒"
+	tutorial = "你是 普赛顿 的修士，既通武艺，也习经文。神职者将圣地流血视作一种“罪”，但若只是把人打得不省人事，他们可不会有半点顾忌。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/disciple
@@ -32,9 +32,9 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE,
 	)
 	subclass_stashed_items = list(
-		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
+		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
 	)
-	extra_context = "This subclass can choose from multiple disciplines. The further your chosen discipline strays from unarmed combat, however, the greater your skills in fistfighting and wrestling will atrophy. Taking a Quarterstaff provides a minor bonus to Perception and Intelligence, but removes the 'Critical Resistance' trait."
+	extra_context = "该子职业可从多种修行路数中择一。你所选的路数离徒手格斗越远，你在拳斗与摔跤上的造诣就会萎缩得越厉害。若选择四分杖，则会小幅提升感知与智力，但会失去“重创抗性”特质。"
 
 /datum/outfit/job/roguetown/disciple
 	job_bitflag = BITFLAG_HOLY_WARRIOR
@@ -49,10 +49,10 @@
 	if(H.has_flaw(/datum/charflaw/addiction/alcoholic))//THE LEADER OF THE EIGHT ENDURING FISTS SWAYED BACK AND FORTH TO TRICK THE HERETICS, DRUNK WITH INTERNAL FIRE. THEY WERE BUT FROGS IN A WELL LOOKING UP AT THE NIGHT SKY THINKING THEY HAD REACHED THE HEAVENS.
 		ADD_TRAIT(H, TRAIT_DRUNK_HEALING, TRAIT_GENERIC)
 	if(H.mind)
-		var/weapons = list("Abboteer - Master Pugilist, Weaponless Oath & No Malus", "Pugilist - Master Athletics, Pain Resistance", "Quarterstaff - Expert Polearms, +I PER / +I INT")
-		var/weapon_choice = input(H,"Choose your WEAPON.", "TAKE UP PSYDON'S ARMS.") as anything in weapons
+		var/weapons = list("护教者 - 精通拳斗，戒武誓约且无减值", "拳斗士 - 精通运动，痛苦抵抗", "四分杖 - 专家长柄，+1感知/+1智力")
+		var/weapon_choice = input(H,"选择你的武器。", "执起普赛顿的兵刃。") as anything in weapons
 		switch(weapon_choice)
-			if("Abboteer - Master Pugilist, Weaponless Oath & No Malus")//the enduringest psychud. Weighted 12 stats but no weapons, period.
+			if("护教者 - 精通拳斗，戒武誓约且无减值")//the enduringest psychud. Weighted 12 stats but no weapons, period.
 				devotion_gain = CLERIC_REGEN_MINOR
 				devotion_limit = CLERIC_REQ_2
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_MASTER, TRUE)
@@ -66,19 +66,19 @@
 				ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)//bite the necromancer's nose and ears off for Psydon.
 				H.change_stat(STATKEY_INT, 1)
 				H.change_stat(STATKEY_SPD, 1)
-			if("Pugilist - Master Athletics, Pain Resistance")//classic disciple but with the weapon choices not being a noob trap that debuffs you for grabbing a weapon you can make with 1 bullion roundstart.
+			if("拳斗士 - 精通运动，痛苦抵抗")//classic disciple but with the weapon choices not being a noob trap that debuffs you for grabbing a weapon you can make with 1 bullion roundstart.
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_MASTER, TRUE)
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
 				ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-				var/pugtype = list("Katar", "Knuckledusters")
-				var/pug_choice = input(H,"Choose your PUGILIST WEAPON.", "TAKE UP PSYDON'S ARMS.") as anything in pugtype
+				var/pugtype = list("拳刃", "指虎")
+				var/pug_choice = input(H,"选择你的拳斗武器。", "执起普赛顿的兵刃。") as anything in pugtype
 				switch(pug_choice)
-					if("Katar")
+					if("拳刃")
 						r_hand = /obj/item/rogueweapon/katar/psydon
-					if("Knuckledusters")
+					if("指虎")
 						r_hand = /obj/item/rogueweapon/knuckles/psydon
-			if("Quarterstaff - Expert Polearms, +I PER / +I INT")//stave user but with no int and per malus so they dont get folded.
+			if("四分杖 - 专家长柄，+1感知/+1智力")//stave user but with no int and per malus so they dont get folded.
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/psy
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted//no pugulist gloves for you sire, you have a staff.

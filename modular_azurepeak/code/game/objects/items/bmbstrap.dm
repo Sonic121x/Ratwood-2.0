@@ -1,6 +1,6 @@
 /obj/item/bmbstrap
-	name = "Bombdolier"
-	desc = "A strap for carrying grenades. A lunatic's invention, surely."
+	name = "炸弹挎带"
+	desc = "一条用于携带手雷的背带。毫无疑问，这是疯子的发明。"
 	icon_state = "bombdolier1"
 	item_state = "bombdolier"
 	icon = 'modular_azurepeak/icons/obj/items/bombdolier.dmi'
@@ -42,7 +42,7 @@
 		return ..()
 
 	if(length(tweps) >= max_storage)
-		to_chat(user, span_warning("Full!"))
+		to_chat(user, span_warning("满了!"))
 		return TRUE
 
 	if(!user.transferItemToLoc(I, src))
@@ -94,8 +94,8 @@
 /obj/item/bmbstrap/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
-		. += "Its current capacity is: ([tweps.len]/[max_storage])"
-		. += "It contains: [counting_english_list(tweps)]"
+		. += "当前容量为：([tweps.len]/[max_storage])"
+		. += "其中包含：[counting_english_list(tweps)]"
 
 /obj/item/bmbstrap/update_icon()
 	switch(tweps.len)

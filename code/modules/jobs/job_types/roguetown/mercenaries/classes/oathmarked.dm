@@ -10,8 +10,8 @@
 //The Oathmarked are an ancient order of drakian, dedicated to serving nobility and eradicating that which would destroy the natural order of Astrata's tyranny.
 //These guys are in need of actual sprites, too, aside from that. Otherwise, they're probably fine. I guess.
 /datum/advclass/mercenary/oathmarked
-	name = "Oathmarked Sentinel"
-	tutorial = "You're a sentinel of the Oathmarked. Trained in use of your order's unique polearms and plate wearing."
+	name = "誓印哨卫"
+	tutorial = "你是誓印者中的哨卫，受训使用你们教团独有的长柄兵器，并习惯披挂板甲作战。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/dracon
@@ -41,9 +41,9 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,//Imperial is not your mother tongue.
 	)
-	extra_context = "This subclass is limited to: Drakian"// | Middle-Aged & Old"
+	extra_context = "该分支仅限：Drakian"// | Middle-Aged & Old"
 	subclass_stashed_items = list(//They come prepared. We really should just give this to all mercs.
-		"Writ of Service" = /obj/item/merctoken
+		"服役文书" = /obj/item/merctoken
 	)
 
 /datum/outfit/job/roguetown/mercenary/oathmarked/pre_equip(mob/living/carbon/human/H)
@@ -74,8 +74,8 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
 /datum/advclass/mercenary/oathmarked/executor
-	name = "Oathmarked Executor"
-	tutorial = "You're an executor of the Oathmarked. Trained in use of your order's unique swords and plate wearing."
+	name = "誓印行刑者"
+	tutorial = "你是誓印者中的行刑者，受训使用你们教团独有的大剑，并习惯披挂板甲作战。"
 	outfit = /datum/outfit/job/roguetown/mercenary/oathmarked/executor
 	subclass_stats = list(//8 stat spread. Very strong. +1CON/WILL from their ring.
 		STATKEY_STR = 2,//15STR, with a statpack. 13STR otherwise.
@@ -105,9 +105,9 @@
 	force_wielded = 32
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/bash/eaglebeak,
 	/datum/intent/mace/smash/eaglebeak, /datum/intent/mace/warhammer/pick/ranged)
-	name = "oathmarked's polehammer"
-	desc = "A reinforced pole affixed with a head of steel. On the opposite side, a pick, intended to punch through plate. \
-	Above? A thrusting head. A weapon to kill more noble foes, evidently."
+	name = "誓印长杆战锤"
+	desc = "一根加固长杆，前端装着钢制锤头，背面则是专为凿穿板甲而设的尖镐。 \
+	上方还伸出一枚突刺头。显然，这是一件专为诛杀更高贵敌手而生的武器。"
 	icon_state = "polehammerb"//Temp. A reuse, but unused elsewhere.
 	minstr = 12//+1
 	minstr_req = TRUE//You MUST have the required strength. No exceptions.
@@ -117,9 +117,9 @@
 /obj/item/rogueweapon/eaglebeak/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>An oathmarked's polehammer. Designed in an earlier era, under the direction of Hadr�nzhar. \
-		A lord lost to centuries. The original keeper of the oath. The purpose was simple: <br>\
-		A hammer to break the rabble. A pick to slay the traitors. A head to pierce both.</small>"
+		. += "<small>这是一柄誓印者的长杆战锤，诞生于更久远的年代，由 Hadrûnzhar 主导设计。\
+		那是一位湮没于数百年时光中的领主，也是最初的誓约守护者。它的用途很简单：<br>\
+		用锤击碎乌合之众，用镐诛杀叛徒，用枪尖一并贯穿两者。</small>"
 
 /datum/intent/mace/warhammer/pick/ranged
 	penfactor = 40//-40% less.
@@ -128,9 +128,9 @@
 	clickcd = CLICK_CD_HEAVY
 
 /obj/item/rogueweapon/greatsword/grenz/oathmarked
-	name = "oathmarked's flamberge"
-	desc = "An incredibly well balanced blade, designed for a rather large frame. Heavy beyond any reasonable measure. \
-	The work of a master smith, or one with far too much time to spare. The blade of a noble, surely."
+	name = "誓印焰纹巨剑"
+	desc = "一柄平衡得惊人的巨刃，按极为高大的身形打造，沉重得近乎超出常理。 \
+	这要么出自名匠之手，要么出自一个闲得过分的人。无论如何，这必是贵胄之刃。"
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/peel/big, /datum/intent/sword/strike/bad)
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "oathflamberge"//Temp.
@@ -143,14 +143,14 @@
 /obj/item/rogueweapon/greatsword/grenz/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>An oathmarked's flamberge. Designed in an earlier era, under the direction of Hadr�nzhar. \
-		A lord lost to centuries. The original keeper of the oath. The purpose was simple: <br>\
-		A blade fit for a king, to bear the oath's violence in place of the lordling's hand.</small>"
+		. += "<small>这是一柄誓印者的焰纹巨剑，诞生于更久远的年代，由 Hadrûnzhar 主导设计。\
+		那是一位湮没于数百年时光中的领主，也是最初的誓约守护者。它的用途很简单：<br>\
+		这是一柄配得上王者的利刃，代替那位贵胄之手承载誓约的暴烈。</small>"
 
 //Armour
 /obj/item/clothing/gloves/roguetown/plate/oathmarked
-	name = "oathmarked gauntlets"
-	desc = "Plate gauntlets made out of blackened steel."
+	name = "誓印臂铠"
+	desc = "以熏黑钢板锻成的一对板甲臂铠。"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -159,8 +159,8 @@
 	max_integrity = ARMOR_INT_SIDE_IRON + 50//275. 25 less than standard steel.
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/oathmarked
-	name = "oathmarked armor"
-	desc = "Weathered, blackened steel plate armor. Fit for a noble. Weaker as a result of the smithing process, though no less protective."
+	name = "誓印板甲"
+	desc = "一套历经风霜的熏黑钢板甲，样式足以配得上贵胄。虽因锻造工艺而稍显脆弱，却依旧提供不俗防护。"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -169,8 +169,8 @@
 	max_integrity = ARMOR_INT_CHEST_PLATE_IRON + 50//425. 75 less than standard steel plate.
 
 /obj/item/clothing/under/roguetown/platelegs/oathmarked
-	name = "oathmarked chausses"
-	desc = "Reinforced armor to protect the legs, fashioned out of blackened steel plate."
+	name = "誓印腿甲"
+	desc = "一副用于保护双腿的加固护甲，以熏黑钢板打造而成。"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bplatelegs"//Temp.
@@ -178,16 +178,16 @@
 	max_integrity = ARMOR_INT_LEG_IRON_PLATE + 50//350. 50 less than standard steel chausses.
 
 /obj/item/clothing/shoes/roguetown/boots/armor/oathmarked
-	name = "oathmarked boots"
-	desc = "Boots forged of a set of blackened steel plates to protect your fragile toes."
+	name = "誓印战靴"
+	desc = "由成组熏黑钢板锻成的战靴，用来保护你脆弱的脚趾。"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bplateboots"//Temp.
 	item_state = "bplateboots"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/oathmarked
-	name = "oathmarked helmet"
-	desc = "An ancient helm, similar in design to a modern blacksteel armet. Albeit without the visor. Expensive looking, but certainly not blacksteel..."
+	name = "誓印头盔"
+	desc = "一顶古老头盔，外形近似现代黑钢阿米特盔，只是没有面甲。看上去价格不菲，但显然并不是真正的黑钢……"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bplatehelm_nv"//Temp.
@@ -201,20 +201,20 @@
 	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked
-	name = "oathmarked amulet of Astrata"
-	desc = "An amulet of the Tyrant. Whether or not the bearer believes in the creed, the Oathmarked serve in Her name all the same. \
-	This specific amulet bears the blessing of silver."
+	name = "阿斯特拉塔 誓印护符"
+	desc = "一枚属于暴君的护符。无论佩戴者是否真心信奉其教义，誓印者终究仍以她之名侍奉。 \
+	而这一枚护符还承载着白银的祝福。"
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>Hadr�nzhar, the best of his house. A drakian that stood above the squabbles of inter-drakian conflict. \
-		He'd given his Oathmarked a singular purpose: <br>\
-		To destroy all that would harm Astrata's noble order. To eradicate the taint of left-handed magyks from the world.</small>"
+		. += "<small>Hadrûnzhar，他家族中最杰出的一位。作为一名 Drakian，他超然于诸多族内纷争之上。\
+		他曾给予自己的誓印者唯一的使命：<br>\
+		毁灭一切损害 Astrata 高贵秩序之物，将左手 magyks 的污秽自世间彻底根除。</small>"
 
 /obj/item/clothing/cloak/cape/oathmarked
-	name = "oathmarked cape"
-	desc = "A cape fit for an enormous frame."
+	name = "誓印披风"
+	desc = "一件按巨大身形裁制的披风。"
 	icon_state = "bkcape"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -223,15 +223,15 @@
 /obj/item/clothing/cloak/cape/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>Hadr�nzhar was known for his showboating and sudden violent outbursts. \
-		Once meant to be a symbol of mockery, for resentful Oathmarked, this cape now represents something greater. \
-		Hope. Hope that one dae he may return. \
-		For just as he'd vanished into Eressioth's demesne, all drakian, knowing or otherwise, pray for his return.</small>"
+		. += "<small>Hadrûnzhar 以张扬作风与突如其来的暴烈脾性而闻名。\
+		这件披风本是用来羞辱那些心怀怨恨的誓印者，如今却象征着更宏大的东西。\
+		那便是希望，希望有朝一日他会归来。\
+		正如他当年消失在 Eressioth 的领域之中那般，如今所有 Drakian，无论是否知情，都在祈祷他重返人世。</small>"
 
 //The RP tome.
 /obj/item/book/rogue/secret/oathmarked
-	name = "Oathmarked Tome"
-	desc = "An odd tome. The verbage hurts to look at, while the pages sit covered in dust."
+	name = "誓印秘典"
+	desc = "一本古怪的典籍。其措辞令人看着都觉得刺眼，书页上则覆满尘埃。"
 	icon_state = "ledger_0"
 	base_icon_state = "ledger"
 	bookfile = "oathmarked.json"
@@ -239,6 +239,6 @@
 /obj/item/book/rogue/secret/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>Ancient, written by Hadr�nzhar's closest after he'd vanished. \
-		It sets out the guidelines that all Oathmarked are doomed to follow. \
-		Just as Hadr�nzhar had in another era, before he'd slipped out of the knowing world.</small>"
+		. += "<small>这本古老秘典，是在 Hadrûnzhar 消失后由他最亲近之人所撰。\
+		其中列明了所有誓印者都注定必须遵循的准则。\
+		正如另一个时代里的 Hadrûnzhar 那样，在他从已知世界滑离而去之前。</small>"

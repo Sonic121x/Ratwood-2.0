@@ -1,6 +1,6 @@
 /obj/item/cooking/platter
-	name = "platter"
-	desc = "For holding meals fit for kings."
+	name = "盘子"
+	desc = "用来盛放配得上王侯的美餐。"
 	icon = 'modular/Neu_Food/icons/cookware/platter.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
@@ -15,9 +15,9 @@
 
 /obj/item/cooking/platter/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click a platter with food to 'plate' it up. This will also effectively prevent the food from rotting, while plated.")
-	. += span_info("Can be renamed with a feather. Name will be overridden by plating or finishing food.")
-	. += span_info("Plated food is preferred by nobility. Left-clicking plated food with a fork will allow you to eat it more elegantly.")
+	. += span_info("左键点击装有食物的托盘来“摆盘”。摆盘后还可以有效防止食物腐烂。")
+	. += span_info("可以用羽毛笔重命名。但摆盘或完成食物时会覆盖名称。")
+	. += span_info("摆盘食物受贵族青睐。用叉子左键点击摆盘食物可以更优雅地食用。")
 
 /*
 NEW SYSTEM
@@ -41,14 +41,14 @@ What it does:
 		if(isturf(loc)&& (found_table))
 			if (contents.len == 0)
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-				to_chat(user, span_info("I add \the [I.name] to \the [name]."))
+				to_chat(user, span_info("我把[I.name]放在了[name]上。"))
 				I.forceMove(src)
 				var/obj/item/reagent_containers/food/snacks/S = I
 				if(S?.faretype < FARE_LAVISH)
 					S.faretype++ //Things are tastier on plates.
 				update_icon()
 			else
-				to_chat(user, span_info("Something is already on this [initial(name)]! Remove it first."))
+				to_chat(user, span_info("[initial(name)]上已经有东西了！先把它拿开。"))
 		else
 			return ..()	
 
@@ -84,7 +84,7 @@ What it does:
 
 /obj/item/cooking/platter/attack_right(mob/user)
 	if(user.get_active_held_item())
-		to_chat(user, span_info("I can't do that with my hand full!"))
+		to_chat(user, span_info("我手上拿着东西，没法这样做！"))
 		return
 
 	if(contents.len >0)
@@ -97,7 +97,7 @@ What it does:
 			S.bonus_reagents = list()
 			if(S?.faretype > FARE_IMPOVERISHED)
 				S.faretype-- //Less tasty off the plate.
-		to_chat(user, span_info("I remove \the [contents[1].name] from \the [initial(name)]"))
+		to_chat(user, span_info("我把[contents[1].name]从[initial(name)]上取了下来。"))
 		if(!usr.put_in_hands(contents[1]))
 			var/atom/movable/S = contents[1]
 			S.forceMove(get_turf(src))

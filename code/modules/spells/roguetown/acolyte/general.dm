@@ -1,7 +1,7 @@
 // Lesser miracle
 /obj/effect/proc_holder/spell/invoked/lesser_heal
-	name = "Miracle"
-	desc = "Heals target over time, causes damage if something is embedded in target. Burns undead instead of healing them if you worship the Ten.<br>Does not work on those worshipping the dead god."
+	name = "奇迹"
+	desc = "随时间治疗目标，若目标体内有异物嵌入则会造成伤害。若你信仰十神，则可灼烧亡灵而非治疗。<br>对信仰已死之神的对象无效。"
 	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
 	action_icon = 'icons/mob/actions/genericmiracles.dmi'
 	overlay_state = "lesserheal"
@@ -37,19 +37,19 @@
 				C.apply_status_effect(/datum/status_effect/buff/fortify)
 
 	if(HAS_TRAIT(target, TRAIT_PSYDONITE))
-		target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+		target.visible_message(span_info("[target]动了动，奇迹消散了。"), span_notice("一阵迟钝的暖意在你心中膨胀，却又转瞬即逝。"))
 		user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 		playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 		return FALSE
 
 	if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD))
-		target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+		target.visible_message(span_danger("[target]被圣光灼伤！"), span_userdanger("我被圣光灼伤了！"))
 		target.adjustFireLoss(10)
 		target.fire_act(1, 10)
 		return TRUE
 
 	if(target.has_status_effect(/datum/status_effect/buff/healing))
-		to_chat(user, span_warning("They are already under the effects of a healing aura!"))
+		to_chat(user, span_warning("目标已受到治疗光环的影响！"))
 		revert_cast()
 		return FALSE
 
@@ -57,8 +57,8 @@
 	var/situational_bonus = 1
 	var/is_inhumen = FALSE
 
-	var/message_out = span_info("A choral sound comes from above and [target] is healed!")
-	var/message_self = span_notice("I am bathed in healing choral hymns!")
+	var/message_out = span_info("上方传来圣咏之声，[target] 的伤势开始愈合！")
+	var/message_self = span_notice("我沐浴在疗愈的圣咏之中！")
 
 	user.patron.on_lesser_heal(user, target, &message_out, &message_self, &conditional_buff, &situational_bonus, &is_inhumen)
 
@@ -66,7 +66,7 @@
 
 	if(conditional_buff)
 		if(situational_bonus > 0)
-			to_chat(user, "Channeling my patron's power is easier in these conditions!")
+			to_chat(user, "在这种环境下，引导我主的力量更加轻松！")
 		healing += situational_bonus
 
 	if(!ishuman(target))
@@ -85,7 +85,7 @@
 		break
 
 	if(!no_embeds)
-		target.visible_message("The wounds tear and rip around the embedded objects!", "Agonising pain shoots through your body as magycks try to sew around the embedded objects!")
+		target.visible_message("嵌入的物体周围的伤口撕裂开来！", "当魔法试图绕过嵌入的物体缝合时，剧痛贯穿你的身体！")
 		human.adjustBruteLoss(20)
 		playsound(target, 'sound/combat/dismemberment/dismem (2).ogg', 100)
 		human.emote("agony")
@@ -98,8 +98,8 @@
 
 // Miracle
 /obj/effect/proc_holder/spell/invoked/heal
-	name = "Fortify"
-	desc = "Improves the targets ability to receive healing, buffing all healing done on them by 50%<br>Burns undead instead of healing them if you worship the Ten."
+	name = "疗愈加护"
+	desc = "提升目标承受治疗的能力，使其受到的全部治疗效果提高 50%<br>若你信奉十神，它会灼烧亡灵而非治疗他们。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "fortify"
@@ -125,16 +125,16 @@
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(HAS_TRAIT(target, TRAIT_PSYDONITE))
-			target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+			target.visible_message(span_info("[target] 微微一颤，圣迹随之消散。"), span_notice("一股黯淡的暖意在我心中涌起，却又转瞬即逝。"))
 			user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 			playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 			return FALSE
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+			target.visible_message(span_danger("[target] 被圣光灼烧！"), span_userdanger("我被圣光灼烧了！"))
 			target.adjustFireLoss(25)
 			target.fire_act(1,10)
 			return TRUE
-		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
+		target.visible_message(span_info("一圈柔和的光辉拂过 [target]！"), span_notice("我沐浴在圣光之中！"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			C.apply_status_effect(/datum/status_effect/buff/fortify)
@@ -149,8 +149,8 @@
 // Instantly heals all wounds & damage on a selected limb.
 // Long CD (so a Medical class would still outpace this if there's more than one patient to heal)
 /obj/effect/proc_holder/spell/invoked/wound_heal
-	name = "Wound Miracle"
-	desc = "Heals all wounds on a targeted limb."
+	name = "疗伤圣迹"
+	desc = "治疗目标肢体上的全部伤口。"
 	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
 	overlay_state = "woundheal"
 	action_icon_state = "woundheal"
@@ -196,12 +196,12 @@
 				if(!istype(object, /obj/item/natural/worms/leech))	//Leeches and surgical cheeles are made an exception.
 					no_embeds = FALSE
 			if(!no_embeds)
-				to_chat(user, span_warning("We cannot seal wounds with objects inside this limb!"))
+				to_chat(user, span_warning("这条肢体里还有异物，我们无法封合伤口！"))
 				revert_cast()
 				return FALSE
 		if(!do_after(user, (delay - (0.5 SECONDS * HU.get_skill_level(associated_skill)))))
 			revert_cast()
-			to_chat(user, span_warning("We were interrupted!"))
+			to_chat(user, span_warning("我们被打断了！"))
 			return FALSE
 		var/foundwound = FALSE
 		if(length(affecting.wounds))
@@ -209,7 +209,7 @@
 				if(!isnull(wound) && wound.healable_by_miracles)
 					wound.heal_wound(wound.whp)
 					foundwound = TRUE
-					user.visible_message(("<font color = '#488f33'>[capitalize(wound.name)] oozes a clear fluid and closes shut, forming into a sore bruise!</font>"))
+					user.visible_message(("<font color = '#488f33'>[capitalize(wound.name)] 渗出澄澈液体，缓缓闭合，最终只留下酸痛的瘀痕！</font>"))
 					affecting.add_wound(/datum/wound/bruise/woundheal)
 			if(foundwound)
 				playsound(target, 'sound/magic/woundheal_crunch.ogg', 100, TRUE)
@@ -217,15 +217,15 @@
 			affecting.update_disabled()
 			return TRUE
 		else
-			to_chat(user, span_warning("The limb is free of wounds."))
+			to_chat(user, span_warning("这条肢体没有伤口。"))
 			revert_cast()
 			return FALSE
 	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/blood_heal
-	name = "Blood Transfer Miracle"
-	desc = "Transfers the blood from myself to the target with divine magycks. Ratio of transfer scales with holy skill."
+	name = "鲜血转移奇迹"
+	desc = "以神圣魔法将我的血液转移给目标。转移比例随神圣技能等级提升。"
 	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
 	overlay_state = "bloodheal"
 	action_icon_state = "bloodheal"
@@ -270,17 +270,17 @@
 			return FALSE
 
 		if(target.get_blood_volume() >= BLOOD_VOLUME_NORMAL)
-			to_chat(UH, span_warning("Their lyfeblood is at capacity. There is no need."))
+			to_chat(UH, span_warning("他们的生命之血已经充足，不需要转移。"))
 			revert_cast()
 			return FALSE
 
 		if(HAS_TRAIT(target, TRAIT_PSYDONITE))
-			target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+			target.visible_message(span_info("[target]动了动，奇迹消散了。"), span_notice("一阵迟钝的暖意在你心中膨胀，却又转瞬即逝。"))
 			user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 			playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 			return FALSE
 
-		UH.visible_message(span_warning("Tiny strands of red link between [UH] and [target], blood being transferred!"))
+		UH.visible_message(span_warning("微小的红色丝线将[UH]与[target]相连，血液正在转移！"))
 		playsound(UH, 'sound/magic/bloodheal_start.ogg', 100, TRUE)
 		var/user_skill = UH.get_skill_level(associated_skill)
 		var/user_informed = FALSE
@@ -305,10 +305,10 @@
 					target.set_blood_volume(min((target.get_blood_volume() + blood_vol_restore), BLOOD_VOLUME_NORMAL))
 					UH.set_blood_volume(max((UH.get_blood_volume() - blood_price), 0))
 					if(target.get_blood_volume() >= BLOOD_VOLUME_NORMAL && !user_informed)
-						to_chat(UH, span_info("They're at a healthy blood level, but I can keep going."))
+						to_chat(UH, span_info("对方的血量已恢复健康水平，但我还能继续输送。"))
 						user_informed = TRUE
 				else
-					UH.visible_message(span_warning("Severs the bloodlink from [target]!"))
+					UH.visible_message(span_warning("与 [target] 相连的血链断开了！"))
 					bloodbeam.End()
 					return TRUE
 			else

@@ -252,9 +252,9 @@
 
 /datum/sex_action/chastityplay/proc/get_chastity_device_name(mob/living/carbon/human/owner)
 	if(owner?.sexcon?.has_chastity_flat())
-		return "flat cage"
+		return "平板贞操罩"
 	if(owner?.sexcon?.has_chastity_cage())
-		return "cage"
+		return "贞操笼"
 	return "chastity device"
 
 // Unified sound helper: supports single sound or list input with optional chance gating.
