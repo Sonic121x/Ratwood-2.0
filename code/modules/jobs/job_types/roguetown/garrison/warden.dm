@@ -1,5 +1,6 @@
 /datum/job/roguetown/warden
 	title = "Warden"
+	display_title = "守林人"
 	flag = BOGGUARD
 	department_flag = GARRISON
 	faction = "Station"
@@ -10,7 +11,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Having proven yourself through years of scouting, skirmishing and survival in the vanguard, you have been initiated into the Wardens - an elite fraternity of ranger types who keep a vigil over the untamed wilderness. Trusted to venture deep into the uncivilised darkness south of lowtown, you act as a scout, soldier, sentinel and guide, performing long-range reconnaissance, culling dangerous wildlife, and protecting lowtown alongside the vanguard. You are subordinate to the Master Warden, whom in turn serves the baron and may be called upon as members of the garrison by the Marshal and Crown. Serve the baron's will as the first line of defence from threats beyond the borders of civilisation, keep the roads safe, and hold the vanguard fortress. The Crown is counting on you."
+		tutorial = "通过在先锋部队中多年的侦察、小规模冲突与生存历练证明了自己后，你被接纳进入守林人——一支精英游侠兄弟会，他们时刻警惕着未驯的荒野。你受命深入低镇以南蛮荒黑暗的腹地，担任侦察兵、战士、哨兵与向导，执行远程侦察、清剿危险野兽，并协同先锋部队保卫低镇。你隶属于守林总长，而总长则效命于男爵；你也可能被执法官与王权征召为驻军成员。奉男爵之意志，作为文明边界之外威胁的第一道防线，保道路平安，守先锋堡垒。王权正倚仗着你。"
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 
@@ -64,8 +65,8 @@
 			spare.forceMove(get_turf(H))
 
 /datum/advclass/warden/ranger
-	name = "Ranger"
-	tutorial = "You are a ranger, a hunter who volunteered to become a part of the wardens. You have great experience using bows."
+	name = "巡猎手"
+	tutorial = "你是一名巡猎手，本是猎人，自愿加入守林人之列。你在弓术上经验丰富。"
 	outfit = /datum/outfit/job/roguetown/warden/ranger
 	category_tags = list(CTAG_WARDEN)
 	traits_applied = list(TRAIT_DODGEEXPERT)
@@ -118,28 +119,28 @@
 
 	if(H.mind)
 		var/helmets = list(
-			"Antlers of the Antelope" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/antler,
-			"Skull of the Volf"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf,
-			"Skull of the Ram"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat,
-			"Skull of the Bear"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear,
-			"None"
+			"羚角之冠" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/antler,
+			"狼首之盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf,
+			"公羊颅盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat,
+			"熊首之盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear,
+			"无"
 		)
-		var/helmchoice = input(H, "Choose your Path.", "HELMET SELECTION") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的道路。", "头盔选择") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 
 		var/hoods = list(
-			"Common Shroud" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
-			"Antlered Shroud"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
-			"None"
+			"寻常罩帽" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
+			"鹿角罩帽"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
+			"无"
 		)
-		var/hoodchoice = input(H, "Choose your Shroud.", "HOOD SELECTION") as anything in hoods
-		if(helmchoice != "None")
+		var/hoodchoice = input(H, "选择你的兜帽。", "兜帽选择") as anything in hoods
+		if(hoodchoice != "无")
 			mask = hoods[hoodchoice]
 
 /datum/advclass/warden/forester
-	name = "Forester"
-	tutorial = "You are a forester, a woodsman who volunteered to become a part of the wardens. You have experience in the axe and the spear."
+	name = "林地卫手"
+	tutorial = "你是一名林地卫手，本是山林樵夫，自愿加入守林人之列。你对斧与矛都有实战经验。"
 	outfit = /datum/outfit/job/roguetown/warden/forester
 	category_tags = list(CTAG_WARDEN)
 	traits_applied = list(TRAIT_MEDIUMARMOR)
@@ -214,21 +215,21 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 
 		var/helmets = list(
-			"Antlers of the Antelope"   = /obj/item/clothing/head/roguetown/helmet/bascinet/antler/melee,
-			"Skull of the Volf"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf/melee,
-			"Skull of the Ram"          = /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat/melee,
-			"Skull of the Bear"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee,
-			"None"
+			"羚角之冠"   = /obj/item/clothing/head/roguetown/helmet/bascinet/antler/melee,
+			"狼首之盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf/melee,
+			"公羊颅盔"          = /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat/melee,
+			"熊首之盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee,
+			"无"
 		)
-		var/helmchoice = input(H, "Choose your Path.", "HELMET SELECTION") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的道路。", "头盔选择") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 
 		var/hoods = list(
-			"Common Shroud" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
-			"Antlered Shroud"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
-			"None"
+			"寻常罩帽" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
+			"鹿角罩帽"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
+			"无"
 		)
-		var/hoodchoice = input(H, "Choose your Shroud.", "HOOD SELECTION") as anything in hoods
-		if(helmchoice != "None")
+		var/hoodchoice = input(H, "选择你的兜帽。", "兜帽选择") as anything in hoods
+		if(hoodchoice != "无")
 			mask = hoods[hoodchoice]

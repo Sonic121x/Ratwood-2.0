@@ -7,8 +7,8 @@
 #define TAB_SALTMINE 9
 
 /obj/structure/roguemachine/steward
-	name = "nerve master"
-	desc = "The stewards most trusted friend."
+	name = "总务中枢"
+	desc = "总管最可靠的伙伴。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "steward_machine"
 	density = TRUE
@@ -106,7 +106,7 @@
 			update_icon()
 			return
 		else
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
@@ -120,7 +120,7 @@
 				(locked) ? (icon_state = "steward_machine_off") : (icon_state = "steward_machine")
 				update_icon()
 				return
-		to_chat(user, span_warning("Wrong key."))
+		to_chat(user, span_warning("钥匙不对。"))
 		return
 	if(istype(P, /obj/item/roguecoin/gilbranze))
 		return
@@ -149,13 +149,13 @@
 			return
 		var/amt = D.get_import_price()
 		if(!SStreasury.burn(SStreasury.discretionary_fund, amt, "Import: [D.name]"))
-			say("Insufficient mammon.")
+			say("玛门不足。")
 			return
 		SStreasury.total_import += amt
 		record_treasury_expense(TREASURY_FLOW_IMPORT, treasury_role_of(usr), amt)
 		record_round_statistic(STATS_STOCKPILE_IMPORTS_VALUE, amt)
 		if(amt >= 100) //Only announce big spending.
-			scom_announce("[realmname] imports [D.name] for [amt] mammon.", )
+			scom_announce("[realmname] 以 [amt] 枚 玛门 的价格进口了 [D.name]。", )
 		D.raise_demand()
 		addtimer(CALLBACK(src, PROC_REF(do_import), D.type), 10 SECONDS)
 	if(href_list["export"])
@@ -168,20 +168,20 @@
 		if(D.trade_good_id)
 			return
 		if(!SStreasury.do_export(D))
-			say("Insufficient stock.")
+			say("库存不足。")
 			return
 	if(href_list["setpurchasefloor"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
 		var/current_floor = SStreasury.stockpile_purchase_floor
-		var/new_floor = input(usr, "Set the Crown's Purchase Floor. Below this balance the stockpile refuses purchases - goods stay with the seller. (0-10000m)", src, current_floor) as null|num
+		var/new_floor = input(usr, "设置王权采购下限。当余额低于此数值时，库存将拒绝收购——货物仍留在卖方手中。（0-10000 玛门）", src, current_floor) as null|num
 		if(isnull(new_floor))
 			return
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
 		new_floor = CLAMP(round(new_floor), 0, 10000)
 		SStreasury.stockpile_purchase_floor = new_floor
-		say("Crown's Purchase Floor set to [new_floor]m.")
+		say("王权采购下限已设为 [new_floor]m。")
 		log_game("PURCHASE FLOOR: [key_name(usr)] set stockpile purchase floor to [new_floor]m")
 	if(href_list["clearloandebtor"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
@@ -191,9 +191,9 @@
 			if(HAS_TRAIT(H, TRAIT_DEBTOR))
 				debtors["[H.real_name]"] = H
 		if(!length(debtors))
-			say("No debtors currently marked.")
+			say("目前没有标记的债务人。")
 			return
-		var/pick = input(usr, "Clear defaulter mark from which debtor?", src) as null|anything in debtors
+		var/pick = input(usr, "要清除哪位债务人的违约标记？", src) as null|anything in debtors
 		if(!pick)
 			return
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
@@ -208,9 +208,9 @@
 			SStreasury.loans -= forgiven
 			qdel(forgiven)
 		SStreasury.clear_poll_tax_debt(target)
-		say("[target.real_name]'s debtor mark has been cleared; all Crown debts forgiven.")
+		say("[target.real_name] 的债务人标记已清除；所有王权债务一笔勾销。")
 		log_game("DEBT FORGIVEN: [key_name(usr)] cleared debtor mark on [key_name(target)][loan_amt ? " (wrote off [loan_amt]m loan)" : ""]")
-		to_chat(target, span_notice("The Stewardry has cleared the defaulter mark from my name. My debts to the Crown are forgiven."))
+		to_chat(target, span_notice("总管府已从我名下清除了违约标记。我欠王权的债务已获宽免。"))
 	if(href_list["clearpolltax"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
@@ -219,9 +219,9 @@
 			if(SStreasury.poll_tax_owed[H] || SStreasury.poll_tax_debt_days[H] || HAS_TRAIT(H, TRAIT_ARREARS))
 				in_arrears["[H.real_name]"] = H
 		if(!length(in_arrears))
-			say("No poll tax arrears on the ledger.")
+			say("账册上没有拖欠人头税的人。")
 			return
-		var/pick = input(usr, "Clear poll tax arrears for which subject?", src) as null|anything in in_arrears
+		var/pick = input(usr, "要清除哪位臣民拖欠的人头税？", src) as null|anything in in_arrears
 		if(!pick)
 			return
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
@@ -232,9 +232,9 @@
 		var/was_owed = SStreasury.poll_tax_owed[target] || 0
 		var/was_overdue = SStreasury.poll_tax_debt_days[target] || 0
 		SStreasury.clear_poll_tax_debt(target)
-		say("[target.real_name]'s poll tax arrears have been cleared.")
+		say("[target.real_name] 拖欠的人头税已清除。")
 		log_game("POLL TAX CLEARED: [key_name(usr)] cleared [was_owed]m poll tax arrears on [key_name(target)] ([was_overdue] day\s overdue)")
-		to_chat(target, span_notice("The Stewardry has cleared my poll tax arrears. The Crown's ledger on my head is wiped clean."))
+		to_chat(target, span_notice("总管府已清除我拖欠的人头税。王权记在我头上的账已一笔勾销。"))
 	// Step 15: stockpile price/limit/withdraw management moved to the StewardTrade TGUI
 	// (setprice/setlimit/togglewithdraw Topic handlers removed). Ratwood keeps the passive
 	// import rate handler; that system is not covered by the TGUI.
@@ -243,16 +243,16 @@
 		if(!D)
 			return              //Cheaper prices, no taxes, the price? Commitment. You can only change the rates at day. I'd like to make the window shorter,
 		if(GLOB.tod == "night") //less chance to micromanage, incentivize doing other things at later hours, make it unable to be changed at dusk too, but this needs testing first
-			say("Suppliers will only agree to modifying deals at times when Astrata shines.")
+			say("只有在 阿斯特拉塔 照耀之时，供应商才愿意修改交易。")
 			return
-		var/newrate = input(usr, "Set a new rate for remote imports for [D.name]", src, D.passive_generation) as null|num
+		var/newrate = input(usr, "为 [D.name] 设置新的远程进口速率", src, D.passive_generation) as null|num
 		if(!isnull(newrate))
 			if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 				return
 			if(findtext(num2text(newrate), "."))
 				return
 			newrate = CLAMP(newrate, 0, D.generation_max)
-			scom_announce("[realmname] will [newrate ? "now import [newrate] [D.name] every 5 hours." : "no longer import [D.name] periodically"]")
+			scom_announce("[realmname] 将[newrate ? "每 5 小时进口 [newrate] 个 [D.name]。" : "不再定期进口 [D.name]。"]")
 			D.passive_generation = newrate
 	if(href_list["givemoney"])
 		var/X = locate(href_list["givemoney"])
@@ -260,7 +260,7 @@
 			return
 		for(var/mob/living/A in SStreasury.bank_accounts)
 			if(A == X)
-				var/newtax = input(usr, "How much to give [X]", src) as null|num
+				var/newtax = input(usr, "要给 [X] 多少？", src) as null|num
 				if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 					return
 				if(findtext(num2text(newtax), "."))
@@ -276,17 +276,17 @@
 		if(!X)
 			return
 		if(!has_fiscal_authority(usr))
-			say("Only the Steward, Clerk, or Ruler may levy fines.")
+			say("只有总管、书记官或统治者才能征收罚款。")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		for(var/mob/living/A in SStreasury.bank_accounts)
 			if(A == X)
 				var/max_fine = SStreasury.get_max_fine_for(A)
 				if(max_fine <= 0)
-					say("[A] cannot be fined by the Crown at this time.")
+					say("[A]目前无法被王权处以罚款。")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				var/newtax = input(usr, "How much to fine [A]? (Maximum [max_fine]m)", src, max_fine) as null|num
+				var/newtax = input(usr, "要罚 [A] 多少钱？（上限 [max_fine]m）", src, max_fine) as null|num
 				if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 					return
 				if(findtext(num2text(newtax), "."))
@@ -297,14 +297,14 @@
 					return
 				if(newtax > max_fine)
 					newtax = max_fine
-					say("The ledger will accept no more than [max_fine]m from [A]. Amount adjusted.")
+					say("账册最多只能接受来自 [A] 的 [max_fine]m。金额已调整。")
 				SStreasury.give_money_account(-newtax, A, "NERVE MASTER")
 				break
 	if(href_list["printresidency"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
 		if(world.time < residency_print_cooldown)
-			say("The machine is still warming its quill.")
+			say("机器仍在暖它的羽毛笔。")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		var/mob/living/carbon/human/H = usr
@@ -313,19 +313,19 @@
 		letter.issuer_year = CALENDAR_EPOCH_YEAR
 		residency_print_cooldown = world.time + 1 MINUTES
 		playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
-		say("Letter of Citizenry issued, signed by [H.real_name].")
+		say("公民身份书已签发，由 [H.real_name] 签署。")
 	if(href_list["payroll"])
 		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions) + list(GLOB.inquisition_positions)
 		var/list/things = list()
 		for(var/list/category in L)
 			for(var/A in category)
 				things += A
-		var/job_to_pay = input(usr, "Select a job", src) as null|anything in things
+		var/job_to_pay = input(usr, "选择一个职业", src) as null|anything in things
 		if(!job_to_pay)
 			return
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
-		var/amount_to_pay = input(usr, "How much to pay every [job_to_pay]", src) as null|num
+		var/amount_to_pay = input(usr, "每位 [job_to_pay] 发多少？", src) as null|num
 		if(!amount_to_pay)
 			return
 		if(amount_to_pay<1)
@@ -344,7 +344,7 @@
 		for(var/list/category in L)
 			for(var/A in category)
 				things += A
-		var/job_to_pay = input(usr, "Select a job", src) as null|anything in things
+		var/job_to_pay = input(usr, "选择一个职业", src) as null|anything in things
 		if(!job_to_pay)
 			return
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
@@ -352,7 +352,7 @@
 		// Item 6 decrees: active charters (Indenture of War, Covenant of Noc & Pestra) floor
 		// certain wages - the Nerve Master refuses to set covered jobs below the floor.
 		var/wage_floor = SStreasury.get_wage_floor(job_to_pay)
-		var/payprompt = wage_floor > 0 ? "Set daily payment for [job_to_pay] (floor: [wage_floor]m by Charter; 0 not permitted)" : "Set daily payment for [job_to_pay] (0 to remove)"
+		var/payprompt = wage_floor > 0 ? "设置 [job_to_pay] 的每日薪资（依特许状下限：[wage_floor]m；不允许设为 0）" : "设置 [job_to_pay] 的每日薪资（0 为移除）"
 		var/amount_to_pay = input(usr, payprompt, src, daily_payments[job_to_pay] ? daily_payments[job_to_pay] : wage_floor) as null|num
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
@@ -363,22 +363,22 @@
 		amount_to_pay = CLAMP(amount_to_pay, 0, 999)
 		if(wage_floor > 0 && amount_to_pay < wage_floor)
 			amount_to_pay = wage_floor
-			say("By Charter, [job_to_pay]'s wage may not fall below [wage_floor]m. Payment set to the floor.")
+			say("依特许状，[job_to_pay] 的薪资不得低于 [wage_floor]m。薪资已设为下限。")
 		if(amount_to_pay == 0)
 			daily_payments -= job_to_pay
-			say("Daily payment for [job_to_pay] removed.")
+			say("[job_to_pay] 的每日薪资已移除。")
 		else
 			daily_payments[job_to_pay] = amount_to_pay
-			say("Daily payment for [job_to_pay] set to [amount_to_pay]m.")
+			say("[job_to_pay] 的每日薪资已设为 [amount_to_pay]m。")
 	if(href_list["removedailypay"])
 		var/job_to_remove = href_list["removedailypay"]
 		var/removal_floor = SStreasury.get_wage_floor(job_to_remove)
 		if(removal_floor > 0)
 			daily_payments[job_to_remove] = removal_floor
-			say("By Charter, [job_to_remove]'s wage cannot be removed. Payment held at the floor of [removal_floor]m.")
+			say("依特许状，[job_to_remove] 的薪资无法移除。薪资保持在 [removal_floor]m 的下限。")
 		else
 			daily_payments -= job_to_remove
-			say("Daily payment for [job_to_remove] removed.")
+			say("[job_to_remove] 的每日薪资已移除。")
 	if(href_list["togglewages"])
 		var/X = locate(href_list["togglewages"])
 		if(!X)
@@ -393,18 +393,18 @@
 					is_authorized = TRUE
 
 				if(!is_authorized)
-					say("Only the Steward, Clerk, or Ruler may suspend wages.")
+					say("只有 Steward、Clerk 或 Ruler 可以停发工资。")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 
 				if(HAS_TRAIT(A, TRAIT_WAGES_SUSPENDED))
 					REMOVE_TRAIT(A, TRAIT_WAGES_SUSPENDED, TRAIT_GENERIC)
-					say("[A.real_name]'s wages have been reinstated.")
-					to_chat(A, span_notice("My wages have been reinstated by the Stewardry."))
+					say("[A.real_name] 的工资已恢复。")
+					to_chat(A, span_notice("总务处已恢复我的工资。"))
 				else
 					ADD_TRAIT(A, TRAIT_WAGES_SUSPENDED, TRAIT_GENERIC)
-					say("[A.real_name]'s wages have been suspended.")
-					to_chat(A, span_danger("My wages have been suspended by the Stewardry!"))
+					say("[A.real_name] 的工资已被停发。")
+					to_chat(A, span_danger("总务处已停发我的工资！"))
 				break
 	if(href_list["compact"])
 		compact = !compact
@@ -667,7 +667,7 @@
 		open_trade_tgui(user)
 		return
 	if(locked)
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("它被锁住了。果然。"))
 		return
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
@@ -675,25 +675,25 @@
 	var/contents
 	switch(current_tab)
 		if(TAB_MAIN)
-			contents += "<center>NERVE MASTER<BR>"
+			contents += "<center>总务中枢<BR>"
 			contents += "--------------<BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_BANK]'>\[Bank\]</a><BR>"
-			contents += "<a href='?src=\ref[src];trade_tgui=1'>\[Trade & Stockpile\]</a><BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_IMPORT]'>\[Import\]</a><BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_PAYDAY]'>\[Daily Payments\]</a><BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_FISCAL]'>\[Fiscal Ledger\]</a><BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_DEBT]'>\[Debts &amp; Arrears\]</a><BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_SALTMINE]'>\[Salt Mine Report\]</a><BR>"
-			contents += "<a href='?src=\ref[src];printresidency=1'>\[Print Letter of Citizenry\]</a><BR>"
-			contents += "<a href='?src=\ref[src];setpurchasefloor=1'>\[Purchase Floor: [SStreasury.stockpile_purchase_floor]m\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_BANK]'>\[银行\]</a><BR>"
+			contents += "<a href='?src=\ref[src];trade_tgui=1'>\[贸易与库存\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_IMPORT]'>\[进口\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_PAYDAY]'>\[每日薪资\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_FISCAL]'>\[财政账册\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_DEBT]'>\[债务与欠款\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_SALTMINE]'>\[盐矿报告\]</a><BR>"
+			contents += "<a href='?src=\ref[src];printresidency=1'>\[打印公民身份书\]</a><BR>"
+			contents += "<a href='?src=\ref[src];setpurchasefloor=1'>\[采购下限：[SStreasury.stockpile_purchase_floor]m\]</a><BR>"
 			contents += "</center>"
 		if(TAB_BANK)
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a>"
-			contents += " <a href='?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
-			contents += "<center>Bank<BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[返回\]</a>"
+			contents += " <a href='?src=\ref[src];compact=1'>\[紧凑：[compact? "启用" : "关闭"]\]</a><BR>"
+			contents += "<center>银行<BR>"
 			contents += "--------------<BR>"
-			contents += "Treasury: [SStreasury.discretionary_fund.balance]m</center><BR>"
-			contents += "<a href='?src=\ref[src];payroll=1'>\[Pay by Class\]</a><BR><BR>"
+			contents += "国库：[SStreasury.discretionary_fund.balance]m</center><BR>"
+			contents += "<a href='?src=\ref[src];payroll=1'>\[按职业发放\]</a><BR><BR>"
 			// Collect all accounts, sort debtors/arrears first, then rest.
 			var/list/priority_accounts = list() // debtors or in arrears
 			var/list/normal_accounts = list()
@@ -710,26 +710,26 @@
 				var/max_fine = SStreasury.get_max_fine_for(A)
 				var/datum/fund/A_account = SStreasury.bank_accounts[A]
 				var/A_suspended = A_account?.wages_suspended ? TRUE : FALSE
-				var/wage_status_short = A_suspended ? "UNSUSPEND" : "SUSPEND"
-				var/wage_status_long = A_suspended ? "Unsuspend Wages" : "Suspend Wages"
-				var/fine_label = max_fine > 0 ? "FINE (Max [max_fine]m)" : "FINE (exempt)"
-				var/fine_long_label = max_fine > 0 ? "Fine Account (Max [max_fine]m)" : "Fine Account (exempt)"
+				var/wage_status_short = A_suspended ? "恢复薪资" : "停发薪资"
+				var/wage_status_long = A_suspended ? "恢复薪资" : "停发薪资"
+				var/fine_label = max_fine > 0 ? "罚款（上限 [max_fine]m）" : "罚款（豁免）"
+				var/fine_long_label = max_fine > 0 ? "账户罚款（上限 [max_fine]m）" : "账户罚款（豁免）"
 				var/poll_owed = SStreasury.poll_tax_owed[A] || 0
 				var/overdue_days = SStreasury.poll_tax_debt_days[A] || 0
 				var/a_is_debtor = HAS_TRAIT(A, TRAIT_DEBTOR)
 				var/debt_tag = ""
 				if(a_is_debtor)
-					var/owed_str = poll_owed > 0 ? ", owes [poll_owed]m" : ""
-					debt_tag = " <font color='#d9534f'>\[DEBTOR[owed_str]\]</font>"
+					var/owed_str = poll_owed > 0 ? "，欠 [poll_owed]m" : ""
+					debt_tag = " <font color='#d9534f'>\[债务人[owed_str]\]</font>"
 				else if(poll_owed > 0)
-					debt_tag = " <font color='#e07b39'>\[ARREARS: [poll_owed]m, [overdue_days] day[overdue_days == 1 ? "" : "s"]\]</font>"
+					debt_tag = " <font color='#e07b39'>\[欠款：[poll_owed]m，逾期 [overdue_days] 天\]</font>"
 				if(compact)
 					if(ishuman(A))
 						var/mob/living/carbon/human/tmp = A
 						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job, compact)]) - [balance]m[debt_tag]"
 					else
-						contents += "[A.real_name] - [balance]m[debt_tag]"
-					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a>"
+					contents += "[A.real_name] - [balance]m[debt_tag]"
+					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[发放\]</a>"
 					if(show_fiscal_actions)
 						contents += " <a href='?src=\ref[src];fineaccount=\ref[A]'>\[[fine_label]\]</a> <a href='?src=\ref[src];togglewages=\ref[A]'>\[[wage_status_short]\]</a>"
 					contents += "<BR><BR>"
@@ -739,32 +739,32 @@
 						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job, compact)]) - [balance]m[debt_tag]<BR>"
 					else
 						contents += "[A.real_name] - [balance]m[debt_tag]<BR>"
-					contents += "<a href='?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a>"
+					contents += "<a href='?src=\ref[src];givemoney=\ref[A]'>\[发放资金\]</a>"
 					if(show_fiscal_actions)
 						contents += " <a href='?src=\ref[src];fineaccount=\ref[A]'>\[[fine_long_label]\]</a> <a href='?src=\ref[src];togglewages=\ref[A]'>\[[wage_status_long]\]</a>"
 					contents += "<BR><BR>"
 		if(TAB_IMPORT)
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a>"
-			contents += " <a href='?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
-			contents += "<center>Imports<BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[返回\]</a>"
+			contents += " <a href='?src=\ref[src];compact=1'>\[紧凑：[compact? "启用" : "关闭"]\]</a><BR>"
+			contents += "<center>进口<BR>"
 			contents += "--------------<BR>"
 			if(compact)
-				contents += "Treasury: [SStreasury.discretionary_fund.balance]m</center><BR>"
+				contents += "国库：[SStreasury.discretionary_fund.balance]m</center><BR>"
 				for(var/datum/crown_import/A in GLOB.crown_imports)
-					var/blockade_tag = A.is_blockaded() ? " <font color='#c44'>(BLOCKADED)</font>" : ""
+					var/blockade_tag = A.is_blockaded() ? " <font color='#c44'>（封锁中）</font>" : ""
 					contents += "<b>[A.name][blockade_tag]:</b>"
-					contents += " <a href='?src=\ref[src];import=\ref[A]'>\[Import [A.import_amt] ([A.get_import_price()])\]</a><BR>"
+					contents += " <a href='?src=\ref[src];import=\ref[A]'>\[进口 [A.import_amt] ([A.get_import_price()])\]</a><BR>"
 			else
-				contents += "Treasury: [SStreasury.discretionary_fund.balance]m</center><BR>"
+				contents += "国库：[SStreasury.discretionary_fund.balance]m</center><BR>"
 				for(var/datum/crown_import/A in GLOB.crown_imports)
-					var/blockade_tag_full = A.is_blockaded() ? " <font color='#c44'>(BLOCKADED - 2x COST)</font>" : ""
+					var/blockade_tag_full = A.is_blockaded() ? " <font color='#c44'>（封锁中 - 双倍费用）</font>" : ""
 					contents += "<b>[A.name][blockade_tag_full]</b> - <i>[A.desc]</i> "
-					contents += "<a href='?src=\ref[src];import=\ref[A]'>\[Import [A.import_amt] ([A.get_import_price()])\]</a><BR>"
+					contents += "<a href='?src=\ref[src];import=\ref[A]'>\[进口 [A.import_amt] ([A.get_import_price()])\]</a><BR>"
 		if(TAB_DEBT)
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
-			contents += "<center>Debts &amp; Arrears<BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[返回\]</a><BR>"
+			contents += "<center>债务与欠款<BR>"
 			contents += "--------------<BR>"
-			contents += "Treasury: [SStreasury.discretionary_fund.balance]m</center><BR>"
+			contents += "国库：[SStreasury.discretionary_fund.balance]m</center><BR>"
 			var/crown_loans = 0
 			var/crown_loan_content = ""
 			for(var/datum/loan/L in SStreasury.loans)
@@ -774,65 +774,65 @@
 				var/loan_color = L.defaulted ? "#d9534f" : "#e07b39"
 				crown_loan_content += "<font color='[loan_color]'>[L.format()]</font><BR>"
 			if(crown_loans)
-				contents += "<b>Active Crown Loans ([crown_loans]):</b><BR>"
+				contents += "<b>王权在贷贷款（[crown_loans]）：</b><BR>"
 				contents += crown_loan_content
 				contents += "<BR>"
 			else
-				contents += "<i>No active loans.</i><BR><BR>"
+				contents += "<i>没有在贷贷款。</i><BR><BR>"
 			var/list/debt_rows = list()
 			for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
 				var/poll_owed = SStreasury.poll_tax_owed[A] || 0
 				if(poll_owed > 0 || HAS_TRAIT(A, TRAIT_DEBTOR))
 					debt_rows += A
 			if(length(debt_rows))
-				contents += "<b>Poll Tax Debtors / Arrears ([length(debt_rows)]):</b><BR>"
+				contents += "<b>人头税债务人／欠款者（[length(debt_rows)]）：</b><BR>"
 				for(var/mob/living/carbon/human/A in debt_rows)
 					var/poll_owed = SStreasury.poll_tax_owed[A] || 0
 					var/overdue_days = SStreasury.poll_tax_debt_days[A] || 0
 					var/balance = SStreasury.get_balance(A)
 					if(HAS_TRAIT(A, TRAIT_DEBTOR_CROWN))
-						var/owed_str = poll_owed > 0 ? ", owes [poll_owed]m" : ""
-						contents += "<font color='#d9534f'><b>[A.real_name]</b> \[DEBTOR[owed_str]\]</font> - balance: [balance]m"
+						var/owed_str = poll_owed > 0 ? "，欠 [poll_owed]m" : ""
+						contents += "<font color='#d9534f'><b>[A.real_name]</b> \[债务人[owed_str]\]</font> - 余额：[balance]m"
 					else
-						contents += "<font color='#e07b39'><b>[A.real_name]</b> \[ARREARS: [poll_owed]m, [overdue_days] day[overdue_days == 1 ? "" : "s"]\]</font> - balance: [balance]m"
+						contents += "<font color='#e07b39'><b>[A.real_name]</b> \[欠款：[poll_owed]m，逾期 [overdue_days] 天\]</font> - 余额：[balance]m"
 					contents += "<BR>"
 				contents += "<BR>"
 			else
-				contents += "<i>No poll tax arrears.</i><BR><BR>"
-			contents += "<a href='?src=\ref[src];clearloandebtor=1'>\[Clear Defaulter Mark\]</a><BR>"
-			contents += "<font color='gray'><i>(Forgives outstanding loans entirely and lifts the defaulter mark.)</i></font><BR>"
-			contents += "<a href='?src=\ref[src];clearpolltax=1'>\[Clear Poll Tax Obligation\]</a><BR>"
-			contents += "<font color='gray'><i>(Wipes a subject's poll tax arrears.)</i></font><BR>"
+				contents += "<i>没有人头税欠款。</i><BR><BR>"
+			contents += "<a href='?src=\ref[src];clearloandebtor=1'>\[清除违约者标记\]</a><BR>"
+			contents += "<font color='gray'><i>（完全豁免未偿贷款，并撤销违约者标记。）</i></font><BR>"
+			contents += "<a href='?src=\ref[src];clearpolltax=1'>\[清除人头税欠款\]</a><BR>"
+			contents += "<font color='gray'><i>（抹除臣民拖欠的人头税。）</i></font><BR>"
 		if(TAB_FISCAL)
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[返回\]</a><BR>"
 			var/list/snap = SStreasury.compute_fiscal_snapshot()
 			var/list/charters = SStreasury.compute_charter_states()
-			contents += "<center><b>Fiscal Ledger &mdash; Day [GLOB.dayspassed]</b></center>"
+			contents += "<center><b>财政账册 &mdash; 第 [GLOB.dayspassed] 天</b></center>"
 			contents += "<hr>"
 
 			// Balances (two-column)
-			contents += "<b><font color='#e6b327'>BALANCES</font></b>"
+			contents += "<b><font color='#e6b327'>余额</font></b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
-			contents += "<tr><td>Crown's Purse</td><td align='right'><font color='#e6b327'>[snap["discretionary"]]m</font></td>"
-			contents += "<td>Burgher Pledge</td><td align='right'><font color='#e6b327'>[snap["burgher_pledge"]]m</font></td></tr>"
-			contents += "<tr><td>Total Bank Coin</td><td align='right'>[snap["total_bank"]]m</td>"
-			contents += "<td>Held Accounts</td><td align='right'>[snap["held_accounts"]]</td></tr>"
-			contents += "<tr><td>Average Balance</td><td align='right'>[snap["avg_balance"]]m</td>"
-			contents += "<td>Under 50m</td><td align='right'><font color='#e07b39'>[snap["under_50m"]]</font></td></tr>"
+			contents += "<tr><td>王权的钱袋</td><td align='right'><font color='#e6b327'>[snap["discretionary"]]m</font></td>"
+			contents += "<td>市民认捐</td><td align='right'><font color='#e6b327'>[snap["burgher_pledge"]]m</font></td></tr>"
+			contents += "<tr><td>银行钱币总额</td><td align='right'>[snap["total_bank"]]m</td>"
+			contents += "<td>持有账户</td><td align='right'>[snap["held_accounts"]]</td></tr>"
+			contents += "<tr><td>平均余额</td><td align='right'>[snap["avg_balance"]]m</td>"
+			contents += "<td>低于 50m</td><td align='right'><font color='#e07b39'>[snap["under_50m"]]</font></td></tr>"
 			contents += "</table><br>"
 
 			// Revenue (two-column, green) - only mammon that lands in Crown's Purse
-			contents += "<b><font color='#5cb85c'>CROWN REVENUE THIS WEEK</font></b>"
+			contents += "<b><font color='#5cb85c'>本周王权收入</font></b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
-			contents += "<tr><td>Rural Tax</td><td align='right'><font color='#5cb85c'>[SStreasury.total_rural_tax]m</font></td>"
-			contents += "<td>Fines</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_FINES_INCOME]]m</font></td></tr>"
-			contents += "<tr><td>Poll Tax</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_POLL_TAX_COLLECTED]]m</font></td>"
-			contents += "<td>Deposit Tax</td><td align='right'><font color='#5cb85c'>[SStreasury.total_deposit_tax]m</font></td></tr>"
-			contents += "<tr><td>Contract Levy</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_CONTRACT_LEVY]]m</font></td>"
-			contents += "<td>Headeater Levy</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_HEADEATER_LEVY]]m</font></td></tr>"
-			contents += "<tr><td>Import Tariff</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_IMPORT_TARIFF]]m</font></td>"
-			contents += "<td>Export Duty</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_EXPORT_DUTY]]m</font></td></tr>"
-			contents += "<tr><td>Recovered Spoils</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_RECOVERED_SPOILS] || 0]m</font></td>"
+			contents += "<tr><td>乡村税</td><td align='right'><font color='#5cb85c'>[SStreasury.total_rural_tax]m</font></td>"
+			contents += "<td>罚款</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_FINES_INCOME]]m</font></td></tr>"
+			contents += "<tr><td>人头税</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_POLL_TAX_COLLECTED]]m</font></td>"
+			contents += "<td>存款税</td><td align='right'><font color='#5cb85c'>[SStreasury.total_deposit_tax]m</font></td></tr>"
+			contents += "<tr><td>契约税</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_CONTRACT_LEVY]]m</font></td>"
+			contents += "<td>食首税</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_HEADEATER_LEVY]]m</font></td></tr>"
+			contents += "<tr><td>进口税</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_IMPORT_TARIFF]]m</font></td>"
+			contents += "<td>出口税</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_EXPORT_DUTY]]m</font></td></tr>"
+			contents += "<tr><td>追回赃款</td><td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_REVENUE_RECOVERED_SPOILS] || 0]m</font></td>"
 			contents += "<td></td><td></td></tr>"
 			contents += "</table><br>"
 
@@ -844,41 +844,41 @@
 			var/exempt_fine = GLOB.azure_round_stats[STATS_EXEMPTED_FINE]
 			var/exempt_poll = GLOB.azure_round_stats[STATS_EXEMPTED_POLL_TAX]
 			var/exempt_total = exempt_contract + exempt_headeater + exempt_import + exempt_export + exempt_fine + exempt_poll
-			contents += "<b><font color='#8f7a5a'>FORGONE REVENUE (tax exempted)</font></b>"
+			contents += "<b><font color='#8f7a5a'>豁免收入（已免税）</font></b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
-			contents += "<tr><td>Contract Levy</td><td align='right'><font color='#8f7a5a'>[exempt_contract]m</font></td>"
-			contents += "<td>Headeater Levy</td><td align='right'><font color='#8f7a5a'>[exempt_headeater]m</font></td></tr>"
-			contents += "<tr><td>Import Tariff</td><td align='right'><font color='#8f7a5a'>[exempt_import]m</font></td>"
-			contents += "<td>Export Duty</td><td align='right'><font color='#8f7a5a'>[exempt_export]m</font></td></tr>"
-			contents += "<tr><td>Fines Waived</td><td align='right'><font color='#8f7a5a'>[exempt_fine]m</font></td>"
-			contents += "<td>Poll Tax</td><td align='right'><font color='#8f7a5a'>[exempt_poll]m</font></td></tr>"
-			contents += "<tr><td><b>Total Forgone</b></td><td align='right'><b><font color='#8f7a5a'>[exempt_total]m</font></b></td>"
+			contents += "<tr><td>契约税</td><td align='right'><font color='#8f7a5a'>[exempt_contract]m</font></td>"
+			contents += "<td>食首税</td><td align='right'><font color='#8f7a5a'>[exempt_headeater]m</font></td></tr>"
+			contents += "<tr><td>进口税</td><td align='right'><font color='#8f7a5a'>[exempt_import]m</font></td>"
+			contents += "<td>出口税</td><td align='right'><font color='#8f7a5a'>[exempt_export]m</font></td></tr>"
+			contents += "<tr><td>免除罚款</td><td align='right'><font color='#8f7a5a'>[exempt_fine]m</font></td>"
+			contents += "<td>人头税</td><td align='right'><font color='#8f7a5a'>[exempt_poll]m</font></td></tr>"
+			contents += "<tr><td><b>豁免总额</b></td><td align='right'><b><font color='#8f7a5a'>[exempt_total]m</font></b></td>"
 			contents += "<td></td><td></td></tr>"
 			contents += "</table>"
-			contents += "<font size='1'><i>Charter exemptions, levy-exempt stamps, and rate-cap gaps. Mammon the Crown would have collected had no exemption applied.</i></font><br><br>"
+			contents += "<font size='1'><i>特许状豁免、免税印花与利率上限差额。即若未适用任何豁免，王权本应征收的玛门。</i></font><br><br>"
 
 			// Trade (two-column, mixed)
-			contents += "<b><font color='#c0b283'>TRADE</font></b>"
+			contents += "<b><font color='#c0b283'>贸易</font></b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
-			contents += "<tr><td>Stockpile Exports</td><td align='right'><font color='#5cb85c'>[SStreasury.total_export]m</font></td>"
-			contents += "<td>Stockpile Imports</td><td align='right'><font color='#d9534f'>-[SStreasury.total_import]m</font></td></tr>"
+			contents += "<tr><td>库存出口</td><td align='right'><font color='#5cb85c'>[SStreasury.total_export]m</font></td>"
+			contents += "<td>库存进口</td><td align='right'><font color='#d9534f'>-[SStreasury.total_import]m</font></td></tr>"
 			var/trade_bal = SStreasury.total_export - SStreasury.total_import
 			var/trade_col = trade_bal >= 0 ? "#5cb85c" : "#d9534f"
-			contents += "<tr><td>Trade Balance</td><td align='right'><font color='[trade_col]'>[trade_bal]m</font></td>"
-			contents += "<td>Economic Output</td><td align='right'>[SStreasury.economic_output]m</td></tr>"
+			contents += "<tr><td>贸易差额</td><td align='right'><font color='[trade_col]'>[trade_bal]m</font></td>"
+			contents += "<td>经济产出</td><td align='right'>[SStreasury.economic_output]m</td></tr>"
 			contents += "</table><br>"
 
 			// Expenses (two-column, red)
-			contents += "<b><font color='#d9534f'>EXPENSES THIS WEEK</font></b>"
+			contents += "<b><font color='#d9534f'>本周支出</font></b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
-			contents += "<tr><td>Wages Paid</td><td align='right'><font color='#d9534f'>-[GLOB.azure_round_stats[STATS_WAGES_PAID]]m</font></td>"
-			contents += "<td>Treasury Transfers</td><td align='right'><font color='#d9534f'>-[GLOB.azure_round_stats[STATS_DIRECT_TREASURY_TRANSFERS]]m</font></td></tr>"
-			contents += "<tr><td>Stockpile Imports <font size='1'><i>(see Trade)</i></font></td><td align='right'><font color='#d9534f'>-[SStreasury.total_import]m</font></td>"
+			contents += "<tr><td>已付薪资</td><td align='right'><font color='#d9534f'>-[GLOB.azure_round_stats[STATS_WAGES_PAID]]m</font></td>"
+			contents += "<td>国库转账</td><td align='right'><font color='#d9534f'>-[GLOB.azure_round_stats[STATS_DIRECT_TREASURY_TRANSFERS]]m</font></td></tr>"
+			contents += "<tr><td>库存进口 <font size='1'><i>（见贸易）</i></font></td><td align='right'><font color='#d9534f'>-[SStreasury.total_import]m</font></td>"
 			contents += "<td></td><td></td></tr>"
 			contents += "</table><br>"
 
 			// Tax Rates (two columns: rate name | percentage)
-			contents += "<b>TAX RATES</b>"
+			contents += "<b>税率</b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
 			var/list/rate_entries = list()
 			for(var/cat in SStreasury.tax_rates)
@@ -896,7 +896,7 @@
 			contents += "</table><br>"
 
 			// Poll Tax Rates (two columns: category | m/day)
-			contents += "<b>POLL TAX RATES (daily)</b>"
+			contents += "<b>人头税率（每日）</b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
 			var/datum/decree/golden = SStreasury.get_decree(DECREE_GOLDEN_BULL)
 			var/golden_active = golden?.active
@@ -910,9 +910,9 @@
 				var/pretty = SStreasury.get_poll_tax_category_pretty_name(pcat)
 				var/rate_display = "[rate]m"
 				if(pcat == POLL_TAX_CAT_BURGHER && golden_active && rate > GOLDEN_BULL_POLL_CAP)
-					rate_display = "<font color='#e07b39'>[GOLDEN_BULL_POLL_CAP]m</font> (raw [rate]m, capped)"
+					rate_display = "<font color='#e07b39'>[GOLDEN_BULL_POLL_CAP]m</font>（原始 [rate]m，已封顶）"
 				else if(pcat == POLL_TAX_CAT_MERCENARY && merc_charter_active && rate > GUILD_CHARTER_OF_ARMS_POLL_CAP)
-					rate_display = "<font color='#e07b39'>[GUILD_CHARTER_OF_ARMS_POLL_CAP]m</font> (raw [rate]m, capped)"
+					rate_display = "<font color='#e07b39'>[GUILD_CHARTER_OF_ARMS_POLL_CAP]m</font>（原始 [rate]m，已封顶）"
 				poll_entries += "<td>[pretty]</td><td align='right'>[rate_display]</td>"
 			for(var/i = 1, i <= length(poll_entries), i += 2)
 				contents += "<tr>"
@@ -924,18 +924,18 @@
 				contents += "</tr>"
 			contents += "</table>"
 			if(covenant_active)
-				contents += "<i><font color='#e07b39'>Covenant of Noc & Pestra in force: University and Apothecary pay no more than [NOC_PESTRA_POLL_CAP]m/day regardless of category rate.</font></i><br>"
+				contents += "<i><font color='#e07b39'>《诺克与佩斯特拉盟约》生效中：无论类别税率为何，大学与药剂行每日缴纳的人头税不超过 [NOC_PESTRA_POLL_CAP]m。</font></i><br>"
 			contents += "<br>"
 
 			// Charters (two-column)
-			contents += "<b>CHARTERS</b>"
+			contents += "<b>特许状</b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
 			var/list/charter_rows = list()
 			for(var/entry in charters)
 				var/cooldown_left = entry["cooldown_remaining"]
-				var/cd_text = cooldown_left > 0 ? " <i>(cd: [round(cooldown_left / 600, 0.1)]m)</i>" : ""
+				var/cd_text = cooldown_left > 0 ? " <i>（冷却：[round(cooldown_left / 600, 0.1)]m）</i>" : ""
 				var/status_color = entry["active"] ? "#5cb85c" : "#d9534f"
-				var/status_text = entry["active"] ? "ACTIVE" : "SUSPENDED"
+				var/status_text = entry["active"] ? "生效" : "中止"
 				charter_rows += "<td>[entry["name"]]</td><td align='right'><font color='[status_color]'>[status_text]</font>[cd_text]</td>"
 			for(var/i = 1, i <= length(charter_rows), i += 2)
 				contents += "<tr>"
@@ -948,55 +948,55 @@
 			contents += "</table><br>"
 
 			// Debt & Loans (two-column, orange for warnings)
-			contents += "<b><font color='#e07b39'>DEBT &amp; LOANS</font></b>"
+			contents += "<b><font color='#e07b39'>债务与贷款</font></b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
-			contents += "<tr><td>Accounts in Arrears</td><td align='right'><font color='#e07b39'>[snap["in_arrears"]]</font></td>"
-			contents += "<td>Accounts in Advance</td><td align='right'>[snap["in_advance"]]</td></tr>"
-			contents += "<tr><td>Default Debtors</td><td align='right'><font color='#d9534f'>[snap["debtor_count"]]</font></td>"
-			contents += "<td>Loans Outstanding</td><td align='right'>[snap["loans_outstanding"]] ([snap["loan_exposure"]]m)</td></tr>"
+			contents += "<tr><td>欠款账户</td><td align='right'><font color='#e07b39'>[snap["in_arrears"]]</font></td>"
+			contents += "<td>预存账户</td><td align='right'>[snap["in_advance"]]</td></tr>"
+			contents += "<tr><td>违约债务人</td><td align='right'><font color='#d9534f'>[snap["debtor_count"]]</font></td>"
+			contents += "<td>未偿贷款</td><td align='right'>[snap["loans_outstanding"]]（[snap["loan_exposure"]]m）</td></tr>"
 			contents += "</table><br>"
 
 			// Contracts (three-column: Issued / Taken / Completed, by issuing authority)
-			contents += "<b>CONTRACTS THIS WEEK</b>"
+			contents += "<b>本周契约</b>"
 			contents += "<table width='100%' cellspacing='0' cellpadding='2'>"
-			contents += "<tr><td></td><td align='right'><b>Issued</b></td><td align='right'><b>Taken</b></td><td align='right'><b>Completed</b></td></tr>"
-			contents += "<tr><td>Guild</td>"
+			contents += "<tr><td></td><td align='right'><b>发布</b></td><td align='right'><b>承接</b></td><td align='right'><b>完成</b></td></tr>"
+			contents += "<tr><td>行会</td>"
 			contents += "<td align='right'>[GLOB.azure_round_stats[STATS_CONTRACTS_GENERATED_POOL]]</td>"
 			contents += "<td align='right'>[GLOB.azure_round_stats[STATS_CONTRACTS_TAKEN_POOL]]</td>"
 			contents += "<td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_CONTRACTS_COMPLETED_POOL]]</font></td></tr>"
-			contents += "<tr><td>Tavern</td>"
+			contents += "<tr><td>酒馆</td>"
 			contents += "<td align='right'>[GLOB.azure_round_stats[STATS_CONTRACTS_GENERATED_RUMOR]]</td>"
 			contents += "<td align='right'>[GLOB.azure_round_stats[STATS_CONTRACTS_TAKEN_RUMOR]]</td>"
 			contents += "<td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_CONTRACTS_COMPLETED_RUMOR]]</font></td></tr>"
-			contents += "<tr><td>Crown</td>"
+			contents += "<tr><td>王权</td>"
 			contents += "<td align='right'>[GLOB.azure_round_stats[STATS_CONTRACTS_GENERATED_DEFENSE]]</td>"
 			contents += "<td align='right'>[GLOB.azure_round_stats[STATS_CONTRACTS_TAKEN_DEFENSE]]</td>"
 			contents += "<td align='right'><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_CONTRACTS_COMPLETED_DEFENSE]]</font></td></tr>"
-			contents += "<tr><td><b>Total</b></td>"
+			contents += "<tr><td><b>总计</b></td>"
 			contents += "<td align='right'><b>[GLOB.azure_round_stats[STATS_CONTRACTS_GENERATED]]</b></td>"
 			contents += "<td align='right'><b>[GLOB.azure_round_stats[STATS_CONTRACTS_TAKEN]]</b></td>"
 			contents += "<td align='right'><b><font color='#5cb85c'>[GLOB.azure_round_stats[STATS_CONTRACTS_COMPLETED]]</font></b></td></tr>"
 			contents += "</table>"
 		if(TAB_PAYDAY)
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
-			contents += "<center>Daily Payments<BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[返回\]</a><BR>"
+			contents += "<center>每日薪资<BR>"
 			contents += "--------------<BR>"
-			contents += "Treasury: [SStreasury.discretionary_fund.balance]m</center><BR>"
-			contents += "<a href='?src=\ref[src];setdailypay=1'>\[Add/Modify Job Payment\]</a><BR><BR>"
+			contents += "国库：[SStreasury.discretionary_fund.balance]m</center><BR>"
+			contents += "<a href='?src=\ref[src];setdailypay=1'>\[添加/修改职业薪资\]</a><BR><BR>"
 			if(daily_payments.len)
-				contents += "<center>Configured Payments:</center><BR>"
+				contents += "<center>已配置薪资：</center><BR>"
 				for(var/job_name in daily_payments)
 					var/amt = daily_payments[job_name]
 					var/count = 0
 					for(var/mob/living/carbon/human/H in GLOB.human_list)
 						if(H.job == job_name && !HAS_TRAIT(H, TRAIT_WAGES_SUSPENDED))
 							count++
-					contents += "<b>[job_name]:</b> [amt]m/day"
+					contents += "<b>[job_name]:</b> [amt]m/日"
 					if(count > 0)
-						contents += " ([count] employed, [amt * count]m total/day)"
-					contents += " <a href='?src=\ref[src];removedailypay=[job_name]'>\[Remove\]</a><BR>"
+						contents += "（[count] 在职，每日总计 [amt * count]m）"
+					contents += " <a href='?src=\ref[src];removedailypay=[job_name]'>\[移除\]</a><BR>"
 			else
-				contents += "<center>No daily payments configured.</center><BR>"
+				contents += "<center>未配置每日薪资。</center><BR>"
 		if(TAB_SALTMINE)
 			var/obj/structure/roguemachine/stockpile_saltcamp/stockpile = null
 			stockpile = locate(/obj/structure/roguemachine/stockpile_saltcamp) in GLOB.saltminestockpilemachines // we're assuming there is only ever one of these machines in the world
@@ -1004,11 +1004,11 @@
 			if(!isnull(stockpile))
 				var/gambled_salt = round(stockpile.salt_spent_on_gambling, 1)
 				var/total_accounts = length(stockpile.salt_accounts)
-				contents += "<center>Die Troyt Salt Mine Report:<BR>"
-				contents += "Total Salt Gambled: [gambled_salt] piles of salt</center><BR>"
+				contents += "<center>特罗伊特盐矿报告:<BR>"
+				contents += "总赌博盐量: [gambled_salt] 堆盐</center><BR>"
 				if(total_accounts > 0)
 					contents += "--------------<BR>"
-					contents += "<table><tr><th>Prisoner Name</th><th>Salt Mined</th><th>Interest Rate</th></tr>"
+					contents += "<table><tr><th>囚犯姓名</th><th>已采盐量</th><th>利率</th></tr>"
 					for(var/i = 1; i <= total_accounts; i++)
 						var/name = stockpile.salt_accounts[i]
 						var/salt = stockpile.salt_accounts[name]
@@ -1016,7 +1016,7 @@
 						var/interest = stockpile.salt_accounts_interest_max[name] * 100
 						if(salt == 0 && stockpile.salt_ticket_win[name] > 0) // don't show ticket winners who have left the mines
 							continue
-						contents += "<tr><td>[name]</td><td>[salt] salt / [salt_max] max</td><td>[interest]%</td></tr>"
+						contents += "<tr><td>[name]</td><td>[salt] 盐 / [salt_max] 上限</td><td>[interest]%</td></tr>"
 					contents += "</table>"
 
 	if(!canread)
