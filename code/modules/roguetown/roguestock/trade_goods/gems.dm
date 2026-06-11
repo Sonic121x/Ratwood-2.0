@@ -8,56 +8,56 @@
 
 /datum/trade_good/gem/common/toper
 	id = TRADE_GOOD_TOPER
-	name = "Toper"
+	name = "托珀石"
 	base_price = SELLPRICE_TOPER
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/yellow
 
 /datum/trade_good/gem/common/gemerald
 	id = TRADE_GOOD_GEMERALD
-	name = "Gemerald"
+	name = "翠晶"
 	base_price = SELLPRICE_GEMERALD
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/green
 
 /datum/trade_good/gem/common/jade
 	id = TRADE_GOOD_JADE
-	name = "Jade"
+	name = "玉"
 	base_price = SELLPRICE_JADE
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/jade
 
 /datum/trade_good/gem/common/onyxa
 	id = TRADE_GOOD_ONYXA
-	name = "Onyxa"
+	name = "奥尼克萨"
 	base_price = SELLPRICE_ONYXA
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/onyxa
 
 /datum/trade_good/gem/common/heartstone
 	id = TRADE_GOOD_HEARTSTONE
-	name = "Heartstone"
+	name = "心石"
 	base_price = SELLPRICE_HEARTSTONE
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/coral
 
 /datum/trade_good/gem/common/amber
 	id = TRADE_GOOD_AMBER
-	name = "Amber"
+	name = "琥珀"
 	base_price = SELLPRICE_AMBER
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/amber
 
 /datum/trade_good/gem/common/clamshell
 	id = TRADE_GOOD_CLAMSHELL
-	name = "Clamshell"
+	name = "蛤蜊壳"
 	base_price = SELLPRICE_CLAMSHELL
 	source_region_id = TRADE_REGION_SALTWICK
 	item_type = /obj/item/carvedgem/shell
 
 /datum/trade_good/gem/common/rosestone
 	id = TRADE_GOOD_ROSESTONE
-	name = "Rosestone"
+	name = "蔷薇石"
 	base_price = SELLPRICE_ROSESTONE
 	source_region_id = TRADE_REGION_ROCKHILL
 	item_type = /obj/item/carvedgem/rose
@@ -67,28 +67,28 @@
 
 /datum/trade_good/gem/rare/saffira
 	id = TRADE_GOOD_SAFFIRA
-	name = "Saffira"
+	name = "蓝晶"
 	base_price = SELLPRICE_SAFFIRA
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/violet
 
 /datum/trade_good/gem/rare/blortz
 	id = TRADE_GOOD_BLORTZ
-	name = "Blortz"
+	name = "布洛兹石"
 	base_price = SELLPRICE_BLORTZ
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/blue
 
 /datum/trade_good/gem/rare/opal
 	id = TRADE_GOOD_OPAL
-	name = "Opal"
+	name = "欧泊"
 	base_price = SELLPRICE_OPAL
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/opal
 
 /datum/trade_good/gem/rare/cerulite
 	id = TRADE_GOOD_CERULITE
-	name = "Cerulite"
+	name = "蔚青石"
 	base_price = SELLPRICE_CERULITE
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/turq
@@ -98,7 +98,7 @@
 
 /datum/trade_good/gem/legendary/dorpel
 	id = TRADE_GOOD_DORPEL
-	name = "Dorpel"
+	name = "多佩尔石"
 	base_price = SELLPRICE_DORPEL
 	source_region_id = null
 	item_type = /obj/item/roguegem/diamond
