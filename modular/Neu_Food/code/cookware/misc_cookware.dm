@@ -31,12 +31,12 @@
     . += span_info("Left-click on a wad of dough, whether balled-up or sliced into halves, to further flatten it out.")
 
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins flattening [user.p_their()] head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user]开始用[src]把自己的脑袋擀平！看起来是在自杀！</span>")
 	return BRUTELOSS
 
 /obj/item/tablecloth/silk
-	name = "silk tablecloth"
-	desc = "A fancy silk tablecloth, laid out for diplomatic feasts and other important events."
+	name = "丝绸桌布"
+	desc = "一块华美的丝绸桌布，专为外交宴席和其他重要场合铺设。"
 	icon = 'modular/Neu_Food/icons/cookware/misc.dmi'
 	icon_state = "tablecloth_silk"
 	sellprice = 40

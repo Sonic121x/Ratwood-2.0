@@ -164,7 +164,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/Initialize()
 	. = ..()
-	eatverb = pick("bite","chew","nibble","gobble","chomp")
+	eatverb = pick("咬","咀嚼","小口啃","狼吞虎咽","大口咬")
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase // root item for uncooked food thats disgusting when raw
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
@@ -195,7 +195,7 @@
 	eater.put_in_active_hand(I)
 
 /obj/effect/decal/cleanable/food/mess // decal applied when throwing minced meat for example
-	name = "mess"
+	name = "污渍"
 	desc = ""
 	color = "#ab9d9d"
 	icon_state = "tomato_floor1"
@@ -204,7 +204,7 @@
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
 	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
-			user.visible_message(span_notice("[user] chops [src]!"))
+			user.visible_message(span_notice("[user]把[src]切碎了！"))
 			slice(W, user)
 			return 1
 		else if(slice(W, user))
@@ -230,8 +230,8 @@
 	experimental_onback = FALSE
 
 /obj/item/book/rogue/yeoldecookingmanual // new book with some tips to learn
-	name = "Ye olde ways of cookinge"
-	desc = "Penned by Svend Fatbeard, butler in the fourth generation"
+	name = "古旧烹饪之道"
+	desc = "由第四代管家斯文德·胖胡子撰写"
 	icon_state ="book8_0"
 	base_icon_state = "book8"
 	bookfile = "Neu_cooking.json"
@@ -245,8 +245,8 @@
 
 // -------------- Flour -----------------
 /obj/item/reagent_containers/powder/flour
-	name = "flour"
-	desc = "With this ambition, we build an empire."
+	name = "面粉"
+	desc = "怀揣这份志气，我们便能筑起帝国。"
 	gender = PLURAL
 	icon_state = "flour"
 	list_reagents = list(/datum/reagent/floure = 1)
@@ -294,17 +294,17 @@
 	if(water_added)
 		return FALSE
 	if(isturf(loc)&& (!found_table))
-		to_chat(user, span_notice("Need a table..."))
+		to_chat(user, span_notice("需要一张桌子......"))
 		return FALSE
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
-		to_chat(user, span_notice("Needs more water to work it."))
+		to_chat(user, span_notice("还需要更多水才能和开。"))
 		return TRUE
-	to_chat(user, span_notice("Adding water, now it's time to knead it..."))
+	to_chat(user, span_notice("加好水了，现在该揉面了......"))
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user, short_cooktime, target = src))
 		add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-		name = "wet flour"
-		desc = "Destined for greatness, at your hands."
+		name = "湿面粉"
+		desc = "在你手中，它注定会成就一番美味。"
 		if(is_container)
 			R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
@@ -357,16 +357,16 @@
 	if(water_added)
 		return FALSE
 	if(isturf(loc)&& (!found_table))
-		to_chat(user, "<span class='notice'>Need a table...</span>")
+		to_chat(user, "<span class='notice'>需要一张桌子......</span>")
 		return FALSE
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
-		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
+		to_chat(user, "<span class='notice'>还需要更多水才能淘洗。</span>")
 		return TRUE
-	to_chat(user, "<span class='notice'>Adding water, now it's time to hand wash it...</span>")
+	to_chat(user, "<span class='notice'>加好水了，现在该用手淘洗了......</span>")
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user,2 SECONDS, target = src))
 		user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-		name = "wet rice"
+		name = "湿米"
 		if(is_container)
 			R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
@@ -384,7 +384,7 @@
 
 /* -------------- WET RICE ----------------- */
 /obj/item/reagent_containers/food/snacks/rogue/ricewet
-	name = "washed rice"
+	name = "洗净的米"
 	desc = ""
 	gender = PLURAL
 	icon = 'icons/roguetown/items/produce.dmi'
@@ -395,8 +395,8 @@
 	sellprice = 0
 
 /obj/item/reagent_containers/powder/mineral
-	name = "coarse minerals"
-	desc = "Ground up rock. It could be made into mineral salts with more work."
+	name = "粗矿粉"
+	desc = "研碎后的石粉，再加工一下就能制成矿盐。"
 	gender = PLURAL
 	icon_state = "salt"
 	list_reagents = list(/datum/reagent/floure = 1)
@@ -405,8 +405,8 @@
 	var/water_added
 
 /obj/item/reagent_containers/powder/coarse_salt
-	name = "coarse salt"
-	desc = "Somewhat gritty, coarse salt. Could be ground down into finer salt."
+	name = "粗盐"
+	desc = "带着些许砂砾感的粗盐，还可以继续磨成更细的盐。"
 	gender = PLURAL
 	icon_state = "salt"
 	list_reagents = list(/datum/reagent/floure = 1)
@@ -434,16 +434,16 @@
 	if(water_added)
 		return FALSE
 	if(isturf(loc)&& (!found_table))
-		to_chat(user, span_notice("Need a table..."))
+		to_chat(user, span_notice("需要一张桌子......"))
 		return FALSE
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
-		to_chat(user, span_notice("Needs more water to work it."))
+		to_chat(user, span_notice("还需要更多水才能处理。"))
 		return TRUE
-	to_chat(user, span_notice("Adding water, now it's time to sift it..."))
+	to_chat(user, span_notice("加好水了，现在该筛滤它了......"))
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user, short_cooktime, target = src))
-		name = "prepared minerals"
-		desc = "Still quite coarse, needs some sifting."
+		name = "处理过的矿粉"
+		desc = "还是相当粗糙，还得再筛一遍。"
 		if(is_container)
 			R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
@@ -473,6 +473,6 @@
 	sellprice = 0
 
 /datum/reagent/consumable/pumpkinspice
-	name = "pumpkin spice"
-	description = "Spiced delight."
+	name = "南瓜香料"
+	description = "令人愉悦的香料滋味。"
 	color = "#ffffff"

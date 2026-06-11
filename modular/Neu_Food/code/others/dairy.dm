@@ -7,7 +7,7 @@
 
 /*	........   Salting milk (for butter & cheesemaking)   ................ */
 /datum/reagent/consumable/milk/salted
-	taste_description = "salty milk"
+	taste_description = "咸牛奶"
 
 /obj/item/reagent_containers/attackby(obj/item/I, mob/living/user, params) // add cook time to containers & salted milk for butter churning
 	..()
@@ -43,8 +43,8 @@
 // -------------- BUTTER -----------------
 /obj/item/reagent_containers/food/snacks/butter
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
-	name = "stick of butter"
-	desc = "Delicious fattiness, fit for elevating meals-a-plenty."
+	name = "黄油条"
+	desc = "美味的油脂，足以让无数菜肴更添风味。"
 	icon_state = "butter6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTER_NUTRITION)
 	foodtype = DAIRY
@@ -58,7 +58,7 @@
 /obj/item/reagent_containers/food/snacks/butter/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
-		to_chat(user, span_notice("Cracking an egg over the butter."))
+		to_chat(user, span_notice("把鸡蛋磕在黄油上。"))
 		if(do_after(user, short_cooktime, target = src))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
 			new /obj/item/reagent_containers/food/snacks/rogue/foodbase/squires_delight(drop_location())
@@ -90,8 +90,8 @@
 /obj/item/reagent_containers/food/snacks/butterslice
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "butter_slice"
-	name = "butter"
-	desc = "A portion of milky paradise. Kneading it into dough is necessary to prepare many of Psydonia's pastries, though the more humble-hearted prefer to simply doll up a slice of toast with it."
+	name = "黄油"
+	desc = "一小块乳白色的天堂。将其揉入面团是制作许多普赛多尼亚糕点的必要步骤，不过那些更为谦逊的人则更喜欢用它来点缀一片吐司。"
 	faretype = FARE_IMPOVERISHED
 	foodtype = DAIRY
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -101,7 +101,7 @@
 	update_cooktime(user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/sugar))
 		if(isturf(loc)&& (found_table))
-			to_chat(user, span_notice("Mixing in sugar to make frosting..."))
+			to_chat(user, span_notice("拌入糖来制作糖霜..."))
 			if(do_after(user, long_cooktime, target = src))
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 				new /obj/item/reagent_containers/food/snacks/rogue/frosting(drop_location())
@@ -109,7 +109,7 @@
 				qdel(src)
 			return
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
+			to_chat(user, span_warning("你得把[src]放到桌上才能处理。"))
 	return ..()
 
 
@@ -133,7 +133,7 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese))
 		if(isturf(loc)&& (found_table))
-			user.visible_message(span_info("[user] starts packing the cloth with fresh cheese..."))
+			user.visible_message(span_info("[user]开始把鲜奶酪包进布里..."))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,3 SECONDS, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -142,12 +142,12 @@
 				qdel(src)
 			return
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
+			to_chat(user, span_warning("你得把[src]放到桌上才能处理。"))
 	..()
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel
-	name = "unfinished cheese wheel"
-	desc = "Clotted and salted milk, eager to be cocooned in cloth so that it may realize its fullest potential. You'll need three more servings of fresh cheese to finish it."
+	name = "未完成的奶酪轮"
+	desc = "凝结并加盐的牛奶，渴望被裹入布里以发挥其全部潜力。你还需要三份鲜奶酪才能完成它。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "cheesewheel_1"
 	w_class = WEIGHT_CLASS_BULKY
@@ -169,14 +169,14 @@
 				switch(process_step)
 					if(2)
 						icon_state = "cheesewheel_2"
-						desc = "You'll need two more servings of fresh cheese to finish it."
+						desc = "你还需要两份鲜奶酪才能完成它。"
 					if(3)
 						icon_state = "cheesewheel_3"
-						desc = "You'll need only one more serving of fresh cheese to finish it."
+						desc = "你还差一份鲜奶酪才能完成它。"
 					if(4)
-						name = "maturing cheese wheel"
+						name = "熟成中的奶酪轮"
 						icon_state = "cheesewheel_end"
-						desc = "Slowly solidifying, best left alone a bit longer."
+						desc = "正在缓慢凝固，最好再静置一会儿。"
 						addtimer(CALLBACK(src, mature_proc), 5 MINUTES)
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
@@ -192,14 +192,14 @@
 
 // -------------- CHEESE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/cheese
-	name = "fresh cheese"
-	desc = "Clotted and salted milk, eager to be cocooned in cloth so that it may realize its fullest potential."
+	name = "鲜奶酪"
+	desc = "凝结并加盐的牛奶，渴望被裹入布里以发挥其全部潜力。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "freshcheese"
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("cheese" = 1)
+	tastes = list("奶酪" = 1)
 	faretype = FARE_POOR
 	foodtype = GRAIN
 	eat_effect = null
@@ -213,14 +213,14 @@
 	. += span_info("Repeating this process until four clumps of fresh cheese are used will result in a tied-together package. This package will eventually blossom into a cheese wheel, once enough time has passed.")
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar
-	name = "wheel of cheese"
-	desc = "A hunk of burning love, aching to age."
+	name = "奶酪轮"
+	desc = "一块炽热的爱意，渴望着陈年。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "cheesewheel"
 	bitesize = 10
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION*4)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cheese" = 1)
+	tastes = list("奶酪" = 1)
 	faretype = FARE_POOR
 	eat_effect = null
 	rotprocess = SHELFLIFE_LONG
@@ -235,8 +235,8 @@
 	. += span_info("If left undisturbed for long enough, cheese wheels will eventually age into a more decadant and delicious result.")
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
-	name = "wheel of aged cheese"
-	desc = "A hunk of smoldering love, aged to perfection."
+	name = "熟成奶酪轮"
+	desc = "一块炽热的爱意，已熟成至完美。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "blue_cheese"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
@@ -245,15 +245,15 @@
 	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
-	name = "wedge of cheese"
-	desc = "Talk about a chunk of cheddar!"
+	name = "奶酪角"
+	desc = "这可是好大一块切达奶酪！"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "cheese_wedge"
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	w_class = WEIGHT_CLASS_TINY
 	faretype = FARE_POOR
-	tastes = list("cheese" = 1)
+	tastes = list("奶酪" = 1)
 	eat_effect = null
 	rotprocess = SHELFLIFE_LONG
 	slices_num = 3
@@ -262,8 +262,8 @@
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
-	name = "wedge of aged cheese"
-	desc = "Fit for a king, or a particularly deserving mouse."
+	name = "熟成奶酪角"
+	desc = "配得上一位国王，或一只特别值得嘉奖的老鼠。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "blue_cheese_wedge"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
@@ -272,14 +272,14 @@
 	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
-	name = "slice of cheese"
-	desc = "A sliver of savoriness."
+	name = "奶酪片"
+	desc = "一片咸香。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "cheese_slice"
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("cheese" = 1)
+	tastes = list("奶酪" = 1)
 	eat_effect = null
 	faretype = FARE_POOR
 	rotprocess = SHELFLIFE_SHORT
@@ -299,8 +299,8 @@
 	)
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
-	name = "slice of aged cheese"
-	desc = "A piece of paradise."
+	name = "熟成奶酪片"
+	desc = "一片天堂。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "blue_cheese_slice"
 	faretype = FARE_FINE
@@ -318,14 +318,14 @@
 
 // -------------- FROSTING -----------------
 /obj/item/reagent_containers/food/snacks/rogue/frosting
-	name = "frosting"
-	desc = "Butter mixed with sugar and whipped into a delicious frosting."
+	name = "糖霜"
+	desc = "黄油与糖混合打发成的美味糖霜。"
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "frosting"
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("sugary frosting"=1)
+	tastes = list("甜糖霜"=1)
 	faretype = FARE_NEUTRAL
 	foodtype = DAIRY | SUGAR
 	eat_effect = /datum/status_effect/buff/sweet
