@@ -149,7 +149,7 @@
 /datum/status_effect/buff/equalizebuff/on_remove()
 	. = ..()
 	owner.remove_filter(EQUALIZED_GLOW)
-		to_chat(owner, "<font color='yellow'>我的联结消退了，被夺走的火焰回到了他们身上。</font>")
+	to_chat(owner, "<font color='yellow'>我的联结消退了，被夺走的火焰回到了他们身上。</font>")
 
 
 // debuff
@@ -171,7 +171,7 @@
 /datum/status_effect/debuff/equalizedebuff/on_remove()
 	. = ..()
 	owner.remove_filter(EQUALIZED_GLOW)
-		to_chat(owner, "<font color='yellow'>我的火焰回来了！</font>")
+	to_chat(owner, "<font color='yellow'>我的火焰回来了！</font>")
 
 
 

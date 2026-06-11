@@ -1352,7 +1352,7 @@
 
 /obj/structure/ritualcircle/zizo/proc/zizoarmaments(mob/living/carbon/human/target)
 	if(!HAS_TRAIT(target, TRAIT_CABAL))
-	target.visible_message(span_cult("此仪拒绝并非秘社之人。"))
+		target.visible_message(span_cult("此仪拒绝并非秘社之人。"))
 		return
 	target.Stun(60)
 	target.Knockdown(60)

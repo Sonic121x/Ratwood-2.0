@@ -48,7 +48,7 @@
 	P.fire()
 
 	if (big_cast)
-			user.visible_message(span_danger("[user]凝出一支凶恶骨矛，朝[target]猛然掷去！"), span_notice("我朝[target]掷出了一支凶恶的渎化骨矛！"))
+		user.visible_message(span_danger("[user]凝出一支凶恶骨矛，朝[target]猛然掷去！"), span_notice("我朝[target]掷出了一支凶恶的渎化骨矛！"))
 	else
 		user.visible_message(span_danger("[user]朝[target]射出了一枚骨刺！"), span_notice("我朝[target]掷出了一枚渎化骨片！"))
 
