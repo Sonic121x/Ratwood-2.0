@@ -148,8 +148,8 @@
 
 #undef BLESSINGOFLIGHT_FILTER
 /atom/movable/screen/alert/status_effect/thaumaturgy
-	name = "Thaumaturgical Voice"
-	desc = "The power of my god will make the next thing I say carry much further!"
+	name = "奇术之声"
+	desc = "吾神之力将使我接下来所说的话传得更远！"
 	icon_state = "stressvg"
 
 /datum/status_effect/thaumaturgy
@@ -224,8 +224,8 @@
 			return
 
 /datum/reagent/water/blessed
-	name = "blessed water"
-	description = "A gift of Devotion. Heals the body from within, but not physical wounds."
+	name = "圣水"
+	description = "虔信的赐礼。可自内而外调理身躯，但无法愈合外在创伤。"
 
 /datum/reagent/water/blessed/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -262,8 +262,8 @@
 	return ..()
 
 /datum/reagent/water/cursed
-	name = "cursed water"
-	description = "A gift of Devotion. Heals the body from within, but not physical wounds."
+	name = "诅咒之水"
+	description = "虔信的赐礼。可自内而外调理身躯，但无法愈合外在创伤。"
 
 /datum/reagent/water/cursed/on_mob_life(mob/living/carbon/M)
 	. = ..()

@@ -9,10 +9,13 @@
 | Czwarteki | 兹瓦尔特基 |
 | Dunewell | 沙泉 |
 | Etrusca | 伊特鲁斯卡 |
+| Etrucian | 伊特鲁斯卡的 |
+| Etruscan | 伊特鲁斯卡的 |
 | Ferentia | 费伦提亚 |
 | Ferentine | 费伦提亚的 |
 | Fjall | 菲亚尔 |
 | Grenzelhoft | 格伦泽尔霍夫特 |
+| Grenzelhoftian | 格伦泽尔霍夫特的 |
 | Grenzel | 格伦泽尔 |
 | Gronn | 格隆恩 |
 | Hammerhold | 铁锤堡 |
@@ -20,6 +23,7 @@
 | Heartfeltian | 赤心裔 |
 | Kazengite | 风郡裔 |
 | Kazengun | 风郡 |
+| Kazengan | 风郡的 |
 | Naledi | 纳莱迪 |
 | New Moon | 新月 |
 | Blortz Volves | 布洛兹狼帮 |
@@ -39,21 +43,32 @@
 | 英文 | 中文 |
 |---|---|
 | Abyssor | 阿比索尔 |
+| Abyssorite | 阿比索尔的 |
 | Baotha | 巴奥莎 |
 | Psydonians | 普赛顿信徒 |
 | Astrata | 阿斯特拉塔 |
+| Astratan | 阿斯特拉塔的 |
 | Dendor | 登多尔 |
+| KETRAI | 凯特莱 |
 | Eora | 伊欧拉 |
+| Eoran | 伊欧拉的 |
 | Graggar | 格拉加尔 |
 | Malum | 玛勒姆 |
+| Malumite | 玛勒姆的 |
 | Matthios | 马西奥斯 |
 | Necra | 内克拉 |
+| Necran | 内克拉的 |
 | Noc | 诺克 |
 | Pestra | 佩斯特拉 |
+| Pestran | 佩斯特拉的 |
 | PSYDON | 普赛顿 |
 | Psydon | 普赛顿 |
+| Psydonian | 普赛顿的 |
+| Ten | 十神 |
 | Ravox | 拉沃克斯 |
+| Ravoxian | 拉沃克斯的 |
 | Xylix | 赛利克斯 |
+| Xylixian | 赛利克斯的 |
 | Zizo | 齐佐 |
 
 ## 种族、生物与概念
@@ -73,6 +88,7 @@
 | leyline | 地脉 |
 | leylines | 地脉 |
 | leyline lycan | 地脉狼人 |
+| mammon | 玛门 |
 | PARADYSE | 极乐境 |
 | Verevolf | 维尔沃夫 |
 | Volf | 沃尔夫 |
@@ -81,7 +97,11 @@
 | 英文 | 中文 |
 |---|---|
 | Celestial Academy of Magos | 天穹魔导学院 |
+| Forlorn Hope | 死士先锋 |
 | Freifechters | 自由斗剑团 |
+| Holy See | 教廷 |
+| Kajutsu no Densho | 火术传书 |
+| Kazengunese | 风郡语 |
 | Lirvas | 利尔瓦斯 |
 | Sama'glos | 萨玛格罗斯语 |
 
@@ -111,6 +131,7 @@
 | 英文 | 中文 |
 |---|---|
 | Kriegmesser | 战刀 |
+| Baker's Dozen | 面包师十三 |
 | Zenny | 泽尼 |
 | Arcanic meld | 奥术融印 |
 | arcanic meld | 奥术融印 |
@@ -122,10 +143,15 @@
 | Woven Planar Binding Shackles | 织纹位面束缚镣铐 |
 | Confluent Planar Binding Shackles | 汇流位面束缚镣铐 |
 | Aberrant Planar Binding Shackles | 畸变位面束缚镣铐 |
+| Farkle | 法克尔 |
 | prestidigitation | 戏法术 |
 | psicross | 普赛圣十字 |
 | Psycross | 普赛圣十字 |
 | Psydonic | 普赛顿式 |
+| psilen | 普西伦古币 |
+| Sisrat | 西斯拉特 |
+| Three's Away | 三去无踪 |
+| Zizo Cross | 齐佐十字 |
 
 ## 装置、机构与系统名
 | 英文 | 中文 |
