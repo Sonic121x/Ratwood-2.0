@@ -3,12 +3,12 @@
 	school = "transmutation"
 
 /obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon/bladeofpsydon
-	name = "Blade of Psydon"
-	desc = "The manifestation of the higher concept of a blade itself. Said to be drawn upon from Noc's tresury of wisdom, each casting a poor facsimile of the perfect weapon They hold."
+	name = "普赛顿之刃"
+	desc = "刀刃这一更高概念本身的显化。据说它取自诺克的智慧宝库，而每次施展都只是那柄完美兵器的拙劣仿制。"
 	clothes_req = FALSE
-	drawmessage = "I imagine the perfect weapon, forged by arcyne knowledge, it's edge flawless. \
-	I feel it in my mind's eye -- but it's just out of reach. I pull away it's shadow, a bad copy, and yet it is one of a great weapon nonetheless... "
-	dropmessage = "Letting go, I watch the blade lose it's form, unable to stay stable without my energy rooting it to this world..."
+	drawmessage = "我想象那把由奥术知识锻成的完美兵器，其锋刃毫无瑕疵。\
+	我在心眼之中感知到它，却又始终差之毫厘。于是我拽出了它的影子，一件拙劣的仿品，但终究仍是一柄伟大的武器...... "
+	dropmessage = "当我松开它时，我看着刀刃渐渐失去形体；若无我的能量将其锚定于此世，它便无法稳定存在......"
 	overlay_state = "boundkatar"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
@@ -16,8 +16,8 @@
 	req_items = list(/obj/item/clothing/mask/rogue/lordmask/naledi)
 
 /obj/item/melee/touch_attack/rogueweapon/bladeofpsydon
-	name = "\improper arcyne push dagger"
-	desc = "This blade throbs, translucent and iridiscent, blueish arcyne energies running through it's translucent surface..."
+	name = "\improper 奥术推匕"
+	desc = "这柄刀刃微微搏动，半透明而流彩，淡蓝色的奥术能量正沿着其通透的表面流淌......"
 	catchphrase = null
 	icon = 'icons/mob/actions/roguespells.dmi'
 	icon_state = "katar_bound"

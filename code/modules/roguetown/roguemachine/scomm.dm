@@ -1,8 +1,8 @@
 #define GARRISON_SCOM_COLOR "#FF4242"
 
 /obj/structure/roguemachine/scomm
-	name = "SCOM"
-	desc = "The Supernatural Communication Optical Machine is a wonder of magic and technology."
+	name = "SCOM传讯网"
+	desc = "超自然光学通讯机是魔法与技术的奇迹。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "scomm1"
 	density = FALSE
@@ -53,14 +53,14 @@
 /obj/structure/roguemachine/scomm/examine(mob/user)
 	. = ..()
 	if(scom_number)
-		. += "Its designation is #[scom_number]."
+		. += "其编号为 #[scom_number]。"
 	if(user.loc == loc)
-		. += "<b>THE LAWS OF THE LAND:</b>"
+		. += "<b>此地律法：</b>"
 		if(!length(GLOB.laws_of_the_land))
-			. += span_danger("The land has no laws! <b>We are doomed!</b>")
+			. += span_danger("此地无法！<b>我们注定完蛋！</b>")
 			return
 		if(!user.is_literate())
-			. += span_warning("Uhhh... I can't read them...")
+			. += span_warning("呃……我看不懂这些……")
 			return
 		for(var/i in 1 to length(GLOB.laws_of_the_land))
 			. += span_small("[i]. [GLOB.laws_of_the_land[i]]")
@@ -73,7 +73,7 @@
 		return
 	if(!speaking)
 		return
-	say("The [SSticker.rulertype] Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
+	say("[SSticker.rulertype]颁布法令：[pick(GLOB.lord_decrees)]", spans = list("info"))
 
 /obj/structure/roguemachine/scomm/attack_hand(mob/living/user)
 	. = ..()
@@ -83,17 +83,17 @@
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	if(called_by && !calling)
 		calling = called_by
-		calling.say("Jabberline fused.", spans = list("info"))
-		say("Jabberline fused.", spans = list("info"))
+		calling.say("密语线已接通。", spans = list("info"))
+		say("密语线已接通。", spans = list("info"))
 		update_icon()
 		return
 	if(calling)
 		listening = !listening
-		to_chat(user, span_info("I [listening ? "unmute" : "mute"] the input on the SCOM."))
+		to_chat(user, span_info("我将 SCOM传讯网 的输入[listening ? "取消静音" : "静音"]了。"))
 		return
 	listening = !listening
 	speaking = listening
-	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the SCOM."))
+	to_chat(user, span_info("我将 SCOM传讯网[speaking ? "取消静音" : "静音"]了。"))
 	update_icon()
 
 /obj/structure/roguemachine/scomm/attack_right(mob/user)
@@ -102,21 +102,21 @@
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	if(called_by && !calling)
-		called_by.say("Jabberline refused.", spans = list("info"))
-		say("Jabberline refused.", spans = list("info"))
+		called_by.say("密语线被拒绝。", spans = list("info"))
+		say("密语线被拒绝。", spans = list("info"))
 		called_by.calling = null
 		called_by = null
 		return
 	if(calling)
 		speaking = !speaking
-		to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the output on the SCOM."))
+		to_chat(user, span_info("我将 SCOM传讯网 的输出[speaking ? "取消静音" : "静音"]了。"))
 		return
 	var/canread = user.can_read(src, TRUE)
 	var/contents
 	if(SSticker.rulertype == "Grand Duke")
-		contents += "<center>GRAND DUKE'S DECREES<BR>"
+		contents += "<center>大公法令<BR>"
 	else
-		contents += "<center>GRAND DUCHESS' DECREES<BR>"
+		contents += "<center>大公夫人法令<BR>"
 	contents += "-----------<BR><BR></center>"
 	for(var/i = GLOB.lord_decrees.len to 1 step -1)
 		contents += "[i]. <span class='info'>[GLOB.lord_decrees[i]]</span><BR>"
@@ -130,16 +130,16 @@
 	if(.)
 		return
 	if((HAS_TRAIT(user, TRAIT_GUARDSMAN) || (user.job == "Warden") || (user.job == "Squire") || (user.job == "Marshal") || (user.job == "Grand Duke") || (user.job == "Knight Captain") || (user.job == "Grand Duchess")))
-		if(alert("Would you like to swap lines or connect to a jabberline?",, "swap", "jabberline") != "jabberline")
+		if(alert("你想切换线路，还是接入密语线？",, "切换", "密语线") != "密语线")
 			garrisonline = !garrisonline
-			to_chat(user, span_info("I [garrisonline ? "connect to the garrison SCOMline" : "connect to the general SCOMLINE"]"))
+			to_chat(user, span_info("我[garrisonline ? "接入了卫戍 SCOM 线路" : "接入了普通 SCOM 线路"]。"))
 			playsound(loc, 'sound/misc/garrisonscom.ogg', 100, FALSE, -1)
 			update_icon()
 			return
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	if(calling)
-		calling.say("Jabberline severed.", spans = list("info"))
+		calling.say("密语线已断开。", spans = list("info"))
 		if(calling.calling == src)
 			var/obj/structure/roguemachine/scomm/old_calling = calling
 			old_calling.called_by = null
@@ -149,31 +149,31 @@
 		calling = null
 		called_by = null
 		speaking = listening
-		to_chat(user, span_info("I cut the jabberline."))
-		say("Jabberline severed.", spans = list("info"))
+		to_chat(user, span_info("我切断了密语线。"))
+		say("密语线已断开。", spans = list("info"))
 		update_icon()
 	else
-		say("Input SCOM designation.", spans = list("info"))
-		var/nightcall = input(user, "Input the number you have been provided with.", "INTERFACING") as null|num
+		say("输入 SCOM传讯网 编号。", spans = list("info"))
+		var/nightcall = input(user, "输入分配给你的编号。", "联络") as null|num
 		if(!nightcall)
 			return
 		if(nightcall == scom_number)
-			to_chat(user, span_warning("Nothing but rats squeaking back at you."))
+			to_chat(user, span_warning("只有老鼠在吱吱地回应你。"))
 			playsound(src, 'sound/vo/mobs/rat/rat_life.ogg', 100, TRUE, -1)
 			return
 		if(SSroguemachine.scomm_machines.len < nightcall)
-			say("There are no rats running this jabberline.", spans = list("info"))
+			say("没有老鼠在跑这条密语线。", spans = list("info"))
 			return
 		var/obj/structure/roguemachine/scomm/S = SSroguemachine.scomm_machines[nightcall]
 		if(!S)
-			to_chat(user, span_warning("Nothing but rats squeaking back at you."))
+			to_chat(user, span_warning("只有老鼠在吱吱地回应你。"))
 			playsound(src, 'sound/vo/mobs/rat/rat_life.ogg', 100, TRUE, -1)
 			return
 		if(S.calling || S.called_by)
-			say("This jabberline's rats are occupied.", spans = list("info"))
+			say("这条密语线上的老鼠正忙着。", spans = list("info"))
 			return
 		if(!S.speaking)
-			say("This jabberline's rats have been gagged.", spans = list("info"))
+			say("这条密语线上的老鼠被堵住嘴了。", spans = list("info"))
 			return
 		calling = S
 		S.called_by = src
@@ -188,14 +188,14 @@
 			calling.ring_ring()
 			ring_ring()
 			sleep(30)
-		say("This jabberline's rats are exhausted.", spans = list("info"))
+		say("这条密语线上的老鼠累坏了。", spans = list("info"))
 		calling.called_by = null
 		calling = null
 		update_icon()
 
 /obj/structure/roguemachine/scomm/obj_break(damage_flag)
 	..()
-	calling?.say("Jabberline severed.", spans = list("info"))
+	calling?.say("密语线已断开。", spans = list("info"))
 	calling?.speaking = calling?.listening
 	calling?.called_by = null
 	calling?.calling = null
@@ -273,7 +273,7 @@
 		if(length(raw_message) > 100) //When these people talk too much, put that shit in slow motion, yeah
 			/*if(length(raw_message) > 200)
 				if(!spawned_rat)
-					visible_message(span_warning("An angered rous emerges from the SCOMlines!"))
+					visible_message(span_warning("一只被激怒的 rous 从 SCOM传讯网 线路里冲了出来！"))
 					new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(get_turf(src))
 					spawned_rat = TRUE
 				return*/
@@ -328,9 +328,9 @@
 //SCOMSTONE                 SCOMSTONE
 
 /obj/item/scomstone
-	name = "scomstone"
+	name = "通讯石戒"
 	icon_state = "ring_scom"
-	desc = "A heavy ring made of metal. There is a gem embedded in the center - dim, but alive."
+	desc = "一枚沉重的金属戒指。中央嵌着一颗宝石，光芒黯淡，却仍像活着一般。"
 	gripped_intents = null
 	dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
@@ -353,8 +353,8 @@
 //wip
 /obj/item/scomstone/attack_right(mob/living/carbon/human/user)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
-	visible_message(span_notice ("[user] presses their ring against their mouth."))
-	var/input_text = input(user, "Enter your message:", "Message")
+	visible_message(span_notice ("[user]把戒指按在嘴边。"))
+	var/input_text = input(user, "输入你的消息：", "消息")
 	if(!input_text)
 		return
 	var/usedcolor = user.voice_color
@@ -383,7 +383,7 @@
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	listening = !listening
 	speaking = !speaking
-	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
+	to_chat(user, span_info("我将通讯石戒[speaking ? "取消静音" : "静音"]了。"))
 	update_icon()
 
 /obj/item/scomstone/Destroy()
@@ -425,8 +425,8 @@
 		send_speech(message, hearrange, src, , spans, message_language=language)
 
 /obj/item/scomstone/bad
-	name = "serfstone"
-	desc = "A rusty shoddily-made metal ring. The gem embedded within is barely holding on."
+	name = "仆役石戒"
+	desc = "一枚锈迹斑斑、做工粗糙的金属戒指。嵌在里面的宝石几乎快要撑不住了。"
 	icon_state = "ring_serfscom"
 	listening = FALSE
 	sellprice = 20
@@ -436,9 +436,9 @@
 
 //LISTENSTONE		LISTENSTONE
 /obj/item/listenstone
-	name = "emerald choker"
+	name = "翡翠项圈"
 	icon_state = "listenstone"
-	desc = "An iron and gold choker with an emerald gem."
+	desc = "一只镶有翡翠的铁金项圈。"
 	gripped_intents = null
 	//dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
@@ -463,7 +463,7 @@
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	listening = !listening
 	speaking = !speaking
-	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
+	to_chat(user, span_info("我将通讯石戒[speaking ? "取消静音" : "静音"]了。"))
 	update_icon()
 	if(listening)
 		icon_state = "listenstone"
@@ -505,9 +505,9 @@
 // MATTHIAN SCOMCOIN
 
 /obj/item/mattcoin
-	name = "rontz ring"
+	name = "隆茨戒指"
 	icon_state = "mattcoin"
-	desc = "A faded coin with a ruby laid into its center."
+	desc = "一枚褪色的硬币，中央嵌着一颗红宝石。"
 	gripped_intents = null
 	dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
@@ -530,18 +530,18 @@
 	become_hearing_sensitive()
 	update_icon()
 	SSroguemachine.scomm_machines += src
-	name = pick("rontz ring", "gold ring")
+	name = pick("隆茨戒指", "金戒指")
 
 /obj/item/mattcoin/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_COMMIE))
-		to_chat(user, "The coin turns to ash in my hands!")
+		to_chat(user, "这枚硬币在我手中化成了灰！")
 		playsound(loc, 'sound/items/firesnuff.ogg', 100, FALSE, -1)
 		qdel(src)
 	..()
 
 /obj/item/mattcoin/doStrip(mob/stripper, mob/owner)
 	if(!(stripper?.mind.has_antag_datum(/datum/antagonist/bandit))) //You're not a bandit, you can't strip the bandit coin
-		to_chat(stripper, "[src] turns to ash in my hands!")
+		to_chat(stripper, "[src]在我手中化成了灰！")
 		playsound(stripper.loc, 'sound/items/firesnuff.ogg', 100, FALSE, -1)
 		qdel(src)
 		return FALSE
@@ -549,7 +549,7 @@
 
 /obj/item/mattcoin/attack_right(mob/living/carbon/human/user)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
-	var/input_text = input(user, "Enter your message:", "Message")
+	var/input_text = input(user, "输入你的消息：", "消息")
 	if(input_text)
 		var/usedcolor = user.voice_color
 		if(user.voicecolor_override)
@@ -570,7 +570,7 @@
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 	listening = !listening
 	speaking = !speaking
-	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the Matthian-SCOMstone"))
+	to_chat(user, span_info("我将马西奥斯通讯石[speaking ? "取消静音" : "静音"]了。"))
 	update_icon()
 
 /obj/item/mattcoin/Destroy()
@@ -615,8 +615,8 @@
 
 
 /obj/item/speakerinq
-	name = "secret whisperer"
-	desc = "Sweet secrets whispered so freely."
+	name = "密语低语器"
+	desc = "甜美的秘密，如此轻易地被低声道出。"
 	var/speaking = TRUE
 	sellprice = 20
 	icon = 'icons/roguetown/items/misc.dmi'
@@ -633,7 +633,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/neck.dmi'
 	grid_width = 32
 	grid_height = 32
-	var/fakename = "secret whisperer"
+	var/fakename = "密语低语器"
 
 /obj/item/speakerinq/proc/repeat_message(message, atom/A, tcolor, message_language, list/tspans = list())
 	if(A == src)
@@ -694,7 +694,7 @@
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	speaking = !speaking
-	to_chat(user, span_info("I [speaking ? "unsilence" : "silence"] the whisperer."))
+	to_chat(user, span_info("我将密语低语器[speaking ? "取消禁言" : "禁言"]了。"))
 	if(speaking)
 		icon_state = "[initial(icon_state)]_active"
 	else
@@ -702,8 +702,8 @@
 	update_icon()
 
 /obj/item/listeningdevice
-	name = "listener"
-	desc = "An ever-attentive ear..."
+	name = "监听耳"
+	desc = "一只时刻留神的耳朵……"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "listenstone"
 	dropshrink = 0.6
@@ -753,8 +753,8 @@
 /obj/item/listeningdevice/attack_right(mob/living/user)
 	if(!hidden)
 		alpha = 30
-		name = "thing"
-		desc = "What is that thing?.."
+		name = "东西"
+		desc = "那是个什么东西？.."
 		hidden = TRUE
 		return TRUE
 	alpha = 255
@@ -765,17 +765,17 @@
 /* FINISH THIS AT YOUR OWN LEISURE. IT WON'T TAKE MUCH WORK. AT MOST YOU'LL BE ADDING DISCOVERY CHECKS ON EXAMINE AND THE ABILITY TO RIP OFF DISCOVERED LISTENERS. HAVE FUN! - YISCHE
 /obj/item/listeningdevice/attack(mob/living/M, mob/living/user)
 	if(!active)
-		to_chat(user, span_warning("[src] is inactive.."))
+		to_chat(user, span_warning("[src]没有反应。"))
 		return FALSE
 	
-	to_chat(user, span_notice("I attach [src] to [M]."))
+	to_chat(user, span_notice("我把[src]装到了[M]身上。"))
 	effect = M.apply_status_effect(/datum/status_effect/bugged)
 	effect.device = src
 	forceMove(M)
 	M.contents.Add(src)
 
 	if(M.STAPER > user.STASPD)
-		to_chat(M, span_hidden("I feel something brush against the back of my neck. It stings."))
+		to_chat(M, span_hidden("我感觉有什么掠过后颈，刺得发痛。"))
 
 	..()
 */
@@ -789,7 +789,7 @@
 		icon_state = "[initial(icon_state)]_active"
 	else
 		icon_state = initial(icon_state)
-	to_chat(user, span_info("I [active ? "undeafen" : "deafen"] the Listener."))
+	to_chat(user, span_info("我将窃听耳[active ? "取消失聪" : "静聋"]了。"))
 	update_icon()
 	return
 
@@ -817,9 +817,9 @@
 // garrison scoms/listenstones
 
 /obj/item/scomstone/garrison
-	name = "crownstone"
+	name = "王冠石戒"
 	icon_state = "ring_crownscom"
-	desc = "A lavish golden ring with the mark of the Crown. Heavy and garish. The gem embedded flickering in excitement."
+	desc = "一枚奢华的金戒，带着王冠的印记。厚重又张扬，嵌着的宝石兴奋地闪烁着。"
 	var/garrisonline = TRUE
 	messagereceivedsound = 'sound/misc/garrisonscom.ogg'
 	hearrange = 0
@@ -827,8 +827,8 @@
 
 /obj/item/scomstone/garrison/attack_right(mob/living/carbon/human/user)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
-	visible_message(span_notice ("[user] presses their ring against their mouth."))
-	var/input_text = input(user, "Enter your message:", "Message")
+	visible_message(span_notice ("[user]把戒指按在嘴边。"))
+	var/input_text = input(user, "输入你的消息：", "消息")
 	if(!input_text)
 		return
 	var/usedcolor = user.voice_color
@@ -865,15 +865,15 @@
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	garrisonline = !garrisonline
-	to_chat(user, span_info("I [garrisonline ? "connect to the garrison SCOMline" : "connect to the general SCOMline"]"))
+	to_chat(user, span_info("我[garrisonline ? "接入了卫戍 SCOM 线路" : "接入了普通 SCOM 线路"]。"))
 	update_icon()
 
 /obj/item/scomstone/garrison/update_icon()
 	icon_state = "[initial(icon_state)][garrisonline ? "_on" : ""]"
 
 /obj/item/scomstone/bad/garrison
-	name = "houndstone"
-	desc = "A basic metal ring. It has a well-cut, dismal gem embedded - bearing the mark of the Crown."
+	name = "猎犬石戒"
+	desc = "一枚朴素的金属戒指，上面镶着一颗切工精良却黯淡的宝石，带着王冠的印记。"
 	icon_state = "ring_houndscom"
 	listening = FALSE
 	sellprice = 20
