@@ -1,7 +1,7 @@
 //Fluff structures serve no purpose and exist only for enriching the environment. They can be destroyed with a wrench.
 
 /obj/structure/fluff
-	name = "fluff structure"
+	name = "装饰结构"
 	desc = ""
 	icon_state = "minibar"
 	anchored = TRUE
@@ -12,8 +12,8 @@
 	var/deconstructible = TRUE
 
 /obj/structure/fluff/pillow
-	name = "pillows"
-	desc = "Soft plush pillows. Resting your head on one is so relaxing."
+	name = "靠枕"
+	desc = "柔软蓬松的靠枕。把脑袋枕上去时，总让人无比放松。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "pillow"
 	density = FALSE
@@ -40,8 +40,8 @@
 	color = CLOTHING_BLACK
 
 /obj/structure/fluff/drake_statue //Ash drake status spawn on either side of the necropolis gate in lavaland.
-	name = "drake statue"
-	desc = "Possibly the only time you'll ever see its likeness up close and live to tell the tale."
+	name = "龙兽雕像"
+	desc = "这大概会是你此生唯一一次能近距离看见它的模样，还能活着讲出来。"
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "drake_statue"
 	pixel_x = -16
@@ -57,51 +57,51 @@
 	icon_state = "papercorner"
 
 /obj/structure/fluff/paper/stack
-	name = "dense stack of papers"
-	desc = "You can already feel your eyes glazing over and the boredom creeping in."
+	name = "厚厚一摞纸张"
+	desc = "你已经能感觉到双眼开始发直，乏味也正一点点爬上心头。"
 	icon_state = "paperstack"
 
 /obj/structure/fluff/divine
-	name = "Miracle"
+	name = "奇迹"
 	icon = 'icons/obj/hand_of_god_structures.dmi'
 	anchored = TRUE
 	density = TRUE
 
 /obj/structure/fluff/divine/nexus
-	name = "nexus"
+	name = "中枢"
 	desc = ""
 	icon_state = "nexus"
 
 /obj/structure/fluff/divine/conduit
-	name = "conduit"
+	name = "导流柱"
 	desc = ""
 	icon_state = "conduit"
 
 /obj/structure/fluff/divine/convertaltar
-	name = "conversion altar"
+	name = "转化祭坛"
 	desc = ""
 	icon_state = "convertaltar"
 	density = FALSE
 	can_buckle = 1
 
 /obj/structure/fluff/divine/powerpylon
-	name = "power pylon"
+	name = "能量塔柱"
 	desc = ""
 	icon_state = "powerpylon"
 	can_buckle = 1
 
 /obj/structure/fluff/divine/defensepylon
-	name = "defense pylon"
+	name = "防御塔柱"
 	desc = ""
 	icon_state = "defensepylon"
 
 /obj/structure/fluff/divine/shrine
-	name = "shrine"
+	name = "神龛"
 	desc = ""
 	icon_state = "shrine"
 
 /obj/structure/fluff/big_chain
-	name = "giant chain"
+	name = "巨链"
 	desc = ""
 	icon = 'icons/effects/32x96.dmi'
 	icon_state = "chain"
@@ -111,8 +111,8 @@
 	deconstructible = FALSE
 
 /obj/structure/fluff/railing
-	name = "railing"
-	desc = "A simple barrier of wood meant to prevent falls."
+	name = "栏杆"
+	desc = "一道简易木制护栏，用来防止失足坠落。"
 	icon = 'icons/obj/railing.dmi'
 	icon_state = "railing"
 	density = FALSE
@@ -264,14 +264,14 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/railing/border
-	name = "border"
+	name = "护栏"
 	desc = ""
 	icon_state = "border"
 	pass_crawl = FALSE
 
 /obj/structure/fluff/railing/fence
-	name = "palisade"
-	desc = "A rudimentary barrier that might keep the monsters at bay."
+	name = "木栅"
+	desc = "一道简陋的屏障，或许还能把怪物挡在外头。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	destroy_sound = 'sound/misc/treefall.ogg'
@@ -325,13 +325,13 @@
 	return 1
 
 /obj/structure/fluff/railing/fence/flimsy
-	name = "weak palisade"
-	desc = "A rudimentary barrier that might keep the monsters at bay. This one looks old, weathered, and hastily constructed."
+	name = "脆弱木栅"
+	desc = "一道简陋的屏障，或许还能把怪物挡在外头。这一道看起来已经老旧风化，而且搭得相当仓促。"
 	max_integrity = 180
 	color = "#cccac5"
 
 /obj/structure/bars
-	name = "bars"
+	name = "铁栏杆"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "bars"
@@ -348,7 +348,7 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 
 /obj/structure/bars/obj_break(damage_flag)
-	loud_message("A sickening, metallic scrape of bars getting broken rings out", hearing_distance = 14)
+	loud_message("令人牙酸的金属刮擦断裂声骤然响起", hearing_distance = 14)
 	. = ..()
 
 /obj/structure/bars/CanPass(atom/movable/mover, turf/target)
@@ -365,8 +365,8 @@
 	layer = BELOW_OBJ_LAYER
 
 /obj/structure/bars/rusty
-	name = "rusty bars"
-	desc = "these look fragile"
+	name = "锈蚀铁栏"
+	desc = "这些栏杆看起来很脆弱。"
 	color ="#ffcd9f"
 	max_integrity = 200
 
@@ -377,7 +377,7 @@
 	icon_state = "chainlink"
 
 /obj/structure/bars/steel
-	name = "steel bars"
+	name = "钢铁栏杆"
 	max_integrity = 2000
 
 /obj/structure/bars/tough
@@ -385,7 +385,7 @@
 	damage_deflection = 40
 
 /obj/structure/bars/nopassthrow
-	desc = "The bars are too thick to throw anything through the gaps."
+	desc = "栏杆太过粗厚，任何东西都别想从缝隙里穿过去。"
 
 /obj/structure/bars/nopassthrow/CanPass(atom/movable/mover, turf/target)
 	return isobserver(mover)
@@ -414,7 +414,7 @@
 	redstone_structure = TRUE
 
 /obj/structure/bars/passage/steel
-	name = "steel bars"
+	name = "钢铁栏杆"
 	max_integrity = 2000
 
 /obj/structure/bars/passage/redstone_triggered()
@@ -469,26 +469,26 @@
 	var/obj/item = user.get_active_held_item()
 	if(user.used_intent.type == /datum/intent/chisel )
 		if (user.get_skill_level(/datum/skill/craft/engineering) <= 3)
-			to_chat(user, span_warning("I need more skill to carve a name into this passage."))
+			to_chat(user, span_warning("我还得更熟练些，才能在这条通道上刻下名字。"))
 			return
 		playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-		user.visible_message("<span class='info'>[user] Carves a name into the passage.</span>")
+		user.visible_message("<span class='info'>[user]在这条通道上刻下了名字。</span>")
 		if(do_after(user, 10))
 			var/passagename
-			passagename = input("What name would you like to carve into the passage?")
+			passagename = input("你想在这条通道上刻下什么名字？")
 			if (passagename)
 				name = passagename + "(passage)"
-				desc = "a passage with a name carved into it"
+				desc = "一条刻上了名字的通道"
 			else
-				name = "passage"
-				desc = "a passage with a carving scratched out"
+				name = "通道"
+				desc = "一条刻痕被刮去的通道"
 			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
 		return
 	else if(istype(item, /obj/item/rogueweapon/chisel/assembly))
-		to_chat(user, span_warning("You most use both hands to rename the passage."))
+		to_chat(user, span_warning("我要双手都腾出来，才能给这条通道重新刻名。"))
 
 /obj/structure/bars/grille
-	name = "grille"
+	name = "格栅"
 	desc = ""
 	icon_state = "floorgrille"
 	density = FALSE
@@ -534,32 +534,32 @@
 	var/obj/item = user.get_active_held_item()
 	if(user.used_intent.type == /datum/intent/chisel )
 		if (user.get_skill_level(/datum/skill/craft/engineering) <= 3)
-			to_chat(user, span_warning("I need more skill to carve a name into this grille."))
+			to_chat(user, span_warning("我还得更熟练些，才能在这面格栅上刻下名字。"))
 			return
 		playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-		user.visible_message("<span class='info'>[user] Carves a name into the grille.</span>")
+		user.visible_message("<span class='info'>[user]在这面格栅上刻下了名字。</span>")
 		if(do_after(user, 10))
 			var/grillename
-			grillename = input("What name would you like to carve into the grille?")
+			grillename = input("你想在这面格栅上刻下什么名字？")
 			if (grillename)
 				name = grillename + "(grille)"
-				desc = "a grille with a name carved into it"
+				desc = "一面刻上了名字的格栅"
 			else
-				name = "grille"
-				desc = "a grille with a carving scratched out"
+				name = "格栅"
+				desc = "一面刻痕被刮去的格栅"
 			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
 		return
 	else if(istype(item, /obj/item/rogueweapon/chisel/assembly))
-		to_chat(user, span_warning("You most use both hands to rename the grille."))
+		to_chat(user, span_warning("我要双手都腾出来，才能给这面格栅重新刻名。"))
 
 /obj/structure/bars/grille/rusty
-	name = "rusty grille"
-	desc = "A few good hits ought to smash it open."
+	name = "生锈格栅"
+	desc = "只要狠狠干上几下，应该就能把它砸开。"
 	max_integrity = 70
 	color = "#d9c8c1"
 
 /obj/structure/bars/pipe
-	name = "bronze pipe"
+	name = "青铜管道"
 	desc = ""
 	icon_state = "pipe"
 	density = FALSE
@@ -575,7 +575,7 @@
 //===========================
 
 /obj/structure/fluff/clock
-	name = "clock"
+	name = "挂钟"
 	desc = ""
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "clock"
@@ -620,23 +620,23 @@
 	. = ..()
 	if(obj_broken)
 		return
-	var/day = "... actually, WHAT dae is it?"
+	var/day = "……等等，今天到底是星期几？"
 	switch(GLOB.dayspassed)
 		if(1)
-			day = "Moon's dae."
+			day = "月日。"
 		if(2)
-			day = "Tiw's dae."
+			day = "提乌日。"
 		if(3)
-			day = "Wedding's dae."
+			day = "婚誓日。"
 		if(4)
-			day = "Thule's dae."
+			day = "图勒日。"
 		if(5)
-			day = "Freyja's dae."
+			day = "芙蕾雅日。"
 		if(6)
-			day = "Saturn's dae."
+			day = "萨图恩日。"
 		if(7)
-			day = "Sun's dae."
-	. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
+			day = "太阳日。"
+	. += "噢，不妙，现在是[day]的[station_time_timestamp("hh:mm")]。"
 //		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
 //			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
 //				. += span_warning("The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.")
@@ -658,7 +658,7 @@
 		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/fluff/wallclock
-	name = "clock"
+	name = "挂钟"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "wallclock"
@@ -681,7 +681,7 @@
 		if(user_area?.no_special_item_retrieval) //area does not allow fetching special items, return
 			return
 		if(user.mind.special_items && user.mind.special_items.len)
-			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
+			var/item = input(user, "我要取出什么？", "储物藏匿处") as null|anything in user.mind.special_items
 			if(item)
 				if(user.Adjacent(src))
 					if(user.mind.special_items[item])
@@ -700,23 +700,23 @@
 	. = ..()
 	if(obj_broken)
 		return
-	var/day = "... actually, WHAT dae is it?"
+	var/day = "……等等，今天到底是什么日子？"
 	switch(GLOB.dayspassed)
 		if(1)
-			day = "Moon's dae."
+			day = "月之日。"
 		if(2)
-			day = "Tiw's dae."
+			day = "提乌之日。"
 		if(3)
-			day = "Wedding's dae."
+			day = "婚誓之日。"
 		if(4)
-			day = "Thule's dae."
+			day = "图勒之日。"
 		if(5)
-			day = "Freyja's dae."
+			day = "芙蕾雅之日。"
 		if(6)
-			day = "Saturn's dae."
+			day = "萨图恩之日。"
 		if(7)
-			day = "Sun's dae."
-	. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
+			day = "太阳之日。"
+	. += "噢，不妙，现在是[day]的[station_time_timestamp("hh:mm")]。"
 //		testing("mode is [SSshuttle.emergency.mode] should be [SHUTTLE_DOCKED]")
 //		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
 //			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
@@ -742,7 +742,7 @@
 	pixel_x = 32
 //vampire
 /obj/structure/fluff/wallclock/vampire
-	name = "ancient clock"
+	name = "古钟"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "wallclockvampire"
@@ -762,7 +762,7 @@
 	pixel_x = 32
 
 /obj/structure/fluff/signage//these are a bit of a pain
-	name = "sign"
+	name = "告示牌"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shitsign"
@@ -777,40 +777,39 @@
 
 /obj/structure/fluff/signage/examine(mob/user)
 	. = ..()
-	var/realmname = SSmapping.map_adjustment.realm_name
 	if(!user.is_literate())
-		. += "I have no idea what it says."
+		. += "我完全看不懂上面写了什么。"
 	else
-		. += "It says \"[realmname]\""
+		. += "上面写着“谷地”。"
 
 /obj/structure/fluff/buysign
 	icon_state = "signwrote"
-	name = "sign"
+	name = "告示牌"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 
 /obj/structure/fluff/buysign/examine(mob/user)
 	. = ..()
 	if(!user.is_literate())
-		. += "I have no idea what it says."
+		. += "我完全看不懂上面写了什么。"
 	else
-		. += "It says \"IMPORTS\""
+		. += "上面写着“进口货”。"
 
 /obj/structure/fluff/sellsign
 	icon_state = "signwrote"
-	name = "sign"
+	name = "告示牌"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 
 /obj/structure/fluff/sellsign/examine(mob/user)
 	. = ..()
 	if(!user.is_literate())
-		. += "I have no idea what it says."
+		. += "我完全看不懂上面写了什么。"
 	else
-		. += "I can read this sign."
+		. += "我能读懂这块牌子。"
 
 /obj/structure/fluff/customsign
-	name = "sign"
+	name = "告示牌"
 	desc = ""
 	icon_state = "sign"
 	var/wrotesign
@@ -823,9 +822,9 @@
 	. = ..()
 	if(wrotesign)
 		if(!user.is_literate())
-			. += "I have no idea what it says."
+			. += "我完全看不懂上面写了什么。"
 		else
-			. += "It says \"[wrotesign]\"."
+			. += "上面写着“[wrotesign]”。"
 
 /obj/structure/fluff/customsign/arrow
 	icon_state = "shitsign"
@@ -836,7 +835,7 @@
 /obj/structure/fluff/customsign/attackby(obj/item/W, mob/user, params)
 	if(!user.cmode)
 		if(!user.is_literate())
-			to_chat(user, span_warning("I do not know how to write."))
+			to_chat(user, span_warning("我不会写字。"))
 			return
 		var/can_write = FALSE
 		if((user.used_intent.blade_class == BCLASS_STAB) && (W.wlength == WLENGTH_SHORT))
@@ -850,20 +849,20 @@
 
 		if(can_write)
 			if(wrotesign)
-				to_chat(user, span_warning("Something is already carved here."))
+				to_chat(user, span_warning("这里已经刻过东西了。"))
 				return
 			else
-				var/inputty = stripped_input(user, "What would you like to carve here?", "", null, 200)
+				var/inputty = stripped_input(user, "你想在这里刻下什么？", "", null, 200)
 				if(inputty && !wrotesign)
 					wrotesign = inputty
 					icon_state = "signwrote"
 		else
-			to_chat(user, span_warning("Alas, this will not work. I could carve words, if I stabbed at this with something posessing a short, sharp point. A knife, thorn, feather or even coal comes to mind."))
+			to_chat(user, span_warning("唉，这样可不行。若要刻字，我得用带短小尖头的东西去划。像小刀、荆刺、羽毛，甚至木炭都行。"))
 			return
 	..()
 
 /obj/structure/fluff/alch
-	name = "alchemical lab"
+	name = "炼金台"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "alch"
@@ -876,8 +875,8 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 
 /obj/structure/fluff/alch/folding
-	name = "folding alchemical lab"
-	desc = "A compact laboratory. Laid out and ready to work."
+	name = "折叠炼金实验台"
+	desc = "一座紧凑的实验台，已经铺展开来，随时可以开工。"
 	icon = 'icons/roguetown/misc/gadgets.dmi'
 	icon_state = "foldingAlchstationDeployed"
 	max_integrity = 350
@@ -887,17 +886,17 @@
 
 /obj/structure/fluff/alch/folding/examine()
 	. = ..()
-	. += span_blue("Right-Click to fold the lab.")
+	. += span_blue("右键即可将实验台折叠起来。")
 
 /obj/structure/fluff/alch/folding/attack_right(mob/user)
 	if(do_after(user, 5 SECONDS, target = src))
-		user.visible_message(span_notice("[user] folds [src]."), span_notice("You fold [src]."))
+		user.visible_message(span_notice("[user]折叠起了[src]。"), span_notice("我将[src]折叠了起来。"))
 		new /obj/item/folding_table_stored/alchstation(drop_location())
 		qdel(src)
 		return ..()
 
 /obj/structure/fluff/statue
-	name = "statue"
+	name = "雕像"
 	desc = ""
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "bstatue"
@@ -957,27 +956,27 @@
 	icon_state = "knightstatue_l"
 
 /obj/structure/fluff/statue/astrata
-	name = "astrata statue"
-	desc = "A stone statue of the sun Goddess Astrata. Bless."
+	name = "阿丝塔塔雕像"
+	desc = "太阳女神阿丝塔塔的石雕像。愿她赐福。"
 	icon_state = "astrata"
 	icon = 'icons/roguetown/misc/tallandwide.dmi'
 
 /obj/structure/fluff/statue/astrata/gold
-	name = "ornamental astrata statue"
-	desc = "An ornamental stone statue of the sun Goddess Astrata, decorated with golden jewelry. Bless."
+	name = "装饰华美的阿丝塔塔雕像"
+	desc = "一尊太阳女神阿丝塔塔的装饰石像，点缀着黄金饰品。愿她赐福。"
 	icon_state = "astrata_bling"
 
 //Why are all of these in one giant file.
 /obj/structure/fluff/statue/abyssor
-	name = "abyssor statue"
-	desc = "A slate statue of the ancient god abyssor. One of many depictions drawn from a dream no doubt. This particular one is horrifying to look at."
+	name = "阿比索尔雕像"
+	desc = "一尊远古神祇阿比索尔的板岩雕像。毫无疑问，这只是从梦境中描摹出的众多形象之一，而这一尊尤其令人不寒而栗。"
 	icon_state = "abyssor"
 	icon = 'icons/roguetown/misc/tallandwide.dmi'
 	pixel_x = -16
 
 /obj/structure/fluff/statue/abyssor/dolomite
-	name = "abyssor statue"
-	desc = "A rare dolomite statue of the ancient god abyssor. Hewn from bleached rock as if the shimmer makes his faceless gaze any less terrifying."
+	name = "阿比索尔雕像"
+	desc = "一尊罕见的白云岩阿比索尔雕像，由褪色苍白的岩石凿成，仿佛那点微光就能让他无面的凝视显得不那么可怖似的。"
 	icon_state = "abyssor_dolomite"
 
 /obj/structure/fluff/statue/knight/r
@@ -1047,11 +1046,11 @@
 	// pixel_y = -16
 
 /obj/structure/fluff/statue/scare
-	name = "scarecrow"
+	name = "稻草人"
 	icon_state = "td"
 
 /obj/structure/fluff/statue/tdummy
-	name = "practice dummy"
+	name = "练习假人"
 	icon_state = "p_dummy"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
@@ -1063,10 +1062,10 @@
 					if(user.doing)
 						return
 					var/mob/living/L = user
-					user.visible_message(span_notice("[user] begins training on [src]..."))
+					user.visible_message(span_notice("[user]开始在[src]上训练……"))
 					while(do_after(user, 1 SECONDS, target = src))
 						if(!(L.mobility_flags & MOBILITY_STAND))
-							to_chat(user, span_warning("You are knocked down and stop training."))
+							to_chat(user, span_warning("我被撞倒了，训练也随之中断。"))
 							break
 						var/probby = (L.STALUC / 10) * 100
 						probby = min(probby, 99)
@@ -1077,16 +1076,16 @@
 						if(L.STAINT < 3)
 							probby = 0
 						if(!can_train_combat_skill(user, W.associated_skill, SKILL_LEVEL_APPRENTICE))
-							to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
+							to_chat(user, span_warning("我已经从这种练习里学不到更多了，该去面对真正的实战了。"))
 							break
 						if(prob(probby) && !user.buckled)
-							user.visible_message(span_info("[user] trains on [src]!"))
+							user.visible_message(span_info("[user]对着[src]展开了训练！"))
 							var/amt2raise = L.STAINT * 0.35
 							if(amt2raise > 0)
 								user.mind.add_sleep_experience(W.associated_skill, amt2raise, FALSE)
 							playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
 						else
-							user.visible_message(span_danger("[user] trains on [src], but [src] ripostes!"))
+							user.visible_message(span_danger("[user]正在拿[src]训练，可[src]竟然反击了！"))
 							L.AdjustKnockdown(1)
 							L.throw_at(get_step(L, get_dir(src,L)), 2, 2, L, spin = FALSE)
 							playsound(loc, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
@@ -1095,7 +1094,7 @@
 	..()
 
 /obj/structure/fluff/statue/spider
-	name = "mother"
+	name = "母神"
 	icon_state = "spidercore"
 
 /obj/structure/fluff/statue/spider/attackby(obj/item/W, mob/user, params)
@@ -1105,18 +1104,18 @@
 				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 				SSmapping.retainer.delf_contribute += 1
 				if(SSmapping.retainer.delf_contribute >= SSmapping.retainer.delf_goal)
-					say("YOU HAVE DONE WELL, MY CHILD.",language = /datum/language/elvish)
+					say("你做得很好，我的孩子。",language = /datum/language/elvish)
 				else
-					say("BRING ME [SSmapping.retainer.delf_goal - SSmapping.retainer.delf_contribute] MORE. I HUNGER.",language = /datum/language/elvish)
+					say("再为我带来[SSmapping.retainer.delf_goal - SSmapping.retainer.delf_contribute]份。我仍在饥饿。",language = /datum/language/elvish)
 				qdel(W)
 				return TRUE
 	..()
 
 /obj/structure/fluff/statue/evil
-	name = "idol"
-	desc = "An idol, built to the many-faced Matthios. Though none can argue his hatred of the Tyrant's Order and nobility, \
-	they certainly can't imagine what he actually looks like. \
-	This is but one of many depictions to the many-faced god, and yet it appears ready to receive tribute all the same."
+	name = "神像"
+	desc = "一尊献给千面玛修斯的偶像。尽管无人会否认他对暴君秩序与贵族阶层的憎恨，\
+	但也同样没人真能想象他究竟长成什么模样。 \
+	这不过是那位千面之神诸多形象中的一种，而它看起来依旧随时准备接受祭献。"
 	icon_state = "evilidol"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	damage_deflection = INFINITY//We don't want this smashed normally. Prevents items from doing it damage, by mistake, too.
@@ -1182,10 +1181,10 @@
 	if(user.mind)
 		if(user)
 			if(W.flags_1 & HOARDMASTER_SPAWNED_1)
-				to_chat(user, span_warning("This item is from the Hoard!"))
+				to_chat(user, span_warning("这件物品来自宝藏堆！"))
 				return
 			if(W.sellprice <= 0)
-				to_chat(user, span_warning("This item is worthless."))
+				to_chat(user, span_warning("这件物品一文不值。"))
 				return
 			var/proceed_with_offer = FALSE
 			for(var/TT in treasuretypes)
@@ -1202,15 +1201,15 @@
 							record_round_statistic(STATS_SHRINE_VALUE, W.get_real_price())
 							bandit_players.favor += donatedamnt
 							bandit_players.totaldonated += donatedamnt
-							to_chat(player, ("<font color='yellow'>[user.name] donates [donatedamnt] to the shrine! You now have [bandit_players.favor] favor.</font>"))
+							to_chat(player, ("<font color='yellow'>[user.name]向神龛捐献了[donatedamnt]！你现在拥有[bandit_players.favor]点恩惠。</font>"))
 
 			else
-				to_chat(user, span_warning("This item isn't a good offering."))
+				to_chat(user, span_warning("这件物品并不是合适的供品。"))
 				return
 	..()
 
 /obj/structure/fluff/psycross
-	name = "pantheon cross"
+	name = "万神殿十字架"
 	icon_state = "psycross"
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	break_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
@@ -1221,7 +1220,7 @@
 	layer = BELOW_MOB_LAYER
 	max_integrity = 100
 	var/chance2hear = 30
-	buckleverb = "crucifie"
+	buckleverb = "钉上十字架"
 	can_buckle = 1
 	buckle_lying = 0
 	breakoutextra = 10 MINUTES
@@ -1269,98 +1268,98 @@
 		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/fluff/psycross/copper
-	name = "pantheon cross"
+	name = "万神殿十字架"
 	icon_state = "psycrosschurch"
 	break_sound = null
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	chance2hear = 66
 
 /obj/structure/fluff/psycross/crafted
-	name = "wooden pantheon cross"
+	name = "木制万神殿十字架"
 	icon_state = "psycrosscrafted"
 	max_integrity = 80
 	chance2hear = 10
 
 /obj/structure/fluff/psycross/psycrucifix
-	name = "wooden psydonic crucifix"
-	desc = "A rarely seen symbol of absolute and devoted certainty, more common in Otava: HE yet lyves. HE yet breathes."
+	name = "木制普赛顿苦像"
+	desc = "一种罕见的、象征绝对与虔诚确信的圣徽，在奥塔瓦更为常见：祂仍然活着。祂仍在呼吸。"
 	icon_state = "psycruci"
 	max_integrity = 80
 	chance2hear = 10
 
 /obj/structure/fluff/psycross/psycrucifix/stone
-	name = "stone psydonic crucifix"
-	desc = "Formed of stone, this great Psycross symbolises that HE is forever ENDURING. Considered a rare sight upon the vale."
+	name = "石制普赛顿苦像"
+	desc = "这座由石料塑成的巨大普赛十字象征着祂永恒长存。在谷地之中，这仍属罕见景象。"
 	icon_state = "psycruci_r"
 	max_integrity = 120
 	chance2hear = 10
 
 /obj/structure/fluff/psycross/psycrucifix/silver
-	name = "silver psydonic crucifix"
+	name = "银制普赛顿苦像"
 	icon_state = "psycruci_s"
-	desc = "Constructed of Blessed Silver, this crucifix symbolises absolute faith in the ONE - For PSYDON WEEPS, for all mortal ilk. PSYDON WEEPS, for all who walk upon the soil. PSYDON WEEPS..."
+	desc = "这尊苦像由受祝圣的白银打造，象征着对唯一真主的绝对信仰。因为普赛顿为一切凡世众生而悲泣。普赛顿为一切行于尘土之上的人而悲泣。普赛顿仍在悲泣……"
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	max_integrity = 450
 	chance2hear = 10
 
 /obj/structure/fluff/psycross/zizocross
-	name = "inverted cross"
-	desc = "An unholy symbol. Blasphemy for most, reverence for few."
+	name = "倒十字"
+	desc = "一件不洁圣徽。对大多数人而言是亵渎，对少数人而言却是崇敬。"
 	icon_state = "invertedcross"
 	divine = FALSE
 
 /obj/structure/fluff/psycross/zizocross/stone
-	name = "stone inverted cross"
-	desc = "An unholy symbol, the knowledge that something so sturdy was able to be put up in reverence of the dark star, completely unattended... is a difficult anchovy to swallow for many."
+	name = "石制倒十字"
+	desc = "一件不洁圣徽。如此坚固的东西竟能在无人阻拦下被树起，只为崇奉那颗暗星……这件事对许多人而言都难以接受。"
 	icon_state = "cross_zizo"
 	divine = FALSE
 	max_integrity = 200
 
 /obj/structure/fluff/psycross/zizocross/golden
-	name = "golden inverted cross"
-	desc = "An unholy symbol meticilously plated with leaf gold. It stands in defiance to order. The dead will rise."
+	name = "金饰倒十字"
+	desc = "一件以金箔细致包覆的不洁圣徽。它公然向秩序挑衅。亡者终将再起。"
 	icon_state = "cross_zizo_u"
 	divine = FALSE
 	max_integrity = 350
 	
 /obj/structure/fluff/psycross/graggar
-	name = "vicious cross"
-	desc = "An unholy symbol wrought from stone. It promises glory to the conqueror and chains to the conquered."
+	name = "凶戾十字"
+	desc = "一件以石料凿成的不洁圣徽。它许诺征服者荣耀，也许诺被征服者镣铐。"
 	icon_state = "cross_graggar"
 	divine = FALSE
 	max_integrity = 200
 
 /obj/structure/fluff/psycross/graggar/decorated
-	name = "revered vicious cross"
-	desc = "An unholy symbol wrought from stone. Meat impaled on spikes and flesh dangling like ribbons off hooks, an offering, proof of conquest, but does he listen?"
+	name = "受崇凶戾十字"
+	desc = "一件以石料凿成的不洁圣徽。肉块被串在尖刺上，皮肉像缎带般垂挂于钩间，那是供品，也是征服的证明，可祂真的会聆听吗？"
 	icon_state = "cross_graggar_u"
 	divine = FALSE
 	max_integrity = 350
 
 /obj/structure/fluff/psycross/matthios
-	name = "grinning cross"
-	desc = "An unholy stone cross bearing the likeness of drawn daggers and a grinning visage."
+	name = "狞笑十字"
+	desc = "一尊不洁石十字，上面刻着出鞘匕首的纹样，以及一张咧嘴狞笑的面容。"
 	icon_state = "cross_matthios"
 	divine = FALSE
 	max_integrity = 200
 
 /obj/structure/fluff/psycross/matthios/decorated
-	name = "ornate cross"
-	desc = "Golden scales dangle from rags and balance the scales. A monument to wealth."
+	name = "华饰十字"
+	desc = "金色天平悬在破布之间，彼此维持着平衡。这是一座献给财富的纪念碑。"
 	icon_state = "cross_matthios_u"
 	divine = FALSE
 	max_integrity = 350
 
 /obj/structure/fluff/psycross/baotha
-	name = "spider cross"
-	desc = "A gnarled stone cross from which carved spider legs unfurl. You feel like you're being beckoned faintly, like a whisper in your ear."
+	name = "蛛形十字"
+	desc = "一尊扭曲嶙峋的石十字，其上雕出的蛛腿向外舒展。你隐约觉得自己正被它召唤，仿佛耳畔有低语掠过。"
 	icon_state = "cross_baotha"
 	divine = FALSE
 	max_integrity = 200
 
 /obj/structure/fluff/psycross/baotha/decorated
-	name = "webbed spider cross"
-	desc = "The spider spreads its legs, the web unfurls. Just looking at it makes bad memories surface."
+	name = "覆网蛛形十字"
+	desc = "蜘蛛张开腿肢，蛛网也随之铺展。只要看着它，糟糕的回忆就会浮上心头。"
 	icon_state = "cross_baotha_u"
 	divine = FALSE
 	max_integrity = 350
@@ -1370,7 +1369,7 @@
 		if((user.mind.assigned_role == "Bishop") || (user.mind.assigned_role == "Acolyte"))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
 				if(!istype(get_area(user), /area/rogue/indoors/town/church/chapel))
-					to_chat(user, span_warning("I need to do this in the chapel."))
+					to_chat(user, span_warning("我得在礼拜堂里进行这件事。"))
 					return FALSE
 				var/marriage = FALSE
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
@@ -1408,10 +1407,10 @@
 								break
 						if(!excomm_found)
 							// Prompt priest for surname
-							var/surname = input(user, "Enter a surname for the couple:", "Marriage Ceremony") as text|null
+							var/surname = input(user, "为这对新人输入一个姓氏：", "婚礼仪式") as text|null
 							if(!surname || !length(trim(surname)))
 								surname = thegroom.dna.species.random_surname()
-							priority_announce("[thegroom.real_name] has married [thebride.real_name]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+							priority_announce("[thegroom.real_name]与[thebride.real_name]结为夫妻！", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 							var/list/titles = list("Sir", "Ser", "Dame", "Lord", "Lady", "Knight-Captain", "Duke", "Duchess", "Father", "Mother", "Brother", "Sister", "Prelate", "Devotee", "Votary")
 							// Assign surname to groom
 							var/list/groom_name_parts = splittext(thegroom.real_name, " ")
@@ -1429,9 +1428,9 @@
 								thebride.real_name = "[bride_name_parts[1]] [surname]"
 							// Private notification to both
 							if(thegroom) 
-								to_chat(thegroom, span_notice("Your new shared surname is [surname]."))
+								to_chat(thegroom, span_notice("你们今后共同的新姓氏是[surname]。"))
 							if(thebride) 
-								to_chat(thebride, span_notice("Your new shared surname is [surname]."))
+								to_chat(thebride, span_notice("你们今后共同的新姓氏是[surname]。"))
 							// Set marriedto fields
 							thegroom.marriedto = thebride.real_name
 							thebride.marriedto = thegroom.real_name
@@ -1439,16 +1438,16 @@
 							thebride.adjust_triumphs(1)
 							// After surname is set, have the priest say the wedding line
 							if(user && surname)
-								user.say("I hereby wed you as [surname]s.")
+								user.say("我在此宣布，你们结为[surname]家之夫妻。")
 							qdel(A)
 							marriage = TRUE
 						else
 							A.become_rotten()
-							to_chat(user, span_danger("Eora recoils from this union! The apple rots in your hands. The excommunicated cannot be wed by the church."))
+							to_chat(user, span_danger("艾欧拉拒斥这场结合！苹果在你掌中腐烂。被逐出教门之人不得由教会主持婚礼。"))
 							if(thegroom)
-								to_chat(thegroom, span_danger("Eora recoils from this union! You are excommunicated and cannot be wed by the church."))
+								to_chat(thegroom, span_danger("艾欧拉拒斥这场结合！你已被逐出教门，无法由教会主持婚礼。"))
 							if(thebride)
-								to_chat(thebride, span_danger("Eora recoils from this union! You are excommunicated and cannot be wed by the church."))
+								to_chat(thebride, span_danger("艾欧拉拒斥这场结合！你已被逐出教门，无法由教会主持婚礼。"))
 							// Do not qdel(A) here so the rotten apple remains
 							return
 					if(!marriage)
@@ -1485,7 +1484,7 @@
 	else //caused by emp/remote signal
 		M.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"]",LOG_ATTACK)
 	if(generic_message && M != user)
-		to_chat(M, span_danger("[src] emits a blinding light!"))
+		to_chat(M, span_danger("[src]迸发出刺目的强光！"))
 	if(M.flash_act())
 		var/diff = power - M.confused
 		M.confused += min(power, diff)
@@ -1506,12 +1505,12 @@
 	icon_state = "syndi_brella"
 
 /obj/structure/fluff/clockwork
-	name = "Clockwork Fluff"
+	name = "发条遗物"
 	icon = 'icons/obj/clockwork_objects.dmi'
 	deconstructible = FALSE
 
 /obj/structure/fluff/clockwork/alloy_shards
-	name = "replicant alloy shards"
+	name = "复制合金碎片"
 	desc = ""
 	icon_state = "alloy_shards"
 
@@ -1528,22 +1527,22 @@
 	icon_state = "shard_large1"
 
 /obj/structure/fluff/clockwork/blind_eye
-	name = "blind eye"
+	name = "盲眼"
 	desc = ""
 	icon_state = "blind_eye"
 
 /obj/structure/fluff/clockwork/fallen_armor
-	name = "fallen armor"
+	name = "倒下的甲胄"
 	desc = ""
 	icon_state = "fallen_armor"
 
 /obj/structure/fluff/clockwork/clockgolem_remains
-	name = "clockwork golem scrap"
+	name = "发条魔像残骸"
 	desc = ""
 	icon_state = "clockgolem_dead"
 
 /obj/structure/fluff/headstake
-	name = "head on a stake"
+	name = "木桩上的头颅"
 	desc = ""
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "headstake"
@@ -1557,7 +1556,7 @@
 /obj/structure/fluff/headstake/CheckParts(list/parts_list)
 	..()
 	victim = locate(/obj/item/bodypart/head) in parts_list
-	name = "[victim.name] on a stake"
+	name = "木桩上的[victim.name]"
 	update_icon()
 	stake = locate(/obj/item/grown/log/tree/stake) in parts_list
 
@@ -1584,7 +1583,7 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("I take down [src]."))
+	to_chat(user, span_notice("我拆下了[src]。"))
 	victim.forceMove(drop_location())
 	victim = null
 	stake.forceMove(drop_location())
@@ -1592,26 +1591,26 @@
 	qdel(src)
 
 /obj/structure/fluff/statue/noc
-	name = "noc statue"
-	desc = "Wisdom and calm."
+	name = "诺克雕像"
+	desc = "智慧与沉静。"
 	icon_state = "noc"
 	icon = 'icons/roguetown/misc/statues/statue_noc.dmi'
 	pixel_x = -16
 
 /obj/structure/fluff/statue/noc/guard
-	name = "active noc statue"
+	name = "战姿诺克雕像"
 	icon_state = "noc_guard"
 
 /obj/structure/fluff/statue/eora
-	name = "eora statue"
-	desc = "Beauty and Charm"
+	name = "艾欧拉雕像"
+	desc = "美丽与魅力。"
 	icon_state = "eora"
 	icon = 'icons/roguetown/misc/statues/statue_eora.dmi'
 	pixel_x = -16
 
 /obj/structure/fluff/statue/zizo
-	name = "dubious statue"
-	desc = "Blasphemy... unless...?"
+	name = "可疑雕像"
+	desc = "亵渎……除非……？"
 	icon_state = "zaelorian_crynsaris"
 	icon = 'icons/roguetown/misc/statues/statue_zizo.dmi'
 	pixel_x = -16

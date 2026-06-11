@@ -1,6 +1,6 @@
 
 /obj/item/rogue/painting
-	name = "painting"
+	name = "画作"
 	icon_state = "painting"
 	desc = ""
 	w_class = WEIGHT_CLASS_NORMAL
@@ -12,7 +12,7 @@
 /obj/item/rogue/painting/attack_turf(turf/T, mob/living/user)
 	if(isclosedturf(T))
 		if(get_dir(T,user) in GLOB.cardinals)
-			to_chat(user, span_warning("I place [src] on the wall."))
+			to_chat(user, span_warning("我把[src]挂到了墙上。"))
 			var/obj/structure/S = new deployed_structure(user.loc)
 			switch(get_dir(T,user))
 				if(NORTH)
@@ -28,8 +28,8 @@
 	..()
 
 /obj/structure/fluff/walldeco/painting
-	name = "painting"
-	desc = "The artist is unknown. The subject is unknown. Maybe a memorial to a corpse that was trampled on the trail to this reality."
+	name = "画作"
+	desc = "作者不详，题材不详。也许是在通往这个现实的道路上，被踩碎的某具尸体的纪念像。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "painting_deployed"
 	anchored = TRUE
@@ -47,36 +47,36 @@
 	..()
 
 /obj/structure/fluff/walldeco/painting/queen
-	desc = "It's Queen Alexia I 'the Righteous' Valmont of Ferentia. Twenty years ago she rebelled against her father, King Mattimeo, and had him burned on a cross for heresy after he was seduced by a Baothan succubus."
+	desc = "画中是费伦提亚的亚历克西娅一世“正直者”瓦尔蒙女王。二十年前，在其父马蒂梅奥国王被巴奥森魅魔诱惑后，她起兵反叛，并以异端罪名将其绑上十字架焚烧。"
 	icon_state = "queenpainting_deployed"
 	stolen_painting = /obj/item/rogue/painting/queen
 
 /obj/item/rogue/painting/queen
 	icon_state = "queenpainting"
-	desc = "It's Queen Alexia I 'the Righteous' Valmont of Ferentia. Twenty years ago she rebelled against her father, King Mattimeo, and had him burned on a cross for heresy after he was seduced by a Baothan succubus. These mass-reproduced paintings are devalued."
+	desc = "画中是费伦提亚的亚历克西娅一世“正直者”瓦尔蒙女王。二十年前，在其父马蒂梅奥国王被巴奥森魅魔诱惑后，她起兵反叛，并以异端罪名将其绑上十字架焚烧。这类量产复制画使其价值有所贬低。"
 	dropshrink = 0.5
 	sellprice = 200
 	deployed_structure = /obj/structure/fluff/walldeco/painting/queen
 
 /obj/item/rogue/painting/seraphina
 	icon_state = "seraphinapainting"
-	desc = "It's holy priest Seraphina, first of her name, blessed be her name."
+	desc = "画中是圣职者塞拉菲娜，一世其名，愿其圣名蒙福。"
 	dropshrink = 0.5
 	sellprice = 200
 	deployed_structure = /obj/structure/fluff/walldeco/painting/seraphina
 
 /obj/structure/fluff/walldeco/painting/seraphina
-	desc = "It's holy priest Seraphina, first of her name, blessed be her name."
+	desc = "画中是圣职者塞拉菲娜，一世其名，愿其圣名蒙福。"
 	icon_state = "seraphinapainting_deployed"
 	stolen_painting = /obj/item/rogue/painting/seraphina
 
 /obj/item/rogue/painting/skullzhg
 	icon_state = "skullpainting"
-	desc = "A moody scene depicting a skull and candles on a table. Memento mori."
+	desc = "一幅氛围阴郁的场景画：桌上摆着骷髅与蜡烛。切记人终有一死。"
 	sellprice = 200
 	deployed_structure = /obj/structure/fluff/walldeco/painting/skull
 
 /obj/structure/fluff/walldeco/painting/skull
-	desc = "A moody scene depicting a skull and candles on a table. Memento mori."
+	desc = "一幅氛围阴郁的场景画：桌上摆着骷髅与蜡烛。切记人终有一死。"
 	icon_state = "skullpainting_deployed"
 	stolen_painting = /obj/item/rogue/painting/skullzhg
