@@ -1,10 +1,10 @@
 /datum/patron/inhumen/zizo
 	name = "Zizo"
-	domain = "Necromancy, Progress, The Rot, Left-Handed Magicks"
-	desc = "The God-Head was the mortal snow elf Zinoviya, abandoned by Her Divine Father PSYDON. When She found out She was denied godhood, She struck PSYDON down and took it Herself, plunging the world into the Second Coming of the Rot. Burn the world to ash, and build it anew."
-	worshippers = "Necromancers, Maddened Mages, The Undead"
-	virtues = "Progress, Undeath, Ambition"
-	sins = "Ignorance, Stagnation, Humility"
+	domain = "死灵术、进步、腐朽、左道魔法"
+	desc = "神首本是凡间的雪精灵 Zinoviya，被她神圣的父亲 PSYDON 所遗弃。当她发现自己被剥夺神位后，便击倒了 PSYDON 并亲自夺取了神性，使世界坠入腐朽再临的第二次降世。把世界焚成灰烬，再将其重新塑造。"
+	worshippers = "死灵法师、癫狂法师、不死者"
+	virtues = "进步、不死、野心"
+	sins = "无知、停滞、谦卑"
 	mob_traits = list(TRAIT_CABAL, TRAIT_ZIZOSIGHT)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/self/zizo_snuff						= CLERIC_T0,
@@ -17,9 +17,9 @@
 					/obj/effect/proc_holder/spell/targeted/touch/lacrima				= CLERIC_T3,
 	)
 	confess_lines = list(
-		"PRAISE ZIZO!",
-		"LONG LIVE ZIZO!",
-		"ZIZO IS QUEEN!",
+		"赞美 ZIZO！",
+		"ZIZO 万岁！",
+		"ZIZO 即为女王！",
 	)
 	storyteller = /datum/storyteller/zizo
 
@@ -40,7 +40,7 @@
 	// Allows prayer near EEEVIL psycross
 	for(var/obj/structure/fluff/psycross/zizocross/cross in view(4, get_turf(follower)))
 		if(cross.divine == TRUE)
-			to_chat(follower, span_danger("That acursed cross interupts my prayers!"))
+			to_chat(follower, span_danger("那座遭诅咒的 psycross 打断了我的祈祷！"))
 			return FALSE
 		return TRUE
 	// Allows prayer near a grave.
@@ -52,7 +52,7 @@
 	// Allows praying atop ritual chalk of the god.
 	for(var/obj/structure/ritualcircle/zizo in view(1, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Zizo to hear my prayers I must either be in the church of the abandoned, near an inverted psycross, atop a drawn Zizite symbol, or while the sun is blotted from the sky!"))
+	to_chat(follower, span_danger("若想让 Zizo 听见我的祈祷，我必须身处被遗弃者的教堂、倒置的 psycross 附近、站在绘好的 Zizite 符记上，或趁太阳被遮蔽天穹之时祈祷！"))
 	return FALSE
 
 /datum/patron/inhumen/zizo/on_lesser_heal(
@@ -65,8 +65,8 @@
 	is_inhumen
 )
 	*is_inhumen = TRUE
-	*message_out = span_info("Vital energies are sapped towards [target]!")
-	*message_self = span_notice("The life around me pales as I am restored!")
+	*message_out = span_info("生命活力正被抽向 [target]！")
+	*message_self = span_notice("我周围的生气正在褪去，而我得到了修复！")
 
 	var/bonus = 0
 
