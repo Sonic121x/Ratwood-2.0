@@ -2,6 +2,7 @@
 // But also includes a Mason-Architect.
 /datum/job/roguetown/guildsman
 	title = "Guildsman"
+	display_title = "行会工匠"
 	flag = GUILDSMAN
 	department_flag = YEOMEN
 	faction = "Station"
@@ -11,8 +12,8 @@
 	social_rank = SOCIAL_RANK_YEOMAN
 	allowed_races = ACCEPTED_RACES
 
-	tutorial = "You are a member of the Duchy's Guild of Crafts, a massive guild formed to represent the interests of all craftsmen in the township.\
-	As a Guildsman, you hail from the three most important constituent guilds: The Smith's Guild, the Artificer's Guild, and the Architect's Guild. The Guildsmaster has sway over you, but it is not absolute."
+	tutorial = "你是谷地工匠行会的一员，这是个为代表全镇工匠利益而建立的庞大行会。\
+	身为行会工匠，你出身于其中最重要的三大分支：铁匠行会、巧匠行会与建筑师行会。行会长对你有影响力，但并非绝对。"
 	job_traits = list(TRAIT_TRAINED_SMITH, TRAIT_SMITHING_EXPERT)
 
 	outfit = /datum/outfit/job/roguetown/guildsman
@@ -32,8 +33,8 @@
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
 
 /datum/advclass/guildsman/blacksmith
-	name = "Guild Blacksmith"
-	tutorial = "You've studied for many yils under quite a number of master smiths. Whether it's cookware or tools of war, you're unmatched at the art of bending metal to your will."
+	name = "行会铁匠"
+	tutorial = "你曾在许多名匠门下苦学多年。无论是锅碗器皿还是战争兵器，在将金属锻造成心中所想这门技艺上，鲜有人能与你比肩。"
 	outfit = /datum/outfit/job/roguetown/guildsman/blacksmith
 
 	category_tags = list(CTAG_GUILDSMEN)
@@ -103,10 +104,9 @@
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 
 /datum/advclass/guildsman/artificer
-	name = "Artificer"
-	tutorial = "You are an Artificer, oft known by the longer name of Artificer-Tinkerer. You have basic training in the arts of smithing, and can substitute for a blacksmith's work if needed.\
-	But your true calling is the creation of arcyne machines, alongside feats of engineering, creating mechanical and magical wonders whose art of creation has been passed down\
-	from a certain elven Artificer..."
+	name = "巧匠"
+	tutorial = "你是一名巧匠，也常被称作机关巧匠。你受过基础的锻造训练，必要时足以顶替铁匠干活。\
+	但你真正的使命，是打造奥术机械并施展工程奇技，创造那些机械与魔法交织的奇妙造物；这门工艺的传承，来自某位精灵巧匠……"
 	outfit = /datum/outfit/job/roguetown/guildsman/artificer
 
 	category_tags = list(CTAG_GUILDSMEN)
@@ -172,9 +172,9 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 
 /datum/advclass/guildsman/architect
-	name = "Architect"
-	tutorial = "You are a Guild Architect, a master of the art of building and construction. You build castles, fortifications and entire cities with your own hands. And you know how to source those materials yourself too.\
-	When there is no construction work around, your fellow Guildsmen appreciate your help with gathering materials."
+	name = "建筑师"
+	tutorial = "你是行会建筑师，深谙营造与施工之道。城堡、工事乃至整座城市，都能由你亲手筑起，而你也懂得如何亲自筹措所需材料。\
+	当周围暂时没有工程可做时，同行的工匠们也会感激你在采集材料上的帮衬。"
 	outfit = /datum/outfit/job/roguetown/guildsman/architect
 
 	category_tags = list(CTAG_GUILDSMEN)
