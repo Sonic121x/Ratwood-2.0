@@ -93,7 +93,7 @@
 	orbiter.transform = initial_transform
 	orbiter.forceMove(get_turf(parent))
 	if(!istype(orbiter, /mob/dead/observer/screye))
-		to_chat(orbiter, span_notice("Now orbiting [parent]."))
+		to_chat(orbiter, span_notice("现在开始环绕[parent]。"))
 
 /datum/component/orbiter/proc/end_orbit(atom/movable/orbiter, refreshing=FALSE)
 	if(!orbiters[orbiter])
