@@ -1,6 +1,8 @@
 #include "spells/_registry.dm"
 #include "bootstrap/custom_bootstrap.dm"
 #include "spells/admin/admin_spells.dm"
+#include "spells/druid/wildshape_dragon.dm"
+#include "spells/druid/dragon_awakening.dm"
 #include "spells/arcane/flight.dm"
 #include "spells/arcane/group_buffs.dm"
 #include "spells/arcane/group_mindlink.dm"
