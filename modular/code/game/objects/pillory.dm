@@ -1,8 +1,8 @@
 #define PILLORY_HEAD_OFFSET      2 // How much we need to move the player to center their head
 
 /obj/structure/pillory
-	name = "pillory"
-	desc = "To keep the criminals locked!"
+	name = "枷架"
+	desc = "用来锁住罪犯。"
 	icon_state = "pillory_single"
 	icon = 'modular/icons/obj/pillory.dmi'
 	can_buckle = TRUE

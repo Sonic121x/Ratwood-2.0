@@ -1,8 +1,8 @@
 // Chastity key logic split into modular file so core keys.dm only keeps broad lock override behavior.
 
 /obj/item/roguekey/chastity
-	name = "chastity key"
-	desc = "Default chastity cage desc before changed upon generation"
+	name = "贞操钥匙"
+	desc = "生成后会被替换的默认贞操笼描述。"
 	icon_state = "mazekey" // Puritanical type key, Astrata smiles on the abstinent.
 
 /obj/item/roguekey/chastity/attack_self(mob/user)
