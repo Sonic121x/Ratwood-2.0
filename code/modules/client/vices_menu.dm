@@ -1062,7 +1062,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
 	html += "</div>"
 
-	if(statpack && statpack.name == "德能" && virtuetwo)
+	if(statpack && statpack.name == "德能" && virtuetwo) //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 		html += {"
 		<div class=\"statpack-current\" style='margin-top: 10px;'>
 			<div class=\"statpack-name\">第二美德：[virtuetwo.name]</div>
@@ -1108,7 +1108,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	if(!istype(virtue, /datum/virtue/none))
 		html += "<a class='btn btn-clear' href='byond://?src=\ref[src];virtue_action=clear_primary'>清除主要美德</a>"
 
-	if(statpack.name == "德能")
+	if(statpack.name == "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 		html += "<a class='btn btn-select' href='byond://?src=\ref[src];virtue_action=change_secondary'>更换第二美德</a>"
 		if(!istype(virtuetwo, /datum/virtue/none))
 			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];virtue_action=clear_secondary'>清除第二美德</a>"
@@ -1632,7 +1632,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			return
 		
 		if(action == "change_secondary")
-			if(statpack.name != "德能")
+			if(statpack.name != "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 				to_chat(usr, span_warning("第二美德仅在使用「美德」属性包时可用！"))
 				return
 			
@@ -1780,7 +1780,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				to_chat(usr, "<span class='info'>[selected.description_string()]</span>")
 				
 				// Handle virtuetwo based on statpack
-				if(statpack.name == "德能")
+				if(statpack.name == "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 					// Keep virtuetwo if we have it
 				else
 					virtuetwo = GLOB.virtues[/datum/virtue/none]
