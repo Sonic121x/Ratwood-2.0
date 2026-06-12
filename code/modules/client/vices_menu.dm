@@ -1632,7 +1632,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		
 		if(action == "change_secondary")
 			if(statpack.name != "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
-				to_chat(usr, span_warning("第二美德仅在使用「美德」属性包时可用！"))
+				to_chat(usr, span_warning("第二美德仅在使用「德能」属性包时可用！"))
 				return
 			
 			// Save state before change
