@@ -1,7 +1,7 @@
 //Non-map stactic version, can be destroyed. (Not craftable, for now.)
 /obj/structure/noose
-	name = "noose"
-	desc = "Abandon all hope."
+	name = "绞索"
+	desc = "放弃一切希望吧。"
 	icon = 'modular/icons/obj/gallows.dmi'
 	pixel_y = 10
 	icon_state = "noose"
@@ -23,8 +23,8 @@
 
 //Map stactic version.
 /obj/structure/noose/gallows
-	name = "gallows"
-	desc = "Stranded and hanging, limp and dead."
+	name = "绞架"
+	desc = "悬于其上，四肢无力，死气沉沉。"
 	icon_state = "gallows"
 	pixel_y = 0
 	max_integrity = 9999
