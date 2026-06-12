@@ -1061,7 +1061,6 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		html += "</div>"
 
 	html += "</div>"
-
 	if(statpack && statpack.name == "德能" && virtuetwo) //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 		html += {"
 		<div class=\"statpack-current\" style='margin-top: 10px;'>
@@ -1871,7 +1870,6 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					var/mob/living/carbon/human/H = usr
 					if(H.real_name == real_name)
 						to_chat(usr, span_notice("恶习更改已保存。将在你下次出生时生效。"))
-
 				open_vices_menu(usr)
 	
 	if(href_list["loadout_action"])
