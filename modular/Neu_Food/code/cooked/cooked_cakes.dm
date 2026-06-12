@@ -1,9 +1,9 @@
 //	.................   Cake base   .................
 /obj/item/reagent_containers/food/snacks/rogue/cake_base
-	name = "cake base"
-	desc = "With this sweet thing, you shall make them sing."
+	name = "蛋糕坯"
+	desc = "有了这份甜美，你会让他们唱起歌来。"
 	icon = 'modular/Neu_Food/icons/raw/raw_cakes.dmi'
-	icon_state = "cake"
+	icon_state = "蛋糕香"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cake
 	cooked_smell = /datum/pollutant/food/cake
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
@@ -13,15 +13,15 @@
 
 //	.................   Cooked   .................
 /obj/item/reagent_containers/food/snacks/rogue/cake
-	name = "cake"
-	desc = "Soft and tender, a base or a delicious treat for the impatient."
+	name = "蛋糕"
+	desc = "柔软细嫩，既能作底，也适合给等不及的人直接吃。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
-	icon_state = "cake"
+	icon_state = "蛋糕香"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1)
+	tastes = list("蛋糕香"=1)
 	foodtype = GRAIN | DAIRY
 	faretype = FARE_NEUTRAL
 	slice_batch = TRUE
@@ -31,8 +31,8 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/cakeslice
-	name = "cake slice"
-	desc = "Soft and tender, a delicious slice of plain cake."
+	name = "蛋糕切片"
+	desc = "柔软细嫩，一片朴素却可口的蛋糕。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "cake_slice"
 	slices_num = 0
@@ -48,8 +48,8 @@
 //	.................   Frosted cake   .................
 //	.................        Raw       .................
 /obj/item/reagent_containers/food/snacks/rogue/frostedcakeuncooked
-	name = "frosted cake base"
-	desc = "With this sweet frosted thing, you shall make them sing and dance."
+	name = "糖霜蛋糕坯"
+	desc = "有了这份裹着糖霜的甜美，你会让他们又唱又跳。"
 	icon = 'modular/Neu_Food/icons/raw/raw_cakes.dmi'
 	icon_state = "frostedcake"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
@@ -61,15 +61,15 @@
 
 //	.................   Cooked   .................
 /obj/item/reagent_containers/food/snacks/rogue/frostedcake
-	name = "frosted cake"
-	desc = "Cake glazed with a sugary frosting, ready to be decorated or enjoyed."
+	name = "糖霜蛋糕"
+	desc = "裹着甜糖霜的蛋糕，既可继续装饰，也可直接享用。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "frostedcake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/frostedcakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	faretype = FARE_FINE
 	slice_batch = TRUE
@@ -80,15 +80,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/frostedcakeslice
-	name = "frosted cake slice"
-	desc = "Glazed slice with a sugary frosting, ready to be tasted."
+	name = "糖霜蛋糕切片"
+	desc = "裹着甜糖霜的切片，已经可以入口品尝了。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "frostedcake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
@@ -98,15 +98,15 @@
 
 //	..................   Apple cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/applecake
-	name = "apple cake"
-	desc = "Cake glazed with a sugary frosting and layered with juicy apples, sweetness and tart."
+	name = "苹果蛋糕"
+	desc = "覆着甜糖霜、夹着多汁苹果的蛋糕，甜中带酸。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "applecake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/applecakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"apple"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"苹果香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -117,15 +117,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/applecakeslice
-	name = "apple cake slice"
-	desc = "Glazed slice with a sugary frosting and layered with juicy apples, sweetness and tart."
+	name = "苹果蛋糕切片"
+	desc = "覆着甜糖霜、夹着多汁苹果的蛋糕切片，甜中带酸。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "applecake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"apple"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"苹果香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -135,15 +135,15 @@
 
 //	..................   Applenut cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/applenutcake
-	name = "applenut cake"
-	desc = "Frosted cake layered with apples and surrounded in nuts. A spectacle of flavors and textures, with mild stimulant properties."
+	name = "苹果坚果蛋糕"
+	desc = "覆着糖霜、夹着苹果并裹满坚果的蛋糕，风味与口感都很出彩，还带有轻微提神效果。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "applenutcake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/applenutcakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"apple"=1,"nutty"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"苹果香"=1,"坚果香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -154,15 +154,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/applenutcakeslice
-	name = "applenut cake slice"
-	desc = "Frosted slice layered with apples and surrounded in nuts. A spectacle of flavors and textures, with mild stimulant properties."
+	name = "苹果坚果蛋糕切片"
+	desc = "覆着糖霜、夹着苹果并裹满坚果的蛋糕切片，风味与口感都很出彩，还带有轻微提神效果。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "applenutcake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL, /datum/reagent/consumable/acorn_powder = 1)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"apple"=1,"nutty"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"苹果香"=1,"坚果香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -172,15 +172,15 @@
 
 //	..................   Berry cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/berrycake
-	name = "berry cake"
-	desc = "Cake with a spread of juicy berries dripping into its frosting. Often found paired with antidote."
+	name = "浆果蛋糕"
+	desc = "蛋糕里铺满了多汁浆果，汁水渗进糖霜之中。常见于解毒剂旁边。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "berrycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/berrycakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48, /datum/reagent/water = 5)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"berry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"浆果香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -195,15 +195,15 @@
 	list_reagents = list(/datum/reagent/berrypoison = 5, /datum/reagent/consumable/nutriment = 48, /datum/reagent/water = 5)
 
 /obj/item/reagent_containers/food/snacks/rogue/berrycakeslice
-	name = "berry cake slice"
-	desc = "Sliced cake with a spread of juicy berries dripping into its frosting."
+	name = "浆果蛋糕切片"
+	desc = "一片蛋糕，上面铺着多汁浆果，汁水渗进了糖霜里。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "berrycake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"berry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"浆果香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -216,15 +216,15 @@
 
 //	..................   Blackberry cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/blackberrycake
-	name = "blackberry cake"
-	desc = "A dark frosted cake topped with blackberries. A fruity treat often paired with raspberry cake."
+	name = "黑莓蛋糕"
+	desc = "一只覆着深色糖霜、点缀黑莓的蛋糕。常与覆盆子蛋糕成对出现的果味甜点。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "blackberrycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/blackberrycakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"blackberry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"黑莓香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -235,15 +235,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/blackberrycakeslice
-	name = "blackberry cake slice"
-	desc = "A dark frosted slice of cake topped with blackberries. A fruity treat often paired with raspberry cake."
+	name = "黑莓蛋糕切片"
+	desc = "一片覆着深色糖霜、点缀黑莓的蛋糕。常与覆盆子蛋糕成对出现的果味甜点。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "blackberrycake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"blackberry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"黑莓香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -254,15 +254,15 @@
 //	..................   Carrot cake   ..................
 //         This could've been a berry cake too.
 /obj/item/reagent_containers/food/snacks/rogue/carrotcake
-	name = "carrot cake"
-	desc = "A surprisingly sweet frosted cake with cooked carrot peels stuffed in its tender interior."
+	name = "胡萝卜蛋糕"
+	desc = "这款覆着糖霜的蛋糕甜得出人意料，柔软内部还夹着烤熟的胡萝卜皮。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "carrotcake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/carrotcakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"carrot"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"胡萝卜香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | VEGETABLES
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -273,15 +273,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/carrotcakeslice
-	name = "carrot cake slice"
-	desc = "A surprisingly sweet frosted cake slice with cooked carrot peels stuffed in its tender interior."
+	name = "胡萝卜蛋糕切片"
+	desc = "这片覆着糖霜的蛋糕甜得出人意料，柔软内部还夹着烤熟的胡萝卜皮。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "carrotcake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"carrot"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"胡萝卜香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | VEGETABLES
 	bitesize = 3
@@ -291,15 +291,15 @@
 
 //	..................   Lemon cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/lemoncake
-	name = "lemon cake"
-	desc = "A frosted cake with a rich citrus taste. A thick layer of lemon filling give it a sweet, tangy and zesty flavour."
+	name = "柠檬蛋糕"
+	desc = "一款有着浓郁柑橘风味的糖霜蛋糕。厚厚的柠檬夹层赋予它甜、酸与清新的滋味。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "lemoncake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/lemoncakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"lemon"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"柠檬香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -310,15 +310,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/lemoncakeslice
-	name = "lemon cake slice"
-	desc = "A frosted cake slice with a rich citrus taste. A thick layer of lemon filling give it a sweet, tangy and zesty flavour."
+	name = "柠檬蛋糕切片"
+	desc = "一片有着浓郁柑橘风味的糖霜蛋糕。厚厚的柠檬夹层赋予它甜、酸与清新的滋味。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "lemoncake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"lemon"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"柠檬香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -328,15 +328,15 @@
 
 //	..................   Lime cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/limecake
-	name = "lime cake"
-	desc = "A frosted cake with a rich citrus taste. A thick layer of lime filling give it a sweet, tangy and zesty flavour."
+	name = "青柠蛋糕"
+	desc = "一款有着浓郁柑橘风味的糖霜蛋糕。厚厚的青柠夹层赋予它甜、酸与清新的滋味。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "limecake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/limecakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"lime"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"青柠香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -347,15 +347,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/limecakeslice
-	name = "lime cake slice"
-	desc = "A frosted cake slice with a rich citrus taste. A thick layer of lime filling give it a sweet, tangy and zesty flavour."
+	name = "青柠蛋糕切片"
+	desc = "一片有着浓郁柑橘风味的糖霜蛋糕。厚厚的青柠夹层赋予它甜、酸与清新的滋味。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "limecake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"lime"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"青柠香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -369,15 +369,15 @@
 // It is intended only for characters with the ability to tap into the arcane to make this cake.
 
 /obj/item/reagent_containers/food/snacks/rogue/manacake
-	name = "mana cake"
-	desc = "Frosted cake filled with arcyne potential. Lighter than it should be and rarely made for its taste."
+	name = "法力蛋糕"
+	desc = "覆着糖霜的蛋糕，蕴含着奥术潜能。它比看上去更轻盈，而且很少有人是冲着味道专门去做它的。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "manacake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/manacakeslice
 	list_reagents = list(/datum/reagent/medicine/manapot = 32, /datum/reagent/consumable/nutriment = 24)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("hollow sweetness"=1)
+	tastes = list("空泛甜味"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	faretype = FARE_POOR
 	slice_batch = TRUE
@@ -388,15 +388,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/manacakeslice
-	name = "mana cake slice"
-	desc = "Frosted cake slice with dwindling arcyne potential. Lighter than it should be and rarely consumed for its taste."
+	name = "法力蛋糕切片"
+	desc = "覆着糖霜的蛋糕切片，其中的奥术潜能正在消散。它比看上去更轻盈，而且很少有人是冲着味道吃它的。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "manacake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("hollow sweetness"=1)
+	tastes = list("空泛甜味"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
@@ -407,15 +407,15 @@
 
 //	..................   Mentha cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/menthacake
-	name = "mentha cake"
-	desc = "A frosted cake with the fresh taste of mentha and the wyld forests."
+	name = "薄荷蛋糕"
+	desc = "一款覆着糖霜的蛋糕，带着薄荷与荒野森林般的清新气息。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "menthacake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/menthacakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"fresh herbaceousness"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"清新草本香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -426,15 +426,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/menthacakeslice
-	name = "mentha cake slice"
-	desc = "A frosted cake slice with the fresh taste of mentha and the wyld forests."
+	name = "薄荷蛋糕切片"
+	desc = "一片覆着糖霜的蛋糕，带着薄荷与荒野森林般的清新气息。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "menthacake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"fresh herbaceousness"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"清新草本香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
@@ -445,15 +445,15 @@
 //	..................   Peace cake   ..................
 // Peaceflower cake has the drawback of turning its eater into a pacifist for a few minutes.
 /obj/item/reagent_containers/food/snacks/rogue/peacecake
-	name = "peace cake"
-	desc = "Imbued with the miraculous powers of its decorative bud, a frosted cake said to be shared between lovers or after mourning."
+	name = "和平蛋糕"
+	desc = "这款覆着糖霜的蛋糕因装饰花苞而带有奇迹般的力量，据说适合恋人分享，或在哀悼之后食用。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "peacecake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/peacecakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"peace"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"宁和花香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -469,15 +469,15 @@
 	return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/peacecakeslice
-	name = "peace cake slice"
-	desc = "Imbued with the remaining powers of its decorative bud, a frosted cake slice said to be shared between lovers or after mourning."
+	name = "和平蛋糕切片"
+	desc = "这片覆着糖霜的蛋糕仍残留着装饰花苞的力量，据说适合恋人分享，或在哀悼之后食用。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "peacecake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"peace"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"宁和花香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -492,15 +492,15 @@
 
 //	..................   Raspberry cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/raspberrycake
-	name = "raspberry cake"
-	desc = "A frosted cake topped with beautiful raspberries. A fruity treat often paired with blackberry cake."
+	name = "覆盆子蛋糕"
+	desc = "一款点缀着漂亮覆盆子的糖霜蛋糕。常与黑莓蛋糕成对出现的果味甜点。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "raspberrycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/raspberrycakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"raspberry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"覆盆子香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -511,15 +511,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/raspberrycakeslice
-	name = "raspberry cake slice"
-	desc = "A frosted slice of cake topped with beautiful raspberries. A fruity treat often paired with blackberry cake."
+	name = "覆盆子蛋糕切片"
+	desc = "一片点缀着漂亮覆盆子的糖霜蛋糕。常与黑莓蛋糕成对出现的果味甜点。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "raspberrycake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"raspberry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"覆盆子香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -529,15 +529,15 @@
 
 //	..................   Rocknut cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/rocknutcake
-	name = "rocknut cake"
-	desc = "A simple frosted cake with a spread of nuts. Its mild stimulant properties makes-up most of its popularity."
+	name = "石果蛋糕"
+	desc = "一款简单的糖霜坚果蛋糕。它受欢迎的主要原因在于那轻微的提神效果。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "rocknutcake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/rocknutcakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"nutty"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"坚果香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -548,15 +548,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/rocknutcakeslice
-	name = "rocknut cake slice"
-	desc = "A simple frosted cake slice with a spread of nuts. Its mild stimulant properties makes-up most of its popularity."
+	name = "石果蛋糕切片"
+	desc = "一片简单的糖霜坚果蛋糕。它受欢迎的主要原因在于那轻微的提神效果。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "rocknutcake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL, /datum/reagent/consumable/acorn_powder = 1)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"nutty"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"坚果香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -566,15 +566,15 @@
 
 //	..................   Strawberry cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/strawberrycake
-	name = "strawberry cake"
-	desc = "Sweetened strawberries and strawberry filling over a tender frosted cake, simple and elegant."
+	name = "草莓蛋糕"
+	desc = "柔嫩的糖霜蛋糕上铺着糖渍草莓与草莓夹层，简单而优雅。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "strawberrycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/strawberrycakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"strawberry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"草莓香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -585,15 +585,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/strawberrycakeslice
-	name = "strawberry cake slice"
-	desc = "A singular sweetened strawberry and strawberry filling over a tender frosted cake slice, simple and elegant."
+	name = "草莓蛋糕切片"
+	desc = "一片柔嫩的糖霜蛋糕，上面铺着糖渍草莓与草莓夹层，简单而优雅。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "strawberrycake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"strawberry"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"草莓香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -603,15 +603,15 @@
 
 //	..................   Tangerine cake   ..................
 /obj/item/reagent_containers/food/snacks/rogue/tangerinecake
-	name = "tangerine cake"
-	desc = "A frosted cake with a rich citrus taste. A thick layer of tangerine filling give it a sweet, tangy and zesty flavour."
+	name = "橘子蛋糕"
+	desc = "一款有着浓郁柑橘风味的糖霜蛋糕。厚厚的橘子夹层赋予它甜、酸与清新的滋味。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "tangerinecake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/tangerinecakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"tangerine"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"橘香"=1)
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -622,15 +622,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/tangerinecakeslice
-	name = "tangerine cake slice"
-	desc = "A frosted cake slice with a rich citrus taste. A thick layer of tangerine filling give it a sweet, tangy and zesty flavour."
+	name = "橘子蛋糕切片"
+	desc = "一片有着浓郁柑橘风味的糖霜蛋糕。厚厚的橘子夹层赋予它甜、酸与清新的滋味。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "tangerinecake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"sugary frosting"=1,"tangerine"=1)
+	tastes = list("蛋糕香"=1,"甜糖霜"=1,"橘香"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR | FRUIT
 	bitesize = 3
@@ -641,7 +641,7 @@
 //	..................   Honey cake   ..................
 //	..................           Raw            ..................
 /obj/item/reagent_containers/food/snacks/rogue/hcakeuncooked
-	name = "unbaked cake"
+	name = "未烤蛋糕"
 	icon = 'modular/Neu_Food/icons/raw/raw_cakes.dmi'
 	icon_state = "honeycake"
 	slices_num = 0
@@ -654,15 +654,15 @@
 
 //	.................   Cooked   .................
 /obj/item/reagent_containers/food/snacks/rogue/hcake
-	name = "zybantine cake"
-	desc = "Cake glazed with honey in the famous Zybantine fashion for a delicious sweet treat."
+	name = "兹班图蛋糕"
+	desc = "以著名的兹班图风格覆上蜂蜜糖衣的蛋糕，是一款香甜可口的点心。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "honeycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"delicious honeyfrosting"=1)
+	tastes = list("蛋糕香"=1,"香甜蜜糖霜"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	faretype = FARE_LAVISH
 	slice_batch = TRUE
@@ -673,15 +673,15 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
-	name = "zybantine cake slice"
-	desc = "A slice of cake glazed with honey in the famous Zybantine fashion, a delicious sweet treat."
+	name = "兹班图蛋糕切片"
+	desc = "一片以著名兹班图风格覆上蜂蜜糖衣的蛋糕，是一款香甜可口的点心。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "honeycake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"delicious honeyfrosting"=1)
+	tastes = list("蛋糕香"=1,"香甜蜜糖霜"=1)
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
@@ -692,7 +692,7 @@
 //	..................   Cheesecake   ..................
 //	..................      Raw       ..................
 /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
-	name = "unbaked cake of cheese"
+	name = "未烤奶酪蛋糕"
 	icon = 'modular/Neu_Food/icons/raw/raw_cakes.dmi'
 	icon_state = "cheesecake"
 	slices_num = 0
@@ -705,8 +705,8 @@
 
 //	.................   Cooked   .................
 /obj/item/reagent_containers/food/snacks/rogue/ccake
-	name = "cheesecake"
-	desc = "Humenity's favored creation."
+	name = "芝士蛋糕"
+	desc = "人们钟爱的杰作。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "cheesecake"
 	slices_num = 8
@@ -714,7 +714,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"creamy cheese"=1)
+	tastes = list("蛋糕香"=1,"奶香芝士"=1)
 	foodtype = GRAIN | DAIRY
 	slice_batch = TRUE
 	slice_sound = TRUE
@@ -723,14 +723,14 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
-	name = "cheesecake slice"
-	desc = "A simple slice of humenity's favored creation."
+	name = "芝士蛋糕切片"
+	desc = "一片简单却深受人们喜爱的杰作。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_cakes.dmi'
 	icon_state = "cheesecake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("cake"=1,"creamy cheese"=1)
+	tastes = list("蛋糕香"=1,"奶香芝士"=1)
 	faretype = FARE_FINE
 	cooked_type = null
 	foodtype = GRAIN | DAIRY

@@ -1,7 +1,7 @@
 /obj/item/clothing/neck/roguetown/cursed_collar
-	name = "cursed collar"
+	name = "诅咒项圈"
 	always_show_examine_link = FALSE
-	desc = "A sinister looking collar with ruby studs. It seems to radiate a dark energy. \nLooks like you'd need someone else's help to take it off."
+	desc = "一个外观阴森的项圈，镶嵌着红宝石饰钉，似乎散发着黑暗能量。\n看起来你需要别人的帮助才能将其取下。"
 	// Credit regarding sprites to Necbro
 	// https://github.com/StoneHedgeSS13/StoneHedge/commit/9ddc09d4cb91903beff6d523c91aef75312d5163
 	icon = 'modular_stonehedge/icons/clothing/armor/neck.dmi'
@@ -36,8 +36,8 @@
 /obj/item/clothing/neck/roguetown/cursed_collar/examine(mob/user)
 	. = ..()
 	if(received_cum_count > 0)
-		var/tally_text = received_cum_count == 1 ? "1 tally mark" : "[received_cum_count] tally marks"
-		. += span_notice("[tally_text] are etched into the collar's metal surface.")
+		var/tally_text = received_cum_count == 1 ? "1道刻痕。" : "[received_cum_count]道刻痕。"
+		. += span_notice("[tally_text]刻在贞操装置的金属表面。")
 
 /obj/item/clothing/neck/roguetown/cursed_collar/proc/record_nonself_ejaculation(mob/living/carbon/human/source, mob/living/carbon/human/wearer)
 	if(!source || !wearer)
@@ -48,7 +48,7 @@
 		return FALSE
 	var/added = max(1, get_tally_increment_for_source(source))
 	received_cum_count += added
-	var/tally_msg = added == 1 ? "A metal scraping sound is briefly heard, a tally mark suddenly appears on [wearer]'s collar." : "A metal scraping sound is briefly heard, [added] tally marks suddenly appear on [wearer]'s collar."
+	var/tally_msg = added == 1 ? "短暂传来一道金属刮擦声，[wearer]的项圈上突然多出了一道刻痕。" : "短暂传来一道金属刮擦声，[wearer]的项圈上突然多出了[added]道刻痕。"
 	for(var/mob/M in viewers(1, wearer))
 		to_chat(M, span_notice(tally_msg))
 	return TRUE
@@ -64,7 +64,7 @@
 		return ..()
 
 	if(!target.client?.prefs?.cursed_collarable)
-		to_chat(user, span_warning("[target] has cursed collars disabled in their prefs!"))
+		to_chat(user, span_warning("[target]的脖子上已经戴着东西了！"))
 		return
 
 	if(target.get_item_by_slot(SLOT_NECK))
@@ -73,7 +73,7 @@
 
 	var/obj/item/chastity/existing_chastity = target.chastity_device
 	if(istype(existing_chastity) && existing_chastity.chastity_cursed)
-		to_chat(user, span_warning("[target] is already bound by cursed chastity."))
+		to_chat(user, span_warning("[target]已经被诅咒贞操装置束缚了。"))
 		return
 
 	var/datum/mind/master_mind = collar_master
@@ -81,7 +81,7 @@
 		master_mind = user?.mind
 		collar_master = master_mind
 	if(!master_mind)
-		to_chat(user, span_warning("The collar rejects binding without an imprinted master."))
+		to_chat(user, span_warning("这只项圈拒绝在没有烙印主人的情况下进行绑定。"))
 		return
 
 	if(applying)
@@ -111,13 +111,13 @@
 
 	// Try to equip
 	if(!target.equip_to_slot_if_possible(src, SLOT_NECK, TRUE, TRUE))
-		to_chat(user, span_warning("You fail to lock the collar around [target]'s neck!"))
+		to_chat(user, span_warning("你没能把项圈锁在[target]的脖子上！"))
 		applying = FALSE
 		return
 
 	// Add pet to the master's list before sending collar signals
 	if(!CM.add_pet(target))
-		to_chat(user, span_warning("The collar fails to bind [target]."))
+		to_chat(user, span_warning("项圈未能绑定[target]。"))
 		target.dropItemToGround(src, force = TRUE)
 		applying = FALSE
 		return
@@ -131,13 +131,13 @@
 	. = ..()
 	if(!user?.mind)
 		return
-	if(tgui_alert(user, "Become the master of this collar?", "Cursed Collar", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "要成为这只项圈的主人吗？", "诅咒项圈", list("是", "否")) != "是")
 		return
 	var/datum/component/collar_master/CM = user.mind.GetComponent(/datum/component/collar_master)
 	if(!CM)
 		user.mind.AddComponent(/datum/component/collar_master)
 	collar_master = user.mind
-	to_chat(user, span_userdanger("You feel the collar being imprinted with your will."))
+	to_chat(user, span_userdanger("你感觉这只项圈烙印下了你的意志。"))
 
 
 /obj/item/clothing/neck/roguetown/cursed_collar/equipped(mob/living/carbon/human/user, slot)
@@ -159,29 +159,29 @@
 		return
 
 	if(user?.mind && collar_master && user.mind == collar_master)
-		to_chat(user, span_warning("The collar rejects self-binding. It must be fastened by another master."))
+		to_chat(user, span_warning("这只项圈拒绝自我束缚。它必须由另一位主人为你戴上。"))
 		user.dropItemToGround(src, force = TRUE)
 		return
 
 	if(!user.mind)
-		user.visible_message(span_warning("\The [src] fails to lock around [user]'s neck."))
+		user.visible_message(span_warning("\The [src]没能锁在[user]的脖子上。"))
 		user.dropItemToGround(src, force = TRUE)
 		return
 
 	var/obj/item/chastity/existing_chastity = user.chastity_device
 	if(istype(existing_chastity) && existing_chastity.chastity_cursed)
-		to_chat(user, span_warning("The collar recoils from the cursed chastity already binding you."))
+		to_chat(user, span_warning("这只项圈对已束缚着你的诅咒贞操装置产生了排斥。"))
 		user.dropItemToGround(src, force = TRUE)
 		return
 
 	if(SEND_SIGNAL(user, COMSIG_CARBON_COLLAR_BIND_ATTEMPT, collar_master, src) & COMPONENT_COLLAR_BIND_BLOCK)
-		to_chat(user, span_warning("The collar resists binding right now."))
+		to_chat(user, span_warning("这只项圈此刻拒绝完成绑定。"))
 		user.dropItemToGround(src, force = TRUE)
 		return
 
-	if(tgui_alert(user, "Submit to the collar's control?", "Cursed Collar", list("Yes!", "No")) != "Yes!")
-		user.visible_message(span_warning("[user] resists the collar's control."))
-		to_chat(user, span_warning("Your defiant will prevents the collar from binding to you!"))
+	if(tgui_alert(user, "要向这只项圈的控制屈服吗？", "诅咒项圈", list("是！", "否")) != "是！")
+		user.visible_message(span_warning("[user]抗拒了项圈的控制。"))
+		to_chat(user, span_warning("你反抗的意志阻止了项圈绑定到你身上！"))
 		user.dropItemToGround(src, force = TRUE)
 		return
 
@@ -189,15 +189,15 @@
 	if(!CM)
 		CM = collar_master.AddComponent(/datum/component/collar_master)
 	if(!CM || !CM.add_pet(user))
-		to_chat(user, span_warning("The collar fails to bind to you."))
+		to_chat(user, span_warning("项圈未能绑定到你身上。"))
 		user.dropItemToGround(src, force = TRUE)
 		return
 
 	SEND_SIGNAL(user, COMSIG_CARBON_COLLAR_BOUND, collar_master, src)
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
-	user.visible_message(span_warning("Cursed collar around [user]'s neck clicks shut!"), \
-							span_userdanger("Cursed collar around your neck clicks shut!"))
+	user.visible_message(span_warning("[user]脖子上的诅咒项圈咔哒一声锁死了！"), \
+							span_userdanger("你脖子上的诅咒项圈咔哒一声锁死了！"))
 	playsound(loc, 'sound/foley/equip/equip_armor_plate.ogg', 30, TRUE, -2)
 
 	// Only send the gain signal once master is set
