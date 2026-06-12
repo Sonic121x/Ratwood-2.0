@@ -95,7 +95,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/heartfelt/forheartfelt)
 		H.mind.AddSpell(new/obj/effect/proc_holder/spell/invoked/order/heartfelt/focustarget)
 		H.verbs |= list(/mob/living/carbon/human/mind/proc/setordersheartfelt)
-	var/helmet = list("伊特鲁斯卡尖盔","狼首板甲盔","鸟喙盔","带面罩沙勒盔","长吻带面罩沙勒盔",)
+	var/helmet = list("伊特鲁斯卡盆盔","狼首板甲盔","鸟喙盔","带面罩沙勒盔","长吻带面罩沙勒盔",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
 		if("伊特鲁斯卡盆盔")
