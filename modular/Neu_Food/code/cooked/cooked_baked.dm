@@ -3,8 +3,8 @@
 
 /*	.................   Hardtack   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw
-	name = "crackerdough"
-	desc = "Doughy, soft, unacceptable - such makes it perfect for hardtack. Sprinkling in some sliced chocolate might help make it a little more palletable."
+	name = "生硬饼"
+	desc = "软塌塌的生面团，根本不能入口。撒上一些巧克力碎或许能让它更易入口一些。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "raw_tack"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
@@ -14,14 +14,14 @@
 
 /*	.................   Hardtack   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
-	name = "hardtack"
-	desc = "Brittle and hard, like chewing on a rock. These salted biscuits will never expire, however: and for those who travel across Psydonia, that fact alone earns it a space in their packs."
+	name = "硬饼"
+	desc = "又脆又硬，像在啃石头。不过，这种咸饼干永远不会坏；对穿越普赛多尼亚的旅人来说，仅此一点就足以让它在行囊里占个位置。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "tack6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	faretype = FARE_POOR
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("spelt" = 1)
+	tastes = list("斯佩耳特麦香" = 1)
 	bitesize = 6
 	rotprocess = null
 
@@ -41,8 +41,8 @@
 
 /*	.................   Bread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bread
-	name = "bread loaf"
-	desc = "One of Psydonia's staple foodstuffs, made from leavened dough. From the pauper to the papal, none can deny the simplistic beauty of a freshly-baked loaf."
+	name = "面包条"
+	desc = "普赛多尼亚的主食之一，由发酵面团制成。从贫民到教廷贵人，没人能否认一条新鲜出炉面包那朴素的美好。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "loaf6"
 	slices_num = 6
@@ -51,7 +51,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = DOUGH_NUTRITION)
 	faretype = FARE_POOR
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("bread" = 1)
+	tastes = list("面包香" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -78,8 +78,8 @@
 
 /*	.................   Breadslice & Toast   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/breadslice
-	name = "sliced bread"
-	desc = "A bit of comfort to start your dae. The finest choice-of-vessel for a slice of saloumi, salo, cheese, bacon, or jam."
+	name = "面包片"
+	desc = "一天伊始的小小慰藉。无论夹上一片烟熏香肠、盐腌肥膘、奶酪、煎培根还是果酱，都是再合适不过的承载。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "loaf_slice"
 	faretype = FARE_POOR
@@ -91,12 +91,12 @@
 
 //this is a child so we can be used in sammies
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
-	name = "toast"
-	desc = "Crisp and crunchy, yet not burnt - truly, an alchemical wonder. Best enjoyed with a fried egg, a knob of sliced butter, or some freshly-prepared jams."
+	name = "吐司"
+	desc = "酥脆爽口却没有烤焦，简直像炼金奇迹。最适合配煎蛋、一块切片黄油或新鲜制作的果酱一起吃。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
-	icon_state = "toast"
+	icon_state = "吐司香"
 	faretype = FARE_NEUTRAL
-	tastes = list("crispy bread" = 1)
+	tastes = list("酥脆面包香" = 1)
 	mill_result = /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs
 	cooked_type = null
 	bitesize = 3
@@ -133,14 +133,14 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs
-	name = "toast crumbs"
-	desc = "Perfect for adding some crunch to deep-fried food."
+	name = "吐司碎"
+	desc = "非常适合给油炸食物增加一点酥脆口感。"
 	icon = 'modular/Neu_Food/icons/raw/raw_deep_fried.dmi'
 	icon_state = "toastcrumbs"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("crunch" = 1)
+	tastes = list("酥脆口感" = 1)
 	cooked_type = null
 	foodtype = GRAIN
 	bitesize = 1
@@ -148,7 +148,7 @@
 
 // -------------- BREAD WITH FOOD ON IT (not american sandwich) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
-	desc = "A delightful piece of heaven in every slice."
+	desc = "每一片都像是令人愉悦的天赐美味。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 	bitesize = 4
@@ -219,7 +219,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION)
 	faretype = FARE_POOR
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("bread" = 1)
+	tastes = list("面包香" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 
@@ -251,8 +251,8 @@
 
 /* 	.................   Crossbuns   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/crossbun_raw
-	name = "raw crossbun"
-	desc = "A piece of raw dough with the shape of Astrata's cross pressed onto it. In Her Light."
+	name = "生十字面包"
+	desc = "一块生面团，上面压出了阿斯特拉塔十字的形状。沐于她的光辉之下。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "crossbun_raw"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION)
@@ -260,8 +260,8 @@
 
 // Psydon variant
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/psycrossbun_raw
-	name = "raw psycrossbun"
-	desc = "A piece of raw dough with the shape of a Psycross pressed onto it. He ENDURES."
+	name = "生普赛圣十字面包"
+	desc = "一块生面团，上面压出了普赛圣十字的形状。祂长存不灭。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "psycrossbun_raw"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/psycrossbun
@@ -275,7 +275,7 @@
 	icon_state = "crossbun"
 	faretype = FARE_NEUTRAL // Having nobles vomit from eating holy buns is not a good idea
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("bread" = 1)
+	tastes = list("面包香" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 
@@ -315,7 +315,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION)
 	faretype = FARE_NEUTRAL // Having nobles vomit from eating holy buns is not a good idea
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("bread" = 1)
+	tastes = list("面包香" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 
@@ -756,8 +756,8 @@
 /*	.................   Cheese Bun   ................... */
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesebun_raw
-	name = "raw cheese bun"
-	desc = "Time for the oven!"
+	name = "生奶酪面包"
+	desc = "该进烤炉了！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "cheesebun_raw"
 	color = "#ecce61"
@@ -774,7 +774,7 @@
 	icon_state = "cheesebun"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION+FRESHCHEESE_NUTRITION)
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("crispy bread and cream cheese" = 1)
+	tastes = list("酥脆面包与鲜奶酪香" = 1)
 	foodtype = GRAIN | DAIRY
 	bitesize = 3
 	rotprocess = SHELFLIFE_DECENT
@@ -793,22 +793,22 @@
 
 /*	.................   Miscellanious Buns   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/frybread
-	name = "frybread"
-	desc = "Flatbread fried with butter until crispy. A staple of the elven kitchen."
+	name = "煎面饼"
+	desc = "用黄油煎到酥脆的扁面饼，是精灵厨房的主食之一。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "frybread"
 	faretype = FARE_FINE
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION)
-	tastes = list("crispy bread with a soft inside" = 1)
+	tastes = list("外酥内软的面包香" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/bun_grenz
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+SMALLDOUGH_NUTRITION)
-	tastes = list("savory sausage" = 1, "bread" = 1)
-	name = "grenzelbun"
-	desc = "The classic wiener in a bun, now a staple of Grenzelhoft cuisine. It is rumored that elves first invented it long ago, back when they practiced the consumption of other people..."
+	tastes = list("咸香香肠" = 1, "面包香" = 1)
+	name = "格伦泽尔面包肠"
+	desc = "经典的面包夹香肠，如今已是格伦泽尔霍夫特菜肴的常客。据说很久以前是精灵最先发明了它，那时他们还会吃别的人……"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "grenzbun"
 	foodtype = GRAIN | MEAT
