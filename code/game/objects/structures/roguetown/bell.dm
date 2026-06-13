@@ -1,6 +1,6 @@
 /obj/structure/boatbell
 	name = "钟"
-	desc = "这是 Roguetown 的丧钟。"
+	desc = "这是罗格镇的丧钟。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "bell"
 	density = FALSE
@@ -57,18 +57,24 @@
 			playsound(src, 'sound/misc/bell.ogg', 100, extrarange = 5)
 			addtimer(CALLBACK(src, PROC_REF(reset_cooldown)), cooldown)
 			var/list/rolestonotify = list()
+			var/localarea_display = localarea
 			switch(localarea)
 				if("church")
 					rolestonotify = GLOB.church_positions
 				if("Shop")
+					localarea_display = "商店"
 					rolestonotify = list("Merchant", "Shophand")
 				if("Physician")
+					localarea_display = "医馆"
 					rolestonotify = list("Head Physician", "Apothecary")
 				if("The Guild of Craft")
+					localarea_display = "工艺公会"
 					rolestonotify = list("Guildmaster", "Guildsman")
 				if("Steward")
+					localarea_display = "总管处"
 					rolestonotify = list("Steward", "Clerk")
 				if("Baths")
+					localarea_display = "浴场"
 					rolestonotify = list("Bathmaster", "Bathhouse Attendant")
 				if("The Inquisition")
 					rolestonotify = GLOB.inquisition_positions
