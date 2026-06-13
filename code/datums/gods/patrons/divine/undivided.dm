@@ -1,8 +1,8 @@
 /datum/patron/divine/undivided
-	name = "Undivided"
+	name = "无分"
 	domain = "太阳、月亮、大地、正义、自由、海洋、创造、灵感、死亡、腐朽、爱、治愈与生命。"
-	desc = "这是一个联合的万神殿，坚定地与黑暗对抗。THE TEN 向凡人赐下教诲与恩惠。其主要崇拜方式，是兼修并敬奉 THE TEN，从每一位神祇身上汲取教训。这是 Grenzelhoft Holy See 的主要神学。"
-	worshippers = "Holy See 教士、THE TEN 的实用主义者"
+	desc = "这是一个联合的万神殿，坚定地与黑暗对抗。十神向凡人赐下教诲与恩惠。其主要崇拜方式，是兼修并敬奉十神，从每一位神祇身上汲取教训。这是格伦泽尔霍夫特教廷的主要神学。"
+	worshippers = "教廷教士、十神的实用主义者"
 	virtues = "节制、虔诚、谨慎"
 	sins = "顽固、鲁莽、狂热"
 	mob_traits = list()
@@ -23,7 +23,7 @@
 	confess_lines = list(
 		"神圣十角将庇护我的灵魂！",
 		"我侍奉这光辉的万神殿！",
-		"THE TEN 永恒长存，直到永远！",
+		"十神永恒长存，直到永远！",
 	)
 	storyteller = null
 	disabled_patron = TRUE//Disabled for lore reasons on RW
@@ -33,7 +33,7 @@
 	// Undivided - More restricted, needs to be within range of a pantheon cross or the church itself.
 	for(var/obj/structure/fluff/psycross/cross in view(4, get_turf(follower)))
 		if(cross.divine == FALSE)
-			to_chat(follower, span_danger("那座被亵渎的 psycross 打断了我的祈祷！"))
+			to_chat(follower, span_danger("那座被亵渎的普赛圣十字打断了我的祈祷！"))
 			return FALSE
 		return TRUE
 	// Allows prayer in the church
