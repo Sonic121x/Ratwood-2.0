@@ -1614,7 +1614,7 @@ Necra's Censer (by ARefrigerator)
 	for(var/path in ALL_DIVINE_PATRONS)
 		var/datum/patron/divine/instance = new path
 		if(instance && instance.name)
-			divine_options[instance.name] = path
+			divine_options[_cr_patron_name_display(instance.name)] = path
 		qdel(instance)
 
 	if(!divine_options || !divine_options.len)
