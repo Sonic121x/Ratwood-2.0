@@ -204,7 +204,7 @@
 		var/obj/item/reagent_containers/food/snacks/fish/F = AM
 		if (F.sinkable)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_FISH_RELEASED, F.type, F.rarity_rank)
-			F.visible_message("<span class='warning'>[F] dives into \the [src] and disappears!</span>")
+			F.visible_message("<span class='warning'>[F]一头扎进了\the [src]，转眼便消失不见！</span>")
 			qdel(F)
 			return
 
