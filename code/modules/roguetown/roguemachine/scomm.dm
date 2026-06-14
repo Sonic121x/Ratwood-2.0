@@ -732,21 +732,21 @@
 /obj/item/listeningdevice/Initialize(mapload)
 	. = ..()
 	become_hearing_sensitive()
-	inqdesc = "An ever-attentive ear... [span_notice("This ear hasn't been bent. It's unlabelled.")]"
+	inqdesc = "一只时刻留神的耳朵…… [span_notice("这只耳朵还没被掰弯。它没有标签。")]"
 
 /obj/item/listeningdevice/Destroy()
 	lose_hearing_sensitivity()
 	return ..()
 
 /obj/item/listeningdevice/attack_self(mob/living/user)
-	var/input = input(user, "SIX LETTERS", "BEND AN EAR")
+	var/input = input(user, "六个字符", "给耳朵做记号")
 	if(!input)
 		label = null
-		inqdesc = "An ever-attentive ear... [span_notice("This ear hasn't been bent. It's unlabelled.")]"
+		inqdesc = "一只时刻留神的耳朵…… [span_notice("这只耳朵还没被掰弯。它没有标签。")]"
 		desc = inqdesc
 		return
 	label = uppertext(trim(input, 7))
-	inqdesc = "An ever-attentive ear... [span_notice("This ear's been bent. It's labelled as [label].")]"
+	inqdesc = "一只时刻留神的耳朵…… [span_notice("这只耳朵已经被掰弯了。它的标签是 [label]。")]"
 	desc = inqdesc
 	return
 
