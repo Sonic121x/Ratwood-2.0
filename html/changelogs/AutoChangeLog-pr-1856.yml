@@ -1,4 +1,0 @@
-author: "Xander3359"
-delete-after: True
-changes:
-  - rscadd: "Calling out for yielding will now put up a prompt to nearby people."

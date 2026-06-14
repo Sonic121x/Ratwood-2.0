@@ -207,3 +207,6 @@
   - rscadd: '"delish" -> "delicious"'
   - rscadd: '"gyaru" -> "delinquent"'
   - rscadd: '"gyarus" -> "delinquents"'
+2026-06-13:
+  Xander3359:
+  - rscadd: Calling out for yielding will now put up a prompt to nearby people.
