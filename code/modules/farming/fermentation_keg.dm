@@ -632,7 +632,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 /obj/item/reagent_containers/glass/bottle/brewing_bottle/calendula_tea
 
 /obj/structure/fermentation_keg/distiller
-	name = "copper distiller"
+	name = "铜制蒸馏器"
 
 	icon = 'icons/obj/distillery.dmi'
 	icon_state = "distillery"
