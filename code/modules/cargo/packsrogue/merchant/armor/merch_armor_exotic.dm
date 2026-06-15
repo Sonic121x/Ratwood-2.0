@@ -9,7 +9,7 @@
 	no_name_quantity = TRUE
 
 /datum/supply_pack/rogue/armor_exotic/gronn_pack_light
-	name = "Gronnic Ravager Leather Set (Light)"
+	name = "格隆恩掠袭者皮甲套装（轻型）"
 	cost = 125
 	contains = list(
 		/obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn,
@@ -19,7 +19,7 @@
 		)
 
 /datum/supply_pack/rogue/armor_exotic/gronn_pack_medium
-	name = "Gronnic Byrine Chain Set (Medium)"
+	name = "格隆恩拜林链甲套装（中型）"
 	cost = 225
 	contains = list(
 		/obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel,
@@ -29,7 +29,7 @@
 		)
 
 /datum/supply_pack/rogue/armor_exotic/gronn_pack_heavy
-	name = "Gronnic Norsii Plate Set (Heavy)"
+	name = "格隆恩诺尔西板甲套装（重型）"
 	cost = 400
 	contains = list(
 		/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gronn,
