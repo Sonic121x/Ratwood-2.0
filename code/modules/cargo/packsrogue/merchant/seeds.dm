@@ -1,12 +1,12 @@
 
 
 /datum/supply_pack/rogue/seeds
-	group = "Seeds"
+	group = "种子"
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/seeds/spelt
-	name = "Spelt"
+	name = "斯佩耳特小麦"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/wheat,
@@ -14,7 +14,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/apple
-	name = "Apple"
+	name = "苹果"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/apple,
@@ -22,7 +22,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/weed
-	name = "Westleach"
+	name = "烟草"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/pipeweed,
@@ -30,7 +30,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/swampweed
-	name = "Swampweed"
+	name = "沼泽草"
 	cost = 8
 	contains = list(
 					/obj/item/seeds/swampweed,
@@ -38,7 +38,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/jacksberry
-	name = "Jacksberry"
+	name = "杰克莓"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/berryrogue,
@@ -46,7 +46,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/onion
-	name = "Onion"
+	name = "洋葱"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/onion,
@@ -54,7 +54,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/cabbage
-	name = "Cabbage"
+	name = "卷心菜"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/cabbage,
@@ -62,7 +62,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/potato
-	name = "Potato"
+	name = "马铃薯"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/potato,
@@ -70,7 +70,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/poppy
-	name = "Poppy"
+	name = "罂粟"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/poppy,
@@ -79,7 +79,7 @@
 
 
 /datum/supply_pack/rogue/seeds/coffee
-	name = "Coffee"
+	name = "咖啡"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/coffee,
@@ -88,7 +88,7 @@
 
 
 /datum/supply_pack/rogue/seeds/tea
-	name = "Tea"
+	name = "茶"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/tea,
@@ -96,7 +96,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/sugarcane
-	name = "Sugarcane"
+	name = "甘蔗"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/sugarcane,
@@ -104,7 +104,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/lemon
-	name = "Lemon"
+	name = "柠檬"
 	cost = 6
 	contains = list(
 					/obj/item/seeds/lemon,
@@ -112,7 +112,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/lime
-	name = "Lime"
+	name = "青柠"
 	cost = 6
 	contains = list(
 					/obj/item/seeds/lime,
@@ -120,7 +120,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/tangerine
-	name = "Tangerine"
+	name = "橘子"
 	cost = 6
 	contains = list(
 					/obj/item/seeds/tangerine,
@@ -128,7 +128,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/plum
-	name = "Plum"
+	name = "李子"
 	cost = 6
 	contains = list(
 					/obj/item/seeds/plum,
@@ -136,7 +136,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/raspberry
-	name = "Raspberry"
+	name = "覆盆子"
 	cost = 5
 	contains = list(
 					/obj/item/seeds/raspberry,
@@ -144,7 +144,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/blackberry
-	name = "Blackberry"
+	name = "黑莓"
 	cost = 5
 	contains = list(
 					/obj/item/seeds/blackberry,
@@ -152,7 +152,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/strawberry
-	name = "Strawberry"
+	name = "草莓"
 	cost = 5
 	contains = list(
 					/obj/item/seeds/strawberry,
@@ -160,7 +160,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/rocknut
-	name = "Rocknut"
+	name = "岩果"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/nut,
@@ -168,7 +168,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/oat
-	name = "Oats"
+	name = "燕麦"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/wheat/oat,
@@ -176,7 +176,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/rice
-	name = "Rice"
+	name = "稻米"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/rice,
@@ -184,7 +184,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/pear
-	name = "Pear"
+	name = "梨"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/pear,
@@ -192,7 +192,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/tomato
-	name = "Tomato"
+	name = "番茄"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/tomato,
@@ -200,7 +200,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/turnip
-	name = "Turnip"
+	name = "芜菁"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/turnip,
@@ -208,7 +208,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/sunflower
-	name = "Sunflower"
+	name = "向日葵"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/sunflower,
@@ -216,7 +216,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/garlick
-	name = "Garlick"
+	name = "大蒜"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/garlick,
@@ -224,7 +224,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/pumpkin
-	name = "Pumpkin"
+	name = "南瓜"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/pumpkin,
@@ -232,7 +232,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/carrot
-	name = "Carrot"
+	name = "胡萝卜"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/carrot,
@@ -240,7 +240,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/eggplant
-	name = "Eggplant"
+	name = "茄子"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/eggplant,
@@ -248,7 +248,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/cucumber
-	name = "Cucumber"
+	name = "黄瓜"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/cucumber,
@@ -256,7 +256,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/rare_veggies
-	name = "Imported Vegetable Seeds"
+	name = "进口蔬菜种子"
 	cost = 15
 	contains = list(
 					/obj/item/seeds/garlick,
@@ -269,7 +269,7 @@
 					)
 
 /datum/supply_pack/rogue/seeds/rare_fruit
-	name = "Imported Fruit Seeds"
+	name = "进口水果种子"
 	cost = 15
 	contains = list(
 					/obj/item/seeds/pear,
@@ -282,7 +282,7 @@
 					)
 
 /datum/supply_pack/rogue/seeds/rare_berry
-	name = "Imported Berry Seeds"
+	name = "进口浆果种子"
 	cost = 15
 	contains = list(/obj/item/seeds/strawberry,
 					/obj/item/seeds/strawberry,
@@ -294,7 +294,7 @@
 
 
 /datum/supply_pack/rogue/seeds/rare_grain
-	name = "Imported Grain Seeds"
+	name = "进口谷物种子"
 	cost = 15
 	contains = list(
 					/obj/item/seeds/wheat/oat,
