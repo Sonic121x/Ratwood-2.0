@@ -66,7 +66,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				beltl = /obj/item/quiver/pyrobolts
-			if("让烈焰降临吧！！！")
+			if("让烈焰降临吧!!!")
 				H.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
 				backr = /obj/item/rogueweapon/woodstaff/toper
 				if(H.mind)
