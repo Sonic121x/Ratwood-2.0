@@ -828,7 +828,8 @@
 	human_req = TRUE
 	warnie = "spellwarning"
 	school = "transmutation"
-	overlay_state = "mimicry"
+	action_icon = 'modular_z121/icon/custompell.dmi'
+	overlay_state = "harmless_dismemberment"
 	spell_tier = 3
 	invocations = list("肉可离，命暂留，归处莫迟。")
 	invocation_type = "whisper"
