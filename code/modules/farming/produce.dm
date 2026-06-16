@@ -197,8 +197,8 @@
 		)
 
 /obj/item/reagent_containers/food/snacks/grown/fruit
-	name = "generic fruit"
-	desc = "Uh oh, this shouldn't be here."
+	name = "普通水果"
+	desc = "呃哦，这东西不该出现在这里。"
 	bitesize = 2
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	foodtype = FRUIT
@@ -223,9 +223,9 @@
 	splat_color = "#FFFF00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/lime
-	name = "lime"
+	name = "酸橙"
 	seed = /obj/item/seeds/lime
-	desc = "A small, green citrus fruit with a sharp, tangy flavor, often used to add zest to dishes and drinks."
+	desc = "一颗小个子的绿色柑橘类水果，味道尖锐辛辣，常用于烹饪和调制饮品。"
 	icon_state = "lime"
 	tastes = list("lime" = 1)
 	splat_color = "#00FF00"
@@ -327,9 +327,9 @@
 	splat_color = "#A01600"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
-	name = "tomato"
+	name = "番茄"
 	seed = /obj/item/seeds/tomato
-	desc = "A plump, red fruit with juicy flesh and a balanced sweet-tart flavor, essential in salads and sauces. A seasoned culinarian knowns to always split their tomatoes, in order to fashion the smoothest sauces."
+		desc = "一颗饱满的红色果实，果肉多汁，酸甜适中。可生食，也可烹饪使用。经验丰富的厨师知道总要把番茄切开，以制作出最顺滑的酱汁。"
 	icon_state = "tomato"
 	tastes = list("tomato" = 1)
 	splat_color = "#CD5320"
@@ -347,7 +347,7 @@
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue
 	seed = /obj/item/seeds/berryrogue
 	name = "杰克莓"
-	desc = ""
+	desc = "一小簇深色的杰克莓，汁液浓郁。"
 	icon_state = "berries"
 	tastes = list("berry" = 1)
 	bitesize = 5
@@ -422,8 +422,8 @@
 		)
 
 /obj/item/reagent_containers/food/snacks/grown/nut
-	name = "rocknut"
-	desc = "A fragrant nut with stimulating properties, oft-delighted with herbal sugar. Its powder is valuable for fashioning zigs and allspices."
+	name = "石果"
+	desc = "一种带有刺激特性的芳香坚果，常与药草糖搭配享用。其粉末可用于制作手卷烟和混合香料。"
 	seed = /obj/item/seeds/nut
 	icon_state = "rocknut"
 	tastes = list("nutty" = 1)
@@ -448,8 +448,8 @@
 
 /obj/item/reagent_containers/food/snacks/grown/sugarcane
 	seed = /obj/item/seeds/sugarcane
-	name = "sugarcane"
-	desc = "A tall, leafy plant with a thick, fibrous stalk. It can be milled into sugar. Commonly eaten as a snack in part of Lingyue."
+	name = "甘蔗"
+	desc = "一种高大的叶状植物，有着粗壮纤维质的茎秆。可磨制成糖。在灵岳部分地区常作为零食食用。"
 	icon_state = "sugarcane"
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
@@ -498,8 +498,8 @@
 	sellprice = 30
 
 /obj/item/reagent_containers/food/snacks/grown/vegetable/turnip
-	name = "turnip"
-	desc = "A shield against hunger, naught else."
+	name = "芜菁"
+	desc = "抵御饥饿的盾牌，仅此而已。"
 	seed = /obj/item/seeds/turnip
 	icon_state = "turnip"
 	tastes = list("dirt" = 1)
@@ -514,8 +514,8 @@
 
 /*	..................   Sunflower   ................... */
 /obj/item/reagent_containers/food/snacks/grown/sunflower
-	name = "sunflower"
-	desc = "A large, bright yellow flower. Can be worn on the head."
+	name = "向日葵"
+	desc = "一朵大大的、亮黄色的花。可以戴在头上。"
 	icon_state = "sunflower"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	seed = /obj/item/seeds/sunflower
@@ -530,9 +530,9 @@
 
 //pyroclastic flowers - stonekeep port
 /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
-	name = "fyritius flower"
+	name = "焰蕊花"
 	seed = /obj/item/seeds/fyritius
-	desc = "A delicate orange flower that radiates warmth."
+	desc = "一朵精致的橙色花朵，散发着暖意。"
 	icon_state = "fyritius"
 	filling_color = "#ff5e00"
 	tastes = list("tastes like a burning coal and fire" = 1)
@@ -592,8 +592,8 @@
 
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied
-	name = "bloodied fyritius flower"
-	desc = "A once delicate orange flower, now soaked with gruesome accursed blood that slowly burns it away."
+	name = "染血的焰蕊花"
+	desc = "一朵曾经精致的橙色花朵，如今被可怖的诅咒之血浸透。它在其间沸腾翻涌。"
 	icon_state = "fyritius_blood"
 	filling_color = "#ff3300"
 	tastes = list("tastes like a burning coal and fire and blood" = 1)
@@ -609,8 +609,8 @@
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/swampweed
 	seed = /obj/item/seeds/swampweed
-	name = "swampweed"
-	desc = "A pipeweed with pungent odor and a sparkling surface."
+	name = "沼泽烟叶"
+	desc = "一种气味刺鼻、表面闪亮的烟斗叶。"
 	icon_state = "swampweed"
 	filling_color = "#008000"
 	bitesize_mod = 1
@@ -622,8 +622,8 @@
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
 	seed = /obj/item/seeds/pipeweed
-	name = "westleach leaf"
-	desc = "A pipeweed prized for its rich flavor."
+	name = "西池烟叶"
+	desc = "一种以其浓郁风味著称的烟斗叶。"
 	icon_state = "westleach"
 	filling_color = "#008000"
 	bitesize_mod = 1
@@ -636,8 +636,8 @@
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	seed = null
-	name = "westleach leaf"
-	desc = "A dried pipeweed, ready to smoke."
+	name = "西池干烟叶"
+	desc = "一片干燥处理好的烟斗叶，随时可以抽。"
 	icon_state = "westleachd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/nicotine = 30)
@@ -660,8 +660,8 @@
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry
 	seed = null
-	name = "swampweed"
-	desc = "A prepared pipeweed prized for its foggy effects."
+	name = "沼泽干烟叶"
+	desc = "一片制备好的烟斗叶，以其迷幻效果闻名。"
 	icon_state = "swampweedd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/space_drugs = 30)
@@ -709,8 +709,8 @@
 	seed = /obj/item/seeds/cabbage
 
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue
-	name = "potato"
-	desc = "A spud, dwarven icon of growth. Can be eaten raw."
+	name = "土豆"
+	desc = "一颗块茎，矮人眼中的丰收之象。可以生吃。"
 	icon_state = "potato"
 	eat_effect = null
 	tastes = list("potato" = 1)
@@ -725,8 +725,8 @@
 	dropshrink = 0.7
 
 /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
-	name = "garlick bulb"
-	desc = "Hated by the foule vampyres that lurk in the dark - garlick!"
+	name = "大蒜瓣"
+	desc = "潜藏于黑暗中的邪恶吸血鬼所憎恶之物。大蒜。"
 	icon_state = "garlick"
 	slices_num = 5
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
@@ -740,8 +740,8 @@
 
 // poppies, from vanderlin
 /obj/item/reagent_containers/food/snacks/grown/rogue/poppy
-	name = "poppy"
-	desc = "For their crimson beauty and the sedating effect of their crushed seeds, these flowers are considered a symbol of Eora."
+	name = "罂粟"
+	desc = "因其绯红之美与种子碾碎后的镇静效果而被珍视。一种受人喜爱的花卉。"
 	icon_state = "poppy"
 	seed = /obj/item/seeds/poppy
 	throwforce = 0
@@ -753,8 +753,8 @@
 	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/grown/coffee
-	name = "coffee cherry"
-	desc = "A small sweet, small red fruit that contains coffee bean(s) inside. Can be grounded in a millstone for coffee beans."
+	name = "咖啡樱桃"
+	desc = "一颗小小的甜美红色果实，内含一粒（有时是两粒）咖啡豆。干燥后可作为提神饮品冲泡。"
 	icon_state = "coffee"
 	seed = /obj/item/seeds/coffee
 	tastes = list("hibicus sweetness" = 1)
@@ -764,8 +764,8 @@
 	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/grown/tea
-	name = "tea leaves"
-	desc = "Tea leaves plucked from the plant. It is still fresh and needs to be dried before use."
+	name = "茶叶"
+	desc = "从茶树上采摘的茶叶。仍然新鲜，使用前需干燥处理。"
 	icon_state = "tea"
 	seed = /obj/item/seeds/tea
 	tastes = list("grass" = 1)
@@ -774,8 +774,8 @@
 	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/grown/carrot
-	name = "carrot"
-	desc = "A long vegetable said to help with eyesight. Often baked"
+	name = "胡萝卜"
+	desc = "一种据说有助于视力的大长蔬菜。常用于烘焙。"
 	icon_state = "carrot"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
 	tastes = list("carrot" = 1)
@@ -846,8 +846,8 @@
 
 /*	..................   Cucumber   ................... */
 /obj/item/reagent_containers/food/snacks/grown/cucumber
-	name = "cucumber"
-	desc = "A long, green vegetable that is crunchy and refreshing. Can be sliced for easier consumption."
+	name = "黄瓜"
+	desc = "一种长条形的绿色蔬菜，口感爽脆，常用沙拉。"
 	icon_state = "cucumber"
 	dropshrink = 0.75
 	slices_num = 2
@@ -856,8 +856,8 @@
 	chopping_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/eggplant
-	name = "eggplant"
-	desc = "A large, purple vegetable with a mild taste. Can be carved to be filled up."
+	name = "茄子"
+	desc = "一个大大的紫色蔬菜，味道温和。常用于烹饪。"
 	icon_state = "eggplant"
 	slices_num = 1
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/eggplantcarved
