@@ -53,7 +53,7 @@
 /datum/outfit/job/roguetown/crusader/captain/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
+		to_chat(H, span_warning("阿斯特拉塔，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -123,7 +123,7 @@
 
 /datum/outfit/job/roguetown/crusader/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
+	to_chat(H, span_warning("阿斯特拉塔，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 	cloak = /obj/item/clothing/cloak/cape/crusader
@@ -198,7 +198,7 @@
 /datum/outfit/job/roguetown/crusader/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
+		to_chat(H, span_warning("阿斯特拉塔，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -261,7 +261,7 @@
 /datum/outfit/job/roguetown/crusader/footman/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
+		to_chat(H, span_warning("阿斯特拉塔，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
@@ -325,7 +325,7 @@
 /datum/outfit/job/roguetown/crusader/marksman/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))	//astratan crusade
-		to_chat(H, span_warning("Astrata，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
+		to_chat(H, span_warning("阿斯特拉塔，这片土地的绝对秩序接纳了我；我们将夺回应得之物，因为这是她的意志。"))
 		H.set_patron(/datum/patron/divine/astrata)
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -353,8 +353,8 @@
 
 
 /obj/item/reagent_containers/glass/cup/golden/psydon
-	name = "Psydon的圣杯"
+	name = "普赛顿的圣杯"
 	icon_state = "psydon_golden"
 	sellprice = 600
-	desc = "这是一只由银与金打造、闪闪发光的圣杯，其上镶着独一无二的宝石。据说，它曾是 Psydon 本人所用的圣杯。"
+	desc = "这是一只由银与金打造、闪闪发光的圣杯，其上镶着独一无二的宝石。据说，它曾是普赛顿本人所用的圣杯。"
 #undef CTAG_CRUSADE
