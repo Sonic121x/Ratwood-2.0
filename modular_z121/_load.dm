@@ -67,6 +67,7 @@
 // (single/composite) alongside the original materials' scent to produce new potions.
 #include "alchemy/refining_framework.dm"
 #include "structures/terror_clock.dm"
+#include "structures/glaggar_challenge.dm"
 #include "items/magic_bedroll.dm"
 #include "items/goldface_supply_packs.dm"
 #include "weapons/magical_archery.dm"
