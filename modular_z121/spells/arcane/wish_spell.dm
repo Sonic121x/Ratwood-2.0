@@ -50,10 +50,9 @@
 // 这样最契合“先吟唱蓄力、再许愿”的流程。
 /obj/effect/proc_holder/spell/self/wish_spell
 	name = "心想事成"
-	desc = "传说中近乎万能的终极法术。据说唯有真正参透魔法终极奥秘的大魔导师，方能驾驭它。"
+	desc = "传说中近乎万能的终极法术。据说唯有真正参透魔法终极奥秘的大魔导师，方能驾驭它。这道法术无法遗忘。"
 	school = "transmutation"
 	spell_tier = 4                         // T4 法术
-	refundable = FALSE                     // 禁止遗忘法术避免绕过冷却
 	cost = WISH_MANA_COST                  // “法力 / 法术点”消耗 = 18
 	releasedrain = WISH_FATIGUE_DRAIN      // 每次施放的疲劳消耗
 	chargedrain = 0
@@ -62,7 +61,7 @@
 	cooldown_min = WISH_COOLDOWN           // 即便被“加速”到极限，冷却也不会低于 1 小时
 	charge_type = "recharge"               // 使用“充能”式冷却（默认）
 	human_req = TRUE                       // 只有人类施法者能驾驭
-	refundable = FALSE                     // 不可退款
+	refundable = FALSE                     // 不可退款 避免绕过冷却
 	warnie = "spellwarning"                
 	no_early_release = TRUE                // 引导未完成不允许提前释放
 	movement_interrupt = TRUE              // 引导期间移动会被打断（终极法术需要专注）
