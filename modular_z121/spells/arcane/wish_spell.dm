@@ -17,7 +17,7 @@
 // 不必在长长的过程代码里到处翻找魔法数字。
 #define WISH_MANA_COST        18           // 法术点 / 法力消耗（学习与施放该法术所需的 cost）
 #define WISH_CHANNEL_TIME     (10 SECONDS) // do_after 引导时长（蓄力 10 秒）
-#define WISH_COOLDOWN         (3600 SECONDS) // 成功施放后的冷却（1 小时）
+#define WISH_COOLDOWN         (10800 SECONDS) // 成功施放后的冷却（3 小时）
 #define WISH_FATIGUE_DRAIN    80            // 每次施放消耗的疲劳（releasedrain）
 
 #define WISH_WEALTH_AMOUNT    100           // “泼天富贵”生成的金币数量
@@ -61,7 +61,8 @@
 	cooldown_min = WISH_COOLDOWN           // 即便被“加速”到极限，冷却也不会低于 1 小时
 	charge_type = "recharge"               // 使用“充能”式冷却（默认）
 	human_req = TRUE                       // 只有人类施法者能驾驭
-	warnie = "spellwarning"
+	refundable = FALSE                     // 不可退款
+	warnie = "spellwarning"                
 	no_early_release = TRUE                // 引导未完成不允许提前释放
 	movement_interrupt = TRUE              // 引导期间移动会被打断（终极法术需要专注）
 	charging_slowdown = 2                  // 引导时减速，体现“凝聚伟力”的代价
