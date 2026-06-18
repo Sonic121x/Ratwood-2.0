@@ -50,7 +50,8 @@
 // 这样最契合“先吟唱蓄力、再许愿”的流程。
 /obj/effect/proc_holder/spell/self/wish_spell
 	name = "心想事成"
-	desc = "传说中近乎万能的终极法术。据说唯有真正参透魔法终极奥秘的大魔导师，方能驾驭它。这道法术无法遗忘。"
+	desc = "传说中近乎万能的终极法术。据说唯有真正参透魔法终极奥秘的大魔导师，方能驾驭它。\n\
+	这道法术无法遗忘。"
 	school = "transmutation"
 	spell_tier = 4                         // T4 法术
 	cost = WISH_MANA_COST                  // “法力 / 法术点”消耗 = 18
