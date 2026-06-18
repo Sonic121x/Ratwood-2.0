@@ -57,7 +57,6 @@
 // 催乳剂试剂与成品瓶定义（加速泌乳恢复）
 #include "alchemy/lactation_enhancer_reagent.dm"
 #include "structures/terror_clock.dm"
-#include "structures/glaggar_challenge.dm"
 #include "items/magic_bedroll.dm"
 #include "items/goldface_supply_packs.dm"
 #include "weapons/magical_archery.dm"
