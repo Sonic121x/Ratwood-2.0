@@ -43,7 +43,6 @@
 #include "crafting/moonlight_greatsword_recipes.dm"
 #include "crafting/terror_clock_recipe.dm"
 #include "structures/terror_clock.dm"
-#include "structures/glaggar_challenge.dm"
 #include "items/magic_bedroll.dm"
 #include "items/goldface_supply_packs.dm"
 #include "weapons/magical_archery.dm"
