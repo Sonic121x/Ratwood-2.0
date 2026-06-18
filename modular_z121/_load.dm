@@ -83,7 +83,6 @@
 // Surfaces the refining formulas inside the vanilla alchemy guide under a "精炼药剂" (Refined Potions) category.
 #include "alchemy/refining_guide.dm"
 #include "structures/terror_clock.dm"
-#include "structures/glaggar_challenge.dm"
 #include "items/magic_bedroll.dm"
 #include "items/goldface_supply_packs.dm"
 #include "weapons/magical_archery.dm"
