@@ -53,6 +53,7 @@
 	desc = "传说中近乎万能的终极法术。据说唯有真正参透魔法终极奥秘的大魔导师，方能驾驭它。"
 	school = "transmutation"
 	spell_tier = 4                         // T4 法术
+	refundable = FALSE                     // 禁止遗忘法术避免绕过冷却
 	cost = WISH_MANA_COST                  // “法力 / 法术点”消耗 = 18
 	releasedrain = WISH_FATIGUE_DRAIN      // 每次施放的疲劳消耗
 	chargedrain = 0
