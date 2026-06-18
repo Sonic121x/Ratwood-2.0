@@ -18,9 +18,9 @@
 //   - 仪式基础框架：modular_z121\rites\sacrifice_circles.dm
 //   - 符文遗物物品：/obj/item/magic/artifact
 //       （code\game\objects\items\rogueitems\magic\magic_resources.dm）
-//   - 法术池 GLOB.learnable_spells（code\modules\spells\spell_types\wizard\
-//       spell_list.dm）—— 注意 modular_z121\bootstrap\custom_bootstrap.dm 会将
-//       GLOB.custom_learnable_spells 并入其中，因此自定义法术同样有资格被抽到。
+//   - 法术池 GLOB.learnable_spells（位于 code\modules\spells\spell_types\wizard\spell_list.dm）；
+//       注意 modular_z121\bootstrap\custom_bootstrap.dm 会将 GLOB.custom_learnable_spells
+//       并入其中，因此自定义法术同样有资格被抽到。
 //   - 法术变量 spell_tier / miracle / zizo_spell（code\modules\spells\spell.dm）
 //   - mind.AddSpell()/has_spell()（code\datums\mind.dm）、pickweight()（_lists.dm）
 // 需在 modular_z121\_load.dm 中登记（置于 sacrifice_circles.dm 之后）。
