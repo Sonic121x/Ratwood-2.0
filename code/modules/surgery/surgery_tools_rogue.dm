@@ -1,6 +1,6 @@
 /obj/item/rogueweapon/surgery
-	name = "surgical tool"
-	desc = "Something that will tear your guts apart."
+	name = "手术工具"
+	desc = "会撕裂你内脏的东西。"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	item_state = "bone_dagger"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -27,8 +27,8 @@
 	item_flags |= SURGICAL_TOOL //let's not stab patients for fun
 
 /obj/item/rogueweapon/surgery/scalpel
-	name = "scalpel"
-	desc = "A tool used to carve precisely into the flesh of the sickly."
+	name = "手术刀"
+	desc = "用于在病患肉体上进行精准切割的工具。"
 	icon_state = "scalpel"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
@@ -39,8 +39,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/saw
-	name = "saw"
-	desc = "A tool used to carve through bone."
+	name = "骨锯"
+	desc = "用于切骨的工具。"
 	icon_state = "bonesaw"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	slot_flags = ITEM_SLOT_HIP
@@ -57,8 +57,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/hemostat
-	name = "forceps"
-	desc = "A tool used to clamp down on soft tissue."
+	name = "手术钳"
+	desc = "用于夹持软组织的工具。"
 	icon_state = "forceps"
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
@@ -70,17 +70,17 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/hemostat/first //Three different types now to allow multiple surgical sites at once.
-	name = "\improper Tarsis forceps"
+	name = "\improper 塔尔西斯钳"
 
 /obj/item/rogueweapon/surgery/hemostat/second
-	name = "\improper Sisrat forceps"
+	name = "\improper 西斯拉特钳"
 
 /obj/item/rogueweapon/surgery/hemostat/third
-	name = "\improper Medella forceps"
+	name = "\improper 梅德拉钳"
 
 /obj/item/rogueweapon/surgery/retractor
-	name = "speculum"
-	desc = "A tool used to spread tissue open for surgical access."
+	name = "扩张器"
+	desc = "用于撑开组织以进行手术操作的工具。"
 	icon_state = "speculum"
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP
@@ -96,8 +96,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/bonesetter
-	name = "bone forceps"
-	desc = "A tool used to clamp down on hard tissue."
+	name = "骨钳"
+	desc = "用于夹持硬组织的工具。"
 	icon_state = "bonesetter"
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
@@ -109,8 +109,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/cautery
-	name = "cautery iron"
-	desc = "A tool used to cauterize wounds. Heat it up before use."
+	name = "烙铁"
+	desc = "用于烧灼伤口的工具。使用前先加热。"
 	icon_state = "cauteryiron"
 	possible_item_intents = list(/datum/intent/use, /datum/intent/mace/strike, /datum/intent/mace/smash)
 	slot_flags = ITEM_SLOT_HIP
@@ -135,7 +135,7 @@
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
 	if(heated)
-		. += span_warning("The tip is hot to the touch.")
+		. += span_warning("尖端摸起来很烫。")
 
 /obj/item/rogueweapon/surgery/cautery/update_icon_state()
 	. = ..()
@@ -152,7 +152,7 @@
 		if(forge.on)
 			heating = 20
 	if(heating)
-		user.visible_message(span_info("[user] heats [src]."))
+		user.visible_message(span_info("[user]加热了[src]。"))
 		fire_act(heating)
 		return TRUE
 	return ..()
@@ -182,8 +182,8 @@
 	update_icon()
 
 /obj/item/rogueweapon/surgery/cautery/branding
-	name = "branding iron"
-	desc = "A iron that is well-writ upon flesh. Heat it up before use."
+	name = "烙印铁"
+	desc = "在肉体上留下铭文的烙铁。使用前先加热。"
 	icon_state = "brandingiron"
 	possible_item_intents = list(/datum/intent/use)
 	var/setbranding = null
@@ -193,12 +193,12 @@
 	var/branding_count = 0
 
 /obj/item/rogueweapon/surgery/cautery/branding/slave
-	name = "slaver branding iron"
-	desc = "Used to claim ownership on lost property. Heat it up before use."
+	name = "奴隶烙印铁"
+	desc = "用于在失物上标记所有权。使用前先加热。"
 
 /obj/item/rogueweapon/surgery/cautery/branding/crude
-	name = "crude branding stick"
-	desc = "It's made of coal, string and a stick. Looks like I can brand myself with it at least two times before it snaps. Heat it up before use."
+	name = "粗糙烙印棍"
+	desc = "由煤炭、绳子和一根棍子制成。看起来在断裂之前至少能给自己烙印两次。使用前先加热。"
 	icon_state = "brandingiron_crude"
 	branding_damage = 10
 	branding_low_quality = TRUE
@@ -207,14 +207,14 @@
 /obj/item/rogueweapon/surgery/cautery/branding/examine(mob/user)
 	. = ..()
 	if(remove_existing_brand)
-		. += span_warning("It is set to remove existing brands.")
+		. += span_warning("设置为移除现有烙印。")
 	else
 		if(!setbranding || !length(setbranding))
-			. += span_warning("There is no branding symbol set yet.")
+			. += span_warning("尚未设置烙印符号。")
 		if(enslave)
-			. += span_warning("It will imprint [setbranding], a permanent mark of ownership")
+			. += span_warning("将印下[setbranding]，一个永久的所有权标记。")
 		else
-			. += span_warning("It will imprint [setbranding]")
+			. += span_warning("将印下[setbranding]")
 
 /obj/item/rogueweapon/surgery/cautery/branding/attack_self(mob/living/user)
 	. = ..()
@@ -222,31 +222,31 @@
 		return
 	if(!user.cmode)
 		if(heated)
-			to_chat(user, span_warning("It is too hot to change the symbols!"))
+			to_chat(user, span_warning("太烫了，无法更换符号！"))
 			return
-		var/list/options = list("Set symbol", "Toggle permanent slave mark", "Toggle remove existing brand", "Cancel")
-		var/choice = tgui_input_list(user, "What would you like to do with the branding iron?", "Branding Iron", options, null, 10 SECONDS)
+		var/list/options = list("设置符号", "切换永久奴隶标记", "切换移除现有烙印", "取消")
+		var/choice = tgui_input_list(user, "你想对这个烙印铁做些什么？", "烙印铁", options, null, 10 SECONDS)
 		switch(choice)
-			if("Set symbol")
-				var/inputty = stripped_input(user, "What would you like to set the brand?\nExample: a small drawing of a rous head", "Enter branding description", null, 64)
+			if("设置符号")
+				var/inputty = stripped_input(user, "你想设置什么烙印？\n例如：一幅小型的鲁斯头部图画", "输入烙印描述", null, 64)
 				if(inputty)
 					setbranding = inputty
-					to_chat(user, span_warning("I swap the [!branding_low_quality ? "iron" : "coal"] tip so it will imprint [setbranding]."))
+					to_chat(user, span_warning("我更换了[!branding_low_quality ? "铁制" : "煤炭"]尖端，它将印下[setbranding]。"))
 				else
-					to_chat(user, span_info("I clear the current branding symbol."))
+					to_chat(user, span_info("我清除了当前的烙印符号。"))
 					setbranding = null
-			if("Toggle permanent slave mark")
+			if("切换永久奴隶标记")
 				enslave = !enslave
 				if(enslave)
-					to_chat(user, span_warning("I set the iron to leave a permanent mark of slavery."))
+					to_chat(user, span_warning("我将铁烙设置为留下永久的奴隶标记。"))
 				else
-					to_chat(user, span_info("I set the iron to leave a simple brand only."))
-			if("Toggle remove existing brand")
+					to_chat(user, span_info("我将铁烙设置为只留下简单的烙印。"))
+			if("切换移除现有烙印")
 				remove_existing_brand = !remove_existing_brand
 				if(remove_existing_brand)
-					to_chat(user, span_warning("I set the iron to burn away existing brands."))
+					to_chat(user, span_warning("我将铁烙设置为烧去现有的烙印。"))
 				else
-					to_chat(user, span_info("I set the iron to imprint new brands."))
+					to_chat(user, span_info("我将铁烙设置为印下新的烙印。"))
 	..()
 // Stops someone being marked as owned if they already are. Needs to be removed before it can proceed (does not affect normal branding)
 /obj/item/rogueweapon/surgery/cautery/branding/proc/target_has_active_ownership_mark(mob/living/carbon/human/target)
@@ -680,13 +680,13 @@
 		return TRUE
 
 	// Attempt to re-get the part and place the brand
-	var/description_recoil = target.stat < UNCONSCIOUS ? pick("recoils", "writhes", "thrashes", "suffers") : "lays still"
+	var/description_recoil = target.stat < UNCONSCIOUS ? pick("抽搐", "扭动", "挣扎", "颤抖") : "lays still"
 	var/apply_knockdown = selection_applies_knockdown(final_answer)
 	var/apply_message = TRUE
 	var/list/selected_target_data = get_brand_target_data(final_answer, branding_part, penis, vagina, testes, tits)
 	if(remove_existing_brand)
 		if(final_answer == "Mouth")
-			to_chat(user, span_warning("That burn cannot be removed this way."))
+			to_chat(user, span_warning("那处灼伤无法通过这种方式移除。"))
 			return TRUE
 		if(!clear_brand_from_target_data(selected_target_data, user))
 			to_chat(user, span_warning("There is no existing brand to remove there."))
@@ -726,7 +726,7 @@
 	if(branding_count > 0)
 		branding_count--
 		if(branding_count == 0)
-			to_chat(user, span_warning("\The [src] snaps in your hands, it's broken!"))
+			to_chat(user, span_warning("\The [src]在你手中断裂了，它坏了！"))
 			playsound(user, 'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
 	return TRUE
@@ -739,22 +739,22 @@
 	alert_type = /atom/movable/screen/alert/status_effect/mouth_branded
 
 /atom/movable/screen/alert/status_effect/mouth_branded
-	name = "Burned Mouth"
-	desc = "I can't feel my lips!"
+	name = "烧伤的嘴"
+	desc = "我感觉不到我的嘴唇了！"
 
 /datum/status_effect/mouth_branded/on_apply()
 	ADD_TRAIT(owner, TRAIT_GARGLE_SPEECH, TRAIT_STATUS_EFFECT(id))
-	to_chat(owner, span_warning("My mouth... It BURNS!"))
+	to_chat(owner, span_warning("我的嘴……烧起来了！"))
 	return ..()
 
 /datum/status_effect/mouth_branded/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_GARGLE_SPEECH, TRAIT_STATUS_EFFECT(id))
 	if(owner.stat == CONSCIOUS)
-		to_chat(owner, span_userdanger("I can barely feel my lips again."))
+		to_chat(owner, span_userdanger("我几乎又能感觉到嘴唇了。"))
 
 /obj/item/rogueweapon/surgery/hammer
-	name = "examination hammer"
-	desc = "A small hammer used to check a patient's reactions and diagnose their condition."
+	name = "检查锤"
+	desc = "用于检查病人反应并诊断病情的小锤。"
 	icon_state = "kneehammer"
 	possible_item_intents = list(/datum/intent/use, /datum/intent/mace/strike, /datum/intent/mace/smash)
 	slot_flags = ITEM_SLOT_HIP
@@ -777,11 +777,11 @@
 		return ..()
 	if(ishuman(A))
 		if(A == user)
-			user.visible_message("<span class='info'>[user] begins smacking themself with a small hammer.</span>")
+			user.visible_message("<span class='info'>[user]开始用小锤子敲打自己。</span>")
 		else
-			user.visible_message("<span class='info'>[user] begins to smack [A] with a small hammer.</span>")
+			user.visible_message("<span class='info'>[user]开始用小锤子敲打[A]。</span>")
 		if(do_after(user, ((medskill > SKILL_LEVEL_EXPERT) ? 1 SECONDS : 2.5 SECONDS), target = A))
-			A.visible_message("<span class='info'>[A] jerks their knee after the hammer strikes!</span>")
+			A.visible_message("<span class='info'>锤击后[A]的膝盖弹跳了一下！</span>")
 			if(prob(1))
 				playsound(user, 'sound/misc/bonk.ogg', 100, FALSE, -1)
 			var/mob/living/carbon/human/human_target = A
@@ -794,8 +794,8 @@
 
 //All are subtypes of the regular tools with worse behavior success chances.
 /obj/item/rogueweapon/surgery/saw/improv
-	name = "improvised saw"
-	desc = "A tool used to carve through bone crudely, but better than nothing."
+	name = "简易骨锯"
+	desc = "用于切骨的粗糙工具。不如真正的骨锯那样顺畅。"
 	icon_state = "bonesaw_wood"
 	force = 12
 	throwforce = 12
@@ -805,22 +805,22 @@
 	sharpness = IS_BLUNT
 
 /obj/item/rogueweapon/surgery/hemostat/improv
-	name = "improvised clamp"
-	desc = "A tool used to clamp down on soft tissue. A poor alternative to metal but better than nothing."
+	name = "简易夹具"
+	desc = "用于夹持软组织的工具。比金属件差但总比没有好。"
 	icon_state = "forceps_wood"
 	tool_behaviour = TOOL_IMPROVISED_HEMOSTAT
 
 /obj/item/rogueweapon/surgery/retractor/improv
-	name = "improvised retractor"
-	desc = "A tool used to spread tissue open for surgical access in a tentative manner."
+	name = "简易扩张器"
+	desc = "一种试探性地撑开组织以进行手术操作的工具。"
 	icon_state = "speculum_wood"
 	wdefense = 3
 	wbalance = 1
 	tool_behaviour = TOOL_IMPROVISED_RETRACTOR
 
 /obj/item/rogueweapon/surgery/scalpel/improv
-	name = "improvised Scalpel"
-	desc = "A crude stone blade, it will cut but the precision is to be desired"
+	name = "简易手术刀"
+	desc = "粗糙的石刀，能切割但精确度堪忧。"
 	icon_state = "scalpel_wood"
 	force = 8
 	throwforce = 8
