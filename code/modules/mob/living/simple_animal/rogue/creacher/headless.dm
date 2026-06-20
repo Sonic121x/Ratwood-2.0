@@ -1,8 +1,8 @@
 //The vile Vore Monster
 /mob/living/simple_animal/hostile/retaliate/rogue/headless
 	icon = 'icons/roguetown/mob/monster/lamia.dmi'
-	name = "headless"
-	desc = "A horrible beast of gluttony. Its body is built like a barrel with a maw that opens only to darkness."
+	name = "无首兽"
+	desc = "一头暴食的可怕野兽。其身如桶状，一张血盆大口张开却只见黑暗。"
 	icon_state = "headless"
 	icon_living = "headless"
 	icon_dead = "headless_dead"
@@ -95,7 +95,7 @@
 				//They are full dead.
 				SpitUp()
 				adjustBruteLoss(-50)
-				visible_message(span_notice("[src] starts to rapidly heal."))
+				visible_message(span_notice("[src]开始迅速愈合。"))
 				//Half the cooldown since they successfully killed their target. Worst possible outcome has occured.
 				swallow_cooldown = world.time + (swallow_cooldown_delay / 2)
 	return ..()
@@ -119,41 +119,41 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "torso"
+			return "躯干"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "torso"
+			return "躯干"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "torso"
+			return "躯干"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "belly"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "claw"
+			return "爪子"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "claw"
+			return "爪子"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "foot"
+			return "脚"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "foot"
+			return "脚"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "tail"
+			return "尾巴"
 		if(BODY_ZONE_HEAD)
-			return "torso"
+			return "躯干"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "arm"
+			return "手臂"
 		if(BODY_ZONE_L_ARM)
-			return "arm"
+			return "手臂"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/headless/death(gibbed)
@@ -163,7 +163,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/headless/proc/SwallowEnemy(mob/living/L)
 	if(swallowed_mob)
 		return
-	visible_message(span_notice("[src] grabs [L] and swallows them."))
+	visible_message(span_notice("[src]抓住了[L]并将其吞下。"))
 	playsound(loc, 'sound/misc/eat.ogg', 25, TRUE)
 	L.forceMove(src)
 	swallowed_mob = L
@@ -171,7 +171,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/headless/proc/SpitUp()
 	if(swallowed_mob)
-		visible_message(span_notice("[src] vomits a disheveled [swallowed_mob]."))
+		visible_message(span_notice("[src]吐出了一个衣衫褴褛的[swallowed_mob]。"))
 		playsound(loc, 'sound/vo/vomit.ogg', 25, TRUE)
 		swallowed_mob.forceMove(get_turf(src))
 		swallowed_mob = null

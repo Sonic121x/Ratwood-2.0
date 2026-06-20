@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/bog
-	name = "bog troll"
-	desc = "Elven legends say these monsters were servants of Dendor tasked to guard his realm; nowadays they are sometimes found in the company of orcs. It's said that fire curbs their almost magical regeneration."
+	name = "沼泽巨魔"
+	desc = "精灵传说中，这些怪物曾是登多尔的仆从，奉命守护其领域。如今它们有时会与兽人为伍。据说火焰能抑制它们近乎魔法的再生之力。"
 	pixel_x = -16
 
 	wander = FALSE		// bog trolls are ambush predators

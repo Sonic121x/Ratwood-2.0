@@ -1,7 +1,7 @@
 // Port from Vanderlin with AP code for throwing the rock
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/cave
-	name = "cave troll"
-	desc = "Dwarven tales of giants and trolls often contain these creatures, horrifying amalgamations of flesh and crystal who have long since abandoned Malum's ways."
+	name = "洞穴巨魔"
+	desc = "矮人关于巨人和巨魔的传说中常有这些生物的身影——一种血肉与水晶的恐怖融合体，早已背弃了马鲁姆之道。"
 	icon = 'icons/roguetown/mob/monster/trolls/troll_cave.dmi'
 	health = CAVETROLL_HEALTH
 	maxHealth = CAVETROLL_HEALTH

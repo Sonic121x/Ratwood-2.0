@@ -3,8 +3,8 @@
 	icon_state = "dragger"
 	icon_living = "dragger"
 	icon_dead = "dragger_dead"
-	name = "dragger"
-	desc = "A husk of the once-dead."
+	name = "拖拽者"
+	desc = "一副曾经死过的躯壳。"
 	pixel_x = -8
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	movement_type = GROUND
@@ -14,8 +14,8 @@
 	gender = FEMALE
 	speak_chance = 0
 	turns_per_move = 5
-	response_help_continuous = "passes through"
-	response_help_simple = "pass through"
+	response_help_continuous = "穿过了"
+	response_help_simple = "穿过"
 	maxHealth = DRAGGER_HEALTH
 	health = DRAGGER_HEALTH
 	stat_attack = UNCONSCIOUS
@@ -31,7 +31,7 @@
 	dodge_sound = 'sound/combat/dodge.ogg'
 	parry_sound = "bladedmedium"
 	d_intent = INTENT_PARRY
-	speak_emote = list("growls")
+	speak_emote = list("低吼")
 	limb_destroyer = 1
 	del_on_death = FALSE
 	STALUC = 11
@@ -55,47 +55,47 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "hand"
+			return "手"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "hand"
+			return "手"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "body"
+			return "身体"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "body"
+			return "身体"
 		if(BODY_ZONE_PRECISE_R_INHAND)
-			return "body"
+			return "身体"
 		if(BODY_ZONE_PRECISE_L_INHAND)
-			return "body"
+			return "身体"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_L_LEG)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_R_ARM)
-			return "arm"
+			return "手臂"
 		if(BODY_ZONE_L_ARM)
-			return "arm"
+			return "手臂"
 		if(BODY_ZONE_CHEST)
-			return "chest"
+			return "胸口"
 
 	return ..()
 
@@ -136,21 +136,21 @@
 	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
-		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
-				span_danger("\The [src] paralyzes me!"))
+		C.visible_message(span_danger("\The [src]的恐惧令\the [C]动弹不得！"), \
+				span_danger("\The [src]让我动弹不得！"))
 		emote("laugh")
 
 
 /obj/effect/landmark/underworldsafe/Crossed(atom/movable/AM, oldloc)
 	if(istype(AM, /mob/living/simple_animal/hostile/rogue/dragger))
 		for(var/mob/living/carbon/human/A in view(4))
-			to_chat(A, "The monster's form dematerializes as it nears the Carriage.")
+			to_chat(A, "怪物靠近马车时身形消散了。")
 		qdel(AM)
 
 /datum/intent/simple/dragger
-	name = "chop"
+	name = "劈砍"
 	icon_state = "inchop"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切割", "挥砍")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
@@ -160,7 +160,7 @@
 	clickcd = DRAGGER_ATTACK_SPEED
 
 /mob/living/simple_animal/hostile/rogue/dragger/flesh
-	name = "FLESH HOMUNCULUS"
+	name = "血肉魔像"
 	desc = null
 	icon = 'icons/roguetown/mob/monster/flesh.dmi'
 	icon_state = "FLESH"

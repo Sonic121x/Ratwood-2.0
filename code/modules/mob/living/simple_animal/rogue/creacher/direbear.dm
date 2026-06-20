@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/direbear	//This way don't need new unqiue AI controller. Wolves are modular anyway.
 	icon = 'icons/roguetown/mob/monster/direbear.dmi'
-	name = "direbear"
+	name = "恐熊"
 	icon_state = "direbear"
 	icon_living = "direbear"
 	icon_dead = "direbear_dead"
@@ -73,7 +73,7 @@
 			return pick('sound/vo/mobs/direbear/direbear_death1.ogg', 'sound/vo/mobs/direbear/direbear_death2.ogg')
 
 /obj/effect/decal/remains/bear
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "bones"
 	icon = 'icons/roguetown/mob/monster/direbear.dmi'

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/drider //lol
 	icon = 'icons/roguetown/mob/monster/drider.dmi'
-	name = "drider spider"
+	name = "蛛化精灵蛛"
 	desc = ""
 	pixel_x = -2
 	pixel_y = 7
@@ -124,39 +124,39 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "前腿"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/drider/tame/saddled/Initialize(mapload)

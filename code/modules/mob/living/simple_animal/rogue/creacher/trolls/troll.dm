@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/troll
 	icon = 'icons/roguetown/mob/monster/trolls/trolls.dmi'
-	name = "troll"
-	desc = "Elven legends say these monsters were servants of Dendor tasked to guard his realm; nowadays they are sometimes found in the company of orcs. It's said that fire curbs their almost magical regeneration."
+	name = "巨魔"
+	desc = "精灵传说中，这些怪物曾是登多尔的仆从，奉命守护其领域。如今它们有时会与兽人为伍。据说火焰能抑制它们近乎魔法的再生之力。"
 	icon_state = "troll"
 	icon_living = "troll"
 	icon_dead = "troll_dead"
@@ -11,10 +11,10 @@
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	emote_hear = null
 	emote_see = null
-	verb_say = "groans"
-	verb_ask = "grunts"
-	verb_exclaim = "roars"
-	verb_yell = "roars"
+	verb_say = "呻吟着说"
+	verb_ask = "咕哝着问"
+	verb_exclaim = "咆哮"
+	verb_yell = "咆哮"
 
 	turns_per_move = 2
 	see_in_dark = 10
@@ -138,45 +138,45 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "tail"
+			return "尾巴"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "前腿"
 	return ..()
 
 /obj/effect/decal/remains/troll
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "Trolld"
 	

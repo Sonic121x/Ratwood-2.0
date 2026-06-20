@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/beetle
-	name = "giant woolly chafer beetle"
-	desc = "A massive beetle covered in thick, woolly fur-like bristles. These gentle giants often travel up from the underdeep in search of food, particularly sweet mushrooms and fungi."
+	name = "巨型毛绒金龟子"
+	desc = "一种巨大的甲虫，浑身覆满厚实如毛皮般的绒毛刚毛。这些温和的巨物常从幽深地底上到地面觅食，尤其偏爱甜美的蘑菇和菌类。"
 	icon = 'icons/roguetown/mob/monster/beetle.dmi'
 	icon_state = "cuddlebug"
 	icon_living = "cuddlebug"
 	icon_dead = "dead"
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	speak_emote = list("clicks", "chitters")
-	emote_hear = list("clicks.", "chitters quietly.")
-	emote_see = list("clicks its mandibles.", "scratches at the ground.", "twitches its antennae.")
+	speak_emote = list("咔哒作响", "吱喳作响")
+	emote_hear = list("咔哒作响。", "轻声吱喳。")
+	emote_see = list("咔哒响动着下颚。", "抓挠着地面。", "抖动着触角。")
 	speak_chance = 1
 	turns_per_move = 6
 	see_in_dark = 10
@@ -34,8 +34,8 @@
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = null
 	faction = list("beetles")
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头撞"
+	attack_verb_simple = "头撞"
 	melee_damage_lower = 20
 	melee_damage_upper = 35
 	retreat_distance = 3
@@ -84,12 +84,12 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/beetle/attackby(obj/item/O, mob/user, params)
 	if(!stat && tame && istype(O, /obj/item/rogueweapon/chisel))
 		if(world.time < chitin_timer)
-			to_chat(user, span_warning("There isn't enough chitin regrown to shave yet."))
+			to_chat(user, span_warning("甲壳尚未长好，还不足以刮取。"))
 			return TRUE
-		user.visible_message(span_notice("[user] begins carefully shaving chitin from [src]."), span_notice("I begin shaving chitin from [src]."))
+		user.visible_message(span_notice("[user]开始小心地从[src]身上刮取甲壳。"), span_notice("我开始从[src]身上刮取甲壳。"))
 		if(do_after(user, 6 SECONDS, src))
 			var/obj/item/roguegem/chitin/C = new(get_turf(src))
-			user.visible_message(span_notice("[user] shaves a plate of chitin from [src]."), span_notice("I shave a plate of chitin from [src]."))
+			user.visible_message(span_notice("[user]从[src]身上刮下了一块甲壳片。"), span_notice("我从[src]身上刮下了一块甲壳片。"))
 			user.put_in_hands(C)
 			chitin_timer = world.time + chitin_regrow_time
 			return TRUE
@@ -117,23 +117,23 @@
 
 // Remains
 /obj/effect/decal/remains/beetle
-	name = "beetle remains"
+	name = "甲虫遗骸"
 	gender = PLURAL
 	icon_state = "rotten"
 	icon = 'icons/roguetown/mob/monster/beetle.dmi'
 
 // Beetle meat
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/beetle
-	name = "beetle meat"
-	desc = "Rich, protein-dense meat from a giant beetle. Considered a delicacy in some underground settlements."
+	name = "甲虫肉"
+	desc = "来自巨型甲虫的肉，富含蛋白质。在某些地下聚落中被视为珍馐。"
 	icon_state = "spidermeat"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/beetle/cooked
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	slices_num = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/beetle/cooked
-	name = "cooked beetle meat"
-	desc = "Cooked beetle meat has a nutty, earthy flavor."
+	name = "熟甲虫肉"
+	desc = "熟甲虫肉有着坚果般的泥土风味。"
 	icon_state = "spidermeat"
 	cooked_type = null
 	slices_num = 0

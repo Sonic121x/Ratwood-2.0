@@ -1,8 +1,8 @@
 //Raccoons are a faster, still hostile, version of a wolf and bobcat, but the weakest of the three.
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/raccoon
 	icon = 'icons/roguetown/mob/monster/raccoon.dmi'
-	name = "rakun"
-	desc = "An adorable albeit dangerous creacher, known to steal food from bins or eat small game."
+	name = "浣熊"
+	desc = "一种可爱却危险的生物，以偷窃垃圾桶里的食物或捕食小型猎物而闻名。"
 	icon_state = "raccoon"
 	icon_living = "raccoon"
 	icon_dead = "raccoon_dead"
@@ -32,8 +32,8 @@
 	STASPD = 18	//A little faster than bobcats.
 
 /obj/effect/decal/remains/raccoon
-	name = "remains"
-	desc = "Whether through unlucky circumstance or other means, this raccoon has passed."
+	name = "遗骸"
+	desc = "无论是命运不济还是其他原因，这只浣熊已经离世。"
 	gender = PLURAL
 	icon_state = "bones"
 	icon = 'icons/roguetown/mob/monster/raccoon.dmi'

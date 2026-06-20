@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
-	name = "beespider"
+	name = "蜜蛛"
 	icon_state = "honeys"
 	icon_living = "honeys"
 	icon_dead = "honeys-dead"
@@ -58,7 +58,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
-	name = "skallax spider"
+	name = "斯卡拉克斯蛛"
 	icon_state = "skallax"
 	icon_living = "skallax"
 	icon_dead = "skallax-dead"
@@ -123,7 +123,7 @@
 		if(!target)
 			if(production >= 100)
 				production = 0
-				visible_message(span_alertalien("[src] creates some honey."))
+				visible_message(span_alertalien("[src]产出了一些蜂蜜。"))
 				var/turf/T = get_turf(src)
 				playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
 				new /obj/item/reagent_containers/food/snacks/rogue/honey/spider(T)
@@ -138,41 +138,41 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "前腿"
 	return ..()
 
 /datum/intent/simple/bite/honeyspider
@@ -185,8 +185,8 @@
 	icon_state = "spiderrock"
 	icon_living = "spiderrock"
 	icon_dead = "spiderrock-dead"
-	name = "rockspider"
-	desc = "These beasts, native to rockhill, are similar in behaviour and tenacity to the beespider, differing in their recessed heads and hairy brown bodies."
+	name = "岩蛛"
+	desc = "这些生于岩丘的野兽，习性与韧性皆与蜜蛛相似，不同的是其头颅深陷、体覆棕色毛茸。"
 
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1,

@@ -23,13 +23,13 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 30
 	melee_damage_upper = 40
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
+	attack_verb_continuous = "咬"
+	attack_verb_simple = "咬"
 	attack_sound = list('sound/vo/mobs/mimic/mimic_attack1.ogg',
 						'sound/vo/mobs/mimic/mimic_attack2.ogg',
 						'sound/vo/mobs/mimic/mimic_attack3.ogg')
-	emote_taunt = list("howls")
-	speak_emote = list("clatters")
+	emote_taunt = list("嚎叫")
+	speak_emote = list("咔嗒作响")
 
 	faction = list("mimic", "hostile")
 	stop_automated_movement = 1
@@ -91,7 +91,7 @@
 	icon_state = mimicking_chest::icon_state
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/proc/undisguise()
-	name = "\improper MIMIC"
+	name = "\improper 宝箱怪"
 	icon = initial(icon)
 	icon_state = (stat == DEAD) ? icon_dead : icon_living
 
@@ -117,21 +117,21 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "tail"
+			return "尾部"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/gold

@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback
 	icon = 'icons/roguetown/mob/monster/boglobster.dmi'
-	name = "mossback"
+	name = "苔背兽"
 	icon_state = "mossback"
 	icon_living = "mossback"
 	icon_dead = "mossback_dead"
-	speak_emote = list("clicks")
-	emote_hear = list("clicks.")
-	emote_see = list("clacks.")
+	speak_emote = list("咔哒作响")
+	emote_hear = list("咔哒作响。")
+	emote_see = list("咔嚓作响。")
 	gender = MALE
 	emote_hear = null
 	emote_see = null
@@ -89,41 +89,41 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "tail"
+			return "尾巴"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "前腿"
 	return ..()
 
 /datum/intent/simple/claw/mossback

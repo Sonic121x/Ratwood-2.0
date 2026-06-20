@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/lamia
 	icon = 'icons/roguetown/mob/monster/lamia.dmi'
-	name = "lamia"
-	desc = "This slithering monstrosity has a human torso, a large snake tail, and four bladed arms."
+	name = "拉弥亚"
+	desc = "这种蜿蜒爬行的怪物有着人类躯干、一条巨大的蛇尾和四条刀锋般的手臂。"
 	icon_state = "lamia_f"
 	icon_living = "lamia_f"
 	icon_dead = "lamia_dead"
@@ -80,41 +80,41 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "bladed arm"
+			return "刀锋手臂"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "bladed arm"
+			return "刀锋手臂"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_L_LEG)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_R_ARM)
-			return "tail"
+			return "尾部"
 		if(BODY_ZONE_L_ARM)
-			return "tail"
+			return "尾部"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/lamia/proc/sneak_now()

@@ -1,7 +1,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken
 	icon = 'icons/roguetown/mob/monster/chicken.dmi'
-	name = "\improper chicken"
+	name = "\improper 鸡"
 	desc = ""
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
@@ -9,7 +9,7 @@
 
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("pecks at the ground.","flaps its wings viciously.")
+	emote_see = list("啄着地面。","猛烈地扑腾着翅膀。")
 	density = FALSE
 	base_intents = list(/datum/intent/simple/claw)
 	speak_chance = 2
@@ -34,12 +34,12 @@
 		)
 	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue,/obj/item/natural/worms,/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat)
-	response_help_continuous = "pets"
-	response_help_simple = "pet"
-	response_disarm_continuous = "gently pushes aside"
-	response_disarm_simple = "gently push aside"
-	response_harm_continuous = "kicks"
-	response_harm_simple = "kick"
+	response_help_continuous = "抚摸"
+	response_help_simple = "抚摸"
+	response_disarm_continuous = "轻轻推开"
+	response_disarm_simple = "轻轻推开"
+	response_harm_continuous = "踢"
+	response_harm_simple = "踢"
 	melee_damage_lower = 1
 	melee_damage_upper = 8
 	pooptype = /obj/item/natural/poo/horse
@@ -75,37 +75,37 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "beak"
+			return "喙"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "beak"
+			return "喙"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "wing"
+			return "翅膀"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "wing"
+			return "翅膀"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "wing"
+			return "翅膀"
 		if(BODY_ZONE_L_ARM)
-			return "wing"
+			return "翅膀"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/Initialize(mapload)
@@ -173,7 +173,7 @@
 
 
 /obj/structure/fluff/nest
-	name = "nest"
+	name = "鸟巢"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "nest"

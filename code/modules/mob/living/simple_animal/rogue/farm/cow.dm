@@ -1,7 +1,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
-	name = "cow"
+	name = "母牛"
 	desc = ""
 	icon_state = "cow"
 	icon_living = "cow"
@@ -9,8 +9,8 @@
 	icon_gib = "cow_gib"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_hear = list("brays.")
-	emote_see = list("shakes its head.", "chews her cud.")
+	emote_hear = list("哞哞叫。")
+	emote_see = list("晃了晃脑袋。", "咀嚼着反刍的食物。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -31,8 +31,8 @@
 	pooptype = /obj/item/natural/poo/cow
 	milkies = TRUE
 	faction = list("cows")
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头撞"
+	attack_verb_simple = "头撞"
 	melee_damage_lower = 10
 	melee_damage_upper = 25
 	STASPD = 2
@@ -42,7 +42,7 @@
 	remains_type = /obj/effect/decal/remains/cow
 
 /obj/effect/decal/remains/cow
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "skele"
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
@@ -60,7 +60,7 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet
-	name = "calf"
+	name = "小牛"
 	desc = ""
 	icon_state = "cowlet"
 	icon_living = "cowlet"
@@ -86,47 +86,46 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
-
+			return "前腿"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/attack_hand(mob/living/carbon/M)
 	if(!stat && M.used_intent.type == INTENT_DISARM && icon_state != icon_dead && !has_buckled_mobs())
-		M.visible_message(span_warning("[M] tips over [src]."),
-			span_notice("I tip over [src]."))
-		to_chat(src, span_danger("I am tipped over by [M]!"))
+		M.visible_message(span_warning("[M]推翻了[src]。"),
+			span_notice("我推翻了[src]。"))
+		to_chat(src, span_danger("我被[M]推倒了！"))
 		Paralyze(60, ignore_canstun = TRUE)
 		icon_state = "[initial(icon_state)]_tip"
 		spawn(60)
@@ -137,14 +136,14 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bull
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
-	name = "cow"
+	name = "公牛"
 	icon_state = "bull"
 	icon_living = "bull"
 	icon_dead = "bull_dead"
 	icon_gib = "bull_gib"
 	gender = MALE
-	emote_hear = list("chews.")
-	emote_see = list("shakes his head.", "chews his cud.")
+	emote_hear = list("咀嚼着。")
+	emote_see = list("晃了晃脑袋。", "咀嚼着反刍的食物。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -158,8 +157,8 @@
 	faction = list("cows")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_same = 0
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头撞"
+	attack_verb_simple = "头撞"
 	health = 150
 	maxHealth = 150
 	melee_damage_lower = 25
@@ -198,39 +197,39 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "前腿"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/bull/taunted(mob/user)
@@ -239,7 +238,7 @@
 	return
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/bullet
-	name = "calf"
+	name = "小牛"
 	desc = ""
 	gender = MALE
 	icon_state = "bullet"

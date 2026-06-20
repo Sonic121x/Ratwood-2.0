@@ -1,6 +1,6 @@
 /obj/structure/flora/grass/tangler
-	name = "twisting shrub"
-	desc = "Green, spiky and....I think I saw it move!"
+	name = "扭曲灌木"
+	desc = "绿油油、尖刺遍布……我觉得我看见它动了！"
 	icon = 'icons/roguetown/mob/monster/tangler.dmi'
 	icon_state = "tangler_hidden"
 	var/faction = list("plants")
@@ -58,16 +58,16 @@
 
 /obj/structure/flora/grass/tangler/real/update_icon()
 	if(obj_broken)
-		name = "dry vine"
+		name = "干枯藤蔓"
 		desc = ""
 		icon_state = "tangler-dead"
 		return
 	if(aggroed)
-		name = "twisting vine"
+		name = "扭曲藤蔓"
 		var/list/icon_states = list("tangler_1", "tangler_2", "tangler_3")
 		icon_state = pick(icon_states)
 	else
-		name = "twisting shrub"
+		name = "扭曲灌木"
 		icon_state = "tangler-hidden"
 
 /obj/structure/flora/grass/tangler/real/user_unbuckle_mob(mob/living/M, mob/user)
@@ -82,12 +82,12 @@
 			if(prob(time2mount))
 				..()
 			else
-				user.visible_message("<span class='warning'>[user] tries to pull [M] free of [src]!</span>")
+				user.visible_message("<span class='warning'>[user]试图把[M]从[src]中拽出来！</span>")
 			return
 		if(prob(time2mount))
 			..()
 		else
-			user.visible_message("<span class='warning'>[user] tries to break free of [src]!</span>")
+			user.visible_message("<span class='warning'>[user]试图挣脱[src]！</span>")
 
 /obj/structure/flora/grass/tangler/real/user_buckle_mob(mob/living/M, mob/living/user)
 	return
@@ -113,7 +113,7 @@
 			START_PROCESSING(SSobj, src)
 			if(!HAS_TRAIT(L, TRAIT_NOPAIN))
 				L.emote("painscream", forced = FALSE)
-			src.visible_message("<span class='danger'>[src] snatches [L]!</span>")
+			src.visible_message("<span class='danger'>[src]猛地抓住了[L]！</span>")
 			playsound(src.loc, "plantcross", 100, FALSE, -1)
 		if(istype(AM, /obj/item))
 			if(is_type_in_list(AM, eatablez))

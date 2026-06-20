@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/swine
 	icon = 'modular/Creechers/icons/piggie.dmi'
-	name = "swine sow"
-	desc = "A domesticated hog, won't be finding you any truffles."
+	name = "母猪"
+	desc = "一只家养猪，别指望它能帮你找到松露。"
 	icon_state = "piggie_f"
 	icon_living = "piggie_f"
 	icon_dead = "piggie_dead"
 	icon_gib = "piggie_dead"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("eyes the surroundings.", "flicks its ears.")
+	emote_see = list("环顾四周。", "抖动着耳朵。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -29,8 +29,8 @@
 	pooptype = /obj/item/natural/poo/horse
 	faction = list("pigs")
 	base_intents = list(/datum/intent/simple/headbutt/saiga)
-	attack_verb_simple = "ram"
-	attack_verb_continuous = "rams"
+	attack_verb_simple = "猛撞"
+	attack_verb_continuous = "猛撞"
 	melee_damage_lower = 15
 	melee_damage_upper = 40 //Ever been rammed by a boar? Exactly.
 	STACON = 15
@@ -54,7 +54,7 @@
 			return pick('modular/Creechers/sound/pig1.ogg','modular/Creechers/sound/pig2.ogg',)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/piglet
-	name = "piglet"
+	name = "小猪"
 	desc = ""
 	icon_state = "piggie_piglin"
 	icon_living = "piggie_piglin"
@@ -80,53 +80,53 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "前腿"
 
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/hog
 	icon = 'modular/Creechers/icons/piggie.dmi'
-	name = "swine hog"
-	desc = "A domesticated hog, won't be finding you any truffles. This one can even be saddled."
+	name = "公猪"
+	desc = "一只家养猪，别指望它能帮你找到松露。这只甚至可以装上鞍具。"
 	icon_state = "piggie_m"
 	icon_living = "piggie_m"
 	icon_dead = "piggie_dead"
 	icon_gib = "piggie_dead"
 	gender = MALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("eyes the surroundings.", "flicks its ears.")
+	emote_see = list("环顾四周。", "抖动着耳朵。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -139,8 +139,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_same = 0
 	base_intents = list(/datum/intent/simple/headbutt/saiga)
-	attack_verb_simple = "ram"
-	attack_verb_continuous = "rams"
+	attack_verb_simple = "猛撞"
+	attack_verb_continuous = "猛撞"
 	health = 250
 	maxHealth = 250
 	melee_damage_lower = 35
@@ -166,43 +166,43 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
+			return "鼻口部"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "腿"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "前腿"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "前腿"
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/piglet
-	name = "piglet"
+	name = "小猪"
 	desc = ""
 	gender = MALE
 	icon_state = "piggie_piglin"

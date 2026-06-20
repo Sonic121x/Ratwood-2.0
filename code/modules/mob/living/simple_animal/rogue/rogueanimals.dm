@@ -4,12 +4,12 @@
 /mob/living/simple_animal/hostile/retaliate/rogue
 	turns_per_move = 5
 	see_in_dark = 6
-	response_help_continuous = "pets"
-	response_help_simple = "pet"
-	response_disarm_continuous = "gently pushes aside"
-	response_disarm_simple = "gently push aside"
-	response_harm_continuous = "kicks"
-	response_harm_simple = "kick"
+	response_help_continuous = "抚摸"
+	response_help_simple = "抚摸"
+	response_disarm_continuous = "轻轻推开"
+	response_disarm_simple = "轻轻推开"
+	response_harm_continuous = "踢"
+	response_harm_simple = "踢"
 	faction = list("rogueanimal")
 	robust_searching = 1
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
@@ -141,7 +141,7 @@
 					if(attack_sound)
 						playsound(src, pick(attack_sound), 100, TRUE, -1)
 					face_atom(C)
-					src.visible_message(span_danger("[src] starts to rip apart [C]!"))
+					src.visible_message(span_danger("[src]开始撕扯[C]！"))
 					if(do_after(src,100, target = L))
 						var/obj/item/bodypart/limb
 						var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
@@ -162,7 +162,7 @@
 				else
 					if(attack_sound)
 						playsound(src, pick(attack_sound), 100, TRUE, -1)
-					src.visible_message(span_danger("[src] starts to rip apart [L]!"))
+					src.visible_message(span_danger("[src]开始撕扯[L]！"))
 					if(do_after(src,100, target = L))
 						L.gib()
 						return TRUE
@@ -204,7 +204,7 @@
 	if(enemies.len)
 		if(prob(23))
 			enemies = list()
-			src.visible_message(span_notice("[src] calms down."))
+			src.visible_message(span_notice("[src]平静了下来。"))
 			LoseTarget()
 		else
 			return
@@ -224,7 +224,7 @@
 				if(mob_timers["aggro_time"])
 					if(world.time > mob_timers["aggro_time"] + 30 SECONDS)
 						enemies = list()
-						src.visible_message(span_info("[src] calms down."))
+						src.visible_message(span_info("[src]平静了下来。"))
 						LoseTarget()
 				else
 					mob_timers["aggro_time"] = world.time

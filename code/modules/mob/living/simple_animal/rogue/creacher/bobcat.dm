@@ -1,8 +1,8 @@
 //Bobcats are a faster, still hostile, version of a wolf.
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/bobcat
 	icon = 'icons/roguetown/mob/monster/bobcat.dmi'
-	name = "lynx"
-	desc = "An adorable albeit hated creacher of the vale's northern coast, hunting livestock and vulnerable people alike.."
+	name = "山猫"
+	desc = "一种生活在谷地北海岸的可爱却遭人厌恨的生物，既捕猎牲畜，也不放过落单的人……"
 	icon_state = "bobcat"
 	icon_living = "bobcat"
 	icon_dead = "bobcat_dead"
@@ -32,7 +32,7 @@
 	STASPD = 15	//Fast as fuck, boy
 
 /obj/effect/decal/remains/bobcat
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "bones"
 	icon = 'icons/roguetown/mob/monster/bobcat.dmi'

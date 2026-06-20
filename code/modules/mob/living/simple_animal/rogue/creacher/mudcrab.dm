@@ -1,13 +1,13 @@
 //Look Sir, free crabs!
 /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab
-	name = "mudcrab"
-	desc = "A mudcrab."
+	name = "泥蟹"
+	desc = "一只泥蟹。"
 	icon_state = "mudcrab"
 	icon_living = "mudcrab"
 	icon_dead = "mudcrab_dead"
-	speak_emote = list("clicks")
-	emote_hear = list("clicks.")
-	emote_see = list("clacks.")
+	speak_emote = list("咔哒作响")
+	emote_hear = list("咔哒作响。")
+	emote_see = list("咔嚓作响。")
 	speak_chance = 1
 	turns_per_move = 5
 	base_intents = list(/datum/intent/use)
@@ -18,15 +18,15 @@
 	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/crab = 3, /obj/item/alch/viscera = 2)
 	food_type = list(/obj/item/reagent_containers/food/snacks)
 	faction = list("crabs")
-	response_help_continuous = "pets"
-	response_help_simple = "pet"
-	response_disarm_continuous = "gently pushes aside"
-	response_disarm_simple = "gently push aside"
-	response_harm_continuous = "stomps"
-	response_harm_simple = "stomp"
+	response_help_continuous = "抚摸"
+	response_help_simple = "抚摸"
+	response_disarm_continuous = "轻轻推开"
+	response_disarm_simple = "轻轻推开"
+	response_harm_continuous = "踩踏"
+	response_harm_simple = "踩踏"
 	stop_automated_movement = 1
-	friendly_verb_continuous = "pinches"
-	friendly_verb_simple = "pinch"
+	friendly_verb_continuous = "夹"
+	friendly_verb_simple = "夹"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	var/obj/item/inventory_head
 	var/obj/item/inventory_mask
@@ -57,7 +57,7 @@
 			return pick('sound/vo/mobs/crab/crab death.ogg')
 
 /obj/structure/crabnest
-	name = "Mudcrab Burrow"
+	name = "泥蟹洞穴"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "crabnest"
 	max_integrity = 200
