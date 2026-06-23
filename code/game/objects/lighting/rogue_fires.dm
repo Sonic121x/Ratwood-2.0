@@ -185,6 +185,11 @@
 	pixel_y = 32
 	cookonme = TRUE
 
+/obj/machinery/light/rogue/campfire/fireplace/blue
+	desc = "一团奇特的、清冷的火焰在神秘发光的余烬上翩翩起舞。"
+	icon = 'icons/roguetown/misc/wallfireblue.dmi'
+	bulb_colour = "#6e90ff"
+
 /obj/machinery/light/rogue/candle
 	name = "蜡烛"
 	desc = "微弱的火焰随风摇曳，提供足够的光亮让人看清周围。"
