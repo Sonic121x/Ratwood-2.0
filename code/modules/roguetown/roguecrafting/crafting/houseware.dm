@@ -39,7 +39,7 @@
 
 /datum/crafting_recipe/roguetown/survival/woodbucket
 	display_category = ITEM_CAT_DECORATION
-	name = "木桶（1 根小圆木）"
+	name = "提桶（1 根小圆木）"
 	category = "家居"
 	result = /obj/item/reagent_containers/glass/bucket
 	reqs = list(/obj/item/grown/log/tree/small = 1)
