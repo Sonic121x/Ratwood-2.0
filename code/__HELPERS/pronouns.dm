@@ -21,28 +21,28 @@
 		. = capitalize(.)
 
 /datum/proc/p_have(temp_gender)
-    . = "has"
+	. = "has"
 
 /datum/proc/p_are(temp_gender)
-    . = "is"
+	. = "is"
 
 /datum/proc/p_were(temp_gender)
-    . = "was"
+	. = "was"
 
 /datum/proc/p_do(temp_gender)
-    . = "does"
+	. = "does"
 
 /datum/proc/p_theyve(capitalized, temp_gender)
-    . = p_they(capitalized, temp_gender) + "'" + copytext(p_have(temp_gender), 3)
+	. = p_they(capitalized, temp_gender) + "'" + copytext(p_have(temp_gender), 3)
 
 /datum/proc/p_theyre(capitalized, temp_gender)
-    . = p_they(capitalized, temp_gender) + "'" + copytext(p_are(temp_gender), 2)
+	. = p_they(capitalized, temp_gender) + "'" + copytext(p_are(temp_gender), 2)
 
 /datum/proc/p_s(temp_gender) //is this a descriptive proc name, or what?
-    . = "s"
+	. = "s"
 
 /datum/proc/p_es(temp_gender)
-    . = "es"
+	. = "es"
 
 //like clients, which do have gender.
 /client/p_they(capitalized, temp_gender)
@@ -82,44 +82,44 @@
 		. = capitalize(.)
 
 /client/p_have(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "has"
-    if(temp_gender == PLURAL || temp_gender == NEUTER)
-        . = "have"
+	if(!temp_gender)
+		temp_gender = gender
+	. = "has"
+	if(temp_gender == PLURAL || temp_gender == NEUTER)
+		. = "have"
 
 /client/p_are(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "is"
-    if(temp_gender == PLURAL || temp_gender == NEUTER)
-        . = "are"
+	if(!temp_gender)
+		temp_gender = gender
+	. = "is"
+	if(temp_gender == PLURAL || temp_gender == NEUTER)
+		. = "are"
 
 /client/p_were(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "was"
-    if(temp_gender == PLURAL || temp_gender == NEUTER)
-        . = "were"
+	if(!temp_gender)
+		temp_gender = gender
+	. = "was"
+	if(temp_gender == PLURAL || temp_gender == NEUTER)
+		. = "were"
 
 /client/p_do(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "does"
-    if(temp_gender == PLURAL || temp_gender == NEUTER)
-        . = "do"
+	if(!temp_gender)
+		temp_gender = gender
+	. = "does"
+	if(temp_gender == PLURAL || temp_gender == NEUTER)
+		. = "do"
 
 /client/p_s(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    if(temp_gender != PLURAL && temp_gender != NEUTER)
-        . = "s"
+	if(!temp_gender)
+		temp_gender = gender
+	if(temp_gender != PLURAL && temp_gender != NEUTER)
+		. = "s"
 
 /client/p_es(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    if(temp_gender != PLURAL && temp_gender != NEUTER)
-        . = "es"
+	if(!temp_gender)
+		temp_gender = gender
+	if(temp_gender != PLURAL && temp_gender != NEUTER)
+		. = "es"
 
 // LETHALSTONE NOTE: hello! we always return early on PLURAL check here because it's always correct (human mob overrides set it for disguises) and respects disguises. causes some code duplication though
 
@@ -267,139 +267,139 @@
 		. = capitalize(.)
 
 /mob/p_have(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "has"
-    if(temp_gender == PLURAL)
-        . = "have"
-        return
-    // LETHALSTONE EDIT: use pronouns where possible
-    if (pronouns)
-        if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
-            . = "have"
-    // LETHALSTONE EDIT END
+	if(!temp_gender)
+		temp_gender = gender
+	. = "has"
+	if(temp_gender == PLURAL)
+		. = "have"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
+			. = "have"
+	// LETHALSTONE EDIT END
 
 /mob/p_are(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "is"
-    if(temp_gender == PLURAL)
-        . = "are"
-        return
-    // LETHALSTONE EDIT: use pronouns where possible
-    if (pronouns)
-        if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
-            . = "are"
-    // LETHALSTONE EDIT END
+	if(!temp_gender)
+		temp_gender = gender
+	. = "is"
+	if(temp_gender == PLURAL)
+		. = "are"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
+			. = "are"
+	// LETHALSTONE EDIT END
 
 /mob/p_were(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "was"
-    if(temp_gender == PLURAL)
-        . = "were"
-        return
-    // LETHALSTONE EDIT: use pronouns where possible
-    if (pronouns)
-        if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
-            . = "were"
-    // LETHALSTONE EDIT END
+	if(!temp_gender)
+		temp_gender = gender
+	. = "was"
+	if(temp_gender == PLURAL)
+		. = "were"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
+			. = "were"
+	// LETHALSTONE EDIT END
 
 /mob/p_do(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    . = "does"
-    if(temp_gender == PLURAL)
-        . = "do"
-        return
-    // LETHALSTONE EDIT: use pronouns where possible
-    if (pronouns)
-        if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
-            . = "do"
-    // LETHALSTONE EDIT END
+	if(!temp_gender)
+		temp_gender = gender
+	. = "does"
+	if(temp_gender == PLURAL)
+		. = "do"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM || pronouns == THEY_THEM_F)
+			. = "do"
+	// LETHALSTONE EDIT END
 
 /mob/p_s(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    if(temp_gender != PLURAL)
-        . = "s"
-    // LETHALSTONE EDIT: use pronouns where possible
-    if (pronouns)
-        if (pronouns != THEY_THEM && pronouns != THEY_THEM_F)
-            . = "s"
-    // LETHALSTONE EDIT END
+	if(!temp_gender)
+		temp_gender = gender
+	if(temp_gender != PLURAL)
+		. = "s"
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns != THEY_THEM && pronouns != THEY_THEM_F)
+			. = "s"
+	// LETHALSTONE EDIT END
 
 /mob/p_es(temp_gender)
-    if(!temp_gender)
-        temp_gender = gender
-    if(temp_gender != PLURAL)
-        . = "es"
-    // LETHALSTONE EDIT: use pronouns where possible
-    if (pronouns)
-        if (pronouns != THEY_THEM && pronouns != THEY_THEM_F)
-            . = "es"
-    // LETHALSTONE EDIT END
+	if(!temp_gender)
+		temp_gender = gender
+	if(temp_gender != PLURAL)
+		. = "es"
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns != THEY_THEM && pronouns != THEY_THEM_F)
+			. = "es"
+	// LETHALSTONE EDIT END
 
 //humans need special handling, because they can have their gender hidden
 /mob/living/carbon/human/p_they(capitalized, temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_their(capitalized, temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_them(capitalized, temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_have(temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_are(temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_were(temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_do(temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_s(temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
 
 /mob/living/carbon/human/p_es(temp_gender)
-    var/list/obscured = check_obscured_slots()
-    var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-    if((SLOT_PANTS in obscured) && skipface)
-        temp_gender = PLURAL
-    return ..()
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..()
