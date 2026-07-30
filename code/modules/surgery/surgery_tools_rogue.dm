@@ -584,9 +584,9 @@
 		zone_options += "Cancel"
 	else // failsafe
 		if(covered)
-			to_chat(user, span_warning("That part is covered!"))
+			to_chat(user, span_warning("那个部位被遮挡了！"))
 		else
-			to_chat(user, span_warning("It doesn't seem like this part can be branded!"))
+			to_chat(user, span_warning("这个部位似乎无法烙印！"))
 		return TRUE
 
 	if(remove_existing_brand)
@@ -601,7 +601,7 @@
 	var/final_answer // String. The button the user clicks on when prompted which part to brand.
 
 	// Prompt before do_after
-	final_answer = tgui_alert(user, "What do you wish to [remove_existing_brand ? "remove" : "brand"]?", "Please answer in [DisplayTimeText(10 SECONDS)]!", zone_options, 10 SECONDS)
+	final_answer = tgui_alert(user, "你想要[remove_existing_brand ? "移除" : "烙印"]什么？", "请于[DisplayTimeText(10 SECONDS)]内选择！", zone_options, 10 SECONDS)
 
 	if(!final_answer || final_answer == "Cancel")
 		return TRUE
@@ -611,22 +611,22 @@
 		switch(final_answer)
 			if("Breasts", "Dick", "Vagina", "Testes")
 				if(!target.client)
-					to_chat(user, span_warning("[target] can't receive a brand here right now."))
+					to_chat(user, span_warning("[target]现在无法在这里接受烙印。"))
 					log_combat(user, target, "Branding on offline mob blocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 				if(!target.client.prefs?.sensitive_brands)
-					to_chat(user, span_warning("[target] has sensitive brands disabled."))
-					to_chat(target, span_warning("A branding attempt on my [LOWER_TEXT(final_answer)] was blocked by preferences."))
+					to_chat(user, span_warning("[target]已禁用敏感部位烙印。"))
+					to_chat(target, span_warning("一次对我[LOWER_TEXT(final_answer)]的烙印尝试被偏好设置阻止了。"))
 					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 			if("Head")
 				if(!target.client)
-					to_chat(user, span_warning("[target] can't receive a brand here right now."))
+					to_chat(user, span_warning("[target]现在无法在这里接受烙印。"))
 					log_combat(user, target, "Branding on offline mob blocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 				if(!target.client.prefs?.facial_brands)
-					to_chat(user, span_warning("[target] has facial brands disabled."))
-					to_chat(target, span_warning("A branding attempt on my [LOWER_TEXT(final_answer)] was blocked by preferences."))
+					to_chat(user, span_warning("[target]已禁用面部烙印。"))
+					to_chat(target, span_warning("一次对我[LOWER_TEXT(final_answer)]的烙印尝试被偏好设置阻止了。"))
 					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 
@@ -639,7 +639,7 @@
 	if(!branding_self) 
 		if(branding_low_quality)
 			if(!target.compliance)  // we can only brand ourselves OR the other character must be compliant
-				to_chat(user, span_warning("[target]'s moving too much to let me [remove_existing_brand ? "burn away old marks from" : "brand"] [target.p_them()]!"))
+				to_chat(user, span_warning("[target]动得太厉害了，让我无法[remove_existing_brand ? "烧去[target.p_them()]身上的旧印记" : "给[target.p_them()]烙印"]！"))
 				return TRUE
 			branding_delay += 3 SECONDS // if they are compliant then there will still be an added delay
 	else
