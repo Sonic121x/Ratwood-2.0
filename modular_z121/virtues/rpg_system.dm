@@ -657,7 +657,6 @@
 		"小开锁卷轴（180积分）" = list(180, /obj/item/book/granter/spell/blackstone/lesserknock),     // 研读后习得【小开锁】（开锁）
 		"指引卷轴（210积分）"   = list(210, /obj/item/book/granter/spell/blackstone/guidance),        // 研读后习得【指引】（增益）
 		"缠绕卷轴（240积分）"   = list(240, /obj/item/book/granter/spell/blackstone/ensnare),         // 研读后习得【缠绕】（束缚）
-		"雾化卷轴（260积分）"   = list(260, /obj/item/book/granter/spell/blackstone/aerosolize),      // 研读后习得【雾化】
 		"易容卷轴（300积分）"   = list(300, /obj/item/book/granter/spell/blackstone/mirror_transform), // 研读后习得【镜像易容】（变换外貌）
 		"巨化卷轴（320积分）"   = list(320, /obj/item/book/granter/spell/blackstone/enlarge),         // 研读后习得【巨化】（体型增大）
 		"寻找魔宠卷轴（380积分）" = list(380, /obj/item/book/granter/spell/blackstone/familiar),       // 研读后习得【寻找魔宠】（召唤魔宠，可重复使用）
