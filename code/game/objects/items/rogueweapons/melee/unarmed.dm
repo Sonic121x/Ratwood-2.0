@@ -278,8 +278,8 @@
 	icon_state = "eoraknuckle"
 
 /obj/item/rogueweapon/knuckles/blacksteel
-	name = "blacksteel knuckles"
-	desc = "Take that, taste the pain!"
+	name = "黑钢指虎"
+	desc = "接招吧，尝尝痛苦的滋味！"
 	icon_state = "bsknuckledusters"
 	force = 30
 	max_integrity = 300
@@ -354,11 +354,10 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/handclaw/blacksteel
-	name = "blacksteel eagle claws"
-	desc = "A magnificent pair of blacksteel claws. While the Northern Empty is unfamiliar with blacksteel, they are familiar with an alloy of \
-			startingly similar repute; blacker-than-black, impossibly strong, and purported to've been the remains of divine matter. Such were wielded by \
-			a legendary champion of the Fjall - one whose valor, though forgotten by tyme, still echoes throughout the world they saved. \
-			</br>'Here in the wake, I know when the noose was set, but the truth is that I regret what I have left!'"
+	name = "黑钢鹰爪"
+	desc = "一柄华丽的黑钢鹰爪。尽管北境之土对黑钢并不熟悉，但他们却熟知一种声誉惊人相似的合金；黑过漆黑，不可思议地坚固，据传是神圣物质的残余。\
+			这种武器曾被一位Fjall的传奇冠军所挥舞——其英勇，虽已被时光遗忘，却仍在他们所拯救的世界中回响。\
+			</br>'在此余波中，我知罗网何时布下，但事实是，我悔恨我所遗弃的一切！'"
 	icon_state = "bskatarclaw"
 	icon = 'icons/roguetown/weapons/unarmed32.dmi'
 	wdefense = 8
