@@ -158,8 +158,8 @@
 	force = 30
 	force_wielded = 35
 	max_integrity = 300
-	name = "blacksteel mace"
-	desc = "A magnificent mace of blacksteel. Tied around the handle is crimson silk, which was the style at the tyme."
+	name = "黑钢钉头锤"
+	desc = "一柄华丽的黑钢钉头锤。握柄上系着深红丝绸，这是那个时代流行的样式。"
 	icon_state = "bs_mace"
 	smeltresult = /obj/item/ingot/blacksteel
 	wdefense = 3
@@ -564,8 +564,8 @@
 	anvilrepair = null
 
 /obj/item/rogueweapon/mace/warhammer/blacksteel
-	name = "blacksteel warhammer"
-	desc = "A magnificent warhammer of blacksteel. Ornamental, resplendant, and - above all else - lethal; the ideal sidearm for a knight in the sixteenth century."
+	name = "黑钢战锤"
+	desc = "一柄华丽的黑钢战锤。装饰华美，光彩夺目，而且——最重要的是——致命；是十六世纪骑士理想的副手武器。"
 	icon_state = "bs_hammer"
 	force = 30
 	minstr = 10

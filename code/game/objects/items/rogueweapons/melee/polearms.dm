@@ -828,9 +828,9 @@
 	randomize_blade_int_on_init = TRUE
 
 /obj/item/rogueweapon/halberd/blacksteel
-	name = "blacksteel halberd"
-	desc = "A magnificent halberd of blacksteel. It is the finest arm-of-war that a sixteenth-century knight could ask for, especially \
-	when it comes to attracting fair maidens in the highest courts. Wrap a length of cloth around the shaft to bear your heraldry."
+	name = "黑钢戟"
+	desc = "一柄华丽的黑钢戟。它是十六世纪骑士所能获得的最佳战争利器，尤其是在最高宫廷中吸引窈窕淑女方面。\
+	在柄上裹一段布料以展示你的纹章。"
 	icon_state = "bs_halberd"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
@@ -848,7 +848,7 @@
 /obj/item/rogueweapon/halberd/blacksteel/examine(mob/user)
 	. = ..()
 	if(!used)
-		. += span_notice("The Special Manoeuvre of this weapon can be changed. Right-click it with a free hand to select one. This can only be done once.")
+		. += span_notice("此武器的特殊招式可以更换。用空手右键点击它，即可选择一种。此操作仅可进行一次。")
 
 /obj/item/rogueweapon/halberd/blacksteel/attack_right(mob/user)
 	. = ..()
@@ -996,9 +996,9 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/eaglebeak/blacksteel
-	name = "blacksteel polehammer"
-	desc = "A magnificent polehammer of blacksteel. Purpose-made for killing plate-armored opponents, it features a maillebreaker's point and a \
-	flared macehead; excellent for piercing and shattering alloys, respectively. Wrap a length of cloth around the shaft to bear your heraldry."
+	name = "黑钢长柄锤"
+	desc = "一柄华丽的黑钢长柄锤。专为击杀板甲对手而造，它带有破甲锥尖与扩张的锤头；分别擅长刺穿与震碎合金。\
+	在柄上裹上一段布料以展示你的纹章。"
 	possible_item_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/eaglebeak/oneh)
 	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust)
 	icon_state = "bs_eaglebeak"
@@ -1018,7 +1018,7 @@
 /obj/item/rogueweapon/eaglebeak/blacksteel/examine(mob/user)
 	. = ..()
 	if(!used)
-		. += span_notice("The Special Manoeuvre of this weapon can be changed. Right-click it with a free hand to select one. This can only be done once.")
+		. += span_notice("此武器的特殊招式可以更换。用空手右键点击它，即可选择一种。此操作仅可进行一次。")
 
 /obj/item/rogueweapon/eaglebeak/blacksteel/attack_right(mob/user)
 	. = ..()
@@ -1513,9 +1513,9 @@
 	max_integrity = 200
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/blacksteel
-	name = "blacksteel quarterstaff"
-	desc = "A quarterstaff reinforced with blacksteel tips. One might imagine that the elegance of such a design hardly befits the people \
-	who'd traditionally wield such a weapon; then again, who are we to judge?"
+	name = "黑钢长杖"
+	desc = "一柄以黑钢端头加固的长杖。也许有人会认为，这样优雅的设计实在不适合那些通常会使用这种武器的人们；\
+	但话说回来，我们又有什么资格评判呢？"
 	force = 20
 	force_wielded = 30
 	icon_state = "quarterstaff_blacksteel"
@@ -1607,8 +1607,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/spear/blacksteel
-	name = "blacksteel spear"
-	desc = "A magnificent winged spear of blacksteel; 'nuff said."
+	name = "黑钢长矛"
+	desc = "一柄华丽的黑钢翼矛；无需多言。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "blacksteelspear"
 	force_wielded = 35
@@ -1707,9 +1707,9 @@
 	update_icon()
 
 /obj/item/rogueweapon/spear/lance/blacksteel
-	name = "blacksteel lance"
-	desc = "A magnificent lance of blacksteel, designed to be wielded on saigaback in jousting tournaments. Even so, it isn't uncommon to see it \
-	being handled on foot as a pike by Grenzelhoft's blacksteel-armored knights. Wrap a length of cloth around the shaft to bear your heraldry."
+	name = "黑钢骑枪"
+	desc = "一柄华丽的黑钢骑枪，专为骑乘赛加兽进行马上比武而设计。即便如此，在格伦泽尔霍夫，身着黑钢甲胄的骑士们步战时将其作为长矛使用也并不罕见。\
+	在柄上裹一段布料以展示你的纹章。"
 	icon_state = "bs_lance"
 	force = 20
 	force_wielded = 25
