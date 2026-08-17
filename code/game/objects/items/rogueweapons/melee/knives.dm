@@ -477,8 +477,8 @@
 	AddElement(/datum/element/tipped_item)	//Lets you tip your weapon in poison
 
 /obj/item/rogueweapon/huntingknife/idagger/blacksteel
-	name = "blacksteel dagger"
-	desc = "A magnificent dagger of blacksteel. The epitome of elegance, without the woes that such weapons traditionally inherit."
+	name = "黑钢匕首"
+	desc = "一柄华丽的黑钢匕首。它是优雅的化身，却避开了此类武器通常附带的种种弊端。"
 	icon_state = "bs_dagger"
 	sheathe_icon = "bs_dagger"
 	force = 22
@@ -488,9 +488,9 @@
 	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/rogueweapon/huntingknife/idagger/blacksteel/heavy
-	name = "blacksteel misericorde"
-	desc = "A magnificent armor-piercing dagger of blacksteel. The curved handle is said to naturally improve one's aim, while locked in a \
-	lyfe-or-death struggle with plate-armored opponents."
+	name = "黑钢穿甲匕首"
+	desc = "一柄华丽的黑钢穿甲匕首。弯曲的握柄据说能在与板甲对手的生死搏斗中，\
+	自然而然地提升瞄准的精准度。"
 	icon_state = "bs_misericorde"
 	sheathe_icon = "bs_misericorde"
 	force = 25
@@ -910,8 +910,8 @@
 	)
 
 /obj/item/rogueweapon/huntingknife/throwingknife/blacksteel
-	name = "blacksteel tossblade"
-	desc = "A magnificent tossblade of blacksteel. Unorthodox, but nevertheless beloved by assassins who can afford the price - and can't leave anything to chance. </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "黑钢投刃"
+	desc = "一柄华丽的黑钢投刃。虽非传统兵器，却深受那些付得起价钱、且不容许任何差错的刺客们所钟爱。<br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	item_state = "throw_knifebs"
 	max_integrity = 50
 	max_blade_int = 200

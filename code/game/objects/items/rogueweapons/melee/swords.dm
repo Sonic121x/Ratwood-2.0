@@ -323,10 +323,10 @@
 	thrown_bclass = BCLASS_BLUNT
 
 /obj/item/rogueweapon/sword/long/blacksteel
-	name = "blacksteel longsword"
-	desc = "A sleek blade of a dark, and burnished hue. \
-			A handle carved from a rosawood branch. A pairing that shall sing as it parts the air. \
-			With it, one can write a song across all of Psydonia."
+	name = "黑钢长剑"
+	desc = "一柄色泽暗沉、光润如镜的利刃。\
+			剑柄由罗莎木枝雕刻而成。二者相配，便能在破空时吟唱。\
+			持此剑者，可在整个普赛多尼亚谱写一曲传奇。"
 	force = 27
 	force_wielded = 33
 	icon_state = "bslongsword"
@@ -348,7 +348,7 @@
 /obj/item/rogueweapon/sword/long/blacksteel/examine(mob/user)
 	. = ..()
 	if(!used)
-		. += span_notice("The Special Manoeuvre of this weapon can be changed. Right-click it with a free hand to select one. This can only be done once.")
+		. += span_notice("此武器的特殊招式可以更换。用空手右键点击它，即可选择一种。此操作仅可进行一次。")
 
 /obj/item/rogueweapon/sword/long/blacksteel/attack_right(mob/user)
 	. = ..()
@@ -1110,9 +1110,9 @@
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/rogueweapon/sword/short/messer/blacksteel
-	name = "blacksteel messer"
-	desc = "A magnificent shortsword of blacksteel. Divorced from the labors that originally warranted its creation, yet no-less-adept at cleaving \
-	whatever might trouble one's morning strolls."
+	name = "黑钢猎剑"
+	desc = "一柄华丽的黑钢短剑。虽然已脱离了当初催生其诞生的劳作需求， \
+	但它在劈开可能打扰晨间散步的麻烦物方面，依旧毫不逊色。"
 	force = 27
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/rend/krieg/short, /datum/intent/sword/peel)
 	smeltresult = /obj/item/ingot/blacksteel
@@ -1367,9 +1367,9 @@
 	sellprice = 140
 
 /obj/item/rogueweapon/sword/rapier/blacksteel
-	name = "blacksteel rapier"
-	desc = "A magnificent rapier of blacksteel. Despite originating from the matrimony of cutting-edge swordsmanship techniques and metallurgy, it \
-	doesn't actually have a cutting edge to call its own. Not like that matters as much, of course, when it can pierce straight through plate armor."
+	name = "黑钢刺剑"
+	desc = "一柄华丽的黑钢刺剑。尽管它源于先进的剑术技艺与冶金术的结合，它 \
+	实际上并没有真正意义上的开刃。当然，当它能直接刺穿板甲时，这点也就不那么重要了。"
 	force = 27
 	smeltresult = /obj/item/ingot/blacksteel
 	icon_state = "blacksteelrapier"
@@ -1386,7 +1386,7 @@
 /obj/item/rogueweapon/sword/rapier/blacksteel/examine(mob/user)
 	. = ..()
 	if(!used)
-		. += span_notice("The Special Manoeuvre of this weapon can be changed. Right-click it with a free hand to select one. This can only be done once.")
+		. += span_notice("此武器的特殊招式可以更换。用空手右键点击它，即可选择一种。此操作仅可进行一次。")
 
 /obj/item/rogueweapon/sword/rapier/blacksteel/attack_right(mob/user)
 	. = ..()
@@ -1516,8 +1516,8 @@
 	wdefense = 8
 
 /obj/item/rogueweapon/sword/rapier/courtphysician
-	name = "cane blade"
-	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane, bears the visage of a vulture on its pommel."
+	name = "手杖剑"
+	desc = "一柄金柄钢刃，专为藏匿于手杖内而制，剑柄末端饰有秃鹫形象。"
 	icon = 'icons/roguetown/weapons/swords32.dmi'
 	icon_state = "doccaneblade"
 	sheathe_icon = "doccaneblade"

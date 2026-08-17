@@ -281,11 +281,11 @@
 	wbalance = WBALANCE_HEAVY
 
 /obj/item/rogueweapon/flail/blacksteel
-	name = "blacksteel flail"
+	name = "黑钢连枷"
 	icon_state = "bs_flail"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange)
-	desc = "An elegant flail of blacksteel. The heftsome weight makes it unmatched for driving back plate-armored opponents, so long as one \
-	has the stamina to swing its alloyed chains around."
+	desc = "一柄优雅的黑钢连枷。其沉重分量使其在击退板甲对手方面无可匹敌，只要使用者 \
+	有足够的耐力挥动其合金链身。"
 	smeltresult = /obj/item/ingot/blacksteel
 	max_integrity = 250
 	minstr = 12

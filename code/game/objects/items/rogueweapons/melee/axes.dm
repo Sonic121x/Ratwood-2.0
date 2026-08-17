@@ -107,8 +107,8 @@
 	wdefense = 4
 
 /obj/item/rogueweapon/stoneaxe/battle/blacksteel
-	name = "blacksteel axe"
-	desc = "A magnificent battle axe of blacksteel, fitted to counter both unarmored assailants and heavy infantry. The edge might be fluted with nobler alloys, but it is no less wicked when introduced to maille-and-bone."
+	name = "黑钢战斧"
+	desc = "一柄华丽的黑钢战斧，既可用于对付无甲袭击者，也可用以对抗重装步兵。刃部或许嵌有更高级合金的装饰凹槽，但一旦切入锁甲与血肉，它依旧凶残无比。"
 	icon_state = "bs_axe"
 	force = 30
 	force_wielded = 35
@@ -197,8 +197,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/stoneaxe/hurlbat/blacksteel
-	name = "blacksteel hurlbat"
-	desc = "A magnificent throwing axe of blacksteel, weighted to penetrate most cuirasses with a single well-aimed toss."
+	name = "黑钢投战斧"
+	desc = "一柄华丽的黑钢投战斧，其配重经过精心设计，只需一次精准投掷便能穿透大多数胸甲。"
 	smeltresult = /obj/item/ingot/blacksteel
 	icon_state = "bs_hurlbat"
 	armor_penetration = 60 //this kills the platebeast
@@ -497,9 +497,9 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/greataxe/blacksteel
-	name = "blacksteel greataxe"
-	desc = "A magnificent greataxe of blacksteel, tipped with spikes to keep the horrors at bay. No one's quite sure as to whether it's meant \
-	to be called a 'poleaxe' or 'greataxe'; at this point, however, the terms might as well be interchangeable amongst the laymen."
+	name = "黑钢巨斧"
+	desc = "一柄华丽的黑钢巨斧，顶部装有尖刺以逼退恐怖之物。\
+	没人能确定它究竟该叫“长柄斧”还是“巨斧”；然而时至今日，在普通人眼中，这两个称呼大概已经可以混用了。"
 	icon_state = "bs_greataxe"
 	force = 20
 	force_wielded = 40//on par with blacksteel flamberg
