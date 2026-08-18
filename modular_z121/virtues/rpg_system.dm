@@ -741,8 +741,6 @@
 		"炸肉排（150积分）"     = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel),
 		"香料烤禽（150积分）"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced),
 		"黄油烤禽（150积分）"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/butter),
-		"精灵兔肉烤盘（160积分）" = list(160, /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlickcucumber),
-		"猎人盛宴（160积分）"   = list(160, /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlickcucumber),
 		"公爵烤禽（180积分）"   = list(180, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/ducal),
 		"公爵牛排（180积分）"   = list(180, /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal),
 		//   饭食套餐
