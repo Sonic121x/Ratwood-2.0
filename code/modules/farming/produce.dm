@@ -329,7 +329,7 @@
 /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
 	name = "番茄"
 	seed = /obj/item/seeds/tomato
-		desc = "一颗饱满的红色果实，果肉多汁，酸甜适中。可生食，也可烹饪使用。经验丰富的厨师知道总要把番茄切开，以制作出最顺滑的酱汁。"
+	desc = "一颗饱满的红色果实，果肉多汁，酸甜适中。可生食，也可烹饪使用。经验丰富的厨师知道总要把番茄切开，以制作出最顺滑的酱汁。"
 	icon_state = "tomato"
 	tastes = list("tomato" = 1)
 	splat_color = "#CD5320"
