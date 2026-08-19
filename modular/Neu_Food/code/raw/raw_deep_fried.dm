@@ -138,8 +138,8 @@
 	return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/wienernitzel
-	name = "unfinished wiener nitzel"
-	desc = "Tenderized meat, awaiting a coating of toastcrumbs and a hot oil bath."
+	name = "未完成的维也纳炸肉排"
+	desc = "已拍松的肉片，还差裹上面包屑，再下热油锅。"
 	icon = 'modular/Neu_Food/icons/raw/raw_deep_fried.dmi'
 	icon_state = "wienernitzel_step1"
 	process_step = 1
@@ -150,11 +150,11 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Cracking an egg over the nitzel."))
+		to_chat(user, span_notice("往炸肉排上打入一枚蛋。"))
 		if(do_after(user, short_cooktime, target = src))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
-			name = "wiener nitzel with egg"
-			desc = "A wiener with an egg cracked over it. It awaits toastcrumbs and a hot oil bath."
+			name = "裹蛋维也纳炸肉排"
+			desc = "打过鸡蛋的维也纳炸肉排坯子，还在等面包屑和热油锅。"
 			icon_state = "wienernitzel_step2"
 			process_step = 2
 			update_icon()
@@ -163,10 +163,10 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs))
 		if(process_step != 2)
 			return
-		to_chat(user, span_notice("Coating the nitzel with toastcrumbs."))
+		to_chat(user, span_notice("给炸肉排裹上面包屑。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "wiener nitzel with toastcrumbs"
-			desc = "A wiener coated in toastcrumbs. It awaits a hot oil bath."
+			name = "裹屑维也纳炸肉排"
+			desc = "已经裹好面包屑的维也纳炸肉排坯子，就等下锅了。"
 			icon_state = "wienernitzel_step3"
 			process_step = 3
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel/wiener

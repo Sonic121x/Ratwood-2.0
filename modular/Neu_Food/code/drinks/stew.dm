@@ -24,21 +24,21 @@
 /datum/reagent/consumable/soup/porridge/oatmeal
 	name = "燕麦粥"
 	description = "很适合平民的一餐。"
-	taste_description = "oatmeal"
+	taste_description = "燕麦香"
 	color = "#c38553"
 
 /datum/reagent/consumable/soup/porridge/thick
-	name = "thick porridge"
-	description = "Fitting for a yeoman."
-	taste_description = "thickened porridge"
+	name = "浓稠粥"
+	description = "适合自耕农的一餐。"
+	taste_description = "浓稠的粥香"
 	color = "#9E6B43"
 	nutriment_factor = 25
 	alpha = 200
 
 /datum/reagent/consumable/soup/porridge/pudding
-	name = "berried porridge-pudding"
-	description = "Fitting for a nobleman."
-	taste_description = "spongey-sweet doughiness with caramelized berries"
+	name = "浆果布丁粥"
+	description = "适合贵族的一餐。"
+	taste_description = "松软甜腻的面团感，伴着焦糖化的浆果"
 	color = "#8E4074"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
@@ -46,9 +46,9 @@
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/soup/porridge/thickpudding
-	name = "thick berried porridge-pudding"
-	description = "Fitting for a king."
-	taste_description = "spongey-sweet doughiness, caramelized berries, and a hint of fragrance"
+	name = "浓稠浆果布丁粥"
+	description = "适合国王的一餐。"
+	taste_description = "松软甜腻的面团感、焦糖化的浆果，以及一丝芬芳"
 	color = "#8C1564"
 	nutriment_factor = 35
 	metabolization_rate = 0.6
@@ -56,9 +56,9 @@
 	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/soup/porridge/frostedpudding
-	name = "frosted porridge-pudding"
-	description = "Fitting for a nobleman."
-	taste_description = "spongey-sweet doughiness and velvety frosting"
+	name = "糖霜布丁粥"
+	description = "适合贵族的一餐。"
+	taste_description = "松软甜腻的面团感和丝绒般的糖霜"
 	color = "#8C88C6"
 	nutriment_factor = 35
 	metabolization_rate = 0.8
@@ -66,9 +66,9 @@
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/soup/porridge/thickfrostedpudding
-	name = "thick frosted porridge-pudding"
-	description = "Fitting for a king."
-	taste_description = "spongey-sweet doughiness, velvety frosting, and a hint of fruitiness"
+	name = "浓稠糖霜布丁粥"
+	description = "适合国王的一餐。"
+	taste_description = "松软甜腻的面团感、丝绒般的糖霜，以及一丝果香"
 	color = "#604E8E"
 	nutriment_factor = 40
 	metabolization_rate = 0.6
@@ -76,9 +76,9 @@
 	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/soup/porridge/poisonfrostedpudding //Evil variant for poisoned jackberry treats.
-	name = "frosted porridge-pudding"
-	description = "Fitting for a nobleman."
-	taste_description = "spongey-sweet doughiness and bitter-tasting frosting"
+	name = "糖霜布丁粥"
+	description = "适合贵族的一餐。"
+	taste_description = "松软甜腻的面团感和发苦的糖霜"
 	color = "#8C88C6"
 	nutriment_factor = 35
 	metabolization_rate = 0.8
@@ -86,9 +86,9 @@
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/soup/porridge/thickpoisonfrostedpudding //Ditto.
-	name = "thick frosted porridge-pudding"
-	description = "Fitting for a king."
-	taste_description = "spongey-sweet doughiness, bitter-tasting frosting, and a hint of burning"
+	name = "浓稠糖霜布丁粥"
+	description = "适合国王的一餐。"
+	taste_description = "松软甜腻的面团感、发苦的糖霜，以及一丝灼烧感"
 	color = "#604E8E"
 	nutriment_factor = 40
 	metabolization_rate = 0.6
@@ -96,9 +96,9 @@
 	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/soup/porridge/fudgepudding
-	name = "chocolate porridge-pudding"
-	description = "Fitting for a nobleman."
-	taste_description = "spongey-sweet doughiness and creamy fudge"
+	name = "巧克力布丁粥"
+	description = "适合贵族的一餐。"
+	taste_description = "松软甜腻的面团感和绵密的软糖"
 	color = "#6B4A51"
 	nutriment_factor = 35
 	metabolization_rate = 0.8
@@ -106,9 +106,9 @@
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/soup/porridge/thickfudgepudding
-	name = "thick chocolate porridge-pudding"
-	description = "Fitting for a king."
-	taste_description = "spongey-sweet doughiness, creamy fudge, and a hint of herbiness"
+	name = "浓稠巧克力布丁粥"
+	description = "适合国王的一餐。"
+	taste_description = "松软甜腻的面团感、绵密的软糖，以及一丝草本气息"
 	color = "#44242A"
 	nutriment_factor = 40
 	metabolization_rate = 0.6
@@ -121,8 +121,8 @@
 	color = "#F8F0E3"
 
 /datum/reagent/consumable/soup/porridge/frycongee
-	name = "fried congee"
-	description = "Boiled rice that's been lightly fried inside of a pot. Perplexingly soft for a fried foodstuff, but a little more filling."
+	name = "炒米粥"
+	description = "在锅里轻炒过的米饭。作为煎制食物却出奇地软，不过稍微更顶饱一些。"
 	color = "#F7E2C0"
 	nutriment_factor = 20
 	alpha = 200
@@ -141,17 +141,17 @@
 	taste_description = "土豆汤底"
 
 /datum/reagent/consumable/soup/veggie/thickpotato
-	name = "thick potato soup"
+	name = "浓稠土豆汤"
 	color = "#AE9256"
-	taste_description = "creamy potato broth"
+	taste_description = "绵密的土豆汤底"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
 	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/thickfrypotato
-	name = "roasted potato soup"
+	name = "烤土豆汤"
 	color = "#968563"
-	taste_description = "deliciously creamy potatoes within a thick, buttery broth"
+	taste_description = "浓稠黄油汤底里，藏着绵密可口的土豆"
 	nutriment_factor = 20
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
@@ -163,17 +163,17 @@
 	taste_description = "煮洋葱味"
 
 /datum/reagent/consumable/soup/veggie/thickonion
-	name = "thick onion soup"
+	name = "浓稠洋葱汤"
 	color = "#96924F"
-	taste_description = "savory onions"
+	taste_description = "咸香的洋葱"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
 	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/thickfryonion
-	name = "roasted onion soup"
+	name = "烤洋葱汤"
 	color = "#B29252"
-	taste_description = "deliciously soft onions within a rich, light broth"
+	taste_description = "清淡汤底里，藏着软糯可口的洋葱"
 	nutriment_factor = 20
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
@@ -185,17 +185,17 @@
 	taste_description = "寡淡卷心菜味"
 
 /datum/reagent/consumable/soup/veggie/thickcabbage
-	name = "thick cabbage soup"
+	name = "浓稠卷心菜汤"
 	color = "#687A43"
-	taste_description = "savory cabbage"
+	taste_description = "咸香的卷心菜"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
 	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/thickfrycabbage
-	name = "roasted cabbage soup"
+	name = "烤卷心菜汤"
 	color = "#685D34"
-	taste_description = "deliciously rich cabbage within a savory broth"
+	taste_description = "咸鲜汤底里，藏着浓郁可口的卷心菜"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
@@ -207,71 +207,71 @@
 	taste_description = "煮芜菁味"
 
 /datum/reagent/consumable/soup/veggie/thickturnip
-	name = "thick turnip soup"
+	name = "浓稠芜菁汤"
 	color = "#AFCE71"
-	taste_description = "savory turnips"
+	taste_description = "咸香的芜菁"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
 	alpha = 200
 
 /datum/reagent/consumable/soup/purebutter
-	name = "pure butter"
+	name = "纯黄油"
 	color = "#FFE88F"
-	taste_description = "disgustingly rich butter and a violent rumbling of the humors"
+	taste_description = "腻人到发指的黄油，以及体内一阵猛烈的翻腾"
 	hydration = 1
 	nutriment_factor = 40
 	metabolization_rate = 4
 	alpha = 222
 
 /datum/reagent/consumable/soup/lemon
-	name = "juice of lemon"
+	name = "柠檬汁"
 	color = "#FFE88F"
-	taste_description = "puckeringly bright lemoniness"
+	taste_description = "酸得让人皱脸的明亮柠檬味"
 	hydration = 8
 	nutriment_factor = 8
 	metabolization_rate = 1.2
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/lime
-	name = "juice of lime"
+	name = "青柠汁"
 	color = "#BAE88F"
-	taste_description = "puckeringly bright limeyness"
+	taste_description = "酸得让人皱脸的明亮青柠味"
 	hydration = 8
 	nutriment_factor = 8
 	metabolization_rate = 1.2
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/pear
-	name = "juice of pear"
+	name = "梨汁"
 	color = "#BAAE8F"
-	taste_description = "pleasantly crisp peariness"
+	taste_description = "清爽脆甜的梨味"
 	hydration = 8
 	nutriment_factor = 8
 	metabolization_rate = 1.2
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/apple
-	name = "juice of apple"
+	name = "苹果汁"
 	color = "#E0BE6D"
-	taste_description = "pleasantly crisp appleness"
+	taste_description = "清爽脆甜的苹果味"
 	hydration = 8
 	nutriment_factor = 8
 	metabolization_rate = 1.2
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/tangerine_marmalade
-	name = "juice of tangerine"
+	name = "柑橘汁"
 	color = "#f0935d"
-	taste_description = "extremely sweet tangerines"
+	taste_description = "甜到极致的柑橘味"
 	hydration = 8
 	nutriment_factor = 8
 	metabolization_rate = 1.2
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/bone_broth
-	name = "bone broth"
+	name = "骨头汤"
 	color = "#7F6556"
-	taste_description = "nurturing warmth"
+	taste_description = "滋养身心的温暖"
 	nutriment_factor = 10
 	hydration = 10
 	metabolization_rate = 0.6
@@ -286,26 +286,26 @@
 	taste_mult = 4
 
 /datum/reagent/consumable/soup/stew/hardtack
-	name = "hardtack stew"
-	description = "Fitting for a soldier."
-	taste_description = "salted porridge with softened flakes of crispiness"
+	name = "硬饼干炖汤"
+	description = "适合士兵的一餐。"
+	taste_description = "咸味粥糊里泡软的脆片"
 	color = "#9E6B43"
 	nutriment_factor = 15
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/hardtacksalo
-	name = "balefire stew"
-	description = "Fitting for an adventurer."
-	taste_description = "salted porridge, crispy meat, and a remarkably fatty broth"
+	name = "肥膘硬饼炖汤"
+	description = "适合冒险者的一餐。"
+	taste_description = "咸味粥糊、酥脆的肉块，以及格外油润的汤底"
 	color = "#9E4643"
 	nutriment_factor = 15
 	metabolization_rate = 0.4 //Lowest nutriment factor for stew, but sticks to your guts like proper comfort food.
 	alpha = 220
 
 /datum/reagent/consumable/soup/stew/thickhardtacksalo
-	name = "thick balefire stew"
-	description = "Fitting for a legend."
-	taste_description = "thickly salted porridge, crispy meat, a fatty broth, and a lingering warmth in the gullet"
+	name = "浓稠肥膘硬饼炖汤"
+	description = "适合传奇人物的一餐。"
+	taste_description = "浓稠的咸味粥糊、酥脆的肉块、油润的汤底，以及喉间久久不散的暖意"
 	color = "#7A3534"
 	nutriment_factor = 20
 	metabolization_rate = 0.4 //Lowest nutriment factor for stew, but sticks to your guts like proper comfort food.
@@ -317,25 +317,25 @@
 	taste_description = "蛋汤味"
 
 /datum/reagent/consumable/soup/stew/fryegg
-	name = "custardy egg drop soup"
+	name = "浓稠蛋花汤"
 	color = "#DDC689"
-	taste_description = "creamy egg soup"
+	taste_description = "绵密的蛋汤"
 	nutriment_factor = 30
 	metabolization_rate = 1.2 //A little quicker, for breakfast!
 
 /datum/reagent/consumable/soup/stew/thickfryegg
-	name = "scrambled cacklehash stew"
+	name = "炒蛋杂烩炖汤"
 	color = "#B78F71"
-	taste_description = "creamy eggs with chunks of crispy meat"
+	taste_description = "绵密的蛋块伴着酥脆肉丁"
 	nutriment_factor = 35
 	metabolization_rate = 1.2 //A little quicker, for breakfast!
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfryegg
-	name = "lavish cacklehash stew"
+	name = "奢华蛋杂烩炖汤"
 	color = "#B5934A"
-	taste_description = "sumptuously creamy eggs, chunks of crispy meat, and cheesy goodness"
+	taste_description = "丰盛绵密的蛋块、酥脆肉丁和浓郁的奶酪美味"
 	nutriment_factor = 40
 	metabolization_rate = 1.2 //A little quicker, for breakfast!
 	quality = DRINK_VERYGOOD
@@ -348,27 +348,27 @@
 	taste_description = "绵密奶酪味"
 
 /datum/reagent/consumable/soup/stew/thickcheese
-	name = "fondue"
-	description = "A ridiculously thick cheese soup. Creamy, comforting, and decadant."
+	name = "奶酪火锅"
+	description = "浓稠得离谱的奶酪汤。绵密、熨帖，奢侈至极。"
 	color = "#c4be70"
-	taste_description = "velvety cheese"
+	taste_description = "丝绒般的奶酪"
 	nutriment_factor = 30 //You're throwing an entire wheel of cheese into this thing. It'd be criminal if you didn't get something in return!
 	metabolization_rate = 0.6
 	quality = DRINK_GOOD
 	alpha = 222
 
 /datum/reagent/consumable/soup/stew/parmesan
-	name = "aged cheese soup"
-	description = "A thick aged cheese soup. Creamy and comforting."
+	name = "陈年奶酪汤"
+	description = "一碗浓稠的陈年奶酪汤。绵密而熨帖。"
 	color = "#A8AA70"
-	taste_description = "creamy aged cheese"
+	taste_description = "绵密的陈年奶酪"
 	metabolization_rate = 0.8
 
 /datum/reagent/consumable/soup/stew/thickparmesan
-	name = "aged fondue"
-	description = "A ridiculously thick aged cheese soup. Creamy, comforting, and decadant."
+	name = "陈年奶酪火锅"
+	description = "浓稠得离谱的陈年奶酪汤。绵密、熨帖，奢侈至极。"
 	color = "#A8AA70"
-	taste_description = "velvety aged cheese"
+	taste_description = "丝绒般的陈年奶酪"
 	metabolization_rate = 0.6
 	nutriment_factor = 40
 	quality = DRINK_VERYGOOD
@@ -380,49 +380,49 @@
 	taste_description = "鸡肉味"
 
 /datum/reagent/consumable/soup/stew/thickchicken
-	name = "thick chicken stew"
+	name = "浓稠鸡肉炖汤"
 	color = "#BA841C"
-	taste_description = "savory chicken"
+	taste_description = "咸香的鸡肉"
 	nutriment_factor = 30
 
 /datum/reagent/consumable/soup/stew/bakedchicken
-	name = "frybird stew"
+	name = "炸鸟排炖汤"
 	color = "#A0781C"
-	taste_description = "savory chicken with flakes of crispy skin"
+	taste_description = "咸香的鸡肉伴着酥脆的鸡皮碎"
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/stew/bakedthickchicken
-	name = "thick frybird stew"
+	name = "浓稠炸鸟排炖汤"
 	color = "#8F6119"
-	taste_description = "tender chicken with flakes of crispy skin"
+	taste_description = "鲜嫩的鸡肉伴着酥脆的鸡皮碎"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiethickchicken
-	name = "frybird stew with vegetables"
+	name = "蔬菜炸鸟排炖汤"
 	color = "#8F6916"
-	taste_description = "savory chicken with slow-roasted vegetables, flakes of crispy skin, and a sense of lingering warmth"
+	taste_description = "咸香的鸡肉、慢烤蔬菜、酥脆的鸡皮碎，以及一丝久久不散的暖意"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pepperchicken
-	name = "pepper-spiced frybird stew"
+	name = "胡椒辛香炸鸟排炖汤"
 	color = "#A0421C"
-	taste_description = "deliciously tender chicken with flakes of crispy skin, and a hint of tongue-tickling spice"
+	taste_description = "鲜嫩可口的鸡肉、酥脆的鸡皮碎，以及一丝让舌尖发麻的辛味"
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_VERYGOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishchicken
-	name = "lavish frybird stew"
+	name = "奢华炸鸟排炖汤"
 	color = "#A0421C"
-	taste_description = "sumptuously tender chicken with flakes of crispy skin, buttery richness, and a hint of tongue-tickling spice"
+	taste_description = "丰盛鲜嫩的鸡肉、酥脆的鸡皮碎、黄油般的醇厚，以及一丝让舌尖发麻的辛味"
 	nutriment_factor = 40
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
@@ -434,79 +434,79 @@
 	taste_description = "肉香"
 
 /datum/reagent/consumable/soup/stew/frymeat
-	name = "brisket stew"
+	name = "慢炖肉汤"
 	color = "#7F3518"
-	taste_description = "slow-roasted meat"
+	taste_description = "慢火烤制的肉香"
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefrymeat
-	name = "brisket stew with vegetables"
+	name = "蔬菜慢炖肉汤"
 	color = "#633012"
-	taste_description = "savory meat with slow-roasted vegetables, with a refreshingly rich aftertaste"
+	taste_description = "咸香的肉块、慢烤蔬菜，以及清新浓郁的余味"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pepperfrymeat
-	name = "pepper-spiced brisket stew"
+	name = "胡椒辛香慢炖肉汤"
 	color = "#892214"
-	taste_description = "deliciously tender meat, and a hint of tongue-tickling spice"
+	taste_description = "鲜嫩可口的肉块，以及一丝让舌尖发麻的辛味"
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_VERYGOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfrymeat
-	name = "lavish brisket stew"
+	name = "奢华慢炖肉汤"
 	color = "#722616"
-	taste_description = "sumptuously tender meat, a rich and savory broth, and a hint of tongue-tickling spice"
+	taste_description = "丰盛鲜嫩的肉块、浓郁咸鲜的汤底，以及一丝让舌尖发麻的辛味"
 	nutriment_factor = 40
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pork
-	name = "fatty meat stew"
+	name = "肥肉炖汤"
 	color = "#80432a"
-	taste_description = "soft and savory pork"
+	taste_description = "软嫩咸香的猪肉"
 
 /datum/reagent/consumable/soup/stew/thickpork
-	name = "fatty brisket stew"
+	name = "肥美慢炖肉汤"
 	color = "#7F3518"
-	taste_description = "slow-roasted pork"
+	taste_description = "慢火烤制的猪肉香"
 	metabolization_rate = 0.8
 
 /datum/reagent/consumable/soup/stew/frypork
-	name = "crispy and fatty meaty stew"
+	name = "酥脆肥肉炖汤"
 	color = "#633012"
-	taste_description = "savory pork with flakes of crispiness"
+	taste_description = "咸香的猪肉伴着酥脆碎"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/thickfrypork
-	name = "crispy and fatty brisket stew"
+	name = "酥脆肥美慢炖肉汤"
 	color = "#892214"
-	taste_description = "tongue-meltingly soft pork with flakes of crispiness"
+	taste_description = "入口即化的软嫩猪肉伴着酥脆碎"
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/viscera_broth
-	name = "offal stew"
+	name = "下水炖汤"
 	color = "#B65571"
-	taste_description = "overpoweringly strange-tasting, with a mildly savory aftertaste"
+	taste_description = "味道强烈得怪异，带着一丝咸鲜的余味"
 	nutriment_factor = 15
 
 /datum/reagent/consumable/soup/stew/slop
-	name = "slop"
+	name = "泔水"
 	color = "#18130E"
-	taste_description = "charred giblets with a gravely aftertaste, and just a pinch of regret"
+	taste_description = "烧焦的杂碎带着砂砾般的余味，还有一丝后悔"
 	nutriment_factor = 10
 
 /datum/reagent/consumable/soup/stew/fish
@@ -515,42 +515,42 @@
 	taste_description = "鱼鲜味"
 
 /datum/reagent/consumable/soup/stew/fryfish
-	name = "roasted fish stew"
+	name = "烤鱼炖汤"
 	color = "#C6725D"
-	taste_description = "flaky fish in a gently creamy broth"
+	taste_description = "轻柔绵密的汤底里，躺着层层分明的鱼肉"
 	nutriment_factor = 25
 	quality = DRINK_NICE
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefryfish
-	name = "roasted fish stew with vegetables"
+	name = "蔬菜烤鱼炖汤"
 	color = "#C67C78"
-	taste_description = "flaky fish and slow-roasted vegetables in a gently creamy broth"
+	taste_description = "轻柔绵密的汤底里，躺着层层分明的鱼肉与慢烤蔬菜"
 	nutriment_factor = 30
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pepperfryfish
-	name = "pepper-spiced fish stew"
+	name = "胡椒辛香鱼炖汤"
 	color = "#C65D5D"
-	taste_description = "flaky fish in a sharp, creamy broth with tongue-tingling spices"
+	taste_description = "锐利绵密的汤底里，躺着层层分明的鱼肉与让舌尖发麻的香料"
 	nutriment_factor = 35
 	quality = DRINK_VERYGOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfryfish
-	name = "lavish fish stew"
+	name = "奢华鱼炖汤"
 	color = "#C17070"
-	taste_description = "sumptuously flaky fish in a rich, creamy broth with subtle notes of sweetness"
+	taste_description = "丰盛绵密的汤底里，躺着层层分明的鱼肉，带着微妙的甜意"
 	nutriment_factor = 40
 	metabolization_rate = 0.8
 	quality = DRINK_VERYGOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/evilfryfish
-	name = "evil fish stew"
+	name = "邪恶鱼炖汤"
 	color = "#FF3200"
-	taste_description = "an overwhelming sense of dread, whispers of progress, and a surprisingly rich aftertaste"
+	taste_description = "铺天盖地的恐惧感、进步的窃窃私语，以及出乎意料的浓郁余味"
 	nutriment_factor = 66
 	metabolization_rate = 6
 
@@ -560,48 +560,48 @@
 	taste_description = "卡比特肉味"
 
 /datum/reagent/consumable/soup/stew/fryrabbit
-	name = "roasted cabbit stew"
+	name = "烤卡比特炖汤"
 	color = "#BC7A6F"
-	taste_description = "slow-roasted cabbit with a surprisingly pleasant aftertaste"
+	taste_description = "慢火烤制的卡比特肉，带着出乎意料的宜人余味"
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefryrabbit
-	name = "roasted cabbit stew with vegetables"
+	name = "蔬菜烤卡比特炖汤"
 	color = "#A35D46"
-	taste_description = "savory cabbit with caramelized vegetables, with a robust yet subdued aftertaste"
+	taste_description = "咸香的卡比特肉、焦糖化的蔬菜，以及醇厚而收敛的余味"
 	metabolization_rate = 0.8
 	nutriment_factor = 30
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/volf
-	name = "volf stew"
+	name = "沃尔夫炖汤"
 	color = "#80432a"
-	taste_description = "gamey meat"
+	taste_description = "野味十足的肉"
 
 /datum/reagent/consumable/soup/stew/fryvolf
-	name = "vriskette stew"
+	name = "沃尔夫烤肉炖汤"
 	color = "#7F3518"
-	taste_description = "slow-roasted and gamey meat"
+	taste_description = "慢火烤制、野味十足的肉"
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefryvolf
-	name = "vriskette stew with vegetables"
+	name = "蔬菜沃尔夫烤肉炖汤"
 	color = "#633012"
-	taste_description = "savory and gamey meat with slow-roasted vegetables, and a pleasantly warm aftertaste"
+	taste_description = "咸鲜野味的肉块、慢烤蔬菜，以及令人愉悦的温热余味"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/kingvolf
-	name = "king's stew"
+	name = "国王炖汤"
 	color = "#892214"
-	taste_description = "deliciously soft and gamey meat, contrasted with crunchy vegetables and a hint of tongue-tickling spice"
+	taste_description = "软嫩野味的肉块、爽脆的蔬菜，以及一丝让舌尖发麻的辛味"
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_VERYGOOD
@@ -613,102 +613,102 @@
 	taste_description = "贝甲鲜味"
 
 /datum/reagent/consumable/soup/stew/frybisque
-	name = "roasted bisque"
+	name = "烤浓海鲜汤"
 	color = "#ffb74f"
-	taste_description = "roasted shellfish, cradled in a sea of savory-yet-smooth broth"
+	taste_description = "烤制的贝类，安卧在咸鲜顺滑的汤海之中"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfrybisque
-	name = "lavish bisque"
+	name = "奢华浓海鲜汤"
 	color = "#FFC688"
-	taste_description = "sumptuously roasted shellfish, savory-yet-smooth broth, and a hint of spiced butteriness"
+	taste_description = "丰盛的烤贝类、咸鲜顺滑的汤底，以及一丝辛香黄油的醇厚"
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/seafoodbroil
-	name = "seabroil chowder"
+	name = "海烩浓汤"
 	color = "#FFA74F"
-	taste_description = "creamy shellfish with the occassional crunch"
+	taste_description = "绵密的贝肉，偶尔来一点脆响"
 	nutriment_factor = 25
 	alpha = 200
 
 /datum/reagent/consumable/soup/stew/fryseafoodbroil
-	name = "roasted seabroil chowder"
+	name = "烤海烩浓汤"
 	color = "#ffb74f"
-	taste_description = "roasted shellfish within a creamy, delicate broth"
+	taste_description = "绵密细腻的汤底里，躺着烤制的贝肉"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 222
 
 /datum/reagent/consumable/soup/stew/lavishfryseafoodbroil
-	name = "lavish seabroil chowder"
+	name = "奢华海烩浓汤"
 	color = "#FFE3D9"
-	taste_description = "sumptuously creamy broth with a hint of moist clammage"
+	taste_description = "丰盛绵密的汤底，带着一丝湿润的蛤肉味"
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
 	alpha = 222
 
 /datum/reagent/consumable/soup/stew/meatrice
-	name = "fried congee with roasted meat"
+	name = "烤肉炒米粥"
 	color = "#E5C099"
-	taste_description = "mushy, savory-brothed rice with chunks of tender meat"
+	taste_description = "软烂咸鲜的米粥，伴着大块嫩肉"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 250
 
 /datum/reagent/consumable/soup/stew/eggrice
-	name = "fried congee with cackleberries"
+	name = "鸡蛋炒米粥"
 	color = "#F7C997"
-	taste_description = "mushy, savory-brothed rice with creamy yolkage and crispy eggs"
+	taste_description = "软烂咸鲜的米粥，伴着绵密的蛋黄和酥脆的蛋块"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 250
 
 /datum/reagent/consumable/soup/stew/shrimprice
-	name = "fried congee with roasted shrimp"
+	name = "烤虾炒米粥"
 	color = "#F7D5BE"
-	taste_description = "mushy, savory-brothed rice with salty yet subdued shellfish"
+	taste_description = "软烂咸鲜的米粥，伴着咸鲜而克制的贝肉"
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
 	alpha = 250
 
 /datum/reagent/consumable/soup/stew/cheeserice
-	name = "fried congee with melted cheese"
+	name = "融酪炒米粥"
 	color = "#F7E297"
-	taste_description = "mushy, savory-brothed rice that's been smothered in cheesy goodness"
+	taste_description = "软烂咸鲜的米粥，被浓郁的奶酪美味浸透"
 	nutriment_factor = 25
 	metabolization_rate = 0.6
 	quality = DRINK_NICE
 	alpha = 250
 
 /datum/reagent/consumable/soup/stew/lavishfryrice
-	name = "lavish brisket-congee"
+	name = "奢华慢炖肉米粥"
 	color = "#E0AF97"
-	taste_description = "sumptuous, pillowy rice with slow-braised meats with hints of butteriness and cheese"
+	taste_description = "丰盛如枕的米粥，伴着慢炖肉块，带着一丝黄油与奶酪的气息"
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
 	alpha = 250
 
 /datum/reagent/consumable/soup/stew/yucky
-	name = "strange stew"
+	name = "怪味炖汤"
 	color = "#9e559c"
-	taste_description = "overpoweringly strange-tasting, with a mildly tangy aftertaste"
+	taste_description = "强烈得压倒一切的怪味，带着一丝微妙的酸涩余味"
 
 /datum/reagent/consumable/soup/stew/fryyucky
-	name = "strange brisket stew"
+	name = "怪味慢炖肉汤"
 	color = "#9E6D84"
-	taste_description = "a pleasantly implacable meat, somewhere between volf and chicken"
+	taste_description = "一块令人愉悦的硬气肉，介于沃尔夫肉与鸡肉之间"
 	nutriment_factor = 30
 	quality = DRINK_NICE
 	alpha = 200
@@ -726,36 +726,36 @@
 /datum/reagent/consumable/soup/stew/garlick_soup
 	name = "蒜汤"
 	color = "#FAF9F6"
-	taste_description = "clear sinuses"
+	taste_description = "通窍的清爽"
 
 /datum/reagent/consumable/soup/stew/cucumber_soup
 	name = "黄瓜汤"
 	color = "#98fb98"
-	taste_description = "rich cucumbers"
+	taste_description = "丰盈的黄瓜"
 
 /datum/reagent/consumable/soup/stew/thickcucumber_soup
-	name = "thick cucumber soup"
+	name = "浓稠黄瓜汤"
 	color = "#98fb98"
-	taste_description = "rich and chunky cucumbers"
+	taste_description = "浓郁而厚实的黄瓜"
 	nutriment_factor = 25
 
 /datum/reagent/consumable/soup/stew/eggplant_soup
 	name = "茄子汤"
 	color = "#fff8e3"
-	taste_description = "tasty eggplant"
+	taste_description = "鲜美的茄子"
 
 /datum/reagent/consumable/soup/stew/aubergine_soup
-	name = "aubergine stew"
+	name = "茄丁炖汤"
 	color = "#D9E4E3"
-	taste_description = "tender eggplant with nibblings of roasted mince"
+	taste_description = "软嫩的茄子伴着烤碎肉丁"
 	nutriment_factor = 25
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/stew/lavishaubergine_soup
-	name = "lavish aubergine stew"
+	name = "奢华茄丁炖汤"
 	color = "#D9C6E3"
-	taste_description = "sumptuously tender eggplant, nibblings of roasted mince, and a creamy broth"
+	taste_description = "丰盛软嫩的茄子、烤碎肉丁，以及绵密的汤底"
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_GOOD
@@ -764,12 +764,12 @@
 /datum/reagent/consumable/soup/stew/carrot_stew
 	name = "胡萝卜炖汤"
 	color = "#f26818"
-	taste_description = "savory carrots"
+	taste_description = "咸香的胡萝卜"
 
 /datum/reagent/consumable/soup/stew/thickcarrot_stew
-	name = "roasted carrot stew"
+	name = "烤胡萝卜炖汤"
 	color = "#f26818"
-	taste_description = "savory and caramelized carrots"
+	taste_description = "咸香而焦糖化的胡萝卜"
 	quality = DRINK_NICE
 	alpha = 200
 
@@ -781,47 +781,47 @@
 /datum/reagent/consumable/soup/stew/tomato_soup
 	name = "番茄汤"
 	color = "#db5230"
-	taste_description = "home"
+	taste_description = "家的味道"
 	metabolization_rate = 0.5 // half as fast as normal, last twice as long - it is the best soup after all
 
 /datum/reagent/consumable/soup/stew/plum_soup
-	name = "plum soup"
+	name = "李子汤"
 	color = "#9c305b"
 	taste_description = "甜李子味"
 
 /datum/reagent/consumable/soup/stew/squash_soup
-	name = "squash soup"
+	name = "南瓜汤"
 	color = "#C98C42"
-	taste_description = "autumn's loving embrace"
+	taste_description = "秋日般的温暖怀抱"
 	metabolization_rate = 0.8
 	nutriment_factor = 15
 
 /datum/reagent/consumable/soup/stew/frysquash_soup
-	name = "roasted squash soup"
+	name = "烤南瓜汤"
 	color = "#D3702E"
-	taste_description = "a hearth kindled within your chest, and a pleasantly savory aftertaste"
+	taste_description = "胸中燃起的炉火般的暖意，以及宜人的咸鲜余味"
 	metabolization_rate = 0.8
 	nutriment_factor = 20
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/soup/stew/survival_broth
-	name = "briquebroth"
+	name = "砖汤"
 	color = "#693346"
-	taste_description = "heartwarmingly thick and salty, with little bursts of sweetness and pepperiness"
+	taste_description = "暖心暖胃的浓稠咸香，偶尔迸出丝丝甜意与辛香"
 	nutriment_factor = 30
 	alpha = 222
 
 /datum/reagent/consumable/soup/stew/thicksurvival_broth
-	name = "thick briquebroth"
+	name = "浓稠砖汤"
 	color = "#681936"
-	taste_description = "heartwarmingly thick and savory, with bursts of sweetness and pepperiness"
+	taste_description = "暖心暖胃的浓稠咸鲜，迸发着甜意与辛香"
 	nutriment_factor = 45
 	alpha = 250
 
 /datum/reagent/consumable/soup/stew/saltmeat_stew
-	name = "salted meat stew"
+	name = "咸肉炖汤"
 	color = "#693346"
-	taste_description = "overwhelmingly salty, with hints of savoriness and meatiness"
+	taste_description = "咸得压倒一切，带着一丝咸鲜与肉香"
 	nutriment_factor = 20
 	alpha = 250
 

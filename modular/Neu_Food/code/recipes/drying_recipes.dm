@@ -30,7 +30,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/brothbrique
-	name = "brothbrique"
+	name = "汤砖"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
@@ -41,7 +41,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/brothbriquealt
-	name = "brothbrique, alternate"
+	name = "汤砖（备选）"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
@@ -52,7 +52,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/salotack
-	name = "salotack"
+	name = "肥膘硬饼"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/fat/salo = 1,
@@ -73,7 +73,7 @@
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/raisinsraspberry
-	name = "raisins, raspberries"
+	name = "覆盆子干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/raspberry = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/raspberry
@@ -81,7 +81,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/raisinsblackberry
-	name = "raisins, blackberries"
+	name = "黑莓干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/blackberry
@@ -89,7 +89,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/raisinsstrawberry
-	name = "raisins, strawberry"
+	name = "草莓干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/strawberry = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/strawberry
@@ -97,7 +97,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/raisinsplum
-	name = "raisins, plum"
+	name = "李子干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/plum = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/plum
@@ -105,7 +105,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/raisinspear
-	name = "raisins, pear"
+	name = "梨干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/pear = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/pear
@@ -113,7 +113,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/raisinstangerine
-	name = "raisins, tangerine"
+	name = "柑橘干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/tangerine
@@ -121,7 +121,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/raisinslemon
-	name = "raisins, lemon"
+	name = "柠檬干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/lemon = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/lemon
@@ -129,7 +129,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/raisinslime
-	name = "raisins, lime"
+	name = "青柠干块"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/lime = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins/lime
@@ -137,7 +137,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/trailmix
-	name = "trail-mix"
+	name = "什锦干粮"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 1,
@@ -170,51 +170,51 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/cooking/dryleaf
-	name = "dry swampweed"
+	name = "沼泽干烟叶"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/swampweed = 1)
 	structurecraft = /obj/machinery/tanningrack
 	time = 2 SECONDS
-	verbage_simple = "dry"
-	verbage = "dries"
+	verbage_simple = "风干"
+	verbage = "风干"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/cooking/drytea
-	name = "dry tea leaves"
+	name = "干茶叶"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_dry
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/tea = 1)
 	structurecraft = /obj/machinery/tanningrack
 	time = 2 SECONDS
-	verbage_simple = "dry"
-	verbage = "dries"
+	verbage_simple = "风干"
+	verbage = "风干"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/cooking/dryweed
-	name = "dry westleach leaf"
+	name = "西池干烟叶"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1)
 	structurecraft = /obj/machinery/tanningrack
 	time = 2 SECONDS
-	verbage_simple = "dry"
-	verbage = "dries"
+	verbage_simple = "风干"
+	verbage = "风干"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/cooking/dryrosa
-	name = "dry rosa petals"
+	name = "干玫瑰花瓣"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_dried
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals = 1)
 	structurecraft = /obj/machinery/tanningrack
 	time = 2 SECONDS
-	verbage_simple = "dry"
-	verbage = "dries"
+	verbage_simple = "风干"
+	verbage = "风干"
 	craftsound = null
 
 /datum/crafting_recipe/roguetown/cooking/sigsweet/cheroot
-	name = "cheroot - swampweed"
+	name = "沼叶雪茄"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/clothing/mask/cigarette/rollie/cannabis/cheroot
 	reqs = list(
@@ -222,11 +222,11 @@
 		/obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry = 1,
 		)
 	time = 10 SECONDS
-	verbage_simple = "roll"
-	verbage = "rolls"
+	verbage_simple = "卷制"
+	verbage = "卷制"
 
 /datum/crafting_recipe/roguetown/cooking/sigdry/cheroot
-	name = "cheroot - westleach"
+	name = "西池雪茄"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine/cheroot
 	reqs = list(
@@ -234,11 +234,11 @@
 		/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1,
 		)
 	time = 10 SECONDS
-	verbage_simple = "roll"
-	verbage = "rolls"
+	verbage_simple = "卷制"
+	verbage = "卷制"
 
 /datum/crafting_recipe/roguetown/cooking/sigsweet
-	name = "zig - swampweed"
+	name = "沼叶卷烟"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/clothing/mask/cigarette/rollie/cannabis
 	reqs = list(
@@ -246,11 +246,11 @@
 		/obj/item/paper = 1,
 		)
 	time = 10 SECONDS
-	verbage_simple = "roll"
-	verbage = "rolls"
+	verbage_simple = "卷制"
+	verbage = "卷制"
 
 /datum/crafting_recipe/roguetown/cooking/sigdry
-	name = "zig - westleach"
+	name = "西池卷烟"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine
 	reqs = list(
@@ -258,11 +258,11 @@
 		/obj/item/paper = 1,
 		)
 	time = 10 SECONDS
-	verbage_simple = "roll"
-	verbage = "rolls"
+	verbage_simple = "卷制"
+	verbage = "卷制"
 
 /datum/crafting_recipe/roguetown/cooking/rocknutdry
-	name = "zig - rocknut"
+	name = "石果卷烟"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine
 	reqs = list(
@@ -270,11 +270,11 @@
 		/obj/item/paper = 1,
 		)
 	time = 10 SECONDS
-	verbage_simple = "roll"
-	verbage = "rolls"
+	verbage_simple = "卷制"
+	verbage = "卷制"
 
 /datum/crafting_recipe/roguetown/cooking/menthadry
-	name = "cheroot - mentha"
+	name = "薄荷雪茄"
 	result = /obj/item/clothing/mask/cigarette/rollie/mentha/cheroot
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -283,7 +283,7 @@
 	time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/blackberrydry
-	name = "cheroot - blackberry"
+	name = "黑莓雪茄"
 	result = /obj/item/clothing/mask/cigarette/rollie/blackberry/cheroot
 	reqs = list(
 	/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -292,7 +292,7 @@
 	time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/appledry
-	name = "cheroot - apple"
+	name = "苹果雪茄"
 	result = /obj/item/clothing/mask/cigarette/rollie/apple/cheroot
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -301,7 +301,7 @@
 	time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/menthaappledry
-    name = "cheroot - mentha-apple"
+    name = "薄荷苹果雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/menthaapple/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -311,7 +311,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/chocolatedry
-    name = "cheroot - chocolate"
+    name = "巧克力雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/chocolate/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -320,7 +320,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/strawberrydry
-    name = "cheroot - strawberry"
+    name = "草莓雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/strawberry/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -329,7 +329,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/carrotdry
-    name = "cheroot - carrot"
+    name = "胡萝卜雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/carrot/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -338,7 +338,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/limedry
-    name = "cheroot - lime"
+    name = "青柠雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/lime/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -347,7 +347,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/salviadry
-    name = "cheroot - salvia"
+    name = "鼠尾草雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/salvia/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -356,7 +356,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/salviavalerianadry
-    name = "cheroot - salvia-valeriana"
+    name = "鼠尾草-缬草雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/salviavaleriana/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -366,7 +366,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/calenduladry
-    name = "cheroot - calendula"
+    name = "金盏花雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/calendula/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -375,7 +375,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/jacksberriesdry
-    name = "cheroot - jacksberries"
+    name = "杰克莓雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/jacksberries/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -384,7 +384,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/jacksberriespoisondry
-    name = "cheroot - jacksberries poison"
+    name = "杰克莓雪茄（有毒）"
     result = /obj/item/clothing/mask/cigarette/rollie/jacksberriespoison/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -393,7 +393,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/abyssdry
-    name = "cheroot - abyss"
+    name = "深渊雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/abyss/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -404,7 +404,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/zigardry
-    name = "cheroot - zigar"
+    name = "齐加雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/zigar/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 2,
@@ -413,7 +413,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/lemonystickets
-	name = "lemony stickets"
+	name = "柠檬风味肉条"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/lemon = 1,
@@ -424,7 +424,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/allspice
-	name = "blend spices into allspice"
+	name = "调配什香粉"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/pepper = 1,
@@ -433,14 +433,14 @@
 		/obj/item/reagent_containers/powder/rocknut = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/allspice
-	verbage_simple = "blend"
-	verbage = "blends"
+	verbage_simple = "调配"
+	verbage = "调配"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 	craftdiff = 4 //A true chef never reveals his secrets!
 
 /datum/crafting_recipe/roguetown/cooking/sugartangerine
-	name = "smothered tangerines"
+	name = "糖渍柑橘"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine = 1,
@@ -451,7 +451,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/cooking/sugarblackberry
-	name = "smothered blackberries"
+	name = "糖渍黑莓"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry = 1,
@@ -462,7 +462,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarrocknut
-	name = "smothered rocknuts"
+	name = "糖渍石果"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
@@ -474,7 +474,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarrocknutalt
-	name = "smothered rocknuts, alternate"
+	name = "糖渍石果（备选）"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
@@ -487,7 +487,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/spicechocolate
-	name = "chocolate with pumpkin spice"
+	name = "五香巧克力"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/chocolate/slice = 1,
@@ -498,7 +498,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/cooking/spicecoffee
-	name = "roasted coffee beans with pumpkin spice"
+	name = "五香咖啡豆"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/coffeebeansroasted = 1,
@@ -509,7 +509,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/spicetea
-	name = "ground tea leaves with pumpkin spice"
+	name = "五香茶叶"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_ground = 1,
@@ -520,7 +520,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/spicerosa
-	name = "dried rosa petals with pumpkin spice"
+	name = "五香玫瑰花瓣"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_dried = 1,
@@ -532,217 +532,217 @@
 
 //SUGARCRAFTING!!!
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkd
-	name = "sugarshape, ducal mark"
+	name = "公爵印记糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/dmark
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkp
-	name = "sugarshape, psydonic mark"
+	name = "普赛顿印记糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/pmark
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkz
-	name = "sugarshape, zizonic mark"
+	name = "齐佐印记糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/zmark
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarka
-	name = "sugarshape, holy mark"
+	name = "圣堂印记糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/amark
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarks
-	name = "sugarshape, skull mark"
+	name = "骷髅印记糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/smark
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkh
-	name = "sugarshape, heart mark"
+	name = "爱心印记糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/hmark
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedstatuek
-	name = "sugarshape, knightly statue"
+	name = "骑士雕像糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/statuek
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedstatuer
-	name = "sugarshape, ducal statue"
+	name = "王室雕像糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/statuer
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedstatuey
-	name = "sugarshape, yeomannic statue"
+	name = "自耕农雕像糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/statuey
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedstatuel
-	name = "sugarshape, lordly statue"
+	name = "领主雕像糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/statuel
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedarch
-	name = "sugarshape, bridge"
+	name = "拱门糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/arch
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedarchway
-	name = "sugarshape, archway"
+	name = "拱道糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/archway
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedtower
-	name = "sugarshape, tower"
+	name = "塔楼糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/tower
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedtowers
-	name = "sugarshape, small tower"
+	name = "小塔糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/towers
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedcastle
-	name = "sugarshape, castle"
+	name = "城堡糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/castle
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedflag
-	name = "sugarshape, flag"
+	name = "旗帜糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/flag
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedhouse
-	name = "sugarshape, house"
+	name = "房屋糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/house
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedtree
-	name = "sugarshape, tree"
+	name = "树木糖塑"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/tree
 	craftdiff = 4
-	verbage_simple = "sculpt"
-	verbage = "sculpts"
+	verbage_simple = "雕刻"
+	verbage = "雕刻"
 	req_table = TRUE
 	structurecraft = /obj/structure/table

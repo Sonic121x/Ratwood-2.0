@@ -18,9 +18,9 @@
 
 /*	..................   Ducal steak   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal
-	tastes = list("steak" = 1, "pepper" = 1, "garlick" = 1)
-	name = "ducal steak"
-	desc = "Roasted meat flanked with a generous coating of ground pepper for intense flavor and scribbled in with garlick. Said to have been favorite meal of the Mad Duke."
+	tastes = list("牛排香" = 1, "胡椒香" = 1, "大蒜香" = 1)
+	name = "公爵牛排"
+	desc = "烤肉表面厚厚覆着磨碎黑胡椒，滋味浓烈，还抹上了大蒜。据说曾是疯公爵最爱的菜肴。"
 	faretype = FARE_LAVISH
 	icon_state = "ducalsteak"
 	eat_effect = /datum/status_effect/buff/greatmealbuff
@@ -61,7 +61,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF)
 	tastes = list("牛排香" = 1, "洋葱香" = 1, "胡萝卜香" = 1)
 	name = "牛排餐"
-	desc = ""
+	desc = "烤肉配上咸香烤胡萝卜与香气四溢的炸洋葱，再浇上三者交融出的肉汁，成就一份令人垂涎的酱汁。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "steakmeal"
 	foodtype = VEGETABLES | MEAT
@@ -104,9 +104,9 @@
 /*	.................   Wiener & Fried onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_QUARTER)
-	tastes = list("savory sausage" = 1, "fried onions" = 1)
-	name = "wiener and onions"
-	desc = "Stout and flavourful."
+	tastes = list("咸香香肠" = 1, "炸洋葱香" = 1)
+	name = "洋葱香肠"
+	desc = "扎实又够味。"
 	faretype = FARE_NEUTRAL
 	portable = FALSE
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
@@ -119,9 +119,9 @@
 /*	.................   Wiener & potato & onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF)
-	tastes = list("savory sausage" = 1, "potato" = 1)
-	name = "wiener meal"
-	desc = "Stout and nourishing."
+	tastes = list("咸香香肠" = 1, "土豆香" = 1)
+	name = "土豆洋葱香肠"
+	desc = "扎实又滋补。"
 	faretype = FARE_NEUTRAL
 	portable = FALSE
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
@@ -143,11 +143,11 @@
 
 /*	.................  Ducal Spiced Baked Poultry  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/ducal
-	name = "ducal bird-roast"
-	desc = "A plump bird, roasted perfection, spiced to taste divine with touch of garlick to top it all off. Perfect to feast on while your son is dying in battle..."
+	name = "公爵烤禽"
+	desc = "一只肥美禽鸟烤得恰到好处，香料调味得近乎神赐，最后再以大蒜点缀。最适合在你儿子战死沙场时大快朵颐……"
 	faretype = FARE_LAVISH
 	icon_state = "ducalchicken"
-	tastes = list("spicy birdmeat" = 1, "garlick" = 1)
+	tastes = list("辛香禽肉" = 1, "大蒜香" = 1)
 	eat_effect = /datum/status_effect/buff/greatmealbuff
 
 /*	.................  Baked Butter Poultry  ................... */
@@ -162,8 +162,8 @@
 
 /*	.................  Baked Double Poultry  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/doublestacked
-	name = "bird filled bird-roast"
-	desc = "A plump bird, roasted perfection.. filled with another bird - what compelled you to make this? Psydon Weeps at your hubris."
+	name = "塞鸟烤禽"
+	desc = "一只肥美禽鸟烤得恰到好处……里面还塞了另一只鸟——是什么驱使你做出这种东西的？普赛顿为你的傲慢而哭泣。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "stuffedchicken"
 	eat_effect = /datum/status_effect/buff/mealbuff
@@ -172,9 +172,9 @@
 /*	.................   Frybird & Tato   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/frybirdtato
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_QUARTER)
-	tastes = list("frybird" = 1, "tato" = 1)
-	name = "frybird with a tato"
-	desc = "Hearty, comforting, and rich - Some say it was Ravox's favorite meal."
+	tastes = list("炸禽肉香" = 1, "土豆香" = 1)
+	name = "炸鸟排配土豆"
+	desc = "扎实、慰藉而丰盛——有人说这是拉沃克斯最爱的菜肴。"
 	faretype = FARE_FINE
 	portable = FALSE
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
@@ -201,107 +201,107 @@
 
 /* .............   Fried Cabbit w/ Garlick  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlick
-	name = "garlick cabbit"
-	desc = "A slab of cabbit, fried to a perfect crispy texture - coated over in glove of garlick."
+	name = "大蒜卡比特肉"
+	desc = "一块卡比特肉，炸至完美的酥脆口感——外层裹满大蒜。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "frycabbit_garlick"
-	tastes = list("warm cabbit" = 1, "garlick" = 1)
+	tastes = list("热卡比特肉香" = 1, "大蒜香" = 1)
 
 /* .............   Fried Cabbit w/ Garlick & Cucumber ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlick/cucumber
-	name = "elven cabbit roast"
-	desc = "A slab of cabbit, fried to a perfect crispy texture - coated over in glove of garlick and served with side of cucumber. Thought to bring good luck by rangers!"
+	name = "精灵卡比特烤肉"
+	desc = "一块卡比特肉，炸至完美的酥脆口感——外层裹满大蒜，再配上一旁的黄瓜。游侠们认为这会带来好运！"
 	icon_state = "frycabbit_garlick_cucumber"
-	tastes = list("warm cabbit" = 1, "garlick" = 1, "cucumber" = 1)
+	tastes = list("热卡比特肉香" = 1, "大蒜香" = 1, "黄瓜香" = 1)
 	eat_effect = /datum/status_effect/buff/mealbuff
 
 /* .............  Garlicked Fried Volf   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick
-	name = "garlick volf"
-	desc = "A slab of volf, fried to a perfect medium rare. A bit gamey and chewy, but tasty. This piece has been coated over in glove of garlick."
+	name = "大蒜沃尔夫肉"
+	desc = "一块沃尔夫肉，煎至完美的五分熟。略带野味也有些韧，但很好吃。这块还裹满了大蒜。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "fryvolf_garlick"
-	tastes = list("gamey volf" = 1, "garlick" = 1)
+	tastes = list("野味沃尔夫香" = 1, "大蒜香" = 1)
 
 /* .............  Garlicked Fried Volf w/ Cucumber  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick/cucumber
-	name = "hunter's feast"
-	desc = "A slab of volf, fried to a perfect medium rare. A bit gamey and chewy, but tasty. This piece has been coated over in glove of garlick and served with side of cucumber."
+	name = "猎人之宴"
+	desc = "一块沃尔夫肉，煎至完美的五分熟。略带野味也有些韧，但很好吃。这块裹满了大蒜，还配上一旁的黄瓜。"
 	icon_state = "fryvolf_garlick_cucumber"
-	tastes = list("gamey volf" = 1, "garlick" = 1, "cucumber" = 1)
+	tastes = list("野味沃尔夫香" = 1, "大蒜香" = 1, "黄瓜香" = 1)
 	eat_effect = /datum/status_effect/buff/mealbuff
 
 /* .............  Honey glazed venison ribs  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_ribs/cooked/glazed
-	name = "forest glaze"
-	desc = "A helping of venison ribs glazed to perfection in honey. The golden brown flesh is almost shiny enough for you to see your own reflection."
+	name = "森林蜜汁"
+	desc = "一份鹿肋排，以蜂蜜上釉至完美。金棕色的肉几乎光可鉴人，能映出你自己的倒影。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "ribs_glazed"
-	tastes = list("sweet venison" = 1, "honey" = 1)
+	tastes = list("甜鹿肉香" = 1, "蜂蜜香" = 1)
 	faretype = FARE_FINE
 	eat_effect = /datum/status_effect/buff/mealbuff
 
 /* .............  Wine glazed venison loins  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_loins/cooked/sauced
-	name = "forest bounty"
-	desc = "Venison tenderloin cut into fine slices, covered in a mixture of berry paste and wine-glazing. The liqour seems to have caramelized into a tasty layer of glaze."
+	name = "森林恩赐"
+	desc = "鹿里脊切成细片，裹上浆果酱与酒釉的混合物。酒液似乎焦糖化成了美味的一层釉。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "loins_sauced"
-	tastes = list("tender venison" = 1, "caramelized wine" = 1, "berry paste")
+	tastes = list("嫩鹿肉香" = 1, "焦糖酒香" = 1, "浆果酱" = 1)
 	faretype = FARE_LAVISH
 	eat_effect = /datum/status_effect/buff/mealbuff
 
 /* .............  Choice venison cut  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_prime/cooked/choice
-	name = "forest trove"
-	desc = "A choice cut of venison seared to perfection with a hint of pink flesh still visible."
+	name = "森林珍藏"
+	desc = "一份精选鹿肉，煎烤至完美，仍隐约可见粉红的肉质。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "choice_cut"
-	tastes = list("mellow venison" = 1, "garlyck" = 1, "onion" = 1)
+	tastes = list("醇和鹿肉香" = 1, "大蒜香" = 1, "洋葱香" = 1)
 	faretype = FARE_LAVISH
 	eat_effect = /datum/status_effect/buff/mealbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_prime/cooked/choice/butter
-	name = "mellow forest trove"
-	desc = "A choice cut of venison seared to perfection with a hint of pink flesh still visible. Drowned in a good slice of butter, as if it weren't soft enough before."
+	name = "醇和森林珍藏"
+	desc = "一份精选鹿肉，煎烤至完美，仍隐约可见粉红的肉质。浸在一大块黄油里，仿佛之前的肉质还不够软嫩似的。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "choice_cut_b"
-	tastes = list("mellow venison" = 1, "garlyck" = 1, "onion" = 1, "butter" = 1)
+	tastes = list("醇和鹿肉香" = 1, "大蒜香" = 1, "洋葱香" = 1, "黄油香" = 1)
 	faretype = FARE_LAVISH
 	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = null
 
 /* .............  Deadite saiga cube  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_loins_z/cooked/cubed
-	name = "carrion coulis"
-	desc = "A gelatinous, ghoulish delight fashioned from wyrd loins. Poke it to see it shudder and wobble."
+	name = "腐肉浓冻"
+	desc = "一份由诡异里脊制成的胶状、食尸鬼般的美味。戳一戳，看它颤抖晃动。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "saiga_d_jelly"
 	// At last, proper supper
 	faretype = FARE_NEUTRAL
-	tastes = list("gelatin" = 1, "squishy meat" = 1)
+	tastes = list("明胶味" = 1, "软塌塌的肉味" = 1)
 	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = null
 	cooked_smell = /datum/pollutant/food/strange_meat
 
 /* .............  Deadite saiga rib crown  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_ribs_z/cooked/crown
-	name = "couronne de baies-noires"
-	desc = "A crown fashioned from wyrd meat rib-bones, cooked to the point most of the juicy meat has sagged to the bottom. The meat-mash is dotted with countless jackberries down below."
+	name = "黑莓之冠"
+	desc = "一顶用诡异肉肋骨打造的冠冕，烹煮到大部分多汁的肉都塌落到底部。下方的肉泥上点缀着无数杰克莓。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "saiga_d_ribs"
-	tastes = list("mashed meat" = 1, "jackberries" = 1)
+	tastes = list("肉泥味" = 1, "杰克莓" = 1)
 	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = null
 	cooked_smell = /datum/pollutant/food/strange_meat
 
 /* .............  Deadite saiga roses  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_prime_z/cooked/roses
-	name = "bouquet des trépassés"
-	desc = "A strange dish of prime wyrd meat, sliced thin and assembled to look like roses. These are typically left on graves to commemorate someone. Otavan vampires make a habit out of trying to steal these off graves, for they desire the strange flesh."
+	name = "亡者花束"
+	desc = "一道用上等诡异肉制成的奇特菜肴，切成薄片并摆成玫瑰的形状。通常会被留在坟墓上以纪念逝者。奥塔瓦的吸血鬼习惯从坟上偷走这些花束，因为他们垂涎这种奇异的肉。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "saiga_d_roses"
-	tastes = list("thin sticky meat" = 1, "garlyck" = 1)
+	tastes = list("薄而粘的肉味" = 1, "大蒜香" = 1)
 	eat_effect = /datum/status_effect/buff/mealbuff
 	faretype = FARE_FINE
 	rotprocess = null
@@ -309,11 +309,11 @@
 
 /* .............  Deadite saiga wellington  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_z/cooked/meatloaf
-	name = "grave galette"
-	desc = "A patchwork amalgamation of various meats, but primarily that of wyrd meat. It is a meatloaf, but you'd rather it didn't exist at all."
+	name = "墓中肉糕"
+	desc = "由各种肉类拼凑而成的混合物，但主要还是诡异肉。它是一块肉糕，但你宁愿它根本不存在。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "d_bread6"
-	tastes = list("crumbly squishy meatloaf" = 1, "ghoul" = 1, "grout and grime" = 1)
+	tastes = list("易碎软烂的肉糕味" = 1, "食尸鬼味" = 1, "污泥与尘垢" = 1)
 	// Safe to eat, not much else, though.
 	eat_effect = null
 	slices_num = 6
@@ -346,16 +346,16 @@
 			changefood(slice_path, eater)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_z/cooked/meatloaf_slice
-	name = "galette slice"
+	name = "肉糕切片"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
-	desc = "A singular slice of a truly vile meatloaf fashioned out of deadite saiga flesh."
+	desc = "一整块用尸鬼赛加羚羊肉制成的、真正令人作呕的肉糕中的一片。"
 	icon_state = "d_bread_slice"
 	bitesize = 2
 	slices_num = FALSE
 	slice_path = FALSE
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	eat_effect = null
-	tastes = list("crumbly squishy meatloaf" = 1, "ghoul" = 1, "grout and grime" = 1)
+	tastes = list("易碎软烂的肉糕味" = 1, "食尸鬼味" = 1, "污泥与尘垢" = 1)
 	cooked_type = null
 	fried_type = null
 	cooked_smell = /datum/pollutant/food/strange_meat

@@ -23,12 +23,12 @@
 
 /obj/item/reagent_containers/food/snacks/grown/apple/gold
 	seed = null //Ungrowable(?). Can be changed if someone wishes.
-	name = "ambrosia"
-	desc = "A golden apple, by any other name. You can see your own reflection in the golden apple's surface, as the fingers cradling it adopt a pleasant numbness."
+	name = "仙馔"
+	desc = "金苹果，换个名字罢了。你能在金苹果的表面看见自己的倒影，托着它的指尖还会泛起一阵惬意的酥麻。"
 	icon_state = "gapple"
 	sellprice = 55 //Unsellable to the Hordemaster, but barterable as raw wealth - otherwise.
 	faretype = FARE_FINE
-	tastes = list("divinely crisp sweetness" = 1)
+	tastes = list("神圣脆甜味" = 1)
 	trash = /obj/item/trash/gapplecore
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/fruit/apple_sliced/gold
 	slices_num = 3
@@ -45,15 +45,15 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.patron.type == /datum/patron/inhumen/matthios)
-			. += span_rose("A fruit from the heavens, courageously plucked by Matthios while escaping with Astrata's divine fire.. or so, they say. Eating it will not only be quite tasty, but help mend my lesser wounds as well.")
+			. += span_rose("来自天国的果实，相传是马西奥斯带着阿斯特拉塔的神火逃离时，壮着胆子摘下的。吃下它不光美味无比，还能帮我愈合那些不大不小的伤口。")
 
 /obj/item/reagent_containers/food/snacks/rogue/fruit/apple_sliced/gold
-	name = "sliceed ambrosia"
+	name = "仙馔切片"
 	icon_state = "gapple_sliced"
-	desc = "A golden apple, parted into perfectly symmetrical thirds. Opulance has never tasted so sweet!"
+	desc = "一只金苹果，被分成完美对称的三份。奢华从未如此甜蜜可口！"
 	faretype = FARE_LAVISH
 	rotprocess = null
-	tastes = list("a sliver of divine sweetness" = 1)
+	tastes = list("一丝神性甜美" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS, /datum/reagent/medicine/stronghealth = 6)
 
@@ -66,11 +66,11 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.patron.type == /datum/patron/inhumen/matthios)
-			. += span_rose("Sliced fruit from the heavens, courageously plucked by Matthios while escaping with Astrata's divine fire.. or so, they say. Eating it will not only be quite tasty, but help mend my lesser wounds as well.")
+			. += span_rose("来自天国的果实切片，相传是马西奥斯带着阿斯特拉塔的神火逃离时，壮着胆子摘下的。吃下它不光美味无比，还能帮我愈合那些不大不小的伤口。")
 
 /obj/item/trash/gapplecore
-	name = "cored ambrosia"
-	desc = "Hey, who turned out the lights? I thought the feast was just getting started!"
+	name = "去核的仙馔"
+	desc = "嘿，谁把灯关了？我还以为盛宴才刚刚开始呢！"
 	icon_state = "gapplecore"
 	icon = 'icons/roguetown/items/produce.dmi'
 
@@ -83,7 +83,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.patron.type == /datum/patron/inhumen/matthios)
-			. += span_rose("The remains of a heavenly fruit, courageously plucked by Matthios while escaping with Astrata's divine fire.. or so, they say. Such fruits're said to refresh and heal mortals more than any other morsel. </br>I can fetch more by bargaining with the Hoardmaster and those most-devout to greed.")
+			. += span_rose("天国果实的残骸，相传是马西奥斯带着阿斯特拉塔的神火逃离时，壮着胆子摘下的。据说这种果实比任何食物都更能让凡人恢复精神、愈合伤口。</br>我还能通过与藏宝大师和那些最虔诚的贪婪之徒讨价还价，弄到更多。")
 
 /obj/item/reagent_containers/food/snacks/grown/apple/gold/On_Consume(mob/living/eater)
 	..()
@@ -95,7 +95,7 @@
 /obj/item/reagent_containers/food/snacks/grown/apple/gold/blockproj(mob/living/carbon/human/H)
 
 	if(prob(98))
-		H.visible_message(span_notice("[H] is saved by the golden apple!"))
+		H.visible_message(span_notice("[H]被金苹果救了一命！"))
 		H.dropItemToGround(H.head)
 		return 1
 	else

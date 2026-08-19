@@ -112,8 +112,8 @@ What it does:
 	sellprice = 0
 
 /obj/item/cooking/platter/bronze
-	name = "bronze platter"
-	desc = "A shined bronze platter that hasn't lost its charm, even after a thousand yils."
+	name = "青铜拼盘"
+	desc = "一只擦得锃亮的青铜拼盘，哪怕历经千年也未曾失去魅力。"
 	icon_state = "platter_bronze"
 
 /obj/item/cooking/platter/copper
