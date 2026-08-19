@@ -10,4 +10,4 @@
 
 /obj/item/reagent_containers/peppermill/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-clicking a variety of cooked meats, such as frysteaks and fillets of fish, will season them into higher-classed meals.")
+	. += span_info("左键点击各种熟肉（如煎牛排和鱼柳），即可为它们调味，使其成为更高档的菜肴。")

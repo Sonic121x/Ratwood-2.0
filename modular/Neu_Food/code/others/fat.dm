@@ -86,9 +86,9 @@
 
 /obj/item/reagent_containers/food/snacks/tallow/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Mixing tallow with a filled glass of wine can make 'redtallow', a crimson-tinged wax that's popular for sealing folded letters of ducal- and religious importance.")
-	. += span_info("Mixing tallow with ground tea leaves can make 'greentallow', a sickly green wax that's popular for sealing folded letters of mercantile- and bureaucratic importance.")
-	. += span_info("For more grizzly alternatives, one can substitute the wine with blood, or - in the hands of a trained Inquisitorial agent - a filled INDEXER.")
+	. += span_info("将板油与一杯斟满的葡萄酒混合，可以制成"红板油"——一种带绯红色泽的蜡，常用于密封公爵与宗教要函。")
+	. += span_info("将板油与磨碎的茶叶混合，可以制成"绿板油"——一种病态绿色的蜡，常用于密封商业与官府文书。")
+	. += span_info("若想要更骇人的替代品，可以用血来代替葡萄酒，或者——若你是一位训练有素的审判庭特工——用一满筒索引器。")
 
 /obj/item/reagent_containers/food/snacks/tallow/red
 	name = "审判庭板油"
@@ -138,7 +138,7 @@
 				if(success)
 					changefood(/obj/item/reagent_containers/food/snacks/tallow/red, user)
 	if(istype(I, /obj/item/ash))
-		if(alert(user, "STAIN THE TALLOW?", "IT'S JUST ASH", "YES", "NO") != "NO")
+		if(alert(user, "要给板油染色吗？", "只是灰烬而已", "要", "不要") != "不要")
 			changefood(/obj/item/reagent_containers/food/snacks/tallow/black, user)
 			qdel(I)
 		else

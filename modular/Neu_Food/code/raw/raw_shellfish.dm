@@ -26,7 +26,7 @@
 
 /obj/item/reagent_containers/food/snacks/fish/get_mechanics_examine(mob/user)
     . = ..()
-    . += span_info("Chopping fish on a table with a knife, cleaver, or dagger turns it into mince. Mince can be used for advanced recipes, or used to make 'more out of less' in a stew's broth.")
+    . += span_info("在桌上用刀、剁刀或匕首切鱼，可以把它变成鱼糜。鱼糜可用于高级菜谱，也能在炖菜的高汤里“以小博大”。")
 
 /obj/item/reagent_containers/food/snacks/fish/clam
 	name = "蛤蜊"
