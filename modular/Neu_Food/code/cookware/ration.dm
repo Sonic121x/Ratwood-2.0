@@ -16,9 +16,9 @@
 
 /obj/item/ration/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("All food can be wrapped up by left-clicking them with the ration wrapping paper. This includes larger perishables like frybirds, cakes, and loaves of bread.")
-	. += span_info("While wrapped, food will not rot. This can be used to safely transport more luxorious around, without having to worry about it rotting away in one's pack.")
-	. += span_info("Once wrapped, activating - or left-clicking - the package in your hand will unwrap it.")
+	. += span_info("用口粮包装纸左键点击任何食物，即可将其包裹起来。这包括更大的易腐食品，如炸鸟排、蛋糕和整条面包。")
+	. += span_info("包裹期间食物不会腐烂。这可以用来安全地运送更奢华的食物，而不必担心它们在背包里坏掉。")
+	. += span_info("包裹完成后，激活——或左键点击——手中的包裹即可将其拆开。")
 
 /obj/item/ration/attackby(obj/item/I, mob/user)
 	. = ..()
