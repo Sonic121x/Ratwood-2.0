@@ -87,7 +87,7 @@
 	if(can_parry)
 		can_parry = FALSE
 
-/obj/item/rogueweapon/obj_fix()
+/obj/item/rogueweapon/obj_fix(mob/user, full_repair = TRUE)
 	force = initial(force)
 	force_wielded = initial(force_wielded)
 	update_force_dynamic()
