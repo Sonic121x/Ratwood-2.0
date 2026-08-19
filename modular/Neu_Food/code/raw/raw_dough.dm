@@ -79,24 +79,24 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Rolling the dough flat and thin..."))
+			to_chat(user, span_notice("把面团擀平擀薄……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/flatdough(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	else
 		return ..()
 
 /*	.................   Flatdough  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/flatdough
-	name = "flatdough"
-	desc = "Flattened dough, bare for all to see. A sharp edge can prepare the lines for a sheet of crackerdough, while a smearing of tomatoes can set the stage for a peasant's feast."
+	name = "擀平面团"
+	desc = "擀得薄薄的面团，一览无余。用利刃划出纹路，便能备好一张脆饼面坯；抹上番茄酱，则可为农家的盛宴拉开序幕。"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "flatdough"
 	slices_num = null
@@ -112,45 +112,45 @@
 	if(I.get_sharpness())
 		if(isturf(loc)&& (found_table))
 			playsound(user, 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Scoring lines into [src]..."))
+			to_chat(user, span_notice("在[src]上划出纹路……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw(loc)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to score it into crackerdough!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能划出脆饼坯的纹路！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tomato))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Meticulously crushing the tomatoes into a thick, chunky sauce..."))
+			to_chat(user, span_notice("仔细把番茄捣成浓稠的碎块酱料……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to smear the flatdough with sauced tomatoes!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给擀平面团抹上番茄酱！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tomato_sliced))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Crushing the sliced tomatoes into a thick, velvety sauce..."))
+			to_chat(user, span_notice("把番茄片捣成浓稠顺滑的酱料……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to smear the flatdough with sauced tomatoes!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给擀平面团抹上番茄酱！"))
 	else
 		return ..()
 
 /*	.................   Tomatoplate  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw
-	name = "uncooked tomatoplate"
+	name = "未烤制的番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "pizza_base"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes upon its surface. A sprinkling of fresh cheese should round it all out."
+	desc = "擀平面团表面抹了厚厚一层番茄酱。再撒上新鲜奶酪，就能圆满了。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate
@@ -162,22 +162,22 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Ripping the fresh cheese apart and sprinkling the tomato-sauced flatdough..."))
+			to_chat(user, span_notice("撕开新鲜奶酪，撒在抹了番茄酱的擀平面团上……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_cheese(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to sprinkle the tomato-sauced flatdough with cheese!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给抹了番茄酱的面团撒上奶酪！"))
 	else
 		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_cheese
-	name = "uncooked tomatoplate with cheese"
+	name = "未烤制的奶酪番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "pizza_uncooked"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes - and sprinkling of fresh cheese - upon its surface. It is ready to be baked into a delicious tomatoplate, lest one wishes to further adorn it with sausages, fillets, onions, pears, or truffles."
+	desc = "擀平面团表面抹了厚厚一层番茄酱，还撒了新鲜奶酪。它已经可以烤成美味的番茄薄饼了，除非你还想添上香肠、鱼柳、洋葱、梨或松露。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate
@@ -190,90 +190,90 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/sausage) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Topping the becheesed tomatoplate with sausage..."))
+			to_chat(user, span_notice("给铺了奶酪的番茄薄饼加上香肠……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_sausage(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to finish it off with some toppings!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/fish) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/fish/fried))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Topping the becheesed tomatoplate with fillets of fish..."))
+			to_chat(user, span_notice("给铺了奶酪的番茄薄饼加上鱼柳……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_fish(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to finish it off with some toppings!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/truffles))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Topping the becheesed tomatoplate with truffles..."))
+			to_chat(user, span_notice("给铺了奶酪的番茄薄饼加上松露……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_truffles(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to finish it off with some toppings!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/toxicshrooms))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Topping the becheesed tomatoplate with truffles..."))
+			to_chat(user, span_notice("给铺了奶酪的番茄薄饼加上松露……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_poisontruffles(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to finish it off with some toppings!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/onion/rogue))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Meticulously tearing the whole onion up, and spreading its sum onto the becheesed tomatoplate..."))
+			to_chat(user, span_notice("仔细把整颗洋葱撕碎，均匀铺在抹了奶酪的番茄薄饼上……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_onion(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to finish it off with some toppings!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Topping the becheesed tomatoplate with sliced onions..."))
+			to_chat(user, span_notice("给铺了奶酪的番茄薄饼加上洋葱片……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_onion(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to finish it off with some toppings!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/pear))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Topping the becheesed tomatoplate with pears..."))
+			to_chat(user, span_notice("给铺了奶酪的番茄薄饼加上梨……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_pear(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to finish it off with some toppings!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	else
 		return ..()
 
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_sausage
-	name = "uncooked tomatoplate with sausages"
+	name = "未烤制的香肠番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "sausage_pizza_uncooked"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes, a sprinkling of fresh cheese, and a dotting of sliced sausages upon its surface. It is ready to be baked into a deliciously rich tomatoplate."
+	desc = "擀平面团表面抹了厚厚一层番茄酱，撒了新鲜奶酪，还点缀着一片片香肠。它已经可以烤成滋味浓郁的番茄薄饼了。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_meat
@@ -281,10 +281,10 @@
 	foodtype = GRAIN | FRUIT | DAIRY | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_fish
-	name = "uncooked tomatoplate with fishes"
+	name = "未烤制的鱼肉番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "fish_pizza_uncooked"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes, a sprinkling of fresh cheese, and a dotting of filleted fishes upon its surface. It is ready to be baked into a deliciously oiled tomatoplate."
+	desc = "擀平面团表面抹了厚厚一层番茄酱，撒了新鲜奶酪，还点缀着一条条鱼柳。它已经可以烤成油润可口的番茄薄饼了。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_fish
@@ -292,10 +292,10 @@
 	foodtype = GRAIN | FRUIT | DAIRY | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_truffles
-	name = "uncooked tomatoplate with truffles"
+	name = "未烤制的松露番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "truffle_pizza_uncooked"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes, a sprinkling of fresh cheese, and a dotting of rare truffles upon its surface. It is ready to be baked into a deliciously decadant tomatoplate."
+	desc = "擀平面团表面抹了厚厚一层番茄酱，撒了新鲜奶酪，还点缀着一颗颗珍稀松露。它已经可以烤成奢靡可口的番茄薄饼了。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_truffle
@@ -303,10 +303,10 @@
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_poisontruffles
-	name = "uncooked tomatoplate with truffles"
+	name = "未烤制的松露番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "truffle_pizza_uncooked"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes, a sprinkling of fresh cheese, and a dotting of rare truffles upon its surface. It is ready to be baked into a deliciously decadant tomatoplate."
+	desc = "擀平面团表面抹了厚厚一层番茄酱，撒了新鲜奶酪，还点缀着一颗颗珍稀松露。它已经可以烤成奢靡可口的番茄薄饼了。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	list_reagents = list(/datum/reagent/berrypoison = 5)
@@ -315,10 +315,10 @@
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_onion
-	name = "uncooked tomatoplate with onions"
+	name = "未烤制的洋葱番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "onion_pizza_uncooked"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes, a sprinkling of fresh cheese, and a dotting of ringed onions upon its surface. It is ready to be baked into a deliciously earthsome tomatoplate."
+	desc = "擀平面团表面抹了厚厚一层番茄酱，撒了新鲜奶酪，还点缀着一圈圈洋葱。它已经可以烤成乡土气息十足的番茄薄饼了。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_onion
@@ -326,10 +326,10 @@
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_pear
-	name = "uncooked tomatoplate with pears"
+	name = "未烤制的梨香番茄薄饼"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "pear_pizza_uncooked"
-	desc = "Flatdough with a healthy smearing of sauced tomatoes, a sprinkling of fresh cheese, and a dotting of juicy pears upon its surface. It is ready to be baked into a deliciously creative tomatoplate."
+	desc = "擀平面团表面抹了厚厚一层番茄酱，撒了新鲜奶酪，还点缀着一块块多汁的梨。它已经可以烤成创意十足的番茄薄饼了。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_pear
@@ -426,7 +426,7 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the egg into the butterdough, shaping it into a cake..."))
+			to_chat(user, span_notice("把蛋揉进黄油面团里，塑成蛋糕坯……"))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -434,137 +434,137 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	if(istype(I, /obj/item/kitchen/spoon))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Further spreading the butterdough out, shaping it into a muffin..."))
+			to_chat(user, span_notice("把黄油面团进一步摊开，塑成玛芬坯……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/muffindough(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to shape it into a muffin!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能塑成玛芬！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/pumpkin_mashed) || istype(I, /obj/item/reagent_containers/food/snacks/pumpkinspice))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding pumpkin to the butterdough..."))
+			to_chat(user, span_notice("往黄油面团里加入南瓜……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinloaf_raw(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to prepare it!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能准备它！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/pear))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the pears into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把梨揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/pearbread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/plum))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the plums into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把李子揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/plumbread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/lemon))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the lemons into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把柠檬揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/lemonbread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the tangerines into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把蜜橘揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/tangerinebread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the blackberries into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把黑莓揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/blackberrybread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/raspberry))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the raspberries into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把覆盆子揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/raspberrybread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the jackberries into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把杰克莓揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/jackberrybread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the jackberries into the butterdough, shaping it into a fruity loaf..."))
+			to_chat(user, span_notice("把杰克莓揉进黄油面团里，塑成果味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/poisonberrybread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/chocolate) || istype(I, /obj/item/reagent_containers/food/snacks/chocolate/slice))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working the chocolate into the butterdough, shaping it into a sweet loaf..."))
+			to_chat(user, span_notice("把巧克力揉进黄油面团里，塑成甜味面包坯……"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/chocolatebread_uncooked(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with chocolate!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进巧克力！"))
 	else
 		return ..()
 
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/pearbread_uncooked
-	name = "pear-stuffed butterdough"
+	name = "填梨黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_pear"
-	desc = "A mound of pear-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着梨块的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -572,10 +572,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/plumbread_uncooked
-	name = "plum-stuffed butterdough"
+	name = "填李子黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_plum"
-	desc = "A mound of plum-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着李子块的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -583,10 +583,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/lemonbread_uncooked
-	name = "lemon-stuffed butterdough"
+	name = "填柠檬黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_lemon"
-	desc = "A mound of lemon-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着柠檬块的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -594,10 +594,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/tangerinebread_uncooked
-	name = "tangerine-stuffed butterdough"
+	name = "填蜜橘黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_tangerine"
-	desc = "A mound of tangerine-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着蜜橘块的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -605,10 +605,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/blackberrybread_uncooked
-	name = "blackberry-stuffed butterdough"
+	name = "填黑莓黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_blackberry"
-	desc = "A mound of blackberry-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着黑莓的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -616,10 +616,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/raspberrybread_uncooked
-	name = "raspberry-stuffed butterdough"
+	name = "填覆盆子黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_raspberry"
-	desc = "A mound of raspberry-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着覆盆子的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -627,10 +627,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/jackberrybread_uncooked
-	name = "jackberry-stuffed butterdough"
+	name = "填杰克莓黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_jacksberry"
-	desc = "A mound of jacksberry-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着杰克莓的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -638,10 +638,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/poisonberrybread_uncooked
-	name = "jackberry-stuffed butterdough" //Like pies, these are Evil. Indistinguishable from traditional jackberried variants, until eaten.
+	name = "填杰克莓黄油面团" //Like pies, these are Evil. Indistinguishable from traditional jackberried variants, until eaten.
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_jacksberry"
-	desc = "A mound of jacksberry-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着杰克莓的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_bookbread
@@ -650,10 +650,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/chocolatebread_uncooked
-	name = "chocolate-stuffed butterdough"
+	name = "填巧克力黄油面团"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "butterdough_chocolate"
-	desc = "A mound of chocolate-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
+	desc = "一堆点缀着巧克力碎的黄油面团，尚未经炉火温热的点化升华。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/chocolate_bookbread
@@ -686,32 +686,32 @@
 				new /obj/item/reagent_containers/food/snacks/rogue/piedough(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	if(istype(I, /obj/item/kitchen/spoon))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Pressing a divot into [src]..."))
+			to_chat(user, span_notice("在[src]上压出一个凹窝……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/tartdough(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/pumpkin_mashed) || istype(I, /obj/item/reagent_containers/food/snacks/pumpkinspice))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding pumpkin to the butterdough..."))
+			to_chat(user, span_notice("往黄油面团里加入南瓜……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinball_raw(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to prepare it!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能准备它！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding tangerines to the butterdough..."))
+			to_chat(user, span_notice("往黄油面团里加入蜜橘……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tangerinebiscuit_raw(loc)
@@ -719,11 +719,11 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/plum))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding raisins to the butterdough..."))
+			to_chat(user, span_notice("往黄油面团里加入葡萄干……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/plumbiscuit_raw(loc)
@@ -731,7 +731,7 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/raisins))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
@@ -743,11 +743,11 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进水果！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/chocolate) || istype(I, /obj/item/reagent_containers/food/snacks/chocolate/slice))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding chocolate to the dough..."))
+			to_chat(user, span_notice("往面团里加入巧克力……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/chocolatebiscuit_raw(loc)
@@ -755,7 +755,7 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to stuff it with chocolate!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能填进巧克力！"))
 	if(I.get_sharpness())
 		if(!isdwarf(user))
 			to_chat(user, span_warning("你不懂矮人点心的做法！"))
@@ -763,7 +763,7 @@
 		else
 			if(isturf(loc)&& (found_table))
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-				to_chat(user, span_notice("Cutting the butterdough in strips and making a prezzel..."))
+				to_chat(user, span_notice("把黄油面团切成条，做成椒盐卷饼……"))
 				if(do_after(user,short_cooktime, target = src))
 					add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 					new /obj/item/reagent_containers/food/snacks/rogue/foodbase/prezzel_raw(loc)
@@ -775,8 +775,8 @@
 
 /*	.................   Muffindough Piece   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/muffindough
-	name = "muffindough"
-	desc = "It's muffin time!"
+	name = "松饼面团"
+	desc = "松饼时间到！"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "muffindough"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/muffin
@@ -846,8 +846,8 @@
 		to_chat(user, span_notice("往面团里填入苹果……"))
 		if(do_after(user, short_cooktime, target = src))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
-			name = "half-filled strudel"
-			desc = "A strudel form mostly filled with apples. Still missing its other part."
+			name = "填了一半的卷酥"
+			desc = "卷酥坯里装满了苹果，还缺另一半来合拢。"
 			process_step = 2
 			qdel(I)
 			return
@@ -866,8 +866,8 @@
 
 /*	.................   Tartdough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/tartdough
-	name = "dotted tartdough"
-	desc = "A hollow bowl that has yet to show its fullest potential."
+	name = "凹窝挞面团"
+	desc = "一只尚未展露全部潜力的空心面碗。"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "dottart_base"
 	cooked_smell = /datum/pollutant/food/pastry
@@ -881,99 +881,99 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with tangerines.."))
+			to_chat(user, span_notice("往凹窝挞面团里填入蜜橘……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_tangerine(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to fill it up!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能往里填馅！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/plum))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with plums.."))
+			to_chat(user, span_notice("往凹窝挞面团里填入李子……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_plum(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to pack the fillings in!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with blackberries.."))
+			to_chat(user, span_notice("往凹窝挞面团里填入黑莓……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_blackberry(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to pack the fillings in!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/raspberry))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with raspberries.."))
+			to_chat(user, span_notice("往凹窝挞面团里填入覆盆子……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_raspberry(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to pack the fillings in!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/strawberry))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with strawberries.."))
+			to_chat(user, span_notice("往凹窝挞面团里填入草莓……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_strawberry(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to pack the fillings in!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/pear))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with pears.."))
+			to_chat(user, span_notice("往凹窝挞面团里填入梨……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_pear(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to pack the fillings in!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/apple_sliced))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with apple slices.."))
+			to_chat(user, span_notice("往凹窝挞面团里填入苹果片……"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_apple(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to pack the fillings in!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/apple_sliced/gold))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Filling the dotted tartdough with.. golden apple slices..?"))
+			to_chat(user, span_notice("往凹窝挞面团里填入……金苹果片……？"))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_goldapple(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to pack the fillings in!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	else
 		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_tangerine
-	name = "uncooked dot tart with tangerines"
+	name = "未烤制的蜜橘凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "tangerine_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with delicious tangerines. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满美味蜜橘的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart
@@ -981,10 +981,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_plum
-	name = "uncooked dot tart with plums"
+	name = "未烤制的李子凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "plum_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with homely plums. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满家常李子的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart
@@ -992,10 +992,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_blackberry
-	name = "uncooked dot tart with blackberries"
+	name = "未烤制的黑莓凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "blackberry_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with sour blackberries. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满酸黑莓的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart
@@ -1003,10 +1003,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_raspberry
-	name = "uncooked dot tart with raspberries"
+	name = "未烤制的覆盆子凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "raspberry_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with tart raspberries. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满酸涩覆盆子的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart
@@ -1014,10 +1014,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_strawberry
-	name = "uncooked dot tart with strawberries"
+	name = "未烤制的草莓凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "strawberry_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with sweet strawberries. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满甜甜草莓的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart
@@ -1025,10 +1025,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_pear
-	name = "uncooked dot tart with pears"
+	name = "未烤制的梨香凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "pear_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with honeyed pears. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满蜜渍梨的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart
@@ -1036,10 +1036,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_apple
-	name = "uncooked dot tart with apples"
+	name = "未烤制的苹果凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "apple_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with apple slices. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满苹果片的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart
@@ -1047,10 +1047,10 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tartdough_goldapple
-	name = "uncooked dot tart with ambrosia"
+	name = "未烤制的仙馔凹窝挞"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "gapple_dottart_base"
-	desc = "A hollow bowl of butterdough, filled with a divine fruit. It merely needs a stint in the oven, now, to achieve its fullest potential."
+	desc = "一只装满神圣果实的黄油面团空心碗，如今只消在炉中烤上一番，便能成就它的全部潜力。"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/fruity_dottart

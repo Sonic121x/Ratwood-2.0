@@ -98,12 +98,12 @@
 
 // -------------- SPIDER PIE --------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/spider
-	name = "de-scallax pie"
-	desc = "A delicious, homemade pie made with the inside of a spider. It was often used as a gesture of reconciliation between drow clans. Still needs to be sliced."
+	name = "脱壳蛛派"
+	desc = "一份美味的家制蜘蛛内馅派，过去常被用作卓尔部族间和解的表示。还需要切开。"
 	icon_state = "spiderpie"
-	tastes = list("spider innards and crispy butterdough" = 1)
+	tastes = list("蜘蛛内脏与酥脆黄油面皮" = 1)
 	filling_color = "#6a9153"
-	slice_name = "de-scallax pie slice"
+	slice_name = "脱壳蛛派切片"
 
 // -------------- POT PIE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pot

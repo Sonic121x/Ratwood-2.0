@@ -9,8 +9,8 @@
 
 /obj/item/kitchen/spoon/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click a bowl with the spoon to drink from its contents.")
-	. += span_info("Nobler appetites prefer utensils over simply eating and drinking with one's bare hands.")
+	. += span_info("用勺子左键点击碗，即可饮用碗中的内容。")
+	. += span_info("高贵的胃口更偏爱餐具，而非直接用双手吃喝。")
 
 /obj/item/kitchen/spoon/decrepit
 	name = "破旧勺子"
