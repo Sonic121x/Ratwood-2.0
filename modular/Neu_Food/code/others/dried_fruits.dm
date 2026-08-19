@@ -41,14 +41,14 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered jackberry giblets"
-			desc = "Jackberried giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜杰克莓干块"
+			desc = "杰克莓干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			faretype = FARE_FINE
 			color = null
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			bitesize = 1
 			process_step = 2
@@ -60,28 +60,28 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/raspberry
-	name = "raspberried giblets"
-	desc = "Raspberried giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "覆盆子干块"
+	desc = "脱去水分的覆盆子，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried raspberries" = 1, "shriveled bursts of tartness" = 1)
+	tastes = list("干覆盆子" = 1, "缩皱的酸意爆发" = 1)
 	color = "#FF2A00"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/raspberry/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered raspberry giblets"
-			desc = "Raspberried giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜覆盆子干块"
+			desc = "覆盆子干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/raspberry
 			update_icon()
@@ -89,28 +89,28 @@
 			return
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/strawberry
-	name = "strawberried giblets"
-	desc = "Strawberried giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "草莓干块"
+	desc = "脱去水分的草莓，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried strawberries" = 1, "shriveled bursts of sweetness" = 1)
+	tastes = list("干草莓" = 1, "缩皱的甜味爆发" = 1)
 	color = "#FF2A00"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/strawberry/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered strawberry giblets"
-			desc = "Strawberried giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜草莓干块"
+			desc = "草莓干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/strawberry
 			update_icon()
@@ -118,28 +118,28 @@
 			return
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/blackberry
-	name = "blackberried giblets"
-	desc = "Blackberried giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "黑莓干块"
+	desc = "脱去水分的黑莓，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried blackberries" = 1, "shriveled bursts of sour-sweetness" = 1)
+	tastes = list("干黑莓" = 1, "缩皱的酸甜爆发" = 1)
 	color = "#339AB7"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/blackberry/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered blackberry giblets"
-			desc = "Blackberried giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜黑莓干块"
+			desc = "黑莓干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/blackberry
 			update_icon()
@@ -147,28 +147,28 @@
 			return
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/plum
-	name = "plummic giblets"
-	desc = "Plummic giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "李子干块"
+	desc = "脱去水分的李子，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried plums" = 1, "shriveled bursts of honey-sweetness" = 1)
+	tastes = list("干李子" = 1, "缩皱的蜜甜爆发" = 1)
 	color = "#FF4F86"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/plum/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered plummic giblets"
-			desc = "Plummic giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜李子干块"
+			desc = "李子干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/plum
 			update_icon()
@@ -176,28 +176,28 @@
 			return
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/pear
-	name = "peared giblets"
-	desc = "Peared giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "梨干块"
+	desc = "脱去水分的梨，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried pears" = 1, "shriveled bursts of tarty-honeyiness" = 1)
+	tastes = list("干梨" = 1, "缩皱的酸甜与蜜意爆发" = 1)
 	color = "#EAB14F"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/pear/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered peared giblets"
-			desc = "Peared giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜梨干块"
+			desc = "梨干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/pear
 			update_icon()
@@ -205,28 +205,28 @@
 			return
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/tangerine
-	name = "tangerined giblets"
-	desc = "Tangerined giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "柑橘干块"
+	desc = "脱去水分的柑橘，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried tangerines" = 1, "shriveled bursts of tarty-sweetness" = 1)
+	tastes = list("干柑橘" = 1, "缩皱的酸甜爆发" = 1)
 	color = "#FF9321"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/tangerine/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered tangerined giblets"
-			desc = "Tangerined giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜柑橘干块"
+			desc = "柑橘干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/tangerine
 			update_icon()
@@ -234,28 +234,28 @@
 			return
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/lemon
-	name = "lemony giblets"
-	desc = "Lemony giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "柠檬干块"
+	desc = "脱去水分的柠檬，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried lemons" = 1, "shriveled bursts of tarty-sourness" = 1)
+	tastes = list("干柠檬" = 1, "缩皱的酸涩爆发" = 1)
 	color = "#FFBD30"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/lemon/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered lemony giblets"
-			desc = "Lemony giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜柠檬干块"
+			desc = "柠檬干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/lemon
 			update_icon()
@@ -263,28 +263,28 @@
 			return
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/lime
-	name = "limey giblets"
-	desc = "Limey giblets that've been pruned of their juiciness, and turned into flavorful nuggets that'll last forever. When combined with honey and \
-	doused in a pot of boiling fat, it can birth 'sweetglass'; a shatteringly sweet candy, popular amongst the elders and children-of-nobility."
+	name = "青柠干块"
+	desc = "脱去水分的青柠，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("dried limes" = 1, "shriveled bursts of sour-tartiness" = 1)
+	tastes = list("干青柠" = 1, "缩皱的酸涩爆发" = 1)
 	color = "#C3DB91"
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/lime/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/honey))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Coating the fruitied giblets with honey."))
+		to_chat(user, span_notice("给果干块裹上蜂蜜。"))
 		if(do_after(user, short_cooktime, target = src))
-			name = "slathered limey giblets"
-			desc = "Limey giblets, slathered in sweetness and awaiting to be baptized in a pot of boiling fat."
+			name = "裹蜜青柠干块"
+			desc = "青柠干块，裹满蜜甜，正等待着在一锅滚沸的油脂中接受洗礼。"
 			icon_state = "honeyraisins"
 			color = null
 			bitesize = 1
 			process_step = 2
 			faretype = FARE_FINE
-			tastes = list("overpoweringly honeyed" = 1, "a burst of sweetness" = 1)
+			tastes = list("浓烈到压倒一切的蜜味" = 1, "爆发的甜意" = 1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 			deep_fried_type = /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/lime
 			update_icon()
@@ -294,14 +294,14 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass
-	name = "sweetglass"
-	desc = "A palmful of crystallized jackberry-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "甜晶"
+	desc = "一小捧结晶化的杰克莓干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	icon_state = "sweetglass5"
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL * 2)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("glassy jackberries" = 1, "sugary shards of sweetness" = 1)
+	tastes = list("玻璃般的杰克莓" = 1, "糖晶般的甜味碎片" = 1)
 	faretype = FARE_LAVISH
 	color = "#A060FF" //Placeholder until someone wants to twiddle it for themselves. Should be fine, otherwise.
 	eat_effect = /datum/status_effect/buff/sweet
@@ -321,65 +321,65 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/raspberry
-	name = "raspberried sweetglass"
-	desc = "A palmful of crystallized raspberry-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "覆盆子甜晶"
+	desc = "一小捧结晶化的覆盆子干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#FF2A00"
-	tastes = list("glassy raspberries" = 1, "sugary shards of tartness" = 1)
+	tastes = list("玻璃般的覆盆子" = 1, "糖晶般的酸意碎片" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/strawberry
-	name = "strawberried sweetglass"
-	desc = "A palmful of crystallized strawberry-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "草莓甜晶"
+	desc = "一小捧结晶化的草莓干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#FF2A00"
-	tastes = list("glassy strawberries" = 1, "sugary shards of sweetness" = 1)
+	tastes = list("玻璃般的草莓" = 1, "糖晶般的甜味碎片" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/blackberry
-	name = "blackberried sweetglass"
-	desc = "A palmful of crystallized blackberry-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "黑莓甜晶"
+	desc = "一小捧结晶化的黑莓干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#339AB7"
-	tastes = list("glassy blackberries" = 1, "sugary shards of sour-sweetness" = 1)
+	tastes = list("玻璃般的黑莓" = 1, "糖晶般的酸甜碎片" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/plum
-	name = "plummic sweetglass"
-	desc = "A palmful of crystallized plum-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "李子甜晶"
+	desc = "一小捧结晶化的李子干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#FF4F86"
-	tastes = list("glassy plums" = 1, "sugary shards of honey-sweetness" = 1)
+	tastes = list("玻璃般的李子" = 1, "糖晶般的蜜甜碎片" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/pear
-	name = "peared sweetglass"
-	desc = "A palmful of crystallized pear-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "梨甜晶"
+	desc = "一小捧结晶化的梨干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#EAB14F"
-	tastes = list("glassy pears" = 1, "sugary shards of tarty-honeyiness" = 1)
+	tastes = list("玻璃般的梨" = 1, "糖晶般的酸甜蜜意碎片" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/tangerine
-	name = "tangerine sweetglass"
-	desc = "A palmful of crystallized tangerine-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "柑橘甜晶"
+	desc = "一小捧结晶化的柑橘干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#FF9321"
-	tastes = list("glassy tangerines" = 1, "sugary shards of tarty-sweetness" = 1)
+	tastes = list("玻璃般的柑橘" = 1, "糖晶般的酸甜碎片" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/lemon
-	name = "lemony sweetglass"
-	desc = "A palmful of crystallized lemon-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "柠檬甜晶"
+	desc = "一小捧结晶化的柠檬干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#FFBD30"
-	tastes = list("glassy lemons" = 1, "sugary shards of tarty-sourness" = 1)
+	tastes = list("玻璃般的柠檬" = 1, "糖晶般的酸涩碎片" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/lime
-	name = "limey sweetglass"
-	desc = "A palmful of crystallized lemon-giblets, popular amongst the elders and children-of-nobility. Their tendancy to only \
-	spoil under very specific circumstances makes it a favored treat for those traveling afar; so long as they can afford it, of course."
+	name = "青柠甜晶"
+	desc = "一小捧结晶化的青柠干块，在长者与贵族子弟中颇受欢迎。它们只在非常特殊的情况下才会变质，\
+	因此成为远行旅人钟爱的零嘴——前提是他们买得起。"
 	color = "#C3DB91"
-	tastes = list("glassy lemons" = 1, "sugary shards of sour-tartiness" = 1)
+	tastes = list("玻璃般的青柠" = 1, "糖晶般的酸涩碎片" = 1)
 
 // -------------- Trail-mix -----------------
 /obj/item/reagent_containers/food/snacks/rogue/trailmix
-	name = "trail-mix"
-	desc = "A collection of dried and long lasting snacks tucked into a neat package to be indulged in as needed. Favorite of rangers due to its simplicity and availability."
+	name = "什锦干粮"
+	desc = "一包收拢得整整齐齐的干货零食，需要时便可取用。因其简单易得，深受游侠们的喜爱。"
 	icon = 'modular/Neu_food/icons/cookware/ration.dmi'
 	icon_state = "ration_large"//Prob give it'S own subtype later
 	eat_effect = null
@@ -388,5 +388,5 @@
 	slice_batch = FALSE
 	faretype = FARE_POOR
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL * 3)
-	tastes = list("raisin" = 1, "pumpkin" = 1, "dry paper" = 1)
+	tastes = list("葡萄干" = 1, "南瓜" = 1, "干纸" = 1)
 	rotprocess = null

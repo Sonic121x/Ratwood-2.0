@@ -22,11 +22,11 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_spiced
-	name = "spiced rosa petals"
-	desc = "A palmful of smells so delightfully rich, destined to be distilled into a damn fine cup of humor-balancing tea."
+	name = "五香玫瑰花瓣"
+	desc = "一小捧芬芳馥郁的香料，注定要被煮成一壶绝佳的平衡体液之茶。"
 	icon = 'modular/Neu_Food/icons/drinks.dmi'
 	icon_state = "rosamatter_spiced"
-	tastes = list("mild sweetness" = 1, "a mouthful of cough-inducing powderiness" = 1)
+	tastes = list("温和的甜味" = 1, "满口呛人的粉末感" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/antidote = 1)
 	rotprocess = null
@@ -57,11 +57,11 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/grown/coffeebeans_spiced
-	name = "spiced coffee beans"
-	desc = "Roasted coffee beans, nestled atop a bed of fragrant pumpkin spice. It looks perfect for brewing a particularly rich kettle of coffee."
+	name = "五香咖啡豆"
+	desc = "烘焙咖啡豆，安卧在一层芳香的南瓜香料之上。看起来正适合煮出一壶格外浓郁的咖啡。"
 	icon = 'modular/Neu_Food/icons/drinks.dmi'
 	icon_state = "coffeebeans_spiced"
-	tastes = list("rich caramel smoothness" = 1, "a mouthful of cough-inducing powderiness" = 1)
+	tastes = list("醇厚的焦糖顺滑" = 1, "满口呛人的粉末感" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
@@ -92,32 +92,32 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_spiced
-	name = "spiced tea leaves"
-	desc = "A blend of coarsely-ground tea leaves and pumpkin spice, perfect for brewing the most relaxing drinks in all of Psydonia."
+	name = "五香茶叶"
+	desc = "粗磨茶叶与南瓜香料的混合物，最适合煮出全普赛多尼亚最令人放松的饮品。"
 	icon = 'modular/Neu_Food/icons/drinks.dmi'
 	icon_state = "teaground_spiced"
-	tastes = list("bitterness" = 1, "a mouthful of cough-inducing powderiness" = 1)
+	tastes = list("苦味" = 1, "满口呛人的粉末感" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/chocolate_spiced
-	name = "spiced chocolate"
-	desc = "A spiced sliver of heaven, awaiting to be brewed into a velvetly rich drink."
+	name = "五香巧克力"
+	desc = "一小片五香天赐之物，正等待着被煮成一壶丝绒般浓郁的饮品。"
 	icon = 'modular/Neu_Food/icons/drinks.dmi'
 	icon_state = "chocolate_spiced"
 	bitesize = 2
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("sugary richness" = 1, "a mouthful of cough-inducing powderiness" = 1)
+	tastes = list("糖分浓郁的醇厚" = 1, "满口呛人的粉末感" = 1)
 	faretype = FARE_LAVISH
 	rotprocess = null
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/chocolate_spiced/On_Consume(mob/living/eater)
 	if(islupian(eater) || isvulp(eater))
-		to_chat(eater, span_warning("The spiced chocolate tastes delicious but my stomach churns violently!"))
+		to_chat(eater, span_warning("这五香巧克力尝起来美味极了，但我的胃却在剧烈翻腾！"))
 		if(iscarbon(eater))
 			var/mob/living/carbon/C = eater
 			C.add_nausea(120) // enough to trigger vomiting

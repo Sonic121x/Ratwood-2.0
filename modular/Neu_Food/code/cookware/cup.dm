@@ -26,8 +26,8 @@
 
 /obj/item/reagent_containers/glass/cup/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click an appropriate source of liquids while the 'FILL' intent is selected to fill the cup.")
-	. += span_info("Some containers have to be manually poured into the cup, instead. This can be done by left-clicking the cup while the container's 'FEED' intent is selected.")
+	. += span_info("在选定“装填”意图时，左键点击合适的液体来源，即可将杯子装满。")
+	. += span_info("有些容器则必须手动将液体倒入杯中。在容器的“喂食”意图被选中时，左键点击杯子，即可完成倒灌。")
 
 /obj/item/reagent_containers/glass/cup/update_icon(dont_fill=FALSE)
 	cut_overlays()
@@ -183,15 +183,15 @@
 	throwforce = 15
 
 /obj/item/reagent_containers/glass/cup/bronzemug
-	name = "bronze mug"
-	desc = "Froth spills over the rim, and a clinking amongst other tankards causes its fizzling tithe to splash across the table. Oh, such a nite of revelry!"
+	name = "青铜马克杯"
+	desc = "泡沫溢出杯沿，与其他大啤酒杯碰撞的叮当声，让飞溅的酒沫洒满桌面。哦，多么欢腾的一夜！"
 	icon_state = "bronzemug"
 	force = 7
 	throwforce = 13
 
 /obj/item/reagent_containers/glass/cup/bronzegob
-	name = "bronze goblet"
-	desc = "Drink deeply, my champion."
+	name = "青铜高脚杯"
+	desc = "畅饮吧，我的勇士。"
 	icon_state = "bronzegoblet"
 	force = 13
 	throwforce = 17
@@ -207,9 +207,9 @@
 	throwforce = 15
 
 /obj/item/reagent_containers/glass/cup/silver/pewter //ugly but better than the alternatives
-	name = "pewter goblet"
-	desc = "A pewter goblet, blessed with an alluring shine. Though tin with a sprinkling of silver isn't \
-	particularly valuable on its own, most peasants and foreign noblemen tend to be none-the-wiser."
+	name = "白镴高脚杯"
+	desc = "一只白镴高脚杯，带着诱人的光泽。虽然掺了点银的锡本身并不怎么值钱，\
+	但大多数农民和外邦贵族往往看不出来。"
 	is_silver = FALSE
 
 /obj/item/reagent_containers/glass/cup/silver/small
@@ -238,8 +238,8 @@
 	throwforce = 10
 
 /obj/item/reagent_containers/glass/cup/golden/poison
-	name = "golden goblet"
-	desc = "Adorned with gemstones, this goblet radiates opulence and grandeur."
+	name = "金制高脚杯"
+	desc = "其表面饰有宝石，散发着奢华与庄严的气息。"
 	icon_state = "golden"
 	list_reagents = list(/datum/reagent/toxin/killersice = 1, /datum/reagent/consumable/ethanol/elfred = 20)
 	force = 10

@@ -24,11 +24,11 @@
 				M.update_damage_overlays()
 
 /datum/reagent/water/rosewater_spiced
-	name = "spiced rosa tea"
-	description = "Spiced rose petals that help to reinvigorate the body's humors, providing modest health regeneration and antidotal properties."
+	name = "五香玫瑰茶"
+	description = "以五香玫瑰花瓣泡制而成，有助于重振体内的体液，提供适度的生命恢复与解毒效果。"
 	reagent_state = LIQUID
 	color = "#F2638C"
-	taste_description = "floral spiciness"
+	taste_description = "花香辛味"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
@@ -78,11 +78,11 @@
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/caffeine/coffee_spiced
-	name = "spiced coffee"
-	description = "Spiced offee beans brewed into a hot drink, with a hint of bitterness. Modestly rejuvenating."
+	name = "五香咖啡"
+	description = "以五香咖啡豆煮成的热饮，略带一丝苦味。能适度恢复元气。"
 	reagent_state = LIQUID
 	color = "#8C4221"
-	taste_description = "caramelized spiciness"
+	taste_description = "焦糖般的辛味"
 	metabolization_rate = 0.5
 	alpha = 200
 	quality = DRINK_GOOD
@@ -112,11 +112,11 @@
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/caffeine/tea_spiced
-	name = "spiced tea"
-	description = "Spiced tea leaves brewed into a hot drink. Slight hint of bitterness. Smoothly rejuvinating."
+	name = "五香茶"
+	description = "以五香茶叶煮成的热饮。略带一丝苦味。口感顺滑，令人恢复元气。"
 	reagent_state = LIQUID
 	color = "#788C41" // Deeper green to make it look better
-	taste_description = "spiced grassiness"
+	taste_description = "辛香的草木气息"
 	metabolization_rate = 0.5
 	alpha = 173
 	quality = DRINK_GOOD
@@ -181,10 +181,10 @@
 	return ..()
 
 /datum/reagent/consumable/chocolate
-	name = "hot chocolate"
-	description = "Lovingly smooth, velvety, and rich. Provides a modest portion of health regeneration, and minor stamina regeneration."
+	name = "热巧克力"
+	description = "丝滑细腻、浓郁醇厚。提供适度的生命恢复与少量耐力恢复。"
 	color = "#3F291C"
-	taste_description = "a throat-clinging sweetness, paired with a rich and warming aftertaste"
+	taste_description = "粘喉的甜味，配以浓郁温暖的余韵"
 	quality = DRINK_GOOD
 	alpha = 250
 
@@ -204,10 +204,10 @@
 	return ..()
 
 /datum/reagent/consumable/spiced_chocolate
-	name = "spiced chocolate"
-	description = "Impossibly smooth, velvety, and rich. Provides a generous portion of health regeneration, and minor stamina regeneration."
+	name = "五香巧克力"
+	description = "难以置信地丝滑细腻、浓郁醇厚。提供可观的生命恢复与少量耐力恢复。"
 	color = "#6D472F"
-	taste_description = "an impossible blemd of richness, sweetness, and a hint of throat-tingling spiciness"
+	taste_description = "浓郁、香甜与一丝刺激喉咙的辛味不可思议地交融在一起"
 	quality = DRINK_VERYGOOD
 	alpha = 250
 

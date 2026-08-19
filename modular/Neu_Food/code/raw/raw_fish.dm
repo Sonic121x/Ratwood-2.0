@@ -24,9 +24,9 @@
 	force = 8
 
 /datum/intent/mace/slap
-	name = "slap"
+	name = "拍打"
 	blade_class = BCLASS_PUNCH
-	attack_verb = list("slaps", "smacks", "wallops", "chastises")
+	attack_verb = list("拍打", "猛击", "痛殴", "教训")
 	hitsound = list('sound/foley/slap.ogg', 'modular/Neu_Food/sound/meatslap.ogg')
 	chargetime = 1
 	penfactor = 0
@@ -294,11 +294,11 @@
 		var/minutes_left = round(time_left, 0.1)
 		. += span_notice("它现在还很沉寂，暂时不能挤压。还需要大约[minutes_left]分钟。")
 	else
-		. += span_notice("You swear you can hear it demand you squeeze it in your hand.")
+		. += span_notice("你发誓你能听见它在央求你把它握在手里挤压。")
 
 /obj/item/reagent_containers/food/snacks/fish/salmon/black_headed
-	name = "black-headed salmon"
-	desc = "Black-Headed Salmon is an ocean fish found in open salt waters, recognizable by its dark head and lighter body. It is fully edible and prized for its firm, tasty meat, and the dark coloration likely helps it blend in when hunting near the surface."
+	name = "黑头鲑鱼"
+	desc = "黑头鲑鱼是一种生活在开阔咸水中的海鱼，以深色的头部和较浅的身体而易于辨认。它完全可以食用，肉质紧实鲜美，备受珍视；深色的体色大概还能帮它贴近水面捕猎时隐蔽身形。"
 	icon_state = "salmon_black"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
@@ -307,8 +307,8 @@
 	sellprice = 17
 
 /obj/item/reagent_containers/food/snacks/fish/flounder
-	name = "flounder"
-	desc = "Flounder is a flat ocean fish living in open salt waters, well adapted to life along the seabed. It is fully edible and known for its mild, tender meat, and an interesting fact is that both of its eyes are located on one side of the body, helping it stay hidden while lying flat on the ocean floor."
+	name = "比目鱼"
+	desc = "比目鱼是一种生活在开阔咸水中的扁平海鱼，极适应海底生活。它完全可以食用，以清淡柔嫩的肉质著称；有趣的是，它的两只眼睛都长在身体同一侧，这能帮它平躺在海底时藏好身形。"
 	icon_state = "flounder"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
@@ -317,9 +317,9 @@
 	sellprice = 5
 
 /obj/item/reagent_containers/food/snacks/fish/swamp_shrimp
-	name = "swamp shrimp"
+	name = "沼泽虾"
 	icon_state = "swamp_shrimp"
-	desc = "Swamp \"Shrimp\" is a small crustacean found in murky swamp waters, adapted to survive in dirty, low-oxygen water."
+	desc = "沼泽"虾"是一种生活在浑浊沼泽水域里的小型甲壳动物，适应了在肮脏、低氧的水中生存。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/swamp_shrimp
@@ -327,9 +327,9 @@
 	sellprice = 5
 
 /obj/item/reagent_containers/food/snacks/fish/swamp_mother
-	name = "swamp mother"
+	name = "沼泽之母"
 	icon_state = "swamp_mother"
-	desc = "Swamp Mother is a large swamp-dwelling creature found in murky waters."
+	desc = "沼泽之母是一种栖息在浑浊水域中的大型沼泽生物。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/swamp_mother
@@ -337,9 +337,9 @@
 	sellprice = 15
 
 /obj/item/reagent_containers/food/snacks/fish/black_bass
-	name = "black bass"
+	name = "黑鲈"
 	icon_state = "black_bass"
-	desc = "Black Bass is a freshwater fish found in clean rivers and lakes, known for its strength and aggressive behavior. It is fully edible and popular for its firm meat, and a fun fact is that black bass are notorious for fighting hard even when caught on light tackle."
+	desc = "黑鲈是一种生活在清澈河流与湖泊中的淡水鱼，以力量和好斗著称。它完全可以食用，肉质紧实，广受欢迎；有趣的是，黑鲈即使被轻型钓具钓住也会拼命挣扎，出了名的难缠。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/black_bass
@@ -347,9 +347,9 @@
 	sellprice = 7
 
 /obj/item/reagent_containers/food/snacks/fish/zizo_abberation
-	name = "zizo abberation"
+	name = "基佐畸变体"
 	icon_state = "zizo_abberation"
-	desc = "Zizo Aberration is a cave-dwelling creature found in murky underground waters. It is edible, but widely nicknamed the “Zizo creature” due to its disgusting behavior, it viciously bites any hand that comes into contact with it, whether in water or out."
+	desc = "基佐畸变体是一种栖息在浑浊地下水域中的洞穴生物。它可以食用，却因恶心的习性而广获“基佐怪”的绰号——无论在水里还是水外，它都会恶狠狠地咬任何碰到它的手。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/zizo_abberation
@@ -357,9 +357,9 @@
 	sellprice = 20
 
 /obj/item/reagent_containers/food/snacks/fish/sturgeon
-	name = "sturgeon"
+	name = "鲟鱼"
 	icon_state = "sturgeon"
-	desc = "Sturgeon is a large freshwater fish found in clean rivers and waterfalls, known for its ancient appearance and heavy armor-like scales. It is fully edible and highly valued, and an interesting fact is that sturgeons have existed for over 200 million years, making them true living fossils."
+	desc = "鲟鱼是一种生活在清澈河流与瀑布中的大型淡水鱼，以古老的外表和厚重如盔甲的鳞片著称。它完全可以食用且价值不菲；有趣的是，鲟鱼已经存在了两亿多年，是真正的活化石。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/sturgeon
@@ -367,9 +367,9 @@
 	sellprice = 5
 
 /obj/item/reagent_containers/food/snacks/fish/mackerel
-	name = "mackerel"
+	name = "鲭鱼"
 	icon_state = "mackerel"
-	desc = "Mackerel is a fast-moving ocean fish found in open salt waters. It is fully edible, rich in oils and flavor, and known for its speed, mackerel can swim so fast it must keep moving to breathe properly."
+	desc = "鲭鱼是一种生活在开阔咸水中的快速游动的海鱼。它完全可以食用，油脂丰富、滋味浓郁，以速度著称——鲭鱼游得飞快，甚至必须一刻不停地游动才能正常呼吸。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/mackerel
@@ -377,9 +377,9 @@
 	sellprice = 5
 
 /obj/item/reagent_containers/food/snacks/fish/beaksnapper
-	name = "beaksnapper"
+	name = "喙颚鱼"
 	icon_state = "beaksnapper"
-	desc = "Beaksnapper is a colorful ocean fish found in salt waters, named for its strong, beak-like mouth. It is edible and prized for its firm meat, and fun fact: its snapping bite is strong enough to crush small shells, making it a clever little predator."
+	desc = "喙颚鱼是一种生活在咸水中的多彩海鱼，因那张强壮的喙状嘴而得名。它可以食用，肉质紧实，备受珍视；有趣的是：它的咬合力强到能咬碎小贝壳，是个机灵的小猎手。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/beaksnapper

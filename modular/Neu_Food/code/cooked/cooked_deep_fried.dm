@@ -50,7 +50,7 @@
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel/wiener
-	name = "wiener nitzel"
-	desc = "A deep-fried wiener, coated in toastcrumbs and ready to eat."
+	name = "香肠炸排"
+	desc = "一份裹着吐司碎的油炸香肠，已经可以开吃了。"
 	icon_state = "wienernitzel"
-	tastes = list("crunchy toastcrumbs" = 1, "tender wiener" = 1)
+	tastes = list("酥脆吐司碎" = 1, "嫩香肠香" = 1)

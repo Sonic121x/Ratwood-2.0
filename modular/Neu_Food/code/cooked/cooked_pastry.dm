@@ -28,7 +28,7 @@
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw
-	name = "uncooked raisin biscuit"
+	name = "未烤制的葡萄干饼干"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "biscuit_raw"
 	color = null
@@ -37,8 +37,8 @@
 	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/rogue/chocolatebiscuit
-	name = "chocolate biscuit"
-	desc = "A crispy buttery pastry with gooey specklings of chocolate inside."
+	name = "巧克力饼干"
+	desc = "一块酥脆的黄油酥点，里面点缀着黏稠的巧克力碎。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "chocolatebiscuit"
 	faretype = FARE_LAVISH
@@ -46,12 +46,12 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + NUTRITION_HALF_MEAL)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
-	tastes = list("crispy butterdough" = 1, "richly sweet and molten chocolate" = 1)
+	tastes = list("酥脆黄油面皮" = 1, "浓郁甜腻的流心巧克力" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN| DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/chocolatebiscuit_raw
-	name = "uncooked chocolate biscuit"
+	name = "未烤制的巧克力饼干"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "chocolatebiscuit_raw"
 	color = null
@@ -60,8 +60,8 @@
 	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/rogue/plumbiscuit
-	name = "plum biscuit"
-	desc = "A crispy buttery pastry with streaked frosting and tender plums."
+	name = "李子饼干"
+	desc = "一块酥脆的黄油酥点，上面有带条纹的糖霜和软嫩的李子。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "plumbiscuit"
 	faretype = FARE_FINE
@@ -69,12 +69,12 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
-	tastes = list("crispy butterdough" = 1, "tangy frosting" = 1, "sweetly baked plums" = 1)
+	tastes = list("酥脆黄油面皮" = 1, "酸甜糖霜" = 1, "蜜烤李子" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/plumbiscuit_raw
-	name = "uncooked plum biscuit"
+	name = "未烤制的李子饼干"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "plumbiscuit_raw"
 	color = null
@@ -83,8 +83,8 @@
 	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/rogue/tangerinebiscuit
-	name = "tangerine biscuit"
-	desc = "A crispy buttery pastry with caked frosting and ripe tangerines."
+	name = "蜜橘饼干"
+	desc = "一块酥脆的黄油酥点，上面有厚实的糖霜和成熟的蜜橘。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "tangerinebiscuit"
 	faretype = FARE_FINE
@@ -92,12 +92,12 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
-	tastes = list("crispy butterdough" = 1, "zesty frosting" = 1, "lightly jammed and juicy tangerines" = 1)
+	tastes = list("酥脆黄油面皮" = 1, "清新糖霜" = 1, "微带果酱感的多汁蜜橘" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tangerinebiscuit_raw
-	name = "uncooked tangerine biscuit"
+	name = "未烤制的蜜橘饼干"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "tangerinebiscuit_raw"
 	color = null
@@ -107,8 +107,8 @@
 
 /*	.................   Cookies  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw
-	name = "slab of half-done cookiedough"
-	desc = "Doughy, soft, and speckled with chocolate. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more chocolate, to round it out?"
+	name = "半成品曲奇面团块"
+	desc = "软糯柔滑，点缀着巧克力碎。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些巧克力，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedough"
 	cooked_smell = /datum/pollutant/food/cookies_chocolate
@@ -117,8 +117,8 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookie_raw
-	name = "slab of cookiedough"
-	desc = "Doughy, soft, and drenched in chocolate. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	name = "曲奇面团块"
+	desc = "软糯柔滑，浸透了巧克力。这下总算称得上尽善尽美了！不过，还是得先进烤炉待上一阵子！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_cookiedough"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -128,14 +128,14 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookie
-	name = "baked slab of cookiedough"
-	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of home - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	name = "烤好的曲奇面团块"
+	desc = "无论名声还是味道，都与硬饼截然相反。哪怕只是匆匆一闻，也会让你想起家的味道——不过，或许拿出刀来，把这感觉分给几位朋友分享也不坏。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedough6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("rich and gooey chocolate" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("浓郁黏稠的巧克力" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	bitesize = 8
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cookieslice
@@ -166,8 +166,8 @@
 			changefood(slice_path, eater)
 
 /obj/item/reagent_containers/food/snacks/rogue/cookieslice
-	name = "cookie"
-	desc = "Crispy, moist, sweet and savory; a sliver of ontological goodness, cradled in the palm of your hand."
+	name = "曲奇"
+	desc = "酥脆、湿润、又甜又咸；一小片本质的美好，就捧在你掌心。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedough_slice"
 	faretype = FARE_LAVISH
@@ -176,14 +176,14 @@
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
-	tastes = list("rich and gooey chocolate" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("浓郁黏稠的巧克力" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	foodtype = GRAIN | DAIRY
 
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookied_raw
-	name = "slab of half-done dragéelidough"
-	desc = "Doughy, soft, and speckled with dragée dropplings. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more dragée, to round it out?"
+	name = "半成品糖丸曲奇面团块"
+	desc = "软糯柔滑，点缀着糖丸碎屑。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些糖丸，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedoughd"
 	cooked_smell = /datum/pollutant/food/cookies_dragee
@@ -192,8 +192,8 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookied_raw
-	name = "slab of dragéelidough"
-	desc = "Doughy, soft, and drenched in dragée. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	name = "糖丸曲奇面团块"
+	desc = "软糯柔滑，浸透了糖丸。这下总算称得上尽善尽美了！不过，还是得先进烤炉待上一阵子！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_cookiedoughd"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -203,14 +203,14 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookied
-	name = "baked slab of dragéelidough"
-	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of your youth - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	name = "烤好的糖丸曲奇面团块"
+	desc = "无论名声还是味道，都与硬饼截然相反。哪怕只是匆匆一闻，也会让你想起少年时光——不过，或许拿出刀来，把这感觉分给几位朋友分享也不坏。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedoughd6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("shards of candied herbiness" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("蜜渍草本的碎屑" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	bitesize = 8
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cookiesliced
@@ -241,8 +241,8 @@
 			changefood(slice_path, eater)
 
 /obj/item/reagent_containers/food/snacks/rogue/cookiesliced
-	name = "dragéelie"
-	desc = "Crispy, moist, sweet and savory.. and in this case, oozing with sweetened lifeblood; a sliver of ontological goodness, cradled in the palm of your hand."
+	name = "糖丸曲奇"
+	desc = "酥脆、湿润、又甜又咸……而这一份还渗着甜蜜的生命之血；一小片本质的美好，就捧在你掌心。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedoughd_slice"
 	faretype = FARE_FINE
@@ -251,14 +251,14 @@
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
-	tastes = list("shards of candied herbiness" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("蜜渍草本的碎屑" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	foodtype = GRAIN | DAIRY
 
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookiec_raw
-	name = "slab of half-done carameliedough"
-	desc = "Doughy, soft, and speckled with caramel dropplings. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more caramel, to round it out?"
+	name = "半成品焦糖曲奇面团块"
+	desc = "软糯柔滑，点缀着焦糖碎屑。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些焦糖，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedoughc"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -267,8 +267,8 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookiec_raw
-	name = "slab of carameliedough"
-	desc = "Doughy, soft, and drenched in caramel. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	name = "焦糖曲奇面团块"
+	desc = "软糯柔滑，浸透了焦糖。这下总算称得上尽善尽美了！不过，还是得先进烤炉待上一阵子！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_cookiedoughc"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -278,14 +278,14 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookiec
-	name = "baked slab of carameliedough"
-	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of times abroad - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	name = "烤好的焦糖曲奇面团块"
+	desc = "无论名声还是味道，都与硬饼截然相反。哪怕只是匆匆一闻，也会让你想起异乡的时光——不过，或许拿出刀来，把这感觉分给几位朋友分享也不坏。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedoughc6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("tooth-grippingly sweet caramel" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("甜到黏牙的焦糖" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	bitesize = 8
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cookieslicec
@@ -316,8 +316,8 @@
 			changefood(slice_path, eater)
 
 /obj/item/reagent_containers/food/snacks/rogue/cookieslicec
-	name = "caramelie"
-	desc = "Crispy, moist, sweet and savory.. and a bit stickier than usual; a sliver of ontological goodness, cradled in the palm of your hand."
+	name = "焦糖曲奇"
+	desc = "酥脆、湿润、又甜又咸……而且比平时更黏稠一些；一小片本质的美好，就捧在你掌心。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedoughc_slice"
 	faretype = FARE_FINE
@@ -326,14 +326,14 @@
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
-	tastes = list("tooth-grippingly sweet caramel" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("甜到黏牙的焦糖" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	foodtype = GRAIN | DAIRY
 
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookier_raw
-	name = "slab of half-done raelseinidough"
-	desc = "Doughy, soft, and speckled with raisins. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more raisins, to round it out?"
+	name = "半成品葡萄干曲奇面团块"
+	desc = "软糯柔滑，点缀着葡萄干。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些葡萄干，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedoughr"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -342,8 +342,8 @@
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookier_raw
-	name = "slab of raelseinidough"
-	desc = "Doughy, soft, and drenched in raisins. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	name = "葡萄干曲奇面团块"
+	desc = "软糯柔滑，浸透了葡萄干。这下总算称得上尽善尽美了！不过，还是得先进烤炉待上一阵子！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_cookiedoughr"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -353,14 +353,14 @@
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/cookier
-	name = "baked slab of raelseinidough"
-	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of warmer daes - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	name = "烤好的葡萄干曲奇面团块"
+	desc = "无论名声还是味道，都与硬饼截然相反。哪怕只是匆匆一闻，也会让你想起更温暖的日子——不过，或许拿出刀来，把这感觉分给几位朋友分享也不坏。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedoughr6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_TINY
-	tastes = list("little bursts of fruity sweetness" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("迸发的小小果甜" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	bitesize = 8
 	slices_num = 6
 	cooked_smell = /datum/pollutant/food/cookies_raisins
@@ -384,8 +384,8 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/cookieslicer
-	name = "raelseini"
-	desc = "Crispy, moist, sweet and savory.. and the dreams of a warmer tomorrow; a sliver of ontological goodness, cradled in the palm of your hand."
+	name = "葡萄干曲奇"
+	desc = "酥脆、湿润、又甜又咸……还承载着一个更温暖明天的梦想；一小片本质的美好，就捧在你掌心。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedoughr_slice"
 	faretype = FARE_FINE
@@ -394,7 +394,7 @@
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
-	tastes = list("little bursts of fruity sweetness" = 1, "crispy dough with a hint of butteriness" = 1)
+	tastes = list("迸发的小小果甜" = 1, "带着一丝黄油香的酥脆面团" = 1)
 	foodtype = GRAIN | DAIRY | FRUIT
 
 // MISSING RECIPE
@@ -429,8 +429,8 @@
 
 /*	.............   Pumpkin balls   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinball_raw
-	name = "uncooked pumpkin ball"
-	desc = "A simple ball of dough, yearning to be cookied or fried."
+	name = "生南瓜球"
+	desc = "一个简简单单的面团球，渴望被做成曲奇或下油锅炸一炸。"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "pumpkinball"
 	color = "#d17624"
@@ -440,8 +440,8 @@
 	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball
-	name = "pumpkin balls"
-	desc = "Crispy and soft ball of dough mixed with pumpkin. A surprisingly nice snack."
+	name = "南瓜球"
+	desc = "酥脆柔软的面团球，混入了南瓜。意外地可口的小吃。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "pumpkinball3"
 	faretype = FARE_FINE
@@ -450,7 +450,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	bitesize = 3
 	portable = TRUE
-	tastes = list("crispy butterdough" = 1, "pumpkin" = 1)
+	tastes = list("酥脆黄油面皮" = 1, "南瓜香" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball/On_Consume(mob/living/eater)
@@ -459,12 +459,12 @@
 		icon_state = "pumpkinball2"
 	else if(bitecount == 2)
 		icon_state = "pumpkinball1"
-		name = "pumpkin ball"
+		name = "南瓜球"
 
 /*	.............   Pumpkin loaf   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinloaf_raw
-	name = "raw pumpkin loaf"
-	desc = "Into the oven you go!"
+	name = "生南瓜面包"
+	desc = "进烤炉吧！"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "pumpkindough"
 	slices_num = 0
@@ -474,8 +474,8 @@
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloaf
-	name = "pumpkin loaf"
-	desc = "A loaf of sweetbread baked into a shape worthy of its name. Pumpkin loaves are surprising desserts, easily shared."
+	name = "南瓜面包"
+	desc = "一条甜面包，烤成了配得上其名的形状。南瓜面包是出人意料的甜点，也很容易与人分享。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "pumpkinloaf6"
 	bitesize = 6
@@ -485,7 +485,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("sweetbread" = 1,"pumpkin" = 1)
+	tastes = list("甜面包香" = 1,"南瓜香" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -513,15 +513,15 @@
 	update_icon()
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloafslice
-	name = "pumpkin loaf slice"
-	desc = "Soft and chewy. It's surprisingly light despite its origin."
+	name = "南瓜面包片"
+	desc = "柔软而有嚼劲。尽管出身如此，却意外地轻盈。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "pumpkinloaf_slice"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_NORMAL
 	faretype = FARE_NEUTRAL
 	cooked_type = null
-	tastes = list("sweetbread" = 1, "pumpkin" = 1)
+	tastes = list("甜面包香" = 1, "南瓜香" = 1)
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
@@ -747,8 +747,8 @@
 
 /*	.................   Tarts  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart
-	name = "dot tart"
-	desc = "A small pastry filled with jammed fruits, for when a whole pie would be inappropiate for canapes."
+	name = "凹窝挞"
+	desc = "一种填入果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "baked_dottart"
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
@@ -756,66 +756,66 @@
 	faretype = FARE_FINE
 	foodtype = GRAIN | FRUIT | DAIRY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + NUTRITION_HALF_MEAL)
-	tastes = list("crispy dough" = 1)
+	tastes = list("酥脆面皮" = 1)
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 1
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/tangerine
-	name = "tangerine dot tart"
-	desc = "A small pastry filled with jammed tangerines, for when a whole pie would be inappropiate for canapes. </br>'If we're kind and polite, the world will be right.'"
+	name = "蜜橘凹窝挞"
+	desc = "一种填入蜜橘果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>"只要我们和善有礼，世界就会安好。""
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "tangerine_dottart"
-	tastes = list("crispy dough" = 1, "tangerine jam with a hint of tarty-sweetness" = 1)
+	tastes = list("酥脆面皮" = 1, "带着一丝酸甜的蜜橘果酱" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/plum
-	name = "plum dot tart"
-	desc = "A small pastry filled with jammed plums, for when a whole pie would be inappropiate for canapes."
+	name = "李子凹窝挞"
+	desc = "一种填入李子果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "plum_dottart"
-	tastes = list("crispy dough" = 1, "plum jam with a hint of honey-sweetness" = 1)
+	tastes = list("酥脆面皮" = 1, "带着一丝蜜甜的李子果酱" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/blackberry
-	name = "blackberry dot tart"
-	desc = "A small pastry filled with jammed blackberries, for when a whole pie would be inappropiate for canapes. </br>'I did it for me. I liked it.. I was good at it. And I felt.. alive.'"
+	name = "黑莓凹窝挞"
+	desc = "一种填入黑莓果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>"我是为了自己才这么做的。我喜欢那样……我很擅长那样。而且我感觉……活着。""
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "blackberry_dottart"
-	tastes = list("crispy dough" = 1, "blackberry jam with a hint of sour-sweetness" = 1)
+	tastes = list("酥脆面皮" = 1, "带着一丝酸甜的黑莓果酱" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/raspberry
-	name = "raspberry dot tart"
-	desc = "A small pastry filled with jammed raspberries, for when a whole pie would be inappropiate for canapes."
+	name = "覆盆子凹窝挞"
+	desc = "一种填入覆盆子果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raspberry_dottart"
-	tastes = list("crispy dough" = 1, "raspberry jam with a hint of tartness" = 1)
+	tastes = list("酥脆面皮" = 1, "带着一丝酸味的覆盆子果酱" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/strawberry
-	name = "strawberry dot tart"
-	desc = "A small pastry filled with jammed strawberries, for when a whole pie would be inappropiate for canapes."
+	name = "草莓凹窝挞"
+	desc = "一种填入草莓果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "strawberry_dottart"
-	tastes = list("crispy dough" = 1, "strawberry jam with a hint of sweetness" = 1)
+	tastes = list("酥脆面皮" = 1, "带着一丝甜味的草莓果酱" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/pear
-	name = "pear dot tart"
-	desc = "A small pastry filled with jammed pears, for when a whole pie would be inappropiate for canapes."
+	name = "梨香凹窝挞"
+	desc = "一种填入梨果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "pear_dottart"
-	tastes = list("crispy dough" = 1, "pear jam with a hint of tarty-honeyiness" = 1)
+	tastes = list("酥脆面皮" = 1, "带着一丝酸甜蜜意的梨果酱" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/apple
-	name = "apple dot tart"
-	desc = "A small pastry filled with jammed apples, for when a whole pie would be inappropiate for canapes."
+	name = "苹果凹窝挞"
+	desc = "一种填入苹果果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "apple_dottart"
-	tastes = list("crispy dough" = 1, "caramelized apples with a hint of tartness" = 1)
+	tastes = list("酥脆面皮" = 1, "带着一丝酸味的焦糖苹果" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/goldapple
-	name = "ambrosia dot tart"
-	desc = "A small pastry filled with the jam of a divine fruit, for when a whole pie would be inappropiate for canapes. </br>'Why must the most forbidden fruits taste the sweetest?'"
+	name = "仙馔凹窝挞"
+	desc = "一种填入神圣果实果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>"为何越是禁忌的果实，尝起来就越甜美？""
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "gapple_dottart"
 	list_reagents = list(/datum/reagent/medicine/stronghealth = 10)
-	tastes = list("crispy dough" = 1, "divinely fruity sweetness" = 1)
+	tastes = list("酥脆面皮" = 1, "神圣的果香甜美" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/goldapple/Initialize()
 	. = ..()
@@ -823,8 +823,8 @@
 
 /*	.................   Bookbread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bookbread
-	name = "bookbread loaf"
-	desc = "On the days when Noc's reign lengthens to its apex, all proper Pantheon-fearing folk huddle by their warm hearths, exchanging both books and pastries such as this."
+	name = "书形面包"
+	desc = "当诺克的统治绵延至巅峰的那些日子里，所有敬畏万神殿的正经人都会围坐在温暖炉火旁，交换书籍与这样的酥点。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "bookbread5"
 	slices_num = 5
@@ -833,7 +833,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF)
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
@@ -853,13 +853,13 @@
     if(bitecount > 3)
         slices_num = (8 - bitecount)
 /obj/item/reagent_containers/food/snacks/rogue/bookbread_slice
-	name = "sliced bookbread"
-	desc = "About the same size and taste as an encyclopedia."
+	name = "书形面包切片"
+	desc = "大小和味道都与百科全书相差无几。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "bookbread_slice"
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -868,13 +868,13 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_jamtallowed
-	name = "slice of jamtallowed bookbread"
-	desc = "'Don't think that I'd forget, or I'd regret, the special love I had for you - my baby blue!'"
+	name = "涂了果酱的书形面包片"
+	desc = ""别以为我会忘记，否则我会后悔，我曾对你怀有的那份特别的爱——我的小蓝！""
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "bookbread_slice_jamtallow"
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly-sour jamminess" = 1, "a lavish start to the dae" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "酸甜的果酱味" = 1, "一天中奢华的开始" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
@@ -883,13 +883,13 @@
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_marmaladed
-	name = "slice of marmaladed bookbread"
-	desc = "'I always keep a marmalade sandwich under my sallet, just in case!'"
+	name = "涂了柑橘果酱的书形面包片"
+	desc = ""我总会在轻盔底下藏一块柑橘果酱三明治，以防万一！""
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "bookbread_slice_marmalade"
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweet-tarty jamminess" = 1, "a lavish start to the dae" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜酸的果酱味" = 1, "一天中奢华的开始" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
@@ -898,8 +898,8 @@
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/pearbookbread
-	name = "pear bookbread"
-	desc = "Children on Nocsmas are traditionally granted both book and pastry without expectation of exchange, this variety is prefered by most little ones."
+	name = "梨香书形面包"
+	desc = "按照传统，诺克节这天孩子们能无偿得到书和酥点，无须交换；这种口味最受小家伙们青睐。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "pear_bookbread5"
 	slices_num = 5
@@ -908,7 +908,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly caramelized pears" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜蜜的焦糖梨" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
@@ -929,13 +929,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/pearbookbread_slice
-	name = "sliced pear bookbread"
-	desc = "Evokes the sweetness of younger, simpler times, and simpler books."
+	name = "梨香书形面包切片"
+	desc = "唤起年少时更简单时光、更简单书籍的甜蜜。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "pear_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "sweetly caramelized pears" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "甜蜜的焦糖梨" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -946,8 +946,8 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/plumbookbread
-	name = "plum bookbread"
-	desc = "The origin of Nocsmas are shrouded in mystery, perhaps intentionally so, though some theorize it may have had its origins as an originally Psydonian holidae."
+	name = "李子书形面包"
+	desc = "诺克节的起源笼罩在迷雾之中，也许是故意如此；不过也有人推测，它最初可能源自普赛多尼亚的某个节日。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "plum_bookbread5"
 	slices_num = 5
@@ -956,7 +956,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted plums" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜蜜的糖霜李子" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -977,13 +977,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/plumbookbread_slice
-	name = "sliced plum bookbread"
-	desc = "A subtle flavor, best for enjoying subtler books. Mysteries prefered."
+	name = "李子书形面包切片"
+	desc = "风味含蓄，最适合搭配更含蓄的书。悬疑小说尤佳。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "plum_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted plums" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "甜蜜的糖霜李子" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -994,8 +994,8 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/lemonbookbread
-	name = "lemon bookbread"
-	desc = "Though many followers of Her find the holidae laughable, it's undeniably an important respite from the doom and gloom of the darkest month."
+	name = "柠檬书形面包"
+	desc = "尽管祂的许多信徒觉得这个节日荒唐可笑，但不可否认，它是在最黑暗月份里摆脱阴郁与绝望的重要喘息。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "lemon_bookbread5"
 	slices_num = 5
@@ -1004,7 +1004,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted lemons" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜蜜的糖霜柠檬" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -1025,13 +1025,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/lemonbookbread_slice
-	name = "sliced lemon bookbread"
-	desc = "Sweet but a little sour, like a good Xylixian comedy."
+	name = "柠檬书形面包切片"
+	desc = "甜中带点酸，就像一出精彩的赛利克斯喜剧。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "lemon_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted lemons" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "甜蜜的糖霜柠檬" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -1042,8 +1042,8 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread
-	name = "tangerine bookbread"
-	desc = "Even the coldest, darkest nites end eventually. Better to weather them with friends than to hide away."
+	name = "蜜橘书形面包"
+	desc = "再寒冷、再黑暗的夜晚也终有尽头。与其独自躲藏，不如与朋友一同度过。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "tangerine_bookbread5"
 	slices_num = 5
@@ -1052,7 +1052,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly jellied tangerines" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜蜜的蜜橘果胶" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -1073,13 +1073,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread_slice
-	name = "sliced tangerine bookbread"
-	desc = "Fills one with heroic vigor and hopeful enthusiasm, similar to historic-fantasies of old."
+	name = "蜜橘书形面包切片"
+	desc = "让人充满英雄气概与满怀希望的热情，就像古老的英雄传奇一样。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "tangerine_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "sweetly jellied tangerines" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "甜蜜的蜜橘果胶" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -1088,8 +1088,8 @@
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread
-	name = "blackberry bookbread"
-	desc = "Following Her ascension, the great exchanging of books has met steady decline, as neighbor suspects neighbor more and more. Yet, even such prejudices could never hope to fully smother the spirit of Nocmas."
+	name = "黑莓书形面包"
+	desc = "自祂飞升之后，盛大的换书传统便日渐式微，邻里之间的猜忌越来越深。然而，即便这样的偏见也永远无法彻底扼杀诺克节的精神。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "blackberry_bookbread5"
 	slices_num = 5
@@ -1098,7 +1098,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted blackberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜蜜的糖霜黑莓" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -1119,13 +1119,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread_slice
-	name = "sliced blackberry bookbread"
-	desc = "It evokes a feeling of contrasting fascination and dread, not unlike novels that may foretell a doom similar to what befell this very berry."
+	name = "黑莓书形面包切片"
+	desc = "它唤起一种既着迷又恐惧的复杂感受，就像那些预示着厄运的小说——而这厄运与这种浆果自身的遭遇如出一辙。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "blackberry_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted blackberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "甜蜜的糖霜黑莓" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -1134,8 +1134,8 @@
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread
-	name = "raspberry bookbread"
-	desc = "Spending the long cold months in academic rather than intimate pursuit is preferable for most devout Noccians."
+	name = "覆盆子书形面包"
+	desc = "对大多数虔诚的诺克信徒而言，在漫长寒冷的月份里钻研学问，而非沉溺于亲密之事，是更可取的选择。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raspberry_bookbread5"
 	slices_num = 5
@@ -1144,7 +1144,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted raspberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜蜜的糖霜覆盆子" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -1165,13 +1165,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread_slice
-	name = "sliced raspberry bookbread"
-	desc = "Has a taste that puts one in the mood for a good romance novel. For obvious reasons, this flavor isnt very popular with mages."
+	name = "覆盆子书形面包切片"
+	desc = "它的味道会让人想读一本精彩的爱情小说。出于显而易见的原因，这种口味在法师中不太受欢迎。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raspberry_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted raspberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "甜蜜的糖霜覆盆子" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -1182,8 +1182,8 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread
-	name = "jacksberried bookbread"
-	desc = "As Nocsmas gained broader appeal, more and more commonfolk with poor access to books instead chose to simply forego their exchanging, focusing instead on the preparation of food."
+	name = "杰克莓书形面包"
+	desc = "随着诺克节越来越受欢迎，越来越多难以获得书籍的平民干脆放弃了换书，转而专注于准备食物。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "jacksberry_bookbread5"
 	slices_num = 5
@@ -1192,7 +1192,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted jackberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "甜蜜的糖霜杰克莓" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -1213,13 +1213,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread_slice
-	name = "sliced jacksberried bookbread"
-	desc = "Has an earthy taste that reminds the eater of growth cycles and rainfall percentages. Like a delicious almanac."
+	name = "杰克莓书形面包切片"
+	desc = "带有泥土气息，让食客想起生长周期和降雨概率。就像一本美味的历书。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "jacksberry_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted jackberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "甜蜜的糖霜杰克莓" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -1230,8 +1230,8 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/poisonberrybookbread
-	name = "jacksberried bookbread"
-	desc = "As Nocsmas gained broader appeal, more and more commonfolk with poor access to books instead chose to simply forego their exchanging, focusing instead on the preparation of food."
+	name = "杰克莓书形面包"
+	desc = "随着诺克节越来越受欢迎，越来越多难以获得书籍的平民干脆放弃了换书，转而专注于准备食物。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "jacksberry_bookbread5"
 	slices_num = 5
@@ -1240,7 +1240,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS, /datum/reagent/berrypoison = 12)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "bitterly frosted jackberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "苦涩的糖霜杰克莓" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -1261,13 +1261,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/poisonberrybookbread_slice
-	name = "sliced jacksberried bookbread"
-	desc = "Has an earthy taste that reminds the eater of growth cycles and rainfall percentages. Like a delicious almanac."
+	name = "杰克莓书形面包切片"
+	desc = "带有泥土气息，让食客想起生长周期和降雨概率。就像一本美味的历书。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "jacksberry_bookbread_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "bitterly frosted jackberries" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "苦涩的糖霜杰克莓" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_HALF_MEAL, /datum/reagent/berrypoison = 12)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
@@ -1278,8 +1278,8 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread
-	name = "chocolate bookbread"
-	desc = "Nocsmas is not only a holiday for children and commoners, for Noccians are found most concentrated in the upper echelons of society. For these academics, it provies a much needed opportunity to share their secrets."
+	name = "巧克力书形面包"
+	desc = "诺克节不仅是孩子与平民的节日，诺克信徒在社会上层最为集中。对这些学者而言，它提供了分享秘密的绝佳机会。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "chocolate_bookbread5"
 	slices_num = 5
@@ -1288,7 +1288,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS + NUTRITION_HALF_MEAL)
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough" = 1, "rich and gooey chocolate" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮" = 1, "浓郁黏稠的巧克力" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -1309,13 +1309,13 @@
         slices_num = (8 - bitecount)
 
 /obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread_slice
-	name = "sliced chocolate bookbread"
-	desc = "As thick and rich as a child's bedtyme story."
+	name = "巧克力书形面包切片"
+	desc = "像孩子的睡前故事一样浓稠丰厚。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "chocolate_bookbread_slice"
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("chewy, crispy-edged butterdough", "rich and gooey chocolate" = 1)
+	tastes = list("耐嚼、边缘酥脆的黄油面皮", "浓郁黏稠的巧克力" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + NUTRITION_FULL_MEAL)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG

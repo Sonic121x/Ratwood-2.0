@@ -20,8 +20,8 @@
 
 /obj/item/reagent_containers/glass/bowl/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click an appropriate source of liquids while the 'FILL' intent is selected to fill the bowl.")
-	. += span_info("Some containers have to be manually poured into the bowl, instead. This can be done by left-clicking the bowl while the container's 'FEED' intent is selected.")
+	. += span_info("在选定“装填”意图时，左键点击合适的液体来源，即可将碗装满。")
+	. += span_info("有些容器则必须手动将液体倒入碗中。在容器的“喂食”意图被选中时，左键点击碗，即可完成倒灌。")
 
 /obj/item/reagent_containers/glass/bowl/decrepit
 	name = "残旧碗"
@@ -34,7 +34,7 @@
 	sellprice = 20
 
 /obj/item/reagent_containers/glass/bowl/bronze
-	name = "bronze bowl"
+	name = "青铜碗"
 	icon_state = "bowl_bronze"
 	sellprice = 15
 
@@ -50,7 +50,7 @@
 	sellprice = 96
 
 /obj/item/reagent_containers/glass/bowl/tin
-	name = "tin bowl"
+	name = "锡碗"
 	icon_state = "bowl_tin"
 	sellprice = 20
 

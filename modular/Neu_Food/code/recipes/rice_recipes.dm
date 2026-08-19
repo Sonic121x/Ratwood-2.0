@@ -4,7 +4,7 @@
 
 // Cooked Rice + Fried Steak -> Rice and Beef
 /datum/food_recipe/rice/beef
-	name = "Rice and Beef"
+	name = "牛肉拌饭"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/rice_cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
@@ -13,7 +13,7 @@
 
 // Cooked Rice + Fatty Roast -> Rice and Pork
 /datum/food_recipe/rice/pork
-	name = "Rice and Pork"
+	name = "猪肉拌饭"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/rice_cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/fatty/roast
@@ -22,7 +22,7 @@
 
 // Cooked Rice + Shrimp -> Rice and Shrimp
 /datum/food_recipe/rice/shrimp
-	name = "Rice and Shrimp"
+	name = "虾仁拌饭"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/rice_cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
@@ -31,7 +31,7 @@
 
 // Cooked Rice + Fried Poultry Cutlet -> Rice and Bird
 /datum/food_recipe/rice/bird
-	name = "Rice and Bird"
+	name = "禽肉拌饭"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/rice_cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
@@ -40,7 +40,7 @@
 
 // Cooked Rice + Cheddar Slice -> Rice and Cheese
 /datum/food_recipe/rice/cheese
-	name = "Rice and Cheese"
+	name = "奶酪拌饭"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/rice_cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheddarslice
@@ -49,7 +49,7 @@
 
 // Cooked Rice + Egg -> Rice and Egg
 /datum/food_recipe/rice/egg
-	name = "Rice and Egg"
+	name = "蛋拌饭"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/rice_cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/egg
@@ -58,7 +58,7 @@
 
 // Rice and Pork + Cucumber -> Rice and Pork Meal
 /datum/food_recipe/rice/pork_cucumber
-	name = "Rice and Pork Meal"
+	name = "猪肉饭套餐"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/ricepork
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/veg/cucumber_sliced
@@ -67,7 +67,7 @@
 
 // Rice and Beef + Baked Carrot -> Rice and Beef Meal
 /datum/food_recipe/rice/beef_carrot
-	name = "Rice and Beef Meal"
+	name = "牛肉饭套餐"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/ricebeef
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
@@ -76,7 +76,7 @@
 
 // Rice and Shrimp + Baked Carrot -> Rice and Shrimp Meal
 /datum/food_recipe/rice/shrimp_carrot
-	name = "Rice and Shrimp Meal"
+	name = "虾仁饭套餐"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/riceshrimp
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
@@ -85,7 +85,7 @@
 
 // Rice and Bird + Baked Carrot -> Rice and Bird Meal
 /datum/food_recipe/rice/bird_carrot
-	name = "Rice and Bird Meal"
+	name = "禽肉饭套餐"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/ricebird
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
@@ -94,7 +94,7 @@
 
 // Rice and Egg + Cheddar Slice -> Rice with Egg and Cheese
 /datum/food_recipe/rice/egg_cheese
-	name = "Rice with Egg and Cheese"
+	name = "鸡蛋奶酪饭"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/riceegg
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheddarslice
@@ -103,7 +103,7 @@
 
 // Rice and Cheese + Egg -> Rice with Egg and Cheese (alternative path)
 /datum/food_recipe/rice/cheese_egg
-	name = "Rice with Egg and Cheese (Alt)"
+	name = "鸡蛋奶酪饭（备选）"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/ricecheese
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/egg

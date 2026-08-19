@@ -37,9 +37,9 @@
 
 /obj/item/cooking/pan/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Frying pans can be placed atop a hearth by left-clicking it. Left-click the placed frying pan with an ingredient to begin frying - so long as the hearth is lit.")
-	. += span_info("Meats, cackleberries, and sliced vegetables are the ideal choices for frying. Other ingredients and recipes might require the gentle caress of an oven, instead.")
-	. += span_info("Leaving a fully baked item on the pan for too long will cause it to burn away.")
+	. += span_info("左键点击炉膛，即可将煎锅放置其上。在炉膛点燃的情况下，左键点击放好的煎锅与食材，即可开始煎制。")
+	. += span_info("肉类、蛋和切好的蔬菜是煎制的最佳选择。其他食材与配方则可能需要烤箱的温柔呵护。")
+	. += span_info("煎好的食物在锅里放太久会烧焦殆尽。")
 
 /datum/intent/mace/strike/pan
 	hitsound = list('sound/combat/hits/blunt/frying_pan(1).ogg', 'sound/combat/hits/blunt/frying_pan(2).ogg', 'sound/combat/hits/blunt/frying_pan(3).ogg', 'sound/combat/hits/blunt/frying_pan(4).ogg')
@@ -53,8 +53,8 @@
 	sellprice = 25
 
 /obj/item/cooking/pan/bronze
-	name = "bronze pan"
-	desc = "Psydonia's greatest mystery isn't the meaning of lyfe, but how these pans are able to perfectly fry a nite's meal without needing even a single drop of oil."
+	name = "青铜煎锅"
+	desc = "普赛多尼亚最大的谜团不是生命的意义，而是这些煎锅为何能在不耗一滴油的情况下，完美煎好一顿晚餐。"
 	icon_state = "bronzepan"
 	throwforce = 30 //We both know why.
 	max_integrity = 200

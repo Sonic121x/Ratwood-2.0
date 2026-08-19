@@ -182,15 +182,15 @@ And I don't wanna copypaste what Vanderlin has
 	// -------------- SPIDER PIE --------------
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/spider))
 		if(!isdarkelf(user))
-			to_chat(user, span_warning("You lack knowledge of underdark delicacies!"))
+			to_chat(user, span_warning("你不懂幽暗地域的珍馐之道！"))
 			return
 		if (process_step > 4)
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			to_chat(user, span_notice("Starting on a spider pie..."))
-			name = "unfinished spider pie"
+			to_chat(user, span_notice("开始制作蛛肉派……"))
+			name = "未完成的蛛肉派"
 			process_step += 1
 			spidermeaty = TRUE
 			update_icon()
@@ -198,20 +198,20 @@ And I don't wanna copypaste what Vanderlin has
 			return
 		if(spidermeaty && process_step == 2 && do_after(user,short_cooktime, target = src))
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			to_chat(user, span_notice("Adding filling to the spider pie. Needs more."))
+			to_chat(user, span_notice("往蛛肉派里添馅。还得再加一些。"))
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(spidermeaty && process_step == 3 && do_after(user,short_cooktime, target = src))
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			to_chat(user, span_notice("Filling the spider pie to the brim. Still lacks a pie roof."))
+			to_chat(user, span_notice("蛛肉派馅料已添得满满当当，但还缺一层派盖。"))
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		else
-			to_chat(user, span_notice("You lack knowledge of underdark delicacies!"))
+			to_chat(user, span_notice("你不懂幽暗地域的珍馐之道！"))
 
 	// -------------- PUMPKIN PIE --------------
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/pumpkin_mashed))
@@ -220,9 +220,9 @@ And I don't wanna copypaste what Vanderlin has
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			to_chat(user, span_notice("Starting on a pumpkin pie... Some fresh cheese next."))
-			name = "unfinished pumpkin pie"
-			desc = initial(desc) + "\n" + span_smallnotice("It requires some fresh cheese.")
+			to_chat(user, span_notice("开始制作南瓜派……接下来需要一些新鲜奶酪。"))
+			name = "未完成的南瓜派"
+			desc = initial(desc) + "\n" + span_smallnotice("它需要一些新鲜奶酪。")
 			process_step += 1
 			pumpkinpie = TRUE
 			update_icon()
@@ -235,8 +235,8 @@ And I don't wanna copypaste what Vanderlin has
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				to_chat(user, span_notice("Mixing the pumpkin and cheese in the pie. It needs an egg."))
-				desc = initial(desc) + "\n" + span_smallnotice("It requires an egg.")
+				to_chat(user, span_notice("把南瓜和奶酪在派里拌匀。还差一枚蛋。"))
+				desc = initial(desc) + "\n" + span_smallnotice("它需要一枚蛋。")
 				process_step += 1
 				update_icon()
 				qdel(I)
@@ -245,8 +245,8 @@ And I don't wanna copypaste what Vanderlin has
 			playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				to_chat(user, span_notice("Mixing the filling and egg in the pumpkin pie. It just needs sugar!"))
-				desc = initial(desc) + "\n" + span_smallnotice("It requires some sugar.")
+				to_chat(user, span_notice("把馅料和蛋在南瓜派里拌匀。就差糖了！"))
+				desc = initial(desc) + "\n" + span_smallnotice("它需要一些糖。")
 				process_step += 1
 				update_icon()
 				qdel(I)
@@ -254,7 +254,7 @@ And I don't wanna copypaste what Vanderlin has
 		else if(process_step == 4 && istype(I, /obj/item/reagent_containers/food/snacks/sugar))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
-				name = "uncooked pumpkin pie"
+				name = "生南瓜派"
 				desc = initial(desc)
 				filling_color = "#df5c04"
 				cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pumpkin
@@ -516,7 +516,7 @@ And I don't wanna copypaste what Vanderlin has
 			update_icon()
 			qdel(I)
 		else if(spidermeaty && process_step == 4 && do_after(user,short_cooktime, target = src))
-			name = "uncooked spider pie"
+			name = "生蛛肉派"
 			icon_state = "spiderpie_raw"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/spider
 			cooked_smell = /datum/pollutant/food/spider_pie

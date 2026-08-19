@@ -103,18 +103,18 @@
 	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/buttered
-	name = "buttered toast"
-	desc = "Crisp and crunchy, yet not burnt - truly, an alchemical wonder. Now slathered with a healthy layer of butter."
+	name = "黄油吐司"
+	desc = "酥脆爽口却没有烤焦，简直像炼金奇迹。现在又涂上了厚厚一层黄油。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "toast_butter"
 	faretype = FARE_FINE
-	tastes = list("butter" = 1)
+	tastes = list("黄油香" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/jamtallowed_slice
-	tastes = list("crunchy, sweetly-sour jamminess" = 1, "a wonderful start to the dae" = 1)
-	name = "jamtallowed toast"
-	desc = "A blackberried jam, smeared across a slice of toast. It is favored as a delicacy by Psydonia's peasantry and yeomen, and is usually reserved to crown the start of a particularly special dae."
+	tastes = list("酥脆酸甜的果酱香" = 1, "美好一天的开始" = 1)
+	name = "黑莓果酱吐司"
+	desc = "黑莓果酱抹在一片吐司上。它是普赛多尼亚农民与自耕农钟爱的美味，通常被留作特别日子早晨的点缀。"
 	faretype = FARE_FINE
 	icon_state = "toast_jamtallow"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -123,9 +123,9 @@
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/marmaladed_slice
-	tastes = list("crunchy, sweet-tarty jamminess" = 1, "a wonderful end to the dae" = 1)
-	name = "marmaladed toast"
-	desc = "A tangerine marmalade served on a bed of warm crustless bread topped with another piece of warm crustless bread. One bite, and it can satiate even a starving bear's stomach!"
+	tastes = list("酥脆甜酸的果酱香" = 1, "美好一天的结束" = 1)
+	name = "橘子酱吐司"
+	desc = "橘子酱夹在两片去边的温热面包之间。一口下去，连饿熊的肚子都能填饱！"
 	faretype = FARE_FINE
 	icon_state = "toast_marmalade"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
@@ -157,40 +157,40 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salami
-	tastes = list("salumoi" = 1,"bread" = 1)
-	name = "salumoi bread"
-	desc = "A piece of toast with a thin slice of salumoi on top. Often eaten by soldiers on the march. Salty!"
+	tastes = list("烟熏香肠" = 1,"面包香" = 1)
+	name = "烟熏香肠面包"
+	desc = "一片吐司上放着薄薄的烟熏香肠片。行军中的士兵常吃这个。咸香！"
 	icon_state = "bread_salami"
 	foodtype = GRAIN | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
-	tastes = list("cheese" = 1,"bread" = 1)
-	name = "cheese bread"
-	desc = "A slice of toast with a rather thin wedge of cheese melted into the crust."
+	tastes = list("奶酪香" = 1,"面包香" = 1)
+	name = "奶酪面包"
+	desc = "一片吐司上有一角相当薄的奶酪，融进了面包皮里。"
 	icon_state = "bread_cheese"
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
-	tastes = list("cheese" = 1,"egg" = 1)
-	name = "egg toast"
-	desc = "A piece of toast with a fried egg on top that jiggles gently when prodded."
+	tastes = list("奶酪香" = 1,"鸡蛋香" = 1)
+	name = "鸡蛋吐司"
+	desc = "一片吐司上放着煎蛋，轻轻一碰就会微微颤动。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL * 2)
 	icon_state = "bread_egg"
 	foodtype = GRAIN | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
-	tastes = list("salty fat" = 1)
-	name = "salo bread"
-	desc = "The salo's smooth consistency helps soften the rough grainy bread."
+	tastes = list("咸香油脂" = 1)
+	name = "盐腌肥膘面包"
+	desc = "肥膘顺滑的质地有助于软化粗糙的谷粒面包。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL * 2)
 	faretype = FARE_POOR
 	icon_state = "bread_salo"
 	foodtype = GRAIN | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/bacon
-	tastes = list("bacon" = 1)
-	name = "bacon bread"
-	desc = "A slice of bread with crispy bacon on top for the perfect breakfast."
+	tastes = list("培根香" = 1)
+	name = "培根面包"
+	desc = "一片面包上放着酥脆培根，成就完美早餐。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL * 2)
 	icon_state = "toast_bacon"
 	foodtype = GRAIN | MEAT
@@ -204,16 +204,16 @@
 	foodtype = GRAIN | MEAT
 */
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/ham
-	tastes = list("ham" = 1,"bread" = 1)
-	name = "ham bread"
-	desc = "A piece of toast with a thick slice of ham on top. A delight enjoyed by many burghers."
+	tastes = list("火腿香" = 1,"面包香" = 1)
+	name = "火腿面包"
+	desc = "一片吐司上放着厚厚一片火腿。许多市民都喜爱的美味。"
 	icon_state = "toast_ham"
 	foodtype = GRAIN | MEAT
 
 /*	.................   Bread Buns   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bun
-	name = "bun"
-	desc = "Portable, quaint, and entirely consumable - for the discerning traveler. It yearns to be further dolled with a sausage, wedge of cheese, or some delicious jams."
+	name = "小圆面包"
+	desc = "便于携带、朴实无华，而且完全可以吃光——适合讲究的旅人。它渴望再配上香肠、一角奶酪或一些美味的果酱来好好打扮一番。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "bun"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION)
@@ -224,10 +224,10 @@
 	rotprocess = SHELFLIFE_EXTREME
 
 /obj/item/reagent_containers/food/snacks/rogue/bun_jamtallow
-	name = "jamtallowed bun"
-	desc = "A delicious treat to bring along for those long-and-lonesome hikes through the Naledian deserts; doubly-so, if you happen to be smuggling enough starsugar to buy out Astrata's throne."
+	name = "黑莓果酱面包"
+	desc = "纳莱迪沙漠漫长孤寂的跋涉途中，带上它是绝佳的美味；如果你恰好走私了足够买下阿斯特拉塔王座的星糖，那就更是如此。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
-	tastes = list("sweetly-sour jamminess" = 1, "a lavish break from the dae's woes" = 1)
+	tastes = list("酸甜的果酱香" = 1, "从今日烦恼中奢侈地逃离" = 1)
 	icon_state = "bun_jamtallow"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	faretype = FARE_FINE
@@ -237,10 +237,10 @@
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/bun_marmalade
-	name = "marmaladed bun"
-	desc = "A delicious treat to bring along for those long-and-lonesome hikes through the Ferentian forests; doubly-so, if you happen to be a tallow-coated wildkin of the urisine variety."
+	name = "橘子酱面包"
+	desc = "费伦提亚森林漫长孤寂的跋涉途中，带上它是绝佳的美味；如果你恰好是一只涂满油脂的熊类兽裔，那就更是如此。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
-	tastes = list("sweet-tarty jamminess" = 1, "a lavish break from the dae's woes" = 1)
+	tastes = list("甜酸交织的果酱香" = 1, "从今日烦恼中奢侈地逃离" = 1)
 	icon_state = "bun_marmalade"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	faretype = FARE_FINE
@@ -268,9 +268,9 @@
 
 /* 	.................   Crossbuns   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/crossbun
-	name = "crossbun"
-	desc = "Traditionally eaten for breakfast amongst Psydonia's abbeys. Astratans in particular have made it a \
-	practice to add a slice of marmalade to their crossbuns, in reverance of Her golden authority."
+	name = "十字面包"
+	desc = "普赛多尼亚的修道院传统上以它为早餐。阿斯特拉塔人尤其习惯在十字面包上加一片橘子酱，以示对祂金色权威的\
+	敬意。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "crossbun"
 	faretype = FARE_NEUTRAL // Having nobles vomit from eating holy buns is not a good idea
@@ -280,36 +280,36 @@
 	rotprocess = SHELFLIFE_EXTREME
 
 /obj/item/reagent_containers/food/snacks/rogue/crossbun_jamtallowed
-	name = "jamtallowed crossbun"
-	desc = "So sinfully delicious!"
+	name = "黑莓果酱十字面包"
+	desc = "如此罪恶的美味！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "crossbun_jamtallow"
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	rotprocess = SHELFLIFE_EXTREME
-	tastes = list("sweet-tarty jamminess" = 1, "a sense of divine fufillment" = 1)
+	tastes = list("甜酸交织的果酱香" = 1, "一种神圣的满足感" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/crossbun_marmaladed
-	name = "marmaladed crossbun"
-	desc = "A particularly favorite treat amonst the papacies of Grenzelhoft and Etruscea, especially during the \
-	holidaes that pay reverance to Astrata. The marmalade is said to represent the Sun's blessed light and warming \
-	radiance, though the spiritual implication tends to be lost on more eager-minded children."
+	name = "橘子酱十字面包"
+	desc = "在格伦泽尔霍夫特与伊特鲁斯卡的教廷中尤为受宠的美味，尤其是在向阿斯特拉塔致敬的节日期间。\
+	据说橘子酱象征着太阳受祝福的光芒与温暖的辉光，\
+	不过这种精神上的意涵往往被那些更心急的孩子们所忽略。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "crossbun_marmalade"
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	rotprocess = SHELFLIFE_EXTREME
-	tastes = list("sweetly-sour jamminess" = 1, "a sense of divine communion" = 1)
+	tastes = list("甜酸交织的果酱香" = 1, "一种神圣的共鸣感" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/psycrossbun
-	name = "psycrossbun"
-	desc = "How long will you endure the temptation to eat it? Surely, you wouldn't dare to jam it up as well, would you.. ?"
+	name = "普赛圣十字面包"
+	desc = "你能抵御多久吃它的诱惑？想必，你也不敢再往上面涂果酱吧……？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "psycrossbun"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION)
@@ -320,37 +320,37 @@
 	rotprocess = SHELFLIFE_EXTREME
 
 /obj/item/reagent_containers/food/snacks/rogue/psycrossbun_jamtallowed
-	name = "jamtallowed psycrossbun"
-	desc = "A particularly favorite treat amonst the papacies of Otava and Rockhill, especially during the \
-	holidaes that pay reverance to Psydon's sacrifice. The jamtallow is said to represent the Weeping God's \
-	tears, though the spiritual implication tends to be lost on more eager-minded children."
+	name = "黑莓果酱普赛圣十字面包"
+	desc = "在奥塔瓦与岩丘的教廷中尤为受宠的美味，尤其是在向普赛顿的牺牲致敬的节日期间。\
+	据说黑莓果酱象征着泣神的泪水，\
+	不过这种精神上的意涵往往被那些更心急的孩子们所忽略。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "psycrossbun_jamtallow"
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	rotprocess = SHELFLIFE_EXTREME
-	tastes = list("sweet-tarty jamminess" = 1, "a sense of enduring sorrow" = 1)
+	tastes = list("甜酸交织的果酱香" = 1, "一种绵长的悲伤" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/psycrossbun_marmaladed
-	name = "marmaladed psycrossbun"
-	desc = "Wait, isn't it meant to be the other way around? Ah, well!"
+	name = "橘子酱普赛圣十字面包"
+	desc = "等等，不该是反过来的吗？啊，算了！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "psycrossbun_marmalade"
 	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	rotprocess = SHELFLIFE_EXTREME
-	tastes = list("sweetly-sour jamminess" = 1, "a sense of enduring confusion" = 1)
+	tastes = list("酸甜的果酱香" = 1, "一种持续的困惑" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN | FRUIT
 
 /*	.................   Raisin Bread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/rbread_half
-	name = "half-done raisin dough"
-	desc = "It needs more raisins!"
+	name = "未完成的葡萄干面团"
+	desc = "还需要更多葡萄干！"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "dough_raisin"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
@@ -358,8 +358,8 @@
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
-	name = "raw raisin loaf"
-	desc = "Into the oven you go!"
+	name = "生葡萄干面包"
+	desc = "该进烤炉了！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "raisinbreaduncooked"
 	slices_num = 0
@@ -370,8 +370,8 @@
 	cooked_smell = /datum/pollutant/food/raisin_bread
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread
-	name = "raisin loaf"
-	desc = "A popular dessert amongst the peasantry, this loaf of sweetbread's speckled with fruity surprises. In recent years, it has more palettes amongst the papacy: t'was Rockhill's abbey that christened a variant, glazed with a sugary veneer."
+	name = "葡萄干面包"
+	desc = "平民中广受欢迎的甜点，这条甜面包上点缀着水果的惊喜。近些年来，它在教廷中也赢得了更多青睐：正是岩丘的修道院为它命名了一款裹着糖衣釉面的变种。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "raisinbread6"
 	bitesize = 8
@@ -380,7 +380,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF)
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("crisp-laden doughiness" = 1,"little bursts of caramelized fruitiness" = 1)
+	tastes = list("酥脆面香" = 1,"焦糖水果的小惊喜" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -407,15 +407,15 @@
 			changefood(slice_path, eater)
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice
-	name = "raisin loaf slice"
-	desc = "Soft and chewy. Nourishing and filling. Simple and decent."
+	name = "葡萄干面包片"
+	desc = "松软有嚼劲。营养又顶饱。朴实而体面。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "raisinbread_slice"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL-1)
 	w_class = WEIGHT_CLASS_NORMAL
 	faretype = FARE_NEUTRAL
 	cooked_type = null
-	tastes = list("crisp-laden doughiness" = 1,"little bursts of caramelized fruitiness" = 1)
+	tastes = list("酥脆面香" = 1,"焦糖水果的小惊喜" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
@@ -423,8 +423,8 @@
 
 /*	.................   Apple Bread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/abread_half
-	name = "half-done apple dough"
-	desc = "It needs more apple slices!"
+	name = "未完成的苹果面团"
+	desc = "还需要更多苹果片！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "dough_apple"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
@@ -432,8 +432,8 @@
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/abreaduncooked
-	name = "raw apple loaf"
-	desc = "Into the oven you go!"
+	name = "生苹果面包"
+	desc = "该进烤炉了！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "applebread_uncooked"
 	slices_num = 0
@@ -444,8 +444,8 @@
 	cooked_smell = /datum/pollutant/food/apple_bread
 
 /obj/item/reagent_containers/food/snacks/rogue/applebread
-	name = "apple loaf"
-	desc = "A fresher cousin of the oft-adored 'raisin loaf', bespeckled with baked apples that dare to melt upon an indulger's tongue. It holds a special place in the hearts of Valoria's people, for both the peasantry and nobility."
+	name = "苹果面包"
+	desc = "备受喜爱的“葡萄干面包”有位更新鲜的表亲，缀满了烤苹果，敢在贪食者的舌尖融化。无论平民还是贵族，它在瓦洛里亚人心中都占据着特殊的位置。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "applebread6"
 	bitesize = 8
@@ -454,7 +454,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("crisp-laden doughiness" = 1,"deliciously soft apples" = 1)
+	tastes = list("酥脆面香" = 1,"软糯多汁的苹果" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -481,15 +481,15 @@
 			changefood(slice_path, eater)
 
 /obj/item/reagent_containers/food/snacks/rogue/applebreadslice
-	name = "apple loaf slice"
-	desc = "Soft and chewy. Nourishing and filling. Simple yet decadant. Certainly a step up from raisins, that's for sure."
+	name = "苹果面包片"
+	desc = "松软有嚼劲。营养又顶饱。朴实却奢华。毫无疑问，比葡萄干更胜一筹。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "applebread_slice"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	w_class = WEIGHT_CLASS_NORMAL
 	faretype = FARE_FINE
 	cooked_type = null
-	tastes = list("crisp-laden doughiness" = 1,"deliciously soft apples" = 1)
+	tastes = list("酥脆面香" = 1,"软糯多汁的苹果" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
@@ -497,10 +497,10 @@
 
 /*	.................   Tomatoplate  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
-	name = "tomatoplate"
-	desc = "A culinary delight from Ferentia's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
-	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket; all it's missing is a cold pint of \
-	ale and an ongoing game of lampternball to jeer at."
+	name = "番茄薄饼"
+	desc = "源自费伦提亚海岸的烹饪佳肴，据称源于很久以前涌入的伊特鲁斯卡难民之手。扁面饼上番茄酱的浓郁风味，被其 \
+	奶酪外衣完美衬托；只差一杯冰凉的啤酒，以及一场 \
+	可供起哄的灯笼球赛。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "pizza"
 	slices_num = 6
@@ -509,7 +509,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS)
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "a hint of herbiness" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "一丝草本清香" = 1)
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -517,14 +517,14 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/tomatoplate_slice
-	name = "slice of tomatoplate"
-	desc = "The ultimate definition of being 'more than the sum of its parts'."
+	name = "番茄薄饼切片"
+	desc = "“远超各部分之和”的终极诠释。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "pizza_slice"
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "a hint of herbiness" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "一丝草本清香" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
@@ -534,10 +534,10 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/meattomatoplate
-	name = "sausaged tomatoplate"
-	desc = "A culinary delight from Ferentia's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
-	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and crispy sasuages; all it's missing \
-	is a cold pint of ale and an ongoing game of lampternball to jeer at."
+	name = "香肠番茄薄饼"
+	desc = "源自费伦提亚海岸的烹饪佳肴，据称源于很久以前涌入的伊特鲁斯卡难民之手。扁面饼上番茄酱的浓郁风味，被其 \
+	奶酪外衣与酥脆香肠完美衬托；只差一杯冰凉的啤酒，以及一场 \
+	可供起哄的灯笼球赛。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "meat_pizza"
 	slices_num = 6
@@ -546,7 +546,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS + NUTRITION_FULL_MEAL)
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "crispy sausages" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "酥脆香肠" = 1)
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -554,14 +554,14 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/meattomatoplate_slice
-	name = "slice of sausaged tomatoplate"
-	desc = "What do you mean this is a Baothan's favorite kind of slice?"
+	name = "香肠番茄薄饼切片"
+	desc = "你是说这是巴奥莎最喜欢的那种切片？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "meat_pizza_slice"
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "crispy sausages" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "酥脆香肠" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
@@ -571,10 +571,10 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/fishtomatoplate
-	name = "fished tomatoplate"
-	desc = "A culinary delight from Ferentia's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
-	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and oily fishes; all it's missing \
-	is a cold pint of ale and an ongoing game of lampternball to jeer at."
+	name = "鱼肉番茄薄饼"
+	desc = "源自费伦提亚海岸的烹饪佳肴，据称源于很久以前涌入的伊特鲁斯卡难民之手。扁面饼上番茄酱的浓郁风味，被其 \
+	奶酪外衣与油润鱼肉完美衬托；只差一杯冰凉的啤酒，以及一场 \
+	可供起哄的灯笼球赛。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "fish_pizza"
 	slices_num = 6
@@ -583,7 +583,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS + NUTRITION_FULL_MEAL)
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "oily fish" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "油润鱼肉" = 1)
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -591,14 +591,14 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/fishtomatoplate_slice
-	name = "slice of fished tomatoplate"
-	desc = "Excuse me, sire, but I specifically asked for no anchovies or zardines!"
+	name = "鱼肉番茄薄饼切片"
+	desc = "恕我直言，大人，但我特意吩咐过不要放鳀鱼或沙丁鱼！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "fish_pizza_slice"
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "oily fish" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "油润鱼肉" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
@@ -608,10 +608,10 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/oniontomatoplate
-	name = "onioned tomatoplate"
-	desc = "A culinary delight from Ferentia's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
-	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and crunchy onions; all it's missing \
-	is a cold pint of ale and an ongoing game of lampternball to jeer at."
+	name = "洋葱番茄薄饼"
+	desc = "源自费伦提亚海岸的烹饪佳肴，据称源于很久以前涌入的伊特鲁斯卡难民之手。扁面饼上番茄酱的浓郁风味，被其 \
+	奶酪外衣与爽脆洋葱完美衬托；只差一杯冰凉的啤酒，以及一场 \
+	可供起哄的灯笼球赛。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "onion_pizza"
 	slices_num = 6
@@ -620,7 +620,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS + NUTRITION_FULL_MEAL)
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "snappy, crunchy onions" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "爽脆洋葱" = 1)
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -628,14 +628,14 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/oniontomatoplate_slice
-	name = "slice of onioned tomatoplate"
-	desc = "Excuse me, sire, but I specifically asked for no anchovies or zardines!"
+	name = "洋葱番茄薄饼切片"
+	desc = "恕我直言，大人，但我特意吩咐过不要放鳀鱼或沙丁鱼！"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "onion_pizza_slice"
 	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "snappy, crunchy onions" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "爽脆洋葱" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
@@ -645,10 +645,10 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/truffletomatoplate
-	name = "truffled tomatoplate"
-	desc = "A culinary delight from Ferentia's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
-	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and decadant truffles; all it's missing \
-	is a cold pint of ale and an ongoing game of lampternball to jeer at."
+	name = "松露番茄薄饼"
+	desc = "源自费伦提亚海岸的烹饪佳肴，据称源于很久以前涌入的伊特鲁斯卡难民之手。扁面饼上番茄酱的浓郁风味，被其 \
+	奶酪外衣与奢华松露完美衬托；只差一杯冰凉的啤酒，以及一场 \
+	可供起哄的灯笼球赛。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "onion_pizza"
 	slices_num = 6
@@ -657,7 +657,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS + NUTRITION_FULL_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "savory and decadant truffles" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "咸鲜奢华的松露" = 1)
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -665,14 +665,14 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/truffletomatoplate_slice
-	name = "slice of truffled tomatoplate"
-	desc = "A slice that's fit for a king! ..so long as that trufflepig didn't accidentally pick a poisoned patch of truffles, of course."
+	name = "松露番茄薄饼切片"
+	desc = "配得上国王的切片！……当然，前提是那头松露猪没有碰巧拱到一片有毒的松露。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "onion_pizza_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "savory and decadant truffles" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "咸鲜奢华的松露" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
@@ -682,10 +682,10 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/poisontruffletomatoplate
-	name = "truffled tomatoplate" //Like jackberried treats, this is a poisoned variant! For those who don't properly source their truffles.. or simply want to poison others!
-	desc = "A culinary delight from Ferentia's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
-	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and decadant truffles; all it's missing \
-	is a cold pint of ale and an ongoing game of lampternball to jeer at."
+	name = "松露番茄薄饼" //Like jackberried treats, this is a poisoned variant! For those who don't properly source their truffles.. or simply want to poison others!
+	desc = "源自费伦提亚海岸的烹饪佳肴，据称源于很久以前涌入的伊特鲁斯卡难民之手。扁面饼上番茄酱的浓郁风味，被其 \
+	奶酪外衣与奢华松露完美衬托；只差一杯冰凉的啤酒，以及一场 \
+	可供起哄的灯笼球赛。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "truffle_pizza"
 	slices_num = 6
@@ -694,7 +694,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS + NUTRITION_FULL_MEAL, /datum/reagent/berrypoison = 5)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "rubbery and bitter truffles" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "橡胶般苦涩的松露" = 1)
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -702,14 +702,14 @@
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/poisontruffletomatoplate_slice
-	name = "slice of truffled tomatoplate" //Ditto.
-	desc = "A slice that's fit for a king! ..so long as that trufflepig didn't accidentally pick a poisoned patch of truffles, of course."
+	name = "松露番茄薄饼切片" //Ditto.
+	desc = "配得上国王的切片！……当然，前提是那头松露猪没有碰巧拱到一片有毒的松露。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "onion_pizza_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL, /datum/reagent/berrypoison = 5)
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "rubbery and bitter truffles" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "橡胶般苦涩的松露" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
@@ -719,10 +719,10 @@
 //
 
 /obj/item/reagent_containers/food/snacks/rogue/peartomatoplate
-	name = "pearacotta tomatoplate"
-	desc = "A curious spin on an Ferentian classic, attributed to the hands of Vanderlin's most esteemed culinarians. The \
-	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and sweet pears; a melody of flavors \
-	that has helped to embolden the creativity of Psydonia's artists for centuries-hence, and - hopefully - centuries-more."
+	name = "梨香番茄薄饼"
+	desc = "费伦提亚经典的有趣变奏，出自范德林最受尊崇的烹饪大师之手。扁面饼上番茄酱的浓郁风味，被其奶酪外衣 \
+	与甘甜梨肉完美衬托；这曲风味的旋律，数个世纪以来一直鼓舞着 \
+	普赛多尼亚艺术家的创造力——希望未来数个世纪亦然。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "pear_pizza"
 	slices_num = 6
@@ -731,7 +731,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS + NUTRITION_FULL_MEAL)
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "sweet and tangy pears" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "甜中带酸的梨香" = 1)
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
@@ -739,14 +739,14 @@
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/peartomatoplate_slice
-	name = "slice of pearacotta tomatoplate"
-	desc = "You'd never imagine that such contrasting ingredients could meld together so wonderfully; and yet, they do! Such is the joy of creation.."
+	name = "梨香番茄薄饼切片"
+	desc = "你绝不会想到，如此迥异的食材竟能美妙地融为一体；然而它们确实做到了！这便是创造的乐趣……"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "pear_pizza_slice"
 	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
-	tastes = list("richly smooth and salty tomatoes" = 1, "hot and gooey cheese" = 1, "savory and tangy pears" = 1)
+	tastes = list("浓郁顺滑的咸番茄味" = 1, "滚烫拉丝的奶酪香" = 1, "咸鲜微酸的梨香" = 1)
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
@@ -767,8 +767,8 @@
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cheesebun
-	name = "fresh cheese bun"
-	desc = "A quaint treat from the Grenzelhoftian kitchens."
+	name = "新鲜奶酪面包"
+	desc = "来自格伦泽尔霍夫特厨房的别致小点。"
 	faretype = FARE_FINE
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "cheesebun"
@@ -782,12 +782,12 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/bun_raston
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
-	tastes = list("cheese" = 1, "bread" = 1)
+	tastes = list("奶酪香" = 1, "面包香" = 1)
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "raston"
-	name = "raston"
+	name = "奶酪夹心面包"
 	faretype = FARE_FINE
-	desc = "A slice of cheese melted between two lightly-toasted buns."
+	desc = "一片奶酪融化在两片微烤的小圆面包之间。"
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
