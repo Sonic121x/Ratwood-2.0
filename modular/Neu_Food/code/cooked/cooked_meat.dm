@@ -133,8 +133,8 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/rat/fried
 	eat_effect = null
 	slices_num = 0
-	name = "fried rous"
-	desc = "A small, chewy chunk of rous meat. Certain races loves this, others... Not so much."
+	name = "炸鼠肉"
+	desc = "一小块耐嚼的鼠肉。某些种族对它爱不释手，其他种族……就没那么喜欢了。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat.dmi'
 	icon_state = "rat"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
@@ -148,8 +148,8 @@
 	eat_effect = null
 	slices_num = 0
 	bitesize = 4
-	name = "T-bone bear steak"
-	desc = "Real meat, for real men."
+	name = "T骨熊排"
+	desc = "真男人就该吃真肉。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat.dmi'
 	icon_state = "bear"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
@@ -163,8 +163,8 @@
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	slices_num = 0
 	bitesize = 5
-	name = "chewy troll blubber"
-	desc = "Cooking it seems to have only caused the meat to toughen up. It is vile, disgusting, like partially hardened jello with greasy chunks hidden within. Perhaps it can be cooked further to stubbornly quell its spirit."
+	name = "耐嚼的巨魔肥肉"
+	desc = "烹煮似乎只会让肉变得更硬。它令人作呕，像半凝固的果冻里藏着油腻的碎块。也许可以继续烹煮，顽固地压服它的性子。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat.dmi'
 	icon_state = "troll"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
@@ -246,7 +246,7 @@
 	rotprocess = null
 	slice_sound = TRUE
 	eat_effect = null
-	tastes = list("hog" = 1)
+	tastes = list("猪肉香" = 1)
 	cooked_type = null
 	fried_type = null
 
@@ -277,13 +277,13 @@
 	slice_path = FALSE
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	eat_effect = null
-	tastes = list("hog" = 1)
+	tastes = list("猪肉香" = 1)
 	cooked_type = null
 	fried_type = null
 
 /*	.............   Cooked Spidermeat   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/meatball/cooked
-	name = "fried spidermeatball"
+	name = "炸蜘蛛肉丸"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat.dmi'
 	icon_state = "spidermeatball_cooked"
 	bitesize = 3
@@ -291,10 +291,10 @@
 	slice_path = FALSE
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	eat_effect = null
-	tastes = list("crispy chitin" = 1)
+	tastes = list("酥脆甲壳" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/surprise/cooked
-	name = "spider surprise"
+	name = "蜘蛛惊喜"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat.dmi'
 	icon_state = "spider_surprise_cooked"
 	bitesize = 4
@@ -302,5 +302,5 @@
 	slice_path = FALSE
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	eat_effect = null
-	tastes = list("crispy chitin" = 1, "venom innards" = 1)
+	tastes = list("酥脆甲壳" = 1, "毒汁内脏" = 1)
 	faretype = FARE_FINE

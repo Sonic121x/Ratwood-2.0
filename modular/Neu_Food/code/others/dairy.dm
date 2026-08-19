@@ -209,8 +209,8 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/cheese/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click a piece of cloth with the fresh cheese to begin packing it together. For the best results, ensure the piece of cloth is placed atop a table beforehand.")
-	. += span_info("Repeating this process until four clumps of fresh cheese are used will result in a tied-together package. This package will eventually blossom into a cheese wheel, once enough time has passed.")
+	. += span_info("用鲜奶酪左键点击一块布料，即可开始把它包起来。为了获得最佳效果，请先把布料放在桌上。")
+	. += span_info("重复这一过程，直到用掉四份鲜奶酪，就能得到一包扎好的包裹。只要时间足够，这个包裹最终会绽放成一整轮奶酪。")
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar
 	name = "奶酪轮"
@@ -232,7 +232,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("If left undisturbed for long enough, cheese wheels will eventually age into a more decadant and delicious result.")
+	. += span_info("只要放置足够久不被惊扰，奶酪轮最终会熟成，变得更加奢靡美味。")
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	name = "熟成奶酪轮"

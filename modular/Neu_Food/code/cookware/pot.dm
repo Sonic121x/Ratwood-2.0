@@ -19,15 +19,15 @@
 
 /obj/item/reagent_containers/glass/bucket/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_notice("Freshwater can be collected by leaving out buckets, pots, washbins, and any other uncovered containers on an uncovered tile while it's raining.")
+	. += span_notice("下雨时，将桶、锅、洗衣盆等任何敞口容器留在露天格子中，即可收集淡水。")
 
 /obj/item/reagent_containers/glass/bucket/pot/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Pots can be placed atop a hearth by left-clicking it. If the hearth is lit, the placed pot will eventually come to a boil - so long as it's filled with water.")
-	. += span_info("Right-clicking a hearthbound pot allows you to fan its flames, further reducing the time it'll take to start boiling.")
-	. += span_info("Once boiling, left-clicking the hearthbound pot with an ingredient will drop it inside. The larger a pot is, the more ingredients can be dropped in at any given time.")
-	. += span_info("After the first ingredient is placed in, the pot will begin turning it - and any other subsequent ingredients - into a brew, over the course of a minute.")
-	. += span_info("Specific ingredients can create specific brews; dried rosa petals for a refreshing tea, coffee beans for a revitalizing drink, and more..")
+	. += span_info("左键点击炉膛，即可将锅放置其上。只要锅里装满了水且炉膛点燃，锅最终就会沸腾。")
+	. += span_info("右键点击炉膛上的锅可以扇旺火焰，进一步缩短开始沸腾所需的时间。")
+	. += span_info("水开后，手持食材左键点击炉膛上的锅，即可将其投入锅中。锅越大，单次能投入的食材就越多。")
+	. += span_info("投入第一份食材后，锅便会在约一分钟内，将它以及后续投入的所有食材熬成一锅饮品。")
+	. += span_info("特定食材能熬出特定的饮品：干玫瑰花瓣可泡出清爽的茶，咖啡豆可制成提神的饮料，还有更多配方……")
 
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
@@ -81,8 +81,8 @@
 	icon_state = "pote_copper"
 
 /obj/item/reagent_containers/glass/bucket/pot/bronze
-	name = "bronze pot"
-	desc = "A cauldron of bronze, aching to churn water and chopmealings into a champion's broth. It can hold a lot of liquid."
+	name = "青铜锅"
+	desc = "一口青铜大锅，渴望将清水与剁碎的食材搅成一锅勇士的浓汤。它能盛放大量液体。"
 	icon_state = "bronzepot"
 
 /obj/item/reagent_containers/glass/bucket/pot/teapot
@@ -203,9 +203,9 @@
 	return FALSE // There's no filling for teapot
 
 /obj/item/reagent_containers/glass/bucket/pot/kettle/tankard
-	name = "tankard"
-	desc = "A heftsome, iron-bottomed mug. It can be set upon a hearth to brew traditional drinks, or - for the more \
-	alcoholically-inclined - used as a pitcher of liqour."
+	name = "大啤酒杯"
+	desc = "一只沉甸甸的铁底大酒杯。它可以放在炉膛上煮制传统饮品，或者——对于更嗜酒的人来说——\
+	用作盛酒的酒壶。"
 	icon = 'modular/Neu_Food/icons/cookware/unused.dmi'
 	icon_state = "stein"
 	sellprice = 10
@@ -214,9 +214,9 @@
 	throwforce = 15
 
 /obj/item/reagent_containers/glass/bucket/pot/kettle/tankard/silver
-	name = "silver tankard"
-	desc = "A regal, silver-bottomed mug with gilded marginalia. Perfect for refilling mugs-a-plenty during the chaos of an \
-	innhouse's feast, or for drowning away the sorrows of a sorrid week. It can be set upon a hearth to brew traditional drinks."
+	name = "银制大啤酒杯"
+	desc = "一只威严的银底大酒杯，边缘饰有鎏金纹样。最适合在旅店盛宴的混乱中为众多酒杯续满佳酿，\
+	或用来浇灭一周的愁苦。它可以放在炉膛上煮制传统饮品。"
 	icon = 'modular/Neu_Food/icons/cookware/unused.dmi'
 	icon_state = "silverstein"
 	sellprice = 45
@@ -225,10 +225,10 @@
 	throwforce = 20
 
 /obj/item/reagent_containers/glass/bucket/pot/kettle/tankard/blacksteel
-	name = "blacksteel tankard"
-	desc = "A mythical, blacksteel-bottomed mug with a mastercrafted handle. Fit for the bloodied knuckles of a dungeon-delving \
-	hero, or the nitestand of a drunkhearted king. It can be set upon a hearth to brew traditional drinks, or smelted within a \
-	furnace to birth an ingot of blacksteel."
+	name = "黑钢大啤酒杯"
+	desc = "一只传说般的黑钢底大酒杯，配以大师工艺的手柄。适合地牢探险英雄染血的指节，也适合醉心国王的床头柜。\
+	它可以放在炉膛上煮制传统饮品，或投入熔炉，\
+	炼出一块黑钢锭。"
 	icon = 'modular/Neu_Food/icons/cookware/unused.dmi'
 	icon_state = "blacksteelstein"
 	sellprice = 75

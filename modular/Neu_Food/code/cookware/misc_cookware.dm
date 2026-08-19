@@ -28,7 +28,7 @@
 
 /obj/item/kitchen/rollingpin/get_mechanics_examine(mob/user)
     . = ..()
-    . += span_info("Left-click on a wad of dough, whether balled-up or sliced into halves, to further flatten it out.")
+    . += span_info("左键点击一团面团——无论是揉成球状还是切成两半——即可进一步将其擀平。")
 
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user]开始用[src]把自己的脑袋擀平！看起来是在自杀！</span>")

@@ -2,7 +2,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
 	tastes = list("煎蛋香" = 1)
 	name = "煎蛋"
-	desc = "you shouldn't be seeing this."
+	desc = "你不应该看到这个。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_egg.dmi'
 	icon_state = "friedegg"
 	portable = FALSE
@@ -12,8 +12,8 @@
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/fried //so fried-egg specific shit stops getting inherited
-	name = "fried egg"
-	desc = "Some Astratans enjoy their eggs sunny-side up."
+	name = "煎蛋"
+	desc = "一些阿斯特拉塔人喜欢单面煎的鸡蛋。"
 
 /*	.............   Twin fried eggs   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/two

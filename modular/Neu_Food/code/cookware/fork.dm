@@ -16,8 +16,8 @@
 
 /obj/item/kitchen/fork/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-clicking most foodstuffs with the fork allows you to take a bite from it.")
-	. += span_info("Nobler appetites prefer utensils over simply eating and drinking with one's bare hands.")
+	. += span_info("用叉子左键点击大多数食物，即可咬下一口。")
+	. += span_info("高贵的胃口更偏爱餐具，而非直接用双手吃喝。")
 
 /datum/intent/dagger/thrust/fork
 	penfactor = 20

@@ -17,7 +17,7 @@
 
 	var/datum/reagent/R = output
 	if(R)
-		html += "<p>Boil a hot pot of water, then add any of the following ingredients. Each yields <b>[initial(R.name)]</b>:</p>"
+		html += "<p>烧开一锅热水，然后加入以下任意一种材料。每种材料都能产出 <b>[initial(R.name)]</b>：</p>"
 		if(initial(R.description))
 			html += "<p class='recipe-desc'>[initial(R.description)]</p>"
 
@@ -28,7 +28,7 @@
 			html += "<li>[icon2html(new A, user)] [initial(A.name)]</li>"
 		html += "</ul>"
 
-	html += "<p>Stews simmer for about [cooktime / 10] seconds per ingredient. A pot consumes 30dr of water per ingredient converted.</p>"
+	html += "<p>炖菜每加入一种材料约需炖煮 [cooktime / 10] 秒。每转化一种材料，锅会消耗 30dr 的水。</p>"
 	return html
 
 // DO NOT SORT the list unless you know what you're doing (refactor it) - I ordered specific recipe before generic one for a reason!!
