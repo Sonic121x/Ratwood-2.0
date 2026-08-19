@@ -319,7 +319,7 @@
 /obj/item/reagent_containers/food/snacks/fish/swamp_shrimp
 	name = "沼泽虾"
 	icon_state = "swamp_shrimp"
-	desc = "沼泽"虾"是一种生活在浑浊沼泽水域里的小型甲壳动物，适应了在肮脏、低氧的水中生存。"
+	desc = "沼泽\"虾\"是一种生活在浑浊沼泽水域里的小型甲壳动物，适应了在肮脏、低氧的水中生存。"
 	faretype = FARE_NEUTRAL
 	no_rarity_sprite = TRUE
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/swamp_shrimp
