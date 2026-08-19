@@ -56,8 +56,8 @@
 		// ---- 效果二：大量补血 / Effect 2: restore a large amount of blood ----
 		// 中文：当血量低于正常值时，每拍回补 20 点，直到恢复到正常血量上限。
 		// WHY a min(): never overshoot BLOOD_VOLUME_NORMAL (no infinite blood).
-		if(M.blood_volume < BLOOD_VOLUME_NORMAL)			// Only top up if below normal.
-			M.blood_volume = min(M.blood_volume + 20, BLOOD_VOLUME_NORMAL)	// Strong, capped refill.
+		if(M.get_blood_volume() < BLOOD_VOLUME_NORMAL)		// Only top up if below normal.
+			M.set_blood_volume(min(M.get_blood_volume() + 20, BLOOD_VOLUME_NORMAL))	// Strong, capped refill.
 
 		// ---- 附带：轻度愈合伤口本身，使“止血”更具持续性 ----
 		// 中文：顺带愈合少量伤口生命值，否则伤口下一拍可能再次开始渗血。
