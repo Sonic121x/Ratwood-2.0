@@ -61,7 +61,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/raspberry
 	name = "覆盆子干块"
-	desc = "脱去水分的覆盆子，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的覆盆子，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
@@ -90,7 +90,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/strawberry
 	name = "草莓干块"
-	desc = "脱去水分的草莓，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的草莓，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
@@ -119,7 +119,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/blackberry
 	name = "黑莓干块"
-	desc = "脱去水分的黑莓，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的黑莓，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
@@ -148,7 +148,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/plum
 	name = "李子干块"
-	desc = "脱去水分的李子，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的李子，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
@@ -177,7 +177,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/pear
 	name = "梨干块"
-	desc = "脱去水分的梨，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的梨，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
@@ -206,7 +206,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/tangerine
 	name = "柑橘干块"
-	desc = "脱去水分的柑橘，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的柑橘，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
@@ -235,7 +235,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/lemon
 	name = "柠檬干块"
-	desc = "脱去水分的柠檬，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的柠檬，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
@@ -264,7 +264,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/lime
 	name = "青柠干块"
-	desc = "脱去水分的青柠，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生"甜晶"——一种脆甜无比的糖果，\
+	desc = "脱去水分的青柠，变成了风味浓郁、可以长久保存的小块。与蜂蜜混合并投入一锅滚沸的油脂中，便能诞生'甜晶'——一种脆甜无比的糖果，\
 	在长者与贵族子弟中颇受欢迎。"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
 	w_class = WEIGHT_CLASS_TINY
