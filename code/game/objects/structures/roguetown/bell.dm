@@ -80,7 +80,7 @@
 					rolestonotify = GLOB.inquisition_positions
 				if("Garrison", "Warden Fort")
 					rolestonotify = GLOB.garrison_positions + GLOB.noble_positions
-			send_ooc_note(("我隐约听到了[src]被敲响的声音。有人在[localarea]召唤我。"), job = rolestonotify)
+			send_ooc_note(("我隐约听到了[src]被敲响的声音。有人在[localarea_display]召唤我。"), job = rolestonotify)
 
 /obj/structure/standingbell/proc/reset_cooldown()
 	visible_message(span_notice ("[src]可以再次使用了。"))

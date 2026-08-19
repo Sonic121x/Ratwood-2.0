@@ -108,7 +108,7 @@
 /*	.................   Cookies  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw
 	name = "半成品曲奇面团块"
-	desc = "软糯柔滑，点缀着巧克力碎。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些巧克力，让它变得更圆满？"
+	desc = "软糯柔滑，点缀着巧克力碎。比'不能入口'稍微强上那么一点，但还是太生了，没法下嘴……也许再加些巧克力，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedough"
 	cooked_smell = /datum/pollutant/food/cookies_chocolate
@@ -183,7 +183,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookied_raw
 	name = "半成品糖丸曲奇面团块"
-	desc = "软糯柔滑，点缀着糖丸碎屑。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些糖丸，让它变得更圆满？"
+	desc = "软糯柔滑，点缀着糖丸碎屑。比'不能入口'稍微强上那么一点，但还是太生了，没法下嘴……也许再加些糖丸，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedoughd"
 	cooked_smell = /datum/pollutant/food/cookies_dragee
@@ -258,7 +258,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookiec_raw
 	name = "半成品焦糖曲奇面团块"
-	desc = "软糯柔滑，点缀着焦糖碎屑。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些焦糖，让它变得更圆满？"
+	desc = "软糯柔滑，点缀着焦糖碎屑。比'不能入口'稍微强上那么一点，但还是太生了，没法下嘴……也许再加些焦糖，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedoughc"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -333,7 +333,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookier_raw
 	name = "半成品葡萄干曲奇面团块"
-	desc = "软糯柔滑，点缀着葡萄干。比"不能入口"稍微强上那么一点，但还是太生了，没法下嘴……也许再加些葡萄干，让它变得更圆满？"
+	desc = "软糯柔滑，点缀着葡萄干。比'不能入口'稍微强上那么一点，但还是太生了，没法下嘴……也许再加些葡萄干，让它变得更圆满？"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "raw_halfcookiedoughr"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -762,7 +762,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/tangerine
 	name = "蜜橘凹窝挞"
-	desc = "一种填入蜜橘果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>"只要我们和善有礼，世界就会安好。""
+	desc = "一种填入蜜橘果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>'只要我们和善有礼，世界就会安好。'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "tangerine_dottart"
 	tastes = list("酥脆面皮" = 1, "带着一丝酸甜的蜜橘果酱" = 1)
@@ -776,7 +776,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/blackberry
 	name = "黑莓凹窝挞"
-	desc = "一种填入黑莓果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>"我是为了自己才这么做的。我喜欢那样……我很擅长那样。而且我感觉……活着。""
+	desc = "一种填入黑莓果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>'我是为了自己才这么做的。我喜欢那样……我很擅长那样。而且我感觉……活着。'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "blackberry_dottart"
 	tastes = list("酥脆面皮" = 1, "带着一丝酸甜的黑莓果酱" = 1)
@@ -811,7 +811,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/goldapple
 	name = "仙馔凹窝挞"
-	desc = "一种填入神圣果实果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>"为何越是禁忌的果实，尝起来就越甜美？""
+	desc = "一种填入神圣果实果酱的小酥点，适合在整只派显得过于隆重、不适合做开胃小点的时候。</br>'为何越是禁忌的果实，尝起来就越甜美？'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "gapple_dottart"
 	list_reagents = list(/datum/reagent/medicine/stronghealth = 10)
@@ -869,7 +869,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_jamtallowed
 	name = "涂了果酱的书形面包片"
-	desc = ""别以为我会忘记，否则我会后悔，我曾对你怀有的那份特别的爱——我的小蓝！""
+	desc = "'别以为我会忘记，否则我会后悔，我曾对你怀有的那份特别的爱——我的小蓝！'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "bookbread_slice_jamtallow"
 	faretype = FARE_LAVISH
@@ -884,7 +884,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_marmaladed
 	name = "涂了柑橘果酱的书形面包片"
-	desc = ""我总会在轻盔底下藏一块柑橘果酱三明治，以防万一！""
+	desc = "'我总会在轻盔底下藏一块柑橘果酱三明治，以防万一！'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "bookbread_slice_marmalade"
 	faretype = FARE_LAVISH
