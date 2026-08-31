@@ -377,7 +377,7 @@
 
 	var/turf/spawn_turf = targets[1]
 	if(!isturf(spawn_turf) || spawn_turf.density)
-		to_chat(user, span_warning("裂隙需要坚实的土地才能撕裂开来！))
+		to_chat(user, span_warning("裂隙需要坚实的土地才能撕裂开来！"))
 		revert_cast()
 		return FALSE
 
