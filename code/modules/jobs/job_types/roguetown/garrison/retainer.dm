@@ -1,6 +1,6 @@
 /datum/job/roguetown/baron_retainer
 	title = "Retainer"
-	display_title = "家臣"
+	display_title = "男爵家臣"
 	flag = RETAINER
 	department_flag = GARRISON
 	faction = "Station"
