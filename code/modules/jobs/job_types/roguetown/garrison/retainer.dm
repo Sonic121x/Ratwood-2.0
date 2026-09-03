@@ -1,5 +1,6 @@
 /datum/job/roguetown/baron_retainer
 	title = "Retainer"
+	display_title = "家臣"
 	flag = RETAINER
 	department_flag = GARRISON
 	faction = "Station"
@@ -10,7 +11,7 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	always_show_on_latechoices = TRUE
-	tutorial = "You hold the trust and responsibility of being the baron's closest confidant. You are tasked with protecting the baron and advising him on any matter he deems necessary. You enjoy the benefits of living in relative luxury and the status that comes with your position, although the higher nobility of the keep look down on you as a minor functionary."
+	tutorial = "你肩负着男爵最亲近心腹的信任与责任。你的任务是保护男爵，并就他认为必要的任何事项提供建议。你享有相对奢华的生活待遇和职位带来的地位，尽管城堡中更高阶的贵族会将你视为卑微的办事员而瞧不起你。"
 	display_order = JDO_RETAINER
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/baron_retainer
@@ -30,8 +31,8 @@
 	id = /obj/item/scomstone/bad/garrison
 
 /datum/advclass/baron_retainer/henchman
-	name = "Henchman"
-	tutorial = "A brute to back up the baron whenever needed, actions speak louder than words and you are the embodiment of this saying."
+	name = "打手"
+	tutorial = "你是一个在需要时随时支援男爵的莽夫。行动胜于言语，而你正是这句俗语的化身。"
 	outfit = /datum/outfit/job/roguetown/baron_retainer/henchman
 	category_tags = list(CTAG_RETAINER)
 	traits_applied = list(TRAIT_HEAVYARMOR)
@@ -68,37 +69,37 @@
 	backpack_contents = list(/obj/item/roguekey/baron = 1, /obj/item/storage/keyring/baronretainer = 1, /obj/item/flashlight/flare/torch/lantern = 1, /obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rogueweapon/scabbard/sheath = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1,)
 	H.verbs |= list(/mob/proc/haltyell)
 	if(H.mind)
-		var/weapons = list("Polearm", "Bludgeon", "Grand Mace", "Sword & Shield", "Flail & Shield", "Greatsword")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("长柄武器", "钝器", "大钉锤", "剑盾", "链枷与盾", "双手大剑")
+		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
-			if("Polearm")
+			if("长柄武器")
 				r_hand = /obj/item/rogueweapon/halberd
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
-			if("Bludgeon")
+			if("钝器")
 				r_hand = /obj/item/rogueweapon/mace/maul
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-			if("Grand Mace")
+			if("大钉锤")
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-			if("Sword & Shield")
+			if("剑盾")
 				r_hand = /obj/item/rogueweapon/sword
 				l_hand = /obj/item/rogueweapon/shield/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-			if("Flail & Shield")
+			if("链枷与盾")
 				r_hand = /obj/item/rogueweapon/flail/sflail
 				l_hand = /obj/item/rogueweapon/shield/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
-			if("Greatsword")
+			if("双手大剑")
 				r_hand = /obj/item/rogueweapon/greatsword/grenz
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 
 /datum/advclass/baron_retainer/ronin
-	name = "Ronin"
-	tutorial = "A blooded member of the infamous Ruma Clan, the baron has offered you an opportunity to prove the loyalty and honor demanded of you by serving him. (This subclass requires the Kazengun origin)"
+	name = "浪人"
+	tutorial = "作为恶名昭著的鲁马氏族中身经百战的成员，男爵给了你一个机会，通过为他服务来证明你所需的忠诚与荣誉。（此子职业需要风郡出身）"
 	outfit = /datum/outfit/job/roguetown/baron_retainer/ronin
 	category_tags = list(CTAG_RETAINER)
 	traits_applied = list(TRAIT_MEDIUMARMOR)
@@ -140,17 +141,17 @@
 
 /datum/outfit/job/roguetown/baron_retainer/ronin/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/masks = list("Full Mask","Half-Mask")
-	var/mask_choice = input(H, "Choose your mask.", "GREET THE SUN?") as anything in masks
+	var/masks = list("全脸面具","半脸面具")
+	var/mask_choice = input(H, "选择你的面具。", "迎接太阳？") as anything in masks
 	switch(mask_choice)
-		if("Full Mask")
+		if("全脸面具")
 			H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/facemask/steel/kazengun/full, SLOT_WEAR_MASK, TRUE)
-		if("Half-Mask")
+		if("半脸面具")
 			H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/facemask/steel/kazengun, SLOT_WEAR_MASK, TRUE)
 
 /datum/advclass/baron_retainer/greyleaf
-	name = "Greyleaf"
-	tutorial = "Honorably discharged from the warden corps, you have found new purpose in protecting the baron from the shadows and advising him on matters of Lowtown as someone who has shed blood to protect it."
+	name = "灰叶"
+	tutorial = "你从守林人队伍中光荣退役，如今找到了新的使命——在暗处保护男爵，并作为曾为保护低镇流过血的人，就低镇事务向他提供建议。"
 	outfit = /datum/outfit/job/roguetown/baron_retainer/greyleaf
 	category_tags = list(CTAG_RETAINER)
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_SURVIVAL_EXPERT, TRAIT_WOODWALKER, TRAIT_PERFECT_TRACKER)
@@ -183,42 +184,42 @@
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/warden_machete
 	backpack_contents = list(/obj/item/roguekey/baron = 1, /obj/item/storage/keyring/baronretainer = 1, /obj/item/flashlight/flare/torch/lantern = 1, /obj/item/rogueweapon/scabbard/sheath = 1)
 	if(H.mind)
-		var/helmets = list("Warden Bearskull", "Warden Goatskull", "Warden Wolfskull", "Studded Hood and Hound Mask")
-		var/helmet_choice = input(H, "Choose your Outfit", "EQUIP THINESELF") as anything in helmets
+		var/helmets = list("守林人熊首骨盔", "守林人羊首骨盔", "守林人狼首骨盔", "钉皮兜帽与猎犬面具")
+		var/helmet_choice = input(H, "选择你的装束", "披挂上阵") as anything in helmets
 		switch(helmet_choice)
-			if("Warden Bearskull")
+			if("守林人熊首骨盔")
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear
 				mask = /obj/item/clothing/head/roguetown/roguehood/warden
 				cloak = /obj/item/clothing/cloak/wardencloak
-			if("Warden Goatskull")
+			if("守林人羊首骨盔")
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat
 				mask = /obj/item/clothing/head/roguetown/roguehood/warden
 				cloak = /obj/item/clothing/cloak/wardencloak
-			if("Warden Wolfskull")
+			if("守林人狼首骨盔")
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf
 				mask = /obj/item/clothing/head/roguetown/roguehood/warden
 				cloak = /obj/item/clothing/cloak/wardencloak
-			if("Studded Hood and Hound Mask")
+			if("钉皮兜帽与猎犬面具")
 				head = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
 				mask = /obj/item/clothing/mask/rogue/facemask/steel/hound
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			
-		var/weapons = list("Crossbow", "Blackhorn Longbow", "Recurve Bow", "Slurbow")
-		var/weapon_choice = input(H, "Choose your weapon", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("十字弩", "黑角长弓", "反曲弓", "速射弩")
+		var/weapon_choice = input(H, "选择你的武器", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
-			if("Crossbow")
+			if("十字弩")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				beltr = /obj/item/quiver/poisonarrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
-			if("Blackhorn Longbow")
+			if("黑角长弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden
 				beltr = /obj/item/quiver/poisonarrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
-			if("Recurve Bow")
+			if("反曲弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden
 				beltr = /obj/item/quiver/poisonarrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
-			if("Slurbow")
+			if("速射弩")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
 				beltr = /obj/item/quiver/bolts
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
