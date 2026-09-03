@@ -1,6 +1,7 @@
 /datum/job/roguetown/baron
 	title = "Baron"
-	f_title = "Baroness"
+	display_title = "男爵"
+	f_title = "女男爵"
 	flag = BARON
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -13,7 +14,7 @@
 
 	outfit = /datum/outfit/job/roguetown/baron
 	display_order = JDO_BARON
-	tutorial = "Through birthright, favors or intrigue you have landed yourself in the position of being the baron of the outer reaches of the duchy. You swore fealty to the duke and are given significant independence to run lowtown as you see fit, you hold sway in its dealings and in absence of higher authority the local garrison will answer to you. You hold command over the lowtown garrison, although upon request the crown can call upon your men to join their greater army."
+	tutorial = "凭借继承权、恩惠或权谋，你坐上了公国边陲男爵的位置。你向公爵宣誓效忠，并被授予相当大的自主权，可按自己的意愿治理低镇；你在低镇事务中拥有主导权，在没有更高权威在场时，当地驻军将听命于你。你指挥着低镇的驻军，不过，应王权要求，你的人也可能被征召加入更庞大的王国军队。"
 	whitelist_req = FALSE
 	give_bank_account = 40
 	min_pq = 20
@@ -50,8 +51,8 @@
 
 /datum/advclass/baron/shrewd_nobleman
 	parent_type = /datum/advclass
-	name = "Shrewd Nobleman"
-	tutorial = "A noble in the most traditional sense, you use your wit and status to achieve your goals."
+	name = "精明的贵族"
+	tutorial = "作为最传统意义上的贵族，你运用自己的才智与地位来实现目标。"
 	outfit = /datum/outfit/job/roguetown/baron/shrewd_nobleman
 	category_tags = list(CTAG_BARON)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_SEEPRICES)
@@ -82,8 +83,8 @@
 
 /datum/advclass/baron/landed_knight
 	parent_type = /datum/advclass
-	name = "Landed Knight"
-	tutorial = "Rewarded with land for your noble service you have changed from wielding the sword to wielding the pen."
+	name = "封地骑士"
+	tutorial = "因功勋卓著的效劳而获封土地，你已从挥剑之人转变为执笔之人。"
 	outfit = /datum/outfit/job/roguetown/baron/landed_knight
 	category_tags = list(CTAG_BARON)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR)
