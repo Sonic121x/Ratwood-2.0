@@ -1,12 +1,13 @@
 /datum/job/roguetown/slaver
 	title = "Slaver"
+	display_title = "奴隶贩子"
 	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = JCOLOR_YEOMAN
 	allowed_races = ACCEPTED_RACES
-	tutorial = "You are one of the many fingers part of slavery's long arm, away from the fiercest competition over in the far southeast of the world you have established yourself as the premier slaver in this duchy. Put your slaves to work or auction them off, acquire new ones from the lowtown garrison or through less savory means."
+	tutorial = "你是奴隶贸易长臂中的众多手指之一，远离世界最东南端最激烈的竞争，你已在这座公国中确立了自己作为首屈一指的奴隶贩子的地位。让你的奴隶去干活，或者把他们拍卖掉，从低镇驻军那里获取新奴隶，或是通过不那么光彩的手段。"
 	display_order = JDO_SLAVER
 	job_traits = list(TRAIT_SLEUTH)
 	advclass_cat_rolls = list(CTAG_SLAVER = 2)
@@ -31,8 +32,8 @@
 /datum/outfit/job/roguetown/slaver
 
 /datum/advclass/slaver
-	name = "Slaver"
-	tutorial = "You are one of the many fingers part of slavery's long arm, away from the fiercest competition over in the far southeast of the world you have established yourself as the premier slaver in this duchy. Put your slaves to work or auction them off, acquire new ones from the lowtown garrison or through less savory means."
+	name = "奴隶贩子"
+	tutorial = "你是奴隶贸易长臂中的众多手指之一，远离世界最东南端最激烈的竞争，你已在这座公国中确立了自己作为首屈一指的奴隶贩子的地位。让你的奴隶去干活，或者把他们拍卖掉，从低镇驻军那里获取新奴隶，或是通过不那么光彩的手段。"
 	outfit = /datum/outfit/job/roguetown/slaver/basic
 	category_tags = list(CTAG_SLAVER)
 	subclass_languages = list(/datum/language/celestial)

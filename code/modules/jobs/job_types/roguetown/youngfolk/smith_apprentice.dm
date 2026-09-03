@@ -1,5 +1,6 @@
 /datum/job/roguetown/gapprentice
 	title = "Guild Apprentice"
+	display_title = "行会学徒"
 	flag = GUILDAPPRENTICE
 	department_flag = YOUNGFOLK
 	faction = "Station"
@@ -10,7 +11,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "Long hours and back-breaking work wouldnt even describe a quarter of what you do in a day for your Master. Its exhausting, filthy and you dont get much freetime: but someday youll get your own smithy, and youll have TWICE as many apprentices as your master does."
+	tutorial = "长时间的工作和累断腰的活儿甚至不足以描述你一天为师傅所做的四分之一。这活儿又累又脏，你也没多少空闲时间——但有朝一日你会拥有自己的铁匠铺，到那时你收的学徒会是你师傅的两倍。"
 
 	outfit = /datum/outfit/job/roguetown/gapprentice
 	display_order = JDO_GUILDAPPRENTICE
@@ -28,8 +29,8 @@
 
 
 /datum/advclass/gapprentice
-	name = "Guild Apprentice"
-	tutorial = "Long hours and back-breaking work wouldnt even describe a quarter of what you do in a day for your Master. Its exhausting, filthy and you dont get much freetime: but someday youll get your own smithy, and youll have TWICE as many apprentices as your master does."
+	name = "行会学徒"
+	tutorial = "长时间的工作和累断腰的活儿甚至不足以描述你一天为师傅所做的四分之一。这活儿又累又脏，你也没多少空闲时间——但有朝一日你会拥有自己的铁匠铺，到那时你收的学徒会是你师傅的两倍。"
 	outfit = /datum/outfit/job/roguetown/gapprentice/basic
 	cmode_music = 'sound/music/cmode/towner/combat_towner3.ogg'
 	category_tags = list(CTAG_GUILDAPPRENTICE)
