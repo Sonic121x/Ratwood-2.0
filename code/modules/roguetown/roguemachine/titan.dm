@@ -66,10 +66,10 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 		notlord = FALSE
 
 	if(mode)
-		if(findtext(message, "nevermind"))
+		if(findtext(message, "算了"))
 			mode = 0
 			return
-	if(findtext(message, "summon crown")) //This must never fail, thus place it before all other modestuffs.
+	if(findtext(message, "召来王冠")) //This must never fail, thus place it before all other modestuffs.
 		if(!SSroguemachine.crown)
 			new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 			say("王冠已被召来！")
@@ -108,7 +108,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 			say("王冠已被召来！")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-	if(findtext(message, "summon key"))
+	if(findtext(message, "召来钥匙"))
 		if(nocrown)
 			say("你需要王冠。")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -143,10 +143,10 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	switch(mode)
 		if(0)
-			if(findtext(message, "secrets of the throat"))
-				say("我的命令有：发布法令、发布公告、设定税率、修订特许状、宣布法外、召来王冠、召来钥匙、设定律法、制定律法、移除律法、清除律法、清除法令、成为摄政、改变颜色、I Ascend、算了")
+			if(findtext(message, "咽喉的秘密"))
+				say("我的命令有：颁布政令、发布公告、设定税率、修订特许状、宣布法外、召来王冠、召来钥匙、制定法律、颁布法律、废除法律、清除法律、清除政令、成为摄政、改变颜色、我升格、算了")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
-			if(findtext(message, "make announcement"))
+			if(findtext(message, "发布公告"))
 				if(nocrown)
 					say("你需要王冠。")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -161,7 +161,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 1
 				return
-			if(findtext(message, "make decree"))
+			if(findtext(message, "颁布政令"))
 				if(!SScommunications.can_announce(H))
 					say("我必须积蓄力量！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -174,7 +174,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 2
 				return
-			if(findtext(message, "purge decrees"))
+			if(findtext(message, "清除政令"))
 				if(!SScommunications.can_announce(H))
 					say("我必须积蓄力量！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -183,11 +183,11 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 					say("你不是我的主人！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				say("所有法令都将被清除！")
+				say("所有政令都将被清除！")
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				purge_decrees()
 				return
-			if(findtext(message, "make law"))
+			if(findtext(message, "颁布法律"))
 				if(!SScommunications.can_announce(H))
 					say("我必须积蓄力量！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -200,7 +200,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 4
 				return
-			if(findtext(message, "设定律法"))
+			if(findtext(message, "制定法律"))
 				if(!SScommunications.can_announce(H))
 					say("我必须积蓄力量！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -209,11 +209,11 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 					say("你不是我的主人！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				say("新的律法将如下所述……")
+				say("新的法律将如下所述……")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				give_law_popup(H)
 				return
-			if(findtext(message, "purge laws"))
+			if(findtext(message, "清除法律"))
 				if(!SScommunications.can_announce(H))
 					say("我必须积蓄力量！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -222,11 +222,11 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 					say("你不是我的主人！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				say("所有律法都将被清除！")
+				say("所有法律都将被清除！")
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				purge_laws()
 				return
-			if(findtext(message, "declare outlaw"))
+			if(findtext(message, "宣布法外"))
 				if(notlord || nocrown)
 					say("你不是我的主人！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -235,7 +235,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 				mode = 3
 				return
-			if(findtext(message, "set taxes"))
+			if(findtext(message, "设定税率"))
 				if(notlord || nocrown)
 					say("你不是我的主人！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -253,7 +253,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				give_decree_popup(H)
 				return
-			if(findtext(message, "become regent"))
+			if(findtext(message, "成为摄政"))
 				if(nocrown)
 					say("你需要王冠。")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -286,7 +286,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 					return
 				become_regent(H)
 				return
-			if(findtext(message, "change colors"))
+			if(findtext(message, "改变颜色"))
 				if(notlord || nocrown)
 					say("你不是我的主人！")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -320,7 +320,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 	I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 	SSroguemachine.crown = I
 
-	say("The crown is summoned!")
+	say("王冠已被召来！")
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 	playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 
@@ -329,7 +329,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 /obj/structure/roguemachine/titan/proc/give_tax_popup(mob/living/carbon/human/user)
 	if(!Adjacent(user))
 		return
-	var/datum/taxsetter/taxsetter = new("慷慨领主的谕令")
+	var/datum/taxsetter/taxsetter = new("慷慨领主的政令")
 	taxsetter.ui_interact(user)
 
 /obj/structure/roguemachine/titan/proc/give_law_popup(mob/living/carbon/human/user)
@@ -402,7 +402,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 /proc/make_law(raw_message)
 	raw_message = html_encode(raw_message)
 	GLOB.laws_of_the_land += raw_message
-	priority_announce("[length(GLOB.laws_of_the_land)]. [raw_message]", "律法已颁布", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
+	priority_announce("[length(GLOB.laws_of_the_land)]. [raw_message]", "一项法律已被颁布", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
 	record_round_statistic(STATS_LAWS_AND_DECREES_MADE)
 
 /proc/remove_law(law_index)
@@ -410,16 +410,16 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 		return
 	var/law_text = GLOB.laws_of_the_land[law_index]
 	GLOB.laws_of_the_land -= law_text
-	priority_announce("[law_index]. [law_text]", "律法已废除", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
+	priority_announce("[law_index]. [law_text]", "一项法律已被废除", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
 	record_round_statistic(STATS_LAWS_AND_DECREES_MADE, -1)
 
 /proc/purge_laws()
 	GLOB.laws_of_the_land = list()
-	priority_announce("谷地的所有律法已被清除！", "律法已清除", 'sound/misc/lawspurged.ogg', "Captain")
+	priority_announce("谷地的所有法律已被清除！", "法律已清除", 'sound/misc/lawspurged.ogg', "Captain")
 
 /proc/purge_decrees()
 	GLOB.lord_decrees = list()
-	priority_announce("谷地先前颁布的所有法令已被清除！", "法令已清除", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+	priority_announce("谷地先前颁布的所有政令已被清除！", "政令已清除", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 
 /proc/become_regent(mob/living/carbon/human/H)
 	priority_announce("[H.real_name]，即[H.get_role_title()]，现已就任谷地摄政。", "新摄政就位", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
