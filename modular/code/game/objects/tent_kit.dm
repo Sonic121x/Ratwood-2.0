@@ -7,7 +7,7 @@
 // === TENT KIT ITEM ===
 /obj/item/tent_kit
 	name = "小型帐篷套件"
-    desc = "一套紧凑的工具包，包含搭建防风雨帐篷所需的一切。搭建时帐篷会按你面朝的方向摆放。"
+	desc = "一套紧凑的工具包，包含搭建防风雨帐篷所需的一切。搭建时帐篷会按你面朝的方向摆放。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "tent_kit"
 	w_class = WEIGHT_CLASS_NORMAL
