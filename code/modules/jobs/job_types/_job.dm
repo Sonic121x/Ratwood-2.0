@@ -247,7 +247,7 @@
 
 	if(HAS_TRAIT(H, TRAIT_EXPLOSIVE_SUPPLY))
 		H.mind.has_bomb = TRUE
-		to_chat(H.mind, span_smallnotice("我需要去检查一下赫尔墨斯。我想有新的包裹到了。"))
+		to_chat(H.mind, span_smallnotice("我需要去检查一下赫尔墨斯。好像有新的包裹到了。"))
 
 	if(HAS_TRAIT(H, TRAIT_DRUG_SUPPLY))
 		H.mind.has_drug_delivery = TRUE
