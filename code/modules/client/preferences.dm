@@ -728,7 +728,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>更改</a><br>"
 				if(pref_species.mutant_skin_option)
-    				dat += "<b>异变肤色：</b> <a href='?_src_=prefs;preference=mutant_skin;task=input'>[mutant_skin ? "是" : "否"]</a><br>"
+					dat += "<b>异变肤色：</b> <a href='?_src_=prefs;preference=mutant_skin;task=input'>[mutant_skin ? "是" : "否"]</a><br>"
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
