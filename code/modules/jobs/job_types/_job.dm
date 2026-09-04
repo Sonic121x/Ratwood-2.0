@@ -238,26 +238,26 @@
 		H.hydration = 1000 // Set higher hydration
 
 		if(H.mind)
-			H.mind?.special_items["Pouch of Coins"] = /obj/item/storage/belt/rogue/pouch/coins/readyuppouch
+			H.mind?.special_items["一袋金币"] = /obj/item/storage/belt/rogue/pouch/coins/readyuppouch
 			if (HAS_TRAIT(H, TRAIT_MEDIUMARMOR) || HAS_TRAIT(H, TRAIT_HEAVYARMOR))
-				H.mind?.special_items["Metal Scrap (Repair kit)"] = /obj/item/repair_kit/metal/bad
+				H.mind?.special_items["金属废料(修理包)"] = /obj/item/repair_kit/metal/bad
 			else
-				H.mind?.special_items["Fabric Patch (Repair kit)"] = /obj/item/repair_kit/bad
+				H.mind?.special_items["织物补丁(修理包)"] = /obj/item/repair_kit/bad
 		to_chat(M, span_notice("你起得很早，特地在行囊里备好了一袋钱币，又在出发前饱餐了一顿。真是一场凯旋般的开局！"))
 
 	if(HAS_TRAIT(H, TRAIT_EXPLOSIVE_SUPPLY))
 		H.mind.has_bomb = TRUE
-		to_chat(H.mind, span_smallnotice("I need to check on HERMES. I think a new package has arrived."))
+		to_chat(H.mind, span_smallnotice("我需要去检查一下赫尔墨斯。我想有新的包裹到了。"))
 
 	if(HAS_TRAIT(H, TRAIT_DRUG_SUPPLY))
 		H.mind.has_drug_delivery = TRUE
-		to_chat(H.mind, span_smallnotice("The Guild left something for me. I should check HERMES for my delivery."))
+		to_chat(H.mind, span_smallnotice("公会给我留了东西。我应该去赫尔墨斯查看我的包裹。"))
 
 	if(H.islatejoin && announce_latejoin)
 		var/used_title = display_title || title
 		if((H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) && f_title)
 			used_title = f_title
-		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
+		scom_announce("[H.real_name]，[used_title]，从新王田抵达。")
 
 	if(give_bank_account)
 		if(give_bank_account > 1)
