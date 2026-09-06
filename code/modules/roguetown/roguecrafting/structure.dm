@@ -667,7 +667,7 @@
 	verbage = "建造"
 
 /datum/crafting_recipe/roguetown/structure/cookpit
-	name = "壁炉"
+	name = "炉灶(地面)"
 	result = /obj/machinery/light/rogue/hearth
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 3)
