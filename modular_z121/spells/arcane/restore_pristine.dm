@@ -121,7 +121,13 @@
 	if(!target_obj.max_integrity)
 		return FALSE
 
+	// 记录施法前目标是否已处于“碎裂/损坏”状态。
+	// 护甲碎裂(obj_break)时会先把自身防御(armor)备份到 original_armor 再把防御清零，
+	// 只有通过 obj_fix() 解除碎裂时才会用 original_armor 把防御还原回来。
+	var/was_broken = target_obj.obj_broken
 	var/old_integrity = target_obj.obj_integrity
+
+	// 恢复耐久：restore_ratio 为 null 表示直接补满，否则按比例修复。
 	if(isnull(restore_ratio))
 		target_obj.obj_integrity = target_obj.max_integrity
 	else
@@ -130,24 +136,40 @@
 		var/repair_amount = max(1, round(target_obj.max_integrity * restore_ratio))
 		target_obj.obj_integrity = min(target_obj.obj_integrity + repair_amount, target_obj.max_integrity)
 
+	// 耐久没有任何提升，说明本次没有可修复的损伤。
 	if(target_obj.obj_integrity <= old_integrity)
 		return FALSE
 
-	if(target_obj.obj_broken)
+	// 目标若为物品，后续需要额外处理 shoddy_repair / 覆盖部位 / 破损贴图等逻辑。
+	var/obj/item/target_item = null
+	if(isitem(target_obj))
+		target_item = target_obj
+
+	var/full_repaired = (target_obj.obj_integrity >= target_obj.max_integrity)
+
+	// 耐久补满时，清除“劣质修补”痕迹并修复被剥落的护甲覆盖部位。
+	// 顺序很关键：必须先清除 shoddy_repair 再调用下方的 obj_fix()，
+	// 否则 /obj/item/obj_fix() 检测到劣质修补会把耐久强制压回 60%，导致无法真正修满。
+	if(full_repaired && target_item)
+		if(target_item.shoddy_repair)
+			target_item.shoddy_repair = FALSE
+		if(target_item.body_parts_covered_dynamic != target_item.body_parts_covered)
+			target_item.repair_coverage()
+
+	// 只有“施法前已碎裂”的物品才需要调用 obj_fix() 来解除碎裂状态。
+	// 这是修复“护甲失去防御力”bug 的关键：
+	// /obj/item/clothing/obj_fix() 会用 original_armor 覆盖 armor，
+	// 而 original_armor 只在碎裂(obj_break)时才会被备份；
+	// 若对从未碎裂的护甲调用 obj_fix()，armor 会被置空，护甲将彻底失去防御力。
+	if(was_broken)
 		var/fix_threshold = target_obj.integrity_failure ? (target_obj.integrity_failure * target_obj.max_integrity) : 1
 		if(target_obj.obj_integrity > fix_threshold)
-			target_obj.obj_fix(user, FALSE)
+			// full_repair 传参：耐久未补满时传 FALSE，只解除碎裂、不强制拉满耐久；
+			// 耐久已补满时传 TRUE 做完整修复（此时 shoddy_repair 已被清除，不会被压回 60%）。
+			target_obj.obj_fix(user, full_repaired)
 
-	if(target_obj.obj_integrity >= target_obj.max_integrity)
-		target_obj.obj_fix(user)
-		if(isitem(target_obj))
-			var/obj/item/target_item = target_obj
-			if(target_item.shoddy_repair)
-				target_item.shoddy_repair = FALSE
-			if(target_item.body_parts_covered_dynamic != target_item.body_parts_covered)
-				target_item.repair_coverage()
-	else if(isitem(target_obj))
-		var/obj/item/target_item = target_obj
+	// 耐久未补满时刷新破损外观贴图。
+	if(!full_repaired && target_item)
 		target_item.update_damaged_state()
 
 	return TRUE
