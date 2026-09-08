@@ -287,7 +287,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/roguebin
-	name = "木箱"
+	name = "木桶(槽)"
 	result = /obj/item/roguebin
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	verbage_simple = "制作"
