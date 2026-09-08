@@ -155,11 +155,11 @@
 	contains = list(/obj/item/tent_kit/yurt)
 
 /datum/supply_pack/rogue/adventure_supplies/sewingkit
-	name = "Sewing Kit"
+	name = "缝纫套件(修理包)"
 	cost = 40
 	contains = list(/obj/item/repair_kit)
 
 /datum/supply_pack/rogue/adventure_supplies/metalkit
-	name = "Armor Plate"
+	name = "护甲板(修理包)"
 	cost = 50
 	contains = list(/obj/item/repair_kit/metal)
