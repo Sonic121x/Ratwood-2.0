@@ -377,7 +377,7 @@
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/steel/metalrepairkit
-	name = "护甲板 (x2) (+1 钢，+1 铁，+1 熟皮)"
+	name = "护甲板 (修理包) (x2) (+1 钢，+1 铁，+1 熟皮)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/iron, /obj/item/natural/hide/cured)
 	created_item = /obj/item/repair_kit/metal
