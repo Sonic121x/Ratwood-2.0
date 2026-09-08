@@ -1028,7 +1028,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(PLAYER_READY_TO_PLAY)
 					dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>取消准备</a> <b>已就绪</b>"
 					log_game("([user || "NO KEY"]) readied as ([real_name])")
-			dat += "<br><a href='byond://?src=[REF(N)];villains=1'><b><font color='red'>VILLAINS</font></b></a>"
+			dat += "<br><a href='byond://?src=[REF(N)];villains=1'><b><font color='red'>反派</font></b></a>"
 		else
 			if(!is_active_migrant())
 				dat += "<a href='byond://?src=[REF(N)];late_join=1'>局中加入</a>"
