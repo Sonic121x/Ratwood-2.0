@@ -44,6 +44,19 @@
 #define SMEAR_CHANNEL           (1.5 SECONDS)  // 涂抹时的引导时长（可被打断，纯表现 + 防误触）
 
 // ===========================================================================
+// 单一试剂 holder：所有加液路径最终都会调用 add_reagent，因此在底层拒绝混入
+// 不同类型的试剂，而不是只在 UI 层拦截。
+// ===========================================================================
+/datum/reagents/z121_single_reagent
+
+/datum/reagents/z121_single_reagent/add_reagent(reagent, amount, list/data = null, reagtemp = 300, no_react = 0, prepend = FALSE)
+	if(length(reagent_list))
+		for(var/datum/reagent/R in reagent_list)
+			if(R.type != reagent)
+				return FALSE
+	return ..()
+
+// ===========================================================================
 // 物品本体：涂毒工具袋
 // ---------------------------------------------------------------------------
 // 继承 /obj/item/reagent_containers/glass：★关键★——液体的“倒入/舀取/装填”交互
@@ -79,6 +92,12 @@
 	// —— 记录“基础名”，供 update_pouch_name 在内容物变化时拼接出动态名字 ——
 	// 用 var 缓存而不是每次 initial(name)，是为了让子类/管理员改名后仍以其改后的名字为基准。
 	var/pouch_base_name = "涂毒工具袋"
+
+/obj/item/reagent_containers/glass/z121_poison_pouch/create_reagents(max_vol, flags)
+	if(reagents)
+		qdel(reagents)
+	reagents = new /datum/reagents/z121_single_reagent(max_vol, flags)
+	reagents.my_atom = src
 
 // ===========================================================================
 // Initialize：出生即按当前内容物刷新一次名字（空袋则显示基础名）。
@@ -197,8 +216,7 @@
 	// —— 快照“每次命中要投递的试剂表” —— //
 	// per_hit_volume：每次生效投递的总体积 = 成本 / 次数（武器 10/10=1u，箭矢 1/1=1u）。
 	var/per_hit_volume = cost / charges
-	// 按袋内各试剂当前的“体积占比”，把 per_hit_volume 拆分到每一种试剂上，
-	// 从而完整还原“这袋液体本来的配比”，而不是只投递单一试剂。
+	// 工具袋底层只允许一种试剂；这里仍保留列表格式供近战命中逻辑使用。
 	var/list/per_hit_reagents = list()
 	var/total_now = reagents.total_volume
 	for(var/datum/reagent/R in reagents.reagent_list)
@@ -214,15 +232,20 @@
 	var/primary_name = reagents.get_master_reagent_name()
 
 	// 兜底：万一取不到有效的主试剂（异常空表），中止并不扣液体。
-	if(!primary_type || !length(per_hit_reagents))
+	if(!primary_type || !length(per_hit_reagents) || (is_ammo && length(reagents.reagent_list) > 1))
+		if(is_ammo && length(reagents.reagent_list) > 1)
+			to_chat(user, span_warning("混合液不能涂在箭矢或其他弹药上。"))
+		else
+			to_chat(user, span_warning("这份液体似乎无法附着到[target]上。"))
+		return
+
+	// 先挂载组件；失败时不能扣除袋中液体。
+	var/datum/component/z121_pouch_coating/coating = target.AddComponent(/datum/component/z121_pouch_coating, per_hit_reagents, charges, is_ammo, primary_type, per_hit_volume, primary_name)
+	if(!coating)
 		to_chat(user, span_warning("这份液体似乎无法附着到[target]上。"))
 		return
 
-	// —— 扣除成本：remove_all 会按比例从各试剂里等比例扣减，保持余下液体配比不变 —— //
 	reagents.remove_all(cost)
-
-	// —— 挂上“涂层组件”，让目标物品获得“命中投递液体”的能力 —— //
-	target.AddComponent(/datum/component/z121_pouch_coating, per_hit_reagents, charges, is_ammo, primary_type, per_hit_volume, primary_name)
 
 	// —— 成功反馈 + 音效 —— //
 	playsound(get_turf(user), 'sound/items/drink_gen (1).ogg', 40, TRUE)  // 借用“液体”音效表现涂抹（该音效在主线存在）
@@ -258,6 +281,10 @@
 	var/coating_label = "某种液体"
 	// 记录挂载前的物品原始名字，卸载时用来还原。
 	var/original_name
+	var/generated_name
+	var/obj/projectile/coated_projectile
+	var/original_poisontype
+	var/original_poisonamount
 
 // ===========================================================================
 // Initialize：接收 try_smear 传入的涂层数据，注册命中/查看信号，并给物品打标。
@@ -283,12 +310,18 @@
 	var/obj/item/I = parent
 	original_name = I.name                                     // 记录原名，便于卸载时还原
 	// 给物品名加“(涂有 X)”后缀，让玩家一眼看出这件兵刃已带毒。
-	I.name = "[original_name]（涂有[coating_label]）"
+	generated_name = "[original_name]（涂有[coating_label]）"
+	I.name = generated_name
 
 	// —— 弓射路径：若是弹药，给其“已装填弹丸”写上主线注毒字段 —— //
 	// 引擎在 ready_proj 时会把箭的 reagents 传给弹丸，并在命中 carbon 时按 poisontype/amount 注毒；
 	// 我们直接给当前已装填的 BB 写好这两个字段即可复用该逻辑（发射一次后箭本体即被消耗）。
 	if(is_ammo)
+		var/obj/item/ammo_casing/ammo = I
+		coated_projectile = ammo.BB
+		if(coated_projectile)
+			original_poisontype = coated_projectile.poisontype
+			original_poisonamount = coated_projectile.poisonamount
 		apply_ammo_poison()
 
 	// —— 命中信号：近战命中 / 投掷命中 / 用箭近战捅刺都会经此信号 —— //
@@ -326,13 +359,17 @@
 		return
 
 	// —— 真正投递：把“每次命中试剂表”注入受害者体内 —— //
-	// 只有具备 reagents 持有者的活体（carbon 等）才能承接液体；缺失者（部分简单生物）跳过注入，
-	// 但仍视为“蹭掉了一层”而消耗次数（贴合现实：涂层碰到目标就会被抹去）。
+	// 只有实际成功注入液体才消耗次数；无容器或容量不足时保留涂层。
+	var/old_volume = victim.reagents?.total_volume
+	var/added_volume = 0
 	if(victim.reagents)
 		for(var/reagent_path in per_hit_reagents)
 			victim.reagents.add_reagent(reagent_path, per_hit_reagents[reagent_path])
-		// 战斗日志：便于管理员追溯“谁用带毒兵刃毒了谁、毒的是什么”。
-		log_combat(user, victim, "poisoned (tool pouch)", addition = "with [coating_label]")
+		added_volume = max(0, victim.reagents.total_volume - old_volume)
+	if(!added_volume)
+		return
+	// 战斗日志：便于管理员追溯“谁用带毒兵刃毒了谁、毒的是什么”。
+	log_combat(user, victim, "poisoned (tool pouch)", addition = "with [coating_label]")
 
 	// —— 递减次数并按结果处理 —— //
 	charges--
@@ -355,7 +392,10 @@
 	var/obj/item/I = parent
 	if(QDELETED(I))
 		return
-	I.name = "[original_name]（涂有[coating_label]·剩[charges]次）"
+	if(I.name != generated_name && I.name != "[original_name]（涂有[coating_label]）")
+		return
+	generated_name = "[original_name]（涂有[coating_label]·剩[charges]次）"
+	I.name = generated_name
 
 // ===========================================================================
 // remove_coating：涂层用尽/失效时的收尾——还原名字、清掉弹丸注毒字段，并删除组件。
@@ -364,13 +404,14 @@
 	var/obj/item/I = parent
 	// 还原物品原始名字（若物品尚在）。
 	if(!QDELETED(I))
-		I.name = original_name
+		if(I.name == generated_name || I.name == "[original_name]（涂有[coating_label]）")
+			I.name = original_name
 		// 若是弹药且弹丸还在，顺手清掉之前写入的注毒字段，避免残留“空毒”。
 		if(is_ammo)
 			var/obj/item/ammo_casing/ammo = I
-			if(ammo.BB && ammo.BB.poisontype == primary_type)
-				ammo.BB.poisontype = null
-				ammo.BB.poisonamount = null
+			if(ammo.BB == coated_projectile && ammo.BB && ammo.BB.poisontype == primary_type)
+				ammo.BB.poisontype = original_poisontype
+				ammo.BB.poisonamount = original_poisonamount
 	qdel(src)                                                // 删除组件：基类会自动注销已注册的信号
 
 // ===========================================================================
@@ -378,7 +419,7 @@
 // ===========================================================================
 /datum/component/z121_pouch_coating/Destroy(force, silent)
 	var/obj/item/I = parent
-	if(!QDELETED(I) && original_name && I.name != original_name)
+	if(!QDELETED(I) && original_name && (I.name == generated_name || I.name == "[original_name]（涂有[coating_label]）"))
 		I.name = original_name                               // 保证不残留“(涂有 X)”后缀
 	return ..()
 

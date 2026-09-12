@@ -664,7 +664,7 @@
 		"虚空奥术顿悟卷轴（650积分）" = list(650, /obj/item/book/granter/spell_points/voiddragon),     // 研读后获得 6 点法术点（需奥术新手及以上）
 		// —— 附魔卷轴（对"物品"施加特殊附魔：手持卷轴点击目标物品即可附魔，不是教人法术）——
 		//   T1 基础附魔
-"附魔·伐木（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木
+		"附魔·伐木（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木
 		"附魔·采矿（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/mining),      // 给镐子附魔：高效采矿
 		"附魔·显照（170积分）"   = list(170, /obj/item/enchantmentscroll/basic/revealing),   // 给物品附魔：光源照明范围翻倍
 		"附魔·恒光（180积分）"   = list(180, /obj/item/enchantmentscroll/basic/light),       // 给武器 / 衣物附魔：自身发光

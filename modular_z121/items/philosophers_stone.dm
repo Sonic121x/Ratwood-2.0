@@ -58,6 +58,7 @@
 	// —— 冷却记账变量（用 world.time 绝对时间戳记录“冷却结束时刻”）——
 	var/potion_cd_end = 0                                         // 效果 2（水→药水）的冷却结束时刻；<= world.time 表示可用
 	var/create_cd_end = 0                                        // 效果 3（凭空造物）的冷却结束时刻；<= world.time 表示可用
+	var/create_busy = FALSE                                      // 防止菜单期间重复启动造物流程
 
 // —— 效果 3 的“可造物品目录”全局缓存 —— //
 // 为避免每次造物都重新扫描上千种物品类型，用一个全局静态列表缓存一次扫描结果：
@@ -71,13 +72,13 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 	. = ..()                                                      // 先取得父类的标准描述行
 	// 效果 2 冷却提示：若仍在冷却，算出剩余秒数并展示；否则显示“就绪”。
 	if(potion_cd_end > world.time)
-		var/secs_left = round((potion_cd_end - world.time) / 10)  // world.time 单位是十分之一秒(deciseconds)，/10 得到秒
+		var/secs_left = max(1, round((potion_cd_end - world.time + 9) / 10))  // 向上取整，避免显示 0 秒
 		. += span_warning("嬗变净水之力尚在凝聚（还需 [secs_left] 秒）。")
 	else
 		. += span_notice("嬗变净水之力：已就绪。")
 	// 效果 3 冷却提示：同上。
 	if(create_cd_end > world.time)
-		var/secs_left = round((create_cd_end - world.time) / 10)  // 同样换算成秒
+		var/secs_left = max(1, round((create_cd_end - world.time + 9) / 10))  // 向上取整，避免显示 0 秒
 		. += span_warning("凭空造物之力尚在凝聚（还需 [secs_left] 秒）。")
 	else
 		. += span_notice("凭空造物之力：已就绪。")
@@ -114,7 +115,12 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 // attack_self：贤者之石在手中被“对自身使用”（激活手持物）时触发 → 效果 3 凭空造物。
 // ===========================================================================
 /obj/item/philosophers_stone/attack_self(mob/user)
+	if(create_busy)
+		to_chat(user, span_warning("贤者之石的造物仪式尚未结束。"))
+		return TRUE
+	create_busy = TRUE
 	create_item_from_nothing(user)                               // 直接进入凭空造物流程
+	create_busy = FALSE
 	return TRUE                                                   // 表示已处理该交互
 
 // ===========================================================================
@@ -178,7 +184,7 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 /obj/item/philosophers_stone/proc/transmute_water_to_potion(obj/item/reagent_containers/container, mob/living/user)
 	// 冷却校验：仍在冷却中则拒绝并告知剩余时间。
 	if(potion_cd_end > world.time)
-		var/secs_left = round((potion_cd_end - world.time) / 10)  // 剩余秒数
+		var/secs_left = max(1, round((potion_cd_end - world.time + 9) / 10))  // 向上取整，避免显示 0 秒
 		to_chat(user, span_warning("嬗变净水之力尚未凝聚完成，还需 [secs_left] 秒。"))
 		return
 
@@ -198,6 +204,9 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 	// 错误处理：容器里其实没有液体可转化（理论上前面已确保含水，这里再兜一层）。
 	if(convert_amount <= 0)
 		to_chat(user, span_warning("容器里没有可供嬗变的液体。"))
+		return
+	if(holder.get_reagent_amount(/datum/reagent/water) < convert_amount)
+		to_chat(user, span_warning("只有纯净的水才能进行嬗变。"))
 		return
 
 	// 构建“可选药水目录”：显示名 -> 配方数据单例。
@@ -337,7 +346,7 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 /obj/item/philosophers_stone/proc/create_item_from_nothing(mob/living/user)
 	// 冷却校验：仍在冷却则拒绝并告知剩余时间。
 	if(create_cd_end > world.time)
-		var/secs_left = round((create_cd_end - world.time) / 10)  // 剩余秒数
+		var/secs_left = max(1, round((create_cd_end - world.time + 9) / 10))  // 向上取整，避免显示 0 秒
 		to_chat(user, span_warning("凭空造物之力尚未凝聚完成，还需 [secs_left] 秒。"))
 		return
 
@@ -443,7 +452,7 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 	// 真正“凭空造出”物品实例。
 	var/obj/item/created = new chosen_type(spot)
 	// 尝试直接塞进玩家手里；塞不下就留在脚下地块。
-	user.put_in_hands(created)
+	var/held = user.put_in_hands(created)
 
 	// 依据物品价值计算并启动冷却：冷却 = 价值 × 每点秒数，钳制在上下限内。
 	var/cd = clamp(final_value * PHILO_CREATE_CD_PER_VALUE, PHILO_CREATE_CD_MIN, PHILO_CREATE_CD_MAX)
@@ -452,9 +461,11 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 	// 表现层：成功反馈与音效。
 	playsound(spot, 'sound/magic/blink.ogg', 50, TRUE)          // 一道奥术具现音效
 	user.visible_message(
-		span_notice("一件[created]在光芒中凭空出现在了 [user] 手中！"),  // 旁观者视角
+		span_notice("一件[created]在光芒中凭空成形！"),  // 旁观者视角
 		span_green("凭空造物成功——[created]已然成形。（造物之力将休眠 [round(cd/10)] 秒）")  // 自身视角，附带冷却提示
 	)
+	if(!held)
+		to_chat(user, span_notice("你的双手没有空位，[created]落在了脚边。"))
 
 // ===========================================================================
 // get_creatable_index：构建并缓存“价值>1 的可造物品”索引。
@@ -470,6 +481,8 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 
 	// 首次构建：遍历所有物品子类。
 	for(var/obj/item/item_type as anything in subtypesof(/obj/item))
+		if(IS_ABSTRACT(item_type))
+			continue
 		// 禁止贤者之石自我复制：跳过它自身及其任何子类型，杜绝“造石生石”的滚雪球作弊。
 		if(ispath(item_type, /obj/item/philosophers_stone))
 			continue

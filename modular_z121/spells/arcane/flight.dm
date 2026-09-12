@@ -58,7 +58,6 @@
 
 	flier.setMovetype(flier.movement_type | FLYING)
 	flier.flying = TRUE
-	ADD_TRAIT(flier, TRAIT_INFINITE_STAMINA, MAGIC_TRAIT)
 	UnregisterSignal(flier, list(
 		COMSIG_MOVABLE_MOVED,
 		COMSIG_LIVING_UPDATE_TURF_MOVESPEED,
@@ -84,7 +83,6 @@
 		COMSIG_LIVING_UPDATE_TURF_MOVESPEED,
 	))
 	QDEL_NULL(shadow)
-	REMOVE_TRAIT(flier, TRAIT_INFINITE_STAMINA, MAGIC_TRAIT)
 
 	if(!was_flying)
 		animate(flier)
@@ -193,3 +191,92 @@
 			to_chat(spelltarget, span_notice("无形的魔法在我脚下汇聚，将我托入飞行。"))
 
 	return TRUE
+
+// 飞行术专用上下层移动覆盖：飞行移动不消耗体力，其他行为仍按正常规则消耗。
+/datum/keybinding/mob/fly_up/down(client/user)
+	. = TRUE
+	var/mob/flyer = user.mob
+	if(!flyer.flying)
+		to_chat(flyer, span_red("我并没有在飞！"))
+		return
+	if(iscarbon(flyer))
+		var/mob/living/carbon/carbon_flyer = flyer
+		var/turf/open/transparent/openspace/turf_above = get_step_multiz(carbon_flyer, UP)
+		if(!carbon_flyer.canZMove(UP, turf_above))
+			to_chat(carbon_flyer, span_red("我没法飞到上面去！！"))
+			return
+		var/atom/movable/pulling = carbon_flyer.pulling
+		var/time_taken = 1.5 SECONDS
+		if(ismob(pulling))
+			time_taken *= 2
+		if(!do_after(carbon_flyer, time_taken))
+			return
+		if(QDELETED(pulling) || carbon_flyer.pulling != pulling)
+			pulling = null
+		if(ismob(pulling))
+			ADD_TRAIT(pulling, TRAIT_PREVENT_Z_FALL, "z_transition")
+			pulling.forceMove(turf_above)
+		carbon_flyer.forceMove(turf_above)
+		for(var/mob/buckled_living as anything in carbon_flyer.buckled_mobs)
+			buckled_living.forceMove(turf_above)
+		if(pulling)
+			carbon_flyer.start_pulling(pulling, state = 1, supress_message = TRUE)
+			if(carbon_flyer.pulling == pulling)
+				carbon_flyer.buckle_mob(pulling, TRUE, TRUE, FALSE, 0, 0)
+				var/obj/item/grabbing/I = carbon_flyer.get_inactive_held_item()
+				if(istype(I, /obj/item/grabbing))
+					I.icon_state = null
+			if(ismob(pulling))
+				REMOVE_TRAIT(pulling, TRAIT_PREVENT_Z_FALL, "z_transition")
+		to_chat(carbon_flyer, span_notice("我向上飞去。"))
+	else if(flyer.flying)
+		var/mob/mobius = flyer
+		if(mobius.zMove(UP, TRUE))
+			to_chat(mobius, span_notice("我向上移动了。"))
+
+/datum/keybinding/mob/fly_down/down(client/user)
+	. = TRUE
+	var/mob/flyer = user.mob
+	if(!flyer.flying)
+		to_chat(flyer, span_red("我并没有在飞！"))
+		return
+	if(iscarbon(flyer))
+		var/mob/living/carbon/carbon_flyer = flyer
+		var/turf/open/transparent/openspace/turf_below = get_step_multiz(carbon_flyer, DOWN)
+		if(!carbon_flyer.canZMove(DOWN, turf_below))
+			to_chat(carbon_flyer, span_red("我没法飞到下面去！！"))
+			return
+		var/atom/movable/pulling = carbon_flyer.pulling
+		var/time_taken = 0.75 SECONDS
+		if(ismob(pulling))
+			time_taken *= 2
+		if(!move_after(carbon_flyer, time_taken, target = carbon_flyer))
+			return
+		turf_below = get_step_multiz(carbon_flyer, DOWN)
+		if(!carbon_flyer.canZMove(DOWN, turf_below))
+			to_chat(carbon_flyer, span_red("I can't fly down there!!"))
+			return
+		if(QDELETED(pulling) || carbon_flyer.pulling != pulling)
+			pulling = null
+		if(ismob(pulling))
+			ADD_TRAIT(pulling, TRAIT_PREVENT_Z_FALL, "z_transition")
+			pulling.forceMove(turf_below)
+		carbon_flyer.forceMove(turf_below)
+		for(var/mob/buckled_living as anything in carbon_flyer.buckled_mobs)
+			buckled_living.forceMove(turf_below)
+		if(pulling)
+			carbon_flyer.start_pulling(pulling, state = 1, supress_message = TRUE)
+			if(carbon_flyer.pulling == pulling)
+				carbon_flyer.buckle_mob(pulling, TRUE, TRUE, FALSE, 0, 0)
+				var/obj/item/grabbing/I = carbon_flyer.get_inactive_held_item()
+				if(istype(I, /obj/item/grabbing/))
+					I.icon_state = null
+			if(ismob(pulling))
+				REMOVE_TRAIT(pulling, TRAIT_PREVENT_Z_FALL, "z_transition")
+		to_chat(carbon_flyer, span_notice("我向下飞去。"))
+	else if(flyer.flying)
+		var/mob/mobius = flyer
+		if(mobius.zMove(DOWN, TRUE))
+			to_chat(mobius, span_notice("我向下移动了。"))
+
+
