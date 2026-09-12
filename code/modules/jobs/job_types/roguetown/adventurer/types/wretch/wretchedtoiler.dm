@@ -1,6 +1,6 @@
 /datum/advclass/wretch/wretchedtoiler
-	name = "Wretched Toiler"
-	tutorial = "The wretched engine of evil churns ever onward - the gears pushed by wretched toilers such as yourself. And toil you shall - until the machinations of thine masters come to fruition."
+	name = "流放苦工"
+	tutorial = "邪恶的可悲引擎永远向前碾压——推动齿轮的，正是像你这样的流放苦工。而你将一直劳作下去，直到你主子们的阴谋得逞。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/wretchedtoiler
@@ -8,7 +8,7 @@
 	traits_applied = list(TRAIT_RITUALIST, TRAIT_ARCYNE_T2, TRAIT_ALCHEMY_EXPERT, TRAIT_MEDICINE_EXPERT, TRAIT_SMITHING_EXPERT, TRAIT_SEWING_EXPERT, TRAIT_HOMESTEAD_EXPERT) //This can always be nerfed or changed to a specialization choice.
 	cmode_music = 'sound/music/cmode/antag/combat_thrall.ogg' //We don't have the original .ogg and I'm lazy. You get thrall music now. Change it if you want.
 	class_select_category = CLASS_CAT_TRADER
-	extra_context = "Choose between 2 options: being an EVIL mastermind or a WRETCHED servant" //choose between master and servant
+	extra_context = "在两个选项之间选择：成为邪恶的主谋，还是流放的仆从" //choose between master and servant
 	maximum_possible_slots = 1 
 
 	// balance isn't real i picked these bc they're funny
@@ -20,7 +20,7 @@
 		STATKEY_WIL = 1, //i want this to be lower because i like hearing the stamout sfx but i will allow you ONE point of END
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" = /obj/item/repair_kit,
+		"缝纫套件" = /obj/item/repair_kit,
 	)
 	subclass_skills = list(
 		/datum/skill/craft/blacksmithing = SKILL_LEVEL_EXPERT, //You shall TOIL. You can TOIL most skills quite well.
@@ -72,10 +72,10 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/gravemark)
 			H.mind.current.faction += "[H.name]_faction"
-	var/classes = list("MALICIOUS Mastermind","SNIVELLING servant")
-	var/classchoice = input(H, "Choose your archetypes", "Available archetypes") as anything in classes
+	var/classes = list("邪恶主谋","流放仆从")
+	var/classchoice = input(H, "选择你的原型", "可用原型") as anything in classes
 	switch(classchoice)
-		if("MALICIOUS Mastermind")
+		if("邪恶主谋")
 			//stats
 			H.STAINT += 2
 			H.STAPER += 1
@@ -112,29 +112,29 @@
 			//you get some spellpoints. if you really wanna take combat spells you can ig
 			H?.mind.adjust_spellpoints(12)
 			var/staffs = list(
-				"ronts-focused staff",
-				"blortz-focused staff",
-				"saffira-focused staff",
-				"gemerald-focused staff",
-				"amethyst-focused staff",
-				"toper-focused staff",
+				"隆兹石法杖",
+				"布洛兹石法杖",
+				"蓝晶法杖",
+				"翠晶法杖",
+				"阿米索兹法杖",
+				"托珀石法杖",
 			)
-			var/staffchoice = input(H, H, "Choose your staff", "Available staffs") as anything in staffs
+			var/staffchoice = input(H, H, "选择你的法杖", "可用法杖") as anything in staffs
 			switch(staffchoice)
-				if("ronts-focused staff")
+				if("隆兹石法杖")
 					backr = /obj/item/rogueweapon/woodstaff/ruby
-				if("blortz-focused staff")
+				if("布洛兹石法杖")
 					backr = /obj/item/rogueweapon/woodstaff/quartz
-				if("saffira-focused staff")
+				if("蓝晶法杖")
 					backr = /obj/item/rogueweapon/woodstaff/sapphire
-				if("gemerald-focused staff")
+				if("翠晶法杖")
 					backr = /obj/item/rogueweapon/woodstaff/emerald
-				if("amethyst-focused staff")
+				if("阿米索兹法杖")
 					backr = /obj/item/rogueweapon/woodstaff/amethyst
-				if("toper-focused staff")
+				if("托珀石法杖")
 					backr = /obj/item/rogueweapon/woodstaff/toper
 
-		if("SNIVELLING servant")
+		if("流放仆从")
 			//stats
 			H.STACON += 2
 			H.STAWIL += 1

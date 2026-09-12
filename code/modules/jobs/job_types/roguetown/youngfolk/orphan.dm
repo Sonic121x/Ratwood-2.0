@@ -1,7 +1,7 @@
 /datum/job/roguetown/orphan
 	title = "Vagabond"
-	display_title = "流民"
-	f_title = "流民"
+	display_title = "流浪者"
+	f_title = "流浪者"
 	flag = ORPHAN
 	department_flag = PEASANTS
 	faction = "Station"

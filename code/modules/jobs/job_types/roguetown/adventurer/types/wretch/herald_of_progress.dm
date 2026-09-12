@@ -1,6 +1,6 @@
 /datum/advclass/wretch/herald_of_progress
-	name = "Herald of Progress"
-	tutorial = "Your melodies bring about melancholy visions of the future. Your soliloquies are punctuated by whispered truths of the past. Dread change, the promises of tomorrow come to fruition all the same. You are the herald of progress, a soothsayer of what is to be. The realm is a stage, and you are Her voice."
+	name = "进步先驱"
+	tutorial = "你的旋律带来关于未来的忧郁幻象。你的独白总被往昔的隐秘真相所打断。畏惧变革吧，然而明日的许诺终究会一一应验。你是进步的传令官，是那未来之事的预言者。谷地是一座舞台，而你是她的嗓音。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/herald_of_progress
@@ -32,7 +32,7 @@
 		STATKEY_SPD = 2,
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" = /obj/item/repair_kit,
+		"缝纫套件" = /obj/item/repair_kit,
 	)
 
 /datum/outfit/job/roguetown/wretch/herald_of_progress/pre_equip(mob/living/carbon/human/H)
@@ -89,25 +89,25 @@
 	zizo_spell = TRUE
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_formation/sotto_voce
-	name = "Call From The Grave"
-	desc = "Raises a formation of simple minded undead skeletons through a dreadful undertone."
+	name = "自坟墓的呼唤"
+	desc = "以一段可怖的低吟唤起一队心智简单的骷髅亡灵。"
 	associated_skill = /datum/skill/misc/music
 	miracle = TRUE
 	devotion_cost = 80
 	zizo_spell = TRUE
 	recharge_time = 200 SECONDS
 	sound = list('sound/magic/sottovoce.ogg')
-	invocations = list("plays a pulsed, dreadful melodic circuit.")
+	invocations = list("奏出一段脉动而可怖的旋律回路。")
 	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_formation/sotto_voce/cast(list/targets, mob/living/user)
 	if(!user.has_status_effect(/datum/status_effect/buff/playing_music))
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to call upon the dead."))
+		to_chat(user, span_warning("我必须正在演奏，才能呼唤亡者。"))
 		return FALSE
 	if(!user.is_holding_item_of_type(/obj/item/rogue/instrument))
 		revert_cast()
-		to_chat(user, span_warning("I need an instrument in hand to call upon the dead."))
+		to_chat(user, span_warning("我手中必须拿着乐器，才能呼唤亡者。"))
 		return FALSE
 	return ..()
 
@@ -118,39 +118,39 @@
 	zizo_spell = TRUE
 
 /obj/effect/proc_holder/spell/invoked/blink/staccato
-	name = "Into The Void"
+	name = "遁入虚空"
 	associated_skill = /datum/skill/misc/music
 	sound = list('sound/magic/heraldblink.ogg')
-	invocations = list("screeches a short, sharp shock of a chord.")
+	invocations = list("尖啸出一个短促、尖锐的震撼和弦。")
 	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/invoked/blink/staccato/cast(list/targets, mob/living/user = usr)
 	if(!user.has_status_effect(/datum/status_effect/buff/playing_music))
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to channel my rhythm."))
+		to_chat(user, span_warning("我必须正在演奏，才能引导我的节奏。"))
 		return FALSE
 	if(!user.is_holding_item_of_type(/obj/item/rogue/instrument))
 		revert_cast()
-		to_chat(user, span_warning("I need an instrument in hand to channel my rhythm."))
+		to_chat(user, span_warning("我手中必须拿着乐器，才能引导我的节奏。"))
 		return FALSE
 	return ..()
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/forzando
-	name = "Ride the Lightning"
+	name = "驾驭闪电"
 	associated_skill = /datum/skill/misc/music
 	projectile_type = /obj/projectile/magic/lightning/forzando
 	sound = list('sound/magic/heraldzap.ogg')
-	invocations = list("shreds an electric refrain!")
+	invocations = list("撕裂出一段电光般的叠句！")
 	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/forzando/cast(list/targets, mob/living/user = usr)
 	if(!user.has_status_effect(/datum/status_effect/buff/playing_music))
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to channel my rhythm."))
+		to_chat(user, span_warning("我必须正在演奏，才能引导我的节奏。"))
 		return
 	if(!user.is_holding_item_of_type(/obj/item/rogue/instrument))
 		revert_cast()
-		to_chat(user, span_warning("I need an instrument in hand to channel my rhythm."))
+		to_chat(user, span_warning("我手中必须拿着乐器，才能引导我的节奏。"))
 		return
 	return ..()
 
@@ -158,8 +158,8 @@
 	bypass_antimagic = TRUE // it's not magic, it's music, so idc about anti magic
 
 /obj/effect/proc_holder/spell/self/the_division_bell
-	name = "The Division Bell"
-	desc = "Toggle whether my music disturbs the comfortable or comforts the disturbed."
+	name = "分裂之钟"
+	desc = "切换我的音乐是搅扰安逸者，还是抚慰不安者。"
 	associated_skill = /datum/skill/misc/music
 	recharge_time = 1 SECONDS
 	chargetime = 0
@@ -172,15 +172,15 @@
 /obj/effect/proc_holder/spell/self/the_division_bell/cast(list/targets, mob/living/carbon/human/user = usr)
 	if(user.has_status_effect(/datum/status_effect/buff/herald_progress_harmony))
 		user.remove_status_effect(/datum/status_effect/buff/herald_progress_harmony)
-		to_chat(user, span_warning("My music will show the division of the faithful from the fearful."))
+		to_chat(user, span_warning("我的音乐将揭示信徒与畏惧者的分野。"))
 	else
 		user.apply_status_effect(/datum/status_effect/buff/herald_progress_harmony)
-		to_chat(user, span_notice("My music will soothe the crowd as any other song."))
+		to_chat(user, span_notice("我的音乐将如寻常歌曲般抚慰人群。"))
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/herald_progress_harmony
-	name = "Division Bell"
-	desc = "My performances currently calm listeners instead of burdening the ignorant."
+	name = "分裂之钟"
+	desc = "我的演奏目前安抚着听众，而非加重无知者的负担。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/herald_progress_harmony
@@ -189,9 +189,9 @@
 	duration = -1
 
 /obj/effect/proc_holder/spell/invoked/song/of_her_embrace
-	name = "Of Her Embrace"
-	desc = "A unique, strange hymn that sounds like nothing heard before. Nearby skeletons gain +2 to all stats, regardless of audience, at the cost of -2 CON for yourself."
-	invocations = list("plays a discordant, frantic melody.")
+	name = "她的拥抱"
+	desc = "一首独一无二而奇异的赞美诗，听来如同前所未闻之物。附近的骷髅全属性 +2，不论敌我，代价是自身 -2 体质。"
+	invocations = list("奏出一段不谐而狂乱的旋律。")
 	invocation_type = "emote"
 	overlay_state = "dirge_t3_base"
 	action_icon_state = "dirge_t3_base"
@@ -200,7 +200,7 @@
 	if(user.has_status_effect(/datum/status_effect/buff/playing_music))
 		if(!user.is_holding_item_of_type(/obj/item/rogue/instrument))
 			revert_cast()
-			to_chat(user, span_warning("I need an instrument in hand to channel her rhythm!"))
+			to_chat(user, span_warning("我手中必须拿着乐器，才能引导她的节奏！"))
 			return
 		for(var/datum/status_effect/buff/playing_melody/melodies in user.status_effects)
 			user.remove_status_effect(melodies)
@@ -210,7 +210,7 @@
 		return TRUE
 	else
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to channel her rhythm!"))
+		to_chat(user, span_warning("我必须正在演奏，才能引导她的节奏！"))
 		return
 
 /datum/status_effect/buff/playing_melody/of_her_embrace
@@ -239,8 +239,8 @@
 				L.apply_status_effect(buff_to_apply)
 
 /atom/movable/screen/alert/status_effect/buff/song/of_her_embrace
-	name = "Domination"
-	desc = "Empowered harmonics surge through my bones. I feel stronger, quicker, keener."
+	name = "统御"
+	desc = "强化的谐律在我骨骼中奔涌。我感到更强、更快、更敏锐。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/song/of_her_embrace
@@ -258,8 +258,8 @@
 	)
 
 /atom/movable/screen/alert/status_effect/debuff/of_her_embrace
-	name = "Under the Runes"
-	desc = "My own performance is muted, a price to bring about her vision. I feel my vitality drawn into the hymn."
+	name = "符文之下"
+	desc = "我自己的演奏被压制了，这是唤起她异象的代价。我感到自己的生机正被抽入这首赞美诗中。"
 	icon_state = "debuff"
 
 /datum/status_effect/debuff/of_her_embrace

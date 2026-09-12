@@ -24,7 +24,7 @@
 		var/job_title = queued_villains[player.ckey]
 		if(!job_title || !player.client || player.spawning)
 			continue
-		to_chat(player, span_boldwarning("You have been chosen for villainy as a [job_title]!"))
+		to_chat(player, span_boldwarning("你已被选中，将以 [job_title] 的身份加入反派阵营！"))
 		player.AttemptLateSpawn(job_title)
 	queued_villains = list()
 
@@ -32,21 +32,21 @@
 	var/list/dat = list()
 
 	if(!SSgamemode.modifiers_rolled)
-		dat += "Wait."
+		dat += "请稍候。"
 	else
-		dat += "<b>Greater Villains:</b><br>"
+		dat += "<b>倾国之患：</b><br>"
 		if(!length(SSgamemode.rolled_villain_events))
-			dat += "None.<br>"
+			dat += "无。<br>"
 		for(var/datum/round_event_control/antagonist/event in SSgamemode.rolled_villain_events)
 			var/slots = 1
 			if(istype(event, /datum/round_event_control/antagonist/solo))
 				var/datum/round_event_control/antagonist/solo/solo_event = event
 				slots = solo_event.get_antag_amount()
-			dat += "<b>[event.name]</b> ([slots] slots)<br>"
+			dat += "<b>[event.name]</b>（[slots] 个名额）<br>"
 		if(length(SSgamemode.rolled_villain_events))
-			dat += "<i>These roll at roundstart from your antag preferences.</i><br>"
+			dat += "<i>这些将在回合开始时根据你的反派偏好抽取。</i><br>"
 
-		dat += "<br><b>Lesser Villains:</b><br>"
+		dat += "<br><b>宵小之辈：</b><br>"
 		var/found = FALSE
 		for(var/job_title in GLOB.villain_positions)
 			var/datum/job/J = SSjob.GetJob(job_title)
@@ -54,30 +54,30 @@
 				continue
 			found = TRUE
 			if(SSticker.current_state <= GAME_STATE_PREGAME)
-				var/pref_label = "NEVER"
+				var/pref_label = "从不"
 				var/pref_color = "red"
 				var/next_level = 3
 				switch(client.prefs.job_preferences[J.title])
 					if(JP_HIGH)
-						pref_label = "High"
+						pref_label = "高"
 						pref_color = "slateblue"
 						next_level = 4
 					if(JP_MEDIUM)
-						pref_label = "Medium"
+						pref_label = "中"
 						pref_color = "green"
 						next_level = 1
 					if(JP_LOW)
-						pref_label = "Low"
+						pref_label = "低"
 						pref_color = "orange"
 						next_level = 2
-				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.title]</font></a>([J.total_positions] slots) - <a href='byond://?src=[REF(src)];villain_pref=[J.title];level=[next_level]'><font color=[pref_color]>[pref_label]</font></a><br>"
+				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.title]</font></a>（[J.total_positions] 个名额） - <a href='byond://?src=[REF(src)];villain_pref=[J.title];level=[next_level]'><font color=[pref_color]>[pref_label]</font></a><br>"
 			else
-				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.title]</font></a><a href='byond://?src=[REF(src)];SelectedJob=[J.title]'>([J.current_positions]/[J.total_positions])</a><a href='?src=[REF(J)];jobsubclassinfo=1'><b><font color = '#6b6743'>(!)</font></b></a><br>"
+				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.title]</font></a><a href='byond://?src=[REF(src)];SelectedJob=[J.title]'>（[J.current_positions]/[J.total_positions]）</a><a href='?src=[REF(J)];jobsubclassinfo=1'><b><font color = '#6b6743'>(!)</font></b></a><br>"
 
 		if(!found)
-			dat += "No villain roles this round."
+			dat += "本轮没有反派职位。"
 
-	var/datum/browser/popup = new(src, "villainchoices", "Villains", 340, 400)
+	var/datum/browser/popup = new(src, "villainchoices", "反派", 340, 400)
 	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
 	popup.set_content(jointext(dat, ""))
 	popup.open(FALSE)
@@ -119,20 +119,20 @@
 		. += (stats[key] - 10) * statweight(key)
 
 /datum/antag_setup/proc/open_menu()
-	var/contents = "Points remaining: [budget - statspent()]</center><BR>"
+	var/contents = "剩余点数：[budget - statspent()]<BR>"
 	contents += "--------------<BR>"
 	for(var/key in stat_keys)
-		contents += "<b>[capitalize(key)]</b> ([statweight(key)]x): [stats[key]] "
+		contents += "<b>[capitalize(key)]</b>（[statweight(key)]x）：[stats[key]] "
 		contents += "<a href='?src=[REF(src)];raise=[key]'>\[+\]</a> "
 		contents += "<a href='?src=[REF(src)];lower=[key]'>\[-\]</a><BR>"
 	contents += "--------------<BR>"
-	contents += "<b>Choose a trait:</b><BR>"
-	contents += "<a href='?src=[REF(src)];trait=dodge'>Dodge Expert</a><BR>"
-	contents += "<a href='?src=[REF(src)];trait=heavy'>Heavy Armor</a><BR>"
-	contents += "Chosen: [chosen_trait]<BR>"
+	contents += "<b>选择一项特质：</b><BR>"
+	contents += "<a href='?src=[REF(src)];trait=dodge'>闪避专家</a><BR>"
+	contents += "<a href='?src=[REF(src)];trait=heavy'>重型护甲</a><BR>"
+	contents += "已选：[chosen_trait]<BR>"
 	contents += "--------------<BR>"
-	contents += "<center><a href='?src=[REF(src)];confirm=1'>\[CONFIRM\]</a></center>"
-	var/datum/browser/popup = new(user, "antagsetup", "Take Up Arms", 300, 420)
+	contents += "<center><a href='?src=[REF(src)];confirm=1'>\[确认\]</a></center>"
+	var/datum/browser/popup = new(user, "antagsetup", "披甲执兵", 300, 420)
 	popup.set_content(contents)
 	popup.open(FALSE)
 
@@ -157,7 +157,7 @@
 		open_menu()
 	if(href_list["confirm"])
 		if(!chosen_trait)
-			to_chat(user, span_warning("Choose a trait."))
+			to_chat(user, span_warning("请选择一项特质。"))
 			return
 		for(var/key in stat_keys)
 			var/diff = stats[key] - defaults[key]
@@ -167,4 +167,3 @@
 		user.antag_setup = null
 		user << browse(null, "window=antagsetup")
 		qdel(src)
-

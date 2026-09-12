@@ -439,8 +439,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/wrists/roguetown/bracers/leather/heavy, SLOT_WRISTS, TRUE)
 
 /datum/advclass/wretch/heretic/monk
-	name = "Heretic Monk"
-	tutorial = "Strong in body and spirit, you spread the truth through violence and word in equal measures. You eschew burdening armor in favor of physical prowess."
+	name = "异端武僧"
+	tutorial = "你体魄强健、精神坚定，以暴力和言语并重的方式传播真理。你不愿背负累赘的护甲，更倚重自身的身手。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/hereticmonk
@@ -474,7 +474,7 @@
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/labor/farming = SKILL_LEVEL_APPRENTICE,
 	)//Similar-ish to Church Acolyte's. You get a bunch of utility skills because you are, THEORETICALLY, less of a turbo fragger class than your speedy and tanky cousins.
-	extra_context = "This subclass gain the Wound Heal miracle and the Convert Heretic spell."
+	extra_context = "该子职业获得愈合神迹与转化异端法术。"
 
 /datum/outfit/job/roguetown/wretch/hereticmonk
 	has_loadout = TRUE
@@ -499,17 +499,17 @@
 	if(H.mind)
 		if(H.mind.current)
 			H.mind.current.faction += "[H.name]_faction"
-		var/monkstyles = list("Itinerant Monk")
+		var/monkstyles = list("游方武僧")
 		if(H.dna.species.type in NON_DWARVEN_RACE_TYPES) //No sprites for diminutive people.
-			monkstyles += list("Eastern Custodian")
+			monkstyles += list("东方守护者")
 		if(istype(H.patron, /datum/patron/inhumen))
-			monkstyles += list("Atgervi Shaman")
+			monkstyles += list("阿特格维萨满")
 		if(istype(H.patron, /datum/patron/old_god))
-			monkstyles += list("Disgraced Disciple (Natural Armor)")
-		var/style_choice = input(H, "Choose your equipment.", "YOU MIGHT JUST BE A PRETENDER") as anything in monkstyles
+			monkstyles += list("蒙羞门徒（天生护甲）")
+		var/style_choice = input(H, "选择你的装备。", "你也许只是个冒牌货") as anything in monkstyles
 		switch(style_choice)
-			if("Itinerant Monk") //Generic fashion.
-				to_chat(H, span_warning("Leaving wealth and titles behind, you travel endlessly, bringing the truth to the most ignorant corners of the world."))
+			if("游方武僧") //Generic fashion.
+				to_chat(H, span_warning("你舍弃财富与头衔，永不停歇地游历四方，将真理带给世间最蒙昧的角落。"))
 				head = /obj/item/clothing/head/roguetown/headband/monk //Can somebody explain why Adventurer-Monk gets this?
 				neck = /obj/item/clothing/neck/roguetown/leather
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
@@ -518,8 +518,8 @@
 				pants =  /obj/item/clothing/under/roguetown/heavy_leather_pants
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
-			if("Eastern Custodian") //Kazengunite fashion. The worst set mechanically, but it's drip or drown in here.
-				to_chat(H, span_warning("The divine tasked you with caring for and protecting a shrine. You failed in your duties, but not your faith. Thus you wander, seeking to appease the gods in a different way."))
+			if("东方守护者") //Kazengunite fashion. The worst set mechanically, but it's drip or drown in here.
+				to_chat(H, span_warning("神明曾托付你照料并守护一座神龛。你失职了，但未曾失去信仰。于是你踏上旅途，以另一种方式寻求取悦诸神。"))
 				head = /obj/item/clothing/head/roguetown/mentorhat
 				gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
 				armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
@@ -527,8 +527,8 @@
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
-			if("Atgervi Shaman") //Pick this and Unarmed. Now you are a true Atgervi Shaman.
-				to_chat(H, span_warning("Unlike your more opportunistic fellows who bend their knees and betray their beast-gods for a coin, you haven't strayed from your path. Why grovel, when you can take what you want with unrestrained brutality?"))
+			if("阿特格维萨满") //Pick this and Unarmed. Now you are a true Atgervi Shaman.
+				to_chat(H, span_warning("你那帮更善于投机的同族为了一枚钱币便屈膝跪拜、背弃兽神，而你却从未偏离自己的道路。既然能用毫无节制的蛮力夺取想要之物，又何须卑躬屈膝？"))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/shaman_hood
 				gloves = /obj/item/clothing/gloves/roguetown/angle/gronnfur
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi
@@ -551,8 +551,8 @@
 						id = /obj/item/clothing/neck/roguetown/psicross/dendor/gronn
 					else
 						id = /obj/item/clothing/neck/roguetown/psicross/inhumen/gronn/special
-			if("Disgraced Disciple (Natural Armor)") //Orthodoxist Disciple. You get Disciple's Natural Armor.
-				to_chat(H, span_warning("Once you served mortal men and their books. Today and from now on, you serve HIM and HIM alone."))
+			if("蒙羞门徒（天生护甲）") //Orthodoxist Disciple. You get Disciple's Natural Armor.
+				to_chat(H, span_warning("你曾侍奉凡人与他们的典籍。而从今往后，你只侍奉祂，唯独侍奉祂。"))
 				head = /obj/item/clothing/head/roguetown/roguehood/psydon
 				mask = /obj/item/clothing/head/roguetown/helmet/blacksteel/psythorns
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
@@ -561,43 +561,43 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 				shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots
 				cloak = /obj/item/clothing/cloak/psydontabard/alt
-		var/monkweapons = list("Unarmed", "Glaive", "Quarterstaff", "Sword", "Faith")
-		var/monkweapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in monkweapons
+		var/monkweapons = list("徒手", "长刀", "四分杖", "剑", "信仰")
+		var/monkweapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in monkweapons
 		switch(monkweapon_choice)
-			if("Unarmed")
+			if("徒手")
 				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
 				switch(style_choice)
-					if("Atgervi Shaman")
+					if("阿特格维萨满")
 						beltr = /obj/item/rogueweapon/handclaw/gronn
-					if("Disgraced Disciple (Natural Armor)")
+					if("蒙羞门徒（天生护甲）")
 						beltr = /obj/item/rogueweapon/knuckles/psydon/old //Worse than steel or bronze knuckledusters, that's the price you pay for the drip and the natural armor.
 					else
 						beltr = /obj/item/rogueweapon/knuckles
-			if("Glaive")
+			if("长刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				switch(style_choice)
-					if("Eastern Custodian")
+					if("东方守护者")
 						l_hand = /obj/item/rogueweapon/spear/naginata
 					else
 						l_hand = /obj/item/rogueweapon/halberd/glaive
-			if("Quarterstaff")
+			if("四分杖")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/woodstaff/quarterstaff/steel
-			if("Sword") //Gimmicky choice. Heretic Spy called, they want their sword back.
+			if("剑") //Gimmicky choice. Heretic Spy called, they want their sword back.
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 				switch(style_choice)
-					if("Eastern Custodian")
+					if("东方守护者")
 						beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
 						l_hand = /obj/item/rogueweapon/sword/sabre/mulyeog
-					if("Disgraced Disciple (Natural Armor)")
+					if("蒙羞门徒（天生护甲）")
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						l_hand = /obj/item/rogueweapon/sword/long/oldpsysword
 					else
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						l_hand = /obj/item/rogueweapon/sword/short/messer //4 def LOL
-			if("Faith") //Even more gimmicky. Supportbot.
+			if("信仰") //Even more gimmicky. Supportbot.
 				ADD_TRAIT(H, TRAIT_HOMESTEAD_EXPERT, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/magic/holy, 5, TRUE)
 				if(istype(H.patron, /datum/patron/divine))
