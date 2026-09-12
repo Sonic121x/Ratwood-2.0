@@ -107,15 +107,15 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden/melee
-	name = "forester's cuirass"
-	desc = "A hardened leather harness with a reinforced pauldron worn over a maille coat. Imbued with Dendor's essence, it is built sturdier for front-line fighting."
+	name = "护林人胸甲"
+	desc = "带加强肩甲的硬化皮革挽具，罩在锁甲外衣之上。灌注了登多尔的精华，为前线作战而打造得更为坚固。"
 	armor = ARMOR_CUIRASS
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL + 30
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden/melee/upgraded
-	name = "forester's hauberk"
-	desc = "A forester's cuirass reinforced with plates and maille rings, the result of careful smithwork."
+	name = "护林人锁子甲"
+	desc = "以板甲与锁环加固的护林人胸甲，是精心锻造的成果。"
 	icon_state = "forestbrig"
 	armor = ARMOR_CUIRASS
 	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE + 20
@@ -170,9 +170,8 @@
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/cuirbouilli
-	name = "cuir-bouilli vest"
-	desc = "A padded vest that's been reinforced with 'cuir-bouilli' - leather that's been treated, water-boiled, and composite-layered together. It \
-	is traditionally worn beneath a heavier cuirass to protect against bludgeons-and-thrusts, but can be confidently worn on its own without qualm."
+	name = "煮革背心"
+	desc = "一件加衬的背心，以“煮革”加固——即经过处理、水煮并复合层压的皮革。传统上穿在较重的胸甲之下，用以抵御钝击与刺击，但单独穿着也完全可靠，毫无顾虑。"
 	icon_state = "cuirbouilli"
 	item_state = "cuirbouilli"
 	body_parts_covered = CHEST | VITALS

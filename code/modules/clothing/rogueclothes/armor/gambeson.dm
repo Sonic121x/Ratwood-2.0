@@ -229,8 +229,8 @@
 	shiftable = FALSE
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/hatanga
-	name = "beast-hide coat"
-	desc = "Layered robes reinforced with quilted padding and stitched hides from formidable beasts."
+	name = "兽皮大衣"
+	desc = "多层长袍，以绗缝衬垫与缝制的凶猛野兽皮革加固。"
 	icon_state = "hatanga"
 	color = "#ffffff"
 	boobed = TRUE
