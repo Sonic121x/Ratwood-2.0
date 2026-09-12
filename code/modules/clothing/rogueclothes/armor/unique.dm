@@ -62,8 +62,8 @@
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit/decorative
-	name = "decorative mentor robe"
-	desc = "An old dopo robe worn purely for its eastern style."
+	name = "装饰性导师道袍"
+	desc = "一件纯为东方风格而穿着的旧道袍。"
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = null
 
@@ -78,8 +78,8 @@
 	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe/decorative
-	name = "decorative flowery robe"
-	desc = "Flower-styled robes worn purely for their eastern style."
+	name = "装饰性花纹长袍"
+	desc = "纯为东方风格而穿着的花纹长袍。"
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = null
 
@@ -108,8 +108,8 @@
 
 
 /obj/item/clothing/suit/roguetown/armor/plate/elven_plate/light
-	name = "woad elven maille"
-	desc = "An assembly of woven trunk, bound together by ancient song and tool of the oldest elven druids. It still creaks and weeps with forlorn reminiscence of a bygone era. It looks like only Elves can fit in it."
+	name = "靛纹精灵锁甲"
+	desc = "由最古老的精灵德鲁伊以歌与工具共同编织的树干编组。它仍在吱呀作响，仿佛为逝去时代而悲泣。看起来只有精灵才能穿得上。"
 	icon_state = "welfchestalt"
 	item_state = "welfchestalt"
 	armor_class = ARMOR_CLASS_LIGHT

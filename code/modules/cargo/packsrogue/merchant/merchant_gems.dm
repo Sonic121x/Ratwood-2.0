@@ -5,7 +5,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/gems/amethyst
-	name = "阿米索兹石"
+	name = "阿米索兹"
 	cost = 25
 	contains = list(/obj/item/roguegem/amethyst)
 
@@ -35,7 +35,7 @@
 	contains = list(/obj/item/roguegem/ruby)
 
 /datum/supply_pack/rogue/gems/diamond
-	name = "钻石"
+	name = "多佩尔石"
 	cost = 190
 	contains = list(/obj/item/roguegem/diamond)
 
@@ -52,7 +52,7 @@
 	contains = list(/obj/item/roguegem/jade)
 
 /datum/supply_pack/rogue/gems/onyxa
-	name = "缟玛瑙"
+	name = "奥尼克萨"
 	cost = 48
 	contains = list(/obj/item/roguegem/onyxa)
 
@@ -62,7 +62,7 @@
 	contains = list(/obj/item/roguegem/coral)
 
 /datum/supply_pack/rogue/gems/turq
-	name = "天青石"
+	name = "蔚青石"
 	cost = 120
 	contains = list(/obj/item/roguegem/turq)
 

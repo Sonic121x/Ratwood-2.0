@@ -53,7 +53,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/ancient/artificer
 	name = "工巧半身板甲"
-	desc = "抛光的吉尔布兰兹层片经魔焊铸成轻型板甲。它留有一个槽位，可嵌入奥能熔件作为动力源。"
+	desc = "抛光的吉尔青铜层片经魔焊铸成轻型板甲。它留有一个槽位，可嵌入奥能熔件作为动力源。"
 	icon_state = "artificerplate"
 	item_state = "artificerplate"
 	armor_class = ARMOR_CLASS_LIGHT // Artificer made gilbranze.
@@ -165,9 +165,9 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/ancient/artificer/proc/update_description()
 	if(mode == 1)
-		desc = "抛光的吉尔布兰兹层片经魔焊铸成轻型板甲。它嗡鸣着奥能之力，强化施法造诣。"
+		desc = "抛光的吉尔青铜层片经魔焊铸成轻型板甲。它嗡鸣着奥能之力，强化施法造诣。"
 	else
-		desc = "抛光的吉尔布兰兹层片经魔焊铸成轻型板甲。它散发原始力量，强化穿戴者的肉体威能。"
+		desc = "抛光的吉尔青铜层片经魔焊铸成轻型板甲。它散发原始力量，强化穿戴者的肉体威能。"
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted
 	name = "沟槽半身板甲"
@@ -193,7 +193,7 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
-	name = "赛顿半身板甲"
+	name = "普赛顿半身板甲"
 	desc = "精美的钢制胸甲，配有垂甲与肩甲以增加覆盖。普赛顿的低阶教士常用染布装饰这些护甲，好让伤者在战场的疯狂中仍能寻得救赎。 </br>'..疯狂的鼓动，让你以为自己的苦难于阿多奈的祭羔而言毫无意义..' </br>... </br>若再添一些受祝银并请铁匠协助，我就能把这件半身板甲改造成一套全身板甲。"
 	icon_state = "ornatehalfplate"
 	smeltresult = /obj/item/ingot/silverblessed
@@ -227,7 +227,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
 	name = "samsibsa鳞板甲"
-	desc = "远方卡曾贡的 kouken 所穿的重型护甲。不同于普赛多尼亚与西方常见的板甲，samsiba-cheolpan 由三十四排复合鳞片构成，每片都是镀覆黑钢的超薄钢片。 </br> 在单独鳞片上刻字极为常见，比如“幸运”、“荣耀”或“天命”。"
+	desc = "远方风郡的 kouken 所穿的重型护甲。不同于普赛多尼亚与西方常见的板甲，samsiba-cheolpan 由三十四排复合鳞片构成，每片都是镀覆黑钢的超薄钢片。 </br> 在单独鳞片上刻字极为常见，比如“幸运”、“荣耀”或“天命”。"
 	icon_state = "kazengunheavy"
 	item_state = "kazengunheavy"
 	detail_tag = "_detail"
@@ -271,7 +271,7 @@
 	icon_state = "ornateplate"
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate
-	name = "赛顿板甲"
+	name = "普赛顿板甲"
 	desc = "一套精美的板甲，以受祝银细致雕出沟槽纹。其设计源于一位传奇铠匠之手，他试图重现普赛顿天使昔日所披的天界甲胄。 </br>'..拒绝绝望，并立誓在普赛多尼亚最黑暗的时刻守护它..'"
 	icon_state = "ornateplate"
 	smeltresult = /obj/item/ingot/silverblessed
@@ -295,8 +295,8 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/ordinator
-	name = "宗审庭裁决官板甲"
-	desc = "据说是从格伦泽尔霍夫-奥塔凡战争中幸存下来的遗物，经翻修后以普赛顿之名再度用于诛灭宿敌。 <br> 一件加厚衬垫并额外增设肩甲的沟槽胸甲。你将坚持到底。"
+	name = "奥塔万宗审庭裁决官板甲"
+	desc = "据说是从格伦泽尔霍夫-奥塔万战争中幸存下来的遗物，经翻修后以普赛顿之名再度用于诛灭宿敌。 <br> 一件加厚衬垫并额外增设肩甲的沟槽胸甲。你将坚持到底。"
 	icon_state = "ordinatorplate"
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/matthios
@@ -384,8 +384,8 @@ and crackling with insidious energies."
 	item_state = "heartfelt_hand"
 
 /obj/item/clothing/suit/roguetown/armor/plate/otavan
-	name = "奥塔凡半身板甲"
-	desc = "带肩甲的半身板甲。建议与奥塔凡绗缝护甲衣叠穿。"
+	name = "奥塔万半身板甲"
+	desc = "带肩甲的半身板甲。建议与奥塔万绗缝护甲衣叠穿。"
 	armor = ARMOR_PLATE
 	body_parts_covered = COVERAGE_TORSO
 	icon_state = "corsethalfplate"
@@ -434,7 +434,7 @@ and crackling with insidious energies."
 
 /obj/item/clothing/suit/roguetown/armor/plate/hussar
 	name = "翼饰板甲"
-	desc = "覆盖上半身、背后装有“翅翼”的恰尔瓦特基板甲。骠骑冲锋时足以令敌人心生畏惧。"
+	desc = "覆盖上半身、背后装有“翅翼”的兹瓦尔特基板甲。骠骑冲锋时足以令敌人心生畏惧。"
 	icon_state = "hussar"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/czwarteki.dmi'
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
@@ -492,7 +492,7 @@ and crackling with insidious energies."
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/fencer/psydon
-	name = "赛顿胸甲"
+	name = "普赛顿胸甲"
 	desc = "锻造精妙、贴合身形的钢制胸甲，更轻也更灵活，但也更容易损坏。它更薄，却以丝绸与皮革为衬。"
 	smelt_bar_num = 1
 	smeltresult = /obj/item/ingot/silverblessed
@@ -502,7 +502,7 @@ and crackling with insidious energies."
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/ancient
 	name = "远古胸甲"
-	desc = "抛光的吉尔布兰兹弯制成胸甲。它不是为不再跳动的心脏而铸，而是献给流经无光骨髓的灵意; 这是她诸多恩赐之一。"
+	desc = "抛光的吉尔青铜弯制成胸甲。它不是为不再跳动的心脏而铸，而是献给流经无光骨髓的灵意; 这是她诸多恩赐之一。"
 	icon_state = "ancientcuirass"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -522,10 +522,9 @@ and crackling with insidious energies."
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/gold
-	name = "golden cuirass"
+	name = "金色胸甲"
 	icon_state = "goldcuirass"
-	desc = "A resplendant cuirass of pure gold, fitted with tassets for additional coverage. It is dressed atop a besilked arming \
-	jacket to ensure the absolute comfort of its wearer, and the holy sigil has been meticulously formed from its slanted plates."
+	desc = "一件璀璨夺目的纯金胸甲，配有垂甲以增加覆盖。它套在丝绸衬里的护甲衣之上，以确保穿戴者的绝对舒适，而神圣徽记则由倾斜的甲片精心拼成。"
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile, especially against blunt damage.
 	armor_class = ARMOR_CLASS_HEAVY
@@ -537,20 +536,19 @@ and crackling with insidious energies."
 	unenchantable = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/gold/heroic
-	name = "golden heroic cuirass"
+	name = "金色英雄胸甲"
 	icon_state = "heroiccuirass"
-	desc = "A resplendant cuirass of pure gold, fitted with tassets for additional coverage. It has been meticulously waxed-and-assembled \
-	from dozens of smaller golden plates, in order to replicate the statuesque physique of Psydonia's legendary heroes."
+	desc = "一件璀璨夺目的纯金胸甲，配有垂甲以增加覆盖。它由数十片较小的金片精心打磨并组装而成，以重现普赛多尼亚传奇英雄的雕像般体态。"
 	unenchantable = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/gold/king
-	name = "golden heroic cuirass"
+	name = "金色英雄胸甲，王室"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	sellprice = 400
 	unenchantable = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/fluted/ornate
-	name = "赛顿胸甲"
+	name = "普赛顿胸甲"
 	icon_state = "ornatecuirass"
 	desc = "精美的钢制胸甲，配有垂甲以增加覆盖。受祝银条被细致嵌入沟槽纹之中; 这项费工装饰表明它出自银色灵十字修会。 </br>'..感受永世之手落在你肩上，把世界的重负交予血肉与骨骼..' </br>... </br>若再添一些受祝银并请铁匠协助，我就能把这件胸甲改造成一套半身板甲。"
 	smeltresult = /obj/item/ingot/silverblessed
@@ -602,9 +600,8 @@ and crackling with insidious energies."
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL + 50
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/bronze
-	name = "bronze lamellar"
-	desc = "A coat of small bronze plates, segmented together in a manner not unlike chainmail. Divorced from the \
-	romanticized images of bare-chested legionnaires banishing nightmares from a pre-Syonic world, but venerable nevertheless."
+	name = "青铜鳞甲"
+	desc = "一袭由小块青铜片组成的鳞甲，片片相扣，方式颇似锁子甲。与那些把前西昂时代驱除噩梦的赤膊军团兵浪漫化的形象相去甚远，却同样古老而可敬。"
 	icon_state = "blamellar"
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
@@ -614,8 +611,8 @@ and crackling with insidious energies."
 /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
 	slot_flags = ITEM_SLOT_ARMOR
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "宗审庭长风衣"
-	desc = "厚重长风衣，皮革之下暗藏层层锁甲，由神圣奥塔凡宗审庭的精锐穿用。 </br>这件长风衣还能嵌入一件赛顿胸甲，在不牺牲风度的前提下抵御更致命的打击。"
+	name = "奥塔万宗审庭长风衣"
+	desc = "厚重长风衣，皮革之下暗藏层层锁甲，由神圣奥塔万宗审庭的精锐穿用。 </br>这件长风衣还能嵌入一件普赛顿胸甲，在不牺牲风度的前提下抵御更致命的打击。"
 	body_parts_covered = COVERAGE_FULL
 	allowed_sex = list(MALE, FEMALE)
 	allowed_sex = list(MALE, FEMALE)
@@ -655,8 +652,8 @@ and crackling with insidious energies."
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat/armored
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "装甲宗审庭长风衣"
-	desc = "厚重长风衣，皮革之下暗藏层层锁甲，由神圣奥塔凡宗审庭的精锐穿用。长风衣开衩之处藏着惊喜: 一件穿在皮革之下、足以挡下重创的华丽钢胸甲。"
+	name = "装甲奥塔万宗审庭长风衣"
+	desc = "厚重长风衣，皮革之下暗藏层层锁甲，由神圣奥塔万宗审庭的精锐穿用。长风衣开衩之处藏着惊喜: 一件穿在皮革之下、足以挡下重创的华丽钢胸甲。"
 	smeltresult = /obj/item/ingot/steel
 	icon_state = "inqcoata"
 	item_state = "inqcoata"
@@ -711,7 +708,7 @@ and crackling with insidious energies."
 	name = "青铜全装板甲"
 	desc = "只能被称作“披袍式甲胄”的装备; 厚重青铜板层层叠覆，并以束带彼此连接 \
 	构成一整套分段式板甲。尽管沉重笨拙得惊人，它却注定能扛住迎面而来的任何风暴。 \
-	</br>学者们常将这套护甲称作“全装甲”，据说它本就是为普赛多尼亚最早期的亚西玛尔体型量身打造。"
+	</br>学者们常将这套护甲称作“全装甲”，据说它本就是为普赛多尼亚最早期的亚斯玛尔体型量身打造。"
 	icon_state = "bronzeplate"
 	item_state = "bronzeplate"
 	armor = ARMOR_BRONZE
@@ -765,7 +762,7 @@ and crackling with insidious energies."
 	equip_delay_self = 4 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/plate/citywatch/captain
-	name = "watch captain armor"
-	desc = "Heavy, well worn armour featuring simple greys. Justice is impartial. Are you?"
+	name = "守望队长护甲"
+	desc = "厚重而久经使用的护甲，饰以素雅的灰色纹样。正义应当一视同仁。你呢？"
 	icon_state = "sheriffarmor"
 	item_state = "sheriffarmor"

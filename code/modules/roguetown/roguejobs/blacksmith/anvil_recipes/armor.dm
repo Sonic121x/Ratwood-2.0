@@ -143,7 +143,7 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/bronze/fullplate
-	name = "全套甲胄, 青铜 (+3 青铜, +1 熟皮, +1 Fur)"
+	name = "全套甲胄, 青铜 (+3 青铜, +1 熟皮, +1 毛皮)"
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/natural/hide/cured, /obj/item/natural/fur)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bronze
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
@@ -248,25 +248,25 @@
 // DECREPIT/ANCIENT ALLOY
 
 /datum/anvil_recipe/armor/ancient/barbute
-	name = "Barbute, 古代 (+1 吉尔青铜)"
+	name = "巴布塔盔, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/ancient
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/decrepit/barbute
-	name = "Barbute, 衰朽 (+1 合金)"
+	name = "巴布塔盔, 衰朽 (+1 合金)"
 	additional_items = list(/obj/item/ingot/decrepit)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/ancient/decrepit
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/ancient/savoyard
-	name = "Savoyard, 古代 (+1 吉尔青铜)"
+	name = "萨伏伊式盔, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/guard/ancient
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/decrepit/savoyard
-	name = "Savoyard, 衰朽 (+1 合金)"
+	name = "萨伏伊式盔, 衰朽 (+1 合金)"
 	additional_items = list(/obj/item/ingot/decrepit)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/guard/ancient/decrepit
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -485,10 +485,10 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/steel/wardenmeleehauberk
-	name = "Forester's Hauberk (+1 Forester's Cuirass, +1 Essence of Wilderness, +1 Steel)"
+	name = "护林人锁子甲 (+1 护林人胸甲, +1 荒野精华, +1 钢)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/warden/melee, /obj/item/natural/cured/essence, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/warden/melee/upgraded
-	i_type = "Armor"
+	i_type = "护甲"
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/iron/halfplate
@@ -542,34 +542,34 @@
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/iron/mask/hound
-	name = "Hound 面甲, 铁"
+	name = "猎犬面甲, 铁"
 	created_item = /obj/item/clothing/mask/rogue/facemask/hound
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/iron/wildguard
-	name = "Wild Guard, 铁"
+	name = "荒野守卫面甲, 铁"
 	created_item = /obj/item/clothing/mask/rogue/wildguard
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/iron/duelist
-	name = "Duelist Goggles, Iron"
+	name = "决斗者护目镜, 铁"
 	created_item = /obj/item/clothing/mask/rogue/spectacles/duelist
 	createditem_num = 2
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/iron/splintarms
-	name = "Splinted 臂甲 (+1 皮臂甲)" //you modify the bracers to have splints and cover the arm way more
+	name = "加条臂甲 (+1 皮臂甲)" //you modify the bracers to have splints and cover the arm way more
 	additional_items = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 	created_item = /obj/item/clothing/wrists/roguetown/splintarms/iron
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
 /datum/anvil_recipe/armor/iron/bracers
-	name = "Plate 臂甲, 铁"
+	name = "板甲臂甲, 铁"
 	created_item = /obj/item/clothing/wrists/roguetown/bracers/iron
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
 /datum/anvil_recipe/armor/iron/jackchain
-	name = "Jack Chain, 铁"
+	name = "杰克链甲, 铁"
 	created_item = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
@@ -594,12 +594,12 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/iron/sallet
-	name = "Sallet 头盔, 铁"
+	name = "萨莱特头盔, 铁"
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/iron
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/iron/sallet/visor
-	name = "面罩 Sallet, 铁 (+1 铁)"
+	name = "面罩萨莱特盔, 铁 (+1 铁)"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -611,25 +611,25 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/iron/bucket
-	name = "铁 桶盔 (+1 铁)"
+	name = "铁桶盔 (+1 铁)"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/iron
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/iron/studded
-	name = "Studded 皮甲 (+ 皮甲)"
+	name = "铆钉皮甲 (+ 皮甲)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/studdedbikini
-	name = "Studded 皮胸衣 (+ 皮胸衣)"
+	name = "铆钉皮胸衣 (+ 皮胸衣)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/iron/helmethorned
-	name = "Horned Helmet, 铁"
+	name = "角盔, 铁"
 	created_item = /obj/item/clothing/head/roguetown/helmet/horned
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
@@ -684,13 +684,13 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/steel/platebikini
-	name = "半身板甲 Corslet, 钢 (+1 胸甲, 钢, +2 熟皮)"
+	name = "半身板甲胸衣, 钢 (+1 胸甲, 钢, +2 熟皮)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/half, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/steel/fullplatebikini
-	name = "全身板甲 Corslet, 钢 (+1 半身板甲, 钢, +2 熟皮)"
+	name = "全身板甲胸衣, 钢 (+1 半身板甲, 钢, +2 熟皮)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
@@ -702,7 +702,7 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/steel/lbrigandine
-	name = "Light 札甲, 钢 (+1 布料)"
+	name = "轻型札甲, 钢 (+1 布料)"
 	req_bar = /obj/item/ingot/steel
 	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/natural/cloth)
@@ -722,12 +722,12 @@
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/armor/steel/chainmantle
-	name = "Chain Mantle, 钢"
+	name = "链甲披肩, 钢"
 	created_item = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/armor/steel/fullchaincoif
-	name = "Full 锁甲头巾, 钢 (+1 steel)"
+	name = "全罩锁甲头巾, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/neck/roguetown/chaincoif/full
 	display_category = ITEM_CAT_ARMOR_NECK
@@ -777,7 +777,7 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/steel/lightcuirass
-	name = "Fencing 胸甲, 钢 (+1 钢, +1 熟皮)"
+	name = "击剑胸甲, 钢 (+1 钢, +1 熟皮)"
 	req_bar = /obj/item/ingot/steel
 	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
@@ -797,12 +797,12 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/steel/platebracer
-	name = "Plate 臂甲, 钢"
+	name = "板甲臂甲, 钢"
 	created_item = /obj/item/clothing/wrists/roguetown/bracers
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
 /datum/anvil_recipe/armor/steel/maillebracers
-	name = "Chainsleeves, Steel"
+	name = "链甲臂铠, 钢"
 	created_item = /obj/item/clothing/wrists/roguetown/bracers/chain
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
@@ -822,7 +822,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/widehelmetkettle
-	name = "Wide 圆边盔, 钢"
+	name = "宽圆边盔, 钢"
 	created_item = /obj/item/clothing/head/roguetown/helmet/kettle/wide
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
@@ -842,12 +842,12 @@
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/armor/steel/helmetsall
-	name = "Sallet, 钢"
+	name = "萨莱特盔, 钢"
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetsallv
-	name = "面罩 Sallet, 钢 (+1 钢)"
+	name = "面罩萨莱特盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -876,7 +876,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/etruscanbascinet
-	name = "伊特鲁斯卡n 尖顶盔, 钢 (+1 钢)"
+	name = "伊特鲁斯卡尖顶盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -888,7 +888,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetarmet
-	name = "Armet 头盔, 钢 (+1 钢)"
+	name = "阿米特头盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -900,7 +900,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/savoyard
-	name = "Savoyard 头盔, 钢 (+1 钢)"
+	name = "萨伏伊式头盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -969,7 +969,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/necrahelm
-	name = "内克拉 头盔（+1 钢锭）"
+	name = "内克拉头盔 (+1 钢锭)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -987,7 +987,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/frogmouth
-	name = "Froggemund 头盔, 钢 (+2 钢)"
+	name = "蛙嘴盔, 钢 (+2 钢)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1001,13 +1001,13 @@
 	created_item = /obj/item/storage/belt/rogue/leather/steel/tasset
 
 /datum/anvil_recipe/armor/steel/splintarms
-	name = "札甲 臂甲 (+1 皮臂甲)"
+	name = "加条臂甲 (+1 皮臂甲)"
 	additional_items = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 	created_item = /obj/item/clothing/wrists/roguetown/splintarms
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
 /datum/anvil_recipe/armor/steel/splintlegs
-	name = "札甲腿甲 (+1 皮裤)"
+	name = "加条腿甲 (+1 皮裤)"
 	additional_items = list(/obj/item/clothing/under/roguetown/trou/leather)//basically you just add a lot of iron bits to the pants
 	created_item = /obj/item/clothing/under/roguetown/splintlegs
 	display_category = ITEM_CAT_ARMOR_LEGS
@@ -1041,7 +1041,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/holysteel/necrahelmtemplar
-	name = "内克拉 圣殿头盔（+1 鞣制皮革）"
+	name = "内克拉圣殿头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necran
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1071,7 +1071,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/holysteel/necrahelm
-	name = "内克拉 头盔（+1 鞣制皮革）"
+	name = "内克拉头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1129,17 +1129,17 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/blessedsilver/armetpsy
-	name = "普赛顿式 Armet 头盔"
+	name = "普赛顿式 阿米特头盔"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/blessedsilver/greatplumearmetpsy
-	name = "普赛顿式大翎羽阿米特盔"
-	category = "祝福白银"
+	name = "普赛顿式 大翎羽阿米特盔"
+	category = "Blessed Silver"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/psy/greatplume
 
 /datum/anvil_recipe/armor/blessedsilver/helmsallpsy
-	name = "普赛顿式 Sallet (+1 祝福白银)"
+	name = "普赛顿式 萨莱特盔 (+1 祝福白银)"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/psysallet
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
@@ -1149,12 +1149,12 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/blessedsilver/helmvolfpsy
-	name = "Psydonic Volfskulle Bascinet"
+	name = "普赛顿式 狼首尖顶盔"
 	category = "Blessed Silver"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/psydonic
 
 /datum/anvil_recipe/armor/blessedsilver/helmetabso
-	name = "普赛多尼亚n 圆锥盔 (+2 祝福白银)"
+	name = "普赛顿式 圆锥盔 (+2 祝福白银)"
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/absolver
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1172,7 +1172,7 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/blessedsilver/psyfullplatealt
-	name = "普赛顿式 全身板甲, 长身锁子甲ed (+普赛顿式 长身锁子甲, +2 祝福白银, +2 熟皮)"
+	name = "普赛顿式 全身板甲, 长身锁子甲式 (+普赛顿式 长身锁子甲, +2 祝福白银, +2 熟皮)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate, /obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
@@ -1300,7 +1300,7 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/blacksteel/ancienthalfplatechest
-	name = "古代 黑钢 Half Plate Armor (+2 黑钢, +1 熟革)"
+	name = "古代 黑钢 半身板甲 (+2 黑钢, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_halfplate/ancient
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
@@ -1317,7 +1317,7 @@
 	display_category = ITEM_CAT_ARMOR_LEGS
 
 /datum/anvil_recipe/armor/blacksteel/modern/armet
-	name = "Armet 头盔, 黑钢 (+1 黑钢)"
+	name = "阿米特头盔, 黑钢 (+1 黑钢)"
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/blacksteel/modern/armet
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1330,7 +1330,7 @@
 // BLACKSTEEL, ANCIENT
 
 /datum/anvil_recipe/armor/blacksteel/platechest
-	name = "古代 黑钢 Plate Armor (+3 黑钢)"
+	name = "古代 黑钢 全身板甲 (+3 黑钢)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_full_plate
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES

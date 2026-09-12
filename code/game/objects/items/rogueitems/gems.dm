@@ -52,7 +52,7 @@
 	..()
 
 /obj/item/roguegem/green
-	name = "祖母绿"
+	name = "翠晶"
 	icon_state = "emerald_cut"
 	sellprice = SELLPRICE_GEMERALD
 	desc = "闪烁着翠绿的光辉。"
@@ -82,13 +82,13 @@
 	)
 
 /obj/item/roguegem/houndgem
-	name = "houndstone gem"
+	name = "猎犬石"
 	icon_state = "topaz_cut"
 	sellprice = 0
-	desc = "A component to make a Houndstone, it looks like a topaz."
+	desc = "用于制作猎犬石的组件，看起来像一块托珀石。"
 
 /obj/item/roguegem/yellow
-	name = "黄玉"
+	name = "托珀石"
 	icon_state = "topaz_cut"
 	sellprice = SELLPRICE_TOPER
 	desc = "它的琥珀色调让你想起落日。"
@@ -103,7 +103,7 @@
 	)
 
 /obj/item/roguegem/violet
-	name = "蓝宝石"
+	name = "蓝晶"
 	icon_state = "sapphire_cut"
 	sellprice = SELLPRICE_SAFFIRA
 	desc = "这颗宝石深受许多法师喜爱。"
@@ -118,7 +118,7 @@
 	)
 
 /obj/item/roguegem/ruby
-	name = "红宝石"
+	name = "隆兹石"
 	icon_state = "ruby_cut"
 	sellprice = 100
 	desc = "它的切面闪耀得异常明亮……"
@@ -133,7 +133,7 @@
 	)
 
 /obj/item/roguegem/diamond
-	name = "钻石"
+	name = "多佩尔石"
 	icon_state = "diamond_cut"
 	sellprice = SELLPRICE_DORPEL
 	desc = "它清澈得近乎完美，令人肃然起敬。"
