@@ -664,36 +664,36 @@
 		"虚空奥术顿悟卷轴（650积分）" = list(650, /obj/item/book/granter/spell_points/voiddragon),     // 研读后获得 6 点法术点（需奥术新手及以上）
 		// —— 附魔卷轴（对"物品"施加特殊附魔：手持卷轴点击目标物品即可附魔，不是教人法术）——
 		//   T1 基础附魔
-		"附魔·伐木（150积分）"   = list(150, /obj/item/enchantmentscroll/woodcut),     // 给斧子附魔：高效伐木
-		"附魔·采矿（150积分）"   = list(150, /obj/item/enchantmentscroll/mining),      // 给镐子附魔：高效采矿
-		"附魔·显照（170积分）"   = list(170, /obj/item/enchantmentscroll/revealing),   // 给物品附魔：光源照明范围翻倍
-		"附魔·恒光（180积分）"   = list(180, /obj/item/enchantmentscroll/light),       // 给武器 / 衣物附魔：自身发光
-		"附魔·幸运（200积分）"   = list(200, /obj/item/enchantmentscroll/xylix),       // 给衣物附魔：赐予幸运
-		"附魔·储物（240积分）"   = list(240, /obj/item/enchantmentscroll/holding),     // 给容器附魔：容量翻倍
+"附魔·伐木（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木
+		"附魔·采矿（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/mining),      // 给镐子附魔：高效采矿
+		"附魔·显照（170积分）"   = list(170, /obj/item/enchantmentscroll/basic/revealing),   // 给物品附魔：光源照明范围翻倍
+		"附魔·恒光（180积分）"   = list(180, /obj/item/enchantmentscroll/basic/light),       // 给武器 / 衣物附魔：自身发光
+		"附魔·幸运（200积分）"   = list(200, /obj/item/enchantmentscroll/basic/xylix),       // 给衣物附魔：赐予幸运
+		"附魔·储物（240积分）"   = list(240, /obj/item/enchantmentscroll/basic/holding),     // 给容器附魔：容量翻倍
 		//   T2 高级附魔
-		"附魔·长步（240积分）"   = list(240, /obj/item/enchantmentscroll/trekk),       // 给鞋 / 戒指附魔：沼泽中行走自如
-		"附魔·蛛行（250积分）"   = list(250, /obj/item/enchantmentscroll/climbing),    // 给衣物附魔：攀爬陡壁
-		"附魔·夜视（250积分）"   = list(250, /obj/item/enchantmentscroll/nightvision), // 给衣物附魔：黑暗中视物
-		"附魔·锻造（250积分）"   = list(250, /obj/item/enchantmentscroll/smithing),    // 给锤子附魔：打铁更有效
-		"附魔·巧手（260积分）"   = list(260, /obj/item/enchantmentscroll/thievery),    // 给手套 / 戒指附魔：偷窃撬锁
-		"附魔·羽步（280积分）"   = list(280, /obj/item/enchantmentscroll/featherstep), // 给鞋 / 戒指附魔：加速且脚步无声
-		"附魔·抗火（280积分）"   = list(280, /obj/item/enchantmentscroll/fireresist),  // 给衣物附魔：不会被点燃
-		"附魔·坚不可摧（300积分）" = list(300, /obj/item/enchantmentscroll/unbreaking), // 给武器 / 衣物附魔：更耐用
+		"附魔·长步（240积分）"   = list(240, /obj/item/enchantmentscroll/superior/trekk),       // 给鞋 / 戒指附魔：沼泽中行走自如
+		"附魔·蛛行（250积分）"   = list(250, /obj/item/enchantmentscroll/superior/climbing),    // 给衣物附魔：攀爬陡壁
+		"附魔·夜视（250积分）"   = list(250, /obj/item/enchantmentscroll/superior/nightvision), // 给衣物附魔：黑暗中视物
+		"附魔·锻造（250积分）"   = list(250, /obj/item/enchantmentscroll/superior/smithing),    // 给锤子附魔：打铁更有效
+		"附魔·巧手（260积分）"   = list(260, /obj/item/enchantmentscroll/superior/thievery),    // 给手套 / 戒指附魔：偷窃撬锁
+		"附魔·羽步（280积分）"   = list(280, /obj/item/enchantmentscroll/superior/featherstep), // 给鞋 / 戒指附魔：加速且脚步无声
+		"附魔·抗火（280积分）"   = list(280, /obj/item/enchantmentscroll/superior/fireresist),  // 给衣物附魔：不会被点燃
+		"附魔·坚不可摧（300积分）" = list(300, /obj/item/enchantmentscroll/superior/unbreaking), // 给武器 / 衣物附魔：更耐用
 		//   T3 强力附魔
-		"附魔·武器召回（420积分）" = list(420, /obj/item/enchantmentscroll/returningweapon), // 给戒指 / 项链 / 手套附魔：召回武器
-		"附魔·箭术（440积分）"   = list(440, /obj/item/enchantmentscroll/archery),     // 给戒指 / 护腕附魔：提升箭术
-		"附魔·愈合（450积分）"   = list(450, /obj/item/enchantmentscroll/woundclosing), // 给戒指附魔：定期闭合伤口
-		"附魔·霜幕（460积分）"   = list(460, /obj/item/enchantmentscroll/frostveil),   // 给武器 / 护甲附魔：减速敌人
-		"附魔·闪电（480积分）"   = list(480, /obj/item/enchantmentscroll/lightning),   // 给武器附魔：命中电击
-		"附魔·凤凰守卫（480积分）" = list(480, /obj/item/enchantmentscroll/phoenixguard), // 给衣物附魔：反伤点燃来犯者
-		"附魔·吸血（500积分）"   = list(500, /obj/item/enchantmentscroll/lifesteal),   // 给武器附魔：命中回血
-		"附魔·虚空（520积分）"   = list(520, /obj/item/enchantmentscroll/voidtouched), // 给武器附魔：将敌人短暂拽入虚空
+		"附魔·武器召回（420积分）" = list(420, /obj/item/enchantmentscroll/greater/returningweapon), // 给戒指 / 项链 / 手套附魔：召回武器
+		"附魔·箭术（440积分）"   = list(440, /obj/item/enchantmentscroll/greater/archery),     // 给戒指 / 护腕附魔：提升箭术
+		"附魔·愈合（450积分）"   = list(450, /obj/item/enchantmentscroll/greater/woundclosing), // 给戒指附魔：定期闭合伤口
+		"附魔·霜幕（460积分）"   = list(460, /obj/item/enchantmentscroll/greater/frostveil),   // 给武器 / 护甲附魔：减速敌人
+		"附魔·闪电（480积分）"   = list(480, /obj/item/enchantmentscroll/greater/lightning),   // 给武器附魔：命中电击
+		"附魔·凤凰守卫（480积分）" = list(480, /obj/item/enchantmentscroll/greater/phoenixguard), // 给衣物附魔：反伤点燃来犯者
+		"附魔·吸血（500积分）"   = list(500, /obj/item/enchantmentscroll/greater/lifesteal),   // 给武器附魔：命中回血
+		"附魔·虚空（520积分）"   = list(520, /obj/item/enchantmentscroll/greater/voidtouched), // 给武器附魔：将敌人短暂拽入虚空
 		//   T4 神话附魔
-		"附魔·荆棘诅咒（700积分）" = list(700, /obj/item/enchantmentscroll/briars),     // 给武器附魔：伤害大增但反噬自身
-		"附魔·地狱火焰（750积分）" = list(750, /obj/item/enchantmentscroll/infernalflame), // 给武器 / 衣物附魔：命中点燃
-		"附魔·冰冻（780积分）"   = list(780, /obj/item/enchantmentscroll/freeze),      // 给武器 / 衣物附魔：命中冻结
-		"附魔·时间回溯（800积分）" = list(800, /obj/item/enchantmentscroll/rewind),     // 给武器 / 衣物附魔：受击后回溯位置
-		"附魔·混沌风暴（850积分）" = list(850, /obj/item/enchantmentscroll/chaos_storm), // 给武器附魔：随机混沌效果
+		"附魔·荆棘诅咒（700积分）" = list(700, /obj/item/enchantmentscroll/mythic/briars),     // 给武器附魔：伤害大增但反噬自身
+		"附魔·地狱火焰（750积分）" = list(750, /obj/item/enchantmentscroll/mythic/infernalflame), // 给武器 / 衣物附魔：命中点燃
+		"附魔·冰冻（780积分）"   = list(780, /obj/item/enchantmentscroll/mythic/freeze),      // 给武器 / 衣物附魔：命中冻结
+		"附魔·时间回溯（800积分）" = list(800, /obj/item/enchantmentscroll/mythic/rewind),     // 给武器 / 衣物附魔：受击后回溯位置
+		"附魔·混沌风暴（850积分）" = list(850, /obj/item/enchantmentscroll/mythic/chaos_storm), // 给武器附魔：随机混沌效果
 		"月光大剑（600积分）"   = list(600, /obj/item/rogueweapon/greatsword/moonlight_greatsword),   // 本模块自定义：高级魔法巨剑
 	)
 
