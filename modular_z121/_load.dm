@@ -200,6 +200,8 @@
 // Custom item: Poisoned Tool Pouch — pour a liquid in, click a weapon/arrow to coat it; the coated item
 // delivers that liquid into any living target it strikes. Weapon: 10u over 10 hits; arrow: 1u once.
 #include "items/poisoned_tool_pouch.dm"
+#include "items/void_cube.dm"
+#include "crafting/void_cube_recipe.dm"
 // 自定义物品：猎魔人剑油 x7（《巫师3》移植）——手持油瓶点击近战武器即可涂抹（一瓶 3 次，用尽退空瓶）；
 // 涂层持续 4 分钟，武器命中【对应克制类别】的敌人时追加【本次挥击伤害 50%】的百分比加成
 //（经 get_complex_damage 重算基准，随武器力度/力量/锋利度动态缩放；对其它目标毫无效果）。
