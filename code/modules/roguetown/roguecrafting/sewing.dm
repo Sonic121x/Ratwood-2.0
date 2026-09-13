@@ -91,7 +91,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/clothbedsheet
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "床单，布质""
+	name = "床单，布质"
 	result = list(/obj/item/bedsheet/rogue/cloth)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
