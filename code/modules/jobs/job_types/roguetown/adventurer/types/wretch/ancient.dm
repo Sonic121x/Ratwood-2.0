@@ -105,7 +105,7 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
 
-var/weapons = list("赦免 - (巨剑)", "复仇 - (长剑)", "定罪 - (刺剑)", "毁灭 - (战争大砍刀)", "收获 - (钩镰)", "虔诚 - (骑士剑)")
+	var/weapons = list("赦免 - (巨剑)", "复仇 - (长剑)", "定罪 - (刺剑)", "毁灭 - (战争大砍刀)", "收获 - (钩镰)", "虔诚 - (骑士剑)")
 	var/weapons_choice = input(H, "选择你的武器。", "来自女士的兵刃") as anything in weapons
 	switch(weapons_choice)
 		if("赦免 - (巨剑)")
