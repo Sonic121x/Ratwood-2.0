@@ -728,7 +728,7 @@
 						var/mob/living/carbon/human/tmp = A
 						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job, compact)]) - [balance]m[debt_tag]"
 					else
-					contents += "[A.real_name] - [balance]m[debt_tag]"
+						contents += "[A.real_name] - [balance]m[debt_tag]"
 					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[发放\]</a>"
 					if(show_fiscal_actions)
 						contents += " <a href='?src=\ref[src];fineaccount=\ref[A]'>\[[fine_label]\]</a> <a href='?src=\ref[src];togglewages=\ref[A]'>\[[wage_status_short]\]</a>"
