@@ -1,5 +1,5 @@
 /datum/sex_action/chastityplay/force_cage_cunnilingus
-name = "强迫他们舔你的贞操带"
+	name = "强迫他们舔你的贞操带"
 	require_grab = TRUE
 	stamina_cost = 1.0
 	category = SEX_CATEGORY_PENETRATE

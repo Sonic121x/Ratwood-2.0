@@ -1,5 +1,5 @@
 /datum/sex_action/chastityplay/force_cage_nuzzle
-name = "强迫他们蹭你的贞操笼"
+	name = "强迫他们蹭你的贞操笼"
 	require_grab = TRUE
 	stamina_cost = 1.0
 	target_sex_part = SEX_PART_JAWS
