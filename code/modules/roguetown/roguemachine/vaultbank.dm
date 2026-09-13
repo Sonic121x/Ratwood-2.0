@@ -369,7 +369,7 @@
 
 /obj/structure/roguemachine/vaultbank/examine(mob/user)
 	. += ..()
-var/datum/fund/F = get_linked_fund()
+	var/datum/fund/F = get_linked_fund()
 	if(F)
 		if(Adjacent(user))
 			. += span_notice("[F.name] 目前存有：[F.balance] 玛门。")
