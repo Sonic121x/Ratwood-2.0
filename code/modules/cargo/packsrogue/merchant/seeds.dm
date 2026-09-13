@@ -1,7 +1,7 @@
 
 
 /datum/supply_pack/rogue/seeds
-	group = "种子"
+	group = "Seeds"
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
