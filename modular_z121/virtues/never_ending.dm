@@ -51,7 +51,7 @@
 // -----------------------------------------------------------------------------
 /datum/virtue/utility/never_ending
 	// 美德名称 / Display name shown in the virtue selection UI.
-	name = "永无止境"
+	name = "永无止境（-99）"
 	// 角色内描述 / In-character description of the fantasy.
 	desc = "我是这出剧本里举足轻重的演员。每当我走向结局，随后不久，诸神便会再次将我推上舞台。"
 	// 额外说明：把机制清楚地讲给玩家，避免他们误以为这是无限免死金牌。
