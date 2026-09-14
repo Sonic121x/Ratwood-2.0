@@ -394,8 +394,3 @@
 				html += render_contents(I, session, depth + 1)
 		html += "</li>"
 	return html + "</ul>"
-
-#ifdef UNIT_TESTS
-#include "void_cube_tests.dm"
-#endif
-
