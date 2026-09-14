@@ -210,6 +210,8 @@
 // Custom items: 7 Witcher-style sword oils — apply to a melee weapon (3 uses/bottle, empty bottle returned);
 // 4-min coating adds +50% of the swing's damage vs its matching enemy family only (humanoid/beast/arachnid/demon/cursed/vampire/necrophage).
 #include "items/sword_oils.dm"
+#include "items/transmog_salves.dm"
+#include "crafting/transmog_salve_recipe.dm"
 // 记忆之吻：手持点击铭刻他人气息，独处时重温记忆与感受（ERP 饰品）
 #include "items/memory_kiss_token.dm"
 // 记忆之吻制作配方：炼金台，宝石x1 + 水50 → 记忆之吻，炼金1级
