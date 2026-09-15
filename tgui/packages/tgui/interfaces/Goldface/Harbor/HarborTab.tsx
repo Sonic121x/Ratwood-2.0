@@ -54,7 +54,7 @@ const BudgetStrip = (props: { harbor: HarborData }) => {
       }}
     >
       <BudgetPair
-        label="Hails Today"
+        label="今日招呼"
         value={
           <>
             <b>{harbor.hails_remaining}</b> / {harbor.hails_per_day}
@@ -62,7 +62,7 @@ const BudgetStrip = (props: { harbor: HarborData }) => {
         }
       />
       <BudgetPair
-        label="Pier Spots"
+        label="码头泊位"
         value={
           <>
             <b>{harbor.dock_spots_used}</b> / {harbor.dock_spots_max}
@@ -101,12 +101,12 @@ export const HarborTab = (props: {
           marginRight: '6px',
         }}
       >
-        Chartered Agent
+        特许代理人
       </span>
       <span style={{ color: INK_SOFT }}>
-        As an agent of the Ferentian Trading Company, you are allowed to access,
-        view, and purchase the Cultural Stock of any docked ships, and view
-        and hail ships on behalf of the Factor.
+        作为费伦提亚贸易公司的代理人, 你获准查阅、查看并购买
+        任何停靠船只的文化货物, 并可代表商行管事
+        查看并招呼船只.
       </span>
     </div>
   ) : null;
@@ -122,7 +122,7 @@ export const HarborTab = (props: {
             color: INK_SOFT,
           }}
         >
-          The harbor reports are not yet drawn up.
+          港口报告尚未拟就.
         </div>
       </div>
     );
@@ -140,7 +140,7 @@ export const HarborTab = (props: {
           color: INK_SOFT,
         }}
       >
-        Tip: Ctrl+F in this window to find a good or realm quickly.
+        提示: 在此窗口按 Ctrl+F 可快速查找货物或国度.
       </div>
       {harbor.kinship?.realm_name && (
         <div
@@ -161,12 +161,12 @@ export const HarborTab = (props: {
               marginRight: '6px',
             }}
           >
-            Kinship: {harbor.kinship.realm_name}
+            亲缘: {harbor.kinship.realm_name}
           </span>
           <span style={{ color: INK_SOFT }}>
-            At least one ship from {harbor.kinship.realm_name} will sail per dae, sell{' '}
-            {harbor.kinship.buy_pct}% cheaper, and pay {harbor.kinship.sell_pct}
-            % more on bulk demand.
+            每日至少有一艘来自 {harbor.kinship.realm_name} 的船出航, 售价便宜{' '}
+            {harbor.kinship.buy_pct}%, 大宗需求的收购价多付 {harbor.kinship.sell_pct}
+            %.
           </span>
         </div>
       )}
@@ -189,11 +189,11 @@ export const HarborTab = (props: {
               marginRight: '6px',
             }}
           >
-            Agent Kinship: {harbor.kinship.agent_realm_name}
+            代理人亲缘: {harbor.kinship.agent_realm_name}
           </span>
           <span style={{ color: INK_SOFT }}>
-            As an Agent, your buys from {harbor.kinship.agent_realm_name} ships
-            cost {harbor.kinship.buy_pct}% less.
+            作为代理人, 你从 {harbor.kinship.agent_realm_name} 船只购买时
+            可少付 {harbor.kinship.buy_pct}%.
           </span>
         </div>
       )}
@@ -203,14 +203,14 @@ export const HarborTab = (props: {
           style={subTabStyle(tab === 'ships')}
           onClick={() => setTab('ships')}
         >
-          Ships
+          船只
         </button>
         <button
           type="button"
           style={subTabStyle(tab === 'realms')}
           onClick={() => setTab('realms')}
         >
-          Realms
+          国度
         </button>
       </div>
       {tab === 'ships' && (
