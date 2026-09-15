@@ -1,5 +1,6 @@
 /datum/job/roguetown/tribalvillager
 	title = "Tribal Villager"
+	display_title = "部落村民"
 	flag = TRIBALVILLAGER
 	department_flag = TRIBAL
 	faction = "Station"

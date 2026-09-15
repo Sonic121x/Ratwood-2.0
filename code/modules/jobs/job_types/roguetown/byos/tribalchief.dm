@@ -1,6 +1,7 @@
 
 /datum/job/roguetown/tribalchieftain
 	title = "Chieftain"
+	display_title = "酋长"
 	f_title = "女酋长"
 	flag = TRIBALCHIEFTAIN
 	department_flag = TRIBAL
