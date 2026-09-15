@@ -39,21 +39,21 @@
 
 /obj/item/roguemachine/navigator/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Drop items on the tiles around the navigator. Trading balloons arrive periodically and lift the goods away, leaving mammon in change on this tile.")
+	. += span_info("把物品放在引航机周围的格子上. 贸易气球会定期到来, 把货物吸走, 并在这个格子上留下玛门作为找零.")
 	if(fixed_tax > 0)
-		. += span_info("This navigator charges a fixed handler's fee of [fixed_tax * 100]% before any Crown duty. Smuggler-grade.")
+		. += span_info("这台引航机在收取任何王室关税之前, 先扣除 [fixed_tax * 100]% 的固定经手费. 走私级.")
 	else
-		. += span_info("The Crown's export duty is applied to the payout at the prevailing rate.")
+		. += span_info("王室出口关税会按现行税率从收益中扣除.")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.job in profit_id)
-			. += span_info("Crown duty: <b>[pay_taxes ? "PAYING" : "DODGING"]</b>. Merchant's levy: <b>[pay_merchant_share ? "COLLECTING" : "WAIVED"]</b>.")
+			. += span_info("王室关税: <b>[pay_taxes ? "缴纳中" : "逃税中"]</b>. 商人征缴: <b>[pay_merchant_share ? "征收中" : "已豁免"]</b>.")
 
 // Note: this is AP's navigator/smuggler under the path our maps already place.
 /obj/item/roguemachine/navigator/blackmarket
 	name = "可疑引航机"
 	desc = "自由是有代价的。"
-	motto = "NA?!G@#OR - ████ ██████ █████████ - FREEDOM OF TRANSACTION."
+	motto = "NA?!G@#OR - ████ ██████ █████████ - 交易自由."
 	fixed_tax = 0.5 // 50% taxation and rip off to encourage people to risk it with merchant / others
 	// Smuggler-grade: dodges the Crown's export duty (recorded as evaded), pays no Guild levy,
 	// earns the Company no favor, and takes unmintable goods.
@@ -64,20 +64,20 @@
 	is_bm_export = TRUE
 
 /obj/item/roguemachine/navigator/private
-	name = "private navigator"
-	desc = "A navigator kept under the Merchant's own roof."
-	motto = "NAVIGATOR - Proprietor's berth."
+	name = "私有引航机"
+	desc = "一台安置在商人自家屋檐下的引航机。"
+	motto = "引航机 - 东家专属泊位."
 	pay_taxes = TRUE
 	pay_merchant_share = FALSE
 
 /obj/item/roguemachine/navigator/blackmarket/examine(mob/user)
 	. = ..()
-	. += span_notice("The rates here are disastrous. Having a facilitator from the bathhouse nearby might improve them to 100%.")
-	. += span_notice("The handler asks no questions about provenance. Goods the legitimate market refuses to mint move through here all the same.")
+	. += span_notice("这里的费率糟得没边. 附近若有一位来自浴场的中介人, 或许能把它改善到 100%.")
+	. += span_notice("经手人不过问货物来路. 合法市场拒绝铸币的货物, 在这里一样能流通.")
 	if(fixed_tax <= 0)
-		. += span_notice("A facilitator is present. Current handler's fee: [fixed_tax * 100]%.")
+		. += span_notice("中介人在岗. 当前经手费: [fixed_tax * 100]%.")
 	else
-		. += span_warning("No facilitator present. Current handler's fee: [fixed_tax * 100]%.")
+		. += span_warning("中介人不在岗. 当前经手费: [fixed_tax * 100]%.")
 
 /obj/item/roguemachine/navigator/blackmarket/process()
 	if(!anchored)
@@ -251,7 +251,7 @@
 		return TRUE
 	if(action == "refresh_market")
 		if(world.time < last_market_refresh + 5 SECONDS)
-			to_chat(H, span_warning("The factors haven't tallied fresh numbers yet. Wait a moment."))
+			to_chat(H, span_warning("商行管事们还没结出最新的账目. 稍等片刻."))
 			return TRUE
 		last_market_refresh = world.time
 		update_static_data(H)
@@ -260,18 +260,18 @@
 		open_economy_guidebook(usr, "Merchant", /datum/book_entry/treasury_merchant)
 		return TRUE
 	if(!(H.job in profit_id))
-		to_chat(H, span_warning("Only a Merchant may tamper with the Navigator's toll."))
+		to_chat(H, span_warning("只有商人才能擅动引航机的收费."))
 		return TRUE
 	switch(action)
 		if("toggle_duty")
 			pay_taxes = !pay_taxes
-			to_chat(H, span_notice("The Navigator's toll clasp clicks. Crown duty: <b>[pay_taxes ? "PAYING" : "DODGING"]</b>."))
+			to_chat(H, span_notice("引航机的收费扣咔哒一响. 王室关税: <b>[pay_taxes ? "缴纳中" : "逃税中"]</b>."))
 			playsound(loc, 'sound/misc/gold_misc.ogg', 80, FALSE, -1)
 			update_static_data_for_all_viewers()
 			return TRUE
 		if("toggle_levy")
 			pay_merchant_share = !pay_merchant_share
-			to_chat(H, span_notice("The Navigator's toll clasp clicks. Merchant's levy: <b>[pay_merchant_share ? "COLLECTING" : "WAIVED"]</b>."))
+			to_chat(H, span_notice("引航机的收费扣咔哒一响. 商人征缴: <b>[pay_merchant_share ? "征收中" : "已豁免"]</b>."))
 			playsound(loc, 'sound/misc/gold_misc.ogg', 80, FALSE, -1)
 			update_static_data_for_all_viewers()
 			return TRUE
@@ -362,7 +362,7 @@
 					if(GLOB.bulk_trade_item_types && GLOB.bulk_trade_item_types[I.type])
 						if(!refused_announced)
 							refused_announced = TRUE
-							I.visible_message(span_warning("The balloon refuses [I] - bulk goods belong in the ship hold, not the navigator."))
+							I.visible_message(span_warning("气球拒收 [I] - 大宗货物该进船舱, 而不是引航机."))
 						continue
 					log_admin("[src] (navigator) exported [I] ([I.type]) categorized as Miscellaneous at [AREACOORD(src)] for [base_price] base price.")
 				var/refusal_msg = get_navigator_refusal_message(bucket)
@@ -390,12 +390,12 @@
 							var/jab = navigator_quality_jab(QI.item_quality)
 							if(jab)
 								quality_announced = TRUE
-								visible_message(span_info("[src] says, \"[jab]\""))
+								visible_message(span_info("[src] 说道, \"[jab]\""))
 					qdel(I)
 				else if(base_price > 0)
 					if(!refused_announced)
 						refused_announced = TRUE
-						I.visible_message(span_warning("[I] is refused by the balloon - the market is choked."))
+						I.visible_message(span_warning("[I] 被气球拒收了 - 市场已经吃不下了."))
 			budgie = round(budgie)
 			record_round_statistic(is_bm_export ? STATS_TRADE_VALUE_EXPORTED_BM : STATS_TRADE_VALUE_EXPORTED, budgie)
 			if(budgie > 0)
@@ -404,9 +404,9 @@
 		if(play_sound)
 			playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		if(length(penalty_categories))
-			visible_message(span_warning("The balloon reports a glut - prices on [english_list(penalty_categories)] have been cut short."))
+			visible_message(span_warning("气球报告货物过剩 - [english_list(penalty_categories)] 的价格被压低了."))
 		if(length(boost_categories))
-			visible_message(span_notice("The balloon reports eager buyers - prices on [english_list(boost_categories)] were lifted higher."))
+			visible_message(span_notice("气球报告买家踊跃 - [english_list(boost_categories)] 的价格被抬高了."))
 
 // AP parity export settlement: Crown export duty and the Merchant's levy come out of the gross,
 // with the producer's net paid in change at the balloon pad. Ratwood deviation: payout goes through
@@ -642,20 +642,20 @@
 /proc/market_theme_label(theme)
 	switch(theme)
 		if(MARKET_THEME_WARGEAR)
-			return "Wargear"
+			return "军械"
 		if(MARKET_THEME_ARCYNE)
-			return "Arcyne Goods"
+			return "奥术货物"
 		if(MARKET_THEME_GARMENTS)
-			return "Garments"
+			return "衣物"
 		if(MARKET_THEME_FOODSTUFFS)
-			return "Foodstuffs"
+			return "食品"
 		if(MARKET_THEME_LOOT)
-			return "Luxuries"
+			return "奢侈品"
 		if(MARKET_THEME_RAWS)
-			return "Raw Stock"
+			return "原料"
 		if(MARKET_THEME_ENGINEERING)
-			return "Engineered Wares"
-	return "Sundries"
+			return "工程制品"
+	return "杂货"
 
 /proc/build_market_theme_dispatch(list/theme_jitters)
 	if(!length(theme_jitters))
@@ -670,9 +670,9 @@
 			glut += market_theme_label(theme)
 	var/list/parts = list()
 	if(length(scarce))
-		parts += "Scarce: [english_list(scarce)]"
+		parts += "紧缺: [english_list(scarce)]"
 	if(length(glut))
-		parts += "In Glut: [english_list(glut)]"
+		parts += "过剩: [english_list(glut)]"
 	if(!length(parts))
-		return "Markets steady across the board."
-	return "This week: [jointext(parts, "; ")]."
+		return "各类市场行情平稳."
+	return "本周: [jointext(parts, "; ")]."

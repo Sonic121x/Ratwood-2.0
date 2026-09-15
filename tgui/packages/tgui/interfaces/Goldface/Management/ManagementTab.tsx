@@ -52,11 +52,11 @@ const LevyControl = (props: { current: number; cap: number; act: ActFn }) => {
   const dirty = valid && numeric !== current;
   return (
     <div style={{ ...cardStyle, marginTop: '8px' }}>
-      <div style={sectionHeaderStyle}>Merchant&apos;s Levy</div>
+      <div style={sectionHeaderStyle}>商人征缴</div>
       <div style={{ ...noteStyle, marginBottom: '8px' }}>
-        Your cut on every export sold through the public Navigator and the ship
-        fulfillment crate. The Crown taxes your cut as income at the prevailing
-        export duty rate. Capped at {cap}%.
+        你从经由公共引航机与船只履约箱售出的每笔出口中抽取的分成.
+        王室按现行出口税率将你的分成作为收入征税.
+        上限为 {cap}%.
       </div>
       <div
         style={{
@@ -66,10 +66,10 @@ const LevyControl = (props: { current: number; cap: number; act: ActFn }) => {
           paddingBottom: '6px',
         }}
       >
-        <span style={labelStyle}>Current</span>
+        <span style={labelStyle}>当前</span>
         <span style={{ ...valueStyle, fontWeight: 'bold' }}>{current}%</span>
         <span style={{ flex: 1 }} />
-        <span style={labelStyle}>Set to</span>
+        <span style={labelStyle}>设为</span>
         <input
           type="number"
           min={0}
@@ -97,7 +97,7 @@ const LevyControl = (props: { current: number; cap: number; act: ActFn }) => {
             act('set_levy', { percent: numeric });
           }}
         >
-          Set
+          设定
         </button>
       </div>
     </div>
@@ -112,11 +112,11 @@ const GnomeMarginControl = (props: { current: number; act: ActFn }) => {
   const dirty = valid && numeric !== current;
   return (
     <div style={{ ...cardStyle, marginTop: '8px' }}>
-      <div style={sectionHeaderStyle}>Silverface Margin</div>
+      <div style={sectionHeaderStyle}>银面加价</div>
       <div style={{ ...noteStyle, marginBottom: '8px' }}>
-        The Company Gnomes price every Silverface stall at base cost plus this
-        margin. The margin flows to the Merchant Fund. Higher rates earn more
-        per sale but drive customers off; lower rates win volume.
+        公司侏儒将每个银面摊位的价格定为基础成本加此加价.
+        加价流入商人基金. 费率越高, 每笔销售的收益越多,
+        却会把顾客赶走; 费率越低则能赢得销量.
       </div>
       <div
         style={{
@@ -126,10 +126,10 @@ const GnomeMarginControl = (props: { current: number; act: ActFn }) => {
           paddingBottom: '6px',
         }}
       >
-        <span style={labelStyle}>Current</span>
+        <span style={labelStyle}>当前</span>
         <span style={{ ...valueStyle, fontWeight: 'bold' }}>{current}%</span>
         <span style={{ flex: 1 }} />
-        <span style={labelStyle}>Set to</span>
+        <span style={labelStyle}>设为</span>
         <input
           type="number"
           min={0}
@@ -157,7 +157,7 @@ const GnomeMarginControl = (props: { current: number; act: ActFn }) => {
             act('set_gnome_margin', { percent: numeric });
           }}
         >
-          Set
+          设定
         </button>
       </div>
     </div>
@@ -168,9 +168,9 @@ const outcomeStyles: Record<
   FavorLedgerEntry['outcome'],
   { label: string; color: string }
 > = {
-  honored: { label: 'HONORED', color: SEAL_GREEN },
-  partial: { label: 'PARTIAL', color: SEAL_AMBER },
-  dishonored: { label: 'DISHONORED', color: SEAL_RED },
+  honored: { label: '受敬', color: SEAL_GREEN },
+  partial: { label: '部分', color: SEAL_AMBER },
+  dishonored: { label: '失敬', color: SEAL_RED },
 };
 
 const TriumphLever = (props: { favor: FavorData }) => {
@@ -188,7 +188,7 @@ const TriumphLever = (props: { favor: FavorData }) => {
           marginBottom: '4px',
         }}
       >
-        <span style={labelStyle}>Triumph Bonus</span>
+        <span style={labelStyle}>凯旋加成</span>
         <span style={{ ...valueStyle, fontWeight: 'bold' }}>
           +{triumph_bonus}
           <span style={{ color: INK_SOFT, fontWeight: 'normal' }}>
@@ -217,7 +217,7 @@ const TriumphLever = (props: { favor: FavorData }) => {
           return (
             <div
               key={idx}
-              title={`+${idx + 1} Triumph at ${threshold}m volume`}
+              title={`达到 ${threshold}m 贸易额时 +${idx + 1} 凯旋`}
               style={{
                 position: 'relative',
                 height: '12px',
@@ -248,11 +248,11 @@ const TriumphLever = (props: { favor: FavorData }) => {
           fontStyle: 'normal',
         }}
       >
-        <span>{high_water}m volume earned</span>
+        <span>已赚得 {high_water}m 贸易额</span>
         <span>
           {atCap
-            ? 'Bonus maxed out'
-            : `Next +${triumph_bonus + 1} at ${bracket_next}m`}
+            ? '加成已达上限'
+            : `下一级 +${triumph_bonus + 1} 需 ${bracket_next}m`}
         </span>
       </div>
     </div>
@@ -289,7 +289,7 @@ const LedgerRow = (props: { entry: FavorLedgerEntry }) => {
         {entry.ship_name}{' '}
         <span style={{ color: INK_SOFT }}>- {entry.realm_label}</span>
         {entry.refunded_hail ? (
-          <span style={{ color: SEAL_GREEN }}> (hail refunded)</span>
+          <span style={{ color: SEAL_GREEN }}> (已退还招呼)</span>
         ) : null}
       </span>
       <span
@@ -355,7 +355,7 @@ const SinkButton = (props: {
                 }}
               >
                 {' '}
-                ({current}m on hand)
+                ({current}m 在手)
               </span>
             </>
           )}
@@ -372,10 +372,10 @@ const SinkButton = (props: {
         }}
       >
         {done
-          ? 'Already in effect'
+          ? '已生效'
           : canAfford
-            ? 'Spend favor'
-            : 'Not enough favor'}
+            ? '花费恩惠'
+            : '恩惠不足'}
       </button>
     </div>
   );
@@ -389,12 +389,12 @@ const FavorCard = (props: {
   const { favor, catalogs, act } = props;
   return (
     <div style={{ ...cardStyle, marginTop: '8px' }}>
-      <div style={sectionHeaderStyle}>Standing with the Company</div>
+      <div style={sectionHeaderStyle}>你在公司的声望</div>
       <div style={{ ...noteStyle, marginBottom: '8px' }}>
-        Earned by sending ships off satisfied or passive trades through
-        Silverface, Goldface and Navigator (At 0.5x value). Spent on Company
-        favors. Volume hit also determines the Merchant and Shopshands end of
-        round triumph bonus - spending favor does not subtract from it.
+        通过将船只满意送行, 或经由银面、金面与引航机进行的被动
+        交易(按 0.5 倍价值)赚取. 用于花费以换取公司恩惠.
+        所达贸易额也决定商人及店伙计的回合结束凯旋加成 -
+        花费恩惠不会削减该加成.
       </div>
       <div
         style={{
@@ -404,7 +404,7 @@ const FavorCard = (props: {
           marginBottom: '8px',
         }}
       >
-        <span style={labelStyle}>Favor on hand</span>
+        <span style={labelStyle}>持有恩惠</span>
         <span style={{ ...valueStyle, fontWeight: 'bold', fontSize: '16px' }}>
           {favor.current}m
         </span>
@@ -419,7 +419,7 @@ const FavorCard = (props: {
           fontSize: FONT_BODY,
         }}
       >
-        Favor sources this week
+        本周恩惠来源
       </div>
       <div
         style={{
@@ -431,25 +431,25 @@ const FavorCard = (props: {
           marginBottom: '6px',
         }}
       >
-        <span style={{ color: INK }}>Ship send-offs</span>
+        <span style={{ color: INK }}>船只送行</span>
         <span
           style={{ color: SEAL_GREEN, fontWeight: 'bold', textAlign: 'right' }}
         >
           +{favor.from_sendoffs}m
         </span>
-        <span style={{ color: INK }}>Navigator trade</span>
+        <span style={{ color: INK }}>引航机交易</span>
         <span
           style={{ color: SEAL_GREEN, fontWeight: 'bold', textAlign: 'right' }}
         >
           +{favor.from_navigator}m
         </span>
-        <span style={{ color: INK }}>Goldface imports</span>
+        <span style={{ color: INK }}>金面进口</span>
         <span
           style={{ color: SEAL_GREEN, fontWeight: 'bold', textAlign: 'right' }}
         >
           +{favor.from_goldface}m
         </span>
-        <span style={{ color: INK }}>Silverface imports</span>
+        <span style={{ color: INK }}>银面进口</span>
         <span
           style={{ color: SEAL_GREEN, fontWeight: 'bold', textAlign: 'right' }}
         >
@@ -457,7 +457,7 @@ const FavorCard = (props: {
         </span>
         {favor.penalties > 0 && (
           <>
-            <span style={{ color: INK }}>Dishonor penalties</span>
+            <span style={{ color: INK }}>失敬罚款</span>
             <span
               style={{
                 color: SEAL_RED,
@@ -469,7 +469,7 @@ const FavorCard = (props: {
             </span>
           </>
         )}
-        <span style={{ color: INK_SOFT }}>Lyfetime peak</span>
+        <span style={{ color: INK_SOFT }}>生涯峰值</span>
         <span
           style={{ color: SEAL_AMBER, fontWeight: 'bold', textAlign: 'right' }}
         >
@@ -485,11 +485,11 @@ const FavorCard = (props: {
           fontSize: FONT_BODY,
         }}
       >
-        Recent send-offs
+        近期送行
       </div>
       {favor.ledger.length === 0 ? (
         <div style={{ ...noteStyle, padding: '4px 0' }}>
-          No ships sent off yet this week.
+          本周尚无船只送行.
         </div>
       ) : (
         favor.ledger.map((entry, idx) => <LedgerRow key={idx} entry={entry} />)
@@ -503,36 +503,36 @@ const FavorCard = (props: {
           fontSize: FONT_BODY,
         }}
       >
-        Spend favor
+        花费恩惠
       </div>
       <SinkButton
-        label="Rent the fishermen's pier"
-        flavor="Use your influence to rent an additional pier at the dock for this week, letting more ships dock. It is not like the fishermen are using it, anyway."
+        label="租下渔夫的码头"
+        flavor="动用你的影响力, 本周在港口额外租下一处码头, 让更多船只停靠. 反正渔夫们也用不上它."
         cost={favor.pier_cost}
         current={favor.current}
         done={!!favor.pier_rented}
-        doneLabel="LET THIS WEEK"
+        doneLabel="本周已租"
         action="rent_pier"
         act={act}
       />
       <SinkButton
-        label="Call in the Company Gnomes"
-        flavor="Invoke the contract with the Ferentian Guild of Gnomes Porters, letting them handle Silverface sales and recovering the margins for yourself. For some odd reasons no one have ever spotted these gnomes. Do not let this deter you, you shall profit greatly without lifting a finger for the rest of the week."
+        label="召来公司侏儒"
+        flavor="援引与费伦提亚侏儒挑夫行会的契约, 让他们经手银面的销售, 并将加价收归你自己. 出于某些奇怪的原因, 从未有人见过这些侏儒. 别为此却步, 本周余下的时间里你无需动一根手指便能大赚一笔."
         cost={favor.gnome_cost}
         current={favor.current}
         done={!!favor.gnome_unlocked}
-        doneLabel="ON THE PAYROLL"
+        doneLabel="已在薪酬名册"
         action="unlock_gnomes"
         act={act}
       />
       {!favor.auto_hailer_unlocked ? (
         <SinkButton
-          label="Retain the Harbor Crew"
-          flavor="Put the Captain of Stevedores on a permanent retainer. Once paid up, you may set them at the docks at any time, hailing ships randomly and dismissing those that have lingered too long. Useful when the wharf must run without you - but beware: Ships that fail to meet their trade obligations will still drag your favor down with the Company, even into the red."
+          label="聘留港口装卸队"
+          flavor="将装卸工头聘为长期雇员. 一经付清, 你便可随时派他们驻守港口, 随机招呼船只, 并遣走那些滞留过久的船. 当你无法亲自打点码头时十分有用 - 但请当心: 未能履行贸易义务的船只仍会拖累你在公司的声望, 甚至跌入赤字."
           cost={favor.auto_hailer_cost}
           current={favor.current}
           done={false}
-          doneLabel="ON RETAINER"
+          doneLabel="已长期聘用"
           action="unlock_auto_hailer"
           act={act}
         />
@@ -543,17 +543,17 @@ const FavorCard = (props: {
       {catalogs.map((catalog) => (
         <SinkButton
           key={catalog.id}
-          label={`Open the ${catalog.name}`}
+          label={`开启 ${catalog.name}`}
           flavor={
             catalog.desc +
             (catalog.origin_access
-              ? ` Your ${catalog.home_label} already opens it to you at ${catalog.discount_pct}% off; pay to extend the charter to the whole company.`
+              ? ` 你的 ${catalog.home_label} 已以 ${catalog.discount_pct}% 折扣对你开放; 付费可将特许状扩展至整个公司.`
               : '')
           }
           cost={catalog.favor_cost}
           current={favor.current}
           done={!!catalog.unlocked}
-          doneLabel="CHARTER OPEN"
+          doneLabel="特许已开启"
           action="unlock_catalog"
           params={{ catalog: catalog.id }}
           act={act}
@@ -584,28 +584,28 @@ const AutoHailerToggle = (props: { on: boolean; act: ActFn }) => {
         }}
       >
         <span style={{ ...labelStyle, color: INK, fontSize: FONT_BODY }}>
-          Auto-Hailer (Harbor Crew)
+          自动招呼机 (港口装卸队)
         </span>
         <span style={{ ...valueStyle, fontWeight: 'bold' }}>
           {on ? (
-            <span style={{ color: SEAL_GREEN }}>WORKING</span>
+            <span style={{ color: SEAL_GREEN }}>运作中</span>
           ) : (
-            <span style={{ color: INK_SOFT }}>STANDING DOWN</span>
+            <span style={{ color: INK_SOFT }}>已歇工</span>
           )}
         </span>
       </div>
       <div style={{ ...noteStyle, marginBottom: '6px' }}>
-        While the crew works, ships are hailed up to the daily cap and dismissed
-        once they have honored their tonnage or sat in port a full day.{' '}
-        <b>Dishonored dismissals will sink your favor into the red</b> - leave
-        it on, and you may return to a debt.
+        装卸队工作时, 会招呼船只直至每日上限, 并在船只
+        完成其吨位或停港满一日后将其遣走.{' '}
+        <b>失敬遣走会将你的声望拖入赤字</b> - 让它继续运作,
+        你回来时可能已欠下一笔债.
       </div>
       <button
         type="button"
         style={inkButtonStyle({})}
         onClick={() => act('toggle_auto_hailer')}
       >
-        {on ? 'Stand down' : 'Set the crew to work'}
+        {on ? '歇工' : '让装卸队开工'}
       </button>
     </div>
   );
@@ -617,7 +617,7 @@ export const ManagementTab = (props: { harbor?: HarborData; act: ActFn }) => {
     return (
       <div style={pageStyle}>
         <div style={{ ...cardStyle, textAlign: 'center', color: INK_SOFT }}>
-          The ledgers are not yet drawn up.
+          账簿尚未拟就.
         </div>
       </div>
     );
