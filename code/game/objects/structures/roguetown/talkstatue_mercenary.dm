@@ -70,10 +70,10 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		mercenary_status -= key
 
 	if(!available_mercenaries.len)
-		to_chat(sender, span_warning("There are no mercenaries currently available."))
+		to_chat(sender, span_warning("目前没有可供联络的佣兵。"))
 		return
 
-	var/choice = input(sender, "Which mercenary do I wish to contact?", "Mercenary Contact") as null|anything in available_mercenaries
+	var/choice = input(sender, "我想联络哪位佣兵？", "佣兵联络") as null|anything in available_mercenaries
 	if(!choice)
 		return
 
@@ -84,19 +84,19 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		var/time_left = sender_cooldowns[cooldown_key] + single_cooldown - world.time
 		if(time_left > 0)
 			var/mins_left = max(1, round(time_left / 600))
-			to_chat(sender, span_warning("I need to wait [mins_left] minute[mins_left == 1 ? "" : "s"] before contacting [target_merc.real_name] again."))
+			to_chat(sender, span_warning("我需要等待 [mins_left] 分钟后才能再次联络 [target_merc.real_name]。"))
 			return
 
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I need to stay close to the statue."))
+		to_chat(sender, span_warning("我需要靠近雕像。"))
 		return
 
-	var/message = stripped_input(sender, "What message do I wish to send? (Max [message_char_limit] characters)", "Mercenary Contact", "", message_char_limit)
+	var/message = stripped_input(sender, "我想发送什么讯息？（最多 [message_char_limit] 个字符）", "佣兵联络", "", message_char_limit)
 	if(!message)
 		return
 
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I moved too far from the statue."))
+		to_chat(sender, span_warning("我离雕像太远了。"))
 		return
 
 	sender_cooldowns[cooldown_key] = world.time
@@ -107,8 +107,8 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		pending_direct_responses[response_id] = list("responder" = target_merc, "sender" = sender)
 		addtimer(CALLBACK(src, PROC_REF(expire_direct_response), response_id), response_timeout)
 
-	to_chat(target_merc, span_boldnotice("The mercenary statue whispers in my mind: <i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];direct_response=yae;response_id=[response_id]'>\[YAE\]</a> | <a href='?src=[REF(src)];direct_response=nae;response_id=[response_id]'>\[NAE\]</a>"))
-	to_chat(sender, span_notice("My message has been sent to [target_merc.real_name]."))
+	to_chat(target_merc, span_boldnotice("佣兵雕像在我脑海中低语：<i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];direct_response=yae;response_id=[response_id]'>\[YAE\]</a> | <a href='?src=[REF(src)];direct_response=nae;response_id=[response_id]'>\[NAE\]</a>"))
+	to_chat(sender, span_notice("我的讯息已发送给 [target_merc.real_name]。"))
 	playsound(target_merc.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 
 	sender.log_talk(message, LOG_SAY, tag="mercenary statue (to [key_name(target_merc)])")
@@ -120,11 +120,11 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		var/time_left = sender_cooldowns[broadcast_key] + broadcast_cooldown_time - world.time
 		if(time_left > 0)
 			var/mins_left = max(1, round(time_left / 600))
-			to_chat(sender, span_warning("I need to wait [mins_left] minute[mins_left == 1 ? "" : "s"] before broadcasting again."))
+			to_chat(sender, span_warning("我需要等待 [mins_left] 分钟后才能再次广播。"))
 			return
 
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I need to stay close to the statue."))
+		to_chat(sender, span_warning("我需要靠近雕像。"))
 		return
 
 	var/list/valid_recipients = list()
@@ -140,15 +140,15 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		valid_recipients += merc
 
 	if(valid_recipients.len == 0)
-		to_chat(sender, span_warning("There are no mercenaries available to broadcast to."))
+		to_chat(sender, span_warning("没有可供广播的佣兵。"))
 		return
 
-	var/message = stripped_input(sender, "What message do I wish to broadcast to all mercenaries? (Max [message_char_limit] characters)", "Mercenary Broadcast", "", message_char_limit)
+	var/message = stripped_input(sender, "我想向所有佣兵广播什么讯息？（最多 [message_char_limit] 个字符）", "佣兵广播", "", message_char_limit)
 	if(!message)
 		return
 
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I moved too far from the statue."))
+		to_chat(sender, span_warning("我离雕像太远了。"))
 		return
 
 	sender_cooldowns[broadcast_key] = world.time
@@ -164,11 +164,11 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 			pending_broadcast_responses[response_id] = list("responder" = merc, "sender" = sender)
 			addtimer(CALLBACK(src, PROC_REF(expire_broadcast_response), response_id), response_timeout)
 
-		to_chat(merc, span_boldannounce("The mercenary statue calls out: <i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];broadcast_interest=[response_id]'>\[Signal Interest\]</a>"))
+		to_chat(merc, span_boldannounce("佣兵雕像高声宣告：<i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];broadcast_interest=[response_id]'>\[Signal Interest\]</a>"))
 		playsound(merc.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 
 	var/merc_count = valid_recipients.len
-	to_chat(sender, span_notice("My message has been broadcast to [merc_count] mercenary[merc_count == 1 ? "" : "s"]."))
+	to_chat(sender, span_notice("我的讯息已广播给 [merc_count] 名佣兵。"))
 	src.statue_bark(1)
 
 	sender.log_talk(message, LOG_SAY, tag="mercenary statue broadcast (to [recipient_keys.Join(", ")])")
@@ -181,24 +181,24 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		if(!H)
 			return
 		if(!pending_registrations[H.key])
-			to_chat(usr, span_warning("That registration link has expired."))
+			to_chat(usr, span_warning("该登记链接已失效。"))
 			return
 		if(H.mind?.assigned_role != "Mercenary")
-			to_chat(usr, span_warning("I am no longer a mercenary."))
+			to_chat(usr, span_warning("我已不再是佣兵。"))
 			pending_registrations -= H.key
 			return
 		if(!H.mind)
 			return
 		if(!H.advjob)
-			to_chat(H, span_warning("I need to select my mercenary class before registering with the statue."))
+			to_chat(H, span_warning("在向雕像登记之前，我需要先选择我的佣兵职业。"))
 			return
 
 		var/list/merc_data = list("status" = "Available", "mob" = H, "message" = "")
 		mercenary_status[H.real_name] = merc_data
 		pending_registrations -= H.key
 
-		to_chat(H, span_boldnotice("I have registered with the Mercenary Guild! I am now listed as <b>Available</b>."))
-		to_chat(H, span_notice("I can visit the statue in person to change my status, or <a href='?src=[REF(src)];set_message_remote=[REF(H)]'>recall my mercenary message</a> from afar. (This link expires in 2 minutes)"))
+		to_chat(H, span_boldnotice("我已向佣兵行会登记！我现在的状态是 <b>可雇</b>。"))
+		to_chat(H, span_notice("我可以亲自前往雕像更改状态，或从远处 <a href='?src=[REF(src)];set_message_remote=[REF(H)]'>召回我的佣兵讯息</a>。（此链接 2 分钟后失效）"))
 		playsound(H.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 
 		if(!QDELETED(H))
@@ -211,27 +211,27 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		if(!H)
 			return
 		if(usr != H)
-			to_chat(usr, span_warning("That link is not for me."))
+			to_chat(usr, span_warning("该链接并非为我而设。"))
 			return
 		if(!pending_message_links[H.key])
-			to_chat(usr, span_warning("That message link has expired."))
+			to_chat(usr, span_warning("该讯息链接已失效。"))
 			return
 		if(!mercenary_status[H.real_name])
-			to_chat(usr, span_warning("I am not registered with the mercenary statue network."))
+			to_chat(usr, span_warning("我未在佣兵雕像网络中登记。"))
 			pending_message_links -= H.key
 			return
 		if(H.mind?.assigned_role != "Mercenary")
-			to_chat(usr, span_warning("I am no longer a mercenary."))
+			to_chat(usr, span_warning("我已不再是佣兵。"))
 			pending_message_links -= H.key
 			return
 
 		var/list/merc_data = mercenary_status[H.real_name]
 		var/current_msg = merc_data["message"] || ""
-		var/new_msg = stripped_input(H, "Enter my mercenary message (max 300 characters):", "Mercenary Message", current_msg, 300)
+		var/new_msg = stripped_input(H, "输入我的佣兵讯息（最多 300 个字符）：", "佣兵讯息", current_msg, 300)
 
 		if(new_msg != null)
 			merc_data["message"] = new_msg
-			to_chat(H, span_notice("My message has been recalled by the statue. I must visit it to make further changes."))
+			to_chat(H, span_notice("我的讯息已被雕像召回。若需进一步更改，我必须亲自前往。"))
 			playsound(H.loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
 		pending_message_links -= H.key
@@ -244,7 +244,7 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		var/response_id = href_list["broadcast_interest"]
 
 		if(!pending_broadcast_responses[response_id])
-			to_chat(responder, span_warning("That response link has expired or already been used."))
+			to_chat(responder, span_warning("该回应链接已失效或已被使用。"))
 			return
 
 		var/list/response_data = pending_broadcast_responses[response_id]
@@ -252,24 +252,24 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		var/mob/living/carbon/human/sender = response_data["sender"]
 
 		if(responder != stored_responder)
-			to_chat(responder, span_warning("That response link is not for me."))
+			to_chat(responder, span_warning("该回应链接并非为我而设。"))
 			return
 
 		if(!sender || QDELETED(sender))
-			to_chat(responder, span_warning("The sender is no longer available."))
+			to_chat(responder, span_warning("发送者已不在可用状态。"))
 			pending_broadcast_responses -= response_id
 			return
 
 		if(!responder.mind || responder.mind.assigned_role != "Mercenary")
-			to_chat(responder, span_warning("I am not a mercenary."))
+			to_chat(responder, span_warning("我并非佣兵。"))
 			return
 
 		pending_broadcast_responses -= response_id
 
-		to_chat(sender, span_notice("[responder.real_name] signaled [responder.p_their()] interest in my missive."))
+		to_chat(sender, span_notice("[responder.real_name] 对我的公告表示了兴趣。"))
 		playsound(sender.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 
-		to_chat(responder, span_notice("I signaled my interest to [sender.real_name]."))
+		to_chat(responder, span_notice("我已向 [sender.real_name] 表示了兴趣。"))
 		playsound(responder.loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
 		responder.log_talk("signaled interest", LOG_SAY, tag="mercenary statue broadcast response (to [key_name(sender)])")
@@ -283,7 +283,7 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		var/response_id = href_list["response_id"]
 
 		if(!pending_direct_responses[response_id])
-			to_chat(responder, span_warning("That response link has expired or already been used."))
+			to_chat(responder, span_warning("该回应链接已失效或已被使用。"))
 			return
 
 		var/list/response_data = pending_direct_responses[response_id]
@@ -291,22 +291,22 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		var/mob/living/carbon/human/sender = response_data["sender"]
 
 		if(responder != stored_responder)
-			to_chat(responder, span_warning("That response link is not for me."))
+			to_chat(responder, span_warning("该回应链接并非为我而设。"))
 			return
 
 		if(!sender || QDELETED(sender))
-			to_chat(responder, span_warning("The sender is no longer available."))
+			to_chat(responder, span_warning("发送者已不在可用状态。"))
 			pending_direct_responses -= response_id
 			return
 
 		pending_direct_responses -= response_id
 
 		if(response_type == "yae")
-			to_chat(sender, span_notice("[responder.real_name] responded in affirmation to my message."))
-			to_chat(responder, span_notice("I responded in affirmation to [sender.real_name]."))
+			to_chat(sender, span_notice("[responder.real_name] 对我的讯息作出了肯定的回应。"))
+			to_chat(responder, span_notice("我已对 [sender.real_name] 作出了肯定的回应。"))
 		else
-			to_chat(sender, span_notice("[responder.real_name] responded negatively to my message."))
-			to_chat(responder, span_notice("I responded negatively to [sender.real_name]."))
+			to_chat(sender, span_notice("[responder.real_name] 对我的讯息作出了否定的回应。"))
+			to_chat(responder, span_notice("我已对 [sender.real_name] 作出了否定的回应。"))
 
 		playsound(sender.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 		playsound(responder.loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -335,10 +335,10 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 		var/random = rand(1,4)
 		switch(random)
 			if(1)
-				say("They heard it! Can't guarantee anything else.")
+				say("他们听到了！别的事我可不敢保证。")
 			if(2)
-				say("Maybe you'll get a good deal in negotiations.")
+				say("说不定你谈价时能捞到好价钱。")
 			if(3)
-				say("So, you goin' to kill somebody? Hee-haw! I'm jestin'.")
+				say("怎么，你是要去杀人吗？嘿嘿！开玩笑的。")
 			if(4)
-				say("What ye end up doin' with your gold is your business.")
+				say("你最后拿金子去做什么，那是你自己的事。")
