@@ -65,14 +65,14 @@ const MarginaliaSection = (props: MarginaliaSectionProps) => {
             done={data.progress_current ?? 0}
             total={data.progress_required ?? 1}
             noun={
-              data.fetch_item ? `${data.fetch_item}s` : 'goods of the realm'
+              data.fetch_item ? `${data.fetch_item}s` : '国度之货物'
             }
           />
         ) : (
           <ProgressLine
             done={data.progress_current ?? 0}
             total={data.progress_required ?? 1}
-            noun={data.faction_progress_noun || 'foes'}
+            noun={data.faction_progress_noun || '敌寇'}
           />
         ))}
       {hasBlockadeTimer && (
@@ -89,14 +89,14 @@ const MarginaliaSection = (props: MarginaliaSectionProps) => {
       )}
       {!!data.blockade_armed && !data.blockade_timer_label && (
         <div style={marginaliaLine}>
-          <i>Travel to the blockade, waves descend on arrival.</i>
+          <i>前往封锁线, 抵达之时敌潮即至.</i>
         </div>
       )}
       {!!data.is_towner && !data.complete && (
         <div style={marginaliaLine}>
           <i>
-            Only {data.issued_by || 'the poster'} can open what you recover -
-            carry it back to them.
+            唯有 {data.issued_by || '悬赏人'} 能开启你寻回之物 -
+            将其带回交予他.
           </i>
         </div>
       )}
@@ -269,11 +269,11 @@ export const QuestScroll = () => {
 
   if (data.empty) {
     return (
-      <Window title="Contract Scroll" width={520} height={620} theme="parchment">
+      <Window title="契约卷轴" width={520} height={620} theme="parchment">
         <Window.Content scrollable>
           <div style={parchment}>
             <div style={{ textAlign: 'center', fontStyle: 'italic' }}>
-              This scroll bears no active contract.
+              此卷轴未载有任何生效中的契约.
             </div>
           </div>
         </Window.Content>
@@ -281,11 +281,11 @@ export const QuestScroll = () => {
     );
   }
 
-  const realm = data.realm_name || 'the realm';
+  const realm = data.realm_name || '国度';
   const levyRate = data.levy_rate ?? 0;
   const levyExempt = !!data.levy_exempt;
   const guildCutRate = data.guild_cut_rate ?? 0;
-  const rulerTitle = data.ruler_title || 'Duke';
+  const rulerTitle = data.ruler_title || '公爵';
   const reward = data.reward ?? 0;
   const bearer = data.issued_to || undefined;
   const issuedBy = data.issued_by || undefined;
@@ -317,7 +317,7 @@ export const QuestScroll = () => {
   const hasRecoveryAddendum = isOutlawry && !!data.recovery_shipment;
 
   return (
-    <Window title="Contract Scroll" width={520} height={680} theme="parchment">
+    <Window title="契约卷轴" width={520} height={680} theme="parchment">
       <Window.Content scrollable>
         <div style={parchment}>
           {data.title && <div style={titleHint}>{data.title}</div>}
@@ -351,9 +351,9 @@ export const QuestScroll = () => {
           {data.complete ? (
             <>
               <hr style={divider} />
-              <div style={completionStamp}>THIS WORK IS DONE</div>
+              <div style={completionStamp}>此事已毕</div>
               <div style={{ textAlign: 'center', marginTop: '6px' }}>
-                Return this writ to the Contract Ledger to claim the bounty.
+                将此令状交回契约台账以领取赏金.
               </div>
               <div
                 style={{
@@ -364,14 +364,14 @@ export const QuestScroll = () => {
                   color: 'hsl(30, 35%, 40%)',
                 }}
               >
-                Place it on the marked area or put it on the ledger.
+                将其置于标记之处, 或放上契约台账.
               </div>
             </>
           ) : data.blockade_failed ? (
             <>
               <hr style={divider} />
               <div style={failedStamp}>
-                THE BLOCKADE HELD, THIS WRIT HAS LAPSED
+                封锁得守, 此令状已然失效
               </div>
             </>
           ) : null}
@@ -387,8 +387,8 @@ export const QuestScroll = () => {
                   fontSize: '0.92em',
                 }}
               >
-                By Royal Seal and Ducal Prerogative, the bearer of this writ is
-                held exempt from the Crown&apos;s Levy upon its reward.
+                依王室之印与公爵之特权, 此令状之持有者
+                豁免其赏金所应纳之王室关税.
               </div>
             </>
           )}
@@ -418,7 +418,7 @@ export const QuestScroll = () => {
                 marginTop: '14px',
               }}
             >
-              The matter lies within {data.target_region}.
+              此事位于 {data.target_region} 之内.
             </div>
           )}
         </div>

@@ -82,8 +82,8 @@
 	qdel(src)
 
 /obj/effect/temp_visual/contract_phantom
-	name = "approaching threat"
-	desc = "Something is closing in..."
+	name = "逼近的威胁"
+	desc = "有什么东西正在逼近..."
 	anchored = TRUE
 	randomdir = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

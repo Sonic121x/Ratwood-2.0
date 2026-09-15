@@ -1,8 +1,8 @@
 /datum/quest_faction/mirespider
 	id = QUEST_FACTION_MIRESPIDER
-	name_singular = "mirespider"
-	name_plural = "mirespiders"
-	group_word = "nest"
+	name_singular = "泥沼蛛"
+	name_plural = "泥沼蛛"
+	group_word = "蛛巢"
 	faction_tag = FACTION_SPIDERS
 	category = FACTION_CAT_BEAST
 	// Ratwood deviation: AP's drider (its own type) has no ES beast equivalent and was substituted to
