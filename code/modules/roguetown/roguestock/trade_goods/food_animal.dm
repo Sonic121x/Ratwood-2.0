@@ -78,7 +78,7 @@
 
 /datum/trade_good/animal_preserved/salumoi
 	id = TRADE_GOOD_SALUMOI
-	name = "萨卢莫伊"
+	name = "烟熏香肠"
 	base_price = SELLPRICE_SALUMOI
 	source_region_id = TRADE_REGION_KINGSFIELD
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
