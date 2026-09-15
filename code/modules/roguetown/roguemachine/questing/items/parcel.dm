@@ -129,13 +129,13 @@
 
 	. += span_info("这个包裹的收件地是 [initial(delivery_area.name)]。")
 	. += (user.job in allowed_jobs) ? \
-		span_notice("As [user.job], you're authorized to open this.") : \
-		span_warning("It's sealed with an official guild mark - only authorized personnel should open this!")
+		span_notice("身为[user.job]，你有权开启此物。") : \
+		span_warning("它封有行会的官方印记——唯有获授权者方可开启！")
 
 /obj/item/parcel/towner_caravan
 	var/datum/weakref/unlocked_by_owner_ref
 	var/owner_name = ""
-	var/sealed_noun = "strongbox"
+	var/sealed_noun = "密封箱"
 
 /obj/item/parcel/towner_caravan/Initialize(mapload)
 	. = ..()
@@ -147,13 +147,13 @@
 		return
 	var/mob/owner = unlocked_by_owner_ref?.resolve()
 	if(!owner)
-		to_chat(user, span_warning("The [sealed_noun]'s owner is no longer with us. It cannot be opened."))
+		to_chat(user, span_warning("此[sealed_noun]的主人已不在人世。它无法被开启。"))
 		return FALSE
 	if(owner != user)
-		to_chat(user, span_warning("This [sealed_noun] is magickally sealed to [owner_name]. Only they can open it."))
+		to_chat(user, span_warning("此[sealed_noun]以魔法封存，唯[owner_name]可开启。"))
 		return FALSE
 	if(owner.stat == DEAD)
-		to_chat(user, span_warning("You cannot open it in this state."))
+		to_chat(user, span_warning("你无法在这种状态下开启它。"))
 		return FALSE
 	if(!do_after(user, 2 SECONDS, target = src))
 		return
@@ -162,11 +162,11 @@
 	var/datum/quest/quest = courier_component?.quest_ref?.resolve()
 	if(length(contained_items) == 1)
 		var/obj/item/only = contained_items[1]
-		to_chat(user, span_notice("You unwrap [only] from the [sealed_noun]."))
+		to_chat(user, span_notice("你从[sealed_noun]中取出[only]。"))
 		user.put_in_hands(only)
 		only.update_icon()
 	else
-		to_chat(user, span_notice("You open the [sealed_noun] and tip out the contents."))
+		to_chat(user, span_notice("你打开[sealed_noun]，将里面的东西倒了出来。"))
 		var/turf/drop_loc = get_turf(user)
 		for(var/obj/item/I as anything in contained_items)
 			I.forceMove(drop_loc)
@@ -181,9 +181,9 @@
 	. = ..()
 	var/mob/owner = unlocked_by_owner_ref?.resolve()
 	if(!owner)
-		. += span_warning("The owner is no longer with us. This [sealed_noun] cannot be opened.")
+		. += span_warning("主人已不在人世。此[sealed_noun]无法被开启。")
 		return
 	if(owner == user)
-		. += span_notice("It is magickally sealed to you - you can open it yourself.")
+		. += span_notice("它以魔法封存，唯你可开启。")
 	else
-		. += span_warning("Magickally sealed to [owner_name]. Only they can open it.")
+		. += span_warning("以魔法封存，唯[owner_name]可开启。")

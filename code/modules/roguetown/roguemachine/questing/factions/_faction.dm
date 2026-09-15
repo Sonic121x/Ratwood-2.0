@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(quest_factions)
 	var/can_blockade = FALSE
 	var/category = FACTION_CAT_HUMANOID
 	var/list/crime_weights
-	var/progress_noun = "malefactors"
+	var/progress_noun = "恶徒"
 
 /datum/quest_faction/New()
 	if(!id)
@@ -56,13 +56,13 @@ GLOBAL_LIST_EMPTY(quest_factions)
 	var/template = length(boss_title_templates) ? pick(boss_title_templates) : "%N"
 	var/name = pick_boss_name()
 	if(!name)
-		return "a notorious [name_singular]"
+		return "臭名昭著的[name_singular]"
 	return replacetext(template, "%N", name)
 
 /datum/quest_faction/proc/describe_group_count(n)
 	if(n <= 0)
-		return "no [name_plural]"
-	return "[n] [group_word][n == 1 ? "" : "s"] of [name_plural]"
+		return "没有[name_plural]"
+	return "[n] [group_word] [name_plural]"
 
 /datum/quest_faction/proc/pick_mob_type()
 	if(!length(mob_types))
