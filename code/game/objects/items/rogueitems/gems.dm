@@ -210,6 +210,7 @@
 	icon_state = "blood"
 	sellprice = 188
 	desc = "这颗宝石让你本能地觉得不对劲。握住它时，你会感觉指尖的血色都被抽离了。"
+	smeltresult = /obj/item/ingot/component/glutcrystal
 
 /obj/item/roguegem/blood_diamond/examine(mob/user)
 	. = ..()

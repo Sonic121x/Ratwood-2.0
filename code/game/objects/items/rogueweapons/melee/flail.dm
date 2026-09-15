@@ -97,6 +97,23 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 
+/datum/intent/flail/sweep
+	name = "sweeping strike"
+	icon_state = "insweep"
+	blade_class = BCLASS_BLUNT
+	chargetime = 1.2 SECONDS
+	chargedrain = 1
+	chargedloop = /datum/looping_sound/flailswing
+	attack_verb = list("sweeps", "thrashes through")
+	animname = "strike"
+	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
+	penfactor = BLUNT_DEFAULT_PENFACTOR
+	damfactor = 1.5
+	item_d_type = "blunt"
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
+	cleave = /datum/cleave_pattern/horizontal_sweep
+	desc = "A charged sweep that smashes through targets to the front."
+
 /obj/item/rogueweapon/flail/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -232,7 +249,7 @@
 	force = 10
 	force_wielded = 35
 	possible_item_intents = list(/datum/intent/flail/strike)
-	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/mace/smash/flailrange)
+	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/mace/smash/flailrange, /datum/intent/flail/sweep)
 	name = "民兵长连枷"
 	desc = "正如投石索的弹丸也能击倒巨人，这柄大连枷同样遵循着将“动量”转化为“裂甲之力”的原则。"
 	icon_state = "peasantwarflail"
@@ -303,7 +320,7 @@
 	wdefense = 7
 	minstr = 12
 	possible_item_intents = list(/datum/intent/flail/strike/matthiosflail)//this having the better intents is a smaller buff than just increasing the base force, on par with things like blacksteel greataxe and flamberg being on par with antag options
-	gripped_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/mace/smash/flail/matthiosflail)
+	gripped_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/mace/smash/flail/matthiosflail, /datum/intent/flail/sweep)
 	max_integrity = 500
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/blacksteel
@@ -317,7 +334,7 @@
 	sellprice = 250
 	smeltresult = /obj/item/ingot/gold
 	possible_item_intents = list(/datum/intent/flail/strike/matthiosflail)
-	gripped_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/mace/smash/flail/matthiosflail)
+	gripped_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/mace/smash/flail/matthiosflail, /datum/intent/flail/sweep)
 	associated_skill = /datum/skill/combat/whipsflails
 	slot_flags = ITEM_SLOT_BACK
 	anvilrepair = /datum/skill/craft/weaponsmithing
@@ -341,7 +358,7 @@
 /obj/item/rogueweapon/flail/blacksteel
 	name = "黑钢连枷"
 	icon_state = "bs_flail"
-	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange)
+	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange, /datum/intent/flail/sweep)
 	desc = "一柄优雅的黑钢连枷。其沉重分量使其在击退板甲对手方面无可匹敌，只要使用者 \
 	有足够的耐力挥动其合金链身。"
 	smeltresult = /obj/item/ingot/blacksteel

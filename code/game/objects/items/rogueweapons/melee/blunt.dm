@@ -689,7 +689,7 @@
 	force = 12//Don't one-hand this.
 	force_wielded = 32//-3 compared to grand mace(steel goden). Better intents.
 	possible_item_intents = list(/datum/intent/mace/strike)
-	gripped_intents = list(/datum/intent/maul, /datum/intent/maul/crush, /datum/intent/effect/daze, /datum/intent/effect/hobble)
+	gripped_intents = list(/datum/intent/maul, /datum/intent/maul/crush, /datum/intent/mace/sweep, /datum/intent/effect/hobble)
 	name = "大槌"
 	desc = "谁会需要这么大的家伙？它看起来更像是拿来拆墙，而不是拆人的。"
 	icon_state = "sledge"
@@ -779,11 +779,27 @@
 	desc = "通体覆满尖刺，这正是矮人工匠钟爱的兵器模样。 \
 	这一把的重心调校得相当出色，让臂力较弱的人也能勉强驾驭。"
 	icon_state = "spiky"
-	gripped_intents = list(/datum/intent/maul/spiked, /datum/intent/maul/crush, /datum/intent/effect/daze, /datum/intent/effect/hobble)
+	gripped_intents = list(/datum/intent/maul/spiked, /datum/intent/maul/crush, /datum/intent/mace/sweep, /datum/intent/effect/hobble)
 	wdefense_wbonus = 3//7
 	minstr = 10//+1STR from Grudgebearer Smith. It should be fine.
 	smelt_bar_num = 3//Please don't...
 	max_integrity = 320
+
+/datum/intent/mace/sweep
+	name = "sweeping strike"
+	icon_state = "insweep"
+	blade_class = BCLASS_BLUNT
+	attack_verb = list("sweeps through", "smashes across")
+	animname = "strike"
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	penfactor = BLUNT_DEFAULT_PENFACTOR
+	chargetime = 0
+	damfactor = 1.2
+	clickcd = CLICK_CD_GLACIAL
+	item_d_type = "blunt"
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
+	cleave = /datum/cleave_pattern/frontal_arc
+	desc = "A heavy sweep that smashes through targets to the sides and front."
 
 //Intents for the mauls.
 /datum/intent/effect/hobble

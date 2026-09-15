@@ -302,10 +302,9 @@
 //Anomalous Smeltings
 /obj/item/ingot/weeping
 	name = "恒久锭"
-	desc = "一块历经岁月、毫无修饰的金属板。你终于知道它是什么了，却找不到任何词语来描述它。 </br>'..无人会真正知晓最伟大的真相；永世 的掌控，阿多奈 的存在，以及 普赛顿 的命运..' </br>'..但也许，这样反而更好。病灶虽已消散，可这世上的邪恶依旧真实存在..' </br>'..去设法让残骸获得新的 lyfe；一具或许仍能令 大魔君 落泪的新容器..'"
-	icon_state = "ingotsilv"
+	desc = "一块历经岁月、毫无修饰的金属板。你终于知道它是什么了，却找不到任何词语来描述它。 </br>'..无人会真正知晓最伟大的真相；永世的掌控，阿多奈的存在，以及普赛顿的命运..' </br>'..但也许，这样反而更好。病灶虽已消散，可这世上的邪恶依旧真实存在..' </br>'..去设法让残骸获得新的生命；一具或许仍能令大魔君落泪的新容器..'"
+	icon_state = "ingotenduring"
 	smeltresult = /obj/item/ingot/weeping
-	color = "#CECA9C"
 	sellprice = 222
 
 /obj/item/ingot/weeping/Initialize(mapload)
@@ -314,8 +313,54 @@
 
 /obj/item/ingot/draconic
 	name = "龙铸锭"
-	desc = "一块噼啪作响、充盈着能量的黑曜石板。它玻璃般的表面持续辐出骇人高热，令你的手指灼起水泡。 </br>'..无论圣徒还是罪人，都无法真正承受这等力量..' </br>'..但也许，你是不同的..' </br>'..去设法让残骸获得新的 lyfe；一具或许仍能令 大魔君 落泪的新容器..'"
-	icon_state = "ingotblacksteel"
+	desc = "一块噼啪作响、充盈着能量的黑曜石板。它玻璃般的表面持续辐出骇人高热，令你的手指灼起水泡。 </br>'..无论圣徒还是罪人，都无法真正承受这等力量..' </br>'..但也许，你是不同的..' </br>'..去设法让残骸获得新的生命；一具或许仍能令大魔君落泪的新容器..'"
+	icon_state = "ingotdraconic"
 	smeltresult = /obj/item/ingot/draconic
-	color = "#70b8ff"
 	sellprice = 333
+
+//Components!
+
+/obj/item/ingot/component //Root. Don't use under most circumstances.
+	name = "无质之临"
+	desc = "某种你本不该看见的东西。在再次将它投入熔炉烈焰中化为乌有之前，向某个更高的存在祈祷，以求指引吧。"
+	icon_state = "oreada"
+	smeltresult = /obj/item/ingot/iron
+	sellprice = 1
+
+/obj/item/ingot/component/glutcrystal
+	name = "结晶暴食"
+	desc = "分形的暴力，闪烁着猩红的雾霭，渴求着它最终目的的达成。"
+	icon_state = "component_blood"
+	smeltresult = /obj/item/roguegem/blood_diamond //Ensures that it can be reused for any Glut-specific ritual, should one find this in its crystalline form.
+	sellprice = 33
+
+/obj/item/ingot/component/glutcrystal/examine(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.patron.type == /datum/patron/inhumen/graggar)
+			. += span_danger("你对这种宝石了如指掌。它们诞生于极致的暴力，且唯有最强大的战士参与其中方能形成。</br>用孕育此宝石的那名战士的血肉对它进行塑肉仪式，将能让我将其同族中的另一位召唤到这个世界。</br>若你想确保举行此仪式时万无一失，熔去它的结晶外壳便是理想之选。")
+
+/obj/item/ingot/component/glutcrystal/Initialize(mapload)
+	. = ..()
+	add_filter("shadow_the_hedgehog", 2, list("type" = "outline", "color" = "#8B0000", "alpha" = 188, "size" = 1))
+
+/obj/item/ingot/component/heapofrawiron
+	name = "生铁堆"
+	desc = "一大块由熔铁无规则凝合而成的铁坨。矿石与铁锭状的碎块从其嶙峋表面凸出，渴望被精炼——无论是炼成锭，还是化作更有用途的东西。"
+	icon_state = "component_berserkheap"
+	smeltresult = /obj/item/rogueore/iron
+	smelt_bar_num = 4
+
+/obj/item/ingot/component/berserkswordblade
+	name = "狂战士之剑的剑刃"
+	desc = "一柄巨刃，由生铁坨锻造而成。其独特的尖刺状剑茎比多数巨剑所见更长，唯有相应巨大的剑柄内部才容得下它。"
+	icon_state = "component_berserkblade"
+	smeltresult = /obj/item/ingot/iron
+	smelt_bar_num = 3
+
+/obj/item/ingot/component/berserkswordgrip
+	name = "狂战士之剑的剑柄"
+	desc = "一个巨大的剑柄，由行刑长剑的双手握柄组装而成。其独特的月牙状护手似乎有一道插槽，唯有相应巨大的剑刃剑茎才能嵌入。"
+	icon_state = "component_berserkhandle"
+	smeltresult = /obj/item/ingot/iron

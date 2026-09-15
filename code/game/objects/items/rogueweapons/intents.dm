@@ -103,6 +103,9 @@
 	/// Effectiveness of the blunt chipping
 	var/blunt_chip_strength = null
 
+	/// Cleave pattern for hitting secondary targets on normal attacks. Null = no cleave.
+	var/datum/cleave_pattern/cleave
+
 	var/static/list/bonk_animation_types = list(
 		BCLASS_BLUNT,
 		BCLASS_SMASH,
@@ -127,6 +130,7 @@
 		mastermob.curplaying = null
 	mastermob = null
 	masteritem = null
+	QDEL_NULL(cleave)
 	return ..()
 
 /datum/intent/proc/examine(mob/user)
@@ -164,12 +168,21 @@
 		inspec += "\n<b>释放时消耗:</b> [releasedrain]"
 	if(misscost)
 		inspec += "\n<b>落空时消耗:</b> [misscost]"
-	if(clickcd != CLICK_CD_MELEE)
-		inspec += "\n<b>恢复时间:</b> "
-		if(clickcd < CLICK_CD_MELEE)
-			inspec += "快"
-		if(clickcd > CLICK_CD_MELEE)
-			inspec += "慢"
+	inspec += "\n<b>攻击速度:</b> "
+	if(clickcd <= CLICK_CD_FAST)
+		inspec += "<font color='#4af'>极快</font>"
+	else if(clickcd <= CLICK_CD_QUICK)
+		inspec += "<font color='#8f8'>快</font>"
+	else if(clickcd <= CLICK_CD_MELEE)
+		inspec += "普通"
+	else if(clickcd <= CLICK_CD_CHARGED)
+		inspec += "<font color='#fa4'>迟缓</font>"
+	else if(clickcd <= CLICK_CD_HEAVY)
+		inspec += "<font color='#f44'>极迟缓</font>"
+	else if(clickcd <= CLICK_CD_MASSIVE)
+		inspec += "<font color='#f22'>极其迟缓</font>"
+	else
+		inspec += "<font color='#d11'>龟速</font>"
 	if(blade_class == BCLASS_PEEL)
 		inspec += "\n该意图会在连续命中 [peel_divisor] 次后，剥离目标护甲在非关键部位的覆盖。\n部分护甲的阈值可能更高。"
 	if(!allow_offhand)
@@ -199,7 +212,15 @@
 				chip_strength = "可观"
 			if(BLUNT_CHIP_ABSURD)
 				chip_strength = "显著"
-		inspec += "\n若目标没有衬垫防护，将有一部分[chip_strength]的伤害绕过护甲。"
+		inspec += "\n若目标没有衬垫防护，将有[chip_strength]的伤害绕过护甲。"
+
+	if(cleave)
+		inspec += "\n<b>劈砍:</b> [cleave.desc]"
+		inspec += "\n	最大额外目标数: [cleave.max_targets ? cleave.max_targets : "无限"]"
+		inspec += "\n	优先选择活着的目标。"
+		if(cleave.diagonal_desc)
+			inspec += "\n	[cleave.diagonal_desc]"
+		inspec += "\n<tt>[cleave.get_pattern_display()]</tt>"
 	inspec += "<br>----------------------"
 
 	to_chat(user, "[inspec.Join()]")
@@ -273,6 +294,8 @@
 				update_chargeloop()
 	if(Masteritem)
 		masteritem = Masteritem
+	if(ispath(cleave))
+		cleave = new cleave()
 
 /datum/intent/proc/update_chargeloop() //what the fuck is going on here lol
 	if(mastermob)

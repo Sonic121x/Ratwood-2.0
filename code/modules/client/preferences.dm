@@ -2,6 +2,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 GLOBAL_LIST_EMPTY(chosen_names)
 
+#define MAX_SONG_TITLE_LENGTH 60
+
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -2419,7 +2421,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					log_game("[user] 已设置其歌曲艺术家。")
 
 				if("change_title")
-					var/new_title = tgui_input_text(user, "输入您歌曲的标题：", "歌曲标题", song_title,  encode = FALSE)
+					var/new_title = tgui_input_text(user, "输入你的歌曲标题(字符上限为[MAX_SONG_TITLE_LENGTH]):", "歌曲标题", song_title,  encode = FALSE, max_length = MAX_SONG_TITLE_LENGTH)
 					if(new_title== null)
 						return
 					if(new_title == "")
@@ -3501,3 +3503,5 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 		dat += "[V.custom_text]"
 		dat += "</font>"
 	return dat
+
+#undef MAX_SONG_TITLE_LENGTH

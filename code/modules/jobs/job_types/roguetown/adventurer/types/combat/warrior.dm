@@ -435,7 +435,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/faith_test //Allows the Exorcist to interrogate others for their faith. Trait's agnostically worded, to allow more flexiable usage by Pantheoneers and Ascendants in this role.
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim //Not as scary as it sounds. Mostly. Okay, just a little bit.
 	if(H.mind)
-		var/silver = list("银匕首","银短剑","银骑士剑","银刺剑","银长剑","银阔剑","银钉锤","银战锤","银晨星锤","银大战连枷，最低13力量","银鞭","银战斧","银长柄斧","银长矛","银四分杖")
+		var/silver = list("银匕首","银短剑","银骑士剑","银刺剑","银长剑","银阔剑","银行刑剑","银钉锤","银战锤","银晨星锤","银大战连枷，最低13力量","银鞭","银战斧","银长柄斧","银长矛","银四分杖")
 		var/silver_choice = input(H, "选择你的武器。", "整备兵刃。") as anything in silver //Trim down to five or six choices, later? See what's the most popular, first. Gives people a chance to experiment with all of the new silver weapons.
 		switch(silver_choice)
 			if("银匕首")
@@ -462,6 +462,9 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/silver
 				beltr = /obj/item/rogueweapon/scabbard/sword
+			if("银行刑剑")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/long/exe/silver
 			if("银钉锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/steel/silver

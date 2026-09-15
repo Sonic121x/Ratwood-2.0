@@ -491,11 +491,26 @@
 /datum/intent/axe/chop/battle/greataxe
 	reach = 2
 
+/datum/intent/axe/sweep
+	name = "sweeping cut"
+	icon_state = "insweep"
+	blade_class = BCLASS_CUT
+	attack_verb = list("sweeps through", "cuts across")
+	animname = "cut"
+	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
+	penfactor = BLUNT_DEFAULT_PENFACTOR
+	damfactor = 1.1
+	clickcd = CLICK_CD_MASSIVE
+	chargetime = 0
+	item_d_type = "slash"
+	cleave = /datum/cleave_pattern/frontal_arc
+	desc = "A heavy sweep that cuts through targets to the sides and front."
+
 /obj/item/rogueweapon/greataxe
 	force = 15
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/sweep, SPEAR_BASH)
 	name = "巨斧"
 	desc = "一把铁制巨斧，长柄单刃，专为彻底毁掉别人的一天而生……"
 	icon_state = "igreataxe"
@@ -534,7 +549,7 @@
 	force = 15
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/sweep, SPEAR_BASH)
 	name = "钢巨斧"
 	desc = "一把钢制巨斧，长柄单刃，专为彻底毁掉别人的一天而生……"
 	icon_state = "sgreataxe"
@@ -552,7 +567,7 @@
 	force_wielded = 40//on par with blacksteel flamberg
 	smeltresult = /obj/item/ingot/blacksteel
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/strike, SPEAR_BASH)
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/mace/rangedthrust, /datum/intent/spear/bash/poleaxe)
+	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/mace/rangedthrust, /datum/intent/axe/sweep)
 	max_blade_int = 500
 	wdefense_wbonus = 3 //Increased defense when wielded.
 	resistance_flags = FIRE_PROOF
@@ -562,8 +577,8 @@
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/axe/cut/long/bronze, /datum/intent/axe/chop/long, SPEAR_BASH)
-	name = "bronze greataxe"
-	desc = "A massive staff with a bronze axhead mantled onto the wood. It splits and carves from afar with lethal force; be it lumber or limbs."
+	name = "青铜巨斧"
+	desc = "一柄巨大的长杖，木柄上嵌着青铜斧头。它能从远处以致命之力劈砍切削；无论是林木还是肢体，都不在话下。"
 	icon = 'icons/roguetown/weapons/axes64.dmi'
 	icon_state = "bronzegreataxe"
 	minstr = 11
@@ -669,7 +684,7 @@
 	force = 15
 	force_wielded = 35
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/sweep, SPEAR_BASH)
 	name = "双头钢巨斧"
 	desc = "一把带有凶恶双刃斧头的钢制巨斧。无论是把人还是把树砍成残桩，它都很在行……"
 	icon_state = "doublegreataxe"
