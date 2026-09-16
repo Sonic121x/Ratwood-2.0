@@ -26,13 +26,13 @@ export const PollTaxTab = ({ data, act }: TabProps) => {
   const affordable = Math.floor(data.account_balance / Math.max(1, effectiveRate));
   const maxDays = Math.min(capRemaining, affordable);
 
-  let rateLine = `${tax.rate}m per day`;
+  let rateLine = `${tax.rate}m/天`;
   if (tax.exempt) {
-    rateLine = 'Exempt by decree';
+    rateLine = '依敕令豁免';
   } else if (tax.rate < 0) {
-    rateLine = `Crown subsidises ${-tax.rate}m per day`;
+    rateLine = `王权补贴 ${-tax.rate}m/天`;
   } else if (tax.rate === 0) {
-    rateLine = `None levied (advance at presumed ${taxStatic.fallback_rate}m/day)`;
+    rateLine = `未征收（按推定 ${taxStatic.fallback_rate}m/天 预缴）`;
   }
 
   const advanceBlocked =
@@ -46,36 +46,36 @@ export const PollTaxTab = ({ data, act }: TabProps) => {
 
   return (
     <div style={cardStyle}>
-      <div style={sectionHeaderStyle}>Poll Tax</div>
+      <div style={sectionHeaderStyle}>人头税</div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Class</div>
+        <div style={fieldLabelStyle}>阶层</div>
         <div style={fieldValueStyle}>
-          {taxUser.category_label || 'No taxable class'}
+          {taxUser.category_label || '无应税阶层'}
         </div>
       </div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Rate</div>
+        <div style={fieldLabelStyle}>税率</div>
         <div style={fieldValueStyle}>{rateLine}</div>
       </div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Held in advance</div>
+        <div style={fieldLabelStyle}>已预缴天数</div>
         <div style={fieldValueStyle}>
-          {tax.advance_days_held} day
-          {tax.advance_days_held === 1 ? '' : 's'} (cap {taxStatic.max_advance_days})
+          {tax.advance_days_held}
+          {' '}天（上限 {taxStatic.max_advance_days}）
         </div>
       </div>
 
       {!!tax.exempt && (
         <div style={{ color: INK_SOFT, marginTop: 8 }}>
-          You owe nothing. There is nothing to advance.
+          你无需缴纳任何款项。没有可预缴的部分。
         </div>
       )}
 
       {!advanceBlocked && (
         <>
-          <div style={sectionHeaderStyle}>Advance</div>
+          <div style={sectionHeaderStyle}>预缴</div>
           <div style={fieldRowStyle}>
-            <div style={fieldLabelStyle}>Days</div>
+            <div style={fieldLabelStyle}>天数</div>
             <div style={fieldValueStyle}>
               <input
                 type="number"
@@ -86,8 +86,8 @@ export const PollTaxTab = ({ data, act }: TabProps) => {
                 style={{ ...inkInputStyle, width: 90 }}
               />
               <span style={{ marginLeft: 6, color: INK_FAINT }}>
-                (max {maxDays}; {numericDays * effectiveRate}m
-                {presumed ? ' presumed' : ''})
+                （最多 {maxDays} 天；{numericDays * effectiveRate}m
+                {presumed ? '（推定）' : ''}）
               </span>
             </div>
           </div>
@@ -101,7 +101,7 @@ export const PollTaxTab = ({ data, act }: TabProps) => {
                 setDays('');
               }}
             >
-              Pay Forward
+              缴纳
             </button>
           </div>
         </>
