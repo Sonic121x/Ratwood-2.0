@@ -28,129 +28,129 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_PETTY_TEMPLE_WINE
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the drinking of wine kept for the temple-cup",
-		"the draining of altar vintage, sealed for the rites",
+		"饮用为圣殿祭杯所藏之酒",
+		"饮尽为祭仪封存的祭坛陈酿",
 	)
 
 /datum/quest_crime/petty_alms_theft
 	id = CRIME_PETTY_ALMS_THEFT
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the theft of food set aside for pilgrims and the poor",
-		"the eating of bread laid out for the alms bowl",
+		"窃取为朝圣者与贫者备下的食物",
+		"吃掉为施舍钵摆出的面包",
 	)
 
 /datum/quest_crime/petty_relieving
 	id = CRIME_PETTY_RELIEVING
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the fouling of a wayside shrine in plain sight",
-		"the fouling of a roadside cairn dedicated to the Tens",
-		"the fouling, and relief of one's bowels, upon a sign commissioned by the very Duke."
+		"当众污秽路旁神龛",
+		"污秽献给十神的路旁石冢",
+		"在公爵亲自下令竖立的告示牌上便溺污秽。"
 	)
 
 /datum/quest_crime/petty_chicken
 	id = CRIME_PETTY_CHICKEN
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the carrying-off of a cottar's hen",
-		"the seizing of poultry from a holder's coop",
+		"偷走佃农的母鸡",
+		"从农户的鸡舍中夺取家禽",
 	)
 
 /datum/quest_crime/petty_orchard
 	id = CRIME_PETTY_ORCHARD
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the stripping of an orchard not their own",
-		"the picking of fruit from another man's tree, by daylight and with witness",
+		"将他人果园采摘一空",
+		"光天化日、有人见证之下摘取他人树上的果子",
 	)
 
 /datum/quest_crime/petty_offering_eating
 	id = CRIME_PETTY_OFFERING_EATING
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the eating of votive cake left at the shrine",
-		"the consumption of holy offerings, while drunk",
+		"吃掉留在神龛前的还愿糕饼",
+		"醉酒中吞食神圣的供品",
 	)
 
 /datum/quest_crime/petty_priest_mocking
 	id = CRIME_PETTY_PRIEST_MOCKING
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the open mocking of a priest in the market square",
-		"the singing of unseemly verses about a Priest of the Tens",
+		"在集市广场公然嘲弄祭司",
+		"歌唱有关十神祭司的不堪之词",
 	)
 
 /datum/quest_crime/petty_drinking_temple
 	id = CRIME_PETTY_DRINKING_TEMPLE
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the staggering, drunken, into the temple at midnight",
-		"the loud quarrel raised within the temple, for sport",
+		"午夜醉步踉跄闯入圣殿",
+		"在圣殿内为取乐而大声争吵",
 	)
 
 /datum/quest_crime/petty_brawl
 	id = CRIME_PETTY_BRAWL
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the brawling in tavern, in defiance of the Duke's peace",
-		"the smiting of a lawful man over a spilled cup",
+		"在酒馆中斗殴，违逆公爵的治安之令",
+		"因一杯泼洒的酒而痛打守法之人",
 	)
 
 /datum/quest_crime/petty_dueling
 	id = CRIME_PETTY_DUELING
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the drawing of steel over a wager unpaid",
-		"the offering of a duel for trifling cause, against the Duke's peace",
+		"因赌债未偿而拔刀相向",
+		"为琐事挑起决斗，违背公爵的治安之令",
 	)
 
 /datum/quest_crime/petty_dog_kicking
 	id = CRIME_PETTY_DOG_KICKING
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the kicking of a herald's dog",
-		"the maltreatment of beasts in the Duke's keeping",
+		"踢踹传令官的狗",
+		"虐待公爵辖下的牲畜",
 	)
 
 /datum/quest_crime/petty_signpost
 	id = CRIME_PETTY_SIGNPOST
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the casting down of a Duke's signpost upon the road",
-		"the defacing of milestones along the Duke's Road, with rude words",
+		"将公爵的路标推倒在路上",
+		"在公爵大道沿线的里程碑上题写粗鄙之言",
 	)
 
 /datum/quest_crime/petty_proposal_scorn
 	id = CRIME_PETTY_PROPOSAL_SCORN
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the spurning, with undue insult, of one who proposed in good faith, a violation of Eora's love",
-		"the public mockery of a suitor who came in earnest, against Eora's binding",
+		"以过分侮辱回绝诚心求婚之人，违逆伊欧拉之爱",
+		"公然嘲弄认真求爱之人，违背伊欧拉的约束",
 	)
 
 /datum/quest_crime/petty_barren_mock
 	id = CRIME_PETTY_BARREN_MOCK
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the mocking of a barren matron in the marketplace, against Eora's blessing",
-		"the public taunting of one who has lost a child, scorn unto Eora's gift",
+		"在集市上嘲弄不能生育的妇人，违逆伊欧拉的赐福",
+		"公然讥讽丧子之人，轻蔑伊欧拉的恩赐",
 	)
 
 /datum/quest_crime/petty_guest_wine
 	id = CRIME_PETTY_GUEST_WINE
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the spitting in wine ere it was poured for a guest, against Eora's hospitality",
-		"the souring of bread set out for a guest, an insult unto Eora's table",
+		"在斟给客人的酒中吐唾，违背伊欧拉的待客之道",
+		"将为客人备下的面包弄酸，是对伊欧拉餐桌的侮辱",
 	)
 
 /datum/quest_crime/petty_tombstone_insult
 	id = CRIME_PETTY_TOMBSTONE_INSULT
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
-		"the carving of unkind verse upon a tombstone",
-		"the daubing of mock and rhyme upon a tombstone, that the dead lie ill at peace",
+		"在墓碑上刻下刻薄诗句",
+		"在墓碑上涂抹嘲弄的韵句，使亡者不得安息",
 	)
 
 
@@ -158,158 +158,158 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_BRIGANDAGE
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"brigandage upon the Duke's Road",
-		"the laying of ambush upon the open road, with intent of plunder",
+		"在公爵大道上结伙劫掠",
+		"在通衢大道上设伏，意图劫夺",
 	)
 
 /datum/quest_crime/road_robbery
 	id = CRIME_ROAD_ROBBERY
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the robbery of merchants under the peace of Summit",
-		"the despoiling of caravans bound lawfully for market",
+		"劫掠受山巅治安庇护的商人",
+		"洗劫合法前往集市的商队",
 	)
 
 /datum/quest_crime/pilgrim_robbery
 	id = CRIME_PILGRIM_ROBBERY
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the robbery of pilgrims bearing offerings to the shrines",
-		"the seizing of alms pouches from those upon the holy journey",
+		"劫掠携带供品前往神龛的朝圣者",
+		"夺取圣途之上行人的施舍钱袋",
 	)
 
 /datum/quest_crime/murder_stealth
 	id = CRIME_MURDER_STEALTH
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"murder by stealth and ambush",
-		"the slaying of free folk by hidden hand",
-		"slaughter wrought in the dark, that no man might cry hue",
-		"the slaying of free folk by hidden hand, a slaughter that Ravox's law abhors",
+		"以潜行与伏击杀人",
+		"暗中下手杀害自由民",
+		"在暗处行凶，使无人得以呼喊追缉",
+		"暗中下手杀害自由民，此等屠戮为拉沃克斯之法所憎恶",
 	)
 
 /datum/quest_crime/murder_watch
 	id = CRIME_MURDER_WATCH
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the murder of a sworn man of the Retinue",
-		"the slaying of an officer set in the Duke's keeping",
+		"杀害卫队中宣誓效忠之人",
+		"杀害受公爵辖制的军官",
 	)
 
 /datum/quest_crime/herald_slaying
 	id = CRIME_HERALD_SLAYING
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the slaying of a herald bearing a sealed writ",
-		"the breaking of safe conduct, and bloodshed upon a messenger of the Duke",
-		"the breaking of safe conduct sworn under Ravox's hilt, and bloodshed upon a messenger of the Duke",
+		"杀害身负密封令状的传令官",
+		"破坏通行保障，对公爵的信使行凶流血",
+		"破坏在拉沃克斯剑下宣誓的通行保障，对公爵的信使行凶流血",
 	)
 
 /datum/quest_crime/arson_night
 	id = CRIME_ARSON_NIGHT
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"arson of a steading by night",
-		"the kindling of fire upon a sleeping household's roof",
-		"the kindling of fire upon a sleeping household, that the day peace of Astrata be torn into Noc's hours",
+		"夜间纵火焚烧农庄",
+		"在沉睡人家的屋顶上点火",
+		"纵火焚烧沉睡的人家，将阿斯特拉塔的白昼安宁撕裂入诺克的时辰",
 	)
 
 /datum/quest_crime/granary_burning
 	id = CRIME_GRANARY_BURNING
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the burning of a granary in time of want",
-		"setting torch to common stores, that hunger fall upon the folk",
-		"the burning of a granary in time of want, that Astrata's grain burns into ash before hungry mouths",
+		"于匮乏之时焚烧粮仓",
+		"纵火焚烧公共储粮，使饥饿降临于民众",
+		"于匮乏之时焚烧粮仓，使阿斯特拉塔的谷粮在饥民眼前化为灰烬",
 	)
 
 /datum/quest_crime/burglary
 	id = CRIME_BURGLARY
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"burglary of a household at night",
-		"breaking of doors by darkness, and the plunder of hearth and hall",
+		"夜间入室行窃",
+		"乘黑破门，洗劫炉边与厅堂",
 	)
 
 /datum/quest_crime/cattle_lifting
 	id = CRIME_CATTLE_LIFTING
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"cattle lifting, and the driving off of beasts from common pasture",
-		"the reiving of kine from honest holders",
-		"the reiving of kine from honest holders, a robbery of Dendor's bounty unto a thieving keeping",
+		"盗取牲畜，并将牲畜自公共牧场赶走",
+		"自诚实人家劫掠牛只",
+		"自诚实人家劫掠牛只，将登多尔的恩赐窃为贼赃",
 	)
 
 /datum/quest_crime/horse_theft
 	id = CRIME_HORSE_THEFT
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the theft of horses from a stable",
-		"the running-off of mounts kept in lawful keeping",
+		"从马厩中盗马",
+		"赶走由合法主人饲养的坐骑",
 	)
 
 /datum/quest_crime/coin_clipping
 	id = CRIME_COIN_CLIPPING
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the coining of false mammon and the clipping of true coin",
-		"forgery of the Duke's mint, and the passing of light coin in market",
+		"铸造假玛门币并剪削真币",
+		"伪造公爵的铸币，并在集市上使用不足重的钱币",
 	)
 
 /datum/quest_crime/seal_forgery
 	id = CRIME_SEAL_FORGERY
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the forging of seals and the counterfeit of writs",
-		"setting false sigil to parchment, that lies wear the colour of law",
+		"伪造印章与文书契约",
+		"于羊皮纸上加盖伪印，使谎言披上法律的外衣",
 	)
 
 /datum/quest_crime/prison_breaking
 	id = CRIME_PRISON_BREAKING
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"breaking of prison, and the freeing of those held for trial",
-		"the loosing of felons from the Duke's keep",
+		"劫狱，放走候审之人",
+		"从公爵的牢狱中放走罪犯",
 	)
 
 /datum/quest_crime/harbouring_outlaws
 	id = CRIME_HARBOURING_OUTLAWS
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the harbouring of declared outlaws, knowing them so",
-		"giving roof and bread to wolf's-head folk",
+		"明知其为通缉之徒仍予窝藏",
+		"为狼首之徒提供屋檐与面包",
 	)
 
 /datum/quest_crime/receiving_stolen
 	id = CRIME_RECEIVING_STOLEN
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"receiving of stolen goods, knowing them stolen",
-		"the trafficking of plunder taken from honest folk",
+		"明知为赃物而收受",
+		"买卖自守法之人处掠来的赃物",
 	)
 
 /datum/quest_crime/poaching_land
 	id = CRIME_POACHING_LAND
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the slaying of beasts in excess of need, leaving carcasses to rot, a crime against Dendor's bounty",
-		"the hunting of wood and field beyond reasonable want, that good meat was left for crows",
+		"猎杀野兽超过所需，任其尸骸腐烂，侵害登多尔的恩赐",
+		"在林野中过度狩猎，将好肉留给乌鸦",
 	)
 
 /datum/quest_crime/poaching_fish
 	id = CRIME_POACHING_FISH
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the netting of fish in excess of need, leaving the catch to spoil upon the strand, a crime against Abyssor's bounty",
-		"the casting of nets beyond what mouths could fill, that Abyssor's tide was robbed for waste",
+		"捕鱼超过所需，听任渔获在岸边腐坏，是违背阿比索尔恩赐之罪",
+		"撒网之量远超口腹所需，为虚耗而掠夺阿比索尔的潮水",
 	)
 
 /datum/quest_crime/false_relics
 	id = CRIME_FALSE_RELICS
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the selling of false relics, peddling Astrata's name for mammon",
-		"the hawking of forged bones and chains, that the holy were named upon trinkets",
+		"贩卖伪圣物，以阿斯特拉塔之名换取玛门",
+		"兜售伪造的骨骸与锁链，将圣者之名冠于琐碎饰物",
 	)
 
 
@@ -317,199 +317,199 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_TREASON_LORD
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"treason against the lord to whom they had sworn faith",
-		"the betrayal of those whose bread they had eaten",
-		"treason against the lord to whom they had sworn faith before Ravox's altar",
+		"背叛曾宣誓效忠的领主",
+		"辜负曾给予衣食之人的恩义",
+		"在拉沃克斯的祭坛前宣誓效忠，却背叛其领主",
 	)
 
 /datum/quest_crime/oath_breaking
 	id = CRIME_OATH_BREAKING
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"the breaking of the oath sworn before Ravox upon hilt and altar",
-		"forswearing of vow taken in the hearing of Ravox",
+		"违背在拉沃克斯面前、以剑柄与祭坛所立之誓",
+		"背弃在拉沃克斯听闻之下所立之誓",
 	)
 
 /datum/quest_crime/desertion
 	id = CRIME_DESERTION
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"desertion from the Duke's levy in time of war",
-		"the casting down of arms while the foe yet stood",
-		"desertion from the Duke's levy, casting down arms in the hour Ravox would have them stand",
+		"战时自公爵的征召军中逃亡",
+		"敌人尚在阵前便弃械而逃",
+		"自公爵的征召军中逃亡，在拉沃克斯要其坚守之时弃械",
 	)
 
 /datum/quest_crime/foreign_pay
 	id = CRIME_FOREIGN_PAY
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"the taking of pay from a foreign captain while bound to Summit",
-		"selling of their arm to strange banners, their oath yet warm",
+		"受山巅约束却领外邦船长之酬",
+		"誓言犹温便将武力卖予陌生旗号",
 	)
 
 /datum/quest_crime/sedition
 	id = CRIME_SEDITION
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"the stirring of common folk to riot and the breaking of peace",
-		"sowing of discord in market and tavern, against the Duke's keeping",
+		"煽动平民暴乱，破坏治安",
+		"在集市与酒馆中播撒纷争，违逆公爵的治理",
 	)
 
 /datum/quest_crime/compass_death
 	id = CRIME_COMPASS_DEATH
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"compassing the death of a sworn officer of the Duke",
-		"the imagining and counsel of murder against the Duke's own men",
-		"compassing the death of a sworn officer of the Duke, an evil Ravox knows by its scent",
+		"图谋害死公爵麾下宣誓的军官",
+		"谋划并教唆谋杀公爵的部属",
+		"图谋害死公爵麾下宣誓的军官，此等邪恶为拉沃克斯闻息而知",
 	)
 
 /datum/quest_crime/adhering_enemies
 	id = CRIME_ADHERING_ENEMIES
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"adhering to the Duke's enemies, and giving them aid and counsel",
-		"the bearing of word and bread to those who war upon Summit",
+		"依附公爵的敌人，为其提供援助与谋划",
+		"为与山巅交战之人传递消息并供给食粮",
 	)
 
 /datum/quest_crime/oath_betrayal
 	id = CRIME_OATH_BETRAYAL
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"the betrayal of an oathed companion in the hour of need, that Ravox's sworn faith was made coin",
-		"the abandonment of one whose hand had been clasped in oath, against Ravox's measure",
+		"在危难之时背弃立誓的同伴，将拉沃克斯的誓约信义换作钱币",
+		"抛下曾与之握手立誓之人，违背拉沃克斯的准则",
 	)
 
 /datum/quest_crime/marriage_vow_broken
 	id = CRIME_MARRIAGE_VOW_BROKEN
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"the breaking of marriage vow sworn before Eora, that the bond fell into Necra's hands ere its time",
-		"the forsaking of a wedded spouse against the binding made under Eora's eye",
+		"违背在伊欧拉面前所立的婚誓，使此缘在其时限之前落入内克拉之手",
+		"在伊欧拉注视下所立的约束之下抛弃配偶",
 	)
 
 /datum/quest_crime/sacrilege_temple
 	id = CRIME_SACRILEGE_TEMPLE
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"sacrilege wrought upon a temple of the Tens",
-		"the laying of unclean hand upon altar and consecrated stone",
+		"对十神神殿犯下亵渎之行",
+		"以不洁之手触碰祭坛与祝圣之石",
 	)
 
 /datum/quest_crime/priest_slaying
 	id = CRIME_PRIEST_SLAYING
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the slaying of a priest before their own altar",
-		"shedding of holy blood within the precinct of the Tens",
-		"the slaying of a priest before their own altar, the blood of Astrata's servant cried out from the stones",
+		"在祭司自己的祭坛前将其杀害",
+		"在十神的圣域内洒下圣职者之血",
+		"在祭司自己的祭坛前将其杀害，阿斯特拉塔仆人的血自石中呐喊",
 	)
 
 /datum/quest_crime/shrine_robbery
 	id = CRIME_SHRINE_ROBBERY
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the robbery of a shrine and the bearing-away of holy gear",
-		"the plundering of votive plate, and the despoiling of the Tens' own house",
+		"劫掠神龛并带走圣器",
+		"掠夺还愿的器皿，洗劫十神自己的居所",
 	)
 
 /datum/quest_crime/defiling_ground
 	id = CRIME_DEFILING_GROUND
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the defiling of consecrated ground",
-		"the working of unclean act upon earth blessed unto the Tens",
-		"the defiling of consecrated ground, an unclean act upon earth Dendor blessed",
+		"玷污祝圣之地",
+		"在献给十神的福地上行不洁之事",
+		"玷污祝圣之地，在登多尔赐福的土上行使不洁",
 	)
 
 /datum/quest_crime/sanctuary_breaking
 	id = CRIME_SANCTUARY_BREAKING
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the breaking of sanctuary, and the dragging-forth of those who had sought it",
-		"the violation of holy refuge, that no soul may flee unto the Tens for keeping",
+		"破坏圣所庇护，将寻求庇护之人拖出",
+		"侵犯神圣庇护之所，使灵魂无从逃向十神以求保全",
 	)
 
 /datum/quest_crime/cleric_robbery
 	id = CRIME_CLERIC_ROBBERY
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the robbery of a cleric upon the road, they in vestment",
-		"setting upon a priest as they travelled the Duke's Road in holy raiment",
+		"在途中劫掠身着祭袍的教士",
+		"袭击身着圣衣行走于公爵大道的祭司",
 	)
 
 /datum/quest_crime/tomb_desecration
 	id = CRIME_TOMB_DESECRATION
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the desecration of a tomb of the honoured dead",
-		"the breaking of barrow and crypt, that the dead lie ill at rest",
-		"the desecration of a tomb of the honoured dead, defiance against Necra's veil",
+		"亵渎受人敬奉的亡者之墓",
+		"掘开坟冢与墓室，使亡者不得安息",
+		"亵渎受人敬奉的亡者之墓，公然违抗内克拉的帷幕",
 	)
 
 /datum/quest_crime/relic_theft
 	id = CRIME_RELIC_THEFT
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the theft of relics from their reliquary",
-		"the bearing-away of holy bones, that the priests cry shame",
+		"自圣物匣中窃取圣物",
+		"将圣者骨骸盗走，令祭司们呼号耻辱",
 	)
 
 /datum/quest_crime/simony
 	id = CRIME_SIMONY
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the simony of holy office, that a priest's place was bought with coin",
-		"the trafficking of blessing and rite for mammon",
+		"买卖圣职，以钱币买取祭司之位",
+		"以祝福与圣礼换取玛门",
 	)
 
 /datum/quest_crime/altar_casting_down
 	id = CRIME_ALTAR_CASTING_DOWN
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the casting-down of an altar of the Tens",
-		"the breaking of holy stone, that the Tens be dishonoured before their own",
+		"推倒十神的祭坛",
+		"砸碎圣石，在十神的信众眼前使其受辱",
 	)
 
 /datum/quest_crime/pilgrim_slaughter
 	id = CRIME_PILGRIM_SLAUGHTER
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the slaughter of pilgrims in their column",
-		"a wholesale shedding of blood among the holy-bound",
+		"屠戮结队而行的朝圣者",
+		"在前往圣地的行列中大肆流血",
 	)
 
 /datum/quest_crime/temple_peace_breaking
 	id = CRIME_TEMPLE_PEACE_BREAKING
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the breaking of the temple-peace, that bared steel was borne within the precinct",
-		"the drawing of blade upon holy ground, where no edge ought to gleam",
+		"破坏圣殿的安宁，在圣域之内携带出鞘的刀剑",
+		"在本不应有锋刃闪光的圣地上拔刀",
 	)
 
 /datum/quest_crime/well_poisoning
 	id = CRIME_WELL_POISONING
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the poisoning of a holy well",
-		"the fouling of waters held sacred unto the Tens",
-		"the poisoning of a holy well, fouling at once Pestra's healing arts and Abyssor's gift of water",
+		"毒害圣井",
+		"污秽十神视为神圣的水源",
+		"毒害圣井，同时污秽佩斯特拉的医术与阿比索尔的赐水",
 	)
 
 /datum/quest_crime/eoran_tree_felled
 	id = CRIME_EORAN_TREE_FELLED
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the felling of an Eoran shrine tree, that lovers' troths bound unto its branches were undone",
-		"the cutting of a sacred tree of Eora, that the bonds tied upon it were severed at root",
+		"伐倒伊欧拉的神树，使系于其枝上的恋人誓言就此解除",
+		"砍伐伊欧拉的圣树，使系于其上的羁绊自根断绝",
 	)
 
 /datum/quest_crime/necran_procession_broken
 	id = CRIME_NECRAN_PROCESSION_BROKEN
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the disturbance of a Necran funeral procession, that the dead's last journey was broken",
-		"the violent halting of mourners bearing the dead unto Necra's keeping",
+		"扰乱内克拉的葬礼行列，使亡者最后一程中断",
+		"暴力阻拦将亡者送往内克拉庇护的送葬者",
 	)
 
 
@@ -517,105 +517,105 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_APOSTASY
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"apostasy from the Tens, and the open mocking of their rites",
-		"the casting-off of holy bond, and laughter at the altar",
+		"背弃十神，公然嘲弄其圣礼",
+		"抛弃神圣的誓约，在祭坛前嬉笑",
 	)
 
 /datum/quest_crime/forbidden_doctrine
 	id = CRIME_FORBIDDEN_DOCTRINE
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the teaching of doctrines forbidden by the Holy See",
-		"preaching of foul wisdom in barn and hedge, against the Tens",
+		"传授教廷所禁的教义",
+		"在谷仓与篱下宣讲邪恶的邪说，与十神相悖",
 	)
 
 /datum/quest_crime/forbidden_books
 	id = CRIME_FORBIDDEN_BOOKS
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the keeping of forbidden books, that the priests had ordered burnt",
-		"the hoarding of black tomes, sealed and condemned",
+		"私藏祭司下令焚毁的禁书",
+		"囤积被查封定罪的魔典",
 	)
 
 /datum/quest_crime/ascendant_consorting
 	id = CRIME_ASCENDANT_CONSORTING
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the consorting with the false gods Ascendant, raised against the Tens",
-		"the offering of prayer and incense unto Ascendant powers, in defiance of the See",
+		"与伪神升格者往来勾结，与之共抗十神",
+		"向升格者之力献上祈祷与香火，违抗教廷",
 	)
 
 /datum/quest_crime/demonic_pact
 	id = CRIME_DEMONIC_PACT
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the binding of pact with demoni beings, that the soul be pledged for power",
-		"the cutting of compact with the things below, by blood and by ink",
+		"与魔物立下契约，以灵魂为质换取力量",
+		"以血与墨与地底之物订立盟约",
 	)
 
 /datum/quest_crime/maleficium
 	id = CRIME_MALEFICIUM
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the working of curses upon the unborn, the sick, and the cattle in their byres",
-		"the laying of black art upon honest folk, that fields fail and children sicken",
+		"对未生之子、病人与栏中牛畜施加诅咒",
+		"对守法之人施以黑术，使田地荒芜、孩童病倒",
 	)
 
 /datum/quest_crime/summoning
 	id = CRIME_SUMMONING
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the summoning of that which the Tens had cast down",
-		"the calling-up of shapes from beneath, by name and by sigil",
+		"召唤十神已贬落之物",
+		"以名号与符印自地下唤起形影",
 	)
 
 /datum/quest_crime/necromancy
 	id = CRIME_NECROMANCY
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"necromancy, and the rousing of the unquiet dead",
-		"the binding of corpse and bone to walk again, against the Necra' own peace",
+		"行死灵术，唤起不安的亡者",
+		"缚役尸骨使其再度行走，违逆内克拉本人的安宁",
 	)
 
 /datum/quest_crime/blasphemy
 	id = CRIME_BLASPHEMY
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"blasphemy openly spoken in market and at the temple-door",
-		"the speaking of foul names against the Tens, before witness",
+		"在集市与圣殿门前公然说出亵渎之言",
+		"在人证面前说出针对十神的邪恶名号",
 	)
 
 /datum/quest_crime/host_desecration
 	id = CRIME_HOST_DESECRATION
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the breaking of consecrated bread, and casting of it to dogs",
-		"the despoiling of holy offering, that the Tens be made mock",
-		"the breaking of consecrated bread, casting of Eora's gift to dogs",
+		"掰碎祝圣的面饼，将其丢给狗吃",
+		"糟践神圣的供品，使十神受嘲",
+		"掰碎祝圣的面饼，将伊欧拉的恩赐丢给狗",
 	)
 
 /datum/quest_crime/priestly_blood
 	id = CRIME_PRIESTLY_BLOOD
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the shedding of priestly blood with malice aforethought",
-		"the murder of a priest, by purpose laid and counsel kept",
+		"蓄意预谋使圣职者流血",
+		"经事先谋划并与人共议而谋杀祭司",
 	)
 
 /datum/quest_crime/dreamer_sacrifice
 	id = CRIME_DREAMER_SACRIFICE
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the casting of captives, bound and gagged, into the deep, seeking to rouse the Dreamer from his blissful sleep",
-		"the offering of bound flesh unto the deep, that Abyssor's slumber be broken by mortal hand",
+		"将捆绑塞口的俘虏投入深渊，企图将梦者自其极乐的沉睡中唤醒",
+		"将缚住的血肉献给深渊，欲以凡人之手打破阿比索尔的沉睡",
 	)
 
 /datum/quest_crime/inhumen_invocation
 	id = CRIME_INHUMEN_INVOCATION
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the calling upon the false names of the Inhumen, of Graggar's eight, of Zizo's six, of the Devourer below",
-		"the speaking aloud of the unholy names that the Holy See hath bound to silence",
+		"呼唤异民的伪名——格拉加尔之八名、齐佐之六名，以及下方的吞噬者",
+		"高声念出教廷勒令噤声的渎神名号",
 	)
 
 
@@ -623,48 +623,48 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_PIRACY
 	tier = CRIME_TIER_PIRACY
 	phrasings = list(
-		"piracy upon the Duke's Sea, and the boarding of ships under truce",
-		"the taking of vessels at oar and sail, against the peace of the strand",
+		"在公爵之海上行海盗之事，并登临受休战保护的船只",
+		"以桨帆夺取船只，破坏海岸的安宁",
 	)
 
 /datum/quest_crime/bondage_taking
 	id = CRIME_BONDAGE_TAKING
 	tier = CRIME_TIER_PIRACY
 	phrasings = list(
-		"the taking of crews into bondage, and the selling of free folk",
-		"the dragging of mariners to chain and block",
+		"将船员掳为奴役，贩卖自由之民",
+		"将水手拖向锁链与刑台",
 	)
 
 /datum/quest_crime/shore_slaving
 	id = CRIME_SHORE_SLAVING
 	tier = CRIME_TIER_PIRACY
 	phrasings = list(
-		"the slaving of folk upon the strand, in towns made desolate",
-		"the harvest of bondsmen from villages put to torch",
+		"在海岸一带掠人为奴，使城镇化为荒墟",
+		"从被纵火焚毁的村庄中掳掠奴仆",
 	)
 
 /datum/quest_crime/coastal_burning
 	id = CRIME_COASTAL_BURNING
 	tier = CRIME_TIER_PIRACY
 	phrasings = list(
-		"the burning of fishing-villages at the dawn-tide",
-		"setting of fire to thatch upon the coast, while the folk yet slept",
+		"在拂晓潮时焚毁渔村",
+		"在人们尚在沉睡时点燃海岸上的茅屋",
 	)
 
 /datum/quest_crime/coastal_rapine
 	id = CRIME_COASTAL_RAPINE
 	tier = CRIME_TIER_PIRACY
 	phrasings = list(
-		"rapine upon the coast, that no fisher dare cast net",
-		"the harrying of the strand, that the sea folk flee inland",
+		"在海岸大肆劫掠，使渔人不敢撒网",
+		"蹂躏海岸，使海边之民逃往内陆",
 	)
 
 /datum/quest_crime/temple_ship_burned
 	id = CRIME_TEMPLE_SHIP_BURNED
 	tier = CRIME_TIER_PIRACY
 	phrasings = list(
-		"the burning of a temple ship at sea, that the holy bones aboard sank without rite",
-		"the firing of a sacred vessel upon Abyssor's tide, that pilgrims and priests were drowned in their hour of rest",
+		"在海上焚烧圣殿船只，使船上圣骸未经仪式便沉入海底",
+		"在阿比索尔的潮汐上点燃圣船，使朝圣者与祭司在安歇之时溺亡",
 	)
 
 
@@ -672,55 +672,55 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_BEAST_SHEEP
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"taken sheep of the eastern fold",
-		"savaged the flocks at pasture",
-		"dragged off lambs by the throat",
+		"叼走了东边羊圈中的羊",
+		"袭击了牧场上的羊群",
+		"咬住羊羔的喉咙将其拖走",
 	)
 
 /datum/quest_crime/beast_child
 	id = CRIME_BEAST_CHILD
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"taken a child of the woodward",
-		"carried off the goatherd's youngling at dusk",
+		"叼走了林地看守的孩子",
+		"在黄昏时分叼走牧羊人的幼子",
 	)
 
 /datum/quest_crime/beast_traveller
 	id = CRIME_BEAST_TRAVELLER
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"set upon travellers on the lonely road",
-		"made the forest road unsafe to lone passage",
+		"在僻静道路上袭击旅人",
+		"使林间道路不再容独行者通行",
 	)
 
 /datum/quest_crime/beast_cattle
 	id = CRIME_BEAST_CATTLE
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"hamstrung kine in the byre",
-		"slaughtered cattle in their pens",
+		"在牛棚中挑断牛只的腿筋",
+		"在栏中屠杀牛只",
 	)
 
 /datum/quest_crime/beast_dogs
 	id = CRIME_BEAST_DOGS
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"slain the hounds set against it",
-		"torn open the shepherd's mastiff",
+		"咬死了被派来对付它的猎犬",
+		"撕开了牧羊人的獒犬",
 	)
 
 /datum/quest_crime/beast_winter
 	id = CRIME_BEAST_WINTER
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"come down from the high places, with hunger upon it",
-		"emboldened by want, drawn near to the hearth-smoke",
+		"带着饥饿自高地而来",
+		"因匮乏而胆大，逼近炉火的炊烟",
 	)
 
 /datum/quest_crime/beast_corpse
 	id = CRIME_BEAST_CORPSE
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"left bones in the ditch, picked clean",
-		"scattered the dead about the wayside",
+		"在沟中留下啃得精光的骨头",
+		"将死者抛散在路旁",
 	)

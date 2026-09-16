@@ -27,7 +27,7 @@ export const PackRow = (props: Props) => {
   const cantAfford = budget < pack.price;
   const hasTariff = pack.price_tariff > 0;
   const priceTitle = hasTariff
-    ? `${pack.price_base}m + ${pack.price_tariff}m tariff = ${pack.price}m`
+    ? `${pack.price_base}m + ${pack.price_tariff}m 关税 = ${pack.price}m`
     : `${pack.price}m`;
   return (
     <div style={denseRowStyle}>
@@ -66,7 +66,7 @@ export const PackRow = (props: Props) => {
               fontSize: FONT_SMALL,
             }}
           >
-            browse
+            浏览
           </span>
         ) : (
           <button
@@ -74,9 +74,9 @@ export const PackRow = (props: Props) => {
             style={compactButtonStyle({ disabled: cantAfford })}
             disabled={cantAfford}
             onClick={() => act('buy', { ref: pack.ref })}
-            title={`Buy ${pack.name} for ${pack.price}m`}
+            title={`以 ${pack.price}m 购买 ${pack.name}`}
           >
-            Buy
+            购买
           </button>
         )}
       </div>

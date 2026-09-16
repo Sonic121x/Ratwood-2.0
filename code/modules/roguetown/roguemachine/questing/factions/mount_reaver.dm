@@ -1,8 +1,8 @@
 /datum/quest_faction/mount_reaver
 	id = QUEST_FACTION_MOUNT_REAVER
-	name_singular = "mount reaver"
-	name_plural = "mount reavers"
-	group_word = "gang"
+	name_singular = "骑乘劫掠者"
+	name_plural = "骑乘劫掠者"
+	group_word = "帮"
 	faction_tag = FACTION_BANDITS
 	can_blockade = TRUE
 	category = FACTION_CAT_HUMANOID
@@ -16,8 +16,8 @@
 		/mob/living/carbon/human/species/human/northern/bog_deserters/better_gear/ambush = 100,
 	)
 	boss_title_templates = list(
-		"%N the Ironclad",
-		"%N Stonebreaker",
-		"%N the Bear",
+		"%N 铁甲者",
+		"%N 碎石者",
+		"%N 熊",
 	)
 	boss_name_file = "strings/rt/names/human/humnorm.txt"
