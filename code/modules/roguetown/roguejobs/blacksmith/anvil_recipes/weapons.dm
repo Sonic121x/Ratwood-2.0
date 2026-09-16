@@ -1,7 +1,7 @@
 /datum/anvil_recipe/weapons
 	abstract_type = /datum/anvil_recipe/weapons
 	appro_skill = /datum/skill/craft/weaponsmithing  // inheritance yay !!
-	i_type = "Weapons"
+	i_type = "武器"
 
 /datum/anvil_recipe/weapons/ancient
 	abstract_type = /datum/anvil_recipe/weapons/ancient
@@ -66,164 +66,164 @@
 // DECREPIT/ANCIENT ALLOY
 
 /datum/anvil_recipe/weapons/ancient/flail/
-	name = "Flail, Ancient"
+	name = "连枷, 古代"
 	created_item = /obj/item/rogueweapon/flail/sflail/ancient
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/decrepit/flail
-	name = "Flail, Decrepit"
+	name = "连枷, 衰朽"
 	created_item = /obj/item/rogueweapon/flail/sflail/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/ancient/dagger
-	name = "Dagger, Ancient"
+	name = "匕首, 古代"
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/ancient
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/decrepit/dagger
-	name = "Dagger, Decrepit"
+	name = "匕首, 衰朽"
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/ancient/knuckles
-	name = "Knuckles, Ancient"
+	name = "指虎, 古代"
 	created_item = /obj/item/rogueweapon/knuckles/ancient
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/decrepit/knuckles
-	name = "Knuckles, Decrepit"
+	name = "指虎, 衰朽"
 	created_item = /obj/item/rogueweapon/knuckles/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/ancient/shortsword
-	name = "Shortsword, Ancient"
+	name = "短剑, 古代"
 	created_item = /obj/item/rogueweapon/sword/short/ancient
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/decrepit/shortsword
-	name = "Shortsword, Decrepit"
+	name = "短剑, 衰朽"
 	created_item = /obj/item/rogueweapon/sword/short/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/ancient/gladius
-	name = "Gladius, Ancient"
+	name = "短罗马剑, 古代"
 	created_item = /obj/item/rogueweapon/sword/short/gladius/ancient
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/decrepit/gladius
-	name = "Gladius, Decrepit"
+	name = "短罗马剑, 衰朽"
 	created_item = /obj/item/rogueweapon/sword/short/gladius/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/ancient/khopesh
-	name = "Khopesh, Ancient"
+	name = "镰刀剑, 古代"
 	created_item = /obj/item/rogueweapon/sword/sabre/ancient
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/decrepit/khopesh
-	name = "Khopesh, Decrepit"
+	name = "镰刀剑, 衰朽"
 	created_item = /obj/item/rogueweapon/sword/sabre/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/ancient/handaxe
-	name = "Axe, Ancient"
+	name = "斧, 古代"
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/decrepit/handaxe
-	name = "Axe, Decrepit"
+	name = "斧, 衰朽"
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/ancient/mace
-	name = "Mace, Ancient"
+	name = "钉锤, 古代"
 	created_item = /obj/item/rogueweapon/mace/steel/ancient
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/decrepit/mace
-	name = "Mace, Decrepit"
+	name = "钉锤, 衰朽"
 	created_item = /obj/item/rogueweapon/mace/steel/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/ancient/warhammer
-	name = "Warhammer, Ancient"
+	name = "战锤, 古代"
 	created_item = /obj/item/rogueweapon/mace/warhammer/steel/ancient
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/decrepit/warhammer
-	name = "Warhammer, Decrepit"
+	name = "战锤, 衰朽"
 	created_item = /obj/item/rogueweapon/mace/warhammer/steel/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/ancient/tossblade
-	name = "Tossblades, Ancient (x4)"
+	name = "飞刀, 古代 (x4)"
 	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/steel/ancient
 	createditem_num = 4
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/decrepit/tossblade
-	name = "Tossblades, Decrepit (x4)"
+	name = "飞刀, 衰朽 (x4)"
 	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/steel/ancient/decrepit
 	createditem_num = 4
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/ancient/gsw
-	name = "Greatsword, Ancient (+2 Gilbranze)"
+	name = "巨剑, 古代 (+2 吉尔青铜)"
 	created_item = /obj/item/rogueweapon/greatsword/ancient
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze)
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/decrepit/gsw
-	name = "Greatsword, Decrepit (+2 Alloy)"
+	name = "巨剑, 衰朽 (+2 合金)"
 	created_item = /obj/item/rogueweapon/greatsword/ancient/decrepit
 	additional_items = list(/obj/item/ingot/decrepit, /obj/item/ingot/decrepit)
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/ancient/bardiche
-	name = "Bardiche, Ancient (+1 log, +1 Gilbranze)"
+	name = "长柄刀斧，古代 (+1 小原木, +1 吉尔青铜)"
 	created_item = /obj/item/rogueweapon/halberd/bardiche/ancient
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/decrepit/bardiche
-	name = "Bardiche, Decrepit (+1 log, +1 Alloy)"
+	name = "长柄刀斧，衰朽 (+1 小原木, +1 合金)"
 	created_item = /obj/item/rogueweapon/halberd/bardiche/ancient/decrepit
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/ancient/grandmace
-	name = "Grand Mace, Purified (+1 Gilbranze, +1 Small Log)"
+	name = "巨型钉锤, 净化 (+1 吉尔青铜, +1 小原木)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden/steel/ancient
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/decrepit/grandmace
-	name = "Grand Mace, Decrepit (+1 Alloy, +1 Small Log)"
+	name = "巨型钉锤, 衰朽 (+1 合金, +1 小原木)"
 	additional_items = list(/obj/item/ingot/decrepit, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden/steel/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/ancient/spear
-	name = "Spear, Ancient (+1 Small Log)"
+	name = "长矛, 古代 (+1 小原木)"
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/ancient
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/decrepit/spear
-	name = "Spear, Decrepit(+1 Small Log)"
+	name = "长矛, 衰朽(+1 小原木)"
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/ancient/javelin
-	name = "Javelin, Ancient (+1 Small Log) (x2)"
+	name = "标枪, 古代 (+1 小原木) (x2)"
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/steel/ancient
 	createditem_num = 2
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/decrepit/javelin
-	name = "Javelin, Decrepit (+1 Small Log) (x2)"
+	name = "标枪, 衰朽 (+1 小原木) (x2)"
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/steel/ancient/decrepit
 	createditem_num = 2
@@ -231,37 +231,37 @@
 // COPPER
 
 /datum/anvil_recipe/weapons/copper/caxe
-	name = "Hatchet, Copper (+1 Copper)"
+	name = "手斧, 铜 (+1 铜)"
 	additional_items = list(/obj/item/ingot/copper)
 	created_item = /obj/item/rogueweapon/stoneaxe/handaxe/copper
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/copper/cbludgeon
-	name = "Budgeon, Copper (+1 Stick)"
+	name = "短棍, 铜 (+1 木棍)"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/mace/cudgel/copper
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/copper/cdagger
-	name = "Knife, Copper (x2)"
+	name = "小刀, 铜 (x2)"
 	created_item = /obj/item/rogueweapon/huntingknife/copper
 	createditem_num = 2
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/copper/cmesser
-	name = "Messer, Copper"
+	name = "大砍刀, 铜"
 	created_item = /obj/item/rogueweapon/sword/short/messer/copper
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/copper/cspears
-	name = "Spear, Copper (+1 Small Log) (x2)"
+	name = "长矛, 铜 (+1 小原木) (x2)"
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/stone/copper
 	createditem_num = 2
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/copper/crhomphaia
-	name = "Rhomphaia, Copper (+1 Copper)"
+	name = "罗姆法亚刀, 铜 (+1 铜)"
 	additional_items = list(/obj/item/ingot/copper)
 	created_item = /obj/item/rogueweapon/sword/long/rhomphaia/copper
 	display_category = ITEM_CAT_WEAPONS_SWORDS
@@ -269,7 +269,7 @@
 // BRONZE
 
 /datum/anvil_recipe/weapons/bronze/katar
-	name = "Pata, Bronze"
+	name = "卡塔拳刃, 青铜"
 	created_item = /obj/item/rogueweapon/katar/bronze
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
@@ -280,19 +280,19 @@
 	craftdiff = 2
 
 /datum/anvil_recipe/weapons/bronze/bronzeknuckle
-	name = "Knuckledusters, Bronze"
+	name = "指虎, 青铜"
 	created_item = /obj/item/rogueweapon/knuckles/bronzeknuckles
 	display_category = ITEM_CAT_WEAPONS_MACES
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/bronze/gladius
-	name = "Gladius, Bronze"
+	name = "短剑, 青铜"
 	created_item = /obj/item/rogueweapon/sword/short/gladius
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/bronze/sword
-	name = "Arming Sword, Bronze"
+	name = "骑士剑, 青铜"
 	created_item = /obj/item/rogueweapon/sword/bronze
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
@@ -302,7 +302,7 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/bronze/axe
-	name = "Axe, Bronze"
+	name = "斧, 青铜"
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/bronze
 	display_category = ITEM_CAT_WEAPONS_AXES
 
@@ -313,7 +313,7 @@
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/bronze/mace
-	name = "Mace, Bronze"
+	name = "钉锤, 青铜"
 	created_item = /obj/item/rogueweapon/mace/bronze
 	display_category = ITEM_CAT_WEAPONS_MACES
 
@@ -323,7 +323,7 @@
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/bronze/dagger
-	name = "Knife, Bronze"
+	name = "匕首, 青铜"
 	created_item = /obj/item/rogueweapon/huntingknife/bronze
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
@@ -358,14 +358,14 @@
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/bronze/whip
-	name = "Whip, Bronze-Tipped (+3 Cured Leather)"
+	name = "鞭, 青铜尖头 (+3 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/whip/bronze
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/bronze/urumi
-	name = "Urumi, Bronze (+1 Bronze)"
+	name = "乌卢米鞭, 青铜 (+1 青铜)"
 	additional_items = list(/obj/item/ingot/bronze)
 	created_item = /obj/item/rogueweapon/whip/urumi/bronze
 	display_category = ITEM_CAT_WEAPONS_FLAILS
@@ -384,7 +384,7 @@
 	craftdiff = 2
 
 /datum/anvil_recipe/weapons/bronze/spear
-	name = "Spear, Bronze (+1 Bronze, +1 Small Log)"
+	name = "长矛, 青铜 (+1 青铜, +1 小原木)"
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/bronze
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
@@ -411,7 +411,7 @@
 	createditem_num = 2
 
 /datum/anvil_recipe/weapons/bronze/trident
-	name = "Trident, Bronze (+1 Bronze, +1 Small Log)"
+	name = "三叉戟, 青铜 (+1 青铜, +1 小原木)"
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/trident
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
@@ -420,19 +420,19 @@
 // IRON
 
 /datum/anvil_recipe/weapons/iron/sword
-	name = "Sword, Iron"
+	name = "剑, 铁"
 	req_blade = /obj/item/blade/iron_sword
 	created_item = /obj/item/rogueweapon/sword/iron
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/iron/swordshort
-	name = "Shortsword, Iron"
+	name = "短剑, 铁"
 	req_blade = /obj/item/blade/iron_sword
 	created_item = /obj/item/rogueweapon/sword/short/iron
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/iron/messer
-	name = "Messer, Iron"
+	name = "大砍刀, 铁"
 	req_blade = /obj/item/blade/iron_sword
 	created_item = /obj/item/rogueweapon/sword/short/messer/iron
 	display_category = ITEM_CAT_WEAPONS_SWORDS
@@ -444,135 +444,135 @@
 	created_item = /obj/item/rogueweapon/sword/long/broadsword
 
 /datum/anvil_recipe/weapons/iron/shotel
-	name = "Shotel, Iron (+1 Iron)"
+	name = "肖特尔弯刀, 铁 (+1 铁)"
 	req_blade = /obj/item/blade/iron_sword
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/sword/long/shotel/iron
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/iron/sabre
-	name = "Sabre, Iron"
+	name = "军刀, 铁"
 	req_blade = /obj/item/blade/iron_sword
 	created_item = /obj/item/rogueweapon/sword/sabre/iron
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/iron/urumi
-	name = "Urumi, Iron (+1 Iron)"
+	name = "乌卢米鞭, 铁 (+1 铁)"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/whip/urumi/iron
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/iron/dagger
-	name = "Dagger, Iron"
+	name = "匕首, 铁"
 	req_blade = /obj/item/blade/iron_knife
 	created_item = /obj/item/rogueweapon/huntingknife/idagger
 	createditem_num = 1
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/iron/flail
-	name = "Flail, Iron"
+	name = "连枷, 铁"
 	created_item = /obj/item/rogueweapon/flail
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/iron/huntknife
-	name = "Hunting Knife, Iron"
+	name = "猎刀, 铁"
 	req_blade = /obj/item/blade/iron_knife
 	created_item = /obj/item/rogueweapon/huntingknife
 	createditem_num = 1
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/greatsword
-	name = "Greatsword, Iron (+2 Iron)"
+	name = "巨剑, 钢 (+2 钢)"
 	req_blade = /obj/item/blade/iron_sword
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/greatsword/iron
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/iron/claymore
-	name = "Claymore, Iron (+2 Iron)"
+	name = "双手阔剑，铁 (+2 铁)"
 	req_blade = /obj/item/blade/iron_sword
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/greatsword/zwei
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/iron/handaxe
-	name = "Hatchet, Iron (+1 Stick)"
+	name = "手斧, 铁 (+1 木棍)"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/stoneaxe/handaxe
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/iron/axe
-	name = "Axe, Iron (+1 Stick)"
+	name = "斧, 铁 (+1 木棍)"
 	req_blade = /obj/item/blade/iron_axe
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/iron/greataxe
-	name = "Greataxe, Iron (+1 Iron, +1 Small Log)"
+	name = "巨斧, 铁 (+1 铁, +1 小原木)"
 	req_blade = /obj/item/blade/iron_axe
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greataxe
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/iron/cudgel
-	name = "Cudgel, Iron (+1 Stick)"
+	name = "棍棒, 铁 (+1 木棍)"
 	req_blade = /obj/item/blade/iron_mace
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/mace/cudgel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/iron/mace
-	name = "Mace, Iron (+1 Stick)"
+	name = "钉锤, 铁 (+1 木棍)"
 	req_blade = /obj/item/blade/iron_mace
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/mace
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/iron/warhammer
-	name = "Warhammer, Iron (+1 Stick)"
+	name = "战锤, 铁 (+1 木棍)"
 	req_blade = /obj/item/blade/iron_mace
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/mace/warhammer
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/iron/spear
-	name = "Spear, Iron (+1 Small Log)"
+	name = "长矛, 铁 (+1 小原木)"
 	req_blade = /obj/item/blade/iron_polearm
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/iron/bardiche
-	name = "Bardiche, Iron (+1 Iron, +1 Small Log)"
+	name = "长柄刀斧, 铁 (+1 铁, +1 小原木)"
 	req_blade = /obj/item/blade/iron_polearm
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/halberd/bardiche
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/iron/lucerne
-	name = "Lucerne, Iron (+1 Iron, +1 Small Log)"
+	name = "卢塞恩锤, 铁 (+1 铁, +1 小原木)"
 	req_blade = /obj/item/blade/iron_polearm
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/eaglebeak/lucerne
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/iron/polemace
-	name = "Goedendag, Iron (+1 Small Log)"
+	name = "古德达格棍, 铁 (+1 小原木)"
 	req_blade = /obj/item/blade/iron_mace
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/iron/tossblade
-	name = "Tossblades, Iron (x4)"
+	name = "飞刀, 铁 (x4)"
 	req_blade = /obj/item/blade/iron_knife
 	created_item = /obj/item/rogueweapon/huntingknife/throwingknife
 	createditem_num = 4
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/iron/javelin
-	name = "Javelin, Iron (+1 Small Log) (x2)"
+	name = "标枪, 铁 (+1 小原木) (x2)"
 	req_blade = /obj/item/blade/iron_polearm
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin
@@ -580,164 +580,164 @@
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/iron/claws
-	name = "Handclaws, Iron (+1 Iron)"
+	name = "手爪, 铁 (+1 铁)"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/handclaw
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/iron/maul
-	name = "Maul (+1 Iron)"
+	name = "重槌 (+1 铁)"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/mace/maul
 	craftdiff = 4
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/iron/peasantwarflail
-	name = "Greatflail, Iron (+1 Iron, +2 Small Log)"
+	name = "战连枷, 铁 (+1 铁, +2 小原木)"
 	req_blade = /obj/item/blade/iron_mace
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/flail/peasantwarflail
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/iron/maciejowski
-	name = "Maciejowski, Iron (+1 Iron)"
+	name = "马切约夫斯基剑, 铁 (+1 铁)"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/sword/falchion/militia
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /// STEEL WEAPONS
 /datum/anvil_recipe/weapons/steel/dagger
-	name = "Dagger, Steel"
+	name = "匕首, 钢"
 	req_blade = /obj/item/blade/steel_knife
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
 	createditem_num = 1
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/daggerparrying
-	name = "Parrying Dagger, Steel (+1 Steel)"
+	name = "格挡匕首, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_knife
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/daggerrondel
-	name = "Rondel Dagger, Steel (+1 Steel)"
+	name = "圆盘匕首, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_knife
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/rondel
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/daggerkukri
-	name = "Kukri Dagger, Steel (+1 Steel)"
+	name = "库克里匕首, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_knife
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/kukri
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/daggerkris
-	name = "Kris Dagger, Steel (+1 Steel)"
+	name = "波刃匕首, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_knife
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/kris
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/combatknife
-	name = "Combat Knife, Steel"
+	name = "战斗匕首, 钢"
 	req_blade = /obj/item/blade/steel_knife
 	created_item = /obj/item/rogueweapon/huntingknife/combat
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/combatknifemesser
-	name = "Combat Knife, Messer, Steel (+1 Steel)"
+	name = "战斗匕首, 砍刀式, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_knife
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/huntingknife/combat/messer
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/katar
-	name = "Katar, Steel"
+	name = "卡塔拳刃, 钢"
 	req_blade = /obj/item/blade/steel_knife
 	created_item = /obj/item/rogueweapon/katar
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/punchdagger
-	name = "Punch Dagger"
+	name = "拳刺"
 	req_blade = /obj/item/blade/steel_knife
 	created_item = /obj/item/rogueweapon/katar/punchdagger
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/steelknuckle
-	name = "Knuckles, Steel"
+	name = "指虎, 钢"
 	created_item = /obj/item/rogueweapon/knuckles
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/steel/hurlbat
-	name = "Hurlbat"
+	name = "投掷棍"
 	req_blade = /obj/item/blade/steel_axe
 	created_item = /obj/item/rogueweapon/stoneaxe/hurlbat
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/steel/rapier
-	name = "Rapier, Steel"
+	name = "刺剑, 钢"
 	created_item = /obj/item/rogueweapon/sword/rapier
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/cutlass
-	name = "Cutlass, Steel"
+	name = "短弯刀, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/cutlass
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/swordshort
-	name = "Shortsword, Steel"
+	name = "短剑, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/short
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/falchion
-	name = "Falchion, Steel"
+	name = "弯刀, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/short/falchion
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/messer
-	name = "Messer, Steel"
+	name = "大砍刀, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/short/messer
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/sword
-	name = "Sword, Steel"
+	name = "剑, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/saber
-	name = "Sabre, Steel"
+	name = "军刀, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/sabre
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/shamshir
-	name = "Shamshir, Steel"
+	name = "舍姆希尔弯刀, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/sabre/shamshir
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/shashka
-	name = "Shashka, Steel"
+	name = "恰西克马刀, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/sabre/steppesman
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/hook
-	name = "Hook Sword, Steel"
+	name = "钩剑, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/sabre/hook
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/flail
-	name = "Flail, Steel"
+	name = "连枷, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/flail/sflail
 	display_category = ITEM_CAT_WEAPONS_FLAILS
@@ -750,194 +750,194 @@
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/steel/longsword
-	name = "Longsword, Steel (+1 Steel)"
+	name = "长剑, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/broadsword
-	name = "Broadsword, Steel (+1 Steel, +1 Small Log)"
+	name = "阔剑，钢制（+1 钢锭，+1 小原木）"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/sword/long/broadsword/steel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/shalal
-	name = "Shalal Saber, Steel (+1 Steel)"
+	name = "沙勒军刀, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/marlin
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/shotel
-	name = "Shotel, Steel (+1 Steel)"
+	name = "肖特尔弯刀, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/shotel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/urumi
-	name = "Urumi, Steel (+1 Steel)"
+	name = "乌卢米鞭, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/whip/urumi
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/steel/trainingsword
-	name = "Training Sword, Steel (+1 Steel)"
+	name = "训练剑，钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/training
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/trainingsword
-	name = "Training Sword, Steel (+1 Steel)"
+	name = "训练剑，钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/training
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/kriegmesser
-	name = "Kriegmesser, Steel (+1 Steel)"
+	name = "战争大砍刀, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/kriegmesser
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/battleaxe
-	name = "Battle Axe, Steel (+1 Steel)"
+	name = "战斧, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_axe
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/stoneaxe/battle
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/steel/mace
-	name = "Mace, Steel (+1 Steel)"
+	name = "钉锤, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_mace
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/mace/steel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/steel/swarhammer
-	name = "Warhammer, Steel (+1 Steel)"
+	name = "战锤, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_mace
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/mace/warhammer/steel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/steel/greatsword
-	name = "Greatsword, Steel (+2 Steel)"
+	name = "巨剑, 钢 (+2 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/greatsword
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/flamb
-	name = "Flamberge, Steel (+2 Steel)"
+	name = "焰形剑, 钢 (+2 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/greatsword/grenz/flamberge
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/estoc
-	name = "Estoc, Steel (+1 Steel)"
+	name = "穿甲刺剑, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/estoc
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/axe
-	name = "Axe, Steel (+1 Stick)"
+	name = "斧, 钢 (+1 木棍)"
 	req_blade = /obj/item/blade/steel_axe
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/steel/pulaski
-	name = "Pulaski axe (+1 Stick)"
+	name = "普拉斯基斧 (+1 木棍)"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/pick
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/steel/greataxe
-	name = "Greataxe, Steel (+1 Steel, +1 Small Log)"
+	name = "巨斧, 钢 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_axe
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greataxe/steel
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/steel/greataxe/doublehead
-	name = "Double-Headed Greataxe, Steel (+2 Steel, +1 Small Log)"
+	name = "双头巨斧, 钢 (+2 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_axe
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greataxe/steel/doublehead
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/steel/billhook
-	name = "Billhook, Steel (+1 Small Log)"
+	name = "钩镰, 钢 (+1 小原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/billhook
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/halberd
-	name = "Halberd, Steel (+1 Steel, +1 Small Log)"
+	name = "戟, 钢 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/halberd
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/eaglebeak
-	name = "Eagle's Beak (+1 Steel, +1 Small Log)"
+	name = "鹰嘴锤 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/eaglebeak
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/grandmace
-	name = "Grand Mace, Steel (+1 Steel, +1 Small Log)"
+	name = "巨型钉锤, 钢 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_mace
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden/steel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/steel/partizan
-	name = "Partizan, Steel (+1 Steel, +1 Small Log)"
+	name = "长戟, 钢 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/partizan
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/naginata
-	name = "Naginata, Steel (+1 Big Log)"
+	name = "薙刀, 钢 (+1 大原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/grown/log/tree/) //looong spear
 	created_item = /obj/item/rogueweapon/spear/naginata
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/boarspear
-	name = "Boar Spear, Steel (+1 Steel, +1 Small Log)"
+	name = "野猪矛, 钢 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/boar
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/lance
-	name = "Lance, Steel (+1 Steel, +1 Small Log)"
+	name = "骑枪, 钢 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/lance
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/tossblade
-	name = "Tossblade, Steel (x4)"
+	name = "飞刀, 钢 (x4)"
 	req_blade = /obj/item/blade/steel_knife
 	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/steel
 	createditem_num = 4
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/javelin
-	name = "Javelin, Steel (+1 Small Log) (x2)"
+	name = "标枪, 钢 (+1 小原木) (x2)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/steel
@@ -945,33 +945,33 @@
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/steel/fishspear
-	name = "Fishing Spear, Steel (+1 Steel, +1 Small Log)"
+	name = "捕鱼矛, 钢 (+1 钢, +1 小原木)"
 	req_blade = /obj/item/blade/steel_polearm
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/fishspear
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/steel/rhomphaia
-	name = "Rhomphaia, Steel (+1 Steel)"
+	name = "罗姆法亚刀, 钢 (+1 钢)"
 	req_blade = /obj/item/blade/steel_sword
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/rhomphaia
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/falx
-	name = "Falx, Steel"
+	name = "镰刃刀, 钢"
 	req_blade = /obj/item/blade/steel_sword
 	created_item = /obj/item/rogueweapon/sword/falx
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/steel/claws
-	name = "Handclaws, Steel (+1 Steel)"
+	name = "手爪, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/handclaw/steel
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/steel/maul
-	name = "Grand Maul (+2 Steel)"
+	name = "巨槌 (+2 钢)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/mace/maul/grand
 	craftdiff = 5
@@ -982,25 +982,25 @@
 // GOLD
 
 /datum/anvil_recipe/weapons/decorated/sword
-	name = "Sword, Decorated (+1 Steel Sword)"
+	name = "剑, 装饰 (+1 钢 剑)"
 	additional_items = list(/obj/item/rogueweapon/sword)
 	created_item = /obj/item/rogueweapon/sword/decorated
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/decorated/saber
-	name = "Sabre, Decorated (+1 Steel Sabre)"
+	name = "军刀, 装饰 (+1 钢 军刀)"
 	additional_items = list(/obj/item/rogueweapon/sword/sabre)
 	created_item = /obj/item/rogueweapon/sword/sabre/dec
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/decorated/rapier
-	name = "Rapier, Decorated (+1 Steel Rapier)"
+	name = "刺剑, 装饰 (+1 钢 刺剑)"
 	additional_items = list(/obj/item/rogueweapon/sword/rapier)
 	created_item = /obj/item/rogueweapon/sword/rapier/dec
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/decorated/longsword
-	name = "Longsword, Decorated (+1 Steel Longsword)"
+	name = "长剑, 装饰 (+1 钢 长剑)"
 	additional_items = list(/obj/item/rogueweapon/sword/long)
 	created_item = /obj/item/rogueweapon/sword/long/dec
 	display_category = ITEM_CAT_WEAPONS_SWORDS
@@ -1017,96 +1017,96 @@
 	created_item = /obj/item/rogueweapon/mace/warhammer/bronze/decorated
 	display_category = ITEM_CAT_WEAPONS_MACES
 /datum/anvil_recipe/weapons/decorated/axe
-	name = "Axe, Decorated (+1 Steel Axe)"
+	name = "斧, 装饰 (+1 钢斧)"
 	additional_items = list(/obj/item/rogueweapon/stoneaxe/woodcut/steel)
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel/decorated
 
 /datum/anvil_recipe/weapons/decorated/swordsil
-	name = "Elegant Axesword, Silvered (+1 Silver Arming Sword)"
+	name = "典雅斧剑, 镀银 (+1 白银骑士剑)"
 	additional_items = list(/obj/item/rogueweapon/sword/silver)
 	created_item = /obj/item/rogueweapon/sword/silver/decorated
 
 /datum/anvil_recipe/weapons/decorated/macesil
-	name = "Elegant Mace, Silvered (+1 Silver Mace)"
+	name = "典雅钉锤, 镀银 (+1 白银钉锤)"
 	additional_items = list(/obj/item/rogueweapon/mace/steel/silver)
 	created_item = /obj/item/rogueweapon/mace/steel/silver/decorated
 
 // GOLD
 
 /datum/anvil_recipe/weapons/gold/arming
-	name = "Golden Arming Sword (+2 Gold, +2 Silk)"
+	name = "金色骑士剑 (+2 金, +2 丝绸)"
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/sword/gold
 
 /datum/anvil_recipe/weapons/gold/mace
-	name = "Golden Mace (+2 Gold, +2 Silk)"
+	name = "金色钉锤 (+2 金, +2 丝绸)"
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/mace/gold
 
 /datum/anvil_recipe/weapons/gold/shield
-	name = "Golden Shield (+3 Gold, +1 Fur)"
+	name = "金色盾牌 (+3 金, +1 毛皮)"
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/fur)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/gold
 
 /datum/anvil_recipe/weapons/gold/kingarming
-	name = "Golden Arming Sword, Royal (+2 Gold, +2 Silk, +1 Dorpel)"
+	name = "金色骑士剑，王室 (+2 金, +2 丝绸, +1 多佩尔石)"
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk, /obj/item/roguegem/diamond)
 	created_item = /obj/item/rogueweapon/sword/gold/king
 
 /datum/anvil_recipe/weapons/gold/kingmace
-	name = "Golden Mace, Royal (+2 Gold, +2 Silk, +1 Dorpel)"
+	name = "金色钉锤，王室 (+2 金, +2 丝绸, +1 多佩尔石)"
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk, /obj/item/roguegem/diamond)
 	created_item = /obj/item/rogueweapon/mace/gold/king
 
 /datum/anvil_recipe/weapons/gold/kingshield
-	name = "Golden Shield, Royal (+3 Gold, +1 Fur, +1 Dorpel)"
+	name = "金色盾牌，王室 (+3 金, +1 毛皮, +1 多佩尔石)"
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/fur, /obj/item/roguegem/diamond)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/gold/king
 
 // SILVER
 
 /datum/anvil_recipe/weapons/silver/elfsaber
-	name = "Sabre, Elvish (+1 Gold)"
+	name = "军刀, 精灵 (+1 黄金)"
 	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/rogueweapon/sword/sabre/elf
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/silver/elfdagger
-	name = "Dagger, Elvish (+1 Silver)"
+	name = "匕首, 精灵 (+1 白银)"
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/silver/dagger
-	name = "Dagger, Silver"
+	name = "匕首, 白银"
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/silver/shortsword
-	name = "Shortsword, Silver"
+	name = "短剑, 白银"
 	created_item = /obj/item/rogueweapon/sword/short/silver
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/silver/sword
-	name = "Arming Sword, Silver (+1 Silver)"
+	name = "刺剑, 白银 (+1 白银)"
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/silver
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/silver/sword
-	name = "Rapier, Silver (+1 Silver)"
+	name = "刺剑, 白银 (+1 白银)"
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/rapier/silver
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/silver/longsword
-	name = "Longsword, Silver (+2 Silver, +1 Small Log)"
+	name = "长剑, 白银 (+2 白银, +1 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/sword/long/silver
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/silver/broadsword
-	name = "Broadsword, Silver (+2 Silver, +1 Small Log)"
+	name = "阔剑, 白银 (+2 白银, +1 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/sword/long/kriegmesser/silver
 	display_category = ITEM_CAT_WEAPONS_SWORDS
@@ -1117,43 +1117,43 @@
 	created_item = /obj/item/rogueweapon/sword/long/exe/silver
 
 /datum/anvil_recipe/weapons/silver/waraxe
-	name = "War Axe, Silver (+2 Silver, +1 Small Log)"
+	name = "战斧，白银 (+2 白银, +1 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/silver
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/silver/poleaxe
-	name = "Poleaxe, Silver (+2 Silver, +2 Small Logs)"
+	name = "长柄战斧, 白银 (+2 白银, +2 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greataxe/silver
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/silver/mace
-	name = "Mace, Silver (+1 Silver)"
+	name = "钉锤, 白银 (+1 白银)"
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/mace/steel/silver
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/silver/warhammer
-	name = "Warhammer, Silver (+1 Silver, +1 Small Log)"
+	name = "战锤, 白银 (+1 白银, +1 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/warhammer/steel/silver
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/silver/quarterstaff
-	name = "Quarterstaff, Silver (+1 Silver, +3 Small Logs)"
+	name = "四分法杖，白银 (+1 白银, +3 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/woodstaff/quarterstaff/silver
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/silver/spear
-	name = "Spear, Silver (+1 Silver, +3 Small Logs)"
+	name = "长矛, 白银 (+1 白银, +3 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/silver
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/silver/morningstar
-	name = "Morningstar, Silver (+1 Silver, +1 Chain)"
+	name = "晨星锤, 白银 (+1 白银, +1 锁链)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/rope/chain)
 	created_item = /obj/item/rogueweapon/flail/sflail/silver
 	display_category = ITEM_CAT_WEAPONS_FLAILS
@@ -1165,26 +1165,26 @@
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/silver/whip
-	name = "Whip, Silver (+1 Leather Whip)"
+	name = "鞭，白银 (+1 皮鞭)"
 	additional_items = list(/obj/item/rogueweapon/whip)
 	created_item = /obj/item/rogueweapon/whip/silver
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/silver/urumi
-	name = "Urumi, Silver (+1 Silver)"
+	name = "乌卢米鞭, 白银 (+1 白银)"
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/whip/urumi/silver
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/silver/tossblade
-	name = "Tossblades, Silver (+1 Silver)"
+	name = "飞刀, 白银 (+1 白银)"
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/silver
 	createditem_num = 4
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/silver/javelin
-	name = "Javelins, Silver (+1 Silver, Small Log)"
+	name = "标枪，白银 (+1 白银, +1 小原木)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/silver
 	createditem_num = 2
@@ -1194,73 +1194,73 @@
 /// SHIELDS
 
 /datum/anvil_recipe/weapons/iron/towershield
-	name = "Tower Shield (+1 Small Log)"
+	name = "塔盾 (+1 小原木)"
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/shield/tower
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/steel/kiteshield
-	name = "Kite Shield (+1 Steel, +1 Cured Leather)"
+	name = "鸢盾 (+1 钢, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "Kite Shield, Ancient (+1 Gilbranze, +1 Cured Leather)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/ancient
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/decrepit/shield
-	name = "Kite Shield, Decrepit (+1 Alloy, +1 Cured Leather)"
+	name = "鸢盾, 衰朽 (+1 合金, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/decrepit, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "Hoplon Shield, Ancient (+1 Gilbranze)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/rogueweapon/shield/gilbranze
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/decrepit/shield
-	name = "Hoplon Shield, Decrepit (+1 Alloy)"
+	name = "鸢盾, 衰朽 (+1 合金, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/decrepit)
 	created_item = /obj/item/rogueweapon/shield/gilbranze/decrepit
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "Hoplon Greatshield, Ancient (+3 Gilbranze, +1 Cured Leather)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/gilbranze/great
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/decrepit/shield
-	name = "Hoplon Greatshield, Decrepit (+3 Alloy, +1 Cured Leather)"
+	name = "鸢盾, 衰朽 (+1 合金, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/decrepit, /obj/item/ingot/decrepit, /obj/item/ingot/decrepit, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/gilbranze/great/decrepit
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/steel/buckler
-	name = "Buckler (+1 Steel)"
+	name = "圆盾 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/shield/buckler
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/ancient/buckler
-	name = "Buckler, Ancient (+1 Gilbranze)"
+	name = "圆盾, 古代 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/rogueweapon/shield/buckler/ancient
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/decrepit/buckler
-	name = "Buckler, Decrepit (+1 Gilbranze)"
+	name = "圆盾, 衰朽 (+1 吉尔青铜)"
 	additional_items = list(/obj/item/ingot/decrepit)
 	created_item = /obj/item/rogueweapon/shield/buckler/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/iron/roundshield
-	name = "Shield, Iron (+1 Iron)"
+	name = "盾, 铁 (+1 铁)"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/shield/iron
 	display_category = ITEM_CAT_WEAPONS_FLAILS
@@ -1279,50 +1279,50 @@
 // CROSSBOW
 
 /datum/anvil_recipe/weapons/steel/xbow
-	name = "Crossbow (+1 Small Log, +1 Fiber)"
+	name = "弩 (+1 小原木, +1 纤维)"
 	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/natural/fibers)
 	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/anvil_recipe/weapons/iron/bolts
-	name = "Crossbow Bolts (+2 Stick) (x10)"
+	name = "弩箭 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/bolt
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/ancient/bolts
-	name = "Bolts, Ancient (+2 Stick) (x10)"
+	name = "弩箭, 古代 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/bolt/ancient
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/decrepit/bolts
-	name = "Bolts, Decrepit (+2 Stick) (x10)"
+	name = "弩箭, 衰朽 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/bolt/decrepit
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/iron/bluntbolts
-	name = "Bolts, Training (+2 Stick) (x20)"
+	name = "弩箭, 训练 (+2 木棍) (x20)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/bolt/blunt
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	craftdiff = 1
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/iron/heavybluntbolts
-	name = "Bolts, Heavy Blunt (+2 Stick) (x10)"
+	name = "弩箭, 重钝头 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/bolt/heavyblunt
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/bronze/bolts
@@ -1344,35 +1344,35 @@
 // BOW
 
 /datum/anvil_recipe/weapons/iron/arrows
-	name = "Broadhead Arrows, Iron (+2 Stick) (x10)"
+	name = "阔刃箭, 铁 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/steel/arrows
-	name = "Bodkin Arrows, Steel (+2 Stick) (x10)"
+	name = "穿甲箭, 钢 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/arrow/steel
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/ancient/arrows
-	name = "Bodkin Arrows, Ancient (+2 Stick) (x10)"
+	name = "穿甲箭, 古代 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/arrow/steel/ancient
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/decrepit/arrows
-	name = "Broadhead Arrows, Decrepit (+2 Stick) (x10)"
+	name = "阔刃箭, 衰朽 (+2 木棍) (x10)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/arrow/iron/decrepit
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/bronze/arrows
@@ -1386,38 +1386,38 @@
 // SLING
 
 /datum/anvil_recipe/weapons/iron/slingbullets
-	name = "Sling Bullets, Iron (x10)"
+	name = "投石弹, 铁 (x10)"
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/bronze/slingbullets
-	name = "Sling Bullets, Bronze (x10)"
+	name = "投石弹, 青铜 (x10)"
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
 	display_category = ITEM_CAT_WEAPONS_AMMO
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/ancient/slingbullets
-	name = "Sling Bullets, Ancient (x10)"
+	name = "投石弹, 古代 (x10)"
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/ancient
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/decrepit/slingbullets
-	name = "Sling Bullets, Decrepit (x10)"
+	name = "投石弹, 衰朽 (x10)"
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/decrepit
 	createditem_num = 10
-	i_type = "Ammo"
+	i_type = "弹药"
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 // UNIQUE
 
 /datum/anvil_recipe/weapons/iron/execution
-	name = "Executioner's Sword (+2 Iron)"
+	name = "刽子手 剑 (+2 铁)"
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/sword/long/exe
 	craftdiff = 4
@@ -1471,109 +1471,109 @@
 // BLACKSTEEL
 
 /datum/anvil_recipe/weapons/blacksteel/arming
-	name = "Blacksteel Arming Sword (+1 Blacksteel, +1 Saffira, +1 Silk)"
+	name = "黑钢骑士剑 (+1 黑钢锭, +1 蓝晶, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem/violet, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/sword/blacksteel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/blacksteel/decsword
-	name = "Blacksteel Arming Sword, Decorated (+1 Steel Arming Sword, +1 Saffira, +1 Gold, +1 Silk)"
+	name = "黑钢骑士剑，装饰 (+1 钢骑士剑, +1 蓝晶, +1 金, +1 丝绸)"
 	additional_items = list(/obj/item/rogueweapon/sword, /obj/item/ingot/gold, /obj/item/roguegem/violet, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/sword/decorated/blacksteel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/blacksteel/longword
-	name = "Blacksteel Longsword (+2 Blacksteel, +1 Saffira, +1 Silk)"
+	name = "黑钢长剑 (+2 黑钢, +1 蓝晶, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/violet, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/sword/long/blacksteel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/blacksteel/flamberge
-	name = "Blacksteel Flamberge (+3 Blacksteel, +1 Rontz, +1 Silk)"
+	name = "黑钢 焰形剑（+3黑钢锭，+1 隆兹石，+1丝绸）"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/ruby, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/greatsword/grenz/flamberge/blacksteel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/blacksteel/rapier
-	name = "Blacksteel Rapier (+1 Blacksteel, +1 Gemerald, +1 Silk)"
+	name = "黑钢刺剑 (+1 黑钢, +1 翠晶, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem/green, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/sword/rapier/blacksteel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/blacksteel/messer
-	name = "Blacksteel Messer (+1 Blacksteel, +1 Rontz, +1 Silk)"
+	name = "黑钢砍刀 (+1 黑钢, +1 隆兹石, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem/ruby, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/sword/short/messer/blacksteel
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/blacksteel/lance
-	name = "Blacksteel Lance (+2 Blacksteel, +1 Gemerald +1 Small Log, +1 Silk)"
+	name = "黑钢长枪 (+2 黑钢, +1 翠晶, +1 小原木, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/green, /obj/item/grown/log/tree/small, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/spear/lance/blacksteel
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/blacksteel/halberd
-	name = "Blacksteel Halberd (+3 Blacksteel, +1 Blortz, +1 Small Log, +1 Silk)"
+	name = "黑钢戟 (+3 黑钢, +1 石英, +1 小原木, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/blue, /obj/item/grown/log/tree/small, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/halberd/blacksteel
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/blacksteel/polehammer
-	name = "Blacksteel Polehammer (+3 Blacksteel, +1 Toper, +1 Small Log, +1 Silk)"
+	name = "黑钢长柄锤 (+3 黑钢, +1 托珀石, +1 小原木, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/yellow, /obj/item/grown/log/tree/small, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/eaglebeak/blacksteel
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/blacksteel/mace
-	name = "Blacksteel Mace (+2 Blacksteel, +1 Toper, +1 Silk)"
+	name = "黑钢钉头锤 (+2 黑钢, +1 托珀石, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/yellow, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/mace/blacksteel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/blacksteel/warhammer
-	name = "Blacksteel Warhammer (+2 Blacksteel, +1 Silk, +1 Toper, +1 Stick)"
+	name = "黑钢战锤 (+2 黑钢, +1 丝绸, +1 托珀石, +1 木棍)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/yellow, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/mace/warhammer/blacksteel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/blacksteel/knuckles
-	name = "Blacksteel Knuckles (+1 Dorpel, +1 Silk)"//unarmed chuds get fucked
+	name = "黑钢指虎 (+1 多佩尔石, +1 丝绸)"
 	additional_items = list(/obj/item/roguegem/diamond, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/knuckles/blacksteel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/blacksteel/hurlbat
-	name = "Blacksteel Hurlbat (+1 Silk)"
+	name = "黑钢投掷斧 (+1 丝绸)"
 	additional_items = list(/obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/stoneaxe/hurlbat/blacksteel
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/blacksteel/axe
-	name = "Blacksteel Axe (+2 Blacksteel, +1 Toper, +1 Silk, +1 Stick)"
+	name = "黑钢战斧 (+2 黑钢, +1 托珀石, +1 丝绸, +1 木棍)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/yellow, /obj/item/natural/silk, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/stoneaxe/battle/blacksteel
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/blacksteel/greataxe
-	name = "Blacksteel Greataxe (+3 Blacksteel, +1 Rontz, +1 Small Log, +1 Silk)"
+	name = "黑钢双手斧 (+3 黑钢, +1 隆兹石, +1 小原木, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/ruby, /obj/item/grown/log/tree/small, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/greataxe/blacksteel
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/blacksteel/whip
-	name = "Whip, Blacksteel-Tipped (+1 Saffira, +1 Leather Whip, +1 Silk)"
+	name = "黑钢尖头鞭 (+1 蓝晶, +1 皮鞭, +1 丝绸)"
 	additional_items = list(/obj/item/roguegem/violet, /obj/item/rogueweapon/whip, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/whip/blacksteel
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/blacksteel/urumi
-	name = "Urumi, Blacksteel (+1 Blacksteel, +1 Saffira, +1 Silk)"
+	name = "黑钢乌卢米鞭 (+1 黑钢, +1 蓝晶, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem/violet, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/whip/urumi/blacksteel
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/blacksteel/flail
-	name = "Blacksteel Flail (+2 Blacksteel, +1 Silk)"
+	name = "黑钢链锤 (+2 黑钢, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/flail/blacksteel
 	display_category = ITEM_CAT_WEAPONS_FLAILS
@@ -1585,71 +1585,71 @@
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/blacksteel/dagger
-	name = "Blacksteel Dagger (+1 Rontz, +1 Silk)"
+	name = "黑钢匕首 (+1 隆兹石, +1 丝绸)"
 	additional_items = list(/obj/item/roguegem/ruby, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/blacksteel
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/blacksteel/misericorde
-	name = "Blacksteel Misericorde (+1 Blacksteel, +1 Silk)"
+	name = "黑钢穿甲匕首 (+1 黑钢, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/blacksteel/heavy
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/blacksteel/tossblades
-	name = "Blacksteel Tossblades (+1 Silk) (x3)"
+	name = "黑钢投掷飞刀 (+1 丝绸) (x3)"
 	additional_items = list(/obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/blacksteel
 	createditem_num = 3
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/blacksteel/javelins
-	name = "Javelin, Blacksteel (+1 Blacksteel, +1 Small Log, +1 Silk) (x2)"
+	name = "黑钢标枪 (+1 黑钢, +1 小原木, +1 丝绸) (x2)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/grown/log/tree/small, /obj/item/natural/silk)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/blacksteel
 	createditem_num = 2
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/blacksteel/bolts
-	name = "Crossbow Bolts, Blacksteel (+1 Stick, +1 Silk) (x5)"
+	name = "黑钢弩矢 (+1 木棍, +1 丝绸) (x5)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/natural/silk)
 	created_item = /obj/item/ammo_casing/caseless/rogue/bolt/blacksteel
 	createditem_num = 5
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/blacksteel/arrows
-	name = "Arrows, Blacksteel (+2 Sticks, +1 Silk) (x5)"
+	name = "黑钢箭矢 (+2 木棍, +1 丝绸) (x5)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick, /obj/item/natural/silk)
 	created_item = /obj/item/ammo_casing/caseless/rogue/arrow/blacksteel
 	createditem_num = 5
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/blacksteel/slingbullet
-	name = "Sling Bullet, Blacksteel (x5)"
+	name = "黑钢投石弹 (x5)"
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/blacksteel
 	createditem_num = 5
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/blacksteel/shield
-	name = "Blacksteel Shield (+2 Blacksteel, +1 Rontz, +1 Silk)"
+	name = "黑钢盾牌 (+2 黑钢, +1 隆兹石, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/roguegem/ruby, /obj/item/natural/silk)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/blacksteel
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/blacksteel/handclaws
-	name = "Blacksteel Claws (+1 Blacksteel, +1 Dorpel, +1 Silk)"
+	name = "黑钢爪刃 (+1 黑钢, +1 多佩尔石, +1 丝绸)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem/diamond, /obj/item/natural/silk)//unarmed chuds get fucked
 	created_item = /obj/item/rogueweapon/handclaw/blacksteel
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/blacksteel/quarterstaff
-	name = "Quarterstaff, Blacksteel (+1 Blacksteel, +3 Small Logs)"
+	name = "黑钢铁头杖 (+1 黑钢, +3 小原木)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/woodstaff/quarterstaff/blacksteel
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/blacksteel/spear
-	name = "Spear, Blacksteel (+1 Blacksteel, +1 Gemerald, +2 Small Logs)"
+	name = "黑钢长矛 (+1 黑钢, +1 翠晶, +2 小原木)"
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem/green, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/blacksteel
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
@@ -1659,24 +1659,24 @@
 // HOLY STEEL
 
 /datum/anvil_recipe/weapons/holysteel/church_longsword
-	name = "Longsword, Templaric"
+	name = "长剑, 圣堂式"
 	created_item = /obj/item/rogueweapon/sword/long/church
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/holysteel/church_spear
-	name = "Spear, Templaric (+1 Holy Steel)"
+	name = "长矛, 圣堂式 (+1 圣钢)"
 	additional_items = list(/obj/item/ingot/steelholy)
 	created_item = /obj/item/rogueweapon/spear/holysee
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/holysteel/decasword
-	name = "Longsword, Decablessed (+1 Holy Steel)"
+	name = "长剑, 十重祝圣 (+1 圣钢)"
 	additional_items = list(/obj/item/ingot/steelholy)
 	created_item = /obj/item/rogueweapon/sword/long/undivided
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/holysteel/decashield
-	name = "Shield, Decablessed (+1 Holy Steel)"
+	name = "盾, 十重祝圣 (+1 圣钢)"
 	additional_items = list(/obj/item/ingot/steelholy)
 	created_item = /obj/item/rogueweapon/shield/tower/holysee
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
@@ -1684,68 +1684,68 @@
 // BLESSED SILVER
 
 /datum/anvil_recipe/weapons/psy/axe
-	name = "Psydonic War Axe (+1 Blessed Silver, +1 Stick)"
+	name = "普赛顿式 战斧 (+1 祝福白银, +1 木棍)"
 	created_item = /obj/item/rogueweapon/stoneaxe/battle/psyaxe
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/stick)
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/psy/poleaxe
-	name = "Psydonic Poleaxe (+2 Blessed Silver, +1 Small Log)"
+	name = "普赛顿式 长柄战斧 (+2 祝福 白银, +1 小原木)"
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greataxe/psy
 	display_category = ITEM_CAT_WEAPONS_AXES
 
 /datum/anvil_recipe/weapons/psy/mace
-	name = "Psydonic Grand Mace (+1 Blessed Silver, +1 Small Log)"
+	name = "普赛顿式 巨型钉锤 (+1 祝福 白银, +1 小原木)"
 	created_item = /obj/item/rogueweapon/mace/goden/psy
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/psy/spear
-	name = "Psydonic Spear (+1 Blessed Silver, +1 Small Log)"
+	name = "普赛顿式 长矛 (+1 祝福 白银, +1 小原木)"
 	created_item = /obj/item/rogueweapon/spear/psyspear
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/psy/dagger
-	name = "Psydonic Dagger"
+	name = "普赛顿式 匕首"
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/weapons/psy/shortsword
-	name = "Psydonic Shortsword"
+	name = "普赛顿式 短剑"
 	created_item = /obj/item/rogueweapon/sword/short/psy
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/psy/katar
-	name = "Psydonic Katar"
+	name = "普赛顿式 卡塔拳刃"
 	created_item = /obj/item/rogueweapon/katar/psydon
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/psy/knuckles
-	name = "Psydonic Knuckledusters"
+	name = "普赛顿式 指节套"
 	created_item = /obj/item/rogueweapon/knuckles/psydon
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/psy/cudgel
-	name = "Psydonic Handmace"
+	name = "普赛顿式 手锤"
 	created_item = /obj/item/rogueweapon/mace/cudgel/psy
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/psy/halberd
-	name = "Psydonic Halberd (+2 Blessed Silver, +1 Small Log)"
+	name = "普赛顿式 戟 (+2 祝福 白银, +1 小原木)"
 	created_item = /obj/item/rogueweapon/halberd/psyhalberd
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/weapons/psy/gsword
-	name = "Psydonic Greatsword (+2 Blessed Silver)"
+	name = "普赛顿式 巨剑 (+2 祝福 白银)"
 	created_item = /obj/item/rogueweapon/greatsword/psygsword
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed)
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/psy/sword
-	name = "Psydonic Longsword (+1 Blessed Silver)"
+	name = "普赛顿式 长剑 (+1 祝福 白银)"
 	created_item = /obj/item/rogueweapon/sword/long/psysword
 	additional_items = list(/obj/item/ingot/silverblessed)
 	display_category = ITEM_CAT_WEAPONS_SWORDS
@@ -1756,7 +1756,7 @@
 	additional_items = list(/obj/item/ingot/silverblessed)
 
 /datum/anvil_recipe/weapons/psy/whip
-	name = "Psydonic Whip (+3 Cured Leather)"
+	name = "普赛顿式 鞭 (+3 熟皮)"
 	created_item = /obj/item/rogueweapon/whip/psywhip_lesser
 	additional_items = list(/obj/item/natural/hide/cured, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	display_category = ITEM_CAT_WEAPONS_FLAILS
