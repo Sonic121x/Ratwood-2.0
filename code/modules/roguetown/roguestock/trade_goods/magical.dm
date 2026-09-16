@@ -7,21 +7,21 @@
 
 /datum/trade_good/magical/enchantment_scroll_basic
 	id = TRADE_GOOD_ENCHSCROLL_BASIC
-	name = "basic enchantment scroll"
+	name = "基础附魔卷轴"
 	base_price = SELLPRICE_ENCHSCROLL_BASIC
 	item_type = /obj/item/enchantmentscroll // ES has no scroll tiers - any scroll serves, per the order text
 	accept_subtypes = TRUE
 
 /datum/trade_good/magical/enchantment_scroll_superior
 	id = TRADE_GOOD_ENCHSCROLL_SUPERIOR
-	name = "superior enchantment scroll"
+	name = "高阶附魔卷轴"
 	base_price = SELLPRICE_ENCHSCROLL_SUPERIOR
 	item_type = /obj/item/enchantmentscroll // ES has no scroll tiers - any scroll serves, per the order text
 	accept_subtypes = TRUE
 
 /datum/trade_good/magical/enchantment_scroll_greater
 	id = TRADE_GOOD_ENCHSCROLL_GREATER
-	name = "greater enchantment scroll"
+	name = "至臻附魔卷轴"
 	base_price = SELLPRICE_ENCHSCROLL_GREATER
 	item_type = /obj/item/enchantmentscroll // ES has no scroll tiers - any scroll serves, per the order text
 	accept_subtypes = TRUE

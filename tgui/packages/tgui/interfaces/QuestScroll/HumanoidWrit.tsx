@@ -14,7 +14,7 @@ import {
 
 export const WritOpening = (props: { realm: string }) => (
   <p style={writParagraph}>
-    <i>Be it known unto all who bear arms in {props.realm}&apos;s defence:</i>
+    <i>兹晓谕所有为 {props.realm} 执兵御敌之人:</i>
   </p>
 );
 
@@ -26,32 +26,32 @@ export const SummonsClause = (props: {
   realm: string;
 }) => {
   const { named, ringleader, groupWord, namePlural, realm } = props;
-  const courts = `the courts of ${realm}`;
+  const courts = `${realm} 的法庭`;
   let body: React.ReactNode;
   if (named) {
     body = (
       <>
-        That <b>{named}</b> hath been thrice summoned at {courts}, and to none
-        of them did they answer.
+        该 <b>{named}</b> 已三度受传唤至 {courts}, 却
+        未有一次应召到庭.
       </>
     );
   } else if (ringleader && groupWord && namePlural) {
     body = (
       <>
-        That a {groupWord} of {namePlural}, gathered under one called{' '}
-        <b>{ringleader}</b>, hath been thrice summoned at {courts}, and to none
-        of those summons did the ringleader nor any of their fellows answer.
+        一{groupWord} {namePlural} 聚集在名为 <b>{ringleader}</b> 者
+        之下, 已三度受传唤至 {courts}, 而首恶
+        及其任何同伙皆未应召到庭.
       </>
     );
   } else if (groupWord && namePlural) {
     body = (
       <>
-        That a {groupWord} of {namePlural} hath been thrice summoned at {courts}
-        , and answered none.
+        一{groupWord} {namePlural} 已三度受传唤至 {courts}
+        , 却无人应召到庭.
       </>
     );
   } else {
-    body = <>That the accused hath been thrice summoned, and answered none.</>;
+    body = <>被告已三度受传唤, 却未应召到庭.</>;
   }
   return <p style={writParagraph}>{body}</p>;
 };
@@ -61,7 +61,7 @@ export const IndictmentList = (props: { crimes: string[] }) => {
   return (
     <>
       <p style={{ ...writParagraph, marginBottom: '4px' }}>
-        Whereof they stand accused of:
+        其等所被控之罪如下:
       </p>
       <ul style={indictmentList}>
         {props.crimes.map((c, i) => (
@@ -76,8 +76,8 @@ export const IndictmentList = (props: { crimes: string[] }) => {
 
 export const SacralPlea = (props: { rulerTitle: string }) => (
   <p style={sacralPlea}>
-    Wherefore the temples of the Tens have made plea unto the {props.rulerTitle},
-    that this work be done with haste, lest further blasphemy compound the wrong.
+    为此, 十神的诸神殿已向 {props.rulerTitle} 请愿,
+    望此事速速办妥, 以免更多亵渎使罪愆愈积愈重.
   </p>
 );
 
@@ -97,10 +97,10 @@ const subjectNoun = (
   if (ringleader)
     { return (
       <>
-        <b>{ringleader}</b> and all who follow their banner
+        <b>{ringleader}</b> 及其麾下所有随从
       </>
     ); }
-  return <>every soul of this {groupWord ?? 'gang'}</>;
+  return <>此{groupWord ?? '匪帮'}之中的每一条性命</>;
 };
 
 const CondemnationCaputLupinum = (props: CondemnationProps) => {
@@ -109,11 +109,11 @@ const CondemnationCaputLupinum = (props: CondemnationProps) => {
   const plural = !!ringleader || !named;
   return (
     <p style={writParagraph}>
-      By writ of the {rulerTitle}, and by counsel of the estates, {subject}{' '}
-      {plural ? 'are' : 'is'} declared{' '}
-      <span style={caputLupinum}>CAPUT LUPINUM</span>, volf
-      {plural ? "'s heads" : "'s head"}, for that a volf is a beast hated of
-      all folk.
+      依 {rulerTitle} 之令状, 并经议会谏议, {subject}{' '}
+      {plural ? '众人' : '此人'}被判处{' '}
+      <span style={caputLupinum}>狼首之刑</span>, 即献上沃尔夫
+      {plural ? '们的首级' : '的首级'}, 因沃尔夫
+      乃人人憎恶之野兽.
     </p>
   );
 };
@@ -124,11 +124,11 @@ const CondemnationUtlagatus = (props: CondemnationProps) => {
   const plural = !!ringleader || !named;
   return (
     <p style={writParagraph}>
-      By writ of the {rulerTitle}, and by counsel of the estates, {subject}{' '}
-      {plural ? 'are' : 'is'} put{' '}
-      <span style={caputLupinum}>UTLAGATUS</span>, outside the law, that no
-      hand owe them bread, fire, nor roof, and that any who shelter them share
-      in their crime.
+      依 {rulerTitle} 之令状, 并经议会谏议, {subject}{' '}
+      {plural ? '众人' : '此人'}被判处{' '}
+      <span style={caputLupinum}>法外之刑</span>, 逐出法外, 此后无人
+      当供其面包, 火种与屋檐, 且凡庇护之者
+      皆与其同罪.
     </p>
   );
 };
@@ -138,9 +138,9 @@ const CondemnationVolkomir = (props: CondemnationProps) => {
   const subject = subjectNoun(named, ringleader, groupWord);
   return (
     <p style={writParagraph}>
-      By writ of the {rulerTitle}, and by counsel of the estates, let {subject}{' '}
-      be named <span style={caputLupinum}>VOLKOMIR</span>, volf cast out of the realm&apos;s peace. Driven
-      from every hearth and hall, harboured by no kin, mourned by no friend.
+      依 {rulerTitle} 之令状, 并经议会谏议, 判 {subject}{' '}
+      名为 <span style={caputLupinum}>沃尔科米尔</span>, 即逐出国度安宁之沃尔夫. 将其
+      逐出每一灶火与厅堂, 亲族不得收容, 友人不得哀悼.
     </p>
   );
 };
@@ -161,10 +161,10 @@ export const CondemnationDeclaration = (
 
 export const CorruptionOfBloodClause = () => (
   <p style={{ ...writParagraph, fontStyle: 'italic' }}>
-    And for that they have broken faith sworn before Ravox, their blood is held
-    corrupt: no kin of their line shall inherit name, land, or honour from
-    them, nor claim any title by their blood. The taint passes through the
-    line, and there it ends.
+    又因其等背弃于拉沃克斯面前所立之誓, 其血被
+    判为污浊: 其血脉之亲属不得承其名, 其地, 其荣,
+    亦不得以血统主张任何头衔. 此污随血脉
+    相传, 至其而止.
   </p>
 );
 
@@ -175,16 +175,16 @@ export const LicenceToSlay = (props: {
   guildCutRate: number;
 }) => (
   <p style={writParagraph}>
-    From this day forward it is lawful for any to slay them as volves. Upon
-    their death the writ shall fall silent and mark itself; return it then to
-    the Contract Ledger, that the bounty of{' '}
+    自今日起, 任何人皆可将其视作沃尔夫加以诛杀. 其等
+    身死之时, 令状自会沉寂留痕; 届时将其交回
+    契约台账, 所悬之赏金{' '}
     <RewardClause
       reward={props.reward}
       levyRate={props.levyRate}
       levyExempt={props.levyExempt}
       guildCutRate={props.guildCutRate}
     />{' '}
-    be paid.
+    即可领取.
   </p>
 );
 
@@ -195,37 +195,37 @@ export const RecoveryAddendum = (props: {
   category?: string | null;
 }) => {
   const { shipment, destination, circumstance, category } = props;
-  const what = shipment ? <b>{shipment}</b> : <>the lost goods</>;
-  const dest = destination || 'their rightful keeping';
+  const what = shipment ? <b>{shipment}</b> : <>所失之货物</>;
+  const dest = destination || '其合法保管人';
   let lead: React.ReactNode;
   switch (category) {
     case 'beast':
       lead = (
         <>
-          And further: scattered where the beast attacked lies {what}, fallen
-          from lawful carriage.
+          再者: 野兽行凶之处散落着{what}, 已自
+          合法运送途中失落.
         </>
       );
       break;
     case 'undead':
       lead = (
         <>
-          And further: strewn where the dead now wander lies {what}, dropped
-          in the breaking of lawful carriage.
+          再者: 亡者游荡之处散布着{what}, 于合法
+          运送被劫之时遗落.
         </>
       );
       break;
     default:
       lead = (
         <>
-          And further: among the spoils of this band lies {what}, taken from
-          lawful carriage.
+          再者: 此伙匪类所掠之物中藏有{what}, 乃自
+          合法运送途中夺取.
         </>
       );
   }
   return (
     <p style={writParagraph}>
-      {lead} Recover the sealed parcel and bear it unto <b>{dest}</b>.
+      {lead} 寻回那封缄之包裹, 并将其送至 <b>{dest}</b>.
       {circumstance ? <> {circumstance}</> : null}
     </p>
   );

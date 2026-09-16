@@ -35,38 +35,38 @@
 	. = ..()
 	if(active_recipe && current_step <= active_recipe.ingredients.len)
 		var/next_path = active_recipe.ingredients[current_step]
-		. += span_smallnotice("Recipe: <b>[active_recipe.name]</b>. Next step: Add [initial(next_path:name)].")
+		. += span_smallnotice("配方：<b>[active_recipe.name]</b>。下一步：加入 [initial(next_path:name)]。")
 
 	var/list/possible = SScooking.recipe_index[src.type]
 	if(possible && possible.len)
 		var/list/recipe_names = list()
 		for(var/datum/food_recipe/R in possible)
 			var/ingredient = R.ingredients[1]
-			recipe_names += "[R.name] (starts with [initial(ingredient:name)])"
-		. += span_smallnotice("This could be used to prepare: [recipe_names.Join(", ")].")
+			recipe_names += "[R.name]（以 [initial(ingredient:name)] 开头）"
+		. += span_smallnotice("可以用它来制作：[recipe_names.Join(", ")]。")
 
 	if(cooked_type)
 		var/obj/item/CT = cooked_type
-		. += span_smallnotice("It is prepared and ready to be <b>cooked</b> into [initial(CT.name)].")
+		. += span_smallnotice("它已准备就绪，可以被<b>烹饪</b>成 [initial(CT.name)]。")
 	if(fried_type)
 		var/obj/item/FT = fried_type
-		. += span_smallnotice("It is prepared and ready to be <b>fried</b> into [initial(FT.name)].")
+		. += span_smallnotice("它已准备就绪，可以被<b>油炸</b>成 [initial(FT.name)]。")
 	if(slice_path)
 		var/obj/item/ST = slice_path
-		. += span_smallnotice("It is prepared and ready to be <b>sliced</b> into [initial(ST.name)].")
+		. += span_smallnotice("它已准备就绪，可以被<b>切片</b>成 [initial(ST.name)]。")
 
 /obj/item/reagent_containers/food/snacks/rogue/MiddleClick(mob/user)
 	. = ..()
 
 	if(!active_recipe)
-		to_chat(user, span_warning("There is no recipe currently active on [src]."))
+		to_chat(user, span_warning("[src] 上当前没有激活的配方。"))
 		return
 
-	var/confirmation = tgui_alert(user, "Are you sure you want to reset the preparation for [active_recipe.name]?", "Reset Recipe", list("Yes", "No"))
-	if(confirmation != "Yes" || !active_recipe)
+	var/confirmation = tgui_alert(user, "你确定要重置 [active_recipe.name] 的制作进度吗？", "重置配方", list("是", "否"))
+	if(confirmation != "是" || !active_recipe)
 		return
 
-	to_chat(user, span_notice("You clear the preparation progress for [active_recipe.name] from [src]."))
+	to_chat(user, span_notice("你清除了 [src] 上 [active_recipe.name] 的制作进度。"))
 	active_recipe = null
 	current_step = 1
 	cut_overlays()
@@ -81,7 +81,7 @@
 
 	var/obj/structure/table/T = locate() in loc
 	if(!T)
-		to_chat(user, span_warning("You need a table to prepare [src.name]."))
+		to_chat(user, span_warning("你需要一张桌子来制作 [src.name]。"))
 		return
 
 	var/requirement = active_recipe.ingredients[current_step]
@@ -92,7 +92,7 @@
 			do_cooking_step(I, user, requirement, amt)
 			return
 		else
-			to_chat(user, span_warning("You need at least [amt] units of [initial(requirement:name)]!"))
+			to_chat(user, span_warning("你至少需要 [amt] 单位的 [initial(requirement:name)]！"))
 			return
 
 	if(current_step <= active_recipe.ingredients.len && istype(I, active_recipe.ingredients[current_step]))
@@ -139,7 +139,7 @@
 		if(!active_recipe.needs_cooking)
 			finalize_cooking()
 		else
-			to_chat(user, span_nicegreen("[name] is ready to be cooked."))
+			to_chat(user, span_nicegreen("[name] 已经可以烹饪了。"))
 			cooked_type = active_recipe.result_type
 			fried_type = active_recipe.result_type
 			active_recipe = null
@@ -155,16 +155,16 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Many foodstuffs can be sliced into smaller portions by left-clicking them with a knife on the 'CUT' or 'CHOP' intents. This includes most meats, vegetables, fruits, bread, pies, cakes, saloumi, butter, salo, and more.")
-	. += span_info("Most food will eventually rot, if left out for long enough. Storing food in a closed chest or atop a platter will effectively prevent it from rotting.")
-	. += span_info("Rarer foods and drinks, or those made from more expensive recipes, can provide increased bonuses to the indulger's mood and health.")
-	. += span_info("Everyone has a favorite meal and drink to indulge in - and, conversely, a hated meal and drink that they absolutely despise. Serve them right, and their mood will greatly improve.")
-	. += span_info("Those of nobility have much higher standards, when it comes to what - and how - they eat. They prefer to eat plattered meals with proper utensils, while disliking plainer and cheaper food.")
-	. += span_info("Set a recipe on accident? middleclick the item to reset the recipe back to nothing and pick a different one.")
+	. += span_info("许多食材都可以在“切”或“剁”意图下用刀左键点击，切成更小的部分。这包括大多数肉类、蔬菜、水果、面包、馅饼、蛋糕、烟熏香肠、黄油、盐腌肥膘等等。")
+	. += span_info("大多数食物如果放置过久，最终都会腐烂。将食物存放在密闭的箱子或托盘上，可以有效防止其腐烂。")
+	. += span_info("更稀有的食物和饮品，或是用更昂贵的配方制作而成的，都能为享用者带来更多的心情和健康增益。")
+	. += span_info("每个人都有自己最爱的一餐与一杯饮品——反之，也有深恶痛绝、避之不及的一餐与一杯饮品。投其所好，他们的心情就会大为改善。")
+	. += span_info("贵族们在吃什么——以及怎么吃——方面有着高得多的标准。他们喜欢用合适的餐具享用盛放在盘子里的餐点，而不喜欢平淡廉价的食物。")
+	. += span_info("不小心设错了配方？中键点击物品即可清除配方，重新选择另一种。")
 
 /obj/item/reagent_containers/food/snacks/rogue/Initialize()
 	. = ..()
-	eatverb = pick("bite","chew","nibble","gobble","chomp")
+	eatverb = pick("咬","咀嚼","小口啃","狼吞虎咽","大口咬")
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase // root item for uncooked food thats disgusting when raw
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
@@ -195,7 +195,7 @@
 	eater.put_in_active_hand(I)
 
 /obj/effect/decal/cleanable/food/mess // decal applied when throwing minced meat for example
-	name = "mess"
+	name = "污渍"
 	desc = ""
 	color = "#ab9d9d"
 	icon_state = "tomato_floor1"
@@ -204,7 +204,7 @@
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
 	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
-			user.visible_message(span_notice("[user] chops [src]!"))
+			user.visible_message(span_notice("[user]把[src]切碎了！"))
 			slice(W, user)
 			return 1
 		else if(slice(W, user))
@@ -230,8 +230,8 @@
 	experimental_onback = FALSE
 
 /obj/item/book/rogue/yeoldecookingmanual // new book with some tips to learn
-	name = "Ye olde ways of cookinge"
-	desc = "Penned by Svend Fatbeard, butler in the fourth generation"
+	name = "古旧烹饪之道"
+	desc = "由第四代管家斯文德·胖胡子撰写"
 	icon_state ="book8_0"
 	base_icon_state = "book8"
 	bookfile = "Neu_cooking.json"
@@ -245,8 +245,8 @@
 
 // -------------- Flour -----------------
 /obj/item/reagent_containers/powder/flour
-	name = "flour"
-	desc = "With this ambition, we build an empire."
+	name = "面粉"
+	desc = "怀揣这份志气，我们便能筑起帝国。"
 	gender = PLURAL
 	icon_state = "flour"
 	list_reagents = list(/datum/reagent/floure = 1)
@@ -276,8 +276,8 @@
 
 /obj/item/reagent_containers/powder/flour/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-clicking yourself while targeting the nose will automatically snort the powder in your hand.")
-	. += span_info("Most powders can imbue a wide variety of effects, when inhaled.")
+	. += span_info("将目标对准鼻子并左键点击自己，会自动吸入你手中的粉末。")
+	. += span_info("大多数粉末在吸入后都能带来各种各样的效果。")
 
 /obj/item/reagent_containers/powder/flour/attackby(obj/item/I, mob/living/user, params)
 	var/obj/item/reagent_containers/R = I
@@ -294,17 +294,17 @@
 	if(water_added)
 		return FALSE
 	if(isturf(loc)&& (!found_table))
-		to_chat(user, span_notice("Need a table..."))
+		to_chat(user, span_notice("需要一张桌子......"))
 		return FALSE
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
-		to_chat(user, span_notice("Needs more water to work it."))
+		to_chat(user, span_notice("还需要更多水才能和开。"))
 		return TRUE
-	to_chat(user, span_notice("Adding water, now it's time to knead it..."))
+	to_chat(user, span_notice("加好水了，现在该揉面了......"))
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user, short_cooktime, target = src))
 		add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-		name = "wet flour"
-		desc = "Destined for greatness, at your hands."
+		name = "湿面粉"
+		desc = "在你手中，它注定会成就一番美味。"
 		if(is_container)
 			R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
@@ -323,7 +323,7 @@
 
 // -------------- SALT -----------------
 /obj/item/reagent_containers/powder/salt
-	name = "salt"
+	name = "盐"
 	desc = ""
 	gender = PLURAL
 	icon_state = "salt"
@@ -357,16 +357,16 @@
 	if(water_added)
 		return FALSE
 	if(isturf(loc)&& (!found_table))
-		to_chat(user, "<span class='notice'>Need a table...</span>")
+		to_chat(user, "<span class='notice'>需要一张桌子......</span>")
 		return FALSE
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
-		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
+		to_chat(user, "<span class='notice'>还需要更多水才能淘洗。</span>")
 		return TRUE
-	to_chat(user, "<span class='notice'>Adding water, now it's time to hand wash it...</span>")
+	to_chat(user, "<span class='notice'>加好水了，现在该用手淘洗了......</span>")
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user,2 SECONDS, target = src))
 		user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-		name = "wet rice"
+		name = "湿米"
 		if(is_container)
 			R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
@@ -384,7 +384,7 @@
 
 /* -------------- WET RICE ----------------- */
 /obj/item/reagent_containers/food/snacks/rogue/ricewet
-	name = "washed rice"
+	name = "洗净的米"
 	desc = ""
 	gender = PLURAL
 	icon = 'icons/roguetown/items/produce.dmi'
@@ -395,8 +395,8 @@
 	sellprice = 0
 
 /obj/item/reagent_containers/powder/mineral
-	name = "coarse minerals"
-	desc = "Ground up rock. It could be made into mineral salts with more work."
+	name = "粗矿粉"
+	desc = "研碎后的石粉，再加工一下就能制成矿盐。"
 	gender = PLURAL
 	icon_state = "salt"
 	list_reagents = list(/datum/reagent/floure = 1)
@@ -405,8 +405,8 @@
 	var/water_added
 
 /obj/item/reagent_containers/powder/coarse_salt
-	name = "coarse salt"
-	desc = "Somewhat gritty, coarse salt. Could be ground down into finer salt."
+	name = "粗盐"
+	desc = "带着些许砂砾感的粗盐，还可以继续磨成更细的盐。"
 	gender = PLURAL
 	icon_state = "salt"
 	list_reagents = list(/datum/reagent/floure = 1)
@@ -434,16 +434,16 @@
 	if(water_added)
 		return FALSE
 	if(isturf(loc)&& (!found_table))
-		to_chat(user, span_notice("Need a table..."))
+		to_chat(user, span_notice("需要一张桌子......"))
 		return FALSE
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
-		to_chat(user, span_notice("Needs more water to work it."))
+		to_chat(user, span_notice("还需要更多水才能处理。"))
 		return TRUE
-	to_chat(user, span_notice("Adding water, now it's time to sift it..."))
+	to_chat(user, span_notice("加好水了，现在该筛滤它了......"))
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user, short_cooktime, target = src))
-		name = "prepared minerals"
-		desc = "Still quite coarse, needs some sifting."
+		name = "处理过的矿粉"
+		desc = "还是相当粗糙，还得再筛一遍。"
 		if(is_container)
 			R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
@@ -453,7 +453,7 @@
 /obj/item/reagent_containers/powder/mineral/attackby(obj/item/I, mob/user, params)
 	if(water_added)
 		if(istype(I, /obj/item/natural/cloth))
-			user.visible_message(span_info("[user] sifts the minerals..."))
+			user.visible_message(span_info("[user] 正在筛滤矿粉……"))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/peppermill.ogg', 90, TRUE, -1)
 			if(do_after(user, 3 SECONDS, target = src))
 				new /obj/item/reagent_containers/powder/coarse_salt(loc)
@@ -462,8 +462,8 @@
 
 /* -------------- PUMPKIN SPICE ----------------- */
 /obj/item/reagent_containers/food/snacks/pumpkinspice
-	name = "pumpkin spice"
-	desc = "Rich flavors from a humble origin."
+	name = "南瓜香料"
+	desc = "源自朴实之地的浓郁风味。"
 	gender = PLURAL
 	icon_state = "pumpkinspice"
 	icon = 'icons/roguetown/items/produce.dmi'
@@ -473,6 +473,6 @@
 	sellprice = 0
 
 /datum/reagent/consumable/pumpkinspice
-	name = "pumpkin spice"
-	description = "Spiced delight."
+	name = "南瓜香料"
+	description = "令人愉悦的香料滋味。"
 	color = "#ffffff"

@@ -8,7 +8,7 @@ export const MarketTab = (props: { harbor?: HarborData }) => {
     return (
       <div style={pageStyle}>
         <div style={{ ...cardStyle, textAlign: 'center', color: INK_SOFT }}>
-          The market ledgers are not yet drawn up.
+          市场账簿尚未拟就.
         </div>
       </div>
     );

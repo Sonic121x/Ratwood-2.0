@@ -31,35 +31,35 @@ export const RosterTab = ({ data }: TabProps) => {
           marginTop: 6,
         }}
       >
-        Mercenary Roster
+        佣兵名册
       </div>
       <div style={subtitleStyle}>
-        The names and detailings of those registered to the Mercenary Guild
+        在佣兵行会登记者的姓名与简历
       </div>
       <hr style={rulerStyle} />
 
       {!roster || total === 0 ? (
-        <EmptyMessage text="No mercenaries have registered yet." />
+        <EmptyMessage text="还没有佣兵登记在册." />
       ) : (
         <>
           <SummaryLine roster={roster} total={total} />
           {roster.available.length > 0 && (
             <RosterGroup
-              label="Available for Contract"
+              label="可受雇佣"
               color={SEAL_GREEN}
               entries={roster.available}
             />
           )}
           {roster.contracted.length > 0 && (
             <RosterGroup
-              label="Currently Contracted"
+              label="已受雇佣"
               color={SEAL_AMBER}
               entries={roster.contracted}
             />
           )}
           {roster.dnd.length > 0 && (
             <RosterGroup
-              label="Do Not Disturb"
+              label="谢绝打扰"
               color={SEAL_RED}
               entries={roster.dnd}
             />
@@ -75,7 +75,7 @@ export const RosterTab = ({ data }: TabProps) => {
           fontSize: FONT_BODY,
         }}
       >
-        Visit the Mercenary Statue for further contact.
+        如需进一步联系, 请前往佣兵雕像.
       </div>
     </>
   );
@@ -96,18 +96,18 @@ const SummaryLine = ({
       padding: '4px 0 12px 0',
     }}
   >
-    Total: <b>{total}</b>
+    总计: <b>{total}</b>
     <span style={{ color: INK_FAINT }}> &middot; </span>
     <span style={{ color: SEAL_GREEN }}>
-      Available: {roster.available_count}
+      可雇佣: {roster.available_count}
     </span>
     <span style={{ color: INK_FAINT }}> &middot; </span>
     <span style={{ color: SEAL_AMBER }}>
-      Contracted: {roster.contracted_count}
+      已雇佣: {roster.contracted_count}
     </span>
     <span style={{ color: INK_FAINT }}> &middot; </span>
     <span style={{ color: SEAL_RED }}>
-      DND: {roster.dnd_count}
+      谢绝打扰: {roster.dnd_count}
     </span>
   </div>
 );
