@@ -20,66 +20,66 @@ GLOBAL_LIST_INIT(towner_orevein_tier_tp, list(
 
 GLOBAL_LIST_INIT(towner_orevein_varieties, list(
 	OREVEIN_VARIETY_IRON = list(
-		"label" = "Iron Vein",
-		"blurb" = "Iron and coal, with a little cinnabar and the odd gem.",
+		"label" = "铁矿脉",
+		"blurb" = "铁与煤，另有些许朱砂与零星宝石。",
 		"tiers" = list(
 			TOWNER_POSTING_TIER_MEDIUM = list(
-				list("path" = /obj/item/rogueore/iron, "min" = 14, "max" = 18, "noun" = "iron"),
-				list("path" = /obj/item/rogueore/coal, "min" = 8, "max" = 12, "noun" = "coal"),
-				list("path" = /obj/item/rogueore/cinnabar, "min" = 2, "max" = 3, "noun" = "cinnabar"),
-				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "gems", "prob" = 40),
+				list("path" = /obj/item/rogueore/iron, "min" = 14, "max" = 18, "noun" = "铁矿石"),
+				list("path" = /obj/item/rogueore/coal, "min" = 8, "max" = 12, "noun" = "煤"),
+				list("path" = /obj/item/rogueore/cinnabar, "min" = 2, "max" = 3, "noun" = "朱砂矿石"),
+				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "宝石", "prob" = 40),
 			),
 			TOWNER_POSTING_TIER_HARD = list(
-				list("path" = /obj/item/rogueore/iron, "min" = 26, "max" = 32, "noun" = "iron"),
-				list("path" = /obj/item/rogueore/coal, "min" = 12, "max" = 16, "noun" = "coal"),
-				list("path" = /obj/item/rogueore/cinnabar, "min" = 3, "max" = 4, "noun" = "cinnabar"),
-				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "gems", "prob" = 80),
+				list("path" = /obj/item/rogueore/iron, "min" = 26, "max" = 32, "noun" = "铁矿石"),
+				list("path" = /obj/item/rogueore/coal, "min" = 12, "max" = 16, "noun" = "煤"),
+				list("path" = /obj/item/rogueore/cinnabar, "min" = 3, "max" = 4, "noun" = "朱砂矿石"),
+				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "宝石", "prob" = 80),
 			),
 		),
 	),
 	OREVEIN_VARIETY_CUPROSTANNIC = list(
-		"label" = "Copper Vein",
-		"blurb" = "Copper and tin, with small amount of luxury.",
+		"label" = "铜矿脉",
+		"blurb" = "铜与锡，另有些许奢侈品。",
 		"tiers" = list(
 			TOWNER_POSTING_TIER_MEDIUM = list(
-				list("path" = /obj/item/rogueore/copper, "min" = 20, "max" = 26, "noun" = "copper"),
-				list("path" = /obj/item/rogueore/tin, "min" = 6, "max" = 9, "noun" = "tin"),
-				list("path" = /obj/item/rogueore/cinnabar, "min" = 1, "max" = 2, "noun" = "cinnabar"),
-				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "gems", "prob" = 20),
+				list("path" = /obj/item/rogueore/copper, "min" = 20, "max" = 26, "noun" = "铜矿石"),
+				list("path" = /obj/item/rogueore/tin, "min" = 6, "max" = 9, "noun" = "锡矿石"),
+				list("path" = /obj/item/rogueore/cinnabar, "min" = 1, "max" = 2, "noun" = "朱砂矿石"),
+				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "宝石", "prob" = 20),
 			),
 			TOWNER_POSTING_TIER_HARD = list(
-				list("path" = /obj/item/rogueore/copper, "min" = 32, "max" = 40, "noun" = "copper"),
-				list("path" = /obj/item/rogueore/tin, "min" = 10, "max" = 14, "noun" = "tin"),
-				list("path" = /obj/item/rogueore/cinnabar, "min" = 3, "max" = 4, "noun" = "cinnabar"),
-				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "gems", "prob" = 60),
+				list("path" = /obj/item/rogueore/copper, "min" = 32, "max" = 40, "noun" = "铜矿石"),
+				list("path" = /obj/item/rogueore/tin, "min" = 10, "max" = 14, "noun" = "锡矿石"),
+				list("path" = /obj/item/rogueore/cinnabar, "min" = 3, "max" = 4, "noun" = "朱砂矿石"),
+				list("pool" = "orevein_gems", "min" = 1, "max" = 1, "noun" = "宝石", "prob" = 60),
 			),
 		),
 	),
 	OREVEIN_VARIETY_GEMMIFEROUS = list(
-		"label" = "Gem Vein",
-		"blurb" = "Cut gems and raw gold, no base metal.",
+		"label" = "宝石矿脉",
+		"blurb" = "切磨好的宝石与生金，没有贱金属。",
 		"tiers" = list(
 			TOWNER_POSTING_TIER_MEDIUM = list(
-				list("path" = /obj/item/rogueore/gold, "min" = 1, "max" = 2, "noun" = "gold"),
-				list("pool" = "orevein_gems", "min" = 2, "max" = 2, "noun" = "gems"),
+				list("path" = /obj/item/rogueore/gold, "min" = 1, "max" = 2, "noun" = "金矿石"),
+				list("pool" = "orevein_gems", "min" = 2, "max" = 2, "noun" = "宝石"),
 			),
 			TOWNER_POSTING_TIER_HARD = list(
-				list("path" = /obj/item/rogueore/gold, "min" = 2, "max" = 3, "noun" = "gold"),
-				list("pool" = "orevein_gems", "min" = 3, "max" = 4, "noun" = "gems"),
+				list("path" = /obj/item/rogueore/gold, "min" = 2, "max" = 3, "noun" = "金矿石"),
+				list("pool" = "orevein_gems", "min" = 3, "max" = 4, "noun" = "宝石"),
 			),
 		),
 	),
 	OREVEIN_VARIETY_AURICINNABAR = list(
-		"label" = "Cinnabar Vein",
-		"blurb" = "Cinnabar with gold, prized by alchemists.",
+		"label" = "朱砂矿脉",
+		"blurb" = "与金共生的朱砂，为炼金术士所珍视。",
 		"tiers" = list(
 			TOWNER_POSTING_TIER_MEDIUM = list(
-				list("path" = /obj/item/rogueore/gold, "min" = 2, "max" = 3, "noun" = "gold"),
-				list("path" = /obj/item/rogueore/cinnabar, "min" = 9, "max" = 11, "noun" = "cinnabar"),
+				list("path" = /obj/item/rogueore/gold, "min" = 2, "max" = 3, "noun" = "金矿石"),
+				list("path" = /obj/item/rogueore/cinnabar, "min" = 9, "max" = 11, "noun" = "朱砂矿石"),
 			),
 			TOWNER_POSTING_TIER_HARD = list(
-				list("path" = /obj/item/rogueore/gold, "min" = 4, "max" = 5, "noun" = "gold"),
-				list("path" = /obj/item/rogueore/cinnabar, "min" = 14, "max" = 17, "noun" = "cinnabar"),
+				list("path" = /obj/item/rogueore/gold, "min" = 4, "max" = 5, "noun" = "金矿石"),
+				list("path" = /obj/item/rogueore/cinnabar, "min" = 14, "max" = 17, "noun" = "朱砂矿石"),
 			),
 		),
 	),
@@ -87,8 +87,8 @@ GLOBAL_LIST_INIT(towner_orevein_varieties, list(
 
 /datum/quest/kill/recovery/towner/miner_orevein
 	quest_type = QUEST_TOWNER_MINER_OREVEIN
-	parcel_label = "ores"
-	sealed_noun = "ore crate"
+	parcel_label = "矿石"
+	sealed_noun = "矿石板条箱"
 
 /datum/quest/kill/recovery/towner/miner_orevein/get_eligible_regions()
 	return GLOB.towner_orevein_regions
@@ -103,21 +103,21 @@ GLOBAL_LIST_INIT(towner_orevein_varieties, list(
 	if(title)
 		return title
 	if(quest_giver_name)
-		return "[quest_giver_name]'s Lead"
-	return "A Miner's Lead"
+		return "[quest_giver_name]的线索"
+	return "矿工的线索"
 
 /datum/quest/kill/recovery/towner/miner_orevein/get_objective_text()
-	return "Break the elemental guard on the strike and carry the ore-crate back to [quest_giver_name || "the miner"]."
+	return "击破矿脉上的元素守卫，并把矿石板条箱运回给[quest_giver_name || "矿工"]。"
 
 /datum/quest/kill/recovery/towner/miner_orevein/get_parcel_name()
-	return "[quest_giver_name]'s ore-crate"
+	return "[quest_giver_name]的矿石板条箱"
 
 /datum/quest/kill/recovery/towner/miner_orevein/get_parcel_desc()
-	return "A crate packed with what [quest_giver_name] mined before the elementals closed in, magickally sealed so only they can open it."
+	return "一只板条箱，装满了[quest_giver_name]在元素生物逼近前采得的矿石，以魔法封存，唯其本人可开启。"
 
 /datum/quest/kill/recovery/towner/miner_orevein/get_writ_intro()
-	var/region = target_spawn_area || "the deep places"
-	return "[quest_giver_name || "The miner"] hath prospected a vein within [region], guarded by a host of earth elementals. They struck a good haul before the host drove them off, and now call for hands to break the guard and haul out the crate."
+	var/region = target_spawn_area || "地底深处"
+	return "[quest_giver_name || "矿工"]在[region]探得一处矿脉，由一大群土元素看守。他们采得了丰厚的一批，随后被这群守卫赶了回来，如今呼唤人手去击破守卫并把板条箱拖出来。"
 
 /datum/quest/kill/recovery/towner/miner_orevein/pick_region_faction_for(datum/threat_region/TR)
 	return get_quest_faction(QUEST_FACTION_EARTH_ELEMENTAL)

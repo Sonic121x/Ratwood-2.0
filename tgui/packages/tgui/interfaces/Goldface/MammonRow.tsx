@@ -28,7 +28,7 @@ export const MammonRow = (props: Props) => {
           marginRight: '12px',
         }}
       >
-        Mammon Loaded
+        已装载玛门
       </div>
       <div style={{ ...fieldValueStyle, fontWeight: 'bold' }}>{budget}m</div>
       <div style={{ display: 'flex', gap: '6px' }}>
@@ -38,7 +38,7 @@ export const MammonRow = (props: Props) => {
           disabled={budget <= 0}
           onClick={() => act('change')}
         >
-          Withdraw as Coin
+          以钱币形式取出
         </button>
         {isProprietor && !isPublic && (
           <button
@@ -46,7 +46,7 @@ export const MammonRow = (props: Props) => {
             style={inkButtonStyle()}
             onClick={() => act('secrets')}
           >
-            {starsIfIlliterate('Secrets', canRead)}
+            {starsIfIlliterate('秘密', canRead)}
           </button>
         )}
       </div>

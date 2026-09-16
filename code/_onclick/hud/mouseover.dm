@@ -225,9 +225,9 @@
 	if(!migrant_type && job)
 		var/datum/job/J = SSjob.GetJob(job)
 		if(!J || J.wanderer_examine)
-			return "Wanderer"
+			return "流浪者"
 		if(J.lowlife_examine)
-			return "Lowlife"
+			return "贱民"
 	return ..()
 
 /atom/movable/screen

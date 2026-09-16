@@ -1,6 +1,6 @@
 /obj/item/cooking/platter
-	name = "platter"
-	desc = "For holding meals fit for kings."
+	name = "盘子"
+	desc = "用来盛放配得上王侯的美餐。"
 	icon = 'modular/Neu_Food/icons/cookware/platter.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
@@ -15,9 +15,9 @@
 
 /obj/item/cooking/platter/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click a platter with food to 'plate' it up. This will also effectively prevent the food from rotting, while plated.")
-	. += span_info("Can be renamed with a feather. Name will be overridden by plating or finishing food.")
-	. += span_info("Plated food is preferred by nobility. Left-clicking plated food with a fork will allow you to eat it more elegantly.")
+	. += span_info("左键点击装有食物的托盘来“摆盘”。摆盘后还可以有效防止食物腐烂。")
+	. += span_info("可以用羽毛笔重命名。但摆盘或完成食物时会覆盖名称。")
+	. += span_info("摆盘食物受贵族青睐。用叉子左键点击摆盘食物可以更优雅地食用。")
 
 /*
 NEW SYSTEM
@@ -41,14 +41,14 @@ What it does:
 		if(isturf(loc)&& (found_table))
 			if (contents.len == 0)
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-				to_chat(user, span_info("I add \the [I.name] to \the [name]."))
+				to_chat(user, span_info("我把[I.name]放在了[name]上。"))
 				I.forceMove(src)
 				var/obj/item/reagent_containers/food/snacks/S = I
 				if(S?.faretype < FARE_LAVISH)
 					S.faretype++ //Things are tastier on plates.
 				update_icon()
 			else
-				to_chat(user, span_info("Something is already on this [initial(name)]! Remove it first."))
+				to_chat(user, span_info("[initial(name)]上已经有东西了！先把它拿开。"))
 		else
 			return ..()	
 
@@ -70,7 +70,7 @@ What it does:
 
 		contents[1].vis_flags = VIS_INHERIT_ID | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 		vis_contents += contents[1]
-		name = "platter of [contents[1].name]"
+		name = "[contents[1].name]拼盘"
 		desc = contents[1].desc
 		//Need something better than this in future like a buff
 		if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
@@ -84,7 +84,7 @@ What it does:
 
 /obj/item/cooking/platter/attack_right(mob/user)
 	if(user.get_active_held_item())
-		to_chat(user, span_info("I can't do that with my hand full!"))
+		to_chat(user, span_info("我手上拿着东西，没法这样做！"))
 		return
 
 	if(contents.len >0)
@@ -97,7 +97,7 @@ What it does:
 			S.bonus_reagents = list()
 			if(S?.faretype > FARE_IMPOVERISHED)
 				S.faretype-- //Less tasty off the plate.
-		to_chat(user, span_info("I remove \the [contents[1].name] from \the [initial(name)]"))
+		to_chat(user, span_info("我把[contents[1].name]从[initial(name)]上取了下来。"))
 		if(!usr.put_in_hands(contents[1]))
 			var/atom/movable/S = contents[1]
 			S.forceMove(get_turf(src))
@@ -105,100 +105,100 @@ What it does:
 	update_icon()
 
 /obj/item/cooking/platter/decrepit
-	name = "decrepit platter"
-	desc = "Wrought bronze, flattened to serve. The edge remains wet with red; spilled merlot, meaty juices, or blood?"
+	name = "破旧拼盘"
+	desc = "锻打成盘的青铜器皿，边缘仍沾着一抹湿红；那是泼洒的梅洛酒、肉汁，还是鲜血？"
 	icon_state = "aplatter"
 	color = "#bb9696"
 	sellprice = 0
 
 /obj/item/cooking/platter/bronze
-	name = "bronze platter"
-	desc = "A shined bronze platter that hasn't lost its charm, even after a thousand yils."
+	name = "青铜拼盘"
+	desc = "一只擦得锃亮的青铜拼盘，哪怕历经千年也未曾失去魅力。"
 	icon_state = "platter_bronze"
 
 /obj/item/cooking/platter/copper
-	name = "copper platter"
-	desc = "A platter made from a sheet of copper. Known to impart a metallic taste when combined with acidic food."
+	name = "铜拼盘"
+	desc = "用铜片制成的拼盘。据说与酸性食物搭配时会带出些许金属味。"
 	icon_state = "platter_copper"
 	resistance_flags = FIRE_PROOF
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	sellprice = 8
 
 /obj/item/cooking/platter/pewter
-	name = "pewter platter"
-	desc = "A tin plate that contains just a tinge of lead."
+	name = "锡拼盘"
+	desc = "一只几乎能被误认成银器的锡盘。"
 	icon_state = "platter_tin"
 	resistance_flags = FIRE_PROOF
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	sellprice = 11
 
 /obj/item/cooking/platter/silver
-	name = "silver platter"
-	desc = "A fancy silver plate often used by the nobility as a symbol of class."
+	name = "银拼盘"
+	desc = "一只华贵的银盘，贵族们常以此彰显身份。"
 	icon_state = "platter_silver"
 	sellprice = 48
 	is_silver = TRUE
 
 /obj/item/cooking/platter/gold
-	name = "gold platter"
-	desc = "A fancy gold plate often used by the nobility as a symbol of class."
+	name = "金拼盘"
+	desc = "一只华贵的金盘，贵族们常以此彰显身份。"
 	icon_state = "platter_gold"
 	resistance_flags = FIRE_PROOF
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	sellprice = 60
 
 /obj/item/cooking/platter/carved
-	name = "carved platter"
-	desc = "You shouldn't be seeing this."
+	name = "雕饰拼盘"
+	desc = "你本不该看到这个。"
 	icon_state = "aplatter"
 	resistance_flags = FIRE_PROOF
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	sellprice = 0
 
 /obj/item/cooking/platter/carved/jade
-	name = "jade platter"
-	desc = "A fancy platter carved out of jade."
+	name = "玉拼盘"
+	desc = "一只由玉石雕成的华美拼盘。"
 	icon_state = "platter_jade"
 	sellprice = 60
 
 /obj/item/cooking/platter/carved/onyxa
-	name = "onyxa platter"
-	desc = "A fancy platter carved out of onyxa."
+	name = "缟玛瑙拼盘"
+	desc = "一只由缟玛瑙雕成的华美拼盘。"
 	icon_state = "platter_onyxa"
 	sellprice = 40
 
 /obj/item/cooking/platter/carved/shell
-	name = "shell platter"
-	desc = "A fancy platter carved out of shell."
+	name = "贝壳拼盘"
+	desc = "一只由贝壳雕成的华美拼盘。"
 	icon_state = "platter_shell"
 	sellprice = 20
 
 /obj/item/cooking/platter/carved/rose
-	name = "rosestone platter"
-	desc = "A fancy platter carved out of rosestone."
+	name = "玫瑰石拼盘"
+	desc = "一只由玫瑰石雕成的华美拼盘。"
 	icon_state = "platter_rose"
 	sellprice = 25
 
 /obj/item/cooking/platter/carved/amber
-	name = "amber platter"
-	desc = "A fancy platter carved out of amber."
+	name = "琥珀拼盘"
+	desc = "一只由琥珀雕成的华美拼盘。"
 	icon_state = "platter_amber"
 	sellprice = 60
 
 /obj/item/cooking/platter/carved/opal
-	name = "opal platter"
-	desc = "A fancy platter carved out of opal."
+	name = "欧泊拼盘"
+	desc = "一只由欧泊雕成的华美拼盘。"
 	icon_state = "platter_opal"
 	sellprice = 90
 
 /obj/item/cooking/platter/carved/coral
-	name = "heartstone platter"
-	desc = "A fancy platter carved out of heartstone."
+	name = "心石拼盘"
+	desc = "一只由心石雕成的华美拼盘。"
 	icon_state = "platter_coral"
 	sellprice = 70
 
 /obj/item/cooking/platter/carved/turq
-	name = "cerulite platter"
-	desc = "A fancy platter carved out of cerulite."
+	name = "蔚蓝石拼盘"
+	desc = "一只由蔚蓝石雕成的华美拼盘。"
 	icon_state = "platter_turq"
 	sellprice = 85
