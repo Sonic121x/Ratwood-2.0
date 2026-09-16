@@ -64,6 +64,16 @@ const STATUS_COLOR: Record<string, string> = {
   'Do not Disturb': SEAL_RED,
 };
 
+const STATUS_LABELS: Record<string, string> = {
+  Available: '可雇',
+  Contracted: '已受雇',
+  Away: '外出',
+  Resting: '歇息',
+  'On a Job': '执行任务中',
+  'Lying Low': '蛰伏',
+  'Do not Disturb': '请勿打扰',
+};
+
 const RosterRow = (props: {
   entry: RosterEntry;
   showAdvjob: boolean;
@@ -104,7 +114,9 @@ const RosterRow = (props: {
           </div>
         )}
       </div>
-      <span style={badgeStyle(color)}>{entry.status}</span>
+      <span style={badgeStyle(color)}>
+        {STATUS_LABELS[entry.status] || entry.status}
+      </span>
       {action && (
         <button type="button" style={inkButtonStyle()} onClick={action.onClick}>
           {action.label}
@@ -148,9 +160,9 @@ const OwnControls = (props: {
           {registeredLabel}
         </div>
         <div style={{ fontSize: FONT_BODY, color: INK }}>
-          Status:{' '}
+          状态:{' '}
           <b style={{ color: STATUS_COLOR[myEntry?.status || ''] || INK }}>
-            {myEntry?.status || 'Not Registered'}
+            {STATUS_LABELS[myEntry?.status || ''] || '未登记'}
           </b>
         </div>
         {myEntry?.message && (
@@ -172,7 +184,7 @@ const OwnControls = (props: {
       >
         {statusOptions.map((s) => (
           <option key={s} value={s}>
-            {s}
+            {STATUS_LABELS[s] || s}
           </option>
         ))}
       </select>
@@ -181,7 +193,7 @@ const OwnControls = (props: {
         style={inkButtonStyle()}
         onClick={() => act(editAction)}
       >
-        Edit Message
+        编辑讯息
       </button>
       {extraButtons}
     </div>
@@ -199,7 +211,7 @@ const MercTab = (props: { data: Data; act: ActFn }) => {
       {!!data.is_merc && (
         <OwnControls
           myEntry={myEntry}
-          registeredLabel="Mercenary registry"
+          registeredLabel="佣兵名册"
           statusOptions={data.merc_status_options}
           setAction="set_merc_status"
           editAction="edit_merc_message"
@@ -219,19 +231,19 @@ const MercTab = (props: { data: Data; act: ActFn }) => {
           style={inkButtonStyle()}
           onClick={() => act('contact_merc')}
         >
-          Contact a Mercenary
+          联络一名佣兵
         </button>
         <button
           type="button"
           style={inkButtonStyle()}
           onClick={() => act('broadcast_mercs')}
         >
-          Broadcast to All
+          向全体广播
         </button>
       </div>
 
       <div style={sectionHeaderStyle}>
-        Mercenary Roster ({data.mercenaries.length})
+        佣兵名册 ({data.mercenaries.length})
       </div>
       {data.mercenaries.length === 0 ? (
         <div
@@ -241,7 +253,7 @@ const MercTab = (props: { data: Data; act: ActFn }) => {
             color: INK_SOFT,
           }}
         >
-          No mercenaries have registered.
+          尚无佣兵登记.
         </div>
       ) : (
         sortedByStatus.map((entry) => (
@@ -266,7 +278,7 @@ const AdventurerTab = (props: { data: Data; act: ActFn }) => {
       {!!data.is_adventurer && (
         <OwnControls
           myEntry={myEntry}
-          registeredLabel="Adventurer Hall registry"
+          registeredLabel="冒险者大厅名册"
           statusOptions={data.adv_status_options}
           setAction="set_adv_status"
           editAction="edit_adv_message"
@@ -277,7 +289,7 @@ const AdventurerTab = (props: { data: Data; act: ActFn }) => {
                 style={inkButtonStyle()}
                 onClick={() => act('leave_adv')}
               >
-                Take Myself Off
+                将我除名
               </button>
             )
           }
@@ -293,8 +305,8 @@ const AdventurerTab = (props: { data: Data; act: ActFn }) => {
           color: INK_SOFT,
         }}
       >
-        Adventurers post here when seeking work. Anyone may send them a single
-        message; they cannot reach you back through this stone.
+        冒险者在此处张贴以寻求工作. 任何人都可以给他们发送一条
+        讯息; 他们无法通过这块石头反过来联络你.
       </div>
 
       <div style={{ marginBottom: '8px' }}>
@@ -303,12 +315,12 @@ const AdventurerTab = (props: { data: Data; act: ActFn }) => {
           style={inkButtonStyle()}
           onClick={() => act('pick_adventurer')}
         >
-          Contact an Adventurer
+          联络一名冒险者
         </button>
       </div>
 
       <div style={sectionHeaderStyle}>
-        Adventurer Roster ({data.adventurers.length})
+        冒险者名册 ({data.adventurers.length})
       </div>
       {data.adventurers.length === 0 ? (
         <div
@@ -318,7 +330,7 @@ const AdventurerTab = (props: { data: Data; act: ActFn }) => {
             color: INK_SOFT,
           }}
         >
-          No adventurers have registered.
+          尚无冒险者登记.
         </div>
       ) : (
         sortedByStatus.map((entry) => (
@@ -329,7 +341,7 @@ const AdventurerTab = (props: { data: Data; act: ActFn }) => {
             action={
               entry.status !== 'Do not Disturb'
                 ? {
-                    label: 'Message',
+                    label: '发讯息',
                     onClick: () =>
                       act('contact_adventurer', { key: entry.key }),
                   }
@@ -353,7 +365,7 @@ const WretchTab = (props: { data: Data; act: ActFn }) => {
       {!!data.is_wretch && (
         <OwnControls
           myEntry={myEntry}
-          registeredLabel="Wretch registry (only the bathhouse sees this list)"
+          registeredLabel="弃民名册 (仅浴场可见此列表)"
           statusOptions={data.wretch_status_options}
           setAction="set_wretch_status"
           editAction="edit_wretch_message"
@@ -363,7 +375,7 @@ const WretchTab = (props: { data: Data; act: ActFn }) => {
               style={inkButtonStyle()}
               onClick={() => act('edit_wretch_nom')}
             >
-              Nom de Guerre
+              化名
             </button>
           }
           act={act}
@@ -378,9 +390,9 @@ const WretchTab = (props: { data: Data; act: ActFn }) => {
           color: INK_SOFT,
         }}
       >
-        This roster is visible only to wretches and the bathhouse staff. The
-        bathhouse may reach a wretch under their chosen nom de guerre for
-        discreet work.
+        此名册仅对弃民与浴场人员可见. 浴场可以
+        透过弃民所选定的化名与他们联络,
+        以委托隐秘的差事.
       </div>
 
       {!!data.is_bathhouse && (
@@ -390,13 +402,13 @@ const WretchTab = (props: { data: Data; act: ActFn }) => {
             style={inkButtonStyle()}
             onClick={() => act('pick_wretch')}
           >
-            Contact a Wretch
+            联络一名弃民
           </button>
         </div>
       )}
 
       <div style={sectionHeaderStyle}>
-        Wretch Roster ({data.wretches.length})
+        弃民名册 ({data.wretches.length})
       </div>
       {data.wretches.length === 0 ? (
         <div
@@ -406,7 +418,7 @@ const WretchTab = (props: { data: Data; act: ActFn }) => {
             color: INK_SOFT,
           }}
         >
-          No wretches have registered.
+          尚无弃民登记.
         </div>
       ) : (
         sortedByStatus.map((entry) => (
@@ -419,7 +431,7 @@ const WretchTab = (props: { data: Data; act: ActFn }) => {
               entry.status !== 'Do not Disturb' &&
               entry.key !== data.my_key
                 ? {
-                    label: 'Message',
+                    label: '发讯息',
                     onClick: () => act('contact_wretch', { key: entry.key }),
                   }
                 : undefined
@@ -440,9 +452,9 @@ export const Talkstatue = () => {
     <Window width={620} height={680} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>The Talking Statue</div>
+          <div style={titleStyle}>会说话的雕像</div>
           <div style={subtitleStyle}>
-            The stone speaks in your name to those who pass.
+            这块石头将以你的名义, 向路过之人开口.
           </div>
           <div style={rulerStyle} />
 
@@ -451,14 +463,14 @@ export const Talkstatue = () => {
               style={tabStyle(activeTab === 'mercs')}
               onClick={() => setTab('mercs')}
             >
-              Mercenaries{' '}
+              佣兵{' '}
               {data.mercenaries.length > 0 && `(${data.mercenaries.length})`}
             </div>
             <div
               style={tabStyle(activeTab === 'adventurers')}
               onClick={() => setTab('adventurers')}
             >
-              Adventurers{' '}
+              冒险者{' '}
               {data.adventurers.length > 0 && `(${data.adventurers.length})`}
             </div>
             {wretchVisible && (
@@ -466,7 +478,7 @@ export const Talkstatue = () => {
                 style={tabStyle(activeTab === 'wretches')}
                 onClick={() => setTab('wretches')}
               >
-                Wretches{' '}
+                弃民{' '}
                 {data.wretches.length > 0 && `(${data.wretches.length})`}
               </div>
             )}

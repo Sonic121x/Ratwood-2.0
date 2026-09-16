@@ -1,7 +1,7 @@
 /datum/advclass/hunter
 	townie_contract_gate_exempt = TRUE
-	name = "Bow-Hunter"
-	tutorial = "You are a hunter. With your bow you hunt the fauna of the glade, skinning what you kill and cooking any meat left over. The job is dangerous but important in the circulation of clothing and light armor."
+	name = "弓猎人"
+	tutorial = "你是一名猎人。你用弓猎杀林地中的野兽，剥下猎物的皮毛，再把剩下的肉烹煮食用。这份工作危险重重，却也是衣物与轻甲流通中不可或缺的一环。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/hunter
@@ -74,34 +74,34 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/huntersyell)
 		H.set_blindness(0)
-		var/ranged_weapons = list("Longbow", "Recurve Bow", "Crossbow")
-		var/ranged_choice = input(H, "Choose your ranged weapon.", "PREPARE FOR THE HUNT") as anything in ranged_weapons
+		var/ranged_weapons = list("长弓", "反曲弓", "弩")
+		var/ranged_choice = input(H, "选择你的远程武器。", "为狩猎做好准备") as anything in ranged_weapons
 		switch(ranged_choice)
-			if("Longbow")
+			if("长弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 				beltr = /obj/item/quiver/arrows
-			if("Recurve Bow")
+			if("反曲弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 				beltr = /obj/item/quiver/arrows
-			if("Crossbow")
+			if("弩")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				beltr = /obj/item/quiver/bolts
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
 
-		var/sidearms = list("Machete", "Hatchet")
-		var/sidearm_choice = input(H, "Choose your sidearm.", "TAKE UP ARMS") as anything in sidearms
+		var/sidearms = list("大砍刀", "手斧")
+		var/sidearm_choice = input(H, "选择你的武器。", "拿起武器") as anything in sidearms
 		switch(sidearm_choice)
-			if("Machete")
+			if("M大砍刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/short/messer/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
-			if("Hatchet")
+			if("手斧")
 				beltl = /obj/item/rogueweapon/stoneaxe/handaxe
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
 
 /datum/advclass/hunter/spear
-	name = "Spear-Hunter"
-	tutorial = "You are a hunter. With your bow you hunt the fauna of the glade, skinning what you kill and cooking any meat left over. The job is dangerous but important in the circulation of clothing and light armor."
+	name = "矛猎人"
+	tutorial = "你是一名猎人。你用武器猎杀林地中的野兽，剥下猎物的皮毛，再把剩下的肉烹煮食用。这份工作危险重重，却也是衣物与轻甲流通中不可或缺的一环。"
 	outfit = /datum/outfit/job/roguetown/adventurer/hunter_spear
 	traits_applied = list(TRAIT_OUTDOORSMAN, TRAIT_SURVIVAL_EXPERT, TRAIT_MASTERFUL_HUNTER)
 	cmode_music = 'sound/music/cmode/towner/combat_towner2.ogg'
@@ -134,7 +134,7 @@
 
 /datum/outfit/job/roguetown/adventurer/hunter_spear/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a hunter who specializes in spears, excelling in strength and endurance."))
+	to_chat(H, span_warning("你是一名专精长矛的猎人，尤其擅长力量与耐力。"))
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide

@@ -63,7 +63,7 @@ export const RealmRow = (props: { realm: HarborRealm }) => {
             {realm.name}
             {!!realm.is_kin && (
               <span
-                title="Kinship Bonus active"
+                title="亲缘加成生效中"
                 style={{
                   marginLeft: '6px',
                   padding: '0 6px',
@@ -75,7 +75,7 @@ export const RealmRow = (props: { realm: HarborRealm }) => {
                   letterSpacing: '0.5px',
                 }}
               >
-                KIN
+                亲缘
               </span>
             )}
           </div>
@@ -88,7 +88,7 @@ export const RealmRow = (props: { realm: HarborRealm }) => {
                   fontSize: FONT_BODY,
                 }}
               >
-                no conditions
+                无状况
               </span>
             ) : (
               conditions.map((c) => (
@@ -118,7 +118,7 @@ export const RealmRow = (props: { realm: HarborRealm }) => {
                   marginBottom: '4px',
                 }}
               >
-                Cultural Stock:
+                文化货物:
               </div>
               <div style={{ lineHeight: '1.6' }}>
                 {realm.cultural_pack_names.map((p) => (
@@ -136,7 +136,7 @@ export const RealmRow = (props: { realm: HarborRealm }) => {
                   marginBottom: '4px',
                 }}
               >
-                Market Conditions:
+                市场状况:
               </div>
               {conditions.map((c) => (
                 <div key={c.name} style={{ marginBottom: '6px' }}>

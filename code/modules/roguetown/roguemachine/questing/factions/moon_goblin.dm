@@ -1,8 +1,8 @@
 /datum/quest_faction/moon_goblin
 	id = QUEST_FACTION_MOON_GOBLIN
-	name_singular = "moon goblin"
-	name_plural = "moon goblins"
-	group_word = "warband"
+	name_singular = "月辉哥布林"
+	name_plural = "月辉哥布林"
+	group_word = "战团"
 	faction_tag = FACTION_ORCS
 	can_blockade = FALSE
 	category = FACTION_CAT_GOBLINOID
@@ -15,9 +15,9 @@
 		/mob/living/carbon/human/species/goblin/npc/ambush/moon = 100,
 	)
 	boss_title_templates = list(
-		"Moonchief %N",
-		"%N-Under-the-Dark",
-		"%N the Pale",
-		"%N of the Vaults",
+		"月酋长 %N",
+		"%N-居暗者",
+		"%N 苍白者",
+		"%N 地窟之主",
 	)
 	boss_name_file = "strings/rt/names/other/goblinm.txt"
