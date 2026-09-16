@@ -19,5 +19,5 @@ GLOBAL_LIST_INIT(virtues, init_subtypes_assoc(/datum/virtue))
 	record_featured_object_stat(FEATURED_STATS_VIRTUES, virtue_type.name)
 
 /datum/virtue/none
-	name = "None"
-	desc = "Without virtue."
+	name = "无"
+	desc = "没有美德。"

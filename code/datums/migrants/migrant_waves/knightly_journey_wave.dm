@@ -1,5 +1,5 @@
 /datum/migrant_wave/knightly_journey
-	name = "The Knightly Journey"
+	name = "骑士之旅"
 	max_spawns = 1
 	weight = 50
 	track = MIGRANT_TRACK_SPECIAL
@@ -12,4 +12,4 @@
 		/datum/migrant_role/kj_follower = 2,
 	)
 	min_optional_fills = 0
-	greet_text = "A veteran knight errant rides into these lands, their squire a few yils into the trade and no longer green. There are battles ahead, and deeds worth the telling."
+	greet_text = "一位久经沙场的游侠骑士策马驶入这片土地，他的侍从已入行数年，不再是个新手。前路尚有战斗，也有值得传颂的功业。"

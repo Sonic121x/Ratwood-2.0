@@ -39,15 +39,15 @@ export const TariffHeader = (props: Props) => {
     <>
       <div style={titleStyle}>{starsIfIlliterate(motto, canRead)}</div>
       <div style={subtitleStyle}>
-        Crown Import Tariff: <b>{tariffRatePct}%</b>
+        王室进口关税: <b>{tariffRatePct}%</b>
         {isProprietor && dodging && (
           <span style={{ color: SEAL_RED, marginLeft: '8px' }}>
-            <b>(TAX DODGING)</b>
+            <b>(逃税中)</b>
           </span>
         )}
         {publicMarginPct !== undefined && (
           <span style={{ color: SEAL_AMBER, marginLeft: '8px' }}>
-            · {publicMarginLabel || 'Public Margin'}: <b>+{publicMarginPct}%</b>
+            · {publicMarginLabel || '公共加价'}: <b>+{publicMarginPct}%</b>
           </span>
         )}
       </div>
@@ -60,9 +60,9 @@ export const TariffHeader = (props: Props) => {
             marginBottom: '4px',
           }}
         >
-          <span style={{ color: SEAL_GREEN }}>Paid: {tariffPaid}m</span>
+          <span style={{ color: SEAL_GREEN }}>已缴: {tariffPaid}m</span>
           <span style={{ color: INK_FAINT, margin: '0 6px' }}>·</span>
-          <span style={{ color: SEAL_RED }}>Evaded: {tariffEvaded}m</span>
+          <span style={{ color: SEAL_RED }}>逃漏: {tariffEvaded}m</span>
         </div>
       )}
       <div style={rulerStyle} />

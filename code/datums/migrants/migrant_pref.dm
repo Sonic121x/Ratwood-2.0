@@ -32,7 +32,7 @@
 	queued_wave = null
 	queued_role = null
 	if(!silent && prefs.parent)
-		to_chat(prefs.parent, span_boldwarning("You are no longer in the migrant queue."))
+		to_chat(prefs.parent, span_boldwarning("你已不在移民队列中。"))
 
 /datum/migrant_pref/proc/post_spawn()
 	clear_queue(silent = TRUE)

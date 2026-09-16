@@ -60,7 +60,7 @@
 			wallpress(them, us)
 
 /turf/closed/proc/feel_turf(mob/living/user)
-	to_chat(user, span_notice("I start feeling around [src]"))
+	to_chat(user, span_notice("我开始沿着 [src] 摸索。"))
 	if(!do_after(user, 1.5 SECONDS, src))
 		return
 
@@ -99,11 +99,11 @@
 		return
 	user.set_wallpressed(dir2wall)
 	if(pressing_mob)
-		user.visible_message(span_info("[user] is pushed against [src] by [pressing_mob]."))
+		user.visible_message(span_info("[pressing_mob] 把 [user] 推到了 [src] 上。"))
 	else if(user.m_intent == MOVE_INTENT_SNEAK)
-		to_chat(user, span_info("You press yourself against [src]."))
+		to_chat(user, span_info("我紧贴到了 [src] 上。"))
 	else
-		user.visible_message(span_info("[user] leans against [src]."))
+		user.visible_message(span_info("[user] 倚靠在了 [src] 上。"))
 	switch(dir2wall)
 		if(NORTH)
 			user.setDir(SOUTH)
@@ -201,7 +201,7 @@
 				H.apply_damage(15, BRUTE, "head", H.run_armor_check("head", "blunt", damage = 15))
 				H.toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
 				playsound(src, "genblunt", 100, TRUE)
-				H.visible_message(span_warning("[H] runs into [src]!"), span_warning("I run into [src]!"))
+				H.visible_message(span_warning("[H] 一头撞上了 [src]！"), span_warning("我一头撞上了 [src]！"))
 				addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
 
 /turf/closed/Initialize(mapload)
@@ -241,20 +241,20 @@
 				return
 			var/turf/target = get_step_multiz(user, UP)
 			if(!istype(target, /turf/open/transparent/openspace))
-				to_chat(user, span_warning("I can't climb here."))
+				to_chat(user, span_warning("我没法从这里攀爬。"))
 				return
 			if(!L.can_zTravel(target, UP))
-				to_chat(user, span_warning("I can't climb there."))
+				to_chat(user, span_warning("我没法爬到那里去。"))
 				return
 			target = get_step_multiz(src, UP)
 			if(!target || istype(target, /turf/closed) || istype(target, /turf/open/transparent/openspace))
 				target = get_step_multiz(user.loc, UP)
 				if(!target || !istype(target, /turf/open/transparent/openspace))
-					to_chat(user, span_warning("I can't climb here."))
+					to_chat(user, span_warning("我没法从这里攀爬。"))
 					return
 			for(var/obj/structure/F in target)
 				if(F && (F.density && !F.climbable))
-					to_chat(user, span_warning("I can't climb here."))
+					to_chat(user, span_warning("我没法从这里攀爬。"))
 					return
 			var/used_time = 0
 			var/list/helping_items = list()
@@ -310,12 +310,12 @@
 							break
 
 				if(myskill < climbdiff)
-					to_chat(user, span_warning("I'm not capable of climbing this wall."))
+					to_chat(user, span_warning("我还没有本事爬上这堵墙。"))
 					return
 				used_time = max(70 - (myskill * 10) - (L.STASPD * 3), 30)
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				playsound(user, climbsound, 100, TRUE)
-			user.visible_message(span_warning("[user] starts to climb [src][length(helping_items) ? " with the help of \the [english_list(helping_items)]" : ""]."), span_warning("I start to climb [src][length(helping_items) ? " with the help of \the [english_list(helping_items)]" : ""]..."))
+			user.visible_message(span_warning("[user] 开始攀爬 [src][length(helping_items) ? "，借助了 \the [english_list(helping_items)]" : ""]。"), span_warning("我开始攀爬 [src][length(helping_items) ? "，借助了 \the [english_list(helping_items)]" : ""]……"))
 			if(do_after(L, used_time, target = src))
 				var/pulling = user.pulling
 				var/mob/living/carbon/human/climber = user
@@ -361,33 +361,33 @@
 	if(wallclimb)
 		var/skill = user.get_skill_level(/datum/skill/misc/climbing)
 		if(skill >= climbdiff)
-			. += span_info("I <b>can</b> climb this wall.")
+			. += span_info("我<b>可以</b>爬上这堵墙。")
 			if(skill == 6)
-				. += span_info("I <b>can</b> move along the ledge here.")
+				. += span_info("我<b>可以</b>沿着这里的岩架移动。")
 			else if(skill > climbdiff)
-				. += span_info("I <b>can</b> move along the ledge here.")
+				. += span_info("我<b>可以</b>沿着这里的岩架移动。")
 			else
-				. += span_info("I <b>cannot</b> move along the ledge here.")
+				. += span_info("我<b>不能</b>沿着这里的岩架移动。")
 		else if(abs(skill - climbdiff) == 1)
-			. += span_info("I cannot climb this wall, but I could with the help of a table or a chair.")
-			. += span_info("I <b>cannot</b> move along the ledge here.")
+			. += span_info("我爬不上这堵墙，但借助桌子或椅子也许可以。")
+			. += span_info("我<b>不能</b>沿着这里的岩架移动。")
 		else
-			. += span_info("I <b>cannot</b> climb this wall.")
+			. += span_info("我<b>不能</b>爬上这堵墙。")
 	else
-		. += span_info("This wall cannot be climbed.")
+		. += span_info("这堵墙无法攀爬。")
 
 /turf/closed/attack_ghost(mob/dead/observer/user)
 	if(!user.Adjacent(src))
 		return
 	var/turf/target = get_step_multiz(user, UP)
 	if(!target)
-		to_chat(user, span_warning("I can't go there."))
+		to_chat(user, span_warning("我去不了那里。"))
 		return
 	if(!istype(target, /turf/open/transparent/openspace))
-		to_chat(user, span_warning("I can't go there."))
+		to_chat(user, span_warning("我去不了那里。"))
 		return
 	user.forceMove(target)
-	to_chat(user, span_warning("I crawl up the wall."))
+	to_chat(user, span_warning("我沿着墙爬了上去。"))
 	. = ..()
 
 /turf/closed/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
