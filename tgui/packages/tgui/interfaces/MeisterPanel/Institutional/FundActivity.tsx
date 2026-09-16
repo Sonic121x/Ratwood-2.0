@@ -12,7 +12,7 @@ export const FundActivity = ({
   const log = data.institutional_logs[fund.id] ?? [];
   return (
     <>
-      <div style={sectionHeaderStyle}>Tally</div>
+      <div style={sectionHeaderStyle}>账目</div>
       <PaginatedLog entries={log} />
     </>
   );
