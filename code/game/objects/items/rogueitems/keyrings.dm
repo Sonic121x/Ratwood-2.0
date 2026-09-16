@@ -1,8 +1,8 @@
 /////////////////// KEYRING ////////////////////
 
 /obj/item/storage/keyring
-	name = "keyring"
-	desc = "Will help you organize your keys."
+	name = "钥匙环"
+	desc = "能帮你整理钥匙。"
 	icon_state = "keyring0"
 	icon = 'icons/roguetown/items/keys.dmi'
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
@@ -55,9 +55,9 @@
 
 /obj/item/storage/keyring/proc/update_desc()
 	if(contents.len)
-		desc = span_info("Holds \Roman[contents.len] item\s, including:")
+		desc = span_info("可挂 \Roman[contents.len] 把钥匙，包括：")
 		for(var/obj/item/I in contents)
-			desc += span_info("\n- [I.name ? "A [I.name]." : "\tAn unknown item."]")
+			desc += span_info("\n- [I.name ? "[I.name]。" : "\t一把未知钥匙。"]")
 	else
 		desc = ""
 
@@ -101,8 +101,8 @@
 /////////////////// LOCKPICKRING ////////////////////
 
 /obj/item/lockpickring
-	name = "lockpickring"
-	desc = "A piece of bent wire to store lockpicking tools. Too bulky for fine work."
+	name = "撬锁工具环"
+	desc = "一段弯折的金属丝，用来收纳撬锁工具。做精细活时太碍事了。"
 	icon_state = "pickring0"
 	icon = 'icons/roguetown/items/keys.dmi'
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
@@ -172,7 +172,7 @@
 /obj/item/lockpickring/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/lockpick))
 		if(picks.len >= 3)
-			to_chat(user, "<span class='warning'>Too many lockpicks.</span>")
+			to_chat(user, "<span class='warning'>撬锁器太多了。</span>")
 			return
 		user.dropItemToGround(I)
 		addtoring(I)
@@ -181,7 +181,7 @@
 
 /obj/item/lockpickring/attack_right(mob/user)
 	if(picks.len)
-		to_chat(user, "<span class='notice'>I steal a pick off the ring.</span>")
+		to_chat(user, "<span class='notice'>我从环上取下一枚撬锁器。</span>")
 		var/obj/item/lockpick/K = removefromring(user)
 		user.put_in_active_hand(K)
 
@@ -204,7 +204,7 @@
 /obj/item/lockpickring/proc/update_desc()
 	if(picks.len)
 		desc = initial(desc)
-		desc += "<span class='info'>\n\Roman [picks.len] lockpicks.</span>"
+		desc += "<span class='info'>\n\Roman [picks.len] 枚撬锁器。</span>"
 	else
 		desc = initial(desc)
 
@@ -264,27 +264,27 @@
 	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/tavernkeep, /obj/item/roguekey/roomhunt, /obj/item/roguekey/roomix, /obj/item/roguekey/roomviii, /obj/item/roguekey/roomvii, /obj/item/roguekey/roomvi, /obj/item/roguekey/roomv, /obj/item/roguekey/roomiv, /obj/item/roguekey/roomiii, /obj/item/roguekey/roomii, /obj/item/roguekey/roomi, /obj/item/roguekey/fancyroomi, /obj/item/roguekey/fancyroomii, /obj/item/roguekey/fancyroomiii, /obj/item/roguekey/fancyroomiv, /obj/item/roguekey/fancyroomv)
 
 /obj/item/storage/keyring/innfancyi // 5 Keys
-	name = "luxury room I keyring"
+	name = "豪华客房一钥匙环"
 	keys = list(/obj/item/roguekey/fancyroomi, /obj/item/roguekey/fancyroomi, /obj/item/roguekey/fancyroomi, /obj/item/roguekey/fancyroomi, /obj/item/roguekey/fancyroomi)
 
 /obj/item/storage/keyring/innfancyii
-	name = "luxury room II keyring"
+	name = "豪华客房二钥匙环"
 	keys = list(/obj/item/roguekey/fancyroomii, /obj/item/roguekey/fancyroomii, /obj/item/roguekey/fancyroomii, /obj/item/roguekey/fancyroomii, /obj/item/roguekey/fancyroomii)
 
 /obj/item/storage/keyring/innfancyiii
-	name = "luxury room III keyring"
+	name = "豪华客房三钥匙环"
 	keys = list(/obj/item/roguekey/fancyroomiii, /obj/item/roguekey/fancyroomiii, /obj/item/roguekey/fancyroomiii, /obj/item/roguekey/fancyroomiii, /obj/item/roguekey/fancyroomiii)
 
 /obj/item/storage/keyring/innfancyiv
-	name = "luxury room IV keyring"
+	name = "豪华客房四钥匙环"
 	keys = list(/obj/item/roguekey/fancyroomiv, /obj/item/roguekey/fancyroomiv, /obj/item/roguekey/fancyroomiv, /obj/item/roguekey/fancyroomiv, /obj/item/roguekey/fancyroomiv)
 
 /obj/item/storage/keyring/innfancyv
-	name = "luxury room V keyring"
+	name = "豪华客房五钥匙环"
 	keys = list(/obj/item/roguekey/fancyroomv, /obj/item/roguekey/fancyroomv, /obj/item/roguekey/fancyroomv)
 
 /obj/item/storage/keyring/innhunt // 5 keys
-	name = "HUNT room keyring"
+	name = "HUNT套房钥匙环"
 	keys = list(/obj/item/roguekey/roomhunt, /obj/item/roguekey/roomhunt, /obj/item/roguekey/roomhunt, /obj/item/roguekey/roomhunt, /obj/item/roguekey/roomhunt)
 
 
@@ -304,31 +304,31 @@
 	keys = list(/obj/item/roguekey/nightman, /obj/item/roguekey/nightmaiden, /obj/item/seal/nightmaster)
 
 /obj/item/storage/keyring/bathsi // 4 Keys
-	name = "baths room I keyring"
+	name = "浴场一号房钥匙环"
 	keys = list(/obj/item/roguekey/nightmaiden/rooms/i, /obj/item/roguekey/nightmaiden/rooms/i, /obj/item/roguekey/nightmaiden/rooms/i, /obj/item/roguekey/nightmaiden/rooms/i)
 
 /obj/item/storage/keyring/bathsii
-	name = "baths room II keyring"
+	name = "浴场二号房钥匙环"
 	keys = list(/obj/item/roguekey/nightmaiden/rooms/ii, /obj/item/roguekey/nightmaiden/rooms/ii, /obj/item/roguekey/nightmaiden/rooms/ii, /obj/item/roguekey/nightmaiden/rooms/ii)
 
 /obj/item/storage/keyring/bathsiii
-	name = "baths room III keyring"
+	name = "浴场三号房钥匙环"
 	keys = list(/obj/item/roguekey/nightmaiden/rooms/iii, /obj/item/roguekey/nightmaiden/rooms/iii, /obj/item/roguekey/nightmaiden/rooms/iii, /obj/item/roguekey/nightmaiden/rooms/iii)
 
 /obj/item/storage/keyring/bathsiv
-	name = "baths room IV keyring"
+	name = "浴场四号房钥匙环"
 	keys = list(/obj/item/roguekey/nightmaiden/rooms/iv, /obj/item/roguekey/nightmaiden/rooms/iv, /obj/item/roguekey/nightmaiden/rooms/iv, /obj/item/roguekey/nightmaiden/rooms/iv)
 
 /obj/item/storage/keyring/bathsv
-	name = "baths room V keyring"
+	name = "浴场五号房钥匙环"
 	keys = list(/obj/item/roguekey/nightmaiden/rooms/v, /obj/item/roguekey/nightmaiden/rooms/v, /obj/item/roguekey/nightmaiden/rooms/v, /obj/item/roguekey/nightmaiden/rooms/v)
 
 /obj/item/storage/keyring/bathspunish
-	name = "baths punishment room keyring"
+	name = "浴场惩戒房钥匙环"
 	keys = list(/obj/item/roguekey/nightmaiden/rooms/punish, /obj/item/roguekey/nightmaiden/rooms/punish, /obj/item/roguekey/nightmaiden/rooms/punish, /obj/item/roguekey/nightmaiden/rooms/punish)
 
 /obj/item/storage/keyring/bathssteam
-	name = "baths steam room keyring"
+	name = "浴场蒸汽房钥匙环"
 	keys = list(/obj/item/roguekey/nightmaiden/rooms/steam, /obj/item/roguekey/nightmaiden/rooms/steam, /obj/item/roguekey/nightmaiden/rooms/steam, /obj/item/roguekey/nightmaiden/rooms/steam)
 
 /obj/item/storage/keyring/hand
@@ -362,27 +362,27 @@
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/heir, /obj/item/roguekey/garrison, /obj/item/roguekey/servant, /obj/item/roguekey/tower)
 
 /obj/item/storage/keyring/manor/guestroom/i // 2 Guestroom Keys + 2 Manor Keys
-	name = "Manor Guestroom I Keyring"
+	name = "庄园一号客房钥匙环"
 	keys = list(/obj/item/roguekey/manor/guestroom/i, /obj/item/roguekey/manor/guestroom/i, /obj/item/roguekey/manor, /obj/item/roguekey/manor)
 
 /obj/item/storage/keyring/manor/guestroom/ii
-	name = "Manor Guestroom II Keyring"
+	name = "庄园二号客房钥匙环"
 	keys = list(/obj/item/roguekey/manor/guestroom/ii, /obj/item/roguekey/manor/guestroom/ii, /obj/item/roguekey/manor, /obj/item/roguekey/manor)
 
 /obj/item/storage/keyring/manor/guestroom/iii
-	name = "Manor Guestroom III Keyring"
+	name = "庄园三号客房钥匙环"
 	keys = list(/obj/item/roguekey/manor/guestroom/iii, /obj/item/roguekey/manor/guestroom/iii, /obj/item/roguekey/manor, /obj/item/roguekey/manor)
 
 /obj/item/storage/keyring/manor/counsilroom/i // 2 Counsilroom Keys
-	name = "Counsillor's Room I Keyring"
+	name = "议事厅一号房钥匙环"
 	keys = list(/obj/item/roguekey/manor/counsilroom/i, /obj/item/roguekey/manor/counsilroom/i)
 
 /obj/item/storage/keyring/manor/counsilroom/ii // 2 Counsilroom Keys
-	name = "Counsillor's Room II Keyring"
+	name = "议事厅二号房钥匙环"
 	keys = list(/obj/item/roguekey/manor/counsilroom/ii, /obj/item/roguekey/manor/counsilroom/ii)
 
 /obj/item/storage/keyring/manor/counsilroom/iii // 2 Counsilroom Keys
-	name = "Counsillor's Room III Keyring"
+	name = "议事厅三号房钥匙环"
 	keys = list(/obj/item/roguekey/manor/counsilroom/iii, /obj/item/roguekey/manor/counsilroom/iii)
 
 /obj/item/storage/keyring/mageapprentice

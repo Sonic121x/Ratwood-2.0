@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/song/recovery_song
-	name = "Resting Rhapsody"
-	desc = "Recuperate your allies spirit's with your song! Refills stamina over time!"
-	invocations = list("plays a gentle-yet-refreshing tune. The nearby air clears.") 
+	name = "休憩狂想曲"
+	desc = "用你的歌声抚慰盟友的精神！会持续恢复体力！"
+	invocations = list("奏起一段温柔而提神的旋律，周围的空气都清朗了起来。") 
 	invocation_type = "emote"
 	overlay_state = "melody_t2_base"
 	action_icon_state = "melody_t2_base"
@@ -17,7 +17,7 @@
 		return TRUE
 	else
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
+		to_chat(user, span_warning("我必须先演奏点什么，才能激励我的听众！"))
 		return
 
 /datum/status_effect/buff/playing_melody/recovery
@@ -32,8 +32,8 @@
 
 
 /atom/movable/screen/alert/status_effect/buff/song/recovery
-	name = "Musical Recovery"
-	desc = "I breathe deeply. This melody refreshes me - I could run for hours."
+	name = "乐声恢复"
+	desc = "我深深吸了一口气。这段旋律令我神清气爽，仿佛能一口气奔跑数个时辰。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/song/recovery

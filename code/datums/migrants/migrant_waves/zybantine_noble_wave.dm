@@ -1,5 +1,5 @@
 /datum/migrant_wave/zybantine_noble
-	name = "Zybantine Emir"
+	name = "兹班图埃米尔"
 	max_spawns = 1
 	shared_wave_type = /datum/migrant_wave/zybantine_noble
 	weight = 40
@@ -13,4 +13,4 @@
 		/datum/migrant_role/zybantine/advisor = 1,
 	)
 	min_optional_fills = 0
-	greet_text = "You are far from home on missive from the Zybantine Empire."
+	greet_text = "你们奉兹班图帝国之命远离家园而来。"

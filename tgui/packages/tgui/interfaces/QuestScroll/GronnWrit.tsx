@@ -49,32 +49,32 @@ export const GronnWrit = (props: {
     recoveryDestination,
     recoveryCircumstance,
   } = props;
-  const folk = namePlural || 'raiders';
-  const band = groupWord || 'warband';
+  const folk = namePlural || '劫掠者';
+  const band = groupWord || '战团';
 
   let subject: React.ReactNode;
   if (named) subject = <b>{named}</b>;
   else if (ringleader)
     { subject = (
       <>
-        a {band} of {folk} under one called <b>{ringleader}</b>
+        一队 {band} {folk}, 其首名为 <b>{ringleader}</b>
       </>
     ); }
-  else subject = <>a {band} of {folk}</>;
+  else subject = <>一队 {band} {folk}</>;
 
   return (
     <>
       <p style={writParagraph}>
-        <i>Be it known unto all who bear arms in {realm}&apos;s defence:</i>
+        <i>兹晓谕所有为 {realm} 执兵御敌之人:</i>
       </p>
       <p style={writParagraph}>
-        That {subject} hath been seen upon these shores, sworn to the false
-        Four, refusing the holy chrism of the Tens.
+        查 {subject} 已现于此岸, 宣誓效忠伪
+        四神, 拒受十神之圣油.
       </p>
       {crimes.length > 0 && (
         <>
           <p style={{ ...writParagraph, marginBottom: '4px' }}>
-            Whereof they stand accused of:
+            其等所被控之罪如下:
           </p>
           <ul style={indictmentList}>
             {crimes.map((c, i) => (
@@ -86,23 +86,23 @@ export const GronnWrit = (props: {
         </>
       )}
       <p style={writParagraph}>
-        By writ of the {rulerTitle}, and by counsel of the Holy See, let{' '}
-        {subject} be declared{' '}
-        <span style={caputLupinum}>ANATHEMA</span>: cut off from the body of
-        the faithful, harboured by no temple, mourned by no priest. Pursue them
-        upon the strand and the cliff; let them not gain the sea before steel
-        finds them.
+        依 {rulerTitle} 之令状, 并经教廷之谏议,
+        判 {subject} 为{' '}
+        <span style={caputLupinum}>绝罚</span>: 自信徒之体中
+        割除, 无殿可容, 无祭司为之哀悼. 追之于
+        滩岸与崖壁; 勿使其在钢铁及身之前
+        入海.
       </p>
       <p style={writParagraph}>
-        Upon their death the writ shall fall silent and mark itself; return it
-        then to the Contract Ledger, that the bounty of{' '}
+        其等身死之时, 令状自会沉寂留痕; 届时
+        将其交回契约台账, 所悬之赏金{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}
           levyExempt={levyExempt}
           guildCutRate={guildCutRate}
         />{' '}
-        be paid.
+        即可领取.
       </p>
       {hasRecoveryAddendum && (
         <RecoveryAddendum

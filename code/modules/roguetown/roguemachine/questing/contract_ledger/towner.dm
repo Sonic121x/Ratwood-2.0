@@ -5,11 +5,11 @@ GLOBAL_LIST_INIT(towner_posting_tier_costs, list(
 
 GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 	QUEST_TOWNER_SMITH_CARAVAN = list(
-		"label" = "A Caravan Gone Missing",
-		"blurb" = "A wagon of yours was lost on the road. Hire hands to secure the wreck and bring the strongbox home.",
+		"label" = "失踪的商队",
+		"blurb" = "你的一辆货车在途中失踪了。雇人手去守住残骸，并把保险箱带回家。",
 		"rules" = list(
-			"The strongbox is magickally sealed to you - only you can open it.",
-			"You need not travel; the bearer brings the strongbox to you.",
+			"保险箱对你施加了魔法封印——唯有你能打开它。",
+			"你无须亲自跋涉；持令人会把保险箱带给你。",
 		),
 		"postable_advclasses" = list(
 			/datum/advclass/blacksmith,
@@ -19,11 +19,11 @@ GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 		),
 	),
 	QUEST_TOWNER_MINER_OREVEIN = list(
-		"label" = "A Miner's Lead",
-		"blurb" = "You have prospected an elemental guarded vein and mined a good haul, before the guardians drove you away. Hire hands to slay the elementals and haul out the crate.",
+		"label" = "矿工的线索",
+		"blurb" = "你探得一处有元素生物看守的矿脉，采得满满一载，却被守卫赶了回来。雇人手去斩杀元素生物，把板条箱运出来。",
 		"rules" = list(
-			"The crate is magickally sealed to you - only you can open it.",
-			"You need not travel; the bearer brings the crate to you.",
+			"板条箱对你施加了魔法封印——唯有你能打开它。",
+			"你无须亲自跋涉；持令人会把板条箱带给你。",
 		),
 		"postable_advclasses" = list(
 			/datum/advclass/miner,
@@ -91,8 +91,8 @@ GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 /proc/towner_bearer_summary(tier)
 	var/bonus = GLOB.towner_tier_flat_bonus[tier] || 0
 	if(bonus > 0)
-		return "combat & distance pay + [bonus]m bonus"
-	return "combat & distance pay"
+		return "战斗与路程报酬 + [bonus]m 额外补贴"
+	return "战斗与路程报酬"
 
 /proc/towner_variety_table(posting_type)
 	switch(posting_type)
@@ -110,14 +110,14 @@ GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 
 /proc/towner_spec_summary(list/spec)
 	if(!length(spec))
-		return "a modest haul"
+		return "一份不多的收获"
 	var/list/parts = list()
 	for(var/list/entry in spec)
-		var/noun = entry["noun"] || "goods"
+		var/noun = entry["noun"] || "货物"
 		var/lo = entry["min"]
 		var/hi = entry["max"]
 		if(entry["prob"] != null && entry["prob"] < 100)
-			parts += "a chance of [noun]"
+			parts += "可能获得 [noun]"
 		else if(lo == hi)
 			parts += "[lo] [noun]"
 		else
@@ -175,21 +175,21 @@ GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 	if(!poster.Adjacent(src))
 		return
 	if(SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(poster, span_warning("The ledger is not yet open."))
+		to_chat(poster, span_warning("台账尚未开启。"))
 		return
 
 	var/chosen_type = params["type"]
 	if(!(chosen_type in GLOB.towner_posting_descriptors))
-		to_chat(poster, span_warning("That posting type is not one the Guild accepts."))
+		to_chat(poster, span_warning("行会并不接受这种发布类型。"))
 		return
 
 	if(!user_can_post_towner_type(poster, chosen_type))
-		to_chat(poster, span_warning("Your trade does not post that contract."))
+		to_chat(poster, span_warning("你的行当不能发布这种契约。"))
 		return
 
 	var/tier = params["tier"]
 	if(!(tier in GLOB.towner_posting_tier_costs))
-		to_chat(poster, span_warning("That posting tier is not recognised."))
+		to_chat(poster, span_warning("无法识别该发布档位。"))
 		return
 
 	var/variety = params["variety"]
@@ -206,41 +206,41 @@ GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 
 	if(crown_funded)
 		if(!SStreasury.discretionary_fund)
-			to_chat(poster, span_warning("The Crown's Purse is not established."))
+			to_chat(poster, span_warning("王室金库尚未设立。"))
 			return
 		if(SStreasury.discretionary_fund.balance < cost)
-			to_chat(poster, span_warning("Insufficient Crown's Purse. Need [cost]m, have [SStreasury.discretionary_fund.balance]m."))
+			to_chat(poster, span_warning("王室金库余额不足。需要 [cost]m，现有 [SStreasury.discretionary_fund.balance]m。"))
 			return
-		if(!SStreasury.burn(SStreasury.discretionary_fund, cost, "crown towner commission ([chosen_type])"))
-			to_chat(poster, span_warning("The Crown's Purse refused the draft."))
+		if(!SStreasury.burn(SStreasury.discretionary_fund, cost, "王室镇民委托([chosen_type])"))
+			to_chat(poster, span_warning("王室金库拒付这笔支取。"))
 			return
 	else
 		if(!SStreasury.has_account(poster))
-			to_chat(poster, span_warning("You have no account on record."))
+			to_chat(poster, span_warning("你名下并无账户记录。"))
 			return
 		if(SStreasury.get_balance(poster) < cost)
-			to_chat(poster, span_warning("Insufficient balance. This posting requires [cost] mammon."))
+			to_chat(poster, span_warning("余额不足。发布此项需要 [cost] 枚玛门。"))
 			return
 		// Ratwood deviation: integer player ledger, not AP's fund accounts. Debit the poster
 		// and mint the fee into the Crown's Purse; the refund below mirrors this.
 		SStreasury.bank_accounts[poster] -= cost
-		SStreasury.mint(SStreasury.discretionary_fund, cost, "towner contract posting ([chosen_type])")
+		SStreasury.mint(SStreasury.discretionary_fund, cost, "镇民契约发布([chosen_type])")
 
 	var/to_hand = (params["delivery"] == "hand")
 	var/datum/quest/dispatched = SSquestpool.issue_towner_quest(chosen_type, poster, tier, to_hand, variety)
 	if(!dispatched)
 		if(crown_funded)
-			SStreasury.mint(SStreasury.discretionary_fund, cost, "crown towner commission refund (issue failure)")
+			SStreasury.mint(SStreasury.discretionary_fund, cost, "王室镇民委托退款(签发失败)")
 		else
 			SStreasury.bank_accounts[poster] += cost
-			SStreasury.burn(SStreasury.discretionary_fund, cost, "towner contract posting refund (issue failure)")
-		to_chat(poster, span_warning("No landmark could bear that contract. Funds refunded."))
+			SStreasury.burn(SStreasury.discretionary_fund, cost, "镇民契约发布退款(签发失败)")
+		to_chat(poster, span_warning("没有地标能够承载该契约。款项已退还。"))
 		return
 
 	playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
-	var/purse_note = crown_funded ? " Drawn on the Crown's Purse." : ""
+	var/purse_note = crown_funded ? " 由王室金库支取。" : ""
 	if(to_hand)
-		to_chat(poster, span_notice("Contract drawn up: <b>[dispatched.title || dispatched.quest_type]</b> ([tier], [cost]m).[purse_note] Hand it over to whomever you want to hire."))
+		to_chat(poster, span_notice("契约已拟就：<b>[dispatched.title || dispatched.quest_type]</b> ([tier], [cost]m)。[purse_note] 把它交给你想雇用的任何人。"))
 	else
-		to_chat(poster, span_notice("Contract posted: <b>[dispatched.title || dispatched.quest_type]</b> ([tier], [cost]m).[purse_note] The recovered goods must be opened by you."))
+		to_chat(poster, span_notice("契约已张贴：<b>[dispatched.title || dispatched.quest_type]</b> ([tier], [cost]m)。[purse_note] 追回的货物必须由你本人开启。"))
 	log_game("[key_name(poster)] posted towner contract \"[dispatched.title || dispatched.quest_type]\" ([tier], [cost]m, [crown_funded ? "crown purse" : "personal"], [to_hand ? "in hand" : "board"]).")
