@@ -51,15 +51,16 @@
 /obj/effect/proc_holder/spell/self/wish_spell
 	name = "心想事成"
 	desc = "传说中近乎万能的终极法术。据说唯有真正参透魔法终极奥秘的大魔导师，方能驾驭它。\n\
-	这道法术无法遗忘。"
+	成功许愿后需要等待3小时才能再次施放，不受智力或加速影响。这道法术无法遗忘。"
 	school = "transmutation"
 	spell_tier = 4                         // T4 法术
 	cost = WISH_MANA_COST                  // “法力 / 法术点”消耗 = 18
 	releasedrain = WISH_FATIGUE_DRAIN      // 每次施放的疲劳消耗
 	chargedrain = 0
 	chargetime = WISH_CHANNEL_TIME         // 引导时长（get_chargetime() 会返回它驱动 do_after）
-	recharge_time = WISH_COOLDOWN          // 冷却 = 1 小时（由 charge_check 强制执行）
-	cooldown_min = WISH_COOLDOWN           // 即便被“加速”到极限，冷却也不会低于 1 小时
+	recharge_time = WISH_COOLDOWN          // 实际冷却固定为 3 小时
+	cooldown_min = WISH_COOLDOWN
+	is_cdr_exempt = TRUE
 	charge_type = "recharge"               // 使用“充能”式冷却（默认）
 	human_req = TRUE                       // 只有人类施法者能驾驭
 	refundable = FALSE                     // 不可退款 避免绕过冷却
@@ -123,7 +124,7 @@
 // ---------------------------------------------------------------------------
 // cast：引导成功后真正执行的逻辑。弹出 7 选 1 菜单并分发到对应效果。
 // 返回值约定：
-//   - 返回 TRUE  -> perform() 会调用 start_recharge()，进入 1 小时冷却（愿望已实现）。
+	//   - 返回 TRUE  -> perform() 会调用 start_recharge()，进入 3 小时冷却（愿望已实现）。
 //   - 返回 FALSE -> 各效果 proc 内部已调用 revert_cast() 退还冷却（愿望取消/失败）。
 // ---------------------------------------------------------------------------
 /obj/effect/proc_holder/spell/self/wish_spell/cast(list/targets, mob/living/user = usr)
@@ -274,7 +275,7 @@
 		)
 		to_chat(user, span_warning("[target] 身上的反魔法抵消了我的愿望。"))
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-		revert_cast() // 被抵抗也退还冷却，避免“无效一击”浪费 1 小时
+		revert_cast() // 被抵抗也退还冷却，避免“无效一击”浪费 3 小时
 		return FALSE
 
 	// 执行处死：先灌入足以致命的伤害（保证即便有韧性/护甲也必死），再显式调用 death()。
@@ -469,6 +470,17 @@ GLOBAL_VAR_INIT(wish_uncap_registered, FALSE)
 	)
 	to_chat(user, span_notice("我永久获得了天赋：[chosen_label]。"))
 	return TRUE
+
+// 本法术单独计时，不调用会叠加智力与地脉加速的通用 start_recharge。
+// 成功许愿从此刻重新计满三小时；revert_cast 随后补满 charge_counter，保留失败返还。
+/obj/effect/proc_holder/spell/self/wish_spell/start_recharge()
+	recharge_time = WISH_COOLDOWN
+	charge_counter = 0
+	last_process_time = world.time
+	START_PROCESSING(SSfastprocess, src)
+
+/obj/effect/proc_holder/spell/self/wish_spell/calculate_cooldown(mob/living/user)
+	return WISH_COOLDOWN
 
 // ===== 清理顶部定义的宏，避免泄漏到全局命名空间、与其它文件冲突 =====
 #undef WISH_MANA_COST

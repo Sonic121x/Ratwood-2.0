@@ -317,14 +317,14 @@
 // ===========================================================================
 /obj/effect/proc_holder/spell/self/timestop
 	name = "时间暂停"
-	desc = "暂停一小片区域的时间9s，这是能征服世界的力量啊！WRYYYYYYY！"
+	desc = "引导至少5秒后，暂停周围一小片区域的时间9秒；施法者可在静止的时流中自由行动。"
 	school = "transmutation"
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "timestop"
 	cost = 12                           // 法术点/法力消耗（T4 高耗）
 	releasedrain = 500                  // 施放抽取的巨量疲劳——体现“征服世界”的代价
 	chargedrain = 10
-	chargetime = 0                      // 当前为即时施放（如需读条，调大此值即可由下方 do_after 生效）
+	chargetime = 5 SECONDS              // 施法加速不能缩短，行动减速仍可延长
 	recharge_time = 2 MINUTES           // 冷却 2 分钟
 	cooldown_min = 2 MINUTES            // 即便被加速，冷却也不低于 2 分钟
 	warnie = "spellwarning"
@@ -343,38 +343,32 @@
 	miracle = FALSE
 	xp_gain = TRUE
 
-// choose_targets：施法入口。若设有引导则先 do_after 读条；随后喊出咒文并进入 perform。
-/obj/effect/proc_holder/spell/self/timestop/choose_targets(mob/user = usr)
-	// 错误处理：无施法者直接撤销，恢复冷却为可用。
-	if(!user)
-		revert_cast()
-		return
+/obj/effect/proc_holder/spell/self/timestop/get_chargetime()
+	return 5 SECONDS
 
-	// 仅当 chargetime > 0 时才读条（当前默认 0 => 即时施放，此块自然跳过）。
-	var/cast_time = get_chargetime()
-	if(cast_time > 0)
-		user.visible_message(span_warning("[user] 高举魔力，仿佛要将整个世界都拽入静止！"), span_notice("我高举魔力，世界啊，准备静止吧......"))
-		// 读条期间被打断（移动/受击/死亡）即失败，撤销并退还冷却。
-		if(!do_after(user, cast_time, target = user, progress = TRUE))
+/obj/effect/proc_holder/spell/self/timestop/calculate_chargetime(mob/living/user)
+	return 5 SECONDS
+
+/obj/effect/proc_holder/spell/self/timestop/choose_targets(mob/user = usr)
+	if(QDELETED(user))
+		return
+	var/action_coefficient = user.do_after_coefficent()
+	if(action_coefficient <= 0)
+		to_chat(user, span_warning("我现在无法稳定地引导时流。"))
+		revert_cast(user)
+		return
+	// do_after 会乘以行动时间系数；抵消加速部分，确保至少引导五秒。
+	var/cast_time = get_chargetime() / min(action_coefficient, 1)
+	if(!do_after(user, cast_time, target = user, progress = TRUE))
+		if(!QDELETED(src) && !QDELETED(user))
 			to_chat(user, span_warning("我的时流操控被打断了！"))
 			revert_cast(user)
-			return
-
-	user.visible_message(
-		span_warning("[user] 宛如君临世界的魔王般张狂高喝：\"THE WORLD!\""),
-		span_notice("我张狂地高喝：\"THE WORLD!\" 世界啊，停下吧！")
-	)
-	// 临时清空咒文设置，避免 perform 成功后框架又喊一遍（咒文已在上面手动喊出）。
-	var/list/original_invocations = invocations
-	var/original_invocation_type = invocation_type
-	invocations = null
-	invocation_type = "none"
+		return
+	if(QDELETED(src) || QDELETED(user))
+		return
+	// 成功后由 perform 调用标准 invocation，真正喊出一次 THE WORLD!。
 	perform(null, user = user)
-	invocations = original_invocations
-	invocation_type = original_invocation_type
 
-
-// cast：实际效果——在施法者所在地块生成时间静止力场。
 /obj/effect/proc_holder/spell/self/timestop/cast(list/targets, mob/living/user = usr)
 	. = ..()
 	// 错误处理：施法者不在任何地块上（理论极端情况）则放弃并退还冷却。
@@ -385,7 +379,6 @@
 
 	// 生成力场；其 New() 自带“无有效地块即自毁”的兜底，这里无需重复校验。
 	new /obj/effect/timestop_field(origin, user)
-	user.visible_message(span_warning("[user] 将周遭的时流生生扭入一片灰白死寂的静止之中！"), span_notice("我将身边一小片区域的时间彻底暂停，而自己仍游离于静止之外。"))
 	return TRUE
 
 #undef TIMESTOP_FIELD_HALF_SIZE
