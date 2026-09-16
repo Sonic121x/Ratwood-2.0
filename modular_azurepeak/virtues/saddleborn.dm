@@ -37,19 +37,19 @@ GLOBAL_LIST_INIT(virtue_mount_choices, (list(
 	/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled,
 	/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled,
 	/mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/tame/saddled,
-	list("goat buck", /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/tame/saddled),
-	list("goat doe", /mob/living/simple_animal/hostile/retaliate/rogue/goat/tame/saddled),
+	list("公山羊", /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/tame/saddled),
+	list("母山羊", /mob/living/simple_animal/hostile/retaliate/rogue/goat/tame/saddled),
 )))
 
 GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
-	list("white stallion (horse)", /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/white/tame/saddled),
-	list("white mare (horse)", /mob/living/simple_animal/hostile/retaliate/rogue/horse/white/tame/saddled),
-	list("brown stallion (horse)", /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/brown/tame/saddled),
-	list("brown mare (horse)", /mob/living/simple_animal/hostile/retaliate/rogue/horse/brown/tame/saddled),
-	list("black stallion (horse)", /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/black/tame/saddled),
-	list("black mare (horse)", /mob/living/simple_animal/hostile/retaliate/rogue/horse/black/tame/saddled),
-	list("fogbeast mare", /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/tame/saddled),
-	list("fogbeast stallion", /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/male/tame/saddled),
+	list("白马（公马）", /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/white/tame/saddled),
+	list("白马（母马）", /mob/living/simple_animal/hostile/retaliate/rogue/horse/white/tame/saddled),
+	list("棕马（公马）", /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/brown/tame/saddled),
+	list("棕马（母马）", /mob/living/simple_animal/hostile/retaliate/rogue/horse/brown/tame/saddled),
+	list("黑马（公马）", /mob/living/simple_animal/hostile/retaliate/rogue/horse/male/black/tame/saddled),
+	list("黑马（母马）", /mob/living/simple_animal/hostile/retaliate/rogue/horse/black/tame/saddled),
+	list("雾兽母马", /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/tame/saddled),
+	list("雾兽公马", /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/male/tame/saddled),
 )))
 
 /datum/stressevent/precious_mob_died
@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
 
 /datum/component/precious_creature/proc/precious_died()
 	var/mob/living/our_owner = owner.resolve()
-	to_chat(our_owner, span_boldwarning("A quavering pang of loneliness streaks through your chest like cold lightning, sinking to the pit of your stomach. THEY ARE GONE!"))
+	to_chat(our_owner, span_boldwarning("一阵颤抖的孤独如冰冷的闪电般划过你的胸膛，直沉入腹底。它们不在了！"))
 	our_owner.add_stress(/datum/stressevent/precious_mob_died)
 
 /mob/living/carbon/human
@@ -138,14 +138,14 @@ GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
 	if (!our_chosen_honse)
 		return
 
-	var/has_name = alert(user, "你是否已经为这匹珍贵坐骑起名？", "Saddleborn", "是", "否")
+	var/has_name = alert(user, "你是否已经为这匹珍贵坐骑起名？", "鞍上所生", "是", "否")
 	if (!has_name)
 		has_name = "否"
 	
 	//spawn in our creature and set it up
 	var/mob/living/simple_animal/the_real_honse
 	if(ispath(our_chosen_honse, /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast))
-		var/fogbeast_color_choice = input("What color is your trusty steed?") as null|anything in GLOB.valid_fogbeast_colors
+		var/fogbeast_color_choice = input("你那匹忠实的坐骑是什么颜色？") as null|anything in GLOB.valid_fogbeast_colors
 		the_real_honse = new our_chosen_honse(user.loc, fogbeast_color_choice)
 	else
 		the_real_honse = new our_chosen_honse(user.loc)
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
 	user.saddleborn_mount = WEAKREF(the_real_honse)
 
 	if (has_name == "是")
-		var/honse_name = input(user, "你的坐骑叫什么名字？", "Saddleborn")
+		var/honse_name = input(user, "你的坐骑叫什么名字？", "鞍上所生")
 		if (honse_name)
 			the_real_honse.name = honse_name
 			the_real_honse.real_name = honse_name

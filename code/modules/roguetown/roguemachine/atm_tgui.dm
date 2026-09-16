@@ -93,7 +93,7 @@
 			"minutes_until_due" = active.minutes_until_due(),
 			"remaining" = active.get_remaining_due(),
 			"defaulted" = active.defaulted ? TRUE : FALSE,
-			"creditor" = active.source_fund ? SStreasury.indenture_faction_label(active.source_fund) : "the Crown",
+			"creditor" = active.source_fund ? SStreasury.indenture_faction_label(active.source_fund) : "王权",
 		)
 	else
 		data["active_loan"] = null
@@ -167,7 +167,7 @@
 						continue
 					institutional_loans += list(list(
 						"creditor_id" = fid,
-						"creditor_label" = L.source_fund ? SStreasury.indenture_faction_label(L.source_fund) : "the Crown",
+						"creditor_label" = L.source_fund ? SStreasury.indenture_faction_label(L.source_fund) : "王权",
 						"debtor" = L.debtor_name,
 						"is_institutional" = L.is_institutional ? TRUE : FALSE,
 						"target_id" = L.target_fund ? SStreasury.get_fund_id(L.target_fund) : "",
@@ -300,27 +300,27 @@
 	if(!istype(H))
 		return
 	if(H.job != "Bishop" && H.job != "Bathmaster")
-		to_chat(H, span_warning("Only the Bishop or the Bathmaster may set the terms of the Ordinance of the Baths."))
+		to_chat(H, span_warning("唯有主教或浴场主才能定夺浴场敕令的条款。"))
 		return
 	if(world.time < SStreasury.bathhouse_ordinance_next_toggle_time)
 		var/remaining_minutes = CEILING((SStreasury.bathhouse_ordinance_next_toggle_time - world.time) / (1 MINUTES), 1)
-		to_chat(H, span_warning("The seal is still warm upon the wax. The Ordinance may be reconsidered in [remaining_minutes] minute\s."))
+		to_chat(H, span_warning("蜡上的印记余温未消。浴场敕令需再过 [remaining_minutes] 分钟方可重新审议。"))
 		return
 	SStreasury.bathhouse_ordinance_active = !SStreasury.bathhouse_ordinance_active
 	SStreasury.bathhouse_ordinance_next_toggle_time = world.time + BATHHOUSE_ORDINANCE_TOGGLE_COOLDOWN
 	var/now_active = SStreasury.bathhouse_ordinance_active
-	var/title = now_active ? "Ordinance of the Baths Restored" : "Ordinance of the Baths Broken"
+	var/title = now_active ? "浴场敕令已恢复" : "浴场敕令已废止"
 	var/msg
 	if(now_active)
 		if(H.job == "Bishop")
-			msg = "By Eora's grace, the Bishop, [H.real_name], hath set anew the seal upon the Ordinance of the Baths. The See extends its sanction over the stews once more, and the tithe shall render unto the Church."
+			msg = "承伊欧拉之恩典，主教 [H.real_name] 已为浴场敕令重新钤上印记。教廷再度向浴场施以认可，什一税将献予教会。"
 		else
-			msg = "By Eora's grace, the Bathmaster, [H.real_name], hath knelt beneath the Ordinance of the Baths. The stews accept the Church's sanction anew, and the tithe shall render unto the Church."
+			msg = "承伊欧拉之恩典，浴场主 [H.real_name] 已向浴场敕令屈膝。浴场重新接受教会的认可，什一税将献予教会。"
 	else
 		if(H.job == "Bishop")
-			msg = "The Bishop, [H.real_name], hath broken the seal upon the Ordinance of the Baths. The See renounces its sanction; the stews fall again beneath the Crown's tariff."
+			msg = "主教 [H.real_name] 已打破浴场敕令上的印记。教廷放弃其认可；浴场重归王权关税之下。"
 		else
-			msg = "The Bathmaster, [H.real_name], hath broken the seal upon the Ordinance of the Baths. The stews cast off the Church's sanction; their farm returns unto the Crown."
+			msg = "浴场主 [H.real_name] 已打破浴场敕令上的印记。浴场抛弃教会的认可；其税赋重归王权。"
 	priority_announce(msg, title, pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
 	log_admin("ORDINANCE OF THE BATHS: [key_name(H)] toggled to [now_active ? "IN FORCE" : "BROKEN"].")
 	message_admins("[key_name_admin(H)] toggled the Ordinance of the Baths to [now_active ? "IN FORCE" : "BROKEN"].")
@@ -329,12 +329,12 @@
 	var/coin_amt = round(text2num("[params["amount"]]"))
 	var/denom = "[params["denomination"]]"
 	if(!(denom in list("GOLD", "SILVER", "BRONZE")))
-		to_chat(H, span_warning("Choose a valid denomination."))
+		to_chat(H, span_warning("请选择有效的面额。"))
 		return
 	if(isnull(coin_amt) || coin_amt < 1)
 		return
 	if(coin_amt > 20)
-		to_chat(H, span_warning("Maximum 20 coins per withdrawal."))
+		to_chat(H, span_warning("每次提款最多 20 枚硬币。"))
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	var/mod = 1
@@ -345,7 +345,7 @@
 	var/total = coin_amt * mod
 	if(SStreasury.get_balance(H) < total)
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		to_chat(H, span_warning("Your balance is insufficient."))
+		to_chat(H, span_warning("你的余额不足。"))
 		return
 	if(!SStreasury.withdraw_money_account(total, H))
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -357,7 +357,7 @@
 /obj/structure/roguemachine/atm/proc/handle_repay_loan(mob/living/carbon/human/H, list/params)
 	var/datum/loan/L = SStreasury.get_loan_for(H)
 	if(!L)
-		say("No active loan on record.")
+		say("记录中没有未结的贷款。")
 		return
 	var/pay_amt = round(text2num("[params["amount"]]"))
 	if(isnull(pay_amt) || pay_amt < 1)
@@ -366,26 +366,26 @@
 	var/balance = SStreasury.get_balance(H)
 	pay_amt = min(pay_amt, outstanding, balance)
 	if(pay_amt < 1)
-		say("Nothing to repay with.")
+		say("没有可供偿还的款项。")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	var/paid = SStreasury.repay_loan(H, pay_amt)
 	if(!paid)
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		say("The ledger refused the transfer.")
+		say("账册拒绝了这笔转账。")
 		return
 	playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 	if(!SStreasury.get_loan_for(H))
-		say("Loan repaid in full. [paid]m transferred.")
+		say("贷款已全额偿还。[paid]m 已转账。")
 	else
 		var/datum/loan/still = SStreasury.get_loan_for(H)
-		say("[paid]m transferred. [still.get_remaining_due()]m remains.")
+		say("[paid]m 已转账。尚余 [still.get_remaining_due()]m。")
 
 /obj/structure/roguemachine/atm/proc/handle_repay_indenture(mob/living/carbon/human/H, list/params)
 	var/fund_id = "[params["fund_id"]]"
 	var/obj/structure/roguemachine/vaultbank/V = SStreasury.find_jawbank_for_fund_id(fund_id)
 	if(!V || !V.can_issue_loan(H))
-		say("You lack the authority to make payments on behalf of that institution.")
+		say("你无权代该机构付款。")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	var/datum/fund/target = SStreasury.resolve_fund_by_id(fund_id)
@@ -397,7 +397,7 @@
 			L = candidate
 			break
 	if(!L)
-		say("No active indenture on record for that institution.")
+		say("记录中没有该机构的未结契约。")
 		return
 	var/pay_amt = round(text2num("[params["amount"]]"))
 	if(isnull(pay_amt) || pay_amt < 1)
@@ -405,13 +405,13 @@
 	var/outstanding = L.get_remaining_due()
 	pay_amt = min(pay_amt, outstanding, target.balance)
 	if(pay_amt < 1)
-		say("[target.name]'s coffers are too thin to make a payment.")
+		say("[target.name] 的库银太薄，无力付款。")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	var/paid = SStreasury.repay_indenture(L, pay_amt)
 	if(!paid)
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		say("The ledger refused the transfer.")
+		say("账册拒绝了这笔转账。")
 		return
 	playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 	var/datum/loan/still_active
@@ -420,9 +420,9 @@
 			still_active = check
 			break
 	if(!still_active)
-		say("Indenture repaid in full. [paid]m transferred to [L.source_fund.name].")
+		say("契约已全额偿还。[paid]m 已转至 [L.source_fund.name]。")
 	else
-		say("[paid]m transferred. [still_active.get_remaining_due()]m remains on the indenture.")
+		say("[paid]m 已转账。契约尚余 [still_active.get_remaining_due()]m。")
 
 // Taxation 2 (ported): prepay up to POLL_TAX_MAX_ADVANCE_DAYS of poll tax.
 /obj/structure/roguemachine/atm/proc/handle_advance_poll_tax(mob/living/carbon/human/H, list/params)
@@ -438,10 +438,10 @@
 	var/fund_id = "[params["fund_id"]]"
 	var/obj/structure/roguemachine/vaultbank/V = SStreasury.find_jawbank_for_fund_id(fund_id)
 	if(!V)
-		to_chat(H, span_warning("That institution has no coffers to draw from."))
+		to_chat(H, span_warning("该机构没有可供提取的库银。"))
 		return
 	if(!V.can_withdraw(H))
-		to_chat(H, span_warning("You are not authorised to withdraw from [V.get_patron_label() || V.get_faction_label()]."))
+		to_chat(H, span_warning("你无权从 [V.get_patron_label() || V.get_faction_label()] 提款。"))
 		return
 	V.disburse(H, params)
 
@@ -511,10 +511,10 @@
 	var/fund_id = "[params["fund_id"]]"
 	var/obj/structure/roguemachine/vaultbank/V = SStreasury.find_jawbank_for_fund_id(fund_id)
 	if(!V)
-		to_chat(H, span_warning("That institution has no coffers to lend from."))
+		to_chat(H, span_warning("该机构没有可供放贷的库银。"))
 		return
 	if(!V.can_issue_loan(H))
-		to_chat(H, span_warning("You are not authorised to draft loans for [V.get_faction_label()]."))
+		to_chat(H, span_warning("你无权为 [V.get_faction_label()] 起草贷款。"))
 		return
 	V.draft_personal_loan(H, params)
 
@@ -522,10 +522,10 @@
 	var/fund_id = "[params["fund_id"]]"
 	var/obj/structure/roguemachine/vaultbank/V = SStreasury.find_jawbank_for_fund_id(fund_id)
 	if(!V)
-		to_chat(H, span_warning("That institution has no coffers to lend from."))
+		to_chat(H, span_warning("该机构没有可供放贷的库银。"))
 		return
 	if(!V.can_issue_loan(H))
-		to_chat(H, span_warning("You are not authorised to draft indentures for [V.get_faction_label()]."))
+		to_chat(H, span_warning("你无权为 [V.get_faction_label()] 起草契约。"))
 		return
 	V.draft_indenture(H, params)
 
@@ -533,10 +533,10 @@
 	var/fund_id = "[params["fund_id"]]"
 	var/obj/structure/roguemachine/vaultbank/V = SStreasury.find_jawbank_for_fund_id(fund_id)
 	if(!V)
-		to_chat(H, span_warning("That institution does not extend patronage."))
+		to_chat(H, span_warning("该机构不授予恩主身份。"))
 		return
 	if(!V.can_issue_loan(H))
-		to_chat(H, span_warning("You are not authorised to draft patronage for [V.get_patron_label()]."))
+		to_chat(H, span_warning("你无权为 [V.get_patron_label()] 起草恩主令状。"))
 		return
 	V.draft_patronage_writ(H)
 
