@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(colorlist, list(
 	"Yarrow" = "#f0cb76",
 	"Yellow Ochre" = "#cb9d06",
 	"Mage Yellow" = "#c1b144",
-	"Astrata's Yellow"="#ffe333",
+	"阿斯特拉塔之黄"="#ffe333",
 	"Pale Gold"="#FFFD8D",
 	"Olive" = "#98bf64",
 	"Royal Green" = "#264d26",
@@ -57,8 +57,8 @@ GLOBAL_LIST_INIT(pridelist, list(
 // DYE BIN
 
 /obj/machinery/gear_painter
-	name = "Dye Station"
-	desc = "A station to give your apparel a fresh new color! Recommended to use with white items for best results."
+	name = "染色台"
+	desc = "一座能让衣物焕然一新的染色台！推荐搭配白色物品使用，以获得最佳效果。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dyestation"
 	density = TRUE
@@ -105,29 +105,29 @@ GLOBAL_LIST_INIT(pridelist, list(
 	if(istype(I, /obj/item/book/rogue/swatchbook))
 		var/obj/item/book/rogue/swatchbook/S = I
 		if(!S.open)
-			to_chat(user, span_info("The swatchbook expressly forbids the use of its cover color!"))
+			to_chat(user, span_info("色卡册明确禁止使用它封面的颜色！"))
 			return ..()
 		if(S.swatchbookcolor == "#000000")
-			to_chat(user, span_info("You haven't picked out a color!"))
+			to_chat(user, span_info("你还没有选好颜色！"))
 			return ..()
 		else
-			to_chat(user, span_info("You mix the swatch's color in the dye bin."))
+			to_chat(user, span_info("你把色卡上的颜色调进了染缸里。"))
 			activecolor = "[S.swatchbookcolor]"
 			activecolor_detail = "[S.swatchbookcolor]"
 			activecolor_altdetail = "[S.swatchbookcolor]"
 			ui_interact(user)
 			return ..()
 	if(inserted)
-		to_chat(user, span_warning("Something is already inside!"))
+		to_chat(user, span_warning("里面已经有东西了！"))
 		return ..()
 	if(!is_type_in_list(I, allowed_types))
-		to_chat(user, span_warning("[I] cannot be dyed!"))
+		to_chat(user, span_warning("[I]不能被染色！"))
 		return ..()
 	if(!user.transferItemToLoc(I, src))
-		to_chat(user, span_warning("[I] is stuck to your hand!"))
+		to_chat(user, span_warning("[I]粘在你的手上了！"))
 		return ..()
 
-	user.visible_message(span_notice("[user] inserts [I] into [src]'s receptable."))
+	user.visible_message(span_notice("[user]把[I]放进了[src]的容槽中。"))
 
 	inserted = I
 	interact(user)
@@ -236,24 +236,24 @@ GLOBAL_LIST_INIT(pridelist, list(
 
 	dat += "</div><BR>"
 
-	dat += "Item inserted: [inserted]<BR><BR>"
+	dat += "已放入物品：[inserted]<BR><BR>"
 
-	dat += "Color: <font color='[activecolor]'>&#10070;</font> "
-	dat += "<A href='?src=\ref[src];select=1'>Select new color.</A><BR>"
-	dat += "<A href='?src=\ref[src];paint_primary=1'>Apply new color</A> | "
-	dat += "<A href='?src=\ref[src];clear_primary=1'>Remove paintjob</A><BR><BR>"
+	dat += "主色：<font color='[activecolor]'>&#10070;</font> "
+	dat += "<A href='?src=\ref[src];select=1'>选择新颜色。</A><BR>"
+	dat += "<A href='?src=\ref[src];paint_primary=1'>应用新颜色</A> | "
+	dat += "<A href='?src=\ref[src];clear_primary=1'>移除涂装</A><BR><BR>"
 
 	if(inserted_item.detail_color)
-		dat += "Detail Color: <font color='[activecolor_detail]'>&#10070;</font> "
-		dat += "<A href='?src=\ref[src];select_detail=1'>Select new detail color.</A><BR>"
-		dat += "<A href='?src=\ref[src];paint_detail=1'>Apply new color</A> | "
-		dat += "<A href='?src=\ref[src];clear_detail=1'>Remove paintjob</A><BR><BR>"
+		dat += "细节色：<font color='[activecolor_detail]'>&#10070;</font> "
+		dat += "<A href='?src=\ref[src];select_detail=1'>选择新的细节色。</A><BR>"
+		dat += "<A href='?src=\ref[src];paint_detail=1'>应用新颜色</A> | "
+		dat += "<A href='?src=\ref[src];clear_detail=1'>移除涂装</A><BR><BR>"
 
 	if(inserted_item.altdetail_color)
-		dat += "Alt. Detail Color: <font color='[activecolor_altdetail]'>&#10070;</font> "
-		dat += "<A href='?src=\ref[src];select_altdetail=1'>Select new tertiary color.</A><BR>"
-		dat += "<A href='?src=\ref[src];paint_altdetail=1'>Apply new color</A> | "
-		dat += "<A href='?src=\ref[src];clear_altdetail=1'>Remove paintjob</A><BR><BR>"
+		dat += "第三细节色：<font color='[activecolor_altdetail]'>&#10070;</font> "
+		dat += "<A href='?src=\ref[src];select_altdetail=1'>选择新的第三细节色。</A><BR>"
+		dat += "<A href='?src=\ref[src];paint_altdetail=1'>应用新颜色</A> | "
+		dat += "<A href='?src=\ref[src];clear_altdetail=1'>移除涂装</A><BR><BR>"
 
 	// Taur tasset dyyyyyyeeeing - only for heavy armor when user is a taur
 	if(istype(inserted_item, /obj/item/clothing))
@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(pridelist, list(
 			var/mob/living/carbon/human/H = user
 			var/obj/item/bodypart/taur/taur = H.get_taur_tail()
 			if(taur?.taur_clothing_category)
-				dat += "<b>Taur Barding Tassets</b><BR>"
+				dat += "<b>兽身甲裙甲片</b><BR>"
 
 				var/icon/tasset1_preview = new /icon()
 				tasset1_preview.Insert(new /icon('icons/roguetown/clothing/special/onmob/taur_clothing.dmi', "plate-tasset1_[taur.taur_clothing_category]"), "", SOUTH, 0)
@@ -271,10 +271,10 @@ GLOBAL_LIST_INIT(pridelist, list(
 				dat += "<div style='text-align:center;'>"
 				dat += "<img src='data:image/png;base64,[icon2base64(tasset1_preview)]' style='vertical-align:middle; width:64px; height:64px; image-rendering: pixelated; image-rendering: crisp-edges;'>"
 				dat += "</div>"
-				dat += "Tasset 1 Color: <font color='[taur.tasset1_color || "#FFFFFF"]'>&#10070;</font> "
-				dat += "<A href='?src=\ref[src];select_tasset1=1'>Select color.</A><BR>"
-				dat += "<A href='?src=\ref[src];paint_tasset1=1'>Apply color</A> | "
-				dat += "<A href='?src=\ref[src];clear_tasset1=1'>Remove color</A><BR><BR>"
+				dat += "甲片 1 颜色：<font color='[taur.tasset1_color || "#FFFFFF"]'>&#10070;</font> "
+				dat += "<A href='?src=\ref[src];select_tasset1=1'>选择颜色。</A><BR>"
+				dat += "<A href='?src=\ref[src];paint_tasset1=1'>应用颜色</A> | "
+				dat += "<A href='?src=\ref[src];clear_tasset1=1'>移除颜色</A><BR><BR>"
 
 				var/icon/tasset2_preview = new /icon()
 				tasset2_preview.Insert(new /icon('icons/roguetown/clothing/special/onmob/taur_clothing.dmi', "plate-tasset2_[taur.taur_clothing_category]"), "", SOUTH, 0)
@@ -283,12 +283,12 @@ GLOBAL_LIST_INIT(pridelist, list(
 				dat += "<div style='text-align:center;'>"
 				dat += "<img src='data:image/png;base64,[icon2base64(tasset2_preview)]' style='vertical-align:middle; width:64px; height:64px; image-rendering: pixelated; image-rendering: crisp-edges;'>"
 				dat += "</div>"
-				dat += "Tasset 2 Color: <font color='[taur.tasset2_color || "#FFFFFF"]'>&#10070;</font> "
-				dat += "<A href='?src=\ref[src];select_tasset2=1'>Select color.</A><BR>"
-				dat += "<A href='?src=\ref[src];paint_tasset2=1'>Apply color</A> | "
-				dat += "<A href='?src=\ref[src];clear_tasset2=1'>Remove color</A><BR><BR>"
+				dat += "甲片 2 颜色：<font color='[taur.tasset2_color || "#FFFFFF"]'>&#10070;</font> "
+				dat += "<A href='?src=\ref[src];select_tasset2=1'>选择颜色。</A><BR>"
+				dat += "<A href='?src=\ref[src];paint_tasset2=1'>应用颜色</A> | "
+				dat += "<A href='?src=\ref[src];clear_tasset2=1'>移除颜色</A><BR><BR>"
 
-	dat += "<A href='?src=\ref[src];eject=1'>Eject item.</A><BR><BR>"
+	dat += "<A href='?src=\ref[src];eject=1'>弹出物品。</A><BR><BR>"
 	menu.set_content("<html>[dat.Join("")]</html>")
 	menu.open()
 
@@ -308,36 +308,36 @@ GLOBAL_LIST_INIT(pridelist, list(
 		barony_scheme = FALSE
 		if(HAS_TRAIT(usr, TRAIT_DYES))
 			var/choice
-			var/input_type = alert(usr, "Input Choice", "Primary Dye", "Color Wheel", "Color Preset", "Scheme")
-			if(input_type == "Scheme")
-				var/scheme_type = alert(usr, "Choose Scheme", "Scheme", "Ducal", "Barony")
-				if(scheme_type == "Barony")
+			var/input_type = alert(usr, "选择输入方式", "主染色", "色轮", "预设颜色", "配色方案")
+			if(input_type == "配色方案")
+				var/scheme_type = alert(usr, "选择配色方案", "配色方案", "公爵", "男爵")
+				if(scheme_type == "男爵")
 					barony_scheme = TRUE
 					activecolor = GLOB.baronprimary ? GLOB.baronprimary : "#685542"
 				else
 					ducal_scheme = TRUE
 					activecolor = GLOB.lordprimary ? GLOB.lordprimary : "#264d26"
-			else if(input_type != "Color Wheel")
-				choice = input(usr, "Choose your dye:", "Dyes", null) as null|anything in used_colors
+			else if(input_type != "色轮")
+				choice = input(usr, "选择你的染料：", "染料", null) as null|anything in used_colors
 				if(!choice)
 					return
 				activecolor = used_colors[choice]
 			else
-				activecolor = sanitize_hexcolor(color_pick_sanitized(usr, "Choose your dye:", "Dyes", choice ? choice : activecolor, 0.2, 1), 6, TRUE)
+				activecolor = sanitize_hexcolor(color_pick_sanitized(usr, "选择你的染料：", "染料", choice ? choice : activecolor, 0.2, 1), 6, TRUE)
 				if(activecolor == "#000000")
 					activecolor = "#FFFFFF"
 			interact(usr)
 		else
 			var/choice_list = GLOB.colorlist.Copy()
-			choice_list["Ducal Scheme"] = "#DUCAL"
-			choice_list["Barony Scheme"] = "#BARONY"
-			var/choice = input(usr,"Choose your dye:","Dyes",null) as null|anything in choice_list
+			choice_list["公爵配色"] = "#DUCAL"
+			choice_list["男爵配色"] = "#BARONY"
+			var/choice = input(usr,"选择你的染料：","染料",null) as null|anything in choice_list
 			if(!choice)
 				return
-			if(choice == "Ducal Scheme")
+			if(choice == "公爵配色")
 				ducal_scheme = TRUE
 				activecolor = GLOB.lordprimary ? GLOB.lordprimary : "#264d26"
-			else if(choice == "Barony Scheme")
+			else if(choice == "男爵配色")
 				barony_scheme = TRUE
 				activecolor = GLOB.baronprimary ? GLOB.baronprimary : "#685542"
 			else
@@ -349,33 +349,33 @@ GLOBAL_LIST_INIT(pridelist, list(
 		barony_scheme_detail = FALSE
 		if(HAS_TRAIT(usr, TRAIT_DYES))
 			var/choice
-			var/input_type = alert(usr, "Input Choice", "Detail Dye", "Color Wheel", "Color Preset", "Scheme")
-			if(input_type == "Scheme")
-				var/scheme_type = alert(usr, "Choose Scheme", "Scheme", "Ducal", "Barony")
-				if(scheme_type == "Barony")
+			var/input_type = alert(usr, "选择输入方式", "细节染色", "色轮", "预设颜色", "配色方案")
+			if(input_type == "配色方案")
+				var/scheme_type = alert(usr, "选择配色方案", "配色方案", "公爵", "男爵")
+				if(scheme_type == "男爵")
 					barony_scheme_detail = TRUE
 					activecolor_detail = GLOB.baronsecondary ? GLOB.baronsecondary : "#505050"
 				else
 					ducal_scheme_detail = TRUE
 					activecolor_detail = GLOB.lordsecondary ? GLOB.lordsecondary : "#2b292e"
-			else if(input_type != "Color Wheel")
-				choice = input(usr, "Choose your dye:", "Dyes", null) as null|anything in used_colors
+			else if(input_type != "色轮")
+				choice = input(usr, "选择你的染料：", "染料", null) as null|anything in used_colors
 				if(!choice)
 					return
 				activecolor_detail = used_colors[choice]
 			else
-				activecolor_detail = sanitize_hexcolor(color_pick_sanitized(usr, "Choose your dye:", "Dyes", choice ? choice : activecolor_detail, 0.2, 1), 6, TRUE)
+				activecolor_detail = sanitize_hexcolor(color_pick_sanitized(usr, "选择你的染料：", "染料", choice ? choice : activecolor_detail, 0.2, 1), 6, TRUE)
 				if(activecolor_detail == "#000000")
 					activecolor_detail = "#FFFFFF"
 			interact(usr)
 		else
 			var/choice_list = GLOB.colorlist.Copy()
-			choice_list["Ducal Scheme"] = "#DUCAL"
-			choice_list["Barony Scheme"] = "#BARONY"
-			var/choice = input(usr,"Choose your dye:","Dyes",null) as null|anything in choice_list
+			choice_list["公爵配色"] = "#DUCAL"
+			choice_list["男爵配色"] = "#BARONY"
+			var/choice = input(usr,"选择你的染料：","染料",null) as null|anything in choice_list
 			if(!choice)
 				return
-			if(choice == "Ducal Scheme")
+			if(choice == "公爵配色")
 				ducal_scheme_detail = TRUE
 				activecolor_detail = GLOB.lordsecondary ? GLOB.lordsecondary : "#2b292e"
 			else if(choice == "Barony Scheme")
@@ -390,33 +390,33 @@ GLOBAL_LIST_INIT(pridelist, list(
 		barony_scheme_altdetail = FALSE
 		if(HAS_TRAIT(usr, TRAIT_DYES))
 			var/choice
-			var/input_type = alert(usr, "Input Choice", "Tertiary Dye", "Color Wheel", "Color Preset", "Scheme")
-			if(input_type == "Scheme")
-				var/scheme_type = alert(usr, "Choose Scheme", "Scheme", "Ducal", "Barony")
-				if(scheme_type == "Barony")
+			var/input_type = alert(usr, "选择输入方式", "第三染色", "色轮", "预设颜色", "配色方案")
+			if(input_type == "配色方案")
+				var/scheme_type = alert(usr, "选择配色方案", "配色方案", "公爵", "男爵")
+				if(scheme_type == "男爵")
 					barony_scheme_altdetail = TRUE
 					activecolor_altdetail = GLOB.baronsecondary ? GLOB.baronsecondary : "#505050"
 				else
 					ducal_scheme_altdetail = TRUE
 					activecolor_altdetail = GLOB.lordsecondary ? GLOB.lordsecondary : "#2b292e"
-			else if(input_type != "Color Wheel")
-				choice = input(usr, "Choose your dye:", "Dyes", null) as null|anything in used_colors
+			else if(input_type != "色轮")
+				choice = input(usr, "选择你的染料：", "染料", null) as null|anything in used_colors
 				if(!choice)
 					return
 				activecolor_altdetail = used_colors[choice]
 			else
-				activecolor_altdetail = sanitize_hexcolor(color_pick_sanitized(usr, "Choose your dye:", "Dyes", choice ? choice : activecolor_altdetail, 0.2, 1), 6, TRUE)
+				activecolor_altdetail = sanitize_hexcolor(color_pick_sanitized(usr, "选择你的染料：", "染料", choice ? choice : activecolor_altdetail, 0.2, 1), 6, TRUE)
 				if(activecolor_altdetail == "#000000")
 					activecolor_altdetail = "#FFFFFF"
 			interact(usr)
 		else
 			var/choice_list = GLOB.colorlist.Copy()
-			choice_list["Ducal Scheme"] = "#DUCAL"
-			choice_list["Barony Scheme"] = "#BARONY"
-			var/choice = input(usr,"Choose your dye:","Dyes",null) as null|anything in choice_list
+			choice_list["公爵配色"] = "#DUCAL"
+			choice_list["男爵配色"] = "#BARONY"
+			var/choice = input(usr,"选择你的染料：","染料",null) as null|anything in choice_list
 			if(!choice)
 				return
-			if(choice == "Ducal Scheme")
+			if(choice == "公爵配色")
 				ducal_scheme_altdetail = TRUE
 				activecolor_altdetail = GLOB.lordsecondary ? GLOB.lordsecondary : "#2b292e"
 			else if(choice == "Barony Scheme")
@@ -620,9 +620,9 @@ GLOBAL_LIST_INIT(pridelist, list(
 		var/which = href_list["select_tasset1"] ? "tasset1" : "tasset2"
 		if(HAS_TRAIT(usr, TRAIT_DYES))
 			var/choice
-			var/input_type = alert(usr, "Input Choice", "[which == "tasset1" ? "Tasset 1" : "Tasset 2"] Dye", "Color Wheel", "Color Preset")
-			if(input_type != "Color Wheel")
-				choice = input(usr, "Choose your dye:", "Dyes", null) as null|anything in used_colors
+			var/input_type = alert(usr, "请选择输入方式", "[which == "tasset1" ? "甲片 1" : "甲片 2"] 染色", "色轮", "预设颜色")
+			if(input_type != "色轮")
+				choice = input(usr, "选择你的染料：", "染料", null) as null|anything in used_colors
 				if(!choice)
 					return
 				if(which == "tasset1")
@@ -630,7 +630,7 @@ GLOBAL_LIST_INIT(pridelist, list(
 				else
 					activecolor_altdetail = used_colors[choice]
 			else
-				var/picked = sanitize_hexcolor(color_pick_sanitized(usr, "Choose your dye:", "Dyes", "#FFFFFF", 0.2, 1), 6, TRUE)
+				var/picked = sanitize_hexcolor(color_pick_sanitized(usr, "选择你的染料：", "染料", "#FFFFFF", 0.2, 1), 6, TRUE)
 				if(picked == "#000000")
 					picked = "#FFFFFF"
 				if(which == "tasset1")
@@ -638,7 +638,7 @@ GLOBAL_LIST_INIT(pridelist, list(
 				else
 					activecolor_altdetail = picked
 		else
-			var/choice = input(usr,"Choose your dye:","Dyes",null) as null|anything in GLOB.colorlist
+			var/choice = input(usr,"选择你的染料：","染料",null) as null|anything in GLOB.colorlist
 			if(!choice)
 				return
 			if(which == "tasset1")
@@ -690,8 +690,8 @@ GLOBAL_LIST_INIT(pridelist, list(
 
 /obj/item/dye_brush
 	icon = 'icons/roguetown/items/misc.dmi'
-	name = "dye brush"
-	desc = "A sizeable brush made of the finest mane-hairs. Thick dye adheres to it well."
+	name = "染刷"
+	desc = "一把尺寸不小的刷子，以最上等的鬃毛制成，能够很好地附着浓稠染料。"
 	icon_state = "dbrush"
 	w_class = WEIGHT_CLASS_SMALL
 	dropshrink = 0.7
@@ -713,19 +713,19 @@ GLOBAL_LIST_INIT(pridelist, list(
 	. = ..()
 
 	if(dye)
-		. += span_notice("It is currently lathering <font color=[dye]>paint</font>.")
+		. += span_notice("它当前正裹着<font color=[dye]>染料</font>。")
 	else
-		. += span_notice("Use in active hand to pick a paint.")
+		. += span_notice("在主手中使用它以挑选染料。")
 
 /obj/item/dye_brush/attack_self(mob/user)
 	..()
 
 	var/hexdye
 	if(dye)
-		to_chat(user, span_warning("[src] is already carrying <font color=[dye]>dye</font>. I need to wash it."))
+		to_chat(user, span_warning("[src]上已经沾着<font color=[dye]>染料</font>了。我得先把它洗干净。"))
 		return
 
-	hexdye = sanitize_hexcolor(color_pick_sanitized(usr, "Choose your dye:", "Dyes", null), 6, TRUE)
+	hexdye = sanitize_hexcolor(color_pick_sanitized(usr, "选择你的染料：", "染料", null), 6, TRUE)
 	if (hexdye == "#000000")
 		return
 	dye = hexdye
@@ -735,16 +735,16 @@ GLOBAL_LIST_INIT(pridelist, list(
 	if(!iswallturf(T))
 		return
 	if(!dye)
-		to_chat(user, span_warning("[src] has no dye!"))
+		to_chat(user, span_warning("[src]上没有染料！"))
 		return
 	if(T.color)
-		to_chat(user, span_warning("[T] is already painted by a <font color=[T.color]>dye</font>!"))
+		to_chat(user, span_warning("[T]已经被<font color=[T.color]>染料</font>上过色了！"))
 		return
 
 	if(!do_after(user, 6 SECONDS, TRUE, T))
 		return
-	user.visible_message(span_notice("[user] finishes <font color=[dye]>painting</font> [T]."), \
-		span_notice("I finish <font color=[dye]>painting</font> [T].")
+	user.visible_message(span_notice("[user]完成了对[T]的<font color=[dye]>上色</font>。"), \
+		span_notice("我完成了对[T]的<font color=[dye]>上色</font>。")
 	)
 	playsound(loc,"sound/foley/scrubbing[pick(1,2)].ogg", 60, TRUE)
 	T.color = dye
@@ -755,16 +755,16 @@ GLOBAL_LIST_INIT(pridelist, list(
 	if(!isstructure(O))
 		return
 	if(!dye)
-		to_chat(user, span_warning("[src] has no dye!"))
+		to_chat(user, span_warning("[src]上没有染料！"))
 		return
 	if(O.color)
-		to_chat(user, span_warning("[O] is already painted by a <font color=[O.color]>dye</font>!"))
+		to_chat(user, span_warning("[O]已经被<font color=[O.color]>染料</font>上过色了！"))
 		return
 
 	if(!do_after(user, 3 SECONDS, TRUE, O))
 		return
-	user.visible_message(span_notice("[user] finishes <font color=[dye]>painting</font> [O]."), \
-		span_notice("I finish <font color=[dye]>painting</font> [O].")
+	user.visible_message(span_notice("[user]完成了对[O]的<font color=[dye]>上色</font>。"), \
+		span_notice("我完成了对[O]的<font color=[dye]>上色</font>。")
 	)
 	playsound(loc,"sound/foley/scrubbing[pick(1,2)].ogg", 60, TRUE)
 	O.color = dye
@@ -776,4 +776,3 @@ GLOBAL_LIST_INIT(pridelist, list(
 		return
 	dye = null
 	update_icon()
-
