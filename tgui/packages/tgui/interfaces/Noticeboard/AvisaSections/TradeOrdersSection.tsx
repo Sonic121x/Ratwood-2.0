@@ -60,13 +60,13 @@ export const TradeOrdersSection = ({ data }: { data: NoticeboardData }) => {
           }}
           onClick={() => setHelpOpen((v) => !v)}
         >
-          {helpOpen ? 'Hide About Trade Orders' : 'About Trade Orders'}
+          {helpOpen ? '收起贸易订单说明' : '关于贸易订单'}
         </button>
         {helpOpen && <HelpPanel />}
       </div>
 
       {orders.length === 0 ? (
-        <EmptyMessage text="No standing orders posted. Check back later." />
+        <EmptyMessage text="暂无发布的常设订单. 请稍后再来查看." />
       ) : (
         <div style={orderGridStyle}>
           {orders.map((o, i) => <OrderCard key={i} order={o} />)}
@@ -81,19 +81,19 @@ const OrderCard = ({ order }: { order: TradeOrder }) => {
     <div style={{ ...cardStyle, marginBottom: 0, minHeight: 280 }}>
       <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
         {!!order.urgent && (
-          <span style={badgeStyle(SEAL_RED)}>URGENT</span>
+          <span style={badgeStyle(SEAL_RED)}>紧急</span>
         )}
         {!!order.blockaded && (
-          <span style={badgeStyle(SEAL_RED)}>BLOCKADED</span>
+          <span style={badgeStyle(SEAL_RED)}>已封锁</span>
         )}
         {!!order.warehouse && (
-          <span style={badgeStyle(SEAL_BLUE)}>WAREHOUSE</span>
+          <span style={badgeStyle(SEAL_BLUE)}>仓库</span>
         )}
         {!!order.stockpile && (
-          <span style={badgeStyle(SEAL_GREEN)}>STOCKPILE</span>
+          <span style={badgeStyle(SEAL_GREEN)}>储备库</span>
         )}
         {!!order.petitioned && (
-          <span style={badgeStyle(PETITION_PURPLE)}>STEWARD&apos;S PETITION</span>
+          <span style={badgeStyle(PETITION_PURPLE)}>总管家请愿</span>
         )}
       </div>
 
@@ -115,7 +115,7 @@ const OrderCard = ({ order }: { order: TradeOrder }) => {
           marginTop: 2,
         }}
       >
-        {order.region_label} &middot; {order.days_left}d remaining
+        {order.region_label} &middot; 剩余 {order.days_left}天
       </div>
 
       {!!order.description && (
@@ -132,11 +132,11 @@ const OrderCard = ({ order }: { order: TradeOrder }) => {
       )}
 
       <div style={{ marginTop: 8 }}>
-        <div style={fieldLabelStyle}>Required</div>
+        <div style={fieldLabelStyle}>所需</div>
         <div style={{ marginTop: 2, color: INK }}>
           {order.requirements.length === 0 ? (
             <span style={{ color: INK_FAINT, fontStyle: 'italic' }}>
-              - nothing on record -
+              - 暂无记录 -
             </span>
           ) : (
             order.requirements
@@ -155,7 +155,7 @@ const OrderCard = ({ order }: { order: TradeOrder }) => {
         }}
       >
         <span style={fieldLabelStyle}>
-          Payout
+          酬金
         </span>
         <span
           style={{
@@ -201,23 +201,23 @@ const HelpPanel = () => (
     }}
   >
     <p style={{ margin: '0 0 6px 0' }}>
-      Standing orders are demands posted by the realm&apos;s stockpiles and
-      merchants. Speak with the Steward or Clerk at the Nerve Master to fulfill
-      a stockpile order.
+      常设订单由王国的储备库与商人发布.
+      前往神经主处找总管家或书记官,
+      以完成一份储备库订单.
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
-      <b>WAREHOUSE</b>-tagged orders require finished goods to be left at the
-      export machine for collection. Goods that belongs in the stockpile should
-      still be delivered to the stockpile.
+      <b>仓库</b>标记的订单需要把成品留在总管家出口机
+      处等待收取. 该送进储备库的货物,
+      仍应交付给储备库.
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
-      Orders may be settled short once at least 50% by value is on hand, paid
-      at 85% of the delivered share - the rest is forfeit.
+      当在手货物的价值达到订单价值的至少 50% 时, 可以按短缺额结算,
+      并按已交付份额的 85% 支付 - 其余部分视为放弃.
     </p>
     <p style={{ margin: 0 }}>
-      <b>BLOCKADED</b> regions cannot be reached by trade caravans until the
-      blockade is lifted; <b>STEWARD&apos;S PETITION</b> orders were directly
-      requested by the Steward and pay out at a reduced rate.
+      <b>已封锁</b>的地区在封锁解除之前无法由贸易商队抵达;
+      <b>总管家请愿</b>的订单由总管家直接提出,
+      并按较低的比例支付.
     </p>
   </div>
 );

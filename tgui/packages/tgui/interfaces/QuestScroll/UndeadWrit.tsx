@@ -37,38 +37,38 @@ export const UndeadWrit = (props: {
     recoveryDestination,
     recoveryCircumstance,
   } = props;
-  const folk = namePlural || 'unquiet dead';
-  const host = groupWord || 'host';
+  const folk = namePlural || '不宁亡者';
+  const host = groupWord || '一群';
 
   return (
     <>
       <p style={writParagraph}>
-        <i>By writ of the {rulerTitle}, in the keeping of Necra:</i>
+        <i>依 {rulerTitle} 之令状, 由内克拉掌管:</i>
       </p>
       <p style={writParagraph}>
-        The dead walk again upon {realm}. A {host} of {folk}, denied the rest
-        that is their due, stir from earth and barrow. They bear no name worth
-        speaking, no oath worth breaking, no soul to weigh: only the wound
-        that has not closed.
+        亡者再行于 {realm} 之上. 一群 {host} {folk}, 被夺去
+        应得之安息, 自泥土与坟冢中躁动而起. 其等
+        无名可称, 无誓可违, 无魂可量: 唯有那道
+        尚未愈合之伤.
       </p>
       <p style={writParagraph}>
         <i>
-          Requiem aeternam. They are not to be hated. They are to be put back
-          into the keeping of Necra, that her veil may close over them once
-          more.
+          赐彼永恒之安息. 彼等不应被憎恨. 当将其交还
+          内克拉的掌管之中, 使她的帷幕再度
+          覆于他们之上.
         </i>
       </p>
       <p style={writParagraph}>
-        Bring them down with steel, with fire, with prayer. The writ knows
-        their stirring and shall mark itself when peace is restored. Return
-        the writ to the Contract Ledger, that the bounty of{' '}
+        以钢铁, 以火焰, 以祈祷将其击倒. 令状识得
+        其躁动, 待安宁复归之时自会留痕. 将此
+        令状交回契约台账, 所悬之赏金{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}
           levyExempt={levyExempt}
           guildCutRate={guildCutRate}
         />{' '}
-        be paid.
+        即可领取.
       </p>
       {hasRecoveryAddendum && (
         <RecoveryAddendum

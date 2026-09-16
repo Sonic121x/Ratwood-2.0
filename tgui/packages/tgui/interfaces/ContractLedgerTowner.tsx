@@ -11,8 +11,8 @@ type Delivery = 'hand' | 'board';
 const TIER_ORDER: Tier[] = ['medium', 'hard'];
 
 const TIER_LABELS: Record<Tier, string> = {
-  medium: 'Medium',
-  hard: 'Hard',
+  medium: '中等',
+  hard: '困难',
 };
 
 type TierSummary = {
@@ -82,12 +82,12 @@ const SummaryBlock = (props: { bearer?: string; poster?: string }) => {
     >
       {props.bearer && (
         <div>
-          <b>To bearer:</b> {props.bearer}.
+          <b>交予持状人:</b> {props.bearer}.
         </div>
       )}
       {props.poster && (
         <div>
-          <b>To poster:</b> {props.poster}.
+          <b>交予发布人:</b> {props.poster}.
         </div>
       )}
     </div>
@@ -122,7 +122,7 @@ const ActivePostingCard = (props: {
           className="ContractLedger__CardObjective"
           style={{ marginTop: 4, fontSize: '0.85em', fontWeight: 'bold' }}
         >
-          Crown commission - drawn from the Crown&apos;s Purse at double price.
+          王室委任 - 以双倍价钱自王室金库支取.
         </div>
       )}
       <RulesBlock rules={props.posting.rules} />
@@ -171,17 +171,17 @@ const ActivePostingCard = (props: {
           selected={delivery === 'hand'}
           onClick={() => setDelivery('hand')}
           style={toggleStyle(delivery === 'hand')}
-          tooltip="Take the writ in hand and give it to someone yourself."
+          tooltip="亲自持令状交予他人."
         >
-          Writ in hand
+          持状在手
         </Button>
         <Button
           selected={delivery === 'board'}
           onClick={() => setDelivery('board')}
           style={toggleStyle(delivery === 'board')}
-          tooltip="Pin it to the ledger."
+          tooltip="将其钉上契约台账."
         >
-          Post to board
+          张贴于告示板
         </Button>
       </div>
       <div className="ContractLedger__CardFooter">
@@ -192,15 +192,15 @@ const ActivePostingCard = (props: {
           title={
             !canAfford
               ? crown
-                ? `The Crown's Purse needs ${cost}m.`
-                : `You need ${cost}m on account.`
+                ? `王室金库需要 ${cost}m.`
+                : `你的账户需要 ${cost}m.`
               : undefined
           }
           onClick={() =>
             props.onPost(tier, delivery, selectedVariety?.key || '')
           }
         >
-          {delivery === 'hand' ? 'Draw up' : 'Post'} ({cost}m)
+          {delivery === 'hand' ? '拟就' : '张贴'} ({cost}m)
         </button>
       </div>
     </div>
@@ -211,7 +211,7 @@ const ViewOnlyPostingCard = (props: { posting: Posting }) => {
   const jobs =
     props.posting.eligible_jobs.length > 0
       ? props.posting.eligible_jobs.join(', ')
-      : 'unknown';
+      : '未知';
   const varieties = props.posting.varieties || [];
   return (
     <div className="ContractLedger__Card" style={{ width: 300, opacity: 0.65 }}>
@@ -236,7 +236,7 @@ const ViewOnlyPostingCard = (props: { posting: Posting }) => {
           className="ContractLedger__CardObjective"
           style={{ marginTop: 6, fontSize: '0.85em', opacity: 0.8 }}
         >
-          <b>Veins:</b>
+          <b>矿脉:</b>
           {varieties.map((v) => (
             <div key={v.key}>
               - {v.label}: {v.blurb}
@@ -245,7 +245,7 @@ const ViewOnlyPostingCard = (props: { posting: Posting }) => {
         </div>
       )}
       <div className="ContractLedger__CardRow" style={{ marginTop: 8 }}>
-        <span className="ContractLedger__CardLabel">Posted by:</span>
+        <span className="ContractLedger__CardLabel">发布人:</span>
         <span className="ContractLedger__CardValue">{jobs}</span>
       </div>
     </div>
@@ -291,20 +291,20 @@ export const TownerPostingPanel = () => {
         }}
       >
         <span style={{ fontSize: '1.1em', fontWeight: 'bold' }}>
-          Towner Postings
+          镇民告示
         </span>
         <span>
-          Balance: {data.balance}m
-          {anyCrown && <> | Purse: {data.towner_purse_balance ?? 0}m</>}
+          余额: {data.balance}m
+          {anyCrown && <> | 金库: {data.towner_purse_balance ?? 0}m</>}
         </span>
       </div>
       <div style={blurbStyle}>
-        Post a contract with your own mammons. Whomever takes it must deliver the parcel to you, who is the only one that can open the package.
+        用自己的玛门发布一份契约. 无论何人接下, 都必须将包裹送到你手中, 唯有你能打开此包裹.
       </div>
 
       {yourPostings.length > 0 && (
         <>
-          <div style={sectionStyle}>YOUR POSTINGS</div>
+          <div style={sectionStyle}>你的告示</div>
           <div className="ContractLedger__Grid">
             {yourPostings.map((p) => (
               <ActivePostingCard
@@ -321,7 +321,7 @@ export const TownerPostingPanel = () => {
 
       {otherPostings.length > 0 && (
         <>
-          <div style={sectionStyle}>OTHER POSTINGS</div>
+          <div style={sectionStyle}>其他告示</div>
           <div className="ContractLedger__Grid">
             {otherPostings.map((p) => (
               <ViewOnlyPostingCard key={p.type} posting={p} />

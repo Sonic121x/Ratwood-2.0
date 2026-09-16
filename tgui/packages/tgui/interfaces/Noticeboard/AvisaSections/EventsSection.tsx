@@ -23,7 +23,7 @@ export const EventsSection = ({ data }: { data: NoticeboardData }) => {
   const events = data.economic_events ?? [];
   if (events.length === 0) {
     return (
-      <EmptyMessage text="The realm's trade is calm. No events disturb the markets." />
+      <EmptyMessage text="王国贸易平稳. 没有事件扰乱市场." />
     );
   }
   return (
@@ -48,9 +48,9 @@ const EventCard = ({ event }: { event: EconomicEvent }) => {
         }}
       >
         {isShortage ? (
-          <span style={badgeStyle(SEAL_RED)}>SHORTAGE</span>
+          <span style={badgeStyle(SEAL_RED)}>短缺</span>
         ) : (
-          <span style={badgeStyle(SEAL_GREEN)}>GLUT</span>
+          <span style={badgeStyle(SEAL_GREEN)}>过剩</span>
         )}
         <span
           style={{
@@ -69,7 +69,7 @@ const EventCard = ({ event }: { event: EconomicEvent }) => {
             marginLeft: 'auto',
           }}
         >
-          settles in {event.days_left}d
+          {event.days_left}天后平息
         </span>
       </div>
       {!!event.description && (
@@ -92,7 +92,7 @@ const EventCard = ({ event }: { event: EconomicEvent }) => {
               marginRight: 6,
             }}
           >
-            Affected goods:
+            受影响货物:
           </span>
           {event.affected_goods.join(', ')}
         </div>

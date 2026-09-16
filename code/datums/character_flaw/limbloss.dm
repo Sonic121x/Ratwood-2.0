@@ -13,8 +13,8 @@
 	return
 
 /datum/charflaw/limbloss/arm_r
-	name = "Wood Arm (R)"
-	desc = "I lost my right arm long ago, but the wooden arm doesn't bleed as much... but it is flammable.<br><i>(Incompatible with Bronze Arm (R) virtue)</i>"
+	name = "木臂 (右)"
+	desc = "很久以前，我就失去了右臂，不过木制手臂不会流那么多血……但它会着火。<br><i>（与 Bronze Arm (R) 美德不兼容）</i>"
 	lost_zone = BODY_ZONE_R_ARM
 	point_value = 2
 
@@ -27,8 +27,8 @@
 	L.attach_limb(H)
 
 /datum/charflaw/limbloss/arm_l
-	name = "Wood Arm (L)"
-	desc = "I lost my left arm long ago, but the wooden arm doesn't bleed as much... but it is flammable.<br><i>(Incompatible with Bronze Arm (L) virtue)</i>"
+	name = "木臂 (左)"
+	desc = "很久以前，我就失去了左臂，不过木制手臂不会流那么多血……但它会着火。<br><i>（与 Bronze Arm (L) 美德不兼容）</i>"
 	lost_zone = BODY_ZONE_L_ARM
 	point_value = 2
 

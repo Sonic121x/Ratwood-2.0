@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/contractledger
-	name = "Grand Contract Ledger"
-	desc = "A massive ledger book with gilded edges, sitting atop a pedestal with the Mercenary's Guild banner. Its myriad enchanted pages are filled with various contracts and bounties issued by Mercenary's Guild, with arcane scripts that appears and fades as contracts are issued and completed."
+	name = "大契约台账"
+	desc = "一本镶着金边的厚重账簿，安放在置有佣兵行会旗帜的底座之上。无数附魔书页间填满了佣兵行会签发的各类契约与悬赏，随着契约的签发与完成，神秘符文不断浮现又褪去。"
 	icon = 'code/modules/roguetown/roguemachine/questing/questing.dmi'
 	icon_state = "contractledger"
 	density = TRUE
@@ -19,7 +19,7 @@
 	. = ..()
 	input_point = locate(x, y - 1, z)
 	var/obj/effect/decal/marker_export/marker = new(get_turf(input_point))
-	marker.desc = "Drop retrieval-quest items here to turn them in."
+	marker.desc = "将寻回类任务的物品丢弃在此处即可交付。"
 	marker.layer = ABOVE_OBJ_LAYER
 	SSquestpool.registered_ledgers += src
 
@@ -36,16 +36,16 @@
 
 /obj/structure/roguemachine/contractledger/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("<b>Left click</b> to open the Grand Contract Ledger, where you can sign new contracts and abandon ones you hold.")
-	. += span_info("To <b>turn in</b> a completed contract, click the ledger while holding the quest scroll.")
-	. += span_info("Retrieval-quest items should be <b>dropped onto the marked tile</b> in front of the ledger.")
-	. += span_info("Abandoning a contract forfeits its deposit to the treasury and places you under a brief guild cooldown before you may abandon another.")
-	. += span_info("Heads taken from <b>contract targets</b> carry no bounty - the contract's reward is payment in full. Beasts and brigands you hunt outside a contract still fetch coin at a HEADEATER.")
-	. += span_info("The <b>Innkeeper</b> may compose rumor contracts here, spending Rumor Points to seed retrieval, courier, and light kill jobs across the realm.")
-	. += span_info("The <b>[english_list(GLOB.crown_authority_roles)]</b> may commission defense writs here - paid from the Burgher Pledge, the Crown's Purse, or issued as an unfunded Request. The Steward is the primary commissioner; the others substitute if the Steward is absent. A Regent sitting in the Lord's absence inherits commission authority for the duration of their regency.")
-	. += span_info("<b>Townsfolk</b> may post contracts of their own using their own coin. It can be pinned to the board or handed over in person. The <b>[english_list(GLOB.crown_authority_roles)]</b> may commission any of them, but it will draw from the Crown's Purse at double the price. Only the poster may open what is recovered.")
-	. += span_info("Your <b>fellowship</b> may turn in contracts you hold on your behalf, should you fall in battle. The reward and levy is credited to the one who turns it in, using their tax exempt status, if any.")
-	. += span_info("The <b>[english_list(GLOB.contract_proxy_officials)]</b> may turn in any completed contract on the holder's behalf, crediting the reward to the holder's own account. They take no cut.")
+	. += span_info("<b>左键点击</b>可打开大契约台账，在此可签署新契约，亦可放弃你手中的契约。")
+	. += span_info("要<b>交付</b>已完成的契约，请手持任务卷轴点击台账。")
+	. += span_info("寻回类任务的物品应<b>丢置于台账前方的标记地砖上</b>。")
+	. += span_info("放弃契约会将其押金没收充入王室金库，并使你进入一段短暂的行会冷静期，之后方可放弃下一份契约。")
+	. += span_info("取自<b>契约目标</b>的头颅不另计悬赏——契约的报酬即为全额支付。契约之外猎得的野兽与匪徒，仍可在食首机处换得钱币。")
+	. += span_info("<b>酒馆老板</b>可在此编写流言契约，消耗流言点数为国度各处播撒寻回、递送与轻量击杀任务。")
+	. += span_info("<b>[english_list(GLOB.crown_authority_roles)]</b>可在此委托防御令状——资金出自市民认捐、王室金库，或以无资金的请令形式签发。总管家是首要的委托人；总管家缺席时由其余人代行。在领主缺席时代行摄政者，在其摄政期内继承委托之权。")
+	. += span_info("<b>镇民</b>可用自己的钱币发布契约。契约可钉上公告板，亦可当面转交。<b>[english_list(GLOB.crown_authority_roles)]</b>可委托其中任何一份，但将按双倍价格从王室金库支取。唯有发布者可开启追回之物。")
+	. += span_info("若你战死，你的<b>冒险团</b>可代你交付你持有的契约。报酬与征税将记入交付者名下，并适用其免税身份（若有）。")
+	. += span_info("<b>[english_list(GLOB.contract_proxy_officials)]</b>可代持有人交付任何已完成的契约，将报酬记入持有人本人的账户。他们不抽取分文。")
 
 /obj/structure/roguemachine/contractledger/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	. = ..()
@@ -62,16 +62,16 @@
 	if(!istype(Q))
 		return
 	if(Q.is_directive)
-		to_chat(user, span_warning("A Steward's Request is not for public posting - it must be handed directly to the bearer."))
+		to_chat(user, span_warning("总管家请令不可公开张贴——必须直接交予持令人。"))
 		return
 	if(Q.quest_receiver_reference)
-		to_chat(user, span_warning("This writ has already been taken up - it cannot be pinned."))
+		to_chat(user, span_warning("此令状已被领取——无法钉上公告板。"))
 		return
 	if(Q in SSquestpool.pool)
-		to_chat(user, span_warning("This writ is already pinned to the ledger."))
+		to_chat(user, span_warning("此令状已钉在台账之上。"))
 		return
 	if(!Q.blockade_ref?.resolve())
-		to_chat(user, span_warning("The blockade this writ answers has already been lifted."))
+		to_chat(user, span_warning("此令状所应对的封锁已然解除。"))
 		return
 	Q.required_fellowship_size = BLOCKADE_FELLOWSHIP_REQUIREMENT
 	Q.created_at = world.time
@@ -83,7 +83,7 @@
 	if(B)
 		B.active_scroll_ref = null
 	playsound(src, 'sound/items/inqslip_sealed.ogg', 50, TRUE, -1)
-	to_chat(user, span_notice("You pin the [writ.name] to the ledger. It now calls for a Fellowship of [BLOCKADE_FELLOWSHIP_REQUIREMENT] to answer."))
+	to_chat(user, span_notice("你将[writ.name]钉在台账上。如今它需要一支[BLOCKADE_FELLOWSHIP_REQUIREMENT]人的冒险团前来应召。"))
 	qdel(writ)
 
 /obj/structure/roguemachine/contractledger/attack_hand(mob/living/carbon/human/user)
@@ -260,36 +260,36 @@ GLOBAL_LIST_INIT(contract_proxy_officials, list(
 	if(!TR)
 		return
 	if(TR.banditry_hoard < HOARD_RECOVERY_HOARD_MINIMUM)
-		to_chat(user, span_warning("The hoard in [TR.region_name] is below [HOARD_RECOVERY_HOARD_MINIMUM] mammons - you cannot raise a Recovery writ for it."))
+		to_chat(user, span_warning("[TR.region_name]的宝藏低于[HOARD_RECOVERY_HOARD_MINIMUM]枚玛门——你无法为其发起寻宝令状。"))
 		return
 	if(TR.has_active_blockade())
-		to_chat(user, span_warning("[TR.region_name] is under an active blockade - it must be cleared with a Blockade Defense writ."))
+		to_chat(user, span_warning("[TR.region_name]正处于封锁之中——必须以封锁防御令状将其清除。"))
 		return
 	var/datum/quest/existing = TR.active_hoard_recovery_ref?.resolve()
 	if(existing && !QDELETED(existing))
-		to_chat(user, span_warning("A recovery writ for [TR.region_name] is already abroad."))
+		to_chat(user, span_warning("一份针对[TR.region_name]的寻宝令状已在外流传。"))
 		return
 	var/datum/fellowship/F = user.current_fellowship
 	if(!F || length(F.get_members()) < BLOCKADE_FELLOWSHIP_REQUIREMENT)
-		to_chat(user, span_warning("Only a Fellowship of [BLOCKADE_FELLOWSHIP_REQUIREMENT] or more may call for a Hoard Recovery."))
+		to_chat(user, span_warning("唯有[BLOCKADE_FELLOWSHIP_REQUIREMENT]人或以上的冒险团方可发起寻宝。"))
 		return
 	if(!SStreasury.has_account(user))
-		to_chat(user, span_warning("No account on record - register with a Nervelock before calling for a recovery."))
+		to_chat(user, span_warning("无账户记录——发起寻宝之前，请先到神经锁处登记。"))
 		return
 	var/datum/fund/pledge_account = SStreasury.get_account(user)
 	if(SStreasury.get_balance(user) < HOARD_RECOVERY_PLEDGE)
-		to_chat(user, span_warning("Raising a recovery writ requires a pledge of [HOARD_RECOVERY_PLEDGE] mammons."))
+		to_chat(user, span_warning("发起寻宝令状需要[HOARD_RECOVERY_PLEDGE]枚玛门的押金。"))
 		return
-	if(!SStreasury.burn(pledge_account, HOARD_RECOVERY_PLEDGE, "Hoard Recovery pledge ([TR.region_name])"))
-		to_chat(user, span_warning("The pledge could not be withdrawn from your account."))
+	if(!SStreasury.burn(pledge_account, HOARD_RECOVERY_PLEDGE, "寻宝押金([TR.region_name])"))
+		to_chat(user, span_warning("该押金无法从你的账户中扣除。"))
 		return
 	var/datum/quest/kill/blockade_defense/Q = SSquestpool.issue_hoard_recovery_request(TR, user, pledge_account, HOARD_RECOVERY_PLEDGE)
 	if(!Q)
-		SStreasury.mint(pledge_account, HOARD_RECOVERY_PLEDGE, "Hoard Recovery pledge refund (issue failure)")
-		to_chat(user, span_warning("No recovery writ can be raised for [TR.region_name] right now. Your pledge is returned."))
+		SStreasury.mint(pledge_account, HOARD_RECOVERY_PLEDGE, "寻宝押金退还(签发失败)")
+		to_chat(user, span_warning("此刻无法为[TR.region_name]发起寻宝令状。你的押金已退还。"))
 		return
 	playsound(src, 'sound/items/inqslip_sealed.ogg', 50, TRUE, -1)
-	to_chat(user, span_notice("Recovery writ issued for [TR.region_name]."))
+	to_chat(user, span_notice("已为[TR.region_name]签发寻宝令状。"))
 	SSquestpool.log_event("hoard_recovery_request", "[user.real_name] called a hoard recovery on [TR.region_name] (hoard [TR.banditry_hoard], pledge [HOARD_RECOVERY_PLEDGE])")
 
 /obj/structure/roguemachine/contractledger/proc/build_pool_listing()
@@ -303,7 +303,7 @@ GLOBAL_LIST_INIT(contract_proxy_officials, list(
 		var/lapse_minutes = max(0, round((Q.get_lapse_time() - world.time) / 600, 1))
 		listing += list(list(
 			"ref" = REF(Q),
-			"title" = Q.title || "Unnamed Contract",
+			"title" = Q.title || "未命名契约",
 			"type" = Q.quest_type,
 			"difficulty" = Q.quest_difficulty,
 			"reward" = Q.reward_amount,
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(contract_proxy_officials, list(
 			continue
 		listing += list(list(
 			"ref" = REF(Q),
-			"title" = Q.title || "Unnamed Contract",
+			"title" = Q.title || "未命名契约",
 			"type" = Q.quest_type,
 			"difficulty" = Q.quest_difficulty,
 			"area" = Q.target_spawn_area,

@@ -1,8 +1,8 @@
 //A spell to choose new spells, upon spawning or gaining levels
 // TODO: Implement per patron spell lists
 /obj/effect/proc_holder/spell/self/learnspell
-	name = "Attempt to learn a new spell"
-	desc = "Weave a new spell"
+	name = "尝试学习新法术"
+	desc = "编织一道新法术"
 	school = "transmutation"
 	overlay_state = "book1"
 	chargedrain = 0

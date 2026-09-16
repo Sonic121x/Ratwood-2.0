@@ -1,5 +1,5 @@
 /datum/migrant_wave/crusade
-	name = "The 117th Holy Crusade"
+	name = "第117次神圣十字军东征"
 	weight = 20
 	max_spawns = 1
 	track = MIGRANT_TRACK_SPECIAL
@@ -10,4 +10,4 @@
 		/datum/migrant_role/crusader = 4
 	)
 	min_optional_fills = 0
-	greet_text = "Psydon's holy chalice must be found! Rockhill, a faithful land? Bah, Why let that get in the way of a good crusade! Plenty of looting and pillaging to be done- all in service to Astrata."
+	greet_text = "必须找到普赛顿的圣杯！岩丘，虔信之地？呸，这可妨碍不了一场正经的十字军东征！尽情去掠夺与洗劫吧，一切皆为阿斯特拉塔效力。"

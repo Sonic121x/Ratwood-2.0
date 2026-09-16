@@ -1,6 +1,6 @@
 // Fried Steak + Pepper -> Pepper Steak
 /datum/food_recipe/pepper_steak
-	name = "Pepper Steak"
+	name = "胡椒牛排"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
 	ingredients = list(
 		/datum/reagent/consumable/blackpepper = 1
@@ -9,7 +9,7 @@
 
 // Fried Steak + Fried Onion -> Onion Steak
 /datum/food_recipe/onion_steak
-	name = "Onion Steak"
+	name = "洋葱牛排"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
@@ -18,7 +18,7 @@
 
 // Fried Steak + Baked Carrot -> Carrot Steak
 /datum/food_recipe/carrot_steak_meat
-	name = "Carrot Steak"
+	name = "胡萝卜牛排"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
@@ -27,7 +27,7 @@
 
 // Fried Bacon + Wiener Egg -> Wiener Egg with Bacon
 /datum/food_recipe/bacon_wiener_egg
-	name = "Wiener Egg with Bacon (from Bacon)"
+	name = "培根香肠煎蛋（培根制）"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage
@@ -36,7 +36,7 @@
 
 // Fried Bacon + Fried Egg -> Bacon and Eggs
 /datum/food_recipe/bacon_egg
-	name = "Bacon and Eggs"
+	name = "培根煎蛋"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg/fried
@@ -45,7 +45,7 @@
 
 // Roast Bird + Pepper -> Spiced Bird-Roast
 /datum/food_recipe/spiced_bird
-	name = "Spiced Bird-Roast"
+	name = "香料烤禽"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
 	ingredients = list(
 		/datum/reagent/consumable/blackpepper = 1
@@ -54,7 +54,7 @@
 
 // Roast Bird + Butter -> Butter Bird-Roast
 /datum/food_recipe/butter_bird
-	name = "Butter Bird-Roast"
+	name = "黄油烤禽"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/butter
@@ -63,7 +63,7 @@
 
 // Roast Bird + Roast Bird -> Double Stacked Bird-Roast
 /datum/food_recipe/double_bird
-	name = "Double Stacked Bird-Roast"
+	name = "塞鸟烤禽"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
@@ -72,7 +72,7 @@
 
 // Frybird + Baked Potato -> Frybird Tato
 /datum/food_recipe/frybird_tato_meat
-	name = "Frybird Tato"
+	name = "炸鸟排配土豆"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked
@@ -81,7 +81,7 @@
 
 // Frybird + Fried Potato -> Frybird Tato (alt)
 /datum/food_recipe/frybird_tato_meat_alt
-	name = "Frybird Tato (Alt)"
+	name = "炸鸟排配土豆（备选）"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
@@ -90,7 +90,7 @@
 
 // Fried Cabbit + Garlic Clove -> Garlick Cabbit
 /datum/food_recipe/garlick_cabbit
-	name = "Garlick Cabbit"
+	name = "大蒜卡比特肉"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
@@ -99,7 +99,7 @@
 
 // Fried Volf + Garlic Clove -> Garlick Volf
 /datum/food_recipe/garlick_volf
-	name = "Garlick Volf"
+	name = "大蒜沃尔夫肉"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
@@ -108,7 +108,7 @@
 
 // Fried Fish Filet + Pepper -> Pepper Fish
 /datum/food_recipe/pepper_fish
-	name = "Pepper Fish"
+	name = "胡椒鱼柳"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/fish/fried
 	ingredients = list(
 		/datum/reagent/consumable/blackpepper = 1
@@ -117,7 +117,7 @@
 
 // Cooked Sausage + Fried Egg -> Wiener Egg
 /datum/food_recipe/wiener_egg_sausage
-	name = "Wiener Egg (from Sausage)"
+	name = "香肠煎蛋（香肠制）"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg/fried

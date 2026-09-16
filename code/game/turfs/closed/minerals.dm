@@ -1,8 +1,8 @@
 /**********************Mineral deposits**************************/
 
 /turf/closed/mineral //wall piece
-	name = "rock"
-	desc = "Lichens and moss cling to the jagged contours of the rock face. It is slick with moisture and exudes the heavy odors of dirt, minerals, and petrichor."
+	name = "岩壁"
+	desc = "地衣与苔藓攀附在嶙峋的岩面上。岩石湿滑潮润，散发着泥土、矿物与雨后尘息的厚重气味。"
 	icon = 'icons/turf/mining.dmi'
 	icon_state = "rock"
 	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
@@ -83,7 +83,7 @@
 
 /turf/closed/mineral/attackby(obj/item/item, mob/user, params, multiplier)
 	if (!user.IsAdvancedToolUser())
-		to_chat(usr, span_warning("I don't have the dexterity to do this!"))
+		to_chat(usr, span_warning("我的手法还不够灵巧，做不了这个！"))
 		return
 	lastminer = user
 	..()
@@ -186,7 +186,7 @@
 		gets_drilled(user)
 	if(user.can_mine && do_after(user, CLICK_CD_MELEE))
 		playsound(src,'sound/combat/hits/onstone/wallhit.ogg', 600, TRUE, 10)
-		visible_message(span_warning("[user] smashes [src]!"))
+		visible_message(span_warning("[user] 砸碎了 [src]！"))
 		turf_integrity -= 500
 		if(turf_integrity <= 0)
 			gets_drilled(user)
@@ -240,8 +240,8 @@
 
 /turf/closed/mineral/random/rogue
 //	layer = ABOVE_MOB_LAYER
-	name = "rock"
-	desc = "Lichens and moss cling to the jagged contours of the rock face. It is slick with moisture and exudes the heavy odors of dirt, minerals, and petrichor."
+	name = "岩壁"
+	desc = "地衣与苔藓攀附在嶙峋的岩面上。岩石湿滑潮润，散发着泥土、矿物与雨后尘息的厚重气味。"
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "minrandbad"
 	smooth = SMOOTH_TRUE | SMOOTH_MORE
@@ -352,8 +352,8 @@
 //begin actual mineral turfs
 /turf/closed/mineral/rogue
 //	layer = ABOVE_MOB_LAYER
-	name = "rock"
-	desc = "Lichens and moss cling to the jagged contours of the rock face. It is slick with moisture and exudes the heavy odors of dirt, minerals, and petrichor."
+	name = "岩壁"
+	desc = "地衣与苔藓攀附在嶙峋的岩面上。岩石湿滑潮润，散发着泥土、矿物与雨后尘息的厚重气味。"
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "rockyash"
 	smooth = SMOOTH_TRUE | SMOOTH_MORE
@@ -440,8 +440,8 @@
 	spread = 2
 
 /turf/closed/mineral/rogue/bedrock
-	name = "rock"
-	desc = "Seems barren and nigh-indestructable"
+	name = "基岩"
+	desc = "看起来贫瘠而近乎不可摧毁。"
 	icon_state = "rockyashbed"
 //	smooth_icon = 'icons/turf/walls/hardrock.dmi'
 	max_integrity = 10000000
@@ -449,7 +449,7 @@
 	above_floor = /turf/closed/mineral/rogue/bedrock
 
 /turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params, multiplier)
-	to_chat(user, span_warning("TOO HARD!"))
+	to_chat(user, span_warning("太硬了！"))
 	return FALSE
 
 /turf/closed/mineral/rogue/bedrock/TerraformTurf(path, new_baseturf, flags, defer_change = FALSE, ignore_air = FALSE)

@@ -1,8 +1,8 @@
 /datum/quest_faction/drow
 	id = QUEST_FACTION_DROW
-	name_singular = "drow raider"
-	name_plural = "drow raiders"
-	group_word = "patrol"
+	name_singular = "卓尔劫掠者"
+	name_plural = "卓尔劫掠者"
+	group_word = "巡逻队"
 	faction_tag = FACTION_DROW
 	can_blockade = TRUE
 	category = FACTION_CAT_DROW
@@ -16,9 +16,9 @@
 		/mob/living/carbon/human/species/elf/dark/drowraider/scourge = 100
 	)
 	boss_title_templates = list(
-		"%N the Venomed",
-		"%N of the Shadow",
-		"Matron %N",
-		"%N the Spiderkin",
+		"%N 淬毒者",
+		"%N 暗影者",
+		"主母 %N",
+		"%N 蛛裔",
 	)
 	boss_name_file = "strings/rt/names/elf/elfdm.txt"

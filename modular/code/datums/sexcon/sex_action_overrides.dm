@@ -25,43 +25,43 @@
 		"pain" = 0
 	)
 	var/static/list/orison_none_data = list(
-		"message" = "but nothing unusual happens...",
+		"message" = "却毫无异样……",
 		"arousal_mult" = 0,
 		"pain" = 0
 	)
 	var/static/list/orison_painful_glow_data = list(
-		"message" = "the glow looks painful...",
+		"message" = "那光芒看起来很痛……",
 		"arousal_mult" = 2,
 		"pain" = 5
 	)
 	var/static/list/orison_indulgence_data = list(
-		"message" = "the air grows sweet with indulgence...",
+		"message" = "空气中弥漫着放纵的甜香……",
 		"arousal_mult" = 15,
 		"pain" = 0,
 		"indulgence" = TRUE
 	)
 	var/static/list/orison_harsh_data = list(
-		"message" = "that looks painful...",
+		"message" = "那看起来很痛……",
 		"arousal_mult" = 2,
 		"pain" = 15
 	)
 	var/static/list/orison_ominous_data = list(
-		"message" = "an ominous veil enveloping it...",
+		"message" = "一层不祥的面纱笼罩着它……",
 		"arousal_mult" = 1,
 		"pain" = 0
 	)
 	var/static/list/orison_primal_data = list(
-		"message" = "with primal force...",
+		"message" = "带着原始的力量……",
 		"arousal_mult" = 6,
 		"pain" = 10
 	)
 	var/static/list/orison_cold_data = list(
-		"message" = "a cold aura enveloping it...",
+		"message" = "一层寒冷的灵光笼罩着它……",
 		"arousal_mult" = 4,
 		"pain" = 5
 	)
 	var/static/list/orison_jingle_data = list(
-		"message" = "where is that jingle coming from?",
+		"message" = "那叮当声是从哪来的？",
 		"arousal_mult" = 4,
 		"pain" = 0,
 		"jingle" = TRUE
@@ -103,4 +103,4 @@
 		return
 
 	performer.sexcon.orison_indulgence_notice_shown = TRUE
-	to_chat(receiver, span_love("The pleasure is overwhelming!!!"))
+	to_chat(receiver, span_love("快感如潮，无法承受！！！"))
