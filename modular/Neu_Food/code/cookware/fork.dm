@@ -1,5 +1,5 @@
 /obj/item/kitchen/fork
-	name = "wooden fork"
+	name = "木叉"
 	icon = 'modular/Neu_Food/icons/cookware/fork.dmi'
 	icon_state = "fork_wooden"
 	flags_1 = CONDUCT_1
@@ -16,20 +16,20 @@
 
 /obj/item/kitchen/fork/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-clicking most foodstuffs with the fork allows you to take a bite from it.")
-	. += span_info("Nobler appetites prefer utensils over simply eating and drinking with one's bare hands.")
+	. += span_info("用叉子左键点击大多数食物，即可咬下一口。")
+	. += span_info("高贵的胃口更偏爱餐具，而非直接用双手吃喝。")
 
 /datum/intent/dagger/thrust/fork
 	penfactor = 20
 
 /obj/item/kitchen/fork/decrepit
-	name = "decrepit fork"
+	name = "破旧叉子"
 	icon_state = "afork"
 	color = "#bb9696"
 	sellprice = 0
 
 /obj/item/kitchen/fork/iron
-	name = "iron fork"
+	name = "铁叉"
 	icon_state = "fork_iron"
 	sellprice = 6
 
@@ -39,62 +39,62 @@
 	sellprice = 10
 
 /obj/item/kitchen/fork/tin
-	name = "tin fork"
+	name = "锡叉"
 	icon_state = "fork_tin"
 	sellprice = 6
 
 /obj/item/kitchen/fork/gold
-	name = "gold fork"
+	name = "金叉"
 	icon_state = "fork_gold"
 	sellprice = 30
 
 /obj/item/kitchen/fork/silver
-	name = "silver fork"
+	name = "银叉"
 	icon_state = "fork_silver"
 	sellprice = 24
 	is_silver = TRUE
 
 /obj/item/kitchen/fork/carved
-	name = "carved fork"
+	name = "雕花叉"
 	icon_state = "afork"
 	sellprice = 0
 
 /obj/item/kitchen/fork/carved/shell
-	name = "shell fork"
+	name = "贝壳叉"
 	icon_state = "fork_shell"
 	sellprice = 15
 
 /obj/item/kitchen/fork/carved/rose
-	name = "rosestone fork"
+	name = "玫瑰石叉"
 	icon_state = "fork_rose"
 	sellprice = 20
 
 /obj/item/kitchen/fork/carved/jade
-	name = "jade fork"
+	name = "玉叉"
 	icon_state = "fork_jade"
 	sellprice = 55
 
 /obj/item/kitchen/fork/carved/onyxa
-	name = "onyxa fork"
+	name = "缟玛瑙叉"
 	icon_state = "fork_onyxa"
 	sellprice = 35
 
 /obj/item/kitchen/fork/carved/turq
-	name = "cerulite fork"
+	name = "蔚蓝石叉"
 	icon_state = "fork_turq"
 	sellprice = 80
 
 /obj/item/kitchen/fork/carved/coral
-	name = "heartstone fork"
+	name = "心石叉"
 	icon_state = "fork_coral"
 	sellprice = 65
 
 /obj/item/kitchen/fork/carved/amber
-	name = "amber fork"
+	name = "琥珀叉"
 	icon_state = "fork_amber"
 	sellprice = 55
 
 /obj/item/kitchen/fork/carved/opal
-	name = "opal fork"
+	name = "欧泊叉"
 	icon_state = "fork_opal"
 	sellprice = 85

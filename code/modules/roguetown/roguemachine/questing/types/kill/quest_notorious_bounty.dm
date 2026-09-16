@@ -68,12 +68,12 @@
 	if(title)
 		return title
 	if(!boss_name)
-		return "Bring down a notorious outlaw"
-	return "Bring down [boss_name]"
+		return "缉杀臭名昭著的亡命之徒"
+	return "缉杀[boss_name]"
 
 
 /datum/quest/kill/notorious_bounty/get_objective_text()
-	return "Slay the target, but be warned! They are rumored to be a truly formidable opponent!"
+	return "斩杀目标，但务必当心！据说此敌实在强悍难敌！"
 
 /datum/quest/kill/notorious_bounty/get_additional_reward(turf/origin_turf, turf/target_turf)
 	if(!target_mob_type)
@@ -155,7 +155,7 @@
 	spawn_goons(landmark, NOTORIOUS_BOUNTY_REINFORCE_TP, NOTORIOUS_BOUNTY_REINFORCE_CAP, immediate = TRUE)
 	reward_amount += NOTORIOUS_BOUNTY_NPC_BONUS
 	quest_scroll?.update_quest_text()
-	announce_to_bearer("<b>The outlaw's gang arrives.</b> The bounty on [boss_name] grows by [NOTORIOUS_BOUNTY_NPC_BONUS] mammons.")
+	announce_to_bearer("<b>亡命之徒的党羽赶到了。</b>[boss_name] 的赏金增加了 [NOTORIOUS_BOUNTY_NPC_BONUS] 玛门币。")
 
 /datum/quest/kill/notorious_bounty/proc/preserve_boss_corpse()
 	var/mob/living/M = boss_ref?.resolve()
@@ -172,7 +172,7 @@
 /datum/quest/kill/notorious_bounty/proc/offer_boss_control(mob/living/carbon/human/boss)
 	if(QDELETED(boss) || boss.stat == DEAD || boss.client || complete || failed)
 		return
-	var/list/candidates = pollGhostCandidates("A hunting party stalks [boss_name || "a notorious bounty"]! Will you take up the mantle of the hunted and defend yourself?", ROLE_NOTORIOUS_BOUNTY, null, null, NOTORIOUS_BOUNTY_POLL_TIME, POLL_IGNORE_NOTORIOUS_BOUNTY, poll_width = NOTORIOUS_BOUNTY_POLL_WIDTH, poll_height = NOTORIOUS_BOUNTY_POLL_HEIGHT)
+	var/list/candidates = pollGhostCandidates("一支狩猎队正在追猎[boss_name || "一名臭名昭著的赏金目标"]！你愿意接下被猎者的身份，为自己而战吗？", ROLE_NOTORIOUS_BOUNTY, null, null, NOTORIOUS_BOUNTY_POLL_TIME, POLL_IGNORE_NOTORIOUS_BOUNTY, poll_width = NOTORIOUS_BOUNTY_POLL_WIDTH, poll_height = NOTORIOUS_BOUNTY_POLL_HEIGHT)
 	if(QDELETED(boss) || boss.stat == DEAD || boss.client || complete || failed)
 		return
 	// Only true dead mobs (observers, lobby) - a spirit's key belongs to a body elsewhere.
@@ -202,11 +202,11 @@
 	refresh_hunter_marks()
 	reward_amount += NOTORIOUS_BOUNTY_PLAYER_BONUS
 	quest_scroll?.update_quest_text()
-	announce_to_bearer("<b>[boss_name] has been warned of you.</b> The bounty rises by [NOTORIOUS_BOUNTY_PLAYER_BONUS] mammons.")
-	to_chat(boss, span_danger("You are [boss_name]. Someone signed a writ for your head and the hunting party is on its way."))
-	to_chat(boss, span_danger("You cannot leave this ground. Hold out [NOTORIOUS_BOUNTY_CONTROL_TIME / (1 MINUTES)] minutes, or break them, and you are paid [NOTORIOUS_BOUNTY_SURVIVAL_TRIUMPH] TRIUMPH. Hiding pays nothing - they have to come at you and fail."))
-	to_chat(boss, span_boldnotice("Kill them if you must, but do not round-remove them. Follow escalation rules. You may join any fight your gang has already started."))
-	to_chat(boss, span_boldnotice("Your hunters are marked. [describe_hunting_party()]"))
+	announce_to_bearer("<b>[boss_name] 已收到关于你们的警告。</b>赏金增加了 [NOTORIOUS_BOUNTY_PLAYER_BONUS] 玛门币。")
+	to_chat(boss, span_danger("你就是[boss_name]。有人签下了取你首级的契约，狩猎队已在途中。"))
+	to_chat(boss, span_danger("你不能离开此地。坚守 [NOTORIOUS_BOUNTY_CONTROL_TIME / (1 MINUTES)] 分钟，或将他们击溃，便可获得 [NOTORIOUS_BOUNTY_SURVIVAL_TRIUMPH] 凯旋。躲藏毫无报酬——他们必须前来进攻并失败。"))
+	to_chat(boss, span_boldnotice("必要之时可以杀掉他们，但不得直接处决。遵守冲突升级规则。你可以加入你党羽已挑起的任何战斗。"))
+	to_chat(boss, span_boldnotice("你的猎手已被标记。[describe_hunting_party()]"))
 	var/turf/boss_turf = get_turf(boss)
 	var/mob/living/bearer = quest_receiver_reference?.resolve()
 	var/datum/fellowship/F = bearer?.current_fellowship
@@ -225,7 +225,7 @@
 	var/turf/T = get_turf(boss)
 	if(T && leash_origin && (T.z != leash_origin.z || get_dist(T, leash_origin) > NOTORIOUS_BOUNTY_LEASH_RANGE))
 		boss.forceMove(leash_origin)
-		to_chat(boss, span_userdanger("An unknown force drags you back. Stand and fight."))
+		to_chat(boss, span_userdanger("一股未知之力将你拖回。站定迎战。"))
 	check_hunt_engaged(boss)
 	refresh_hunter_marks()
 	addtimer(CALLBACK(src, PROC_REF(leash_boss)), NOTORIOUS_BOUNTY_LEASH_INTERVAL)
@@ -235,9 +235,9 @@
 	if(QDELETED(boss) || boss.stat == DEAD || !boss.client)
 		return
 	if(!pay_out_boss(boss))
-		to_chat(boss, span_warning("The hunters never came for you."))
+		to_chat(boss, span_warning("猎手们始终未曾前来。"))
 	succour_fallen_hunters()
-	to_chat(boss, span_warning("The writ is over. You escapes back to safety."))
+	to_chat(boss, span_warning("契约已结束。你安然脱身。"))
 	clear_hunter_marks()
 	clear_boss_marker()
 	boss.ghostize(FALSE)
@@ -250,7 +250,7 @@
 	if(gibbed)
 		INVOKE_ASYNC(src, PROC_REF(release_dead_boss), boss)
 		return
-	to_chat(boss, span_userdanger("Your lyfe and notoriety ends here. Your spirit wists away..."))
+	to_chat(boss, span_userdanger("你的生命与恶名就此终结。你的灵魂渐渐消散..."))
 	addtimer(CALLBACK(src, PROC_REF(release_dead_boss), boss), NOTORIOUS_BOUNTY_DEATH_RELEASE)
 
 /datum/quest/kill/notorious_bounty/proc/release_dead_boss(mob/living/boss)
@@ -261,7 +261,7 @@
 	UnregisterSignal(boss, COMSIG_LIVING_DEATH)
 	clear_hunter_marks()
 	clear_boss_marker()
-	to_chat(boss, span_warning("You spirit slips free. Watch the last of the hunt, or move to Necra's embrace and dream of a new lyfe."))
+	to_chat(boss, span_warning("你的灵魂得以解脱。观战狩猎的最后一程，或投入内克拉的怀抱，梦见新生。"))
 	message_admins("[key_name_admin(boss)] was released from notorious bounty '[boss_name]' after dying to the hunting party")
 	boss.ghostize(FALSE)
 
@@ -284,10 +284,10 @@
 	var/mob/living/bearer = quest_receiver_reference?.resolve()
 	var/list/names = list()
 	for(var/mob/living/M as anything in get_hunting_party())
-		names += (M == bearer) ? "[M.real_name] (writ-bearer)" : M.real_name
+		names += (M == bearer) ? "[M.real_name]（持契者）" : M.real_name
 	if(!length(names))
-		return "None of them have shown themselves yet."
-	return "They are [english_list(names)]."
+		return "他们尚未有人现身。"
+	return "他们是 [english_list(names)]。"
 
 /datum/quest/kill/notorious_bounty/proc/refresh_hunter_marks()
 	var/mob/living/boss = boss_ref?.resolve()
@@ -315,7 +315,7 @@
 		M.add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/onePerson, hunter_mark_key, mark, boss)
 		marked_hunters += WEAKREF(M)
 		if(hunter_marks_seeded)
-			to_chat(boss, span_boldnotice("[M.real_name] has joined the hunt for you."))
+			to_chat(boss, span_boldnotice("[M.real_name] 已加入对你的狩猎。"))
 	hunter_marks_seeded = TRUE
 
 /datum/quest/kill/notorious_bounty/proc/clear_hunter_marks()
@@ -365,10 +365,10 @@
 			continue
 		if(M.stat == DEAD)
 			M.revive(full_heal = TRUE, admin_revive = TRUE)
-			to_chat(M, span_boldnotice("The writ spends the last of its magicka dragging you back from Necra's door. You draw breath again."))
+			to_chat(M, span_boldnotice("契约耗尽最后的魔力，将你从内克拉的门前拖回。你重新有了呼吸。"))
 			continue
 		M.fully_heal()
-		to_chat(M, span_boldnotice("The writ spends the last of its magicka keeping you breathing. You come to."))
+		to_chat(M, span_boldnotice("契约耗尽最后的魔力，维持住你的呼吸。你苏醒过来。"))
 
 /datum/quest/kill/notorious_bounty/proc/grant_darkvision(mob/living/M)
 	if(QDELETED(M))
@@ -390,7 +390,7 @@
 		return FALSE
 	boss_paid = TRUE
 	var/turf/boss_turf = get_turf(boss)
-	to_chat(boss, span_danger("<b>The hunting party came for you and could not finish you. You escape to safety - [NOTORIOUS_BOUNTY_SURVIVAL_TRIUMPH] TRIUMPH is yours.</b>"))
+	to_chat(boss, span_danger("<b>狩猎队前来围猎，却未能了结你。你安然脱身——[NOTORIOUS_BOUNTY_SURVIVAL_TRIUMPH] 凯旋归你所有。</b>"))
 	boss.adjust_triumphs(NOTORIOUS_BOUNTY_SURVIVAL_TRIUMPH, TRUE, "notorious bounty: outlasted the hunt")
 	message_admins("[key_name_admin(boss)] outlasted notorious bounty '[boss_name]' at [ADMIN_COORDJMP(boss_turf)] ([region]).")
 	return TRUE

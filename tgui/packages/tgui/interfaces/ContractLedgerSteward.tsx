@@ -51,7 +51,12 @@ const BLOCKADE_TYPE = 'Blockade Defense';
 const DISPATCH_DEBOUNCE_MS = 500;
 
 const COMMISSION_LABELS: Record<string, string> = {
-  'Blockade Defense': 'Clear Blockade',
+  'Blockade Defense': '封锁防御',
+  Kill: '击杀',
+  'Clear Out': '清剿',
+  Bounty: '悬赏',
+  Raid: '突袭',
+  'Hoard Recovery': '寻宝',
 };
 
 const coin = (n: number) => `${n}m`;
@@ -71,10 +76,10 @@ const regionRewardFlavor = (
 ): string | null => {
   if (typeof mult !== 'number' || mult === 1) return null;
   if (mult > 1) {
-    const descriptor = mult >= 1.4 ? 'bleak' : 'dangerous';
-    return `${regionName} is a ${descriptor} region - contracts from that region tend to be ${formatMultiplierDelta(mult - 1)} more lucrative.`;
+    const descriptor = mult >= 1.4 ? '荒芜' : '危险';
+    return `${regionName} 是一片${descriptor}之地 - 来自该地区的契约往往多赚 ${formatMultiplierDelta(mult - 1)}.`;
   }
-  return `${regionName} is a settled region - contracts from that region tend to be ${formatMultiplierDelta(1 - mult)} less lucrative.`;
+  return `${regionName} 是一片安定之地 - 来自该地区的契约往往少赚 ${formatMultiplierDelta(1 - mult)}.`;
 };
 
 const FormRow = (props: { label: string; children: ReactNode }) => (
@@ -146,8 +151,8 @@ const SubTabBar = (props: {
   historyCount: number;
 }) => {
   const tabs: { id: SubTab; label: string }[] = [
-    { id: 'compose', label: 'Commission' },
-    { id: 'history', label: `History (${props.historyCount})` },
+    { id: 'compose', label: '委任' },
+    { id: 'history', label: `历史 (${props.historyCount})` },
   ];
   return (
     <div className="ContractLedger__InnkeeperSubTabBar">
@@ -173,7 +178,7 @@ const HistoryView = (props: { log: DefenseLogEntry[] }) => {
   if (!props.log.length) {
     return (
       <div className="ContractLedger__InnkeeperEmpty">
-        No commissions have been drawn against the Pledge this week.
+        本周尚未有委任自市民认捐中支取.
       </div>
     );
   }
@@ -186,8 +191,8 @@ const HistoryView = (props: { log: DefenseLogEntry[] }) => {
             {r.title}
           </span>
           <span className="ContractLedger__InnkeeperHistoryMeta">
-            {r.type} &middot; {r.region} &middot; day {r.day} &middot;{' '}
-            {coin(r.cost)}
+            {COMMISSION_LABELS[r.type] || r.type} &middot; {r.region}{' '}
+            &middot; 第 {r.day} 天 &middot; {coin(r.cost)}
           </span>
         </div>
       ))}
@@ -219,7 +224,7 @@ const LevyStampRow = (props: {
   levyExempt: boolean;
   onChange: (v: boolean) => void;
 }) => (
-  <FormRow label="Levy Stamp">
+  <FormRow label="关税印戳">
     <label
       style={
         props.aldermanActing
@@ -228,7 +233,7 @@ const LevyStampRow = (props: {
       }
       title={
         props.aldermanActing
-          ? "The Alderman cannot waive the Crown's tax."
+          ? '议会参事无权豁免王室税项.'
           : undefined
       }
     >
@@ -238,7 +243,7 @@ const LevyStampRow = (props: {
         disabled={props.aldermanActing}
         onChange={(e) => props.onChange(e.target.checked)}
       />
-      &nbsp;Stamp as LEVY EXEMPT (waive Crown&apos;s Contract Levy)
+      &nbsp;盖印为免征关税 (豁免王室契约关税)
     </label>
   </FormRow>
 );
@@ -308,25 +313,25 @@ const ComposeView = () => {
 
   const fundingDisabledReason =
     funding === 'pledge' && data.pledge_balance < scaledCost
-      ? `Insufficient Pledge (need ${coin(scaledCost)}, have ${coin(data.pledge_balance)}).`
+      ? `市民认捐不足 (需要 ${coin(scaledCost)}, 现有 ${coin(data.pledge_balance)}).`
       : funding === 'crown' && data.crown_purse_balance < scaledCost
-        ? `Insufficient Crown's Purse (need ${coin(scaledCost)}, have ${coin(data.crown_purse_balance)}).`
+        ? `王室金库不足 (需要 ${coin(scaledCost)}, 现有 ${coin(data.crown_purse_balance)}).`
         : funding === 'directive' && directivesRemaining <= 0
-          ? "Today's directive quota is spent."
+          ? '今日的指令配额已用尽.'
           : undefined;
 
   const disabledReason = inflight
-    ? 'Drafting...'
+    ? '拟写中...'
     : !type
-      ? 'Pick a commission type.'
+      ? '请选择委任类型.'
       : !region
         ? isBlockade
-          ? 'No blockade to clear.'
-          : 'Pick a region.'
+          ? '没有可解除的封锁.'
+          : '请选择地区.'
         : isBlockade && regionHasActiveWrit
-          ? 'A writ is already in circulation for this blockade.'
+          ? '此封锁已有令状在流通中.'
           : needsDestination && !destination
-            ? 'Pick the shipment destination.'
+            ? '请选择货物目的地.'
             : fundingDisabledReason;
 
   const dispatch = () => {
@@ -351,10 +356,10 @@ const ComposeView = () => {
   return (
     <>
       <div className="ContractLedger__InnkeeperFlavor">
-        Commission adventurers against the Realm's enemies.
+        委任冒险者讨伐国度的敌人.
       </div>
 
-      <FormRow label="Commission Type">
+      <FormRow label="委任类型">
         <select
           className="ContractLedger__InnkeeperSelect"
           value={type}
@@ -368,7 +373,7 @@ const ComposeView = () => {
         </select>
       </FormRow>
 
-      <FormRow label={isBlockade ? 'Blockaded Region' : 'Region'}>
+      <FormRow label={isBlockade ? '被封锁地区' : '地区'}>
         <select
           className="ContractLedger__InnkeeperSelect"
           value={region}
@@ -378,11 +383,11 @@ const ComposeView = () => {
           <option value="">
             {regionsForType.length === 0
               ? isBlockade
-                ? 'No blockades are active.'
-                : 'No region will host this type'
+                ? '当前没有活跃的封锁.'
+                : '没有地区能容纳此类型'
               : isBlockade
-                ? '- pick a blockade -'
-                : '- pick a region -'}
+                ? '- 请选择封锁 -'
+                : '- 请选择地区 -'}
           </option>
           {regionsForType.map((r) => {
             const mult = data.region_tp_multipliers?.[r];
@@ -390,7 +395,7 @@ const ComposeView = () => {
             // regions, which don't carry a TP multiplier.
             const suffix =
               !isBlockade && typeof mult === 'number' && mult !== 1
-                ? ` (×${mult} reward)`
+                ? ` (×${mult} 奖赏)`
                 : '';
             const label = isBlockade
               ? data.blockade_region_labels?.[r] || r
@@ -428,17 +433,17 @@ const ComposeView = () => {
         })()}
 
       {needsDestination && (
-        <FormRow label="Shipment Destination">
+        <FormRow label="货物目的地">
           <Select
             value={destination}
             onChange={setDestination}
             options={data.defense_destinations || []}
-            placeholder="- pick a destination -"
+            placeholder="- 请选择目的地 -"
           />
         </FormRow>
       )}
 
-      <FormRow label="Fund">
+      <FormRow label="资金来源">
         <div className="ContractLedger__InnkeeperModeRow">
           <label>
             <input
@@ -448,7 +453,7 @@ const ComposeView = () => {
               disabled={!pledgeAvailable}
               onChange={() => setFunding('pledge')}
             />
-            &nbsp;Burgher Pledge ({coin(data.pledge_balance)})
+            &nbsp;市民认捐 ({coin(data.pledge_balance)})
           </label>
           <label
             style={
@@ -458,7 +463,7 @@ const ComposeView = () => {
             }
             title={
               aldermanActing
-                ? "The Alderman commissions only against the Commons' Pledge."
+                ? '议会参事只能自平民的认捐中委任.'
                 : undefined
             }
           >
@@ -469,7 +474,7 @@ const ComposeView = () => {
               disabled={aldermanActing}
               onChange={() => setFunding('crown')}
             />
-            &nbsp;Crown's Purse ({coin(data.crown_purse_balance)})
+            &nbsp;王室金库 ({coin(data.crown_purse_balance)})
           </label>
           <label
             style={
@@ -479,7 +484,7 @@ const ComposeView = () => {
             }
             title={
               aldermanActing
-                ? 'Requests are the Steward&apos;s prerogative, not the Alderman&apos;s.'
+                ? '请令乃总管家之权柄, 而非议会参事之权柄.'
                 : undefined
             }
           >
@@ -490,38 +495,38 @@ const ComposeView = () => {
               disabled={aldermanActing || directivesRemaining <= 0}
               onChange={() => setFunding('directive')}
             />
-            &nbsp;Request ({directivesRemaining}/{data.directives_per_day ?? 0} left)
+            &nbsp;请令 (剩余 {directivesRemaining}/{data.directives_per_day ?? 0})
           </label>
         </div>
       </FormRow>
 
       {funding === 'directive' && (
         <div className="ContractLedger__InnkeeperFlavor">
-          A Request calls upon someone to
-          answer out of duty. No coin changes hands; the scroll is drawn to
-          your hand and must be given directly to whoever will honour it.
+          请令乃召唤某人出于职责而响应.
+          并无钱财易手; 卷轴会绘制到你手中,
+          且必须直接交给愿意履行之人.
         </div>
       )}
 
       {bonusPayEligible && (
-        <FormRow label="Bonus Pay">
+        <FormRow label="额外酬金">
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
             <BonusPayOption
               active={bonusPayLevel === 0}
               onClick={() => setBonusPayLevel(0)}
-              label="None"
+              label="无"
               sublabel="x1.0"
             />
             <BonusPayOption
               active={bonusPayLevel === 1}
               onClick={() => setBonusPayLevel(1)}
-              label="Light"
+              label="轻度"
               sublabel={`x${bonusLightMult}`}
             />
             <BonusPayOption
               active={bonusPayLevel === 2}
               onClick={() => setBonusPayLevel(2)}
-              label="Full"
+              label="全额"
               sublabel={`x${bonusFullMult}`}
             />
           </div>
@@ -529,19 +534,19 @@ const ComposeView = () => {
       )}
 
       {!isBlockade && funding !== 'directive' && (
-        <FormRow label="Deliver As">
+        <FormRow label="交付方式">
           <div className="ContractLedger__InnkeeperModeRow">
             <ModeRadio
               value="board"
               selected={mode}
               onChange={setMode}
-              label="Post on public board"
+              label="张贴于公共告示板"
             />
             <ModeRadio
               value="hands"
               selected={mode}
               onChange={setMode}
-              label="Put in my hands"
+              label="置于我手中"
             />
           </div>
         </FormRow>
@@ -556,23 +561,23 @@ const ComposeView = () => {
       )}
       {isBlockade && funding !== 'directive' && (
         <div className="ContractLedger__InnkeeperFlavor">
-          Blockade writs are always drawn to your hand. Pin to the Grand
-          Contract Ledger to require a Fellowship of three; keep in hand to
-          dispatch a trusted party directly. Each defender past the third who
-          stands at the blockade, up to six, raises both the waves and the
-          payout by 20%.
+          封锁令状总会绘制到你手中. 钉上大契约台账,
+          即可要求一支三人的冒险团; 留在手中,
+          则可直接派遣一支可信的队伍. 第三名之后的每一位
+          驻守封锁线的防守者, 至多六人, 都会将波次与
+          赏金各提高 20%.
         </div>
       )}
 
       {isBlockade && recallEntry && (
         <div className="ContractLedger__InnkeeperFlavor">
           {recallEntry.recall_eligible
-            ? `A writ is in circulation for ${recallEntry.region} and has gone unanswered. It can be recalled now${
+            ? `${recallEntry.region} 已有令状在流通中, 且无人应答. 现在可以召回它${
                 recallEntry.refund > 0 && recallEntry.refund_fund
-                  ? ` (refunds ${coin(recallEntry.refund)} to ${recallEntry.refund_fund})`
+                  ? ` (退还 ${coin(recallEntry.refund)} 至 ${recallEntry.refund_fund})`
                   : ''
               }.`
-            : `A writ is in circulation for ${recallEntry.region}. It cannot be recalled: ${recallEntry.recall_blocker ?? 'unknown reason'}.`}
+            : `${recallEntry.region} 已有令状在流通中. 它无法被召回: ${recallEntry.recall_blocker ?? '原因不明'}.`}
         </div>
       )}
 
@@ -585,10 +590,10 @@ const ComposeView = () => {
           onClick={dispatch}
         >
           {funding === 'directive'
-            ? 'Submit Request'
+            ? '提交请令'
             : isBlockade
-              ? `Print Writ (${coin(effectiveCost)})`
-              : `Commission (${coin(effectiveCost)})`}
+              ? `印制令状 (${coin(effectiveCost)})`
+              : `委任 (${coin(effectiveCost)})`}
         </button>
         {isBlockade && !!recallEntry?.recall_eligible && (
           <button
@@ -596,8 +601,8 @@ const ComposeView = () => {
             className="ContractLedger__SignButton"
             onClick={() => act('recall_blockade_writ', { region })}
           >
-            Recall Writ
-            {recallEntry.refund > 0 ? ` (refund ${coin(recallEntry.refund)})` : ''}
+            召回令状
+            {recallEntry.refund > 0 ? ` (退还 ${coin(recallEntry.refund)})` : ''}
           </button>
         )}
       </div>
@@ -619,19 +624,19 @@ export const StewardDefensePanel = () => {
     <div className="ContractLedger__Innkeeper">
       <div className="ContractLedger__InnkeeperHeader">
         <div className="ContractLedger__InnkeeperTitle">
-          By the Pledge of the Burghers&hellip;
+          以市民之认捐起誓&hellip;
         </div>
         <div className="ContractLedger__InnkeeperBalance">
-          Burgher Pledge:&nbsp;<b>{coin(data.pledge_balance)}</b>
+          市民认捐:&nbsp;<b>{coin(data.pledge_balance)}</b>
           <span className="ContractLedger__InnkeeperBalanceFormula">
             {' '}
-            (+{coin(data.pledge_refill_base)} base, +
-            {coin(data.pledge_refill_per_player)}/player &times;{' '}
+            (+{coin(data.pledge_refill_base)} 基础, +
+            {coin(data.pledge_refill_per_player)}/玩家 &times;{' '}
             {data.pledge_active_players}
             {guildBonus > 0
-              ? `, +${coin(guildBonus)} Guild of Arms tribute`
+              ? `, +${coin(guildBonus)} 武备行会贡奉`
               : ''}{' '}
-            = {coin(dailyRefill)}/day, cap {coin(2 * dailyRefill)})
+            = {coin(dailyRefill)}/日, 上限 {coin(2 * dailyRefill)})
           </span>
         </div>
         {!data.pledge_golden_active && (
@@ -639,7 +644,7 @@ export const StewardDefensePanel = () => {
             className="ContractLedger__InnkeeperBalanceFormula"
             style={{ color: '#c84' }}
           >
-            Golden Bull suspended - the Pledge does not refill.
+            金玺诏书已中止 - 认捐不再回补.
           </div>
         )}
       </div>

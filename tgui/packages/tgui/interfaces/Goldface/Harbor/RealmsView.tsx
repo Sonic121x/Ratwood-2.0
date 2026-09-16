@@ -24,8 +24,8 @@ const HeaderStrip = () => (
     }}
   >
     <div>&nbsp;</div>
-    <div>Realm / Conditions</div>
-    <div>Demand / Buys / Sells</div>
+    <div>国度 / 状况</div>
+    <div>需求 / 收购 / 出售</div>
   </div>
 );
 
@@ -40,13 +40,13 @@ export const RealmsView = (props: { realms: HarborRealm[] }) => {
           color: INK_SOFT,
         }}
       >
-        No foreign realms recorded.
+        尚无外邦国度记录.
       </div>
     );
   }
   return (
     <>
-      <div style={sectionHeaderStyle}>Foreign Realms ({realms.length})</div>
+      <div style={sectionHeaderStyle}>外邦国度 ({realms.length})</div>
       <HeaderStrip />
       {realms.map((r) => (
         <RealmRow key={r.id} realm={r} />

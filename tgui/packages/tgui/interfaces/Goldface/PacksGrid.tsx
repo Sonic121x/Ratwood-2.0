@@ -49,7 +49,7 @@ export const PacksGrid = (props: Props) => {
   if (!hasCategory && !inSearchMode) {
     return (
       <HintCard>
-        Select a category above, or type in the search to find goods.
+        请在上方选择一个分类, 或在搜索框中输入以查找货物.
       </HintCard>
     );
   }
@@ -57,8 +57,8 @@ export const PacksGrid = (props: Props) => {
     return (
       <HintCard>
         {inSearchMode
-          ? `No goods match "${serverSearch}".`
-          : 'No goods stocked in this category.'}
+          ? `没有与 "${serverSearch}" 相符的货物.`
+          : '此分类下没有存货.'}
       </HintCard>
     );
   }
@@ -95,8 +95,8 @@ export const PacksGrid = (props: Props) => {
             color: INK_SOFT,
           }}
         >
-          Showing {resultCap} of {totalMatches} matches. Refine your search to
-          narrow the list.
+          显示 {totalMatches} 条匹配中的 {resultCap} 条. 细化搜索以缩小
+          列表.
         </div>
       )}
     </>
