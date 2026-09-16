@@ -10,8 +10,8 @@
 						list(/datum/skill/craft/smelting, 2, 2)
 	)
 	added_stashed_items = list(
-		"Hammer" = /obj/item/rogueweapon/hammer/iron,
-		"Tongs" = /obj/item/rogueweapon/tongs
+		"铁锤" = /obj/item/rogueweapon/hammer/iron,
+		"钳子" = /obj/item/rogueweapon/tongs
 	)
 
 /datum/virtue/utility/tailor
