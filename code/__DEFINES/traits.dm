@@ -255,9 +255,9 @@
 #define TRAIT_DEBTOR_CROWN "王权债务人"
 #define TRAIT_DEBTOR_CHURCH "教会债务人"
 #define TRAIT_DEBTOR_MERCHANT "商人行会债务人"
-#define TRAIT_DEBTOR_BATHHOUSE "澡堂债务人"
+#define TRAIT_DEBTOR_BATHHOUSE "浴场债务人"
 #define TRAIT_AGENT_MERCHANT "商人行会代理人"
-#define TRAIT_AGENT_BATHHOUSE "澡堂代理人"
+#define TRAIT_AGENT_BATHHOUSE "浴场代理人"
 #define TRAIT_AGENT_CHURCH "教会恩主"
 #define TRAIT_OWNED_SLAVE "所属奴隶"
 #define TRAIT_KNOWNCRIMINAL "著名罪犯"
@@ -380,9 +380,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEBTOR_CROWN = span_warning("我欠王权金库的债。"),
 	TRAIT_DEBTOR_CHURCH = span_warning("我欠教会的债。"),
 	TRAIT_DEBTOR_MERCHANT = span_warning("我欠商人行会的债。"),
-	TRAIT_DEBTOR_BATHHOUSE = span_warning("我欠澡堂的债。"),
+	TRAIT_DEBTOR_BATHHOUSE = span_warning("我欠浴场的债。"),
 	TRAIT_AGENT_MERCHANT = span_info("我是商人行会的特许代理人。我掌管其账册与簿记。"),
-	TRAIT_AGENT_BATHHOUSE = span_info("我是澡堂的代理人。我掌管其账册与簿记。"),
+	TRAIT_AGENT_BATHHOUSE = span_info("我是浴场的代理人。我掌管其账册与簿记。"),
 	TRAIT_AGENT_CHURCH = span_info("我是教会恩主。信徒皆知我的名字。"),
 	TRAIT_OWNED_SLAVE = span_info("我是一名被烙印的奴隶，曾遭击垮，如今归主人所有。"),
 	TRAIT_LEPROSY = span_necrosis("我是个惹人厌憎的麻风病人……"),
