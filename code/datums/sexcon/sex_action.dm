@@ -1,6 +1,6 @@
 /datum/sex_action
 	abstract_type = /datum/sex_action
-	var/name = "Zodomize"
+	var/name = "肛交"
 	/// Time to do the act, modified by up to 2.5x speed by the speed toggle
 	var/do_time = 3.3 SECONDS
 	/// Whether the act is continous and will be done on repeat
@@ -250,9 +250,9 @@
 
 /datum/sex_action/chastityplay/proc/get_chastity_device_name(mob/living/carbon/human/owner)
 	if(owner?.sexcon?.has_chastity_flat())
-		return "flat cage"
+		return "平板贞操罩"
 	if(owner?.sexcon?.has_chastity_cage())
-		return "cage"
+		return "贞操笼"
 	return "chastity device"
 
 // Unified sound helper: supports single sound or list input with optional chance gating.

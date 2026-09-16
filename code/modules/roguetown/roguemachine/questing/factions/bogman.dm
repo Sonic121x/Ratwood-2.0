@@ -1,8 +1,8 @@
 /datum/quest_faction/bogman
 	id = QUEST_FACTION_BOGMAN
-	name_singular = "bogman"
-	name_plural = "bogmen"
-	group_word = "warband"
+	name_singular = "沼泽人"
+	name_plural = "沼泽人"
+	group_word = "战团"
 	faction_tag = FACTION_BANDITS
 	can_blockade = TRUE
 	category = FACTION_CAT_BOG_DESERTER
@@ -15,9 +15,9 @@
 		/mob/living/carbon/human/species/human/northern/bog_deserters/better_gear/ambush = 100,
 	)
 	boss_title_templates = list(
-		"Sergeant %N",
-		"Captain %N",
-		"%N the Bogman",
-		"%N the Marshwalker",
+		"%N 军士",
+		"%N 队长",
+		"%N 沼泽人",
+		"%N 涉沼者",
 	)
 	boss_name_file = "strings/rt/names/human/humnorm.txt"

@@ -1,5 +1,5 @@
 /obj/item/flashlight
-	name = "flashlight"
+	name = "手电筒"
 	desc = ""
 	custom_price = 10
 	icon = 'icons/obj/lighting.dmi'
@@ -40,9 +40,9 @@
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
 	if (user.eye_blind)
-		user.visible_message("<span class='suicide'>[user] is putting [src] close to [user.p_their()] eyes and turning it on... but [user.p_theyre()] blind!</span>")
+		user.visible_message("<span class='suicide'>[user]把[src]凑到[user.p_their()]眼前并打开了它……可[user.p_theyre()]早就瞎了！</span>")
 		return SHAME
-	user.visible_message("<span class='suicide'>[user] is putting [src] close to [user.p_their()] eyes and turning it on! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user]把[src]凑到[user.p_their()]眼前并打开了它！看起来[user.p_theyre()]是想自杀！</span>")
 	return (FIRELOSS)
 
 /obj/item/flashlight/attack(mob/living/carbon/M, mob/living/carbon/human/user)
@@ -52,7 +52,7 @@
 // FLARES
 
 /obj/item/flashlight/flare
-	name = "flare"
+	name = "照明弹"
 	desc = ""
 	w_class = WEIGHT_CLASS_SMALL
 	light_outer_range = 7 // Pretty bright.
@@ -79,8 +79,8 @@
 
 /obj/item/flashlight/flare/ignition_effect(atom/A, mob/user)
 	if(fuel && on)
-		. = "<span class='notice'>[user] lights [A] with [src] like a real \
-			badass.</span>"
+		. = "<span class='notice'>[user]用[src]点燃了[A]，活像个真正的狠角色。\
+			</span>"
 	else
 		. = ""
 
@@ -105,16 +105,16 @@
 
 	// Usual checks
 	if(!fuel)
-		to_chat(user, "<span class='warning'>[src] is out of fuel!</span>")
+		to_chat(user, "<span class='warning'>[src]没燃料了！</span>")
 		return
 	if(on)
-		to_chat(user, "<span class='warning'>[src] is already on!</span>")
+		to_chat(user, "<span class='warning'>[src]已经点着了！</span>")
 		return
 
 	. = ..()
 	// All good, turn it on.
 	if(.)
-		user.visible_message("<span class='notice'>[user] lights \the [src].</span>", "<span class='notice'>I light \the [src]!</span>")
+		user.visible_message("<span class='notice'>[user]点燃了[src]。</span>", "<span class='notice'>我点燃了[src]！</span>")
 		force = on_damage
 //		damtype = "fire"
 		START_PROCESSING(SSobj, src)
@@ -123,9 +123,9 @@
 	return on * heat
 
 /obj/item/flashlight/flare/torch
-	name = "torch"
-	desc = "A stick with enough fiber wrapped around the end to burn for a decent amount of time. Mind it \
-	should you choose to ford across water."
+	name = "火把"
+	desc = "一根末端缠了足够纤维、能烧上相当一阵子的木棍。若你打算涉水而行，\
+	可得多留点神。"
 	w_class = WEIGHT_CLASS_NORMAL
 	light_outer_range = 7
 	force = 5
@@ -203,7 +203,7 @@
 
 	// Usual checks
 	if(!fuel)
-		to_chat(user, "<span class='warning'>[src] doesn't have any pitch left!</span>")
+		to_chat(user, "<span class='warning'>[src]已经没有沥青可烧了！</span>")
 		return
 	if(on)
 		turn_off()
@@ -261,7 +261,7 @@
 		if (should_self_destruct)  // check if self-destruct
 			times_used += 1
 			if (times_used >= 8) //amount used before burning out
-				user.visible_message("<span class='warning'>[src] has burnt out and falls apart!</span>")
+				user.visible_message("<span class='warning'>[src]烧尽后散架了！</span>")
 				qdel(src)
 
 /obj/item/flashlight/flare/torch/spark_act()
@@ -289,7 +289,7 @@
 	var/mob/living/doctor = user
 	var/mob/living/patient = target
 	if(!on)
-		to_chat(user, span_warning("[src] needs to lit!"))
+		to_chat(user, span_warning("[src]需要点燃！"))
 		return
 	var/list/sewable
 	var/obj/item/bodypart/affecting
@@ -299,15 +299,15 @@
 	if(iscarbon(patient))
 		affecting = patient.get_bodypart(check_zone(doctor.zone_selected))
 		if(!affecting)
-			to_chat(doctor, span_warning("That limb is missing."))
+			to_chat(doctor, span_warning("那个肢体缺失了。"))
 			return FALSE
 		sewable = affecting.get_sewable_wounds()
 	else
 		sewable = patient.get_sewable_wounds()
 	if(!length(sewable))
-		to_chat(doctor, span_warning("There aren't any wounds to singe closed."))
+		to_chat(doctor, span_warning("没有任何伤口可供烧灼闭合。"))
 		return FALSE
-	var/datum/wound/target_wound = sewable.len > 1 ? input(doctor, "Which wound?", "[src]") as null|anything in sewable : sewable[1]
+	var/datum/wound/target_wound = sewable.len > 1 ? input(doctor, "哪个伤口？", "[src]") as null|anything in sewable : sewable[1]
 	if(!target_wound)
 		return FALSE
 
@@ -342,9 +342,9 @@
 		target_wound.set_bleed_rate(max( (target_wound.bleed_rate - bleedreduction), 0))
 		if(target_wound.bleed_rate == 0 && !informed)
 			if(is_simple_animal)
-				patient.visible_message(span_smallgreen("One last drop of plasm trickles from the [(target_wound?.name)] on [patient] before it closes."), span_smallgreen("The throbbing warmth coming out of [target_wound] soothes and stops. It no longer bleeds plasm."))
+				patient.visible_message(span_smallgreen("最后一滴液浆从[patient]的[(target_wound?.name)]中淌出，伤口随即闭合。"), span_smallgreen("从[target_wound]传来的阵阵灼热感逐渐舒缓并停止。它不再流出液浆。"))
 			else
-				patient.visible_message(span_smallgreen("One last drop of plasm trickles from the [(target_wound?.name)] on [patient]'s [affecting.name] before it closes."), span_smallgreen("The throbbing warmth coming out of [target_wound] soothes and stops. It no longer bleeds plasm."))
+				patient.visible_message(span_smallgreen("最后一滴液浆从[patient]的[affecting.name]上的[(target_wound?.name)]中淌出，伤口随即闭合。"), span_smallgreen("从[target_wound]传来的阵阵灼热感逐渐舒缓并停止。它不再流出液浆。"))
 			informed = TRUE
 		if(istype(target_wound, /datum/wound/dynamic))
 			var/datum/wound/dynamic/dynwound = target_wound
@@ -360,16 +360,16 @@
 		target_wound.sew_wound()
 		if(patient == doctor)
 			if(is_simple_animal)
-				doctor.visible_message(span_notice("[doctor] singes \a [target_wound.name] on [doctor.p_them()]self."), span_notice("I singe \a [target_wound.name] on myself."))
+				doctor.visible_message(span_notice("[doctor]烧灼了自己身上的\a [target_wound.name]。"), span_notice("我烧灼了自己身上的\a [target_wound.name]。"))
 			else
-				doctor.visible_message(span_notice("[doctor] singes \a [target_wound.name] on [doctor.p_them()]self."), span_notice("I singe \a [target_wound.name] on my [affecting]."))
+				doctor.visible_message(span_notice("[doctor]烧灼了自己身上的\a [target_wound.name]。"), span_notice("我烧灼了自己[affecting]上的\a [target_wound.name]。"))
 		else
 			if(is_simple_animal)
-				doctor.visible_message(span_notice("[doctor] singes \a [target_wound.name] on [patient]."), span_notice("I singe \a [target_wound.name] on [patient]."))
+				doctor.visible_message(span_notice("[doctor]烧灼了[patient]身上的\a [target_wound.name]。"), span_notice("我烧灼了[patient]身上的\a [target_wound.name]。"))
 			else if(affecting)
-				doctor.visible_message(span_notice("[doctor] singes \a [target_wound.name] on [patient]'s [affecting]."), span_notice("I singe \a [target_wound.name] on [patient]'s [affecting]."))
+				doctor.visible_message(span_notice("[doctor]烧灼了[patient]的[affecting]上的\a [target_wound.name]。"), span_notice("我烧灼了[patient]的[affecting]上的\a [target_wound.name]。"))
 			else
-				doctor.visible_message(span_notice("[doctor] singes \a [target_wound.name] on [patient]."), span_notice("I singe \a [target_wound.name] on [patient]."))
+				doctor.visible_message(span_notice("[doctor]烧灼了[patient]身上的\a [target_wound.name]。"), span_notice("我烧灼了[patient]身上的\a [target_wound.name]。"))
 		if(is_simple_animal)
 			var/mob/living/simple_animal/animal_patient = patient
 			animal_patient.adjustHealth(-((animal_patient.maxHealth / 20) * (medskill + 1)), TRUE)
@@ -379,8 +379,8 @@
 //OV edit end
 
 /obj/item/flashlight/flare/torch/metal
-	name = "fieftorch"
-	desc = "A candleholder of wrought iron, oft-found mounted to the sconces in a castle's hallway."
+	name = "铁制壁炬"
+	desc = "一只锻铁烛托，常见于城堡走廊的壁灯架上。"
 	icon_state = "mtorch"
 	light_outer_range = 6
 	force = 10 //Doubled from the regular torch, to reflect its sturdier construction. Classified as an improvised weapon, as it shouldn't scale off any weapon skill.
@@ -400,9 +400,9 @@
 	spark_act()
 
 /obj/item/flashlight/flare/torch/lantern
-	name = "iron lamptern"
+	name = "铁灯笼"
 	icon_state = "lamp"
-	desc = "A light to guide the way."
+	desc = "一盏为人引路的灯。"
 	light_outer_range = 5
 	on = FALSE
 	flags_1 = CONDUCT_1
@@ -450,19 +450,19 @@
 	spark_act()
 
 /obj/item/flashlight/flare/torch/lantern/bronzelamptern
-	name = "bronze lamptern"
+	name = "青铜灯笼"
 	icon_state = "bronzelamp"
 	item_state = "bronzelamp"
-	desc = "A marvel of engineering that emits a strange green glow."
+	desc = "一件工程奇作，散发着诡异的绿色光辉。"
 	light_outer_range = 6
 	light_color ="#4ac77e"
 	on = FALSE
 
 /obj/item/flashlight/flare/torch/lantern/bronzelamptern/malums_lamptern //unqiue item as a dungeon reward. Functionally a kite shield and a bronze lamptern combined into one
-	name = "ancient lamptern"
+	name = "远古灯笼"
 	icon_state = "bronzelamp"
 	item_state = "bronzelamp"
-	desc = "A marvel of enginseering that emits a strange teal glow. This one bears an emblem related to Malum and has an inscription. It reads, 'Wield me against your foe and the power of creation shall shield you from harm.'"
+	desc = "一件工程奇作，散发着诡异的青碧色辉光。这一盏带有与 Malum 相关的徽记，其上还刻着一段铭文。上面写道：'持我迎敌，创造之力自会庇你免受伤害。'"
 	light_outer_range = 8
 	light_color = "#2bd0d6"
 	color = "#2bd0d6"
@@ -495,7 +495,7 @@
 
 /obj/item/flashlight/flare/torch/lantern/bronzelamptern/malums_lamptern/pickup(mob/living/user)
 	if(HAS_TRAIT(user, TRAIT_CABAL))
-		to_chat(user, "<font color='yellow'> You attempt to take the lamptern. Runic flames of creation lap up the length of your arm in defiance of your Dark Mistress! Curses!</font>")
+		to_chat(user, "<font color='yellow'>你试图拿起这盏灯笼。创造的符文火焰沿着你的手臂猛然窜起，公然违逆你的黑暗主母！可恶！</font>")
 		user.adjust_fire_stacks(5)
 		user.ignite_mob()
 		user.Stun(40)
@@ -503,9 +503,9 @@
 	..()
 
 /obj/item/flashlight/flare/torch/lantern/copper
-	name = "copper lamptern"
+	name = "铜灯笼"
 	icon_state = "clamp"
-	desc = "A simple and cheap lamptern."
+	desc = "一盏简单而廉价的灯笼。"
 	on = FALSE
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_HIP
@@ -524,8 +524,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin
-	name = "pumpkin lamptern"
-	desc = "A decorated pumpkin shell. Usually seasonal, a frightful beacon in the night."
+	name = "南瓜灯笼"
+	desc = "一只装饰过的南瓜壳。多见于时令节庆，是夜色中令人发毛的灯火。"
 	icon_state = "pumpkinlamp"
 	w_class = WEIGHT_CLASS_SMALL
 	light_color = "#ffb272ff"
@@ -542,12 +542,12 @@
 /obj/item/flashlight/flare/torch/lantern/pumpkin/examine(mob/user)
 	. = ..()
 	if(fuel <= 0)
-		. += span_smallnotice("It looks like it could use a new candle.")
+		. += span_smallnotice("看起来它该换一根新蜡烛了。")
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/attackby(obj/item/I, mob/living/user, params)
 	if((istype(I, /obj/item/candle/yellow)) && (fuel <= 0))
-		user.visible_message(span_notice("[user] inserts a candle into [src]."), \
-							span_notice("I insert a candle into [src]."))
+		user.visible_message(span_notice("[user]往[src]里塞进了一根蜡烛。"), \
+							span_notice("我往[src]里塞进了一根蜡烛。"))
 		if(do_after(user, 2 SECONDS))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 60, TRUE, -1)
 			fuel += 120 MINUTES
@@ -558,37 +558,37 @@
 	return ..()
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/psy
-	name = "psy-do-lamptern"
-	desc = "A large and decorated pumpkin shell. Usually seasonal, yet it ENDURES."
+	name = "普赛顿南瓜灯笼"
+	desc = "一只巨大而装饰华美的南瓜壳。通常只在时令时节出现，却顽强地延续至今。"
 	icon_state = "pumpkinlamppsy"
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/ten
-	name = "tennite pumpkin lamptern"
-	desc = "A large and decorated pumpkin shell. It looks like a lot of work to make it stay in one piece."
+	name = "坦尼斯人南瓜灯笼"
+	desc = "一只巨大而装饰华美的南瓜壳。看得出来，为了让它不散架可费了不少功夫。"
 	icon_state = "pumpkinlampten"
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/zizo
-	name = "zumpkin lamptern"
-	desc = "A large and decorated pumpkin shell. Its strangely gloomy."
+	name = "齐佐南瓜灯笼"
+	desc = "一只巨大而装饰华美的南瓜壳。它阴沉得有些古怪。"
 	icon_state = "pumpkinlampz"
 	light_color = "#ceff72ff"
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/grin
-	name = "smiling pumpkin lamptern"
-	desc = "A large and decorated pumpkin shell. Its smile is not reassuring."
+	name = "笑脸南瓜灯笼"
+	desc = "一只巨大而装饰华美的南瓜壳。它的笑容一点也不让人安心。"
 	icon_state = "pumpkinlamp0"
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/frown
-	name = "angry pumpkin lamptern"
-	desc = "A large and decorated pumpkin shell. It seems quite angry at something, hopefully not you."
+	name = "怒容南瓜灯笼"
+	desc = "一只巨大而装饰华美的南瓜壳。它似乎正对什么东西怒气冲冲，但愿不是你。"
 	icon_state = "pumpkinlamp1"
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/surprise
-	name = "surprised pumpkin lamptern"
-	desc = "A large and decorated pumpkin shell. It is quite surprised to see you."
+	name = "惊讶南瓜灯笼"
+	desc = "一只巨大而装饰华美的南瓜壳。见到你时，它看起来相当惊讶。"
 	icon_state = "pumpkinlamp2"
 
 /obj/item/flashlight/flare/torch/lantern/pumpkin/woozy
-	name = "woozy pumpking lamptern"
-	desc = "A large and decorated pumpkin shell... It seems drunk?!"
+	name = "醉醺醺南瓜灯笼"
+	desc = "一只巨大而装饰华美的南瓜壳……它看起来像喝醉了？！"
 	icon_state = "pumpkinlamp3"

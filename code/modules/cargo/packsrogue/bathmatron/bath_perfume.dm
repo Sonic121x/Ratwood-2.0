@@ -10,63 +10,63 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/bath_perfume/lavender
-	name = "Lavender Perfume"
+	name = "薰衣草香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/lavender)
 
 /datum/supply_pack/rogue/bath_perfume/cherry
-	name = "Cherry Perfume"
+	name = "樱桃香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/cherry)
 
 /datum/supply_pack/rogue/bath_perfume/rose
-	name = "Rose Perfume"
+	name = "玫瑰香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/rose)
 
 /datum/supply_pack/rogue/bath_perfume/jasmine
-	name = "Jasmine Perfume"
+	name = "茉莉香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/jasmine)
 
 /datum/supply_pack/rogue/bath_perfume/mint
-	name = "Mint Perfume"
+	name = "薄荷香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/mint)
 
 /datum/supply_pack/rogue/bath_perfume/vanilla
-	name = "Vanilla Perfume"
+	name = "香草香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/vanilla)
 
 /datum/supply_pack/rogue/bath_perfume/pear
-	name = "Pear Perfume"
+	name = "梨香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/pear)
 
 /datum/supply_pack/rogue/bath_perfume/strawberry
-	name = "Strawberry Perfume"
+	name = "草莓香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/strawberry)
 
 /datum/supply_pack/rogue/bath_perfume/cinnamon
-	name = "Cinnamon Perfume"
+	name = "肉桂香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/cinnamon)
 
 // "Premium" perfumes they are more expensive by default
 // No special mechanical effects
 /datum/supply_pack/rogue/bath_perfume/frankincense
-	name = "Frankincense Perfume"
+	name = "乳香香水"
 	cost = EXPENSIVE_PERFUME_PRICE
 	contains = list(/obj/item/perfume/frankincense)
 
 /datum/supply_pack/rogue/bath_perfume/sandalwood
-	name = "Sandalwood Perfume"
+	name = "檀香香水"
 	cost = EXPENSIVE_PERFUME_PRICE
 	contains = list(/obj/item/perfume/sandalwood)
 
 /datum/supply_pack/rogue/bath_perfume/myrrh
-	name = "Myrrh Perfume"
+	name = "没药香水"
 	cost = EXPENSIVE_PERFUME_PRICE
 	contains = list(/obj/item/perfume/myrrh)

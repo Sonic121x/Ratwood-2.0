@@ -1,6 +1,6 @@
 /datum/advclass/wretch/mistwalker
-	name = "Mistwalker" //works
-	tutorial = "Hailing from Kazengun you were once a sacred guardian, dedicating your lyfe to protecting your chosen shrine of the gods against brigands and fiends from beyond alike... now? Your sacred home has fallen, claimed by ruinous forces and you are banished to wander the realm. What will you find in your search for purpose?"
+	name = "雾行者" //works
+	tutorial = "你来自风郡，曾是一名神圣的守护者，将生命奉献于守护你所选的神明神社，抵御盗匪与来自彼界的妖魔……如今？你神圣的家园已经陷落，被毁灭之力占据，你被放逐，游荡于世间。在寻找目标的过程中，你将会发现什么？"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT 
 	allowed_patrons = ALL_PATRONS 
@@ -70,31 +70,31 @@
 		)
 
 	if(H.mind)
-		var/weapons = list("Ssangsudo +2 CON", "Kanabo +1 STR", "Naginata +2 PER", "Hwando +2 INT", "Kodachi +1 SPD")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("双手刀 +2 体质", "金棒 +1 力量", "薙刀 +2 感知", "环刀 +2 智力", "小太刀 +1 速度")
+		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Ssangsudo +2 CON")
+			if("双手刀 +2 体质")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/noparry
 				H.change_stat(STATKEY_CON, 2)
-			if("Kanabo +1 STR")
+			if("金棒 +1 力量")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/goden/kanabo
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.change_stat(STATKEY_STR, 1)
-			if("Naginata +2 PER")
+			if("薙刀 +2 感知")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/naginata
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.change_stat(STATKEY_PER, 2)
-			if("Hwando +2 INT")
+			if("环刀 +2 智力")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
 				H.change_stat(STATKEY_INT, 2)
-			if("Kodachi +1 SPD") //SPD you can dodge, probably
+			if("小太刀 +1 速度") //SPD you can dodge, probably
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/short/kazengun
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/kodachi

@@ -8,46 +8,46 @@
 GLOBAL_LIST_INIT(quest_recovery_shipments, list(
 	// Smith / Dwarfin Guild: raw materials for crafting
 	/area/rogue/indoors/town/dwarfin = list(
-		list("name" = "iron ingots", "item" = /obj/item/ingot/iron, "min" = 4, "max" = 7),
-		list("name" = "bronze ingots", "item" = /obj/item/ingot/bronze, "min" = 3, "max" = 5),
-		list("name" = "a haul of coal", "item" = /obj/item/rogueore/coal, "min" = 5, "max" = 9),
-		list("name" = "a shipment of cinnabar ore", "item" = /obj/item/rogueore/cinnabar, "min" = 2, "max" = 3),
+		list("name" = "铁锭", "item" = /obj/item/ingot/iron, "min" = 4, "max" = 7),
+		list("name" = "青铜锭", "item" = /obj/item/ingot/bronze, "min" = 3, "max" = 5),
+		list("name" = "一批煤", "item" = /obj/item/rogueore/coal, "min" = 5, "max" = 9),
+		list("name" = "一批朱砂矿石", "item" = /obj/item/rogueore/cinnabar, "min" = 2, "max" = 3),
 	),
 	// University / Magician: alchemical reagents, oddities, and parchment for the scribes
 	/area/rogue/indoors/town/magician = list(
-		list("name" = "alchemical ozium", "item" = /obj/item/reagent_containers/powder/ozium, "min" = 3, "max" = 5),
-		list("name" = "a cache of moondust", "item" = /obj/item/reagent_containers/powder/moondust, "min" = 2, "max" = 3),
-		list("name" = "cinnabar ore for the Archivist", "item" = /obj/item/rogueore/cinnabar, "min" = 2, "max" = 3),
-		list("name" = "mana-blue elven wine", "item" = /obj/item/reagent_containers/glass/bottle/rogue/elfblue, "min" = 1, "max" = 2),
-		list("name" = "a bundle of parchment", "item" = /obj/item/paper, "min" = 8, "max" = 14),
+		list("name" = "炼金用奥兹姆", "item" = /obj/item/reagent_containers/powder/ozium, "min" = 3, "max" = 5),
+		list("name" = "一批月尘", "item" = /obj/item/reagent_containers/powder/moondust, "min" = 2, "max" = 3),
+		list("name" = "供档案官使用的朱砂矿石", "item" = /obj/item/rogueore/cinnabar, "min" = 2, "max" = 3),
+		list("name" = "魔蓝精灵葡萄酒", "item" = /obj/item/reagent_containers/glass/bottle/rogue/elfblue, "min" = 1, "max" = 2),
+		list("name" = "一捆羊皮纸", "item" = /obj/item/paper, "min" = 8, "max" = 14),
 	),
 	// Manor: luxury goods and contraband
 	/area/rogue/indoors/town/manor = list(
-		list("name" = "aged cheese wheels", "item" = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged, "min" = 4, "max" = 6),
-		list("name" = "imported white wine", "item" = /obj/item/reagent_containers/glass/bottle/rogue/whitewine, "min" = 3, "max" = 5),
-		list("name" = "aged red wine", "item" = /obj/item/reagent_containers/glass/bottle/rogue/redwine, "min" = 3, "max" = 5),
-		list("name" = "an Elven vintage", "item" = /obj/item/reagent_containers/glass/bottle/rogue/elfred, "min" = 1, "max" = 1),
-		list("name" = "a cache of moondust", "item" = /obj/item/reagent_containers/powder/moondust, "min" = 2, "max" = 3),
-		list("name" = "dressed poultry", "item" = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry, "min" = 3, "max" = 5),
-		list("name" = "cured meat", "item" = /obj/item/reagent_containers/food/snacks/rogue/meat/steak, "min" = 3, "max" = 5),
+		list("name" = "陈年奶酪轮", "item" = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged, "min" = 4, "max" = 6),
+		list("name" = "进口白葡萄酒", "item" = /obj/item/reagent_containers/glass/bottle/rogue/whitewine, "min" = 3, "max" = 5),
+		list("name" = "陈年红葡萄酒", "item" = /obj/item/reagent_containers/glass/bottle/rogue/redwine, "min" = 3, "max" = 5),
+		list("name" = "一瓶精灵佳酿", "item" = /obj/item/reagent_containers/glass/bottle/rogue/elfred, "min" = 1, "max" = 1),
+		list("name" = "一批月尘", "item" = /obj/item/reagent_containers/powder/moondust, "min" = 2, "max" = 3),
+		list("name" = "处理好的家禽", "item" = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry, "min" = 3, "max" = 5),
+		list("name" = "腌肉", "item" = /obj/item/reagent_containers/food/snacks/rogue/meat/steak, "min" = 3, "max" = 5),
 	),
 	// Tavern: food and drink for the Innkeeper
 	/area/rogue/indoors/town/tavern = list(
-		list("name" = "wine bottles", "item" = /obj/item/reagent_containers/glass/bottle/rogue/whitewine, "min" = 4, "max" = 7),
-		list("name" = "barrels of aurorian ale", "item" = /obj/item/reagent_containers/glass/bottle/rogue/beer/aurorian, "min" = 5, "max" = 8),
-		list("name" = "aged cheese wheels", "item" = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged, "min" = 3, "max" = 5),
+		list("name" = "瓶装葡萄酒", "item" = /obj/item/reagent_containers/glass/bottle/rogue/whitewine, "min" = 4, "max" = 7),
+		list("name" = "数桶曙光酿麦酒", "item" = /obj/item/reagent_containers/glass/bottle/rogue/beer/aurorian, "min" = 5, "max" = 8),
+		list("name" = "陈年奶酪轮", "item" = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged, "min" = 3, "max" = 5),
 	),
 	// Church: lost tithes — always a full bundle or two of the essentials
 	/area/rogue/indoors/town/church = list(
-		list("name" = "bundles of tithe cloth", "item" = /obj/item/natural/bundle/cloth, "min" = 1, "max" = 2),
-		list("name" = "ozium for the incense braziers", "item" = /obj/item/reagent_containers/powder/ozium, "min" = 1, "max" = 2),
-		list("name" = "sacramental wine", "item" = /obj/item/reagent_containers/glass/bottle/rogue/whitewine, "min" = 1, "max" = 2),
+		list("name" = "数捆什一税布料", "item" = /obj/item/natural/bundle/cloth, "min" = 1, "max" = 2),
+		list("name" = "供香炉使用的奥兹姆", "item" = /obj/item/reagent_containers/powder/ozium, "min" = 1, "max" = 2),
+		list("name" = "圣餐酒", "item" = /obj/item/reagent_containers/glass/bottle/rogue/whitewine, "min" = 1, "max" = 2),
 	),
 	// Physician / Apothecary: herbs and alchemical reagents for healing
 	/area/rogue/indoors/town/physician = list(
-		list("name" = "calendula flowers", "item" = /obj/item/alch/calendula, "min" = 4, "max" = 7),
-		list("name" = "jars of viscera", "item" = /obj/item/alch/viscera, "min" = 3, "max" = 5),
-		list("name" = "healing draughts", "item" = /obj/item/reagent_containers/glass/bottle/rogue/healthpot, "min" = 2, "max" = 4),
+		list("name" = "金盏花", "item" = /obj/item/alch/calendula, "min" = 4, "max" = 7),
+		list("name" = "数罐内脏", "item" = /obj/item/alch/viscera, "min" = 3, "max" = 5),
+		list("name" = "治疗药剂", "item" = /obj/item/reagent_containers/glass/bottle/rogue/healthpot, "min" = 2, "max" = 4),
 	),
 ))
 
@@ -97,13 +97,13 @@ GLOBAL_LIST_INIT(quest_recovery_shipments, list(
 	if(title)
 		return title
 	if(!faction || !shipment_name)
-		return "Recover lost goods"
-	return "Recover [shipment_name] from a [faction.group_word] of [faction.name_plural]"
+		return "寻回失落的货物"
+	return "自[faction.group_word][faction.name_plural]手中寻回[shipment_name]"
 
 /datum/quest/kill/recovery/get_objective_text()
 	var/area/dest = target_delivery_location
-	var/dest_name = ispath(dest) ? initial(dest.name) : "its rightful owner"
-	return "Recover the [shipment_name] and deliver the sealed parcel to [dest_name]."
+	var/dest_name = ispath(dest) ? initial(dest.name) : "其合法所有者"
+	return "寻回[shipment_name]，并将密封包裹送交[dest_name]。"
 
 /datum/quest/kill/recovery/get_additional_reward(turf/origin_turf, turf/target_turf)
 	// Combat reward from fighting through (TP of guardians).
@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(quest_recovery_shipments, list(
 	if(any_guardians_alive())
 		return
 	clear_hunt_timers()
-	announce_to_bearer("<b>The guardians are slain.</b> Recover the parcel and deliver it at your leisure.")
+	announce_to_bearer("<b>守卫已被斩杀。</b>取回包裹，从容地将其送交。")
 
 /datum/quest/kill/recovery/proc/spawn_recovery_parcel(obj/effect/landmark/quest_spawner/landmark)
 	var/turf/spawn_turf = landmark.get_safe_spawn_turf()
@@ -150,8 +150,8 @@ GLOBAL_LIST_INIT(quest_recovery_shipments, list(
 		recovered.contained_items += I
 	recovered.delivery_area_type = target_delivery_location
 	recovered.allowed_jobs = recovered.get_area_jobs(target_delivery_location)
-	recovered.name = "lost shipment of [shipment_name]"
-	recovered.desc = "A sealed parcel of [shipment_name] wrested back from its captors. Marked for delivery to [initial(target_delivery_location.name)]. The seal can only be broken by the recipient."
+	recovered.name = "失落的[shipment_name]货件"
+	recovered.desc = "一包自掳掠者手中夺回的[shipment_name]密封包裹。标注为送交[initial(target_delivery_location.name)]。唯有收件人可拆开封印。"
 	recovered.icon_state = "ration_large"
 	recovered.dropshrink = 1
 	recovered.update_icon()
