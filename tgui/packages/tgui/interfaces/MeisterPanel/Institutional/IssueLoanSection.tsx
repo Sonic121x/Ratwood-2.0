@@ -49,23 +49,23 @@ export const IssueLoanSection = ({
   return (
     <>
       <div style={sectionHeaderStyle}>起草贷款</div>
-      {/*
-        已移除超过截止日的贷款提示区。
-        个人贷款与机构契约在任意游戏日均可开具。
-        保留原有行位，方便后续对照和回调。
-      */}
+      {/*pastWindow && (
+        <div style={{ color: INK_FAINT, marginBottom: 8 }}>已移除超过截止日的贷款提示区。
+          第 {data.max_issuance_day} 天之后不得再发放新贷款。个人贷款与机构契约在任意游戏日均可开具。
+        </div>保留原有行位，方便后续对照和回调。
+      )*/}
       <div style={tabBarStyle}>
         <div
           style={tabStyle(tier === 'personal')}
           onClick={() => setTier('personal')}
         >
-          Personal
+          个人
         </div>
         <div
           style={tabStyle(tier === 'indenture')}
           onClick={() => setTier('indenture')}
         >
-          Indenture
+          契约
         </div>
       </div>
 
@@ -78,11 +78,11 @@ export const IssueLoanSection = ({
               marginBottom: 10,
             }}
           >
-            Indentures are publicly proclaimed upon acceptance and upon default.
-            The whole realm will hear.
+            契约一经接受与违约，都将公开宣告。
+            {'举国上下皆会知晓。'}
           </div>
           <div style={fieldRowStyle}>
-            <div style={fieldLabelStyle}>Target</div>
+            <div style={fieldLabelStyle}>目标</div>
             <div style={fieldValueStyle}>
               {indentureTargets.length ? (
                 indentureTargets.map((t) => (
@@ -105,7 +105,7 @@ export const IssueLoanSection = ({
                 ))
               ) : (
                 <span style={{ color: INK_FAINT, fontStyle: 'italic' }}>
-                  No target institutions available.
+                  没有可选的机构。
                 </span>
               )}
             </div>
@@ -114,7 +114,7 @@ export const IssueLoanSection = ({
       )}
 
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Principal</div>
+        <div style={fieldLabelStyle}>本金</div>
         <div style={fieldValueStyle}>
           <input
             type="number"
@@ -130,7 +130,7 @@ export const IssueLoanSection = ({
         </div>
       </div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Term</div>
+        <div style={fieldLabelStyle}>期限</div>
         <div style={fieldValueStyle}>
           {TERM_OPTIONS.map((t) => (
             <button
@@ -147,13 +147,13 @@ export const IssueLoanSection = ({
               }}
               onClick={() => setTerm(t)}
             >
-              {t} day{t > 1 ? 's' : ''}
+              {t} 天
             </button>
           ))}
         </div>
       </div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Rate</div>
+        <div style={fieldLabelStyle}>利率</div>
         <div style={fieldValueStyle}>
           {rateOptions.map((r) => (
             <button
@@ -191,7 +191,7 @@ export const IssueLoanSection = ({
             setAmount('');
           }}
         >
-          Stamp Writ
+          签署令状
         </button>
       </div>
     </>

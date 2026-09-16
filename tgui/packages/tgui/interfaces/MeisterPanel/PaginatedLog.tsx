@@ -43,7 +43,7 @@ type Props = {
 
 export const PaginatedLog = ({
   entries,
-  emptyMessage = 'No transactions on record.',
+  emptyMessage = '记录中没有交易。',
 }: Props) => {
   const [page, setPage] = useState<number>(0);
 
@@ -68,7 +68,7 @@ export const PaginatedLog = ({
         const isOut = entry.direction === 'out';
         const sign = isIn ? '+' : isOut ? '-' : '';
         const color = isIn ? SEAL_GREEN : isOut ? SEAL_RED : INK_FAINT;
-        const preposition = isIn ? 'from' : isOut ? 'to' : '';
+        const preposition = isIn ? '来自' : isOut ? '发往' : '';
         return (
           <div key={start + i} style={logRowStyle}>
             <div style={logAmountStyle(color)}>
@@ -107,10 +107,10 @@ export const PaginatedLog = ({
             disabled={safePage === 0}
             onClick={() => setPage(safePage - 1)}
           >
-            Newer
+            更新
           </button>
           <span style={{ color: INK_FAINT }}>
-            {start + 1}-{Math.min(start + PAGE_SIZE, total)} of {total}
+            {start + 1}-{Math.min(start + PAGE_SIZE, total)} / {total}
           </span>
           <button
             type="button"
@@ -118,7 +118,7 @@ export const PaginatedLog = ({
             disabled={safePage >= lastPage}
             onClick={() => setPage(safePage + 1)}
           >
-            Older
+            更早
           </button>
         </div>
       )}
