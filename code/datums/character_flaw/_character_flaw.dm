@@ -133,8 +133,8 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	point_value = 0 // Not a flaw.
 
 /datum/charflaw/noflaw
-	name = "无缺陷 (-3 TRI)"
-	desc = "我是个正常人，这可真稀罕！（消耗 3 点 triumph，否则会获得随机缺陷。）"
+	name = "无缺陷 (-3 凯旋)"
+	desc = "我是个正常人，这可真稀罕！（消耗 3 点凯旋，否则会获得随机缺陷。）"
 	point_value = 0 // Not a flaw.
 
 /datum/charflaw/noflaw/apply_post_equipment(mob/user)
@@ -884,8 +884,8 @@ GLOBAL_LIST_INIT(character_flaws, list(
 // leaves the realm instead of minting back into the Crown's Purse). Bounty goes through the
 // descriptor-based add_bounty_noface().
 /datum/charflaw/indebted
-	name = "Indebted"
-	desc = "Whether by divorce, gambling debts, or wages due, I must pay a sum from my nervelock every dae. Not doing this will bring about great stress and potentially a bounty."
+	name = "负债"
+	desc = "无论是离婚、赌债还是拖欠的工钱，我每天都得从神经锁里付出一笔钱。要是不这么做，就会带来巨大的压力，甚至可能招来悬赏。"
 	var/minimum = 30
 	var/relative = 0.2
 	var/interval = 30 MINUTES
@@ -929,11 +929,11 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		if((bankamt * relative) > minimum)
 			alimony = round(bankamt * relative)
 		SStreasury.bank_accounts[deadbeat] -= alimony
-		send_ooc_note("<b>NERVELOCK:</b> [alimony]m was taken in debts owed.", name = deadbeat.real_name)
+		send_ooc_note("<b>神经锁：</b>为偿还欠债，已扣除 [alimony]m。", name = deadbeat.real_name)
 	else
 		if(bankamt > 0)
 			SStreasury.bank_accounts[deadbeat] = 0
-			send_ooc_note("<b>NERVELOCK:</b> [bankamt]m was taken in defaulted debts.", name = deadbeat.real_name)
+			send_ooc_note("<b>神经锁：</b>为抵偿违约债务，已扣除 [bankamt]m。", name = deadbeat.real_name)
 		deadbeat.add_stress(/datum/stressevent/debt)
 		if(!bounty_added)
 			if(ishuman(deadbeat))
