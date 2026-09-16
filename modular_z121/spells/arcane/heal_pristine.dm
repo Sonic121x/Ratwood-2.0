@@ -3,7 +3,7 @@
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine
 	name = "愈合如初"
-	desc = "通过魔力促进伤口快速愈合的魔法。"
+	desc = "以魔力缓解伤势，随奥术造诣提升治疗量。可止住一处出血，高深造诣还可温和促进伤口愈合。"
 	cost = 6
 	xp_gain = TRUE
 	releasedrain = 10
@@ -69,13 +69,10 @@
 	)
 
 	var/stopped_bleeding = FALSE
-	if(arcane_level >= 3)
-		stopped_bleeding = stop_all_bleeding(target)
-	else if(arcane_level >= 2)
+	if(arcane_level >= 2)
 		stopped_bleeding = stop_single_bleeding_wound(target)
 
 	if(arcane_level >= 4)
-		soothe_target_pain(target, healing_profile["pain_mult"])
 		soften_remaining_wounds(target, healing_profile["wound_heal"])
 
 	playsound(get_turf(target), 'sound/magic/whiteflame.ogg', 80, TRUE)
@@ -83,7 +80,7 @@
 	user.visible_message(span_notice("[user] 朝着 [target] 念出古老咒言，一股柔和却澎湃的魔力随即涌入 [target] 的伤躯。"))
 	to_chat(user, span_notice("我将回春般的魔力灌入 [target] 体内，强行加快了 [target.p_their()] 伤势的愈合。"))
 	if(stopped_bleeding)
-		to_chat(target, span_notice("我伤口中的血流迅速止住，连带着剧痛也被这阵暖意压了下去。"))
+		to_chat(target, span_notice("我一处伤口的出血止住了，暖意逐渐浸入伤躯。"))
 	else
 		to_chat(target, span_notice("暖流从伤处蔓延开来，我能感觉到血肉正在以反常的速度愈合。"))
 	return TRUE
@@ -106,50 +103,35 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/proc/can_affect_wound(datum/wound/wound)
-	if(isnull(wound))
-		return FALSE
-	if(wound.bleed_rate > 0)
-		return TRUE
-	if(wound.woundpain > 0)
-		return TRUE
-	// 这类永久性特殊伤口不在本法术的愈合范围内，因此不能作为可施法依据。
-	if(!isnull(wound.whp) && wound.whp > 0)
-		return TRUE
-	return FALSE
+	// 出血单独判断；单有疼痛或不可正常治疗的特殊伤口不能触发施法。
+	return !isnull(wound) && !isnull(wound.whp) && wound.whp > 0
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/proc/get_healing_profile(arcane_level)
 	var/list/profile = list(
-		"brute" = 10,
-		"burn" = 10,
+		"brute" = 5,
+		"burn" = 5,
 		"toxin" = 0,
 		"oxygen" = 0,
-		"pain_mult" = 1,
 		"wound_heal" = 0,
 	)
-
 	if(arcane_level == 2)
+		profile["brute"] = 10
+		profile["burn"] = 10
+	else if(arcane_level == 3)
 		profile["brute"] = 20
 		profile["burn"] = 20
-	else if(arcane_level == 3)
+		profile["toxin"] = 20
+	else if(arcane_level == 4)
+		profile["brute"] = 30
+		profile["burn"] = 30
+		profile["toxin"] = 30
+		profile["wound_heal"] = 5
+	else if(arcane_level >= 5)
 		profile["brute"] = 40
 		profile["burn"] = 40
 		profile["toxin"] = 40
-	else if(arcane_level == 4)
-		profile["brute"] = 60
-		profile["burn"] = 60
-		profile["toxin"] = 60
-		// 4 级只做轻度减痛与轻度伤口弱化。
-		profile["pain_mult"] = 0.75
-		profile["wound_heal"] = 20
-	else if(arcane_level >= 5)
-		profile["brute"] = 80
-		profile["burn"] = 80
-		profile["toxin"] = 80
-		profile["oxygen"] = 80
-		// 5 级及以上会更明显地压制疼痛并大幅削弱残余伤口。
-		profile["pain_mult"] = 0.4
-		profile["wound_heal"] = 50
-
+		profile["oxygen"] = 40
+		profile["wound_heal"] = 10
 	return profile
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/proc/apply_direct_healing(mob/living/target, brute_heal, burn_heal, toxin_heal, oxygen_heal)
@@ -184,27 +166,6 @@
 
 	selected_wound.set_bleed_rate(0)
 	return TRUE
-
-/obj/effect/proc_holder/spell/invoked/heal_pristine/proc/stop_all_bleeding(mob/living/target)
-	var/stopped_any = FALSE
-	for(var/datum/wound/wound as anything in target.get_wounds())
-		if(isnull(wound) || wound.bleed_rate <= 0)
-			continue
-		wound.set_bleed_rate(0)
-		stopped_any = TRUE
-	return stopped_any
-
-/obj/effect/proc_holder/spell/invoked/heal_pristine/proc/soothe_target_pain(mob/living/target, pain_multiplier)
-	if(pain_multiplier >= 1)
-		return FALSE
-
-	var/soothed_any = FALSE
-	for(var/datum/wound/wound as anything in target.get_wounds())
-		if(isnull(wound) || wound.woundpain <= 0)
-			continue
-		wound.woundpain = max(wound.sewn_woundpain, round(wound.woundpain * pain_multiplier, DAMAGE_PRECISION))
-		soothed_any = TRUE
-	return soothed_any
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/proc/soften_remaining_wounds(mob/living/target, wound_heal)
 	if(wound_heal <= 0)

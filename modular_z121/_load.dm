@@ -38,6 +38,7 @@
 #include "spells/arcane/small_bet.dm"
 #include "spells/arcane/storage_spell.dm"
 #include "spells/arcane/summon_magic_bedroll.dm"
+#include "spells/arcane/thousand_arrows.dm"
 #include "spells/arcane/timestop.dm"
 #include "spells/arcane/void_clone.dm"
 // 自定义 T3 法术：掌控天时（晴 / 雨 / 雪），仅调用主线 SSParticleWeather 接口

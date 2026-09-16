@@ -660,8 +660,8 @@
 		"易容卷轴（300积分）"   = list(300, /obj/item/book/granter/spell/blackstone/mirror_transform), // 研读后习得【镜像易容】（变换外貌）
 		"巨化卷轴（320积分）"   = list(320, /obj/item/book/granter/spell/blackstone/enlarge),         // 研读后习得【巨化】（体型增大）
 		"寻找魔宠卷轴（380积分）" = list(380, /obj/item/book/granter/spell/blackstone/familiar),       // 研读后习得【寻找魔宠】（召唤魔宠，可重复使用）
-		"奥术顿悟卷轴（350积分）" = list(350, /obj/item/book/granter/spell_points),                    // 研读后获得 3 点法术点（需奥术新手及以上）
-		"虚空奥术顿悟卷轴（650积分）" = list(650, /obj/item/book/granter/spell_points/voiddragon),     // 研读后获得 6 点法术点（需奥术新手及以上）
+		"奥术顿悟卷轴（350积分）" = list(1600, /obj/item/book/granter/spell_points),                    // 研读后获得 3 点法术点（需奥术新手及以上）
+		"虚空奥术顿悟卷轴（650积分）" = list(3200, /obj/item/book/granter/spell_points/voiddragon),     // 研读后获得 6 点法术点（需奥术新手及以上）
 		// —— 附魔卷轴（对"物品"施加特殊附魔：手持卷轴点击目标物品即可附魔，不是教人法术）——
 		//   T1 基础附魔
 		"附魔·伐木（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木
