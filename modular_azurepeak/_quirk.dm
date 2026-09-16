@@ -19,5 +19,5 @@ GLOBAL_LIST_INIT(quirks, init_subtypes_assoc(/datum/quirk))
 	return applied
 
 /datum/quirk/none
-	name = "None"
-	desc = "No quirk chosen."
+	name = "无"
+	desc = "未选择任何特质。"
