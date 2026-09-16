@@ -28,13 +28,13 @@
 		for(var/t in existing_effective)
 			if(t in pick.incompatible_virtues)
 				if(show_message && user)
-					to_chat(user, span_warning("[pick.name] conflicts with [existing.name]!"))
+					to_chat(user, span_warning("[pick.name]与[existing.name]冲突！"))
 				return TRUE
 	if(length(existing.incompatible_virtues))
 		for(var/t in pick_effective)
 			if(t in existing.incompatible_virtues)
 				if(show_message && user)
-					to_chat(user, span_warning("[pick.name] conflicts with [existing.name]!"))
+					to_chat(user, span_warning("[pick.name]与[existing.name]冲突！"))
 				return TRUE
 	return FALSE
 
@@ -43,10 +43,10 @@
 	if(!pick || !length(pick.incompatible_vices))
 		return FALSE
 	for(var/i = 1 to 6)
-		var/datum/charflaw/vice = vars["vice[i]"]
+		var/datum/charflaw/vice = vars["恶习[i]"]
 		if(vice && (vice.type in pick.incompatible_vices))
 			if(show_message && user)
-				to_chat(user, span_warning("[pick.name] conflicts with [vice.name] vice!"))
+				to_chat(user, span_warning("[pick.name]与恶习[vice.name]冲突！"))
 			return TRUE
 	return FALSE
 
@@ -59,11 +59,11 @@
 			continue
 		if(length(pick.incompatible_quirks) && (Q.type in pick.incompatible_quirks))
 			if(show_message && user)
-				to_chat(user, span_warning("[pick.name] conflicts with [Q.name]!"))
+				to_chat(user, span_warning("[pick.name]与[Q.name]冲突！"))
 			return TRUE
 		if(length(Q.incompatible_quirks) && (pick_type in Q.incompatible_quirks))
 			if(show_message && user)
-				to_chat(user, span_warning("[pick.name] conflicts with [Q.name]!"))
+				to_chat(user, span_warning("[pick.name]与[Q.name]冲突！"))
 			return TRUE
 	return FALSE
 
@@ -80,7 +80,7 @@
 		if(length(pick.incompatible_vices) && (vice_type in pick.incompatible_vices))
 			if(show_message && user)
 				var/datum/charflaw/vice = GLOB.charflaw_singletons[vice_type]
-				to_chat(user, span_warning("[vice?.name || "This vice"] conflicts with [pick.name]!"))
+				to_chat(user, span_warning("[vice?.name || "This vice"]与[pick.name]冲突!"))
 			return TRUE
 	return FALSE
 
@@ -104,95 +104,95 @@
 	if(vice_type == /datum/charflaw/badsight)
 		if(/datum/charflaw/noeyer in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Bad Sight vice conflicts with Cyclops (R) vice!"))
+				to_chat(user, span_warning("恶习「视力差」与恶习「独眼（右）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyel in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Bad Sight vice conflicts with Cyclops (L) vice!"))
+				to_chat(user, span_warning("恶习「视力差」与恶习「独眼（左）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyeall in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Bad Sight vice conflicts with Blindness vice!"))
+				to_chat(user, span_warning("恶习「视力差」与恶习「失明」冲突！"))
 			return TRUE
 		if(/datum/charflaw/colorblind in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Bad Sight vice conflicts with Colorblind vice!"))
+				to_chat(user, span_warning("恶习「视力差」与恶习「色盲」冲突！"))
 			return TRUE
 	
 	// Cyclops (R) conflicts with: Bad Sight, Cyclops (L), Blindness, Colorblind
 	if(vice_type == /datum/charflaw/noeyer)
 		if(/datum/charflaw/badsight in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (R) vice conflicts with Bad Sight vice!"))
+				to_chat(user, span_warning("恶习「独眼（右）」与恶习「视力差」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyel in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (R) vice conflicts with Cyclops (L) vice!"))
+				to_chat(user, span_warning("恶习「独眼（右）」与恶习「独眼（左）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyeall in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (R) vice conflicts with Blindness vice!"))
+				to_chat(user, span_warning("恶习「独眼（右）」与恶习「失明」冲突！"))
 			return TRUE
 		if(/datum/charflaw/colorblind in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (R) vice conflicts with Colorblind vice!"))
+				to_chat(user, span_warning("恶习「独眼（右）」与恶习「色盲」冲突！"))
 			return TRUE
 	
 	// Cyclops (L) conflicts with: Bad Sight, Cyclops (R), Blindness, Colorblind
 	if(vice_type == /datum/charflaw/noeyel)
 		if(/datum/charflaw/badsight in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (L) vice conflicts with Bad Sight vice!"))
+				to_chat(user, span_warning("恶习「独眼（左）」与恶习「视力差」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyer in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (L) vice conflicts with Cyclops (R) vice!"))
+				to_chat(user, span_warning("恶习「独眼（左）」与恶习「独眼（右）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyeall in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (L) vice conflicts with Blindness vice!"))
+				to_chat(user, span_warning("恶习「独眼（左）」与恶习「失明」冲突！"))
 			return TRUE
 		if(/datum/charflaw/colorblind in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Cyclops (L) vice conflicts with Colorblind vice!"))
+				to_chat(user, span_warning("恶习「独眼（左）」与恶习「色盲」冲突！"))
 			return TRUE
 	
 	// Blindness conflicts with: Bad Sight, Cyclops (R), Cyclops (L), Colorblind
 	if(vice_type == /datum/charflaw/noeyeall)
 		if(/datum/charflaw/badsight in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Blindness vice conflicts with Bad Sight vice!"))
+				to_chat(user, span_warning("恶习「失明」与恶习「视力差」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyer in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Blindness vice conflicts with Cyclops (R) vice!"))
+				to_chat(user, span_warning("恶习「失明」与恶习「独眼（右）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyel in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Blindness vice conflicts with Cyclops (L) vice!"))
+				to_chat(user, span_warning("恶习「失明」与恶习「独眼（左）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/colorblind in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Blindness vice conflicts with Colorblind vice!"))
+				to_chat(user, span_warning("恶习「失明」与恶习「色盲」冲突！"))
 			return TRUE
 	
 	// Colorblind conflicts with: Bad Sight, Cyclops (R), Cyclops (L), Blindness
 	if(vice_type == /datum/charflaw/colorblind)
 		if(/datum/charflaw/badsight in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Colorblind vice conflicts with Bad Sight vice!"))
+				to_chat(user, span_warning("恶习「色盲」与恶习「视力差」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyer in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Colorblind vice conflicts with Cyclops (R) vice!"))
+				to_chat(user, span_warning("恶习「色盲」与恶习「独眼（右）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyel in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Colorblind vice conflicts with Cyclops (L) vice!"))
+				to_chat(user, span_warning("恶习「色盲」与恶习「独眼（左）」冲突！"))
 			return TRUE
 		if(/datum/charflaw/noeyeall in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Colorblind vice conflicts with Blindness vice!"))
+				to_chat(user, span_warning("恶习「色盲」与恶习「失明」冲突！"))
 			return TRUE
 	
 	// === SLEEP-RELATED CONFLICTS ===
@@ -200,14 +200,14 @@
 	if(vice_type == /datum/charflaw/narcoleptic)
 		if(/datum/charflaw/sleepless in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Narcoleptic vice conflicts with Sleepless vice - you can't have both sleep disorders!"))
+				to_chat(user, span_warning("恶习「嗜睡症」与恶习「失眠症」冲突——你不能同时拥有两种睡眠障碍！"))
 			return TRUE
 	
 	// Insomnia conflicts with: Narcoleptic
 	if(vice_type == /datum/charflaw/sleepless)
 		if(/datum/charflaw/narcoleptic in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Sleepless vice conflicts with Narcoleptic vice - you can't have both sleep disorders!"))
+				to_chat(user, span_warning("恶习「失眠症」与恶习「嗜睡症」冲突——你不能同时拥有两种睡眠障碍！"))
 			return TRUE
 	
 	// === SPEECH-RELATED CONFLICTS ===
@@ -215,14 +215,14 @@
 	if(vice_type == /datum/charflaw/mute)
 		if(/datum/charflaw/unintelligible in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Mute vice conflicts with Unintelligible vice - you can't have both speech impediments!"))
+				to_chat(user, span_warning("恶习「哑巴」与恶习「口齿不清」冲突——你不能同时拥有两种语言障碍！"))
 			return TRUE
 	
 	// Unintelligible conflicts with: Mute
 	if(vice_type == /datum/charflaw/unintelligible)
 		if(/datum/charflaw/mute in selected_vices)
 			if(show_message && user)
-				to_chat(user, span_warning("Unintelligible vice conflicts with Mute vice - you can't have both speech impediments!"))
+				to_chat(user, span_warning("恶习「口齿不清」与恶习「哑巴」冲突——你不能同时拥有两种语言障碍！"))
 			return TRUE
 
 	return FALSE
@@ -623,11 +623,11 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
 /datum/preferences/proc/get_preset_summary(preset_slot)
 	if(preset_slot < 1 || preset_slot > 3)
-		return "Invalid Slot"
+		return "无效槽位"
 	
 	var/list/preset = vars["loadout_preset_[preset_slot]"]
 	if(!preset || !preset.len)
-		return "Empty"
+		return "空"
 	
 	// Build summary string
 	var/summary = ""
@@ -642,7 +642,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	var/virtue_path = string_to_typepath(preset["virtue"])
 	if(ispath(virtue_path, /datum/virtue))
 		var/datum/virtue/v_temp = new virtue_path()
-		if(v_temp.name != "None")
+		if(v_temp.name != "无")
 			summary += " | [v_temp.name]"
 
 	// Quirks
@@ -654,7 +654,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			if(ispath(quirk_path, /datum/quirk))
 				quirk_count++
 	if(quirk_count > 0)
-		summary += " | [quirk_count] quirk[quirk_count > 1 ? "s" : ""]"
+		summary += " | [quirk_count] 个特质"
 
 	// Count vices
 	var/vice_count = 0
@@ -663,7 +663,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		if(ispath(vice_path, /datum/charflaw))
 			vice_count++
 	if(vice_count > 0)
-		summary += " | [vice_count] vice[vice_count > 1 ? "s" : ""]"
+		summary += " | [vice_count] 个恶习"
 	
 	// Count loadout items
 	var/loadout_count = 0
@@ -673,7 +673,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		if(ispath(loadout_path, /datum/loadout_item))
 			loadout_count++
 	if(loadout_count > 0)
-		summary += " | [loadout_count] item[loadout_count > 1 ? "s" : ""]"
+		summary += " | [loadout_count] 件物品"
 	
 	return summary
 
@@ -713,7 +713,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	
 	var/html = {"
 		<!DOCTYPE html>
-		<html lang="en">
+		<html lang="zh-CN">
 		<meta charset='UTF-8'>
 		<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>
 		<style>
@@ -991,23 +991,23 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		</script>
 		<body>
 			<div class="header">
-				<h1>Character Customization</h1>
-				<p>Configure all your character features</p>
+				<h1>角色定制</h1>
+				<p>配置你角色的所有特性</p>
 				<div style="margin-top: 10px;">
-					<a class='btn' href='byond://?src=\ref[src];undo_action=undo' style='font-size: 0.85em;'>⟲ Undo Last Change ([customization_history.len] available)</a>
+					<a class='btn' href='byond://?src=\ref[src];undo_action=undo' style='font-size: 0.85em;'>⟲ 撤销上次更改（可用次数：[customization_history.len]）</a>
 				</div>
 			</div>
 			
 			<div class="tabs">
-				<a class="tab active" onclick="showTab('traits')">Traits & Virtues</a>
-				<a class="tab" onclick="showTab('loadout')">Loadout Items</a>
-				<a class="tab" onclick="showTab('languages')">Languages</a>
+				<a class="tab active" onclick="showTab('traits')">特性与美德</a>
+				<a class="tab" onclick="showTab('loadout')">装备物品</a>
+				<a class="tab" onclick="showTab('languages')">语言</a>
 			</div>
 			
 			<div id="traits" class="tab-content active">
 			
 		<div class="statpack-section">
-			<h2>Statpack Selection</h2>
+			<h2>属性包选择</h2>
 			<div class="statpack-current">"}
 	
 	// Build statpack name with stats inline
@@ -1019,20 +1019,20 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			html += "<div class='statpack-name'>[statpack.name]</div>"
 		html += {"<div class="statpack-desc">[statpack.desc]</div>"}
 	else
-		html += "<div class='statpack-name'>None Selected</div>"
+		html += "<div class='statpack-name'>未选择</div>"
 	
 	html += {"		</div>
 			<div class="actions">
-				<a class='btn btn-select' href='byond://?src=\ref[src];statpack_action=change'>Change Statpack</a>
+				<a class='btn btn-select' href='byond://?src=\ref[src];statpack_action=change'>更换属性包</a>
 		</div>
 	</div>
 		<div class="statpack-section">
-			<h2>Virtue Selection</h2>
+			<h2>美德选择</h2>
 			<div class="statpack-current">"}
 	
-	var/virtue_name = virtue ? virtue.name : "None"
+	var/virtue_name = virtue ? virtue.name : "无"
 	var/virtue_desc = virtue ? virtue.desc : ""
-	html += "<div class=\"statpack-name\">Primary Virtue: [virtue_name]</div>"
+	html += "<div class=\"statpack-name\">主要美德：[virtue_name]</div>"
 	html += "<div class=\"statpack-desc\">[virtue_desc]</div>"
 	
 	if(virtue && virtue.custom_text)
@@ -1040,39 +1040,38 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
 	// Display traits granted
 	if(virtue && LAZYLEN(virtue.added_traits))
-		html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Traits granted:</strong><br>"
+		html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>获得特性：</strong><br>"
 		for(var/trait in virtue.added_traits)
 			html += "• [trait]<br>"
 		html += "</div>"
 
 	// Display skills granted
 	if(virtue && LAZYLEN(virtue.added_skills))
-		html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Skills granted:</strong><br>"
+		html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>获得技能：</strong><br>"
 		for(var/skill in virtue.added_skills)
 			if(!islist(skill))
 				var/datum/skill/S = skill
 				var/skill_name = initial(S.name)
-				html += "• [skill_name]: +[virtue.added_skills[skill]]<br>"
+				html += "• [skill_name]：+[virtue.added_skills[skill]]<br>"
 			else
 				var/list/skill_block = skill
 				var/datum/skill/S = skill_block[1]
 				var/skill_name = initial(S.name)
-				html += "• [skill_name]: +[skill_block[2]] (max [skill_block[3]])<br>"
+				html += "• [skill_name]：+[skill_block[2]]（最高 [skill_block[3]]）<br>"
 		html += "</div>"
 
 	// Display stashed items
 	if(virtue && LAZYLEN(virtue.added_stashed_items))
-		html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Stashed items:</strong><br>"
+		html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>存放物品：</strong><br>"
 		for(var/item_name in virtue.added_stashed_items)
 			html += "• [item_name]<br>"
 		html += "</div>"
 
 	html += "</div>"
-
-	if(statpack && statpack.name == "Virtuous" && virtuetwo)
+	if(statpack && statpack.name == "德能" && virtuetwo) //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 		html += {"
 		<div class=\"statpack-current\" style='margin-top: 10px;'>
-			<div class=\"statpack-name\">Second Virtue: [virtuetwo.name]</div>
+			<div class=\"statpack-name\">第二美德：[virtuetwo.name]</div>
 			<div class=\"statpack-desc\">[virtuetwo.desc]</div>
 		</div>"}
 		
@@ -1081,50 +1080,50 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		
 		// Display traits granted for second virtue
 		if(LAZYLEN(virtuetwo.added_traits))
-			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Traits granted:</strong><br>"
+			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>获得特性：</strong><br>"
 			for(var/trait in virtuetwo.added_traits)
 				html += "• [trait]<br>"
 			html += "</div>"
 		
 		// Display skills granted for second virtue
 		if(LAZYLEN(virtuetwo.added_skills))
-			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Skills granted:</strong><br>"
+			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>获得技能：</strong><br>"
 			for(var/skill in virtuetwo.added_skills)
 				if(!islist(skill))
 					var/datum/skill/S = skill
 					var/skill_name = initial(S.name)
-					html += "• [skill_name]: +[virtuetwo.added_skills[skill]]<br>"
+					html += "• [skill_name]：+[virtuetwo.added_skills[skill]]<br>"
 				else
 					var/list/skill_block = skill
 					var/datum/skill/S = skill_block[1]
 					var/skill_name = initial(S.name)
-					html += "• [skill_name]: +[skill_block[2]] (max [skill_block[3]])<br>"
+					html += "• [skill_name]：+[skill_block[2]]（最高 [skill_block[3]]）<br>"
 			html += "</div>"
 		
 		// Display stashed items for second virtue
 		if(LAZYLEN(virtuetwo.added_stashed_items))
-			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Stashed items:</strong><br>"
+			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>存放物品：</strong><br>"
 			for(var/item_name in virtuetwo.added_stashed_items)
 				html += "• [item_name]<br>"
 			html += "</div>"
 	
 	html += {"
 			<div class="actions">
-				<a class='btn btn-select' href='byond://?src=\ref[src];virtue_action=change_primary'>Change Primary Virtue</a>"}
+				<a class='btn btn-select' href='byond://?src=\ref[src];virtue_action=change_primary'>更换主要美德</a>"}
 
 	if(!istype(virtue, /datum/virtue/none))
-		html += "<a class='btn btn-clear' href='byond://?src=\ref[src];virtue_action=clear_primary'>Clear Primary Virtue</a>"
+		html += "<a class='btn btn-clear' href='byond://?src=\ref[src];virtue_action=clear_primary'>清除主要美德</a>"
 
-	if(statpack.name == "Virtuous")
-		html += "<a class='btn btn-select' href='byond://?src=\ref[src];virtue_action=change_secondary'>Change Second Virtue</a>"
+	if(statpack.name == "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
+		html += "<a class='btn btn-select' href='byond://?src=\ref[src];virtue_action=change_secondary'>更换第二美德</a>"
 		if(!istype(virtuetwo, /datum/virtue/none))
-			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];virtue_action=clear_secondary'>Clear Second Virtue</a>"
+			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];virtue_action=clear_secondary'>清除第二美德</a>"
 
 	html += {"
 			</div>
 		</div>
 		<div class="statpack-section">
-			<h2>Quirk Selection</h2>
+			<h2>特质选择</h2>
 	"}
 
 	var/quirk_points_earned = get_quirk_points_earned()
@@ -1134,15 +1133,15 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
 	html += {"
 			<div style='font-size: 0.85em; margin-bottom: 8px;'>
-				<span style='color: [quirk_points_remaining < 0 ? "#f44336" : "#4CAF50"];'>Points Available: [quirk_points_remaining][triumph_collateral ? " ([triumph_collateral] TRIUMPHS)" : ""]</span> |
-				<span style='color: [theme["text"]];'>Spent: [quirk_points_spent]</span> |
-				<span>Earned from vices: [quirk_points_earned]</span>
+				<span style='color: [quirk_points_remaining < 0 ? "#f44336" : "#4CAF50"];'>可用点数: [quirk_points_remaining][triumph_collateral ? " ([triumph_collateral] 胜利点)" : ""]</span> |
+				<span style='color: [theme["text"]];'>已花费: [quirk_points_spent]</span> |
+				<span>由恶习获得: [quirk_points_earned]</span>
 			</div>
-			<div style='color: [theme["label"]]; font-size: 0.8em; margin-bottom: 8px;'>Quirk points (Q-Points) are granted by taking vices and can be spent on quirks.<br>Anything points can't afford will be purchased with TRIUMPH at 2 TRI per 1 point.<br>Leftover quirk points will be converted 1-to-1 into TRIUMPH at the end of a round so long as you survived.</div>
+			<div style='color: [theme["label"]]; font-size: 0.8em; margin-bottom: 8px;'>特质点（Q-Points）通过选取恶习获得，可用于购买特质。<br>点数不足以支付的部分，将以胜利点补足，每 1 点需 2 胜利点。<br>只要你在本回合存活下来，剩余的特质点将在回合结束时按 1:1 转换为胜利点。</div>
 	"}
 
 	if(!length(quirks))
-		html += "<div class='statpack-current'><div class='empty-slot'>No quirks selected.</div></div>"
+		html += "<div class='statpack-current'><div class='empty-slot'>未选择任何特质。</div></div>"
 
 	for(var/i = 1 to length(quirks))
 		var/datum/quirk/current_quirk = quirks[i]
@@ -1162,13 +1161,13 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			html += "<div class='quirk-warning' style='margin-top: 4px;'>" + current_quirk.warning_text + "</div>"
 
 		if(LAZYLEN(current_quirk.added_traits))
-			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Traits granted:</strong><br>"
+			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>授予特性：</strong><br>"
 			for(var/trait in current_quirk.added_traits)
 				html += "• [trait]<br>"
 			html += "</div>"
 
 		if(LAZYLEN(current_quirk.added_skills))
-			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Skills granted:</strong><br>"
+			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>授予技能：</strong><br>"
 			for(var/skill in current_quirk.added_skills)
 				if(!islist(skill))
 					var/datum/skill/S = skill
@@ -1182,26 +1181,26 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			html += "</div>"
 
 		if(LAZYLEN(current_quirk.added_stashed_items))
-			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>Stashed items:</strong><br>"
+			html += "<div class='statpack-stats' style='margin-top: 8px;'><strong>藏匿物资：</strong><br>"
 			for(var/item_name in current_quirk.added_stashed_items)
 				html += "• [item_name]<br>"
 			html += "</div>"
 
 		html += "<div class='actions'>"
 		if(istype(current_quirk, /datum/quirk/redolent))
-			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];redolent_action=configure'>Configure Scent</a>"
-		html += "<a class='btn btn-clear' href='byond://?src=\ref[src];quirk_action=remove;index=[i]'>Remove</a>"
+			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];redolent_action=configure'>配置体味</a>"
+		html += "<a class='btn btn-clear' href='byond://?src=\ref[src];quirk_action=remove;index=[i]'>移除</a>"
 		html += "</div>"
 		html += "</div>"
 
 	html += {"
 			<div class="actions">
-				<a class='btn btn-select' href='byond://?src=\ref[src];quirk_action=add'>Add a Quirk</a>
+				<a class='btn btn-select' href='byond://?src=\ref[src];quirk_action=add'>添加特质</a>
 			</div>
 		</div>
 		
-		<h2 style='color: [theme["text"]]; padding: 0 20px; margin: 20px 0 10px 0; border-bottom: 1px solid [theme["border"]]; padding-bottom: 10px;'>Vice Selection</h2>
-		<p style='color: [theme["label"]]; padding: 0 20px; margin: 0 0 15px 0; font-size: 0.9em;'>Select up to 6 vices. Each selected vice grants +1 loadout point <span style='color: #4CAF50;'>(you have [get_total_points()] total)</span>.<br>Your <b>first</b> vice is required but grants no Q-Points.<br>Additional vices after it grant at least one each.</p>			<div class="vices-grid">
+		<h2 style='color: [theme["text"]]; padding: 0 20px; margin: 20px 0 10px 0; border-bottom: 1px solid [theme["border"]]; padding-bottom: 10px;'>恶习选择</h2>
+		<p style='color: [theme["label"]]; padding: 0 20px; margin: 0 0 15px 0; font-size: 0.9em;'>最多选择 6 个恶习。每个选中的恶习提供 +1 配装点<span style='color: #4CAF50;'>(你当前共有[get_total_points()]点)</span>。<br>你的<b>第一个</b>恶习是必需的，但不提供特质点。<br>其后的每个额外恶习至少提供一点特质点。</p>			<div class="vices-grid">
 	"}
 	
 	// Generate 6 vice slots
@@ -1215,12 +1214,12 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
 		html += "<div class='vice-slot'>"
 		html += "<div class='slot-header'>"
-		html += "<span class='slot-number'>Vice Slot [i]</span>"
+		html += "<span class='slot-number'>恶习槽位[i]</span>"
 
 		if(slot_locked)
-			html += "<span class='slot-required'>LOCKED</span>"
+			html += "<span class='slot-required'>锁定</span>"
 		else if(is_first_vice)
-			html += "<span class='slot-required'>REQUIRED (0 Q-Pts)</span>"
+			html += "<span class='slot-required'>必需(0 Q-Pts)</span>"
 		else if(current_vice)
 			var/quirk_points_from_slot = current_vice.point_value
 			html += "<span class='slot-cost'>+[quirk_points_from_slot] Q-Point[quirk_points_from_slot == 1 ? "" : "s"]</span>"
@@ -1228,7 +1227,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		html += "</div>"
 
 		if(slot_locked && !current_vice)
-			html += "<div class='empty-slot'>Select a vice before adding more.</div>"
+			html += "<div class='empty-slot'>添加更多前，请先选择一个恶习。</div>"
 		else if(current_vice)
 			// Vice is selected
 			html += "<div class='vice-display'>"
@@ -1240,18 +1239,18 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
 			html += "<div class='actions'>"
 			if(!slot_locked)
-				html += "<a class='btn btn-select' href='byond://?src=\ref[src];vice_action=change;slot=[i]'>Change Vice</a>"
+				html += "<a class='btn btn-select' href='byond://?src=\ref[src];vice_action=change;slot=[i]'>更换恶习</a>"
 			if(is_first_vice && !no_flaw_active && other_vices_populated)
-				html += "<span class='btn' style='opacity: 0.5; cursor: default;'>Clear other vices first</span>"
+				html += "<span class='btn' style='opacity: 0.5; cursor: default;'>请先清除其他恶习</span>"
 			else
 				// If you somehow have a vice in a locked slot, we show the clear button anyways
-				html += "<a class='btn btn-clear' href='byond://?src=\ref[src];vice_action=clear;slot=[i]'>Clear</a>"
+				html += "<a class='btn btn-clear' href='byond://?src=\ref[src];vice_action=clear;slot=[i]'>清除</a>"
 			html += "</div>"
 		else
 			// Empty slot
 			html += "<div class='empty-slot'>"
-			html += "Empty Slot<br><br>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];vice_action=select;slot=[i]'>Select Vice</a>"
+			html += "空位<br><br>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];vice_action=select;slot=[i]'>选择恶习</a>"
 			html += "</div>"
 
 		html += "</div>"
@@ -1261,7 +1260,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			</div>
 			
 		<div id="loadout" class="tab-content">
-			<h2 style='color: [theme["text"]]; margin: 0 0 10px 0; font-size: 1.1em;'>Loadout Selection</h2>
+			<h2 style='color: [theme["text"]]; margin: 0 0 10px 0; font-size: 1.1em;'>装备物品选择</h2>
 	"}
 	
 	// Calculate point costs for loadout
@@ -1278,16 +1277,16 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	html += {"
 			<div class='statpack-section'>
 				<div style='font-size: 0.85em; margin-bottom: 5px;'>
-					<span style='color: #4CAF50;'>Available Points: [loadout_remaining]</span> | 
-					<span style='color: [theme["text"]];'>Spent (Loadout): [loadout_spent]</span> / 
-					<span>Total Points: [total_points]</span>
+					<span style='color: #4CAF50;'>可用点数：[loadout_remaining]</span> | 
+					<span style='color: [theme["text"]];'>已花费（装备）：[loadout_spent]</span> / 
+					<span>总点数：[total_points]</span>
 				</div>
 				<div style='background: rgba(123, 83, 83, 0.2); border: 1px solid [theme["border"]]; padding: 8px; margin-top: 8px; font-size: 0.7em;'>
-					<div style='font-weight: bold; color: [theme["text"]]; margin-bottom: 4px;'>⚠ Loadout Item Modifications:</div>
+					<div style='font-weight: bold; color: [theme["text"]]; margin-bottom: 4px;'>⚠ 装备物品修改：</div>
 					<div style='color: [theme["label"]]; line-height: 1.4;'>
-						<b>ARMOR:</b> Set to armour minor protection (15 armor to all damage types) • Crit prevention removed • Armor class set to Light<br>
-						<b>WEAPONS:</b> Damage reduced by 30% • Weapon defense reduced by 50%<br>
-						<b>ALL ITEMS:</b> Sell price set to 0
+						<b>护甲：</b> 设置为轻甲（所有伤害类型15点护甲）• 移除暴击防御 • 护甲等级设为轻甲<br>
+						<b>武器：</b> 伤害降低30% • 武器防御降低50%<br>
+						<b>所有物品：</b> 售价设为0
 					</div>
 				</div>
 			</div>
@@ -1304,10 +1303,10 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		
 		html += "<div class='vice-slot'>"
 		html += "<div class='slot-header'>"
-		html += "<span class='slot-number'>Slot [i]</span>"
+		html += "<span class='slot-number'>槽位 [i]</span>"
 		
 		if(current_item && current_item.triumph_cost)
-			html += "<span class='slot-cost'>[current_item.triumph_cost] Points</span>"
+			html += "<span class='slot-cost'>[current_item.triumph_cost] 点</span>"
 		
 		html += "</div>"
 		
@@ -1338,26 +1337,26 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			html += "<div class='vice-desc'>[custom_desc ? custom_desc : (item_desc ? item_desc : current_item.desc)]</div>"
 			
 			if(custom_name || custom_desc)
-				html += "<div style='margin-top: 3px; font-size: 0.7em; color: [theme["label"]];'>✎ Customized</div>"
+				html += "<div style='margin-top: 3px; font-size: 0.7em; color: [theme["label"]];'>✎ 已自定义</div>"
 			
 			if(item_color)
 				var/color_hex = clothing_color2hex(item_color)
-				html += "<div style='margin-top: 3px; font-size: 0.7em; display: flex; align-items: center;'><span style='color: [color_hex];'>●</span> <span style='color: [theme["label"]]; margin-left: 3px;'>Color: [item_color]</span></div>"
+				html += "<div style='margin-top: 3px; font-size: 0.7em; display: flex; align-items: center;'><span style='color: [color_hex];'>●</span> <span style='color: [theme["label"]]; margin-left: 3px;'>颜色：[item_color]</span></div>"
 			
 			html += "</div>"
 			html += "</div>"
 			
 			html += "<div class='actions'>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=item;slot=[i]'>Change Item</a>"
-			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=rename;slot=[i]'>Rename</a>"
-			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=describe;slot=[i]'>Description</a>"
-			html += "<a class='btn btn-color' href='byond://?src=\ref[src];loadout_action=color;slot=[i]'>Color</a>"
-			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];loadout_action=clear;slot=[i]'>Clear</a>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=item;slot=[i]'>更换物品</a>"
+			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=rename;slot=[i]'>重命名</a>"
+			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=describe;slot=[i]'>描述</a>"
+			html += "<a class='btn btn-color' href='byond://?src=\ref[src];loadout_action=color;slot=[i]'>颜色</a>"
+			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];loadout_action=clear;slot=[i]'>清除</a>"
 			html += "</div>"
 		else
 			html += "<div class='empty-slot'>"
-			html += "Empty Slot<br><br>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=item;slot=[i]'>Select Item</a>"
+			html += "空槽位<br><br>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=item;slot=[i]'>选择物品</a>"
 			html += "</div>"
 		
 		html += "</div>"
@@ -1367,7 +1366,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		</div>
 		
 		<div id="languages" class="tab-content">
-			<h2 style='color: [theme["text"]]; margin: 0 0 20px 0;'>📜 Additional Language Selection 📜</h2>
+			<h2 style='color: [theme["text"]]; margin: 0 0 20px 0;'>📜 额外语言选择 📜</h2>
 	"}
 	
 	// Calculate language costs using actual player TRIUMPHS (slot 1 = 2 triumphs, slot 2 = 4 triumphs)
@@ -1383,11 +1382,11 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	
 	html += {"
 			<div class='statpack-section' style='background: rgba(76, 175, 80, 0.1); border: 1px solid #4CAF50; padding: 15px; margin-bottom: 20px;'>
-				<p style='margin: 0 0 10px 0;'>ℹ You get <b>one free language</b> from background, plus up to 2 additional languages. Slot 1 costs 2 Triumphs, Slot 2 costs 4 Triumphs. Your race may grant languages by default.</p>
+				<p style='margin: 0 0 10px 0;'>ℹ 你从背景获得<b>一门免费语言</b>，并可额外选择最多2门语言。槽位1花费2点英灵点，槽位2花费4点英灵点。你的种族可能默认提供一些语言。</p>
 				<div style='font-size: 1em;'>
-					<span style='color: #4CAF50;'>Available Triumphs: [lang_remaining]</span> | 
-					<span style='color: [theme["text"]];'>Spent (Languages): [lang_spent]</span> / 
-					<span>Total Triumphs: [total_triumphs]</span>
+					<span style='color: #4CAF50;'>可用英灵点：[lang_remaining]</span> | 
+					<span style='color: [theme["text"]];'>已花费（语言）：[lang_spent]</span> / 
+					<span>总英灵点：[total_triumphs]</span>
 				</div>
 			</div>
 			<div style='display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;'>
@@ -1403,19 +1402,19 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	if(origin_lang)
 		html += "<div class='vice-slot' style='border-color: #7b5353;'>"
 		html += "<div class='slot-header'>"
-		html += "<span class='slot-number'>Free Language</span>"
-		html += "<span class='slot-cost' style='background: #7b5353; color: #ffcccc;'>LOCKED BY ORIGIN</span>"
+		html += "<span class='slot-number'>免费语言</span>"
+		html += "<span class='slot-cost' style='background: #7b5353; color: #ffcccc;'>出身锁定</span>"
 		html += "</div>"
 		html += "<div class='vice-display'>"
 		html += "<div class='vice-info'>"
-		html += "<div class='vice-name'>LOCKED</div>"
-		html += "<div class='vice-desc'>Granted by your origin ([origin.name]). Cannot be changed.</div>"
+		html += "<div class='vice-name'>已锁定</div>"
+		html += "<div class='vice-desc'>由你的出身（[origin.name]）提供。无法更改。</div>"
 		html += "</div></div></div>"
 	else
 		html += "<div class='vice-slot' style='border-color: #4CAF50;'>"
 		html += "<div class='slot-header'>"
-		html += "<span class='slot-number'>Free Language</span>"
-		html += "<span class='slot-cost' style='background: #4CAF50; color: [theme["bg"]];'>FREE</span>"
+		html += "<span class='slot-number'>免费语言</span>"
+		html += "<span class='slot-cost' style='background: #4CAF50; color: [theme["bg"]];'>免费</span>"
 		html += "</div>"
 		if(free_lang)
 			html += "<div class='vice-display'>"
@@ -1424,13 +1423,13 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			html += "<div class='vice-desc'>[free_lang.desc]</div>"
 			html += "</div></div>"
 			html += "<div class='actions'>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_change'>Change Language</a>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_change'>更改语言</a>"
 			html += "</div>"
 			qdel(free_lang)
 		else
 			html += "<div class='empty-slot'>"
-			html += "No Language Selected<br><br>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_select'>Select Language</a>"
+			html += "未选择语言<br><br>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_select'>选择语言</a>"
 			html += "</div>"
 		html += "</div>"
 
@@ -1442,9 +1441,9 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		
 		html += "<div class='vice-slot'>"
 		html += "<div class='slot-header'>"
-		html += "<span class='slot-number'>Language Slot [i]</span>"
+		html += "<span class='slot-number'>语言槽位 [i]</span>"
 		if(current_lang_path && current_lang_path != "None")
-			html += "<span class='slot-cost'>[slot_cost] Triumphs</span>"
+			html += "<span class='slot-cost'>[slot_cost] 英灵点</span>"
 		html += "</div>"
 		
 		if(current_lang_path && current_lang_path != "None")
@@ -1459,15 +1458,15 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			html += "</div>"
 			
 			html += "<div class='actions'>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=change;slot=[i]'>Change Language</a>"
-			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];language_action=clear;slot=[i]'>Clear</a>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=change;slot=[i]'>更改语言</a>"
+			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];language_action=clear;slot=[i]'>清除</a>"
 			html += "</div>"
 			
 			qdel(lang)
 		else
 			html += "<div class='empty-slot'>"
-			html += "No Language Selected<br><br>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=select;slot=[i]'>Select Language</a>"
+			html += "未选择语言<br><br>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=select;slot=[i]'>选择语言</a>"
 			html += "</div>"
 		html += "</div>"
 	
@@ -1477,28 +1476,28 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		</div>
 		
 		<div style='margin-top: 20px; padding: 10px; background: [theme["panel"]]; border: 1px solid [theme["border"]];'>
-			<div style='font-weight: bold; margin-bottom: 8px; color: [theme["text"]];'>📋 LOADOUT PRESETS</div>
+			<div style='font-weight: bold; margin-bottom: 8px; color: [theme["text"]];'>📋 装备预设</div>
 			<div style='display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;'>
 				<div style='padding: 8px; background: [theme["panel_dark"]]; border: 1px solid [theme["border"]];'>
-					<div style='font-weight: bold; margin-bottom: 3px;'>Preset 1</div>
+					<div style='font-weight: bold; margin-bottom: 3px;'>预设1</div>
 					<div style='font-size: 0.75em; color: [theme["label"]]; margin-bottom: 5px; min-height: 30px;'>[get_preset_summary(1)]</div>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=save;slot=1' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>💾 Save</a>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=load;slot=1' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>📂 Load</a>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=clear;slot=1' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>🗑️ Clear</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=save;slot=1' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>💾 保存</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=load;slot=1' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>📂 加载</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=clear;slot=1' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>🗑️ 清除</a>
 				</div>
 				<div style='padding: 8px; background: [theme["panel_dark"]]; border: 1px solid [theme["border"]];'>
-					<div style='font-weight: bold; margin-bottom: 3px;'>Preset 2</div>
+					<div style='font-weight: bold; margin-bottom: 3px;'>预设2</div>
 					<div style='font-size: 0.75em; color: [theme["label"]]; margin-bottom: 5px; min-height: 30px;'>[get_preset_summary(2)]</div>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=save;slot=2' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>💾 Save</a>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=load;slot=2' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>📂 Load</a>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=clear;slot=2' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>🗑️ Clear</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=save;slot=2' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>💾 保存</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=load;slot=2' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>📂 加载</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=clear;slot=2' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>🗑️ 清除</a>
 				</div>
 				<div style='padding: 8px; background: [theme["panel_dark"]]; border: 1px solid [theme["border"]];'>
-					<div style='font-weight: bold; margin-bottom: 3px;'>Preset 3</div>
+					<div style='font-weight: bold; margin-bottom: 3px;'>预设3</div>
 					<div style='font-size: 0.75em; color: [theme["label"]]; margin-bottom: 5px; min-height: 30px;'>[get_preset_summary(3)]</div>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=save;slot=3' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>💾 Save</a>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=load;slot=3' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>📂 Load</a>
-					<a class='btn' href='byond://?src=\ref[src];preset_action=clear;slot=3' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>🗑️ Clear</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=save;slot=3' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>💾 保存</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=load;slot=3' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>📂 加载</a>
+					<a class='btn' href='byond://?src=\ref[src];preset_action=clear;slot=3' style='font-size: 0.7em; padding: 3px 6px; margin: 2px;'>🗑️ 清除</a>
 				</div>
 			</div>
 		</div>
@@ -1537,7 +1536,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				continue
 			var/datum/loadout_item/other_item = vars[i == 1 ? "loadout" : "loadout[i]"]
 			if(other_item && other_item.type == selected.type)
-				to_chat(usr, span_warning("This item is already selected in slot [i]! Each item can only be selected once."))
+				to_chat(usr, span_warning("该物品已在槽位 [i] 中选择！每个物品只能选择一次。"))
 				temp_loadout_selection = null
 				usr << browse(null, "window=loadout_select")
 				return
@@ -1556,13 +1555,13 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					spent_points += other_slot.triumph_cost
 			
 			if(spent_points + selected.triumph_cost > total_points)
-				to_chat(usr, span_warning("Not enough points! Need [selected.triumph_cost], but only have [total_points - spent_points] remaining."))
+				to_chat(usr, span_warning("点数不足！需要 [selected.triumph_cost] 点，但仅剩 [total_points - spent_points] 点。"))
 				temp_loadout_selection = null
 				usr << browse(null, "window=loadout_select")
 				return
 		
 		vars[slot_var] = selected
-		to_chat(usr, span_notice("Selected [selected.name] for slot [slot]."))
+		to_chat(usr, span_notice("已为槽位 [slot] 选择 [selected.name]。"))
 		
 		temp_loadout_selection = null
 		usr << browse(null, "window=loadout_select")
@@ -1581,34 +1580,34 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			if("save")
 				if(save_preset(slot))
 					save_character() // Persist preset to disk
-					to_chat(usr, span_notice("Saved current setup to Preset [slot]!"))
+					to_chat(usr, span_notice("已将当前配置保存到预设 [slot]！"))
 					open_vices_menu(usr)
 				else
-					to_chat(usr, span_warning("Failed to save preset."))
+					to_chat(usr, span_warning("保存预设失败。"))
 			if("load")
 				if(load_preset(slot))
 					save_character() // Persist loaded state to disk
-					to_chat(usr, span_notice("Loaded Preset [slot]!"))
+					to_chat(usr, span_notice("已加载预设 [slot]！"))
 					open_vices_menu(usr)
 				else
-					to_chat(usr, span_warning("Preset [slot] is empty or invalid."))
+					to_chat(usr, span_warning("预设 [slot] 为空或无效。"))
 			if("clear")
 				if(clear_preset(slot))
 					save_character() // Persist cleared preset to disk
-					to_chat(usr, span_notice("Cleared Preset [slot]."))
+					to_chat(usr, span_notice("已清除预设 [slot]。"))
 					open_vices_menu(usr)
 				else
-					to_chat(usr, span_warning("Failed to clear preset."))
+					to_chat(usr, span_warning("清除预设失败。"))
 		return
 	
 	// Handle undo action
 	if(href_list["undo_action"])
 		if(href_list["undo_action"] == "undo")
 			if(undo_last_change())
-				to_chat(usr, span_notice("Undid last change."))
+				to_chat(usr, span_notice("已撤销上次更改。"))
 				open_vices_menu(usr)
 			else
-				to_chat(usr, span_warning("No more changes to undo!"))
+				to_chat(usr, span_warning("没有更多可撤销的更改！"))
 		return
 	
 	if(href_list["virtue_action"])
@@ -1633,19 +1632,19 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				virtues_available[V.name] = V
 			
 			virtues_available = sort_list(virtues_available)
-			var/choice = tgui_input_list(usr, "Choose your primary virtue:", "Virtue Selection", virtues_available)
+			var/choice = tgui_input_list(usr, "选择你的主要美德：", "美德选择", virtues_available)
 			
 			if(choice)
 				var/datum/virtue/selected = virtues_available[choice]
 				virtue = selected
-				to_chat(usr, span_notice("Selected [choice] as primary virtue."))
+				to_chat(usr, span_notice("已选择 [choice] 作为主要美德。"))
 				to_chat(usr, "<span class='info'>[selected.desc]</span>")
 				open_vices_menu(usr)
 			return
 		
 		if(action == "change_secondary")
-			if(statpack.name != "Virtuous")
-				to_chat(usr, span_warning("Second virtue is only available with the Virtuous statpack!"))
+			if(statpack.name != "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
+				to_chat(usr, span_warning("第二美德仅在使用「德能」属性包时可用！"))
 				return
 			
 			// Save state before change
@@ -1676,12 +1675,12 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				virtues_available[V.name] = V
 			
 			virtues_available = sort_list(virtues_available)
-			var/choice = tgui_input_list(usr, "Choose your second virtue:", "Second Virtue Selection", virtues_available)
+			var/choice = tgui_input_list(usr, "选择你的第二美德：", "第二美德选择", virtues_available)
 			
 			if(choice)
 				var/datum/virtue/selected = virtues_available[choice]
 				virtuetwo = selected
-				to_chat(usr, span_notice("Selected [choice] as second virtue."))
+				to_chat(usr, span_notice("已选择 [choice] 作为第二美德。"))
 				to_chat(usr, "<span class='info'>[selected.desc]</span>")
 				open_vices_menu(usr)
 			return
@@ -1689,14 +1688,14 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		if(action == "clear_primary")
 			save_to_history()
 			virtue = GLOB.virtues[/datum/virtue/none]
-			to_chat(usr, span_notice("Cleared your primary virtue."))
+			to_chat(usr, span_notice("主要美德已清除"))
 			open_vices_menu(usr)
 			return
 
 		if(action == "clear_secondary")
 			save_to_history()
 			virtuetwo = GLOB.virtues[/datum/virtue/none]
-			to_chat(usr, span_notice("Cleared your second virtue."))
+			to_chat(usr, span_notice("第二美德已清除"))
 			open_vices_menu(usr)
 			return
 
@@ -1736,20 +1735,20 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				quirks_available[Q.name] = Q
 
 			if(!length(quirks_available))
-				to_chat(usr, span_warning("No quirks available to add - you already have everything that doesn't conflict with your virtues or vices."))
+				to_chat(usr, span_warning("没有可添加的特质——你已拥有所有与当前美德或恶习不冲突的特质。"))
 				return
 
 			quirks_available = sort_list(quirks_available)
-			var/prompt_text = "Choose a quirk to add ([points_remaining] point[points_remaining == 1 ? "" : "s"] available)"
+			var/prompt_text = "选择一个要添加的特质（可用 [points_remaining] 点）"
 			var/triumph_collateral = get_triumph_collateral()
 			if(triumph_collateral)
-				prompt_text += "\n(Costs [triumph_collateral] TRIUMPHS)"
-			var/choice = tgui_input_list(usr, prompt_text, "Quirk Selection", quirks_available)
+				prompt_text += "\n（将消耗 [triumph_collateral] 胜利点）"
+			var/choice = tgui_input_list(usr, prompt_text, "特质选择", quirks_available)
 
 			if(choice)
 				var/datum/quirk/selected = quirks_available[choice]
 				quirks += new selected.type()
-				to_chat(usr, span_notice("Added [choice] as a quirk."))
+				to_chat(usr, span_notice("已将 [choice] 添加为特质。"))
 				if(selected.desc)
 					to_chat(usr, "<span class='info'>[selected.desc]</span>")
 				open_vices_menu(usr)
@@ -1783,16 +1782,16 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				statpacks_available[display_name] = SP
 			
 			statpacks_available = sort_list(statpacks_available)
-			var/choice = tgui_input_list(usr, "Choose your statpack:", "Statpack Selection", statpacks_available)
+			var/choice = tgui_input_list(usr, "选择你的属性包：", "属性包选择", statpacks_available)
 			
 			if(choice)
 				var/datum/statpack/selected = statpacks_available[choice]
 				statpack = selected
-				to_chat(usr, span_notice("Selected [choice] statpack."))
+				to_chat(usr, span_notice("已选择 [choice] 属性包。"))
 				to_chat(usr, "<span class='info'>[selected.description_string()]</span>")
 				
 				// Handle virtuetwo based on statpack
-				if(statpack.name == "Virtuous")
+				if(statpack.name == "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 					// Keep virtuetwo if we have it
 				else
 					virtuetwo = GLOB.virtues[/datum/virtue/none]
@@ -1850,7 +1849,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		switch(action)
 			if("select", "change")
 				if(slot > 1 && istype(vice1, /datum/charflaw/noflaw))
-					to_chat(usr, span_warning("Clear Vice Slot 1's No Flaw pick before selecting other vices."))
+					to_chat(usr, span_warning("在选择其他恶习前，请先清除恶习槽位 1 的「无缺陷」选择。"))
 					return
 
 				// Save state before change
@@ -1884,7 +1883,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					vices_available[vice_name] = vice_type
 				
 				vices_available = sort_list(vices_available)
-				var/choice = tgui_input_list(usr, "Select a vice for slot [slot]:", "Vice Selection", vices_available)
+				var/choice = tgui_input_list(usr, "为槽位 [slot] 选择一个恶习：", "恶习选择", vices_available)
 			
 				if(choice)
 					var/datum/charflaw/selected = vices_available[choice]
@@ -1900,9 +1899,9 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					if(usr && ishuman(usr))
 						var/mob/living/carbon/human/H = usr
 						if(H.real_name == real_name)
-							to_chat(usr, span_notice("Vice changes saved. They will apply next time you spawn."))
+							to_chat(usr, span_notice("恶习更改已保存。将在你下次出生时生效。"))
 					
-					to_chat(usr, span_notice("Selected [choice] for vice slot [slot]."))
+					to_chat(usr, span_notice("已为恶习槽位 [slot] 选择 [choice]。"))
 					if(new_vice.desc)
 						to_chat(usr, "<span class='info'>[new_vice.desc]</span>")
 					open_vices_menu(usr)
@@ -1911,7 +1910,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				// Clearing slot 1 falls back to No Flaw rather than leaving it empty.
 				// Slots 2-6 must be cleared first, or you'd have No Flaw and other vices at once.
 				if(slot == 1 && (vice2 || vice3 || vice4 || vice5 || vice6))
-					to_chat(usr, span_warning("Clear other vices first."))
+					to_chat(usr, span_warning("请先清除其他恶习。"))
 					return
 				vars[slot_var] = (slot == 1) ? new /datum/charflaw/noflaw() : null
 
@@ -1920,8 +1919,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				if(usr && ishuman(usr))
 					var/mob/living/carbon/human/H = usr
 					if(H.real_name == real_name)
-						to_chat(usr, span_notice("Vice changes saved. They will apply next time you spawn."))
-
+						to_chat(usr, span_notice("恶习更改已保存。将在你下次出生时生效。"))
 				open_vices_menu(usr)
 	
 	if(href_list["loadout_action"])
@@ -1954,7 +1952,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				if(!current)
 					return
 				
-				var/new_name = tgui_input_text(usr, "Enter a custom name for this item (leave blank to use default):", "Rename Item", vars["loadout_[slot]_name"], MAX_NAME_LEN)
+				var/new_name = tgui_input_text(usr, "为此物品输入自定义名称（留空使用默认）：", "重命名物品", vars["loadout_[slot]_name"], MAX_NAME_LEN)
 				
 				if(new_name != null) // Allow empty string to clear
 					vars["loadout_[slot]_name"] = new_name
@@ -1966,7 +1964,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				if(!current)
 					return
 				
-				var/new_desc = tgui_input_text(usr, "Enter a custom description for this item (leave blank to use default):", "Describe Item", vars["loadout_[slot]_desc"], max_length = 500, multiline = TRUE)
+				var/new_desc = tgui_input_text(usr, "为此物品输入自定义描述（留空使用默认）：", "描述物品", vars["loadout_[slot]_desc"], max_length = 500, multiline = TRUE)
 				
 				if(new_desc != null) // Allow empty string to clear
 					vars["loadout_[slot]_desc"] = new_desc
@@ -1979,14 +1977,14 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					return
 				
 				// Use dye bin colors for more variety
-				var/list/color_choices = list("None")
+				var/list/color_choices = list("无")
 				for(var/color_name in GLOB.colorlist)
 					color_choices += color_name
 				
-				var/new_color = tgui_input_list(usr, "Choose a color for this item:", "Item Color", color_choices, vars["loadout_[slot]_hex"])
+				var/new_color = tgui_input_list(usr, "为此物品选择颜色：", "物品颜色", color_choices, vars["loadout_[slot]_hex"])
 				
 				if(new_color)
-					if(new_color == "None")
+					if(new_color == "无")
 						vars["loadout_[slot]_hex"] = null
 					else
 						// Look up the hex value from GLOB.colorlist
@@ -2021,7 +2019,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				/datum/language/thievescant/signlanguage,
 				/datum/language/abyssal,
 			)
-			var/list/choices = list("None")
+			var/list/choices = list("无")
 			for(var/language in selectable_languages)
 				if(language in pref_species.languages)
 					continue
@@ -2029,9 +2027,9 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				choices[a_language.name] = language
 				qdel(a_language)
 			
-			var/chosen_language = input(usr, "Choose your character's extra language:", "EXTRA LANGUAGE") as null|anything in choices
+			var/chosen_language = input(usr, "选择你角色的额外语言：", "额外语言") as null|anything in choices
 			if(chosen_language)
-				if(chosen_language == "None")
+				if(chosen_language == "无")
 					extra_language = "None"
 				else
 					extra_language = choices[chosen_language]
@@ -2049,7 +2047,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		switch(action)
 			if("clear")
 				vars[slot_var] = "None"
-				to_chat(usr, span_notice("Cleared language slot [slot]."))
+				to_chat(usr, span_notice("已清除语言槽位 [slot]。"))
 				open_vices_menu(usr)
 			if("select", "change")
 				// Show language selection menu
@@ -2073,7 +2071,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					/datum/language/abyssal,
 				)
 				
-				var/list/choices = list("None")
+				var/list/choices = list("无")
 				for(var/language in selectable_languages)
 					if(language in pref_species.languages)
 						continue
@@ -2091,10 +2089,10 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					choices[a_language.name] = language
 					qdel(a_language)
 				
-				var/chosen_language = input(usr, "Choose a language (Slot 1: 2 Triumphs, Slot 2: 4 Triumphs):", "Language Selection") as null|anything in choices
+				var/chosen_language = input(usr, "选择一种语言（槽位1：2英灵点，槽位2：4英灵点）：", "语言选择") as null|anything in choices
 				
 				if(chosen_language)
-					if(chosen_language == "None")
+					if(chosen_language == "无")
 						vars[slot_var] = "None"
 					else
 						var/language_path = choices[chosen_language]
@@ -2109,8 +2107,8 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 						if(vars[other_slot_var] && vars[other_slot_var] != "None")
 							spent_points += (other_slot == 1 ? 2 : 4)
 						if(spent_points + slot_cost > total_triumphs)
-							to_chat(usr, span_warning("Not enough triumphs! Need [slot_cost], but only have [total_triumphs - spent_points] remaining."))
+							to_chat(usr, span_warning("英灵点不足！需要 [slot_cost] 点，但仅剩 [total_triumphs - spent_points] 点。"))
 							return
 						vars[slot_var] = language_path
-						to_chat(usr, span_notice("Selected [chosen_language] for language slot [slot] ([slot_cost] Triumphs)."))
+						to_chat(usr, span_notice("已为语言槽位 [slot] 选择 [chosen_language]（花费 [slot_cost] 英灵点）。"))
 				open_vices_menu(usr)

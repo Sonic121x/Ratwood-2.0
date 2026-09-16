@@ -381,17 +381,17 @@
  * COMSIG_ATOM_GET_EXAMINE_NAME signal
  */
 /atom/proc/get_examine_name(mob/user)
-	. = "\a [src]"
-	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
+	. = "[src]"
+	var/list/override = list(gender == PLURAL ? "一些" : "", "", "[name]")
 	if(article)
-		. = "[article] [src]"
+		. = "[article][src]"
 		override[EXAMINE_POSITION_ARTICLE] = article
 	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
 		. = override.Join("")
 
 ///Generate the full examine string of this atom (including icon for goonchat)
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
-	return "[thats? "That's ":""][get_examine_name(user)]"
+	return "[thats? "那是":""][get_examine_name(user)]"
 
 /atom/proc/get_inspect_button()
 	return ""
@@ -414,9 +414,9 @@
 		if(reagents.flags & TRANSPARENT)
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents() || (user.Adjacent(src) && (user.get_skill_level(/datum/skill/craft/alchemy) >= 2 || HAS_TRAIT(user, TRAIT_CICERONE)))) //Show each individual reagent
-					. += "It contains:"
+					. += "它包含："
 					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[round(R.volume, 0.1)] [UNIT_FORM_STRING(round(R.volume, 0.1))] of <font color=[R.color]>[R.name]</font>"
+						. += "[round(R.volume, 0.1)] [UNIT_FORM_STRING(round(R.volume, 0.1))]的<font color=[R.color]>[R.name]</font>"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					var/reagent_color
@@ -424,16 +424,16 @@
 						total_volume += R.volume
 					reagent_color = mix_color_from_reagents(reagents.reagent_list)
 					if(total_volume < 1)
-						. += "It contains less than 1 [UNIT_FORM_STRING(1)] of <font color=[reagent_color]>something.</font>"
+						. += "它包含少于 1 [UNIT_FORM_STRING(1)]的<font color=[reagent_color]>某种物质。</font>"
 					else
-						. += "It contains [round(total_volume)] [UNIT_FORM_STRING(round(total_volume))] of <font color=[reagent_color]>something.</font>"
+						. += "它包含 [round(total_volume)] [UNIT_FORM_STRING(round(total_volume))]的<font color=[reagent_color]>某种物质。</font>"
 			else
-				. += "Nothing."
+				. += "里面什么也没有。"
 		else if(reagents.flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += span_notice("It has [round(reagents.total_volume)] [UNIT_FORM_STRING(round(reagents.total_volume))] left.")
+				. += span_notice("它还剩下 [round(reagents.total_volume)] [UNIT_FORM_STRING(round(reagents.total_volume))]。")
 			else
-				. += span_danger("It's empty.")
+				. += span_danger("它是空的。")
 
 		//SNIFFING
 		if (user.zone_selected == BODY_ZONE_PRECISE_NOSE && get_dist(src, user) <= 1)
@@ -517,7 +517,7 @@
 		return
 	if(buckle_message_cooldown <= world.time)
 		buckle_message_cooldown = world.time + 25
-		to_chat(user, "<span class='warning'>I should try resisting.</span>")
+		to_chat(user, "<span class='warning'>我应该试着挣脱。</span>")
 	return
 
 /// Handle what happens when your contents are exploded by a bomb
@@ -662,7 +662,7 @@
 	while (do_after(user, 10, TRUE, src, FALSE, CALLBACK(STR, TYPE_PROC_REF(/datum/component/storage, handle_mass_item_insertion), things, src_object, user, progress)))
 		stoplag(1)
 	qdel(progress)
-	to_chat(user, "<span class='notice'>I dump as much of [src_object.parent]'s contents [STR.insert_preposition]to [src] as I can.</span>")
+	to_chat(user, "<span class='notice'>我尽可能把[src_object.parent]里的东西全都倒[STR.insert_preposition]到[src]里。</span>")
 	STR.orient2hud(user)
 	STR.update_icon()
 	src_object.update_icon()

@@ -1,8 +1,8 @@
 /datum/roguestock/stockpile/apple
 	passive_generation = 2 // Ratwood passive import
 	generation_price = 2 // Ratwood passive import
-	name = "Apple"
-	desc = "Harvested produce."
+	name = "苹果"
+	desc = "收获而来的农产品。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/apple
 	trade_good_id = TRADE_GOOD_APPLE
 	importexport_amt = 10
@@ -12,8 +12,8 @@
 
 /datum/roguestock/stockpile/pear
 	generation_price = 2 // Ratwood passive import
-	name = "Pear"
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	name = "梨"
+	desc = "对许多人来说太甜了，却是小家伙们钟爱的点心。矮人可是很爱它们的。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/pear
 	trade_good_id = TRADE_GOOD_PEAR
 	importexport_amt = 5
@@ -24,8 +24,8 @@
 /datum/roguestock/stockpile/jacksberry
 	passive_generation = 2 // Ratwood passive import
 	generation_price = 2 // Ratwood passive import
-	name = "Jacksberries"
-	desc = "Sweet berries, prime for winemaking."
+	name = "杰克莓"
+	desc = "甜美的浆果，非常适合酿酒。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue
 	trade_good_id = TRADE_GOOD_JACKSBERRY
 	importexport_amt = 10
@@ -35,8 +35,8 @@
 
 /datum/roguestock/stockpile/blackberry
 	generation_price = 2 // Ratwood passive import
-	name = "Blackberry"
-	desc = "A small, dark fruit with a sweet and slightly tart taste. It is often used in desserts."
+	name = "黑莓"
+	desc = "一种小巧的深色水果，味甜微酸，常用于甜点。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry
 	trade_good_id = TRADE_GOOD_BLACKBERRY
 	importexport_amt = 5
@@ -46,8 +46,8 @@
 
 /datum/roguestock/stockpile/raspberry
 	generation_price = 2 // Ratwood passive import
-	name = "Raspberry"
-	desc = "A small, red fruit with a sweet and slightly tart taste. It is often used in desserts."
+	name = "覆盆子"
+	desc = "一种小巧的红色水果，味甜微酸，常用于甜点。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/raspberry
 	trade_good_id = TRADE_GOOD_RASPBERRY
 	importexport_amt = 5
@@ -58,8 +58,8 @@
 /datum/roguestock/stockpile/strawberry
 	passive_generation = 1 // Ratwood passive import
 	generation_price = 2 // Ratwood passive import
-	name = "Strawberry"
-	desc = "A small, red fruit with a sweet taste. It is often used in desserts."
+	name = "草莓"
+	desc = "一种小巧的红色水果，味道香甜，常用于甜点。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/strawberry
 	trade_good_id = TRADE_GOOD_STRAWBERRY
 	importexport_amt = 5
@@ -69,8 +69,8 @@
 
 /datum/roguestock/stockpile/lemon
 	generation_price = 2 // Ratwood passive import
-	name = "Lemon"
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	name = "柠檬"
+	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/lemon
 	trade_good_id = TRADE_GOOD_LEMON
 	importexport_amt = 5
@@ -80,8 +80,8 @@
 
 /datum/roguestock/stockpile/lime
 	generation_price = 2 // Ratwood passive import
-	name = "Lime"
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	name = "青柠"
+	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/lime
 	trade_good_id = TRADE_GOOD_LIME
 	importexport_amt = 5
@@ -91,8 +91,8 @@
 
 /datum/roguestock/stockpile/tangerine
 	generation_price = 2 // Ratwood passive import
-	name = "Tangerine"
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	name = "橘子"
+	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine
 	trade_good_id = TRADE_GOOD_TANGERINE
 	importexport_amt = 5
@@ -102,8 +102,8 @@
 
 /datum/roguestock/stockpile/plum
 	generation_price = 2 // Ratwood passive import
-	name = "Plum"
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	name = "李子"
+	desc = "对许多人来说太甜了，却是孩子们最爱的点心。矮人尤其喜欢。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/plum
 	trade_good_id = TRADE_GOOD_PLUM
 	importexport_amt = 5
@@ -113,8 +113,8 @@
 
 /datum/roguestock/stockpile/tomato
 	generation_price = 2 // Ratwood passive import
-	name = "Tomato"
-	desc = "A red fruit that is often mistaken for a vegetable. It is commonly used in salads and sauces."
+	name = "番茄"
+	desc = "一种常被误认为蔬菜的红色水果，常用于沙拉和酱汁。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
 	trade_good_id = TRADE_GOOD_TOMATO
 	importexport_amt = 5
@@ -124,8 +124,8 @@
 
 /datum/roguestock/stockpile/pumpkin
 	generation_price = 3 // Ratwood passive import
-	name = "Pumpkin"
-	desc = "The thick pumpkin rind shields a surprisingly dense fleshy interior."
+	name = "南瓜"
+	desc = "厚实的南瓜外皮包裹着出乎意料紧实的果肉。"
 	item_type = /obj/item/natural/shellplant/pumpkin
 	trade_good_id = TRADE_GOOD_PUMPKIN
 	importexport_amt = 5
