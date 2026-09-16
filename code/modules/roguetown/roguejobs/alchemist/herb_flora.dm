@@ -1,6 +1,6 @@
 /obj/structure/flora/roguegrass/herb
-	name = "herbbush"
-	desc = "A bush,for an herb. This shouldn't show up."
+	name = "药草丛"
+	desc = "一丛药草灌木。本来不该显示这段描述。"
 	icon = 'icons/roguetown/misc/herbfoliage.dmi'
 	icon_state = "spritemeplz"
 	layer = BELOW_OBJ_LAYER+0.01
@@ -16,7 +16,7 @@
 
 /obj/structure/flora/roguegrass/herb/Initialize(mapload)
 	. = ..()
-	desc = "An herb. This one looks like [name]."
+	desc = "一株药草。看起来像[name]。"
 	GLOB.herb_locations |= src
 	loot_replenish()
 
@@ -30,7 +30,7 @@
 
 /obj/structure/flora/roguegrass/herb/attack_hand(mob/user)
 	if(harvested)
-		to_chat(user, span_warning("Picked clean; but looks healthy. I should try again later."))
+		to_chat(user, span_warning("已经被采光了，但看起来还很健康。我该晚些再来试试。"))
 	if(isliving(user))
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_INTENTCAP)
@@ -45,13 +45,13 @@
 				if(HAS_TRAIT(user, TRAIT_WOODWALKER))
 					var/obj/item/C = new B.type(user.loc)
 					user.put_in_hands(C)
-				user.visible_message(span_notice("[user] finds [HAS_TRAIT(user, TRAIT_WOODWALKER) ? "two of " : ""][B] in [src]."))
+				user.visible_message(span_notice("[user]在[src]里找到了[HAS_TRAIT(user, TRAIT_WOODWALKER) ? "两份" : ""][B]。"))
 				harvested = TRUE
 				timerid = addtimer(CALLBACK(src, PROC_REF(loot_replenish)), 5 MINUTES, flags = TIMER_STOPPABLE)
 				//add_filter("picked", 1, alpha_mask_filter(icon = icon('icons/effects/picked_overlay.dmi', "picked_overlay_[rand(1,3)]"), flags = MASK_INVERSE))
 				GLOB.harvested_herbs |= src
 				return
-			user.visible_message(span_notice("[user] searches through [src]."))
+			user.visible_message(span_notice("[user]翻找着[src]。"))
 
 /obj/structure/flora/roguegrass/herb/proc/loot_replenish()
 	if(herbtype)
@@ -63,8 +63,8 @@
 		deltimer(timerid)
 
 /obj/structure/flora/roguegrass/herb/random
-	name = "random herb"
-	desc = "Haha, im in danger."
+	name = "随机药草"
+	desc = "哈哈，我有麻烦了。"
 
 /obj/structure/flora/roguegrass/herb/random/Initialize(mapload)
 	var/type = pick(list(/obj/structure/flora/roguegrass/herb/atropa,
@@ -93,97 +93,97 @@
 
 
 /obj/structure/flora/roguegrass/herb/atropa
-	name = "atropa"
+	name = "颠茄"
 	icon_state = "atropa"
 
 	herbtype = /obj/item/alch/atropa
 
 /obj/structure/flora/roguegrass/herb/matricaria
-	name = "matricaria"
+	name = "洋甘菊"
 	icon_state = "matricaria"
 
 	herbtype = /obj/item/alch/matricaria
 
 /obj/structure/flora/roguegrass/herb/symphitum
-	name = "symphitum"
+	name = "聚合草"
 	icon_state = "symphitum"
 
 	herbtype = /obj/item/alch/symphitum
 
 /obj/structure/flora/roguegrass/herb/taraxacum
-	name = "taraxacum"
+	name = "蒲公英"
 	icon_state = "taraxacum"
 
 	herbtype = /obj/item/alch/taraxacum
 
 /obj/structure/flora/roguegrass/herb/euphrasia
-	name = "euphrasia"
+	name = "小米草"
 	icon_state = "euphrasia"
 
 	herbtype = /obj/item/alch/euphrasia
 
 /obj/structure/flora/roguegrass/herb/paris
-	name = "paris"
+	name = "重楼"
 	icon_state = "paris"
 
 	herbtype = /obj/item/alch/paris
 
 /obj/structure/flora/roguegrass/herb/calendula
-	name = "calendula"
+	name = "金盏花"
 	icon_state = "calendula"
 
 	herbtype = /obj/item/alch/calendula
 
 /obj/structure/flora/roguegrass/herb/mentha
-	name = "mentha"
+	name = "薄荷"
 	icon_state = "mentha"
 
 	herbtype = /obj/item/alch/mentha
 
 /obj/structure/flora/roguegrass/herb/urtica
-	name = "urtica"
+	name = "荨麻"
 	icon_state = "urtica"
 
 	herbtype = /obj/item/alch/urtica
 
 /obj/structure/flora/roguegrass/herb/salvia
-	name = "salvia"
+	name = "鼠尾草"
 	icon_state = "salvia"
 
 	herbtype = /obj/item/alch/salvia
 
 /obj/structure/flora/roguegrass/herb/hypericum
-	name = "hypericum"
+	name = "金丝桃"
 	icon_state = "hypericum"
 
 	herbtype = /obj/item/alch/hypericum
 
 /obj/structure/flora/roguegrass/herb/benedictus
-	name = "benedictus"
+	name = "圣蓟"
 	icon_state = "benedictus"
 
 	herbtype = /obj/item/alch/benedictus
 
 /obj/structure/flora/roguegrass/herb/valeriana
-	name = "valeriana"
+	name = "缬草"
 	icon_state = "valeriana"
 
 	herbtype = /obj/item/alch/valeriana
 
 /obj/structure/flora/roguegrass/herb/artemisia
-	name = "artemisia"
+	name = "艾蒿"
 	icon_state = "artemisia"
 
 	herbtype = /obj/item/alch/artemisia
 
 /obj/structure/flora/roguegrass/herb/rosa
-	name = "rosa"
+	name = "玫瑰"
 	icon_state = "rosa"
 
 	herbtype = /obj/item/alch/rosa
 
 /obj/structure/flora/roguegrass/herb/manabloom
-	name = "manabloom"
+	name = "魔力花"
 	icon = 'icons/roguetown/misc/crops.dmi' // this is awful why am I doing this
 	icon_state = "manabloom2"
 

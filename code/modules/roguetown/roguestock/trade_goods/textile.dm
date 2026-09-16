@@ -1,6 +1,6 @@
 /datum/trade_good/fibers
 	id = TRADE_GOOD_FIBERS
-	name = "Fibers"
+	name = "纤维"
 	category = TRADE_CATEGORY_CLOTH
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_FIBERS
@@ -9,7 +9,7 @@
 
 /datum/trade_good/cloth
 	id = TRADE_GOOD_CLOTH
-	name = "Cloth"
+	name = "布料"
 	category = TRADE_CATEGORY_CLOTH
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_CLOTH
@@ -18,7 +18,7 @@
 
 /datum/trade_good/silk
 	id = TRADE_GOOD_SILK
-	name = "Silk"
+	name = "丝绸"
 	category = TRADE_CATEGORY_CLOTH
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_SILK
@@ -27,7 +27,7 @@
 
 /datum/trade_good/hide
 	id = TRADE_GOOD_HIDE
-	name = "Hide"
+	name = "兽皮"
 	category = TRADE_CATEGORY_ANIMAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_HIDE
@@ -36,7 +36,7 @@
 
 /datum/trade_good/fur
 	id = TRADE_GOOD_FUR
-	name = "Fur"
+	name = "毛皮"
 	category = TRADE_CATEGORY_ANIMAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_FUR
@@ -46,7 +46,7 @@
 
 /datum/trade_good/cured_leather
 	id = TRADE_GOOD_CURED_LEATHER
-	name = "Cured Leather"
+	name = "熟皮"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_INTERMEDIARY
 	base_price = SELLPRICE_CURED_LEATHER
@@ -55,7 +55,7 @@
 
 /datum/trade_good/rope
 	id = TRADE_GOOD_ROPE
-	name = "Rope"
+	name = "绳索"
 	category = TRADE_CATEGORY_INTERMEDIARY
 	behavior = TRADE_BEHAVIOR_INTERMEDIARY
 	base_price = SELLPRICE_ROPE
@@ -65,7 +65,7 @@
 
 /datum/trade_good/paper
 	id = TRADE_GOOD_PAPER
-	name = "Paper"
+	name = "纸张"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_INTERMEDIARY
 	base_price = SELLPRICE_PAPER

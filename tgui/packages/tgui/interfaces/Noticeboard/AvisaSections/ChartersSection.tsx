@@ -24,7 +24,7 @@ export const ChartersSection = ({ data }: { data: NoticeboardData }) => {
   });
   if (charters.length === 0) {
     return (
-      <EmptyMessage text="No charters of the realm have been put to seal." />
+      <EmptyMessage text="王国尚无特许状用印颁行." />
     );
   }
   return (
@@ -79,13 +79,13 @@ const CharterRow = ({ charter }: { charter: Charter }) => {
               fontWeight: 'normal',
             }}
           >
-            of {charter.year}
+            颁于 {charter.year}
           </span>
         </span>
         {!!charter.active ? (
-          <span style={badgeStyle(SEAL_GREEN)}>IN FORCE</span>
+          <span style={badgeStyle(SEAL_GREEN)}>生效中</span>
         ) : (
-          <span style={badgeStyle(SEAL_RED)}>SUSPENDED</span>
+          <span style={badgeStyle(SEAL_RED)}>已废止</span>
         )}
       </div>
       {open && (
