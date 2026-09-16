@@ -1,5 +1,7 @@
 /datum/job/roguetown/lady
 	title = "Consort"
+	display_title = "王配"
+	f_title = "王妃"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -9,7 +11,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
-	tutorial = "Whether through love, politics or guile, you have become the Grand Duke's most trusted confidant--and likely friend--throughout your marriage. Your loyalty and perhaps even your love will be tested this day... for the daggers that threaten your beloved are as equally pointed at your own throat."
+	tutorial = "无论是出于爱情、权谋还是机巧，通过这场婚姻，你成了大公最信任的知己——也许甚至还是朋友。今日，你的忠诚，乃至你的爱意，都将遭受考验……因为那些指向你所爱之人的匕首，同样也正抵在你的喉头。"
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant,
 	/obj/effect/proc_holder/spell/self/grant_nobility)
@@ -31,8 +33,9 @@
 
 /datum/advclass/lady/heartthrob
 // swords-themed consort. since there's only one of them, it's better than suitor and prince. this will be a running theme.
-	name = "Heartthrob"
-	tutorial = "A former swordsman, either through battle or through bravado you won the Grand Duke's heart. Your sword arm may have gotten rusty with time, but you're still more than capable of showing any would-be assassins the meaning of 'til Death do us part'."
+	name = "意中人"
+	tutorial = "你曾是一名剑士。无论是凭战场上的功勋，还是凭一身胆气，你都赢得了大公的心。\
+	你的剑技或许已随时间生疏，但你依然足以让任何胆敢行刺之人明白，何为「至死不渝」。"
 	outfit = /datum/outfit/job/roguetown/lady/heartthrob
 	category_tags = list(CTAG_CONSORT)
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_KEENEARS, TRAIT_DECEIVING_MEEKNESS, TRAIT_NOBLE)
@@ -79,8 +82,10 @@
 
 /datum/advclass/lady/trophy
 // This is just the regular Consort as it is right now, along with the ridiculous 15 points of extra stats.
-	name = "Trophy"
-	tutorial = "You were once an individual of some note. A Noble, an envoy, a suitor. Now, either for politics, metrics or just to save your - or your beloved's, skin, you're nothing but the Grand Duke's armpiece. Smile for the people, wave for the crowds, scheme from the shadows."
+	name = "战利品"
+	tutorial = "你曾是有头有脸的人物——贵族、使节、求亲者。而今，或为政治，或为利益，\
+	或仅仅为了保住你自己——或是你爱人的——性命，你不过是挂在大公臂弯上的门面。\
+	对民众微笑，对人群挥手，于暗处谋划。"
 	outfit = /datum/outfit/job/roguetown/lady/trophy
 	category_tags = list(CTAG_CONSORT)
 	traits_applied = list(TRAIT_SEEPRICES, TRAIT_KEENEARS, TRAIT_LIGHT_STEP, TRAIT_NUTCRACKER, TRAIT_NOBLE)
@@ -132,8 +137,8 @@
 
 /datum/advclass/lady/housespouse
 // Housewife RP class. 15 points of stats along with trophy because why not, honestly.
-	name = "Homemaker"
-	tutorial = "Through your caring ways and dutiful nature, you provide for your beloved and your children in the way you're best at. You're very aware that the household of your beloved is well-manned with servants to cook and clean, but you don't care. After all, food tastes much better when it's made with love."
+	name = "持家者"
+	tutorial = "凭借你体贴的性情与尽责的天性，你以自己最擅长的方式照料着你的爱人与孩子。你很清楚，你爱人的宅邸里仆从众多，做饭打扫都不缺人手，但你并不在意。毕竟，用爱做出来的食物，味道要好得多。"
 	outfit = /datum/outfit/job/roguetown/lady/housespouse
 	category_tags = list(CTAG_CONSORT)
 	traits_applied = list(TRAIT_CICERONE, TRAIT_SEEDKNOW, TRAIT_KEENEARS, TRAIT_GOODLOVER, TRAIT_HOMESTEAD_EXPERT, TRAIT_SEWING_EXPERT, TRAIT_NOBLE)
@@ -200,12 +205,12 @@
 	job_bitflag = BITFLAG_ROYALTY
 
 /obj/effect/proc_holder/spell/self/convertrole/servant
-	name = "Recruit Servant"
+	name = "征募仆役"
 	new_role = "Servant"
 	overlay_state = "recruit_servant"
 	recruitment_faction = "Servants"
-	recruitment_message = "Serve the crown, %RECRUIT!"
-	accept_message = "FOR THE CROWN!"
-	refuse_message = "I refuse."
+	recruitment_message = "为王冠效命吧，%RECRUIT！"
+	accept_message = "为了王冠！"
+	refuse_message = "我拒绝。"
 	recharge_time = 100
 

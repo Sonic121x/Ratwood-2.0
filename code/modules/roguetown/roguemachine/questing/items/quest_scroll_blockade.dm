@@ -7,13 +7,13 @@
 	return "[minutes]:[seconds < 10 ? "0[seconds]" : "[seconds]"]"
 
 /obj/item/quest_writ/blockade
-	name = "blockade defense writ"
-	desc = "A writ calling for a blockade to be cleared blockade\
-	The bearer is enjoined to travel to the blockaded region and break three successive waves \
-	of raiders - each wave must fall within fifteen minutes, and the Steward may recall the \
-	writ should the bearer takes too long before  before reaching the blockade. Hand this writ over to a person] and they may initiate the contract; pin it to the Grand Contract Ledger and \
-	it will demand a Fellowship of three before it can be taken. Every additional person at the blockade, until the sixth, will attracts more enemies and rewards. \
-	If brigands are sitting on stolen Crown coins, breaking the blockade will seizes the hoard and have it taxed by the Crown as Recovered Spoils."
+	name = "封锁防御契约"
+	desc = "一份要求解除封锁的契约文书\
+	持契者须前往被封锁的地区，接连击退三波 \
+	来袭者——每一波都须在十五分钟内覆灭，总管亦可在 \
+	持契者耗时过久、尚未抵达封锁之前将其召回。将本文书交给某人]即可开启该契约；将其钉于大契约台账之上， \
+	则须凑足三人的冒险团方可领取。封锁现场每多一人（至多六人），都会招来更多敌人与更多奖赏。 \
+	若匪徒正坐拥窃来的王室钱币，破除封锁将夺取其窖藏，并由王室以「追回赃物」之名课税。"
 	icon_state = "scroll_quest_info"
 	base_icon_state = "scroll_quest"
 	var/last_arrival_check = 0
@@ -27,11 +27,11 @@
 			to_chat(user, span_warning(Q.claim_failure_reason(user)))
 			return
 		if(!SStreasury.has_account(user))
-			to_chat(user, span_warning("No account on record - register with a Nervelock before taking a contract, lest there be no purse to pay you."))
+			to_chat(user, span_warning("查无账户记录——领取契约前请先在神经锁处登记，否则将无钱袋可支付予你。"))
 			return
 		Q.quest_receiver_reference = WEAKREF(user)
 		Q.quest_receiver_name = user.real_name
-		to_chat(user, span_notice("You take up the blockade writ. Travel to the marked region - the waves will begin when you arrive."))
+		to_chat(user, span_notice("你接下了封锁契约。前往标记区域——你抵达之时，各波攻势便会开始。"))
 		var/obj/effect/landmark/quest_spawner/landmark = Q.pending_landmark_ref?.resolve()
 		if(landmark)
 			Q.materialize(landmark)

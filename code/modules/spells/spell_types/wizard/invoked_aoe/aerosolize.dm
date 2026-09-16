@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/aerosolize
-	name = "Aerosolize" //once again renamed to fit better :)
-	desc = "Turns a container of liquid into a smoke containing the reagents of that liquid."
+	name = "气化" //once again renamed to fit better :)
+	desc = "将容器内的液体化为含有其试剂的烟雾。"
 	overlay_state = "aerosolize"
 	releasedrain = 50
 	chargetime = 3
@@ -14,7 +14,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	spell_tier = 2
-	invocations = list("Converti in Nebulam!")
+	invocations = list("化为云雾!")
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
@@ -26,13 +26,13 @@
 /obj/effect/proc_holder/spell/invoked/aerosolize/proc/get_container(mob/living/user, target)
 	var/obj/item/reagent_containers/con = target
 	if(!istype(con))
-		to_chat(user, span_warning("This must be cast on a container."))
+		to_chat(user, span_warning("必须对容器施放。"))
 		return null
 	if(!con.spillable)
-		to_chat(user, span_warning("[con] is not an open container."))
+		to_chat(user, span_warning("[con]不是敞口容器。"))
 		return null
 	if(con.reagents.total_volume <= 0)
-		to_chat(user, span_warning("[con] is empty."))
+		to_chat(user, span_warning("[con]是空的。"))
 		return null
 	return con
 
@@ -49,13 +49,13 @@
 	playsound(user, 'sound/magic/webspin.ogg', 100)
 
 /obj/effect/proc_holder/spell/invoked/aerosolize/wave
-	name = "Aerosol Wave"
-	desc = "Turns the reagents of a container into a wave of odious smoke traveling in the direction the caster is facing."
+	name = "气化波"
+	desc = "将容器内的试剂化为一股恶臭烟雾，朝施法者面对的方向扩散。"
 	overlay_state = "aerosol_wave"
 	chargetime = 6
 	spell_tier = 3 // technically an AOE (?)
 	cost = 3 // this ones a bit better
-	invocations = list("Nebulam Abiecit!")
+	invocations = list("释出雾波！")
 
 /obj/effect/proc_holder/spell/invoked/aerosolize/wave/cast(list/targets, mob/living/user)
 	var/obj/item/reagent_containers/con = get_container(user, targets[1])
@@ -82,7 +82,7 @@
 	playsound(user, 'sound/magic/whiteflame.ogg', 100)
 
 /obj/effect/aerosol_cloud
-	name = "cloud of gas"
+	name = "气云"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	anchored = TRUE

@@ -1,11 +1,12 @@
 /datum/job/roguetown/rockhillslave
 	title = "Slave"
+	display_title = "奴隶"
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
 	allowed_races = ACCEPTED_RACES
-	tutorial = "Traded around like common goods you are deprived of your freedom and been trained into an obedient implement of your masters. Whether it be making them rich or making them comfortable you serve at their leisure with your continued well being entirely dependent on your owner's good will."
+	tutorial = "你像普通货物一样被买卖，被剥夺了自由，并被训练成主人手中顺从的工具。无论是为他们赚钱还是让他们享乐，你都在他们的闲暇时间服务，而你持续的福祉完全取决于主人的善意。"
 	outfit = /datum/outfit/job/roguetown/slave
 	display_order = JDO_SLAVE
 	give_bank_account = 0
@@ -44,9 +45,8 @@
 
 /datum/advclass/slave/house_slave
 	parent_type = /datum/advclass/slave
-	name = "House Slave"
-	tutorial = "You are trained as a servant, \
-	Keep the Master's abode clean, prepare meals, serve them."
+	name = "家仆奴隶"
+	tutorial = "你被训练成一名仆人，保持主人住所的清洁，准备餐食，服侍他们。"
 	outfit = /datum/outfit/job/roguetown/rockhillslave/house_slave
 	category_tags = list(CTAG_SLAVE)
 	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)
@@ -78,9 +78,8 @@
 
 /datum/advclass/slave/labor_slave
 	parent_type = /datum/advclass/slave
-	name = "Labor Slave"
-	tutorial = "You are trained as a laborer, \
-	Toil for the Master's needs, serve them."
+	name = "劳役奴隶"
+	tutorial = "你被训练成一名劳工，为主人的需求辛勤劳作，服侍他们。"
 	outfit = /datum/outfit/job/roguetown/rockhillslave/labor_slave
 	category_tags = list(CTAG_SLAVE)
 	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)
@@ -115,10 +114,9 @@
 
 /datum/advclass/slave/slave_sentry
 	parent_type = /datum/advclass/slave
-	name = "Slave Sentry"
+	name = "奴隶哨兵"
 	maximum_possible_slots = 2
-	tutorial = "You are trained as a fighter, \
-	Protect your Master's interests, serve them."
+	tutorial = "你被训练成一名战士，保护主人的利益，服侍他们。"
 	outfit = /datum/outfit/job/roguetown/rockhillslave/slave_sentry
 	category_tags = list(CTAG_SLAVE)
 	subclass_stats = list(
