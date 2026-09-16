@@ -80,7 +80,7 @@
 		if(length(pick.incompatible_vices) && (vice_type in pick.incompatible_vices))
 			if(show_message && user)
 				var/datum/charflaw/vice = GLOB.charflaw_singletons[vice_type]
-				to_chat(user, span_warning("[vice?.name || "This vice"]与[pick.name]冲突!"))
+				to_chat(user, span_warning("[vice?.name || "该恶习"]与[pick.name]冲突!"))
 			return TRUE
 	return FALSE
 
