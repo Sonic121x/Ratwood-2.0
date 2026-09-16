@@ -54,11 +54,11 @@ export const ShipsView = (props: Props) => {
   return (
     <>
       <div style={sectionHeaderStyle}>
-        Docked at the Pier ({docked.length})
+        停靠码头 ({docked.length})
       </div>
       {docked.length === 0 ? (
         <EmptyCard>
-          No vessels at the pier. Hail one from the horizon to bring her in.
+          码头没有船只. 从海平线上招呼一艘进港.
         </EmptyCard>
       ) : (
         <div>
@@ -76,11 +76,11 @@ export const ShipsView = (props: Props) => {
       )}
 
       <div style={{ ...sectionHeaderStyle, marginTop: '16px' }}>
-        Seen on the Horizon ({pool.length})
+        海平线上可见 ({pool.length})
       </div>
       {pool.length === 0 ? (
         <EmptyCard>
-          No vessels on the horizon. The dawn brings new arrivals.
+          海平线上没有船只. 黎明会带来新的来客.
         </EmptyCard>
       ) : (
         <div
@@ -100,9 +100,9 @@ export const ShipsView = (props: Props) => {
               hailDisabled={dockFull || noHails}
               hailDisabledReason={
                 noHails
-                  ? 'No hails left today.'
+                  ? '今日已无招呼次数.'
                   : dockFull
-                    ? 'The pier is full.'
+                    ? '码头已满.'
                     : undefined
               }
               onHail={() => act('hail', { ship_id: s.ship_id })}

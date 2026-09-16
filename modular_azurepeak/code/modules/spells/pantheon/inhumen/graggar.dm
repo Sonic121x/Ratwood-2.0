@@ -1,12 +1,12 @@
 //Call to Slaughter - AoE buff for all people surrounding you.
 /obj/effect/proc_holder/spell/self/call_to_slaughter
-	name = "Call to Slaughter"
-	desc = "Grants you and all allies nearby a buff to their strength, willpower, and constitution."
+	name = "屠戮号令"
+	desc = "强化你与附近所有盟友的力量、意志与体质。"
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "call_to_slaughter"
 	recharge_time = 5 MINUTES
-	invocations = list("LAMBS TO THE SLAUGHTER!")
+	invocations = list("羔羊们，奔赴屠场吧！")
 	invocation_type = "shout"
 	sound = 'sound/magic/timestop.ogg'
 	releasedrain = 30
@@ -19,7 +19,7 @@
 			target.apply_status_effect(/datum/status_effect/buff/call_to_slaughter)	//Buffs inhumens
 			continue
 		if(istype(target.patron, /datum/patron/old_god))
-			to_chat(target, span_danger("You feel a surge of cold wash over you; leaving your body as quick as it hit.."))	//No effect on Psydonians!
+			to_chat(target, span_danger("你感到一阵寒意冲刷全身，却又如来时一般迅速退去......"))	//No effect on Psydonians!
 			continue
 		if(!user.faction_check_mob(target))
 			continue
@@ -30,8 +30,8 @@
 
 //Unholy Grasp - Turns the viscera in your hand into a net made of gore.
 /obj/effect/proc_holder/spell/self/blood_net
-	name = "Unholy Grasp"
-	desc = "Twist the viscera in your hand into a writhing, unholy net. Cast again to unmake it back into gore. Throw it to snare a foe's legs."
+	name = "渎圣攫握"
+	desc = "将你手中那团内脏扭曲成一张蠕动的、渎神的网。再次施法可将其拆解回血肉。掷出它，即可缠住敌人的双腿。"
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "unholy_grasp"
@@ -52,19 +52,19 @@
 		return FALSE
 
 	if(!istype(held_item, /obj/item/alch/viscera))
-		to_chat(user, span_warning("I'm missing viscera to twist into a net."))
+		to_chat(user, span_warning("我手里没有可以扭成网的内脏。"))
 		revert_cast(user)
 		return FALSE
 
 	qdel(held_item)
 	var/obj/item/net/unholy_grasp/net = new(get_turf(user))
 	user.put_in_hands(net)
-	user.visible_message(span_danger("The viscera in [user]'s hand twists into a writhing net of gore!"), span_danger("The viscera in my hand twists into a writhing net of gore!"))
+	user.visible_message(span_danger("[user]手中的内脏扭成了一张蠕动的血肉之网！"), span_danger("我手中的内脏扭成了一张蠕动的血肉之网！"))
 	return TRUE
 
 /obj/item/net/unholy_grasp
-	name = "visceral net"
-	desc = "A writhing snare woven from blood and guts. It won't hold its shape for long outside a caster's grip. Throw it, or it'll collapse back into what it was."
+	name = "血肉之网"
+	desc = "一张由血与内脏编成的蠕动罗网。一旦离开施法者的掌心，它便维持不了太久的形状。掷出它，否则它就会塌回原样。"
 	color = "#80182e"
 	w_class = WEIGHT_CLASS_BULKY // No storing these things.
 	slot_flags = NONE
@@ -141,13 +141,13 @@
 		qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/revel_in_slaughter
-	name = "Revel in Slaughter"
-	desc = "The blood of your enemy shall boil, their skin feeling as if it's being ripped apart! Graggar demands their blood must FLOW!!!"
+	name = "沉湎屠戮"
+	desc = "你敌人的血液将会沸腾，他们的皮肤会像被生生撕裂一般！格拉加尔要他们的鲜血尽情流淌！！！"
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "revel_in_slaughter"
 	recharge_time = 1 MINUTES
-	invocations = list("YOUR BLOOD WILL BOIL TILL IT'S SPILLED!")
+	invocations = list("你的鲜血将沸腾，直到洒尽为止！")
 	invocation_type = "shout"
 	sound = 'sound/magic/antimagic.ogg'
 	releasedrain = 30
@@ -168,7 +168,7 @@
 		qdel(blood)
 
 	if(!success)
-		to_chat(user, span_warning("Graggar demands BLOOD to call upon his powers!"))
+		to_chat(user, span_warning("格拉加尔要求以鲜血来唤起祂的力量！"))
 		revert_cast()
 		return FALSE
 
@@ -180,22 +180,22 @@
 	addtimer(VARSET_CALLBACK(phy, bleed_mod, phy.bleed_mod /= 1.5), 25 SECONDS)
 	addtimer(VARSET_CALLBACK(phy, pain_mod, phy.pain_mod /= 1.5), 15 SECONDS)
 
-	human.visible_message(span_danger("[human]'s wounds become inflammed as their vitality is sapped away!"))
-	to_chat(human, span_warning("My skins feels like pins and needles, as if something were ripping and tearing at me!"))
+	human.visible_message(span_danger("[human]的伤口开始发炎，生命力正被迅速抽离！"))
+	to_chat(human, span_warning("我的皮肤像被无数针刺穿，又仿佛有什么东西正在撕扯着我！"))
 
 	return TRUE
 
 //Bloodrage T0 -- Uncapped STR buff.
 /obj/effect/proc_holder/spell/self/graggar_bloodrage
-	name = "Bloodrage"
-	desc = "Grants you unbound strength for a short while."
+	name = "血怒"
+	desc = "在短时间内赐予你毫无束缚的力量。"
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "bloodrage"
 	recharge_time = 5 MINUTES
-	invocations = list("GRAGGAR!! GRAGGAR!! GRAGGAR!!",
-		"GRAGGAR! BREAK MY CHAINS!",
-		"GRAGGAR! SHATTER MY BINDS!"
+	invocations = list("格拉加尔！！格拉加尔！！格拉加尔！！",
+		"格拉加尔！打碎我的枷锁！",
+		"格拉加尔！粉碎我的束缚！"
 	)
 	invocation_type = "shout"
 	sound = 'sound/magic/bloodrage.ogg'
@@ -221,16 +221,14 @@
 	for(var/effect in purged_effects)
 		human.remove_status_effect(effect)
 	human.apply_status_effect(/datum/status_effect/buff/bloodrage)
-	human.visible_message(span_danger("[human] rises upward, boiling with immense rage!"))
+	human.visible_message(span_danger("[human]猛然挺身而起，浑身翻涌着滔天怒火！"))
 	return TRUE
 
 /// - GRAGGAR REVIVAL - ///
 
 /obj/effect/proc_holder/spell/invoked/resurrect/graggar
-	name = "Blood for Graggar"
-	desc = "You cannot dominate the dead. Place GRAGGAR'S EYES upon a fallen mortal, granting them the\
-	chance to fight again... for a price. Their intelligence will be drained for some time, or until\
-	they slay an orcish challenger from His realm."
+	name = "血祭格拉加尔"
+	desc = "你无法支配死者。将格拉加尔之眼置于一名倒下的凡人身上，赐予他们再次战斗的机会……但需付出代价。他们的智力将被削弱一段时间，直到他们从祂的领域中斩杀一名兽人挑战者。"
 	debuff_type = /datum/status_effect/debuff/graggar_challenge
 	alt_required_items = list(/obj/item/organ/heart = 1)
 	required_items = list(/obj/item/organ/heart = 1)
@@ -246,8 +244,8 @@
 /// CHALLENGE PORTAL
 
 /obj/structure/primal_rift
-	name = "primal rift"
-	desc = "A jagged tear in reality smelling of blood."
+	name = "原始裂隙"
+	desc = "一道锯齿状的现实撕裂口，散发着血腥味。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shitportal"
 	color = "#570f04"
@@ -279,7 +277,7 @@
 		// First time crossing the line? Log it and warn once.
 		if(!out_of_range_since)
 			out_of_range_since = world.time
-			to_chat(target, span_userdanger("The rift pulses angrily! Return to the challenge immediately or face the consequences!"))
+			to_chat(target, span_userdanger("裂隙愤怒地搏动着！立刻返回挑战，否则后果自负！"))
 			return
 
 		// Has it been 5 seconds since that first warning?
@@ -293,7 +291,7 @@
 	var/turf/spawn_turf = get_turf(src)
 	for(var/orc_index in 3 to max_orcs)
 		var/mob/living/carbon/human/species/orc/npc/warlord/orc_warlord = new(spawn_turf)
-		orc_warlord.visible_message(span_danger("[orc_warlord] step out of the rift, axes drawn!"))
+		orc_warlord.visible_message(span_danger("[orc_warlord]从裂隙中踏出，战斧出鞘！"))
 		orc_warlord.AddComponent(/datum/component/rift_bound, src)
 		orc_count++
 
@@ -316,16 +314,16 @@
 /obj/structure/primal_rift/proc/orc_died()
 	orc_count--
 	if(orc_count <= 0)
-		visible_message(span_notice("With its champions defeated, the primal rift collapses."))
+		visible_message(span_notice("在它的勇士被击败后，原始裂隙崩塌了。"))
 		target?.remove_status_effect(/datum/status_effect/debuff/graggar_challenge)
 		qdel(src)
 
 /obj/structure/primal_rift/proc/expire()
-	visible_message(span_warning("The primal rift destabilizes and vanishes into nothingness."))
+	visible_message(span_warning("原始裂隙失去稳定，消散于虚无。"))
 	qdel(src)
 
 /obj/structure/primal_rift/proc/trigger_consequences()
-	to_chat(target, span_boldannounce("Graggar punishes your cowardice!"))
+	to_chat(target, span_boldannounce("格拉加尔惩罚了你的懦弱！"))
 	var/datum/status_effect/debuff/graggar_challenge/challenge_effect = target.has_status_effect(/datum/status_effect/debuff/graggar_challenge)
 	if(challenge_effect)
 		challenge_effect.trigger_failure_consequences(target)
@@ -340,8 +338,8 @@
 /// STATUS EFFECT
 
 /atom/movable/screen/alert/status_effect/graggar_challenge
-	name = "Blood debt"
-	desc = "Graggar demands blood be spilt in exchange for his mercy! Summon the rift! Prove yourself! Cowardice is not an option!"
+	name = "血债"
+	desc = "格拉加尔要求以血还血，以换取他的仁慈！召唤裂隙！证明你自己！懦弱绝非选项！"
 	icon_state = "pom_regret"
 
 /datum/status_effect/debuff/graggar_challenge
@@ -358,7 +356,7 @@
 /datum/status_effect/debuff/graggar_challenge/on_apply()
 	. = ..()
 	creation_time = world.time
-	to_chat(owner, span_userdanger("Your mind feels clouded by a primal bloodlust. Graggar demands a challenge! Summon the rift before your time runs out!"))
+	to_chat(owner, span_userdanger("你的心智被原始的嗜血欲望所蒙蔽。格拉加尔要求一场挑战！在时间耗尽之前召唤裂隙！"))
 
 	// Grant the summoning spell
 	var/obj/effect/proc_holder/spell/invoked/summon_rift/summoning_spell = new(owner)
@@ -367,7 +365,7 @@
 /datum/status_effect/debuff/graggar_challenge/on_remove()
 	// If the duration ran out naturally (didn't get cleared by the rift)
 	if(world.time >= (creation_time + failure_time - 5))
-		to_chat(owner, span_userdanger("You failed to prove your worth to Graggar!"))
+		to_chat(owner, span_userdanger("你未能向格拉加尔证明你的价值！"))
 		trigger_failure_consequences(owner)
 
 	// Cleanup the spell if they still have it
@@ -380,7 +378,7 @@
 	if(!istype(coward))
 		return
 
-	to_chat(coward, span_boldannounce("Your bones snap under the weight of your own cowardice!"))
+	to_chat(coward, span_boldannounce("你的骨骼在自身懦弱的重压下碎裂！"))
 	playsound(coward, 'sound/combat/fracture/fracturedry (1).ogg', 100, TRUE)
 
 	// Apply fractures to arms. I'd break legs too but we have to account for player error. (like summoning the rift whilst you're in the rimboe)
@@ -393,10 +391,10 @@
 /// Helper spell
 
 /obj/effect/proc_holder/spell/invoked/summon_rift
-	name = "Summon Primal Rift"
-	desc = "Challenge the rift-born to clear your blood-debt. Must be cast on a nearby floor. Make sure to kill all foes, Graggar will not tolerate further acts of mercy."
+	name = "召唤原始裂隙"
+	desc = "挑战裂隙诞生的敌人，以清偿你的血债。必须在附近的地面上施放。确保杀死所有敌人，格拉加尔不会容忍任何仁慈之举。"
 	invocation_type = "shout"
-	invocations = list("GRAGGAR, WITNESS ME!")
+	invocations = list("格拉加尔，见证我！")
 	recharge_time = 5 SECONDS
 	chargetime = 0.1 SECONDS
 	var/summoned = FALSE
@@ -405,17 +403,17 @@
 
 /obj/effect/proc_holder/spell/invoked/summon_rift/cast(list/targets, mob/living/user)
 	if(summoned)
-		to_chat(user, span_warning("The rift was already summoned!"))
+		to_chat(user, span_warning("裂隙已经被召唤了！"))
 		revert_cast()
 		return FALSE
 
 	var/turf/spawn_turf = targets[1]
 	if(!isturf(spawn_turf) || spawn_turf.density)
-		to_chat(user, span_warning("The rift needs solid ground to tear open!"))
+		to_chat(user, span_warning("裂隙需要坚实的土地才能撕裂开来！"))
 		revert_cast()
 		return FALSE
 
-	user.visible_message(span_warning("[user] slams their fist into the ground, tearing a crimson hole in reality!"))
+	user.visible_message(span_warning("[user]一拳砸向地面，撕开了一道深红的现实裂隙！"))
 	var/obj/structure/primal_rift/rift = new(spawn_turf)
 	rift.target = user
 	summoned = TRUE

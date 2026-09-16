@@ -6,8 +6,8 @@
 
 // === TENT KIT ITEM ===
 /obj/item/tent_kit
-	name = "small tent kit"
-	desc = "A compact kit containing everything needed to set up a weatherproof tent. The tent will be oriented based on the direction you're facing when assembling."
+	name = "小型帐篷套件"
+	desc = "一套紧凑的工具包，包含搭建防风雨帐篷所需的一切。搭建时帐篷会按你面朝的方向摆放。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "tent_kit"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -79,7 +79,7 @@
 	if(assembled) return
 	if(world.time < setup_cooldown_end)
 		var/remaining = round((setup_cooldown_end - world.time) / 10)
-		to_chat(user, span_warning("This tent was recently packed up. You must wait [remaining] second\s before setting it up again."))
+		to_chat(user, span_warning("这顶帐篷刚刚才收起。你还得再等[remaining]秒才能重新搭建。"))
 		return
 	var/turf/setup_turf = get_turf(user)
 	if(!setup_turf) return
@@ -87,7 +87,7 @@
 	
 	if(!check_assembly_space(setup_turf, user, assembly_dir)) return
 
-	to_chat(user, span_notice("You begin assembling the [name]..."))
+	to_chat(user, span_notice("你开始搭建[name]……"))
 	if(!do_after(user, setup_time, target = src))
 		return
 	assemble_tent(setup_turf, user, assembly_dir)
@@ -99,11 +99,11 @@
 
 	for(var/turf/check_turf in perimeter)
 		if(!check_turf || check_turf.density)
-			to_chat(user, span_warning("There is a wall or floor blocking where the tent walls should go!"))
+			to_chat(user, span_warning("帐篷墙应当立起的位置被墙体或地形挡住了！"))
 			return FALSE
 		for(var/obj/O in check_turf.contents)
 			if(O.density)
-				to_chat(user, span_warning("[O] is blocking the tent perimeter!"))
+				to_chat(user, span_warning("[O]挡住了帐篷的外沿！"))
 				return FALSE
 
 	var/list/upper_coords = get_upper_floor_coordinates(center_turf, assembly_dir)
@@ -229,7 +229,7 @@
 	parts_destroyed_count = 0 
 	
 	if(repair_debt_cloth > 0 || repair_debt_silk > 0)
-		to_chat(user, span_warning("This kit is too damaged! Repair it with cloth and silk first."))
+		to_chat(user, span_warning("这套帐篷组件损坏得太严重了！先用布料和丝绸修好它。"))
 		return
 
 	var/list/door_coords = get_door_coordinates(center_turf, assembly_dir)
@@ -297,7 +297,7 @@
 	if(!assembled) return
 
 	if(user && !instant)
-		to_chat(user, span_notice("You begin packing away the [name]..."))
+		to_chat(user, span_notice("你开始收起[name]……"))
 		if(!do_after(user, 8 SECONDS, target = src)) return
 
 	for(var/obj/structure/tent_wall/wall in tent_walls)
@@ -334,16 +334,16 @@
 		repair_debt_cloth += 2
 
 	if(parts_destroyed_count >= collapse_threshold)
-		visible_message(span_warning("The [name] collapses from damage!"))
+		visible_message(span_warning("[name]因损坏而坍塌了！"))
 		disassemble_tent(null, TRUE)
 	else
-		visible_message(span_danger("A support on the [name] was destroyed! It's leaning heavily..."))
+		visible_message(span_danger("[name]的一处支撑被毁了！它已经摇摇欲坠……"))
 
 // === TENT WALL ===
 /obj/structure/tent_wall
 	parent_type = /obj/structure/tent_component // Inherits from base
-	name = "tent wall"
-	desc = "A sturdy fabric wall. Shift-click from the inside to pack the tent."
+	name = "帐篷壁"
+	desc = "一面结实的布制墙体。从帐篷内部按住 Shift 点击可将其收起。"
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "tent"
 	density = TRUE
@@ -354,22 +354,22 @@
 	
 	var/turf/T = get_turf(user)
 	if(!T || !T.pseudo_roof)
-		to_chat(user, span_warning("You can only dismantle the tent from the inside!"))
+		to_chat(user, span_warning("你只能从帐篷内部将它拆除！"))
 		return TRUE
 
 	if(get_dist(user, src) > 1) 
-		to_chat(user, span_warning("You are too far away!"))
+		to_chat(user, span_warning("你离得太远了！"))
 		return TRUE
 
-	var/confirm = alert(user, "Are you sure you want to pack up the [parent_tent.name]?", "Dismantle", "Yes", "No")
-	if(confirm == "Yes" && get_dist(user, src) <= 1)
+	var/confirm = alert(user, "你确定要收起[parent_tent.name]吗？", "拆除帐篷", "是", "否")
+	if(confirm == "是" && get_dist(user, src) <= 1)
 		parent_tent.disassemble_tent(user)
 	return TRUE
 
 // === GER KIT ===
 /obj/item/tent_kit/ger
-	name = "ger kit"
-	desc = "A large circular tent kit bundled together. Very durable and often used by nomadic travellers of the steppes."
+	name = "格尔帐篷套件"
+	desc = "一套打包好的大型圆形帐篷。十分耐用，常被草原上的游牧旅人使用。"
 	icon_state = "tent_kit"
 	tent_width = 5
 	tent_length = 5
@@ -382,8 +382,8 @@
 
 // === YURT KIT ===
 /obj/item/tent_kit/yurt
-	name = "yurt kit"
-	desc = "A very large circular tent kit bundled together. Spacious and durable, and often used by nomadic families of the steppes."
+	name = "尤尔特帐篷套件"
+	desc = "一套打包好的超大圆形帐篷。宽敞而耐用，常被草原上的游牧家庭使用。"
 	icon_state = "tent_kit"
 	tent_width = 7
 	tent_length = 7
@@ -397,19 +397,19 @@
 
 // === CRAFTING ===
 /datum/crafting_recipe/roguetown/sewing/tentkit
-	name = "Small Tent Kit"
+	name = "小型帐篷套件"
 	result = list(/obj/item/tent_kit)
 	reqs = list(/obj/item/natural/cloth = 10, /obj/item/natural/fibers = 6, /obj/item/natural/silk = 6, /obj/item/grown/log/tree/stick = 10)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/gerkit
-	name = "Ger Kit"
+	name = "格尔帐篷套件"
 	result = list(/obj/item/tent_kit/ger)
 	reqs = list(/obj/item/natural/cloth = 20, /obj/item/natural/fibers = 12, /obj/item/natural/silk = 12, /obj/item/grown/log/tree/stick = 20)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/yurtkit
-	name = "Yurt Kit"
+	name = "尤尔特帐篷套件"
 	result = list(/obj/item/tent_kit/yurt)
 	reqs = list(/obj/item/natural/cloth = 30, /obj/item/natural/fibers = 18, /obj/item/natural/silk = 18, /obj/item/grown/log/tree/stick = 30)
 	craftdiff = 5

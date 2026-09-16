@@ -1,5 +1,5 @@
 /datum/sex_action/grind_body
-	name = "Grind against them"
+	name = "贴着对方磨蹭"
 	check_same_tile = FALSE
 
 /datum/sex_action/grind_body/can_perform(mob/living/user, mob/living/target)
@@ -12,7 +12,7 @@
 	return TRUE
 
 /datum/sex_action/grind_body/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] pulls themselves onto [target]..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]贴到了[target]身上……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/grind_body/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -21,15 +21,15 @@
 	var/zone_text
 	switch(user.zone_selected)
 		if(BODY_ZONE_PRECISE_GROIN)
-			zone_text = user.dir == target.dir ? "ass" : "crotch"
+			zone_text = user.dir == target.dir ? "屁股" : "胯间"
 			pleasure_target = 1
 		if(BODY_ZONE_CHEST)
 			var/obj/item/organ/breasts/chest_organ = target.getorganslot(ORGAN_SLOT_BREASTS)
-			zone_text = "chest"
+			zone_text = "胸"
 			if(chest_organ)
-				zone_text = "tits"
+				zone_text = "乳房"
 				if(chest_organ.is_pecs())
-					zone_text = "pecs"
+					zone_text = "胸肌"
 			pleasure_target = 1
 		else
 			zone_text = LOWER_TEXT(parse_zone(user.zone_selected))
@@ -37,7 +37,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] grinds over [target]'s [zone_text]..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]贴着[target]的[zone_text]磨蹭……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		if(user.sexcon.force > SEX_FORCE_HIGH)
 			user.sexcon.outercourse_noise(target)
@@ -55,7 +55,7 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/grind_body/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] stops grinding against [target] ..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]停下了贴着[target]磨蹭的动作……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/grind_body/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

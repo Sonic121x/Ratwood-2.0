@@ -55,10 +55,10 @@ const StockCard = (props: {
     ? (entry.price_base_pre_kin as number) + entry.price_tariff
     : 0;
   const priceTitle = hasKin
-    ? `${entry.price_base}m + ${entry.price_tariff}m Crown duty = ${entry.price}m (Kinship -${kinSaving}m off base cost ${entry.base_cost}m)`
+    ? `${entry.price_base}m + ${entry.price_tariff}m 王室关税 = ${entry.price}m (亲缘 -${kinSaving}m, 基础成本 ${entry.base_cost}m)`
     : hasTariff
-      ? `${entry.price_base}m + ${entry.price_tariff}m Crown duty = ${entry.price}m (was ${entry.base_cost}m)`
-      : `${entry.price}m (was ${entry.base_cost}m)`;
+      ? `${entry.price_base}m + ${entry.price_tariff}m 王室关税 = ${entry.price}m (原价 ${entry.base_cost}m)`
+      : `${entry.price}m (原价 ${entry.base_cost}m)`;
   return (
     <div style={denseRowStyle}>
       <div
@@ -67,7 +67,7 @@ const StockCard = (props: {
           color: INK,
           fontSize: FONT_TITLE,
         }}
-        title={`${entry.name} - ${entry.qty} in stock`}
+        title={`${entry.name} - 库存 ${entry.qty}`}
       >
         {entry.pack_qty > 1 && (
           <span
@@ -109,9 +109,9 @@ const StockCard = (props: {
               ship_id: entry.ship_id,
             })
           }
-          title={`Buy ${entry.name} for ${entry.price}m`}
+          title={`以 ${entry.price}m 购买 ${entry.name}`}
         >
-          Buy
+          购买
         </button>
       </div>
     </div>
@@ -155,7 +155,7 @@ const ShipSection = (props: {
             marginLeft: '6px',
           }}
         >
-          ({entries.length} wares)
+          ({entries.length} 件货物)
         </span>
       </div>
       {expanded && (
@@ -195,9 +195,9 @@ const CatalogStockCard = (props: {
   const kinSaving = hasKin ? entry.price_base_pre_kin - entry.price_base : 0;
   const preKinPrice = hasKin ? entry.price_base_pre_kin + entry.price_tariff : 0;
   const priceTitle = hasKin
-    ? `${entry.price_base}m + ${entry.price_tariff}m Crown duty = ${entry.price}m (Kinship -${kinSaving}m)`
+    ? `${entry.price_base}m + ${entry.price_tariff}m 王室关税 = ${entry.price}m (亲缘 -${kinSaving}m)`
     : hasTariff
-      ? `${entry.price_base}m + ${entry.price_tariff}m Crown duty = ${entry.price}m`
+      ? `${entry.price_base}m + ${entry.price_tariff}m 王室关税 = ${entry.price}m`
       : `${entry.price}m`;
   return (
     <div style={denseRowStyle}>
@@ -219,7 +219,7 @@ const CatalogStockCard = (props: {
             marginLeft: '6px',
             fontSize: FONT_SMALL,
           }}
-          title={`${entry.qty} of ${entry.stock_max} in stock - restocks to full each day`}
+          title={`库存 ${entry.qty} / ${entry.stock_max} - 每日补满`}
         >
           ({entry.qty}/{entry.stock_max})
         </span>
@@ -239,11 +239,11 @@ const CatalogStockCard = (props: {
           onClick={() => act('catalog_buy', { catalog: catalogId, pack: entry.pack })}
           title={
             soldOut
-              ? `${entry.name} is out of stock - the caravan restocks to full each day`
-              : `Order ${entry.name} for ${entry.price}m`
+              ? `${entry.name} 已无库存 - 商队每日补满`
+              : `以 ${entry.price}m 订购 ${entry.name}`
           }
         >
-          {soldOut ? 'Out' : 'Buy'}
+          {soldOut ? '缺货' : '购买'}
         </button>
       </div>
     </div>
@@ -286,10 +286,10 @@ const CatalogSection = (props: {
           }}
         >
           {catalog.origin_access
-            ? `(open to you - ${catalog.discount_pct}% off)`
+            ? `(对你开放 - 减免 ${catalog.discount_pct}%)`
             : catalog.unlocked
-              ? '(agreement signed)'
-              : `(sealed - ${catalog.favor_cost} favor to sign)`}
+              ? '(已签署协议)'
+              : `(已密封 - 需 ${catalog.favor_cost} 恩惠签署)`}
         </span>
       </div>
       {expanded && (
@@ -310,7 +310,7 @@ const CatalogSection = (props: {
                 padding: '0 0 6px',
               }}
             >
-              The caravan restocks to its full load each day.
+              商队每日补满其全部货载.
             </div>
           )}
           {accessible ? (
@@ -334,8 +334,8 @@ const CatalogSection = (props: {
           ) : (
             // TODO: flavor
             <div style={{ ...cardStyle, color: INK_SOFT, textAlign: 'center' }}>
-              This charter is sealed. Open it in Management for{' '}
-              {catalog.favor_cost} favor.
+              此特许状已密封. 在管理页花费{' '}
+              {catalog.favor_cost} 恩惠即可开启它.
             </div>
           )}
         </>
@@ -378,7 +378,7 @@ export const CulturalStockTab = (props: Props) => {
           marginTop: '12px',
         }}
       >
-        Trade Agreements
+        贸易协议
       </div>
       {catalogs.map((catalog) => (
         <CatalogSection
@@ -402,12 +402,12 @@ export const CulturalStockTab = (props: Props) => {
               marginRight: '6px',
             }}
           >
-            Chartered Agent
+            特许代理人
           </span>
           <span style={{ color: INK_SOFT }}>
-            As an agent of the Ferentian Trading Company, you are allowed to
-            access, view, and purchase the Cultural Stock of any docked ships,
-            and view and hail ships on behalf of the Factor.
+            作为费伦提亚贸易公司的代理人, 你获准查阅、查看并购买
+            任何停靠船只的文化货物, 并可代表商行管事
+            查看并招呼船只.
           </span>
         </KinshipBanner>
       )}
@@ -420,11 +420,11 @@ export const CulturalStockTab = (props: Props) => {
               marginRight: '6px',
             }}
           >
-            Kinship: {kinship.realm_name}
+            亲缘: {kinship.realm_name}
           </span>
           <span style={{ color: INK_SOFT }}>
-            Cultural stock from {kinship.realm_name} ships costs{' '}
-            {kinship.buy_pct}% less.
+            来自 {kinship.realm_name} 船只的文化货物便宜{' '}
+            {kinship.buy_pct}%.
           </span>
         </KinshipBanner>
       )}
@@ -437,11 +437,11 @@ export const CulturalStockTab = (props: Props) => {
               marginRight: '6px',
             }}
           >
-            Agent Kinship: {kinship.agent_realm_name}
+            代理人亲缘: {kinship.agent_realm_name}
           </span>
           <span style={{ color: INK_SOFT }}>
-            As an Agent, your buys from {kinship.agent_realm_name} ships cost{' '}
-            {kinship.buy_pct}% less.
+            作为代理人, 你从 {kinship.agent_realm_name} 船只购买时可少付{' '}
+            {kinship.buy_pct}%.
           </span>
         </KinshipBanner>
       )}
@@ -451,7 +451,7 @@ export const CulturalStockTab = (props: Props) => {
   if (!stock.length) {
     return (
       <div style={pageStyle}>
-        <div style={titleStyle}>Cultural Stock</div>
+        <div style={titleStyle}>文化货物</div>
         {banners}
         <div
           style={{
@@ -461,8 +461,8 @@ export const CulturalStockTab = (props: Props) => {
             marginTop: '12px',
           }}
         >
-          No foreign vessel is at the pier. Hail one to access her cultural
-          stores.
+          码头没有外国船只. 招呼一艘前来以查看她的
+          文化货舱.
         </div>
         {catalogSections}
       </div>
@@ -485,7 +485,7 @@ export const CulturalStockTab = (props: Props) => {
 
   return (
     <div style={pageStyle}>
-      <div style={titleStyle}>Cultural Stock</div>
+      <div style={titleStyle}>文化货物</div>
       {banners}
       <div
         style={{
@@ -495,8 +495,8 @@ export const CulturalStockTab = (props: Props) => {
           marginBottom: '8px',
         }}
       >
-        Goods of distinction unloaded by docked vessels. They depart when she
-        sails.
+        由停靠船只卸下的上等货物. 她扬帆起航时它们便
+        随之离去.
       </div>
       {ships.map(([shipId, info]) => (
         <ShipSection

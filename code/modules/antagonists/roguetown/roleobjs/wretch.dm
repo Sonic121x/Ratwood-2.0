@@ -1,7 +1,7 @@
 /datum/antagonist/wretch
-	name = "Wretch"
-	roundend_category = "wretches"
-	antagpanel_category = "Wretches"
+	name = "流放者"
+	roundend_category = "流放者"
+	antagpanel_category = "流放者"
 	show_name_in_check_antagonists = FALSE
 
 /datum/antagonist/wretch/get_antag_cap_weight()

@@ -20,9 +20,9 @@ GLOBAL_LIST_INIT(towner_tier_flat_bonus, list(
 	override_destination = /area/rogue/indoors/town/dwarfin
 	var/posting_tier = TOWNER_POSTING_TIER_MEDIUM
 	var/loadout_variety
-	var/parcel_label = "sealed strongbox"
+	var/parcel_label = "密封保险箱"
 	/// Noun the writ and messages use for the sealed goods (e.g. "strongbox", "ore-crate").
-	var/sealed_noun = "strongbox"
+	var/sealed_noun = "保险箱"
 
 /datum/quest/kill/recovery/towner/calculate_deposit()
 	return 0
@@ -37,10 +37,10 @@ GLOBAL_LIST_INIT(towner_tier_flat_bonus, list(
 	return /obj/item/quest_writ/towner
 
 /datum/quest/kill/recovery/towner/proc/get_writ_intro()
-	return "A townsman calls for hands to recover what was lost to the wilds and bear it home."
+	return "一位镇民呼唤人手，去寻回失落在荒野中的财物并带回。"
 
 /datum/quest/kill/recovery/towner/proc/get_writ_seal_note()
-	return "The [sealed_noun] is magickally sealed to [quest_giver_name || "the poster"] - carry it back, only they can open it."
+	return "此[sealed_noun]以魔法封存予[quest_giver_name || "发布人"]——带回它，唯其本人可开启。"
 
 /datum/quest/kill/recovery/towner/populate_scroll_ui_static_data(list/data)
 	..()
@@ -100,10 +100,10 @@ GLOBAL_LIST_INIT(towner_tier_flat_bonus, list(
 	return null
 
 /datum/quest/kill/recovery/towner/proc/get_parcel_name()
-	return "[quest_giver_name]'s [parcel_label]"
+	return "[quest_giver_name]的[parcel_label]"
 
 /datum/quest/kill/recovery/towner/proc/get_parcel_desc()
-	return "A [sealed_noun] magickally sealed for [quest_giver_name] - only they can open it."
+	return "为[quest_giver_name]以魔法封存的[sealed_noun]——唯其本人可开启。"
 
 /datum/quest/kill/recovery/towner/preview(obj/effect/landmark/quest_spawner/landmark)
 	if(!landmark)
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(towner_tier_flat_bonus, list(
 
 /datum/quest/kill/recovery/towner/on_claim(mob/user)
 	. = ..()
-	to_chat(user, span_warning("The [sealed_noun] is magickally sealed - only [quest_giver_name] can open it."))
+	to_chat(user, span_warning("此[sealed_noun]以魔法封存——唯[quest_giver_name]可开启。"))
 
 /datum/quest/kill/recovery/towner/spawn_recovery_parcel(obj/effect/landmark/quest_spawner/landmark)
 	var/turf/spawn_turf = landmark.get_safe_spawn_turf()
