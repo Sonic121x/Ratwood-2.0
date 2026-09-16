@@ -30,7 +30,7 @@ export const PatronageTab = ({ data, act }: TabProps) => {
     return (
       <div style={cardStyle}>
         <div style={{ color: INK_SOFT }}>
-          You hold no patronage authority.
+          你未持有任何恩主权限。
         </div>
       </div>
     );
@@ -118,22 +118,22 @@ const RosterView = ({
         );
       })()}
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Roster</div>
+        <div style={fieldLabelStyle}>名册</div>
         <div style={fieldValueStyle}>
-          {enrolled} / {roster.cap} enrolled
+          已登记 {enrolled} / {roster.cap}
         </div>
       </div>
       {full && (
         <div style={{ color: SEAL_AMBER, marginBottom: 8 }}>
-          The roster is full. Revoke an existing patron before drafting a new
-          writ.
+          名册已满。起草新令状前，须先撤销一名
+          {'现有恩主。'}
         </div>
       )}
       {roster.patrons.map((p) => (
         <div key={p.ref} style={fieldRowStyle}>
           <div style={fieldValueStyle}>
             {p.name}
-            {p.job ? `, the ${p.job}` : ''}
+            {p.job ? `，${p.job}` : ''}
           </div>
           <button
             type="button"
@@ -145,7 +145,7 @@ const RosterView = ({
               })
             }
           >
-            Revoke
+            撤销
           </button>
         </div>
       ))}
@@ -156,7 +156,7 @@ const RosterView = ({
           disabled={full}
           onClick={() => act('issue_patronage', { fund_id: fundId })}
         >
-          Draft Writ
+          起草令状
         </button>
       </div>
     </>

@@ -216,20 +216,20 @@
 		TRUE
 	)
 	
-	if(alert(recipient, "你想更改这层皮肤的名称或描述吗？", "TOUGH HIDE", "就这么办", "我放弃") == "就这么办") // Query user
+	if(alert(recipient, "你想更改这层皮肤的名称或描述吗？", "天然护甲", "就这么办", "我放弃") == "就这么办") // Query user
 		addtimer(CALLBACK(src, PROC_REF(customize_skin), recipient), 1 SECONDS)
 
 /datum/virtue/combat/tough_hide/proc/customize_skin(mob/living/carbon/human/recipient)
 	var/obj/item/clothing/hide = recipient.wear_shirt
 	var/vanished_hide = FALSE
 	if(!QDELETED(hide))
-		var/inputty = stripped_input(recipient, "你想给这层皮肤起什么名字？", "TOUGH HIDE", null, 200)
+		var/inputty = stripped_input(recipient, "你想给这层皮肤起什么名字？", "天然护甲", null, 200)
 		if(!QDELETED(hide))
 			if(inputty)
 				hide.name = inputty
 		else
 			vanished_hide = TRUE
-		inputty = stripped_input(recipient, "你会如何描述这层皮肤？", "TOUGH HIDE", null, 200)
+		inputty = stripped_input(recipient, "你会如何描述这层皮肤？", "天然护甲", null, 200)
 		if(!QDELETED(hide))
 			if(inputty)
 				hide.desc = inputty
