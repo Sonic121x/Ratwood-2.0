@@ -30,15 +30,15 @@
 	if(!TR)
 		return
 	TR.reduce_latent_ambush(threat_bands_cleared * THREAT_POINTS_PER_BAND)
-	announce_to_bearer("<b>The road breathes easier.</b> This contract has driven [threat_bands_cleared] band(s) of threat from the region.")
+	announce_to_bearer("<b>道路得以喘息。</b>此契约已从本地区驱除了 [threat_bands_cleared] 股威胁。")
 
 /datum/quest/kill/on_first_pop()
 	if(hunt_timer_id || complete)
 		return
 	hunt_timer_id = addtimer(CALLBACK(src, PROC_REF(on_hunt_timeout)), QUEST_KILL_HUNT_TIMER, TIMER_STOPPABLE)
-	hunt_warn_2m_id = addtimer(CALLBACK(src, PROC_REF(warn_hunt_time_left), "two minutes"), QUEST_KILL_HUNT_WARN_2M, TIMER_STOPPABLE)
-	hunt_warn_30s_id = addtimer(CALLBACK(src, PROC_REF(warn_hunt_time_left), "thirty seconds"), QUEST_KILL_HUNT_WARN_30S, TIMER_STOPPABLE)
-	announce_to_bearer("<b>The quarry stirs.</b> Finish the work within twenty minutes, or they will scatter and the writ will lapse.")
+	hunt_warn_2m_id = addtimer(CALLBACK(src, PROC_REF(warn_hunt_time_left), "两分钟"), QUEST_KILL_HUNT_WARN_2M, TIMER_STOPPABLE)
+	hunt_warn_30s_id = addtimer(CALLBACK(src, PROC_REF(warn_hunt_time_left), "三十秒"), QUEST_KILL_HUNT_WARN_30S, TIMER_STOPPABLE)
+	announce_to_bearer("<b>猎物已然蠢动。</b>请在二十分钟内完成此事，否则他们四散而逃，契约亦将失效。")
 
 /datum/quest/kill/proc/clear_hunt_timers()
 	if(hunt_timer_id)
@@ -54,14 +54,14 @@
 /datum/quest/kill/proc/warn_hunt_time_left(label)
 	if(complete || !hunt_timer_id)
 		return
-	announce_to_bearer("<b>[label] remain</b> before the quarry slips away.")
+	announce_to_bearer("<b>距猎物逃脱尚余 [label]</b>。")
 
 /datum/quest/kill/proc/on_hunt_timeout()
 	if(complete)
 		return
 	hunt_timer_id = null
 	failed = TRUE
-	announce_to_bearer("<b>The quarry has slipped away.</b> The writ smolders and crumbles in your grip.")
+	announce_to_bearer("<b>猎物已然逃脱。</b>契约在你手中冒出青烟，片片碎裂。")
 	despawn_live_hunt_mobs()
 	var/obj/item/quest_writ/S = quest_scroll
 	if(S && !QDELETED(S))
@@ -105,7 +105,7 @@
 	var/left = timeleft(hunt_timer_id)
 	if(left <= 0)
 		return
-	data["hunt_timer_label"] = "Quarry slips away in"
+	data["hunt_timer_label"] = "猎物逃脱倒计时"
 	data["hunt_timer_seconds"] = round(left / 10)
 
 /datum/quest/kill/proc/announce_to_bearer(msg)
