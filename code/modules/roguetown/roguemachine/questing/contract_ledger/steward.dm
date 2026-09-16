@@ -12,9 +12,9 @@
 /proc/get_commission_bonus_pay_label(level)
 	switch(level)
 		if(COMMISSION_BONUS_PAY_LIGHT)
-			return "light bonus pay"
+			return "轻量额外报酬"
 		if(COMMISSION_BONUS_PAY_FULL)
-			return "bonus pay"
+			return "额外报酬"
 	return ""
 
 /// Snapshot of each blockade that currently has a writ in circulation, with recall eligibility.
@@ -117,12 +117,12 @@
 	if(!steward.Adjacent(src))
 		return
 	if(SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(steward, span_warning("The ledger is not yet open."))
+		to_chat(steward, span_warning("台账尚未开启。"))
 		return
 
 	var/chosen_type = params["type"]
 	if(!(chosen_type in GLOB.defense_quest_tier_costs))
-		to_chat(steward, span_warning("That quest type is not one the Crown commissions."))
+		to_chat(steward, span_warning("王室不会委托这种任务类型。"))
 		return
 
 	// Alderman status is computed up front so funding and levy-exempt gates can reference it.
@@ -139,7 +139,7 @@
 	// the Steward's administrative prerogative, a Crown officer commanding the staff it pays).
 	var/funding = params["funding"] || "pledge"
 	if(is_alderman_acting && funding != "pledge")
-		to_chat(steward, span_warning("The Alderman's commission is paid from the Assembly's Pledge warrant alone. The Crown's Purse and the Steward's Request are not yours to command."))
+		to_chat(steward, span_warning("议员的委托只能由议事会的认捐授权支付。王室金库与总管家请令皆非你所能支配。"))
 		return
 
 	var/cost = GLOB.defense_quest_tier_costs[chosen_type]
@@ -156,32 +156,32 @@
 	switch(funding)
 		if("pledge")
 			if(!SStreasury.burgher_pledge_fund)
-				to_chat(steward, span_warning("The Burgher Pledge is not established. Use Crown's Purse or a Request."))
+				to_chat(steward, span_warning("市民认捐尚未设立。请改用王室金库或请令。"))
 				return
 			source_fund = SStreasury.burgher_pledge_fund
 		if("crown")
 			if(!SStreasury.discretionary_fund)
-				to_chat(steward, span_warning("The Crown's Purse is not established."))
+				to_chat(steward, span_warning("王室金库尚未设立。"))
 				return
 			source_fund = SStreasury.discretionary_fund
 		if("directive")
 			refresh_directive_quota()
 			if(directives_issued_today >= COMMISSION_REQUESTS_PER_DAY)
-				to_chat(steward, span_warning("You have exhausted today's request quota ([COMMISSION_REQUESTS_PER_DAY]/day)."))
+				to_chat(steward, span_warning("你今日的请令额度已用尽(每日 [COMMISSION_REQUESTS_PER_DAY] 次)。"))
 				return
 			is_directive = TRUE
 			cost = 0
 		else
-			to_chat(steward, span_warning("Unknown funding source."))
+			to_chat(steward, span_warning("未知的资金来源。"))
 			return
 
 	if(source_fund && source_fund.balance < cost)
-		to_chat(steward, span_warning("Insufficient [source_fund.name]. Need [cost]m, have [source_fund.balance]m."))
+		to_chat(steward, span_warning("[source_fund.name]余额不足。需要 [cost]m，现有 [source_fund.balance]m。"))
 		return
 
 	if(is_alderman_acting)
 		if(!SScity_assembly.can_consume_defense(cost))
-			to_chat(steward, span_warning("Your defense warrant cannot cover this commission. Remaining: [SScity_assembly.current_warrant.defense_remaining]p."))
+			to_chat(steward, span_warning("你的防御授权不足以覆盖这次委托。剩余：[SScity_assembly.current_warrant.defense_remaining]p。"))
 			return
 
 	if(chosen_type == QUEST_BLOCKADE_DEFENSE)
@@ -199,7 +199,7 @@
 			chosen_region = TR
 			break
 	if(!chosen_region)
-		to_chat(steward, span_warning("That region does not host quests of this sort."))
+		to_chat(steward, span_warning("该地区并不会出现这类任务。"))
 		return
 
 	// Recovery is not commissionable by the Steward - it only enters the pool via
@@ -207,8 +207,8 @@
 	// need a destination picker here.
 	var/area/chosen_destination
 
-	if(source_fund && cost > 0 && !SStreasury.burn(source_fund, cost, "Defense commission ([chosen_type] in [chosen_region.region_name])"))
-		to_chat(steward, span_warning("The [source_fund.name] refused the draft."))
+	if(source_fund && cost > 0 && !SStreasury.burn(source_fund, cost, "防御委托([chosen_type] 位于 [chosen_region.region_name])"))
+		to_chat(steward, span_warning("[source_fund.name]拒付这笔支取。"))
 		return
 	if(source_fund == SStreasury.burgher_pledge_fund && cost > 0)
 		record_round_statistic(STATS_PLEDGE_CONSUMED, cost)
@@ -225,13 +225,13 @@
 	var/datum/quest/dispatched = SSquestpool.issue_defense_quest(chosen_type, chosen_region, chosen_destination, in_hands, steward)
 	if(!dispatched)
 		if(source_fund && cost > 0)
-			SStreasury.mint(source_fund, cost, "Defense commission refund (landmark failure)")
+			SStreasury.mint(source_fund, cost, "防御委托退款(地标失败)")
 			if(source_fund == SStreasury.burgher_pledge_fund)
 				record_round_statistic(STATS_PLEDGE_CONSUMED, -cost)
 		if(is_alderman_acting && cost > 0)
 			SScity_assembly.restore_defense(cost, steward, "[chosen_type] defense commission refund in [chosen_region.region_name]")
 		SSquestpool.log_event("defense_refund", "landmark failure [chosen_type] in [chosen_region.region_name] refunded [cost]m")
-		to_chat(steward, span_warning("No landmark could bear that commission. Funds refunded."))
+		to_chat(steward, span_warning("没有地标能够承载该委托。款项已退还。"))
 		return
 	if(levy_exempt)
 		dispatched.levy_exempt = TRUE
@@ -257,12 +257,12 @@
 	))
 	SSquestpool.log_event("defense_issue", "[steward.real_name] commissioned [dispatched.quest_difficulty] [chosen_type] in [chosen_region.region_name] for [cost]m ([funding])[levy_exempt ? " (levy-exempt)" : ""][bonus_label_text ? " ([bonus_label_text])" : ""][in_hands ? " (in hand)" : ""]")
 	playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
-	var/source_label = is_directive ? "as a Request" : (funding == "crown" ? "from Crown's Purse" : "from the Pledge")
+	var/source_label = is_directive ? "以请令" : (funding == "crown" ? "由王室金库" : "由市民认捐")
 	var/bonus_label = bonus_label_text ? " - <i>[bonus_label_text]</i>" : ""
 	if(in_hands)
-		to_chat(steward, span_notice("Commission drafted [source_label] to your hand: <b>[dispatched.title || dispatched.quest_type]</b> in [chosen_region.region_name][levy_exempt ? " - <i>levy-exempt</i>" : ""][bonus_label]."))
+		to_chat(steward, span_notice("委托[source_label]拟就，交入你手：<b>[dispatched.title || dispatched.quest_type]</b>，位于 [chosen_region.region_name][levy_exempt ? " - <i>免征关税</i>" : ""][bonus_label]。"))
 	else
-		to_chat(steward, span_notice("Commission posted [source_label]: <b>[dispatched.title || dispatched.quest_type]</b> in [chosen_region.region_name][levy_exempt ? " - <i>levy-exempt</i>" : ""][bonus_label]."))
+		to_chat(steward, span_notice("委托[source_label]张贴：<b>[dispatched.title || dispatched.quest_type]</b>，位于 [chosen_region.region_name][levy_exempt ? " - <i>免征关税</i>" : ""][bonus_label]。"))
 
 /// Blockade commissions bypass the threat-region picker entirely — region param is the
 /// economic region name, resolved to a live /datum/blockade. Multiple writs may be in
@@ -276,24 +276,24 @@
 			chosen = B
 			break
 	if(!chosen)
-		to_chat(steward, span_warning("That region is not currently blockaded."))
+		to_chat(steward, span_warning("该地区目前并未遭受封锁。"))
 		return FALSE
 	if(chosen.has_active_scroll())
-		to_chat(steward, span_warning("A writ is already in circulation for that blockade."))
+		to_chat(steward, span_warning("该封锁已有令状在外流传。"))
 		return FALSE
-	if(source_fund && cost > 0 && !SStreasury.burn(source_fund, cost, "Blockade defense writ ([region_name])"))
-		to_chat(steward, span_warning("The [source_fund.name] refused the draft."))
+	if(source_fund && cost > 0 && !SStreasury.burn(source_fund, cost, "封锁防御令状([region_name])"))
+		to_chat(steward, span_warning("[source_fund.name]拒付这笔支取。"))
 		return FALSE
 	if(source_fund == SStreasury.burgher_pledge_fund && cost > 0)
 		record_round_statistic(STATS_PLEDGE_CONSUMED, cost)
 	var/datum/quest/kill/blockade_defense/Q = SSquestpool.issue_blockade_defense_quest(chosen, steward, is_directive ? null : source_fund, is_directive ? 0 : cost)
 	if(!Q)
 		if(source_fund && cost > 0)
-			SStreasury.mint(source_fund, cost, "Blockade defense writ refund (issue failure)")
+			SStreasury.mint(source_fund, cost, "封锁防御令状退款(签发失败)")
 			if(source_fund == SStreasury.burgher_pledge_fund)
 				record_round_statistic(STATS_PLEDGE_CONSUMED, -cost)
 		SSquestpool.log_event("defense_refund", "landmark failure blockade [region_name] refunded [cost]m")
-		to_chat(steward, span_warning("No landmark could bear that writ. Funds refunded."))
+		to_chat(steward, span_warning("没有地标能够承载该令状。款项已退还。"))
 		return FALSE
 	// Writ issued: only now dock the Alderman warrant, and record it on the quest so a recall
 	// can hand it back. Pre-checked via can_consume_defense in the caller, so this should hold.
@@ -324,38 +324,38 @@
 		"day" = GLOB.dayspassed,
 	))
 	SSquestpool.log_event("defense_issue", "[steward.real_name] commissioned blockade defense on [region_name] (faction [Q.faction_id]) for [cost]m ([funding])[levy_exempt ? " (levy-exempt)" : ""][bonus_label_text ? " ([bonus_label_text])" : ""]")
-	scom_announce("A blockade defense writ has been issued for [region_name][bonus_label_text ? " - [bonus_label_text] attached" : ""].")
+	scom_announce("已为 [region_name] 签发封锁防御令状[bonus_label_text ? " - 附有 [bonus_label_text]" : ""]。")
 	playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
-	var/source_label = is_directive ? "as a Request" : (funding == "crown" ? "from Crown's Purse" : "from the Pledge")
-	to_chat(steward, span_notice("Blockade writ drafted [source_label] to your hand: <b>[Q.get_title()]</b>[levy_exempt ? " - <i>levy-exempt</i>" : ""][bonus_label_text ? " - <i>[bonus_label_text]</i>" : ""]."))
+	var/source_label = is_directive ? "以请令" : (funding == "crown" ? "由王室金库" : "由市民认捐")
+	to_chat(steward, span_notice("封锁令状[source_label]拟就，交入你手：<b>[Q.get_title()]</b>[levy_exempt ? " - <i>免征关税</i>" : ""][bonus_label_text ? " - <i>[bonus_label_text]</i>" : ""]。"))
 	return TRUE
 
 /obj/structure/roguemachine/contractledger/proc/commission_hoard_recovery(mob/living/carbon/human/steward, list/params, cost, datum/fund/source_fund, is_directive, bonus_pay_level = COMMISSION_BONUS_PAY_NONE, is_alderman_acting = FALSE)
 	var/region_name = params["region"]
 	var/datum/threat_region/TR = SSregionthreat.get_region(region_name)
 	if(!TR || TR.banditry_hoard < HOARD_RECOVERY_HOARD_MINIMUM)
-		to_chat(steward, span_warning("The hoard in that region is too trivial for a Recovery writ - a number of [HOARD_RECOVERY_HOARD_MINIMUM] mammons or more is needed."))
+		to_chat(steward, span_warning("该地区的宝藏太过微不足道，不足以发起寻宝令状——至少需要 [HOARD_RECOVERY_HOARD_MINIMUM] 枚玛门。"))
 		return
 	if(TR.has_active_blockade())
-		to_chat(steward, span_warning("[TR.region_name] is under an active blockade - commission a blockade defense writ instead."))
+		to_chat(steward, span_warning("[TR.region_name]正处于封锁之中——请改为委托封锁防御令状。"))
 		return
 	var/datum/quest/kill/blockade_defense/existing = TR.active_hoard_recovery_ref?.resolve()
 	if(existing && !QDELETED(existing) && !existing.failed && !existing.complete)
-		to_chat(steward, span_warning("A recovery writ is already in circulation for that region."))
+		to_chat(steward, span_warning("该地区已有一份寻宝令状在外流传。"))
 		return
-	if(source_fund && cost > 0 && !SStreasury.burn(source_fund, cost, "Hoard recovery writ ([region_name])"))
-		to_chat(steward, span_warning("The [source_fund.name] refused the draft."))
+	if(source_fund && cost > 0 && !SStreasury.burn(source_fund, cost, "寻宝令状([region_name])"))
+		to_chat(steward, span_warning("[source_fund.name]拒付这笔支取。"))
 		return
 	if(source_fund == SStreasury.burgher_pledge_fund && cost > 0)
 		record_round_statistic(STATS_PLEDGE_CONSUMED, cost)
 	var/datum/quest/kill/blockade_defense/Q = SSquestpool.issue_hoard_recovery_request(TR, steward, is_directive ? null : source_fund, is_directive ? 0 : cost, TRUE)
 	if(!Q)
 		if(source_fund && cost > 0)
-			SStreasury.mint(source_fund, cost, "Hoard recovery writ refund (issue failure)")
+			SStreasury.mint(source_fund, cost, "寻宝令状退款(签发失败)")
 			if(source_fund == SStreasury.burgher_pledge_fund)
 				record_round_statistic(STATS_PLEDGE_CONSUMED, -cost)
 		SSquestpool.log_event("defense_refund", "landmark failure hoard recovery [region_name] refunded [cost]m")
-		to_chat(steward, span_warning("No landmark could bear that writ. Funds refunded."))
+		to_chat(steward, span_warning("没有地标能够承载该令状。款项已退还。"))
 		return
 	if(is_alderman_acting && cost > 0 && SScity_assembly.consume_defense(cost, steward, "hoard recovery commission ([region_name])"))
 		Q.warrant_consumed = cost
@@ -383,10 +383,10 @@
 		"day" = GLOB.dayspassed,
 	))
 	SSquestpool.log_event("defense_issue", "[steward.real_name] commissioned hoard recovery on [region_name] (faction [Q.faction_id], hoard [TR.banditry_hoard]) for [cost]m ([funding])[levy_exempt ? " (levy-exempt)" : ""][bonus_label_text ? " ([bonus_label_text])" : ""]")
-	scom_announce("A hoard recovery writ has been issued for [region_name][bonus_label_text ? " - [bonus_label_text] attached" : ""].")
+	scom_announce("已为 [region_name] 签发寻宝令状[bonus_label_text ? " - 附有 [bonus_label_text]" : ""]。")
 	playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
-	var/source_label = is_directive ? "as a Request" : (funding == "crown" ? "from Crown's Purse" : "from the Pledge")
-	to_chat(steward, span_notice("Hoard recovery writ drafted [source_label] to your hand: <b>[Q.get_title()]</b>[levy_exempt ? " - <i>levy-exempt</i>" : ""][bonus_label_text ? " - <i>[bonus_label_text]</i>" : ""]."))
+	var/source_label = is_directive ? "以请令" : (funding == "crown" ? "由王室金库" : "由市民认捐")
+	to_chat(steward, span_notice("寻宝令状[source_label]拟就，交入你手：<b>[Q.get_title()]</b>[levy_exempt ? " - <i>免征关税</i>" : ""][bonus_label_text ? " - <i>[bonus_label_text]</i>" : ""]。"))
 
 /// Steward recall: cancels a still-armed writ within the recall window and refunds the draft.
 /// Region param is the economic region name — same selector used for issuance.
@@ -399,7 +399,7 @@
 	if(!steward.Adjacent(src))
 		return
 	if(SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(steward, span_warning("The ledger is not yet open."))
+		to_chat(steward, span_warning("台账尚未开启。"))
 		return
 	var/region_name = params["region"]
 	if(!region_name)
@@ -414,21 +414,21 @@
 		var/datum/threat_region/TR = SSregionthreat.get_region(region_name)
 		Q = TR?.active_hoard_recovery_ref?.resolve()
 	if(!istype(Q) || QDELETED(Q))
-		to_chat(steward, span_warning("No writ is in circulation for that region."))
+		to_chat(steward, span_warning("该地区并无令状在外流传。"))
 		return
 	var/blocker = Q.recall_blocker()
 	if(blocker)
-		to_chat(steward, span_warning("The writ cannot be recalled: [blocker]."))
+		to_chat(steward, span_warning("该令状无法撤回：[blocker]。"))
 		return
 	var/refund = Q.funding_cost
 	var/datum/fund/refund_fund = Q.funding_fund
 	if(!Q.recall(steward))
-		to_chat(steward, span_warning("The writ could not be recalled."))
+		to_chat(steward, span_warning("该令状无法撤回。"))
 		return
 	SSquestpool.log_event("defense_recall", "[steward.real_name] recalled blockade writ on [region_name][refund > 0 && refund_fund ? " (refunded [refund]m to [refund_fund.name])" : ""]")
-	scom_announce("The blockade writ for [region_name] has been recalled.")
+	scom_announce("针对 [region_name] 的封锁令状已被撤回。")
 	playsound(src, 'sound/items/inqslip_sealed.ogg', 50, FALSE, -1)
 	if(refund > 0 && refund_fund)
-		to_chat(steward, span_notice("Writ recalled. [refund]m returned to [refund_fund.name]."))
+		to_chat(steward, span_notice("令状已撤回。[refund]m 已退还给[refund_fund.name]。"))
 	else
-		to_chat(steward, span_notice("Writ recalled."))
+		to_chat(steward, span_notice("令状已撤回。"))

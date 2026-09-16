@@ -37,15 +37,15 @@ export const BeastWrit = (props: {
     recoveryDestination,
     recoveryCircumstance,
   } = props;
-  const beast = nameSingular || 'beast';
+  const beast = nameSingular || '野兽';
   const deeds =
     crimes && crimes.length > 0 ? (
       <>
-        It hath{' '}
+        其曾犯下{' '}
         {crimes.map((c, i) => (
           <span key={i}>
             {c}
-            {i < crimes.length - 2 ? ', ' : i === crimes.length - 2 ? ', and ' : ''}
+            {i < crimes.length - 2 ? ', ' : i === crimes.length - 2 ? ', 及 ' : ''}
           </span>
         ))}
         .
@@ -54,19 +54,19 @@ export const BeastWrit = (props: {
   return (
     <>
       <p style={writParagraph}>
-        A {beast} preys upon {realm}, to the great hurt of the country.
+        一头 {beast} 正祸害 {realm}, 令乡野大受其苦.
       </p>
       {deeds && <p style={writParagraph}>{deeds}</p>}
       <p style={writParagraph}>
-        The writ knows the beast and shall mark itself when the deed is done.
-        Return it then to the Contract Ledger, and the bounty of{' '}
+        令状识得此兽, 事成之时自会留痕.
+        届时将其交回契约台账, 所悬之赏金{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}
           levyExempt={levyExempt}
           guildCutRate={guildCutRate}
         />{' '}
-        shall be paid.
+        即可领取.
       </p>
       {hasRecoveryAddendum && (
         <RecoveryAddendum

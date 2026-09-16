@@ -1,7 +1,7 @@
 /datum/migrant_wave
 	abstract_type = /datum/migrant_wave
 	/// Name of the wave
-	var/name = "MIGRANT WAVE"
+	var/name = "移民波次"
 	/// Which roll track this wave belongs to.
 	var/track = MIGRANT_TRACK_REGULAR
 	/// Assoc list of role type -> count that must all fill, or the wave aborts.
@@ -65,7 +65,7 @@
 		. |= role_type
 
 /datum/migrant_wave/pilgrim
-	name = "Pilgrimage"
+	name = "朝圣之旅"
 	track = MIGRANT_TRACK_REGULAR
 	weight = 100 // It is a "default" wave
 	triumph_threshold = 10
@@ -75,10 +75,10 @@
 	optional_roles = list(
 		/datum/migrant_role/pilgrim = 3,
 	)
-	greet_text = "Fleeing from misfortune and hardship, you and a handful of survivors get closer to the realm, looking for refuge and work, finally almost being there, almost..."
+	greet_text = "为逃离不幸与苦难，你与几名幸存者正逐渐接近谷地，寻找庇护与工作。你们终于快要到了，几乎就快到了……"
 
 /datum/migrant_wave/adventurer
-	name = "Adventure Party"
+	name = "冒险小队"
 	track = MIGRANT_TRACK_REGULAR
 	weight = 100 // Adventurers is the default spillover role and instead of just setting adventurers slots up high at roundstart we'll let people join in gradually through the round
 	triumph_threshold = 15
@@ -88,10 +88,10 @@
 	optional_roles = list(
 		/datum/migrant_role/adventurer = 3,
 	)
-	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up on a dark and lonesome road, perhaps getting ourselves into more than what we bargained for."
+	greet_text = "你与一群值得信赖的伙伴结伴远行，追寻刺激、荣耀与财富，最终走上一条黑暗而荒凉的道路，也许还把自己卷进了远超预想的麻烦之中。"
 
 /datum/migrant_wave/bandit
-	name = "Bandit Raid"
+	name = "强盗袭击"
 	track = MIGRANT_TRACK_SPECIAL
 	weight = 0
 	min_round_time = 300 MINUTES
@@ -105,7 +105,7 @@
 	)
 
 /datum/migrant_wave/assassin
-	name = "Assassin Hit"
+	name = "刺客袭杀"
 	track = MIGRANT_TRACK_SPECIAL
 	weight = 0
 	min_round_time = 300 MINUTES
@@ -118,7 +118,7 @@
 	)
 
 /datum/migrant_wave/gnolls
-	name = "Gnoll raid"
+	name = "豺狼人袭击"
 	track = MIGRANT_TRACK_SPECIAL
 	weight = 0
 	min_round_time = 300 MINUTES

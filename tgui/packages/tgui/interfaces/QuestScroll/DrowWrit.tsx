@@ -49,33 +49,33 @@ export const DrowWrit = (props: {
     recoveryDestination,
     recoveryCircumstance,
   } = props;
-  const folk = namePlural || 'drow';
-  const band = groupWord || 'patrol';
+  const folk = namePlural || '卓尔';
+  const band = groupWord || '巡逻队';
 
   let subject: React.ReactNode;
   if (named) subject = <b>{named}</b>;
   else if (ringleader)
     { subject = (
       <>
-        a {band} of {folk} under one called <b>{ringleader}</b>
+        一队 {band} {folk}, 其首名为 <b>{ringleader}</b>
       </>
     ); }
-  else subject = <>a {band} of {folk}</>;
+  else subject = <>一队 {band} {folk}</>;
 
   return (
     <>
       <p style={writParagraph}>
-        <i>By writ of the {rulerTitle} and the Holy See:</i>
+        <i>兹依 {rulerTitle} 与教廷之令状:</i>
       </p>
       <p style={writParagraph}>
-        That {subject} hath emerged from the deep dark into the lands of{' '}
-        {realm}: Astrata-shunning things, dealers in bonded souls, that traffic in
-        slaves and bargain with the Archenemy.
+        查 {subject} 已自幽深之暗处现身于{' '}
+        {realm} 之地: 此辈背弃阿斯特拉塔, 交易受缚之魂, 贩卖奴隶
+        并与大敌勾连.
       </p>
       {crimes.length > 0 && (
         <>
           <p style={{ ...writParagraph, marginBottom: '4px' }}>
-            Whereof they stand accused of:
+            其等所被控之罪如下:
           </p>
           <ul style={indictmentList}>
             {crimes.map((c, i) => (
@@ -87,24 +87,24 @@ export const DrowWrit = (props: {
         </>
       )}
       <p style={writParagraph}>
-        Let no man parley, let no man trade, let no priest hear their plea. By
-        writ of the {rulerTitle} and the counsel of the Holy See, {subject} be
-        declared <span style={caputLupinum}>ANATHEMA SIT</span>: accursed
-        before the Tens, sundered from sun and grain, owed neither truce nor
-        ransom.
+        任何人皆不得与其谈判, 不得与其交易, 亦不得有
+        司祭听其恳求. 依 {rulerTitle} 之令状与教廷之
+        谏议, {subject} 当被判处
+        <span style={caputLupinum}>处以绝罚</span>: 在十神面前受诅,
+        被逐出阳光与谷物, 既不享休战, 亦不得赎金.
       </p>
       <p style={writParagraph}>
-        Slay them where they walk and burn what they bear, lest the blight 
-        upon their persons taint the earth. Upon their death the writ shall
-        fall silent and mark itself; return it to the Contract Ledger, that
-        the bounty of{' '}
+        见之即杀, 焚其所携之物, 以免其身上
+        之秽气污染大地. 其等身死之时, 令状自会
+        沉寂留痕; 将其交回契约台账, 所悬之
+        赏金{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}
           levyExempt={levyExempt}
           guildCutRate={guildCutRate}
         />{' '}
-        be paid.
+        即可领取.
       </p>
       {hasRecoveryAddendum && (
         <RecoveryAddendum

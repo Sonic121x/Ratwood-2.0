@@ -3,9 +3,9 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 #define WHISPER_COOLDOWN 10 SECONDS
 
 /obj/item/quest_writ
-	name = "enchanted contract scroll"
-	desc = "A scroll oft known as a \"whispering scroll\". Enchanted to whisper the target's location to its bearer while they yet live, and to mark itself silently upon their death - so the bearer need bring no head, no hand, no token of proof beyond the writ itself.\n\
-	The magical protections make it resistant to damage and tampering. It will only whisper when carried on the person of the contract bearer."
+	name = "附魔契约卷轴"
+	desc = "一卷常被称为\"低语卷轴\"的卷轴。经附魔之后，只要目标仍在世，它便会向持有者低语其所在；而当目标身死，它又会悄然自行标记——因此持有者无需带回首级、断手，或契约本身之外的任何凭证。\n\
+	魔法的庇护使它难以被损毁或篡改。唯有被契约持有者随身携带时，它才会低语。"
 	icon = 'code/modules/roguetown/roguemachine/questing/questing.dmi'
 	icon_state = "scroll_quest_closed"
 	w_class = WEIGHT_CLASS_TINY
@@ -73,26 +73,26 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 		var/message = "[last_compass_direction]"
 		if(last_z_level_hint)
 			message += " ([last_z_level_hint])"
-		to_chat(quest_bearer, span_info("The scroll whispers to you, the target is[message]"))
+		to_chat(quest_bearer, span_info("卷轴向你低语，目标位于[message]"))
 
 /obj/item/quest_writ/examine(mob/user)
 	. = ..()
 	if(!assigned_quest)
 		return
 	if(!assigned_quest.quest_receiver_reference)
-		. += span_notice("This contract hasn't been claimed yet. Open it to claim it for yourself!")
+		. += span_notice("此契约尚未被领取。打开它即可将其领取为己所有！")
 	else if(assigned_quest.complete)
-		. += span_notice("\nThis contract is complete! Return it to the Contract Ledger to claim your reward.")
-		. += span_info("\nPlace it on the marked area or put it on the ledger.")
+		. += span_notice("\n此契约已完成！将其交还大契约台账即可领取报酬。")
+		. += span_info("\n把它放在标记区域，或置于台账之上。")
 	else
-		. += span_notice("\nThis contract is still in progress.")
+		. += span_notice("\n此契约仍在进行中。")
 
 /obj/item/quest_writ/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(P.get_sharpness())
-		to_chat(user, span_warning("The enchanted scroll resists your attempts to tear it."))
+		to_chat(user, span_warning("附魔卷轴抗拒你试图撕扯它的举动。"))
 		return
 	if(istype(P, /obj/item/paper))
-		to_chat(user, span_warning("The magical energies prevent you from combining this with other scrolls."))
+		to_chat(user, span_warning("魔法能量使你无法将其与其它卷轴合并。"))
 		return
 	if(istype(P, /obj/item/clothing/ring/signet))
 		var/obj/item/clothing/ring/signet/S = P
@@ -102,25 +102,25 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 			stamp_with_signet(P, user)
 			return
 		else
-			to_chat(user, span_warning("The ring hasn't been waxed."))
+			to_chat(user, span_warning("这枚戒指尚未蘸蜡。"))
 			return
 	..()
 
 /obj/item/quest_writ/proc/stamp_with_signet(obj/item/clothing/ring/signet/ring, mob/living/carbon/human/user)
 	if(!assigned_quest)
-		to_chat(user, span_warning("The scroll bears no active contract to stamp."))
+		to_chat(user, span_warning("卷轴上没有可供盖章的有效契约。"))
 		return
 	if(!(user.job in GLOB.crown_authority_roles))
-		to_chat(user, span_warning("Only a Steward, Clerk, or the Grand Duke may stamp a writ in the Crown's name."))
+		to_chat(user, span_warning("唯有总管、书记官或大公爵能以王室之名在契约上盖章。"))
 		return
 	if(assigned_quest.levy_exempt)
-		to_chat(user, span_warning("This contract already bears the levy-exempt stamp."))
+		to_chat(user, span_warning("此契约已盖有免税之印。"))
 		return
 	assigned_quest.levy_exempt = TRUE
 	update_quest_text()
 	playsound(src, 'sound/items/inqslip_sealed.ogg', 75, TRUE, 4)
 	log_game("[key_name(user)] stamped quest \"[assigned_quest.title || assigned_quest.quest_type]\" as LEVY EXEMPT via signet ring.")
-	to_chat(user, span_notice("You press the signet into the scroll. The Crown's seal glows faintly - this contract is now levy-exempt."))
+	to_chat(user, span_notice("你将印章按入卷轴。王室的印记微微发亮——此契约现已免税。"))
 
 /obj/item/quest_writ/proc/get_quest_assignees(mob/user, include_giver = FALSE)
 	var/list/assignees = list()
@@ -145,13 +145,13 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 
 	if(!assigned_quest.quest_receiver_reference)
 		if(assigned_quest.quest_giver_name && assigned_quest.quest_giver_name == user.real_name)
-			to_chat(user, span_warning("You cannot take a contract you yourself issued."))
+			to_chat(user, span_warning("你不能领取由你自己签发的契约。"))
 			return
 		if(!SStreasury.has_account(user))
-			to_chat(user, span_warning("No account on record - register with a Nervelock before taking a contract, lest there be no purse to pay you."))
+			to_chat(user, span_warning("查无账户记录——领取契约前请先在神经锁处登记，否则将无钱袋可支付予你。"))
 			return
 		assigned_quest.on_claim(user)
-		to_chat(user, span_notice("You claim this contract for yourself!"))
+		to_chat(user, span_notice("你将此契约领取为己所有！"))
 		update_quest_text()
 
 	opened = TRUE
@@ -165,7 +165,7 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 	opened = FALSE
 	update_icon_state()
 	SStgui.close_uis(src)
-	to_chat(user, span_notice("You roll the scroll shut. The whispering ceases."))
+	to_chat(user, span_notice("你将卷轴卷起合拢。低语随之停止。"))
 
 /obj/item/quest_writ/ui_state(mob/user)
 	return GLOB.hold_or_view_state
@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 	data["faction_group_word"] = F?.group_word
 	data["faction_name_singular"] = F?.name_singular
 	data["faction_name_plural"] = F?.name_plural
-	data["faction_progress_noun"] = F?.progress_noun || "foes"
+	data["faction_progress_noun"] = F?.progress_noun || "恶徒"
 	data["crimes"] = Q.rolled_crimes
 	data["sacral_invoked"] = Q.sacral_hook
 	data["oath_breach"] = Q.oath_breach
@@ -249,24 +249,24 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 
 	var/turf/user_turf = user ? get_turf(user) : get_turf(src)
 	if(!user_turf)
-		last_compass_direction = " No signal detected"
+		last_compass_direction = " 未侦测到信号"
 		last_z_level_hint = ""
 		return
 
-	last_compass_direction = " Searching for target..."
+	last_compass_direction = " 正在搜寻目标..."
 	last_z_level_hint = ""
 
 	var/turf/target_turf = assigned_quest.get_target_location()
 	if(!target_turf)
-		last_compass_direction = " location unknown"
+		last_compass_direction = " 位置不明"
 		last_z_level_hint = ""
 		return
 
 	if(target_turf.z != user_turf.z)
 		var/z_diff = abs(target_turf.z - user_turf.z)
 		last_z_level_hint = target_turf.z > user_turf.z ? \
-			"[z_diff] level\s above you" : \
-			"[z_diff] level\s below you"
+			"你上方 [z_diff] 层" : \
+			"你下方 [z_diff] 层"
 
 	var/dx = target_turf.x - user_turf.x
 	var/dy = target_turf.y - user_turf.y
@@ -274,23 +274,23 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 
 	var/direction_text = get_precise_direction_between(user_turf, target_turf)
 	if(!direction_text)
-		direction_text = "unknown direction"
+		direction_text = "未知方向"
 
 	var/distance_text
 	switch(distance)
 		if(0 to 7)
-			distance_text = " nearby"
+			distance_text = " 附近"
 		if(8 to 14)
-			distance_text = " very close"
+			distance_text = " 极近"
 		if(15 to 40)
-			distance_text = " close"
+			distance_text = " 较近"
 		if(41 to 100)
 			distance_text = ""
 		if(101 to INFINITY)
-			distance_text = " far away"
+			distance_text = " 遥远"
 
-	last_compass_direction = "[distance_text] ([distance] paces) to the [direction_text]"
+	last_compass_direction = "[distance_text]（[distance] 步）朝 [direction_text]"
 	if(!last_z_level_hint)
-		last_z_level_hint = "on this level"
+		last_z_level_hint = "本层"
 
 #undef WHISPER_COOLDOWN
