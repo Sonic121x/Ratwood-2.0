@@ -738,8 +738,8 @@
 // ============================================================================
 
 /obj/structure/roguemachine/vaultbank/bathhouse
-	name = "\improper 澡堂颌口金库"
-	desc = "一座生物机械方尖碑，守护着澡堂的收入。敲击它，就能震落属于你的那一份。"
+	name = "\improper 浴场颌口金库"
+	desc = "一座生物机械方尖碑，守护着浴场的收入。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Bathmaster", "Bathhouse Attendant")
 	alert_location = "the Bathhouse"
 	bash_floor = 500
@@ -749,7 +749,7 @@
 	return "bathhouse"
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_faction_label()
-	return "澡堂"
+	return "浴场"
 
 /obj/structure/roguemachine/vaultbank/bathhouse/can_issue_loan(mob/user)
 	if(!user)
@@ -757,19 +757,19 @@
 	return user.job == "Bathmaster"
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_authority_label()
-	return "澡堂总管"
+	return "浴场总管"
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_patronage_writ_path()
 	return /obj/item/patronage_writ/token
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_patron_explanation()
-	return "授予某人澡堂代理人身份，会将其标记为澡堂的可靠帮手。他们可以查阅欠澡堂债务者的名单，并以你的名义从澡堂 ZAD 金库派发 ZAD 告示。\n\n你或许会想将这一身份授予卑劣者与法外之徒。这确实是个强有力的选项，会让他们欠你人情——但一旦有人被发现身负澡堂的标记，教会与王权都可能因你与之合作而定你的罪。一般而言，经由合法的中间人更为稳妥。——总管府"
+	return "授予某人浴场代理人身份，会将其标记为浴场的可靠帮手。他们可以查阅欠浴场债务者的名单，并以你的名义从浴场 ZAD 金库派发 ZAD 告示。\n\n你或许会想将这一身份授予卑劣者与法外之徒。这确实是个强有力的选项，会让他们欠你人情——但一旦有人被发现身负浴场的标记，教会与王权都可能因你与之合作而定你的罪。一般而言，经由合法的中间人更为稳妥。——总管府"
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_patron_roster()
 	return SStreasury?.bathhouse_agents
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_patron_label()
-	return "澡堂"
+	return "浴场"
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_patron_cap()
 	return PATRON_CAP_BATHHOUSE

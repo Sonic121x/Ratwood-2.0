@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	to_chat(user, span_notice("<b>[special.name]</b>"))
 	to_chat(user, special.greet_text)
 	if(special.req_text)
-		to_chat(user, span_boldwarning("Requirements: [special.req_text]"))
+		to_chat(user, span_boldwarning("要求：[special.req_text]"))
 
 /proc/try_apply_character_post_equipment(mob/living/carbon/human/character, client/player)
 	var/datum/job/job
@@ -114,12 +114,12 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		if(virtue_check(virtue_type, heretic))
 			apply_virtue(character, virtue_type)
 		else
-			to_chat(character, "Incorrect Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
+			to_chat(character, "美德参数不正确！（非异端却选了异端美德）该美德将不会生效。")
 	if(virtuetwo_type && virtuous)
 		if(virtue_check(virtuetwo_type, heretic))
 			apply_virtue(character, virtuetwo_type)
 		else
-			to_chat(character, "Incorrect Second Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
+			to_chat(character, "第二美德参数不正确！（非异端却选了异端美德）该美德将不会生效。")
 
 // Quirks are paid for with quirk points first, then real TRIUMPH for any shortfall at two per point.
 // Skip a quirk if your untriumphant broke ass still can't afford it. Bank excess points for the roundend rebate.
@@ -136,11 +136,11 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	var/triumphs_spent = 0
 	for(var/datum/quirk/Q in player.prefs.quirks)
 		if(job && length(job.quirk_restrictions) && (Q.type in job.quirk_restrictions))
-			to_chat(character, span_warning("My duties as \a [character.job] leave no room for [Q.name]. It will not be applied."))
+			to_chat(character, span_warning("作为[character.job]，我的职责容不下[Q.name]。它不会生效。"))
 			continue
 		var/conflicting_trait = Q.blocked_by_incompatible_traits(character)
 		if(conflicting_trait)
-			to_chat(character, span_warning("[Q.name] conflicts with [conflicting_trait], something I already have. It will not be applied."))
+			to_chat(character, span_warning("[Q.name]与我本就拥有的[conflicting_trait]相冲突。它不会生效。"))
 			continue
 
 		if(available_points >= Q.point_cost)
