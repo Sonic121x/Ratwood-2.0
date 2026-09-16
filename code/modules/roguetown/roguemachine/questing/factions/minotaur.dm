@@ -1,8 +1,8 @@
 /datum/quest_faction/minotaur
 	id = QUEST_FACTION_MINOTAUR
-	name_singular = "minotaur"
-	name_plural = "minotaurs"
-	group_word = "herd"
+	name_singular = "牛头人"
+	name_plural = "牛头人"
+	group_word = "兽群"
 	faction_tag = FACTION_CAVES
 	category = FACTION_CAT_BEAST
 	mob_types = list(
