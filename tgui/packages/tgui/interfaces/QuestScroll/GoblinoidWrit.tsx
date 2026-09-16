@@ -37,33 +37,33 @@ export const GoblinoidWrit = (props: {
     recoveryDestination,
     recoveryCircumstance,
   } = props;
-  const folk = namePlural || 'spawn';
-  const band = groupWord || 'warband';
+  const folk = namePlural || '孽种';
+  const band = groupWord || '战团';
   return (
     <>
       <p style={writParagraph}>
-        <i>Notice posted by writ of the {rulerTitle}:</i>
+        <i>兹依 {rulerTitle} 之令状张布此告示:</i>
       </p>
       <p style={writParagraph}>
-        A {band} of <b>{folk}</b> infests the lands of {realm}. Spawn of the
-        dark stars, who sing to false gods and answer to no law. Such things
-        bear no name worth summons, no oath worth breaking, no soul worth
-        weighing.
+        一伙 {band} <b>{folk}</b> 侵扰 {realm} 之地.
+        此乃暗星之孽种, 向伪神歌唱, 不服任何律法.
+        此类之物无名可召, 无誓可违,
+        无魂可称.
       </p>
       <p style={writParagraph}>
-        <span style={caputLupinum}>SLAY THEM</span>, root and branch, where
-        they nest. The writ knows the brood and shall mark itself when the
-        deed is done.
+        <span style={caputLupinum}>尽诛之</span>, 连根拔起,
+        于其巢穴之处. 令状识得此巢, 事成之时
+        自会留痕.
       </p>
       <p style={writParagraph}>
-        Return the writ to the Contract Ledger and the bounty of{' '}
+        将此令状交回契约台账, 所悬之赏金{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}
           levyExempt={levyExempt}
           guildCutRate={guildCutRate}
         />{' '}
-        shall be paid.
+        即可领取.
       </p>
       {hasRecoveryAddendum && (
         <RecoveryAddendum

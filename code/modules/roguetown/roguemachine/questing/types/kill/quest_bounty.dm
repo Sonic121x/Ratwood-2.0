@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(quest_bounty_goblin_goons, list(
 		goblin_warlord_variant = TRUE
 		target_mob_type = /mob/living/carbon/human/species/goblin/npc/large
 		var/datum/quest_faction/goblin_faction = get_quest_faction(QUEST_FACTION_FOREST_GOBLIN)
-		boss_name = goblin_faction ? goblin_faction.generate_boss_name() : "the Goblin Warchief"
+		boss_name = goblin_faction ? goblin_faction.generate_boss_name() : "哥布林战酋"
 	else
 		target_mob_type = faction.pick_boss_mob_type()
 		if(!target_mob_type)
@@ -55,13 +55,13 @@ GLOBAL_LIST_INIT(quest_bounty_goblin_goons, list(
 	if(title)
 		return title
 	if(!boss_name)
-		return "Bring down a notorious outlaw"
-	return "Bring down [boss_name]"
+		return "缉杀臭名昭著的亡命之徒"
+	return "缉杀[boss_name]"
 
 /datum/quest/kill/bounty/get_objective_text()
 	if(!boss_name)
-		return "Slay [initial(target_mob_type.name)]."
-	return "Slay [boss_name] and the gang that shelters them."
+		return "斩杀[initial(target_mob_type.name)]。"
+	return "斩杀[boss_name]以及庇护其的党羽。"
 
 /datum/quest/kill/bounty/get_additional_reward(turf/origin_turf, turf/target_turf)
 	if(!target_mob_type)

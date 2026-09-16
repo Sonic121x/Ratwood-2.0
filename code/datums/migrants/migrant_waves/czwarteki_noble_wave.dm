@@ -1,5 +1,5 @@
 /datum/migrant_wave/czwarteki_noble
-	name = "Czwarteki Retinue"
+	name = "兹瓦尔特基随行队"
 	max_spawns = 1
 	weight = 50
 	track = MIGRANT_TRACK_SPECIAL
@@ -13,4 +13,4 @@
 		/datum/migrant_role/czwarteki/servant = 2,
 	)
 	min_optional_fills = 0
-	greet_text = "You are a Retinue under a Czwarteki Lord, be it diplomacy, war, or simple passing through the realm to see or assist an old alliance."
+	greet_text = "你是兹瓦尔特基领主麾下随行队的一员，无论是为外交、战争，还是仅仅穿越谷地去探望或援助一位旧盟友。"

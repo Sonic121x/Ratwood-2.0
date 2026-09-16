@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/freelancer
-	name = "Freifechter Fencer"
-	tutorial = "You are a graduate of the Czwarteki Freifechters - \"Freelancers\" - a prestigious fighting guild localized in the independent City-state of Szöréndnížina - the Capitol of Czwarteka, recognized as an encomium to Ravox by the Holy See. It was formed an odd thirty yils ago, but its visitors come from all over Western Grimoria. You have swung one weapon ten-thousand times, and not the other way around. This class is for experienced combatants who have a solid grasp on footwork and stamina management, master skills alone won't save your lyfe."
+	name = "自由斗剑团剑客"
+	tutorial = "你毕业于兹瓦尔特基的自由斗剑团——也就是「自由佣兵」——一个享有盛名的武斗行会，坐落于独立城邦瑟伦迪尼日纳，即兹瓦尔特基的首府，被教廷公认为献给拉沃克斯的颂礼。它建立不过三十来年，可访客却来自西格里莫里亚各处。你将同一件兵器挥练过上万次，而非样样浅尝辄止。这个职业属于真正有经验的战士，懂得步法与体力调配的人；光靠大师级技能，还救不了你的命。"
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/roguetown/mercenary/freelancer
@@ -30,7 +30,7 @@
 
 /datum/outfit/job/roguetown/mercenary/freelancer/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a master in the arts of the longsword. Wielder of Psydonia's most versatile and noble weapon, you needn't anything else. Your professionally made longsword facilitates moves from fechtbuchs the likes of The Etruscan Flower and Grenzelhoft's Wiedenhauer."))
+	to_chat(H, span_warning("你是长剑技艺的大师，是普赛多尼亚最百搭、最高贵之兵器的持用者，除此之外你无需他物。你那柄出自专业匠人之手的长剑，能让你施展诸如《伊特鲁斯卡之花》与格伦泽尔霍夫特《维登豪尔》等剑术谱中的招式。"))
 	l_hand = /obj/item/rogueweapon/scabbard/sword
 	belt = /obj/item/storage/belt/rogue/leather/sash
 	beltl = /obj/item/flashlight/flare/torch/lantern
@@ -49,23 +49,23 @@
 		)
 	if(H.mind)
 		var/weapons = list(
-			"Etruscan Longsword"	= /obj/item/rogueweapon/sword/long/etruscan,
-			"Reformist Longsword"	= /obj/item/rogueweapon/sword/long/etruscan/freifechter
+			"伊特鲁斯卡长剑"	= /obj/item/rogueweapon/sword/long/etruscan,
+			"改革派长剑"	= /obj/item/rogueweapon/sword/long/etruscan/freifechter
 		)
-		var/weaponchoice = input(H, "Draw a sword.", "As presented to me by Master Oktawiusz...") as anything in weapons
+		var/weaponchoice = input(H, "拔出一柄剑。", "由奥克塔维乌什大师呈交于我……") as anything in weapons
 		r_hand = weapons[weaponchoice]
 		var/armors = list(
-			"Fencing Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
-			"Fencing Jacket"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
+			"击剑胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
+			"击剑外套"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
 		)
-		var/armorchoice = input(H, "Don your armour.", "Security or Flexibility?") as anything in armors
+		var/armorchoice = input(H, "披上你的甲胄。", "要安全，还是要灵活？") as anything in armors
 		armor = armors[armorchoice]
 	H.merctype = 6
 
 /datum/advclass/mercenary/freelancer_lancer
-	name = "Freifechter Lancer"
-	tutorial = "You are a graduate of the Czwarteki Freifechters - \"Freelancers\" - part of a prestigious fighting guild localized in the independent City-state of Szöréndnížina - the Capitol of Czwarteka. It was formed an odd thirty yils ago, but its visitors come from all over Western Grimoria. You have swung one weapon ten-thousand times, and not the other way around. A Lancer and his pike are inseparable, and the first line of offense. You can choose to display the banners of the Reformist Order or your own State."
-	extra_context = "This class is for experienced players who have a solid grasp on footwork and stamina management, master skills alone won't save your lyfe. You make up for your inherent weaknesses and limitations with unique high-durability weapons."
+	name = "自由斗剑团长枪手"
+	tutorial = "你毕业于兹瓦尔特基的自由斗剑团——也就是「自由佣兵」——一个享有盛名的武斗行会，坐落于独立城邦瑟伦迪尼日纳，即兹瓦尔特基的首府。它建立不过三十来年，可访客却来自西格里莫里亚各处。你将同一件兵器挥练过上万次，而非样样浅尝辄止。长枪手与他的长枪不可分割，是进攻的第一线。你可以选择展示改革派修会的旗帜，或你自己城邦的旗帜。"
+	extra_context = "这个职业属于真正有经验的玩家，懂得步法与体力调配的人；光靠大师级技能，还救不了你的命。你以独特的高耐久兵器，来弥补自身固有的弱点与局限。"
 	allowed_sexes = list(MALE, FEMALE)
 
 	cmode_music = 'sound/music/frei_lancer.ogg'
@@ -95,7 +95,7 @@
 
 /datum/outfit/job/roguetown/mercenary/freelancer_lancer/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You put complete trust in your polearm, the most effective weapon the world has seen. Why wear armour when you cannot be hit? You can choose to display the banners of the Reformist Order or your own State."))
+	to_chat(H, span_warning("你将全部信任都交给了长柄兵器，这种世上最高效的武器。既然敌人根本碰不到你，为何还要穿甲？你可以选择展示改革派修会的旗帜，或你自己城邦的旗帜。"))
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
 	belt = /obj/item/storage/belt/rogue/leather/sash
@@ -115,18 +115,18 @@
 		)
 	if(H.mind)
 		var/weapons = list(
-			"Graduate's Spear"				= /obj/item/rogueweapon/spear/boar/frei,
-			"Banner of Szöréndnížina"		= /obj/item/rogueweapon/spear/boar/frei/pike,
-			"Banner of Psydonic Reformism"	= /obj/item/rogueweapon/spear/boar/frei/pike/reformist
+			"毕业长枪"				= /obj/item/rogueweapon/spear/boar/frei,
+			"瑟伦迪尼日纳的旗帜"		= /obj/item/rogueweapon/spear/boar/frei/pike,
+			"普赛顿改革派的旗帜"	= /obj/item/rogueweapon/spear/boar/frei/pike/reformist
 		)
-		var/weaponchoice = input(H, "Spear or Pike-Banner?", "As presented to me by Lance-Master Szörénsław...") as anything in weapons
+		var/weaponchoice = input(H, "要长矛，还是要旗枪？", "由长枪教头瑟伦斯瓦夫呈交于我……") as anything in weapons
 		r_hand = weapons[weaponchoice]
 	H.merctype = 6
 
 /datum/advclass/mercenary/freelancer_sabrist
-	name = "Freifechter Sabrist"
-	tutorial = "You are a graduate of the Czwarteki Freifechters - \"Freelancers\" - part of a prestigious fighting guild localized in the independent City-state of Szöréndnížina - the Capitol of Czwarteka. It was formed an odd thirty yils ago, but its visitors come from all over Western Grimoria. You have swung one weapon ten-thousand times, and not the other way around. Your faith is stalwart in the teachings of the Psydonic Reformation, and you've become a warrior poet of sorts - educating the peasantry in the ways of the New Word and angering the Orthodoxy in turn. You've left your cradle in search of riches to fund your people's armies. Sabrists are renowned for their dexterity and speed, but lack the adaptability of longswordmen."
-	extra_context = "This class is for experienced players who have a solid grasp on footwork and stamina management, master skills alone won't save your lyfe. You make up for your inherent weaknesses and limitations with \"master strike\" mechanics."
+	name = "自由斗剑团军刀手"
+	tutorial = "你毕业于兹瓦尔特基的自由斗剑团——也就是「自由佣兵」——一个享有盛名的武斗行会，坐落于独立城邦瑟伦迪尼日纳，即兹瓦尔特基的首府。它建立不过三十来年，可访客却来自西格里莫里亚各处。你将同一件兵器挥练过上万次，而非样样浅尝辄止。你对普赛顿改革派的教义笃信不渝，也成了某种意义上的战士诗人——向乡民传授「新道」的教法，因而惹恼了正统派。你离开故土，四处寻求财富，以资助你族人的军队。军刀手以灵巧与迅捷闻名，却缺少长剑手那般的应变之力。"
+	extra_context = "这个职业属于真正有经验的玩家，懂得步法与体力调配的人；光靠大师级技能，还救不了你的命。你以「大师剑招」的机制，来弥补自身固有的弱点与局限。"
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/roguetown/mercenary/freelancer_sabrist
@@ -156,7 +156,7 @@
 
 /datum/outfit/job/roguetown/mercenary/freelancer_sabrist/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a master in the arts of the sabre. Wielder of Aavnr's sword by excellence, you needn't anything else. Your professionally made sabre facilitates moves from traditional Aavnic fencing treatises."))
+	to_chat(H, span_warning("你是军刀技艺的大师，是阿夫尼克最卓越之剑的持用者，除此之外你无需他物。你那柄出自专业匠人之手的军刀，能让你施展阿夫尼克传统击剑论著中的招式。"))
 	l_hand = /obj/item/rogueweapon/scabbard/sword
 	r_hand = /obj/item/rogueweapon/sword/sabre/freifechter
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/navaja/freifechter
@@ -177,9 +177,9 @@
 		)
 	if(H.mind)
 		var/armors = list(
-			"Fencing Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
-			"Fencing Jacket"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
+			"击剑胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
+			"击剑外套"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
 		)
-		var/armorchoice = input(H, "Don your armour.", "Security or Flexibility?") as anything in armors
+		var/armorchoice = input(H, "披上你的甲胄。", "要安全，还是要灵活？") as anything in armors
 		armor = armors[armorchoice]
 	H.merctype = 6

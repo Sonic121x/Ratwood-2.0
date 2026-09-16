@@ -3,8 +3,8 @@
 #define BM_HOARD_LOG_MAX 50
 
 /obj/structure/roguemachine/bathvend
-	name = "BRASSFACE"
-	desc = "Sweet, sweet, addiction. Love in the veins, comfort in my heart."
+	name = "黄铜面"
+	desc = "甜美、甜美的成瘾。爱在血脉里流淌，慰藉在我心中安歇。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "brassface"
 	density = TRUE
@@ -62,7 +62,7 @@
 				return
 			return attack_hand(user)
 		else
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
@@ -95,7 +95,7 @@
 	if(!ishuman(user))
 		return
 	if(locked)
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("锁着呢，当然。"))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

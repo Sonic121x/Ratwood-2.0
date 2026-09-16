@@ -60,16 +60,16 @@
 	var/datum/blockade/B = blockade_ref?.resolve()
 	var/datum/economic_region/ER = B?.get_region()
 	if(ER)
-		return "Break the blockade of [ER.name]"
+		return "解除[ER.name]的封锁"
 	if(region)
-		return "Blockade Defense: [region]"
-	return "Break a trade blockade"
+		return "封锁防御：[region]"
+	return "破除贸易封锁"
 
 /datum/quest/kill/blockade_defense/get_objective_text()
-	var/wave_label = current_wave > 0 ? "Wave [current_wave]/[BLOCKADE_TOTAL_WAVES]" : "Three waves await"
+	var/wave_label = current_wave > 0 ? "第 [current_wave]/[BLOCKADE_TOTAL_WAVES] 波" : "三波攻势将至"
 	if(!faction)
-		return "[wave_label]. Hold the line."
-	return "[wave_label]. Rout the [faction.name_plural]."
+		return "[wave_label]。坚守阵线。"
+	return "[wave_label]。击溃[faction.name_plural]。"
 
 /datum/quest/kill/blockade_defense/on_first_pop()
 	return
@@ -84,7 +84,7 @@
 	if(current_wave > 0 && wave_timer_id)
 		var/left = timeleft(wave_timer_id)
 		if(left > 0)
-			data["blockade_timer_label"] = "Wave [current_wave] ends in"
+			data["blockade_timer_label"] = "第 [current_wave] 波结束倒计时"
 			data["blockade_timer_seconds"] = round(left / 10)
 
 /// Compass target: live wave mobs when present, otherwise the landmark itself. The base impl
@@ -129,7 +129,7 @@
 	if(get_dist(bearer_turf, landmark_turf) > 7)
 		return
 	armed = FALSE
-	announce_to_bearer("<b>You have reached the blockade.</b> Ready yourselves.")
+	announce_to_bearer("<b>你们已抵达封锁线。</b>做好准备。")
 	spawn_wave(1)
 
 /datum/quest/kill/blockade_defense/proc/count_defenders(obj/effect/landmark/quest_spawner/landmark)
@@ -184,12 +184,12 @@
 	wave_timer_id = addtimer(CALLBACK(src, PROC_REF(on_wave_timeout), wave_num), BLOCKADE_WAVE_TIMER_DS, TIMER_STOPPABLE)
 	// Chat pings at 7.5 min, 5 min and 2 min left. Skipped if the wave timer is shorter than the threshold.
 	if(BLOCKADE_WAVE_TIMER_DS > (7.5 MINUTES))
-		wave_warn_7m30s_id = addtimer(CALLBACK(src, PROC_REF(warn_time_left), wave_num, "seven and a half minutes"), BLOCKADE_WAVE_TIMER_DS - (7.5 MINUTES), TIMER_STOPPABLE)
+		wave_warn_7m30s_id = addtimer(CALLBACK(src, PROC_REF(warn_time_left), wave_num, "七分半钟"), BLOCKADE_WAVE_TIMER_DS - (7.5 MINUTES), TIMER_STOPPABLE)
 	if(BLOCKADE_WAVE_TIMER_DS > (5 MINUTES))
-		wave_warn_5m_id = addtimer(CALLBACK(src, PROC_REF(warn_time_left), wave_num, "five minutes"), BLOCKADE_WAVE_TIMER_DS - (5 MINUTES), TIMER_STOPPABLE)
+		wave_warn_5m_id = addtimer(CALLBACK(src, PROC_REF(warn_time_left), wave_num, "五分钟"), BLOCKADE_WAVE_TIMER_DS - (5 MINUTES), TIMER_STOPPABLE)
 	if(BLOCKADE_WAVE_TIMER_DS > (2 MINUTES))
-		wave_warn_2m_id = addtimer(CALLBACK(src, PROC_REF(warn_time_left), wave_num, "two minutes"), BLOCKADE_WAVE_TIMER_DS - (2 MINUTES), TIMER_STOPPABLE)
-	announce_to_bearer("<b>Wave [wave_num]/[BLOCKADE_TOTAL_WAVES]</b> descends on you. You have [BLOCKADE_WAVE_TIMER_DS / 600] minutes.")
+		wave_warn_2m_id = addtimer(CALLBACK(src, PROC_REF(warn_time_left), wave_num, "两分钟"), BLOCKADE_WAVE_TIMER_DS - (2 MINUTES), TIMER_STOPPABLE)
+	announce_to_bearer("<b>第 [wave_num]/[BLOCKADE_TOTAL_WAVES] 波</b>正向你们压来。你们有 [BLOCKADE_WAVE_TIMER_DS / 600] 分钟。")
 	quest_scroll?.update_quest_text()
 
 /datum/quest/kill/blockade_defense/proc/warn_time_left(wave_num, label)
@@ -197,7 +197,7 @@
 		return
 	if(wave_num != current_wave)
 		return
-	announce_to_bearer("<b>Wave [wave_num]:</b> [label] remaining.")
+	announce_to_bearer("<b>第 [wave_num] 波：</b>剩余 [label]。")
 
 /// clear_wave_timers covers the wave + both warn timers; arm_timer_id lives outside it, so an
 /// unsanctioned qdel mid-wave (or while still armed) would otherwise leak a stale callback.
@@ -228,7 +228,7 @@
 	if(current_wave >= BLOCKADE_TOTAL_WAVES)
 		mark_complete()
 		return
-	announce_to_bearer("<b>Wave [current_wave] broken.</b> Another wave gathers...")
+	announce_to_bearer("<b>第 [current_wave] 波已破。</b>又有一波正在集结...")
 	addtimer(CALLBACK(src, PROC_REF(spawn_wave), current_wave + 1), 5 SECONDS)
 
 /datum/quest/kill/blockade_defense/proc/on_wave_timeout(wave_num)
@@ -243,7 +243,7 @@
 		return
 	failed = TRUE
 	clear_wave_timers()
-	announce_to_bearer("<b>The blockade holds.</b> The scroll smolders and crumbles in your grip.")
+	announce_to_bearer("<b>封锁未能破除。</b>卷轴在你手中冒出青烟，片片碎裂。")
 	record_round_statistic(STATS_BLOCKADE_CONTRACTS_FAILED, 1)
 	var/datum/blockade/B = blockade_ref?.resolve()
 	if(B)
@@ -263,21 +263,21 @@
 /// owns the outcome regardless of elapsed time.
 /datum/quest/kill/blockade_defense/proc/recall_blocker()
 	if(failed)
-		return "the writ has already lapsed"
+		return "契约已经失效"
 	if(complete)
-		return "the blockade is already broken"
+		return "封锁已被破除"
 	// current_wave > 0 means a wave has actually spawned - the fellowship is committed.
 	// armed == FALSE before the scroll is opened (pre-claim), so we can't use !armed
 	// here or an untouched writ would incorrectly read as "already engaged".
 	if(current_wave > 0)
-		return "the fellowship has already engaged the blockade"
+		return "冒险团已与封锁守军交战"
 	if(!issued_at)
-		return "the writ's issue time is unknown"
+		return "契约的签发时间不明"
 	var/elapsed = world.time - issued_at
 	if(elapsed < BLOCKADE_RECALL_WINDOW_DS)
 		var/remaining = BLOCKADE_RECALL_WINDOW_DS - elapsed
 		var/minutes_left = max(1, round(remaining / 600))
-		return "the bearer has [minutes_left] minute(s) left to reach the blockade before it can be recalled"
+		return "持契者尚有 [minutes_left] 分钟可抵达封锁，之后方可召回"
 	return null
 
 /datum/quest/kill/blockade_defense/proc/can_recall()
@@ -342,12 +342,12 @@
 					record_featured_stat(FEATURED_STATS_TAX_PAYERS, lead, tax_amt)
 					record_round_statistic(STATS_TAXES_COLLECTED, tax_amt)
 			record_round_statistic(STATS_BLOCKADE_REWARDS_PAID, payout)
-			announce_to_bearer("The final wave breaks. The rewards have been transferred to your account. Gross: [payout] mammons. Tax: [tax_amt] mammons. Net: [payout - tax_amt] mammons.")
+			announce_to_bearer("最后一波已破。报酬已转入你的账户。总额：[payout] 玛门币。税款：[tax_amt] 玛门币。净额：[payout - tax_amt] 玛门币。")
 		else
 			SStreasury.mint(SStreasury.discretionary_fund, payout, "Blockade defense reward (unbanked bearer)")
-			announce_to_bearer("The final wave breaks. The Crown holds your share - return to the Nerve Master to collect.")
+			announce_to_bearer("最后一波已破。你的份额由王室保管——请回到神经主处领取。")
 	else
-		announce_to_bearer("The final wave breaks. This was a Request - no reward is due.")
+		announce_to_bearer("最后一波已破。此乃一项请求——并无报酬。")
 	var/datum/threat_region/TR = SSregionthreat.get_region(region)
 	if(TR && TR.banditry_hoard > 0)
 		var/spoils = TR.banditry_hoard
@@ -359,10 +359,10 @@
 			if(spoils_tax > 0)
 				record_featured_stat(FEATURED_STATS_TAX_PAYERS, lead, spoils_tax)
 				record_round_statistic(STATS_TAXES_COLLECTED, spoils_tax)
-			announce_to_bearer("The bandits' hoard is seized - [spoils] mammons of stolen coin. The Crown claims [spoils_tax] as Recovered Spoils. Net: [spoils - spoils_tax] mammons.")
+			announce_to_bearer("匪徒的窖藏已被查获——[spoils] 玛门币的赃币。王室以「追回赃物」之名取走 [spoils_tax]。净额：[spoils - spoils_tax] 玛门币。")
 		else
 			SStreasury.mint(SStreasury.discretionary_fund, spoils, "Recovered Spoils (unbanked bearer, [region])")
-			announce_to_bearer("The bandits' hoard of [spoils] mammons is seized in the Crown's name.")
+			announce_to_bearer("匪徒 [spoils] 玛门币的窖藏已以王室之名查获。")
 		GLOB.azure_round_stats[STATS_BANDITRY_HOARD_OUTSTANDING] = SSeconomy.total_banditry_hoard()
 	var/obj/item/quest_writ/S = quest_scroll
 	if(S && !QDELETED(S))
@@ -381,13 +381,13 @@
 		return title
 	// TODO: flavor - plain placeholder, rewrite
 	if(region)
-		return "Hoard Recovery: [region]"
-	return "Hoard Recovery"
+		return "寻宝：[region]"
+	return "寻宝"
 
 /datum/quest/kill/blockade_defense/hoard_recovery/get_objective_text()
-	var/wave_label = current_wave > 0 ? "Wave [current_wave]/[BLOCKADE_TOTAL_WAVES]" : "Three waves await"
+	var/wave_label = current_wave > 0 ? "第 [current_wave]/[BLOCKADE_TOTAL_WAVES] 波" : "三波攻势将至"
 	// TODO: flavor - plain placeholder, rewrite
 	if(!faction)
-		return "[wave_label]. Clear the brigands and reclaim the hoard."
-	return "[wave_label]. Clear the [faction.name_plural] and reclaim the hoard."
+		return "[wave_label]。清剿匪徒，夺回窖藏。"
+	return "[wave_label]。清剿[faction.name_plural]，夺回窖藏。"
 

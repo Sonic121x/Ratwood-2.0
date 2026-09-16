@@ -46,12 +46,12 @@ export const SearchBar = (props: Props) => {
           color: INK_SOFT,
         }}
       >
-        Search all goods:
+        搜索全部货物:
       </span>
       <Input
         value={draft}
         onChange={setDraft}
-        placeholder="Type to search across categories..."
+        placeholder="输入以跨分类搜索..."
         width="280px"
       />
       {!!draft && (
@@ -63,7 +63,7 @@ export const SearchBar = (props: Props) => {
             act('clear_search');
           }}
         >
-          Clear
+          清除
         </button>
       )}
     </div>

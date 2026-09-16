@@ -1,11 +1,11 @@
 /datum/quest_faction/wild_beast
 	id = QUEST_FACTION_WILD_BEAST
-	name_singular = "beast"
-	name_plural = "beasts"
-	group_word = "pack"
+	name_singular = "野兽"
+	name_plural = "野兽"
+	group_word = "兽群"
 	faction_tag = FACTION_WOLFS
 	category = FACTION_CAT_BEAST
-	progress_noun = "beasts"
+	progress_noun = "野兽"
 	mob_types = list(
 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/bobcat = 25,
