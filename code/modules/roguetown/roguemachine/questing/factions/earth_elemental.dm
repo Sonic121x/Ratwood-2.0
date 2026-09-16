@@ -1,9 +1,9 @@
 /datum/quest_faction/earth_elemental
 	id = QUEST_FACTION_EARTH_ELEMENTAL
-	name_singular = "earth elemental"
-	name_plural = "earth elementals"
-	group_word = "host"
-	progress_noun = "elementals"
+	name_singular = "土元素"
+	name_plural = "土元素"
+	group_word = "群"
+	progress_noun = "元素"
 	faction_tag = "earth_elemental"
 	can_blockade = FALSE
 	category = FACTION_CAT_ELEMENTAL
