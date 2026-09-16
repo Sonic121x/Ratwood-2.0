@@ -5,13 +5,13 @@ type SealBanner = { mark: string; label: string; color: WaxSealColor };
 
 export const COMMISSION_SEAL: SealBanner = {
   mark: 'C',
-  label: 'Commissioned',
+  label: '已受命',
   color: 'amber',
 };
 
 export const EXEMPT_SEAL: SealBanner = {
   mark: 'E',
-  label: 'Levy Exempt',
+  label: '免征关税',
   color: 'green',
 };
 
@@ -47,14 +47,14 @@ export const SealLine = (props: {
   bearer?: string;
 }) => {
   const { rulerTitle, issuedBy, issuedOn, bearer } = props;
-  const issuer = issuedBy || `the ${rulerTitle}`;
-  const dateText = issuedOn ? `Sealed this ${issuedOn}, ` : '';
+  const issuer = issuedBy || rulerTitle;
+  const dateText = issuedOn ? `钤印于 ${issuedOn}, ` : '';
   const bearerClause = bearer
-    ? `given unto ${bearer} for execution.`
-    : `given unto whoever shall take up this writ for execution.`;
+    ? `授予 ${bearer} 执行.`
+    : `授予凡愿领此令状执行之人.`;
   return (
     <p style={sealLine}>
-      {dateText}by writ of {issuer}, {bearerClause}
+      {dateText}依 {issuer} 之令状, {bearerClause}
     </p>
   );
 };
