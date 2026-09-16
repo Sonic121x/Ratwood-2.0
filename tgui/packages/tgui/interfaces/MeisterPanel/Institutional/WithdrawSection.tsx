@@ -28,7 +28,7 @@ export const WithdrawSection = ({
 
   return (
     <>
-      <div style={sectionHeaderStyle}>Direct Withdrawal</div>
+      <div style={sectionHeaderStyle}>直接提款</div>
       {!!fund.withdraw_rule && (
         <div
           style={{
@@ -41,7 +41,7 @@ export const WithdrawSection = ({
         </div>
       )}
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Amount</div>
+        <div style={fieldLabelStyle}>金额</div>
         <div style={fieldValueStyle}>
           <input
             type="number"
@@ -51,7 +51,7 @@ export const WithdrawSection = ({
             onChange={(e) => setAmount(e.target.value)}
             style={{ ...inkInputStyle, width: 110 }}
           />
-          <span style={{ marginLeft: 6, color: INK_FAINT }}>mammon</span>
+          <span style={{ marginLeft: 6, color: INK_FAINT }}>玛门</span>
         </div>
       </div>
       <div style={{ marginTop: 6, textAlign: 'right' }}>
@@ -67,7 +67,7 @@ export const WithdrawSection = ({
             setAmount('');
           }}
         >
-          Draw Coin
+          提取钱币
         </button>
       </div>
     </>
