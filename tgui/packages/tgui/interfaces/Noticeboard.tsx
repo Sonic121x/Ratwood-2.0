@@ -21,20 +21,20 @@ export const Noticeboard = () => {
   const [tab, setTab] = useState<TabKey>('postings');
 
   return (
-    <Window title="Noticeboard" width={1000} height={760} theme="parchment">
+    <Window title="告示板" width={1000} height={760} theme="parchment">
       <Window.Content scrollable>
         <div style={{ ...pageStyle, position: 'relative' }}>
           <button
             type="button"
-            title="Refresh market data (5s cooldown)"
+            title="刷新市场数据 (5s 冷却)"
             style={{ ...inkButtonStyle({}), position: 'absolute', top: 8, right: 8 }}
             onClick={() => act('refresh_market')}
           >
             ↻
           </button>
-          <div style={titleStyle}>The Notice Board</div>
+          <div style={titleStyle}>告示板</div>
           <div style={subtitleStyle}>
-            of {data.realm_name || 'the realm'} &middot; postings of the realm and her commons
+            {data.realm_name || '王国'} &middot; 王国与民间的告示
           </div>
           <hr style={rulerStyle} />
 
@@ -43,19 +43,19 @@ export const Noticeboard = () => {
               style={tabStyle(tab === 'postings')}
               onClick={() => setTab('postings')}
             >
-              Postings
+              告示
             </div>
             <div
               style={tabStyle(tab === 'avisa')}
               onClick={() => setTab('avisa')}
             >
-              The Avisa
+              公报
             </div>
             <div
               style={tabStyle(tab === 'roster')}
               onClick={() => setTab('roster')}
             >
-              Mercenary Roster
+              佣兵名册
             </div>
           </div>
 
