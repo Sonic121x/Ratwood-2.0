@@ -184,10 +184,10 @@
 /// CAFFIEND
 
 /datum/charflaw/addiction/caffiend
-	name = "Caffiend"
-	desc = "I can't start my day without a cup of tea or coffee."
+	name = "咖啡成瘾"
+	desc = "没有一杯茶或咖啡，我这一天就没法开始。"
 	time = 40 MINUTES
-	needsate_text = "I need a hot brew."
+	needsate_text = "我需要来杯热饮。"
 
 /// GOD-FEARING
 
