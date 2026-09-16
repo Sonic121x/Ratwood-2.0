@@ -1,8 +1,8 @@
 /datum/quest_faction/orc
 	id = QUEST_FACTION_ORC
-	name_singular = "orc"
-	name_plural = "orcs"
-	group_word = "warband"
+	name_singular = "兽人"
+	name_plural = "兽人"
+	group_word = "战团"
 	faction_tag = FACTION_ORCS
 	can_blockade = TRUE
 	category = FACTION_CAT_GOBLINOID
@@ -18,9 +18,9 @@
 		/mob/living/carbon/human/species/orc/npc/warlord = 100,
 	)
 	boss_title_templates = list(
-		"Warlord %N",
-		"%N Skullcleaver",
-		"%N the Mighty",
-		"Chieftain %N",
+		"%N 督军",
+		"%N 碎颅者",
+		"%N 强者",
+		"%N 酋长",
 	)
 	boss_name_file = "strings/rt/names/other/halforcm.txt"

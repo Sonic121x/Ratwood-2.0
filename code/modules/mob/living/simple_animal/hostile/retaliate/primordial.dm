@@ -35,7 +35,7 @@
 /datum/intent/simple/claw/primordial
 	name = "claw"
 	icon_state = "instrike"
-	attack_verb = list("claws", "pecks")
+	attack_verb = list("抓", "啄")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
@@ -71,7 +71,7 @@
 	return
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/fire
-	name = "flame primordial"
+	name = "火焰源灵"
 	icon_state = "primordial_fire"
 	icon_living = "primordial_fire"
 	icon_dead = ""
@@ -109,7 +109,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/fire/ability(turf/target_location, mob/living/user)
 	if(world.time < src.next_ability_use)
-		to_chat(user, "[src] is not yet ready to use it's special ability.")
+		to_chat(user, "[src]尚未准备好使用其特殊能力。")
 		return FALSE
 	if(!do_after(src,1 SECONDS, src))
 		return
@@ -122,7 +122,7 @@
 
 	var/dir_angle = ATAN2(dy, dx) // radians
 
-	visible_message(span_danger("[src] exhales a cone of searing fire!"))
+	visible_message(span_danger("[src]喷出一股灼热火焰！"))
 
 	for(var/turf/T in view(range, src))
 		var/tx = T.x - src.x
@@ -151,7 +151,7 @@
 	return TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/water
-	name = "water primordial"
+	name = "流水源灵"
 	icon_state = "primordial_water"
 	icon_living = "primordial_water"
 	icon_dead = ""
@@ -189,20 +189,20 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/water/ability(turf/target_location, mob/living/user)
 	if(world.time < src.next_ability_use)
-		to_chat(user, "[src] is not yet ready to use it's special ability.")
+		to_chat(user, "[src]尚未准备好使用其特殊能力。")
 		return FALSE
 	if(!do_after(src,1 SECONDS, src))
 		return
 	if(!target_location)
 		return
-	visible_message(span_danger("[src] unleashes a spiralling wave of floodwaters!"))
+	visible_message(span_danger("[src]释放出一股盘旋的洪水！"))
 	src.next_ability_use = world.time + src.ability_cooldown
 	// Create the whirlpool effect centered on the target that handles temporary tiles
 	new /obj/effect/whirlpool(target_location)
 
 /obj/effect/whirlpool
-	name = "floodwave"
-	desc = "A swirling wavepool churns violently."
+	name = "洪波"
+	desc = "一股翻腾的漩涡猛烈搅动着。"
 	icon_state = "blueshatter2"
 	anchored = TRUE
 	density = FALSE
@@ -259,7 +259,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/air
-	name = "air primordial"
+	name = "气流源灵"
 	icon_state = "primordial_air"
 	icon_living = "primordial_air"
 	icon_dead = ""
@@ -298,7 +298,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/air/ability(turf/target_location, mob/living/user)
 	if(world.time < src.next_ability_use)
-		to_chat(user, "[src] is not yet ready to use it's special ability.")
+		to_chat(user, "[src]尚未准备好使用其特殊能力。")
 		return FALSE
 	if(!do_after(src,1 SECONDS, src))
 		return
@@ -335,7 +335,7 @@
 						continue
 					knockback(L, dir_to_target, 8)
 				new /obj/effect/temp_visual/gust(T, dir_to_target)
-	visible_message(span_danger("[src] exhales a violent gust of wind!"))
+	visible_message(span_danger("[src]喷出一股猛烈的狂风！"))
 	playsound(src, 'sound/weather/rain/wind_6.ogg', 100, TRUE)
 
 
