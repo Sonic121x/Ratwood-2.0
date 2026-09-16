@@ -2,7 +2,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
-	name = "meat"
+	name = "肉块"
 	icon = 'modular/Neu_Food/icons/raw/raw_meat.dmi'
 	icon_state = "meatslab"
 	slice_batch = TRUE // so it takes more time, changed from FALSE
@@ -18,9 +18,9 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat_rotten
 	eat_effect = /datum/status_effect/debuff/rotfood
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_QUARTER_MEAL)
-	name = "rotten meat"
-	desc = "This was once edible. It is now only a putrid mess, except to the most steadfast \
-	of stomachs."
+	name = "腐肉"
+	desc = "它曾经还能入口。如今只剩一摊腐臭的烂肉，除非你有一副最坚忍\
+	的肠胃，那才另当别论。"
 	icon = 'modular/Neu_Food/icons/raw/raw_meat.dmi'
 	icon_state = "meat_rotten"
 
@@ -37,20 +37,20 @@
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src] into a nitzel."))
+			to_chat(user, span_notice("把[src]拍松成炸肉排坯。"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/nitzel(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀压！"))
 	else
 		return ..()
 
 /* ............. Generic Steak ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2
-	name = "raw meat"
+	name = "生肉排"
 	icon_state = "meatsteak"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
@@ -60,12 +60,12 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/get_mechanics_examine(mob/user)
     . = ..()
-    . += span_info("Chopping raw meat on a table with a knife, cleaver, or dagger turns it into mince. Mince can be used for advanced recipes, or used to make 'more out of less' in a stew's broth.")
-    . += span_info("Left-clicking a fire while holding a knife, dagger, or stake in your off-hand allows you to roast raw meat. Roasting meat is quicker than cooking it and can be done without proper cutlery, but has a higher chance of failure.")
+    . += span_info("在桌上用刀、剁刀或匕首切生肉，可以把它变成肉糜。肉糜可用于高级菜谱，也能在炖菜的高汤里“以小博大”。")
+    . += span_info("副手持刀、匕首或木桩时，左键点击火焰即可烤制生肉。烤肉比烹煮更快，无需正规厨具也能进行，但失败的几率更高。")
 
 /* ............. Pork (Fatty Sprite) ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/fatty //pork
-	name = "raw pork"
+	name = "生猪肉"
 	icon_state = "pork"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fatty/roast
 	slices_num = 3
@@ -76,7 +76,7 @@
 
 /* ............. Pork Belly ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/pork_belly
-	name = "pork belly"
+	name = "猪五花肉"
 	icon_state = "pork_belly"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
 	slices_num = 4
@@ -86,7 +86,7 @@
 
 /* ............. Bacon ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
-	name = "raw bacon"
+	name = "生培根"
 	icon_state = "bacon"
 	slice_path = null
 	slices_num = 0
@@ -97,14 +97,14 @@
 
 /* ............. Spider Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider // Low-nutrient, kind of gross. Survival food.
-	name = "spidermeat"
+	name = "蜘蛛肉"
 	icon_state = "spidermeat"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/fried
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/spider
 	slices_num = 2
 	cooked_smell = /datum/pollutant/food/fried_spidermeat
-	tastes = list("chitin" = 1, "mild venom" = 1)
+	tastes = list("甲壳味" = 1, "微毒味" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/attackby(obj/item/I, mob/living/user)
 	update_cooktime(user)
@@ -112,19 +112,19 @@
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src] into a schnitzel."))
+			to_chat(user, span_notice("把[src]拍松成蛛肉炸排坯。"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/schnitzel(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀压！"))
 	else
 		return ..()
 
 /* ............. Whole Bird ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry
-	name = "plucked bird"
+	name = "褪毛禽肉"
 	icon_state = "halfchicken"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
@@ -136,7 +136,7 @@
 
 /* ............. Chicken Cutlet (Drumstick) ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
-	name = "bird meat"
+	name = "禽肉"
 	icon_state = "chickencutlet"
 	ingredient_size = 2
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
@@ -151,20 +151,20 @@
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src]."))
+			to_chat(user, span_notice("把[src]拍松。"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/chickentender(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀压！"))
 	else
 		return ..()
 
 /* ............. Crab Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/crab
-	name = "crab meat"
-	desc = "A chunk of raw crab meat, absolutely wonderful."
+	name = "蟹肉"
+	desc = "一块生蟹肉，鲜美得不得了。"
 	icon_state = "crabmeatraw"
 	slice_path = null
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/crab/fried
@@ -178,20 +178,20 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, "<span class='notice'>Covering the crab with butterdough...</span>")
+			to_chat(user, "<span class='notice'>用黄油面皮把蟹肉包起来……</span>")
 			if(do_after(user,short_cooktime, target = src))
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put it on a table!"))
+			to_chat(user, span_warning("你得先把它放到桌上！"))
 		return TRUE
 	. = ..()
 
 /* ............. Cabbit Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit
-	name = "raw cabbit meat"
+	name = "生卡比特肉"
 	icon_state = "cabbitcutlet"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/rabbit
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried
@@ -201,7 +201,7 @@
 
 /* ............. Volf Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf
-	name = "raw volf meat"
+	name = "生沃尔夫肉"
 	icon_state = "volfstrip"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef		//Honestly, we don't need our own minced type on this one.
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried
@@ -209,8 +209,8 @@
 
 /* ............. Rous Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/rat
-	name = "raw rous meat"
-	desc = "A delicacy for some races, whilst others will turn up their nose at such... Sewer meat."
+	name = "生鼠肉"
+	desc = "对某些种族来说是一道珍馐，而另一些则会对此嗤之以鼻……下水道里的肉。"
 	icon_state = "rat"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef		//Honestly, we don't need our own minced type on this one.
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/rat/fried
@@ -218,8 +218,8 @@
 
 /* ............. Bear Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/bear
-	name = "raw bear meat"
-	desc = "Grow some hair on yer chest lad!"
+	name = "生熊肉"
+	desc = "小伙子，吃了它好让你胸口长出毛来！"
 	icon_state = "bear"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/bear/fried
@@ -227,8 +227,8 @@
 
 /* ............. Troll Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/troll
-	name = "troll blubber"
-	desc = "A rancid reddish blubber. It squelches under the merest touch, wobbling back into shape. It doesn't seem... Quite dead, as it continues to shift even after being sliced free."
+	name = "巨魔肥膘"
+	desc = "一块发臭的暗红色肥膘。轻轻一碰就会吱吱作响，晃荡着弹回原状。它似乎……并未完全死去，即便被割下来，仍在不断蠕动。"
 	icon_state = "troll"
 	slice_path = null
 	rotprocess = SHELFLIFE_EXTREME
@@ -237,8 +237,8 @@
 
 /* ............. fish chop ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/fish
-	name = "fish filet"
-	desc = "A filet of fish. All of them are the same inside."
+	name = "鱼柳"
+	desc = "一片鱼柳。剖开以后，鱼肉里头看起来其实都差不多。"
 	icon_state = "fish_filet"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fish/fried
@@ -249,8 +249,8 @@
 
 /* .........   Shellfish    ................. */
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
-	name = "shellfish meat"
-	desc = "Meat from a crustacean. Salty with a different texture than most fishmeat. Chop to create mince, bake or fry to make fried shellfish meat"
+	name = "贝甲肉"
+	desc = "取自甲壳类的肉，带着海咸味，口感也和多数鱼肉不同。可切碎成肉糜，或烤制、油炸成熟食。"
 	icon_state = "shellfish_meat"
 	rotprocess = SHELFLIFE_LONG
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
@@ -262,8 +262,8 @@
 // MEAT MINCE
 /*	.............   Minced meat & stuffing sausages   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince
-	name = "mince"
-	desc = "Meat sliced many times both with and against the grain, producing a fine mince."
+	name = "肉糜"
+	desc = "顺纹和逆纹反复切过的肉，制成一份细碎的肉糜。"
 	icon_state = "meatmince"
 	ingredient_size = 2
 	slice_path = null
@@ -282,7 +282,7 @@
 	update_cooktime(user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince))
 		if(isturf(loc)&& (found_table))
-			to_chat(user, span_notice("Stuffing a wiener..."))
+			to_chat(user, span_notice("正在灌制香肠……"))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -290,10 +290,10 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能处理。"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/fat))
 		if(isturf(loc)&& (found_table))
-			to_chat(user, span_notice("Stuffing a wiener..."))
+			to_chat(user, span_notice("正在灌制香肠……"))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -301,10 +301,10 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能处理。"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
 		if(isturf(loc)&& (found_table))
-			to_chat(user, span_notice("Preparing a tartar..."))
+			to_chat(user, span_notice("正在准备鞑靼生肉……"))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -312,31 +312,31 @@
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能处理。"))
 	else
 		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
-	name = "minced meat"
+	name = "碎肉糜"
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
-	name = "minced fish"
+	name = "碎鱼糜"
 	icon_state = "fishmince"
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/spider
-	name = "minced spidermeat"
+	name = "蜘蛛肉糜"
 	icon_state = "spidermince"
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/spider/attackby(obj/item/I, mob/living/user)
 	var/obj/structure/table/found_table = locate() in (loc)
 	update_cooktime(user)
 	if(!isdarkelf(user) && !HAS_TRAIT(user, TRAIT_UNDERDARK_CHEF))
-		to_chat(user, span_warning("You lack knowledge of underdark delicacies!"))
+		to_chat(user, span_warning("你不懂幽暗地域的珍馐之道！"))
 		return
 	else
 		if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/spider))
 			if(isturf(loc)&& (found_table))
-				to_chat(user, span_notice("Preparing a spider meatball..."))
+				to_chat(user, span_notice("正在准备蜘蛛肉丸……"))
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 				if(do_after(user,long_cooktime, target = src))
 					add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -344,10 +344,10 @@
 					qdel(I)
 					qdel(src)
 			else
-				to_chat(user, span_warning("You need to put [src] on a table to work on it."))
+				to_chat(user, span_warning("你得先把[src]放到桌上才能加工。"))
 		if(istype(I, /obj/item/reagent_containers/powder/flour))
 			if(isturf(loc)&& (found_table))
-				to_chat(user, span_notice("Mixing flour with [src]..."))
+				to_chat(user, span_notice("把面粉和[src]拌在一起……"))
 				playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
 				if(do_after(user,short_cooktime, target = src))
 					add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -356,16 +356,16 @@
 					qdel(src)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/rabbit
-	name = "minced cabbit"
+	name = "卡比特肉糜"
 	icon_state = "meatmince"
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry
-	name = "minced poultry"
+	name = "禽肉糜"
 	icon_state = "meatmince"
 	cooked_smell = /datum/pollutant/food/cooked_chicken
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
-	name = "raw sausage"
+	name = "生香肠"
 	icon_state = "raw_sausage"
 	ingredient_size = 1
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
@@ -378,28 +378,28 @@
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src]."))
+			to_chat(user, span_notice("正在拍松[src]。"))
 			if(do_after(user,long_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/wienernitzel(loc)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	else
 		return ..()
 
 /* ............. Underdark Cuisine ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/meatball //If you will add another meatball, consider refactoring this into a more general meatball object with variables for the type of meat, the name, and the icon.
-	name = "raw spidermeatball"
-	desc = "A meatball made from minced spidermeat. It's a bit chewy, but not bad if you can get past the idea of eating spiders."
+	name = "生蜘蛛肉丸"
+	desc = "用蜘蛛肉糜制成的肉丸。口感有点韧，但只要你能克服吃蜘蛛的心理障碍，味道其实还不错。"
 	icon_state = "raw_spidermeatball"
 	ingredient_size = 1
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/meatball/cooked
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/meatball/cooked
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/surprise
-	name = "raw spider surprise"
-	desc = "A meatball made from minced spidermeat and flour. It looks like a normal meatball, but you can see the occasional leg or eyeball poking out of the sides."
+	name = "生蜘蛛惊喜丸"
+	desc = "用蜘蛛肉糜和面粉制成的肉丸。看起来和普通肉丸无异，但偶尔能看见几条腿或眼珠从侧面探出来。"
 	icon_state = "raw_spider_surprise"
 	ingredient_size = 1
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/surprise/cooked
@@ -407,8 +407,8 @@
 
 /* ............. fish chop ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/fish
-	name = "fish filet"
-	desc = "A filet of fish. All of them are the same inside."
+	name = "鱼柳"
+	desc = "一片鱼柳。剖开以后，鱼肉里头看起来其实都差不多。"
 	icon_state = "fish_filet"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fish/fried
@@ -418,8 +418,8 @@
 
 /* .........   Shellfish    ................. */
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
-	name = "shellfish meat"
-	desc = "Meat from a crustacean. Salty with a different texture than most fishmeat. Chop to create mince, bake or fry to make fried shellfish meat"
+	name = "贝甲肉"
+	desc = "取自甲壳类的肉，带着海咸味，口感也和多数鱼肉不同。可切碎成肉糜，或烤制、油炸成熟食。"
 	icon_state = "shellfish_meat"
 	rotprocess = SHELFLIFE_LONG
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
@@ -430,15 +430,15 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
 	eat_effect = null
 	slices_num = 0
-	name = "fried shellfish"
-	desc = "Fried shellfish meat. A bit salty, but delicious."
+	name = "炸贝甲肉"
+	desc = "油炸过的贝甲肉，略带咸味，却相当鲜美。"
 	faretype = FARE_NEUTRAL
 	icon_state = "shellfish_meat_cooked"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
 
 /* ............. Cabbit Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit
-	name = "raw cabbit meat"
+	name = "生卡比特肉"
 	icon_state = "cabbitcutlet"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/rabbit
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried
@@ -448,8 +448,8 @@
 
 /* ............. Volf Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf
-	name = "raw volf meat"
-	desc = "Meat taken from a volf. Stringy, tough, and gamey - but edible."
+	name = "生沃尔夫肉"
+	desc = "取自沃尔夫的肉。筋道、坚韧、带着野味——不过能吃。"
 	icon_state = "volfstrip"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef		//Honestly, we don't need our own minced type on this one.
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried
@@ -458,8 +458,8 @@
 // Do NOT add this to the stockpile, they have other uses and are unique in how they're obtained.
 /* ............. Gnoll Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/gnoll
-	name = "raw gnoll meat"
-	desc = "Meat taken from a gnoll. Strangely it doesn't look like it was cut out of a creature. Somehow, it seems perfectly alive."
+	name = "生豺狼人肉"
+	desc = "从豺狼人身上取下来的肉。诡异的是，它看起来并不像从活物身上切下，反倒像仍旧活着。"
 	icon_state = "gnoll"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef		//Honestly, we don't need our own minced type on this one.
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/gnoll/seared
@@ -468,8 +468,8 @@
 	sellprice = 118
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/vilespawn
-	name = "vilespawn flesh"
-	desc = "Meat that can be used to bring forth some vile creature."
+	name = "邪孽胎肉"
+	desc = "一块令人作呕的肉团，是对一切美好之物的亵渎……传说它能用来唤出某种邪恶生物。"
 	icon_state = "vilespawn"
 	slice_path = null
 	fried_type = null
@@ -478,13 +478,13 @@
 	sellprice = 118
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/vilespawn/attack_self(mob/living/user)
-	to_chat(user, span_notice("You offer the [src.name] to the void, chanting for a host..."))
-	var/list/candidates = pollGhostCandidates("Do you want to play as an Impure Gnoll? You'll be subservient to a master.", "Impure Gnoll", null, null, 10 SECONDS, "impure_gnoll")
+	to_chat(user, span_notice("你将[src.name]献给虚空，低声吟唱，呼唤一具宿体……"))
+	var/list/candidates = pollGhostCandidates("你想扮演一头不纯豺狼人吗？你将服从于一名主人。", "不纯豺狼人", null, null, 10 SECONDS, "impure_gnoll")
 	if(!LAZYLEN(candidates))
-		to_chat(user, span_warning("The meat remains cold. No echoes of violence are hungry enough."))
+		to_chat(user, span_warning("肉块依旧冰冷。没有任何暴虐余响愿意回应这份饥渴。"))
 		return
 	user.fullscreen_redflash("redflash3")
-	to_chat(user, span_userdanger("The echoes of millions of screams assault your ears, visions of raining blood, mountains of skulls! THE GORESTAR HEARS YOUR UNHOLY PRAYER!"))
+	to_chat(user, span_userdanger("千万声惨叫的回响冲击着你的耳膜，血雨、骨山的幻景涌入脑海！血腥之星听见了你不洁的祈祷！"))
 	user.playsound_local(get_turf(user), 'sound/music/wolfintro.ogg', 80, FALSE, pressure_affected = FALSE)
 	user.emote("agony", forced = TRUE)
 	user.Paralyze(4 SECONDS, ignore_canstun = TRUE)
@@ -500,22 +500,22 @@
 	var/datum/advclass/gnoll_impure/G = new()
 	G.equipme(H)
 
-	visible_message(span_warning("The [src.name] bloats and tears open as a gnoll claw bursts through!"))
+	visible_message(span_warning("[src.name]猛地鼓胀撕裂，血肉四溅之中，一头不纯豺狼人降临了！"))
 	playsound(H.loc, 'sound/magic/slimesquish.ogg', 100, TRUE)
 	qdel(C)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/vilespawn/admin
-	name = "twisted vilespawn flesh"
-	desc = "Transforms the user immediately into an Impure Gnoll."
+	name = "扭曲邪孽胎肉"
+	desc = "立刻将使用者转化为一头不纯豺狼人。"
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/vilespawn/admin/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
-		to_chat(user, "You need to be a human to test this.")
+		to_chat(user, "你必须是人类才能测试这个。")
 		return
 
 	user.fullscreen_redflash("redflash3")
-	to_chat(user, span_userdanger("The echoes of millions of screams assault your ears, visions of raining blood, mountains of skulls! THE GORESTAR HEARS YOUR UNHOLY PRAYER!"))
+	to_chat(user, span_userdanger("千万声惨叫的回响冲击着你的耳膜，血雨、骨山的幻景涌入脑海！血腥之星听见了你不洁的祈祷！"))
 	user.playsound_local(get_turf(user), 'sound/music/wolfintro.ogg', 80, FALSE, pressure_affected = FALSE)
 	user.emote("agony", forced = TRUE)
 	user.Paralyze(4 SECONDS, ignore_canstun = TRUE)
@@ -530,7 +530,7 @@
 	var/datum/advclass/gnoll_impure/C = new()
 	C.equipme(H)
 
-	user.visible_message(span_warning("The [src.name] melds into [user]'s flesh as they transform into an Impure Gnoll!"))
+	user.visible_message(span_warning("[src.name]融入[user]的血肉之中，使其扭曲成一头不纯豺狼人！"))
 	playsound(user.loc, 'sound/magic/slimesquish.ogg', 100, TRUE)
 
 	qdel(user)
@@ -538,17 +538,17 @@
 
 /* ............. Raw Ham ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/ham
-	name = "raw ham"
-	desc = "Perfect cut of swine flesh, raw and ready to be steamed."
+	name = "生火腿"
+	desc = "一块完美的猪身肉，生着，就等着上锅蒸了。"
 	icon_state = "ham_raw"
 	rotprocess = SHELFLIFE_DECENT
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/ham/steamed
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/ham/steamed
 	slices_num = 2
 	slice_path = null
-	tastes = list("hog" = 1)
+	tastes = list("猪膻味" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/ham/boar
-	name = "raw boar ham"
-	desc = "A bramblesnout that is no longer trying to end you. Raw and ready to be steamed."
+	name = "生野猪火腿"
+	desc = "一头不再想取你性命的棘鼻野猪。生着，就等着上锅蒸了。"
 	icon_state = "ham_boar"

@@ -176,7 +176,7 @@
 
 /// Get objective text for scroll display
 /datum/quest/proc/get_objective_text()
-	return "Complete the objective."
+	return "完成目标。"
 
 /// Hook for subtypes that need to stream live fields into the TGUI scroll view (e.g.
 /// blockade's wave timer). Subtypes mutate the passed list. Base does nothing.
@@ -289,10 +289,10 @@
 	if(required_fellowship_size > 0)
 		var/datum/fellowship/F = user?.current_fellowship
 		if(!F)
-			return "This contract requires a Fellowship of [required_fellowship_size]."
+			return "此契约需要一个 [required_fellowship_size] 人的冒险团。"
 		if(length(F.get_members()) < required_fellowship_size)
-			return "Your Fellowship is too small - requires [required_fellowship_size] members."
-	return "You cannot sign that contract."
+			return "你的冒险团人数不足——需要 [required_fellowship_size] 名成员。"
+	return "你无法签署那份契约。"
 
 /// Called when quest is claimed by a user
 /datum/quest/proc/on_claim(mob/user)

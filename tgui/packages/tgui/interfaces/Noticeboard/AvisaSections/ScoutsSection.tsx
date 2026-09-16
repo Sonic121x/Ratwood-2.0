@@ -65,20 +65,20 @@ export const ScoutsSection = ({ data }: { data: NoticeboardData }) => {
           }}
           onClick={() => setHelpOpen((v) => !v)}
         >
-          {helpOpen ? 'Hide About Scout Reports' : 'About Scout Reports'}
+          {helpOpen ? '收起斥候报告说明' : '关于斥候报告'}
         </button>
         {helpOpen && <HelpPanel />}
       </div>
 
       {regions.length === 0 ? (
-        <EmptyMessage text="The wardens have sent no word from the wilds." />
+        <EmptyMessage text="守林人们还没有从荒野传回消息." />
       ) : (
         <table style={tableStyle}>
           <thead>
             <tr>
-              <th style={headerCellStyle}>Region</th>
-              <th style={headerCellWithDivider}>Danger</th>
-              <th style={headerCellWithDivider}>Blockade</th>
+              <th style={headerCellStyle}>区域</th>
+              <th style={headerCellWithDivider}>危险</th>
+              <th style={headerCellWithDivider}>封锁</th>
             </tr>
           </thead>
           <tbody>
@@ -118,7 +118,7 @@ const RegionRow = ({ region }: { region: ScoutRegion }) => {
                 fontWeight: 'bold',
               }}
             >
-              {region.blockade_faction_label || 'unknown raiders'}
+              {region.blockade_faction_label || '不明劫掠者'}
               <span
                 style={{
                   marginLeft: 6,
@@ -127,7 +127,7 @@ const RegionRow = ({ region }: { region: ScoutRegion }) => {
                   fontWeight: 'normal',
                 }}
               >
-                {region.blockade_days_active}d
+                {region.blockade_days_active}天
               </span>
             </div>
             {!!region.blockade_region_label && (
@@ -138,12 +138,12 @@ const RegionRow = ({ region }: { region: ScoutRegion }) => {
                   marginTop: 1,
                 }}
               >
-                blocking {region.blockade_region_label}
+                封锁 {region.blockade_region_label}
               </div>
             )}
             {!!region.blockade_writ_out ? (
               <div style={{ marginTop: 3 }}>
-                <span style={badgeStyle(SEAL_AMBER)}>WRIT OUT</span>
+                <span style={badgeStyle(SEAL_AMBER)}>令状已下</span>
               </div>
             ) : (
               <div
@@ -153,7 +153,7 @@ const RegionRow = ({ region }: { region: ScoutRegion }) => {
                   fontSize: FONT_BODY,
                 }}
               >
-                Awaiting writ
+                等候令状
               </div>
             )}
           </>
@@ -190,25 +190,25 @@ const HelpPanel = () => (
     }}
   >
     <p style={{ margin: '0 0 6px 0' }}>
-      Scouts rate how dangerous a region is from <b>Safe</b> to <b>Low</b> to{' '}
-      <b>Moderate</b> to <b>Dangerous</b> to <b>Bleak</b>.
+      斥候将区域的危险程度评为 <b>Safe</b>、<b>Low</b>、{' '}
+      <b>Moderate</b>、<b>Dangerous</b> 到 <b>Bleak</b>.
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
-      A safe region is unlikely to spawn ambushes from common creechurs and
-      brigands. A low-threat region may yield lone foes. Diligent wardens can
-      render some regions fully safe; others never truly rest, and lands beyond
-      the wardens' charge remain dangerous.
+      安全区域不太可能出现常见 creechurs 与强盗的伏击.
+      低威胁区域可能只会出现落单的敌人.
+      勤勉的守林人能让某些区域彻底安全;
+      另一些区域永无宁日, 而守林人辖区之外的土地依然危险.
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
-      Danger is reduced by luring villains and creechurs and killing them when
-      they ambush. Traveling in groups draws larger ambushes; each additional
-      companion contributes less per head than a lone traveler would.
+      引诱恶徒与 creechurs, 并在他们伏击时将其击杀, 即可降低危险.
+      结伴而行会招来更大规模的伏击;
+      每多一位同伴, 其人均贡献都低于独行者.
     </p>
     <p style={{ margin: 0 }}>
-      A warden's signal horn provokes a sizeable fight matched to the region's
-      danger - the surest way to tame it. Bandits and creechurs trickle back in
-      over time, generally overnight. Take care with the horn, and bring
-      friends.
+      守林人的号角会引发一场与该区域危险程度相称的大战 -
+      这是驯服此地最可靠的办法.
+      劫匪与 creechurs 会随着时间重新渗入, 通常一夜之间.
+      使用号角时请小心, 并带上朋友.
     </p>
   </div>
 );
