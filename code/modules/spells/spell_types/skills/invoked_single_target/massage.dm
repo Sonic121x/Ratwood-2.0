@@ -50,10 +50,10 @@
 	if(isliving(massagee)) //target needs to be living
 		if(massagee in range(1, massager))
 			switch(alert(massager,"你确定要给[massagee.name]按摩吗？", "你要进行按摩吗？","是","否"))
-				if("Yes")
+				if("是")
 					to_chat(massager, span_warning("我询问对方是否准备好了。")) //make sure this is who I want to massage
 					agreementone = TRUE
-				if("No")
+				if("否")
 					to_chat(massager, span_warning("我决定不这么做。"))
 					return
 				else

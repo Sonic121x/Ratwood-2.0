@@ -30,7 +30,7 @@
 /datum/customization_trait/New()
 	. = ..()
 	if(triumph_cost)
-		desc += " <b>Costs [triumph_cost] TRIUMPHS.</b>"
+		desc += " <b>消耗 [triumph_cost] 点凯旋。</b>"
 
 /datum/customization_trait/proc/apply_to_human(mob/living/carbon/human/recipient)
 	return
@@ -76,7 +76,7 @@
 					increase_by = (maximum_skill - our_skill)
 				recipient.adjust_skillrank(the_skill.type, increase_by, TRUE)
 			else
-				to_chat(recipient, span_notice("This cannot influence my skill with [LOWER_TEXT(the_skill.name)] any further."))
+				to_chat(recipient, span_notice("我在[LOWER_TEXT(the_skill.name)]上的技能已经无法再提升了。"))
 
 /datum/customization_trait/proc/handle_stashed_items(mob/living/carbon/human/recipient)
 	if(!recipient.mind || !LAZYLEN(added_stashed_items))
@@ -108,7 +108,7 @@
 		instruments[instr.name] = instrument_type
 		qdel(instr)  // Clean up the temporary instance
 
-	var/chosen_name = input(recipient, "What instrument did I stash?", "STASH") as null|anything in instruments
+	var/chosen_name = input(recipient, "我藏起了什么乐器？", "藏匿") as null|anything in instruments
 	if(chosen_name)
 		var/instrument_type = instruments[chosen_name]
 		recipient.mind?.special_items[chosen_name] = instrument_type
