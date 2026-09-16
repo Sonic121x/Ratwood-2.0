@@ -342,11 +342,11 @@
 
 /datum/controller/subsystem/treasury/proc/indenture_faction_label(datum/fund/F)
 	if(istype(F, /datum/fund/church))
-		return "the Church"
+		return "教会"
 	if(istype(F, /datum/fund/merchant))
-		return "the Merchant Guild"
+		return "商会"
 	if(istype(F, /datum/fund/bathhouse))
-		return "the Bathhouse"
+		return "浴场"
 	if(istype(F, /datum/fund/innkeeper))
-		return "the Tavern"
-	return "the Stewardry"
+		return "酒馆"
+	return "总管府"
