@@ -50,7 +50,7 @@ export const GoodsTab = (props: { data: VendingData; act: ActFn }) => {
               style={inkButtonStyle()}
               onClick={() => act('changecat', { category: '' })}
             >
-              ← All Categories
+              ← 全部分类
             </button>
           ) : (
             data.categories.map((cat) => (

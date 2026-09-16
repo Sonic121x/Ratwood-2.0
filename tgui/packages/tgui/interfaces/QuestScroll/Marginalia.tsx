@@ -9,8 +9,8 @@ import {
 
 export const WhisperLine = (props: { compass: string; zHint?: string }) => (
   <div style={marginaliaLine}>
-    <span style={marginaliaLabel}>The scroll whispers:</span>
-    the quarry is{props.compass}
+    <span style={marginaliaLabel}>卷轴低语道:</span>
+    猎物正在{props.compass}
     {props.zHint ? ` (${props.zHint})` : ''}.
   </div>
 );
@@ -23,8 +23,8 @@ export const ProgressLine = (props: {
   const remaining = Math.max(0, props.total - props.done);
   return (
     <div style={marginaliaLine}>
-      <span style={marginaliaLabel}>Of the {props.noun} accused,</span>
-      <b>{props.done}</b> lie slain; <b>{remaining}</b> remain.
+      <span style={marginaliaLabel}>所控 {props.noun} 之中,</span>
+      <b>{props.done}</b> 已伏诛; 尚余 <b>{remaining}</b> 人.
     </div>
   );
 };
@@ -37,8 +37,8 @@ export const RetrievalProgressLine = (props: {
   const remaining = Math.max(0, props.total - props.done);
   return (
     <div style={marginaliaLine}>
-      <span style={marginaliaLabel}>Of the {props.noun} sought,</span>
-      <b>{props.done}</b> lie recovered; <b>{remaining}</b> remain.
+      <span style={marginaliaLabel}>所寻 {props.noun} 之中,</span>
+      <b>{props.done}</b> 已寻回; 尚余 <b>{remaining}</b> 件.
     </div>
   );
 };

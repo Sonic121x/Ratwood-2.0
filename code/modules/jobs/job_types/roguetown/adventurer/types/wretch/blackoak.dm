@@ -1,7 +1,7 @@
 // spellblades spell.. archers and elves oh my
 /datum/advclass/wretch/blackoakwyrm
-	name = "Black Oak Pariah"
-	tutorial = "Carrying extreme beliefs not even befit of the Black Oaks, you have found yourself seceded from the group. They come in waves. Your people were the ones that settled these lands, and now you find them trampled by monster and outside alike. The foreign-backed Crown, deceitful and arrogant, has denied your people the harvest they so dutifully sowed. Your extensive training in the Black Oaks has given you skill in elven weaponry and an arcane acuity. Whether you fight openly with a blade, or stalk in the trees above with a bow, a bounty from the crown follows, and the condemned scorn of those that were once your comrades."
+	name = "黑橡弃徒"
+	tutorial = "你怀抱着连黑橡都无法容忍的极端信念，因而与这个团体决裂。他们一波波地袭来。你的族人本是最初定居这片土地的人，如今你却眼见他们被怪物与外来者一同践踏。那个受外邦支持、虚伪而傲慢的王冠，拒绝给予你的族人理应辛勤收获的成果。你在黑橡所受的广泛训练，赋予了你精灵兵刃的技艺与奥术的敏锐。无论你是持刀明战，还是隐于树上以弓潜猎，王冠的悬赏都紧随于你，而那些曾是你同伴之人，也对你投以鄙弃的诅咒。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/human/halfelf,
@@ -43,9 +43,9 @@
 		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" = /obj/item/repair_kit,
+		"针线包" = /obj/item/repair_kit,
 	)
-	extra_context = "This subclass is race-limited to: Half-Elves, Elves, Dark Elves."
+	extra_context = "该子职业的种族限制为：半精灵、精灵、黑暗精灵。"
 
 /datum/outfit/job/roguetown/wretch/blackoak/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -72,21 +72,21 @@
 		wretch_select_bounty(H)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/darkvision)
 
-		var/weapons = list("Elven Swordspear", "Elven Curveblade", "Elven Recurve Bow")
-		var/weapon_choice = input(H, "Choose your loadout.", "THE VISIBLE THREAT") as anything in weapons
+		var/weapons = list("精灵剑矛", "精灵弯刃", "精灵反曲弓")
+		var/weapon_choice = input(H, "选择你的武器。", "可见的威胁") as anything in weapons
 		H.set_blindness(0)
-		if(weapon_choice == "Elven Swordspear" || weapon_choice == "Elven Curveblade") //stuff to be shared on the non ranger variants
+		if(weapon_choice == "精灵剑矛" || weapon_choice == "精灵弯刃") //stuff to be shared on the non ranger variants
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/conjure_weapon)
 		switch(weapon_choice)
-			if("Elven Swordspear")
+			if("精灵剑矛")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/naginata/elf
-			if("Elven Curveblade")
+			if("精灵弯刃")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/greatsword/elf
-			if("Elven Recurve Bow")
+			if("精灵反曲弓")
 				H.change_stat(STATKEY_PER, 2)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/longstrider)
@@ -95,30 +95,30 @@
 				beltl = /obj/item/quiver/arrows
 				backpack_contents[/obj/item/rogueweapon/huntingknife/idagger/steel/elvish] = 1
 
-		var/sidearm = list("Elvish Longsword", "Elvish Shortsword", "Elvish Saber", "Elvish Dagger")
-		if(weapon_choice == "Elven Recurve Bow") //nuh uh uh
-			sidearm -= "Elvish Longsword"
-			sidearm -= "Elvish Shortsword"
-		var/sidearm_choice = input(H, "Choose your SIDEARM.", "THE HIDDEN THORN") as anything in sidearm
+		var/sidearm = list("精灵长剑", "精灵短剑", "精灵军刀", "精灵匕首")
+		if(weapon_choice == "精灵反曲弓") //nuh uh uh
+			sidearm -= "精灵长剑"
+			sidearm -= "精灵短剑"
+		var/sidearm_choice = input(H, "选择你的副手武器。", "隐藏之刺") as anything in sidearm
 		switch(sidearm_choice)
-			if("Elvish Longsword") // It's a sharper longsword.
+			if("精灵长剑") // It's a sharper longsword.
 				l_hand = /obj/item/rogueweapon/sword/long/elf
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
-			if("Elvish Shortsword") // Lower damage but better at parrying than saber. High sharpness & integrity for parrying without as much damage decay.
+			if("精灵短剑") // Lower damage but better at parrying than saber. High sharpness & integrity for parrying without as much damage decay.
 				l_hand = /obj/item/rogueweapon/sword/short/elf
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
-			if("Elvish Saber") // The damage & dodge option.
+			if("精灵军刀") // The damage & dodge option.
 				l_hand = /obj/item/rogueweapon/sword/sabre/elf
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
-			if("Elvish Dagger") // Doesn't function as silver unless blessed. Shouldn't be too bad to give 'em.
+			if("精灵匕首") // Doesn't function as silver unless blessed. Shouldn't be too bad to give 'em.
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sheath, SLOT_BELT_R, TRUE)
 
 		var/helmets = list(
-			"Woad Elven Barbute" = /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
-			"Elven Barbute"	= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak,
-			"Winged Elven Barbute" = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
+			"靛纹精灵巴布塔盔" = /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
+			"精灵巴布塔盔"	= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak,
+			"翼纹精灵巴布塔盔" = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
 		)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
+		var/helmchoice = input(H, "选择你的头盔。", "执盔") as anything in helmets
 		head = helmets[helmchoice]
