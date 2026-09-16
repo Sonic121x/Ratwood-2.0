@@ -3,78 +3,78 @@
 // The baseline point_cost is one.
 
 /datum/quirk/acquiredtastes
-	name = "Acquired Tastes"
-	desc = "Despite my unorthodox tastes, I'm always prepared to handle a guest with the toys I keep stashed."
-	custom_text = "This quirk adds a bag containing various sexual instruments including a small vial of emberwine to your stash."
-	added_stashed_items = list("Bag of Fetish Gear" = /obj/item/storage/roguebag/fetish)
+	name = "另类癖好"
+	desc = "虽说我的口味有些不正统，但我总备着些小玩意儿，随时能招待客人。"
+	custom_text = "该特质会在你的藏匿物中添加一个袋子，里面装着各式情趣器具，以及一小瓶余烬酒。"
+	added_stashed_items = list("情趣器具袋" = /obj/item/storage/roguebag/fetish)
 
 /datum/quirk/annoyingface
-	name = "Annoying Face"
-	desc = "I am cursed with an odd voice and appearance."
+	name = "惹人厌的脸"
+	desc = "我身负诅咒，嗓音与相貌都古怪得很。"
 	point_cost = 0
 	added_traits = list(TRAIT_COMICSANS)
 
 /datum/quirk/deadnose
-	name = "Dead Nose"
-	desc = "My nose is numb to the smell of decay."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that already has a dead nose!"
+	name = "嗅觉失灵"
+	desc = "我的鼻子对腐朽的气味毫无知觉。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就嗅觉失灵，它不会生效！"
 	added_traits = list(TRAIT_NOSTINK)
 	incompatible_traits = list(TRAIT_NOSTINK)
 
 /datum/quirk/disgracednoble
-	name = "Disgraced Noble"
-	desc = "I was a scion of a noble house... long ago. Now I am a commoner, and my family name is a source of shame."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that is already a noble!"
+	name = "失势贵族"
+	desc = "很久以前，我也曾是某个贵族家族的后裔... 如今我只是一介平民，而我的姓氏反倒成了耻辱的源头。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就出身贵族，它不会生效！"
 	added_traits = list(TRAIT_DISGRACED_NOBLE)
 	incompatible_traits = list(TRAIT_NOBLE)
 
 /datum/quirk/dwarvenchef
-	name = "Dwarven Chef"
-	desc = "A dwarf once showed me the trick to cutting a proper pretzel from butterdough."
-	custom_text = "Lets you cut pretzels from butterdough."
-	warning_text = "This quirk does nothing if you are already a dwarf!"
+	name = "矮人厨师"
+	desc = "曾有个矮人教过我，如何从黄油面团里切出标准的椒盐卷饼。"
+	custom_text = "让你能从黄油面团中切出椒盐卷饼。"
+	warning_text = "如果你本就是矮人，该特质不会生效！"
 	added_traits = list(TRAIT_DWARVEN_CHEF)
 
 /datum/quirk/empath
-	name = "Empath"
-	desc = "I can notice when people are in pain."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that is already an empath!"
+	name = "共情者"
+	desc = "我能察觉出他人何时正身陷痛苦。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就能共情他人，它不会生效！"
 	added_traits = list(TRAIT_EMPATH)
 	incompatible_virtues = list(/datum/virtue/utility/socialite)
 	incompatible_traits = list(TRAIT_EMPATH)
 
 /datum/quirk/fabledlover
-	name = "Fabled Lover"
-	desc = "It's a lucky thing to share my bed."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that is already a fabled lover!"
+	name = "传奇情人"
+	desc = "能与我同床，是一种幸运。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就是传奇情人，它不会生效！"
 	point_cost = 2
 	added_traits = list(TRAIT_GOODLOVER)
 	incompatible_virtues = list(/datum/virtue/utility/socialite, /datum/virtue/utility/performer)
 	incompatible_traits = list(TRAIT_GOODLOVER)
 
 /datum/quirk/gossiper
-	name = "Gossiper"
-	desc = "Despite my lowborn blood, I've made a habit out of brushing shoulders with the nobility and learning their secrets."
-	custom_text = "Lets you view noble gossip."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that is already a noble!"
+	name = "包打听"
+	desc = "尽管我出身低微，我却习惯与贵族们周旋厮混，打探他们的秘密。"
+	custom_text = "让你能查看贵族间的流言。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就是贵族，它不会生效！"
 	point_cost = 2
 	added_traits = list(TRAIT_GOSSIPER)
 	incompatible_virtues = list(/datum/virtue/utility/tracker)
 	incompatible_traits = list(TRAIT_NOBLE)
 
 /datum/quirk/hobbyistmusician
-	name = "Hobbyist Musician"
-	desc = "I've dabbled in music over the years, and I've stashed away an instrument of my own."
-	custom_text = "Comes with a stashed instrument of your choice. You choose the instrument after spawning in."
+	name = "业余乐手"
+	desc = "这些年来我玩过些音乐，还给自己藏了一件乐器。"
+	custom_text = "附带一件由你挑选的藏匿乐器。你在出生之后再选择具体乐器。"
 	added_skills = list(list(/datum/skill/misc/music, 1, 6))
 
 /datum/quirk/hobbyistmusician/apply_to_human(mob/living/carbon/human/recipient)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/customization_trait, pick_stashed_instrument), recipient), 50)
 
 /datum/quirk/largeframe
-	name = "Large Frame"
-	desc = "I'm simply built bigger than most. My strength and hardiness has nothing to show for my size, though."
-	custom_text = "This quirk increases your sprite size. Incompatible with the Giant virtue."
+	name = "骨架宽大"
+	desc = "我天生就比大多数人长得高大。不过我的力量与耐力，却配不上这副身板。"
+	custom_text = "该特质会增大你的角色贴图尺寸。与巨人美德不兼容。"
 	point_cost = 3
 	incompatible_virtues = list(/datum/virtue/size/giant)
 
@@ -84,18 +84,18 @@
 	recipient.update_transform()
 
 /datum/quirk/malodorous
-	name = "Malodorous"
-	desc = "My body odor is unbearable without regular baths, and others can tell."
+	name = "体臭熏人"
+	desc = "若不时常洗澡，我身上的气味就让人难以忍受，旁人也看得出来。"
 	point_cost = 0
 
 /datum/quirk/malodorous/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.vices += new /datum/charflaw/malodorous()
 
 /datum/quirk/hunted
-	name = "Marked by Gnolls"
-	desc = "For one reason or another, I have been deemed a target worthy of Graggar's champions. I hear their cackles anywhere I go."
-	warning_text = "<span style='font-size:120%;'>THIS QUIRK ENCOURAGES GNOLLS TO HUNT YOU DOWN!</span><br>\
-	You may potentially be killed in the process!"
+	name = "豺狼人的猎物"
+	desc = "不知出于何种原因，我被认定成了值得格拉加尔的勇士们追猎的目标。无论走到哪里，我都能听见他们的狞笑。"
+	warning_text = "<span style='font-size:120%;'>该特质会促使豺狼人来追杀你！</span><br>\
+	你可能会在此过程中丧命！"
 	point_cost = 0
 	added_traits = list(TRAIT_GNOLL_HUNTED)
 	var/attempts_left = 10
@@ -115,16 +115,16 @@
 	log_hunted("[H.ckey] playing as [H.name] had the hunted trait by quirk.")
 
 /datum/quirk/assassintarget
-	name = "Marked for Death"
-	desc = "Something in my past has made me a target. I'm always looking over my shoulder."
-	warning_text = "<span style='font-size:120%;'>THIS QUIRK ENCOURAGES ASSASSINS TO HUNT YOU DOWN!</span><br>\
-	You may be PERMANENTLY KILLED WITHOUT ESCALATION in the process!"
+	name = "追杀目标"
+	desc = "我过去所做的某件事让我成了靶子。我总是提心吊胆，时时回头张望。"
+	warning_text = "<span style='font-size:120%;'>该特质会促使刺客来追杀你！</span><br>\
+	你可能会在此过程中被永久杀死，且毫无冲突升级的余地！"
 	point_cost = 0
 	added_traits = list(TRAIT_ASSASSIN_TARGET)
 
 /datum/quirk/nightowl
-	name = "Night Owl"
-	desc = "I've always preferred Noc over his other half."
+	name = "夜猫子"
+	desc = "比起他的另一半，我一向更偏爱诺克。"
 	added_traits = list(TRAIT_NIGHT_OWL)
 
 // Gives minor nobility, but what is a minor noble anyways?
@@ -132,16 +132,16 @@
 // I guess we're saying that real nobility is people who are recognized by Astrata??????????
 // Who fucking cares, bro.
 /datum/quirk/noble
-	name = "Noble"
-	desc = "By birth, blade or brain, I carry noble blood, if only a minor and untitled line of it. I've cleverly stashed away a healthy amount of coinage, alongside a familial heirloom."
-	custom_text = "This quirk grants you MINOR nobility, meaning you are still subjected to the Great Writ and poll tax."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that is already a noble!"
+	name = "贵族"
+	desc = "无论是凭出身、刀剑还是头脑，我身上都流着贵族的血，虽说只是一支无衔的低阶旁支。我机灵地藏起了一笔可观的财富，还有一件家传宝物。"
+	custom_text = "该特质授予你「低阶贵族」身份，这意味着你仍受《大敕令》与人头税的约束。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就是贵族，它不会生效！"
 	point_cost = 4
 	added_traits = list(TRAIT_NOBLE)
 	added_skills = list(list(/datum/skill/misc/reading, 1, 6))
 	added_stashed_items = list(
-	"Heirloom Amulet" = /obj/item/clothing/neck/roguetown/ornateamulet/noble,
-	"Hefty Coinpurse" = /obj/item/storage/belt/rogue/pouch/coins/virtuepouch
+	"传家护符" = /obj/item/clothing/neck/roguetown/ornateamulet/noble,
+	"丰厚的钱袋" = /obj/item/storage/belt/rogue/pouch/coins/virtuepouch
 	)
 	incompatible_vices = list(/datum/charflaw/lawless)
 	incompatible_quirks = list(/datum/quirk/disgracednoble, /datum/quirk/gossiper)
@@ -152,16 +152,16 @@
 	recipient.social_rank = max(recipient.social_rank, SOCIAL_RANK_MINOR_NOBLE)
 
 /datum/quirk/outdoorsy
-	name = "Outdoorsy"
-	desc = "My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds."
-	custom_text = "This does not make branches effective beds or allow you to walk on them, simply that you can sleep on them easily."
+	name = "亲近野外"
+	desc = "我在荒野中的经验，让我能像睡床铺一样，在树枝之类的地方安然入睡。"
+	custom_text = "这并不会让树枝变成有效的床铺，也不会让你能在树枝上行走，只是说你可以在上面轻松入睡。"
 	added_traits = list(TRAIT_OUTDOORSMAN)
 	incompatible_virtues = list(/datum/virtue/utility/woodwalker)
 
 /datum/quirk/pretty
-	name = "Pretty"
-	desc = "I'm no great beauty, but people seem to like looking at my face well enough."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that is already beautiful!"
+	name = "相貌讨喜"
+	desc = "我算不上什么绝色美人，但人们似乎还挺乐意看我的脸。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就是美人，它不会生效！"
 	point_cost = 2
 	added_traits = list(TRAIT_PRETTY)
 	incompatible_virtues = list(/datum/virtue/utility/socialite)
@@ -169,33 +169,33 @@
 	incompatible_traits = list(TRAIT_BEAUTIFUL)
 
 /datum/quirk/rawdiet
-	name = "Raw Diet"
-	desc = "Be it from unnatural anatomy or simply a bizarre tolerance, I can eat raw meat and uncooked food as if it were natural."
-	custom_text = "Lets you eat raw meat and uncooked food without getting poisoned. Rotten food, organs, and dirty water will still poison you."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that already possesses an unnatural metabolism!"
+	name = "生食癖"
+	desc = "不论是出于异于常人的身体构造，还是单纯有着古怪的耐受，我都能像吃寻常饭食一样吃生肉与未烹煮的食物。"
+	custom_text = "让你能吃生肉与未烹煮的食物而不中毒。腐烂的食物、内脏与脏水仍会让你中毒。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就拥有异于常人的代谢，它不会生效！"
 	point_cost = 2
 	added_traits = list(TRAIT_RAW_EATER)
 	incompatible_virtues = list(/datum/virtue/utility/feral_appetite)
 	incompatible_traits = list(TRAIT_NASTY_EATER, TRAIT_ORGAN_EATER, TRAIT_WILD_EATER)
 
 /datum/quirk/roughlover
-	name = "Rough Lover"
-	desc = "With strong intent, I am a violent partner in bed. Breaking pelvis and spirit alike."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that is already a bedbreaker!"
+	name = "粗暴情人"
+	desc = "若我动了真意，我在床笫之间便会是个凶暴的伴侣，足以一并折断对方的骨盆与意志。"
+	warning_text = "该特质不消耗点数；如果你扮演的角色本就是床笫间的凶器，它不会生效！"
 	point_cost = 2
 	added_traits = list(TRAIT_DEATHBYSNUSNU)
 	incompatible_traits = list(TRAIT_DEATHBYSNUSNU)
 
 /datum/quirk/scarred
-	name = "Scarred"
-	desc = "My face bears terrible scars that make identification difficult, but not impossible."
+	name = "满脸疤痕"
+	desc = "我的脸上布满可怖的疤痕，让人很难辨认我的身份，但并非完全无从辨认。"
 	point_cost = 0
 	added_traits = list(TRAIT_SCARRED)
 
 /datum/quirk/secondvoice
-	name = "Second Voice"
-	desc = "From performance, deception, or by a need to change yourself in uncanny ways, you've acquired a second, perfect voice. You may switch between them at any point."
-	custom_text = "Grants access to a new 'Memory' tab. It will have the options for setting and changing your voice."
+	name = "第二副嗓音"
+	desc = "无论是出自表演、行骗，还是出于某种想以诡异方式改变自己的需求，你获得了第二副完美的嗓音。你可以随时在两者之间切换。"
+	custom_text = "解锁新的「记忆」页签，其中会有设置与更换嗓音的选项。"
 	incompatible_vices = list(/datum/charflaw/mute, /datum/charflaw/unintelligible)
 
 /datum/quirk/secondvoice/apply_to_human(mob/living/carbon/human/recipient)
@@ -203,17 +203,17 @@
 	recipient.verbs += /mob/living/carbon/human/proc/swapvoice
 
 /datum/quirk/ugly
-	name = "Ugly"
-	desc = "My face is ugly and makes everyone who looks at me miserable."
+	name = "丑陋"
+	desc = "我的面容丑陋不堪，谁看见我都会心生厌恶。"
 	point_cost = 0
 	added_traits = list(TRAIT_UNSEEMLY)
 	incompatible_virtues = list(/datum/virtue/utility/socialite)
 
 /datum/quirk/underdarkchef
-	name = "Underdark Chef"
-	desc = "I've picked up a few culinary secrets from the Underdark. Spider meat is more versatile than you'd think."
-	custom_text = "Allows you to prepare recipes utilizing spider meat."
-	warning_text = "This quirk does nothing if you are already a drow!"
+	name = "幽暗地域厨师"
+	desc = "我从幽暗地域学到了几手烹饪的秘法。蛛肉可比你想的要百搭得多。"
+	custom_text = "让你能制作以蛛肉为材料的菜谱。"
+	warning_text = "如果你本就是卓尔，该特质不会生效！"
 	added_traits = list(TRAIT_UNDERDARK_CHEF)
 
 /datum/quirk/unsettling
