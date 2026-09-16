@@ -30,12 +30,12 @@ export const MeisterPanel = () => {
   );
 
   return (
-    <Window title="Nervelock" width={620} height={620} theme="parchment">
+    <Window title="神经锁" width={620} height={620} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>The Nervelock</div>
+          <div style={titleStyle}>神经锁</div>
           <div style={subtitleStyle}>
-            Day {data.day} &middot; Personal balance:{' '}
+            第 {data.day} 天 &middot; 个人余额：{' '}
             <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
               {data.account_balance}m
             </span>
@@ -47,14 +47,14 @@ export const MeisterPanel = () => {
               style={tabStyle(tab === 'personal')}
               onClick={() => setTab('personal')}
             >
-              Personal
+              个人
             </div>
             {accessibleInstitutional && (
               <div
                 style={tabStyle(tab === 'institutional')}
                 onClick={() => setTab('institutional')}
               >
-                Institutional
+                机构
               </div>
             )}
             {accessiblePatronage && (
@@ -62,20 +62,20 @@ export const MeisterPanel = () => {
                 style={tabStyle(tab === 'patronage')}
                 onClick={() => setTab('patronage')}
               >
-                Patronage
+                恩主
               </div>
             )}
             <div
               style={tabStyle(tab === 'polltax')}
               onClick={() => setTab('polltax')}
             >
-              Poll Tax
+              人头税
             </div>
             <div
               style={tabStyle(tab === 'ledger')}
               onClick={() => setTab('ledger')}
             >
-              Ledger
+              台账
             </div>
           </div>
 

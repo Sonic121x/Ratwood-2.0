@@ -84,10 +84,10 @@
 	added_traits = list(TRAIT_INTELLECTUAL)
 	added_skills = list(list(/datum/skill/misc/reading, 3, 6))
 	added_stashed_items = list(
-		"Quill" = /obj/item/natural/feather,
-		"Scroll #1" = /obj/item/paper/scroll,
-		"Scroll #2" = /obj/item/paper/scroll,
-		"Book Crafting Kit" = /obj/item/book_crafting_kit
+		"羽毛" = /obj/item/natural/feather,
+		"卷轴#1" = /obj/item/paper/scroll,
+		"卷轴#2" = /obj/item/paper/scroll,
+		"制书工具包" = /obj/item/book_crafting_kit
 	)
 
 /datum/virtue/utility/linguist/apply_to_human(mob/living/carbon/human/recipient)
@@ -182,14 +182,14 @@
 /datum/virtue/utility/larcenous
 	name = "惯偷"
 	desc = "无论是受人所托，还是你那空洞心中对刺激的渴望驱使，你总会去觊觎不属于自己的东西。你知道该如何开锁，也早已为此偷偷藏好了一串钥匙。"
-	added_stashed_items = list("Lockpick Ring" = /obj/item/lockpickring/mundane)
+	added_stashed_items = list("撬锁工具环" = /obj/item/lockpickring/mundane)
 	added_skills = list(list(/datum/skill/misc/lockpicking, 3, 6))
 
 /datum/virtue/utility/granary
 	name = "精明补给者"
 	added_traits = list(TRAIT_HOMESTEAD_EXPERT)
 	desc = "你曾在码头或其周边讨生活，顺手摸走一袋没人会在意的补给，以备不时之需。闲暇时，你也学会了些烹饪与钓鱼的门道。"
-	added_stashed_items = list("Bag of Food" = /obj/item/storage/roguebag/food)
+	added_stashed_items = list("食物袋" = /obj/item/storage/roguebag/food)
 	added_skills = list(list(/datum/skill/craft/cooking, 3, 6),
 						list(/datum/skill/labor/fishing, 2, 6))
 
@@ -197,7 +197,7 @@
 	name = "林地行者"
 	added_traits = list(TRAIT_HOMESTEAD_EXPERT)
 	desc = "森林才是你的家，至少曾经如此。你始终渴望重返林间、再度自由游荡，也未曾忘记如何自给自足地活下去。"
-	added_stashed_items = list("Trusty hoe" = /obj/item/rogueweapon/hoe)
+	added_stashed_items = list("可靠的锄头" = /obj/item/rogueweapon/hoe)
 	added_skills = list(list(/datum/skill/craft/cooking, 2, 2),
 						list(/datum/skill/misc/athletics, 2, 2),
 						list(/datum/skill/labor/farming, 2, 2),
@@ -211,9 +211,9 @@
 	desc= "正如人们所说，“心安之处即为家园”。你深谙生活劳作之道，也早已藏好重新开始所需的一切：猎刀、趁手的锄头，以及一袋杂项补给。"
 	triumph_cost = 3
 	added_stashed_items = list(
-		"Hoe" = /obj/item/rogueweapon/hoe,
-		"Bag of Food" = /obj/item/storage/roguebag/food,
-		"Hunting Knife" = /obj/item/rogueweapon/huntingknife
+		"锄头" = /obj/item/rogueweapon/hoe,
+		"食物袋" = /obj/item/storage/roguebag/food,
+		"猎刀" = /obj/item/rogueweapon/huntingknife
 	)
 	added_skills = list(list(/datum/skill/craft/cooking, 3, 3),
 						list(/datum/skill/misc/athletics, 2, 2),

@@ -21,18 +21,18 @@ export const LedgerTab = ({ data, act }: TabProps) => {
 
   return (
     <div style={cardStyle}>
-      <div style={sectionHeaderStyle}>My Debts</div>
+      <div style={sectionHeaderStyle}>我的债务</div>
       {!personal && (
         <div style={{ color: INK_SOFT }}>
-          You owe no debts.
+          你没有任何欠债。
         </div>
       )}
       {!!personal && (
         <div style={fieldRowStyle}>
           <div style={fieldLabelStyle}>{personal.creditor}</div>
           <div style={fieldValueStyle}>
-            {personal.remaining}m of {personal.principal}m at{' '}
-            {personal.interest_pct}%/day
+            尚欠 {personal.remaining}m，本金 {personal.principal}m，日息{' '}
+            {personal.interest_pct}%
             {personal.defaulted ? (
               <span
                 style={{
@@ -41,21 +41,21 @@ export const LedgerTab = ({ data, act }: TabProps) => {
                   fontWeight: 'bold',
                 }}
               >
-                DEFAULTED
+                已违约
               </span>
             ) : (
               <span style={{ marginLeft: 8, color: INK_FAINT }}>
-                (due in ~{personal.minutes_until_due} minutes)
+                （约 {personal.minutes_until_due} 分钟后到期）
               </span>
             )}
           </div>
         </div>
       )}
 
-      <div style={sectionHeaderStyle}>Institutional Ledger</div>
+      <div style={sectionHeaderStyle}>机构台账</div>
       {!institutional.length && (
         <div style={{ color: INK_SOFT }}>
-          No active loans on the institutions you hold authority over.
+          你所管辖的机构没有任何未结贷款。
         </div>
       )}
       {institutional.map((loan, i) => (
@@ -65,14 +65,14 @@ export const LedgerTab = ({ data, act }: TabProps) => {
             <div style={fieldValueStyle}>
               {loan.is_institutional ? (
                 <>
-                  Indenture to <b>{loan.target_label}</b>:{' '}
+                  对 <b>{loan.target_label}</b> 的契约：{' '}
                 </>
               ) : (
                 <>
-                  Loan to <b>{loan.debtor || 'unknown'}</b>:{' '}
+                  发给 <b>{loan.debtor || '未知'}</b> 的贷款：{' '}
                 </>
               )}
-              {loan.remaining}m of {loan.principal}m at {loan.interest_pct}%/day
+              尚欠 {loan.remaining}m，本金 {loan.principal}m，日息 {loan.interest_pct}%
               {loan.defaulted ? (
                 <span
                   style={{
@@ -81,11 +81,11 @@ export const LedgerTab = ({ data, act }: TabProps) => {
                     fontWeight: 'bold',
                   }}
                 >
-                  DEFAULTED
+                  已违约
                 </span>
               ) : (
                 <span style={{ marginLeft: 8, color: INK_FAINT }}>
-                  (due in ~{loan.minutes_until_due} minutes)
+                  （约 {loan.minutes_until_due} 分钟后到期）
                 </span>
               )}
             </div>
@@ -96,7 +96,7 @@ export const LedgerTab = ({ data, act }: TabProps) => {
                 type="number"
                 min="1"
                 max={loan.remaining}
-                placeholder="amount"
+                placeholder="金额"
                 value={repayAmounts[i] || ''}
                 onChange={(e) => setRepayAmounts({ ...repayAmounts, [i]: e.target.value })}
                 style={{ width: '80px', padding: '2px 4px' }}
@@ -111,14 +111,14 @@ export const LedgerTab = ({ data, act }: TabProps) => {
                   setRepayAmounts({ ...repayAmounts, [i]: '' });
                 }}
               >
-                Repay
+                偿还
               </button>
             </div>
           )}
         </div>
       ))}
 
-      <div style={sectionHeaderStyle}>Tally</div>
+      <div style={sectionHeaderStyle}>账目</div>
       <PaginatedLog entries={data.personal_log} />
     </div>
   );

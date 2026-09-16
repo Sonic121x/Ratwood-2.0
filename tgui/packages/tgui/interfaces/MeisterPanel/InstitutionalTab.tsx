@@ -21,7 +21,7 @@ export const InstitutionalTab = ({ data, act }: TabProps) => {
     return (
       <div style={cardStyle}>
         <div style={{ color: INK_SOFT }}>
-          You hold no institutional authority.
+          你未持有任何机构权限。
         </div>
       </div>
     );
