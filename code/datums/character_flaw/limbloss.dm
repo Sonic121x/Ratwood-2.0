@@ -14,7 +14,7 @@
 
 /datum/charflaw/limbloss/arm_r
 	name = "木臂 (右)"
-	desc = "很久以前，我就失去了右臂，不过木制手臂不会流那么多血……但它会着火。<br><i>（与 Bronze Arm (R) 美德不兼容）</i>"
+	desc = "很久以前，我就失去了右臂，不过木制手臂不会流那么多血……但它会着火。<br><i>（与青铜臂（右）美德不兼容）</i>"
 	lost_zone = BODY_ZONE_R_ARM
 	point_value = 2
 
@@ -28,7 +28,7 @@
 
 /datum/charflaw/limbloss/arm_l
 	name = "木臂 (左)"
-	desc = "很久以前，我就失去了左臂，不过木制手臂不会流那么多血……但它会着火。<br><i>（与 Bronze Arm (L) 美德不兼容）</i>"
+	desc = "很久以前，我就失去了左臂，不过木制手臂不会流那么多血……但它会着火。<br><i>（与青铜臂（左）美德不兼容）</i>"
 	lost_zone = BODY_ZONE_L_ARM
 	point_value = 2
 
