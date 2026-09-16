@@ -115,7 +115,7 @@
 /datum/status_effect/buff/group_magic_flight
 	parent_type = /datum/status_effect/buff/magic_flight
 	alert_type = /atom/movable/screen/alert/status_effect/buff/group_magic_flight
-	duration = 120 SECONDS
+	duration = 60 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/group_enlarge
 	name = "群体巨化术"
@@ -406,11 +406,11 @@
 
 /obj/effect/proc_holder/spell/invoked/group_flight
 	name = "群体飞行术"
-	desc = "以纯粹魔力托举施法者与周围 1 格内活物，使其自由飞行；持续时间为飞行术的两倍。"
+	desc = "以纯粹魔力托举施法者与周围 1 格内活物，使其自由飞行，持续 60 秒。"
 	cost = 8
 	releasedrain = 20
 	chargetime = 12 SECONDS
-	recharge_time = 4 MINUTES
+	recharge_time = 120 SECONDS
 	human_req = TRUE
 	warnie = "spellwarning"
 	school = "transmutation"

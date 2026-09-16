@@ -1,20 +1,8 @@
 /proc/z121_get_magic_flight_duration(mob/living/user)
-	var/arcane_level = max(user?.get_skill_level(/datum/skill/magic/arcane), 0)
-	switch(arcane_level)
-		if(0 to 1)
-			return 30 SECONDS
-		if(2)
-			return 60 SECONDS
-		if(3)
-			return 120 SECONDS
-		if(4)
-			return 240 SECONDS
-		if(5)
-			return 360 SECONDS
-	return 480 SECONDS
+	return 30 SECONDS
 
 /proc/z121_get_group_magic_flight_duration(mob/living/user)
-	return z121_get_magic_flight_duration(user) * 2
+	return 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/magic_flight
 	name = "飞行术"
@@ -24,7 +12,7 @@
 /datum/status_effect/buff/magic_flight
 	id = "magic_flight"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/magic_flight
-	duration = 60 SECONDS
+	duration = 30 SECONDS
 	status_type = STATUS_EFFECT_REFRESH
 	tick_interval = 1 SECONDS
 	var/mob/living/flier
@@ -136,11 +124,11 @@
 
 /obj/effect/proc_holder/spell/invoked/flight
 	name = "飞行术"
-	desc = "以纯粹魔力让目标自由飞行，持续时间会随施法者的奥术造诣提升。"
+	desc = "以纯粹魔力让目标自由飞行，持续 30 秒。"
 	cost = 4
 	releasedrain = 10
 	chargetime = 6 SECONDS
-	recharge_time = 2 MINUTES
+	recharge_time = 60 SECONDS
 	human_req = TRUE
 	warnie = "spellwarning"
 	school = "transmutation"
@@ -278,5 +266,3 @@
 		var/mob/mobius = flyer
 		if(mobius.zMove(DOWN, TRUE))
 			to_chat(mobius, span_notice("我向下移动了。"))
-
-

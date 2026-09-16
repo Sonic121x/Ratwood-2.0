@@ -3,7 +3,7 @@
 
 /obj/effect/proc_holder/spell/invoked/restore_pristine
 	name = "恢复如初"
-	desc = "逐步修复物品或建筑的耐久与刃口，奥术造诣越高，单次恢复越多。无法逆转永久磨损造成的上限损失。"
+	desc = "逐步修复物品或建筑的耐久与刃口，奥术造诣越高，单次恢复越多，达到传奇时才能发挥完整修复效果。无法逆转永久磨损造成的上限损失。"
 	cost = 4
 	xp_gain = TRUE
 	releasedrain = 10
@@ -72,7 +72,9 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/restore_pristine/proc/get_restore_ratio(arcane_level)
-	return clamp(arcane_level, 0, 5) * 0.05
+	if(arcane_level >= SKILL_LEVEL_LEGENDARY)
+		return 0.25
+	return clamp(arcane_level, 0, 5) * 0.025
 
 /obj/effect/proc_holder/spell/invoked/restore_pristine/proc/restore_integrity(obj/target_obj, restore_ratio, mob/living/user)
 	if(!target_obj.max_integrity)

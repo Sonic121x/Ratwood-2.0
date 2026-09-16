@@ -38,6 +38,7 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	//   晚于全局列表（GLOBAL_LIST_INIT）的初始化，此刻向"可选恶习列表"追加是安全的；
 	//   登记逻辑本身定义在 modular_z121/vices/facial_blindness.dm 内，这里只做一次调用。
 	register_facial_blindness_vice()
+	register_grayscale_vice()
 
 	// 登记自定义美德"生命潜能"的特性到玩家可见的特性表（GLOB.roguetraits）。
 	// 为什么放在这里：与上面同理——此刻核心表 roguetraits 已由 GLOBAL_LIST_INIT 完成

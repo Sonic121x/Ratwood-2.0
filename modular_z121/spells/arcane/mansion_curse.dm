@@ -1,9 +1,10 @@
 // modular_z121 自定义奥术法术：魔法邓肯宅邸诅咒（Magic Duncan Mansion Curse）
 // ---------------------------------------------------------------------------
-// 设计目标：一个 T3 法术。蓄力 5 秒后，在玩家“选定的地块”生成一扇“坚不可摧的宅邸
+// 设计目标：一个 T3 法术。蓄力 5 秒后，在玩家“选定的地块”生成一扇“可被攻破的宅邸
 //           魔法门”；玩家触碰该门即被传送进一处独立的 5x5 魔法宅邸空间——四壁坚不可摧、
 //           内部空旷，是荒野中安身歇脚之所。宅邸内有一扇回程门，触碰即送回进入前的位置。
 //           · 若宅邸空间内连续 3 分钟无玩家，门会自动消失，但【空间本身被保留】。
+//           · 入口门被攻破则销毁空间及其中所有生物、物品；正常关门或换门不会触发。
 //           · 空间内放置的物品/建筑全部留存；同一施法者日后再次施放，进入的是
 //             【同一处】既有空间，而非重新生成的新空间。
 //           · 只有“玩家”（受客户端操控的生物）才能触碰门进入，NPC/简单生物无效。
@@ -16,7 +17,7 @@
 //   · 把“持久空间”与“临时门”彻底分离：
 //       - /datum/mansion_space   持久存在，登记在 GLOB.mansion_magic_spaces[ckey] 里，
 //         按施法者 ckey 一人一处；它持有预留区、内部区域、回程门、回程坐标等。
-//         它一旦建立便长存（本局内），从不释放预留区——这正是“空间被保留”的根基。
+//         正常关门或换门保留预留区；入口被攻破、主人死亡或离开本轮时回收。
 //       - /obj/structure/mansion_magic_door 只是临时“入口门”，指向某个持久空间；
 //         空置 3 分钟即自毁（门消失），但绝不释放其所指向的空间。
 //   · 再次施放时：先按 ckey 查注册表——已有空间则“复用”（仅新建一扇入口门接上去），
@@ -71,18 +72,20 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 	always_unpowered = TRUE
 
 // ===========================================================================
-// 持久宅邸空间数据：本法术真正“被保留”的实体。它长存于 GLOB 注册表，门来门去都不影响它。
+// 持久宅邸空间数据：正常关门和换门不影响它，入口被攻破则连同内部一切销毁。
 // ===========================================================================
 /datum/mansion_space
 	var/owner_ckey                             // 归属施法者的 ckey（注册表键）
 	var/mob/living/owner_mob                   // 归属施法者的当前躯体；用于监测“死亡/远离”以回收空间
-	var/datum/turf_reservation/reservation     // 预留区句柄；空置不释放（保留空间与其中之物），仅主人死亡/远离时释放
+	var/datum/turf_reservation/reservation     // 预留区句柄；仅在空间回收或入口被攻破时释放
 	var/area/mansion_magic/interior_area       // 宅邸内部专属区域实例
 	var/turf/entry_turf                        // 进入宅邸后的落脚点（回程门旁的内部地块）
 	var/turf/last_anchor_turf                  // 入口门最近一次出现在地图上的位置；回收清场时作为占用者的兜底落点（门消失后仍保留）
 	var/obj/structure/mansion_return_door/inside_door // 内部回程门（与空间一同长存）
 	var/list/return_points                     // 关联表(mob => turf)：记录每人进入前的位置，用于原路送回
 	var/obj/structure/mansion_magic_door/active_door  // 当前的入口门（临时；可为 null）
+	var/collapsing = FALSE                    // 坍缩开始后禁止传送、复用与重复清理
+	var/destroy_contents = FALSE              // 仅入口被攻破时销毁生物；正常回收仍安全遣返
 
 // New：记录归属（ckey 与当前躯体）并初始化容器；真正的“开辟”交由 build_space()，以便施法流程能感知失败。
 /datum/mansion_space/New(ckey, mob/living/new_owner)
@@ -92,13 +95,16 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 
 // Destroy：开辟失败、或被回收（主人死亡/远离）时调用。顺序敏感——先停监测、清场，再释放预留区。
 /datum/mansion_space/Destroy()
+	collapsing = TRUE
 	// 停止主人监测轮询。
 	STOP_PROCESSING(SSprocessing, src)
 	// 从注册表摘除自己（若已登记），避免悬挂引用。
 	if(owner_ckey && GLOB.mansion_magic_spaces[owner_ckey] == src)
 		GLOB.mansion_magic_spaces -= owner_ckey
-	// 【关键】释放预留区会清空空间内的一切，所以必须先把里面的活物安全送出，避免被一并抹除。
-	eject_all_occupants()
+	if(destroy_contents)
+		destroy_interior_contents()
+	else
+		eject_all_occupants()
 	// 拆内部回程门。
 	if(inside_door)
 		QDEL_NULL(inside_door)
@@ -115,6 +121,33 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 	return_points = null
 	active_door = null
 	return ..()
+
+// 入口受到致命伤害的专用路径；普通关门和换门只删除门，不会走到这里。
+/datum/mansion_space/proc/collapse_from_breach()
+	if(collapsing || QDELETED(src))
+		return
+	collapsing = TRUE
+	destroy_contents = TRUE
+	if(!QDELETED(owner_mob))
+		to_chat(owner_mob, span_userdanger("我的宅邸入口被攻破了！门后的空间连同其中的一切正在湮灭！"))
+	qdel(src)
+
+/datum/mansion_space/proc/destroy_interior_contents()
+	if(!reservation)
+		return
+	// 删除前快照所有嵌套内容，避免容器或人物删除时掉落/转移物品而漏删。
+	// 保留幽灵；人物身体删除时由主线 ghostize 接管客户端。
+	var/list/doomed_contents = list()
+	for(var/turf/T in reservation.reserved_turfs)
+		for(var/atom/movable/content in T.GetAllContents())
+			if(istype(content, /mob/dead))
+				continue
+			doomed_contents += content
+	for(var/mob/living/occupant in doomed_contents)
+		to_chat(occupant, span_userdanger("宅邸入口轰然破碎，坍缩的空间将我和周围的一切一并吞没！"))
+	for(var/atom/movable/content as anything in doomed_contents)
+		if(!QDELETED(content))
+			qdel(content, force = TRUE)
 
 // build_space：申请预留块并把它“装修”成宅邸（墙、地、区域、回程门）。成功返回 TRUE。
 /datum/mansion_space/proc/build_space()
@@ -175,7 +208,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 
 // is_valid：空间是否仍可用（预留区与落脚点都健在）。复用前用它判定，失效则改为重建。
 /datum/mansion_space/proc/is_valid()
-	if(QDELETED(src))
+	if(collapsing || QDELETED(src))
 		return FALSE
 	if(!reservation || QDELETED(reservation))
 		return FALSE
@@ -185,6 +218,8 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 
 // ensure_inside_door：确保内部回程门存在（极端情况下若丢失则补建），保证总能离开。
 /datum/mansion_space/proc/ensure_inside_door()
+	if(!is_valid())
+		return
 	if(inside_door && !QDELETED(inside_door))
 		return
 	if(!entry_turf)
@@ -219,6 +254,8 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 //       /obj/structure/far_travel 退出本轮时，其末尾会 QDEL_NULL(躯体)，于是 owner_mob
 //       变为“已删除/已置空”；QDELETED 对这两种情况都返回真，故下面这一条即可统一捕获。
 /datum/mansion_space/process(delta_time)
+	if(collapsing || QDELETED(src))
+		return
 	// 主人角色已从本轮消失（被 far_travel 退出而删除躯体、或以任何方式被删除）：无主之宅，回收。
 	if(QDELETED(owner_mob))
 		reclaim("主人已离开本轮")
@@ -231,7 +268,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 //（Destroy 会负责清场——把里面的人送出——并释放预留区）。
 /datum/mansion_space/proc/reclaim(reason_text)
 	// 防重入：已在删除流程中则不再处理。
-	if(QDELETED(src))
+	if(collapsing || QDELETED(src))
 		return
 	// 给仍在宅邸内的玩家一个明确提示（随后 Destroy 的清场会把他们送出）。
 	if(interior_area)
@@ -282,6 +319,8 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 
 // send_visitor_back：把一名玩家送回其进入宅邸前的位置。由内部回程门调用。
 /datum/mansion_space/proc/send_visitor_back(mob/living/M)
+	if(!is_valid())
+		return FALSE
 	// 取该人进入前记录的回程地块；若已失效，则退而送到当前入口门处（若有）。
 	var/turf/dest = return_points?[M]
 	if(!dest || QDELETED(dest))
@@ -302,15 +341,15 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 // ===========================================================================
 /obj/structure/mansion_magic_door
 	name = "宅邸魔法门"
-	desc = "一扇通体流转着奥术辉光的门，门后似乎别有洞天。唯有真正的旅人触碰它，方能被引入门内的空间。"
+	desc = "一扇通体流转着奥术辉光的门，唯有真正的旅人触碰它，方能被引入门内。入口一旦被攻破，宅邸空间及其中所有生物和物品都会被销毁。"
 	icon = MANSION_DOOR_ICON
 	icon_state = MANSION_DOOR_STATE
 	anchored = TRUE                 // 固定，不可被推动
 	density = TRUE                  // 实心：撞上去(Bumped)即视为“触碰”
 	opacity = FALSE
-	// 坚不可摧：INDESTRUCTIBLE 让主线 take_damage 直接忽略伤害（已核实）。
-	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | ACID_PROOF | LAVA_PROOF
-	max_integrity = INFINITY
+	// 保留环境抗性，但允许攻击削减耐久，归零时摧毁所连接的宅邸。
+	resistance_flags = FIRE_PROOF | ACID_PROOF | LAVA_PROOF
+	max_integrity = 1000
 	layer = ABOVE_MOB_LAYER
 
 	// —— 运行期状态 ——
@@ -341,6 +380,22 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 	space = null
 	return ..()
 
+/obj/structure/mansion_magic_door/obj_destruction(damage_flag)
+	if(obj_destroyed || QDELETED(src))
+		return FALSE
+	obj_destroyed = TRUE
+	visible_message(span_userdanger("[src] 轰然破碎，门后的空间随之湮灭！"))
+	// 先断开门与空间的双向引用，避免空间清理时再次删除正在处理致命伤害的门。
+	var/datum/mansion_space/breached_space = space
+	if(!QDELETED(breached_space) && breached_space.active_door == src)
+		breached_space.active_door = null
+	space = null
+	if(!QDELETED(breached_space))
+		breached_space.collapse_from_breach()
+	if(!QDELETED(src))
+		qdel(src)
+	return TRUE
+
 // Bumped：实心门被撞上即视为“触碰”——仅“玩家”可被送入宅邸。
 /obj/structure/mansion_magic_door/Bumped(atom/movable/AM)
 	..()
@@ -363,7 +418,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 		// 无客户端（NPC 或掉线躯壳）——按规格不允许进入，直接忽略。
 		return FALSE
 	// 防御：门或空间已失效。
-	if(QDELETED(src) || !space)
+	if(QDELETED(src) || QDELETED(space) || !space.is_valid())
 		return FALSE
 	// 防抖：两次传送之间需间隔 MANSION_USE_COOLDOWN，避免连续 Bumped 造成乒乓/刷屏。
 	if(world.time < last_use + MANSION_USE_COOLDOWN)
@@ -378,7 +433,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 // process：按节流间隔检测空置；空间连续无玩家满 MANSION_EMPTY_TIMEOUT 即自毁（仅门消失）。
 /obj/structure/mansion_magic_door/process(delta_time)
 	// 防御：空间没了（理论不会，因空间长存）则门也失去意义，自毁。
-	if(!space)
+	if(QDELETED(space) || !space.is_valid())
 		qdel(src)
 		return
 	// 节流：未到下次检测时刻就跳过。
@@ -447,7 +502,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 	if(!M.client)
 		return FALSE
 	// 防御：空间已失效（理论不会）。
-	if(!space || QDELETED(space))
+	if(QDELETED(space) || !space.is_valid())
 		to_chat(M, span_warning("门后的归途忽然黯淡了下去……"))
 		return TRUE
 	// 防抖。
@@ -467,7 +522,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 // ===========================================================================
 /obj/effect/proc_holder/spell/invoked/mansion_curse
 	name = "魔邓肯豪宅术"
-	desc = "蓄力片刻后，在选定之地开启一扇坚不可摧的宅邸魔法门，门后是一处可供荒野安身、且会被保留的独立石室空间。"
+	desc = "蓄力片刻后，在选定之地开启一扇宅邸魔法门，通往会被保留的独立石室。入口可被攻击摧毁，届时空间及其中所有生物和物品都会湮灭；正常关门和重新施法换门仍保留空间。"
 	school = "transmutation"
 	spell_tier = 3                          // T3 法术
 	cost = MANSION_SPELL_COST               // 法力/法术点消耗 = 6
@@ -527,6 +582,10 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 
 	// 查注册表：该施法者是否已拥有一处持久宅邸。
 	var/datum/mansion_space/space = GLOB.mansion_magic_spaces[owner_key]
+	if(space?.collapsing)
+		to_chat(user, span_warning("旧宅邸仍在坍缩，我暂时无法重新开辟空间。"))
+		revert_cast()
+		return FALSE
 
 	// 分支 A：已有且仍有效 => 复用同一空间，在选定地块新建一扇入口门接上去。
 	if(space && space.is_valid())
@@ -567,7 +626,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 	playsound(place_turf, 'sound/magic/whiteflame.ogg', 70, TRUE)
 	user.visible_message(
 		span_warning("[user] 念诵咒文，于选定之地撕开一道门扉——门后竟透出一处石室的光亮！"),
-		span_notice("我在选定的位置撕开空间，一扇坚不可摧的宅邸魔法门就此矗立——它身后的空间会被保留，但若我死亡，它便会随之坍缩。")
+		span_notice("我在选定的位置撕开空间，宅邸魔法门就此矗立——若我死亡，宅邸会被回收；若入口被攻破，空间及其中所有生物和物品都会湮灭。")
 	)
 	return TRUE
 

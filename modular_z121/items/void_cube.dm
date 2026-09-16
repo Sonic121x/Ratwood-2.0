@@ -6,7 +6,7 @@
 // snapshot records stay separate: opening the UI must never normalize old items.
 /obj/item/void_cube
 	name = "虚空魔方"
-	desc = "一枚刻满虚空纹路的黄铜魔方。将手持杂物化为可堆叠的数据；衣服、武器和容器则连同内容完整封存。"
+	desc = "一枚刻满虚空纹路的黄铜魔方。将手持杂物化为可堆叠的数据；衣服、武器、卷轴、技能书和容器则保留原有状态完整封存。"
 	icon = 'modular_z121/icon/item.dmi'
 	icon_state = "void_cube"
 	w_class = WEIGHT_CLASS_SMALL
@@ -137,6 +137,11 @@
 	return null
 
 /obj/item/void_cube/proc/should_seal(obj/item/I)
+	// Learning scrolls keep their type after use; used/oneuse, names and icons
+	// are instance state. Recreating the type would grant a fresh use. Preserve
+	// the whole family, including unused scrolls and spell-point/skill books.
+	if(istype(I, /obj/item/book/granter) || istype(I, /obj/item/teleportation_scroll) || istype(I, /obj/item/enchantmentscroll) || istype(I, /obj/item/paper/scroll))
+		return TRUE
 	if(istype(I, /obj/item/clothing) || istype(I, /obj/item/rogueweapon) || istype(I, /obj/item/gun) || istype(I, /obj/item/melee))
 		return TRUE
 	// Some optional modules use the alternate weapon hierarchy.
@@ -151,6 +156,8 @@
 	return FALSE
 
 /obj/item/void_cube/proc/counted_spec(obj/item/I)
+	if(should_seal(I))
+		return null
 	var/item_path = I.type
 	var/amount = 1
 	if(istype(I, /obj/item/natural/bundle))
