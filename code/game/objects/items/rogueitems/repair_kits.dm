@@ -1,7 +1,7 @@
 /obj/item/repair_kit
-	name = "sewing kit"
+	name = "缝纫套件"
 	icon_state = "sewingkit"
-	desc = "A well-made repair kit that includes high-quality reinforced fabric lines and leather patches for field repairs. It can patch up gashes in leather-and-cloth without the need for a tailor's needle."
+	desc = "一个制作精良的修复套件，内含高品质的加固织物线材和皮革补片，用于野外修补。无需裁缝针即可缝补皮布上的裂口。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
@@ -22,9 +22,9 @@
 /obj/item/repair_kit/examine()
 	. = ..()
 	if(src.obj_integrity > 0)
-		. += span_bold("It has [src.obj_integrity] left.")
+		. += span_bold("剩余 [src.obj_integrity] 次使用。")
 	else
-		. += span_bold("It has no uses left.")
+		. += span_bold("已无剩余使用次数。")
 
 /obj/item/repair_kit/proc/self_del()
 	if(repair_type == 0)
@@ -57,10 +57,10 @@
 			return
 		if(I.max_integrity)
 			if(I.obj_integrity == I.max_integrity)
-				to_chat(user, span_warning("This is not broken."))
+				to_chat(user, span_warning("这并未损坏。"))
 				return
 			if(!I.ontable() && table_need == TRUE)
-				to_chat(user, span_warning("I should put this on a table first."))
+				to_chat(user, span_warning("我应该先把它放在桌子上。"))
 				return
 			if(I.sewrepair)
 				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
@@ -76,9 +76,9 @@
 				if(I.anvilrepair)
 					playsound(loc,'sound/items/bsmith3.ogg', 100, TRUE, -2)
 
-				user.visible_message(span_info("[user] repairs [I]!"))
+				user.visible_message(span_info("[user]修理了[I]!"))
 				if(I.body_parts_covered != I.body_parts_covered_dynamic)
-					user.visible_message(span_info("[user] repairs [I]'s coverage!"))
+					user.visible_message(span_info("[user]修复了[I]的覆盖!"))
 					I.repair_coverage()
 				if(XP_ON_SUCCESS > 0)
 					if(I.anvilrepair)
@@ -97,30 +97,30 @@
 	return ..()
 
 /obj/item/repair_kit/bad
-	name = "fabric patch"
+	name = "织物补片"
 	icon_state = "custarsewingkit"
-	desc = "A meager set of pieces of cloth, a bundle of threads and a loose rope. It can be used for field repairs."
+	desc = "一套寒酸的布片、一束线头和一根松散的绳子。可用于野外修补。"
 	max_integrity = 300
 	grid_width = 32
 	grid_height = 32
 
 /obj/item/repair_kit/metal
-	name = "armor plates"
+	name = "护甲板"
 	icon_state = "armorkit"
-	desc = "A wonderful set of metal patches, individual armor plates and straps for fastening them. It can be used to properly damaged weapons and armor, without the need for a blacksmith's hammer."
+	desc = "一套出色的金属补片、独立护甲板和固定用的皮带。无需铁匠锤即可修复受损的武器与护甲。"
 	repair_type = 1
 	max_integrity = 600
 	table_need = TRUE
 
 /obj/item/repair_kit/metal/bad
-	name = "metal scrap kit"
+	name = "金属废料套件"
 	icon_state = "custararmorkit"
-	desc = "A meager set of metal patches, repurposed iron shingles and straps for fastening them. It can be used to repair damaged weapons and armor in a pinch, without the need for a blacksmith's hammer. It can also be used in smithing to create banded iron pieces."
+	desc = "一套简陋的金属补片、回收的铁皮瓦和固定用的皮带。无需铁匠锤即可临时修复受损的武器与护甲。也可用于锻造中制作带状铁件。"
 	max_integrity = 300
 
 /obj/item/armorkit_empty
-	name = "empty metal kit"
-	desc = "An empty metal box that is suitable for storing various pieces of hardware and other scrap. </br>Stuff this with three pieces of iron scrap, obtainable by destroying iron equipment, to create a metal repair kit."
+	name = "空金属套件"
+	desc = "一个空金属盒，适合存放各种五金件和其他废料。</br>在其中塞入三块铁质废料（可通过摧毁铁制装备获得），即可制作成金属修复套件。"
 	icon_state = "armorkit_empty"
 	icon = 'icons/roguetown/items/misc.dmi'
 	grid_width = 64
@@ -137,12 +137,12 @@
 		if(I.smeltresult == /obj/item/ingot/iron || I.type == /obj/item/scrap) //all iron stuff and iron scrap
 			if(!do_after(user, 2 SECONDS, target = I))
 				return
-			user.visible_message(span_notice("[user] salvages [I] into usable materials."))
+			user.visible_message(span_notice("[user]将[I]拆解为可用材料。"))
 			qdel(I)
 			current_scrap++
 			if(current_scrap < need_scrap)
 				var/visible_scrap = need_scrap - current_scrap
-				to_chat(user, span_info("To fill [name], you need [visible_scrap] more..."))
+				to_chat(user, span_info("要填满[name],你还需要[visible_scrap]个..."))
 			if(current_scrap >= need_scrap)
 				new /obj/item/repair_kit/metal/bad(get_turf(src))
 				qdel(src)
@@ -151,8 +151,8 @@
 	return
 
 /obj/item/scrap
-	name = "iron scrap"
-	desc = "Shingles and scrap, born from violence upon iron. There may yet still be a use for these pieces.. </br>Iron scrap can be crafted into metal repair kits, which - when stuffed with iron scrap - can repair damaged equipment without the need for a blacksmith's hammer."
+	name = "铁质废料"
+	desc = "铁器遭受暴力后产生的碎片与边角料。这些碎片或许仍有用处。</br>铁质废料可被制成金属修复套件——套件内再塞入铁质废料，就能在不使用铁匠锤的情况下修复受损装备。"
 	icon_state = "scrap"
 	icon = 'icons/roguetown/items/misc.dmi'
 	grid_width = 32
