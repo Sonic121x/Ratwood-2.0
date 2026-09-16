@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/withdraw
-	name = "vomitorium"
-	desc = "A magitech wall device connected to the local trade network. Users can buy basic goods, crafting materials, and food for a price from these units, either from in-town or imported for a heftier price."
+	name = "呕食厅"
+	desc = "一种连接当地贸易网络的魔导墙壁装置。使用者可以从这些设备上以一定价格购买基础货物、制作材料与食物，既可选购本地货，也可花更高的价钱购买进口货。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "submit"
 	density = FALSE

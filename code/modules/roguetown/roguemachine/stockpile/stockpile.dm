@@ -1,7 +1,7 @@
 
 /obj/structure/roguemachine/stockpile
-	name = "stockpile"
-	desc = "A magitech device connected to the trade network. Users can buy basic goods, crafting materials, and food for a price from these units, or sell them here for money."
+	name = "仓储机"
+	desc = "一种连接贸易网络的魔导装置。使用者可以从这些设备上以一定价格购买基础货物、制作材料与食物，也可以在此出售它们换钱。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "stockpile_vendor"
 	density = FALSE
@@ -13,10 +13,10 @@
 
 /obj/structure/roguemachine/stockpile/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click with an open hand to check the vomitorium's stockpile. Stored mammons can be used to purchase a wide variety of materials, which're then vended out for use.")
-	. += span_info("Left-clicking the machine with an item will load it into the stockpile, rewarding you coinage in turn. Make sure to register an account with the NERVELOCK, first, or you won't receive any coinage.")
-	. += span_info("Right-clicking the machine will automatically load all adjacent items into the stockpile at once.")
-	. += span_info("The vomitorium's stockpile naturally refills over time. Loaded items are added to the stockpile's quantities, which can then be vended by others or exported by the Steward for profit.")
+	. += span_info("空手左键点击，可查看呕食厅的仓储。储存的玛门可用于购买种类繁多的材料，这些材料随后会被售卖出来供人使用。")
+	. += span_info("手持物品左键点击机器，会将其存入仓储，并给予你相应的钱币作为回报。请务必先在神经锁上注册账户，否则你将收不到任何钱币。")
+	. += span_info("右键点击机器，会自动将周围所有物品一次性存入仓储。")
+	. += span_info("呕食厅的仓储会随时间自然补货。存入的物品会累加进仓储数量，之后可供他人购买，或由总管出口以赚取利润。")
 
 /obj/structure/roguemachine/stockpile/Initialize(mapload)
 	. = ..()
@@ -31,12 +31,12 @@
 
 /obj/structure/roguemachine/stockpile/examine(mob/user)
 	. = ..()
-	. += span_info("Right click to sell everything in front of the stockpile.")
+	. += span_info("右键可出售仓储机前方的全部物品。")
 	if(SStreasury.royal_custom_unlocked)
-		. += span_info(SStreasury.royal_custom_active ? "Royal Custom is in force; direct imports pay duty to the Crown." : "Royal Custom is chartered but suspended.")
+		. += span_info(SStreasury.royal_custom_active ? "王权关税正在施行；直接进口需向王权缴纳税款。" : "王权关税已获特许，但目前中止。")
 	else
 		var/v = SStreasury.economic_output || 0
-		. += span_info("Royal Custom Charter unlocks at [SStreasury.royal_custom_threshold] mammon of stockpile trade ([v] so far).")
+		. += span_info("王权关税特许状将在仓储贸易额达到 [SStreasury.royal_custom_threshold] 玛门时解锁（目前为 [v]）。")
 
 /obj/structure/roguemachine/stockpile/ui_state(mob/user)
 	return GLOB.human_adjacent_state
@@ -278,15 +278,15 @@
 					HC.mind?.sleep_adv?.add_community_contribution(bundle_amt)
 				var/amt = R.payout_price * bundle_amt
 				if(HAS_TRAIT(H, TRAIT_ROYAL_SUBSIDY))
-					SStreasury.log_fund_entry(new /datum/treasury_entry(null, SStreasury.discretionary_fund, SStreasury.discretionary_fund, 0, "Subsidy Deposit: [R.name] by [H.real_name]"))
+					SStreasury.log_fund_entry(new /datum/treasury_entry(null, SStreasury.discretionary_fund, SStreasury.discretionary_fund, 0, "补贴存入：[H.real_name] 的 [R.name]"))
 					record_round_statistic(STATS_DIRECT_TREASURY_TRANSFERS, amt)
-					send_ooc_note("<b>NERVELOCK:</b> Subsidy claims [amt]m from the [R.name]. Thank you for your diligent service.", name = H.real_name)
+					send_ooc_note("<b>神经锁：</b>补贴从 [R.name] 支取 [amt]m。感谢你的勤勉效劳。", name = H.real_name)
 					return
 				if(!I.stockpile_withdrawn)
 					SStreasury.economic_output += amt
-				SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty")
+				SStreasury.give_money_account(amt, H, "+[amt]，来自 [R.name] 赏金")
 				if(auto_exported && message)
-					say("Crown's [R.name] stockpile is full - shipped regionally on your behalf.")
+					say("王权的 [R.name] 仓储已满——已代你运往外地。")
 				record_round_statistic(STATS_STOCKPILE_EXPANSES, amt)
 				return
 			continue
@@ -297,11 +297,11 @@
 			// Steward-controlled accept toggle. Refuses with a message; item stays in hand.
 			if(!R.accept_toggle_enabled)
 				if(message)
-					say("The Crown has no interest in [R.name] at this time.")
+					say("王权目前对 [R.name] 不感兴趣。")
 				return
 			if(below_floor)
 				if(message)
-					say("The Crown's ledger is thin. No purchases today.")
+					say("王权的账册吃紧。今日不再收购。")
 				return
 			var/auto_exported = FALSE
 			var/full_on_arrival = (R.stockpile_amount >= R.stockpile_limit)
@@ -311,9 +311,9 @@
 					R.stockpile_amount -= 1
 					if(message)
 						if(R.autoexport_disabled)
-							say("The Crown's [R.name] stockpile is full, autoexport disabled, take it elsewhere.")
+							say("王权的 [R.name] 仓储已满，自动出口已禁用，请另寻他处。")
 						else
-							say("The Crown's [R.name] stockpile is full and no region demands can absorb your load. Try smaller bundles or take it elsewhere.")
+							say("王权的 [R.name] 仓储已满，且没有任何地区的需求能消化你这批货。试试更小的批量，或另寻他处。")
 					return
 				auto_exported = TRUE
 			R.refresh_auto_price()
@@ -326,18 +326,18 @@
 				var/flavor = quality_delta_flavor(I.item_quality)
 				if(flavor)
 					say(flavor)
-					to_chat(H, span_info("[src] says, \"[flavor]\""))
+					to_chat(H, span_info("[src] 说道：“[flavor]”"))
 			if(crown_delta > 0)
-				SStreasury.mint(SStreasury.discretionary_fund, crown_delta, "Quality premium: [I.name] (+[crown_delta]m)")
+				SStreasury.mint(SStreasury.discretionary_fund, crown_delta, "品质溢价：[I.name]（+[crown_delta]m）")
 			else if(crown_delta < 0)
-				SStreasury.burn(SStreasury.discretionary_fund, -crown_delta, "Quality penalty: [I.name] ([crown_delta]m)")
+				SStreasury.burn(SStreasury.discretionary_fund, -crown_delta, "品质罚金：[I.name]（[crown_delta]m）")
 				record_treasury_expense(TREASURY_FLOW_MISC, "Quality Penalty", -crown_delta)
 			if(!full_on_arrival)
 				R.stockpile_amount += 1
 			SStreasury.dirty_market_view()
 			qdel(I)
 			if(message == TRUE)
-				stock_announce("[R.name] has been stockpiled.")
+				stock_announce("[R.name] 已入库。")
 			if(sound == TRUE)
 				playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 			if(ishuman(H) && !I.stockpile_withdrawn && is_community_contribution_eligible(H))// Can not withdraw from stockpile for points, can't be a combat role
@@ -345,21 +345,21 @@
 				HC.mind?.sleep_adv?.add_community_contribution(1)
 			if(amt)
 				if(HAS_TRAIT(H, TRAIT_ROYAL_SUBSIDY))
-					SStreasury.log_fund_entry(new /datum/treasury_entry(null, SStreasury.discretionary_fund, SStreasury.discretionary_fund, 0, "Subsidy Deposit: [R.name] by [H.real_name]"))
+					SStreasury.log_fund_entry(new /datum/treasury_entry(null, SStreasury.discretionary_fund, SStreasury.discretionary_fund, 0, "补贴存入：[H.real_name] 的 [R.name]"))
 					record_round_statistic(STATS_DIRECT_TREASURY_TRANSFERS, amt)
-					send_ooc_note("<b>NERVELOCk:</b> Subsidy claims [amt]m from the [R.name]. Thank you for your diligent service.", name = H.real_name)
+					send_ooc_note("<b>神经锁：</b>补贴从 [R.name] 支取 [amt]m。感谢你的勤勉效劳。", name = H.real_name)
 					return
 				if(!I.stockpile_withdrawn)
 					SStreasury.economic_output += true_value
-				var/bounty_msg = "+[amt] from [R.name] bounty"
+				var/bounty_msg = "+[amt]，来自 [R.name] 赏金"
 				if(crown_delta != 0)
 					var/seller_delta = amt - quality_baseline
 					var/seller_sign = seller_delta > 0 ? "+" : ""
 					var/crown_sign = crown_delta > 0 ? "+" : ""
-					bounty_msg = "+[amt] from [R.name] bounty (quality: you [seller_sign][seller_delta]m, Crown [crown_sign][crown_delta]m vs. [quality_baseline]m baseline)"
+					bounty_msg = "+[amt]，来自 [R.name] 赏金（品质：你 [seller_sign][seller_delta]m，王权 [crown_sign][crown_delta]m，基准 [quality_baseline]m）"
 				SStreasury.give_money_account(amt, H, bounty_msg)
 				if(auto_exported && message)
-					say("Crown's [R.name] stockpile is full - shipped regionally on your behalf.")
+					say("王权的 [R.name] 仓储已满——已代你运往外地。")
 			record_round_statistic(STATS_STOCKPILE_EXPANSES, amt)
 			record_round_statistic(STATS_STOCKPILE_REVENUE, true_value)
 			return
@@ -404,6 +404,6 @@
 		for(var/turf/T as anything in scan_turfs)
 			for(var/obj/I in T)
 				attemptsell(I, user, FALSE, FALSE)
-		say("Bulk selling in progress...")
+		say("批量出售进行中...")
 		playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
