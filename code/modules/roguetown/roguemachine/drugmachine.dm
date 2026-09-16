@@ -9,8 +9,8 @@
 #define PURITY_CUT_B_COST			105
 
 /obj/structure/roguemachine/drugmachine
-	name = "PURITY"
-	desc = "You want to destroy your life."
+	name = "纯净"
+	desc = "你想毁掉自己的人生。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "purity"
 	density = TRUE
@@ -47,7 +47,7 @@
 				return
 			return attack_hand(user)
 		else
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(istype(P, /obj/item/storage/keyring))
 		var/right_key = FALSE
@@ -62,7 +62,7 @@
 					return
 				return attack_hand(user)
 		if(!right_key)
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(istype(P, /obj/item/roguecoin/gilbranze))
 		return
@@ -101,7 +101,7 @@
 	if(!ishuman(user))
 		return
 	if(locked)
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("锁着的。当然。"))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
