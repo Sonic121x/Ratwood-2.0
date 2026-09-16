@@ -52,7 +52,7 @@ export const PostingsTab = ({ data, act }: TabProps) => {
             style={inkButtonStyle({})}
             onClick={() => setShowForm(true)}
           >
-            Make a Posting
+            张贴告示
           </button>
         ) : (
           <button
@@ -60,7 +60,7 @@ export const PostingsTab = ({ data, act }: TabProps) => {
             style={inkButtonStyle({})}
             onClick={() => setShowForm(false)}
           >
-            Hide Form
+            收起表单
           </button>
         )}
       </div>
@@ -73,9 +73,9 @@ export const PostingsTab = ({ data, act }: TabProps) => {
         />
       )}
 
-      <div style={sectionHeaderStyle}>Standing Listings</div>
+      <div style={sectionHeaderStyle}>常设告示</div>
       {listings.length === 0 ? (
-        <EmptyMessage text="No standing listings have been pinned." />
+        <EmptyMessage text="板上没有钉着的常设告示." />
       ) : (
         <div style={postingGridStyle}>
           {listings.map((p) => (
@@ -86,9 +86,9 @@ export const PostingsTab = ({ data, act }: TabProps) => {
 
       <hr style={rulerStyle} />
 
-      <div style={sectionHeaderStyle}>Notices</div>
+      <div style={sectionHeaderStyle}>临时告示</div>
       {notices.length === 0 ? (
-        <EmptyMessage text="No notices on the board. The wind stirs the empty parchments." />
+        <EmptyMessage text="板上没有临时告示. 风翻动着空白的羊皮纸." />
       ) : (
         <div style={postingGridStyle}>
           {notices.map((p) => (
@@ -150,7 +150,7 @@ const PostingCard = ({
           }}
         >
           {posting.posted_at_label}
-          {posting.expires_in_label && ` · expires ${posting.expires_in_label}`}
+          {posting.expires_in_label && ` · ${posting.expires_in_label}过期`}
         </div>
       </div>
 
@@ -162,7 +162,7 @@ const PostingCard = ({
             marginTop: '2px',
           }}
         >
-          Standing Listing
+          常设告示
         </div>
       )}
 
@@ -202,7 +202,7 @@ const PostingCard = ({
                 marginLeft: '6px',
               }}
             >
-              (unattested, yet)
+              (尚未画押)
             </span>
           )}
         </div>
@@ -212,7 +212,7 @@ const PostingCard = ({
             style={inkButtonStyle({})}
             onClick={() => act('remove_post', { posting_id: posting.posting_id })}
           >
-            Take Down
+            撕下
           </button>
         )}
         {!posting.is_own && !!posting.can_authority_remove && (
@@ -223,7 +223,7 @@ const PostingCard = ({
               act('authority_remove_post', { posting_id: posting.posting_id })
             }
           >
-            Remove (Authority)
+            强制撕下 (职权)
           </button>
         )}
       </div>
@@ -259,7 +259,7 @@ const PostingForm = ({
     }
     if (willReplaceListing) {
       const ok = confirm(
-        'You already have a Standing Listing posted. Posting a new one will replace it. Proceed?',
+        '你已经张贴了一张常设告示. 张贴新的将会替换掉它. 是否继续?',
       );
       if (!ok) {
         return;
@@ -283,11 +283,11 @@ const PostingForm = ({
         borderColor: INK_SOFT,
       }}
     >
-      <div style={sectionHeaderStyle}>Pin a Posting</div>
+      <div style={sectionHeaderStyle}>张贴告示</div>
 
       {!!data.can_post_listing && (
         <div style={{ marginBottom: 10 }}>
-          <div style={fieldLabel}>Kind of posting</div>
+          <div style={fieldLabel}>告示类型</div>
           <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
             <button
               type="button"
@@ -301,7 +301,7 @@ const PostingForm = ({
               }}
               onClick={() => setTier(POSTING_TIER_NOTICE)}
             >
-              Notice (expires in 30m)
+              临时告示 (30分钟后过期)
             </button>
             <button
               type="button"
@@ -315,33 +315,33 @@ const PostingForm = ({
               }}
               onClick={() => setTier(POSTING_TIER_LISTING)}
             >
-              Standing Listing (no expiry)
+              常设告示 (不过期)
             </button>
           </div>
         </div>
       )}
 
       <FormField
-        label="Title"
+        label="标题"
         value={title}
         onChange={setTitle}
         max={TITLE_MAX}
       />
       <FormField
-        label="Body"
+        label="正文"
         value={body}
         onChange={setBody}
         max={BODY_MAX}
         multiline
       />
       <FormField
-        label="Signed as"
+        label="署名"
         value={posterName}
         onChange={setPosterName}
         max={NAME_MAX}
       />
       <FormField
-        label="Title or role"
+        label="头衔或职位"
         value={posterTitle}
         onChange={setPosterTitle}
         max={ROLE_MAX}
@@ -356,7 +356,7 @@ const PostingForm = ({
             marginTop: 6,
           }}
         >
-          You have a Notice already posted. Pinning this will take it down.
+          你已经张贴了一张临时告示. 张贴这张将会把它撕下.
         </div>
       )}
       {willReplaceListing && (
@@ -367,7 +367,7 @@ const PostingForm = ({
             marginTop: 6,
           }}
         >
-          You have a Standing Listing already posted. Pinning this will take it down.
+          你已经张贴了一张常设告示. 张贴这张将会把它撕下.
         </div>
       )}
 
@@ -380,7 +380,7 @@ const PostingForm = ({
         }}
       >
         <button type="button" style={inkButtonStyle({})} onClick={onClose}>
-          Cancel
+          取消
         </button>
         <button
           type="button"
@@ -388,7 +388,7 @@ const PostingForm = ({
           disabled={!valid}
           onClick={onPost}
         >
-          Pin Posting
+          张贴
         </button>
       </div>
     </div>
@@ -422,7 +422,7 @@ const FormField = ({
         <div style={{ ...fieldLabel, flex: 1 }}>
           {label}
           {optional && (
-            <span style={{ color: INK_FAINT, marginLeft: 4 }}>(optional)</span>
+            <span style={{ color: INK_FAINT, marginLeft: 4 }}>(可选)</span>
           )}
         </div>
         <div

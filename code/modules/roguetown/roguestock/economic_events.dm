@@ -81,7 +81,7 @@
 			diff["events_relieved"] = relieved
 		relieved += name
 	else
-		scom_announce("<font color='#5cb85c'>RELIEF: [name] eased by relief efforts. Prices return to normal.</font>")
+		scom_announce("<font color='#5cb85c'>缓解：[name]因赈济行动而平息。物价恢复如常。</font>")
 
 /proc/credit_economic_event_saturation(good_id, units)
 	if(!good_id || units <= 0)
@@ -106,65 +106,65 @@
 // ============================================================================
 
 /datum/economic_event/black_oak_rebellion
-	name = "Black Oak Rebellion"
-	description = "The Black Oaks have risen in Rosawood again - loggers found nailed to trees, woodcutters refuse to enter the deep groves without Crown escort."
-	announcement = "<font color='#c44'>BLACK OAK REBELLION: Rosawood's logging camps lie abandoned. Wood prices surge.</font>"
+	name = "黑橡叛乱"
+	description = "黑橡树在玫瑰林再度起事——伐木工被钉死在树上，樵夫若无王权护卫便拒绝深入密林。"
+	announcement = "<font color='#c44'>黑橡叛乱：玫瑰林的伐木营地尽数荒废。木材价格飙升。</font>"
 	affected_goods = list(TRADE_GOOD_WOOD)
 	price_mod = ECON_SHORTAGE_MAJOR
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/ironmongers_strike
-	name = "Ironmongers' Strike"
-	description = "The ironmongers' guild has walked out over unpaid commissions - smelters sit cold."
-	announcement = "<font color='#c44'>IRONMONGERS' STRIKE: Iron ore supply chokes. Smelted stock commands a premium.</font>"
+	name = "铁商罢工"
+	description = "铁商行会因拖欠佣金而集体罢工——熔炉冷落无人问津。"
+	announcement = "<font color='#c44'>铁商罢工：铁矿供应受阻。冶炼存货奇货可居。</font>"
 	affected_goods = list(TRADE_GOOD_IRON_ORE, TRADE_GOOD_IRON_INGOT, TRADE_GOOD_STEEL_INGOT)
 	price_mod = ECON_SHORTAGE_SEVERE
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/daftsmarch_cavein
-	name = "Daftsmarch Cave-In"
-	description = "A deep shaft collapse in Daftsmarch has shut mining operations across three veins."
-	announcement = "<font color='#c44'>DAFTSMARCH CAVE-IN: Mines shuttered. Iron, coal, stone, and smelted stock all grow scarce.</font>"
+	name = "愚沼塌方"
+	description = "愚沼一处深井坍塌，三条矿脉的采掘作业尽数停摆。"
+	announcement = "<font color='#c44'>愚沼塌方：矿场关闭。铁、煤、石料与冶炼存货皆告紧缺。</font>"
 	affected_goods = list(TRADE_GOOD_IRON_ORE, TRADE_GOOD_COAL, TRADE_GOOD_STONE, TRADE_GOOD_IRON_INGOT, TRADE_GOOD_STEEL_INGOT)
 	price_mod = ECON_SHORTAGE_NORMAL
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/wheat_blight
-	name = "Wheat Blight"
-	description = "A black rot has crept through the grain stores of the Kingsfield farmsteads."
-	announcement = "<font color='#c44'>WHEAT BLIGHT: Grain and oats rot in the silos. Bread prices soar.</font>"
+	name = "小麦枯萎病"
+	description = "一种黑色腐病已蔓延至新王田各农庄的粮仓。"
+	announcement = "<font color='#c44'>小麦枯萎病：谷物与燕麦在筒仓中腐烂。面包价格飞涨。</font>"
 	affected_goods = list(TRADE_GOOD_GRAIN, TRADE_GOOD_OATS)
 	price_mod = ECON_SHORTAGE_SEVERE
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/saltwick_storm
-	name = "Saltwick Storm"
-	description = "A vicious gale has battered the Saltwick wharves - fishing fleets are grounded for days."
-	announcement = "<font color='#c44'>SALTWICK STORM: Fishing fleets grounded. Fresh and cured fish alike grow dear.</font>"
+	name = "盐镇风暴"
+	description = "一场狂暴的飓风袭击了盐镇码头——渔船队数日无法出海。"
+	announcement = "<font color='#c44'>盐镇风暴：渔船队搁浅。鲜鱼与干鱼皆价高难求。</font>"
 	affected_goods = list(TRADE_GOOD_FISH_FILET, TRADE_GOOD_DRIED_FISH, TRADE_GOOD_FISH_MINCE)
 	price_mod = ECON_SHORTAGE_MAJOR
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/fur_trapping_frost
-	name = "Trappers' Frost"
-	description = "An unseasonal freeze has driven the game deep into the wilds - trappers return empty-handed."
-	announcement = "<font color='#c44'>TRAPPERS' FROST: Fur, hide, and worked leather supply dries up. Tanners panic.</font>"
+	name = "猎户霜冻"
+	description = "一场不合时节的严霜将猎物逼入荒野深处——猎户们空手而归。"
+	announcement = "<font color='#c44'>猎户霜冻：毛皮、兽皮与鞣制皮革供应枯竭。制革匠们惊慌失措。</font>"
 	affected_goods = list(TRADE_GOOD_FUR, TRADE_GOOD_HIDE, TRADE_GOOD_CURED_LEATHER)
 	price_mod = ECON_SHORTAGE_NORMAL
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/cloth_smuggler_purge
-	name = "Cloth Smuggler Purge"
-	description = "A crown crackdown on black-market cloth has choked the legitimate supply as well."
-	announcement = "<font color='#c44'>CLOTH SMUGGLER PURGE: Cloth and fibers seized from wagons. Tailors despair.</font>"
+	name = "布料走私清剿"
+	description = "王权对黑市布料的一场打击，同时也掐断了合法供应。"
+	announcement = "<font color='#c44'>布料走私清剿：马车上的布料与纤维被查没。裁缝们陷入绝望。</font>"
 	affected_goods = list(TRADE_GOOD_CLOTH, TRADE_GOOD_FIBERS)
 	price_mod = ECON_SHORTAGE_MAJOR
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/essence_scarcity
-	name = "Essence Scarcity"
-	description = "The essence harvests in the Terrorbog have faltered - arcane reagents grow dear."
-	announcement = "<font color='#c44'>ESSENCE SCARCITY: Dendor's essence and viscera run short. Wizards fume.</font>"
+	name = "精华匮乏"
+	description = "恐沼中的精华采集已然失收——奥术试剂价格高涨。"
+	announcement = "<font color='#c44'>精华匮乏：登多尔的精华与内脏告急。巫师们怒火中烧。</font>"
 	affected_goods = list(TRADE_GOOD_DENDOR_ESSENCE, TRADE_GOOD_VISCERA)
 	price_mod = ECON_SHORTAGE_CRISIS
 	event_type = ECON_EVENT_SHORTAGE
@@ -175,41 +175,41 @@
 // ============================================================================
 
 /datum/economic_event/bumper_harvest
-	name = "Bumper Harvest"
-	description = "Kingsfield reports its finest grain harvest - granaries overflow."
-	announcement = "<font color='#5cb85c'>BUMPER HARVEST: Grain and oats flood the markets. Prices collapse.</font>"
+	name = "丰收之年"
+	description = "新王田报称迎来历年最好的谷物收成——粮仓满溢。"
+	announcement = "<font color='#5cb85c'>丰收之年：谷物与燕麦涌入市场。价格崩塌。</font>"
 	affected_goods = list(TRADE_GOOD_GRAIN, TRADE_GOOD_OATS)
 	price_mod = ECON_OVERSUPPLY_SEVERE
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/rosawood_overcut
-	name = "Rosawood Overcut"
-	description = "Rosawood's lumber camps have exceeded their quotas - barges choke the river with timber."
-	announcement = "<font color='#5cb85c'>ROSAWOOD OVERCUT: Timber glut on the river. Wood prices slump.</font>"
+	name = "玫瑰林滥伐"
+	description = "玫瑰林的伐木营地超额完成配额——驳船满载木料堵塞河道。"
+	announcement = "<font color='#5cb85c'>玫瑰林滥伐：河上木料泛滥。木材价格暴跌。</font>"
 	affected_goods = list(TRADE_GOOD_WOOD)
 	price_mod = ECON_OVERSUPPLY_MAJOR
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/herring_swarm
-	name = "Herring Swarm"
-	description = "A titanic shoal of fish has wandered into Saltwick waters - the nets come up full."
-	announcement = "<font color='#5cb85c'>HERRING SWARM: Saltwick nets bursting. Fresh and cured fish both sell for pennies.</font>"
+	name = "鲱鱼鱼汛"
+	description = "一支庞大的鱼群游入盐镇海域——渔网拉起，满舱皆是。"
+	announcement = "<font color='#5cb85c'>鲱鱼鱼汛：盐镇渔网撑爆。鲜鱼与干鱼皆贱价出售。</font>"
 	affected_goods = list(TRADE_GOOD_FISH_FILET, TRADE_GOOD_DRIED_FISH, TRADE_GOOD_FISH_MINCE)
 	price_mod = ECON_OVERSUPPLY_GLUT
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/unseasonal_fur
-	name = "Unseasonal Fur"
-	description = "Trappers report massive herds migrating through the borderlands - pelts pile in the warehouses."
-	announcement = "<font color='#5cb85c'>UNSEASONAL FUR: Pelts pile up in the warehouses. Furrier prices tumble.</font>"
+	name = "反季毛皮"
+	description = "猎户们报告大批兽群正迁徙穿越边境——毛皮在仓库中堆积如山。"
+	announcement = "<font color='#5cb85c'>反季毛皮：仓库里毛皮堆积如山。皮货价格一落千丈。</font>"
 	affected_goods = list(TRADE_GOOD_FUR)
 	price_mod = ECON_OVERSUPPLY_NORMAL
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/quarry_windfall
-	name = "Quarry Windfall"
-	description = "A rich new seam has been struck at the Mount Decapitation quarries - carts roll in from dawn to dusk."
-	announcement = "<font color='#5cb85c'>QUARRY WINDFALL: Stone and coal flood the yards. Builders rejoice, quarrymen grumble.</font>"
+	name = "采石场横财"
+	description = "断头山地采石场凿出一条富矿脉——板车从早到晚川流不息。"
+	announcement = "<font color='#5cb85c'>采石场横财：石料与煤涌入料场。建造者欢呼，采石工嘟囔。</font>"
 	affected_goods = list(TRADE_GOOD_STONE, TRADE_GOOD_COAL)
 	price_mod = ECON_OVERSUPPLY_MINOR
 	event_type = ECON_EVENT_OVERSUPPLY
@@ -220,65 +220,65 @@
 // ============================================================================
 
 /datum/economic_event/murrain
-	name = "Cattle Murrain"
-	description = "A wasting sickness has swept the herds of the Kingsfield pastures. Meat, dairy, and cured sausage turn scarce."
-	announcement = "<font color='#c44'>CATTLE MURRAIN: Herds sicken across the pastures. Meat, dairy, and cured sausage all grow dear.</font>"
+	name = "牛瘟"
+	description = "一种消耗性疾病席卷了新王田牧场的牛群。肉类、乳品与腌制香肠皆告紧缺。"
+	announcement = "<font color='#c44'>牛瘟：牧场牛群染病。肉类、乳品与腌制香肠皆价高难求。</font>"
 	affected_goods = list(TRADE_GOOD_MEAT, TRADE_GOOD_BUTTER, TRADE_GOOD_CHEESE, TRADE_GOOD_SAUSAGE)
 	price_mod = ECON_SHORTAGE_MAJOR
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/saltmine_flooding
-	name = "Salt-Mine Flooding"
-	description = "Groundwater has broken through the Daftsmarch salt workings, drowning the lower galleries."
-	announcement = "<font color='#c44'>SALT-MINE FLOODING: The Daftsmarch galleries drown. Salt grows precious.</font>"
+	name = "盐矿水淹"
+	description = "地下水冲破了愚沼盐场的作业面，淹没了下层巷道。"
+	announcement = "<font color='#c44'>盐矿水淹：愚沼的矿井被淹。盐变得珍贵。</font>"
 	affected_goods = list(TRADE_GOOD_SALT)
 	price_mod = ECON_SHORTAGE_SEVERE
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/copper_tin_embargo
-	name = "Copper and Tin Embargo"
-	description = "A foreign crown has barred the export of its copper and tin. Bronze-smiths scramble."
-	announcement = "<font color='#c44'>COPPER AND TIN EMBARGO: Foreign shipments halted. Ore and smelted ingots alike grow scarce.</font>"
+	name = "铜锡禁运"
+	description = "一个外国王权禁止其铜与锡的出口。青铜匠们手忙脚乱。"
+	announcement = "<font color='#c44'>铜锡禁运：外国船运中断。矿石与冶炼铸锭皆告紧缺。</font>"
 	affected_goods = list(TRADE_GOOD_COPPER_ORE, TRADE_GOOD_TIN_ORE, TRADE_GOOD_COPPER_INGOT, TRADE_GOOD_TIN_INGOT)
 	price_mod = ECON_SHORTAGE_MAJOR
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/tanners_plague
-	name = "Tanners' Plague"
-	description = "A skin-rotting sickness has forced the tanneries to dump half-cured hides for burning."
-	announcement = "<font color='#c44'>TANNERS' PLAGUE: Hides burned by the wagonload. Leather grows dear.</font>"
+	name = "制革匠疫病"
+	description = "一种腐皮之疾迫使制革坊将半鞣的兽皮成车焚毁。"
+	announcement = "<font color='#c44'>制革匠疫病：兽皮成车焚毁。皮革价格高涨。</font>"
 	affected_goods = list(TRADE_GOOD_CURED_LEATHER, TRADE_GOOD_HIDE)
 	price_mod = ECON_SHORTAGE_SEVERE
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/glass_furnace_failure
-	name = "Glass Furnace Failure"
-	description = "The great furnace at the glassworks has cracked. The craft has halted until it is rebuilt."
-	announcement = "<font color='#c44'>GLASS FURNACE FAILURE: The great glassworks go dark. Glass batch grows rare.</font>"
+	name = "玻璃熔炉损毁"
+	description = "玻璃工坊的大熔炉已经开裂。在重建之前，这门手艺只能停摆。"
+	announcement = "<font color='#c44'>玻璃熔炉损毁：大玻璃工坊陷入黑暗。玻璃原料变得稀有。</font>"
 	affected_goods = list(TRADE_GOOD_GLASS_BATCH)
 	price_mod = ECON_SHORTAGE_SEVERE
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/orchard_locusts
-	name = "Orchard Locusts"
-	description = "A swarm has stripped the Rockhill orchards bare. What little remains is sold at ransom."
-	announcement = "<font color='#c44'>ORCHARD LOCUSTS: The orchards stripped bare. Apples, pears, and berries grow costly.</font>"
+	name = "果园蝗灾"
+	description = "一群蝗虫将岩丘的果园啃得精光。所剩无几的果品被以天价出售。"
+	announcement = "<font color='#c44'>果园蝗灾：果园被啃食一空。苹果、梨与浆果价格高企。</font>"
 	affected_goods = list(TRADE_GOOD_APPLE, TRADE_GOOD_PEAR, TRADE_GOOD_JACKSBERRY)
 	price_mod = ECON_SHORTAGE_MAJOR
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/silk_moth_collapse
-	name = "Silk Moth Collapse"
-	description = "Blackholt's spider-silk harvest has collapsed. Arachnological misfortune, the conclave says."
-	announcement = "<font color='#c44'>SILK MOTH COLLAPSE: Blackholt's silk harvest fails. Tailors grind their teeth.</font>"
+	name = "蚕蛾绝产"
+	description = "黑林的蛛丝收成已然绝产。秘会称，这是蛛形纲的不幸。"
+	announcement = "<font color='#c44'>蚕蛾绝产：黑林的蛛丝收成失败。裁缝们咬牙切齿。</font>"
 	affected_goods = list(TRADE_GOOD_SILK)
 	price_mod = ECON_SHORTAGE_CRISIS
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/clay_pit_collapse
-	name = "CLAY PIT COLLAPSE"
-	description = "The Blackholt clay pits have caved in, swallowing wagons and diggers alike. Potters are turned away empty-handed."
-	announcement = "<font color='#c44'>CLAY PIT COLLAPSE: Blackholt's clay pits cave in. Potters and brickmakers cry out for stock.</font>"
+	name = "黏土坑塌陷"
+	description = "黑林的黏土坑已然坍塌，马车与挖掘工一同被吞没。陶工们空手而归。"
+	announcement = "<font color='#c44'>黏土坑塌陷：黑林的黏土坑塌陷。陶工与制砖匠们呼喊缺料。</font>"
 	affected_goods = list(TRADE_GOOD_CLAY)
 	price_mod = ECON_SHORTAGE_MINOR
 	event_type = ECON_EVENT_SHORTAGE
@@ -289,49 +289,49 @@
 // ============================================================================
 
 /datum/economic_event/dairy_surplus
-	name = "Dairy Surplus"
-	description = "A mild season has flooded the Kingsfield dairies with butter and cheese."
-	announcement = "<font color='#5cb85c'>DAIRY SURPLUS: Butter and cheese overflow the churns. Prices slump.</font>"
+	name = "乳品过剩"
+	description = "一个温和的季节让新王田的乳坊充斥着黄油与奶酪。"
+	announcement = "<font color='#5cb85c'>乳品过剩：黄油与奶酪溢出奶桶。价格暴跌。</font>"
 	affected_goods = list(TRADE_GOOD_BUTTER, TRADE_GOOD_CHEESE)
 	price_mod = ECON_OVERSUPPLY_MAJOR
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/foreign_pig_iron_glut
-	name = "Foreign Pig-Iron Glut"
-	description = "A foreign crown has dumped its surplus ore on the open market. Wagons of pig-iron, copper, and tin roll in below cost."
-	announcement = "<font color='#5cb85c'>FOREIGN PIG-IRON GLUT: Foreign ore floods the yards. Daftsmarch miners grumble; smiths stockpile cheap.</font>"
+	name = "外国生铁倾销"
+	description = "一个外国王权将其过剩矿石倾泻到公开市场上。成车的生铁、铜与锡以低于成本的价格涌入。"
+	announcement = "<font color='#5cb85c'>外国生铁倾销：外国矿石涌入料场。愚沼矿工嘟囔抱怨；铁匠低价囤货。</font>"
 	affected_goods = list(TRADE_GOOD_IRON_ORE, TRADE_GOOD_COPPER_ORE, TRADE_GOOD_TIN_ORE)
 	price_mod = ECON_OVERSUPPLY_MAJOR
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/salt_caravan
-	name = "Salt Caravan Arrives"
-	description = "A distant caravan has rolled in with wagons of salt - prices fall until the reserves clear."
-	announcement = "<font color='#5cb85c'>SALT CARAVAN ARRIVES: Wagons of salt reach the markets. Preservers cheer.</font>"
+	name = "盐队抵达"
+	description = "一支远方的商队载着成车盐货滚滚而来——直到储备清空为止，价格一路走低。"
+	announcement = "<font color='#5cb85c'>盐队抵达：成车盐货运抵市场。腌制匠们欢呼。</font>"
 	affected_goods = list(TRADE_GOOD_SALT)
 	price_mod = ECON_OVERSUPPLY_SEVERE
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/cloth_fair
-	name = "Cloth Fair"
-	description = "The seasonal cloth fair has flooded the markets with raw fibers and bolts of fabric at cut-rate prices."
-	announcement = "<font color='#5cb85c'>CLOTH FAIR: Raw fibers and bolts of fabric flood the markets. Tailors rejoice.</font>"
+	name = "布料集市"
+	description = "当季的布料集市以割喉价格向市场倾泻了生纤维与成匹的布。"
+	announcement = "<font color='#5cb85c'>布料集市：生纤维与成匹布料涌入市场。裁缝们欢欣鼓舞。</font>"
 	affected_goods = list(TRADE_GOOD_CLOTH, TRADE_GOOD_FIBERS)
 	price_mod = ECON_OVERSUPPLY_MAJOR
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/fat_hog_season
-	name = "Fat Hog Season"
-	description = "The pig farmers have slaughtered early - pork and fat are cheap this week."
-	announcement = "<font color='#5cb85c'>FAT HOG SEASON: Pork, fat, and cured swine-meats all go cheap. Butchers work through the night.</font>"
+	name = "肥猪时节"
+	description = "养猪户们提前宰杀——这周猪肉与油脂都格外便宜。"
+	announcement = "<font color='#5cb85c'>肥猪时节：猪肉、油脂与腌制猪肉皆贱价。屠夫们彻夜忙碌。</font>"
 	affected_goods = list(TRADE_GOOD_PORK, TRADE_GOOD_FAT, TRADE_GOOD_TALLOW, TRADE_GOOD_SAUSAGE, TRADE_GOOD_SALUMOI)
 	price_mod = ECON_OVERSUPPLY_MAJOR
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/cidering_season
-	name = "Cidering Season"
-	description = "The Rockhill presses groan under a glut of fruit. Vendors dump the excess at any price."
-	announcement = "<font color='#5cb85c'>CIDERING SEASON: Fruit piles outside the presses. Orchard goods go cheap.</font>"
+	name = "榨汁季节"
+	description = "岩丘的压榨坊在水果的洪流下呻吟。商贩们不计价格地抛售过剩的果子。"
+	announcement = "<font color='#5cb85c'>榨汁季节：水果堆积在压榨坊外。果园货物贱价出售。</font>"
 	affected_goods = list(TRADE_GOOD_APPLE, TRADE_GOOD_PEAR, TRADE_GOOD_JACKSBERRY)
 	price_mod = ECON_OVERSUPPLY_SEVERE
 	event_type = ECON_EVENT_OVERSUPPLY

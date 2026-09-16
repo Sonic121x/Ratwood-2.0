@@ -1,15 +1,15 @@
 // Catalyst. This reagent combined with normal potion reagent makes the strong potion reagent. Reactions defined by the end of this doccument
 /datum/reagent/additive
-	name = "additive"
+	name = "增效剂"
 	reagent_state = LIQUID
 
 //Potions
 /datum/reagent/medicine/healthpot
-	name = "Health Potion"
-	description = "Gradually regenerates all types of damage."
+	name = "生命药水"
+	description = "逐渐恢复所有类型的伤害。"
 	reagent_state = LIQUID
 	color = "#ff0000"
-	taste_description = "lifeblood"
+	taste_description = "生命之血"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
@@ -32,10 +32,10 @@
 	..()
 
 /datum/reagent/medicine/stronghealth
-	name = "Strong Health Potion"
-	description = "Quickly regenerates all types of damage."
+	name = "强效生命药水"
+	description = "快速恢复所有类型的伤害。"
 	color = "#820000"
-	taste_description = "rich lifeblood"
+	taste_description = "浓郁的生命之血"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/stronghealth/on_mob_life(mob/living/carbon/M)
@@ -57,11 +57,11 @@
 	. = 1
 
 /datum/reagent/medicine/manapot
-	name = "Mana Potion"
-	description = "Gradually regenerates energy."
+	name = "魔力药水"
+	description = "逐渐恢复能量。"
 	reagent_state = LIQUID
 	color = "#000042"
-	taste_description = "sweet mana"
+	taste_description = "甜美的魔力"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
@@ -72,10 +72,10 @@
 	..()
 
 /datum/reagent/medicine/strongmana
-	name = "Strong Mana Potion"
-	description = "Rapidly regenerates energy."
+	name = "强效魔力药水"
+	description = "快速恢复能量。"
 	color = "#0000ff"
-	taste_description = "raw power"
+	taste_description = "纯粹的力量"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/strongmana/on_mob_life(mob/living/carbon/M)
@@ -84,11 +84,11 @@
 	..()
 
 /datum/reagent/medicine/stampot
-	name = "Stamina Potion"
-	description = "Gradually regenerates stamina."
+	name = "耐力药水"
+	description = "逐渐恢复耐力。"
 	reagent_state = LIQUID
 	color = "#129c00"
-	taste_description = "sweet tea"
+	taste_description = "甜茶"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
@@ -100,10 +100,10 @@
 	. = 1
 
 /datum/reagent/medicine/strongstam
-	name = "Strong Stamina Potion"
-	description = "Rapidly regenerates stamina."
+	name = "强效耐力药水"
+	description = "快速恢复耐力。"
 	color = "#13df00"
-	taste_description = "sparkly static"
+	taste_description = "噼啪作响的静电"
 	metabolization_rate = REAGENTS_METABOLISM
 
 /datum/reagent/medicine/strongstam/on_mob_life(mob/living/carbon/M)
@@ -119,11 +119,11 @@
  * Previously, antidote did not have a dylovene-like effect and just purged toxin damage while poison will outlast them.
 **/
 /datum/reagent/medicine/antidote
-	name = "Antidote"
+	name = "解毒剂"
 	description = ""
 	reagent_state = LIQUID
 	color = "#00ff00"
-	taste_description = "sickly sweet"
+	taste_description = "甜得发腻"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 
 /datum/reagent/medicine/antidote/on_mob_life(mob/living/carbon/M)
@@ -138,11 +138,11 @@
 
 // About 3 time as potent as antidote
 /datum/reagent/medicine/strong_antidote
-	name = "Strong Antidote"
+	name = "强效解毒剂"
 	description = ""
 	reagent_state = LIQUID
 	color = "#004200"
-	taste_description = "dirt"
+	taste_description = "泥土"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 
 /datum/reagent/medicine/strong_antidote/on_mob_life(mob/living/carbon/M)
@@ -184,7 +184,7 @@
 	..()
 
 /datum/reagent/buff/temperature_normalize
-	name = "temperature"
+	name = "调温剂"
 	color = "#ff9000"
 	taste_description = "like water"
 
@@ -202,9 +202,9 @@
 	return ..()
 
 /datum/reagent/buff/perception
-	name = STATKEY_PER
+	name = "感知"
 	color = "#e9e98c"
-	taste_description = "cat piss"
+	taste_description = "猫尿"
 	metabolization_rate = REAGENTS_METABOLISM * 0.05
 
 /datum/reagent/buff/perception/on_mob_life(mob/living/carbon/M)
@@ -231,18 +231,18 @@
 	return ..()
 
 /datum/reagent/buff/endurance
-	name = STATKEY_WIL
+	name = "坚韧"
 	color = "#e2c3e1"
-	taste_description = "oversweetened milk"
+	taste_description = "过甜的牛奶"
 
 /datum/reagent/buff/endurance/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/endurancepot)
 	return ..()
 
 /datum/reagent/buff/speed
-	name = STATKEY_SPD
+	name = "速度"
 	color = "#cea63a"
-	taste_description = "raw egg yolk"
+	taste_description = "生蛋黄"
 
 /datum/reagent/buff/speed/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/speedpot)
@@ -266,11 +266,11 @@ A dose of ingested potion is defined as 5u, projectile deliver at most 2u, you a
 If you want to expand on poisons theres tons of fun effects TG chemistry has that could be added, randomzied damage values for more unpredictable poison, add trait based resists instead of the clunky race check etc.*/
 
 /datum/reagent/berrypoison	// Weaker poison, balanced to make you wish for death and incapacitate but not kill
-	name = "Berry Poison"
+	name = "浆果毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#47b2e0"
-	taste_description = "bitterness"
+	taste_description = "苦涩"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	harmful = TRUE
 
@@ -286,11 +286,11 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 
 /datum/reagent/strongpoison		// Strong poison, meant to be somewhat difficult to produce using alchemy or spawned with select antags. Designed to kill in one full dose (5u) better drink antidote fast
-	name = "Strong Poison"
+	name = "强效毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#1a1616"
-	taste_description = "burning"
+	taste_description = "灼烧感"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	harmful = TRUE
 
@@ -306,7 +306,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/bloodacid // Quietus Poison for Vampires
-	name = "Vitae Acid"
+	name = "命髓酸"
 	description = ""
 	reagent_state = LIQUID
 	color = "#ff3300"
@@ -319,17 +319,17 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 		if(isdwarf(M))
 			M.add_nausea(5.5)
 			M.adjustToxLoss(7.5)
-			to_chat(M, span_userdanger("MY HEART! I'VE BEEN POISONED."))
+			to_chat(M, span_userdanger("我的心脏！我中毒了。"))
 			M.playsound_local('sound/magic/heartbeat.ogg', 50)
 		else
 			M.add_nausea(6.5)
 			M.adjustToxLoss(8.5)
-			to_chat(M, span_userdanger("MY HEART! I'VE BEEN POISONED."))
+			to_chat(M, span_userdanger("我的心脏！我中毒了。"))
 			M.playsound_local('sound/magic/heartbeat.ogg', 50)
 	return ..()
 
 /datum/reagent/organpoison
-	name = "Organ Poison"
+	name = "脏器毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#2c1818"
@@ -345,11 +345,11 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/stampoison
-	name = "Stamina Poison"
+	name = "耐力毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#083b1c"
-	taste_description = "breathlessness"
+	taste_description = "窒息感"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM * 3
 	harmful = TRUE
 
@@ -360,7 +360,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/strongstampoison
-	name = "Strong Stamina Poison"
+	name = "强效耐力毒药"
 	description = ""
 	reagent_state = LIQUID
 	color = "#041d0e"
@@ -375,7 +375,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/toxin/killersice
-	name = "Killer's Ice"
+	name = "夺命寒冰"
 	description = ""
 	reagent_state = LIQUID
 	color = "#c8c9e9"
@@ -389,42 +389,42 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 //Potion reactions
 /datum/chemical_reaction/alch/stronghealth
-	name = "Strong Health Potion"
+	name = "强效生命药水"
 	id = /datum/reagent/medicine/stronghealth
 	results = list(/datum/reagent/medicine/stronghealth = 1)
 	required_reagents = list(/datum/reagent/medicine/healthpot = 1, /datum/reagent/additive = 1)
 	mix_message = "The cauldron glows for a moment."
 
 /datum/chemical_reaction/alch/strongmana
-	name = "Strong Mana Potion"
+	name = "强效魔力药水"
 	id = /datum/reagent/medicine/strongmana
 	results = list(/datum/reagent/medicine/strongmana = 1)
 	required_reagents = list(/datum/reagent/medicine/manapot = 1, /datum/reagent/additive = 1)
 	mix_message = "The cauldron glows for a moment."
 
 /datum/chemical_reaction/alch/strongstam
-	name = "Strong Stamina Potion"
+	name = "强效耐力药水"
 	id = /datum/reagent/medicine/strongstam
 	results = list(/datum/reagent/medicine/strongstam = 1)
 	required_reagents = list(/datum/reagent/medicine/stampot = 1, /datum/reagent/additive = 1)
 	mix_message = "The cauldron glows for a moment."
 
 /datum/chemical_reaction/alch/strongpoison
-	name = "Strong Health Poison"
+	name = "强效伤身毒药"
 	id = /datum/reagent/strongpoison
 	results = list(/datum/reagent/strongpoison = 1)
 	required_reagents = list(/datum/reagent/berrypoison = 1, /datum/reagent/additive = 1)
 	mix_message = "The cauldron glows for a moment."
 
 /datum/chemical_reaction/alch/strongstampoison
-	name = "Strong Stamina Leech Potion"
+	name = "强效耐力汲取药剂"
 	id = /datum/reagent/strongstampoison
 	results = list(/datum/reagent/strongstampoison = 1)
 	required_reagents = list(/datum/reagent/stampoison = 1, /datum/reagent/additive = 1)
 	mix_message = "The cauldron glows for a moment."
 
 /datum/chemical_reaction/alch/vitae_essence
-	name = "Vitae Decoction"
+	name = "命髓煎剂"
 	id = /datum/reagent/medicine/vitae_essence
 	results = list(/datum/reagent/medicine/vitae_essence = 1)
 	required_reagents = list(/datum/reagent/vitae = 1, /datum/reagent/toxin/fyritiusnectar = 5)
@@ -434,7 +434,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 |Ingredients|
 \----------*/
 /datum/reagent/undeadash
-	name = "Spectral Powder"
+	name = "幽魂粉末"
 	description = ""
 	reagent_state = SOLID
 	color = "#330066"
@@ -442,8 +442,8 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	metabolization_rate = 0.1
 
 /datum/reagent/toxin/fyritiusnectar
-	name = "fyritius nectar"
-	description = "oh no"
+	name = "焰蕊花蜜"
+	description = "噢，不妙。"
 	reagent_state = LIQUID
 	color = "#ffc400"
 	metabolization_rate = 0.5
@@ -459,8 +459,8 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 //I'm stapling our infection reagents on the bottom, because IDEK where else to put them.
 
 /datum/reagent/infection
-	name = "excess choleric humour"
-	description = "Red-yellow pustulence - the carrier of disease, the enemy of all Pestrans."
+	name = "胆盛体液过剩"
+	description = "红黄色的脓疱样体液，疾病的载体，一切佩斯特拉信徒的公敌。"
 	reagent_state = LIQUID
 	color = "#dfe36f"
 	metabolization_rate = 0.1
@@ -474,22 +474,22 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	if (lethal_fever)
 		M.adjust_bodytemperature(heat, 0)
 		if (prob(5))
-			to_chat(M, span_warning("A wicked heat settles within me... I feel ill. Very ill."))
+			to_chat(M, span_warning("一股恶毒的热意在我体内沉积……我感觉很难受，非常难受。"))
 	else
 		M.adjust_bodytemperature(heat, 0, BODYTEMP_HEAT_DAMAGE_LIMIT - 1)
 		if (prob(5))
-			to_chat(M, span_warning("I feel a horrible chill despite the sweat rolling from my brow..."))
+			to_chat(M, span_warning("尽管额头冷汗直流，我却感到一阵可怕的寒意……"))
 	return ..()
 
 /datum/reagent/infection/minor
-	name = "disrupted choleric humor"
-	description = "Symptomatic of disrupted humours."
+	name = "胆盛体液紊乱"
+	description = "体液失衡的表征。"
 	damage_tick = 0.1
 	lethal_fever = FALSE
 
 /datum/reagent/infection/major
-	name = "excess melancholic humour"
-	description = "Kingsfield's Bane. Excess melancholic has killed thousands, and even Pestra's greatest struggle against its insidious advance."
+	name = "忧郁体液过剩"
+	description = "王田之灾。过盛的忧郁体液已夺去成千上万人的性命，就连佩斯特拉最伟大的抗争也未能阻止它阴险的蔓延。"
 	damage_tick = 1
 	lethal_fever = TRUE
 	fever_multiplier = 3
@@ -497,13 +497,13 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 /datum/reagent/infection/major/on_mob_life(mob/living/carbon/M)
 	if (M.badluck(1))
 		M.reagents.add_reagent(src, rand(1,3))
-		to_chat(M, span_small("I feel even worse..."))
+		to_chat(M, span_small("我感觉更糟了……"))
 	return ..()
 
 
 /datum/reagent/medicine/vitae_essence
-	name = "Vitae Decoction"
-	description = "Decoction of essence of lyfe, used to restore one's lux humours."
+	name = "命髓煎剂"
+	description = "以命髓精华熬制而成的煎剂，用于恢复个体的灵辉体液。"
 	color = "#67c7ff" // rgb: 96, 165, 132
 	overdose_threshold = 10
 	metabolization_rate = 0.1
@@ -516,7 +516,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/fire_resist
-	name = "Fire Resistance"
+	name = "耐火药剂"
 	color = "#ff7300"
 	taste_description = "burning coal"
 
@@ -525,7 +525,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/fermented_crab
-	name = "Fermented Crab"
+	name = "发酵蟹"
 	description = ""
 	color = "#abaa7c"
 	overdose_threshold = 15
@@ -543,19 +543,19 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	var/mob/living/carbon/carbon_consumer = M
 	if(!istype(carbon_consumer))
 		return ..()
-	to_chat(M, span_userdanger("That fermented crab was truly rancid... You feel..."))
+	to_chat(M, span_userdanger("这发酵螃蟹是真的馊了……你感觉……"))
 	// Default chance to vomit with WIL 12 - 40%
 	// With WIL 10 - 48%; With WIL 14 - 32% and so on.
 	if(prob(40 - ((M.STAWIL - 12) * 4)))
-		to_chat(M, span_userdanger("You suddenly feel very sick... Mayhaps, eating the fermented crab wasn't the best idea..."))
+		to_chat(M, span_userdanger("你突然觉得非常恶心……也许，吃下这发酵螃蟹并不是个好主意……"))
 		carbon_consumer.vomit(5, blood = FALSE, stun = TRUE)
 		M.add_stress(/datum/stressevent/fermented_crab_bad)
 	else
-		to_chat(M, span_userdanger("You feel a bit queasy, but otherwise okay. And even greatly invigorated!"))
+		to_chat(M, span_userdanger("你有些反胃，但除此之外还好，甚至感觉精神大振！"))
 		M.add_stress(/datum/stressevent/fermented_crab_good)
 	M.apply_status_effect(/datum/status_effect/buff/fermented_crab)
 	return ..()
 
 /datum/reagent/fermented_crab/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/magic/heartbeat.ogg', 100, FALSE)
-	M.visible_message(span_warning("Blood runs from [M]'s nose."))
+	M.visible_message(span_warning("[M]的鼻子里流出了血。"))

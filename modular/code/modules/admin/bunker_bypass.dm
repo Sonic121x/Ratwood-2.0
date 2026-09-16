@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(whitelist)
-	name = "Whitelist"
+	name = "白名单"
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_WHITELIST
 	var/list/whitelist = list()
@@ -16,8 +16,8 @@ SUBSYSTEM_DEF(whitelist)
 
 	target_ckey = ckey(target_ckey)
 	SSwhitelist.whitelist |= target_ckey
-	message_admins("WHITELIST: Added [target_ckey] to the whitelist[admin_ckey? " by [admin_ckey]":""]")
-	log_admin("WHITELIST: Added [target_ckey] to the whitelist[admin_ckey? " by [admin_ckey]":""]")
+	message_admins("白名单：已将[target_ckey]加入白名单[admin_ckey? "，操作人：[admin_ckey]":""]")
+	log_admin("白名单：已将[target_ckey]加入白名单[admin_ckey? "，操作人：[admin_ckey]":""]")
 
 	var/datum/DBQuery/query_add_entry_whitelist = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("whitelists")] (ckey, type, added_by, timestamp, round_id)
@@ -30,8 +30,8 @@ SUBSYSTEM_DEF(whitelist)
 		"round_id" = GLOB.round_id,
 	))
 	if(!query_add_entry_whitelist.Execute())
-		message_admins("Failed to add entry whitelist for [key_name_admin(target_ckey)] to the database!")
-		log_admin("Failed to add entry whitelist for [key_name_admin(target_ckey)] to the database!")
+		message_admins("无法将[key_name_admin(target_ckey)]的准入白名单记录写入数据库！")
+		log_admin("无法将[key_name_admin(target_ckey)]的准入白名单记录写入数据库！")
 	qdel(query_add_entry_whitelist)
 
 /datum/controller/subsystem/whitelist/proc/load_entry_whitelist()
@@ -47,16 +47,16 @@ SUBSYSTEM_DEF(whitelist)
 	return (ckey && (ckey in SSwhitelist.whitelist))
 
 /client/proc/bunker_bypass()
-	set category = "-Server-"
-	set name = "Add Whitelist"
+	set category = "-服务器-"
+	set name = "添加白名单"
 
 	if(!check_rights())
 		return
 
-	var/selection = input("Who would you like to let in?", "CKEY", "") as text|null
+	var/selection = input("你想放谁进来？", "玩家 CKEY", "") as text|null
 	if(selection)
 		if(ckey(selection) in SSwhitelist.whitelist)
-			to_chat(src, span_warning("Player with ckey [selection] is already on the list."))
+			to_chat(src, span_warning("玩家标识为[selection]的用户已在名单中。"))
 			return
-		if(alert("Confirm: allow ckey [selection] to connect?", "", "Yes!", "No") == "Yes!")
+		if(alert("确认允许玩家标识为[selection]的用户连接吗？", "", "是", "否") == "是")
 			SSwhitelist.add_entry_whitelist(selection, ckey)

@@ -8,13 +8,13 @@
 	if(title)
 		return title
 	if(!faction)
-		return "Slay a troublesome creature"
-	return "Slay [progress_required] [faction.name_plural]"
+		return "斩杀一只麻烦的野兽"
+	return "斩杀 [progress_required] 名[faction.name_plural]"
 
 /datum/quest/kill/easy/get_objective_text()
 	if(!faction)
-		return "Slay ~[progress_required] [initial(target_mob_type.name)]."
-	return "Slay ~[progress_required] [faction.name_plural]."
+		return "斩杀约 [progress_required] [initial(target_mob_type.name)]。"
+	return "斩杀约 [progress_required] 名[faction.name_plural]。"
 
 /datum/quest/kill/easy/materialize(obj/effect/landmark/quest_spawner/landmark)
 	..()
