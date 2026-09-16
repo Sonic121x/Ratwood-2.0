@@ -4,8 +4,8 @@
 
 /datum/taxsetter
 	var/mob/living/requesting_steward
-	var/good_announcement_text = "The Generous Lord Decrees"
-	var/bad_announcement_text = "The Tyrannical Lord Dictates"
+	var/good_announcement_text = "慷慨的领主颁令"
+	var/bad_announcement_text = "暴虐的领主下旨"
 
 /datum/taxsetter/New(good_announcement_text = null, bad_announcement_text = null)
 	. = ..()
@@ -17,7 +17,7 @@
 /datum/taxsetter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "TaxSetter", "Set Crown Levies")
+		ui = new(user, src, "TaxSetter", "设置税赋")
 		ui.open()
 
 /datum/taxsetter/ui_data(mob/user)

@@ -1,8 +1,8 @@
 /obj/item/quest_writ/towner
-	name = "towner's contract scroll"
-	desc = "A contract issued by a member of the town.\
-	Hand it to an adventurer and they may take it up regardless of fellowship requirements. Pin it to the Grand Contract Ledger \
-	and it waits for whomeever will sign"
+	name = "镇民契约卷轴"
+	desc = "由镇中居民签发的契约。\
+	交予冒险者后，他们可无视冒险团人数要求接取此契约。将其钉于大契约台账之上， \
+	它便会静候任何愿意签名之人"
 	base_icon_state = "scroll_quest"
 
 /obj/item/quest_writ/towner/attack_self(mob/user)
@@ -11,17 +11,17 @@
 	var/datum/quest/Q = assigned_quest
 	if(!Q.quest_receiver_reference)
 		if(Q.quest_giver_name && Q.quest_giver_name == user.real_name)
-			to_chat(user, span_warning("You cannot take a contract you yourself issued. Put it in another's hands."))
+			to_chat(user, span_warning("你不能领取由你自己签发的契约。请将其交付他人之手。"))
 			return
 		if(!SStreasury.has_account(user))
-			to_chat(user, span_warning("No account on record - register with a Nervelock before taking a contract."))
+			to_chat(user, span_warning("查无账户记录——领取契约前请先在神经锁处登记。"))
 			return
 		if(!Q.can_claim(user))
 			to_chat(user, span_warning(Q.claim_failure_reason(user)))
 			return
 		var/obj/effect/landmark/quest_spawner/landmark = Q.pending_landmark_ref?.resolve()
 		if(!landmark || !Q.materialize(landmark))
-			to_chat(user, span_warning("Odd. It appears no landmark is available for this contract!"))
+			to_chat(user, span_warning("奇怪。此契约似乎没有可用的地标！"))
 			return
 		Q.materialized = TRUE
 		Q.on_claim(user)

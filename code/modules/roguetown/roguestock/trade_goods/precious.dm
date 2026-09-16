@@ -1,6 +1,6 @@
 /datum/trade_good/gold_ore
 	id = TRADE_GOOD_GOLD_ORE
-	name = "Gold Ore"
+	name = "金矿石"
 	category = TRADE_CATEGORY_PRECIOUS_METAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_GOLD_ORE
@@ -9,7 +9,7 @@
 
 /datum/trade_good/silver_ore
 	id = TRADE_GOOD_SILVER_ORE
-	name = "Silver Ore"
+	name = "银矿石"
 	category = TRADE_CATEGORY_PRECIOUS_METAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_SILVER_ORE
