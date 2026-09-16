@@ -16,7 +16,7 @@ import { type TabProps } from '../types';
 
 const formatCooldown = (seconds: number) => {
   const minutes = Math.ceil(seconds / 60);
-  return `${minutes} minute${minutes === 1 ? '' : 's'}`;
+  return `${minutes} 分钟`;
 };
 
 export const BathhouseOrdinanceSection = ({
@@ -33,35 +33,35 @@ export const BathhouseOrdinanceSection = ({
   const [confirming, setConfirming] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
-  const primaryLabel = active ? 'Break the Ordinance' : 'Restore the Ordinance';
+  const primaryLabel = active ? '废止敕令' : '恢复敕令';
   const confirmLabel = active
-    ? 'Confirm: Break the Ordinance'
-    : 'Confirm: Restore the Ordinance';
+    ? '确认：废止敕令'
+    : '确认：恢复敕令';
 
   return (
     <>
-      <div style={sectionHeaderStyle}>Ordinance of the Baths</div>
+      <div style={sectionHeaderStyle}>浴场敕令</div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Status</div>
+        <div style={fieldLabelStyle}>状态</div>
         <div style={fieldValueStyle}>
           {active ? (
             <span style={{ color: SEAL_GREEN, fontWeight: 'bold' }}>
-              IN FORCE
+              施行中
             </span>
           ) : (
             <span style={{ color: SEAL_RED, fontWeight: 'bold' }}>
-              BROKEN
+              已废止
             </span>
           )}
         </div>
       </div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Tithe this week</div>
+        <div style={fieldLabelStyle}>本周什一税</div>
         <div style={fieldValueStyle}>
           <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
             {tithed}m
           </span>{' '}
-          rendered unto the Church.
+          已献予教会。
         </div>
       </div>
       <div style={{ marginBottom: 8 }}>
@@ -74,7 +74,7 @@ export const BathhouseOrdinanceSection = ({
           }}
           onClick={() => setExpanded((v) => !v)}
         >
-          {expanded ? 'Hide the Ordinance ▴' : 'Read the Ordinance ▾'}
+          {expanded ? '收起敕令 ▴' : '阅读敕令 ▾'}
         </button>
         {expanded && (
           <div
@@ -87,49 +87,49 @@ export const BathhouseOrdinanceSection = ({
           >
             <p style={{ margin: '0 0 6px 0' }}>
               {
-                'By ancient prerogative granted of the Crown, the Baths of the realm stand within the Bishop\'s liberty. The Bathmaster oweth no farm nor fee unto the Crown\'s coffers; rather, of all sales of herbs and unguents, the Bathmaster shall render one part in ten, and of the regular income arising from the rendering of services, one part in five, unto the Church. The Baths shall stand as a hearth unto Eora\'s flames, to render comfort and solace unto the lonely and the weary who enters, to give those who freely love and renders it unto others a safe place of working such that they may make their keep, and count the Baths labor amongst the goddess\'s own works, pleasing to her sight. And thus the Church doth take the Baths into its protection, by blade and by law. So long as the Ordinance holds, the Crown shall have no claim upon the Baths, whose most holy works is within the Church\'s sole jurisdiction.'
+                '承王权所授的古老特权，全境浴场皆立于主教辖下的自由之地。浴场主不向王权库银缴纳任何租赋或规费；反之，凡草药与膏药之售卖，浴场主应献十分之一，凡因提供服务而得的常规收入，应献五分之一，皆献予教会。浴场当如伊欧拉圣火的炉台，为入内的孤苦与疲惫者施以慰藉与安宁，为那些自由相爱并将其施予他人者提供安全劳作之所，使其得以谋生，并将浴场之劳作计入女神自身的功业，蒙其青睐。故此教会以刀剑与律法将浴场纳入庇护。只要敕令犹存，王权便对浴场无任何主张，其至圣之功业唯归教会专属管辖。'
               }
             </p>
             <p style={{ margin: '0 0 4px 0' }}>
               {
-                'The Bathmaster, in turn, doth undertake the orderly provision of comfort unto the lonely and the weary; and shall keep the following ordinances:'
+                '浴场主则应有序地为孤苦与疲惫者提供慰藉；并须遵守以下条令：'
               }
             </p>
             <ul style={{ margin: '0 0 6px 16px', padding: 0 }}>
               <li style={{ marginBottom: 4 }}>
                 {
-                  'To prohibit the sale or trafficking of any physick or smoke stronger than purified moondust and ozium, lest the mind of any guest be so clouded as to forget the Ten\'s teaching. Violation shall be fined a zilaque.'
+                  '禁止售卖或贩运强于至纯月尘与奥兹姆的任何药剂或烟品，以免任何宾客神智昏乱而忘却十神的教诲。违者罚没一枚兹利夸。'
                 }
               </li>
               <li style={{ marginBottom: 4 }}>
                 {
-                  'To give no shelter to thieves nor fugitives, neither within the stews nor beneath them. Violation shall be fined a zenny, and the ill-gotten goods rendered unto the Church for remedy.'
+                  '不得为盗贼或逃犯提供庇护，无论在浴池之内还是其下。违者罚没一枚泽尼，不义之财没入教会以作补偿。'
                 }
               </li>
               <li style={{ marginBottom: 4 }}>
                 {
-                  'To suffer within the Baths no manifest scandal of false devotion. Of any attendant or guest who hath lost themselves to wanton hedonism or to the depravities of false rites, the Bathmaster shall inform the Church in manner most discreet, and deliver such soul unto the Church\'s care - that they may be shown again the light of Eora\'s love. So long as none is harmed, what is done behind closed doors the Ordinance shall not intrude upon; for Eora hath granted unto her faithful the gift of love and intimacy in privacy, as is pleasing to her sight.'
+                  '浴场内不得容留任何假信之名下的公然丑闻。若有侍者或宾客沉溺于放荡纵欲或邪祀之败行，浴场主应以最隐秘的方式告知教会，并将此等灵魂交付教会照管 - 使其得再见伊欧拉慈爱之光。只要无人受害，闭门之后所为之事，敕令不予干涉；因伊欧拉已赐予其信众私下相爱与亲密之礼，此亦蒙其青睐。'
                 }
               </li>
               <li style={{ marginBottom: 4 }}>
                 {
-                  'To turn no soul away for want of coin who beareth the wounds of soldiery or the marks of pilgrimage, but to grant unto them the public bath without charge, once in the week. Failing this charity, the Bathmaster shall be fined a zenny, rendered unto the alms of the Church.'
+                  '对于身负战伤或朝圣印记却无钱可付者，不得将其拒之门外，而应每周一次免费为其提供公共浴池。若未尽此慈悲，浴场主应罚没一枚泽尼，没入教会的施舍之资。'
                 }
               </li>
               <li style={{ marginBottom: 4 }}>
                 {
-                  'To render unto no drunken soul more liquor than they can hold; to serve no guest more than five sniffings of unguents in a single sitting; and to suffer no soul to take more of any physick than the body may bear, lest they fall into convulsion, delirium, or Necra\'s embrace before their time is due. The Bathmaster shall be answerable for any guest who is borne forth in such a state, and shall render unto the kin of the lost, or the Church which must undertake their resuscitation, a recompense as the Church shall judge fit.'
+                  '不得给予任何醉客超出其承受量的酒液；不得在单次坐席间为任何宾客提供超过五次的膏药嗅吸；不得容许任何人服用超出身体所能承受的药剂，以免其在寿数未到之前便陷入抽搐、谵妄，或投入内克拉的怀抱。若有宾客以此等状态被抬出，浴场主须为其负责，亦应向亡者亲族，或须为其施救的教会，献上教会认为合宜的赔偿。'
                 }
               </li>
             </ul>
             <p style={{ margin: '0 0 6px 0' }}>
               {
-                'Should the ordinances be broken, the Church may renounce its sanction or seek recompense as it see fit; the brassface shall fall again beneath the Crown\'s tariff, and the matter of the Baths\' regular income shall be settled thereafter between the Bathmaster and the Crown alone.'
+                '若条令遭到违反，教会可撤销其认可，或按其认为合宜的方式索取赔偿；黄铜面将重归王权关税之下，而浴场常规收入之事，此后仅由浴场主与王权之间处置。'
               }
             </p>
             <p style={{ margin: 0, color: INK_FAINT }}>
               {
-                'The Bishop and the Bathmaster each hold the seal. Either may break or restore the Ordinance; neither may do so twice in quick succession.'
+                '主教与浴场主各自持有印记。二者皆可废止或恢复敕令；但皆不得在短时间内连续为之两次。'
               }
             </p>
           </div>
@@ -143,8 +143,8 @@ export const BathhouseOrdinanceSection = ({
             fontSize: FONT_BODY,
           }}
         >
-          The seal is still warm upon the wax. The Ordinance may be reconsidered in{' '}
-          {formatCooldown(cooldownSeconds)}.
+          蜡上的印记余温未消。浴场敕令需再过{' '}
+          {formatCooldown(cooldownSeconds)}方可重新审议。
         </div>
       )}
       <div
@@ -162,7 +162,7 @@ export const BathhouseOrdinanceSection = ({
             style={inkButtonStyle({})}
             onClick={() => setConfirming(false)}
           >
-            Cancel
+            取消
           </button>
         )}
         <button
