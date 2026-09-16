@@ -26,20 +26,20 @@ export const FundView = ({
   return (
     <>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Coffers</div>
+        <div style={fieldLabelStyle}>库银</div>
         <div style={fieldValueStyle}>
           <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
             {balance}m
           </span>
           {outstanding > 0 && (
             <span style={{ marginLeft: 8, color: INK_FAINT }}>
-              ({outstanding}m in loan circulation)
+              （{outstanding}m 正在放贷流通）
             </span>
           )}
         </div>
       </div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Authority</div>
+        <div style={fieldLabelStyle}>权限</div>
         <div style={fieldValueStyle}>{fund.authority_label}</div>
       </div>
 
@@ -55,7 +55,7 @@ export const FundView = ({
         fund.can_issue && <BathhouseOrdinanceSection data={data} act={act} />}
       {!!view_only && (
         <div style={{ color: INK_FAINT, marginTop: 8 }}>
-          {'You may view this institution\'s coffers, but not act upon them.'}
+          {'你可以查看该机构的库银，但无权动用。'}
         </div>
       )}
       <FundActivity fund={fund} data={data} />

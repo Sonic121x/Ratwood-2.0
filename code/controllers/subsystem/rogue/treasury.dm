@@ -771,27 +771,27 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/proc/get_poll_tax_category_pretty_name(category)
 	switch(category)
 		if(POLL_TAX_CAT_NOBLE)
-			return "Noble"
+			return "贵族"
 		if(POLL_TAX_CAT_CLERGY)
-			return "Clergy"
+			return "神职"
 		if(POLL_TAX_CAT_INQUISITION)
-			return "Inquisition"
+			return "宗教审判所"
 		if(POLL_TAX_CAT_COURTIER)
-			return "Courtier"
+			return "廷臣"
 		if(POLL_TAX_CAT_GARRISON)
-			return "Garrison"
+			return "驻军"
 		if(POLL_TAX_CAT_GUILDS)
-			return "Guilds"
+			return "行会"
 		if(POLL_TAX_CAT_MERCHANT)
-			return "Merchant"
+			return "商人"
 		if(POLL_TAX_CAT_BURGHER)
-			return "Burgher"
+			return "市民"
 		if(POLL_TAX_CAT_ADVENTURER)
-			return "Adventurer"
+			return "冒险者"
 		if(POLL_TAX_CAT_MERCENARY)
-			return "Mercenary"
+			return "佣兵"
 		if(POLL_TAX_CAT_PEASANT)
-			return "Peasant"
+			return "农民"
 	return capitalize(category)
 
 /datum/controller/subsystem/treasury/proc/record_poll_tax_by_category(category, amount)

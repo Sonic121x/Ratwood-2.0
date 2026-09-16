@@ -200,7 +200,7 @@
 
 /obj/item/coveter
 	name = "贪婪之冠"
-	desc = "一顶渴求 miester 眉心与金库颚钳的王冠；紧要关头，也能被安在受制者头上，榨干其 miester 账户。"
+	desc = "一顶渴求神经锁眉心与金库颚钳的王冠；紧要关头，也能被安在受制者头上，榨干其神经锁账户。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "crown_object"
 	force = 10
@@ -241,7 +241,7 @@
 	if(SStreasury.has_account(H))
 		if(SStreasury.get_balance(H) > 0)
 			if(SStreasury.get_balance(H) < 10)
-				to_chat(user,span_info("There's too little in their veins to bother extracting."))
+				to_chat(user,span_info("对方血里剩下的太少，不值得费工夫去取。"))
 				return
 			var/turf/T = get_turf(H)
 			var/sum
@@ -262,9 +262,9 @@
 							if(coins <= 0 || !SStreasury.burn(SStreasury.get_account(H), coins * 10, "Coveter Crown - Freefolk"))
 								playsound(src, 'sound/misc/DrillDone.ogg', 70, TRUE)
 								is_active = FALSE
-								to_chat(H,span_info("<font color ='red'>You feel very drained.</font>"))
+								to_chat(H,span_info("<font color ='red'>你感到自己几乎被抽干了。</font>"))
 								if(sum)
-									send_ooc_note("A parasite of the Freefolk has siphoned [H.real_name] of [sum] from the Nervemaster's veins.", job = list("Grand Duke", "Steward", "Clerk"))
+									send_ooc_note("有一名自由民的寄生虫从神经主 [H.real_name] 的血脉中抽走了 [sum]。", job = list("Grand Duke", "Steward", "Clerk"))
 								break
 							sum += coins * 10
 							new /obj/item/roguecoin/gold(T, coins)
@@ -298,7 +298,7 @@
 							if(coins <= 0 || !SStreasury.burn(SStreasury.get_account(H), coins * 10, "Coveter Crown - Freefolk"))
 								is_active = FALSE
 								if(sum)
-									send_ooc_note("A parasite of the Freefolk has siphoned [H.real_name] of [sum] from the Nervemaster's veins.", job = list("Grand Duke", "Steward", "Clerk"))
+									send_ooc_note("有一名自由民的寄生虫从神经主 [H.real_name] 的血脉中抽走了 [sum]。", job = list("Grand Duke", "Steward", "Clerk"))
 								break
 							sum += coins * 10
 							new /obj/item/roguecoin/gold(T, coins)
