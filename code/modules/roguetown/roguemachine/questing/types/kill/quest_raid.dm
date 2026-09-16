@@ -8,13 +8,13 @@
 	if(title)
 		return title
 	if(!faction)
-		return "Rout an incoming raid"
-	return "Rout a [faction.group_word] of [faction.name_plural]"
+		return "击溃来犯的袭掠"
+	return "击溃[faction.group_word][faction.name_plural]"
 
 /datum/quest/kill/raid/get_objective_text()
 	if(!faction)
-		return "Eliminate ~[progress_required] [initial(target_mob_type.name)]."
-	return "Eliminate ~[progress_required] [faction.name_plural]."
+		return "消灭约 [progress_required] [initial(target_mob_type.name)]。"
+	return "消灭约 [progress_required] 名[faction.name_plural]。"
 
 /datum/quest/kill/raid/materialize(obj/effect/landmark/quest_spawner/landmark)
 	..()

@@ -4,7 +4,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/luxury/fancyteaset
-	name = "Fancy Tea Set (1 Teapot, 4 Cups)"
+	name = "精美茶具套装（1 茶壶，4 茶杯）"
 	cost = 100
 	no_name_quantity = TRUE
 	contains = list(/obj/item/reagent_containers/glass/bucket/pot/teapot/fancy,
@@ -14,63 +14,63 @@
 	/obj/item/reagent_containers/glass/cup/ceramic/fancy)
 
 /datum/supply_pack/rogue/luxury/silverpsicross
-	name = "Silver Psycross"
+	name = "银质普赛圣十字"
 	cost = 120
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 
 /datum/supply_pack/rogue/luxury/silvertencross
-	name = "Silver amulet of the Ten"
+	name = "十神银护符"
 	cost = 120
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver/undivided)
 
 /datum/supply_pack/rogue/luxury/polishing_kit
-	name = "Polishing Kit"
+	name = "抛光套装"
 	no_name_quantity = TRUE
 	cost = 100
 	contains = list(/obj/item/polishing_cream, /obj/item/armor_brush)
 
 /datum/supply_pack/rogue/luxury/circlet
-	name = "Circlet"
+	name = "头环"
 	cost = 80
 	contains = list(/obj/item/clothing/head/roguetown/circlet)
 
 /datum/supply_pack/rogue/luxury/goldring
-	name = "Gold Ring"
+	name = "金戒指"
 	cost = 70
 	contains = list(/obj/item/clothing/ring/gold)
 
 /datum/supply_pack/rogue/luxury/signet
-	name = "Signet"
+	name = "印戒"
 	cost = 220
 	contains = list(/obj/item/clothing/ring/signet)
 
 /datum/supply_pack/rogue/luxury/merctoken
-	name = "Writ of Commendation"
+	name = "嘉奖状"
 	cost = 80
 	contains = list(/obj/item/merctoken)
 
 /datum/supply_pack/rogue/luxury/canvas
-	name = "Canvas"
+	name = "画布"
 	cost = 30
 	contains = list(/obj/item/canvas)
 
 /datum/supply_pack/rogue/luxury/easel
-	name = "Easel"
+	name = "画架"
 	cost = 80
 	contains = list(/obj/structure/easel)
 
 /datum/supply_pack/rogue/luxury/paintbrush
-	name = "Paint brush"
+	name = "画笔"
 	cost = 15
 	contains = list(/obj/item/paint_brush)
 
 /datum/supply_pack/rogue/luxury/paintpalette
-	name = "Paint palette"
+	name = "调色板"
 	cost = 15
 	contains = list(/obj/item/paint_palette)
 
 /datum/supply_pack/rogue/luxury/swatchbook
-	name = "Tailor's Swatchbook"
+	name = "裁缝色卡簿"
 	cost = 20
 	contains = list(/obj/item/book/rogue/swatchbook)
 
@@ -80,50 +80,50 @@
 // 	contains = list(/obj/item/lovepotion)
 
 /datum/supply_pack/rogue/luxury/parasol
-	name = "Paper Parasol"
+	name = "纸伞"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/mace/parasol)
 
 /datum/supply_pack/rogue/luxury/fineparasol
-	name = "Fine Parasol"
+	name = "精致阳伞"
 	cost = 65
 	contains = list(/obj/item/rogueweapon/mace/parasol/noble)
 
 /datum/supply_pack/rogue/luxury/suidust
-	name = "Dust of Disguise (Gender only)"
+	name = "易容之尘（仅性别）"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)
 
 /datum/supply_pack/rogue/adventure_supplies/scabbard/noble
-	name = "Noble Scabbard"
+	name = "贵族剑鞘"
 	cost = 65
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sword/noble
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/scabbard/royal
-	name = "Royal Scabbard"
+	name = "王室剑鞘"
 	cost = 120
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sword/royal
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/sheath/noble
-	name = "Noble Sheath"
+	name = "贵族刀鞘"
 	cost = 65
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sheath/noble
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/sheath/royal
-	name = "Royal Sheath"
+	name = "王室刀鞘"
 	cost = 120
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sheath/royal
 				)
 
 /datum/supply_pack/rogue/luxury/sandstormgoggle
-	name = "Sandstorm Goggles"
+	name = "沙暴护目镜"
 	cost = 60
 	contains = list(
 					/obj/item/clothing/mask/rogue/spectacles/goggles

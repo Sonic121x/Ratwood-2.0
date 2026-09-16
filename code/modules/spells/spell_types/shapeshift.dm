@@ -1,5 +1,5 @@
 /obj/effect/proc_holder/spell/targeted/shapeshift
-	name = "Shapechange"
+	name = "变形术"
 	desc = ""
 	clothes_req = FALSE
 	human_req = FALSE
@@ -35,10 +35,10 @@
 	. = ..()
 	var/datum/antagonist/vampire/VD = user?.mind?.has_antag_datum(/datum/antagonist/vampire)
 	if(VD && SEND_SIGNAL(user, COMSIG_DISGUISE_STATUS))
-		to_chat(user, span_warning("My curse is hidden."))
+		to_chat(user, span_warning("我的诅咒被隐藏了。"))
 		return FALSE
 	if(user.restrained(ignore_grab = FALSE))
-		to_chat(user, span_warn("I am restrained, I can't shapeshift!"))
+		to_chat(user, span_warn("我被束缚住了，无法变形！"))
 		return FALSE
 	if(src in user.mob_spell_list)
 		user.mob_spell_list.Remove(src)
@@ -49,7 +49,7 @@
 			for(var/path in possible_shapes)
 				var/mob/living/simple_animal/A = path
 				animal_list[initial(A.name)] = path
-			var/choice = input(M, "Choose Your Animal Form!", "It's Morphing Time!", null) as null|anything in sortList(animal_list)
+			var/choice = input(M, "选择你的兽形！", "开始变形！", null) as null|anything in sortList(animal_list)
 			if(!choice || shapeshift_type)
 				return FALSE
 			if(QDELETED(user) || (user.stat && !stat_allowed) || user.restrained(ignore_grab = FALSE))
@@ -72,14 +72,14 @@
 /obj/effect/proc_holder/spell/targeted/shapeshift/proc/Shapeshift(mob/living/caster)
 	var/obj/shapeshift_holder/H = locate() in caster
 	if(H)
-		to_chat(caster, span_warning("You're already shapeshifted!"))
+		to_chat(caster, span_warning("我已经处于变形状态了！"))
 		return
 
 	// leave a track to indicate something's happened here
 	var/obj/effect/track/the_evidence = new(caster.loc)
 	the_evidence.handle_creation(caster)
-	the_evidence.track_type = "mixture of shifted animal and humanoid tracks"
-	the_evidence.ambiguous_track_type = "curious footprints"
+	the_evidence.track_type = "变形兽类与人形混杂的足迹"
+	the_evidence.ambiguous_track_type = "奇怪的脚印"
 	the_evidence.base_diff = 6 // very noticable
 
 	var/mob/living/shape = new shapeshift_type(caster.loc)
@@ -104,7 +104,7 @@
 		return
 
 	if(istype(H.shape, /mob/living/simple_animal/hostile/retaliate/rogue/ooze_blob/suffering))
-		to_chat(H.shape, span_warning("You have no strength to manipulate your form."))
+		to_chat(H.shape, span_warning("你没有力量操控你的形态。"))
 		return
 
 

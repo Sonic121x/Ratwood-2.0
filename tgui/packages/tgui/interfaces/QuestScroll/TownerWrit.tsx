@@ -25,19 +25,19 @@ export const TownerWrit = (props: {
   } = props;
   const showLevy = !levyExempt && levyRate > 0;
   const net = showLevy ? Math.round(reward * (1 - levyRate)) : reward;
-  const posterName = issuedBy || 'the poster';
+  const posterName = issuedBy || '悬赏人';
   return (
     <>
       <p style={writParagraph}>
-        <i>Be it known, under {posterName}&apos;s own hand and seal:</i>
+        <i>兹依 {posterName} 亲自签押用印晓谕:</i>
       </p>
       {!!intro && <p style={writParagraph}>{intro}</p>}
       {!!sealNote && <p style={writParagraph}>{sealNote}</p>}
       <p style={writParagraph}>
-        For this work the bearer is paid <b>{reward} mammon</b>
+        此役持状人可得 <b>{reward} 玛门</b>
         {showLevy ? (
           <>
-            , <b>{net} mammon</b> after the Crown&apos;s Levy
+            , 扣除王室关税后为 <b>{net} 玛门</b>
           </>
         ) : null}
         .

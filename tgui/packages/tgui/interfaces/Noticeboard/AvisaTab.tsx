@@ -37,42 +37,42 @@ type SectionMeta = {
 const SECTIONS: SectionMeta[] = [
   {
     key: 'charters',
-    label: 'Charters',
+    label: '特许状',
     blurb:
-      "The standing edicts of the Crown - their force, their suspension, and the year of their sealing.",
+      "王室的现行敕令 - 其效力、其废止, 以及其颁印之年.",
   },
   {
     key: 'trade_orders',
-    label: 'Trade Orders',
+    label: '贸易订单',
     blurb:
-      "Demands of the realm's merchants and stockpiles, awaiting fulfillment.",
+      "王国商人与储备库的需求, 等待履约.",
   },
   {
     key: 'harbor',
-    label: 'Harbor',
+    label: '港口',
     blurb:
-      'Foreign vessels at the pier - their bulk demands and cultural wares brought ashore.',
+      '停靠码头的异国船只 - 它们的大宗需求与运上岸的文化货物.',
   },
   {
     key: 'market',
-    label: 'Market',
+    label: '市场',
     blurb:
-      "The criers' tally of what the realm's buyers hunger for and what they will no longer take.",
+      "叫卖人的账目: 王国的买家渴求什么, 又不再收什么.",
   },
   {
     key: 'scouts',
-    label: 'Scouts',
-    blurb: 'The wardens report on the dangers of each region.',
+    label: '斥候',
+    blurb: '守林人们对各区域危险程度的报告.',
   },
   {
     key: 'events',
-    label: 'Events',
-    blurb: 'Shortages and gluts now disturbing the markets.',
+    label: '事件',
+    blurb: '当下扰乱市场的短缺与过剩.',
   },
   {
     key: 'assembly',
-    label: 'Assembly',
-    blurb: 'Petitions, summons, and the standing business of the City Assembly.',
+    label: '议事会',
+    blurb: '请愿、召集, 以及城市议事会的日常事务.',
   },
 ];
 
@@ -89,10 +89,10 @@ export const AvisaTab = ({ data, act }: TabProps) => {
           marginTop: 6,
         }}
       >
-        The Realm's Avisa
+        王国公报
       </div>
       <div style={subtitleStyle}>
-        Tidings, edicts, and trade of the realm
+        王国的消息、敕令与贸易
       </div>
       <hr style={rulerStyle} />
 
@@ -109,7 +109,7 @@ export const AvisaTab = ({ data, act }: TabProps) => {
         {section === 'market' && (
           <button
             type="button"
-            title="Open the economy guidebook"
+            title="打开经济指南"
             style={{ ...inkButtonStyle({}), marginLeft: 'auto' }}
             onClick={() => act('help_market')}
           >
@@ -150,14 +150,14 @@ const AssemblySection = ({ act }: { act: TabProps['act'] }) => (
         marginBottom: 12,
       }}
     >
-      The Assembly chamber stands ready for petition and vote.
+      议事厅已备好受理请愿与表决.
     </div>
     <button
       type="button"
       style={inkButtonStyle({})}
       onClick={() => act('open_assembly')}
     >
-      Open the Assembly
+      进入议事会
     </button>
   </div>
 );
