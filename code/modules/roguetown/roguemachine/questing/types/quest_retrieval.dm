@@ -13,10 +13,10 @@
 /datum/quest/retrieval/get_title()
 	if(title)
 		return title
-	return "Retrieve [pick("misplaced", "lost", "abandoned")] goods"
+	return "寻回[pick("错置的", "失落的", "被弃置的")]货物"
 
 /datum/quest/retrieval/get_objective_text()
-	return "Retrieve [progress_required] [initial(target_item_type.name)]."
+	return "寻回 [progress_required] 件[initial(target_item_type.name)]。"
 
 
 /datum/quest/retrieval/get_additional_reward(turf/origin_turf, turf/target_turf)

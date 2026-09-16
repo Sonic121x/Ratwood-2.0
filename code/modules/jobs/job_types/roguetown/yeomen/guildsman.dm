@@ -2,6 +2,7 @@
 // But also includes a Mason-Architect.
 /datum/job/roguetown/guildsman
 	title = "Guildsman"
+	display_title = "行会工匠"
 	flag = GUILDSMAN
 	department_flag = YEOMEN
 	faction = "Station"
@@ -11,8 +12,8 @@
 	social_rank = SOCIAL_RANK_YEOMAN
 	allowed_races = ACCEPTED_RACES
 
-	tutorial = "You are a member of the Duchy's Guild of Crafts, a massive guild formed to represent the interests of all craftsmen in the township.\
-	As a Guildsman, you hail from the three most important constituent guilds: The Smith's Guild, the Artificer's Guild, and the Architect's Guild. The Guildsmaster has sway over you, but it is not absolute."
+	tutorial = "你是谷地工匠行会的一员，这是个为代表全镇工匠利益而建立的庞大行会。\
+	身为行会工匠，你出身于其中最重要的三大分支：铁匠行会、巧匠行会与建筑师行会。行会长对你有影响力，但并非绝对。"
 	job_traits = list(TRAIT_TRAINED_SMITH, TRAIT_SMITHING_EXPERT)
 
 	outfit = /datum/outfit/job/roguetown/guildsman
@@ -31,8 +32,8 @@
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
 
 /datum/advclass/guildsman/blacksmith
-	name = "Guild Blacksmith"
-	tutorial = "You've studied for many yils under quite a number of master smiths. Whether it's cookware or tools of war, you're unmatched at the art of bending metal to your will."
+	name = "行会铁匠"
+	tutorial = "你曾在许多名匠门下苦学多年。无论是锅碗器皿还是战争兵器，在将金属锻造成心中所想这门技艺上，鲜有人能与你比肩。"
 	outfit = /datum/outfit/job/roguetown/guildsman/blacksmith
 
 	category_tags = list(CTAG_GUILDSMEN)
@@ -103,9 +104,9 @@
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 
 /datum/advclass/guildsman/artificer
-	name = "Guild Engineer"
-	tutorial = "You are an engineer, Once trained under architects and artificers you now have the experience to surpass them both. \
-	Your calling is the works of artificing and architecture, be it smithing, constructing or the arcane machinery you do it all, your experience demands respect."
+	name = "公会工程师"
+	tutorial = "你是一名工程师。你曾在建筑师与机关巧匠门下受训，如今你的经验已足以超越他们二者。\
+	你的使命在于机关术与建筑学——无论是锻造、建造，还是奥术机械，你都能胜任。你的资历本身就值得尊敬。"
 	outfit = /datum/outfit/job/roguetown/guildsman/artificer
 
 	category_tags = list(CTAG_GUILDSMEN)

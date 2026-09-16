@@ -1,6 +1,6 @@
 /datum/advclass/wretch/heretic
-	name = "Heretic"
-	tutorial = "You father your unholy cause through the most time-tested of ways: hard, heavy steel in both arms and armor."
+	name = "异端"
+	tutorial = "你以最古老、也最经得起考验的方式来扶持自己亵渎的事业：双臂执重钢，周身披重甲。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/heretic
@@ -30,49 +30,49 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"Armor Plates" =  /obj/item/repair_kit/metal,
+		"装甲板" =  /obj/item/repair_kit/metal,
 	)
-	extra_context = "This subclass gain the Wound Heal miracle and the Convert Heretic spell."
+	extra_context = "该子职业获得“疗伤圣迹”奇迹与“引渡失落之人”法术。"
 
 /datum/outfit/job/roguetown/wretch/heretic
 	has_loadout = TRUE
 
 /datum/outfit/job/roguetown/wretch/heretic/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You father your unholy cause through the most time-tested of ways: hard, heavy steel in both arms and armor."))
+	to_chat(H, span_warning("你以最古老、也最经得起考验的方式来扶持自己亵渎的事业：双臂执重钢，周身披重甲。"))
 	H.set_blindness(0)
 	if(H.mind)
 		if(H.mind.current)
 			H.mind.current.faction += "[H.name]_faction"
-		var/weapons = list("Longsword", "Mace", "Flail", "Axe", "Billhook")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("长剑", "钉锤", "链枷", "战斧", "钩镰枪")
+		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
-			if("Longsword")
+			if("长剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					r_hand = /obj/item/rogueweapon/sword/long/oldpsysword
 				else
 					r_hand = /obj/item/rogueweapon/sword/long
-			if("Mace")
+			if("钉锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					r_hand = /obj/item/rogueweapon/mace/goden/psy/old
 				else
 					r_hand = /obj/item/rogueweapon/mace/steel
-			if("Flail")
+			if("链枷")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltr = /obj/item/rogueweapon/flail/sflail/psyflail/old
 				else
 					beltr = /obj/item/rogueweapon/flail/sflail
-			if("Axe")
+			if("战斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltr = /obj/item/rogueweapon/stoneaxe/battle/psyaxe/old
 				else
 					beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
-			if("Billhook")
+			if("钩镰枪")
 				l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
@@ -191,37 +191,37 @@
 			ADD_TRAIT(H, TRAIT_SMITHING_EXPERT, TRAIT_GENERIC)
 		if(/datum/patron/old_god)
 			H.change_stat(STATKEY_WIL, 2) //ENDVRE. You give up useful miracles, rites and miracle-healing from other Heretics, so you'll need this.
-			var/heavypsyfashion = list("Traditionalist", "Orthodoxist", "Reformist") //Only outfits differ.
-			var/heavypsyfashion_choice = input(H, "What is your faith in HIM like?", "HE LYVES, HE ENDURES, HE DIES") as anything in heavypsyfashion
+			var/heavypsyfashion = list("传统派", "正统派", "改革派") //Only outfits differ.
+			var/heavypsyfashion_choice = input(H, "你对祂的信仰为何种模样？", "祂长存，祂忍受，祂死去") as anything in heavypsyfashion
 			switch(heavypsyfashion_choice)
-				if("Traditionalist") //You look like any other Heretic.
-					to_chat(H, span_warning("PSYDON LYVES, but HE sacrificed HIMSELF for us. We do not hear HIM, nor does HE hear us, but all roads lead to HIM, and back to us. One day, PSYDON will return and Creation will be at peace again, turning it into true PARADYSE. The Orthodoxy and the Holy See have twisted the scriptures, the tales. The Ten wish to turn the world to their own image, unwilling to help wake our LORD. Meanwhile, the Orthodoxists lie in HIS name, straying from the path of peace and filling the world with pain that HE, through all of Creation, feels, delaying HIS awakening. "))
+				if("传统派") //You look like any other Heretic.
+					to_chat(H, span_warning("普赛顿 长存，但祂为我们献出了自己。我们听不见祂，祂也听不见我们，可一切道路终将通向祂，也将由祂回到我们身边。终有一日，普赛顿 会归来，而创造万物也将再度安宁，化作真正的 极乐境。正统教会与圣座早已扭曲了经文与传说。十神只想把世界捏造成自己的模样，不愿帮助我们的主苏醒。与此同时，正统派还假借祂之名说谎，偏离和平之路，让整个世界充满痛苦，而祂借由万物共同感受着这一切，这也拖慢了祂的苏醒。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/bucket, SLOT_HEAD, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/cloak/templar/psydon, SLOT_CLOAK, TRUE)
-				if("Orthodoxist") //You look like an Orthodoxist-Adjudicator. The best set mechanically, but a high risk of getting attacked by your fellow Wretches or Bandits.
-					to_chat(H, span_warning("Once you were a part of the feared and loathed Otavan Inquisition, now you hide from them, still clad in their armour. Nostalgia, spite, desperation?... You just can't let go of this uniform."))
+				if("正统派") //You look like an Orthodoxist-Adjudicator. The best set mechanically, but a high risk of getting attacked by your fellow Wretches or Bandits.
+					to_chat(H, span_warning("你曾是令人畏惧又遭人憎恨的 奥塔瓦 宗教裁判所一员，如今却躲避着他们，身上仍穿着他们的甲胄。怀旧？怨恨？绝望？……你就是放不下这身制服。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq, SLOT_SHIRT, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/chain/psydon, SLOT_GLOVES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/psydonboots, SLOT_SHOES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/cloak/psydontabard, SLOT_CLOAK, TRUE)
-					var/helmets = list("Barbute", "Sallet", "Armet", "Bucket Helm", "Volfskulle Bascinet")
-					var/helmet_choice = input(H,"Choose your PSYDONIAN helmet.", "TAKE UP PSYDON'S HELMS") as anything in helmets
+					var/helmets = list("巴布塔盔", "沙勒盔", "阿米特盔", "桶盔", "狼颅护鼻盔")
+					var/helmet_choice = input(H,"选择你的普赛顿头盔。", "披挂普赛顿之盔") as anything in helmets
 					switch(helmet_choice)
-						if("Barbute")
+						if("巴布塔盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute, SLOT_HEAD, TRUE)
-						if("Sallet")
+						if("萨雷特盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psysallet, SLOT_HEAD, TRUE)
-						if("Armet")
+						if("阿米特盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm, SLOT_HEAD, TRUE)
-						if("Bucket Helm")
+						if("桶盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psybucket, SLOT_HEAD, TRUE)
-						if("Volfskulle Bascinet")
+						if("狼颅护鼻盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/psydonic, SLOT_HEAD, TRUE)
-				if("Reformist") //You look like as if somebody dressed Freifechter into a lot of armour. Better chestpiece, but worse gloves and boots, and worse padded gambeson.
-					to_chat(H, span_warning ("PSYDON fell after his battle against the great evil. But HE LYVES through us, in our memory and our bleeding hearts. As long as we LYVE, so shall HE, through us. All shall be as HE deemed, in HIS name, as HE did."))
+				if("改革派") //You look like as if somebody dressed Freifechter into a lot of armour. Better chestpiece, but worse gloves and boots, and worse padded gambeson.
+					to_chat(H, span_warning ("普赛顿 在与伟大邪恶的战斗后陨落了。但祂仍借由我们而长存，活在我们的记忆与流血的心中。只要我们还活着，祂也将借由我们而长存。万事都应如祂所定，如祂所行，皆以祂之名。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/reform, SLOT_RING, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet, SLOT_HEAD, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/fluted, SLOT_ARMOR, TRUE)
@@ -241,8 +241,8 @@
 
 
 /datum/advclass/wretch/heretic/spy
-	name = "Heretic Spy"
-	tutorial = "Nimble of dagger and foot both, you are the shadowy herald of the cabal. They will not see you coming."
+	name = "异端密探"
+	tutorial = "无论匕首还是步伐，你都同样轻捷。你是密教组织潜伏于阴影中的使者，他们根本来不及看见你的到来。"
 	outfit = /datum/outfit/job/roguetown/wretch/hereticspy
 	class_select_category = CLASS_CAT_ROGUE
 	maximum_possible_slots = 2
@@ -270,9 +270,9 @@
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_EXPERT,
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" = /obj/item/repair_kit,
+		"针线包" = /obj/item/repair_kit,
 	)
-	extra_context = "This subclass gain the Wound Heal miracle and the Convert Heretic spell."
+	extra_context = "该子职业获得“疗伤圣迹”奇迹与“引渡失落之人”法术。"
 
 
 /datum/outfit/job/roguetown/wretch/hereticspy
@@ -295,39 +295,39 @@
 		/obj/item/ritechalk = 1,
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 		)
-	to_chat(H, span_warning("Nimble of dagger and foot both, you are the shadowy herald of the cabal. They will not see you coming."))
+	to_chat(H, span_warning("无论匕首还是步伐，你都同样轻捷。你是密教组织潜伏于阴影中的使者，他们根本来不及看见你的到来。"))
 	H.cmode_music = 'sound/music/cmode/antag/combat_cutpurse.ogg'
 	if(H.mind)
 		if(H.mind.current)
 			H.mind.current.faction += "[H.name]_faction"
-		var/weapons = list("Rapier","Dagger", "Bow", "Crossbow", "Slurbow", "Whip", "Urumi")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("刺剑","匕首", "弓", "弩", "斯勒弩" , "鞭", "软剑")
+		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Rapier")
+			if("细剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/rapier
-			if("Dagger")
+			if("匕首")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special
-			if("Bow")
+			if("弓")
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltl = /obj/item/quiver/arrows
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			if("Crossbow")
+			if("弩")
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_JOURNEYMAN, TRUE) //have to specifically go into bows/crossbows unlike outlaw
 				beltr = /obj/item/quiver/bolts
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("Slurbow") //If Knaves can have one, then so can you. Normal crossbow is a more optimal choice for Heretic Spy.
+			if("斯勒弩") //If Knaves can have one, then so can you. Normal crossbow is a more optimal choice for Heretic Spy.
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/quiver/bolts
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
-			if("Whip") //For baothans.
+			if("鞭子") //For baothans.
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/whip
-			if("Urumi")
+			if("软剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltr = /obj/item/rogueweapon/whip/urumi/silver/psydonic/old
@@ -417,19 +417,19 @@
 			H.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
 		if(/datum/patron/old_god)
 			H.change_stat(STATKEY_WIL, 2) //ENDVRE. You give up useful miracles, rites and miracle-healing from other Heretics, so you'll need this.
-			var/lightpsyfashion = list("Traditionalist", "Orthodoxist", "Reformist")
-			var/lightpsyfashion_choice = input(H, "What is your faith in HIM like?", "HE LYVES, HE ENDURES, HE DIES") as anything in lightpsyfashion
+			var/lightpsyfashion = list("传统派", "正统派", "改革派")
+			var/lightpsyfashion_choice = input(H, "你对祂的信仰为何种模样？", "祂长存，祂忍受，祂死去") as anything in lightpsyfashion
 			switch(lightpsyfashion_choice)
-				if("Traditionalist") //You look like any other Heretic Spy.
-					to_chat(H, span_warning("The Otavan Orthodoxy has distorted the faith beyond recognition, they worship not HIM, but mere eidolons and idols of TRUE DIVINITY. Return to tradition, return to form."))
+				if("传统派") //You look like any other Heretic Spy.
+					to_chat(H, span_warning("奥塔瓦 的正统教会已经把信仰扭曲到面目全非。他们崇拜的不是祂，而只是伪造出来的偶像与所谓真神的塑像。回归传统，回归本真。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/heavy_leather_pants, SLOT_PANTS, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson, SLOT_SHIRT, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/fingerless_leather, SLOT_GLOVES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/leather/reinforced, SLOT_SHOES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
-				if("Orthodoxist") //You look like an Orthodoxist-Confessor. The best set mechanically, but a high risk of getting attacked by your fellow Wretches or Bandits.
-					to_chat(H, span_warning("Once you were a part of the feared and loathed Otavan Inquisition, now you hide from them, still clad in their robes. Nostalgia, spite, desperation?... You just can't let go of this uniform."))
+				if("正统派") //You look like an Orthodoxist-Confessor. The best set mechanically, but a high risk of getting attacked by your fellow Wretches or Bandits.
+					to_chat(H, span_warning("你曾是令人畏惧又遭人憎恨的 奥塔瓦 宗教裁判所一员，如今却躲避着他们，身上仍披着他们的长袍。怀旧？怨恨？绝望？……你就是放不下这身制服。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/roguehood/psydon/confessor, SLOT_HEAD, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/confessor, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq, SLOT_SHIRT, TRUE)
@@ -439,8 +439,8 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/facemask/steel/confessor/lensed, SLOT_WEAR_MASK, TRUE) //Dark vision but bad. Still better than being entirely blind in the dark.
 					//Perceptive players will see past your disguise: you lack the beltpack and the silver signet ring, and your gas mask is lensed from get-go.
-				if("Reformist") //You look like a Reformist Freifechter.
-					to_chat(H, span_warning("God is dead, but this world HE left is beautiful and worth of loving. Don't let the butchers from Otava tell you otherwise."))
+				if("改革派") //You look like a Reformist Freifechter.
+					to_chat(H, span_warning("神已死去，但祂留下的这个世界依然美丽，仍值得去热爱。别让那些来自 奥塔瓦 的屠夫告诉你不是这样。"))
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/half/fencer, SLOT_ARMOR, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/freifechter, SLOT_SHIRT, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/fingerless_leather, SLOT_GLOVES, TRUE)
@@ -457,8 +457,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/wrists/roguetown/bracers/leather/heavy, SLOT_WRISTS, TRUE)
 
 /datum/advclass/wretch/heretic/monk
-	name = "Heretic Monk"
-	tutorial = "Strong in body and spirit, you spread the truth through violence and word in equal measures. You eschew burdening armor in favor of physical prowess."
+	name = "异端武僧"
+	tutorial = "你体魄强健、精神坚定，以暴力和言语并重的方式传播真理。你不愿背负累赘的护甲，更倚重自身的身手。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/hereticmonk
@@ -492,7 +492,7 @@
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/labor/farming = SKILL_LEVEL_APPRENTICE,
 	)//Similar-ish to Church Acolyte's. You get a bunch of utility skills because you are, THEORETICALLY, less of a turbo fragger class than your speedy and tanky cousins.
-	extra_context = "This subclass gain the Wound Heal miracle and the Convert Heretic spell."
+	extra_context = "该子职业获得愈合神迹与转化异端法术。"
 
 /datum/outfit/job/roguetown/wretch/hereticmonk
 	has_loadout = TRUE
@@ -517,17 +517,17 @@
 	if(H.mind)
 		if(H.mind.current)
 			H.mind.current.faction += "[H.name]_faction"
-		var/monkstyles = list("Itinerant Monk")
+		var/monkstyles = list("游方武僧")
 		if(H.dna.species.type in NON_DWARVEN_RACE_TYPES) //No sprites for diminutive people.
-			monkstyles += list("Eastern Custodian")
+			monkstyles += list("东方守护者")
 		if(istype(H.patron, /datum/patron/inhumen))
-			monkstyles += list("Atgervi Shaman")
+			monkstyles += list("阿特格维萨满")
 		if(istype(H.patron, /datum/patron/old_god))
-			monkstyles += list("Disgraced Disciple (Natural Armor)")
-		var/style_choice = input(H, "Choose your equipment.", "YOU MIGHT JUST BE A PRETENDER") as anything in monkstyles
+			monkstyles += list("蒙羞门徒（天生护甲）")
+		var/style_choice = input(H, "选择你的装备。", "你也许只是个冒牌货") as anything in monkstyles
 		switch(style_choice)
-			if("Itinerant Monk") //Generic fashion.
-				to_chat(H, span_warning("Leaving wealth and titles behind, you travel endlessly, bringing the truth to the most ignorant corners of the world."))
+			if("游方武僧") //Generic fashion.
+				to_chat(H, span_warning("你舍弃财富与头衔，永不停歇地游历四方，将真理带给世间最蒙昧的角落。"))
 				head = /obj/item/clothing/head/roguetown/headband/monk //Can somebody explain why Adventurer-Monk gets this?
 				neck = /obj/item/clothing/neck/roguetown/leather
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
@@ -536,8 +536,8 @@
 				pants =  /obj/item/clothing/under/roguetown/heavy_leather_pants
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
-			if("Eastern Custodian") //Kazengunite fashion. The worst set mechanically, but it's drip or drown in here.
-				to_chat(H, span_warning("The divine tasked you with caring for and protecting a shrine. You failed in your duties, but not your faith. Thus you wander, seeking to appease the gods in a different way."))
+			if("东方守护者") //Kazengunite fashion. The worst set mechanically, but it's drip or drown in here.
+				to_chat(H, span_warning("神明曾托付你照料并守护一座神龛。你失职了，但未曾失去信仰。于是你踏上旅途，以另一种方式寻求取悦诸神。"))
 				head = /obj/item/clothing/head/roguetown/mentorhat
 				gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
 				armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
@@ -545,8 +545,8 @@
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
-			if("Atgervi Shaman") //Pick this and Unarmed. Now you are a true Atgervi Shaman.
-				to_chat(H, span_warning("Unlike your more opportunistic fellows who bend their knees and betray their beast-gods for a coin, you haven't strayed from your path. Why grovel, when you can take what you want with unrestrained brutality?"))
+			if("阿特格维萨满") //Pick this and Unarmed. Now you are a true Atgervi Shaman.
+				to_chat(H, span_warning("你那帮更善于投机的同族为了一枚钱币便屈膝跪拜、背弃兽神，而你却从未偏离自己的道路。既然能用毫无节制的蛮力夺取想要之物，又何须卑躬屈膝？"))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/shaman_hood
 				gloves = /obj/item/clothing/gloves/roguetown/angle/gronnfur
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi
@@ -569,8 +569,8 @@
 						id = /obj/item/clothing/neck/roguetown/psicross/dendor/gronn
 					else
 						id = /obj/item/clothing/neck/roguetown/psicross/inhumen/gronn/special
-			if("Disgraced Disciple (Natural Armor)") //Orthodoxist Disciple. You get Disciple's Natural Armor.
-				to_chat(H, span_warning("Once you served mortal men and their books. Today and from now on, you serve HIM and HIM alone."))
+			if("蒙羞门徒（天生护甲）") //Orthodoxist Disciple. You get Disciple's Natural Armor.
+				to_chat(H, span_warning("你曾侍奉凡人与他们的典籍。而从今往后，你只侍奉祂，唯独侍奉祂。"))
 				head = /obj/item/clothing/head/roguetown/roguehood/psydon
 				mask = /obj/item/clothing/head/roguetown/helmet/blacksteel/psythorns
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
@@ -579,43 +579,43 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 				shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots
 				cloak = /obj/item/clothing/cloak/psydontabard/alt
-		var/monkweapons = list("Unarmed", "Glaive", "Quarterstaff", "Sword", "Faith")
-		var/monkweapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in monkweapons
+		var/monkweapons = list("徒手", "长刀", "四分杖", "剑", "信仰")
+		var/monkweapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in monkweapons
 		switch(monkweapon_choice)
-			if("Unarmed")
+			if("徒手")
 				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
 				switch(style_choice)
-					if("Atgervi Shaman")
+					if("阿特格维萨满")
 						beltr = /obj/item/rogueweapon/handclaw/gronn
-					if("Disgraced Disciple (Natural Armor)")
+					if("蒙羞门徒（天生护甲）")
 						beltr = /obj/item/rogueweapon/knuckles/psydon/old //Worse than steel or bronze knuckledusters, that's the price you pay for the drip and the natural armor.
 					else
 						beltr = /obj/item/rogueweapon/knuckles
-			if("Glaive")
+			if("长刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				switch(style_choice)
-					if("Eastern Custodian")
+					if("东方守护者")
 						l_hand = /obj/item/rogueweapon/spear/naginata
 					else
 						l_hand = /obj/item/rogueweapon/halberd/glaive
-			if("Quarterstaff")
+			if("四分杖")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/woodstaff/quarterstaff/steel
-			if("Sword") //Gimmicky choice. Heretic Spy called, they want their sword back.
+			if("剑") //Gimmicky choice. Heretic Spy called, they want their sword back.
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 				switch(style_choice)
-					if("Eastern Custodian")
+					if("东方守护者")
 						beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
 						l_hand = /obj/item/rogueweapon/sword/sabre/mulyeog
-					if("Disgraced Disciple (Natural Armor)")
+					if("蒙羞门徒（天生护甲）")
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						l_hand = /obj/item/rogueweapon/sword/long/oldpsysword
 					else
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						l_hand = /obj/item/rogueweapon/sword/short/messer //4 def LOL
-			if("Faith") //Even more gimmicky. Supportbot.
+			if("信仰") //Even more gimmicky. Supportbot.
 				ADD_TRAIT(H, TRAIT_HOMESTEAD_EXPERT, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/magic/holy, 5, TRUE)
 				if(istype(H.patron, /datum/patron/divine))
@@ -709,9 +709,9 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/silver, SLOT_RING, TRUE)
 
 /obj/effect/proc_holder/spell/invoked/convert_heretic
-	name = "Convert The Downtrodden"
-	desc = "Convert a soul who is excommunicated, cursed, or forced into apostasy to your cause. Requires a willing participant, and takes a long time to cast."
-	invocations = list("Show this lost sheep the righteous path.")
+	name = "引渡失落之人"
+	desc = "将一名被逐出教门、遭受诅咒，或被迫背教的灵魂引入你的事业。需要对方自愿，并且施法耗时很长。"
+	invocations = list("向这只迷途羔羊显明正道。")
 	invocation_type = "whisper"
 	sound = 'sound/magic/bless.ogg'
 	devotion_cost = 100
@@ -723,7 +723,7 @@
 
 /obj/effect/proc_holder/spell/invoked/convert_heretic/cast(list/targets, mob/living/carbon/human/user)
 	if(!HAS_TRAIT(user, TRAIT_HERESIARCH))
-		to_chat(user, span_warning("You lack the knowledge for this ritual."))
+		to_chat(user, span_warning("你缺乏完成这项仪式所需的知识。"))
 		return FALSE
 
 	var/mob/living/carbon/human/target = targets[1]
@@ -734,12 +734,12 @@
 
 	//This SHOULD stop most heretics from being convertible and self-curing should they somehow get cursed in the future.
 	if(HAS_TRAIT(target, TRAIT_HERESIARCH))
-		to_chat(user, span_warning("[target] is already serving the greater good."))
+		to_chat(user, span_warning("[target] 已经在为更伟大的事业效力。"))
 		revert_cast()
 		return FALSE
 
-	if(alert(target, "[user.real_name] is trying to convert you to their patron, [user.patron.name]. Do you accept?", "Conversion Request", "Yes", "No") != "Yes")
-		to_chat(user, span_warning("[target] refused your offer of conversion."))
+	if(alert(target, "[user.real_name] 试图将你引渡到其所侍奉的神祇 [user.patron.name] 之下。你接受吗？", "转化请求", "接受", "拒绝") != "接受")
+		to_chat(user, span_warning("[target] 拒绝了你的转化提议。"))
 		revert_cast()
 		return FALSE
 
@@ -761,7 +761,7 @@
 		absolvable = TRUE
 
 	if(!absolvable)
-		to_chat(user, span_warning("[target] doesn't bear the church's marks of shame!"))
+		to_chat(user, span_warning("[target] 身上并没有教会施加的耻辱印记！"))
 		return
 
 	// Remove divine punishments
@@ -793,7 +793,7 @@
 
 	// Change patron
 	target.patron = new user.patron.type()
-	to_chat(target, span_userdanger("Your soul now belongs to [user.patron.name]!"))
+	to_chat(target, span_userdanger("你的灵魂如今属于 [user.patron.name]！"))
 
 	// Grant new devotion
 	var/datum/devotion/new_devotion = new /datum/devotion(target, target.patron)
@@ -804,7 +804,7 @@
 	ADD_TRAIT(target, TRAIT_HERESIARCH, TRAIT_GENERIC)
 	ADD_TRAIT(target, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
 	ADD_TRAIT(target, TRAIT_ZURCH, TRAIT_GENERIC)
-	to_chat(user, span_danger("You've converted [target.name] to [user.patron.name]!"))
-	to_chat(target, span_danger("You feel ancient powers lifting divine burdens from your soul..."))
+	to_chat(user, span_danger("你已将 [target.name] 转化为 [user.patron.name] 的信徒！"))
+	to_chat(target, span_danger("你感到古老的力量正在从你的灵魂上卸去神罚的重担……"))
 
 	return TRUE
