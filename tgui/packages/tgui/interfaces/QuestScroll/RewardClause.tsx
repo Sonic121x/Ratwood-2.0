@@ -2,9 +2,9 @@ const deductionsLabel = (
   showLevy: boolean,
   showGuildCut: boolean,
 ): string | null => {
-  if (showLevy && showGuildCut) return "the Crown's Levy and the Guild's cut";
-  if (showLevy) return "the Crown's Levy";
-  if (showGuildCut) return "the Guild's cut";
+  if (showLevy && showGuildCut) return "王室关税与行会抽成";
+  if (showLevy) return "王室关税";
+  if (showGuildCut) return "行会抽成";
   return null;
 };
 
@@ -22,10 +22,10 @@ export const RewardClause = (props: {
   const deductions = deductionsLabel(showLevy, showGuildCut);
   return (
     <>
-      <b>{reward} mammon</b>
+      <b>{reward} 玛门</b>
       {deductions ? (
         <>
-          , <b>{net} mammon</b> after {deductions}
+          , 扣除{deductions}后为 <b>{net} 玛门</b>
         </>
       ) : null}
     </>

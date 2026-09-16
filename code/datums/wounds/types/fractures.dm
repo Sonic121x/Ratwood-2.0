@@ -81,8 +81,6 @@
 	mortal = TRUE
 	/// Some head fractures will knock your lights out, if not flat-out paralyze you.
 	var/knockout = 10	//10 tick knockout (1 sec)
-	/// All forms of skullcrack will instantly kill skeletons
-	shatter_wound = TRUE
 
 /datum/wound/fracture/head/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -246,9 +244,6 @@
 	if(HAS_TRAIT(affected, TRAIT_CRITICAL_WEAKNESS))
 		affected.emote("deathgurgle", forced = TRUE)
 		affected.death()
-	if(shatter_wound && HAS_TRAIT(affected, TRAIT_SHATTER_WEAKNESS))
-		affected.emote("scream", forced = TRUE)
-		affected.death()
 
 /datum/wound/fracture/neck/on_mob_loss(mob/living/affected)
 	. = ..()
@@ -271,7 +266,6 @@
 	bleed_rate = 15
 	clotting_threshold = 0.5
 	clotting_rate = 1			//Good clotting rate; within 24 ticks (~3 seconds) will lower heavily.
-	shatter_wound = TRUE
 
 /datum/wound/fracture/chest/on_mob_gain(mob/living/affected)
 	. = ..()

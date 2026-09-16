@@ -1,7 +1,7 @@
 // Please only put REALLY, REALLY MISCELLANEOUS stuff in here. Like rolling pins
 /obj/item/kitchen/rollingpin
-	name = "rolling pin"
-	desc = "A wooden implement designed to flatten dough."
+	name = "擀面杖"
+	desc = "一根木制擀面杖，用来将面团压成薄片。"
 	icon = 'modular/Neu_Food/icons/cookware/misc.dmi'
 	icon_state = "rolling_pin"
 	force = 8
@@ -9,7 +9,7 @@
 	throw_speed = 1
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
+	attack_verb = list("猛击", "殴打", "棒打", "抽打", "重打")
 	custom_price = 20
 	grid_width = 32
 	grid_height = 64
@@ -28,15 +28,15 @@
 
 /obj/item/kitchen/rollingpin/get_mechanics_examine(mob/user)
     . = ..()
-    . += span_info("Left-click on a wad of dough, whether balled-up or sliced into halves, to further flatten it out.")
+    . += span_info("左键点击一团面团——无论是揉成球状还是切成两半——即可进一步将其擀平。")
 
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins flattening [user.p_their()] head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user]开始用[src]把自己的脑袋擀平！看起来是在自杀！</span>")
 	return BRUTELOSS
 
 /obj/item/tablecloth/silk
-	name = "silk tablecloth"
-	desc = "A fancy silk tablecloth, laid out for diplomatic feasts and other important events."
+	name = "丝绸桌布"
+	desc = "一块华美的丝绸桌布，专为外交宴席和其他重要场合铺设。"
 	icon = 'modular/Neu_Food/icons/cookware/misc.dmi'
 	icon_state = "tablecloth_silk"
 	sellprice = 40

@@ -18,14 +18,14 @@
 #define ITEM_QUALITY_MULT_FLAWLESS    1.30
 #define ITEM_QUALITY_MULT_MASTERWORK  1.50
 
-#define ITEM_QUALITY_PREFIX_LOOTED      "scavenged"
-#define ITEM_QUALITY_PREFIX_RUINED      "ruined"
-#define ITEM_QUALITY_PREFIX_AWFUL       "awful"
-#define ITEM_QUALITY_PREFIX_CRUDE       "crude"
-#define ITEM_QUALITY_PREFIX_ROUGH       "rough"
-#define ITEM_QUALITY_PREFIX_FINE        "fine"
-#define ITEM_QUALITY_PREFIX_FLAWLESS    "flawless"
-#define ITEM_QUALITY_PREFIX_MASTERWORK  "masterwork"
+#define ITEM_QUALITY_PREFIX_LOOTED      "捡来的"
+#define ITEM_QUALITY_PREFIX_RUINED      "损毁的"
+#define ITEM_QUALITY_PREFIX_AWFUL       "糟糕的"
+#define ITEM_QUALITY_PREFIX_CRUDE       "粗制的"
+#define ITEM_QUALITY_PREFIX_ROUGH       "粗糙的"
+#define ITEM_QUALITY_PREFIX_FINE        "精良的"
+#define ITEM_QUALITY_PREFIX_FLAWLESS    "无瑕的"
+#define ITEM_QUALITY_PREFIX_MASTERWORK  "杰作"
 
 #define ITEM_QUALITY_MULT(Q) ( \
 	(Q) == ITEM_QUALITY_LOOTED     ? ITEM_QUALITY_MULT_LOOTED     : ( \

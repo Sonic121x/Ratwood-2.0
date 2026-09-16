@@ -138,8 +138,8 @@
 #define NAVIGATOR_BUCKET_POOL_POTIONS_REAGENTS 800
 #define NAVIGATOR_BUCKET_POOL_MISCELLANEOUS 300
 
-#define NAVIGATOR_REFUSAL_MSG_FOOD "The market does not accept foodstuffs - sell to docked ships' victuallers."
-#define NAVIGATOR_REFUSAL_MSG_BULK "Bulk goods are not handled at the balloon - sell to docked ships."
+#define NAVIGATOR_REFUSAL_MSG_FOOD "市场不收食品 - 卖给靠港船只的伙食供应商吧."
+#define NAVIGATOR_REFUSAL_MSG_BULK "气球不处理大宗货物 - 卖给靠港的船只吧."
 
 #define MARKET_POOL_JITTER_LOW 0.7
 #define MARKET_POOL_JITTER_HIGH 1.3

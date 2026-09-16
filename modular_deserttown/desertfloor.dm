@@ -1,6 +1,6 @@
 /turf/open/floor/rogue/dunes
-	name = "sand"
-	desc = "Its course and rough, and it gets everywhere."
+	name = "沙子"
+	desc = "它又粗又糙，而且无处不在。"
 	icon = 'modular_deserttown/icons/desertfloor.dmi'
 	icon_state = "dune1"
 	footstep = FOOTSTEP_CARPET
@@ -67,12 +67,12 @@
 	roguesmooth(adjacencies)
 
 /datum/crafting_recipe/roguetown/turfs/desert/sandbrickfloor
-	name = "sandbrick floor"
+	name = "沙砖地板"
 	result = /turf/open/floor/rogue/sandbrick
 	reqs = list(/obj/item/natural/stone = 1)
 	skillcraft = /datum/skill/craft/masonry
-	verbage_simple = "construct"
-	verbage = "constructs"
+	verbage_simple = "建造"
+	verbage = "建造"
 	craftdiff = 1
 
 /turf/open/floor/rogue/sandbrick/Initialize()
@@ -187,12 +187,12 @@
 	icon_state = "dark-path[rand(1,8)]"
 
 /datum/crafting_recipe/roguetown/turfs/desert/darksandbrickfloor
-	name = "dark sandbrick floor"
+	name = "暗色沙砖地板"
 	result = /turf/open/floor/rogue/darkpath
 	reqs = list(/obj/item/natural/stone = 1)
 	skillcraft = /datum/skill/craft/masonry
-	verbage_simple = "construct"
-	verbage = "constructs"
+	verbage_simple = "建造"
+	verbage = "建造"
 	craftdiff = 1
 
 /obj/effect/decal/desertgrassedge
@@ -203,8 +203,8 @@
 	mouse_opacity = 0
 
 /turf/open/floor/rogue/desert_grass
-	name = "desert grass"
-	desc = "Grass, barely."
+	name = "沙漠草"
+	desc = "勉强能算是草。"
 	icon = 'modular_deserttown/icons/desertfloor.dmi'
 	icon_state = "desertgrass"
 	layer = MID_TURF_LAYER
@@ -283,8 +283,8 @@
 	track_prob = 20
 
 /turf/open/floor/rogue/naturalstone/sandstone
-	name = "rough sandstone ground"
-	desc = "Rough sandstone that's been exposed to the air either through erosion or the swing of a pickaxe. Dust wisps through the cracks."
+	name = "粗糙的砂岩地面"
+	desc = "因侵蚀或镐头的敲击而暴露在空气中的粗糙砂岩。灰尘从裂缝中飘出。"
 	icon = 'modular_deserttown/icons/desertfloor.dmi'
 	smooth = SMOOTH_MORE
 	canSmoothWith = list(/turf/open/floor/rogue,

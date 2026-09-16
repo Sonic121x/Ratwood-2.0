@@ -1,8 +1,8 @@
 /datum/quest_faction/highwayman
 	id = QUEST_FACTION_HIGHWAYMAN
-	name_singular = "highwayman"
-	name_plural = "highwaymen"
-	group_word = "gang"
+	name_singular = "拦路强盗"
+	name_plural = "拦路强盗"
+	group_word = "帮"
 	faction_tag = FACTION_BANDITS
 	can_blockade = TRUE
 	category = FACTION_CAT_HUMANOID
@@ -14,10 +14,10 @@
 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 100,
 	)
 	boss_title_templates = list(
-		"%N the Cutthroat",
-		"%N the Quick",
-		"%N the Wolf",
-		"%N Bloodhand",
+		"%N 割喉者",
+		"%N 快手",
+		"%N 孤狼",
+		"%N 血手",
 	)
 	boss_name_file = "strings/rt/names/human/humnorm.txt"
 	crime_weights = list(

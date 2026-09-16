@@ -30,7 +30,22 @@ type SubTab = 'compose' | 'history';
 const RECOVERY_TYPE = 'Recovery';
 const DISPATCH_DEBOUNCE_MS = 500;
 
-const pts = (n: number) => `${n}\u00A0pt${n === 1 ? '' : 's'}`;
+const QUEST_TYPE_LABELS: Record<string, string> = {
+  Retrieval: '寻回',
+  Courier: '递送',
+  Kill: '击杀',
+  'Clear Out': '清剿',
+  Raid: '突袭',
+  Bounty: '悬赏',
+  Recovery: '追回',
+  'Blockade Defense': '封锁防御',
+  'Hoard Recovery': '寻宝',
+  'Smith Caravan': '铁匠商队',
+  'Ore Vein': '矿脉',
+  'Notorious Bounty': '恶名悬赏',
+};
+
+const pts = (n: number) => `${n}\u00A0点`;
 
 const formatMultiplierDelta = (delta: number): string => {
   const pct = Math.round(delta * 100);
@@ -43,10 +58,10 @@ const regionRewardFlavor = (
 ): string | null => {
   if (typeof mult !== 'number' || mult === 1) return null;
   if (mult > 1) {
-    const descriptor = mult >= 1.4 ? 'bleak' : 'dangerous';
-    return `${regionName} is a ${descriptor} region - rumors from there tend to be ${formatMultiplierDelta(mult - 1)} more lucrative.`;
+    const descriptor = mult >= 1.4 ? '荒芜' : '危险';
+    return `${regionName} 是一片${descriptor}之地 - 来自该地区的流言往往多赚 ${formatMultiplierDelta(mult - 1)}.`;
   }
-  return `${regionName} is a settled region - rumors from there tend to be ${formatMultiplierDelta(1 - mult)} less lucrative.`;
+  return `${regionName} 是一片安定之地 - 来自该地区的流言往往少赚 ${formatMultiplierDelta(1 - mult)}.`;
 };
 
 const FormRow = (props: { label: string; children: ReactNode }) => (
@@ -106,8 +121,8 @@ const SubTabBar = (props: {
   historyCount: number;
 }) => {
   const tabs: { id: SubTab; label: string }[] = [
-    { id: 'compose', label: 'Compose' },
-    { id: 'history', label: `History (${props.historyCount})` },
+    { id: 'compose', label: '撰写' },
+    { id: 'history', label: `历史 (${props.historyCount})` },
   ];
   return (
     <div className="ContractLedger__InnkeeperSubTabBar">
@@ -133,7 +148,7 @@ const HistoryView = (props: { log: RumorLogEntry[] }) => {
   if (!props.log.length) {
     return (
       <div className="ContractLedger__InnkeeperEmpty">
-        No rumors whispered yet this week.
+        本周尚无流言传出.
       </div>
     );
   }
@@ -146,8 +161,8 @@ const HistoryView = (props: { log: RumorLogEntry[] }) => {
             {r.title}
           </span>
           <span className="ContractLedger__InnkeeperHistoryMeta">
-            {r.type} &middot; {r.region} &middot; day {r.day} &middot;{' '}
-            {r.in_hands ? 'in hands' : 'on board'}
+            {QUEST_TYPE_LABELS[r.type] || r.type} &middot; {r.region}{' '}
+            &middot; 第 {r.day} 天 &middot; {r.in_hands ? '手中' : '告示板上'}
           </span>
         </div>
       ))}
@@ -180,15 +195,15 @@ const ComposeView = () => {
   };
 
   const disabledReason = inflight
-    ? 'Whispering...'
+    ? '低语中...'
     : !type
-      ? 'Pick a rumor type.'
+      ? '请选择流言类型.'
       : !region
-        ? 'Pick a region.'
+        ? '请选择地区.'
         : needsDestination && !destination
-          ? "Pick whose shipment it's rumored to be."
+          ? '请选择传言中的货主.'
           : data.rumor_points < cost
-            ? `Insufficient Rumor Points (need ${cost}, have ${data.rumor_points}).`
+            ? `流言点数不足 (需要 ${cost}, 现有 ${data.rumor_points}).`
             : undefined;
 
   const dispatch = () => {
@@ -207,11 +222,11 @@ const ComposeView = () => {
   return (
     <>
       <div className="ContractLedger__InnkeeperFlavor">
-        A whisper to the Guild carries weight. Select a rumor to pass along;
-        point cost scales with the trouble it will bring.
+        向行会低语一句自有分量. 选择一则流言传出;
+        点数消耗随其将引来的麻烦而增加.
       </div>
 
-      <FormRow label="Rumor Type">
+      <FormRow label="流言类型">
         <select
           className="ContractLedger__InnkeeperSelect"
           value={type}
@@ -219,13 +234,13 @@ const ComposeView = () => {
         >
           {typeOptions.map((t) => (
             <option key={t} value={t}>
-              {t} ({pts(data.rumor_costs[t])})
+              {QUEST_TYPE_LABELS[t] || t} ({pts(data.rumor_costs[t])})
             </option>
           ))}
         </select>
       </FormRow>
 
-      <FormRow label="Region">
+      <FormRow label="地区">
         <select
           className="ContractLedger__InnkeeperSelect"
           value={region}
@@ -234,8 +249,8 @@ const ComposeView = () => {
         >
           <option value="">
             {regionsForType.length === 0
-              ? 'No region will host this type'
-              : '- pick a region -'}
+              ? '没有地区能容纳此类型'
+              : '- 请选择地区 -'}
           </option>
           {regionsForType.map((r) => {
             const mult =
@@ -244,7 +259,7 @@ const ComposeView = () => {
                 : data.region_tp_multipliers?.[r];
             const suffix =
               typeof mult === 'number' && mult !== 1
-                ? ` (×${mult} reward)`
+                ? ` (×${mult} 奖赏)`
                 : '';
             return (
               <option key={r} value={r}>
@@ -280,43 +295,43 @@ const ComposeView = () => {
         })()}
 
       {needsDestination && (
-        <FormRow label="Rumored Shipment">
+        <FormRow label="传言货物">
           <Select
             value={destination}
             onChange={setDestination}
             options={data.rumor_destinations || []}
-            placeholder="- pick a destination -"
+            placeholder="- 请选择目的地 -"
           />
         </FormRow>
       )}
 
-      <FormRow label="Deliver As">
+      <FormRow label="交付方式">
         <div className="ContractLedger__InnkeeperModeRow">
           <ModeRadio
             value="board"
             selected={mode}
             onChange={setMode}
-            label="Post on public board"
+            label="张贴于公共告示板"
           />
           <ModeRadio
             value="hands"
             selected={mode}
             onChange={setMode}
-            label="Put in my hands"
+            label="置于我手中"
           />
         </div>
       </FormRow>
 
-      <FormRow label="Lucrative">
+      <FormRow label="重利">
         <label>
           <input
             type="checkbox"
             checked={lucrative}
             onChange={(e) => setLucrative(e.target.checked)}
           />
-          &nbsp;Spend {pts(Math.round(baseCost * lucrativeMult))} instead of{' '}
-          {pts(baseCost)} for a x{lucrativeMult} reward. Your referral cut grows
-          with the payout.
+          &nbsp;花费 {pts(Math.round(baseCost * lucrativeMult))} 而非{' '}
+          {pts(baseCost)}, 以换取 x{lucrativeMult} 的奖赏. 你的介绍抽成会随
+          赏金一同增长.
         </label>
       </FormRow>
 
@@ -328,8 +343,8 @@ const ComposeView = () => {
           title={disabledReason}
           onClick={dispatch}
         >
-          Whisper Rumor ({pts(cost)})
-          {lucrative ? ' - lucrative' : ''}
+          低语流言 ({pts(cost)})
+          {lucrative ? ' - 重利' : ''}
         </button>
       </div>
     </>
@@ -344,20 +359,20 @@ export const InnkeeperRumorPanel = () => {
     <div className="ContractLedger__Innkeeper">
       <div className="ContractLedger__InnkeeperHeader">
         <div className="ContractLedger__InnkeeperTitle">
-          So I have heard&hellip;
+          如此说来, 我有所耳闻&hellip;
         </div>
         <div className="ContractLedger__InnkeeperBalance">
-          Rumor Points:&nbsp;<b>{data.rumor_points}</b>
+          流言点数:&nbsp;<b>{data.rumor_points}</b>
           <span className="ContractLedger__InnkeeperBalanceFormula">
             {' '}
-            (+{data.rumor_refill_base} base, +
-            {data.rumor_refill_per_player.toFixed(2)}/player &times;{' '}
+            (+{data.rumor_refill_base} 基础, +
+            {data.rumor_refill_per_player.toFixed(2)}/玩家 &times;{' '}
             {data.rumor_active_players} ={' '}
             {(
               data.rumor_refill_base +
               data.rumor_refill_per_player * data.rumor_active_players
             ).toFixed(2)}
-            /day, cap{' '}
+            /日, 上限{' '}
             {Math.round(
               2 *
                 (data.rumor_refill_base +

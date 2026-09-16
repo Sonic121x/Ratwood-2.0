@@ -1,11 +1,11 @@
 /datum/advclass/mercenary/crocs // formerly Anthrax.dm
-	name = "Crocs de l'araignée Cavalier"
-	tutorial = "The Crocs de l'araignée, translated literally to mean \"Spider's Teeth\", is a renowned collective of blades, \
-	whips, and riders for hire often employed in the vast drow undercity complexes and occasionally the surface above. \
-	Infamous for their battlefrenzy, sadism, and mastery over arachnid cavalry, a member of the Spider's Teeth stands among some of the \
-	fiercest if cruelest warriors in Psydonia. Dark elves ultimately are only truly aligned to themselves and their own interests; \
-	this trait makes them surprisingly pragmatic and straightforward mercenaries, as a drow can be counted on to do any job so long as the \
-	price is right and it serves whatever higher ambition they might have."
+	name = "蛛牙骑手"
+	tutorial = "蛛牙（Crocs de l'araignée，直译即「蜘蛛之牙」）是一支赫赫有名的雇佣团体，擅使刀剑、\
+	长鞭与坐骑，常受雇于庞大的卓尔地下城群，偶尔也会在地表活动。\
+	蛛牙之人因嗜战、残虐，以及驾驭蛛形坐骑的本领而恶名昭彰；\
+	在普赛多尼亚，他们称得上是最凶悍、也最残酷的一批战士。黑暗精灵说到底只真正忠于自己与自身利益；\
+	这一特质反而使他们成了意外务实而直白的佣兵——\
+	只要价钱合适，又能服务于他们更高的野心，卓尔便什么活都肯接。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/elf/dark,
@@ -43,9 +43,9 @@
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
 
 	)
-	extra_context = "This subclass is race-limited to: Dark Elves Only. \
-	Female drow recieve nutcracker and bedbreaker. Male drow \
-	lose -1 STR & -1 LCK, but gain 1 SPD & 1 WIL."
+	extra_context = "该子职业仅限黑暗精灵使用。 \
+	女性卓尔获得碎卵者与破床者特质。男性卓尔 \
+	失去 -1 力量与 -1 幸运，但获得 1 速度与 1 意志。"
 
 
 /datum/outfit/job/roguetown/mercenary/crocs/pre_equip(mob/living/carbon/human/H)
@@ -169,8 +169,8 @@
 	H.merctype = 15
 
 /datum/advclass/mercenary/crocsass
-	name = "Crocs de l'araignée Assassin"
-	tutorial = "The Crocs de l'araignée, translated literally to mean \"Spider's Teeth\", is a renowned collective of blades, whips, and riders for hire often employed in the vast drow undercity complexes and occasionally the surface above. Infamous for their battlefrenzy, sadism, and mastery over arachnid cavalry, a member of the Spider's Teeth stands among some of the fiercest if cruelest warriors in Psydonia. Dark elves ultimately are only truly aligned to themselves and their own interests; this trait makes them surprisingly pragmatic and straightforward mercenaries, as a drow can be counted on to do any job so long as the price is right and it serves whatever higher ambition they might have."
+	name = "Crocs de l'araignee 刺客"
+	tutorial = "Crocs de l'araignee，直译即为“蛛牙”，是一支赫赫有名的雇佣团体，擅使刀剑、长鞭与坐骑，常受雇于庞大的卓尔地下城群，偶尔也会在地表活动。蛛牙之人因嗜战、残虐，以及驾驭蛛形坐骑的本领而恶名昭彰；在 普赛多尼亚，他们称得上是最凶悍、也最残酷的一批战士。黑暗精灵说到底只真正忠于自己与自身利益，这也使他们意外地成了务实而直白的佣兵，只要价钱合适，又能服务于他们更高的野心，卓尔便什么活都肯接。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/elf/dark,

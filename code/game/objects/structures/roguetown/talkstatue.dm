@@ -11,8 +11,8 @@ talkstatue_tgui.dm (the real player-facing TGUI: ui_state/ui_interact/ui_data/ui
 */
 
 /obj/structure/roguemachine/talkstatue
-	name = "talking statue"
-	desc = "Don't map this one! Map the others!"
+	name = "会说话的雕像"
+	desc = "别映射这一个！去映射其它那些！"
 	icon = 'icons/roguetown/misc/economy_machines.dmi' // carries the mercstatue sprite from upstream
 	icon_state = "mercstatue"
 	density = FALSE
@@ -20,8 +20,8 @@ talkstatue_tgui.dm (the real player-facing TGUI: ui_state/ui_interact/ui_data/ui
 	max_integrity = 0
 
 /obj/structure/roguemachine/talkstatue/mercenary
-	name = "mercenary statue"
-	desc = "A gilbronze warrior erupts from the stone bell that homes them; foreign garb, horns of stone, claws of deathly metals. The perfect central-point of a proud warrior extrinsic to this place and tyme."
+	name = "佣兵雕像"
+	desc = "一名吉尔青铜战士自收容他们的石钟中破壁而出；异邦的衣着，石质的犄角，致命金属铸就的利爪。对一个不属于此时此地的骄傲战士而言，这正是最完美的汇聚之处。"
 	var/static/list/mercenary_status = list()
 	var/static/list/pending_registrations = list()
 	var/static/list/pending_message_links = list()
@@ -37,8 +37,8 @@ talkstatue_tgui.dm (the real player-facing TGUI: ui_state/ui_interact/ui_data/ui
 	var/static/response_id_counter = 0
 
 /obj/structure/roguemachine/talkstatue/church
-	name = "church statue"
-	desc = "A blessed stone statue radiating divine presence."
+	name = "教堂雕像"
+	desc = "一尊受祝福的石像，散发着神圣的气息。"
 	icon_state = "goldvendor" //TODO: Get proper sprite
 
 /obj/structure/roguemachine/talkstatue/church/Initialize(mapload)
