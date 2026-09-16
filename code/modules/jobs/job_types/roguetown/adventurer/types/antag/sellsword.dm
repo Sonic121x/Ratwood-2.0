@@ -1,8 +1,8 @@
 //STR/SPD combination class, versatile and can use almost any weapon.
 /datum/advclass/sellsword
-	name = "Sellsword"
-	tutorial = "Perhaps a mercenary, perhaps a deserter, it matters not. At one time, you killed for a master in return for gold. \
-	Now you live with no such master over your head, taking what you please."
+	name = "佣兵剑客"
+	tutorial = "也许你曾是佣兵，也许你曾是逃兵，这都无关紧要。你过去替主人卖命杀人，只为换来金子。\
+	如今你头上再无主子，想拿什么、想杀谁，都只凭你自己。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/sellsword

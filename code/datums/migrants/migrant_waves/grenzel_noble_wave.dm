@@ -1,5 +1,5 @@
 /datum/migrant_wave/grenzel_envoy
-	name = "Grenzelhoftian Envoy"
+	name = "格伦泽尔霍夫特使团"
 	max_spawns = 1
 	weight = 50
 	track = MIGRANT_TRACK_SPECIAL
@@ -11,4 +11,4 @@
 		/datum/migrant_role/grenzel/priest = 1,
 	)
 	min_optional_fills = 0
-	greet_text = "You are a Grenzelhoftian envoy, traveling with bodyguards and a priest to represent your homeland."
+	greet_text = "你们是来自格伦泽尔霍夫特的使团，带着护卫与神父一同出行，代表自己的祖国。"

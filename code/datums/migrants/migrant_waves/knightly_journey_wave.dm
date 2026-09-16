@@ -1,5 +1,5 @@
 /datum/migrant_wave/knightly_journey
-	name = "The Knightly journey"
+	name = "骑士之旅"
 	max_spawns = 1
 	weight = 50
 	track = MIGRANT_TRACK_SPECIAL

@@ -4,7 +4,7 @@
 
 // Two Fried Eggs (Egg + Egg)
 /datum/food_recipe/eggs/twin_fried_eggs
-	name = "Twin Fried Eggs"
+	name = "双份煎蛋"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg/fried
@@ -14,7 +14,7 @@
 
 // Fried Egg + Sausage -> Wiener Egg
 /datum/food_recipe/eggs/wiener_egg
-	name = "Wiener Egg"
+	name = "香肠煎蛋"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
@@ -24,7 +24,7 @@
 
 // Twin Eggs + Cheese -> Valerian Omelette
 /datum/food_recipe/eggs/valerian_omelette
-	name = "Valerian Omelette"
+	name = "瓦莱里安煎蛋卷"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
@@ -34,7 +34,7 @@
 
 // Twin Eggs + Bacon -> Bacon & Eggs
 /datum/food_recipe/eggs/bacon_and_eggs
-	name = "Bacon and Eggs"
+	name = "培根煎蛋"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
@@ -44,7 +44,7 @@
 
 // Bacon & Eggs + Sausage -> Wiener Egg with Bacon
 /datum/food_recipe/eggs/wiener_egg_bacon
-	name = "Wiener Egg with Bacon"
+	name = "培根香肠煎蛋"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/bacon
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
@@ -54,7 +54,7 @@
 
 // Wiener Egg + Bacon -> Wiener Egg with Bacon (alternative path)
 /datum/food_recipe/eggs/wiener_egg_bacon_alt
-	name = "Wiener Egg with Bacon (Alt)"
+	name = "培根香肠煎蛋（备选）"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
@@ -64,7 +64,7 @@
 
 // Wiener Egg with Bacon + Toast -> Hammerholdian Breakfast
 /datum/food_recipe/eggs/hammerholdian_breakfast
-	name = "Hammerholdian Breakfast"
+	name = "铁锤堡式早餐"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausagebacon
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toast

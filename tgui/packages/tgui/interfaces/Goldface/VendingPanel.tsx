@@ -27,7 +27,7 @@ const LockedView = (props: { motto: string; canRead: boolean }) => (
         color: INK_SOFT,
       }}
     >
-      It is locked. Of course.
+      它上锁了. 当然.
     </div>
   </div>
 );
@@ -71,8 +71,8 @@ export const VendingPanel = (props: { data: VendingData; act: ActFn }) => {
               }
               title={
                 isActive
-                  ? `Click again to clear the category filter`
-                  : `Browse ${cat}`
+                  ? `再次点击以清除分类筛选`
+                  : `浏览 ${cat}`
               }
             >
               {cat}
@@ -84,9 +84,9 @@ export const VendingPanel = (props: { data: VendingData; act: ActFn }) => {
             type="button"
             style={subTabStyle(false)}
             onClick={() => act('changecat', { category: '' })}
-            title="Clear category filter (keeps any active search)"
+            title="清除分类筛选 (保留当前搜索)"
           >
-            × Clear
+            × 清除
           </button>
         )}
       </div>
