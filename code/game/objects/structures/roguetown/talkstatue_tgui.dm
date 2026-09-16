@@ -24,7 +24,7 @@
 		registry[user.real_name] = data
 	data["status"] = new_status
 	data["mob"] = user
-	to_chat(user, span_notice("I set my status to: <b>[new_status]</b>"))
+	to_chat(user, span_notice("我已将状态设为：<b>[new_status]</b>"))
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	log_admin_private("[key_name(user)] set statue status to [new_status]")
 
@@ -34,14 +34,14 @@
 		data = list("status" = default_state, "mob" = user, "message" = "")
 		registry[user.real_name] = data
 	var/current_msg = data["message"] || ""
-	var/new_msg = stripped_input(user, "Enter my custom message (max [message_char_limit] characters):", "Statue Message", current_msg, message_char_limit)
+	var/new_msg = stripped_input(user, "输入我的自定义讯息（最多 [message_char_limit] 个字符）：", "雕像讯息", current_msg, message_char_limit)
 	if(new_msg == null)
 		return
 	if(!Adjacent(user))
-		to_chat(user, span_warning("I moved too far from the statue."))
+		to_chat(user, span_warning("我离雕像太远了。"))
 		return
 	data["message"] = new_msg
-	to_chat(user, span_notice("My statue message has been updated."))
+	to_chat(user, span_notice("我的雕像讯息已更新。"))
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	log_admin_private("[key_name(user)] set statue custom message: \"[new_msg]\"")
 
@@ -51,23 +51,23 @@
 		data = list("status" = "Available", "mob" = user, "message" = "", "nom_de_guerre" = "")
 		wretch_status[user.real_name] = data
 	var/current = data["nom_de_guerre"] || ""
-	var/new_nom = stripped_input(user, "Choose my nom de guerre (max 60 characters). Empty to clear.", "Nom de Guerre", current, 60)
+	var/new_nom = stripped_input(user, "选择我的化名（最多 60 个字符）。留空以清除。", "化名", current, 60)
 	if(new_nom == null)
 		return
 	if(!Adjacent(user))
-		to_chat(user, span_warning("I moved too far from the statue."))
+		to_chat(user, span_warning("我离雕像太远了。"))
 		return
 	data["nom_de_guerre"] = new_nom
-	to_chat(user, span_notice("My nom de guerre is set to: <b>[new_nom ? new_nom : "(real name)"]</b>"))
+	to_chat(user, span_notice("我的化名已设为：<b>[new_nom ? new_nom : "(真名)"]</b>"))
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	log_admin_private("[key_name(user)] set wretch nom de guerre: \"[new_nom]\"")
 
 /obj/structure/roguemachine/talkstatue/mercenary/proc/leave_roster(mob/living/carbon/human/user, list/registry)
 	if(!registry[user.real_name])
-		to_chat(user, span_warning("I am not listed here."))
+		to_chat(user, span_warning("我并未列于此处。"))
 		return
 	registry -= user.real_name
-	to_chat(user, span_notice("I have taken myself off the roster."))
+	to_chat(user, span_notice("我已将自己从名册中除名。"))
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	log_admin_private("[key_name(user)] removed self from statue roster")
 
@@ -84,39 +84,39 @@
 			var/status_text = d["status"] || "Available"
 			picker["[adv.real_name] ([status_text])"] = adv.real_name
 		if(!picker.len)
-			to_chat(sender, span_warning("There are no adventurers currently available."))
+			to_chat(sender, span_warning("目前没有可供联络的冒险者。"))
 			return
-		var/choice = input(sender, "Which adventurer do I wish to contact?", "Adventurer Contact") as null|anything in picker
+		var/choice = input(sender, "我想联络哪位冒险者？", "冒险者联络") as null|anything in picker
 		if(!choice)
 			return
 		target_key = picker[choice]
 	var/list/data = adventurer_status[target_key]
 	if(!data)
-		to_chat(sender, span_warning("My message cannot be delivered for some reason."))
+		to_chat(sender, span_warning("由于某些原因，我的讯息无法送达。"))
 		return
 	var/mob/living/carbon/human/target = data["mob"]
 	if(!target || QDELETED(target) || target.stat == DEAD || !target.ckey)
 		adventurer_status -= target_key
-		to_chat(sender, span_warning("My message cannot be delivered for some reason."))
+		to_chat(sender, span_warning("由于某些原因，我的讯息无法送达。"))
 		return
 	if(data["status"] == "Do not Disturb")
-		to_chat(sender, span_warning("My message cannot be delivered for some reason."))
+		to_chat(sender, span_warning("由于某些原因，我的讯息无法送达。"))
 		return
 	var/cooldown_key = "adv_[sender.real_name]_[target.real_name]"
 	if(sender_cooldowns[cooldown_key])
 		var/time_left = sender_cooldowns[cooldown_key] + single_cooldown - world.time
 		if(time_left > 0)
 			var/mins_left = max(1, round(time_left / 600))
-			to_chat(sender, span_warning("I need to wait [mins_left] minute[mins_left == 1 ? "" : "s"] before contacting [target.real_name] again."))
+			to_chat(sender, span_warning("我需要等待 [mins_left] 分钟后才能再次联络 [target.real_name]。"))
 			return
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I need to stay close to the statue."))
+		to_chat(sender, span_warning("我需要靠近雕像。"))
 		return
-	var/message = stripped_input(sender, "What message do I wish to send? (Max [message_char_limit] characters)", "Adventurer Contact", "", message_char_limit)
+	var/message = stripped_input(sender, "我想发送什么讯息？（最多 [message_char_limit] 个字符）", "冒险者联络", "", message_char_limit)
 	if(!message)
 		return
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I moved too far from the statue."))
+		to_chat(sender, span_warning("我离雕像太远了。"))
 		return
 	sender_cooldowns[cooldown_key] = world.time
 	response_id_counter++
@@ -124,8 +124,8 @@
 	if(!QDELETED(target) && !QDELETED(sender))
 		pending_direct_responses[response_id] = list("responder" = target, "sender" = sender)
 		addtimer(CALLBACK(src, PROC_REF(expire_direct_response), response_id), response_timeout)
-	to_chat(target, span_boldnotice("The statue whispers in my mind: <i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];direct_response=yae;response_id=[response_id]'>\[YAE\]</a> | <a href='?src=[REF(src)];direct_response=nae;response_id=[response_id]'>\[NAE\]</a>"))
-	to_chat(sender, span_notice("My message has been sent to [target.real_name]."))
+	to_chat(target, span_boldnotice("雕像在我脑海中低语：<i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];direct_response=yae;response_id=[response_id]'>\[YAE\]</a> | <a href='?src=[REF(src)];direct_response=nae;response_id=[response_id]'>\[NAE\]</a>"))
+	to_chat(sender, span_notice("我的讯息已发送给 [target.real_name]。"))
 	playsound(target.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 	sender.log_talk(message, LOG_SAY, tag="adventurer statue (to [key_name(target)])")
 	target.log_talk(message, LOG_SAY, tag="adventurer statue (from [key_name(sender)])", log_globally=FALSE)
@@ -133,7 +133,7 @@
 /obj/structure/roguemachine/talkstatue/mercenary/proc/message_single_wretch(mob/living/carbon/human/sender, target_key)
 	var/role = role_title(sender)
 	if(role != "Bathmaster" && role != "Bathhouse Attendant")
-		to_chat(sender, span_warning("Only the bathhouse may reach a wretch through this statue."))
+		to_chat(sender, span_warning("唯有浴场之人才能通过此雕像联络弃民。"))
 		return
 	if(!target_key)
 		var/list/picker = list()
@@ -148,23 +148,23 @@
 			var/status_text = d["status"] || "Available"
 			picker["[display] ([status_text])"] = w.real_name
 		if(!picker.len)
-			to_chat(sender, span_warning("There are no wretches currently available."))
+			to_chat(sender, span_warning("目前没有可供联络的弃民。"))
 			return
-		var/choice = input(sender, "Which wretch do I wish to contact?", "Wretch Contact") as null|anything in picker
+		var/choice = input(sender, "我想联络哪位弃民？", "弃民联络") as null|anything in picker
 		if(!choice)
 			return
 		target_key = picker[choice]
 	var/list/data = wretch_status[target_key]
 	if(!data)
-		to_chat(sender, span_warning("My message cannot be delivered for some reason."))
+		to_chat(sender, span_warning("由于某些原因，我的讯息无法送达。"))
 		return
 	var/mob/living/carbon/human/target = data["mob"]
 	if(!target || QDELETED(target) || target.stat == DEAD || !target.ckey)
 		wretch_status -= target_key
-		to_chat(sender, span_warning("My message cannot be delivered for some reason."))
+		to_chat(sender, span_warning("由于某些原因，我的讯息无法送达。"))
 		return
 	if(data["status"] == "Do not Disturb")
-		to_chat(sender, span_warning("My message cannot be delivered for some reason."))
+		to_chat(sender, span_warning("由于某些原因，我的讯息无法送达。"))
 		return
 	var/display = data["nom_de_guerre"] || target.real_name
 	var/cooldown_key = "wretch_[sender.real_name]_[target.real_name]"
@@ -172,16 +172,16 @@
 		var/time_left = sender_cooldowns[cooldown_key] + single_cooldown - world.time
 		if(time_left > 0)
 			var/mins_left = max(1, round(time_left / 600))
-			to_chat(sender, span_warning("I need to wait [mins_left] minute[mins_left == 1 ? "" : "s"] before contacting [display] again."))
+			to_chat(sender, span_warning("我需要等待 [mins_left] 分钟后才能再次联络 [display]。"))
 			return
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I need to stay close to the statue."))
+		to_chat(sender, span_warning("我需要靠近雕像。"))
 		return
-	var/message = stripped_input(sender, "What message do I wish to send? (Max [message_char_limit] characters)", "Wretch Contact", "", message_char_limit)
+	var/message = stripped_input(sender, "我想发送什么讯息？（最多 [message_char_limit] 个字符）", "弃民联络", "", message_char_limit)
 	if(!message)
 		return
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I moved too far from the statue."))
+		to_chat(sender, span_warning("我离雕像太远了。"))
 		return
 	sender_cooldowns[cooldown_key] = world.time
 	response_id_counter++
@@ -189,8 +189,8 @@
 	if(!QDELETED(target) && !QDELETED(sender))
 		pending_direct_responses[response_id] = list("responder" = target, "sender" = sender)
 		addtimer(CALLBACK(src, PROC_REF(expire_direct_response), response_id), response_timeout)
-	to_chat(target, span_boldnotice("The Bathmaster's whisper reaches me through the statue: <i>[message]</i><br><a href='?src=[REF(src)];direct_response=yae;response_id=[response_id]'>\[YAE\]</a> | <a href='?src=[REF(src)];direct_response=nae;response_id=[response_id]'>\[NAE\]</a>"))
-	to_chat(sender, span_notice("My message has been sent to [display]."))
+	to_chat(target, span_boldnotice("浴场主的低语透过雕像传入我耳中：<i>[message]</i><br><a href='?src=[REF(src)];direct_response=yae;response_id=[response_id]'>\[YAE\]</a> | <a href='?src=[REF(src)];direct_response=nae;response_id=[response_id]'>\[NAE\]</a>"))
+	to_chat(sender, span_notice("我的讯息已发送给 [display]。"))
 	playsound(target.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 	sender.log_talk(message, LOG_SAY, tag="wretch statue (to [key_name(target)])")
 	target.log_talk(message, LOG_SAY, tag="wretch statue (from [key_name(sender)])", log_globally=FALSE)
@@ -269,7 +269,7 @@
 		return
 	var/mob/living/carbon/human/H = usr
 	if(!Adjacent(H))
-		to_chat(H, span_warning("I need to be closer to the statue."))
+		to_chat(H, span_warning("我需要离雕像更近一些。"))
 		return
 	var/user_role = role_title(H)
 	var/is_merc = role_matches(H, "Mercenary")

@@ -4,7 +4,7 @@
 
 // Cake Base + Frosting -> Frosted Cake Base (Raw)
 /datum/food_recipe/cake/frosted_cake_base
-	name = "Frosted Cake Base"
+	name = "糖霜蛋糕坯"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/frosting
@@ -14,7 +14,7 @@
 
 // Cake Base + Cheese -> Cheesecake (Raw)
 /datum/food_recipe/cake/cheesecake_base
-	name = "Cheesecake Base"
+	name = "未烤奶酪蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheese
@@ -24,7 +24,7 @@
 
 // Cake Base + Honey -> Honey Cake (Raw)
 /datum/food_recipe/cake/honeycake_base
-	name = "Honey Cake Base"
+	name = "未烤蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/honey
@@ -34,7 +34,7 @@
 
 // Cooked Cake + Frosting -> Frosted Cake (for those who forgot to frost first)
 /datum/food_recipe/cake/frosted_cake_postbake
-	name = "Frosted Cake (Post-Bake)"
+	name = "糖霜蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/cake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/frosting
@@ -44,7 +44,7 @@
 
 // Frosted Cake + Apple -> Apple Cake
 /datum/food_recipe/cake/apple_cake
-	name = "Apple Cake"
+	name = "苹果蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/apple
@@ -54,7 +54,7 @@
 
 // Frosted Cake + Berries -> Berry Cake
 /datum/food_recipe/cake/berry_cake
-	name = "Berry Cake"
+	name = "浆果蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue
@@ -64,7 +64,7 @@
 
 // Frosted Cake + Poison Berries -> Poison Berry Cake
 /datum/food_recipe/cake/berry_cake_poison
-	name = "Poison Berry Cake"
+	name = "毒浆果蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison
@@ -74,7 +74,7 @@
 
 // Frosted Cake + Blackberry -> Blackberry Cake
 /datum/food_recipe/cake/blackberry_cake
-	name = "Blackberry Cake"
+	name = "黑莓蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry
@@ -84,7 +84,7 @@
 
 // Frosted Cake + Carrot -> Carrot Cake
 /datum/food_recipe/cake/carrot_cake
-	name = "Carrot Cake"
+	name = "胡萝卜蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
@@ -94,7 +94,7 @@
 
 // Frosted Cake + Raw Carrot -> Carrot Cake (alternative)
 /datum/food_recipe/cake/carrot_cake_alt
-	name = "Carrot Cake (Raw Carrot)"
+	name = "胡萝卜蛋糕（生胡萝卜）"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/carrot
@@ -104,7 +104,7 @@
 
 // Frosted Cake + Lemon -> Lemon Cake
 /datum/food_recipe/cake/lemon_cake
-	name = "Lemon Cake"
+	name = "柠檬蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/lemon
@@ -114,7 +114,7 @@
 
 // Frosted Cake + Lime -> Lime Cake
 /datum/food_recipe/cake/lime_cake
-	name = "Lime Cake"
+	name = "青柠蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/lime
@@ -124,7 +124,7 @@
 
 // Frosted Cake + Mentha -> Mentha Cake
 /datum/food_recipe/cake/mentha_cake
-	name = "Mentha Cake"
+	name = "薄荷蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/alch/mentha
@@ -134,7 +134,7 @@
 
 // Frosted Cake + Peaceflower -> Peace Cake
 /datum/food_recipe/cake/peace_cake
-	name = "Peace Cake"
+	name = "和平蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/clothing/head/peaceflower
@@ -144,7 +144,7 @@
 
 // Frosted Cake + Raspberry -> Raspberry Cake
 /datum/food_recipe/cake/raspberry_cake
-	name = "Raspberry Cake"
+	name = "覆盆子蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/raspberry
@@ -154,7 +154,7 @@
 
 // Frosted Cake + Rocknut -> Rocknut Cake
 /datum/food_recipe/cake/rocknut_cake
-	name = "Rocknut Cake"
+	name = "石果蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/nut
@@ -164,7 +164,7 @@
 
 // Frosted Cake + Strawberry -> Strawberry Cake
 /datum/food_recipe/cake/strawberry_cake
-	name = "Strawberry Cake"
+	name = "草莓蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/strawberry
@@ -174,7 +174,7 @@
 
 // Frosted Cake + Tangerine -> Tangerine Cake
 /datum/food_recipe/cake/tangerine_cake
-	name = "Tangerine Cake"
+	name = "橘子蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine
@@ -184,7 +184,7 @@
 
 // Apple Cake + Nut -> Applenut Cake
 /datum/food_recipe/cake/applenut_cake
-	name = "Applenut Cake"
+	name = "苹果坚果蛋糕"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/applecake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/nut
@@ -194,7 +194,7 @@
 
 // Rocknut Cake + Apple -> Applenut Cake (alternative path)
 /datum/food_recipe/cake/applenut_cake_alt
-	name = "Applenut Cake (from Rocknut)"
+	name = "苹果坚果蛋糕（石果制）"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/rocknutcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/apple

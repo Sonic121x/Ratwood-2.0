@@ -1,5 +1,5 @@
 /obj/item/herbseed
-	name = "herb seeds"
+	name = "药草种子"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "seeds"
 	w_class = WEIGHT_CLASS_TINY
@@ -21,7 +21,7 @@
 	else
 		show_real_identity = TRUE
 	if(show_real_identity)
-		. += span_info("I can tell these are [seed_identity]")
+		. += span_info("我能看出这些是[seed_identity]。")
 
 /obj/item/herbseed/attack_turf(turf/T, mob/living/user)
 	var/obj/structure/soil/soil = get_soil_on_turf(T)
@@ -29,7 +29,7 @@
 		try_plant_seed(user, soil)
 		return
 	else if(istype(T, /turf/open/floor/rogue/dirt))
-		to_chat(user, span_notice("I begin making a mound for the seeds..."))
+		to_chat(user, span_notice("我开始为种子堆起一个小土堆……"))
 		if(do_after(user, get_farming_do_time(user, 10 SECONDS), target = src))
 			apply_farming_fatigue(user, 30)
 			soil = get_soil_on_turf(T)
@@ -41,12 +41,12 @@
 
 /obj/item/herbseed/proc/try_plant_seed(mob/living/user, obj/structure/soil/soil)
 	if(soil.plant || soil.has_custom_growth())
-		to_chat(user, span_warning("There is already something planted in \the [soil]!"))
+		to_chat(user, span_warning("[soil]里已经种了别的东西！"))
 		return
-	to_chat(user, span_notice("I plant \the [src] in \the [soil]. I should check back later when it has grown."))
+	to_chat(user, span_notice("我把[src]种进了[soil]里。等它长出来后我该回来看看。"))
 	var/obj/structure/soil_seedling/herb/seedling = new(get_turf(soil))
 	seedling.configure_seedling(soil, icon, icon_state, makes_herb, 5 MINUTES)
-	seedling.desc = "A small seedling bedded in a soil plot. It will need healthy soil to sprout."
+	seedling.desc = "一株栽在土坑里的小幼苗。它需要健康的土壤才能发芽。"
 	qdel(src)
 	return
 
@@ -55,15 +55,15 @@
 		var/obj/structure/flora/roguegrass/herb/newplant = new to_make
 		newplant.forceMove(get_turf(soil))
 		newplant.pixel_x += rand(-3,3)
-		soil.visible_message(span_info("The [soil] suddenly bursts away to reveal \the [newplant]!"))
+		soil.visible_message(span_info("[soil]突然裂开，露出了[newplant]！"))
 	else
-		soil.visible_message(span_info("The [soil] suddenly collapses, leaving nothing behind..."))
+		soil.visible_message(span_info("[soil]突然塌陷了，什么也没留下……"))
 	qdel(soil)
 	return
 
 /obj/structure/soil_seedling
-	name = "seedling"
-	desc = "A small seedling bedded in a soil plot."
+	name = "幼苗"
+	desc = "一株栽在土坑里的小幼苗。"
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
@@ -136,7 +136,7 @@
 		if(linked_soil.try_handle_fertilizing(I, user, params))
 			return
 	if(istype(I, /obj/item/rogueweapon/shovel))
-		to_chat(user, span_notice("I begin uprooting [src]..."))
+		to_chat(user, span_notice("我开始把[src]连根拔起……"))
 		if(do_after(user, 2 SECONDS, target = src))
 			qdel(src)
 		return
@@ -155,77 +155,77 @@
 	if(final_pixel_x_jitter && final_growth)
 		final_growth.pixel_x += rand(-final_pixel_x_jitter, final_pixel_x_jitter)
 	if(linked_soil && !QDELETED(linked_soil))
-		linked_soil.visible_message(span_info("The [linked_soil] parts as [final_growth] pushes through the earth!"))
+		linked_soil.visible_message(span_info("[linked_soil]裂开了，[final_growth]破土而出！"))
 		qdel(linked_soil)
 	qdel(src)
 
 /obj/structure/soil_seedling/herb
-	name = "herb seedling"
+	name = "药草幼苗"
 	final_pixel_x_jitter = 3
 
 /obj/structure/soil_seedling/flower
-	name = "flower seedling"
+	name = "花卉幼苗"
 
 /obj/item/herbseed/atropa
 	makes_herb = /obj/structure/flora/roguegrass/herb/atropa
-	seed_identity = "atropa seeds"
+	seed_identity = "颠茄 种子"
 
 /obj/item/herbseed/matricaria
 	makes_herb = /obj/structure/flora/roguegrass/herb/matricaria
-	seed_identity = "matricaria seeds"
+	seed_identity = "洋甘菊 种子"
 
 /obj/item/herbseed/symphitum
 	makes_herb = /obj/structure/flora/roguegrass/herb/symphitum
-	seed_identity = "symphitum seeds"
+	seed_identity = "聚合草 种子"
 
 /obj/item/herbseed/taraxacum
 	makes_herb = /obj/structure/flora/roguegrass/herb/taraxacum
-	seed_identity = "taraxacum seeds"
+	seed_identity = "蒲公英 种子"
 
 /obj/item/herbseed/euphrasia
 	makes_herb = /obj/structure/flora/roguegrass/herb/euphrasia
-	seed_identity = "euphrasia seeds"
+	seed_identity = "小米草 种子"
 
 /obj/item/herbseed/paris
 	makes_herb = /obj/structure/flora/roguegrass/herb/paris
-	seed_identity = "paris seeds"
+	seed_identity = "重楼 种子"
 
 /obj/item/herbseed/calendula
 	makes_herb = /obj/structure/flora/roguegrass/herb/calendula
-	seed_identity = "calendula seeds"
+	seed_identity = "金盏花 种子"
 
 /obj/item/herbseed/mentha
 	makes_herb = /obj/structure/flora/roguegrass/herb/mentha
-	seed_identity = "mentha seeds"
+	seed_identity = "薄荷 种子"
 
 /obj/item/herbseed/urtica
 	makes_herb = /obj/structure/flora/roguegrass/herb/urtica
-	seed_identity = "urtica seeds"
+	seed_identity = "荨麻 种子"
 
 /obj/item/herbseed/salvia
 	makes_herb = /obj/structure/flora/roguegrass/herb/salvia
-	seed_identity = "salvia seeds"
+	seed_identity = "鼠尾草 种子"
 
 /obj/item/herbseed/hypericum
 	makes_herb = /obj/structure/flora/roguegrass/herb/hypericum
-	seed_identity = "hypericum seeds"
+	seed_identity = "金丝桃 种子"
 
 /obj/item/herbseed/benedictus
 	makes_herb = /obj/structure/flora/roguegrass/herb/benedictus
-	seed_identity = "benedictus seeds"
+	seed_identity = "圣蓟 种子"
 
 /obj/item/herbseed/valeriana
 	makes_herb = /obj/structure/flora/roguegrass/herb/valeriana
-	seed_identity = "valeriana seeds"
+	seed_identity = "缬草 种子"
 
 /obj/item/herbseed/artemisia
 	makes_herb = /obj/structure/flora/roguegrass/herb/artemisia
-	seed_identity = "artemisia seeds"
+	seed_identity = "艾蒿 种子"
 
 /obj/item/herbseed/rosa
 	makes_herb = /obj/structure/flora/roguegrass/herb/rosa
-	seed_identity = "rosa seeds"
+	seed_identity = "玫瑰 种子"
 
 /obj/item/herbseed/manabloom
 	makes_herb = /obj/structure/flora/roguegrass/herb/manabloom
-	seed_identity = "manabloom seeds"
+	seed_identity = "魔力花 种子"

@@ -3,8 +3,8 @@
 	weight = WEIGHT_HIGHEST
 	hotkey_keys = list("Y")
 	name = "LOOC"
-	full_name = "LOOC Chat"
-	description = "Local OOC Chat."
+	full_name = "LOOC聊天"
+	description = "本地OOC聊天。"
 
 /datum/keybinding/looc/down(client/user)
 	user.get_looc()
@@ -17,22 +17,22 @@
 
 /client/verb/looc(msg as text)
 	set name = "LOOC"
-	set desc = "Local OOC, seen only by those in view."
+	set desc = "本地OOC，只有视野内的人能看见。"
 	set category = "OOC"
 
 	do_looc(msg, FALSE)
 
 /client/verb/loocwp(msg as text)
-	set name = "LOOC (Wall Pierce)"
-	set desc = "Local OOC, seen by all in range."
+	set name = "LOOC（穿墙）"
+	set desc = "本地OOC，范围内所有人都能看见。"
 	set category = "OOC"
 
 	do_looc(msg, TRUE)
 
 // Subtle LOOC verb
 /client/verb/subtlelooc(msg as text)
-	set name = "LOOC (Subtle)"
-	set desc = "Local OOC only for a specific target or 1 tile range."
+	set name = "LOOC（细语）"
+	set desc = "本地OOC，仅发给特定目标或1格范围。"
 	set category = "OOC"
 	do_subtlelooc(msg)
 
@@ -48,16 +48,16 @@
 		return
 
 	if(GLOB.say_disabled)
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("发言当前已被管理员禁用。"))
 		return
 
 	// SLOOC has its own mute, the LOOC one doesn't reach it and this one doesn't reach LOOC
 	if(prefs.muted & MUTE_SLOOC)
-		to_chat(src, span_danger("I cannot use SLOOC (temp muted)."))
+		to_chat(src, span_danger("我无法使用SLOOC (暂时禁言)。"))
 		return
 
 	if(!holder && istype(mob, /mob/dead/new_player))
-		to_chat(src, span_danger("I cannot use LOOC while in the lobby. Join the round or observe first."))
+		to_chat(src, span_danger("我在大厅中无法使用LOOC。请先加入本轮或先观察。"))
 		return
 
 	if(isobserver(mob) && !(holder && istype(mob, /mob/dead/observer/admin)))
@@ -68,12 +68,12 @@
 		return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		to_chat(src, span_danger("You have OOC muted."))
+		to_chat(src, span_danger("你已屏蔽OOC。"))
 		return
 
 	if(!holder)
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<B>不允许宣传其他服务器。</B>")
 			log_admin("[key_name(src)] has attempted to advertise in SLOOC: [msg]")
 			return
 
@@ -83,7 +83,7 @@
 	var/pfx = "SLOOC"
 	var/distance = 4
 	var/list/hearers = get_hearers_in_view(distance, S)
-	var/list/recipient_choices = list("1-Tile Range", "Same Tile")
+	var/list/recipient_choices = list("1格范围", "同一格")
 
 	// L.client, so NPCs and disconnected bodies stay out of the picker
 	for(var/mob/living/L in hearers)
@@ -91,7 +91,7 @@
 			if(!L.rogue_sneaking && L.name != "Unknown")
 				recipient_choices += L
 
-	var/recipient_choice = input(src, "Pick a target?", "SLOOC") in recipient_choices
+	var/recipient_choice = input(src, "选择一个目标？", "SLOOC") in recipient_choices
 	if(!recipient_choice)
 		return
 
@@ -99,11 +99,11 @@
 
 	var/recipient_label
 	var/recipient_admin_label
-	if(recipient_choice == "1-Tile Range")
-		recipient_label = "1-Tile"
+	if(recipient_choice == "1格范围")
+		recipient_label = "1格"
 		recipient_admin_label = recipient_label
-	else if(recipient_choice == "Same Tile")
-		recipient_label = "Same Tile"
+	else if(recipient_choice == "同一格")
+		recipient_label = "同一格"
 		recipient_admin_label = recipient_label
 	else
 		var/mob/target = recipient_choice
@@ -125,8 +125,8 @@
 
 	var/list/seen = list()
 
-	if(recipient_choice == "1-Tile Range" || recipient_choice == "Same Tile")
-		var/limit = (recipient_choice == "1-Tile Range") ? 1 : 0
+	if(recipient_choice == "1格范围" || recipient_choice == "同一格")
+		var/limit = (recipient_choice == "1格范围") ? 1 : 0
 		for(var/mob/M in hearers)
 			if(get_dist(get_turf(M), get_turf(S)) > limit)
 				continue
@@ -141,7 +141,7 @@
 	else
 		var/mob/target = recipient_choice
 		if(get_dist(get_turf(target), get_turf(S)) > distance)
-			to_chat(src, span_boldwarning("The subtle LOOC target moved out of view, try again."))
+			to_chat(src, span_boldwarning("细语LOOC的目标已离开视野，请重试。"))
 			return
 		var/client/target_client = target?.client
 		if(target_client && (target_client.prefs.chat_toggles & CHAT_OOC))
@@ -180,25 +180,25 @@
 		return
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("发言当前已被管理员禁用。"))
 		return
 
 	if(prefs.muted & MUTE_LOOC)
-		to_chat(src, span_danger("I cannot use LOOC (temp muted)."))
+		to_chat(src, span_danger("我无法使用LOOC（暂时禁言）。"))
 		return
 
 	if(is_banned_from(ckey, "LOOC"))
-		to_chat(src, span_danger("I cannot use LOOC (perma muted)."))
+		to_chat(src, span_danger("我无法使用LOOC（永久禁言）。"))
 		return
 
 	// Lobby restriction: disable LOOC for normal players still in the lobby (new_player)
 	if(istype(mob, /mob/dead/new_player))
 		if(!holder)
-			to_chat(src, span_danger("I cannot use LOOC while in the lobby. Join the round or observe first."))
+			to_chat(src, span_danger("我在大厅中无法使用LOOC。请先加入本轮或先观察。"))
 			return
 
 	else if((mob?.stat == DEAD || isobserver(mob)) && !(holder && istype(mob, /mob/dead/observer/admin)))
-		var/refusal = isobserver(mob) ? "I cannot use LOOC while ghosted." : "I cannot use LOOC while dead, only SLOOC."
+		var/refusal = isobserver(mob) ? "我在幽灵状态下无法使用LOOC。" : "我死亡时无法使用LOOC，只能使用SLOOC。"
 		to_chat(src, span_danger(refusal))
 		return
 
@@ -206,12 +206,12 @@
 		return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		to_chat(src, span_danger("You have OOC muted."))
+		to_chat(src, span_danger("你已屏蔽OOC。"))
 		return
 
 	if(!holder)
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<B>不允许宣传其他服务器。</B>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
 
