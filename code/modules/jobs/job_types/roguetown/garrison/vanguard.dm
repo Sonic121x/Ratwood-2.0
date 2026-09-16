@@ -1,5 +1,6 @@
 /datum/job/roguetown/vanguard
 	title = "Vanguard"
+	display_title = "先锋守卒"
 	flag = BOGGUARD
 	department_flag = GARRISON
 	faction = "Station"
@@ -10,7 +11,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Either a fresh lowborn recruit with something to prove or paying off your crimes with a mandated tour of duty, you have been assigned under the lowtown baron. You have a roof over your head, meagre coin in your pocket, and a thankless job protecting the outskirts of town against what lurks beyond. You are subordinate to the baron, but often are led by the master warden or the retainer and may be called upon as members of the garrison by the Marshal and Crown. Protect lowtown's interests and be the first line of defence from threats beyond the borders of civilisation, hold the vanguard bastion, and try to survive another day. Maybe you'll make it into the Wardens some day."
+	tutorial = "不论你是想证明自己的低贱新兵，还是通过强制服役来抵偿罪责的犯人，你如今都被编入低镇男爵麾下。你有片瓦遮头，口袋里有几个可怜的铜板，还有一份无人感激的苦差——守卫镇郊，抵御城外潜伏的威胁。你虽隶属于男爵，但时常由守林总长或男爵的家臣带领，也可能被元帅与王权征召为驻军成员。守护下城区的利益，成为文明边界之外的第一道防线，扼守先锋堡垒，然后努力再多活一天。说不定有朝一日，你也能成为守林人。"
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 
@@ -56,9 +57,9 @@
 	job_bitflag = BITFLAG_GARRISON
 
 /datum/advclass/vanguard/archer
-	name = "Vanguard Archer"
-	tutorial = "You are well versed in the ways of handling a bow. \
-	You will stand in the back, and protect the front with arrows."	
+	name = "先锋弓手"
+	tutorial = "你对弓术之道已算熟稔。\
+	你将站在后方，用箭雨掩护前线。"	
 	outfit = /datum/outfit/job/roguetown/vanguard/archer
 	category_tags = list(CTAG_VANGUARD)
 	traits_applied = list(TRAIT_DODGEEXPERT)
@@ -107,9 +108,9 @@
 
 
 /datum/advclass/vanguard/footman
-	name = "Vanguard Footman"
-	tutorial = "You are adequately briefed on the ways of wielding pointy sticks. \
-	You will stand in the front, and protect."
+	name = "先锋步卒"
+	tutorial = "你对各种尖头长兵器的用法已经受过足够训练。\
+	你将立于前线，担起守御。"
 	outfit = /datum/outfit/job/roguetown/vanguard/footman
 	category_tags = list(CTAG_VANGUARD)
 	traits_applied = list(TRAIT_MEDIUMARMOR)

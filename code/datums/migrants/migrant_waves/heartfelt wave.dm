@@ -1,5 +1,5 @@
 /datum/migrant_wave/heartfelt
-	name = "The Court of Heartfelt"
+	name = "Heartfelt宫廷"
 	max_spawns = 1
 	weight = 50
 	track = MIGRANT_TRACK_SPECIAL
@@ -12,8 +12,8 @@
 		/datum/migrant_role/heartfelt/retinue = 5,
 	)
 	min_optional_fills = 0
-	greet_text = "You're the mighty Baron of Heartfelt, a Border-Vassal of the Vale. Whether compelled by an invasion at the border, a sheer desire to sightsee and visit the Realm, or some political plot known only to you and your court, you have come to visit the Realm with a small, elite picked retinue."
+	greet_text = "你是赤心的强大男爵，谷地的边陲封臣。无论是因为边境遭侵、单纯想四处游历、造访谷地，还是出于只有你与你宫廷知晓的政治图谋，你都带着一支精选的精锐随从，前来造访谷地。"
 	greet_text_by_fill = list(
-		"5" = "You're the mighty Baron of Heartfelt, a Border-Vassal of the Vale. Whether compelled by an invasion at the border, a sheer desire to sightsee and visit the Realm, or some political plot known only to you and your court, you have come to visit the Realm with a small, elite picked retinue.",
-		"3" = "You're the mighty Baron of Heartfelt, a Border-Vassal of the Vale. Whether compelled by an invasion at the border, a sheer desire to sightsee and visit the Realm, or some political plot known only to you and your court, you have come to visit the Realm with a small, elite picked retinue. Unfortunately, a few of your retinue seems to have forgotten their luggage and had to turn back.",
+		"5" = "你是赤心的强大男爵，谷地的边陲封臣。无论是因为边境遭侵、单纯想四处游历、造访谷地，还是出于只有你与你宫廷知晓的政治图谋，你都带着一支精选的精锐随从，前来造访谷地。",
+		"3" = "你是赤心的强大男爵，谷地的边陲封臣。无论是因为边境遭侵、单纯想四处游历、造访谷地，还是出于只有你与你宫廷知晓的政治图谋，你都带着一支精选的精锐随从，前来造访谷地。只可惜，你随从中似乎有几人忘了带行李，只得折返。",
 	)

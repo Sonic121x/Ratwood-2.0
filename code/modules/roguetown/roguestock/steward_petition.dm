@@ -3,8 +3,8 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 /proc/build_petition_categories()
 	var/list/cats = list()
 	cats[PETITION_CATEGORY_PROVISIONS] = list(
-		"label" = "Provisions",
-		"description" = "Bulk staples - rations, fish, orchard fruit, salt, victuals.",
+		"label" = "补给",
+		"description" = "大宗主食——口粮、鱼获、果园水果、盐、军粮。",
 		"cost" = PETITION_COST_PROVISIONS,
 		"templates" = list(
 			/datum/standing_order/demand_rations,
@@ -17,8 +17,8 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 		),
 	)
 	cats[PETITION_CATEGORY_MATERIALS] = list(
-		"label" = "Materials",
-		"description" = "Raw materials - smithing stock, construction, textile, joinery, artificery.",
+		"label" = "材料",
+		"description" = "原材料——锻造用材、建筑用材、纺织、细木工、机关术。",
 		"cost" = PETITION_COST_MATERIALS,
 		"templates" = list(
 			/datum/standing_order/demand_smithing,
@@ -29,8 +29,8 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 		),
 	)
 	cats[PETITION_CATEGORY_ARMS] = list(
-		"label" = "Arms & Harness",
-		"description" = "Finished weapons and armor - garrison kit, frontier muster, harness orders.",
+		"label" = "武器与甲胄",
+		"description" = "成品武器与护甲——驻军装备、边境征集、甲胄订单。",
 		"cost" = PETITION_COST_ARMS,
 		"templates" = list(
 			/datum/standing_order/demand_armaments,
@@ -41,8 +41,8 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 		),
 	)
 	cats[PETITION_CATEGORY_LUXURIES] = list(
-		"label" = "Luxuries",
-		"description" = "Court finery, jewelry, name-day tributes, and great feasts.",
+		"label" = "奢侈品",
+		"description" = "宫廷华服、珠宝、命名日贡礼与盛大宴席。",
 		"cost" = PETITION_COST_LUXURIES,
 		"templates" = list(
 			/datum/standing_order/demand_court_finery,
@@ -53,8 +53,8 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 		),
 	)
 	cats[PETITION_CATEGORY_ALCHEMY] = list(
-		"label" = "Alchemy & Care",
-		"description" = "Finished potions, prosthetics, exotic reagents.",
+		"label" = "炼金与护理",
+		"description" = "成品药水、义肢、异域试剂。",
 		"cost" = PETITION_COST_ALCHEMY,
 		"templates" = list(
 			/datum/standing_order/demand_alchemical,
@@ -64,8 +64,8 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 		),
 	)
 	cats[PETITION_CATEGORY_MASTERWORK] = list(
-		"label" = "Masterwork",
-		"description" = "Showpiece commissions - artificed panoply, tournament provision, hunt trophies.",
+		"label" = "杰作",
+		"description" = "陈列级委托——机关甲胄、比武装备、狩猎战利品。",
 		"cost" = PETITION_COST_MASTERWORK,
 		"templates" = list(
 			/datum/standing_order/demand_artificed_panoply,
@@ -84,22 +84,22 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 /// Single source of truth for both the DM action and the TGUI eligibility matrix.
 /datum/controller/subsystem/economy/proc/petition_blocker(region_id, category_id)
 	if(petitions_remaining_today() <= 0)
-		return "the trade hall has already heard a petition today"
+		return "贸易厅今日已经受理过一份请愿了"
 	var/list/cat = GLOB.petition_categories[category_id]
 	if(!cat)
-		return "unknown petition category"
+		return "未知的请愿类别"
 	var/datum/economic_region/region = GLOB.economic_regions[region_id]
 	if(!region)
-		return "unknown region"
+		return "未知地区"
 	if(region.is_region_blockaded)
-		return "[region.name] is blockaded - the road is closed to envoys"
+		return "[region.name] 正被封锁——道路对使节关闭"
 	if(region.day_last_cleared >= 0)
 		var/since = GLOB.dayspassed - region.day_last_cleared
 		if(since < PETITION_BLOCKADE_RECOVERY_DAYS)
 			var/wait_days = PETITION_BLOCKADE_RECOVERY_DAYS - since
-			return "[region.name]'s contacts are still scattered - wait [wait_days]d more"
+			return "[region.name] 的联络人仍四散未归——请再等 [wait_days] 天"
 	if(GLOB.standing_order_pool.len >= STANDING_ORDERS_POOL_CAP)
-		return "the warehouse manifest is full - fulfill orders first"
+		return "仓库清单已满——请先完成现有订单"
 	var/active_in_region = 0
 	var/list/seen_pairs = list()
 	for(var/datum/standing_order/O as anything in GLOB.standing_order_pool)
@@ -111,31 +111,31 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 			seen_pairs[O.pair_id] = TRUE
 		active_in_region++
 	if(active_in_region >= STANDING_ORDERS_MAX_PER_REGION)
-		return "[region.name] already has [active_in_region] active orders"
+		return "[region.name] 已有 [active_in_region] 份进行中的订单"
 	var/list/eligible = list()
 	for(var/template_path in cat["templates"])
 		if(template_path in region.possible_standing_order_types)
 			eligible += template_path
 	if(!length(eligible))
-		return "[region.name]'s trade hall does not deal in [cat["label"]]"
+		return "[region.name] 的贸易厅不做 [cat["label"]] 的买卖"
 	if(!SStreasury.burgher_pledge_fund)
-		return "the Burgher Pledge is not yet established"
+		return "市民认捐基金尚未设立"
 	var/cost = cat["cost"]
 	if(SStreasury.burgher_pledge_fund.balance < cost)
-		return "the Burgher Pledge cannot cover [cost]m"
+		return "市民认捐基金无法承担 [cost]m"
 	return null
 
 /datum/controller/subsystem/economy/proc/petition_for_order(mob/user, region_id, category_id)
 	var/blocker = petition_blocker(region_id, category_id)
 	if(blocker)
 		if(user)
-			to_chat(user, span_warning("Petition refused: [blocker]."))
+			to_chat(user, span_warning("请愿被拒：[blocker]。"))
 		return FALSE
 	var/list/cat = GLOB.petition_categories[category_id]
 	var/cost = cat["cost"]
 	if(!SStreasury.burn(SStreasury.burgher_pledge_fund, cost, "Steward petition - [cat["label"]] in [region_id]"))
 		if(user)
-			to_chat(user, span_warning("Petition refused: pledge could not be drawn."))
+			to_chat(user, span_warning("请愿被拒：无法从认捐基金中支取。"))
 		return FALSE
 	record_round_statistic(STATS_PLEDGE_CONSUMED, cost)
 	record_round_statistic(STATS_PETITION_PLEDGE_SPENT, cost)
@@ -163,10 +163,10 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 		record_round_statistic(STATS_PETITION_PLEDGE_SPENT, -cost)
 		petitions_today--
 		if(user)
-			to_chat(user, span_warning("Petition rolled empty - the trade hall returns your pledge."))
+			to_chat(user, span_warning("请愿抽空——贸易厅已将认捐退还给你。"))
 		return FALSE
 	record_round_statistic(STATS_STANDING_ORDERS_PETITIONED, 1)
 	log_game("PETITION: [user ? key_name(user) : "system"] petitioned [cat["label"]] in [region.name]: rolled [O.name] (+[O.total_payout]m, -[cost]p)")
 	if(user)
-		to_chat(user, span_notice("Petition accepted: [O.name] posted at the warehouse for [O.total_payout]m."))
+		to_chat(user, span_notice("请愿获准：[O.name] 已以 [O.total_payout]m 张贴于仓库。"))
 	return TRUE
