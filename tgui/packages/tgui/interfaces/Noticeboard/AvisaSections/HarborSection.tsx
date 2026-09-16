@@ -25,17 +25,17 @@ const fieldLabelStyle: React.CSSProperties = {
 };
 
 const formatDuration = (totalSeconds: number) => {
-  if (totalSeconds <= 0) return 'departing';
+  if (totalSeconds <= 0) return '即将离港';
   const minutes = Math.floor(totalSeconds / 60);
-  if (minutes < 1) return 'departing soon';
-  if (minutes === 1) return '1 minute';
-  return `${minutes} minutes`;
+  if (minutes < 1) return '马上离港';
+  if (minutes === 1) return '1 分钟后离港';
+  return `${minutes} 分钟后离港`;
 };
 
 const HarborDemandCard = ({ demand }: { demand: HarborDemand }) => (
   <div style={{ ...cardStyle, marginBottom: 0 }}>
     <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
-      <span style={badgeStyle(SEAL_BLUE)}>SHIP IN PORT</span>
+      <span style={badgeStyle(SEAL_BLUE)}>船只在港</span>
     </div>
     <div
       style={{
@@ -55,12 +55,12 @@ const HarborDemandCard = ({ demand }: { demand: HarborDemand }) => (
         marginTop: 2,
       }}
     >
-      flag of {demand.realm_name} &middot; departs in{' '}
+      {demand.realm_name}的旗帜 &middot;{' '}
       {formatDuration(demand.seconds_until_departure)}
     </div>
     {demand.lines.length > 0 && (
       <div style={{ marginTop: 8 }}>
-        <div style={fieldLabelStyle}>Buying</div>
+        <div style={fieldLabelStyle}>收购</div>
         <div style={{ marginTop: 2 }}>
           {demand.lines.map((line) => (
             <div
@@ -85,7 +85,7 @@ const HarborDemandCard = ({ demand }: { demand: HarborDemand }) => (
                   fontWeight: 'bold',
                 }}
               >
-                {line.offered_price}m ea
+                {line.offered_price}m 每件
               </span>
             </div>
           ))}
@@ -94,7 +94,7 @@ const HarborDemandCard = ({ demand }: { demand: HarborDemand }) => (
     )}
     {demand.cultural_stock.length > 0 && (
       <div style={{ marginTop: 8 }}>
-        <div style={fieldLabelStyle}>Wares Ashore</div>
+        <div style={fieldLabelStyle}>上岸货物</div>
         <div style={{ marginTop: 2 }}>
           {demand.cultural_stock.map((entry) => (
             <div
@@ -122,7 +122,7 @@ const HarborDemandCard = ({ demand }: { demand: HarborDemand }) => (
             fontSize: FONT_BODY,
           }}
         >
-          Inquire with the Merchant for terms.
+          相关条款请向商人询价.
         </div>
       </div>
     )}
@@ -133,8 +133,8 @@ const HarborDemandCard = ({ demand }: { demand: HarborDemand }) => (
         fontSize: FONT_BODY,
       }}
     >
-      Deposit goods at the Fulfillment Crate to settle the vessel&apos;s
-      bulk demands.
+      把货物存入履约货箱,
+      即可结清该船的大宗需求.
     </div>
   </div>
 );
@@ -150,7 +150,7 @@ export const HarborSection = ({ data }: { data: NoticeboardData }) => {
           padding: '24px 0',
         }}
       >
-        No foreign vessels at the pier.
+        码头上没有异国船只.
       </div>
     );
   }
