@@ -48,7 +48,7 @@ const BalanceCard = (props: { balance: number }) => (
       columnGap: '12px',
     }}
   >
-    <span style={labelStyle}>Merchant Fund balance</span>
+    <span style={labelStyle}>商人基金余额</span>
     <span
       style={{
         fontFamily: SERIF,
@@ -117,7 +117,7 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
     return (
       <div style={pageStyle}>
         <div style={{ ...cardStyle, textAlign: 'center', color: INK_SOFT }}>
-          The ledgers are not yet drawn up.
+          账簿尚未拟就.
         </div>
       </div>
     );
@@ -138,7 +138,7 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
         <div
           style={{ ...sectionHeaderStyle, marginTop: 0, marginBottom: '4px' }}
         >
-          Week Audit
+          本周审计
         </div>
         <div
           style={{
@@ -150,25 +150,25 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
           }}
         >
           <StatRow
-            label="Merchant's levy collected"
+            label="已征收的商人征缴"
             value={`+${ledger.levy_collected}m`}
             tone={SEAL_GREEN}
           />
           <StatRow
-            label="Crown duty paid on levy"
+            label="就征缴缴纳的王室关税"
             value={`-${ledger.levy_taxed}m`}
             tone={SEAL_RED}
           />
           <StatRow
-            label="Company Gnomes margin"
+            label="公司侏儒加价"
             value={`+${ledger.gnome_margin_collected}m`}
             tone={SEAL_GREEN}
           />
         </div>
         <div style={{ ...noteStyle, marginTop: '6px' }}>
-          All credits deposit into the Merchant Fund at your Jawbank. The Crown
-          taxes the levy at the prevailing export duty rate; the gnome margin is
-          captured at the listed Silverface rate.
+          所有入账都会存入你在颌口金库的商人基金. 王室按现行
+          出口税率对征缴征税; 侏儒加价则按所列的银面
+          费率抽取.
         </div>
       </div>
 
@@ -183,11 +183,11 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
         <div
           style={{ ...sectionHeaderStyle, marginTop: 0, marginBottom: '4px' }}
         >
-          Recent Fund Movements
+          近期基金变动
         </div>
         {ledger.fund_log.length === 0 ? (
           <div style={{ ...noteStyle, padding: '4px 0' }}>
-            No movements recorded yet this week.
+            本周尚无变动记录.
           </div>
         ) : (
           ledger.fund_log.map((entry, idx) => (
@@ -196,7 +196,7 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
         )}
         {ledger.fund_log.length > 0 && (
           <div style={{ ...noteStyle, marginTop: '6px' }}>
-            Most recent first. Older entries roll off after twelve.
+            最新在前. 超过十二条的旧记录会滚出.
           </div>
         )}
       </div>
@@ -212,16 +212,16 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
         <div
           style={{ ...sectionHeaderStyle, marginTop: 0, marginBottom: '4px' }}
         >
-          Silverface Margin
+          银面加价
         </div>
         {harbor.favor.gnome_unlocked ? (
           <>
             <div style={{ ...noteStyle, marginBottom: '4px' }}>
-              By writ of the Ferentian Guild of Gnomes Porters, the public stalls
-              now run under their hand. They take their cost in labour and remit
-              the margin of <b>+{ledger.silverface_margin_percent}%</b> on every
-              sale unto the Merchant Fund. Adjust the rate from the Management
-              tab as you see fit.
+              凭费伦提亚侏儒挑夫行会的令状, 公共摊位
+              如今由他们经手. 他们以劳力抵偿成本, 并将每笔
+              销售的加价 <b>+{ledger.silverface_margin_percent}%</b> 上缴
+              商人基金. 你可视需要在管理
+              标签页调整该费率.
             </div>
             <div
               style={{
@@ -230,17 +230,17 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
                 fontStyle: 'italic',
               }}
             >
-              A heavier margin fattens the Fund per sale; a lighter one draws
-              more buyers to the stalls.
+              加价越重, 每笔销售为基金带来的收益越多; 加价越轻,
+              则能吸引更多买家光顾摊位.
             </div>
           </>
         ) : (
           <div style={noteStyle}>
-            By standing pact, the Ferentian Guild of Porters and Stevedores hold
-            the margin upon a fixed measure of trade each week. Should you push
-            enough goods through the Company&apos;s books, your standing shall
-            earn the right to call in their Gnomes - who will take their wage in
-            labour alone and remit the margin to your Fund.
+            依长期契约, 费伦提亚挑夫与装卸工行会每周
+            按固定的贸易额提取加价. 若你经公司账簿
+            推动足够的货物流通, 你的声望将
+            为你赢得召来其侏儒的权利 - 他们只以
+            劳力为酬, 并将加价上缴你的基金.
           </div>
         )}
       </div>

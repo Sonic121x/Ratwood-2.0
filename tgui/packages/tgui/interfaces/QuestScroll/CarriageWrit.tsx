@@ -32,34 +32,34 @@ export const CarriageWrit = (props: {
     issuedOn,
     bearer,
   } = props;
-  const dest = destination || 'its appointed recipient';
+  const dest = destination || '其指定受领人';
   const pickup = pickupRegion || realm;
-  const what = deliveryItem ? `a parcel of ${deliveryItem}` : 'a sealed parcel';
+  const what = deliveryItem ? `一包 ${deliveryItem}` : '一封缄封之包裹';
   return (
     <>
       <p style={writParagraph}>
-        <i>Be it known by writ of the {rulerTitle}:</i>
+        <i>兹依 {rulerTitle} 之令状晓谕:</i>
       </p>
       <p style={writParagraph}>
-        {what} awaits carriage from {pickup} to <b>{dest}</b>. The bearer of
-        this writ holds safe passage upon the Duke&apos;s Road for the duration of
-        the carriage.
+        {what} 待自 {pickup} 运送至 <b>{dest}</b>. 持此
+        令状者于运送期间在公爵大道上
+        享有安全通行之权.
       </p>
       {circumstance && <p style={writParagraph}>{circumstance}</p>}
       <p style={writParagraph}>
-        Deliver the parcel and return this writ unto the Contract Ledger; the
-        bounty of{' '}
+        交付包裹后, 将此令状交回契约台账; 所悬之
+        赏金{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}
           levyExempt={levyExempt}
           guildCutRate={guildCutRate}
         />{' '}
-        shall be paid.
+        即可领取.
       </p>
       <p style={writParagraph}>
-        The writ knows the parcel and shall mark itself when the carriage is
-        complete.
+        令状识得此包裹, 待运送完成之时
+        自会留痕.
       </p>
       <SealLine
         rulerTitle={rulerTitle}
