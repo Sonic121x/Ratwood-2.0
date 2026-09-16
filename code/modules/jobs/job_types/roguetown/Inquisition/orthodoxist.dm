@@ -3,6 +3,8 @@
 //Standard stat spread is 8 across the board. Broken up by classes that don't fit this.
 /datum/job/roguetown/orthodoxist
 	title = "Orthodoxist"
+	display_title = "正教徒"
+	f_title = "正教徒"
 	flag = ORTHODOXIST
 	department_flag = INQUISITION
 	faction = "Station"
@@ -10,7 +12,7 @@
 	spawn_positions = 3
 	allowed_races = RACES_ALL_KINDS
 	allowed_patrons = list(/datum/patron/old_god) //Requires your character's patron to be Psydon. This role is explicitly designed to be played by Psydonites, only, and almost everything they have - down to the equipment and statblock - is rooted in Psydonism. Do NOT make this accessable to other faiths, unless you go through the efforts of redesigning it from the ground up.
-	tutorial = "Praise. Atone. Mourn. A hundred different paths across a hundred different lyves, all ending the same; with you swearing fealty to Psydon, and your admittance into the Inquisitor's retinue. Root the abberants out from wherever they dwell, and - whether with a clenched fist or open palm - bring them back to the light."
+	tutorial = "赞美，赎罪，哀悼。百种人生，百条道路，终点却都相同: 你向 普赛顿 宣誓效忠，被纳入审判官的随从之列。把那些畸变者从他们藏身的每个角落里拔除出来，无论是握紧拳头，还是伸出手掌，都要把他们重新带回光中。"
 	selection_color = JCOLOR_INQUISITION
 	outfit = null
 	outfit_female = null
