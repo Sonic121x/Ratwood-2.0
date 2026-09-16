@@ -3,7 +3,7 @@
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine
 	name = "愈合如初"
-	desc = "以魔力缓解伤势，随奥术造诣提升治疗量。可止住一处出血，高深造诣还可温和促进伤口愈合。"
+	desc = "以魔力缓解伤势，随奥术造诣提升治疗量，达到传奇时才能发挥完整疗效。可止住一处出血，高深造诣还可温和促进伤口愈合。"
 	cost = 6
 	xp_gain = TRUE
 	releasedrain = 10
@@ -132,6 +132,9 @@
 		profile["toxin"] = 40
 		profile["oxygen"] = 40
 		profile["wound_heal"] = 10
+	if(arcane_level < SKILL_LEVEL_LEGENDARY)
+		for(var/healing_type in profile)
+			profile[healing_type] *= 0.5
 	return profile
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/proc/apply_direct_healing(mob/living/target, brute_heal, burn_heal, toxin_heal, oxygen_heal)
