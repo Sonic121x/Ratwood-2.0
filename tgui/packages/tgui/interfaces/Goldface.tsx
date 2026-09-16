@@ -32,7 +32,7 @@ export const Goldface = () => {
   const helpButton = (
     <button
       type="button"
-      title="Open the economy guidebook"
+      title="打开经济指南"
       style={inkButtonStyle({})}
       onClick={() => act('help')}
     >
@@ -99,14 +99,14 @@ export const Goldface = () => {
               style={tabStyle(activeTab === 'goods')}
               onClick={() => setTab('goods')}
             >
-              Goods
+              货物
             </div>
             {canSeeHarborTabs && (
               <div
                 style={tabStyle(activeTab === 'cultural')}
                 onClick={() => setTab('cultural')}
               >
-                Cultural Stock
+                文化货物
               </div>
             )}
             {canSeeHarborTabs && (
@@ -114,7 +114,7 @@ export const Goldface = () => {
                 style={tabStyle(activeTab === 'harbor')}
                 onClick={() => setTab('harbor')}
               >
-                Harbor
+                港口
               </div>
             )}
             {canSeeMerchantTabs && (
@@ -122,7 +122,7 @@ export const Goldface = () => {
                 style={tabStyle(activeTab === 'market')}
                 onClick={() => setTab('market')}
               >
-                Market
+                市场
               </div>
             )}
             {canSeeMerchantTabs && (
@@ -130,7 +130,7 @@ export const Goldface = () => {
                 style={tabStyle(activeTab === 'management')}
                 onClick={() => setTab('management')}
               >
-                Management
+                管理
               </div>
             )}
             {canSeeMerchantTabs && (
@@ -138,7 +138,7 @@ export const Goldface = () => {
                 style={tabStyle(activeTab === 'ledger')}
                 onClick={() => setTab('ledger')}
               >
-                Ledger
+                账本
               </div>
             )}
           </div>
