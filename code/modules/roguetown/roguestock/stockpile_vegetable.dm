@@ -5,8 +5,8 @@
 // But I live for the consequences of stewards deciding to neglect their local economy.
 //
 /datum/roguestock/stockpile/grain
-	name = "Grain"
-	desc = "Spelt grain."
+	name = "谷物"
+	desc = "斯佩耳特小麦。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/wheat
 	trade_good_id = TRADE_GOOD_GRAIN
 	importexport_amt = 10
@@ -15,8 +15,8 @@
 	category = "Vegetable" //Not entirely accurate but it looks prettier in UI
 
 /datum/roguestock/stockpile/oat
-	name = "Oats"
-	desc = "A cereal grain."
+	name = "燕麦"
+	desc = "一种谷类作物。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/oat
 	trade_good_id = TRADE_GOOD_OATS
 	importexport_amt = 10
@@ -25,8 +25,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/rice
-	name = "Rice"
-	desc = "A grain used for cooking."
+	name = "稻米"
+	desc = "一种用于烹饪的谷物。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/rice
 	trade_good_id = TRADE_GOOD_RICE
 	importexport_amt = 10
@@ -35,8 +35,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/cabbage
-	name = "Cabbage"
-	desc = "A leafy vegetable."
+	name = "卷心菜"
+	desc = "一种叶菜。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
 	trade_good_id = TRADE_GOOD_CABBAGE
 	importexport_amt = 10
@@ -45,8 +45,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/potato
-	name = "Potato"
-	desc = "An interesting tuber."
+	name = "马铃薯"
+	desc = "一种有趣的块茎。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	trade_good_id = TRADE_GOOD_POTATO
 	importexport_amt = 10
@@ -55,8 +55,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/onion
-	name = "Onion"
-	desc = "A bulb vegetable."
+	name = "洋葱"
+	desc = "一种鳞茎类蔬菜。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
 	trade_good_id = TRADE_GOOD_ONION
 	importexport_amt = 10
@@ -65,8 +65,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/garlick
-	name = "Garlick"
-	desc = "A pungent root vegetable."
+	name = "大蒜"
+	desc = "一种气味辛辣的根茎类蔬菜。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
 	trade_good_id = TRADE_GOOD_GARLICK
 	importexport_amt = 10
@@ -75,8 +75,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/turnip
-	name = "Turnip"
-	desc = "A hardy root vegetable suitable for soups. Favored by the poor"
+	name = "芜菁"
+	desc = "一种耐寒的根茎类蔬菜，适合做汤。穷人常吃。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/vegetable/turnip
 	trade_good_id = TRADE_GOOD_TURNIP
 	importexport_amt = 10
@@ -85,8 +85,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/carrot
-	name = "Carrot"
-	desc = "A long vegetable said to help with eyesight."
+	name = "胡萝卜"
+	desc = "一种细长的蔬菜，据说对视力有益。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/carrot
 	trade_good_id = TRADE_GOOD_CARROT
 	importexport_amt = 10
@@ -95,8 +95,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/cucumber
-	name = "Cucumber"
-	desc = "A refreshing, long and green vegetable."
+	name = "黄瓜"
+	desc = "一种清爽的细长绿色蔬菜。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/cucumber
 	trade_good_id = TRADE_GOOD_CUCUMBER
 	importexport_amt = 10
@@ -105,8 +105,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/eggplant
-	name = "Eggplant"
-	desc = "A large, purple vegetable with a mild taste."
+	name = "茄子"
+	desc = "一种味道清淡的紫色大蔬菜。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/eggplant
 	trade_good_id = TRADE_GOOD_EGGPLANT
 	importexport_amt = 10
@@ -115,8 +115,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/sugar
-	name = "Sugar"
-	desc = "A sweet powder milled from sugarcane"
+	name = "糖"
+	desc = "由甘蔗磨成的甜味粉末。"
 	item_type = /obj/item/reagent_containers/food/snacks/sugar
 	trade_good_id = TRADE_GOOD_SUGAR
 	importexport_amt = 10
@@ -125,8 +125,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/coffee
-	name = "Coffee Beans"
-	desc = "The seed of the coffee plant, used to make a stimulating drink."
+	name = "咖啡豆"
+	desc = "咖啡树的种子，用于制作提神饮品。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/coffeebeans
 	trade_good_id = TRADE_GOOD_COFFEE
 	importexport_amt = 10
@@ -135,8 +135,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/tea
-	name = "Dried Tea Leaves"
-	desc = "Dried tea leaves from the tea plant. Can be grounded and brewed to make tea."
+	name = "干茶叶"
+	desc = "从茶树采下的干茶叶。可以磨碎冲泡成茶。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_dry
 	trade_good_id = TRADE_GOOD_TEA
 	importexport_amt = 10
@@ -145,8 +145,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/poppy
-	name = "Poppy"
-	desc = "A seed with a sedative effect."
+	name = "罂粟"
+	desc = "一种具有镇静效果的种子。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/rogue/poppy
 	trade_good_id = TRADE_GOOD_POPPY
 	importexport_amt = 10
@@ -155,8 +155,8 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/rocknut
-	name = "Rocknut"
-	desc = "A nut with mild stimulant properties."
+	name = "岩果"
+	desc = "一种略带兴奋作用的坚果。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/nut
 	trade_good_id = TRADE_GOOD_ROCKNUT
 	importexport_amt = 10

@@ -46,7 +46,7 @@
 
 
 /particles
-	var/name = "particles"
+	var/name = "粒子"
 
 
 /particles/proc/ModParticles(target, min, max, type = "circle", random = 1)
