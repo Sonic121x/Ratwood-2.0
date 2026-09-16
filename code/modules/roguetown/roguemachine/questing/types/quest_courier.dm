@@ -17,10 +17,10 @@
 /datum/quest/courier/get_title()
 	if(title)
 		return title
-	return "Deliver a parcel"
+	return "投递一个包裹"
 
 /datum/quest/courier/get_objective_text()
-	return "Deliver [initial(target_delivery_item.name)] to [initial(target_delivery_location.name)]."
+	return "将[initial(target_delivery_item.name)]投递至[initial(target_delivery_location.name)]。"
 
 /datum/quest/courier/get_additional_reward(turf/origin_turf, turf/target_turf)
 	var/distance = CLAMP(get_dist(origin_turf, target_turf), 0, 200)
@@ -92,8 +92,8 @@
 	delivery_parcel.contained_items += contained
 	delivery_parcel.delivery_area_type = delivery_area
 	delivery_parcel.allowed_jobs = delivery_parcel.get_area_jobs(delivery_area)
-	delivery_parcel.name = "Delivery for [initial(delivery_area.name)]"
-	delivery_parcel.desc = "A securely wrapped parcel addressed to [initial(delivery_area.name)]. [pick("Handle with care.", "Do not bend.", "Confidential contents.", "Urgent delivery.")]"
+	delivery_parcel.name = "送往[initial(delivery_area.name)]的投递件"
+	delivery_parcel.desc = "一件封装严实的包裹，收件地为[initial(delivery_area.name)]。[pick("小心轻放。", "切勿弯折。", "内含机密。", "急件投递。")]"
 	delivery_parcel.icon_state = contained.w_class >= WEIGHT_CLASS_NORMAL ? "ration_large" : "ration_small"
 	delivery_parcel.dropshrink = 1
 	delivery_parcel.update_icon()

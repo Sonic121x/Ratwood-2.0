@@ -1,8 +1,8 @@
 /datum/quest_faction/hell_goblin
 	id = QUEST_FACTION_HELL_GOBLIN
-	name_singular = "hell goblin"
-	name_plural = "hell goblins"
-	group_word = "warband"
+	name_singular = "地狱哥布林"
+	name_plural = "地狱哥布林"
+	group_word = "战团"
 	faction_tag = FACTION_INFERNAL
 	can_blockade = FALSE
 	category = FACTION_CAT_GOBLINOID
@@ -18,8 +18,8 @@
 		/mob/living/carbon/human/species/goblin/npc/ambush/hell = 40,
 	)
 	boss_title_templates = list(
-		"%N the Watchful",
-		"%N of the Ember",
-		"%N the Cinder-eyed",
+		"%N 守望者",
+		"%N 余烬者",
+		"%N 炭目者",
 	)
 	boss_name_file = "strings/rt/names/other/devilm.txt"

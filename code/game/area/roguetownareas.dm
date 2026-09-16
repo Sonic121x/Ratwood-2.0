@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(chosen_music)
 
 GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors/town, /area/rogue/outdoors/town, /area/rogue/under/town)))
 /area/rogue
-	name = "roguetown"
+	name = "罗格镇"
 	icon_state = "rogue"
 	ambientsounds = null
 	always_unpowered = TRUE
@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 		GLOB.azure_round_stats[STATS_GREED_DUSTED]++
 
 /area/rogue/indoors
-	name = "indoors"
+	name = "室内"
 	icon_state = "indoors"
 	ambientrain = RAIN_IN
 	ambientsounds = AMB_INGEN
@@ -71,25 +71,25 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	converted_type = /area/rogue/outdoors
 
 /area/rogue/indoors/banditcamp
-	name = "Bandit Camp"
+	name = "强盗营地"
 	droning_sound = 'sound/music/area/banditcamp.ogg'
 	droning_sound_dusk = 'sound/music/area/banditcamp.ogg'
 	droning_sound_night = 'sound/music/area/banditcamp.ogg'
 
 /area/rogue/indoors/banditcamp/hoardmaster
-	name = "The Hoard"
+	name = "藏宝窟"
 	icon_state = "rogue"
-	first_time_text = "A MISTAKE"
-	deathsight_message = "a place of greed and excess"
+	first_time_text = "误入歧途"
+	deathsight_message = "一处充满贪欲与放纵之地"
 	hoardmaster_protected = TRUE
 
 /area/rogue/indoors/vampire_manor
-	name = "Vampire Manor"
-	first_time_text = "The House of Blood"
+	name = "吸血鬼庄园"
+	first_time_text = "血之家"
 	droning_sound = 'sound/music/area/manor2.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	deathsight_message = "an ancient dread-manor, home of a great and terrible evil. Red eyes look back at you, warning you not to pry further."
+	deathsight_message = "一座古老阴森的庄园，可怖大恶盘踞其中，猩红双眼正警告你莫再深入。"
 
 /area/rogue/outdoors/woods/vampire_lair
 	ambush_times = null
@@ -98,13 +98,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	droning_sound = 'sound/music/area/gloom.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	deathsight_message = "the foot of an ancient dread-manor, before the home of a great and terrible evil."
+	deathsight_message = "古老阴森庄园的脚下，一处可怖大恶盘踞的宅邸之前。"
 
 
 
 /area/rogue/indoors/ravoxarena
-	name = "Ravox's Arena"
-	deathsight_message = "an arena of justice"
+	name = "拉沃克斯竞技场"
+	deathsight_message = "一座裁决公正的竞技场"
 
 /area/rogue/indoors/ravoxarena/can_craft_here()
 	return FALSE
@@ -115,22 +115,22 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	GLOB.arenafolks.len = list()
 
 /area/rogue/indoors/deathsedge
-	name = "Death's Precipice"
-	deathsight_message = "an place bordering necra's grasp"
+	name = "死之绝壁"
+	deathsight_message = "一处紧邻内克拉之握的地带"
 	necra_area = TRUE
 	droning_sound = 'sound/music/area/underworlddrone.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	first_time_text = "DEATHS PRECIPICE"
+	first_time_text = "死之绝壁"
 
 /area/rogue/indoors/eventarea
-	name = "Event Area"
-	deathsight_message = "a place shielded from mortal eyes"
+	name = "活动区域"
+	deathsight_message = "一处隔绝凡人视线之地"
 
 ///// OUTDOORS AREAS //////
 
 /area/rogue/outdoors
-	name = "Outdoors Roguetown"
+	name = "罗格镇室外"
 	icon_state = "outdoors"
 	outdoors = TRUE
 	ambientrain = RAIN_OUT
@@ -143,30 +143,30 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter
 	soundenv = 16
-	deathsight_message = "somewhere in the wilds"
+	deathsight_message = "荒野中的某处"
 	warden_area = TRUE
 
 /area/rogue/outdoors/banditcamp
-	name = "Bandit Camp"
+	name = "强盗营地"
 	droning_sound = 'sound/music/area/banditcamp.ogg'
 	droning_sound_dusk = 'sound/music/area/banditcamp.ogg'
 	droning_sound_night = 'sound/music/area/banditcamp.ogg'
-	first_time_text = "A Gathering of Thieves"
-	deathsight_message = "somewhere in the wilds"
+	first_time_text = "盗贼聚所"
+	deathsight_message = "荒野中的某处"
 
 /area/rogue/outdoors/banditcamp/exterior // Only use these around traveltiles - Constantine
-	name = "bandit camp outdoors"
+	name = "强盗营地室外"
 
 /area/rogue/outdoors/banditcamp/exterior/can_craft_here() //Made to prevent killboxes - Constantine
 	return FALSE
 
 /area/rogue/indoors/shelter
 	icon_state = "shelter"
-	deathsight_message = "somewhere in the wilds, under a roof"
+	deathsight_message = "荒野中的某处，头顶有屋顶遮蔽"
 	warden_area = TRUE
 
 /area/rogue/outdoors/mountains
-	name = "Mountains"
+	name = "群山"
 	icon_state = "mountains"
 	ambientsounds = AMB_MOUNTAIN
 	ambientnight = AMB_MOUNTAIN
@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	spookynight = SPOOKY_GEN
 	soundenv = 17
 	converted_type = /area/rogue/indoors/shelter/mountains
-	deathsight_message = "a twisted tangle of soaring peaks"
+	deathsight_message = "一片高耸群峰交错盘结的险地"
 	// I SURE HOPE NO ONE USE THIS HUH
 
 /area/rogue/indoors/shelter/mountains
@@ -182,18 +182,18 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	droning_sound = 'sound/music/area/townstreets.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
-	deathsight_message = "a twisted tangle of soaring peaks"
+	deathsight_message = "一片高耸群峰交错盘结的险地"
 
 /area/rogue/outdoors/mountains/deception
-	name = "deception"
+	name = "欺瞒峡谷"
 	icon_state = "deception"
-	first_time_text = "THE CANYON OF DECEPTION"
+	first_time_text = "欺瞒峡谷"
 
 //// UNDER AREAS (no indoor rain sound usually)
 
 // these don't get a rain sound because they're underground
 /area/rogue/under
-	name = "basement"
+	name = "地下室"
 	icon_state = "under"
 	droning_sound = 'sound/music/area/towngen.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
@@ -209,9 +209,9 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 
 /area/rogue/under/cavelava
-	name = "cavelava"
+	name = "熔岩洞窟"
 	icon_state = "cavelava"
-	first_time_text = "MOUNT DECAPITATION"
+	first_time_text = "断首山"
 	ambientsounds = AMB_CAVELAVA
 	ambientnight = AMB_CAVELAVA
 	spookysounds = SPOOKY_CAVE
@@ -234,7 +234,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	droning_sound_night = null
 
 /area/rogue/under/lake
-	name = "underground lake"
+	name = "地下湖"
 	icon_state = "lake"
 	ambientsounds = AMB_BEACH
 	ambientnight = AMB_BEACH
@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	spookynight = SPOOKY_GEN
 
 /area/rogue/under/cave/dungeon1
-	name = "smalldungeon1"
+	name = "小地牢"
 	icon_state = "spider"
 	droning_sound = 'sound/music/area/dungeon.ogg'
 	droning_sound_dusk = null
@@ -250,9 +250,9 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	converted_type = /area/rogue/outdoors/dungeon1
 
 /area/rogue/under/cave/licharena
-	name = "lich's domain"
+	name = "巫妖领域"
 	icon_state = "under"
-	first_time_text = "LICH'S DOMAIN"
+	first_time_text = "巫妖领域"
 	droning_sound = 'sound/music/area/dragonden.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
@@ -261,17 +261,17 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	detail_text = DETAIL_TEXT_LICH_DOMAIN
 
 /area/rogue/under/cave/licharena/bossroom
-	name = "the lich's lair"
-	first_time_text = "THE LICH"
+	name = "巫妖巢穴"
+	first_time_text = "巫妖"
 
 /area/rogue/under/cave/licharena/bossroom/can_craft_here()
 	return FALSE
 
 
 /area/rogue/under/cave/inferno
-	name = "inferno"
+	name = "炼狱"
 	icon_state = "fire_chamber"
-	first_time_text = "Somewhere Else..."
+	first_time_text = "彼界某处……"
 	droning_sound = 'sound/music/area/inferno.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
@@ -279,7 +279,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	ceiling_protected = TRUE
 
 /area/rogue/outdoors/dungeon1
-	name = "smalldungeonoutdoors"
+	name = "小地牢外部"
 	icon_state = "spidercave"
 	droning_sound = 'sound/music/area/dungeon.ogg'
 	droning_sound_dusk = null
@@ -315,33 +315,33 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 
 
 /area/rogue/indoors/lich_start //Quieter so our droning noise doesn't cut out the on-spawn stinger, not yet. I want this experience to be thematic
-	name = "Lich Lair"
+	name = "巫妖巢穴"
 	droning_sound = 'sound/ambience/creepywind.ogg' //Ominiously quiet starting room, let them build up a bit.
 	droning_sound_dusk = null
 	droning_sound_night = null
 
 /area/rogue/indoors/lich_start/lich_lair //Sovlnuke with a unique track we didn't use previous I think?
-	first_time_text = "FORGOTTEN KEEP"
+	first_time_text = "被遗忘的堡垒"
 	droning_sound = 'sound/music/area/underworlddrone.ogg'
 
 // underworld
 /area/rogue/underworld
-	name = "underworld"
+	name = "冥界"
 	icon_state = "underworld"
 	droning_sound = 'sound/music/area/underworlddrone.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	first_time_text = "The Forest of Repentence"
+	first_time_text = "忏悔之林"
 
 /area/rogue/underworld/dream
-	name = "dream realm"
+	name = "梦境领域"
 	icon_state = "dream"
-	first_time_text = "Abyssal Dream"
+	first_time_text = "深渊之梦"
 
 /area/rogue/underworld/adventurespawn
-	name = "wayfarer's dream"
+	name = "旅者之梦"
 	icon_state = "dream"
-	first_time_text = "A Wayfarer's Dream"
+	first_time_text = "旅者之梦"
 
 /area/rogue/underworld/adventurespawn/start
 	first_time_text = "null"

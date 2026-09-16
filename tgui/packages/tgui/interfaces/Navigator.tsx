@@ -57,12 +57,12 @@ export const Navigator = () => {
   const isSmuggler = !!data.is_smuggler;
 
   return (
-    <Window title="Navigator" width={720} height={760} theme="parchment">
+    <Window title="引航机" width={720} height={760} theme="parchment">
       <Window.Content scrollable>
         <div style={{ ...pageStyle, position: 'relative' }}>
           <button
             type="button"
-            title="Open the economy guidebook"
+            title="打开经济指南"
             style={{
               ...inkButtonStyle({}),
               position: 'absolute',
@@ -75,7 +75,7 @@ export const Navigator = () => {
           </button>
           <button
             type="button"
-            title="Refresh market data (5s cooldown)"
+            title="刷新市场数据 (5s 冷却)"
             style={{
               ...inkButtonStyle({}),
               position: 'absolute',
@@ -88,9 +88,9 @@ export const Navigator = () => {
           </button>
           <div style={titleStyle}>{motto}</div>
           <div style={subtitleStyle}>
-            Next balloon in {formatCountdown(data.next_airlift_seconds)}
+            下一班气球还有 {formatCountdown(data.next_airlift_seconds)}
             {data.handler_fee_percent > 0 && (
-              <> - handler&apos;s fee {data.handler_fee_percent}%</>
+              <> - 经手费 {data.handler_fee_percent}%</>
             )}
           </div>
           <hr style={rulerStyle} />
@@ -98,7 +98,7 @@ export const Navigator = () => {
           {isSmuggler ? (
             <div style={cardStyle}>
               <div style={fieldRowStyle}>
-                <div style={fieldLabelStyle}>Facilitator</div>
+                <div style={fieldLabelStyle}>中介人</div>
                 <div
                   style={{
                     ...fieldValueStyle,
@@ -107,12 +107,12 @@ export const Navigator = () => {
                   }}
                 >
                   {data.facilitator_present
-                    ? 'Present - handler waiving fee'
-                    : 'Absent - handler skimming 50%'}
+                    ? '在岗 - 经手人免收费用'
+                    : '离岗 - 经手人抽成 50%'}
                 </div>
               </div>
               <div style={fieldRowStyle}>
-                <div style={fieldLabelStyle}>Crown duty</div>
+                <div style={fieldLabelStyle}>王室关税</div>
                 <div
                   style={{
                     ...fieldValueStyle,
@@ -120,14 +120,14 @@ export const Navigator = () => {
                     fontStyle: 'italic',
                   }}
                 >
-                  None - the balloon flies dark.
+                  无 - 气球暗中飞行.
                 </div>
               </div>
             </div>
           ) : (
             <div style={cardStyle}>
               <div style={fieldRowStyle}>
-                <div style={fieldLabelStyle}>Crown export duty</div>
+                <div style={fieldLabelStyle}>王室出口关税</div>
                 <div style={fieldValueStyle}>
                   <span style={{ fontWeight: 'bold' }}>{dutyRatePct}%</span>
                   {isProprietor && (
@@ -138,7 +138,7 @@ export const Navigator = () => {
                         fontWeight: 'bold',
                       }}
                     >
-                      {data.pay_taxes ? '(PAYING)' : '(DODGING)'}
+                      {data.pay_taxes ? '(缴纳中)' : '(逃税中)'}
                     </span>
                   )}
                   {isProprietor && (
@@ -147,13 +147,13 @@ export const Navigator = () => {
                       style={{ ...inkButtonStyle(), marginLeft: 12 }}
                       onClick={() => act('toggle_duty')}
                     >
-                      {data.pay_taxes ? 'Stop paying' : 'Resume paying'}
+                      {data.pay_taxes ? '停止缴纳' : '恢复缴纳'}
                     </button>
                   )}
                 </div>
               </div>
               <div style={fieldRowStyle}>
-                <div style={fieldLabelStyle}>Merchant&apos;s levy</div>
+                <div style={fieldLabelStyle}>商人征缴</div>
                 <div style={fieldValueStyle}>
                   <span style={{ fontWeight: 'bold' }}>{data.levy_rate}%</span>
                   {isProprietor && (
@@ -166,7 +166,7 @@ export const Navigator = () => {
                         fontWeight: 'bold',
                       }}
                     >
-                      {data.pay_merchant_share ? '(COLLECTING)' : '(WAIVED)'}
+                      {data.pay_merchant_share ? '(征收中)' : '(已豁免)'}
                     </span>
                   )}
                   {isProprietor && (
@@ -175,25 +175,25 @@ export const Navigator = () => {
                       style={{ ...inkButtonStyle(), marginLeft: 12 }}
                       onClick={() => act('toggle_levy')}
                     >
-                      {data.pay_merchant_share ? 'Waive levy' : 'Resume levy'}
+                      {data.pay_merchant_share ? '豁免征缴' : '恢复征缴'}
                     </button>
                   )}
                 </div>
               </div>
               {isProprietor && (
                 <div style={fieldRowStyle}>
-                  <div style={fieldLabelStyle}>Tally</div>
+                  <div style={fieldLabelStyle}>统计</div>
                   <div style={fieldValueStyle}>
                     <span style={{ color: SEAL_GREEN }}>
-                      Crown paid: {data.duty_collected_here}m
+                      王室已缴: {data.duty_collected_here}m
                     </span>
                     <span style={{ color: INK_SOFT }}> &middot; </span>
                     <span style={{ color: SEAL_RED }}>
-                      Crown evaded: {data.duty_evaded_here}m
+                      王室逃漏: {data.duty_evaded_here}m
                     </span>
                     <span style={{ color: INK_SOFT }}> &middot; </span>
                     <span style={{ color: INK }}>
-                      Levy paid: {data.levy_collected_here}m
+                      征缴已收: {data.levy_collected_here}m
                     </span>
                   </div>
                 </div>
@@ -214,20 +214,20 @@ export const Navigator = () => {
                 lineHeight: 1.4,
               }}
             >
-              <b style={{ color: SEAL_AMBER }}>Saturated valuables?</b> If the
-              Valuables warehouse is choked and no ship hungers for them,
-              consider the Stewardry&apos;s stockpile for minting, the
-              bathhouse, or a shadier facilitator willing to take such things
-              off your hands.
+              <b style={{ color: SEAL_AMBER }}>贵重品饱和了?</b> 若
+              贵重品仓库已淤塞且无船求购,
+              不妨考虑总管府的储备库用于铸币,
+              浴场, 或某个更阴暗的中介人愿意接手
+              这类东西.
             </div>
           )}
 
           <MarketView
             market={data.market_data}
             headerLabel={
-              isSmuggler ? 'State of the Shadow Market' : 'State of the Markets'
+              isSmuggler ? '黑市行情' : '市场行情'
             }
-            headerNote={isSmuggler ? 'Shadow pool - off the books' : undefined}
+            headerNote={isSmuggler ? '黑市资金池 - 不入账' : undefined}
           />
         </div>
       </Window.Content>
