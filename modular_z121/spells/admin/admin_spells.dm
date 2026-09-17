@@ -2,7 +2,7 @@
 	name = "AdminKill"
 	desc = "Immediately kill the selected target."
 	school = "necromancy"
-	cost = 0
+	cost = 1
 	releasedrain = 0
 	chargedrain = 0
 	chargetime = 0
@@ -35,7 +35,7 @@
 	name = "AdminHeal"
 	desc = "Immediately restore the selected target to full health."
 	school = "restoration"
-	cost = 0
+	cost = 1
 	releasedrain = 0
 	chargedrain = 0
 	chargetime = 0
@@ -70,7 +70,7 @@
 /obj/effect/proc_holder/spell/invoked/blink/adminblink
 	name = "AdminBlink"
 	desc = "Teleport to a selected location within 20 tiles."
-	cost = 0
+	cost = 1
 	releasedrain = 0
 	chargedrain = 0
 	chargetime = 0
@@ -89,7 +89,7 @@
 	name = "Copy"
 	desc = "Create a duplicate of a selected item."
 	school = "illusion"
-	cost = 0
+	cost = 1
 	releasedrain = 0
 	chargedrain = 0
 	chargetime = 0
