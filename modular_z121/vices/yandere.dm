@@ -5,7 +5,7 @@
 // 需求（为什么要做这个文件）：
 //   实现一个全新的"病娇（Yandere）"恶习，进入游戏后：
 //     1) 随机指定场上的某位【玩家】作为"暗恋对象（crush）"。
-//     2) 自动习得【寻人术】（Person Searching Technique），方便追踪暗恋对象。
+//     2) 自动习得【病娇寻人术】，无需同意即可追踪唯一的暗恋对象。
 //     3) 把暗恋对象自动加入"熟人名单（known_people / 相识之人）"。
 //     4) 当能【看见】暗恋对象时——心情达到顶峰（强力正面情绪）。
 //     5) 当【看不见】暗恋对象时——心情持续变差（负面情绪逐级累加）。
@@ -28,7 +28,7 @@
 //   - /datum/charflaw                       恶习基类，提供 on_mob_creation/flaw_on_life/on_removal 钩子。
 //   - flaw_on_life()                         每个生命 tick 由 human/life.dm 对每个已装备非 ephemeral 恶习调用。
 //   - /datum/mind/AddSpell() / RemoveSpell() 动态授予 / 收回法术（code/datums/mind.dm）。
-//   - /obj/effect/proc_holder/spell/self/locate_person  本项目自定义的【寻人术】
+//   - /obj/effect/proc_holder/spell/self/yandere_locate_person  本项目自定义的【病娇寻人术】
 //                                            （modular_z121/spells/arcane/locate_person.dm）。
 //   - /datum/mind/i_know_person()            把某人加入"我"的 known_people 熟人名单（code/datums/mind.dm）。
 //   - /datum/stressevent + add_stress/remove_stress/has_stress_event  心情/情绪系统（code/datums/stress 与
@@ -76,7 +76,7 @@
 	// 为什么这样写描述：向玩家说明核心机制——开局随机暗恋一名玩家、自动获得寻人术、
 	//   见到对方时心花怒放、见不到时心情每况愈下，久久不见还会失控地呼喊其名。
 	desc = "我的心里只装得下一个人。进入这个世界后，我会不由自主地深深爱上某个人。\
-			我天生懂得【寻人术】，能循着 ta 的气息找到 ta，并把 ta 牢牢记在心里。\
+			我天生懂得【病娇寻人术】，无需同意便能追踪唯一的爱慕对象，即使 ta 离线或死亡也一样。\
 			只要能看见心爱之人，我便心花怒放；一旦见不到 ta，我就坐立难安、心情每况愈下；\
 			若太久见不到 ta，我会失了分寸，一遍又一遍地呼喊 ta 的名字……"
 
@@ -85,6 +85,8 @@
 	//   安全失效、不阻止 GC，是持有"另一个 mob"的标准安全做法；而名字（real_name）作为
 	//   兜底——即便弱引用因故失效、但同名肉体仍在场上，也能像寻人术那样按名字找回，
 	//   提升健壮性。两者配合，既不内存泄漏，又尽量不"丢失"暗恋对象。
+	// 寻人术固定使用最初指定的身体引用，不受心情逻辑按同名找回对象的影响。
+	var/datum/weakref/locate_crush_ref
 	var/datum/weakref/crush_ref = null                                         // 暗恋对象的弱引用。
 	var/crush_name = null                                                      // 暗恋对象的真名（兜底查找用，也用于嘶喊与提示文案）。
 
@@ -96,9 +98,8 @@
 	//   重试；用时间戳节流重试频率，避免每 tick 都做一次全表扫描。
 	var/next_designate_attempt = 0                                             // 下一次允许尝试"指定暗恋对象"的世界时间。
 
-	// 为什么记录是否由本恶习授予了寻人术：玩家也可能本来就会寻人术。只有"确实是我们授予的"
-	//   才在恶习移除时收回，避免误删玩家自己习得的法术（健壮性 / 不破坏玩家既有状态）。
-	var/granted_spell = FALSE                                                  // 寻人术是否由本恶习授予。
+	// 仅记录本怪癖实际授予的专属法术实例，移除时不影响普通寻人术。
+	var/datum/weakref/granted_spell
 
 	// —— 周期性逻辑的节流与计时 ——
 	var/last_check = 0                                                         // 上次执行核心检测的时间（节流用）。
@@ -221,17 +222,16 @@
 
 	// 记录暗恋对象（弱引用 + 真名，原因见字段定义处注释）。
 	crush_ref = WEAKREF(crush)
+	locate_crush_ref = WEAKREF(crush)
 	crush_name = crush.real_name
 	designated = TRUE                                                          // 标记"已指定"，今后不再重新挑人（病娇专一）。
 	last_seen_time = world.time                                               // 以指定时刻作为"最近看见"的起点，避免立刻触发嘶喊。
 
-	// 需求 2：自动习得【寻人术】。
+	// 需求 2：自动习得【病娇寻人术】。
 	grant_locate_spell(H)
 
 	// 需求 3：把暗恋对象自动加入"我"的熟人名单（known_people）。
-	// 为什么用 i_know_person：这是引擎里"把某人记进我的相识名单"的标准接口；加入后，
-	//   寻人术（只允许追踪 known_people 里的人）就能顺理成章地锁定这位暗恋对象，
-	//   两个需求点（熟人 + 寻人术）由此自洽地联动起来。
+	// 保留相识记录；专属寻人术直接使用爱慕对象引用，不依赖熟人名单。
 	if(H.mind)
 		H.mind.i_know_person(crush)
 
@@ -268,20 +268,15 @@
 
 
 // ----------------------------------------------------------------------------
-// 授予【寻人术】
-// 为什么先查 has_spell：玩家也许本就会寻人术（自己学的）。仅在其尚未拥有时才授予，
-//   并用 granted_spell 标记"这是我们给的"，以便恶习移除时只收回我们自己授予的那一份，
-//   绝不误删玩家自学的法术（健壮性 / 不破坏既有状态）。
+// 授予独立的病娇寻人术，普通寻人术不参与重复检查。
 // ----------------------------------------------------------------------------
 /datum/charflaw/yandere/proc/grant_locate_spell(mob/living/carbon/human/H)
-	if(!H.mind)                                                                // 没有 mind 无法挂载法术 -> 放弃（理论上调用前已校验，这里再兜一层）。
+	if(!H.mind || H.mind.has_spell(/obj/effect/proc_holder/spell/self/yandere_locate_person))
 		return
-	if(H.mind.has_spell(/obj/effect/proc_holder/spell/self/locate_person))     // 已经会寻人术（玩家自学或重复授予）……
-		return                                                                 // …… 不重复授予，也不标记为"我们给的"。
-	// 新建一份寻人术实例并授予。AddSpell 会把它加入 spell_list 并在角色 HUD 上挂出技能按钮。
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/locate_person(null))
-	granted_spell = TRUE                                                       // 标记：这份寻人术是本恶习授予的，移除恶习时应当收回。
-	to_chat(H, span_green("一种本能在我心底苏醒——我学会了【寻人术】，能循着爱人的气息找到 ta。"))
+	var/obj/effect/proc_holder/spell/self/yandere_locate_person/spell = new(null)
+	H.mind.AddSpell(spell)
+	granted_spell = WEAKREF(spell)
+	to_chat(H, span_green("一种本能在我心底苏醒——我学会了【病娇寻人术】，无需同意便能循着唯一爱慕之人的气息找到 ta。"))
 
 
 // ----------------------------------------------------------------------------
@@ -450,14 +445,12 @@
 	H.remove_stress(/datum/stressevent/yandere_bliss)
 	H.remove_stress(/datum/stressevent/yandere_longing)
 
-	// 收回寻人术——但仅限"确实由本恶习授予"的那一份（granted_spell 为真），
-	//   避免误删玩家自学的同名法术。
-	if(granted_spell && H.mind)
-		// RemoveSpell 按"名字 + 类型"匹配并删除一份实例；这里遍历找出寻人术实例后移除。
-		for(var/obj/effect/proc_holder/spell/self/locate_person/S in H.mind.spell_list)
-			H.mind.RemoveSpell(S)
-			break                                                              // 只收回一份（我们也只授予了一份）。
-		granted_spell = FALSE                                                  // 复位标记，防止重复收回。
+	// 只删除本怪癖授予的实例；法术的销毁逻辑同时关闭请求并清理私人箭头。
+	var/obj/effect/proc_holder/spell/self/yandere_locate_person/spell = granted_spell?.resolve()
+	if(spell)
+		qdel(spell)
+	granted_spell = null
+	locate_crush_ref = null
 
 	// 清理"嫉妒杀意"相关的一切：撤销杀意/愉悦心情，并解绑所有情敌的死亡信号，
 	//   避免悬空回调（dangling signal）与心情残留。
@@ -654,8 +647,7 @@
 	// 在情敌身上注册"死亡"信号；其死亡时回调 on_rival_death，让病娇愉悦。
 	RegisterSignal(rival, COMSIG_LIVING_DEATH, PROC_REF(on_rival_death))
 
-	// 让病娇"认识"这个情敌（加入熟人名单）——既贴合"盯上对方"的设定，
-	//   也让她能用已习得的【寻人术】定位、追踪这个目标，使"杀意"具备可执行的落地手段。
+	// 保留对情敌的相识记录；病娇寻人术仍只能追踪爱慕对象。
 	if(me.mind)
 		me.mind.i_know_person(rival)
 
