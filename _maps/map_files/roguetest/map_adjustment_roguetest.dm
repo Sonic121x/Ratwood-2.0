@@ -6,16 +6,16 @@
 
 /datum/map_adjustment/template/roguetest
 	map_file_name = "roguetest.dmm"
-	realm_name = "Roguetest"
+	realm_name = "罗格测试"
 	slot_adjust = list(
 		/datum/job/roguetown/villager = 42,
 		/datum/job/roguetown/adventurer = 69
 	)
 	title_adjust = list(
-		/datum/job/roguetown/lord = list(display_title = "Lord Castellan", f_title = "Lady Castellan")
+		/datum/job/roguetown/lord = list(display_title = "城守大人", f_title = "女城主")
 	)
 	tutorial_adjust = list(
-		/datum/job/roguetown/lord = "The Gronnmen are coming."
+		/datum/job/roguetown/lord = "格隆人来了。"
 	)
 	blacklist = list(
 		/datum/job/roguetown/slaver,
