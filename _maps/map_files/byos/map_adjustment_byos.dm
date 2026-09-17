@@ -6,14 +6,14 @@
 
 /datum/map_adjustment/template/byos
 	map_file_name = "byos.dmm"
-	realm_name = "New Kingsfield"
+	realm_name = "新王田"
 	slot_adjust = list(
 		// /datum/job/roguetown/villager = 42,
 		// /datum/job/roguetown/adventurer = 69
 	)
 	title_adjust = list(
 		// Noble Court
-		/datum/job/roguetown/lord = list(display_title = "Grand Viceroy", f_title = "Grand Vicereine"),
+		/datum/job/roguetown/lord = list(display_title = "大总督", f_title = "大总督"),
 		// /datum/job/roguetown/hand = list(display_title = "Adjutant", f_title = "Adjutant"),
 		// /datum/job/roguetown/steward = list(display_title = "Seneschal", f_title = "Seneschal"),
 		// /datum/job/roguetown/butler = list(display_title = "Majordomo", f_title = "Majordomo"),
@@ -42,19 +42,19 @@
 		// /datum/job/roguetown/archivist = list(display_title = "Scribe", f_title = "Scribe"),
 
 		// Common Folk
-		/datum/job/roguetown/villager = list(display_title = "Colonist", f_title = "Colonist"),
+		/datum/job/roguetown/villager = list(display_title = "殖民者", f_title = "殖民者"),
 		// /datum/job/roguetown/farmer = list(display_title = "Settler", f_title = "Settler"),
 		// /datum/job/roguetown/servant = list(display_title = "Servant", f_title = "Servant"),
 		// /datum/job/roguetown/lunatic = list(display_title = "Madman", f_title = "Madwoman"),
 
 		// Outcasts & Misc
-		/datum/job/roguetown/bandit = list(display_title = "Pirate", f_title = "Pirate"),
-		/datum/job/roguetown/orphan = list(display_title = "Stowaway", f_title = "Stowaway"),
-		/datum/job/roguetown/beggar = list(display_title = "Stowaway", f_title = "Stowaway"),
+		/datum/job/roguetown/bandit = list(display_title = "海盗", f_title = "海盗"),
+		/datum/job/roguetown/orphan = list(display_title = "偷渡客", f_title = "偷渡客"),
+		/datum/job/roguetown/beggar = list(display_title = "偷渡客", f_title = "偷渡客"),
 	)
 	tutorial_adjust = list(
-		/datum/job/roguetown/lord = "You have been sent by the queen to oversee the colony of New Kingsfield. CHANGE THIS LATER.",
-		/datum/job/roguetown/bandit = "At some point in your lyfe, you'd fallen to the wrong side of the PIRATESHIP!. Whether by butchery or finesse, you're known throughout the SEVEN SEAS. Yet one of many faces in a SALTY PORT tavern, hung up on a wall. A tale told by the locals. Now, you lyve in a PIRATES COVE with your fellows, to avoid an unpleasant end."
+		/datum/job/roguetown/lord = "你受女王派遣，前来监管新王田的殖民地。稍后修改。",
+		/datum/job/roguetown/bandit = "在你人生的某个时刻，你站到了海盗船的对立面！。无论是靠屠戮还是靠手腕，你都已在七海之中声名远扬。然而在咸腥港口的酒馆里，你不过是挂在墙上的众多面孔之一，是当地人讲述的一个故事。如今，你与同伴们生活在一处海盗湾中，只为躲避一个不愉快的结局。"
 		// /datum/job/roguetown/orphan = "CHANGE THIS LATER!",
 
 	)
