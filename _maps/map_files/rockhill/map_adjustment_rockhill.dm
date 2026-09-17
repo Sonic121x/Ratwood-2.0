@@ -6,7 +6,7 @@
 
 /datum/map_adjustment/template/rockhill
 	map_file_name = "rockhill.dmm"
-	realm_name = "Rockhill"
+	realm_name = "岩丘"
 	blacklist = list(//I had wanted the map variable in the roles themselves to bar them from non-desert maps but it still shows up in the Latejoin menu so I'm doing this just to keep it clear)
 		/datum/job/roguetown/cataphract,
 		// /datum/job/roguetown/vizier,
@@ -32,31 +32,31 @@
 		/datum/job/roguetown/adventurer/courtslave = 2,
 	)
 	title_adjust = list(
-		/datum/job/roguetown/lord = list(display_title = "Duke", f_title = "Duchess"),
-		/datum/job/roguetown/physician = list(display_title = "Court Physician"),
-		/datum/job/roguetown/niteman = list(display_title = "Nightmaster", f_title = "Nightmistress"),
-		/datum/job/roguetown/nightmaiden = list(display_title = "Nightswain", f_title = "Nightmaiden"),
+		/datum/job/roguetown/lord = list(display_title = "公爵", f_title = "公爵夫人"),
+		/datum/job/roguetown/physician = list(display_title = "宫廷医师"),
+		/datum/job/roguetown/niteman = list(display_title = "夜主", f_title = "夜主"),
+		/datum/job/roguetown/nightmaiden = list(display_title = "夜侍", f_title = "夜侍女"),
 		// /datum/job/roguetown/marshal = list(display_title = "Mayor"),
 	)
 	tutorial_adjust = list(
-		/datum/job/roguetown/captain = "Your lineage is noble, and generations of strong, loyal knights and men-at-arms have come before you. You served your time \
-				gracefully as knight of his royal majesty, and now you've grown into a role which many men can only dream of becoming. \
-				Veteran among knights, you lead the crown's knights and loyal men at arms into battle and organize the training squires. Obey only the Marshal and Crown. \
-				Lead your men to victory--and keep them in line--and you will see this realm prosper under a thousand suns.",
-		/datum/job/roguetown/physician = "You are a master physician, trusted by the Duke themself to administer expert care to the Royal family, the court, \
-			its protectors and its subjects. While primarily a resident of the keep in the manors medical wing, you also have access \
-			to the local hightown clinic, where lesser licensed apothecaries ply their trade under your occasional passing tutelage.",
+		/datum/job/roguetown/captain = "你出身贵族，在你之前已有数代强壮而忠诚的骑士与战士。 \
+				你曾以陛下骑士的身份恪尽职守，如今你已成长为许多人只能梦想企及的职位。 \
+				作为骑士中的老兵，你率领王权的骑士与忠诚的战士奔赴战场，并组织训练侍从。只服从执法官与王权。 \
+				带领你的人走向胜利——并让他们守规矩——你将看到这片国度在千轮烈日下繁荣昌盛。",
+		/datum/job/roguetown/physician = "你是一位医术大师，受公爵本人信任，为王室、宫廷、其护卫及其子民提供专业照护。 \
+			虽然你主要居住在城堡中庄园的医疗翼，你也能使用本地高镇的诊所， \
+			那里持有次级执照的药剂师在你的偶尔路过指点下行医。",
 		// /datum/job/roguetown/archivist = "CHANGE THIS!! - Teach people skills, whether DIRECTLY or by writing SKILLBOOKS. You and the Veteran next door teach people shit."
-		/datum/job/roguetown/warden = "Having proven yourself through years of scouting, skirmishing and survival in the vanguard, you have been initiated into the Wardens - an elite fraternity of ranger types who keep a vigil over the untamed wilderness. Trusted to venture deep into the uncivilised darkness south of lowtown, you act as a scout, soldier, sentinel and guide, performing long-range reconnaissance, culling dangerous wildlife, and protecting lowtown alongside the vanguard. You are subordinate to the Master Warden, whom in turn serves the baron and may be called upon as members of the garrison by the Marshal and Crown. Serve the baron's will as the first line of defence from threats beyond the borders of civilisation, keep the roads safe, and hold the vanguard fortress. The Crown is counting on you.",
-		/datum/job/roguetown/manorguard = "Having proven yourself loyal and capable, you are entrusted to defend the keep and enforce its will throughout the city and duchy. \
-				Trained regularly in combat and siege warfare, you deal with threats - both within and without. \
-				Obey your Marshal, Knight-captain and the Crown. Show the nobles and knights your respect, so that you may earn it in turn. Not as a commoner, but as a soldier..",
-		/datum/job/roguetown/marshal = "You are an agent of the crown in matters of law and military, making sure that laws are pushed, verified and carried out by the retinue upon the citizenry of the realm. \
-				As the ultimate authority on all things military, much of your work happens behind a desk, deferring duties between the Knight Captain, Watch Captain and Master Warden and acting as the primary \
-				go-between to ensure the will of the duke, through you, is carried out in the field.",
-		/datum/job/roguetown/rookie = "Odd-jobs, running messages, fixing dents and talking to locals; the City Watch can always use a spare pair of hands, eyes and ears. Assist your fellow city watchmen in dealing with threats - both within and without. \
-				Given a brief introduction in weapons and guardwork, the rest of your training is to be picked up on the job. \
-				Obey your superiors (everyone who isn't you) and show the nobles your respect. Keep an eye out, try to learn a thing or two, then one day you might live to make an adequate soldier."
+		/datum/job/roguetown/warden = "你在先锋中历经数年的侦察、遭遇战与求生考验，证明了自己，因而被接纳为守林人——一个监视未驯荒野的精英游侠团体。你被信任深入低镇以南的蛮荒黑暗，担任斥候、士兵、哨卫与向导，执行远程侦察、清除危险野兽，并与先锋一同保护低镇。你从属于守林总长，而总长则效命于男爵，并可能应执法官与王权之召作为驻军的一员出战。以男爵的意志为令，作为抵御文明边界之外威胁的第一道防线，保障道路安全，守住先锋堡垒。王权正指望你。",
+		/datum/job/roguetown/manorguard = "你已证明了自己的忠诚与能力，因而被托付守卫城堡，并在全城与公国中执行其意志。 \
+				你定期接受战斗与攻城战的训练，应对来自内外的威胁。 \
+				服从你的执法官、骑士队长与王权。向贵族与骑士表示敬意，这样你才能反过来赢得他们的敬意。不是以一个平民的身份，而是以一名士兵的身份..",
+		/datum/job/roguetown/marshal = "你是王权在法律与军事事务上的代理人，确保法律由扈从推行、核验并施加于国度的公民身上。 \
+				作为一切军事事务的最高权威，你的大部分工作都在案牍之后进行，在骑士队长、守望队长与守林总长之间分派职责， \
+				并作为主要的中间人，确保公爵的意志经由你而在战场上得以执行。",
+		/datum/job/roguetown/rookie = "打杂、递送消息、修补凹痕、与当地人交谈；城卫总是需要一双闲手、一双闲眼和一对闲耳。协助你的城卫同伴应对来自内外的威胁。 \
+				你只接受过武器与守卫工作的简要入门，其余训练都要在工作中自行摸索。 \
+				服从你的上级（除了你以外的所有人），向贵族表示敬意。多加留意，试着学上一两手，或许有朝一日你能活到成为一名合格的士兵。"
 	
 	)
 	// species_adjust = list()
