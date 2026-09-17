@@ -85,7 +85,7 @@
 #define TRAIT_MONOTHEIST "一神信徒"
 #define TRAIT_GUARDSMAN "警觉卫兵"
 #define TRAIT_TAVERN_FIGHTER "酒馆斗士"
-#define TRAIT_BATHHOUSE_DANCER "澡堂舞者"
+#define TRAIT_BATHHOUSE_DANCER "浴场舞者"
 #define TRAIT_FROZEN_STAMINA "冻结体力"
 #define TRAIT_WOODSMAN "老练林人"
 #define TRAIT_LAMIAN_TAIL "拉弥亚尾"
