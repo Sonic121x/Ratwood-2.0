@@ -398,6 +398,14 @@
 // 其它任何远程观看（摄像头、附身等）一律 return ..() 走原版逻辑，绝不影响链接之外的行为。
 // ===========================================================================
 /mob/living/update_remote_sight(mob/living/user)
+	// 群体链接先检查独立的单向授权，不能借用原法术的双向成员资格。
+	if(user.group_mindlink_borrowed_eye() == src)
+		user.sight = sight
+		user.see_in_dark = see_in_dark
+		user.see_invisible = see_invisible
+		user.lighting_alpha = lighting_alpha
+		user.sync_lighting_plane_alpha()
+		return TRUE
 	// 取出 src（被观看方）当前所属的视觉链接；没有链接就完全交还给原版逻辑。
 	var/datum/sensory_share_link/link = sensory_share_link_custom
 	if(!link || !link.active)
@@ -435,6 +443,9 @@
 
 // 小工具：判断 src 此刻是否正“借用某位视觉链接对方的眼睛”，是则返回那位对方，否则返回 null。
 /mob/living/proc/sensory_borrowed_eye_partner()
+	var/mob/living/group_partner = group_mindlink_borrowed_eye()
+	if(group_partner)
+		return group_partner
 	var/datum/sensory_share_link/link = sensory_share_link_custom
 	if(!link || !link.active || !client || !client.eye || client.eye == src)
 		return null
@@ -447,6 +458,9 @@
 // update_cone_show 覆写：借眼时强制“显示锥体”（这样才能呈现对方的方向性视野），
 // 而不是走原版“client.eye≠自己 -> 隐藏锥体”的分支（那会变成无锥的环视视角）。
 /mob/living/carbon/update_cone_show()
+	var/mob/living/group_partner = group_mindlink_borrowed_eye()
+	if(group_partner)
+		return group_partner.cone_showing ? show_cone() : hide_cone()
 	if(sensory_borrowed_eye_partner())
 		return show_cone()
 	return ..()
@@ -491,6 +505,14 @@
 // 作用域：只在“正借眼”时才接管，绝不影响链接之外的任何失明判定。
 // ===========================================================================
 /mob/living/update_blindness()
+	// 群体链接同步目标的失明状态，不能因借眼而看穿目标自身的失明。
+	var/mob/living/group_partner = group_mindlink_borrowed_eye()
+	if(group_partner)
+		if(group_partner.eye_blind || HAS_TRAIT(group_partner, TRAIT_BLIND))
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+		else
+			clear_fullscreen("blind")
+		return
 	// 正在借用对方的眼睛 -> 清除本人的失明全屏黑幕，使借来的画面可见。
 	if(sensory_borrowed_eye_partner())
 		clear_fullscreen("blind")
@@ -523,6 +545,9 @@
 	invocation_type = "none"               // 切换视角是“心念”行为，不喊咒文
 
 /obj/effect/proc_holder/spell/self/sensory_sharing_view/cast(list/targets, mob/living/user = usr)
+	if(user?.group_mindlink_view)
+		to_chat(user, span_notice("请先返回自身视角，再切换其他视觉链接。"))
+		return FALSE
 	if(!istype(user))
 		revert_cast()
 		return FALSE
@@ -560,6 +585,11 @@
 		user.update_blindness()
 		to_chat(user, span_notice("我的视野回到了自己的双眼。"))
 	else
+		// 与群体链接交叉使用时禁止转播；原法术自身的双向切换规则保持不变。
+		if(partner.group_mindlink_view || user.group_mindlink_has_watchers(FALSE))
+			to_chat(user, span_notice("群体心灵链接正在借用相关视角，请先结束观看再切换。"))
+			revert_cast(user)
+			return FALSE
 		user.reset_perspective(partner) // 把 client.eye 设为对方，借其双眼观察
 		// 切到对方后立即重算视觉：此时 client.eye==partner，update_sight() 会调用
 		// partner.update_remote_sight(user)（即上面的覆写），把对方的真实视觉套到我身上。
