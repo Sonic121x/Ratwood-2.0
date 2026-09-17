@@ -38,6 +38,30 @@ GLOBAL_DATUM(grayscale_transmission, /datum/grayscale_transmission)
 /mob/living/carbon/human/get_stress_amount()
 	return ..() * grayscale_mood_multiplier
 
+// 创角与描述预览共用假人池；归还假人前必须清理灰度状态，避免污染下一位玩家。
+// 界面已经取得独立的外观快照，因此清理不会改变当前玩家已经生成的灰色预览。
+/mob/living/carbon/human/dummy/wipe_state()
+	var/datum/component/grayscale/symptoms = GetComponent(/datum/component/grayscale)
+	qdel(symptoms)
+	remove_filter(Z121_GRAYSCALE_FILTER)
+	grayscale_mood_multiplier = 1
+	grayscale_contacts = null
+	REMOVE_TRAIT(src, TRAIT_NOMOOD, Z121_GRAYSCALE_TRAIT_SOURCE)
+
+	// 只回收本缺陷的实例，同时处理多缺陷列表与旧式单缺陷引用。
+	var/list/grayscale_vices = list()
+	for(var/datum/charflaw/grayscale/vice in vices)
+		grayscale_vices |= vice
+	if(istype(charflaw, /datum/charflaw/grayscale))
+		grayscale_vices |= charflaw
+		charflaw = null
+	for(var/datum/charflaw/grayscale/vice in grayscale_vices)
+		if(length(vices))
+			vices -= vice
+		qdel(vice)
+	// 保留原有装备删除和外观叠层清理，预览中灰化的衣物也随之回收。
+	return ..()
+
 /datum/component/grayscale
 	// 重复挂载时直接复用，避免临时组件销毁时清掉现有滤镜与情绪状态。
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS

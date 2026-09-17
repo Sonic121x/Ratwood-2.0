@@ -536,7 +536,7 @@ export const GroupMindlink = () => {
                 <Stack.Item grow>
                   <Section fill scrollable title="选择熟人建立链接">
                     <Box mb={2} color="label">
-                      施法者自动加入。确认后引导五秒，链接持续五分钟。
+                      施法者自动加入。确认后引导五秒，链接持续十五分钟。
                       未在线的熟人也可加入，在线后可重开窗口交流。
                     </Box>
                     <PeoplePicker

@@ -406,11 +406,11 @@
 
 /obj/effect/proc_holder/spell/invoked/group_flight
 	name = "群体飞行术"
-	desc = "以纯粹魔力托举施法者与周围 1 格内活物，使其自由飞行，持续 60 秒。"
+	desc = "在原地专注引导，以纯粹魔力托举施法者与周围 1 格内活物，使其自由飞行，持续 60 秒。引导期间移动会打断施法。"
 	cost = 8
 	releasedrain = 20
 	chargetime = 12 SECONDS
-	recharge_time = 120 SECONDS
+	recharge_time = 4 MINUTES
 	human_req = TRUE
 	warnie = "spellwarning"
 	school = "transmutation"
@@ -422,7 +422,7 @@
 	glow_color = GLOW_COLOR_BUFF
 	glow_intensity = GLOW_INTENSITY_MEDIUM
 	no_early_release = TRUE
-	movement_interrupt = FALSE
+	movement_interrupt = TRUE
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane

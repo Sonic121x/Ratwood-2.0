@@ -51,13 +51,13 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 /datum/group_mindlink_custom/New(mob/living/caster, list/members)
 	. = ..()
 	owner = caster
-	expires_at = world.time + 5 MINUTES
+	expires_at = world.time + 15 MINUTES
 	main_room = new(src, caster, "main", "主群")
 	rooms += main_room
 	for(var/mob/living/member as anything in members)
 		add_member(member)
 	main_room.system_message("心灵链接已建立。每位成员都可以发起私聊或创建小房间。")
-	expiry_timer = addtimer(CALLBACK(src, PROC_REF(end_link), "五分钟已到，心灵链接逐渐消散。"), 5 MINUTES, TIMER_STOPPABLE)
+	expiry_timer = addtimer(CALLBACK(src, PROC_REF(end_link), "十五分钟已到，心灵链接逐渐消散。"), 15 MINUTES, TIMER_STOPPABLE)
 
 /datum/group_mindlink_custom/Destroy()
 	active = FALSE
@@ -100,9 +100,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	main_room.add_member(member)
 	if(first_link)
 		session.current_room = main_room
-		// 资源发送可能等待客户端，不能让开窗打断主链接的成员登记流程。
-		INVOKE_ASYNC(session, TYPE_PROC_REF(/datum/group_mindlink_session, ui_interact), member)
-	to_chat(member, span_notice("你已加入[html_encode(owner.real_name)]建立的心灵链接。可使用『Group Mindlink』重开窗口；,m 发往当前选中的会话。"))
+	to_chat(member, span_notice("你已加入[html_encode(owner.real_name)]建立的心灵链接。请在 IC 分类下点击「Group Mindlink」打开心灵链接窗口；输入 ,m 可向当前选中的会话发言。"))
 	refresh()
 	return TRUE
 
@@ -525,11 +523,11 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 
 /obj/effect/proc_holder/spell/self/group_mindlink
 	name = "群体心灵链接"
-	desc = "选择任意数量的熟人，吟唱后建立持续五分钟的心灵链接。成员可以在主群交流、单独私聊或创建小房间。发言前输入 ,m 会发送到当前选中的会话；使用 IC 下的 Group Mindlink 可重新打开窗口。"
+	desc = "选择任意数量的熟人，吟唱后建立持续十五分钟的心灵链接。成员可以在主群交流、单独私聊或创建小房间。发言前输入 ,m 会发送到当前选中的会话；使用 IC 下的 Group Mindlink 可重新打开窗口。"
 	associated_skill = /datum/skill/magic/arcane
 	cost = 5
 	xp_gain = TRUE
-	recharge_time = 6 MINUTES
+	recharge_time = 5 MINUTES
 	spell_tier = 3
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "group_mindlink"
