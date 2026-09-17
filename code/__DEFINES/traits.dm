@@ -84,7 +84,7 @@
 #define TRAIT_MONOTHEIST "一神信徒"
 #define TRAIT_GUARDSMAN "警觉卫兵"
 #define TRAIT_TAVERN_FIGHTER "酒馆斗士"
-#define TRAIT_BATHHOUSE_DANCER "澡堂舞者"
+#define TRAIT_BATHHOUSE_DANCER "浴场舞者"
 #define TRAIT_FROZEN_STAMINA "冻结体力"
 #define TRAIT_WOODSMAN "老练林人"
 #define TRAIT_LAMIAN_TAIL "拉弥亚尾"
@@ -386,7 +386,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("我是个惹人厌憎的麻风病人……"),
 	TRAIT_VOTARY = span_info("我侍奉圣座本身。唯有站在圣地之上，我才最感安心。"),
 	TRAIT_TAVERN_FIGHTER = span_info("我对自己的职责始终警醒。酒馆便是我的家，谁也别想在这里撒野，或赖账不付。"),
-	TRAIT_BATHHOUSE_DANCER = span_info("我受过澡堂技艺的训练。在澡堂四壁之内，我能整夜为客人起舞摇摆而不觉疲倦。"),
+	TRAIT_BATHHOUSE_DANCER = span_info("我受过浴场技艺的训练。在浴场四壁之内，我能整夜为客人起舞摇摆而不觉疲倦。"),
 	TRAIT_GUARDSMAN = span_info("我对自己的职责始终警醒。在这座由我守护的城镇里，凭借日复一日的巡守与熟悉，我的本领会更加敏锐。"),
 	TRAIT_WOODSMAN = span_info("我对自己的职责始终警醒。在这片由我守护的野外林地中，凭借日复一日的巡护与熟悉，我的本领会更加敏锐。"),
 	TRAIT_DEATHBARGAIN = span_info("一桩可怖的交易已经以你的名义订立。愿你永远不必见到它兑现……"),
