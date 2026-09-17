@@ -6,7 +6,7 @@
 
 /datum/map_adjustment/template/dunworld
 	map_file_name = "dun_world.dmm"
-	realm_name = "Rotwood Vale"
+	realm_name = "腐木谷"
 	blacklist = list(//I had wanted the map variable in the roles themselves to bar them from non-desert maps but it still shows up in the Latejoin menu so I'm doing this just to keep it clear)
 		/datum/job/roguetown/cataphract,
 		// /datum/job/roguetown/vizier,
@@ -39,12 +39,12 @@
 		/datum/job/roguetown/warden = 6,
 	)
 	title_adjust = list(
-		/datum/job/roguetown/lord = list(display_title = "Duke", f_title = "Duchess"),
+		/datum/job/roguetown/lord = list(display_title = "公爵", f_title = "公爵夫人"),
 	)
 	tutorial_adjust = list(
-		/datum/job/roguetown/rookie = "Odd-jobs, running messages, fixing dents and talking to locals; the Men at Arms can always use a spare pair of hands, eyes and ears. Assist your fellow guards in dealing with threats - both within and without. \
-				Given a brief introduction in weapons and guardwork, the rest of your training is to be picked up on the job. \
-				Obey your superiors (everyone who isn't you) and show the nobles your respect. Keep an eye out, try to learn a thing or two, then one day you might live to make an adequate soldier."
+		/datum/job/roguetown/rookie = "打杂、递送消息、修补凹痕、与当地人交谈；府卫总是需要一双闲手、一双闲眼和一对闲耳。协助你的卫兵同伴应对来自内外的威胁。 \
+				你只接受过武器与守卫工作的简要入门，其余训练都要在工作中自行摸索。 \
+				服从你的上级（除了你以外的所有人），向贵族表示敬意。多加留意，试着学上一两手，或许有朝一日你能活到成为一名合格的士兵。"
 	)
 	species_adjust = list()
 	sexes_adjust = list()
