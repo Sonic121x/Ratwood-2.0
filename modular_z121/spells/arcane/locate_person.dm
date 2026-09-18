@@ -274,6 +274,13 @@
 			return TRUE
 	return FALSE
 
+// 寻人请求使用独立的大尺寸界面，继续沿用通用弹窗的选择、关闭与超时处理。
+/datum/tgui_alert/z121_locate_request/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "LocatePersonRequest", title)
+		ui.open()
+
 // 请求与追踪独立于法术冷却处理，避免弹窗阻塞冷却或让迟到回复恢复失效定位。
 /datum/z121_locate_session
 	var/datum/weakref/spell_ref
@@ -373,7 +380,7 @@
 	if(!consenting_client)
 		consenting_client = target.client
 		// 直接复用现有弹窗类型，避免关闭简易输入偏好后回退为没有超时的原生弹窗。
-		consent_prompt = new(target, "[caster.real_name] 希望定位你：私人头顶箭头将持续追踪30秒，同时获知一次你的距离、区域、层级及状态。是否同意？", "寻人术请求", list("同意", "拒绝"), Z121_LOCATE_CONSENT_TIMEOUT, TRUE, GLOB.tgui_always_state)
+		consent_prompt = new /datum/tgui_alert/z121_locate_request(target, "一缕似曾相识的魔力轻叩心扉，是 [caster.real_name] 在远处呼唤我。\n\n若我回应，ta 便能循着这道联系，在接下来的片刻里感知我的所在与安危。是否让这缕魔力为 ta 引路？", "熟悉的呼唤", list("同意", "拒绝"), Z121_LOCATE_CONSENT_TIMEOUT, TRUE, GLOB.tgui_always_state)
 		consent_prompt.ui_interact(target)
 		to_chat(caster, span_notice("我正在等待 [target.real_name] 同意这次寻人请求。"))
 		return

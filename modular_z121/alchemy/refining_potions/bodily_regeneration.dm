@@ -24,7 +24,7 @@
 // 中文：每代谢一拍累加"已消化量"，累计 >= 10 单位后触发一次【断肢再生】。
 //   涉及的原版接口(只读引用，不修改)：
 //     · mob/living/carbon/get_bodypart(zone)   —— 取某部位的肢体对象；返回 null 即"该部位已缺失"。
-//     · mob/living/regenerate_limb(zone)        —— 为缺失部位重新生成并接上一条肢体，成功返回 1，已存在返回 0。
+//     · obj/item/bodypart/attach_limb()       —— 将按当前角色数据创建的肢体接回对应部位。
 //     · BODY_ZONE_R_ARM/L_ARM/R_LEG/L_LEG       —— 四肢部位常量(见 __DEFINES；life.dm 断肢再生逻辑同款用法)。
 // ============================================================================
 /datum/reagent/bodily_regeneration_potion
@@ -55,7 +55,7 @@
 	return ..()												// Let the base reagent finish its metabolize step.
 
 // 中文：核心效果——扫描四肢，凡缺失者逐一重新长出。
-//   ★为什么逐一检查★：regenerate_limb 对"已存在的部位"返回 0(不重复生成)，故只有真正缺失的部位会被补上；
+//   ★为什么逐一检查★：只补回真正缺失的部位，避免替换现有肢体或重置其外观；
 //     用返回值统计成功数，以给出恰当反馈(有断肢→再生提示；本就完好→提示无需再生)。
 //   ★错误处理★：目标失效直接返回；每次再生用返回值判定成败，全程不假设一定成功。
 /datum/reagent/bodily_regeneration_potion/proc/restore_lost_limbs(mob/living/carbon/M)
@@ -70,10 +70,11 @@
 		if(M.get_bodypart(zone))							// Limb already present?
 			continue
 		// 中文：该部位缺失 → 尝试重新生成；成功(返回 1)才计数。
-		if(M.regenerate_limb(zone))							// Regrow it; 1 = success.
+		if(restore_character_limb(M, zone))					// 按当前角色数据再生，成功后才计数。
 			restored_count++								// Count the successful regrowth.
 	// 中文：根据是否真的补回了肢体给出不同反馈。
 	if(restored_count > 0)									// At least one limb regrew.
+		M.update_mobility()								// 接回四肢后重新计算站立、行走和手部能力。
 		// 中文：刷新外观，让新长出的肢体贴图/装备槽即时生效(仅人类需要重建人体贴图)。
 		if(ishuman(M))										// Human sprites must be rebuilt.
 			var/mob/living/carbon/human/H = M				// Typed handle.
@@ -85,6 +86,46 @@
 		// 中文：身体本就完好，没有可再生的断肢 → 温和提示，不做任何改动。
 		to_chat(M, span_notice("一阵暖流游遍全身，但我的身体本就完好，没有需要再生的地方。"))	// No-op feedback.
 
+
+// ============================================================================
+// 中文：只为缺失部位创建肢体，外观取自本局身体的种族与 DNA，不依赖在线客户端或当前选择的角色存档。
+/datum/reagent/bodily_regeneration_potion/proc/restore_character_limb(mob/living/carbon/M, zone)
+	if(!M || QDELETED(M) || M.get_bodypart(zone))
+		return FALSE
+	if(!ishuman(M) || !M.dna?.species)
+		return M.regenerate_limb(zone)
+
+	var/mob/living/carbon/human/H = M
+	var/datum/species/species = H.dna.species
+	var/limb_type = species.bodypart_overrides?[zone]
+	// 中文：优先采用种族专用肢体；没有覆盖时，按当前种族特性或 DNA 中保存的腿型选择趾行腿。
+	if(!limb_type && ((DIGITIGRADE in species.species_traits) || (("legs" in species.mutant_bodyparts) && H.dna.features["legs"] == "Digitigrade Legs")))
+		if(zone == BODY_ZONE_L_LEG)
+			limb_type = /obj/item/bodypart/l_leg/digitigrade
+		else if(zone == BODY_ZONE_R_LEG)
+			limb_type = /obj/item/bodypart/r_leg/digitigrade
+
+	var/obj/item/bodypart/limb
+	if(limb_type)
+		limb = new limb_type()
+	else
+		limb = H.newBodyPart(zone, FALSE, FALSE)
+	if(!limb)
+		return FALSE
+	// 中文：四肢药剂不允许种族覆盖生成其他部位，也不替换已经存在的部位。
+	if(limb.body_zone != zone)
+		qdel(limb)
+		return FALSE
+
+	limb.update_limb(FALSE, H)
+	// 中文：只复制新生肢体及其附属部位的花纹，避免修改其他肢体或共享 DNA 中的列表。
+	limb.markings = H.dna.body_markings?[limb.body_zone]?.Copy()
+	limb.aux_markings = H.dna.body_markings?[limb.aux_zone]?.Copy()
+	limb.invalidate_limb_cache()
+	if(!limb.attach_limb(H, TRUE))
+		qdel(limb)
+		return FALSE
+	return TRUE
 
 // ============================================================================
 // 2) 精炼配方——★按气味等级(气味档①)★：5 级"潮湿的苔藓"气味 + 清水50+强效生命30+强效耐力30 → 身体再生药剂。
