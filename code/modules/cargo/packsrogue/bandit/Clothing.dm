@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Clothing
-	group = "Clothing"
+	group = "衣物" // English: Clothing
 	crate_name = "Gifts of Disguise"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

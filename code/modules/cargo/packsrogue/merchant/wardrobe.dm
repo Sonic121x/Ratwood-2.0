@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/wardrobe
-	group = "Wardrobe"
+	group = "衣装" // English: Wardrobe
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
