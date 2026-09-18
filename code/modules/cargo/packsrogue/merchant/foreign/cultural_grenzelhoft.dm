@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/grenzelhoft
-	group = "文化货物"
+	group = "文化货物" // English: Cultural Stock
 	crate_name = "格伦泽尔霍夫特货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
