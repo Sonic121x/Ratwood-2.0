@@ -98,7 +98,7 @@
 	return TRUE
 
 /obj/item/clothing/shoes/roguetown/boots/psydonboots
-	name = "Psydon皮靴"
+	name = "普赛顿皮靴"
 	desc = "黑钢跟皮靴。无论你在这片土地上行军多远，皮革都几乎不会磨损。"
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
@@ -127,7 +127,7 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
-	name = "阿夫尼骑靴"
+	name = "阿夫尼克骑靴"
 	desc = "一双结实的骑靴，配有铁跟和黄铜马刺。"
 	armor = ARMOR_LEATHER_GOOD
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
@@ -154,8 +154,8 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/boots/hand/thigh
-	name = "thigh boots"
-	desc = "Leather boots that reach up to the thighs. Comfortable for both riding and standing in court all dae."
+	name = "大腿长靴"
+	desc = "高及大腿的皮靴。无论是骑马，还是在宫廷里站上一整天，都同样舒适。"
 	gender = PLURAL
 	icon = 'icons/roguetown/clothing/special/hand.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/hand.dmi'
@@ -216,7 +216,7 @@
 
 /obj/item/clothing/shoes/roguetown/sandals/ancient
 	name = "远古甲胄凉鞋"
-	desc = "抛光的gilbranze高底凉鞋向上卷起，恰好托住双足。它曾属于失落时代的角斗士，如今再度被唤醒来服役。这双凉鞋从不是为踏过沙地而造，而是为了高高站在敌人的尸体之上。"
+	desc = "抛光的吉尔青铜高底凉鞋向上卷起，恰好托住双足。它曾属于失落时代的角斗士，如今再度被唤醒来服役。这双凉鞋从不是为踏过沙地而造，而是为了高高站在敌人的尸体之上。"
 	icon_state = "ancientsandals"
 	max_integrity = 200
 	armor = ARMOR_PLATE
@@ -225,7 +225,7 @@
 
 /obj/item/clothing/shoes/roguetown/sandals/ancient/decrepit
 	name = "残破甲胄凉鞋"
-	desc = "破旧的青铜高底凉鞋向上卷起，托住双足。它曾踏过的海滩早已不复存在；珍珠般的沙地早在Syon彗星撞击时化为了琉璃。"
+	desc = "破旧的青铜高底凉鞋向上卷起，托住双足。它曾踏过的海滩早已不复存在；珍珠般的沙地早在普赛顿彗星撞击时化为了琉璃。"
 	max_integrity = 50
 	color = "#bb9696"
 	anvilrepair = null
@@ -273,7 +273,7 @@
 	item_state = "albootsb"
 
 /obj/item/clothing/shoes/roguetown/boots/otavan
-	name = "Otava皮靴"
+	name = "奥塔瓦皮靴"
 	desc = "工艺出众的靴子，你脆弱的双脚从未感受过如此的保护与舒适。"
 	body_parts_covered = FEET
 	icon_state = "fencerboots"
@@ -290,7 +290,7 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/shoes/roguetown/boots/grenzelhoft
-	name = "Grenzelhoft长靴"
+	name = "格伦泽尔霍夫特长靴"
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
@@ -376,7 +376,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/ancient
 	name = "远古战靴"
-	desc = "抛光的gilbranze胫甲层层叠压，以保护脚踝与双足。那些无生而行者踏出的金属脚步声，无论在哪里响起，都预示着毁灭。"
+	desc = "抛光的吉尔青铜胫甲层层叠压，以保护脚踝与双足。那些无生而行者踏出的金属脚步声，无论在哪里响起，都预示着毁灭。"
 	icon_state = "ancientboots"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -418,7 +418,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/zizo
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	name = "Avantyne战靴"
+	name = "阿凡泰因战靴"
 	desc = "板甲战靴。自本不该被知晓的边界被召来。奉她之名。"
 	icon_state = "zizoboots"
 	armor = ARMOR_ASCENDANT
@@ -434,9 +434,9 @@
 	qdel(src)
 
 /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo
-	name = "avantyne-threaded sabatons"
-	desc = "Marrow, flesh, ash; the bedrock of a new reality, fated to suffer until the final breath. It is this prognosis that commands Her disciples to \
-	work towards ascensionism - for no sacrifice is too great, in the pursuit of bringing lyfe back to this dying world."
+	name = "阿凡泰因织纹铁鞋"
+	desc = "骨髓、血肉、灰烬；新现实的基石，注定受苦至最后一息。正是这一昭示，驱使她的门徒 \
+	走上飞升之路 - 为了让生命重回这个垂死的世界，任何牺牲都不算过分。"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_ASCENDANT
 	icon_state = "zizoboots"
@@ -460,8 +460,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/boots/armor/gold
-	name = "golden greaves"
-	desc = "Resplendant sabatons of pure gold, adorned with angled greaves that proudly bear the holy sigil. Its besilked cuffs have remained surprisingly bereft of debris - not even a sprig of lint remains to be criticized."
+	name = "金色胫甲"
+	desc = "纯金打造的华丽铁鞋，饰有棱角分明的胫甲，骄傲地铭刻着圣徽。它的丝绸衬口出人意料地一尘不染 - 甚至连一丝绒毛都无可指摘。"
 	icon_state = "goldgreaves"
 	item_state = "goldgreaves"
 	body_parts_covered = FEET | LEGS
@@ -476,7 +476,7 @@
 	unenchantable = TRUE
 
 /obj/item/clothing/shoes/roguetown/boots/armor/gold/king
-	name = "royal golden greaves"
+	name = "王室金色胫甲"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	sellprice = 300
 	unenchantable = TRUE
@@ -525,10 +525,10 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/boots/maille/bronze
-	name = "bronze maille boots"
-	desc = "A pair of leather boots, reinforced with smaller bronze plates along the feet and ankles. A thick layer of chainmail has been woven across \
-	the cuffs of each boot, and tastefully stitched into place. Between the glory of Ur-Syon's collapse and the rise of the Celestial Empire, these soles \
-	carried the steps of armies-a-plenty across the yet-supple steppes."
+	name = "青铜链甲靴"
+	desc = "一双皮革靴子，脚面和脚踝处镶有小型青铜板加固。每只靴口处编织了一层厚实的链甲， \
+	并缝合得恰到好处。在原初西昂崩溃的荣光与天穹帝国的崛起之间，这双鞋底 \
+	承载过无数军队的脚步，踏过那时尚且柔软的草原。"
 	icon_state = "bsoldierboots"
 	item_state = "bsoldierboots"
 	max_integrity = ARMOR_INT_SIDE_BRONZE
@@ -550,7 +550,7 @@
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/kazengun/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "选择一种颜色。", "卡曾贡配色") as anything in GLOB.colorlist
+		var/choice = input(user, "选择一种颜色。", "风郡配色") as anything in GLOB.colorlist
 		var/playerchoice = GLOB.colorlist[choice]
 		picked = TRUE
 		detail_color = playerchoice
@@ -727,22 +727,22 @@
 //Wraps
 
 /obj/item/clothing/shoes/roguetown/boots/footwraps
-	name = "cloth footwraps"
-	desc = "Thickly-woven bandages that've been wrapped around the ankles to protect from any unwanted shattered teeth from sticking in your precious legs."
+	name = "布制脚缠布"
+	desc = "厚实编织的绷带，缠绕在脚踝上，以免那些不该出现的碎牙扎进你宝贵的双腿。"
 	gender = PLURAL
 	icon_state = "footwraps"
 	sewrepair = TRUE
 	salvage_result = /obj/item/natural/cloth
 
 /obj/item/clothing/shoes/roguetown/boots/footwraps/padded
-	name = "padded cloth footwraps"
-	desc = "Thickly-woven padded bandages wrapped about one's ankles to maintain mobility for climbing and kicking."
+	name = "加厚布制脚缠布"
+	desc = "厚实编织的加厚绷带，缠绕在脚踝上，以便在攀爬和踢击时保持灵活。"
 	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 
 /obj/item/clothing/shoes/roguetown/boots/footwraps/hleather
-	name = "hardened leather footwraps"
-	desc = "A cut down pair of boots maintaining most of the cover they'd normally offer with added comfort for those with inhumen anatomy."
+	name = "硬化皮革脚缠布"
+	desc = "一双经过裁短的靴子，保留了原本大部分的包覆性，并为异民体型的穿戴者增添了舒适度。"
 	icon_state = "footwraps_hleather"
 	salvage_result = /obj/item/natural/hide/cured
 	armor = ARMOR_LEATHER

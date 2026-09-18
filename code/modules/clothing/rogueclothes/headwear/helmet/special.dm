@@ -4,8 +4,8 @@
 /////////////////////////////////// GRENZELHOFT PLUME HATS W/HELMETS ///////////////////////////////////
 
 /obj/item/clothing/head/roguetown/helmet/sallet/grenzelhoft
-	name = "萨勒盔帽子配羽饰"
-	desc = "一顶 Grenzelhoft 羽饰帽戴在标准钢制萨雷特盔之上，既不失风度，也能更好地保护佩戴者的头部。"
+	name = "萨雷特盔帽子配羽饰"
+	desc = "一顶格伦泽尔霍夫特羽饰帽戴在标准钢制萨雷特盔之上，既不失风度，也能更好地保护佩戴者的头部。"
 	icon_state = "grenzelmid"
 	item_state = "grenzelmid"
 	icon = 'icons/roguetown/clothing/special/grenzelhats.dmi'
@@ -37,7 +37,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/grenzelhoft
 	name = "伊特鲁斯卡盆盔帽子配羽饰"
-	desc = "一顶 Grenzelhoft 羽饰帽戴在伊特鲁斯卡盆盔之上，既不失风度，也能更好地保护佩戴者的头部。"
+	desc = "一顶格伦泽尔霍夫特羽饰帽戴在伊特鲁斯卡盆盔之上，既不失风度，也能更好地保护佩戴者的头部。"
 	icon_state = "grenzelheavy"
 	item_state = "grenzelheavy"
 	icon = 'icons/roguetown/clothing/special/grenzelhats.dmi'
@@ -69,7 +69,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/blacksteel/modern/armet/grenzelhoft
 	name = "黑钢阿米特盔帽子配羽饰"
-	desc = "一顶 Grenzelhoft 羽饰帽戴在黑钢阿米特盔之上，既不失风度，也能更好地保护佩戴者的头部。真像个阔绰的佣兵。"
+	desc = "一顶格伦泽尔霍夫特羽饰帽戴在黑钢阿米特盔之上，既不失风度，也能更好地保护佩戴者的头部。真像个阔绰的佣兵。"
 	icon_state = "grenzelblack"
 	item_state = "grenzelblack"
 	icon = 'icons/roguetown/clothing/special/grenzelhats.dmi'
@@ -101,7 +101,7 @@
 ///////// CRAFTING DATUMS FOR PLUME HATS /////////
 
 /datum/crafting_recipe/roguetown/sewing/grenzelhelm
-	name = "配有萨雷特盔的 Grenzelhoft 帽子"
+	name = "配有萨雷特盔的格伦泽尔霍夫特帽子"
 	result = list(/obj/item/clothing/head/roguetown/helmet/sallet/grenzelhoft)
 	reqs = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1,
 	            /obj/item/clothing/head/roguetown/helmet/sallet = 1)
@@ -114,7 +114,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/grenzelklapper
-	name = "配有开缝盆盔的 Grenzelhoft 帽子"
+	name = "配有开缝盆盔的格伦泽尔霍夫特帽子"
 	result = list(/obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/grenzelhoft)
 	reqs = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1,
 	            /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan = 1)
@@ -127,7 +127,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/grenzelblack
-	name = "配有黑钢阿米特盔的 Grenzelhoft 帽子"
+	name = "配有黑钢阿米特盔的格伦泽尔霍夫特帽子"
 	result = list(/obj/item/clothing/head/roguetown/helmet/blacksteel/modern/armet/grenzelhoft)
 	reqs = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1,
 	            /obj/item/clothing/head/roguetown/helmet/blacksteel/modern/armet = 1)
