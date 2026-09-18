@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Medicaments
-	group = "Medicaments"
+	group = "医疗用品" // English: Medicaments
 	crate_name = "Gifts of Lyfe"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
