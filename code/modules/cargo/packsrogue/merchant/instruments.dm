@@ -1,7 +1,7 @@
 
 
 /datum/supply_pack/rogue/instruments
-	group = "Instruments"
+	group = "乐器" // English: Instruments
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

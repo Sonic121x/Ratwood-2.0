@@ -1,6 +1,6 @@
 // Pricing principle is approximately 20 per iron ingot. No less than 25.
 /datum/supply_pack/rogue/iron_weapons
-	group = "武器（铁制与盾牌）"
+	group = "武器（铁制与盾牌）" // English: Weapons (Iron and Shields)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

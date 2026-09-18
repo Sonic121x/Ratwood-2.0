@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/armor_bronze
-	group = "护甲（青铜）"
+	group = "护甲（青铜）" // English: Armor (Bronze)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
