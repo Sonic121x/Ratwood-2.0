@@ -45,7 +45,7 @@
 		if(src.bellsound || src.bell) //Already has a bell, can't attach another one.
 			to_chat(user, span_info("[src]已经挂着铃铛了！"))
 			return
-		to_chat(user, span_info("我把\the [bell]挂到了[src]上。"))
+		to_chat(user, span_info("我把[bell]挂到了[src]上。"))
 		src.bell = TRUE
 		src.bellsound = TRUE
 		src.AddComponent(/datum/component/squeak, bell.jingle_sounds, 50, 100, 1)
@@ -55,7 +55,7 @@
 /obj/item/clothing/neck/roguetown/MiddleClick(mob/user, params)
 	. = ..()
 	overarmor = !overarmor
-	to_chat(user, span_info("我[overarmor ? "把\the [src]穿在护甲外面" : "把\the [src]穿在护甲下面"]."))
+	to_chat(user, span_info("我[overarmor ? "把[src]穿在护甲外面" : "把[src]穿在护甲下面"]."))
 	if(overarmor)
 		alternate_worn_layer = NECK_LAYER
 	else
@@ -78,7 +78,7 @@
 		return
 	if(!toggle_snout())
 		return
-	to_chat(user, span_info("我[snouting ? "给\the [src]留出吻部空间" : "把\the [src]系得更紧"]."))
+	to_chat(user, span_info("我[snouting ? "给[src]留出吻部空间" : "把[src]系得更紧"]."))
 	user.update_inv_neck()
 	user.update_inv_cloak()
 	user.update_inv_armor()
@@ -245,8 +245,8 @@
 	max_integrity = ARMOR_INT_SIDE_IRON
 
 /obj/item/clothing/neck/roguetown/chaincoif/bronze
-	name = "bronze chain coif"
-	desc = "A maille-hood, fashioned from interlinked bronze rings. As preached by the Pantheon, these maille-hoods were originally made in mimicry of what was worn by the earliest priests."
+	name = "青铜锁链护头巾"
+	desc = "一顶由相互扣连的青铜环制成的锁子头巾。正如万神殿所宣扬的，这种锁子头巾最初是仿照最早一批祭司所穿之物制作的。"
 	icon_state = "bchaincoif"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/bronze
@@ -319,8 +319,8 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/neck/roguetown/bevor/zizo
-	name = "avantyne bevor"
-	desc = "An avantyne neckguard cut for the medium rite, still protective without becoming impossible to remove."
+	name = "阿凡泰因护颚"
+	desc = "一件为中级仪式裁制的阿凡泰因护颈，仍具防护之效，却又不会变得无法脱下。"
 	icon_state = "zizobevor"
 	item_state = "zizobevor"
 	peel_threshold = 5
@@ -340,8 +340,8 @@
 	max_integrity = ARMOR_INT_SIDE_IRON
 
 /obj/item/clothing/neck/roguetown/bevor/bronze
-	name = "bronze gorgette"
-	desc = "A jutting slab of bronze, traditionally mounted atop a panoplic assembly to veil the neck from precise strikes. </br>To tip the chin up while grounded is an ancient gesture; one which willingly beckons for the 'gift of mercy'."
+	name = "青铜护喉甲"
+	desc = "一块向外突出的青铜板，传统上装配在整套甲胄之上，用以遮蔽颈部免遭精准打击。 </br>倒地时抬起下巴是一种古老的手势；那是在自愿乞求那份'慈悲之赐'。"
 	icon_state = "bbevor"
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_SIDE_BRONZE + 25//275, -25 compared to bronze neckguard
@@ -388,8 +388,8 @@
 	anvilrepair = null
 
 /obj/item/clothing/neck/roguetown/gorget/gold
-	name = "golden gorget"
-	desc = "A series of resplendant golden plates designed to protect the neck, traditionally worn atop a jacket or cuirass. The holy sigil between its buckled halves promises to carry the flame of its wearer, no matter what strike's poised its way."
+	name = "黄金护喉"
+	desc = "一系列光彩夺目的黄金甲片，用以保护颈部，传统上佩戴在短上衣或胸甲之上。扣合的两半之间的神圣徽记，承诺承载其佩戴者的火焰，无论何种打击正蓄势袭来。"
 	icon_state = "goldgorget"
 	armor_class = ARMOR_CLASS_HEAVY //Ceremonial. Heavy is the head that bears the burden.
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
@@ -402,14 +402,14 @@
 	unenchantable = TRUE
 
 /obj/item/clothing/neck/roguetown/gorget/gold/king
-	name = "royal golden gorget"
+	name = "王室黄金护喉"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	sellprice = 300
 	unenchantable = TRUE
 
 /obj/item/clothing/neck/roguetown/gorget/bronze
-	name = "bronze neckguard"
-	desc = "An interlinked veil of bronze plates, shielding the throat from terrible wounds since the dawn of tyme. Piercing blows may sunder the plate, but - as long as the alloy persists - so shall you."
+	name = "青铜护颈"
+	desc = "一层由青铜甲片相互扣连而成的屏障，自时间之初起便守护咽喉免遭可怖创伤。刺击或许能击碎甲片，但 - 只要合金尚存 - 你便也尚存。"
 	icon_state = "bronzegorget"
 	armor = ARMOR_BRONZE
 	smeltresult = /obj/item/ingot/bronze
@@ -536,7 +536,7 @@
 		return ..()
 
 	wrist_display = !wrist_display
-	to_chat(user, span_info("You adjust \the [src] to [wrist_display ? "display on your wrists" : "display around your neck"]."))
+	to_chat(user, span_info("我把[src]调整成[wrist_display ? "展示在手腕上" : "展示在脖子上"]。"))
 	if(wrist_display)
 		mob_overlay_icon = 'icons/roguetown/clothing/onmob/wrists.dmi'
 		sleeved = 'icons/roguetown/clothing/onmob/wrists.dmi'
@@ -561,8 +561,8 @@
 	color = "#bb9696"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/bronze
-	name = "bronze inverted psycross"
-	desc = "'Look upon mine works, thee-mighty, and despair!'"
+	name = "青铜倒置普赛圣十字"
+	desc = "'仰望我的造物吧，你这强大者，然后陷入绝望！'"
 	icon_state = "zcross_b"
 	resistance_flags = FIRE_PROOF
 
@@ -579,7 +579,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata
 	name = "祝圣阿斯特拉塔护符"
-	desc = "与普通的阿斯特拉塔护符相似，只是这一枚由白银制成并受过祝福。女王不会讨价还价，也不会退让。她的追随者更不会如此，尤其是她的神职者们，因为随着普希顿离去，阿斯特拉塔承担起了祂血脉延续的重担。万物皆在她的视界之内，而整个国度同样也在你的职责范围之中。坚定前行吧，否则一旦她移开目光，一切都将坠入异端的灾祸。"
+	desc = "与普通的阿斯特拉塔护符相似，只是这一枚由白银制成并受过祝福。女王不会讨价还价，也不会退让。她的追随者更不会如此，尤其是她的神职者们，因为随着普赛顿离去，阿斯特拉塔承担起了祂血脉延续的重担。万物皆在她的视界之内，而整个国度同样也在你的职责范围之中。坚定前行吧，否则一旦她移开目光，一切都将坠入异端的灾祸。"
 	icon_state = "astrata"
 
 /obj/item/clothing/neck/roguetown/psicross/noc
@@ -588,8 +588,8 @@
 	icon_state = "noc"
 
 /obj/item/clothing/neck/roguetown/psicross/noc/bronze
-	name = "bronze amulet of Noc"
-	desc = "Knowledge predates lyfe and death itself. Who art thou, to assume the quill's works are no holier than a sword or masterwork?"
+	name = "青铜诺克护符"
+	desc = "知识先于生命与死亡本身而存在。你又是何人，竟敢断言笔杆子的造物不如刀剑或杰作神圣？"
 	icon_state = "noc_b"
 
 /obj/item/clothing/neck/roguetown/psicross/abyssor
@@ -620,7 +620,7 @@
 	icon_state = "ravox"
 
 /obj/item/clothing/neck/roguetown/psicross/malum
-	name = "玛卢姆护符"
+	name = "玛勒姆护符"
 	desc = "自灰烬之中，万物再生。"
 	icon_state = "malum"
 
@@ -650,25 +650,25 @@
 	color = "#bb9696"
 
 /obj/item/clothing/neck/roguetown/psicross/ravox/bronze
-	name = "bronze amulet of Ravox"
-	desc = "'YOU FIGHT WELL, RAVOX OF UR-SYON. YOUR CLEMENCY HATH BEEN EARNED. SURRENDER NOW, AND GRAGGAR SHALL-'</br>‎	</br>'No.' </br>‎	</br>'-WHAT? YOU'RE GOING TO THROW AWAY YOUR LYFE FOR A GOD THAT HAS NO LOVE FOR YOU?' </br>‎	</br>'One of us will.'"
+	name = "青铜拉沃克斯护符"
+	desc = "'你打得很好，原初西昂的拉沃克斯。你的宽仁已获证明。现在投降，格拉加尔将-'</br>‎	</br>'不。' </br>‎	</br>'-什么？你要为一个对你毫无爱意的神抛弃自己的生命？' </br>‎	</br>'我们之中总会有一个。'"
 	icon_state = "ravox_b"
 
 /obj/item/clothing/neck/roguetown/psicross/astrata/bronze
-	name = "bronze amulet of Astrata"
-	desc = "'We are Her soldiers, the Legion of light.' </br>'We are the center, the depth of the Sun.' </br>'Fire and flame - we are one.'"
+	name = "青铜阿斯特拉塔护符"
+	desc = "'我们是她的士兵，光之军团。' </br>'我们是中心，是太阳的深处。' </br>'火与焰 - 我们本是一体。'"
 	icon_state = "astrata_b"
 	item_state = "astrata_b"
 
 /obj/item/clothing/neck/roguetown/psicross/malum/bronze
-	name = "bronze amulet of Malum"
-	desc = "Stone to steel, bone to bronze, mulched to masterworked."
+	name = "青铜玛勒姆护符"
+	desc = "由石成钢，由骨成铜，由腐料成杰作。"
 	icon_state = "malum_b"
 	item_state = "malum_b"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/bronze
-	name = "bronze amulet of Graggar"
-	desc = "'EVERYTHING - AND EVERYONE YOU LOVE - WILL BE GONE! WHAT WILL YOU HAVE, AFTER THE LAST FIRE'S BEEN SMOTHERED OUT?!' </br>‎	</br>'..You. I'd still have you.'"
+	name = "青铜格拉加尔护符"
+	desc = "'一切 - 连同你所爱的每一个人 - 都会消失！当最后一团火焰也被彻底掐灭之后，你还剩下什么？！' </br>‎	</br>'……你。我至少还会有你。'"
 	icon_state = "graggar_b"
 	item_state = "graggar_b"
 
@@ -704,8 +704,8 @@
 	icon_state = "psycross_reform"
 
 /obj/item/clothing/neck/roguetown/psicross/bronze
-	name = "bronze psycross"
-	desc = "'Until my heart ceases beating, and until my vigil ends - I will bring you down with me!'"
+	name = "青铜普赛圣十字"
+	desc = "'直到我的心停止跳动，直到我的守望终结 - 我会带着你一起倒下！'"
 	icon_state = "psycross_b"
 	item_state = "psycross_b"
 
@@ -832,7 +832,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/naledi
 	name = "纳莱迪教十字手环"
-	desc = "一件来自异乡的奇特信仰圣徽。它以圆环构成三叉的普希顿教十字，体现着纳莱迪人对普希顿永恒不灭的信念。"
+	desc = "一件来自异乡的奇特信仰圣徽。它以圆环构成三叉的普赛顿教十字，体现着纳莱迪人对普赛顿永恒不灭的信念。"
 	icon_state = "psybracelet"
 	item_state = null
 
@@ -1300,7 +1300,7 @@
 	smeltresult = null
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar
-	name = "格拉格护符"
+	name = "格拉加尔护符"
 	desc = "鲜血只会通往荣耀，而暴力孕育神性。绝不止于此。征服，不过是胜利的另一种名字。"
 	icon_state = "graggar"
 	resistance_flags = FIRE_PROOF
@@ -1308,7 +1308,7 @@
 	smeltresult = null
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/bronze
-	name = "青铜格拉格护符"
+	name = "青铜格拉加尔护符"
 	desc = "'一切都会消失，连同你所爱的一切与每一个人！当最后一团火焰也被彻底掐灭之后，你还剩下什么？！'</br>‎  </br>'……你。我至少还会有你。'"
 	icon_state = "graggar_b"
 	item_state = "graggar_b"

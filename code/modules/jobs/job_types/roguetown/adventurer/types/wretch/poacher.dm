@@ -60,7 +60,7 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 		)
 	if(H.mind)
-		var/fashion = list("狡黠弓手", "冷酷猎人", "无情屠兽者", "失势林务官")
+		var/fashion = list("狡黠弓手", "冷酷猎人", "无情屠兽者", "失势守林人")
 		var/fashion_choice = input(H, "今天你想扮成谁？这只影响外观。", "穿得体面些") as anything in fashion
 		H.set_blindness(0)
 		switch(fashion_choice)
@@ -73,7 +73,7 @@
 			if("无情屠兽者") //Classic Poacher look with a dark green hood and a fur cloak.
 				head = /obj/item/clothing/head/roguetown/roguehood/darkgreen
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak/darkgreen
-			if("失势林务官") //Warden's antlered shroud and warden's cloak. Marginally better protection but makes you look a lot more suspicious.
+			if("失势守林人") //Warden's antlered shroud and warden's cloak. Marginally better protection but makes you look a lot more suspicious.
 				head = /obj/item/clothing/head/roguetown/roguehood/poacher
 				cloak = /obj/item/clothing/cloak/poachercloak
 		var/weapons = list("匕首", "斧头", "短棍")
