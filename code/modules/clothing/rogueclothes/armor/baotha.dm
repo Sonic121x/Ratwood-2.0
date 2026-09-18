@@ -1,7 +1,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/baotha
-	name = "巴欧萨胸甲"
-	desc = "肌肉线条夸张的胸甲。强大的巴欧萨魔法守护着甲片间若隐若现的裸露肌肤。"
+	name = "巴奥莎胸甲"
+	desc = "肌肉线条夸张的胸甲。强大的巴奥莎魔法守护着甲片间若隐若现的裸露肌肤。"
 	icon = 'icons/roguetown/clothing/special/baotha.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/baotha.dmi'
 	icon_state = "baothachest"
@@ -26,8 +26,8 @@
 
 /obj/item/clothing/under/roguetown/platelegs/baotha
 	max_integrity = ARMOR_INT_LEG_ANTAG
-	name = "巴欧萨腿甲"
-	desc = "强大的巴欧萨魔法守护着甲片间若隐若现的裸露肌肤。"
+	name = "巴奥莎腿甲"
+	desc = "强大的巴奥莎魔法守护着甲片间若隐若现的裸露肌肤。"
 	icon = 'icons/roguetown/clothing/special/baotha.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/baotha.dmi'
 	icon_state = "baotha_legs"
@@ -52,7 +52,7 @@
 // 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
 /obj/item/clothing/wrists/roguetown/bracers/baotha
-	name = "巴欧萨臂甲"
+	name = "巴奥莎臂甲"
 	desc = "镀金臂甲，保护双臂。"
 	body_parts_covered = ARMS
 	icon = 'icons/roguetown/clothing/special/baotha.dmi'
@@ -70,7 +70,7 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "BRACER")
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/baotha
-	name = "巴欧萨束带"
+	name = "巴奥莎束带"
 	desc = "黑色皮革紧缠肌肤，冰冷铆钉陷入其间，留下痕迹。"
 	icon = 'icons/roguetown/clothing/special/baotha.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/baotha.dmi'
@@ -132,8 +132,8 @@
 
 
 /obj/item/storage/belt/rogue/leather/plaquegold/baotha
-	name = "巴欧萨胯链"
-	desc = "巴欧萨魔法让你的装备稳妥贴身，又不遮挡风景。"
+	name = "巴奥莎胯链"
+	desc = "巴奥莎魔法让你的装备稳妥贴身，又不遮挡风景。"
 	icon = 'icons/roguetown/clothing/feet.dmi'
 	icon_state = "anklets"
 	color = "#9c7373"
@@ -150,8 +150,8 @@
 	qdel(src)
 
 /obj/item/clothing/gloves/roguetown/chain/baotha
-	name = "巴欧萨腕环"
-	desc = "强大的巴欧萨魔法守护着下方裸露的肌肤。"
+	name = "巴奥莎腕环"
+	desc = "强大的巴奥莎魔法守护着下方裸露的肌肤。"
 	icon = 'icons/roguetown/clothing/feet.dmi'
 	icon_state = "anklets"
 	color = "#9c7373"
@@ -192,8 +192,8 @@
 // 	qdel(src)
 
 /obj/item/clothing/shoes/roguetown/anklets/baotha
-	name = "巴欧萨踝环"
-	desc = "强大的巴欧萨魔法守护着下方裸露的肌肤。"
+	name = "巴奥莎踝环"
+	desc = "强大的巴奥莎魔法守护着下方裸露的肌肤。"
 	color = "#9c7373"
 // 	mob_overlay_icon = null
 	armor = ARMOR_ASCENDANT

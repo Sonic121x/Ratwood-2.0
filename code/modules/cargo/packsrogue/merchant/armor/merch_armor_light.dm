@@ -2,8 +2,8 @@
 // Pricing principles - Based on uhh sell price x 1.5 approx lol.
 
 /datum/supply_pack/rogue/light_armor
-	group = "Armor (Light)"
-	crate_name = "merchant guild's crate"
+	group = "护甲（轻型）"
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/light_armor/padded_gambeson

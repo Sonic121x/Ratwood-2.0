@@ -31,9 +31,9 @@
 		animate(time = 2, transform = old_matrix)
 	if(margin < PICKPOCKET_NEARFAIL_CEIL)
 		playsound(victim, "rustle", 60, TRUE, -4)
-		victim.balloon_alert(victim, "someone's in my things!")
+		victim.balloon_alert(victim, "有人在动我的东西！")
 	else if(margin < PICKPOCKET_MIDDLING_CEIL)
-		to_chat(victim, span_warning("I feel a faint tug at my belongings..."))
+		to_chat(victim, span_warning("我感觉自己的东西被轻轻拽了一下……"))
 
 /mob/living/carbon/human/proc/grant_pickpocket_xp(mob/living/carbon/human/victim, amount)
 	if(src != victim && victim.stat == CONSCIOUS && mind)
@@ -41,7 +41,7 @@
 
 /mob/living/carbon/human/proc/finalize_pickpocket_steal(mob/living/carbon/human/victim, obj/item/picked, exp_to_gain)
 	put_in_active_hand(picked)
-	to_chat(src, span_green("I stole [picked]!"))
+	to_chat(src, span_green("我偷到了[picked]！"))
 	victim.log_message("has had \the [picked] stolen by [key_name(src)]", LOG_ATTACK, color="white", meta = list(LOG_META_ATTACKER = ckey))
 	log_message("has stolen \the [picked] from [key_name(victim)]", LOG_ATTACK, color="white", meta = list(LOG_META_TARGET = victim.ckey))
 	if(victim.client && victim.stat != DEAD)
@@ -150,14 +150,14 @@
 
 /datum/pickpocket_session/proc/attempt_lift(obj/item/wanted)
 	if(thief.get_active_held_item())
-		to_chat(thief, span_warning("My hand is full."))
+		to_chat(thief, span_warning("我手里拿着东西。"))
 		qdel(src)
 		return
 	var/success = prob(thief.pickpocket_extract_chance(wanted, istype(container, /obj/item/storage/belt)))
 	if(success)
 		STR.remove_from_storage(wanted, get_turf(victim))
 	else
-		to_chat(thief, span_warning("My fingers slip off [wanted]."))
+		to_chat(thief, span_warning("我的手指从[wanted]上滑开了。"))
 	thief.pickpocket_feedback(victim, margin, container)
 	if(success)
 		thief.finalize_pickpocket_steal(victim, wanted, exp_to_gain)
