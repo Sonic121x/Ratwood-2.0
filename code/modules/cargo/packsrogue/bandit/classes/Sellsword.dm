@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Sellsword
-	group = "Sellsword"
+	group = "佣兵剑客" // English: Sellsword
 	crate_name = "Gifts of Coinspillers"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
