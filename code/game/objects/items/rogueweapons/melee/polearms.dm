@@ -101,13 +101,13 @@
 	effective_range_type = EFF_RANGE_ABOVE
 
 /datum/intent/spear/cut/bardiche/cleave
-	name = "cleaving cut"
+	name = "裂斩"
 	icon_state = "incleave"
-	attack_verb = list("cleaves", "carves through")
+	attack_verb = list("劈裂", "斩穿")
 	clickcd = CLICK_CD_MASSIVE
 	damfactor = 1.0
 	cleave = /datum/cleave_pattern/forward_cleave
-	desc = "A cleave that cuts through a second target behind the first."
+	desc = "一记劈斩，会连第一个目标身后的第二个目标一并斩开。"
 
 /datum/intent/spear/cut/bardiche
 	damfactor = 1.2
@@ -118,12 +118,12 @@
 	chargetime = 0
 
 /datum/intent/spear/cut/glaive/sweep
-	name = "sweeping cut"
+	name = "横扫斩"
 	icon_state = "insweep"
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫而过", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	cleave = /datum/cleave_pattern/horizontal_sweep
-	desc = "A sweep that cuts through targets to the front."
+	desc = "一记横扫，会斩开身前的所有目标。"
 
 /datum/intent/spear/cast
 	name = "投掷"
@@ -138,12 +138,12 @@
 	chargetime = 0
 
 /datum/intent/spear/cut/naginata/sweep
-	name = "sweeping cut"
+	name = "横扫斩"
 	icon_state = "insweep"
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫而过", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	cleave = /datum/cleave_pattern/horizontal_sweep
-	desc = "A sweep that cuts through targets to the front."
+	desc = "一记横扫，会斩开身前的所有目标。"
 
 /datum/intent/sword/cut/zwei
 	reach = 2
@@ -152,20 +152,20 @@
 	reach = 2
 
 /datum/intent/sword/cut/zwei/cleave
-	name = "cleaving cut"
+	name = "裂斩"
 	icon_state = "incleave"
-	desc = "A cleave that cuts through a second target behind the first."
-	attack_verb = list("cleaves", "carves through")
+	desc = "一记劈斩，会连第一个目标身后的第二个目标一并斩开。"
+	attack_verb = list("劈裂", "斩穿")
 	clickcd = CLICK_CD_HEAVY
 	damfactor = 1.0
 	reach = 1 // No!!
 	cleave = /datum/cleave_pattern/forward_cleave
 
 /datum/intent/sword/cut/zwei/sweep
-	name = "sweeping cut"
+	name = "横扫斩"
 	icon_state = "insweep"
-	desc = "A heavy sweep that cuts through targets to the front."
-	attack_verb = list("sweeps through", "cuts across")
+	desc = "一记沉重的横扫，会斩开身前的所有目标。"
+	attack_verb = list("横扫而过", "横斩")
 	reach = 1
 	clickcd = CLICK_CD_MASSIVE
 	cleave = /datum/cleave_pattern/horizontal_sweep
@@ -415,7 +415,7 @@
 
 /obj/item/rogueweapon/spear/ancient
 	name = "远古长矛"
-	desc = "一根扭曲虬结的长杆，顶端镶着打磨光亮的 gilbranze。你的呼吸一滞，指节也不自觉攥紧了矛杆；你仿佛窥见了尚未来临之事，却又无法将其留在脑海。若真知晓这个垂死世界的命运，任何人都会为之发狂。"
+	desc = "一根扭曲虬结的长杆，顶端镶着打磨光亮的吉尔青铜。你的呼吸一滞，指节也不自觉攥紧了矛杆；你仿佛窥见了尚未来临之事，却又无法将其留在脑海。若真知晓这个垂死世界的命运，任何人都会为之发狂。"
 	icon_state = "ancient_spear"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -515,8 +515,8 @@
 			update_icon()
 
 /obj/item/rogueweapon/spear/psyspear
-	name = "普希顿银矛"
-	desc = "一柄装饰华美的长矛，表面覆着用于礼仪的银层。倒钩轻刺你的掌心，而在那一瞬间，你仿佛看见了满目猩红。永远别忘了，普希顿为何而泣。"
+	name = "普赛顿银矛"
+	desc = "一柄装饰华美的长矛，表面覆着用于礼仪的银层。倒钩轻刺你的掌心，而在那一瞬间，你仿佛看见了满目猩红。永远别忘了，普赛顿为何而泣。"
 	icon_state = "psyspear"
 	force = 20
 	force_wielded = 30
@@ -617,9 +617,9 @@
 	special = null
 
 /obj/item/rogueweapon/spear/billhook/zizo
-	name = "avantyne billhook"
-	desc = "A twisted implement of harvest, its hooked edge festering with crystalline malice. It is a weapon of pure upheaval, designed \
-	to drag Grimoria's false idols into the dirt."
+	name = "阿凡泰因钩镰"
+	desc = "一件扭曲的收获器具，其钩刃上滋生着晶状的恶意。它是纯粹颠覆的武器，\
+	专为将格里莫里亚的虚假偶像拖入泥土之中而造。"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	icon_state = "zizobillhook"
 	unenchantable = TRUE
@@ -903,7 +903,7 @@
 
 /obj/item/rogueweapon/halberd/bardiche/ancient
 	name = "远古长柄战斧"
-	desc = "一柄骇人的长柄巨斧，由打磨光亮的吉尔布兰兹锻成。当她升格之时，这些失去主人的兵器一同沉入大地深处。阴影中的手在数个世纪里守护着这些斧刃，最终铸出了它的钢刃后继者：偃月刀。"
+	desc = "一柄骇人的长柄巨斧，由打磨光亮的吉尔青铜锻成。当她升格之时，这些失去主人的兵器一同沉入大地深处。阴影中的手在数个世纪里守护着这些斧刃，最终铸出了它的钢刃后继者：偃月刀。"
 	icon_state = "ancient_bardiche"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -951,7 +951,7 @@
 		var/datum/special_intent/S = intent // Hate this DM quirk.
 		special_options[S::name] = S
 
-	var/choice = input(user, "Choose the Manoeuvre", "MANOEUVRE") as anything in special_options
+	var/choice = input(user, "选择招式", "招式") as anything in special_options
 	if(choice)
 		qdel(special)
 		var/datum/special_intent/S = special_options[choice]
@@ -961,8 +961,8 @@
 /obj/item/rogueweapon/halberd/blacksteel/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Banner") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds a banner to [src]."))
+		var/choice = input(user, "选择一种颜色。", "旗帜") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]给[src]挂上了一面旗帜。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "detail"
@@ -1008,8 +1008,8 @@
 	)
 
 /obj/item/rogueweapon/halberd/psyhalberd
-	name = "普希顿戟斧"
-	desc = "这是一种久经考验的设计，曾协助人类斩倒敌人、守护普希顿的羊群，而今又装上了更长的刃部与一对银尖鹰喙。"
+	name = "普赛顿戟斧"
+	desc = "这是一种久经考验的设计，曾协助人类斩倒敌人、守护普赛顿的羊群，而今又装上了更长的刃部与一对银尖鹰喙。"
 	icon_state = "silverhalberd"
 	force = 15
 	force_wielded = 25
@@ -1123,7 +1123,7 @@
 		var/datum/special_intent/S = intent // Hate this DM quirk.
 		special_options[S::name] = S
 
-	var/choice = input(user, "Choose the Manoeuvre", "MANOEUVRE") as anything in special_options
+	var/choice = input(user, "选择招式", "招式") as anything in special_options
 	if(choice)
 		qdel(special)
 		var/datum/special_intent/S = special_options[choice]
@@ -1133,8 +1133,8 @@
 /obj/item/rogueweapon/eaglebeak/blacksteel/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Banner") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds a banner to [src]."))
+		var/choice = input(user, "选择一种颜色。", "旗帜") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]给[src]挂上了一面旗帜。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "detail"
@@ -1203,8 +1203,8 @@
 /obj/item/rogueweapon/spear/bronze/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Banner") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds a banner to [src]."))
+		var/choice = input(user, "选择一种颜色。", "旗帜") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]给[src]挂上了一面旗帜。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "detail"
@@ -1224,10 +1224,10 @@
 	update_icon()
 
 /obj/item/rogueweapon/spear/bronze/winged
-	name = "bronze winged spear"
-	desc = "An antiquital staff, adorned with a winged bronze spearhead. The flared edges catch errant strikes and keep snarling foes from \
-	further impaling themselves in order to maul its wielder. </br>Scholars believe this particular type of polearm was made to counter Vheslynic \
-	seadaemons, during the now-mythologized Syonic era's collapse."
+	name = "青铜翼矛"
+	desc = "一根古风十足的长杆，顶端饰有带翼的青铜矛头。张开的刃缘能拦下偏斜的攻势，\
+	令咆哮的敌人无法再进一步刺入、以伤及其持握者。 </br>学者们认为，这种形制的长柄武器是为对抗维丝林尼克的海魔而造，\
+	时间正值那个如今已被神话化的赛昂纪元崩溃之际。"
 	icon_state = "bronzewingedspear"
 	item_state = "bronzewingedspear"
 	wdefense = 6 //Functionally the same, but with +1 DEF.
@@ -1235,8 +1235,8 @@
 /obj/item/rogueweapon/spear/bronze/winged/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Banner") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds a banner to [src]."))
+		var/choice = input(user, "选择一种颜色。", "旗帜") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]给[src]挂上了一面旗帜。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "detail"
@@ -1257,20 +1257,20 @@
 
 // these only exist for Thespian because someone at Azure didn't think to let the spear just spawn at our players feet if the hand is full... whatever, no strap is auraful
 /obj/item/rogueweapon/spear/bronze/strapless
-	desc = "An antiquital staff, adorned with a bronze spearhead. Ancient in both design and purpose, its lighter weight once complimented \
-	the towering shields of precivilizational legionnaires. While rarely seen beyond the Deadlands, nowadaes, its lightweight balance makes \
-	it perfect for one-handed thrusts and throws. </br>This particular spear has a thin strap running along its grain, allowing it to be stowed \
-	without the need for a greatweapon strap."
+	desc = "一根古风十足的长杆，顶端饰有青铜矛头。无论设计还是用途都十分古老，\
+	它轻盈的重量曾与前文明军团士兵高耸的巨盾相得益彰。如今虽少见于死地之外，\
+	但这种轻巧的平衡让它很适合单手突刺与投掷。 </br>这柄长矛的木纹上还系着一条细带，\
+	让它无需巨兵背带便能收挂起来。"
 	slot_flags = ITEM_SLOT_BACK //Option-unique, uncraftable. Ensures the loadout doesn't implode on itself.
 	equip_delay_self = 2 SECONDS
 	unequip_delay_self = 2 SECONDS
 	inv_storage_delay = 1 SECONDS
 
 /obj/item/rogueweapon/spear/bronze/winged/strapless
-	desc = "An antiquital staff, adorned with a winged bronze spearhead. The flared edges catch errant strikes and keep snarling foes from further \
-	impaling themselves in order to maul its wielder. </br>Scholars believe this particular type of polearm was made to counter Vheslynic seadaemons, \
-	during the now-mythologized Syonic era's collapse. </br>This particular spear has a thin strap running along its grain, allowing it to be stowed \
-	without the need for a greatweapon strap."
+	desc = "一根古风十足的长杆，顶端饰有带翼的青铜矛头。张开的刃缘能拦下偏斜的攻势，\
+	令咆哮的敌人无法再进一步刺入、以伤及其持握者。 </br>学者们认为，这种形制的长柄武器是为对抗维丝林尼克的海魔而造，\
+	时间正值那个如今已被神话化的赛昂纪元崩溃之际。 </br>这柄长矛的木纹上还系着一条细带，\
+	让它无需巨兵背带便能收挂起来。"
 	slot_flags = ITEM_SLOT_BACK //Ditto.
 	equip_delay_self = 2 SECONDS
 	unequip_delay_self = 2 SECONDS
@@ -1323,7 +1323,7 @@
 
 /obj/item/rogueweapon/greatsword/ancient
 	name = "远古大剑"
-	desc = "一柄由打磨光亮的 gilbranze 锻成的巨刃。你的族类终会在狂怒与毁灭中认清自身本性。你们将踏上群星之路，把它们一颗接一颗燃尽。直到最后一颗星辰也化作尘埃，你才会明白，祂试图将你们从人类最大的敌人手中拯救出来；那便是虚无。"
+	desc = "一柄由打磨光亮的吉尔青铜锻成的巨刃。你的族类终会在狂怒与毁灭中认清自身本性。你们将踏上群星之路，把它们一颗接一颗燃尽。直到最后一颗星辰也化作尘埃，你才会明白，祂试图将你们从人类最大的敌人手中拯救出来；那便是虚无。"
 	icon_state = "ancient_gsw"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -1371,7 +1371,7 @@
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge
 	name = "钢制焰形剑"
-	desc = "这是格伦泽尔霍夫式“双手剑”的近亲，深受奥塔瓦贵族青睐。其名源自那独特的火焰形剑身；这种工艺唯有普希顿最出色的武匠方能驾驭。"
+	desc = "这是格伦泽尔霍夫式“双手剑”的近亲，深受奥塔瓦贵族青睐。其名源自那独特的火焰形剑身；这种工艺唯有普赛顿最出色的武匠方能驾驭。"
 	icon_state = "steelflamberge"
 	max_blade_int = 200
 	max_integrity = 180
@@ -1390,9 +1390,9 @@
 				return list("shrink" = 0.6,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/greatsword/zizo
-	name = "avantyne greatsword"
-	desc = "Malediction made manifest; the greatweapon of an otherworldly champion, unfazed by the thickest plates and the toughest flesh. Let no one stop the \
-	march of Her disciples, towards the filament's sputtering wound. Take thine birthright and ascend to the heavens beyond, or die trying."
+	name = "阿凡泰因大剑"
+	desc = "具现化的诅咒；一位异界勇士的巨兵，最厚重的甲胄与最坚韧的血肉都无法令它退却。\
+	别让任何人阻挡祂门徒的行军——朝着那丝线噼啪溅裂的伤口前进。夺回你与生俱来的权利，升入彼岸的天堂，否则便死于尝试。"
 	icon_state = "zizogsw"
 	unenchantable = TRUE
 	force = 20
@@ -1426,8 +1426,8 @@
 	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/rogueweapon/greatsword/psygsword
-	name = "普希顿大剑"
-	desc = "据说，一位普希顿铁匠曾在圣玛卢姆亲自引导下锻出这柄可怖巨刃，并受命去斩杀那头盘踞奥塔瓦农地的恶魔。后来人们寻回了它的设计、加以研究，却只打造了寥寥几件仿品，因为他们相信复制会令其锋芒减退。"
+	name = "普赛顿大剑"
+	desc = "据说，一位普赛顿铁匠曾在圣玛勒姆亲自引导下锻出这柄可怖巨刃，并受命去斩杀那头盘踞奥塔瓦农地的恶魔。后来人们寻回了它的设计、加以研究，却只打造了寥寥几件仿品，因为他们相信复制会令其锋芒减退。"
 	icon_state = "silverexealt"
 	minstr = 11//+2, in exchange for the better defense. Is this really a problem? C'mon. It didn't need -5 force.
 	wdefense = 6
@@ -1490,7 +1490,7 @@
 
 /obj/item/rogueweapon/greatsword/bsword/psy/relic
 	name = "信条"
-	desc = "普希顿的祈祷与忒尼斯人铁匠齐心协力，只为铸成一把足以诛灭四魔的兵器。圣拉沃克斯偏爱这种沉重巨刃，用它去毁灭那些威胁祂羊群之人。护手上的普希圣徽连诺克最微弱的一缕光都能映出。你就是那道光，去为他们指路吧。"
+	desc = "普赛顿的祈祷与忒尼斯人铁匠齐心协力，只为铸成一把足以诛灭四魔的兵器。圣拉沃克斯偏爱这种沉重巨刃，用它去毁灭那些威胁祂羊群之人。护手上的普赛圣十字连诺克最微弱的一缕光都能映出。你就是那道光，去为他们指路吧。"
 	icon_state = "psybroadsword"
 	force = 25
 	force_wielded = 25
@@ -1519,7 +1519,7 @@
 
 /obj/item/rogueweapon/greatsword/bsword/psy/unforgotten
 	name = "未被遗忘之刃"
-	desc = "大审判官阿奇博尔德曾记下这样一次远征：七名勇敢的裁决者深入格朗尼亚积雪覆顶的荒原，只为根除邪恶。据说他们的领袖、神圣教令官吉耶曼，披甲与黑钢异端苦战了七天七夜，直到普希顿认可了他的坚忍。最终留下的只有他的剑，而那枚普希圣徽仍缠在剑柄上，以作追念。"
+	desc = "大审判官阿奇博尔德曾记下这样一次远征：七名勇敢的裁决者深入格朗尼亚积雪覆顶的荒原，只为根除邪恶。据说他们的领袖、神圣教令官吉耶曼，披甲与黑钢异端苦战了七天七夜，直到普赛顿认可了他的坚忍。最终留下的只有他的剑，而那枚普赛圣十字仍缠在剑柄上，以作追念。"
 	icon_state = "forgottenblade"
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver
@@ -1584,7 +1584,7 @@
 
 /obj/item/rogueweapon/woodstaff/naledi
 	name = "纳勒迪战杖"
-	desc = "这根法杖上承载着普希顿智慧的新月徽记，以及战学者所用的黑金纹章。"
+	desc = "这根法杖上承载着普赛顿智慧的新月徽记，以及战学者所用的黑金纹章。"
 	icon_state = "naledistaff"
 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)
 	gripped_intents = list(/datum/intent/spear/bash/ranged, /datum/intent/special/magicarc, /datum/intent/mace/smash/wood/ranged)
@@ -1615,7 +1615,7 @@
 //Only a 'woodenstaff' for the purpose of CDR on spells.
 /obj/item/rogueweapon/woodstaff/sojourner
 	name = "行旅者法杖"
-	desc = "这是一柄旧普希顿长矛残留下来的部分。它的矛尖已经磨钝，倒刺和三叉形矛首也全被拆去。\
+	desc = "这是一柄旧普赛顿长矛残留下来的部分。它的矛尖已经磨钝，倒刺和三叉形矛首也全被拆去。\
 	如今它承担着更高贵的使命，成了行旅者施法用的法杖。不过若力气够大，仍能把钝尖狠狠干出去。"
 	icon_state = "psystaff"//Temp
 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)
@@ -1681,7 +1681,7 @@
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/silver
 	name = "银头长杖"
-	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳勒迪战学者常携带的战杖。人们说它结实到连 avantyne 砍在杖身上都不会崩出一根木刺。"
+	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳勒迪战学者常携带的战杖。人们说它结实到连阿凡泰因砍在杖身上都不会崩出一根木刺。"
 	force = 20
 	force_wielded = 27
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
@@ -1701,8 +1701,8 @@
 	)
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/psy
-	name = "普希顿长杖"
-	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳勒迪战学者常携带的战杖。人们说它结实到连 avantyne 砍在杖身上都不会崩出一根木刺。"
+	name = "普赛顿长杖"
+	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳勒迪战学者常携带的战杖。人们说它结实到连阿凡泰因砍在杖身上都不会崩出一根木刺。"
 	force = 20
 	force_wielded = 27
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
@@ -1858,8 +1858,8 @@
 /obj/item/rogueweapon/spear/lance/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Banner") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds a banner to [src]."))
+		var/choice = input(user, "选择一种颜色。", "旗帜") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]给[src]挂上了一面旗帜。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "detail"
@@ -2051,14 +2051,14 @@
 	peel_divisor = 1
 
 /datum/intent/sword/cut/exe/sweep/dragonslayer
-	name = "vorpal sweep"
+	name = "斩首横扫"
 	icon_state = "insweep"
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫而过", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	reach = 2
 	damfactor = 2 // Hits harder but clunkier
 	cleave = /datum/cleave_pattern/frontal_arc
-	desc = "A heavy sweep that cuts through targets to the front."
+	desc = "一记沉重的横扫，会斩开身前的所有目标。"
 
 //
 
@@ -2114,7 +2114,7 @@
 		if(obj_broken)
 			return FALSE
 		if(prob(coverage))
-			owner.visible_message(span_danger("[owner] swings [src] forward in an arc, swatting the [hitby] away!"))
+			owner.visible_message(span_danger("[owner]将[src]抡出一道弧线，把[hitby]打飞出去！"))
 			playsound(src, BLADEWOOSH_LARGE, 100, TRUE, -1) //HOME RUN!!!
 			return TRUE
 	return FALSE
