@@ -32,8 +32,8 @@
 	sellprice = 11
 
 /obj/item/clothing/ring/bronze
-	name = "bronze ring"
-	desc = "A ring of bronzen resiliance."
+	name = "青铜戒指"
+	desc = "一枚坚韧的青铜戒指。"
 	icon_state = "ring_b"
 
 /obj/item/clothing/ring/gold
@@ -199,10 +199,10 @@
 /obj/item/clothing/ring/signet
 	name = "金印戒"
 	icon_state = "signet"
-	desc = "一枚奢华的金戒指，上面刻有普希顿的符号。将其浸入熔化的红脂后，便可为宗教文书盖印密封，这类门道通常更为宗教裁判所所熟知，而非教会或王室。"
+	desc = "一枚奢华的金戒指，上面刻有普赛顿的符号。将其浸入熔化的红脂后，便可为宗教文书盖印密封，这类门道通常更为宗教裁判所所熟知，而非教会或王室。"
 	sellprice = 135
 	var/tallowed = FALSE
-	var/seal_label = "Otavan驻河谷地带代表团大审判官"
+	var/seal_label = "奥塔万驻谷地代表团大审判官"
 	var/seal_color = "#6b0000"
 	var/seal_is_official = TRUE
 
@@ -339,8 +339,8 @@
 		return
 
 /obj/item/clothing/ring/band/bronze
-	name = "bronze weddingband"
-	desc = "A resilient weddingband of bronze, ornately decorated with the engravings of a lover's name."
+	name = "青铜婚戒"
+	desc = "一枚坚韧的青铜婚戒，上面精雕着恋人的名字纹样。"
 	icon_state = "b_ring_wedding"
 
 //blacksteel rings
