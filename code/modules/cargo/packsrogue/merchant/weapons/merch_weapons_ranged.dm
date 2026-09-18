@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue/ranged_weapons
-	group = "Weapons (Ranged)"
-	crate_name = "merchant guild's crate"
+	group = "武器（远程）"
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/ranged_weapons/tossbladeiron

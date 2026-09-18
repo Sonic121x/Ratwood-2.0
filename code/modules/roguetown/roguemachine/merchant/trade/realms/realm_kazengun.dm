@@ -106,7 +106,7 @@
 		"By Aisata's Order, my weights are true. Verify them if you must. To accuse without verifying is a different matter.",
 		"We crossed the Asemai calm as the proverb. We crossed your western waters less so. The fee should reflect the difference.",
 		"My crew has been told the foreign chaos is not their concern. Keep them on the pier and they will keep your stevedores breathing.",
-		"I sail with a Kouken aboard, returning from service abroad. He has not spoken since we cleared Kukui. Do not address him - he is not a guest of your house, only of mine.",
+		"I sail with a 寇肯 aboard, returning from service abroad. He has not spoken since we cleared Kukui. Do not address him - he is not a guest of your house, only of mine.",
 		"Aisata rises in the east and sets beyond your Otavan capes. I follow her path. one month out, one month back, and the sums must justify both.",
 		"A typhoon caught us off Mitihara on the outward leg - the city still rebuilds even ten yils after the last. We brought what was salvaged. Pay fairly for it.",
 		"Mamuke's iron, Matoko's coin. The trade is blessed; do not curse it with delay.",

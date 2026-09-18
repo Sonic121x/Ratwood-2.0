@@ -14,7 +14,7 @@
 
 
 /datum/anvil_recipe/kazengunite/kabuto
-	name = "Kabuto (+1 钢, +1 熟皮)"
+	name = "胴丸盔 (+1 钢, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/kabuto
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -30,18 +30,18 @@
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/kazengunite/samsibsa
-	name = "Samsibsa 鳞板甲 (+1 半身板甲, 钢, +1 钢, +2 熟皮)"
+	name = "三十四鳞板甲 (+1 半身板甲, 钢, +1 钢, +2 熟皮)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/kazengunite/kote
-	name = "Jjajeungna 护手"
+	name = "贾正纳护手"
 	created_item = /obj/item/clothing/gloves/roguetown/plate/kote
 	display_category = ITEM_CAT_ARMOR_GLOVES
 
 /datum/anvil_recipe/kazengunite/ssangsudo
-	name = "Ssangsudo"
+	name = "双手刀"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "武器"
 	req_blade = /obj/item/blade/steel_sword
