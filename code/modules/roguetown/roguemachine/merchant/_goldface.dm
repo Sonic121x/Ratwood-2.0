@@ -55,37 +55,37 @@
 	// Pioneer) and "Things" are the bandit Hoardmaster's stock, job-gated there - the legacy goldface
 	// never sold them, so they are deliberately NOT listed here.
 	var/list/categories = list(
-		"Alcohols",
-		"Apparel",
-		"Consumable",
-		"Cosmetics", // Ratwood pack groups the upstream list dropped
-		"Food",
-		"Games",
-		"Gems",
-		"Instruments",
-		"Luxury",
-		"Livestock",
-		"Magic",
-		"Perfumes",
-		"Seeds",
-		"Substances",
-		"Tools",
-		"Wardrobe",
-		"Zadpacks",
+		"酒类", // English: Alcohols
+		"服饰", // English: Apparel
+		"消耗品", // English: Consumable
+		"化妆品", // Ratwood pack groups the upstream list dropped | English: Cosmetics
+		"食品", // English: Food
+		"游戏用品", // English: Games
+		"宝石", // English: Gems
+		"乐器", // English: Instruments
+		"奢侈品", // English: Luxury
+		"牲畜", // English: Livestock
+		"魔法用品", // English: Magic
+		"香水", // English: Perfumes
+		"种子", // English: Seeds
+		"烟草与药粉", // English: Substances
+		"工具", // English: Tools
+		"衣装", // English: Wardrobe
+		"扎德鸟包", // English: Zadpacks
 	)
 	var/list/categories_gamer = list(
-		"Adventuring Supplies",
-		"Armor (Light)",
-		"Armor (Iron)",
-		"Armor (Bronze)",
-		"Armor (Steel)",
-		"Armor (Exotic)",
-		"Potions",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Weapons (Bronze)",
-		"Weapons (Steel)",
-		"Weapons (Foreign)",
+		"冒险用品", // English: Adventuring Supplies
+		"护甲（轻型）", // English: Armor (Light)
+		"护甲（铁）", // English: Armor (Iron)
+		"护甲（青铜）", // English: Armor (Bronze)
+		"护甲（钢）", // English: Armor (Steel)
+		"护甲（异域）", // English: Armor (Exotic)
+		"药水", // English: Potions
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"武器（青铜）", // English: Weapons (Bronze)
+		"武器（钢）", // English: Weapons (Steel)
+		"武器（异域）", // English: Weapons (Foreign)
 	)
 	var/is_public = FALSE // Whether it is a public access vendor.
 	var/extra_fee = 0 // Public-tier Porters/Gnomes margin tacked onto base price. Meant to make publicface very unprofitable until Gnomes are unlocked and the margin flows to the Merchant Fund.
@@ -106,22 +106,22 @@
 	profit_id = list("Merchant", "Shophand")
 	value_record_key = STATS_SILVERFACE_VALUE_SPENT
 	categories = list(
-		"Adventuring Supplies",
-		"Alcohols",
-		"Consumable",
-		"Cosmetics", // Ratwood pack groups restored from the pre-port SILVERFACE
-		"Food",
-		"Games",
-		"Gems",
-		"Instruments",
-		"Luxury",
-		"Livestock",
-		"Magic",
-		"Perfumes",
-		"Seeds",
-		"Substances",
-		"Tools",
-		"Weapons (Foreign)",
+		"冒险用品", // English: Adventuring Supplies
+		"酒类", // English: Alcohols
+		"消耗品", // English: Consumable
+		"化妆品", // Ratwood pack groups restored from the pre-port SILVERFACE | English: Cosmetics
+		"食品", // English: Food
+		"游戏用品", // English: Games
+		"宝石", // English: Gems
+		"乐器", // English: Instruments
+		"奢侈品", // English: Luxury
+		"牲畜", // English: Livestock
+		"魔法用品", // English: Magic
+		"香水", // English: Perfumes
+		"种子", // English: Seeds
+		"烟草与药粉", // English: Substances
+		"工具", // English: Tools
+		"武器（异域）", // English: Weapons (Foreign)
 	)
 	categories_gamer = list()
 
@@ -134,14 +134,14 @@
 	lockid = "crafterguild"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Armor (Iron)",
-		"Armor (Bronze)",
-		"Armor (Steel)",
-		"Armor (Exotic)",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Weapons (Bronze)",
-		"Weapons (Steel)",
+		"护甲（铁）", // English: Armor (Iron)
+		"护甲（青铜）", // English: Armor (Bronze)
+		"护甲（钢）", // English: Armor (Steel)
+		"护甲（异域）", // English: Armor (Exotic)
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"武器（青铜）", // English: Weapons (Bronze)
+		"武器（钢）", // English: Weapons (Steel)
 	)
 	categories_gamer = list()
 
@@ -150,9 +150,9 @@
 	lockid = "tailor"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Apparel",
-		"Wardrobe",
-		"Armor (Light)",
+		"服饰", // English: Apparel
+		"衣装", // English: Wardrobe
+		"护甲（轻型）", // English: Armor (Light)
 	)
 	categories_gamer = list()
 
@@ -161,7 +161,7 @@
 	lockid = "physician"
 	profit_id = list("Head Physician","Apothecary")
 	categories = list(
-		"Potions",
+		"药水", // English: Potions
 	)
 	categories_gamer = list()
 
@@ -173,15 +173,15 @@
 	lockid = "Vheslie"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Apparel",
-		"Adventuring Supplies",
-		"Armor (Iron)",
-		"Alcohols",
-		"Consumable",
-		"Potions",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Wardrobe"
+		"服饰", // English: Apparel
+		"冒险用品", // English: Adventuring Supplies
+		"护甲（铁）", // English: Armor (Iron)
+		"酒类", // English: Alcohols
+		"消耗品", // English: Consumable
+		"药水", // English: Potions
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"衣装" // English: Wardrobe
 	)
 	categories_gamer = list()
 
