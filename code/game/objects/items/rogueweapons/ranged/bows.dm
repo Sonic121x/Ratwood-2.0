@@ -92,8 +92,8 @@
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_BULKY
 	can_parry = TRUE
-	verbage = "nock"
-	cartridge_wording = "arrow"
+	verbage = "搭"
+	cartridge_wording = "箭"
 	load_sound = 'sound/foley/nockarrow.ogg'
 	obj_flags = UNIQUE_RENAME
 	var/heavy_bow = FALSE //used for adding a STR check to the charge time of a bow
@@ -442,8 +442,8 @@
 
 // thespain errant special snowflake bow. I think it's supposed to be a Scythian Bow?
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/classic
-	name = "bow"
-	desc = "The bow is your life; to hold it high and pull the string is to know the path of destiny."
+	name = "弓"
+	desc = "弓即是你的性命；高举它、拉紧弓弦，便是领悟命运之路。"
 	var/hasloadedsprite = TRUE
 	accfactor = 1.15 //A fairly mild alternative to the Crude Selfbow, themed to be more like a proper ranged weapon. Same general stats, but with an increased bonus to accuracy.
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -500,8 +500,8 @@
 	icon_state = "recurve_riding"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/blackoak
-	name = "woad recurve bow"
-	desc = "A medium length composite bow of glued horn, wood, and sinew with fine shooting characteristics. Hewn from a living Black Oak branch, it carries the quiet strength of untouched groves; unyielding, unbroken, and fiercely guarded from the hands of Man."
+	name = "靛纹反曲弓"
+	desc = "一把中等长度的复合弓，以胶合的角、木与筋腱制成，射击性能出色。它由一段活着的黑橡树枝削成，带着未经砍伐的林地那种沉静的力量；不屈、不断，并被严加守卫，不容人类染指。"
 	icon_state = "blackoakrecurve_bow"
 
 /datum/intent/shoot/bow/short
