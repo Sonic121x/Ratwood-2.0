@@ -26,14 +26,14 @@
 	/// Running tally of tariff dodged via UPGRADE_NOTAX, for the Bathmaster's audit.
 	var/tariff_evaded_here = 0
 	var/list/categories = list(
-		"Alcohols",
-		"Discreet Zads",
-		"Drugs",
-		"Exotic Apparel",
-		"Instruments",
-		"Perfumes",
-		"Roguery",
-		"Toys",
+		"酒类", // English: Alcohols
+		"隐秘扎德鸟", // English: Discreet Zads
+		"药物", // English: Drugs
+		"异域服饰", // English: Exotic Apparel
+		"乐器", // English: Instruments
+		"香水", // English: Perfumes
+		"盗贼用品", // English: Roguery
+		"玩具", // English: Toys
 		)
 
 /obj/structure/roguemachine/bathvend/Initialize(mapload)

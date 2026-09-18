@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/luxury
-	group = "Luxury"
+	group = "奢侈品" // English: Luxury
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
