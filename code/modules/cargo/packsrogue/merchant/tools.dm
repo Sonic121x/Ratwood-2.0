@@ -6,7 +6,7 @@
 	)
 
 /datum/supply_pack/rogue/tools
-	group = "Tools"
+	group = "工具" // English: Tools
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

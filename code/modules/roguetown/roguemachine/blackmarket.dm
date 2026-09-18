@@ -26,14 +26,14 @@
 	var/upgrade_flags
 	var/current_cat = "1"
 	var/list/categories = list(
-		"General Labour",
-		"Beverages",
-		"Health and Hygiene"
+		"杂务用品", // English: General Labour
+		"饮品", // English: Beverages
+		"健康与卫生" // English: Health and Hygiene
 	)
 	var/list/categories_gamer = list(
-		"Self Defense",
-		"Diplomacy and Persuasion",
-		"Exotic Import"
+		"自卫用品", // English: Self Defense
+		"外交与说服", // English: Diplomacy and Persuasion
+		"异域进口品" // English: Exotic Import
 	)
 
 /obj/structure/roguemachine/blackmarket/Initialize(mapload)
