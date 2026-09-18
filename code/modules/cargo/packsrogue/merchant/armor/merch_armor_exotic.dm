@@ -3,7 +3,7 @@
 // The Gronn stuff is all-in-one due to laziness, not as a standard.
 
 /datum/supply_pack/rogue/armor_exotic
-	group = "护甲（异域）"
+	group = "护甲（异域）" // English: Armor (Exotic)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	no_name_quantity = TRUE

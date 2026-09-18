@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/blackmarket_tools
-	group = "General Labour"
+	group = "杂务用品" // English: General Labour
 	crate_name = "suspicious chest"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
