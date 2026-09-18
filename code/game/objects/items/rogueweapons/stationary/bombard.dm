@@ -79,13 +79,13 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 	. = ..()//Below displays deobfuscated coords. Is that a good idea? No. But it works. Also lets you math things out easier I guess.
 	if(HAS_TRAIT(user, TRAIT_FUSILIER))
 		. += "...<br>\
-			<small>'X-LIP' Dial: <span class='warning'>[xinput]</span> <br>\
-			'Y-LIP' Dial: <span class='warning'>[yinput]</span> <br>\
-			'X-LIP' Adjustment: <span class='warning'>[xdial]</span> <br>\
-			'Y-LIP' Adjustment: <span class='warning'>[ydial]</span> <br>\
+			<small>'X-地脉交点' 读数：<span class='warning'>[xinput]</span> <br>\
+			'Y-地脉交点' 读数：<span class='warning'>[yinput]</span> <br>\
+			'X-地脉交点' 修正：<span class='warning'>[xdial]</span> <br>\
+			'Y-地脉交点' 修正：<span class='warning'>[ydial]</span> <br>\
 			<br>\
-			Elevation: <span class='danger'>[zdial]0%</span> <br>\
-			Expected Deviancy: <span class='danger'>[offset_per_turfs]%</span></small>"//Just for fluff.
+			仰角：<span class='danger'>[zdial]0%</span> <br>\
+			预计偏差：<span class='danger'>[offset_per_turfs]%</span></small>"//Just for fluff.
 	else
 		. += "...<br>\
 		<small>不出所料，你完全看不懂这些细节。也许受过烟火药训练的人会明白……</small>"
@@ -111,7 +111,7 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 
 	var/area/A = get_area(src)
 	if(!A.outdoors)
-		to_chat(user, "<span class='warning'>你没有在室内发射[src]。</span>")
+		to_chat(user, "<span class='warning'>你忍住了，没有在室内发射[src]。</span>")
 		return
 
 	var/choice = alert(user, "要设定臼炮的目标吗？","臼炮校准", "设定目标","手动校准","取消并清空目标")
@@ -228,7 +228,7 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 /obj/structure/bombard/attackby(obj/item/O as obj, mob/user as mob)
 	var/area/A = get_area(src)
 	if(!A.outdoors)
-		to_chat(user, "<span class='warning'>你没有在室内准备发射[src]。</span>")
+		to_chat(user, "<span class='warning'>你忍住了，没有在室内准备发射[src]。</span>")
 		return
 
 	if(istype(O, /obj/item/powderflask))
