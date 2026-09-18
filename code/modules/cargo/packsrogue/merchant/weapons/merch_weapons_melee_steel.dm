@@ -1,7 +1,7 @@
 // Steel Weapons - Base price of 35 per steel ingot
 // Minimum price of 40
 /datum/supply_pack/rogue/steel_weapons
-	group = "武器（钢）"
+	group = "武器（钢）" // English: Weapons (Steel)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

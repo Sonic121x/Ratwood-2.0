@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Brigand
-	group = "Brigand"
+	group = "悍匪" // English: Brigand
 	crate_name = "Gifts of Strength"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

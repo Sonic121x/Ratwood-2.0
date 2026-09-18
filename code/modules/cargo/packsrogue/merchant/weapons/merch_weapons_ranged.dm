@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/ranged_weapons
-	group = "武器（远程）"
+	group = "武器（远程）" // English: Weapons (Ranged)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

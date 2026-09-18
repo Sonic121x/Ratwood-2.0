@@ -1,7 +1,7 @@
 #define PRICE_CHASTITY_CAGE 20
 
 /datum/supply_pack/rogue/bath_toys
-	group = "Toys"
+	group = "玩具" // English: Toys
 	crate_name = "'specialty toys'"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
