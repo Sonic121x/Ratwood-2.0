@@ -1,7 +1,7 @@
 // Pricing principle is approximately 20 per iron ingot. No less than 25.
 /datum/supply_pack/rogue/iron_weapons
-	group = "Weapons (Iron and Shields)"
-	crate_name = "merchant guild's crate"
+	group = "武器（铁制与盾牌）"
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/iron_weapons/sword
@@ -26,7 +26,7 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/broadsword
-	name = "Broadsword"
+	name = "阔剑"
 	cost = 40 // 2 iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/broadsword,
@@ -82,7 +82,7 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/greatflail
-	name = "Greatflail"
+	name = "民兵长连枷"
 	cost = 45 // 2 ingots 1 log
 	contains = list(
 					/obj/item/rogueweapon/flail/peasantwarflail,
