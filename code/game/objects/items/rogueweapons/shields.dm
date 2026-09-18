@@ -161,7 +161,7 @@
 
 /obj/item/rogueweapon/shield/tower
 	name = "塔盾"
-	desc = "一面覆盖全身的巨型铁加固盾牌，仿制自逝去年代的亚斯玛盾式。"
+	desc = "一面覆盖全身的巨型铁加固盾牌，仿制自逝去年代的亚斯玛尔盾式。"
 	icon_state = "shield_tower"
 	force = 6
 	throwforce = 10
@@ -263,10 +263,10 @@
 	return ..()
 
 /obj/item/rogueweapon/shield/tower/metal/zizo
-	name = "avantyne darkshield"
-	desc = "An interloper in causality's ever-so-fragile stream, woven from wafers to ward against those who're not yet ready to comprehend \
-	the gospel of Her disciples. Zizo sought to ward Her children from extinction, but failed, and in the throes of divine mania, She had come \
-	to realize that this world was no longer worth saving."
+	name = "阿凡廷黑暗盾"
+	desc = "它是因果那脆弱不堪的洪流中的一名入侵者，由薄片编织而成，用以抵挡那些尚未准备好领悟 \
+	她门徒福音之人。齐佐曾试图庇护她的子嗣免于灭绝，却终究失败；在神圣狂乱的煎熬之中，她终于 \
+	意识到，这个世界已不再值得拯救。"
 	unenchantable = TRUE
 	max_integrity = 400
 	force = 25
@@ -289,9 +289,9 @@
 	anvilrepair = null
 
 /obj/item/rogueweapon/shield/tower/metal/gold
-	name = "golden shield"
-	desc = "A resplendant kite shield, assembled from six golden plates that've been hooked together by a glimmering holy sigil. Nobility may be fragile, \
-	but - so long as its grip remains steadfast - none could ever hope to sever its weakest link."
+	name = "黄金盾"
+	desc = "一面华美的鸢形盾，由六块金色板甲拼合而成，它们被一枚熠熠生辉的神圣徽记钩连在一起。高贵或许脆弱， \
+	但只要握柄依旧稳固，便无人能奢望斩断它最薄弱的一环。"
 	icon_state = "goldshield"
 	force = 25
 	throwforce = 35
@@ -310,9 +310,9 @@
 	unenchantable = TRUE
 
 /obj/item/rogueweapon/shield/tower/metal/gold/king
-	name = "golden shield"
-	desc = "A resplendant kite shield, assembled from six golden plates that've been hooked together by a glimmering holy sigil socketed with a dorpel. Nobility may be fragile, \
-	but - so long as its grip remains steadfast - none could ever hope to sever its weakest link."
+	name = "黄金盾"
+	desc = "一面华美的鸢形盾，由六块金色板甲拼合而成，它们被一枚镶有多佩尔石的神圣徽记钩连在一起。高贵或许脆弱， \
+	但只要握柄依旧稳固，便无人能奢望斩断它最薄弱的一环。"
 	icon_state = "goldshieldking"
 	max_integrity = 75
 	sellprice = 300
@@ -350,7 +350,7 @@
 
 /obj/item/rogueweapon/shield/tower/zyb
 	name = "骑盾"
-	desc = "一面齐班提风格的盾牌。木材、铁与皮革被巧妙结合，使其足以应对各类武器。"
+	desc = "一面兹班图风格的盾牌。木材、铁与皮革被巧妙结合，使其足以应对各类武器。"
 	icon_state = "desert_rider"
 	possible_item_intents = list(SHIELD_BASH_METAL, SHIELD_BLOCK)
 	force = 25
@@ -499,7 +499,7 @@
 
 /obj/item/rogueweapon/shield/iron/nomad
 	name = "游牧盾"
-	desc = "一面纤薄的盾牌，似乎同时以吉布兰泽与铁打造而成。那是种不祥的组合。 \
+	desc = "一面纤薄的盾牌，似乎同时以吉尔青铜与铁打造而成。那是种不祥的组合。 \
 	它的工艺仿佛来自另一个时代，自第一纪元后便再未现世。"
 	icon_state = "ironsh_nomad"//Temp, but it works.
 	coverage = 40//+10
@@ -516,7 +516,7 @@
 
 /obj/item/rogueweapon/shield/capbuckler // unique, better buckler for knight captain
 	name = "“秩序”"
-	desc = "一面为卫队长打造的特制黑钢小圆盾，饰有谷地徽记。"
+	desc = "一面为卫队长打造的特制黑钢小圆盾，饰有国度徽记。"
 	icon_state = "capbuckler"
 	icon = 'icons/roguetown/weapons/special/captain.dmi'
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
@@ -567,8 +567,8 @@
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/shield/bronze
-	name = "hoplon shield"
-	desc = "The finest companion to a javelin, gladius, and warclub; a thick-yet-sturdy shield of bronze."
+	name = "霍普隆盾"
+	desc = "标枪、短剑与战棍的最佳搭档；一面厚重而坚固的青铜盾。"
 	icon_state = "bronzeshield"
 	force = 25
 	throwforce = 30 // DO NOT GIVE ANYTHING; BUT TAKE FROM THEM.. EVERYTHING!
@@ -593,9 +593,9 @@
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = -3,"ey" = 3,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/shield/bronze/great
-	name = "hoplon greatshield"
-	desc = "A heavy shield, taller and thicker than most of their contemporaries. It has survived the Calamity, endured the Apotheosis, and blunted the Sundering; \
-	and for one final time, it shall ward this dying world from a crueler fate."
+	name = "霍普隆巨盾"
+	desc = "一面沉重的盾牌，比同时代的大多数同类都更高更厚。它挺过了大灾变，熬过了神化，也挡下了大裂解； \
+	而最后一次，它将为这个垂死的世界挡住更为残酷的命运。"
 	icon_state = "bronzegreatshield"
 	item_state = "bronzegreatshield"
 	max_integrity = 360 //Highest integrity and passive projectile-blocking chance of most non-unique shields.
@@ -606,8 +606,8 @@
 	minstr = 12 //Requires a natural +STR modifier or statpack to double as a melee weapon, for its given class. Note that it has a heavier charge time and active stamina drain, too, as.. well, it's quite heavy.
 
 /obj/item/rogueweapon/shield/tower/metal/blacksteel
-	name = "blacksteel shield"
-	desc = "A magnificent kite shield of blacksteel. Be it knight-or-knave, those who have the strength to lift it shall yet stand against perdition."
+	name = "黑钢盾"
+	desc = "一面华美的黑钢鸢形盾。无论骑士还是恶棍，凡有力气将其举起者，都仍能挺身对抗毁灭。"
 	icon_state = "blacksteelsh"
 	max_integrity = 400
 	force = 25
