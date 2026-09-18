@@ -2,8 +2,8 @@
 // Pricing Principles is based on 20 per iron ingot (Min. 25), 35 per steel ingot (Min. 40).
 
 /datum/supply_pack/rogue/armor_iron
-	group = "Armor (Iron)"
-	crate_name = "merchant guild's crate"
+	group = "护甲（铁）"
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/armor_iron/chainmail_iron
@@ -97,7 +97,7 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor/iron)
 
 /datum/supply_pack/rogue/armor_iron/mailleboots_iron
-	name = "Maille Boots"
+	name = "铁链甲靴"
 	cost = 25
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/maille/iron)
 

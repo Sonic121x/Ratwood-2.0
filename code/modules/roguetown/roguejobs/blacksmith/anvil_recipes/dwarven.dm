@@ -3,43 +3,43 @@
 /datum/anvil_recipe/armor/dwarven
 	abstract_type = /datum/anvil_recipe/armor/dwarven
 	appro_skill = /datum/skill/craft/armorsmithing
-	i_type = "Armor"
+	i_type = "护甲"
 	req_bar = /obj/item/ingot/steel
 	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	req_trait = TRAIT_DWARF_REPAIR
 
 /datum/anvil_recipe/armor/dwarven/plate
-	name = "Grudgebearer Dwarven Plate (+3 Steel, +1 Bronze, +1 Cured Leather)"
+	name = "负怨者矮人板甲 (+3 钢, +1 青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/dwarven/apron
-	name = "Grudgebearer Splint Apron (+3 Steel, +1 Bronze)"
+	name = "负怨者板条铁围 (+3 钢, +1 青铜)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/bronze)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven/smith
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/dwarven/helm
-	name = "Dwarven Helm (+2 Steel, +1 Bronze)"
+	name = "负怨者矮人头盔 (+2 钢, +1 青铜)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/bronze)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/dwarven
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/dwarven/helm/smith
-	name = "Dwarven Smith Helm (+1 Steel, +1 Bronze)"
+	name = "负怨者匠师头盔 (+1 钢, +1 青铜)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/bronze)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/dwarven/smith
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/dwarven/gauntlets
-	name = "Dwarven Gauntlets (+1 Steel, +1 Bronze, +1 Cured Leather)"
+	name = "负怨者矮人臂铠 (+1 钢, +1 青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/gloves/roguetown/plate/dwarven
 	display_category = ITEM_CAT_ARMOR_GLOVES
 
 /datum/anvil_recipe/armor/dwarven/boots
-	name = "Dwarven Boots (+1 Steel, +1 Bronze, +1 Cured Leather)"
+	name = "负怨者矮人战靴 (+1 钢, +1 青铜, +1 熟皮)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/shoes/roguetown/boots/armor/dwarven
 	display_category = ITEM_CAT_ARMOR_BOOTS
@@ -52,13 +52,13 @@
 	req_trait = TRAIT_DWARF_REPAIR
 
 /datum/anvil_recipe/weapons/dwarven/maul
-	name = "Dwarvish Maul (+4 Steel, +1 Bronze)"
+	name = "矮人大槌 (+4 钢, +1 青铜)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/bronze)
 	created_item = /obj/item/rogueweapon/mace/maul/steel
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/dwarven/spikedmaul
-	name = "Spiked Maul (+3 Steel, +1 Bronze)"
+	name = "带刺大槌 (+3 钢, +1 青铜)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/bronze)
 	created_item = /obj/item/rogueweapon/mace/maul/spiked
 	display_category = ITEM_CAT_WEAPONS_MACES
