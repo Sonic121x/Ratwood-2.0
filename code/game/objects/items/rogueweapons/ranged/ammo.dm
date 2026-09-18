@@ -31,7 +31,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/bolt/ancient
 	name = "远古弩矢"
-	desc = "一支远古弩矢，尖端镶有打磨过的吉尔布兰兹。其锋刃薄如剃刀，与其说像箭头，不如说像弹托；大多数合金都难以可靠抵挡。"
+	desc = "一支远古弩矢，尖端镶有打磨过的吉尔青铜。其锋刃薄如剃刀，与其说像箭头，不如说像弹托；大多数合金都难以可靠抵挡。"
 	icon_state = "ancientbolt"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/ancient
 
@@ -44,7 +44,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/bolt/ancient
 	name = "远古弩矢"
-	desc = "一支古老弩矢，尖端为抛光吉布兰泽。那薄如剃刀的矢尖比起箭头更像脱壳穿甲体，大多数合金都难以稳稳承受它的冲击。"
+	desc = "一支古老弩矢，尖端为抛光吉尔青铜。那薄如剃刀的矢尖比起箭头更像脱壳穿甲体，大多数合金都难以稳稳承受它的冲击。"
 	icon_state = "ancientbolt"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/ancient
 
@@ -117,15 +117,15 @@
 	speed = 0.25
 
 /obj/item/ammo_casing/caseless/rogue/bolt/blacksteel
-	name = "blacksteel bolt"
-	desc = "A magnificent bolt of blacksteel, sharp enough to pierce straight through plate armor."
+	name = "黑钢弩矢"
+	desc = "一支精工锻造的黑钢弩矢，锋利得足以直接贯穿板甲。"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/blacksteel
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	caliber = "regbolt"
 	icon_state = "blacksteelbolt"
 
 /obj/projectile/bullet/reusable/bolt/blacksteel
-	name = "blacksteel bolt"
+	name = "黑钢弩矢"
 	damage = 70
 	armor_penetration = 80
 	icon_state = "blacksteelbolt_proj"
@@ -181,9 +181,9 @@
 	projectile_type = /obj/projectile/bullet/reusable/arrow/stone
 
 /obj/item/ammo_casing/caseless/rogue/arrow/bronze
-	name = "bronze flight arrow"
+	name = "青铜飞箭"
 	icon_state = "bronzearrow"
-	desc = "Bronze, quenched and batonned onto a feathered stick. The stories scribed along its imperfect edge could fill a hundred tomes; lost to antiquity, but remembered through sheer generational instinct."
+	desc = "青铜淬火后，被锻压到一根带羽的箭杆上。那不甚完美的箭身上所铭刻的故事，足以写满上百卷典籍；它们早已湮没于远古，却凭着一代代纯粹的本能流传至今。"
 	max_integrity = 8
 	projectile_type = /obj/projectile/bullet/reusable/arrow/bronze
 
@@ -208,7 +208,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/arrow/steel/ancient
 	name = "远古锥头箭"
-	desc = "一支箭，一端装着磨尖的抛光吉布兰泽细杆，另一端嵌有羽毛。那薄如刀锋的尖端更像脱壳穿甲体，是足以直接洞穿钢铁的合金细片。"
+	desc = "一支箭，一端装着磨尖的抛光吉尔青铜细杆，另一端嵌有羽毛。那薄如刀锋的尖端更像脱壳穿甲体，是足以直接洞穿钢铁的合金细片。"
 	icon_state = "ancientarrow"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/steel/ancient
 
@@ -289,7 +289,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/steel/ancient
 
 /obj/projectile/bullet/reusable/arrow/bronze
-	name = "bronze flight arrow"
+	name = "青铜飞箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/bronze
 	icon_state = "bronzearrow_proj"
 	damage = 50
@@ -299,14 +299,14 @@
 	speed = 0.15 // Faster!
 
 /obj/item/ammo_casing/caseless/rogue/arrow/blacksteel
-	name = "blacksteel arrow"
+	name = "黑钢箭"
 	icon_state = "blacksteelarrow"
-	desc = "A magnificent arrow of blacksteel. It shreds flesh, pierces armor, and \
-	always lands where one aims; perfect, yet marred by a prohibitively high cost."
+	desc = "一支精工锻造的黑钢箭。它撕裂血肉、贯穿铠甲，\
+	并且永远落在射手瞄定之处；完美无瑕，唯独造价高昂得令人却步。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/blacksteel
 
 /obj/projectile/bullet/reusable/arrow/blacksteel
-	name = "blacksteel arrow"
+	name = "黑钢箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/blacksteel
 	damage = 50
 	armor_penetration = 45
@@ -681,12 +681,12 @@
 
 /obj/item/ammo_casing/caseless/rogue/javelin/steel/ancient
 	name = "远古标枪"
-	desc = "一枚抛光吉布兰泽投射体。古赛昂沉没于祂的泪水之下，而她的飞升带来了此世的终结，只为了让你在挥出致命一击时，得以成神。"
+	desc = "一枚抛光吉尔青铜投射体。古西昂沉没于祂的泪水之下，而她的飞升带来了此世的终结，只为了让你在挥出致命一击时，得以成神。"
 	icon_state = "ajavelin"
 
 /obj/item/ammo_casing/caseless/rogue/javelin/steel/ancient/decrepit
 	name = "破旧标枪"
-	desc = "一枚磨损青铜投射体。你眼前的便是你的武器；正是它使人类从泥泞中站起，也令古赛昂的诸兽低头。你上次意识到自己还有别的部分是什么时候？你还记得曾以其他方式看待这个世界吗？"
+	desc = "一枚磨损青铜投射体。你眼前的便是你的武器；正是它使人类从泥泞中站起，也令古西昂的诸兽低头。你上次意识到自己还有别的部分是什么时候？你还记得曾以其他方式看待这个世界吗？"
 	force = 9
 	armor_penetration = 30
 	max_integrity = 50		
@@ -695,8 +695,8 @@
 	anvilrepair = null
 
 /obj/item/ammo_casing/caseless/rogue/javelin/bronze
-	name = "bronze javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a bronze head, wide and serrated - a death knell to the unarmored, and a staggering wound to the beplated."
+	name = "青铜标枪"
+	desc = "一种自有文字记载以来便沿用数百年的工具。这一支装着宽大而带锯齿的青铜枪头——对无甲者是丧钟，对披甲者则是令人踉跄的重创。"
 	icon_state = "bjavelin"
 	force = 20
 	throwforce = 36	//Devastating against unarmored foes, but with nearly halved armor penetration.
@@ -734,8 +734,8 @@
 		return//abort
 
 /obj/item/ammo_casing/caseless/rogue/javelin/blacksteel
-	name = "blacksteel javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a blacksteel head; unstoppable by even the finest plate armor!"
+	name = "黑钢标枪"
+	desc = "一种自有文字记载以来便沿用数百年的工具。这一支装着黑钢枪头；即便最精良的板甲也无法阻挡！"
 	icon_state = "bs_javelin"
 	max_integrity = 50						//In-line with other stabbing weapons.
 	force = 18
@@ -783,7 +783,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/ancient
 	name = "远古投石弹"
-	desc = "一颗抛光吉布兰泽弹丸。无论是人还是神，越庞大者，倒下时也越沉重。"
+	desc = "一颗抛光吉尔青铜弹丸。无论是人还是神，越庞大者，倒下时也越沉重。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/ancient
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ancient_sling_bullet"
@@ -901,13 +901,13 @@
 	icon_state = "musketball_proj"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/blacksteel
-	name = "blacksteel sling bullet"
-	desc = "An elegant sphere of blacksteel. This bullet bores through plate and meat like a comet. Once it's reached terminal velocity, you might want to duck."
+	name = "黑钢投石弹"
+	desc = "一颗精致的黑钢圆弹。这枚弹丸如彗星般洞穿板甲与血肉。一旦它达到终点速度，你最好赶紧低头。"
 	projectile_type = /obj/projectile/bullet/sling_bullet/blacksteel
 	icon_state = "bs_sling_bullet"
 
 /obj/projectile/bullet/sling_bullet/blacksteel
-	name = "blacksteel sling bullet"
+	name = "黑钢投石弹"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "blacksteelslingbullet_proj"
 	damage = 50
