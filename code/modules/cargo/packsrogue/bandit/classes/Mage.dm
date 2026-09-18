@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Mage
-	group = "Mage"
+	group = "野法师" // English: Mage
 	crate_name = "Gifts of Knowledge"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

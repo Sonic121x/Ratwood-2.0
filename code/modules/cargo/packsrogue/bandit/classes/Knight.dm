@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Knight
-	group = "Knight"
+	group = "落魄骑士" // English: Knight
 	crate_name = "Gifts from your Past"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
