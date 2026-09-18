@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 	var/balance = get_odds_of_winning(user)
 	var/string
 	if(balance <= 0)
-		return "<font color='#f54646'>[pick("NO CHANCE", "NO SALT, NO CHANCE", "FOOL, MINE SOME SALT!", "GO MINE, YOU DULLARD!")]</font>"
+		return "<font color='#f54646'>[pick("毫无机会", "没有盐，就没有机会", "蠢货，去挖点盐来！", "去挖啊，你这笨蛋！")]</font>"
 	else if(balance < 10)
 		string = "<font color='#f54646'>"
 	else if(balance < 20)
@@ -241,7 +241,7 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 	else if(balance < 100)
 		string = "<font color='#4ff546'>"
 	else
-		return "<font color='#4ff546'>[pick("WHY ARE YOU STILL HERE?!", "YOU ARE A SHAMEFUL FOOL!", "ARE YOU COMPENSATING?", "PLEASE, GO OUTSIDE!", "DID THEY FORGET YOU!?")]</font>"
+		return "<font color='#4ff546'>[pick("你怎么还在这里？！", "你是个可耻的蠢货！", "你是在补偿什么吗？", "拜托，出去走走！", "他们把你忘了吗！？")]</font>"
 	string += "[round(balance,0.5)]%</font>"
 	return string
 
@@ -352,8 +352,8 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 
 /obj/structure/roguemachine/ticket_manager
-	name = "Ticket Manager Deluxe"
-	desc = "This machine controls the punishment for victims of the salt mines."
+	name = "豪华票券管理器"
+	desc = "这台机器掌控着盐矿囚徒的刑罚。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "submit"
 	density = FALSE
@@ -386,7 +386,7 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 			else
 				out_of_service = TRUE
 	if(out_of_service || !stockpile) // aka there isn't any other machine in this world
-		say("Sorry, machine out of service!")
+		say("抱歉，机器停止服务！")
 		return
 	switch(href_list["task"])
 		if("withdraw")
@@ -398,62 +398,62 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 			var/name = href_list["name"]
 			if(!does_name_exist(stockpile, name)) // sanity check name argument
 				return
-			var/new_max = input(usr, "Set the maximum salt needed to assure a 100% win", src, stockpile.salt_accounts_max[name]) as null
+			var/new_max = input(usr, "设定确保 100% 胜率所需的最大盐量", src, stockpile.salt_accounts_max[name]) as null
 			if(!isnum(new_max))
 				return
 			new_max = round(new_max, 1)
 			if(new_max < 10)
-				to_chat(usr, span_danger("You cannot set to a value lower than 10!"))
+				to_chat(usr, span_danger("你不能设定低于 10 的数值！"))
 				return
 			if(new_max > SALT_CHANCE_MAX)
-				to_chat(usr, span_danger("You cannot set to a value higher than [SALT_CHANCE_MAX]!"))
+				to_chat(usr, span_danger("你不能设定高于 [SALT_CHANCE_MAX] 的数值！"))
 				return
 			stockpile.salt_accounts_max[name] = new_max
 		if("set_salt_default")
-			var/new_max = input(usr, "Set the maximum salt needed to assure a 100% win", src, stockpile.salt_chance_default) as null
+			var/new_max = input(usr, "设定确保 100% 胜率所需的最大盐量", src, stockpile.salt_chance_default) as null
 			if(!isnum(new_max))
 				return
 			new_max = round(new_max, 1)
 			if(new_max < 10)
-				to_chat(usr, span_danger("You cannot set to a value lower than 10!"))
+				to_chat(usr, span_danger("你不能设定低于 10 的数值！"))
 				return
 			if(new_max > SALT_CHANCE_MAX)
-				to_chat(usr, span_danger("You cannot set to a value higher than [SALT_CHANCE_MAX]!"))
+				to_chat(usr, span_danger("你不能设定高于 [SALT_CHANCE_MAX] 的数值！"))
 				return
 			stockpile.salt_chance_default = new_max
 		if("set_interest")
 			var/name = href_list["name"]
 			if(!does_name_exist(stockpile, name)) // sanity check name argument
 				return
-			var/new_max = input(usr, "Set the maximum interest rate percentage (1 hour for max interest)", src, stockpile.salt_accounts_interest_max[name] * 100) as null
+			var/new_max = input(usr, "设定最大利率百分比（1 小时达到最大利率）", src, stockpile.salt_accounts_interest_max[name] * 100) as null
 			if(!isnum(new_max))
 				return
 			new_max = round(new_max, 1)
 			if(new_max < 0)
-				to_chat(usr, span_danger("You cannot set to a value lower than 0%!"))
+				to_chat(usr, span_danger("你不能设定低于 0% 的数值！"))
 				return
 			if(new_max > SALT_CHANCE_INTEREST_MAX * 100)
-				to_chat(usr, span_danger("You cannot set to a value higher than [SALT_CHANCE_INTEREST_MAX * 100]%!"))
+				to_chat(usr, span_danger("你不能设定高于 [SALT_CHANCE_INTEREST_MAX * 100]% 的数值！"))
 				return
 			stockpile.salt_accounts_interest_max[name] = new_max / 100
 		if("set_interest_default")
-			var/new_max = input(usr, "Set the maximum interest rate percentage (1 hour for max interest)", src, stockpile.interest_rate_default * 100) as null
+			var/new_max = input(usr, "设定最大利率百分比（1 小时达到最大利率）", src, stockpile.interest_rate_default * 100) as null
 			if(!isnum(new_max))
 				return
 			new_max = round(new_max, 1)
 			if(new_max < 0)
-				to_chat(usr, span_danger("You cannot set to a value lower than 0%!"))
+				to_chat(usr, span_danger("你不能设定低于 0% 的数值！"))
 				return
 			if(new_max > SALT_CHANCE_INTEREST_MAX * 100)
-				to_chat(usr, span_danger("You cannot set to a value higher than [SALT_CHANCE_INTEREST_MAX * 100]%!"))
+				to_chat(usr, span_danger("你不能设定高于 [SALT_CHANCE_INTEREST_MAX * 100]% 的数值！"))
 				return
 			stockpile.interest_rate_default = new_max / 100
 		if("reset_interest")
 			var/name = href_list["name"]
 			if(!does_name_exist(stockpile, name)) // sanity check name argument
 				return
-			var/answer = tgui_alert(usr, "Reset [name]'s interest progression to 0%?", "Please answer in [DisplayTimeText(100)]", list("Yes", "Cancel"), 100)
-			if(!answer || answer != "Yes")
+			var/answer = tgui_alert(usr, "将 [name] 的利率进度重置为 0%?", "请在 [DisplayTimeText(100)] 内作答", list("是", "取消"), 100)
+			if(!answer || answer != "是")
 				return
 			stockpile.salt_accounts_timestamp[name] = world.time
 	return attack_hand(usr)
@@ -475,24 +475,24 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 			else
 				out_of_service = TRUE
 	if(out_of_service) // aka there isn't any other machine in this world
-		say("Sorry, machine out of service!")
+		say("抱歉，机器停止服务！")
 		return
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
 
 	var/gambled_salt = round(stockpile.salt_spent_on_gambling, 1)
 	var/total_accounts = length(stockpile.salt_accounts)
-	var/contents = "<center>SALT MANAGER DELUXE<BR>"
-	contents += "Where tears become fears<BR>"
+	var/contents = "<center>豪华盐务管理器<BR>"
+	contents += "泪水在此化为恐惧<BR>"
 	contents += "----------<BR>"
-	contents += "SALT GAMBLED AWAY: [gambled_salt]<BR>"
+	contents += "已赌掉的盐: [gambled_salt]<BR>"
 	if(gambled_salt > 0)
-		contents += "<a href='?src=[REF(src)];task=withdraw'>(WITHDRAW GAMBLED SALT AS COINS)</a><BR>"
-	contents += "Salt Mined Max Default: <a href='?src=[REF(src)];task=set_salt_default;'>[stockpile.salt_chance_default]</a> | Interest Rate Default: <a href='?src=[REF(src)];task=set_interest_default;'>[stockpile.interest_rate_default * 100]%</a><BR>"
+		contents += "<a href='?src=[REF(src)];task=withdraw'>(将赌掉的盐作为钱币取出)</a><BR>"
+	contents += "默认采盐上限: <a href='?src=[REF(src)];task=set_salt_default;'>[stockpile.salt_chance_default]</a> | 默认利率: <a href='?src=[REF(src)];task=set_interest_default;'>[stockpile.interest_rate_default * 100]%</a><BR>"
 	contents += "</center>"
 	if(total_accounts > 0)
 		contents += "<hr><BR>"
-		contents += "<table><tr><th>Prisoner Name</th><th>Salt Mined</th><th>Interest Rate</th></tr>"
+		contents += "<table><tr><th>囚犯姓名</th><th>已采矿盐</th><th>利率</th></tr>"
 		for(var/i = 1; i <= total_accounts; i++)
 			var/name = stockpile.salt_accounts[i]
 			var/salt = stockpile.salt_accounts[name]
@@ -501,9 +501,9 @@ GLOBAL_LIST_EMPTY(saltmineticketmachines)
 			if(salt == 0 && stockpile.salt_ticket_win[name] > 0) // don't show ticket winners who have left the mines
 				continue
 			contents += "<tr><td>[name]</td>"
-			contents += "<td>[salt] salt / <a href='?src=[REF(src)];task=set_salt;name=[name]'>[salt_max] max</a></td>"
+			contents += "<td>[salt] 盐 / <a href='?src=[REF(src)];task=set_salt;name=[name]'>[salt_max] 上限</a></td>"
 			contents += "<td><a href='?src=[REF(src)];task=set_interest;name=[name]'>[interest]%</a> "
-			contents += "(<a href='?src=[REF(src)];task=reset_interest;name=[name]'>reset progress</a>)</td></tr>"
+			contents += "(<a href='?src=[REF(src)];task=reset_interest;name=[name]'>重置进度</a>)</td></tr>"
 		contents += "</table>"
 
 	var/datum/browser/popup = new(user, "saltmanager", "", 800, 500)
