@@ -209,8 +209,8 @@
 	item_state = "gronnhelm"
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/gronn
-	name = "拜林长链甲"
-	desc = "格隆风格的链甲衫，外覆皮革外衣 \
+	name = "拜林锁子甲"
+	desc = "一件异域设计的锁子甲衫，外覆皮革外衣 \
 			提供额外防护与更佳行动性。常被海上劫掠者使用。"
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/gronn.dmi'
