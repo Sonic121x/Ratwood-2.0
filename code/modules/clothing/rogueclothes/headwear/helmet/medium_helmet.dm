@@ -33,7 +33,7 @@
 	else
 		flags_inv |= HIDE_HEADTOP
 	persist_inv_flags(HIDE_HEADTOP)
-	to_chat(user, span_info("I wear \the [src] [(flags_inv & HIDE_HEADTOP) ? "over" : "under"] my hair."))
+	to_chat(user, span_info("我把[src][(flags_inv & HIDE_HEADTOP) ? "戴在头发外面" : "戴在头发里面"]。"))
 	user.update_inv_head()
 
 /obj/item/clothing/head/roguetown/helmet/getonmobprop(tag)
@@ -102,7 +102,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/kettle/ancient
 	name = "古老的锅盔"
-	desc = "一顶经过打磨的吉尔青铜锅盔，保护着头顶和两侧。当涉及不洁之战时，绝不能阻挡 ZIZO 的凝视。不死弩炮手们践行着一种奇特的方法，将染色的布料系在盔檐周围；难道他们，也能思考和产生联想吗？"
+	desc = "一顶经过打磨的吉尔青铜锅盔，保护着头顶和两侧。当涉及不洁之战时，绝不能阻挡齐佐的凝视。不死弩炮手们践行着一种奇特的方法，将染色的布料系在盔檐周围；难道他们，也能思考和产生联想吗？"
 	icon_state = "ancientkettle"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -152,10 +152,10 @@
 /obj/item/clothing/head/roguetown/helmet/sallet/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/feather) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Plume") as anything in GLOB.colorlist + GLOB.pridelist
+		var/choice = input(user, "选择一种颜色。", "羽饰") as anything in GLOB.colorlist + GLOB.pridelist
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detailalt"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -239,10 +239,10 @@
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/feather) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Plume") as anything in GLOB.colorlist + GLOB.pridelist
+		var/choice = input(user, "选择一种颜色。", "羽饰") as anything in GLOB.colorlist + GLOB.pridelist
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detailalt"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -278,8 +278,8 @@
 	max_integrity = ARMOR_INT_HELMET_IRON
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
-	name = "snouted visored sallet"
-	desc = "A steel 'sallet'-styled helmet with an adjustable visor, its bevor drawn forward into a muzzle. Favored by those with snouts. Away with you, vile beggar!"
+	name = "带吻部面罩萨雷特盔"
+	desc = "一顶钢制“萨雷特”式头盔，配有可调面罩，其护颌前伸成口鼻状。深受有吻部者喜爱。滚开，你这卑贱的乞丐！"
 	icon_state = "sallet_visor_s"
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron/snouted
@@ -331,10 +331,10 @@
 /obj/item/clothing/head/roguetown/helmet/bronze/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/feather) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Greatplume") as anything in GLOB.colorlist
+		var/choice = input(user, "选择一种颜色。", "大羽饰") as anything in GLOB.colorlist
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -351,11 +351,11 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/bronzegladiator
-	name = "bronze murmillo"
-	desc = "A bronze helmet that veils the wearer's face behind a perforated visor; a distant ancestor to both the sallet and sayovard, \
-	providing excellent coverage while ensuring one doesn't suffocate on their own adrenal huffs. </br>Out of all actorial labors, none surpass \
-	the reenactment of Ravox's duel against Graggar atop Ur-Syon's ruins - mythologized not as a tentacled star, but as a towering doppelganger-champion; \
-	sculpted by the Archdevil to be the inverse to all who stood for justice and chivalry."
+	name = "青铜穆尔米洛盔"
+	desc = "一顶青铜头盔，以布满孔洞的面罩遮蔽佩戴者的面容；它既是萨雷特盔的远祖，也是萨伏依盔的远祖， \
+	既能提供极佳的防护，又能确保佩戴者不会因为自己喷出的战意热气而窒息。 </br>在所有演艺劳作中，没有什么比 \
+	在乌尔-西昂废墟之巅重演拉沃克斯与格拉加尔的对决更盛大——那传说中并非一尊触须星辰，而是一位高耸的替身斗士； \
+	由大魔君雕凿而成，是一切正义与骑士精神之人的反面。"
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_HELMET_HEAVY_BRONZE - 100
 	armor_class = ARMOR_CLASS_LIGHT
@@ -367,8 +367,8 @@
 /obj/item/clothing/head/roguetown/helmet/bronzegladiator/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Orle") as anything in GLOB.colorlist + GLOB.pridelist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choice = input(user, "选择一种颜色。", "饰边") as anything in GLOB.colorlist + GLOB.pridelist
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
@@ -506,7 +506,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak
-	desc = "An elven barbute with a thin gold plating designed for Elven Woodland guardians."
+	desc = "一顶覆有薄金镀层、专为精灵林地守卫打造的精灵巴布塔盔。"
 	color = COLOR_ASSEMBLY_GOLD
 	detail_color = COLOR_ASSEMBLY_GOLD
 
@@ -515,7 +515,7 @@
 	update_icon()
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak
-	desc = "A winged version of the elven barbute with a thin gold plating designed for Elven Woodland guardians."
+	desc = "覆有薄金镀层、专为精灵林地守卫打造的翼饰精灵巴布塔盔。"
 	color = COLOR_ASSEMBLY_GOLD
 	detail_color = COLOR_ASSEMBLY_GOLD
 
@@ -637,8 +637,8 @@
 	item_state = "drowhelm"
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface
-	name = "roundface bascinet"
-	desc = "A bascinet with a conical visor, favored by those without snouts and whiskers. Nestle a feather or length of cloth onto the rim to display your allegiance."
+	name = "圆面盆盔"
+	desc = "一顶带锥形面罩的盆盔，深受没有吻部与须毛者喜爱。可在边缘插上一根羽毛或一段布料，以展示你的效忠色彩。"
 	icon_state = "roundface"
 	item_state = "roundface"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
@@ -653,8 +653,8 @@
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !altdetail_tag)
-		var/choicealt = input(user, "Choose a color.", "Orle") as anything in GLOB.colorlist + GLOB.pridelist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choicealt = input(user, "选择一种颜色。", "饰边") as anything in GLOB.colorlist + GLOB.pridelist
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		altdetail_color = GLOB.colorlist[choicealt]
 		altdetail_tag = "_detailalt"
@@ -679,8 +679,8 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted
-	name = "snouted roundface bascinet"
-	desc = "A bascinet with a conical visor, drawn forward into a muzzle for those with snouts. Nestle a feather or length of cloth onto the rim to display your allegiance."
+	name = "带吻部圆面盆盔"
+	desc = "一顶带锥形面罩的盆盔，为有吻部者将面罩前伸成口鼻状。可在边缘插上一根羽毛或一段布料，以展示你的效忠色彩。"
 	icon_state = "roundface_s"
 	item_state = "roundface_s"
 
@@ -700,7 +700,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
 	name = "\improper 伊特鲁斯卡盆盔"
-	desc = "一顶带直式面罩的钢制盆盔，也就是\"掀面式盆盔\"，会大幅限制视野。它虽最早诞生于伊特鲁斯卡，如今也在格伦泽尔霍夫被广泛使用。"
+	desc = "一顶带直式面罩的钢制盆盔，也就是\"掀面式盆盔\"，会大幅限制视野。它虽最早诞生于伊特鲁斯卡，如今也在格伦泽尔霍夫特广为使用。"
 	icon_state = "klappvisier"
 	item_state = "klappvisier"
 	adjustable = CAN_CADJUST
@@ -789,8 +789,8 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/antler/melee
-	name = "forester's antler helm"
-	desc = "A beastly snouted armet with the large horns of an elder saiga, reinforced with additional steel plating for front-line combat."
+	name = "守林人鹿角盔"
+	desc = "一顶野性十足、带吻部的阿米特盔，向外伸出老赛加羚的大角，并以额外钢板加固，用于前线作战。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden
@@ -821,18 +821,18 @@
 	icon_state = "skullmet_bear"
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf/melee
-	name = "forester's volfskull helm"
-	desc = "The large, intimidating skull of an elusive white volf, plated with extra steel reinforcement for front-line combat - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long hunters and their descendants."
+	name = "守林人狼首骨盔"
+	desc = "一具巨大而骇人的白色沃尔夫头骨，以额外钢板加固用于前线作战，再配以钢制链甲面罩与亚麻罩巾一同穿戴。这类战利品常与终生猎人及其后裔联系在一起。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat/melee
-	name = "forester's ramskull helm"
-	desc = "The large, intimidating horned skull of an elusive vale great ram, plated with extra steel reinforcement for front-line combat - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long hunters and their descendants."
+	name = "守林人羊首骨盔"
+	desc = "一具巨大而骇人的山谷巨公羊角骨，以额外钢板加固用于前线作战，再配以钢制链甲面罩与亚麻罩巾一同穿戴。这类战利品常与终生猎人及其后裔联系在一起。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee
-	name = "forester's bearskull helm"
-	desc = "The large, intimidating skull of a common direbear, plated with extra steel reinforcement for front-line combat - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long hunters and their descendants."
+	name = "守林人熊首骨盔"
+	desc = "一具巨大而骇人的恐熊头骨，以额外钢板加固用于前线作战，再配以钢制链甲面罩与亚麻罩巾一同穿戴。这类战利品常与终生猎人及其后裔联系在一起。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
 
 /obj/item/clothing/head/roguetown/roguehood/warden
@@ -924,7 +924,7 @@
 	return ..()
 
 /obj/item/clothing/head/roguetown/helmet/citywatch/captain
-	name = "watch captain helmet"
-	desc = "A heavy helmet in simple greys. Justice is impartial and so are you...in theory."
+	name = "守望队长头盔"
+	desc = "一顶素灰色调的重型头盔。正义不偏不倚，理论上你也是如此。"
 	ducal_color = FALSE
 	detail_color = "#36454F"
