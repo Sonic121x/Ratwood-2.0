@@ -200,6 +200,18 @@
 		return
 	mist_form_active = TRUE									// Latch: from now on we're the mist owner.
 
+	// 中文：先阻止新的抓取，再解除现有拖拽及抓取对象，避免化雾后仍被手部或嘴部抓取束缚。
+	ADD_TRAIT(M, TRAIT_GRABIMMUNE, GASIFICATION_TRAIT_SOURCE)
+	var/list/existing_grabs = M.grabbedby?.Copy()
+	M.pulledby?.stop_pulling()
+	for(var/obj/item/grabbing/grab as anything in existing_grabs)
+		if(QDELETED(grab))
+			continue
+		if(grab.grabbee?.pulling == M)
+			grab.grabbee.stop_pulling()
+		if(!QDELETED(grab))
+			qdel(grab)
+
 	// ---- ①-a "只能移动"：拦截一切鼠标点击(攻击/拾取/使用/点选施法…) ----
 	// 中文：override=TRUE 防御性避免"同源同信号重复注册"抛错(极端重入场景)。
 	RegisterSignal(M, COMSIG_MOB_CLICKON, PROC_REF(block_mist_click), override = TRUE)	// Cancel all clicks while misty.
@@ -284,6 +296,9 @@
 
 	// ---- 解除点击拦截 ----
 	UnregisterSignal(M, COMSIG_MOB_CLICKON)					// Clicks work again.
+
+	// 中文：仅移除雾化药水提供的免疫，保留种族、法术等其他来源的抓取免疫。
+	REMOVE_TRAIT(M, TRAIT_GRABIMMUNE, GASIFICATION_TRAIT_SOURCE)
 
 	// ---- 解除 说话/动作/施法 封锁(按我们专属 source 精确移除) ----
 	REMOVE_TRAIT(M, TRAIT_MUTE, GASIFICATION_TRAIT_SOURCE)			// Can speak again.
@@ -460,6 +475,12 @@
 	skill_required = SKILL_LEVEL_EXPERT						// Alchemy level 4 gate.
 	// 中文：成功气味词。
 	smells_like = "无孔不入的凝滞雾气"						// Success scent.
+
+// 中文：原有抓取免疫依赖战斗模式；雾态应在任何姿态与意识状态下直接拒绝抓取和拖拽。
+/mob/living/carbon/human/can_be_pulled(user, grab_state, force)
+	if(HAS_TRAIT_FROM(src, TRAIT_GRABIMMUNE, GASIFICATION_TRAIT_SOURCE))
+		return FALSE
+	return ..()
 
 // 中文：清理本文件作用域内的局部宏，避免泄漏到全局编译环境。
 #undef GASIFICATION_SECONDS_PER_UNIT

@@ -100,7 +100,7 @@
 				permission.start_view()
 	return TRUE
 
-// 请求对象直接使用现有确认弹窗界面，避免原生弹窗回退后失去超时和身份校验。
+// 请求对象使用专用的大尺寸确认界面，保留超时和身份校验，避免中文说明挤出按钮。
 /datum/group_mindlink_vision_permission
 	var/datum/group_mindlink_custom/link
 	var/mob/living/viewer
@@ -182,7 +182,7 @@
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AlertModal", "心灵视角请求")
+		ui = new(user, src, "GroupMindlinkVisionRequest", "心灵视角请求")
 		ui.open()
 
 /datum/group_mindlink_vision_permission/ui_data(mob/user)

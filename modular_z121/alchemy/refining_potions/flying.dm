@@ -9,7 +9,7 @@
 //   效果：饮下后在【药剂尚在体内代谢的整段时间里】持续获得【飞行术】状态效果
 //         (复用 spells/arcane/flight.dm 的 /datum/status_effect/buff/magic_flight)；
 //         药剂代谢殆尽即落地。即"飞行随药效存续，而非固定时长"。
-//   消化速度：每单位 12 秒(故 50 单位 ≈ 600 秒 ≈ 10 分钟的总飞行时间)。
+//   消化速度：每单位 2 秒，10 单位约持续 20 秒，50 单位约持续 100 秒；实际起止受代谢节拍影响。
 //   框架见 refining_framework.dm；本文件只描述"成品试剂 + 其配方"。
 //
 //   为什么复用现成的飞行术状态效果而非另造一套：
@@ -23,10 +23,8 @@
 //     这样飞行的起止与药剂在体内的起止严格一致。
 // ============================================================================
 
-// 中文：消化速度——题面要求"每单位 12 秒"。集中成宏，便于日后调参。
-// WHY: reagents.metabolize() 由 SSmobs 驱动，wait=20(即每 2 秒)调用一次，每次扣除 metabolization_rate 单位；
-//      故"每单位耗时(秒) = 2 ÷ metabolization_rate"。要 12 秒/单位 ⇒ metabolization_rate = 2 ÷ 12 = 1/6 ≈ 0.1667。
-#define FLYING_POTION_SECONDS_PER_UNIT 12					// Digest one unit every 12 seconds.
+// 中文：每单位持续 2 秒；标准代谢每 2 秒执行一次，每拍消耗 1 单位，10 单位需 10 拍消化完毕。
+#define FLYING_POTION_SECONDS_PER_UNIT 2					// 每单位药水对应的飞行秒数。
 
 // 中文：成品试剂——飞行药水。非酒基 → 直接继承 /datum/reagent(不走酒基 refined_potion 基类)。
 //   设计：飞行术与药剂"同生共死"——代谢开始施加(无限时长)、每拍补稳、代谢结束移除。
@@ -36,9 +34,8 @@
 	reagent_state = LIQUID									// Liquid potion.
 	color = "#bfe6ffcc"										// Pale sky-blue (airy).
 	taste_description = "一阵掠过舌尖的清风"					// Taste flavour (a passing breeze).
-	// 中文：消化速度 = 每单位 12 秒。基准：每 2 秒(SSmobs.wait=20)代谢一拍、每拍扣 REAGENTS_METABOLISM(=1) ⇒ 基准 2 秒/单位；
-	//       乘以"基准拍秒数 2"再除以"目标 12 秒/单位"，即 1×2/12 = 1/6 ≈ 0.1667 单位/拍 ⇒ 恰好 12 秒/单位。
-	metabolization_rate = REAGENTS_METABOLISM * 2 / FLYING_POTION_SECONDS_PER_UNIT	// 1/6 u per 2s-tick = 12s per unit.
+	// 中文：基准每 2 秒代谢一拍，以目标秒数折算消耗速度，当前为每拍 1 单位。
+	metabolization_rate = REAGENTS_METABOLISM * 2 / FLYING_POTION_SECONDS_PER_UNIT	// 10 单位约持续 20 秒。
 
 // 中文：代谢开始时(每"一份"药剂仅触发一次)——校验目标后以【无限时长】施加飞行术，使其只随药剂存续、不自行到期。
 /datum/reagent/flying_potion/on_mob_metabolize(mob/living/M)

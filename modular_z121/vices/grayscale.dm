@@ -94,7 +94,8 @@ GLOBAL_DATUM(grayscale_transmission, /datum/grayscale_transmission)
 		owner.grayscale_mood_multiplier = 1
 		REMOVE_TRAIT(owner, TRAIT_NOMOOD, Z121_GRAYSCALE_TRAIT_SOURCE)
 		if(!QDELETED(owner))
-			owner.update_stress()
+			// 销毁过程不可等待；由角色回调刷新心情，避免界面或表情阻塞销毁链。
+			addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob, update_stress)), 0)
 	return ..()
 
 /datum/component/grayscale/proc/gray_equipment()
@@ -105,17 +106,68 @@ GLOBAL_DATUM(grayscale_transmission, /datum/grayscale_transmission)
 /datum/component/grayscale/proc/gray_item(obj/item/item)
 	if(!istype(item) || QDELETED(item) || item.z121_grayscaled)
 		return
-	item.z121_grayscaled = TRUE
+	if(istype(item, /obj/item/chair))
+		item.AddComponent(/datum/component/z121_grayscale_chair)
+		return
+	item.z121_apply_grayscale()
+
+/obj/item/proc/z121_apply_grayscale()
+	if(z121_grayscaled)
+		return
+	z121_grayscaled = TRUE
 	// 物品栏和地面图标直接读取物品颜色，必须同时处理本体的染色。
-	item.color = z121_grayscale_color(item.color)
+	color = z121_grayscale_color(color)
 	// 将外观叠层一起处理，确保单独染色的细节也褪为灰阶。
-	item.appearance_flags |= KEEP_TOGETHER
-	item.add_filter(Z121_GRAYSCALE_FILTER, 100, color_matrix_filter(color_matrix_saturation(0)))
+	appearance_flags |= KEEP_TOGETHER
+	add_filter(Z121_GRAYSCALE_FILTER, 100, color_matrix_filter(color_matrix_saturation(0)))
 	// 已穿戴的物品不会因增加滤镜而重建外观，首次灰化时需要主动刷新。
-	item.update_slot_icon()
-	if(ismob(item.loc))
-		var/mob/holder = item.loc
+	update_slot_icon()
+	if(ismob(loc))
+		var/mob/holder = loc
 		holder.update_inv_hands()
+
+// 椅子拿起和放置时会替换对象；沿用原有组件转移流程保存永久灰化状态。
+/datum/component/z121_grayscale_chair
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
+	can_transfer = TRUE
+
+/datum/component/z121_grayscale_chair/Initialize()
+	return apply_grayscale()
+
+/datum/component/z121_grayscale_chair/PostTransfer()
+	return apply_grayscale()
+
+/datum/component/z121_grayscale_chair/proc/apply_grayscale()
+	if(istype(parent, /obj/item/chair))
+		var/obj/item/chair/chair_item = parent
+		chair_item.z121_apply_grayscale()
+		return
+	if(!istype(parent, /obj/structure/chair))
+		return COMPONENT_INCOMPATIBLE
+	var/obj/structure/chair/chair_structure = parent
+	chair_structure.color = z121_grayscale_color(chair_structure.color)
+	chair_structure.appearance_flags |= KEEP_TOGETHER
+	chair_structure.add_filter(Z121_GRAYSCALE_FILTER, 100, color_matrix_filter(color_matrix_saturation(0)))
+
+/obj/structure/chair/update_atom_colour()
+	. = ..()
+	if(GetComponent(/datum/component/z121_grayscale_chair))
+		color = z121_grayscale_color(color)
+
+// 椅子的特殊手持图直接混合贴图，不继承物品滤镜，也不能用 Blend 处理颜色矩阵。
+/obj/item/chair/getmoboverlay(tag, prop, behind = FALSE, mirrored = FALSE)
+	if(!z121_grayscaled)
+		return ..()
+	var/original_color = color
+	color = null
+	if(force_reupdate_inhand)
+		has_behind_state = null
+	// 单独生成本次手持图，避免把灰色贴图写入所有同类物品共用的缓存。
+	var/icon/onmob = generateonmob(tag, prop, behind, mirrored)
+	color = original_color
+	if(onmob)
+		onmob.MapColors(arglist(z121_grayscale_color(original_color)))
+	return onmob
 
 /obj/item
 	/// 永久灰化状态独立保存，不以是否存在渲染滤镜判断。
@@ -176,7 +228,10 @@ GLOBAL_DATUM(grayscale_transmission, /datum/grayscale_transmission)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/owner = parent
 	if(proximity && owner.Adjacent(target))
-		gray_item(target)
+		if(istype(target, /obj/structure/chair))
+			target.AddComponent(/datum/component/z121_grayscale_chair)
+		else
+			gray_item(target)
 
 /datum/component/grayscale/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
