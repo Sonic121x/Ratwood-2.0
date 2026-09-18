@@ -18,10 +18,10 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/bronze
-	name = "bronze barbute"
-	desc = "A greathelm of bronze, who's nasalguard and mandibles leave the wearer's face cloaked in darkness. The heroes of yore have long since \
-	passed, yet their blood still courses through the veins of Psydonia's children; you are no different. Quiff a feather to its skullcap to bear \
-	your allegience with pride."
+	name = "青铜巴布塔盔"
+	desc = "一顶青铜大盔，其护鼻与护颊板让佩戴者的面容笼罩在黑暗中。往昔的英雄早已逝去， \
+	但他们的血脉仍流淌在普赛多尼亚子民的体内；你也不例外。在它的盔顶插上一根羽毛， \
+	便可自豪地展示你的效忠。"
 	body_parts_covered = FULL_HEAD
 	icon_state = "bronzebarbute"
 	item_state = "bronzebarbute"
@@ -37,10 +37,10 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/bronze/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/feather) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Plume") as anything in GLOB.colorlist
+		var/choice = input(user, "选择一种颜色。", "羽饰") as anything in GLOB.colorlist
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -115,7 +115,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/kabuto
 	name = "胴丸盔"
-	desc = "一顶 Kazengun 风格的钢板盔，并以黑钢与金边装饰，令人联想到高贵与力量。通常会与面具或护口一同佩戴。"
+	desc = "一顶风钢岩钢板盔，以黑钢与金边装饰，令人联想到高贵与力量。通常会与面具或护口一同佩戴。"
 	flags_inv = HIDEEARS
 	flags_cover = null
 	icon_state = "kazengunheavyhelm"
@@ -131,7 +131,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard/ancient
 	name = "远古萨伏依盔"
-	desc = "打磨光亮的吉布兰兹护板塑成堡垒般的大盔。Syon 彗星的灼目光芒仿佛永远烙进了这份合金之中，让人得以瞥见 Psydon 沉眠、Zizo 苏醒之前那个早已腐朽的旧世界。"
+	desc = "打磨光亮的吉尔青铜护板塑成堡垒般的大盔。普赛顿彗星的灼目光芒仿佛永远烙进了这份合金之中，让人得以瞥见普赛顿沉眠、齐佐苏醒之前那个早已腐朽的旧世界。"
 	icon_state = "ancientsavoyard"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -144,7 +144,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard/bogman
 	name = "钢沼民头盔"
-	desc = "一顶面甲雕成咆哮地精模样的头盔。它曾由 Bogmen 佩戴，如今已是古老谷地留下的遗物。"
+	desc = "一顶面甲雕成咆哮地精模样的头盔。它曾由沼民佩戴，如今已是古老腐木谷留下的遗物。"
 	icon_state = "guardhelm"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff
@@ -170,9 +170,9 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/gold
-	name = "golden helmet"
-	desc = "A resplendant barbute, masterfully forged from pure gold. Its nasalguard is marked by a holy sigil, and its interior is fitted \
-	with a besilked arming cap. Even in absolute darkness, the polished surface sparkles with imbued sunlight."
+	name = "黄金头盔"
+	desc = "一顶华美的巴布塔盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
+	即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
 	icon_state = "goldbarbute"
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile. To note, this is lower than even Decrepit-tier armor.
@@ -185,9 +185,9 @@
 	unenchantable = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/gold/king
-	name = "royal golden helmet"
-	desc = "A resplendant barbute, masterfully forged from pure gold. Its nasalguard is marked by a holy sigil, and its interior is fitted \
-	with a besilked arming cap. The dorpeled crown atop its brow invokes authority, be it misbegotten or endowed."
+	name = "王室黄金头盔"
+	desc = "一顶华美的巴布塔盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
+	额上那顶缀饰王冠昭示着权威，无论其来路不正，还是名正言顺。"
 	icon_state = "goldbarbute_crown"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	unenchantable = TRUE
@@ -235,14 +235,14 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/ancient
-	name = "古老的中型骑士盔"
+	name = "古老盆盔"
 	desc = "一顶由打磨过的吉尔青铜制成的古老重盔。没有比看到一位早已屈服于不死邪恶势力的崇高骑士更令人心惊胆颤的景象了。插上一根羽毛，展示你的家族或效忠色彩。"
 	icon_state = "ancientknight"
 	item_state = "ancientknight"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/ancient/decrepit
-	name = "破旧的中型骑士盔"
+	name = "破旧盆盔"
 	desc = "一顶由磨损青铜制成的残破重盔。每当你试着上下掀动它那半生锈的面罩时，配件都会发出刺耳的吱呀声。插上一根羽毛，展示你的家族或效忠色彩。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_DECREPIT
 	color = "#bb9696"
@@ -260,9 +260,9 @@
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/gold
-	name = "golden knight's armet"
-	desc = "A resplendant armet, masterfully forged from pure gold. Hexagrammic etchings of a holy sigil line its visor, and its interior is fitted \
-	with a besilked arming cap. Even in absolute darkness, the polished surface sparkles with imbued sunlight."
+	name = "黄金骑士阿米特盔"
+	desc = "一顶华美的阿米特盔，以纯金精工锻造而成。其面甲上布满六芒形的神圣印记刻纹，内侧衬着一顶丝制武装帽。 \
+	即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
 	icon_state = "goldknight"
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile. To note, this is lower than even Decrepit-tier armor.
@@ -281,10 +281,10 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/gold/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/feather) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Greatplume") as anything in GLOB.colorlist
+		var/choice = input(user, "选择一种颜色。", "大羽饰") as anything in GLOB.colorlist
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -301,9 +301,9 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/gold/king
-	name = "royal golden armet"
-	desc = "A resplendant armet, masterfully forged from pure gold. Hexagrammic etchings of a holy sigil line its visor, and its interior is fitted \
-	with a besilked arming cap. The dorpeled crown atop its brow invokes authority, be it misbegotten or endowed."
+	name = "王室黄金阿米特盔"
+	desc = "一顶华美的阿米特盔，以纯金精工锻造而成。其面甲上布满六芒形的神圣印记刻纹，内侧衬着一顶丝制武装帽。 \
+	额上那顶缀饰王冠昭示着权威，无论其来路不正，还是名正言顺。"
 	icon_state = "goldknight_crown"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	unenchantable = TRUE
@@ -343,7 +343,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet
 	name = "阿米特盔"
-	desc = "神圣的羔羊、牺牲的英雄、受祝的痴人，Psydon 仍在。你愿作为人类的骑士与祂一同坚守，还是在诱惑面前崩溃？"
+	desc = "神圣的羔羊、牺牲的英雄、受祝的痴人，普赛顿仍在。你愿作为人类的骑士与祂一同坚守，还是在诱惑面前崩溃？"
 	icon_state = "armet"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/ComponentInitialize()
@@ -392,7 +392,7 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted
-	name = "snouted armet"
+	name = "带吻部阿米特盔"
 	icon_state = "armet_s"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/iron
@@ -411,7 +411,7 @@
 	name = "金色头盔"
 	icon_state = "topfhelm_gold"
 	item_state = "topfhelm_gold"
-	desc = "一顶覆盖整个头部的头盔，上面刻有 Ravox 的纹饰。勇气。正义。永不屈服。"
+	desc = "一顶覆盖整个头部的头盔，上面刻有拉沃克斯的纹饰。勇气。正义。永不屈服。"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/bucket/ravox/attackby(obj/item/W, mob/living/user, params)
 	return
@@ -452,7 +452,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/xylixhelm
-	name = "Xylix 头盔"
+	name = "赛利克斯头盔"
 	desc = "我起舞，我歌唱！我愿做你的丑角！"
 	icon_state = "xylixhelmet"
 	item_state = "xylixhelmet"
@@ -468,8 +468,8 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-	name = "Astrata 头盔"
-	desc = "侍奉 Astrata 的圣殿武士常戴的一种头盔。长子之光将永远在它的冠饰中闪耀。"
+	name = "阿斯特拉塔头盔"
+	desc = "侍奉阿斯特拉塔的圣殿武士常戴的一种头盔。长子之光将永远在它的冠饰中闪耀。"
 	icon_state = "astratahelm"
 	item_state = "astratahelm"
 	emote_environment = 3
@@ -479,7 +479,7 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm/visor
-	name = "羽饰 Astrata 头盔"
+	name = "羽饰阿斯特拉塔头盔"
 	desc = "一顶饰有巨大黑色羽饰的头盔。秩序将引导你的手。出击要稳，落击要准。无人能够质疑你的意志。"
 	icon_state = "astratahelm_plume"
 	item_state = "astratahelm_plume"
@@ -489,8 +489,8 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
-	name = "Psydon 巴布塔盔"
-	desc = "一顶仪式用巴布塔盔，精工锻造而成，用以象征 Psydon 的神圣权威。圣 Malum 教团的工匠将这副多叉圣容雕进了多得超乎你想象的雕像之中。"
+	name = "普赛顿式巴布塔盔"
+	desc = "一顶仪式用巴布塔盔，精工锻造而成，用以象征普赛顿的神圣权威。圣玛勒姆教团的工匠将这副多叉圣容雕进了多得超乎你想象的雕像之中。"
 	icon_state = "psydonbarbute"
 	item_state = "psydonbarbute"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
@@ -505,8 +505,8 @@
 				return list("shrink" = 0.32,"sx" = -3,"sy" = -8,"nx" = 6,"ny" = -8,"wx" = -1,"wy" = -8,"ex" = 3,"ey" = -8,"nturn" = 180,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 1,"sflip" = 0,"wflip" = 0,"eflip" = 8,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
-	name = "Psydon 阿米特盔"
-	desc = "一顶华美的头盔，其面罩被黑钢锁链束缚封闭。圣 Eora 教团常以鲜花装饰这些阿米特盔，不仅把它当作佳人或家人赠予的幸运象征，也将其视作“幸福必须靠战斗争取”的鲜明提醒。"
+	name = "普赛顿式阿米特盔"
+	desc = "一顶华美的头盔，其面罩被黑钢锁链束缚封闭。圣伊欧拉教团常以鲜花装饰这些阿米特盔，不仅把它当作佳人或家人赠予的幸运象征，也将其视作“幸福必须靠战斗争取”的鲜明提醒。"
 	icon_state = "psydonarmet"
 	item_state = "psydonarmet"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
@@ -567,10 +567,10 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/psy/greatplume
-	name = "psydonic armet with greatplume"
-	desc = "An ornate helmet, whose visor has been bound shut with blacksteel chains. The Order of Saint Eora often decorates \
-	these armets with flowers - not only as a lucky charm gifted to them by fair maidens and family, but also as a vibrant reminder \
-	that 'happiness has to be fought for.' This particular armet has a wider couplet, for accepting greatplumes."
+	name = "带大羽饰的普赛顿式阿米特盔"
+	desc = "一顶华美的头盔，其面罩被黑钢锁链束缚封闭。圣伊欧拉教团常以鲜花装饰这些阿米特盔， \
+	不仅把它当作佳人或家人赠予的幸运象征，也将其视作“幸福必须靠战斗争取”的鲜明提醒。 \
+	这顶阿米特盔的冠饰插孔更为宽大，可以容纳大羽饰。"
 	icon_state = "psyknight"
 	item_state = "psyknight"
 	worn_x_dimension = 64
@@ -586,10 +586,10 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/iron/greatplume/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/feather) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Greatplume") as anything in GLOB.colorlist
+		var/choice = input(user, "选择一种颜色。", "大羽饰") as anything in GLOB.colorlist
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -608,7 +608,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/ordinatorhelm
 	name = "审判官头盔"
-	desc = "这是一名 Grenzelhoft 铁匠提出的设计，他是圣 Abyssor 的狂热信徒，建议以圣殿武士大盔为基础改造，而事实证明它确实值得采用：一具带细狭视缝的钢铁头匣，视野比外表看上去清晰得多。污秽之徒终将溺死在你替他们带去的鲜血里。"
+	desc = "这是一名格伦泽尔霍夫特铁匠提出的设计，他是圣阿比索尔的狂热信徒，建议以圣殿武士大盔为基础改造，而事实证明它确实值得采用：一具带细狭视缝的钢铁头匣，视野比外表看上去清晰得多。污秽之徒终将溺死在你替他们带去的鲜血里。"
 	icon_state = "ordinatorhelm"
 	item_state = "ordinatorhelm"
 	worn_x_dimension = 64
@@ -650,8 +650,8 @@
 	..()
 
 /obj/item/clothing/head/roguetown/helmet/heavy/absolver
-	name = "Psydon 锥形头盔"
-	desc = "这顶诡秘头盔的造型取自圣 Pestra 教团所戴的圣容，它让佩戴者得以提醒异端：恐惧并不是那么容易失去的情绪。即便是死者，也可能重新学会品尝恐惧。"
+	name = "普赛顿式锥形盔"
+	desc = "这顶诡秘头盔的造型取自圣佩斯特拉教团所戴的圣容，它让佩戴者得以提醒异端：恐惧并不是那么容易失去的情绪。即便是死者，也可能重新学会品尝恐惧。"
 	icon_state = "absolutionisthelm"
 	item_state = "absolutionisthelm"
 	emote_environment = 3
@@ -667,8 +667,8 @@
 	armor_class = null	//Needs no armor class, unique absolver gear.
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psybucket
-	name = "Psydon 桶盔"
-	desc = "这是一种由圣 Astrata 与圣 Ravox 旗下持刃武装佩戴的久经考验之作。钢铁包覆你的头颅，而迎敌时显露的祂之十字则会提醒他们：你将坚持到他们坠入虚无。唯有那时，你才得安息。"
+	name = "普赛顿式桶盔"
+	desc = "这是一种由圣阿斯特拉塔与圣拉沃克斯旗下持刃武装佩戴的久经考验之作。钢铁包覆你的头颅，而迎敌时显露的祂之十字则会提醒他们：你将坚持到他们坠入虚无。唯有那时，你才得安息。"
 	icon_state = "psybucket"
 	item_state = "psybucket"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
@@ -679,8 +679,8 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/psybucket/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Orle") as anything in GLOB.colorlist + GLOB.pridelist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choice = input(user, "选择一种颜色。", "饰边") as anything in GLOB.colorlist + GLOB.pridelist
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
@@ -691,8 +691,8 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 	if(istype(W, /obj/item/clothing/head/roguetown/veiled) && !altdetail_tag)
-		var/choicealt = input(user, "Choose a color.", "Veil") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choicealt = input(user, "选择一种颜色。", "面纱") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		altdetail_color = GLOB.colorlist[choicealt]
 		altdetail_tag = "_detailalt"
@@ -717,7 +717,7 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psysallet
-	name = "Psydon 萨勒盔"
+	name = "普赛顿式萨雷特盔"
 	desc = "一顶煮革帽，上覆钢制冠饰，并以祂的十字覆面。无需畏惧，祂会为你指明道路，也会见证你的每一次重击都落得精准。"
 	icon_state = "psysallet"
 	item_state = "psysallet"
@@ -727,8 +727,8 @@
 	smeltresult = /obj/item/ingot/silver
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
-	name = "Noc 头盔"
-	desc = "侍奉 Noc 的圣殿武士常戴的一种头盔。没有夜便没有昼；没有 Noc，黑暗时刻里便不会有光。"
+	name = "诺克头盔"
+	desc = "侍奉诺克的圣殿武士常戴的一种头盔。没有夜便没有昼；没有诺克，黑暗时刻里便不会有光。"
 	icon_state = "nochelm"
 	item_state = "nochelm"
 	emote_environment = 3
@@ -739,14 +739,14 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm/snouted
-	name = "snouted noc helmet"
-	desc = "Headwear commonly worn by Templars in service to Noc, its brow drawn forward to seat a snout. Without the night there can be no day; without Noc there can be no light in the dark hours."
+	name = "带吻部诺克头盔"
+	desc = "侍奉诺克的圣殿武士常戴的一种头盔，其盔檐前伸以安放吻部。没有夜便没有昼；没有诺克，黑暗时刻里便不会有光。"
 	icon_state = "nochelm_s"
 	item_state = "nochelm_s"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-	name = "Necra 头盔"
-	desc = "侍奉 Necra 的圣殿武士常戴的一种头盔。愿它骸骨般的轮廓提醒你，人生唯一注定之事便是死亡。"
+	name = "内克拉头盔"
+	desc = "侍奉内克拉的圣殿武士常戴的一种头盔。愿它骸骨般的轮廓提醒你，人生唯一注定之事便是死亡。"
 	icon_state = "necrahelm"
 	item_state = "necrahelm"
 	emote_environment = 3
@@ -756,7 +756,7 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm/hooded
-	name = "兜帽 Necra 头盔"
+	name = "兜帽内克拉头盔"
 	desc = "它如佩戴者的面容般阴沉肃穆。因为他们知晓此生唯一的真理，故其职责亦神圣无比。终有一死的，不止是他们，也包括你。"
 	icon_state = "necrahelm_hooded"
 	item_state = "necrahelm_hooded"
@@ -766,8 +766,8 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
-	name = "Dendor 头盔"
-	desc = "侍奉 Dendor 的圣殿武士常戴的一种头盔。它伸出的部分几乎像树枝一般。只要在大地之中扎根，你便永不会被撼动。"
+	name = "登多尔头盔"
+	desc = "侍奉登多尔的圣殿武士常戴的一种头盔。它伸出的部分几乎像树枝一般。只要在大地之中扎根，你便永不会被撼动。"
 	icon_state = "dendorhelm"
 	item_state = "dendorhelm"
 	emote_environment = 3
@@ -777,8 +777,8 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
-	name = "Abyssor 圣殿头盔"
-	desc = "侍奉 Abyssor 的圣殿武士常戴的一种头盔。它以狰狞的甲壳类圣容唤起海洋的意象。"
+	name = "阿比索尔圣殿头盔"
+	desc = "侍奉阿比索尔的圣殿武士常戴的一种头盔。它以狰狞的甲壳类圣容唤起海洋的意象。"
 	icon_state = "abyssorgreathelm"
 	item_state = "abyssorgreathelm"
 	emote_environment = 3
@@ -789,7 +789,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/ravoxhelm
 	name = "正义之鹰盔"
-	desc = "这顶头盔为致敬 Ravox 而锻造，饰有风格化的鹰首圣容，象征不屈的裁决与神圣的警戒。它空洞的双眼所见的不只是敌人，更是每一桩行为背后的真相。"
+	desc = "这顶头盔为致敬拉沃克斯而锻造，饰有风格化的鹰首圣容，象征不屈的裁决与神圣的警戒。它空洞的双眼所见的不只是敌人，更是每一桩行为背后的真相。"
 	icon_state = "ravoxhelmet"
 	item_state = "ravoxhelmet"
 	emote_environment = 3
@@ -812,7 +812,7 @@
 			H.update_inv_head()
 
 /obj/item/clothing/head/roguetown/helmet/heavy/ravox_visor
-	name = "羽饰 Ravox 头盔"
+	name = "羽饰拉沃克斯头盔"
 	desc = "一顶饰有巨大红色羽饰的头盔。终有一日，他们会明白你才是山谷真正的裁正者。"
 	icon_state = "ravoxhelm"
 	item_state = "ravoxhelm"
@@ -827,8 +827,8 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-	name = "狼面头盔"
-	desc = "一顶带狼形面罩的钢制盆盔，可保护头部、耳朵、眼睛、鼻子与口部。"
+	name = "沃尔夫面甲头盔"
+	desc = "一顶带沃尔夫式面罩的钢制盆盔，可保护头部、耳朵、眼睛、鼻子与口部。"
 	icon_state = "volfplate"
 	item_state = "volfplate"
 	adjustable = CAN_CADJUST
@@ -845,11 +845,11 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/puritan
-	name = "狼首盆盔"
+	name = "沃尔夫头骨盆盔"
 	desc = "一顶带狰狞面罩的钢制盆盔，可保护整个头部与面部。它模仿可怖夜兽的模样，足以震慑征召兵，也足以激励猎人。"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/berserker
-	name = "狼首盆盔"
+	name = "沃尔夫头骨盆盔"
 	desc = "一顶带狰狞面罩的钢制盆盔，可保护整个头部与面部。正如它所模仿的夜兽一般，这顶头盔的獠牙也闪烁着足以撕裂血肉的锋芒。"
 	armor_class = ARMOR_CLASS_LIGHT //Pseudoantagonist-exclusive. Gives them an edge over traditional pugilists and barbarians.
 	var/active_item = FALSE
@@ -871,8 +871,8 @@
 	to_chat(user, span_red("……就这样，盆盔的面罩再度沉寂下来，你下颌那股古怪的压迫感也随之消退了。"))
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/psydonic
-	name = "psydonic volfskulle bascinet"
-	desc = "An Otavan re-creation of the generic volfskulle bascinet. Far more protective than a muzzle, that's for certain."
+	name = "普赛顿式沃尔夫头骨盆盔"
+	desc = "奥塔万对通用沃尔夫头骨盆盔的复刻之作。比起口套，它的防护性无疑要好得多。"
 	icon_state = "psyhelm_s"
 	item_state = "psyhelm_s"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x40/head.dmi'
@@ -909,7 +909,7 @@
 /// Offers superior stab resistance and meaningful slash defence compared to the standard elven helm.
 /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/druidic
 	name = "祝圣德鲁伊头盔"
-	desc = "一顶生长于 Dendor 圣林深处的头盔，经古老树液与仪式之火淬炼而坚硬。它能偏转利刃与刺击，但技艺高超的挥砍者仍可能找到破绽。"
+	desc = "一顶生长于登多尔圣林深处的头盔，经古老树液与仪式之火淬炼而坚硬。它能偏转利刃与刺击，但技艺高超的挥砍者仍可能找到破绽。"
 	armor = list("blunt" = 100, "slash" = 65, "stab" = 130, "piercing" = 40, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/druidic/Initialize(mapload)
@@ -928,8 +928,8 @@
 	to_chat(H, span_warning("[name]抗拒了我的触碰，唯有树父的忠诚信徒才配承受这份礼物！"))
 
 /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light
-	name = "woad elven barbute"
-	desc = "A helm of woven trunk, kept alive by ancient song and crowned with living leaves of endless verdure. Lighter and more pliant than it's fuller counterpart, it bends with the will of it's bearer, never truly severed from the living grove."
+	name = "林纹精灵巴布塔盔"
+	desc = "一顶由交织木质拼构而成的头盔，靠古老歌谣维系生机，并冠以永不凋零的鲜活枝叶。它比那顶更厚实的同类更轻盈、更柔韧，会随佩戴者的意志弯折，从未真正与活着的林地断绝联系。"
 	body_parts_covered = HEAD|HAIR|NOSE|EARS|NECK
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
@@ -968,8 +968,8 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 	if(istype(W, /obj/item/clothing/head/roguetown/veiled) && !altdetail_tag)
-		var/choicealt = input(user, "Choose a color.", "Veil") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choicealt = input(user, "选择一种颜色。", "面纱") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		altdetail_color = GLOB.colorlist[choicealt]
 		altdetail_tag = "_detailalt"
@@ -994,8 +994,8 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo
-	name = "阿文坦蛙嘴盔"
-	desc = "一顶以 avantyne 锻造的重型蛙嘴盔。宽阔的视缝带来了在此类头盔中少见的实用视野。它自不可知的边缘被呼唤而来。以她之名。"
+	name = "阿凡泰因蛙嘴盔"
+	desc = "一顶以阿凡泰因锻造的重型蛙嘴盔。宽阔的视缝带来了在此类头盔中少见的实用视野。它自不可知的边缘被呼唤而来。以她之名。"
 	icon_state = "zizofrogmouth"
 	item_state = "zizofrogmouth"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
@@ -1054,8 +1054,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "VISAGE")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo
-	name = "阿文坦巴布塔盔"
-	desc = "一顶 avantyne 制的巴布塔盔。这一顶配有可调节面罩。它自不可知的边缘被呼唤而来。以她之名。"
+	name = "阿凡泰因巴布塔盔"
+	desc = "一顶阿凡泰因巴布塔盔。这一顶配有可调节面罩。它自不可知的边缘被呼唤而来。以她之名。"
 	adjustable = CAN_CADJUST
 	icon_state = "zizobarbute"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
@@ -1071,9 +1071,9 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo
-	name = "avantyne bascinet"
-	desc = "A darksteeled bascinet, perpetually backlit with an eerie crimson haze. Glimpse into the abyss for too \
-	long..</br>‎<font color='FF0000'>..and something will look back.</font>"
+	name = "阿凡泰因盆盔"
+	desc = "一顶暗钢盆盔，始终被诡异的赤红薄雾自后方映亮。凝视深渊 \
+	太久……</br>‎<font color='FF0000'>……就会有东西回望你。</font>"
 	adjustable = CANT_CADJUST
 	icon_state = "zizobascinet"
 	item_state = "zizobascinet"
@@ -1090,9 +1090,9 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo
-	name = "avantyne volf-face bascinet"
-	desc = "A terminal prognosis, a lethal parasite; unholy strands of avantyne, worming their way through the steel to make something \
-	greater. Progress is an agonising process, both unto flesh and metal."
+	name = "阿凡泰因沃尔夫面甲盆盔"
+	desc = "一份末日的判决，一只致命的寄生物；不洁的阿凡泰因细丝蠕行穿过钢铁，欲造出 \
+	更伟大的东西。进步是痛苦的过程，无论对血肉还是对金属而言。"
 	adjustable = CAN_CADJUST
 	icon_state = "volfplate_avantyne"
 	item_state = "volfplate_avantyne"
@@ -1139,19 +1139,19 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/captain/sallet
-	name = "captain's snouted sallet"
-	desc = "An elegant sallet, fitted with the gold trim and polished metal of nobility. Its bevor is drawn forward into a muzzle."
+	name = "队长带吻部萨雷特盔"
+	desc = "一顶优雅的萨雷特盔，装配着贵族风格的金边与抛光金属。其护颚前伸成口鼻状。"
 	icon_state = "capsallet_s"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 
 /obj/item/clothing/head/roguetown/helmet/heavy/captain/bascinet
-	name = "captain's snouted bascinet"
-	desc = "An elegant bascinet, fitted with the gold trim and polished metal of nobility. Its visor tapers into a muzzle."
+	name = "队长带吻部盆盔"
+	desc = "一顶优雅的盆盔，装配着贵族风格的金边与抛光金属。其面罩收窄成口鼻状。"
 	icon_state = "capbascinet_s"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/mimic
-	name = "Symbol of Avarice"
-	desc = "Monster head resembling a treasure chest. It is said Psydonia's mimics bear this visage as a symbol of shame for the sin of avarice. Every age, it seems, is tainted by the greed of men. Rubbish, to one such as I, devoid of all worldly wants!"
+	name = "贪婪之象征"
+	desc = "一颗形似藏宝箱的怪物头颅。据说普赛多尼亚的拟形怪顶着这副面容，作为贪婪之罪的羞耻象征。每一个时代似乎都被人类的贪欲所玷污。对毫无世俗欲求之人——比如我——而言，这纯属胡言！"
 	icon = 'icons/roguetown/clothing/special/mimichead.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/mimichead.dmi'
 	icon_state = "mimichead"
@@ -1169,7 +1169,7 @@
 	if(slot != SLOT_HEAD)
 		return
 	active_item = TRUE
-	to_chat(user, span_hypnophrase("Dead mimic flesh envelops your head slippery, cold, and wet. The beast's hunger washes over you, you feel starved and emaciated, as if something has sapped your CONSTITUTION; however, in it's place is left a gnawning, greedy avarice coupled with FORTUNE enough to sate it."))
+	to_chat(user, span_hypnophrase("死去的拟形怪血肉裹住你的头颅，滑腻、冰冷而潮湿。野兽的饥渴涌上你身，你感到饥饿与消瘦，仿佛有什么抽干了你的体质；然而取而代之的，是一股啃噬不休的贪婪欲念，以及足以餍足它的幸运。"))
 	user.change_stat(STATKEY_LCK, 5)
 	user.change_stat(STATKEY_CON, -5)
 
@@ -1177,14 +1177,14 @@
 	. = ..()
 	if(!active_item)
 		return
-	to_chat(user, span_hypnophrase("The vile corpse pulls free with a squelch. Your head is left wet, glossed slick with the creatures mucus... You feel your vigor return!"))
+	to_chat(user, span_hypnophrase("那具邪恶的尸骸伴着一声黏腻的闷响剥落下来。你的头颅湿漉漉的，覆满那生物亮滑的黏液……你感到自己的活力回来了！"))
 	user.change_stat(STATKEY_LCK, -5)
 	user.change_stat(STATKEY_CON, 5)
 	active_item = FALSE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/jar
-	name = "jar"
-	desc = "Jar that fits cleanly over the head when upturned. A small hole has been knapped in the side to allow vision, if poorly."
+	name = "陶罐"
+	desc = "倒扣在头上刚好合缝的陶罐。侧面敲出了一个小孔以便视物，虽说视野很差。"
 	icon = 'icons/roguetown/clothing/special/jar.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/jar.dmi'
 	icon_state = "jar"
