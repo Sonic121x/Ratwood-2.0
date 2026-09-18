@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/etrusca
-	group = "文化货物"
+	group = "文化货物" // English: Cultural Stock
 	crate_name = "伊特鲁斯卡货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE

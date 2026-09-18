@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Supplies
-	group = "Supplies"
+	group = "补给品" // English: Supplies
 	crate_name = "Gifts of Toil"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
