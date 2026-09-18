@@ -70,7 +70,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe
 	name = "异域长袍"
-	desc = "花纹风格的长袍，据说被灌注了魔法防护。商会说这来自南方的卡曾贡地区。"
+	desc = "花纹风格的长袍，据说被灌注了魔法防护。商会说这来自南方的风郡地区。"
 	icon_state = "eastsuit4"
 	item_state = "eastsuit4"
 	armor = ARMOR_LEATHER_STUDDED
@@ -86,7 +86,7 @@
 // this robe spawns on a role that offers no leg protection nor further upgrades to the loadout, in exchange for better roundstart gear
 
 /obj/item/clothing/suit/roguetown/armor/plate/elven_plate
-	name = "染纹精灵板甲"
+	name = "靛纹精灵板甲"
 	desc = "由最古老的精灵德鲁伊以歌与工具共同编织。它仍在吱呀作响，仿佛为逝去时代而悲泣。看起来只有精灵才能穿得上。"
 	allowed_race = list(/datum/species/elf/wood, /datum/species/human/halfelf, /datum/species/elf/dark, /datum/species/elf)
 	armor = ARMOR_BLACKOAK

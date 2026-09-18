@@ -44,7 +44,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/ancient
 	name = "远古臂甲"
-	desc = "抛光的gilbranze护腕紧扣于手腕之上。唯有升格，凡躯的锁链方会断裂；唯有死亡，灵魂才有资格拥抱神性。"
+	desc = "抛光的吉尔青铜护腕紧扣于手腕之上。唯有升格，凡躯的锁链方会断裂；唯有死亡，灵魂才有资格拥抱神性。"
 	icon_state = "ancientbracers"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -59,8 +59,8 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/wrists/roguetown/bracers/bronze
-	name = "bronze wristguards"
-	desc = "Padded with hide and cuffed to comfort the joints, these bronze plates fit perfectly around both forearms. Your fingers tingle with an unspoken purpose, as the bracers clasp into place; primordial, yet everclear."
+	name = "青铜护腕"
+	desc = "以兽皮衬垫、以箍环贴合关节，这些青铜甲片恰好包裹住双前臂。当护腕扣合就位时，你的手指因某种无言的目的而微微发麻；原始，却又始终澄明。"
 	icon_state = "bronzebracers"
 	body_parts_covered = ARMS | HANDS //Experimental, but should play well with the increased durability.
 	smeltresult = /obj/item/ingot/bronze
@@ -68,8 +68,8 @@
 	max_integrity = ARMOR_INT_SIDE_BRONZE
 
 /obj/item/clothing/wrists/roguetown/bracers/gold
-	name = "golden bracers"
-	desc = "A resplendant pair of golden vambraces, further padded with besilked sleeves. Each halve is marked with a holy sigil, sloped upwards to help catch-and-reflect sunlight into the eyes of unsuspecting assailants."
+	name = "黄金臂甲"
+	desc = "一对光彩夺目的黄金护臂，其内还以丝绸衬里加垫。每一半都刻有一枚神圣徽记，并向上倾斜，以便捕捉并反射阳光，晃进毫无防备的袭击者眼中。"
 	icon_state = "goldbracers"
 	item_state = "goldbracers"
 	body_parts_covered = ARMS | HANDS //Experimental, but should compliment the cost. Let all handhitters fear your presence.. for exactly five strikes.
@@ -84,13 +84,13 @@
 	unenchantable = TRUE
 
 /obj/item/clothing/wrists/roguetown/bracers/gold/king
-	name = "royal golden bracers"
+	name = "王室黄金臂甲"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	sellprice = 300
 	unenchantable = TRUE
 
 /obj/item/clothing/wrists/roguetown/bracers/psythorns
-	name = "Psydon荆棘腕甲"
+	name = "普赛顿荆棘腕甲"
 	desc = "以柔韧而耐用的黑钢制成的荆棘，彼此编织扣连，缠绕于双腕之上。"
 	icon_state = "psybarbs"
 	item_state = "psybarbs"
@@ -218,13 +218,13 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/cloth/naledi
 	name = "旅者缠腕"
-	desc = "裁切好的麻布与布料被细致缠在前臂上。接受Naledi训练的僧侣，很少像他们的Otava同门那样怀有宿命论心态，因此往往不愿把手腕缠进锯齿般的荆棘里。未染血的手指对秘法也确实更好使。</br>'……于是，当祂吐出最后一息时，他们所流下的巨大泪水，哀哭者之雨，标记了这寂静纪元的开端。愚人会告诉你Psydon已经死去，碎成了“十块更小的碎片”，可那说不通。祂们是内与外的一切，超越大小与形状。既然是一切，又怎会变成某物？不，祂们只是把耳朵从我们这里转开了。祂们在哀悼，为祂们最伟大的孩子，也为最糟的那个……'"
+	desc = "裁切好的麻布与布料被细致缠在前臂上。接受纳莱迪训练的僧侣，很少像他们的奥塔瓦同门那样怀有宿命论心态，因此往往不愿把手腕缠进锯齿般的荆棘里。未染血的手指对秘法也确实更好使。</br>'……于是，当祂吐出最后一息时，他们所流下的巨大泪水，哀哭者之雨，标记了这寂静纪元的开端。愚人会告诉你普赛顿已经死去，碎成了“十块更小的碎片”，可那说不通。祂们是内与外的一切，超越大小与形状。既然是一切，又怎会变成某物？不，祂们只是把耳朵从我们这里转开了。祂们在哀悼，为祂们最伟大的孩子，也为最糟的那个……'"
 	color = "#48443B"
 	nudist_approved = TRUE
 
 /obj/item/clothing/wrists/roguetown/bracers/cloth/gladiator
-	name = "padded wrappings"
-	desc = "Sheared burlap and cloth, meticulously fashioned around the forearms. Taut fibers turn weeping gashes into mere tears along the cloth. </br>"
+	name = "衬垫缠腕"
+	desc = "剪碎的粗麻布与布料，被细致地缠在前臂上。绷紧的纤维能把泣血的深创化为布面上的一道裂痕。 </br>"
 	color = "#BFB8A9"
 
 //Queensleeves
@@ -281,8 +281,8 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo
-	name = "avantyne bracers"
-	desc = "Clasped yet practical, these avantyne wristguards are reinforced for the rite without binding themselves to the wearer forever."
+	name = "阿凡泰因臂甲"
+	desc = "这些阿凡泰因护腕紧扣却实用，为仪式而加固，却不会将自己永远束缚在佩戴者身上。"
 	icon_state = "zizobracers"
 	item_state = "zizobracers"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
@@ -393,9 +393,9 @@
 	sellprice = 95
 
 /obj/item/clothing/wrists/roguetown/bracers/chain/ancient/decrepit
-	name = "decrepit chain sleeves"
-	desc = "Coverings of frayed bronze maille, fashioned from hundreds of interlinked rings. An aura of decaying harlotry eminates from these sleeves. \
-	</br>I can adjust these sleeves to hang further down, rather than simply hugging my wrists."
+	name = "破旧锁链袖套"
+	desc = "由数百个相互扣连的环编成的磨损青铜锁子护套。一股衰朽的娼妓气息自这些袖套中散发出来。 \
+	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "ancientchainsleevesalt"
 	item_state = "ancientchainsleevesalt"
 	max_integrity = ARMOR_INT_SIDE_DECREPIT
@@ -422,9 +422,9 @@
 		wrapped = FALSE
 
 /obj/item/clothing/wrists/roguetown/bracers/chain/ancient
-	name = "ancient chain sleeves"
-	desc = "Coverings of polished gilbranze-maille, fashioned from hundreds of interlinked rings. An aura of undying harlotry eminates from these sleeves. \
-	</br>I can adjust these sleeves to hang further down, rather than simply hugging my wrists."
+	name = "远古锁链袖套"
+	desc = "由数百个相互扣连的环编成的抛光吉尔青铜锁子护套。一股不死的娼妓气息自这些袖套中散发出来。 \
+	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "ancientchainsleevesalt"
 	item_state = "ancientchainsleevesalt"
 
@@ -450,9 +450,9 @@
 		wrapped = FALSE
 
 /obj/item/clothing/wrists/roguetown/bracers/chain/bronze
-	name = "bronze chain sleeves"
-	desc = "Coverings of bronze maille, fashioned from hundreds of interlinked rings. An aura of antiqual harlotry eminates from these sleeves. \
-	</br>I can adjust these sleeves to hang further down, rather than simply hugging my wrists."
+	name = "青铜锁链袖套"
+	desc = "由数百个相互扣连的环编成的青铜锁子护套。一股古旧的娼妓气息自这些袖套中散发出来。 \
+	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "bchainsleevesalt"
 	item_state = "bchainsleevesalt"
 	blocksound = CHAINHIT
@@ -480,9 +480,9 @@
 		wrapped = FALSE
 
 /obj/item/clothing/wrists/roguetown/bracers/chain
-	name = "chain sleeves"
-	desc = "Coverings of steel maille, fashioned from hundreds of interlinked rings. An aura of inexplicable harlotry eminates from these sleeves. \
-	</br>I can adjust these sleeves to hang further down, rather than simply hugging my wrists."
+	name = "锁链袖套"
+	desc = "由数百个相互扣连的环编成的钢制锁子护套。一股难以解释的娼妓气息自这些袖套中散发出来。 \
+	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "chainsleevesalt"
 	item_state = "chainsleevesalt"
 	blocksound = CHAINHIT

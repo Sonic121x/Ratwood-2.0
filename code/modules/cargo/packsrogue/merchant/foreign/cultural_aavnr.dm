@@ -1,60 +1,60 @@
 /datum/supply_pack/rogue/aavnr
-	group = "Cultural Stock"
-	crate_name = "Aavnr crate"
+	group = "文化货物"
+	crate_name = "阿夫尼克货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/aavnr/shashka
-	name = "Aavnic Shashka"
+	name = "阿夫尼克的沙什卡"
 	cost = 90
 	contains = list(/obj/item/rogueweapon/sword/sabre/steppesman)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/aavnr/recurve_bow
-	name = "Aavnic Riding Bow"
+	name = "阿夫尼克骑弓"
 	cost = 80
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/steppesman)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/steppe_axe
-	name = "Steppesman Battle Axe"
+	name = "草原民战斧"
 	cost = 95
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle/steppesman)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/nagaika
-	name = "Kozak Nagaika"
+	name = "哥萨克纳盖卡鞭"
 	cost = 45
 	contains = list(/obj/item/rogueweapon/whip/nagaika)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/aavnr/steppe_shield
-	name = "Steppesman Shield"
+	name = "草原民铁盾"
 	cost = 75
 	contains = list(/obj/item/rogueweapon/shield/iron/steppesman)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/shishak
-	name = "Shishak Helmet"
+	name = "希沙克盔"
 	cost = 70
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/shishak)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/aavnr/papakha
-	name = "Kozak Papakha"
+	name = "哥萨克帕帕哈帽"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/papakha)
 	ship_qty_min = 3
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/aavnr/ironmask
-	name = "Ironmask Warmasks"
+	name = "铁面战面具"
 	cost = 95
 	contains = list(
 		/obj/item/clothing/mask/rogue/facemask/steel/steppesman,
@@ -64,28 +64,28 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/aavnr/chargah
-	name = "Chargah Padded Caftan"
+	name = "恰尔加加垫卡夫坦"
 	cost = 60
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/chargah)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/aavnr/hatanga
-	name = "Steppe Hatanga Coat"
+	name = "草原哈坦嘎大衣"
 	cost = 85
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/steppe)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/aavnr/steppe_scale
-	name = "Steppe Scale Plate"
+	name = "草原鳞甲"
 	cost = 220
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale/steppe)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/szabrista_kit
-	name = "Aavnic Szabrista Harness"
+	name = "阿夫尼克军刀手甲胄套装"
 	no_name_quantity = TRUE
 	cost = 430
 	contains = list(
@@ -106,7 +106,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/aavnr/druzhina_kit
-	name = "Aavnic Druzhina Hunter Kit"
+	name = "阿夫尼克德鲁日纳猎手套装"
 	no_name_quantity = TRUE
 	cost = 260
 	contains = list(
@@ -125,42 +125,42 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/aavnr/freifechter_jacket
-	name = "Freifechter Fencing Jacket"
+	name = "自由斗剑团击剑外套"
 	cost = 95
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/freifechter_shirt
-	name = "Padded Fencing Shirt"
+	name = "加垫击剑衬衣"
 	cost = 55
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/freifechter)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/freifechter_breeches
-	name = "Fencing Breeches"
+	name = "击剑马裤"
 	cost = 45
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/generic)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/freifechter_boots
-	name = "Fencing Boots"
+	name = "击剑靴"
 	cost = 50
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/freifechter_gloves
-	name = "Fencing Gloves"
+	name = "击剑手套"
 	cost = 45
 	contains = list(/obj/item/clothing/gloves/roguetown/angle/grenzelgloves)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/freifechter_kit
-	name = "Freifechter Sabrist Wares"
+	name = "自由斗剑团军刀手货品"
 	no_name_quantity = TRUE
 	cost = 340
 	contains = list(
@@ -178,7 +178,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/aavnr/saiga_sausage
-	name = "Smoked Saiga Sausage"
+	name = "烟熏赛加羚羊香肠"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked,
@@ -189,7 +189,7 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/aavnr/coppiette
-	name = "Heartland Coppiette"
+	name = "腹地风干肉条"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
