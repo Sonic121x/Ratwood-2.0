@@ -5,7 +5,7 @@
 // Other server has it as random. I prefer it to not be random so people can get what they want.
 
 /datum/supply_pack/rogue/bath_perfume
-	group = "Perfumes"
+	group = "香水" // English: Perfumes
 	crate_name = "perfumery' crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

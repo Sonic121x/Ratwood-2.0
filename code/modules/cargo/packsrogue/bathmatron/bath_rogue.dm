@@ -2,7 +2,7 @@
 // Took lockpicks out so it don't get spammed. Get the expensive hairpins instead.
 
 /datum/supply_pack/rogue/bath_rogue
-	group = "Roguery"
+	group = "盗贼用品" // English: Roguery
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

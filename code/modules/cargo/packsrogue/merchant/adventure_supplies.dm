@@ -2,7 +2,7 @@
 // Like container, bedrolls etc.
 
 /datum/supply_pack/rogue/adventure_supplies
-	group = "Adventuring Supplies"
+	group = "冒险用品" // English: Adventuring Supplies
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
