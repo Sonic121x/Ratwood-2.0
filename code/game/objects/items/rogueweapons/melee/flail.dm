@@ -98,7 +98,7 @@
 	item_d_type = "blunt"
 
 /datum/intent/flail/sweep
-	name = "sweeping strike"
+	name = "横扫击"
 	icon_state = "insweep"
 	blade_class = BCLASS_BLUNT
 	chargetime = 1.2 SECONDS
@@ -112,7 +112,7 @@
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	cleave = /datum/cleave_pattern/horizontal_sweep
-	desc = "A charged sweep that smashes through targets to the front."
+	desc = "一记蓄力横扫，会砸穿身前的目标。"
 
 /obj/item/rogueweapon/flail/getonmobprop(tag)
 	. = ..()
@@ -128,8 +128,8 @@
 	throwforce = 20
 	max_integrity = 125
 	icon_state = "bronzeflail"
-	name = "bronze flail"
-	desc = "A studded weight and a whittled handle, linked together with a length of bronze chain. It can be spun around to smash armored opponents with tremendous force, cracking plate and bone alike with unflinching impunity."
+	name = "青铜连枷"
+	desc = "一颗布满钉刺的配重锤头与一根削制的握柄，由一段青铜锁链彼此相连。挥转起来，它能以惊人的力量砸向披甲之敌，毫不留情地同时震裂铠甲与骨骼。"
 	smeltresult = /obj/item/ingot/bronze
 	minstr = 7
 
@@ -142,7 +142,7 @@
 
 /obj/item/rogueweapon/flail/sflail/ancient
 	name = "远古连枷"
-	desc = "一颗抛光吉尔布兰泽钉球，以锁链连在加固手柄之上。人们说祂的子民曾将连枷奉若至宝，因为它旋舞时的轨迹仿佛重现了西翁彗星炽烈的飞行。"
+	desc = "一颗抛光吉尔青铜钉球，以锁链连在加固手柄之上。人们说祂的子民曾将连枷奉若至宝，因为它旋舞时的轨迹仿佛重现了普赛顿彗星炽烈的飞行。"
 	icon_state = "aflail"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -159,7 +159,7 @@
 	icon_state = "silverflail"
 	name = "白银晨星连枷"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange)
-	desc = "一柄沉重的白银连枷。它采用格伦泽霍夫式的“晨星”设计，以更长的链条延展攻击距离。虽然它比钢连枷更强，但也需要更大的力气才能挥得得心应手。"
+	desc = "一柄沉重的白银连枷。它采用格伦泽尔霍夫特式的“晨星”设计，以更长的链条延展攻击距离。虽然它比钢连枷更强，但也需要更大的力气才能挥得得心应手。"
 	smeltresult = /obj/item/ingot/silver
 	minstr = 12
 	is_silver = TRUE
@@ -282,8 +282,8 @@
 				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
 /obj/item/rogueweapon/flail/peasantwarflail/steel
-	name = "greatflail"
-	desc = "The lucerne's ungaitly cousin, favoring a 'ball-and-chain' design that - once spun - can devastate anything caught in its way; a trait that makes it dearly beloved by both peasantry and knights alike."
+	name = "巨型连枷"
+	desc = "它是卢塞恩战锤笨拙的表亲，偏爱“流星锤”式的设计——一旦旋舞起来，任何挡路之物都会被它摧垮；正因如此，它深受农民与骑士的共同喜爱。"
 	icon_state = "greatflail"
 	wdefense = 6
 	minstr = 12
@@ -292,8 +292,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/flail/peasantwarflail/silver
-	name = "silver greatflail"
-	desc = "PSLM 81:59... AND HE COMMANDED; \"SHATTER THEM APART, LIKE A POTTER'S VESSEL AGAINST THE STONES!\" AND SO, WE STRUCK!"
+	name = "白银巨型连枷"
+	desc = "PSLM 81:59……祂下达了命令；\"把他们打得粉碎，就像陶匠的器皿砸在石头上！\"于是，我们出击了！"
 	icon_state = "silver_greatflail"
 	wdefense = 6
 	minstr = 13
@@ -314,8 +314,8 @@
 	)
 
 /obj/item/rogueweapon/flail/peasantwarflail/blacksteel
-	name = "blacksteel greatflail"
-	desc = "An elegant flail of blacksteel that - once spun - can devastate anything caught in its way."
+	name = "黑钢巨型连枷"
+	desc = "一柄优雅的黑钢连枷——一旦旋舞起来，任何挡路之物都会被它摧垮。"
 	icon_state = "bs_greatflail"
 	wdefense = 7
 	minstr = 12

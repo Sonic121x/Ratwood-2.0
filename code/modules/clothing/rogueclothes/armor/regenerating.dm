@@ -103,7 +103,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple
 	name = "门徒之肤"
-	desc = "它远不只是一句誓言。 </br>'AEON, PSYDON, ADONAI - 熵、众生、神性。三位一体， \
+	desc = "它远不只是一句誓言。 </br>'永世、普赛顿、阿多奈——熵、众生、神性。三位一体， \
 	既为一，又为三；为众所知，却被时光遗忘。' </br>'一具尸体。 \
 	我正活在一具尸体上。祂便是世界，而世界正在腐烂。 \
 	天堂早已对我们关闭了大门。' </br>'然而，祂的孩子们仍在坚持；只要他们还在，我也必须坚持。 \
@@ -123,8 +123,8 @@
 	combat_taggable = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/gladiator
-	name = "pit-hardened chest"//pit? hnnnnhhhffgggg
-	desc = "Are you not entertained?!"
+	name = "斗坑淬炼的胸膛"//pit? hnnnnhhhffgggg
+	desc = "你们还不尽兴吗？！"
 	body_parts_covered = COVERAGE_VEST
 	body_parts_inherent = COVERAGE_VEST
 	blocksound = SOFTHIT
@@ -132,8 +132,8 @@
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER //defaults to a leather armor
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/gladiator
-	name = "pit-hardened skin"
-	desc = "Are you not entertained?!"
+	name = "斗坑淬炼的皮肤"
+	desc = "你们还不尽兴吗？！"
 	body_parts_covered = COVERAGE_FULL //everything but head and it's subzones (neck, skull, ears, eyes, nose, mouth)
 	body_parts_inherent = COVERAGE_FULL
 	armor = ARMOR_PADDED
