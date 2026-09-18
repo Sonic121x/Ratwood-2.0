@@ -126,12 +126,12 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/katar/bronze/gladiator
-	name = "arbelos"
+	name = "阿尔贝洛斯"
 	icon_state = "bronzescissor"
 	item_state = "bronzescissor"
-	desc = "A sharpened axhead that's been mounted onto a bronze gauntlet. Popularized at the turn of the millennium within the Underdark's gladiatorial arenas, \
-	it triumphs over the katar when it comes to thawrting blows and cleaving skulls. The wooden handle used to connect its axhead to the gauntlet is fragile, however; \
-	all it takes is a precise strike to neuter such a weapon."
+	desc = "一枚磨利的斧头，被装在一只青铜护手之上。它在千禧之交于幽暗地域的角斗竞技场中流行起来， \
+	在格挡来袭打击与劈开头颅这两件事上，它都胜过拳刃。然而，连接斧头与护手的木柄十分脆弱； \
+	只需一记精准的打击，就足以让这件武器彻底失去威胁。"
 	wdefense = 5 //Much higher than usual for most unarmed weapons..
 	max_integrity = 150 //..and tougher, too.
 	max_blade_int = 150 // Reduced sharpness, however, as a result. Such a weapon is built for gladitorial combat, not the rigors of the wilderness. Keep it sharpened
@@ -148,7 +148,7 @@
 // swapped from katar to pata cause it's cool. Otherwise indentical
 /obj/item/rogueweapon/katar/bronze
 	name = "青铜拳刃"
-	desc = "一柄架于持用者拳上的青铜刃，常见于精通徒手搏斗之人手中。"
+	desc = "护手与匕首融为一体的青铜兵器，架于持用者拳上。常见于精通徒手搏斗之人手中。"
 	icon_state = "pata_bronze"
 	force = 21 //-3 damage malus, same as the knuckles.
 	max_integrity = 80
@@ -156,7 +156,7 @@
 
 /obj/item/rogueweapon/katar/punchdagger
 	name = "冲拳匕首"
-	desc = "一种结合了齐班廷拳刃握持结构与西境普赛顿“骑士杀手”杀伤能力的武器。它可以系在手腕上。"
+	desc = "一种结合了兹班图拳刃握持结构与西境普赛顿“骑士杀手”杀伤能力的武器。它可以系在手腕上。"
 	slot_flags = ITEM_SLOT_WRISTS
 	max_integrity = 120		//Steel dagger -30
 	force = 15		//Steel dagger -5
@@ -183,7 +183,7 @@
 
 /obj/item/rogueweapon/katar/psydon
 	name = "普赛顿拳刃"
-	desc = "这是一种自云游僧侣手中传出的异域武器，其设计对奥塔凡正教而言颇为玄秘。它特别照顾了使用者的拳部防护：自尖端至刃缘皆为镶银钢材，中央又由祂的圣十字加固，弯曲护肩还能让持用者以刃身引导来袭打击。"
+	desc = "这是一种自云游僧侣手中传出的异域武器，其设计对奥塔瓦正教会而言颇为玄秘。它特别照顾了使用者的拳部防护：自尖端至刃缘皆为镶银钢材，中央又由祂的圣十字加固，弯曲护肩还能让持用者以刃身引导来袭打击。"
 	icon_state = "psykatar"
 	force = 19
 	wdefense = 3
@@ -223,7 +223,7 @@
 
 /obj/item/rogueweapon/knuckles/psydon/old
 	name = "耐战指虎"
-	desc = "一件以圣化钢银合金铸成的朴素凶器，只是其神圣祝福早已褪去。你本就是祂的兵器，无须畏惧 Aeon。"
+	desc = "一件以圣化钢银合金铸成的朴素凶器，只是其神圣祝福早已褪去。你本就是祂的兵器，无须畏惧永世。"
 	icon_state = "psyknuckle"
 	force = 17
 	is_silver = FALSE
@@ -290,13 +290,13 @@
 
 /obj/item/rogueweapon/knuckles/ancient
 	name = "远古指虎"
-	desc = "一对由远古合金铸成的指虎，Aeon 对它们形体的桎梏已被解除。"
+	desc = "一对由远古合金铸成的指虎，永世对它们形体的桎梏已被解除。"
 	icon_state = "aknuckle"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/knuckles/ancient/decrepit
 	name = "破旧指虎"
-	desc = "一对由远古合金铸成的指虎，只是它们的形体已在 Aeon 的掌握下衰败枯朽。"
+	desc = "一对由远古合金铸成的指虎，只是它们的形体已在永世的掌握下衰败枯朽。"
 	force = 12
 	max_integrity = 100
 	wdefense = 4
@@ -386,8 +386,8 @@
 
 /obj/item/rogueweapon/handclaw/blacksteel
 	name = "黑钢鹰爪"
-	desc = "一柄华丽的黑钢鹰爪。尽管北境之土对黑钢并不熟悉，但他们却熟知一种声誉惊人相似的合金；黑过漆黑，不可思议地坚固，据传是神圣物质的残余。\
-			这种武器曾被一位Fjall的传奇冠军所挥舞——其英勇，虽已被时光遗忘，却仍在他们所拯救的世界中回响。\
+	desc = "一对华丽的黑钢鹰爪。尽管北境之土对黑钢并不熟悉，但他们却熟知一种声誉惊人相似的合金；黑过漆黑，不可思议地坚固，据传是神圣物质的残余。\
+			这种武器曾被一位菲亚尔的传奇冠军所挥舞——其英勇，虽已被时光遗忘，却仍在他们所拯救的世界中回响。\
 			</br>'在此余波中，我知罗网何时布下，但事实是，我悔恨我所遗弃的一切！'"
 	icon_state = "bskatarclaw"
 	icon = 'icons/roguetown/weapons/unarmed32.dmi'

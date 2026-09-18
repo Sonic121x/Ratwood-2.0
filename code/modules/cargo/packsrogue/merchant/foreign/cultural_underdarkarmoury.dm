@@ -1,18 +1,18 @@
 /datum/supply_pack/rogue/underdark
-	group = "Cultural Stock"
-	crate_name = "Underdark caravan crate"
+	group = "文化货物"
+	crate_name = "幽暗地域商队货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/underdark/stalker_sabre
-	name = "Stalker Sabre"
+	name = "潜猎者军刀"
 	cost = 95
 	contains = list(/obj/item/rogueweapon/sword/sabre/stalker)
 	ship_qty_min = 2
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spiderwhip
-	name = "Lashkiss Whip"
+	name = "鞭吻"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/whip/spiderwhip)
 	ship_qty_min = 2
@@ -96,21 +96,21 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spidershield
-	name = "Spider Tower Shield"
+	name = "蜘蛛盾"
 	cost = 110
 	contains = list(/obj/item/rogueweapon/shield/tower/spidershield)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/scourge_breastplate
-	name = "Scourge Breastplate"
+	name = "灾厄胸甲"
 	cost = 130
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/fluted/shadowplate)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/underdark/darkplate_gauntlets
-	name = "Darkplate Gauntlets"
+	name = "暗板护手"
 	cost = 65
 	contains = list(/obj/item/clothing/gloves/roguetown/plate/shadowgauntlets)
 	ship_qty_min = 2
@@ -138,70 +138,70 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/skirmisher_gloves
-	name = "Skirmisher's Gloves"
+	name = "散兵手套"
 	cost = 25
 	contains = list(/obj/item/clothing/gloves/roguetown/fingerless/shadowgloves)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/war_mask
-	name = "Crocs de l'araignée War Mask"
+	name = "蛛牙战面具"
 	cost = 60
 	contains = list(/obj/item/clothing/mask/rogue/facemask/shadowfacemask)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/glossweave_shirt
-	name = "Glossweave Shirt"
+	name = "丝质衬衣"
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/shadowshirt)
 	ship_qty_min = 3
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/glossweave_pants
-	name = "Glossweave Pants"
+	name = "丝质紧身裤"
 	cost = 75 // this is armor
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/spidersilk_webbing
-	name = "Spidersilk Webbing (Pants)"
+	name = "蛛丝织物（裤）"
 	cost = 40
 	contains = list(/obj/item/clothing/under/roguetown/webs)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/spidersilk_shirt
-	name = "Spidersilk Webbing (Shirt)"
+	name = "蛛丝织物（衣）"
 	cost = 40
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/webs)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/crossbow
-	name = "Stalker Slurbow"
+	name = "潜猎者斯勒弩"
 	cost = 190//has slightly better stats than slurbow so way more expensive, whoever heard of a generous drow?
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/recurve_bow
-	name = "Recurve Bow"
+	name = "反曲弓"
 	cost = 50
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/arrows
-	name = "Quiver of Arrows"
+	name = "箭矢箭袋"
 	cost = 35
 	contains = list(/obj/item/quiver/arrows)
 	ship_qty_min = 3
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/underdark/bolts
-	name = "Quiver of Bolts"
+	name = "弩矢箭袋"
 	cost = 40
 	contains = list(/obj/item/quiver/bolts)
 	ship_qty_min = 2
@@ -209,21 +209,21 @@
 
 
 /datum/supply_pack/rogue/underdark/chain
-	name = "Iron Chain"
+	name = "铁链"
 	cost = 30
 	contains = list(/obj/item/rope/chain)
 	ship_qty_min = 5
 	ship_qty_max = 10
 
 /datum/supply_pack/rogue/underdark/shackles
-	name = "Iron Shackles"
+	name = "脚镣"
 	cost = 40
 	contains = list(/obj/item/restraints/legcuffs)
 	ship_qty_min = 4
 	ship_qty_max = 8
 
 /datum/supply_pack/rogue/underdark/spider_honey
-	name = "Spider Honey"
+	name = "蛛蜜"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/honey/spider,
@@ -234,7 +234,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/repossessed_moondust
-	name = "Repossessed Moondust"
+	name = "回收月尘"
 	cost = 100
 	contains = list(
 		/obj/item/reagent_containers/powder/moondust,
