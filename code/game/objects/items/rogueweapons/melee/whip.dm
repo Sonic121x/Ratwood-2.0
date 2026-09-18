@@ -97,8 +97,8 @@
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 /datum/intent/flail/smash/ranged/psywhip
-	name = "Meteor Strike"
-	desc = "Swing the weight of your whip around your body, using the angular momentum to deliver a devastating strike, propelling your enemy back and savaging them at the same time."
+	name = "流星击"
+	desc = "将鞭身的重量绕身抡起，借助角动量打出一记毁灭性的重击，在把敌人击退的同时将他们撕得血肉模糊。"
 	chargedrain = 0 //The charge time is indicative of a warmup, not a hold.
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = FALSE
@@ -118,7 +118,7 @@
 	force = 24
 
 /obj/item/rogueweapon/whip/antique
-	name = "Repenta En"
+	name = "雷彭塔·恩"
 	desc = "一条保养得极好的多尾鞭。那鎏金握柄先以异乎寻常的重量压住手掌，继而又让心头浮起一阵不安的明悟：这绝不是荣誉之器。 </br>“拉沃克斯捍卫的是正义，而非谋杀。”"
 	force = 25
 	minstr = 11
@@ -136,7 +136,7 @@
 
 /obj/item/rogueweapon/whip/antique/psywhip
 	name = "“破晓”"
-	desc = "一条链节相扣的长鞭，由上百片受祝圣的白银精心拼接而成。它的来历浸透了神话色彩：多数人相信它源自某支古老的吸血鬼猎人血脉，那一族曾从一位强大的 Lyckerlorde 手中拯救了普赛顿尼亚。至于究竟是偶然还是命运本身，才最终让它落入你手中，还是不要深究为好。 </br>“在大教堂的穹顶之上，曾绘着一幕极美的景象：披袍的普赛顿立于大魔之前，以燃火长鞭一击裂开夜空。正如祂曾做到的那样，如今你也必须将曙光带入黑暗。”"
+	desc = "一条链节相扣的长鞭，由上百片受祝圣的白银精心拼接而成。它的来历浸透了神话色彩：多数人相信它源自某支古老的吸血鬼猎人血脉，那一族曾从一位强大的莱克领主手中拯救了普赛多尼亚。至于究竟是偶然还是命运本身，才最终让它落入你手中，还是不要深究为好。 </br>“在大教堂的穹顶之上，曾绘着一幕极美的景象：披袍的普赛顿立于大魔君之前，以燃火长鞭一击裂开夜空。正如祂曾做到的那样，如今你也必须将曙光带入黑暗。”"
 	icon_state = "psywhip"
 	is_silver = TRUE
 	force = 25
@@ -223,7 +223,7 @@
 	wbalance = WBALANCE_HEAVY
 
 /datum/intent/whip/lash/urumi
-	name = "urumi lash"
+	name = "软剑鞭挞"
 	blade_class = BCLASS_CUT
 	attack_verb = list("鞭打", "切割")
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
@@ -235,7 +235,7 @@
 	item_d_type = "slash"
 
 /datum/intent/whip/lash/urumi/heavy
-	name = "heavy urumi lash"//i'm a hack
+	name = "重型软剑鞭挞"//i'm a hack
 	blade_class = BCLASS_CUT
 	attack_verb = list("鞭打", "切割")
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
@@ -247,7 +247,7 @@
 	item_d_type = "slash"
 
 /datum/intent/whip/crack/urumi/heavy
-	name = "heavy urumi crack"
+	name = "重型软剑裂击"
 	blade_class = BCLASS_CHOP //why not
 	attack_verb = list("抽打", "挥砍")
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
@@ -260,7 +260,7 @@
 	item_d_type = "slash"
 
 /datum/intent/whip/crack/urumi
-	name = "urumi crack"
+	name = "软剑裂击"
 	blade_class = BCLASS_CHOP //why not
 	attack_verb = list("抽打", "挥砍")
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
@@ -273,7 +273,7 @@
 	item_d_type = "slash"
 
 /datum/intent/whip/thrust // elden ring nonsense, but cool
-	name = "urumi thrust"
+	name = "软剑突刺"
 	blade_class = BCLASS_STAB
 	attack_verb = list("突刺", "刺穿", "串刺", "穿透")
 	animname = "stab"
@@ -289,7 +289,7 @@
 	effective_range_type = EFF_RANGE_EXACT
 
 /datum/intent/whip/thrust/heavy // elden ring nonsense, but cool
-	name = "urumi thrust"
+	name = "软剑突刺"
 	blade_class = BCLASS_STAB
 	attack_verb = list("突刺", "刺穿", "串刺", "穿透")
 	animname = "stab"
