@@ -3,7 +3,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 */
 /obj/item/rogueweapon/palantir
 	name = "\improper 真知晶球"
-	desc = "一具刻满符文、灌注了能量的 Arcyne 罗盘。\
+	desc = "一具刻满符文、灌注了能量的奥术罗盘。\
 	换句话说，它能够侦测地脉交汇点。\
 	这是件贵得惊人的装置，多半是从女王麾下某位法师手里撬来的。"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
@@ -83,9 +83,9 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 //craftable bombard
 
 /obj/item/bombard_roughbarrel
-	name = "\improper rough iron barrel"
-	desc = "A rough iron barrel that has yet to be properly treated. <br>\
-	<small> you think you could bring this to an artificer table to refine it further.</small>"
+	name = "\improper 粗糙铁炮管"
+	desc = "一根尚未经过妥善处理的粗糙铁炮管。 <br>\
+	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
 	icon_state = "kit_barrel"
 	w_class = WEIGHT_CLASS_BULKY
@@ -93,9 +93,9 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 	possible_item_intents = list(INTENT_GENERIC)
 
 /obj/item/bombard_partiallyrefinedbarrel
-	name = "\improper partially refined barrel"
-	desc = "An iron barrel that has gone through partial treatment yet is still rough on the inside and must be sanded down,<br>\
-	<small> you think you could bring it to an anvil to refine it further.</small>"
+	name = "\improper 初步精炼的炮管"
+	desc = "一根经过初步处理的铁制炮管，内壁却依旧粗糙，仍需打磨，<br>\
+	<small>你觉得可以把它带到铁砧上进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
 	icon_state = "kit_barrel"
 	w_class = WEIGHT_CLASS_BULKY
@@ -103,9 +103,9 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 	possible_item_intents = list(INTENT_GENERIC)
 
 /obj/item/bombard_sandedbarrel
-	name = "\improper sanded bombard barrel"
-	desc = "An iron barrel that has gone through the sanding process yet still has chips on the inside that must be repaired,<br>\
-	<small> you think you could bring it to an anvil to refine it further.</small>"
+	name = "\improper 打磨过的臼炮炮管"
+	desc = "一根经过打磨处理的铁炮管，但内部仍有缺口需要修补，<br>\
+	<small> 你觉得可以把它带到铁砧处进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
 	icon_state = "kit_barrel"
 	w_class = WEIGHT_CLASS_BULKY
@@ -113,9 +113,9 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 	possible_item_intents = list(INTENT_GENERIC)
 
 /obj/item/bombard_sandedrepairedbarrel
-	name = "\improper repaired sanded barrel"
-	desc = "An iron barrel that has gone through the sanding process, the inside of it is hollow and smooth,<br>\
-	<small> you think you could bring it to an artificer to refine it further.</small>"
+	name = "\improper 修补过的打磨炮管"
+	desc = "一根经过打磨处理的铁炮管，其内部空腔光滑平整，<br>\
+	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
 	icon_state = "kit_barrel"
 	w_class = WEIGHT_CLASS_BULKY

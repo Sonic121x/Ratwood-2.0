@@ -165,13 +165,13 @@
 
 /obj/item/rogueweapon/mace/steel/ancient
 	name = "远古钉头锤"
-	desc = "抛光吉尔布兰兹锻成的锤头，立于加固长柄之上。把愚昧者砸成碎肉，就像陶匠的器皿被狠狠摔在岩石上一样。"
+	desc = "抛光吉尔青铜锻成的锤头，立于加固长柄之上。把愚昧者砸成碎肉，就像陶匠的器皿被狠狠摔在岩石上一样。"
 	icon_state = "amace"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/mace/steel/ancient/decrepit
 	name = "破旧钉头锤"
-	desc = "残旧青铜锤头立于腐朽木柄之上。祂的牺牲淹没了旧西翁，也让人类在余波中失去了曾经创造的一切。当其他祈祷都落入无声之耳后，人类便打造了这尊献给新神的偶像：暴力。"
+	desc = "残旧青铜锤头立于腐朽木柄之上。祂的牺牲淹没了旧西昂，也让人类在余波中失去了曾经创造的一切。当其他祈祷都落入无声之耳后，人类便打造了这尊献给新神的偶像：暴力。"
 	force = 17
 	force_wielded = 21
 	max_integrity = 180
@@ -204,9 +204,9 @@
 	)
 
 /obj/item/rogueweapon/mace/steel/silver/decorated
-	name = "decorated mace"
-	desc = "An ornate mace, inlaid with silver and decorated with golden heraldry. Formally known as a 'gada' amongst the nobility of Naledi, this heftsome scepter \
-	will force anyone to bend the knee; if not through respect, then through a shattered femur."
+	name = "装饰钉头锤"
+	desc = "一柄华丽的钉头锤，镶银并饰以金色纹章。在纳莱迪贵族之间，它的正式名称是“加达”；这根沉重的权杖 \
+	会逼得任何人屈膝下跪；若非出于敬意，那便是因为被打碎了股骨。"
 	icon_state = "gada"
 	smeltresult = /obj/item/ingot/gold
 	smelt_bar_num = 1
@@ -225,8 +225,8 @@
 	)
 
 /obj/item/rogueweapon/mace/gold
-	name = "golden mace"
-	desc = "A heavenly staff of besilked rosawood, crested with the golden sigil of royalty. Like the plump-bellied aristocrats who've surely commissioned this article's design, it is overbearingly heavy."
+	name = "黄金钉头锤"
+	desc = "一根以丝绸包裹的罗莎木制天赐权杖，顶端饰有象征王权的金色纹章。正如那些必定参与设计此物的肥腹贵族一样，它沉得令人难以承受。"
 	icon_state = "goldmace"
 	force = 35
 	force_wielded = 40
@@ -237,8 +237,8 @@
 	unenchantable = TRUE
 
 /obj/item/rogueweapon/mace/gold/king
-	name = "royal golden mace"
-	desc = "A heavenly staff of besilked rosawood, crested with the golden sigil of royalty and socketed with a dorpel. Like the plump-bellied aristocrats who've surely commissioned this article's design, it is overbearingly heavy."
+	name = "皇家黄金钉头锤"
+	desc = "一根以丝绸包裹的罗莎木制天赐权杖，顶端饰有象征王权的金色纹章，并镶有一颗多佩尔石。正如那些必定参与设计此物的肥腹贵族一样，它沉得令人难以承受。"
 	icon_state = "goldmaceking"
 	max_integrity = 75
 	sellprice = 300
@@ -468,7 +468,7 @@
 
 /obj/item/rogueweapon/mace/goden/steel/ancient
 	name = "远古巨型钉头锤"
-	desc = "一柄以抛光吉尔布兰兹锻成的扭曲长柄战锤。你以为这一切究竟是为了什么？这些毁灭、这些战争、这些牺牲，都是为了让人类迎来真正的飞升。"
+	desc = "一柄以抛光吉尔青铜锻成的扭曲长柄战锤。你以为这一切究竟是为了什么？这些毁灭、这些战争、这些牺牲，都是为了让人类迎来真正的飞升。"
 	icon_state = "ancient_supermace"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -495,7 +495,7 @@
 
 /obj/item/rogueweapon/mace/goden/kanabo
 	name = "铁包棒"
-	desc = "一根包有钢箍的木棍，既为击碎敌人的血肉，也为摧垮敌人的意志。它在风格更为雅致的风间郡诸兵器中，算得上相当异类。"
+	desc = "一根包有钢箍的木棍，既为击碎敌人的血肉，也为摧垮敌人的意志。它在风格更为雅致的风郡诸兵器中，算得上相当异类。"
 	icon_state = "kanabo"
 	gripped_intents = list(/datum/intent/mace/strike/goden, /datum/intent/mace/smash/goden, /datum/intent/stab, /datum/intent/effect/daze)
 	max_integrity = 225 // it's strong wood, but it's still wood.
@@ -568,8 +568,8 @@
 
 /obj/item/rogueweapon/mace/warhammer/bronze
 	force = 22
-	name = "bronze warclub"
-	desc = "The warhammer's ancestral link, carved from a weightsome log and studded with bronze. Elven natureguards carry it to both honor their forefathers, and as a way to sunder those who'd ravage Dendor's bounties without thought-or-restraint; a toss from afar turns into a sundering hurlbat."
+	name = "青铜战棍"
+	desc = "战锤的祖型，由一段沉重的原木削成，并钉满青铜。精灵自然守卫手持它，既为敬奉先祖，也用它劈开那些毫无思虑与节制地糟蹋登多尔恩赐之人；远远掷出时，它会化作一柄劈裂一切的投掷斧。"
 	icon_state = "bronzeclub"
 	wbalance = WBALANCE_HEAVY
 	throwforce = 30
@@ -579,8 +579,8 @@
 	max_integrity = 180
 
 /obj/item/rogueweapon/mace/warhammer/bronze/decorated
-	name = "decorated bronze warclub"
-	desc = "Flowers, silk, and gold caress this carved-and-spiked log; a honored totem who's roots trace back to the daes before Syon's impact. Myths speak of ancient elve-and-humen alike, wielding such bronzen bludgeons against the Archdevil's rampaging hordes."
+	name = "装饰青铜战棍"
+	desc = "鲜花、丝绸与黄金缠绕着这根雕琢并布满尖刺的原木；这是一尊备受敬奉的图腾，其根源可追溯至西昂陨落之前的岁月。神话中记载，古代精灵与休门都曾挥舞这样的青铜重棍，对抗大魔君肆虐的军团。"
 	icon_state = "bronzeclubdec"
 	smeltresult = /obj/item/ingot/gold
 	wdefense = 5
@@ -608,7 +608,7 @@
 
 /obj/item/rogueweapon/mace/warhammer/steel/ancient
 	name = "远古战锤"
-	desc = "一颗抛光吉尔布兰兹打造的带刺锤头，安置在加固长柄之上。这是一件来自更文明年代的优雅武器，那时人类彼此和睦共处，“不死者”也不过是噩梦中的妄想。"
+	desc = "一颗抛光吉尔青铜打造的带刺锤头，安置在加固长柄之上。这是一件来自更文明年代的优雅武器，那时人类彼此和睦共处，“不死者”也不过是噩梦中的妄想。"
 	icon_state = "awarhammer"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -635,7 +635,7 @@
 
 /obj/item/rogueweapon/mace/warhammer/steel/silver
 	name = "白银战锤"
-	desc = "一把由纯银锻成的沉重战锤。它遵循奥塔凡“lucerene”的设计，是一种缩短版的长柄战锤，拥有醒目的尖刺，并重新配重以适应单手使用。外观华美，使命正当。"
+	desc = "一把由纯银锻成的沉重战锤。它遵循奥塔万的“卢塞恩”设计，是一种缩短版的长柄战锤，拥有醒目的尖刺，并重新配重以适应单手使用。外观华美，使命正当。"
 	icon_state = "silverhammer"
 	force = 30
 	force_wielded = 30
@@ -786,7 +786,7 @@
 	max_integrity = 320
 
 /datum/intent/mace/sweep
-	name = "sweeping strike"
+	name = "横扫击"
 	icon_state = "insweep"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("横扫", "横砸")
@@ -799,7 +799,7 @@
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	cleave = /datum/cleave_pattern/frontal_arc
-	desc = "A heavy sweep that smashes through targets to the sides and front."
+	desc = "一记沉重的横扫，会砸穿两侧与身前的目标。"
 
 //Intents for the mauls.
 /datum/intent/effect/hobble
