@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Knave
-	group = "Knave"
+	group = "无赖" // English: Knave
 	crate_name = "Gifts of Shadows"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

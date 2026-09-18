@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/blackmarket_arms
-	group = "Self Defense"
+	group = "自卫用品" // English: Self Defense
 	crate_name = "suspicious crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
