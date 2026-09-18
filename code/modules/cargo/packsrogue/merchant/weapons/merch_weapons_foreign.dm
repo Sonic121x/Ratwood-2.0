@@ -1,6 +1,6 @@
 // Special Mercenary Weapons, at exorbitant prices
 /datum/supply_pack/rogue/merc_weapons
-	group = "武器（异域）"
+	group = "武器（异域）" // English: Weapons (Foreign)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

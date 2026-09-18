@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/aavnr
-	group = "文化货物"
+	group = "文化货物" // English: Cultural Stock
 	crate_name = "阿夫尼克货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
