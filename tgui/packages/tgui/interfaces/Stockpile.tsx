@@ -75,18 +75,34 @@ type Data = {
 
 type ActFn = (action: string, params?: Record<string, unknown>) => void;
 
+// Display-only labels: backend category/event keys stay English for filtering.
+const CATEGORY_LABELS: Record<string, string> = {
+  'Raw Materials': '原材料',
+  Refined: '精炼物',
+  Alchemy: '炼金',
+  Fruit: '水果',
+  Vegetable: '蔬菜',
+  Animal: '动物',
+  Seafood: '海产',
+};
+
+const EVENT_LABELS: Record<string, string> = {
+  SHORTAGE: '短缺',
+  GLUT: '过剩',
+};
+
 const CharterChip = (props: { data: Data }) => {
   const { data } = props;
   let label: string;
   let color: string;
   if (!data.charter_unlocked) {
-    label = `CHARTER ${data.charter_volume}/${data.charter_threshold}`;
+    label = `特许状 ${data.charter_volume}/${data.charter_threshold}`;
     color = INK_FAINT;
   } else if (data.charter_active) {
-    label = `CHARTER INVOKED ${data.charter_margin}%`;
+    label = `特许状已生效 ${data.charter_margin}%`;
     color = SEAL_GREEN;
   } else {
-    label = `CHARTER SUSPENDED ${data.charter_margin}%`;
+    label = `特许状已中止 ${data.charter_margin}%`;
     color = SEAL_RED;
   }
   return (
@@ -112,10 +128,10 @@ const CommunityChip = (props: { data: Data }) => {
         fontSize: FONT_BODY,
         fontFamily: SERIF,
       }}
-      title="Every 40 units you deposit earns a point of community status - a bonus to your next dream's sleep points."
+      title="你每存入 40 单位货物就能获得一点社群声望 - 为你下一次梦境的睡眠点数提供加成."
     >
-      COMMUNITY STATUS {data.community_progress}/{data.community_target}
-      {data.community_points > 0 && ` (Status ${data.community_points})`}
+      社群声望 {data.community_progress}/{data.community_target}
+      {data.community_points > 0 && ` (声望 ${data.community_points})`}
     </span>
   );
 };
@@ -170,11 +186,11 @@ const StockRowView = (props: {
             }}
             title={
               row.event_tag === 'SHORTAGE' && row.shortage_target > 0
-                ? `Export or sell ${row.shortage_target - row.shortage_progress} more units to end the shortage. Any of these count: ${row.shortage_affected}.`
+                ? `再出口或出售 ${row.shortage_target - row.shortage_progress} 单位即可结束短缺. 以下货物均计入: ${row.shortage_affected}.`
                 : undefined
             }
           >
-            {row.event_tag}
+            {EVENT_LABELS[row.event_tag] ?? row.event_tag}
             {row.event_tag === 'SHORTAGE' && row.shortage_target > 0 && (
               <span style={{ marginLeft: '4px', fontWeight: 'normal' }}>
                 ({row.shortage_progress} / {row.shortage_target})
@@ -190,7 +206,7 @@ const StockRowView = (props: {
               marginLeft: '4px',
             }}
           >
-            (no deposits)
+            (不收存入)
           </span>
         )}
         {!!row.withdraw_disabled && (
@@ -201,7 +217,7 @@ const StockRowView = (props: {
               marginLeft: '4px',
             }}
           >
-            (no withdraws)
+            (不可取出)
           </span>
         )}
         {!compact && row.desc && (
@@ -243,11 +259,11 @@ const StockRowView = (props: {
             }}
             title={
               row.export_price > 0
-                ? `Deposit price ${row.deposit_price}m. When the stockpile is full, the Crown exports your deposit to local regions (export rate ${row.export_price}m per unit, kept by the Crown).`
-                : 'Deposit price - drop matching goods at the machine to sell.'
+                ? `存入价格 ${row.deposit_price}m. 当仓储满时, 王权会将你的存货出口到本地各区域 (出口价每单位 ${row.export_price}m, 归王权所有).`
+                : '存入价格 - 将对应的货物丢在机器处以出售.'
             }
           >
-            Sell {row.deposit_price}m
+            出售 {row.deposit_price}m
           </span>
         )}
         <button
@@ -262,11 +278,11 @@ const StockRowView = (props: {
           onClick={() => act('withdraw', { ref: row.ref })}
           title={
             overriding
-              ? 'Closed to the public. You may withdraw as a Clerk / Steward.'
+              ? '已对公众关闭. 作为书记官 / 总管家, 你可以取出.'
               : undefined
           }
         >
-          {embargoed ? 'Closed' : `Buy ${row.withdraw_price}m`}
+          {embargoed ? '已关闭' : `购买 ${row.withdraw_price}m`}
         </button>
         <button
           type="button"
@@ -280,15 +296,15 @@ const StockRowView = (props: {
           onClick={() => act('direct_import', { ref: row.ref })}
           title={
             row.import_price <= 0
-              ? 'No region has supply of this good today.'
+              ? '今日没有任何地区供应这种货物.'
               : overriding
-                ? 'Closed to the public. You may withdraw as a Clerk / Steward.'
+                ? '已对公众关闭. 作为书记官 / 总管家, 你可以取出.'
                 : data.charter_active
-                  ? 'Import directly. Pays duty to the Crown.'
-                  : 'Import directly. The surcharge covers transport.'
+                  ? '直接进口. 需向王权缴税.'
+                  : '直接进口. 附加费用于支付运输.'
           }
         >
-          {row.import_price > 0 ? `Import ${row.import_price}m` : 'NO SUPPLY'}
+          {row.import_price > 0 ? `进口 ${row.import_price}m` : '无供应'}
         </button>
       </div>
     </div>
@@ -310,10 +326,10 @@ export const Stockpile = () => {
     <Window width={780} height={720} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>{data.title || 'Town Stockpile'}</div>
+          <div style={titleStyle}>{data.title || '镇属仓储'}</div>
           <div style={subtitleStyle}>
             {data.subtitle ||
-              'The Town Stockpile. Deposit goods at the machine, coins here fund withdrawals and import.'}
+              '镇属仓储. 将货物存入机器, 这里的钱币用于支付取货与进口.'}
           </div>
           <div style={rulerStyle} />
 
@@ -331,7 +347,7 @@ export const Stockpile = () => {
             }}
           >
             <span style={{ color: SEAL_AMBER }}>
-              Coinpouch
+              钱袋
             </span>
             <span
               style={{
@@ -343,12 +359,12 @@ export const Stockpile = () => {
             </span>
             {!!data.food_stipend && (
               <span style={{ color: SEAL_GREEN }}>
-                treasury-line
+                国库专线
               </span>
             )}
             {!!data.below_floor && (
               <span style={{ color: SEAL_RED }}>
-                crown ledger thin
+                王权账册吃紧
               </span>
             )}
             <CharterChip data={data} />
@@ -360,14 +376,14 @@ export const Stockpile = () => {
                 disabled={data.budget <= 0}
                 onClick={() => act('refund_budget')}
               >
-                Refund
+                退款
               </button>
               <button
                 type="button"
                 style={inkButtonStyle()}
                 onClick={() => act('toggle_compact')}
               >
-                {compact ? 'Detailed' : 'Compact'}
+                {compact ? '详细' : '紧凑'}
               </button>
             </div>
           </div>
@@ -377,7 +393,7 @@ export const Stockpile = () => {
               style={subTabStyle(isConditionsTab)}
               onClick={() => act('set_category', { category: CONDITIONS_KEY })}
             >
-              Conditions {conditionsCount > 0 && `(${conditionsCount})`}
+              状况 {conditionsCount > 0 && `(${conditionsCount})`}
             </div>
             {data.categories.map((c) => (
               <div
@@ -385,15 +401,15 @@ export const Stockpile = () => {
                 style={subTabStyle(c === data.category)}
                 onClick={() => act('set_category', { category: c })}
               >
-                {c}
+                {CATEGORY_LABELS[c] ?? c}
               </div>
             ))}
           </div>
 
           <div style={sectionHeaderStyle}>
             {isConditionsTab
-              ? `Market Conditions (${filtered.length})`
-              : `${data.category} (${filtered.length})`}
+              ? `市场状况 (${filtered.length})`
+              : `${CATEGORY_LABELS[data.category] ?? data.category} (${filtered.length})`}
           </div>
           {filtered.length === 0 ? (
             <div
@@ -404,7 +420,7 @@ export const Stockpile = () => {
                 color: INK_SOFT,
               }}
             >
-              No stock in this category.
+              该分类下没有库存.
             </div>
           ) : (
             filtered.map((row) => (
@@ -421,7 +437,7 @@ export const Stockpile = () => {
           {!noDeposit && data.bounties.length > 0 && (
             <>
               <div style={{ ...sectionHeaderStyle, marginTop: '16px' }}>
-                Standing Bounties
+                常设悬赏
               </div>
               {data.bounties.map((b) => (
                 <div

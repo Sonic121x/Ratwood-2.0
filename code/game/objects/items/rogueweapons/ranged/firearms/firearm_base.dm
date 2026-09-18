@@ -24,7 +24,7 @@ At least, it should. Fingers crossed.
 	name = "火药瓶"
 	icon = 'modular_helmsguard/icons/obj/items/arquebus_items.dmi'
 	desc = "对门外汉而言，烟火药简直像某种奥术把戏。 \
-	它的制法在格里莫里亚大多数地区都已失传，只在齐班提姆之类的地方尚能见到。 \
+	它的制法在格里莫里亚大多数地区都已失传，只在兹班图之类的地方尚能见到。 \
 	可如今？你手里就有一瓶。务必看紧它。"
 	icon_state = "powderflask"
 	item_state = "powderflask"
@@ -61,7 +61,7 @@ At least, it should. Fingers crossed.
 	minstr = 10
 	walking_stick = TRUE
 	experimental_onback = TRUE
-	cartridge_wording = "musketball"
+	cartridge_wording = "铅弹"
 	load_sound = list('modular_helmsguard/sound/arquebus/musketload.ogg')
 	fire_sound = list('modular_helmsguard/sound/arquebus/arquefire.ogg')
 	anvilrepair = /datum/skill/craft/engineering

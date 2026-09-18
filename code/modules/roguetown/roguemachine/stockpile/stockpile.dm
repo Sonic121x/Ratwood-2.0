@@ -166,12 +166,12 @@
 		return
 	SStreasury.royal_custom_unlocked = TRUE
 	SStreasury.royal_custom_active = TRUE
-	scom_announce("The Stewardry has tallied [SStreasury.royal_custom_threshold] mammons of trade. By ancient charter, the Crown's Right of Customs in Excess is invoked - duties that once paid for the middleman's cut now flow into the Crown's purse instead. The Steward may set the rate at the Stewardry.")
+	scom_announce("总管府已统计到 [SStreasury.royal_custom_threshold] 玛门的贸易额。依古老特许状，王权的超额关税权就此生效 - 原本付给中间人的抽成，如今转而流入王权的金库。总管可在总管府设定税率。")
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(!H.client || !H.mind)
 			continue
 		if(H.mind.assigned_role == "Steward")
-			send_ooc_note("<b>Royal Custom unlocked.</b> Import surcharges at every stockpile now flow to the Crown's purse. Adjust the margin at your Trading Interface.", name = H.real_name)
+			send_ooc_note("<b>王权关税已解锁。</b>各处仓储的进口附加费如今流入王权的金库。可在你的交易界面调整加价率。", name = H.real_name)
 
 /obj/structure/roguemachine/stockpile/proc/try_auto_export_units(datum/roguestock/D, units)
 	if(!D || !D.trade_good_id || units <= 0)
@@ -232,7 +232,7 @@
 	var/has_account = SStreasury.has_account(H)
 	if(!has_account)
 		if(message)
-			say("No account found for [H]. Submit your fingers to a Nervelock for inspection.")
+			say("未找到 [H] 的账户。请将手指交给神经锁查验。")
 		return
 
 	// Pre-check: Crown's Purse must be solvent enough to pay. Below the Steward-set floor,
@@ -246,11 +246,11 @@
 			if(B.stacktype == R.item_type)
 				if(!R.accept_toggle_enabled)
 					if(message)
-						say("The Crown has no interest in [R.name] at this time.")
+						say("王权目前对 [R.name] 不感兴趣。")
 					return
 				if(below_floor)
 					if(message)
-						say("The Crown's ledger is thin. No purchases today.")
+						say("王权的账册吃紧。今日不再收购。")
 					return
 				var/bundle_amt = B.amount
 				var/full_on_arrival = (R.stockpile_amount >= R.stockpile_limit)
@@ -261,14 +261,14 @@
 						R.stockpile_amount -= bundle_amt
 						if(message)
 							if(R.autoexport_disabled)
-								say("The Crown's [R.name] stockpile is full, autoexport disabled, take it elsewhere.")
+								say("王权的 [R.name] 仓储已满，自动出口已禁用，请另寻他处。")
 							else
-								say("The Crown's [R.name] stockpile is full and no region demands can absorb your load. Try smaller bundles or take it elsewhere.")
+								say("王权的 [R.name] 仓储已满，且没有任何地区的需求能消化你这批货。试试更小的批量，或另寻他处。")
 						return
 					auto_exported = TRUE
 				SStreasury.dirty_market_view()
 				if(message == TRUE)
-					stock_announce("[bundle_amt] units of [R.name] has been stockpiled.")
+					stock_announce("[bundle_amt] 单位的 [R.name] 已入库。")
 				qdel(B)
 				if(sound == TRUE)
 					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
@@ -366,7 +366,7 @@
 
 	// Nothing in the stockpile accepted this item
 	if(message)
-		say("[I.name] is not accepted here.")
+		say("[I.name] 在此处不予收购。")
 
 /obj/structure/roguemachine/stockpile/attackby(obj/item/P, mob/user, params)
 	if(ishuman(user))
