@@ -94,7 +94,7 @@
 				return
 
 			if(!(H in SStreasury.bank_accounts))
-				to_chat(user, span_danger("目标必须拥有 Nervelock 账户！"))
+				to_chat(user, span_danger("目标必须拥有神经锁账户！"))
 				return
 
 			if(istype(user.used_intent, /datum/intent/lord_electrocute))
@@ -551,8 +551,8 @@
 	wbalance = WBALANCE_HEAVY
 
 /obj/item/rogueweapon/sword/falchion/militia/bronze
-	name = "kopis"
-	desc = "The falchion's ancient predecessor, veiled in bronze - yet no less lethal against an awaiting trunk. The curved grip snuggly fits in the wielder's hand, allowing their will to be imposed upon assailant-and-archdevil alike with terrible force."
+	name = "科皮斯"
+	desc = "弯刃刀的远古前身，覆以青铜——可对上迎面送来的躯干，杀伤力丝毫不减。弯曲的握柄紧贴合持握者之手，令其意志能以可怖的力道加诸袭击者乃至大魔君之流。"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop/militia, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike)//no peel but very fun intents. This little chopper rocks
 	icon_state = "kopis"
 	sheathe_icon = "kopis"
@@ -591,7 +591,7 @@
 	if(!HAS_TRAIT(H, TRAIT_ASSASSIN))
 		return
 	if(world.time < cooldown)
-		to_chat(H, span_warning("Too soon!"))
+		to_chat(H, span_warning("还太早了！"))
 		return
 	var/list/prey_list = list()
 	for(var/mob/living/carbon/human/target in GLOB.human_list)
@@ -600,26 +600,26 @@
 		if(HAS_TRAIT(target, TRAIT_ASSASSIN_TARGET))
 			prey_list += target
 	if(!length(prey_list))
-		to_chat(H, span_warning("Can't find anyone."))
+		to_chat(H, span_warning("找不到任何人。"))
 		return
 	if(!do_after(H, 2 SECONDS, src))
 		return
-	var/mob/living/carbon/human/prey = input("Choose a target.") as null|anything in prey_list
+	var/mob/living/carbon/human/prey = input("选择一名目标。") as null|anything in prey_list
 	if(!prey || !prey.z)
 		return
 	var/dir_text = dir2text(get_dir(H, prey))
 	var/dist = get_dist(H, prey)
-	var/proximity_text = "far away"
+	var/proximity_text = "很远"
 	if(dist <= 5)
-		proximity_text = "very close"
+		proximity_text = "非常近"
 	else if(dist <= 15)
-		proximity_text = "nearby"
+		proximity_text = "就在附近"
 	var/z_text = ""
 	if(prey.z > H.z)
-		z_text = ", somewhere above"
+		z_text = "，在上方某处"
 	else if(prey.z < H.z)
-		z_text = ", somewhere below"
-	to_chat(H, span_danger("The dagger points toward the [dir_text]. [prey.real_name] feels [proximity_text][z_text]."))
+		z_text = "，在下方某处"
+	to_chat(H, span_danger("匕首指向[dir_text]。[prey.real_name]感觉[proximity_text][z_text]。"))
 	cooldown = world.time + 2 MINUTES
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/profane/examine(mob/user)
@@ -640,7 +640,7 @@
 				"<span class='danger'>救我出去……</span>",
 				"<span class='danger'>好冷……</span>",
 				"<span class='danger'>放了我们吧……求你了……</span>",
-				"<span class='danger'>Necra……带……我们走……</span>")
+				"<span class='danger'>内克拉……带……我们走……</span>")
 //			H.visible_message("profane dagger whispers, \"[message]\"")
 			to_chat(M, "亵渎匕首低语道：“[message]”")
 		else
@@ -759,7 +759,7 @@
 /obj/item/rogueweapon/huntingknife/idagger/steel/profane/proc/release_profane_souls(mob/user) // For ways to release the souls trapped within a profane dagger, such as a Necrite burial rite. Returns the number of freed souls.
 	var/freed_souls = 0
 	for(var/mob/dead/observer/profane/A in src) // for every trapped soul in the dagger, whether they have left the game or not
-		to_chat(A, "<b>我已从那可憎的牢笼中解脱，如今只待 Necra 冰冷的掌握降临。得救了！</b>")
+		to_chat(A, "<b>我已从那可憎的牢笼中解脱，如今只待内克拉冰冷的掌握降临。得救了！</b>")
 		A.returntolobby() //Send the trapped soul back to the lobby
 		user.visible_message("<span class='warning'>[A.name] 自亵渎匕首中流泻而出，终于摆脱了它的掌控。</span>")
 		freed_souls += 1

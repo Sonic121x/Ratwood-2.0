@@ -24,7 +24,7 @@
 	clickcd = 11
 
 /datum/intent/dagger/cut/light
-	name = "light cut"
+	name = "轻切"
 	damfactor = 0.8
 	clickcd = 5
 
@@ -312,8 +312,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/huntingknife/combat/bronze
-	name = "sydearmme"
-	desc = "Wedged bronze and whittled rockwood, handfitted into the dagger's most ancient-of-ancestors. It bears marks of flintknapping along its middlewidth; a customary tradition that's purported to atune its edge to the forces of nature."
+	name = "西德阿姆"
+	desc = "楔入的青铜与削制的岩木，手工拼装成这柄匕首最古老的先祖。刀身中段留有打制石器的痕迹；按传统说法，这一习俗能让它的锋刃与自然之力相合。"
 	icon_state = "bronzedagger"
 	sheathe_icon = "bronzedagger"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/bronze, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/thrust/bronze)
@@ -347,9 +347,9 @@
 	item_d_type = "stab"
 
 /datum/intent/dagger/cut/rend
-	name = "wicked slice"
+	name = "凶戾削斩"
 	icon_state = "inrend"
-	attack_verb = list("slices", "dices")
+	attack_verb = list("削切", "剁碎")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
@@ -364,9 +364,9 @@
 	intent_intdamage_factor = 0.05
 
 /obj/item/rogueweapon/huntingknife/combat/messer //Just as Grenzelhoft intended
-	name = "kampfmesser"
-	desc = "An undersized steel messer that barely fits into a conventional dagger sheath, the saving grace of any hunter. It lacks a tip for stabbing - yet the edge alone is sharp enough to hack most issues right away. \
-	While it was brought over by Grenzelhoftian migrants, it is considered an Ferentian staple these daes - the right tool for the right job."
+	name = "战斗短刀"
+	desc = "一柄尺寸偏小的钢制短刀，勉强能塞进常规匕首鞘里，却是任何猎人的救命稻草。它没有可供突刺的刀尖——但仅凭刃口就足够锋利，能立刻劈开大多数麻烦。 \
+	它虽由格伦泽尔霍夫特移民带来，如今却被视作费伦提亚的常备之物——用对的工具，办对的事。"
 	possible_item_intents = list(/datum/intent/dagger/cut/rend, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/sucker_punch)
 	icon_state = "minimesser"
 	sheathe_icon = "minimesser"
@@ -375,8 +375,8 @@
 	special = /datum/special_intent/shin_swipe
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/rondel
-	name = "rondel dagger"
-	desc = "This is the traditional sidearm of a knight: a lightweight dagger of solid steel, well-balanced for delivering rapid thrusts that can shuck grapplers like oysters."
+	name = "圆盘匕首"
+	desc = "这是骑士传统的随身副兵器：一把实心钢打造的轻量匕首，配重匀称，能快速连续突刺，把扑上来的缠斗者像开牡蛎一样剖开。"
 	icon_state = "rondel"
 	sheathe_icon = "dagger_trainer"
 	possible_item_intents = list(/datum/intent/dagger/thrust/quick, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/cut)
@@ -384,17 +384,17 @@
 	smeltresult = /obj/item/ingot/steel
 
 /datum/intent/dagger/thrust/quick
-	name = "quick thrust"
-	attack_verb = list("thrusts", "shanks")
+	name = "迅捷突刺"
+	attack_verb = list("疾刺", "捅刺")
 	penfactor = 10
 	intent_intdamage_factor = 0.1
 	clickcd = 4 //Halved penetration, doubled attack speed. This is either going to be extremely funny, or extremely evil.
 	misscost = 10
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris
-	name = "kris dagger"
-	desc = "A large steel dagger with a unique, flame-shaped blade. It is coveted as a ceremonial tool by Astratan \
-	priests and clerics, especially during rites of sacrifice; symbolically, of course."
+	name = "波刃匕首"
+	desc = "一把刀身呈独特火焰状的钢制大匕首。阿斯特拉塔的祭司与神职者珍视它，用作仪式器具，尤其是在献祭典礼上； \
+	当然，只是象征意义上的。"
 	icon_state = "kris"
 	sheathe_icon = "dagger_trainer"
 	possible_item_intents = list(/datum/intent/dagger/cut/light, /datum/intent/dagger/thrust, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch)
@@ -402,8 +402,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kukri
-	name = "kukri dagger"
-	desc = "The Zybantian evolution to developing an extension to the traditional dagger. The curvature is specifically designed to fit around a victim's throat."
+	name = "库克里匕首"
+	desc = "兹班图人在传统匕首基础上演化出的延长形制。其弧度专为贴合受害者的咽喉而设计。"
 	icon_state = "kukri"
 	sheathe_icon = "dagger_trainer"
 	possible_item_intents = list(/datum/intent/dagger/cut/rend, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/sucker_punch)
@@ -438,9 +438,9 @@
 // Heretical Knives
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris/zizo
-	name = "avantyne dagger"
-	desc = "It is tyme that you finally met your Lord. </br> The very moment of sacrifice; that imperceptable difference between a dagger's edge and a heart's chamber, crystallized into \
-	a scalpel of bleeding darksteel. In the hands of Her trusted disciples, it serves as an unholy countermandate against order and sanity."
+	name = "阿凡廷匕首"
+	desc = "是时候让你终于觐见你的主了。 </br> 献祭的那一刻；匕首锋刃与心腔之间那难以察觉的毫厘之差，凝结成 \
+	一把淌血的黑钢手术刀。在祂所信赖的门徒手中，它是对秩序与理智的渎神抗命。"
 	icon_state = "zizodagger"
 	sheathe_icon = "zizodagger"
 	force = 25
@@ -453,8 +453,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "DAGGER")
 
 /obj/item/rogueweapon/huntingknife/combat/messer/graggar
-	name = "vicious seax"
-	desc = "Strike true, for the blade is thy God."
+	name = "凶暴赛克斯"
+	desc = "务求一击命中，因为刀刃便是你的神。"
 	icon_state = "graggarseax"
 	sheathe_icon = "graggarseax"
 	force = 25
@@ -467,8 +467,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "DAGGER")
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/matthios //Master-of-none weapon. Heavier cut, higher WDEF, and a serviceable throwforce. 
-	name = "gilded knife"
-	desc = "Well, well, well; hello there, old sport!"
+	name = "鎏金匕首"
+	desc = "哎呀呀；你好啊，老伙计！"
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut/heavy, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch)
 	icon_state = "matthiosknife"
 	sheathe_icon = "matthiosknife"
@@ -486,8 +486,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "DAGGER")
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/rondel/baotha
-	name = "saccharine misericorde"
-	desc = "Does thou not wish to live deliciously?"
+	name = "蜜糖穿甲匕首"
+	desc = "难道你不愿活得甜美惬意吗？"
 	possible_item_intents = list(/datum/intent/dagger/thrust/quick, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/cut)
 	icon_state = "baothamisericorde"
 	sheathe_icon = "baothamisericorde"
@@ -559,7 +559,7 @@
 	randomize_blade_int_on_init = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/corroded
-	name = "蚀毒匕首"
+	name = "腐蚀匕首"
 	desc = "一柄阴毒凶险的施毒匕首，刃上满是锯齿与缺口。弯曲的钢护手托住指节，确保持用者不会把那致命剂量误施在自己身上。 </br>我可以把大多数毒药涂在这把匕首上，确保下一击留下一个溃烂惊喜。"
 	icon_state = "pdagger"
 	sheathe_icon = "combatknife"
@@ -687,15 +687,15 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kazengun
 	name = "钢短刀"
-	desc = "一把自风间群岛进口的钢制短刀。坚实的刀身带着微微弧度，嵌入装饰华美的圆形护手之中。打蜡的 \
+	desc = "一把自风郡群岛进口的钢制短刀。坚实的刀身带着微微弧度，嵌入装饰华美的圆形护手之中。打蜡的 \
 	绞绳缠柄让握持更加稳固。"
 	icon_state = "eastdagger"
 	sheathe_icon = "tanto"
 	picklvl = 1.2
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/elvish
-	name = "elvish dirk"
-	desc = "A wave-bladed dagger of Elven design, whose elegant steel craftsmanship is only rivaled by its deceptive lethality."
+	name = "精灵短剑"
+	desc = "一柄精灵设计的波浪刃匕首，其优雅的钢制工艺唯有那暗藏杀机的致命性堪与之匹敌。"
 	icon_state = "elfsdagger"
 	sheathe_icon = "elfdagger"
 
@@ -1007,7 +1007,7 @@
 
 /obj/item/rogueweapon/huntingknife/throwingknife/steel/ancient
 	name = "远古投刃"
-	desc = "一片抛光过的吉布兰泽，被精细雕琢成投掷匕首。它是齐佐不死密教的心头好，尤其受她的刺客偏爱；还有什么工具比它更适合抹过别人的喉咙？ </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
+	desc = "一片抛光过的吉尔青铜，被精细雕琢成投掷匕首。它是齐佐不死密教的心头好，尤其受她的刺客偏爱；还有什么工具比它更适合抹过别人的喉咙？ </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	icon_state = "throw_knifea"
 	picklvl = 0.6
 

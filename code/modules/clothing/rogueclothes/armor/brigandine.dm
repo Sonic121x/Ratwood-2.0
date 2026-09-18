@@ -1,7 +1,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "布里甘丁甲"
+	name = "板甲衣"
 	desc = "遵循伊特鲁斯坎传统制成的复合护甲。它是优质的弧形板片胸甲，以染色皮革缝合，并配有宽下摆以遮护腹股沟。"
 	icon_state = "brigandine"
 	blocksound = SOFTHIT
@@ -26,7 +26,7 @@
 	if(detail_tag)
 		return
 	var/the_time = world.time
-	var/pickedcolor = input(user, "选择颜色。","布里甘丁配色") as null|anything in CLOTHING_COLOR_NAMES
+	var/pickedcolor = input(user, "选择颜色。","板甲衣配色") as null|anything in CLOTHING_COLOR_NAMES
 	if(!pickedcolor)
 		return
 	if(world.time > (the_time + 30 SECONDS))
@@ -67,8 +67,8 @@
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/heartfelt
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "心誓式布里甘丁甲"
-	desc = "遵循 Heartfelt 传统制成的复合护甲。它是优质的弧形板片胸甲，以染色皮革缝合，并配有宽下摆以遮护腹股沟。"
+	name = "赤心式板甲衣"
+	desc = "遵循赤心传统制成的复合护甲。它是优质的弧形板片胸甲，以染色皮革缝合，并配有宽下摆以遮护腹股沟。"
 	icon_state = "brigandine2"
 	blocksound = SOFTHIT
 	body_parts_covered = COVERAGE_FULL
@@ -88,7 +88,7 @@
 	if(detail_tag)
 		return
 	var/the_time = world.time
-	var/pickedcolor = input(user, "选择颜色。","布里甘丁配色") as null|anything in CLOTHING_COLOR_NAMES
+	var/pickedcolor = input(user, "选择颜色。","板甲衣配色") as null|anything in CLOTHING_COLOR_NAMES
 	if(!pickedcolor)
 		return
 	if(world.time > (the_time + 30 SECONDS))
@@ -152,7 +152,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "轻型布里甘丁甲"
+	name = "轻型板甲衣"
 	desc = "轻便的铆接外衣，板片藏在外层布料内。很容易被匕首从肋间捅入。"
 	icon_state = "light_brigandine"
 	blocksound = SOFTHIT
@@ -167,7 +167,7 @@
 	if(detail_tag)
 		return
 	var/the_time = world.time
-	var/pickedcolor = input(user, "选择颜色。","布里甘丁配色") as null|anything in CLOTHING_COLOR_NAMES
+	var/pickedcolor = input(user, "选择颜色。","板甲衣配色") as null|anything in CLOTHING_COLOR_NAMES
 	if(!pickedcolor)
 		return
 	if(world.time > (the_time + 30 SECONDS))
@@ -207,7 +207,7 @@
 	return ..()
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/captain
-	name = "队长布里甘丁甲"
+	name = "队长板甲衣"
 	desc = "专为山谷队长量身打造并锻造的板片外衣。"
 	icon_state = "capplate"
 	icon = 'icons/roguetown/clothing/special/captain.dmi'
@@ -226,7 +226,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/haraate
 	name = "韩心海胸甲"
-	desc = "较常见的卡曾贡式护甲，由数块彼此咬合的黑钢镀层钢板构成。比整套护甲便宜得多，常见于民兵与常备军。"
+	desc = "较常见的风钢岩护甲，由数块彼此咬合的黑钢镀层钢板构成。比整套护甲便宜得多，常见于民兵与常备军。"
 	icon_state = "kazengunmedium"
 	boobed = FALSE
 	item_state = "kazengunmedium"

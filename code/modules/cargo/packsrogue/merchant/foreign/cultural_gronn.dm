@@ -1,108 +1,108 @@
 /datum/supply_pack/rogue/gronn
-	group = "Cultural Stock"
-	crate_name = "Gronn crate"
+	group = "文化货物"
+	crate_name = "格隆恩货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/gronn/battleaxe
-	name = "Iskarn Battleaxe"
+	name = "伊斯卡恩战斧"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/gronn/gronnarmor
-	name = "Gronnic Hardened Leather Armor"
+	name = "格隆恩硬化皮甲"
 	cost = 60
 	contains = list (/obj/item/clothing/suit/roguetown/armor/leather/heavy/gronn)
 
 /datum/supply_pack/rogue/gronn/gronnpants
-	name = "Nomad Hardened Leather Pants"
+	name = "游牧民硬化皮裤"
 	cost = 50
 	contains = list (/obj/item/clothing/under/roguetown/heavy_leather_pants/nomadpants)
 
 /datum/supply_pack/rogue/gronn/gronnpantsalt
-	name = "Gronnic Leather Pants"
+	name = "格隆恩皮裤"
 	cost = 40
 	contains = list (/obj/item/clothing/under/roguetown/trou/leather/gronn)
 
 /datum/supply_pack/rogue/gronn/gronnglovesleather
-	name = "Gronnic Fur-lined Heavy Leather Gloves"
+	name = "格隆恩毛衬重型皮手套"
 	cost = 40
 	contains = list (/obj/item/clothing/gloves/roguetown/angle/gronn)
 
 /datum/supply_pack/rogue/gronn/owl_helmet
-	name = "Owl Helmet"
+	name = "猫头鹰盔"
 	cost = 150
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/atgervi)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/moose_hood
-	name = "Moose Hood"
+	name = "驼鹿兜帽"
 	cost = 90
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather/shaman_hood)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/varangian_hauberk
-	name = "Varangian Hauberk"
+	name = "瓦兰吉安锁子甲"
 	cost = 180
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/shamanic_coat
-	name = "Shamanic Coat"
+	name = "萨满大衣"
 	cost = 110
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/kite_shield
-	name = "Gronnic Kite Shield"
+	name = "格隆恩鸢盾"
 	cost = 90
 	contains = list(/obj/item/rogueweapon/shield/atgervi)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/gronn/fur_gloves
-	name = "Fur-Lined Leather Gloves"
+	name = "毛衬皮手套"
 	cost = 40
 	contains = list(/obj/item/clothing/gloves/roguetown/angle/atgervi)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/gronn/bone_gloves
-	name = "Fur-Lined Bone Gloves"
+	name = "毛衬骨手套"
 	cost = 50
 	contains = list(/obj/item/clothing/gloves/roguetown/angle/gronnfur)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/gronn/beast_claws
-	name = "Beast Claws Gauntlets"
+	name = "兽爪护手"
 	cost = 140
 	contains = list(/obj/item/clothing/gloves/roguetown/plate/atgervi)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/fur_pants
-	name = "Gronnic Fur Pants"
+	name = "格隆恩毛皮裤"
 	cost = 50
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/atgervi)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/gronn/leather_boots
-	name = "Atgervi Leather Boots"
+	name = "阿特格维皮靴"
 	cost = 45
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/leather/atgervi)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/gronn/atgervi_kit
-	name = "Atgervi Varangian Harness"
+	name = "阿特格维瓦兰吉安套装"
 	no_name_quantity = TRUE
 	cost = 540
 	contains = list(
@@ -118,7 +118,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/gronn/iskarn_kit
-	name = "Iskarn Shaman Kit"
+	name = "伊斯卡恩萨满套装"
 	no_name_quantity = TRUE
 	cost = 380
 	contains = list(
@@ -132,7 +132,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/gronn/spider_honey
-	name = "Dreamer's Honey"
+	name = "梦者之蜜"
 	cost = 60
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/honey/spider,
@@ -143,7 +143,7 @@
 	ship_qty_max = 6
 
 /datum/supply_pack/rogue/gronn/cured_megafauna
-	name = "Cured Dusk Horn Meat"
+	name = "腌制暮角兽肉"
 	cost = 50
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
@@ -154,28 +154,28 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/gronn/gronnic_norsii_plate
-	name = "Gronn Norsii Iron Plate"
+	name = "格隆恩诺尔西铁甲"
 	cost = 360
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/iron/gronn)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/gronn/gronnic_norsii_helm
-	name = "Gronn Norsii Horned Helm"
+	name = "格隆恩诺尔西角盔"
 	cost = 90
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gronn)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/gronnic_brigandine
-	name = "Gronnic Brigandine"
+	name = "格隆恩板甲衣"
 	cost = 200
 	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine/gronn)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/norsii_kit
-	name = "Norsii Heavy Harness"
+	name = "诺尔西板甲套装（重型）"
 	no_name_quantity = TRUE
 	cost = 620
 	contains = list(

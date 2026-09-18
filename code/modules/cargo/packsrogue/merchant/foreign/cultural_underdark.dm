@@ -1,67 +1,67 @@
 /datum/supply_pack/rogue/underdark
-	group = "Cultural Stock"
-	crate_name = "Underdark crate"
+	group = "文化货物"
+	crate_name = "幽暗地域货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/underdark/saber
-	name = "Underdark saber"
+	name = "幽暗地域军刀"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/sword/sabre/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/dagger
-	name = "Underdark dagger"
+	name = "幽暗地域匕首"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/slurbow
-	name = "Underdark Slurbow"
+	name = "幽暗地域轻弩"
 	cost = 150
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/underdark/fangeddagger
-	name = "Underdark Croc dagger"
+	name = "幽暗地域獠牙匕首"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/dirk)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/underdark/poisondagger
-	name = "Underdark poison dagger"
+	name = "幽暗地域毒匕首"
 	cost = 250
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/corroded)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/underdark/restrainpoison
-	name = "Underdark restraining poison"
+	name = "幽暗地域束缚毒药"
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/stampoison)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/killerpoison
-	name = "Underdark killer poison"
+	name = "幽暗地域致命毒药"
 	cost = 35
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/berrypoison)
 	ship_qty_min = 2
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/underdark/antidote
-	name = "Underdark antidote"
+	name = "幽暗地域解毒剂"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/antidote)
 	ship_qty_min = 2
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/underdark/crocs
-	name = "Underdark Crocs de l'araignée Regalia"
+	name = "幽暗地域蛛牙全套装备"
 	cost = 350
 	contains = list(
 		/obj/item/clothing/suit/roguetown/armor/plate/fluted/shadowplate,

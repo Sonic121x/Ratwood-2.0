@@ -164,8 +164,8 @@
 	is_tool = TRUE//here instead of on stoneaxe so we dont permit battleaxes to be used as tools.
 
 /obj/item/rogueweapon/stoneaxe/hurlbat
-	name = "投战斧"
-	desc = "它兼具投刃的轻巧流线与战斧的制止力，这种巧妙设计使投战斧能够以致命效率命中目标。尽管其历史起源众说纷纭，但它常见于瓦兰吉亚赏金猎人与残酷的草原民手中。"
+	name = "投掷斧"
+	desc = "它兼具投刃的轻巧流线与战斧的制止力，这种巧妙设计使投掷斧能够以致命效率命中目标。尽管其历史起源众说纷纭，但它常见于瓦兰吉安赏金猎人与残酷的草原民手中。"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_SMALL
@@ -284,8 +284,8 @@
 
 // on azure this is just a reskin, here it's a bit 
 /obj/item/rogueweapon/stoneaxe/woodcut/bronze/double
-	name = "double-headed bronze axe"
-	desc = "'Give them nothing.. but take from them, EVERYTHING!'"
+	name = "双头青铜斧"
+	desc = "“什么都别给他们……但要把他们的一切都夺走！”"
 	force = 25
 	force_wielded = 28
 	wdefense = 1
@@ -296,10 +296,10 @@
 
 
 /obj/item/rogueweapon/stoneaxe/woodcut/bronzebattleaxe
-	name = "bronze war axe"
+	name = "青铜战斧"
 	icon_state = "bronzebattleaxe"
-	desc = "An antiquital handstaff, fitted with a thrice-wedged bronze axhead. The unique design of its edge, similar to the khopesh, ensures that each \
-	swing properly ferries all of its wielder's strength into its destination regardless of grip."
+	desc = "一柄古旧的杆状兵器，装有三次楔固的青铜斧头。其刃部形制独特，与霍佩什弯刀相似，确保无论以何种方式握持，每一次 \
+	挥砍都能将持用者的全部力道准确送入落点。"
 	force = 25 // Similar presentation to a battle axe, but same force both one and two handed
 	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash)
 	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, SPEAR_BASH)
@@ -325,13 +325,13 @@
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient
 	name = "远古斧"
-	desc = "一把抛光吉布兰泽短斧。维斯林以罪诱惑人心，让人贪求更好的祭品，也渴慕祂的神性。一击之下，鲜血自骨间喷涌，渗入泥土；那便是第一场谋杀。"
+	desc = "一把抛光吉尔青铜短斧。维斯林以罪诱惑人心，让人贪求更好的祭品，也渴慕祂的神性。一击之下，鲜血自骨间喷涌，渗入泥土；那便是第一场谋杀。"
 	icon_state = "ahandaxe"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient/decrepit
 	name = "破旧斧"
-	desc = "一把磨损青铜短斧。它来自赛昂彗星坠落之前的时代；那时人类锻造金属不是为了流血，而是为了更好地依照祂的形象塑造世界。"
+	desc = "一把磨损青铜短斧。它来自普赛顿彗星坠落之前的时代；那时人类锻造金属不是为了流血，而是为了更好地依照祂的形象塑造世界。"
 	force = 17
 	force_wielded = 20
 	max_integrity = 180
@@ -350,10 +350,10 @@
 	damfactor = 1.1
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/decorated
-	name = "decorated axe"
+	name = "装饰斧"
 	icon_state = "nsapo"
-	desc = "Traditionally referred to as a 'nsapo', this beautifully decorated axe traces its roots back to the earliest daes of Psydonian \
-	civilization. Such makes it a favorite amongst the nobility of both Naledi and Zybantine."
+	desc = "这种装饰华美的斧头传统上被称作“恩萨波”，其根源可追溯至普赛顿文明最早的岁月。 \
+	正因如此，它深受纳莱迪与兹班图两地贵族的喜爱。"
 	max_integrity = 300
 	smeltresult = /obj/item/ingot/gold
 	wdefense = 5
@@ -475,7 +475,7 @@
 	return
 
 /obj/item/rogueweapon/stoneaxe/battle/steppesman
-	name = "阿夫尼瓦拉什卡斧"
+	name = "阿夫尼克瓦拉什卡斧"
 	desc = "一把阿夫尼风格的钢斧，将致命武器与手杖结合为一体，因此末端也制成尖刺。它的平头便于握持，既能劈砍也能猛砸。要是你足够用力，大概也能拿它捅人。"
 	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash, /datum/intent/mace/warhammer/pick)
 	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle, /datum/intent/stab, /datum/intent/mace/warhammer/pick)
@@ -492,10 +492,10 @@
 	reach = 2
 
 /datum/intent/axe/sweep
-	name = "sweeping cut"
+	name = "横扫斩"
 	icon_state = "insweep"
 	blade_class = BCLASS_CUT
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫而过", "横斩")
 	animname = "cut"
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -504,7 +504,7 @@
 	chargetime = 0
 	item_d_type = "slash"
 	cleave = /datum/cleave_pattern/frontal_arc
-	desc = "A heavy sweep that cuts through targets to the sides and front."
+	desc = "一记沉重的横扫，会切穿两侧与身前的目标。"
 
 /obj/item/rogueweapon/greataxe
 	force = 15

@@ -122,7 +122,7 @@
 					to_chat(user, span_warning("呸！[bite_victim]身上是白银的味道！我的恩赐无法生效。"))
 				else
 					if(caused_wound?.werewolf_infect_attempt())
-						to_chat(user, span_danger("You feel your beastly gift trickling from your mouth into [bite_victim]'s wound..."))
+						to_chat(user, span_danger("你感觉自己的恩赐正从口中淌入[bite_victim]的伤口……"))
 					if(prob(30))
 						user.werewolf_feed(bite_victim, 10)
 			if(istype(user.dna.species, /datum/species/gnoll))
@@ -257,10 +257,10 @@
 			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
 				if(HAS_TRAIT(C, TRAIT_SILVER_BLESSED))
-					to_chat(user, span_warning("BLEH! [C] tastes of SILVER! My gift cannot take hold."))
+					to_chat(user, span_warning("呸！[C]尝起来是白银的味道！我的恩赐无法生效。"))
 				else
 					if(caused_wound?.werewolf_infect_attempt())
-						to_chat(user, span_danger("You feel your beastly gift trickling into [C]'s wound..."))
+						to_chat(user, span_danger("你感觉自己的恩赐正淌入[C]的伤口……"))
 					if(prob(30))
 						user.werewolf_feed(C, 10)
 
