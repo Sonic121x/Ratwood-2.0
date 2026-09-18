@@ -22,7 +22,7 @@
 // and the parent sets crate flavour; we only override the sale-specific fields.
 /datum/supply_pack/rogue/bath_lactation_enhancer
 	// 中文：分类必须等于 bathvend 七个分类之一，否则不会出现在任何页签。
-	group = "Drugs"											// Must match a bathvend category to be visible.
+	group = "药物"											// Must match a bathvend category to be visible. | English: Drugs
 	// 中文：货箱名/类型沿用商贩公会通用箱（与其它浴场补给包一致的观感）。
 	crate_name = "merchant guild's crate"					// Cosmetic crate label (matches sibling packs).
 	crate_type = /obj/structure/closet/crate/chest/merchant	// Cosmetic crate type (matches sibling packs).

@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Iconoclast
-	group = "Iconoclast"
+	group = "破像者" // English: Iconoclast
 	crate_name = "Gifts of Faith"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
