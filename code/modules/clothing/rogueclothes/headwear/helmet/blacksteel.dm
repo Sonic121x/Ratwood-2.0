@@ -70,8 +70,8 @@
 		return
 
 /obj/item/clothing/head/roguetown/helmet/blacksteel/psychains
-	name = "length of psydonian chains"
-	desc = "Chains fashioned from blacksteel, ritualistically worn atop helmets to testify one's unshatterable bond to Him."
+	name = "普赛顿锁链"
+	desc = "以黑钢打造的锁链，依仪式佩戴于头盔之上，见证佩戴者与祂牢不可破的羁绊。"
 	icon_state = "psychains"
 	armor = ARMOR_PLATE_BSTEEL
 	body_parts_covered = HAIR
