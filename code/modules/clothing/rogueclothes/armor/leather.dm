@@ -70,7 +70,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
 	name = "工匠夹克"
 	icon_state = "artijacket"
-	desc = "厚实皮夹克，饰有毛皮与齿轮纹样。Heartfelt 时尚的巅峰。"
+	desc = "厚实皮夹克，饰有毛皮与齿轮纹样。赤心时尚的巅峰。"
 	cold_protection = CHEST | ARM_RIGHT | ARM_LEFT
 	min_cold_protection_temperature = 50
 
