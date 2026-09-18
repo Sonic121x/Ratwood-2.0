@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/rawmats
-	group = "Raw Materials"
+	group = "原材料" // English: Raw Materials
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

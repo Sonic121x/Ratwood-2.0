@@ -1,7 +1,7 @@
 // the woad light helm and maille, the blackoak barbutes, the woad recurve bow and the javelin
 // quiver do not exist. Their packs are omitted until those items are ported.
 /datum/supply_pack/rogue/rosawood
-	group = "文化货物"
+	group = "文化货物" // English: Cultural Stock
 	crate_name = "罗莎木货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
