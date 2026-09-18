@@ -94,7 +94,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/survival/longbow_warden
-	name = "Blackhorn 长弓"
+	name = "黑角长弓"
 	category = "远程"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden
 	reqs = list(
