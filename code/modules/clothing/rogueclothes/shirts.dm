@@ -174,7 +174,7 @@
 	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
 	name = "皇家礼裙"
-	desc = "一件繁复的舞会礼裙，是Enigma女王与高阶贵族偏爱的时尚。"
+	desc = "一件繁复的舞会礼裙，是恩尼格玛女王与高阶贵族偏爱的时尚。"
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "royaldress"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_royalty.dmi'
@@ -329,7 +329,7 @@
 	icon_state = "sailorblues"
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/colored
-	name = "striped shirt"
+	name = "条纹衬衣"
 	icon_state = "sailorcolorable"
 	item_state = "sailorcolorable"
 	detail_tag = "_detail"
@@ -775,8 +775,8 @@
 
 //tattoo code
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats
-	name = "Bouhoi Bujeog纹身"
-	desc = "Ruma氏族沿用的一种神秘纹身，仿效了Xinyi王朝武僧的古老做法。它既是识别同族成员的标记，也是同伴情谊与隐秘兄弟会的象征。纹样呈云形，由神秘墨汁绘成，墨色会像池水波纹般流动，并在你的皮肤受击处瞬间硬化。它的蠕动会让你不寒而栗。"
+	name = "布霍伊布杰奥格纹身"
+	desc = "鲁玛氏族沿用的一种神秘纹身，仿效了信义王朝武僧的古老做法。它既是识别同族成员的标记，也是同伴情谊与隐秘兄弟会的象征。纹样呈云形，由神秘墨汁绘成，墨色会像池水波纹般流动，并在你的皮肤受击处瞬间硬化。它的蠕动会让你不寒而栗。"
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
@@ -822,7 +822,7 @@
 		return
 	else if(world.time > src.last_repair + src.repair_time)
 		src.last_repair = world.time
-		src.visible_message(span_notice("The [src] begin to swirl, repairing their integrity..."), vision_distance = 1)
+		src.visible_message(span_notice("[src]开始旋动翻涌，修复着自身的完整度……"), vision_distance = 1)
 		obj_integrity = min(obj_integrity + src.repair_amount, src.max_integrity)
 	..()
 
@@ -830,8 +830,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/steward
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	name = "ornate dark dress"
-	desc = "A modest yet decorated dress made of the finest silks and softest fabrics. Inlaid with golden thread, this is the height of fashion for the wealthiest of wearers."
+	name = "华丽暗色礼裙"
+	desc = "一件朴素而不失装饰的礼裙，用上等丝绸与最柔软布料制成。金线嵌饰其间，是最富有者所追逐的时尚顶点。"
 	icon = 'icons/roguetown/clothing/special/steward.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/steward.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/steward.dmi'
@@ -840,8 +840,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/coat/steward
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "ornate dark tailcoat"
-	desc = "A modest yet decorated tailcoat made of the finest silks and softest fabrics. Inlaid with golden thread, this is the height of fashion for the wealthiest of wearers."
+	name = "华丽暗色燕尾服"
+	desc = "一件朴素而不失装饰的燕尾服，用上等丝绸与最柔软布料制成。金线嵌饰其间，是最富有者所追逐的时尚顶点。"
 	icon = 'icons/roguetown/clothing/special/steward.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/steward.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/steward.dmi'
@@ -850,8 +850,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/coat/hand
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "noble coat"
-	desc = "A fine coat made out of expensive fabrics decorated with golden trims. Fit for a high noble."
+	name = "贵族外套"
+	desc = "一件以昂贵布料制成、饰有金色镶边的精美外套，堪配高等贵族。"
 	icon = 'icons/roguetown/clothing/special/hand.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/hand.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/hand.dmi'
@@ -862,8 +862,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/noble/hand
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	name = "noble shirt"
-	desc = "A silken shirt worn by the upper classes."
+	name = "贵族衬衣"
+	desc = "上层阶级穿着的丝质衬衣。"
 	icon = 'icons/roguetown/clothing/special/hand.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/hand.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/hand.dmi'

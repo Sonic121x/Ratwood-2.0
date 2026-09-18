@@ -54,8 +54,8 @@
 			STR.remove_from_storage(I, get_turf(src))
 
 /obj/item/clothing/cloak/abyssortabard
-	name = "Abyssor信徒罩袍"
-	desc = "Abyssor虔诚信徒所穿的罩袍。"
+	name = "阿比索尔信徒罩袍"
+	desc = "阿比索尔虔诚信徒所穿的罩袍。"
 	icon_state = "abyssortabard"
 	item_state = "abyssortabard"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
@@ -82,7 +82,7 @@
 
 /obj/item/clothing/cloak/reformtabard
 	name = "改革派罩袍"
-	desc = "黑底白色Psy十字。它属于那些仍在哀悼、却敢于在无尽悲伤中继续活下去的人。愿我们对祂的追忆抚平仍在流血的心。"
+	desc = "黑底白色普赛十字。它属于那些仍在哀悼、却敢于在无尽悲伤中继续活下去的人。愿我们对祂的追忆抚平仍在流血的心。"
 	icon_state = "reformtabard"
 	item_state = "reformtabard"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
@@ -98,8 +98,8 @@
 	max_heat_protection_temperature = BODYTEMP_NORMAL_MAX
 
 /obj/item/clothing/cloak/psydontabard
-	name = "Psydon罩袍"
-	desc = "Psydon门徒所穿的罩袍。精致的刺绣自豪地彰显着Psy十字。"
+	name = "普赛顿罩袍"
+	desc = "普赛顿门徒所穿的罩袍。精致的刺绣自豪地彰显着普赛十字。"
 	icon_state = "psydontabard"
 	item_state = "psydontabard"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
@@ -116,8 +116,8 @@
 	max_heat_protection_temperature = BODYTEMP_NORMAL_MAX
 
 /obj/item/clothing/cloak/psydontabard/alt
-	name = "敞开的Psydon罩袍"
-	desc = "Psydon门徒所穿的罩袍，衣襟被翻开，露出其坚忍不屈的内里。"
+	name = "敞开的普赛顿罩袍"
+	desc = "普赛顿门徒所穿的罩袍，衣襟被翻开，露出其坚忍不屈的内里。"
 	body_parts_covered = GROIN
 	icon_state = "psydontabardalt"
 	item_state = "psydontabardalt"
@@ -138,8 +138,8 @@
 /obj/item/clothing/cloak/psydontabard/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "敞开的Psydon罩袍"
-			desc = "Psydon门徒所穿的罩袍，衣襟被翻开，露出其坚忍不屈的内里。"
+			name = "敞开的普赛顿罩袍"
+			desc = "普赛顿门徒所穿的罩袍，衣襟被翻开，露出其坚忍不屈的内里。"
 			body_parts_covered = GROIN
 			icon_state = "psydontabardalt"
 			item_state = "psydontabardalt"
@@ -147,8 +147,8 @@
 			flags_inv = HIDECROTCH // BARE YOUR CHEST, NOT YOUR WEEN!
 			to_chat(usr, span_warning("现在以激进方式穿着！"))
 		if(TRUE)
-			name = "Psydon罩袍"
-			desc = "Psydon门徒所穿的罩袍。精致的刺绣自豪地彰显着Psy十字。"
+			name = "普赛顿罩袍"
+			desc = "普赛顿门徒所穿的罩袍。精致的刺绣自豪地彰显着普赛十字。"
 			body_parts_covered = CHEST|GROIN
 			icon_state = "psydontabard"
 			item_state = "psydontabard"
@@ -444,7 +444,7 @@
 	name = "队长罩袍"
 
 /obj/item/clothing/cloak/tabard/retinue/baronycloak
-	desc = "A tabard with the baron's heraldic colors."
+	desc = "带有男爵纹章配色的罩袍。"
 
 /obj/item/clothing/cloak/tabard/retinue/baronycloak/Initialize(mapload)
 	. = ..()
@@ -618,8 +618,8 @@
 	detail_color = CLOTHING_DARK_GREEN
 
 /obj/item/clothing/cloak/stabard/grenzelhoft
-	name = "Grenzelhoft佣兵罩袍"
-	desc = "一件采用Grenzelhoft帝国佣兵公会配色的罩袍。"
+	name = "格伦泽尔霍夫特佣兵罩袍"
+	desc = "一件采用格伦泽尔霍夫特帝国佣兵公会配色的罩袍。"
 	color = CLOTHING_YELLOW
 	detail_color = CLOTHING_RED
 	detail_tag = "_box"
@@ -814,8 +814,8 @@
 	return ..()
 
 /obj/item/clothing/cloak/lordcloak/baronycloak
-	name = "Barony Cloak"
-	desc = "A cloak in the heraldic colors of the Lowtown Barony."
+	name = "男爵领斗篷"
+	desc = "一件采用低镇男爵领纹章配色的斗篷。"
 
 /obj/item/clothing/cloak/lordcloak/baronycloak/lordcolor(primary,secondary)
 	return //ignores the ducal scheme, only the barony one applies
@@ -1141,7 +1141,7 @@
 
 /obj/item/clothing/cloak/cape/inquisitor
 	name = "仲裁者斗篷"
-	desc = "Otava仲裁者所披的斗篷，他们是宗教裁判所中的一种战士祭司。 \
+	desc = "奥塔瓦仲裁者所披的斗篷，他们是宗教裁判所中的一种战士祭司。 \
 	正如它的主人一样，这件斗篷多半也见过一些骇人的景象。"
 	icon_state = "inquisitor_cloak"
 	icon = 'icons/roguetown/clothing/cloaks.dmi'
@@ -1311,8 +1311,8 @@
 	max_heat_protection_temperature = 600
 
 /obj/item/clothing/cloak/shadowcloak/vanguard
-	name = "vanguard cloak"
-	desc = "A dark cloak, clasped with a pin of the Lowtown Baron. Worn by the Vanguard"
+	name = "先锋斗篷"
+	desc = "一件深色斗篷，以低镇男爵的胸针扣合。由先锋所穿戴"
 
 /obj/item/clothing/cloak/thief_cloak
 	name = "无赖披巾"
@@ -1328,8 +1328,8 @@
 	var/overarmor = TRUE
 
 /obj/item/clothing/cloak/templar/psydon
-	name = "Psydon罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Psydon的标志。"
+	name = "普赛顿罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有普赛顿的标志。"
 	icon_state = "tabard_weeping"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1341,8 +1341,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/astrata
-	name = "Astrata罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Astrata的标志。"
+	name = "阿斯特拉塔罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有阿斯特拉塔的标志。"
 	icon_state = "tabard_astrata_alt"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1354,8 +1354,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/noc
-	name = "Noc罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Noc的标志。"
+	name = "诺克罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有诺克的标志。"
 	icon_state = "tabard_noc"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1367,8 +1367,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/dendor
-	name = "Dendor罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Dendor的标志。"
+	name = "登多尔罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有登多尔的标志。"
 	icon_state = "tabard_dendor"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1380,8 +1380,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/necra
-	name = "Necra罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Necra的标志。"
+	name = "内克拉罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有内克拉的标志。"
 	icon_state = "tabard_necra"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1393,8 +1393,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/abyssor
-	name = "Abyssor罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Abyssor的标志。"
+	name = "阿比索尔罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有阿比索尔的标志。"
 	icon_state = "tabard_abyssor"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1406,8 +1406,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/malum
-	name = "Malum罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Malum的标志。"
+	name = "玛勒姆罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有玛勒姆的标志。"
 	icon_state = "tabard_malum"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1516,8 +1516,8 @@
 	user.update_inv_armor()
 
 /obj/item/clothing/cloak/templar/eora
-	name = "Eora罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Eora的标志。"
+	name = "伊欧拉罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有伊欧拉的标志。"
 	icon_state = "tabard_eora"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1529,8 +1529,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/pestra
-	name = "Pestra罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Pestra的标志。"
+	name = "佩斯特拉罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有佩斯特拉的标志。"
 	icon_state = "tabard_pestra"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1542,8 +1542,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/cleric/ravox
-	name = "Ravox罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Ravox的标志。"
+	name = "拉沃克斯罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有拉沃克斯的标志。"
 	icon_state = "tabard_ravox"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1556,7 +1556,7 @@
 
 /obj/item/clothing/cloak/templar/ravox
 	name = "正义罩袍"
-	desc = "带护颈的内甲法衣，由Ravox圣殿骑士穿戴。"
+	desc = "带护颈的内甲法衣，由拉沃克斯圣殿骑士穿戴。"
 	icon_state = "justicetabard"
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
@@ -1567,8 +1567,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/templar/xylix
-	name = "Xylix罩袍"
-	desc = "士兵常穿的一种外罩衣物，这件上面带有Xylix的标志。"
+	name = "赛利克斯罩袍"
+	desc = "士兵常穿的一种外罩衣物，这件上面带有赛利克斯的标志。"
 	icon_state = "tabard_xylix"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1770,7 +1770,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/cloak/stabard/grenzelmage
-	name = "Grenzelhoft法师披肩"
+	name = "格伦泽尔霍夫特法师披肩"
 	desc = "一件时髦的披肩，常见于天穹学院的法师穿着。"
 	color = CLOTHING_WHITE
 	detail_color = CLOTHING_WHITE
@@ -1819,10 +1819,10 @@
 
 /obj/item/clothing/cloak/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "CLOAK", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "斗篷", "撕碎")
 
 /obj/item/clothing/cloak/forrestercloak
-	name = "林务官斗篷"
+	name = "林地卫手斗篷"
 	desc = "山谷黑橡守林者所穿的斗篷。"
 	icon_state = "forestcloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
@@ -1844,8 +1844,8 @@
 
 /// Dendor ritual reward variant of the forrester cloak — hallowed by the Treefather.
 /obj/item/clothing/cloak/forrestercloak/blessed
-	name = "赐福林务官斗篷"
-	desc = "一件受树父仪式祝圣的林务官斗篷。活木纤维编织在布料之中，仿佛与森林静谧的生命一同呼吸。"
+	name = "赐福林地卫手斗篷"
+	desc = "一件受树父仪式祝圣的林地卫手斗篷。活木纤维编织在布料之中，仿佛与森林静谧的生命一同呼吸。"
 	color = "#73c47a"
 
 /obj/item/clothing/cloak/forrestercloak/blessed/Initialize(mapload)
@@ -1906,7 +1906,7 @@
 
 /obj/item/clothing/cloak/psyaltrist
 	name = "诗班长圣带"
-	desc = "一条丝质圣带，绣有银饰花纹，背后还藏有暗袋，可披在圣歌卷轴外。它是Otava大教堂诗班领袖学成后的传统装束，也是其身份象征。"
+	desc = "一条丝质圣带，绣有银饰花纹，背后还藏有暗袋，可披在圣歌卷轴外。它是奥塔瓦大教堂诗班领袖学成后的传统装束，也是其身份象征。"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	icon_state = "psaltertabard"
 	item_state = "psaltertabard"
@@ -1933,7 +1933,7 @@
 
 /obj/item/clothing/cloak/absolutionistrobe
 	name = "赦罪者长袍"
-	desc = "宽恕他们的痛苦。宽恕他们的渴望。如同PSYDON一般地生存。"
+	desc = "宽恕他们的痛苦。宽恕他们的渴望。如同普赛顿一般地生存。"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	icon_state = "absolutionistrobe"
@@ -1947,7 +1947,7 @@
 
 /obj/item/clothing/cloak/cotehardie
 	name = "修身外套"
-	desc = "也被称作cotehardie：一种无论平民还是贵族都会穿的长袖外衣，男女皆宜，四季可用。脱下时，里面装着的东西不会掉出来。"
+	desc = "也被称作科特哈迪：一种无论平民还是贵族都会穿的长袖外衣，男女皆宜，四季可用。脱下时，里面装着的东西不会掉出来。"
 	color = "#586849"
 	icon_state = "cotehardie"
 	item_state = "cotehardie"
