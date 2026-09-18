@@ -2,7 +2,7 @@
 // Pricing Principles is based on 20 per iron ingot (Min. 25), 35 per steel ingot (Min. 40).
 
 /datum/supply_pack/rogue/armor_iron
-	group = "护甲（铁）"
+	group = "护甲（铁）" // English: Armor (Iron)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

@@ -22,12 +22,12 @@
 	profit_id = null // No one can withdraw profit from copperface
 	value_record_key = STATS_COPPERFACE_VALUE_SPENT
 	categories = list(
-		"Diplomacy and Persuasion",
-		"Beverages",
-		"Exotic Import",
-		"General Labour",
-		"Health and Hygiene",
-		"Self Defense",
+		"外交与说服", // English: Diplomacy and Persuasion
+		"饮品", // English: Beverages
+		"异域进口品", // English: Exotic Import
+		"杂务用品", // English: General Labour
+		"健康与卫生", // English: Health and Hygiene
+		"自卫用品", // English: Self Defense
 	)
 	categories_gamer = list()
 	bypass_tax = TRUE
