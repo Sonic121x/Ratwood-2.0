@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/rogue/MiddleClick(mob/user)
 	overarmor = !overarmor
-	to_chat(user, span_info("我[overarmor ? "把\the [src]戴在头发下面" : "把\the [src]戴在头发外面"]."))
+	to_chat(user, span_info("我[overarmor ? "把[src]戴在头发下面" : "把[src]戴在头发外面"]."))
 	if(overarmor)
 		alternate_worn_layer = HOOD_LAYER //Below Hair Layer
 	else
@@ -22,7 +22,7 @@
 		return
 	var/mob/living/carbon/H = user
 	if(toggle_snout())
-		to_chat(user, span_info("I [snouting ? "make space for my snout in \the [src]" : "wear \the [src] tighter"]."))
+		to_chat(user, span_info("我[snouting ? "在[src]里为我的吻部腾出空间" : "把[src]戴得更紧"]."))
 		H.update_inv_wear_mask()
 
 /obj/item/clothing/mask/rogue/equipped(mob/user, slot)
@@ -32,7 +32,7 @@
 /obj/item/clothing/mask/rogue/examine(mob/user)
 	. = ..()
 	if(is_snoutable())
-		. += span_notice("Alt+RMB makes room for a snout.")
+		. += span_notice("Alt+右键可为吻部腾出空间。")
 
 /obj/item/clothing/mask/rogue/spectacles
 	name = "眼镜"
@@ -227,8 +227,8 @@
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 
 /obj/item/clothing/mask/rogue/sack/psy
-	name = "普希顿麻袋面具"
-	desc = "一个普通的棕色麻袋。这一个被挖出了眼洞，表面还粗糙地用粉笔画着普希顿的教十字，看上去足以令大多数人不安。"
+	name = "普赛顿麻袋面具"
+	desc = "一个普通的棕色麻袋。这一个被挖出了眼洞，表面还粗糙地用粉笔画着普赛顿的教十字，看上去足以令大多数人不安。"
 	icon_state = "sackmask_psy"
 
 /obj/item/clothing/mask/rogue/facemask/steel/confessor
@@ -379,8 +379,8 @@
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/clothing/mask/rogue/facemask/bronze
-	name = "bronze mask"
-	desc = "Glimmering bronze, curved to veil its wearer's face from both judgement and harm."
+	name = "青铜面具"
+	desc = "熠熠生辉的青铜，弯制成形，既能替佩戴者挡下他人的审视，也能护其免受伤害。"
 	armor = ARMOR_BRONZE
 	armor_class = ARMOR_CLASS_LIGHT
 	icon_state = "bronzemask"
@@ -389,18 +389,18 @@
 	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/clothing/mask/rogue/facemask/bronze/classic
-	name = "bronze death mask"
+	name = "青铜死亡面具"
 	icon_state = "bronzemask_legacy"
 	item_state = "bronzemask_legacy"
-	desc = "Glimmering bronze, meticuliusly shaped to mimic the guise of another. One of civilization's oldest superstitions is the belief that donning such masks would impart a sliver of the mimicked facebearer's power unto its wearer."
+	desc = "熠熠生辉的青铜，被精心塑造成模仿他人容貌的模样。文明最古老的迷信之一，便是相信戴上这样的面具，能分得被模仿者的一丝力量。"
 
 /obj/item/clothing/mask/rogue/facemask/bronze/anthro
-	name = "bronze mask"
+	name = "青铜面具"
 	icon_state = "bronzemask_snout"
 	item_state = "bronzemask_snout"
 
 /obj/item/clothing/mask/rogue/facemask/bronze/classic/anthro
-	name = "bronze death mask"
+	name = "青铜死亡面具"
 	icon_state = "bronzemask_legacy_snout"
 	item_state = "bronzemask_legacy_snout"
 
@@ -420,8 +420,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/mask/rogue/facemask/psydonmask
-	name = "普希顿面具"
-	desc = "一副银制面具，永远凝固着一种无可置疑的欢愉神情。圣赛利克斯教团至今拿不准，它究竟象征着普希顿的“欢悦”、“戏剧性”，还是二者难以捉摸的交融。"
+	name = "普赛顿面具"
+	desc = "一副银制面具，永远凝固着一种无可置疑的欢愉神情。圣赛利克斯教团至今拿不准，它究竟象征着普赛顿的“欢悦”、“戏剧性”，还是二者难以捉摸的交融。"
 	icon_state = "psydonmask"
 	item_state = "psydonmask"
 
@@ -679,10 +679,10 @@
 	sellprice = 0
 
 /obj/item/clothing/mask/rogue/lordmask/zizite
-	name = "fateful visage"
+	name = "宿命面容"
 	item_state = "zizomask"
 	icon_state = "zizomask"
-	desc = "To advance, at any cost."
+	desc = "为了前行，不惜一切代价。"
 	alternate_worn_layer = HOOD_LAYER
 	max_integrity = ARMOR_INT_MASK_IRON + 50
 	armor = ARMOR_PLATE
@@ -848,7 +848,7 @@
 /obj/item/clothing/mask/rogue/xylixmask/proc/toggle_identity(mob/user)
 	hide_identity = !hide_identity
 	update_identity_flags(user)
-	to_chat(user, span_notice("我用\the [src][hide_identity ? "隐藏" : "显露"]自己的身份。"))
+	to_chat(user, span_notice("我用[src][hide_identity ? "隐藏" : "显露"]自己的身份。"))
 	return TRUE
 
 /obj/item/clothing/mask/rogue/xylixmask/proc/apply_mask_style(style, mob/user)

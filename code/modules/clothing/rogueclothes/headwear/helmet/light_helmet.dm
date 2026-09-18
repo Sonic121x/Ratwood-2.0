@@ -140,8 +140,8 @@
 
 // Grenzel unique drip head. Pretend it is a secrete (A type of hat with a hidden helmet underneath). Same stats as kettle
 /obj/item/clothing/head/roguetown/grenzelhofthat
-	name = "格伦泽尔霍夫羽饰帽"
-	desc = "无论怪物还是佳人，真正的格伦泽尔霍夫人都能一并征服。这顶帽子下方藏有金属内帽，可保护头部免受打击。"
+	name = "格伦泽尔霍夫特羽饰帽"
+	desc = "无论怪物还是佳人，真正的格伦泽尔霍夫特人都能一并征服。这顶帽子下方藏有金属内帽，可保护头部免受打击。"
 	icon_state = "grenzelhat"
 	item_state = "grenzelhat"
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -165,7 +165,7 @@
 /obj/item/clothing/head/roguetown/grenzelhofthat/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "选择一种颜色。", "格伦泽尔霍夫配色") as anything in GLOB.colorlist
+		var/choice = input(user, "选择一种颜色。", "格伦泽尔霍夫特配色") as anything in GLOB.colorlist
 		var/playerchoice = GLOB.colorlist[choice]
 		picked = TRUE
 		detail_color = playerchoice
@@ -217,8 +217,8 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/head/roguetown/mentorhat/decorative
-	name = "decorative bamboo hat"
-	desc = "A bamboo hat woven for style rather than protection."
+	name = "装饰竹笠"
+	desc = "一顶为美观而非防护编织的竹笠。"
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
 	max_integrity = 100
 
