@@ -3,8 +3,8 @@
 // The Gronn stuff is all-in-one due to laziness, not as a standard.
 
 /datum/supply_pack/rogue/armor_exotic
-	group = "Armor (Exotic)"
-	crate_name = "merchant guild's crate"
+	group = "护甲（异域）"
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	no_name_quantity = TRUE
 
@@ -29,7 +29,7 @@
 		)
 
 /datum/supply_pack/rogue/armor_exotic/hammerhold_pack_heavy
-	name = "恩诺尔西板甲套装（重型）"
+	name = "诺尔西板甲套装（重型）"
 	cost = 400
 	contains = list(
 		/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gronn,

@@ -292,28 +292,28 @@
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "beer"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kgunlager = 50)
-	desc = "一只带有山口酒坊瓶塞的酒瓶。里面是远方风间郡酿造的淡色拉格，并以绿茶精修出独特风味，甚至比精灵酒还要清淡！"
+	desc = "一只带有山口酒坊瓶塞的酒瓶。里面是远方风郡酿造的淡色拉格，并以绿茶精修出独特风味，甚至比精灵酒还要清淡！"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake
 	name = "阿夫尼克的 White 酒瓶"
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "white_wine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kgunsake = 50)
-	desc = "一只带有金天鹅瓶塞的酒瓶。里面是以稻米酿成的半透明浅蓝色酒液，深受风间郡军阀与贵族喜爱。"
+	desc = "一只带有金天鹅瓶塞的酒瓶。里面是以稻米酿成的半透明浅蓝色酒液，深受风郡军阀与贵族喜爱。"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunplum
 	name = "梅酒瓶"
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "plum_wine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kgunplum = 50)
-	desc = "一只带有金天鹅瓶塞的酒瓶。里面是以风间群岛常见果实酿成的红金色酒液，深受平民喜爱。"
+	desc = "一只带有金天鹅瓶塞的酒瓶。里面是以风郡群岛常见果实酿成的红金色酒液，深受平民喜爱。"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunshochu
-	name = "风间烧酎瓶"
+	name = "风郡烧酎瓶"
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "rice_wine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kgunshochu = 50)
-	desc = "一只带有金天鹅瓶塞的酒瓶。里面是蒸馏米酒制成的清澈烈酒，收口干净利落，在风间郡武士阶层中很受欢迎。"
+	desc = "一只带有金天鹅瓶塞的酒瓶。里面是蒸馏米酒制成的清澈烈酒，收口干净利落，在风郡武士阶层中很受欢迎。"
 
 // Zhongese Drinks
 /obj/item/reagent_containers/glass/bottle/rogue/beer/huangjiu

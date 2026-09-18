@@ -1,8 +1,8 @@
 // Steel Weapons - Base price of 35 per steel ingot
 // Minimum price of 40
 /datum/supply_pack/rogue/steel_weapons
-	group = "Weapons (Steel)"
-	crate_name = "merchant guild's crate"
+	group = "武器（钢）"
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/steel_weapons/dagger
@@ -100,7 +100,7 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/broadsword
-	name = "Broadsword"
+	name = "阔剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/broadsword/steel,
@@ -198,7 +198,7 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greatflail
-	name = "Greatflail"
+	name = "巨型连枷"
 	cost = 80 // 2 Steel Ingot, 1 Small Log, 1 Chain
 	contains = list(/obj/item/rogueweapon/flail/peasantwarflail/steel)
 
