@@ -3,7 +3,7 @@
 // And hopefully generate demands for potions from other brewer who can offer it cheaper while improving access
 // Yes, they are meant to have access to the high tier stat buff potion but not the second tier health or mana potions or any of the poison.
 /datum/supply_pack/rogue/potions
-	group = "Potions"
+	group = "药水" // English: Potions
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
