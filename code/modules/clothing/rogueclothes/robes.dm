@@ -170,15 +170,15 @@
 //Eora content from Stonekeep
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora
-	name = "Eora长袍"
-	desc = "供Eora信徒穿着的圣袍。"
+	name = "伊欧拉长袍"
+	desc = "供伊欧拉信徒穿着的圣袍。"
 	icon_state = "eorarobes"
 	flags_inv = HIDEBOOB|HIDECROTCH
 	var/fanatic_wear = FALSE
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/alt
-	name = "敞开的Eora长袍"
-	desc = "由Eora教会中更激进的信徒所穿。"
+	name = "敞开的伊欧拉长袍"
+	desc = "由伊欧拉教会中更激进的信徒所穿。"
 	body_parts_covered = null
 	icon_state = "eorastraps"
 	flags_inv = HIDEBOOB
@@ -187,16 +187,16 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/attack_right(mob/user)
 	switch(fanatic_wear)
 		if(FALSE)
-			name = "敞开的Eora长袍"
-			desc = "由Eora教会中更激进的信徒所穿。"
+			name = "敞开的伊欧拉长袍"
+			desc = "由伊欧拉教会中更激进的信徒所穿。"
 			body_parts_covered = null
 			icon_state = "eorastraps"
 			fanatic_wear = TRUE
 			flags_inv = HIDEBOOB
 			to_chat(usr, span_warning("现在以激进方式穿着！"))
 		if(TRUE)
-			name = "Eora长袍"
-			desc = "供Eora信徒穿着的圣袍。"
+			name = "伊欧拉长袍"
+			desc = "供伊欧拉信徒穿着的圣袍。"
 			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 			icon_state = "eorarobes"
 			fanatic_wear = FALSE

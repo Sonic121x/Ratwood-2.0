@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/firearm/arquebus
 	name = "火绳枪"
 	desc = "一把以烟火药发射破甲金属弹丸的武器。\
-	它是真正的工艺杰作，由 Naledi 腐疫横行的深处之地里一群铁匠密会所铸。"
+	它是真正的工艺杰作，由纳莱迪腐疫横行的深处之地里一群铁匠密会所铸。"
 	icon = 'modular_helmsguard/icons/weapons/arquebus.dmi'
 	icon_state = "arquebus"
 	item_state = "arquebus"
@@ -11,7 +11,7 @@
 /obj/item/gun/ballistic/firearm/arquebus_pistol
 	name = "火绳手铳"
 	desc = "一把小型烟火药武器，平衡得足以单手使用。\
-	即便拥有如此威力，人们仍争执不休，直到 Naledi 密会的铁匠们终于让步，限量打造了这类兵器。\
+	即便拥有如此威力，人们仍争执不休，直到纳莱迪密会的铁匠们终于让步，限量打造了这类兵器。\
 	眼前这一把便是其中极其稀罕的成品，每一把都依照持用者的意志量身而制。"
 	icon = 'icons/roguetown/weapons/guns32.dmi'
 	icon_state = "pistol"
