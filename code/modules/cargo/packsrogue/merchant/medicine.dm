@@ -1,7 +1,7 @@
 //Not sure if I'll use this but could be handy.
 
 /datum/supply_pack/rogue/medicine
-	group = "Medicine"
+	group = "药品" // English: Medicine
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 //drugs

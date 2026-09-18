@@ -2,7 +2,7 @@
 // Pricing principles - Based on uhh sell price x 1.5 approx lol.
 
 /datum/supply_pack/rogue/light_armor
-	group = "护甲（轻型）"
+	group = "护甲（轻型）" // English: Armor (Light)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
