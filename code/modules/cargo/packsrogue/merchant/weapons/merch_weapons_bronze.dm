@@ -2,7 +2,7 @@
 // Ditto for ranged weapons.
 
 /datum/supply_pack/rogue/bronze_weapons
-	group = "武器（青铜）"
+	group = "武器（青铜）" // English: Weapons (Bronze)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
