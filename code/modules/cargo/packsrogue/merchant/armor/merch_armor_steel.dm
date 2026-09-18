@@ -6,7 +6,7 @@
 // Then round up to nearest 5.
 
 /datum/supply_pack/rogue/armor_steel
-	group = "护甲（钢）"
+	group = "护甲（钢）" // English: Armor (Steel)
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

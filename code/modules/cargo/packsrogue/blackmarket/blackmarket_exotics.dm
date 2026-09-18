@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/blackmarket_exotics
-	group = "Exotic Import"
+	group = "异域进口品" // English: Exotic Import
 	crate_name = "suspicious crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
