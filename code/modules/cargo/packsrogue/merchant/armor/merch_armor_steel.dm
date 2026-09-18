@@ -6,8 +6,8 @@
 // Then round up to nearest 5.
 
 /datum/supply_pack/rogue/armor_steel
-	group = "Armor (Steel)"
-	crate_name = "merchant guild's crate"
+	group = "护甲（钢）"
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 // Steel Armor Section. Massive selection here so I am not going to include everything
@@ -112,7 +112,7 @@
 	contains = list(/obj/item/clothing/wrists/roguetown/splintarms)
 
 /datum/supply_pack/rogue/armor_steel/jackchains
-	name = "Bracers, Jack Chain"
+	name = "护臂链条"
 	cost = 50 // 1 steel
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/jackchain)
 
@@ -122,7 +122,7 @@
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 /datum/supply_pack/rogue/armor_steel/bracers_chain
-	name = "Bracers, Chainmaille"
+	name = "臂甲，锁链袖"
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/chain)
 
@@ -222,7 +222,7 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
 /datum/supply_pack/rogue/armor_iron/mailleboots_steel
-	name = "Maille Boots"
+	name = "链甲靴"
 	cost = 50
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/maille)
 

@@ -754,8 +754,8 @@
 		"奶酪酿茄子（120积分）" = list(120, /obj/item/reagent_containers/food/snacks/rogue/preserved/eggplantstuffedcheese),
 		"铁锤堡式早餐（130积分）" = list(130, /obj/item/reagent_containers/food/snacks/rogue/friedegg/hammerhold),
 		// —— 佳酿（品质 ≥ 3 的名贵酒水；elfblue 已在上方列出）——
-		"风间清酒（130积分）"   = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake),
-		"风间烧酎（140积分）"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunshochu),
+		"风郡清酒（130积分）"   = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake),
+		"风郡烧酎（140积分）"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunshochu),
 		"药酒（130积分）"       = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/yaojiu),
 		"蛇酒（150积分）"       = list(150, /obj/item/reagent_containers/glass/bottle/rogue/beer/shejiu),
 	)

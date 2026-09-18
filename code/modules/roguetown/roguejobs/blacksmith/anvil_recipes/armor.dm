@@ -574,7 +574,7 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/anvil_recipe/armor/iron/mailleboots
-	name = "Maille Boots, Iron"
+	name = "链甲靴, 铁"
 	created_item = /obj/item/clothing/shoes/roguetown/boots/maille/iron
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
@@ -802,7 +802,7 @@
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
 /datum/anvil_recipe/armor/steel/jackchain
-	name = "Jack Chain, Steel"
+	name = "护臂链条, 钢"
 	created_item = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
@@ -853,7 +853,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetsallv_snouted
-	name = "Visored Sallet, Snouted, Steel (+1 Steel)"
+	name = "带鼻吻面罩萨莱特盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -877,13 +877,13 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetroundface
-	name = "Roundface Bascinet, Steel (+1 Steel)"
+	name = "圆面尖顶盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetroundface_snouted
-	name = "Roundface Bascinet, Snouted, Steel (+1 Steel)"
+	name = "带鼻吻圆面尖顶盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -912,7 +912,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetarmet_snouted
-	name = "Armet, Snouted, Steel (+1 Steel)"
+	name = "带鼻吻阿米特头盔, 钢 (+1 钢)"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -960,7 +960,7 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/anvil_recipe/armor/steel/mailleboots
-	name = "Maille Boots, Steel"
+	name = "链甲靴, 钢"
 	created_item = /obj/item/clothing/shoes/roguetown/boots/maille
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
@@ -1107,7 +1107,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/holysteel/nochelm_snouted
-	name = "Noccian Helmet, Snouted (+1 Cured Leather)"
+	name = "带鼻吻诺克头盔 (+1 熟皮)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm/snouted
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1165,7 +1165,7 @@
 
 /datum/anvil_recipe/armor/blessedsilver/greatplumearmetpsy
 	name = "普赛顿式 大翎羽阿米特盔"
-	category = "Blessed Silver"
+	category = "祝福白银"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/psy/greatplume
 
 /datum/anvil_recipe/armor/blessedsilver/helmsallpsy
@@ -1180,7 +1180,7 @@
 
 /datum/anvil_recipe/armor/blessedsilver/helmvolfpsy
 	name = "普赛顿式 狼首尖顶盔"
-	category = "Blessed Silver"
+	category = "祝福白银"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/psydonic
 
 /datum/anvil_recipe/armor/blessedsilver/helmetabso

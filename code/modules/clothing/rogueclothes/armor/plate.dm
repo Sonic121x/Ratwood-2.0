@@ -226,8 +226,8 @@
 	max_integrity = ARMOR_INT_CHEST_PLATE_IRON
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
-	name = "samsibsa鳞板甲"
-	desc = "远方风郡的 kouken 所穿的重型护甲。不同于普赛多尼亚与西方常见的板甲，samsiba-cheolpan 由三十四排复合鳞片构成，每片都是镀覆黑钢的超薄钢片。 </br> 在单独鳞片上刻字极为常见，比如“幸运”、“荣耀”或“天命”。"
+	name = "三十四鳞板甲"
+	desc = "远方风郡的寇肯所穿的重型护甲。不同于普赛多尼亚与西方常见的板甲，它由三十四排复合鳞片构成，每片都是镀覆黑钢的超薄钢片。 </br> 在单独鳞片上刻字极为常见，比如“幸运”、“荣耀”或“天命”。"
 	icon_state = "kazengunheavy"
 	item_state = "kazengunheavy"
 	detail_tag = "_detail"
@@ -336,9 +336,9 @@
 	qdel(src)
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
-	name = "avantyne-threaded maille"
-	desc = "Pauldrons lyke that of fire, crested atop a veil of otherworldly maille - impossibly tough, warm to the touch, \
-and crackling with insidious energies."
+	name = "阿凡泰因织锁甲"
+	desc = "肩甲宛如烈焰，高踞于一层异界锁甲之上——坚硬得难以置信，触手温热， \
+并噼啪作响着阴险的能量。"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL // We are probably one of the best medium armor sets. At higher integ than most.
 	peel_threshold = 5	//-Any- weapon will require 5 peel hits to peel coverage off of this armor.
