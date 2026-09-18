@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Sawbones
-	group = "Sawbones"
+	group = "锯骨郎中" // English: Sawbones
 	crate_name = "Gifts of Medicine"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
