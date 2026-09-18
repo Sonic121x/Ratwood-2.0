@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/Pioneer
-	group = "Pioneer"
+	group = "拓荒工兵" // English: Pioneer
 	crate_name = "Gifts of Engineering"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
