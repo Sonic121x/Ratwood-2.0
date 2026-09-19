@@ -1,10 +1,10 @@
 /datum/customizer/organ/horns
 	abstract_type = /datum/customizer/organ/horns
-	name = "Horns"
+	name = "角"
 
 /datum/customizer_choice/organ/horns
 	abstract_type = /datum/customizer_choice/organ/horns
-	name = "Horns"
+	name = "角"
 	organ_type = /obj/item/organ/horns
 	organ_slot = ORGAN_SLOT_HORNS
 
@@ -16,7 +16,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/horns/humanoid
-	name = "Horns"
+	name = "角"
 	organ_type = /obj/item/organ/horns/humanoid
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -138,7 +138,7 @@
 	default_disabled =  TRUE
 
 /datum/customizer_choice/organ/horns/anthro
-	name = "Horns"
+	name = "角"
 	organ_type = /obj/item/organ/horns
 	sprite_accessories = list(
 		/datum/sprite_accessory/horns/simple,
@@ -198,20 +198,20 @@
 	default_disabled =  TRUE
 
 /datum/customizer_choice/organ/horns/lamia
-	name = "Horns"
+	name = "角"
 	organ_type = /obj/item/organ/horns
 	sprite_accessories = list(
 		/datum/sprite_accessory/horns/angler,
 		)
 
 /datum/customizer/organ/horns/tusks
-	name = "Tusks"
+	name = "獠牙"
 	customizer_choices = list(/datum/customizer_choice/organ/horns/tusks)
 	allows_disabling = TRUE
 	default_disabled =  TRUE
 
 /datum/customizer_choice/organ/horns/tusks
-	name = "Tusks"
+	name = "獠牙"
 	organ_type = /obj/item/organ/horns
 	sprite_accessories = list(
 		/datum/sprite_accessory/horns/halforc,
