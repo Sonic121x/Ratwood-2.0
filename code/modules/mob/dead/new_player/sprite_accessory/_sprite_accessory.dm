@@ -19,7 +19,7 @@
 	/// Amount of color keys this accessory uses.
 	var/color_keys = 1
 	/// Color key name to describe a single customizable color key.
-	var/color_key_name = "Accessory"
+	var/color_key_name = "配件"
 	/// List of names for color keys, required if you use more than 1. This is to present the user with how every color will affect the accessory.
 	var/list/color_key_names
 	/// List of defines for determining which color to use for which key as a default.
@@ -311,7 +311,7 @@
 
 /// None state which just means no appearance. Exists for easier manipulation so we dont have to write cases for customizng into a null type.
 /datum/sprite_accessory/none
-	name = "None"
+	name = "无"
 	color_keys = 0
 	icon = null
 	icon_state = null
