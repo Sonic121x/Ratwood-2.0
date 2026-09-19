@@ -13,7 +13,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/frills/lizard
-	name = "Frills"
+	name = "颈褶"
 	organ_type = /obj/item/organ/frills/lizard
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -41,7 +41,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/frills/anthro
-	name = "Frills"
+	name = "颈褶"
 	organ_type = /obj/item/organ/frills
 	generic_random_pick = TRUE
 	sprite_accessories = list(
