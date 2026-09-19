@@ -1,7 +1,7 @@
 /datum/customizer
 	abstract_type = /datum/customizer
 	/// User facing name of the customizer.
-	var/name = "Customizer"
+	var/name = "定制器"
 	/// List of all /datum/customizer_choice's that this customizer can pick from.
 	var/list/customizer_choices
 	/// The default choice from among `customizer_choices`.
@@ -46,8 +46,8 @@
 
 /datum/customizer/organ
 	abstract_type = /datum/customizer/organ
-	name = "Organ"
+	name = "器官"
 
 /datum/customizer/bodypart_feature
 	abstract_type = /datum/customizer/bodypart_feature
-	name = "Bodypart Feature"
+	name = "部位特征"
