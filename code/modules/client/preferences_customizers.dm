@@ -157,7 +157,7 @@
 			for(var/choice_type in customizer.customizer_choices)
 				var/datum/customizer_choice/iter_choice = CUSTOMIZER_CHOICE(choice_type)
 				choice_list[iter_choice.name] = choice_type
-			var/chosen_input = tgui_input_list(user, "Choose your [LOWER_TEXT(customizer.name)]:", "Character Preference", choice_list)
+			var/chosen_input = tgui_input_list(user, "选择你的[LOWER_TEXT(customizer.name)]:", "角色偏好", choice_list)
 			if(!chosen_input)
 				return
 			var/choice_type = choice_list[chosen_input]
@@ -185,7 +185,7 @@
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += print_customizers_page()
-	var/datum/browser/popup = new(user, "customization", "<div align='center'>Customization</div>", 630, 730)
+	var/datum/browser/popup = new(user, "customization", "<div align='center'>定制</div>", 630, 730)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 
