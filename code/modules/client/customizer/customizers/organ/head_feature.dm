@@ -23,7 +23,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/head_feature/xeno_head)
 
 /datum/customizer_choice/organ/head_feature/xeno_head
-	name = "Xeno Head"
+	name = "异形头部"
 	organ_type = /obj/item/organ/head_feature/xeno_head
 	sprite_accessories = list(
 		/datum/sprite_accessory/head_feature/xeno_head/standard,

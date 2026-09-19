@@ -9,7 +9,7 @@
 
 /datum/customizer_choice/organ/wings
 	abstract_type = /datum/customizer_choice/organ/wings
-	name = "Wings"
+	name = "翅膀"
 	organ_type = /obj/item/organ/wings
 	organ_slot = ORGAN_SLOT_WINGS
 	organ_dna_type = /datum/organ_dna/wings
@@ -64,19 +64,19 @@
 	// Check if there's > 1 color key first since that is handled separately
 	var/datum/sprite_accessory/wings/wing_accessory = SPRITE_ACCESSORY(entry.accessory_type)
 	if(wing_accessory.color_keys > 1)
-		dat += "<br><a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=reset_colors'>Reset colors</a>"
+		dat += "<br><a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=reset_colors'>重置颜色</a>"
 		var/list/color_list = color_string_to_list(entry.accessory_colors)
 		for(var/index in 1 to wing_accessory.color_keys)
 			var/named_index = (wing_accessory.color_keys == 1) ? wing_accessory.color_key_name : wing_accessory.color_key_names[index]
 			dat += "<br>[named_index]: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=acc_color;color_index=[index]''><span class='color_holder_box' style='background-color:[color_list[index]]'></span></a>"
 		return
 
-	dat += "<br>Wings Color: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=wings_color''><span class='color_holder_box' style='background-color:[wings_entry.wings_color]'></span></a>"
+	dat += "<br>翅膀颜色: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=wings_color''><span class='color_holder_box' style='background-color:[wings_entry.wings_color]'></span></a>"
 	if(allows_natural_gradient)
 		var/datum/hair_gradient/gradient = HAIR_GRADIENT(wings_entry.natural_gradient)
-		dat += "<br>Natural Gradient: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=natural_gradient'>[gradient.name]</a>"
+		dat += "<br>自然渐变: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=natural_gradient'>[gradient.name]</a>"
 		if(wings_entry.natural_gradient != /datum/hair_gradient/none)
-			dat += "<br>Natural Color: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=natural_gradient_color''><span class='color_holder_box' style='background-color:[wings_entry.natural_color]'></span></a>"
+			dat += "<br>自然颜色: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=natural_gradient_color''><span class='color_holder_box' style='background-color:[wings_entry.natural_color]'></span></a>"
 	if(allows_dye_gradient)
 		var/datum/hair_gradient/gradient = HAIR_GRADIENT(wings_entry.dye_gradient)
 		dat += "<br>Dye Gradient: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=dye_gradient'>[gradient.name]</a>"
@@ -88,7 +88,7 @@
 	var/datum/customizer/organ/wings/wings_entry = entry
 	switch(href_list["customizer_task"])
 		if("wings_color")
-			var/new_color = color_pick_sanitized(user, "Choose your hair color:", "Character Preference", wings_entry.wings_color)
+			var/new_color = color_pick_sanitized(user, "选择你的毛发颜色:", "角色偏好", wings_entry.wings_color)
 			if(!new_color)
 				return
 			wings_entry.wings_color = sanitize_hexcolor(new_color, 6, TRUE)
@@ -103,7 +103,7 @@
 		if("natural_gradient_color")
 			if(!allows_natural_gradient)
 				return
-			var/new_color = color_pick_sanitized(user, "Choose your natural gradient color:", "Character Preference", wings_entry.natural_color)
+			var/new_color = color_pick_sanitized(user, "选择你的自然渐变颜色:", "角色偏好", wings_entry.natural_color)
 			if(!new_color)
 				return
 			wings_entry.natural_color = sanitize_hexcolor(new_color, 6, TRUE)
@@ -111,14 +111,14 @@
 			if(!allows_dye_gradient)
 				return
 			var/list/choice_list = hair_gradient_name_to_type_list()
-			var/chosen_input = input(user, "Choose your dye gradient:", "Character Preference")  as null|anything in choice_list
+			var/chosen_input = input(user, "选择你的染色渐变:", "角色偏好")  as null|anything in choice_list
 			if(!chosen_input)
 				return
 			wings_entry.dye_gradient = choice_list[chosen_input]
 		if("dye_gradient_color")
 			if(!allows_dye_gradient)
 				return
-			var/new_color = color_pick_sanitized(user, "Choose your dye gradient color:", "Character Preference", wings_entry.dye_color)
+			var/new_color = color_pick_sanitized(user, "选择你的染色渐变颜色:", "角色偏好", wings_entry.dye_color)
 			if(!new_color)
 				return
 			wings_entry.dye_color = sanitize_hexcolor(new_color, 6, TRUE)
@@ -186,13 +186,13 @@
 		)
 
 /datum/customizer/organ/wings/moth
-	name = "Fluvian Wings"
+	name = "弗卢维安翅膀"
 	allows_disabling = TRUE
 	default_disabled = FALSE
 	customizer_choices = list(/datum/customizer_choice/organ/wings/moth)
 
 /datum/customizer_choice/organ/wings/moth
-	name = "Fluvian Wings"
+	name = "弗卢维安翅膀"
 	organ_type = /obj/item/organ/wings/moth
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/moth/plain,
