@@ -86,7 +86,7 @@
 		span_notice("我开始顺着 [found_person.real_name] 残留在记忆中的独特魔力轨迹进行追索。")
 	)
 	// 抵消通用动作速度系数，使引导本身保持三秒，仍保留移动、失能与换手中断。
-	var/channel_delay = Z121_LOCATE_CHANNEL / max(0.01, user.do_after_coefficent())
+	var/channel_delay = z121_channel(Z121_LOCATE_CHANNEL, user) / max(0.01, user.do_after_coefficent())
 	if(!do_after(user, channel_delay, target = user, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(can_channel), user, casting_mind)))
 		if(!QDELETED(user))
 			to_chat(user, span_warning("我的引导被打断了，熟悉的魔力踪迹也随之散开。"))
@@ -102,6 +102,7 @@
 	if(!can_channel(user, casting_mind) || QDELETED(found_person) || !target_allowed(user, found_person))
 		if(!QDELETED(user))
 			to_chat(user, span_warning("魔力踪迹已经散去，我没能锁定对方。"))
+		z121_metamagic_cast?.finish(FALSE)
 		return TRUE
 	new /datum/z121_locate_session(src, user, found_person)
 	return TRUE
@@ -283,6 +284,8 @@
 
 // 请求与追踪独立于法术冷却处理，避免弹窗阻塞冷却或让迟到回复恢复失效定位。
 /datum/z121_locate_session
+	// 等待同意期间只预留超魔次数，真正开始定位才结算。
+	var/datum/z121_metamagic_cast/metamagic_reservation
 	var/datum/weakref/spell_ref
 	var/datum/weakref/caster_ref
 	var/datum/weakref/target_ref
@@ -300,6 +303,10 @@
 
 /datum/z121_locate_session/New(obj/effect/proc_holder/spell/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
 	spell_ref = WEAKREF(spell)
+	z121_meta_duration = spell.z121_duration(1)
+	metamagic_reservation = spell.z121_metamagic_cast
+	if(metamagic_reservation)
+		metamagic_reservation.deferred = TRUE
 	caster_ref = WEAKREF(caster)
 	target_ref = WEAKREF(target)
 	caster_mind_ref = WEAKREF(caster.mind)
@@ -312,6 +319,9 @@
 	START_PROCESSING(SSfastprocess, src)
 
 /datum/z121_locate_session/Destroy()
+	if(metamagic_reservation && !QDELETED(metamagic_reservation))
+		metamagic_reservation.finish(FALSE)
+	metamagic_reservation = null
 	STOP_PROCESSING(SSfastprocess, src)
 	var/obj/effect/proc_holder/spell/self/z121_locate_base/spell = spell_ref?.resolve()
 	spell?.locate_sessions -= src
@@ -400,8 +410,11 @@
 		qdel(caster.z121_locate_tracker)
 	caster.z121_locate_tracker = src
 	tracking = TRUE
-	tracking_expires = world.time + Z121_LOCATE_DURATION
-	QDEL_IN(src, Z121_LOCATE_DURATION)
+	if(metamagic_reservation && !QDELETED(metamagic_reservation))
+		metamagic_reservation.finish(TRUE)
+	metamagic_reservation = null
+	tracking_expires = world.time + z121_duration(Z121_LOCATE_DURATION)
+	QDEL_IN(src, z121_duration(Z121_LOCATE_DURATION))
 	arrow = image(loc = caster, layer = ABOVE_MOB_LAYER)
 	arrow.plane = BALLOON_CHAT_PLANE
 	arrow.appearance_flags = RESET_ALPHA | RESET_COLOR | RESET_TRANSFORM
@@ -413,7 +426,7 @@
 	update_arrow(spell, caster, target)
 	viewer.images += arrow
 	playsound(get_turf(caster), 'sound/magic/whiteflame.ogg', 70, TRUE, soundping = TRUE)
-	to_chat(caster, span_notice("我循着 [target.real_name] 的魔力踪迹得出了感应：[spell.build_location_report(caster, target)] 头顶的指引将持续30秒。"))
+	to_chat(caster, span_notice("我循着 [target.real_name] 的魔力踪迹得出了感应：[spell.build_location_report(caster, target)] 头顶的指引将持续[z121_duration(Z121_LOCATE_DURATION) / 10]秒。"))
 
 /datum/z121_locate_session/proc/update_arrow(obj/effect/proc_holder/spell/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
 	var/turf/caster_turf = get_turf(caster)

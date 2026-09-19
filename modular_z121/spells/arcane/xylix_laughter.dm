@@ -47,7 +47,7 @@
 
 	var/fail_chance = get_failure_chance(user, target)
 	if(prob(fail_chance))
-		target.Knockdown(3 SECONDS)
+		target.Knockdown(z121_duration(3 SECONDS))
 		target.visible_message(span_warning("[target] 突然像被什么荒诞笑话击中了心神，仰头狂笑着摔倒在地！"))
 		to_chat(target, span_userdanger("荒谬的笑意猛然撕开我的理智，我控制不住地狂笑着倒了下去！"))
 		to_chat(user, span_notice("[target] 没能撑住这场荒诞的心灵冲击。"))

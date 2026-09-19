@@ -349,7 +349,7 @@
 		return FALSE
 
 	// 安排 3 分钟后自动到期。把 timer id 记到 link 上，便于一方提前失效时清掉它。
-	link.expire_timer_id = addtimer(CALLBACK(link, TYPE_PROC_REF(/datum/sensory_share_link, expire)), SENSORY_DURATION, TIMER_STOPPABLE)
+	link.expire_timer_id = addtimer(CALLBACK(link, TYPE_PROC_REF(/datum/sensory_share_link, expire)), z121_duration(SENSORY_DURATION), TIMER_STOPPABLE)
 
 	// 表现层：成功反馈与音效。
 	playsound(get_turf(user), 'sound/magic/whiteflame.ogg', 60, TRUE)

@@ -57,6 +57,9 @@
 		wash_turf(spot, CLEAN_MEDIUM)
 
 	playsound(center, pick('sound/foley/waterwash (1).ogg', 'sound/foley/waterwash (2).ogg'), 60, TRUE)
-	user.visible_message(span_notice("[user] 念出咒文，一阵晶莹的肥皂泡涌起，将四周的污秽涤荡一空！"))
+	if(z121_silent(user))
+		user.visible_message(span_notice("[user] 一阵晶莹的肥皂泡涌起，将四周的污秽涤荡一空！"))
+	else
+		user.visible_message(span_notice("[user] 念出咒文，一阵晶莹的肥皂泡涌起，将四周的污秽涤荡一空！"))
 	to_chat(user, span_notice("我唤出一片清洁的泡沫，洗净了这片区域里的 [filth_count] 处污物。"))
 	return TRUE

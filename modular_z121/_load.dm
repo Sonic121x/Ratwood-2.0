@@ -27,7 +27,6 @@
 #include "spells/arcane/heal_pristine.dm"
 #include "spells/arcane/insight_all_things.dm"
 #include "spells/arcane/legilimency.dm"
-#include "spells/arcane/levitation_charm.dm"
 #include "spells/arcane/locate_person.dm"
 #include "spells/arcane/magic_satiety.dm"
 #include "spells/arcane/mansion_curse.dm"
@@ -310,7 +309,11 @@
 // simple_animals) earns system points, spent in the system shop on items / equipment / weapons /
 // consumables, and on enhancing skill levels and the six attributes.
 #include "virtues/rpg_system.dm"
-// 特例：账号 KUKULING 进入游戏即自动获得【RPG系统】并把系统积分设为 999999（须在 rpg_system.dm 之后引入）
+// 角色独立的每日签到与冒险任务记录。
+#include "virtues/rpg_system_daily.dm"
+// RPG 任务的私人头顶箭头与距离提示。
+#include "virtues/rpg_system_tracking.dm"
+// 特例：账号 KUKULING 进入游戏即自动获得【RPG系统】并把系统积分设为 99999999（须在 rpg_system.dm 之后引入）
 #include "virtues/rpg_system_kukuling_autogrant.dm"
 // 按账号赠礼：唯一的登录派发器（统一持有 human/Login() 覆写，逐一调用各账号赠礼 proc）
 #include "account_perks/account_perks.dm"
@@ -340,3 +343,7 @@
 #include "species/shadekin_equipment_access.dm"
 #include "datum/loadout.dm"//添加新的开局物品选项
 #include "vices/grayscale.dm"
+// 超魔适配最后加载，使局部覆写能调用原有法术实现。
+#include "virtues/metamagic.dm"
+// 蛇腹者美德及专属吞入、吐出能力。
+#include "virtues/serpent_belly.dm"

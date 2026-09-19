@@ -18,7 +18,6 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/obj/effect/proc_holder/spell/invoked/legilimency,
 	/obj/effect/proc_holder/spell/invoked/clearwater_spring,
 	/obj/effect/proc_holder/spell/invoked/cleaning,
-	/obj/effect/proc_holder/spell/invoked/levitation_charm,
 	/obj/effect/proc_holder/spell/self/locate_person,
 	/obj/effect/proc_holder/spell/invoked/magic_satiety,
 	/obj/effect/proc_holder/spell/invoked/mansion_curse,

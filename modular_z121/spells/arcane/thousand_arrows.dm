@@ -176,7 +176,7 @@
 	volley.begin_animation()
 	invocation(caster)
 	// do_after 内部会乘行动时间系数，在入口抵消该系数以保持固定两秒。
-	var/completed = do_after(caster, THOUSAND_ARROWS_CHANNEL_TIME / action_coefficient, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(channel_is_intact), caster))
+	var/completed = do_after(caster, z121_channel(THOUSAND_ARROWS_CHANNEL_TIME, caster) / action_coefficient, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(channel_is_intact), caster))
 	if(QDELETED(src))
 		return FALSE
 	if(!completed || !channel_is_intact(caster))
@@ -200,6 +200,7 @@
 	if(QDELETED(volley) || !valid_target(targets[1], user))
 		refund_volley(user)
 		return FALSE
+	volley.z121_meta_power = z121_power(1)
 	var/launched = volley.launch(targets[1], user)
 	if(QDELETED(src))
 		return FALSE
@@ -285,6 +286,7 @@
 			continue
 		// /obj/throw_at 未传回父类的成功值，以 POST_THROW 信号为准。
 		var/datum/z121_arrow_flight/flight = new
+		flight.z121_meta_power = z121_meta_power
 		if(flight.launch(weapon, target, thrower))
 			launched++
 	return launched
@@ -293,6 +295,8 @@
 // 高速投掷会在一拍内走过多格，通用 tick 只在拍首 hitcheck，且终点
 // finalize 的同名 target 参数遮蔽了选定目标。仅为本法术逐格补正常命中。
 /datum/z121_arrow_flight
+	// 仅本次御兵投掷借用伤害倍率，落地、取消和删除都会还原武器。
+	var/z121_original_throwforce
 	var/obj/item/weapon
 	var/datum/thrownthing/flight
 	var/started = FALSE
@@ -301,6 +305,9 @@
 
 /datum/z121_arrow_flight/proc/launch(obj/item/new_weapon, atom/target, mob/living/thrower)
 	weapon = new_weapon
+	if(z121_meta_power != 1)
+		z121_original_throwforce = weapon.throwforce
+		weapon.throwforce *= z121_meta_power
 	RegisterSignal(weapon, COMSIG_MOVABLE_POST_THROW, PROC_REF(on_throw_started))
 	RegisterSignal(weapon, COMSIG_QDELETING, PROC_REF(on_flight_finished))
 	weapon.throw_at(target, 8, 4, thrower)
@@ -347,6 +354,7 @@
 	if(finished)
 		return
 	finished = TRUE
+	z121_restore_throwforce()
 	if(weapon)
 		UnregisterSignal(weapon, list(COMSIG_MOVABLE_POST_THROW, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 	if(flight)
@@ -358,6 +366,7 @@
 		qdel(src)
 
 /datum/z121_arrow_flight/Destroy()
+	z121_restore_throwforce()
 	if(weapon)
 		UnregisterSignal(weapon, list(COMSIG_MOVABLE_POST_THROW, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 	if(flight)
@@ -365,6 +374,11 @@
 	weapon = null
 	flight = null
 	return ..()
+
+/datum/z121_arrow_flight/proc/z121_restore_throwforce()
+	if(weapon && !isnull(z121_original_throwforce))
+		weapon.throwforce = z121_original_throwforce
+		z121_original_throwforce = null
 
 /obj/effect/z121_arrow_volley/Destroy()
 	if(caster)

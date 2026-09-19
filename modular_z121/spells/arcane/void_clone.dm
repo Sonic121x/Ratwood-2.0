@@ -290,7 +290,7 @@
 		to_chat(user, span_warning("我必须始终握住那块 voidstone，才能维持分身塑造。"))
 		revert_cast(user)
 		return FALSE
-	if(!do_after(user, wait_time, target = user, progress = TRUE))
+	if(!do_after(user, z121_channel(wait_time, user), target = user, progress = TRUE))
 		to_chat(user, span_warning("[fail_text]"))
 		revert_cast(user)
 		return FALSE

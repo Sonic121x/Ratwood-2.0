@@ -60,7 +60,10 @@
 
 	playsound(get_turf(target), 'sound/magic/whiteflame.ogg', 80, TRUE)
 	new /obj/effect/temp_visual/heal_rogue(get_turf(target))
-	user.visible_message(span_notice("[user] 朝着 [target] 念出古老咒言，一股柔和却澎湃的魔力随即涌入 [target] 的伤躯。"))
+	if(!z121_silent(user))
+		user.visible_message(span_notice("[user] 朝着 [target] 念出古老咒言，一股柔和却澎湃的魔力随即涌入 [target] 的伤躯。"))
+	else
+		user.visible_message(span_notice("[user] 指尖泛起柔光，一股温和的魔力涌入 [target] 的伤躯。"))
 	to_chat(user, span_notice("我将回春般的魔力灌入 [target] 体内，强行加快了 [target.p_their()] 伤势的愈合。"))
 	to_chat(target, span_notice("暖流从伤处蔓延开来，我能感觉到血肉正在以反常的速度愈合。"))
 	return TRUE
@@ -70,8 +73,10 @@
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/proc/apply_direct_healing(mob/living/target)
 	// 仅恢复物理与烧伤，不处理伤口，避免普通版间接止血。
-	target.adjustBruteLoss(-healing_amount, FALSE)
-	target.adjustFireLoss(-healing_amount, FALSE)
+	// 只有实际存在数值伤势才把强效视为适用，单纯止血和消痛不扣额度。
+	var/power = (target.getBruteLoss() > 0 || target.getFireLoss() > 0) ? z121_power(1) : 1
+	target.adjustBruteLoss(-healing_amount * power, FALSE)
+	target.adjustFireLoss(-healing_amount * power, FALSE)
 	target.updatehealth()
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/greater
@@ -80,7 +85,7 @@
 	cost = 1
 	recharge_time = 3 SECONDS
 	healing_amount = 20
-	invocations = list("强效愈合如初！")
+	invocations = list("愈合如初！")
 
 /obj/effect/proc_holder/spell/invoked/heal_pristine/greater/can_heal_target(mob/living/target)
 	if(..())

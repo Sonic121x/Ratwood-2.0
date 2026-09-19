@@ -20,7 +20,7 @@
 //
 // 为什么所有逻辑都放在本文件内：
 //   按硬性约束，自定义内容只能放在 modular_z121 目录下，且不得改动该目录之外的任何
-//   文件。本文件通过"向已有类型追加子类型 / 组件 / 动词（verb）"的方式接入引擎，不修改
+//   游戏逻辑文件；TGUI 前端允许放在对应界面目录。本文件通过"向已有类型追加子类型 / 组件 / 动词（verb）"的方式接入引擎，不修改
 //   任何核心文件，因此完全满足约束。
 //   （向核心类型 /mob/living/carbon/human 追加一个 proc/verb，以及向核心类型追加组件，
 //     都属于"追加子类型内容"而非"编辑核心文件"——这与本目录既有做法一致，例如
@@ -111,8 +111,11 @@
 //   0→1 需 180，2→3 需 540，5→6 需 1080）。单列为常量，平衡只改这一处。
 #define RPG_SYSTEM_SKILL_COST_BASE 180
 
-// 兑换"正向特性 / 天赋"的统一单价（积分）。需求："只收录正向增益特性，价格统一 2000。"
+// 特性按普通、强力、超模三档定价；目录与结算共用这些价格。
 #define RPG_SYSTEM_TRAIT_COST 2000
+#define RPG_SYSTEM_TRAIT_STRONG_COST 10000
+#define RPG_SYSTEM_TRAIT_OVERPOWERED_COST 99999
+#define RPG_SYSTEM_SPELL_POINT_COST 1000
 // 通过本系统购买特性时使用的 ADD_TRAIT 来源标签：统一、可识别，便于将来需要时统一清理；
 //   不复用 TRAIT_VIRTUE / TRAIT_GENERIC 等其它来源，避免与别处授予的同名特性互相干扰。
 #define RPG_SYSTEM_TRAIT_SOURCE "rpg_system_purchase"
@@ -181,11 +184,10 @@
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	// 这名玩家当前的系统积分。所有发放（击杀）与扣除（兑换）都读写此字段，是玩家独立的存档位。
 	var/points = 0
-	// 系统面板（HTML 浏览器窗口）当前选中的分类页签。
-	// 为什么存在组件上：HTML 界面是"无状态重绘"的——每次点击经 Topic() 处理后都整窗重绘，
-	//   需要一个持久字段记住"玩家正看哪一页"，才能在重绘时渲染正确的分类。默认进"武器"页。
-	//   取值："weapon" / "equipment" / "consumable" / "material" / "magic" / "stat" / "skill"。
+	// 分类保存在组件中；购买只刷新数据，不重新打开窗口。
 	var/current_tab = "weapon"
+	// 防止物品初始化等可能让出执行权的过程重入扣费。
+	var/purchase_busy = FALSE
 
 // Initialize：组件创建时调用，负责类型校验与启动周期扫描。
 /datum/component/rpg_system/Initialize()
@@ -201,6 +203,7 @@
 //   特性标签来源是 TRAIT_VIRTUE，其生命周期由美德系统管理，这里不重复处理以免冲突。
 /datum/component/rpg_system/Destroy(force, silent)
 	STOP_PROCESSING(SSprocessing, src)
+	SStgui.close_uis(src)
 	return ..()
 
 // process：每个处理周期执行一次，扫描宿主视野内"算作怪物"的目标，给它们补挂一次性击杀监听组件。
@@ -408,60 +411,46 @@
 	system.award_points(gain, victim)
 
 
-// ============================================================================
-// 系统面板动词：玩家主动呼出的"独一无二的系统界面"
-// 为什么做成 /mob/living/carbon/human 上的 verb：动词会出现在玩家指令栏，是最直观的"呼出
-//   界面"入口；通过 apply_to_human 里的 verbs += 只授予给持有者本人。
-// 界面实现（为什么用 HTML 浏览器窗口而非逐级 input 弹窗）：
-//   参考牧师"激进路线"提供的奇迹（/obj/effect/proc_holder/spell/self/learnmiracle）所开的
-//   "学习奇迹"专属兑换界面——它用 /datum/browser 打开一张 HTML 窗口，所有可购项一览无余、
-//   带页签切换与"购买"超链接，点击经 Topic() 即时结算并整窗重绘。本系统照此把原先的"逐级
-//   input 弹窗"升级为同款 HTML 面板：商品、价格、是否买得起、强化项的当前值与单价全部一屏可见，
-//   单击即买、无需层层点选，体验大幅提升。
-//   注意：仅"界面呈现方式"参考它；本系统的【打开方式】保持不变——依旧由下面这个动词呼出
-//   （不像牧师那样用一个法术/奇迹来开），满足"不改变 RPG 系统兑换界面的打开方式"的要求。
-// ============================================================================
+
+
+// 系统入口保持不变，后续交互由同一个 TGUI 窗口处理。
 /mob/living/carbon/human/proc/open_rpg_system()
 	set name = "打开RPG系统"
 	set category = "IC"
-	// 二次校验：动词可能因各种原因残留，这里确认"确实持有系统特性"才放行，避免越权使用。
 	if(!HAS_TRAIT(src, TRAIT_RPG_SYSTEM))
 		to_chat(src, span_warning("【系统提示】你并未绑定任何系统。"))
 		return
-	// 取出本人的系统驱动组件（积分存放处）。缺失说明状态异常，安静给出提示并中止。
 	var/datum/component/rpg_system/system = GetComponent(/datum/component/rpg_system)
 	if(!system)
 		to_chat(src, span_warning("【系统提示】系统尚未就绪，请稍后再试。"))
 		return
-	// 把界面逻辑交给组件处理：组件持有积分与商店数据，由它来驱动整套界面交互最自然。
 	system.open_interface(src)
 
-// open_interface：呼出 HTML 系统面板（打开浏览器窗口并渲染当前页签）。
-//   不再是"阻塞式逐级 input 循环"，而是一次性把整张 HTML 面板推给客户端；之后的所有交互
-//   （切页签、购买、强化）都由 Topic() 接管并重绘，open_interface 自身只负责"首次打开"。
-/datum/component/rpg_system/proc/open_interface(mob/living/carbon/human/user)
-	// 防御：必须有有效的发起者（且就是本组件的宿主、且在线），否则不开界面。
-	if(!istype(user) || user != parent || user.stat == DEAD || !user.client)
-		return
-	// 直接渲染并打开窗口。渲染逻辑集中在 render_ui，便于 Topic() 处理完动作后复用同一套重绘。
-	render_ui(user)
+/datum/component/rpg_system/proc/can_use_system(mob/user)
+	return user && ishuman(parent) && user == parent && user.client && user.stat != DEAD && HAS_TRAIT(user, TRAIT_RPG_SYSTEM)
 
-// render_ui：构建并推送整张 HTML 系统面板。
-//   设计参考 learnmiracle 的 open_learn_ui：顶部显示资源（此处为系统积分）、一排页签导航，
-//   下方是当前页签的内容表格；所有可操作项都是 <a href="?src=[REF(src)];..."> 超链接，
-//   点击后由本组件的 Topic() 结算。[REF(src)] 指向本组件实例，故 Topic 一定路由回这里。
-/datum/component/rpg_system/proc/render_ui(mob/living/carbon/human/user)
-	// 防御：宿主无效 / 离线则不渲染（窗口也无处可推）。
-	if(!ishuman(parent) || user != parent || !user.client)
+/datum/component/rpg_system/proc/open_interface(mob/living/carbon/human/user)
+	if(can_use_system(user))
+		ui_interact(user)
+
+/datum/component/rpg_system/ui_state(mob/user)
+	return GLOB.self_state
+
+/datum/component/rpg_system/ui_status(mob/user, datum/ui_state/state)
+	if(!can_use_system(user))
+		return UI_CLOSE
+	return ..()
+
+/datum/component/rpg_system/ui_interact(mob/user, datum/tgui/ui)
+	if(!can_use_system(user))
 		return
-	// ---- 顶部：标题 + 当前积分 ----
-	var/list/html = list()
-	html += "<center><h2>RPG 系统</h2></center>"
-	html += "<center>世界旅人的作弊面板</center><hr>"
-	html += "当前系统积分：<b>[points]</b><hr>"
-	// ---- 页签导航：5 个商品分类 + 强化属性 + 强化技能 ----
-	// 当前页签用粗体高亮、非当前页签用超链接，点击发 ?tab=<id> 切换（与 learnmiracle 的 learntab 同理）。
-	var/list/tabs = list(
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "RpgSystem", "RPG 系统")
+		ui.open()
+
+/datum/component/rpg_system/proc/get_tabs()
+	return list(
 		"weapon" = "武器",
 		"equipment" = "装备",
 		"consumable" = "消耗品",
@@ -472,40 +461,138 @@
 		"trait" = "特性",
 		"stat" = "强化属性",
 		"skill" = "强化技能",
+		"quests" = "冒险任务",
 	)
-	var/list/nav = list()
-	for(var/tab_id in tabs)
-		if(tab_id == current_tab)
-			nav += "<b>[tabs[tab_id]]</b>"                                            // 当前页：高亮、不可点
-		else
-			nav += "<a href=\"?src=[REF(src)];tab=[tab_id]\">[tabs[tab_id]]</a>"      // 其它页：可点切换
-	html += jointext(nav, " | ")
-	html += "<hr>"
-	// ---- 主体：按当前页签渲染对应内容 ----
-	//   商品页统一走 render_item_table；属性 / 技能页各有专门渲染（含当前值、递增单价、满级标注）。
-	switch(current_tab)
-		if("stat")
-			html += render_stat_table(user)
-		if("skill")
-			html += render_skill_table(user)
-		if("trait")
-			html += render_trait_table(user)
-		else
-			html += render_item_table(user, current_tab)
-	// 组装成单段 HTML，丢进 /datum/browser 并打开。窗口 ID 固定，重复 open 会刷新同一窗口（不会叠窗）。
-	var/datum/browser/panel = new(user, "rpg_system_panel", "RPG 系统", 560, 620)
-	panel.set_content(jointext(html, ""))
-	panel.open()
 
-// ----------------------------------------------------------------------------
-// 商店目录（catalog）：把"可兑换的实体物品"集中配置在这里，便于统一维护与扩展。
-// 结构约定：关联列表  "玩家可见名" => list(积分价格, 物品类型路径)。
-//   为什么按入口分多个 proc 而非一个大表：武器 / 装备 / 消耗品 / 材料 / 魔法物品 在面板里是
-//   不同页签，分开返回各自的子表，逻辑清晰；将来要加新货只需往对应 proc 的列表里追加一行。
-//   所有类型路径都引用引擎中已存在的 roguetown 物品（含本模块自定义的魔法物品），确保必定可生成、可编译。
-//   渲染（render_item_table）与结算（do_buy_item）都通过 get_catalog_for_tab 取同一张表，按"行号"
-//   对应商品，故新增分类只需"加一张目录表 + render_ui 页签加一项 + get_catalog_for_tab 加一条分支"。
-// ----------------------------------------------------------------------------
+// 价格、奖励和禁用原因均由服务端给出；编号始终对应未筛选的目录。
+/datum/component/rpg_system/ui_data(mob/user)
+	var/list/data = list()
+	if(!can_use_system(user))
+		return data
+	var/mob/living/carbon/human/host = user
+	data["points"] = points
+	data["spell_points"] = host.mind ? max(0, host.mind.spell_points - host.mind.used_spell_points) : 0
+	data["current_tab"] = current_tab
+	data["busy"] = purchase_busy
+	var/datum/component/rpg_journal/journal = get_journal()
+	journal.refresh_day()
+	data["daily"] = journal.get_ui_data(host)
+	data["busy"] = purchase_busy || journal.busy
+	var/list/tabs = list()
+	var/list/tab_names = get_tabs()
+	for(var/tab_id in tab_names)
+		tabs += list(list("id" = tab_id, "name" = tab_names[tab_id]))
+	data["tabs"] = tabs
+	var/list/rows = list()
+	var/index = 0
+	switch(current_tab)
+		if("trait")
+			for(var/list/entry in get_trait_catalog())
+				index++
+				var/list/row = entry.Copy()
+				row["id"] = index
+				row["action"] = "buy_trait"
+				row["blocked_reason"] = HAS_TRAIT(host, entry["trait"]) ? "已拥有" : null
+				row -= "trait"
+				rows += list(row)
+		if("stat", "skill")
+			var/is_skill = current_tab == "skill"
+			var/list/defs = is_skill ? get_skill_defs() : get_attribute_defs()
+			for(var/display in defs)
+				index++
+				var/current_value = is_skill ? host.get_skill_level(defs[display]) : host.get_stat(defs[display])
+				var/at_limit = current_value >= (is_skill ? SKILL_LEVEL_LEGENDARY : 20)
+				rows += list(list(
+					"id" = index,
+					"name" = display,
+					"description" = is_skill ? "技能越高，强化所需积分越多；最高为传奇（6级）。" : "属性越高，强化所需积分越多；最高为20。",
+					"current" = current_value,
+					"cost" = at_limit ? 0 : (is_skill ? skill_upgrade_cost(current_value) : stat_upgrade_cost(current_value)),
+					"action" = is_skill ? "enhance_skill" : "enhance_stat",
+					"blocked_reason" = (is_skill && !host.mind) ? "意识尚不稳定" : (at_limit ? "已满级" : null),
+				))
+		else
+			var/list/catalog = get_catalog_for_tab(current_tab)
+			for(var/display in catalog)
+				index++
+				var/list/entry = catalog[display]
+				var/obj/item/item_type = entry[2]
+				rows += list(list(
+					"id" = index,
+					"name" = display,
+					"description" = html_decode(GLOB.html_tags.Replace(initial(item_type.desc), "")),
+					"cost" = entry[1],
+					"action" = "buy_item",
+				))
+			if(current_tab == "magic")
+				rows.Insert(1, list(list(
+					"id" = 0,
+					"name" = "法术点 +1",
+					"description" = "直接获得1法术点，无奥术技能门槛。首次获得时同步开放学习法术，并授予尚未掌握的戏法术。",
+					"cost" = RPG_SYSTEM_SPELL_POINT_COST,
+					"action" = "buy_spell_point",
+					"blocked_reason" = host.mind ? null : "意识尚不稳定",
+				)))
+	for(var/list/row in rows)
+		if(!row["blocked_reason"] && points < row["cost"])
+			row["blocked_reason"] = "积分不足"
+	data["rows"] = rows
+	return data
+
+// 所有购买操作共用身份检查与重入保护；不接受客户端传入的价格或物品路径。
+/datum/component/rpg_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	if(!ui || ui.user != usr || !can_use_system(usr) || purchase_busy)
+		return
+	var/datum/component/rpg_journal/journal = get_journal()
+	if(journal.busy)
+		return
+	if(action in list("check_in", "quest_accept", "quest_submit", "quest_abandon", "quest_track", "quest_untrack"))
+		return journal.handle_action(src, usr, action, params)
+	if(action == "tab")
+		var/list/tabs = get_tabs()
+		if(params["tab"] in tabs)
+			current_tab = params["tab"]
+			return TRUE
+		return
+	if(params["tab"] != current_tab)
+		return
+	var/index = params["id"]
+	if(action != "buy_spell_point" && (!isnum(index) || index != round(index) || index < 1))
+		return
+	purchase_busy = TRUE
+	switch(action)
+		if("buy_item")
+			do_buy_item(usr, current_tab, index)
+		if("buy_trait")
+			if(current_tab == "trait")
+				do_buy_trait(usr, index)
+		if("enhance_stat")
+			if(current_tab == "stat")
+				do_enhance_attribute(usr, index)
+		if("enhance_skill")
+			if(current_tab == "skill")
+				do_enhance_skill(usr, index)
+		if("buy_spell_point")
+			if(current_tab == "magic")
+				do_buy_spell_point(usr)
+	purchase_busy = FALSE
+	return TRUE
+
+/datum/component/rpg_system/proc/do_buy_spell_point(mob/living/carbon/human/user)
+	if(!can_use_system(user) || !user.mind)
+		return
+	if(points < RPG_SYSTEM_SPELL_POINT_COST)
+		to_chat(user, span_warning("【系统提示】积分不足，需要 [RPG_SYSTEM_SPELL_POINT_COST] 积分。"))
+		return
+	points -= RPG_SYSTEM_SPELL_POINT_COST
+	user.mind.adjust_spellpoints(1)
+	to_chat(user, span_green("【系统提示】法术点 +1，花费 [RPG_SYSTEM_SPELL_POINT_COST] 积分。（剩余积分：[points]）"))
+	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
+
+
 /datum/component/rpg_system/proc/get_weapon_catalog()
 	return list(
 		"狩猎刀（40积分）" = list(40, /obj/item/rogueweapon/huntingknife),                    // 轻便短刀，便宜的入门武器
@@ -532,6 +619,7 @@
 		"铁锤（90积分）"   = list(90, /obj/item/rogueweapon/hammer/iron),                     // 铁锻锤，钝击 / 打铁两用
 		"巨剑（300积分）"  = list(300, /obj/item/rogueweapon/greatsword),                     // 双手巨剑，高伤害重武器
 	)
+
 
 /datum/component/rpg_system/proc/get_equipment_catalog()
 	return list(
@@ -562,6 +650,7 @@
 		"锁子甲（200积分）"  = list(200, /obj/item/clothing/suit/roguetown/armor/chainmail), // 中级躯干护甲
 		"板甲（320积分）"    = list(320, /obj/item/clothing/suit/roguetown/armor/plate),     // 高级躯干护甲，防护最强
 	)
+
 
 /datum/component/rpg_system/proc/get_consumable_catalog()
 	return list(
@@ -596,14 +685,25 @@
 		"变性药水（120积分）"  = list(120, /obj/item/reagent_containers/glass/bottle/rogue/gender_swap),        // 改变生理性别
 		"隐身药水（150积分）"  = list(150, /obj/item/reagent_containers/glass/bottle/rogue/invisibility),       // 短时隐形
 		"飞行药水（180积分）"  = list(180, /obj/item/reagent_containers/glass/bottle/rogue/flying),             // 短时飞行
+		// 补齐模组药水成品；原瓶装量和药效保持不变。
+		"荧光药水（80积分）" = list(80, /obj/item/reagent_containers/glass/bottle/rogue/luminescent_potion),
+		"防蚂蟥药水（80积分）" = list(80, /obj/item/reagent_containers/glass/bottle/rogue/anti_leech),
+		"愚人药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/idiot_potion),
+		"虚弱药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/weakness_potion),
+		"怠惰药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/sloth_potion),
+		"禁欲药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/forced_chastity),
+		"丰盈药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/enlargement),
+		"硬化药剂（150积分）" = list(150, /obj/item/reagent_containers/glass/bottle/rogue/hardened_potion),
+		"防腐皂（150积分）" = list(150, /obj/item/anticorruption_soap),
+		"麻痹毒药（200积分）" = list(200, /obj/item/reagent_containers/glass/bottle/rogue/paralytic_poison),
+		"复原药剂（200积分）" = list(200, /obj/item/reagent_containers/glass/bottle/rogue/restorative_potion),
+		"回忆药剂（300积分）" = list(300, /obj/item/reagent_containers/glass/bottle/rogue/memory_potion),
+		"身体再生药剂（500积分）" = list(500, /obj/item/reagent_containers/glass/bottle/rogue/bodily_regeneration),
+		"气化之躯药水（1000积分）" = list(1000, /obj/item/reagent_containers/glass/bottle/rogue/gasification_body),
+		"复生药剂（2000积分）" = list(2000, /obj/item/reagent_containers/glass/bottle/revival),
 	)
 
-// get_material_catalog：锻造 / 制作材料目录。需求"在兑换列表中加入材料兑换"。
-//   这些都是引擎里矿工 / 自然资源系产出的基础材料，玩家可拿去打造装备 / 制作物品。
-// 定价原则（本次价值优化）：材料是"中间原料"，单价必须显著低于用它打成的成品装备
-//   （例如成品锁子甲 200、板甲 320），否则"买原料比买成品还贵"就不合理。故整条材料线
-//   统一压到 150 以内，按"普通自然物 < 贱金属 < 贵金属 / 宝石"由廉到贵平滑排列，
-//   且任何一种金属锭都低于用它锻成的同级武器 / 护甲。
+
 /datum/component/rpg_system/proc/get_material_catalog()
 	return list(
 		"灰烬（4积分）"     = list(4, /obj/item/ash),                     // 炼金 / 制作的廉价材料
@@ -628,40 +728,13 @@
 		"钻石（150积分）"   = list(150, /obj/item/roguegem/diamond),      // 最珍贵的宝石材料
 	)
 
-// get_magic_catalog：魔法物品目录。需求"加入魔法物品的兑换"。
-//   魔法稀有珍贵，定价显著高于普通商品；其中既有引擎自带的魔法道具，也有本模块自定义的魔法物品。
+
 /datum/component/rpg_system/proc/get_magic_catalog()
 	return list(
 		"见习传送卷轴（90积分）" = list(90, /obj/item/teleportation_scroll/apprentice),               // 入门级一次性魔法传送
 		"圣徽（120积分）"       = list(120, /obj/item/clothing/neck/roguetown/psicross),              // 神圣符号，可引导秘法
 		"传送卷轴（150积分）"   = list(150, /obj/item/teleportation_scroll),                          // 一次性魔法传送
 		"魔法戒指（200积分）"   = list(200, /obj/item/clothing/ring/active),                          // 可激活的魔法戒指
-		"随机魔法书（400积分）" = list(400, /obj/item/book/granter/spell/random),                    // 研读后习得一个随机法术
-		"传讯术卷轴（150积分）" = list(150, /obj/item/book/granter/spell/blackstone/message),        // 研读后习得【传讯术】（远程传话）
-		"羽落术卷轴（200积分）" = list(200, /obj/item/book/granter/spell/blackstone/featherfall),    // 研读后习得【羽落术】（缓降）
-		"纵跃术卷轴（220积分）" = list(220, /obj/item/book/granter/spell/blackstone/leap),           // 研读后习得【纵跃术】（跳跃）
-		"取物术卷轴（250积分）" = list(250, /obj/item/book/granter/spell/blackstone/fetch),          // 研读后习得【取物术】（隔空取物）
-		"排斥术卷轴（260积分）" = list(260, /obj/item/book/granter/spell/blackstone/repel),          // 研读后习得【排斥术】（击退）
-		"酸液飞溅卷轴（280积分）" = list(280, /obj/item/book/granter/spell/blackstone/acidsplash),   // 研读后习得【酸液飞溅】
-		"坚毅卷轴（290积分）"   = list(290, /obj/item/book/granter/spell/blackstone/fortitude),      // 研读后习得【坚毅】（强韧增益）
-		"火球术卷轴（300积分）" = list(300, /obj/item/book/granter/spell/blackstone/fireball),       // 研读后习得【火球术】
-		"冰霜箭卷轴（320积分）" = list(320, /obj/item/book/granter/spell/blackstone/frostbolt),      // 研读后习得【冰霜箭】
-		"闪电术卷轴（320积分）" = list(320, /obj/item/book/granter/spell/blackstone/lightning),      // 研读后习得【闪电术】
-		"吐焰火球卷轴（340积分）" = list(340, /obj/item/book/granter/spell/blackstone/spitfire),     // 研读后习得【吐焰火球】
-		"隐身术卷轴（350积分）" = list(350, /obj/item/book/granter/spell/blackstone/invisibility),   // 研读后习得【隐身术】
-		"力场墙卷轴（360积分）" = list(360, /obj/item/book/granter/spell/blackstone/forcewall_weak), // 研读后习得【力场墙】（屏障）
-		"寒骨卷轴（380积分）"   = list(380, /obj/item/book/granter/spell/blackstone/bonechill),      // 研读后习得【寒骨】（冰霜）
-		"疾病射线卷轴（400积分）" = list(400, /obj/item/book/granter/spell/blackstone/sicknessray),  // 研读后习得【疾病射线】
-		"强效火球术卷轴（500积分）" = list(500, /obj/item/book/granter/spell/blackstone/greaterfireball), // 研读后习得【强效火球术】
-		// —— 法术卷轴（研读后习得对应法术，作用于"人"）——
-		"小开锁卷轴（180积分）" = list(180, /obj/item/book/granter/spell/blackstone/lesserknock),     // 研读后习得【小开锁】（开锁）
-		"指引卷轴（210积分）"   = list(210, /obj/item/book/granter/spell/blackstone/guidance),        // 研读后习得【指引】（增益）
-		"缠绕卷轴（240积分）"   = list(240, /obj/item/book/granter/spell/blackstone/ensnare),         // 研读后习得【缠绕】（束缚）
-		"易容卷轴（300积分）"   = list(300, /obj/item/book/granter/spell/blackstone/mirror_transform), // 研读后习得【镜像易容】（变换外貌）
-		"巨化卷轴（320积分）"   = list(320, /obj/item/book/granter/spell/blackstone/enlarge),         // 研读后习得【巨化】（体型增大）
-		"寻找魔宠卷轴（380积分）" = list(380, /obj/item/book/granter/spell/blackstone/familiar),       // 研读后习得【寻找魔宠】（召唤魔宠，可重复使用）
-		"奥术顿悟卷轴（1600积分）" = list(1600, /obj/item/book/granter/spell_points),                    // 研读后获得 3 点法术点（需奥术新手及以上）
-		"虚空奥术顿悟卷轴（3200积分）" = list(3200, /obj/item/book/granter/spell_points/voiddragon),     // 研读后获得 6 点法术点（需奥术新手及以上）
 		// —— 附魔卷轴（对"物品"施加特殊附魔：手持卷轴点击目标物品即可附魔，不是教人法术）——
 		//   T1 基础附魔
 		"附魔·伐木（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木
@@ -697,13 +770,7 @@
 		"月光大剑（600积分）"   = list(600, /obj/item/rogueweapon/greatsword/moonlight_greatsword),   // 本模块自定义：高级魔法巨剑
 	)
 
-// get_delicacy_catalog：美食（珍馐 / 佳酿）目录。需求"加入昂贵的美食与饮品"。
-//   与普通"消耗品"分开成独立页签：消耗品偏功能（药水 / 弹药 / 干粮），美食偏享受 / 奢侈，
-//   定价显著高于同等填饱肚子的干粮——卖的是"风味与排场"。
-// 重要约束（按需求）：本目录只收录"昂贵的成品 / 熟食"，绝不收录生肉等"未加工原料"。
-//   因此这里只放：熟派 / 熟酿蛋等明确的熟食、奶酪 / 蜂蜜等成品、以及各类佳酿；
-//   生牛排 / 生禽肉 / 生兔肉等未烹饪肉类属于"原料"，已剔除（玩家若想要生肉应去别处加工，
-//   不在"珍馐"之列）。全部为引擎已有的成品食物 / 佳酿。
+
 /datum/component/rpg_system/proc/get_delicacy_catalog()
 	return list(
 		"饼干（35积分）"     = list(35, /obj/item/reagent_containers/food/snacks/rogue/biscuit),        // 饼干，烤好的成品点心（cookie 图标缺失，改用图标确实存在的 biscuit）
@@ -760,9 +827,7 @@
 		"蛇酒（150积分）"       = list(150, /obj/item/reagent_containers/glass/bottle/rogue/beer/shejiu),
 	)
 
-// get_artifact_catalog：神器（与神祇相关的圣物）目录。需求"加入与神有关的神器"。
-//   收录主神们的圣徽护符——每件都是某位神祇的信物 / 圣物，属"与神相关"的器物；
-//   另含受祝的银制圣物作为高阶神器。全部为引擎已有的成品物件。
+
 /datum/component/rpg_system/proc/get_artifact_catalog()
 	return list(
 		"阿斯特拉塔护符（150积分）" = list(150, /obj/item/clothing/neck/roguetown/psicross/astrata),  // 太阳女神 阿斯特拉塔 的圣徽
@@ -777,11 +842,22 @@
 		"希利克斯护符（150积分）"   = list(150, /obj/item/clothing/neck/roguetown/psicross/xylix),    // 戏谑之神 希利克斯 的圣徽
 		"圣印护符（220积分）"       = list(220, /obj/item/clothing/neck/roguetown/psicross/undivided), // 圣座信物，地位与恩典的象征
 		"受祝银制圣徽（350积分）"   = list(350, /obj/item/clothing/neck/roguetown/psicross/silver/astrata), // 受祝的银制 阿斯特拉塔 圣物（高阶神器）
+		// 与激进派教士的神明神器表保持一致，佩斯特拉的三件分别出售。
+		"阿斯特拉塔·星辰（10000积分）" = list(10000, /obj/item/artifact/astrata_star),
+		"诺克·命匣（10000积分）" = list(10000, /obj/item/artefact/noc_phylactery),
+		"登多尔·无尽之管（10000积分）" = list(10000, /obj/item/artefact/dendor_hose),
+		"阿比索尔·深渊钓竿（10000积分）" = list(10000, /obj/item/fishingrod/abyssoid),
+		"拉沃克斯·透镜（10000积分）" = list(10000, /obj/item/artifact/ravox_lens),
+		"内克拉·香炉（10000积分）" = list(10000, /obj/item/artefact/necra_censer),
+		"赛利克斯·手套（10000积分）" = list(10000, /obj/item/clothing/gloves/xylix),
+		"佩斯特拉·手术工具（10000积分）" = list(10000, /obj/item/rogueweapon/surgery/multitool),
+		"佩斯特拉·缝合针（10000积分）" = list(10000, /obj/item/needle/pestra),
+		"佩斯特拉·圣蛭（10000积分）" = list(10000, /obj/item/natural/worms/leech/cheele),
+		"玛勒姆·神锤（10000积分）" = list(10000, /obj/item/rogueweapon/hammer/artefact/malum),
+		"伊欧拉·圣心（10000积分）" = list(10000, /obj/item/artefact/eora_heart),
 	)
 
-// get_catalog_for_tab：把"商品页签 id"映射到对应的商品目录表。
-//   渲染（render_item_table）与购买结算（do_buy_item）都通过它取目录，保证两侧看到的是同一张表、
-//   同一套顺序——这样 HTML 里按"行号"传参就能稳定对应到正确商品（详见 do_buy_item 的按序号取值）。
+
 /datum/component/rpg_system/proc/get_catalog_for_tab(tab)
 	switch(tab)
 		if("weapon")
@@ -801,51 +877,14 @@
 	// 未知页签：返回空表，调用方据此显示"暂无商品"，绝不空引用。
 	return list()
 
-// render_item_table：把某个商品页签渲染成 HTML 表格（商品名 / 价格 / 购买）。
-//   每行的"购买"按当前积分判定：买得起 → 可点的 <a> 链接（点击发 ?buyitem=<行号>&itemtab=<页签>）；
-//   买不起 → 灰字"积分不足"。一屏列全，无需逐个点开，正是参考 learnmiracle 表格式界面的核心收益。
-/datum/component/rpg_system/proc/render_item_table(mob/living/carbon/human/user, tab)
-	var/list/catalog = get_catalog_for_tab(tab)
-	// 空目录兜底：理论上不会，给个友好提示而非空白表格。
-	if(!LAZYLEN(catalog))
-		return "<i>该分类暂无可兑换的商品。</i>"
-	var/list/rows = list()
-	rows += "<table width='100%' cellspacing='2' cellpadding='3'>"
-	rows += "<tr><th align='left'>商品</th><th width='90'>价格</th><th width='90'>操作</th></tr>"
-	// 用"行号"作为购买参数：从 1 开始，与目录的迭代顺序严格一致（BYOND 关联列表保持插入序）。
-	//   这样 href 里只需传一个数字，避免把含括号 / 中文的商品名塞进 URL 带来的编码问题。
-	var/idx = 0
-	for(var/catalog_key in catalog)
-		idx++
-		var/list/e = catalog[catalog_key]
-		// 防御：配置异常的条目跳过，不进表（绝不渲染坏数据）。
-		if(!islist(e) || e.len < 2)
-			continue
-		var/entry_cost = e[1]
-		rows += "<tr>"
-		rows += "<td>[catalog_key]</td>"                                              // 商品名（已含中文，浏览器直接显示）
-		rows += "<td align='center'>[entry_cost]</td>"                               // 价格
-		rows += "<td align='center'>"
-		if(points >= entry_cost)
-			// 买得起：可点购买链接。itemtab 一并带上，Topic 据此确认是在哪张目录里按行号取值。
-			rows += "<a href=\"?src=[REF(src)];buyitem=[idx];itemtab=[tab]\">购买</a>"
-		else
-			// 买不起：灰字标注，按钮不可点（不发链接）。
-			rows += "<span style='color:#7f8c8d'>积分不足</span>"
-		rows += "</td></tr>"
-	rows += "</table>"
-	return jointext(rows, "")
 
-// do_buy_item：实际购买结算（由 Topic 在玩家点击"购买"时调用）。
-//   tab + index 唯一定位一件商品：取该页签目录的第 index 行，校验积分与类型路径后扣费、生成物品。
-//   这是从旧 purchase_item 抽出的"单次成交"核心，去掉了 input 循环——交互改由 HTML 面板驱动。
 /datum/component/rpg_system/proc/do_buy_item(mob/living/carbon/human/user, tab, index)
 	// 防御：宿主状态校验（点击时玩家可能已死亡 / 离线）。
-	if(!ishuman(parent) || user != parent || user.stat == DEAD)
+	if(!can_use_system(user))
 		return
 	var/list/catalog = get_catalog_for_tab(tab)
-	// 行号健壮性校验：必须落在 [1, 目录长度] 内，越界一律忽略（防伪造 href）。
-	if(!LAZYLEN(catalog) || index < 1 || index > catalog.len)
+	// 行号健壮性校验：必须落在 [1, 目录长度] 内，越界一律忽略（防伪造参数）。
+	if(!LAZYLEN(catalog) || !isnum(index) || index != round(index) || index < 1 || index > catalog.len)
 		return
 	// 按插入序取出第 index 个键，再取其 (价格, 类型路径)。
 	var/catalog_key = catalog[index]   // BYOND 关联列表按下标取到的是"键"
@@ -855,7 +894,7 @@
 		return
 	var/cost = entry[1]      // 该商品的积分价格
 	var/item_path = entry[2] // 该商品的物品类型路径
-	// 积分校验：不足则明确告知差额，不扣分、不发货（HTML 里本就不该出现可点链接，这里再兜底一次）。
+	// 积分校验：不足则明确告知差额，不扣分、不发货（界面禁用按钮之外，服务端仍重新校验）。
 	if(points < cost)
 		to_chat(user, span_warning("【系统提示】积分不足。需要 [cost]，你只有 [points]。"))
 		return
@@ -863,43 +902,37 @@
 	if(!ispath(item_path, /obj/item))
 		to_chat(user, span_warning("【系统提示】该商品配置异常（无效物品），兑换失败。"))
 		return
+	var/turf/delivery_turf = get_turf(user)
+	if(!delivery_turf)
+		to_chat(user, span_warning("【系统提示】当前位置无法接收物品，未扣除积分。"))
+		return
 	// 先扣费，再发货。先扣费可避免"发货成功但扣费抛错"导致的白嫖；即便物品最终落在脚下也算发货成功。
 	points -= cost
 	// 在玩家脚下的地块生成物品，随后尝试塞进手里：put_in_hands 失败（双手已满）时，物品仍留在
 	//   脚下地块（del_on_fail 默认 FALSE），不会凭空消失——玩家捡起即可，体验自洽。
-	var/obj/item/bought = new item_path(get_turf(user))
+	var/obj/item/bought = new item_path(delivery_turf)
+	if(QDELETED(bought))
+		points += cost
+		to_chat(user, span_warning("【系统提示】物品生成失败，积分已退还。"))
+		return
 	user.put_in_hands(bought)
 	// 反馈本次兑换结果与剩余积分。
 	to_chat(user, span_green("【系统提示】兑换成功：[bought.name]。（剩余积分：[points]）"))
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE) // 复用引擎已有音效，给一个轻量的"到账"反馈，无需新增音频资源。
 
-// ----------------------------------------------------------------------------
-// 递增单价计算：把"花费随当前等级递增"的规则集中在两个 proc 里，菜单展示与实际扣费都调用
-//   它们，确保"显示的价"与"扣的价"永远一致（单一事实来源），避免两处各算一遍导致对不上。
-// ----------------------------------------------------------------------------
-// stat_upgrade_cost：把属性从 current_value 升到 current_value+1 所需的积分。
-//   线性递增：当前值越高越贵（需求："属性越高，强化所需积分越多"）。
+
 /datum/component/rpg_system/proc/stat_upgrade_cost(current_value)
 	// 防御：把入参夹到合法属性区间 [1,20]，避免异常值算出负价 / 离谱价。
 	current_value = clamp(current_value, 1, 20)
 	return RPG_SYSTEM_STAT_COST_BASE * current_value
 
-// skill_upgrade_cost：把技能从 current_level 升到 current_level+1 所需的积分。
-//   按"目标等级"递增：目标越高越贵（需求："技能越高，强化所需积分越多"）。
+
 /datum/component/rpg_system/proc/skill_upgrade_cost(current_level)
 	// 防御：把入参夹到合法等级区间 [0,6]，避免异常值算出负价 / 离谱价。
 	current_level = clamp(current_level, 0, SKILL_LEVEL_LEGENDARY)
 	return RPG_SYSTEM_SKILL_COST_BASE * (current_level + 1)
 
-// ----------------------------------------------------------------------------
-// 强化属性：HTML 表格渲染 + 单次结算。单次花费随该属性当前值递增（封顶 20）。
-// 为什么用 change_stat：它是引擎调整属性的统一入口，内部自带 1~20 越界保护（超过 20 的部分
-//   会被吸收进 BUF 而非真正生效）。为避免"花了钱却卡在 20 白扣分"，扣费前先用 get_stat 预检。
-// ----------------------------------------------------------------------------
-// get_attribute_defs：可强化属性的有序表："玩家可见名" => 属性键（STATKEY_*）。
-//   渲染与结算共用同一张表，按"行号"对应，保证显示与扣费指向同一项。
-//   注意：本引擎里 STATKEY_* 与 STAT_* 取值相同（同为 "strength" 等字符串），同一个键既可传
-//   change_stat（写入）也可传 get_stat（读取当前值），无需额外映射。
+
 /datum/component/rpg_system/proc/get_attribute_defs()
 	return list(
 		"力量 STR" = STATKEY_STR,
@@ -911,47 +944,14 @@
 		"幸运 LCK" = STATKEY_LCK,
 	)
 
-// render_stat_table：把"强化属性"页渲染成 HTML 表格（属性 / 当前值 / 升级花费 / 操作）。
-//   每行实时显示当前值与"下一点"的递增单价；已满级显示绿字"已满级"，买不起显示灰字"积分不足"，
-//   买得起则给可点的"+1"链接（点击发 ?enhstat=<行号>）。所有属性一屏可见、单击即升。
-/datum/component/rpg_system/proc/render_stat_table(mob/living/carbon/human/user)
-	var/list/defs = get_attribute_defs()
-	var/list/rows = list()
-	rows += "<div style='color:#95a5a6;margin-bottom:6px;'>属性越高，强化所需积分越多。</div>"
-	rows += "<table width='100%' cellspacing='2' cellpadding='3'>"
-	rows += "<tr><th align='left'>属性</th><th width='70'>当前</th><th width='110'>升级花费</th><th width='70'>操作</th></tr>"
-	var/idx = 0
-	for(var/display in defs)
-		idx++
-		var/key = defs[display]
-		var/cur = user.get_stat(key) // 当前属性值
-		rows += "<tr>"
-		rows += "<td>[display]</td>"
-		rows += "<td align='center'>[cur]</td>"
-		if(cur >= 20)
-			// 已满级：无单价、无操作。
-			rows += "<td align='center'>—</td><td align='center'><span style='color:#2ecc71'>已满级</span></td>"
-		else
-			var/this_cost = stat_upgrade_cost(cur)
-			rows += "<td align='center'>[this_cost]</td>"
-			rows += "<td align='center'>"
-			if(points >= this_cost)
-				rows += "<a href=\"?src=[REF(src)];enhstat=[idx]\">+1</a>"        // 买得起：可点升级
-			else
-				rows += "<span style='color:#7f8c8d'>积分不足</span>"             // 买不起：灰字
-			rows += "</td>"
-		rows += "</tr>"
-	rows += "</table>"
-	return jointext(rows, "")
 
-// do_enhance_attribute：实际的属性 +1 结算（由 Topic 在玩家点击"+1"时调用）。index = 行号。
 /datum/component/rpg_system/proc/do_enhance_attribute(mob/living/carbon/human/user, index)
 	// 防御：宿主状态校验。
-	if(!ishuman(parent) || user != parent || user.stat == DEAD)
+	if(!can_use_system(user))
 		return
 	var/list/defs = get_attribute_defs()
-	// 行号健壮性校验：越界忽略（防伪造 href）。
-	if(index < 1 || index > defs.len)
+	// 行号健壮性校验：越界忽略（防伪造参数）。
+	if(!isnum(index) || index != round(index) || index < 1 || index > defs.len)
 		return
 	var/display = defs[index]   // 第 index 个键即"展示名"
 	var/stat_key = defs[display] // 其对应的属性键
@@ -962,7 +962,7 @@
 		to_chat(user, span_warning("【系统提示】[display] 已达上限（20），无法继续强化。"))
 		return
 	var/cost = stat_upgrade_cost(cur) // 本次升级的实际花费（随当前值递增）
-	// 积分校验：不足则提示，不扣分（HTML 里本就不该出现可点链接，这里再兜底一次）。
+	// 积分校验：不足则提示，不扣分（界面禁用按钮之外，服务端仍重新校验）。
 	if(points < cost)
 		to_chat(user, span_warning("【系统提示】积分不足。需要 [cost]，你只有 [points]。"))
 		return
@@ -973,15 +973,7 @@
 	to_chat(user, span_green("【系统提示】[display] +1（当前 [user.get_stat(stat_key)]），花费 [cost] 积分。（剩余积分：[points]）"))
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
-// ----------------------------------------------------------------------------
-// 强化技能：HTML 表格渲染 + 单次结算。单次花费随该技能当前等级递增（封顶传奇 / 6）。
-// 为什么用 adjust_skillrank：它是引擎"按等级提升技能"的统一入口，内部按经验阈值把等级封顶到
-//   传奇。为避免"已满级仍扣分"，扣费前先用 get_skill_level 预检当前等级。
-// ----------------------------------------------------------------------------
-// get_skill_defs：可强化技能的有序表："玩家可见名" => 技能类型路径。现已涵盖引擎全部可练技能：
-//   战斗（近战 / 远程）、杂项（运动 / 生活 / 社交）、劳作（采集 / 生产）、工艺（锻造 / 制作）、
-//   以及四系魔法。渲染与结算共用同一张表，按"行号"对应；将来要开放更多技能，往这张表追加即可。
-//   所有技能升级都走统一的 adjust_skillrank，故新增一行即可，无需改动渲染 / 结算逻辑。
+
 /datum/component/rpg_system/proc/get_skill_defs()
 	return list(
 		// —— 战斗：近战 ——
@@ -1037,53 +1029,17 @@
 		"德鲁伊魔法" = /datum/skill/magic/druidic,
 	)
 
-// render_skill_table：把"强化技能"页渲染成 HTML 表格（技能 / 当前等级 / 升级花费 / 操作）。
-//   行为与 render_stat_table 一致：满级绿字、买不起灰字、买得起给可点的"升级"链接（?enhskill=<行号>）。
-//   依赖 mind（技能数据挂在 mind 的 skill_holder 上）；无 mind 时给出提示而非表格。
-/datum/component/rpg_system/proc/render_skill_table(mob/living/carbon/human/user)
-	// 无 mind 兜底：技能体系尚未就绪，明确告知而非渲染一张操作即失败的表。
-	if(!user.mind)
-		return "<i>你的意识尚不稳定，暂时无法强化技能。</i>"
-	var/list/defs = get_skill_defs()
-	var/list/rows = list()
-	rows += "<div style='color:#95a5a6;margin-bottom:6px;'>技能越高，强化所需积分越多。</div>"
-	rows += "<table width='100%' cellspacing='2' cellpadding='3'>"
-	rows += "<tr><th align='left'>技能</th><th width='70'>当前</th><th width='110'>升级花费</th><th width='70'>操作</th></tr>"
-	var/idx = 0
-	for(var/display in defs)
-		idx++
-		var/path = defs[display]
-		var/lvl = user.get_skill_level(path) // 当前技能等级
-		rows += "<tr>"
-		rows += "<td>[display]</td>"
-		rows += "<td align='center'>[lvl] 级</td>"
-		if(lvl >= SKILL_LEVEL_LEGENDARY)
-			// 已达传奇：无单价、无操作。
-			rows += "<td align='center'>—</td><td align='center'><span style='color:#2ecc71'>已满级</span></td>"
-		else
-			var/this_cost = skill_upgrade_cost(lvl)
-			rows += "<td align='center'>[this_cost]</td>"
-			rows += "<td align='center'>"
-			if(points >= this_cost)
-				rows += "<a href=\"?src=[REF(src)];enhskill=[idx]\">升级</a>"      // 买得起：可点升级
-			else
-				rows += "<span style='color:#7f8c8d'>积分不足</span>"             // 买不起：灰字
-			rows += "</td>"
-		rows += "</tr>"
-	rows += "</table>"
-	return jointext(rows, "")
 
-// do_enhance_skill：实际的技能 +1 级结算（由 Topic 在玩家点击"升级"时调用）。index = 行号。
 /datum/component/rpg_system/proc/do_enhance_skill(mob/living/carbon/human/user, index)
 	// 防御：宿主状态校验；并且强化技能依赖 mind，无 mind 则中止。
-	if(!ishuman(parent) || user != parent || user.stat == DEAD)
+	if(!can_use_system(user))
 		return
 	if(!user.mind)
 		to_chat(user, span_warning("【系统提示】你的意识尚不稳定，暂时无法强化技能。"))
 		return
 	var/list/defs = get_skill_defs()
-	// 行号健壮性校验：越界忽略（防伪造 href）。
-	if(index < 1 || index > defs.len)
+	// 行号健壮性校验：越界忽略（防伪造参数）。
+	if(!isnum(index) || index != round(index) || index < 1 || index > defs.len)
 		return
 	var/display = defs[index]   // 第 index 个键即"展示名"
 	var/skill_path = defs[display] // 其对应的技能类型路径
@@ -1109,250 +1065,220 @@
 	to_chat(user, span_green("【系统提示】[display] 已提升至等级 [user.get_skill_level(skill_path)]，花费 [cost] 积分。（剩余积分：[points]）"))
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
-// ----------------------------------------------------------------------------
-// 特性兑换：用积分永久获得一项"正向增益特性 / 天赋"，单价统一 RPG_SYSTEM_TRAIT_COST（2000）。
-// 需求："加入特性兑换；特性取自 code/__DEFINES/traits.dm；只收录正向增益特性；价格统一 2000。"
-// 实现要点（为什么这样写）：
-//   - 特性不是 /obj/item，无法走商品目录的"生成实体"流程，故单列目录 + 渲染 + 结算三件套。
-//   - 这些 TRAIT_* 宏定义在 modular_z121 之外的 code/__DEFINES/traits.dm；本文件只是"引用"这些
-//     编译期常量（宏展开为可读中文串），不修改其源文件，符合"只在 modular_z121 内新增"的约束。
-//   - 这些特性大多已登记在 GLOB.roguetraits（玩家特性自检面板），购买后玩家即可在面板看到说明，
-//     无需本系统额外登记。
-//   - 严格只挑"正向增益"：战斗 / 防护 / 耐力 / 免疫 / 实用 / 求生类；不含负面、诅咒、职业 / 种族受限、
-//     或带明显副作用的特性。
-// ----------------------------------------------------------------------------
-// get_trait_catalog：可兑换特性的有序表（纯特性串列表；串本身即玩家可见名）。
-//   渲染与结算共用同一张表，按"行号"对应。将来要增减开放特性，往这张表加 / 删一行即可。
+
+// 每条记录显式指定价格档位；不自动开放职业身份、负面状态或整套美德。
 /datum/component/rpg_system/proc/get_trait_catalog()
-	return list(
-		TRAIT_MEDIUMARMOR,              // 锁甲训练：可无惩罚穿戴中型护甲
-		TRAIT_HEAVYARMOR,               // 板甲训练：可无惩罚穿戴重型护甲
-		TRAIT_DODGEEXPERT,              // 闪避专家：闪避能力强化
-		TRAIT_MAGEARMOR,                // 魔法障壁：法师护甲
-		TRAIT_CRITICAL_RESISTANCE,      // 重创抗性：更不易被打出重伤
-		TRAIT_PSYDONIAN_GRIT,           // 普赛顿坚毅：疼痛耐受
-		TRAIT_STRONGBITE,               // 强力啃咬：徒手撕咬更狠
-		TRAIT_STRONGKICK,               // 强力飞踢：飞踢更强
-		TRAIT_CIVILIZEDBARBARIAN,       // 拳斗专家：徒手格斗强化
-		TRAIT_TAVERN_FIGHTER,           // 酒馆斗士：近身肉搏强化
-		TRAIT_SHARPER_BLADES,           // 利刃常锋：武器更不易钝
-		TRAIT_NOFALLDAMAGE2,            // 坠落免疫：免疫坠落伤害
-		TRAIT_SHOCKIMMUNE,              // 抗电：免疫电击
-		TRAIT_EXTREME_TEMPERATURE_IMMUNE, // 极端温度免疫：免疫中暑 / 冻伤
-		TRAIT_WATERBREATHING,           // 水下呼吸：可在水下呼吸
-		TRAIT_LEECHIMMUNE,              // 拒蛭：水蛭不再叮附
-		TRAIT_DRUNK_HEALING,            // 酒疗：体内有足量酒精时缓慢自愈
-		TRAIT_BETTER_SLEEP,             // 优眠：睡眠回复精力更多
-		TRAIT_ZJUMP,                    // 高跃：可向上跳跃
-		TRAIT_LEAPER,                   // 跃袭者：扑跃突进
-		TRAIT_JACKOFALLTRADES,          // 万事通：技能升级消耗更低
-		TRAIT_SEEPRICES,                // 熟练鉴价师：可看出物品价值
-		TRAIT_PERFECT_TRACKER,          // 猎踪大师：必定发现并完美解析踪迹
-		TRAIT_INTELLECTUAL,             // 学识者：博学
-		TRAIT_NOSTINK,                  // 死鼻：不受恶臭影响
-		TRAIT_GOODLOVER,                // 传奇情人：情爱方面的卓越天赋
-		// —— 战斗 / 防护（续）——
-		TRAIT_NOPAIN,                   // 无痛：感受不到疼痛
-		TRAIT_NOPAINSTUN,               // 坚忍：疼痛不再打断动作
-		TRAIT_HARDDISMEMBER,            // 难肢解：肢体更不易被卸下
-		TRAIT_DUALWIELDER,              // 双持者：可双手各持一把武器
-		TRAIT_COMBAT_AWARE,             // 战场警觉：临战感知更敏锐
-		TRAIT_HOLYWARRIOR,              // 圣战士：神圣战斗强化
-		TRAIT_ASSASSIN,                 // 刺客：暗杀技法
-		TRAIT_GRABIMMUNE,               // 势不可挡：免疫被擒抱
-		TRAIT_NATURALARMOR,             // 坚韧皮肤：天生护甲
-		TRAIT_HARDSHELL,                // 硬壳：额外护甲
-		TRAIT_BREADY,                   // 临战就绪：随时进入战斗状态
-		TRAIT_DECEIVING_MEEKNESS,       // 伪弱藏锋：示弱诱敌
-		TRAIT_NUTCRACKER,               // 碎卵者：攻击要害更狠
-		TRAIT_BASHDOORS,                // 破门者：徒手破门
-		TRAIT_SCALEARMOR,               // 风蚀鳞甲：鳞甲护体（法师护甲变体）
-		TRAIT_HELLSPAWN,                // 地狱后裔：15% 几率免于被点燃
-		TRAIT_ADRENALINE_RUSH,          // 肾上腺激涌：危急时迸发
-		TRAIT_REGROW_LIMBS,            // 肢体再生：消耗营养再生断肢
-		TRAIT_VENOMOUS,                 // 毒腺：啃咬带毒
-		TRAIT_COUNTERCOUNTERSPELL,      // 反反制咒：抵御反制法术
-		// —— 免疫 / 求生 ——
-		TRAIT_NOBREATH,                 // 无息：无需呼吸
-		TRAIT_TOXIMMUNE,                // 毒素免疫：免疫毒素
-		TRAIT_NOHUNGER,                 // 无饥：不会饥饿
-		TRAIT_ZOMBIE_IMMUNE,            // 尸鬼疫免疫：免疫亡者感染
-		TRAIT_UNLYCKERABLE,             // 莱克免疫：免疫莱克化
-		TRAIT_KNEESTINGER_IMMUNITY,     // 登多尔的赐福：免疫膝刺等
-		TRAIT_ROT_EATER,                // 佩斯特拉的赐福：可食用腐败食物
-		TRAIT_ORGAN_EATER,              // 格拉加尔的赐福：可食用器官
-		TRAIT_CRACKHEAD,                // 巴奥莎的赐福：永不过量
-		TRAIT_SEA_DRINKER,              // 深海之民：可饮海水
-		TRAIT_NASTY_EATER,              // 异种消化：可食腐败 / 毒物 / 浊水
-		TRAIT_WILD_EATER,               // 兽性消化：可食生 / 腐食与浊水
-		// —— 感知 / 视觉 / 潜行 ——
-		TRAIT_DARKVISION,               // 暗视：黑暗中视物
-		TRAIT_ZIZOSIGHT,                // 齐佐的赐福：暗处视物更清
-		TRAIT_NOCSIGHT,                 // 诺克的赐福：暗处视物更清
-		TRAIT_KEENEARS,                 // 灵敏耳朵：听觉敏锐
-		TRAIT_EXTEROCEPTION,            // 外感：可见他人饥渴
-		TRAIT_SOUL_EXAMINE,             // 内克拉的赐福：可查验尸体灵魂是否离去
-		TRAIT_HERETIC_SEER,             // 异端识者：识别异端
-		TRAIT_JUSTICARSIGHT,            // 拉沃克斯之赐：查看罪犯的悬赏 / 罪行
-		TRAIT_MATTHIOS_EYES,            // 马西奥斯之眼：看出他人最贵重的物品
-		TRAIT_EMPATH,                   // 共情者：洞悉他人情绪
-		TRAIT_LIGHT_STEP,               // 轻步：脚步无声
-		TRAIT_SLEUTH,                   // 追缉者：追查线索
-		TRAIT_WOODWALKER,               // 林行者：林地穿行自如
-		TRAIT_WEBWALK,                  // 网行者：蛛网间自由穿行
-		// —— 移动 ——
-		TRAIT_LONGSTRIDER,              // 长足者：移动更快
-		TRAIT_EQUESTRIAN,               // 骑术精湛：骑乘强化
-		// —— 工艺 / 职业技艺 ——
-		TRAIT_MEDICINE_EXPERT,          // 医道专家：精通医术
-		TRAIT_ALCHEMY_EXPERT,           // 炼金专家：精通炼金
-		TRAIT_SMITHING_EXPERT,          // 锻冶专家：精通锻造 / 冶炼 / 工程 / 采矿 / 制陶
-		TRAIT_SEWING_EXPERT,            // 纺缝专家：精通缝纫 / 制革 / 屠宰
-		TRAIT_SURVIVAL_EXPERT,          // 生存专家：精通屠宰 / 烹饪 / 捕鱼 / 制革
-		TRAIT_HOMESTEAD_EXPERT,         // 拓荒专家：精通全部劳作技艺
-		TRAIT_SELF_SUSTENANCE,          // 自给自足：解锁全部受限工艺技能
-		TRAIT_FUSILIER,                 // 火枪手：火器技艺
-		TRAIT_MASTER_CARPENTER,         // 木作大师：木工精通
-		TRAIT_MASTER_MASON,             // 石作大师：石工精通
-		TRAIT_TRAINED_SMITH,            // 受训铁匠：锻造加成
-		TRAIT_KAZENGUNITE_SMITH,        // 风郡锻艺：锻造加成
-		TRAIT_DWARF_REPAIR,             // 矮人工艺：修理加成
-		TRAIT_SQUIRE_REPAIR,            // 侍从技艺：修理加成
-		TRAIT_FORGEBLESSED,             // 玛勒姆的赐福：锻造耗力更少
-		TRAIT_DYES,                     // 染艺师：染色技艺
-		TRAIT_GOODWRITER,               // 妙笔文豪：书写技艺
-		TRAIT_SEEDKNOW,                 // 识种者：辨识种子
-		TRAIT_CAUTIOUS_FISHER,          // 谨慎渔夫：钓鱼加成
-		TRAIT_GRAVEROBBER,              // 老练盗墓贼：盗墓技艺
-		TRAIT_GOODTRAINER,              // 良师：教导他人更有效
-		TRAIT_OUTDOORSMAN,              // 野外行家：野外生存
-		TRAIT_WILDERNESSGUIDE,          // 荒野向导：荒野行进
-		TRAIT_WOODSMAN,                 // 老练林人：守护林地时本领更敏锐
-		TRAIT_GUARDSMAN,                // 警觉卫兵：守护城镇时本领更敏锐
-		TRAIT_RITUALIST,                // 仪式师：可用仪式粉笔
-		TRAIT_CICERONE,                 // 酒饮行家：精于品酒
-		TRAIT_HUMEN_INGENUITY,          // 人类巧思：睡眠升级更省
-		TRAIT_BLACKBAGGER,              // 缉拿技法：可用绞索 / 黑头套擒拿
-		TRAIT_ENGINEERING_GOGGLES,      // 工程护目镜：获得护目镜视效
-		// —— 魔法 ——
-		TRAIT_ARCYNE_T1,                // 奥术训练（新手）
-		TRAIT_ARCYNE_T2,                // 奥术训练（学徒）
-		TRAIT_ARCYNE_T3,                // 奥术训练（专家）
-		TRAIT_ARCYNE_T4,                // 奥术训练（大师）
-		TRAIT_MIRROR_MAGIC,             // 镜像魔法
-		TRAIT_RESONANCE,                // 共鸣施法者：为周围施法者提供增益
-		TRAIT_XYLIX_DEVOTEE,            // 赛利克斯命织者：命运 / 幸运加成
-		// —— 其它正向 ——
-		TRAIT_FASTSLEEP,                // 速眠者：入睡更快
-		TRAIT_STEELHEARTED,             // 铁心：血腥场面不影响心情
-		TRAIT_BEAUTIFUL,                // 美貌：容貌出众
-		TRAIT_APRICITY,                 // 暖阳恩沐：日间耐力恢复更快
-		TRAIT_ABYSSOR_SWIM,             // 阿比索尔的赐福：游泳耗力更少
-		TRAIT_XYLIX,                    // 赛利克斯的赐福：盗贼黑话
-		TRAIT_TOLERANT,                 // 宽容：不因异族而生恶感
-		TRAIT_SILVER_BLESSED,           // 银圣眷者：受银之祝福
-	)
+	var/static/list/catalog
+	if(!catalog)
+		catalog = list(
+			list("trait" = TRAIT_MEDIUMARMOR, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_HEAVYARMOR, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_DODGEEXPERT, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_MAGEARMOR, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_CRITICAL_RESISTANCE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_PSYDONIAN_GRIT, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_STRONGBITE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_STRONGKICK, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_CIVILIZEDBARBARIAN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_TAVERN_FIGHTER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_SHARPER_BLADES, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NOFALLDAMAGE2, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_SHOCKIMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_EXTREME_TEMPERATURE_IMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_WATERBREATHING, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_LEECHIMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_DRUNK_HEALING, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_BETTER_SLEEP, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_ZJUMP, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_LEAPER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_JACKOFALLTRADES, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SEEPRICES, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_PERFECT_TRACKER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_INTELLECTUAL, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_NOSTINK, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_GOODLOVER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_NOPAIN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NOPAINSTUN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_HARDDISMEMBER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_DUALWIELDER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_COMBAT_AWARE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_HOLYWARRIOR, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ASSASSIN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_GRABIMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NATURALARMOR, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_HARDSHELL, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_BREADY, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_DECEIVING_MEEKNESS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NUTCRACKER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_BASHDOORS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_SCALEARMOR, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_HELLSPAWN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ADRENALINE_RUSH, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_REGROW_LIMBS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_VENOMOUS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_COUNTERCOUNTERSPELL, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NOBREATH, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_TOXIMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NOHUNGER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ZOMBIE_IMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_UNLYCKERABLE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_KNEESTINGER_IMMUNITY, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ROT_EATER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ORGAN_EATER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_CRACKHEAD, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_SEA_DRINKER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NASTY_EATER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_WILD_EATER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_DARKVISION, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ZIZOSIGHT, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NOCSIGHT, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_KEENEARS, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_EXTEROCEPTION, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SOUL_EXAMINE, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_HERETIC_SEER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_JUSTICARSIGHT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_MATTHIOS_EYES, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_EMPATH, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_LIGHT_STEP, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_SLEUTH, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_WOODWALKER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_WEBWALK, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_LONGSTRIDER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_EQUESTRIAN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_MEDICINE_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_ALCHEMY_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SMITHING_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SEWING_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SURVIVAL_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_HOMESTEAD_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SELF_SUSTENANCE, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_FUSILIER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_MASTER_CARPENTER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_MASTER_MASON, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_TRAINED_SMITH, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_KAZENGUNITE_SMITH, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_DWARF_REPAIR, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SQUIRE_REPAIR, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_FORGEBLESSED, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_DYES, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_GOODWRITER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SEEDKNOW, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_CAUTIOUS_FISHER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_GRAVEROBBER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_GOODTRAINER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_OUTDOORSMAN, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_WILDERNESSGUIDE, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_WOODSMAN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_GUARDSMAN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_RITUALIST, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_CICERONE, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_HUMEN_INGENUITY, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_BLACKBAGGER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ENGINEERING_GOGGLES, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_ARCYNE_T1, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_ARCYNE_T2, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_ARCYNE_T3, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_ARCYNE_T4, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_MIRROR_MAGIC, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_RESONANCE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_XYLIX_DEVOTEE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_FASTSLEEP, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_STEELHEARTED, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_BEAUTIFUL, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_APRICITY, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ABYSSOR_SWIM, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_XYLIX, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_TOLERANT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SILVER_BLESSED, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_BOMBER_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_RAW_EATER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_UNDERDARK_CHEF, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_DWARVEN_CHEF, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_GOSSIPER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_MARTIAL_PROWESS, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_SELF_AWARE, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_DEATHSIGHT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_LEGENDARY_ALCHEMIST, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_EFFICIENT_WEAVER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_PRETTY, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_JOURNEYS_END, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_BLOOD_RESISTANCE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_ANTISCRYING, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_WATERLOVING, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_CURSE_RESIST, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_THROWINGARM, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_SENTINELOFWITS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_STRENGTH_UNCAPPED, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_UNCAPPED_SPEED, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_IGNORESLOWDOWN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_IGNOREDAMAGESLOWDOWN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_NOFALLDAMAGE1, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_FORTITUDE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_GUIDANCE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_LEYLINE_HASTE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_SPELL_DISPERSION, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_EORAN_CALM, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_EORAN_SERENE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
+			list("trait" = TRAIT_INFINITE_STAMINA, "cost" = RPG_SYSTEM_TRAIT_OVERPOWERED_COST, "tier" = "超模"),
+			list("trait" = TRAIT_INFINITE_ENERGY, "cost" = RPG_SYSTEM_TRAIT_OVERPOWERED_COST, "tier" = "超模"),
+		)
+		// 使用中文显示名覆盖底层英文键，说明以现有特性说明为基础。
+		var/list/names = list(
+			TRAIT_EFFICIENT_WEAVER = "高效织工",
+			TRAIT_FORTITUDE = "坚毅",
+			TRAIT_GUIDANCE = "指引",
+		)
+		var/list/descriptions = list(
+			TRAIT_EFFICIENT_WEAVER = "织布时每份布料只需1份纤维。",
+			TRAIT_WATERLOVING = "冷水降温时，体温不会因此降至正常体温以下。",
+			TRAIT_CURSE_RESIST = "减轻神明诅咒的效果。",
+			TRAIT_INFINITE_STAMINA = "不知疲倦：耐力消耗不再累积，精力也不再因常规消耗而减少。",
+			TRAIT_INFINITE_ENERGY = "无尽精力：精力持续保持充足，但仍会累积耐力消耗。",
+		)
+		for(var/list/entry in catalog)
+			var/trait = entry["trait"]
+			entry["name"] = names[trait] ? names[trait] : trait
+			var/description = GLOB.roguetraits[trait]
+			entry["description"] = descriptions[trait] ? descriptions[trait] : (description ? html_decode(GLOB.html_tags.Replace(description, "")) : "获得此特性，保留其原有生效条件。")
+	return catalog
 
-// render_trait_table：把"特性"页渲染成 HTML 表格（特性名 / 价格 / 操作）。
-//   已拥有的显示绿字"已拥有"（不可重复买）；买不起显示灰字"积分不足"；买得起给可点的"兑换"链接。
-/datum/component/rpg_system/proc/render_trait_table(mob/living/carbon/human/user)
-	var/list/defs = get_trait_catalog()
-	var/list/rows = list()
-	rows += "<div style='color:#95a5a6;margin-bottom:6px;'>兑换后永久获得对应正向特性（统一单价 [RPG_SYSTEM_TRAIT_COST] 积分，每项仅可兑换一次）。</div>"
-	rows += "<table width='100%' cellspacing='2' cellpadding='3'>"
-	rows += "<tr><th align='left'>特性</th><th width='90'>价格</th><th width='90'>操作</th></tr>"
-	var/idx = 0
-	for(var/trait in defs)
-		idx++
-		rows += "<tr>"
-		rows += "<td>[trait]</td>"                                                    // 特性串本身即可读名
-		rows += "<td align='center'>[RPG_SYSTEM_TRAIT_COST]</td>"
-		rows += "<td align='center'>"
-		if(HAS_TRAIT(user, trait))
-			rows += "<span style='color:#2ecc71'>已拥有</span>"                       // 已有：不可重复买
-		else if(points >= RPG_SYSTEM_TRAIT_COST)
-			rows += "<a href=\"?src=[REF(src)];buytrait=[idx]\">兑换</a>"             // 买得起：可点兑换
-		else
-			rows += "<span style='color:#7f8c8d'>积分不足</span>"                     // 买不起：灰字
-		rows += "</td></tr>"
-	rows += "</table>"
-	return jointext(rows, "")
-
-// do_buy_trait：实际的特性兑换结算（由 Topic 在玩家点击"兑换"时调用）。index = 行号。
 /datum/component/rpg_system/proc/do_buy_trait(mob/living/carbon/human/user, index)
-	// 防御：宿主状态校验。
-	if(!ishuman(parent) || user != parent || user.stat == DEAD)
+	if(!can_use_system(user))
 		return
-	var/list/defs = get_trait_catalog()
-	// 行号健壮性校验：越界忽略（防伪造 href）。
-	if(index < 1 || index > defs.len)
+	var/list/catalog = get_trait_catalog()
+	if(!isnum(index) || index != round(index) || index < 1 || index > catalog.len)
 		return
-	var/trait = defs[index]   // 第 index 个特性串
-	// 已拥有则不重复扣费 / 不重复添加（HAS_TRAIT 复核，与渲染口径一致）。
+	var/list/entry = catalog[index]
+	var/trait = entry["trait"]
+	var/display = entry["name"]
+	var/cost = entry["cost"]
 	if(HAS_TRAIT(user, trait))
-		to_chat(user, span_warning("【系统提示】你已拥有【[trait]】，无需重复兑换。"))
+		to_chat(user, span_warning("【系统提示】你已拥有【[display]】，无需重复兑换。"))
 		return
-	// 积分校验：不足则提示，不扣分。
-	if(points < RPG_SYSTEM_TRAIT_COST)
-		to_chat(user, span_warning("【系统提示】积分不足。需要 [RPG_SYSTEM_TRAIT_COST]，你只有 [points]。"))
+	if(points < cost)
+		to_chat(user, span_warning("【系统提示】积分不足。需要 [cost]，你只有 [points]。"))
 		return
-	// 扣费并永久授予特性。来源用本系统专属标签，便于识别 / 将来统一清理，且不与别处来源冲突。
-	points -= RPG_SYSTEM_TRAIT_COST
+	points -= cost
 	ADD_TRAIT(user, trait, RPG_SYSTEM_TRAIT_SOURCE)
-	// 反馈兑换结果与剩余积分。
-	to_chat(user, span_green("【系统提示】兑换成功，永久获得特性【[trait]】，花费 [RPG_SYSTEM_TRAIT_COST] 积分。（剩余积分：[points]）"))
+	// 移动效果有缓存，购买后立即重算，无需再受伤或切换步态。
+	if(trait == TRAIT_UNCAPPED_SPEED)
+		user.update_move_intent_slowdown()
+	if(trait == TRAIT_IGNORESLOWDOWN)
+		user.update_movespeed(FALSE)
+	if(trait == TRAIT_IGNOREDAMAGESLOWDOWN)
+		user.updatehealth()
+	// 无限资源不能将购买前耗尽的状态永久冻结，首次购买时同步恢复资源。
+	if(trait == TRAIT_INFINITE_STAMINA || trait == TRAIT_INFINITE_ENERGY)
+		if(trait == TRAIT_INFINITE_STAMINA)
+			user.stamina = 0
+		user.update_energy()
+		user.energy = user.max_energy
+		user.update_energy_hud()
+		user.update_stamina_hud()
+	to_chat(user, span_green("【系统提示】兑换成功，永久获得特性【[display]】，花费 [cost] 积分。（剩余积分：[points]）"))
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
-// ============================================================================
-// Topic：HTML 系统面板的点击事件总入口。
-// 为什么在组件上实现：面板里的每个链接都是 ?src=[REF(本组件)];key=value，BYOND 会把点击
-//   路由到本组件的 Topic()。这里解析 href_list，完成"切页签 / 购买 / 强化"动作，然后整窗重绘，
-//   使界面（积分、可负担状态、当前值）立即刷新——这正是参考 learnmiracle 的交互闭环。
-// 安全性：所有动作都重新校验"操作者就是本系统持有者本人"，并对行号 / 页签做合法性校验，
-//   即便有人伪造 href 也无法越权或刷物品。
-// ============================================================================
-/datum/component/rpg_system/Topic(href, href_list)
-	. = ..()
-	// 操作者必须是本组件的宿主本人（在线人类）。否则一律忽略，杜绝他人借 REF 操作你的面板。
-	if(!ishuman(parent) || usr != parent)
-		return
-	var/mob/living/carbon/human/user = parent
-	// 死亡 / 离线则不处理（也无窗口可重绘）。
-	if(user.stat == DEAD || !user.client)
-		return
-	// ---- 切换页签 ----
-	if(href_list["tab"])
-		var/new_tab = href_list["tab"]
-		// 仅接受白名单内的页签 id，过滤伪造值。
-		if(new_tab in list("weapon", "equipment", "consumable", "material", "magic", "delicacy", "artifact", "trait", "stat", "skill"))
-			current_tab = new_tab
-	// ---- 购买商品 ----（buyitem = 行号；itemtab = 该行所属页签）
-	else if(href_list["buyitem"])
-		do_buy_item(user, href_list["itemtab"], text2num(href_list["buyitem"]))
-	// ---- 强化属性 ----（enhstat = 行号）
-	else if(href_list["enhstat"])
-		do_enhance_attribute(user, text2num(href_list["enhstat"]))
-	// ---- 强化技能 ----（enhskill = 行号）
-	else if(href_list["enhskill"])
-		do_enhance_skill(user, text2num(href_list["enhskill"]))
-	// ---- 兑换特性 ----（buytrait = 行号）
-	else if(href_list["buytrait"])
-		do_buy_trait(user, text2num(href_list["buytrait"]))
-	// 任一动作处理完毕后整窗重绘，使资源 / 可负担状态 / 当前值即时刷新（无动作的未知 href 也只是重绘）。
-	render_ui(user)
 
-
-// ----------------------------------------------------------------------------
-// 让玩家在游戏内"看得见"这项特性：登记进 GLOB.roguetraits
-// 为什么要登记：引擎的玩家特性自检面板会遍历 GLOB.roguetraits，对玩家拥有的每个特性打印
-//   「特性名 - 描述」。把 TRAIT_RPG_SYSTEM 加进这张表，玩家点开特性列表才能看到"RPG系统"
-//   及其说明；否则特性虽已生效，却对玩家不可见。
-// 为什么用"运行时追加"而非直接改核心表：核心表 roguetraits 定义在 modular_z121 之外（禁止
-//   修改），故在启动钩子里向已初始化的全局表追加键值对——这是本项目登记自定义内容的既定做法。
-// 为什么做成独立 proc 由 custom_bootstrap 调用：#define 按 #include 顺序生效，bootstrap 的
-//   包含顺序早于本文件，那里无法直接引用 TRAIT_RPG_SYSTEM 宏；而 proc 名全局可解析。于是把
-//   "需要用到本文件宏"的登记逻辑封装在本文件 proc 内，bootstrap 只按名调用。
-// ----------------------------------------------------------------------------
 /proc/register_rpg_system_trait()
 	// 防御：核心全局表必须已初始化为 list 才能写入；异常情况下安静跳过，绝不新建脱钩的"假表"。
 	if(!islist(GLOB.roguetraits))
@@ -1363,11 +1289,7 @@
 		击杀怪物可赚取系统积分，积分能兑换 武器 / 装备 / 消耗品 / 材料 / 魔法物品，也能强化我的技能与属性。")
 
 
-// ----------------------------------------------------------------------------
-// 清理本文件内部使用的数值宏，避免污染全局编译命名空间。
-// 为什么保留 TRAIT_RPG_SYSTEM 不 #undef：它是对外可见的"身份标签"，击杀监听组件与未来其它
-//   系统可能需要用 HAS_TRAIT 查询，这与本目录其它特性键（如 TRAIT_GENIUS）保持全局可见的约定一致。
-// ----------------------------------------------------------------------------
+// 清理本文件使用的内部价格与规则常量；系统特性键保留供模块调用。
 #undef RPG_SYSTEM_TRIUMPH_COST
 #undef RPG_SYSTEM_SCAN_RANGE
 #undef RPG_SYSTEM_POINTS_PER_MAXHP
@@ -1375,4 +1297,7 @@
 #undef RPG_SYSTEM_STAT_COST_BASE
 #undef RPG_SYSTEM_SKILL_COST_BASE
 #undef RPG_SYSTEM_TRAIT_COST
+#undef RPG_SYSTEM_TRAIT_STRONG_COST
+#undef RPG_SYSTEM_TRAIT_OVERPOWERED_COST
+#undef RPG_SYSTEM_SPELL_POINT_COST
 #undef RPG_SYSTEM_TRAIT_SOURCE

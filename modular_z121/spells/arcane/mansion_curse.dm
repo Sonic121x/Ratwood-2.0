@@ -601,7 +601,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 		space.active_door = door
 		playsound(place_turf, 'sound/magic/whiteflame.ogg', 70, TRUE)
 		user.visible_message(
-			span_warning("[user] 念诵咒文，于选定之地撕开一道门扉——门后透出的，正是那处熟悉的石室！"),
+			span_warning("[user] [z121_silent(user) ? "无声地凝聚魔力" : "念诵咒文"]，于选定之地撕开一道门扉——门后透出的，正是那处熟悉的石室！"),
 			span_notice("我在选定的位置再次撕开空间，通往我那处既有宅邸的门扉重新矗立——里面的一切都还在。")
 		)
 		return TRUE
@@ -625,7 +625,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 	space.active_door = door
 	playsound(place_turf, 'sound/magic/whiteflame.ogg', 70, TRUE)
 	user.visible_message(
-		span_warning("[user] 念诵咒文，于选定之地撕开一道门扉——门后竟透出一处石室的光亮！"),
+		span_warning("[user] [z121_silent(user) ? "无声地凝聚魔力" : "念诵咒文"]，于选定之地撕开一道门扉——门后竟透出一处石室的光亮！"),
 		span_notice("我在选定的位置撕开空间，宅邸魔法门就此矗立——若我死亡，宅邸会被回收；若入口被攻破，空间及其中所有生物和物品都会湮灭。")
 	)
 	return TRUE

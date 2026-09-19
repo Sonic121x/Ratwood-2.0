@@ -64,7 +64,7 @@
 
 	var/mob/living/spelltarget = target_atom
 	var/already_enchanted = spelltarget.has_status_effect(/datum/status_effect/buff/xray_vision)
-	spelltarget.apply_status_effect(/datum/status_effect/buff/xray_vision, 10 SECONDS)
+	z121_apply_status(spelltarget, /datum/status_effect/buff/xray_vision, 10 SECONDS)
 	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 70, TRUE, soundping = TRUE)
 
 	if(spelltarget == user)
