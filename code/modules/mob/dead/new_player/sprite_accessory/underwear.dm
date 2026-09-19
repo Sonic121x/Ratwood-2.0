@@ -1,7 +1,7 @@
 /datum/sprite_accessory/underwear
 	abstract_type = /datum/sprite_accessory/underwear
 	icon = 'icons/mob/sprite_accessory/underwear.dmi'
-	color_key_name = "Underwear"
+	color_key_name = "内衣"
 	var/underwear_type
 	///Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
 	var/hides_breasts = FALSE
@@ -16,7 +16,7 @@
 	return is_human_part_visible(owner, HIDECROTCH)
 
 /datum/sprite_accessory/underwear/briefs
-	name = "Briefs"
+	name = "三角裤"
 	icon_state = "male_reg"
 	underwear_type = /obj/item/undies
 
@@ -28,7 +28,7 @@
 	return "male_reg"
 
 /datum/sprite_accessory/underwear/bikini
-	name = "Bikini"
+	name = "比基尼"
 	icon_state = "female_bikini"
 	underwear_type = /obj/item/undies/bikini
 	hides_breasts = TRUE
@@ -41,12 +41,12 @@
 	return "bikini_f_" + "[breasts.breast_size]"
 
 /datum/sprite_accessory/underwear/panties
-	name = "Panties"
+	name = "内裤"
 	icon_state = "panties"
 	underwear_type = /obj/item/undies/panties
 
 /datum/sprite_accessory/underwear/leotard
-	name = "Leotard"
+	name = "紧身连衣裤"
 	icon_state = "female_leotard"
 	underwear_type = /obj/item/undies/leotard
 	hides_breasts = TRUE
@@ -83,7 +83,7 @@
 	return "female_athletic_leotard"
 
 /datum/sprite_accessory/underwear/braies
-	name = "Braies"
+	name = "衬裤"
 	icon_state = "braies"
 	underwear_type = /obj/item/undies
 
@@ -93,7 +93,7 @@
 	return "braies"
 
 /datum/sprite_accessory/underwear/loinclothunder
-	name = "Small Loincloth"
+	name = "小缠腰布"
 	icon_state = "loinclothunder"
 	underwear_type = /obj/item/undies/loinclothunder
 
@@ -127,7 +127,7 @@
 	return is_human_part_visible(owner, HIDEJUMPSUIT)
 
 /datum/sprite_accessory/legwear/stockings
-	name = "stockings"
+	name = "长袜"
 	icon_state = "stockings"
 	legwear_type = /obj/item/legwears
 
@@ -137,16 +137,16 @@
 	legwear_type = /obj/item/legwears/silk
 //Fishnets
 /datum/sprite_accessory/legwear/stockings/fishnet
-	name = "fishnet stockings"
+	name = "网袜"
 	icon_state = "fishnet"
 	legwear_type = /obj/item/legwears/fishnet
 
 /datum/sprite_accessory/legwear/stockings/thigh_high
-	name = "thigh-high stockings"
+	name = "过膝长袜"
 	icon_state = "thigh"
 	legwear_type = /obj/item/legwears/thigh_high
 
 /datum/sprite_accessory/legwear/stockings/knee_high
-	name = "knee-high stockings"
+	name = "及膝长袜"
 	icon_state = "knee"
 	legwear_type = /obj/item/legwears/knee_high
