@@ -81,7 +81,7 @@
 	var/list/stopped_movables           // 关联表(movable => state 子表)：被冻结对象及其原始状态
 
 // New：建场。先算覆盖地块，无效则立即自毁；否则注册“进入”信号、定时、并立即冻结一次。
-/obj/effect/timestop_field/New(loc, mob/living/new_caster)
+/obj/effect/timestop_field/New(loc, mob/living/new_caster, meta_duration = 1)
 	..()
 	caster = new_caster
 	affected_turfs = timestop_square_turfs(src)
@@ -102,7 +102,7 @@
 		RegisterSignal(affected_turf, COMSIG_ATOM_ENTERED, PROC_REF(on_turf_entered))
 
 	// 设定到期时刻；next_refresh 置 0 以便本刻就能跑首刷。
-	expires_at = world.time + TIMESTOP_FIELD_DURATION
+	expires_at = world.time + TIMESTOP_FIELD_DURATION * meta_duration
 	next_refresh = 0
 	refresh_field()                     // 立刻冻结建场瞬间已在场内的一切
 	START_PROCESSING(SSfastprocess, src)
@@ -344,10 +344,10 @@
 	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/self/timestop/get_chargetime()
-	return 5 SECONDS
+	return z121_channel(5 SECONDS, z121_metamagic_cast?.caster || action?.owner)
 
 /obj/effect/proc_holder/spell/self/timestop/calculate_chargetime(mob/living/user)
-	return 5 SECONDS
+	return z121_channel(5 SECONDS, user)
 
 /obj/effect/proc_holder/spell/self/timestop/choose_targets(mob/user = usr)
 	if(QDELETED(user))
@@ -378,7 +378,7 @@
 		return FALSE
 
 	// 生成力场；其 New() 自带“无有效地块即自毁”的兜底，这里无需重复校验。
-	new /obj/effect/timestop_field(origin, user)
+	new /obj/effect/timestop_field(origin, user, z121_duration(1))
 	return TRUE
 
 #undef TIMESTOP_FIELD_HALF_SIZE

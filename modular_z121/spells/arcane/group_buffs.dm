@@ -44,7 +44,7 @@
 
 /obj/effect/proc_holder/spell/invoked/group_darkvision/cast(list/targets, mob/user = usr)
 	for(var/mob/living/L in range(1, usr))
-		L.apply_status_effect(/datum/status_effect/buff/group_darkvision, user.get_skill_level(associated_skill))
+		z121_apply_status(L, /datum/status_effect/buff/group_darkvision, user.get_skill_level(associated_skill))
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/group_fortitude
@@ -152,7 +152,7 @@
 		target.update_transform()
 		to_chat(target, span_warning("我感觉自己比平时高大得多，简直能直接撞穿一扇门！"))
 		target.visible_message("[target]的身体膨胀变大了！")
-		addtimer(CALLBACK(src, PROC_REF(remove_enlarge_buff), target), wait = 120 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(remove_enlarge_buff), target), wait = z121_duration(120 SECONDS))
 		affected_any = TRUE
 
 	if(!affected_any)
@@ -198,9 +198,12 @@
 
 /obj/effect/proc_holder/spell/invoked/group_fortitude_spell/cast(list/targets, mob/user = usr)
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
-	user.visible_message("[user]低声念诵咒文，绿色光辉如涟漪般扩散到周围。")
+	if(z121_silent(user))
+		user.visible_message("[user]绿色光辉如涟漪般扩散到周围。")
+	else
+		user.visible_message("[user]低声念诵咒文，绿色光辉如涟漪般扩散到周围。")
 	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_fortitude)
+		z121_apply_status(L, /datum/status_effect/buff/group_fortitude)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/group_guidance
@@ -229,9 +232,12 @@
 
 /obj/effect/proc_holder/spell/invoked/group_guidance/cast(list/targets, mob/user = usr)
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
-	user.visible_message("[user]低声念诵咒文，橙色光辉化作薄幕笼罩周围。")
+	if(z121_silent(user))
+		user.visible_message("[user]橙色光辉化作薄幕笼罩周围。")
+	else
+		user.visible_message("[user]低声念诵咒文，橙色光辉化作薄幕笼罩周围。")
 	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_guidance)
+		z121_apply_status(L, /datum/status_effect/buff/group_guidance)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/group_haste
@@ -260,9 +266,12 @@
 
 /obj/effect/proc_holder/spell/invoked/group_haste/cast(list/targets, mob/user = usr)
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
-	user.visible_message("[user]高声念诵咒文，黄色光辉瞬间扩散到周围每个人身上。")
+	if(z121_silent(user))
+		user.visible_message("[user]黄色光辉瞬间扩散到周围每个人身上。")
+	else
+		user.visible_message("[user]高声念诵咒文，黄色光辉瞬间扩散到周围每个人身上。")
 	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_haste)
+		z121_apply_status(L, /datum/status_effect/buff/group_haste)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/group_longstrider
@@ -289,9 +298,12 @@
 	range = 7
 
 /obj/effect/proc_holder/spell/invoked/group_longstrider/cast(list/targets, mob/user = usr)
-	user.visible_message("[user] 低声念出咒文，一圈更为清晰的黯淡光晕自其身上扩散开来。")
+	if(z121_silent(user))
+		user.visible_message("[user] 一圈更为清晰的黯淡光晕自其身上扩散开来。")
+	else
+		user.visible_message("[user] 低声念出咒文，一圈更为清晰的黯淡光晕自其身上扩散开来。")
 	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_longstrider)
+		z121_apply_status(L, /datum/status_effect/buff/group_longstrider)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/group_stoneskin
@@ -321,9 +333,12 @@
 
 /obj/effect/proc_holder/spell/invoked/group_stoneskin/cast(list/targets, mob/user = usr)
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
-	user.visible_message("[user] 低声念诵咒文，周围众人的皮肤随之渐渐硬化。")
+	if(z121_silent(user))
+		user.visible_message("[user] 周围众人的皮肤随之渐渐硬化。")
+	else
+		user.visible_message("[user] 低声念诵咒文，周围众人的皮肤随之渐渐硬化。")
 	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_stoneskin)
+		z121_apply_status(L, /datum/status_effect/buff/group_stoneskin)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/group_giants_strength
@@ -354,9 +369,12 @@
 
 /obj/effect/proc_holder/spell/invoked/group_giants_strength/cast(list/targets, mob/user = usr)
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
-	user.visible_message("[user] 低声念诵咒文，周围众人的肌肉随之隆起壮大。")
+	if(z121_silent(user))
+		user.visible_message("[user] 周围众人的肌肉随之隆起壮大。")
+	else
+		user.visible_message("[user] 低声念诵咒文，周围众人的肌肉随之隆起壮大。")
 	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_giants_strength)
+		z121_apply_status(L, /datum/status_effect/buff/group_giants_strength)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/group_leap
@@ -388,7 +406,7 @@
 			continue
 		ADD_TRAIT(target, TRAIT_ZJUMP, MAGIC_TRAIT)
 		to_chat(target, span_warning("我的双腿变得更有力了！我感觉自己能一跃而起！"))
-		addtimer(CALLBACK(src, PROC_REF(remove_leap_buff), target), wait = 40 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(remove_leap_buff), target), wait = z121_duration(40 SECONDS))
 		affected_any = TRUE
 
 	if(!affected_any)
@@ -436,6 +454,6 @@
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
 	user.visible_message(span_notice("[user] 释放出的魔力如无形气流般扩散，将周围众人一并托离地面。"))
 	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_magic_flight, flight_duration)
+		z121_apply_status(L, /datum/status_effect/buff/group_magic_flight, flight_duration)
 		to_chat(L, span_notice("无形魔力在我脚下汇聚，将我托入飞行。"))
 	return TRUE

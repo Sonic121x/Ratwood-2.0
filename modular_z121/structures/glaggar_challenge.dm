@@ -8,7 +8,7 @@
 //   4) 依次刷出四波怪物：首波由 30 秒准备期触发，此后每波间隔 2 分钟；
 //      每一波都会从该波的“预设池”中随机抽取一支敌人队伍刷出；
 //   5) 通关后存活的挑战者获得“格拉加尔的奖励”（+2 力量 +2 速度）；
-//   6) 挑战期间非挑战者若干涉（出现在竞技场内 / 伤害怪物）将被诅咒并传走。
+//   6) 挑战期间闯入场内的非挑战者将被诅咒并传走；离场者永久失去本次资格。
 //
 // 设计约束：所有自定义内容仅允许放在 modular_z121 下；本任务要求注释使用中文。
 // 之所以用“轮询（polling）”而非信号来判定波次清空，是因为本仓库里
@@ -124,7 +124,7 @@
 	var/obj/structure/terror_clock/clock
 	// 竞技场中心地块（即钟所在地块），缓存下来便于反复做范围计算。
 	var/turf/center
-	// 挑战锁定的 Z 层：挑战者必须与钟处于同一 Z 层才算有效参与。
+	// 挑战锁定的楼层；正式开战后还要求挑战者始终位于壁垒内侧。
 	var/z_level = 0
 	// 当前阶段（见上面的 GLAGGAR_PHASE_* 状态机）。
 	var/phase = GLAGGAR_PHASE_PREP
@@ -132,6 +132,12 @@
 	var/current_wave = 0
 	// 当前波次仍然“在场”的怪物引用列表，用于判断本波是否被清空。
 	var/list/current_wave_mobs = list()
+	// 独立保留本场全部召唤记录，供失败、中止和直接销毁时清理。
+	var/list/spawned_mobs = list()
+	// 曾被玩家接管的召唤体永不作为普通怪物删除。
+	var/list/player_owned_mobs = list()
+	// 避免传送失败时每秒重复提示，但仍会在每次轮询重试。
+	var/list/failed_evictions = list()
 	// 本场挑战的挑战者（玩家 mob）列表。
 	var/list/challengers = list()
 	// 已生成的壁垒结构列表，结束时统一清除以还原场地。
@@ -181,324 +187,339 @@
 		),
 	)
 
-// 析构时做一次兜底清理，确保即使异常路径下也不会残留壁垒。
+// 直接销毁控制器也必须停止流程，并先清理怪物再拆除壁垒。
 /datum/glaggar_challenge/Destroy()
-	remove_barriers()
+	phase = GLAGGAR_PHASE_DONE
+	release_arena()
 	clock = null
 	center = null
+	challengers.Cut()
+	failed_evictions.Cut()
 	return ..()
 
-// 启动挑战。由恐怖之钟在玩家选择该选项后调用。
 /datum/glaggar_challenge/proc/start(obj/structure/terror_clock/source, mob/living/user)
-	// 记录中心物体与中心地块；若钟不在有效地块上则无法开战。
 	clock = source
 	center = get_turf(clock)
-	if(!center)
-		// 错误处理：找不到中心地块，直接放弃并通知发起者。
-		if(user)
+	if(QDELETED(clock) || clock.obj_broken || !center)
+		if(!QDELETED(user))
 			to_chat(user, span_warning("此处无法举行格拉加尔的试炼。"))
 		qdel(src)
 		return FALSE
-	// 锁定 Z 层，后续以此判断挑战者是否“与钟同层”。
 	z_level = center.z
 	phase = GLAGGAR_PHASE_PREP
-	// 全场预警：营造仪式开始的恐怖氛围。
 	clock.visible_message(span_danger("[clock]剧烈震颤，空气骤然冰冷——格拉加尔的目光正在降临……"))
-	// 准备期内分多次播放恐怖之声（每 6 秒一次，共 5 次覆盖 30 秒）。
 	for(var/i in 0 to 4)
 		addtimer(CALLBACK(src, PROC_REF(play_dread_sound)), i * 6 SECONDS)
-	// 准备期结束后正式开战。
 	addtimer(CALLBACK(src, PROC_REF(finish_prep)), GLAGGAR_PREP_TIME)
-	// 启动主控制轮询循环。
 	addtimer(CALLBACK(src, PROC_REF(controller_tick)), GLAGGAR_TICK_INTERVAL)
 	return TRUE
 
-// 准备期里播放的恐怖音效（随机挑选一种，覆盖较大范围）。
 /datum/glaggar_challenge/proc/play_dread_sound()
-	// 中心可能在准备期内失效（钟被毁），先做校验。
-	if(!center)
+	if(QDELETED(src) || phase != GLAGGAR_PHASE_PREP || !center)
 		return
 	playsound(center, pick('sound/misc/evilevent.ogg', 'sound/misc/demon_attack1.ogg', 'sound/misc/astratascream.ogg'), 100, FALSE, extrarange = 14)
 
-// 准备期结束：选挑战者、围场、清场、刷第一波。
+// 先完成安全安置和驱逐，全部成功后才生成壁垒与怪物。
 /datum/glaggar_challenge/proc/finish_prep()
-	// 若挑战在准备期内已被中止，则不再继续。
-	if(phase != GLAGGAR_PHASE_PREP)
+	if(QDELETED(src) || phase != GLAGGAR_PHASE_PREP)
 		return
-	// 钟若已被摧毁，整场挑战作废。
 	if(QDELETED(clock) || clock.obj_broken)
 		abort_challenge("仪式的载体被摧毁了。")
 		return
-	// 标记挑战者；若周围根本没有玩家，挑战无意义，直接中止。
 	if(!mark_challengers())
 		abort_challenge("格拉加尔在周围找不到任何值得注视的灵魂。")
 		return
-	// 用不可摧毁壁垒围出竞技场。
+	if(!place_challengers())
+		abort_challenge("内场没有足够的安全位置安置挑战者。")
+		return
+	if(!teleport_non_challengers())
+		abort_challenge("教堂没有足够的安全落点，无法驱逐非挑战者。")
+		return
 	erect_barriers()
-	// 把竞技场内的非挑战者全部传送到教堂，避免误伤与干涉。
-	teleport_non_challengers()
-	// 正式刷出第一波。
 	start_wave(1)
 
-// 从钟周围 GLAGGAR_ARENA_RADIUS 格内随机挑选最多 GLAGGAR_CHALLENGER_COUNT 名存活玩家。
+// 保留原有六格选人范围；外环玩家会在封场之前移入内侧。
 /datum/glaggar_challenge/proc/mark_challengers()
-	// 收集范围内所有“由玩家操控且存活”的人类作为候选。
 	var/list/candidates = list()
 	for(var/mob/living/carbon/human/H in range(GLAGGAR_ARENA_RADIUS, center))
-		// 只挑选有客户端（真正玩家）且未死亡者。
 		if(H.ckey && H.stat != DEAD)
 			candidates += H
-	// 没有任何候选者 -> 返回 FALSE，让上层中止挑战（错误处理）。
 	if(!length(candidates))
 		return FALSE
-	// 打乱后取前 N 名，实现“随机挑选”。
 	candidates = shuffle(candidates)
 	for(var/mob/living/carbon/human/H in candidates)
-		// 取满规定人数后停止。
 		if(length(challengers) >= GLAGGAR_CHALLENGER_COUNT)
 			break
 		challengers += H
-		// 明确告知玩家自己被选中，并交代“同层”这一硬性要求。
-		to_chat(H, span_danger("格拉加尔的目光落在了你身上——你成为了挑战者！在试炼结束前不要离开这一层。"))
+		to_chat(H, span_danger("格拉加尔的目光落在了你身上——你成为了挑战者！正式开战后离开壁垒内侧将永久失去本次资格。"))
 	return TRUE
 
-// 在竞技场半径的“环”上生成不可摧毁壁垒，把场地围起来。
+// 先为全部需要移动的挑战者预留位置，避免空位不足时只安置一部分人。
+/datum/glaggar_challenge/proc/place_challengers()
+	var/list/available = get_spawn_turfs()
+	var/list/destinations = list()
+	for(var/mob/living/C in challengers)
+		if(QDELETED(C))
+			return FALSE
+		if(is_inside_arena(C) && isturf(C.loc) && terror_clock_safe_turf(get_turf(C), C))
+			continue
+		var/turf/destination = terror_clock_take_safe_turf(available)
+		if(!destination)
+			return FALSE
+		destinations[C] = destination
+	for(var/mob/living/C in destinations)
+		var/turf/destination = destinations[C]
+		if(QDELETED(C) || !terror_clock_safe_turf(destination))
+			return FALSE
+		C.forceMove(destination)
+		if(get_turf(C) != destination)
+			return FALSE
+	return TRUE
+
 /datum/glaggar_challenge/proc/erect_barriers()
-	// 遍历范围内每个地块，只在恰好处于外环（切比雪夫距离==半径）的开放地块上放壁垒。
 	for(var/turf/T in range(GLAGGAR_ARENA_RADIUS, center))
-		// get_dist 在 BYOND 中返回切比雪夫距离，正好对应方形环的边界。
-		if(get_dist(center, T) != GLAGGAR_ARENA_RADIUS)
+		if(get_dist(center, T) != GLAGGAR_ARENA_RADIUS || !isopenturf(T))
 			continue
-		// 已是封闭墙体的地块无需再放壁垒（本就挡路）。
-		if(!isopenturf(T))
-			continue
-		// 生成壁垒并登记，便于结束时清除。
 		var/obj/structure/glaggar_barrier/B = new(T)
 		barriers += B
 
-// 清除所有壁垒，还原场地。
 /datum/glaggar_challenge/proc/remove_barriers()
 	for(var/obj/structure/glaggar_barrier/B in barriers)
-		qdel(B)
+		if(!QDELETED(B))
+			qdel(B)
 	barriers.Cut()
 
-// 把竞技场内的非挑战者玩家传送到教堂。
+// 开场驱逐同样先预留全部落点；实际传送每个人之前仍会重新验证占用。
 /datum/glaggar_challenge/proc/teleport_non_challengers()
-	// 先取得教堂落点；若取不到则只能放弃传送（错误处理：不中断挑战，仅记录）。
-	var/turf/church = get_church_turf()
+	var/list/destinations = list()
+	var/list/reserved = list()
 	for(var/mob/living/L in range(GLAGGAR_ARENA_RADIUS, center))
-		// 只处理玩家操控的角色；放过挑战者与（此刻尚不存在的）召唤怪。
-		if(!L.ckey || (L in challengers) || (GLAGGAR_FACTION in L.faction))
+		if(!L.ckey || (L in challengers))
 			continue
-		if(church)
-			L.forceMove(church)
-			to_chat(L, span_warning("一股无形之力将你逐出了格拉加尔的试炼之地。"))
+		var/turf/church = get_church_turf(reserved)
+		if(!church)
+			return FALSE
+		reserved += church
+		destinations[L] = church
+	for(var/mob/living/L in destinations)
+		if(QDELETED(L))
+			continue
+		var/turf/church = destinations[L]
+		if(!terror_clock_safe_turf(church))
+			return FALSE
+		L.forceMove(church)
+		if(get_turf(L) != church)
+			return FALSE
+		to_chat(L, span_warning("一股无形之力将你逐出了格拉加尔的试炼之地。"))
+	return TRUE
 
-// 刷出指定序号（1 起）的一波怪物。
+// 每波必须完整生成；失效或重复的定时回调不得重启已结束的试炼。
 /datum/glaggar_challenge/proc/start_wave(wave_index)
-	// 越界保护：序号非法直接判定为通关（不应发生，但稳妥起见）。
-	if(wave_index > length(waves))
-		victory()
+	if(QDELETED(src) || phase == GLAGGAR_PHASE_DONE)
 		return
-	current_wave = wave_index
-	// 进入战斗阶段，并清空“在场怪物”列表后重新填充。
-	phase = GLAGGAR_PHASE_FIGHT
-	advancing = FALSE
-	current_wave_mobs.Cut()
-	// 取得本波所有可用刷新点。
-	var/list/spawn_turfs = get_spawn_turfs()
-	// 错误处理：完全没有可刷新地块时，无法继续，中止挑战。
-	if(!length(spawn_turfs))
-		abort_challenge("没有可供怪物降临的空地，试炼无法进行。")
+	if(wave_index != current_wave + 1 || wave_index < 1 || wave_index > length(waves))
 		return
-	// 取出本波的“预设池”，并从中随机抽取一支队伍。
-	var/list/wave_presets = waves[wave_index]
-	// 错误处理：预设池为空（数据配置异常）则中止，避免对空列表 pick() 运行时报错。
-	if(!islist(wave_presets) || !length(wave_presets))
-		abort_challenge("本波的怪物预设缺失，试炼无法继续。")
+	if((wave_index == 1 && phase != GLAGGAR_PHASE_PREP) || (wave_index > 1 && phase != GLAGGAR_PHASE_INTERMISSION))
 		return
-	// 随机选出本次实际刷新的队伍（同一波每次可能不同）。
-	var/list/this_wave = pick(wave_presets)
-	// 按抽中的队伍逐类型、逐只生成怪物。
-	for(var/mob_type in this_wave)
-		var/count = this_wave[mob_type]
-		for(var/i in 1 to count)
-			// 在随机刷新点生成怪物。
-			var/turf/target = pick(spawn_turfs)
-			var/mob/living/M = new mob_type(target)
-			// 实例化失败（极端情况）则跳过这一只，不影响其余生成。
-			if(QDELETED(M))
-				continue
-			// 统一阵营：避免不同种类怪物互相攻击，并便于把它们与玩家区分开。
-			M.faction = list(GLAGGAR_FACTION)
-			// 设定阵营后立刻唤醒其 AI 并强制索敌，使其马上冲向挑战者，而非站桩挨打才反击。
-			// 注意顺序：必须在改完 faction 之后调用，索敌的敌我判定才会用到正确阵营。
-			terror_clock_awaken_mob(M)
-			current_wave_mobs += M
-	// 向全场宣告本波开始。
-	if(center)
-		clock.visible_message(span_danger("第[current_wave]波降临了！"))
-
-// 主控制轮询：挑战进行期间每隔 GLAGGAR_TICK_INTERVAL 触发一次。
-/datum/glaggar_challenge/proc/controller_tick()
-	// 已结束则不再重排循环，循环自然终止。
-	if(phase == GLAGGAR_PHASE_DONE)
-		return
-	// 钟被摧毁/损坏 -> 立即中止整场挑战。
 	if(QDELETED(clock) || clock.obj_broken)
-		abort_challenge("仪式的载体被摧毁了，试炼戛然而止。")
+		abort_challenge("仪式的载体被摧毁了。")
 		return
-	// 准备期内挑战者尚未选出、场地尚未封闭，无需做任何巡查或胜负判定，
-	// 仅保持轮询存活（否则会因“无挑战者”而误判失败）。
-	if(phase == GLAGGAR_PHASE_PREP)
-		addtimer(CALLBACK(src, PROC_REF(controller_tick)), GLAGGAR_TICK_INTERVAL)
-		return
-	// 剔除当前波中已死亡或已删除的怪物，得到真正“仍在场”的数量。
-	prune_wave_mobs()
-	// 校验挑战者：必须有人“存活且与钟同层”，否则挑战失败。
+	disqualify_absent_challengers()
 	if(!has_living_challenger())
 		fail_challenge()
 		return
-	// 巡场：把闯入竞技场的非挑战者视为干涉者，予以诅咒并驱离。
+	var/list/wave_presets = waves[wave_index]
+	if(!islist(wave_presets) || !length(wave_presets))
+		abort_challenge("本波的怪物预设缺失，试炼无法继续。")
+		return
+	var/list/this_wave = pick(wave_presets)
+	var/required_count = 0
+	for(var/mob_type in this_wave)
+		required_count += this_wave[mob_type]
+	var/list/spawn_turfs = get_spawn_turfs()
+	if(length(spawn_turfs) < required_count)
+		abort_challenge("没有足够的安全空地放置完整一波怪物，试炼无法进行。")
+		return
+	current_wave = wave_index
+	phase = GLAGGAR_PHASE_FIGHT
+	advancing = FALSE
+	current_wave_mobs.Cut()
+	for(var/mob_type in this_wave)
+		var/count = this_wave[mob_type]
+		for(var/i in 1 to count)
+			var/turf/target = terror_clock_take_safe_turf(spawn_turfs)
+			if(!target)
+				abort_challenge("刷新位置已被占用，无法生成完整一波怪物。")
+				return
+			var/mob/living/M = new mob_type(target)
+			if(QDELETED(M))
+				abort_challenge("怪物生成失败，试炼中止。")
+				return
+			// 先登记再配置；后续发生中止时也能清理已生成的部分怪物。
+			spawned_mobs += M
+			RegisterSignal(M, COMSIG_MOB_LOGIN, PROC_REF(protect_player_mob))
+			if(M.key || (M.mind && M.mind.key))
+				player_owned_mobs |= M
+			M.faction = list(GLAGGAR_FACTION)
+			terror_clock_awaken_mob(M)
+			current_wave_mobs += M
+	clock.visible_message(span_danger("第[current_wave]波降临了！"))
+
+// 记录玩家接管历史，防止玩家随后离线或离体后被收尾逻辑误删。
+/datum/glaggar_challenge/proc/protect_player_mob(mob/living/source)
+	SIGNAL_HANDLER
+	player_owned_mobs |= source
+
+/datum/glaggar_challenge/proc/controller_tick()
+	if(QDELETED(src) || phase == GLAGGAR_PHASE_DONE)
+		return
+	if(QDELETED(clock) || clock.obj_broken)
+		abort_challenge("仪式的载体被摧毁了，试炼戛然而止。")
+		return
+	if(phase == GLAGGAR_PHASE_PREP)
+		addtimer(CALLBACK(src, PROC_REF(controller_tick)), GLAGGAR_TICK_INTERVAL)
+		return
+	prune_wave_mobs()
+	disqualify_absent_challengers()
+	if(!has_living_challenger())
+		fail_challenge()
+		return
 	sweep_interferers()
-	// 战斗阶段且本波怪物已被清空 -> 推进到下一波或通关。
 	if(phase == GLAGGAR_PHASE_FIGHT && !length(current_wave_mobs) && !advancing)
 		advancing = TRUE
 		if(current_wave >= length(waves))
-			// 最后一波也清空了 -> 通关。
 			victory()
 			return
-		else
-			// 进入波次间隙，并在 GLAGGAR_WAVE_DELAY 后刷新下一波。
-			phase = GLAGGAR_PHASE_INTERMISSION
-			if(clock)
-				clock.visible_message(span_danger("怪物的嘶吼渐息……但更可怕的存在正在逼近。"))
-			addtimer(CALLBACK(src, PROC_REF(start_wave), current_wave + 1), GLAGGAR_WAVE_DELAY)
-	// 重排下一次轮询（只要挑战未结束就持续）。
+		phase = GLAGGAR_PHASE_INTERMISSION
+		clock.visible_message(span_danger("怪物的嘶吼渐息……但更可怕的存在正在逼近。"))
+		addtimer(CALLBACK(src, PROC_REF(start_wave), current_wave + 1), GLAGGAR_WAVE_DELAY)
 	addtimer(CALLBACK(src, PROC_REF(controller_tick)), GLAGGAR_TICK_INTERVAL)
 
-// 从“在场怪物”列表中移除已删除或已死亡的怪物。
+// 死亡或删除只影响波次计数，不丢弃独立的本场召唤记录。
 /datum/glaggar_challenge/proc/prune_wave_mobs()
-	// 遍历副本，避免在 DM 的 for-in-list 中边遍历边删除导致漏判。
 	for(var/mob/living/M in current_wave_mobs.Copy())
-		// 怪物被删除或死亡，即视为已被击杀，从在场列表中剔除。
 		if(QDELETED(M) || M.stat == DEAD)
 			current_wave_mobs -= M
 
-// 是否仍有“存活且与钟同层”的挑战者。
+// 外环本身不属于内场；楼层比较在距离判断前完成。
+/datum/glaggar_challenge/proc/is_inside_arena(atom/A)
+	var/turf/T = get_turf(A)
+	return center && T && T.z == z_level && get_dist(center, T) < GLAGGAR_ARENA_RADIUS
+
+// 从资格列表永久移除离场者，返回场地也不会重新入选。
+/datum/glaggar_challenge/proc/disqualify_absent_challengers()
+	for(var/mob/living/C in challengers.Copy())
+		if(QDELETED(C))
+			challengers -= C
+			continue
+		if(!is_inside_arena(C))
+			challengers -= C
+			to_chat(C, span_warning("你离开了竞技场，已永久失去本次试炼资格。"))
+
 /datum/glaggar_challenge/proc/has_living_challenger()
 	for(var/mob/living/C in challengers)
-		// 同时满足：未删除、未死亡、与钟同一 Z 层。
-		if(!QDELETED(C) && C.stat != DEAD && C.z == z_level)
+		if(!QDELETED(C) && C.stat != DEAD && is_inside_arena(C))
 			return TRUE
 	return FALSE
 
-// 巡场驱逐并诅咒非挑战者（竞技场已被壁垒密封，场内出现的非挑战者必属干涉）。
 /datum/glaggar_challenge/proc/sweep_interferers()
 	for(var/mob/living/L in range(GLAGGAR_ARENA_RADIUS, center))
-		// 跳过：非玩家、挑战者本人、以及我们自己的召唤怪。
-		if(!L.ckey || (L in challengers) || (GLAGGAR_FACTION in L.faction))
+		if(!L.ckey || (L in challengers) || (L in spawned_mobs))
 			continue
-		// 其余玩家即为干涉者：诅咒并传走。
 		curse_interferer(L)
 
-// 对一名干涉者施加诅咒并将其逐出竞技场。
-// 备注：这是“非挑战者伤害怪物即被诅咒”的实现/挂钩点——由于场地被不可摧毁且不透明的
-// 壁垒密封，任何出现在场内的非挑战者本质上就是在试图近战干涉，故等价处理。
+// 无安全落点时保留诅咒并等待下一次轮询，不使用危险位置作为退路。
 /datum/glaggar_challenge/proc/curse_interferer(mob/living/L)
-	// 施加诅咒状态效果（持续伤害 + 属性削弱）。
-	L.apply_status_effect(/datum/status_effect/glaggar_curse)
-	to_chat(L, span_danger("你胆敢干涉格拉加尔的试炼——诅咒降临于你！"))
-	// 同时把干涉者传送到教堂，物理上隔离开挑战区域。
+	if(!L.has_status_effect(/datum/status_effect/glaggar_curse))
+		L.apply_status_effect(/datum/status_effect/glaggar_curse)
+		to_chat(L, span_danger("你胆敢干涉格拉加尔的试炼——诅咒降临于你！"))
 	var/turf/church = get_church_turf()
-	if(church)
+	if(church && terror_clock_safe_turf(church))
 		L.forceMove(church)
+		if(get_turf(L) == church)
+			failed_evictions -= L
+			return
+	if(!(L in failed_evictions))
+		failed_evictions += L
+		to_chat(L, span_warning("教堂暂时没有可用的安全落点，驱逐失败；诅咒仍然生效，稍后将再次尝试传送。"))
 
-// 通关结算：给存活且同层的挑战者发放奖励，然后清理收场。
+// 奖励仅发给仍有资格、存活且位于内场的挑战者。
 /datum/glaggar_challenge/proc/victory()
+	if(QDELETED(src) || phase == GLAGGAR_PHASE_DONE)
+		return
+	disqualify_absent_challengers()
+	if(!has_living_challenger())
+		fail_challenge()
+		return
 	phase = GLAGGAR_PHASE_DONE
-	if(clock)
+	if(!QDELETED(clock))
 		clock.visible_message(span_danger("[clock]发出满足的轰鸣——格拉加尔的试炼已被征服！"))
-	// 逐一结算挑战者奖励。
 	for(var/mob/living/C in challengers)
-		// 只有“未删除、存活、与钟同层”的挑战者才有资格领取奖励。
-		if(QDELETED(C) || C.stat == DEAD || C.z != z_level)
+		if(QDELETED(C) || C.stat == DEAD || !is_inside_arena(C))
 			continue
-		// 授予永久的“格拉加尔的奖励”（+2 力量 +2 速度，可查看）。
 		C.apply_status_effect(/datum/status_effect/glaggar_reward)
 		to_chat(C, span_danger("你在格拉加尔的注视下幸存——它的恩赐已铭刻于你的血肉。"))
-	// 收尾清理。
 	cleanup()
 
-// 失败结算：所有挑战者阵亡或离场，挑战以失败告终。
 /datum/glaggar_challenge/proc/fail_challenge()
 	phase = GLAGGAR_PHASE_DONE
-	if(clock)
+	if(!QDELETED(clock))
 		clock.visible_message(span_danger("再无挑战者伫立——格拉加尔失望地移开了目光。"))
 	cleanup()
 
-// 异常中止：因钟被毁、无可用场地等原因提前结束。
 /datum/glaggar_challenge/proc/abort_challenge(reason)
 	phase = GLAGGAR_PHASE_DONE
-	if(clock)
+	if(!QDELETED(clock))
 		clock.visible_message(span_warning("格拉加尔的试炼中断了：[reason]"))
 	cleanup()
 
-// 统一收尾：拆除壁垒、解除钟的占用、销毁本控制器。
-/datum/glaggar_challenge/proc/cleanup()
-	// 拆除全部壁垒，还原场地。
+// 收尾可重复调用；只处理本场登记的存活且没有玩家归属的怪物。
+/datum/glaggar_challenge/proc/release_arena()
+	for(var/mob/living/M in spawned_mobs)
+		if(QDELETED(M))
+			continue
+		UnregisterSignal(M, COMSIG_MOB_LOGIN)
+		if(M.stat == DEAD || M.key || (M.mind && M.mind.key) || (M in player_owned_mobs))
+			continue
+		qdel(M)
+	spawned_mobs.Cut()
+	player_owned_mobs.Cut()
+	current_wave_mobs.Cut()
 	remove_barriers()
-	// 解除恐怖之钟上的占用标记，使其可以再次使用。
-	if(clock && clock.active_challenge == src)
+	if(!QDELETED(clock) && clock.active_challenge == src)
 		clock.active_challenge = null
-	// 销毁本控制器（phase 已为 DONE，残留的轮询回调会安全地直接返回）。
+
+/datum/glaggar_challenge/proc/cleanup()
+	phase = GLAGGAR_PHASE_DONE
+	release_arena()
 	qdel(src)
 
-// 计算本波怪物可用的刷新地块：钟周围 GLAGGAR_SPAWN_RADIUS 内的开放、非密集、未被堵塞地块。
 /datum/glaggar_challenge/proc/get_spawn_turfs()
 	var/list/valid = list()
 	for(var/turf/T in range(GLAGGAR_SPAWN_RADIUS, center))
-		// 排除封闭/密集地块，以及钟自身所在地块。
-		if(!isopenturf(T) || T.density || T == center)
-			continue
-		// 若地块上存在任何密集物体（含壁垒），则不在此刷新，避免卡住怪物。
-		var/blocked = FALSE
-		for(var/atom/movable/AM in T)
-			if(AM.density)
-				blocked = TRUE
-				break
-		if(blocked)
-			continue
-		valid += T
+		if(T != center && terror_clock_safe_turf(T))
+			valid += T
 	return valid
 
-// 取得用于传送非挑战者/干涉者的“教堂落点”。
-/datum/glaggar_challenge/proc/get_church_turf()
-	// 优先在教堂礼拜堂区域内寻找一个安全的开放地块。
-	var/turf/found = pick_church_turf_in(/area/rogue/indoors/town/church/chapel)
+// 保留礼拜堂优先、整个教堂其次的查找顺序；预留地块不可重复使用。
+/datum/glaggar_challenge/proc/get_church_turf(list/reserved)
+	var/turf/found = pick_church_turf_in(/area/rogue/indoors/town/church/chapel, reserved)
 	if(found)
 		return found
-	// 退路：扩大到整个教堂室内区域（含子区域）。
-	found = pick_church_turf_in(/area/rogue/indoors/town/church)
-	if(found)
-		return found
-	// 仍找不到则返回 null，调用方需自行处理（错误处理）。
-	return null
+	return pick_church_turf_in(/area/rogue/indoors/town/church, reserved)
 
-// 在指定区域类型内随机挑一个开放、非密集的安全落点。
-/datum/glaggar_challenge/proc/pick_church_turf_in(areatype)
-	// 取该区域（含子类型）在当前世界中的所有地块。
+/datum/glaggar_challenge/proc/pick_church_turf_in(areatype, list/reserved)
 	var/list/turfs = get_area_turfs(areatype, 0, TRUE)
-	if(!length(turfs))
-		return null
-	// 过滤出适合站人的开放地块。
 	var/list/safe = list()
 	for(var/turf/T in turfs)
-		if(isopenturf(T) && !T.density)
+		if(reserved && (T in reserved))
+			continue
+		// 钟即使建在教堂区域，也不能把人驱逐回竞技场或壁垒外环。
+		if(center && T.z == z_level && get_dist(center, T) <= GLAGGAR_ARENA_RADIUS)
+			continue
+		if(terror_clock_safe_turf(T))
 			safe += T
-	if(!length(safe))
-		return null
-	return pick(safe)
+	return terror_clock_take_safe_turf(safe)
 
 // --- 清理文件内的局部宏，避免泄漏到全局命名空间 ------------------------------
 #undef GLAGGAR_PREP_TIME

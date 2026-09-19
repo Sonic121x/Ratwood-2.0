@@ -101,7 +101,7 @@
 	if(cast_time > 0)
 		user.visible_message(
 			span_warning("[user] 高举双手，磅礴的魔力开始向 [user.p_their()] 周身汇聚，仿佛要向世界本身许下一个愿望……"),
-			span_notice("我开始吟诵这道终极法术，魔力正不断汇聚——只要再坚持片刻……")
+			span_notice("我开始[z121_silent(user) ? "在心中编织" : "吟诵"]这道终极法术，魔力正不断汇聚——只要再坚持片刻……")
 		)
 		// do_after：在 cast_time 期间若施法者移动/被打断/死亡，会返回 FALSE。
 		// progress = TRUE 显示进度条；target = user 表示这是对自身的引导动作。
@@ -280,8 +280,8 @@
 
 	// 执行处死：先灌入足以致命的伤害（保证即便有韧性/护甲也必死），再显式调用 death()。
 	// 用氧伤 + 钝伤双管齐下，确保各种体型/种族都被压过死亡阈值。
-	target.adjustOxyLoss(200)
-	target.adjustBruteLoss(200)
+	target.adjustOxyLoss(z121_power(200))
+	target.adjustBruteLoss(z121_power(200))
 	target.updatehealth()
 	target.death() // 正式判定死亡（会派发 COMSIG_MOB_DEATH 等信号）
 

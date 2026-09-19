@@ -48,16 +48,16 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/expires_at
 	var/expiry_timer
 
-/datum/group_mindlink_custom/New(mob/living/caster, list/members)
+/datum/group_mindlink_custom/New(mob/living/caster, list/members, meta_duration = 1)
 	. = ..()
 	owner = caster
-	expires_at = world.time + 15 MINUTES
+	expires_at = world.time + (15 MINUTES) * meta_duration
 	main_room = new(src, caster, "main", "主群")
 	rooms += main_room
 	for(var/mob/living/member as anything in members)
 		add_member(member)
 	main_room.system_message("心灵链接已建立。每位成员都可以发起私聊或创建小房间。")
-	expiry_timer = addtimer(CALLBACK(src, PROC_REF(end_link), "十五分钟已到，心灵链接逐渐消散。"), 15 MINUTES, TIMER_STOPPABLE)
+	expiry_timer = addtimer(CALLBACK(src, PROC_REF(end_link), "十五分钟已到，心灵链接逐渐消散。"), (15 MINUTES) * meta_duration, TIMER_STOPPABLE)
 
 /datum/group_mindlink_custom/Destroy()
 	active = FALSE
@@ -635,7 +635,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		to_chat(user, span_notice("以下对象无法接入：[html_encode(english_list(missing))]。"))
 	if(length(members) < 2)
 		return FALSE
-	new /datum/group_mindlink_custom(user, members)
+	new /datum/group_mindlink_custom(user, members, z121_duration(1))
 	return ..()
 
 /obj/effect/proc_holder/spell/self/group_mindlink/Destroy()
