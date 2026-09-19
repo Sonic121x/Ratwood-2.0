@@ -44,7 +44,7 @@
 	var/datum/customizer_entry/hair/hair_entry = entry
 	switch(href_list["customizer_task"])
 		if("hair_color")
-			var/new_color = color_pick_sanitized(user, "Choose your hair color:", "Character Preference", hair_entry.hair_color)
+			var/new_color = color_pick_sanitized(user, "选择你的头发颜色:", "角色偏好", hair_entry.hair_color)
 			if(!new_color)
 				return
 			hair_entry.hair_color = sanitize_hexcolor(new_color, 6, TRUE)
@@ -59,7 +59,7 @@
 		if("natural_gradient_color")
 			if(!allows_natural_gradient)
 				return
-			var/new_color = color_pick_sanitized(user, "Choose your natural gradient color:", "Character Preference", hair_entry.natural_color)
+			var/new_color = color_pick_sanitized(user, "选择你的自然渐变颜色:", "角色偏好", hair_entry.natural_color)
 			if(!new_color)
 				return
 			hair_entry.natural_color = sanitize_hexcolor(new_color, 6, TRUE)
@@ -67,14 +67,14 @@
 			if(!allows_dye_gradient)
 				return
 			var/list/choice_list = hair_gradient_name_to_type_list()
-			var/chosen_input = input(user, "Choose your dye gradient:", "Character Preference")  as null|anything in choice_list
+			var/chosen_input = input(user, "选择你的染色渐变:", "角色偏好")  as null|anything in choice_list
 			if(!chosen_input)
 				return
 			hair_entry.dye_gradient = choice_list[chosen_input]
 		if("dye_gradient_color")
 			if(!allows_dye_gradient)
 				return
-			var/new_color = color_pick_sanitized(user, "Choose your dye gradient color:", "Character Preference", hair_entry.dye_color)
+			var/new_color = color_pick_sanitized(user, "选择你的染色渐变颜色:", "角色偏好", hair_entry.dye_color)
 			if(!new_color)
 				return
 			hair_entry.dye_color = sanitize_hexcolor(new_color, 6, TRUE)
@@ -99,7 +99,7 @@
 
 /datum/customizer/bodypart_feature/hair/facial
 	abstract_type = /datum/customizer/bodypart_feature/hair/facial
-	name = "Facial Hair"
+	name = "面部毛发"
 
 /datum/customizer/bodypart_feature/hair/facial/is_allowed(datum/preferences/prefs)
 	return TRUE
