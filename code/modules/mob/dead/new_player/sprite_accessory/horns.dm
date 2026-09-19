@@ -1,7 +1,7 @@
 /datum/sprite_accessory/horns
 	abstract_type = /datum/sprite_accessory/horns
 	icon = 'icons/mob/sprite_accessory/horns/horns.dmi'
-	color_key_name = "Horns"
+	color_key_name = "角"
 	relevant_layers = list(BODY_FRONT_LAYER)
 	default_colors = list("#555555")
 
@@ -16,7 +16,7 @@
 	icon_state = "simple"
 
 /datum/sprite_accessory/horns/short
-	name = "Short"
+	name = "短"
 	icon_state = "short"
 
 /datum/sprite_accessory/horns/curled
@@ -24,7 +24,7 @@
 	icon_state = "curled"
 
 /datum/sprite_accessory/horns/ram
-	name = "Ram"
+	name = "公羊"
 	icon_state = "ram"
 
 /datum/sprite_accessory/horns/angler
@@ -32,7 +32,7 @@
 	icon_state = "angler"
 
 /datum/sprite_accessory/horns/guilmon
-	name = "Guilmon"
+	name = "基尔兽"
 	icon_state = "guilmon"
 
 /datum/sprite_accessory/horns/uni
@@ -46,12 +46,12 @@
 	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/horns/oni_large
-	name = "Oni (Large)"
+	name = "鬼角（大）"
 	icon_state = "oni_large"
 	relevant_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/horns/broken
-	name = "Broken"
+	name = "断裂"
 	icon_state = "broken"
 
 /datum/sprite_accessory/horns/rbroken
@@ -67,11 +67,11 @@
 	icon_state = "drake"
 
 /datum/sprite_accessory/horns/drake_wide
-	name = "Drake, Wide"
+	name = "龙兽（宽）"
 	icon_state = "drake_wide"
 
 /datum/sprite_accessory/horns/knight
-	name = "Knight"
+	name = "骑士"
 	icon_state = "knight"
 
 /datum/sprite_accessory/horns/dragon
@@ -79,7 +79,7 @@
 	icon_state = "dragon"
 
 /datum/sprite_accessory/horns/antlers
-	name = "Antlers"
+	name = "鹿角"
 	icon_state = "antlers"
 
 /datum/sprite_accessory/horns/ramalt
@@ -87,11 +87,11 @@
 	icon_state = "ramalt"
 
 /datum/sprite_accessory/horns/smallantlers
-	name = "Small Antlers"
+	name = "小鹿角"
 	icon_state = "smallantlers"
 
 /datum/sprite_accessory/horns/curledramhorns
-	name = "Curled Ram Horns"
+	name = "卷曲公羊角"
 	icon_state = "ramcurled"
 
 /datum/sprite_accessory/horns/curledramhornsalt
@@ -107,7 +107,7 @@
 	icon_state = "ramcurledsmallalt"
 
 /datum/sprite_accessory/horns/smallramhornsthree
-	name = "Small Ram Horns 3"
+	name = "小公羊角 3"
 	icon_state = "ramcurledsmall3"
 
 /datum/sprite_accessory/horns/liftedhorns
@@ -115,7 +115,7 @@
 	icon_state = "lifted"
 
 /datum/sprite_accessory/horns/brokenliftedhorns
-	name = "Lifted Horns (Broken)"
+	name = "上扬角（断裂）"
 	icon_state = "liftedbroken"
 
 /datum/sprite_accessory/horns/sideswept
@@ -127,11 +127,11 @@
 	icon_state = "bigcurly"
 
 /datum/sprite_accessory/horns/billberry
-	name = "Billberry"
+	name = "比尔贝里"
 	icon_state = "billberry"
 
 /datum/sprite_accessory/horns/stabbers
-	name = "Stabbers"
+	name = "尖刺角"
 	icon_state = "stabbers"
 
 /datum/sprite_accessory/horns/unihorn
@@ -139,7 +139,7 @@
 	icon_state = "unihorn"
 
 /datum/sprite_accessory/horns/longhorns
-	name = "Longhorns"
+	name = "长角"
 	icon_state = "longhorns"
 
 /datum/sprite_accessory/horns/outstretched
@@ -147,15 +147,15 @@
 	icon_state = "outstretched"
 
 /datum/sprite_accessory/horns/halo
-	name = "Halo"
+	name = "光环"
 	icon_state = "halo"
 
 /datum/sprite_accessory/horns/greathorns
-	name = "Great Horns"
+	name = "巨角"
 	icon_state = "great"
 
 /datum/sprite_accessory/horns/bunhorns
-	name = "Bunny horns"
+	name = "兔耳角"
 	icon_state = "bunhorns"
 
 /datum/sprite_accessory/horns/marauder
@@ -163,15 +163,15 @@
 	icon_state = "marauder"
 
 /datum/sprite_accessory/horns/faceguard
-	name = "Faceguard"
+	name = "面甲"
 	icon_state = "faceguard"
 
 /datum/sprite_accessory/horns/sheephorns
-	name = "Sheep Horns"
+	name = "绵羊角"
 	icon_state = "sheep"
 
 /datum/sprite_accessory/horns/doublehorns
-	name = "Double Horns"
+	name = "双角"
 	icon_state = "doublehorns"
 
 /datum/sprite_accessory/horns/large
@@ -179,7 +179,7 @@
 	icon = 'icons/mob/sprite_accessory/horns/horns_large.dmi'
 
 /datum/sprite_accessory/horns/large/big_antlers
-	name = "Big Antlers"
+	name = "大鹿角"
 	icon_state = "big_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -189,12 +189,12 @@
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/regal_antlers
-	name = "Regal Antlers"
+	name = "华丽鹿角"
 	icon_state = "regal_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/dukely_antlers
-	name = "Dukely Antlers"
+	name = "公爵鹿角"
 	icon_state = "dukely_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -204,7 +204,7 @@
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/branching_antlers
-	name = "Branching Antlers"
+	name = "分叉鹿角"
 	icon_state = "branching_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -219,7 +219,7 @@
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/highrise
-	name = "Towering"
+	name = "高耸角"
 	icon_state = "toweringhorns"
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -232,7 +232,7 @@
 	icon_state = "tiebhornsalt"
 
 /datum/sprite_accessory/horns/halforc
-	name = "Orc"
+	name = "兽人"
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
 	icon_state = "orctusk"
 	default_colors = list("#F4F4BE")
