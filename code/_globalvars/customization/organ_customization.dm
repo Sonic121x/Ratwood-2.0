@@ -1,26 +1,26 @@
 GLOBAL_LIST_INIT(named_penis_sizes, list(
-	"Small" = 1,
-	"Average" = 2,
-	"Large" = 3,
+	"小" = 1,
+	"中等" = 2,
+	"大" = 3,
 ))
 
 GLOBAL_LIST_INIT(named_ball_sizes, list(
-	"Small" = 1,
-	"Average" = 2,
-	"Large" = 3,
+	"小" = 1,
+	"中等" = 2,
+	"大" = 3,
 ))
 
 GLOBAL_LIST_INIT(named_breast_sizes, list(
-	"Flat" = 0,
-	"Slight" = 1,
-	"Small" = 2,
-	"Moderate" = 3,
-	"Large" = 4,
-	"Generous" = 5,
-	"Heavy" = 6,
-	"Massive" = 7,
-	"Heaping" = 8,
-	"Obscene" = 9
+	"平坦" = 0,
+	"微隆" = 1,
+	"小" = 2,
+	"中等" = 3,
+	"大" = 4,
+	"丰满" = 5,
+	"沉甸" = 6,
+	"巨大" = 7,
+	"庞然" = 8,
+	"夸张" = 9
 ))
 
 GLOBAL_LIST_INIT(customizer_choices, build_customizer_choices())
@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(customizers, build_customizers())
 		hsl[3] = min_tag
 		good = FALSE
 	if(hsl[2] > max_tag)
-		to_chat(user, span_warning("The picked color is too bright! Lowering Saturation to maximum 100%."))
+		to_chat(user, span_warning("所选颜色过亮！将饱和度降低至最高 100%。"))
 		hsl[2] = max_tag
 		good = FALSE
 	if(!good)
