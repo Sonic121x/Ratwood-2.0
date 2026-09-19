@@ -18,13 +18,13 @@
 	icon_state = "long"
 
 /datum/sprite_accessory/head_feature/skrell_hair/short
-	name = "Male"
+	name = "男性"
 	icon_state = "short"
 
 /datum/sprite_accessory/head_feature/xeno_head
 	abstract_type = /datum/sprite_accessory/head_feature/xeno_head
 	icon = 'icons/mob/sprite_accessory/head_features/xeno_head.dmi'
-	color_key_name = "Head"
+	color_key_name = "头部"
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/head_feature/xeno_head/standard
@@ -32,7 +32,7 @@
 	icon_state = "standard"
 
 /datum/sprite_accessory/head_feature/xeno_head/royal
-	name = "Royal"
+	name = "皇家"
 	icon_state = "royal"
 
 /datum/sprite_accessory/head_feature/xeno_head/hollywood
@@ -40,7 +40,7 @@
 	icon_state = "hollywood"
 
 /datum/sprite_accessory/head_feature/xeno_head/warrior
-	name = "Warrior"
+	name = "战士"
 	icon_state = "warrior"
 
 /datum/sprite_accessory/head_feature/ipc_screen
@@ -55,7 +55,7 @@
 	icon_state = "blank"
 
 /datum/sprite_accessory/head_feature/ipc_screen/pink
-	name = "Pink"
+	name = "粉色"
 	icon_state = "pink"
 
 /datum/sprite_accessory/head_feature/ipc_screen/green
@@ -63,7 +63,7 @@
 	icon_state = "green"
 
 /datum/sprite_accessory/head_feature/ipc_screen/red
-	name = "Red"
+	name = "红色"
 	icon_state = "red"
 
 /datum/sprite_accessory/head_feature/ipc_screen/blue
@@ -71,7 +71,7 @@
 	icon_state = "blue"
 
 /datum/sprite_accessory/head_feature/ipc_screen/yellow
-	name = "Yellow"
+	name = "黄色"
 	icon_state = "yellow"
 
 /datum/sprite_accessory/head_feature/ipc_screen/shower
@@ -83,11 +83,11 @@
 	icon_state = "nature"
 
 /datum/sprite_accessory/head_feature/ipc_screen/eight
-	name = "Eight"
+	name = "数字八"
 	icon_state = "eight"
 
 /datum/sprite_accessory/head_feature/ipc_screen/goggles
-	name = "Goggles"
+	name = "护目镜"
 	icon_state = "goggles"
 
 /datum/sprite_accessory/head_feature/ipc_screen/heart
@@ -103,7 +103,7 @@
 	icon_state = "breakout"
 
 /datum/sprite_accessory/head_feature/ipc_screen/purple
-	name = "Purple"
+	name = "紫色"
 	icon_state = "purple"
 
 /datum/sprite_accessory/head_feature/ipc_screen/scroll
@@ -111,23 +111,23 @@
 	icon_state = "scroll"
 
 /datum/sprite_accessory/head_feature/ipc_screen/console
-	name = "Console"
+	name = "控制台"
 	icon_state = "console"
 
 /datum/sprite_accessory/head_feature/ipc_screen/rgb
-	name = "RGB"
+	name = "流光"
 	icon_state = "rgb"
 
 /datum/sprite_accessory/head_feature/ipc_screen/golglider
-	name = "Gol Glider"
+	name = "戈尔滑翔者"
 	icon_state = "golglider"
 
 /datum/sprite_accessory/head_feature/ipc_screen/rainbow
-	name = "Rainbow"
+	name = "彩虹"
 	icon_state = "rainbow"
 
 /datum/sprite_accessory/head_feature/ipc_screen/sunburst
-	name = "Sunburst"
+	name = "旭日"
 	icon_state = "sunburst"
 
 /datum/sprite_accessory/head_feature/ipc_screen/static
@@ -143,11 +143,11 @@
 	icon_state = "redtext"
 
 /datum/sprite_accessory/head_feature/ipc_screen/sinewave
-	name = "Sine wave"
+	name = "正弦波"
 	icon_state = "sinewave"
 
 /datum/sprite_accessory/head_feature/ipc_screen/squarewave
-	name = "Square wave"
+	name = "方波"
 	icon_state = "squarewave"
 
 /datum/sprite_accessory/head_feature/ipc_screen/ecgwave
@@ -163,13 +163,13 @@
 	icon_state = "textdrop"
 
 /datum/sprite_accessory/head_feature/ipc_screen/stars
-	name = "Stars"
+	name = "星辰"
 	icon_state = "stars"
 
 /datum/sprite_accessory/head_feature/teshari_feathers
 	abstract_type = /datum/sprite_accessory/head_feature/teshari_feathers
 	icon = 'icons/mob/sprite_accessory/head_features/teshari_feathers.dmi'
-	color_key_name = "Feathers"
+	color_key_name = "羽毛"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/head_feature/teshari_feathers/regular
@@ -179,10 +179,10 @@
 	color_key_names = list("Feathers", "Details")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/bushy
-	name = "Bushy"
+	name = "蓬松"
 	icon_state = "bushy"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/mohawk
 	name = "Mohawk"
@@ -191,16 +191,16 @@
 	color_key_names = list("Feathers", "Details")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/spiky
-	name = "Spiky"
+	name = "尖刺"
 	icon_state = "spiky"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/pointy
-	name = "Pointy"
+	name = "尖角"
 	icon_state = "pointy"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/upright
 	name = "Upright"
@@ -209,10 +209,10 @@
 	color_key_names = list("Feathers", "Details")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/mane
-	name = "Mane"
+	name = "鬃羽"
 	icon_state = "mane"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/droopy
 	name = "Droopy"
@@ -221,16 +221,16 @@
 	color_key_names = list("Feathers", "Details")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/longway
-	name = "Longway"
+	name = "长条"
 	icon_state = "longway"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/tree
-	name = "Tree"
+	name = "树形"
 	icon_state = "tree"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/mushroom
 	name = "Mushroom"
@@ -241,9 +241,9 @@
 	icon_state = "backstrafe"
 
 /datum/sprite_accessory/head_feature/teshari_feathers/thinmohawk
-	name = "Thin Mohawk"
+	name = "细莫西干"
 	icon_state = "thinmohawk"
 
 /datum/sprite_accessory/head_feature/teshari_feathers/thinmane
-	name = "Thin Mane"
+	name = "细鬃羽"
 	icon_state = "thinmane"
