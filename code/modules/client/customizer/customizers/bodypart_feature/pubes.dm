@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	default_material = BODY_HAIR_MATERIAL_BRAIDS
 
 /datum/customizer_choice/bodypart_feature/pubes
-	name = "Pubic Style"
+	name = "阴毛样式"
 	customizer_entry_type = /datum/customizer_entry/bodypart_feature/pubes
 	feature_type = /datum/bodypart_feature/pubes
 	sprite_accessories = list(
@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	..()
 	var/datum/customizer_entry/bodypart_feature/pubes/pubes_entry = entry
 	var/material_name = find_key_by_value(GLOB.named_body_hair_materials, pubes_entry.material)
-	dat += "<br>Material: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=body_hair_material'>[material_name]</a>"
+	dat += "<br>阴毛材质: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=body_hair_material'>[material_name]</a>"
 
 /datum/customizer_choice/bodypart_feature/pubes/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
@@ -79,8 +79,8 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	var/datum/customizer_entry/bodypart_feature/pubes/pubes_entry = entry
 	var/named_material = input(
 		user,
-		"Choose your pubic hair material:",
-		"Character Preference",
+		"选择你的阴毛材质:",
+		"角色偏好",
 		find_key_by_value(GLOB.named_body_hair_materials, pubes_entry.material),
 	) as null|anything in GLOB.named_body_hair_materials
 	if(isnull(named_material))
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	default_material = BODY_HAIR_MATERIAL_BRAIDS
 
 /datum/customizer_choice/bodypart_feature/pits
-	name = "Armpit Style"
+	name = "腋毛样式"
 	customizer_entry_type = /datum/customizer_entry/bodypart_feature/pits
 	feature_type = /datum/bodypart_feature/pits
 	sprite_accessories = list(
@@ -165,8 +165,8 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	var/datum/customizer_entry/bodypart_feature/pits/pits_entry = entry
 	var/named_material = input(
 		user,
-		"Choose your armpit hair material:",
-		"Character Preference",
+		"选择你的腋毛材质:",
+		"角色偏好",
 		find_key_by_value(GLOB.named_body_hair_materials, pits_entry.material),
 	) as null|anything in GLOB.named_body_hair_materials
 	if(isnull(named_material))
