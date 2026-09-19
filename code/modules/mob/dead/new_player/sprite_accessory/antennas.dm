@@ -16,7 +16,7 @@
 	default_colors = list("#FFFFFF")
 
 /datum/sprite_accessory/antenna/moth/plain
-	name = "Plain"
+	name = "素色"
 	icon_state = "plain"
 
 /datum/sprite_accessory/antenna/moth/reddish
@@ -28,7 +28,7 @@
 	icon_state = "royal"
 
 /datum/sprite_accessory/antenna/moth/gothic
-	name = "Gothic"
+	name = "哥特"
 	icon_state = "gothic"
 
 /datum/sprite_accessory/antenna/moth/whitefly
@@ -36,7 +36,7 @@
 	icon_state = "whitefly"
 
 /datum/sprite_accessory/antenna/moth/lovers
-	name = "Lovers"
+	name = "恋人"
 	icon_state = "lovers"
 
 /datum/sprite_accessory/antenna/moth/burnt_off
@@ -44,11 +44,11 @@
 	icon_state = "burnt_off"
 
 /datum/sprite_accessory/antenna/moth/firewatch
-	name = "Firewatch"
+	name = "火警瞭望"
 	icon_state = "firewatch"
 
 /datum/sprite_accessory/antenna/moth/deathhead
-	name = "Deathshead"
+	name = "骷髅天蛾"
 	icon_state = "deathhead"
 
 /datum/sprite_accessory/antenna/moth/poison
@@ -56,11 +56,11 @@
 	icon_state = "poison"
 
 /datum/sprite_accessory/antenna/moth/ragged
-	name = "Ragged"
+	name = "残破"
 	icon_state = "ragged"
 
 /datum/sprite_accessory/antenna/moth/moonfly
-	name = "Moon Fly"
+	name = "月蛾"
 	icon_state = "moonfly"
 
 /datum/sprite_accessory/antenna/moth/oakworm
@@ -68,11 +68,11 @@
 	icon_state = "oakworm"
 
 /datum/sprite_accessory/antenna/moth/jungle
-	name = "Jungle"
+	name = "丛林"
 	icon_state = "jungle"
 
 /datum/sprite_accessory/antenna/moth/witchwing
-	name = "Witch Wing"
+	name = "巫翼"
 	icon_state = "witchwing"
 
 /datum/sprite_accessory/antenna/moth/regal
@@ -80,5 +80,5 @@
 	icon_state = "regal"
 
 /datum/sprite_accessory/antenna/moth/mothra
-	name = "Mothra"
+	name = "摩斯拉"
 	icon_state = "mothra"
