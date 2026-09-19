@@ -626,8 +626,8 @@
 	. = ..()
 	if(obj_broken)
 		return
-	var/day = "... actually, WHAT dae is it?"
-	switch(GLOB.dayspassed)
+	var/day = "……等等，今天到底是星期几？"
+	switch(get_current_day_of_week())
 		if(1)
 			day = "Moon's dae."
 		if(2)
@@ -706,8 +706,8 @@
 	. = ..()
 	if(obj_broken)
 		return
-	var/day = "... actually, WHAT dae is it?"
-	switch(GLOB.dayspassed)
+	var/day = "……等等，今天到底是什么日子？"
+	switch(get_current_day_of_week())
 		if(1)
 			day = "Moon's dae."
 		if(2)

@@ -235,21 +235,21 @@
 			return "Sequestered"
 	return "Unknown"
 
-/// ATC (Ferentian Trading Company) emergency loan — early-round cashflow tool.
+/// ATC (Ferentian Trading Company) emergency loan — available throughout the round.
 /// Adds debt repaid via future inflow; consumes arrears grace (next missed payroll → sequestration).
-/// Disabled from ATC_LOAN_CLOSED_DAY onward so it can't free-ride a round-end wipe.
+/// 已移除紧急贷款的第五天截止限制，保留破产与未还清贷款限制。
 /datum/controller/subsystem/treasury/proc/atc_loan_available()
 	if(treasury_state == TREASURY_BANKRUPTCY)
 		return FALSE
-	if(GLOB.dayspassed >= ATC_LOAN_CLOSED_DAY)
-		return FALSE
+	// 已移除紧急贷款的发放截止日期判断。
+	// 不再因游戏天数而返回不可借款。
 	return TRUE
 
 /datum/controller/subsystem/treasury/proc/atc_loan_blocker_reason()
 	if(treasury_state == TREASURY_BANKRUPTCY)
 		return "The Company administers commerce. No further loans until sequestration lifts."
-	if(GLOB.dayspassed >= ATC_LOAN_CLOSED_DAY)
-		return "The Guilds clerk is out of office. The loan window has closed for the week."
+	// 已移除紧急贷款窗口关闭的日期判断。
+	// 已移除超过截止日的拒绝原因。
 	if(atc_loan_arrears_consumed)
 		return "A prior advance stands unpaid. The Company refuses a second loan until the first is settled."
 	return null

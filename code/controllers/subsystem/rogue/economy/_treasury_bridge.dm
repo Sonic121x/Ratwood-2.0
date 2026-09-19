@@ -75,8 +75,8 @@
 	var/royal_custom_threshold = ROYAL_CUSTOM_VOLUME_BASE
 	/// Last GLOB.dayspassed we ran tick_loans() — prevents double-firing.
 	var/last_loan_tick_day = -1
-	/// Day after which no new personal loans or indentures may be issued.
-	var/loan_max_issuance_day = 6
+	/// 已移除个人贷款与机构契约的发放截止日。
+	// 保留此处行位，贷款仍按各自约定的期限到期。
 	/// Patron/agent rosters for each faction jawbank.
 	var/list/church_agents = list()
 	var/list/merchant_agents = list()

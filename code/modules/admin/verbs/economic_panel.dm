@@ -157,7 +157,7 @@ GLOBAL_DATUM_INIT(economic_panel, /datum/economic_panel, new)
 	bankruptcy["suspended_charters"] = suspended
 	bankruptcy["atc_loan_min"] = ATC_LOAN_MIN_AMOUNT
 	bankruptcy["atc_loan_max"] = ATC_LOAN_MAX_AMOUNT
-	bankruptcy["atc_loan_closed_day"] = ATC_LOAN_CLOSED_DAY
+	// 已移除紧急贷款截止日字段，管理员面板不再显示截止日期。
 	bankruptcy["atc_loan_available"] = SStreasury.atc_loan_available() ? TRUE : FALSE
 	bankruptcy["atc_loan_blocker"] = SStreasury.atc_loan_blocker_reason() || ""
 	bankruptcy["atc_loan_arrears_consumed"] = SStreasury.atc_loan_arrears_consumed ? TRUE : FALSE

@@ -53,7 +53,7 @@
 
 #define ATC_LOAN_MIN_AMOUNT 500
 #define ATC_LOAN_MAX_AMOUNT 1500
-#define ATC_LOAN_CLOSED_DAY 5
+// 已移除紧急贷款截止日常量，借款服务在整个回合持续开放。
 #define ATC_LOAN_INTEREST_RATE 0.25
 
 // ============================================================================

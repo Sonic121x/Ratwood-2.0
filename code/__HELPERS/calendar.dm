@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(event_day_ordinals, list(
 		scom_announce(line)
 
 /proc/get_current_day_of_week()
-	return GLOB.dayspassed
+	return GLOB.dayspassed ? MODULUS(GLOB.dayspassed - 1, CALENDAR_DAYS_IN_WEEK) + 1 : 0
 
 /proc/get_current_day_of_week_name()
 	var/round_id = text2num(GLOB.round_id) || 0

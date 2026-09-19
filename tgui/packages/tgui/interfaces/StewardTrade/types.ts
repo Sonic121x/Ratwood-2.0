@@ -215,7 +215,7 @@ export type AtcLoanState = {
   can_view: BooleanLike;
   min: number;
   max: number;
-  closed_day: number;
+  // 已移除紧急贷款截止日字段，服务在整个回合持续开放。
   interest_pct: number;
   blocker: string;
   arrears_consumed: BooleanLike;

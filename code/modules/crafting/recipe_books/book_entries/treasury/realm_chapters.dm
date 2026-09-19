@@ -222,7 +222,7 @@
 		<p>If the Crown's Purse cannot meet the day's wages, an advance of <b>at least [TREASURY_ARREARS_LOAN]m, up to the actual shortfall</b>, is issued without interest. Wages pay normally for the day. The advance is registered as <b>arrears</b>; until settled, every coin of inflow into the Crown's Purse is skimmed against it before reaching the balance.</p>
 
 		<h3>The Emergency Loan</h3>
-		<p>Before Day <b>[ATC_LOAN_CLOSED_DAY]</b>, the Crown may draw a one-time loan for <b>[ATC_LOAN_MIN_AMOUNT]m to [ATC_LOAN_MAX_AMOUNT]m</b>. The principal is paid into the Crown's Purse immediately. Interest is <b>[round(ATC_LOAN_INTEREST_RATE * 100)]%</b>, repaid silently from skimmed inflow. No second loan may be drawn until the first is settled. Drawing the loan <b>forfeits the arrears grace</b>: missing payroll while the loan is outstanding sends the Crown directly to sequestration.</p>
+		<p>On any day, the Crown may draw a loan for <b>[ATC_LOAN_MIN_AMOUNT]m to [ATC_LOAN_MAX_AMOUNT]m</b>. The principal is paid into the Crown's Purse immediately. Interest is <b>[round(ATC_LOAN_INTEREST_RATE * 100)]%</b>, repaid silently from skimmed inflow. No second loan may be drawn until the first is settled. Drawing the loan <b>forfeits the arrears grace</b>: missing payroll while the loan is outstanding sends the Crown directly to sequestration.</p>
 
 		<h3>Second Failure - Sequestration</h3>
 		<p>If the Crown misses payroll on a second consecutive dawn (or once with an outstanding loan), the realm enters <b>sequestration</b>:</p>

@@ -38,22 +38,22 @@ export const IssueLoanSection = ({
   const [target, setTarget] = useState<string>(indentureTargets[0]?.id ?? '');
 
   const numeric = parseInt(amount, 10) || 0;
-  const pastWindow = data.day > data.max_issuance_day;
+  // 已移除贷款发放日期窗口判断，保留金额和目标校验。
   const personalValid = numeric >= 50 && numeric <= 500;
   const indentureValid = numeric >= 501 && numeric <= 2000;
   const targetValid = tier === 'personal' || target !== '';
   const valid =
     (tier === 'personal' ? personalValid : indentureValid) && targetValid;
-  const disabled = pastWindow || !valid;
+  const disabled = !valid;
 
   return (
     <>
-      <div style={sectionHeaderStyle}>Draft a Loan</div>
-      {pastWindow && (
-        <div style={{ color: INK_FAINT, marginBottom: 8 }}>
-          New loans may not be drawn after day {data.max_issuance_day}.
-        </div>
-      )}
+      <div style={sectionHeaderStyle}>起草贷款</div>
+      {/*
+        已移除超过截止日的贷款提示区。
+        个人贷款与机构契约在任意游戏日均可开具。
+        保留原有行位，方便后续对照和回调。
+      */}
       <div style={tabBarStyle}>
         <div
           style={tabStyle(tier === 'personal')}

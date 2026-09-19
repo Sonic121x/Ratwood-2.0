@@ -94,7 +94,7 @@ export type Data = {
   funds: FundEntry[];
   account_balance: number;
   day: number;
-  max_issuance_day: number;
+  // 已移除贷款发放截止日字段，任意游戏日均可申请。
   active_loan: ActiveLoan | null;
   poll_tax: PollTax;
   poll_tax_static: PollTaxStatic;
