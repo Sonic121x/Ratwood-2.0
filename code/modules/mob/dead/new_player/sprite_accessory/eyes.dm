@@ -23,5 +23,5 @@
 	icon_state = "human_glow"
 
 /datum/sprite_accessory/eyes/humanoid_cyber
-	name = "Humanoid Cyber"
+	name = "类人机械眼"
 	icon_state = "human_cyber"

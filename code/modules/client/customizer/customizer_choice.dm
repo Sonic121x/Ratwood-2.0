@@ -1,7 +1,7 @@
 /datum/customizer_choice
 	abstract_type = /datum/customizer_choice
 	/// User facing name of the customizer choice.
-	var/name = "Customizer"
+	var/name = "定制器"
 	/// Type of the entry datum which is used for save/load of information.
 	var/customizer_entry_type = /datum/customizer_entry
 	/// List of sprite accessories this choice allows. Can be null
@@ -77,7 +77,7 @@
 			dat += "<br>[arrows_string]<a [accessory_link]>[accessory.name]</a>"
 
 		if(allows_accessory_color_customization && !(accessory.color_disabled))
-			dat += "<br><a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=reset_colors'>Reset colors</a>"
+			dat += "<br><a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=reset_colors'>重置颜色</a>"
 			var/list/color_list = color_string_to_list(entry.accessory_colors)
 			for(var/index in 1 to accessory.color_keys)
 				var/named_index = (accessory.color_keys == 1) ? accessory.color_key_name : accessory.color_key_names[index]
@@ -92,7 +92,7 @@
 			for(var/choice_type in sprite_accessories)
 				var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(choice_type)
 				choice_list[accessory.name] = choice_type
-			var/chosen_input = tgui_input_list(user, "Choose your [LOWER_TEXT(name)] appearance:", "Character Preference",choice_list)
+			var/chosen_input = tgui_input_list(user, "选择你的[LOWER_TEXT(name)]外观:", "角色偏好",choice_list)
 			if(!chosen_input)
 				return
 			var/choice_type = choice_list[chosen_input]
@@ -131,7 +131,7 @@
 			if(index > accessory.color_keys)
 				return
 			var/list/color_list = color_string_to_list(entry.accessory_colors)
-			var/new_color = color_pick_sanitized(user, "Choose your accessory color:", "Character Preference","[color_list[index]]")
+			var/new_color = color_pick_sanitized(user, "选择你的配件颜色:", "角色偏好","[color_list[index]]")
 			if(!new_color)
 				return
 			color_list[index] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -195,7 +195,7 @@
 
 /datum/customizer_choice/organ
 	abstract_type = /datum/customizer_choice/organ
-	name = "Organ"
+	name = "器官"
 	/// Typepath of the organ this choice yields.
 	var/organ_type
 	/// Slot of the organ.
@@ -228,7 +228,7 @@
 
 /datum/customizer_choice/bodypart_feature
 	abstract_type = /datum/customizer_choice/bodypart_feature
-	name = "Bodypart Feature"
+	name = "部位特征"
 	/// Typepath of the bodypart feature
 	var/feature_type = /datum/bodypart_feature
 

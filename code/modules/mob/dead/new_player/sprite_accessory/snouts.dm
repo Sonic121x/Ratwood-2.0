@@ -1,7 +1,7 @@
 /datum/sprite_accessory/snout
 	abstract_type = /datum/sprite_accessory/snout
 	icon = 'icons/mob/sprite_accessory/snouts/snouts.dmi'
-	color_key_name = "Snout"
+	color_key_name = "吻部"
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/snout/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -11,294 +11,294 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/snout/cat
-	name = "Cat"
+	name = "猫"
 	icon_state = "cat"
 
 /datum/sprite_accessory/snout/sharp
-	name = "Sharp"
+	name = "尖"
 	icon_state = "sharp"
 
 /datum/sprite_accessory/snout/sharpdualcolor
-	name = "Sharp - Dual Color"
+	name = "尖-双色"
 	icon_state = "m_snout_sharp"
 	color_keys = 2
-	color_key_names = list("Snout", "Jaw")
+	color_key_names = list("吻部", "下颚")
 
 /datum/sprite_accessory/snout/round
-	name = "Round"
+	name = "圆"
 	icon_state = "round"
 
 /datum/sprite_accessory/snout/rounddualcolor
-	name = "Round - Dual Color"
+	name = "圆-双色"
 	icon_state = "m_snout_round"
 	color_keys = 2
-	color_key_names = list("Snout", "Jaw")
+	color_key_names = list("吻部", "下颚")
 
 /datum/sprite_accessory/snout/sharplight
-	name = "Sharp + Light"
+	name = "尖+浅色"
 	icon_state = "sharplight"
 
 /datum/sprite_accessory/snout/sharplightdualcolor
-	name = "Sharp + Light - Dual Color"
+	name = "尖+浅色-双色"
 	icon_state = "m_snout_sharplight"
 	color_keys = 2
-	color_key_names = list("Snout", "Jaw")
+	color_key_names = list("吻部", "下颚")
 
 /datum/sprite_accessory/snout/roundlight
-	name = "Round + Light"
+	name = "圆+浅色"
 	icon_state = "roundlight"
 
 /datum/sprite_accessory/snout/roundlightdualcolor
-	name = "Round + Light - Dual Color"
+	name = "圆+浅色-双色"
 	icon_state = "m_snout_roundlight"
 	color_keys = 2
-	color_key_names = list("Snout", "Jaw")
+	color_key_names = list("吻部", "下颚")
 
 /datum/sprite_accessory/snout/vulp
-	name = "Vulp Two-shade"
+	name = "维纳丁双色"
 	icon_state = "vulp"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/shark
-	name = "Shark"
+	name = "鲨鱼"
 	icon_state = "shark"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/bird
-	name = "Beak"
+	name = "鸟喙"
 	icon_state = "bird"
 	color_keys = 3
-	color_key_names = list("Beak", "Detail", "Top")
+	color_key_names = list("喙", "细节", "顶部")
 
 /datum/sprite_accessory/snout/bigbeak
-	name = "Big Beak"
+	name = "大喙"
 	icon_state = "bigbeak"
 
 /datum/sprite_accessory/snout/bigbeakshort
-	name = "Big Beak Short"
+	name = "大喙（短）"
 	icon_state = "bigbeakshort"
 
 /datum/sprite_accessory/snout/slimbeak
-	name = "Slim Beak"
+	name = "细喙"
 	icon_state = "slimbeak"
 
 /datum/sprite_accessory/snout/slimbeakshort
-	name = "Slim Beak Short"
+	name = "细喙（短）"
 	icon_state = "slimbeakshort"
 
 /datum/sprite_accessory/snout/slimbeakalt
-	name = "Slim Beak Alt"
+	name = "细喙（变体）"
 	icon_state = "slimbeakalt"
 
 /datum/sprite_accessory/snout/hookbeak
-	name = "Hook Beak"
+	name = "钩喙"
 	icon_state = "hookbeak"
 
 /datum/sprite_accessory/snout/hookbeakbig
-	name = "Hook Beak Big"
+	name = "钩喙（大）"
 	icon_state = "hookbeakbig"
 
 /datum/sprite_accessory/snout/bug
-	name = "Bug"
+	name = "虫"
 	icon_state = "bug"
 	color_keys = 2
-	color_key_names = list("Snout", "Eyes")
+	color_key_names = list("吻部", "眼睛")
 
 /datum/sprite_accessory/snout/elephant
-	name = "Elephant"
+	name = "象"
 	icon_state = "elephant"
 	color_keys = 2
-	color_key_names = list("Snout", "Horns")
+	color_key_names = list("吻部", "角")
 
 /datum/sprite_accessory/snout/husky
-	name = "Husky"
+	name = "哈士奇"
 	icon_state = "husky"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/rhino
-	name = "Horn"
+	name = "角"
 	icon_state = "rhino"
 	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
+	color_key_names = list("吻部", "细节", "细节")
 
 /datum/sprite_accessory/snout/bovine
-	name = "Bovine"
+	name = "牛"
 	icon_state = "bovine"
 	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
+	color_key_names = list("吻部", "细节", "细节")
 
 /datum/sprite_accessory/snout/rodent
-	name = "Rodent"
+	name = "啮齿"
 	icon_state = "rodent"
 
 /datum/sprite_accessory/snout/lcanid
-	name = "Mammal, Long"
+	name = "哺乳类（长）"
 	icon_state = "lcanid"
 
 /datum/sprite_accessory/snout/lcanidalt
-	name = "Mammal, Long ALT"
+	name = "哺乳类（长-变体）"
 	icon_state = "lcanidalt"
 
 /datum/sprite_accessory/snout/lcanidstriped
-	name = "Mammal, Long, Striped"
+	name = "哺乳类（长-条纹）"
 	icon_state = "lcanidstripe"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/lcanidstripedalt
-	name = "Mammal, Long, Striped ALT"
+	name = "哺乳类（长-条纹-变体）"
 	icon_state = "lcanidstripealt"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/scanid
-	name = "Mammal, Short"
+	name = "哺乳类（短）"
 	icon_state = "scanid"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/scanidalt
-	name = "Mammal, Short ALT"
+	name = "哺乳类（短-变体）"
 	icon_state = "scanidalt"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/scanidalt2
-	name = "Mammal, Short ALT 2"
+	name = "哺乳类（短-变体 2）"
 	icon_state = "scanidalt2"
 
 /datum/sprite_accessory/snout/scanidalt3
-	name = "Mammal, Short ALT 3"
+	name = "哺乳类（短-变体 3）"
 	icon_state = "scanidalt3"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/tajaran
-	name = "Tajaran, normal"
+	name = "塔加兰（标准）"
 	icon_state = "ntajaran"
 
 /datum/sprite_accessory/snout/wolf
-	name = "Mammal, Thick"
+	name = "哺乳类（厚）"
 	icon_state = "wolf"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/wolfalt
-	name = "Mammal, Thick ALT"
+	name = "哺乳类（厚-变体）"
 	icon_state = "wolfalt"
 
 /datum/sprite_accessory/snout/otie
-	name = "Otie"
+	name = "奥提"
 	icon_state = "otie"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/otiesmile
-	name = "Otie Smile"
+	name = "奥提（微笑）"
 	icon_state = "otiesmile"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/pede
-	name = "Scolipede"
+	name = "蜈蚣王"
 	icon_state = "pede"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/sergal
-	name = "Sergal"
+	name = "瑟伽尔"
 	icon_state = "sergal"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/toucan
-	name = "Toucan"
+	name = "巨嘴鸟"
 	icon_state = "toucan"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/redpanda
-	name = "WahCoon"
+	name = "瓦库恩"
 	icon_state = "wah"
 	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
+	color_key_names = list("吻部", "细节", "细节")
 
 /datum/sprite_accessory/snout/redpandaalt
-	name = "WahCoon ALT"
+	name = "瓦库恩（变体）"
 	icon_state = "wahalt"
 	color_keys = 2
-	color_key_names = list("Snout", "Details")
+	color_key_names = list("吻部", "细节")
 
 /datum/sprite_accessory/snout/sbeak
-	name = "Corvid Beak"
+	name = "鸦喙"
 	icon_state = "corvid"
 
 /datum/sprite_accessory/snout/rat
-	name = "Rat"
+	name = "鼠"
 	icon_state = "rat"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/stubby
-	name = "Stubby"
+	name = "短粗"
 	icon_state = "stubby"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/alienlizard
-	name = "Alien Lizard"
+	name = "异星蜥蜴"
 	icon_state = "alienlizard"
 
 /datum/sprite_accessory/snout/alienlizardteeth
-	name = "Alien Lizard Teeth"
+	name = "异星蜥蜴（带齿）"
 	icon_state = "alienlizardteeth"
 	extra_state = TRUE
 
 /datum/sprite_accessory/snout/skulldog
-	name = "Skulldog"
+	name = "骷髅犬"
 	icon_state = "skulldog"
 	extra_state = TRUE
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/hanubus
-	name = "Anubus"
+	name = "阿努比斯"
 	icon_state = "hanubus"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/hpanda
-	name = "Panda"
+	name = "熊猫"
 	icon_state = "hpanda"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/hjackal
-	name = "Jackal"
+	name = "胡狼"
 	icon_state = "hjackal"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/hspots
-	name = "Hyena"
+	name = "鬣狗"
 	icon_state = "hspots"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/hhorse
-	name = "Horse"
+	name = "马"
 	icon_state = "hhorse"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/hzebra
-	name = "Zebra"
+	name = "斑马"
 	icon_state = "hzebra"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /******************************************
 **************** Snouts *******************
@@ -309,237 +309,237 @@
 	relevant_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snout/front/sharp
-	name = "Sharp (Top)"
+	name = "尖（顶部）"
 	icon_state = "fsharp"
 
 /datum/sprite_accessory/snout/front/round
-	name = "Round (Top)"
+	name = "圆（顶部）"
 	icon_state = "fround"
 
 /datum/sprite_accessory/snout/front/sharplight
-	name = "Sharp + Light (Top)"
+	name = "尖+浅色（顶部）"
 	icon_state = "fsharplight"
 
 /datum/sprite_accessory/snout/front/roundlight
-	name = "Round + Light (Top)"
+	name = "圆+浅色（顶部）"
 	icon_state = "froundlight"
 
 /datum/sprite_accessory/snout/front/bird
-	name = "Beak (Top)"
+	name = "鸟喙（顶部）"
 	icon_state = "fbird"
 	color_keys = 3
-	color_key_names = list("Beak", "Detail", "Top")
+	color_key_names = list("喙", "细节", "顶部")
 
 /datum/sprite_accessory/snout/front/bigbeak
-	name = "Big Beak (Top)"
+	name = "大喙（顶部）"
 	icon_state = "fbigbeak"
 
 /datum/sprite_accessory/snout/front/bug
-	name = "Bug (Top)"
+	name = "虫（顶部）"
 	icon_state = "fbug"
 	color_keys = 2
-	color_key_names = list("Snout", "Eyes")
+	color_key_names = list("吻部", "眼睛")
 
 /datum/sprite_accessory/snout/front/elephant
-	name = "Elephant (Top)"
+	name = "象（顶部）"
 	icon_state = "felephant"
 	color_keys = 2
-	color_key_names = list("Snout", "Horns")
+	color_key_names = list("吻部", "角")
 
 /datum/sprite_accessory/snout/front/rhino
-	name = "Horn (Top)"
+	name = "角（顶部）"
 	icon_state = "frhino"
 	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
+	color_key_names = list("吻部", "细节", "细节")
 
 /datum/sprite_accessory/snout/front/bovine
-	name = "Bovine (Top)"
+	name = "牛（顶部）"
 	icon_state = "fbovine"
 	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
+	color_key_names = list("吻部", "细节", "细节")
 
 /datum/sprite_accessory/snout/front/husky
-	name = "Husky (Top)"
+	name = "哈士奇（顶部）"
 	icon_state = "fhusky"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/lcanid
-	name = "Mammal, Long (Top)"
+	name = "哺乳类（长）（顶部）"
 	icon_state = "flcanid"
 
 /datum/sprite_accessory/snout/front/lcanidalt
-	name = "Mammal, Long ALT (Top)"
+	name = "哺乳类（长-变体）（顶部）"
 	icon_state = "flcanidalt"
 
 /datum/sprite_accessory/snout/front/lcanidstriped
-	name = "Mammal, Long, Striped (Top)"
+	name = "哺乳类（长-条纹）（顶部）"
 	icon_state = "flcanidstripe"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/lcanidstripedalt
-	name = "Mammal, Long, Striped ALT (Top)"
+	name = "哺乳类（长-条纹-变体）（顶部）"
 	icon_state = "flcanidstripealt"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/scanid
-	name = "Mammal, Short (Top)"
+	name = "哺乳类（短）（顶部）"
 	icon_state = "fscanid"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/scanidalt
-	name = "Mammal, Short ALT (Top)"
+	name = "哺乳类（短-变体）（顶部）"
 	icon_state = "fscanidalt"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/scanidalt2
-	name = "Mammal, Short ALT 2 (Top)"
+	name = "哺乳类（短-变体 2）（顶部）"
 	icon_state = "fscanidalt2"
 
 /datum/sprite_accessory/snout/front/scanidalt3
-	name = "Mammal, Short ALT 3 (Top)"
+	name = "哺乳类（短-变体 3）（顶部）"
 	icon_state = "fscanidalt3"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/wolf
-	name = "Mammal, Thick (Top)"
+	name = "哺乳类（厚）（顶部）"
 	icon_state = "fwolf"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/wolfalt
-	name = "Mammal, Thick ALT (Top)"
+	name = "哺乳类（厚-变体）（顶部）"
 	icon_state = "fwolfalt"
 
 /datum/sprite_accessory/snout/front/otie
-	name = "Otie (Top)"
+	name = "奥提（顶部）"
 	icon_state = "fotie"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/otiesmile
-	name = "Otie Smile (Top)"
+	name = "奥提（微笑）（顶部）"
 	icon_state = "fotiesmile"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/rodent
-	name = "Rodent (Top)"
+	name = "啮齿（顶部）"
 	icon_state = "frodent"
 
 /datum/sprite_accessory/snout/front/pede
-	name = "Scolipede (Top)"
+	name = "蜈蚣王（顶部）"
 	icon_state = "fpede"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/sergal
-	name = "Sergal (Top)"
+	name = "瑟伽尔（顶部）"
 	icon_state = "fsergal"
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /datum/sprite_accessory/snout/front/toucan
-	name = "Toucan (Top)"
+	name = "巨嘴鸟（顶部）"
 	icon_state = "ftoucan"
 	color_keys = 2
-	color_key_names = list("Detail", "Beak")
+	color_key_names = list("细节", "喙")
 
 /datum/sprite_accessory/snout/front/redpanda
-	name = "WahCoon (Top)"
+	name = "瓦库恩（顶部）"
 	icon_state = "fwah"
 	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
+	color_key_names = list("吻部", "细节", "细节")
 
 /datum/sprite_accessory/snout/front/redpandaalt
-	name = "WahCoon ALT (Top)"
+	name = "瓦库恩（变体）（顶部）"
 	icon_state = "fwahalt"
 	color_keys = 2
-	color_key_names = list("Snout", "Details")
+	color_key_names = list("吻部", "细节")
 
 /datum/sprite_accessory/snout/front/skulldog
-	name = "Skulldog (Top)"
+	name = "骷髅犬（顶部）"
 	icon_state = "fskulldog"
 	extra_state = TRUE
 	color_keys = 2
-	color_key_names = list("Snout", "Inner")
+	color_key_names = list("吻部", "内侧")
 
 /*
 ---- azure snouts below this ----
 */
 
 /datum/sprite_accessory/snout/shortnosed
-	name = "Short Nosed"
+	name = "短鼻"
 	icon_state = "shortnosed"
 	color_keys = 2
-	color_key_names = list("Snout", "Nose")
+	color_key_names = list("吻部", "鼻子")
 
 /datum/sprite_accessory/snout/stubby
-	name = "Stubby"
+	name = "短粗"
 	icon_state = "stubby"
 	color_keys = 2
-	color_key_names = list("Mask", "Snout")
+	color_key_names = list("面具", "吻部")
 
 /datum/sprite_accessory/snout/stubbyalt
-	name = "Stubby ALT"
+	name = "短粗（变体）"
 	icon_state = "stubbyalt"
 	color_keys = 2
-	color_key_names = list("Snout", "Nose")
+	color_key_names = list("吻部", "鼻子")
 
 ///CONSTRUCT-GOLEM ACCESORIES, MADE OF METAL///
 /datum/sprite_accessory/snout/front/malum1
-	name = "malum1"
+	name = "玛勒姆 1"
 	icon_state = "malum1"
 
 /datum/sprite_accessory/snout/front/malum2
-	name = "malum2"
+	name = "玛勒姆 2"
 	icon_state = "malum2"
 
 /datum/sprite_accessory/snout/front/necran
-	name = "necran"
+	name = "内克拉"
 	icon_state = "necran"
 
 /datum/sprite_accessory/snout/front/abbysorian
-	name = "abbysorian"
+	name = "阿比索尔"
 	icon_state = "abbysorian"
 
 /datum/sprite_accessory/snout/front/dendorite
-	name = "dendorite"
+	name = "登多尔"
 	icon_state = "dendorite"
 
 /datum/sprite_accessory/snout/front/pestran
-	name = "pestran"
+	name = "佩斯特拉"
 	icon_state = "pestran"
 
 /datum/sprite_accessory/snout/front/ravoxian
-	name = "ravoxian"
+	name = "拉沃克斯"
 	icon_state = "ravoxian"
 
 /datum/sprite_accessory/snout/front/eoran
-	name = "eoran"
+	name = "伊欧拉"
 	icon_state = "eoran"
 
 /datum/sprite_accessory/snout/front/comedy1
-	name = "comedy1"
+	name = "喜剧 1"
 	icon_state = "comedy1"
 
 /datum/sprite_accessory/snout/front/comedy2
-	name = "comedy2"
+	name = "喜剧 2"
 	icon_state = "comedy2"
 
 /datum/sprite_accessory/snout/front/drama1
-	name = "drama1"
+	name = "悲剧 1"
 	icon_state = "drama1"
 
 /datum/sprite_accessory/snout/front/drama2
-	name = "drama2"
+	name = "悲剧 2"
 	icon_state = "drama2"
 
 /datum/sprite_accessory/snout/front/noccite
-	name = "noccite"
+	name = "诺克石"
 	icon_state = "noccite"
