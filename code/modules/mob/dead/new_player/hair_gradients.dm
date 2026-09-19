@@ -10,11 +10,11 @@
 	icon_state = null
 
 /datum/hair_gradient/fadeup
-	name = "Fade Up"
+	name = "上渐变"
 	icon_state = "fadeup"
 
 /datum/hair_gradient/fadedown
-	name = "Fade Down"
+	name = "下渐变"
 	icon_state = "fadedown"
 
 /datum/hair_gradient/vertical_split
@@ -26,15 +26,15 @@
 	icon_state = "bottomflat"
 
 /datum/hair_gradient/reflected
-	name = "Reflected"
+	name = "镜像"
 	icon_state = "reflected_high"
 
 /datum/hair_gradient/reflected_inverse
-	name = "Reflected Inverse"
+	name = "反向镜像"
 	icon_state = "reflected_inverse_high"
 
 /datum/hair_gradient/wavy
-	name = "Wavy"
+	name = "波浪"
 	icon_state = "wavy"
 
 /datum/hair_gradient/long_fade_up
@@ -42,7 +42,7 @@
 	icon_state = "long_fade_up"
 
 /datum/hair_gradient/long_fade_down
-	name = "Long Fade Down"
+	name = "长下渐变"
 	icon_state = "long_fade_down"
 
 /datum/hair_gradient/short_fade_up
@@ -50,7 +50,7 @@
 	icon_state = "short_fade_up"
 
 /datum/hair_gradient/short_fade_down
-	name = "Short Fade Down"
+	name = "短下渐变"
 	icon_state = "short_fade_down"
 
 /datum/hair_gradient/wavy_spike
@@ -58,5 +58,5 @@
 	icon_state = "wavy_spiked"
 
 /datum/hair_gradient/streaks
-	name = "Streaked"
+	name = "条纹"
 	icon_state = "streaks"

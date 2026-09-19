@@ -40,7 +40,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/antennas/anthro
-	name = "Anthro Antennas"
+	name = "兽裔触角"
 	organ_type = /obj/item/organ/antennas/moth
 	sprite_accessories = list(
 		/datum/sprite_accessory/antenna/moth/plain,

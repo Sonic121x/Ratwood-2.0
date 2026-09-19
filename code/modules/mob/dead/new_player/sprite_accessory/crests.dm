@@ -20,7 +20,7 @@
 	icon_state = "bronzer"
 
 /datum/sprite_accessory/crests/steelt
-	name = "Steel Thorn Crest"
+	name = "钢刺冠饰"
 	icon_state = "steelt"	
 
 /datum/sprite_accessory/crests/astratan
