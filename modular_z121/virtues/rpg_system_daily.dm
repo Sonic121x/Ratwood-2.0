@@ -499,12 +499,11 @@
 	return data
 
 // 仅复用基础标记的高亮和生命周期；不挂接寻物、配送的旧交付组件。
+// 两个覆盖方法继承父类的信号处理约束，不重复声明禁止休眠标记。
 /datum/component/quest_object/rpg_cargo/on_item_dropped(obj/item/dropped_item, mob/user)
-	SIGNAL_HANDLER
 	return
 
 /datum/component/quest_object/rpg_cargo/on_examine(datum/source, mob/user, list/examine_list)
-	SIGNAL_HANDLER
 	var/datum/quest/quest = quest_ref?.resolve()
 	if(!QDELETED(quest))
 		examine_list += span_notice("RPG 任务「[quest.title]」的专属物品。接取者随身携带后，可在 RPG 面板提交任务。")
