@@ -29,45 +29,45 @@
 /datum/sprite_accessory/tail_feature/spines
 	abstract_type = /datum/sprite_accessory/tail_feature/spines
 	icon = 'icons/mob/sprite_accessory/tail_features/spines.dmi'
-	color_key_name = "Spines"
+	color_key_name = "棘刺"
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_UNDER_LAYER)
 
 /datum/sprite_accessory/tail_feature/spines/short
-	name = "Short"
+	name = "短"
 	icon_state = "short"
 
 /datum/sprite_accessory/tail_feature/spines/shortmeme
-	name = "Short + Membrane"
+	name = "短+膜"
 	icon_state = "shortmeme"
 
 /datum/sprite_accessory/tail_feature/spines/long
-	name = "Long"
+	name = "长"
 	icon_state = "long"
 
 /datum/sprite_accessory/tail_feature/spines/longmeme
-	name = "Long + Membrane"
+	name = "长+膜"
 	icon_state = "longmeme"
 
 /datum/sprite_accessory/tail_feature/spines/aquatic
-	name = "Aquatic"
+	name = "水生"
 	icon_state = "aqua"
 
 /datum/sprite_accessory/tail_feature/vox_marking
 	abstract_type = /datum/sprite_accessory/tail_feature/vox_marking
 	icon = 'icons/mob/sprite_accessory/tail_features/vox_markings.dmi'
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
-	color_key_name = "Marking"
+	color_key_name = "纹样"
 
 /datum/sprite_accessory/tail_feature/vox_marking/bands
-	name = "Bands"
+	name = "环带"
 	icon_state = "bands"
 
 /datum/sprite_accessory/tail_feature/vox_marking/tip
-	name = "Tip"
+	name = "尖端"
 	icon_state = "tip"
 
 /datum/sprite_accessory/tail_feature/vox_marking/stripe
-	name = "Stripe"
+	name = "条纹"
 	icon_state = "stripe"
 
 /datum/sprite_accessory/tail_feature/large_snake
