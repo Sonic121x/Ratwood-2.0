@@ -1,10 +1,10 @@
 /datum/customizer/organ/neck_feature
 	abstract_type = /datum/customizer/organ/neck_feature
-	name = "Neck"
+	name = "颈部"
 
 /datum/customizer_choice/organ/neck_feature
 	abstract_type = /datum/customizer_choice/organ/neck_feature
-	name = "Neck"
+	name = "颈部"
 	organ_type = /obj/item/organ/neck_feature
 	organ_slot = ORGAN_SLOT_NECK_FEATURE
 
@@ -40,7 +40,7 @@
 		)
 
 /datum/customizer/organ/neck_feature/anthro
-	name = "Fluff"
+	name = "绒毛"
 	allows_disabling = TRUE
 	default_disabled = TRUE
 	customizer_choices = list(
@@ -49,7 +49,7 @@
 		)
 
 /datum/customizer_choice/organ/neck_feature/anthro_fluff
-	name = "Fluff"
+	name = "绒毛"
 	organ_type = /obj/item/organ/neck_feature/anthro_fluff
 	sprite_accessories = list(
 		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff,
