@@ -28,7 +28,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail_feature/vox_markings)
 
 /datum/customizer_choice/organ/tail_feature/vox_markings
-	name = "Tail Markings"
+	name = "尾部斑纹"
 	organ_type = /obj/item/organ/tail_feature/vox_marking
 	sprite_accessories = list(
 	/datum/sprite_accessory/tail_feature/vox_marking/bands,

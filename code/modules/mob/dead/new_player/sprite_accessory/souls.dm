@@ -1,7 +1,7 @@
 /datum/sprite_accessory/soul
 	abstract_type = /datum/sprite_accessory/soul
 	icon = 'icons/mob/sprite_accessory/souls/souls.dmi'
-	color_key_name = "Soul"
+	color_key_name = "灵魂"
 
 /datum/sprite_accessory/soul/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	if(!isdullahan(owner))
@@ -13,5 +13,5 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/soul/fire
-	name = "Fire"
+	name = "火焰"
 	icon_state = "neckfire"
