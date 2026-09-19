@@ -1,5 +1,5 @@
 /datum/customizer/bodypart_feature/crest
-	name = "Crest"
+	name = "冠饰"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/crest)
 	allows_disabling = TRUE
 	default_disabled = TRUE
