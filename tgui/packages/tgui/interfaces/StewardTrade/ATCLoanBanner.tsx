@@ -57,7 +57,7 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
             <b>{atc_loan.interest_pct}% interest</b> charged against the
             principal. The arrears grace stands forfeit on draw - should the
             Crown miss its next payroll, the realm enters sequestration without
-            warning. Window closes on Day {atc_loan.closed_day}.
+            warning.
           </>
         ) : (
           <>{atc_loan.blocker || 'The clerk is unavailable.'}</>
@@ -79,7 +79,7 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
       )}
       {atc_loan.loans_drawn > 0 && (
         <div style={{ color: INK_FAINT, fontSize: FONT_BODY, marginBottom: '6px' }}>
-          Loans drawn this week: {atc_loan.loans_drawn}.
+          Loans drawn this round: {atc_loan.loans_drawn}.
         </div>
       )}
       {!!atc_loan.available && (

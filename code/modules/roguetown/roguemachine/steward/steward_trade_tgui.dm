@@ -320,7 +320,7 @@
 		"can_view" = can_draw_loan ? TRUE : FALSE,
 		"min" = ATC_LOAN_MIN_AMOUNT,
 		"max" = ATC_LOAN_MAX_AMOUNT,
-		"closed_day" = ATC_LOAN_CLOSED_DAY,
+		// 已移除紧急贷款截止日字段，服务在整个回合持续开放。
 		"interest_pct" = round(ATC_LOAN_INTEREST_RATE * 100),
 		"blocker" = SStreasury.atc_loan_blocker_reason() || "",
 		"arrears_consumed" = SStreasury.atc_loan_arrears_consumed ? TRUE : FALSE,

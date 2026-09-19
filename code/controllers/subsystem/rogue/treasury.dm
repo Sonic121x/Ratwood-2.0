@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(treasury)
 	var/obj/structure/roguemachine/steward/steward_machine
 	var/initial_payment_done = FALSE
 	var/list/loans = list()
-	var/loan_max_issuance_day = 5
+	// 已移除贷款发放截止日，个人贷款与机构契约可在任意天数开具。
 	var/list/poll_tax_rates = list(
 		POLL_TAX_CAT_NOBLE = 0,
 		POLL_TAX_CAT_CLERGY = 0,

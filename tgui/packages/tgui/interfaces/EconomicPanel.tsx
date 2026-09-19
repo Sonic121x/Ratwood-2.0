@@ -178,7 +178,7 @@ type Bankruptcy = {
   suspended_charters: SuspendedCharter[];
   atc_loan_min: number;
   atc_loan_max: number;
-  atc_loan_closed_day: number;
+  // 已移除紧急贷款截止日字段，服务在整个回合持续开放。
   atc_loan_available: BooleanLike;
   atc_loan_blocker: string;
   atc_loan_arrears_consumed: BooleanLike;
@@ -490,8 +490,8 @@ export const EconomicPanel = () => {
                     </Button.Confirm>
                   </Stack.Item>
                   <Stack.Item color="gray" italic>
-                    {bankruptcy.atc_loan_min}-{bankruptcy.atc_loan_max}m. Closes
-                    on Day {bankruptcy.atc_loan_closed_day}.
+                    {bankruptcy.atc_loan_min}-{bankruptcy.atc_loan_max}m.
+                    {/* 已移除截止日期提示，借款服务在整个回合持续开放。 */}
                   </Stack.Item>
                 </Stack>
               </Box>

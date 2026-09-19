@@ -53,7 +53,7 @@
 
 /obj/structure/roguemachine/atm/ui_static_data(mob/user)
 	var/list/data = list()
-	data["max_issuance_day"] = SStreasury.loan_max_issuance_day
+	// 已移除发放截止日字段，界面不再按游戏天数禁用贷款。
 	data["poll_tax_static"] = list(
 		"max_advance_days" = POLL_TAX_MAX_ADVANCE_DAYS,
 		"fallback_rate" = POLL_TAX_ADVANCE_FALLBACK_RATE,

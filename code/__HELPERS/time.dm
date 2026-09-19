@@ -60,8 +60,8 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 			if(GLOB.mirage_controller)
 				GLOB.mirage_controller.MoveOasis()
 			GLOB.dayspassed++
-			if(GLOB.dayspassed == 8)
-				GLOB.dayspassed = 1
+			// 已移除第八天回到第一天的逻辑，累计天数持续递增。
+			// 星期显示单独按七天循环，避免经济系统停止每日刷新。
 			scom_announce_new_dawn() // IC calendar: announce active feast/holy daes
 			SStreasury.tick_rural_tax()
 			SStreasury.distribute_estate_incomes()
@@ -92,7 +92,7 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 		return
 	if(GLOB.tod == "dawn")
 		var/text_to_show
-		switch(GLOB.dayspassed)
+		switch(get_current_day_of_week())
 			if(1)
 				text_to_show = "DAWN OF THE FIRST DAE\nMOON'S DAE"
 			if(2)

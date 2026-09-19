@@ -445,10 +445,10 @@
 /obj/structure/roguemachine/vaultbank/proc/draft_personal_loan(mob/living/carbon/human/user, list/params)
 	if(!istype(user))
 		return
-	if(GLOB.dayspassed > SStreasury.loan_max_issuance_day)
-		say("No new loans may be drawn after day [SStreasury.loan_max_issuance_day].")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		return
+	// 已移除个人贷款的发放截止日期判断。
+	// 已移除超过截止日的拒绝提示。
+	// 已移除该日期拒绝对应的提示音。
+	// 不再因游戏天数提前返回，继续验证金额、期限和资金。
 	var/datum/fund/F = get_linked_fund()
 	if(!F)
 		to_chat(user, span_warning("[src] sits inert - its coffers are unbound. Notify staff."))
@@ -490,10 +490,10 @@
 /obj/structure/roguemachine/vaultbank/proc/draft_indenture(mob/living/carbon/human/user, list/params)
 	if(!istype(user))
 		return
-	if(GLOB.dayspassed > SStreasury.loan_max_issuance_day)
-		say("No new indentures may be drawn after day [SStreasury.loan_max_issuance_day].")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		return
+	// 已移除机构契约的发放截止日期判断。
+	// 已移除超过截止日的拒绝提示。
+	// 已移除该日期拒绝对应的提示音。
+	// 不再因游戏天数提前返回，继续验证目标、金额和资金。
 	var/datum/fund/F = get_linked_fund()
 	if(!F)
 		to_chat(user, span_warning("[src] sits inert - its coffers are unbound. Notify staff."))
