@@ -1,7 +1,7 @@
 /datum/sprite_accessory/tail
 	abstract_type = /datum/sprite_accessory/tail
 	icon = 'icons/mob/sprite_accessory/tails/tails.dmi'
-	color_key_name = "Tail"
+	color_key_name = "尾巴"
 	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 	var/can_wag = FALSE
 
@@ -29,290 +29,290 @@
 #endif
 
 /datum/sprite_accessory/tail/cat
-	name = "Cat"
+	name = "猫"
 	icon_state = "cat"
 	relevant_layers = list(BODY_FRONT_LAYER)
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/monkey
-	name = "Monkey"
+	name = "猴"
 	icon_state = "monkey"
 
 /datum/sprite_accessory/tail/axolotl
-	name = "Axolotl"
+	name = "美西螈"
 	icon_state = "axolotl"
 
 /datum/sprite_accessory/tail/batl
-	name = "Bat (Long)"
+	name = "蝙蝠（长）"
 	icon_state = "batl"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/bats
-	name = "Bat (Short)"
+	name = "蝙蝠（短）"
 	icon_state = "bats"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/bee
-	name = "Bee"
+	name = "蜜蜂"
 	icon_state = "bee"
 	color_keys = 2
-	color_key_names = list("Abdomen", "Stripes")
+	color_key_names = list("腹部", "条纹")
 
 /datum/sprite_accessory/tail/catbig
-	name = "Cat, Big"
+	name = "猫（大）"
 	icon_state = "catbig"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/twocat
-	name = "Cat, Double"
+	name = "猫（双尾）"
 	icon_state = "twocat"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/corvid
-	name = "Corvid"
+	name = "鸦"
 	icon_state = "crow"
 
 /datum/sprite_accessory/tail/cow
-	name = "Cow"
+	name = "牛"
 	icon_state = "cow"
 
 /datum/sprite_accessory/tail/data_shark
-	name = "Data Shark"
+	name = "数据鲨"
 	icon_state = "datashark"
 	color_keys = 2
-	color_key_names = list("Tail", "Neons")
+	color_key_names = list("尾巴", "霓虹")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/eevee
-	name = "Eevee"
+	name = "伊布"
 	icon_state = "eevee"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/fennec
-	name = "Fennec"
+	name = "耳廓狐"
 	icon_state = "fennec"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/fish
-	name = "Fish"
+	name = "鱼"
 	icon_state = "fish"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/fox
-	name = "Fox"
+	name = "狐狸"
 	icon_state = "fox"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/fox2
-	name = "Fox 2"
+	name = "狐狸 2"
 	icon_state = "fox2"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/hawk
-	name = "Hawk"
+	name = "鹰"
 	icon_state = "hawk"
 
 /datum/sprite_accessory/tail/horse
-	name = "Horse"
+	name = "马"
 	icon_state = "horse"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/husky
-	name = "Husky"
+	name = "哈士奇"
 	icon_state = "husky"
 	color_keys = 2
-	color_key_names = list("Tail", "Inner")
+	color_key_names = list("尾巴", "内侧")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/insect
-	name = "Insect"
+	name = "昆虫"
 	icon_state = "insect"
 
 /datum/sprite_accessory/tail/kangaroo
-	name = "kangaroo"
+	name = "袋鼠"
 	icon_state = "kangaroo"
 
 /datum/sprite_accessory/tail/kitsune
-	name = "Kitsune"
+	name = "狐妖"
 	icon_state = "kitsune"
 	color_keys = 2
-	color_key_names = list("Tails", "Tips")
+	color_key_names = list("尾巴", "尖端")
 
 /datum/sprite_accessory/tail/lab
-	name = "Lab"
+	name = "拉布拉多"
 	icon_state = "lab"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/murid
-	name = "Murid"
+	name = "鼠族"
 	icon_state = "murid"
 
 /datum/sprite_accessory/tail/orca
-	name = "Orca"
+	name = "虎鲸"
 	icon_state = "orca"
 
 /datum/sprite_accessory/tail/otie
-	name = "Otusian"
+	name = "奥图斯"
 	icon_state = "otie"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/rabbit
-	name = "Rabbit"
+	name = "兔子"
 	icon_state = "rabbit"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/redpanda
-	name = "Red Panda"
+	name = "小熊猫"
 	icon_state = "wah"
 	color_keys = 2
-	color_key_names = list("Tail", "Stripes")
+	color_key_names = list("尾巴", "条纹")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/pede
-	name = "Scolipede"
+	name = "蜈蚣王"
 	icon_state = "pede"
 	color_keys = 3
-	color_key_names = list("Tail", "Inner", "Details")
+	color_key_names = list("尾巴", "内侧", "细节")
 
 /datum/sprite_accessory/tail/sergal
-	name = "Sergal"
+	name = "瑟伽尔"
 	icon_state = "sergal"
 	color_keys = 2
-	color_key_names = list("Tail", "Inner")
+	color_key_names = list("尾巴", "内侧")
 
 /datum/sprite_accessory/tail/shark
-	name = "Shark"
+	name = "鲨鱼"
 	icon_state = "shark"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/shepherd
-	name = "Shepherd"
+	name = "牧羊犬"
 	icon_state = "shepherd"
 	color_keys = 2
-	color_key_names = list("Tail", "Inner")
+	color_key_names = list("尾巴", "内侧")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/australian_shepherd
-	name = "Australian Shepherd"
+	name = "澳洲牧羊犬"
 	icon_state = "australianshepherd"
 	color_keys = 2
-	color_key_names = list("Tail", "Inner")
+	color_key_names = list("尾巴", "内侧")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/jackal
-	name = "Jackal"
+	name = "胡狼"
 	icon_state = "jackal"
 	color_keys = 3
-	color_key_names = list("Tail", "Inside", "Stripes")
+	color_key_names = list("尾巴", "内侧", "条纹")
 
 /datum/sprite_accessory/tail/skunk
-	name = "Skunk"
+	name = "臭鼬"
 	icon_state = "skunk"
 	color_keys = 3
-	color_key_names = list("Tail", "Inner", "Stripes")
+	color_key_names = list("尾巴", "内侧", "条纹")
 
 /datum/sprite_accessory/tail/stripe
-	name = "Stripe"
+	name = "条纹"
 	icon_state = "stripe"
 	color_keys = 2
-	color_key_names = list("Tail", "Inner")
+	color_key_names = list("尾巴", "内侧")
 
 /datum/sprite_accessory/tail/straighttail
-	name = "Straight Tail"
+	name = "直尾"
 	icon_state = "straighttail"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/squirrel
-	name = "Squirrel"
+	name = "松鼠"
 	icon_state = "squirrel"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tamamo_kitsune
-	name = "Tamamo Kitsune Tails"
+	name = "玉藻狐尾"
 	icon_state = "9sune"
 	color_keys = 2
-	color_key_names = list("Tails", "Tips")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tentacle
-	name = "Tentacle"
+	name = "触手"
 	icon_state = "tentacle"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tiger
-	name = "Tiger"
+	name = "虎"
 	icon_state = "tiger"
 	color_keys = 3
-	color_key_names = list("Tail", "Tip", "Stripes")
+	color_key_names = list("尾巴", "尖端", "条纹")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/wolf
-	name = "Wolf"
+	name = "狼"
 	icon_state = "wolf"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/guilmon
-	name = "Guilmon"
+	name = "基尔兽"
 	icon_state = "guilmon"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/sharknofin
-	name = "Shark no fin"
+	name = "鲨鱼（无鳍）"
 	icon_state = "sharknofin"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/raptor
-	name = "Raptor"
+	name = "迅猛龙"
 	icon_state = "raptor"
 	color_keys = 3
-	color_key_names = list("Tail", "Details", "Details")
+	color_key_names = list("尾巴", "细节", "细节")
 
 /datum/sprite_accessory/tail/lunasune
-	name = "Lunasune"
+	name = "月阳"
 	icon_state = "lunasune"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/spade
-	name = "Succubus Spade Tail"
+	name = "魅魔铲尾"
 	icon_state = "spade"
 
 /datum/sprite_accessory/tail/leopard
-	name = "Leopard"
+	name = "豹"
 	icon_state = "leopard"
 	color_keys = 2
-	color_key_names = list("Tail", "Spots")
+	color_key_names = list("尾巴", "斑点")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/deer
-	name = "Deer"
+	name = "鹿"
 	icon_state = "deer"
 	color_keys = 2
-	color_key_names = list("Tail", "Inner")
+	color_key_names = list("尾巴", "内侧")
 
 /datum/sprite_accessory/tail/raccoon
-	name = "Raccoon"
+	name = "浣熊"
 	icon_state = "raccoon"
 	color_keys = 2
-	color_key_names = list("Tail", "Stripes")
+	color_key_names = list("尾巴", "条纹")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/sabresune
-	name = "Sabresune"
+	name = "剑阳"
 	icon_state = "sabresune"
 	color_keys = 2
-	color_key_names = list("Tails", "Tips")
+	color_key_names = list("尾巴", "尖端")
 
 /datum/sprite_accessory/tail/lizard
 	abstract_type = /datum/sprite_accessory/tail/lizard
@@ -320,164 +320,164 @@
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/lizard/smooth
-	name = "Smooth"
+	name = "光滑"
 	icon_state = "smooth"
 
 /datum/sprite_accessory/tail/lizard/dtiger
-	name = "Dark Tiger"
+	name = "暗虎"
 	icon_state = "dtiger"
 
 /datum/sprite_accessory/tail/lizard/ltiger
-	name = "Light Tiger"
+	name = "亮虎"
 	icon_state = "ltiger"
 
 /datum/sprite_accessory/tail/lizard/spikes
-	name = "Spikes"
+	name = "棘刺"
 	icon_state = "spikes"
 
 /datum/sprite_accessory/tail/lizard/kobold
-	name = "Kobold"
+	name = "狗头人"
 	icon_state = "kobold"
 
 /datum/sprite_accessory/tail/tiefling
-	name = "Tiefling"
+	name = "提夫林"
 	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "tiebtail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tiefling/heart
-	name = "Succubus"
+	name = "魅魔"
 	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "hearttail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tiefling/spade
-	name = "Spade"
+	name = "铲形"
 	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "spade"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/tail/dullahan
-	name = "Revenant"
+	name = "亡魂"
 	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "tiebtail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/dullahan/heart
-	name = "Succubus"
+	name = "魅魔"
 	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "hearttail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/rattlesnake
-	name = "Rattlesnake"
+	name = "响尾蛇"
 	icon_state = "rattlesnake"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/lynx
-	name = "Lynx"
+	name = "猞猁"
 	icon_state = "lynx"
 	color_keys = 2
-	color_key_names = list("Tail", "Tip")
+	color_key_names = list("尾巴", "尖端")
 
 /datum/sprite_accessory/tail/shadekin
-	name = "Shadekin"
+	name = "影族"
 	icon_state = "shadekin"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/shadekin/short
-	name = "Shadekin (Short)"
+	name = "影族（短）"
 	icon_state = "shadekinshort"
 
 /datum/sprite_accessory/tail/owl
-	name = "Owl"
+	name = "枭"
 	icon_state = "owl"
 	
 /datum/sprite_accessory/tail/pinecone
-	name = "Pinecone"
+	name = "松果"
 	icon_state = "expi"
 	color_keys = 2
-	color_key_names = list("Upper", "Tip")
+	color_key_names = list("上部", "尖端")
 
 /datum/sprite_accessory/tail/forked_long
-	name = "Forked Long"
+	name = "长分叉"
 	icon_state = "forked_long"
 
 /datum/sprite_accessory/tail/haven
-	name = "Haven"
+	name = "避风港"
 	icon_state = "haven"
 
 /datum/sprite_accessory/tail/swallow
-	name = "Swallow"
+	name = "燕"
 	icon_state = "swallow"
 
 /datum/sprite_accessory/tail/zorzor
-	name = "Zorgoia"
+	name = "佐尔戈娅"
 	icon_state = "zorgoia"
 	color_keys = 3
-	color_key_names = list("Tail", "Tail Fluff", "Tail Barb")
+	color_key_names = list("尾巴", "尾部绒毛", "尾部倒刺")
 
 /datum/sprite_accessory/tail/scorpian
 	icon = 'modular/icons/mob/tails/manticore_tail.dmi'
-	name = "Scorpian"
+	name = "蝎尾"
 	icon_state = "scorpian"
 	color_keys = 2
-	color_key_names = list("Tail", "Stinger")
+	color_key_names = list("尾巴", "尾针")
 
 /datum/sprite_accessory/tail/manticore
 	icon = 'modular/icons/mob/tails/manticore_tail.dmi'
-	name = "Manticore"
+	name = "蝎狮"
 	icon_state = "manticore"
 	color_keys = 3
-	color_key_names = list("Tail", "Innerds", "Spikes")
+	color_key_names = list("尾巴", "内脏", "棘刺")
 	can_wag = TRUE
 
 //From Caustic Cove
 /datum/sprite_accessory/tail/large_snake
 	icon = 'modular_causticcove/icons/mob/tails/large_snake.dmi'
-	name = "Large Snake"
+	name = "巨蛇"
 	icon_state = "large_snake"
 	color_keys = 2
-	color_key_names = list("Tail", "Underbelly")
+	color_key_names = list("尾巴", "腹部")
 
 /datum/sprite_accessory/tail/large_snake_plain
 	icon = 'modular_causticcove/icons/mob/tails/large_snake.dmi'
-	name = "Large Snake Plain"
+	name = "巨蛇（素色）"
 	icon_state = "large_snake_plain"
 
 // Not caustic cove, i just wanted it at the bottom tee hee.
 /datum/sprite_accessory/tail/tailmaw
-	name = "Tailmaw"
+	name = "尾口"
 	icon_state = "tailmaw"
 
 /datum/sprite_accessory/tail/tailmaw2
-	name = "Tailmaw (Wag)"
+	name = "尾口（摇摆）"
 	icon_state = "tailmaw2"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tailmaw2_head
-	name = "Tailmaw (Coloured Head)"
+	name = "尾口（彩色头部）"
 	icon_state = "tailmawwag_head"
 	color_keys = 2
-	color_key_names = list("Tail", "Head")
+	color_key_names = list("尾巴", "头部")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tailmaw2_stripes
-	name = "Tailmaw (Striped)"
+	name = "尾口（条纹）"
 	icon_state = "tailmawwag_striped"
 	color_keys = 2
-	color_key_names = list("Tail", "Stripes")
+	color_key_names = list("尾巴", "条纹")
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/tailmaw2_headstripes
-	name = "Tailmaw (Striped, Coloured Head)"
+	name = "尾口（条纹-彩色头部）"
 	icon_state = "tailmawwag_stripedhead"
 	color_keys = 3
-	color_key_names = list("Tail", "Stripes", "Head")
+	color_key_names = list("尾巴", "条纹", "头部")
 	can_wag = TRUE

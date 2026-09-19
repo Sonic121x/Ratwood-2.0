@@ -1,9 +1,9 @@
 /datum/customizer/organ/tail
-	name = "Tail"
+	name = "尾巴"
 	abstract_type = /datum/customizer/organ/tail
 
 /datum/customizer_choice/organ/tail
-	name = "Tail"
+	name = "尾巴"
 	organ_type = /obj/item/organ/tail
 	organ_slot = ORGAN_SLOT_TAIL
 	abstract_type = /datum/customizer_choice/organ/tail
@@ -27,7 +27,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/lupian)
 
 /datum/customizer_choice/organ/tail/lupian
-	name = "Lupian Tail"
+	name = "卢皮安尾"
 	organ_type = /obj/item/organ/tail/lupian
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/otie,
@@ -44,7 +44,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/tabaxi)
 
 /datum/customizer_choice/organ/tail/tabaxi
-	name = "Tabaxi Tail"
+	name = "塔巴西尾"
 	organ_type = /obj/item/organ/tail/cat
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/catbig,
@@ -58,7 +58,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/lizard)
 
 /datum/customizer_choice/organ/tail/lizard
-	name = "Sissean Tail"
+	name = "西塞亚尾"
 	organ_type = /obj/item/organ/tail/lizard
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -129,7 +129,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/axian)
 
 /datum/customizer_choice/organ/tail/axian
-	name = "Axian Tail"
+	name = "阿克西安尾"
 	organ_type = /obj/item/organ/tail/akula
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/shark,
@@ -146,7 +146,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tail/dullahan
-	name = "Dullahan Tail"
+	name = "杜拉汉尾"
 	organ_type = /obj/item/organ/tail/dullahan
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -219,7 +219,7 @@
 	allows_accessory_color_customization = TRUE
 
 /datum/customizer_choice/organ/tail/tiefling
-	name = "Tiefling Tail"
+	name = "提夫林尾"
 	organ_type = /obj/item/organ/tail/tiefling
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -234,7 +234,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/tail/demihuman
-	name = "Half-Kinhuman Tail"
+	name = "半兽裔尾"
 	organ_type = /obj/item/organ/tail
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -317,7 +317,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tail/anthro
-	name = "Wild-Kin Tail"
+	name = "兽裔尾"
 	organ_type = /obj/item/organ/tail/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/cat,
@@ -402,7 +402,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tail/dullahan
-	name = "Revenant Tail"
+	name = "还魂者尾"
 	organ_type = /obj/item/organ/tail/dullahan
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -474,13 +474,13 @@
 	allows_accessory_color_customization = TRUE
 
 /datum/customizer/organ/tail/harpy
-	name = "Harpy Plumage"
+	name = "哈比羽饰"
 	customizer_choices = list(/datum/customizer_choice/organ/tail/harpy)
 	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tail/harpy
-	name = "Harpy Plumage"
+	name = "哈比羽饰"
 	organ_type = /obj/item/organ/tail/harpy
 	generic_random_pick = TRUE
 	sprite_accessories = list(
