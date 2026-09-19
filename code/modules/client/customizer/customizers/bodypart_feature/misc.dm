@@ -5,7 +5,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/bodypart_feature/face_detail
-	name = "Face Detail"
+	name = "面部细节"
 	feature_type = /datum/bodypart_feature/face_detail
 	allows_accessory_color_customization = TRUE
 	sprite_accessories = list(
@@ -30,13 +30,13 @@
 		)
 
 /datum/customizer/bodypart_feature/accessory
-	name = "Accessory"
+	name = "饰品"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/accessory)
 	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/bodypart_feature/accessory
-	name = "Accessory"
+	name = "饰品"
 	feature_type = /datum/bodypart_feature/accessory
 	allows_accessory_color_customization = TRUE
 	sprite_accessories = list(
@@ -60,13 +60,13 @@
 	default_disabled = TRUE
 
 /datum/customizer/bodypart_feature/underwear
-	name = "Underwear"
+	name = "内衣"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/underwear)
 	allows_disabling = TRUE
 	default_disabled = FALSE
 
 /datum/customizer_choice/bodypart_feature/underwear
-	name = "Underwear"
+	name = "内衣"
 	feature_type = /datum/bodypart_feature/underwear
 	sprite_accessories = list(
 		/datum/sprite_accessory/underwear/briefs,
@@ -85,7 +85,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/bodypart_feature/legwear
-	name = "Legwear"
+	name = "腿饰"
 	feature_type = /datum/bodypart_feature/legwear
 	//default_accessory = /datum/sprite_accessory/legwear/stockings
 	sprite_accessories = list(
