@@ -1,7 +1,7 @@
 /datum/sprite_accessory/pubes
 	abstract_type = /datum/sprite_accessory/pubes
 	icon = 'icons/mob/sprite_accessory/genitals/pubes.dmi'
-	color_key_name = "Color"
+	color_key_name = "颜色"
 	color_key_defaults = list(KEY_HAIR_COLOR)
 	layer = 44.5
 
@@ -29,33 +29,33 @@
 
 /datum/sprite_accessory/pubes/hairy
 	icon_state = "pubes_hairy"
-	name = "Hairy"
+	name = "多毛"
 
 /datum/sprite_accessory/pubes/trim
 	icon_state = "pubes_trim"
-	name = "Trimmed"
+	name = "修剪"
 
 /datum/sprite_accessory/pubes/strip
 	icon_state = "pubes_strip"
-	name = "Landing Strip"
+	name = "跑道形"
 
 /datum/sprite_accessory/pubes/heart
 	icon_state = "pubes_heart"
-	name = "Heart"
+	name = "爱心"
 
 /datum/sprite_accessory/pubes/extreme
 	icon_state = "pubes_extreme"
-	name = "La coupe à la Otavaise"
+	name = "奥塔瓦式修剪"
 
 /datum/sprite_accessory/pubes/cross
 	icon_state = "pubes_cross"
-	name = "Psycross"
+	name = "普赛圣十字"
 
 
 /datum/sprite_accessory/pits
 	abstract_type = /datum/sprite_accessory/pits
 	icon = 'icons/mob/sprite_accessory/genitals/pits.dmi'
-	color_key_name = "Color"
+	color_key_name = "颜色"
 	color_key_defaults = list(KEY_HAIR_COLOR)
 	layer = 44.5
 
@@ -81,16 +81,16 @@
 
 /datum/sprite_accessory/pits/trim
 	icon_state = "pits_trim"
-	name = "Trim"
+	name = "修剪"
 
 /datum/sprite_accessory/pits/moderate
 	icon_state = "pits"
-	name = "Moderate"
+	name = "适中"
 
 /datum/sprite_accessory/pits/hairy
 	icon_state = "pits_hairy"
-	name = "Hairy"
+	name = "多毛"
 
 /datum/sprite_accessory/pits/extreme
 	icon_state = "pits_extreme"
-	name = "La coupe à la Otavaise"
+	name = "奥塔瓦式修剪"

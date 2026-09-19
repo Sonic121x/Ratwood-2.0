@@ -1,10 +1,10 @@
 /datum/customizer/organ/snout
 	abstract_type = /datum/customizer/organ/snout
-	name = "Snout"
+	name = "吻部"
 
 /datum/customizer_choice/organ/snout
 	abstract_type = /datum/customizer_choice/organ/snout
-	name = "Snout"
+	name = "吻部"
 	organ_type = /obj/item/organ/snout
 	organ_slot = ORGAN_SLOT_SNOUT
 
@@ -132,7 +132,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/tajaran)
 
 /datum/customizer_choice/organ/snout/tajaran
-	name = "Tajaran Snout"
+	name = "塔巴西吻部"
 	organ_type = /obj/item/organ/snout/tajaran
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/tajaran,
@@ -177,7 +177,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/anthro/dullahan)
 
 /datum/customizer_choice/organ/snout/anthro
-	name = "Wild-Kin Snout"
+	name = "兽裔吻部"
 	organ_type = /obj/item/organ/snout/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,
@@ -282,7 +282,7 @@
 		)
 
 /datum/customizer_choice/organ/snout/anthro/dullahan
-	name = "Dullahan Snout"
+	name = "杜拉汉吻部"
 	organ_type = /obj/item/organ/snout/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,
@@ -437,7 +437,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/tabaxi)
 
 /datum/customizer_choice/organ/snout/tabaxi
-	name = "Tabaxian Snout"
+	name = "塔巴西吻部"
 	organ_type = /obj/item/organ/snout/cat
 	sprite_accessories = list(
 	    /datum/sprite_accessory/snout/cat,
@@ -459,13 +459,13 @@
 		)
 
 /datum/customizer/organ/snout/harpy
-	name = "Harpy Beak"
+	name = "哈比喙"
 	customizer_choices = list(/datum/customizer_choice/organ/snout/harpy)
 	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/snout/harpy
-	name = "Harpy Beak"
+	name = "哈比喙"
 	organ_type = /obj/item/organ/snout/harpy
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,
