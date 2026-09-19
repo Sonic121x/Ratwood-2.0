@@ -1,9 +1,9 @@
 /datum/customizer/organ/ears
-	name = "Ears"
+	name = "耳朵"
 	abstract_type = /datum/customizer/organ/ears
 
 /datum/customizer_choice/organ/ears
-	name = "Ears"
+	name = "耳朵"
 	organ_type = /obj/item/organ/ears
 	organ_slot = ORGAN_SLOT_EARS
 	abstract_type = /datum/customizer_choice/organ/ears
@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/ears/vulpkanin)
 
 /datum/customizer_choice/organ/ears/vulpkanin
-	name = "Vulpkian Ears"
+	name = "维纳丁耳"
 	organ_type = /obj/item/organ/ears/vulpkanin
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/fox,
@@ -35,7 +35,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/ears/lupian)
 
 /datum/customizer_choice/organ/ears/lupian
-	name = "Lupian Ears"
+	name = "卢皮安耳"
 	organ_type = /obj/item/organ/ears/lupian
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/bigwolf,
@@ -51,7 +51,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/ears/tajaran)
 
 /datum/customizer_choice/organ/ears/tajaran
-	name = "Tabaxi Ears"
+	name = "塔巴西耳"
 	organ_type = /obj/item/organ/ears/tajaran         // Renamed them IN GAME but in-code they're still 'tajaran' because im afraid of breaking shit
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/cat_big,
@@ -64,7 +64,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/ears/axian)
 
 /datum/customizer_choice/organ/ears/axian
-	name = "Axian Ears"
+	name = "阿克西安耳"
 	organ_type = /obj/item/organ/ears/akula
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/shark,
@@ -75,12 +75,12 @@
 	customizer_choices = list(/datum/customizer_choice/organ/ears/cat)
 
 /datum/customizer_choice/organ/ears/cat
-	name = "Cat Ears"
+	name = "猫耳"
 	organ_type = /obj/item/organ/ears/cat
 	sprite_accessories = list(/datum/sprite_accessory/ears/cat)
 
 /datum/customizer_choice/organ/ears/elf
-	name = "Elf Ears"
+	name = "精灵耳"
 	organ_type = /obj/item/organ/ears
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/elf,
@@ -91,7 +91,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/ears/goblin
-	name = "Goblin Ears"
+	name = "哥布林耳"
 	organ_type = /obj/item/organ/ears
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/goblin,
@@ -104,7 +104,7 @@
 	allows_disabling = FALSE
 
 /datum/customizer_choice/organ/ears/halforc
-	name = "Half-Orc Ears"
+	name = "半兽人耳"
 	organ_type = /obj/item/organ/ears
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/goblin,
@@ -123,7 +123,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/ears/demihuman
-	name = "Half-Kinhuman Ears"
+	name = "半兽裔耳"
 	organ_type = /obj/item/organ/ears
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -188,7 +188,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/ears/anthro
-	name = "Wild-Kin Ears"
+	name = "兽裔耳"
 	organ_type = /obj/item/organ/ears/anthro
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -257,13 +257,13 @@
 		)
 
 /datum/customizer/organ/ears/lizard
-	name = "Hood"
+	name = "头兜"
 	customizer_choices = list(/datum/customizer_choice/organ/ears/lizard)
 	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/ears/lizard
-	name = "Sissean Hood"
+	name = "西塞亚头兜"
 	organ_type = /obj/item/organ/ears/anthro
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -281,7 +281,7 @@
 	allows_disabling = FALSE
 
 /datum/customizer_choice/organ/ears/tiefling
-	name = "Tiefling Ears"
+	name = "提夫林耳"
 	organ_type = /obj/item/organ/ears/tiefling
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/elf,
@@ -293,7 +293,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/ears/dullahan
-	name = "Dullahan Ears"
+	name = "杜拉汉耳"
 	organ_type = /obj/item/organ/ears
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/cat,
@@ -352,13 +352,13 @@
 		)
 
 /datum/customizer/organ/ears/harpy
-	name = "Harpy Ears"
+	name = "哈比耳"
 	customizer_choices = list(/datum/customizer_choice/organ/ears/harpy)
 	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/ears/harpy
-	name = "Harpy Ears"
+	name = "哈比耳"
 	organ_type = /obj/item/organ/ears/harpy
 	generic_random_pick = TRUE
 	sprite_accessories = list(

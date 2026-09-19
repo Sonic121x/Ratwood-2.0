@@ -11,14 +11,14 @@
 /proc/sheath_type_preference_label(sheath_type)
 	switch(sheath_type)
 		if(SHEATH_TYPE_NORMAL)
-			return "Sheath"
+			return "鞘"
 		if(SHEATH_TYPE_SLIT)
-			return "Slit"
-	return "None"
+			return "裂缝"
+	return "无"
 
 /datum/customizer_choice/organ/penis
 	abstract_type = /datum/customizer_choice/organ/penis
-	name = "Penis"
+	name = "阴茎"
 	organ_type = /obj/item/organ/penis
 	organ_slot = ORGAN_SLOT_PENIS
 	organ_dna_type = /datum/organ_dna/penis
@@ -41,16 +41,16 @@
 /datum/customizer_choice/organ/penis/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/penis/penis_entry = entry
-	dat += "<br>Penis size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=penis_size''>[find_key_by_value(GLOB.named_penis_sizes, penis_entry.penis_size)]</a>"
-	dat += "<br>Functional: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=functional''>[penis_entry.functional ? "YES" : "NO"]</a>"
-	dat += "<br>Sheath: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=sheath_type''>[sheath_type_preference_label(penis_entry.sheath_type)]</a>"
+	dat += "<br>阴茎尺寸: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=penis_size''>[find_key_by_value(GLOB.named_penis_sizes, penis_entry.penis_size)]</a>"
+	dat += "<br>功能性: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=functional''>[penis_entry.functional ? "是" : "否"]</a>"
+	dat += "<br>鞘: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=sheath_type''>[sheath_type_preference_label(penis_entry.sheath_type)]</a>"
 
 /datum/customizer_choice/organ/penis/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/penis/penis_entry = entry
 	switch(href_list["customizer_task"])
 		if("penis_size")
-			var/named_size = input(user, "Choose your penis size:", "Character Preference", find_key_by_value(GLOB.named_penis_sizes, penis_entry.penis_size)) as anything in GLOB.named_penis_sizes
+			var/named_size = input(user, "选择你的阴茎尺寸:", "角色偏好", find_key_by_value(GLOB.named_penis_sizes, penis_entry.penis_size)) as anything in GLOB.named_penis_sizes
 			if(isnull(named_size))
 				return
 			var/new_size = GLOB.named_penis_sizes[named_size]
@@ -149,14 +149,14 @@
 	allows_accessory_color_customization = TRUE
 
 /datum/customizer_choice/organ/penis/knotted
-	name = "Knotted Penis"
+	name = "结节阴茎"
 	organ_type = /obj/item/organ/penis/knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/knotted,
 		)
 
 /datum/customizer_choice/organ/penis/equine
-	name = "Equine Penis"
+	name = "马阴茎"
 	organ_type = /obj/item/organ/penis/equine
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared,
@@ -177,35 +177,35 @@
 		)
 
 /datum/customizer_choice/organ/penis/equine_knotted_slit
-	name = "Equine Knotted Penis (Slit)"
+	name = "马结节阴茎（裂缝）"
 	organ_type = /obj/item/organ/penis/equine_knotted_slit
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared_knotted,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_mammal
-	name = "Tapered Penis (Mammal)"
+	name = "锥形阴茎（哺乳类）"
 	organ_type = /obj/item/organ/penis/tapered_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/tapered_mammal,
 		)
 
 /datum/customizer_choice/organ/penis/tapered
-	name = "Tapered Penis"
+	name = "锥形阴茎"
 	organ_type = /obj/item/organ/penis/tapered
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/tapered,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_knot
-	name = "Knotted Tapered Penis"
+	name = "结节锥形阴茎"
 	organ_type = /obj/item/organ/penis/tapered_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/taperedknot,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_knot_mammal
-	name = "Knotted Tapered Penis (Mammal)"
+	name = "结节锥形阴茎（哺乳类）"
 	organ_type = /obj/item/organ/penis/tapered_knotted_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/taperedknot_mammal,
@@ -219,28 +219,28 @@
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double_mammal
-	name = "Hemi Tapered Penis (Mammal)"
+	name = "半锥形阴茎（哺乳类）"
 	organ_type = /obj/item/organ/penis/tapered_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemi_mammal,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double_knot
-	name = "Knotted Hemi Tapered Penis"
+	name = "结节半锥形阴茎"
 	organ_type = /obj/item/organ/penis/tapered_double_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemiknot,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double_knot_mammal
-	name = "Knotted Hemi Tapered Penis (mammal)"
+	name = "结节半锥形阴茎（哺乳类）"
 	organ_type = /obj/item/organ/penis/tapered_double_knotted_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemiknot,
 		)
 
 /datum/customizer_choice/organ/penis/barbed
-	name = "Barbed Penis"
+	name = "倒刺阴茎"
 	organ_type = /obj/item/organ/penis/barbed
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/barbknot,
@@ -262,7 +262,7 @@
 
 /datum/customizer/organ/testicles
 	abstract_type = /datum/customizer/organ/testicles
-	name = "Testicles"
+	name = "睾丸"
 	allows_disabling = TRUE
 	default_disabled = TRUE
 	gender_enabled = MALE
@@ -272,7 +272,7 @@
 
 /datum/customizer_choice/organ/testicles
 	abstract_type = /datum/customizer_choice/organ/testicles
-	name = "Testicles"
+	name = "睾丸"
 	organ_type = /obj/item/organ/testicles
 	organ_dna_type = /datum/organ_dna/testicles
 	customizer_entry_type = /datum/customizer_entry/organ/testicles
@@ -304,7 +304,7 @@
 	var/datum/customizer_entry/organ/testicles/testicles_entry = entry
 	switch(href_list["customizer_task"])
 		if("ball_size")
-			var/named_size = input(user, "Choose your ball size:", "Character Preference", find_key_by_value(GLOB.named_ball_sizes, testicles_entry.ball_size)) as anything in GLOB.named_ball_sizes
+			var/named_size = input(user, "选择你的睾丸尺寸:", "角色偏好", find_key_by_value(GLOB.named_ball_sizes, testicles_entry.ball_size)) as anything in GLOB.named_ball_sizes
 			if(isnull(named_size))
 				return
 			var/new_size = GLOB.named_ball_sizes[named_size]
@@ -332,12 +332,12 @@
 	sprite_accessories = list(/datum/sprite_accessory/testicles/pair)
 
 /datum/customizer_choice/organ/testicles/human
-	name = "Testicles"
+	name = "睾丸"
 	sprite_accessories = list(/datum/sprite_accessory/testicles/pair)
 	allows_accessory_color_customization = FALSE
 
 /datum/customizer_choice/organ/testicles/internal
-	name = "Internal testicles"
+	name = "内置睾丸"
 	organ_type = /obj/item/organ/testicles/internal
 	sprite_accessories = null
 	can_customize_size = FALSE
@@ -348,7 +348,7 @@
 
 /datum/customizer/organ/breasts
 	abstract_type = /datum/customizer/organ/breasts
-	name = "Breasts"
+	name = "乳房"
 	allows_disabling = TRUE
 	default_disabled = TRUE
 	gender_enabled = FEMALE
@@ -358,7 +358,7 @@
 
 /datum/customizer_choice/organ/breasts
 	abstract_type = /datum/customizer_choice/organ/breasts
-	name = "Breasts"
+	name = "乳房"
 	customizer_entry_type = /datum/customizer_entry/organ/breasts
 	organ_type = /obj/item/organ/breasts
 	organ_slot = ORGAN_SLOT_BREASTS
@@ -379,8 +379,8 @@
 /datum/customizer_choice/organ/breasts/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/breasts/breasts_entry = entry
-	dat += "<br>Breast size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=breast_size''>[find_key_by_value(GLOB.named_breast_sizes, breasts_entry.breast_size)]</a>"
-	dat += "<br>Lactation: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=lactating''>[breasts_entry.lactating ? "Enabled" : "Disabled"]</a>"
+	dat += "<br>乳房尺寸: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=breast_size''>[find_key_by_value(GLOB.named_breast_sizes, breasts_entry.breast_size)]</a>"
+	dat += "<br>泌乳: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=lactating''>[breasts_entry.lactating ? "启用" : "禁用"]</a>"
 
 /datum/customizer_choice/organ/breasts/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
@@ -418,7 +418,7 @@
 
 /datum/customizer/organ/vagina
 	abstract_type = /datum/customizer/organ/vagina
-	name = "Vagina"
+	name = "阴道"
 	allows_disabling = TRUE
 	default_disabled = TRUE
 	gender_enabled = FEMALE
@@ -446,7 +446,7 @@
 /datum/customizer_choice/organ/vagina/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/vagina/vagina_entry = entry
-	dat += "<br>Fertile: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=fertile''>[vagina_entry.fertility ? "Fertile" : "Sterile"]</a>"
+	dat += "<br>生育力: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=fertile''>[vagina_entry.fertility ? "可育" : "不育"]</a>"
 
 /datum/customizer_choice/organ/vagina/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
