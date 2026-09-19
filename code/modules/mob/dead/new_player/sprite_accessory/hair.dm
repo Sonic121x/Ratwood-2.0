@@ -1,6 +1,6 @@
 /datum/sprite_accessory/hair
 	abstract_type = /datum/sprite_accessory/hair
-	color_key_name = "Hair"
+	color_key_name = "头发"
 	layer = HAIR_LAYER
 
 /datum/sprite_accessory/hair/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -14,1740 +14,1740 @@
 	return is_human_part_visible(owner, HIDEHAIR)
 
 /datum/sprite_accessory/hair/head/bald
-	name = "Bald"
+	name = "秃顶"
 	icon_state = null
 
 /datum/sprite_accessory/hair/head/shorthaireighties
-	name = "80s-style Hair"
+	name = "80 年代发型"
 	icon_state = "80s"
 
 /datum/sprite_accessory/hair/head/shorthaireighties_alt
-	name = "80s-style Hair (Alt)"
+	name = "80 年代发型（变体）"
 	icon_state = "80s_alt"
 
 /datum/sprite_accessory/hair/head/afro
-	name = "Afro"
+	name = "爆炸头"
 	icon_state = "afro"
 
 /datum/sprite_accessory/hair/head/afro2
-	name = "Afro 2"
+	name = "爆炸头 2"
 	icon_state = "afro2"
 
 /datum/sprite_accessory/hair/head/afro_large
-	name = "Afro (Large)"
+	name = "爆炸头（大）"
 	icon_state = "afro-big"
 
 /datum/sprite_accessory/hair/head/antenna
-	name = "Ahoge"
+	name = "呆毛"
 	icon_state = "antenna"
 
 /datum/sprite_accessory/hair/head/balding
-	name = "Balding Hair"
+	name = "谢顶"
 	icon_state = "balding"
 
 /datum/sprite_accessory/hair/head/bangsdiagonal
-	name = "Bangs (Diagonal)"
+	name = "刘海（斜分）"
 	icon_state = "diagonalbangs"
 
 /datum/sprite_accessory/hair/head/bedhead
-	name = "Bedhead"
+	name = "乱发"
 	icon_state = "bedhead"
 
 /datum/sprite_accessory/hair/head/bedhead2
-	name = "Bedhead 2"
+	name = "乱发 2"
 	icon_state = "bedhead2"
 
 /datum/sprite_accessory/hair/head/bedhead3
-	name = "Bedhead 3"
+	name = "乱发 3"
 	icon_state = "bedhead3"
 
 /datum/sprite_accessory/hair/head/bedheadlong
-	name = "Bedhead (Long)"
+	name = "乱发（长）"
 	icon_state = "bedhead-long"
 
 /datum/sprite_accessory/hair/head/bedheadlongest
-	name = "Bedhead (Longest)"
+	name = "乱发（超长）"
 	icon_state = "bedhead-longest"
 
 /datum/sprite_accessory/hair/head/badlycut
-	name = "Shorter Long Bedhead"
+	name = "中长乱发"
 	icon_state = "hair_verybadlycut"
 
 /datum/sprite_accessory/hair/head/beehive
-	name = "Beehive"
+	name = "蜂巢头"
 	icon_state = "beehive"
 
 /datum/sprite_accessory/hair/head/beehive2
-	name = "Beehive 2"
+	name = "蜂巢头 2"
 	icon_state = "beehive2"
 
 /datum/sprite_accessory/hair/head/bob
-	name = "Bobcut"
+	name = "波波头"
 	icon_state = "bob"
 
 /datum/sprite_accessory/hair/head/bob2
-	name = "Bobcut 2"
+	name = "波波头 2"
 	icon_state = "bob2"
 
 /datum/sprite_accessory/hair/head/bob3
-	name = "Bobcut 3"
+	name = "波波头 3"
 	icon_state = "bob3"
 
 /datum/sprite_accessory/hair/head/bob4
-	name = "Bobcut 4"
+	name = "波波头 4"
 	icon_state = "bob4"
 
 /datum/sprite_accessory/hair/head/bobcurl
-	name = "Bobcurl"
+	name = "卷波波头"
 	icon_state = "bobcurl"
 
 /datum/sprite_accessory/hair/head/bob_mane
-	name = "Bob (Mane)"
+	name = "波波头（鬃毛）"
 	icon_state = "bob_mane"
 
 /datum/sprite_accessory/hair/head/boddicker
-	name = "Boddicker"
+	name = "博迪克"
 	icon_state = "boddicker"
 
 /datum/sprite_accessory/hair/head/bowlcut
-	name = "Bowlcut"
+	name = "锅盖头"
 	icon_state = "bowlcut"
 
 /datum/sprite_accessory/hair/head/bowlcut2
-	name = "Bowlcut 2"
+	name = "锅盖头 2"
 	icon_state = "bowlcut2"
 
 /datum/sprite_accessory/hair/head/braid
-	name = "Braid (Floorlength)"
+	name = "辫子（及地）"
 	icon_state = "braid"
 
 /datum/sprite_accessory/hair/head/front_braid
-	name = "Braided Front"
+	name = "前编辫"
 	icon_state = "braid-front"
 
 /datum/sprite_accessory/hair/head/not_floorlength_braid
-	name = "Braid (High)"
+	name = "辫子（高）"
 	icon_state = "braid-high"
 
 /datum/sprite_accessory/hair/head/lowbraid
-	name = "Braid (Low)"
+	name = "辫子（低）"
 	icon_state = "braid-low"
 
 /datum/sprite_accessory/hair/head/shortbraid
-	name = "Braid (Short)"
+	name = "辫子（短）"
 	icon_state = "braid-short"
 
 /datum/sprite_accessory/hair/head/braided
-	name = "Braided"
+	name = "编辫"
 	icon_state = "braided"
 
 /datum/sprite_accessory/hair/head/braidtail
-	name = "Braided Tail"
+	name = "编尾"
 	icon_state = "braided-tail"
 
 /datum/sprite_accessory/hair/head/bun
-	name = "Bun Head"
+	name = "丸子头"
 	icon_state = "bun"
 
 /datum/sprite_accessory/hair/head/bun2
-	name = "Bun Head 2"
+	name = "丸子头 2"
 	icon_state = "bun2"
 
 /datum/sprite_accessory/hair/head/bun3
-	name = "Bun Head 3"
+	name = "丸子头 3"
 	icon_state = "bun3"
 
 /datum/sprite_accessory/hair/head/lowbun
-	name = "Bun (Low)"
+	name = "丸子头（低）"
 	icon_state = "bun-low"
 
 /datum/sprite_accessory/hair/head/largebun
-	name = "Bun (Large)"
+	name = "丸子头（大）"
 	icon_state = "bun-large"
 
 /datum/sprite_accessory/hair/head/manbun
-	name = "Bun (Manbun)"
+	name = "丸子头（男式）"
 	icon_state = "bun-manbun"
 
 /datum/sprite_accessory/hair/head/tightbun
-	name = "Bun (Tight)"
+	name = "丸子头（紧）"
 	icon_state = "bun-tight"
 
 /datum/sprite_accessory/hair/head/business
-	name = "Business Hair"
+	name = "商务发型"
 	icon_state = "business"
 
 /datum/sprite_accessory/hair/head/business2
-	name = "Business Hair 2"
+	name = "商务发型 2"
 	icon_state = "business2"
 
 /datum/sprite_accessory/hair/head/business3
-	name = "Business Hair 3"
+	name = "商务发型 3"
 	icon_state = "business3"
 
 /datum/sprite_accessory/hair/head/business4
-	name = "Business Hair 4"
+	name = "商务发型 4"
 	icon_state = "business4"
 
 /datum/sprite_accessory/hair/head/buzz
-	name = "Buzzcut"
+	name = "平头"
 	icon_state = "buzzcut"
 
 /datum/sprite_accessory/hair/head/cia
-	name = "CIA"
+	name = "特工短发"
 	icon_state = "cia"
 
 /datum/sprite_accessory/hair/head/coffeehouse
-	name = "Coffee House"
+	name = "咖啡馆"
 	icon_state = "coffeehouse"
 
 /datum/sprite_accessory/hair/head/combover
-	name = "Combover"
+	name = "梳盖头"
 	icon_state = "combover"
 
 /datum/sprite_accessory/hair/head/comet
-	name = "Comet"
+	name = "彗星"
 	icon_state = "comet"
 
 /datum/sprite_accessory/hair/head/cornrows1
-	name = "Cornrows"
+	name = "玉米辫"
 	icon_state = "cornrows"
 
 /datum/sprite_accessory/hair/head/cornrows2
-	name = "Cornrows 2"
+	name = "玉米辫 2"
 	icon_state = "cornrows2"
 
 /datum/sprite_accessory/hair/head/cornrowbraid
-	name = "Cornrow Braid"
+	name = "玉米辫（编辫）"
 	icon_state = "cornrow-braid"
 
 /datum/sprite_accessory/hair/head/cornrowbun
-	name = "Cornrow Bun"
+	name = "玉米辫丸子头"
 	icon_state = "cornrow-bun"
 
 /datum/sprite_accessory/hair/head/cornrowdualtail
-	name = "Cornrow Tail"
+	name = "玉米辫马尾"
 	icon_state = "cornrow-tail"
 
 /datum/sprite_accessory/hair/head/crew
-	name = "Crewcut"
+	name = "板寸"
 	icon_state = "crewcut"
 
 /datum/sprite_accessory/hair/head/curls
-	name = "Curls"
+	name = "卷发"
 	icon_state = "curls"
 
 /datum/sprite_accessory/hair/head/cut
-	name = "Cut Hair"
+	name = "修剪发型"
 	icon_state = "cut"
 
 /datum/sprite_accessory/hair/head/dandpompadour
-	name = "Dandy Pompadour"
+	name = "纨绔飞机头"
 	icon_state = "dandypompadour"
 
 /datum/sprite_accessory/hair/head/dave
-	name = "Dave"
+	name = "戴夫"
 	icon_state = "dave"
 
 /datum/sprite_accessory/hair/head/devillock
-	name = "Devil Lock"
+	name = "恶魔发绺"
 	icon_state = "devillock"
 
 /datum/sprite_accessory/hair/head/doublebun
-	name = "Double Bun"
+	name = "双丸子头"
 	icon_state = "doublebun"
 
 /datum/sprite_accessory/hair/head/dreadlocks
-	name = "Dreadlocks"
+	name = "脏辫"
 	icon_state = "dreads"
 
 /datum/sprite_accessory/hair/head/drillhair
-	name = "Drillruru"
+	name = "钻卷"
 	icon_state = "drillruru"
 
 /datum/sprite_accessory/hair/head/drillhairextended
-	name = "Drill Hair (Extended)"
+	name = "钻头卷（加长）"
 	icon_state = "drillhairextended"
 
 /datum/sprite_accessory/hair/head/emo
-	name = "Emo"
+	name = "情绪风"
 	icon_state = "emo"
 
 /datum/sprite_accessory/hair/head/emo2
-	name = "Emo 2"
+	name = "情绪风 2"
 	icon_state = "emo2"
 
 /datum/sprite_accessory/hair/head/emofringe
-	name = "Emo Fringe"
+	name = "情绪风刘海"
 	icon_state = "emofringe"
 
 /datum/sprite_accessory/hair/head/longemo
-	name = "Emo Long"
+	name = "情绪风长发"
 	icon_state = "emolong"
 
 /datum/sprite_accessory/hair/head/nofade
-	name = "Fade (None)"
+	name = "渐变（无）"
 	icon_state = "fade-none"
 
 /datum/sprite_accessory/hair/head/lowfade
-	name = "Fade (Low)"
+	name = "渐变（低）"
 	icon_state = "fade-low"
 
 /datum/sprite_accessory/hair/head/medfade
-	name = "Fade (Medium)"
+	name = "渐变（中）"
 	icon_state = "fade-medium"
 
 /datum/sprite_accessory/hair/head/highfade
-	name = "Fade (High)"
+	name = "渐变（高）"
 	icon_state = "fade-high"
 
 /datum/sprite_accessory/hair/head/baldfade
-	name = "Fade (Bald)"
+	name = "渐变（秃）"
 	icon_state = "fade-bald"
 
 /datum/sprite_accessory/hair/head/father
-	name = "Father"
+	name = "父亲"
 	icon_state = "father"
 
 /datum/sprite_accessory/hair/head/feather
-	name = "Feather"
+	name = "羽毛"
 	icon_state = "feather"
 
 /datum/sprite_accessory/hair/head/flair
-	name = "Flair"
+	name = "风采"
 	icon_state = "flair"
 
 /datum/sprite_accessory/hair/head/flattop
-	name = "Flat Top / Sergeant"
+	name = "平顶 / 军士"
 	icon_state = "flattop"
 
 /datum/sprite_accessory/hair/head/flattop_big
-	name = "Flat Top (Big)"
+	name = "平顶（大）"
 	icon_state = "flattop-big"
 
 /datum/sprite_accessory/hair/head/flow_hair
-	name = "Flow Hair"
+	name = "飘逸发型"
 	icon_state = "flow"
 
 /datum/sprite_accessory/hair/head/gelled
-	name = "Gelled Back"
+	name = "背头"
 	icon_state = "gelled"
 
 /datum/sprite_accessory/hair/head/gentle
-	name = "Gentle"
+	name = "温婉"
 	icon_state = "gentle"
 
 /datum/sprite_accessory/hair/head/halfbang
-	name = "Half-banged Hair"
+	name = "半边刘海"
 	icon_state = "halfbang"
 
 /datum/sprite_accessory/hair/head/halfbang2
-	name = "Half-banged Hair 2"
+	name = "半边刘海 2"
 	icon_state = "halfbang2"
 
 /datum/sprite_accessory/hair/head/halfshaved
-	name = "Half-shaved"
+	name = "半边剃"
 	icon_state = "halfshaved"
 
 /datum/sprite_accessory/hair/head/hedgehog
-	name = "Hedgehog Hair"
+	name = "刺猬头"
 	icon_state = "hedgehog"
 
 /datum/sprite_accessory/hair/head/himecut
-	name = "Hime Cut"
+	name = "姬发式"
 	icon_state = "himecut"
 
 /datum/sprite_accessory/hair/head/himecut2
-	name = "Hime Cut 2"
+	name = "姬发式 2"
 	icon_state = "himecut2"
 
 /datum/sprite_accessory/hair/head/shorthime
-	name = "Hime Cut (Short)"
+	name = "姬发式（短）"
 	icon_state = "shorthime"
 
 /datum/sprite_accessory/hair/head/himeup
-	name = "Hime Updo"
+	name = "姬发盘发"
 	icon_state = "himeup"
 
 /datum/sprite_accessory/hair/head/hitop
-	name = "Hitop"
+	name = "高顶"
 	icon_state = "hitop"
 
 /datum/sprite_accessory/hair/head/jade
-	name = "Jade"
+	name = "翡翠"
 	icon_state = "jade"
 
 /datum/sprite_accessory/hair/head/jensen
-	name = "Jensen Hair"
+	name = "詹森发型"
 	icon_state = "jensen"
 
 /datum/sprite_accessory/hair/head/joestar
-	name = "Joestar"
+	name = "乔斯达"
 	icon_state = "joestar"
 
 /datum/sprite_accessory/hair/head/keanu
-	name = "Keanu Hair"
+	name = "基努发型"
 	icon_state = "keanu"
 
 /datum/sprite_accessory/hair/head/kusangi
-	name = "Kusanagi Hair"
+	name = "草薙发型"
 	icon_state = "kusanagi"
 
 /datum/sprite_accessory/hair/head/long
-	name = "Long Hair 1"
+	name = "长发 1"
 	icon_state = "long"
 
 /datum/sprite_accessory/hair/head/long2
-	name = "Long Hair 2"
+	name = "长发 2"
 	icon_state = "long2"
 
 /datum/sprite_accessory/hair/head/long3
-	name = "Long Hair 3"
+	name = "长发 3"
 	icon_state = "long3"
 
 /datum/sprite_accessory/hair/head/long_over_eye
-	name = "Long Over Eye"
+	name = "遮眼长发"
 	icon_state = "longovereye"
 
 /datum/sprite_accessory/hair/head/longbangs
-	name = "Long Bangs"
+	name = "长刘海"
 	icon_state = "lbangs"
 
 /datum/sprite_accessory/hair/head/longfringe
-	name = "Long Fringe"
+	name = "长额发"
 	icon_state = "longfringe"
 
 /datum/sprite_accessory/hair/head/sidepartlongalt
-	name = "Long Side Part"
+	name = "长侧分"
 	icon_state = "longsidepart"
 
 /datum/sprite_accessory/hair/head/lizbeth
-	name = "Lizbeth"
+	name = "莉兹贝丝"
 	icon_state = "lizbeth"
 
 /datum/sprite_accessory/hair/head/mediumbraid
-	name = "Medium Braid"
+	name = "中长辫"
 	icon_state = "mediumbraid"
 
 /datum/sprite_accessory/hair/head/megaeyebrows
-	name = "Mega Eyebrows"
+	name = "粗眉"
 	icon_state = "megaeyebrows"
 
 /datum/sprite_accessory/hair/head/messy
-	name = "Messy"
+	name = "凌乱"
 	icon_state = "messy"
 
 /datum/sprite_accessory/hair/head/modern
-	name = "Modern"
+	name = "摩登"
 	icon_state = "modern"
 
 /datum/sprite_accessory/hair/head/modern2
-	name = "Modern (New)"
+	name = "摩登（新款）"
 	icon_state = "modern2"
 
 
 /datum/sprite_accessory/hair/head/mohawk
-	name = "Mohawk"
+	name = "莫西干"
 	icon_state = "mohawk"
 
 /datum/sprite_accessory/hair/head/reversemohawk
-	name = "Mohawk (Reverse)"
+	name = "莫西干（反）"
 	icon_state = "mohawk-reverse"
 
 /datum/sprite_accessory/hair/head/shavedmohawk
-	name = "Mohawk (Shaved)"
+	name = "莫西干（剃）"
 	icon_state = "mohawk-shaved"
 
 /datum/sprite_accessory/hair/head/unshavenmohawk
-	name = "Mohawk (Big)"
+	name = "莫西干（大）"
 	icon_state = "mohawk-unshaven"
 
 /datum/sprite_accessory/hair/head/mulder
-	name = "Mulder"
+	name = "穆德"
 	icon_state = "mulder"
 
 /datum/sprite_accessory/hair/head/nitori
-	name = "Nitori"
+	name = "尼托莉"
 	icon_state = "nitori"
 
 /datum/sprite_accessory/hair/head/odango
-	name = "Odango"
+	name = "团子头"
 	icon_state = "odango"
 
 /datum/sprite_accessory/hair/head/ombre
-	name = "Ombre"
+	name = "渐变染"
 	icon_state = "ombre"
 
 /datum/sprite_accessory/hair/head/oneshoulder
-	name = "One Shoulder"
+	name = "单肩"
 	icon_state = "oneshoulder"
 
 /datum/sprite_accessory/hair/head/over_eye
-	name = "Over Eye"
+	name = "遮眼"
 	icon_state = "shortovereye"
 
 /datum/sprite_accessory/hair/head/oxton
-	name = "Oxton"
+	name = "奥克斯顿"
 	icon_state = "oxton"
 
 /datum/sprite_accessory/hair/head/parted
-	name = "Parted"
+	name = "中分"
 	icon_state = "parted"
 
 /datum/sprite_accessory/hair/head/partedside
-	name = "Parted (Side)"
+	name = "中分（侧）"
 	icon_state = "part"
 
 /datum/sprite_accessory/hair/head/pigtails
-	name = "Pigtails"
+	name = "双辫"
 	icon_state = "pigtails"
 
 /datum/sprite_accessory/hair/head/pigtails2
-	name = "Pigtails 2"
+	name = "双辫 2"
 	icon_state = "pigtails2"
 
 /datum/sprite_accessory/hair/head/pigtails3
-	name = "Pigtails 3"
+	name = "双辫 3"
 	icon_state = "pigtails3"
 
 /datum/sprite_accessory/hair/head/kagami
-	name = "Pigtails (Kagami)"
+	name = "双辫（镜）"
 	icon_state = "pigtails-kagami"
 
 /datum/sprite_accessory/hair/head/pixie
-	name = "Pixie Cut"
+	name = "精灵短发"
 	icon_state = "pixie"
 
 /datum/sprite_accessory/hair/head/pompadour
-	name = "Pompadour"
+	name = "飞机头"
 	icon_state = "pompadour"
 
 /datum/sprite_accessory/hair/head/bigpompadour
-	name = "Pompadour (Big)"
+	name = "飞机头（大）"
 	icon_state = "pompadour-big"
 
 /datum/sprite_accessory/hair/head/ponytail1
-	name = "Ponytail"
+	name = "马尾辫"
 	icon_state = "ponytail"
 
 /datum/sprite_accessory/hair/head/ponytail2
-	name = "Ponytail 2"
+	name = "马尾辫 2"
 	icon_state = "ponytail2"
 
 /datum/sprite_accessory/hair/head/ponytail3
-	name = "Ponytail 3"
+	name = "马尾辫 3"
 	icon_state = "ponytail3"
 
 /datum/sprite_accessory/hair/head/ponytail4
-	name = "Ponytail 4"
+	name = "马尾辫 4"
 	icon_state = "ponytail4"
 
 /datum/sprite_accessory/hair/head/ponytail5
-	name = "Ponytail 5"
+	name = "马尾辫 5"
 	icon_state = "ponytail5"
 
 /datum/sprite_accessory/hair/head/ponytail6
-	name = "Ponytail 6"
+	name = "马尾辫 6"
 	icon_state = "ponytail6"
 
 /datum/sprite_accessory/hair/head/ponytail7
-	name = "Ponytail 7"
+	name = "马尾辫 7"
 	icon_state = "ponytail7"
 
 /datum/sprite_accessory/hair/head/highponytail
-	name = "Ponytail (High)"
+	name = "马尾辫（高）"
 	icon_state = "ponytail-high"
 
 /datum/sprite_accessory/hair/head/longponytail
-	name = "Ponytail (Long)"
+	name = "马尾辫（长）"
 	icon_state = "ponytail-longstraight"
 
 /datum/sprite_accessory/hair/head/stail
-	name = "Ponytail (Short)"
+	name = "马尾辫（短）"
 	icon_state = "ponytail-short"
 
 /datum/sprite_accessory/hair/head/countryponytail
-	name = "Ponytail (Country)"
+	name = "马尾辫（乡野）"
 	icon_state = "ponytail-country"
 
 /datum/sprite_accessory/hair/head/countryponytailalt
-	name = "Ponytail (Country Alt)"
+	name = "马尾辫（乡野变体）"
 	icon_state = "countryalt"
 
 /datum/sprite_accessory/hair/head/ponytailwitcher
-	name = "Ponytail (Witcher)"
+	name = "马尾辫（猎魔人）"
 	icon_state = "ponytail_witcher"
 
 /datum/sprite_accessory/hair/head/ponytailwitcheralt
-	name = "Ponytail (Witcher Alt)"
+	name = "马尾辫（猎魔人变体）"
 	icon_state = "ponytail_witcheralt"
 
 /datum/sprite_accessory/hair/head/fringetail
-	name = "Ponytail (Fringe)"
+	name = "马尾辫（额发）"
 	icon_state = "fringetail"
 
 /datum/sprite_accessory/hair/head/sidetail
-	name = "Ponytail (Side)"
+	name = "马尾辫（侧）"
 	icon_state = "sidetail"
 
 /datum/sprite_accessory/hair/head/sidetail2
-	name = "Ponytail (Side) 2"
+	name = "马尾辫（侧）2"
 	icon_state = "sidetail2"
 
 /datum/sprite_accessory/hair/head/sidetail3
-	name = "Ponytail (Side) 3"
+	name = "马尾辫（侧）3"
 	icon_state = "sidetail3"
 
 /datum/sprite_accessory/hair/head/sidetail4
-	name = "Ponytail (Side) 4"
+	name = "马尾辫（侧）4"
 	icon_state = "sidetail4"
 
 /datum/sprite_accessory/hair/head/spikyponytail
-	name = "Ponytail (Spiky)"
+	name = "马尾辫（尖）"
 	icon_state = "spikyponytail"
 
 /datum/sprite_accessory/hair/head/poofy
-	name = "Poofy"
+	name = "蓬松"
 	icon_state = "poofy"
 
 /datum/sprite_accessory/hair/head/quiff
-	name = "Quiff"
+	name = "后梳蓬发"
 	icon_state = "quiff"
 
 /datum/sprite_accessory/hair/head/ronin
-	name = "Ronin"
+	name = "浪人"
 	icon_state = "ronin"
 
 /datum/sprite_accessory/hair/head/shaved
-	name = "Shaved"
+	name = "剃光"
 	icon_state = "shaved"
 
 /datum/sprite_accessory/hair/head/shavedpart
-	name = "Shaved Part"
+	name = "剃光分线"
 	icon_state = "shavedpart"
 
 /datum/sprite_accessory/hair/head/shortbangs
-	name = "Short Bangs"
+	name = "短刘海"
 	icon_state = "shortbangs"
 
 /datum/sprite_accessory/hair/head/short
-	name = "Short Hair"
+	name = "短发"
 	icon_state = "short"
 
 /datum/sprite_accessory/hair/head/shorthair2
-	name = "Short Hair 2"
+	name = "短发 2"
 	icon_state = "shorthair2"
 
 /datum/sprite_accessory/hair/head/shorthair3
-	name = "Short Hair 3"
+	name = "短发 3"
 	icon_state = "shorthair3"
 
 /datum/sprite_accessory/hair/head/shorthair7
-	name = "Short Hair 7"
+	name = "短发 7"
 	icon_state = "shorthairg"
 
 /datum/sprite_accessory/hair/head/rosa
-	name = "Short Hair Rosa"
+	name = "短发 罗莎"
 	icon_state = "rosa"
 
 /datum/sprite_accessory/hair/head/shoulderlength
-	name = "Shoulder-length Hair"
+	name = "齐肩发"
 	icon_state = "shoulder"
 
 /datum/sprite_accessory/hair/head/sidecut
-	name = "Sidecut"
+	name = "侧剃"
 	icon_state = "sidecut"
 
 /datum/sprite_accessory/hair/head/simple
-	name = "Simple"
+	name = "简约"
 	icon_state = "simple"
 
 /datum/sprite_accessory/hair/head/simpleshort
-	name = "Simple (Short)"
+	name = "简约（短）"
 	icon_state = "simple_short"
 
 /datum/sprite_accessory/hair/head/simplelong
-	name = "Simple (Long)"
+	name = "简约（长）"
 	icon_state = "simple_long"
 
 /datum/sprite_accessory/hair/head/skinhead
-	name = "Skinhead"
+	name = "光头党"
 	icon_state = "skinhead"
 
 /datum/sprite_accessory/hair/head/protagonist
-	name = "Slightly Long Hair"
+	name = "略长发"
 	icon_state = "protagonist"
 
 /datum/sprite_accessory/hair/head/spicy
-	name = "Spicy"
+	name = "火辣"
 	icon_state = "spicy"
 
 /datum/sprite_accessory/hair/head/spiky
-	name = "Spiky"
+	name = "刺发"
 	icon_state = "spikey"
 
 /datum/sprite_accessory/hair/head/spiky2
-	name = "Spiky 2"
+	name = "刺发 2"
 	icon_state = "spiky"
 
 /datum/sprite_accessory/hair/head/spiky3
-	name = "Spiky 3"
+	name = "刺发 3"
 	icon_state = "spiky2"
 
 /datum/sprite_accessory/hair/head/stacy
-	name = "Stacy"
+	name = "斯泰西"
 	icon_state = "stacy"
 
 /datum/sprite_accessory/hair/head/stacybun
-	name = "Stacy (Bun)"
+	name = "斯泰西（丸子头）"
 	icon_state = "stacy_bun"
 
 /datum/sprite_accessory/hair/head/strict
-	name = "Strict"
+	name = "严谨"
 	icon_state = "strict"
 
 /datum/sprite_accessory/hair/head/strictshort
-	name = "Strict (Short)"
+	name = "严谨（短）"
 	icon_state = "strict_short"
 
 /datum/sprite_accessory/hair/head/strictlong
-	name = "Strict (Long)"
+	name = "严谨（长）"
 	icon_state = "strict_long"
 
 /datum/sprite_accessory/hair/head/stacybun
-	name = "Stacy (Bun)"
+	name = "斯泰西（丸子头）"
 	icon_state = "stacy_bun"
 
 /datum/sprite_accessory/hair/head/swept
-	name = "Swept Back Hair"
+	name = "后梳发型"
 	icon_state = "swept"
 
 /datum/sprite_accessory/hair/head/swept2
-	name = "Swept Back Hair 2"
+	name = "后梳发型 2"
 	icon_state = "swept2"
 
 /datum/sprite_accessory/hair/head/taro
-	name = "Taro"
+	name = "太郎"
 	icon_state = "taro"
 
 /datum/sprite_accessory/hair/head/thinning
-	name = "Thinning"
+	name = "稀疏"
 	icon_state = "thinning"
 
 /datum/sprite_accessory/hair/head/thinningfront
-	name = "Thinning (Front)"
+	name = "稀疏（前）"
 	icon_state = "thinningfront"
 
 /datum/sprite_accessory/hair/head/thinningrear
-	name = "Thinning (Rear)"
+	name = "稀疏（后）"
 	icon_state = "thinningrear"
 
 /datum/sprite_accessory/hair/head/topknot
-	name = "Topknot"
+	name = "顶髻"
 	icon_state = "topknot"
 
 /datum/sprite_accessory/hair/head/tressshoulder
-	name = "Tress Shoulder"
+	name = "齐肩长辫"
 	icon_state = "tressshoulder"
 
 /datum/sprite_accessory/hair/head/trimmed
-	name = "Trimmed"
+	name = "修剪整齐"
 	icon_state = "trimmed"
 
 /datum/sprite_accessory/hair/head/trimflat
-	name = "Trim Flat"
+	name = "平剪"
 	icon_state = "trimflat"
 
 /datum/sprite_accessory/hair/head/twintails
-	name = "Twintails"
+	name = "双马尾"
 	icon_state = "twintail"
 
 /datum/sprite_accessory/hair/head/uncaring
-	name = "Uncaring"
+	name = "随性"
 	icon_state = "makoto"
 
 /datum/sprite_accessory/hair/head/undercut
-	name = "Undercut"
+	name = "侧削"
 	icon_state = "undercut"
 
 /datum/sprite_accessory/hair/head/undercutleft
-	name = "Undercut Left"
+	name = "侧削（左）"
 	icon_state = "undercutleft"
 
 /datum/sprite_accessory/hair/head/undercutright
-	name = "Undercut Right"
+	name = "侧削（右）"
 	icon_state = "undercutright"
 
 /datum/sprite_accessory/hair/head/unkept
-	name = "Unkept"
+	name = "不修边幅"
 	icon_state = "unkept"
 
 /datum/sprite_accessory/hair/head/updo
-	name = "Updo"
+	name = "盘发"
 	icon_state = "updo"
 
 /datum/sprite_accessory/hair/head/longer
-	name = "Very Long Hair"
+	name = "超长发"
 	icon_state = "vlong"
 
 /datum/sprite_accessory/hair/head/longest
-	name = "Very Long Hair 2"
+	name = "超长发 2"
 	icon_state = "longest"
 
 /datum/sprite_accessory/hair/head/longest2
-	name = "Very Long Over Eye"
+	name = "超长遮眼"
 	icon_state = "longest2"
 
 /datum/sprite_accessory/hair/head/veryshortovereye
-	name = "Very Short Over Eye"
+	name = "超短遮眼"
 	icon_state = "veryshortovereyealternate"
 
 /datum/sprite_accessory/hair/head/longestalt
-	name = "Very Long with Fringe"
+	name = "超长带额发"
 	icon_state = "vlongfringe"
 
 /datum/sprite_accessory/hair/head/volaju
-	name = "Volaju"
+	name = "沃拉朱"
 	icon_state = "volaju"
 
 /datum/sprite_accessory/hair/head/wisp
-	name = "Wisp"
+	name = "缕发"
 	icon_state = "wisp"
 
 /datum/sprite_accessory/hair/head/wispy
-	name = "Wispy"
+	name = "飘渺"
 	icon_state = "wispy"
 
 /datum/sprite_accessory/hair/head/hyenamane
-	name = "Hyena Mane"
+	name = "鬣狗鬃毛"
 	icon_state = "hyenamane"
 
 /datum/sprite_accessory/hair/head/hyenamaneshort
-	name = "Hyena Mane Short"
+	name = "鬣狗鬃毛（短）"
 	icon_state = "hyenamaneshort"
 
 /datum/sprite_accessory/hair/head/forelock
-	name = "Forelock"
+	name = "额前发"
 	icon_state = "forelock"
 
 /datum/sprite_accessory/hair/head/pirate
-	name = "Pirate"
+	name = "海盗"
 	icon_state = "pirate"
 
 /datum/sprite_accessory/hair/head/shavedmohawk
-	name = "Shaved Mohawk"
+	name = "剃式莫西干"
 	icon_state = "shavedmohawk"
 
 /datum/sprite_accessory/hair/head/baldfade
-	name = "Bald Fade"
+	name = "秃顶渐变"
 	icon_state = "baldfade"
 
 /datum/sprite_accessory/hair/head/rogue
-	name = "Rogue"
+	name = "游侠"
 	icon_state = "rogue"
 
 /datum/sprite_accessory/hair/head/romantic
-	name = "Romantic"
+	name = "浪漫"
 	icon_state = "romantic"
 
 /datum/sprite_accessory/hair/head/runt
-	name = "Runt"
+	name = "矮小"
 	icon_state = "runt"
 
 /datum/sprite_accessory/hair/head/son
-	name = "Son"
+	name = "儿子"
 	icon_state = "son"
 
 /datum/sprite_accessory/hair/head/bog
-	name = "Bog"
+	name = "沼泽"
 	icon_state = "bog"
 
 /datum/sprite_accessory/hair/head/son2
-	name = "Son (Alt)"
+	name = "儿子（变体）"
 	icon_state = "son2"
 
 /datum/sprite_accessory/hair/head/long4
-	name = "Long (Fourth)"
+	name = "长发（第四款）"
 	icon_state = "long4"
 
 /datum/sprite_accessory/hair/head/amazon
-	name = "Amazon"
+	name = "亚马逊"
 	icon_state = "amazon"
 
 /datum/sprite_accessory/hair/head/barmaid
-	name = "Barmaid"
+	name = "酒馆女侍"
 	icon_state = "barmaid"
 
 /datum/sprite_accessory/hair/head/bob_rt
-	name = "Bob (Rogue)"
+	name = "波波头（游侠）"
 	icon_state = "bob_rt"
 
 /datum/sprite_accessory/hair/head/messy_rt
-	name = "Messy (Rogue)"
+	name = "凌乱（游侠）"
 	icon_state = "messy_rt"
 
 /datum/sprite_accessory/hair/head/homely
-	name = "Homely"
+	name = "质朴"
 	icon_state = "homely"
 
 /datum/sprite_accessory/hair/head/longtails
-	name = "Longtails"
+	name = "长尾"
 	icon_state = "longtails"
 
 /datum/sprite_accessory/hair/head/hime
-	name = "Hime"
+	name = "姬"
 	icon_state = "hime"
 
 /datum/sprite_accessory/hair/head/manbun
-	name = "Manbun"
+	name = "男式丸子头"
 	icon_state = "manbun"
 
 /datum/sprite_accessory/hair/head/tied
-	name = "Tied"
+	name = "束发"
 	icon_state = "tied"
 
 /datum/sprite_accessory/hair/head/tied2
-	name = "Tied (Alt)"
+	name = "束发（变体）"
 	icon_state = "tied2"
 
 /datum/sprite_accessory/hair/head/fatherless
-	name = "Fatherless"
+	name = "无父"
 	icon_state = "fatherless"
 
 /datum/sprite_accessory/hair/head/fatherless2
-	name = "Fatherless (Alt)"
+	name = "无父（变体）"
 	icon_state = "fatherless2"
 
 /datum/sprite_accessory/hair/head/kepthair
-	name = "Kepthair"
+	name = "保留发型"
 	icon_state = "kepthair"
 
 /datum/sprite_accessory/hair/head/singlebraid
-	name = "Single Braid"
+	name = "单辫"
 	icon_state = "singlebraid"
 
 /datum/sprite_accessory/hair/head/gloomy
-	name = "Gloomy"
+	name = "阴郁"
 	icon_state = "gloomy"
 
 /datum/sprite_accessory/hair/head/gloomylong
-	name = "Gloomy (Long)"
+	name = "阴郁（长）"
 	icon_state = "gloomylong"
 
 /datum/sprite_accessory/hair/head/shortmessy
-	name = "Messy (Short)"
+	name = "凌乱（短）"
 	icon_state = "shortmessy"
 
 /datum/sprite_accessory/hair/head/mediumessy
-	name = "Messy (Medium)"
+	name = "凌乱（中）"
 	icon_state = "mediummessy"
 
 /datum/sprite_accessory/hair/head/zone
-	name = "Zone"
+	name = "区域"
 	icon_state = "zone"
 
 /datum/sprite_accessory/hair/head/inari
-	name = "Inari"
+	name = "稻荷"
 	icon_state = "inari"
 
 /datum/sprite_accessory/hair/head/ziegler
-	name = "Ziegler"
+	name = "齐格勒"
 	icon_state = "ziegler"
 
 /datum/sprite_accessory/hair/head/zoey
-	name = "Zoey"
+	name = "佐伊"
 	icon_state = "zoey"
 
 /datum/sprite_accessory/hair/head/gronnbraid
-	name = "Gronn Braid"
+	name = "格罗恩辫"
 	icon_state = "gronnbraid"
 
 /datum/sprite_accessory/hair/head/grenzelcut
-	name = "Grenzel Cut"
+	name = "格伦泽尔发型"
 	icon_state = "grenzelcut"
 
 /datum/sprite_accessory/hair/head/fluffy
-	name = "Fluffy"
+	name = "蓬松"
 	icon_state = "fluffy"
 
 /datum/sprite_accessory/hair/head/fluffyovereye
-	name = "Fluffy (Over Eye)"
+	name = "蓬松（遮眼）"
 	icon_state = "fluffy_overeye"
 
 /datum/sprite_accessory/hair/head/fluffyshort
-	name = "Fluffy (Short)"
+	name = "蓬松（短）"
 	icon_state = "fluffyshort"
 
 /datum/sprite_accessory/hair/head/fluffylong
-	name = "Fluffy (Long)"
+	name = "蓬松（长）"
 	icon_state = "fluffylong"
 
 /datum/sprite_accessory/hair/head/jay
-	name = "Jay"
+	name = "杰伊"
 	icon_state = "jay"
 
 /datum/sprite_accessory/hair/head/hairfre
-	name = "Hairfre"
+	name = "海尔弗雷"
 	icon_state = "hairfre"
 
 /datum/sprite_accessory/hair/head/dawn
-	name = "Dawn"
+	name = "黎明"
 	icon_state = "dawn"
 
 /datum/sprite_accessory/hair/head/morning
-	name = "Morning"
+	name = "清晨"
 	icon_state = "morning"
 
 /datum/sprite_accessory/hair/head/kobeni_1
-	name = "Kobeni"
+	name = "科贝妮"
 	icon_state = "kobeni_1"
 
 /datum/sprite_accessory/hair/head/kobeni_2
-	name = "Kobeni (Alt)"
+	name = "科贝妮（变体）"
 	icon_state = "kobeni_2"
 
 /datum/sprite_accessory/hair/head/kobeni_tail
-	name = "Kobeni (Ponytail)"
+	name = "科贝妮（马尾辫）"
 	icon_state = "kobeni_tail"
 
 /datum/sprite_accessory/hair/head/gloomy_short
-	name = "Gloomy (Short)"
+	name = "阴郁（短）"
 	icon_state = "gloomy_short"
 
 /datum/sprite_accessory/hair/head/gloomy_medium
-	name = "Gloomy (Medium)"
+	name = "阴郁（中）"
 	icon_state = "gloomy_medium"
 
 /datum/sprite_accessory/hair/head/gloomy_long
-	name = "Gloomy (Long)"
+	name = "阴郁（长）"
 	icon_state = "gloomy_long"
 
 /datum/sprite_accessory/hair/head/emo_long
-	name = "Emo Long (New)"
+	name = "情绪风长发（新款）"
 	icon_state = "emo_long"
 
 /datum/sprite_accessory/hair/head/twintail_floor
-	name = "Twintail Floor"
+	name = "及地双马尾"
 	icon_state = "twintail_floor"
 
 /datum/sprite_accessory/hair/head/sideways_ponytail
-	name = "Sideways Ponytail"
+	name = "侧向马尾辫"
 	icon_state = "sideways_ponytail"
 
 /datum/sprite_accessory/hair/head/ponytail8
-	name = "Ponytail 8"
+	name = "马尾辫 8"
 	icon_state = "ponytail8"
 
 /datum/sprite_accessory/hair/head/dreadlocks_long
-	name = "Dreadlocks Long"
+	name = "脏辫（长）"
 	icon_state = "dreadlocks_long"
 
 /datum/sprite_accessory/hair/head/rows1
-	name = "Row 1"
+	name = "排辫 1"
 	icon_state = "rows1"
 
 /datum/sprite_accessory/hair/head/rows2
-	name = "Row 2"
+	name = "排辫 2"
 	icon_state = "rows2"
 
 /datum/sprite_accessory/hair/head/rowbraid
-	name = "Row Braid"
+	name = "排辫"
 	icon_state = "rowbraid"
 
 /datum/sprite_accessory/hair/head/rowdualtail
-	name = "Row Dual Tail"
+	name = "双排尾"
 	icon_state = "rowdualtail"
 
 /datum/sprite_accessory/hair/head/rowbun
-	name = "Row Bun"
+	name = "排丸子头"
 	icon_state = "rowbun"
 
 /datum/sprite_accessory/hair/head/long_over_eye_alt
-	name = "Long Over Eye (Alt)"
+	name = "遮眼长发（变体）"
 	icon_state = "long_over_eye_alt"
 
 /datum/sprite_accessory/hair/head/diagonalbangs
-	name = "Diagonal Bangs"
+	name = "斜刘海"
 	icon_state = "diagonalbangs"
 
 /datum/sprite_accessory/hair/head/sabitsuki
-	name = "Sabitsuki"
+	name = "萨比茨基"
 	icon_state = "sabitsuki"
 
 /datum/sprite_accessory/hair/head/sabitsuki_ponytail
-	name = "Sabitsuki (Ponytail)"
+	name = "萨比茨基（马尾辫）"
 	icon_state = "sabitsuki_ponytail"
 
 /datum/sprite_accessory/hair/head/cotton
-	name = "Cotton"
+	name = "棉花"
 	icon_state = "cotton"
 
 /datum/sprite_accessory/hair/head/cottonalt
-	name = "Cotton (Alt)"
+	name = "棉花（变体）"
 	icon_state = "cottonalt"
 
 /datum/sprite_accessory/hair/head/bushy
-	name = "Bushy"
+	name = "浓密"
 	icon_state = "bushy"
 
 /datum/sprite_accessory/hair/head/bushy_alt
-	name = "Bushy (Alt)"
+	name = "浓密（变体）"
 	icon_state = "bushy_alt"
 
 /datum/sprite_accessory/hair/head/curtains
-	name = "Curtains"
+	name = "窗帘式"
 	icon_state = "curtains"
 
 /datum/sprite_accessory/hair/head/glamourh
-	name = "Glamourh"
+	name = "魅惑"
 	icon_state = "glamourh"
 
 /datum/sprite_accessory/hair/head/emma
-	name = "Emma"
+	name = "艾玛"
 	icon_state = "emma"
 
 /datum/sprite_accessory/hair/head/damsel
-	name = "Damsel"
+	name = "少女"
 	icon_state = "damsel"
 
 /datum/sprite_accessory/hair/head/wavylong
-	name = "Wavy Long"
+	name = "波浪长发"
 	icon_state = "wavylong"
 
 /datum/sprite_accessory/hair/head/wavyovereye
-	name = "Wavy Over Eye"
+	name = "波浪遮眼"
 	icon_state = "wavyovereye"
 
 /datum/sprite_accessory/hair/head/straightovereye
-	name = "Straight Over Eye"
+	name = "直发遮眼"
 	icon_state = "straightovereye"
 
 /datum/sprite_accessory/hair/head/straightside
-	name = "Straight Side"
+	name = "直发侧分"
 	icon_state = "straightside"
 
 /datum/sprite_accessory/hair/head/straightshort
-	name = "Straight Short"
+	name = "直发短发"
 	icon_state = "straightshort"
 
 /datum/sprite_accessory/hair/head/straightlong
-	name = "Straight Long"
+	name = "直发长发"
 	icon_state = "straightlong"
 
 /datum/sprite_accessory/hair/head/fluffball
-	name = "Fluffball"
+	name = "毛球"
 	icon_state = "fluffball"
 
 /datum/sprite_accessory/hair/head/halfshave_long
-	name = "Halfshave Long"
+	name = "半剃长发"
 	icon_state = "halfshave_long"
 
 /datum/sprite_accessory/hair/head/halfshave_long_alt
-	name = "Halfshave Long (Alt)"
+	name = "半剃长发（变体）"
 	icon_state = "halfshave_long_alt"
 
 /datum/sprite_accessory/hair/head/halfshave_messy
-	name = "Halfshave Messy"
+	name = "半剃凌乱"
 	icon_state = "halfshave_messy"
 
 /datum/sprite_accessory/hair/head/halfshave_messylong
-	name = "Halfshave Messy Long"
+	name = "半剃凌乱长发"
 	icon_state = "halfshave_messylong"
 
 /datum/sprite_accessory/hair/head/halfshave_messy_alt
-	name = "Halfshave Messy (Alt)"
+	name = "半剃凌乱（变体）"
 	icon_state = "halfshave_messy_alt"
 
 /datum/sprite_accessory/hair/head/halfshave_messylong_alt
-	name = "Halfshave Messy Long (Alt)"
+	name = "半剃凌乱长发（变体）"
 	icon_state = "halfshave_messylong_alt"
 
 /datum/sprite_accessory/hair/head/halfshave_glamorous
-	name = "Halfshave Glamorous"
+	name = "半剃魅惑"
 	icon_state = "halfshave_glamorous"
 
 /datum/sprite_accessory/hair/head/halfshave_glamorous_alt
-	name = "Halfshave Glamorous (Alt)"
+	name = "半剃魅惑（变体）"
 	icon_state = "halfshave_glamorous_alt"
 
 /datum/sprite_accessory/hair/head/thicklong
-	name = "Thick Long"
+	name = "浓密长发"
 	icon_state = "thicklong"
 
 /datum/sprite_accessory/hair/head/thickshort
-	name = "Thick Short"
+	name = "浓密短发"
 	icon_state = "thickshort"
 
 /datum/sprite_accessory/hair/head/thickcurly
-	name = "Thick Curly"
+	name = "浓密卷发"
 	icon_state = "thickcurly"
 
 /datum/sprite_accessory/hair/head/thicklong_alt
-	name = "Thick Long (Alt)"
+	name = "浓密长发（变体）"
 	icon_state = "thicklong_alt"
 
 /datum/sprite_accessory/hair/head/baum
-	name = "Baum"
+	name = "鲍姆"
 	icon_state = "baum"
 
 /datum/sprite_accessory/hair/head/mcsqueeb
-	name = "Ye Old McSqueeb"
+	name = "老麦克斯基布"
 	icon_state = "mcsqueeb"
 
 /datum/sprite_accessory/hair/head/highlander
-	name = "Highlander"
+	name = "高地人"
 	icon_state = "highlander"
 
 /datum/sprite_accessory/hair/head/royalcurls
-	name = "Royal Curls"
+	name = "皇家卷发"
 	icon_state = "royalcurls"
 
 /datum/sprite_accessory/hair/head/dreadlocksmessy
-	name = "Dreadlocks Messy"
+	name = "脏辫凌乱"
 	icon_state = "dreadlong"
 
 /datum/sprite_accessory/hair/head/suave
-	name = "Suave"
+	name = "油滑"
 	icon_state = "suave"
 
 /datum/sprite_accessory/hair/head/kusanagi_alt
-	name = "Kusanagi (Alt)"
+	name = "草薙（变体）"
 	icon_state = "kusanagi_alt"
 
 /datum/sprite_accessory/hair/head/shorthair6
-	name = "Short Hair 6"
+	name = "短发 6"
 	icon_state = "shorthair_alt"
 
 /datum/sprite_accessory/hair/head/bubblebraids
-	name = "Bubble Braids"
+	name = "泡泡辫"
 	icon_state = "bubblebraid"
 
 /datum/sprite_accessory/hair/head/bubblebraids_v2
-	name = "Bubble Braids Alt"
+	name = "泡泡辫变体"
 	icon_state = "bubblebraid_v2"
 
 /datum/sprite_accessory/hair/head/heiress
-	name = "Heiress"
+	name = "女继承人"
 	icon_state = "heiress"
 
 /datum/sprite_accessory/hair/head/playful
-	name = "Playful"
+	name = "顽皮"
 	icon_state = "playful"
 
 /datum/sprite_accessory/hair/head/adventurer
-	name = "Adventurer"
+	name = "冒险者"
 	icon_state = "adventurer"
 
 /datum/sprite_accessory/hair/head/amazon_f
-	name = "Amazon (F)"
+	name = "亚马逊（女）"
 	icon_state = "amazon_f"
 
 /datum/sprite_accessory/hair/head/archivist
-	name = "Archivist"
+	name = "档案员"
 	icon_state = "archivist"
 
 /datum/sprite_accessory/hair/head/barbarian_f
-	name = "Barbarian (F)"
+	name = "野蛮人（女）"
 	icon_state = "barbarian_f"
 
 /datum/sprite_accessory/hair/head/beartails_f
-	name = "Beartails (F)"
+	name = "熊尾（女）"
 	icon_state = "beartails_f"
 
 /datum/sprite_accessory/hair/head/berserker
-	name = "Berserker"
+	name = "狂战士"
 	icon_state = "berserker"
 
 /datum/sprite_accessory/hair/head/bob_f
-	name = "Bob (F)"
+	name = "波波头（女）"
 	icon_state = "bob_f"
 
 /datum/sprite_accessory/hair/head/boss
-	name = "Boss"
+	name = "老板"
 	icon_state = "boss"
 
 /datum/sprite_accessory/hair/head/buns_f
-	name = "Buns (F)"
+	name = "丸子头（女）"
 	icon_state = "buns_f"
 
 /datum/sprite_accessory/hair/head/cavehead
-	name = "Cavehead"
+	name = "洞穴人"
 	icon_state = "cavehead"
 
 /datum/sprite_accessory/hair/head/conscript
-	name = "Conscript"
+	name = "新兵"
 	icon_state = "conscript"
 
 /datum/sprite_accessory/hair/head/courtier
-	name = "Courtier"
+	name = "朝臣"
 	icon_state = "courtier"
 
 /datum/sprite_accessory/hair/head/curly_f
-	name = "Curly (F)"
+	name = "卷发（女）"
 	icon_state = "curly_f"
 
 /datum/sprite_accessory/hair/head/darkknight
-	name = "Darkknight"
+	name = "黑暗骑士"
 	icon_state = "darkknight"
 
 /datum/sprite_accessory/hair/head/dome
-	name = "Dome"
+	name = "圆顶"
 	icon_state = "dome"
 
 /datum/sprite_accessory/hair/head/druid
-	name = "Druid"
+	name = "德鲁伊"
 	icon_state = "druid"
 
 /datum/sprite_accessory/hair/head/empress_f
-	name = "Empress (F)"
+	name = "女皇（女）"
 	icon_state = "empress_f"
 
 /datum/sprite_accessory/hair/head/fancy_elf
-	name = "Fancy Elf"
+	name = "华丽精灵"
 	icon_state = "fancy_elf"
 
 /datum/sprite_accessory/hair/head/fancy_elf_f
-	name = "Fancy Elf (F)"
+	name = "华丽精灵（女）"
 	icon_state = "fancy_elf_f"
 
 /datum/sprite_accessory/hair/head/forester
-	name = "Forester"
+	name = "林务员"
 	icon_state = "forester"
 
 /datum/sprite_accessory/hair/head/foreigner
-	name = "Foreigner"
+	name = "异乡人"
 	icon_state = "foreigner"
 
 /datum/sprite_accessory/hair/head/forged
-	name = "Forged"
+	name = "锻造"
 	icon_state = "forged"
 
 /datum/sprite_accessory/hair/head/forsaken
-	name = "Forsaken"
+	name = "被弃者"
 	icon_state = "forsaken"
 
 /datum/sprite_accessory/hair/head/grumpy_f
-	name = "Grumpy (F)"
+	name = "暴躁（女）"
 	icon_state = "grumpy_f"
 
 /datum/sprite_accessory/hair/head/gnomish_f
-	name = "Gnomish (F)"
+	name = "侏儒（女）"
 	icon_state = "gnomish_f"
 
 /datum/sprite_accessory/hair/head/graceful
-	name = "Graceful"
+	name = "优雅"
 	icon_state = "graceful"
 
 /datum/sprite_accessory/hair/head/heroic
-	name = "Heroic"
+	name = "英勇"
 	icon_state = "heroic"
 
 /datum/sprite_accessory/hair/head/hearth_f
-	name = "Hearth (F)"
+	name = "炉火（女）"
 	icon_state = "hearth_f"
 
 /datum/sprite_accessory/hair/head/hunter
-	name = "Hunter"
+	name = "猎人"
 	icon_state = "hunter"
 
 /datum/sprite_accessory/hair/head/homely_f
-	name = "Homely (F)"
+	name = "质朴（女）"
 	icon_state = "homely_f"
 
 /datum/sprite_accessory/hair/head/junia_tief_f
-	name = "Junia Tief (F)"
+	name = "朱妮娅 提夫（女）"
 	icon_state = "junia_tief_f"
 
 /datum/sprite_accessory/hair/head/lady_f
-	name = "Lady (F)"
+	name = "贵妇（女）"
 	icon_state = "lady_f"
 
 /datum/sprite_accessory/hair/head/landlord
-	name = "Landlord"
+	name = "地主"
 	icon_state = "landlord"
 
 /datum/sprite_accessory/hair/head/lion
-	name = "Lion"
+	name = "狮子"
 	icon_state = "lion"
 
 /datum/sprite_accessory/hair/head/loosebraid_f
-	name = "Loosebraid (F)"
+	name = "松散辫（女）"
 	icon_state = "loosebraid_f"
 
 /datum/sprite_accessory/hair/head/lover_tief_m
-	name = "Lover Tief (M)"
+	name = "恋人 提夫（男）"
 	icon_state = "lover_tief_m"
 
 /datum/sprite_accessory/hair/head/maid_f
-	name = "Maid (F)"
+	name = "女仆（女）"
 	icon_state = "maid_f"
 
 /datum/sprite_accessory/hair/head/maiden_f
-	name = "Maiden (F)"
+	name = "少女（女）"
 	icon_state = "maiden_f"
 
 /datum/sprite_accessory/hair/head/martial
-	name = "Martial"
+	name = "武术"
 	icon_state = "martial"
 
 /datum/sprite_accessory/hair/head/majestic
-	name = "Majestic"
+	name = "威严"
 	icon_state = "majestic"
 
 /datum/sprite_accessory/hair/head/majestic_dwarf
-	name = "Majestic Dwarf"
+	name = "威严矮人"
 	icon_state = "majestic_dwarf"
 
 /datum/sprite_accessory/hair/head/majestic_elf
-	name = "Majestic Elf"
+	name = "威严精灵"
 	icon_state = "majestic_elf"
 
 /datum/sprite_accessory/hair/head/majestic_f
-	name = "Majestic (F)"
+	name = "威严（女）"
 	icon_state = "majestic_f"
 
 /datum/sprite_accessory/hair/head/messy_f
-	name = "Messy (F)"
+	name = "凌乱（女）"
 	icon_state = "messy_f"
 
 /datum/sprite_accessory/hair/head/monk
-	name = "Monk"
+	name = "僧侣"
 	icon_state = "monk"
 
 /datum/sprite_accessory/hair/head/miner
-	name = "Miner"
+	name = "矿工"
 	icon_state = "miner"
 
 /datum/sprite_accessory/hair/head/mystery_f
-	name = "Mystery (F)"
+	name = "神秘（女）"
 	icon_state = "mystery_f"
 
 /datum/sprite_accessory/hair/head/mysterious_elf
-	name = "Mysterious Elf"
+	name = "神秘精灵"
 	icon_state = "mysterious_elf"
 
 /datum/sprite_accessory/hair/head/nobility
-	name = "Nobility"
+	name = "贵族"
 	icon_state = "nobility"
 
 /datum/sprite_accessory/hair/head/noblesse_f
-	name = "Noblesse (F)"
+	name = "贵气（女）"
 	icon_state = "noblesse_f"
 
 /datum/sprite_accessory/hair/head/nomadic
-	name = "Nomadic"
+	name = "游牧"
 	icon_state = "nomadic"
 
 /datum/sprite_accessory/hair/head/orc_f
-	name = "Orc (F)"
+	name = "兽人（女）"
 	icon_state = "orc_f"
 
 /datum/sprite_accessory/hair/head/performer_tief_f
-	name = "Performer Tief (F)"
+	name = "表演者 提夫（女）"
 	icon_state = "performer_tief_f"
 
 /datum/sprite_accessory/hair/head/plain_f
-	name = "Plain (F)"
+	name = "朴素（女）"
 	icon_state = "plain_f"
 
 /datum/sprite_accessory/hair/head/princely
-	name = "Princely"
+	name = "王子气"
 	icon_state = "princely"
 
 /datum/sprite_accessory/hair/head/pixie_f
-	name = "Pixie (F)"
+	name = "精灵（女）"
 	icon_state = "pixie_f"
 
 /datum/sprite_accessory/hair/head/scribe
-	name = "Scribe"
+	name = "抄写员"
 	icon_state = "scribe"
 
 /datum/sprite_accessory/hair/head/soilbride_f
-	name = "Soilbride (F)"
+	name = "土壤新娘（女）"
 	icon_state = "soilbride_f"
 
 /datum/sprite_accessory/hair/head/shrine_f
-	name = "Shrine (F)"
+	name = "神社（女）"
 	icon_state = "shrine_f"
 
 /datum/sprite_accessory/hair/head/southern
-	name = "Southern"
+	name = "南方"
 	icon_state = "southern"
 
 /datum/sprite_accessory/hair/head/swain
-	name = "Swain"
+	name = "情郎"
 	icon_state = "swain"
 
 /datum/sprite_accessory/hair/head/squire_f
-	name = "Squire (F)"
+	name = "侍从（女）"
 	icon_state = "squire_f"
 
 /datum/sprite_accessory/hair/head/squire
-	name = "Squire"
+	name = "侍从"
 	icon_state = "squire"
 
 /datum/sprite_accessory/hair/head/tails_f
-	name = "Tails (F)"
+	name = "尾巴（女）"
 	icon_state = "tails_f"
 
 /datum/sprite_accessory/hair/head/troubadour
-	name = "Troubadour"
+	name = "吟游诗人"
 	icon_state = "troubadour"
 
 /datum/sprite_accessory/hair/head/tiedlong
-	name = "Tiedlong"
+	name = "长束发"
 	icon_state = "tiedlong"
 
 /datum/sprite_accessory/hair/head/tsidecut
-	name = "Tsidecut"
+	name = "T 侧剃"
 	icon_state = "tsidecut"
 
 /datum/sprite_accessory/hair/head/tied_f
-	name = "Tied (F)"
+	name = "束发（女）"
 	icon_state = "tied_f"
 
 /datum/sprite_accessory/hair/head/tiedup_f
-	name = "Tiedup (F)"
+	name = "束起（女）"
 	icon_state = "tiedup_f"
 
 /datum/sprite_accessory/hair/head/updo_f
-	name = "Updo (F)"
+	name = "盘发（女）"
 	icon_state = "updo_f"
 
 /datum/sprite_accessory/hair/head/warrior
-	name = "Warrior"
+	name = "战士"
 	icon_state = "warrior"
 
 /datum/sprite_accessory/hair/head/wisp_f
-	name = "Wisp (F)"
+	name = "缕发（女）"
 	icon_state = "wisp_f"
 
 /datum/sprite_accessory/hair/head/wildside
-	name = "Wildside"
+	name = "野性"
 	icon_state = "wildside"
 
 /datum/sprite_accessory/hair/head/woodsman_elf
-	name = "Woodsman Elf"
+	name = "伐木精灵"
 	icon_state = "woodsman_elf"
 
 /datum/sprite_accessory/hair/head/queenly_f
-	name = "Queenly (F)"
+	name = "女王（女）"
 	icon_state = "queenly_f"
 
 /datum/sprite_accessory/hair/head/zybantu
-	name = "Zybantine"
+	name = "兹班廷"
 	icon_state = "zybantu"
 
 /datum/sprite_accessory/hair/head/chair_ponytail6
-	name = "Chair Ponytail 6"
+	name = "椅式马尾 6"
 	icon_state = "chair_ponytail6"
 
 /datum/sprite_accessory/hair/head/chair_manbun
-	name = "Chair Manbun"
+	name = "椅式男丸子头"
 	icon_state = "chair_manbun"
 
 /datum/sprite_accessory/hair/head/fatherless_elf_f
-	name = "Fatherless Elf (F)"
+	name = "无父精灵（女）"
 	icon_state = "fatherless_elf_f"
 
 /datum/sprite_accessory/hair/head/samurai
-	name = "Samurai"
+	name = "武士"
 	icon_state = "samurai"
 
 /datum/sprite_accessory/hair/head/yakuza
-	name = "Yakuza"
+	name = "黑道"
 	icon_state = "yakuza"
 
 /datum/sprite_accessory/hair/head/novice
-	name = "Novice"
+	name = "新手"
 	icon_state = "novice"
 
 /datum/sprite_accessory/hair/head/steppeman
-	name = "Steppeman"
+	name = "草原人"
 	icon_state = "steppeman"
 
 /datum/sprite_accessory/hair/head/bishonen
-	name = "Bishonen"
+	name = "美少年"
 	icon_state = "bishonen"
 
 /datum/sprite_accessory/hair/head/emperor
-	name = "Emperor"
+	name = "皇帝"
 	icon_state = "emperor"
 
 /datum/sprite_accessory/hair/head/empress
-	name = "Empress"
+	name = "女皇"
 	icon_state = "empress"
 
 /datum/sprite_accessory/hair/head/warlady
-	name = "Warlady"
+	name = "女军侯"
 	icon_state = "warlady"
 
 /datum/sprite_accessory/hair/head/waterfield
-	name = "Waterfield"
+	name = "沃特菲尔德"
 	icon_state = "waterfield"
 
 /datum/sprite_accessory/hair/head/homewaifu
-	name = "Homewaifu"
+	name = "居家妻子"
 	icon_state = "homewaifu"
 
 /datum/sprite_accessory/hair/head/casual
-	name = "Casual"
+	name = "休闲"
 	icon_state = "casual"
 
 /datum/sprite_accessory/hair/head/martyr
-	name = "Martyr"
+	name = "殉道者"
 	icon_state = "martyr"
 
 /datum/sprite_accessory/hair/head/hprotagonist
-	name = "Hprotagonist"
+	name = "男主角"
 	icon_state = "hprotagonist"
 
 /datum/sprite_accessory/hair/head/alsoprotagonist
-	name = "Alsoprotagonist"
+	name = "男配角"
 	icon_state = "alsoprotagonist"
 
 /datum/sprite_accessory/hair/head/dunes
-	name = "Dunes"
+	name = "沙丘"
 	icon_state = "dunes"
 
 /datum/sprite_accessory/hair/head/lakkaribun
-	name = "Lakkaribun"
+	name = "拉卡里丸子头"
 	icon_state = "lakkaribun"
 
 /datum/sprite_accessory/hair/head/lakkaricut
-	name = "Lakkaricut"
+	name = "拉卡里发型"
 	icon_state = "lakkaricut"
 
 /datum/sprite_accessory/hair/head/sandcrop
-	name = "Sandcrop"
+	name = "沙丘短发"
 	icon_state = "sandcrop"
 
 /datum/sprite_accessory/hair/head/steward
-	name = "Steward"
+	name = "管家"
 	icon_state = "steward"
 
 /datum/sprite_accessory/hair/head/zaladin
-	name = "Zaladin"
+	name = "扎拉丁"
 	icon_state = "zaladin"
 
 /datum/sprite_accessory/hair/head/tomboy
-	name = "Tomboy"
+	name = "假小子"
 	icon_state = "tomboy_f"
 
 /datum/sprite_accessory/hair/head/vagabond
-	name = "Vagabond"
+	name = "流浪者"
 	icon_state = "vagabond"
 
 /datum/sprite_accessory/hair/head/puffdouble
-	name = "Puff Double"
+	name = "双泡芙"
 	icon_state = "puffdouble"
 
 /datum/sprite_accessory/hair/head/puffleft
-	name = "Puff Left"
+	name = "左泡芙"
 	icon_state = "puffleft"
 
 /datum/sprite_accessory/hair/head/puffright
-	name = "Puff Right"
+	name = "右泡芙"
 	icon_state = "puffright"
 
 /datum/sprite_accessory/hair/head/puffright
-	name = "Puff Right"
+	name = "右泡芙"
 	icon_state = "puffright"
 
 /datum/sprite_accessory/hair/head/alchemist
-	name = "Alchemist"
+	name = "炼金术士"
 	icon_state = "alchemist"
 
 /datum/sprite_accessory/hair/head/fortuneteller
-	name = "Fortuneteller"
+	name = "占卜师"
 	icon_state = "fortuneteller"
 
 /datum/sprite_accessory/hair/head/kajam
-	name = "Kajam"
+	name = "卡贾姆"
 	icon_state = "kajam"
 
 /datum/sprite_accessory/hair/head/mermaid
-	name = "Mermaid"
+	name = "美人鱼"
 	icon_state = "mermaid"
 
 /datum/sprite_accessory/hair/head/phoenix
-	name = "Phoenix"
+	name = "凤凰"
 	icon_state = "phoenix"
 
 /datum/sprite_accessory/hair/head/phoenix_half_shaven
-	name = "Phoenix Half Shaven"
+	name = "凤凰半剃"
 	icon_state = "phoenix_half_shaven"
 
 /datum/sprite_accessory/hair/head/shorthair4
-	name = "Short Hair 4"
+	name = "短发 4"
 	icon_state = "shorthair4"
 
 /datum/sprite_accessory/hair/head/slightlymessy
-	name = "Slightly Messy"
+	name = "略凌乱"
 	icon_state = "slightlymessy"
 
 /datum/sprite_accessory/hair/head/flatpressed
-	name = "Flat Pressed"
+	name = "平压"
 	icon_state = "flatpressed"
 
 /datum/sprite_accessory/hair/head/unkempt_curls
-	name = "Unkempt Curls"
+	name = "蓬乱卷发"
 	icon_state = "unkempt_curls"
 
 /datum/sprite_accessory/hair/head/shrine_priestess
-	name = "Shrine Priestess"
+	name = "神社巫女"
 	icon_state = "shrine_priestess"
 
 /datum/sprite_accessory/hair/head/beachwave
-	name = "Beach Wave"
+	name = "海滩波浪"
 	icon_state = "beachwave"
 
 /datum/sprite_accessory/hair/head/wolfcut
-	name = "Wolfcut"
+	name = "狼尾剪"
 	icon_state = "wolfcut"
 
 /datum/sprite_accessory/hair/head/triplebuns
-	name = "Triple Buns"
+	name = "三丸子头"
 	icon_state = "triplebuns"
 
 /datum/sprite_accessory/hair/head/nest
-	name = "Nest"
+	name = "鸟巢"
 	icon_state = "nest"
 
 /datum/sprite_accessory/hair/head/strand
-	name = "Strand"
+	name = "发缕"
 	icon_state = "strand"
 
 /datum/sprite_accessory/hair/head/sodden
-	name = "Sodden"
+	name = "湿透"
 	icon_state = "sodden"
 
 /datum/sprite_accessory/hair/head/indigozap
-	name = "Reckless"
+	name = "鲁莽"
 	icon_state = "indigo_zap"
 
 /datum/sprite_accessory/hair/head/rainbowdash
-	name = "Loyal"
+	name = "忠诚"
 	icon_state = "rainbow_dash"
 	
 /datum/sprite_accessory/hair/head/renard
-	name = "Renard"
+	name = "勒纳尔"
 	icon_state = "renard"
 
 /datum/sprite_accessory/hair/head/willowtree
-	name = "Willowtree"
+	name = "柳树"
 	icon_state = "willowtree"
 
 /datum/sprite_accessory/hair/head/nimue
-	name = "Nimue"
+	name = "妮缪"
 	icon_state = "nimue"
 
 /datum/sprite_accessory/hair/head/willow
-	name = "Willow"
+	name = "柳"
 	icon_state = "willow"
 
 /datum/sprite_accessory/hair/head/aki
-	name = "Aki"
+	name = "亚纪"
 	icon_state = "aki"
 
 /datum/sprite_accessory/hair/head/vulpkian
@@ -1755,31 +1755,31 @@
 	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'
 
 /datum/sprite_accessory/hair/head/vulpkian/anita
-	name = "Venardine Anita"
+	name = "维纳丁 阿妮塔"
 	icon_state = "anita"
 
 /datum/sprite_accessory/hair/head/vulpkian/jagged
-	name = "Venardine Jagged"
+	name = "维纳丁 锯齿"
 	icon_state = "jagged"
 
 /datum/sprite_accessory/hair/head/vulpkian/kajam1
-	name = "Venardine Kajam 1"
+	name = "维纳丁 卡贾姆 1"
 	icon_state = "kajam1"
 
 /datum/sprite_accessory/hair/head/vulpkian/kajam2
-	name = "Venardine Kajam 2"
+	name = "维纳丁 卡贾姆 2"
 	icon_state = "kajam2"
 
 /datum/sprite_accessory/hair/head/vulpkian/keid
-	name = "Venardine Keid"
+	name = "维纳丁 凯德"
 	icon_state = "keid"
 
 /datum/sprite_accessory/hair/head/vulpkian/mizar
-	name = "Venardine Mizar"
+	name = "维纳丁 米扎尔"
 	icon_state = "mizar"
 
 /datum/sprite_accessory/hair/head/vulpkian/raine
-	name = "Venardine Raine"
+	name = "维纳丁 蕾恩"
 	icon_state = "raine"
 
 /datum/sprite_accessory/hair/facial
@@ -1790,175 +1790,175 @@
 	return is_human_part_visible(owner, HIDEFACIALHAIR)
 
 /datum/sprite_accessory/hair/facial/shaved
-	name = "Shaved"
+	name = "剃光"
 	icon_state = null
 
 /datum/sprite_accessory/hair/facial/abe
-	name = "Beard (Abraham Lincoln)"
+	name = "胡须（林肯）"
 	icon_state = "abe"
 
 /datum/sprite_accessory/hair/facial/brokenman
-	name = "Beard (Broken Man)"
+	name = "胡须（破碎之人）"
 	icon_state = "brokenman"
 
 /datum/sprite_accessory/hair/facial/chinstrap
-	name = "Beard (Chinstrap)"
+	name = "胡须（下颌带）"
 	icon_state = "chin"
 
 /datum/sprite_accessory/hair/facial/dwarf
-	name = "Beard (Dwarf)"
+	name = "胡须（矮人）"
 	icon_state = "dwarf"
 
 /datum/sprite_accessory/hair/facial/fullbeard
-	name = "Beard (Full)"
+	name = "胡须（全脸）"
 	icon_state = "fullbeard"
 
 /datum/sprite_accessory/hair/facial/croppedfullbeard
-	name = "Beard (Cropped Fullbeard)"
+	name = "胡须（短全脸）"
 	icon_state = "croppedfullbeard"
 
 /datum/sprite_accessory/hair/facial/gt
-	name = "Beard (Goatee)"
+	name = "胡须（山羊胡）"
 	icon_state = "gt"
 
 /datum/sprite_accessory/hair/facial/hip
-	name = "Beard (Hipster)"
+	name = "胡须（潮人）"
 	icon_state = "hip"
 
 /datum/sprite_accessory/hair/facial/jensen
-	name = "Beard (Jensen)"
+	name = "胡须（詹森）"
 	icon_state = "jensen"
 
 /datum/sprite_accessory/hair/facial/neckbeard
-	name = "Beard (Neckbeard)"
+	name = "胡须（颈须）"
 	icon_state = "neckbeard"
 
 /datum/sprite_accessory/hair/facial/vlongbeard
-	name = "Beard (Very Long)"
+	name = "胡须（超长）"
 	icon_state = "wise"
 
 /datum/sprite_accessory/hair/facial/muttonmus
-	name = "Beard (Muttonmus)"
+	name = "胡须（羊排胡）"
 	icon_state = "muttonmus"
 
 /datum/sprite_accessory/hair/facial/martialartist
-	name = "Beard (Martial Artist)"
+	name = "胡须（武术家）"
 	icon_state = "martialartist"
 
 /datum/sprite_accessory/hair/facial/chinlessbeard
-	name = "Beard (Chinless Beard)"
+	name = "胡须（无下巴）"
 	icon_state = "chinlessbeard"
 
 /datum/sprite_accessory/hair/facial/moonshiner
-	name = "Beard (Moonshiner)"
+	name = "胡须（私酒贩）"
 	icon_state = "moonshiner"
 
 /datum/sprite_accessory/hair/facial/longbeard
-	name = "Beard (Long)"
+	name = "胡须（长）"
 	icon_state = "longbeard"
 
 /datum/sprite_accessory/hair/facial/volaju
-	name = "Beard (Volaju)"
+	name = "胡须（沃拉朱）"
 	icon_state = "volaju"
 
 /datum/sprite_accessory/hair/facial/threeoclock
-	name = "Beard (Three o Clock Shadow)"
+	name = "胡须（三时胡茬）"
 	icon_state = "3oclock"
 
 /datum/sprite_accessory/hair/facial/fiveoclock
-	name = "Beard (Five o Clock Shadow)"
+	name = "胡须（五时胡茬）"
 	icon_state = "5oclock"
 
 /datum/sprite_accessory/hair/facial/fiveoclockm
-	name = "Beard (Five o Clock Moustache)"
+	name = "胡须（五时小胡）"
 	icon_state = "5oclock_moustache"
 
 /datum/sprite_accessory/hair/facial/sevenoclock
-	name = "Beard (Seven o Clock Shadow)"
+	name = "胡须（七时胡茬）"
 	icon_state = "7oclock"
 
 /datum/sprite_accessory/hair/facial/sevenoclockm
-	name = "Beard (Seven o Clock Moustache)"
+	name = "胡须（七时小胡）"
 	icon_state = "7oclock_moustache"
 
 /datum/sprite_accessory/hair/facial/stubble
-	name = "Beard (Stubble)"
+	name = "胡须（胡茬）"
 	icon_state = "stubble"
 
 /datum/sprite_accessory/hair/facial/pipe
-	name = "Beard (Pipe)"
+	name = "胡须（烟斗）"
 	icon_state = "pipe"
 
 /datum/sprite_accessory/hair/facial/knightly
-	name = "Beard (Knightly)"
+	name = "胡须（骑士）"
 	icon_state = "knightly"
 
 /datum/sprite_accessory/hair/facial/manly
-	name = "Beard (Manly)"
+	name = "胡须（阳刚）"
 	icon_state = "manly"
 
 /datum/sprite_accessory/hair/facial/viking
-	name = "Beard (Viking)"
+	name = "胡须（维京）"
 	icon_state = "viking"
 
 /datum/sprite_accessory/hair/facial/moustache
-	name = "Moustache"
+	name = "八字胡"
 	icon_state = "moustache"
 
 /datum/sprite_accessory/hair/facial/fiveoclockmoustache
-	name = "Moustache (Five o Clock)"
+	name = "八字胡（五时）"
 	icon_state = "5oclockmoustache"
 
 /datum/sprite_accessory/hair/facial/pencilstache
-	name = "Moustache (Pencilstache)"
+	name = "八字胡（铅笔）"
 	icon_state = "pencilstache"
 
 /datum/sprite_accessory/hair/facial/smallstache
-	name = "Moustache (Smallstache)"
+	name = "八字胡（小巧）"
 	icon_state = "smallstache"
 
 /datum/sprite_accessory/hair/facial/walrus
-	name = "Moustache (Walrus)"
+	name = "八字胡（海象）"
 	icon_state = "walrus"
 
 /datum/sprite_accessory/hair/facial/fu
-	name = "Moustache (Fu Manchu)"
+	name = "八字胡（傅满洲）"
 	icon_state = "fumanchu"
 
 /datum/sprite_accessory/hair/facial/hogan
-	name = "Moustache (Hulk Hogan)"
+	name = "八字胡（霍根）"
 	icon_state = "hogan"
 
 /datum/sprite_accessory/hair/facial/selleck
-	name = "Moustache (Selleck)"
+	name = "八字胡（塞莱克）"
 	icon_state = "selleck"
 
 /datum/sprite_accessory/hair/facial/chaplin
-	name = "Moustache (Square)"
+	name = "八字胡（方块）"
 	icon_state = "chaplin"
 
 /datum/sprite_accessory/hair/facial/vandyke
-	name = "Moustache (Van Dyke)"
+	name = "八字胡（范戴克）"
 	icon_state = "vandyke"
 
 /datum/sprite_accessory/hair/facial/watson
-	name = "Moustache (Watson)"
+	name = "八字胡（华生）"
 	icon_state = "watson"
 
 /datum/sprite_accessory/hair/facial/sideburn
-	name = "Sideburns"
+	name = "鬓角"
 	icon_state = "sideburns"
 
 /datum/sprite_accessory/hair/facial/burns
-	name = "Sideburns (Burns)"
+	name = "鬓角（伯恩斯）"
 	icon_state = "burns"
 
 /datum/sprite_accessory/hair/facial/elvis
-	name = "Sideburns (Elvis)"
+	name = "鬓角（猫王）"
 	icon_state = "elvis"
 
 /datum/sprite_accessory/hair/facial/mutton
-	name = "Sideburns (Mutton Chops)"
+	name = "鬓角（羊排胡）"
 	icon_state = "mutton"
 
 /datum/sprite_accessory/hair/head/vox
@@ -1966,59 +1966,59 @@
 	icon = 'icons/mob/sprite_accessory/hair/vox_hair.dmi'
 
 /datum/sprite_accessory/hair/head/vox/afro
-	name = "Afro"
+	name = "爆炸头"
 	icon_state = "afro"
 
 /datum/sprite_accessory/hair/head/vox/crestedquills
-	name = "Crested Quills"
+	name = "冠羽刺"
 	icon_state = "crestedquills"
 
 /datum/sprite_accessory/hair/head/vox/emperorquills
-	name = "Emperor Quills"
+	name = "帝王羽刺"
 	icon_state = "emperorquills"
 
 /datum/sprite_accessory/hair/head/vox/horns
-	name = "Horns"
+	name = "角"
 	icon_state = "horns"
 
 /datum/sprite_accessory/hair/head/vox/keelquills
-	name = "Keel Quills"
+	name = "龙骨羽刺"
 	icon_state = "keelquills"
 
 /datum/sprite_accessory/hair/head/vox/keetquills
-	name = "Keet Quills"
+	name = "鹦鹉羽刺"
 	icon_state = "keetquills"
 
 /datum/sprite_accessory/hair/head/vox/kingly
-	name = "Kingly"
+	name = "王者"
 	icon_state = "kingly"
 
 /datum/sprite_accessory/hair/head/vox/mohawk
-	name = "Mohawk"
+	name = "莫西干"
 	icon_state = "mohawk"
 
 /datum/sprite_accessory/hair/head/vox/nights
-	name = "Nights"
+	name = "夜"
 	icon_state = "nights"
 
 /datum/sprite_accessory/hair/head/vox/razorclipped
-	name = "Razor Clipped"
+	name = "剃刀短发"
 	icon_state = "razorclipped"
 
 /datum/sprite_accessory/hair/head/vox/razor
-	name = "Razor"
+	name = "剃刀"
 	icon_state = "razor"
 
 /datum/sprite_accessory/hair/head/vox/shortquills
-	name = "Short Quills"
+	name = "短羽刺"
 	icon_state = "shortquills"
 
 /datum/sprite_accessory/hair/head/vox/tielquills
-	name = "Tiel Quills"
+	name = "凤头羽刺"
 	icon_state = "tielquills"
 
 /datum/sprite_accessory/hair/head/vox/yasu
-	name = "Yasu"
+	name = "安"
 	icon_state = "yasu"
 
 /datum/sprite_accessory/hair/facial/vox
@@ -2026,17 +2026,17 @@
 	icon = 'icons/mob/sprite_accessory/hair/vox_facial_hair.dmi'
 
 /datum/sprite_accessory/hair/facial/vox/beard
-	name = "Beard"
+	name = "胡须"
 	icon_state = "beard"
 
 /datum/sprite_accessory/hair/facial/vox/colonel
-	name = "Beard (Colonel)"
+	name = "胡须（上校）"
 	icon_state = "colonel"
 
 /datum/sprite_accessory/hair/facial/vox/fu
-	name = "Beard (Fu)"
+	name = "胡须（傅）"
 	icon_state = "fu"
 
 /datum/sprite_accessory/hair/facial/vox/neck
-	name = "Neck Quills"
+	name = "颈部羽刺"
 	icon_state = "neck"
