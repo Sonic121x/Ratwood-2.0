@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY(standing_order_pool)
 		TRADE_REGION_DAFTSMARCH = list("一处矿井巷道的加固", "铸造厂的扩建"),
 		TRADE_REGION_ROSAWOOD = list("一座锯木厂的重建", "一条商道的修复"),
 		TRADE_REGION_ROCKHILL = list("一段梯田墙的重建", "一座压榨坊的扩建"),
-		TRADE_REGION_BLACKHOLT = list("一次事故后高塔的重建", "外圣所的 rebuild"),
+		TRADE_REGION_BLACKHOLT = list("一次事故后高塔的重建", "外圣所的重建"),
 		TRADE_REGION_SALTWICK = list("一座盐屋的重建", "码头的加固"),
 	)
 

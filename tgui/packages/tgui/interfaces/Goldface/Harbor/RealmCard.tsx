@@ -1,3 +1,4 @@
+import { NAVIGATOR_CATEGORY_LABELS } from '../../common/displayNames';
 import {
   BUTTON_BG,
   FONT_BODY,
@@ -8,7 +9,6 @@ import {
   SEAL_RED,
 } from '../../common/parchment';
 import type { HarborRealm, MarketCondition, PoolGood } from '../types';
-
 const toneToColor = (tone?: string) => {
   switch (tone) {
     case 'good':
@@ -58,7 +58,7 @@ export const CategoryPill = (props: { name: string }) => (
       whiteSpace: 'nowrap',
     }}
   >
-    {props.name}
+    {NAVIGATOR_CATEGORY_LABELS[props.name] || props.name}
   </span>
 );
 

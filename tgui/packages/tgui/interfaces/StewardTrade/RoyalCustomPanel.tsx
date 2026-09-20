@@ -41,21 +41,21 @@ export const RoyalCustomPanel = () => {
             fontWeight: 'bold',
           }}
         >
-          Royal Custom Charter
+          王权关税特许状
         </span>
         {!unlocked ? (
           <span style={{ color: INK_SOFT }}>
-            Locked - volume{' '}
-            <b style={{ color: INK }}>{data.royal_custom_volume}m</b> of{' '}
+            未解锁 - 交易量{' '}
+            <b style={{ color: INK }}>{data.royal_custom_volume}m</b> 所需{' '}
             <b style={{ color: INK }}>{data.royal_custom_threshold}m</b>
           </span>
         ) : (
           <>
             <span style={{ color: SEAL_GREEN, fontWeight: 'bold' }}>
-              INVOKED
+              已生效
             </span>
             <span style={{ color: INK_SOFT }}>
-              Import margin{' '}
+              进口加价{' '}
               <b style={{ color: INK }}>{data.royal_custom_margin}%</b>
             </span>
             <div
@@ -67,7 +67,7 @@ export const RoyalCustomPanel = () => {
               }}
             >
               <span style={{ color: INK_SOFT, fontSize: FONT_BODY }}>
-                Margin %
+                加价 %
               </span>
               <NumberInput
                 value={marginDraft}
@@ -88,7 +88,7 @@ export const RoyalCustomPanel = () => {
                   act('set_royal_custom_margin', { value: marginDraft })
                 }
               >
-                Set
+                设置
               </button>
             </div>
           </>
@@ -101,8 +101,8 @@ export const RoyalCustomPanel = () => {
           marginTop: '4px',
         }}
       >
-        Invoked once the volume threshold is reached;
-        Import surcharges flow into the Crown&apos;s purse thereafter.
+        交易量达到阈值后生效;
+        此后进口附加费将流入王室金库.
       </div>
     </div>
   );

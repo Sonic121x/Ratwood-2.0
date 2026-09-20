@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 			spell_icon_cache[spell_path] = img64
 
 		spells_data += list(list(
-			"name" = initial(S.name) || "Unknown Spell",
+			"name" = initial(S.name) || "未知法术",
 			"desc" = initial(S.desc) || "",
 			"cost" = cost,
 			"tier" = spell_tier,
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 	var/datum/mind/learner = user.mind
 	for(var/obj/effect/proc_holder/spell/known in learner.spell_list)
 		if(known.type == spell_path)
-			to_chat(user, span_warning("You already know this spell!"))
+			to_chat(user, span_warning("你已经学会了这个法术!"))
 			return TRUE
 
 	var/obj/effect/proc_holder/spell/S = spell_path
@@ -133,15 +133,15 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 	// 管理员只对专属法术豁免等级与邪恶条件，普通法术仍遵守原有规则。
 	if(!is_admin_spell)
 		if(initial(S.spell_tier) > get_user_spell_tier(user))
-			to_chat(user, span_warning("This spell requires a higher tier of arcane power!"))
+			to_chat(user, span_warning("这个法术需要更高阶位的奥术力量!"))
 			return TRUE
 		if(initial(S.zizo_spell) > get_user_evilness(user))
-			to_chat(user, span_warning("You lack the forbidden knowledge for this spell."))
+			to_chat(user, span_warning("你缺乏学习这个法术所需的禁忌知识."))
 			return TRUE
 
 	var/points_avail = learner.spell_points - learner.used_spell_points
 	if(cost > points_avail)
-		to_chat(user, span_warning("You do not have enough weave points!"))
+		to_chat(user, span_warning("你的法术点不足!"))
 		return TRUE
 
 	learner.used_spell_points += cost
@@ -150,7 +150,7 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 	learner.AddSpell(new_spell)
 	// 记录本次职业资金消费；不改变原有学习权限与界面。
 	z121_parallel_purchase(user, new_spell, cost)
-	to_chat(user, span_notice("You have woven <b>[initial(S.name)]</b> into your mind!"))
+	to_chat(user, span_notice("你已将<b>[initial(S.name)]</b>编织进自己的心智!"))
 	// 保留上游在点数耗尽时移除学习法术的定时处理。
 	addtimer(CALLBACK(learner, TYPE_PROC_REF(/datum/mind, check_learnspell)), 2 SECONDS)
 	return TRUE
