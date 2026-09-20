@@ -65,7 +65,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
   return (
     <div>
       <div style={sectionHeaderStyle}>
-        Market &middot; auto-routed to best region
+        市场 &middot; 自动选择最佳地区
       </div>
       <div
         style={{
@@ -78,11 +78,11 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
         }}
       >
         <div style={{ color: INK_SOFT }}>
-          Crown spread on held stockpile:{' '}
+          王权持有库存的价差收益:{' '}
           <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
             {total_arbitrage_potential}m
           </span>{' '}
-          potential at current prices
+          按当前价格估算
         </div>
         <div style={{ display: 'flex', gap: '6px' }}>
           <button
@@ -96,7 +96,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                 : `Surplus threshold: ${autoexport_percentage}%. Click to change.`
             }
           >
-            Threshold {autoexport_percentage}%
+            阈值 {autoexport_percentage}%
           </button>
           <button
             type="button"
@@ -109,7 +109,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                 : "Export every auto-priced entry's stock above the threshold to its best-paying region, capped at remaining daily demand. Manual-priced entries are skipped."
             }
           >
-            Export Surplus
+            出口盈余
           </button>
           <button
             type="button"
@@ -122,7 +122,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                 : 'Reset every stockpile entry to automatic pricing (snaps to current market, ratchets engaged).'
             }
           >
-            Auto-Price All
+            全部自动定价
           </button>
           <button
             type="button"
@@ -135,7 +135,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                 : 'Recompute every stockpile cap from total demand × pop × 2 days.'
             }
           >
-            Auto-Limit All
+            全部自动限量
           </button>
           <button
             type="button"
@@ -148,7 +148,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                 : "Bulk-multiply every buy price (Crown's bid). Flips affected entries to manual."
             }
           >
-            Buy ×
+            买价 ×
           </button>
           <button
             type="button"
@@ -161,13 +161,13 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                 : "Bulk-multiply every sell price (Crown's ask). Flips affected entries to manual."
             }
           >
-            Sell ×
+            卖价 ×
           </button>
         </div>
       </div>
       {market_rows.length === 0 ? (
         <div style={{ textAlign: 'center', color: INK_SOFT }}>
-          No goods accepted at present.
+          当前不接受任何货物.
         </div>
       ) : (
         <>
@@ -196,7 +196,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                   color: INK_SOFT,
                 }}
               >
-                <span>Actions:</span>
+                <span>操作:</span>
                 <button
                   type="button"
                   style={inkButtonStyle({ color: SEAL_GREEN, disabled: aldermanActing })}
@@ -212,7 +212,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Export ${activeGroup.label} surplus (stock over threshold) to best-paying regions.`
                   }
                 >
-                  Export Surplus
+                  出口盈余
                 </button>
                 <button
                   type="button"
@@ -227,7 +227,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Reset all ${activeGroup.label} entries to automatic pricing.`
                   }
                 >
-                  Auto-Price
+                  自动定价
                 </button>
                 <button
                   type="button"
@@ -242,7 +242,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Recompute all ${activeGroup.label} stockpile caps from demand.`
                   }
                 >
-                  Auto-Limit
+                  自动限量
                 </button>
                 <button
                   type="button"
@@ -260,7 +260,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Bulk-multiply ${activeGroup.label} buy prices. Flips affected entries to manual.`
                   }
                 >
-                  Buy ×
+                  买价 ×
                 </button>
                 <button
                   type="button"
@@ -278,7 +278,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Bulk-multiply ${activeGroup.label} sell prices. Flips affected entries to manual.`
                   }
                 >
-                  Sell ×
+                  卖价 ×
                 </button>
               </div>
               <div
@@ -293,7 +293,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                   color: INK_SOFT,
                 }}
               >
-                <span>Permissions:</span>
+                <span>权限:</span>
                 <button
                   type="button"
                   style={inkButtonStyle({ color: SEAL_GREEN, disabled: aldermanActing })}
@@ -307,7 +307,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Accept deposits for all ${activeGroup.label}.`
                   }
                 >
-                  Open All
+                  全部开放
                 </button>
                 <button
                   type="button"
@@ -322,7 +322,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Reject deposits for all ${activeGroup.label}.`
                   }
                 >
-                  Close All
+                  全部关闭
                 </button>
                 <button
                   type="button"
@@ -342,7 +342,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Allow withdraws for all ${activeGroup.label}.`
                   }
                 >
-                  Draws On
+                  允许取货
                 </button>
                 <button
                   type="button"
@@ -362,7 +362,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Bar withdraws for all ${activeGroup.label}.`
                   }
                 >
-                  Draws Off
+                  禁止取货
                 </button>
                 <button
                   type="button"
@@ -382,7 +382,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Let the daily sweep ship ${activeGroup.label} surplus abroad.`
                   }
                 >
-                  Auto-Export On
+                  开启自动出口
                 </button>
                 <button
                   type="button"
@@ -402,7 +402,7 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                       : `Stop shipping ${activeGroup.label} away over threshold.`
                   }
                 >
-                  Auto-Export Off
+                  关闭自动出口
                 </button>
               </div>
               {activeGroup.rows.map((row) => {
@@ -420,19 +420,19 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                     <div style={{ marginBottom: '4px' }}>
                       <span style={{ fontWeight: 'bold' }}>{name}</span>
                       {eventColor && (
-                        <span style={badgeStyle(eventColor)}>{row.event_tag}</span>
+                        <span style={badgeStyle(eventColor)}>{row.event_tag === 'SHORTAGE' ? '短缺' : '过剩'}</span>
                       )}
                       <span style={{ color: INK_FAINT, marginLeft: '8px', fontSize: FONT_BODY }}>
-                        Stock: {row.stock}/{row.stock_limit}
+                        库存: {row.stock}/{row.stock_limit}
                       </span>
                     </div>
                     <SideBlock
                       side="import"
-                      label="Buy"
+                      label="买入"
                       color={SEAL_BLUE}
                       regions={row.import_regions}
                       unavailableLabel={
-                        importable ? 'no producing region' : 'not importable'
+                        importable ? '没有产出地区' : '不可进口'
                       }
                       goodId={row.good_id}
                       expanded={expanded.has(`${row.good_id}-import`)}
@@ -441,10 +441,10 @@ export const MarketView = (props: { data: Data; onTrade: OnTrade }) => {
                     />
                     <SideBlock
                       side="export"
-                      label="Sell"
+                      label="卖出"
                       color={SEAL_GREEN}
                       regions={row.export_regions}
-                      unavailableLabel="no demanding region"
+                      unavailableLabel="没有需求地区"
                       goodId={row.good_id}
                       expanded={expanded.has(`${row.good_id}-export`)}
                       onToggle={() => toggleExpanded(`${row.good_id}-export`)}
@@ -516,7 +516,7 @@ const SideBlock = (props: {
           onTrade={onTrade}
         />
         <span style={{ color: INK_FAINT, fontSize: FONT_BODY, marginLeft: '8px' }}>
-          ({regions.length} region{regions.length === 1 ? '' : 's'})
+          ({regions.length} 个地区)
         </span>
         {others.length > 0 && (
           <button
@@ -559,7 +559,7 @@ const RegionRow = (props: {
   const { side, color, region, goodId, onTrade } = props;
   const regionName = region_catalog[region.region_id]?.name ?? region.region_id;
   const saturated = region.capacity_today <= 0;
-  const actionLabel = side === 'import' ? 'Import' : 'Export';
+  const actionLabel = side === 'import' ? '进口' : '出口';
   const capacityColor = saturated
     ? INK_FAINT
     : side === 'import'
@@ -569,7 +569,7 @@ const RegionRow = (props: {
     <span style={{ display: 'flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap' }}>
       <span>
         {regionName} @{' '}
-        <span style={{ color: SEAL_AMBER }}>{region.unit_price}m/u</span>
+        <span style={{ color: SEAL_AMBER }}>{region.unit_price}m/件</span>
         {region.capacity_total > 0 && (
           <span
             title={
@@ -587,10 +587,10 @@ const RegionRow = (props: {
           </span>
         )}
       </span>
-      {!!region.is_blockaded && <span style={badgeStyle(SEAL_RED)}>BLOCKADED</span>}
+      {!!region.is_blockaded && <span style={badgeStyle(SEAL_RED)}>已封锁</span>}
       {saturated && (
         <span style={badgeStyle(INK_FAINT)} title="No remaining capacity today - oversupply decay applies.">
-          SATURATED
+          已饱和
         </span>
       )}
       <button
@@ -714,7 +714,7 @@ const StockpileStrip = (props: {
   return (
     <div style={stripStyleEffective} title={aldermanActing ? blockTitle : undefined}>
       <span style={stripCellStyle}>
-        Buy:{' '}
+        买价:{' '}
         <button
           type="button"
           style={valueBtnStyle}
@@ -736,11 +736,11 @@ const StockpileStrip = (props: {
                 : 'Manual — Steward set this price by hand.'
           }
         >
-          {isAuto ? 'Auto' : 'Manual'}
+          {isAuto ? '自动' : '手动'}
         </button>
       </span>
       <span style={stripCellStyle}>
-        Sell:{' '}
+        卖价:{' '}
         <button
           type="button"
           style={valueBtnStyle}
@@ -751,7 +751,7 @@ const StockpileStrip = (props: {
         </button>
       </span>
       <span style={stripCellStyle}>
-        Limit:{' '}
+        上限:{' '}
         <button
           type="button"
           style={valueBtnStyle}
@@ -773,12 +773,12 @@ const StockpileStrip = (props: {
                 : 'Manual — Steward set this cap by hand.'
           }
         >
-          {limitAuto ? 'Auto' : 'Manual'}
+          {limitAuto ? '自动' : '手动'}
         </button>
       </span>
       {margin > 0 && (
         <span style={{ ...stripCellStyle, color: SEAL_AMBER }}>
-          +{margin}m/u → {potential}m
+          +{margin}m/件 → {potential}m
         </span>
       )}
       <span style={{ flex: 1 }} />
@@ -789,7 +789,7 @@ const StockpileStrip = (props: {
         onClick={() => act('toggle_stockpile_accept', { good_id: goodId })}
         title={aldermanActing ? blockTitle : 'Accept player deposits.'}
       >
-        {accepting ? 'Accept' : 'Reject'}
+        {accepting ? '接受' : '拒收'}
       </button>
       <button
         type="button"
@@ -798,7 +798,7 @@ const StockpileStrip = (props: {
         onClick={() => act('toggle_withdraw_disabled', { good_id: goodId })}
         title={aldermanActing ? blockTitle : 'Allow player withdraws.'}
       >
-        {withdrawDisabled ? 'No-W' : 'W-OK'}
+        {withdrawDisabled ? '禁止取货' : '允许取货'}
       </button>
       <button
         type="button"
@@ -811,7 +811,7 @@ const StockpileStrip = (props: {
             : 'Toggle Auto-Export. Having it off means surplus over the cap will not be shipped away and surplus over threshold will not be shipped away.'
         }
       >
-        {autoexportDisabled ? 'No-X' : 'X-OK'}
+        {autoexportDisabled ? '禁止自动出口' : '允许自动出口'}
       </button>
     </div>
   );
