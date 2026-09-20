@@ -29,7 +29,7 @@ export const RegionsView = (props: { data: Data }) => {
 
   return (
     <div>
-      <div style={sectionHeaderStyle}>Regions</div>
+      <div style={sectionHeaderStyle}>地区</div>
       {sorted.map((r) => (
         <RegionCard key={r.region_id} region={r} data={props.data} />
       ))}
@@ -47,7 +47,6 @@ const RegionCard = (props: { region: RegionRow; data: Data }) => {
 
   const producesCount = region.produces.length;
   const demandsCount = region.demands.length;
-
   return (
     <div
       style={{
@@ -73,10 +72,10 @@ const RegionCard = (props: { region: RegionRow; data: Data }) => {
           {regionName}
         </span>
         {!!region.blockaded && (
-          <span style={badgeStyle(SEAL_RED)}>BLOCKADED</span>
+          <span style={badgeStyle(SEAL_RED)}>已封锁</span>
         )}
         <span style={{ color: INK_FAINT, fontSize: FONT_BODY, marginLeft: 'auto' }}>
-          {producesCount} produces &middot; {demandsCount} demands
+          {producesCount} 种产出 &middot; {demandsCount} 种需求
         </span>
       </div>
       {expanded && (
@@ -103,12 +102,14 @@ const RegionCard = (props: { region: RegionRow; data: Data }) => {
           >
             <FlowColumn
               title="Produces"
+              display_title="产出"
               color={SEAL_GREEN}
               flows={region.produces}
               data={data}
             />
             <FlowColumn
               title="Demands"
+              display_title="需求"
               color={SEAL_BLUE}
               flows={region.demands}
               data={data}
@@ -130,7 +131,7 @@ const RegionCard = (props: { region: RegionRow; data: Data }) => {
                   act('trade_region_import', { region_id: region.region_id })
                 }
               >
-                Import from {regionName}
+                从{regionName}进口
               </button>
             )}
             {demandsCount > 0 && (
@@ -141,7 +142,7 @@ const RegionCard = (props: { region: RegionRow; data: Data }) => {
                   act('trade_region_export', { region_id: region.region_id })
                 }
               >
-                Export to {regionName}
+                向{regionName}出口
               </button>
             )}
           </div>
@@ -150,14 +151,14 @@ const RegionCard = (props: { region: RegionRow; data: Data }) => {
     </div>
   );
 };
-
 const FlowColumn = (props: {
   title: string;
+  display_title?: string;
   color: string;
   flows: RegionFlow[];
   data: Data;
 }) => {
-  const { title, color, flows, data } = props;
+  const { title, display_title, color, flows, data } = props;
   if (!flows.length) {
     return (
       <div>
@@ -171,19 +172,18 @@ const FlowColumn = (props: {
             fontSize: FONT_BODY,
           }}
         >
-          {title}
+          {display_title || title}
         </div>
         <div
           style={{ fontStyle: 'italic', color: INK_FAINT, fontSize: FONT_BODY }}
         >
-          none
+          无
         </div>
       </div>
     );
   }
 
   const groups = groupByCategory(flows, data.good_catalog);
-
   return (
     <div>
       <div
@@ -196,7 +196,7 @@ const FlowColumn = (props: {
           fontSize: FONT_BODY,
         }}
       >
-        {title} &middot; {flows.length}
+        {display_title || title} &middot; {flows.length}
       </div>
       {groups.map(({ category, label, rows }) => (
         <div key={category} style={{ marginBottom: '4px' }}>
@@ -220,7 +220,7 @@ const FlowColumn = (props: {
             >
               <span>{data.good_catalog[f.good_id]?.name ?? f.good_id}</span>
               <span>
-                <span style={{ color }}>{f.total}/day</span>
+                <span style={{ color }}>{f.total}/日</span>
                 <span style={{ color: INK_FAINT }}> ({f.today})</span>
               </span>
             </div>

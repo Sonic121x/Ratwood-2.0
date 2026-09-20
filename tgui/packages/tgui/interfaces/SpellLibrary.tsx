@@ -45,12 +45,12 @@ export const SpellLibrary = () => {
   }, [spells]);
 
   const schools = useMemo(() => {
-    const set = new Set<string>();
-    set.add('All');
+    const names: Record<string, string> = { All: '全部', abjuration: '防护术', conjuration: '咒法术', evocation: '塑能术', illusion: '幻术', necromancy: '死灵术', restoration: '恢复术', transmutation: '变化术', generic: '通用' };
+    const set = new Set<string>(['All']);
     spells.forEach((s) => {
       if (s.school) set.add(s.school);
     });
-    return Array.from(set);
+    return Array.from(set, (school) => ({ id: school, label: names[school] || school }));
   }, [spells]);
 
   const processedSpells = useMemo(() => {
@@ -80,10 +80,10 @@ export const SpellLibrary = () => {
 
     return list;
   }, [spells, activeTier, selectedSchool, hideKnown, searchText, sortByCost]);
-
   return (
     <Window
       title="Grimoire of Arcane Arts"
+      display_title="奥术秘典"
       width={900}
       height={720}
       theme="dark"
@@ -106,10 +106,10 @@ export const SpellLibrary = () => {
                     <Icon name="hat-wizard" size={2} color="#00e1ff" mr={1.5} />
                     <Box>
                       <Box fontSize="0.75em" color="label">
-                        AVAILABLE WEAVE POINTS
+                        可用法术点
                       </Box>
                       <Box bold fontSize="1.35em" color={user_points > 0 ? '#4caf50' : '#e74c3c'}>
-                        {user_points} <span style={{ fontSize: '0.65em' }}>PTS</span>
+                        {user_points} <span style={{ fontSize: '0.65em' }}>点</span>
                       </Box>
                     </Box>
                   </Stack>
@@ -118,7 +118,7 @@ export const SpellLibrary = () => {
                 <Stack.Item grow ml={3} mr={2}>
                   <Input
                     fluid
-                    placeholder="Search incantation or effects..."
+                    placeholder="搜索咒语或效果..."
                     value={searchText}
                     onChange={(value) => setSearchText(value)}
                   />
@@ -133,14 +133,14 @@ export const SpellLibrary = () => {
                         setSortByCost((prev) => (prev === 'asc' ? 'desc' : prev === 'desc' ? null : 'asc'))
                       }
                     >
-                      Cost {sortByCost ? (sortByCost === 'asc' ? '▲' : '▼') : ''}
+                      消耗 {sortByCost ? (sortByCost === 'asc' ? '▲' : '▼') : ''}
                     </Button>
                     <Button
                       icon={hideKnown ? 'eye-slash' : 'eye'}
                       selected={hideKnown}
                       onClick={() => setHideKnown(!hideKnown)}
                     >
-                      Hide Learned
+                      隐藏已学
                     </Button>
                   </Stack>
                 </Stack.Item>
@@ -149,11 +149,11 @@ export const SpellLibrary = () => {
               <Box mt={1}>
                 <Tabs>
                   <Tabs.Tab selected={activeTier === 'all'} onClick={() => setActiveTier('all')}>
-                    All Tiers
+                    全部阶位
                   </Tabs.Tab>
                   {tiers.map((t) => (
                     <Tabs.Tab key={t} selected={activeTier === t} onClick={() => setActiveTier(t)}>
-                      Tier {t}
+                      阶位 {t}
                     </Tabs.Tab>
                   ))}
                 </Tabs>
@@ -163,12 +163,12 @@ export const SpellLibrary = () => {
                 <Box mt={1} style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
                   {schools.map((school) => (
                     <Button
-                      key={school}
-                      selected={selectedSchool === school}
-                      onClick={() => setSelectedSchool(school)}
+                      key={school.id}
+                      selected={selectedSchool === school.id}
+                      onClick={() => setSelectedSchool(school.id)}
                       style={{ fontSize: '0.8em', textTransform: 'capitalize' }}
                     >
-                      {school}
+                      {school.label}
                     </Button>
                   ))}
                 </Box>
@@ -251,7 +251,7 @@ export const SpellLibrary = () => {
                             fontWeight: 'bold',
                           }}
                         >
-                          T{spell.tier}
+                          {spell.tier}阶
                         </span>
                       </div>
 
@@ -292,7 +292,7 @@ export const SpellLibrary = () => {
                             flexGrow: 1,
                           }}
                         >
-                          {spell.desc || 'No description available in the archives.'}
+                          {spell.desc || '典籍中没有相关说明.'}
                         </div>
                       </div>
 
@@ -308,10 +308,10 @@ export const SpellLibrary = () => {
                           marginBottom: '8px',
                         }}
                       >
-                        {spell.charge_time ? <span>Cast: {spell.charge_time}s</span> : null}
-                        {spell.cooldown ? <span>CD: {spell.cooldown}s</span> : null}
-                        {spell.fatigue ? <span>Stam: {spell.fatigue}</span> : null}
-                        {spell.school && <span style={{ color: '#6882a8' }}>[{spell.school}]</span>}
+                        {spell.charge_time ? <span>施法: {spell.charge_time}秒</span> : null}
+                        {spell.cooldown ? <span>冷却: {spell.cooldown}秒</span> : null}
+                        {spell.fatigue ? <span>耐力: {spell.fatigue}</span> : null}
+                        {spell.school && <span style={{ color: '#6882a8' }}>[{schools.find((school) => school.id === spell.school)?.label || spell.school}]</span>}
                       </div>
 
                       <div style={{ marginTop: 'auto' }}>
@@ -331,7 +331,7 @@ export const SpellLibrary = () => {
                               userSelect: 'none',
                             }}
                           >
-                            ✓ LEARNED
+                            ✓ 已学会
                           </div>
                         ) : spell.tier_locked ? (
                           <div
@@ -349,7 +349,7 @@ export const SpellLibrary = () => {
                               userSelect: 'none',
                             }}
                           >
-                            LOCKED (TIER {spell.tier})
+                            未解锁 (阶位 {spell.tier})
                           </div>
                         ) : spell.evil_locked ? (
                           <div
@@ -367,7 +367,7 @@ export const SpellLibrary = () => {
                               userSelect: 'none',
                             }}
                           >
-                            REQUIRES HERESY
+                            需要异端知识
                           </div>
                         ) : spell.can_afford ? (
                           <div
@@ -388,7 +388,7 @@ export const SpellLibrary = () => {
                               transition: 'all 0.1s ease-in-out',
                             }}
                           >
-                            WEAVE ({spell.cost} PTS)
+                            编织 ({spell.cost} 点)
                           </div>
                         ) : (
                           <div
@@ -406,7 +406,7 @@ export const SpellLibrary = () => {
                               userSelect: 'none',
                             }}
                           >
-                            LOCKED ({spell.cost} PTS)
+                            未解锁 ({spell.cost} 点)
                           </div>
                         )}
                       </div>

@@ -16,7 +16,7 @@
 		var/per_player = (level == DANGER_LEVEL_BLEAK) ? BANDITRY_DRAIN_BLEAK_PER_PLAYER : BANDITRY_DRAIN_DANGEROUS_PER_PLAYER
 		result["total"] += cost
 		result["by_region"][TR.region_name] = cost
-		result["lines"] += "[TR.region_name] ([level]) -[cost]m ([base_cost] base + [per_player]m/head x [pop])"
+		result["lines"] += "[TR.region_name] ([level == DANGER_LEVEL_BLEAK ? "凶险" : "危险"]) -[cost]m ([base_cost] 基础 + [per_player]m/人 x [pop])"
 	return result
 
 /datum/controller/subsystem/economy/proc/total_banditry_hoard()
@@ -37,7 +37,7 @@
 	var/burn_now = min(total_drain, burnable)
 	var/shortfall = total_drain - burn_now
 	if(burn_now > 0)
-		SStreasury.burn(SStreasury.discretionary_fund, burn_now, "Banditry losses (untended regions)")
+		SStreasury.burn(SStreasury.discretionary_fund, burn_now, "匪患损失 (疏于治理的地区)")
 		var/list/by_region = preview["by_region"]
 		var/remaining = burn_now
 		for(var/region_name in by_region)

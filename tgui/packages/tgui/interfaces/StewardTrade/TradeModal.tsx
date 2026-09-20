@@ -247,7 +247,7 @@ export const TradeModal = (props: TradeModalProps) => {
   };
 
   const isImport = request.side === 'import';
-  const sideLabel = isImport ? 'Import' : 'Export';
+  const sideLabel = isImport ? '进口' : '出口';
   const blockaded = !!quote?.is_blockaded;
   const escalation = quote?.escalation_subtotal ?? 0;
   const hasEscalation = escalation > 0;
@@ -313,14 +313,14 @@ export const TradeModal = (props: TradeModalProps) => {
           {sideLabel} {quote?.good_name ?? '...'}
         </div>
         <div style={{ ...lineStyle, justifyContent: 'center', fontSize: FONT_BODY, color: INK_SOFT, marginBottom: '4px' }}>
-          {isImport ? 'from' : 'to'} {quote?.region_name ?? request.regionId}
-          {blockaded && <span style={badgeStyle(SEAL_RED)}>BLOCKADED</span>}
+          {isImport ? '来自' : '运往'} {quote?.region_name ?? request.regionId}
+          {blockaded && <span style={badgeStyle(SEAL_RED)}>已封锁</span>}
         </div>
         <div style={{ ...lineStyle, justifyContent: 'center', fontSize: FONT_BODY, color: INK_SOFT, marginBottom: '4px' }}>
-          Stockpile: <span style={{ color: INK, fontWeight: 'bold', marginLeft: '4px' }}>
+          库存: <span style={{ color: INK, fontWeight: 'bold', marginLeft: '4px' }}>
             {quote ? `${quote.stockpile_amount}` : '...'}
           </span>
-          <span style={{ color: INK_FAINT, marginLeft: '4px' }}>units on hand</span>
+          <span style={{ color: INK_FAINT, marginLeft: '4px' }}>件现货</span>
         </div>
 
         <div style={stepperRowStyle}>
@@ -384,7 +384,7 @@ export const TradeModal = (props: TradeModalProps) => {
             title={fillTooltip}
             onClick={() => setQuantity(fillTarget)}
           >
-            Fill {canFill ? fillTarget : '-'}
+            填满 {canFill ? fillTarget : '-'}
           </button>
         </div>
 
@@ -396,8 +396,8 @@ export const TradeModal = (props: TradeModalProps) => {
             justifyContent: 'center',
           }}
         >
-          (max {maxUnits} units per trade
-          {!isImport && stockpile < bulkMax ? ' - limited by stockpile' : ''})
+          (每次交易最多 {maxUnits} 件
+          {!isImport && stockpile < bulkMax ? ' - 受库存限制' : ''})
         </div>
 
         <div
@@ -413,17 +413,17 @@ export const TradeModal = (props: TradeModalProps) => {
           {quote ? (
             isImport ? (
               <>
-                {batchCapacity} unit{batchCapacity === 1 ? '' : 's'} available
-                at base price in one shipment.
+                每批货运可购买 {batchCapacity} 件货物
+                按基准价结算.
                 <br />
-                Buying past that drives the price up the more you take.
+                超出该数量后买得越多价格越高.
               </>
             ) : (
               <>
-                {batchCapacity} unit{batchCapacity === 1 ? '' : 's'} of demand
-                left in one shipment.
+                每批货运尚有 {batchCapacity} 件需求
+                可按基准价结算.
                 <br />
-                Selling past that floods the market and the price drops.
+                超出该数量后将造成市场供过于求并压低价格.
               </>
             )
           ) : (
@@ -434,16 +434,16 @@ export const TradeModal = (props: TradeModalProps) => {
         <div style={{ marginTop: '6px' }}>
           <div style={lineStyle}>
             <span style={lineLabelStyle}>
-              {isImport ? 'Region output today' : 'Region appetite today'}
+              {isImport ? '地区今日产出' : '地区今日需求'}
             </span>
             <span style={lineValueStyle}>
               {quote
-                ? `${quote.capacity_today} / ${quote.capacity_total} units`
+                ? `${quote.capacity_today} / ${quote.capacity_total} 件`
                 : '...'}
             </span>
           </div>
           <div style={lineStyle}>
-            <span style={lineLabelStyle}>Units at base price</span>
+            <span style={lineLabelStyle}>按基准价结算数量</span>
             <span style={lineValueStyle}>
               {quote
                 ? `${Math.min(quote.quantity, batchCapacity)} / ${quote.quantity}`
@@ -451,7 +451,7 @@ export const TradeModal = (props: TradeModalProps) => {
             </span>
           </div>
           <div style={lineStyle}>
-            <span style={lineLabelStyle}>Units past saturation</span>
+            <span style={lineLabelStyle}>超过饱和数量</span>
             <span
               style={{
                 ...lineValueStyle,
@@ -462,13 +462,13 @@ export const TradeModal = (props: TradeModalProps) => {
             </span>
           </div>
           <div style={lineStyle}>
-            <span style={lineLabelStyle}>Base unit price</span>
+            <span style={lineLabelStyle}>基准单价</span>
             <span style={lineValueStyle}>
-              {quote ? `${quote.base_unit_price}m / unit` : '...'}
+              {quote ? `${quote.base_unit_price}m / 件` : '...'}
             </span>
           </div>
           <div style={lineStyle}>
-            <span style={lineLabelStyle}>Base subtotal</span>
+            <span style={lineLabelStyle}>基准小计</span>
             <span style={lineValueStyle}>
               {quote ? `${quote.base_subtotal}m` : '...'}
             </span>
@@ -480,7 +480,7 @@ export const TradeModal = (props: TradeModalProps) => {
             }}
           >
             <span style={{ ...lineLabelStyle, color: escalationColor, fontWeight: 'bold' }}>
-              {isImport ? 'Escalation surcharge' : 'Revenue lost to oversupply'}
+              {isImport ? '涨价附加费' : '供过于求造成的收入损失'}
             </span>
             <span style={{ ...lineValueStyle, color: escalationColor }}>
               {isImport ? '+' : '-'}{escalation}m
@@ -488,14 +488,14 @@ export const TradeModal = (props: TradeModalProps) => {
           </div>
           <div style={totalLineStyle}>
             <span style={{ ...lineLabelStyle, color: INK, fontStyle: 'normal', fontWeight: 'bold' }}>
-              {isImport ? 'Total cost' : 'Total revenue'}
+              {isImport ? '总费用' : '总收入'}
             </span>
             <span style={{ ...lineValueStyle, color: SEAL_AMBER, fontSize: '17px' }}>
               {quote ? `${quote.total}m` : '...'}
             </span>
           </div>
           <div style={lineStyle}>
-            <span style={lineLabelStyle}>Crown's Purse after</span>
+            <span style={lineLabelStyle}>交易后王室金库</span>
             <span
               style={{
                 ...lineValueStyle,
@@ -512,14 +512,14 @@ export const TradeModal = (props: TradeModalProps) => {
             </span>
           </div>
           <div style={lineStyle}>
-            <span style={lineLabelStyle}>Stockpile after</span>
+            <span style={lineLabelStyle}>交易后库存</span>
             <span
               style={{
                 ...lineValueStyle,
                 color: isImport ? SEAL_GREEN : INK,
               }}
             >
-              {quote ? `${quote.stockpile_after} units` : '...'}
+              {quote ? `${quote.stockpile_after} 件` : '...'}
             </span>
           </div>
           <div
@@ -531,7 +531,7 @@ export const TradeModal = (props: TradeModalProps) => {
                   : 'hidden',
             }}
           >
-            <span style={lineLabelStyle}>Warrant remaining</span>
+            <span style={lineLabelStyle}>剩余授权额度</span>
             <span
               style={{
                 ...lineValueStyle,
@@ -548,7 +548,7 @@ export const TradeModal = (props: TradeModalProps) => {
         <div style={{ minHeight: '34px', marginTop: '6px' }}>
           {blockaded && (
             <div style={{ ...warningStyle, color: SEAL_RED }}>
-              This route is blockaded. {isImport ? 'Cost is doubled.' : 'Revenue is halved.'}
+              这条路线已被封锁. {isImport ? '费用翻倍.' : '收入减半.'}
             </div>
           )}
         </div>
@@ -559,7 +559,7 @@ export const TradeModal = (props: TradeModalProps) => {
             style={inkButtonStyle({ color: INK_SOFT })}
             onClick={close}
           >
-            Cancel
+            取消
           </button>
           <button
             type="button"
@@ -571,7 +571,7 @@ export const TradeModal = (props: TradeModalProps) => {
             title={submitTooltip}
             onClick={confirm}
           >
-            Confirm {sideLabel}
+            确认{sideLabel}
           </button>
         </div>
       </div>
