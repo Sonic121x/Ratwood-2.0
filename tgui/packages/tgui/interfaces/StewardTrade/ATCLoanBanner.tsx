@@ -46,21 +46,21 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
           color: accent,
         }}
       >
-        Ferentian Trading Company - Company Clerk's Bench
+        费伦提亚贸易公司 - 公司书记官的柜台
       </div>
       <div style={{ color: INK, marginBottom: '6px' }}>
         {atc_loan.available ? (
           <>
-            The clerk receives applications for emergency loan of{' '}
-            <b>{atc_loan.min}m to {atc_loan.max}m</b> on the Company&apos;s
-            standing credit, at the customary{' '}
-            <b>{atc_loan.interest_pct}% interest</b> charged against the
-            principal. The arrears grace stands forfeit on draw - should the
-            Crown miss its next payroll, the realm enters sequestration without
-            warning.
+            书记官受理的紧急贷款金额为{' '}
+            <b>{atc_loan.min}m 至 {atc_loan.max}m</b> 由公司的
+            常设信贷提供, 按惯例收取{' '}
+            <b>{atc_loan.interest_pct}% 的利息</b> 计息依据为
+            本金. 提款后将失去欠款宽限期 - 若
+            王权未能支付下一次薪资, 领地将被直接接管而
+            不再另行警告.
           </>
         ) : (
-          <>{atc_loan.blocker || 'The clerk is unavailable.'}</>
+          <>{atc_loan.blocker || '书记官无法受理.'}</>
         )}
       </div>
       {!!atc_loan.arrears_consumed && (
@@ -71,15 +71,15 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
             marginBottom: '6px',
           }}
         >
-          Outstanding to the Company: <b>{atc_loan.outstanding}m</b>. All
-          inflow into the Crown&apos;s Purse is skimmed against the debt until
-          it is settled. The Burghers&apos; grace is forfeit; the next missed
-          payroll skips arrears and goes straight to sequestration.
+          欠公司款项: <b>{atc_loan.outstanding}m</b>. 所有
+          流入王室金库的收入均用于抵债直至
+          还清. 市民的宽限已失效; 再次拖欠
+          薪资将跳过欠款期而直接进入接管.
         </div>
       )}
       {atc_loan.loans_drawn > 0 && (
         <div style={{ color: INK_FAINT, fontSize: FONT_BODY, marginBottom: '6px' }}>
-          Loans drawn this round: {atc_loan.loans_drawn}.
+          本轮已提款次数: {atc_loan.loans_drawn}.
         </div>
       )}
       {!!atc_loan.available && (
@@ -97,7 +97,7 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
               : undefined
           }
         >
-          <span>Draw:</span>
+          <span>提款:</span>
           <NumberInput
             value={amount}
             minValue={atc_loan.min}
@@ -110,13 +110,13 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
           />
           <span>m</span>
           <span style={{ color: SEAL_RED_SOFT }}>
-            (owe {Math.round(amount * (1 + atc_loan.interest_pct / 100))}m)
+            (欠款 {Math.round(amount * (1 + atc_loan.interest_pct / 100))}m)
           </span>
           <Button.Confirm
             disabled={aldermanActing}
             onClick={() => act('take_atc_loan', { amount })}
           >
-            Approach the Clerk
+            向书记官申请
           </Button.Confirm>
         </div>
       )}
