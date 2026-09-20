@@ -4,8 +4,8 @@
 // stubbed (_es_compat.dm). Every key below is populated by economy.dm, blockade_lifecycle.dm
 // and banditry_drain.dm.
 /obj/item/paper/steward_report
-	name = "steward's morning report"
-	desc = "A crisply-stamped sheet summarising yesternight's dispatches to the Nerve Master. Meant for the Steward's eyes on rising."
+	name = "总管家晨报"
+	desc = "一张盖有清晰印章的纸页汇总了昨夜发往神经主的公文. 供总管家起身后阅览."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "scroll"
 	info = ""
@@ -40,45 +40,45 @@
 	var/urgent_rolled = diff["urgent_rolled"] || 0
 	var/day = diff["day"] || GLOB.dayspassed
 
-	var/body = "<center><b>STEWARD'S MORNING REPORT</b></center><br>"
-	body += "<center><i>Day [day]</i></center><br><hr>"
+	var/body = "<center><b>总管家晨报</b></center><br>"
+	body += "<center><i>第 [day] 日</i></center><br><hr>"
 
 	if(length(blockades_fired))
-		body += "<b>New blockades:</b><br>"
+		body += "<b>新增封锁:</b><br>"
 		for(var/line in blockades_fired)
 			body += "&nbsp;&nbsp;- [line]<br>"
 		body += "<br>"
 	if(length(blockades_cleared))
-		body += "<b>Blockades lifted:</b><br>"
+		body += "<b>已解除的封锁:</b><br>"
 		for(var/line in blockades_cleared)
 			body += "&nbsp;&nbsp;- [line]<br>"
 		body += "<br>"
 	if(length(events_fired))
-		body += "<b>New economic events:</b><br>"
+		body += "<b>新增经济事件:</b><br>"
 		for(var/line in events_fired)
 			body += "&nbsp;&nbsp;- [line]<br>"
 		body += "<br>"
 	if(length(events_expired))
-		body += "<b>Events returned to normal:</b><br>"
+		body += "<b>已恢复正常的事件:</b><br>"
 		for(var/line in events_expired)
 			body += "&nbsp;&nbsp;- [line]<br>"
 		body += "<br>"
 	if(banditry_total > 0)
-		body += "<b>Financial losses from banditry:</b> <font color='#c44'>-[banditry_total]m</font><br>"
+		body += "<b>匪患造成的财政损失:</b> <font color='#c44'>-[banditry_total]m</font><br>"
 		for(var/line in banditry_lines)
 			body += "&nbsp;&nbsp;- [line]<br>"
 		if(banditry_debt_accrued > 0)
-			body += "<i>Treasury could not absorb the full hit. <font color='#c44'>[banditry_debt_accrued]m</font> accrued as banditry debt: future inflow shall be skimmed against it until paid. ([banditry_burned]m drawn from purse, [banditry_debt_accrued]m owed.)</i><br>"
+			body += "<i>国库无法承担全部损失. <font color='#c44'>[banditry_debt_accrued]m</font> 已计为匪患债务: 未来收入将扣除用于抵债直至还清. (已从金库支出 [banditry_burned]m, 尚欠 [banditry_debt_accrued]m.)</i><br>"
 		body += "<br>"
 	if(banditry_hoard > 0)
-		body += "<b>Brigand Hoard:</b> <font color='#c44'>[banditry_hoard]m</font> across their hoards. A hoard recovery (or breaking a blockade there) will reclaim it, with part of it taxed by the Crown as Recovered Spoils.<br><br>"
+		body += "<b>匪徒宝藏:</b> <font color='#c44'>[banditry_hoard]m</font> 分藏于各处. 寻宝 (或打破当地封锁) 可将其夺回, 王权将从中抽取部分作为追回赃款税收.<br><br>"
 	if(orders_rolled)
-		body += "<b>Standing orders posted this morning:</b> [orders_rolled]"
+		body += "<b>今晨发布的常备订单:</b> [orders_rolled]"
 		if(urgent_rolled)
-			body += " ([urgent_rolled] urgent)"
+			body += " ([urgent_rolled] 紧急)"
 		body += "<br><br>"
 	if(!length(blockades_fired) && !length(blockades_cleared) && !length(events_fired) && !length(events_expired) && !orders_rolled && banditry_total <= 0 && banditry_hoard <= 0)
-		body += "<i>The roads are quiet. No shipment was disturbed overnight.</i><br>"
+		body += "<i>道路平静. 昨夜没有货运遭受侵扰.</i><br>"
 
-	body += "<hr><center><i>Consult the Contract Ledger to commission a response.</i></center>"
+	body += "<hr><center><i>请查阅契约台账以委托应对行动.</i></center>"
 	return body
