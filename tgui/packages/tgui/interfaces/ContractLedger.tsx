@@ -416,7 +416,7 @@ const ContractCard = (props: { contract: Contract }) => {
       <div className="ContractLedger__CardRow">
         <span className="ContractLedger__CardLabel">失效</span>
         <span className="ContractLedger__CardValue">
-          {c.lapse_minutes > 0 ? `~${c.lapse_minutes}m` : '<1m'}
+          {c.lapse_minutes > 0 ? `~${c.lapse_minutes}分钟` : '<1分钟'}
         </span>
       </div>
       {c.threat_bands > 0 && (
@@ -457,7 +457,7 @@ const ActiveStrip = (props: {
   const blockReason = !data.has_account
     ? '你没有银行账户. 签署任何契约前, 请先在神经锁上注册.'
     : takeCooldown > 0
-      ? `行会冷却中, 再签署一份契约前请等待 ${takeCooldown}s.`
+      ? `行会冷却中, 再签署一份契约前请等待 ${takeCooldown}秒.`
       : null;
   const fellowshipBonus = data.active_fellowship_bonus || 0;
   const fellowshipNote =

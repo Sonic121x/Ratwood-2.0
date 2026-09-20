@@ -20,22 +20,22 @@ export const CATEGORY_ORDER: string[] = [
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = {
-  grain: 'Grains',
-  vegetable: 'Vegetables',
-  fruit: 'Fruits',
-  animal: 'Animal Products',
-  seafood: 'Seafood',
-  cloth: 'Textiles',
-  artisan: 'Artisan Raws',
-  basic_mineral: 'Basic Minerals',
-  rare_metal: 'Rare Metals',
-  precious_metal: 'Precious Metals',
-  intermediary: 'Intermediaries',
-  gem_common: 'Common Gems',
-  gem_rare: 'Rare Gems',
-  gem_legendary: 'Legendary Gems',
-  Equipment: 'Equipment',
-  misc: 'Misc',
+  grain: '谷物',
+  vegetable: '蔬菜',
+  fruit: '水果',
+  animal: '畜产品',
+  seafood: '海产',
+  cloth: '纺织品',
+  artisan: '工艺原料',
+  basic_mineral: '基础矿物',
+  rare_metal: '稀有金属',
+  precious_metal: '贵金属',
+  intermediary: '半成品',
+  gem_common: '普通宝石',
+  gem_rare: '稀有宝石',
+  gem_legendary: '传奇宝石',
+  Equipment: '装备',
+  misc: '杂项',
 };
 
 /// Group an array of rows by their category (looked up via good_catalog).
