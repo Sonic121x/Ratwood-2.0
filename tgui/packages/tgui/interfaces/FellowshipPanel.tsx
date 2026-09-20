@@ -104,7 +104,7 @@ const NoFellowshipView = () => {
                     <span style={{ opacity: 0.7 }}>
                       由 {inv.leader_name} 领导 &middot; {inv.member_count}/
                       {inv.max_members} 名成员 &middot;{' '}
-                      剩余 {secondsLeft(inv.expires_at, data.server_time)}s
+                      剩余 {secondsLeft(inv.expires_at, data.server_time)}秒
                     </span>
                   </Table.Cell>
                   <Table.Cell collapsing>
@@ -226,7 +226,7 @@ const FellowshipView = () => {
                       {inv.name}
                       <span style={{ opacity: 0.6 }}>
                         {' '}
-                        &middot; 剩余 {secondsLeft(inv.expires_at, data.server_time)}s
+                        &middot; 剩余 {secondsLeft(inv.expires_at, data.server_time)}秒
                       </span>
                     </Table.Cell>
                     <Table.Cell collapsing>

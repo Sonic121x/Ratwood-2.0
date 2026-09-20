@@ -92,7 +92,7 @@
 
 /datum/trade_good/animal_preserved/honey
 	id = TRADE_GOOD_HONEY
-	name = "Honey"
+	name = "蜂蜜"
 	base_price = SELLPRICE_HONEY
 	source_region_id = TRADE_REGION_HEARTFELT
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/honey
