@@ -350,16 +350,16 @@ SUBSYSTEM_DEF(treasury)
 		record_round_statistic(STATS_DIRECT_TREASURY_TRANSFERS, amt)
 		if(!mint_new)
 			record_treasury_payout(usr, istype(target, /mob/living) ? target : null, amt, is_salary)
-		send_ooc_note(source ? "<b>NERVELOCK:</b> You received [amt]m. ([source])" : "<b>NERVELOCK</b> You received [amt]m.", name = target_name)
+		send_ooc_note(source ? "<b>神经锁:</b> 你收到了 [amt]m. ([source])" : "<b>神经锁</b> 你收到了 [amt]m.", name = target_name)
 		log_game("CROWN GRANT: [usr ? key_name(usr) : "system"] granted [amt]m to [istype(target, /mob/living) ? key_name(target) : target_name] via [source || "unknown"]")
 	else
 		if(SSgamemode?.roundvoteend)
-			send_ooc_note("<b>NERVELOCK:</b> Error: The round is ending. No further fines may be levied.", name = target_name)
+			send_ooc_note("<b>神经锁:</b> 错误: 本轮即将结束. 无法再征收罚款.", name = target_name)
 			return FALSE
 		var/mob/living/fine_owner = istype(target, /mob/living) ? target : null
 		if(fine_owner && is_tax_exempt(fine_owner, TAX_CATEGORY_FINE))
 			record_tax_exemption(TAX_CATEGORY_FINE, abs(amt))
-			send_ooc_note("<b>NERVELOCK:</b> Error: By decree, they cannot be fined.", name = target_name)
+			send_ooc_note("<b>神经锁:</b> 错误: 依据敕令, 对方不能被处以罚款.", name = target_name)
 			log_game("FINE REFUSED: [usr ? key_name(usr) : "system"] attempted to fine [key_name(fine_owner)] [abs(amt)]m but they were Charter-exempt")
 			return FALSE
 		var/fine_amt = abs(amt)
@@ -372,15 +372,15 @@ SUBSYSTEM_DEF(treasury)
 				fine_amt = max_fine
 		if(fine_amt <= 0)
 			if(fine_owner && has_been_fined_today(fine_owner))
-				send_ooc_note("<b>NERVELOCK:</b> Error: They have already been fined today.", name = target_name)
+				send_ooc_note("<b>神经锁:</b> 错误: 对方今日已被处以罚款.", name = target_name)
 			else
-				send_ooc_note("<b>NERVELOCK:</b> Error: No fineable amount remains.", name = target_name)
+				send_ooc_note("<b>神经锁:</b> 错误: 已无可罚金额.", name = target_name)
 			return FALSE
 		if(!transfer(account, discretionary_fund, fine_amt, "[TAX_CATEGORY_FINE] ([source])"))
-			send_ooc_note("<b>NERVELOCK:</b> Error: Insufficient funds in the account to complete the fine.", name = target_name)
+			send_ooc_note("<b>神经锁:</b> 错误: 账户资金不足以支付罚款.", name = target_name)
 			return FALSE
 		record_round_statistic(STATS_FINES_INCOME, fine_amt)
-		send_ooc_note(source ? "<b>NERVELOCK:</b> You were fined [fine_amt]m. ([source])" : "<b>NERVELOCK:</b> You were fined [fine_amt]m.", name = target_name)
+		send_ooc_note(source ? "<b>神经锁:</b> 你被处以 [fine_amt]m 罚款. ([source])" : "<b>神经锁:</b> 你被处以 [fine_amt]m 罚款.", name = target_name)
 		log_game("FINE: [usr ? key_name(usr) : "system"] fined [istype(target, /mob/living) ? key_name(target) : target_name] [fine_amt]m via [source || "unknown"]")
 		if(fine_owner)
 			notify_fine_applied(fine_owner, fine_amt)
@@ -589,7 +589,7 @@ SUBSYSTEM_DEF(treasury)
 		total_units += export_qty
 		record_material_flow(MATERIAL_FLOW_OUT, MATERIAL_SOURCE_LOCAL_EXPORT, D.item_type, export_qty, revenue)
 		if(!silent)
-			lines += "[export_qty] [D.name] to [region.name] for [revenue]m"
+			lines += "向[region.name]出口 [export_qty] 份[D.name]并获得 [revenue]m"
 	return list("revenue" = total_revenue, "units" = total_units, "lines" = lines)
 
 /datum/controller/subsystem/treasury/proc/remove_person(mob/living/person)
@@ -703,17 +703,17 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/proc/get_tax_category_pretty_name(category)
 	switch(category)
 		if(TAX_CATEGORY_CONTRACT_LEVY)
-			return "Contract Levy"
+			return "契约税"
 		if(TAX_CATEGORY_HEADEATER_LEVY)
-			return "Headeater Levy"
+			return "食首税"
 		if(TAX_CATEGORY_IMPORT_TARIFF)
-			return "Import Tariff"
+			return "进口税"
 		if(TAX_CATEGORY_EXPORT_DUTY)
-			return "Export Duty"
+			return "出口税"
 		if(TAX_CATEGORY_RECOVERED_SPOILS)
-			return "Recovered Spoils"
+			return "追回赃款"
 		if(TAX_CATEGORY_FINE)
-			return "Fine"
+			return "罚款"
 	return capitalize(category)
 
 /datum/controller/subsystem/treasury/proc/withdraw_money_treasury(amt, target)

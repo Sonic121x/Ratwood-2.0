@@ -81,7 +81,7 @@
 	if(daily_report_diff)
 		var/list/fired = daily_report_diff["blockades_fired"]
 		var/datum/quest_faction/F = B.get_faction()
-		fired += "[ER.name] - [F ? "[F.group_word] of [F.name_plural]" : "raiders"]"
+		fired += "[ER.name] - [F ? "[F.name_plural]的[F.group_word]" : "劫掠者"]"
 	announce_blockade_start(B)
 	return B
 
@@ -126,10 +126,10 @@
 	var/datum/quest_faction/F = B.get_faction()
 	if(!ER || !F)
 		return
-	scom_announce("<font color='#c44'>BLOCKADE: The trade road to [ER.name] is cut — a [F.group_word] of [F.name_plural] has fallen upon it. The Crown awaits a defense commission.</font>")
+	scom_announce("<font color='#c44'>封锁: 通往[ER.name]的商路被切断 — 由[F.name_plural]组成的[F.group_word]已占据此地. 王权等待有人承接防御委托.</font>")
 
 /datum/controller/subsystem/economy/proc/announce_blockade_cleared(datum/blockade/B)
 	var/datum/economic_region/ER = B.get_region()
 	if(!ER)
 		return
-	scom_announce("<font color='#5cb85c'>The road to [ER.name] is open once more — the blockade has been broken.</font>")
+	scom_announce("<font color='#5cb85c'>通往[ER.name]的道路再度畅通 — 封锁已被打破.</font>")
