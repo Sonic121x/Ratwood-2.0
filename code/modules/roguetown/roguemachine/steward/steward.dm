@@ -128,7 +128,7 @@
 		return
 	if(istype(P, /obj/item/roguecoin))
 		record_round_statistic(STATS_MAMMONS_DEPOSITED, P.get_real_price())
-		SStreasury.mint(SStreasury.discretionary_fund, P.get_real_price(), "NERVE MASTER deposit")
+		SStreasury.mint(SStreasury.discretionary_fund, P.get_real_price(), "神经主存款")
 		qdel(P)
 		playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 		return
@@ -148,7 +148,7 @@
 		if(!D)
 			return
 		var/amt = D.get_import_price()
-		if(!SStreasury.burn(SStreasury.discretionary_fund, amt, "Import: [D.name]"))
+		if(!SStreasury.burn(SStreasury.discretionary_fund, amt, "进口: [D.name]"))
 			say("玛门不足。")
 			return
 		SStreasury.total_import += amt
@@ -269,7 +269,7 @@
 					return
 				if(newtax < 1)
 					return
-				SStreasury.give_money_account(newtax, A, "NERVE MASTER")
+				SStreasury.give_money_account(newtax, A, "神经主")
 				break
 	if(href_list["fineaccount"])
 		var/X = locate(href_list["fineaccount"])
@@ -298,7 +298,7 @@
 				if(newtax > max_fine)
 					newtax = max_fine
 					say("账册最多只能接受来自 [A] 的 [max_fine]m。金额已调整。")
-				SStreasury.give_money_account(-newtax, A, "NERVE MASTER")
+				SStreasury.give_money_account(-newtax, A, "神经主")
 				break
 	if(href_list["printresidency"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
@@ -336,7 +336,7 @@
 			return
 		for(var/mob/living/carbon/human/H in GLOB.human_list)
 			if(H.job == job_to_pay)
-				if(SStreasury.give_money_account(amount_to_pay, H, "NERVE MASTER"))
+				if(SStreasury.give_money_account(amount_to_pay, H, "神经主"))
 					record_round_statistic(STATS_WAGES_PAID, amount_to_pay)
 	if(href_list["setdailypay"])
 		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions) + list(GLOB.inquisition_positions)
@@ -393,7 +393,7 @@
 					is_authorized = TRUE
 
 				if(!is_authorized)
-					say("只有 Steward、Clerk 或 Ruler 可以停发工资。")
+					say("只有总管家、书记官或统治者可以停发工资。")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 
@@ -423,16 +423,16 @@
 		"good_id" = good_id,
 	)
 	if(!user_can_act(user))
-		.["reason"] = "out of reach"
+		.["reason"] = "距离过远"
 		return
 	var/is_alderman_acting = alderman_has_access(user)
 	if(locked && !is_alderman_acting)
-		.["reason"] = "machine locked"
+		.["reason"] = "机器已锁定"
 		return
 	var/datum/economic_region/region = GLOB.economic_regions[region_id]
 	var/datum/trade_good/tg = GLOB.trade_goods[good_id]
 	if(!region || !tg)
-		.["reason"] = "unknown region or good"
+		.["reason"] = "未知地区或货物"
 		return
 	quantity = clamp(round(quantity), 1, TRADE_MAX_BULK_UNITS)
 	var/daily_pace
@@ -444,7 +444,7 @@
 		daily_pace = region.demands[good_id] || 0
 		used_today = daily_pace - (region.demands_today[good_id] || 0)
 	if(daily_pace <= 0)
-		.["reason"] = side == "import" ? "region does not produce this" : "region does not demand this"
+		.["reason"] = side == "import" ? "该地区不产出此货物" : "该地区不需要此货物"
 		return
 	var/starting_index = max(0, used_today)
 	// Base portion = units priced inside daily capacity (overshoot = 0).
@@ -527,7 +527,7 @@
 		return
 	var/daily_pace = region.produces[good_id] || 0
 	if(daily_pace <= 0)
-		to_chat(user, span_warning("[region.name] does not produce [tg.name]."))
+		to_chat(user, span_warning("[region.name]不产出[tg.name]."))
 		return
 	var/produces_today = region.produces_today[good_id] || 0
 	var/starting_index = max(0, daily_pace - produces_today)
@@ -535,13 +535,13 @@
 	for(var/i in 1 to quantity)
 		total += SSeconomy.compute_import_unit_price(good_id, region, starting_index + i)
 	if(is_alderman_acting && !SScity_assembly.can_consume_trade(total))
-		to_chat(user, span_warning("Your warrant cannot cover this trade. Remaining: [SScity_assembly.current_warrant.trade_remaining]m."))
+		to_chat(user, span_warning("你的授权额度不足以进行此交易. 剩余额度: [SScity_assembly.current_warrant.trade_remaining]m."))
 		return
 	var/spent = SSeconomy.manual_import(user, region_id, good_id, quantity)
 	if(spent > 0)
 		if(is_alderman_acting)
-			SScity_assembly.consume_trade(spent, user, "import [quantity] [tg.name] from [region.name]")
-		say("[SSmapping.map_adjustment.realm_name] imports [quantity] [tg.name] from [region.name] for [spent] mammon.")
+			SScity_assembly.consume_trade(spent, user, "从[region.name]进口 [quantity] 份[tg.name]")
+		say("[SSmapping.map_adjustment.realm_name]从[region.name]进口了 [quantity] 份[tg.name]并支付 [spent] 玛门.")
 		playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 	SStgui.update_uis(src)
 
@@ -560,11 +560,11 @@
 		return
 	var/daily_pace = region.demands[good_id] || 0
 	if(daily_pace <= 0)
-		to_chat(user, span_warning("[region.name] does not demand [tg.name]."))
+		to_chat(user, span_warning("[region.name]不需要[tg.name]."))
 		return
 	var/datum/roguestock/entry = SSeconomy.find_stockpile_by_trade_good(good_id)
 	if(!entry || entry.stockpile_amount < quantity)
-		to_chat(user, span_warning("Insufficient [tg.name] in stockpile: have [entry?.stockpile_amount || 0], need [quantity]."))
+		to_chat(user, span_warning("[tg.name]库存不足: 现有 [entry?.stockpile_amount || 0], 需要 [quantity]."))
 		return
 	var/demands_today = region.demands_today[good_id] || 0
 	var/starting_index = max(0, daily_pace - demands_today)
@@ -572,13 +572,13 @@
 	for(var/i in 1 to quantity)
 		total += SSeconomy.compute_export_unit_price(good_id, region, starting_index + i)
 	if(is_alderman_acting && !SScity_assembly.can_consume_trade(total))
-		to_chat(user, span_warning("Your warrant cannot cover this trade. Remaining: [SScity_assembly.current_warrant.trade_remaining]m."))
+		to_chat(user, span_warning("你的授权额度不足以进行此交易. 剩余额度: [SScity_assembly.current_warrant.trade_remaining]m."))
 		return
 	var/gained = SSeconomy.manual_export(user, region_id, good_id, quantity)
 	if(gained > 0)
 		if(is_alderman_acting)
-			SScity_assembly.consume_trade(gained, user, "export [quantity] [tg.name] to [region.name]")
-		say("[SSmapping.map_adjustment.realm_name] exports [quantity] [tg.name] to [region.name] for [gained] mammon.")
+			SScity_assembly.consume_trade(gained, user, "向[region.name]出口 [quantity] 份[tg.name]")
+		say("[SSmapping.map_adjustment.realm_name]向[region.name]出口了 [quantity] 份[tg.name]并获得 [gained] 玛门.")
 		playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
 	SStgui.update_uis(src)
 
@@ -597,14 +597,14 @@
 			continue
 		options["[tg.name]"] = good_id
 	if(!length(options))
-		to_chat(user, span_warning("[region.name] has no importable goods."))
+		to_chat(user, span_warning("[region.name]没有可进口的货物."))
 		return
-	var/pick_name = input(user, "Import what from [region.name]?", src) as null|anything in options
+	var/pick_name = input(user, "从[region.name]进口什么?", src) as null|anything in options
 	if(!pick_name)
 		return
 	var/good_id = options[pick_name]
 	var/datum/trade_good/tg = GLOB.trade_goods[good_id]
-	var/quantity = input(user, "How many [tg.name] to import from [region.name]? (max [TRADE_MAX_BULK_UNITS])", src, 1) as null|num
+	var/quantity = input(user, "要从[region.name]进口多少[tg.name]? (最多 [TRADE_MAX_BULK_UNITS])", src, 1) as null|num
 	if(!quantity || quantity < 1)
 		return
 	handle_trade_import(user, region_id, good_id, quantity)
@@ -624,14 +624,14 @@
 			continue
 		options["[tg.name]"] = good_id
 	if(!length(options))
-		to_chat(user, span_warning("[region.name] has no demanded goods."))
+		to_chat(user, span_warning("[region.name]没有需要的货物."))
 		return
-	var/pick_name = input(user, "Export what to [region.name]?", src) as null|anything in options
+	var/pick_name = input(user, "向[region.name]出口什么?", src) as null|anything in options
 	if(!pick_name)
 		return
 	var/good_id = options[pick_name]
 	var/datum/trade_good/tg = GLOB.trade_goods[good_id]
-	var/quantity = input(user, "How many [tg.name] to export to [region.name]? (max [TRADE_MAX_BULK_UNITS])", src, 1) as null|num
+	var/quantity = input(user, "要向[region.name]出口多少[tg.name]? (最多 [TRADE_MAX_BULK_UNITS])", src, 1) as null|num
 	if(!quantity || quantity < 1)
 		return
 	handle_trade_export(user, region_id, good_id, quantity)
@@ -991,7 +991,7 @@
 					for(var/mob/living/carbon/human/H in GLOB.human_list)
 						if(H.job == job_name && !HAS_TRAIT(H, TRAIT_WAGES_SUSPENDED))
 							count++
-					contents += "<b>[job_name]:</b> [amt]m/日"
+					contents += "<b>[SSjob.GetJob(job_name)?.display_title || job_name]:</b> [amt]m/日"
 					if(count > 0)
 						contents += "（[count] 在职，每日总计 [amt * count]m）"
 					contents += " <a href='?src=\ref[src];removedailypay=[job_name]'>\[移除\]</a><BR>"
@@ -1000,7 +1000,7 @@
 		if(TAB_SALTMINE)
 			var/obj/structure/roguemachine/stockpile_saltcamp/stockpile = null
 			stockpile = locate(/obj/structure/roguemachine/stockpile_saltcamp) in GLOB.saltminestockpilemachines // we're assuming there is only ever one of these machines in the world
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[返回\]</a><BR>"
 			if(!isnull(stockpile))
 				var/gambled_salt = round(stockpile.salt_spent_on_gambling, 1)
 				var/total_accounts = length(stockpile.salt_accounts)
@@ -1027,17 +1027,17 @@
 
 /obj/structure/roguemachine/steward/proc/job_filter(advj, j, compact = FALSE)
 	if(advj in excluded_jobs)
-		return "Adventurer"
+		return "冒险者"
 	if(j in excluded_jobs)
-		return "Adventurer"
+		return "冒险者"
 	if(compact && j)
-		return j
+		return SSjob.GetJob(j)?.display_title || j
 	else if(!compact && advj && j)
-		return "[j] ([advj])"
+		return "[SSjob.GetJob(j)?.display_title || j] ([SSjob.GetJob(advj)?.display_title || advj])"
 	else if(j)
-		return j
+		return SSjob.GetJob(j)?.display_title || j
 	else if(advj)
-		return advj
+		return SSjob.GetJob(advj)?.display_title || advj
 
 #undef TAB_MAIN
 #undef TAB_BANK
