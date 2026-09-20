@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 		return FALSE
 	var/list/cat = GLOB.petition_categories[category_id]
 	var/cost = cat["cost"]
-	if(!SStreasury.burn(SStreasury.burgher_pledge_fund, cost, "Steward petition - [cat["label"]] in [region_id]"))
+	if(!SStreasury.burn(SStreasury.burgher_pledge_fund, cost, "总管家请愿 - [GLOB.economic_regions[region_id]:name]的[cat["label"]]订单"))
 		if(user)
 			to_chat(user, span_warning("请愿被拒：无法从认捐基金中支取。"))
 		return FALSE
@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(petition_categories, build_petition_categories())
 	else
 		O = instantiate_standing_order(template, region, order_size_mult, petitioned = TRUE)
 	if(!O)
-		SStreasury.mint(SStreasury.burgher_pledge_fund, cost, "Steward petition refund - empty roll")
+		SStreasury.mint(SStreasury.burgher_pledge_fund, cost, "总管家请愿退款 - 未生成订单")
 		record_round_statistic(STATS_PLEDGE_CONSUMED, -cost)
 		record_round_statistic(STATS_PETITION_PLEDGE_SPENT, -cost)
 		petitions_today--

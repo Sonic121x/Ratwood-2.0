@@ -31,13 +31,13 @@ export const ArrearsBanner = (props: {
           color: SEAL_AMBER,
         }}
       >
-        ARREARS WITH THE BURGHERS
+        拖欠市民款项
       </div>
       <div style={{ fontVariant: 'normal', color: INK }}>
-        The Crown owes <b>{sequestration.debt}m</b> to the Burghers of Rotwood Vale
-        for the day's interest-free advance. All inflow into the Crown's Purse
-        is skimmed against the debt until it is settled. Should the Crown miss
-        the next dawn's payroll, the realm enters sequestration.
+        王权欠腐木谷市民 <b>{sequestration.debt}m</b>
+        作为当日的免息垫款. 王室金库的全部收入
+        将用于抵债直至还清. 若王权未能支付
+        次日黎明的薪资, 领地将被接管.
       </div>
     </div>
   );
