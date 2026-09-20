@@ -16,10 +16,10 @@ export const BanditryBanner = (props: { projection: BanditryProjection }) => {
   return (
     <div style={bannerStyle(SEAL_RED_SOFT, true)}>
       {hasDebt && (
-        <div>Outstanding Banditry Debt: {p.debt}m skimming all inflow</div>
+        <div>未偿匪患债务: {p.debt}m 正从全部收入中扣还</div>
       )}
       {hasProjection && (
-        <div>Projected Banditry Losses: -{p.total}m next dawn</div>
+        <div>预计匪患损失: -{p.total}m 于次日黎明结算</div>
       )}
       {(p.lines || []).map((line) => (
         <div
