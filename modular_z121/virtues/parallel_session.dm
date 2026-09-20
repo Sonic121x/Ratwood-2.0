@@ -170,7 +170,9 @@
 /datum/component/martins_morning/proc/body_compatible(mob/living/carbon/human/H, datum/definition)
 	if(!H.dna?.species)
 		return FALSE
-	var/list/sexes = definition.vars["allowed_sexes"]?.Copy()
+	// 先明确列表类型再复制，副本用于性别映射，不能修改岗位的原始限制。
+	var/list/sexes = definition.vars["allowed_sexes"]
+	sexes = sexes?.Copy()
 	if(length(sexes) && !definition.vars["immune_to_genderswap"] && H.dna.species.gender_swapping)
 		var/had_male = (MALE in sexes)
 		var/had_female = (FEMALE in sexes)

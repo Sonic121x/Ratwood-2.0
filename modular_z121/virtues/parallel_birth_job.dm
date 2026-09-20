@@ -1,6 +1,7 @@
 // 保留正式岗位出生过程，在明确授予处记录能力及实际占用的名额。
 /datum/job/after_spawn(mob/living/H, mob/M, latejoin = FALSE)
-	SHOULD_CALL_PARENT(TRUE)
+	// 本实现完整替代原出生过程；调用上一份实现会重复发放法术、资金与出生奖励。
+	SHOULD_CALL_PARENT(FALSE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src)
 
 	if(job_traits)
