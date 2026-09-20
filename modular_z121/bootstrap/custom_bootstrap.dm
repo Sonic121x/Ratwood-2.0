@@ -72,13 +72,8 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	// player-visible GLOB.roguetraits, same rationale as the registrations above.
 	register_succubus_bloodline_trait()
 
-	// 登记自定义美德"马丁的早晨"的【马丁的早晨】特性到玩家可见的特性表（GLOB.roguetraits）。
-	// 为什么放在这里：与上面同理——此刻核心表 roguetraits 已由 GLOBAL_LIST_INIT 完成初始化，
-	//   向其追加键值对后，玩家点开特性自检面板即可看到"马丁的早晨"及其说明。
-	//   登记逻辑定义在 modular_z121/virtues/martins_morning.dm 内（那里才有对应的
-	//   TRAIT_MARTINS_MORNING 宏），这里只按 proc 名做一次调用，遵守宏的 #include 可见性规则。
-	// Register the Martin's Morning virtue's trait into the player-visible GLOB.roguetraits,
-	// same rationale as the registrations above.
+	// 在核心特性表初始化完成后登记平行存在，使玩家能够查看特性及说明。
+	// 登记接口与特性宏统一定义在 modular_z121/virtues/parallel_session.dm，保留原接口名以兼容既有引用。
 	register_martins_morning_trait()
 
 	// 登记自定义美德"地狱血脉后裔"的【地狱血脉】特性到玩家可见的特性表（GLOB.roguetraits）。

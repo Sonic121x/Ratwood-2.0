@@ -116,7 +116,11 @@
 		amt *= GENIUS_XP_MULTIPLIER
 
 	// 透传给基类完成真正的经验写入与后续处理（升级提示、学徒同步等均不受影响）。
-	return ..(skill, amt, silent, check_apprentice)
+	var/datum/skill/skill_ref = GetSkillRef(skill)
+	var/before = z121_profession ? ensure_skills().skill_experience[skill_ref] : 0
+	. = ..(skill, amt, silent, check_apprentice)
+	// 记录实际结算的损失，不再次应用天才倍率。
+	z121_profession?.experience_settled(skill, before, ensure_skills().skill_experience[skill_ref])
 
 
 // ----------------------------------------------------------------------------
