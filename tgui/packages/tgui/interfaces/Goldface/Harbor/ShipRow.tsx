@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { SHIP_TYPE_LABELS } from '../../common/displayNames';
 import {
   compactButtonStyle,
   denseRowStyle,
@@ -21,7 +22,6 @@ import {
 } from '../../common/parchment';
 import type { ActFn, BulkLine, HarborRealm, HarborShip } from '../types';
 import { RealmCard } from './RealmCard';
-
 const formatDuration = (totalSeconds: number) => {
   if (totalSeconds <= 0) return '现在';
   const minutes = Math.floor(totalSeconds / 60);
@@ -387,7 +387,7 @@ export const ShipRow = (props: Props) => {
               </span>
             )}
             <span style={{ color: INK_FAINT }}> &middot; </span>
-            {ship.ship_type} &middot; {ship.tonnage}t
+            {SHIP_TYPE_LABELS[ship.ship_type] || ship.ship_type} &middot; {ship.tonnage}t
             {ship.tonnage_mult > 1.0 && (
               <span style={{ color: SEAL_AMBER }}>
                 {' '}({ship.tonnage_mult.toFixed(2)}x)

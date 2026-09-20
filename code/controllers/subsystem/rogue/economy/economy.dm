@@ -290,18 +290,18 @@ SUBSYSTEM_DEF(economy)
 		var/total_regular = 0
 		for(var/region_name in by_region)
 			total_regular += by_region[region_name]
-		var/order_line = "[total_regular] new standing order\s"
+		var/order_line = "[total_regular] 份新常备订单"
 		if(length(urgents_today))
-			order_line += " ([length(urgents_today)] URGENT)"
+			order_line += " ([length(urgents_today)] 紧急)"
 		dawn_parts += order_line
 	if(length(fired_shortages))
-		dawn_parts += "<font color='#c44'>Shortages: [jointext(fired_shortages, ", ")]</font>"
+		dawn_parts += "<font color='#c44'>短缺: [jointext(fired_shortages, ", ")]</font>"
 	if(length(fired_gluts))
-		dawn_parts += "<font color='#5cb85c'>Gluts: [jointext(fired_gluts, ", ")]</font>"
+		dawn_parts += "<font color='#5cb85c'>过剩: [jointext(fired_gluts, ", ")]</font>"
 	if(length(dawn_parts))
 		scom_announce("[jointext(dawn_parts, " - ")].")
 	if(length(relieved_today))
-		scom_announce("<font color='#5cb85c'>RELIEF eases [jointext(relieved_today, ", ")]. Prices return to normal.</font>")
+		scom_announce("<font color='#5cb85c'>赈济缓解了[jointext(relieved_today, ", ")]. 价格恢复正常.</font>")
 
 	print_steward_report(daily_report_diff)
 	daily_report_diff = null
@@ -358,7 +358,7 @@ SUBSYSTEM_DEF(economy)
 	record_round_statistic(STATS_ECON_EVENTS_FIRED, 1)
 	if(daily_report_diff)
 		var/list/fired = daily_report_diff["events_fired"]
-		fired += "[E.name] ([E.event_type == ECON_EVENT_SHORTAGE ? "shortage" : "glut"])"
+		fired += "[E.name] ([E.event_type == ECON_EVENT_SHORTAGE ? "短缺" : "过剩"])"
 		var/bucket_key = E.event_type == ECON_EVENT_SHORTAGE ? "fired_shortage_names" : "fired_glut_names"
 		var/list/bucket = daily_report_diff[bucket_key]
 		if(!bucket)
@@ -571,7 +571,7 @@ SUBSYSTEM_DEF(economy)
 	var/datum/economic_region/ER = GLOB.economic_regions[order.region_id]
 	if(ER?.is_region_blockaded)
 		if(user)
-			to_chat(user, span_warning("[ER.name] is blockaded — the order cannot be delivered until the road is cleared."))
+			to_chat(user, span_warning("[ER.name]已被封锁 — 道路疏通前无法交付订单."))
 		return FALSE
 
 	var/list/equip_goods = list()
@@ -588,7 +588,7 @@ SUBSYSTEM_DEF(economy)
 
 	if((length(equip_goods) || length(potion_goods)) && !length(GLOB.steward_export_machines))
 		if(user)
-			to_chat(user, span_warning("No warehouse dock manifest is registered. Cannot fulfill warehouse orders."))
+			to_chat(user, span_warning("尚未登记仓库码头货单. 无法完成仓库订单."))
 		return FALSE
 
 	var/list/equip_avail = length(equip_goods) ? scan_equipment_availability(order, equip_goods) : list()
@@ -627,17 +627,17 @@ SUBSYSTEM_DEF(economy)
 		if(order.petitioned)
 			quality_delta = round(quality_delta * PETITION_TAX_MULT)
 		var/full_payout = max(0, round(order.total_payout + quality_delta))
-		SStreasury.mint(SStreasury.discretionary_fund, full_payout, "Standing Order: [order.name]")
+		SStreasury.mint(SStreasury.discretionary_fund, full_payout, "常备订单: [order.name]")
 		record_round_statistic(STATS_STANDING_ORDER_REVENUE, full_payout)
 		record_round_statistic(STATS_STANDING_ORDERS_FULFILLED, 1)
 		order.is_fulfilled = TRUE
 		GLOB.standing_order_pool -= order
 		if(user)
-			to_chat(user, span_notice("Order Fulfilled: [full_payout]m paid to the Crown's Purse."))
+			to_chat(user, span_notice("订单已完成: [full_payout]m 已付入王室金库."))
 			if(quality_delta > 0)
-				to_chat(user, span_green("Quality bonus: +[quality_delta]m for above-standard goods."))
+				to_chat(user, span_green("品质奖励: +[quality_delta]m 因货物品质高于标准."))
 			else if(quality_delta < 0)
-				to_chat(user, span_warning("Quality penalty: [quality_delta]m for shoddy goods."))
+				to_chat(user, span_warning("品质扣款: [quality_delta]m 因货物品质低劣."))
 			log_game("STANDING ORDER FULFILLED by [user.ckey]: [order.name] (+[full_payout]m, quality_delta=[quality_delta]m)")
 		return list("status" = "full", "payout" = full_payout, "quality_delta" = quality_delta)
 
@@ -647,7 +647,7 @@ SUBSYSTEM_DEF(economy)
 
 	if(coverage < STANDING_ORDER_PARTIAL_THRESHOLD)
 		if(user)
-			to_chat(user, span_warning("Coverage [round(coverage * 100)]% - below the [round(STANDING_ORDER_PARTIAL_THRESHOLD * 100)]% partial threshold. Short on: [english_list(missing_labels)]."))
+			to_chat(user, span_warning("完成比例 [round(coverage * 100)]% - 低于 [round(STANDING_ORDER_PARTIAL_THRESHOLD * 100)]% 的部分交付阈值. 缺少: [english_list(missing_labels, nothing_text = "无", and_text = " 和 ")]."))
 		return FALSE
 
 	if(!partial)
@@ -665,17 +665,17 @@ SUBSYSTEM_DEF(economy)
 	consume_equipment_payload(equip_avail)
 	consume_potion_payload(potion_avail)
 	consume_stockpile_payload(stock_avail)
-	SStreasury.mint(SStreasury.discretionary_fund, payout, "Standing Order (Partial): [order.name]")
+	SStreasury.mint(SStreasury.discretionary_fund, payout, "常备订单 (部分): [order.name]")
 	record_round_statistic(STATS_STANDING_ORDER_REVENUE, payout)
 	record_round_statistic(STATS_STANDING_ORDERS_FULFILLED, 1)
 	order.is_fulfilled = TRUE
 	GLOB.standing_order_pool -= order
 	if(user)
-		to_chat(user, span_notice("Order Settled (Partial): [round(coverage * 100)]% coverage, [payout]m paid to the Crown's Purse ([round(STANDING_ORDER_PARTIAL_PAYOUT_MULT * 100)]% of the delivered share)."))
+		to_chat(user, span_notice("订单已结算 (部分): 完成比例 [round(coverage * 100)]%, [payout]m 已付入王室金库 (已交付份额的 [round(STANDING_ORDER_PARTIAL_PAYOUT_MULT * 100)]%)."))
 		if(quality_delta_partial > 0)
-			to_chat(user, span_green("Quality bonus: +[quality_delta_partial]m for above-standard goods."))
+			to_chat(user, span_green("品质奖励: +[quality_delta_partial]m 因货物品质高于标准."))
 		else if(quality_delta_partial < 0)
-			to_chat(user, span_warning("Quality penalty: [quality_delta_partial]m for shoddy goods."))
+			to_chat(user, span_warning("品质扣款: [quality_delta_partial]m 因货物品质低劣."))
 		log_game("STANDING ORDER PARTIAL FULFILLED by [user.ckey]: [order.name] (+[payout]m, [round(coverage * 100)]% coverage, quality_delta=[quality_delta_partial]m)")
 	return list("status" = "partial", "payout" = payout, "coverage_pct" = round(coverage * 100), "quality_delta" = quality_delta_partial)
 
@@ -855,7 +855,7 @@ SUBSYSTEM_DEF(economy)
 	return list(
 		"coverage_pct" = round(coverage * 100),
 		"payout" = payout,
-		"missing_text" = length(missing_labels) ? english_list(missing_labels) : "nothing",
+		"missing_text" = length(missing_labels) ? english_list(missing_labels, and_text = " 和 ") : "无",
 	)
 
 
@@ -890,7 +890,7 @@ SUBSYSTEM_DEF(economy)
 	var/datum/trade_good/tg = GLOB.trade_goods[good_id]
 	if(!tg || !tg.importable)
 		if(user)
-			to_chat(user, span_warning("[good_id] is not importable."))
+			to_chat(user, span_warning("[tg ? tg.name : good_id]不可进口."))
 		return 0
 	if(quantity <= 0)
 		return 0
@@ -898,7 +898,7 @@ SUBSYSTEM_DEF(economy)
 	var/daily_pace = region.produces[good_id] || 0
 	if(daily_pace <= 0)
 		if(user)
-			to_chat(user, span_warning("[region.name] does not produce [tg.name]."))
+			to_chat(user, span_warning("[region.name]不产出[tg.name]."))
 		return 0
 
 	var/produces_today = region.produces_today[good_id] || 0
@@ -910,12 +910,12 @@ SUBSYSTEM_DEF(economy)
 
 	if(SStreasury.discretionary_fund.balance < total_cost)
 		if(user)
-			to_chat(user, span_warning("Crown's Purse insufficient: [SStreasury.discretionary_fund.balance]m < [total_cost]m."))
+			to_chat(user, span_warning("王室金库余额不足: [SStreasury.discretionary_fund.balance]m < [total_cost]m."))
 		return 0
 
-	var/actor_suffix = user ? " by [user.real_name]" : ""
-	var/import_label = user ? "Manual Import" : "Auto Import"
-	SStreasury.burn(SStreasury.discretionary_fund, total_cost, "[import_label]: [quantity] [tg.name] from [region.name][actor_suffix]")
+	var/actor_suffix = user ? " 经办人 [user.real_name]" : ""
+	var/import_label = user ? "手动进口" : "自动进口"
+	SStreasury.burn(SStreasury.discretionary_fund, total_cost, "[import_label]: 从[region.name]进口 [quantity] 份[tg.name][actor_suffix]")
 	region.produces_today[good_id] = produces_today - quantity
 	var/datum/roguestock/stockpile_entry = find_stockpile_by_trade_good(good_id)
 	if(stockpile_entry)
@@ -936,7 +936,7 @@ SUBSYSTEM_DEF(economy)
 	var/datum/trade_good/tg = GLOB.trade_goods[good_id]
 	if(!tg)
 		if(user)
-			to_chat(user, span_warning("[good_id] is not a known trade good."))
+			to_chat(user, span_warning("[good_id]不是已知的贸易货物."))
 		return 0
 	if(quantity <= 0)
 		return 0
@@ -944,13 +944,13 @@ SUBSYSTEM_DEF(economy)
 	var/daily_pace = region.demands[good_id] || 0
 	if(daily_pace <= 0)
 		if(user)
-			to_chat(user, span_warning("[region.name] does not demand [tg.name]."))
+			to_chat(user, span_warning("[region.name]不需要[tg.name]."))
 		return 0
 
 	var/datum/roguestock/stockpile_entry = find_stockpile_by_trade_good(good_id)
 	if(!stockpile_entry || stockpile_entry.stockpile_amount < quantity)
 		if(user)
-			to_chat(user, span_warning("Insufficient [tg.name] in stockpile: have [stockpile_entry?.stockpile_amount || 0], need [quantity]."))
+			to_chat(user, span_warning("[tg.name]库存不足: 现有 [stockpile_entry?.stockpile_amount || 0], 需要 [quantity]."))
 		return 0
 
 	var/demands_today = region.demands_today[good_id] || 0
@@ -962,10 +962,10 @@ SUBSYSTEM_DEF(economy)
 
 	stockpile_entry.stockpile_amount -= quantity
 	region.demands_today[good_id] = demands_today - quantity
-	var/actor_suffix = user ? " by [user.real_name]" : ""
-	var/export_label = user ? "Manual Export" : "Auto Export"
+	var/actor_suffix = user ? " 经办人 [user.real_name]" : ""
+	var/export_label = user ? "手动出口" : "自动出口"
 	SStreasury.dirty_market_view()
-	SStreasury.mint(SStreasury.discretionary_fund, total_revenue, "[export_label]: [quantity] [tg.name] to [region.name][actor_suffix]")
+	SStreasury.mint(SStreasury.discretionary_fund, total_revenue, "[export_label]: 向[region.name]出口 [quantity] 份[tg.name][actor_suffix]")
 	SStreasury.total_export += total_revenue
 	SStreasury.economic_output += total_revenue
 	record_round_statistic(STATS_STOCKPILE_EXPORTS_VALUE, total_revenue)
