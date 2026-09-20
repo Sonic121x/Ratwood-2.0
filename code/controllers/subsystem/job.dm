@@ -62,8 +62,8 @@ SUBSYSTEM_DEF(job)
 		SSmapping.map_adjustment.job_change()
 	return 1
 
-
 /datum/controller/subsystem/job/proc/GetJob(rank)
+	RETURN_TYPE(/datum/job)
 	if(!occupations.len)
 		SetupOccupations()
 	return name_occupations[rank]
