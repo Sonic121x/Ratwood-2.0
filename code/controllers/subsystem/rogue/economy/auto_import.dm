@@ -90,7 +90,7 @@
 		return
 
 	if(stockpile_entry.stockpile_amount >= AUTO_IMPORT_FLOOR)
-		today_lines += "[tg.name]: stockpile [stockpile_entry.stockpile_amount] >= floor [AUTO_IMPORT_FLOOR], no import needed."
+		today_lines += "[tg.name]: 库存 [stockpile_entry.stockpile_amount] >= 下限 [AUTO_IMPORT_FLOOR], 无需进口."
 		return
 
 	// exclude_blockaded = TRUE: the price cap implicitly skips blockaded producers (2x import
@@ -98,7 +98,7 @@
 	// spurious "skipped (price)" lines for goods that only have blockaded producers today.
 	var/list/best = SSeconomy.get_best_import_region(good_id, exclude_blockaded = TRUE)
 	if(!best || !best["region_id"])
-		today_lines += "[tg.name]: no producing region available."
+		today_lines += "[tg.name]: 没有可用的产出地区."
 		return
 	var/region_id = best["region_id"]
 	var/datum/economic_region/region = GLOB.economic_regions[region_id]
@@ -119,17 +119,17 @@
 
 	var/price_cap = tg.base_price * AUTO_IMPORT_MAX_PRICE_MULT
 	if(max_unit_price > price_cap)
-		today_lines += "[tg.name]: skipped (unit price [max_unit_price]m > [AUTO_IMPORT_MAX_PRICE_MULT]x base price [tg.base_price]m)."
+		today_lines += "[tg.name]: 已跳过 (单价 [max_unit_price]m > [AUTO_IMPORT_MAX_PRICE_MULT]x 基准价 [tg.base_price]m)."
 		return
 
 	if(discretionary_fund.balance - total_cost < auto_import_purse_floor)
-		today_lines += "[tg.name]: skipped (purse floor [auto_import_purse_floor]m would be breached)."
+		today_lines += "[tg.name]: 已跳过 (将突破金库保留金额 [auto_import_purse_floor]m)."
 		return
 
 	var/spent = SSeconomy.manual_import(null, region_id, good_id, AUTO_IMPORT_BATCH)
 	if(!spent)
-		today_lines += "[tg.name]: import failed (treasury or region state changed mid-tick)."
+		today_lines += "[tg.name]: 进口失败 (结算期间国库或地区状态发生变化)."
 		return
 
 	auto_import_daily_spent += spent
-	today_lines += "[tg.name]: +[AUTO_IMPORT_BATCH] from [region.name] ([spent]m)."
+	today_lines += "[tg.name]: +[AUTO_IMPORT_BATCH] 来自[region.name] ([spent]m)."

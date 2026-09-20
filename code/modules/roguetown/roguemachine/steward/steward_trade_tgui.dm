@@ -30,7 +30,7 @@
 
 /obj/structure/roguemachine/steward/proc/open_trade_tgui(mob/user)
 	if(locked && !alderman_has_access(user))
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("它被锁住了. 果然."))
 		return
 	var/datum/tgui/ui = SStgui.try_update_ui(user, src, null)
 	if(!ui)
@@ -222,7 +222,7 @@
 					var/label = tg ? tg.name : good_id
 					if(shortfall != "")
 						shortfall += ", "
-					shortfall += "need [needed - have] more [label]"
+					shortfall += "还需 [needed - have] 份[label]"
 				delivered_value += SSeconomy.compute_good_unit_payout(O, good_id) * min(have, needed)
 			items += list(list(
 				"good_id" = good_id,
@@ -575,14 +575,14 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 	if(locked && !alderman_has_access(usr))
 		return TRUE
 	if(SStreasury.is_in_receivership() && (action in GLOB.steward_trade_sequestration_locked_actions))
-		to_chat(usr, span_warning("The Ferentian Trading Company holds the Crown's commerce in sequestration. Petition, tax, and fine are your remaining instruments."))
+		to_chat(usr, span_warning("费伦提亚贸易公司已接管王权的贸易. 请愿, 征税, 以及罚款是你剩下的手段."))
 		return TRUE
 	if(action == "fulfill_order" || (action in GLOB.steward_trade_sequestration_locked_actions))
 		SStreasury.dirty_market_view()
 	switch(action)
 		if("fulfill_order")
 			if(!COOLDOWN_FINISHED(src, fulfill_retry_cooldown))
-				to_chat(usr, span_warning("The clerks are still tallying the last attempt. Try again in a moment."))
+				to_chat(usr, span_warning("书记官仍在核算上次交付. 请稍后再试."))
 				return TRUE
 			var/datum/standing_order/O = locate(params["ref"]) in GLOB.standing_order_pool
 			if(O)
@@ -593,17 +593,17 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 					var/coverage_pct = preview["coverage_pct"]
 					var/preview_payout = preview["payout"]
 					var/missing_text = preview["missing_text"]
-					var/confirm = alert(usr, "Settle [O.name] short? Coverage: [coverage_pct]%. Payout: [preview_payout]m at [round(STANDING_ORDER_PARTIAL_PAYOUT_MULT * 100)]% of the delivered share. Missing: [missing_text].", "Partial Fulfillment", "Yes", "No")
-					if(confirm == "Yes")
+					var/confirm = alert(usr, "要部分结算[O.name]吗? 完成比例: [coverage_pct]%. 报酬: [preview_payout]m 按已交付份额的 [round(STANDING_ORDER_PARTIAL_PAYOUT_MULT * 100)]% 支付. 缺少: [missing_text].", "部分交付", "是", "否")
+					if(confirm == "是")
 						var/list/partial_result = SSeconomy.fulfill_order(usr, O, TRUE)
 						if(islist(partial_result) && partial_result["status"] == "partial")
 							var/pq_delta = partial_result["quality_delta"]
 							var/pq_suffix = ""
 							if(pq_delta > 0)
-								pq_suffix = " (quality bonus: +[pq_delta]m)"
+								pq_suffix = " (品质奖励: +[pq_delta]m)"
 							else if(pq_delta < 0)
-								pq_suffix = " (quality penalty: [pq_delta]m)"
-							scom_announce("Standing Order settled (partial): [O.name] (+[partial_result["payout"]]m)[pq_suffix].")
+								pq_suffix = " (品质扣款: [pq_delta]m)"
+							scom_announce("常备订单已结算 (部分): [O.name] (+[partial_result["payout"]]m)[pq_suffix].")
 							playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
 						else
 							COOLDOWN_START(src, fulfill_retry_cooldown, STANDING_ORDER_FULFILL_RETRY_COOLDOWN)
@@ -613,10 +613,10 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 					var/q_delta = result["quality_delta"]
 					var/q_suffix = ""
 					if(q_delta > 0)
-						q_suffix = " (quality bonus: +[q_delta]m)"
+						q_suffix = " (品质奖励: +[q_delta]m)"
 					else if(q_delta < 0)
-						q_suffix = " (quality penalty: [q_delta]m)"
-					scom_announce("Standing Order fulfilled: [O.name] (+[result["payout"]]m)[q_suffix].")
+						q_suffix = " (品质扣款: [q_delta]m)"
+					scom_announce("常备订单已完成: [O.name] (+[result["payout"]]m)[q_suffix].")
 					playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
 				else
 					COOLDOWN_START(src, fulfill_retry_cooldown, STANDING_ORDER_FULFILL_RETRY_COOLDOWN)
@@ -729,7 +729,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 			// Ratwood deviation: numeric entry via the standard input() prompt instead of AP's window.prompt()
 			var/price = text2num("[params["price"]]")
 			if(isnull(price))
-				price = input(usr, "Set buy price for [D.name]", src, D.payout_price) as null|num
+				price = input(usr, "设置[D.name]的买价", src, D.payout_price) as null|num
 			if(!isnull(price))
 				D.payout_price = clamp(round(price), 0, 9999)
 				D.automatic_price = FALSE
@@ -743,7 +743,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 				return TRUE
 			var/price = text2num("[params["price"]]")
 			if(isnull(price))
-				price = input(usr, "Set sell price for [D.name]", src, D.withdraw_price) as null|num
+				price = input(usr, "设置[D.name]的卖价", src, D.withdraw_price) as null|num
 			if(!isnull(price))
 				D.withdraw_price = clamp(round(price), 0, 9999)
 				D.automatic_price = FALSE
@@ -757,7 +757,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 				return TRUE
 			var/lim = text2num("[params["limit"]]")
 			if(isnull(lim))
-				lim = input(usr, "Set stockpile limit for [D.name]", src, D.stockpile_limit) as null|num
+				lim = input(usr, "设置[D.name]的库存上限", src, D.stockpile_limit) as null|num
 			if(!isnull(lim))
 				D.stockpile_limit = clamp(round(lim), 0, 9999)
 				D.automatic_limit = FALSE
@@ -892,9 +892,9 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 					barred_count++
 			SStreasury.dirty_market_view()
 			if(barred_count)
-				to_chat(usr, span_info("Autoexport barred on [barred_count] good\s under shortage."))
+				to_chat(usr, span_info("已禁止自动出口 [barred_count] 种短缺货物."))
 			else
-				to_chat(usr, span_warning("No shortage goods left to bar."))
+				to_chat(usr, span_warning("没有尚未禁止自动出口的短缺货物."))
 			SStgui.update_uis(src)
 			return TRUE
 		if("allow_autoexport_all")
@@ -919,7 +919,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 				return TRUE
 			var/mult = text2num("[params["multiplier"]]")
 			if(isnull(mult))
-				mult = input(usr, "Multiply ALL buy prices by (e.g. 0.8 to slash bids 20%). Sets each entry to manual pricing.", src, 1) as null|num
+				mult = input(usr, "将全部买价乘以指定倍率 (例如 0.8 可降低买价 20%). 每项货物都将改为手动定价.", src, 1) as null|num
 			if(isnull(mult) || mult <= 0)
 				return TRUE
 			for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
@@ -933,7 +933,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 				return TRUE
 			var/mult = text2num("[params["multiplier"]]")
 			if(isnull(mult))
-				mult = input(usr, "Multiply ALL sell prices by (e.g. 0.8 to discount asks 20%). Sets each entry to manual pricing.", src, 1) as null|num
+				mult = input(usr, "将全部卖价乘以指定倍率 (例如 0.8 可降低卖价 20%). 每项货物都将改为手动定价.", src, 1) as null|num
 			if(isnull(mult) || mult <= 0)
 				return TRUE
 			for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
@@ -951,7 +951,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 			var/category_label = params["category_label"] || category
 			var/mult = text2num("[params["multiplier"]]")
 			if(isnull(mult))
-				mult = input(usr, "Multiply all [category_label] buy prices by (e.g. 0.8 to slash bids 20%). Sets each entry to manual pricing.", src, 1) as null|num
+				mult = input(usr, "将所有[category_label]的买价乘以指定倍率 (例如 0.8 可降低买价 20%). 每项货物都将改为手动定价.", src, 1) as null|num
 			if(isnull(mult) || mult <= 0)
 				return TRUE
 			for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
@@ -974,7 +974,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 			var/category_label = params["category_label"] || category
 			var/mult = text2num("[params["multiplier"]]")
 			if(isnull(mult))
-				mult = input(usr, "Multiply all [category_label] sell prices by (e.g. 0.8 to discount asks 20%). Sets each entry to manual pricing.", src, 1) as null|num
+				mult = input(usr, "将所有[category_label]的卖价乘以指定倍率 (例如 0.8 可降低卖价 20%). 每项货物都将改为手动定价.", src, 1) as null|num
 			if(isnull(mult) || mult <= 0)
 				return TRUE
 			for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
@@ -993,7 +993,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 				return TRUE
 			var/pct = text2num("[params["pct"]]")
 			if(isnull(pct))
-				pct = input(usr, "Surplus threshold (0-100%). Stock above (limit x threshold) is surplus - the daily Crown sweep and the Export Surplus button move that excess to the highest-paying region, capped at that region's daily demand. Lower = more aggressive export.", src, round(SStreasury.autoexport_percentage * 100)) as null|num
+				pct = input(usr, "盈余阈值 (0-100%). 超过 (上限 x 阈值) 的库存即为盈余 - 王权每日清仓及出口盈余按钮会将多余货物运往出价最高的地区, 数量以该地区的每日需求为限. 越低 = 出口越积极.", src, round(SStreasury.autoexport_percentage * 100)) as null|num
 			if(isnull(pct))
 				return TRUE
 			pct = clamp(round(pct), 0, 100)
@@ -1007,12 +1007,12 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 			var/units = result["units"]
 			var/revenue = result["revenue"]
 			if(units <= 0)
-				to_chat(usr, span_warning("No surplus to export - either no entry is over its threshold, or every demanding region is saturated for the day."))
+				to_chat(usr, span_warning("没有可出口的盈余 - 可能没有库存超过阈值, 或所有需求地区今日均已饱和."))
 				return TRUE
-			scom_announce("Crown clears surplus stockpile: [units] units exported for [revenue] mammon.")
+			scom_announce("王权清理盈余库存: 出口 [units] 件货物并获得 [revenue] 玛门.")
 			for(var/line in result["lines"])
 				to_chat(usr, span_notice(line))
-			to_chat(usr, span_notice("<b>Total: [units] units exported for [revenue]m.</b>"))
+			to_chat(usr, span_notice("<b>总计: 出口 [units] 件货物并获得 [revenue]m.</b>"))
 			playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
 			SStgui.update_uis(src)
 			return TRUE
@@ -1055,45 +1055,45 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 					continue
 				total_revenue += revenue
 				total_units += export_qty
-				lines += "[export_qty] [D.name] to [region.name] for [revenue]m"
+				lines += "向[region.name]出口 [export_qty] 份[D.name]并获得 [revenue]m"
 			if(total_units <= 0)
-				to_chat(usr, span_warning("No [category] surplus to export."))
+				to_chat(usr, span_warning("没有可出口的[category]盈余."))
 				return TRUE
-			scom_announce("Crown clears [category] surplus: [total_units] units exported for [total_revenue] mammon.")
+			scom_announce("王权清理[category]盈余: 出口 [total_units] 件货物并获得 [total_revenue] 玛门.")
 			for(var/line in lines)
 				to_chat(usr, span_notice(line))
-			to_chat(usr, span_notice("<b>Total: [total_units] units exported for [total_revenue]m.</b>"))
+			to_chat(usr, span_notice("<b>总计: 出口 [total_units] 件货物并获得 [total_revenue]m.</b>"))
 			playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
 			SStgui.update_uis(src)
 			return TRUE
 		if("petition_for_order")
 			if(SScity_assembly?.is_alderman(usr))
-				to_chat(usr, span_warning("The Alderman's writ does not extend to petitioning the trade hall."))
+				to_chat(usr, span_warning("市政长老的令状未授予向贸易大厅请愿的权限."))
 				return TRUE
 			if(!(usr.job in GLOB.crown_authority_roles))
-				to_chat(usr, span_warning("Only the Steward's office may petition the trade hall."))
+				to_chat(usr, span_warning("只有总管家的官署能够向贸易大厅请愿."))
 				return TRUE
 			var/region_id = params["region_id"]
 			var/category_id = params["category_id"]
 			if(SSeconomy.petition_for_order(usr, region_id, category_id))
 				var/datum/economic_region/region = GLOB.economic_regions[region_id]
 				playsound(src, 'sound/items/inqslip_sealed.ogg', 70, FALSE, -1)
-				visible_message(span_notice("[src] stamps a freshly sealed writ. The wax bears the mark of the [region?.name] trade hall."))
+				visible_message(span_notice("[src]为新封好的令状盖章. 蜡封上印着[region?.name]贸易大厅的标记."))
 			SStgui.update_uis(src)
 			return TRUE
 		if("take_atc_loan")
 			if(SScity_assembly?.is_alderman(usr))
-				to_chat(usr, span_warning("The Alderman's writ does not extend to drawing loans against the Crown."))
+				to_chat(usr, span_warning("市政长老的令状未授予以王权名义贷款的权限."))
 				return TRUE
 			if(!(usr.job in GLOB.crown_authority_roles))
-				to_chat(usr, span_warning("Only the Crown's office may approach the Guilds clerk."))
+				to_chat(usr, span_warning("只有王权的官署能够向公会书记官申请."))
 				return TRUE
 			var/amount = text2num("[params["amount"]]")
 			if(!isnum(amount))
 				return TRUE
 			if(SStreasury.take_atc_loan(amount, usr))
 				playsound(src, 'sound/items/inqslip_sealed.ogg', 70, FALSE, -1)
-				visible_message(span_notice("[src] stamps a sealed writ. The wax bears the mark of the Ferentian Trading Company."))
+				visible_message(span_notice("[src]为封好的令状盖章. 蜡封上印着费伦提亚贸易公司的标记."))
 			SStgui.update_uis(src)
 			return TRUE
 		if("set_royal_custom_margin")
