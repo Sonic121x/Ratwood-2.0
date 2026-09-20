@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 
+import { NAVIGATOR_CATEGORY_LABELS } from '../../common/displayNames';
 import {
   cardStyle,
   dashedFrameStyle,
@@ -21,7 +22,6 @@ import {
   type NoticeboardData,
   type RealmDemandRow,
 } from '../types';
-
 const FILL_YELLOW = 0.50;
 const FILL_RED = 0.85;
 const DEMAND_WARM = 1.001;
@@ -207,7 +207,7 @@ const RealmDemandMatrix = (props: {
         <tbody>
           {allBuckets.map((bucket) => (
             <tr key={bucket}>
-              <td style={matrixBucketLabelStyle}>{bucket}</td>
+              <td style={matrixBucketLabelStyle}>{NAVIGATOR_CATEGORY_LABELS[bucket] || bucket}</td>
               {realmDemandSets.map(({ realm, set }) => (
                 <td key={realm.realm_id} style={matrixCellStyle}>
                   {set.has(bucket) ? (
@@ -385,7 +385,7 @@ export const MarketView = ({
           ) : (
             hot.map((c) => (
               <div key={c.category} style={feedRowStyle}>
-                <span title={c.category}>{c.category}</span>
+                <span title={c.category}>{NAVIGATOR_CATEGORY_LABELS[c.category] || c.category}</span>
                 <span
                   style={{
                     color: demandColor(c.demand_mult),
@@ -417,7 +417,7 @@ export const MarketView = ({
           ) : (
             crashed.map((c) => (
               <div key={c.category} style={feedRowStyle}>
-                <span title={c.category}>{c.category}</span>
+                <span title={c.category}>{NAVIGATOR_CATEGORY_LABELS[c.category] || c.category}</span>
                 <span
                   style={{
                     color: fillColor(c.fill_ratio, c.refused),
@@ -451,7 +451,7 @@ export const MarketView = ({
                   : `${c.consumed}/${c.capacity}m`;
                 return (
                   <div key={c.category} style={ledgerRowStyle}>
-                    <span style={ledgerNameStyle} title={c.category}>{c.category}</span>
+                    <span style={ledgerNameStyle} title={c.category}>{NAVIGATOR_CATEGORY_LABELS[c.category] || c.category}</span>
                     <span
                       style={{
                         textAlign: 'right',

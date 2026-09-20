@@ -33,7 +33,7 @@ export const SequestrationBanner = (props: {
           opacity: 0.7,
         }}
       >
-        sealed under the Burghers&apos; mark
+        以市民的印记封存
       </div>
       <div
         style={{
@@ -42,14 +42,14 @@ export const SequestrationBanner = (props: {
           marginBottom: '4px',
         }}
       >
-        SEQUESTRATION DECLARED
+        宣布接管
       </div>
       <div style={{ fontVariant: 'normal' }}>
-        Following the Crown&apos;s default, the Ferentian Trading Company holds
-        the sequestered revenues of the realm and farms the customs and salt
-        tolls in perpetuity until the {sequestration.debt}m debt is repaid.
-        Trade controls and stockpile pricing stand locked. Petitions, taxation,
-        and the lash of fines remain.
+        由于王权违约, 费伦提亚贸易公司接管了
+        领地的收入并持续包征关税和盐税
+        直至 {sequestration.debt}m 的债务还清.
+        贸易管理和库存定价已被锁定. 请愿, 征税,
+        以及施加罚款的权力仍然保留.
       </div>
     </div>
   );

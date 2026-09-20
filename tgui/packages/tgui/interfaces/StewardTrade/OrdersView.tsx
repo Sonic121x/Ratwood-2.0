@@ -76,11 +76,11 @@ export const OrdersView = (props: { data: Data }) => {
   return (
     <div>
       <div style={sectionHeaderStyle}>
-        Active Standing Orders ({count}/{order_pool_cap})
+        当前常备订单 ({count}/{order_pool_cap})
       </div>
       {count === 0 ? (
         <div style={{ textAlign: 'center', color: INK_SOFT }}>
-          No active orders. Check back tomorrow.
+          当前没有订单. 请明日再来查看.
         </div>
       ) : (
         rendered
@@ -125,19 +125,19 @@ const OrderCard = (props: CardProps) => {
       <div style={{ marginBottom: '4px' }}>
         <span style={{ fontWeight: 'bold', fontSize: FONT_BODY }}>{o.name}</span>
         {!!o.region_blockaded && (
-          <span style={badgeStyle(SEAL_RED)}>BLOCKADED</span>
+          <span style={badgeStyle(SEAL_RED)}>已封锁</span>
         )}
         {!!o.has_warehouse && (
-          <span style={badgeStyle(SEAL_BLUE)}>WAREHOUSE</span>
+          <span style={badgeStyle(SEAL_BLUE)}>仓库</span>
         )}
         {!!o.has_stockpile && (
-          <span style={badgeStyle(SEAL_GREEN)}>STOCKPILE</span>
+          <span style={badgeStyle(SEAL_GREEN)}>库存</span>
         )}
         {isUrgent && !o.region_blockaded && !pureWarehouse && (
-          <span style={badgeStyle(SEAL_RED_SOFT)}>URGENT</span>
+          <span style={badgeStyle(SEAL_RED_SOFT)}>紧急</span>
         )}
         {!!o.petitioned && (
-          <span style={badgeStyle('#a872c4')}>PETITIONED</span>
+          <span style={badgeStyle('#a872c4')}>请愿订单</span>
         )}
       </div>
       {o.description && (
@@ -153,13 +153,13 @@ const OrderCard = (props: CardProps) => {
       )}
       <div style={{ color: INK_SOFT, fontSize: FONT_BODY }}>
         {props.regionCatalog[o.region_id]?.name ?? o.region_id} &middot;{' '}
-        {o.days_left}d left &middot; Payout:{' '}
+        剩余 {o.days_left}天 &middot; 报酬:{' '}
         <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
           {o.payout}m
         </span>
       </div>
       <div style={{ marginTop: '4px' }}>
-        <span style={{ color: INK_FAINT, fontSize: FONT_BODY }}>Items: </span>
+        <span style={{ color: INK_FAINT, fontSize: FONT_BODY }}>物品: </span>
         {o.items.map((it, i) => {
           const isStockpileItem = it.route === 'stockpile';
           const short = isStockpileItem && it.have < it.needed;
@@ -192,7 +192,7 @@ const OrderCard = (props: CardProps) => {
           }}
           title={QUALITY_TIER_TOOLTIP}
         >
-          Warehouse goods pay -80% to +35% based on the quality of submitted items.
+          仓库货物的报酬根据交付物品的品质调整 -80% 至 +35%.
         </div>
       )}
       <div style={{ marginTop: '8px' }}>
@@ -213,7 +213,7 @@ const PairGroup = (props: {
   onFulfill: (ref: string) => void;
 }) => {
   const { primary, sibling } = props;
-  const label = primary.pair_label ?? sibling?.pair_label ?? 'Linked Pair';
+  const label = primary.pair_label ?? sibling?.pair_label ?? '配套订单';
   const regionName =
     props.regionCatalog[primary.region_id]?.name ?? primary.region_id;
   const totalPayout = primary.payout + (sibling?.payout ?? 0);
@@ -236,9 +236,9 @@ const PairGroup = (props: {
         }}
       >
         {label} &middot; {regionName} &middot;{' '}
-        <span style={{ color: SEAL_AMBER }}>{totalPayout}m total</span>{' '}
+        <span style={{ color: SEAL_AMBER }}>合计 {totalPayout}m</span>{' '}
         <span style={{ color: INK_FAINT, fontWeight: 'normal' }}>
-          (linked pair, one slot)
+          (配套订单, 占一个栏位)
         </span>
       </div>
       <OrderCard {...props} order={primary} embedded />
@@ -259,7 +259,7 @@ const FulfillButton = (props: {
         disabled
         style={inkButtonStyle({ color: SEAL_RED, disabled: true })}
       >
-        Fulfill &mdash; road blockaded
+        交付 &mdash; 道路已封锁
       </button>
     );
   }
@@ -272,7 +272,7 @@ const FulfillButton = (props: {
         onClick={props.onFulfill}
         style={inkButtonStyle({ color: SEAL_BLUE })}
       >
-        Fulfill from Warehouse
+        从仓库交付
       </button>
     );
   }
@@ -283,7 +283,7 @@ const FulfillButton = (props: {
         onClick={props.onFulfill}
         style={inkButtonStyle({ color: SEAL_GREEN })}
       >
-        {mixed ? 'Fulfill (Warehouse + Stockpile)' : 'Fulfill from Stockpile'}
+        {mixed ? '交付 (仓库 + 库存)' : '从库存交付'}
       </button>
     );
   }
@@ -295,7 +295,7 @@ const FulfillButton = (props: {
         title={`Settle short - ${o.partial_pct}% of value covered, paid at 85% of the delivered share. Missing: ${o.shortfall_text}`}
         style={inkButtonStyle({ color: SEAL_AMBER })}
       >
-        Fulfill Partial &mdash; {o.partial_pct}% ({o.partial_payout_preview}m)
+        部分交付 &mdash; {o.partial_pct}% ({o.partial_payout_preview}m)
       </button>
     );
   }
@@ -306,7 +306,7 @@ const FulfillButton = (props: {
       title={o.shortfall_text}
       style={inkButtonStyle({ disabled: true })}
     >
-      Fulfill &mdash; {o.shortfall_text || 'insufficient stock'}
+      交付 &mdash; {o.shortfall_text || '库存不足'}
     </button>
   );
 };

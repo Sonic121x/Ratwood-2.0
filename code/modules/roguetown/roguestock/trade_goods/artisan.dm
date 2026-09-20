@@ -9,7 +9,7 @@
 
 /datum/trade_good/lumber_essence
 	id = TRADE_GOOD_LUMBER_ESSENCE
-	name = "Essence of Lumber"
+	name = "木材精华"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_DENDOR_ESSENCE
