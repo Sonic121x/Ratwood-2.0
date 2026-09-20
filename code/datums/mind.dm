@@ -464,7 +464,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/show_memory(mob/recipient, window=1)
 	if(!recipient)
 		recipient = current
-	var/output = "<B>[current.real_name]的记忆：</B><br>"
+	var/output = "<meta charset=\"UTF-8\"><B>[current.real_name]的记忆：</B><br>"
 	output += memory
 
 	if(personal_objectives.len)
@@ -495,7 +495,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 /// output current targets to the player
 /datum/mind/proc/recall_targets(mob/recipient, window=1)
-	var/output = "<B>[recipient.real_name]的猎杀名单：</B><br>"
+	var/output = "<meta charset=\"UTF-8\"><B>[recipient.real_name]的猎杀名单：</B><br>"
 	for(var/mob/living/carbon in GLOB.mob_living_list) // Iterate through all mobs in the world
 		if((carbon.real_name != recipient.real_name) && (HAS_TRAIT(carbon, TRAIT_ASSASSIN_TARGET)) && (!istype(carbon, /mob/living/carbon/human/dummy)))//To be on the list they must be hunted, not be the user and not be a dummy (There is a dummy that has all vices for some reason)
 			output += "<br>[carbon.real_name]"
@@ -509,7 +509,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 // Graggar culling event - tells people where the other is.
 /datum/mind/proc/recall_culling(mob/recipient, window=1)
-	var/output = "<B>[recipient.real_name]的宿敌：</B><br>"
+	var/output = "<meta charset=\"UTF-8\"><B>[recipient.real_name]的宿敌：</B><br>"
 	for(var/datum/culling_duel/D in GLOB.graggar_cullings)
 		var/mob/living/carbon/human/challenger = D.challenger.resolve()
 		var/mob/living/carbon/human/target = D.target.resolve()
