@@ -10,7 +10,7 @@
 
 /obj/structure/roguemachine/ship_fulfillment
 	name = "船舶履约货箱"
-	desc = "一个盖有费伦提亚贸易公司印记的宽大货箱. 存入此处的货物将用于满足港内外国船舶的需求 - 货款以玛门币存入交货者的账户, 并扣除王权'的出口关税及商人'的中介抽成."
+	desc = "一个盖有费伦提亚贸易公司印记的宽大货箱. 存入此处的货物将用于满足港内外国船舶的需求 - 货款以玛门币存入交货者的账户, 并扣除王权的出口关税及商人的中介抽成."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -38,8 +38,8 @@
 
 /obj/structure/roguemachine/ship_fulfillment/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("持物左键-点击即可交货以满足相应的船舶需求. 交货必须拥有神经锁账户 - 否则货箱将拒收货物.")
-	. += span_info("右键-点击可将脚下格子内的所有物品一次性倒入货箱.")
+	. += span_info("持物左键点击即可交货以满足相应的船舶需求. 交货必须拥有神经锁账户 - 否则货箱将拒收货物.")
+	. += span_info("右键点击可将脚下格子内的所有物品一次性倒入货箱.")
 	. += span_info("酒桶等某些物品可以通过点击拖拽或在手中卸货来交付.")
 	. += span_info("堆叠物品, 手推车, 以及料箱会自动卸货.")
 
@@ -95,7 +95,7 @@
 			return TRUE
 		if("toggle_duty")
 			if(!can_manage(usr))
-				to_chat(usr, span_warning("只有商人或店伙计可以操作货箱'的暗账."))
+				to_chat(usr, span_warning("只有商人或店伙计可以操作货箱的暗账."))
 				return TRUE
 			duty_suspended = !duty_suspended
 			to_chat(usr, span_notice("此货箱现已[duty_suspended ? "逃避缴纳" : "正常缴纳"]王室出口关税."))
@@ -197,7 +197,7 @@
 	if(quality_delta != 0)
 		var/sign_str = quality_delta > 0 ? "+" : ""
 		quality_str = ", 品质调整 [sign_str][quality_delta]m"
-	var/breakdown = "[english_list(line_summaries)]: 总额 [tally["total_gross"]]m, 王权 [tally["total_duty"]]m, 商人 [tally["total_cut"]]m[kin_total > 0 ? ", 亲缘 +[kin_total]m" : ""][quality_str]"
+	var/breakdown = "[english_list(line_summaries, nothing_text = "无", and_text = " 和 ")]: 总额 [tally["total_gross"]]m, 王权 [tally["total_duty"]]m, 商人 [tally["total_cut"]]m[kin_total > 0 ? ", 亲缘 +[kin_total]m" : ""][quality_str]"
 	SStreasury.give_money_account(tally["total_producer"], user, breakdown, mint_new = TRUE)
 	if(quality_delta != 0)
 		var/representative_quality = quality_delta > 0 ? ITEM_QUALITY_MASTERWORK : ITEM_QUALITY_CRUDE
@@ -320,7 +320,7 @@
 		var/list/line = match["line"]
 		if(line["qty_fulfilled"] >= line["qty_target"])
 			if(message)
-				to_chat(user, span_warning("那艘船'的货舱已装满[line["good_name"]]."))
+				to_chat(user, span_warning("那艘船的货舱已装满[line["good_name"]]."))
 			return
 		line["qty_fulfilled"]++
 		qdel(I)
@@ -341,7 +341,7 @@
 	var/list/line = match["line"]
 	if(line["qty_fulfilled"] >= line["qty_target"])
 		if(message)
-			to_chat(user, span_warning("那艘船'的货舱已装满[line["good_name"]]."))
+			to_chat(user, span_warning("那艘船的货舱已装满[line["good_name"]]."))
 		return
 	line["qty_fulfilled"]++
 	var/q_mult = I.has_item_quality ? ITEM_QUALITY_MULT(I.item_quality) : 1.0
@@ -378,7 +378,7 @@
 	var/datum/trade_ship/ship = match["ship"]
 	var/list/line = match["line"]
 	if(line["qty_fulfilled"] >= line["qty_target"])
-		to_chat(user, span_warning("那艘船'的货舱已装满[line["good_name"]]."))
+		to_chat(user, span_warning("那艘船的货舱已装满[line["good_name"]]."))
 		return
 	line["qty_fulfilled"]++
 	qdel(keg)
@@ -424,7 +424,7 @@
 				SSmerchant_trade.merchant_levy_taxed += levy_tax_remitted
 	var/merchant_net_float = levy_float - (duty_suspended ? 0 : duty_on_levy_float)
 	if(merchant_net_float > 0)
-		levy_remitted = SStreasury.mint_fractional(SStreasury.merchant_fund, merchant_net_float, "商人'征缴: [qty] [good_name] -> [ship.ship_name]")
+		levy_remitted = SStreasury.mint_fractional(SStreasury.merchant_fund, merchant_net_float, "商人征缴: [qty] [good_name] -> [ship.ship_name]")
 		if(SSmerchant_trade)
 			SSmerchant_trade.merchant_levy_collected += levy_remitted
 			SSmerchant_trade.log_fund_movement("履约征缴 ([ship.ship_name])", levy_remitted)

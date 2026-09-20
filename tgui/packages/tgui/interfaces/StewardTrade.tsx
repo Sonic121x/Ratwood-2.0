@@ -47,19 +47,19 @@ export const StewardTrade = () => {
 
   const aldermanActing = !!data.is_alderman_acting;
   const warrant = data.alderman_warrant;
-
   return (
     <Window
       title="Market Scroll"
+      display_title="市场卷宗"
       width={860}
       height={820}
       theme="parchment"
     >
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>Market & Stockpile</div>
+          <div style={titleStyle}>市场 & 库存</div>
           <div style={subtitleStyle}>
-            Day {data.day} &middot; Crown's Purse:{' '}
+            第 {data.day} 日 &middot; 王室金库:{' '}
             <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
               {data.treasury}m
             </span>
@@ -72,15 +72,15 @@ export const StewardTrade = () => {
               marginTop: '2px',
             }}
           >
-            At dawn:{' '}
+            黎明结算:{' '}
             <span style={{ color: SEAL_AMBER }}>
               +{data.expected_rural_revenue}m
             </span>{' '}
-            rural tax &middot;{' '}
+            乡村税收 &middot;{' '}
             <span style={{ color: SEAL_AMBER }}>
               -{data.expected_wage_outlay}m
             </span>{' '}
-            wages &middot; Net{' '}
+            薪资 &middot; 净额{' '}
             <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
               {data.expected_rural_revenue - data.expected_wage_outlay >= 0
                 ? '+'
@@ -108,17 +108,17 @@ export const StewardTrade = () => {
                   marginBottom: '2px',
                 }}
               >
-                Alderman&apos;s Writ
+                市政长老的令状
               </div>
               <div>
-                Trade warrant:{' '}
+                今日贸易授权剩余:{' '}
                 <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
                   {warrant.trade_remaining}m
                 </span>{' '}
-                of {warrant.trade_cap}m remaining today
+                总额度为 {warrant.trade_cap}m
               </div>
               <div style={{ color: INK_FAINT, fontSize: FONT_BODY }}>
-                Trades beyond the warrant are refused. Crown&apos;s Purse still pays the coin.
+                超出授权额度的交易将被拒绝. 款项仍由王室金库支付.
               </div>
             </div>
           )}
@@ -137,7 +137,7 @@ export const StewardTrade = () => {
           {tab === 'market' && (
             <SequesteredOverlay
               active={!!data.sequestration?.active}
-              label="Market & Stockpile"
+              label="市场 & 库存"
             >
               <MarketView data={data} onTrade={setTradeRequest} />
             </SequesteredOverlay>
@@ -145,7 +145,7 @@ export const StewardTrade = () => {
           {tab === 'regions' && (
             <SequesteredOverlay
               active={!!data.sequestration?.active}
-              label="Inter-Regional Trade"
+              label="跨地区贸易"
             >
               <RegionsView data={data} />
             </SequesteredOverlay>
@@ -153,7 +153,7 @@ export const StewardTrade = () => {
           {tab === 'auto_import' && (
             <SequesteredOverlay
               active={!!data.sequestration?.active}
-              label="Imports"
+              label="进口"
             >
               <AutoImportView data={data} />
             </SequesteredOverlay>
@@ -164,7 +164,7 @@ export const StewardTrade = () => {
           {tab === 'advanced' && (
             <SequesteredOverlay
               active={!!data.sequestration?.active}
-              label="Advanced"
+              label="高级设置"
             >
               <AdvancedView data={data} />
             </SequesteredOverlay>
