@@ -1,3 +1,4 @@
+import { PUBLIC_MARGIN_LABELS } from '../common/displayNames';
 import {
   FONT_BODY,
   INK_FAINT,
@@ -10,7 +11,6 @@ import {
   titleStyle,
 } from '../common/parchment';
 import { starsIfIlliterate } from './util';
-
 type Props = {
   motto: string;
   canRead: boolean;
@@ -47,7 +47,7 @@ export const TariffHeader = (props: Props) => {
         )}
         {publicMarginPct !== undefined && (
           <span style={{ color: SEAL_AMBER, marginLeft: '8px' }}>
-            · {publicMarginLabel || '公共加价'}: <b>+{publicMarginPct}%</b>
+            · {PUBLIC_MARGIN_LABELS[publicMarginLabel || ''] || publicMarginLabel || '公共加价'}: <b>+{publicMarginPct}%</b>
           </span>
         )}
       </div>
