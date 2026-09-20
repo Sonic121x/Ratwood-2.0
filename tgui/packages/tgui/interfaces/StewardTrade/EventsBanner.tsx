@@ -18,7 +18,7 @@ export const EventsBanner = (props: {
   }
   return (
     <div style={{ marginBottom: '10px' }}>
-      <div style={sectionHeaderStyle}>Active Economic Events</div>
+      <div style={sectionHeaderStyle}>当前经济事件</div>
       {props.events.map((e) => {
         const color = e.event_type === 'shortage' ? SEAL_RED : SEAL_GREEN;
         const isShortage = e.event_type === 'shortage';
@@ -45,7 +45,7 @@ export const EventsBanner = (props: {
               {e.name}
             </span>
             <span style={{ color: INK_FAINT, marginLeft: '8px' }}>
-              ({e.days_left}d left)
+              (剩余 {e.days_left}天)
             </span>
             <div style={{ color: INK_SOFT, fontSize: FONT_BODY }}>
               {e.description}
@@ -53,7 +53,7 @@ export const EventsBanner = (props: {
             {isShortage && target > 0 && (
               <div style={{ marginTop: '4px' }}>
                 <div style={{ color: INK_FAINT, fontSize: FONT_BODY, marginBottom: '2px' }}>
-                  Relief: {progress} / {target} units delivered ({pct}%). Accepts: {affectedNames} 
+                  赈济: 已交付 {progress} / {target} 件货物 ({pct}%). 接受: {affectedNames} 
                 </div>
                 <div
                   style={{
