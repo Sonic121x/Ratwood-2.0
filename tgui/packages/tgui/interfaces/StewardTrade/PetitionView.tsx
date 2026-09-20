@@ -38,14 +38,14 @@ export const PetitionView = (props: { data: Data }) => {
     !petition.is_steward_role || !!petition.is_alderman_acting;
 
   const cannotActReason = petition.is_alderman_acting
-    ? "The Alderman's writ does not extend to petitioning the trade hall."
+    ? '市政长老的令状未授予向贸易大厅请愿的权限.'
     : !petition.is_steward_role
-      ? 'Only the Steward, Clerk, or Grand Duke may petition the trade hall.'
+      ? '只有总管家, 书记官, 或大公能够向贸易大厅请愿.'
       : '';
 
   return (
     <div>
-      <div style={sectionHeaderStyle}>Petition the Trade Hall</div>
+      <div style={sectionHeaderStyle}>向贸易大厅请愿</div>
 
       <div
         style={{
@@ -55,10 +55,10 @@ export const PetitionView = (props: { data: Data }) => {
           lineHeight: '1.5em',
         }}
       >
-        Send envoys to a regional trade hall to commission a Standing Order of
-        your choosing. Costs Burgher Pledge. The hall takes a {petition_tax_pct}%
-        margin on petitioned orders &mdash; the price of certainty. The exact
-        item mix is still set by the hall.
+        派遣使节前往地区贸易大厅委托常备订单
+        由你选择订单类型. 消耗市民认捐. 大厅将抽取 {petition_tax_pct}%
+        的请愿订单报酬 &mdash; 这是确保获得订单的代价. 具体
+        物品组合仍由大厅决定.
       </div>
 
       <PetitionStatusStrip data={props.data} />
@@ -101,7 +101,7 @@ export const PetitionView = (props: { data: Data }) => {
             />
           ) : (
             <div style={{ color: INK_FAINT, fontStyle: 'italic' }}>
-              Select a category at left.
+              请在左侧选择类别.
             </div>
           )}
         </div>
@@ -115,10 +115,10 @@ export const PetitionView = (props: { data: Data }) => {
           lineHeight: '1.5em',
         }}
       >
-        Limit: {petitions_per_day} petition{petitions_per_day === 1 ? '' : 's'}{' '}
-        per day &middot; Regions freshly cleared of blockade need a recovery
-        window before envoys return &middot; Petitioned orders are visibly
-        tagged on the noticeboard and in the orders panel.
+        上限: {petitions_per_day} 次请愿{' '}
+        每日 &middot; 刚解除封锁的地区需要一段恢复期
+        然后使节才会返回 &middot; 请愿订单会在公告栏
+        和订单面板中明确标记.
       </div>
     </div>
   );
@@ -142,13 +142,13 @@ const PetitionStatusStrip = (props: { data: Data }) => {
       }}
     >
       <div>
-        Pledge balance:{' '}
+        认捐余额:{' '}
         <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
           {petition.pledge_balance}p
         </span>
       </div>
       <div>
-        Petitions today:{' '}
+        今日剩余请愿:{' '}
         <span style={{ color: remainingColor, fontWeight: 'bold' }}>
           {remaining}
         </span>{' '}
@@ -187,7 +187,7 @@ const CategoryList = (props: {
               {c.label}
             </div>
             <div style={{ color: SEAL_AMBER, fontSize: FONT_BODY }}>
-              {c.cost}p pledge
+              {c.cost}p 认捐
             </div>
           </div>
         );
@@ -239,7 +239,7 @@ const RegionPicker = (props: {
 
       {regionIds.length === 0 ? (
         <div style={{ color: INK_FAINT, fontStyle: 'italic' }}>
-          No regions configured.
+          未配置地区.
         </div>
       ) : (
         regionIds.map((rid) => {
@@ -296,7 +296,7 @@ const RegionPicker = (props: {
                   disabled,
                 })}
               >
-                Petition
+                请愿
               </button>
             </div>
           );
