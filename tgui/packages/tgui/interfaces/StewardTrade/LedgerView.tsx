@@ -28,17 +28,17 @@ const signFor = (entry: LedgerEntry): { color: string; prefix: string } => {
       return { color: INK, prefix: '' };
   }
 };
-
+const FUND_LABEL: Record<string, string> = { "Crown's Purse": '王室金库', 'Burgher Pledge': '市民认捐', 'Church Fund': '教会基金', 'Merchant Fund': '商人基金', 'Bathhouse Fund': '浴场基金', 'Tavern Earnings': '酒馆收入', void: '无' };
 const partyFor = (entry: LedgerEntry): string => {
   switch (entry.kind) {
     case 'mint':
-      return entry.to;
+      return FUND_LABEL[entry.to] || entry.to;
     case 'burn':
-      return entry.from;
+      return FUND_LABEL[entry.from] || entry.from;
     case 'transfer':
-      return `${entry.from} → ${entry.to}`;
+      return `${FUND_LABEL[entry.from] || entry.from} → ${FUND_LABEL[entry.to] || entry.to}`;
     default:
-      return `${entry.from} → ${entry.to}`;
+      return `${FUND_LABEL[entry.from] || entry.from} → ${FUND_LABEL[entry.to] || entry.to}`;
   }
 };
 
@@ -89,7 +89,7 @@ export const LedgerView = (props: { data: Data }) => {
   if (!page) {
     return (
       <div style={{ color: INK_SOFT, fontStyle: 'italic', padding: '12px 0' }}>
-        Opening the ledger...
+        正在打开台账...
       </div>
     );
   }
@@ -115,12 +115,12 @@ export const LedgerView = (props: { data: Data }) => {
             color: INK_SOFT,
           }}
         >
-          Search:
+          搜索:
         </span>
         <Input
           value={draft}
           onChange={onSearch}
-          placeholder="Account name or reason..."
+          placeholder="账户名称或事由..."
           width="240px"
         />
         {!!draft && (
@@ -129,7 +129,7 @@ export const LedgerView = (props: { data: Data }) => {
             style={inkButtonStyle()}
             onClick={() => onSearch('')}
           >
-            Clear
+            清除
           </button>
         )}
         <button
@@ -137,12 +137,12 @@ export const LedgerView = (props: { data: Data }) => {
           style={inkButtonStyle({ color: SEAL_AMBER })}
           onClick={() => act('ledger_refresh')}
         >
-          Refresh
+          刷新
         </button>
       </div>
 
       <div style={sectionHeaderStyle}>
-        Treasury Ledger &mdash; newest first
+        国库台账 &mdash; 最新记录在前
       </div>
 
       <div style={{ height: '540px', overflowY: 'auto' }}>
@@ -151,8 +151,8 @@ export const LedgerView = (props: { data: Data }) => {
             style={{ color: INK_SOFT, fontStyle: 'italic', padding: '8px 0' }}
           >
             {page.filtered
-              ? 'No ledger entries match that search.'
-              : 'The ledger is empty.'}
+              ? '没有符合搜索条件的账目.'
+              : '台账为空.'}
           </div>
         ) : (
           page.entries.map((entry, i) => <LedgerRow key={i} entry={entry} />)
@@ -173,10 +173,10 @@ export const LedgerView = (props: { data: Data }) => {
           disabled={!canPrev}
           onClick={() => canPrev && act('ledger_page', { page: pageNum - 1 })}
         >
-          &lsaquo; Newer
+          &lsaquo; 较新
         </button>
         <span style={{ color: INK_FAINT, fontSize: FONT_BODY }}>
-          Page {pageNum} &middot; {page.shown} shown
+          第 {pageNum} 页 &middot; 已显示 {page.shown} 条
         </span>
         <button
           type="button"
@@ -184,7 +184,7 @@ export const LedgerView = (props: { data: Data }) => {
           disabled={!hasMore}
           onClick={() => hasMore && act('ledger_page', { page: pageNum + 1 })}
         >
-          Older &rsaquo;
+          较旧 &rsaquo;
         </button>
       </div>
     </div>
