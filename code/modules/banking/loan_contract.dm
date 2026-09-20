@@ -1,7 +1,7 @@
 // Loan contracts and indenture writs 
 /obj/item/loan_contract
 	name = "贷款合同"
-	desc = "一份由神经主签发的约束性令状, 带有总管家'的签名. 任何符合资格的持有人均可接受其条款."
+	desc = "一份由神经主签发的约束性令状, 带有总管家的签名. 任何符合资格的持有人均可接受其条款."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "paper_prep"
 	w_class = WEIGHT_CLASS_TINY
@@ -26,9 +26,9 @@
 	var/signature = issuer_name || "神经主"
 	var/year = issuer_year || CALENDAR_EPOCH_YEAR
 	var/pct = round(interest_rate * 100)
-	. += span_info("合同写道: <i>\"兹证明持有人向王权借得[principal]玛门币, 须于接受此贷款后的第[ordinal(term_days)]日全额偿还, 每日按百分之[pct]的单利计息, 合计应还[total_due]玛门币.\"</i>")
+	. += span_info("合同写道: <i>\"兹证明持有人向王权借得[principal]玛门币, 须于接受此贷款后的第[term_days]日全额偿还, 每日按百分之[pct]的单利计息, 合计应还[total_due]玛门币.\"</i>")
 	. += span_info("<i>签于[year]年, [signature].</i>")
-	. += span_notice("持于手中左键-点击可接受或拒绝其条款.")
+	. += span_notice("持于手中左键点击可接受或拒绝其条款.")
 
 /obj/item/loan_contract/proc/ordinal(n)
 	if(!isnum(n))
@@ -58,7 +58,7 @@
 		to_chat(user, span_warning("我没有神经锁账户来接收这笔款项. 我必须先开户."))
 		return
 	if(source_fund_id == "church" && (user.job in GLOB.church_positions))
-		to_chat(user, span_warning("教会禁止向自己人放贷取息. 伊欧拉'的钱币是给贫苦受难者的, 并非给信徒的."))
+		to_chat(user, span_warning("教会禁止向自己人放贷取息. 伊欧拉的钱币是给贫苦受难者的, 并非给信徒的."))
 		return
 	var/datum/fund/preview_fund = SStreasury.resolve_fund_by_id(source_fund_id)
 	var/preview_label = preview_fund ? SStreasury.indenture_faction_label(preview_fund) : "未知的出借方"
@@ -89,7 +89,7 @@
 		return
 
 	if(issuing_fund.balance < principal)
-		to_chat(user, span_warning("[issuing_fund.name]'的库银不足以兑现这份令状."))
+		to_chat(user, span_warning("[issuing_fund.name]的库银不足以兑现这份令状."))
 		return
 	if(!SStreasury.transfer(issuing_fund, account, principal, "贷款本金"))
 		to_chat(user, span_warning("神经锁拒绝转账."))
@@ -100,7 +100,7 @@
 	SStreasury.loans += L
 	record_round_statistic(STATS_LOANS_ISSUED, 1)
 	var/lender_label = SStreasury.indenture_faction_label(issuing_fund)
-	user.visible_message(span_notice("[user]签署了贷款合同并将[lender_label]'的钱币收入囊中."), \
+	user.visible_message(span_notice("[user]签署了贷款合同并将[lender_label]的钱币收入囊中."), \
 		span_notice("我接受了[lender_label]提供的[principal]m贷款, 须在[term_days]天后偿还且利率为[pct]%/天. 应还总额: [total_due]m."))
 	playsound(get_turf(user), 'sound/misc/gold_license.ogg', 60, FALSE, -1)
 	send_ooc_note("<b>神经锁:</b> 已收到[lender_label]提供的[principal]m贷款. 将于第[L.due_on_day]天收取[total_due]m.", name = user.real_name)
@@ -108,7 +108,7 @@
 
 /obj/item/loan_contract/indenture
 	name = "契约令状"
-	desc = "费伦提亚两个机构之间具有约束力的契约. 只有指定对象'的授权代表才可盖印."
+	desc = "费伦提亚两个机构之间具有约束力的契约. 只有指定对象的授权代表才可盖印."
 	icon_state = "paper_prep"
 	var/target_fund_id
 
@@ -145,7 +145,7 @@
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(issuing_fund.balance < principal)
-		to_chat(user, span_warning("[issuing_fund.name]'的库银不足以兑现此契约."))
+		to_chat(user, span_warning("[issuing_fund.name]的库银不足以兑现此契约."))
 		return
 	if(!SStreasury.transfer(issuing_fund, target_fund, principal, "契约本金"))
 		to_chat(user, span_warning("神经锁拒绝转账."))
