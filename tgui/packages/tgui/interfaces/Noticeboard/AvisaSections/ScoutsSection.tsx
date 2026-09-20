@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { DANGER_LEVEL_LABELS } from '../../common/displayNames';
 import {
   badgeStyle,
   FONT_BODY,
@@ -13,7 +14,6 @@ import {
   SERIF,
 } from '../../common/parchment';
 import { type NoticeboardData, type ScoutRegion } from '../types';
-
 const tableStyle: React.CSSProperties = {
   width: '100%',
   borderCollapse: 'collapse',
@@ -105,7 +105,7 @@ const RegionRow = ({ region }: { region: ScoutRegion }) => {
             fontWeight: 'bold',
           }}
         >
-          {region.danger_level}
+          {DANGER_LEVEL_LABELS[region.danger_level] || region.danger_level}
         </span>
       </td>
       <td style={cellWithDivider}>
@@ -190,24 +190,24 @@ const HelpPanel = () => (
     }}
   >
     <p style={{ margin: '0 0 6px 0' }}>
-      斥候将区域的危险程度评为 <b>Safe</b>、<b>Low</b>、{' '}
-      <b>Moderate</b>、<b>Dangerous</b> 到 <b>Bleak</b>.
+      斥候将区域的危险程度评为 <b>安全</b>、<b>低危</b>、{' '}
+      <b>中危</b>、<b>危险</b> 到 <b>凶险</b>.
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
-      安全区域不太可能出现常见 creechurs 与强盗的伏击.
+      安全区域不太可能出现常见怪物与强盗的伏击.
       低威胁区域可能只会出现落单的敌人.
       勤勉的守林人能让某些区域彻底安全;
       另一些区域永无宁日, 而守林人辖区之外的土地依然危险.
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
-      引诱恶徒与 creechurs, 并在他们伏击时将其击杀, 即可降低危险.
+      引诱恶徒与怪物, 并在他们伏击时将其击杀, 即可降低危险.
       结伴而行会招来更大规模的伏击;
       每多一位同伴, 其人均贡献都低于独行者.
     </p>
     <p style={{ margin: 0 }}>
       守林人的号角会引发一场与该区域危险程度相称的大战 -
       这是驯服此地最可靠的办法.
-      劫匪与 creechurs 会随着时间重新渗入, 通常一夜之间.
+      劫匪与怪物会随着时间重新渗入, 通常一夜之间.
       使用号角时请小心, 并带上朋友.
     </p>
   </div>

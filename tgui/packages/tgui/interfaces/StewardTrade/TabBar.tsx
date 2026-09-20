@@ -35,40 +35,40 @@ export const TabBar = (props: {
   return (
     <div style={tabBarStyle}>
       <div style={tabStyle(tab === 'orders')} onClick={() => onSwitch('orders')}>
-        Standing Orders
+        常备订单
       </div>
       <div style={tabStyle(tab === 'market')} onClick={() => onSwitch('market')}>
-        Market
+        市场
       </div>
       <div style={tabStyle(tab === 'regions')} onClick={() => onSwitch('regions')}>
-        Regions
+        地区
       </div>
       <div
         style={tabStyle(tab === 'auto_import')}
         onClick={() => onSwitch('auto_import')}
       >
-        Imports
+        进口
       </div>
       <div
         style={tabStyle(tab === 'petition')}
         onClick={() => onSwitch('petition')}
       >
-        Petition
+        请愿
       </div>
       <div style={tabStyle(tab === 'ledger')} onClick={() => onSwitch('ledger')}>
-        Ledger
+        台账
       </div>
       <div
         style={tabStyle(tab === 'royal_custom')}
         onClick={() => onSwitch('royal_custom')}
       >
-        Royal Custom
+        王权关税
       </div>
       <div
         style={tabStyle(tab === 'advanced')}
         onClick={() => onSwitch('advanced')}
       >
-        Advanced
+        高级设置
       </div>
     </div>
   );
