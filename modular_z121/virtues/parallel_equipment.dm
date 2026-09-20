@@ -1,4 +1,4 @@
-// 临时存放物品，不加入地图，也不在提交成功前删除旧装备。
+// 临时存放物品，保留有效落地点，不在提交成功前删除旧装备。
 /obj/item/storage/backpack/rogue/satchel/z121_parallel_storage
 	name = "职业切换暂存"
 	desc = "切换中无法安全取出的物品暂存于此。"
@@ -47,15 +47,18 @@
 				return FALSE
 			old_roots |= I
 	var/list/reclaim = list()
+	var/list/previous_locations = list()
 	for(var/obj/item/root as anything in old_roots)
 		for(var/obj/item/I as anything in list(root) | z121_parallel_item_tree(root))
+			previous_locations[I] = I.loc
 			if(WEAKREF(I) in old.items)
 				reclaim |= I
-	var/obj/item/storage/backpack/rogue/satchel/z121_parallel_storage/staging = new
+	var/obj/item/storage/backpack/rogue/satchel/z121_parallel_storage/staging = new(ground)
 	var/list/new_slots = list()
 	var/list/new_hands = list()
 	var/list/new_loose = list()
 	var/list/new_roots = list()
+	var/list/new_items = list()
 	var/datum/z121_profession_record/fresh = new(H, P.profession)
 	fresh.permanent_virtues = old.permanent_virtues.Copy()
 	fresh.keep_prestidigitation = old.keep_prestidigitation
@@ -65,6 +68,7 @@
 	var/role_started = FALSE
 	var/datum/z121_role_snapshot/role_before = new(H)
 	try
+		P.commit_stage = "生成新装备"
 		P.outfit.handle_silver_weakness(H)
 		// 所有新物品先创建在暂存区；不调用含出生副作用的服装装备过程。
 		for(var/key in slots)
@@ -88,6 +92,10 @@
 				var/obj/item/I = new path(staging)
 				new_loose += I
 				new_roots |= I
+		for(var/obj/item/root as anything in new_roots)
+			new_items |= root
+			new_items |= z121_parallel_item_tree(root)
+		P.commit_stage = "暂存旧装备"
 		for(var/obj/item/I as anything in old_roots)
 			if(!H.transferItemToLoc(I, staging, FALSE))
 				throw EXCEPTION("旧装备无法安全暂存")
@@ -96,8 +104,9 @@
 			for(var/obj/item/child as anything in I.contents.Copy())
 				if(!(child in reclaim) && !child.forceMove(staging))
 					throw EXCEPTION("容器中的私人物品无法安全取出")
-		old.suspend(H)
 		abilities_started = TRUE
+		P.commit_stage = "切换职业能力"
+		old.suspend(H)
 		H.z121_profession = fresh
 		P.apply_abilities(fresh)
 		for(var/key in new_slots)
@@ -123,25 +132,52 @@
 			if(!(I in reclaim) && !I.forceMove(ground))
 				throw EXCEPTION("私人物品无法安全落地")
 		role_started = TRUE
+		P.commit_stage = "同步岗位与名额"
 		change_official_role(H, P, old, role_before)
 		ok = TRUE
 	catch(var/exception/error)
-		log_game("平行存在换装取消：[error]")
+		log_game("平行存在换装取消：目标=[P.profession.type]，阶段=[P.commit_stage]，位置=[error.file]:[error.line]，[error]")
 	if(!ok)
-		if(role_started)
-			role_before.restore(H, P)
-		if(abilities_started)
-			fresh.suspend(H)
-			fresh.dispose_suspended(H)
-		else
-			qdel(fresh)
+		P.commit_stage = "恢复原职业"
+		P.rollback_failed = TRUE
+		var/recovery_ok = TRUE
+		try
+			if(role_started)
+				role_before.restore(H, P)
+		catch(var/exception/role_error)
+			recovery_ok = FALSE
+			log_game("平行存在岗位恢复异常：[role_error.file]:[role_error.line]，[role_error]")
+		try
+			if(abilities_started)
+				fresh.suspend(H)
+				fresh.dispose_suspended(H)
+			else
+				qdel(fresh)
+		catch(var/exception/fresh_error)
+			recovery_ok = FALSE
+			log_game("平行存在新能力撤销异常：[fresh_error.file]:[fresh_error.line]，[fresh_error]")
 		H.z121_profession = old
-		old.resume(H)
-		for(var/obj/item/I as anything in new_roots)
+		try
+			old.resume(H)
+		catch(var/exception/resume_error)
+			recovery_ok = FALSE
+			log_game("平行存在旧能力恢复异常：[resume_error.file]:[resume_error.line]，[resume_error]")
+		// 构造过程也可能中断，把已经进入暂存区的新物品纳入清理。
+		for(var/obj/item/I as anything in z121_parallel_item_tree(staging))
+			if(!(I in previous_locations))
+				new_items |= I
+		for(var/obj/item/I as anything in new_items)
 			if(!QDELETED(I))
 				if(I.loc == H)
 					H.temporarilyRemoveItemFromInventory(I, TRUE)
-				qdel(I)
+				if(!z121_parallel_delete_item(I, ground, new_items))
+					recovery_ok = FALSE
+		// 先恢复被移出的私人内容，再恢复穿戴；容器无法恢复时物品留在地面。
+		for(var/obj/item/I as anything in previous_locations)
+			var/atom/previous = previous_locations[I]
+			if(!QDELETED(I) && isitem(previous) && !QDELETED(previous) && I.loc != previous)
+				if(!I.forceMove(previous))
+					I.forceMove(ground)
 		for(var/key in previous_slots)
 			var/obj/item/I = previous_slots[key]
 			if(!QDELETED(I) && I.loc != H && !H.equip_to_slot_if_possible(I, slots[key], FALSE, TRUE, TRUE, TRUE))
@@ -151,26 +187,56 @@
 				H.put_in_hands(I)
 		finish_storage(staging, ground)
 		qdel(role_before)
+		P.rollback_failed = !recovery_ok
 		return FALSE
 	// 从此处开始不等待输入；名额与身份一次提交，之后再销毁旧职业物品。
+	P.committed = TRUE
+	P.commit_stage = "清理旧职业物品"
 	H.z121_profession = fresh
 	fresh.formal_job = P.job
 	fresh.job_slot_owned = TRUE
 	fresh.class_slot_owned = TRUE
-	for(var/obj/item/root as anything in new_roots)
-		if(!QDELETED(root))
-			for(var/obj/item/I as anything in list(root) | z121_parallel_item_tree(root))
-				fresh.items |= WEAKREF(I)
+	for(var/obj/item/I as anything in new_items)
+		if(!QDELETED(I))
+			fresh.items |= WEAKREF(I)
 	for(var/obj/item/I as anything in reclaim)
 		if(!QDELETED(I))
-			qdel(I)
+			if(!z121_parallel_delete_item(I, ground, reclaim))
+				P.cleanup_failed = TRUE
+	P.commit_stage = "清理旧职业能力"
+	try
+		old.dispose_suspended(H)
+	catch(var/exception/dispose_error)
+		P.cleanup_failed = TRUE
+		log_game("平行存在旧能力清理异常：[dispose_error.file]:[dispose_error.line]，[dispose_error]")
+	P.commit_stage = "清理暂存物品"
 	finish_storage(staging, ground)
-	old.dispose_suspended(H)
 	qdel(role_before)
 	H.mind.check_learnspell()
 	H.update_body()
+	log_game("平行存在提交完成：目标=[P.profession.type]，岗位=[P.job.title]，收尾异常=[P.cleanup_failed]")
 	to_chat(H, span_nicegreen("你如今是【[P.profession.name]】，正式岗位为【[P.job.title]】。私人财物已安全放在脚下。"))
 	return TRUE
+
+// 网格仓库在删除内容时会调用内容的图标更新；先移出，避免容器组件已销毁后被再次访问。
+// 先处理子物品再销毁空容器，任何无来源的内容都必须安全落地。
+/proc/z121_parallel_delete_item(obj/item/I, turf/ground, list/owned)
+	if(QDELETED(I))
+		return TRUE
+	try
+		for(var/atom/movable/child as anything in I.contents.Copy())
+			if(isitem(child) && (child in owned))
+				if(!z121_parallel_delete_item(child, ground, owned))
+					return FALSE
+			else if(!child.forceMove(ground))
+				return FALSE
+		if(length(I.contents) || !I.forceMove(ground))
+			return FALSE
+		qdel(I)
+		return TRUE
+	catch(var/exception/error)
+		log_game("平行存在物品清理异常：[I.type]，位置=[error.file]:[error.line]，[error]")
+	return FALSE
 
 /datum/component/martins_morning/proc/finish_storage(obj/item/storage/staging, turf/ground)
 	for(var/obj/item/I as anything in staging.contents.Copy())

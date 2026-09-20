@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 ))
 
 // 沿用上游施法入口和界面，仅在模块内适配法术数据与学习请求。
-// 同类型覆盖中的 ..() 不会调用被替换的同类型实现，不能用它取得上游法术列表。
+// 同类型覆盖中的 ..() 会先执行上一份实现，学习请求必须只在本入口处理一次。
 /obj/effect/proc_holder/spell/self/learnspell/ui_data(mob/user)
 	var/list/data = list("user_points" = 0, "spells" = list())
 	if(QDELETED(user) || QDELETED(user.mind))
@@ -94,9 +94,10 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 	return data
 
 /obj/effect/proc_holder/spell/self/learnspell/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	// 调用父类型的交互检查与信号处理，而不是被覆盖的上游学习实现。
-	. = ..()
-	if(.)
+	// 保留基础界面的交互检查与信号，不调用会提前完成购买的上一份学习实现。
+	SHOULD_CALL_PARENT(FALSE)
+	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params)
+	if(!ui || ui.status != UI_INTERACTIVE || ui.user != usr)
 		return TRUE
 
 	var/mob/living/user = usr

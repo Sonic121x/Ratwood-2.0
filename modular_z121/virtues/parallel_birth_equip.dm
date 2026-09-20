@@ -12,7 +12,7 @@
 	if(outfit)
 		if(H.z121_profession)
 			H.z121_profession.capturing_birth = !dummy
-			if(!(outfit in z121_parallel_outfits()))
+			if(!z121_parallel_birth_outfit_known(outfit))
 				H.z121_profession.unknown = TRUE
 		H.equipOutfit(outfit, dummy)
 		if(H.z121_profession)

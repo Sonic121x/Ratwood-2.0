@@ -2,7 +2,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/artificer.dm
 /datum/outfit/job/roguetown/adventurer/artificer/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	head = /obj/item/clothing/head/roguetown/articap
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves/blacksmith
@@ -33,7 +35,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/barbersurgeon.dm
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	mask = /obj/item/clothing/mask/rogue/spectacles
 	head = /obj/item/clothing/head/roguetown/nightman
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -69,7 +73,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/blacksmith.dm
 /datum/outfit/job/roguetown/adventurer/blacksmith/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/hammer/iron
 	beltl = /obj/item/rogueweapon/tongs
@@ -131,7 +137,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/builder.dm
 /datum/outfit/job/roguetown/adventurer/builder/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	head = /obj/item/clothing/head/roguetown/hatblu
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
@@ -175,7 +183,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/cheesemaker.dm
 /datum/outfit/job/roguetown/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	mouth = /obj/item/rogueweapon/huntingknife
 	belt = /obj/item/storage/belt/rogue/leather
 	if(should_wear_femme_clothes(H))
@@ -215,7 +225,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/drunkard.dm
 /datum/outfit/job/roguetown/adventurer/drunkard/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	pants = /obj/item/clothing/under/roguetown/tights/vagrant
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -246,7 +258,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/fisher.dm
 /datum/outfit/job/roguetown/adventurer/fisher/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	if(H.age == AGE_OLD)
 		H.z121_birth_skill_floor(/datum/skill/labor/fishing, SKILL_LEVEL_MASTER, TRUE)
 	else
@@ -299,7 +313,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/homesteader.dm
 /datum/outfit/job/roguetown/homesteader/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 
 	H.adjust_blindness(-3)
 	var/cosmetic_titles = list(
@@ -992,7 +1008,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm
 /datum/outfit/job/roguetown/adventurer/hunter/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	pants = /obj/item/clothing/under/roguetown/trou/artipants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -1037,7 +1055,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/hunter.dm
 /datum/outfit/job/roguetown/adventurer/hunter_spear/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning("You are a hunter who specializes in spears, excelling in strength and endurance."))
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
@@ -1075,7 +1095,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/miner.dm
 /datum/outfit/job/roguetown/adventurer/miner/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	head = /obj/item/clothing/head/roguetown/armingcap
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
@@ -1113,7 +1135,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/minstrel.dm
 /datum/outfit/job/roguetown/adventurer/minstrel/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	cloak = /obj/item/clothing/cloak/half
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
@@ -1176,7 +1200,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/peasant.dm
 /datum/outfit/job/roguetown/adventurer/peasant/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/trou
@@ -1214,7 +1240,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/potter.dm
 /datum/outfit/job/roguetown/adventurer/potter/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	head = /obj/item/clothing/head/roguetown/hatfur
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
@@ -1256,7 +1284,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lchef.dm
 /datum/outfit/job/roguetown/adventurer/masterchef/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -1321,7 +1351,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lfish.dm
 /datum/outfit/job/roguetown/adventurer/fishermaster/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -1359,7 +1391,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lminer.dm
 /datum/outfit/job/roguetown/adventurer/minermaster/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	head = /obj/item/clothing/head/roguetown/armingcap
 	pants = /obj/item/clothing/under/roguetown/trou
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
@@ -1386,7 +1420,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lpeasant.dm
 /datum/outfit/job/roguetown/adventurer/farmermaster/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/trou
@@ -1416,7 +1452,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/rare/Lsmith.dm
 /datum/outfit/job/roguetown/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/hammer/iron
 	beltl = /obj/item/rogueweapon/tongs
@@ -1447,7 +1485,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/scavenger.dm
 /datum/outfit/job/roguetown/refugee/harvester/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 
 	H.z121_birth_skill_add(/datum/skill/misc/athletics, 3, TRUE)
 	H.z121_birth_skill_add(/datum/skill/misc/swimming, 2, TRUE)
@@ -1502,7 +1542,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/scavenger.dm
 /datum/outfit/job/roguetown/refugee/prospector/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	r_hand = /obj/item/rogueweapon/pick/copper
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/hammer/copper
@@ -1560,7 +1602,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/seamstress.dm
 /datum/outfit/job/roguetown/adventurer/seamstress/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	armor = /obj/item/clothing/suit/roguetown/armor/armordress
@@ -1594,7 +1638,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/thug.dm
 /datum/outfit/job/roguetown/adventurer/thug/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/tights/random
@@ -1800,7 +1846,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm
 /datum/outfit/job/roguetown/elder/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	cloak = /obj/item/clothing/cloak/stabard/guardhood/elder
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/white
 	pants = /obj/item/clothing/under/roguetown/tights
@@ -1822,7 +1870,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/witch.dm
 /datum/outfit/job/roguetown/adventurer/witch/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	mask = /obj/item/clothing/head/roguetown/roguehood/black
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
@@ -1983,7 +2033,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/woodcutter.dm
 /datum/outfit/job/roguetown/adventurer/woodworker/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	belt = /obj/item/storage/belt/rogue/leather
 	head = /obj/item/clothing/head/roguetown/roguehood
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -2018,7 +2070,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/brewer.dm
 /datum/outfit/job/roguetown/adventurer/brewer/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning("You make your coin peddling imported alcohols from all over the world, though you're no stranger to the craft, and have experience brewing your own ale in a pinch. You have the equipments and know how on how to make your own distiller, too."))
 	mask = /obj/item/clothing/mask/rogue/ragmask/black
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -2046,7 +2100,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/cuisiner.dm
 /datum/outfit/job/roguetown/adventurer/cuisiner/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning("Whether a disciple of a culinary school, a storied royal chef, or a mercenary cook for hire, your trade is plied at the counter, \
 	the cutting board, and the hearth."))
 	if(H.age == AGE_MIDDLEAGED)
@@ -2079,7 +2135,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/doomsayer.dm
 /datum/outfit/job/roguetown/adventurer/doomsayer/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning("THE WORLD IS ENDING!!! At least, that's what you want your clients to believe. You'll offer them a safe place in the new world, of course - built by yours truly."))
 	head = /obj/item/clothing/head/roguetown/roguehood/black
 	mask = /obj/item/clothing/mask/rogue/skullmask
@@ -2104,7 +2162,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/harlequin.dm
 /datum/outfit/job/roguetown/adventurer/harlequin/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning ("You are a travelling entertainer - a jester by trade. Where you go, chaos follows - and mischief is made."))
 	shoes = /obj/item/clothing/shoes/roguetown/jester
 	pants = /obj/item/clothing/under/roguetown/tights
@@ -2163,7 +2223,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/jeweler.dm
 /datum/outfit/job/roguetown/adventurer/trader/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning("You make your coin peddling exotic jewelry, gems, and shiny things."))
 	mask = /obj/item/clothing/mask/rogue/lordmask
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -2196,7 +2258,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/peddler.dm
 /datum/outfit/job/roguetown/adventurer/peddler/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning("You make your coin peddling in spices and performing back-alley 'medical' procedures. Hope your patient didn't need that kidney."))
 	head = /obj/item/clothing/head/roguetown/roguehood
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
@@ -2222,7 +2286,9 @@
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/scholar.dm
 /datum/outfit/job/roguetown/adventurer/scholar/pre_equip(mob/living/carbon/human/H)
-	..()
+	if(!H.z121_profession?.capturing_birth)
+		return ..()
+	z121_birth_parent(H)
 	to_chat(H, span_warning("You are a scholar traveling the world in order to write a book about your ventures. Although not quite as dedicated to your studies as some, you trade in stories and tales of your travels."))
 	head = /obj/item/clothing/head/roguetown/roguehood/black
 	mask = /obj/item/clothing/mask/rogue/spectacles

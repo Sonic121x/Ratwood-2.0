@@ -27,6 +27,11 @@
 	var/unknown = FALSE
 	var/suspended = FALSE
 	var/capturing_birth = FALSE
+	var/court_mage_loadout_applied = FALSE
+	var/datum/species/court_voice_species
+	var/datum/voicepack/previous_court_voice
+	var/datum/voicepack/court_voice
+	var/court_voice_removed = FALSE
 	var/list/removed_stash = list()
 	var/list/detached_spells = list()
 	var/datum/devotion/owned_devotion
@@ -126,6 +131,7 @@
 	purchases[key] = list(profession_cost, cost)
 	spent += profession_cost
 	RegisterSignal(S, COMSIG_QDELETING, PROC_REF(on_purchased_spell_deleted))
+	log_game("平行存在法术消费登记：法术=[S.type]，职业出资=[profession_cost]，总消费=[cost]")
 
 /datum/z121_profession_record/proc/on_purchased_spell_deleted(datum/source)
 	SIGNAL_HANDLER
@@ -170,6 +176,9 @@
 	reconcile_purchases()
 	collect_system_spells(H)
 	suspended = TRUE
+	if(court_voice && court_voice_species == H.dna?.species && court_voice_species.soundpack_m == court_voice)
+		court_voice_species.soundpack_m = previous_court_voice
+		court_voice_removed = TRUE
 	if(shared_devotion && shared_devotion == H.devotion)
 		var/remaining_tier = shared_devotion.level - devotion_delta["level"]
 		for(var/trait in shared_devotion.patron.traits_tier)
@@ -236,6 +245,9 @@
 	if(!suspended)
 		return
 	suspended = FALSE
+	if(court_voice_removed && court_voice_species == H.dna?.species && court_voice_species.soundpack_m == previous_court_voice)
+		court_voice_species.soundpack_m = court_voice
+	court_voice_removed = FALSE
 	for(var/stat in stats)
 		z121_parallel_stat_delta(H, stat, stats[stat])
 	var/datum/skill_holder/holder = H.ensure_skills()
@@ -299,6 +311,11 @@
 	var/datum/mind/original_mind
 	var/token
 	var/cancelled = FALSE
+	// 岗位提交后不再宣称回滚成功，清理异常单独报告。
+	var/committed = FALSE
+	var/cleanup_failed = FALSE
+	var/rollback_failed = FALSE
+	var/commit_stage = "准备"
 	var/datum/advclass/profession
 	var/datum/job/job
 	var/datum/outfit/outfit

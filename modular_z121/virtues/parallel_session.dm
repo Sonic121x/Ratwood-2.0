@@ -145,9 +145,16 @@
 			phase = "committing"
 			succeeded = commit(P)
 	catch(var/exception/error)
-		log_game("平行存在准备或提交异常：[error]")
+		log_game("平行存在异常：目标=[C.type]，阶段=[P.commit_stage]，位置=[error.file]:[error.line]，[error]")
+		if(P.committed)
+			succeeded = TRUE
+			P.cleanup_failed = TRUE
 	if(token == generation)
-		if(!succeeded)
+		if(P.committed && P.cleanup_failed)
+			to_chat(H, span_warning("新职业已经生效，但收尾出现异常，部分物品或能力需要管理员核查；本次没有回退到旧职业。"))
+		else if(P.rollback_failed)
+			to_chat(H, span_warning("职业切换中断，恢复过程中出现异常；请联系管理员检查能力与装备，未能确认完整恢复。"))
+		else if(!succeeded)
 			to_chat(H, span_warning("这条人生没有成形，已保留你的原职业。"))
 		pending = null
 		cancel_session()
