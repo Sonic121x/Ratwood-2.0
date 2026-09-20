@@ -42,7 +42,7 @@ export const SequesteredOverlay = (props: {
           boxShadow: '0 0 0 2px rgba(139,32,32,0.3)',
         }}
       >
-        Sequestered
+        已被接管
         <div
           style={{
             fontSize: FONT_BODY,
@@ -52,7 +52,7 @@ export const SequesteredOverlay = (props: {
             color: SEAL_RED,
           }}
         >
-          {props.label} held by the Ferentian Trading Company
+          {props.label}由费伦提亚贸易公司接管
         </div>
       </div>
     </div>
