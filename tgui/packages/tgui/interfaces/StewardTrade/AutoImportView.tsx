@@ -53,7 +53,7 @@ export const AutoImportView = (props: { data: Data }) => {
 
   return (
     <div>
-      <div style={sectionHeaderStyle}>Standing Imports</div>
+      <div style={sectionHeaderStyle}>常设进口</div>
 
       <div style={cardStyle}>
         <div
@@ -67,21 +67,21 @@ export const AutoImportView = (props: { data: Data }) => {
         >
           <div>
             <div style={{ fontSize: FONT_BODY, color: INK_SOFT }}>
-              Today&apos;s spend:{' '}
+              今日支出:{' '}
               <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
                 {today_spent}m
               </span>{' '}
-              &middot; Goods on standing import:{' '}
+              &middot; 常设进口货物:{' '}
               <span style={{ fontWeight: 'bold' }}>{activeCount}</span>
             </div>
             <div style={{ fontSize: FONT_BODY, color: INK_SOFT }}>
-              Tops up each good by {batch_size} units every 6 minutes when stock is
-              below {floor_target}, skipping when a unit would cost more than{' '}
-              {max_price_mult}x its base price.
+              库存不足时每 6 分钟为每种货物补充 {batch_size} 件
+              库存下限为 {floor_target}, 单价高于基准价的{' '}
+              {max_price_mult}倍时跳过.
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ color: INK_FAINT, fontSize: FONT_BODY }}>Purse floor:</span>
+            <span style={{ color: INK_FAINT, fontSize: FONT_BODY }}>金库保留金额:</span>
             <input
               type="number"
               value={floorDraft}
@@ -112,7 +112,7 @@ export const AutoImportView = (props: { data: Data }) => {
               }}
               title={aldermanActing ? aldermanBlockTitle : undefined}
             >
-              Set
+              设置
             </button>
             <button
               type="button"
@@ -125,16 +125,16 @@ export const AutoImportView = (props: { data: Data }) => {
                   : 'Strike every standing import from the ledger at once.'
               }
             >
-              Strike All
+              全部取消
             </button>
           </div>
         </div>
       </div>
 
-      <div style={sectionHeaderStyle}>Essentials (on by default)</div>
+      <div style={sectionHeaderStyle}>必需品 (默认开启)</div>
       {essentials.length === 0 ? (
         <div style={{ textAlign: 'center', fontStyle: 'italic', color: INK_SOFT }}>
-          No essentials configured.
+          未配置必需品.
         </div>
       ) : (
         essentials.map((row) => (
@@ -152,10 +152,10 @@ export const AutoImportView = (props: { data: Data }) => {
         ))
       )}
 
-      <div style={sectionHeaderStyle}>Other Goods</div>
+      <div style={sectionHeaderStyle}>其他货物</div>
       {groupedOthers.length === 0 ? (
         <div style={{ textAlign: 'center', fontStyle: 'italic', color: INK_SOFT }}>
-          No other goods may be placed on standing import at present.
+          当前没有其他货物可设为常设进口.
         </div>
       ) : (
         <>
@@ -191,11 +191,11 @@ export const AutoImportView = (props: { data: Data }) => {
       )}
 
       <div style={sectionHeaderStyle}>
-        Tally (last {history.length || 0} day{history.length === 1 ? '' : 's'})
+        账目 (最近 {history.length || 0} 天)
       </div>
       {history.length === 0 ? (
         <div style={{ textAlign: 'center', fontStyle: 'italic', color: INK_SOFT }}>
-          No auto-import history yet. First tick will record here.
+          尚无自动进口记录. 首次结算后将在此记录.
         </div>
       ) : (
         [...history].reverse().map((entry, idx) => (
@@ -207,14 +207,14 @@ export const AutoImportView = (props: { data: Data }) => {
                 marginBottom: '4px',
               }}
             >
-              <span style={{ fontWeight: 'bold' }}>Day {entry.day}</span>
+              <span style={{ fontWeight: 'bold' }}>第 {entry.day} 日</span>
               <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
                 {entry.spent}m
               </span>
             </div>
             {entry.lines.length === 0 ? (
               <div style={{ color: INK_FAINT, fontSize: FONT_BODY, fontStyle: 'italic' }}>
-                No auto-import activity.
+                没有自动进口活动.
               </div>
             ) : (
               <div style={{ fontSize: FONT_BODY, color: INK_SOFT }}>
@@ -262,18 +262,18 @@ const ToggleRow = (props: {
         />
         <span style={{ fontWeight: 'bold' }}>{name}</span>
         {row.active && low && (
-          <span style={badgeStyle(SEAL_BLUE)}>will top up</span>
+          <span style={badgeStyle(SEAL_BLUE)}>将补充库存</span>
         )}
         {!row.active && (
-          <span style={badgeStyle(INK_FAINT)}>off</span>
+          <span style={badgeStyle(INK_FAINT)}>已关闭</span>
         )}
       </div>
       <div style={{ fontSize: FONT_BODY, color: INK_FAINT }}>
-        Stock:{' '}
+        库存:{' '}
         <span style={{ color: low ? SEAL_RED : SEAL_GREEN, fontWeight: 'bold' }}>
           {row.stock}
         </span>{' '}
-        / target {floorTarget}
+        / 目标 {floorTarget}
       </div>
     </div>
   );

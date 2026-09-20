@@ -6,7 +6,7 @@ export const BlockadeBanner = (props: { regions: string[] }) => {
   }
   return (
     <div style={bannerStyle(SEAL_RED)}>
-      Blockaded Regions: {props.regions.join(', ')}
+      被封锁地区: {props.regions.join(', ')}
     </div>
   );
 };
