@@ -19,7 +19,7 @@
 /datum/intent/spear/thrust
 	name = "thrust"
 	blade_class = BCLASS_STAB
-	attack_verb = list("thrusts")
+	attack_verb = list("突刺")
 	animname = "stab"
 	desc = "Stab someone. Must be at a range of two tiles to penetrate properly."
 	icon_state = "instab"
@@ -65,7 +65,7 @@
 	reach = 2
 	effective_range = 2
 	icon_state = "inlance"
-	attack_verb = list("lances", "runs through", "skewers")
+	attack_verb = list("枪刺", "贯穿", "刺穿")
 
 
 /datum/intent/spear/thrust/blunted
@@ -77,7 +77,7 @@
 	blade_class = BCLASS_BLUNT
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
+	attack_verb = list("猛砸", "打击")
 	damfactor = NONBLUNT_BLUNT_DAMFACTOR
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
@@ -97,7 +97,7 @@
 /datum/intent/spear/cut
 	name = "cut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切开", "挥砍")
 	icon_state = "incut"
 	damfactor = 0.8
 	desc = "Poorly hack at someone with your speartip. Works at two-tile range without penalty."
@@ -125,7 +125,7 @@
 /datum/intent/spear/cut/bardiche/cleave
 	name = "cleaving cut"
 	icon_state = "incleave"
-	attack_verb = list("cleaves", "carves through")
+	attack_verb = list("劈开", "斩穿")
 	clickcd = CLICK_CD_MASSIVE
 	damfactor = 1.0
 	cleave = /datum/cleave_pattern/forward_cleave
@@ -152,7 +152,7 @@
 /datum/intent/spear/cut/glaive/sweep
 	name = "sweeping cut"
 	icon_state = "insweep"
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	cleave = /datum/cleave_pattern/horizontal_sweep
 	desc = "A sweep that cuts through targets to the front."
@@ -172,7 +172,7 @@
 /datum/intent/spear/cut/naginata/sweep
 	name = "sweeping cut"
 	icon_state = "insweep"
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	cleave = /datum/cleave_pattern/horizontal_sweep
 	desc = "A sweep that cuts through targets to the front."
@@ -188,8 +188,8 @@
 /datum/intent/sword/cut/zwei/cleave
 	name = "rending cleave"
 	icon_state = "incleave"
-	desc = "A vicious cut that rends through a second target behind the first. Does enormous damage, but nothing to armor."
-	attack_verb = list("cleaves", "carves through")
+	desc = "一记凶悍的劈斩，会连第一个目标身后的第二个目标一并斩开。能造成巨大伤害，却对护甲毫无作用。"
+	attack_verb = list("劈开", "斩穿")
 	clickcd = CLICK_CD_HEAVY
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 2.5
@@ -203,7 +203,7 @@
 	name = "sweeping cut"
 	icon_state = "insweep"
 	desc = "A heavy sweep that cuts through targets to the front."
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫", "横斩")
 	reach = 1
 	clickcd = CLICK_CD_MASSIVE
 	cleave = /datum/cleave_pattern/horizontal_sweep
@@ -217,7 +217,7 @@
 /datum/intent/sword/lunge
 	name = "lunge"
 	icon_state = "inimpale"
-	attack_verb = list("lunges")
+	attack_verb = list("突进刺击")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	desc = "A two-tile stab. You won't penetrate armor well."
@@ -240,7 +240,7 @@
 	blade_class = BCLASS_BLUNT
 	desc = "Smash someone with the crossguard of your sword."
 	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
+	attack_verb = list("猛砸", "打击")
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 1.1
 	clickcd = 15
@@ -253,7 +253,7 @@
 /datum/intent/rend
 	name = "rend"
 	icon_state = "inrend"
-	attack_verb = list("rends")
+	attack_verb = list("撕裂")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
@@ -281,7 +281,7 @@
 
 /datum/intent/rend/reach/partizan
 	name = "rending thrust"
-	attack_verb = list("skewers")
+	attack_verb = list("刺穿")
 	blade_class = BCLASS_STAB
 	desc = "Impale exposed flesh. Useless against armor."
 	damfactor = 1.8//It's a heavy stab. Not a chop.
@@ -292,7 +292,7 @@
 /datum/intent/partizan/peel
 	name = "armor peel"
 	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>peels</font>")
+	attack_verb = list("<font color ='#e7e7e7'>剥甲攻击</font>")
 	animname = "cut"
 	blade_class = BCLASS_PEEL
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -306,7 +306,7 @@
 
 //Old partizan peel, for the naginata.
 /datum/intent/partizan/peel/nag
-	attack_verb = list("<font color ='#e7e7e7'>weakly peels</font>")
+	attack_verb = list("<font color ='#e7e7e7'>无力地剥甲攻击</font>")
 	swingdelay = 5
 	peel_divisor = 5
 
@@ -332,8 +332,8 @@
 /datum/intent/lance
 	name = "lance"
 	icon_state = "inlance"
-	desc = "For making rotisserie out of people. Useless against armor."
-	attack_verb = list("lances", "runs through", "skewers")
+	desc = "用来把人串成烤肉。对护甲毫无用处。"
+	attack_verb = list("枪刺", "贯穿", "刺穿")
 	animname = "stab"
 	item_d_type = "stab"
 	penfactor = BLUNT_DEFAULT_PENFACTOR // Not a mistake, to prevent it from nuking through armor.
@@ -2113,7 +2113,7 @@
 	name = "impale"
 	icon_state = "inimpale"
 	penfactor = 55
-	attack_verb = list("impales", "runs through")
+	attack_verb = list("贯穿", "刺穿")
 	reach = 2
 	damfactor = 1.25
 	clickcd = 55
@@ -2124,7 +2124,7 @@
 	name = "eviscerate"
 	icon_state = "inrend"
 	blade_class = BCLASS_CHOP
-	attack_verb = list("splits", "eviscerates")
+	attack_verb = list("劈开", "剖开")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 40
@@ -2137,7 +2137,7 @@
 /datum/intent/sword/smash/dragonslayer
 	name = "pulverize"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("clangs", "pulverizes")
+	attack_verb = list("猛敲", "粉碎")
 	hitsound = list('sound/combat/hits/blunt/frying_pan(1).ogg', 'sound/combat/hits/blunt/frying_pan(2).ogg', 'sound/combat/hits/blunt/frying_pan(3).ogg', 'sound/combat/hits/blunt/frying_pan(4).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	reach = 2
@@ -2150,7 +2150,7 @@
 /datum/intent/sword/sucker_punch/dragonslayer
 	name = "unevadable haymaker"
 	icon_state = "inpunch"
-	attack_verb = list("punches", "throttles", "clocks")
+	attack_verb = list("拳击", "扼击", "重击")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
@@ -2165,7 +2165,7 @@
 /datum/intent/sword/flay/dragonslayer
 	name = "flay"
 	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>flays</font>")
+	attack_verb = list("<font color ='#e7e7e7'>剥皮撕扯</font>")
 	animname = "cut"
 	blade_class = BCLASS_PEEL
 	hitsound = list('sound/combat/hits/blunt/frying_pan(1).ogg', 'sound/combat/hits/blunt/frying_pan(2).ogg', 'sound/combat/hits/blunt/frying_pan(3).ogg', 'sound/combat/hits/blunt/frying_pan(4).ogg')
@@ -2180,7 +2180,7 @@
 /datum/intent/sword/cut/exe/sweep/dragonslayer
 	name = "vorpal sweep"
 	icon_state = "insweep"
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	reach = 2
 	damfactor = 2 // Hits harder but clunkier
