@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 		ITEM_CAT_ENG_TRIGGERS,
 		ITEM_CAT_ENG_MISC,
 	)
-	var/list/group_order = list("Armor", "Weapons", "Tools", "Valuables", "Decoration", "Engineering", "Other")
+	var/list/group_order = list("护甲", "武器", "工具", "贵重物品", "装饰品", "工程制品", "其他")
 
 /obj/structure/roguemachine/escrow/Initialize(mapload)
 	. = ..()
@@ -1109,7 +1109,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 		ITEM_CAT_ARMOR_BELTS,
 		ITEM_CAT_ARMOR_BARDING,
 	)
-	group_order = list("Garments", "Armor", "Other")
+	group_order = list("衣物", "护甲", "其他")
 	priority_material_types = list(
 		/obj/item/natural/hide,
 		/obj/item/natural/silk,
