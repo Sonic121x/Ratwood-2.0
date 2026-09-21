@@ -9,7 +9,7 @@
 	var/desc = ""
 	var/icon = 'icons/mob/rogueintents.dmi'
 	var/icon_state = "instrike"
-	var/list/attack_verb = list("hits", "strikes")
+	var/list/attack_verb = list("击打", "打击")
 	var/obj/item/masteritem
 	var/mob/living/mastermob
 	var/unarmed = FALSE
@@ -398,7 +398,7 @@
 /datum/intent/hit
 	name = "hit"
 	icon_state = "instrike"
-	attack_verb = list("hit", "strike")
+	attack_verb = list("击打", "打击")
 	item_d_type = "blunt"
 	chargetime = 0
 	swingdelay = 0
@@ -406,7 +406,7 @@
 /datum/intent/stab
 	name = "stab"
 	icon_state = "instab"
-	attack_verb = list("stab")
+	attack_verb = list("刺击")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	animname = "stab"
 	item_d_type = "stab"
@@ -422,7 +422,7 @@
 /datum/intent/pick //now like icepick intent, we really went in a circle huh
 	name = "pick"
 	icon_state = "inpick"
-	attack_verb = list("picks","impales")
+	attack_verb = list("啄刺","贯穿")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
 	penfactor = 80
 	animname = "strike"
@@ -435,7 +435,7 @@
 /datum/intent/pick/bad	//One-handed intents
 	name = "sluggish pick"
 	icon_state = "inpick"
-	attack_verb = list("picks","impales")
+	attack_verb = list("啄刺","贯穿")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
 	penfactor = 60
 	animname = "strike"
@@ -448,7 +448,7 @@
 /datum/intent/pick/ranged
 	name = "ranged pick"
 	icon_state = "inpick"
-	attack_verb = list("stabs", "impales")
+	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 60
 	damfactor = 1.1
@@ -473,7 +473,7 @@
 
 /datum/intent/shoot/prewarning()
 	if(masteritem && mastermob)
-		mastermob.visible_message(span_warning("[mastermob] aims [masteritem]!"))
+		mastermob.visible_message(span_warning("[mastermob]举起[masteritem]瞄准！"))
 
 /datum/intent/arc
 	name = "arc"
@@ -496,7 +496,7 @@
 
 /datum/intent/arc/prewarning()
 	if(masteritem && mastermob)
-		mastermob.visible_message(span_warning("[mastermob] aims [masteritem]!"))
+		mastermob.visible_message(span_warning("[mastermob]举起[masteritem]瞄准！"))
 
 /datum/intent/swing //swinging a sling, no parrydrain
 	name = "swing"
@@ -512,7 +512,7 @@
 
 /datum/intent/swing/prewarning()
 	if(masteritem && mastermob)
-		mastermob.visible_message(span_warning("[mastermob] swings [masteritem]!"))
+		mastermob.visible_message(span_warning("[mastermob]挥动了[masteritem]！"))
 
 /datum/intent/unarmed
 	unarmed = TRUE
@@ -520,7 +520,7 @@
 /datum/intent/unarmed/punch
 	name = "punch"
 	icon_state = "inpunch"
-	attack_verb = list("punches", "jabs", "clocks", "strikes")
+	attack_verb = list("拳击", "刺拳击打", "重击", "打击")
 	chargetime = 0
 	noaa = FALSE
 	animname = "bite"
@@ -531,7 +531,7 @@
 	clickcd = 10
 	rmb_ranged = TRUE
 	blade_class = BCLASS_PUNCH
-	miss_text = "swing a fist at the air"
+	miss_text = "一拳挥空"
 	miss_sound = "punchwoosh"
 	item_d_type = "blunt"
 	intent_intdamage_factor = 1
@@ -542,7 +542,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		var/list/targetl = list(target)
-		user.visible_message(span_taunt("[user] taunts [M]!"), span_taunt("I taunt [M]!"), ignored_mobs = targetl)
+		user.visible_message(span_taunt("[user]挑衅着[M]！"), span_taunt("我挑衅着[M]！"), ignored_mobs = targetl)
 		user.emote("taunt")
 		if(M.mind)
 			var/mob/living/L = user
@@ -558,7 +558,7 @@
 
 			L.play_overhead_private_rclickemote(targetl, taunticon, custom_offset)
 			user.changeNext_move(CLICK_CD_FAST)	// Mostly to prevent spamming the animation too heavily.
-			to_chat(M, span_taunt("[user] taunts me!"))
+			to_chat(M, span_taunt("[user]在挑衅我！"))
 		else
 			M.taunted(user)
 	return
@@ -566,7 +566,7 @@
 /datum/intent/unarmed/claw
 	name = "claw"
 	//icon_state
-	attack_verb = list("mauls", "scratches", "claws")
+	attack_verb = list("撕扯", "抓挠", "爪击")
 	chargetime = 0
 	animname = "blank22"
 	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
@@ -575,7 +575,7 @@
 	swingdelay = 0
 	penfactor = 10
 	blade_class = BCLASS_CUT
-	miss_text = "claw at the air"
+	miss_text = "挥爪扑空"
 	miss_sound = "punchwoosh"
 	item_d_type = "slash"
 
@@ -583,7 +583,7 @@
 /datum/intent/unarmed/shove
 	name = "shove"
 	icon_state = "inshove"
-	attack_verb = list("shoves", "pushes")
+	attack_verb = list("推搡", "推开")
 	chargetime = 0
 	noaa = TRUE
 	force_autoaim = TRUE
@@ -610,7 +610,7 @@
 /datum/intent/unarmed/grab
 	name = "grab"
 	icon_state = "ingrab"
-	attack_verb = list("grabs")
+	attack_verb = list("抓住")
 	chargetime = 0
 	noaa = TRUE
 	force_autoaim = TRUE
@@ -662,7 +662,7 @@
 /datum/intent/simple/headbutt
 	name = "headbutt"
 	icon_state = "instrike"
-	attack_verb = list("headbutts", "rams")
+	attack_verb = list("头槌撞击", "冲撞")
 	animname = "blank22"
 	blade_class = BCLASS_BLUNT
 	hitsound = "punch_hard"
@@ -674,20 +674,20 @@
 /datum/intent/simple/claw
 	name = "claw"
 	icon_state = "instrike"
-	attack_verb = list("claws", "pecks")
+	attack_verb = list("爪击", "啄击")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 0
 	swingdelay = 3
-	miss_text = "slash the air"
+	miss_text = "挥击落空"
 	item_d_type = "slash"
 
 /datum/intent/simple/bite
 	name = "bite"
 	icon_state = "instrike"
-	attack_verb = list("bites")
+	attack_verb = list("啃咬")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
@@ -700,7 +700,7 @@
 /datum/intent/simple/axe
 	name = "hack"
 	icon_state = "instrike"
-	attack_verb = list("hacks at", "chops at", "bashes")
+	attack_verb = list("劈砍", "砍击", "猛砸")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = list("genchop", "genslash")
@@ -712,7 +712,7 @@
 /datum/intent/simple/spear
 	name = "spear"
 	icon_state = "instrike"
-	attack_verb = list("stabs", "skewers")
+	attack_verb = list("刺击", "刺穿")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = list("genthrust", "genstab")
@@ -741,7 +741,7 @@
 /datum/intent/effect/daze
 	name = "dazing strike"
 	icon_state = "indaze"
-	attack_verb = list("dazes")
+	attack_verb = list("击晕")
 	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/daze_hit.ogg')
 	chargetime = 0
