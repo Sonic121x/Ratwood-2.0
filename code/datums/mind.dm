@@ -488,7 +488,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			antag_obj_count++
 
 	if(window)
-		recipient << browse(output,"window=memory")
+		// Send a complete HTML document so the browser recognizes HTML and honors UTF-8.
+		recipient << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>[output]</body></html>","window=memory")
 	else if(all_objectives.len || memory || personal_objectives.len)
 		to_chat(recipient, "<i>[output]</i>")
 
@@ -504,7 +505,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	output += "<br>Your creed is blood, your faith is steel. You will not rest until these souls are yours. Use the profane dagger to trap their souls for Graggar."
 
 	if(window)
-		recipient << browse(output,"window=memory")
+		recipient << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>[output]</body></html>","window=memory")
 
 // Graggar culling event - tells people where the other is.
 /datum/mind/proc/recall_culling(mob/recipient, window=1)
@@ -566,7 +567,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				continue
 
 	if(window)
-		recipient << browse(output,"window=memory")
+		recipient << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>[output]</body></html>","window=memory")
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))

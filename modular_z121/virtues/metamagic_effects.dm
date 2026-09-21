@@ -36,7 +36,7 @@
 
 // 必须在子类 ready_projectile 写入技能伤害之后复制倍率，不能在弹丸出生时提前乘算。
 /obj/effect/proc_holder/spell/invoked/projectile/fire_projectile(mob/living/user, atom/target)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	current_amount--
 	for(var/i in 1 to projectiles_per_fire)
@@ -55,6 +55,7 @@
 			if(P.vars[V])
 				P.vv_edit_var(V, projectile_var_overrides[V])
 		ready_projectile(P, target, user, i)
+		P.z121_serpent_cast = z121_serpent_cast
 		P.z121_meta_power = z121_meta_power
 		P.z121_meta_duration = z121_meta_duration
 		P.damage = z121_power(P.damage)
@@ -87,6 +88,7 @@
 			if(effect.duration > world.time)
 				effect.duration = world.time + z121_duration(effect.duration - world.time)
 			effect.z121_meta_power = z121_meta_power
+			effect.z121_serpent_cast = z121_serpent_cast
 
 /obj/projectile/magic/acidsplash/on_hit(atom/target, blocked = FALSE)
 	var/list/victims = list()
@@ -97,6 +99,8 @@
 	z121_finish_statuses(snapshot)
 
 /datum/status_effect/buff/acidsplash/tick()
+	if(z121_serpent_cast?.blocks(owner))
+		return
 	if(z121_meta_power == 1)
 		return ..()
 	owner.adjustFireLoss(z121_power(5))
@@ -127,18 +131,21 @@
 		light.fuel = z121_duration(light.fuel)
 
 // 独立效果实体在启动异步伤害过程前保存倍率。
-/obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit, meta_power = 1)
+/obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit, meta_power = 1, datum/z121_serpent_cast/context = null)
 	z121_meta_power = meta_power
+	z121_serpent_cast = context
 	return ..()
 
-/obj/effect/temp_visual/targetlightning/Initialize(mapload, list/flame_hit, meta_power = 1)
+/obj/effect/temp_visual/targetlightning/Initialize(mapload, list/flame_hit, meta_power = 1, datum/z121_serpent_cast/context = null)
 	z121_meta_power = meta_power
+	z121_serpent_cast = context
 	return ..()
 
 // 爆炸沿用原来的范围和随机伤害公式，只在该次爆炸的同步伤害结算内乘算。
 /datum/proc/z121_explosion(atom/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = TRUE, ignorecap = FALSE, flame_range = 0, silent = FALSE, smoke = FALSE, soundin)
 	var/datum/explosion/blast = new /datum/explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, ignorecap, flame_range, silent, smoke, soundin)
 	// 原构造函数在处理地块前先让出执行，因此此处先于所有实际伤害完成。
+	blast.z121_serpent_cast = z121_serpent_cast
 	blast.z121_meta_power = z121_meta_power
 	return blast
 
@@ -157,6 +164,12 @@
 	return 1
 
 /mob/living/carbon/human/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
+	// 腹内释放的魔法爆炸只为原宿主补上魔抗检查，外界目标继续使用原规则。
+	var/turf/location = get_turf(src)
+	if(location?.explosion_id && epicenter)
+		for(var/datum/explosion/blast as anything in GLOB.explosions)
+			if(blast.explosion_id == location.explosion_id && get_turf(blast.explosion_source) == get_turf(epicenter) && blast.z121_serpent_cast?.blocks(src))
+				return
 	var/previous = z121_explosion_power
 	z121_explosion_power = z121_get_explosion_power(epicenter)
 	. = ..()

@@ -35,7 +35,7 @@
 		factor *= 1.25
 	return factor
 
-// 留在猎物身上的账本；脱离腹部不会恢复血肉，也不会刷新可提供的营养。
+// 账本在离腹后保留，只有在外真正治愈并恢复消融部位才开始新的周期。
 /datum/component/z121_serpent_digestion
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/size_factor
@@ -44,17 +44,24 @@
 	var/settled_stages = 0
 	var/list/dissolved_zones = list()
 	var/player_owned = FALSE
+	var/inside = TRUE
+	var/recovery_seen = FALSE
+	var/list/recovery_snapshot
+	var/recovery_timer
 
 /datum/component/z121_serpent_digestion/Initialize()
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	size_factor = z121_serpent_size(parent)
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_player_login))
+	RegisterSignal(parent, list(COMSIG_LIVING_HEALTH_UPDATE, COMSIG_MOVABLE_MOVED), PROC_REF(queue_recovery_check))
 	has_player_owner()
 
 /datum/component/z121_serpent_digestion/Destroy()
 	if(parent)
-		UnregisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN)
+		UnregisterSignal(parent, list(COMSIG_MOB_CLIENT_LOGIN, COMSIG_LIVING_HEALTH_UPDATE, COMSIG_MOVABLE_MOVED))
+	if(recovery_timer)
+		deltimer(recovery_timer)
 	return ..()
 
 /datum/component/z121_serpent_digestion/proc/on_player_login()
@@ -73,6 +80,93 @@
 
 /datum/component/z121_serpent_digestion/proc/progress()
 	return clamp(digested_time / ((5 MINUTES) * size_factor), 0, 1)
+
+/datum/component/z121_serpent_digestion/proc/read_recovery()
+	var/mob/living/prey = parent
+	var/list/state = list("蛮力" = prey.getBruteLoss(), "灼烧" = prey.getFireLoss(), "毒素" = prey.getToxLoss(), "氧气" = prey.getOxyLoss(), "克隆" = prey.getCloneLoss())
+	for(var/datum/wound/wound as anything in prey.get_wounds())
+		state["伤口[REF(wound)]"] = max(1, wound.whp)
+	if(iscarbon(prey))
+		var/mob/living/carbon/body = prey
+		for(var/obj/item/organ/organ as anything in body.internal_organs)
+			state["器官[organ.slot]"] = organ.damage
+		for(var/zone in dissolved_zones)
+			state["缺失[zone]"] = !body.get_bodypart(zone)
+	return state
+
+/datum/component/z121_serpent_digestion/proc/leave_belly()
+	inside = FALSE
+	recovery_seen = FALSE
+	recovery_snapshot = read_recovery()
+
+/datum/component/z121_serpent_digestion/proc/queue_recovery_check()
+	SIGNAL_HANDLER
+	if(inside || !digested_time)
+		return
+	// 每次变化都留痕，但只在本轮治疗结束后判定；同一拍先受伤再治好也不丢失依据。
+	observe_recovery()
+	if(recovery_timer)
+		return
+	// 等治疗、断肢和器官更新调用栈完成，不在半更新状态中重置。
+	recovery_timer = addtimer(CALLBACK(src, PROC_REF(check_recovery)), 0, TIMER_STOPPABLE)
+
+/datum/component/z121_serpent_digestion/proc/observe_recovery()
+	var/list/current = read_recovery()
+	for(var/key in recovery_snapshot)
+		if(recovery_snapshot[key] > current[key])
+			recovery_seen = TRUE
+	recovery_snapshot = current
+	return current
+
+/datum/component/z121_serpent_digestion/proc/check_recovery(explicit_treatment = FALSE)
+	if(recovery_timer)
+		deltimer(recovery_timer)
+		recovery_timer = null
+	var/mob/living/prey = parent
+	if(inside || QDELETED(prey) || istype(prey.loc, /obj/effect/z121_serpent_stomach) || !digested_time)
+		return
+	var/list/current = observe_recovery()
+	recovery_seen ||= explicit_treatment
+	if(!recovery_seen || prey.stat == DEAD)
+		return
+	for(var/key in current)
+		if(current[key] > 0)
+			return
+	digested_time = 0
+	nutrition_spent = 0
+	settled_stages = 0
+	dissolved_zones.Cut()
+	size_factor = z121_serpent_size(prey)
+	recovery_seen = FALSE
+	to_chat(prey, span_notice("那些留在血肉深处的侵蚀终于平息了，我的躯体重新归于完整。"))
+
+// 完整治疗可能在上层继续恢复器官或肢体，因此仍延后核实最终身体状态。
+/mob/living/fully_heal(admin_revive = FALSE, break_restraints = FALSE)
+	. = ..()
+	var/datum/component/z121_serpent_digestion/digestion = GetComponent(/datum/component/z121_serpent_digestion)
+	if(digestion && !digestion.inside)
+		digestion.recovery_seen = TRUE
+		digestion.queue_recovery_check()
+
+/datum/wound/heal_wound(heal_amount)
+	var/mob/living/patient = owner ? owner : bodypart_owner?.owner
+	. = ..()
+	if(patient && . > 0)
+		var/datum/component/z121_serpent_digestion/digestion = patient.GetComponent(/datum/component/z121_serpent_digestion)
+		if(digestion && !digestion.inside)
+			digestion.recovery_seen = TRUE
+		digestion?.queue_recovery_check()
+
+/obj/item/bodypart/attach_limb(mob/living/carbon/patient, special)
+	. = ..()
+	var/datum/component/z121_serpent_digestion/digestion = patient?.GetComponent(/datum/component/z121_serpent_digestion)
+	digestion?.queue_recovery_check()
+
+// 器官自然恢复不一定触发整个人物的生命值更新，也需要在结算后核实。
+/obj/item/organ/applyOrganDamage(d, maximum = maxHealth)
+	. = ..()
+	var/datum/component/z121_serpent_digestion/digestion = owner?.GetComponent(/datum/component/z121_serpent_digestion)
+	digestion?.queue_recovery_check()
 
 /datum/component/z121_serpent_digestion/proc/settle_limbs()
 	var/mob/living/prey = parent
@@ -115,6 +209,7 @@
 	var/channel_size
 	var/channel_big
 	var/releasing = FALSE
+	var/datum/z121_serpent_audio/action_audio
 
 /datum/component/z121_serpent_belly/Initialize()
 	if(!ishuman(parent))
@@ -130,7 +225,10 @@
 
 /datum/component/z121_serpent_belly/Destroy()
 	interrupted = TRUE
+	QDEL_NULL(action_audio)
 	clear_channel_signals()
+	if(stomach)
+		stomach.silent_release = TRUE
 	QDEL_NULL(stomach)
 	if(parent)
 		var/mob/host = parent
@@ -146,6 +244,7 @@
 /datum/component/z121_serpent_belly/proc/on_host_lost()
 	SIGNAL_HANDLER
 	interrupted = TRUE
+	QDEL_NULL(action_audio)
 	QDEL_NULL(stomach)
 
 // 检查具体抓取物，而不是仅凭拖拽变量；优先吞入当前手中的目标。
@@ -255,6 +354,7 @@
 			channel_grabs += grab
 			RegisterSignal(grab, COMSIG_QDELETING, PROC_REF(on_grab_deleted))
 	swallow_message(host, target, factor, "开始")
+	action_audio = new(host, factor, TRUE)
 	log_combat(host, target, "开始吞入")
 	// do_mob 使用固定时间，不受施法速度、技能或超魔的引导倍率影响。
 	var/completed = do_mob(host, target, (40 SECONDS) * factor, extra_checks = CALLBACK(src, PROC_REF(channel_valid), target))
@@ -264,6 +364,7 @@
 	channeling = FALSE
 	damage_snapshot = null
 	clear_channel_signals()
+	QDEL_NULL(action_audio)
 	if(!completed)
 		if(!QDELETED(host))
 			swallow_message(host, target, factor, "中断")
@@ -286,6 +387,7 @@
 		qdel(grab)
 	stomach.admit(target)
 	swallow_message(host, target, factor, "完成")
+	playsound(host, pick('sound/vo/gulp.ogg', 'sound/vo/gulp2.ogg'), z121_serpent_volume(factor), TRUE)
 	log_combat(host, target, "吞入")
 	if(metal)
 		to_chat(host, span_userdanger("坚硬的金铁刮过内里，一阵锐痛猛地绞住了我的腹部！"))
@@ -341,6 +443,8 @@
 	interrupted = FALSE
 	RegisterSignal(host, COMSIG_MOVABLE_MOVED, PROC_REF(on_release_move))
 	expected.release_message(mass, FALSE)
+	expected.release_sound_mass = mass
+	action_audio = new(host, mass, FALSE)
 	// 固定时长，不检查受伤或换手，也不受通用动作的速度倍率影响。
 	var/end_time = world.time + delay
 	var/start_time = world.time
@@ -361,6 +465,7 @@
 	completed = completed && release_valid(expected, prey)
 	UnregisterSignal(host, COMSIG_MOVABLE_MOVED)
 	releasing = FALSE
+	QDEL_NULL(action_audio)
 	if(!completed)
 		if(!QDELETED(host) && stomach == expected)
 			to_chat(host, span_warning("翻涌卡在喉间，我得停稳身子，重新顺过这口气。"))
@@ -398,6 +503,8 @@
 	var/saved_human_mode
 	var/datum/ai_controller/held_ai
 	var/saved_ai_pause
+	var/release_sound_mass
+	var/silent_release = FALSE
 
 /obj/effect/z121_serpent_stomach/Initialize(mapload, datum/component/z121_serpent_belly/new_controller)
 	. = ..()
@@ -420,6 +527,11 @@
 	digestion = target.GetComponent(/datum/component/z121_serpent_digestion)
 	if(!digestion)
 		digestion = target.AddComponent(/datum/component/z121_serpent_digestion)
+	else
+		digestion.check_recovery()
+	if(!digestion.digested_time)
+		digestion.size_factor = z121_serpent_size(target)
+	digestion.inside = TRUE
 	last_progress_time = world.time
 	next_burn = world.time + 60 SECONDS
 	next_effect = world.time + 10 SECONDS
@@ -754,6 +866,10 @@
 	digestion = null
 	log_combat(host, body, "完全消化腹中生物")
 	to_chat(host, span_notice("腹中的分量终于散尽，饥饿暂且沉寂。只余咽不下的身外之物，随着一阵干呕被送回外间。"))
+	if(controller)
+		QDEL_NULL(controller.action_audio)
+	if(!silent_release && !QDELETED(host) && host.stat != DEAD)
+		playsound(host, 'sound/vo/vomit_2.ogg', 25, TRUE)
 	// 不调用产生灰烬或残肢的碎尸接口；正常删除负责处理心智与幽灵。
 	qdel(body)
 	for(var/obj/item/remains as anything in anatomy)
@@ -783,6 +899,7 @@
 	advance_rot()
 	// 保持死亡自动删除关闭，直到本次肢体或比例伤害结算结束。
 	digestion?.settle_limbs()
+	digestion?.leave_belly()
 	if(!QDELETED(captive))
 		restore_ai()
 		if(!QDELETED(held_rot))
@@ -802,6 +919,8 @@
 
 /obj/effect/z121_serpent_stomach/Destroy()
 	cleaning_up = TRUE
+	if(controller)
+		QDEL_NULL(controller.action_audio)
 	if(digestion_timer)
 		deltimer(digestion_timer)
 		digestion_timer = null
@@ -822,6 +941,8 @@
 			finish_release()
 			if(!QDELETED(captive) && captive.loc == src)
 				release_message(mass, TRUE)
+				if(!silent_release && !QDELETED(host) && host.stat != DEAD)
+					playsound(host, 'sound/vo/vomit_2.ogg', z121_serpent_volume(isnull(release_sound_mass) ? mass : release_sound_mass), TRUE)
 				to_chat(captive, span_notice("一阵翻涌将我推向外间，紧裹躯体的束缚终于退去。"))
 	// 包括尸体和散落物品，全部移出后才允许父类清理容器。
 	for(var/atom/movable/content as anything in contents.Copy())
@@ -869,3 +990,46 @@
 			revert_cast(user)
 		return FALSE
 	return TRUE
+
+// 动作音独占声道，中断时只停止本次动作，不影响环境或其他角色的声音。
+/proc/z121_serpent_volume(mass)
+	return mass <= 0.3125 ? 25 : mass <= 0.625 ? 35 : mass <= 1.25 ? 45 : 55
+
+/datum/z121_serpent_audio
+	var/datum/weakref/source_ref
+	var/channel
+	var/timer
+	var/volume
+	var/swallowing
+	var/first_play = TRUE
+
+/datum/z121_serpent_audio/New(mob/living/source, mass, is_swallowing)
+	. = ..()
+	source_ref = WEAKREF(source)
+	channel = SSsounds.reserve_sound_channel(src)
+	volume = z121_serpent_volume(mass)
+	swallowing = is_swallowing
+	play()
+
+/datum/z121_serpent_audio/proc/play()
+	timer = null
+	var/mob/living/source = source_ref.resolve()
+	if(QDELETED(source) || source.stat == DEAD)
+		qdel(src)
+		return
+	playsound(source, swallowing ? pick('sound/vo/gulp.ogg', 'sound/vo/gulp2.ogg') : 'sound/vo/vomit.ogg', first_play ? volume : max(15, volume - 10), TRUE, channel = channel)
+	first_play = FALSE
+	if(swallowing)
+		timer = addtimer(CALLBACK(src, PROC_REF(play)), 5 SECONDS, TIMER_STOPPABLE)
+
+/datum/z121_serpent_audio/Destroy()
+	if(timer)
+		deltimer(timer)
+	if(channel)
+		for(var/client/listener in GLOB.clients)
+			listener.mob?.stop_sound_channel(channel)
+		SSsounds.free_datum_channels(src)
+	source_ref = null
+	return ..()
+
+#include "serpent_belly_magic.dm"

@@ -52,8 +52,9 @@
 	var/datum/weakref/creator_ref
 	var/next_damage_tick = 0
 
-/obj/effect/moonlight_wave_segment/Initialize(mapload, mob/living/maker)
+/obj/effect/moonlight_wave_segment/Initialize(mapload, mob/living/maker, datum/z121_serpent_cast/context = null)
 	. = ..()
+	z121_serpent_cast = context
 	if(maker)
 		creator_ref = WEAKREF(maker)
 	set_light_range(1.5, 2)
@@ -73,7 +74,7 @@
 	next_damage_tick = world.time + 1 SECONDS
 	var/mob/living/creator = creator_ref?.resolve()
 	for(var/mob/living/target in loc)
-		if(target == creator)
+		if(target == creator || z121_serpent_cast?.blocks(target))
 			continue
 		target.apply_damage(15, BRUTE)
 		target.apply_damage(15, BURN)
@@ -162,9 +163,13 @@
 		revert_cast(user)
 		return FALSE
 
-	var/turf/target_turf = get_ranged_target_turf(user, user.dir, 15)
+	var/turf/target_turf = get_ranged_target_turf(origin, user.dir, 15)
 	var/list/beam_segments = list()
-	for(var/turf/T in getline(origin, target_turf) - origin)
+	// 腹内施放的洪流包含宿主所在格，各段分别保存上下文。
+	var/list/path = getline(origin, target_turf)
+	if(!z121_serpent_cast)
+		path -= origin
+	for(var/turf/T in path)
 		if(T.density || T.opacity)
 			break
 		var/blocked = FALSE
@@ -174,7 +179,7 @@
 				break
 		if(blocked)
 			break
-		var/obj/effect/moonlight_wave_segment/segment = new(T, user)
+		var/obj/effect/moonlight_wave_segment/segment = new(T, user, z121_serpent_cast)
 		segment.dir = user.dir
 		beam_segments += segment
 
