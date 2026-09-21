@@ -28,7 +28,7 @@
 /datum/intent/flail/strike
 	name = "strike"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "hits")
+	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -47,7 +47,7 @@
 /datum/intent/flail/strikerange
 	name = "ranged strike"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "hits")
+	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 15
@@ -70,7 +70,7 @@
 	keep_looping = TRUE
 	icon_state = "insmash"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
+	attack_verb = list("猛砸")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 
@@ -93,7 +93,7 @@
 	reach = 2
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
-	attack_verb = list("smashes")
+	attack_verb = list("猛砸")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 
@@ -104,7 +104,7 @@
 	chargetime = 1.2 SECONDS
 	chargedrain = 1
 	chargedloop = /datum/looping_sound/flailswing
-	attack_verb = list("sweeps", "thrashes through")
+	attack_verb = list("横扫", "横抽")
 	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
