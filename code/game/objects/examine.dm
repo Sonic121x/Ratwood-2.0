@@ -53,19 +53,19 @@
 	var/cat_tag = display_cat ? "<b>[display_cat]</b>" : ""
 
 	// The price traits gate ONLY the mammon value - category and quality are always shown.
-	var/value_line = "Value: Unknown"
+	var/value_line = "价值：未知"
 	if(HAS_TRAIT(user, TRAIT_SEEPRICES) || simpleton_price || isobserver(user))
 		var/appraised_value = appraise_price()
 		if(appraised_value > 0)
-			value_line = "Value: [appraised_value] mammon"
+			value_line = "价值：[appraised_value] 玛门币"
 	else if(HAS_TRAIT(user, TRAIT_SEEPRICES_SHITTY))
 		var/real_value = appraise_price()
 		if(real_value > 0)
 			var/static/fumbling_seed = text2num(GLOB.rogue_round_id)
 			var/fumbled_value = max(1, round(real_value + (real_value * clamp(noise_hash(real_value, fumbling_seed) - 0.25, -0.25, 0.25)), 1))
-			value_line = "价值：约 [fumbled_value] 玛门（不确定）"
+			value_line = "价值：约 [fumbled_value] 玛门币（不确定）"
 	// Category always rides along with the value line.
-	. += span_info("[value_line][cat_tag ? " - [cat_tag]" : ""].")
+	. += span_info("[value_line][cat_tag ? " - [cat_tag]" : ""]。")
 	
 	var/list/quality_data = quality_examine_suffix()
 	if(quality_data)
@@ -144,4 +144,3 @@
 			if(80 to 99)
 				result = span_warning("它有一点损坏。")
 	return result
-
