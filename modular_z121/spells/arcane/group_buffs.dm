@@ -33,7 +33,7 @@
 	recharge_time = 3 MINUTES
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	spell_tier = 1
+	spell_tier = 2
 	invocations = list("群星之瞳，照彻黑夜。")
 	invocation_type = "whisper"
 	glow_color = GLOW_COLOR_BUFF
@@ -131,7 +131,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
-	spell_tier = 2
+	spell_tier = 3
 	invocations = list("众躯膨胀壮大吧！")
 	invocation_type = "shout"
 	chargedloop = /datum/looping_sound/wind
@@ -187,7 +187,7 @@
 	overlay_state = "fortitude"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
-	spell_tier = 2
+	spell_tier = 3
 	invocations = list("赐吾等坚韧。")
 	invocation_type = "whisper"
 	glow_color = GLOW_COLOR_BUFF
@@ -219,7 +219,7 @@
 	human_req = TRUE
 	warnie = "spellwarning"
 	school = "transmutation"
-	spell_tier = 2
+	spell_tier = 3
 	invocations = list("指引吾等吧。")
 	invocation_type = "whisper"
 	glow_color = GLOW_COLOR_BUFF
@@ -253,7 +253,7 @@
 	warnie = "spellwarning"
 	school = "transmutation"
 	overlay_state = "haste"
-	spell_tier = 2
+	spell_tier = 3
 	invocations = list("迅捷加诸吾等！")
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_BUFF
@@ -287,7 +287,7 @@
 	human_req = TRUE
 	warnie = "spellwarning"
 	no_early_release = TRUE
-	spell_tier = 1
+	spell_tier = 2
 	invocations = list("长步远行，同行无阻。")
 	invocation_type = "whisper"
 	glow_color = GLOW_COLOR_BUFF
@@ -319,7 +319,7 @@
 	human_req = TRUE
 	warnie = "spellwarning"
 	school = "transmutation"
-	spell_tier = 2
+	spell_tier = 3
 	invocations = list("如磐石般屹立，共承其坚。")
 	invocation_type = "whisper"
 	glow_color = GLOW_COLOR_BUFF
@@ -355,7 +355,7 @@
 	warnie = "spellwarning"
 	school = "transmutation"
 	overlay_state = "giants_strength"
-	spell_tier = 2
+	spell_tier = 3
 	invocations = list("巨人之力，加诸吾等。")
 	invocation_type = "whisper"
 	glow_color = GLOW_COLOR_BUFF
@@ -389,7 +389,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	gesture_required = TRUE
-	spell_tier = 1
+	spell_tier = 2
 	invocations = list("众身齐跃！")
 	invocation_type = "whisper"
 	hide_charge_effect = TRUE
@@ -434,7 +434,7 @@
 	school = "transmutation"
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "flight"
-	spell_tier = 3
+	spell_tier = 4
 	invocations = list("众人皆可凌空而起！")
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_BUFF

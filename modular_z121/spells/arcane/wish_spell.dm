@@ -235,9 +235,14 @@
 // 让施法者从视野内的活体目标中选择一个，将其立即处死。
 // ===========================================================================
 /obj/effect/proc_holder/spell/self/wish_spell/proc/wish_kill(mob/living/user)
+	// 只约束夺命分支，其余许愿效果不改变；弹窗期间离腹则取消这次内部攻击。
+	var/datum/z121_serpent_cast/context
+	var/obj/effect/z121_serpent_stomach/stomach = user.loc
+	if(istype(stomach) && stomach.captive == user)
+		context = new(stomach, user, src)
 	// 收集视野内、仍存活、且不是施法者本人的活体。
 	var/list/candidates = list()
-	for(var/mob/living/L in view(WISH_TARGET_RANGE, user))
+	for(var/mob/living/L in (context ? list(context.host()) : view(WISH_TARGET_RANGE, user)))
 		if(L == user)             // 不允许把自己许愿致死
 			continue
 		if(L.stat == DEAD)        // 已死的没必要再杀
@@ -262,13 +267,13 @@
 
 	var/mob/living/target = candidates[chosen_label]
 	// 二次校验：目标可能在选择期间已离开或死亡。
-	if(QDELETED(target) || target.stat == DEAD)
+	if(QDELETED(target) || target.stat == DEAD || (context && context.host() != target))
 		to_chat(user, span_warning("目标已经不在了。"))
 		revert_cast()
 		return FALSE
 
 	// 反魔法检定：被反魔法保护的目标可以抵御这道致死愿望，体现“几乎万能”而非“绝对万能”。
-	if(target.anti_magic_check())
+	if(context?.blocks(target) || target.anti_magic_check())
 		target.visible_message(
 			span_warning("[target] 周身泛起反魔法的涟漪，将那股索命之力震散了！"),
 			span_notice("一股致命的意志试图攫住我，却被我身上的反魔法挡了下来！")

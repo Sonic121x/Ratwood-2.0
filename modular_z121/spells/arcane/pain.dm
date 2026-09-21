@@ -121,6 +121,7 @@
 	projectile.target_zone = BODY_ZONE_CHEST
 	projectile.pain_amount = get_pain_amount(user)
 	projectile.casting_spell = src
+	projectile.z121_serpent_cast = z121_serpent_cast
 	// 疼痛伤口的时限随弹丸保存，命中后不再读取当前超魔模式。
 	projectile.z121_meta_duration = z121_duration(1)
 	// 沿用现有投射法术的命中修正，让奥术等级也能略微提高命中率。

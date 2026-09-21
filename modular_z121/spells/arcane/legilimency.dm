@@ -45,7 +45,7 @@
 	name = "摄神取念"
 	desc = "一道侵入心神的高阶法术。以纯粹的意志撬开目标的心防，若对方的意志不足以抵抗，其身体便会暂时落入我的掌控；持续时间随我的奥术造诣而延长。"
 	school = "transmutation"
-	spell_tier = 3                              // T3 法术
+	spell_tier = 4                              // T4 法术
 	cost = LEGILIMENCY_MANA_COST                // “法力 / 法术点”消耗 = 6
 	releasedrain = LEGILIMENCY_RESOURCE_COST    // “额外资源消耗”= 15（施法时抽取的疲劳/耐力）
 	chargetime = LEGILIMENCY_CHANNEL_TIME       // 蓄力 2 秒（基类点击拦截会校验是否蓄满）

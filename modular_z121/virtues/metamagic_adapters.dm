@@ -464,7 +464,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/../../roguetown/necromancer.dm
 /obj/effect/proc_holder/spell/invoked/bonechill/cast(list/targets, mob/living/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	z121_base_cast(targets, user)
 	if(!isliving(targets[1]))
@@ -533,30 +533,33 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/blade_burst.dm
 /obj/effect/proc_holder/spell/invoked/blade_burst/cast(list/targets, mob/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
 	var/turf/source_turf = get_turf(user)
-	if(T.z > user.z)
+	if(T.z > (z121_serpent_cast ? source_turf.z : user.z))
 		source_turf = get_step_multiz(source_turf, UP)
-	if(T.z < user.z)
+	if(T.z < (z121_serpent_cast ? source_turf.z : user.z))
 		source_turf = get_step_multiz(source_turf, DOWN)
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in (z121_serpent_cast ? z121_serpent_cast.turfs(view(area_of_effect, T), T) : view(area_of_effect, T)))
 		if(!(affected_turf in view(source_turf)))
 			continue
 		new /obj/effect/temp_visual/trap(affected_turf)
 	playsound(T, 'sound/magic/blade_burst.ogg', 80, TRUE, soundping = TRUE)
 	sleep(delay)
 	var/play_cleave = FALSE
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in (z121_serpent_cast ? z121_serpent_cast.turfs(view(area_of_effect, T), T) : view(area_of_effect, T)))
 		new /obj/effect/temp_visual/blade_burst(affected_turf)
 		if(!(affected_turf in view(source_turf)))
 			continue
-		for(var/mob/living/L in affected_turf.contents)
+		for(var/mob/living/L in (z121_serpent_cast ? z121_serpent_cast.targets(affected_turf) : affected_turf.contents))
+			if(z121_serpent_cast?.blocks(L))
+				continue
 			if(L.anti_magic_check())
 				visible_message(span_warning("那些魔刃一靠近 [L] 就消散了！"))
 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
-				qdel(src)
+				if(!z121_serpent_cast)
+					qdel(src)
 				continue
 			play_cleave = TRUE
 			L.adjustBruteLoss(z121_power(damage))
@@ -568,26 +571,26 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/repulse.dm
 /obj/effect/proc_holder/spell/invoked/repulse/cast(list/targets, mob/user, stun_amt = 5)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/list/thrownatoms = list()
 	var/atom/throwtarget
 	var/distfromcaster
 	playsound(user, 'sound/magic/repulse.ogg', 80, TRUE)
-	for(var/turf/T in view(push_range, user))
+	for(var/turf/T in view(push_range, z121_serpent_cast ? get_turf(user) : user))
 		new /obj/effect/temp_visual/kinetic_blast(T)
 		for(var/atom/movable/AM in T)
 			thrownatoms += AM
 	for(var/am in thrownatoms)
 		var/atom/movable/AM = am
-		if(AM == user || AM.anchored)
+		if(AM == user || AM.anchored || (isliving(AM) && z121_serpent_cast?.blocks(AM)))
 			continue
 		if(ismob(AM))
 			var/mob/M = AM
 			if(M.anti_magic_check())
 				continue
-		throwtarget = get_edge_target_turf(user, get_dir(user, get_step_away(AM, user)))
-		distfromcaster = get_dist(user, AM)
+		throwtarget = get_edge_target_turf(get_turf(user), get_dir(get_turf(user), get_step_away(AM, get_turf(user))))
+		distfromcaster = get_dist(z121_serpent_cast ? get_turf(user) : user, AM)
 		if(distfromcaster == 0)
 			if(isliving(AM))
 				var/mob/living/M = AM
@@ -605,32 +608,36 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/snap_freeze.dm
 /obj/effect/proc_holder/spell/invoked/snap_freeze/cast(list/targets, mob/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
 	var/turf/source_turf = get_turf(user)
-	if(T.z > user.z)
+	if(T.z > (z121_serpent_cast ? source_turf.z : user.z))
 		source_turf = get_step_multiz(source_turf, UP)
-	if(T.z < user.z)
+	if(T.z < (z121_serpent_cast ? source_turf.z : user.z))
 		source_turf = get_step_multiz(source_turf, DOWN)
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in (z121_serpent_cast ? z121_serpent_cast.turfs(view(area_of_effect, T), T) : view(area_of_effect, T)))
 		if(!(affected_turf in view(source_turf)))
 			continue
 		new /obj/effect/temp_visual/trapice(affected_turf)
 	playsound(T, 'sound/combat/wooshes/blunt/wooshhuge (2).ogg', 80, TRUE, soundping = TRUE)
 	sleep(delay)
 	var/play_cleave = FALSE
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in (z121_serpent_cast ? z121_serpent_cast.turfs(view(area_of_effect, T), T) : view(area_of_effect, T)))
 		new /obj/effect/temp_visual/snap_freeze(affected_turf)
 		if(!(affected_turf in view(source_turf)))
 			continue
-		for(var/mob/living/L in affected_turf.contents)
+		for(var/mob/living/L in (z121_serpent_cast ? z121_serpent_cast.targets(affected_turf) : affected_turf.contents))
+			if(z121_serpent_cast?.blocks(L))
+				continue
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				H.apply_weather_temperature(-35)
 			if(L.anti_magic_check())
 				visible_message(span_warning("[L] 周围的寒冰魔力消散了！"))
 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+				if(z121_serpent_cast)
+					continue
 				return
 			play_cleave = TRUE
 			if(ishuman(L))
@@ -638,6 +645,8 @@
 			else
 				L.adjustFireLoss(z121_power(damage + 30))
 			if(L.has_status_effect(/datum/status_effect/buff/frostbite))
+				if(z121_serpent_cast)
+					continue
 				return
 			else
 				if(L.has_status_effect(/datum/status_effect/buff/frost))
@@ -654,21 +663,25 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_single_target/gravity.dm
 /obj/effect/proc_holder/spell/invoked/gravity/cast(list/targets, mob/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in (z121_serpent_cast ? z121_serpent_cast.turfs(view(area_of_effect, T), T) : view(area_of_effect, T)))
 		if(affected_turf.density)
 			continue
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in (z121_serpent_cast ? z121_serpent_cast.turfs(view(area_of_effect, T), T) : view(area_of_effect, T)))
 		new /obj/effect/temp_visual/gravity_trap(affected_turf)
 		playsound(T, 'sound/magic/gravity.ogg', 80, TRUE, soundping = FALSE)
 		sleep(delay)
 		new /obj/effect/temp_visual/gravity(affected_turf)
-		for(var/mob/living/L in affected_turf.contents)
+		for(var/mob/living/L in (z121_serpent_cast ? z121_serpent_cast.targets(affected_turf) : affected_turf.contents))
+			if(z121_serpent_cast?.blocks(L))
+				continue
 			if(L.anti_magic_check())
 				visible_message(span_warning("[L] 周围的重压魔力消散了！"))
 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+				if(z121_serpent_cast)
+					continue
 				return TRUE
 			if(L.STASTR <= 15)
 				L.adjustBruteLoss(z121_power(60))
@@ -682,7 +695,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_single_target/hellishrebuke.dm
 /obj/effect/proc_holder/spell/invoked/rebuke/cast(list/targets, mob/living/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	if(!isliving(targets[1]))
 		return FALSE
@@ -697,7 +710,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_single_target/frostbite.dm
 /obj/effect/proc_holder/spell/invoked/frostbite/cast(list/targets, mob/living/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -754,7 +767,7 @@
 	if(!z121_metamagic_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in (z121_serpent_cast ? z121_serpent_cast.turfs(view(area_of_effect, T), T) : view(area_of_effect, T)))
 		if(affected_turf.density)
 			continue
 		new /obj/effect/temp_visual/ensnare(affected_turf)
@@ -1055,48 +1068,51 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/thunderstrike.dm
 /obj/effect/proc_holder/spell/invoked/thunderstrike/cast(list/targets, mob/user = usr)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/centerpoint = get_turf(targets[1])
 	var/turf/source_turf = get_turf(user)
-	if(centerpoint.z > user.z)
+	if(centerpoint.z > (z121_serpent_cast ? source_turf.z : user.z))
 		source_turf = get_step_multiz(source_turf, UP)
-	if(centerpoint.z < user.z)
+	if(centerpoint.z < (z121_serpent_cast ? source_turf.z : user.z))
 		source_turf = get_step_multiz(source_turf, DOWN)
 	if(!(centerpoint in view(source_turf)))
 		to_chat(user, span_warning("我无法向看不见的地方施法！"))
 		return
 	new /obj/effect/temp_visual/trap/thunderstrike(centerpoint)
-	addtimer(CALLBACK(src, PROC_REF(thunderstrike_damage), centerpoint, z121_power(1)), wait = delay1)
+	addtimer(CALLBACK(src, PROC_REF(thunderstrike_damage), centerpoint, z121_power(1), z121_serpent_cast), wait = delay1)
 	for(var/turf/effect_layer_one in range(1, centerpoint))
 		if(!(effect_layer_one in view(centerpoint)))
 			continue
 		if(get_dist(centerpoint, effect_layer_one) != 1)
 			continue
 		new /obj/effect/temp_visual/trap/thunderstrike/layer_one(effect_layer_one)
-		addtimer(CALLBACK(src, PROC_REF(thunderstrike_damage), effect_layer_one, z121_power(0.5)), wait = delay2)
+		addtimer(CALLBACK(src, PROC_REF(thunderstrike_damage), effect_layer_one, z121_power(0.5), z121_serpent_cast), wait = delay2)
 	for(var/turf/effect_layer_two in range(2, centerpoint))
 		if(!(effect_layer_two in view(centerpoint)))
 			continue
 		if(get_dist(centerpoint, effect_layer_two) != 2)
 			continue
 		new /obj/effect/temp_visual/trap/thunderstrike/layer_two(effect_layer_two)
-		addtimer(CALLBACK(src, PROC_REF(thunderstrike_damage), effect_layer_two, z121_power(0.25)), wait = delay3)
+		addtimer(CALLBACK(src, PROC_REF(thunderstrike_damage), effect_layer_two, z121_power(0.25), z121_serpent_cast), wait = delay3)
 	return TRUE
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/wither.dm
 /obj/effect/proc_holder/spell/invoked/wither/cast(list/targets, mob/user = usr)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
 	var/turf/source_turf = get_turf(user)
-	if(T.z != user.z)
+	if(z121_serpent_cast)
+		// 腹内直线攻击从宿主所在格开始，不能因起终点相同而整条射线落空。
+		T = get_ranged_target_turf(source_turf, user.dir, range)
+	if(T.z != (z121_serpent_cast ? source_turf.z : user.z))
 		to_chat(user, span_warning("我无法对不同 z 层施放这个法术！"))
 		return FALSE
 	var/list/affected_turfs = getline(source_turf, T)
 	for(var/i = 1, i < affected_turfs.len, i++)
 		var/turf/affected_turf = affected_turfs[i]
-		if(affected_turf == source_turf)
+		if(affected_turf == source_turf && !z121_serpent_cast)
 			continue
 		if(!(affected_turf in view(source_turf)))
 			continue
@@ -1108,7 +1124,9 @@
 /obj/effect/proc_holder/spell/invoked/wither/strike(turf/damage_turf, datum/z121_metamagic_payload/payload = null)
 	new /obj/effect/temp_visual/wither_actual(damage_turf)
 	playsound(damage_turf, 'sound/magic/shadowstep_destination.ogg', 50)
-	for(var/mob/living/L in damage_turf.contents)
+	for(var/mob/living/L in (payload?.z121_serpent_cast ? payload.z121_serpent_cast.targets(damage_turf) : damage_turf.contents))
+		if(payload?.z121_serpent_cast?.blocks(L))
+			continue
 		if(L.anti_magic_check())
 			visible_message(span_warning("[L] 周围的枯萎魔力消散了！"))
 			playsound(damage_turf, 'sound/magic/magic_nulled.ogg', 100)
@@ -1122,7 +1140,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/meteor_storm.dm
 /obj/effect/proc_holder/spell/invoked/meteor_storm/cast(list/targets, mob/user = usr)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
 	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
@@ -1137,8 +1155,8 @@
 		return
 	var/turf/targetturf = get_turf(target)
 	for(var/turf/turf as anything in RANGE_TURFS(6,targetturf))
-		if(prob(20))
-			new /obj/effect/temp_visual/target(turf, null, z121_power(1))
+		if((z121_serpent_cast && turf == targetturf) || prob(20))
+			new /obj/effect/temp_visual/target(turf, null, z121_power(1), z121_serpent_cast)
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/meteor_storm.dm
 /obj/effect/temp_visual/target/fall(list/flame_hit)
@@ -1155,6 +1173,8 @@
 		if(dist > 3)
 			continue
 		for(var/mob/living/L in nearby.contents)
+			if(z121_serpent_cast?.blocks(L))
+				continue
 			if(islist(flame_hit) && flame_hit[L])
 				L.adjustFireLoss(z121_power(5))
 				continue
@@ -1182,7 +1202,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm
 /obj/effect/proc_holder/spell/invoked/sundering_lightning/cast(list/targets, mob/user = usr)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
 	playsound(T,'sound/weather/rain/thunder_1.ogg', 80, TRUE)
@@ -1205,7 +1225,7 @@
 		if(dist > last_dist)
 			last_dist = dist
 			sleep(2 + min(range - last_dist, 12) * 0.5)
-		new /obj/effect/temp_visual/targetlightning(T, null, z121_power(1))
+		new /obj/effect/temp_visual/targetlightning(T, null, z121_power(1), z121_serpent_cast)
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/sundering_lightning.dm
 /obj/effect/temp_visual/targetlightning/storm(list/flame_hit)
@@ -1214,9 +1234,9 @@
 	playsound(T,'sound/magic/lightning.ogg', 80, TRUE)
 	new /obj/effect/temp_visual/lightning(T)
 	for(var/mob/living/L in T.contents)
-		if(L.anti_magic_check())
+		if(z121_serpent_cast?.blocks(L) || L.anti_magic_check())
 			continue
-		L.electrocute_act(z121_power(65))
+		L.electrocute_act(z121_power(65), src)
 		to_chat(L, span_userdanger("我被雷霆击中了！！！"))
 
 // 来源：code/modules/spells/spell_types/wizard/misc/forcewall.dm
@@ -1290,7 +1310,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/aerosolize.dm
 /obj/effect/proc_holder/spell/invoked/aerosolize/cast(list/targets, mob/living/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/turf/T = get_turf(targets[1])
 	var/obj/item/reagent_containers/con = get_container(user, targets[1])
@@ -1306,7 +1326,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/aerosolize.dm
 /obj/effect/proc_holder/spell/invoked/aerosolize/wave/cast(list/targets, mob/living/user)
-	if(!z121_metamagic_cast)
+	if(!z121_metamagic_cast && !z121_serpent_cast)
 		return ..()
 	var/obj/item/reagent_containers/con = get_container(user, targets[1])
 	if(!con)
@@ -1403,7 +1423,7 @@
 	return FALSE
 
 /obj/projectile/magic/aoe/fireball/on_hit(target)
-	if(z121_meta_power == 1)
+	if(z121_meta_power == 1 && !z121_serpent_cast)
 		return ..()
 	return z121_fireball_hit(target)
 
@@ -1429,7 +1449,7 @@
 
 // 来源：code/modules/spells/spell_types/wizard/projectiles_aoe/fireball_artillery.dm
 /obj/projectile/magic/aoe/fireball/rogue/artillery/on_hit(target)
-	if(z121_meta_power == 1)
+	if(z121_meta_power == 1 && !z121_serpent_cast)
 		return ..()
 	. = z121_fireball_hit(target)
 	if(ismob(target))
