@@ -37,7 +37,7 @@
 		var/mob/living/carbon/human/victim = owner
 		var/d_type = "slash"
 		if(victim.run_armor_check(zone_precise, d_type, damage = damage))
-			to_chat(victim, span_warning("My armour just saved me from losing my [C.get_bodypart(body_zone).name]!"))
+			to_chat(victim, span_warning("护甲刚刚保住了我的[parse_zone(body_zone)]！"))
 			return FALSE
 
 	if(C.status_flags & GODMODE)
@@ -52,14 +52,14 @@
 		return FALSE //signal handled the dropping
 
 	if(C.try_resist_critical())
-		C.visible_message(span_danger("Critical resistance! [C]'s [src.name] hangs on by a thread!</span>"))
+		C.visible_message(span_danger("抵抗重创！[C]的[parse_zone(body_zone)]仅剩一丝血肉相连！</span>"))
 		return FALSE
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound && !isooze(C)) //OV EDIT - Oozes don't get wounds left behind when bits fall off
 		affecting.add_wound(dismember_wound)
 	else if(affecting && dismember_wound && isooze(C))
-		C.visible_message(span_danger("[C]'s wound closes rapidly to stem the flow of plasm."))
+		C.visible_message(span_danger("[C]的伤口迅速闭合，止住了液浆的流失。"))
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
 
 	var/stress2give = /datum/stressevent/viewdismember
@@ -78,23 +78,23 @@
 		// extra note: we only do this for mobs with a mind, aka not NPCS. npcs always get insta-decapped as before
 		if (owner?.client && !vorpal && !guillotine_execution && two_stage_death && !grievously_wounded)
 			if (owner?.construct)
-				C.visible_message(span_danger("<b>[C]'s wrought skull is <span class='crit'>CLEFT NIGH IN TWAIN</span> by a fearsome blow, crumbling into a <span class='crit'>CLOUD of DUST!</span></b>"))
+				C.visible_message(span_danger("<b>[C]铸就的颅骨被可怕的一击<span class='crit'>几乎劈成两半</span>，崩碎成<span class='crit'>一团尘埃！</span></b>"))
 				C.death()
 				return
 
 			if (skeletonized)
-				C.visible_message(span_danger("<b>[C]'s bony skull is <span class='crit'>MULCHED</span> by a fearsome blow, spalling into a <span class='crit'>CLOUD of SHARDS!</span></b>"))
+				C.visible_message(span_danger("<b>[C]的颅骨被可怕的一击<span class='crit'>碾得粉碎</span>，迸裂成<span class='crit'>漫天碎片！</span></b>"))
 				C.death()
 				return
 			else
-				C.visible_message(span_danger("<B>[C] is <span class='crit'>LYFE-ENDED</span> as their ravaged neck <span class='crit'>BLOSSOMS</span> into petals of <span class='crit'>GORE and BONE!</span></B>"))
+				C.visible_message(span_danger("<B>[C]残破的脖颈<span class='crit'>炸开</span>，<span class='crit'>血肉与碎骨</span>如花瓣四散，<span class='crit'>当场毙命！</span></B>"))
 				add_wound(/datum/wound/grievous/pre_decapitation) // this causes a bigass wound, marks the limb as greviously wounded and instantly kills the affected user.
 				return
 		else
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
-			C.visible_message(span_danger("<B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B>"))
+			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B>"))
+		C.visible_message(span_danger("<B>[parse_zone(body_zone)]被[pick("扯掉", "劈断", "切断", "分离", "扯开缝线扯断")]了！</B>"))
 	//past the two stage decapitation returns, so a first stage neck sever is not logged as a limb loss;
 	//the casterless branch is player-only or NPC mobs eating a body would spam it
 	if(user)
@@ -206,23 +206,23 @@
 		// extra note: we only do this for mobs with a mind, aka not NPCS. npcs always get insta-decapped as before
 		if (owner?.client && !vorpal && !guillotine_execution && two_stage_death && !grievously_wounded)
 			if (owner?.construct)
-				C.visible_message(span_danger("<b>[C]'s wrought skull is <span class='crit'>CLEFT NIGH IN TWAIN</span> by a fearsome blow, crumbling into a <span class='crit'>CLOUD of DUST!</span></b>"))
+				C.visible_message(span_danger("<b>[C]铸就的颅骨被可怕的一击<span class='crit'>几乎劈成两半</span>，崩碎成<span class='crit'>一团尘埃！</span></b>"))
 				C.death()
 				return
 
 			if (skeletonized)
-				C.visible_message(span_danger("<b>[C]'s bony skull is <span class='crit'>MULCHED</span> by a fearsome blow, spalling into a <span class='crit'>CLOUD of SHARDS!</span></b>"))
+				C.visible_message(span_danger("<b>[C]的颅骨被可怕的一击<span class='crit'>碾得粉碎</span>，迸裂成<span class='crit'>漫天碎片！</span></b>"))
 				C.death()
 				return
 			else
-				C.visible_message(span_danger("<B>[C] is <span class='crit'>LYFE-ENDED</span> as their ravaged neck <span class='crit'>BLOSSOMS</span> into petals of <span class='crit'>GORE and BONE!</span></B>"))
+				C.visible_message(span_danger("<B>[C]残破的脖颈<span class='crit'>炸开</span>，<span class='crit'>血肉与碎骨</span>如花瓣四散，<span class='crit'>当场毙命！</span></B>"))
 				add_wound(/datum/wound/grievous/pre_decapitation) // this causes a bigass wound, marks the limb as greviously wounded and instantly kills the affected user.
 				return
 		else
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
-			C.visible_message(span_danger("<B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B>"))
+			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B>"))
+		C.visible_message(span_danger("<B>[src.name]被[pick("扯掉", "劈断", "切断", "分离", "扯开缝线扯断")]了！</B>"))
 	if(body_zone != BODY_ZONE_HEAD)
 		C.delimb_pain()
 	if(!(NOBLOOD in C.dna?.species?.species_traits))
@@ -533,7 +533,7 @@
 	if(!special && owner?.mind)
 		owner.mind.severed_head_ref = WEAKREF(src)
 
-	name = "[owner.real_name]'s head"
+	name = "[owner.real_name]的头颅"
 	. = ..()
 
 //Attach a limb to a human and drop any existing limb of that type.
