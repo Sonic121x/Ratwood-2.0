@@ -1,11 +1,11 @@
-,d More raw materials for the Mistress!
-,d Your blood will make a fine lubricant for the machines.
-,d More lux for the foundry.
-,d We'll remake you in Her name.
-,d I'll sacrifice you to the Dark Mother.
-,d How dare you tread these holy halls, die!
-,d Die, mortal!
-,d Your form is offensive, submit to us your flesh and soul.
+,d 给女主人再添些原料！
+,d 你的鲜血会是机器的上好润滑油。
+,d 给铸造厂再添些灵辉。
+,d 我们将以她之名重塑你。
+,d 我要把你献祭给黑暗之母。
+,d 竟敢踏入这神圣的殿堂，去死吧！
+,d 去死吧，凡人！
+,d 你的形体令人作呕，把血肉和灵魂交给我们。
 *laugh
 *chuckle
-*flourishes their weapon.
+*挥舞着武器。

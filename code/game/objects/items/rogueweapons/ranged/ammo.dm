@@ -641,7 +641,7 @@
 /obj/item/ammo_casing/caseless/rogue/javelin
 	force = 14
 	throw_speed = 3		//1 lower than throwing knives, it hits harder + embeds more.
-	name = "iron javelin"
+	name = "铁标枪"
 	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a iron head; standard among militiamen and irregulars alike."
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ijavelin"
