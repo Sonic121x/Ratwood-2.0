@@ -3,9 +3,9 @@
 	check_name = span_bone("脱臼")
 	severity = WOUND_SEVERITY_MODERATE
 	crit_message = list(
-		"%BODYPART猛地一震，疼痛难忍！",
-		"%BODYPART被扭得错位了！",
-		"%BODYPART被猛地拽出了关节窝！",
+		"%BODYPART剧痛地抽动了一下！",
+		"%BODYPART被扭得错了位！",
+		"%BODYPART被拧出了关节窝！",
 		"%BODYPART脱臼了！",
 	)
 	sound_effect = "fracturedry"
@@ -67,11 +67,11 @@
 
 /datum/wound/dislocation/neck
 	name = "颈椎脱位"
-	check_name = span_bone("颈部")
+	check_name = span_bone("颈椎")
 	crit_message = list(
 		"脊椎错位了！",
 		"脊椎扭曲了！",
-		"%BODYPART被猛地拽出了关节窝！",
+		"%BODYPART被拧出了关节窝！",
 	)
 	whp = 80
 	woundpain = 100

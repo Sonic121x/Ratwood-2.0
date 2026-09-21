@@ -3,7 +3,7 @@
 /datum/intent/mace/strike
 	name = "打击"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("打击", "砸中")
+	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 0
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -67,7 +67,7 @@
 /datum/intent/mace/rangedthrust
 	name = "刺击"
 	blade_class = BCLASS_STAB
-	attack_verb = list("刺击")
+	attack_verb = list("突刺")
 	animname = "stab"
 	icon_state = "instab"
 	reach = 2
@@ -296,7 +296,7 @@
 /datum/intent/mace/strike/wallop
 	name = "重殴"
 	blade_class = BCLASS_TWIST	//I know, it's weird, but this lets you dislocate limbs and works fine w/ -100 pen factor of blunt weapons.
-	attack_verb = list("猛殴", "痛击", "狠砸")
+	attack_verb = list("猛拍", "狠敲", "痛击")
 	damfactor = 1.3		// High damage mod to give high chance of dislocation against unarmored targets.
 	intent_intdamage_factor = 0.5	// Purposefully bad at damaging armor.
 	icon_state = "inbash"	// Wallop is too long for a button; placeholder.
@@ -661,7 +661,7 @@
 	name = "刺击"
 	icon_state = "instab"
 	blade_class = BCLASS_STAB
-	attack_verb = list("刺击", "捅刺")
+	attack_verb = list("突刺", "刺击")
 	animname = "stab"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	no_early_release = TRUE
@@ -673,7 +673,7 @@
 	name = "啄击"
 	icon_state = "inpick"
 	blade_class = BCLASS_PICK
-	attack_verb = list("凿穿", "贯穿")
+	attack_verb = list("啄刺", "贯穿")
 	animname = "stab"
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	misscost = 1
@@ -789,7 +789,7 @@
 	name = "横扫击"
 	icon_state = "insweep"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("横扫而过", "横砸")
+	attack_verb = list("横扫", "横砸")
 	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -805,8 +805,8 @@
 /datum/intent/effect/hobble
 	name = "绊足打击"
 	icon_state = "incrack"//Temp. Just so it's easy to differentiate.
-	attack_verb = list("绊伤")
-	animname = "打击"
+	attack_verb = list("致跛打击")
+	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/shovel_hit3.ogg')
 	swingdelay = 6
 	damfactor = 0.8
@@ -819,7 +819,7 @@
 /datum/intent/maul
 	name = "打击"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("打击", "猛锤", "痛殴")
+	attack_verb = list("打击", "锤击", "痛击")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 0
 	swingdelay = 0
@@ -873,8 +873,8 @@
 		force = H.move_force)
 
 /datum/intent/maul/spiked
-	name = "穿透打击"
-	attack_verb = list("撕裂", "猛锤", "痛殴")
+	name = "perforating strike"
+	attack_verb = list("撕裂", "锤击", "痛击")
 	blade_class = BCLASS_PIERCE//TEAR CHUNKS OFF OF THEM. THROW IT ACROSS THE ROOM.
 	hitsound = list('sound/combat/hits/bladed/genthrust (1).ogg', 'sound/combat/hits/bladed/genthrust (2).ogg')
 	icon_state = "intear"

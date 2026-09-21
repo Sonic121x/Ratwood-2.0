@@ -41,7 +41,7 @@
 	name = "颈动脉撕裂"
 	check_name = span_artery("<B>颈动脉</B>")
 	severity = WOUND_SEVERITY_FATAL
-	crit_message = "鲜血从%VICTIM的喉咙喷涌而出！"
+	crit_message = "鲜血从%VICTIM的咽喉喷涌而出！"
 	whp = 100
 	sewn_whp = 25
 	bleed_rate = 50
@@ -77,10 +77,10 @@
 		var/mob/living/carbon/carbon_affected = affected
 		carbon_affected.vomit(blood = TRUE)
 	var/static/list/heartaches = list(
-		"噢噢噢我的心脏！",
+		"啊啊啊，我的心脏！",
 		"我的心脏！好痛！",
 		"我要死了！",
-		"我的心脏裂开了！",
+		"我的心脏被撕裂了！",
 		"我的心脏在流血！",
 	)
 	to_chat(affected, span_userdanger("[pick(heartaches)]"))
@@ -94,7 +94,7 @@
 		carbon_owner.vomit(1, blood = TRUE, stun = TRUE)
 
 /datum/wound/artery/reattachment
-	name = "断肢再植"
+	name = "断肢再植伤口"
 	check_name = span_artery("<B>未缝合</B>")
 	severity = WOUND_SEVERITY_FATAL
 	whp = 100

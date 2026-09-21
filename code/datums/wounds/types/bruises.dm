@@ -13,7 +13,7 @@
 	werewolf_infection_probability = 0
 
 /datum/wound/bruise/small
-	name = "瘀伤"
+	name = "淤伤"
 	whp = 15
 	bleed_rate = 0
 	woundpain = 5
@@ -28,7 +28,7 @@
 	woundpain = 25
 
 /datum/wound/bruise/woundheal
-	name = "愈合血肿"
+	name = "消退的血肿"
 	whp = 240	//2 mins passively, quicker w/ a miracle
 	bleed_rate = 0
 	clotting_rate = 0
@@ -52,7 +52,7 @@
 	severity_names = list(
 		"轻微" = 20,
 		"中度" = 60,
-		"严重" = 120,
+		"大型" = 120,
 		"巨大" = 180
 	)
 

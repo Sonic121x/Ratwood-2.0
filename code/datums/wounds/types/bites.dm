@@ -13,11 +13,11 @@
 	passive_healing = 0.5
 
 /datum/wound/bite/small
-	name = "轻咬伤"
+	name = "轻微咬伤"
 	whp = 15
 
 /datum/wound/bite/large
-	name = "凶狠咬伤"
+	name = "狰狞咬伤"
 	whp = 40
 	sewn_whp = 15
 	bleed_rate = 1
@@ -46,9 +46,9 @@
 	can_cauterize = TRUE
 	passive_healing = 0.5
 	severity_names = list(
-		"浅表" = 3,
-		"深度" = 8,
-		"严重" = 12,
+		"浅层" = 3,
+		"深层" = 8,
+		"狰狞" = 12,
 		"致命" = 15,
 		"骇人" = 20,
 	)

@@ -26,7 +26,7 @@
 	sew_threshold = 35
 
 /datum/wound/puncture/large
-	name = "裂开穿刺伤"
+	name = "大洞穿刺伤"
 	whp = 40
 	sewn_whp = 20
 	bleed_rate = 1
@@ -54,8 +54,8 @@
 	severity_names = list(
 		"浅层" = 3,
 		"深层" = 6,
-		"严重" = 9,
-		"凶险" = 12,
+		"狰狞" = 9,
+		"严重" = 12,
 		"致命" = 20,
 	)
 
@@ -111,8 +111,8 @@
 	severity_names = list(
 		"浅层" = 2,
 		"深层" = 4,
-		"严重" = 8,
-		"凶险" = 12,
+		"狰狞" = 8,
+		"严重" = 12,
 		"致命" = 20,
 	)
 
@@ -149,8 +149,8 @@
 #undef GOUGE_ARMORED_BLEED_CLAMP
 
 /datum/wound/puncture/drilling
-	name = "钻伤"
-	check_name = span_bloody("<B>钻伤</B>")
+	name = "钻孔伤"
+	check_name = span_bloody("<B>钻孔伤</B>")
 	severity = WOUND_SEVERITY_SUPERFICIAL
 	whp = 40
 	sewn_whp = 20

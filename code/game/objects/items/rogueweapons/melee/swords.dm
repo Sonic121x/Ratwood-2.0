@@ -110,7 +110,7 @@
 	name = "mandritto"
 	icon_state = "incutmaster"
 	desc = "Strike the opponent with the true edge of the sword and penetrate the lightest armors. Poor at damaging armor."
-	attack_verb = list("masterfully cuts", "artfully slits", "adroitly slashes")
+	attack_verb = list("娴熟地切开", "巧妙地割开", "灵巧地挥砍")
 	// You do more damage to exposed areas than stabbing, but your damage to armor is slightly less effective than a normal longsword.
 	// This effectively means you do 1.2x damage to flesh, but 0.9x damage to armor.
 	damfactor = 1.2
@@ -121,7 +121,7 @@
 	name = "fendente"
 	icon_state = "inchop"
 	desc = "Swing your sword in a wide arc, striking them with the true edge of the blade but exposing yourself. Damages shields more and penetrates even hardened leather."
-	attack_verb = list("furiously chops", "powerfully cleaves", "fiercely hacks")
+	attack_verb = list("狂怒地砍击", "有力地劈开", "凶猛地劈砍")
 	// This is almost x2 slower than a regular longsword's chop, giving the opponent more time to riposte you.
 	// This however will penetrate all Light AC armor except for brigandine parts. Also does x2 damage to shields.
 	penfactor = 40
@@ -132,14 +132,14 @@
 	name = "stoccato"
 	icon_state = "instabmaster"
 	desc = "Enter a long guard and thrust forward with your entire upper body while advancing, maximizing the effectiveness of the thrust."
-	attack_verb =  list("skillfully perforates", "artfully punctures", "deftly sticks")
+	attack_verb =  list("娴熟地刺穿", "巧妙地穿刺", "灵巧地刺击")
 	damfactor = 1.35
 
 /datum/intent/sword/thrust/long/deep/master
 	name = "stoccato profondo"
 	icon_state = "inlunge"
 	desc = "A precise thrust over the opponent's weapon aimed for the gaps in one's armor instead of damaging the armor. Leaves you exposed during the swing."
-	attack_verb = list("carefully pierces", "precisely thrusts", "accurately impales")
+	attack_verb = list("谨慎地穿刺", "精准地突刺", "准确地贯穿")
 	// Stab someone directly. 50% damage to armor.
 	// Best used like an estoc.
 	penfactor = 50
@@ -153,7 +153,7 @@
 	name = "clinch & swipe"
 	desc = "Get up in your opponent's face and force them into a clinch, then swipe their face with the crossguard while they're distracted. Good against baited or exhausted opponents."
 	icon_state = "inpunish"
-	attack_verb = list("forcibly clinches and swipes")
+	attack_verb = list("强行贴身横斩")
 	animname = "strike"
 	target_parts = list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE)
 	blade_class = BCLASS_BLUNT
@@ -171,7 +171,7 @@
 	name = "mezza spada"
 	icon_state = "inimpale"
 	desc = "Grip the dull portion of your longsword with either hand and use it as leverage to deliver precise, powerful strikes that can dig into gaps in plate and push past maille."
-	attack_verb = list("goes into a half-sword stance and skewers", "enters a half-sword stance and impales")
+	attack_verb = list("摆出半剑架势刺穿", "摆出半剑架势贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 80
 	clickcd = 12
@@ -186,7 +186,7 @@
 /datum/intent/effect/daze/longsword
 	name = "durchlauffen"
 	desc = "Quickly flip your weapon around to the blunt end and slam an opponent in the throat, mouth, or nose, affecting their ability to breathe properly. Slow, and can be cancelled by GUARDING, but applies a long-lasting debuff."
-	attack_verb = list("masterfully pummels")
+	attack_verb = list("娴熟地猛击")
 	intent_effect = /datum/status_effect/debuff/dazed/longsword
 	target_parts = list(BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_NECK)
 	damfactor = 0.3
@@ -196,7 +196,7 @@
 /datum/intent/effect/daze/longsword2h
 	name = "zorn ort"
 	desc = "Block the opponent's weapon with a strike of your own and advance into a thrust towards the eyes, affecting their vision severely. Can only be performed two-handed."
-	attack_verb = list("masterfully pokes")
+	attack_verb = list("娴熟地戳刺")
 	intent_effect = /datum/status_effect/debuff/dazed/longsword2h
 	target_parts = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE)
 	blade_class = BCLASS_STAB
@@ -207,7 +207,7 @@
 /datum/intent/sword/thrust/blunt
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	attack_verb = list("顶刺", "戳击")
+	attack_verb = list("戳击", "戳刺")
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
@@ -215,7 +215,7 @@
 /datum/intent/sword/strike
 	name = "柄击"
 	icon_state = "instrike"
-	attack_verb = list("猛砸", "重击")
+	attack_verb = list("猛砸", "敲击")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -261,7 +261,7 @@
 /datum/intent/sword/chop
 	name = "劈砍"
 	icon_state = "inchop"
-	attack_verb = list("砍劈", "劈开")
+	attack_verb = list("砍击", "劈砍")
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
@@ -1058,7 +1058,7 @@
 /datum/intent/sword/cut/exe/cleave
 	name = "裂斩"
 	icon_state = "incleave"
-	attack_verb = list("劈裂", "斩穿")
+	attack_verb = list("劈开", "斩穿")
 	clickcd = CLICK_CD_MASSIVE // Distinguished from GSword by being sluggish
 	damfactor = 1.2
 	cleave = /datum/cleave_pattern/forward_cleave
@@ -1067,7 +1067,7 @@
 /datum/intent/sword/cut/exe/sweep
 	name = "横扫斩"
 	icon_state = "insweep"
-	attack_verb = list("横扫而过", "横斩")
+	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	damfactor = 1.2 // Hits harder but clunkier
 	cleave = /datum/cleave_pattern/horizontal_sweep
@@ -1182,7 +1182,7 @@
 /datum/intent/sword/chop/cleave
 	name = "震慑劈砍"
 	icon_state = "incarve"
-	attack_verb = list("劈裂", "撕裂而过", "劈开")
+	attack_verb = list("劈开", "撕裂", "斩穿")
 	chargedrain = 1.8
 	chargetime = 12
 	swingdelay = 0
@@ -1676,7 +1676,7 @@
 /datum/intent/sword/cut/sabre/master
 	name = "pokrajać"
 	desc = "Perform a masterful wide-arc cut that's strong enough to penetrate light armour."
-	attack_verb = list("masterfully cuts", "deftly slits", "quarts")
+	attack_verb = list("娴熟地切开", "灵巧地割开", "横弧斩击")
 	clickcd = 7
 	damfactor = 1.25
 	penfactor = 55
@@ -1684,7 +1684,7 @@
 /datum/intent/effect/daze/freisabre
 	name = "uszkodzić"
 	desc = "After a few misleading strikes, suddenly slash at your opponent's wrist to affect their speed and strength, preventing them from using their weapon effectively. This move can be parried, but not dodged."
-	attack_verb = list("deftly wrist-slits")
+	attack_verb = list("灵巧地割伤")
 	intent_effect = /datum/status_effect/debuff/dazed/freisabre
 	target_parts = list(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
 	blade_class = BCLASS_CUT

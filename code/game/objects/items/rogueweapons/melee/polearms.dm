@@ -47,7 +47,7 @@
 	reach = 2
 	effective_range = 2
 	icon_state = "inlance"
-	attack_verb = list("lances", "runs through", "skewers")
+	attack_verb = list("枪刺", "贯穿", "刺穿")
 
 
 /datum/intent/spear/thrust/blunted
@@ -78,7 +78,7 @@
 /datum/intent/spear/cut
 	name = "劈斩"
 	blade_class = BCLASS_CUT
-	attack_verb = list("切开", "挥斩")
+	attack_verb = list("切开", "挥砍")
 	icon_state = "incut"
 	damfactor = 0.8
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
@@ -103,7 +103,7 @@
 /datum/intent/spear/cut/bardiche/cleave
 	name = "裂斩"
 	icon_state = "incleave"
-	attack_verb = list("劈裂", "斩穿")
+	attack_verb = list("劈开", "斩穿")
 	clickcd = CLICK_CD_MASSIVE
 	damfactor = 1.0
 	cleave = /datum/cleave_pattern/forward_cleave
@@ -120,7 +120,7 @@
 /datum/intent/spear/cut/glaive/sweep
 	name = "横扫斩"
 	icon_state = "insweep"
-	attack_verb = list("横扫而过", "横斩")
+	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	cleave = /datum/cleave_pattern/horizontal_sweep
 	desc = "一记横扫，会斩开身前的所有目标。"
@@ -140,7 +140,7 @@
 /datum/intent/spear/cut/naginata/sweep
 	name = "横扫斩"
 	icon_state = "insweep"
-	attack_verb = list("横扫而过", "横斩")
+	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	cleave = /datum/cleave_pattern/horizontal_sweep
 	desc = "一记横扫，会斩开身前的所有目标。"
@@ -165,7 +165,7 @@
 	name = "横扫斩"
 	icon_state = "insweep"
 	desc = "一记沉重的横扫，会斩开身前的所有目标。"
-	attack_verb = list("横扫而过", "横斩")
+	attack_verb = list("横扫", "横斩")
 	reach = 1
 	clickcd = CLICK_CD_MASSIVE
 	cleave = /datum/cleave_pattern/horizontal_sweep
@@ -178,7 +178,7 @@
 /datum/intent/sword/lunge
 	name = "突进"
 	icon_state = "inimpale"
-	attack_verb = list("突进")
+	attack_verb = list("突进刺击")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -1986,7 +1986,7 @@
 	name = "穿刺"
 	icon_state = "inimpale"
 	penfactor = 55
-	attack_verb = list("刺穿", "贯穿")
+	attack_verb = list("贯穿", "刺穿")
 	reach = 2
 	damfactor = 1.25
 	clickcd = 55
@@ -2023,7 +2023,7 @@
 /datum/intent/sword/sucker_punch/dragonslayer
 	name = "避无可避的重拳"
 	icon_state = "inpunch"
-	attack_verb = list("重拳猛击", "掐扼", "狠狠干中")
+	attack_verb = list("拳击", "扼击", "重击")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
@@ -2038,7 +2038,7 @@
 /datum/intent/sword/flay/dragonslayer
 	name = "剥皮"
 	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>剥皮</font>")
+	attack_verb = list("<font color ='#e7e7e7'>剥皮撕扯</font>")
 	animname = "cut"
 	blade_class = BCLASS_PEEL
 	hitsound = list('sound/combat/hits/blunt/frying_pan(1).ogg', 'sound/combat/hits/blunt/frying_pan(2).ogg', 'sound/combat/hits/blunt/frying_pan(3).ogg', 'sound/combat/hits/blunt/frying_pan(4).ogg')
@@ -2053,7 +2053,7 @@
 /datum/intent/sword/cut/exe/sweep/dragonslayer
 	name = "斩首横扫"
 	icon_state = "insweep"
-	attack_verb = list("横扫而过", "横斩")
+	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	reach = 2
 	damfactor = 2 // Hits harder but clunkier

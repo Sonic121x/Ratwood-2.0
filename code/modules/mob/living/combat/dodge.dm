@@ -52,7 +52,7 @@
 						continue
 				break
 	if(!turfy)
-		to_chat(src, span_boldwarning("There's nowhere to dodge to!"))
+		to_chat(src, span_boldwarning("无处可躲！"))
 		return FALSE
 	if(do_dodge(attacker, turfy))
 		flash_fullscreen("blackflash2")
@@ -62,7 +62,7 @@
 		if(magearmor == 0)
 			magearmor = 1
 			apply_status_effect(/datum/status_effect/buff/magearmor)
-			to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+			to_chat(src, span_boldwarning("我的法师护甲吸收了这一击，随之消散！"))
 			return TRUE
 	return FALSE
 
@@ -120,7 +120,7 @@
 	if(!human_dodger)
 		prob2defend = clamp(prob2defend, 5, 90)
 		if(client?.prefs.showrolls)
-			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
+			to_chat(src, span_info("闪避判定……[prob2defend]%"))
 		if(!prob(prob2defend))
 			return FALSE
 
@@ -185,21 +185,21 @@
 
 		var/attacker_feedback
 		if(attacker.client?.prefs.showrolls && (attacker_dualw || defender_dualw))
-			attacker_feedback = "Attacking with advantage. ([100 - ((prob2defend / 100) * (prob2defend / 100) * 100)]%)"
+			attacker_feedback = "以优势发动攻击。（[100 - ((prob2defend / 100) * (prob2defend / 100) * 100)]%）"
 
 		if(client?.prefs.showrolls)
-			var/text = "Roll to dodge... [prob2defend]%"
+			var/text = "闪避判定……[prob2defend]%"
 			if((defender_dualw || attacker_dualw))
 				if(defender_dualw && attacker_dualw)
-					text += " Our dual wielding cancels out!"
+					text += " 双方的双持效果相互抵消！"
 				else//If we're defending against or as a dual wielder, we roll disadv. But if we're both dual wielding it cancels out.
-					text += " Twice! Disadvantage! ([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
+					text += " 劣势判定，需连续成功两次！（[(prob2defend / 100) * (prob2defend / 100) * 100]%）"
 			to_chat(src, span_info("[text]"))
 
 		var/dodge_status = FALSE
 		if((!defender_dualw && !attacker_dualw) || (defender_dualw && attacker_dualw)) //They cancel each other out
 			if(attacker_feedback)
-				attacker_feedback = "Advantage cancelled out!"
+				attacker_feedback = "优势被抵消了！"
 			if(prob(prob2defend))
 				dodge_status = TRUE
 		else if(attacker_dualw)
@@ -217,7 +217,7 @@
 		if(!attacker?.mind) // For NPC, reduce the drained to 5 stamina
 			drained = drained_npc
 		if(!human_dodger.stamina_add(max(drained,5)))
-			to_chat(src, span_warning("I'm too tired to dodge!"))
+			to_chat(src, span_warning("我太累了，无法闪避！"))
 			return FALSE
 
 	// Should only show success cause it terminates earlier otherwise
@@ -227,9 +227,9 @@
 	playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
 	throw_at(turfy, 1, 2, src, FALSE)
 	if(drained > 0)
-		visible_message(span_warning("<b>[src]</b> dodges [attacker]'s attack!"))
+		visible_message(span_warning("<b>[src]</b>躲开了[attacker]的攻击！"))
 	else
-		visible_message(span_warning("<b>[src]</b> easily dodges [attacker]'s attack!"))
+		visible_message(span_warning("<b>[src]</b>轻松躲开了[attacker]的攻击！"))
 	if(get_dist(src, attacker) <= attacker.used_intent?.reach)	//We are still in range of the attacker's weapon post-dodge
 		var/probclip = 50
 		var/obj/item/IS = get_active_held_item()
@@ -255,14 +255,14 @@
 			IS.take_damage(intdam, BRUTE, IU.d_type)
 			IS.remove_bintegrity(sharp_loss, src)
 
-			attacker.visible_message(span_warning("<b>[attacker]</b> clips [src]'s weapon!"))
+			attacker.visible_message(span_warning("<b>[attacker]</b>擦中了[src]的武器！"))
 			playsound(attacker, 'sound/misc/weapon_clip.ogg', 100)
 
 	if(mind && attacker.mind && HAS_TRAIT(src, TRAIT_COMBAT_AWARE))
-		var/text = "[bodyzone2readablezone(attacker.zone_selected)]..."
+		var/text = "[parse_zone(attacker.zone_selected)]……"
 		if(HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS))
 			if(prob(10))
-				text = "<i>Can't tell...</i>"
+				text = "<i>看不出来……</i>"
 				attacker.balloon_alert(src, text)
 		else
 			attacker.balloon_alert(src, text)

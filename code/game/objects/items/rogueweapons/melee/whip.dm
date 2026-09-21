@@ -35,7 +35,7 @@
 /datum/intent/whip/lash
 	name = "鞭挞"
 	blade_class = BCLASS_LASHING
-	attack_verb = list("鞭挞", "抽裂")
+	attack_verb = list("鞭打", "抽打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
@@ -48,7 +48,7 @@
 /datum/intent/whip/crack
 	name = "裂击"
 	blade_class = BCLASS_CUT				//Lets you dismember
-	attack_verb = list("抽裂", "击打") //something something dwarf fotresss
+	attack_verb = list("抽打", "打击") //something something dwarf fotresss
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
@@ -62,7 +62,7 @@
 /datum/intent/whip/punish
 	name = "惩戒"
 	blade_class = BCLASS_PUNISH
-	attack_verb = list("鞭挞", "抽裂")
+	attack_verb = list("鞭打", "抽打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 5
@@ -76,7 +76,7 @@
 /datum/intent/whip/lash/holy
 	name = "圣鞭"
 	blade_class = BCLASS_CUT
-	attack_verb = list("鞭挞", "抽裂")
+	attack_verb = list("鞭打", "抽打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
@@ -249,7 +249,7 @@
 /datum/intent/whip/crack/urumi/heavy
 	name = "重型软剑裂击"
 	blade_class = BCLASS_CHOP //why not
-	attack_verb = list("抽裂", "斩击")
+	attack_verb = list("抽打", "挥砍")
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	chargetime = 0.7 SECONDS
 	recovery = 10
@@ -262,7 +262,7 @@
 /datum/intent/whip/crack/urumi
 	name = "软剑裂击"
 	blade_class = BCLASS_CHOP //why not
-	attack_verb = list("抽裂", "斩击")
+	attack_verb = list("抽打", "挥砍")
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	chargetime = 0.9 SECONDS
 	recovery = 10
@@ -275,7 +275,7 @@
 /datum/intent/whip/thrust // elden ring nonsense, but cool
 	name = "软剑突刺"
 	blade_class = BCLASS_STAB
-	attack_verb = list("突刺", "贯穿", "穿刺", "刺穿")
+	attack_verb = list("突刺", "刺穿", "串刺", "穿透")
 	animname = "stab"
 	icon_state = "instab"
 	reach = 3
@@ -291,7 +291,7 @@
 /datum/intent/whip/thrust/heavy // elden ring nonsense, but cool
 	name = "软剑突刺"
 	blade_class = BCLASS_STAB
-	attack_verb = list("突刺", "贯穿", "穿刺", "刺穿")
+	attack_verb = list("突刺", "刺穿", "串刺", "穿透")
 	animname = "stab"
 	icon_state = "instab"
 	reach = 3

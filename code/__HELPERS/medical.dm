@@ -1,7 +1,7 @@
 /proc/parse_zone(zone, obj/item/bodypart/affecting = null)
 	// this helps adapt older code
 	if(affecting?.body_zone == BODY_ZONE_TAUR)
-		return "下半身"
+		return "四足下身"
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_HAND)
 			return "右手"
@@ -20,9 +20,9 @@
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "右脚"
 		if(BODY_ZONE_TAUR)
-			return "下半身"
+			return "四足下身"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "喉咙"
+			return "咽喉"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "腹股沟"
 		if(BODY_ZONE_PRECISE_EARS)	//we want the chatlog to say 'grabbed his ear' not 'grabbed his ears' etc
@@ -38,10 +38,10 @@
 		if(BODY_ZONE_PRECISE_L_INHAND)
 			return "左手"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "头骨"
+			return "颅骨"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "嘴巴"
-	return zone
+	return zone == BODY_ZONE_HEAD ? "头部" : (zone == BODY_ZONE_CHEST ? "胸部" : (zone == BODY_ZONE_PRECISE_STOMACH ? "腹部" : zone))
 
 /proc/parse_organ_slot(slot)
 	switch(slot)

@@ -1,5 +1,5 @@
 /datum/wound/dismemberment
-	name = "流血残端"
+	name = "流血的残端"
 	check_name = span_danger("<B>残端</B>")
 	severity = WOUND_SEVERITY_CRITICAL
 	whp = 75
@@ -48,6 +48,6 @@
 	mob_overlay = "dis_ll"
 
 /datum/wound/dismemberment/taur
-	name = "兽躯残端"
-	check_name = span_danger("<B>兽躯残端</B>")
+	name = "四足下身残端"
+	check_name = span_danger("<B>四足下身残端</B>")
 	mob_overlay = "dis_taur"

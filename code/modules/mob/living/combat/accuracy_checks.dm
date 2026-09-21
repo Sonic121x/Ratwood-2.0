@@ -63,14 +63,14 @@
 			if(check_zone(zone) == zone)
 				return zone
 			if(user.client?.prefs.showrolls)
-				to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
+				to_chat(user, span_warning("精准命中判定失败！[chance2hit]%"))
 			if(user.STAPER >= 11)
 				return check_zone(zone)
 			else
 				return BODY_ZONE_CHEST
 		else
 			if(user.client?.prefs.showrolls)
-				to_chat(user, span_warning("Double accuracy fail! [chance2hit]%"))
+				to_chat(user, span_warning("两次精准命中判定均失败！[chance2hit]%"))
 			return BODY_ZONE_CHEST
 
 /// Melee accuracy check. Computes weapon/intent-specific modifiers and delegates to resolve_aimed_zone().
@@ -122,7 +122,7 @@
 		return TRUE
 
 /proc/badluckmessage(mob/living/user)
-	var/static/list/usedp = list("Critical miss!", "Damn! Critical miss!", "No! Critical miss!", "It can't be! Critical miss!", "Xylix laughs at me! Critical miss!", "Bad luck! Critical miss!", "Curse creation! Critical miss!", "What?! Critical miss!")
+	var/static/list/usedp = list("攻击大失败！", "该死！攻击大失败！", "不！攻击大失败！", "不可能！攻击大失败！", "赛利克斯在嘲笑我！攻击大失败！", "真倒霉！攻击大失败！", "诅咒这世间万物！攻击大失败！", "什么？！攻击大失败！")
 	to_chat(user, span_boldwarning("[pick(usedp)]"))
 	user.flash_fullscreen("blackflash2")
 	user.aftermiss()
@@ -151,7 +151,7 @@
 /mob/living/proc/show_ranged_accuracy_fail(mob/living/user, aimed_zone, landed_zone, list/roll_out)
 	if(aimed_zone == landed_zone || !isliving(user) || !user.client?.prefs.showrolls)
 		return
-	to_chat(user, span_warning("Accuracy fail! [roll_out?["chance"]]% - hit the [hit_zone_name(landed_zone)] instead."))
+	to_chat(user, span_warning("精准命中判定失败！[roll_out?["chance"]]%——偏中了[hit_zone_name(landed_zone)]。"))
 
 //below two procs are part of the larger simple animal overhaul and NPC overhaul AP has. Right now they return null and don't impact the math.
 /mob/living/proc/get_zone_melee_hit_bonus(zone)

@@ -111,9 +111,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		return
 	var/visible_name = name
 	if(is_sewn())
-		visible_name += " <span class='green'>(已缝合)</span>"
+		visible_name += " <span class='green'>（已缝合）</span>"
 	if(is_clotted())
-		visible_name += " <span class='danger'>(已凝血)</span>"
+		visible_name += " <span class='danger'>（已凝血）</span>"
 	return visible_name
 
 /// Description of this wound returned to the player when the bodypart is checked with check_for_injuries()
@@ -129,14 +129,14 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		final_message = replacetext(final_message, "%VICTIM", "[affected.name]")
 		final_message = replacetext(final_message, "%P_THEIR", "[affected.p_their()]")
 	else
-		final_message = replacetext(final_message, "%VICTIM", "受害者")
-		final_message = replacetext(final_message, "%P_THEIR", "其")
+		final_message = replacetext(final_message, "%VICTIM", "伤者")
+		final_message = replacetext(final_message, "%P_THEIR", "their")
 	if(affected_bodypart)
-		final_message = replacetext(final_message, "%BODYPART", "[affected_bodypart.name]")
+		final_message = replacetext(final_message, "%BODYPART", "[parse_zone(affected_bodypart.body_zone, affected_bodypart)]")
 	else
 		final_message = replacetext(final_message, "%BODYPART", parse_zone(BODY_ZONE_CHEST))
 	if(critical)
-		final_message = "<span class='crit'><b>暴击！</b> [final_message]</span>"
+		final_message = "<span class='crit'><b>重创！</b> [final_message]</span>"
 	return final_message
 
 /// Sound that plays when this wound is applied to a mob
@@ -430,9 +430,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 					newname = sevname
 			if(severity_names[sevname] <= bleed_rate)
 				newname = sevname
-	name = "[newname  ? "[newname] " : ""][initial(name)]"	//[adjective] [name], aka, "gnarly slash" or "slash"
+	name = "[newname  ? "[newname]" : ""][initial(name)]"	//[adjective] [name], aka, "gnarly slash" or "slash"
 	if(name != oldname)
-		owner.visible_message(span_red("[owner]的[LOWER_TEXT(bodyzone2readablezone(bodypart_to_zone(bodypart_owner)))]上的[oldname]恶化了！"))
+		owner.visible_message(span_red("[owner]的[parse_zone(bodypart_to_zone(bodypart_owner))]上的[oldname]恶化了！"))
 
 // Blank because it'll be overridden by wound code.
 /datum/wound/dynamic
@@ -451,7 +451,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				set_bleed_rate(cap)
 				if(!is_armor_maxed)
 					playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
-					owner.visible_message(span_crit("[bodypart_owner.owner]的<b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>上的伤口再次撕裂，但护甲阻止了它继续恶化！"))
+					owner.visible_message(span_crit("[bodypart_owner.owner]的<b>[parse_zone(bodypart_to_zone(bodypart_owner))]</b>上的伤口撕裂了，护甲阻止了伤口继续扩大！"))
 					is_armor_maxed = TRUE
 
 #define CLOT_THRESHOLD_INCREASE_PER_HIT 0.1	//This raises the MINIMUM bleed the wound can clot to.
@@ -466,7 +466,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 			set_bleed_rate(ARTERY_LIMB_BLEEDRATE)
 			if(!is_maxed)
 				playsound(owner, 'sound/combat/wound_tear.ogg', 100, TRUE)
-				owner.visible_message(span_crit("[bodypart_owner.owner]的<b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>上的伤口猛然裂开，割到了动脉！"))
+				owner.visible_message(span_crit("[bodypart_owner.owner]的<b>[parse_zone(bodypart_to_zone(bodypart_owner))]</b>上的伤口崩裂，伤及动脉，鲜血喷涌而出！"))
 				is_maxed = TRUE
 			clotting_rate = CLOT_RATE_ARTERY
 			clotting_threshold = CLOT_THRESHOLD_ARTERY

@@ -5,8 +5,8 @@
 	crit_message = list(
 		"骨头碎裂了！",
 		"骨头断了！",
-		"%BODYPART被重创了！",
-		"断骨刺穿了皮肉！",
+		"%BODYPART遭到了重创！",
+		"断骨刺穿了皮肤！",
 	)
 	sound_effect = "wetbreak"
 	whp = 40
@@ -40,7 +40,7 @@
 /datum/wound/fracture/get_visible_name(mob/user)
 	. = ..()
 	if(passive_healing)
-		. += " <span class='green'>(已复位)</span>"
+		. += " <span class='green'>（已复位）</span>"
 
 /datum/wound/fracture/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/fracture) && (type == other.type))
@@ -65,12 +65,12 @@
 
 /datum/wound/fracture/head
 	name = "颅骨骨折"
-	check_name = span_bone("<B>颅裂</B>")
+	check_name = span_bone("<B>颅骨碎裂</B>")
 	crit_message = list(
-		"头骨以骇人的方式碎裂了！",
-		"脑袋被砸烂了！",
-		"头骨裂开了！",
-		"头骨凹陷下去了！",
+		"颅骨碎裂，惨不忍睹！",
+		"头部被砸烂了！",
+		"颅骨断裂了！",
+		"颅骨凹陷了！",
 	)
 	sound_effect = "headcrush"
 	whp = 150
@@ -114,8 +114,8 @@
 	name = "凹陷性颅骨骨折"
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
+		"颅骨被刺破了！",
 		"颅骨被刺穿了！",
-		"颅骨被贯穿了！",
 		"颅骨被撕裂了！",
 	)
 	embed_chance = 100	// Didn't we remove embeding..?
@@ -124,12 +124,12 @@
 	paralysis = TRUE
 
 /datum/wound/fracture/head/eyes
-	name = "眶骨骨折"
+	name = "眼眶骨折"
 	crit_message = list(
-		"眶骨被刺穿了！",
-		"眶骨被贯穿了！",
+		"眼眶骨被刺破了！",
+		"眼眶骨被刺穿了！",
+		"眼窝被刺破了！",
 		"眼窝被刺穿了！",
-		"眼窝被贯穿了！",
 	)
 	embed_chance = 100
 	clotting_threshold = 0.4	//Eye-bone fucked
@@ -150,10 +150,10 @@
 	name = "颞骨骨折"
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
-		"眶骨被刺穿了！",
-		"颞骨被贯穿了！",
+		"眼眶骨被刺破了！",
+		"颞骨被刺穿了！",
+		"耳道被刺破了！",
 		"耳道被刺穿了！",
-		"耳道被贯穿了！",
 	)
 	embed_chance = 100
 	paralysis = FALSE
@@ -162,14 +162,14 @@
 
 /datum/wound/fracture/head/ears/on_mob_gain(mob/living/affected)
 	. = ..()
-	to_chat(affected, span_warning("耳中先是嗡鸣，随后一切声音骤然消失！"))
+	to_chat(affected, span_warning("我的耳朵嗡嗡作响，随后突然什么都听不见了！"))
 	affected.confused += 25	//Drunk-walk effect, basically.
 	affected.dizziness += 25
 	ADD_TRAIT(affected, TRAIT_DEAF, "[type]")
 
 /datum/wound/fracture/head/ears/on_mob_loss(mob/living/affected)
 	. = ..()
-	to_chat(affected, span_notice("我的听觉正慢慢恢复回来.."))
+	to_chat(affected, span_notice("我的听力慢慢恢复了……"))
 	affected.confused -= 25
 	affected.dizziness -= 25
 	REMOVE_TRAIT(affected, TRAIT_DEAF, "[type]")
@@ -177,8 +177,8 @@
 /datum/wound/fracture/head/nose
 	name = "鼻骨骨折"
 	crit_message = list(
+		"鼻骨被刺破了！",
 		"鼻骨被刺穿了！",
-		"鼻骨被贯穿了！",
 	)
 	paralysis = FALSE	//Fucks your nose, but won't paralyze you anymore.
 	knockout = 20		//Longer knockout than a normal head-fracture
@@ -198,12 +198,12 @@
 
 /datum/wound/fracture/mouth
 	name = "下颌骨骨折"
-	check_name = span_bone("下颌骨骨折")
+	check_name = span_bone("下颌骨折")
 	crit_message = list(
-		"下颌骨利落地裂开了！",
-		"下巴被砸碎了！",
-		"下巴碎裂了！",
-		"下巴凹陷下去了！",
+		"下颌骨崩裂四散！",
+		"下颌被砸烂了！",
+		"下颌碎裂了！",
+		"下颌凹陷了！",
 	)
 	mortal = FALSE
 	whp = 50
@@ -223,11 +223,11 @@
 
 /datum/wound/fracture/neck
 	name = "颈椎骨折"
-	check_name = span_bone("<B>颈部</B>")
+	check_name = span_bone("<B>颈椎</B>")
 	crit_message = list(
-		"脊椎以惊人的方式碎裂了！",
-		"脊椎断裂了！",
-		"脊椎开裂了！",
+		"脊椎骇人地碎裂了！",
+		"脊椎折断了！",
+		"脊椎裂开了！",
 		"脊椎断了！",
 	)
 	whp = 100
@@ -255,10 +255,10 @@
 	name = "肋骨骨折"
 	check_name = span_bone("<B>肋骨</B>")
 	crit_message = list(
-		"肋骨以惊人的方式碎裂了！",
+		"肋骨纷纷碎裂！",
 		"肋骨被砸碎了！",
-		"肋骨被重创了！",
-		"胸廓凹陷下去了！",
+		"肋骨遭到了重创！",
+		"胸廓塌陷了！",
 	)
 	whp = 50
 	bleed_rate = 25				//Higher than artery
@@ -285,10 +285,10 @@
 	name = "骨盆骨折"
 	check_name = span_bone("<B>骨盆</B>")
 	crit_message = list(
-		"骨盆以惊人的方式碎裂了！",
+		"骨盆骇人地碎裂了！",
 		"骨盆被砸碎了！",
-		"骨盆被重创了！",
-		"骨盆底塌陷下去了！",
+		"骨盆遭到了重创！",
+		"盆底塌陷了！",
 	)
 	whp = 50
 	gain_emote = "groin"	//MY PIINTLE!!!!

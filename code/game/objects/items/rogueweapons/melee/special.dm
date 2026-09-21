@@ -3,7 +3,7 @@
 	name = "重砸"
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
-	attack_verb = list("重砸", "痛击")
+	attack_verb = list("猛砸", "打击")
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR

@@ -422,7 +422,7 @@
 /datum/intent/pick //now like icepick intent, we really went in a circle huh
 	name = "啄刺"
 	icon_state = "inpick"
-	attack_verb = list("啄刺", "贯穿")
+	attack_verb = list("啄刺","贯穿")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
 	penfactor = 80
 	animname = "strike"
@@ -435,7 +435,7 @@
 /datum/intent/pick/bad	//One-handed intents
 	name = "迟缓啄刺"
 	icon_state = "inpick"
-	attack_verb = list("啄刺", "贯穿")
+	attack_verb = list("啄刺","贯穿")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
 	penfactor = 60
 	animname = "strike"
@@ -448,7 +448,7 @@
 /datum/intent/pick/ranged
 	name = "远距啄刺"
 	icon_state = "inpick"
-	attack_verb = list("刺入", "贯穿")
+	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 60
 	damfactor = 1.1
@@ -473,7 +473,7 @@
 
 /datum/intent/shoot/prewarning()
 	if(masteritem && mastermob)
-		mastermob.visible_message(span_warning("[mastermob]举起了[masteritem]瞄准！"))
+		mastermob.visible_message(span_warning("[mastermob]举起[masteritem]瞄准！"))
 
 /datum/intent/arc
 	name = "弧射"
@@ -496,7 +496,7 @@
 
 /datum/intent/arc/prewarning()
 	if(masteritem && mastermob)
-		mastermob.visible_message(span_warning("[mastermob]举起了[masteritem]瞄准！"))
+		mastermob.visible_message(span_warning("[mastermob]举起[masteritem]瞄准！"))
 
 /datum/intent/swing //swinging a sling, no parrydrain
 	name = "甩投"
@@ -512,7 +512,7 @@
 
 /datum/intent/swing/prewarning()
 	if(masteritem && mastermob)
-		mastermob.visible_message(span_warning("[mastermob]甩动着[masteritem]！"))
+		mastermob.visible_message(span_warning("[mastermob]挥动了[masteritem]！"))
 
 /datum/intent/unarmed
 	unarmed = TRUE
@@ -520,7 +520,7 @@
 /datum/intent/unarmed/punch
 	name = "拳击"
 	icon_state = "inpunch"
-	attack_verb = list("挥拳", "猛击", "重殴", "打击")
+	attack_verb = list("拳击", "刺拳击打", "重击", "打击")
 	chargetime = 0
 	noaa = FALSE
 	animname = "bite"
@@ -531,7 +531,7 @@
 	clickcd = 10
 	rmb_ranged = TRUE
 	blade_class = BCLASS_PUNCH
-	miss_text = "朝空气挥了一拳"
+	miss_text = "一拳挥空"
 	miss_sound = "punchwoosh"
 	item_d_type = "blunt"
 	intent_intdamage_factor = 1
@@ -542,11 +542,23 @@
 	if(ismob(target))
 		var/mob/M = target
 		var/list/targetl = list(target)
-		user.visible_message(span_taunt("[user] 嘲弄着 [M]!"), span_taunt("我在嘲弄[M]!"), ignored_mobs = targetl)
+		user.visible_message(span_taunt("[user]挑衅着[M]！"), span_taunt("我挑衅着[M]！"), ignored_mobs = targetl)
 		user.emote("taunt")
-		if(M.client)
-			if(M.can_see_cone(user))
-				to_chat(M, span_danger("[user]在嘲弄我！"))
+		if(M.mind)
+			var/mob/living/L = user
+			var/taunticon = "taunt" // Regular fist
+			var/custom_offset = 21
+			if(istype(L.patron, /datum/patron/inhumen/graggar) || L.get_stress_amount() > 10 || L.get_flaw(/datum/charflaw/paranoid))
+				taunticon = "midfinger" // Very rude, but we're also a Rude Person (or stressed)
+				custom_offset = 23
+
+			if(istype(L.patron, /datum/patron/divine/eora) || HAS_TRAIT(L, TRAIT_PACIFISM))
+				taunticon = "thumbsdown"
+				custom_offset = 24
+
+			L.play_overhead_private_rclickemote(targetl, taunticon, custom_offset)
+			user.changeNext_move(CLICK_CD_FAST)	// Mostly to prevent spamming the animation too heavily.
+			to_chat(M, span_taunt("[user]在挑衅我！"))
 		else
 			M.taunted(user)
 	return
@@ -554,7 +566,7 @@
 /datum/intent/unarmed/claw
 	name = "抓挠"
 	//icon_state
-	attack_verb = list("撕扯", "抓伤", "抓挠")
+	attack_verb = list("撕扯", "抓挠", "爪击")
 	chargetime = 0
 	animname = "blank22"
 	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
@@ -563,7 +575,7 @@
 	swingdelay = 0
 	penfactor = 10
 	blade_class = BCLASS_CUT
-	miss_text = "朝空气抓了一把"
+	miss_text = "挥爪扑空"
 	miss_sound = "punchwoosh"
 	item_d_type = "slash"
 
@@ -650,7 +662,7 @@
 /datum/intent/simple/headbutt
 	name = "头槌"
 	icon_state = "instrike"
-	attack_verb = list("头槌猛撞", "撞击")
+	attack_verb = list("头槌撞击", "冲撞")
 	animname = "blank22"
 	blade_class = BCLASS_BLUNT
 	hitsound = "punch_hard"
@@ -662,14 +674,14 @@
 /datum/intent/simple/claw
 	name = "抓挠"
 	icon_state = "instrike"
-	attack_verb = list("抓挠", "啄击")
+	attack_verb = list("爪击", "啄击")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 0
 	swingdelay = 3
-	miss_text = "朝空气挥了一下"
+	miss_text = "挥击落空"
 	item_d_type = "slash"
 
 /datum/intent/simple/bite
@@ -688,7 +700,7 @@
 /datum/intent/simple/axe
 	name = "劈砍"
 	icon_state = "instrike"
-	attack_verb = list("劈砍", "斩砍", "猛砸")
+	attack_verb = list("劈砍", "砍击", "猛砸")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = list("genchop", "genslash")
@@ -700,7 +712,7 @@
 /datum/intent/simple/spear
 	name = "枪刺"
 	icon_state = "instrike"
-	attack_verb = list("刺击", "穿透")
+	attack_verb = list("刺击", "刺穿")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = list("genthrust", "genstab")

@@ -54,9 +54,9 @@
 	can_sew = TRUE
 	can_cauterize = TRUE
 	severity_names = list(
-		"轻微" = 5,
+		"轻度" = 5,
 		"深层" = 10,
-		"严重" = 15,
+		"狰狞" = 15,
 		"致命" = 20,
 	)
 
@@ -92,12 +92,12 @@
 #undef SLASH_ARMORED_BLEED_CLAMP
 
 /datum/wound/slash/disembowel
-	name = "开膛"
-	check_name = span_userdanger("<B>开膛</B>")
+	name = "开膛伤"
+	check_name = span_userdanger("<B>内脏外露</B>")
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
-		"%VICTIM 的内脏流了一地！",
-		"%VICTIM 的肠子流了一地！",
+		"%VICTIM的内脏流了出来！",
+		"%VICTIM的肠子流了出来！",
 	)
 	sound_effect = 'sound/combat/crit2.ogg'
 	whp = 100
@@ -172,14 +172,14 @@
 	return TRUE
 
 /datum/wound/slash/incision/construct
-	name = "打开舱盖"
-	check_name = span_bloody("<B>打开舱盖</B>")
+	name = "敞开的舱盖"
+	check_name = span_bloody("<B>舱盖敞开</B>")
 	bleed_rate = 0
 	sewn_bleed_rate = 0.0
 	bypass_bloody_wound_check = TRUE
 
 /datum/wound/slash/vein
-	name= "静脉"
+	name= "静脉切口"
 	check_name = span_bloody("<B>静脉</B")
 	severity = WOUND_SEVERITY_LIGHT
 	whp = 40
@@ -194,7 +194,7 @@
 
 
 /datum/wound/dynamic/lashing
-	name = "鞭痕"
+	name = "鞭伤"
 	whp = 30
 	sewn_whp = 12
 	bleed_rate = 0
@@ -205,9 +205,9 @@
 	can_sew = TRUE
 	can_cauterize = FALSE	//Ouch owie oof
 	severity_names = list(
-		"轻微" = 5,
+		"轻度" = 5,
 		"深层" = 10,
-		"严重" = 15,
+		"狰狞" = 15,
 		"致命" = 20,
 	)
 
@@ -243,7 +243,7 @@
 #undef LASHING_ARMORED_BLEED_CLAMP
 
 /datum/wound/dynamic/punish
-	name = "鞭笞伤"
+	name = "重鞭伤"
 	whp = 30
 	sewn_whp = 12
 	bleed_rate = 0
@@ -254,9 +254,9 @@
 	can_sew = TRUE
 	can_cauterize = FALSE	//Ouch owie oof
 	severity_names = list(
-		"轻微" = 5,
+		"轻度" = 5,
 		"深层" = 10,
-		"严重" = 15,
+		"狰狞" = 15,
 		"致命" = 20,
 	)
 
@@ -292,7 +292,7 @@
 #undef PUNISH_ARMORED_BLEED_CLAMP
 
 /datum/wound/lashing
-	name = "鞭痕"
+	name = "鞭伤"
 	whp = 30
 	sewn_whp = 12
 	bleed_rate = 0.6
@@ -309,7 +309,7 @@
 	can_cauterize = TRUE
 
 /datum/wound/lashing/small
-	name = "表浅鞭痕"
+	name = "表浅鞭伤"
 	whp = 15
 	sewn_whp = 5
 	bleed_rate = 0.2
@@ -323,7 +323,7 @@
 	sew_threshold = 30
 
 /datum/wound/lashing/large
-	name = "剧痛鞭痕"
+	name = "剧痛鞭伤"
 	whp = 45
 	sewn_whp = 15
 	bleed_rate = 1.2 //Intended for combat, might kill if used for punishment. Force can be controlled by not charging the whip lash fully.

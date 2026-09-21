@@ -402,7 +402,7 @@
 /datum/intent/claw/lunge
 	name = "突进"
 	icon_state = "inimpale"
-	attack_verb = list("突进")
+	attack_verb = list("突进刺击")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')

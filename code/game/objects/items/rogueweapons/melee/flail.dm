@@ -28,7 +28,7 @@
 /datum/intent/flail/strike
 	name = "打击"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("打击", "砸中")
+	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -47,7 +47,7 @@
 /datum/intent/flail/strikerange
 	name = "远距打击"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("打击", "砸中")
+	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 15
@@ -104,7 +104,7 @@
 	chargetime = 1.2 SECONDS
 	chargedrain = 1
 	chargedloop = /datum/looping_sound/flailswing
-	attack_verb = list("横扫", "横扫而过")
+	attack_verb = list("横扫", "横抽")
 	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
