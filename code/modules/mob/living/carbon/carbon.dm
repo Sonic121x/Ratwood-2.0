@@ -290,8 +290,8 @@
 		if(!thrown_range)
 			thrown_range = thrown_thing.throw_range
 		do_attack_animation(target, no_effect = TRUE)
-		visible_message("<span class='danger'>[src] throws [thrown_thing].</span>", \
-						"<span class='danger'>I toss [thrown_thing].</span>")
+		visible_message("<span class='danger'>[src]掷出了[thrown_thing]。</span>", \
+						"<span class='danger'>我掷出了[thrown_thing]。</span>")
 		log_message("has thrown [thrown_thing]", LOG_ATTACK)
 		thrown_thing.safe_throw_at(target, thrown_range, thrown_speed, src, null, null, null, move_force)
 		changeNext_move(CLICK_CD_MELEE)
