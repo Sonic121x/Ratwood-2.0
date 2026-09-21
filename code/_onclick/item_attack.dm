@@ -16,19 +16,19 @@
  */
 /obj/item/proc/melee_attack_chain(mob/user, atom/target, params)
 	if(user.check_arm_grabbed(user.active_hand_index))
-		to_chat(user, span_notice("I can't move my arm!"))
+		to_chat(user, span_notice("我的手臂动不了！"))
 		return
 	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
-		to_chat(user, span_warning("I can't move the fingers."))
+		to_chat(user, span_warning("我的手指动不了。"))
 		return
 	if(!istype(src, /obj/item/grabbing))
 		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
-			to_chat(user, span_warning("...What?"))
+			to_chat(user, span_warning("……什么？"))
 			return
 		// FAR less aggressive version of chunkyfingers, designed to be used with nudist. Shrimply lets the user still use neat stuff like orison without letting them weaponize.
 		if(HAS_TRAIT(user, TRAIT_GNARLYDIGITS))
 			if(istype(src, /obj/item/rogueweapon) && !istype(src, /obj/item/rogueweapon/werewolf_claw) && !istype(src, /obj/item/rogueweapon/surgery/cautery/branding))
-				to_chat(user, span_warning("My fingers are too misshapen to use this puny implement."))
+				to_chat(user, span_warning("我的手指畸形得太厉害，无法使用这小玩意。"))
 				return
 		if(HAS_TRAIT(user, TRAIT_WEAPONLESS))//allows tool use, but not weapons. For disciple aurafarmers who go true unarmed.
 			var/obj/item/rogueweapon/weapon = src
@@ -36,7 +36,7 @@
 				var/placing_on_furniture = !user.cmode && (istype(target, /obj/structure/table) || istype(target, /obj/structure/rack))//differentiate between placing a weapon on a table or using it to murder someone. Disciple did not forget how to be tidy when they took their oath.
 				var/using_surgical_tool = !user.cmode && iscarbon(target) && (weapon.item_flags & SURGICAL_TOOL)// lets the disciple sign their slip
 				if((!weapon.is_tool || ismob(target)) && !placing_on_furniture && !using_surgical_tool)
-					to_chat(user, span_warning("I cannot properly wield this weapon."))
+					to_chat(user, span_warning("我无法正确握持这件武器。"))
 					return
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
 		return
@@ -122,7 +122,7 @@
 		return FALSE
 
 	if(force && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm other living beings!"))
+		to_chat(user, span_warning("我不想伤害其他生灵！"))
 		return
 
 	M.lastattacker = user.real_name
@@ -189,7 +189,7 @@
 	if(bad_guard)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			H.bad_guard(span_suicide("I switched stances too quickly! It drains me!"), cheesy = TRUE)
+			H.bad_guard(span_suicide("我切换架势太快，体力被耗尽了！"), cheesy = TRUE)
 
 	if(user.mob_biotypes & MOB_UNDEAD)
 		if(M.has_status_effect(/datum/status_effect/buff/necras_vow))
@@ -198,7 +198,7 @@
 				user.ignite_mob()
 			else
 				if(prob(30))
-					to_chat(M, span_warning("The foul blessing of the Undermaiden hurts us!"))
+					to_chat(M, span_warning("冥下侍女的邪恶祝福伤害了我们！"))
 			user.adjust_blurriness(3)
 			user.adjustBruteLoss(5)
 			user.apply_status_effect(/datum/status_effect/churned, M)
@@ -209,7 +209,7 @@
 				user.ignite_mob()
 			else
 				if(prob(30))
-					to_chat(M, span_warning("Some matter of force harms us!"))
+					to_chat(M, span_warning("某种力量伤害了我们！"))
 			user.adjust_blurriness(2)
 			user.adjustBruteLoss(rand(10, 15))
 
@@ -235,8 +235,8 @@
 				M.throw_item(get_step(M,turn(M.dir, 90)), offhand = offh)
 			else
 				M.dropItemToGround(W)
-			M.visible_message(span_notice("[user] disarms [M]!"), \
-							span_boldwarning("I'm disarmed by [user]!"))
+			M.visible_message(span_notice("[user]缴了[M]的械！"), \
+							span_boldwarning("我被[user]缴械了！"))
 			return
 
 	if(user.zone_selected == BODY_ZONE_PRECISE_L_INHAND)
@@ -247,8 +247,8 @@
 				M.throw_item(get_step(M,turn(M.dir, 270)), offhand = offh)
 			else
 				M.dropItemToGround(W)
-			M.visible_message(span_notice("[user] disarms [M]!"), \
-							span_boldwarning("I'm disarmed by [user]!"))
+			M.visible_message(span_notice("[user]缴了[M]的械！"), \
+							span_boldwarning("我被[user]缴械了！"))
 			return
 
 	if(M.attacked_by(src, user))
@@ -383,9 +383,9 @@
 			newforce = max(newforce*0.3, 1)
 			if(prob(33))
 				if(I.wielded)
-					to_chat(user, span_info("I am too weak to wield this weapon properly with both hands."))
+					to_chat(user, span_info("我的力量太弱，即使用双手也无法自如地挥舞这件武器。"))
 				else
-					to_chat(user, span_info("I am too weak to wield this weapon properly with one hand."))
+					to_chat(user, span_info("我的力量太弱，无法单手自如地挥舞这件武器。"))
 
 	switch(blade_dulling)
 		if(DULLING_CUT) //wooden that can't be attacked by clubs (trees, bushes, grass)
@@ -448,7 +448,7 @@
 				return 0
 		if(DULLING_PICK) //cannot deal damage if not a pick item. aka rock walls
 			if(!(user.mobility_flags & MOBILITY_STAND))
-				to_chat(user, span_warning("I need to stand up to get a proper swing."))
+				to_chat(user, span_warning("我得站起来才能好好挥击。"))
 				return 0
 			if(user.used_intent.blade_class != BCLASS_PICK)
 				return 0
@@ -479,7 +479,7 @@
 		if(dullness_ratio < SHARPNESS_TIER2_THRESHOLD)
 			var/lerpratio = LERP(0, SHARPNESS_TIER2_THRESHOLD, (dullness_ratio / SHARPNESS_TIER2_THRESHOLD))	//Yes, it's meant to LERP between 0 and 0.x using ratio / tier2. The damage falls off a cliff. Intended!
 			if(prob(33))
-				to_chat(user, span_info("The blade is dull..."))
+				to_chat(user, span_info("刀刃钝了……"))
 			newforce *= (lerpratio * 2)
 
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
@@ -507,12 +507,12 @@
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
 		if(user.stamina_add(5))
-			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
+			user.visible_message(span_danger("[user]用[I][verbu][src]！"))
 		else
-			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
+			user.visible_message(span_warning("[user]用[I][verbu][src]！"))
 			newforce = 1
 	else
-		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
+		user.visible_message(span_warning("[user]用[I][verbu][src]！"))
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
@@ -535,12 +535,12 @@
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
 		if(user.stamina_add(5))
-			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
+			user.visible_message(span_danger("[user]用[I][verbu][src]！"))
 		else
-			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
+			user.visible_message(span_warning("[user]用[I][verbu][src]！"))
 			newforce = 1
 	else
-		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
+		user.visible_message(span_warning("[user]用[I][verbu][src]！"))
 
 	if(multiplier)
 		newforce = newforce * multiplier
@@ -612,11 +612,11 @@
 		var/datum/component/silverbless/blesscomp = GetComponent(/datum/component/silverbless)
 		if(blesscomp?.is_blessed)
 			if(!victim.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder))
-				to_chat(victim, span_danger("Silver rebukes my presence! My vitae smolders, and my powers wane!"))
+				to_chat(victim, span_danger("白银排斥着我的存在！我的命髓在闷烧，力量正在衰退！"))
 			victim.adjust_fire_stacks(thrown ? 1 : 3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
 		else
 			if(!victim.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))
-				to_chat(victim, span_danger("Blessed silver rebukes my presence! These fires are lashing at my very soul!"))
+				to_chat(victim, span_danger("祝圣白银排斥着我的存在！这烈火正鞭笞我的灵魂！"))
 			victim.adjust_fire_stacks(thrown ? 1 : 3, /datum/status_effect/fire_handler/fire_stacks/sunder)
 		victim.ignite_mob()
 
@@ -697,8 +697,8 @@
 			return CLAMP(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100
 
 /mob/living/proc/send_item_attack_message(obj/item/I, mob/living/user, hit_area, obj/item/bodypart/BP, bladec)
-	var/message_verb = "attacked"
-	var/static/list/verb_override = list("hits", "strikes")
+	var/message_verb = "攻击"
+	var/static/list/verb_override = list("击打", "打击")
 	var/use_override = FALSE
 	var/verb_appendix
 	if(!I.force_dynamic)
@@ -724,12 +724,12 @@
 	if(verb_appendix)
 		message_verb += verb_appendix
 	if(hit_area)
-		message_hit_area = " in the [span_userdanger(hit_area)]"
-	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
-	var/attack_message_local = "I'm [message_verb][message_hit_area] with [I]!"
+		message_hit_area = "的[span_userdanger(hit_area)]"
+	var/attack_message = "有人用[I][message_verb][src][message_hit_area]！"
+	var/attack_message_local = "有人用[I][message_verb]我[message_hit_area]！"
 	if(user in viewers(src, null))
-		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [message_verb] me[message_hit_area] with [I]!"
+		attack_message = "[user]用[I][message_verb][src][message_hit_area]！"
+		attack_message_local = "[user]用[I][message_verb]我[message_hit_area]！"
 	visible_message(span_danger("[attack_message][next_attack_msg.Join()]"),\
 		span_danger("[attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()
