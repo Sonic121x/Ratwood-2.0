@@ -109,7 +109,7 @@
 			break
 
 /datum/controller/subsystem/economy/proc/tick_blockade_replenish()
-	if(GLOB.dayspassed < BLOCKADE_REPLENISH_FIRST_DAY || GLOB.dayspassed > BLOCKADE_REPLENISH_LAST_DAY)
+	if(GLOB.dayspassed < BLOCKADE_REPLENISH_FIRST_DAY) // 已移除第五天截止判断，后续日期仍可补充封锁。
 		return
 	if(length(GLOB.active_blockades) >= BLOCKADE_REPLENISH_FLOOR)
 		return
