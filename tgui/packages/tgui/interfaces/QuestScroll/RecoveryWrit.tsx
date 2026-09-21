@@ -37,17 +37,17 @@ export const RecoveryWrit = (props: {
     fetchItem && fetchCount && fetchCount > 1
       ? `${fetchCount} ${fetchItem}s`
       : fetchItem
-        ? `a ${fetchItem}`
-        : 'goods of the realm';
+        ? `一件 ${fetchItem}`
+        : '国度之货物';
   return (
     <>
       <p style={writParagraph}>
-        <i>Be it known by writ of the {rulerTitle}:</i>
+        <i>兹依 {rulerTitle} 之令状晓谕:</i>
       </p>
       {circumstance && <p style={writParagraph}>{circumstance}</p>}
       <p style={writParagraph}>
-        Whosoever shall recover {itemLabel} from {region} and bring them unto
-        the Contract Ledger shall be paid the bounty of{' '}
+        凡自 {region} 寻回 {itemLabel} 并将其送至
+        契约台账者, 可得赏金{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}
@@ -57,7 +57,7 @@ export const RecoveryWrit = (props: {
         .
       </p>
       <p style={writParagraph}>
-        The writ knows the goods and shall mark itself when the deed is done.
+        令状识得此货物, 事成之时自会留痕.
       </p>
       <SealLine
         rulerTitle={rulerTitle}

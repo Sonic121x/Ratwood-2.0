@@ -1,7 +1,7 @@
 //intent datums ฅ^•ﻌ•^ฅ
 
 /datum/intent/sword/cut
-	name = "strike"
+	name = "挥斩"
 	icon_state = "incut"
 	attack_verb = list("切开", "挥砍")
 	animname = "cut"
@@ -44,7 +44,7 @@
 	damfactor = 1.3
 
 /datum/intent/sword/thrust
-	name = "stab"
+	name = "刺击"
 	icon_state = "instab"
 	attack_verb = list("刺击")
 	animname = "stab"
@@ -69,7 +69,7 @@
 	penfactor = 35 // 22 + 35 = 57. Beats light leather slightly more than rapier per strike, but less strike
 
 /datum/intent/sword/thrust/heavy
-	name = "heavy thrust"
+	name = "重刺"
 	icon_state = "inlunge"
 	penfactor = 60//on azure this is supposed to pen blacksteel so 60 + 30 wielded comes to 90... 
 	damfactor = 1.3
@@ -80,14 +80,14 @@
 	// Their cut is actually pretty decent when 2handed and should be inferior to zwei.
 
 /datum/intent/sword/thrust/heavy
-	name = "heavy thrust"
+	name = "重刺"
 	icon_state = "inlunge"
 	penfactor = 50
 	damfactor = 1.3
 	swingdelay = 0.9 SECONDS
 
 /datum/intent/sword/thrust/long/deep
-	name = "deep lunge"
+	name = "深突刺"
 	icon_state = "inlunge"
 	penfactor = 20
 	damfactor = 1.2
@@ -213,7 +213,7 @@
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 /datum/intent/sword/strike
-	name = "pommel strike"
+	name = "柄击"
 	icon_state = "instrike"
 	attack_verb = list("猛砸", "敲击")
 	animname = "strike"
@@ -235,9 +235,9 @@
 	damfactor = 0.7
 
 /datum/intent/sword/peel
-	name = "armor peel"
+	name = "剥甲"
 	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>剥甲攻击</font>")
+	attack_verb = list("<font color ='#e7e7e7'>剥甲</font>")
 	animname = "cut"
 	blade_class = BCLASS_PEEL
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -249,17 +249,17 @@
 	peel_divisor = 4
 
 /datum/intent/sword/peel/big
-	name = "big sword armor peel"
-	attack_verb = list("<font color ='#e7e7e7'>无力地剥甲攻击</font>")
+	name = "巨剑剥甲"
+	attack_verb = list("<font color ='#e7e7e7'>轻剥甲</font>")
 	reach = 2
 	peel_divisor = 5
 
 /datum/intent/sword/peel/weak
-	name = "weak armor peel"
+	name = "弱剥甲"
 	peel_divisor = 8
 
 /datum/intent/sword/chop
-	name = "chop"
+	name = "劈砍"
 	icon_state = "inchop"
 	attack_verb = list("砍击", "劈砍")
 	animname = "chop"
@@ -308,8 +308,8 @@
 //sword objs ฅ^•ﻌ•^ฅ
 
 /obj/item/rogueweapon/sword
-	name = "arming sword"
-	desc = "A long steel blade attached to a hilt, separated by a crossguard. The arming sword has been Psydonia's implement of war by excellence for generations."
+	name = "单手剑"
+	desc = "一柄装有十字护手的长钢剑。数代以来，单手剑一直都是普赛多尼亚最经典的战争兵器。"
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 22
 	force_wielded = 25
@@ -359,8 +359,8 @@
 		sheathe_icon = "[rand_icon]"
 
 /obj/item/rogueweapon/sword/iron
-	name = "iron arming sword"
-	desc = "A long iron blade attached to a hilt, separated by a crossguard. The arming sword has been Psydonia's implement of war by excellence for generations, this one is cheaper than its steel brother."
+	name = "铁单手剑"
+	desc = "一柄装有十字护手的长铁剑。数代以来，单手剑一直都是普赛多尼亚最经典的战争兵器，这把则是它更廉价的铁制版本。"
 	icon_state = "isword"
 	minstr = 6
 	smeltresult = /obj/item/ingot/iron
@@ -368,8 +368,8 @@
 	sheathe_icon = "isword"
 
 /obj/item/rogueweapon/sword/bronze
-	name = "bronze arming sword"
-	desc = "A long bronze blade attached to a hilt, separated by a crossguard. The arming sword has been Psydonia's implement of war by excellence for generations - and this implement is the grandfather of them all. Though it lacks the gladii's girth, this arming sword still feels well-balanced for one-handed use."
+	name = "青铜单手剑"
+	desc = "一柄装有十字护手的青铜长剑。数代以来，单手剑一直都是普赛多尼亚最经典的战争兵器，而这把几乎可算是它们共同的祖型。虽不及短剑厚重，但作为单手兵器，它依旧手感均衡。"
 	icon_state = "bronzesword"
 	force = 23 //Iron- and steel arming swords have the same force. +2 to mimic the one-handed nature of bronze swords.
 	force_wielded = 25
@@ -380,8 +380,8 @@
 	sheathe_icon = "bronzesword"
 
 /obj/item/rogueweapon/sword/falx
-	name = "falx"
-	desc = "An unusual type of curved sword that evolved from the farmer's sickle. It has an inwards edge, making it useful for cutting and chopping."
+	name = "法尔克斯弯刀"
+	desc = "一种由农用镰刀演化而来的奇特弯剑。它的刃口向内弯曲，因此很适合切割与劈砍。"
 	force = 22
 	possible_item_intents = list(/datum/intent/sword/cut/falx,  /datum/intent/sword/chop/falx, /datum/intent/sword/strike, /datum/intent/sword/peel)
 	icon_state = "falx"
@@ -393,8 +393,8 @@
 
 /obj/item/rogueweapon/sword/decorated
 	no_loot_taint = TRUE
-	name = "decorated arming sword"
-	desc = "A valuable ornate arming sword made for the purpose of ceremonial fashion, with a fine leather grip and a carefully engraved golden crossguard."
+	name = "华饰单手剑"
+	desc = "一柄用于礼仪陈设的贵重单手剑，带有精致皮握柄与细工雕刻的金色十字护手。"
 	icon_state = "decsword1"
 	no_loot_taint = TRUE
 
@@ -420,8 +420,8 @@
 	force = 17 //Weaker than a short sword
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
 	gripped_intents = null
-	name = "stone sword"
-	desc = "A crude mockery of what seems to be a sword, really just a long knapped stone tied to a carved wooden shaft."
+	name = "石剑"
+	desc = "它看似一把剑，实则只是把细长打制石片绑在雕刻木柄上的粗糙仿制品。"
 	icon_state = "stone_sword"
 	max_blade_int = 100
 	max_integrity = 70
@@ -431,9 +431,9 @@
 	wdefense = 4
 
 /obj/item/rogueweapon/sword/long
-	name = "longsword"
-	desc = "A lethal and perfectly balanced weapon. The longsword is the protagonist of endless tales and myths all across Psydonia, seen in the hands of noblemen and an ever-decreasing quantity of master duelists.\
-		It has great cultural significance in the empires of Grenzelhoft and Etrusca, where legendary swordsmen have created and perfected many fighting techniques of todae."
+	name = "长剑"
+	desc = "一件致命而平衡完美的武器。长剑是流传于整个普赛多尼亚无数传说与神话中的主角，常见于贵族之手，也仍被数量日渐稀少的大师决斗家所持。\
+		它在格伦泽霍夫与厄特鲁斯卡诸帝国中具有极高文化意义，许多传奇剑士都在那里开创并完善了沿用至今的战技。"
 	force = 25
 	force_wielded = 30
 	possible_item_intents = LONGSWORD_STOCK_INTENTS
@@ -519,10 +519,10 @@
 	master_training_active = should_train
 
 /obj/item/rogueweapon/sword/long/broadsword
-	name = "broadsword"
-	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
-	swordsmen of Psydonia in their clashes against man-and-monster alike since time immemmorial. It is one of Rockhill's greatest \
-	cultural hallmarks, just behind the concepts of 'zenny-a-mug' happy hours and 'killing people over minor disagreements.'"
+	name = "阔剑"
+	desc = "一柄致命而重心均衡的武器。阔剑——人们更常称它为“一手半剑”——自远古以来便忠心侍奉着 \
+	普赛多尼亚的剑士，伴随他们与人与怪物交锋。它是岩丘最伟大的 \
+	文化标志之一，仅次于“一赞尼一杯”的欢乐时段，以及“为鸡毛蒜皮的分歧取人性命”。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "broadsword"
 	sheathe_icon = "broadsword"
@@ -536,8 +536,8 @@
 	special = /datum/special_intent/axe_swing//seemed appropriate
 
 /obj/item/rogueweapon/sword/long/broadsword/bronze
-	name = "spatha"
-	desc = "A hero needn't speak - for when they are gone, the world will speak for them."
+	name = "斯帕塔长剑"
+	desc = "英雄无需多言——因为当他们逝去，世界会替他们发声。"
 	icon_state = "spatha"
 	sheathe_icon = "gladius"
 	wdefense = 3 //On par with the Gladius, as the Spatha is.. essentially.. a longer Gladius. Lowest WDEF of all longswords.
@@ -547,10 +547,10 @@
 	smeltresult = /obj/item/ingot/bronze //Like before, it falls under the unofficial 'broadsword' category with one-handed chops. Best to pack a shield!
 
 /obj/item/rogueweapon/sword/long/broadsword/steel
-	name = "steel broadsword"
-	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
-	swordsmen of Psydonia in their clashes against man-and-monster alike since time immemmorial. Valoria's watchmen are renowned for \
-	their use of these steel-bladed iterations: an expensive necessity, in order to lay their undying besiegers to rest for good."
+	name = "钢制阔剑"
+	desc = "一柄致命而重心均衡的武器。阔剑——人们更常称它为“一手半剑”——自远古以来便忠心侍奉着 \
+	普赛多尼亚的剑士，伴随他们与人与怪物交锋。瓦洛里亚的守夜人以 \
+	使用这种钢刃版本而闻名：为将不死不休的围城者彻底送入安息，这是一笔昂贵的必要开销。"
 	icon_state = "sbroadsword"
 	sheathe_icon = "sbroadsword"
 	max_blade_int = 330 //Sharper than a longsword, but with reduced defense. The use of steel balances its integrity out with a slight +10 bonus.
@@ -559,8 +559,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/training
-	name = "training sword"
-	desc = "Swords like these, with blunted tips and dull edges, are often used for practice without much risk of injury."
+	name = "训练剑"
+	desc = "这种剑剑尖钝化、刃口迟钝，常用于训练，受伤风险不高。"
 	force = 5
 	force_wielded = 8
 	sharpness = IS_BLUNT
@@ -571,10 +571,10 @@
 	thrown_bclass = BCLASS_BLUNT
 
 /obj/item/rogueweapon/sword/long/blacksteel
-	name = "blacksteel longsword"
-	desc = "A sleek blade of a dark, and burnished hue. \
-			A handle carved from a rosawood branch. A pairing that shall sing as it parts the air. \
-			With it, one can write a song across all of Psydonia."
+	name = "黑钢长剑"
+	desc = "一柄色泽暗沉、光润如镜的利刃。\
+			剑柄由罗莎木枝雕刻而成。二者相配，便能在破空时吟唱。\
+			持此剑者，可在整个普赛多尼亚谱写一曲传奇。"
 	force = 27
 	force_wielded = 33
 	icon_state = "bslongsword"
@@ -596,7 +596,7 @@
 /obj/item/rogueweapon/sword/long/blacksteel/examine(mob/user)
 	. = ..()
 	if(!used)
-		. += span_notice("The Special Manoeuvre of this weapon can be changed. Right-click it with a free hand to select one. This can only be done once.")
+		. += span_notice("此武器的特殊招式可以更换。用空手右键点击它，即可选择一种。此操作仅可进行一次。")
 
 /obj/item/rogueweapon/sword/long/blacksteel/attack_right(mob/user)
 	. = ..()
@@ -608,7 +608,7 @@
 		var/datum/special_intent/S = intent // Hate this DM quirk.
 		special_options[S::name] = S
 
-	var/choice = input(user, "Choose the Manoeuvre", "MANOEUVRE") as anything in special_options
+	var/choice = input(user, "选择招式", "招式") as anything in special_options
 	if(choice)
 		qdel(special)
 		var/datum/special_intent/S = special_options[choice]
@@ -616,8 +616,8 @@
 		used = TRUE
 
 /obj/item/rogueweapon/sword/long/church
-	name = "see longsword"
-	desc = "A blessed longsword, wielded by the Holy See's templars in their stalwart defense against evil. Originating in the wake of the Celestial Empire's collapse, legends say that it is the grandfather to longswords all across Psydonia: the triumph of an ancient Malumite priest, stricken with divine inspiration in humenity's darkest hour. Centuries later, it still remains the ideal choice for skewering infidels and monsters alike. </br>'I am the holder of light, in the dark abyss..' </br>'..I am the holder of order and ward against vileness..' </br>'..let the Gods guide my hand, and let the Inhumen cower before me.'"
+	name = "圣座长剑"
+	desc = "一柄受过祝圣的长剑，由圣座圣堂武士持用，坚定不移地抵御邪恶。据说它诞生于天穹帝国崩塌之后，是普赛多尼亚诸长剑共同的先祖：一位古老的玛勒姆祭司在人类最黑暗的时刻受神启而铸成的杰作。数百年后，它依旧是刺穿异教徒与怪物的理想之选。 </br>“我乃深渊黑暗中的执光者……” </br>“……我乃秩序的持守者，也是污秽之前的屏障……” </br>“……愿诸神引导我手，愿非人者在我面前战栗。”"
 	icon_state = "churchsword"
 	max_blade_int = 300
 	max_integrity = 180
@@ -722,15 +722,15 @@
 
 
 /obj/item/rogueweapon/sword/long/church
-	name = "see longsword"
-	desc = "A blessed longsword, wielded by the Holy See's templars in their stalwart defense against evil. Originating in the wake of the Celestial Empire's collapse, legends say that it is the grandfather to longswords all across Psydonia: the triumph of an ancient Malumite priest, stricken with divine inspiration in humenity's darkest hour. Centuries later, it still remains the ideal choice for skewering infidels and monsters alike. </br>'I am the holder of light, in the dark abyss..' </br>'..I am the holder of order and ward against vileness..' </br>'..let the Gods guide my hand, and let the Inhumen cower before me.'"
+	name = "圣座长剑"
+	desc = "一柄受过祝圣的长剑，由圣座圣堂武士持用，坚定不移地抵御邪恶。据说它诞生于天穹帝国崩塌之后，是普赛多尼亚诸长剑共同的先祖：一位古老的玛勒姆祭司在人类最黑暗的时刻受神启而铸成的杰作。数百年后，它依旧是刺穿异教徒与怪物的理想之选。 </br>“我乃深渊黑暗中的执光者……” </br>“……我乃秩序的持守者，也是污秽之前的屏障……” </br>“……愿诸神引导我手，愿非人者在我面前战栗。”"
 	icon_state = "churchsword"
 	max_blade_int = 250
 	max_integrity = 180
 
 /obj/item/rogueweapon/sword/long/holysee_lesser
-	name = "eclipsum longsword"//Is the name similar to the 'eclipsum sword'? Yeah. Almost identical. Still better than decablade.
-	desc = "With a drop of holy Eclipsum, doth the blade rise. Gilded, gleaming, radiant heat, warm my soul, immolate my enemies."
+	name = "蚀辉长剑"//Is the name similar to the 'eclipsum sword'? Yeah. Almost identical. Still better than decablade.
+	desc = "只需一滴神圣蚀辉，剑锋便会升起。镀金、闪耀、灼热辉光，温暖我魂，也焚尽我敌。"
 	icon_state = "eclipsum"
 	sheathe_icon = "eclipsum"
 	max_blade_int = 300
@@ -846,8 +846,8 @@
 			if("altgrip") return list("shrink" = 0.6,"sx" = 2,"sy" = 3,"nx" = -7,"ny" = 1,"wx" = -8,"wy" = 0,"ex" = 8,"ey" = -1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -135,"sturn" = -35,"wturn" = 45,"eturn" = 145,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 
 /obj/item/rogueweapon/sword/long/etruscan
-	name = "basket-hilted longsword"
-	desc = "An uncommon and elaborate type of longsword with a compound hilt like those seen on rapiers and smallswords. It has a marked unsharpened section for safe unarmoured half-swording. The quality of the steel speaks for itself; this is a weapon made by masters, for masters."
+	name = "篮护长剑"
+	desc = "一种少见而华丽的长剑，拥有类似刺剑与小剑的复合护手。其剑身留有明显未开锋区，便于无甲半剑握持。钢材的品质本身便说明了一切；这是一柄由大师打造、供大师使用的兵器。"
 	icon_state = "elongsword"
 	sheathe_icon = "elongsword"
 	icon = 'icons/roguetown/weapons/special/freifechter.dmi'
@@ -855,14 +855,14 @@
 	max_integrity = 225
 
 /obj/item/rogueweapon/sword/long/etruscan/freifechter
-	name = "psydonic reformist longsword"
-	desc = "A newly-smithed longsword with a reverse hilt in the shape of a reformist psydonian cross. It has the same kind of hand protection of an Etruscan longsword. The cross is upright when the weapon is sheathed, bronze pommel reflecting sunlight directly - and it becomes inverted when drawn, a symbol of distress. Ad pacem servandam."
+	name = "普赛顿改革派长剑"
+	desc = "一柄新锻的长剑，其反向护手呈改革派普赛顿十字之形。它拥有与伊特鲁斯卡长剑相同的手部防护。收剑入鞘时，十字正立，青铜剑首将阳光径直反射而出——拔剑出鞘时，十字则倒转，成为危难的象征。Ad pacem servandam."
 	sheathe_icon = "reform"
 	icon_state = "reformistsword"
 
 /obj/item/rogueweapon/sword/long/fencerguy
-	name = "grenzelhoftian longsword"
-	desc = "A masterfully smithed, perfectly-balanced longsword that makes it easy for even a beginner to perform basic fencing maneuvers."
+	name = "格伦泽尔霍夫特长剑"
+	desc = "一柄锻工精湛、平衡完美的长剑，即便初学者也能凭它轻松完成基本的击剑动作。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "germanlong"
 	max_blade_int = 275
@@ -870,8 +870,8 @@
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/thrust/long/halfsword/lesser, /datum/intent/sword/chop)
 
 /obj/item/rogueweapon/sword/long/zizo
-	name = "avantyne longsword"
-	desc = "A wicked, unconventional, and otherworldly blade that was created by no swordsmith - a manifestation of hate for the state of this world that follows no design principles but spite and anger."
+	name = "阿凡泰因长剑"
+	desc = "一把邪异、反常而不似此世之物的长剑，并非出自任何铸剑师之手。它是对这个世界现状的憎恨所凝成的实体，不遵循任何设计原则，只剩恶意与愤怒。"
 	icon_state = "zizolongsword"
 	sheathe_icon = "zizolongsword"
 	unenchantable = TRUE
@@ -887,9 +887,9 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
 
 /obj/item/rogueweapon/sword/arming/zizo
-	name = "avantyne arming sword"
-	desc = "The cardinal sin, coalesced into a crystalline crucifix. In Her name, your will shall be projected unto the worshippers of lesser gods; and by your \
-	hand, they shall bend the knee to ambition."
+	name = "阿凡泰因单手剑"
+	desc = "大罪凝作结晶的十字架。以她之名，你的意志将加诸于那些信奉次等神祇之人；而借你 \
+	之手，他们将向野心屈膝。"
 	icon_state = "zizoarming"
 	sheathe_icon = "zizoarming"
 	unenchantable = TRUE
@@ -905,8 +905,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
 
 /obj/item/rogueweapon/sword/rapier/zizo
-	name = "avantyne rapier"
-	desc = "Graceful yet grotesque, a spike and weapon forged with Ambition's singular purpose, to render one in Her image: heartless. Slip between where opportunity lies and seize the moment."
+	name = "阿凡泰因刺剑"
+	desc = "优雅却怪诞，这柄尖刺般的武器是怀着野心的唯一目的铸成，只为把人塑成她的模样：无情。在机遇所在之处穿隙而入，把握时机。"
 	icon_state = "zizorapier"
 	sheathe_icon = "zizorapier"
 	unenchantable = TRUE
@@ -919,8 +919,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
 
 /obj/item/rogueweapon/sword/long/heirloom
-	name = "old longsword"
-	desc = "A very old steel longsword that has since become a showpiece. Perhaps a family relic, or the weapon of a dead knight."
+	name = "古旧长剑"
+	desc = "一把年代久远的钢制长剑，如今更多只是陈设。也许是家传遗物，也许曾属于某位死去的骑士。"
 	force = 20
 	force_wielded = 32
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
@@ -938,8 +938,8 @@
 			if("onbelt") return list("shrink" = 0.3, "sx" = -4, "sy" = -6, "nx" = 5, "ny" = -6, "wx" = 0, "wy" = -6, "ex" = -1, "ey" = -6, "nturn" = 100, "sturn" = 156, "wturn" = 90, "eturn" = 180, "nflip" = 0, "sflip" = 0, "wflip" = 0, "eflip" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0)
 
 /obj/item/rogueweapon/sword/long/judgement
-	name = "\"Judgement\""
-	desc = "An intricately forged longsword, it's blade is made from Aavnr's finest Vyšvou steel - held from an ornate carved ivory grip from the region's \"Mamük\" megafauna. A sight that's truly unique."
+	name = "“审判”"
+	desc = "一把工艺繁复的长剑，剑刃由阿夫纳尔最上等的维什沃钢打造，握柄则以当地“玛穆克”巨兽雕刻而成的象牙制成，外观当真独一无二。"
 	icon_state = "judgement"
 	item_state = "judgement"
 	sheathe_icon = "judgement"
@@ -961,8 +961,8 @@
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/sword/long/judgement/ascendant //meant to be insanely OP; solo antag wep
-	name = "\"The Redentor\""
-	desc = "An intricately forged sword of great power. And the preacher said: \"For the Lord is my tower, and He gives me the power to tear down the works of the enemy.\""
+	name = "“救赎者”"
+	desc = "一把锻造精巧、威能非凡的长剑。正如布道者所言：“主是我的高塔，祂赐我力量，去摧毁敌人的作为。”"
 	force = 50
 	force_wielded = 70
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
@@ -977,8 +977,8 @@
 
 
 /obj/item/rogueweapon/sword/long/judgement/vlord
-	name = "\"Ichor Fang\""
-	desc = "An unholy longsword made of odd steel. A green crystalline mass covers the blade and pommel, its edges and serrations tougher and sharper than anything forged by a master swordsmith."
+	name = "“脓血之牙”"
+	desc = "一把由诡异钢材锻成的不洁长剑。绿色结晶团块覆盖着剑刃与柄首，它的锋口与锯齿比任何大师剑匠锻出的兵刃都更坚硬、更锋利。"
 	force = 40
 	force_wielded = 55
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
@@ -1001,12 +1001,12 @@
 	if(new_sword == src)
 		return
 
-	src.visible_message(span_warning("\The [src] crumbles to dust, the ashes spiriting away."))
+	src.visible_message(span_warning("[src]碎裂成灰，灰烬也随风飘散而去。"))
 	qdel(src)
 
 /obj/item/rogueweapon/sword/long/marlin
-	name = "shalal saber"
-	desc = "A large yet surprisingly agile curved blade meant to be wielded in two hands. It has a similar composition to northwestern Psydonian longswords, but it's notably lighter."
+	name = "沙拉尔弯刀"
+	desc = "一把尺寸颇大却出奇灵活的双手弯刀。它与普赛多尼亚西北部的长剑材质相近，但明显更加轻盈。"
 	force = 26
 	force_wielded = 31
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/peel)
@@ -1033,10 +1033,10 @@
 
 //Incredibly heavy. Focused on two-handing.
 /obj/item/rogueweapon/sword/long/exe
-	name = "executioners sword"
-	desc = "A heavy broadsword with a terrifyingly sharp edge, purpose-made to part heads from shoulders. Owing to its nature as a weapon of \
-	justice, it lacks the piercing tips that befit most battle-ready broadswords. If you're strong enough to wield such a weapon, however, \
-	then that probably won't stop you from finding a way."
+	name = "行刑长剑"
+	desc = "一柄沉重的阔剑，锋刃锐利得令人胆寒，专为将头颅从肩颈上斩落而造。由于它本质上是刑具而非战阵兵器，\
+	它并没有多数制式阔剑那种便于刺击的剑尖。不过，若你有足够的力量挥动这样一柄武器，\
+	那这多半也拦不住你另寻他法。"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/exe, /datum/intent/sword/peel)
 	gripped_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/sword/cut/exe/cleave, /datum/intent/sword/cut/exe/sweep, /datum/intent/rend)
 	alt_intents = null
@@ -1056,27 +1056,26 @@
 	intent_intdamage_factor = 1.3 //This is basically like getting hit by a mace.
 
 /datum/intent/sword/cut/exe/cleave
-	name = "cleaving cut"
+	name = "裂斩"
 	icon_state = "incleave"
 	attack_verb = list("劈开", "斩穿")
 	clickcd = CLICK_CD_MASSIVE // Distinguished from GSword by being sluggish
 	damfactor = 1.2
 	cleave = /datum/cleave_pattern/forward_cleave
-	desc = "A heavy cleave that cuts through a second target behind the first."
+	desc = "一记沉重的劈斩，会连第一个目标身后的第二个目标一并斩开。"
 
 /datum/intent/sword/cut/exe/sweep
-	name = "sweeping cut"
+	name = "横扫斩"
 	icon_state = "insweep"
 	attack_verb = list("横扫", "横斩")
 	clickcd = CLICK_CD_GLACIAL
 	damfactor = 1.2 // Hits harder but clunkier
 	cleave = /datum/cleave_pattern/horizontal_sweep
-	desc = "A heavy sweep that cuts through targets to the front."
+	desc = "一记沉重的横扫，会斩开身前的所有目标。"
 
 /obj/item/rogueweapon/sword/long/exe/astrata
-	name = "\"Solar Judge\""
-	desc = "An incredibly unusual executioner's sword clad in gold and brass. Two separate blades protude outwards and join near its intricately \
-	decorated crossguard. This weapon calls for order."
+	name = "“曜日审判”"
+	desc = "一柄极其罕见的行刑长剑，通体覆有黄金与黄铜。两道分离的剑刃向外伸展，并在华饰繁复的护手附近重新汇合。这把武器象征着秩序。"
 	icon_state = "astratasword"
 	force_wielded = 33//As above.
 
@@ -1095,10 +1094,9 @@
 
 /obj/item/rogueweapon/sword/long/exe/cloth
 	icon_state = "terminusest"
-	name = "\"Terminus Est\""
-	desc = "An ornate executioner's sword, decorated with a golden pommel and crossguard. A bloody rag \
-	winds around the ricasso, ever-present to keep its edge spotless for the executionee's final \
-	judgement. The stout-angled blade bears an enscription along its length; </br>'WHEN THIS SWORDE I DOTH LYFT, I WISH THE SINNER ETERNAL LYFE AS THINE GYFT.'"
+	name = "“终焉已至”"
+	desc = "一柄华饰的行刑长剑，饰有黄金剑首与护手。一条染血的布条缠绕在剑根处，始终备着，只为在受刑者迎来最终审判前，让剑刃一尘不染。\
+	粗壮的折角剑身沿脊刻着一行铭文；</br>『吾举此剑，愿罪人得享永生，如主所赐。』"
 	smeltresult = /obj/item/ingot/gold // It is the most valuable component
 	max_blade_int = 363
 	smelt_bar_num = 2
@@ -1107,14 +1105,14 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(user, "clothwipe", 100, TRUE)
 	SEND_SIGNAL(src, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRONG)
-	user.visible_message(span_warning("[user] wipes [src] down with its cloth."),span_notice("I wipe [src] down with its cloth."))
+	user.visible_message(span_warning("[user]用其上的布条擦拭[src]。"),span_notice("我用其上的布条擦拭[src]。"))
 	return
 
 /obj/item/rogueweapon/sword/long/exe/silver
-	name = "silver executioners sword"
-	desc = "A resplendant executioner's sword, whose massive silver blade lays mounted atop an intricately-carved \
-	handle. Though the grooves dig into your hands, it's said that such chaffings will only draw blood if the \
-	silvered edge falls upon the neck of the innocent."
+	name = "银制行刑剑"
+	desc = "一柄华美耀眼的行刑剑，巨大的银质剑刃安装在精雕细刻的 \
+	握柄之上。尽管柄上的刻纹会硌进你的手掌，据说唯有当镀银的刃锋 \
+	落在无辜者的颈上时，这种磨砺才会见血。"
 	icon_state = "silvexe"
 	force = 22
 	force_wielded = 25
@@ -1134,10 +1132,10 @@
 	)
 
 /obj/item/rogueweapon/sword/long/exe/psy
-	name = "psydonic executioners sword"
-	desc = "A blessed executioner's sword, whose massive silver blade lays mounted atop an intricately-carved \
-	handle. The heft belies a purpose most holy, when hoisted beyond the chopping block; to cleave through hordes, and \
-	to march knee-deep through the dead in search of absolution."
+	name = "普赛顿行刑剑"
+	desc = "一柄受过祝圣的行刑剑，巨大的银质剑刃安装在精雕细刻的 \
+	握柄之上。当它被举离行刑砧时，那份沉重便昭示着最神圣的用途：斩穿成群的敌人， \
+	并在及膝的尸骸中跋涉前行，以求赦免。"
 	icon_state = "psyexe"
 	force = 22
 	force_wielded = 25
@@ -1168,9 +1166,9 @@
 	)
 
 /obj/item/rogueweapon/sword/long/exe/berserk
-	name = "berserkers sword"
-	desc = "A raw heap of iron, hewn into an intimidatingly massive cleaver. Most could never aspire to effectively swing such a laborsome \
-	blade about; those few that have the strength, however, can force even the strongest opponents to stagger back."
+	name = "狂战士之剑"
+	desc = "一堆粗铁被开凿成一柄硕大得令人胆寒的巨斩刀。大多数人根本无从奢望有效地挥舞这样一柄 \
+	费力的巨刃；但少数拥有足够力量者，却能迫使最强悍的对手也踉跄后退。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "dragonslayer"
 	possible_item_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/rend, /datum/intent/sword/thrust/exe, /datum/intent/sword/strike)
@@ -1182,7 +1180,7 @@
 	max_blade_int = 400
 
 /datum/intent/sword/chop/cleave
-	name = "staggering cleave"
+	name = "震慑劈砍"
 	icon_state = "incarve"
 	attack_verb = list("劈开", "撕裂", "斩穿")
 	chargedrain = 1.8
@@ -1190,7 +1188,7 @@
 	swingdelay = 0
 	damfactor = 1.5
 	intent_intdamage_factor = 1.3
-	desc = "A powerful blow that delivers Strength-scaling knockback and slowdown to the target. The amount of inflicted knockback scales off your Strength, ranging from X (1 tile) to XIII (3 tiles). </br>Cannot inflict any knockback or slowdown if your Strength is below X. </br>Cannot be used consecutively more than every 5 seconds on the same target. </br>Prone targets halve the knockback distance. </br>Not fully charging the attack limits knockback to 1 tile."
+	desc = "一次强力打击，会根据你的力量对目标造成击退与减速。击退量随你的力量提升，从 X（1 格）到 XIII（3 格）。</br>若你的力量低于 X，则无法造成任何击退或减速。</br>无法每 5 秒内对同一目标连续使用一次以上。</br>倒地目标的击退距离减半。</br>未完全蓄力时，击退最多只有 1 格。"
 	var/maxrange = 3
 
 /datum/intent/sword/chop/cleave/spec_on_apply_effect(mob/living/H, mob/living/user, params)
@@ -1218,15 +1216,15 @@
 		force = H.move_force)
 
 /obj/item/rogueweapon/sword/long/oldpsysword
-	name = "enduring longsword"
-	desc = "A steel longsword with an angled crossguard. The lesser clerics of the Psydonic Orders oft-carry these blades, and - though it may not carry the bite of silver - it still humbles men and monsters alike with a well-poised strike."
+	name = "耐战长剑"
+	desc = "一柄带有倾斜护手的钢制长剑。普赛顿教团的低阶神职者常佩带此剑；尽管不具银的锋芒，但只要一击到位，依旧足以制服人类与怪物。"
 	icon_state = "opsysword"
 	sheathe_icon = "opsysword"
 	dropshrink = 1
 
 /obj/item/rogueweapon/sword/long/psysword
-	name = "psydonic longsword"
-	desc = "A finely made longsword, plated in a ceremonial veneer of ornate silver - made for felling men and monsters alike. </br>'Psydon will deliver those who were mindful of Him to their place of ultimate triumph. No evil will touch them, nor will they grieve.'"
+	name = "普赛顿长剑"
+	desc = "一柄做工精良的长剑，覆有礼仪用途的华饰银层，专为斩杀人类与怪物而造。 </br>“普赛顿会引领那些心怀祂的人抵达最终凯旋之所。邪恶不再触及他们，他们也不再悲伤。”"
 	icon_state = "psysword"
 	sheathe_icon = "psysword"
 	force = 20
@@ -1260,8 +1258,8 @@
 	)
 
 /obj/item/rogueweapon/sword/long/silver
-	name = "silver longsword"
-	desc = "A longsword with a blade of pure silver. The weight doesn't just burden your hand, but your very soul as well; an unspoken oath, to stand against the horrors that lurk within the nite. </br>'Swing with precision and purpose, levyman o' the Gods. The nite is long and many-an-evil cur would engineer civilization's destruction, while Astrata's gaze leers elsewhere. So long as you wield this sword, you have a duty that beckons.'"
+	name = "白银长剑"
+	desc = "一柄以纯银铸刃的长剑。它的重量压的不只是你的手，还有你的灵魂；那是一道无言誓约，要你挺身对抗潜伏于长夜中的恐怖。 </br>“挥剑要精准，也要有其意义，诸神的征募者。长夜漫漫，无数恶徒都在图谋文明的覆灭，而阿斯特拉塔的目光却望向别处。只要你仍持此剑，责任就仍在召唤你。”"
 	icon_state = "silverlongsword"
 	sheathe_icon = "psysword"
 	force = 20
@@ -1284,8 +1282,8 @@
 	)
 
 /obj/item/rogueweapon/sword/long/kriegmesser/silver
-	name = "silver broadsword"
-	desc = "A two-handed broadsword, fitted with a blade of pure silver. Each swing commands more effort than the last, but not without purpose. One blow to crack the deadite's leg in twain; and a heartbeat later, another to splatter the soil with bile and teeth."
+	name = "白银阔剑"
+	desc = "一柄装有纯银剑刃的双手阔剑。每一次挥动都比上一次更费力，但绝非徒然。一击足以折断死徒的腿骨，转瞬之间再下一击，便能让胆汁与牙齿洒满泥土。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "silverbroadsword"
 	sheathe_icon = "psysword"
@@ -1311,8 +1309,8 @@
 	)
 
 /obj/item/rogueweapon/sword/long/kriegmesser/psy
-	name = "psydonic broadsword"
-	desc = "Sunder, cleave, smite; a sea of coagulated blackness, speckled with crimson. Absolve, cherish, endure; the will of one, christened to save Psydonia when all else is lost. </br>'Even here it is not safe, and even this grave has been defaced. Yet, someone has written on this stone, in some angry hand - HOPE RIDES ALONE..'"
+	name = "普赛顿阔剑"
+	desc = "粉碎、劈裂、惩戒；一片凝固的漆黑之海上缀着猩红斑点。宽恕、珍惜、坚守；那是某人的意志，被祝圣为在万物尽失时拯救普赛多尼亚。 </br>“即便在这里也并不安全，连这座坟墓都已遭人亵渎。可仍有人以愤怒的笔迹在碑上刻下了字句：希望独行……”"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "silverbroadsword"
 	sheathe_icon = "psysword"
@@ -1338,9 +1336,9 @@
 	)
 
 /obj/item/rogueweapon/sword/long/greatkhopesh
-	name = "apophis" //Kriegmesser analogue.
-	desc = "The Khopesh's older brother. One would be mistaken for thinking it was designed to be wielded in both hands; for the strength of these \
-	ancient legionnaires, prodigious as it were, allowed them to effortlessly wield it alongside their towering greatshields."
+	name = "阿波菲斯" //Kriegmesser analogue.
+	desc = "寇派什弯刀的兄长。人们或许会误以为它本就是为双手持用而设计的；因为那些 \
+	古代军团兵的力量极为惊人，足以让他们在持着高耸巨盾的同时，还能轻松挥动此剑。"
 	wdefense = 3
 	wdefense_wbonus = 2
 	force = 22
@@ -1372,8 +1370,8 @@
 
 
 /obj/item/rogueweapon/sword/short
-	name = "steel shortsword"
-	desc = "The arming sword's shorter and much older brother. Despite being centuries older than the swords of todae, it remains in use as a cheap sidearm for shieldbearers and archers."
+	name = "钢短剑"
+	desc = "单手剑更短、也更加古老的兄长。尽管它比今日诸剑古老了数个世纪，仍作为廉价副武器被盾兵与弓手广泛使用。"
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short, /datum/intent/sword/peel)
 	icon_state = "swordshort"
 	sheathe_icon = "swordshort"
@@ -1386,15 +1384,15 @@
 	grid_height = 96
 
 /obj/item/rogueweapon/sword/short/ancient
-	name = "ancient shortsword"
-	desc = "A polished sidearm-sword, forged from gilbranze. From after His sacrifice, but before Her ascension; the tithe of a war without reason, waged between squabbling children who hadn't known that the world was about to end."
+	name = "远古短剑"
+	desc = "一把以吉尔青铜锻成并细细打磨的副武器短剑。它诞生于祂牺牲之后、她飞升之前；是那场毫无意义之战的贡税，由一群尚不知世界即将终结的争斗孩童所发动。"
 	icon_state = "ashortsword"
 	sheathe_icon = "ashortsword"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/sword/short/ancient/decrepit
-	name = "decrepit short sword"
-	desc = "A chipped sidearm-sword, wrought from frayed bronze. It's hard to gauge whether it was naturally forged to be so short, or if it's all that remained of a longer blade."
+	name = "破旧短剑"
+	desc = "一把由磨损青铜打造、刃口崩裂的副武器短剑。很难判断它本就铸得如此短小，还是一把长剑最终只剩下了这截残身。"
 	force = 18
 	max_integrity = 75
 	blade_dulling = DULLING_SHAFT_CONJURED
@@ -1403,8 +1401,8 @@
 	randomize_blade_int_on_init = TRUE
 
 /obj/item/rogueweapon/sword/short/iron
-	name = "iron shortsword"
-	desc = "The arming sword's shorter and much older brother. Despite being centuries older than the swords of todae, it remains in use as a cheap sidearm for shieldbearers and archers. This iron variant predates them all."
+	name = "铁短剑"
+	desc = "单手剑更短、也更加古老的兄长。尽管它比今日诸剑古老了数个世纪，仍作为廉价副武器被盾兵与弓手广泛使用。而这把铁制版本比它们都更久远。"
 	icon_state = "iswordshort"
 	sheathe_icon = "iswordshort"
 	wdefense = 3
@@ -1412,8 +1410,8 @@
 	max_integrity = 100
 
 /obj/item/rogueweapon/sword/short/kazengun
-	name = "steel kodachi"
-	desc = "A razor-edged sword with a wavy pattern weld apparent on its blade."
+	name = "钢小太刀"
+	desc = "一柄锋利如剃刀的短剑，剑身上清晰可见波纹状锻焊纹理。"
 	possible_item_intents = list(
 		/datum/intent/sword/cut/short,
 		/datum/intent/sword/thrust/short,
@@ -1424,8 +1422,8 @@
 	sheathe_icon = "mulyeog"
 
 /obj/item/rogueweapon/sword/short/falchion
-	name = "falchion"
-	desc = "A single-edged sword that is similar to a messer in appearance, its origins trace back to Otava. An implement of commoners and knights alike. It's good for cutting and thrusting."
+	name = "法刀"
+	desc = "一种单刃剑，外形与猎剑相近，起源可追溯至奥塔瓦。无论平民还是骑士都常使用它，既善切割，也能突刺。"
 	force = 22
 	icon_state = "falchion"
 	wdefense = 6
@@ -1434,10 +1432,9 @@
 	max_blade_int = 250
 
 /obj/item/rogueweapon/sword/short/gladius
-	name = "gladius"
-	desc = "A hefty blade of bronze, sharp enough to disembowel and decapitate with-but a lone hand's force. Psydonia's ancient champions drove back the \
-	Archdevil's hordes with these shortswords, a thousand years ago; yet now, the end has crept forth to threaten lyfe once more. Move with the grace of \
-	your ancestors - spread your feet, brace your grasp, and make them bleed for every step they take."
+	name = "短剑"
+	desc = "一柄沉实的青铜剑刃，锋利到仅凭单手之力便能开膛斩首。一千年前，普赛多尼亚的古代英豪曾用这些短剑击退大魔君的魔群；\
+	而如今，终末已悄然逼近，再次威胁生灵。以你先祖的优雅行动吧——双足分立，握紧剑柄，让他们每迈出一步都付出血的代价。"
 	icon_state = "gladius"
 	sheathe_icon = "gladius"
 	max_integrity = 250
@@ -1446,15 +1443,15 @@
 	wdefense = 3
 
 /obj/item/rogueweapon/sword/short/gladius/ancient
-	name = "ancient gladius"
-	desc = "A polished shortsword, forged from gilbranze. Favored by ZIZO's undying legionnaires, this antiquated tool serves a simple purpose; to spill the innards of unenlightened fools."
+	name = "远古短剑"
+	desc = "一柄以吉尔青铜锻成并磨得锃亮的短剑。它深受齐佐不死军团士兵喜爱，而这件古旧兵器只有一个简单用途：把蒙昧蠢货的内脏掏出来。"
 	icon_state = "agladius"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/sword/short/gladius/decorated
-	name = "decorated gladius"
-	desc = "A beautiful depiction of justice, beflowered and besilked. The crimson engravings along its blade pay tribute to the ancient epics of Ravox's \
-	ascent to godlihood; for it was His wounding of the Sinistar's tentacled heart that forced the Archdevil to pause - first in disbelief, then in fascination."
+	name = "华丽短罗马剑"
+	desc = "一幅华美的正义图景，饰以繁花与丝绸。剑身上深红的刻纹致敬着拉沃克斯 \
+	升神的上古史诗；正是祂重创了西尼斯特那生满触手的心脏，才迫使大魔君停下脚步——先是难以置信，继而为之着迷。"
 	icon_state = "gladiusdec"
 	sheathe_icon = "decgladius"
 	max_integrity = 300
@@ -1462,9 +1459,9 @@
 	wdefense = 5
 
 /obj/item/rogueweapon/sword/sabre/bronzekhopesh
-	name = "khopesh"
-	desc = "A sickle-shaped sword of Naledi origin that owes its design to a type of battle axe its ancient settlers once used - it represents a symbol \
-	of power and conquest. The glint along its bronzen edge shifts with every passing glance, yearning to be dulled-wet with the blood of long-extinct villains."
+	name = "寇派什弯刀"
+	desc = "一柄源自纳莱迪的镰形剑，其形制承自古时定居者曾使用的一种战斧——它象征着 \
+	权力与征服。其青铜刃缘上的寒光随每一次凝视而流转，渴望着被早已灭绝的恶徒之血浸得黯淡。"
 	icon_state = "bronzekhopesh"
 	force = 22
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop/falx)
@@ -1473,8 +1470,8 @@
 	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/rogueweapon/sword/short/gladius/ancient/decrepit
-	name = "decrepit gladius"
-	desc = "A hefty shortsword, wrought from frayed bronze. Once, the sidearm of a proud legionnaire; now, a consequence of ambition and sacrifice."
+	name = "破旧短剑"
+	desc = "一把由磨损青铜打造的厚重短剑。它曾是骄傲军团士兵的副武器；如今，它是野心与牺牲的产物。"
 	force = 18
 	max_integrity = 150
 	blade_dulling = DULLING_SHAFT_CONJURED
@@ -1483,16 +1480,16 @@
 	randomize_blade_int_on_init = TRUE
 
 /obj/item/rogueweapon/sword/short/iron/chipped
-	name = "chipped iron shortsword"
-	desc = "A damaged and ancient iron shortsword. It looks duller, and seems less effective."
+	name = "缺口铁短剑"
+	desc = "一把受损的古旧铁短剑。它看起来更加迟钝，也显得不太好使。"
 	force = 17
 	icon_state = "iswordshort_d"
 	sheathe_icon = "iswordshort_d"
 	max_integrity = 75
 
 /obj/item/rogueweapon/sword/short/psy
-	name = "psydonic shortsword"
-	desc = "Despite its shattered blade, this former-longsword finds new purpose and renewed lethality as something shorter and quicker and no less deadly. Like He, it perseveres, no matter what."
+	name = "普赛顿短剑"
+	desc = "尽管剑刃已断，这把昔日的长剑仍在更短、更快、却丝毫不减致命的新形态中找到了新的使命。正如祂一般，无论如何都坚持不屈。"
 	icon_state = "psyswordshort"
 	sheathe_icon = "psyswordshort"
 	force = 20
@@ -1526,8 +1523,8 @@
 	)
 
 /obj/item/rogueweapon/sword/short/silver
-	name = "silver shortsword"
-	desc = "A shortsword with a blade of pure silver. In the marginalia of tomes depicting Psydonia's crusading orders, there is no sight more iconic than that of the hauberk-draped paladin; a kite shield in one hand, and this glimmering sidearm in the other."
+	name = "白银短剑"
+	desc = "一柄以纯银铸刃的短剑。在描绘普赛多尼亚十字军修会的典籍边注中，最具代表性的身影莫过于披挂锁甲的圣武士：一手持鸢盾，另一手握着这把闪耀的副武器。"
 	icon = 'icons/roguetown/weapons/daggers32.dmi'
 	icon_state = "silverswordshort"
 	sheathe_icon = "psyswordshort"
@@ -1551,9 +1548,9 @@
 	)
 
 /obj/item/rogueweapon/sword/short/messer
-	name = "steel messer"
-	desc = "A \"Großesmesser\" of disputed Grenzel origin, meaning greatknife. It's a basic single-edge sword for civilian and military use. It excels at slicing and chopping, and it's made of steel. \
-	It can fill the exact function of a hunting sword, this one is more durable."
+	name = "钢猎剑"
+	desc = "一把据称源自格伦泽的“Großesmesser”，意为“大刀”。这是一种供民用与军用的基础单刃剑，尤其擅长挥砍与劈斩，并以钢打造。\
+	它能完全胜任猎剑的用途，而这一把还更加耐用。"
 	icon_state = "smesser"
 	force = 24	//Hunting sword + 4
 	max_blade_int = 250	//Sword + 50
@@ -1562,9 +1559,9 @@
 	wdefense = 4	//Hunting sword +2
 
 /obj/item/rogueweapon/sword/short/messer/iron
-	name = "hunting sword"
-	desc = "A basic single-edge sword that is usually used to finish off hunted game. It excels at slicing and chopping, and it's made of iron. \
-	It's a fairly reliable and affordable self-defense weapon."
+	name = "猎剑"
+	desc = "一把基础单刃剑，通常用于了结猎获物。它擅长挥砍与劈斩，由铁制成。\
+	这是一件相当可靠且价格低廉的自卫武器。"
 	icon_state = "imesser"
 	minstr = 4
 	wdefense = 2
@@ -1575,16 +1572,16 @@
 	sheathe_icon = "isword"
 
 /obj/item/rogueweapon/sword/short/messer/iron/virtue
-	name = "dueling messer"
-	desc = "A basic single-edge iron hunting sword that has been modified for the express purpose of dueling, with an added guard and a leaner grip for comfort and speed."
+	name = "决斗猎剑"
+	desc = "一把为决斗用途改制的基础铁制猎剑，加装了护手，并采用更纤细的握柄，以兼顾舒适与速度。"
 	icon_state = "dmesser"
 	swingsound = BLADEWOOSH_SMALL
 	wdefense = 3
 	wbalance = WBALANCE_SWIFT
 
 /obj/item/rogueweapon/sword/short/messer/copper
-	name = "copper messer"
-	desc = "A copper hunting sword. Less lethal than its iron counterpart."
+	name = "铜猎剑"
+	desc = "一把铜制猎剑。杀伤力逊于它的铁制同类。"
 	force = 20 // Worse force. This weapon has steel integ instead of iron integ. Don't ask me why, it was that way before too.
 	icon_state = "cmesser"
 	minstr = 4
@@ -1592,10 +1589,10 @@
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/rogueweapon/sword/short/messer/bronze//this thing is boring, I ought give it some other intents but eh
-	name = "makhaira"
-	desc = "A heavy shortsword of similar design to the Kopis, fit for cleaving through both foliage and flesh. </br>Infamous for its \
-	presence amongst the gladitorial arenas of Etrusca and Zybantine, where gashes provide the kind of crimson spectacle that liqour-addled \
-	crowds adore the most."
+	name = "马凯拉短剑"
+	desc = "一柄形制与科皮斯相近的重型短剑，既能斩开枝叶，也能斩开血肉。 </br>它因常出现于 \
+	伊特鲁斯卡与兹班图的角斗场中而恶名昭彰——在那里，皮开肉绽的伤口正是那些被烈酒灌昏了头的 \
+	观众最为钟爱的猩红奇观。"
 	icon_state = "makhaira"
 	minstr = 6
 	wdefense = 3
@@ -1606,9 +1603,9 @@
 	sheathe_icon = "kopis"
 
 /obj/item/rogueweapon/sword/short/messer/blacksteel
-	name = "blacksteel messer"
-	desc = "A magnificent shortsword of blacksteel. Divorced from the labors that originally warranted its creation, yet no-less-adept at cleaving \
-	whatever might trouble one's morning strolls."
+	name = "黑钢猎剑"
+	desc = "一柄华丽的黑钢短剑。虽然已脱离了当初催生其诞生的劳作需求， \
+	但它在劈开可能打扰晨间散步的麻烦物方面，依旧毫不逊色。"
 	force = 27
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/rend/krieg/short, /datum/intent/sword/peel)
 	smeltresult = /obj/item/ingot/blacksteel
@@ -1618,8 +1615,8 @@
 	wbalance = WBALANCE_SWIFT
 
 /obj/item/rogueweapon/sword/sabre
-	name = "sabre"
-	desc = "A very popular backsword made for cavalrymen that originated in Naledi and spread its influence further north, reaching Aavnr as a \"Szablya\" and notoriously cementing itself as the preferred weapon of the Potentate's Hussars."
+	name = "军刀"
+	desc = "一种极受欢迎的骑兵背刃剑，起源于纳莱迪，随后一路向北传播，在阿夫纳尔被称作“萨布利亚”，并恶名昭彰地成为大统领骠骑兵最偏爱的武器。"
 	icon_state = "saber"
 	sheathe_icon = "saber"
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/sabre, /datum/intent/sword/peel, /datum/intent/sword/strike)
@@ -1645,14 +1642,14 @@
 	no_loot_taint = TRUE
 
 /obj/item/rogueweapon/sword/sabre/ancient
-	name = "ancient khopesh"
-	desc = "A polished hook-sword, forged from gilbranze. The Comet Syon's glare once graced this blade; now, it's wielded by those who can't even remember what came before His sacrifice."
+	name = "远古寇派什弯剑"
+	desc = "一把以吉尔青铜锻成、抛光如新的钩形剑。昔日，西翁彗星的辉光曾照耀这把刀刃；如今，挥舞它的人甚至已不记得祂牺牲前的世界。"
 	smeltresult = /obj/item/ingot/aaslag
 	icon_state = "akhopesh"
 
 /obj/item/rogueweapon/sword/sabre/ancient/decrepit
-	name = "decrepit khopesh"
-	desc = "A hooked sword, wrought from frayed bronze. The design is not only baffling, but seems to predate history itself."
+	name = "破旧寇派什弯剑"
+	desc = "一把以残旧青铜打造的钩形剑。它的设计不仅令人费解，甚至像是早于历史本身。"
 	force = 18
 	max_integrity = 115
 	blade_dulling = DULLING_SHAFT_CONJURED
@@ -1661,16 +1658,15 @@
 	randomize_blade_int_on_init = TRUE
 
 /obj/item/rogueweapon/sword/sabre/iron
-	name = "iron sabre"
-	desc = "A Naledian sword mass produced for line infantry. Its fittings are simple, munitions grade, but the construction is sturdy and the blade as threatening \
-	as any."
+	name = "铁军刀"
+	desc = "一把为纳莱迪线列步兵量产的军刀。其配件简朴，属于军用品级，但结构结实，刀刃的威胁性丝毫不逊于别的兵刃。"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
 	icon_state = "isaber"
 
 /obj/item/rogueweapon/sword/sabre/steppesman
-	name = "aavnic shashka"
-	desc = "A single-edged, single-handed, and guardless blade of northern Aavnic make with a brass pommel in the shape of a zad's head. The gentle curve of its blade puts it midway between a radically curved sabre and a straight sword, effective for both cutting and thrusting but lacking raw defense potential."
+	name = "阿夫尼克的沙什卡"
+	desc = "一把出自北地阿夫尼克风格的无护手单刃单手刀，黄铜柄首被塑成扎德兽首。它的弧度介于大曲度军刀与直剑之间，兼顾挥砍与刺击，但纯粹防御性稍弱。"
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/sabre, /datum/intent/rend, /datum/intent/sword/chop)
 	wdefense = 5
 	minstr = 6
@@ -1720,16 +1716,16 @@
 
 //Unique church sword - slightly better than regular sabre due to falx chop.
 /obj/item/rogueweapon/sword/sabre/nockhopesh
-	name = "moonlight khopesh"
-	desc = "A sickle-shaped sword of Naledi origin that owes its design to a type of battle axe its ancient settlers once used - it represents a symbol of power and conquest. This one in particular is made of blued steel."
+	name = "月辉寇派什弯剑"
+	desc = "一把源自纳莱迪的镰形剑，其设计脱胎于古代移民曾使用的一种战斧，象征着权力与征服。尤其这一把还是由发蓝钢锻成。"
 	icon_state = "nockhopesh"
 	force = 25	//Base is 22
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop/falx, /datum/intent/sword/peel)
 	max_integrity = 200
 
 /obj/item/rogueweapon/sword/sabre/elf
-	name = "elvish saber"
-	desc = "This finely crafted saber is of elven design."
+	name = "精灵军刀"
+	desc = "这把制作精良的军刀采用了精灵风格设计。"
 	icon_state = "esaber"
 	item_state = "esaber"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -1744,8 +1740,8 @@
 	smelt_bar_num = 2
 
 /obj/item/rogueweapon/sword/sabre/stalker
-	name = "stalker sabre"
-	desc = "A once elegant blade of mythril, diminishing under the suns gaze"
+	name = "潜猎者军刀"
+	desc = "一把曾经优雅的秘银刀刃，如今在阳光的注视下逐渐黯淡。"
 	icon_state = "spidersaber"
 	force = 25 // same as elf sabre
 	force_wielded = 25
@@ -1754,7 +1750,7 @@
 
 /obj/item/rogueweapon/sword/sabre/shamshir
 	name = "沙姆希尔弯刀"
-	desc = "A curved one-handed longsword. This type of scimitar is the quintessential armament of Zybantine horsemen, its name derived from Sama'glos for \"Tiger's claw\"."
+	desc = "一把弯曲的单手长剑。这类弯刀是齐班廷骑手最具代表性的武装，其名源自萨玛语，意为“虎爪”。"
 	force = 24
 	wdefense = 6 // two more force than sabre so let's consider this a fair tradeoff for the damage buff
 	icon_state = "tabi"
@@ -1779,10 +1775,10 @@
 				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/sword/rapier
-	name = "rapier"
-	desc = "A practically brand new sword type with a straight, slender and sharply pointed blade meant to be wielded in one hand. \
-		Originating in the islands of Etrusca, its name comes from the term \"spada ropera\" (Literally \"dress sword\") due to its primary function being that of an accessory. \
-		A very young type of fighting technique for this weapon is emerging in the island, aptly named \"Destreza\" for dexterity."
+	name = "刺剑"
+	desc = "一种几乎可以说是全新问世的剑型，拥有笔直、纤长且尖锐的剑刃，专为单手持用而设计。\
+		它起源于厄特鲁斯卡群岛，其名来自“spada ropera”（字面意为“礼服剑”），因为它最初首先是一种配饰。\
+		与此同时，群岛上也正发展出一门尚且年轻的配套技艺，因其讲究巧劲而被称作“Destreza”。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "rapier"
 	sheathe_icon = "rapier"
@@ -1806,8 +1802,8 @@
 	wbalance = WBALANCE_SWIFT
 
 /obj/item/rogueweapon/sword/rapier/vaquero
-	name = "cup-hilt rapier"
-	desc = "A special variant of an Etruscan rapier. The cup hilt of this weapon is both simpler to produce and more protective than the type of traditional design of current rapiers."
+	name = "杯护手刺剑"
+	desc = "一种特殊的厄特鲁斯卡刺剑变体。它的杯形护手相比当下刺剑的传统设计更易制造，同时也更能护手。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "cup_hilt_rapier"
 	wdefense = 8
@@ -1898,16 +1894,16 @@
 
 /obj/item/rogueweapon/sword/rapier/dec
 	no_loot_taint = TRUE
-	name = "decorated rapier"
-	desc = "A strange, cheap ring devoid of purpose, yet carrying an uncanny sense of nostalgia of grand upsets, felled short.\n<i>'You shall know his name. You shall know his purpose. You shall die.'</i>"
+	name = "装饰刺剑"
+	desc = "一把古怪而廉价的环状物，毫无实际用途，却又莫名让人联想到某场戛然而止的惊天逆转。\n<i>“你会知晓他的名字。你会知晓他的使命。然后你会死。”</i>"
 	icon_state = "decrapier"
 	sheathe_icon = "decrapier"
 	no_loot_taint = TRUE
 
 /obj/item/rogueweapon/sword/rapier/blacksteel
-	name = "blacksteel rapier"
-	desc = "A magnificent rapier of blacksteel. Despite originating from the matrimony of cutting-edge swordsmanship techniques and metallurgy, it \
-	doesn't actually have a cutting edge to call its own. Not like that matters as much, of course, when it can pierce straight through plate armor."
+	name = "黑钢刺剑"
+	desc = "一柄华丽的黑钢刺剑。尽管它源于先进的剑术技艺与冶金术的结合，它 \
+	实际上并没有真正意义上的开刃。当然，当它能直接刺穿板甲时，这点也就不那么重要了。"
 	force = 27
 	smeltresult = /obj/item/ingot/blacksteel
 	icon_state = "blacksteelrapier"
@@ -1924,7 +1920,7 @@
 /obj/item/rogueweapon/sword/rapier/blacksteel/examine(mob/user)
 	. = ..()
 	if(!used)
-		. += span_notice("The Special Manoeuvre of this weapon can be changed. Right-click it with a free hand to select one. This can only be done once.")
+		. += span_notice("此武器的特殊招式可以更换。用空手右键点击它，即可选择一种。此操作仅可进行一次。")
 
 /obj/item/rogueweapon/sword/rapier/blacksteel/attack_right(mob/user)
 	. = ..()
@@ -1936,7 +1932,7 @@
 		var/datum/special_intent/S = intent // Hate this DM quirk.
 		special_options[S::name] = S
 
-	var/choice = input(user, "Choose the Manoeuvre", "MANOEUVRE") as anything in special_options
+	var/choice = input(user, "选择招式", "招式") as anything in special_options
 	if(choice)
 		qdel(special)
 		var/datum/special_intent/S = special_options[choice]
@@ -1945,8 +1941,8 @@
 
 
 /obj/item/rogueweapon/sword/rapier/silver
-	name = "silver rapier"
-	desc = "A basket-hilted rapier, fitted with a thin blade of pure silver. Immortalized by Rockhill's witch hunters, this weapon - though cumberstone in an untrained hand - is surprisingly adept at both parrying and riposting."
+	name = "白银刺剑"
+	desc = "一把篮形护手刺剑，装配着纯银细刃。它因岩丘的猎巫人而留名于世，虽说落在未经训练之人手里会显得笨重，却意外地擅长格挡与还击。"
 	icon_state = "silverrapier"
 	sheathe_icon = "psyrapier"
 	max_integrity = 225
@@ -1970,8 +1966,8 @@
 	)
 
 /obj/item/rogueweapon/sword/rapier/psy
-	name = "psydonic rapier"
-	desc = "A basket-hilted rapier, fitted with a thin blade of pure silver. Such a resplendent weapon not only pierces the gaps within a heathen's maille, but also serves as the symbol of an Otavan diplomat's authority."
+	name = "普赛顿刺剑"
+	desc = "一把篮形护手刺剑，装配着纯银细刃。如此华美的兵器不仅能穿透异教徒锁甲的缝隙，也象征着奥塔凡外交使节的权威。"
 	icon_state = "silverrapier"
 	sheathe_icon = "rapier"
 	max_integrity = 225
@@ -2006,8 +2002,8 @@
 	)
 
 /obj/item/rogueweapon/sword/rapier/psy/relic
-	name = "Eucharist"
-	desc = "Etruscan shape falling prey to Otavan craftsmanship. Saint Malum's smiths created an uniquely thin blade, capable of swiftly skewering the unholy and the miscreants through gaps that most claim to have never existed in the first place. <b> Silver-dipped steel crowned upon a basket hilt that keeps righteous hands safe from harm."
+	name = "“圣餐”"
+	desc = "厄特鲁斯卡的剑型，落入奥塔凡工艺之手。圣玛勒姆的铁匠打造出一柄独一无二的纤薄剑刃，能迅速刺穿那些多数人声称原本并不存在的缝隙，将不洁者与恶徒一并钉穿。<b>浸银钢刃加冕于篮形护手之上，使正义之手免遭伤害。</b>"
 	icon_state = "psyrapier"
 	sheathe_icon = "psyrapier"
 	max_integrity = 300
@@ -2031,10 +2027,8 @@
 	)
 
 /obj/item/rogueweapon/sword/rapier/lord
-	name = "sword of the Mad Duke"
-	desc = "A royal heirloom whose spiraling basket hilt is inlaid with fine cut gems. It bears the burnish of \
-	time, where once sharply defined features have been worn down by so many hands. An old rumor ties this implement \
-	to the siege that smashed the Mad Duke's keep to rubble, and burnt the Duke himself to cinders."
+	name = "疯公之剑"
+	desc = "一件王室传家宝，其螺旋篮形护手上镶嵌着切工精美的宝石。它带着岁月磨出的包浆，那些原本锋锐鲜明的纹样已被无数双手磨得圆钝。古老传闻称，这件武器曾见证那场把疯公城堡夷为废墟、连公爵本人都焚成灰烬的围攻。"
 	icon_state = "lordrap"
 	sheathe_icon = "lordrapier"
 	no_loot_taint = TRUE
@@ -2043,8 +2037,8 @@
 	wdefense = 7
 
 /obj/item/rogueweapon/sword/rapier/eora
-	name = "\"Heartstring\""
-	desc = "A specialty-made bilbo hilt rapier made in service to Lady Eora. For the time when soft words can no longer be spoken, and hearts are to be pierced."
+	name = "“心弦”"
+	desc = "一把专为侍奉艾欧拉女士而打造的比尔博柄刺剑。留给那些温言已无用武之地、唯有刺穿人心的时刻。"
 	icon = 'icons/roguetown/weapons/swords32.dmi'
 	icon_state = "eorarapier"
 	sheathe_icon = "eorarapier"
@@ -2056,8 +2050,8 @@
 	wdefense = 8
 
 /obj/item/rogueweapon/sword/rapier/courtphysician
-	name = "cane blade"
-	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane, bears the visage of a vulture on its pommel."
+	name = "手杖剑"
+	desc = "一柄金柄钢刃，专为藏匿于手杖内而制，剑柄末端饰有秃鹫形象。"
 	icon = 'icons/roguetown/weapons/swords32.dmi'
 	icon_state = "doccaneblade"
 	sheathe_icon = "doccaneblade"
@@ -2071,8 +2065,8 @@
 	force_wielded = 0
 
 /obj/item/rogueweapon/sword/rapier/hand
-	name = "dark sister"
-	desc = "A tool made for nobler tasks than shedding blood, discreet and ever ready, as you should be too."
+	name = "暗黑姊妹"
+	desc = "一件为比流血更高尚的使命而造的器具，隐秘而随时待命——你也应当如此。"
 	pixel_y = 0
 	pixel_x = 0
 	bigboy = FALSE
@@ -2082,8 +2076,8 @@
 	sheathe_icon = "staffblade"
 
 /obj/item/rogueweapon/sword/cutlass
-	name = "cutlass"
-	desc = "The mariner's special: A short, broad sabre with a slightly curved blade optimized for slashing."
+	name = "短弯刀"
+	desc = "水手的拿手货：一把短而宽的军刀，略带弧度的刀刃专为劈斩优化。"
 	icon_state = "cutlass"
 	force = 23
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/peel)
@@ -2094,8 +2088,8 @@
 
 
 /obj/item/rogueweapon/sword/silver
-	name = "silver arming sword"
-	desc = "An arming sword, fitted with a blade of pure silver. It is the bane of vampyres, nitebeasts, and deadites throughout all of Psydonia; cursed flesh erupts into holy fire, and unholy bravado twists into mortal fear."
+	name = "白银单手剑"
+	desc = "一把装有纯银剑刃的单手剑。它是整个普赛多尼亚的吸血鬼、夜兽与亡骸的克星；受诅血肉会在圣焰中爆裂，不洁者的狂妄也会扭曲成凡人的恐惧。"
 	icon_state = "silversword"
 	sheathe_icon = "silversword"
 	force = 18
@@ -2217,9 +2211,9 @@
 				)
 
 /obj/item/rogueweapon/sword/silver/decorated
-	name = "decorated silver khadga" //While ostensibly a sword, it's functionally identical - if a little weaker - than the Silver War Axe.
-	desc = "Beautifully designed for nobility, yet born from an ignoble purpose; to satiate the powers of ancient mythos with sacrificial blood. This Naledian \
-	sword, better known as a 'ram-dao', now serves to satiate the spite of vengeful spirits - not through bloodshed, but through sunderance."
+	name = "华丽银制卡德加剑" //While ostensibly a sword, it's functionally identical - if a little weaker - than the Silver War Axe.
+	desc = "为贵族而精心设计，却诞生于卑劣的目的：以祭牲之血满足远古神话中的力量。这柄纳莱迪 \
+	长剑，更常被称作“兰道刀”，如今则用以平息复仇怨灵的恨意——并非通过流血，而是通过斩断。"
 	icon_state = "ram_dao"
 	sheathe_icon = "scabbard_decsword3"
 	force = 25
@@ -2244,8 +2238,8 @@
 	)
 
 /obj/item/rogueweapon/sword/long/rhomphaia
-	name = "rhomphaia"
-	desc = "An ancient sword similar to the falx, with the key difference of its curve being less pronounced - feared for its ability to strike and thrust with precision."
+	name = "罗姆法亚弯剑"
+	desc = "一种与法尔克斯相似的古剑，关键区别在于其弧度较浅，因此因兼具精准挥击与刺击能力而令人畏惧。"
 	force = 25
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx, /datum/intent/sword/peel)
@@ -2352,8 +2346,8 @@
 				)
 
 /obj/item/rogueweapon/sword/long/rhomphaia/copper
-	name = "copper rhomphaia"
-	desc = "An ancient sword similar to the falx, with the key difference of its curve being less pronounced - feared for its ability to strike and thrust with precision. This one is made of copper, making it weaker."
+	name = "铜罗姆法亚弯剑"
+	desc = "一种与法尔克斯相似的古剑，区别在于弧度较浅，因此因兼具精准挥击与刺击能力而令人畏惧。这一把由铜制成，因此更弱。"
 	icon_state = "crhomphaia"
 	force = 22
 	force_wielded = 26
@@ -2361,8 +2355,8 @@
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/rogueweapon/sword/long/oathkeeper
-	name = "Oathkeeper"
-	desc = "An ornate golden longsword with a ruby embedded in the hilt, given to the Knight Commander for their valiant service to the crown."
+	name = "誓约守望"
+	desc = "一把华丽的金色长剑，剑柄嵌有红宝石，作为嘉奖授予为王权英勇效命的骑士统领。"
 	no_loot_taint = TRUE
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	icon_state = "kingslayer"
@@ -2378,8 +2372,8 @@
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/sword/long/holysee
-	name = "eclipsum sword"
-	desc = "A masterworked longsword, forged from the same divine alloy that decorates the Bishop's hip. As your fingers curl around the shaft, a blessed sensation rolls through your very soul: the resolve to stand against evil, and the determination to see it vanquished from this world. </br>'..blessed to hold strength and bring hope, whether it be during the dae or the nite..'"
+	name = "圣蚀长剑"
+	desc = "一把大师级工艺打造的长剑，由与主教佩剑相同的神圣合金锻成。当你的手指扣住剑柄时，一股受祝福的感受直抵灵魂深处：那是挺身抗恶的决意，以及将邪祟逐出这个世界的坚定。 </br>“……愿其蒙福，得以持有力量并带来希望，无论是在白昼，还是黑夜……”"
 	icon_state = "seeblade"
 	force = 35
 	force_wielded = 50
@@ -2501,9 +2495,9 @@
 				)
 
 /obj/item/rogueweapon/sword/long/kriegmesser
-	name = "kriegsmesser"
-	desc = "A large two-handed sword with a single-edged blade, a crossguard and a knife-like hilt. \
-	It is meant to be wielded with both hands and is a popular weapon amongst Grenzelhoftian mercenaries."
+	name = "双手大刀"
+	desc = "一把大型双手剑，拥有单刃剑身、十字护手与近似刀柄的握把。\
+	它注定要以双手挥舞，也是格伦泽霍夫雇佣兵之间颇受欢迎的武器。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "kriegmesser"
 	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/rend/krieg, /datum/intent/sword/strike)
@@ -2512,8 +2506,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/kriegmesser/zizo
-	name = "avantyne kriegmesser"
-	desc = "A wicked, cruel and otherworldly blade, it is cast in Her image, to tear away at flesh like She tore the tapestry of divinity for herself  - Carve, aspirant, for hate's unholy name."
+	name = "阿凡泰因战刀"
+	desc = "一柄邪恶、残忍且不似此世之刃，以她的形象铸成，用以撕开血肉——正如她为自己撕开了神性的织锦。雕刻吧，渴慕者，为了憎恨那不洁之名。"
 	icon_state = "zizosword"
 	sheathe_icon = "zizosword"
 	unenchantable = TRUE
@@ -2529,8 +2523,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
 
 /obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo
-	name = "ssangsudo"
-	desc = "A style of long blade used by the kouken of Kazengun. A weapon supremely skilled in the art of cutting."
+	name = "双手刀"
+	desc = "风郡甲拳众所用的一种长刃兵器，是将斩击之艺发挥到极致的武器。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "ssangsudo"
 	sheathe_icon = "ssangsudo"
@@ -2538,9 +2532,9 @@
 
 /obj/item/rogueweapon/sword/long/dec
 	no_loot_taint = TRUE
-	name = "decorated longsword"
-	desc = "A valuable ornate longsword made for the purpose of ceremonial fashion, with a fine leather grip and a carefully engraved golden crossguard. \
-	Its blade bears twin inscriptions on either side. One reads, \"THY KINGDOM COME\" while the obverse reads, \"THY WILL BE DONE\"."
+	name = "华饰长剑"
+	desc = "一把为礼仪排场而打造的华贵长剑，配有上等皮革握柄与精雕细刻的镀金十字护手。\
+	剑身两面各刻有一句铭文，一面写着“愿祢的国降临”，另一面则写着“愿祢的旨意成就”。"
 	icon_state = "declongsword"
 	no_loot_taint = TRUE
 
@@ -2548,16 +2542,16 @@
 // Stronger offense less defense sword meant to be paired w/ scabbard for parrying
 /obj/item/rogueweapon/sword/sabre/mulyeog
 	force = 25
-	name = "hwando" // From Korean Hwangdo - Lit. Military Sword / Sabre, noted for less curves than a Japanese katana.
-	desc = "A foreign single-edged sword used by cut-throats & thugs. There's a red tassel on the hilt, said to bring about good fortune."
+	name = "环刀" // From Korean Hwangdo - Lit. Military Sword / Sabre, noted for less curves than a Japanese katana.
+	desc = "一把被割喉匪徒与地痞流氓常用的异域单刃剑。剑柄上系着红穗，据说能带来好运。"
 	sheathe_icon = "mulyeog"
 	icon_state = "eastsword1"
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 3
 
 /obj/item/rogueweapon/sword/sabre/mulyeog/rumahench
-	name = "ruma hwando"
-	desc = "A foreign steel single-edged sword with cloud patterns on the groove. The Ruma Clan's insignia is engraved on the blade."
+	name = "卢马环刀"
+	desc = "一把异域钢制单刃剑，血槽上饰有云纹，剑身刻着卢马氏族的徽记。"
 	icon_state = "eastsword2"
 	force = 27
 	max_integrity = 200
@@ -2566,8 +2560,8 @@
 
 /obj/item/rogueweapon/sword/sabre/mulyeog/rumacaptain
 	force = 27
-	name = "samjeongdo"
-	desc = "A gold-stained sword with cloud patterns on the groove. One of a kind. It is a symbol of status within the Ruma clan."
+	name = "三正刀"
+	desc = "一把染有金色光泽、血槽饰有云纹的长剑，独一无二，是卢马氏族内部地位的象征。"
 	icon_state = "eastsword3"
 	max_integrity = 200
 	sharpness_mod = 2
@@ -2575,8 +2569,8 @@
 
 /obj/item/rogueweapon/sword/sabre/hook
 	force = 20
-	name = "hook sword"
-	desc = "A steel sword with a hooked design at the tip of it; perfect for disarming enemies. Its back edge is sharpened and the hilt appears to have a sharpened tip."
+	name = "钩剑"
+	desc = "一把前端带钩的钢剑，极其适合缴械敌人。它的背刃同样开锋，护手末端也像被磨成了尖刺。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "hook_sword"
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/hook, /datum/intent/sword/strike, /datum/intent/sword/disarm)
@@ -2662,7 +2656,7 @@
 
 //Snowflake version of hand-targeting disarm intent.
 /datum/intent/sword/disarm
-	name = "disarm"
+	name = "缴械"
 	icon_state = "intake"
 	animname = "strike"
 	blade_class = null	//We don't use a blade class because it has on damage.
@@ -2703,8 +2697,8 @@
 				M.dropItemToGround(I, force = FALSE, silent = FALSE)
 				user.stop_pulling()
 				user.put_in_inactive_hand(I)
-				M.visible_message(span_danger("[user] takes [I] from [M]'s hand!"), \
-				span_userdanger("[user] takes [I] from my hand!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+				M.visible_message(span_danger("[user]从[M]手中夺走了[I]！"), \
+				span_userdanger("[user]从我手里夺走了[I]！"), span_hear("我听见一阵令人牙酸的扭打声！"), COMBAT_MESSAGE_RANGE)
 				user.changeNext_move(12)//avoids instantly attacking with the new weapon
 				playsound(src.loc, 'sound/combat/weaponr1.ogg', 100, FALSE, -1) //sound queue to let them know that they got disarmed
 				if(!M.mind)	//If you hit an NPC - they pick up weapons instantly. So, we do more stuff.
@@ -2713,8 +2707,8 @@
 				probby += 20
 				if(prob(probby))
 					M.dropItemToGround(I, force = FALSE, silent = FALSE)
-					M.visible_message(span_danger("[user] disarms [M] of [I]!"), \
-					span_userdanger("[user] disarms me of [I]!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+					M.visible_message(span_danger("[user]将[M]手中的[I]打落了！"), \
+					span_userdanger("[user]把我手中的[I]打落了！"), span_hear("我听见一阵令人牙酸的扭打声！"), COMBAT_MESSAGE_RANGE)
 					if(!M.mind)
 						M.Stun(20)	//high delay to pick up weapon
 					else
@@ -2722,24 +2716,24 @@
 				else
 					user.Immobilize(10)
 					M.Immobilize(10)
-					M.visible_message(span_notice("[user.name] struggles to disarm [M.name]!"))
+					M.visible_message(span_notice("[user.name]拼命想缴掉[M.name]的武器！"))
 					playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
 		if(!isliving(M))
-			to_chat(user, span_warning("You cannot disarm this enemy!"))
+			to_chat(user, span_warning("你无法缴这名敌人的械！"))
 			return
 		else
-			to_chat(user, span_warning("They aren't holding anything on that hand!"))
+			to_chat(user, span_warning("对方那只手上什么都没拿！"))
 			return
 
 /obj/item/rogueweapon/sword/attack(mob/living/M, mob/living/user)
 	if(user == M && user.used_intent && user.used_intent.blade_class == BCLASS_STAB && istype(user.rmb_intent, /datum/rmb_intent/weak))
 		if(user.zone_selected == BODY_ZONE_PRECISE_STOMACH || user.zone_selected == BODY_ZONE_CHEST)
 			if(user.doing)
-				to_chat(user, span_warning("You're already in the process of disemboweling yourself!"))
+				to_chat(user, span_warning("你已经在自我开膛的过程中！"))
 				return
-			user.visible_message(span_danger("[user] presses [src] to their stomach, preparing to disembowel themselves!"), span_notice("You press the blade to your stomach and begin to push..."))
+			user.visible_message(span_danger("[user]把[src]抵在自己腹部，准备开膛自己！"), span_notice("我把刀刃抵在腹部，开始慢慢推进……"))
 			if(!do_after(user, 40, 1, user, 1)) // 4 seconds, hand required, target self, show progress
-				to_chat(user, span_warning("You stop before you can disembowel yourself!"))
+				to_chat(user, span_warning("你在真正开膛自己前停下了！"))
 				return
 			// Disembowelment success: drop organs
 			var/list/spilled_organs = list()
@@ -2755,7 +2749,7 @@
 			for(var/obj/item/organ/spilled as anything in spilled_organs)
 				spilled.Remove(user)
 				spilled.forceMove(user.drop_location())
-			user.visible_message(span_danger("[user] disembowels themselves, their organs spilling out!"), span_notice("You feel a horrible pain as your organs spill out!"))
+			user.visible_message(span_danger("[user]开膛了自己，内脏哗啦啦流了出来！"), span_notice("当内脏从体内滑出时，我感到一阵可怖的剧痛！"))
 			user.emote("scream", null, null, TRUE, TRUE) // forced scream
 			if(!user.no_redflash)
 				user.overlay_fullscreen("painflash", /atom/movable/screen/fullscreen/painflash)
@@ -2763,8 +2757,8 @@
 	..()
 
 /obj/item/rogueweapon/sword/capsabre // just a better sabre, unique knight captain weapon
-	name = "'Law'"
-	desc = "A lavish sabre made for the captain, this one of a kind blacksteel beauty is meant to be used to uphold the law."
+	name = "“法理”"
+	desc = "一把为船长打造的华贵军刀，这件独一无二的黑钢杰作正是为维护法度而生。"
 	icon_state = "capsabre"
 	icon = 'icons/roguetown/weapons/special/captain.dmi'
 	force = 25 // same as elvish sabre
@@ -2780,10 +2774,10 @@
 	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/rogueweapon/sword/gold
-	name = "golden arming sword"
-	desc = "A heavenly arming sword, who's golden blade and besilked handle lays separated by a duocruciformic crossguard. This particular weapon \
-	seems to have innovatively combined the lethal cutting prowess of Psydonia's oldest weapon with the psychological damage of knowing that its \
-	wielder could likely bribe the Carriageman himself, and still chose to personally kill you."
+	name = "黄金单手剑"
+	desc = "一柄天界风格的单手剑，金色剑刃与缠丝握柄之间以一道双十字护手相隔。这把武器 \
+	似乎创造性地把普赛多尼亚最古老兵器的致命斩击之能，与一种心理威慑结合了起来——你清楚 \
+	它的持有者多半连车夫本人都能买通，却仍选择亲手杀掉你。"
 	icon_state = "goldsword"
 	smeltresult = /obj/item/ingot/gold
 	force = 35
@@ -2797,19 +2791,18 @@
 	unenchantable = TRUE
 
 /obj/item/rogueweapon/sword/gold/king
-	name = "royal golden arming sword"
-	desc = "A heavenly arming sword, who's golden blade and besilked handle lays separated by a duocruciformic crossguard ornamented with a dorpel. This particular weapon \
-	seems to have innovatively combined the lethal cutting prowess of Psydonia's oldest weapon with the psychological damage of knowing that its \
-	wielder could likely bribe the Carriageman himself, and still chose to personally kill you."
+	name = "王室黄金单手剑"
+	desc = "一柄天界风格的单手剑，金色剑刃与缠丝握柄之间以一道饰有护环的双十字护手相隔。这把武器 \
+	似乎创造性地把普赛多尼亚最古老兵器的致命斩击之能，与一种心理威慑结合了起来——你清楚 \
+	它的持有者多半连车夫本人都能买通，却仍选择亲手杀掉你。"
 	icon_state = "goldswordking"
 	max_integrity = 75
 	max_blade_int = 75
 	sellprice = 300
 
 /obj/item/rogueweapon/sword/blacksteel
-	name = "blacksteel arming sword"
-	desc = "A broad blade of blacksteel, mounted to a rosawooden handle that perfectly compliments its wielder's grasp. It is the culmination of \
-	Psydonia's storied history with arming swords; a mastersmith's triumph, only fit for the hands of a true hero.. or a truer villain."
+	name = "黑钢单手剑"
+	desc = "宽刃黑钢剑身，配以玫瑰木握柄，弧度恰到好处地贴合持握者的掌心。它是普赛多尼亚单手剑锻造技艺的巅峰——一位铸剑宗师的毕生杰作，唯有真正的英雄……抑或枭雄中的枭雄，才有资格执握。"
 	icon_state = "bs_sword"
 	sheathe_icon = "bs_sword"
 	smeltresult = /obj/item/ingot/blacksteel
@@ -2821,9 +2814,9 @@
 	sellprice = 150
 
 /obj/item/rogueweapon/sword/decorated/blacksteel
-	name = "decorated blacksteel arming sword"
-	desc = "A broad blade of blacksteel, mounted atop a golden sabreguard that's been meticulously engraved with its comfoner's heraldry. It is \
-	a masterwork of unmatched opulance and lethality, and is - perhaps - the finest arming sword your eyes'll ever lay upon."
+	name = "黑钢华饰单手剑"
+	desc = "宽刃黑钢剑身，配以金色剑格，其上精雕细琢着委托人的家族纹章。这件杰作兼具极致的奢华与致命的杀伤力，\
+	或许，这将是你毕生所见最为精良的单手剑。"
 	icon_state = "bs_swordregal"
 	sheathe_icon = "bs_swordregal"
 	wdefense = 7
@@ -2831,10 +2824,10 @@
 	no_loot_taint = TRUE
 
 /obj/item/rogueweapon/sword/long/shotel
-	name = "steel shotel"
+	name = "钢索特尔弯刀"
 	icon_state = "shotel_steel"
-	icon = 'icons/roguetown/weapons/swords64.dmi'
-	desc = "A long curved blade of Zybantine Design."
+	icon = 'icons/roguetown/weapons/64.dmi'
+	desc = "一把具有齐班廷风格的长曲刃。"
 	possible_item_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/long) //Shotels get 2 tile reach.
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/long)
 	swingsound = BLADEWOOSH_LARGE
@@ -2868,7 +2861,7 @@
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/sword/long/shotel/iron
-	name = "iron shotel"
+	name = "铁索特尔弯刀"
 	icon_state = "shotel_iron"
 	swingsound = BLADEWOOSH_LARGE
 	max_integrity = 100
@@ -2893,8 +2886,8 @@
 
 //Elven weapons sprited and added by Jam
 /obj/item/rogueweapon/sword/short/elf
-	name = "elven shortsword"
-	desc = "This flowing sword is of classic elven design. Durable metallurgy create a fine parrying blade."
+	name = "精灵短剑"
+	desc = "这把线条流畅的剑采用了经典的精灵设计。耐用的冶金工艺打造出优良的格挡剑刃。"
 	icon_state = "elfsword"
 	wdefense = 9 // Better defense than the elven saber.
 	max_integrity = 200 
@@ -2903,8 +2896,8 @@
 	sheathe_icon = "elfsword"
 
 /obj/item/rogueweapon/sword/long/elf
-	name = "elven longsword"
-	desc = "This mighty flowing sword is of classic elven design."
+	name = "精灵长剑"
+	desc = "这把强劲而流畅的剑采用了经典的精灵风格设计。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "elflongsword"
 	max_blade_int = 330

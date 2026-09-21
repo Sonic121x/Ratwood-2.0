@@ -11,8 +11,8 @@
 // This provides especially wretches reasons to harrass adventurers and get vital items they usually can't out of town like lockpicks, red or prosthetics
 
 /obj/structure/roguemachine/blackmarket
-	name = "COPPERFACE"
-	desc = "Never gets tired, does not ask questions, only minor signs of tampering. Alas, fashioned with copper of low quality."
+	name = "铜面"
+	desc = "不知疲倦，不问缘由，只有些许被动过手脚的痕迹。唉，可惜是用劣质铜铸成的。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "copperface"
 	density = TRUE
@@ -26,14 +26,14 @@
 	var/upgrade_flags
 	var/current_cat = "1"
 	var/list/categories = list(
-		"General Labour",
-		"Beverages",
-		"Health and Hygiene"
+		"杂务用品", // English: General Labour
+		"饮品", // English: Beverages
+		"健康与卫生" // English: Health and Hygiene
 	)
 	var/list/categories_gamer = list(
-		"Self Defense",
-		"Diplomacy and Persuasion",
-		"Exotic Import"
+		"自卫用品", // English: Self Defense
+		"外交与说服", // English: Diplomacy and Persuasion
+		"异域进口品" // English: Exotic Import
 	)
 
 /obj/structure/roguemachine/blackmarket/Initialize(mapload)
@@ -75,7 +75,7 @@
 			budget -= cost
 			record_round_statistic(STATS_COPPERFACE_VALUE_SPENT, cost)
 		else
-			say("Not enough!")
+			say("不够！")
 			return
 		var/shoplength = PA.contains.len
 		var/l

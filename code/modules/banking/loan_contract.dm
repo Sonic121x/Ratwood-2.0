@@ -1,7 +1,7 @@
 // Loan contracts and indenture writs 
 /obj/item/loan_contract
-	name = "Loan Contract"
-	desc = "A binding writ from the Nerve Master, bearing the Steward's signature. Any eligible bearer may accept its terms."
+	name = "贷款合同"
+	desc = "一份由神经主签发的约束性令状, 带有总管家的签名. 任何符合资格的持有人均可接受其条款."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "paper_prep"
 	w_class = WEIGHT_CLASS_TINY
@@ -23,76 +23,76 @@
 
 /obj/item/loan_contract/examine(mob/user)
 	. = ..()
-	var/signature = issuer_name || "the Nerve Master"
+	var/signature = issuer_name || "神经主"
 	var/year = issuer_year || CALENDAR_EPOCH_YEAR
 	var/pct = round(interest_rate * 100)
-	. += span_info("The contract reads: <i>\"Be it known that the bearer doth receive of the Crown the sum of [principal] mammon, to be repaid in full on the [ordinal(term_days)] dae after the acceptance of this loan, at the rate of [pct] per centum per dae of simple interest, totaling [total_due] mammon due.\"</i>")
-	. += span_info("<i>Signed in the year [year], [signature].</i>")
-	. += span_notice("Left-click in hand to accept or decline its terms.")
+	. += span_info("合同写道: <i>\"兹证明持有人向王权借得[principal]玛门币, 须于接受此贷款后的第[term_days]日全额偿还, 每日按百分之[pct]的单利计息, 合计应还[total_due]玛门币.\"</i>")
+	. += span_info("<i>签于[year]年, [signature].</i>")
+	. += span_notice("持于手中左键点击可接受或拒绝其条款.")
 
 /obj/item/loan_contract/proc/ordinal(n)
 	if(!isnum(n))
 		return "[n]"
-	var/suffix = "th"
+	var/suffix = ""
 	var/mod100 = n % 100
 	if(mod100 < 11 || mod100 > 13)
 		switch(n % 10)
 			if(1)
-				suffix = "st"
+				suffix = ""
 			if(2)
-				suffix = "nd"
+				suffix = ""
 			if(3)
-				suffix = "rd"
+				suffix = ""
 	return "[n][suffix]"
 
 /obj/item/loan_contract/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
 		return ..()
 	if(HAS_TRAIT(user, TRAIT_DEBTOR))
-		to_chat(user, span_warning("I am already marked a defaulter of the Crown. I cannot take on new debt."))
+		to_chat(user, span_warning("我已被列为拖欠王权债务之人. 我不能再举新债."))
 		return
 	if(SStreasury.get_loan_for(user))
-		to_chat(user, span_warning("I already owe the Crown. I cannot hold two debts at once."))
+		to_chat(user, span_warning("我已经欠下王权的债务. 我不能同时背负两笔债务."))
 		return
 	if(!SStreasury.has_account(user))
-		to_chat(user, span_warning("I have no Nervelock account to receive these funds. I must open one first."))
+		to_chat(user, span_warning("我没有神经锁账户来接收这笔款项. 我必须先开户."))
 		return
 	if(source_fund_id == "church" && (user.job in GLOB.church_positions))
-		to_chat(user, span_warning("The Church prohibits usury to its own. Eora's coin is for the poor and the downtrodden, not the faithful."))
+		to_chat(user, span_warning("教会禁止向自己人放贷取息. 伊欧拉的钱币是给贫苦受难者的, 并非给信徒的."))
 		return
 	var/datum/fund/preview_fund = SStreasury.resolve_fund_by_id(source_fund_id)
-	var/preview_label = preview_fund ? SStreasury.indenture_faction_label(preview_fund) : "an unknown lender"
+	var/preview_label = preview_fund ? SStreasury.indenture_faction_label(preview_fund) : "未知的出借方"
 	var/pct = round(interest_rate * 100)
-	var/choice = alert(user, "Accept a loan of [principal]m from [preview_label], due in [term_days] day\s at [pct]%/day simple interest? Total due: [total_due]m.", "Loan from [preview_label]", "Accept", "Decline")
-	if(choice != "Accept")
-		to_chat(user, span_notice("I set the contract aside, unsigned."))
+	var/choice = alert(user, "接受[preview_label]提供的[principal]m贷款, 在[term_days]天后到期且单利为[pct]%/天? 应还总额: [total_due]m.", "来自[preview_label]的贷款", "接受", "拒绝")
+	if(choice != "接受")
+		to_chat(user, span_notice("我将合同放在一旁, 没有签字."))
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(HAS_TRAIT(user, TRAIT_DEBTOR))
-		to_chat(user, span_warning("I am already marked a defaulter of the Crown."))
+		to_chat(user, span_warning("我已被列为拖欠王权债务之人."))
 		return
 	if(SStreasury.get_loan_for(user))
-		to_chat(user, span_warning("I already owe the Crown."))
+		to_chat(user, span_warning("我已经欠下王权的债务."))
 		return
 	var/datum/fund/account = SStreasury.get_account(user)
 	if(!account)
-		to_chat(user, span_warning("My Nervelock account is gone."))
+		to_chat(user, span_warning("我的神经锁账户不见了."))
 		return
 	var/datum/fund/issuing_fund = SStreasury.resolve_fund_by_id(source_fund_id)
 	if(!issuing_fund)
-		to_chat(user, span_warning("The writ names no recognised lender. The nervelock cannot honor it."))
+		to_chat(user, span_warning("令状未列明受认可的出借方. 神经锁无法兑现它."))
 		return
 
 	if(issuing_fund == account)
-		to_chat(user, span_warning("I cannot take a loan from myself. The nervelock will not honor this writ."))
+		to_chat(user, span_warning("我不能向自己借款. 神经锁不会兑现这份令状."))
 		return
 
 	if(issuing_fund.balance < principal)
-		to_chat(user, span_warning("[issuing_fund.name]'s coffers are too thin to honor this writ."))
+		to_chat(user, span_warning("[issuing_fund.name]的库银不足以兑现这份令状."))
 		return
-	if(!SStreasury.transfer(issuing_fund, account, principal, "Loan principal"))
-		to_chat(user, span_warning("The nervelock refuses the transfer."))
+	if(!SStreasury.transfer(issuing_fund, account, principal, "贷款本金"))
+		to_chat(user, span_warning("神经锁拒绝转账."))
 		return
 	if(issuing_fund == SStreasury.discretionary_fund)
 		record_treasury_expense(TREASURY_FLOW_LOAN_OUT, treasury_role_of(user), principal)
@@ -100,23 +100,23 @@
 	SStreasury.loans += L
 	record_round_statistic(STATS_LOANS_ISSUED, 1)
 	var/lender_label = SStreasury.indenture_faction_label(issuing_fund)
-	user.visible_message(span_notice("[user] signs the loan contract and pockets [lender_label]'s coin."), \
-		span_notice("I accept the loan of [principal]m from [lender_label], repayable in [term_days] day\s at [pct]%/day. Total due: [total_due]m."))
+	user.visible_message(span_notice("[user]签署了贷款合同并将[lender_label]的钱币收入囊中."), \
+		span_notice("我接受了[lender_label]提供的[principal]m贷款, 须在[term_days]天后偿还且利率为[pct]%/天. 应还总额: [total_due]m."))
 	playsound(get_turf(user), 'sound/misc/gold_license.ogg', 60, FALSE, -1)
-	send_ooc_note("<b>NERVELOCK:</b> Loan of [principal]m received from [lender_label]. [total_due]m will be collected on day [L.due_on_day].", name = user.real_name)
+	send_ooc_note("<b>神经锁:</b> 已收到[lender_label]提供的[principal]m贷款. 将于第[L.due_on_day]天收取[total_due]m.", name = user.real_name)
 	qdel(src)
 
 /obj/item/loan_contract/indenture
-	name = "Writ of Indenture"
-	desc = "A binding indenture between two institutions of Ferentia. Only the named target's authorised hand may seal it."
+	name = "契约令状"
+	desc = "费伦提亚两个机构之间具有约束力的契约. 只有指定对象的授权代表才可盖印."
 	icon_state = "paper_prep"
 	var/target_fund_id
 
 /obj/item/loan_contract/indenture/examine(mob/user)
 	. = ..()
-	. += span_warning("This indenture is publicly proclaimed upon acceptance and upon default.")
+	. += span_warning("此契约在接受和违约时均会公开宣告.")
 	if(target_fund_id)
-		. += span_info("Drawn for: [SStreasury.indenture_faction_label(SStreasury.resolve_fund_by_id(target_fund_id))].")
+		. += span_info("签发对象: [SStreasury.indenture_faction_label(SStreasury.resolve_fund_by_id(target_fund_id))].")
 
 /obj/item/loan_contract/indenture/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -124,31 +124,31 @@
 	var/datum/fund/issuing_fund = SStreasury.resolve_fund_by_id(source_fund_id)
 	var/datum/fund/target_fund = SStreasury.resolve_fund_by_id(target_fund_id)
 	if(!issuing_fund || !target_fund)
-		to_chat(user, span_warning("The indenture names no recognised parties. The nervelock cannot honor it."))
+		to_chat(user, span_warning("契约未列明受认可的当事方. 神经锁无法兑现它."))
 		return
 	var/obj/structure/roguemachine/vaultbank/target_jawbank = SStreasury.find_jawbank_for_fund_id(target_fund_id)
 	if(!target_jawbank)
-		to_chat(user, span_warning("[SStreasury.indenture_faction_label(target_fund)] has no jawbank to receive this indenture."))
+		to_chat(user, span_warning("[SStreasury.indenture_faction_label(target_fund)]没有颌口金库来接收此契约."))
 		return
 	if(!target_jawbank.can_accept_indenture(user))
-		to_chat(user, span_warning("Only [target_jawbank.get_authority_label()] may seal an indenture for [SStreasury.indenture_faction_label(target_fund)]."))
+		to_chat(user, span_warning("只有[target_jawbank.get_authority_label()]可以为[SStreasury.indenture_faction_label(target_fund)]的契约盖印."))
 		return
 	for(var/datum/loan/L in SStreasury.loans)
 		if(L.is_institutional && L.target_fund == target_fund)
-			to_chat(user, span_warning("[SStreasury.indenture_faction_label(target_fund)] already holds an outstanding indenture."))
+			to_chat(user, span_warning("[SStreasury.indenture_faction_label(target_fund)]已经有一份尚未清偿的契约."))
 			return
 	var/pct = round(interest_rate * 100)
-	var/choice = alert(user, "On behalf of [SStreasury.indenture_faction_label(target_fund)], accept an indenture of [principal]m from [issuing_fund.name], due in [term_days] day\s at [pct]%/day? Total due: [total_due]m. THIS WILL BE PUBLICLY PROCLAIMED.", "Writ of Indenture", "Seal", "Decline")
-	if(choice != "Seal")
-		to_chat(user, span_notice("I set the indenture aside, unsealed."))
+	var/choice = alert(user, "代表[SStreasury.indenture_faction_label(target_fund)], 接受[issuing_fund.name]提供的[principal]m借款契约, 在[term_days]天后到期且利率为[pct]%/天? 应还总额: [total_due]m. 此事将公开宣告.", "契约令状", "盖印", "拒绝")
+	if(choice != "盖印")
+		to_chat(user, span_notice("我将契约放在一旁, 没有盖印."))
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(issuing_fund.balance < principal)
-		to_chat(user, span_warning("[issuing_fund.name]'s coffers are too thin to honor this indenture."))
+		to_chat(user, span_warning("[issuing_fund.name]的库银不足以兑现此契约."))
 		return
-	if(!SStreasury.transfer(issuing_fund, target_fund, principal, "Indenture principal"))
-		to_chat(user, span_warning("The nervelock refuses the transfer."))
+	if(!SStreasury.transfer(issuing_fund, target_fund, principal, "契约本金"))
+		to_chat(user, span_warning("神经锁拒绝转账."))
 		return
 	var/datum/loan/L = new(null, principal, term_days, interest_rate, issuer_name, issuing_fund, target_fund)
 	SStreasury.loans += L

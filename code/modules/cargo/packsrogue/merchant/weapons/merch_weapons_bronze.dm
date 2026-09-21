@@ -2,116 +2,116 @@
 // Ditto for ranged weapons.
 
 /datum/supply_pack/rogue/bronze_weapons
-	group = "Weapons (Bronze)"
-	crate_name = "merchant guild's crate"
+	group = "武器（青铜）" // English: Weapons (Bronze)
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/bronze_weapons/sword
-	name = "Bronze Arming Sword"
+	name = "青铜单手剑"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/sword/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/katar
-	name = "Bronze Pata"
+	name = "青铜拳刃"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/katar/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/gladius
-	name = "Gladius"
+	name = "短罗马剑"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/sword/short/gladius)
 
 /datum/supply_pack/rogue/bronze_weapons/sabre
-	name = "Bronze Khopesh"
+	name = "寇派什弯刀"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/sword/sabre/bronzekhopesh)
 
 /datum/supply_pack/rogue/bronze_weapons/dagger
-	name = "Bronze Knife"
+	name = "青铜匕首"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/huntingknife/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/combatknife
-	name = "Sydearmme"
+	name = "西德阿姆"
 	cost = 54 // 2 Bronze Ingots (10% discount)
 	contains = list(/obj/item/rogueweapon/huntingknife/combat/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/messer
-	name = "Makhaira"
+	name = "马凯拉短剑"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/sword/short/messer/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/mace
-	name = "Bronze Mace"
+	name = "青铜钉头锤"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/mace/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/warhammer
-	name = "Bronze Warclub"
+	name = "青铜战棍"
 	cost = 54 // 2 Bronze Ingots (10% discount)
 	contains = list(/obj/item/rogueweapon/mace/warhammer/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/spear
-	name = "Bronze Spear"
+	name = "青铜矛"
 	cost = 60 // 2 Bronze Ingots + 1 Small Log
 	contains = list(/obj/item/rogueweapon/spear/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/trident
-	name = "Bronze Trident"
+	name = "青铜三叉戟"
 	cost = 60
 	contains = list(/obj/item/rogueweapon/spear/trident)
 
 /datum/supply_pack/rogue/bronze_weapons/falchion
-	name = "Kopis"
+	name = "科皮斯"
 	cost = 54 // 2 Bronze Ingots (10% discount)
 	contains = list(/obj/item/rogueweapon/sword/falchion/militia/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/broadsword
-	name = "Spatha"
+	name = "斯帕塔长剑"
 	cost = 60 // 2 Bronze Ingots + 1 Small Log
 	contains = list(/obj/item/rogueweapon/sword/long/broadsword/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/battleaxe
-	name = "Bronze War Axe"
+	name = "青铜战斧"
 	cost = 54 // 2 Bronze Ingots (10% discount)
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronzebattleaxe)
 
 /datum/supply_pack/rogue/bronze_weapons/axe
-	name = "Bronze Axe"
+	name = "青铜斧"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/bronzeshield
-	name = "Bronze Shield"
+	name = "霍普隆盾"
 	cost = 60 // 2 Bronze Ingots + 1 Cured Leather
 	contains = list(/obj/item/rogueweapon/shield/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/knuckles
-	name = "Bronze Knuckledusters"
+	name = "青铜指虎"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/knuckles/bronzeknuckles)
 
 /datum/supply_pack/rogue/bronze_weapons/whip
-	name = "Bronze-Tipped Whip"
+	name = "青铜鞭"
 	cost = 42 // 1 Bronze Ingot + 1 Leather Whip (16% discount)
 	contains = list(/obj/item/rogueweapon/whip/bronze)
 
 /datum/supply_pack/rouge/bronze_weapons/urumi
-	name = "Bronze Urumi"
+	name = "青铜软剑"
 	cost = 50 // 2 bronze
 	contains = list(/obj/item/rogueweapon/whip/urumi/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/javelin
-	name = "Bronze Javelins (x2)"
+	name = "青铜标枪（x2）"
 	cost = 35 // 1 Bronze Ingot + 1 Small Log
 	contains = list(/obj/item/ammo_casing/caseless/rogue/javelin/bronze, /obj/item/ammo_casing/caseless/rogue/javelin/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/shield
-	name = "Hoplon Shield"
+	name = "霍普隆盾"
 	cost = 60 // 2 bronze
 	contains = list(/obj/item/rogueweapon/shield/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/greatshield
-	name = "Hoplon Great Shield"
+	name = "霍普隆巨盾"
 	cost = 80//3 bronze
 	contains = list(/obj/item/rogueweapon/shield/bronze/great)

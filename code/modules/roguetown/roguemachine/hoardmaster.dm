@@ -19,25 +19,25 @@
 	var/namechance = rand(1,6)
 	switch(namechance)
 		if(1)
-			name = "Hoardmaster Skyblue"
+			name = "藏宝主宰 Skyblue"
 		if(2)
-			name = "Hoardmaster Thea"
+			name = "藏宝主宰 Thea"
 		if(3)
-			name = "Hoardmaster Radagon"
+			name = "藏宝主宰 Radagon"
 		if(4)
-			name = "Hoardmaster Shiver"
+			name = "藏宝主宰 Shiver"
 		if(5)
-			name = "Hoardmaster Deathbringer"
+			name = "藏宝主宰 Deathbringer"
 		if(6)
-			name = "Hoardmaster Darkstalker"
+			name = "藏宝主宰 Darkstalker"
 
 /obj/structure/roguemachine/Hoardmaster/examine(mob/user)
 	. = ..()
 	if(user.mind?.has_antag_datum(/datum/antagonist/bandit))
-		. += "Formerly a covetous creature, this one now shares its Hoard with the Freefolk. Protecting the transactor's Hoard, and trading it for Favor."
+		. += "它曾是贪婪的生物，如今却与自由民分享自己的宝藏。它守护交易者的囤藏，并以此换取恩惠。"
 		return
 	else
-		. += "Some mean looking statue of a dragon. Something about it makes me uneasy, like its eyes are following me."
+		. += "一尊面相凶恶的龙形雕像。它让我有些不安，仿佛它的眼睛一直在盯着我。"
 		return
 
 /obj/structure/roguemachine/Hoardmaster/Topic(href, href_list)
@@ -61,7 +61,7 @@
 			B.favor -= cost
 			playsound(loc, 'sound/misc/hoardmasterpurchase.ogg', 80, FALSE, -1)
 		else
-			say("Earn your keep first!")
+			say("先挣出你的身价再来！")
 			return
 		var/shoplength = PA.contains.len
 		var/l
@@ -95,24 +95,24 @@
 	contents += "<a href='?src=[REF(src)];change=1'>Your favor:</a> [B.favor]<BR>"
 
 
-	var/list/unlocked_cats = list("Supplies", "Medicaments", "Clothing")
+	var/list/unlocked_cats = list("补给品", "医疗用品", "衣物") // English: Supplies; Medicaments; Clothing
 	switch(usr.advjob)
-		if("Brigand")
-			unlocked_cats+="Brigand"
-		if("Sellsword")
-			unlocked_cats+="Sellsword"
-		if("Sawbones")
-			unlocked_cats+="Sawbones"
-		if("Hedge Knight")
-			unlocked_cats+="Knight"
-		if("Rogue Mage")
-			unlocked_cats+="Mage"
-		if("Knave")
-			unlocked_cats+="Knave"
-		if("Iconoclast")
-			unlocked_cats+="Iconoclast"
-		if("Pioneer")
-			unlocked_cats+="Pioneer"
+		if("悍匪") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm
+			unlocked_cats+="悍匪" // English: Brigand
+		if("佣兵剑客") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm
+			unlocked_cats+="佣兵剑客" // English: Sellsword
+		if("锯骨郎中") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/sawbones.dm
+			unlocked_cats+="锯骨郎中" // English: Sawbones
+		if("落魄骑士") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm
+			unlocked_cats+="落魄骑士" // English: Knight
+		if("野法师") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/roguemage.dm
+			unlocked_cats+="野法师" // English: Mage
+		if("无赖") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm
+			unlocked_cats+="无赖" // English: Knave
+		if("破像者") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm
+			unlocked_cats+="破像者" // English: Iconoclast
+		if("拓荒工兵") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm
+			unlocked_cats+="拓荒工兵" // English: Pioneer
 
 	if(!(current_cat in unlocked_cats))
 		current_cat = "1"
@@ -140,7 +140,7 @@
 
 /obj/structure/roguemachine/hoardbarrier //Blocks sprite locations
 	name = ""
-	desc = "Formerly a covetous creature, this one now shares its Hoard with the Freefolk. Protecting the transactor's Hoard, and trading it for Favor."
+	desc = "它曾是贪婪的生物，如今却与自由民分享自己的宝藏。它守护交易者的囤藏，并以此换取恩惠。"
 	icon = 'icons/roguetown/underworld/underworld.dmi'
 	icon_state = "spiritpart"
 	density = TRUE

@@ -1,22 +1,22 @@
 //pronoun procs, for getting pronouns without using the text macros that only work in certain positions
 //datums don't have gender, but most of their subtypes do!
 /datum/proc/p_they(capitalized, temp_gender)
-	. = "it"
+	. = "它"
 	if(capitalized)
 		. = capitalize(.)
 
 /datum/proc/p_their(capitalized, temp_gender)
-	. = "its"
+	. = "它的"
 	if(capitalized)
 		. = capitalize(.)
 
 /datum/proc/p_them(capitalized, temp_gender)
-	. = "it"
+	. = "它"
 	if(capitalized)
 		. = capitalize(.)
 
 /datum/proc/p_themselves(capitalized, temp_gender)
-	. = "itself"
+	. = "它自己"
 	if(capitalized)
 		. = capitalize(.)
 
@@ -48,36 +48,36 @@
 /client/p_they(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "they"
+	. = "他们"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "she"
+			. = "她"
 		if(MALE)
-			. = "he"
+			. = "他"
 	if(capitalized)
 		. = capitalize(.)
 
 /client/p_their(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "their"
+	. = "他们的"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "她的"
 		if(MALE)
-			. = "his"
+			. = "他的"
 	if(capitalized)
 		. = capitalize(.)
 
 /client/p_them(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "them"
+	. = "他们"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "她"
 		if(MALE)
-			. = "him"
+			. = "他"
 	if(capitalized)
 		. = capitalize(.)
 
@@ -127,14 +127,14 @@
 /mob/p_they(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "it"
+	. = "它"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "she"
+			. = "她"
 		if(MALE)
-			. = "he"
+			. = "他"
 		if(PLURAL)
-			. = "they"
+			. = "他们"
 			if (capitalized)
 				. = capitalize(.)
 			return
@@ -143,19 +143,19 @@
 	if (pronouns) 
 		switch (pronouns)
 			if (HE_HIM)
-				. = "he"
+				. = "他"
 			if (HE_HIM_F)
-				. = "he"
+				. = "他"
 			if (SHE_HER)
-				. = "she"
+				. = "她"
 			if (SHE_HER_M)
-				. = "she"
+				. = "她"
 			if (THEY_THEM)
-				. = "they"
+				. = "他们"
 			if (THEY_THEM_F)
-				. = "they"
+				. = "他们"
 			if (IT_ITS)
-				. = "it"
+				. = "它"
 	// LETHALSTONE EDIT END
 	if(capitalized)
 		. = capitalize(.)
@@ -163,14 +163,14 @@
 /mob/p_their(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "its"
+	. = "它的"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "她的"
 		if(MALE)
-			. = "his"
+			. = "他的"
 		if(PLURAL)
-			. = "their"
+			. = "他们的"
 			if (capitalized)
 				. = capitalize(.)
 			return
@@ -179,19 +179,19 @@
 	if (pronouns) 
 		switch (pronouns)
 			if (HE_HIM)
-				. = "his"
+				. = "他的"
 			if (HE_HIM_F)
-				. = "his"
+				. = "他的"
 			if (SHE_HER)
-				. = "her"
+				. = "她的"
 			if (SHE_HER_M)
-				. = "her"
+				. = "她的"
 			if (THEY_THEM)
-				. = "their"
+				. = "他们的"
 			if (THEY_THEM_F)
-				. = "their"
+				. = "他们的"
 			if (IT_ITS)
-				. = "its"
+				. = "它的"
 	// LETHALSTONE EDIT END
 	if(capitalized)
 		. = capitalize(.)
@@ -199,14 +199,14 @@
 /mob/p_them(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "it"
+	. = "它"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "她"
 		if(MALE)
-			. = "him"
+			. = "他"
 		if(PLURAL)
-			. = "them"
+			. = "他们"
 			if (capitalized)
 				. = capitalize(.)
 			return
@@ -214,19 +214,19 @@
 	if (pronouns) 
 		switch (pronouns)
 			if (HE_HIM)
-				. = "him"
+				. = "他"
 			if (HE_HIM_F)
-				. = "him"
+				. = "他"
 			if (SHE_HER)
-				. = "her"
+				. = "她"
 			if (SHE_HER_M)
-				. = "her"
+				. = "她"
 			if (THEY_THEM)
-				. = "them"
+				. = "他们"
 			if (THEY_THEM_F)
-				. = "them"
+				. = "他们"
 			if (IT_ITS)
-				. = "it"
+				. = "它"
 	// LETHALSTONE EDIT END
 	if(capitalized)
 		. = capitalize(.)
@@ -234,14 +234,14 @@
 /mob/p_themselves(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "it"
+	. = "它自己"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "herself"
+			. = "她自己"
 		if(MALE)
-			. = "himself"
+			. = "他自己"
 		if(PLURAL)
-			. = "themselves"
+			. = "他们自己"
 			if (capitalized)
 				. = capitalize(.)
 			return
@@ -249,19 +249,19 @@
 	if (pronouns) 
 		switch (pronouns)
 			if (HE_HIM)
-				. = "himself"
+				. = "他自己"
 			if (HE_HIM_F)
-				. = "himhimself"
+				. = "他自己"
 			if (SHE_HER)
-				. = "herself"
+				. = "她自己"
 			if (SHE_HER_M)
-				. = "herself"
+				. = "她自己"
 			if (THEY_THEM)
-				. = "themselves"
+				. = "他们自己"
 			if (THEY_THEM_F)
-				. = "themselves"
+				. = "他们自己"
 			if (IT_ITS)
-				. = "itself"
+				. = "它自己"
 	// LETHALSTONE EDIT END
 	if(capitalized)
 		. = capitalize(.)

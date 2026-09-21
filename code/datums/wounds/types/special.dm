@@ -619,14 +619,14 @@
 	if(world.time >= start_time + duration)
 		var/obj/item/bodypart/BP = bodypart_owner
 		if(BP)
-			to_chat(C, span_userdanger("我撑不住这酷热了！"))
+			to_chat(C, span_userdanger("热浪彻底压垮了我！"))
 			BP.add_wound(/datum/wound/heatstroke)
 		C.clear_fullscreen("heatexhaust")
 		qdel(src)
 
 /datum/wound/heatstroke
-	name = "热射病"
-	check_name = span_warning("热射病")
+	name = "中暑"
+	check_name = span_warning("中暑")
 	severity = 0
 	crit_message = ""
 	whp = null
@@ -664,7 +664,7 @@
 	// If temperature is normal, start cure timer
 	if(C.bodytemperature <= BODYTEMP_NORMAL_MAX)
 		if(!cure_timer)
-			to_chat(C, span_notice("热意开始从我体内慢慢消退……"))
+			to_chat(C, span_notice("体内的热意开始慢慢退去……"))
 			cure_timer = addtimer(CALLBACK(src, PROC_REF(cure_heatstroke)), 2 MINUTES)
 
 	// If overheating again, cancel cure timer
@@ -683,7 +683,7 @@
 		return
 
 	var/mob/living/carbon/C = owner
-	to_chat(owner, span_warning("眩晕停止了。"))
+	to_chat(owner, span_warning("世界终于不再旋转了。"))
 	C.set_dizziness(0)
 
 /datum/wound/heatstroke/proc/cure_heatstroke()
@@ -783,7 +783,7 @@
 		if(3)
 			stage_text = "III"
 
-	check_name = span_blue("冻伤（[stage_text]）")
+	check_name = span_blue("冻伤（[stage_text]期）")
 
 
 /datum/wound/hypothermia

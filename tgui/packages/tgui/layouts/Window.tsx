@@ -38,21 +38,21 @@ type Props = Partial<{
   height: number;
   theme: string;
   title: string;
+  display_title: string;
   width: number;
 }> &
   PropsWithChildren;
-
 export const Window = (props: Props) => {
   const {
     canClose = true,
     theme,
     title,
+    display_title,
     children,
     buttons,
     width,
     height,
   } = props;
-
   const { config, suspended } = useBackend();
   const { debugLayout = false } = useDebug();
   const [isReadyToRender, setIsReadyToRender] = useState(false);
@@ -113,7 +113,7 @@ export const Window = (props: Props) => {
   return suspended ? null : (
     <Layout className="Window" theme={theme || config.window?.theme}>
       <TitleBar
-        title={title || decodeHtmlEntities(config.title)}
+        title={display_title || title || decodeHtmlEntities(config.title)}
         status={config.status}
         fancy={fancy}
         onDragStart={dragStartHandler}

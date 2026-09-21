@@ -4,7 +4,7 @@
 	clickcd = 8
 
 /datum/intent/dagger/cut
-	name = "cut"
+	name = "切割"
 	icon_state = "incut"
 	attack_verb = list("切开", "挥砍")
 	animname = "cut"
@@ -18,18 +18,18 @@
 
 /// For unusually heavy daggers with a strong cutting edge.
 /datum/intent/dagger/cut/heavy
-	name = "heavy cut"
+	name = "重切"
 	damfactor = 1.2
 	penfactor = 20
 	clickcd = 11
 
 /datum/intent/dagger/cut/light
-	name = "light cut"
+	name = "轻切"
 	damfactor = 0.8
 	clickcd = 5
 
 /datum/intent/dagger/thrust
-	name = "thrust"
+	name = "突刺"
 	icon_state = "instab"
 	attack_verb = list("突刺")
 	animname = "stab"
@@ -42,11 +42,11 @@
 
 // A slightly weaker thrust for daggers with a curved blade, or which otherwise aren't very good at stabbing.
 /datum/intent/dagger/thrust/weak
-	name = "lopsided thrust"
+	name = "偏锋刺"
 	damfactor = 0.8
 
 /datum/intent/dagger/thrust/pick
-	name = "icepick stab"
+	name = "冰镐刺"
 	icon_state = "inpick"
 	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -57,7 +57,7 @@
 	blade_class = BCLASS_PICK
 
 /datum/intent/dagger/sucker_punch
-	name = "unevadable punch"
+	name = "必中一拳"
 	icon_state = "inpunch"
 	attack_verb = list("拳击", "刺拳击打", "重击", "挥击掠过")
 	animname = "strike"
@@ -73,7 +73,7 @@
 	dodgeable_intent = FALSE
 
 /datum/intent/dagger/chop
-	name = "chop"
+	name = "劈砍"
 	icon_state = "inchop"
 	attack_verb = list("砍击")
 	animname = "chop"
@@ -95,8 +95,8 @@
 	force = 12
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
-	name = "hunting knife"
-	desc = "A hunter's prized possession. Keep it sharp, and it might last you through the wild."
+	name = "猎刀"
+	desc = "猎人珍爱的随身之物。只要磨得够锋利，它就能陪你熬过荒野。"
 	icon_state = "huntingknife"
 	sheathe_icon = "huntingknife"
 	icon = 'icons/roguetown/weapons/daggers32.dmi'
@@ -154,8 +154,8 @@
 	COOLDOWN_START(src, flip_cooldown, 3 SECONDS)
 	if((user.get_skill_level(/datum/skill/combat/knives) < 3) && prob(40))
 		user.visible_message(
-			span_danger("While trying to flip [src] [user] drops it instead!"),
-			span_userdanger("While trying to flip [src] you drop it instead!"),
+			span_danger("[user]想耍转[src]时，反倒把它甩掉了！"),
+			span_userdanger("我想耍转[src]时，反倒把它甩掉了！"),
 		)
 		var/mob/living/carbon/human/unfortunate_idiot = user
 		var/dropped_knife_target = pick(
@@ -166,8 +166,8 @@
 		user.dropItemToGround(src, TRUE)
 	else
 		user.visible_message(
-			span_notice("[user] spins [src] around [user.p_their()] finger"),
-			span_notice("You spin [src] around your finger"),
+			span_notice("[user]让[src]在[user.p_their()]指间打转"),
+			span_notice("我让[src]在指间打转"),
 		)
 		playsound(src, 'sound/foley/equip/swordsmall1.ogg', 20, FALSE)
 
@@ -176,16 +176,16 @@
 
 
 /obj/item/rogueweapon/huntingknife/copper
-	name = "copper knife"
-	desc = "A knife made of copper. Lacking in durability."
+	name = "铜刀"
+	desc = "一把铜制小刀。耐久略差。"
 	icon_state = "cdagger"
 	max_integrity = 75
 	smeltresult = null // TODO: We don't have partial melt so coping time
 	picklvl = 0.5
 
 /obj/item/rogueweapon/huntingknife/bronze
-	name = "bronze knife"
-	desc = "A wide blade of bronze, fitted to a wooden handle. Ancient laborers and priests coveted this tool above all else: both as a means to handle the dae's labors, and to indulge in the rituos of sacrifice."
+	name = "青铜匕首"
+	desc = "一柄宽阔的青铜刃，装在木制握柄上。古时的劳工与祭司都将这件工具视若珍宝：既可用来应对日常劳作，也可用于沉溺祭祀仪式。"
 	icon_state = "bronzeknife"
 	sheathe_icon = "genknife"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/bronze, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/thrust/bronze)
@@ -196,7 +196,7 @@
 	smeltresult = /obj/item/ingot/bronze
 
 /datum/intent/dagger/thrust/bronze
-	name = "piercing thrust"
+	name = "穿刺突刺"
 	icon_state = "inpick"
 	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -207,7 +207,7 @@
 	blade_class = BCLASS_PICK
 
 /datum/intent/dagger/chop/bronze
-	name = "wedged chop"
+	name = "楔锋劈砍"
 	icon_state = "inchop"
 	attack_verb = list("砍击")
 	animname = "chop"
@@ -221,8 +221,8 @@
 
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
-	name = "cleaver"
-	desc = "Chop, chop, chop!"
+	name = "切肉刀"
+	desc = "剁！剁！剁！"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleaver"
 	icon = 'icons/roguetown/weapons/daggers32.dmi'
@@ -267,8 +267,8 @@
 
 /obj/item/rogueweapon/huntingknife/chefknife
 	force = 15
-	name = "chef's knife"
-	desc = "Keep it in the kitchen!"
+	name = "厨刀"
+	desc = "把它留在厨房里！"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "chefsknife"
 	icon = 'icons/roguetown/weapons/daggers32.dmi'
@@ -284,8 +284,8 @@
 
 /obj/item/rogueweapon/huntingknife/combat //>Combat knife //>Literally never seen it used in combat
 	force = 22 //Hunting knife's bigger, meaner older brother. No pick intent, so it deserves a slight damage bump.
-	name = "seax"
-	desc = "An intimidatingly large dagger, fit for both hand-to-hand combat and dae-to-dae laboring. The ancenstry of this centuries-old design runs red with Gronnic and Grenzelhoftian blood, alike."
+	name = "赛克斯短刀"
+	desc = "一把大得吓人的匕首，既适合徒手搏斗，也适合日常劳作。这种历经数百年传承的设计，其血脉中同样流淌着格隆恩人与格伦泽尔霍夫特人的鲜血。"
 	possible_item_intents = list(/datum/intent/dagger/chop/cleaver, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/thrust/combat)
 	icon_state = "combatknife"
 	sheathe_icon = "combatknife"
@@ -312,8 +312,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/huntingknife/combat/bronze
-	name = "sydearmme"
-	desc = "Wedged bronze and whittled rockwood, handfitted into the dagger's most ancient-of-ancestors. It bears marks of flintknapping along its middlewidth; a customary tradition that's purported to atune its edge to the forces of nature."
+	name = "西德阿姆"
+	desc = "楔入的青铜与削制的岩木，手工拼装成这柄匕首最古老的先祖。刀身中段留有打制石器的痕迹；按传统说法，这一习俗能让它的锋刃与自然之力相合。"
 	icon_state = "bronzedagger"
 	sheathe_icon = "bronzedagger"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/bronze, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/thrust/bronze)
@@ -334,7 +334,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /datum/intent/dagger/thrust/combat
-	name = "wedged thrust"
+	name = "楔锋突刺"
 	icon_state = "instab"
 	attack_verb = list("剜凿")
 	animname = "stab"
@@ -347,7 +347,7 @@
 	item_d_type = "stab"
 
 /datum/intent/dagger/cut/rend
-	name = "wicked slice"
+	name = "凶戾削斩"
 	icon_state = "inrend"
 	attack_verb = list("切割", "碎切")
 	animname = "cut"
@@ -364,9 +364,9 @@
 	intent_intdamage_factor = 0.05
 
 /obj/item/rogueweapon/huntingknife/combat/messer //Just as Grenzelhoft intended
-	name = "kampfmesser"
-	desc = "An undersized steel messer that barely fits into a conventional dagger sheath, the saving grace of any hunter. It lacks a tip for stabbing - yet the edge alone is sharp enough to hack most issues right away. \
-	While it was brought over by Grenzelhoftian migrants, it is considered an Ferentian staple these daes - the right tool for the right job."
+	name = "战斗短刀"
+	desc = "一柄尺寸偏小的钢制短刀，勉强能塞进常规匕首鞘里，却是任何猎人的救命稻草。它没有可供突刺的刀尖——但仅凭刃口就足够锋利，能立刻劈开大多数麻烦。 \
+	它虽由格伦泽尔霍夫特移民带来，如今却被视作费伦提亚的常备之物——用对的工具，办对的事。"
 	possible_item_intents = list(/datum/intent/dagger/cut/rend, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/sucker_punch)
 	icon_state = "minimesser"
 	sheathe_icon = "minimesser"
@@ -375,8 +375,8 @@
 	special = /datum/special_intent/shin_swipe
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/rondel
-	name = "rondel dagger"
-	desc = "This is the traditional sidearm of a knight: a lightweight dagger of solid steel, well-balanced for delivering rapid thrusts that can shuck grapplers like oysters."
+	name = "圆盘匕首"
+	desc = "这是骑士传统的随身副兵器：一把实心钢打造的轻量匕首，配重匀称，能快速连续突刺，把扑上来的缠斗者像开牡蛎一样剖开。"
 	icon_state = "rondel"
 	sheathe_icon = "dagger_trainer"
 	possible_item_intents = list(/datum/intent/dagger/thrust/quick, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/cut)
@@ -392,9 +392,9 @@
 	misscost = 10
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris
-	name = "kris dagger"
-	desc = "A large steel dagger with a unique, flame-shaped blade. It is coveted as a ceremonial tool by Astratan \
-	priests and clerics, especially during rites of sacrifice; symbolically, of course."
+	name = "波刃匕首"
+	desc = "一把刀身呈独特火焰状的钢制大匕首。阿斯特拉塔的祭司与神职者珍视它，用作仪式器具，尤其是在献祭典礼上； \
+	当然，只是象征意义上的。"
 	icon_state = "kris"
 	sheathe_icon = "dagger_trainer"
 	possible_item_intents = list(/datum/intent/dagger/cut/light, /datum/intent/dagger/thrust, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch)
@@ -402,8 +402,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kukri
-	name = "kukri dagger"
-	desc = "The Zybantian evolution to developing an extension to the traditional dagger. The curvature is specifically designed to fit around a victim's throat."
+	name = "库克里匕首"
+	desc = "兹班图人在传统匕首基础上演化出的延长形制。其弧度专为贴合受害者的咽喉而设计。"
 	icon_state = "kukri"
 	sheathe_icon = "dagger_trainer"
 	possible_item_intents = list(/datum/intent/dagger/cut/rend, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/sucker_punch)
@@ -414,8 +414,8 @@
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch)
 	force = 15
 	max_integrity = 100
-	name = "iron dagger"
-	desc = "This is a common dagger of iron."
+	name = "铁匕首"
+	desc = "这是一把常见的铁匕首。"
 	icon_state = "idagger"
 	sheathe_icon = "idagger"
 	smeltresult = /obj/item/ingot/iron
@@ -427,8 +427,8 @@
 	force = 12
 	throwforce = 12
 	max_integrity = 100
-	name = "parrying dagger"
-	desc = "A dagger with an enlongated crossguard, curved upwards on both ends to catch oncoming strikes."
+	name = "格挡匕首"
+	desc = "一把带延长护手的匕首，护手两端上翘，可用于架住来袭的武器。"
 	icon_state = "ddagger"
 	sheathe_icon = "idagger"
 	smeltresult = /obj/item/ingot/iron
@@ -438,9 +438,9 @@
 // Heretical Knives
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris/zizo
-	name = "avantyne dagger"
-	desc = "It is tyme that you finally met your Lord. </br> The very moment of sacrifice; that imperceptable difference between a dagger's edge and a heart's chamber, crystallized into \
-	a scalpel of bleeding darksteel. In the hands of Her trusted disciples, it serves as an unholy countermandate against order and sanity."
+	name = "阿凡廷匕首"
+	desc = "是时候让你终于觐见你的主了。 </br> 献祭的那一刻；匕首锋刃与心腔之间那难以察觉的毫厘之差，凝结成 \
+	一把淌血的黑钢手术刀。在祂所信赖的门徒手中，它是对秩序与理智的渎神抗命。"
 	icon_state = "zizodagger"
 	sheathe_icon = "zizodagger"
 	force = 25
@@ -453,8 +453,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "DAGGER")
 
 /obj/item/rogueweapon/huntingknife/combat/messer/graggar
-	name = "vicious seax"
-	desc = "Strike true, for the blade is thy God."
+	name = "凶暴赛克斯"
+	desc = "务求一击命中，因为刀刃便是你的神。"
 	icon_state = "graggarseax"
 	sheathe_icon = "graggarseax"
 	force = 25
@@ -467,8 +467,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "DAGGER")
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/matthios //Master-of-none weapon. Heavier cut, higher WDEF, and a serviceable throwforce. 
-	name = "gilded knife"
-	desc = "Well, well, well; hello there, old sport!"
+	name = "鎏金匕首"
+	desc = "哎呀呀；你好啊，老伙计！"
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut/heavy, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch)
 	icon_state = "matthiosknife"
 	sheathe_icon = "matthiosknife"
@@ -486,8 +486,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "DAGGER")
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/rondel/baotha
-	name = "saccharine misericorde"
-	desc = "Does thou not wish to live deliciously?"
+	name = "蜜糖穿甲匕首"
+	desc = "难道你不愿活得甜美惬意吗？"
 	possible_item_intents = list(/datum/intent/dagger/thrust/quick, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/cut)
 	icon_state = "baothamisericorde"
 	sheathe_icon = "baothamisericorde"
@@ -517,8 +517,8 @@
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 
 /obj/item/rogueweapon/huntingknife/idagger/wood
-	name = "wooden dagger"
-	desc = "A wooden dagger. Good for training."
+	name = "木匕首"
+	desc = "一把木制匕首。很适合训练。"
 	icon_state = "wdagger"
 	possible_item_intents = list(/datum/intent/dagger/thrust/wood, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/thrust/pick/wood)
 	force = 4 //half of a wielded wood sword's.
@@ -531,8 +531,8 @@
 	picklvl = 0.7
 
 /obj/item/rogueweapon/huntingknife/idagger/steel
-	name = "steel dagger"
-	desc = "This is a dagger made of solid steel, more durable."
+	name = "钢匕首"
+	desc = "这是一把实心钢制匕首，更加耐用。"
 	icon_state = "sdagger"
 	sheathe_icon = "sdagger"
 	force = 20
@@ -541,16 +541,16 @@
 	picklvl = 1.1
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/ancient
-	name = "ancient dagger"
-	desc = "A short blade, forged from polished gilbranze. It is violence that shepherds ambition, and it is ambition that will free this world from mortality's chains. Zizo, Zizo, Zizo - I call upon thee; bring forth the undying, so that your works may yet be done!"
+	name = "远古匕首"
+	desc = "一柄由抛光吉尔青铜锻成的短刃。暴力引导野心，而野心将使这世界挣脱死亡的锁链。齐佐，齐佐，齐佐——我呼唤你；唤来不死者，好让你的伟业得以成就！"
 	icon_state = "adagger"
 	sheathe_icon = "adagger"
 	smeltresult = /obj/item/ingot/aaslag
 	picklvl = 0.7
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/ancient/decrepit
-	name = "decrepit dagger"
-	desc = "A short blade, wrought from frayed bronze and tanged within a rotwooden grip. Pieces of a former legionnaire's scabbard cling to the glimmerless alloy."
+	name = "破旧匕首"
+	desc = "一柄短刃，以磨损青铜打造并嵌入朽木握柄之中。昔日军团士兵的鞘片仍粘在这暗淡无光的合金上。"
 	force = 12
 	max_integrity = 75
 	blade_dulling = DULLING_SHAFT_CONJURED
@@ -559,8 +559,8 @@
 	randomize_blade_int_on_init = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/corroded
-	name = "corroded dagger"
-	desc = "A wicked deliverer of poison, serrated and notched. Curved steel cradles the knuckles, ensuring that the wielder doesn't inflict the fatal dose on themselves. </br>I can coat this dagger in most poisons, ensuring that my next strike leaves a festering surprise."
+	name = "腐蚀匕首"
+	desc = "一柄阴毒凶险的施毒匕首，刃上满是锯齿与缺口。弯曲的钢护手托住指节，确保持用者不会把那致命剂量误施在自己身上。 </br>我可以把大多数毒药涂在这把匕首上，确保下一击留下一个溃烂惊喜。"
 	icon_state = "pdagger"
 	sheathe_icon = "combatknife"
 
@@ -568,9 +568,9 @@
 	possible_item_intents = list(/datum/intent/dagger/thrust/weak, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/sucker_punch) // Stronger cut and chop, but no pick.
 	force = 22 // Slightly more damage than a steel dagger.
 	max_integrity = 130 // Slightly less integrity than a steel dagger.
-	name = "Wardens' seax"
-	desc = "A well-worn seax utilised by the Fraternity of Wardens both as a tool and weapon. Nearly as effective for hacking \
-	down men as it is foiliage, but not quite as durable as more modern steel tools. More suitable for cutting than for thrusting."
+	name = "守望者赛克斯"
+	desc = "一把磨损明显的赛克斯短刀，由守望者兄弟会同时当作工具与武器使用。它砍倒人的效率几乎 \
+	和劈开灌木一样高，只是没有更现代的钢制工具那么耐用。相比突刺，它更适合挥砍。"
 	icon_state = "warden_machete"
 	sheathe_icon = "warden_machete"
 
@@ -579,16 +579,16 @@
 	AddElement(/datum/element/tipped_item)	//Lets you tip your weapon in poison
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/dirk
-	name = "fanged dagger"
-	desc = "A vicious dagger of drow make with a cruel, curved, fanglike blade."
+	name = "獠牙匕首"
+	desc = "一柄由卓尔打造的凶险匕首，装着残忍弯曲、形似利齿的刀刃。"
 	icon_state = "spiderdagger"
 	sheathe_icon = "spiderdagger"
 	force = 22 // Same as elvish dagger
 	smeltresult = null
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/holysee
-	name = "eclipsum dagger"
-	desc = "A sliver of heaven, shaped into an elegant dagger. The alloy radiates with magnificence: a reminder that no matter how dark the nites grow, there will always be a dawn to follow. Such a dagger is reserved for the Holy See's bishops and priests - both as a symbol of their divine authority, and as a means of ritualistic bloodletting. </br>'..come forth, child o' myne, and be anointed in the Pantheon's light once more..'"
+	name = "蚀辉匕首"
+	desc = "一缕天光，被塑成了这柄优雅匕首。合金本身放射着辉耀，提醒人们无论长夜多么深沉，终将仍有黎明随后而至。这样的匕首只配属于圣座的主教与司祭，既象征他们神授的权柄，也用于仪式性的放血。 </br>“……来吧，吾之子嗣，再次受膏于万神殿的光辉之中……”"
 	force = 30 //The only instance of this dagger existing, outside of special admin-ran events, is when the Priest joins. They spawn with this on their person. Should be safe from Judgement-tier thefts.
 	throwforce = 33
 	throw_speed = 3
@@ -614,8 +614,8 @@
 	)
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle
-	name ="plaguebringer sickle"
-	desc = "A wicked edge brings feculent delights."
+	name ="瘟灾之镰"
+	desc = "邪恶的锋刃只会带来污秽的欢愉。"
 	icon_state = "pestrasickle"
 	force = 22 // 10% - This is a 8 clickCD weapon
 	max_integrity = 200
@@ -625,8 +625,8 @@
 	AddElement(/datum/element/tipped_item)	//Lets you tip your weapon in poison
 
 /obj/item/rogueweapon/huntingknife/idagger/dtace
-	name = "'De Tace'"
-	desc = "The right hand of the right hand, this narrow length of steel serves as a quick solution to petty greviences."
+	name = "“缄默”"
+	desc = "正是右手之人的右手，这截狭长钢刃专为迅速解决种种小麻烦而备。"
 	icon_state = "stiletto"
 	sheathe_icon = "stiletto"
 	force = 25
@@ -639,8 +639,8 @@
 	AddElement(/datum/element/tipped_item)	//Lets you tip your weapon in poison
 
 /obj/item/rogueweapon/huntingknife/idagger/blacksteel
-	name = "blacksteel dagger"
-	desc = "A magnificent dagger of blacksteel. The epitome of elegance, without the woes that such weapons traditionally inherit."
+	name = "黑钢匕首"
+	desc = "一柄华丽的黑钢匕首。它是优雅的化身，却避开了此类武器通常附带的种种弊端。"
 	icon_state = "bs_dagger"
 	sheathe_icon = "bs_dagger"
 	force = 22
@@ -650,9 +650,9 @@
 	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/rogueweapon/huntingknife/idagger/blacksteel/heavy
-	name = "blacksteel misericorde"
-	desc = "A magnificent armor-piercing dagger of blacksteel. The curved handle is said to naturally improve one's aim, while locked in a \
-	lyfe-or-death struggle with plate-armored opponents."
+	name = "黑钢穿甲匕首"
+	desc = "一柄华丽的黑钢穿甲匕首。弯曲的握柄据说能在与板甲对手的生死搏斗中，\
+	自然而然地提升瞄准的精准度。"
 	icon_state = "bs_misericorde"
 	sheathe_icon = "bs_misericorde"
 	force = 25
@@ -662,20 +662,20 @@
 	picklvl = 1.3
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
-	name = "steel parrying dagger"
+	name = "钢制格挡匕首"
 	force = 12
 	throwforce = 12
-	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard. It's a bit more dull, however."
+	desc = "这是一把由实心钢打造的格挡匕首，可用护手卡住对手的兵器。不过，它的锋利度也因此稍差一些。"
 	sheathe_icon = "spdagger"
 	max_integrity = 175
 	wdefense = 8		//This way with expert dagger skill you'd have ~12 defense. 1 higher than a kiteshield, but no arrow protection.
 	picklvl = 1.1
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero
-	name = "sail dagger"
+	name = "船帆匕首"
 	force = 15
 	throwforce = 15
-	desc = "An exceptionally protective parrying dagger popular in the Etruscan Isles, this dagger features a plain metal guard in the shape of a ship's sail."
+	desc = "这是一种在厄特鲁斯卡群岛颇受欢迎、防护性极强的格挡匕首，装有一片造型朴素、形如船帆的金属护手。"
 	max_integrity = 200
 	wdefense = 9		//This way with expert dagger skill you'd have ~13 defense. 2 higher than a kiteshield, but no arrow protection.
 	icon_state = "sail_dagger"
@@ -686,22 +686,22 @@
 	sheathe_icon = "sdaggeralt"
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kazengun
-	name = "steel tanto"
-	desc = "A steel dagger imported from the Kazengunese archipelago. A sturdy blade bears a subtle curve, set into a decorated circular crossguard. A waxed \
-	wrapping of twisted cordage provides a secure grip."
+	name = "钢短刀"
+	desc = "一把自风郡群岛进口的钢制短刀。坚实的刀身带着微微弧度，嵌入装饰华美的圆形护手之中。打蜡的 \
+	绞绳缠柄让握持更加稳固。"
 	icon_state = "eastdagger"
 	sheathe_icon = "tanto"
 	picklvl = 1.2
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/elvish
-	name = "elvish dirk"
-	desc = "A wave-bladed dagger of Elven design, whose elegant steel craftsmanship is only rivaled by its deceptive lethality."
+	name = "精灵短剑"
+	desc = "一柄精灵设计的波浪刃匕首，其优雅的钢制工艺唯有那暗藏杀机的致命性堪与之匹敌。"
 	icon_state = "elfsdagger"
 	sheathe_icon = "elfdagger"
 
 /obj/item/rogueweapon/huntingknife/idagger/silver
-	name = "silver dagger"
-	desc = "A dagger of pure silver; the bane of vampyres, verevolves, deadites, and all other unsaintly nitecreechers. Errant light transforms into a blinding glare, when cast along the blade's edge."
+	name = "银匕首"
+	desc = "一把纯银匕首；它是吸血鬼、狼人、死徒以及其他一切不洁夜行怪物的克星。掠过刃锋的微光都会化作刺目的炫芒。"
 	icon_state = "sildagger"
 	sheathe_icon = "sildagger"
 	force = 15
@@ -723,8 +723,8 @@
 	)
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/stake
-	name = "silver-tipped stake"
-	desc = "A branch that has been broken off of a boswellia tree, sharpened to a fine point and tipped with blessed silver. It can lay most unholy creechers to rest, but only by piercing their hearts."
+	name = "银尖木桩"
+	desc = "一截自乳香木上折下的树枝，被削成尖锐细长的木桩，末端还包着受祝圣的白银。它足以让大多数不洁怪物永远安息，但前提是必须刺穿它们的心脏。"
 	icon_state = "stake_silver"
 	force = 20
 	throwforce = 20
@@ -772,8 +772,8 @@
 	)
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
-	name = "psydonic dagger"
-	desc = "An ornate dagger, plated in a ceremonial veneer of silver. The bane of vampyres and verevolves, in the hands of a faithful hunter."
+	name = "普赛顿匕首"
+	desc = "一柄装饰华美的匕首，覆有礼仪性的银层薄镀。若落在虔诚信徒猎手手中，它便是吸血鬼与狼人之灾。"
 	icon_state = "psydagger"
 	sheathe_icon = "psydagger"
 	smeltresult = /obj/item/ingot/silverblessed
@@ -793,8 +793,8 @@
 	sellprice += 200
 
 /obj/item/weapon/knife/dagger/silver/arcyne
-	name = "glowing purple silver dagger"
-	desc = "This dagger glows a faint purple. Quicksilver runs across its blade."
+	name = "紫辉银匕首"
+	desc = "这把匕首泛着微弱紫光。活银正沿着它的刀刃缓缓流转。"
 	var/is_bled = FALSE
 	picklvl = 1.1
 
@@ -807,7 +807,7 @@
 		var/crafttime = (60 - ((user.get_skill_level(/datum/skill/magic/arcane)) * 5))
 		if(do_after(user, crafttime, target = src))
 			playsound(loc, 'sound/magic/scrapeblade.ogg', 100, TRUE)
-			to_chat(user, span_notice("I press acryne magic into the blade and it throbs in a deep purple..."))
+			to_chat(user, span_notice("我把奥术魔力压入刃中，它随即鼓动起深沉的紫辉……"))
 			var/obj/arcyne_knife = new /obj/item/weapon/knife/dagger/silver/arcyne
 			qdel(M)
 			qdel(src)
@@ -819,40 +819,40 @@
 	if(!isarcyne(user))
 		return
 	var/obj/effect/decal/cleanable/roguerune/pickrune
-	var/runenameinput = input(user, "Runes", "All Runes") as null|anything in GLOB.t4rune_types
+	var/runenameinput = input(user, "符文", "全部符文") as null|anything in GLOB.t4rune_types
 	pickrune = GLOB.rune_types[runenameinput]
 	if(!pickrune)
 		return
 	var/turf/Turf = get_turf(user)
 	if(locate(/obj/effect/decal/cleanable/roguerune) in Turf)
-		to_chat(user, span_cult("There is already a rune here."))
+		to_chat(user, span_cult("这里已经有一道符文了。"))
 		return
 	var/structures_in_way = check_for_structures_and_closed_turfs(loc, pickrune)
 	if(structures_in_way == TRUE)
-		to_chat(user, span_cult("There is a structure, rune or wall in the way."))
+		to_chat(user, span_cult("有建筑、符文或墙壁挡在前面。"))
 		return
 	var/chosen_keyword
 	if(pickrune.req_keyword)
-		chosen_keyword = stripped_input(user, "Keyword for the new rune", "Runes", max_length = MAX_NAME_LEN)
+		chosen_keyword = stripped_input(user, "新符文的关键词", "符文", max_length = MAX_NAME_LEN)
 		if(!chosen_keyword)
 			return FALSE
 	if(!is_bled)
 		playsound(loc, get_sfx("genslash"), 100, TRUE)
-		user.visible_message(span_warning("[user] cuts open [user.p_their()] palm!"), \
-			span_cult("I slice open my palm!"))
+		user.visible_message(span_warning("[user]割开了[user.p_their()]手掌！"), \
+			span_cult("我割开了自己的手掌！"))
 		if(user.get_blood_volume())
 			user.apply_damage(pickrune.scribe_damage, BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
 		is_bled = TRUE
 	var/crafttime = (10 SECONDS - ((user.get_skill_level(/datum/skill/magic/arcane)) * 5))
 
-	user.visible_message(span_warning("[user] begins to carve something with [user.p_their()] blade!"), \
-		span_notice("I start to drag the blade in the shape of symbols and sigils."))
+	user.visible_message(span_warning("[user]开始用[user.p_their()]刀刃刻画什么！"), \
+		span_notice("我开始拖动刀刃，刻出符号与印记的形状。"))
 	playsound(loc, 'sound/magic/bladescrape.ogg', 100, TRUE)
 	if(do_after(user, crafttime, target = src))
 		if(QDELETED(src) || !pickrune)
 			return
-		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
-		span_notice("I finish dragging the blade in symbols and circles, leaving behind a [pickrune.name]."))
+		user.visible_message(span_warning("[user]用[user.p_their()][src]刻出了一道奥术符文！"), \
+		span_notice("我以刀刃刻完符号与圆环，留下了一道[pickrune.name]。"))
 		new pickrune(Turf, chosen_keyword)
 
 /obj/item/weapon/knife/dagger/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/roguerune/rune_to_scribe)
@@ -871,8 +871,8 @@
 
 /obj/item/rogueweapon/huntingknife/stoneknife
 	possible_item_intents = list(/datum/intent/dagger/cut,/datum/intent/dagger/chop)
-	name = "stone knife"
-	desc = "A crudely crafted knife made of stone."
+	name = "石刀"
+	desc = "一把粗糙打制的石刀。"
 	icon_state = "stone_knife"
 	smeltresult = null
 	max_integrity = 50
@@ -882,8 +882,8 @@
 	picklvl = 0.3
 
 /obj/item/rogueweapon/huntingknife/stoneknife/kukri
-	name = "jade kukri"
-	desc = "A kukri made out of jade. Its more of a ceremonial piece than it is an implement of war, its somewhat fragile. Be gentle with it."
+	name = "玉库克里刀"
+	desc = "一把玉制库克里刀。与其说是兵器，不如说更偏向仪式用品；它略显脆弱，得轻拿轻放。"
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
 	icon_state = "kukri_jade"
 	max_integrity = 75
@@ -892,8 +892,8 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/rogueweapon/huntingknife/stoneknife/opalknife
-	name = "opal knife"
-	desc = "A beautiful knife carved out of opal. Its not intended for combat. It's presence is vital in some Crimson Elven ceremonies."
+	name = "欧泊小刀"
+	desc = "一把以欧泊雕成的美丽小刀。它并非为战斗打造，却在某些赤精灵仪式中不可或缺。"
 	icon = 'icons/roguetown/gems/gem_opal.dmi'
 	icon_state = "knife_opal"
 	max_integrity = 75
@@ -902,8 +902,8 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
-	name = "elvish dagger"
-	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."
+	name = "精灵匕首"
+	desc = "这把美丽匕首采用精巧的精灵风设计，也更加锋利。"
 	force = 22
 	icon_state = "elfdagger"
 	item_state = "elfdag"
@@ -912,8 +912,8 @@
 	picklvl = 1.2
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow
-	name = "dark elvish dagger"
-	desc = "A vicious wave-bladed dagger from the Underdark."
+	name = "黑暗精灵匕首"
+	desc = "一把来自地下黑域、刃形如波的凶恶匕首。"
 	force = 18
 	last_used = 0
 	is_silver = TRUE
@@ -921,8 +921,8 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
-	name = "navaja"
-	desc = "A folding Etruscan knife valued by merchants, mercenaries and peasants for its convenience. It possesses a long hilt, allowing for a sizeable blade with good reach."
+	name = "纳瓦哈折刀"
+	desc = "一把可折叠的伊特鲁里亚刀，因便于携带而深受商人、佣兵与农夫喜爱。它的刀柄较长，能容下尺寸可观、攻击距离不错的刀刃。"
 	force = 5
 	icon_state = "navaja_c"
 	item_state = "elfdag"
@@ -1004,8 +1004,8 @@
 
 
 /obj/item/rogueweapon/huntingknife/throwingknife
-	name = "iron tossblade"
-	desc = "Paradoxical; why is it called a blade when it is meant for tossing? Or is it the act of cutting post-toss that makes it a blade? ...Are arrows tossblades, too? </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "铁制投刃"
+	desc = "颇为矛盾；既然它本是拿来投掷的，为何还叫作刀刃？还是说，掷出后能割伤人的那一刻，才让它成了刀刃？……那箭矢也算投刃吗？</br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	item_state = "bone_dagger"
 	force = 10
 	throwforce = 22
@@ -1031,15 +1031,15 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/huntingknife/throwingknife/kazengun
-	name = "eastern tossblade"
-	desc = "A four pointed throwing knife ground and sharpened from a single piece of metal. The design is intended to solve one of weaknesses of basic tossblades; \
-	more points means these are more likely to land point-first. </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "东方投刃"
+	desc = "一把由整块金属磨制并开锋而成的四尖投刀。它的设计正是为了解决基础投刃的一项弱点； \
+	更多尖端意味着它更容易尖端先着地。 </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	icon_state = "easttossblade"
 	picklvl = 0.8
 
 /obj/item/rogueweapon/huntingknife/throwingknife/steel
-	name = "steel tossblade"
-	desc = "There are rumors of some sea-marauders loading these into metal tubes with explosive powder to launch then fast and far. Probably won't catch on. </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "钢制投刃"
+	desc = "有传闻说某些海上劫掠者会把这玩意塞进金属管里，用爆炸粉末将其发射得又快又远。大概是流行不起来的。 </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	item_state = "bone_dagger"
 	throwforce = 28
 	max_integrity = 100
@@ -1049,14 +1049,14 @@
 	picklvl = 0.9
 
 /obj/item/rogueweapon/huntingknife/throwingknife/steel/ancient
-	name = "ancient tossblade"
-	desc = "A sliver of polished gilbranze, delicately carved into a throwing dagger. A favorite amongst Zizo's undying cabal, and especially amongst Her assassins; what better-a-tool to slip through another's neck? </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "远古投刃"
+	desc = "一片抛光过的吉尔青铜，被精细雕琢成投掷匕首。它是齐佐不死密教的心头好，尤其受她的刺客偏爱；还有什么工具比它更适合抹过别人的喉咙？ </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	icon_state = "throw_knifea"
 	picklvl = 0.6
 
 /obj/item/rogueweapon/huntingknife/throwingknife/steel/ancient/decrepit
-	name = "decrepit tossblade"
-	desc = "Chunks of frayed bronze, crudely sharpened into throwing daggers. You might be better off chucking the silverware at them, at this rate. </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "残破投刃"
+	desc = "几块磨损严重的青铜碎片，被粗糙地磨成投掷匕首。照这成色，你还不如直接把餐具砸过去。 </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	color = "#bb9696"
 	force = 7
 	throwforce = 16
@@ -1064,8 +1064,8 @@
 	picklvl = 0.6
 
 /obj/item/rogueweapon/huntingknife/throwingknife/silver
-	name = "silver tossblade"
-	desc = "A relative to the silver dagger; thinner, flimsier, but capable of being thrown with exceptional accuracy. Seasoned pursuers of unholy creechers oft-keep one hidden on themselves, just in case. </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "银制投刃"
+	desc = "算是银匕首的近亲；更薄、更脆弱，但投掷精度异常出色。老练的邪祟猎手常会在身上暗藏一把，以备不时之需。 </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	item_state = "bone_dagger"
 	force = 10
 	throwforce = 20
@@ -1089,8 +1089,8 @@
 	)
 
 /obj/item/rogueweapon/huntingknife/throwingknife/psydon
-	name = "psydonic tossblade"
-	desc = "An unconventional method of delivering silver to a heretic; but one PSYDON smiles at, all the same. Doubles as an actual knife in a pinch, though obviously not as well. </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "普赛顿投刃"
+	desc = "一种把白银送进异端体内的非常规手段；不过普赛顿显然对此颇为欣赏。真要逼急了，它也能当匕首用，虽然显然没那么好使。 </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	item_state = "bone_dagger"
 	force = 10
 	throwforce = 20
@@ -1114,8 +1114,8 @@
 	)
 
 /obj/item/rogueweapon/huntingknife/throwingknife/blacksteel
-	name = "blacksteel tossblade"
-	desc = "A magnificent tossblade of blacksteel. Unorthodox, but nevertheless beloved by assassins who can afford the price - and can't leave anything to chance. </br>This dagger can be stowed away inside a pair of boots, permitting it to be quickly drawn when needed."
+	name = "黑钢投刃"
+	desc = "一柄华丽的黑钢投刃。虽非传统兵器，却深受那些付得起价钱、且不容许任何差错的刺客们所钟爱。<br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	item_state = "throw_knifebs"
 	max_integrity = 50
 	max_blade_int = 200
@@ -1127,8 +1127,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/huntingknife/throwingknife/bauernwehr
-	name = "bauernwehr"
-	desc = "The pilgrim's fondest friend — a short but sharp blade fitted to a wooden handle. Known to Grenzelhoft as the 'bauernwehr', these knives ensure that no labors are without an answer. This knife can be stowed in a boot."
+	name = "鲍恩维尔刀"
+	desc = "朝圣者最亲近的伙伴，一截短小却锋利的刀刃，装在木制握柄上。在格伦泽尔霍夫，这类刀被称作“鲍恩维尔刀”，能让任何辛劳都有所回应。这把刀可以藏在靴子里。"
 	icon_state = "throw_knifei"
 	wdefense = 1
 	max_blade_int = 250
@@ -1145,8 +1145,8 @@
 /obj/item/rogueweapon/huntingknife/scissors
 	possible_item_intents = list(/datum/intent/snip, /datum/intent/dagger/thrust, /datum/intent/dagger/cut)
 	max_integrity = 100
-	name = "iron scissors"
-	desc = "Scissors made of iron that may be used to salvage usable materials from clothing."
+	name = "铁剪刀"
+	desc = "铁制剪刀，可用于从衣物上拆取还能用的材料。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "iscissors"
 	inv_storage_delay = null
@@ -1155,13 +1155,13 @@
 /obj/item/rogueweapon/huntingknife/scissors/steel
 	force = 14
 	max_integrity = 150
-	name = "steel scissors"
-	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron counterpart."
+	name = "钢剪刀"
+	desc = "实心钢制剪刀，可用于从衣物上拆取还能用的材料；比铁剪刀更耐用，也稍微更危险一点。"
 	icon_state = "sscissors"
 	smeltresult = /obj/item/ingot/steel
 
 /datum/intent/snip // The salvaging intent!
-	name = "snip"
+	name = "剪裁"
 	icon_state = "insnip"
 	chargetime = 0
 	noaa = TRUE
@@ -1178,24 +1178,24 @@
 		var/mob/living/carbon/human/H = M
 		// Check if targeting the head or skull zone
 		if(user.zone_selected == BODY_ZONE_HEAD || user.zone_selected == BODY_ZONE_PRECISE_SKULL)
-			var/list/options = list("hairstyle", "facial hairstyle", "maintain haircut")
-			var/chosen = input(user, "What would you like to style?", "Hair Styling") as null|anything in options
+			var/list/options = list("发型", "面部毛发", "修整发型")
+			var/chosen = input(user, "你想修整什么？", "发型修整") as null|anything in options
 			if(!chosen)
 				return
 
 			switch(chosen)
-				if("hairstyle")
+				if("发型")
 					var/datum/customizer_choice/bodypart_feature/hair/head/humanoid/hair_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/head/humanoid)
 					var/list/valid_hairstyles = list()
 					for(var/hair_type in hair_choice.sprite_accessories)
 						var/datum/sprite_accessory/hair/head/hair = new hair_type()
 						valid_hairstyles[hair.name] = hair_type
 
-					var/new_style = input(user, "Choose their hairstyle", "Hair Styling") as null|anything in valid_hairstyles
+					var/new_style = input(user, "选择对方发型", "发型修整") as null|anything in valid_hairstyles
 					if(new_style)
-						user.visible_message(span_notice("[user] begins styling [H]'s hair..."), span_notice("You begin styling [H == user ? "your" : "[H]'s"] hair..."))
+						user.visible_message(span_notice("[user]开始修整[H]的发型……"), span_notice("我开始修整[H == user ? "自己的" : "[H]的"]发型……"))
 						if(!do_after(user, 30 SECONDS, target = H))
-							to_chat(user, span_warning("The styling was interrupted!"))
+							to_chat(user, span_warning("修整被打断了！"))
 							return
 
 						var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
@@ -1226,21 +1226,21 @@
 								head.add_bodypart_feature(new_hair)
 								H.update_hair()
 								playsound(src, 'sound/items/flint.ogg', 50, TRUE)
-								user.visible_message(span_notice("[user] finishes styling [H]'s hair."), span_notice("You finish styling [H == user ? "your" : "[H]'s"] hair."))
+								user.visible_message(span_notice("[user]修整好了[H]的发型。"), span_notice("我修整好了[H == user ? "自己的" : "[H]的"]发型。"))
 								H.add_stress(/datum/stressevent/fresh_haircut)
 
-				if("facial hairstyle")
+				if("面部毛发")
 					var/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/facial_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid)
 					var/list/valid_facial_hairstyles = list()
 					for(var/facial_type in facial_choice.sprite_accessories)
 						var/datum/sprite_accessory/hair/facial/facial = new facial_type()
 						valid_facial_hairstyles[facial.name] = facial_type
 
-					var/new_style = input(user, "Choose their facial hairstyle", "Hair Styling") as null|anything in valid_facial_hairstyles
+					var/new_style = input(user, "选择对方面部毛发样式", "发型修整") as null|anything in valid_facial_hairstyles
 					if(new_style)
-						user.visible_message(span_notice("[user] begins styling [H]'s facial hair..."), span_notice("You begin styling [H == user ? "your" : "[H]'s"] facial hair..."))
+						user.visible_message(span_notice("[user]开始修整[H]的面部毛发……"), span_notice("我开始修整[H == user ? "自己的" : "[H]的"]面部毛发……"))
 						if(!do_after(user, 60 SECONDS, target = H))
-							to_chat(user, span_warning("The styling was interrupted!"))
+							to_chat(user, span_warning("修整被打断了！"))
 							return
 
 						var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
@@ -1263,40 +1263,40 @@
 								head.add_bodypart_feature(new_facial)
 								H.update_hair()
 								playsound(src, 'sound/items/flint.ogg', 50, TRUE)
-								user.visible_message(span_notice("[user] finishes styling [H]'s facial hair."), span_notice("You finish styling [H == user ? "your" : "[H]'s"] facial hair."))
+								user.visible_message(span_notice("[user]修整好了[H]的面部毛发。"), span_notice("我修整好了[H == user ? "自己的" : "[H]的"]面部毛发。"))
 								H.add_stress(/datum/stressevent/fresh_haircut)
 
-				if("maintain haircut")
-					user.visible_message(span_notice("[user] begins tidying up [H]'s hair..."), span_notice("You begin tidying up [H == user ? "your" : "[H]'s"] hair..."))
+				if("修整发型")
+					user.visible_message(span_notice("[user]开始整理[H]的头发……"), span_notice("我开始整理[H == user ? "自己的" : "[H]的"]头发……"))
 					if(!do_after(user, 15 SECONDS, target = H))
-						to_chat(user, span_warning("The tidying was interrupted!"))
+						to_chat(user, span_warning("整理被打断了！"))
 						return
 					playsound(src, 'sound/items/flint.ogg', 50, TRUE)
-					user.visible_message(span_notice("[user] finishes tidying up [H]'s hair."), span_notice("You finish tidying up [H == user ? "your" : "[H]'s"] hair."))
+					user.visible_message(span_notice("[user]整理好了[H]的头发。"), span_notice("我整理好了[H == user ? "自己的" : "[H]的"]头发。"))
 					H.add_stress(/datum/stressevent/fresh_haircut)
 			return TRUE
 	// If not using snip intent on head/skull or not a human, proceed with normal attack
 	if(user.used_intent.type == /datum/intent/snip)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			var/list/options = list("hairstyle", "facial hairstyle", "maintain haircut")
-			var/chosen = input(user, "What would you like to style?", "Hair Styling") as null|anything in options
+			var/list/options = list("发型", "面部毛发", "修整发型")
+			var/chosen = input(user, "你想修整什么？", "发型修整") as null|anything in options
 			if(!chosen)
 				return
 
 			switch(chosen)
-				if("hairstyle")
+				if("发型")
 					var/datum/customizer_choice/bodypart_feature/hair/head/humanoid/hair_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/head/humanoid)
 					var/list/valid_hairstyles = list()
 					for(var/hair_type in hair_choice.sprite_accessories)
 						var/datum/sprite_accessory/hair/head/hair = new hair_type()
 						valid_hairstyles[hair.name] = hair_type
 
-					var/new_style = input(user, "Choose their hairstyle", "Hair Styling") as null|anything in valid_hairstyles
+					var/new_style = input(user, "选择对方发型", "发型修整") as null|anything in valid_hairstyles
 					if(new_style)
-						user.visible_message(span_notice("[user] begins styling [H]'s hair..."), span_notice("You begin styling [H == user ? "your" : "[H]'s"] hair..."))
+						user.visible_message(span_notice("[user]开始修整[H]的发型……"), span_notice("我开始修整[H == user ? "自己的" : "[H]的"]发型……"))
 						if(!do_after(user, 60 SECONDS, target = H))
-							to_chat(user, span_warning("The styling was interrupted!"))
+							to_chat(user, span_warning("修整被打断了！"))
 							return
 
 						var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
@@ -1327,21 +1327,21 @@
 								head.add_bodypart_feature(new_hair)
 								H.update_hair()
 								playsound(src, 'sound/items/flint.ogg', 50, TRUE)
-								user.visible_message(span_notice("[user] finishes styling [H]'s hair."), span_notice("You finish styling [H == user ? "your" : "[H]'s"] hair."))
+								user.visible_message(span_notice("[user]修整好了[H]的发型。"), span_notice("我修整好了[H == user ? "自己的" : "[H]的"]发型。"))
 								H.add_stress(/datum/stressevent/fresh_haircut)
 
-				if("facial hairstyle")
+				if("面部毛发")
 					var/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/facial_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid)
 					var/list/valid_facial_hairstyles = list()
 					for(var/facial_type in facial_choice.sprite_accessories)
 						var/datum/sprite_accessory/hair/facial/facial = new facial_type()
 						valid_facial_hairstyles[facial.name] = facial_type
 
-					var/new_style = input(user, "Choose their facial hairstyle", "Hair Styling") as null|anything in valid_facial_hairstyles
+					var/new_style = input(user, "选择对方面部毛发样式", "发型修整") as null|anything in valid_facial_hairstyles
 					if(new_style)
-						user.visible_message(span_notice("[user] begins styling [H]'s facial hair..."), span_notice("You begin styling [H == user ? "your" : "[H]'s"] facial hair..."))
+						user.visible_message(span_notice("[user]开始修整[H]的面部毛发……"), span_notice("我开始修整[H == user ? "自己的" : "[H]的"]面部毛发……"))
 						if(!do_after(user, 60 SECONDS, target = H))
-							to_chat(user, span_warning("The styling was interrupted!"))
+							to_chat(user, span_warning("修整被打断了！"))
 							return
 
 						var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
@@ -1364,16 +1364,16 @@
 								head.add_bodypart_feature(new_facial)
 								H.update_hair()
 								playsound(src, 'sound/items/flint.ogg', 50, TRUE)
-								user.visible_message(span_notice("[user] finishes styling [H]'s facial hair."), span_notice("You finish styling [H == user ? "your" : "[H]'s"] facial hair."))
+								user.visible_message(span_notice("[user]修整好了[H]的面部毛发。"), span_notice("我修整好了[H == user ? "自己的" : "[H]的"]面部毛发。"))
 								H.add_stress(/datum/stressevent/fresh_haircut)
 
-				if("maintain haircut")
-					user.visible_message(span_notice("[user] begins tidying up [H]'s hair..."), span_notice("You begin tidying up [H == user ? "your" : "[H]'s"] hair..."))
+				if("修整发型")
+					user.visible_message(span_notice("[user]开始整理[H]的头发……"), span_notice("我开始整理[H == user ? "自己的" : "[H]的"]头发……"))
 					if(!do_after(user, 15 SECONDS, target = H))
-						to_chat(user, span_warning("The tidying was interrupted!"))
+						to_chat(user, span_warning("整理被打断了！"))
 						return
 					playsound(src, 'sound/items/flint.ogg', 50, TRUE)
-					user.visible_message(span_notice("[user] finishes tidying up [H]'s hair."), span_notice("You finish tidying up [H == user ? "your" : "[H]'s"] hair."))
+					user.visible_message(span_notice("[user]整理好了[H]的头发。"), span_notice("我整理好了[H == user ? "自己的" : "[H]的"]头发。"))
 					H.add_stress(/datum/stressevent/fresh_haircut)
 			return
 	return ..()
@@ -1394,7 +1394,7 @@
 				bag.emptyStorage()
 			var/skill_level = user.get_skill_level(/datum/skill/craft/sewing)
 			if(prob(50 - (skill_level * 10))) // We are dumb and we failed!
-				to_chat(user, span_info("I ruined some of the materials due to my lack of skill..."))
+				to_chat(user, span_info("我手艺不够，糟蹋了一些材料……"))
 				playsound(item, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 				qdel(item)
 				user.mind.add_sleep_experience(/datum/skill/craft/sewing, (user.STAINT)) //Getting exp for failing
@@ -1403,7 +1403,7 @@
 			for(var/i = 1; i <= item.salvage_amount; i++) // We are spawning salvage result for the salvage amount minus the torn sleves!
 				var/obj/item/Sr = new item.salvage_result(get_turf(item))
 				Sr.color = item.color
-			user.visible_message(span_notice("[user] salvages [item] into usable materials."))
+			user.visible_message(span_notice("[user]把[item]拆成了可用材料。"))
 			playsound(item, 'sound/items/flint.ogg', 100, TRUE)
 			qdel(item)
 			user.mind.add_sleep_experience(/datum/skill/craft/sewing, (user.STAINT))

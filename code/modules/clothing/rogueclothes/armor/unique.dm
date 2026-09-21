@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/spellcasterrobe
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "spellsinger robes"
-	desc = "A set of reinforced, leather-padded robes worn by spellblades."
+	name = "咒歌者长袍"
+	desc = "法剑士所穿的加固长袍，内有皮革衬垫。"
 	body_parts_covered = COVERAGE_FULL
 	armor = ARMOR_SPELLSINGER
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
@@ -19,8 +19,8 @@
 	max_heat_protection_temperature = BODYTEMP_HEAT_LEVEL_ONE_MAX
 
 /obj/item/clothing/suit/roguetown/armor/basiceast
-	name = "simple dopo robe"
-	desc = "A dirty dopo robe with white lapels. Can be upgraded through the use of a tailor to increase its integrity and protection."
+	name = "简式道袍"
+	desc = "带白色翻领的脏旧道袍。可由裁缝升级，以提高耐久与防护。"
 	icon_state = "eastsuit3"
 	item_state = "eastsuit3"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
@@ -42,8 +42,8 @@
 //the intent for these armors is to create specific weaknesses/strengths for people to play with
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/crafteast
-	name = "decorated dopo robe"
-	desc = "A dopo robe with a red tassel. Leather inlays are sewn in. It looks sturdier than a simple robe."
+	name = "饰纹道袍"
+	desc = "缀有红穗的道袍，并缝入了皮革嵌片。看起来比简式长袍更结实。"
 	icon_state = "eastsuit2"
 	item_state = "eastsuit2"
 	armor = ARMOR_LEATHER_STUDDED // Makes it the equivalence of studded with less integrity and better armor 
@@ -53,8 +53,8 @@
 //still weak against blunt
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
-	name = "old dopo robe"
-	desc = "The scars on your body were once stories of strength and bravado."
+	name = "旧道袍"
+	desc = "你身上的伤疤，曾经都是力量与勇武的故事。"
 	icon_state = "eastsuit1"
 	item_state = "eastsuit1"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
@@ -62,15 +62,15 @@
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit/decorative
-	name = "decorative mentor robe"
-	desc = "An old dopo robe worn purely for its eastern style."
+	name = "装饰性导师道袍"
+	desc = "一件纯为东方风格而穿着的旧道袍。"
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = null
 
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe
-	name = "foreign robes"
-	desc = "Flower-styled robes, said to have been infused with magical protection. The Merchant Guild says that this is from the southern Kazengite region."
+	name = "异域长袍"
+	desc = "花纹风格的长袍，据说被灌注了魔法防护。商会说这来自南方的风郡地区。"
 	icon_state = "eastsuit4"
 	item_state = "eastsuit4"
 	armor = ARMOR_LEATHER_STUDDED
@@ -78,16 +78,16 @@
 	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe/decorative
-	name = "decorative flowery robe"
-	desc = "Flower-styled robes worn purely for their eastern style."
+	name = "装饰性花纹长袍"
+	desc = "纯为东方风格而穿着的花纹长袍。"
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = null
 
 // this robe spawns on a role that offers no leg protection nor further upgrades to the loadout, in exchange for better roundstart gear
 
 /obj/item/clothing/suit/roguetown/armor/plate/elven_plate
-	name = "woad elven plate"
-	desc = "An assembly of thickly woven trunk, bound together by ancient song and tool of the oldest elven druids. It still creaks and weeps with forlorn reminiscence of a bygone era. It looks like only Elves can fit in it."
+	name = "靛纹精灵板甲"
+	desc = "由最古老的精灵德鲁伊以歌与工具共同编织。它仍在吱呀作响，仿佛为逝去时代而悲泣。看起来只有精灵才能穿得上。"
 	allowed_race = list(/datum/species/elf/wood, /datum/species/human/halfelf, /datum/species/elf/dark, /datum/species/elf)
 	armor = ARMOR_BLACKOAK
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PICK, BCLASS_SMASH)
@@ -108,8 +108,8 @@
 
 
 /obj/item/clothing/suit/roguetown/armor/plate/elven_plate/light
-	name = "woad elven maille"
-	desc = "An assembly of woven trunk, bound together by ancient song and tool of the oldest elven druids. It still creaks and weeps with forlorn reminiscence of a bygone era. It looks like only Elves can fit in it."
+	name = "靛纹精灵锁甲"
+	desc = "由最古老的精灵德鲁伊以歌与工具共同编织的树干编组。它仍在吱呀作响，仿佛为逝去时代而悲泣。看起来只有精灵才能穿得上。"
 	icon_state = "welfchestalt"
 	item_state = "welfchestalt"
 	armor_class = ARMOR_CLASS_LIGHT
@@ -117,8 +117,8 @@
 	body_parts_covered = CHEST | VITALS | LEGS
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini/horsey
-	name = "harness corset"
-	desc = "A tight-fitting leather bodice reinforced for protection."
+	name = "束带胸衣"
+	desc = "贴身的皮质胸衣，并经过强化以提供防护。"
 	icon_state = "hcorset"
 	item_state = "hcorset"
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -128,8 +128,8 @@
 //Gronn
 /obj/item/clothing/suit/roguetown/armor/kurche
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Kurche"
-	desc = "Pieces of Iron Plates and Leathers that protect the vitals."
+	name = "库尔切"
+	desc = "由铁片与皮革拼接而成，用来保护要害。"
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	icon_state = "kurche"
 	armor = ARMOR_CUIRASS	//Essentially really good stab/slash prot, some prot against projectiles too
@@ -142,8 +142,8 @@
 	armor_class = ARMOR_CLASS_MEDIUM	//a bit heavier therefore!
 
 /obj/item/clothing/suit/roguetown/armor/leather/Huus_quyaq
-	name = "Huus quyaq"
-	desc = "Armor made of leather plates."
+	name = "胡斯库亚克"
+	desc = "由皮片制成的护甲。"
 	icon_state = "huus"
 	item_state = "huus"
 	armor = ARMOR_LEATHER_GOOD

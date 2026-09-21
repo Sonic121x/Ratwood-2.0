@@ -1,7 +1,7 @@
 // Zadpack supply packs + restock/cage purchase items - ported from Azure-Peak PR #7000
 // (code/modules/cargo/packsrogue/merchant/zadpack.dm).
 /datum/supply_pack/rogue/zadpack
-	group = "Zadpacks"
+	group = "扎德鸟包" // English: Zadpacks
 	crate_name = "trained zad crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
@@ -13,7 +13,7 @@
 
 /datum/supply_pack/rogue/zadpack/bathhouse
 	name = "Discreet Zad Pack"
-	group = "Discreet Zads"
+	group = "隐秘扎德鸟" // English: Discreet Zads
 	cost = ZADPACK_PRICE_BATHHOUSE
 	contains = list(/obj/item/zadpack)
 	contraband = TRUE
@@ -38,7 +38,7 @@
 
 /datum/supply_pack/rogue/zadpack/new_cage_bathhouse
 	name = "Discreet Zadcage"
-	group = "Discreet Zads"
+	group = "隐秘扎德鸟" // English: Discreet Zads
 	cost = ZADCOTE_NEW_CAGE_COST_MAMMON
 	contains = list(/obj/item/zadcage)
 	contraband = TRUE

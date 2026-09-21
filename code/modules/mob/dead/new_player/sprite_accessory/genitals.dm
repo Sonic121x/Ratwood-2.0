@@ -1,7 +1,7 @@
 /datum/sprite_accessory/penis
 	icon = 'icons/mob/sprite_accessory/genitals/pintle.dmi'
 	color_keys = 2
-	color_key_names = list("Member", "Skin")
+	color_key_names = list("阴茎", "皮肤")
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER) //Vrell - Yes I know this is hacky but it works for now
 	var/uses_size_sprites = TRUE
 
@@ -43,12 +43,12 @@
 
 /datum/sprite_accessory/penis/human
 	icon_state = "human"
-	name = "Plain"
+	name = "普通"
 	color_key_defaults = list(KEY_CHEST_COLOR, KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/penis/knotted
 	icon_state = "knotted"
-	name = "Knotted"
+	name = "结节"
 	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
@@ -69,8 +69,8 @@
 	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/tapered
+	name = "锥形"
 	icon_state = "tapered"
-	name = "Tapered"
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/taperedknot
@@ -79,20 +79,20 @@
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/taperedknot_mammal
+	name = "锥形（结节）"
 	icon_state = "taperedknot"
-	name = "Tapered, Knotted"
 	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/tapered_mammal
+	name = "锥形"
 	icon_state = "tapered"
-	name = "Tapered"
 	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/tentacle
 	icon_state = "tentacle"
-	name = "Tentacled"
+	name = "触手状"
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/hemi
@@ -101,8 +101,8 @@
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/hemi_mammal
+	name = "半球"
 	icon_state = "hemi"
-	name = "Hemi"
 	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
@@ -134,13 +134,13 @@
 	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH)
 
 /datum/sprite_accessory/testicles/pair
-	name = "Pair"
+	name = "一对"
 	icon_state = "pair"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/breasts
 	icon = 'icons/mob/sprite_accessory/genitals/breasts.dmi'
-	color_key_name = "Breasts"
+	color_key_name = "乳房"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
 	var/can_jiggle = FALSE
 
@@ -160,7 +160,7 @@
 
 /datum/sprite_accessory/breasts/pair
 	icon_state = "pair"
-	name = "Pair"
+	name = "一对"
 	color_key_defaults = list(KEY_CHEST_COLOR)
 	can_jiggle = TRUE
 
@@ -172,13 +172,13 @@
 
 /datum/sprite_accessory/breasts/sextuple
 	icon_state = "sextuple"
-	name = "Sextuple"
+	name = "六只"
 	color_key_defaults = list(KEY_CHEST_COLOR)
 	can_jiggle = TRUE
 
 /datum/sprite_accessory/vagina
 	icon = 'icons/mob/sprite_accessory/genitals/nethers.dmi'
-	color_key_name = "Nethers"
+	color_key_name = "私处"
 	relevant_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/vagina/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -213,12 +213,12 @@
 
 /datum/sprite_accessory/vagina/furred
 	icon_state = "furred"
-	name = "Furred"
+	name = "覆毛"
 	color_key_defaults = list(KEY_MUT_COLOR_ONE)
 
 /datum/sprite_accessory/vagina/gaping
 	icon_state = "gaping"
-	name = "Gaping"
+	name = "张开"
 	default_colors = list("f99696")
 
 /datum/sprite_accessory/vagina/cloaca

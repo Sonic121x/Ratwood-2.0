@@ -1,8 +1,8 @@
 /obj/item/rogueweapon/flail
 	force = 25
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flail)
-	name = "flail"
-	desc = "This is a swift, iron flail. Strikes hard and far."
+	name = "铁连枷"
+	desc = "一柄灵巧的铁制连枷，打得又狠又远。"
 	icon_state = "iflail"
 	icon = 'icons/roguetown/weapons/blunt32.dmi'
 	sharpness = IS_BLUNT
@@ -26,7 +26,7 @@
 	special = /datum/special_intent/flail_sweep
 
 /datum/intent/flail/strike
-	name = "strike"
+	name = "打击"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
@@ -45,7 +45,7 @@
 
 
 /datum/intent/flail/strikerange
-	name = "ranged strike"
+	name = "远距打击"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
@@ -63,7 +63,7 @@
 	blunt_chip_strength = BLUNT_CHIP_WEAK
 
 /datum/intent/mace/smash/flail
-	name = "flail smash"
+	name = "连枷猛砸"
 	chargetime = 0.8 SECONDS
 	damfactor = 1.4 // Flail smash has higher damage due to a longer charge.
 	chargedloop = /datum/looping_sound/flailswing
@@ -85,7 +85,7 @@
 	hitsound = list('sound/items/beartrap2.ogg')
 
 /datum/intent/mace/smash/flailrange
-	name = "ranged smash"
+	name = "远距猛砸"
 	chargetime = 1.2 SECONDS
 	chargedrain = 1
 	recovery = 30
@@ -98,7 +98,7 @@
 	item_d_type = "blunt"
 
 /datum/intent/flail/sweep
-	name = "sweeping strike"
+	name = "横扫击"
 	icon_state = "insweep"
 	blade_class = BCLASS_BLUNT
 	chargetime = 1.2 SECONDS
@@ -112,7 +112,7 @@
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	cleave = /datum/cleave_pattern/horizontal_sweep
-	desc = "A charged sweep that smashes through targets to the front."
+	desc = "一记蓄力横扫，会砸穿身前的目标。"
 
 /obj/item/rogueweapon/flail/getonmobprop(tag)
 	. = ..()
@@ -128,27 +128,27 @@
 	throwforce = 20
 	max_integrity = 125
 	icon_state = "bronzeflail"
-	name = "bronze flail"
-	desc = "A studded weight and a whittled handle, linked together with a length of bronze chain. It can be spun around to smash armored opponents with tremendous force, cracking plate and bone alike with unflinching impunity."
+	name = "青铜连枷"
+	desc = "一颗布满钉刺的配重锤头与一根削制的握柄，由一段青铜锁链彼此相连。挥转起来，它能以惊人的力量砸向披甲之敌，毫不留情地同时震裂铠甲与骨骼。"
 	smeltresult = /obj/item/ingot/bronze
 	minstr = 7
 
 /obj/item/rogueweapon/flail/sflail
 	force = 30
 	icon_state = "flail"
-	desc = "This is a swift, steel flail. Strikes hard and far."
+	desc = "一柄灵巧的钢制连枷，打得又狠又远。"
 	smeltresult = /obj/item/ingot/steel
 	minstr = 5
 
 /obj/item/rogueweapon/flail/sflail/ancient
-	name = "ancient flail"
-	desc = "A spiked ball of polished gilbranze, chained to a reinforced handle. They say that His children worshipped the flail above all else, for its twirls replicated the Comet Syon's blazing flights."
+	name = "远古连枷"
+	desc = "一颗抛光吉尔青铜钉球，以锁链连在加固手柄之上。人们说祂的子民曾将连枷奉若至宝，因为它旋舞时的轨迹仿佛重现了普赛顿彗星炽烈的飞行。"
 	icon_state = "aflail"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/flail/sflail/ancient/decrepit
-	name = "decrepit flail"
-	desc = "A spiked ball of wrought bronze, chained to a rotwooden handle. The chains groan with every twirl, strained by forces it hadn't felt in millennia; swing it a bit too hard, and there's a chance that the flailhead might completely fly off."
+	name = "破旧连枷"
+	desc = "一颗锻造青铜钉球，以锁链连在朽木握柄之上。每一次挥转，锁链都会发出呻吟，承受着千年来未曾再遇的力量；若挥得太狠，枷头甚至可能整颗甩飞出去。"
 	force = 22
 	max_integrity = 175
 	color = "#bb9696"
@@ -157,9 +157,9 @@
 /obj/item/rogueweapon/flail/sflail/silver
 	force = 35
 	icon_state = "silverflail"
-	name = "silver morningstar"
+	name = "白银晨星连枷"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange)
-	desc = "A heavy, silver flail. It follows the Grenzelhoftian design of a 'morning star', utilizing a longer chain to extend its reach. While stronger than a steel flail, it requires far more strength to effectively swing."
+	desc = "一柄沉重的白银连枷。它采用格伦泽尔霍夫特式的“晨星”设计，以更长的链条延展攻击距离。虽然它比钢连枷更强，但也需要更大的力气才能挥得得心应手。"
 	smeltresult = /obj/item/ingot/silver
 	minstr = 12
 	is_silver = TRUE
@@ -176,8 +176,8 @@
 	)
 
 /obj/item/rogueweapon/flail/sflail/necraflail
-	name = "swift journey"
-	desc = "The striking head is full of teeth, rattling viciously with ever strike, with every rotation. Each set coming from one the wielder has laid to rest. Carried alongside them as a great show of respect."
+	name = "“迅捷旅途”"
+	desc = "这颗打击头上嵌满牙齿，每一次击中、每一次旋转都会发出凶恶的咯响。每一副牙都来自被持用者亲手送去安息之人，而将它们随身携带，正是最高形式的敬意。"
 	icon_state = "necraflail"
 	force = 35
 	is_silver = TRUE
@@ -194,8 +194,8 @@
 	)
 
 /obj/item/rogueweapon/flail/sflail/psyflail
-	name = "psydonic flail"
-	desc = "An ornate flail, plated in a ceremonial veneer of silver. Its flanged head can crumple even the toughest of darksteel-maille."
+	name = "普赛顿连枷"
+	desc = "一柄装饰华丽的连枷，表面覆有礼仪性的银层薄镀。它的翼棱枷头足以砸瘪最坚韧的黑钢锁甲。"
 	icon_state = "psyflail"
 	force = 35
 	minstr = 10
@@ -215,8 +215,8 @@
 	)
 
 /obj/item/rogueweapon/flail/sflail/psyflail/old
-	name = "enduring flail"
-	desc = "An ornate flail, its silver tarnished by neglect. Bring down the COMET on the unholy."
+	name = "耐战连枷"
+	desc = "一柄装饰华丽的连枷，只是表面的白银因疏于保养而失去光泽。让彗星坠向那些不洁之物吧。"
 	icon_state = "psyflail"
 	force = 30
 	minstr = 5
@@ -229,8 +229,8 @@
 	return
 
 /obj/item/rogueweapon/flail/sflail/psyflail/relic
-	name = "Consecratia"
-	desc = "The weight of His anguish, His pain, His hope and His love for humenkind - all hanging on the ornamental silver-steel head chained to this arm. <br><br>A declaration of love for all that Psydon lives for, and a crushing reminder to the arch-nemesis that they will not triumph as long as He endures."
+	name = "“圣誓”"
+	desc = "祂的悲恸、祂的痛苦、祂的希望，以及祂对人类的爱，尽皆悬于这条臂链末端那颗装饰华美的银钢枷头之上。 <br><br>它是献给普赛顿所珍视一切的爱之宣言，也是对宿敌的一记沉重警告：只要祂仍存世，他们便永无胜机。"
 	icon_state = "psymorningstar"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange)
 
@@ -250,8 +250,8 @@
 	force_wielded = 35
 	possible_item_intents = list(/datum/intent/flail/strike)
 	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/mace/smash/flailrange, /datum/intent/flail/sweep)
-	name = "militia thresher"
-	desc = "Just like how a sling's bullet can fell a giant, so too does this great flail follow the principle of converting 'momentum' into 'plate-rupturing force'."
+	name = "民兵长连枷"
+	desc = "正如投石索的弹丸也能击倒巨人，这柄大连枷同样遵循着将“动量”转化为“裂甲之力”的原则。"
 	icon_state = "peasantwarflail"
 	icon = 'icons/roguetown/weapons/blunt64.dmi'
 	pixel_y = -16
@@ -282,8 +282,8 @@
 				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
 /obj/item/rogueweapon/flail/peasantwarflail/steel
-	name = "greatflail"
-	desc = "The lucerne's ungaitly cousin, favoring a 'ball-and-chain' design that - once spun - can devastate anything caught in its way; a trait that makes it dearly beloved by both peasantry and knights alike."
+	name = "巨型连枷"
+	desc = "它是卢塞恩战锤笨拙的表亲，偏爱“流星锤”式的设计——一旦旋舞起来，任何挡路之物都会被它摧垮；正因如此，它深受农民与骑士的共同喜爱。"
 	icon_state = "greatflail"
 	wdefense = 6
 	minstr = 12
@@ -292,8 +292,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/flail/peasantwarflail/silver
-	name = "silver greatflail"
-	desc = "PSLM 81:59... AND HE COMMANDED; \"SHATTER THEM APART, LIKE A POTTER'S VESSEL AGAINST THE STONES!\" AND SO, WE STRUCK!"
+	name = "白银巨型连枷"
+	desc = "PSLM 81:59……祂下达了命令；\"把他们打得粉碎，就像陶匠的器皿砸在石头上！\"于是，我们出击了！"
 	icon_state = "silver_greatflail"
 	wdefense = 6
 	minstr = 13
@@ -314,8 +314,8 @@
 	)
 
 /obj/item/rogueweapon/flail/peasantwarflail/blacksteel
-	name = "blacksteel greatflail"
-	desc = "An elegant flail of blacksteel that - once spun - can devastate anything caught in its way."
+	name = "黑钢巨型连枷"
+	desc = "一柄优雅的黑钢连枷——一旦旋舞起来，任何挡路之物都会被它摧垮。"
 	icon_state = "bs_greatflail"
 	wdefense = 7
 	minstr = 12
@@ -328,8 +328,8 @@
 
 /obj/item/rogueweapon/flail/peasantwarflail/matthios
 	no_loot_taint = TRUE
-	name = "Gilded Flail"
-	desc = "Weight of wealth in a deadly striking end."
+	name = "鎏金连枷"
+	desc = "将财富的分量，铸进这致命的一击末端。"
 	icon_state = "matthiosflail"
 	sellprice = 250
 	smeltresult = /obj/item/ingot/gold
@@ -347,8 +347,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "FLAIL")
 
 /obj/item/rogueweapon/flail/militia
-	name = "militia flail"
-	desc = "In another lyfe, this humble thresher was used to pound stalks into grain. Under a militiaman's grasp, however, it has found a new purpose: to humble overconfident bandits with crippling blows."
+	name = "民兵连枷"
+	desc = "若是在另一种人生里，这柄朴素的打谷连枷原本只是拿来把麦穗敲成谷粒的工具。但落入民兵手中后，它也找到了新的使命：用伤筋断骨的重击教训那些自负过头的强盗。"
 	icon_state = "milflail"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flail/militia)
 	force = 27
@@ -356,11 +356,11 @@
 	wbalance = WBALANCE_HEAVY
 
 /obj/item/rogueweapon/flail/blacksteel
-	name = "blacksteel flail"
+	name = "黑钢连枷"
 	icon_state = "bs_flail"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange, /datum/intent/flail/sweep)
-	desc = "An elegant flail of blacksteel. The heftsome weight makes it unmatched for driving back plate-armored opponents, so long as one \
-	has the stamina to swing its alloyed chains around."
+	desc = "一柄优雅的黑钢连枷。其沉重分量使其在击退板甲对手方面无可匹敌，只要使用者 \
+	有足够的耐力挥动其合金链身。"
 	smeltresult = /obj/item/ingot/blacksteel
 	max_integrity = 250
 	minstr = 12

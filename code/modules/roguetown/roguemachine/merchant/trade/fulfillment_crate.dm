@@ -9,8 +9,8 @@
 //    out of scope for this step.
 
 /obj/structure/roguemachine/ship_fulfillment
-	name = "ship fulfillment crate"
-	desc = "A wide crate stamped with the seal of the Ferentian Trading Company. Goods deposited here are accepted against the demands of foreign vessels in port - the depositor is paid in mammon to their account, less the Crown's export duty and the Merchant's middleman cut."
+	name = "船舶履约货箱"
+	desc = "一个盖有费伦提亚贸易公司印记的宽大货箱. 存入此处的货物将用于满足港内外国船舶的需求 - 货款以玛门币存入交货者的账户, 并扣除王权的出口关税及商人的中介抽成."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -38,10 +38,10 @@
 
 /obj/structure/roguemachine/ship_fulfillment/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click with an item to deposit it for matching ship demands. You must have a NERVELOCK account to deposit - the crate will refuse goods otherwise.")
-	. += span_info("Right-click to dump everything on your tile into the crate at once.")
-	. += span_info("Certain items like kegs can be click dragged or offloaded in hand.")
-	. += span_info("Stacks, handcarts, and bins are unloaded automatically.")
+	. += span_info("持物左键点击即可交货以满足相应的船舶需求. 交货必须拥有神经锁账户 - 否则货箱将拒收货物.")
+	. += span_info("右键点击可将脚下格子内的所有物品一次性倒入货箱.")
+	. += span_info("酒桶等某些物品可以通过点击拖拽或在手中卸货来交付.")
+	. += span_info("堆叠物品, 手推车, 以及料箱会自动卸货.")
 
 /obj/structure/roguemachine/ship_fulfillment/examine(mob/user)
 	. = ..()
@@ -56,15 +56,15 @@
 				n_ships++
 				break
 	if(n_ships == 1)
-		. += span_info("1 vessel at the pier seeks goods. Click to inspect the manifest.")
+		. += span_info("码头有1艘船正在求购货物. 点击查看货单.")
 	else if(n_ships > 1)
-		. += span_info("[n_ships] vessels at the pier seek goods. Click to inspect the manifest.")
+		. += span_info("码头有[n_ships]艘船正在求购货物. 点击查看货单.")
 	else
-		. += span_info("No vessels currently buying. Click to inspect anyway.")
+		. += span_info("目前没有船舶收购货物. 仍可点击查看.")
 	if(SSmerchant_trade.current_kinship_realm)
 		var/datum/foreign_realm/KR = SSmerchant_trade.realms[SSmerchant_trade.current_kinship_realm]
 		if(KR)
-			. += span_info("Bulk demand payouts from <b>[KR.name]</b> ships are +[round((KINSHIP_SELL_MULT - 1) * 100)]% due to Kinship.")
+			. += span_info("来自<b>[KR.name]</b>船舶的大宗采购货款因亲缘关系增加+[round((KINSHIP_SELL_MULT - 1) * 100)]%.")
 
 /obj/structure/roguemachine/ship_fulfillment/ui_state(mob/user)
 	return GLOB.human_adjacent_state
@@ -95,10 +95,10 @@
 			return TRUE
 		if("toggle_duty")
 			if(!can_manage(usr))
-				to_chat(usr, span_warning("Only the Merchant or Shophand may work the crate's underledger."))
+				to_chat(usr, span_warning("只有商人或店伙计可以操作货箱的暗账."))
 				return TRUE
 			duty_suspended = !duty_suspended
-			to_chat(usr, span_notice("Crown export duty now [duty_suspended ? "DODGED" : "PAID"] at this crate."))
+			to_chat(usr, span_notice("此货箱现已[duty_suspended ? "逃避缴纳" : "正常缴纳"]王室出口关税."))
 			return TRUE
 
 /obj/structure/roguemachine/ship_fulfillment/ui_data(mob/user)
@@ -170,7 +170,7 @@
 	if(!SSmerchant_trade)
 		return
 	if(!(user in SStreasury.bank_accounts))
-		say("No account found for [user]. Submit your fingers to a Nervelock for inspection.")
+		say("未找到[user]的账户. 请将手指放入神经锁接受检查.")
 		return
 	var/list/tally = list("total_producer" = 0, "total_gross" = 0, "total_duty" = 0, "total_cut" = 0, "total_kin_bonus" = 0, "total_quality_delta" = 0, "lines" = list())
 	for(var/obj/item/I in get_turf(user))
@@ -180,7 +180,7 @@
 	for(var/obj/structure/fermentation_keg/keg in get_turf(user))
 		attempt_deposit_keg(keg, user)
 	flush_tally(tally, user)
-	say("Bulk fulfillment in progress...")
+	say("正在批量履约...")
 	playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 
@@ -196,15 +196,15 @@
 	var/quality_str = ""
 	if(quality_delta != 0)
 		var/sign_str = quality_delta > 0 ? "+" : ""
-		quality_str = ", quality [sign_str][quality_delta]m"
-	var/breakdown = "[english_list(line_summaries)]: gross [tally["total_gross"]]m, Crown [tally["total_duty"]]m, Merchant [tally["total_cut"]]m[kin_total > 0 ? ", Kinship +[kin_total]m" : ""][quality_str]"
+		quality_str = ", 品质调整 [sign_str][quality_delta]m"
+	var/breakdown = "[english_list(line_summaries, nothing_text = "无", and_text = " 和 ")]: 总额 [tally["total_gross"]]m, 王权 [tally["total_duty"]]m, 商人 [tally["total_cut"]]m[kin_total > 0 ? ", 亲缘 +[kin_total]m" : ""][quality_str]"
 	SStreasury.give_money_account(tally["total_producer"], user, breakdown, mint_new = TRUE)
 	if(quality_delta != 0)
 		var/representative_quality = quality_delta > 0 ? ITEM_QUALITY_MASTERWORK : ITEM_QUALITY_CRUDE
 		var/jab = navigator_quality_jab(representative_quality)
 		if(jab)
 			say(jab)
-			to_chat(user, span_info("[src] says, \"[jab]\""))
+			to_chat(user, span_info("[src]说道, \"[jab]\""))
 
 /obj/structure/roguemachine/ship_fulfillment/proc/attempt_deposit(obj/item/I, mob/user, message = TRUE, sound = TRUE, list/tally)
 	if(!SSmerchant_trade)
@@ -245,30 +245,30 @@
 		return
 	if(!(user in SStreasury.bank_accounts))
 		if(message)
-			say("No account found for [user]. Submit your fingers to a Nervelock for inspection.")
+			say("未找到[user]的账户. 请将手指放入神经锁接受检查.")
 		return
 	if(I.atc_sealed)
 		if(message)
-			to_chat(user, span_warning("[I] bears an Ferentian Trading Company seal - foreign captains will not buy Company stock back."))
+			to_chat(user, span_warning("[I]带有费伦提亚贸易公司的印记 - 外国船长不会回购公司的货物."))
 		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/F = I
 		if(F.eat_effect == /datum/status_effect/debuff/rotfood)
 			if(message)
-				to_chat(user, span_warning("[I] is rotten. No captain will load spoiled stores aboard."))
+				to_chat(user, span_warning("[I]已经腐烂. 没有船长会把变质的补给装上船."))
 			return
 	var/list/dish_match = find_dish_match(I.type)
 	if(dish_match)
 		var/list/dish_line = dish_match["line"]
 		if(dish_line["tag"] == TRADE_VICTUALLING_TAG_DRINKS && !dish_line["by_bottle"])
 			if(message)
-				to_chat(user, span_warning("Captains buy drinks by the barrel - drag a full keg onto [src], not loose bottles."))
+				to_chat(user, span_warning("船长们按桶收购酒水 - 请将满酒桶拖到[src]上, 而非零散的酒瓶."))
 			return
 		if(istype(I, /obj/item/reagent_containers/glass/bottle/brewing_bottle))
 			var/obj/item/reagent_containers/glass/bottle/brewing_bottle/BB = I
 			if(!BB.sealed)
 				if(message)
-					to_chat(user, span_warning("[I] has been unsealed - no captain will load an opened bottle."))
+					to_chat(user, span_warning("[I]已经开封 - 没有船长会装运开封的酒瓶."))
 				return
 		var/datum/trade_ship/dish_ship = dish_match["ship"]
 		dish_line["qty_fulfilled"]++
@@ -279,7 +279,7 @@
 			var/jab = navigator_quality_jab(I.item_quality)
 			if(jab)
 				say(jab)
-				to_chat(user, span_info("[src] says, \"[jab]\""))
+				to_chat(user, span_info("[src]说道, \"[jab]\""))
 		qdel(I)
 		settle_payout(dish_unit_price, user, dish_ship, dish_line["good_name"], 1, message, sound, tally, dish_quality_delta)
 		return
@@ -288,12 +288,12 @@
 		var/good_id = identify_trade_good_for_type(B.stacktype)
 		if(!good_id)
 			if(message)
-				to_chat(user, span_warning("No vessel here is buying [B]."))
+				to_chat(user, span_warning("这里没有船舶收购[B]."))
 			return
 		var/list/match = find_demand_match(good_id)
 		if(!match)
 			if(message)
-				to_chat(user, span_warning("No vessel here is buying [B.name]."))
+				to_chat(user, span_warning("这里没有船舶收购[B.name]."))
 			return
 		var/datum/trade_ship/ship = match["ship"]
 		var/list/line = match["line"]
@@ -314,13 +314,13 @@
 		var/list/match = find_demand_match(potion_good_id)
 		if(!match)
 			if(message)
-				to_chat(user, span_warning("No vessel here is buying [I]."))
+				to_chat(user, span_warning("这里没有船舶收购[I]."))
 			return
 		var/datum/trade_ship/ship = match["ship"]
 		var/list/line = match["line"]
 		if(line["qty_fulfilled"] >= line["qty_target"])
 			if(message)
-				to_chat(user, span_warning("That vessel's hold is full of [line["good_name"]]."))
+				to_chat(user, span_warning("那艘船的货舱已装满[line["good_name"]]."))
 			return
 		line["qty_fulfilled"]++
 		qdel(I)
@@ -330,18 +330,18 @@
 	var/good_id = identify_trade_good(I)
 	if(!good_id)
 		if(message)
-			to_chat(user, span_warning("[I] is not something a foreign vessel would buy in bulk."))
+			to_chat(user, span_warning("外国船舶不会大批收购[I]."))
 		return
 	var/list/match = find_demand_match(good_id)
 	if(!match)
 		if(message)
-			to_chat(user, span_warning("No vessel here is buying [I]."))
+			to_chat(user, span_warning("这里没有船舶收购[I]."))
 		return
 	var/datum/trade_ship/ship = match["ship"]
 	var/list/line = match["line"]
 	if(line["qty_fulfilled"] >= line["qty_target"])
 		if(message)
-			to_chat(user, span_warning("That vessel's hold is full of [line["good_name"]]."))
+			to_chat(user, span_warning("那艘船的货舱已装满[line["good_name"]]."))
 		return
 	line["qty_fulfilled"]++
 	var/q_mult = I.has_item_quality ? ITEM_QUALITY_MULT(I.item_quality) : 1.0
@@ -351,7 +351,7 @@
 		var/jab = navigator_quality_jab(I.item_quality)
 		if(jab)
 			say(jab)
-			to_chat(user, span_info("[src] says, \"[jab]\""))
+			to_chat(user, span_info("[src]说道, \"[jab]\""))
 	qdel(I)
 	settle_payout(unit_price, user, ship, line["good_name"], 1, message, sound, tally, quality_delta)
 
@@ -359,26 +359,26 @@
 	if(!SSmerchant_trade)
 		return
 	if(!(user in SStreasury.bank_accounts))
-		say("No account found for [user]. Submit your fingers to a Nervelock for inspection.")
+		say("未找到[user]的账户. 请将手指放入神经锁接受检查.")
 		return
 	if(keg.anchored)
-		to_chat(user, span_warning("[keg] is fixed in place - bottle its spirits and deposit those instead."))
+		to_chat(user, span_warning("[keg]已固定在原地 - 请将其中的酒装瓶后再交货."))
 		return
 	if(keg.brewing || !keg.ready_to_bottle || keg.tapped || !keg.selected_recipe)
-		to_chat(user, span_warning("[keg] holds no finished, sealed batch the captains would buy."))
+		to_chat(user, span_warning("[keg]内没有酿制完成, 密封且可供船长收购的酒水."))
 		return
 	var/bottle_type = keg.selected_recipe.output_bottle_type
 	if(!bottle_type)
-		to_chat(user, span_warning("No vessel here is buying [keg]."))
+		to_chat(user, span_warning("这里没有船舶收购[keg]."))
 		return
 	var/list/match = find_dish_match(bottle_type)
 	if(!match)
-		to_chat(user, span_warning("No vessel here is buying [keg.selected_recipe.bottle_name]."))
+		to_chat(user, span_warning("这里没有船舶收购[keg.selected_recipe.bottle_name]."))
 		return
 	var/datum/trade_ship/ship = match["ship"]
 	var/list/line = match["line"]
 	if(line["qty_fulfilled"] >= line["qty_target"])
-		to_chat(user, span_warning("That vessel's hold is full of [line["good_name"]]."))
+		to_chat(user, span_warning("那艘船的货舱已装满[line["good_name"]]."))
 		return
 	line["qty_fulfilled"]++
 	qdel(keg)
@@ -410,10 +410,10 @@
 			duty_evaded_here += evaded
 	else
 		if(duty_on_gross_float > 0)
-			duty_remitted = SStreasury.mint_fractional(SStreasury.discretionary_fund, duty_on_gross_float, "[TAX_CATEGORY_EXPORT_DUTY] (ship fulfillment)")
+			duty_remitted = SStreasury.mint_fractional(SStreasury.discretionary_fund, duty_on_gross_float, "[TAX_CATEGORY_EXPORT_DUTY] (船舶履约)")
 			SStreasury.apply_concordat_tithe(gross, TAX_CATEGORY_EXPORT_DUTY, "ship fulfillment")
 		if(duty_on_levy_float > 0)
-			levy_tax_remitted = SStreasury.mint_fractional(SStreasury.discretionary_fund, duty_on_levy_float, "[TAX_CATEGORY_EXPORT_DUTY] (levy income, ship fulfillment)")
+			levy_tax_remitted = SStreasury.mint_fractional(SStreasury.discretionary_fund, duty_on_levy_float, "[TAX_CATEGORY_EXPORT_DUTY] (征缴收入, 船舶履约)")
 			SStreasury.apply_concordat_tithe(levy_float, TAX_CATEGORY_EXPORT_DUTY, "levy income (ship fulfillment)")
 		total_duty = duty_remitted + levy_tax_remitted
 		if(total_duty > 0)
@@ -424,10 +424,10 @@
 				SSmerchant_trade.merchant_levy_taxed += levy_tax_remitted
 	var/merchant_net_float = levy_float - (duty_suspended ? 0 : duty_on_levy_float)
 	if(merchant_net_float > 0)
-		levy_remitted = SStreasury.mint_fractional(SStreasury.merchant_fund, merchant_net_float, "Merchant's levy: [qty] [good_name] -> [ship.ship_name]")
+		levy_remitted = SStreasury.mint_fractional(SStreasury.merchant_fund, merchant_net_float, "商人征缴: [qty] [good_name] -> [ship.ship_name]")
 		if(SSmerchant_trade)
 			SSmerchant_trade.merchant_levy_collected += levy_remitted
-			SSmerchant_trade.log_fund_movement("Fulfillment levy ([ship.ship_name])", levy_remitted)
+			SSmerchant_trade.log_fund_movement("履约征缴 ([ship.ship_name])", levy_remitted)
 	var/producer_payout = gross - duty_remitted - round(levy_float)
 	if(producer_payout < 0)
 		producer_payout = 0
@@ -452,8 +452,8 @@
 	var/quality_str = ""
 	if(quality_delta != 0)
 		var/q_sign = quality_delta > 0 ? "+" : ""
-		quality_str = ", quality [q_sign][quality_delta]m"
-	var/breakdown = "[qty] [good_name] for [ship.ship_name]: gross [gross]m, Crown [total_duty]m, Merchant [levy_remitted]m[kin_bonus > 0 ? ", Kinship +[kin_bonus]m" : ""][quality_str]"
+		quality_str = ", 品质调整 [q_sign][quality_delta]m"
+	var/breakdown = "[qty] [good_name] 交付给 [ship.ship_name]: 总额 [gross]m, 王权 [total_duty]m, 商人 [levy_remitted]m[kin_bonus > 0 ? ", 亲缘 +[kin_bonus]m" : ""][quality_str]"
 	if(producer_payout > 0)
 		SStreasury.give_money_account(producer_payout, user, breakdown, mint_new = TRUE)
 

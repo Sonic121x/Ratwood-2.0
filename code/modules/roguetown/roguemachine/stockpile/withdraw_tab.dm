@@ -50,14 +50,14 @@
 	D.refresh_auto_price()
 	var/total_price = D.withdraw_price
 	if(D.withdraw_disabled && !has_fiscal_authority(user))
-		parent_structure.say("Not available.")
+		parent_structure.say("目前不可用。")
 		return FALSE
 	if(D.stockpile_amount <= 0)
-		parent_structure.say("Insufficient stock.")
+		parent_structure.say("库存不足。")
 		return FALSE
 	var/food_stipend = ishuman(user) && HAS_TRAIT(user, TRAIT_ROYAL_SUBSIDY)
 	if(!food_stipend && total_price > budget)
-		parent_structure.say("Insufficient mammon.")
+		parent_structure.say("玛门不足。")
 		return FALSE
 	D.stockpile_amount--
 	SStreasury.dirty_market_view()
@@ -66,7 +66,7 @@
 		SStreasury.mint(SStreasury.discretionary_fund, total_price, "Stockpile Withdraw")
 		record_round_statistic(STATS_STOCKPILE_REVENUE, total_price)
 	else
-		var/actor_suffix = user ? " by [user.real_name]" : ""
+		var/actor_suffix = user ? " 由 [user.real_name]" : ""
 		SStreasury.log_fund_entry(new /datum/treasury_entry(null, SStreasury.discretionary_fund, SStreasury.discretionary_fund, 0, "Subsidy Withdraw: [D.name][actor_suffix]"))
 	var/obj/item/I = new D.item_type(parent_structure.loc)
 	I.stockpile_withdrawn = TRUE
@@ -74,7 +74,7 @@
 		var/mob/living/carbon/human/HC = user
 		HC.mind?.sleep_adv?.remove_community_contribution(1)
 	if(food_stipend)
-		to_chat(user, span_info("[parent_structure] chitters and squeaks into the treasury ratlines."))
+		to_chat(user, span_info("[parent_structure] 对着国库的鼠道吱吱叫唤。"))
 	if(!user.put_in_hands(I))
 		I.forceMove(get_turf(user))
 	playsound(parent_structure.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
@@ -84,14 +84,14 @@
 	if(!D || !ishuman(user) || !parent_structure)
 		return FALSE
 	if(D.withdraw_disabled && !has_fiscal_authority(user))
-		parent_structure.say("Not available.")
+		parent_structure.say("目前不可用。")
 		return FALSE
 	if(!D.trade_good_id)
-		parent_structure.say("Not available.")
+		parent_structure.say("目前不可用。")
 		return FALSE
 	var/list/quote = get_direct_import_quote(D)
 	if(!quote)
-		parent_structure.say("No region currently supplies [D.name].")
+		parent_structure.say("目前没有任何地区供应 [D.name]。")
 		return FALSE
 	var/datum/economic_region/region = quote["region"]
 	var/unit_cost = quote["unit_cost"]
@@ -101,14 +101,14 @@
 	var/using_stipend = food_stipend && price > budget
 	if(using_stipend)
 		if(SStreasury.discretionary_fund.balance < unit_cost)
-			parent_structure.say("The Crown's Purse cannot front the import cost.")
+			parent_structure.say("王权的钱袋无法垫付进口成本。")
 			return FALSE
 	else
 		if(price > budget)
-			parent_structure.say("Insufficient mammon in the coinpouch.")
+			parent_structure.say("钱袋中的玛门不足。")
 			return FALSE
 		if(SStreasury.discretionary_fund.balance < unit_cost)
-			parent_structure.say("The Crown's Purse cannot front the import cost.")
+			parent_structure.say("王权的钱袋无法垫付进口成本。")
 			return FALSE
 	var/spent = SSeconomy.manual_import(user, region.region_id, D.trade_good_id, 1, using_stipend)
 	if(!spent)
@@ -131,14 +131,14 @@
 	playsound(parent_structure.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	if(using_stipend)
 		var/waived = max(0, surcharge)
-		to_chat(user, span_info("[parent_structure] chitters and squeaks into the treasury ratlines."))
+		to_chat(user, span_info("[parent_structure] 对着国库的鼠道吱吱叫唤。"))
 		if(waived > 0)
-			to_chat(user, span_notice("[D.name] imported from [region.name] for [unit_cost]m ([waived]m waived by the Crown's private transportation lines)."))
+			to_chat(user, span_notice("[D.name] 已以 [unit_cost]m 从 [region.name] 进口（其中 [waived]m 由王权的私人运输线承担）。"))
 		else
-			to_chat(user, span_notice("[D.name] imported from [region.name] for [unit_cost]m."))
+			to_chat(user, span_notice("[D.name] 已以 [unit_cost]m 从 [region.name] 进口。"))
 	else
-		var/flavor = chartered ? "Royal Custom duty paid to the Crown." : "Import surcharge consumed by transport."
-		to_chat(user, span_notice("[D.name] imported from [region.name] for [price]m. [flavor]"))
+		var/flavor = chartered ? "王权关税已缴入王权。" : "进口附加费已由运输环节消耗。"
+		to_chat(user, span_notice("[D.name] 已以 [price]m 从 [region.name] 进口。[flavor]"))
 	return TRUE
 
 

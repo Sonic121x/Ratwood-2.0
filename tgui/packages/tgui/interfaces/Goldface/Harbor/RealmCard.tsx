@@ -1,3 +1,4 @@
+import { NAVIGATOR_CATEGORY_LABELS } from '../../common/displayNames';
 import {
   BUTTON_BG,
   FONT_BODY,
@@ -8,7 +9,6 @@ import {
   SEAL_RED,
 } from '../../common/parchment';
 import type { HarborRealm, MarketCondition, PoolGood } from '../types';
-
 const toneToColor = (tone?: string) => {
   switch (tone) {
     case 'good':
@@ -58,7 +58,7 @@ export const CategoryPill = (props: { name: string }) => (
       whiteSpace: 'nowrap',
     }}
   >
-    {props.name}
+    {NAVIGATOR_CATEGORY_LABELS[props.name] || props.name}
   </span>
 );
 
@@ -81,12 +81,12 @@ export const GoodPill = (props: {
   const bgAlpha = removed ? 0.45 : faded ? 0.55 : 1;
   const borderAlpha = removed ? 0.5 : faded ? 0.6 : 1;
   const tooltipParts: string[] = [];
-  tooltipParts.push(rare ? 'Sometimes' : 'Always');
-  if (addedOnly) tooltipParts.push('introduced by an event');
-  if (delta > 0) tooltipParts.push(`boosted by ${delta} event${delta > 1 ? 's' : ''}`);
+  tooltipParts.push(rare ? '有时' : '总是');
+  if (addedOnly) tooltipParts.push('因事件而引入');
+  if (delta > 0) tooltipParts.push(`因 ${delta} 起事件而增多`);
   if (delta < 0)
-    tooltipParts.push(`suppressed by ${-delta} event${-delta > 1 ? 's' : ''}`);
-  if (removed) tooltipParts.push('removed by an event');
+    tooltipParts.push(`因 ${-delta} 起事件而减少`);
+  if (removed) tooltipParts.push('因事件而移除');
   return (
     <span
       title={tooltipParts.join(' - ')}
@@ -129,7 +129,7 @@ export const RealmCard = (props: { realm: HarborRealm }) => {
   return (
     <div style={{ minWidth: 0 }}>
       <div style={{ lineHeight: '1.5', marginBottom: '3px' }}>
-        <RowLabel color={SEAL_AMBER}>Demand</RowLabel>
+        <RowLabel color={SEAL_AMBER}>需求</RowLabel>
         {realm.demanded_categories.length === 0 ? (
           <span style={{ color: INK_FAINT, fontStyle: 'italic' }}>—</span>
         ) : (
@@ -139,9 +139,9 @@ export const RealmCard = (props: { realm: HarborRealm }) => {
         )}
       </div>
       <div style={{ lineHeight: '1.5', marginBottom: '3px' }}>
-        <RowLabel color={SEAL_GREEN}>Buys</RowLabel>
+        <RowLabel color={SEAL_GREEN}>收购</RowLabel>
         {realm.basic_buys.length + realm.rare_buys.length === 0 ? (
-          <span style={{ color: INK_FAINT, fontStyle: 'italic' }}>none</span>
+          <span style={{ color: INK_FAINT, fontStyle: 'italic' }}>无</span>
         ) : (
           <>
             {realm.basic_buys.map((g) => (
@@ -164,9 +164,9 @@ export const RealmCard = (props: { realm: HarborRealm }) => {
         )}
       </div>
       <div style={{ lineHeight: '1.5' }}>
-        <RowLabel color={SEAL_RED}>Sells</RowLabel>
+        <RowLabel color={SEAL_RED}>出售</RowLabel>
         {realm.basic_sells.length + realm.rare_sells.length === 0 ? (
-          <span style={{ color: INK_FAINT, fontStyle: 'italic' }}>none</span>
+          <span style={{ color: INK_FAINT, fontStyle: 'italic' }}>无</span>
         ) : (
           <>
             {realm.basic_sells.map((g) => (

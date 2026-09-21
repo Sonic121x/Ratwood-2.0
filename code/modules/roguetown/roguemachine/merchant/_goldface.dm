@@ -25,8 +25,8 @@
 #define UPGRADE_NOTAX		(1<<0)
 
 /obj/structure/roguemachine/goldface
-	name = "GOLDFACE"
-	desc = "Gilded tombs do worms enfold."
+	name = "金面"
+	desc = "镀金的墓穴，终会被蠕虫包裹。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -43,7 +43,7 @@
 	/// When TRUE, the TGUI exposes the Cultural Stock/Harbor/Market tabs. Goldface only.
 	var/is_command_center = TRUE
 	// Motto displayed at the top of the vendor interface
-	var/motto = "GOLDFACE - In the name of greed."
+	var/motto = "金面 - 以贪欲之名。"
 	lockid = "merchant"
 	// Which job can access profit from this vendor
 	var/profit_id = list("Merchant", "Shophand")
@@ -55,37 +55,37 @@
 	// Pioneer) and "Things" are the bandit Hoardmaster's stock, job-gated there - the legacy goldface
 	// never sold them, so they are deliberately NOT listed here.
 	var/list/categories = list(
-		"Alcohols",
-		"Apparel",
-		"Consumable",
-		"Cosmetics", // Ratwood pack groups the upstream list dropped
-		"Food",
-		"Games",
-		"Gems",
-		"Instruments",
-		"Luxury",
-		"Livestock",
-		"Magic",
-		"Perfumes",
-		"Seeds",
-		"Substances",
-		"Tools",
-		"Wardrobe",
-		"Zadpacks",
+		"酒类", // English: Alcohols
+		"服饰", // English: Apparel
+		"消耗品", // English: Consumable
+		"化妆品", // Ratwood pack groups the upstream list dropped | English: Cosmetics
+		"食品", // English: Food
+		"游戏用品", // English: Games
+		"宝石", // English: Gems
+		"乐器", // English: Instruments
+		"奢侈品", // English: Luxury
+		"牲畜", // English: Livestock
+		"魔法用品", // English: Magic
+		"香水", // English: Perfumes
+		"种子", // English: Seeds
+		"烟草与药粉", // English: Substances
+		"工具", // English: Tools
+		"衣装", // English: Wardrobe
+		"扎德鸟包", // English: Zadpacks
 	)
 	var/list/categories_gamer = list(
-		"Adventuring Supplies",
-		"Armor (Light)",
-		"Armor (Iron)",
-		"Armor (Bronze)",
-		"Armor (Steel)",
-		"Armor (Exotic)",
-		"Potions",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Weapons (Bronze)",
-		"Weapons (Steel)",
-		"Weapons (Foreign)",
+		"冒险用品", // English: Adventuring Supplies
+		"护甲（轻型）", // English: Armor (Light)
+		"护甲（铁）", // English: Armor (Iron)
+		"护甲（青铜）", // English: Armor (Bronze)
+		"护甲（钢）", // English: Armor (Steel)
+		"护甲（异域）", // English: Armor (Exotic)
+		"药水", // English: Potions
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"武器（青铜）", // English: Weapons (Bronze)
+		"武器（钢）", // English: Weapons (Steel)
+		"武器（异域）", // English: Weapons (Foreign)
 	)
 	var/is_public = FALSE // Whether it is a public access vendor.
 	var/extra_fee = 0 // Public-tier Porters/Gnomes margin tacked onto base price. Meant to make publicface very unprofitable until Gnomes are unlocked and the margin flows to the Merchant Fund.
@@ -96,92 +96,92 @@
 	var/tariff_evaded_here = 0
 
 /obj/structure/roguemachine/goldface/public
-	name = "SILVERFACE"
+	name = "银面"
 	extra_fee = 0.5
 	is_public = TRUE
 	locked = FALSE
 	is_command_center = FALSE
-	motto = "SILVERFACE - Commerce for all."
+	motto = "银面 - 人人皆可经商。"
 	// There's no profit but this is for futureproofing
 	profit_id = list("Merchant", "Shophand")
 	value_record_key = STATS_SILVERFACE_VALUE_SPENT
 	categories = list(
-		"Adventuring Supplies",
-		"Alcohols",
-		"Consumable",
-		"Cosmetics", // Ratwood pack groups restored from the pre-port SILVERFACE
-		"Food",
-		"Games",
-		"Gems",
-		"Instruments",
-		"Luxury",
-		"Livestock",
-		"Magic",
-		"Perfumes",
-		"Seeds",
-		"Substances",
-		"Tools",
-		"Weapons (Foreign)",
+		"冒险用品", // English: Adventuring Supplies
+		"酒类", // English: Alcohols
+		"消耗品", // English: Consumable
+		"化妆品", // Ratwood pack groups restored from the pre-port SILVERFACE | English: Cosmetics
+		"食品", // English: Food
+		"游戏用品", // English: Games
+		"宝石", // English: Gems
+		"乐器", // English: Instruments
+		"奢侈品", // English: Luxury
+		"牲畜", // English: Livestock
+		"魔法用品", // English: Magic
+		"香水", // English: Perfumes
+		"种子", // English: Seeds
+		"烟草与药粉", // English: Substances
+		"工具", // English: Tools
+		"武器（异域）", // English: Weapons (Foreign)
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/examine()
 	. = ..()
-	. += "<span class='info'>A public version of the GOLDFACE. The company charges a hefty fee for its usage. Per agreement, it cannot be locked by anyone.</span>"
+	. += "<span class='info'>金面的公开版。公司为其使用收取高额费用。依照协议，任何人都无法将其上锁。</span>"
 
 /obj/structure/roguemachine/goldface/public/smith
-	name = "Smithy's SILVERFACE"
+	name = "铁匠的银面"
 	lockid = "crafterguild"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Armor (Iron)",
-		"Armor (Bronze)",
-		"Armor (Steel)",
-		"Armor (Exotic)",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Weapons (Bronze)",
-		"Weapons (Steel)",
+		"护甲（铁）", // English: Armor (Iron)
+		"护甲（青铜）", // English: Armor (Bronze)
+		"护甲（钢）", // English: Armor (Steel)
+		"护甲（异域）", // English: Armor (Exotic)
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"武器（青铜）", // English: Weapons (Bronze)
+		"武器（钢）", // English: Weapons (Steel)
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/tailor
-	name = "Tailor's SILVERFACE"
+	name = "裁缝的银面"
 	lockid = "tailor"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Apparel",
-		"Wardrobe",
-		"Armor (Light)",
+		"服饰", // English: Apparel
+		"衣装", // English: Wardrobe
+		"护甲（轻型）", // English: Armor (Light)
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/apothecary
-	name = "Apothecary's SILVERFACE"
+	name = "药剂师的银面"
 	lockid = "physician"
 	profit_id = list("Head Physician","Apothecary")
 	categories = list(
-		"Potions",
+		"药水", // English: Potions
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/wretch_cat
-	name = "Vile Vheslie"
-	desc = "A ferocious little beast that hoards a mountain of goods under its home. The dreaded creechur is willing to part waes with its lower quality items..for a price."
+	name = "邪恶的维丝莉"
+	desc = "一只凶猛的小兽，在它的巢穴下囤积着堆积如山的货物。这只可怕的生物愿意以一定代价，割舍它那些品质较低的物品……"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "vheslie"
 	lockid = "Vheslie"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Apparel",
-		"Adventuring Supplies",
-		"Armor (Iron)",
-		"Alcohols",
-		"Consumable",
-		"Potions",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Wardrobe"
+		"服饰", // English: Apparel
+		"冒险用品", // English: Adventuring Supplies
+		"护甲（铁）", // English: Armor (Iron)
+		"酒类", // English: Alcohols
+		"消耗品", // English: Consumable
+		"药水", // English: Potions
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"衣装" // English: Wardrobe
 	)
 	categories_gamer = list()
 
@@ -252,7 +252,7 @@
 				SStgui.close_uis(src)
 			return
 		else
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	else if(istype(P, /obj/item/storage/keyring))
 		var/right_key = FALSE
@@ -269,7 +269,7 @@
 					SStgui.close_uis(src)
 				return
 		if(!right_key)
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(istype(P, /obj/item/roguecoin/gilbranze))
 		return
@@ -295,7 +295,7 @@
 	if(!ishuman(user))
 		return
 	if(locked)
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("它锁着。当然。"))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
