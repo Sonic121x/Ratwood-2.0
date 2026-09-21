@@ -68,13 +68,13 @@
 			if(has_status_effect(/datum/status_effect/debuff/exposed))
 				intdamage *= EXPOSED_INTEG_MOD
 				playsound(src, 'sound/combat/exposed_pop.ogg', 100, TRUE)
-				visible_message(span_biginfo("[src] suffers a savage hit to their armor while exposed, sending them reeling!"))
+				visible_message(span_biginfo("[src]露出破绽，护甲遭到猛烈一击，踉跄着失去了平衡！"))
 				remove_status_effect(/datum/status_effect/debuff/exposed)
 				emote("pain", forced = TRUE)
 			else if(has_status_effect(/datum/status_effect/debuff/vulnerable))
 				intdamage *= VULN_INTEG_MOD
 				playsound(src, 'sound/combat/vulnerable_pop.ogg', 100, TRUE)
-				visible_message(span_biginfo("[src] is struck while vulnerable, leaving a dent in their armor!"))
+				visible_message(span_biginfo("[src]在防备薄弱时遭到攻击，护甲上留下了一处凹痕！"))
 				remove_status_effect(/datum/status_effect/debuff/vulnerable)
 				emote("groan", forced = TRUE)
 
@@ -137,8 +137,8 @@
 	if(!(P.original == src && P.firer == src)) //can't block or reflect when shooting yourself
 		if(P.reflectable & REFLECT_NORMAL)
 			if(check_reflect(def_zone)) // Checks if you've passed a reflection% check
-				visible_message(span_danger("The [P.name] gets reflected by [src]!"), \
-								span_danger("The [P.name] gets reflected by [src]!"))
+				visible_message(span_danger("[P.name]被[src]反弹了！"), \
+								span_danger("[P.name]被[src]反弹了！"))
 				// Find a turf near or on the original location to bounce to
 				if(!isturf(loc)) //Open canopy mech (ripley) check. if we're inside something and still got hit
 					P.force_hit = TRUE //The thing we're in passed the bullet to us. Pass it back, and tell it to take the damage.
@@ -265,7 +265,7 @@
 //	else
 //		affecting = get_bodypart_complex(user.used_intent.height2limb(user.aimheight)) //this proc picks a bodypart at random as long as it's in the height list
 	if(!affecting) //missing limb
-		to_chat(user, span_warning("Unfortunately, there's nothing there."))
+		to_chat(user, span_warning("可惜，那里空无一物。"))
 		return 0
 
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
@@ -324,8 +324,8 @@
 		else
 			SEND_SIGNAL(M, COMSIG_MOB_AFTERATTACK_SUCCESS, src)
 			affecting.bodypart_attacked_by(M.a_intent.blade_class, damage - armor, M, dam_zone, crit_message = TRUE)
-		visible_message(span_danger("\The [M] [pick(M.a_intent.attack_verb)] [src]![next_attack_msg.Join()]"), \
-					span_danger("\The [M] [pick(M.a_intent.attack_verb)] me![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("[M][pick(M.a_intent.attack_verb)][src]！[next_attack_msg.Join()]"), \
+					span_danger("[M][pick(M.a_intent.attack_verb)]我！[next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 		next_attack_msg.Cut()
 		if(nodmg)
 			return FALSE
