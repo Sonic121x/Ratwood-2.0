@@ -57,7 +57,7 @@
 	if(force || name != GetVoice())
 		var/datum/mob_descriptor/voice/voice_descriptor = get_descriptor_type(/datum/mob_descriptor/voice)
 		if(!voice_descriptor)
-			return "Unknown Person"
+			return "不明身份者"
 
 		var/voice_gender = "Person"
 		switch(voice_type)

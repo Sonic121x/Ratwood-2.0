@@ -197,13 +197,13 @@
 	if(owner?.has_status_effect(/datum/status_effect/debuff/exposed))
 		playsound(owner, 'sound/combat/exposed_pop.ogg', 100, TRUE)
 		owner.remove_status_effect(/datum/status_effect/debuff/exposed)
-		visible_message(span_danger("[src] suffers a savage hit while exposed!"))
+		visible_message(span_danger("[src]露出破绽，遭到了猛烈一击！"))
 		if(!do_crit)	//We aren't already screaming from a crit.
 			owner.emote("painmoan", forced = TRUE)
 	else if(owner?.has_status_effect(/datum/status_effect/debuff/vulnerable))
 		playsound(owner, 'sound/combat/vulnerable_pop.ogg', 100, TRUE)
 		owner.remove_status_effect(/datum/status_effect/debuff/vulnerable)
-		visible_message(span_danger("[src] is struck while vulnerable!"))
+		visible_message(span_danger("[src]在防备薄弱时遭到了攻击！"))
 		if(!do_crit)	//We aren't already screaming from a crit.
 			owner.emote("pain", forced = TRUE)
 
@@ -241,7 +241,7 @@
 				var/datum/wound/newwound = add_wound(woundtype)
 				dynwound = newwound
 				if(newwound && !isnull(newwound))	//don't even ask - Free
-					owner.visible_message(span_red("A new [newwound.name] appears on [owner]'s [LOWER_TEXT(bodyzone2readablezone(bodypart_to_zone(newwound.bodypart_owner)))]!"))
+					owner.visible_message(span_red("[owner]的[parse_zone(bodypart_to_zone(newwound.bodypart_owner))]上出现了新的[newwound.name]！"))
 					newwound.upgrade(dam, armor, exposed)
 	return dynwound
 
@@ -325,7 +325,7 @@
 	if(owner.try_resist_critical())
 		if(crit_message)
 			owner.next_attack_msg.Cut()
-			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
+			owner.next_attack_msg += span_crit(" 抵抗重创！[owner]抵抗了一次创伤！</span>")
 		return TRUE
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -411,7 +411,7 @@
 	if(owner.try_resist_critical())
 		if(crit_message)
 			owner.next_attack_msg.Cut()
-			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
+			owner.next_attack_msg += span_crit(" 抵抗重创！[owner]抵抗了一次创伤！</span>")
 		return TRUE
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -531,23 +531,23 @@
 	if(!has_crit_attempt)
 		return FALSE
 
-	var/resist_msg = " [owner] resists"
+	var/resist_msg = " [owner]抵抗了"
 	if(attempted_wounds && try_knockout)
-		resist_msg += " a wound and a knockout!</span>"
+		resist_msg += "创伤和击昏！</span>"
 	else if(attempted_wounds)
-		resist_msg += " a wound!</span>"
+		resist_msg += "一次创伤！</span>"
 	else if(try_knockout)
-		resist_msg += " a knockout!</span>"
+		resist_msg += "击昏！</span>"
 
 	if(owner.try_resist_critical())
 		if(crit_message)
 			owner.next_attack_msg.Cut()
-			owner.next_attack_msg += span_crit(" Critical resistance!" + resist_msg)
+			owner.next_attack_msg += span_crit(" 抵抗重创！" + resist_msg)
 		return TRUE
 
 	// We want to apply knockout AFTER resistance check so you don't need two rolls to resist.
 	if(try_knockout)
-		owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
+		owner.next_attack_msg += " <span class='crit'><b>重创！</b>[owner]被[from_behind ? "从背后" : ""]击昏了！</span>"
 		owner.flash_fullscreen("whiteflash3")
 		owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
 		if(owner.client)
@@ -594,7 +594,7 @@
 		if(embedder.is_silver && HAS_TRAIT(owner, TRAIT_SILVER_WEAK) && !owner.has_status_effect(STATUS_EFFECT_ANTIMAGIC))
 			var/datum/component/silverbless/psyblessed = embedder.GetComponent(/datum/component/silverbless)
 			owner.adjust_fire_stacks(1, psyblessed?.is_blessed ? /datum/status_effect/fire_handler/fire_stacks/sunder/blessed : /datum/status_effect/fire_handler/fire_stacks/sunder)
-			to_chat(owner, span_danger("the [embedder] in your body painfully jostles!"))
+			to_chat(owner, span_danger("嵌在你体内的[embedder]晃动着，疼痛难忍！"))
 		owner.mark_zone_selector_hud_dirty()
 	return TRUE
 
@@ -662,7 +662,7 @@
 	if(!bandage)
 		return FALSE
 	if(owner.stat != DEAD)
-		owner.visible_message(span_warning("Blood soaks through the bandage on [owner]'s [name]."), span_warning("Blood soaks through the bandage on my [name]."), vision_distance = 3)
+		owner.visible_message(span_warning("鲜血浸透了[owner]的[name]上的绷带。"), span_warning("鲜血浸透了我的[name]上的绷带。"), vision_distance = 3)
 	owner.mark_zone_selector_hud_dirty()
 	return bandage.add_mob_blood(owner)
 

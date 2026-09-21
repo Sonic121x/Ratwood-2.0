@@ -6,7 +6,7 @@
 /datum/intent/dagger/cut
 	name = "cut"
 	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切开", "挥砍")
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -31,7 +31,7 @@
 /datum/intent/dagger/thrust
 	name = "thrust"
 	icon_state = "instab"
-	attack_verb = list("thrusts")
+	attack_verb = list("突刺")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -48,7 +48,7 @@
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
 	icon_state = "inpick"
-	attack_verb = list("stabs", "impales")
+	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 80
 	clickcd = 14
@@ -59,7 +59,7 @@
 /datum/intent/dagger/sucker_punch
 	name = "unevadable punch"
 	icon_state = "inpunch"
-	attack_verb = list("punches", "jabs", "clocks", "swings past")
+	attack_verb = list("拳击", "刺拳击打", "重击", "挥击掠过")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
@@ -75,7 +75,7 @@
 /datum/intent/dagger/chop
 	name = "chop"
 	icon_state = "inchop"
-	attack_verb = list("chops")
+	attack_verb = list("砍击")
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -198,7 +198,7 @@
 /datum/intent/dagger/thrust/bronze
 	name = "piercing thrust"
 	icon_state = "inpick"
-	attack_verb = list("stabs", "impales")
+	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 55
 	clickcd = 12
@@ -209,7 +209,7 @@
 /datum/intent/dagger/chop/bronze
 	name = "wedged chop"
 	icon_state = "inchop"
-	attack_verb = list("chops")
+	attack_verb = list("砍击")
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -336,7 +336,7 @@
 /datum/intent/dagger/thrust/combat
 	name = "wedged thrust"
 	icon_state = "instab"
-	attack_verb = list("gouges")
+	attack_verb = list("剜凿")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -349,7 +349,7 @@
 /datum/intent/dagger/cut/rend
 	name = "wicked slice"
 	icon_state = "inrend"
-	attack_verb = list("slices", "dices")
+	attack_verb = list("切割", "碎切")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
@@ -385,7 +385,7 @@
 
 /datum/intent/dagger/thrust/quick
 	name = "quick thrust"
-	attack_verb = list("thrusts", "shanks")
+	attack_verb = list("突刺", "捅刺")
 	penfactor = 10
 	intent_intdamage_factor = 0.1
 	clickcd = 4 //Halved penetration, doubled attack speed. This is either going to be extremely funny, or extremely evil.
@@ -941,7 +941,7 @@
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
 		icon_state = "navaja_o"
-		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		attack_verb = list("挥砍", "刺击", "切割", "撕裂", "扯裂", "碎切", "切开")
 		sharpness = IS_SHARP
 		playsound(user, 'sound/items/knife_open.ogg', 100, TRUE)
 		equip_delay_self = initial(equip_delay_self)
@@ -952,7 +952,7 @@
 		w_class = WEIGHT_CLASS_SMALL
 		throwforce = 5
 		icon_state = "navaja_c"
-		attack_verb = list("stubbed", "poked")
+		attack_verb = list("顶撞", "戳击")
 		sharpness = IS_BLUNT
 		wdefense = 2
 		wdefense_dynamic = 2
@@ -982,7 +982,7 @@
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
 		icon_state = "mtnavaja_o"
-		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		attack_verb = list("挥砍", "刺击", "切割", "撕裂", "扯裂", "碎切", "切开")
 		sharpness = IS_SHARP
 		playsound(user, 'sound/items/knife_open.ogg', 100, TRUE)
 		equip_delay_self = initial(equip_delay_self)
@@ -994,7 +994,7 @@
 		w_class = WEIGHT_CLASS_SMALL
 		throwforce = 5
 		icon_state = "mtnavaja_c"
-		attack_verb = list("stubbed", "poked")
+		attack_verb = list("顶撞", "戳击")
 		sharpness = IS_BLUNT
 		wdefense = 2
 		wdefense_dynamic = 2
