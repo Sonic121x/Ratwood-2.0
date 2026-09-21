@@ -64,7 +64,7 @@
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
 		if(!apply_damage(P.damage, P.damage_type, def_zone, armor))
 			nodmg = TRUE
-			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
+			next_attack_msg += " <span class='warning'>护甲挡住了伤害。</span>"
 		apply_effects(stun = P.stun, knockdown = P.knockdown, unconscious = P.unconscious, slur = P.slur, stutter = P.stutter, eyeblur = P.eyeblur, drowsy = P.drowsy, blocked = armor, stamina = P.stamina, jitter = P.jitter, paralyze = P.paralyze, immobilize = P.immobilize)
 		if(!nodmg)
 			if(P.dismemberment)
@@ -79,7 +79,7 @@
 					var/mob/living/carbon/M = src
 					M.reagents.add_reagent(P.poisontype, P.poisonamount)
 					if(P.poisonfeel)
-						M.show_message(span_danger("You feel an intense [P.poisonfeel] sensation spreading swiftly from the area!"))
+						M.show_message(span_danger("你感到强烈的[P.poisonfeel]感从伤处迅速蔓延！"))
 
 			if(P.embedchance && !check_projectile_embed(P, def_zone, armor))
 				P.handle_drop()
@@ -90,12 +90,12 @@
 	var/organ_hit_text = ""
 	var/limb_hit = check_limb_hit(def_zone)//to get the correct message info.
 	if(limb_hit)
-		organ_hit_text = " in \the [parse_zone(limb_hit)]"
+		organ_hit_text = "的[parse_zone(limb_hit)]"
 	if(P.hitsound && !nodmg)
 		var/volume = P.vol_by_damage()
 		playsound(loc, pick(P.hitsound), volume, TRUE, -1)
-	visible_message(span_danger("[src] is hit by \a [P][organ_hit_text]![next_attack_msg.Join()]"), \
-			span_danger("I'm hit by \a [P][organ_hit_text]![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+	visible_message(span_danger("[P]击中了[src][organ_hit_text]！[next_attack_msg.Join()]"), \
+			span_danger("[P]击中了我[organ_hit_text]！[next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()
 
 
@@ -135,7 +135,7 @@
 			var/nodmg = FALSE
 			if(!apply_damage(effective_throwforce, I.damtype, zone, armor))
 				nodmg = TRUE
-				next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
+				next_attack_msg += " <span class='warning'>护甲挡住了伤害。</span>"
 			if(!nodmg)
 				if(iscarbon(src))
 					var/obj/item/bodypart/affecting = get_bodypart(zone)
@@ -151,8 +151,8 @@
 						if(can_embed(I) && prob(I.embedding.embed_chance) && HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
 							simple_add_embedded_object(I, silent = FALSE, crit_message = TRUE)
 					I.do_special_attack_effect(I.thrownby, null, null, src, null, thrown = TRUE)
-			visible_message("<span class='danger'>[src] is hit by [I]![next_attack_msg.Join()]</span>", \
-							"<span class='danger'>I'm hit by [I]![next_attack_msg.Join()]</span>")
+			visible_message("<span class='danger'>[src]被[I]击中了！[next_attack_msg.Join()]</span>", \
+							"<span class='danger'>我被[I]击中了！[next_attack_msg.Join()]</span>")
 			next_attack_msg.Cut()
 			if(I.thrownby)
 				log_combat(I.thrownby, src, "threw and hit", I)
@@ -232,12 +232,12 @@
 		probby = 100
 
 	if(!prob(probby) && !instant && !stat)
-		visible_message(span_warning("[user] struggles with [src]!"),
-						span_warning("[user] struggles to restrain me!"), span_hear("I hear aggressive shuffling!"), null, user)
+		visible_message(span_warning("[user]与[src]扭打在一起！"),
+						span_warning("[user]奋力试图制住我！"), span_hear("我听到激烈的扭打声！"), null, user)
 		if(src.client?.prefs.showrolls)
-			to_chat(user, span_warning("I struggle with [src]! [probby]%"))
+			to_chat(user, span_warning("我与[src]扭打在一起！[probby]%"))
 		else
-			to_chat(user, span_warning("I struggle with [src]!"))
+			to_chat(user, span_warning("我与[src]扭打在一起！"))
 		playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
 		user.Immobilize(2 SECONDS)
 		user.changeNext_move(2 SECONDS)
@@ -318,13 +318,13 @@
 	if(HAS_TRAIT(user, TRAIT_NOTIGHTGRABMESSAGE))	
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		visible_message(span_danger("[user] firmly grips [src]!"),
-						span_danger("[user] firmly grips me!"), span_hear("I hear aggressive shuffling!"), null, user)
-		to_chat(user, span_danger("I firmly grip [src]!"))
+		visible_message(span_danger("[user]牢牢抓住了[src]！"),
+						span_danger("[user]牢牢抓住了我！"), span_hear("我听到激烈的扭打声！"), null, user)
+		to_chat(user, span_danger("我牢牢抓住了[src]！"))
 	else
-		visible_message(span_danger("[user] tightens [user.p_their()] grip on [src]!"), \
-						span_danger("[user] tightens [user.p_their()] grip on me!"), span_hear("I hear aggressive shuffling!"), null, user)
-		to_chat(user, span_danger("I tighten my grip on [src]!"))
+		visible_message(span_danger("[user]更用力地抓紧了[src]！"), \
+						span_danger("[user]更用力地抓紧了我！"), span_hear("我听到激烈的扭打声！"), null, user)
+		to_chat(user, span_danger("我更用力地抓紧了[src]！"))
 
 /mob/living/attack_animal(mob/living/simple_animal/M)
 	if(M.swinging)
@@ -332,11 +332,11 @@
 	M.swinging = TRUE
 	M.face_atom(src)
 	if(M.melee_damage_upper == 0)
-		visible_message(span_notice("\The [M] [pick(M.a_intent.attack_verb)] [src]."), \
-						span_notice("\The [M] [pick(M.a_intent.attack_verb)] me!"), null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_notice("[M][pick(M.a_intent.attack_verb)][src]。"), \
+						span_notice("[M][pick(M.a_intent.attack_verb)]我！"), null, COMBAT_MESSAGE_RANGE)
 		return FALSE
 	if(HAS_TRAIT(M, TRAIT_PACIFISM))
-		to_chat(M, span_warning("I don't want to hurt anyone!"))
+		to_chat(M, span_warning("我不想伤害任何人！"))
 		return FALSE
 
 	M.do_attack_animation(src, visual_effect_icon = M.a_intent.animname)
@@ -393,9 +393,9 @@
 	else
 		adjustStaminaLoss(shock_damage)
 	visible_message(
-		span_danger("[src] was shocked by \the [source]!"), \
-		span_danger("I feel a powerful shock coursing through my body!"), \
-		span_hear("I hear a heavy electrical crack.") \
+		span_danger("[src]被[source]电击了！"), \
+		span_danger("我感到一股强大的电流穿过全身！"), \
+		span_hear("我听到一声响亮的电流爆裂声。") \
 	)
 	playsound(get_turf(src), pick('sound/misc/elec (1).ogg', 'sound/misc/elec (2).ogg', 'sound/misc/elec (3).ogg'), 100, FALSE)
 	// Home alone 2 Marv scream on electrocution — rare easter egg, 5% chance so it's not common but not impossibly rare.
@@ -418,7 +418,7 @@
 	if(get_eye_protection() < intensity && (override_blindness_check || !(HAS_TRAIT(src, TRAIT_BLIND))))
 		if(no_redflash) // if we actually use the "type" variable here for some other flash, might want to make this check that.
 			type = /atom/movable/screen/fullscreen/blind
-			to_chat(src, span_warning("I'm momentarily blinded by the flash!"))
+			to_chat(src, span_warning("闪光让我暂时失明了！"))
 		overlay_fullscreen("flash", type)
 		addtimer(CALLBACK(src, PROC_REF(clear_fullscreen), "flash", 25), 25)
 		return TRUE
