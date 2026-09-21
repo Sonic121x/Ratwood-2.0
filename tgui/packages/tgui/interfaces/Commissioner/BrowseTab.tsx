@@ -18,22 +18,22 @@ const ALL = '__all__';
 const PAGE_SIZE = 40;
 
 const DEFAULT_GROUP_ORDER = [
-  'Armor',
-  'Weapons',
-  'Tools',
-  'Valuables',
-  'Decoration',
-  'Engineering',
-  'Other',
+  '护甲',
+  '武器',
+  '工具',
+  '贵重物品',
+  '装饰品',
+  '工程制品',
+  '其他',
 ];
 
 const groupFor = (category: string, order: string[]): string => {
-  const paren = category.indexOf(' (');
+  const paren = category.indexOf('（');
   if (paren === -1) {
-    return order.includes(category) ? category : 'Other';
+    return order.includes(category) ? category : '其他';
   }
   const head = category.slice(0, paren);
-  return order.includes(head) ? head : 'Other';
+  return order.includes(head) ? head : '其他';
 };
 
 const starsIf = (text: string, canRead: boolean) =>
