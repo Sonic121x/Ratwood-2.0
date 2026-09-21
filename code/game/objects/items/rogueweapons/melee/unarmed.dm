@@ -2,7 +2,7 @@
 /datum/intent/katar/cut
 	name = "cut"
 	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切开", "挥砍")
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -16,7 +16,7 @@
 /datum/intent/katar/thrust
 	name = "thrust"
 	icon_state = "instab"
-	attack_verb = list("thrusts")
+	attack_verb = list("突刺")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -42,7 +42,7 @@
 /datum/intent/knuckles/strike
 	name = "punch"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("punches", "clocks")
+	attack_verb = list("拳击", "重击")
 	hitsound = list('sound/combat/hits/punch/punch_hard (1).ogg', 'sound/combat/hits/punch/punch_hard (2).ogg', 'sound/combat/hits/punch/punch_hard (3).ogg')
 	chargetime = 0
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -58,7 +58,7 @@
 /datum/intent/knuckles/smash
 	name = "smash"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
+	attack_verb = list("猛砸")
 	hitsound = list('sound/combat/hits/punch/punch_hard (1).ogg', 'sound/combat/hits/punch/punch_hard (2).ogg', 'sound/combat/hits/punch/punch_hard (3).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	clickcd = CLICK_CD_MELEE
@@ -72,7 +72,7 @@
 /datum/intent/knuckles/strike/wallop
 	name = "wallop"
 	blade_class = BCLASS_TWIST
-	attack_verb = list("wallops", "thwacks", "thwamps")
+	attack_verb = list("痛击", "狠敲", "猛拍")
 	damfactor = 1.1
 	intent_intdamage_factor = 0.6
 	icon_state = "inbash"	// Wallop is too long for a button; placeholder.
@@ -80,7 +80,7 @@
 //Knuckle utility. Use it to line up strikes. -2PER, -1LCK.
 //Open up a feint window with it. 10 seconds duration.
 /datum/intent/effect/daze/unarmed
-	attack_verb = list("strikes")
+	attack_verb = list("打击")
 	damfactor = 0.8
 	swingdelay = 8//Same as smash.
 	intent_effect = /datum/status_effect/debuff/dazed/unarmed
@@ -403,7 +403,7 @@
 /datum/intent/claw/lunge
 	name = "lunge"
 	icon_state = "inimpale"
-	attack_verb = list("lunges")
+	attack_verb = list("突进刺击")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -429,7 +429,7 @@
 /datum/intent/claw/cut
 	name = "cut"
 	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切开", "挥砍")
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -456,7 +456,7 @@
 /datum/intent/claw/rend
 	name = "rend"
 	icon_state = "inrend"
-	attack_verb = list("rends")
+	attack_verb = list("撕裂")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1

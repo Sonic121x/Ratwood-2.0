@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/wildshape/dendormole //The baseline and tracker of the wildshapes
-	name = "Moss Crawler"
+	name = "苔行者"
 	race = /datum/species/dendormole
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -31,12 +31,12 @@
 		src.STASPD = 13
 
 		AddSpell(new /obj/effect/proc_holder/spell/self/moleclaw)
-		real_name = "moss crawler"
+		real_name = "苔行者"
 
 
 // dendormole SPECIES DATUM //
 /datum/species/dendormole
-	name = "Moss Crawler"
+	name = "苔行者"
 	id = "dendormole"
 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
 	inherent_traits = list(
@@ -98,7 +98,7 @@
 // MOLE SPECIFIC ITEMS //
 /obj/item/clothing/suit/roguetown/armor/skin_armor/moss_skin
 	slot_flags = null
-	name = "aged moss shell"
+	name = "古老苔壳"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
@@ -112,35 +112,35 @@
 	item_flags = DROPDEL
 
 /datum/intent/simple/mole 
-	name = "MAUL"
+	name = "撕咬"
 	clickcd = 10
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("claws", "mauls", "eviscerates")
+	attack_verb = list("爪击", "撕咬", "撕裂")
 	animname = "cut"
 	hitsound = "genslash"
 	penfactor = 15
-	miss_text = "slashes the air!"
+	miss_text = "挥爪划过空气！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"
 
 /datum/intent/simple/mole/dig
-	name = "DIG"
+	name = "挖凿"
 	clickcd = 14
 	damfactor = 1.2
 	swingdelay = 6
 	icon_state = "insmash"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("digs", "excavates", "perforates")
+	attack_verb = list("挖凿", "剜挖", "贯穿")
 	animname = "cut"
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
-	miss_text = "smashes the air!"
+	miss_text = "砸了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "blunt"
 
 /obj/item/rogueweapon/mole_claw //Like a less defense dagger
-	name = "mole claw"
+	name = "鼹鼠爪"
 	desc = ""
 	item_state = null
 	lefthand_file = null
@@ -184,8 +184,8 @@
 		user.dropItemToGround(inactive, TRUE)
 
 /obj/effect/proc_holder/spell/self/moleclaw
-	name = "Burrow Claws"
-	desc = "Extend your digging claws."
+	name = "掘地利爪"
+	desc = "伸出你的掘地利爪。"
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
 	recharge_time = 40
@@ -204,12 +204,12 @@
 			user.dropItemToGround(active, TRUE)
 		if(istype(inactive, /obj/item/rogueweapon/mole_claw) && inactive != active)
 			user.dropItemToGround(inactive, TRUE)
-		to_chat(user, span_notice("My claws retract."))
+		to_chat(user, span_notice("我的利爪缩回了。"))
 		extended = FALSE
 	else
 		l = new(user, 1)
 		r = new(user, 2)
 		user.put_in_hands(l, TRUE, FALSE, TRUE)
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
-		to_chat(user, span_notice("My claws extend."))
+		to_chat(user, span_notice("我的利爪伸出了。"))
 		extended = TRUE
