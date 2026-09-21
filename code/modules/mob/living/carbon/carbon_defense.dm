@@ -62,8 +62,8 @@
 				if(isturf(I.loc))
 					I.attack_hand(src)
 					if(get_active_held_item() == I) //if our attack_hand() picks up the item...
-						visible_message("<span class='warning'>[src] catches [I]!</span>", \
-										"<span class='danger'>I catch [I] in mid-air!</span>")
+						visible_message("<span class='warning'>[src]接住了[I]！</span>", \
+										"<span class='danger'>我凌空接住了[I]！</span>")
 						throw_mode_off()
 						return 1
 	..()
@@ -100,20 +100,20 @@
 		used_limb = parse_zone(I.sublimb_grabbed)
 
 	if(used_limb)
-		target.visible_message(span_danger("[src] grabs [target]'s [span_userdanger(used_limb)]."), \
-						span_danger("[src] grabs my [span_userdanger(used_limb)]!"), span_hear("I hear shuffling."), null, src)
-		to_chat(src, span_danger("I grab [target]'s [span_userdanger(used_limb)]."))
+		target.visible_message(span_danger("[src]抓住了[target]的[span_userdanger(used_limb)]。"), \
+						span_danger("[src]抓住了我的[span_userdanger(used_limb)]！"), span_hear("我听到一阵窸窣声。"), null, src)
+		to_chat(src, span_danger("我抓住了[target]的[span_userdanger(used_limb)]。"))
 	else
-		target.visible_message(span_danger("[src] grabs [target]."), \
-						span_userdanger("[src] grabs me!"), span_hear("I hear shuffling."), null, src)
-		to_chat(src, span_danger("I grab [target]."))
+		target.visible_message(span_danger("[src]抓住了[target]。"), \
+						span_userdanger("[src]抓住了我！"), span_hear("我听到一阵窸窣声。"), null, src)
+		to_chat(src, span_danger("我抓住了[target]。"))
 
 	if(used_limb && target.client && target.hud_used && target.hud_used.zone_select)
 		var/atom/movable/screen/zone_sel/zone_sel = target.hud_used.zone_select
 		zone_sel.flash_limb(I.sublimb_grabbed, "#d19e13") // grab = orange
 
 /mob/living/carbon/send_grabbed_message(mob/living/carbon/user)
-	var/used_limb = "chest"
+	var/used_limb = "胸部"
 	var/obj/item/grabbing/I
 	if(user.active_hand_index == 1)
 		I = user.r_grab
@@ -125,13 +125,13 @@
 	if(HAS_TRAIT(user, TRAIT_NOTIGHTGRABMESSAGE))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		visible_message("<span class='danger'>[user] firmly grips [src]'s [used_limb]!</span>",
-						"<span class='danger'>[user] firmly grips my [used_limb]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", null, user)
-		to_chat(user, "<span class='danger'>I firmly grip [src]'s [used_limb]!</span>")
+		visible_message("<span class='danger'>[user]牢牢抓住了[src]的[used_limb]！</span>",
+						"<span class='danger'>[user]牢牢抓住了我的[used_limb]！</span>", "<span class='hear'>我听到激烈的扭打声！</span>", null, user)
+		to_chat(user, "<span class='danger'>我牢牢抓住了[src]的[used_limb]！</span>")
 	else
-		visible_message("<span class='danger'>[user] tightens [user.p_their()] grip on [src]'s [used_limb]!</span>", \
-						"<span class='danger'>[user] tightens [user.p_their()] grip on my [used_limb]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", null, user)
-		to_chat(user, "<span class='danger'>I tighten my grip on [src]'s [used_limb]!</span>")
+		visible_message("<span class='danger'>[user]更用力地抓紧了[src]的[used_limb]！</span>", \
+						"<span class='danger'>[user]更用力地抓紧了我的[used_limb]！</span>", "<span class='hear'>我听到激烈的扭打声！</span>", null, user)
+		to_chat(user, "<span class='danger'>我更用力地抓紧了[src]的[used_limb]！</span>")
 
 /mob/living/carbon/proc/precise_attack_check(zone, obj/item/bodypart/affecting) //for striking eyes, throat, etc
 	if(zone && affecting)
@@ -214,7 +214,7 @@
 		return
 	affecting = get_bodypart(check_zone(useder)) //precise attacks, on yourself or someone you are grabbing
 	if(!affecting) //missing limb
-		to_chat(user, span_warning("Unfortunately, there's nothing there."))
+		to_chat(user, span_warning("可惜，那里空无一物。"))
 		return FALSE
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
 	user.mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after hitting someone else.
@@ -266,7 +266,7 @@
 		return FALSE
 
 	if(!get_bodypart(check_zone(user.zone_selected)))
-		to_chat(user, "<span class='warning'>[src] is missing that.</span>")
+		to_chat(user, "<span class='warning'>[src]没有那个部位。</span>")
 		return FALSE
 
 	if(!user.cmode)
