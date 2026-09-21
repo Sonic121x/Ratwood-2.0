@@ -4,7 +4,7 @@
 	name = "cut"
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切开", "挥砍")
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
 	animname = "cut"
 	penfactor = 20
@@ -15,7 +15,7 @@
 	name = "chop"
 	icon_state = "inchop"
 	blade_class = BCLASS_CHOP
-	attack_verb = list("chops", "hacks")
+	attack_verb = list("砍击", "劈砍")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 35
@@ -39,7 +39,7 @@
 /datum/intent/axe/bash
 	name = "bash"
 	icon_state = "inbash"
-	attack_verb = list("bashes", "clubs")
+	attack_verb = list("猛砸", "敲击")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -525,7 +525,7 @@
 	reach = 2
 	swingdelay = 2
 	icon_state = "inchop"
-	attack_verb = list("lunges and chops", "lunges and hacks")
+	attack_verb = list("突进砍击", "突进劈砍")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	clickcd = 14
@@ -541,7 +541,7 @@
 	name = "sweeping cut"
 	icon_state = "insweep"
 	blade_class = BCLASS_CUT
-	attack_verb = list("sweeps through", "cuts across")
+	attack_verb = list("横扫", "横斩")
 	animname = "cut"
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
