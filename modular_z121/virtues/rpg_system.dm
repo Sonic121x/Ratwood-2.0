@@ -771,7 +771,7 @@
 		"附魔·坚不可摧（300积分）" = list(300, /obj/item/enchantmentscroll/superior/unbreaking), // 给武器 / 衣物附魔：更耐用
 		//   T3 强力附魔
 		"附魔·武器召回（420积分）" = list(420, /obj/item/enchantmentscroll/greater/returningweapon), // 给戒指 / 项链 / 手套附魔：召回武器
-		"附魔·箭术（440积分）"   = list(440, /obj/item/enchantmentscroll/greater/archery),     // 给戒指 / 护腕附魔：提升箭术
+		"附魔·神射（440积分）"   = list(440, /obj/item/enchantmentscroll/greater/sharpshooter), // 给戒指、圣徽、手套或护腕附魔：提升远程武器技能
 		"附魔·愈合（450积分）"   = list(450, /obj/item/enchantmentscroll/greater/woundclosing), // 给戒指附魔：定期闭合伤口
 		"附魔·霜幕（460积分）"   = list(460, /obj/item/enchantmentscroll/greater/frostveil),   // 给武器 / 护甲附魔：减速敌人
 		"附魔·闪电（480积分）"   = list(480, /obj/item/enchantmentscroll/greater/lightning),   // 给武器附魔：命中电击
