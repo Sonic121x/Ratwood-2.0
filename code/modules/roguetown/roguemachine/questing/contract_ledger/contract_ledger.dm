@@ -42,7 +42,7 @@
 	. += span_info("放弃契约会将其押金没收充入王室金库，并使你进入一段短暂的行会冷静期，之后方可放弃下一份契约。")
 	. += span_info("取自<b>契约目标</b>的头颅不另计悬赏——契约的报酬即为全额支付。契约之外猎得的野兽与匪徒，仍可在食首机处换得钱币。")
 	. += span_info("<b>酒馆老板</b>可在此编写流言契约，消耗流言点数为国度各处播撒寻回、递送与轻量击杀任务。")
-	. += span_info("<b>[english_list(GLOB.crown_authority_roles)]</b>可在此委托防御令状——资金出自市民认捐、王室金库，或以无资金的请令形式签发。总管家是首要的委托人；总管家缺席时由其余人代行。在领主缺席时代行摄政者，在其摄政期内继承委托之权。")
+	. += span_info("<b>[english_list(GLOB.crown_authority_roles)]</b>可在此委托防御令状——资金出自市民认捐、王室金库，或以无资金的请令形式签发。总管是首要的委托人；总管缺席时由其余人代行。在领主缺席时代行摄政者，在其摄政期内继承委托之权。")
 	. += span_info("<b>镇民</b>可用自己的钱币发布契约。契约可钉上公告板，亦可当面转交。<b>[english_list(GLOB.crown_authority_roles)]</b>可委托其中任何一份，但将按双倍价格从王室金库支取。唯有发布者可开启追回之物。")
 	. += span_info("若你战死，你的<b>冒险团</b>可代你交付你持有的契约。报酬与征税将记入交付者名下，并适用其免税身份（若有）。")
 	. += span_info("<b>[english_list(GLOB.contract_proxy_officials)]</b>可代持有人交付任何已完成的契约，将报酬记入持有人本人的账户。他们不抽取分文。")
@@ -62,7 +62,7 @@
 	if(!istype(Q))
 		return
 	if(Q.is_directive)
-		to_chat(user, span_warning("总管家请令不可公开张贴——必须直接交予持令人。"))
+		to_chat(user, span_warning("总管请令不可公开张贴——必须直接交予持令人。"))
 		return
 	if(Q.quest_receiver_reference)
 		to_chat(user, span_warning("此令状已被领取——无法钉上公告板。"))

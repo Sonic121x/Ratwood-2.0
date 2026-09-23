@@ -139,7 +139,7 @@
 	// the Steward's administrative prerogative, a Crown officer commanding the staff it pays).
 	var/funding = params["funding"] || "pledge"
 	if(is_alderman_acting && funding != "pledge")
-		to_chat(steward, span_warning("议员的委托只能由议事会的认捐授权支付。王室金库与总管家请令皆非你所能支配。"))
+		to_chat(steward, span_warning("议员的委托只能由议事会的认捐授权支付。王室金库与总管请令皆非你所能支配。"))
 		return
 
 	var/cost = GLOB.defense_quest_tier_costs[chosen_type]
