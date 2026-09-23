@@ -363,8 +363,8 @@
 	)
 
 /obj/item/rogueweapon/whip/urumi/silver/psydonic
-	name = "psydonic urumi"
-	desc = "Three lengths of shimmering silver coiling outwards from psycross wrapped handle of boswellia wood. This trio of blades, although hefty, can move with devestating speed in a trained hand."
+	name = "普赛顿软剑"
+	desc = "三条闪亮的银刃从缠着普赛圣十字的乳香木剑柄向外盘卷延伸。这三条剑刃虽沉重，在训练有素的人手中却能以惊人的速度挥舞，带来毁灭性的杀伤。"
 	icon_state = "psy_urumi"
 	force = 30//less force than tennite silver cause swift balance
 	minstr = 11//taut can reasonably reach this + make use of the swift balance
@@ -388,8 +388,8 @@
 	)
 
 /obj/item/rogueweapon/whip/urumi/silver/psydonic/old
-	name = "enduring urumi"
-	desc = "Three lengths of tarnished silver coiling outwards from psycross wrapped handle of cut-marred boswellia wood. This trio of blades, although hefty, can move with devestating speed in a trained hand."
+	name = "坚忍软剑"
+	desc = "三条失去光泽的银刃从缠着普赛圣十字、满布刀痕的乳香木剑柄向外盘卷延伸。这三条剑刃虽沉重，在训练有素的人手中却能以惊人的速度挥舞，带来毁灭性的杀伤。"
 	is_silver = FALSE
 	smeltresult = /obj/item/ingot/steel
 	color = COLOR_FLOORTILE_GRAY
