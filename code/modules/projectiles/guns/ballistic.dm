@@ -203,7 +203,7 @@
 		update_icon()
 		return TRUE
 	else
-		to_chat(user, "<span class='warning'>我似乎没法把[src]从你手里弄出来！</span>")
+		to_chat(user, "<span class='warning'>我没法将手中的[AM]装入[src]！</span>")
 		return FALSE
 
 ///Handles all the logic of magazine ejection, if tac_load is set that magazine will be tacloaded in the place of the old eject
@@ -254,7 +254,7 @@
 				chambered = null
 			var/num_loaded = magazine.attackby(A, user, params, TRUE)
 			if (num_loaded)
-				to_chat(user, "<span class='notice'>我向[src][verbage]了一枚[cartridge_wording]。</span>")
+				to_chat(user, "<span class='notice'>我向[src][verbage]了[cartridge_wording]。</span>")
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
 				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
 					chamber_round()
@@ -316,7 +316,7 @@
 			if(T && is_station_level(T.z))
 				SSblackbox.record_feedback("tally", "station_mess_created", 1, CB.name)
 		if (num_unloaded)
-			to_chat(user, "<span class='notice'>我从[src]里取出[(num_unloaded == 1) ? "一枚" : "[num_unloaded]枚"][cartridge_wording]。</span>")
+			to_chat(user, "<span class='notice'>我从[src]里取出[cartridge_wording]，共[num_unloaded]发。</span>")
 			playsound(user, eject_sound, eject_sound_volume, eject_sound_vary)
 			update_icon()
 		else
@@ -371,7 +371,7 @@
 			user.visible_message("<span class='suicide'>[user]惊慌失措，开始窒息而死！</span>")
 			return(OXYLOSS)
 	else
-		user.visible_message("<span class='suicide'>[user]假装要用[src]轰碎自己的脑袋！看起来像是要自杀！</b></span>")
+		user.visible_message("<span class='suicide'>[user]假装要用[src]轰碎自己的脑袋！看起来像是要自杀！</span>")
 		playsound(src, dry_fire_sound, 30, TRUE)
 		return (OXYLOSS)
 #undef BRAINS_BLOWN_THROW_SPEED
