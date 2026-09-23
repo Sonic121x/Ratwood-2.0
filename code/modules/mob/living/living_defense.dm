@@ -181,11 +181,11 @@
 		return
 /*
 	if(!(status_flags & CANPUSH) || HAS_TRAIT(src, TRAIT_PUSHIMMUNE))
-		to_chat(user, span_warning("[src] can't be grabbed more aggressively!"))
+		to_chat(user, span_warning("我无法进一步抓紧[src]！"))
 		return FALSE
 
 	if(user.grab_state >= GRAB_AGGRESSIVE && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to risk hurting [src]!"))
+		to_chat(user, span_warning("我不想冒着伤害[src]的风险这样做！"))
 		return FALSE
 	grippedby(user)*/
 
