@@ -17,7 +17,7 @@
 
 /datum/species/dwarf/after_creation(mob/living/carbon/C)
 	..()
-	to_chat(C, "<span class='info'>I can speak Dwarfish with ,d before my speech.</span>")
+	to_chat(C, "<span class='info'>在话语前加上 ,d 即可使用矮人语。</span>")
 
 /datum/species/dwarf/on_species_loss(mob/living/carbon/C)
 	. = ..()
