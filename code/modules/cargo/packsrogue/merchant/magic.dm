@@ -2,7 +2,7 @@
 
 /datum/supply_pack/rogue/magic
 	group = "魔法用品" // English: Magic
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/magic/swampzig
