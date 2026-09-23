@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/wardrobe
 	group = "衣装" // English: Wardrobe
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 
@@ -160,35 +160,35 @@
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison
-	name = "Caparison"
+	name = "鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison,
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_psy
-	name = "Psydonic Caparison"
+	name = "普赛顿鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/psy,
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_astrata
-	name = "Astratan Caparison"
+	name = "阿斯特拉塔鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/astrata,
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_eora
-	name = "Eoran Caparison"
+	name = "伊欧拉鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/eora
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_fogbeast
-	name = "Fogbeast Caparison"
+	name = "雾兽鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/fogbeast,

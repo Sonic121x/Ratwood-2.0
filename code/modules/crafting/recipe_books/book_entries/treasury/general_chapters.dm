@@ -123,20 +123,20 @@
 
 
 /datum/book_entry/treasury_general/patronage
-	name = "03. Patronage: Writs and Rolls"
+	name = "03. 恩主：令状与名册"
 
 /datum/book_entry/treasury_general/patronage/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>Three factions extend patronage. The faction's authority (the Merchant, the Nightmaster, or the Bishop/Martyr) drafts a writ from the <b>Patronage tab of any NERVELOCK</b> and hands it to a chosen bearer, who claims it by using it in hand. The same tab shows the current roll and lets the authority revoke a name.</p>
+		<p>三个势力可以授予恩主资格。势力负责人（商人、夜主或主教/殉道者）可在<b>任意神经锁的恩主页</b>起草令状，并交给选定的人；持有人手持使用即可接受任命。同一页面也显示当前名册，负责人可以撤销其中的资格。</p>
 
 		<ul>
-			<li><b>Writ of Charter</b> (Ferentian Trading Company, up to [PATRON_CAP_MERCHANT] Agents) - the Agent gains Burgher residency, is recognised at GOLDFACE even if their day job is something else: they may browse and buy the Harbor tab's cultural stock, and may hail and send away ships on the Merchant's behalf. An Agent personally recognises ships from their own character origin as kin for buying purposes (see <i>The Kinship Bonus</i>). An Agent is locked out of the Market, Management, and Ledger controls.</li>
-			<li><b>Token of the Bathhouse</b> (up to [PATRON_CAP_BATHHOUSE] Agents) - the Agent may operate the bathhouse zadcote.</li>
-			<li><b>Letter of Benefaction</b> (the Church, up to [PATRON_CAP_CHURCH] Benefactors) - marks the bearer a friend of the faith.</li>
+			<li><b>特许状</b>（费伦提亚贸易公司，最多[PATRON_CAP_MERCHANT]名代理人） - 代理人获得市民居留权，即使本职工作不同，金面也会承认其权限：可浏览及购买港口页的文化货物，并代表商人呼船入港或遣船离港。代理人在购买时，与自身角色出身地的船舶享有个人同乡关系（参见<i>同乡关系加成</i>）。代理人无权使用市场、管理和账簿控制功能。</li>
+			<li><b>澡堂信物</b>（最多[PATRON_CAP_BATHHOUSE]名代理人） - 代理人可以操作澡堂的扎德鸟舍。</li>
+			<li><b>恩主授衔信</b>（教会，最多[PATRON_CAP_CHURCH]名恩主） - 将持有人认定为信仰之友。</li>
 		</ul>
 
-		<p>Writs expire two minutes after printing if unclaimed, cannot be claimed by their own issuer, and refuse a bearer already on the roll or a roll that is full.</p>
+		<p>令状印出后若未被接受，将在两分钟后失效。签发人不能接受自己签发的令状；持有人已在名册上或名额已满时，也无法接受。</p>
 		</div>
 	"}
 

@@ -1,6 +1,6 @@
 /datum/foreign_realm/otava
 	id = REALM_OTAVA
-	name = "Otava"
+	name = "奥塔瓦"
 	roll_weight = TRADE_REALM_WEIGHT_NEIGHBOR
 	demanded_categories = list(NAVIGATOR_BUCKET_POTIONS_REAGENTS, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_VALUABLES_LOOTED, NAVIGATOR_BUCKET_CARVED, NAVIGATOR_BUCKET_TROPHIES, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
@@ -29,11 +29,11 @@
 		"d'Esperance", "Bouchard", "Chastain", "Marchand", "le Vallouisard",
 	)
 	ship_types = list(
-		list("name" = "Caravel", "tonnage" = 70, "weight" = 20),
-		list("name" = "Galley", "tonnage" = 100, "weight" = 15),
-		list("name" = "Nef", "tonnage" = 130, "weight" = 35),
-		list("name" = "Great Galley", "tonnage" = 300, "weight" = 20),
-		list("name" = "Galleon", "tonnage" = 600, "weight" = 10),
+		list("name" = "卡拉维尔帆船", "tonnage" = 70, "weight" = 20),
+		list("name" = "桨帆船", "tonnage" = 100, "weight" = 15),
+		list("name" = "内夫帆船", "tonnage" = 130, "weight" = 35),
+		list("name" = "大型桨帆船", "tonnage" = 300, "weight" = 20),
+		list("name" = "大型远洋帆船", "tonnage" = 600, "weight" = 10),
 	)
 	name_prefixes = list(
 		list(
@@ -118,20 +118,20 @@
 		/datum/supply_pack/rogue/alcohol/winevalorwhite,
 	)
 	hail_lines = list(
-		"Salutations, factor. Saint-Astrata watch over honest weights, Sainte-Necra over dishonest ones - I leave the choice to you.",
-		"Notre Dieu qui es aux cieux - sauvez-les, s'il vous plaitez. The crossing was kind, the wind devout, and the chaplain less seasick than usual. Ayat.",
-		"In the name of the Ten, by writ of the High Council at Esperance-Capitale, I come to barter. My wine is from the País-Occitanie - do not insult it with a low offer.",
-		"I am no pirate, monsieur. I have papers, a chaplain, and a spouse in Verquent - that last being the most expensive of the three.",
-		"Cheese from Falaises-Rouges, wines from Val-du-Lac, smoked fish from Vallouise-sur-Mer. The Accords entitles me to fair price on all three. Pay accordingly.",
-		"Bring out your iron and your hides. My hold has room and my purse has coin, and the tide does not wait on civility.",
-		"The cliffs of Falaises-Rouges were red with sunset when we set out. An omen, the chaplain refused to interpret. I have not asked again.",
-		"My cousin lost his ship to your reefs two summers past. I have brought a token of Sainte-Necra to drop in the harbor before we tie up. Do not be offended; it is custom.",
-		"By Sainte-Abyssor, the wind was merciful. Let us see if your Crown's tariff is the same.",
-		"My helmsman served three yils with the militari-du-pais before turning to honest trade. He has the patience of a saint and the temper of a saigaback lancer - test only the first.",
-		"The Inquisition has an Office outside Kingsfield, factor. I am not of their detachment, but I am known to their Magistrate. Trade fairly; word travels back to Otava as quickly as my ship does.",
-		"I sailed past the pilgrim road from Vates to the Zybantine dunes. Three priests boarded at Verquent, three priests disembarked at Mücevkabher. None of them spoke to me. Holy folk are like that.",
-		"For three zennies, my Routier-corporal will guard your shipment from gangway to warehouse, bonded by writ and blessed by the Red Priests of Noireau. He is the last of his company; the rest fell in the Pais-Occitanie wars. Engage him before he takes his pension at Verquent and his sword goes to the abbey wall, where it will not see use again.",
-		"A passenger from Pais-Occitanie has been staring at the same patch of water since we sighted your cliffs. Take them ashore quickly - I will not have them die in my cabin.",
-		"A masked Confessor sailed with me from Vallouise. I asked no questions; they paid in full and disembarked at first light without a word. I record their fare as 'goods, unspecified.' I trust you will record their passage the same.",
-		"Sole in white wine for the Inquisition and the Royalty of Otava. Do not haggle, Factor."
+		"向你致意，商行管事。诚实的秤由圣阿斯特拉塔看顾，弄虚作假的则归圣内克拉——选择权在你。",
+		"我们在天上的神啊，请拯救他们。渡海顺利，风也虔诚，随船祭司晕船都比平时轻了些。阿亚特。",
+		"以十神之名，凭埃斯佩朗斯首都最高议会的文书，我来此交易。我的酒出自奥克西塔尼地区，别用低价侮辱它。",
+		"先生，我不是海盗。我有文书、有随船祭司，在韦尔康还有配偶——这三样里最后一样最费钱。",
+		"红崖的奶酪、湖谷的美酒、滨海瓦卢伊兹的熏鱼。协议赋予我让这三样货物都卖出公道价的权利，请照价付款。",
+		"把铁和兽皮拿出来。我的货舱有空，我的钱袋有钱，而潮汐可不会等我们客套。",
+		"出发时，夕阳将红崖染得通红。随船祭司说那是征兆，却不肯解读。我没再问。",
+		"两年前的夏天，我表亲的船毁在你们的暗礁上。我带了圣内克拉的信物，要在系缆前投入港中。别介意，这是习俗。",
+		"感谢圣阿比索尔，风是仁慈的。看看你们的王室关税是否也一样。",
+		"我的舵手在地方军服役三年，才转行做正经买卖。他有圣人的耐心，也有赛加羚羊骑枪兵的脾气——只管试探前者就好。",
+		"管事，审判庭在王田城外设有办事处。我不属于他们的分队，但他们的审判官认识我。公平交易吧，消息传回奥塔瓦，和我的船一样快。",
+		"我驶过从瓦特斯通往兹班图沙丘的朝圣之路。三位祭司在韦尔康上船，又在穆杰夫卡赫尔下船，没一个跟我说话。圣职者就是这样。",
+		"只需三枚泽尼，我的佣兵下士就能护送你的货物从舷梯到仓库，有文书担保，也有努瓦罗红衣祭司的祝福。他是连队最后的幸存者，其余人都倒在奥克西塔尼的战火中。趁他还没到韦尔康领退休金、把剑挂上修道院墙壁再不使用，雇下他吧。",
+		"有位奥克西塔尼来的乘客，自看见你们的悬崖起便一直盯着同一片水面。快带他上岸，我可不想让他死在我的船舱里。",
+		"一位戴面具的告解师从瓦卢伊兹与我同行。我什么也没问；他付清船费，天刚亮便一言不发地下了船。我把这笔船费记为‘未指明货物’，相信你也会这样登记他的行程。",
+		"给奥塔瓦审判庭和王室准备白葡萄酒烩鳎鱼。别讨价还价，管事。"
 	)

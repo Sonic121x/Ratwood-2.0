@@ -1,6 +1,6 @@
 /datum/foreign_realm/gronn
 	id = REALM_GRONN
-	name = "Gronn"
+	name = "格隆恩"
 	roll_weight = TRADE_REALM_WEIGHT_DISTANT
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_HEAVY, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
@@ -18,11 +18,11 @@
 		"Ravnstrid", "Frostbearer", "Drageaette", "Norrsker", "Hrimskogr",
 	)
 	ship_types = list(
-		list("name" = "Knarr", "tonnage" = 30, "weight" = 15),
-		list("name" = "Longship", "tonnage" = 80, "weight" = 30),
-		list("name" = "Icebreaker Hulk", "tonnage" = 200, "weight" = 30),
-		list("name" = "Great Drakkar", "tonnage" = 400, "weight" = 20),
-		list("name" = "Fenrir", "tonnage" = 700, "weight" = 5),
+		list("name" = "克纳尔货船", "tonnage" = 30, "weight" = 15),
+		list("name" = "长船", "tonnage" = 80, "weight" = 30),
+		list("name" = "破冰霍尔克船", "tonnage" = 200, "weight" = 30),
+		list("name" = "巨型龙首船", "tonnage" = 400, "weight" = 20),
+		list("name" = "芬里尔", "tonnage" = 700, "weight" = 5),
 	)
 	city_tags = list(
 		"the Fjall", "Iskarn-By", "Volfshaven", "Saigahold",
@@ -101,18 +101,18 @@
 		/datum/supply_pack/rogue/alcohol/gronnmead,
 	)
 	hail_lines = list(
-		"Southlander. Hide, iron, fur. Salt, coal, steel. The trade is simple. Do not complicate it.",
-		"The Fjall is two months under snow already. I wish to be home before the third.",
-		"My crew has not seen sun for a fortnight. Keep them on the pier; do not invite them inland.",
-		"I will sell my hides at a fair price. I will not sell my dogs. Three of your stevedores asked already.",
-		"Saigahold sends its finest iron. Take it with respect.",
-		"Last voyage's hold carried six of your countrymen home. They walked off freely at Volfshaven and bought drinks for my crew. This voyage carries hides. Keep your priests off my deck and we will speak prices.",
-		"These antlers will fetch a fine price south, I am told. Your priests have a particular name for the beast they came from. We do not use that name. Pay or do not, but do not preach.",
-		"An Iskarn shaman rides with us out of the snows. He speaks to none, eats nothing. Do not approach him - what he watches over does not care for southern eyes.",
-		"The clouds parted over the Fjall this season. The straits opened early. Buy quickly. When they close again, the next ship from us will not be a trader.",
-		"There is a totem under my sailcloth that is not for sale and not for your church to see. If your magistrate calls it idolatry, your magistrate has not seen real winter.",
-		"The aurora followed us south. The crew calls that a witness. Your Ten have nothing to do with it; do not bring your priests to argue otherwise.",
-		"We do not raid this season. The compact holds. Pray the next captain you meet from our shore says the same.",
-		"I bring mead enough to drown the winter. Drink it as men, not as your southern fashion of sipping it like broth.",
-		"My people dream of plaice in butter, herbed with mentha. You people call it Saint Dendor's Salmon, an Otavais dish I heard. Sell me the southern butter, the mentha, and the plaices in ice. We pays well"
+		"南方人。兽皮、铁、毛皮。盐、煤、钢。交易很简单，别把它弄复杂。",
+		"群山已经被大雪覆盖两个月了。我想在第三个月之前回家。",
+		"我的船员半个月没见过太阳了。让他们待在码头，别邀请他们去内陆。",
+		"兽皮我会公道地卖，狗可不卖。你们已有三个码头工人问过了。",
+		"赛加堡送来了最好的铁。恭敬地收下吧。",
+		"上次航行，我的货舱载着你们六个同胞回家。他们在沃尔夫斯港自由下船，还请我的船员喝了酒。这次运的是兽皮。别让你们的祭司上我的甲板，我们就能谈价钱。",
+		"听说这些角在南方能卖个好价钱。你们的祭司对长这角的野兽有个特别的称呼，我们不用那个名字。买不买随你，别传教。",
+		"一位伊斯卡恩萨满随我们从雪地而来。他不与人说话，也不吃东西。别靠近他——他守护的东西不喜欢南方人的目光。",
+		"今季群山上空云层散开，海峡提早解冻。赶快买吧。等海峡再次封冻，我们下一艘来船就不是商船了。",
+		"我的帆布下面有一尊图腾，不卖，也不给你们的教会看。若你们的治安官称之为偶像崇拜，那他一定没见过真正的寒冬。",
+		"极光一路追随我们南下，船员称它为见证者。这与你们的十神无关，别带祭司来争辩。",
+		"今季我们不劫掠，盟约依然有效。祈祷下一个从我们海岸来的船长也会这么说吧。",
+		"我带来的蜜酒足以淹没寒冬。像个汉子一样喝，别学你们南方人那样，把它当肉汤小口抿。",
+		"我的族人做梦都想吃黄油煎鲽鱼，再加点薄荷。你们叫它圣登多尔鲑鱼，听说是道奥塔瓦菜。卖给我南方的黄油、薄荷和冰镇鲽鱼，我们出价优厚。"
 	)
