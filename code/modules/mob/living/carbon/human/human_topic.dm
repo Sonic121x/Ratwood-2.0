@@ -104,7 +104,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	if(href_list["species_lore"])
 		if(!dna?.species?.desc)
 			return
-		var/datum/browser/popup = new(usr, "species_info", "<center>Lore</center>", 460, 550)
+		var/datum/browser/popup = new(usr, "species_info", "<center>种族背景</center>", 460, 550)
 		popup.set_content(dna.species.desc)
 		popup.open()
 		return
