@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/wildshape/spider //The bog glass cannon
-	name = "Spider"
+	name = "蜘蛛"
 	race = /datum/species/shapespider
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -29,9 +29,9 @@
 		AddSpell(new /obj/effect/proc_holder/spell/self/weaveweb)
 		faction += "spiders" // It IS a spider
 		if (src.client.prefs?.wildshape_name)
-			real_name = "beespider ([stored_mob.real_name])"
+			real_name = "蜂蛛（[stored_mob.real_name]）"
 		else
-			real_name = "beespider"
+			real_name = "蜂蛛"
 
 // CAT SPECIES DATUM //
 /datum/species/shapespider
@@ -96,7 +96,7 @@
 // CAT SPECIFIC ITEMS //
 /obj/item/clothing/suit/roguetown/armor/skin_armor/spider_chitin
 	slot_flags = null
-	name = "spider's skin"
+	name = "蜘蛛表皮"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
@@ -108,7 +108,7 @@
 	item_flags = DROPDEL
 
 /datum/intent/simple/spider //An ambush weapon
-	name = "fang"
+	name = "獠牙"
 	clickcd = 12
 	icon_state = "instab"
 	blade_class = BCLASS_STAB
@@ -121,7 +121,7 @@
 	item_d_type = "stab"
 
 /obj/item/rogueweapon/spider_fang
-	name = "spider fang"
+	name = "蜘蛛獠牙"
 	desc = ""
 	item_state = null
 	lefthand_file = null
@@ -165,7 +165,7 @@
 
 // SPIDER SPELLS //
 /obj/effect/proc_holder/spell/self/spiderfangs
-	name = "Spider Fangs"
+	name = "蜘蛛獠牙"
 	desc = "!"
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
@@ -185,39 +185,39 @@
 			user.dropItemToGround(active, TRUE)
 		if(istype(inactive, /obj/item/rogueweapon/spider_fang) && inactive != active)
 			user.dropItemToGround(inactive, TRUE)
-		to_chat(user, span_notice("My fangs retract."))
+		to_chat(user, span_notice("我的獠牙缩回了。"))
 		extended = FALSE
 	else
 		l = new(user, 1)
 		r = new(user, 2)
 		user.put_in_hands(l, TRUE, FALSE, TRUE)
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
-		to_chat(user, span_notice("My fangs extend."))
+		to_chat(user, span_notice("我的獠牙伸出了。"))
 		extended = TRUE
 
 /obj/effect/proc_holder/spell/self/createhoney
-	name = "Create Honey"
+	name = "酿蜜"
 	desc = "!"
 	antimagic_allowed = TRUE
 	recharge_time = 2 MINUTES //Don't spam this you chef lovers, let us have nice things
 	ignore_cockblock = TRUE
 
 /obj/effect/proc_holder/spell/self/createhoney/cast(mob/user = usr)
-	visible_message(span_alertalien("[user] creates some honey."))
+	visible_message(span_alertalien("[user]酿出了一些蜂蜜。"))
 	var/turf/T = get_turf(user)
 	playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
 	new /obj/item/reagent_containers/food/snacks/rogue/honey/spider(T)
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/weaveweb
-	name = "Weave Web"
+	name = "织网"
 	desc = "!"
 	antimagic_allowed = TRUE
 	recharge_time = 20 SECONDS //Not too fast, not too slow
 	ignore_cockblock = TRUE
 
 /obj/effect/proc_holder/spell/self/weaveweb/cast(mob/user = usr)
-	visible_message(span_alertalien("[user] weaves a spider web."))
+	visible_message(span_alertalien("[user]织出了一张蛛网。"))
 	var/turf/T = get_turf(user)
 	playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
 	new /obj/structure/spider/stickyweb(T)
