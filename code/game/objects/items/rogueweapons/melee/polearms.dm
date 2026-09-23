@@ -29,8 +29,8 @@
 	penfactor = 40
 
 /datum/intent/spear/thrust/pike		//EXPERIMENTAL
-	name = "pike thrust"
-	desc = "Thrust your pike forward from its furthest end to reach farther ahead than any spear ever could. Only effective at three paces."
+	name = "长枪远刺"
+	desc = "握住长枪的末端向前突刺，攻击距离远超寻常长矛。仅在相距三步时发挥完整威力。"
 	damfactor = 1.15
 	reach = 3
 	effective_range = 3
@@ -38,8 +38,8 @@
 	swingdelay = 1.5
 
 /datum/intent/spear/thrust/pike/skewer		//EXPERIMENTAL
-	name = "pike lance"
-	desc = "Grab your pike from a closer end and charge forward with your whole body for devastating damage."
+	name = "长枪冲刺"
+	desc = "握住长枪靠近枪尖的位置，借全身之力向前冲刺，造成毁灭性的伤害。"
 	clickcd = CLICK_CD_HEAVY + 4
 	swingdelay = 6
 	damfactor = 1.5
@@ -236,7 +236,7 @@
 	effective_range_type = EFF_RANGE_EXACT
 
 /datum/intent/rend/reach/partizan
-	name = "rending thrust"
+	name = "撕裂突刺"
 	attack_verb = list("刺穿")
 	blade_class = BCLASS_STAB
 	damfactor = 1.8//It's a heavy stab. Not a chop.

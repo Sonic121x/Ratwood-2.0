@@ -107,9 +107,9 @@
 #define LONGSWORD_STOCK_GRIPPED_INTENTS list(/datum/intent/sword/cut/long, /datum/intent/sword/thrust/long, /datum/intent/sword/chop/long, /datum/intent/sword/thrust/long/deep)
 
 /datum/intent/sword/cut/master
-	name = "mandritto"
+	name = "正手斩"
 	icon_state = "incutmaster"
-	desc = "Strike the opponent with the true edge of the sword and penetrate the lightest armors. Poor at damaging armor."
+	desc = "用剑的正刃攻击对手，穿透最轻薄的护甲，但对护甲本身的破坏力较弱。"
 	attack_verb = list("娴熟地切开", "巧妙地割开", "灵巧地挥砍")
 	// You do more damage to exposed areas than stabbing, but your damage to armor is slightly less effective than a normal longsword.
 	// This effectively means you do 1.2x damage to flesh, but 0.9x damage to armor.
@@ -118,9 +118,9 @@
 	intent_intdamage_factor = 0.75
 
 /datum/intent/sword/chop/long/master
-	name = "fendente"
+	name = "下劈斩"
 	icon_state = "inchop"
-	desc = "Swing your sword in a wide arc, striking them with the true edge of the blade but exposing yourself. Damages shields more and penetrates even hardened leather."
+	desc = "挥剑划出大弧，以正刃劈向对手，但也会暴露自身破绽。对盾牌的破坏力更强，甚至能穿透硬皮甲。"
 	attack_verb = list("狂怒地砍击", "有力地劈开", "凶猛地劈砍")
 	// This is almost x2 slower than a regular longsword's chop, giving the opponent more time to riposte you.
 	// This however will penetrate all Light AC armor except for brigandine parts. Also does x2 damage to shields.
@@ -129,16 +129,16 @@
 	clickcd = CLICK_CD_CHARGED
 
 /datum/intent/sword/thrust/long/master
-	name = "stoccato"
+	name = "进步突刺"
 	icon_state = "instabmaster"
-	desc = "Enter a long guard and thrust forward with your entire upper body while advancing, maximizing the effectiveness of the thrust."
+	desc = "摆出长架势，向前进步时借整个上身之力突刺，充分发挥刺击的威力。"
 	attack_verb =  list("娴熟地刺穿", "巧妙地穿刺", "灵巧地刺击")
 	damfactor = 1.35
 
 /datum/intent/sword/thrust/long/deep/master
-	name = "stoccato profondo"
+	name = "深入突刺"
 	icon_state = "inlunge"
-	desc = "A precise thrust over the opponent's weapon aimed for the gaps in one's armor instead of damaging the armor. Leaves you exposed during the swing."
+	desc = "越过对手的武器，精确刺向护甲缝隙，以杀伤对手而非破坏护甲为目的。出招时会暴露自身破绽。"
 	attack_verb = list("谨慎地穿刺", "精准地突刺", "准确地贯穿")
 	// Stab someone directly. 50% damage to armor.
 	// Best used like an estoc.
@@ -150,8 +150,8 @@
 	misscost = 0
 
 /datum/intent/effect/daze/longsword/clinch
-	name = "clinch & swipe"
-	desc = "Get up in your opponent's face and force them into a clinch, then swipe their face with the crossguard while they're distracted. Good against baited or exhausted opponents."
+	name = "贴身柄击"
+	desc = "贴近对手迫使其缠斗，趁其分心时用十字护手横击面部。适合对付中了诱招或筋疲力尽的对手。"
 	icon_state = "inpunish"
 	attack_verb = list("强行贴身横斩")
 	animname = "strike"
@@ -168,9 +168,9 @@
 	intent_effect = /datum/status_effect/debuff/dazed/swipe
 
 /datum/intent/sword/thrust/long/halfsword
-	name = "mezza spada"
+	name = "半剑式"
 	icon_state = "inimpale"
-	desc = "Grip the dull portion of your longsword with either hand and use it as leverage to deliver precise, powerful strikes that can dig into gaps in plate and push past maille."
+	desc = "用一只手握住长剑未开刃的部分，借力发动精确而有力的刺击，钻入板甲缝隙并穿透锁子甲。"
 	attack_verb = list("摆出半剑架势刺穿", "摆出半剑架势贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 80
@@ -180,12 +180,12 @@
 	blade_class = BCLASS_PICK
 
 /datum/intent/sword/thrust/long/halfsword/lesser
-	name = "halbschwert"
+	name = "半剑式慢刺"
 	clickcd = 22
 
 /datum/intent/effect/daze/longsword
-	name = "durchlauffen"
-	desc = "Quickly flip your weapon around to the blunt end and slam an opponent in the throat, mouth, or nose, affecting their ability to breathe properly. Slow, and can be cancelled by GUARDING, but applies a long-lasting debuff."
+	name = "反握柄击"
+	desc = "迅速翻转武器，用钝端猛击对手的喉咙、嘴或鼻子，使其呼吸受阻。出招缓慢，可通过防守动作取消，但能施加持久的削弱效果。"
 	attack_verb = list("娴熟地猛击")
 	intent_effect = /datum/status_effect/debuff/dazed/longsword
 	target_parts = list(BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_NECK)
@@ -194,8 +194,8 @@
 	swingdelay = 1.3 SECONDS
 
 /datum/intent/effect/daze/longsword2h
-	name = "zorn ort"
-	desc = "Block the opponent's weapon with a strike of your own and advance into a thrust towards the eyes, affecting their vision severely. Can only be performed two-handed."
+	name = "怒击突刺"
+	desc = "挥击架开对手的武器，顺势向前刺向眼睛，严重干扰其视力。只能双手持剑施展。"
 	attack_verb = list("娴熟地戳刺")
 	intent_effect = /datum/status_effect/debuff/dazed/longsword2h
 	target_parts = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE)
@@ -1674,16 +1674,16 @@
 	sheathe_icon = "shashka"
 
 /datum/intent/sword/cut/sabre/master
-	name = "pokrajać"
-	desc = "Perform a masterful wide-arc cut that's strong enough to penetrate light armour."
+	name = "精妙弧斩"
+	desc = "施展精妙的大幅弧形斩击，威力足以穿透轻甲。"
 	attack_verb = list("娴熟地切开", "灵巧地割开", "横弧斩击")
 	clickcd = 7
 	damfactor = 1.25
 	penfactor = 55
 
 /datum/intent/effect/daze/freisabre
-	name = "uszkodzić"
-	desc = "After a few misleading strikes, suddenly slash at your opponent's wrist to affect their speed and strength, preventing them from using their weapon effectively. This move can be parried, but not dodged."
+	name = "虚招斩腕"
+	desc = "以数次虚招迷惑对手，随后突然斩向手腕，削弱其速度与力量，使其难以有效使用武器。此招可以招架，但无法闪避。"
 	attack_verb = list("灵巧地割伤")
 	intent_effect = /datum/status_effect/debuff/dazed/freisabre
 	target_parts = list(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
@@ -1695,8 +1695,8 @@
 	dodgeable_intent = FALSE
 
 /obj/item/rogueweapon/sword/sabre/freifechter
-	name = "szöréndnížine sabre"
-	desc = "A rare, specialty-made sabre domestic to Szöréndnížina, made similarly to those of the Czwarteki Potentate's Hussars. It has a large, open hilt with a cross-shaped guard formed from quillons and langets and a heavy curved blade. A chain is attached to the crossguard and into the pommel, protecting the hand. Unlike shorter and ligther sabres, it's large enough to reach the feet."
+	name = "瑟伦迪尼日纳军刀"
+	desc = "瑟伦迪尼日纳出产的罕见特制军刀，制式与兹瓦尔特基领主麾下翼骑兵所用的军刀相似。它有宽大的开放式刀柄，横向护手与护鞘突耳组成十字形护手，刀身厚重而弯曲。一条链子连接护手与柄首，保护持刀的手。它比寻常轻短军刀更长，足以攻击脚部。"
 	icon = 'icons/roguetown/weapons/special/freifechter.dmi'
 	possible_item_intents = list(/datum/intent/sword/cut/sabre/master, /datum/intent/sword/thrust/sabre, /datum/intent/effect/daze/freisabre, /datum/intent/rend)
 	wdefense = 7
