@@ -56,137 +56,137 @@
 
 
 /datum/book_entry/treasury_merchant/fulfillment_crate
-	name = "02. The Ship Fulfillment Crate"
+	name = "02. 船舶履约货箱"
 
 /datum/book_entry/treasury_merchant/fulfillment_crate/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>SHIP FULFILLMENT CRATE:</b> A crate used to fill the bulk and victualling demands of docked foreign vessels. The crate pays out at the docked ship's offered line price, less Crown export duty and the Merchant's levy.</p>
+		<p><b>船舶履约货箱：</b>用于满足停泊外国船舶的大宗货物与补给需求的货箱。货款按停泊船舶对各项货物的报价计算，扣除王室出口关税及商人征缴后支付。</p>
 
-		<h3>How it works</h3>
+		<h3>使用方法</h3>
 		<ul>
-			<li>You need a NERVELOCK account. The crate refuses goods from anyone without one.</li>
-			<li><b>Left-click (or attack) with an item:</b> deposit that one item.</li>
-			<li><b>Right-click the crate:</b> dump everything on your tile into it at once, with a running tally announced when it's done.</li>
-			<li>Handcarts and storage bins on your tile are unpacked automatically - the crate matches their contents one item at a time.</li>
-			<li>Sealed, ready-to-bottle fermentation kegs can be dragged onto the crate directly.</li>
+			<li>你需要一个神经锁账户。货箱不会接收无账户者的货物。</li>
+			<li><b>手持物品左键点击（或攻击）货箱：</b>交付该件物品。</li>
+			<li><b>右键点击货箱：</b>一次性投入你所在格上的所有物品，完成后会公布总计。</li>
+			<li>你所在格上的手推车和储物箱会被自动清点，货箱会逐件匹配其中的物品。</li>
+			<li>已密封且酿制完成、可以装瓶的发酵桶，可直接拖到货箱上。</li>
 		</ul>
 
-		<h3>What the crate accepts</h3>
+		<h3>货箱接受什么</h3>
 		<ul>
-			<li><b>Bulk goods:</b> tradeable raw or finished goods matched against a docked ship's open bulk demand lines, identified via the trade good registry.</li>
-			<li><b>Victualling dishes:</b> readied meals and preserved provisions matching a docked ship's manifest, tracked by exact item type.</li>
-			<li><b>Victualling drinks:</b> sealed brewer bottles matched to a ship's drink demand; unsealed bottles are refused, and ships that only buy by the barrel will refuse loose bottles entirely.</li>
-			<li><b>Bundles</b> (raw stack items like fibers and hides) are accepted up to the remaining demand on the line - any leftover stays in your bundle.</li>
+			<li><b>大宗货物：</b>通过贸易货物登记表识别的可交易原料或成品，须符合停泊船舶尚未满足的大宗需求。</li>
+			<li><b>补给食品：</b>符合停泊船舶清单的成品菜肴和耐储食品，按物品的确切类型匹配。</li>
+			<li><b>补给酒水：</b>符合船舶酒水需求的密封酿酒瓶；不收已开封的酒瓶，仅按桶收购的船舶则完全不收零散酒瓶。</li>
+			<li><b>捆装材料</b>（如纤维、兽皮等可堆叠原料）最多收取该项需求的剩余数量，多余部分会留在原材料捆中。</li>
 		</ul>
 
-		<h3>What the crate refuses</h3>
+		<h3>货箱拒收什么</h3>
 		<ul>
-			<li>ATC-sealed items (anything bought from Goldface or Silverface).</li>
-			<li>Rotten food.</li>
-			<li>Goods not on any docked vessel's open manifest.</li>
+			<li>带有贸易公司封印的物品（从金面或银面购得的任何物品）。</li>
+			<li>腐烂的食物。</li>
+			<li>不在任何停泊船舶的待交付清单上的货物。</li>
 		</ul>
 
-		<h3>Duty and the Merchant's cut</h3>
-		<p>Merchant/Shophand can toggle Crown export duty between PAID and DODGED on this specific crate via its underledger switch. Item quality above or below standard shifts the unit price up or down, and Kinship-favoured ships pay a bonus on top (see <i>The Kinship Bonus</i>).</p>
+		<h3>关税与商人抽成</h3>
+		<p>商人或店伙计可以通过暗账开关，将这个货箱的王室出口关税切换为正常缴纳或逃避缴纳。物品品质高于或低于标准时，单价会相应上调或下调；享有同乡关系加成的船舶还会额外支付奖励（参见<i>同乡关系加成</i>）。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_merchant/goldface
-	name = "03. Goldface and Silverface"
+	name = "03. 金面与银面"
 
 /datum/book_entry/treasury_merchant/goldface/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>GOLDFACE & SILVERFACE:</b> GOLDFACE is meant for the Merchant's own use; SILVERFACE is the public-facing version, offering the same goods at a markup.</p>
+		<p><b>金面与银面：</b>金面供商人自用；银面则是面向公众的版本，以加价出售相同货物。</p>
 
-		<h3>GOLDFACE</h3>
+		<h3>金面</h3>
 		<ul>
-			<li>Locked and unlocked with the Merchant's key (or a keyring holding it).</li>
-			<li>Coin is manually loaded and then spent to buy goods.</li>
-			<li>FTC members (Merchant, Shophand) can toggle the Secrets menu to "Stop Paying Taxes", skipping the import tariff.</li>
-			<li>Tariff paid and tariff evaded are tracked per machine, visible only to FTC members.</li>
-			<li>Bought items are spawned ATC-sealed and cannot be re-exported via the Navigator or the Ship Fulfillment Crate.</li>
+			<li>使用商人的钥匙（或装有该钥匙的钥匙圈）上锁与解锁。</li>
+			<li>须手动投入钱币，再用余额购买货物。</li>
+			<li>贸易公司成员（商人、店伙计）可以在秘密菜单中选择“停止缴税”，跳过进口关税。</li>
+			<li>每台机器分别记录已缴及逃缴的关税，只有贸易公司成员可以查看。</li>
+			<li>购得的物品带有贸易公司封印，无法通过领航员或船舶履约货箱再次出口。</li>
 		</ul>
 
-		<h3>The Harbor tab (GOLDFACE only)</h3>
-		<p>GOLDFACE is the command centre for foreign trade. Its Harbor tab shows docked ships, the wider ship pool, and every discovered realm's market conditions. See <i>Ships, Hails, and the Warehouses</i> for how hailing and demand work.</p>
+		<h3>港口页（金面专属）</h3>
+		<p>金面是对外贸易的指挥中心。港口页显示停泊船舶、可呼叫的船舶，以及所有已发现国家的市场状况。呼船与需求机制详见<i>船舶、呼船与仓库</i>。</p>
 		<ul>
-			<li><b>Cultural stocks:</b> docked ships carry cultural-goods packs at a [TRADE_CULTURAL_SHIP_DISCOUNT_PERCENT]% discount off base cost. Import tariff still applies unless dodged.</li>
-			<li><b>Bulk buy/demand:</b> docked ships offer cargoes for sale and purchase large amounts of goods at a markup, generally more than the town alone can supply.</li>
-			<li><b>Merchant's levy:</b> Merchant/Shophand can set the levy percentage (0 to [TRADE_MERCHANT_LEVY_CAP_PERCENT]%). This is the same levy the Ship Fulfillment Crate deducts on producer payouts.</li>
+			<li><b>文化货物：</b>停泊船舶携带各地特色商品包，价格比基础成本低[TRADE_CULTURAL_SHIP_DISCOUNT_PERCENT]%。除非逃税，否则仍需缴纳进口关税。</li>
+			<li><b>大宗买卖与需求：</b>停泊船舶出售货物，也会加价大量收购货物，需求通常超过城镇独自能供应的数量。</li>
+			<li><b>商人征缴：</b>商人或店伙计可以设定征缴比例（0至[TRADE_MERCHANT_LEVY_CAP_PERCENT]%）。船舶履约货箱从生产者货款中扣除的正是这项征缴。</li>
 		</ul>
 
-		<h3>SILVERFACE (public)</h3>
+		<h3>银面（公共）</h3>
 		<ul>
-			<li>Cannot be locked - keys are refused on the public variant.</li>
-			<li>Adds a flat <b>[50]%</b> surcharge on top of base cost and import tariff, by design meant to be unprofitable relative to Goldface so producers can compete on price.</li>
+			<li>无法上锁，公共版本不接受钥匙。</li>
+			<li>在基础成本与进口关税之外固定加收<b>[50]%</b>的附加费，使其相较金面更不划算，从而让生产者能够在价格上竞争。</li>
 		</ul>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_merchant/harbor_mechanics
-	name = "04. Ships, Hails, and the Warehouses"
+	name = "04. 船舶、呼船与仓库"
 
 /datum/book_entry/treasury_merchant/harbor_mechanics/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>HARBOR MECHANICS:</b> The Merchant hails ships, manages sales and purchases with them, accumulates Favor, and sends them off.</p>
+		<p><b>港口机制：</b>商人负责呼船入港、与船舶买卖货物、积累恩惠，并遣送船舶离港。</p>
 
-		<h3>Hailing</h3>
+		<h3>呼船</h3>
 		<ul>
-			<li>You have <b>[TRADE_SHIPS_HAIL_PER_DAY]</b> hails per day. A hail brings one ship from the pool to dock.</li>
-			<li>Docked ships can be sent away after <b>[TRADE_SHIP_SEND_AWAY_GRACE / 600]</b> minutes, or immediately if their Favor target has already been met.</li>
-			<li>The pier holds <b>[TRADE_SHIP_DOCK_SPOTS_BASE]</b> ships by default, upgradeable to <b>[TRADE_SHIP_DOCK_SPOTS_MAX]</b> by renting an extra pier with Favor.</li>
+			<li>每日有<b>[TRADE_SHIPS_HAIL_PER_DAY]</b>次呼船机会。每次可从候选船舶中招来一艘入港。</li>
+			<li>船舶停泊<b>[TRADE_SHIP_SEND_AWAY_GRACE / 600]</b>分钟后即可遣离；若已达成其恩惠目标，则可立即遣离。</li>
+			<li>码头默认可容纳<b>[TRADE_SHIP_DOCK_SPOTS_BASE]</b>艘船，花费恩惠租用额外泊位后，可增至<b>[TRADE_SHIP_DOCK_SPOTS_MAX]</b>艘。</li>
 		</ul>
 
-		<h3>Saturation</h3>
+		<h3>饱和度</h3>
 		<ul>
-			<li>Each market bucket has a mammon-denominated warehouse pool. Goods sold through the Navigator (or bought against demand) fill or drain the pool. Capacity is rerolled each round and scales with population.</li>
-			<li>A full pool refuses further intake for that bucket until it drains.</li>
-			<li>A parallel Black Market pool runs at a fraction of the normal capacity and regenerates automatically each day.</li>
+			<li>每个市场分类都有一个以玛门计量的仓储池。通过领航员出售货物或按需求采购货物，会使池中余额增加或减少。容量每回合重新随机生成，并随人口规模调整。</li>
+			<li>仓储池装满后，该分类会停止收货，直至腾出空间。</li>
+			<li>黑市另有独立的仓储池，容量仅为正常市场的一部分，每日自动恢复。</li>
 		</ul>
 
-		<h3>Send-off outcomes</h3>
-		<p>Every ship docks with an expected Favor target scaled by tonnage.</p>
+		<h3>离港结算</h3>
+		<p>每艘船入港时都有一个按吨位确定的预期恩惠目标。</p>
 		<ul>
-			<li><b>Honored</b> (favor earned meets or exceeds target): full value banked as Favor, and the spent hail is refunded.</li>
-			<li><b>Partial</b> (sent away early or auto-hailed): reduced Favor, no hail refund.</li>
-			<li><b>Dishonored</b> (auto-dismissed well below target): a flat Favor penalty scaled by tonnage.</li>
+			<li><b>礼遇离港</b>（获得的恩惠达到或超过目标）：全额计入恩惠，并返还消耗的呼船次数。</li>
+			<li><b>部分完成</b>（提前遣离或自动呼来的船舶）：获得较少恩惠，不返还呼船次数。</li>
+			<li><b>失礼离港</b>（远低于目标时被自动遣离）：按吨位扣除固定数额的恩惠。</li>
 		</ul>
 
-		<h3>Favor spending</h3>
-		<p>Accumulated Favor unlocks Company Gnomes automation for Silverface's margin, an extra pier, and an Auto-Hailer that hails and dismisses ships automatically while you're away. The Favor ledger and current/high-water totals are visible on the Harbor tab.</p>
-		<p>Favor also signs open two exclusive foreign catalogs on the Cultural Stock tab: the <b>Rosawood Arsenal</b> ([ROSAWOOD_ARSENAL_FAVOR] favor), elven arms and the bounty of Eveswood, and the <b>Anthraxi Armory</b> ([UNDERDARK_CARAVAN_FAVOR] favor), drowcraft weapons and spidersilk. Their stock is limited and restocks daily; the import tariff applies as usual.</p>
+		<h3>花费恩惠</h3>
+		<p>积累的恩惠可用于解锁公司侏儒，接管银面加价收入；也可租用额外泊位，或启用自动呼船，让港口在你离开时自动招呼和遣离船舶。港口页可查看恩惠账簿、当前总额及历史最高总额。</p>
+		<p>恩惠还可开通文化货物页上的两份专属外国目录：<b>玫瑰林军械库</b>（[ROSAWOOD_ARSENAL_FAVOR]恩惠），提供精灵武器与伊芙斯林物产；以及<b>安斯拉克西军械库</b>（[UNDERDARK_CARAVAN_FAVOR]恩惠），提供卓尔武器与蛛丝制品。两者库存有限，每日补货，照常征收进口关税。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_merchant/kinship
-	name = "05. The Kinship Bonus"
+	name = "05. 同乡关系加成"
 
 /datum/book_entry/treasury_merchant/kinship/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>KINSHIP BONUS:</b> A modifier tied to the active Merchant's chosen origin. While a Merchant from a foreign realm sits the role, ships of that realm show up more often, buy higher, and sell lower.</p>
+		<p><b>同乡关系加成：</b>与现任商人所选出身地相关的加成。来自某个外国的商人任职时，该国船舶会更频繁地出现，以更高价格收购，并以更低价格出售。</p>
 
-		<h3>What it does</h3>
+		<h3>加成效果</h3>
 		<ul>
-			<li><b>-[round((1 - KINSHIP_BUY_MULT) * 100)]% on buys</b> from kin ships - bulk cargo at Goldface and cultural-stock packs both pay less.</li>
-			<li><b>+[round((KINSHIP_SELL_MULT - 1) * 100)]% on sells</b> when fulfilling kin realm ships' bulk demands at the Ship Fulfillment Crate.</li>
-			<li>The sell-side bonus is <b>global</b> - any producer fulfilling a kin ship's demand gets it, not just the Merchant.</li>
+			<li>向同乡船舶<b>购买时便宜[round((1 - KINSHIP_BUY_MULT) * 100)]%</b>，金面的大宗货物与文化商品包均可享受优惠。</li>
+			<li>通过船舶履约货箱满足同乡国家船舶的大宗需求时，<b>售出货款增加[round((KINSHIP_SELL_MULT - 1) * 100)]%</b>。</li>
+			<li>出售加成为<b>全局生效</b>，任何满足同乡船舶需求的生产者都能享受，而不仅是商人。</li>
 		</ul>
 
-		<h3>How it gets set</h3>
+		<h3>如何确定</h3>
 		<ul>
-			<li>The bonus follows the active Merchant's character origin. It persists through Merchant death or FT until a new Merchant of a different realm takes the role.</li>
-			<li>A Merchant of the same realm replacing the previous one does not flip the bonus.</li>
+			<li>加成取决于现任商人的角色出身。商人死亡或退场后，加成仍会保留，直至来自另一国家的新商人接任。</li>
+			<li>同一国家的商人接任时，加成不会改变。</li>
 		</ul>
 
-		<h3>Agent variant</h3>
-		<p>A Shophand, or an Agent holding the Merchant's Writ of Charter, gets a personal buy discount from ships of <b>their own</b> character origin, at Goldface only. This does not stack with the global Kinship bonus if both apply to the same ship.</p>
+		<h3>代理人的个人加成</h3>
+		<p>店伙计或持有商人特许状的代理人，通过金面向<b>自己</b>角色出身地的船舶购买货物时，可享受个人折扣。若同一艘船同时适用全局同乡加成，两者不会叠加。</p>
 		</div>
 	"}
 
@@ -203,34 +203,34 @@
 
 
 /datum/book_entry/treasury_merchant/escrow
-	name = "07. COMMISSIONER"
+	name = "07. 委托官"
 
 /datum/book_entry/treasury_merchant/escrow/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>COMMISSIONER:</b> The COMMISSIONER lets anyone post a smithing, engineering, or tailoring commission with coin held in trust until a guild member delivers the finished items. Posted orders can be released, cancelled, partially settled, or rejected.</p>
+		<p><b>委托官：</b>任何人都可通过委托官发布锻造、工程或裁缝委托，款项由机器托管，直至公会成员交付成品。已发布的订单可以解除承接、取消、部分结算或拒绝。</p>
 
-		<h3>Posting an order (commissioner side)</h3>
+		<h3>发布订单（委托人）</h3>
 		<ul>
-			<li>Deposit coin into the machine - the deposit is held under your name.</li>
-			<li>Build a manifest from the catalogue. Each recipe's unit price is its material cost times (1 + percent_margin/100) plus flat_margin - defaults are <b>70%</b> percent margin and <b>5m</b> flat margin, adjustable by whoever holds the guild key.</li>
-			<li>You can refund an unposted deposit at any time. Posted but unclaimed orders can be cancelled for a full refund.</li>
-			<li>Open orders expire after <b>[ESCROW_OPEN_EXPIRY_DAYS]</b> day(s) if unclaimed; the deposit returns to your reservation.</li>
+			<li>向机器投入钱币，存款会记在你的名下。</li>
+			<li>从目录中建立委托清单。每份配方的单价为材料成本乘以（1 + 比例加价/100），再加上固定加价；默认比例加价为<b>70%</b>，固定加价为<b>5m</b>，持有公会钥匙的人可以调整。</li>
+			<li>尚未用于发布委托的存款随时可以取回。已发布但尚未被承接的订单可以取消，并获得全额退款。</li>
+			<li>待接订单若在<b>[ESCROW_OPEN_EXPIRY_DAYS]</b>天内无人承接便会过期，款项会退回你的存款。</li>
 		</ul>
 
-		<h3>Claiming and fulfilling (smith side)</h3>
+		<h3>承接与交付（铁匠）</h3>
 		<ul>
-			<li>Only guild keyholders may claim an order.</li>
-			<li>Deliver finished items by striking the machine with them. Items must be at least <b>[ESCROW_DURABILITY_FLOOR * 100]%</b> integrity and the exact type requested.</li>
-			<li>A smith may voluntarily release a claim back to open status; delivered items return to the floor.</li>
-			<li>Claimed orders expire after <b>[ESCROW_CLAIM_EXPIRY_DAYS]</b> day(s) if not completed; the order auto-reverts to open.</li>
+			<li>只有持有公会钥匙的人可以接单。</li>
+			<li>将成品对着机器使用即可交付。物品耐久度必须至少为<b>[ESCROW_DURABILITY_FLOOR * 100]%</b>，且类型必须与要求完全一致。</li>
+			<li>铁匠可以主动放弃接单，让订单恢复待接状态；已交付的物品会退回地面。</li>
+			<li>已承接的订单若在<b>[ESCROW_CLAIM_EXPIRY_DAYS]</b>天内未完成，承接资格便会过期，订单自动恢复待接状态。</li>
 		</ul>
 
-		<h3>Partial fulfillment</h3>
-		<p>If the smith has delivered some but not all of the required items, they may settle partially for a payout reduced by a <b>[ESCROW_PARTIAL_HAIRCUT_PERCENT]%</b> haircut against their progress share. The unspent escrow returns to the commissioner's deposit.</p>
+		<h3>部分履约</h3>
+		<p>若铁匠已交付部分但尚未交齐所需物品，可以进行部分结算，报酬按完成比例计算后再扣减<b>[ESCROW_PARTIAL_HAIRCUT_PERCENT]%</b>。剩余托管款项会退回委托人的存款。</p>
 
-		<h3>Guild-key controls</h3>
-		<p>Unlocked with the guild key: per-material price editing, percent margin, flat margin, per-order item cap, and force-release of stalled claimed orders, plus rejecting any open or claimed order with a stated reason.</p>
+		<h3>公会钥匙权限</h3>
+		<p>公会钥匙可以解锁以下功能：逐项编辑材料价格、调整比例加价和固定加价、设置每单物品上限、强制解除停滞订单的承接关系，以及说明理由后拒绝任何待接或已承接订单。</p>
 		</div>
 	"}
 

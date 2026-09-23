@@ -1,6 +1,6 @@
 /datum/foreign_realm/zybantium
 	id = REALM_ZYBANTIUM
-	name = "Zybantium"
+	name = "兹班图"
 	roll_weight = TRADE_REALM_WEIGHT_DEFAULT
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_ENCHANTMENTS, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
@@ -19,10 +19,10 @@
 		"of Chorodiaki", "Vrdaqnani", "Nshkor", "Müccevbey", "Sayyari",
 	)
 	ship_types = list(
-		list("name" = "Akation", "tonnage" = 40, "weight" = 15),
-		list("name" = "Dromon", "tonnage" = 130, "weight" = 35),
-		list("name" = "Bireme", "tonnage" = 300, "weight" = 30),
-		list("name" = "Pamphylos", "tonnage" = 600, "weight" = 20),
+		list("name" = "阿卡提翁轻帆船", "tonnage" = 40, "weight" = 15),
+		list("name" = "德罗蒙战船", "tonnage" = 130, "weight" = 35),
+		list("name" = "双层桨战船", "tonnage" = 300, "weight" = 30),
+			list("name" = "潘菲洛斯战船", "tonnage" = 600, "weight" = 20),
 	)
 	city_tags = list(
 		"Zybantium", "Chorodiaki", "Müccevkabher", "Nshkormh", "Vrdaqnan",
@@ -104,15 +104,15 @@
 		/datum/supply_pack/rogue/zybantine/makhaira,
 	)
 	hail_lines = list(
-		"In the name of the Autarch, and by leave of the Emir who stamped my charter, Zybantium greets the Factor. My hold is long-travelled; do not make it stand idle.",
-		"Silk from Chorodiaki, sugar and saffira from Mücevkabher, wine from Nshkormh, geometers' work from Vrdaqnan. One empire, four manifests; the Sheikh's clerks were patient with me.",
-		"Sit with me before we tally. In Zybantium no one trades with a stranger - we drink first, eat second, and only then count coin. Your hospitality will be remembered as long as your prices.",
-		"Hear that flute from my afterdeck? My mate is from Mücevkabher, and she will not bargain unless the bargaining keeps time. Xylix smiles on her, she says. I find she haggles harder when the song is fast.",
-		"You have fur and timber and iron, and Psydon - bless his memory - put none of these on our continent in quantity. So we sail. The arithmetic is older than either of us.",
-		"My cousin is a Sheikh of his county and reminds me of it at every supper. Yet here I am at your dock, and there he is at his table. Tell me which of us has truly seen the world.",
-		"My grandmother taught that you cannot know a person until you have spoken with them alone. So when we have finished the public price, share a cup with me below. The honest number lives there.",
-		"The Emir of Vrdaqnan sent a janissary aboard to keep the peace among my crew. He has, by dancing with two of them and drinking with the third. I will commend him in my report.",
-		"There is a dervish in the third hold who has not stopped spinning since we sighted your cape. He says Günay's blade still turns in the heavens and so must he. Pay him no mind; pay me promptly.",
-		"A geometer of the Vrdaqnan houses rides at my prow, reader of palms by the first light of Astrata. He charges in questions, not coin - one question for one reading, no exceptions. He sails to teach what he has learned before the dervish houses no longer commission his work. Bring him a true question and he will not refuse you. Bring him a flattery and he will not refuse you either, but you will not like the answer.",
-		"Salt cured mackeral and herring for the long caravan trip to land, chests of ice-bound fishes of all varieties. The Sheikhs of the interior have never seen the sea. My partner will bring it to them."
+		"奉至尊之名，获为特许状盖印的埃米尔准许，兹班图向商行管事问好。我的货舱远道而来，莫让它闲置。",
+		"科罗迪亚基的丝绸，穆杰夫卡赫尔的糖和蓝晶，恩什科姆的酒，弗尔达克南几何师的作品。一个帝国，四份货单，谢赫的文书们对我可真有耐心。",
+		"算账前，先陪我坐坐。在兹班图，没人同陌生人做买卖——先喝，再吃，最后才数钱。你的待客之道，会和你的价钱一样令人记忆长久。",
+		"听见后甲板的笛声了吗？我的大副来自穆杰夫卡赫尔，讨价还价若不合拍子，她可不干。她说赛利克斯眷顾她。我发现曲子越快，她砍价越狠。",
+		"你们有毛皮、木材和铁；而普赛顿——愿祂的记忆受颂扬——并未把这些大量留在我们的大陆。所以我们出海，这道算术比你我都古老。",
+		"我的表亲是当地的谢赫，每顿晚饭都不忘提醒我。可现在我在你们码头，他还坐在自家餐桌旁。说说看，谁才真正见过世界？",
+		"祖母教我，不曾与人独处交谈，就算不上了解他。谈完明面上的价钱，便下舱陪我喝一杯吧。真正的数字藏在那里。",
+		"弗尔达克南的埃米尔派了一名禁卫军上船，维持船员间的和睦。他做到了，办法是陪两个人跳舞，再陪第三个喝酒。我会在报告里表扬他。",
+		"第三货舱有个苦修士，自看见你们的海角便一直旋转。他说居奈的刀还在天上转，他也必须转。别理他，及时付我钱就行。",
+		"船首坐着弗尔达克南家族的一位几何师，借阿斯特拉塔的第一缕光为人看手相。他不收钱，收问题，一问换一看，概不例外。他出海传授所学，趁苦修士诸家还愿意委托他工作。带着真诚的问题来，他不会拒绝；奉承他，他也不会拒绝，但答案你恐怕不会喜欢。",
+		"为漫长的内陆商队旅程备些盐腌鲭鱼和鲱鱼，再来几箱各式冰鲜鱼。内陆的谢赫们从未见过海，我的合伙人会把海带到他们面前。"
 	)
