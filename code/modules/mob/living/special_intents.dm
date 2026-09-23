@@ -96,11 +96,11 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		return TRUE
 
 /datum/special_intent/proc/get_examine()
-	var/str = "<details><summary><b>SPECIAL:</b> [name]</summary>"
+	var/str = "<details><summary><b>特殊招式：</b> [name]</summary>"
 	str +="<i>[desc]</i>"
 	if(range)
-		str += "\n<i>Max Range: ["\Roman [range]"]"
-	str +="\n<i><font size = 1>This ability can be used by right clicking while in STRONG stance or by using the Special MMB.</font></i></details>"
+		str += "\n<i>最远距离：["\Roman [range]"]</i>"
+	str +="\n<i><font size = 1>在强力架势下点击右键，或使用鼠标中键的特殊招式功能，即可发动此招式。</font></i></details>"
 	return str
 
 ///Called by external sources -- likely an rclick or mmb. By default the 'target' will be stored as a turf.
@@ -144,7 +144,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 /datum/special_intent/proc/check_range(atom/source, atom/target)
 	if(range)
 		if((get_dist(get_turf(source), get_turf(target)) > range) || source.z != target.z)
-			to_chat(source, span_warning("It's too far!"))
+			to_chat(source, span_warning("太远了！"))
 			return FALSE
 	return TRUE
 
@@ -252,7 +252,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		succeeded = TRUE	//We only want to succeed one do after, cus otherwise it'll try to repeat it per-tile / timer. Glitchy!
 		return TRUE
 	else
-		to_chat(howner, span_warning("I was interrupted!"))
+		to_chat(howner, span_warning("我的招式被打断了！"))
 		cancelled = TRUE
 		return FALSE
 
@@ -274,7 +274,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 				respect_adjacency = FALSE //This ensures multi-timer patterns that call this proc won't get tripped up.
 				break
 		if(!is_adjacent)
-			to_chat(howner, span_danger("I moved too far from my manoeuvre!"))
+			to_chat(howner, span_danger("我离招式的作用范围太远了！"))
 			return
 	if(post_icon_state)
 		for(var/turf/T in turfs)
@@ -308,7 +308,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	if(!istype(iparent, /obj/item/rogueweapon))
 		return
 	var/obj/item/rogueweapon/W = iparent
-	var/msg = "<font color = '#c2663c'>[name] strikes [target]!"
+	var/msg = "<font color = '#c2663c'>[name]击中了[target]！"
 	if(ishuman(target))
 		var/mob/living/carbon/human/HT = target
 		var/obj/item/bodypart/affecting = HT.get_bodypart(zone)
@@ -319,7 +319,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 			armor_block = 0		//You block NOTHING, sir!
 		if(HT.apply_damage(dam, W.damtype, affecting, armor_block))
 			affecting.bodypart_attacked_by(bclass, dam, howner, armor = armor_block, crit_message = TRUE, weapon = W)
-			msg += "<b> It pierces through to their flesh!</b>"
+			msg += "<b> 这一击伤及血肉！</b>"
 			playsound(HT, pick(W.hitsound), 80, TRUE)
 	else
 		target.attacked_by(W, howner)
@@ -388,8 +388,8 @@ SPECIALS START HERE
 */
 
 /datum/special_intent/side_sweep
-	name = "Distracting Swipe"
-	desc = "Swings at your primary flank in a distracting fashion. Anyone caught in it will be exposed for a short while."
+	name = "扰敌横扫"
+	desc = "向惯用手一侧挥击以扰乱敌人，使被击中的目标短暂露出破绽。"
 	tile_coordinates = list(list(0,0), list(1,0), list(1,-1))	//L shape that hugs our -right- flank.
 	post_icon_state = "sweep_fx"
 	pre_icon_state = "trap"
@@ -432,8 +432,8 @@ SPECIALS START HERE
 	..()
 
 /datum/special_intent/shin_swipe
-	name = "Shin Prod"
-	desc = "A hasty attack at the legs, extending ourselves. Slows down the opponent if hit."
+	name = "胫部突刺"
+	desc = "探身快速攻击敌人的腿部，命中后使对手减速。"
 	tile_coordinates = list(list(0,0), list(1,0), list(-1,0))
 	post_icon_state = "sweep_fx"
 	pre_icon_state = "trap"
@@ -460,8 +460,8 @@ SPECIALS START HERE
 	..()
 
 /datum/special_intent/piercing_lunge
-	name = "Piercing Lunge"
-	desc = "A planned attack at the chest, extending ourselves. Pierces our enemy's armor and knocks the wind from them."
+	name = "破甲突刺"
+	desc = "探身瞄准胸口发动攻击，穿透敌人的护甲，使其喘不过气。"
 	tile_coordinates = list(list(0,0), list(0,1))
 	post_icon_state = "stab"
 	pre_icon_state = "trap"
@@ -487,8 +487,8 @@ SPECIALS START HERE
 
 //Hard to hit, freezes you in place. Offbalances & slows the targets hit. If they're already offbalanced they get knocked down.
 /datum/special_intent/ground_smash
-	name = "Ground Smash"
-	desc = "Swings downward, leaving a traveling quake for a few tiles. Anyone struck by it will be slowed and offbalanced, or knocked down if they're already off-balanced."
+	name = "撼地重击"
+	desc = "向下猛击，掀起向前延伸数格的震波。被击中的目标会减速并失去平衡；已经失衡的目标则会被击倒。"
 	tile_coordinates = list(list(0,0), list(0,1, 0.1 SECONDS), list(0,2, 0.2 SECONDS))
 	post_icon_state = "kick_fx"
 	pre_icon_state = "trap"
@@ -534,8 +534,8 @@ SPECIALS START HERE
 
 
 /datum/special_intent/flail_sweep
-	name = "Flail Sweep"
-	desc = "Swings in a perfect circle all around you, pushing people aside. The more are struck, the more powerful the effect."
+	name = "链枷环扫"
+	desc = "向周围挥出一整圈，将身旁的目标推开。命中的目标越多，效果越强。"
 	tile_coordinates = SPECIAL_AOE_AROUND_ORIGIN
 	post_icon_state = "sweep_fx"
 	pre_icon_state = "trap"
@@ -605,8 +605,8 @@ SPECIALS START HERE
 #define AXE_SWING_GRID_MIRROR	list(list(-1,0, 0.4 SECONDS), list(0,0, 0.2 SECONDS), list(1,0))
 
 /datum/special_intent/axe_swing
-	name = "Hefty Swing"
-	desc = "Swings from left to right. Anyone caught in the swing get immobilized and exposed."
+	name = "沉重横扫"
+	desc = "从左向右挥击，使被击中的目标无法移动并露出破绽。"
 	tile_coordinates = AXE_SWING_GRID_DEFAULT
 	post_icon_state = "sweep_fx"
 	pre_icon_state = "trap"
@@ -652,8 +652,8 @@ SPECIALS START HERE
 #undef AXE_SWING_GRID_MIRROR
 
 /datum/special_intent/whip_coil
-	name = "Whip Coil"
-	desc = "A long-range lash that coils around the ankles of the target, immobilizing them."
+	name = "鞭索缠足"
+	desc = "远距离挥鞭缠住目标的脚踝，使其无法移动。"
 	tile_coordinates = list(list(0,0))	//Just one tile exactly where our cursor is.
 	post_icon_state = "strike"
 	pre_icon_state = "trap"
@@ -685,8 +685,8 @@ SPECIALS START HERE
 #define GAREN_WAVE2 1.4 SECONDS
 
 /datum/special_intent/greatsword_swing
-	name = "Great Swing"
-	desc = "Swing your greatsword all around you in a ring of Judgement."
+	name = "巨剑环扫"
+	desc = "挥动巨剑横扫周身，划出审判之环。"
 	tile_coordinates = list(
 		list(0,0), list(1,0), list(1,-1),list(1,-2),list(0,-2),list(-1,-2),list(-1,-1),list(-1,0),\
 		list(0,1, GAREN_WAVE1), list(1,1, GAREN_WAVE1), list(-1,1, GAREN_WAVE1),list(1,-3, GAREN_WAVE1),list(0,-3, GAREN_WAVE1),list(-1,-3, GAREN_WAVE1),list(-2,0, GAREN_WAVE1),list(-2,-1, GAREN_WAVE1),list(-2,-2, GAREN_WAVE1),list(2,0, GAREN_WAVE1),list(2,-1, GAREN_WAVE1),list(2,-2, GAREN_WAVE1),\
@@ -753,8 +753,8 @@ SPECIALS START HERE
 #define FLAIL_WAVE2 1.4 SECONDS
 
 /datum/special_intent/greatflail_swing
-	name = "Greatflail Swing"
-	desc = "Swing your greatflail all around you in a ring of Judgement."
+	name = "巨型链枷环扫"
+	desc = "挥动巨型链枷横扫周身，划出审判之环。"
 	tile_coordinates = list(
 		list(0,0), list(1,0), list(1,-1),list(1,-2),list(0,-2),list(-1,-2),list(-1,-1),list(-1,0),\
 		list(0,1, FLAIL_WAVE1), list(1,1, FLAIL_WAVE1), list(-1,1, FLAIL_WAVE1),list(1,-3, FLAIL_WAVE1),list(0,-3, FLAIL_WAVE1),list(-1,-3, FLAIL_WAVE1),list(-2,0, FLAIL_WAVE1),list(-2,-1, FLAIL_WAVE1),list(-2,-2, FLAIL_WAVE1),list(2,0, FLAIL_WAVE1),list(2,-1, FLAIL_WAVE1),list(2,-2, FLAIL_WAVE1),\
@@ -886,8 +886,8 @@ SPECIALS START HERE
 
 
 /datum/special_intent/upper_cut // 1x1 combo finisher, exposed targets get knocked down and take alot of damage, others take low damage.
-	name = "Upper Cut"
-	desc = "Charge up a devastating strike infront of you, if the target is Exposed they will fall over and be flung back with tremendous damage, if not exposed they will be pushed slightly back.."
+	name = "上挑重击"
+	desc = "蓄力向前发动猛烈的上挑攻击。露出破绽的目标会受到重创，被击倒并向后击飞；否则只会被略微击退。"
 	tile_coordinates = list(list(0,0))
 	post_icon_state = "kick_fx"
 	pre_icon_state = "trap"
@@ -943,8 +943,8 @@ SPECIALS START HERE
 
 
 /datum/special_intent/polearm_backstep
-	name = "Backstep"
-	desc = "A defensive used to quickly gain distance, shoving back any pursuer backwards, slowing and exposing them."
+	name = "后撤步"
+	desc = "用于迅速拉开距离的防守招式，将追击者推开，使其减速并露出破绽。"
 	tile_coordinates = list(
 		list(0,-1), list(1,-1), list(-1,-1)
 		)
@@ -985,8 +985,8 @@ SPECIALS START HERE
 #define MARTYR_WAVE2_DELAY 3 SECONDS
 
 /datum/special_intent/martyr_volcano_slam
-	name = "Volcanic Blaze Slam"
-	desc = "A powerful blow to the ground in front of the Martyr, leaving behind scorched earth and setting fire to anyone it touches. The blow is so powerful that stones fly out of the ground, striking those who remain standing."
+	name = "熔火撼地"
+	desc = "殉道者猛击前方地面，留下一片焦土，点燃波及的所有目标。冲击掀起地面的碎石，砸向仍然站立的敌人。"
 	tile_coordinates = list(
 		list(-1,0), list(0,0), list(1,0),
 		list(-1,1), list(0,1), list(1,1),
@@ -1019,7 +1019,7 @@ SPECIALS START HERE
 /datum/special_intent/martyr_volcano_slam/on_create()
 	. = ..()
 	howner.Immobilize(self_immob_dur)
-	to_chat(howner, span_warning("I slam the ground with volcanic fury!"))
+	to_chat(howner, span_warning("我以火山喷发般的怒火猛击地面！"))
 
 /datum/special_intent/martyr_volcano_slam/apply_hit(turf/T)
 
@@ -1042,8 +1042,8 @@ SPECIALS START HERE
 #define MARTYR_SWIPE_WAVE2_DELAY 1 SECONDS
 
 /datum/special_intent/martyr_blazing_sweep
-	name = "Blazing Axe Sweep"
-	desc = "Two powerful swings of the axe forward, which spread forward in a semicircle and set fire to the heretics."
+	name = "烈焰战斧横扫"
+	desc = "朝前方猛烈挥斧两次，攻击以半圆形向前扩散，点燃异端。"
 	tile_coordinates = list(
 		list(-1,-1), list(1,-1), list(-1,0), list(0,0), list(1,0),
 		list(-2,-1, MARTYR_SWIPE_WAVE2_DELAY), list(-2,0, MARTYR_SWIPE_WAVE2_DELAY), list(-1,1, MARTYR_SWIPE_WAVE2_DELAY),
@@ -1072,7 +1072,7 @@ SPECIALS START HERE
 /datum/special_intent/martyr_blazing_sweep/on_create()
 	. = ..()
 	howner.Immobilize(self_immob_dur)
-	to_chat(howner, span_warning("I unleash a blazing sweep with the martyr's axe in two furious waves!"))
+	to_chat(howner, span_warning("我挥动殉道者之斧，接连扫出两道猛烈的烈焰！"))
 
 /datum/special_intent/martyr_blazing_sweep/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
@@ -1090,8 +1090,8 @@ SPECIALS START HERE
 #define SWORD_SWEEP_WAVE2_DELAY 1.5 SECONDS
 
 /datum/special_intent/martyr_blazing_sweep_sword
-	name = "Blazing Sword Sweep"
-	desc = "Two powerful circular strikes, dealing fire damage and crushing all those fools who dared to surround the Martyr."
+	name = "烈焰长剑环扫"
+	desc = "接连发动两次猛烈的环形挥击，造成火焰伤害，粉碎胆敢包围殉道者的愚徒。"
 	tile_coordinates = list(
 
 		list(-1,0), list(0,0), list(1,0),
@@ -1127,7 +1127,7 @@ SPECIALS START HERE
 /datum/special_intent/martyr_blazing_sweep_sword/on_create()
 	. = ..()
 	howner.Immobilize(self_immob_dur)
-	to_chat(howner, span_warning("I unleash a blazing sword sweep around myself in two furious waves!"))
+	to_chat(howner, span_warning("我挥剑横扫周身，接连掀起两道猛烈的烈焰！"))
 
 /datum/special_intent/martyr_blazing_sweep_sword/apply_hit(turf/T, delay = 0)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
@@ -1143,8 +1143,8 @@ SPECIALS START HERE
 #undef SWORD_SWEEP_WAVE2_DELAY
 
 /datum/special_intent/martyr_blazing_trident
-	name = "Blazing Trident Strike"
-	desc = "A powerful blow with the trident forward, releasing arcs of fire from its teeth, which form the cross of Ten and burn the heretics standing in front."
+	name = "烈焰三叉戟突刺"
+	desc = "挥动三叉戟向前猛刺，从戟尖释放弧形烈焰，汇成十神圣十字，焚烧前方的异端。"
 	tile_coordinates = list(
 
 						list(0,0),
@@ -1177,7 +1177,7 @@ SPECIALS START HERE
 /datum/special_intent/martyr_blazing_trident/on_create()
 	. = ..()
 	howner.Immobilize(self_immob_dur)
-	to_chat(howner, span_warning("I thrust my trident forward and brought down the power stored in it."))
+	to_chat(howner, span_warning("我向前刺出三叉戟，释放其中积蓄的力量！"))
 
 /datum/special_intent/martyr_blazing_trident/apply_hit(turf/T, delay = 0)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
