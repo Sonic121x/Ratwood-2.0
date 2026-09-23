@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue/food
 	group = "食品" // English: Food
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/food/meat
@@ -209,7 +209,7 @@
 				)
 
 /datum/supply_pack/rogue/food/Pepperberries
-	name = "Pepperberries"
+	name = "胡椒粒"
 	cost = 45
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/grown/pepperseed, 
@@ -220,7 +220,7 @@
 				) // Not wrong item
 
 /datum/supply_pack/rogue/food/sugar
-	name = "Sugar"
+	name = "糖"
 	cost = 45
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/sugar,
@@ -231,14 +231,14 @@
 				)
 
 /datum/supply_pack/rogue/food/allspice
-	name = "Allspice"
+	name = "什香粉"
 	cost = 50 //about double the price of its crafting ingredients
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/allspice,
 				)
 
 /datum/supply_pack/rogue/food/chocolate
-	name = "Chocolate"
+	name = "巧克力"
 	cost = 30
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/chocolate,
