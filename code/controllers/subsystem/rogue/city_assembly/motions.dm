@@ -54,7 +54,7 @@
 			if(resolve_get_alderman())
 				demote_alderman("vacated by Assembly vote")
 				out["changed"] = TRUE
-				out["winner_name"] = "(vacant)"
+				out["winner_name"] = "（空缺）"
 			return out
 
 		var/datum/weakref/winner_wr
@@ -67,7 +67,7 @@
 		if(!winner_wr)
 			continue
 
-		var/candidate_name = candidate_info?["name"] || "(unknown)"
+		var/candidate_name = candidate_info?["name"] || "（未知）"
 		var/mob/winner = winner_wr.resolve()
 		if(!winner || !can_hold_office(winner))
 			// Top-voted candidate can't take the seat (dead, outlawed, censured, gone). Log it
@@ -77,7 +77,7 @@
 
 		out["winner_key"] = key
 		out["winner_name"] = candidate_name
-		out["winner_job"] = candidate_info?["job"] || "no station"
+		out["winner_job"] = candidate_info?["job"] || "无职业"
 		var/mob/current = resolve_get_alderman()
 		if(current != winner)
 			promote_to_alderman(winner)
@@ -239,9 +239,9 @@
 	var/list/lines = list()
 	if(summary["flavor_prefix"])
 		lines += "<i>[summary["flavor_prefix"]]</i>"
-	lines += "<b>The City Assembly convenes (Session [summary["session"]]).</b>"
+	lines += "<b>城市议会召开（第 [summary["session"]] 次会议）。</b>"
 	if(!isnull(summary["quorate"]) && !summary["quorate"])
-		lines += "<b>Quorum not met</b> &mdash; only [summary["voter_count"]] voice[summary["voter_count"] == 1 ? "" : "s"] took part. Status quo retained; no motions carry."
+		lines += "<b>未达法定人数</b> &mdash; 仅有 [summary["voter_count"]] 人参与投票。维持现状，所有议案均未获通过。"
 		return lines.Join("<br>")
 
 	var/list/election = summary["results"]?["election"]
@@ -249,43 +249,43 @@
 		var/list/skipped = election["skipped_names"]
 		var/skip_note = ""
 		if(islist(skipped) && length(skipped))
-			skip_note = " (skipped: [jointext(skipped, ", ")] - outlawed or censured)"
+			skip_note = " （已跳过：[jointext(skipped, ", ")] - 身为法外之徒或已受谴责）"
 		var/winner_label = election["winner_name"]
 		var/winner_job = election["winner_job"]
 		if(winner_label && winner_job)
-			winner_label = "[winner_label], the [winner_job]"
+			winner_label = "[SSjob.GetJob(winner_job)?.display_title || winner_job] [winner_label]"
 		if(election["changed"])
-			lines += "<b>Alderman:</b> [winner_label || "(vacant)"] takes the seat[skip_note]."
+			lines += "<b>市政长老：</b> 新任：[winner_label || "（空缺）"][skip_note]。"
 		else if(election["winner_name"])
-			lines += "<b>Alderman:</b> [winner_label] retains the seat[skip_note]."
+			lines += "<b>市政长老：</b> [winner_label]留任[skip_note]。"
 		else
-			lines += "<b>Alderman:</b> no candidate carried; the seat remains as it was[skip_note]."
+			lines += "<b>市政长老：</b> 无候选人当选；席位维持原状[skip_note]。"
 
 	var/list/trade = summary["results"]?["trade_auth"]
 	if(trade)
 		if(trade["vetoed"])
-			lines += "<b>Trade warrant:</b> DENIED by the Commons (NAE >= 50%)."
+			lines += "<b>贸易授权：</b> 平民院已否决（反对票权 >= 50%）。"
 		else if(!isnull(trade["winning_bracket"]))
-			lines += "<b>Trade warrant:</b> [trade["winning_bracket"]]m/day authorized."
+			lines += "<b>贸易授权：</b> 已批准 [trade["winning_bracket"]]m/日的额度。"
 		else
-			lines += "<b>Trade warrant:</b> no bracket carried a majority."
+			lines += "<b>贸易授权：</b> 无额度档位获得多数支持。"
 
 	var/list/defense = summary["results"]?["defense_auth"]
 	if(defense)
 		if(defense["vetoed"])
-			lines += "<b>Defense warrant:</b> DENIED by the Commons (NAE >= 50%)."
+			lines += "<b>防务授权：</b> 平民院已否决（反对票权 >= 50%）。"
 		else if(!isnull(defense["winning_bracket"]))
-			lines += "<b>Defense warrant:</b> [defense["winning_bracket"]]p/day authorized."
+			lines += "<b>防务授权：</b> 已批准 [defense["winning_bracket"]]p/日的额度。"
 		else
-			lines += "<b>Defense warrant:</b> no bracket carried a majority."
+			lines += "<b>防务授权：</b> 无额度档位获得多数支持。"
 
 	var/list/recall = summary["results"]?["recall"]
 	if(recall && recall["cast_count"] > 0)
-		lines += "<b>Recall motion:</b> [recall["passed"] ? "PASSED - Alderman removed." : "failed."]"
+		lines += "<b>罢免议案：</b> [recall["passed"] ? "通过 - 市政长老已被免职。" : "未通过。"]"
 
 	var/list/censure = summary["results"]?["censure"]
 	if(censure && censure["cast_count"] > 0)
-		lines += "<b>Censure motion:</b> [censure["passed"] ? "PASSED - name stricken from the ledger, barred for the week." : "failed."]"
+		lines += "<b>谴责议案：</b> [censure["passed"] ? "通过 - 已从名册除名，本周内不得再任职。" : "未通过。"]"
 
 	return lines.Join("<br>")
 
