@@ -14,23 +14,23 @@
 	category = "Underground"
 
 /datum/book_entry/treasury_underground/black_market
-	name = "01. The Black Market"
+	name = "01. 黑市"
 
 /datum/book_entry/treasury_underground/black_market/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>BLACK MARKET:</b> Merchant letting you down? The Black Market is your friend! Walk out to the black market ruin and use the suspicious Navigator there - it pays out at a much steeper cut than the honest kind, but it asks no questions about where the goods came from.</p>
+		<p><b>黑市：</b>商人让你失望了？黑市才是你的朋友！前往黑市废墟，使用那里的可疑领航员——它的抽成远高于正规渠道，但绝不过问货物的来历。</p>
 
-		<h3>PURITY</h3>
+		<h3>纯净</h3>
 		<ul>
-			<li>A contraband vendor, roundstart-locked by the <code>nightman</code> key. Anyone else needs the key or a successful lockpick.</li>
-			<li>Sells vice goods (drugs, smokes, and similar) not carried on the ordinary GOLDFACE/SILVERFACE category list.</li>
-			<li>Its sibling, BRASSFACE, is the bathhouse goods vendor under the same key, selling alcohols, apparel, instruments and other comforts.</li>
+			<li>售卖违禁品的机器，开局由<code>nightman</code>钥匙锁定。其他人需要取得钥匙或成功撬锁才能使用。</li>
+			<li>售卖普通金面、银面商品目录中没有的享乐品，如毒品、烟草等。</li>
+			<li>它的姊妹机黄铜面是澡堂售货机，使用同一把钥匙，售卖酒类、服饰、乐器和其他享乐用品。</li>
 		</ul>
 
-		<h3>The Ordinance of the Baths</h3>
+		<h3>澡堂条例</h3>
 		<ul>
-			<p>The Church and the Bathhouse hold an agreement: the Bathhouse trades under the Church's sanction and protection, and in exchange a tithe of the stews' commerce renders unto the Church. While the Ordinance is in force, the Crown's import tariff on BRASSFACE and PURITY sales is diverted to the Church, and a share of the Bathhouse Vault's income follows it. Either the Bishop or the Bathmaster may break or restore the seal at a Nervelock, for any reason or none; broken, the stews fall back beneath the Crown's tariff.</p>
+			<p>教会与澡堂订有协议：澡堂在教会的许可与庇护下营业，作为回报，向教会缴纳营业什一税。条例生效期间，黄铜面与纯净售货机原本缴给王室的进口关税将转交教会，澡堂金库的部分收入也同样上缴。主教或澡堂老板可随时在神经锁处解除或恢复协议，无须说明理由；协议解除后，澡堂重新向王室缴纳关税。</p>
 		</ul>
 		</div>
 	"}

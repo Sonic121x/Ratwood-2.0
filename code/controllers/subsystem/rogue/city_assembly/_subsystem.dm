@@ -43,9 +43,9 @@ SUBSYSTEM_DEF(city_assembly)
 	var/mob/alderman = resolve_get_alderman()
 	if(alderman && can_hold_office(alderman))
 		current_session.candidates[WEAKREF(alderman)] = list(
-			"name" = alderman.real_name || "(incumbent)",
-			"job" = alderman.job || "no station",
-			"pledge" = "(the sitting Alderman, automatically listed)",
+			"name" = alderman.real_name || "（现任）",
+			"job" = alderman.job || "无职业",
+			"pledge" = "（现任市政长老，自动列入候选名单）",
 		)
 	invalidate_tallies()
 
@@ -236,8 +236,8 @@ SUBSYSTEM_DEF(city_assembly)
 	if(!current_session)
 		return FALSE
 	current_session.candidates[WEAKREF(user)] = list(
-		"name" = user.real_name || "(unknown)",
-		"job" = user.job || "no station",
+		"name" = user.real_name || "（未知）",
+		"job" = user.job || "无职业",
 		"pledge" = copytext(pledge_text || "", 1, 301),
 	)
 	invalidate_tallies()
@@ -292,24 +292,24 @@ SUBSYSTEM_DEF(city_assembly)
 		current_warrant.reset()
 	var/who = null
 	if(departing_name)
-		who = departing_job ? "[departing_name], the [departing_job]" : departing_name
+		who = departing_job ? "[SSjob.GetJob(departing_job)?.display_title || departing_job] [departing_name]" : departing_name
 	var/reason_tag = null
 	switch(reason)
-		if("resigned")     reason_tag = "has resigned the seat"
-		if("died")         reason_tag = "has died in office"
-		if("disconnected") reason_tag = "has left the Realm"
-		if("admin")        reason_tag = "has been removed by admin fiat"
-		if("recalled")     reason_tag = "has been recalled by the Assembly"
-		if("censured")     reason_tag = "has been censured by the Assembly"
+		if("resigned")     reason_tag = "已辞去职位"
+		if("died")         reason_tag = "已在任内身亡"
+		if("disconnected") reason_tag = "已离开领地"
+		if("admin")        reason_tag = "已被管理员免职"
+		if("recalled")     reason_tag = "已被议会罢免"
+		if("censured")     reason_tag = "已受议会谴责"
 	var/prefix
 	if(who && reason_tag)
-		prefix = "[who] [reason_tag]. "
+		prefix = "[who][reason_tag]。 "
 	else if(who)
-		prefix = "[who] has left the seat. "
+		prefix = "[who]已离任。 "
 	else
 		prefix = ""
 	priority_announce(
-		"[prefix]The Alderman's seat has been vacated - the citizenry must choose anew at the next session.",
+		"[prefix]市政长老之位现已空缺 - 市民须在下次会议中重新选举。",
 		ASSEMBLY_ANNOUNCE_TITLE,
 		'sound/misc/royal_decree.ogg',
 	)
