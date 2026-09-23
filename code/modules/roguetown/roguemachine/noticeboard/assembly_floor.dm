@@ -76,7 +76,7 @@
 			var/mob/cand = wr.resolve()
 			if(!cand)
 				continue
-			var/cand_job = cand.job || "no station"
+			var/cand_job = SSjob.GetJob(cand.job)?.display_title || cand.job || "无职业"
 			var/list/pledge_entry = S.candidates[wr]
 			candidates += list(list(
 				"ref" = REF(wr),
@@ -128,8 +128,8 @@
 
 /datum/city_assembly_panel/proc/build_next_resolution_label()
 	if(SScity_assembly?.first_session_resolve_at > world.time)
-		return "the first session (~[ASSEMBLY_FIRST_SESSION_MINUTES]m post roundstart)"
-	return "the next dawn"
+		return "首次会议（回合开始约[ASSEMBLY_FIRST_SESSION_MINUTES]分钟后）"
+	return "下次黎明"
 
 /datum/city_assembly_panel/ui_act(action, list/params)
 	. = ..()
@@ -184,13 +184,13 @@
 			// Bypasses the physical-access problem (the Stewardry is locked against them) without
 			// bypassing the warrant cap (the Steward machine's own gate still enforces it).
 			if(!SScity_assembly.is_alderman(usr))
-				to_chat(usr, span_warning("Only the sitting Alderman may open the trade writ."))
+				to_chat(usr, span_warning("只有现任市政长老可以打开贸易令状。"))
 				return TRUE
 			if(!SScity_assembly.current_warrant || SScity_assembly.current_warrant.trade_remaining <= 0)
-				to_chat(usr, span_warning("The Commons have set no trade warrant for you, or its coin is spent for the day."))
+				to_chat(usr, span_warning("平民院尚未授予你贸易授权，或今日的额度已耗尽。"))
 				return TRUE
 			if(!SStreasury.steward_machine)
-				to_chat(usr, span_warning("The Nerve Master is not present in the Realm."))
+				to_chat(usr, span_warning("领地内没有神经主。"))
 				return TRUE
 			SStreasury.steward_machine.open_trade_tgui(usr)
 			return TRUE

@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/livestock
 	group = "牲畜" // English: Livestock
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/livestock/saiga

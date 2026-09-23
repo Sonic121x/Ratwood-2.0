@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue/blackmarket_drugs
 	group = "健康与卫生" // English: Health and Hygiene
-	crate_name = "suspicious crate"
+	crate_name = "可疑的货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/blackmarket_drugs/ozium
