@@ -47,40 +47,40 @@
 		<h3>Burgher Pledge</h3>
 		<p>Not actual coin, but a virtual pool pledged by the Burghers of the realm. It refills daily, scaling with a flat base and the active player count.</p>
 
-		<h3>The Steward and the Alderman</h3>
-		<p>The Steward is the standing authority over both pools. The realm may also elect an <b>Alderman</b> through the City Assembly (see the next chapter); while the seat is filled, the Alderman holds a separate daily spending warrant - a trade allotment and a defense allotment - set by the Assembly. When the seat sits empty, the Steward answers for both alone.</p>
+		<h3>总管家与市政长老</h3>
+		<p>总管家长期掌管这两项资金。领地也可以通过城市议会选出一位<b>市政长老</b>（参见下一章）；在任期间，市政长老拥有议会另行授予的每日支出授权，分为贸易额度与防务额度。席位空缺时，两项资金均由总管家独自负责。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_realm/assembly
-	name = "02. The City Assembly and the Alderman"
+	name = "02. 城市议会与市政长老"
 
 /datum/book_entry/treasury_realm/assembly/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>The <b>City Assembly</b> is the realm's Commons. It convenes to fill the seat of the <b>Alderman</b> and to set the bounds of that office. Its floor is reached through the door on the town Noticeboard.</p>
+		<p><b>城市议会</b>是领地的平民院。议会召开会议，选出<b>市政长老</b>并划定其职权范围。可通过城镇公告板上的入口进入议事厅。</p>
 
-		<h3>Sessions</h3>
-		<p>The first Assembly resolves about <b>[ASSEMBLY_FIRST_SESSION_MINUTES] minutes</b> into the round; every session after resolves at <b>dawn</b>. A session settles all of its standing motions at once and then opens a fresh one. If fewer than <b>[ASSEMBLY_QUORUM_VOTERS]</b> distinct citizens cast a vote, the session lapses and everything holds at status quo.</p>
+		<h3>会议</h3>
+		<p>首次会议在回合开始约<b>[ASSEMBLY_FIRST_SESSION_MINUTES]分钟</b>后结算，此后的每次会议均在<b>黎明</b>结算。每次会议会同时结算所有待决议案，随后开启下一次会议。若参与投票的不同市民少于<b>[ASSEMBLY_QUORUM_VOTERS]</b>人，本次会议即告流会，一切维持现状。</p>
 
-		<h3>Who Votes</h3>
-		<p>Any citizen of the realm who is not an outlaw may vote. Vote weight scales with station - burghers and notables carry more voice than common folk, and holding citizenry or residency lifts a transient or peasant to full burgher weight.</p>
+		<h3>谁能投票</h3>
+		<p>领地中凡非处于法外之徒身份的市民均可投票。票权依身份而定，市民阶层与地方名流比普通民众拥有更高的票权；取得公民权或居留权后，流动人口或农民的票权将提升至完整的市民阶层票权。</p>
 
-		<h3>The Motions</h3>
+		<h3>议案</h3>
 		<ul>
-			<li><b>Election</b> - choose the next Alderman from those who have declared candidacy (each may post a short pledge), or vote for <b>No Alderman</b> to leave the seat empty. The sitting Alderman is listed automatically for re-election. A candidate may not be an outlaw, may not have been censured, and may not be a <b>Merchant</b> or <b>Shophand</b> (barred for their direct trade levers - every other station, the bathhouse included, may stand). The seat belongs to the <i>person</i>, not the character sheet: die, resign, or leave the Realm and it falls vacant.</li>
-			<li><b>Trade Authorization</b> - votes the Alderman a daily <b>trade allotment</b> of <b>0, 150, 300, 450, 600, 750, or 900</b> mammon.</li>
-			<li><b>Defense Authorization</b> - votes a daily <b>defense allotment</b> of <b>0, 250, 500, 750, or 1000</b> in burgher pledge.</li>
-			<li><b>Recall</b> - a <b>[ASSEMBLY_RECALL_THRESHOLD_PCT]%</b> majority turns the sitting Alderman out of the seat.</li>
-			<li><b>Censure</b> - a <b>[ASSEMBLY_CENSURE_THRESHOLD_PCT]%</b> supermajority turns the Alderman out <i>and</i> bars them from the office for the rest of the round.</li>
+			<li><b>选举</b> - 从已宣布参选者中选出下一任市政长老（每人可发布简短的竞选承诺），也可投票选择<b>席位空缺</b>，让职位保持无人担任。现任市政长老会自动列入连任候选名单。候选人不得是法外之徒，不得已受谴责，也不得是<b>商人</b>或<b>店员</b>（因其可直接操控贸易而被禁止参选；包括澡堂人员在内的其他职业均可参选）。席位属于<i>本人</i>，而非角色档案：一旦身亡、辞职或离开领地，席位便会空缺。</li>
+			<li><b>贸易授权</b> - 投票授予市政长老每日<b>0、150、300、450、600、750或900</b>玛门的<b>贸易额度</b>。</li>
+			<li><b>防务授权</b> - 投票授予每日<b>0、250、500、750或1000</b>市民认捐的<b>防务额度</b>。</li>
+			<li><b>罢免</b> - 达到<b>[ASSEMBLY_RECALL_THRESHOLD_PCT]%</b>的多数支持即可罢免现任市政长老。</li>
+			<li><b>谴责</b> - 达到<b>[ASSEMBLY_CENSURE_THRESHOLD_PCT]%</b>的特定多数支持即可罢免市政长老，<i>并</i>禁止其在本回合剩余时间内再次任职。</li>
 		</ul>
-		<p>A bracket vote is settled at the highest allotment that still holds the room; if <b>[ASSEMBLY_NAE_VETO_PCT]%</b> or more of the cast weight votes <b>Nae</b>, the authorization is vetoed to nothing.</p>
+		<p>额度表决会通过仍获足够支持的最高额度档位；若<b>反对</b>票权达到已投总票权的<b>[ASSEMBLY_NAE_VETO_PCT]%</b>或以上，授权即被否决，额度归零。</p>
 
-		<h3>The Alderman's Warrant</h3>
-		<p>Once seated, the Alderman holds a spending <b>warrant</b> that refreshes to its authorized caps each dawn. The <b>trade allotment</b> is spent acting on the Crown's trade through the Steward's panel; the <b>defense allotment</b> pays for blockade-defense commissions posted to the Grand Contract Ledger (see <i>Defense and Blockades</i>). Unspent budget does not carry to the next day, and losing or vacating the seat empties the warrant at once.</p>
+		<h3>市政长老的授权</h3>
+		<p>就任后，市政长老获得支出<b>授权</b>，其额度会在每次黎明恢复至获准的上限。<b>贸易额度</b>用于通过总管家的界面代王室开展贸易；<b>防务额度</b>用于支付发布在大契约台账上的反封锁防务委托（参见<i>防务与封锁</i>）。未用完的额度不会结转至次日，失去或放弃席位则会立即清空授权额度。</p>
 
-		<p><b>Held in reserve:</b> the Assembly's power to levy a poll tax of its own is disabled in this build pending anti-dodge rules, so it cannot presently impose a head tax.</p>
+		<p><b>暂未启用：</b>本版本暂时禁用了议会自行征收人头税的权力，待防止逃税的规则完善后再行启用，因此目前议会无法征收人头税。</p>
 		</div>
 	"}
 
@@ -97,7 +97,7 @@
 		<p>While a region is blockaded its trade is throttled - Import Price x<b>[BLOCKADE_IMPORT_MULT]</b>, Export Revenue x<b>[BLOCKADE_EXPORT_MULT]</b> - and the Crown is called to answer it. The blockade holds until it is broken.</p>
 
 		<h3>Breaking a Blockade</h3>
-		<p>The Crown - or an Alderman spending the Assembly's <b>defense allotment</b> (see <i>The City Assembly and the Alderman</i>) - commissions a <b>blockade-defense contract</b> at the Grand Contract Ledger. Adventurers take the writ, put down the besieging faction's waves, and the road reopens. A region that has just been cleared cannot be blockaded again for <b>[BLOCKADE_RECLEAR_COOLDOWN]</b> days.</p>
+		<p>王室，或使用议会<b>防务额度</b>的市政长老（参见<i>城市议会与市政长老</i>），可在大契约台账上发布<b>反封锁防务契约</b>。冒险者接下令状，击退围攻势力的一波波敌人后，道路便会重新开放。刚解除封锁的地区在<b>[BLOCKADE_RECLEAR_COOLDOWN]</b>天内不会再次遭到封锁。</p>
 
 		<p>Separately, a region's <b>Dangerous</b> or <b>Bleak</b> threat classification drains the Crown's Purse every dawn on its own, whether or not a blockade stands - see <i>Banditry</i>.</p>
 		</div>

@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue/blackmarket_diplomacy
 	group = "外交与说服" // English: Diplomacy and Persuasion
-	crate_name = "suspicious crate"
+	crate_name = "可疑的货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/blackmarket_diplomacy/smokebomb
