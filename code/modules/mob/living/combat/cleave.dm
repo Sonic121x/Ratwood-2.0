@@ -9,7 +9,7 @@
 	var/respect_dir = TRUE
 	/// If TRUE, offsets are relative to the user's turf instead of the target's turf.
 	var/user_relative = FALSE
-	var/desc = "Cleaves into nearby targets."
+	var/desc = "顺势劈中附近的额外目标。"
 
 /datum/cleave_pattern/proc/get_facing_dir(mob/living/user, turf/origin)
 	var/use_dir = user.dir
@@ -138,7 +138,7 @@
 		// Target-relative: target at (0,0), user at (0,-1) facing north
 		result = render_grid(tile_offsets, list(0, 0), list(0, -1))
 	if(diagonal_offsets)
-		result += "\n<font color='#aaa'>Diagonal:</font>\n"
+		result += "\n<font color='#aaa'>斜向攻击：</font>\n"
 		if(user_relative)
 			// Offsets relative to user at (0,0), target at (1,1)
 			result += render_grid(diagonal_offsets, list(1, 1), list(0, 0))
@@ -167,39 +167,39 @@
 /datum/cleave_pattern/adjacent
 	tile_offsets = list(list(-1, 0), list(1, 0))
 	max_targets = 1
-	desc = "Cleaves into an adjacent target."
+	desc = "顺势劈中主要目标旁的一个额外目标。"
 
 /datum/cleave_pattern/forward_cleave
 	tile_offsets = list(list(0, 1))
 	max_targets = 1
-	desc = "Cleaves forward into a second target."
+	desc = "向前劈砍，击中主要目标后方的一个额外目标。"
 
 /datum/cleave_pattern/wide_sweep
 	tile_offsets = list(list(-1, 0), list(1, 0), list(0, -1), list(0, 1))
 	max_targets = 2
-	desc = "Sweeps wide, cleaving up to two nearby targets."
+	desc = "大幅横扫，最多劈中主要目标周围的两个额外目标。"
 
 /datum/cleave_pattern/horizontal_sweep
 	tile_offsets = list(list(-1, 0), list(0, 0), list(1, 0))
 	// NE baseline: target tile + two adjacent tiles on user's side
 	diagonal_offsets = list(list(-1, 0), list(0, 0), list(0, -1))
-	diagonal_desc = "Fans out in an L shape when diagonally swept."
+	diagonal_desc = "斜向横扫时，攻击范围呈L形展开。"
 	max_targets = 2
-	desc = "Sweeps horizontally, cleaving up to two additional targets."
+	desc = "水平横扫，最多劈中两个额外目标。"
 
 /datum/cleave_pattern/frontal_arc
 	tile_offsets = list(list(-1, 0), list(1, 0), list(-1, 1), list(0, 1), list(1, 1))
 	// NE baseline: arc wrapping from upper-left around to lower-right
 	diagonal_offsets = list(list(-1, 1), list(0, 1), list(1, 0), list(1, -1))
-	diagonal_desc = "Fans out in an L shape when diagonally swept."
+	diagonal_desc = "斜向横扫时，攻击范围沿前方两侧展开。"
 	user_relative = TRUE
 	max_targets = 4 // Anti Dorpel pattern.
-	desc = "Sweeps in a massive arc, hitting up to four targets to the sides and ahead."
+	desc = "大幅弧形横扫，最多击中自身两侧及前方的四个额外目标。"
 
 /datum/cleave_pattern/lance
 	tile_offsets = list(list(0, 1), list(0, 2))
 	max_targets = 1
-	desc = "Lances forward, skewering a target three tiles ahead and anyone behind them."
+	desc = "向前突刺，最多贯穿主要目标后方一至两格内的一个额外目标。"
 
 /datum/cleave_pattern/frontal_t
 	// U is at (0, 0)
@@ -211,4 +211,4 @@
 	)
 	user_relative = TRUE
 	max_targets = 2
-	desc = "Cleaves in a T-shaped pattern directly ahead."
+	desc = "向正前方进行T形劈砍，最多击中两个额外目标。"
