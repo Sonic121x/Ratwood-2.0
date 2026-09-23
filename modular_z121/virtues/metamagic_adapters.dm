@@ -759,7 +759,7 @@
 		playsound(get_turf(target), 'sound/magic/zizo_snuff.ogg', 80, TRUE, soundping = TRUE)
 		to_chat(target, span_warning("我喉中的风声忽然止息了。我说不出话了！"))
 		var/dur = max((9 * (user.get_skill_level(associated_skill, 5))))
-		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = z121_duration(dur SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = z121_duration(10 SECONDS))
 		return TRUE
 
 // 来源：code/modules/spells/spell_types/wizard/invoked_aoe/ensnare.dm
