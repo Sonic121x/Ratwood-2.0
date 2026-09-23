@@ -235,7 +235,7 @@
 	if(world.time <= user.next_move)
 		return
 	/*if(!user.can_bite()) // If this is enabled, check can_bite or else won't be able to chew after biting
-		to_chat(user, span_warning("My mouth has something in it."))
+		to_chat(user, span_warning("我的嘴里已经有东西了。"))
 		return FALSE*/
 
 	user.changeNext_move(CLICK_CD_GRABBING)
