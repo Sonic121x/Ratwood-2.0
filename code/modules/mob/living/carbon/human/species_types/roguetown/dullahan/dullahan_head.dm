@@ -43,18 +43,18 @@
 	if(dragged != user)
 		return
 	if(!user.can_do_sex())
-		to_chat(user, "<span class='warning'>I can't do this.</span>")
+		to_chat(user, "<span class='warning'>我做不到。</span>")
 		return
 	if(!user.client.prefs.sexable)
-		to_chat(user, "<span class='warning'>I don't want to touch [target]. (Your ERP preference, in the options)</span>")
+		to_chat(user, "<span class='warning'>我不想碰触[target]。（由你在选项中的 ERP 偏好决定）</span>")
 		return
 	if(!target.client || !target.client.prefs)
-		to_chat(user, span_warning("[target] is simply not there. I can't do this."))
+		to_chat(user, span_warning("[target]不在线，我无法这样做。"))
 		log_combat(user, target, "tried ERP menu against d/ced")
 		return
 	if(!target.client.prefs.sexable) // Don't bang someone that doesn't want it.
-		to_chat(user, "<span class='warning'>[target] doesn't want to be touched. (Their ERP preference, in the options)</span>")
-		to_chat(target, "<span class='warning'>[user] failed to touch you. (Your ERP preference, in the options)</span>")
+		to_chat(user, "<span class='warning'>[target]不想被碰触。（由对方在选项中的 ERP 偏好决定）</span>")
+		to_chat(target, "<span class='warning'>[user]未能碰触你。（由你在选项中的 ERP 偏好决定）</span>")
 		log_combat(user, target, "tried unwanted ERP menu against")
 		return
 	user.sexcon.start(target)
@@ -94,18 +94,18 @@
 
 	if(src.original_owner != target)
 		if(user == target)
-			to_chat(user, span_notice("This is not my head!"))
+			to_chat(user, span_notice("这不是我的头！"))
 		else
-			to_chat(user, span_notice("That is not [target]'s head!"))
+			to_chat(user, span_notice("那不是[target]的头！"))
 		return ..()
 
 	if(user == target)
-		user.visible_message(span_notice("[user] begins putting on [user.p_their()] head..."), \
-			span_notice("I begin putting on my head..."))
+		user.visible_message(span_notice("[user]开始装回自己的头……"), \
+			span_notice("我开始装回自己的头……"))
 	else
-		target.visible_message(span_notice("[user] begins putting on [target]'s head for them..."), \
-			span_notice("[user] is putting on my head for me..."))
-		to_chat(user, span_notice("I try to put [user]'s head on for them..."))
+		target.visible_message(span_notice("[user]开始为[target]装回头颅……"), \
+			span_notice("[user]正在为我装回头颅……"))
+		to_chat(user, span_notice("我试着为[target]装回头颅……"))
 
 	if(do_after(user, 3, target = target))
 		attach_limb(target)
@@ -127,11 +127,11 @@
 
 	var/obj/item/equipped_nodrop = get_nodrop_head()
 	if(equipped_nodrop)
-		to_chat(user, span_notice("The [equipped_nodrop.name] keeps the binds of my neck stuck together!"))
+		to_chat(user, span_notice("[equipped_nodrop.name]使我颈部的连接无法分开！"))
 		return ..()
 
-	user.visible_message(span_notice("[user] begins taking off [user.p_their()] head..."), \
-		span_notice("I begin taking off my head..."))
+	user.visible_message(span_notice("[user]开始取下自己的头……"), \
+		span_notice("我开始取下自己的头……"))
 	if(do_after(user, 3, target = user))
 		my_head.drop_limb(FALSE)
 
@@ -234,7 +234,7 @@
 	return ..()
 
 /obj/item/bodypart/head/dullahan/proc/on_head_detached(mob/living/carbon/human/user)
-	to_chat(user, span_bad("I feel my strength wane as my head is removed from my body."))
+	to_chat(user, span_bad("随着头颅离开身体，我感到力量逐渐衰退。"))
 	for(var/trait_to_add in traits_to_add)
 		ADD_TRAIT(user, trait_to_add, "dullahan")
 	for(var/trait_to_remove in traits_to_remove)
@@ -243,7 +243,7 @@
 			traits_removed += trait_to_remove
 
 /obj/item/bodypart/head/dullahan/proc/on_head_attached(mob/living/carbon/human/user)
-	to_chat(user, span_good("I feel my strength return as my head sits upon my body once more."))
+	to_chat(user, span_good("头颅重新回到身体上，我感到力量恢复了。"))
 	for(var/trait_to_remove in traits_to_add) // I know, awful naming but! We're removing the traits we added.
 		if(HAS_TRAIT(user, trait_to_remove))
 			REMOVE_TRAIT(user, trait_to_remove, "dullahan")
@@ -367,7 +367,7 @@
 		return FALSE
 
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
-	C.visible_message(span_danger("<B>[C] is EASILY DECAPITATED!</B>"))
+	C.visible_message(span_danger("<B>[C]的头颅被轻易斩下！</B>"))
 
 	//C.emote("painscream") // Should we still scream? Decapitations would happen quite often.
 	//src.add_mob_blood(C)
@@ -446,7 +446,7 @@
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong) || (user.m_intent == MOVE_INTENT_SNEAK))
 				used += 10
 		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP && bclass != BCLASS_PIERCE) && prob(used))
-			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
+			owner.next_attack_msg += " <span class='crit'><b>致命一击！</b> [owner]被[from_behind ? "来自背后的攻击" : "攻击"]打昏了！</span>"
 			owner.flash_fullscreen("whiteflash3")
 			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
 			if(owner.client)
@@ -556,9 +556,9 @@
 		message_range += (5 + buff.potency) // maximum 12 tiles extra, which is a lot!
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if (prob(buff.potency * 3) && S.speaking) // 3% chance per holy level, per SCOM for it to shriek your message in town wherever you are
-				S.verb_say = "shrieks in terror"
-				S.verb_exclaim = "shrieks in terror"
-				S.verb_yell = "shrieks in terror"
+				S.verb_say = "惊恐地尖叫"
+				S.verb_exclaim = "惊恐地尖叫"
+				S.verb_yell = "惊恐地尖叫"
 				S.say(message, spans = list("info", "reallybig"))
 				S.verb_say = initial(S.verb_say)
 				S.verb_exclaim = initial(S.verb_exclaim)
@@ -660,11 +660,11 @@
 	if(message_mode == MODE_WHISPER)
 		. = verb_whisper
 	else if(message_mode == MODE_WHISPER_CRIT)
-		. = "[verb_whisper] in [p_their()] last breath"
+		. = "用最后一口气[verb_whisper]"
 	else if(original_owner.stuttering)
-		. = "stammers"
+		. = "结结巴巴地说"
 	else if(original_owner.derpspeech)
-		. = "gibbers"
+		. = "语无伦次地说"
 	else if(message_mode == MODE_SING)
 		. = verb_sing
 	else
@@ -686,12 +686,12 @@
 	var/list/dat = list()
 
 	dat += "<table>"
-	dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head_item && !(head_item.item_flags & ABSTRACT)) ? head_item : "<font color=grey>Head</font>"]</A></td></tr>"
+	dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head_item && !(head_item.item_flags & ABSTRACT)) ? head_item : "<font color=grey>头部</font>"]</A></td></tr>"
 
 	if(hidden_slots & HIDEMASK)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>已遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT)) ? wear_mask : "<font color=grey>Mask</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT)) ? wear_mask : "<font color=grey>面具</font>"]</A></td></tr>"
 
 	dat += "<tr><td><hr></td></tr>"
 
@@ -721,8 +721,8 @@
 	if(!close || !target_item)
 		return
 
-	visible_message(span_warning("[user] tries to remove [src]'s [target_item]."))
-	to_chat(user, span_danger("I try to remove [src]'s [target_item]..."))
+	visible_message(span_warning("[user]试图取下[src]上的[target_item]。"))
+	to_chat(user, span_danger("我试图取下[src]上的[target_item]……"))
 
 	if(do_after(user, target_item.strip_delay, target = src))
 		if(target_item && (user.is_holding(src) || get_turf(src) == get_turf(user)))
@@ -735,7 +735,7 @@
 /obj/item/bodypart/head/dullahan/proc/dropped_equip(slot, mob/user)
 	var/obj/item/target_item = user.get_active_held_item()
 	if(target_item && (HAS_TRAIT(target_item, TRAIT_NODROP)))
-		to_chat(src, span_warning("I can't put \the [target_item.name] on [src], it's stuck to my hand!"))
+		to_chat(src, span_warning("我无法给[src]戴上[target_item.name]，它粘在我手上了！"))
 		return
 
 	if((slot != "[SLOT_WEAR_MASK]" && slot != "[SLOT_HEAD]") || istype(target_item, /obj/item/clothing/head/hooded))
@@ -749,8 +749,8 @@
 	if(!close)
 		return
 
-	visible_message(span_notice("[user] tries to put [target_item] on [src]."))
-	to_chat(user, span_notice("I try to put [target_item] on [src]..."))
+	visible_message(span_notice("[user]试图给[src]戴上[target_item]。"))
+	to_chat(user, span_notice("我试图给[src]戴上[target_item]……"))
 
 	if(do_after(user, target_item.equip_delay_other, target = src))
 		if(target_item && (user.is_holding(src) || get_turf(src) == get_turf(user)))
