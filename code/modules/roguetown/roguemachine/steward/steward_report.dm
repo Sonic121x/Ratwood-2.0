@@ -4,8 +4,8 @@
 // stubbed (_es_compat.dm). Every key below is populated by economy.dm, blockade_lifecycle.dm
 // and banditry_drain.dm.
 /obj/item/paper/steward_report
-	name = "总管家晨报"
-	desc = "一张盖有清晰印章的纸页汇总了昨夜发往神经主的公文. 供总管家起身后阅览."
+	name = "总管晨报"
+	desc = "一张盖有清晰印章的纸页汇总了昨夜发往神经主的公文. 供总管起身后阅览."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "scroll"
 	info = ""
@@ -40,7 +40,7 @@
 	var/urgent_rolled = diff["urgent_rolled"] || 0
 	var/day = diff["day"] || GLOB.dayspassed
 
-	var/body = "<center><b>总管家晨报</b></center><br>"
+	var/body = "<center><b>总管晨报</b></center><br>"
 	body += "<center><i>第 [day] 日</i></center><br><hr>"
 
 	if(length(blockades_fired))
