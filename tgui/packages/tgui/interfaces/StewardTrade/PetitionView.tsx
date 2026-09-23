@@ -40,7 +40,7 @@ export const PetitionView = (props: { data: Data }) => {
   const cannotActReason = petition.is_alderman_acting
     ? '市政长老的令状未授予向贸易大厅请愿的权限.'
     : !petition.is_steward_role
-      ? '只有总管家, 书记官, 或大公能够向贸易大厅请愿.'
+      ? '只有总管, 书记官, 或大公能够向贸易大厅请愿.'
       : '';
 
   return (
