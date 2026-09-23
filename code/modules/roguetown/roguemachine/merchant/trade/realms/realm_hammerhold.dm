@@ -1,6 +1,6 @@
 /datum/foreign_realm/hammerhold
 	id = REALM_HAMMERHOLD
-	name = "Hammerhold"
+	name = "铁锤堡"
 	roll_weight = TRADE_REALM_WEIGHT_DISTANT
 	demanded_categories = list(NAVIGATOR_BUCKET_GARMENT_COMMON, NAVIGATOR_BUCKET_ARMOR_HEAVY, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
@@ -19,11 +19,11 @@
 		"Ætheling", "Wulfing", "se Reada", "Eorling", "Stoneward",
 	)
 	ship_types = list(
-		list("name" = "Knarr", "tonnage" = 25, "weight" = 10),
-		list("name" = "Ballinger", "tonnage" = 50, "weight" = 25),
-		list("name" = "Cog", "tonnage" = 120, "weight" = 35),
-		list("name" = "Hulk", "tonnage" = 250, "weight" = 20),
-		list("name" = "Great Ship", "tonnage" = 700, "weight" = 10),
+		list("name" = "克纳尔货船", "tonnage" = 25, "weight" = 10),
+		list("name" = "巴林格轻帆船", "tonnage" = 50, "weight" = 25),
+		list("name" = "柯克帆船", "tonnage" = 120, "weight" = 35),
+		list("name" = "霍尔克货船", "tonnage" = 250, "weight" = 20),
+		list("name" = "巨型帆船", "tonnage" = 700, "weight" = 10),
 	)
 	name_prefixes = list(
 		list("text" = "Eorl ", "chance" = 4),
@@ -102,23 +102,23 @@
 		/datum/supply_pack/rogue/alcohol/stonebeard,
 	)
 	hail_lines = list(
-		"Hail, factor. Copper from the Mountainhomes, stone from the Bán. Bring grain, bring cloth, bring cheese - or do not waste my tide.",
-		"Six months out from Norwardine. Six months, factor. Spare me your haggling and I will spare you my temper.",
-		"You would not believe what the Grenzel collectors charge on the Eisenhafen river-locks now. Highway robbery, if rivers had highways. We rounded the cape instead - it was cheaper, and that is no exaggeration.",
-		"Either the long route around the continent, or the Grenzelhoftian river tolls. Both are worse than they used to be. I picked the one without their priests at every chain.",
-		"My salt is two months past brined. My crew is three weeks past patient. Trade kindly.",
-		"We slipped a Grenzel patrol off the Eisenhafen banks two weeks past. The Imperate calls us robber-lords; here we will call ourselves traders. Let your magistrate do the same.",
-		"The hammers of Quicksilver Hold sound from this voyage's keel - hold and humen, working as one. Treat her gently at the pier.",
-		"I am told your tariff men weigh light and tax heavy. We shall see.",
-		"My helmsman is a thane's heir-apparent, finishing his yil and his ten raids before he may inherit. Do not provoke him - the Atgervi do not start fights, but they do finish them.",
-		"By PSYDON who slumbers and stirs, the wind held all the way past the Otavan capes. I will pay my chaplain a bonus and you will pay a fair price. Let it be a good day.",
-		"I bear word from a Greycoat warden of the Granite Fort: the dwarf-kings honor the old pact, the underdeep is quiet this season. Trade with us as Harlond traded with them.",
-		"Look at the gilbronze fittings of my hold and tell me my craftsmen lie. Norwardine guild work, every plate. Worth the long crossing to bring them south.",
-		"My grandfather sailed this run before the harbor was dredged. He lost two teeth to your magistrate. I have come for the rest of his coin.",
-		"A pilgrim of the Bán rides with us. He has not spoken since Walnut Grove. The forest there has a way with quiet men - do not ask after him.",
-		"There is a tale on the Mountainhomes road - a man in Ravoxian plate, fighting alone, walking out of his own grave. The crew thinks it nonsense. I am less certain. Pay quickly and let me sail before I must think on it longer.",
-		"Three of my deckhands are bull-marked beneath the eyes - pardoned in the Hearth's tradition. They lift cargo, not coin. Mind your stevedores.",
-		"My factor at Norwardine warned me the southern markets had soured. I came anyway. Let us see who was right.",
-		"My ship carries an old Atgervi veteran, his last voyage before the abbey takes his sword. For three zennies he will sit with you and tell the true account of the Brazen Bull, the Greycoat war, and the night the gates of Granite Fort first opened to humen. He drinks more than he eats. Pay him and listen well - in Norwardine the songs live in the men who sing them, and there are not many old men left who remember the early daes.",
-		"Factor! Give me the biggest barrel of sturgeon and caviar I have ever seen! I shall trade the finest armor of gilbranze and steel! True dwarven crafts from Hammerhold. It will even take three siegebolts to the chest for your trouble. It is marked and proofed, you can even see the dent and a seal of the craftsman on the inside. And for your troubles, I shall give you four bottles of our finest voddena and ingots. My Hold hungers for the finest southern delicacies. Please deliver them unto me with haste. I'd like a taste before we set sail."
+		"你好，商行管事。山中家园的铜，班地的石料。带来谷物、布匹和奶酪，否则别耽误我的潮汐。",
+		"从诺瓦丁出发已经六个月了。六个月，商行管事。少跟我讨价还价，我也就少发脾气。",
+		"你绝想不到格伦泽尔人在艾森哈芬的河闸如今收多少税。简直是拦路抢劫，只不过路在河上。我们改走海角绕行了，那样反而更便宜，半点不夸张。",
+		"要么绕大陆走远路，要么交格伦泽尔霍夫特的过河费。两条路都比过去难走。我选了不用每到一处拦河链就见到他们祭司的那条。",
+		"我的盐货已经腌了两个月，船员的耐心三周前就用完了。还请好好交易。",
+		"两周前，我们在艾森哈芬岸边甩掉了一支格伦泽尔巡逻队。帝国称我们为强盗领主；到了这里，我们自称商人。也让你们的治安官这样称呼我们。",
+		"这次航行的龙骨中回荡着水银堡的锤声——堡垒子民与人类齐心打造。靠码头时待她温柔些。",
+		"听说你们的税吏称重时少算，收税时多收。咱们走着瞧。",
+		"我的舵手是一位领主的指定继承人，要完成一年的历练和十次劫掠才能继承。别招惹他——阿特格维人不挑起争斗，但一定会了结争斗。",
+		"感谢沉眠而将醒的普赛顿，顺风一直送我们驶过奥塔瓦的海角。我会给随船祭司赏钱，你则给我个公道价。愿今日顺遂。",
+		"我带来了花岗岩堡一位灰衣守卫的消息：矮人诸王恪守旧约，今季地下深处很平静。像当年哈隆德与他们交易那样，与我们交易吧。",
+		"看看我货舱的吉尔青铜配件，再说我的工匠是不是在吹牛。每块板都是诺瓦丁公会的手艺，值得我千里迢迢运到南方。",
+		"港口还没疏浚的时候，我祖父就在跑这条航线了。你们的治安官打掉了他两颗牙。我是来拿回他剩下的钱的。",
+		"一位班地朝圣者与我们同行。自从离开核桃林，他便一言不发。那里的森林对沉默寡言的人自有办法——别打听他的事。",
+		"山中家园的路上传着一个故事：一位身披拉沃克斯板甲的人独自作战，从自己的坟墓里走了出来。船员觉得是胡说，我却没那么肯定。快付钱让我起航，免得我再胡思乱想。",
+		"我的三个水手眼下烙着公牛印记，按炉火的传统，他们已获赦免。他们搬货，不偷钱。管好你们的码头工人。",
+		"我在诺瓦丁的商行管事警告我，南方市场不景气。我还是来了。看看谁说得对。",
+		"船上有一位阿特格维老兵，这是修道院收走他的剑之前的最后一次航行。给他三枚泽尼，他便会坐下来，为你讲述铜牛、灰衣战争，以及花岗岩堡的大门首次向人类敞开的那个夜晚的真相。他喝得比吃得多。付钱，好好听——在诺瓦丁，歌谣活在唱歌的人身上，而记得早年岁月的老人已经不多了。",
+		"商行管事！给我装上满满一大桶鲟鱼和鱼子酱，要比我见过的都大！我拿最好的吉尔青铜与钢制铠甲来换！真正的铁锤堡矮人工艺，胸口能挨三发攻城弩箭。铠甲有标记，也经过检验，内侧还看得见凹痕和工匠印记。为答谢你，我再送上四瓶最好的沃德娜酒和金属锭。我的堡垒渴望最上等的南方佳肴，请尽快送来。我想起航前先尝尝。"
 	)
