@@ -3,8 +3,8 @@
 		return
 	var/turf/start_turf = get_turf(src)
 	var/mob/holder = holder_mob()
-	var/bomb_word = flight.bombs > 1 ? "BOMBS" : "BOMB"
-	var/zad_word = flight.zads_used > 1 ? "zads" : "zad"
+	var/bomb_word = flight.bombs > 1 ? "多枚炸弹" : "炸弹"
+	var/zad_word = flight.zads_used > 1 ? "扎德鸟群" : "扎德鸟"
 	var/descend_time = rand(ZAD_FLIGHT_BOMB_LANDING_MIN, ZAD_FLIGHT_BOMB_LANDING_MAX)
 	play_zad_bomb_descend(src, flight.zads_used, flight.bombs, descend_time)
 	balloon_alert_to_viewers("<font color='#ff2222'><b>[bomb_word]!!!</b></font>")
@@ -13,11 +13,11 @@
 	playsound(src, 'sound/items/blackeye_warn.ogg', 80, FALSE, 4)
 	playsound(src, pick('sound/vo/mobs/bird/CROW_01.ogg','sound/vo/mobs/bird/CROW_02.ogg','sound/vo/mobs/bird/CROW_03.ogg'), 70, TRUE, 3)
 	if(holder)
-		to_chat(holder, "<span class='userdanger'>[bomb_word] dangle from the [zad_word] above your zadcage!</span>")
+		to_chat(holder, "<span class='userdanger'>你的扎德鸟笼上方，[zad_word]身下悬挂着[bomb_word]！</span>")
 	for(var/mob/living/M in range(3, src))
 		if(M == holder)
 			continue
-		to_chat(M, "<span class='userdanger'>Above [src]: [bomb_word]!</span>")
+		to_chat(M, "<span class='userdanger'>[src]上方有[bomb_word]！</span>")
 	log_zad_bomb_dispatch(flight, start_turf)
 	addtimer(CALLBACK(src, PROC_REF(detonate_bombs), flight.bombs), descend_time)
 
