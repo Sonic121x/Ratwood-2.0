@@ -1,7 +1,7 @@
 // Loan contracts and indenture writs 
 /obj/item/loan_contract
 	name = "贷款合同"
-	desc = "一份由神经主签发的约束性令状, 带有总管家的签名. 任何符合资格的持有人均可接受其条款."
+	desc = "一份由神经主签发的约束性令状, 带有总管的签名. 任何符合资格的持有人均可接受其条款."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "paper_prep"
 	w_class = WEIGHT_CLASS_TINY
