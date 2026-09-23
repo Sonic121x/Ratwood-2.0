@@ -172,8 +172,8 @@
 
 // Seneschal's seal
 /obj/item/seal/seneschal
-	name = "总管家印封"
-	seal_label = "腐木谷要塞总管家"
+	name = "内务总管印封"
+	seal_label = "腐木谷要塞内务总管"
 	seal_color = "#5f70a7"
 
 // Hand of the Ruler seal
