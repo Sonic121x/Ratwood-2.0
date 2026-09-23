@@ -1,6 +1,6 @@
 /datum/foreign_realm/kazengun
 	id = REALM_KAZENGUN
-	name = "Kazengun"
+	name = "风郡"
 	roll_weight = TRADE_REALM_WEIGHT_DISTANT
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
@@ -19,10 +19,10 @@
 		"Kurogane", "Yamashiro", "Tsukinami", "Koganei", "Akizuki",
 	)
 	ship_types = list(
-		list("name" = "Sekibune", "tonnage" = 90, "weight" = 35),
-		list("name" = "Bezaisen", "tonnage" = 120, "weight" = 40),
-		list("name" = "Shuinsen", "tonnage" = 400, "weight" = 15),
-		list("name" = "Atakebune", "tonnage" = 600, "weight" = 10),
+		list("name" = "关船", "tonnage" = 90, "weight" = 35),
+		list("name" = "弁才船", "tonnage" = 120, "weight" = 40),
+		list("name" = "朱印船", "tonnage" = 400, "weight" = 15),
+		list("name" = "安宅船", "tonnage" = 600, "weight" = 10),
 	)
 	name_suffixes = list(
 		list("text" = "-Maru", "chance" = 75),
@@ -100,23 +100,23 @@
 		/datum/supply_pack/rogue/alcohol/kgunsake,
 	)
 	hail_lines = list(
-		"Kazengun greets the factor. Tea, silk, and rice are in the hold. The terms are simple; the courtesies are not.",
-		"My ship is licensed by the Mita Clan of Tamiro. Read the seal before you read the manifest - the order is not optional.",
-		"A Chonin of Tatseshira does not haggle in the street like a westerner. Speak your offer once, with respect, and we shall conclude this with dignity.",
-		"By Aisata's Order, my weights are true. Verify them if you must. To accuse without verifying is a different matter.",
-		"We crossed the Asemai calm as the proverb. We crossed your western waters less so. The fee should reflect the difference.",
-		"My crew has been told the foreign chaos is not their concern. Keep them on the pier and they will keep your stevedores breathing.",
-		"I sail with a 寇肯 aboard, returning from service abroad. He has not spoken since we cleared Kukui. Do not address him - he is not a guest of your house, only of mine.",
-		"Aisata rises in the east and sets beyond your Otavan capes. I follow her path. one month out, one month back, and the sums must justify both.",
-		"A typhoon caught us off Mitihara on the outward leg - the city still rebuilds even ten yils after the last. We brought what was salvaged. Pay fairly for it.",
-		"Mamuke's iron, Matoko's coin. The trade is blessed; do not curse it with delay.",
-		"My passenger of Aisataiji travels under the seal of the temples. He will disembark, pay his harbor fee, and be gone before the bell. You will not have seen him.",
-		"A lacquered chest in my hold is sealed by the Tsukita Clan. It is not for sale. It is not for inspection. It is not for your magistrate's curiosity. Trade my open cargo and let the rest be.",
-		"My grandfather signed the first compact with your factor in his eighteenth yil. I am here to honor it in my forty-third. Let us not waste either lifetime.",
-		"I am told a Hangyaku of the southern fiefs walks your streets, dishonored and selling his blade. If you see him, factor, do not feed him - the dishonored eat their shame, not your bread.",
-		"My silk is from the looms of Tamiro itself, not the mainland imitations. Pay the difference; you will know it on the touch.",
-		"The tariff at home does not negotiate. Yours, I trust, has more grace. Demonstrate it.",
-		"My tea master is from Aisataiji - trained at the foothill temples. For one zenny they will perform the Calm-as-the-Asemai ceremony, three hours, full silence, and seven different leaves from the islands. They have rejected the offers of clans richer than yours. They sail with me, to pass on our ancient arts. Do a favor to an old man and old master. Pay them and record his arts in your journals.",
-		"One question, before we trade. Who is Alotheos, and why does your people keep robbing his tomb?",
-		"I have heard of the fame of this land's fishes. Big! Long! Fat, tasty and succulent. Full of umami. We have Xinyi runic chest to preserve it for the journey home. Now, summon your best fisherman and sell me your best price for a catch of your cod, salmon, and crabs. I only want the expensive, truly good ones, not the cheap one - these are not worth the space on my ship. Please, do not be like the less Factor who tried to offer me cheap fishes and pass them off. Us Kazengunese know the difference, and I will not be fooled.",
+		"风郡向商行管事致意。货舱里有茶叶、丝绸和稻米。交易条件简单，礼数却不可简慢。",
+		"我的船获准于塔米罗的米塔氏族。先看印章，再看货单——顺序不得颠倒。",
+		"塔特希拉的町人不会像西方人那样在街头讨价还价。恭敬地报一次价，我们便能体面地成交。",
+		"依艾萨塔的秩序，我的秤绝无虚假。若有必要，尽管查验。未经查验便指责，可就是另一回事了。",
+		"我们渡过阿瑟迈时，海面如谚语所说般平静。你们西方的海域却没那么安宁。费用理应体现这份差别。",
+		"我已告诉船员，异国的混乱与他们无关。让他们留在码头，他们就会让你们的码头工人继续喘气。",
+		"船上有一名在海外服役后归来的寇肯。自驶离库奎，他就一言不发。别跟他搭话——他是我的客人，不是你家的客人。",
+		"艾萨塔从东方升起，落于你们奥塔瓦的海角之外。我追随她的道路，去程一月，归程一月，两程都得有所值。",
+		"去程时，我们在米提原外海遭遇台风——距上次台风已有十年，那座城仍在重建。我们带来了抢救下来的货物，请给个公道价。",
+		"玛穆克的铁，玛托科的钱币。这场交易已受祝福，别让拖延给它招来诅咒。",
+		"我那位来自艾萨太寺的乘客持着寺院的印信。他会上岸，缴清港口费，在钟响前离去。你就当从未见过他。",
+		"货舱里有一只由月田氏族封印的漆箱。不卖，不接受检查，也不供你们的治安官满足好奇。交易公开的货物，其他的别管。",
+		"我祖父十八岁时与你们的管事签下第一份盟约。我今年四十三，来此履约。莫要辜负我们两代人的岁月。",
+		"听说南方领地有个背负耻辱的叛逆在你们街上卖剑为生。管事，若见到他，别给他吃的——蒙羞者该以耻辱为食，而非你们的面包。",
+		"我的丝绸出自塔米罗本土的织机，不是大陆仿品。付清差价，手一摸你就知道值不值。",
+		"家乡的关税没有商量余地。我相信你们的更讲情面，证明给我看吧。",
+		"我的茶师来自艾萨太寺，在山麓的寺院受艺。只要一枚泽尼，他便会演示静若阿瑟迈的茶仪：三个小时，全程无声，用上群岛的七种茶叶。他曾拒绝比你们富裕的氏族，随我出海，只为传授我们的古老技艺。帮一位老人、老艺师一个忙，付钱请他演示，并将他的技艺记入日志。",
+		"交易前问一句：阿洛西俄斯是谁，你们的人为何总去盗他的墓？",
+		"久闻此地鱼鲜盛名。又大！又长！肥美多汁，鲜味十足。我们有信义符文箱，足以保鲜运回家。叫来最好的渔夫，给鳕鱼、鲑鱼和螃蟹报个最好的价。我要贵的、真正上等的货，不要廉价货，它们不配占我的船舱。请别像上一个管事那样，拿便宜鱼来以次充好。我们风郡人识货，休想骗我。",
 	)

@@ -1,7 +1,7 @@
 /datum/realm_condition/aavnr_border_skirmish
 	id = "aavnr_border_skirmish"
-	name = "Border Skirmish"
-	description = "A border skirmish has been occuring in a province near the Aavnic border. While it hasn't escalated into a full scale war, grain trade is disrupted while livestocks are slaughtered for supplies. Hide sells cheap while iron ingots are driven up in price."
+	name = "边境冲突"
+	description = "阿瓦尔边境附近的一个行省发生了小规模冲突。虽尚未升级为全面战争，粮食贸易却已受阻，牲畜被宰杀以供应军需。兽皮价格低廉，铁锭价格则不断上涨。"
 	weight = 10
 	affected_realms = list(REALM_AAVNR)
 	supply_modifiers = list(
@@ -15,8 +15,8 @@
 
 /datum/realm_condition/aavnr_steppe_drought
 	id = "aavnr_steppe_drought"
-	name = "Steppe Drought"
-	description = "The Steppes are dust. The grain fields have failed and the herds are being slaughtered for what they can yield. The Potentate's heralds beg foreign caravans for any sack of grain or oats, while hide is sold off cheap from the cull."
+	name = "草原旱灾"
+	description = "草原化为尘土，粮田绝收，牧群被宰杀以榨取最后的价值。君王的使者向外国商队乞求每一袋谷物或燕麦，宰杀所得的兽皮则被廉价抛售。"
 	weight = 8
 	affected_realms = list(REALM_AAVNR)
 	supply_modifiers = list(
@@ -30,8 +30,8 @@
 
 /datum/realm_condition/aavnr_trade_fair
 	id = "aavnr_trade_fair"
-	name = "Trade Fair"
-	description = "A grand trade fair is being held in the heart of Aavnr. Merchants from across the realm gather to showcase their finest goods, attracting buyers and sellers alike. Hides become cheaper and unique goods are available in the market."
+	name = "贸易盛会"
+	description = "阿瓦尔腹地正在举办盛大的贸易集市。全国商人汇聚于此，展示最好的商品，吸引买家与卖家纷至沓来。兽皮价格下降，市场上还出现了独特商品。"
 	weight = 6
 	affected_realms = list(REALM_AAVNR)
 	// TODO(cultural stock step): cultural_modifiers deferred - referenced /datum/supply_pack/rogue/aavnr/* typepaths not yet ported.
@@ -46,8 +46,8 @@
 
 /datum/realm_condition/etrusca_civil_war
 	id = "etrusca_civil_war"
-	name = "Civil War"
-	description = "Two noble houses have been locked in a bitter civil war for control of Etrusca. The conflict has disrupted trade and caused widespread instability, leading to a surge in demand for basic metals and a drop in luxury goods like famed fruits and salt."
+	name = "内战"
+	description = "两个贵族家族为争夺伊特鲁斯卡的控制权，陷入惨烈内战。冲突破坏贸易，引发广泛动荡，使基础金属需求激增，而当地著名水果与盐等奢侈品的行情下滑。"
 	weight = 8
 	affected_realms = list(REALM_ETRUSCA)
 	supply_modifiers = list(
@@ -64,8 +64,8 @@
 
 /datum/realm_condition/etrusca_gronnic_raid
 	id = "etrusca_gronnic_raid"
-	name = "Punitive Gronnic Raid"
-	description = "Ceaseless raiding has grown intolerable for the people of Etrusca. Its legendary fleet has been sent to raid the coastal cities of Gronn and burn them down. Food and fruits grow scarce while demand for wood, hide and iron spike as the war effort ramps up."
+	name = "征讨格隆恩"
+	description = "伊特鲁斯卡人民再也无法忍受无休止的劫掠，其传奇舰队已奉命袭击并焚毁格隆恩的沿海城市。食物与水果日渐稀缺，随着战事扩大，木材、兽皮和铁的需求猛增。"
 	weight = 8
 	affected_realms = list(REALM_ETRUSCA)
 	supply_modifiers = list(
@@ -81,8 +81,8 @@
 
 /datum/realm_condition/etrusca_harvest_festival
 	id = "etrusca_harvest_festival"
-	name = "Harvest Festival"
-	description = "A harvest festival held in honor of Astrata, Dendor and Eora is underway. Abundant fruits and alcohol are being exported, while silk and fur are in high demand for festival garments, costumes, and customary gifts."
+	name = "丰收庆典"
+	description = "纪念阿斯特拉塔、登多尔和伊欧拉的丰收庆典正在举行。大量水果与酒类出口，用于节庆服装、装扮及传统赠礼的丝绸和毛皮则需求旺盛。"
 	weight = 10
 	affected_realms = list(REALM_ETRUSCA)
 	supply_modifiers = list(
@@ -98,8 +98,8 @@
 
 /datum/realm_condition/grenzelhoft_mage_purge
 	id = "grenzelhoft_mage_purge"
-	name = "Mage Purge"
-	description = "The Emperor's Magi have called for a sweep of the unregistered, and the Holy See has answered with fire. Confiscated staves and magos mantles flood the markets while the court trims its silk to look less ornate. Leather is in short supply and dear demand."
+	name = "法师清洗"
+	description = "皇帝的法师团要求扫除未登记的施法者，教廷以烈火回应。没收的法杖和法师斗篷涌入市场，宫廷则减少丝绸装饰以显得朴素。皮革供不应求，价格高昂。"
 	weight = 8
 	affected_realms = list(REALM_GRENZELHOFT)
 	// TODO(cultural stock step): cultural_modifiers deferred - referenced /datum/supply_pack/rogue/{merc_weapons/grenzelstaff,grenzelhoft/magos_mantle,grenzelhoft/blacksteel_cuirass} not yet ported.
@@ -110,8 +110,8 @@
 
 /datum/realm_condition/grenzelhoft_grain_boom
 	id = "grenzelhoft_grain_boom"
-	name = "Grain Boom"
-	description = "A bountiful harvest has led to a surplus of grain and oats in Grenzelhoft. Prices for these staples have plummeted, while demand for fibers has surged as the population seeks to capitalize on the agricultural abundance and sew and buy new garments."
+	name = "粮食丰产"
+	description = "格伦泽尔霍夫特喜获丰收，谷物和燕麦供过于求，主粮价格暴跌。民众趁着农业丰裕，纷纷缝制、购买新衣，纤维需求因此激增。"
 	weight = 10
 	affected_realms = list(REALM_GRENZELHOFT)
 	supply_modifiers = list(
@@ -124,8 +124,8 @@
 
 /datum/realm_condition/grenzelhoft_holy_pilgrimage
 	id = "grenzelhoft_holy_pilgrimage"
-	name = "Holy Pilgrimage"
-	description = "A grand procession from the Eleven Cathedrals winds through the inner provinces. Pilgrims demand tangerines and sugar for offerings, and Saffira for the reliquaries the Holy See is gilding for the occasion."
+	name = "神圣朝圣"
+	description = "来自十一座大教堂的盛大队伍蜿蜒穿过内陆诸省。朝圣者需要橘子与糖作为供品，还需要蓝晶，装饰教廷为此次盛事镀金的圣物匣。"
 	weight = 6
 	affected_realms = list(REALM_GRENZELHOFT)
 	demand_modifiers = list(
@@ -136,8 +136,8 @@
 
 /datum/realm_condition/gronn_raid_season
 	id = "gronn_raid_season"
-	name = "Raid Season"
-	description = "Longships return from the southern coast laden with loot. Iron, fur, and seized luxuries are sold cheap at the Volfshaven docks. Crews stocking for the next voyage will pay heavy for salt and cured leather."
+	name = "劫掠季"
+	description = "长船从南方海岸满载战利品归来。铁、毛皮和劫来的奢侈品在沃尔夫斯港码头廉价出售。为下一次航行备货的船员愿出高价购买盐与熟皮。"
 	weight = 12
 	affected_realms = list(REALM_GRONN)
 	supply_modifiers = list(
@@ -153,8 +153,8 @@
 
 /datum/realm_condition/gronn_long_winter
 	id = "gronn_long_winter"
-	name = "Long Winter"
-	description = "The Fjall is three months under snow and the straits froze early. Hide is hoarded against the cold, the holds hunger for grain at any price, and coal trades for its weight in silver."
+	name = "漫长寒冬"
+	description = "群山已被大雪覆盖三个月，海峡也提早封冻。人们囤积兽皮御寒，各堡垒不惜任何价格求购粮食，煤炭则贵如同重的白银。"
 	weight = 8
 	affected_realms = list(REALM_GRONN)
 	supply_modifiers = list(
@@ -168,8 +168,8 @@
 
 /datum/realm_condition/gronn_great_hunt
 	id = "gronn_great_hunt"
-	name = "Great Hunt"
-	description = "A great migration of game has come down from the north. The Iskarn hunters return with more hide and meat than the realm can salt. The clan leaders want southern silk for the feasts."
+	name = "大狩猎"
+	description = "大批猎物从北方迁来。伊斯卡恩猎人带回的兽皮与肉，多到全国的盐都不够腌制。氏族首领为宴会求购南方丝绸。"
 	weight = 6
 	affected_realms = list(REALM_GRONN)
 	supply_modifiers = list(
@@ -183,8 +183,8 @@
 
 /datum/realm_condition/hammerhold_dwarf_strike
 	id = "hammerhold_dwarf_strike"
-	name = "Dwarf Strike"
-	description = "The Mountainhomes have closed their gates over an ancestral dispute. Copper, stone, and forgework aboveground are starved. Norwardine's smiths will pay handsomely for finished steel and southern timber to bridge the gap."
+	name = "矮人罢工"
+	description = "山中家园因一场祖辈纷争关闭了大门。地表的铜、石料与锻造品供应告急。诺瓦丁的铁匠愿高价收购成品钢材与南方木材，以弥补缺口。"
 	weight = 8
 	affected_realms = list(REALM_HAMMERHOLD)
 	supply_modifiers = list(
@@ -199,8 +199,8 @@
 
 /datum/realm_condition/hammerhold_brigand_uprising
 	id = "hammerhold_brigand_uprising"
-	name = "Brigand Uprising"
-	description = "The Bana marcher lords have failed in their duty, and brigand bands move down from the granite passes. Fur is hard to come by, and Norwardine pays well for cloth, grain, and cured leather to outfit a sweep."
+	name = "匪徒暴乱"
+	description = "巴纳的边境领主未尽守土之责，匪帮从花岗岩山口南下。毛皮难觅，诺瓦丁正高价收购布匹、谷物与熟皮，为清剿行动备足物资。"
 	weight = 8
 	affected_realms = list(REALM_HAMMERHOLD)
 	supply_modifiers = list(
@@ -214,8 +214,8 @@
 
 /datum/realm_condition/hammerhold_royal_wedding
 	id = "hammerhold_royal_wedding"
-	name = "Royal Wedding"
-	description = "An heir of Harlond is to wed, and Norwardine prepares a feast a generation will remember. Smoked sausage and bacon flood the markets, while silk, citrus, and saffira are demanded for gifts."
+	name = "王室婚礼"
+	description = "哈隆德的一位继承人即将成婚，诺瓦丁筹备着足以让一代人铭记的盛宴。熏香肠与培根充斥市场，丝绸、柑橘和蓝晶则因赠礼需求而热销。"
 	weight = 5
 	affected_realms = list(REALM_HAMMERHOLD)
 	// TODO(cultural stock step): cultural_modifiers deferred - referenced /datum/supply_pack/rogue/hammerhold/{smoked_sausage,bacon} not yet ported.
@@ -229,8 +229,8 @@
 
 /datum/realm_condition/kazengun_rebellion
 	id = "kazengun_rebellion"
-	name = "Hangyaku Uprising"
-	description = "A Hangyaku captain has raised banners in the southern home isles. Rice does not leave the home ports and silk trade is restricted. The court orders iron, coal, and cured leather at any price to outfit the loyalist daimyos."
+	name = "叛逆起兵"
+	description = "一名叛逆头领在南方本土岛屿举旗起兵。稻米停止出口，丝绸贸易受限。朝廷不惜代价订购铁、煤炭与熟皮，为效忠的大名配备军资。"
 	weight = 8
 	affected_realms = list(REALM_KAZENGUN)
 	supply_modifiers = list(
@@ -245,8 +245,8 @@
 
 /datum/realm_condition/kazengun_mainland_expedition
 	id = "kazengun_mainland_expedition"
-	name = "Mainland Expedition"
-	description = "The clans have committed forces to the mainland. Cured leather and cloth are demanded at premium for the army's outfitting, and tea export has slowed as the southern routes are commandeered."
+	name = "大陆远征"
+	description = "各氏族已向大陆派兵。军队装备急需熟皮与布匹，收购价高昂；南方航路被征用，茶叶出口也因此放缓。"
 	weight = 8
 	affected_realms = list(REALM_KAZENGUN)
 	demand_modifiers = list(
@@ -259,8 +259,8 @@
 
 /datum/realm_condition/kazengun_imperial_gala
 	id = "kazengun_imperial_gala"
-	name = "Imperial Gala"
-	description = "The Capital holds a Gala of seven nights. Tea and silk traders cut prices to flatter the visiting daimyos, and the Tsukita Clan opens its wardrobes to the markets. The court purses are heavy for Saffira and fine northern fur."
+	name = "皇都盛宴"
+	description = "都城举办持续七夜的盛宴。茶商与丝商降价讨好来访大名，月田氏族也向市场开放衣库。朝廷为蓝晶和上等北方毛皮备下了丰厚款项。"
 	weight = 5
 	affected_realms = list(REALM_KAZENGUN)
 	supply_modifiers = list(
@@ -275,8 +275,8 @@
 
 /datum/realm_condition/pui_maen_uprising
 	id = "pui-maen_uprising"
-	name = "Pui-Maen Uprising"
-	description = "The Pui-Maen rebels have crossed the Yanshe river and the Xinyi heartland burns. The Xinyi court mobilizes for a counterattack while the Kazengunese suzerain reinforces its mainland army from the isles; both realms strip their markets for war supply."
+	name = "普伊-梅恩起义"
+	description = "普伊-梅恩叛军渡过了炎蛇河，信义腹地燃起战火。信义朝廷动员反击，宗主风郡则从群岛向大陆军队增援；两国都为筹集军需而搜尽市场物资。"
 	weight = 12
 	cross_realm = TRUE
 	affected_realms = list(REALM_KAZENGUN)
@@ -296,8 +296,8 @@
 
 /datum/realm_condition/underdark_enchanting
 	id = "underdark_enchanting"
-	name = "Brightest-Light Enchanting"
-	description = "The elusive Fluvian city-state of Mercuriam seeks enchanters to renew the enchantments upon their false sun. Aspiring foreign enchanters and mages flock to the city by the thousands. Enchscrolls and paper sell at desperate premium, while tea and cloth flow cheap from the surrounding caverns."
+	name = "至耀之光附魔"
+	description = "神秘的弗卢维安城邦墨丘利安正在招募附魔师，为其人造太阳更新附魔。成千上万心怀抱负的异国附魔师与法师涌入城中。附魔卷轴和纸张价格飞涨，周边洞穴的茶叶与布匹则廉价流入。"
 	weight = 6
 	affected_realms = list(REALM_UNDERDARK)
 	demand_modifiers = list(
@@ -311,8 +311,8 @@
 
 /datum/realm_condition/underdark_quake
 	id = "underdark_quake"
-	name = "Under-Quake"
-	description = "The Underdark suffers from severe tremors, collapsing several caverns and cutting off a large swath of kobold spider-honey harvesting settlements. Wood is required to shore up the cavern walls."
+	name = "地下震灾"
+	description = "幽暗地域发生强烈地震，数座洞穴坍塌，大量采集蛛蜜的狗头人聚落与外界失联。当地急需木材加固洞壁。"
 	weight = 8
 	affected_realms = list(REALM_UNDERDARK)
 	supply_modifiers = list(
@@ -324,8 +324,8 @@
 
 /datum/realm_condition/vakra_scortched_grimoria
 	id = "vakra_debt_collection"
-	name = "Scorched Grimoria"
-	description = "Several Lupian packs have engaged in scorching their lands at the loss of key strongholds. Valuables flows out cheaply as defenders' hoards are seized, and confiscated gems are dumped at discount. Grain is demanded at premium - the scorched land brings no harvest."
+	name = "格里莫里亚焦土"
+	description = "数支卢皮安狼群在失去关键据点后焚毁自己的土地。守军的积蓄遭到掠夺，贵重物品廉价流出，被没收的宝石也折价抛售。粮食收购价高昂——焦土上没有收成。"
 	weight = 8
 	affected_realms = list(REALM_VAKRA)
 	supply_modifiers = list(
@@ -340,8 +340,8 @@
 
 /datum/realm_condition/vakra_famine
 	id = "vakra_famine"
-	name = "Famine"
-	description = "The Vakran harvests have failed three seasons running; the conflicting armies and civilians starve alike. Looted valueables flow like water - gems and gold ore sell for whatever foreign grain they can buy. Fibers and oats are demanded in huge measure."
+	name = "饥荒"
+	description = "瓦克兰连续三季歉收，交战军队与平民同受饥饿折磨。掠来的贵重物品如流水般涌出，宝石和金矿石只要能换到外国粮食便卖。纤维与燕麦需求极大。"
 	weight = 10
 	affected_realms = list(REALM_VAKRA)
 	supply_modifiers = list(
@@ -357,8 +357,8 @@
 
 /datum/realm_condition/naledi_djinn_resurgence
 	id = "naledi_djinn_resurgence"
-	name = "Djinn Resurgence"
-	description = "The scattered warscholars report the Djinn are bold again in the dunes. Steel and iron are demanded by the desperate warscholars; silk trade has all but stopped while caravans take cover in the desperate settlements."
+	name = "灯灵再起"
+	description = "散布各地的战学士报告，灯灵再次在沙丘间肆虐。处境危急的战学士急需钢铁；商队躲入困顿的聚落避难，丝绸贸易几近停滞。"
 	weight = 10
 	affected_realms = list(REALM_NALEDI)
 	demand_modifiers = list(
@@ -372,8 +372,8 @@
 
 /datum/realm_condition/naledi_sandstorm_season
 	id = "naledi_sandstorm_season"
-	name = "Sandstorm Season"
-	description = "The Arisole storms have begun early and run long. Glass and gold dust harvests are choked by sand. The cloistered desert communities want cloth and cured leather to mend caravans and cover the images of Psydon during the blow."
+	name = "沙暴季"
+	description = "阿里索尔的风暴提早来临，久久不散。沙尘阻断了玻璃与金沙的生产。封闭的沙漠聚落需要布匹和熟皮，修补商队车辆，并在风暴中遮护普赛顿的圣像。"
 	weight = 10
 	affected_realms = list(REALM_NALEDI)
 	supply_modifiers = list(
@@ -387,8 +387,8 @@
 
 /datum/realm_condition/naledi_warscholar_council
 	id = "naledi_warscholar_council"
-	name = "Warscholar Council"
-	description = "The leading remnants of the Warscholars have called a council. Hierophant kits and Treatises are produced cheaper for the visiting initiates, and the council pays desperate prices for enchscrolls, paper, and silk for ceremonial gifts."
+	name = "战学士议会"
+	description = "战学士残存的领袖召集了议会。为来访的新入门者，大祭司套装和论著以更低成本生产；议会则高价收购附魔卷轴、纸张和丝绸，用作仪式赠礼。"
 	weight = 5
 	affected_realms = list(REALM_NALEDI)
 	// TODO(cultural stock step): cultural_modifiers deferred - referenced /datum/supply_pack/rogue/naledi/{hierophant_kit,treatise} not yet ported.
@@ -400,8 +400,8 @@
 
 /datum/realm_condition/otava_inquisition_writ
 	id = "otava_inquisition_writ"
-	name = "Inquisition Writ"
-	description = "The Holy Tribunal has issued a writ against the Vallouise-sur-Mer docks. Confessor detachments need cured leather and iron at premium, while seized silk and gems from heretic houses appear cheap at the Esperance auction-block. Tallow is dear; the Inquisition burns much."
+	name = "审判庭令状"
+	description = "神圣法庭对滨海瓦卢伊兹的码头颁下令状。告解师分队高价求购熟皮与铁，从异端家族没收的丝绸和宝石则在埃斯佩朗斯的拍卖台上廉价出售。兽脂价格高昂，审判庭要烧的东西很多。"
 	weight = 8
 	affected_realms = list(REALM_OTAVA)
 	demand_modifiers = list(
@@ -416,8 +416,8 @@
 
 /datum/realm_condition/otava_wine_glut
 	id = "otava_wine_glut"
-	name = "Wine Glut"
-	description = "An exceptional season in the Val-du-Lac vineyards has flooded the Pais-Occitanie with plums and strawberries. The winemakers' single-mindedness has left the realm short of grain and salt, both wanted at premium."
+	name = "酒品过剩"
+	description = "湖谷葡萄园迎来非凡丰收，李子和草莓充斥奥克西塔尼地区。酿酒师一心专注酿酒，导致国内粮食与盐短缺，两者都在高价求购。"
 	weight = 8
 	affected_realms = list(REALM_OTAVA)
 	supply_modifiers = list(
@@ -431,8 +431,8 @@
 
 /datum/realm_condition/otava_feast_of_saints
 	id = "otava_feast_of_saints"
-	name = "Feast of Saints"
-	description = "The Feast of Saints draws every department to the Esperance cathedrals for a week of liturgy and table. Cheese flows from the Falaises ovens in heavy quantity, and the wine merchants of the Compact cut prices to fill the festival cups. Saffira and gems for reliquary gifts are demanded desperately."
+	name = "诸圣盛宴"
+	description = "诸圣盛宴吸引各地民众来到埃斯佩朗斯的教堂，举行一周的礼拜与宴饮。红崖的炉坊大量供应奶酪，盟约地区的酒商降价，为节庆酒杯添满美酒。用于圣物匣赠礼的蓝晶与宝石需求极为迫切。"
 	weight = 6
 	affected_realms = list(REALM_OTAVA)
 	supply_modifiers = list(
@@ -447,8 +447,8 @@
 
 /datum/realm_condition/zybantium_caravan_raids
 	id = "zybantium_caravan_raids"
-	name = "Caravan Raids"
-	description = "Bandits ride the eastern passes between Nshkormh and Vrdaqnan. Sugar and coffee caravans arrive light and late, and the Sheikh of the affected counties pays premium for iron and cured leather to outfit a counter-raid."
+	name = "商队遇袭"
+	description = "匪徒盘踞恩什科姆与弗尔达克南之间的东部山口。运糖和咖啡的商队姗姗来迟，货物也大为减少。受影响地区的谢赫正高价求购铁与熟皮，为反击配备军资。"
 	weight = 8
 	affected_realms = list(REALM_ZYBANTIUM)
 	supply_modifiers = list(
@@ -462,8 +462,8 @@
 
 /datum/realm_condition/zybantium_silk_boom
 	id = "zybantium_silk_boom"
-	name = "Silk Boom"
-	description = "The Chorodiaki silk houses have brought in a record season. Bolts spill into the markets at low prices, and dyestuffs - cinnabar especially - are demanded by the looms at premium."
+	name = "丝绸丰产"
+	description = "科罗迪亚基的丝绸作坊迎来创纪录的丰产季。成匹丝绸低价涌入市场，织坊则高价求购染料，尤其是朱砂。"
 	weight = 8
 	affected_realms = list(REALM_ZYBANTIUM)
 	supply_modifiers = list(
@@ -477,8 +477,8 @@
 
 /datum/realm_condition/zybantium_philosopher_gathering
 	id = "zybantium_philosopher_gathering"
-	name = "Philosopher Gathering"
-	description = "The geometers and dervishes of the four members have gathered at Mücevkabher for a season of discourse. Enchscrolls, paper, and the finest teas are demanded for the symposia and their long nights."
+	name = "哲人雅集"
+	description = "四个成员邦的几何师与苦修士齐聚穆杰夫卡赫尔，展开一季论辩。为这些座谈与漫漫长夜，附魔卷轴、纸张和最上等的茶叶需求旺盛。"
 	weight = 5
 	affected_realms = list(REALM_ZYBANTIUM)
 	demand_modifiers = list(
@@ -489,8 +489,8 @@
 
 /datum/realm_condition/cross_continental_war
 	id = "cross_continental_war"
-	name = "Continental War"
-	description = "A formal war has been declared between Grenzelhoft and Otava. Grain is removed from both realms' export ledgers, steel and iron demand spikes brutally, and the looting markets quietly offer foreign silk and gemstones at discount."
+	name = "大陆战争"
+	description = "格伦泽尔霍夫特与奥塔瓦正式宣战。两国均将粮食移出出口清单，钢铁需求猛烈攀升，赃物市场则悄悄折价出售外国丝绸与宝石。"
 	weight = 6
 	cross_realm = TRUE
 	affected_realms = list(REALM_GRENZELHOFT, REALM_OTAVA)
@@ -508,8 +508,8 @@
 
 /datum/realm_condition/cross_northern_raids
 	id = "cross_northern_raids"
-	name = "Northern Raids"
-	description = "Gronnic longships harry the Grenzelhoftian coast. The raiders return to Volfshaven with loot; the Grenzel ports rearm at any price and offer ransom gold cheap to recover their kin."
+	name = "北方劫掠"
+	description = "格隆恩长船袭扰格伦泽尔霍夫特海岸。劫掠者满载战利品返回沃尔夫斯港；格伦泽尔各港不惜代价重整军备，并为赎回亲属低价拿出黄金。"
 	weight = 8
 	cross_realm = TRUE
 	affected_realms = list(REALM_GRONN, REALM_GRENZELHOFT)
@@ -542,8 +542,8 @@
 
 /datum/realm_condition/cross_eastern_unrest
 	id = "cross_eastern_unrest"
-	name = "Eastern Unrest"
-	description = "Disorder rolls across the Shogunate. Silk and tea from Kazengun arrive thin and dear, while the eastern realm demands iron and coal to settle the unrest."
+	name = "东方动乱"
+	description = "动乱席卷幕府。风郡运来的丝绸与茶叶量少价高，这个东方国家则急需铁与煤炭，以平定乱局。"
 	weight = 6
 	cross_realm = TRUE
 	affected_realms = list(REALM_KAZENGUN)
@@ -558,8 +558,8 @@
 
 /datum/realm_condition/cross_zybantium_drought
 	id = "cross_zybantium_drought"
-	name = "Zybantine Drought"
-	description = "The Zybantine continent's harvests have collapsed. The Zybantine heartlands ship no rice or garlick this season, and Vakra's tributary fields wither in tandem. Both realms beg for foreign grain and oats."
+	name = "兹班图旱灾"
+	description = "兹班图大陆收成惨败。兹班图腹地今季不再出口稻米与大蒜，瓦克兰属地的农田也同时枯萎。两国都在迫切求购外国谷物与燕麦。"
 	weight = 6
 	cross_realm = TRUE
 	affected_realms = list(REALM_ZYBANTIUM, REALM_VAKRA)
@@ -574,8 +574,8 @@
 
 /datum/realm_condition/cross_aavnr_naledi_drought
 	id = "cross_aavnr_naledi_drought"
-	name = "Southern Drought"
-	description = "A scorching season has dried the Avaric steppes and the dunes alike. The Avar grain fields have gone to dust, while the sweltering conditions make salt harvests in Naledi challenging."
+	name = "南方旱灾"
+	description = "酷热的一季让阿瓦尔草原与沙丘一同干涸。阿瓦尔的粮田化为尘土，纳莱迪的采盐也因炎热而困难重重。"
 	weight = 6
 	cross_realm = TRUE
 	affected_realms = list(REALM_AAVNR, REALM_NALEDI)
@@ -589,8 +589,8 @@
 	)
 /datum/realm_condition/cross_gronn_etrusca_raids
 	id = "cross_gronn_etrusca_raids"
-	name = "Southern Raids"
-	description = "Gronnic longships have ranged south to the Resting Ocean and struck the coastal cities of Navarno. The Gronnic raiders return with citrus and Etruscan luxuries in their holds; Gran Zafiro mobilizes the Armadas while Falaises-Rouges weeps for its salt flats."
+	name = "南方劫掠"
+	description = "格隆恩长船南下至安息洋，袭击了纳瓦诺的沿海城市。格隆恩劫掠者满载柑橘和伊特鲁斯卡奢侈品归来；大萨菲罗动员舰队，红崖则为受损的盐滩哀叹。"
 	weight = 5
 	cross_realm = TRUE
 	affected_realms = list(REALM_GRONN, REALM_ETRUSCA)
@@ -622,8 +622,8 @@
 
 /datum/realm_condition/cross_etrusca_zybantium_war
 	id = "cross_etrusca_zybantium_war"
-	name = "Etruscan Offensive"
-	description = "House Zaragoza has answered an old grievance with steel. The Etruscan Armadas sail east; Zybantium's Sheikh of the coastal counties calls for the levies and the dervish houses dim their candles."
+	name = "伊特鲁斯卡攻势"
+	description = "萨拉戈萨家族以刀剑回应旧怨。伊特鲁斯卡舰队东进；兹班图沿海地区的谢赫征召军队，苦修士诸家的烛火也暗了下来。"
 	weight = 5
 	cross_realm = TRUE
 	affected_realms = list(REALM_ETRUSCA, REALM_ZYBANTIUM)
@@ -654,8 +654,8 @@
 
 /datum/realm_condition/cross_zybantium_etrusca_war
 	id = "cross_zybantium_etrusca_war"
-	name = "Zybantine Offensive"
-	description = "The Autarch has called the levies. Zybantine galleys cross the Resting Ocean to strike the Navarno coast - and the Vaqueros ride the hills once again. Gran Zafiro pulls every keel to the chain while the Sheikh of Vrdaqnan empties his stores for the campaign."
+	name = "兹班图攻势"
+	description = "至尊下令征兵。兹班图桨帆船横渡安息洋，进攻纳瓦诺海岸，牧牛骑手再次驰骋于丘陵。大萨菲罗将所有船只召至拦港链前，弗尔达克南的谢赫则倾尽仓储支援战役。"
 	weight = 5
 	cross_realm = TRUE
 	affected_realms = list(REALM_ZYBANTIUM, REALM_ETRUSCA)
