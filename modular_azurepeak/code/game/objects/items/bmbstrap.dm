@@ -42,7 +42,7 @@
 		return ..()
 
 	if(length(tweps) >= max_storage)
-		to_chat(user, span_warning("满了!"))
+		to_chat(user, span_warning("装满了！"))
 		return TRUE
 
 	if(!user.transferItemToLoc(I, src))
@@ -57,7 +57,7 @@
 /obj/item/bmbstrap/quickdraw_interact(mob/living/user, obj/item/held_item)
 	if(held_item)
 		if(!can_store(held_item))
-			to_chat(user, span_warning("I can't fit [held_item] in [src]!"))
+			to_chat(user, span_warning("我没法把[held_item]放进[src]！"))
 			return TRUE
 		attackby(held_item, user)
 		return TRUE
@@ -70,14 +70,14 @@
 	var/alist/targets = alist()
 	for(var/atom/movable/AM as anything in tweps)
 		targets[AM.name] = AM
-	var/selected_name = tgui_input_list(user, "WHAT DO YOU GET OUT?", name, targets)
+	var/selected_name = tgui_input_list(user, "要取出什么？", name, targets)
 	if(!selected_name)
 		return
 	var/atom/movable/AM = targets[selected_name]
 	if(!HAS_TRAIT(user, TRAIT_EXPLOSIVE_SUPPLY) && !HAS_TRAIT(user, TRAIT_BOMBER_EXPERT))
 		if(!do_after(user, 20, target = user))
 			return TRUE
-		to_chat(user, span_notice("You fumble to draw a grenade..."))
+		to_chat(user, span_notice("我笨拙地取出一枚手雷……"))
 	if(!(AM in tweps)) //could've been taken out mid-do_after
 		return TRUE
 	tweps -= AM
@@ -94,7 +94,7 @@
 			update_icon()
 		else
 			if(do_after(user, 20, target = user))
-				to_chat(user, span_notice("You fumble to draw a grenade..."))
+				to_chat(user, span_notice("我笨拙地取出一枚手雷……"))
 				var/obj/O = tweps[tweps.len]
 				tweps -= O
 				user.put_in_hands(O)
@@ -146,9 +146,9 @@
 
 /obj/item/bmbstrap/attack_turf(turf/T, mob/living/user)
 	if(tweps.len >= max_storage)
-		to_chat(user, span_warning("My [src.name] is full!"))
+		to_chat(user, span_warning("我的[src.name]已经装满了！"))
 		return
-	to_chat(user, span_notice("I begin to gather the ammunition..."))
+	to_chat(user, span_notice("我开始收拢这些弹药……"))
 	for(var/obj/item/explosive in T.contents)
 		if(can_store(explosive))
 			if(do_after(user, 5))
@@ -170,7 +170,7 @@
 
 	if (!tweps.len)
 		return
-	to_chat(user, span_warning("I begin to take out the ammunition from [src], one by one..."))
+	to_chat(user, span_warning("我开始把[src]里的弹药逐一取出来……"))
 	for(var/obj/item/explosive in tweps)
 		if(!do_after(user, 0.5 SECONDS))
 			return
