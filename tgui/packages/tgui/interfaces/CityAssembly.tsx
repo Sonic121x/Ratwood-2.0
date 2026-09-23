@@ -118,10 +118,10 @@ const formatWeight = (doubled: number) =>
 
 const formatCountdown = (seconds: number): string => {
   if (seconds <= 0) return '';
-  if (seconds < 60) return `${seconds}s`;
+  if (seconds < 60) return `${seconds}秒`;
   const m = Math.floor(seconds / 60);
   const s = seconds % 60;
-  return `${m}m ${s.toString().padStart(2, '0')}s`;
+  return `${m}分 ${s.toString().padStart(2, '0')}秒`;
 };
 
 const ballotRowStyle: CSSProperties = {
@@ -250,7 +250,7 @@ export const CityAssembly = () => {
   const hasAlderman = !!data.current_alderman;
 
   return (
-    <Window title="The City Assembly" width={780} height={740} theme="parchment">
+    <Window title="The City Assembly" display_title="城市议会" width={780} height={740} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
           {/* Ratwood deviation: the Assembly is reached from the Noticeboard TGUI - give a way back. */}
@@ -260,33 +260,33 @@ export const CityAssembly = () => {
             onClick={() => act('back_to_noticeboard')}
             title="Return to the Noticeboard."
           >
-            &#9668; Back to the Noticeboard
+            &#9668; 返回公告板
           </button>
-          <div style={titleStyle}>The City Assembly</div>
+          <div style={titleStyle}>城市议会</div>
           <div style={subtitleStyle}>
-            Voice of the respectable citizenry of Rotwood Vale
+            腐木谷体面市民的代言人
           </div>
           <hr style={rulerStyle} />
 
           <div style={headerBarStyle}>
             <span>
-              Session #{data.session_number}
+              第 {data.session_number} 次会议
               {countdown > 0
-                ? ` • resolves in ${formatCountdown(countdown)}`
-                : ` • resolves at ${data.next_resolution}`}
+                ? ` • 将于 ${formatCountdown(countdown)}后结算`
+                : ` • 将于${data.next_resolution}结算`}
             </span>
             <span>
-              {data.voter_count} voter{data.voter_count === 1 ? '' : 's'} &middot;
-              your weight {formatWeight(data.my_weight_doubled)}
-              {data.is_censured ? ' (censured)' : ''}
-              {data.is_outlaw ? ' (outlaw)' : ''}
+              {data.voter_count} 名投票者 &middot;
+              你的票权 {formatWeight(data.my_weight_doubled)}
+              {data.is_censured ? ' （已受谴责）' : ''}
+              {data.is_outlaw ? ' （法外之徒）' : ''}
             </span>
           </div>
 
           <div style={quorumBannerStyle(!!data.quorate)}>
             {data.quorate
-              ? `✓ QUORUM MET - motions will resolve as voted`
-              : `✗ QUORUM NOT MET - ${data.quorum_voters} voices required, only ${data.voter_count} cast. Status quo holds if the session resolves now.`}
+              ? `✓ 已达法定人数 - 各项议案将依投票结果结算`
+              : `✗ 未达法定人数 - 需要 ${data.quorum_voters} 人投票，目前仅有 ${data.voter_count} 人。若此时结算会议，将维持现状。`}
           </div>
 
           {data.is_alderman && data.warrant ? (
@@ -317,8 +317,8 @@ export const CityAssembly = () => {
           />
 
           <BracketRow
-            label="Trade"
-            hint="Set the Alderman's daily Crown spending cap."
+            label="贸易"
+            hint="设定市政长老每日可动用的王室资金上限。"
             motion={MOTION_TRADE}
             brackets={data.trade_brackets}
             suffix="m"
@@ -328,8 +328,8 @@ export const CityAssembly = () => {
           />
 
           <BracketRow
-            label="Defense"
-            hint="Set the Alderman's daily Pledge cap for defense writs."
+            label="防务"
+            hint="设定市政长老每日可用于防务委托的市民认捐额度上限。"
             motion={MOTION_DEFENSE}
             brackets={data.defense_brackets}
             suffix="p"
@@ -341,16 +341,16 @@ export const CityAssembly = () => {
           {hasAlderman ? (
             <>
               <YaeNayRow
-                label="Recall"
-                hint={`Remove ${data.current_alderman} from office. ${data.recall_threshold_pct}% YAE carries.`}
+                label="罢免"
+                hint={`罢免${data.current_alderman}。赞成票权达到 ${data.recall_threshold_pct}% 即可通过。`}
                 motion={MOTION_RECALL}
                 myVote={data.my_votes?.[MOTION_RECALL]}
                 tally={data.tallies?.recall}
                 disabled={!canVote}
               />
               <YaeNayRow
-                label="Censure"
-                hint={`Strike ${data.current_alderman}'s name - barred from office for the round. ${data.censure_threshold_pct}% YAE carries.`}
+                label="谴责"
+                hint={`将${data.current_alderman}除名 - 本回合内不得再任职。赞成票权达到 ${data.censure_threshold_pct}% 即可通过。`}
                 motion={MOTION_CENSURE}
                 myVote={data.my_votes?.[MOTION_CENSURE]}
                 tally={data.tallies?.censure}
@@ -363,7 +363,7 @@ export const CityAssembly = () => {
             style={{ ...standLinkStyle, marginTop: '12px' }}
             onClick={() => setHistoryOpen(!historyOpen)}
           >
-            {historyOpen ? 'Hide record' : 'Show record'} ({data.history.length})
+            {historyOpen ? '收起记录' : '查看记录'} ({data.history.length})
           </div>
           {historyOpen && <HistoryBlock history={data.history} />}
         </div>
@@ -387,18 +387,18 @@ const AldermanStrip = (props: {
           marginBottom: '4px',
         }}
       >
-        Alderman&apos;s Writ
+        市政长老的令状
       </div>
       <div style={aldermanRowStyle}>
-        <span>Trade warrant</span>
+        <span>贸易授权</span>
         <span>
-          <b>{props.warrant.trade_remaining}m</b> of {props.warrant.trade_cap}m remaining today
+          今日剩余 <b>{props.warrant.trade_remaining}m</b>，总额度 {props.warrant.trade_cap}m
         </span>
       </div>
       <div style={aldermanRowStyle}>
-        <span>Defense warrant</span>
+        <span>防务授权</span>
         <span>
-          <b>{props.warrant.defense_remaining}p</b> of {props.warrant.defense_cap}p remaining today
+          今日剩余 <b>{props.warrant.defense_remaining}p</b>，总额度 {props.warrant.defense_cap}p
         </span>
       </div>
       <div style={{ marginTop: '6px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
@@ -416,14 +416,14 @@ const AldermanStrip = (props: {
               : 'The Commons have set no trade warrant for you, or its coin is spent for the day.'
           }
         >
-          Alderman — Trade
+          市政长老 — 贸易
         </button>
         <button
           type="button"
           style={inkButtonStyle({ color: SEAL_RED })}
           onClick={props.onResign}
         >
-          Resign the seat
+          辞去职位
         </button>
       </div>
     </div>
@@ -452,19 +452,19 @@ const ElectionRow = (props: ElectionRowProps) => {
 
   const leaderLabel = (() => {
     if (!tally || !tally.leader_key || tally.total === 0) return null;
-    if (tally.leader_key === NO_ALDERMAN) return 'NO ALDERMAN leads';
+    if (tally.leader_key === NO_ALDERMAN) return '“席位空缺”领先';
     const match = data.candidates.find((c) => c.ref === tally.leader_key);
-    if (match) return `${match.name} leads`;
+    if (match) return `${match.name}领先`;
     return null;
   })();
 
   return (
     <div style={ballotRowStyle}>
-      <span style={rowLabelStyle}>Alderman</span>
+      <span style={rowLabelStyle}>市政长老</span>
       <div style={{ flex: 1, minWidth: 0 }}>
         {data.candidates.length === 0 && (
           <div style={{ color: INK_SOFT }}>
-            No one has stood yet.
+            尚无人参选。
           </div>
         )}
         {data.candidates.map((c) => {
@@ -487,17 +487,17 @@ const ElectionRow = (props: ElectionRowProps) => {
               <span style={candidateJobStyle}>&ldquo;{c.job}&rdquo;</span>
               {c.is_alderman ? (
                 <span style={{ color: SEAL_AMBER, fontSize: FONT_BODY }}>
-                  (sitting)
+                  （现任）
                 </span>
               ) : null}
               {c.is_me ? (
                 <span style={{ color: INK_SOFT, fontSize: FONT_BODY }}>
-                  (you)
+                  （你）
                 </span>
               ) : null}
               <span style={tallyChipStyle}>[{weight}]</span>
               <span style={candidatePledgeStyle}>
-                {c.pledge || <i>(no pledge)</i>}
+                {c.pledge || <i>（未作承诺）</i>}
               </span>
             </div>
           );
@@ -515,7 +515,7 @@ const ElectionRow = (props: ElectionRowProps) => {
           >
             {mySelection === NO_ALDERMAN ? '[x]' : '[ ]'}
           </button>
-          <span style={{ color: INK }}>NO ALDERMAN</span>
+          <span style={{ color: INK }}>席位空缺</span>
           <span style={tallyChipStyle}>
             [{formatWeight(tally?.tally?.[NO_ALDERMAN] ?? 0)}]
           </span>
@@ -525,14 +525,14 @@ const ElectionRow = (props: ElectionRowProps) => {
               style={{ ...inkButtonStyle(), marginLeft: '4px' }}
               onClick={props.onClear}
             >
-              clear
+              撤回选票
             </button>
           ) : null}
         </div>
 
         {leaderLabel ? (
           <div style={previewStyle}>
-            &rarr; {leaderLabel} ({formatWeight(tally?.total ?? 0)} total weight)
+            &rarr; {leaderLabel} （总票权 {formatWeight(tally?.total ?? 0)}）
           </div>
         ) : null}
 
@@ -541,7 +541,7 @@ const ElectionRow = (props: ElectionRowProps) => {
             style={standLinkStyle}
             onClick={() => props.setStandOpen(true)}
           >
-            {amCandidate ? 'Update my pledge...' : 'Stand for the chair...'}
+            {amCandidate ? '更新竞选承诺...' : '参选市政长老...'}
           </div>
         ) : null}
         {canStand && amCandidate && !props.standOpen ? (
@@ -549,7 +549,7 @@ const ElectionRow = (props: ElectionRowProps) => {
             style={{ ...standLinkStyle, color: SEAL_RED }}
             onClick={props.onWithdraw}
           >
-            Withdraw my candidacy
+            退出竞选
           </div>
         ) : null}
         {canStand && props.standOpen ? (
@@ -557,7 +557,7 @@ const ElectionRow = (props: ElectionRowProps) => {
             <TextArea
               value={props.pledgeDraft}
               onChange={(v) => props.setPledgeDraft(v)}
-              placeholder="Your pledge (max 300 characters)..."
+              placeholder="你的竞选承诺（最多300个字符）..."
               style={{
                 background: BUTTON_BG,
                 border: `1px solid ${INK_FAINT}`,
@@ -575,7 +575,7 @@ const ElectionRow = (props: ElectionRowProps) => {
                 style={inkButtonStyle({ color: SEAL_GREEN })}
                 onClick={props.onDeclare}
               >
-                {amCandidate ? 'Update' : 'Declare'}
+                {amCandidate ? '更新' : '宣布参选'}
               </button>
               <button
                 type="button"
@@ -585,7 +585,7 @@ const ElectionRow = (props: ElectionRowProps) => {
                   props.setPledgeDraft('');
                 }}
               >
-                Cancel
+                取消
               </button>
             </div>
           </div>
@@ -613,13 +613,13 @@ const BracketRow = (props: BracketRowProps) => {
   const total = t?.total ?? 0;
 
   const preview = (() => {
-    if (!t || total === 0) return 'No votes yet.';
+    if (!t || total === 0) return '尚无人投票。';
     if (t.vetoed)
-      return `Would be vetoed (NAE >= ${data.nae_veto_pct}% of ${formatWeight(total)} cast)`;
+      return `预计被否决（反对票权占已投总票权 ${formatWeight(total)} 的比例 >= ${data.nae_veto_pct}%）`;
     if (t.winning_bracket !== null && t.winning_bracket !== undefined) {
-      return `Would carry at ${t.winning_bracket}${props.suffix}/day (${formatWeight(total)} cast)`;
+      return `预计通过 ${t.winning_bracket}${props.suffix}/日的额度（已投票权 ${formatWeight(total)}）`;
     }
-    return `No bracket carries - ${formatWeight(total)} cast`;
+    return `无额度档位获得通过 - 已投票权 ${formatWeight(total)}`;
   })();
 
   return (
@@ -636,7 +636,7 @@ const BracketRow = (props: BracketRowProps) => {
           act('cast_vote', { motion: props.motion, choice: CHOICE_NAE })
         }
       >
-        NAE <span style={tallyChipStyle}>[{naeWeight}]</span>
+        反对 <span style={tallyChipStyle}>[{naeWeight}]</span>
       </button>
       {props.brackets.map((b) => {
         const choiceStr = `${b}`;
@@ -667,7 +667,7 @@ const BracketRow = (props: BracketRowProps) => {
           disabled={props.disabled}
           onClick={() => act('retract_vote', { motion: props.motion })}
         >
-          clear
+          撤回选票
         </button>
       ) : null}
       <span style={previewStyle}>&rarr; {preview}</span>
@@ -691,9 +691,9 @@ const YaeNayRow = (props: YaeNayProps) => {
   const yae = formatWeight(t?.yae ?? 0);
   const nay = formatWeight(t?.nay ?? 0);
   const preview = (() => {
-    if (!t || t.count === 0) return 'No votes yet.';
-    if (t.would_pass) return `Would pass (${yae} YAE vs ${nay} NAY)`;
-    return `Would fail (${yae} YAE vs ${nay} NAY)`;
+    if (!t || t.count === 0) return '尚无人投票。';
+    if (t.would_pass) return `预计通过（赞成票权 ${yae}，反对票权 ${nay}）`;
+    return `预计不通过（赞成票权 ${yae}，反对票权 ${nay}）`;
   })();
 
   return (
@@ -710,7 +710,7 @@ const YaeNayRow = (props: YaeNayProps) => {
           act('cast_vote', { motion: props.motion, choice: CHOICE_YAE })
         }
       >
-        YAE <span style={tallyChipStyle}>[{yae}]</span>
+        赞成 <span style={tallyChipStyle}>[{yae}]</span>
       </button>
       <button
         type="button"
@@ -723,7 +723,7 @@ const YaeNayRow = (props: YaeNayProps) => {
           act('cast_vote', { motion: props.motion, choice: CHOICE_NAY })
         }
       >
-        NAY <span style={tallyChipStyle}>[{nay}]</span>
+        反对 <span style={tallyChipStyle}>[{nay}]</span>
       </button>
       {props.myVote ? (
         <button
@@ -732,7 +732,7 @@ const YaeNayRow = (props: YaeNayProps) => {
           disabled={props.disabled}
           onClick={() => act('retract_vote', { motion: props.motion })}
         >
-          clear
+          撤回选票
         </button>
       ) : null}
       <span style={previewStyle}>&rarr; {preview}</span>
@@ -745,7 +745,7 @@ const HistoryBlock = (props: { history: HistoryEntry[] }) => {
   if (props.history.length === 0) {
     return (
       <div style={{ color: INK_SOFT, marginTop: '6px' }}>
-        No sessions have yet been written into the record.
+        尚无会议记录。
       </div>
     );
   }
@@ -761,7 +761,7 @@ const HistoryBlock = (props: { history: HistoryEntry[] }) => {
           }}
         >
           <div style={{ color: INK_SOFT, fontSize: FONT_BODY, letterSpacing: '1px' }}>
-            Session {h.session} &mdash; Day {h.day}
+            第 {h.session} 次会议 &mdash; 第 {h.day} 天
           </div>
           <div
             style={{ color: INK, lineHeight: 1.5, fontSize: FONT_BODY }}

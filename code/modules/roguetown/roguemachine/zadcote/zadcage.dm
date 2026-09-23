@@ -1,6 +1,6 @@
 /obj/item/zadcage
-	name = "zadcage"
-	desc = "A small cage made to ride on a belt. Empty perches inside. Too awkward to fit in most containers."
+	name = "扎德鸟笼"
+	desc = "一个可挂在腰带上的小鸟笼，里面的栖架空着。形状不便，难以放进大多数容器。"
 	icon = 'icons/roguetown/misc/zadcage.dmi'
 	icon_state = "zadcage"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -60,7 +60,7 @@
 		empty.arrival_time = world.time + ZAD_FLIGHT_OUTBOUND_TIME
 		cote.receive_return(empty)
 		play_zad_ascend(src, current_occupancy.zads_capacity)
-		visible_message(span_warning("The zad lifts from [src] empty - the window closed."))
+		visible_message(span_warning("回信时间已过，扎德鸟空载离开了[src]。"))
 	clear_occupancy()
 	STOP_PROCESSING(SSroguemachine, src)
 
@@ -94,9 +94,9 @@
 		name = initial(name)
 		return
 	if(link.severed)
-		name = "severed zadcage"
+		name = "断联的扎德鸟笼"
 		return
-	name = "zadcage #[link.slot_index]"
+	name = "扎德鸟笼 #[link.slot_index]"
 
 /obj/item/zadcage/proc/receive_flight(datum/zad_flight/flight)
 	if(!flight)
@@ -114,7 +114,7 @@
 	if(!flight || QDELETED(src))
 		return
 	current_occupancy = new /datum/zad_occupancy(src, flight.zads_used, flight.bombs > 0)
-	visible_message(span_notice("A zad alights on [src]."))
+	visible_message(span_notice("一只扎德鸟落在了[src]上。"))
 	for(var/obj/item/I in flight.payload_items)
 		I.forceMove(src)
 		held_payload += I
@@ -129,11 +129,11 @@
 /obj/item/zadcage/proc/retrieve_payload(mob/user)
 	if(!length(held_payload))
 		if(user)
-			to_chat(user, span_warning("[src] holds no parcels."))
+			to_chat(user, span_warning("[src]中没有包裹。"))
 		return
 	for(var/obj/item/I in held_payload)
 		if(user && user.put_in_hands(I))
-			to_chat(user, span_notice("You take [I] from [src]."))
+			to_chat(user, span_notice("你从[src]中取出了[I]。"))
 			continue
 		I.forceMove(get_turf(src))
 	held_payload.Cut()
@@ -154,7 +154,7 @@
 		if(active && active != src && !istype(active, /obj/item/zadcage) && "\ref[active]" == payload_ref)
 			var/max_weight = zad_max_weight_for_tier(current_occupancy.zads_capacity)
 			if(active.w_class > max_weight)
-				to_chat(sender, span_warning("[active] is too heavy for the [current_occupancy.zads_capacity] zad return tier."))
+				to_chat(sender, span_warning("[active]过重，超出了[current_occupancy.zads_capacity]只扎德鸟的返程运力。"))
 				return FALSE
 			items += active
 	var/datum/zad_flight/return_flight = new(cote, link, current_occupancy.zads_capacity, current_occupancy.reply_message, items, 0)
@@ -164,7 +164,7 @@
 	cote.receive_return(return_flight)
 	play_zad_ascend(src, current_occupancy.zads_capacity, return_flight.payload_items)
 	if(sender)
-		visible_message(span_notice("The zad lifts from [src] and beats away."))
+		visible_message(span_notice("扎德鸟从[src]中起飞，振翅离去。"))
 	clear_occupancy()
 	return TRUE
 
@@ -189,23 +189,23 @@
 	var/datum/zadlink/link = resolve_link()
 	var/obj/item/roguemachine/zadcote/cote = resolve_cote()
 	if(!link || !cote)
-		. += span_info("This zadcage has no bond. Strike it against a zadcote to make one.")
+		. += span_info("这个扎德鸟笼尚未绑定。对扎德鸟舍使用即可绑定。")
 		return
 	if(link.severed)
-		. += span_warning("Bond severed. This zadcage was tied to [cote.name], slot [link.slot_index].")
+		. += span_warning("绑定已解除。这个扎德鸟笼原本连接至[cote.name]的[link.slot_index]号栏位。")
 		if(user && !severed_announced)
-			to_chat(user, span_warning("A line of brass on the tag has gone dull. The zadlink has been severed."))
+			to_chat(user, span_warning("标签上的一道黄铜纹路失去了光泽。扎德鸟链路已被切断。"))
 			severed_announced = TRUE
 		return
-	. += span_info("Bonded to [cote.name].")
-	. += span_info("Slot [link.slot_index]: [link.get_label()].")
+	. += span_info("已绑定至[cote.name]。")
+	. += span_info("[link.slot_index]号栏位：[link.get_label()]。")
 	if(current_occupancy)
-		. += span_notice("A zad is waiting in the cage.")
+		. += span_notice("一只扎德鸟正在笼中等候。")
 
 /obj/item/zadcage/attack_self(mob/user)
 	var/datum/zadlink/link = resolve_link()
 	if(link && link.severed && !severed_announced)
-		to_chat(user, span_warning("The zadlink has been severed."))
+		to_chat(user, span_warning("扎德鸟链路已被切断。"))
 		severed_announced = TRUE
 		return
 	if(current_occupancy || length(held_payload))
