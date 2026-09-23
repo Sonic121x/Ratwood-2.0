@@ -25,7 +25,7 @@
 	的各邦国陷入混乱。附庸纷纷离去，有的获得自由，有的归附邻国霜野和费尔萨德，\
 	而另一些则面临内部纷争——相信瓦克兰之名仍有威势者与认为王冠已污者之间的内战，\
 	连军事议会也在决斗和接连的政变中自我毁灭。"
-	skin_tone_wording = "Pack"
+	skin_tone_wording = "狼群"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,

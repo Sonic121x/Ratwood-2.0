@@ -588,7 +588,7 @@
 		var/datum/species/species_type = race
 		H.set_species(species_type)
 		H.reagents.del_reagent(type)
-		to_chat(H, "<span class='warning'>你变成[LOWER_TEXT(initial(species_type.name))]了！</span>")
+		to_chat(H, "<span class='warning'>你变成[get_species_display_name(initial(species_type.name))]了！</span>")
 	..()
 
 #undef MUT_MSG_IMMEDIATE

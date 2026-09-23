@@ -72,7 +72,7 @@
 		/datum/language/beast,
 	)
 	stress_examine = TRUE
-	stress_desc = span_red("Gods above... a Gnoll!!")
+	stress_desc = span_red("诸神在上……是豺狼人！！")
 	examine_stress_event = /datum/stressevent/gnoll_examine
 	examine_stress_event_xenophobic = /datum/stressevent/gnoll_examine
 	examine_stress_always = TRUE
