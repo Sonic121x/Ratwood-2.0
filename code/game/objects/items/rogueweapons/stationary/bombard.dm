@@ -49,7 +49,7 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 
 /obj/structure/bombard/proc/shell_apex(obj/item/cannonball/cannonball, turf/T)
 	playsound(T, 'sound/combat/bombard/mortar_long_whistle.ogg', 80, TRUE)
-	T.loud_message("The whistle of a bombard shell can be heard above", hearing_distance = 12)//An acceptable range, m'lord.
+	T.loud_message("头顶传来臼炮炮弹的尖啸声", hearing_distance = 12)//An acceptable range, m'lord.
 	addtimer(CALLBACK(src, PROC_REF(shell_impact), cannonball, T), 45) //Must go down
 
 /obj/structure/bombard/proc/shell_impact(obj/item/cannonball/cannonball, turf/T)
@@ -84,14 +84,14 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 			'X-地脉交点' 修正：<span class='warning'>[xdial]</span> <br>\
 			'Y-地脉交点' 修正：<span class='warning'>[ydial]</span> <br>\
 			<br>\
-			仰角：<span class='danger'>[zdial]0%</span> <br>\
-			预计偏差：<span class='danger'>[offset_per_turfs]%</span></small>"//Just for fluff.
+			目标高度层：<span class='danger'>[zdial]</span> <br>\
+			散布：横纵方向每相距<span class='danger'>[offset_per_turfs]</span>格，对应方向的最大偏差约增加1格。</small>"//Just for fluff.
 	else
 		. += "...<br>\
 		<small>不出所料，你完全看不懂这些细节。也许受过烟火药训练的人会明白……</small>"
 	if(!heavy)
 		. += "...<br>\
-		<small>这门臼炮可以用 MMB 拆卸打包。</small>"
+		<small>点击鼠标中键即可拆卸并打包这门臼炮。</small>"
 	else
 		. += "...<br>\
 		<small>这门臼炮固定在原地，重得根本无法搬动！</small>"
@@ -124,17 +124,17 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 		return
 
 	if (choice == "设定目标")
-		var/temp_targ_x = input("设定打击点的横向偏移。") as num
+		var/temp_targ_x = input("输入目标的横向地脉交点读数。") as num
 		if(xdial + deobfuscate_x(temp_targ_x) > world.maxx || xdial + deobfuscate_x(temp_targ_x) < 0)
-			to_chat(user, "<span class='warning'>你无法瞄准这个目标，它超出了你的射程。</span>")
+			to_chat(user, "<span class='warning'>目标的横向坐标超出了可用范围。</span>")
 			return
-		var/temp_targ_y = input("设定打击点的纵向偏移。") as num
+		var/temp_targ_y = input("输入目标的纵向地脉交点读数。") as num
 		if(ydial + deobfuscate_y(temp_targ_y) > world.maxy || ydial + deobfuscate_y(temp_targ_y) < 0)
-			to_chat(user, "<span class='warning'>你无法瞄准这个目标，它超出了你的射程。</span>")
+			to_chat(user, "<span class='warning'>目标的纵向坐标超出了可用范围。</span>")
 			return
-		var/temp_targ_z = input("调整打击点高度。") as num
+		var/temp_targ_z = input("输入目标的高度层（2至5）。") as num
 		if(temp_targ_z > 5/*world.maxz*/ || temp_targ_z < 2)//Adjust if we abandon the 5 Z setup.
-			to_chat(user, "<span class='warning'>你不能以这种方式调整臼炮仰角。</span>")
+			to_chat(user, "<span class='warning'>目标高度层必须在2至5之间。</span>")
 			return
 
 		//Does anything prevent us from actually hitting that area?
@@ -163,11 +163,11 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 			return
 		//All's well? Continue!
 
-		user.visible_message("<span class='notice'>([user]开始调整[src]的射角与距离。</span>",
+		user.visible_message("<span class='notice'>[user]开始调整[src]的射角与距离。</span>",
 		"<span class='notice'>你开始调整[src]的射角与距离，让它对准新的目标位置。</span>")
 		busy = 1
 		if(do_after(user, 30, src))
-			user.visible_message("<span class='notice'>([user]完成了[src]的射角与距离调整。</span>",
+			user.visible_message("<span class='notice'>[user]完成了[src]的射角与距离调整。</span>",
 			"<span class='notice'>你完成了[src]的射角与距离调整，使其对准新的目标位置。</span>")
 			playsound(loc, 'sound/combat/shieldraise.ogg', 25, TRUE)
 			busy = 0
@@ -190,14 +190,14 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 			return
 		var/temp_dial_x = input("将横向偏移修正设为 -10 到 10。") as num
 		if(temp_dial_x + xinput > world.maxx || temp_dial_x + xinput < 0)
-			to_chat(user, "<span class='warning'>你无法把横向偏移调到这里，它超出了臼炮射程。</span>")
+			to_chat(user, "<span class='warning'>修正后的横向坐标超出了可用范围。</span>")
 			return
 		if(temp_dial_x < -10 || temp_dial_x > 10)
 			to_chat(user, "<span class='warning'>你无法将目标修正到这里，它太远了。你得重新布设[src]。</span>")
 			return
 		var/temp_dial_y = input("将纵向偏移修正设为 -10 到 10。") as num
 		if(temp_dial_y + yinput > world.maxy || temp_dial_y + yinput < 0)
-			to_chat(user, "<span class='warning'>你无法把纵向偏移调到这里，它超出了臼炮射程。</span>")
+			to_chat(user, "<span class='warning'>修正后的纵向坐标超出了可用范围。</span>")
 			return
 
 		//As above, we do the checks now to see if this is even possible.
@@ -343,11 +343,11 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 	rammed = FALSE
 
 	playsound(loc, 'sound/combat/shieldraise.ogg', 25, TRUE)
-	user.visible_message("<span class='notice'>[user]开始拆卸[src]。",
-	"<span class='notice'>你开始拆卸[src]。")
+	user.visible_message("<span class='notice'>[user]开始拆卸[src]。</span>",
+	"<span class='notice'>你开始拆卸[src]。</span>")
 	if(do_after(user, 40, src))
-		user.visible_message("<span class='notice'>[user]拆下了[src]。",
-		"<span class='notice'>你拆下了[src]。")
+		user.visible_message("<span class='notice'>[user]拆下了[src]。</span>",
+		"<span class='notice'>你拆下了[src]。</span>")
 		playsound(loc, 'sound/combat/shieldraise.ogg', 25, TRUE)
 		new /obj/item/bombard_frame(loc)
 		new /obj/item/bombard_barrel(loc)

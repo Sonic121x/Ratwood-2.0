@@ -190,7 +190,7 @@
 /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	name = "铁阔头箭"
 	icon_state = "ironarrow"
-	desc = "一束经蒸汽烤直的箭杆，一端开槽，另一端装着铁制箭头。系上尾羽后，它就会忠实地飞向射手意志所指之处。"
+	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着铁制箭头。系上尾羽后，它就会忠实地飞向射手意志所指之处。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/iron
 
 /obj/item/ammo_casing/caseless/rogue/arrow/iron/decrepit
@@ -203,7 +203,7 @@
 /obj/item/ammo_casing/caseless/rogue/arrow/steel
 	name = "钢锥头箭"
 	icon_state = "steelarrow"
-	desc = "一束经蒸汽烤直的箭杆，一端开槽，另一端装着钢制箭头。它正是为了对付那些准备更充分的目标而造。"
+	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着钢制箭头。它正是为了对付那些准备更充分的目标而造。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/steel
 
 /obj/item/ammo_casing/caseless/rogue/arrow/steel/ancient
@@ -320,7 +320,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	name = "毒箭"
-	desc = "一束经蒸汽烤直的箭杆，一端开槽，另一端装着锋利箭头。箭头上开有凹槽，内里灌注着令人昏沉的毒药混合物。"
+	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着锋利箭头。箭头上开有凹槽，内里灌注着令人昏沉的毒药混合物。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison
 	icon_state = "ironarrow_poison"
 	max_integrity = 10 // same as normal arrow; usually breaks on impact with a mob anyway
@@ -796,38 +796,38 @@
 	icon_state = "iron_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/steel
-	name = "steel sling bullet"
-	desc = "A heavy, durable sphere of steel, able to punch a hole in most armours."
+	name = "钢制投石弹"
+	desc = "一颗沉重而耐用的钢球，足以击穿大多数护甲。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/steel
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "steel_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/steelblessed
-	name = "holy steel sling bullet"
-	desc = "A heavy, durable sphere of steel, blessed with divine energy to strike down undead."
+	name = "神圣钢制投石弹"
+	desc = "一颗沉重而耐用的钢球，受神圣能量祝圣，用以击倒亡灵。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/steelblessed
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "steelholy_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/silver
-	name = "silver sling bullet"
-	desc = "A ball of silver, terrible metal for an projectile yet no undead ever enjoyed a ball of their anathema placed inside their chest."
+	name = "银制投石弹"
+	desc = "一颗银球。银本不是做投射物的好材料，可从来没有哪个亡灵，乐意被一颗自己的克星打进胸膛。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/silver
 	is_silver = TRUE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "silver_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/silverblessed
-	name = "blessed silver sling bullet"
-	desc = "A round piece of blessed silver, the matherial weakness burned away in divine flames. Let the undead beware, for this is a weapon of the divine."
+	name = "祝圣银制投石弹"
+	desc = "一颗祝圣过的银弹，其材质中的弱点已在神圣烈焰中焚尽。让亡灵们当心吧，因为这是一件神圣之兵器。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/silverblessed
 	is_silver = TRUE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "holysilver_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/blacksteel
-	name = "blacksteel sling bullet"
-	desc = "An elegant sphere of blacksteel. This bullet bores through plate and meat like a comet. Once it's reached terminal velocity, you might want to duck."
+	name = "黑钢投石弹"
+	desc = "一颗精致的黑钢圆弹。这枚弹丸如彗星般洞穿板甲与血肉。一旦它达到终点速度，你最好赶紧低头。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/blacksteel
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bs_sling_bullet"
@@ -1013,7 +1013,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/bolt/holy
 	name = "裂灭弩矢"
-	desc = "一支银尖弩矢，内部装有一小瓶圣水。它对活体血肉造成的伤口较浅，但对不洁之物却格外有效；断裂与爆响之后，便是炽烈的惊喜。 </br>“一次洗礼，赦免诸罪。”"
+	desc = "一支银尖弩矢，内部装有一小瓶圣水。它对活体血肉造成的伤口较浅，但对不洁之物却格外有效；断裂与爆响之后，便是炽烈的惊喜。 <br>“一次洗礼，赦免诸罪。”"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/holy
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	caliber = "regbolt"
