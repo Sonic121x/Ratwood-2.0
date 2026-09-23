@@ -526,7 +526,7 @@ GLOBAL_DATUM_INIT(economic_panel, /datum/economic_panel, new)
 			if(SScity_assembly)
 				SScity_assembly.resolve_session(
 					"admin divine",
-					"COMPLETED BY DIVINE INTERVENTION - the gods have hastened the Assembly's deliberations.",
+					"神意促成决议 - 众神加快了议会的审议。",
 				)
 				admin_log_fiscal("force-completed City Assembly session (divine intervention flavor)", "Assembly Divine Complete")
 			return TRUE

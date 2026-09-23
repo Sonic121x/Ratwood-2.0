@@ -71,8 +71,8 @@ const SECTIONS: SectionMeta[] = [
   },
   {
     key: 'assembly',
-    label: '议事会',
-    blurb: '请愿、召集, 以及城市议事会的日常事务.',
+    label: '城市议会',
+    blurb: '请愿、召集，以及城市议会的日常事务。',
   },
 ];
 
@@ -157,7 +157,7 @@ const AssemblySection = ({ act }: { act: TabProps['act'] }) => (
       style={inkButtonStyle({})}
       onClick={() => act('open_assembly')}
     >
-      进入议事会
+      进入城市议会
     </button>
   </div>
 );
