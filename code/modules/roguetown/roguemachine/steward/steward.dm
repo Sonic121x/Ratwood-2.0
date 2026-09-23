@@ -393,7 +393,7 @@
 					is_authorized = TRUE
 
 				if(!is_authorized)
-					say("只有总管家、书记官或统治者可以停发工资。")
+					say("只有总管、书记官或统治者可以停发工资。")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 
