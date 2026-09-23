@@ -146,11 +146,11 @@
 		var/suffix
 		switch(effective_range_type)
 			if(EFF_RANGE_EXACT)
-				suffix = "恰好"
+				suffix = "恰好为"
 			if(EFF_RANGE_ABOVE)
-				suffix = "及更远处"
+				suffix = "不小于"
 			if(EFF_RANGE_BELOW)
-				suffix = "及更近处"
+				suffix = "不大于"
 			else
 				CRASH("effective_range found without a valid effective_range_type on [src] intent by [user]")
 		inspec += "\n<b>有效距离:</b> [suffix] [effective_range] 步"
@@ -200,7 +200,7 @@
 			inspec += str
 	if(intent_intdamage_factor != 1)
 		var/percstr = abs(intent_intdamage_factor - 1) * 100
-		inspec += "\n该意图会对耐久造成[percstr]％[intent_intdamage_factor > 1 ? "更多" : "更少"]伤害。"
+		inspec += "\n该意图造成的耐久伤害[intent_intdamage_factor > 1 ? "增加" : "减少"][percstr]％。"
 	if(sharpness_penalty)
 		inspec += "\n该意图每次攻击都会额外消耗一些锋利度。"
 	if(blunt_chipping)

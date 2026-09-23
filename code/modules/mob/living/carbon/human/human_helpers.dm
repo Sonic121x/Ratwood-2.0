@@ -191,10 +191,10 @@
 	. = ..()
 	if(G.trigger_guard == TRIGGER_GUARD_NORMAL)
 		if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) || HAS_TRAIT(src, TRAIT_GNARLYDIGITS))
-			to_chat(src, span_warning("My meaty finger is much too large for the trigger guard!"))
+			to_chat(src, span_warning("我的手指太粗，伸不进扳机护圈！"))
 			return FALSE
 	if(HAS_TRAIT(src, TRAIT_NOGUNS))
-		to_chat(src, span_warning("I can't bring myself to use a ranged weapon!"))
+		to_chat(src, span_warning("我无法让自己使用远程武器！"))
 		return FALSE
 
 /mob/living/carbon/human/get_policy_keywords()
