@@ -14,7 +14,7 @@
 	没有其他种族特征是显性的。<br>\
 	(+1 意志, +1 智力, 休门巧思特质)"
 
-	skin_tone_wording = "Ancestry"
+	skin_tone_wording = "血统"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
