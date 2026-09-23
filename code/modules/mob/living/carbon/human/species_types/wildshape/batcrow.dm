@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/wildshape/bat
-	name = "Bat"
+	name = "蝙蝠"
 	race = /datum/species/shapebat
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -22,22 +22,22 @@
 		src.STASPD = 18
 
 		if(src.client.prefs?.wildshape_name)
-			real_name = "bat ([stored_mob.real_name])"
+			real_name = "蝙蝠（[stored_mob.real_name]）"
 		else
-			real_name = "bat"
+			real_name = "蝙蝠"
 
 /mob/living/carbon/human/species/wildshape/proc/winged_form_fly(vertical_dir)
 	if(pulledby != null)
-		to_chat(src, span_notice("I can't fly away while being grabbed!"))
+		to_chat(src, span_notice("我被抓住了，无法飞走！"))
 		return
 	var/flying_up = (vertical_dir == UP)
-	visible_message(span_notice("[src] begins to [flying_up ? "ascend" : "descend"]!"), span_notice("You take flight..."))
+	visible_message(span_notice("[src]开始[flying_up ? "上升" : "下降"]！"), span_notice("你飞了起来……"))
 	if(do_after(src, 3 SECONDS, target = src))
 		if(pulledby == null)
 			zMove(vertical_dir, TRUE)
-			to_chat(src, span_notice("I fly [flying_up ? "up" : "down"]."))
+			to_chat(src, span_notice("我向[flying_up ? "上" : "下"]飞去。"))
 		else
-			to_chat(src, span_notice("I can't fly away while being grabbed!"))
+			to_chat(src, span_notice("我被抓住了，无法飞走！"))
 
 /mob/living/carbon/human/species/wildshape/bat/proc/fly_up()
 	set category = "Winged Form"
@@ -98,12 +98,12 @@
 	return TRUE
 
 /mob/living/carbon/human/species/wildshape/bat/put_in_hand_check(obj/item/I)
-	to_chat(src, span_warning("My wings can't hold that!"))
+	to_chat(src, span_warning("我的翅膀拿不了那个！"))
 	return FALSE
 
 /mob/living/carbon/human/species/wildshape/bat/start_pulling(atom/movable/AM, state, force, supress_message, obj/item/item_override)
 	if(ismob(AM))
-		to_chat(src, span_warning("My wings can't grab that!"))
+		to_chat(src, span_warning("我的翅膀抓不住那个！"))
 		return FALSE
 	return ..()
 
@@ -139,7 +139,7 @@
 	return TRUE
 
 /mob/living/carbon/human/species/wildshape/crow
-	name = "Crow"
+	name = "乌鸦"
 	race = /datum/species/shapecrow
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -163,9 +163,9 @@
 		src.STASPD = 17
 
 		if(src.client.prefs?.wildshape_name)
-			real_name = "crow ([stored_mob.real_name])"
+			real_name = "乌鸦（[stored_mob.real_name]）"
 		else
-			real_name = "crow"
+			real_name = "乌鸦"
 
 	update_crow_stance()
 
@@ -254,12 +254,12 @@
 	return TRUE
 
 /mob/living/carbon/human/species/wildshape/crow/put_in_hand_check(obj/item/I)
-	to_chat(src, span_warning("My wings can't hold that!"))
+	to_chat(src, span_warning("我的翅膀拿不了那个！"))
 	return FALSE
 
 /mob/living/carbon/human/species/wildshape/crow/start_pulling(atom/movable/AM, state, force, supress_message, obj/item/item_override)
 	if(ismob(AM))
-		to_chat(src, span_warning("My wings can't grab that!"))
+		to_chat(src, span_warning("我的翅膀抓不住那个！"))
 		return FALSE
 	return ..()
 
