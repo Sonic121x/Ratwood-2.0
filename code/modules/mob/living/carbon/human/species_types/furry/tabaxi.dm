@@ -22,7 +22,7 @@
 	他们拥有良好的平衡感和敏锐的嗅觉。"
 
 
-	skin_tone_wording = "Fur Colors"
+	skin_tone_wording = "毛色"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'

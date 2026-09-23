@@ -15,7 +15,7 @@
 	无论是否接纳其恶魔先祖，由于长年在历史中遭到排斥与追猎，而真正能信任的唯有血亲与族人，提夫林对其血脉和家族极为重视。<br>\
 	(+1 体质, +1 智力, 地狱后裔特质)"
 
-	skin_tone_wording = "Progenitor"
+	skin_tone_wording = "始祖"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST
@@ -109,7 +109,7 @@
 		/datum/language/hellspeak,
 	)
 	stress_examine = TRUE
-	stress_desc = span_red("Helldweller... better stay away.")
+	stress_desc = span_red("地狱来客……最好离远点。")
 
 /datum/species/tieberian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
@@ -117,7 +117,7 @@
 
 /datum/species/tieberian/after_creation(mob/living/carbon/C)
 	..()
-	to_chat(C, "<span class='info'>I can speak Infernal with ,h before my speech.</span>")
+	to_chat(C, "<span class='info'>在话语前加上 ,h 即可使用炼狱语。</span>")
 
 /datum/species/tieberian/on_species_loss(mob/living/carbon/C)
 	. = ..()
