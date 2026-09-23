@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue/blackmarket_potions
 	group = "饮品" // English: Beverages
-	crate_name = "suspicious crate"
+	crate_name = "可疑的货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/blackmarket_potions/healthpot

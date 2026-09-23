@@ -13,20 +13,20 @@
 // /mob/proc/scry_ghost() in code/modules/mob/dead/observer/observer.dm.
 /obj/item/roguemachine/zadcote/proc/begin_voyeur(datum/zadlink/link, mob/living/carbon/human/operator)
 	if(!allows_voyeur)
-		to_chat(operator, span_warning("This zadcote does not bind for scrying."))
+		to_chat(operator, span_warning("这座扎德鸟舍不支持窥视联结。"))
 		return FALSE
 	if(!link || link.severed)
-		to_chat(operator, span_warning("That zadlink is severed."))
+		to_chat(operator, span_warning("这条扎德鸟联结已被切断。"))
 		return FALSE
 	var/obj/item/zadcage/cage = link.resolve_cage()
 	if(!cage)
-		to_chat(operator, span_warning("That zadlink has no bonded zadcage."))
+		to_chat(operator, span_warning("这条扎德鸟联结没有绑定鸟笼。"))
 		return FALSE
 	if(voyeur_fund < ZAD_VOYEUR_COST_MAMMON)
-		to_chat(operator, span_warning("The zadcote's scrying fund is empty. Feed it mammon coins to scry."))
+		to_chat(operator, span_warning("扎德鸟舍的窥视资金已耗尽。投入玛门币后才能窥视。"))
 		return FALSE
 	voyeur_fund -= ZAD_VOYEUR_COST_MAMMON
-	to_chat(operator, span_notice("You whisper into the zadcote. The bonded zad stirs from afar... ([voyeur_fund]m left for scrying.)"))
+	to_chat(operator, span_notice("你向扎德鸟舍低语。远方与之联结的扎德鸟躁动起来……（窥视资金剩余[voyeur_fund]m。）"))
 	if(!do_after(operator, ZAD_VOYEUR_DOAFTER, target = src))
 		voyeur_fund += ZAD_VOYEUR_COST_MAMMON
 		return FALSE
@@ -36,7 +36,7 @@
 /obj/item/zadcage/proc/start_voyeur(mob/living/carbon/human/operator)
 	var/obj/item/roguemachine/zadcote/cote = resolve_cote()
 	if(active_voyeur_screye)
-		to_chat(operator, span_warning("The zad is already being scryed through - wait for the current scrying to end."))
+		to_chat(operator, span_warning("已有他人正透过这只扎德鸟窥视，请等当前窥视结束。"))
 		if(cote)
 			cote.voyeur_fund += ZAD_VOYEUR_COST_MAMMON
 		return
@@ -52,12 +52,12 @@
 	var/atom/movable/broadcaster = visible_holder()
 	var/source_desc
 	if(broadcaster == src)
-		source_desc = "the zad in [src]"
+		source_desc = "[src]中的扎德鸟"
 	else if(ismob(broadcaster))
-		source_desc = "a zadcage on [broadcaster]"
+		source_desc = "[broadcaster]身上的扎德鸟笼"
 	else
 		source_desc = "[broadcaster]"
-	broadcaster.visible_message(span_notice("A strange blue glow emits from [source_desc]."))
+	broadcaster.visible_message(span_notice("[source_desc]散发出诡异的蓝光。"))
 	add_filter("zad_voyeur_glow", 2, list("type" = "outline", "size" = 1, "color" = "#4488ff"))
 	set_light(2, 2, 2, l_color = "#1b7bf1")
 	var/mob/dead/observer/screye/zadcote_voyeur/S = spawn_zad_screye(operator)
@@ -71,12 +71,12 @@
 	if(holder)
 		active_voyeur_holder = WEAKREF(holder)
 	S.ManualFollow(target)
-	operator.visible_message(span_danger("[operator] stares into the zadcote, [operator.p_their()] eyes rolling back into [operator.p_their()] head."))
-	to_chat(S, span_notice("You see through the zad's eyes. Click <b>Stop Scrying</b> in the IC tab to return early; otherwise the bond breaks on its own after [ZAD_VOYEUR_DURATION / (1 MINUTES)] minute\s."))
+	operator.visible_message(span_danger("[operator]凝视着扎德鸟舍，双眼向上翻去。"))
+	to_chat(S, span_notice("你正透过扎德鸟的双眼观察。点击IC选项卡中的<b>停止窥视</b>可提前返回；否则，联结将在[ZAD_VOYEUR_DURATION / (1 MINUTES)]分钟后自行断开。"))
 	if(holder && holder.stat != DEAD && holder.stat != UNCONSCIOUS)
 		holder.throw_alert("scryingeye", /atom/movable/screen/alert/scryingeye, override = TRUE)
-		to_chat(holder, span_warning("The zad in your zadcage stirs - you feel a pair of eyes peering through it."))
-		holder.balloon_alert_to_viewers("<font color='#b388ff'>scried!</font>")
+		to_chat(holder, span_warning("你鸟笼中的扎德鸟躁动起来，你感到有一双眼睛正透过它窥视。"))
+		holder.balloon_alert_to_viewers("<font color='#b388ff'>被窥视了！</font>")
 		holder.playsound_local(holder, 'sound/magic/marked.ogg', 75, TRUE) // Ratwood deviation: AP plays 'sound/magic/scryed_on.ogg', which ES lacks
 	voyeur_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_voyeur)), ZAD_VOYEUR_DURATION, TIMER_STOPPABLE)
 
@@ -115,7 +115,7 @@
 	return ghost
 
 /mob/dead/observer/screye/zadcote_voyeur
-	name = "scrying through a zad"
+	name = "透过扎德鸟窥视"
 	var/datum/weakref/bonded_cage
 
 /mob/dead/observer/screye/zadcote_voyeur/Initialize(mapload)
@@ -124,8 +124,8 @@
 
 /mob/dead/observer/screye/zadcote_voyeur/proc/end_zad_voyeur()
 	set category = "IC"
-	set name = "Stop Scrying"
-	set desc = "End the zad-scrying and return to your body."
+	set name = "停止窥视"
+	set desc = "结束扎德鸟窥视，返回你的身体。"
 	var/obj/item/zadcage/cage = bonded_cage?.resolve()
 	if(cage)
 		cage.finish_voyeur()
@@ -136,7 +136,7 @@
 // the blackmirror alert). Icon state "scryingeye" must exist in the screen-alert DMI - flag
 // for the user to confirm/add in Dream Maker.
 /atom/movable/screen/alert/scryingeye
-	name = "SCRYING EYE"
-	desc = "I SEE YOU."
+	name = "窥视之眼"
+	desc = "我看见你了。"
 	icon_state = "blackeye" // Ratwood lacks a dedicated scryingeye state; blackeye is the closest arcane-watcher icon
 	timeout = 8 SECONDS
