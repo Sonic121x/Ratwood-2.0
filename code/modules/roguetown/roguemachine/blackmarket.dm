@@ -99,8 +99,8 @@
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/gold_menu.ogg', 100, FALSE, -1)
 	var/canread = user.can_read(src, TRUE)
-	var/contents = "<center>COPPERFACE - What's Yours.<BR>"
-	contents += "<a href='?src=[REF(src)];change=1'>CURRENT BUDGET:</a> [budget]<BR>"
+	var/contents = "<center>铜面 - 归你所有。<BR>"
+	contents += "<a href='?src=[REF(src)];change=1'>当前余额：</a> [budget]<BR>"
 	contents += "</center><BR>"
 	if(current_cat == "1")
 		contents += "<table style='width: 100%' line-height: 20px;'>"
@@ -117,7 +117,7 @@
 		contents += "</table>"
 	else
 		contents += "<center>[current_cat]<BR></center>"
-		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
+		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[返回\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSmerchant.supply_packs)
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
@@ -125,7 +125,7 @@
 				pax += PA
 		for(var/datum/supply_pack/PA in sortNames(pax))
 			var/costy = PA.cost
-			contents += "[PA.name] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			contents += "[PA.name] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>购买</a><BR>"
 
 	if(!canread)
 		contents = stars(contents)
