@@ -16,7 +16,7 @@
 	在社会粗糙的底层或边缘地带谋生。<br>\
 	(+1 力量, 大块头特质, 破床特质)"
 
-	skin_tone_wording = "Clan"
+	skin_tone_wording = "氏族"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST
@@ -113,7 +113,7 @@
 
 /datum/species/halforc/after_creation(mob/living/carbon/C)
 	..()
-	to_chat(C, "<span class='info'>I can speak Orcish with ,o before my speech.</span>")
+	to_chat(C, "<span class='info'>在话语前加上 ,o 即可使用兽人语。</span>")
 
 /datum/species/halforc/on_species_loss(mob/living/carbon/C)
 	. = ..()
