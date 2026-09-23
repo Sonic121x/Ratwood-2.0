@@ -1,6 +1,6 @@
 /datum/job/roguetown/butler // really need to re-name all these when the codebase isn't a fork and search will update for the peasants...
 	title = "Seneschal"
-	display_title = "内务总管"
+	display_title = "首席管家"
 	flag = BUTLER
 	department_flag = COURTIERS
 	faction = "Station"
@@ -30,7 +30,7 @@
 	category_tags = list(CTAG_SENESCHAL)
 
 /datum/advclass/seneschal/seneschal
-	name = "内务总管"
+	name = "首席管家"
 	tutorial = "虽然你仍需在必要时亲自补上宅邸仆役的差事，但你早已把自己塑造成凌驾于他们之上的人物。"
 	outfit = /datum/outfit/job/roguetown/seneschal/seneschal
 	subclass_stats = list(
