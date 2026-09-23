@@ -19,9 +19,9 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 /obj/item/rogueweapon/palantir/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_FUSILIER))
-		. += "<small>上次记录的横向交汇点：<span class='warning'>[last_x]</span> <br>\
-			上次记录的纵向交汇点：<span class='warning'>[last_y]</span> <br>\
-			上次记录的高度交汇点：<span class='warning'>[last_z]</span></small>"
+		. += "<small>上次记录的横向交汇点：<span class='warning'>[last_x == "UNKNOWN" ? "未知" : last_x]</span> <br>\
+			上次记录的纵向交汇点：<span class='warning'>[last_y == "UNKNOWN" ? "未知" : last_y]</span> <br>\
+			上次记录的高度交汇点：<span class='warning'>[last_z == "UNKNOWN" ? "未知" : last_z]</span></small>"
 	else
 		. += "<small>不出所料，你完全看不懂这些细节。也许受过烟火药训练的人会明白……</small>"
 

@@ -284,7 +284,7 @@ At least, it should. Fingers crossed.
 	if(prob(accident_chance))
 		user.fullscreen_redflash("whiteflash")
 		user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
-		user.visible_message("<span class='danger'>[user]在发射[src]时不慎把自己烧伤了。</span>")
+		user.visible_message("<span class='danger'>[user]在用[src]开火时不慎把自己烧伤了。</span>")
 		user.emote("painscream")
 		if(prob(60))
 			user.dropItemToGround(src)
