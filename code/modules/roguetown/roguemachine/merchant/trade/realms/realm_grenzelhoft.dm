@@ -1,6 +1,6 @@
 /datum/foreign_realm/grenzelhoft
 	id = REALM_GRENZELHOFT
-	name = "Grenzelhoft"
+	name = "格伦泽尔霍夫特"
 	roll_weight = TRADE_REALM_WEIGHT_NEIGHBOR
 	demanded_categories = list(NAVIGATOR_BUCKET_POTIONS_REAGENTS, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_CARVED, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
@@ -18,10 +18,10 @@
 		"Eisenberg", "Falkenried", "Sturmwacht", "von Zenitstadt", "von Hochburg",
 	)
 	ship_types = list(
-		list("name" = "Coaster", "tonnage" = 30, "weight" = 15),
-		list("name" = "Cog", "tonnage" = 120, "weight" = 50),
-		list("name" = "Hulk", "tonnage" = 250, "weight" = 25),
-		list("name" = "Carrack", "tonnage" = 500, "weight" = 10),
+		list("name" = "沿岸货船", "tonnage" = 30, "weight" = 15),
+		list("name" = "柯克帆船", "tonnage" = 120, "weight" = 50),
+		list("name" = "霍尔克货船", "tonnage" = 250, "weight" = 25),
+		list("name" = "卡拉克帆船", "tonnage" = 500, "weight" = 10),
 	)
 	city_tags = list(
 		"Apfelweinheim", "Zenitstadt", "Eisenhafen", "Silbergrund",
@@ -101,17 +101,17 @@
 		/datum/supply_pack/rogue/alcohol/onin,
 	)
 	hail_lines = list(
-		"Factor! Have my dues counted in silver, not promises. I sail at the first ebb whether you are ready or not.",
-		"Grain from Apfelweinheim, ingots from the foundries of New Celestia. Bring buyers, not browsers.",
-		"By the Eleven Cathedrals, my ledgers are honest. See that yours match - the See takes a dim view of cheats, and so do I.",
-		"My crew has held mass on every sunsdae of the crossing. We are devout, well-fed, and patient. Two of these three I have brought with me. The third I do not promise.",
-		"I want clay, silk, and tangerines. Send anyone who has them to the gangway. Send no one else.",
-		"The Crown's tariff is a thief in Astrata's clothing, but I have paid worse. Stamp my papers and let us be done.",
-		"A registered magos of the Celestial Academy travels in my aft cabin. His papers are in order, his stipend is paid. Do not detain him; the Emperor's Magi take it personally.",
-		"My zweihanders fetch good coin south. I do not care which lord buys them so long as he is not Hammerhold or Gronnic. Verify the purse and verify the flag.",
-		"I hold a condotta for three Condottieri companies bound for service abroad. Their pay is sealed under church wax. Do not break the seal; the chaplain watches.",
-		"A burgher of Zenitstadt rode with us this voyage and would not stop weeping and vomiting at the masthead. He has paid his fare. I make no apology for him.",
-		"You will find my prices fair and my temper short. Do not test the second to bargain the first.",
-		"I sailed with one captive raider of the Gronnic coast in chains below decks for the crossing. He is delivered to your magistrate, alive, as the compact requires. Now my real cargo - grain.",
-		"Give me smoked eels by the barrel. Unjellied, please, that thing is an abomination upon humenity. I've heard the Celestial Academy's students have gotten tired of eating salmon everydaes. So eels from your river would be a nice change of pace."
+		"商行管事！用白银付清我的货款，别拿承诺搪塞。第一次退潮我就起航，不管你准没准备好。",
+		"阿普费尔韦因海姆的谷物，新塞莱斯蒂亚铸造厂的金属锭。带买家来，别带闲逛的人。",
+		"以十一座大教堂起誓，我的账簿清清白白。你的也最好如此——教廷厌恶骗子，我也一样。",
+		"渡海途中，每个太阳日我的船员都会举行弥撒。我们虔诚、吃得饱、耐心好。这三样我带来了两样，第三样我可不保证。",
+		"我要黏土、丝绸和橘子。有货的人叫到舷梯来，其他人免了。",
+		"王室关税就是披着阿斯特拉塔外衣的窃贼，不过我交过更糟的。给文书盖章，让我们赶紧办完。",
+		"天界学院一位登记在册的法师住在我的船尾舱。他的文书齐全，津贴已付。别扣留他，皇帝的法师团会把这当作冒犯。",
+		"我的双手巨剑在南方很值钱。谁买我都不在乎，只要不是铁锤堡或格隆恩的领主。看清钱袋，也看清旗帜。",
+		"我持有三支佣兵团赴海外服役的雇佣契约。他们的军饷封着教会火漆。别动封印，随军祭司看着呢。",
+		"这趟船上有个来自泽尼特施塔特的市民，一路在桅杆顶上哭个不停、吐个不停。他付过船费，我不会替他道歉。",
+		"你会发现我的价格公道，脾气却不好。别为了前者试探后者。",
+		"这一路，我把一名从格隆恩海岸俘获的劫掠者锁在甲板下。按盟约要求，他已活着交给你们的治安官了。现在说说我真正的货物——谷物。",
+		"给我整桶的熏鳗鱼。请别做成冻，那玩意简直是对人类的亵渎。听说天界学院的学生已经吃腻了天天上桌的鲑鱼，你们河里的鳗鱼正好能换换口味。"
 	)
