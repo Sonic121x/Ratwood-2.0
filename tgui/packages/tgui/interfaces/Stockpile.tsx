@@ -278,7 +278,7 @@ const StockRowView = (props: {
           onClick={() => act('withdraw', { ref: row.ref })}
           title={
             overriding
-              ? '已对公众关闭. 作为书记官 / 总管家, 你可以取出.'
+              ? '已对公众关闭. 作为书记官 / 总管, 你可以取出.'
               : undefined
           }
         >
@@ -298,7 +298,7 @@ const StockRowView = (props: {
             row.import_price <= 0
               ? '今日没有任何地区供应这种货物.'
               : overriding
-                ? '已对公众关闭. 作为书记官 / 总管家, 你可以取出.'
+                ? '已对公众关闭. 作为书记官 / 总管, 你可以取出.'
                 : data.charter_active
                   ? '直接进口. 需向王权缴税.'
                   : '直接进口. 附加费用于支付运输.'
