@@ -27,9 +27,9 @@ const STATUS_BADGE_COLOR: Record<string, string> = {
 };
 
 const STATUS_LABEL: Record<string, string> = {
-  open: 'OPEN',
-  claimed: 'CLAIMED',
-  complete: 'READY',
+  open: '待接单',
+  claimed: '已接单',
+  complete: '待领取',
 };
 
 const OrderCard = (props: {
@@ -76,11 +76,11 @@ const OrderCard = (props: {
             minWidth: 0,
           }}
         >
-          <span style={{ color: INK_SOFT }}>for </span>
+          <span style={{ color: INK_SOFT }}>委托人：</span>
           <b>{starsIf(order.commissioner_name, canRead)}</b>
           {order.status !== 'open' && order.smith_name && (
             <>
-              <span style={{ color: INK_SOFT }}> by </span>
+              <span style={{ color: INK_SOFT }}> 承接人：</span>
               <b>{starsIf(order.smith_name, canRead)}</b>
             </>
           )}
@@ -95,8 +95,8 @@ const OrderCard = (props: {
           >
             <b style={{ color: order.days_left <= 0 ? SEAL_RED : INK }}>
               {order.days_left <= 0
-                ? 'today'
-                : `${order.days_left}d`}
+                ? '今日到期'
+                : `${order.days_left}天后到期`}
             </b>
           </span>
         )}
@@ -151,7 +151,7 @@ const OrderCard = (props: {
           }}
         >
           <span style={{ color: SEAL_AMBER }}>
-            needs:{' '}
+            所需材料：{' '}
           </span>
           {order.materials.map((m) => `${m.qty} ${m.name}`).join(' · ')}
         </div>
@@ -165,7 +165,7 @@ const OrderCard = (props: {
               color: SEAL_AMBER,
             }}
           >
-            Delivered {order.done_count} / {order.needed_count}
+            已交付 {order.done_count} / {order.needed_count}
           </div>
           {order.fulfillment.map((f, idx) => (
             <div
@@ -196,7 +196,7 @@ const OrderCard = (props: {
             style={inkButtonStyle()}
             onClick={() => act('claim_order', { ref: order.ref })}
           >
-            Claim (Smith)
+            接单（铁匠）
           </button>
         )}
         {order.status === 'open' && isCommissioner && (
@@ -205,7 +205,7 @@ const OrderCard = (props: {
             style={inkButtonStyle({ color: SEAL_RED })}
             onClick={() => act('cancel_order', { ref: order.ref })}
           >
-            Cancel &amp; Refund
+            取消并退款
           </button>
         )}
         {order.status === 'claimed' && isSmith && (
@@ -215,7 +215,7 @@ const OrderCard = (props: {
               style={inkButtonStyle()}
               onClick={() => act('release_order', { ref: order.ref })}
             >
-              Release Claim
+              放弃接单
             </button>
             {hasProgress && (
               <button
@@ -224,7 +224,7 @@ const OrderCard = (props: {
                 onClick={() => act('settle_partial', { ref: order.ref })}
                 title="Collect pro-rata pay for delivered items (20% haircut, rest refunds to commissioner)"
               >
-                Settle Partial
+                部分结算
               </button>
             )}
             <button
@@ -236,7 +236,7 @@ const OrderCard = (props: {
               disabled={!fulfilled}
               onClick={() => act('complete_order', { ref: order.ref })}
             >
-              Complete &amp; Collect Pay
+              完成并领取报酬
             </button>
           </>
         )}
@@ -246,7 +246,7 @@ const OrderCard = (props: {
             style={inkButtonStyle({ color: SEAL_GREEN })}
             onClick={() => act('collect_order', { ref: order.ref })}
           >
-            Collect Items
+            领取物品
           </button>
         )}
         {isGuildmaster &&
@@ -258,7 +258,7 @@ const OrderCard = (props: {
               onClick={() => act('force_release_order', { ref: order.ref })}
               title="Guildmaster override: release this stalled claim"
             >
-              Force Release
+              强制解除接单
             </button>
           )}
         {canReject && (
@@ -268,7 +268,7 @@ const OrderCard = (props: {
             onClick={() => setRejectOpen((v) => !v)}
             title="Refuse this commission. Deposit returns to the commissioner's deposit pool."
           >
-            Reject Order
+            拒绝订单
           </button>
         )}
       </div>
@@ -290,14 +290,14 @@ const OrderCard = (props: {
               marginBottom: '4px',
             }}
           >
-            State your reason publicly. The commissioner will be notified and
-            their deposit returned.
+            请公开说明拒绝理由。委托人将收到通知，
+            存款也将退还。
           </div>
           <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
             <Input
               value={rejectReason}
               onChange={setRejectReason}
-              placeholder="Insulting wage. Take it elsewhere."
+              placeholder="这点报酬是在侮辱人。另请高明吧。"
               width="100%"
               maxLength={180}
             />
@@ -313,7 +313,7 @@ const OrderCard = (props: {
                 setRejectReason('');
               }}
             >
-              Confirm Reject
+              确认拒绝
             </button>
             <button
               type="button"
@@ -323,7 +323,7 @@ const OrderCard = (props: {
                 setRejectReason('');
               }}
             >
-              Cancel
+              取消
             </button>
           </div>
         </div>
@@ -337,7 +337,7 @@ const OrderCard = (props: {
             color: INK_SOFT,
           }}
         >
-          Strike each finished item against the machine to deposit it.
+          将每件成品对着机器使用，即可交付。
         </div>
       )}
     </div>
@@ -360,7 +360,7 @@ export const OrdersTab = (props: {
           color: INK_SOFT,
         }}
       >
-        No posted orders. Build a manifest and post a commission to begin.
+        尚无已发布的订单。请先建立清单，再发布委托。
       </div>
     );
   }

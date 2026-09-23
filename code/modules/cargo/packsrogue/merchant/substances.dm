@@ -2,7 +2,7 @@
 
 /datum/supply_pack/rogue/substances
 	group = "烟草与药粉" // English: Substances
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 //drugs
 /datum/supply_pack/rogue/substances/sigs
