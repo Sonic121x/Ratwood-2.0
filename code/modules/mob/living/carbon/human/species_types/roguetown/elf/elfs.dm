@@ -18,7 +18,7 @@
 	在这片土地上，众多精灵部落中只有少数几个能够见到。<br>\
 	(+1 速度, 林中行者特质)"
 
-	skin_tone_wording = "Tribal Identity"
+	skin_tone_wording = "所属部族"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
