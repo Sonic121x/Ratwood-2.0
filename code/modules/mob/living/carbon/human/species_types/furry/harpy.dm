@@ -22,7 +22,7 @@
 	哈比倾向于在巨杉林之巅和附近悬崖上聚集成群。由于她们的飞行承重有限，她们必须利用上升气流并靠近大型物体或建筑来增强其有限的飞行范围和空中舞蹈表演。\
 	她们宁静的歌声与悦耳的音乐可远远回荡在下方，指引旅人和盗贼前往休憩之所……亦或宝藏。尽管她们如优雅般高飞，这些喜鹊却因其本能般的马西奥斯式贪婪和对一切闪耀之物的热爱而获此绰号。\
 	然而，若有人能越过那份不信任并给予丰厚酬劳，哈比便是无可匹敌的信使。</br>"
-	skin_tone_wording = "Ancestry"
+	skin_tone_wording = "血统"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, LIPS, HAIR, HARPY, OLDGREY, MUTCOLORS)
 	default_features = MANDATORY_FEATURE_LIST
@@ -38,7 +38,7 @@
 	soundpack_m = /datum/voicepack/male/harpy
 	soundpack_f = /datum/voicepack/female/harpy
 	stress_examine = TRUE
-	stress_desc = span_red("Farking birdbrains...")
+	stress_desc = span_red("该死的鸟脑袋……")
 
 	offset_features = list(
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
@@ -214,7 +214,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/skin_armor/harpy_skin
 	slot_flags = null
-	name = "harpy's feet skin"
+	name = "哈比足部表皮"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FEET|LEGS
@@ -238,4 +238,4 @@
 	qdel(src)
 
 /obj/item/clothing/suit/roguetown/armor/skin_armor/harpy_skin/obj_destruction()
-	visible_message("The skin on the feet is torn!", span_bloody("<b>THE SKIN ON MY FEET IS TORN!!</b>"))
+	visible_message("足部的表皮撕裂了！", span_bloody("<b>我脚上的皮撕裂了！！</b>"))
