@@ -34,11 +34,11 @@ const maxWeightForTier = (tier: number): number => {
 };
 
 const weightLabel = (wc: number): string => {
-  if (wc <= 1) return 'tiny';
-  if (wc === 2) return 'small';
-  if (wc === 3) return 'normal';
-  if (wc === 4) return 'bulky';
-  return 'too heavy';
+  if (wc <= 1) return '微小';
+  if (wc === 2) return '小型';
+  if (wc === 3) return '普通';
+  if (wc === 4) return '大型';
+  return '过重';
 };
 
 type ZadcageData = {
@@ -76,25 +76,25 @@ const helpButtonStyle = {
 export const Zadcage = () => {
   const { act, data } = useBackend<ZadcageData>();
   return (
-    <Window title="Zadcage" width={480} height={560} theme="parchment">
+    <Window title="Zadcage" display_title="扎德鸟笼" width={480} height={560} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
           <button style={helpButtonStyle} onClick={() => act('help')}>
             ?
           </button>
-          <div style={titleStyle}>Zadcage</div>
+          <div style={titleStyle}>扎德鸟笼</div>
           <div style={subtitleStyle}>
             {data.bonded
-              ? `${data.cote_name} - Slot ${data.slot_index}: ${data.slot_label}`
-              : 'Unbonded - strike against a zadcote to bond.'}
+              ? `${data.cote_name} - ${data.slot_index}号栏位：${data.slot_label}`
+              : '尚未绑定 - 对扎德鸟舍使用即可绑定。'}
           </div>
           <hr style={rulerStyle} />
           {!!data.severed && (
-            <div style={bannerStyle(SEAL_RED)}>The zadlink has been severed.</div>
+            <div style={bannerStyle(SEAL_RED)}>扎德鸟链路已被切断。</div>
           )}
           {!data.occupied && data.bonded && !data.severed && data.stored_payload.length === 0 && (
             <div style={{ color: INK_SOFT, fontStyle: 'italic', textAlign: 'center', margin: '14px 0' }}>
-              No zad in the cage. Wait for one to arrive.
+              笼中没有扎德鸟。请等待鸟儿到来。
             </div>
           )}
           <SummonPanel />
@@ -118,12 +118,12 @@ const SummonPanel = () => {
   return (
     <div style={cardStyle}>
       <div style={{ fontWeight: 'bold', color: INK, marginBottom: '4px' }}>
-        Summon a flight
+        召唤鸟群
       </div>
       <div style={{ color: INK_SOFT, fontSize: FONT_BODY, marginBottom: '6px' }}>
         {pending
-          ? 'A flight is already on the way.'
-          : `Call a flight from ${data.cote_name || 'the zadcote'}. It will arrive in about a minute. Load any package onto it once it lands.`}
+          ? '已有鸟群正在途中。'
+          : `从${data.cote_name || '扎德鸟舍'}召来鸟群。约一分钟后抵达，落地后即可装载包裹。`}
       </div>
       {!pending && (
         <div style={{ marginBottom: '8px' }}>
@@ -134,7 +134,7 @@ const SummonPanel = () => {
               marginBottom: '2px',
             }}
           >
-            Zads
+            扎德鸟数量
           </div>
           <div style={{ display: 'flex', gap: '4px' }}>
             {[1, 2, 3].map((opt) => {
@@ -165,10 +165,10 @@ const SummonPanel = () => {
             }}
           >
             {zads === 1
-              ? '1 zad: tiny or small return parcel.'
+              ? '1只扎德鸟：可寄回微小或小型包裹。'
               : zads === 2
-                ? '2 zads: pouch, helmet, or normal-sized return.'
-                : '3 zads: bulky return parcel or large container.'}
+                ? '2只扎德鸟：可寄回小袋、头盔或普通大小的物品。'
+                : '3只扎德鸟：可寄回大型包裹或大容器。'}
           </div>
         </div>
       )}
@@ -179,7 +179,7 @@ const SummonPanel = () => {
           disabled={pending}
           onClick={() => act('request_summon', { zads })}
         >
-          Summon
+          召唤
         </button>
       </div>
     </div>
@@ -192,7 +192,7 @@ const StoredPanel = () => {
   return (
     <div style={cardStyle}>
       <div style={{ fontWeight: 'bold', color: INK, marginBottom: '4px' }}>
-        Held in the cage
+        笼中物品
       </div>
       {data.stored_payload.map((item, idx) => (
         <div key={idx} style={{ fontSize: FONT_BODY, color: INK }}>
@@ -201,7 +201,7 @@ const StoredPanel = () => {
       ))}
       <div style={{ marginTop: '8px', textAlign: 'center' }}>
         <button type="button" style={inkButtonStyle()} onClick={() => act('retrieve')}>
-          Retrieve
+          取出
         </button>
       </div>
     </div>
@@ -235,10 +235,10 @@ const OccupancyPanel = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <div style={{ fontWeight: 'bold', color: INK }}>
-              A flight waits in the cage
+              鸟群正在笼中等候
             </div>
             <div style={{ color: INK_SOFT, fontSize: FONT_BODY }}>
-              Capacity for return: {capacity} {capacity === 1 ? 'zad' : 'zads'}
+              返程运力：{capacity} 只扎德鸟
             </div>
           </div>
           <div
@@ -254,17 +254,17 @@ const OccupancyPanel = () => {
         </div>
         {warning && (
           <div style={{ color: SEAL_RED, fontSize: FONT_BODY, marginTop: '4px' }}>
-            Auto-depart imminent. Auto-depart will NOT carry your reply or package.
+            即将自动离开。自动离开时不会携带你的回信或包裹。
           </div>
         )}
       </div>
-      <div style={sectionHeaderStyle}>Reply</div>
+      <div style={sectionHeaderStyle}>回信</div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
         <Input
           fluid
           value={draft}
           maxLength={500}
-          placeholder="A few words back..."
+          placeholder="写几句回复..."
           onChange={setDraft}
         />
         <button
@@ -276,21 +276,21 @@ const OccupancyPanel = () => {
             act('set_reply_message', { message: draft });
           }}
         >
-          Set
+          保存
         </button>
       </div>
-      <div style={sectionHeaderStyle}>Return Package</div>
+      <div style={sectionHeaderStyle}>回寄包裹</div>
       <div style={{ color: INK_FAINT, fontSize: FONT_BODY, marginBottom: '6px' }}>
-        Hold a parcel in your active hand to send it back.
+        将包裹拿在当前使用的手中，即可寄回。
         {capacity === 1
-          ? ' This return can carry a tiny or small item.'
+          ? ' 此次返程可携带微小或小型物品。'
           : capacity === 2
-            ? ' This return can carry up to a normal-sized item (helmet, pouch).'
-            : ' This return can carry a bulky parcel or large container.'}
+            ? ' 此次返程最多可携带普通大小的物品（头盔、小袋）。'
+            : ' 此次返程可携带大型包裹或大容器。'}
       </div>
       {data.payload_in_hand.length === 0 ? (
         <div style={{ color: INK_FAINT, fontStyle: 'italic', fontSize: FONT_BODY }}>
-          Empty-handed - hold something to offer it as the return parcel.
+          手中空无一物 - 请拿起要寄回的物品。
         </div>
       ) : (
         <div>
@@ -328,7 +328,7 @@ const OccupancyPanel = () => {
                   }}
                 >
                   {tooHeavy
-                    ? `${weightLabel(wc)} - too heavy for ${capacity} zad${capacity === 1 ? '' : 's'}`
+                    ? `${weightLabel(wc)} - 超出${capacity}只扎德鸟的运力`
                     : weightLabel(wc)}
                 </span>
               </label>
@@ -344,7 +344,7 @@ const OccupancyPanel = () => {
             act('send_reply', selectedRef ? { payload_ref: selectedRef } : {})
           }
         >
-          Send Reply
+          寄出回信
         </button>
       </div>
     </div>
