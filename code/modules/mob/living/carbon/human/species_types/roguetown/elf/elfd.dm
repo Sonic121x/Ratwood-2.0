@@ -37,7 +37,7 @@
 	without careful upkeep...\
 	They typically trace their beginnings to how their progenator died before being raised."
 */
-	skin_tone_wording = "Origin City-State"
+	skin_tone_wording = "出身城邦"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	allowed_taur_types = list(
@@ -133,7 +133,7 @@
 
 	gender_swapping = TRUE
 	stress_examine = TRUE
-	stress_desc = span_red("A loathesome dark elf.")
+	stress_desc = span_red("一个令人厌恶的黑暗精灵。")
 
 /datum/species/elf/dark/after_creation(mob/living/carbon/C)
 	C.faction += "spider_lowers"

@@ -15,7 +15,7 @@
 	由于他们的天界本质，人们普遍相信亚斯玛尔的死亡是不祥之兆……<br>\
 	(+1 自选属性，无需饮食)"
 
-	skin_tone_wording = "Craft"
+	skin_tone_wording = "造物渊源"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOHUNGER)
@@ -106,7 +106,7 @@
 
 /datum/species/aasimar/after_creation(mob/living/carbon/C)
 	..()
-	to_chat(C, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
+	to_chat(C, "<span class='info'>在话语前加上 ,c 即可使用天界语。</span>")
 
 /datum/species/aasimar/on_species_loss(mob/living/carbon/C)
 	. = ..()

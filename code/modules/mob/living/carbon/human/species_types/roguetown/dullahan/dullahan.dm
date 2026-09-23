@@ -12,7 +12,7 @@
 	无法真正安息，却心智全然清醒。能够通过未知的奥术手段分离头颅，他们常常四处漂泊，因其来历不明且遭到教会和各地大众的排斥。"
 	// Stat balancing. Per-server decision. Preferably keep neutral until analysis post testmerges.
 	//race_bonus = list(STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = 1)
-	skin_tone_wording = "Catalyst"
+	skin_tone_wording = "还魂之源"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS)
 	default_features = MANDATORY_FEATURE_LIST
