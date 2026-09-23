@@ -94,7 +94,7 @@
 
 	if(num_loaded)
 		if(!silent)
-			to_chat(user, "<span class='notice'>我将[num_loaded]枚弹壳装入[src]！</span>")
+			to_chat(user, "<span class='notice'>我将[num_loaded]发弹药装入[src]！</span>")
 			playsound(src, 'sound/blank.ogg', 60, TRUE)
 		A.update_icon()
 		update_icon()
