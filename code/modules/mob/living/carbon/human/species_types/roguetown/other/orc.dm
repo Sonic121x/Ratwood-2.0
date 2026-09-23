@@ -6,7 +6,7 @@
 	但出于礼数，我已勉强为其做了玩家使用的平衡\
 	(+1 力量, +1 体质, -1 智力, -1 速度)"
 
-	skin_tone_wording = "Clan"
+	skin_tone_wording = "氏族"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST
@@ -100,7 +100,7 @@
 
 /datum/species/orc/after_creation(mob/living/carbon/C)
 	..()
-	to_chat(C, "<span class='info'>I can speak Orcish with ,o before my speech.</span>")
+	to_chat(C, "<span class='info'>在话语前加上 ,o 即可使用兽人语。</span>")
 
 /datum/species/orc/on_species_loss(mob/living/carbon/C)
 	. = ..()
