@@ -24,7 +24,7 @@
 	因此，半兽裔往往对同类半兽裔怀有强烈的归属感。\
 	不过，由于他们与体面种族共有某些特征，\
 	与血缘相关的社会确实比其他兽裔种族更容易接纳他们。"
-	skin_tone_wording = "Ancestry"
+	skin_tone_wording = "血统"
 	default_color = "FFFFFF"
 
 	use_titles = TRUE
