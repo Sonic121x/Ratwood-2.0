@@ -1,6 +1,6 @@
 /datum/foreign_realm/vakra
 	id = REALM_VAKRA
-	name = "Vakran"
+	name = "瓦克兰"
 	roll_weight = TRADE_REALM_WEIGHT_RARE
 	demanded_categories = list(NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_ARMOR_HEAVY, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
@@ -19,10 +19,10 @@
 	)
 //Grenzelhoftian ship- Vakra's a clientstate/loosely 'governed' even before the civilwar
 	ship_types = list(
-		list("name" = "Coaster", "tonnage" = 30, "weight" = 15),
-		list("name" = "Cog", "tonnage" = 120, "weight" = 50),
-		list("name" = "Hulk", "tonnage" = 250, "weight" = 25),
-		list("name" = "Carrack", "tonnage" = 500, "weight" = 10),
+		list("name" = "沿岸货船", "tonnage" = 30, "weight" = 15),
+		list("name" = "柯克帆船", "tonnage" = 120, "weight" = 50),
+		list("name" = "霍尔克货船", "tonnage" = 250, "weight" = 25),
+		list("name" = "卡拉克帆船", "tonnage" = 500, "weight" = 10),
 	)
 	city_tags = list()
 	city_tag_chance = 0
@@ -91,14 +91,14 @@
 		/datum/supply_pack/rogue/alcohol/rtoper,
 	)
 	hail_lines = list(
-		"The battle lines in Vakra shift all the time. There's no way to know who will own the port by the time we get back to it. Whoever it is, they'll need these supplies.",
-		"Vakrans never thought highly of sailing folk, before the war. Called us Otters, they did. They'd chuckle and turn their snouts up at our riverboats. Now? You've never seen a lupianowy so happy as when we come back to port with fresh equipment." ,
-		"Most of this stuff was looted from some packlord's holding or other. They raid each other, they sell us the spoils, they buy our supplies. In a few years, nothing will be left in Vakra that shines at all.",
-		"Seems odd to be buying fancy dresses and frilly clothes in the middle of a war, doesn't it? I'll let you in on a little secret: no one's wearing this stuff. Anything made with fur will be broken down to make insulation for armor, the rest will be repurposed into gambesons. Peasant clothes aren't made strong enough." ,
-		"Got any fish? We can use the flesh to make jerky, of course, but the real value is the oil. Makes lupianowy fur grow thick and lustrous. One of the few luxuries most of them can still afford, back in Vakra.",
-		"News from Vakra? Territories aren't the same from one dae to the next. Anything I'd tell you was out of date by the time we left port. If you want to know what's going on in the packlands, hop aboard and see for yourself... I mean, don't, we don't have room for a passenger, but you get what I'm saying.",
-		"Buying? Selling? Tak? No? Make up your mind, we've got a war to get back to.",
-		"The coffee's for the crew. Don't get much sleep; we work long hours and there's no leg of our journey that's truly safe. Well, that and Rufus snores like Abyssor having a wet dream...",
-		"Prusaks aren't all bad, even with their ridiculous hats. I mean, they let us travel their waterways, and unload in their ports. Still, I dread the day the war spills over into their territory. Not sure they'll be so welcoming then.",
-		"Dobry den! What can a lightly-salted, old lupianowy do for you t'dae?",
+		"瓦克兰的战线时刻都在变。等我们返航，谁会占着港口根本说不准。不管是谁，都得要这些补给。",
+		"战前，瓦克兰人从来看不起跑船的，叫我们水獭，对着我们的河船嗤笑、翘鼻子。现在？每次我们带着新装备返港，你绝没见过那么高兴的卢皮安。" ,
+		"这里大部分货都是从某个狼群领主的地盘抢来的。他们互相劫掠，把战利品卖给我们，再买我们的补给。再过几年，瓦克兰就剩不下什么亮闪闪的东西了。",
+		"打仗还买华丽裙装和花边衣服，很奇怪吧？告诉你个秘密：没人穿这些。毛皮制品会拆掉，做成盔甲的保温内衬；其他衣物改成棉甲。农民的衣服不够结实。" ,
+		"有鱼吗？鱼肉当然能做干粮，可真正值钱的是鱼油，能让卢皮安的毛发浓密发亮。在瓦克兰，这是大多数人仍负担得起的少数奢侈品之一。",
+		"瓦克兰的消息？每天的地盘都不一样。我能告诉你的事，离港时就过时了。想知道狼群领地发生了什么，就上船亲自看看……我是说，别真上来，我们没空位载客，不过你懂我的意思。",
+		"买？卖？行不行？拿定主意，我们还得赶回战场呢。",
+		"咖啡是给船员的。我们睡不了多久，干活的时辰长，航程没有哪一段真正安全。再说，鲁弗斯打鼾就像阿比索尔在做春梦……",
+		"普鲁萨克人也不全坏，尽管帽子滑稽得很。至少他们让我们走他们的水道，在他们的港口卸货。可我还是怕战火蔓延到他们的地盘，到时候未必还这么欢迎我们。",
+		"你好啊！今天这位沾了点海盐的老卢皮安能为你做些什么？",
 		)

@@ -1,6 +1,6 @@
 /obj/item/caparison
-	name = "caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. This one fits on a Saiga."
+	name = "鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯。这一款适合赛加羚羊。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "caparison"
 	var/caparison_icon = 'icons/roguetown/mob/monster/saiga.dmi'
@@ -14,31 +14,31 @@
 
 /obj/item/caparison/attack(mob/living/M, mob/living/user)
 	if(!issimple(M))
-		to_chat(user, span_warning("\The [src] can only be used on animals!"))
+		to_chat(user, span_warning("[src]只能用于动物！"))
 		return
 	if(!is_type_in_list(M, valid_animal_types))
-		to_chat(user, span_warning("\The [src] cannot be used on [M]! It is only meant for specific animals."))
+		to_chat(user, span_warning("[src]不能用于[M]！它只适合特定动物。"))
 		return
 
 	var/mob/living/simple_animal/animal = M
 	if(animal.adult_growth)
-		to_chat(user, span_warning("[animal] is a juvenile and cannot wear a caparison!"))
+		to_chat(user, span_warning("[animal]尚未成年，无法披上鞍饰毯！"))
 		return
 	if(animal.ccaparison)
-		to_chat(user, span_warning("[animal] is already wearing a caparison!"))
+		to_chat(user, span_warning("[animal]已经披着鞍饰毯了！"))
 		return
 	if(!animal.ssaddle)
-		to_chat(user, span_warning("[animal] needs to be saddled before you can fit a caparison onto it!"))
+		to_chat(user, span_warning("必须先给[animal]装上鞍具，才能披上鞍饰毯！"))
 		return
 
-	user.visible_message(span_notice("[user] is fitting a caparison onto [animal]..."), span_notice("I start fitting a caparison onto [animal]..."))
+	user.visible_message(span_notice("[user]正给[animal]披上鞍饰毯……"), span_notice("我开始给[animal]披上鞍饰毯……"))
 	if(!do_after(user, 5 SECONDS, TRUE, animal))
 		return
 
 	animal.ccaparison = src
 	forceMove(animal)
 	animal.update_icon()
-	user.visible_message(span_notice("[user] fits a caparison onto [animal]."), span_notice("I fit a caparison onto [animal]."))
+	user.visible_message(span_notice("[user]给[animal]披上了鞍饰毯。"), span_notice("我给[animal]披上了鞍饰毯。"))
 
 /obj/item/caparison/rmb_self(mob/user)
 	attack_right(user)
@@ -47,16 +47,16 @@
 	if(!length(detail_types))
 		return
 
-	var/list/possible_detail_types = list("None" = null) + detail_types.Copy()
+	var/list/possible_detail_types = list("无" = null) + detail_types.Copy()
 	if(length(symbol_types))
-		possible_detail_types += list("Symbol" = null)
+		possible_detail_types += list("纹章" = null)
 
-	var/chosen_design = input(user, "Select a design.", "Caparison Design") as null|anything in possible_detail_types
+	var/chosen_design = input(user, "选择一种图案。", "Caparison Design") as null|anything in possible_detail_types
 	if(!chosen_design)
 		return
 
-	if(chosen_design == "Symbol")
-		var/chosen_symbol = input(user, "Select a symbol.", "Caparison Design") as null|anything in symbol_types
+	if(chosen_design == "纹章")
+		var/chosen_symbol = input(user, "选择一种纹章。", "Caparison Design") as null|anything in symbol_types
 		if(!chosen_symbol)
 			return
 		detail_state = symbol_types[chosen_symbol]
@@ -65,20 +65,20 @@
 
 	var/list/colors_to_pick = list()
 	if(GLOB.lordprimary)
-		colors_to_pick["Primary Keep Color"] = GLOB.lordprimary
+		colors_to_pick["城堡主色"] = GLOB.lordprimary
 	if(GLOB.lordsecondary)
-		colors_to_pick["Secondary Keep Color"] = GLOB.lordsecondary
+		colors_to_pick["城堡辅色"] = GLOB.lordsecondary
 	var/list/color_map_list = GLOB.colorlist
 	colors_to_pick += color_map_list.Copy()
 
-	var/primary_color = input(user, "Select a primary color.", "Caparison Design") as null|anything in colors_to_pick
+	var/primary_color = input(user, "选择一种主色。", "Caparison Design") as null|anything in colors_to_pick
 	if(!primary_color)
 		return
 	color = colors_to_pick[primary_color]
 
-	if(chosen_design != "None")
-		if(chosen_design != "Symbol")
-			var/secondary_color = input(user, "Select a secondary color.", "Caparison Design") as null|anything in colors_to_pick
+	if(chosen_design != "无")
+		if(chosen_design != "纹章")
+			var/secondary_color = input(user, "选择一种辅色。", "Caparison Design") as null|anything in colors_to_pick
 			if(!secondary_color)
 				return
 			detail_color = colors_to_pick[secondary_color]
@@ -90,32 +90,32 @@
 //////////////////////
 
 /obj/item/caparison/psy
-	name = "psydonite caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. It's adorned with Psycrosses. This one fits on a Saiga."
+	name = "普赛顿鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯，上面饰有普赛顿十字。这一款适合赛加羚羊。"
 	caparison_state = "psy_caparison"
 	female_caparison_state = "psy_caparison-f"
 
 /obj/item/caparison/astrata
-	name = "astratan caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. It's adorned with Astratan crosses. This one fits on a Saiga."
+	name = "阿斯特拉塔鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯，上面饰有阿斯特拉塔十字。这一款适合赛加羚羊。"
 	caparison_state = "astra_caparison"
 	female_caparison_state = "astra_caparison-f"
 
 /obj/item/caparison/eora
-	name = "eoran caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. It's adorned with Eoran hearts. This one fits on a Saiga."
+	name = "伊欧拉鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯，上面饰有伊欧拉之心。这一款适合赛加羚羊。"
 	caparison_state = "eora_caparison"
 	female_caparison_state = "eora_caparison-f"
 
 /obj/item/caparison/azure
-	name = "azurean caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. It's adorned with ducal colours. This one fits on a Saiga."
+	name = "蔚蓝鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯，采用公爵的纹章配色。这一款适合赛加羚羊。"
 	caparison_state = "azure_caparison"
 	female_caparison_state = "azure_caparison-f"
 
 /obj/item/caparison/heartfelt
-	name = "Heartfelt caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. It's adorned with the colours of Heartfelt. This one fits on a Saiga."
+	name = "赤心鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯，采用赤心的纹章配色。这一款适合赛加羚羊。"
 	caparison_state = "heartfelt_caparison"
 	female_caparison_state = "heartfelt_caparison-f"
 
@@ -124,16 +124,16 @@
 /////////////////////////
 
 /obj/item/caparison/fogbeast
-	name = "caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. This one fits on a Fogbeast."
+	name = "鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯。这一款适合雾兽。"
 	caparison_icon = 'icons/roguetown/mob/monster/fogbeast.dmi'
 	valid_animal_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/fogbeast)
 	color = COLOR_WHITE
-	detail_types = list("Quad" = "quad")
-	symbol_types = list("Psycross" = "psycross", "Astrata" = "astrata")
+	detail_types = list("四分格" = "quad")
+	symbol_types = list("普赛顿十字" = "psycross", "阿斯特拉塔" = "astrata")
 
 /obj/item/caparison/fogbeast/azure
-	name = "azurean caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. It's adorned with ducal colours. This one fits on a Fogbeast."
+	name = "蔚蓝鞍饰毯"
+	desc = "一块用于装饰鞍具的布毯，采用公爵的纹章配色。这一款适合雾兽。"
 	caparison_state = "azure_caparison"
 	female_caparison_state = "azure_caparison"
