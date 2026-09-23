@@ -53,7 +53,7 @@
 
 /datum/intent/arc/bow/prewarning()
 	if(mastermob)
-		mastermob.visible_message(span_warning("[mastermob]弧形拉开了[masteritem]！"))
+		mastermob.visible_message(span_warning("[mastermob]拉开[masteritem]，准备弧射！"))
 		playsound(mastermob, pick('sound/combat/Ranged/bow-draw-01.ogg'), 100, FALSE)
 
 /datum/intent/arc/bow/get_chargetime() //same calc as above, but with a higher absolute floor for how fast you can shoot
@@ -215,7 +215,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(user.get_inactive_held_item() || user.get_num_arms(FALSE) < 2)
-		to_chat(user, span_warning("我需要一只空着的手来发射[src]！"))
+		to_chat(user, span_warning("我需要一只空着的手才能用[src]射击！"))
 		return FALSE
 	if(user.client)
 		if(user.client.chargedprog >= 100)
