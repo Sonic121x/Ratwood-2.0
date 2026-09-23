@@ -14,7 +14,7 @@
 	created_time = world.time
 
 /datum/zadlink/proc/get_label()
-	return length(display_name) ? display_name : "Slot [slot_index]"
+	return length(display_name) ? display_name : "[slot_index]号栏位"
 
 /datum/zadlink/proc/resolve_cote()
 	return parent ? parent.resolve() : null

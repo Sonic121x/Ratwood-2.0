@@ -39,7 +39,7 @@ const MarginRow = (props: {
         {label}
       </div>
       <div style={{ flex: 1, color: INK, fontSize: FONT_BODY }}>
-        <span style={{ fontWeight: 'bold' }}>Current: {current}</span>
+        <span style={{ fontWeight: 'bold' }}>当前：{current}</span>
         <span
           style={{
             color: INK_FAINT,
@@ -66,7 +66,7 @@ const MarginRow = (props: {
           disabled={draft === current}
           onClick={() => onSet(draft)}
         >
-          Set
+          设置
         </button>
       </div>
     </div>
@@ -138,7 +138,7 @@ const MaterialRow = (props: {
           })
         }
       >
-        Set
+        设置
       </button>
     </div>
   );
@@ -169,7 +169,7 @@ export const ConfigPanel = (props: {
               fontSize: FONT_BODY,
             }}
           >
-            Machine State
+            机器状态
           </div>
           <div
             style={{
@@ -179,7 +179,7 @@ export const ConfigPanel = (props: {
               fontSize: FONT_BODY,
             }}
           >
-            {locked ? 'Open for business' : 'Closed (no commissions accepted)'}
+            {locked ? '营业中' : '已关闭（不接受委托）'}
           </div>
         </div>
         <button
@@ -187,14 +187,14 @@ export const ConfigPanel = (props: {
           style={inkButtonStyle()}
           onClick={() => act('toggle_lock')}
         >
-          {locked ? 'Close Machine' : 'Open Machine'}
+          {locked ? '停止营业' : '开始营业'}
         </button>
       </div>
 
-      <div style={sectionHeaderStyle}>Commission Limits</div>
+      <div style={sectionHeaderStyle}>委托限制</div>
       <MarginRow
-        label="Items per Order"
-        hint="max items in a single commission (1 active order per person)"
+        label="每单物品上限"
+        hint="单份委托的物品数量上限（每人最多1份进行中的订单）"
         current={data.item_cap_per_order}
         minValue={1}
         maxValue={10}
@@ -203,11 +203,11 @@ export const ConfigPanel = (props: {
       />
 
       <div style={{ ...sectionHeaderStyle, marginTop: '16px' }}>
-        Pricing Margins
+        定价加价
       </div>
       <MarginRow
-        label="Percent Margin"
-        hint="% added to material cost"
+        label="比例加价"
+        hint="在材料成本上加收的百分比"
         current={data.percent_margin}
         minValue={0}
         maxValue={500}
@@ -215,8 +215,8 @@ export const ConfigPanel = (props: {
         onSet={(v) => act('set_percent_margin', { value: v })}
       />
       <MarginRow
-        label="Flat Margin"
-        hint="m added to each piece"
+        label="固定加价"
+        hint="每件额外收取的玛门数"
         current={data.flat_margin}
         minValue={0}
         maxValue={500}
@@ -225,7 +225,7 @@ export const ConfigPanel = (props: {
       />
 
       <div style={{ ...sectionHeaderStyle, marginTop: '16px' }}>
-        Material Prices & Acceptance
+        材料价格与接单范围
       </div>
       <div
         style={{
@@ -235,10 +235,10 @@ export const ConfigPanel = (props: {
           marginBottom: '6px',
         }}
       >
-        Per unit. Recipe price = (material cost) × (1 + percent margin / 100) +
-        flat margin. The checkbox gates only the recipe's PRIMARY material -
-        recipes whose main ingredient is disabled drop out of the catalog;
-        secondary ingredients still apply at the listed price.
+        以下为单价。配方价格 = 材料成本 ×（1 + 比例加价 / 100）+
+        固定加价。勾选框仅决定是否接受以该材料为主要材料的配方：
+        主要材料被禁用的配方将从目录中移除；
+        辅助材料仍按所列价格计价。
       </div>
       <MaterialColumns materials={data.materials} act={act} />
     </>
@@ -265,7 +265,7 @@ const MaterialColumns = (props: {
               marginBottom: '2px',
             }}
           >
-            Priority Materials
+            优先材料
           </div>
           <div
             style={{
@@ -291,7 +291,7 @@ const MaterialColumns = (props: {
               marginBottom: '2px',
             }}
           >
-            Other Materials
+            其他材料
           </div>
           <div
             style={{

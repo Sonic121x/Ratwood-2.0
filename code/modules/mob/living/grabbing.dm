@@ -16,7 +16,7 @@
 
 ///////////OFFHAND///////////////
 /obj/item/grabbing
-	name = "pulling"
+	name = "拖拽"
 	icon_state = "grabbing"
 	icon = 'icons/mob/roguehudgrabs.dmi'
 	w_class = WEIGHT_CLASS_HUGE
@@ -162,7 +162,7 @@
 		return
 	var/obj/item/rogueweapon/WP = hostagetaker.get_active_held_item()
 	WP.attack(src, hostagetaker)
-	hostagetaker.visible_message("<span class='danger'>\The [hostagetaker] attacks \the [src] reflexively!</span>")
+	hostagetaker.visible_message("<span class='danger'>[hostagetaker]本能地攻击了[src]！</span>")
 	hostagetaker.hostage = null
 	hostagetaker = null
 
@@ -193,7 +193,7 @@
 		skill_diff -= (M.get_skill_level(/datum/skill/combat/wrestling))
 	if(HAS_TRAIT(M, TRAIT_GRABIMMUNE))
 		if(M.cmode)
-			to_chat(user, span_warning("Can't get a grip on this one!"))
+			to_chat(user, span_warning("我抓不住这个家伙！"))
 			return
 
 	if(M.compliance || M.surrendering)
@@ -220,17 +220,17 @@
 	switch(user.used_intent.type)
 		if(/datum/intent/grab/upgrade)
 			if(!(M.status_flags & CANPUSH) || HAS_TRAIT(M, TRAIT_PUSHIMMUNE))
-				to_chat(user, span_warning("Can't get a grip!"))
+				to_chat(user, span_warning("我抓不牢！"))
 				return FALSE
 			user.stamina_add(rand(7,15))
 			if(M.grippedby(user))			//Aggro grip
 				bleed_suppressing = 0.5		//Better bleed suppression
 		if(/datum/intent/grab/choke)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
-				to_chat(user, span_warning("I don't want to harm [src]!"))
+				to_chat(user, span_warning("我不想伤害[M]！"))
 				return FALSE
 			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
+				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
 			if(user.badluck(2))
 				badluckmessage(user)
@@ -253,15 +253,15 @@
 						if(C.pulling == user && C.grab_state >= GRAB_AGGRESSIVE)
 							choke_damage *= 0.95	//Slight malice
 						C.adjustOxyLoss(choke_damage)
-						C.visible_message(span_danger("[user] [pick("chokes", "strangles")] [C][chokehold ? " with a chokehold" : ""]!"), \
-								span_userdanger("[user] [pick("chokes", "strangles")] me[chokehold ? " with a chokehold" : ""]!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I [pick("choke", "strangle")] [C][chokehold ? " with a chokehold" : ""]!"))
+						C.visible_message(span_danger("[user][chokehold ? "从背后锁住[C]，" : ""][pick("掐住", "勒紧")]了[C]的脖子！"), \
+								span_userdanger("[user][chokehold ? "从背后锁住我，" : ""][pick("掐住", "勒紧")]了我的脖子！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("我[chokehold ? "从背后锁住[C]，" : ""][pick("掐住", "勒紧")]了[C]的脖子！"))
 					else
-						to_chat(user, span_warning("I can't reach [C]'s throat!"))
+						to_chat(user, span_warning("我够不到[C]的喉咙！"))
 					user.changeNext_move(CLICK_CD_GRABBING)	//Stops spam for choking.
 		if(/datum/intent/grab/hostage)
 			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
+				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
 			if(user.badluck(4))
 				badluckmessage(user)
@@ -273,10 +273,10 @@
 					var/mob/living/carbon/human/U = user
 					if(U.cmode)
 						if(H.cmode)
-							to_chat(U, "<span class='warning'>[H] is too prepared for combat to be taken hostage.</span>")
+							to_chat(U, "<span class='warning'>[H]正严阵以待，无法被挟持。</span>")
 							return
-						to_chat(U, "<span class='warning'>I take [H] hostage.</span>")
-						to_chat(H, "<span class='danger'>[U] takes us hostage!</span>")
+						to_chat(U, "<span class='warning'>我挟持了[H]。</span>")
+						to_chat(H, "<span class='danger'>[U]挟持了我！</span>")
 
 						U.swap_hand() // Swaps hand to weapon so you can attack instantly if hostage decides to resist
 
@@ -284,7 +284,7 @@
 						H.hostagetaker = U
 		if(/datum/intent/grab/scruff)
 			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
+				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
 			if(limb_grabbed && grab_state > GRAB_PASSIVE)
 				if(ishuman(M) && M != user)
@@ -296,22 +296,22 @@
 								if(user && (H.dir == turn(get_dir(H, user), 180)))
 									user.stamina_add(rand(2,5))
 									H.Paralyze(20) // 2 seconds of paralysis, might be a bit much...?
-									H.visible_message(span_danger("[user] grabs [H] by the scruff, causing them to go limp!"), \
-											span_userdanger("You go limp as your scruff is twisted!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
-									to_chat(user, span_warning("You twist [H]'s scruff, causing them to go limp!"))
+									H.visible_message(span_danger("[user]揪住[H]的后颈皮，使其浑身瘫软！"), \
+											span_userdanger("我的后颈皮被揪住，浑身瘫软下来！"), span_hear("我听到激烈的拉扯声！"), COMBAT_MESSAGE_RANGE, user)
+									to_chat(user, span_warning("我揪住[H]的后颈皮，使其浑身瘫软！"))
 									log_combat(user, H, "scruffed")
 								else
-									to_chat(user, span_warning("I need to be behind [H] to scruff them!"))
+									to_chat(user, span_warning("我得站在[H]身后才能揪住其后颈皮！"))
 							else
-								to_chat(user, span_warning("Scruffing doesn't work on older adults!"))
+								to_chat(user, span_warning("揪后颈皮对年纪较大的成年人不起作用！"))
 						else
-							to_chat(user, span_warning("[H]'s neck is covered!"))
+							to_chat(user, span_warning("[H]的脖子被遮住了！"))
 		if(/datum/intent/grab/twist)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
-				to_chat(user, span_warning("I don't want to harm [src]!"))
+				to_chat(user, span_warning("我不想伤害[M]！"))
 				return FALSE
 			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
+				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
 			if(user.badluck(2))
 				badluckmessage(user)
@@ -323,7 +323,7 @@
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
 			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
+				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
 			if(user.badluck(4))
 				badluckmessage(user)
@@ -335,7 +335,7 @@
 					twistitemlimb(user)
 		if(/datum/intent/grab/remove)
 			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
+				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
 			if(user.badluck(4))
 				badluckmessage(user)
@@ -348,18 +348,18 @@
 				user.stop_pulling()
 		if(/datum/intent/grab/shove)
 			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
+				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
 			if(user.badluck(4))
 				badluckmessage(user)
 				user.stop_pulling()
 				return FALSE
 			if(!(user.mobility_flags & MOBILITY_STAND))
-				to_chat(user, span_warning("I must stand.."))
+				to_chat(user, span_warning("我得先站起来……"))
 				return
 			if(!(M.mobility_flags & MOBILITY_STAND))
 				if(user.loc != M.loc)
-					to_chat(user, span_warning("I must be above them."))
+					to_chat(user, span_warning("我得站到对方身上。"))
 					return
 				var/stun_dur = max(((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)) * combat_modifier), 20)
 				var/pincount = 0
@@ -372,14 +372,14 @@
 							break
 						pin_hold = M.apply_pin_hold(stun_dur - pincount * 2, stun_dur)	//Made immobile for the whole do_after duration, though
 						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
-						M.visible_message(span_danger("[user] keeps [M] pinned to the ground!"))
+						M.visible_message(span_danger("[user]继续把[M]按在地上！"))
 						pincount += 2
 					else if(src in M.grabbedby)
 						pin_hold = M.apply_pin_hold(stun_dur - 10, stun_dur)
 						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
 						pincount += 2
-						M.visible_message(span_danger("[user] pins [M] to the ground!"), \
-							span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+						M.visible_message(span_danger("[user]把[M]按在地上！"), \
+							span_userdanger("[user]把我按在地上！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE)
 				M.release_pin_hold(pin_hold)
 			else
 				if(user.badluck(4))
@@ -388,12 +388,12 @@
 					return FALSE
 				user.stamina_add(rand(5,15))
 				if(M.compliance || prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
-					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
-									span_userdanger("[user] shoves me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+					M.visible_message(span_danger("[user]把[M]推倒在地！"), \
+									span_userdanger("[user]把我推倒在地！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE)
 					M.Knockdown(max(10 + (skill_diff * 2), 1))
 				else
-					M.visible_message(span_warning("[user] tries to shove [M]!"), \
-									span_danger("[user] tries to shove me!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+					M.visible_message(span_warning("[user]试图推倒[M]！"), \
+									span_danger("[user]试图推倒我！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE)
 		if(/datum/intent/grab/disarm)
 			if(user.badluck(4))
 				badluckmessage(user)
@@ -419,24 +419,24 @@
 					M.dropItemToGround(I, force = FALSE, silent = FALSE)
 					user.stop_pulling()
 					user.put_in_active_hand(I)
-					M.visible_message(span_danger("[user] takes [I] from [M]'s hand!"), \
-								span_userdanger("[user] takes [I] from my hand!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+					M.visible_message(span_danger("[user]从[M]手中夺走了[I]！"), \
+								span_userdanger("[user]从我手中夺走了[I]！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE)
 					user.changeNext_move(12)//avoids instantly attacking with the new weapon
 					playsound(src.loc, 'sound/combat/weaponr1.ogg', 100, FALSE, -1) //sound queue to let them know that they got disarmed
 				else
 					probby += 20
 					if(prob(probby))
 						M.dropItemToGround(I, force = FALSE, silent = FALSE)
-						M.visible_message(span_danger("[user] disarms [M] of [I]!"), \
-								span_userdanger("[user] disarms me of [I]!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+						M.visible_message(span_danger("[user]打落了[M]手中的[I]！"), \
+								span_userdanger("[user]打落了我手中的[I]！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE)
 						M.Stun(6)//slight delay to pick up the weapon
 					else
 						user.Immobilize(10)
 						M.Immobilize(10)
-						M.visible_message(span_notice("[user.name] struggles to disarm [M.name]!"))
+						M.visible_message(span_notice("[user.name]奋力试图缴械[M.name]！"))
 						playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
 			else
-				to_chat(user, span_warning("They aren't holding anything on that hand!"))
+				to_chat(user, span_warning("对方那只手里什么都没拿！"))
 				return
 
 /obj/item/grabbing/proc/twistlimb(mob/living/user) //implies limb_grabbed and sublimb are things
@@ -448,10 +448,10 @@
 	var/armor_block = C.run_armor_check(limb_grabbed, "slash")
 	var/damage = user.get_punch_dmg()
 	if(grabbed == user && limb_grabbed.status == BODYPART_ROBOTIC)	//removing ones own prosthetic should not be violent, nor damaging
-		C.visible_message(span_notice("[user] starts twisting [limb_grabbed] of [C], twisting it out of its socket!"), span_notice("I start twisting [limb_grabbed] from [src]."))
+		C.visible_message(span_notice("[user]开始扭动自己的[limb_grabbed]，试图将其从接口上卸下！"), span_notice("我开始扭动自己的[limb_grabbed]，准备将其卸下。"))
 		playsound(user, 'sound/misc/blackbag2.ogg', 100)
 		if(do_after(user, 60, target = src))
-			C.visible_message(span_notice("[user] twists [limb_grabbed] of [C], popping it out of the socket!"), span_notice("I pop [limb_grabbed] from [src]."))
+			C.visible_message(span_notice("[user]扭动自己的[limb_grabbed]，将其从接口上卸了下来！"), span_notice("我将自己的[limb_grabbed]从接口上卸了下来。"))
 			limb_grabbed.drop_limb()
 			return
 	playsound(C.loc, "genblunt", 100, FALSE, -1)
@@ -465,15 +465,15 @@
 		C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
 	limb_grabbed.bodypart_attacked_by(BCLASS_TWIST, damage, user, sublimb_grabbed, crit_message = TRUE)
 	limb_grabbed.bodypart_attacked_by(BCLASS_TWIST, damage, user, sublimb_grabbed, crit_message = TRUE)
-	C.visible_message(span_danger("[user] twists [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \
-					span_userdanger("[user] twists my [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_warning("I twist [C]'s [parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]"))
+	C.visible_message(span_danger("[user]扭转了[C]的[parse_zone(sublimb_grabbed)]！[C.next_attack_msg.Join()]"), \
+					span_userdanger("[user]扭转了我的[parse_zone(sublimb_grabbed)]！[C.next_attack_msg.Join()]"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_warning("我扭转了[C]的[parse_zone(sublimb_grabbed)]。[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbtwisted [sublimb_grabbed] ")
 	if(limb_grabbed.status == BODYPART_ROBOTIC && armor_block == 0) //Twisting off prosthetics.
-		C.visible_message(span_danger("[C]'s prosthetic [parse_zone(sublimb_grabbed)] twists off![C.next_attack_msg.Join()]"), \
-					span_userdanger("My prosthetic [parse_zone(sublimb_grabbed)] was twisted off of me![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("I twisted [C]'s prosthetic [parse_zone(sublimb_grabbed)] off.[C.next_attack_msg.Join()]"))
+		C.visible_message(span_danger("[C]的义体[parse_zone(sublimb_grabbed)]被拧下来了！[C.next_attack_msg.Join()]"), \
+					span_userdanger("我的义体[parse_zone(sublimb_grabbed)]被拧下来了！[C.next_attack_msg.Join()]"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("我拧下了[C]的义体[parse_zone(sublimb_grabbed)]。[C.next_attack_msg.Join()]"))
 		limb_grabbed.drop_limb(TRUE)
 	if(ishuman(user) && user.mind)
 		var/text = "[bodyzone2readablezone(user.zone_selected)]..."
@@ -484,21 +484,21 @@
 		armor_block = target.getarmor(sublimb_grabbed, "slash")
 
 		if(armor_block >= 1)
-			target.visible_message(span_danger("[target]'s [parse_zone(sublimb_grabbed)] fails to be twisted off!"), \
-				span_danger("[user] tries to twist my [parse_zone(sublimb_grabbed)] out of it's socket but the armor keeps it in place!"))
-			to_chat(user, span_warning("[target]'s [parse_zone(sublimb_grabbed)] stays in it's socket because of [target]'s armor!"))
+			target.visible_message(span_danger("[target]的[parse_zone(sublimb_grabbed)]未能被拧下来！"), \
+				span_danger("[user]试图将我的[parse_zone(sublimb_grabbed)]从关节上拧下来，但护甲将其牢牢固定住了！"))
+			to_chat(user, span_warning("[target]的护甲固定住了[parse_zone(sublimb_grabbed)]，使其无法脱离关节！"))
 			return
 
-		target.visible_message(span_danger("[target]'s [parse_zone(sublimb_grabbed)] is being forcefully popped out of socket!"), \
-			span_danger("My [parse_zone(sublimb_grabbed)] is being forcefully popped out of socket!"))
-		to_chat(user, span_warning("I begin popping [target]'s [parse_zone(sublimb_grabbed)] out of socket."))
+		target.visible_message(span_danger("[target]的[parse_zone(sublimb_grabbed)]正被强行从关节上拆下！"), \
+			span_danger("我的[parse_zone(sublimb_grabbed)]正被强行从关节上拆下！"))
+		to_chat(user, span_warning("我开始将[target]的[parse_zone(sublimb_grabbed)]从关节上拆下。"))
 
 		var/delay = (sublimb_grabbed == BODY_ZONE_HEAD) ? 100 : 6
 
 		if(do_after(user, delay, target = target))
-			target.visible_message(span_danger("[target]'s [parse_zone(sublimb_grabbed)] has been popped out of socket!"), \
-				span_userdanger("My [parse_zone(sublimb_grabbed)] has been popped out of socket!"))
-			to_chat(user, span_warning("I pop [target]'s [parse_zone(sublimb_grabbed)] out of socket."))
+			target.visible_message(span_danger("[target]的[parse_zone(sublimb_grabbed)]被从关节上拆下了！"), \
+				span_userdanger("我的[parse_zone(sublimb_grabbed)]被从关节上拆下了！"))
+			to_chat(user, span_warning("我将[target]的[parse_zone(sublimb_grabbed)]从关节上拆下了。"))
 
 			limb_grabbed.drop_limb(FALSE)
 
@@ -514,19 +514,19 @@
 		var/datum/species/dullahan/target_species = target.dna.species
 		var/obj/item/equipped_nodrop = target_species.get_nodrop_head()
 		if(equipped_nodrop)
-			target.visible_message(span_danger("[target]'s head fails to be twisted off!"), \
-				span_danger("[user] tries to twist my head off but the [equipped_nodrop.name] keeps it bound to my neck!"))
-			to_chat(user, span_warning("[target]'s head stays bound to their neck because of the [equipped_nodrop.name]!"))
+			target.visible_message(span_danger("[target]的头未能被拧下来！"), \
+				span_danger("[user]试图拧下我的头，但[equipped_nodrop.name]将它牢牢固定在脖子上！"))
+			to_chat(user, span_warning("[equipped_nodrop.name]将[target]的头牢牢固定在脖子上！"))
 			return
 
-		target.visible_message(span_danger("[target]'s head is being forcefully twisted off!"), \
-			span_danger("My head is being forcefully twisted off!"))
-		to_chat(user, span_warning("I begin twisting [target]'s head off."))
+		target.visible_message(span_danger("[target]的头正被强行拧下！"), \
+			span_danger("我的头正被强行拧下！"))
+		to_chat(user, span_warning("我开始拧下[target]的头。"))
 
 		if(do_after(user, 6, target = target))
-			target.visible_message(span_danger("[target]'s head has been twisted off!"), \
-				span_userdanger("My head was twisted off!"))
-			to_chat(user, span_warning("I twist [target]'s head off."))
+			target.visible_message(span_danger("[target]的头被拧下来了！"), \
+				span_userdanger("我的头被拧下来了！"))
+			to_chat(user, span_warning("我拧下了[target]的头。"))
 
 			limb_grabbed.drop_limb(FALSE)
 
@@ -553,9 +553,9 @@
 	C.Immobilize(10)
 	C.OffBalance(10)
 	H.Immobilize(5)
-	C.visible_message("<span class='danger'>[H] headbutts [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]</span>", \
-					"<span class='userdanger'>[H] headbutts my [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]</span>", "<span class='hear'>I hear a sickening sound of pugilism!</span>", COMBAT_MESSAGE_RANGE, H)
-	to_chat(H, "<span class='warning'>I headbutt [C]'s [parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]</span>")
+	C.visible_message("<span class='danger'>[H]用头撞击了[C]的[parse_zone(sublimb_grabbed)]！[C.next_attack_msg.Join()]</span>", \
+					"<span class='userdanger'>[H]用头撞击了我的[parse_zone(sublimb_grabbed)]！[C.next_attack_msg.Join()]</span>", "<span class='hear'>我听到令人牙酸的搏斗声！</span>", COMBAT_MESSAGE_RANGE, H)
+	to_chat(H, "<span class='warning'>我用头撞击了[C]的[parse_zone(sublimb_grabbed)]。[C.next_attack_msg.Join()]</span>")
 	C.next_attack_msg.Cut()
 	log_combat(H, C, "headbutted ")
 
@@ -565,8 +565,8 @@
 	var/obj/item/I = sublimb_grabbed
 	playsound(M.loc, "genblunt", 100, FALSE, -1)
 	M.apply_damage(damage, BRUTE, limb_grabbed)
-	M.visible_message(span_danger("[user] twists [I] in [M]'s wound!"), \
-					span_userdanger("[user] twists [I] in my wound!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+	M.visible_message(span_danger("[user]转动了嵌在[M]伤口中的[I]！"), \
+					span_userdanger("[user]转动了嵌在我伤口中的[I]！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE)
 	log_combat(user, M, "itemtwisted [sublimb_grabbed] ")
 
 /obj/item/grabbing/proc/removeembeddeditem(mob/living/user) //implies limb_grabbed and sublimb are things
@@ -585,9 +585,9 @@
 		C.emote("paincrit", TRUE)
 		playsound(C, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 		if(usr == src)
-			user.visible_message(span_notice("[user] rips [I] out of [user.p_their()] [L.name]!"), span_notice("I rip [I] from my [L.name]."))
+			user.visible_message(span_notice("[user]从自己的[L.name]中拔出了[I]！"), span_notice("我从自己的[L.name]中拔出了[I]。"))
 		else
-			user.visible_message(span_notice("[user] rips [I] out of [C]'s [L.name]!"), span_notice("I rip [I] from [C]'s [L.name]."))
+			user.visible_message(span_notice("[user]从[C]的[L.name]中拔出了[I]！"), span_notice("我从[C]的[L.name]中拔出了[I]。"))
 	else if(HAS_TRAIT(M, TRAIT_SIMPLE_WOUNDS))
 		var/obj/item/I = locate(sublimb_grabbed) in M.simple_embedded_objects
 		if(QDELETED(I) || !M.simple_remove_embedded_object(I))
@@ -598,9 +598,9 @@
 		M.emote("paincrit", TRUE)
 		playsound(M, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 		if(user == M)
-			user.visible_message(span_notice("[user] rips [I] out of [user.p_them()]self!"), span_notice("I remove [I] from myself."))
+			user.visible_message(span_notice("[user]从自己体内拔出了[I]！"), span_notice("我从自己体内拔出了[I]。"))
 		else
-			user.visible_message(span_notice("[user] rips [I] out of [M]!"), span_notice("I rip [I] from [src]."))
+			user.visible_message(span_notice("[user]从[M]体内拔出了[I]！"), span_notice("我从[M]体内拔出了[I]。"))
 	user.update_grab_intents(grabbed)
 	return TRUE
 
@@ -618,7 +618,7 @@
 				user.Move_Pulled(T)
 		if(/datum/intent/grab/smash)
 			if(!(user.mobility_flags & MOBILITY_STAND))
-				to_chat(user, span_warning("I must stand.."))
+				to_chat(user, span_warning("我得先站起来……"))
 				return
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(isopenturf(T))
@@ -651,7 +651,7 @@
 	if(user.used_intent.type == /datum/intent/grab/smash)
 		if(isstructure(O) && O.blade_dulling != DULLING_CUT)
 			if(!(user.mobility_flags & MOBILITY_STAND))
-				to_chat(user, span_warning("I must stand.."))
+				to_chat(user, span_warning("我得先站起来……"))
 				return
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(grabbed))
@@ -677,10 +677,10 @@
 		limb_grabbed.bodypart_attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed, crit_message = TRUE)
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
 	else
-		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
-	C.visible_message(span_danger("[user] smashes [C]'s [limb_grabbed] into [A]![C.next_attack_msg.Join()]"), \
-					span_userdanger("[user] smashes my [limb_grabbed] into [A]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_warning("I smash [C]'s [limb_grabbed] against [A].[C.next_attack_msg.Join()]"))
+		C.next_attack_msg += " <span class='warning'>护甲挡住了伤害。</span>"
+	C.visible_message(span_danger("[user]将[C]的[limb_grabbed]猛砸向[A]！[C.next_attack_msg.Join()]"), \
+					span_userdanger("[user]将我的[limb_grabbed]猛砸向[A]！[C.next_attack_msg.Join()]"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_warning("我将[C]的[limb_grabbed]猛砸向[A]。[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbsmashed [limb_grabbed] ")
 	if(ishuman(user) && user.mind)
@@ -698,52 +698,52 @@
 	releasedrain = 2
 
 /datum/intent/grab/move
-	name = "grab move"
+	name = "拖动"
 	desc = ""
 	icon_state = "inmove"
 
 /datum/intent/grab/upgrade
-	name = "upgrade grab"
+	name = "抓紧"
 	desc = ""
 	icon_state = "ingrab"
 
 /datum/intent/grab/smash
-	name = "smash"
+	name = "猛砸"
 	desc = ""
 	icon_state = "insmash"
 
 /datum/intent/grab/twist
-	name = "twist"
+	name = "扭转"
 	desc = ""
 	icon_state = "intwist"
 
 /datum/intent/grab/choke
-	name = "choke"
+	name = "扼喉"
 	desc = ""
 	icon_state = "inchoke"
 
 /datum/intent/grab/hostage
-	name = "hostage"
+	name = "挟持"
 	desc = ""
 	icon_state = "inhostage"
 
 /datum/intent/grab/shove
-	name = "shove"
+	name = "推倒"
 	desc = ""
 	icon_state = "intackle"
 
 /datum/intent/grab/twistitem
-	name = "twist in wound"
+	name = "搅动伤口"
 	desc = ""
 	icon_state = "intwist"
 
 /datum/intent/grab/remove
-	name = "remove"
+	name = "拔出"
 	desc = ""
 	icon_state = "intake"
 
 /datum/intent/grab/disarm
-	name = "disarm"
+	name = "缴械"
 	desc = ""
 	icon_state = "intake"
 
@@ -780,8 +780,8 @@
 			mover.liquid_slip(total_time = 1 SECONDS, stun_duration = 1 SECONDS, height = 12, flip_count = 0)
 
 /atom/movable/screen/alert/status_effect/oiled
-	name = "Oiled"
-	desc = "I'm covered in oil, making me slippery and harder to grab!"
+	name = "浑身油滑"
+	desc = "我浑身沾满油，滑溜溜的，更难被抓住！"
 	icon_state = "oiled"
 
 /atom/proc/liquid_slip(dir=null, total_time = 0.5 SECONDS, height = 16, stun_duration = 1 SECONDS, flip_count = 1)
@@ -820,7 +820,7 @@
 		spawn(stun_duration + total_time)
 			animate(src, pixel_x = 0, pixel_y = 0, transform = src.transform.Turn(-turn), time = 3, easing = LINEAR_EASING, flags=ANIMATION_PARALLEL)
 /datum/intent/grab/scruff
-	name = "scruff"
+	name = "揪后颈皮"
 	desc = ""
 	icon_state = "inscruff"
 	clickcd = CLICK_CD_RESIST

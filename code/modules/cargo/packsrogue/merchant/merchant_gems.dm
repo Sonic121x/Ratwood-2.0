@@ -1,7 +1,7 @@
 // Cost is around 1.6x the sell price of the gem
 /datum/supply_pack/rogue/gems
 	group = "宝石" // English: Gems
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/gems/amethyst

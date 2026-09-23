@@ -712,7 +712,7 @@
 //
 
 /atom/movable/screen/quad_intents
-	name = "mmb intents"
+	name = "中键意图"
 	icon_state = "mmbintents0"
 	icon = 'icons/mob/roguehud.dmi'
 	screen_loc = rogueui_quad
@@ -774,7 +774,7 @@
 //
 
 /atom/movable/screen/def_intent
-	name = "defense intent"
+	name = "防御意图"
 	icon_state = "def1n"
 	icon = 'icons/mob/roguehud.dmi'
 	screen_loc = rogueui_def
@@ -792,7 +792,7 @@
 
 
 /atom/movable/screen/cmode
-	name = "combat mode"
+	name = "战斗模式"
 	icon_state = "combat0"
 	icon = 'icons/mob/roguehud.dmi'
 	screen_loc = rogueui_cmode
@@ -816,11 +816,11 @@
 			L.toggle_compliance()
 		else if(modifiers["shift"] && modifiers["left"])
 			to_chat(usr, span_info("* --- *\n\
-			Combat mode button.\n\
-			<b>Left click:</b> toggles combat mode at-will, allowing you to parry or dodge attacks. Usually costs energy (blue stamina) to keep active. Also allows some more destructive interactions with objects.\n\
-			<b>Right click:</b> makes you visibly surrender, showing a white flag above your head and rendering you temporarily unable to move or fight.\n\
-			<b>Middle click:</b> toggles compliance mode at-will, removing your defense against grapples and tackles. Also makes it faster to restrain and strip you.\n\
-			All of these have configurable keybinds; see the Keybinds settings in your preferences window."))
+			战斗模式按钮。\n\
+			<b>左键：</b>切换战斗模式，使你能够招架或闪避攻击。维持此模式通常会消耗精力（蓝色体力条），也允许你对物品进行更具破坏性的操作。\n\
+			<b>右键：</b>公开投降，在头顶显示白旗，并暂时使你无法移动或战斗。\n\
+			<b>中键：</b>切换顺从模式，放弃抵抗擒拿和扑倒，也让他人能更快地束缚你或脱下你的装备。\n\
+			这些操作均可自定义快捷键；请查看偏好设置窗口中的按键设置。"))
 		else
 			L.playsound_local(L, 'sound/misc/click.ogg', 100)
 			L.toggle_cmode()
@@ -1140,7 +1140,7 @@
 			icon_state = "catch[throwy]"
 
 /atom/movable/screen/zone_sel
-	name = "damage zone"
+	name = "目标部位"
 	icon = 'icons/mob/roguehud64.dmi' // The m-/f-zone_sel base doll states only exist here, not in the regular HUD style.
 	icon_state = "m-zone_sel"
 	screen_loc = rogueui_targetdoll
@@ -1987,7 +1987,7 @@
 
 
 /atom/movable/screen/rmbintent
-	name = "alt intents"
+	name = "战斗架势"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "rmbintent"
 	var/list/shown_intents = list()
@@ -2071,7 +2071,7 @@
 		showing = FALSE
 
 /atom/movable/screen/rintent_selection
-	name = "rmb intent"
+	name = "右键意图"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "rmbaimed"
 	var/stored_intent
