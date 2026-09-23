@@ -465,35 +465,35 @@
 	desc = "由甘蔗精制而成的糖粉，甜味纯粹而浓郁。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "sugar"
-	tastes = list("sweet" = 1)
+	tastes = list("甜味" = 1)
 	list_reagents = list(/datum/reagent/consumable/sugar = 15)
 	deep_fried_type = /obj/item/reagent_containers/food/snacks/caramel
 
 /obj/item/reagent_containers/food/snacks/pepper
-	name = "pepper"
-	desc = "Milled peppercorns, spicy as can be."
+	name = "胡椒粉"
+	desc = "磨碎的胡椒粒，辛辣十足。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "pepper"
-	tastes = list("tingling spiciness" = 1, "a subtle hint of bitterness" = 1)
+	tastes = list("麻舌的辛辣" = 1, "淡淡的苦味" = 1)
 	list_reagents = list(/datum/reagent/consumable/blackpepper = 1)
 
 /obj/item/reagent_containers/food/snacks/grown/pepperseed
-	name = "pepperberries"
-	desc = "A relative to the Ferentian jackberry, stripped free of its fruity skin. Roasting it seems to've dulled its humor-imbalancing \
-	properties, though it'll still need to be milled down before it can be used for culinary matters."
+	name = "胡椒粒"
+	desc = "费伦提亚杰克莓的近亲，已剥去果皮。烘烤似乎削弱了它扰乱体液平衡的\
+	特性，不过仍需磨碎后才能用于烹饪。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "pepperseed"
 	foodtype = GRAIN
-	tastes = list("spiciness" = 1, "slightly less bitterness" = 1)
+	tastes = list("辛辣" = 1, "稍淡的苦味" = 1)
 	grind_results = list(/datum/reagent/consumable/blackpepper = 1)
 	mill_result = /obj/item/reagent_containers/food/snacks/pepper
 
 /obj/item/reagent_containers/food/snacks/allspice
-	name = "allspice"
-	desc = "A blend of spices that can liven up even the dreariest broths."
+	name = "什香粉"
+	desc = "混合香料，能让最寡淡的肉汤也变得有滋有味。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "spice_good"
-	tastes = list("fragrant spices" = 1, "a pleasantly complex aroma" = 1) //Very low nutritional content, but can be applied to add a very solid moodboost to broths. Futurecoders could add it to meals, later, too.
+	tastes = list("芳香的香料" = 1, "层次丰富的怡人香气" = 1) //Very low nutritional content, but can be applied to add a very solid moodboost to broths. Futurecoders could add it to meals, later, too.
 	list_reagents = list(/datum/reagent/consumable/allspice = 1)
 	sellprice = 30
 
