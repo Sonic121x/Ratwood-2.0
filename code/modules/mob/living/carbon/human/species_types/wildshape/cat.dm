@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/wildshape/cat //The sneaker of the wildshapes
-	name = "Cat"
+	name = "猫"
 	race = /datum/species/shapecat
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -29,9 +29,9 @@
 		AddSpell(new /obj/effect/proc_holder/spell/self/catclaws)
 		AddSpell(new /obj/effect/proc_holder/spell/targeted/woundlick)
 		if (src.client.prefs?.wildshape_name)
-			real_name = "cat ([stored_mob.real_name])"
+			real_name = "猫（[stored_mob.real_name]）"
 		else
-			real_name = "cat"
+			real_name = "猫"
 
 // CAT SPECIES DATUM //
 /datum/species/shapecat
@@ -89,7 +89,7 @@
 // CAT SPECIFIC ITEMS //
 /obj/item/clothing/suit/roguetown/armor/skin_armor/cat_skin
 	slot_flags = null
-	name = "cat's skin"
+	name = "猫皮"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
@@ -101,7 +101,7 @@
 	item_flags = DROPDEL
 
 /datum/intent/simple/cat //Like a less defense dagger
-	name = "claw"
+	name = "爪击"
 	clickcd = 8
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
@@ -114,7 +114,7 @@
 	item_d_type = "slash"
 
 /obj/item/rogueweapon/cat_claw //Backscratcher
-	name = "cat claw"
+	name = "猫爪"
 	desc = ""
 	item_state = null
 	lefthand_file = null
@@ -159,7 +159,7 @@
 
 // CAT SPELLS //
 /obj/effect/proc_holder/spell/self/catclaws
-	name = "Feline Claws"
+	name = "猫爪"
 	desc = "!"
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
@@ -179,20 +179,20 @@
 			user.dropItemToGround(active, TRUE)
 		if(istype(inactive, /obj/item/rogueweapon/cat_claw) && inactive != active)
 			user.dropItemToGround(inactive, TRUE)
-		to_chat(user, span_notice("My claws retract."))
+		to_chat(user, span_notice("我的利爪缩回了。"))
 		extended = FALSE
 	else
 		l = new(user, 1)
 		r = new(user, 2)
 		user.put_in_hands(l, TRUE, FALSE, TRUE)
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
-		to_chat(user, span_notice("My claws extend."))
+		to_chat(user, span_notice("我的利爪伸出了。"))
 		extended = TRUE
 
 /obj/effect/proc_holder/spell/targeted/woundlick
 	action_icon = 'icons/mob/actions/roguespells.dmi'
-	name = "Lick the wounds"
-	desc = "Heal the wounds of somebody"
+	name = "舔舐伤口"
+	desc = "治愈他人的伤口"
 	overlay_state = "diagnose"
 	range = 1
 	sound = 'sound/gore/flesh_eat_03.ogg'
@@ -205,10 +205,10 @@
 		var/mob/living/carbon/target = targets[1]
 		if(target.mind)
 			if(target.mind.has_antag_datum(/datum/antagonist/zombie))
-				to_chat(src, span_warning("I shall not lick it..."))
+				to_chat(src, span_warning("我不该舔那个……"))
 				return
 			if(target.mind.has_antag_datum(/datum/antagonist/vampire))
-				to_chat(src, span_warning("... What? Its an elder vampire!"))
+				to_chat(src, span_warning("……什么？那是一个远古吸血鬼！"))
 				return
 		if(!do_after(user, 7 SECONDS, target = target))
 			return
@@ -216,11 +216,11 @@
 		var/rid = /datum/reagent/medicine/healthpot
 		target.reagents.add_reagent(rid, ramount)
 		if(target.mind.has_antag_datum(/datum/antagonist/werewolf))
-			target.visible_message(span_green("[user] is licking [target]'s wounds with its tongue!"), span_notice("My kin has covered my wounds..."))
+			target.visible_message(span_green("[user]正在用舌头舔舐[target]的伤口！"), span_notice("我的同类照料了我的伤口……"))
 			rid = /datum/reagent/water
 			target.reagents.add_reagent(rid, ramount)
 		else
-			target.visible_message(span_green("[user] is licking [target]'s wounds with its tongue!"), span_notice("That thing... Did it lick my wounds?"))
+			target.visible_message(span_green("[user]正在用舌头舔舐[target]的伤口！"), span_notice("那东西……刚刚舔了我的伤口？"))
 			rid = /datum/reagent/water
 			target.reagents.add_reagent(rid, ramount)
 			if(prob(10))

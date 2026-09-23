@@ -19,7 +19,7 @@
 	使他们格外珍贵。西塞亚人往往鄙视软弱，而选择在苦难中寻求慰藉。他们倾向于\
 	极度虔诚，但当然，没有任何种族是铁板一块的。事实上，有些西塞亚人成就斐然，\
 	尽管历尽逆境，仍有升至各王国贵族之位者，但这往往使他们成为嫉妒同辈的目标。"
-	skin_tone_wording = "Skin Colors"
+	skin_tone_wording = "肤色"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT

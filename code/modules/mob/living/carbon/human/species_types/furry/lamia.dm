@@ -20,7 +20,7 @@
 	然而……并非所有拉弥亚都留在了深渊之底，因为有些氏族已远离沿海地区，在沼泽、森林甚至沙漠中定居，\
 	在万古之前便已遍布世界各方。"
 
-	skin_tone_wording = "Brood"
+	skin_tone_wording = "族群"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, LIPS, HAIR, FACEHAIR, STUBBLE, LAMIAN_TAIL, OLDGREY, MUTCOLORS)
