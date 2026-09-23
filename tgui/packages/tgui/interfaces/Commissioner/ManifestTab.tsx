@@ -35,9 +35,9 @@ const CapStatus = (props: { data: CommissionerData }) => {
         color: INK_FAINT,
       }}
     >
-      Your manifest holds{' '}
-      <b style={{ color: overCap ? SEAL_RED : INK }}>{count}</b> of {cap}{' '}
-      allowed item{cap === 1 ? '' : 's'} per commission.
+      你的委托清单已有{' '}
+      <b style={{ color: overCap ? SEAL_RED : INK }}>{count}</b> / {cap}{' '}
+      件物品（每份委托的数量上限）。
     </div>
   );
 };
@@ -75,7 +75,7 @@ export const ManifestTab = (props: {
             color: INK_SOFT,
           }}
         >
-          Your manifest is empty. Browse recipes to add work to be commissioned.
+          你的委托清单为空。请浏览配方，添加想要委托制作的物品。
         </div>
         {deposit > 0 && (
           <div
@@ -88,15 +88,15 @@ export const ManifestTab = (props: {
             }}
           >
             <div style={{ flex: 1, color: INK }}>
-              You have <b style={{ color: SEAL_AMBER }}>{deposit}m</b> on
-              deposit, unattached to any commission.
+              你有 <b style={{ color: SEAL_AMBER }}>{deposit}m</b> 存款，
+              尚未用于任何委托。
             </div>
             <button
               type="button"
               style={inkButtonStyle()}
               onClick={() => act('refund_deposit')}
             >
-              Withdraw {deposit}m
+              取出 {deposit}m
             </button>
           </div>
         )}
@@ -140,7 +140,7 @@ export const ManifestTab = (props: {
                 fontSize: FONT_BODY,
               }}
             >
-              {line.unit_price}m each
+              每件 {line.unit_price}m
             </div>
             <button
               type="button"
@@ -208,7 +208,7 @@ export const ManifestTab = (props: {
             color: SEAL_AMBER,
           }}
         >
-          Manifest Total
+          清单总价
         </div>
         <div
           style={{
@@ -229,7 +229,7 @@ export const ManifestTab = (props: {
             color: SEAL_AMBER,
           }}
         >
-          Deposit Held
+          已存款项
         </div>
         <div
           style={{
@@ -252,7 +252,7 @@ export const ManifestTab = (props: {
             color: SEAL_RED,
           }}
         >
-          Insert {shortfall}m more in coin to submit this commission.
+          再投入 {shortfall}m 钱币即可提交此委托。
         </div>
       )}
 
@@ -265,8 +265,8 @@ export const ManifestTab = (props: {
             color: SEAL_RED,
           }}
         >
-          This commission asks for {itemCount} items; the cap is {cap}. Trim the
-          manifest.
+          此委托要求 {itemCount} 件物品，上限为 {cap} 件。请减少
+          清单中的物品数量。
         </div>
       )}
 
@@ -279,8 +279,8 @@ export const ManifestTab = (props: {
             color: SEAL_RED,
           }}
         >
-          You already have an active commission here. Finish or cancel it before
-          posting another.
+          你在此已有一份进行中的委托。请先完成或取消，
+          再发布新的委托。
         </div>
       )}
 
@@ -299,12 +299,12 @@ export const ManifestTab = (props: {
             color: INK_SOFT,
           }}
         >
-          Note to the smith (optional):
+          给铁匠的备注（选填）：
         </span>
         <Input
           value={note}
           onChange={setNote}
-          placeholder="For the militia. Urgent."
+          placeholder="民兵用的。急需。"
           width="100%"
           maxLength={180}
         />
@@ -327,7 +327,7 @@ export const ManifestTab = (props: {
             setNote('');
           }}
         >
-          Post Commission
+          发布委托
         </button>
         <button
           type="button"
@@ -335,7 +335,7 @@ export const ManifestTab = (props: {
           disabled={deposit <= 0}
           onClick={() => act('refund_deposit')}
         >
-          Refund Deposit
+          退还存款
         </button>
       </div>
 
@@ -347,8 +347,8 @@ export const ManifestTab = (props: {
           color: INK_SOFT,
         }}
       >
-        Insert coins into the machine to build your deposit. Posting locks the
-        coin in escrow; the smith collects it on completion.
+        将钱币投入机器即可存款。发布委托后，款项将被锁定托管，
+        由铁匠在完成订单后领取。
       </div>
 
       <div
@@ -359,7 +359,7 @@ export const ManifestTab = (props: {
           color: SEAL_RED,
         }}
       >
-        Warning: your REAL NAME will be shown on the posted commission.
+        注意：已发布的委托会显示你的真实姓名。
       </div>
     </>
   );
