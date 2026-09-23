@@ -20,7 +20,7 @@
 	每位矮人都来自一座以当地最丰产矿物命名的古老堡垒。<br>\
 	(+1 体质, +1 意志, 醉酒疗伤特质, 矮人语知识特质)"
 
-	skin_tone_wording = "Dwarf Fortress"
+	skin_tone_wording = "出身矮人要塞"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,YOUNGBEARD,STUBBLE,OLDGREY)

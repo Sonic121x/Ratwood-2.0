@@ -169,7 +169,7 @@
 				W.RemoveSpell(wildspell)
 
 	W.regenerate_icons()
-	to_chat(W, span_userdanger("I return to my old form."))
+	to_chat(W, span_userdanger("我恢复了原来的形态。"))
 
 	// Share devotion bar: return beast form's current devotion amount to human form.
 	if(devotion && W.devotion)
