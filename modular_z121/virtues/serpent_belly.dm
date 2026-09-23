@@ -54,12 +54,13 @@
 		return COMPONENT_INCOMPATIBLE
 	size_factor = z121_serpent_size(parent)
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_player_login))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(parent, list(COMSIG_LIVING_HEALTH_UPDATE, COMSIG_MOVABLE_MOVED), PROC_REF(queue_recovery_check))
 	has_player_owner()
 
 /datum/component/z121_serpent_digestion/Destroy()
 	if(parent)
-		UnregisterSignal(parent, list(COMSIG_MOB_CLIENT_LOGIN, COMSIG_LIVING_HEALTH_UPDATE, COMSIG_MOVABLE_MOVED))
+		UnregisterSignal(parent, list(COMSIG_MOB_CLIENT_LOGIN, COMSIG_LIVING_HEALTH_UPDATE, COMSIG_MOVABLE_MOVED, COMSIG_PARENT_EXAMINE))
 	if(recovery_timer)
 		deltimer(recovery_timer)
 	return ..()
@@ -80,6 +81,26 @@
 
 /datum/component/z121_serpent_digestion/proc/progress()
 	return clamp(digested_time / ((5 MINUTES) * size_factor), 0, 1)
+
+/datum/component/z121_serpent_digestion/proc/on_examine(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	var/current_progress = progress()
+	if(current_progress <= 0)
+		return
+	// 蚀痕跟随猎物账本保留；检视只读取进度，不推进消化或触发治疗结算。
+	// 不描述特定肢体、呼吸或心跳，使活人、尸体和非玩家生物共用这些阶段。
+	var/description
+	if(current_progress < 0.2)
+		description = "体表留着一层异样的湿润光泽，隐约可见浅淡的蚀痕。"
+	else if(current_progress < 0.4)
+		description = "体表的蚀痕已连成斑驳的纹路，原有的色泽渐渐黯淡。"
+	else if(current_progress < 0.6)
+		description = "成片的蚀痕深入血肉，躯体表面的纹理已变得模糊。"
+	else if(current_progress < 0.8)
+		description = "严重的侵蚀遍及躯体，残存的轮廓透着不自然的残破感。"
+	else
+		description = "这具躯体几乎被蚀得面目难辨，仿佛只剩勉强维系的旧日形骸。"
+	examine_list += span_warning(description)
 
 /datum/component/z121_serpent_digestion/proc/read_recovery()
 	var/mob/living/prey = parent
@@ -210,6 +231,8 @@
 	var/channel_big
 	var/releasing = FALSE
 	var/datum/z121_serpent_audio/action_audio
+	// 开关属于宿主，空腹时也能预先设置，换一名猎物不会自动重置。
+	var/digestion_enabled = TRUE
 
 /datum/component/z121_serpent_belly/Initialize()
 	if(!ishuman(parent))
@@ -223,6 +246,34 @@
 	GLOB.roguetraits["蛇腹者"] = span_info("我的饥饿有着蛇的耐性。握牢血肉，便能慢慢将其纳入腹中；庞然之物难咽，金铁与腐败更会留下苦楚。腹中只有一份余地，也未必困得住尚有力气的猎物。若愿放还，须稍稍停步，任喉腹翻涌。")
 	RegisterSignal(host, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(on_host_lost))
 
+/datum/component/z121_serpent_belly/RegisterWithParent()
+	. = ..()
+	ensure_digest_verb()
+	RegisterSignal(parent, COMSIG_MOB_LOGIN, PROC_REF(ensure_digest_verb))
+
+/datum/component/z121_serpent_belly/proc/ensure_digest_verb()
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/host = parent
+	if(!QDELETED(host))
+		host.verbs |= /mob/living/carbon/human/proc/z121_serpent_toggle_digestion
+
+/mob/living/carbon/human/proc/z121_serpent_toggle_digestion()
+	set name = "消化开关"
+	set category = "IC"
+	set desc = "让腹中的消化暂歇，或继续尚未完成的消化。"
+	set hidden = FALSE
+	var/datum/component/z121_serpent_belly/ability = GetComponent(/datum/component/z121_serpent_belly)
+	if(!ability)
+		return
+	// 先按旧状态结算到切换瞬间，避免快速切换偷取时间或补算暂停期间的消化。
+	ability.stomach?.advance_progress()
+	ability.digestion_enabled = !ability.digestion_enabled
+	ability.stomach?.update_presentation()
+	if(ability.digestion_enabled)
+		to_chat(src, span_notice("消化已开启。我放任腹中的饥饿苏醒，继续蚀去尚未消融的血肉。"))
+	else
+		to_chat(src, span_notice("消化已停止。我收敛腹中的饥饿，让其中的血肉暂得喘息。"))
+
 /datum/component/z121_serpent_belly/Destroy()
 	interrupted = TRUE
 	QDEL_NULL(action_audio)
@@ -232,7 +283,8 @@
 	QDEL_NULL(stomach)
 	if(parent)
 		var/mob/host = parent
-		UnregisterSignal(host, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_LIVING_HEALTH_UPDATE))
+		UnregisterSignal(host, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_LIVING_HEALTH_UPDATE, COMSIG_MOB_LOGIN))
+		host.verbs -= /mob/living/carbon/human/proc/z121_serpent_toggle_digestion
 		REMOVE_TRAIT(host, "蛇腹者", REF(src))
 		host.mob_spell_list -= swallow_spell
 		host.mob_spell_list -= release_spell
@@ -573,6 +625,11 @@
 		return
 	var/elapsed = max(0, world.time - last_progress_time)
 	last_progress_time = world.time
+	if(!controller?.digestion_enabled)
+		// 平移伤害到期时间，恢复后只等待原本剩余的时间，不补扣暂停期间的伤害。
+		next_burn += elapsed
+		next_effect += elapsed
+		return
 	digestion.digested_time = min((5 MINUTES) * digestion.size_factor, digestion.digested_time + elapsed)
 	var/earned = 500 * digestion.size_factor * digestion.progress()
 	var/gain = max(0, earned - digestion.nutrition_spent)
@@ -779,7 +836,9 @@
 
 /obj/effect/z121_serpent_stomach/proc/schedule_tick()
 	var/remaining = (5 MINUTES) * digestion.size_factor - digestion.digested_time
-	digestion_timer = addtimer(CALLBACK(src, PROC_REF(digest_tick)), max(1, min(1 SECONDS, remaining)), TIMER_STOPPABLE)
+	// 暂停消化仍须处理挣扎、腐烂与界面，不停止腹部容器的生命周期。
+	var/delay = controller?.digestion_enabled ? max(1, min(1 SECONDS, remaining)) : 1 SECONDS
+	digestion_timer = addtimer(CALLBACK(src, PROC_REF(digest_tick)), delay, TIMER_STOPPABLE)
 
 /obj/effect/z121_serpent_stomach/proc/digest_tick()
 	digestion_timer = null
@@ -789,16 +848,16 @@
 	advance_progress()
 	advance_rot()
 	// 每十秒结算腐食，与灼烧及消化完成分开；宿主可能因此死亡并销毁容器。
-	if(world.time >= next_effect)
+	if(controller?.digestion_enabled && world.time >= next_effect)
 		next_effect += 10 SECONDS
 		if(is_tainted() && !HAS_TRAIT(host, TRAIT_ROT_EATER) && !HAS_TRAIT(host, TRAIT_NASTY_EATER))
 			host.adjustToxLoss(2)
 			if(QDELETED(src) || cleaning_up)
 				return
-	if(digestion.progress() >= 1)
+	if(controller?.digestion_enabled && digestion.progress() >= 1)
 		consume_body()
 		return
-	if(world.time >= next_burn)
+	if(controller?.digestion_enabled && world.time >= next_burn)
 		next_burn += 10 SECONDS
 		if(captive.stat != DEAD)
 			to_chat(captive, span_userdanger("原先的温热变作灼痛，湿黏的刺疼又一次漫过皮肤！"))

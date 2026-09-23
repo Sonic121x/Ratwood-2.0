@@ -1,5 +1,5 @@
 // 恐怖之钟：在空旷场地召唤怪物，或启动格拉加尔试炼。
-// 两种模式共用五分钟冷却；普通召唤延迟十秒，每次钟声保留原有清场行为。
+// 每座钟的两种模式共用每日一次机会，随游戏黎明刷新；普通召唤仍延迟十秒。
 #define TERROR_CLOCK_CLEAR_RANGE 6
 #define TERROR_CLOCK_SUMMON_RANGE 5
 #define TERROR_CLOCK_SUMMON_DELAY (10 SECONDS)
@@ -7,7 +7,6 @@
 #define TERROR_CLOCK_BOSS_CATEGORY "梦魇"
 #define TERROR_CLOCK_BOSS_MAX 2
 #define TERROR_CLOCK_TRIAL_LABEL "格拉加尔的凝视"
-#define TERROR_CLOCK_COOLDOWN (5 MINUTES)
 #define TERROR_CLOCK_PURGE_RANGE 10
 
 // 分类与怪物类型保持原有配置；人形怪物自行完成延迟装备初始化。
@@ -111,7 +110,8 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 	// 倒计时和生成期间锁定普通召唤，试炼由独立控制器占用。
 	var/summoning = FALSE
 	var/datum/glaggar_challenge/active_challenge
-	COOLDOWN_DECLARE(summon_cooldown)
+	// 记录最近启动的游戏日；空值表示这座钟尚未使用，游戏首日也能正常启动。
+	var/last_used_day = null
 
 // 钟没有单独的损坏贴图，沿用父类的完整性处理。
 /obj/structure/terror_clock/obj_break(damage_flag)
@@ -141,8 +141,8 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 	if(active_challenge)
 		to_chat(user, span_warning("格拉加尔的试炼正在进行，此钟暂时无法使用。"))
 		return FALSE
-	if(!COOLDOWN_FINISHED(src, summon_cooldown))
-		to_chat(user, span_warning("恐怖之钟的力量尚未恢复，还需 [CEILING(COOLDOWN_TIMELEFT(src, summon_cooldown) / 10, 1)] 秒。"))
+	if(!isnull(last_used_day) && GLOB.dayspassed <= last_used_day)
+		to_chat(user, span_warning("这座恐怖之钟今日已经使用过了，请等到下一次黎明再来。"))
 		return FALSE
 	var/atom/obstruction = get_blocking_building()
 	if(obstruction)
@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 	if(QDELETED(src) || !can_activate(L))
 		return
 	summoning = TRUE
-	COOLDOWN_START(src, summon_cooldown, TERROR_CLOCK_COOLDOWN)
+	last_used_day = GLOB.dayspassed
 	ring_bell()
 	visible_message(span_danger("[src]发出一声低沉的轰鸣，空气中弥漫开令人胆寒的气息……"))
 	to_chat(L, span_danger("你敲响了恐怖之钟。[TERROR_CLOCK_SUMMON_DELAY / 10] 秒后，怪物将会降临。"))
@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 	if(!challenge.start(src, user))
 		active_challenge = null
 		return
-	COOLDOWN_START(src, summon_cooldown, TERROR_CLOCK_COOLDOWN)
+	last_used_day = GLOB.dayspassed
 
 // 保留原有净空规则：封闭地块和钟以外的结构均会阻止启动。
 /obj/structure/terror_clock/proc/get_blocking_building()
@@ -314,5 +314,4 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 #undef TERROR_CLOCK_BOSS_CATEGORY
 #undef TERROR_CLOCK_BOSS_MAX
 #undef TERROR_CLOCK_TRIAL_LABEL
-#undef TERROR_CLOCK_COOLDOWN
 #undef TERROR_CLOCK_PURGE_RANGE

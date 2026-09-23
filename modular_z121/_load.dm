@@ -1,5 +1,8 @@
 #include "spells/_registry.dm"
 #include "bootstrap/custom_bootstrap.dm"
+#include "changelog/entries.dm"
+#include "changelog/changelog.dm"
+#include "ooc/examine_text.dm"
 #include "jobs/arcane_archer.dm"
 #include "jobs/musketeer.dm"
 #include "jobs/war_shaman.dm"
@@ -134,20 +137,10 @@
 // Potion of Weakness: "slow breeze" scent (lvl5, unused, = stam_poison's smells_like; taraxacum 3 + symphitum 2 = 5)
 // + 60 leaf lard (tallow); alchemy lvl3 (Journeyman); 30u output; for a while: STR -8 (sapped strength); 30s per unit.
 #include "alchemy/refining_potions/weakness_potion.dm"		// 虚弱药水 (STR -8 for the duration)
-// 气化之躯药水：气味"停滞的空气"(5级,未占用,=强效耐力毒药big_stam_poison之smells_like，由重楼3点+地狱尘2点凑成5点) +
-// 水70/强效魔力药水30；炼金4级(专家)；产出30单位；12秒消化1单位(≈6分钟)。饮后化作雾气之躯：
-// 【只能移动/飞行、不能做任何其它动作】——监听COMSIG_MOB_CLICKON并取消一切点击(攻击/拾取/使用/点选施法)、
-// TRAIT_MUTE禁言、TRAIT_EMOTEMUTE禁动作、TRAIT_SPELLCOCKBLOCK禁施法；飞行复用magic_flight(飞行术)状态。
-// 借 UNSTOPPABLE 移动位穿门过窗、借 GODMODE 令怪物不选你为敌且免疫一切常规伤害；唯独被龙卷风(GLOB.active_tornadoes)
-// 吸入其风眼半径内时，每秒流失最大生命的10%(施伤时临时摘除GODMODE以让carbon.updatehealth真正重算生命)。
-// Gasification Body potion: "stagnant air" scent (lvl5, unused, = big_stam_poison's smells_like; paris 3 + infernaldust 2 = 5)
-// + 70 water/30 great-mana-potion (strongmana); alchemy lvl4 (Expert); 30u output; 12s per unit (~6 min). Turns the drinker into
-// mist that can ONLY move/fly and do NOTHING else: cancels all clicks via COMSIG_MOB_CLICKON (no attacking/pickup/item-use/click-cast),
-// TRAIT_MUTE (no speech) + TRAIT_EMOTEMUTE (no emotes) + TRAIT_SPELLCOCKBLOCK (no spellcasting), and grants flight by reusing the
-// magic_flight status effect. Phases through doors/windows via the UNSTOPPABLE movement bit; GODMODE makes monsters ignore you & blocks
-// all normal damage; the ONLY threat is being inhaled by a tornado (GLOB.active_tornadoes) -> lose 10% max health/second (godmode
-// briefly lifted so carbon.updatehealth registers the loss).
-#include "alchemy/refining_potions/gasification_body.dm"	// 气化之躯药水 (mist form: phase doors/windows, untargetable, damage-immune, weak to tornadoes)
+// 气化之躯仅供管理员调用，保留原有雾态效果。
+#include "alchemy/refining_potions/gasification_body.dm"
+// 停滞药水：五点停滞空气气息，水五十与普通耐力药水五十，专家级炼金，产出三十单位。
+#include "alchemy/refining_potions/stasis_potion.dm"
 // 麻痹毒药：气味"恐惧"(5级,未占用,=强效魔力灵药big_mana_potion之smells_like，由纯净精质3点+金粉3点凑成6点) +
 // 水50/板油20/毒药30；炼金4级(专家)；产出30单位；6秒消化1单位(≈3分钟)。饮后依【体质】分档麻痹：
 // 体质18-20仅舌麻失语(TRAIT_MUTE)；14-17加手臂发麻、无法拾取/使用物品(监听COMSIG_MOB_CLICKON取消一切点击)；
@@ -225,10 +218,13 @@
 #include "admin/grandcaster.dm"
 #include "admin/god.dm"
 #include "admin/cleanup_world.dm"
+#include "admin/world_modulation.dm"
+#include "admin/world_modulation_catalog.dm"
+#include "admin/world_modulation_copy.dm"
 #include "storytellers/god_blessings.dm"
-// 自定义美德：永无止境（每日一次、死亡 3 分钟后完美复活，但失忆且技能回退）
-// Custom virtue: never-ending (daily, perfect resurrection 3 min after death, amnesia + skill reset)
+// 自定义美德：死亡回归，按清晨保存身体、特性与积分，每日一次。
 #include "virtues/never_ending.dm"
+#include "virtues/death_return_snapshot.dm"
 // 自定义美德：魅魔血脉（限女性身体、消耗 24 凯旋点；获得 魅魔血脉/美貌/传奇情人 三特性。
 // 每当被内射：随机获得 12 分钟"餍足"（对应属性 +1）+ 随餍足数量递增的心情；对方获得 4 分钟
 // "魅魔之吻"（心情'与魅魔交合' + 力量-1/耐力-1）；对方处于该状态时再次内射不会餍足。
@@ -323,8 +319,6 @@
 #include "virtues/rpg_system_daily.dm"
 // RPG 任务的私人头顶箭头与距离提示。
 #include "virtues/rpg_system_tracking.dm"
-// 特例：账号 KUKULING 进入游戏即自动获得【RPG系统】并把系统积分设为 99999999（须在 rpg_system.dm 之后引入）
-#include "virtues/rpg_system_kukuling_autogrant.dm"
 // 按账号赠礼：唯一的登录派发器（统一持有 human/Login() 覆写，逐一调用各账号赠礼 proc）
 #include "account_perks/account_perks.dm"
 // 按账号赠礼：账号 Sonic121 进入游戏即自动获得自定义特性【温暖力场】（向周围玩家持续散发情绪增益）
