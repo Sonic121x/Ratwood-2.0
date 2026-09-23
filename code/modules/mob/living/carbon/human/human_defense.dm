@@ -162,7 +162,7 @@
 
 				return BULLET_ACT_FORCE_PIERCE // complete projectile permutation
 
-		if(check_shields(P, P.damage, "the [P.name]", PROJECTILE_ATTACK, P.armor_penetration))
+		if(check_shields(P, P.damage, "[P.name]", PROJECTILE_ATTACK, P.armor_penetration))
 			P.on_hit(src, 100, def_zone)
 			P.handle_drop()
 			return BULLET_ACT_HIT
@@ -178,7 +178,7 @@
 			return 1
 	return 0
 
-/mob/living/carbon/human/proc/check_shields(atom/AM, damage, attack_text = "the attack", attack_type = MELEE_ATTACK, armor_penetration = 0)
+/mob/living/carbon/human/proc/check_shields(atom/AM, damage, attack_text = "攻击", attack_type = MELEE_ATTACK, armor_penetration = 0)
 	var/block_chance_modifier = round(damage / -3)
 
 	for(var/obj/item/I as anything in held_items)
@@ -301,7 +301,7 @@
 	. = ..()
 	if(.)
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		if(check_shields(M, damage, "the [M.name]", MELEE_ATTACK, M.armor_penetration))
+		if(check_shields(M, damage, "[M.name]", MELEE_ATTACK, M.armor_penetration))
 			return FALSE
 		var/zones = M.zone_selected
 		if(!M.ckey)
@@ -435,7 +435,7 @@
 	for(var/obj/item/bodypart/L in src.bodyparts)
 		if(L.status == BODYPART_ROBOTIC)
 			if(!informed)
-				to_chat(src, span_danger("I feel a sharp pain as my robotic limbs overload."))
+				to_chat(src, span_danger("我的机械肢体过载了，一阵剧痛袭来。"))
 				informed = TRUE
 			switch(severity)
 				if(1)
@@ -468,7 +468,7 @@
 				update_inv_neck()
 				update_inv_head()
 			else
-				to_chat(src, span_notice("My [head_clothes.name] protects my head and face from the acid!"))
+				to_chat(src, span_notice("我的[head_clothes.name]保护了头部和面部，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_HEAD)
 			if(.)
@@ -489,7 +489,7 @@
 				update_inv_w_uniform()
 				update_inv_wear_suit()
 			else
-				to_chat(src, span_notice("My [chest_clothes.name] protects my body from the acid!"))
+				to_chat(src, span_notice("我的[chest_clothes.name]保护了躯干，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_CHEST)
 			if(.)
@@ -521,7 +521,7 @@
 				update_inv_w_uniform()
 				update_inv_wear_suit()
 			else
-				to_chat(src, span_notice("My [arm_clothes.name] protects my arms and hands from the acid!"))
+				to_chat(src, span_notice("我的[arm_clothes.name]保护了双臂和双手，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_R_ARM)
 			if(.)
@@ -547,7 +547,7 @@
 				update_inv_w_uniform()
 				update_inv_wear_suit()
 			else
-				to_chat(src, span_notice("My [leg_clothes.name] protects my legs and feet from the acid!"))
+				to_chat(src, span_notice("我的[leg_clothes.name]保护了双腿和双脚，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_R_LEG)
 			if(.)
@@ -592,9 +592,9 @@
 
 	if(src == M)
 		if(has_status_effect(STATUS_EFFECT_CHOKINGSTRAND))
-			to_chat(src, span_notice("I attempt to remove the durathread strand from around my neck."))
+			to_chat(src, span_notice("我试图扯下缠在脖子上的耐久线。"))
 			if(do_after(src, 35, null, src))
-				to_chat(src, span_notice("I succesfuly remove the durathread strand."))
+				to_chat(src, span_notice("我成功扯下了耐久线。"))
 				remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 			return
 		check_for_injuries(M)
@@ -617,7 +617,7 @@
 			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
 		examination += span_notice("让我看看我怎么样了。")
 		if(!stat && !silent)
-			user.visible_message(span_notice("[src]检查[p_them()]自己。"), \
+			user.visible_message(span_notice("[src]检查自己的伤势。"), \
 				span_notice("我检查自己的伤势。"))
 	else if(user)
 		m1 = "[p_they(TRUE)]"
@@ -644,7 +644,7 @@
 		if(BODYTEMP_NORMAL_MAX to BODYTEMP_HEAT_LEVEL_ONE_MAX)
 			examination += span_biginfo("<font color='#ffff00'> [m1]在出汗</font>")
 		if(BODYTEMP_HEAT_LEVEL_ONE_MAX to 600)
-			examination += span_biginfo("<font color='#DC143C?'> [m1]大量出汗</font>")
+			examination += span_biginfo("<font color='#DC143C'> [m1]大量出汗</font>")
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 			examination += span_artery("<B>[m1]严重贫血。</B>")
@@ -704,21 +704,21 @@
 	if(user == src)
 		if(!deep_examination)
 			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
-		examination += span_notice("Let's see how my [parse_zone(choice)] is doing.")
+		examination += span_notice("让我看看自己的[parse_zone(choice)]伤势如何。")
 		if(!stat && !silent)
-			visible_message(span_notice("[src] examines [p_their()] [parse_zone(choice)]."))
+			visible_message(span_notice("[src]检查自己的[parse_zone(choice)]。"))
 	else if(user)
 		if(!deep_examination)
 			deep_examination = HAS_TRAIT(user, TRAIT_EMPATH)
-		examination += span_notice("Let's see how [src]'s [parse_zone(choice)] is doing.")
+		examination += span_notice("让我看看[src]的[parse_zone(choice)]伤势如何。")
 		if(!user.stat && !silent)
-			visible_message(span_notice("[user] examines [src]'s [parse_zone(choice)]."))
+			visible_message(span_notice("[user]检查[src]的[parse_zone(choice)]。"))
 
 	var/obj/item/bodypart/examined_part = get_bodypart(choice)
 	if(examined_part)
 		examination += examined_part.check_for_injuries(user, advanced)
 	else
-		examination += span_info("☼ [capitalize(parse_zone(choice))]: <span class='deadsay'><B>MISSING</B></span>")
+		examination += span_info("☼ [capitalize(parse_zone(choice))]：<span class='deadsay'><B>缺失</B></span>")
 	examination += "ø ------------ ø</span>"
 	if(!silent)
 		to_chat(user, examination.Join("\n"))
@@ -784,7 +784,7 @@
 
 	var/turf/open/floor/F = loc
 	if(isfloorturf(F) && F.heat)
-		examination += span_biginfo("It is warm here. It refreshes and heals me.")
+		examination += span_biginfo("这里暖洋洋的，让我恢复精神，治愈伤势。")
 
 	examination += "ø ------------ ø</span>"
 

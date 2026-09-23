@@ -281,7 +281,7 @@
 		if(possible_len)
 			var/datum/surgery_step/done_step
 			if(possible_len > 1)
-				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				var/input = input(user, "你想执行哪个手术步骤？", "PESTRA", ) as null|anything in possible_steps
 				if(input)
 					done_step = possible_steps[input]
 			else
@@ -369,7 +369,7 @@
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
-		to_chat(M, "<span class='warning'>I can't put [p_them()] out with just my bare hands!</span>")
+		to_chat(M, "<span class='warning'>我没法徒手扑灭[src]身上的火！</span>")
 		return
 
 //	if(!(mobility_flags & MOBILITY_STAND))
@@ -378,8 +378,8 @@
 //			return
 //		M.visible_message("<span class='notice'>[M] shakes [src] trying to get [p_them()] up!</span>", "<span class='notice'>I shake [src] trying to get [p_them()] up!</span>")
 //	else
-	M.visible_message("<span class='notice'>[M] shakes [src].</span>", \
-				"<span class='notice'>I shake [src] to get [p_their()] attention.</span>")
+	M.visible_message("<span class='notice'>[M]摇了摇[src]。</span>", \
+				"<span class='notice'>我摇了摇[src]，试图引起其注意。</span>")
 	shake_camera(src, 2, 1)
 	for(var/datum/brain_trauma/trauma in M.get_traumas())
 		trauma.on_hug(M, src)
@@ -407,16 +407,16 @@
 			return
 
 		if (damage == 1)
-			to_chat(src, "<span class='warning'>My eyes sting a little.</span>")
+			to_chat(src, "<span class='warning'>我的眼睛有些刺痛。</span>")
 			if(prob(40))
 				eyes.applyOrganDamage(1)
 
 		else if (damage == 2)
-			to_chat(src, "<span class='warning'>My eyes burn.</span>")
+			to_chat(src, "<span class='warning'>我的眼睛火辣辣地疼。</span>")
 			eyes.applyOrganDamage(rand(2, 4))
 
 		else if( damage >= 3)
-			to_chat(src, "<span class='warning'>My eyes itch and burn severely!</span>")
+			to_chat(src, "<span class='warning'>我的眼睛又痒又痛，像着了火一样！</span>")
 			eyes.applyOrganDamage(rand(12, 16))
 
 		if(eyes.damage > 10)
@@ -426,20 +426,20 @@
 			if(eyes.damage > 20)
 				if(prob(eyes.damage - 20))
 					if(!HAS_TRAIT(src, TRAIT_NEARSIGHT))
-						to_chat(src, "<span class='warning'>My eyes start to burn badly!</span>")
+						to_chat(src, "<span class='warning'>我的眼睛开始剧烈灼痛！</span>")
 					become_nearsighted(EYE_DAMAGE)
 
 				else if(prob(eyes.damage - 25))
 					if(!HAS_TRAIT(src, TRAIT_BLIND))
-						to_chat(src, "<span class='warning'>I can't see anything!</span>")
+						to_chat(src, "<span class='warning'>我什么都看不见了！</span>")
 					eyes.applyOrganDamage(eyes.maxHealth)
 
 			else
-				to_chat(src, "<span class='warning'>My eyes are really starting to hurt. This can't be good for you!</span>")
+				to_chat(src, "<span class='warning'>我的眼睛开始疼得厉害。这样下去可不妙！</span>")
 		return 1
 	else if(damage == 0) // just enough protection
 		if(prob(20))
-			to_chat(src, "<span class='notice'>Something bright flashes in the corner of my vision!</span>")
+			to_chat(src, "<span class='notice'>我的眼角余光中闪过一道亮光！</span>")
 
 
 /mob/living/carbon/soundbang_act(intensity = 1, stun_pwr = 20, damage_pwr = 5, deafen_pwr = 15)
@@ -460,13 +460,13 @@
 			adjustEarDamage(ear_damage,deaf)
 
 			if(ears.damage >= 15)
-				to_chat(src, "<span class='warning'>My ears start to ring badly!</span>")
+				to_chat(src, "<span class='warning'>我的耳朵开始剧烈嗡鸣！</span>")
 				if(prob(ears.damage - 5))
-					to_chat(src, "<span class='danger'>I can't hear anything!</span>")
+					to_chat(src, "<span class='danger'>我什么都听不见了！</span>")
 					ears.damage = min(ears.damage, ears.maxHealth)
 					// you need earmuffs, inacusiate, or replacement
 			else if(ears.damage >= 5)
-				to_chat(src, "<span class='warning'>My ears start to ring!</span>")
+				to_chat(src, "<span class='warning'>我的耳朵开始嗡嗡作响！</span>")
 			SEND_SOUND(src, sound('sound/blank.ogg',0,1,0,250))
 		return effect_amount //how soundbanged we are
 
