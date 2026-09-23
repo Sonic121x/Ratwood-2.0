@@ -486,8 +486,8 @@
 	walking_stick = TRUE
 
 /obj/item/rogueweapon/stoneaxe/battle/steppesman/chupa
-	name = "Czwarteki ćiupaga"
-	desc = "A steel axe of Czwarteki make that combines a deadly weapon with a walking stick - hence its pointed end. It has a flat head that fits the hand comfortably, and it's usable for chopping and smashing. It can hook an opponent's weapon in a pinch. It carries the colours of Szöréndnížina."
+	name = "兹瓦尔特基牧斧"
+	desc = "兹瓦尔特基制的钢斧，兼具致命武器与手杖的用途，因此柄尾带尖。扁平的斧头握起来很舒适，可用于劈砍与砸击，危急时还能钩住对手的武器。斧上饰有瑟伦迪尼日纳的旗色。"
 	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/cut/battle/lunge, /datum/intent/sword/disarm)
 	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash)
 	force = 22
@@ -513,8 +513,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /datum/intent/axe/cut/battle/lunge
-	name = "ćiupaga lunge"
-	desc = "Grip your ćiupaga by the tail-end of the handle and swing in a circular motion to reach further ahead. It will deal extra damage if perfectly positioned, otherwise you'll just hit them with the handle."
+	name = "牧斧探身斩"
+	desc = "握住牧斧柄的末端，划弧挥击以攻击更远的目标。距离恰当时会造成额外伤害，否则只能用斧柄击中对方。"
 	damfactor = 1.75
 	penfactor = 42
 	effective_range = 2
