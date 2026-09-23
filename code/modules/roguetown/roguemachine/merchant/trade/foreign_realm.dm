@@ -230,5 +230,5 @@
 		var/datum/brewing_recipe/recipe = entry["recipe"]
 		if(recipe)
 			parts += initial(recipe.bottle_name)
-	return english_list(parts, "nothing in particular")
+	return english_list(parts, "无特别偏好", and_text = "和")
 
