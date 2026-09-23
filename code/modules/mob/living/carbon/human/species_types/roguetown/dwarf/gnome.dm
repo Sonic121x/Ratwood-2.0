@@ -12,7 +12,7 @@
 尽管他们是混血且比一般矮人更小，大多数侏儒和矮人仍视彼此为同族。<br>\
 	(+1 智力, +1 感知)"
 
-	skin_tone_wording = "Skintone"
+	skin_tone_wording = "肤色"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,YOUNGBEARD,STUBBLE,OLDGREY)
