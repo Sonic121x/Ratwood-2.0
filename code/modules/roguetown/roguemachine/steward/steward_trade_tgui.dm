@@ -1071,7 +1071,7 @@ GLOBAL_LIST_INIT(steward_trade_sequestration_locked_actions, list(
 				to_chat(usr, span_warning("市政长老的令状未授予向贸易大厅请愿的权限."))
 				return TRUE
 			if(!(usr.job in GLOB.crown_authority_roles))
-				to_chat(usr, span_warning("只有总管家的官署能够向贸易大厅请愿."))
+				to_chat(usr, span_warning("只有总管的官署能够向贸易大厅请愿."))
 				return TRUE
 			var/region_id = params["region_id"]
 			var/category_id = params["category_id"]

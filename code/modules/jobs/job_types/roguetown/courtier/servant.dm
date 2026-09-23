@@ -11,7 +11,7 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = ALL_AGES_LIST
 
-	tutorial = "你得以在公爵宅邸中过上一种还算舒适的服侍生活，听从总管的命令，把整天耗在那些必要却低微的杂务上。这个职位提供劳役仆从、女仆与男仆三种外观风格。"
+	tutorial = "你得以在公爵宅邸中过上一种还算舒适的服侍生活，听从内务总管的命令，把整天耗在那些必要却低微的杂务上。这个职位提供劳役仆从、女仆与男仆三种外观风格。"
 
 	outfit = /datum/outfit/job/roguetown/servant
 	advclass_cat_rolls = list(CTAG_SERVANT = 20)
