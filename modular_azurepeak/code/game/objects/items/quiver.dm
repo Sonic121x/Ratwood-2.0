@@ -45,7 +45,7 @@
 
 	if (!arrows.len)
 		return
-	to_chat(user, span_warning("我开始把[src]里的箭一支支取出来......"))
+	to_chat(user, span_warning("我开始把[src]里的东西逐一取出来……"))
 	for(var/obj/item/ammo_casing/caseless/rogue/arrow in arrows)
 		if(!do_after(user, 0.5 SECONDS))
 			return
@@ -97,7 +97,7 @@
 /obj/item/quiver/examine(mob/user)
 	. = ..()
 	if(arrows.len)
-		. += span_notice("里面有[arrows.len]支。")
+		. += span_notice("里面存放着[arrows.len]件物品。")
 	. += span_notice("点击地面即可拾起地上的弹药。")
 
 /obj/item/quiver/update_icon()
@@ -274,7 +274,7 @@
 /obj/item/quiver/javelin/examine(mob/user)
 	. = ..()
 	if(arrows.len)
-		. += span_notice("里面有[arrows.len]支。")
+		. += span_notice("里面有[arrows.len]支标枪。")
 
 /obj/item/quiver/javelin/update_icon()
 	if(arrows.len)
