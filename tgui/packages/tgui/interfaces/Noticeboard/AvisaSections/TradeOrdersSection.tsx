@@ -93,7 +93,7 @@ const OrderCard = ({ order }: { order: TradeOrder }) => {
           <span style={badgeStyle(SEAL_GREEN)}>储备库</span>
         )}
         {!!order.petitioned && (
-          <span style={badgeStyle(PETITION_PURPLE)}>总管家请愿</span>
+          <span style={badgeStyle(PETITION_PURPLE)}>总管请愿</span>
         )}
       </div>
 
@@ -202,11 +202,11 @@ const HelpPanel = () => (
   >
     <p style={{ margin: '0 0 6px 0' }}>
       常设订单由王国的储备库与商人发布.
-      前往神经主处找总管家或书记官,
+      前往神经主处找总管或书记官,
       以完成一份储备库订单.
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
-      <b>仓库</b>标记的订单需要把成品留在总管家出口机
+      <b>仓库</b>标记的订单需要把成品留在总管出口机
       处等待收取. 该送进储备库的货物,
       仍应交付给储备库.
     </p>
@@ -216,7 +216,7 @@ const HelpPanel = () => (
     </p>
     <p style={{ margin: 0 }}>
       <b>已封锁</b>的地区在封锁解除之前无法由贸易商队抵达;
-      <b>总管家请愿</b>的订单由总管家直接提出,
+      <b>总管请愿</b>的订单由总管直接提出,
       并按较低的比例支付.
     </p>
   </div>
