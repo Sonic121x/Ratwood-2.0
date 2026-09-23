@@ -78,8 +78,8 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 	return FALSE
 
 /obj/structure/roguemachine/escrow
-	name = "COMMISSIONER"
-	desc = "A brass-plated contraption with a coin slot above and an iron strongbox beneath. The guild posts and fulfills smithing or engineering work here, coin held in escrow until the job is done."
+	name = "委托官"
+	desc = "一台镀黄铜的装置，上方设有投币口，下方装着铁制保险箱。公会在此发布并承接锻造或工程委托，款项由机器托管，直至工作完成。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -228,9 +228,9 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 
 /obj/structure/roguemachine/escrow/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Any commissioner may build a manifest of smithing or engineering recipes and deposit coin into the machine. Submitting the manifest posts an order with the coin held in escrow.")
-	. += span_info("A smith can claim an open order, deliver the finished items back into the machine, and collect the escrowed pay once every item has been delivered. An order that has been claimed cannot be cancelled by the commissioner.")
-	. += span_info("Unlocked with the guildmaster's key, material prices and margins can be adjusted.")
+	. += span_info("任何委托人都可将锻造或工程配方加入清单，并向机器存入钱币。提交清单即可发布订单，款项将被托管。")
+	. += span_info("铁匠可以承接待接订单，将成品交回机器，并在全部物品交付后领取托管报酬。订单一经承接，委托人便无法取消。")
+	. += span_info("使用公会会长的钥匙解锁后，可调整材料价格和加价。")
 
 /obj/structure/roguemachine/escrow/proc/rebuild_catalog()
 	catalog = list()
@@ -466,7 +466,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 		if(K.lockid in keycontrol)
 			toggle_lock(user)
 			return
-		to_chat(user, span_warning("Wrong key."))
+		to_chat(user, span_warning("钥匙不对。"))
 		return
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/KR = P
@@ -513,15 +513,15 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 			continue
 		var/result = O.try_accept_item(I)
 		if(result == "damaged")
-			to_chat(user, span_warning("[src] refuses [I] - the work is too damaged to deliver. Mend it first."))
+			to_chat(user, span_warning("[src]拒收[I] - 成品损坏过重，无法交付。请先修好。"))
 			return
 		if(result)
 			I.forceMove(src)
 			playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("[src] accepts [I]."))
+			to_chat(user, span_notice("[src]收下了[I]。"))
 			SStgui.update_uis(src)
 			return
-	to_chat(user, span_warning("[src] has no order waiting for [I]."))
+	to_chat(user, span_warning("[src]没有需要[I]的待交付订单。"))
 
 /obj/structure/roguemachine/escrow/ui_state(mob/user)
 	return GLOB.human_adjacent_state
@@ -581,14 +581,14 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 		manifest_deposits[O.commissioner_name] = (manifest_deposits[O.commissioner_name] || 0) + payout
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	var/clean_reason = reason ? copytext(sanitize(reason), 1, 200) : ""
-	var/say_msg = "[user.real_name] rejects [O.commissioner_name]'s commission ([O.label()])"
+	var/say_msg = "[user.real_name]拒绝了[O.commissioner_name]的委托（[O.label()]）"
 	if(clean_reason)
 		say_msg += ": \"[clean_reason]\""
 	say_msg += "."
 	say(say_msg)
-	var/notify_msg = "[user.real_name] has rejected your commission at [src]. [payout]m has been returned to your deposit."
+	var/notify_msg = "[user.real_name]拒绝了你在[src]发布的委托。[payout]m已退回你的存款。"
 	if(clean_reason)
-		notify_msg += " Reason: \"[clean_reason]\""
+		notify_msg += " 理由：\"[clean_reason]\""
 	notify_commissioner(O, notify_msg)
 	update_icon()
 
@@ -600,7 +600,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 			budget -= O.deposited
 			if(O.deposited > 0 && O.commissioner_name)
 				manifest_deposits[O.commissioner_name] = (manifest_deposits[O.commissioner_name] || 0) + O.deposited
-			notify_commissioner(O, "Your unclaimed commission at [src] has expired. [O.deposited]m has been returned to your deposit.")
+			notify_commissioner(O, "你在[src]发布的委托因无人承接而过期。[O.deposited]m已退回你的存款。")
 			O.deposited = 0
 		else if(O.status == "claimed" && O.day_claimed && GLOB.dayspassed - O.day_claimed >= ESCROW_CLAIM_EXPIRY_DAYS)
 			for(var/obj/item/I in O.delivered_items)
@@ -610,7 +610,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 			O.status = "open"
 			O.smith_name = null
 			O.day_claimed = 0
-			notify_commissioner(O, "The claim on your commission at [src] has expired; the order is open again for new smiths.")
+			notify_commissioner(O, "你在[src]发布的委托已超过承接期限；订单现已重新开放，其他铁匠可以接单。")
 
 /obj/structure/roguemachine/escrow/ui_static_data(mob/user)
 	var/list/data = list()
@@ -713,10 +713,10 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 		var/expiry_label = ""
 		if(O.status == "open")
 			days_left = max(0, ESCROW_OPEN_EXPIRY_DAYS - (GLOB.dayspassed - O.day_posted))
-			expiry_label = "expires in"
+			expiry_label = "订单到期倒计时"
 		else if(O.status == "claimed" && O.day_claimed)
 			days_left = max(0, ESCROW_CLAIM_EXPIRY_DAYS - (GLOB.dayspassed - O.day_claimed))
-			expiry_label = "claim expires in"
+			expiry_label = "承接期限倒计时"
 		orders_data += list(list(
 			"ref" = "\ref[O]",
 			"commissioner_name" = O.commissioner_name,
@@ -787,7 +787,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 				return FALSE
 
 	if(!locked)
-		to_chat(usr, span_warning("[src] is open for guild adjustments - turn the key to close it before posting or claiming work."))
+		to_chat(usr, span_warning("[src]已打开供公会调整设置 - 请先转动钥匙将其关闭，再发布或承接委托。"))
 		return TRUE
 
 	switch(action)
@@ -916,15 +916,15 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 	if(!length(cart))
 		return
 	if(has_active_order(key))
-		to_chat(user, span_warning("You already have an active commission here - finish or cancel it before posting another."))
+		to_chat(user, span_warning("你在此已有一份进行中的委托 - 请先完成或取消，再发布新的委托。"))
 		return
 	if(manifest_item_count(key) > item_cap_per_order)
-		to_chat(user, span_warning("This commission asks for more than [item_cap_per_order] item\s - trim the manifest or raise the cap."))
+		to_chat(user, span_warning("此委托要求的物品超过[item_cap_per_order]件 - 请缩减清单或提高上限。"))
 		return
 	var/total = manifest_total(user)
 	var/deposit = manifest_deposits[key] || 0
 	if(deposit < total)
-		to_chat(user, span_warning("Not enough deposited. Need [total]mm, have [deposit]mm."))
+		to_chat(user, span_warning("存款不足。需要[total]mm，目前有[deposit]mm。"))
 		return
 	var/datum/escrow_order/O = new()
 	O.commissioner_name = key
@@ -940,7 +940,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 	manifest_deposits[key] = deposit - total
 	manifests -= key
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-	to_chat(user, span_notice("Your commission has been posted."))
+	to_chat(user, span_notice("你的委托已发布。"))
 	update_icon()
 
 /obj/structure/roguemachine/escrow/proc/refund_deposit(mob/user)
@@ -969,13 +969,13 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 	if(!O || O.status != "open")
 		return
 	if(!is_guild_member(user))
-		to_chat(user, span_warning("Only a member of the crafter's guild may claim a commission."))
+		to_chat(user, span_warning("只有工匠公会成员可以承接委托。"))
 		return
 	O.status = "claimed"
 	O.smith_name = escrow_key(user)
 	O.day_claimed = GLOB.dayspassed
-	to_chat(user, span_notice("You claim [O.commissioner_name]'s commission."))
-	notify_commissioner(O, "[user.real_name] has claimed your commission at [src].")
+	to_chat(user, span_notice("你承接了[O.commissioner_name]的委托。"))
+	notify_commissioner(O, "[user.real_name]承接了你在[src]发布的委托。")
 
 /obj/structure/roguemachine/escrow/proc/release_order(datum/escrow_order/O, mob/user, forced = FALSE)
 	if(!O || O.status != "claimed")
@@ -991,7 +991,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 	O.smith_name = null
 	O.day_claimed = 0
 	if(forced)
-		notify_commissioner(O, "The guildmaster has released the stalled claim on your commission at [src].")
+		notify_commissioner(O, "公会会长已解除你在[src]发布的停滞委托的承接关系。")
 
 /obj/structure/roguemachine/escrow/proc/settle_partial_order(datum/escrow_order/O, mob/user)
 	if(!O || O.status != "claimed" || escrow_key(user) != O.smith_name)
@@ -1005,7 +1005,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 		done_count += min(have, want)
 		needed_count += want
 	if(done_count <= 0)
-		to_chat(user, span_warning("Nothing has been delivered yet. Release the claim instead."))
+		to_chat(user, span_warning("尚未交付任何物品。请改为放弃接单。"))
 		return
 	if(done_count >= needed_count)
 		complete_order(O, user)
@@ -1025,15 +1025,15 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 	if(commissioner_refund > 0 && O.commissioner_name)
 		manifest_deposits[O.commissioner_name] = (manifest_deposits[O.commissioner_name] || 0) + commissioner_refund
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
-	to_chat(user, span_notice("Settled partial commission: you collect [smith_payout]m. [commissioner_refund]m has been returned to [O.commissioner_name]'s deposit."))
-	notify_commissioner(O, "Your commission at [src] was partially fulfilled ([done_count]/[needed_count]). Items have been left at the docks; [commissioner_refund]m has been returned to your deposit.")
+	to_chat(user, span_notice("委托已部分结算：你领取了[smith_payout]m。[commissioner_refund]m已退回[O.commissioner_name]的存款。"))
+	notify_commissioner(O, "你在[src]发布的委托已部分完成（[done_count]/[needed_count]）。物品已留在码头；[commissioner_refund]m已退回你的存款。")
 	update_icon()
 
 /obj/structure/roguemachine/escrow/proc/complete_order(datum/escrow_order/O, mob/user)
 	if(!O || O.status != "claimed" || escrow_key(user) != O.smith_name)
 		return
 	if(!O.is_fulfilled())
-		to_chat(user, span_warning("The order is not yet complete."))
+		to_chat(user, span_warning("订单尚未完成。"))
 		return
 	O.status = "complete"
 	var/payout = O.deposited
@@ -1041,7 +1041,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 	budget -= payout
 	budget2change(payout, user)
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
-	notify_commissioner(O, "Your commission at [src] is ready for collection: [O.label()].")
+	notify_commissioner(O, "你在[src]发布的委托已完成，可领取：[O.label()]。")
 	update_icon()
 
 /obj/structure/roguemachine/escrow/proc/collect_order(datum/escrow_order/O, mob/user)
@@ -1090,8 +1090,8 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 		set_light(0)
 
 /obj/structure/roguemachine/escrow/tailor
-	name = "TAILORING COMMISSIONER"
-	desc = "A brass-plated commission board for the weavers' and tailors' guild. Coin held in escrow until the work is delivered."
+	name = "裁缝委托官"
+	desc = "供织工与裁缝公会使用的镀黄铜委托板。款项由机器托管，直至成品交付。"
 	keycontrol = list("tailor", "crafterguild", "craftermaster")
 	allowed_categories = list(
 		ITEM_CAT_GARMENT_COMMON,
@@ -1125,7 +1125,7 @@ GLOBAL_LIST_EMPTY(escrow_machines)
 
 /obj/structure/roguemachine/escrow/tailor/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("This commissioner accepts tailoring and garment work only.")
+	. += span_info("这台委托官仅接受裁缝与制衣委托。")
 
 /datum/escrow_order/proc/material_tally(obj/structure/roguemachine/escrow/E)
 	if(cached_material_tally)

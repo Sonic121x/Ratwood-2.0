@@ -2,7 +2,7 @@
 
 /datum/supply_pack/rogue/seeds
 	group = "种子" // English: Seeds
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/seeds/spelt
