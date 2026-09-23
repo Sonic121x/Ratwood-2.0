@@ -180,7 +180,7 @@
 
 /datum/wound/slash/vein
 	name= "静脉切口"
-	check_name = span_bloody("<B>静脉</B")
+	check_name = span_bloody("<B>静脉</B>")
 	severity = WOUND_SEVERITY_LIGHT
 	whp = 40
 	sewn_whp = 12
