@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			continue
 		var/fjob = known_people[P]["FJOB"]
 		var/fgender = known_people[P]["FGENDER"]
-		var/fspecies = known_people[P]["FSPECIES"]
+		var/fspecies = get_species_display_name(known_people[P]["FSPECIES"])
 		var/fage = known_people[P]["FAGE"]
 		var/fhouse = known_people[P]["FHOUSE"]
 		var/fheresy = known_people[P]["FHERESY"]
