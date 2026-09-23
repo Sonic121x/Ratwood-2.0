@@ -1,5 +1,5 @@
 // This code handles different species in the game.
-
+#include "species_display.dm"
 GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species
@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/changesource_flags = NONE
 
 	/// Wording for skin tone on examine and on character setup
-	var/skin_tone_wording = "Skin Tone"
+	var/skin_tone_wording = "肤色"
 	/// Bodyparts to override base ones.
 	var/list/bodypart_overrides = list()
 	/// List of organs this species has.
@@ -2524,7 +2524,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(H.stat || !(H.mobility_flags & MOBILITY_STAND))
 		return FALSE
 	if(H.wear_armor && ((H.wear_armor.flags_inv & HIDEJUMPSUIT) && (!H.wear_armor.species_exception || !is_type_in_list(src, H.wear_armor.species_exception))))	//Jumpsuits have tail holes, so it makes sense they have wing holes too
-		to_chat(H, span_warning("My suit blocks my wings from extending!"))
+		to_chat(H, span_warning("我的衣服挡住了翅膀，无法展开！"))
 		return FALSE
 	var/turf/T = get_turf(H)
 	if(!T)
@@ -2537,7 +2537,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(H.buckled)
 		buckled_obj = H.buckled
 
-	to_chat(H, span_notice("My wings spazz out and launch you!"))
+	to_chat(H, span_notice("我的翅膀猛地乱扇，把我带了起来！"))
 
 	playsound(H.loc, 'sound/blank.ogg', 100, TRUE, -3)
 
@@ -2573,7 +2573,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 		H.CloseWings()
 
 /datum/action/innate/flight
-	name = "Toggle Flight"
+	name = "切换飞行"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_STUN
 	button_icon_state = ""
 
@@ -2583,9 +2583,9 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(S.CanFly(H))
 		S.ToggleFlight(H)
 		if(!(H.movement_type & FLYING))
-			to_chat(H, span_notice("I settle gently back onto the ground..."))
+			to_chat(H, span_notice("我轻轻落回地面……"))
 		else
-			to_chat(H, span_notice("I beat my wings and begin to hover gently above the ground..."))
+			to_chat(H, span_notice("我扇动翅膀，开始轻轻悬浮在地面上方……"))
 			H.set_resting(FALSE, TRUE)
 
 /datum/species/proc/knockback(obj/item/I, mob/living/target, mob/living/user, nodmg)
@@ -2643,7 +2643,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 		Paralyze(15)
 
 /client/proc/view_species_info(species_info)
-	var/datum/browser/popup = new(src.mob, "species_info", "<center>BESTIARY</center>", 460, 550)
+	var/datum/browser/popup = new(src.mob, "species_info", "<center>种族图鉴</center>", 460, 550)
 	popup.set_content(species_info)
 	popup.open()
 

@@ -292,9 +292,9 @@
 		var/mob/living/carbon/human/Hu = H
 		if (istype(H, /mob/living/carbon/human))
 			if (obsfuscated_job) // WANDERER
-				GLOB.actors_list["Wanderers"] += list("[H.mobid]" = "[H.real_name] as the [Hu.dna.species.name] Adventurer<BR>")
+				GLOB.actors_list["Wanderers"] += list("[H.mobid]" = "[H.real_name] 饰演[get_species_display_name(Hu.dna.species.name)]冒险者<BR>")
 			else
-				GLOB.actors_list[department] += list("[H.mobid]" = "[H.real_name] as the [Hu.dna.species.name] [H.mind.assigned_role]<BR>")
+				GLOB.actors_list[department] += list("[H.mobid]" = "[H.real_name] 饰演[get_species_display_name(Hu.dna.species.name)] [H.mind.assigned_role]<BR>")
 		else
 			if (obsfuscated_job)
 				GLOB.actors_list["Wanderers"] += list("[H.mobid]" = "[H.real_name] as Adventurer<BR>")
