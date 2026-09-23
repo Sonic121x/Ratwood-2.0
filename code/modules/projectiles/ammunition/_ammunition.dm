@@ -64,7 +64,7 @@
 					continue
 			if (boolets > 0)
 				box.update_icon()
-				to_chat(user, "<span class='notice'>我收集了[boolets]枚弹壳。[box]里现在有[box.stored_ammo.len]枚弹壳。</span>")
+				to_chat(user, "<span class='notice'>我收集了[boolets]发弹药。[box]里现在有[box.stored_ammo.len]发弹药。</span>")
 			else
 				to_chat(user, "<span class='warning'>我什么都没收集到！</span>")
 	else

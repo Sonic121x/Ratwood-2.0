@@ -41,7 +41,7 @@
 	var/target_zone = HT.zone_selected
 	var/user_zone = HU.zone_selected
 	var/guaranteed_fail = FALSE
-	var/special_msg = span_danger("没成功！[HT.p_their(TRUE)]重新站稳了！")
+	var/special_msg = span_danger("没成功！[HT]重新站稳了！")
 
 	if(user.has_status_effect(/datum/status_effect/debuff/baitcd))
 		return	//We don't do anything if either of us is affected by bait statuses
@@ -61,7 +61,7 @@
 
 	if(guaranteed_fail)
 		to_chat(HU, special_msg)
-		to_chat(HT, span_notice("我骗过了[HU.p_them()]！我重新站稳了！"))
+		to_chat(HT, span_notice("我识破了[HU]的诱招！我重新站稳了！"))
 		HU.emote("groan", forced = TRUE)
 		HU.stamina_add(HU.max_stamina * 0.2)
 		HT.bait_stacks = 0
@@ -90,14 +90,14 @@
 		HU.purge_peel(99)
 		HU.changeNext_move(0.1 SECONDS, override = TRUE)
 		to_chat(HU, span_notice("[HT.p_they(TRUE)]<b>完全</b>中了我的诱招！再来一次！"))
-		to_chat(HT, span_danger("我<b>完全</b>中了[HU.p_their()]的诱招！我快站不稳了！<b>不能再来一次了！</b>"))
+		to_chat(HT, span_danger("我<b>完全</b>中了[HU]的诱招！我快站不稳了！<b>不能再来一次了！</b>"))
 
 	if(HU.has_duelist_ring() && HT.has_duelist_ring() || HT.bait_stacks >= 2)	//We're explicitly (hopefully non-lethally) dueling. Flavor.
 		HT.emote("gasp", forced = TRUE)
 		HT.OffBalance(4 SECONDS)
 		HT.Immobilize(4 SECONDS)
 		to_chat(HU, span_notice("[HT.p_they(TRUE)]又一次中招，已经失衡了！就是现在！"))
-		to_chat(HT, span_danger("我又<b>完全</b>中了[HU.p_their()]的诱招！我的平衡全没了！</b>"))
+		to_chat(HT, span_danger("我又<b>完全</b>中了[HU]的诱招！我彻底失去平衡了！"))
 		HT.bait_stacks = 0
 
 	if(!HT.pulling)
@@ -105,7 +105,7 @@
 
 	HT.stop_pulling()
 	to_chat(HU, span_notice("[HT.p_they(TRUE)]中了我的阴招！我挣脱了！"))
-	to_chat(HT, span_danger("我中了[HU.p_their()]的阴招！我的擒拿被挣脱了！"))
+	to_chat(HT, span_danger("我中了[HU]的阴招！我的擒拿被挣脱了！"))
 	HU.OffBalance(2 SECONDS)
 	HT.OffBalance(2 SECONDS)
 	playsound(user, 'sound/combat/riposte.ogg', 100, TRUE)

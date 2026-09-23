@@ -28,7 +28,7 @@
 					return BULLET_ACT_BLOCK
 				if(L.revive(full_heal = TRUE, admin_revive = TRUE))
 					L.grab_ghost(force = TRUE) // even suicides
-					to_chat(L, span_notice("我猛地惊醒过来，你是不死者！！！"))
+					to_chat(L, span_notice("我猛地惊醒过来，我是不死者！"))
 				else if(L.stat != DEAD)
 					to_chat(L, span_notice("我感觉好极了！"))
 			else
@@ -56,7 +56,7 @@
 				return BULLET_ACT_BLOCK
 			if(target.revive(full_heal = TRUE, admin_revive = TRUE))
 				target.grab_ghost(force = TRUE) // even suicides
-				to_chat(target, span_notice("我猛地惊醒过来，你还活着！！！"))
+				to_chat(target, span_notice("我猛地惊醒过来，我又活过来了！"))
 			else if(target.stat != DEAD)
 				to_chat(target, span_notice("我感觉好极了！"))
 
