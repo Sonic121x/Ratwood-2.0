@@ -13,7 +13,7 @@
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
-	skin_tone_wording = "Skin Color"
+	skin_tone_wording = "肤色"
 	limbs_icon_m = 'icons/mob/species/anthro_small_male.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fd.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -80,7 +80,7 @@
 		/datum/language/orcish
 	)
 	stress_examine = TRUE
-	stress_desc = span_red("Horrid little goblin...")
+	stress_desc = span_red("可怕的小哥布林……")
 	descriptor_choices = list(
 		/datum/descriptor_choice/trait,
 		/datum/descriptor_choice/stature,
