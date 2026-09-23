@@ -151,7 +151,7 @@
 
 		if("种族")
 			var/newrace
-			var/racechoice = input(H, "我们是什么来着？", "更改种族") as null|anything in choosable_races
+			var/racechoice = input_species_display_name(H, "我们是什么来着？", "更改种族", choosable_races)
 			newrace = GLOB.species_list[racechoice]
 
 			if(!newrace)
