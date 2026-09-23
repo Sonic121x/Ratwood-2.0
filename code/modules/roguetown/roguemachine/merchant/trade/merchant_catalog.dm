@@ -14,8 +14,8 @@
 // noted in the cultural pack files.
 /datum/merchant_catalog/rosawood
 	id = "rosawood"
-	name = "Rosawood Arsenal"
-	desc = "The private arsenal of the Count of Rosawood, producing the finest elven arms in any realm. Fine steel, bows and the bounty of Eveswood."
+	name = "玫瑰林军械库"
+	desc = "玫瑰林伯爵的私人军械库，出产诸国最精良的精灵武器。这里有优质钢铁、弓弩，以及伊芙斯林的丰饶物产。"
 	favor_cost = ROSAWOOD_ARSENAL_FAVOR
 	stock = list(
 		/datum/supply_pack/rogue/rosawood/woad_helm = 2,
@@ -37,8 +37,8 @@
 
 /datum/merchant_catalog/underdark
 	id = "underdark"
-	name = "Crocs de l'araignée Armory"
-	desc = "Finely crafted drow weapons and armor, with a reputation for quality and lethality."
+	name = "蛛牙军械库"
+	desc = "精工打造的卓尔武器与护甲，以其品质和杀伤力闻名。"
 	favor_cost = UNDERDARK_CARAVAN_FAVOR
 	stock = list(
 		/datum/supply_pack/rogue/underdark/stalker_sabre = 2,
