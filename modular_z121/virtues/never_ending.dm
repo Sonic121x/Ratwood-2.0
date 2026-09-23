@@ -1,343 +1,270 @@
-// =============================================================================
-// 自定义美德：永无止境 (never-ending)
-// Custom Virtue: "never-ending"
-//
-// 设计说明 / Design notes:
-//   - 消耗 99 点凯旋点数 (TRIUMPH). Costs 99 TRIUMPH points to take.
-//   - 授予特性「指定演员」(Designated Performer). Grants the "Designated Performer" trait.
-//   - 特性效果：每天一次，死亡三分钟后以完美状态复活，但会失去全部记忆，
-//     技能进度也会回退到刚进入游戏时的状态。
-//     Characteristic effect: once per day, three minutes after death the bearer is
-//     resurrected in a perfect state, but loses all memories and has skill progress
-//     reset to the state it was in when they first entered the game.
-//
-// 约束 / Constraints:
-//   - 本文件完全位于 modular_z121 之内，不修改任何外部代码。
-//     This file lives entirely inside modular_z121 and modifies no external code.
-//   - 复活/技能重置/记忆清除全部通过主线已存在的接口实现：
-//     Resurrection / skill reset / memory wipe all hook into existing mainline procs:
-//       * mob/living/proc/revive(full_heal, admin_revive)  -> 完美复活 perfect heal
-//       * mob.skills.known_skills / skill_experience        -> 技能存储 skill storage
-//       * datum/mind/proc/wipe_memory()                     -> 清除笔记记忆 wipe notes
-// =============================================================================
+// 保留原美德路径以兼容角色偏好；内部标记不登记到玩家可见的特性表。
+#define TRAIT_Z121_DEATH_RETURN "z121_death_return"
 
-// 「指定演员」特性的字符串 ID。用作 ADD_TRAIT 的 trait define，便于其它系统查询。
-// String identifier for the "Designated Performer" trait, queryable via HAS_TRAIT elsewhere.
-// 为什么取值为可读中文「指定演员」而非英文 slug：
-//   玩家的特性自检面板（_onclick/hud/screen_objects.dm:135）会把"特性字符串本身"当作
-//   标题直接打印给玩家（格式为「[特性值] - 描述」）。因此特性值必须是体面的中文名，
-//   否则面板会显示成 "designated_performer - ……"。此值在全项目内唯一，无 HAS_TRAIT 歧义。
-//   （与 modular_z121/virtues/life_potential.dm 中 TRAIT_LIFE_POTENTIAL = "生命潜能" 的约定一致。）
-// Why the value is the readable Chinese name rather than an English slug:
-//   the player's trait self-check panel (screen_objects.dm:135) prints the trait STRING itself
-//   as the title ("[trait] - desc"), so it must be a presentable name; mirrors life_potential.
-#define TRAIT_DESIGNATED_PERFORMER "指定演员"
-
-// 复活前的等待时间：3 分钟。剧本里的「随后不久」即被量化为三分钟。
-// Delay before resurrection happens: 3 minutes ("soon after" the script ends).
-#define NEVER_ENDING_REVIVE_DELAY (3 MINUTES)
-
-// 每日冷却：复活能力每天只能触发一次（以真实游戏时间 24 小时计）。
-// Daily cooldown: the resurrection may only fire once per (real) day = 24 hours.
-#define NEVER_ENDING_DAILY_COOLDOWN (24 HOURS)
-
-
-// -----------------------------------------------------------------------------
-// 美德数据 / The virtue datum
-// 归入 utility 分支，与「不朽」「夜视」等其它效用型美德保持一致。
-// Filed under the utility branch, matching deathless / night_vision, etc.
-// 因为是 /datum/virtue 的子类型，全局列表会通过 subtypesof() 自动收录，无需手动注册。
-// As a /datum/virtue subtype it is auto-registered into GLOB.virtues via subtypesof().
-// -----------------------------------------------------------------------------
 /datum/virtue/utility/never_ending
-	// 美德名称 / Display name shown in the virtue selection UI.
-	name = "永无止境（-99）"
-	// 角色内描述 / In-character description of the fantasy.
-	desc = "我是这出剧本里举足轻重的演员。每当我走向结局，随后不久，诸神便会再次将我推上舞台。"
-	// 额外说明：把机制清楚地讲给玩家，避免他们误以为这是无限免死金牌。
-	// Custom addendum so players understand the exact, limited mechanic.
-	custom_text = "获得「指定演员」特性：每天一次，死亡 3 分钟后以完美状态复活；\n\
-	但复活会使你失去全部记忆（请进行相应的角色扮演），\n\
-	并且所有技能进度都会回退到你刚进入游戏时的状态。"
-	// 消耗 99 点凯旋点数。基类 New() 会自动把这条信息追加到 desc 里。
-	// 99 TRIUMPH cost; the base New() appends a "Costs 99 TRIUMPH" line to desc.
+	name = "死亡回归"
+	desc = "晨光曾在你的影子里停留。此后，有些本该落定的句点，便迟迟没有落下。"
+	custom_text = null
 	triumph_cost = 99
-	// 通过标准 added_traits 通道授予特性，来源标记为 TRAIT_VIRTUE，便于统一管理/清除。
-	// Grant the trait through the standard added_traits channel (TRAIT_VIRTUE source).
-	added_traits = list(TRAIT_DESIGNATED_PERFORMER)
+	added_traits = list(TRAIT_Z121_DEATH_RETURN)
 
-// apply_to_human：在美德被赋予人物时调用，这里负责挂上真正驱动效果的组件。
-// apply_to_human: called when the virtue is granted; attaches the component that drives the effect.
 /datum/virtue/utility/never_ending/apply_to_human(mob/living/carbon/human/recipient)
 	. = ..()
-	// 防御性检查：没有有效的人物就直接返回，避免空引用运行时报错。
-	// Defensive guard: bail out on a missing recipient to avoid runtime null errors.
-	if(!recipient)
-		return
-	// 挂载「永无止境」组件。组件本身做去重处理，重复赋予不会叠加。
-	// Attach the never-ending component; it is unique-duped so re-applying is a no-op.
-	recipient.AddComponent(/datum/component/never_ending_performer)
+	if(recipient)
+		recipient.AddComponent(/datum/component/z121_return_entry)
 
-
-// -----------------------------------------------------------------------------
-// 驱动组件 / The driving component
-// 把所有「运行期」逻辑（监听死亡、计时、复活、技能快照）封装进组件，
-// 这样美德 datum 保持纯数据，组件负责挂在具体 mob 上的行为。
-// All runtime behaviour (death listening, timing, revival, skill snapshot) lives here,
-// keeping the virtue datum as pure data and the per-mob behaviour in the component.
-// -----------------------------------------------------------------------------
-/datum/component/never_ending_performer
-	// 设为唯一组件：同一个 mob 上只允许存在一个，重复 AddComponent 会被丢弃。
-	// Unique component: only one instance per mob; duplicate AddComponent calls are dropped.
+// 入场流程尚可能进行职业选择，必须等角色实际就绪后建立初始存档。
+/datum/component/z121_return_entry
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	// 进入游戏时的技能等级快照（skill datum -> level）。复活时据此还原。
-	// Snapshot of skill levels at game entry (skill datum -> level); restored on revival.
-	var/list/initial_known_skills
-	// 进入游戏时的技能经验快照（skill datum -> exp）。与等级快照配套还原。
-	// Snapshot of skill experience at game entry (skill datum -> exp); restored alongside levels.
-	var/list/initial_skill_experience
-	// 标记当前是否已经安排了一次待执行的复活，避免对同一次死亡重复计时。
-	// Flag marking that a revival is already scheduled, so one death can't queue several timers.
-	var/revive_pending = FALSE
-	// 每日复活能力的冷却计时器（由 COOLDOWN_* 宏读写）。
-	// Cooldown tracker for the once-per-day revival, read/written by the COOLDOWN_* macros.
-	COOLDOWN_DECLARE(daily_revive_cd)
 
-// Initialize：组件创建时调用，负责类型校验、拍摄技能快照、注册死亡信号。
-// Initialize: runs on component creation; validates type, snapshots skills, hooks death.
-/datum/component/never_ending_performer/Initialize()
-	. = ..()
-	// 只有人类（carbon/human）才有完整的技能/记忆/复活体系，其它类型不兼容。
-	// Only carbon humans have the full skill/memory/revive systems; reject anything else.
+/datum/component/z121_return_entry/Initialize()
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
-	var/mob/living/carbon/human/performer = parent
-	// 立刻拍下「刚进入游戏时」的技能状态。美德在出生流程中赋予，此刻即为起始状态。
-	// Snapshot the "just entered the game" skill state now; the virtue is granted during
-	// spawn setup, so this moment represents the character's starting skills.
-	snapshot_initial_skills(performer)
-	// 监听该人物的死亡信号。每次死亡都会触发 on_performer_death。
-	// Listen for this performer's death; each death triggers on_performer_death.
-	RegisterSignal(performer, COMSIG_LIVING_DEATH, PROC_REF(on_performer_death))
-	// 监听被检视（examine）信号，从而把「指定演员」特性显示给游戏中的玩家。
-	// Listen for the examine signal so the "Designated Performer" trait is visible to players in-game.
-	RegisterSignal(performer, COMSIG_PARENT_EXAMINE, PROC_REF(on_performer_examine))
+	START_PROCESSING(SSprocessing, src)
+	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_login))
+	addtimer(CALLBACK(src, PROC_REF(process)), 0)
 
-// snapshot_initial_skills：把当前技能等级与经验深拷贝保存，作为「初始状态」基准。
-// snapshot_initial_skills: deep-copies current skill levels & experience as the baseline.
-/datum/component/never_ending_performer/proc/snapshot_initial_skills(mob/living/carbon/human/performer)
-	// 防御性检查：人物失效就放弃拍摄，留空快照在复活时会被安全跳过。
-	// Guard: if the performer is invalid, skip; empty snapshots are handled safely on revive.
-	if(QDELETED(performer))
-		return
-	// ensure_skills() 保证技能持有者存在（首次访问时会惰性创建）。
-	// ensure_skills() guarantees the skill_holder exists (lazily created on first access).
-	var/datum/skill_holder/holder = performer.ensure_skills()
-	if(!holder)
-		return
-	// .Copy() 做浅拷贝即可：键是全局唯一的技能单例，值是数字，互不共享引用。
-	// A shallow .Copy() suffices: keys are global skill singletons and values are numbers.
-	initial_known_skills = holder.known_skills?.Copy()
-	initial_skill_experience = holder.skill_experience?.Copy()
-
-// on_performer_examine：检视信号回调。把「指定演员」特性以文字形式呈现给玩家，
-// 让该特性在游戏内「可见」。本人看到完整机制说明，旁观者只看到不剧透的氛围提示，
-// 以免敌人得知「需肢解才能阻止复活」这一弱点。
-// on_performer_examine: examine signal handler. Surfaces the "Designated Performer" trait as
-// text so it is visible in-game. The bearer sees the full mechanic; onlookers get only a
-// non-spoiler flavour hint, so enemies don't learn the "must gib to stop revival" weakness.
-/datum/component/never_ending_performer/proc/on_performer_examine(mob/source, mob/user, list/examine_list)
-	// SIGNAL_HANDLER：检视回调同样不允许执行可能 sleep 的操作。
-	// SIGNAL_HANDLER: examine callbacks must not perform sleeping operations either.
+/datum/component/z121_return_entry/proc/on_login()
 	SIGNAL_HANDLER
-	var/mob/living/carbon/human/performer = parent
-	// 防御：若特性已被移除（例如美德被清除），就不再显示，保持与真实状态一致。
-	// Guard: if the trait was removed (e.g. virtue cleared), show nothing to stay truthful.
-	if(!HAS_TRAIT(performer, TRAIT_DESIGNATED_PERFORMER))
-		return
-	// 本人检视自己：给出完整的特性名称与机制提醒，方便玩家随时确认自己拥有此能力。
-	// Self-examine: show the full trait name + mechanic so the player can always confirm they have it.
-	if(user == performer)
-		examine_list += span_nicegreen("【指定演员】诸神视你为剧本中不可或缺的角色——每天一次，你会在死亡 3 分钟后以完美状态重返舞台（代价：失去全部记忆，技能回退至初入游戏时）。")
-		return
-	// 他人检视：仅给一句富有戏剧感、却不泄露复活机制的氛围描述。
-	// Examined by others: a single theatrical flavour line that does NOT reveal the revival mechanic.
-	examine_list += span_notice("[performer.p_they(TRUE)]身上有种说不清的舞台气场，仿佛[performer.p_their()]故事永远不会真正落幕。")
+	addtimer(CALLBACK(src, PROC_REF(process)), 0)
 
-// on_performer_death：死亡信号回调。判断冷却，符合条件则排程一次三分钟后的复活。
-// on_performer_death: death signal handler; checks cooldown and schedules a +3min revival.
-/datum/component/never_ending_performer/proc/on_performer_death(datum/source, gibbed)
-	// SIGNAL_HANDLER：声明这是信号回调，禁止在其中执行可能 sleep 的操作。
-	// SIGNAL_HANDLER: marks this as a signal callback; no sleeping operations allowed here.
+/datum/component/z121_return_entry/process()
+	var/mob/living/carbon/human/H = parent
+	if(!HAS_TRAIT(H, TRAIT_Z121_DEATH_RETURN))
+		qdel(src)
+		return
+	if(!H.mind || !H.client || H.advsetup || H.mind.picking || !SSticker.HasRoundStarted())
+		return
+	H.mind.AddComponent(/datum/component/z121_death_return, H)
+	qdel(src)
+
+/datum/component/z121_return_entry/Destroy(force, silent)
+	STOP_PROCESSING(SSprocessing, src)
+	return ..()
+
+// 使用地图清晨划分连续游戏日，不能使用现实时间或会循环的星期编号。
+/proc/z121_return_day()
+	var/game_time = (world.time - SSticker.round_start_time) * SSticker.station_time_rate_multiplier + SSticker.gametime_offset
+	return FLOOR((game_time - SSnightshift.nightshift_dawn_start - 1) / 864000, 1)
+
+// 控制器属于灵魂，躯体删除不会删除存档和已用次数。
+/datum/component/z121_death_return
+	dupe_mode = COMPONENT_DUPE_UNIQUE
+	var/mob/living/carbon/human/body
+	var/datum/z121_return_snapshot/saved
+	var/datum/z121_return_snapshot/pending_save
+	var/save_day
+	var/used_day = -INFINITY
+	var/pending_day
+	var/pending = FALSE
+	var/restoring = FALSE
+	var/destroying_body = FALSE
+	var/enabled = TRUE
+	var/mob/living/carbon/human/return_origin
+	var/mob/living/brain/transfer_brain
+	var/list/deferred_deletions = list()
+
+/datum/component/z121_death_return/Initialize(mob/living/carbon/human/H)
+	if(!istype(parent, /datum/mind) || !istype(H))
+		return COMPONENT_INCOMPATIBLE
+	bind_body(H)
+	refresh_save()
+	START_PROCESSING(SSprocessing, src)
+
+/datum/component/z121_death_return/proc/bind_body(mob/living/carbon/human/H)
+	if(body)
+		UnregisterSignal(body, list(COMSIG_LIVING_DEATH, COMSIG_MOB_DAWNED, COMSIG_PREQDELETED, COMSIG_MIND_TRANSFER, SIGNAL_REMOVETRAIT(TRAIT_Z121_DEATH_RETURN)))
+	body = H
+	if(!body)
+		return
+	RegisterSignal(body, COMSIG_LIVING_DEATH, PROC_REF(on_death))
+	RegisterSignal(body, COMSIG_MOB_DAWNED, PROC_REF(on_dawn))
+	RegisterSignal(body, COMSIG_PREQDELETED, PROC_REF(on_body_deleting))
+	RegisterSignal(body, COMSIG_MIND_TRANSFER, PROC_REF(on_transfer))
+	RegisterSignal(body, SIGNAL_REMOVETRAIT(TRAIT_Z121_DEATH_RETURN), PROC_REF(on_removed))
+
+/datum/component/z121_death_return/process()
+	if(enabled && !restoring && !pending && save_day != z121_return_day())
+		refresh_save()
+
+/datum/component/z121_death_return/proc/on_dawn()
 	SIGNAL_HANDLER
-	var/mob/living/carbon/human/performer = parent
-	// 防御：人物已被删除（例如尸体被销毁）则无从复活，直接返回。
-	// Guard: a deleted performer (e.g. corpse destroyed) cannot be revived; bail out.
-	if(QDELETED(performer))
-		return
-	// 若已被肢解成碎块（gibbed），身体已不存在，本能力无法把碎块拼回。
-	// If the body was gibbed there is nothing left to bring back; the power cannot act.
-	if(gibbed)
-		to_chat(performer, span_warning("你的躯体已四分五裂，连诸神也无法将这具残骸重新搬上舞台……"))
-		return
-	// 每日冷却未结束则本次死亡不再触发复活，提示玩家原因。
-	// If the daily cooldown is still ticking, this death does not trigger a revival.
-	if(!COOLDOWN_FINISHED(src, daily_revive_cd))
-		to_chat(performer, span_warning("诸神今日已让你登过一次台了，这一次，你必须长眠。"))
-		return
-	// 若已有一次复活在排程中，避免重复计时（例如极端情况下信号重入）。
-	// Avoid double-scheduling if a revival is already queued (e.g. signal re-entry).
-	if(revive_pending)
-		return
-	// 立即开始每日冷却，确保「每天一次」从触发那一刻起计。
-	// Start the daily cooldown immediately so "once per day" counts from this trigger.
-	COOLDOWN_START(src, daily_revive_cd, NEVER_ENDING_DAILY_COOLDOWN)
-	// 标记复活已排程。
-	// Mark a revival as queued.
-	revive_pending = TRUE
-	// 给玩家一段叙事提示，营造「等待重新登台」的氛围。
-	// Flavour message to set up the "waiting to be put back on stage" beat.
-	to_chat(performer, span_notice("<b>幕布落下了……但你的故事尚未写完。静候片刻，诸神会让你重返舞台。</b>"))
-	// 三分钟后执行复活。使用 addtimer 以非阻塞方式延迟，不会卡住信号链。
-	// Schedule the revival in 3 minutes via a non-blocking addtimer (won't stall the signal).
-	addtimer(CALLBACK(src, PROC_REF(resurrect_performer)), NEVER_ENDING_REVIVE_DELAY)
+	if(enabled && !restoring && !pending && save_day != z121_return_day())
+		refresh_save()
 
-// resurrect_performer：计时器到点后执行的实际复活逻辑，包含完整错误处理。
-// resurrect_performer: the actual revival logic run when the timer fires, with full error handling.
-/datum/component/never_ending_performer/proc/resurrect_performer()
-	// 无论结果如何，先清掉「待复活」标记，让后续死亡能重新排程。
-	// Clear the pending flag first so later deaths can schedule again regardless of outcome.
-	revive_pending = FALSE
-	var/mob/living/carbon/human/performer = parent
-	// 防御：等待期间人物可能被彻底删除，此时无对象可复活。
-	// Guard: the performer may have been deleted during the wait; nothing to revive.
-	if(QDELETED(performer))
+/datum/component/z121_death_return/proc/refresh_save()
+	save_day = z121_return_day()
+	QDEL_NULL(saved)
+	var/datum/mind/M = parent
+	if(!enabled || QDELETED(body) || body.stat == DEAD || M.current != body || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN) || !get_turf(body))
 		return
-	// 防御：若在三分钟内已被他人复活（例如神迹治疗），则诸神无需出手，直接结束。
-	// Guard: if already revived by other means within the window, the gods need not act.
-	if(performer.stat != DEAD)
-		return
-	// 核心复活：full_heal = TRUE 触发完整治疗，admin_revive = TRUE 绕过常规可复活限制，
-	// 并在 human/fully_heal 中再生四肢与器官，从而达到「完美状态」。
-	// Core revival: full_heal=TRUE triggers a full heal, admin_revive=TRUE bypasses the
-	// normal revivability checks and regenerates limbs/organs for a "perfect state".
-	performer.revive(full_heal = TRUE, admin_revive = TRUE)
-	// 复活后若仍为死亡状态，说明存在我们无法克服的阻碍（如缺失大脑），优雅放弃。
-	// If still dead afterwards, some blocker we can't overcome exists (e.g. no brain); give up gracefully.
-	if(performer.stat == DEAD)
-		to_chat(performer, span_warning("有什么东西阻止了你的回归……这一次，舞台仍向你紧闭。"))
-		return
-	// 把可能仍在以鬼魂形式旁观的玩家送回躯体，确保他们真正「重新登台」。
-	// Pull the player's spectating ghost (if any) back into the body so they truly return.
-	return_ghost_to_body(performer)
-	// 失去全部记忆：清空角色笔记，并以强提示要求玩家进行失忆角色扮演。
-	// Lose all memories: wipe the character's notes and strongly prompt amnesia roleplay.
-	wipe_performer_memories(performer)
-	// 技能回退：把技能等级/经验还原到进入游戏时的快照。
-	// Reset skills: restore levels/experience to the game-entry snapshot.
-	restore_initial_skills(performer)
-	// 终幕提示：告诉玩家复活已完成及其代价。
-	// Closing message: tell the player the revival completed and its cost.
-	to_chat(performer, span_nicegreen("<b>诸神再次将你推上舞台。你以崭新而完美的姿态归来——却已记不起自己曾是谁。</b>"))
+	saved = new(body)
 
-// return_ghost_to_body：若玩家死亡后变成观察者鬼魂，尝试把其客户端送回复活的躯体。
-// return_ghost_to_body: if the player became an observer ghost on death, try to re-enter the body.
-/datum/component/never_ending_performer/proc/return_ghost_to_body(mob/living/carbon/human/performer)
-	// 若客户端已经在躯体里（从未离开），无需处理。
-	// If the client is already in the body (never left), nothing to do.
-	if(performer.client)
+/datum/component/z121_death_return/proc/on_removed()
+	SIGNAL_HANDLER
+	if(restoring)
 		return
-	// 没有 mind 就无法定位对应的鬼魂，放弃。
-	// Without a mind we cannot locate the matching ghost; abort.
-	if(!performer.mind)
+	enabled = FALSE
+	pending = FALSE
+	release_deletions()
+	QDEL_NULL(saved)
+	QDEL_NULL(pending_save)
+
+/datum/component/z121_death_return/proc/on_transfer(datum/source, mob/new_body)
+	SIGNAL_HANDLER
+	if(restoring)
 		return
-	// 查找与该人物绑定、且当前持有客户端的鬼魂。
-	// Find the ghost bound to this performer that currently holds a client.
-	var/mob/dead/observer/ghost = performer.mind.get_ghost(ghosts_with_clients = TRUE)
-	// 找到鬼魂则调用主线的 reenter_corpse()，它内部会做安全校验（如能否回到躯体）。
-	// If found, call mainline reenter_corpse(); it performs its own safety checks internally.
-	if(ghost)
-		ghost.reenter_corpse()
-
-// wipe_performer_memories：清除角色记忆。复用主线 mind.wipe_memory() 清空笔记本，
-// 再附上一段醒目的失忆提示，作为角色扮演的硬性约束。
-// wipe_performer_memories: clears memories via mainline mind.wipe_memory() and posts a
-// prominent amnesia prompt as a roleplay constraint.
-/datum/component/never_ending_performer/proc/wipe_performer_memories(mob/living/carbon/human/performer)
-	// 有 mind 才有可清除的记忆笔记。
-	// Only minds carry the memory notes we can wipe.
-	if(performer.mind)
-		// wipe_memory() 是主线提供的接口，会把 mind.memory 文本清空。
-		// wipe_memory() is the mainline hook that blanks the mind.memory text.
-		performer.mind.wipe_memory()
-	// 强提示：游戏无法强制玩家「忘记」，因此用醒目文本明确告知失忆的角色扮演要求。
-	// Strong prompt: the engine can't force a player to forget, so we spell out the RP rule.
-	to_chat(performer, span_userdanger("你的脑海一片空白——过往的一切记忆都已消散。从此刻起，请将你的角色当作毫无前尘记忆之人来扮演。"))
-
-// restore_initial_skills：把技能等级与经验还原到进入游戏时的快照状态。
-// restore_initial_skills: rolls skill levels & experience back to the game-entry snapshot.
-/datum/component/never_ending_performer/proc/restore_initial_skills(mob/living/carbon/human/performer)
-	// 没有有效快照（极端情况下拍摄失败）就跳过，避免把技能清成空表。
-	// If no valid snapshot exists (snapshot failed in an edge case), skip to avoid wiping skills empty.
-	if(!islist(initial_known_skills) || !islist(initial_skill_experience))
+	// 毁体过程中大脑可能先接管灵魂，仍归属于当前的死亡事件。
+	if(pending && istype(new_body, /mob/living/brain))
+		unbind_brain()
+		transfer_brain = new_body
+		RegisterSignal(transfer_brain, COMSIG_PREQDELETED, PROC_REF(on_brain_deleting))
+		RegisterSignal(transfer_brain, COMSIG_MIND_TRANSFER, PROC_REF(on_transfer))
 		return
-	// 取得技能持有者；若不存在则没有可还原的对象。
-	// Fetch the skill holder; without one there is nothing to restore.
-	var/datum/skill_holder/holder = performer.ensure_skills()
-	if(!holder)
+	// 已经独立转生或被其他躯体接管的灵魂不能被旧存档夺回。
+	on_removed()
+
+/datum/component/z121_death_return/proc/on_death(datum/source, gibbed)
+	SIGNAL_HANDLER
+	var/datum/mind/M = parent
+	if(!enabled || restoring || pending || !saved || M.current != body || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN))
 		return
-	// 直接以快照副本覆盖内部存储。known_skills / skill_experience 即为引擎的真实技能状态，
-	// 覆盖它们即可让所有等级/经验回到起始值；再次 .Copy() 防止快照被后续训练改写。
-	// Overwrite the engine's real skill state with snapshot copies. known_skills / skill_experience
-	// ARE the canonical stores, so replacing them resets all levels/exp; copy again so future
-	// training can't mutate our preserved snapshot.
-	holder.known_skills = initial_known_skills.Copy()
-	holder.skill_experience = initial_skill_experience.Copy()
-
-// ----------------------------------------------------------------------------
-// 让玩家在游戏内"看得见"这项特性：登记进 GLOB.roguetraits
-// ----------------------------------------------------------------------------
-// 为什么要登记：引擎的玩家特性自检面板（_onclick/hud/screen_objects.dm:133-135）会遍历
-//   GLOB.roguetraits，对玩家"拥有的"每一个特性打印「特性名 - 描述」；职业/偏好界面
-//   （_job.dm、preferences.dm）同样据此展示特性说明。只有把 TRAIT_DESIGNATED_PERFORMER
-//   加进这张全局表，玩家点开特性列表时才会看到"指定演员"及其说明；否则特性虽已通过
-//   ADD_TRAIT 生效，却对玩家完全不可见（仅靠 examine 提示是不够正式的）。
-//
-// 为什么"运行时追加"而不是改核心的 GLOBAL_LIST_INIT(roguetraits)：
-//   硬性约束只允许改动 modular_z121。核心表 roguetraits 定义在 code/__DEFINES/traits.dm
-//   （本目录之外，禁止修改）。因此在启动钩子里向这张"已初始化"的全局表追加键值对——
-//   这正是本项目登记自定义内容的既定做法（参见 custom_bootstrap.dm 对 learnable_spells、
-//   恶习列表、以及 register_life_potential_trait 的处理）。
-//
-// 为什么做成独立 proc 由 custom_bootstrap 调用：
-//   #define 按 #include 顺序生效；custom_bootstrap.dm 的包含顺序早于本文件，那里无法直接
-//   引用 TRAIT_DESIGNATED_PERFORMER 宏。而 proc 名是全局解析的、跨文件可调用，于是把
-//   "需要用到本文件宏"的登记逻辑封装进本文件 proc，bootstrap 只按名调用，既守住宏可见性，
-//   又复用统一的启动时机（此刻 roguetraits 已完成 GLOBAL_LIST_INIT 初始化）。
-//
-// Make the trait visible in-game by registering it into GLOB.roguetraits (the player trait
-// panel). Done at runtime from custom_bootstrap because the core list lives outside modular_z121
-// and the trait macro is only visible inside this file. Mirrors register_life_potential_trait().
-/proc/register_designated_performer_trait()
-	// 防御：核心全局表必须已初始化为 list 才能写入；异常情况下安静跳过，绝不另建一张
-	//   会与核心表脱钩的"假表"，以免登记到一个面板永远不会读取的列表上。
-	// Guard: only write if the core list is a real list; never create a detached fake list.
-	if(!islist(GLOB.roguetraits))
+	var/day = z121_return_day()
+	if(save_day != day || used_day == day)
 		return
-	// 写入「特性键 -> 玩家自检描述」。描述用第一人称、span_info 样式，与表中其它条目
-	//   （如 TRAIT_NOPAIN = span_info("我感觉不到痛楚。")）风格一致。
-	//   幂等：重复调用只是覆盖同一个键，不会产生重复项，二次启动也安全。
-	// Write trait -> first-person description (span_info), matching existing entries; idempotent.
-	GLOB.roguetraits[TRAIT_DESIGNATED_PERFORMER] = span_info("我是这出剧本里不可或缺的演员：\
-		每天一次，我会在死亡 3 分钟后以完美的状态重返舞台——代价是失去全部记忆，\
-		技能进度也回退到我初入游戏时的模样。")
+	pending = TRUE
+	return_origin = body
+	destroying_body = gibbed
+	pending_day = day
+	// 转交快照所有权，避免清晨覆盖已经触发的回归。
+	pending_save = saved
+	saved = null
+	addtimer(CALLBACK(src, PROC_REF(return_from_death)), 0)
 
+/datum/component/z121_death_return/proc/on_body_deleting(datum/source, force)
+	SIGNAL_HANDLER
+	if(pending && source == return_origin)
+		destroying_body = TRUE
+		// 信号内只暂缓删除，由死亡调用链结束后的回归任务接管灵魂。
+		deferred_deletions[source] = force || deferred_deletions[source]
+		return TRUE
 
-// 取消两个仅在本文件内使用的计时宏，避免污染全局编译命名空间。
-// （TRAIT_DESIGNATED_PERFORMER 保留为全局可见，便于其它系统用 HAS_TRAIT 查询，
-//   与 modular_z121 内 TRAIT_WISH_UNCAPPED 等的约定保持一致。）
-// Undefine the two file-local timing macros to keep the global namespace clean.
-// (TRAIT_DESIGNATED_PERFORMER is intentionally left defined so other systems can query it
-//  via HAS_TRAIT, matching the convention of TRAIT_WISH_UNCAPPED, etc., in modular_z121.)
-#undef NEVER_ENDING_REVIVE_DELAY
-#undef NEVER_ENDING_DAILY_COOLDOWN
+/datum/component/z121_death_return/proc/on_brain_deleting(datum/source, force)
+	SIGNAL_HANDLER
+	if(pending && source == transfer_brain)
+		destroying_body = TRUE
+		deferred_deletions[source] = force || deferred_deletions[source]
+		return TRUE
+
+/datum/component/z121_death_return/proc/unbind_brain()
+	if(transfer_brain)
+		UnregisterSignal(transfer_brain, list(COMSIG_PREQDELETED, COMSIG_MIND_TRANSFER))
+	transfer_brain = null
+
+/datum/component/z121_death_return/proc/release_deletions()
+	unbind_brain()
+	return_origin = null
+	// 成功、失败、移除能力和删除控制器都必须补做原删除请求。
+	// 使用全局回调，避免控制器自身销毁后清理任务失效。
+	for(var/datum/target as anything in deferred_deletions)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), target, deferred_deletions[target]), 0)
+	deferred_deletions.Cut()
+
+/datum/component/z121_death_return/proc/return_from_death()
+	if(!pending || restoring || !enabled || !pending_save)
+		return
+	var/datum/mind/M = parent
+	var/mob/living/old_current = M.current
+	if(QDELETED(body) || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN) || (old_current != body && !istype(old_current, /mob/living/brain)))
+		finish_return()
+		return
+	if(!destroying_body && body.stat != DEAD)
+		finish_return()
+		return
+	var/turf/destination = pending_save.find_destination(body)
+	if(!destination)
+		log_game("死亡回归：[key_name(body)] 的存档没有有效落点。")
+		finish_return()
+		return
+	restoring = TRUE
+	var/mob/living/carbon/human/returned = body
+	if(destroying_body)
+		returned = new /mob/living/carbon/human(destination)
+		// 社会身份与账户采用死亡时的数据，不从清晨回滚，也不重发职业物品。
+		z121_return_transfer_identity(body, returned)
+		ADD_TRAIT(returned, TRAIT_Z121_DEATH_RETURN, TRAIT_VIRTUE)
+		unbind_brain()
+		M.transfer_to(returned, force_key_move = TRUE)
+		bind_body(returned)
+	else
+		if(old_current != returned)
+			unbind_brain()
+			M.transfer_to(returned, force_key_move = TRUE)
+		if(returned.buckled)
+			returned.buckled.unbuckle_mob(returned, force = TRUE)
+		returned.stop_pulling()
+		returned.pulledby?.stop_pulling()
+		returned.forceMove(destination)
+	pending_save.restore(returned)
+	if(returned.stat == DEAD)
+		returned.become_alive(CONSCIOUS, bypass_foreign_brain_check = TRUE)
+	returned.set_suicide(FALSE)
+	returned.remove_client_colour(/datum/client_colour/monochrome)
+	qdel(returned.GetComponent(/datum/component/rot))
+	if(!returned.client)
+		var/mob/dead/observer/ghost = M.get_ghost(TRUE, TRUE)
+		ghost?.reenter_corpse()
+	if(returned.client)
+		for(var/atom/movable/screen/gameover/G in returned.client.screen.Copy())
+			returned.client.screen -= G
+			qdel(G)
+	returned.updatehealth()
+	returned.update_mobility()
+	returned.update_sight()
+	returned.regenerate_icons()
+	returned.update_action_buttons_icon()
+	used_day = pending_day
+	to_chat(returned, span_notice("晨光仿佛又一次落在你的肩上。你记得那之后的一切。"))
+	finish_return()
+
+/datum/component/z121_death_return/proc/finish_return()
+	restoring = FALSE
+	pending = FALSE
+	destroying_body = FALSE
+	release_deletions()
+	if(save_day == z121_return_day())
+		QDEL_NULL(saved)
+		saved = pending_save
+		pending_save = null
+	else
+		QDEL_NULL(pending_save)
+		refresh_save()
+
+/datum/component/z121_death_return/Destroy(force, silent)
+	STOP_PROCESSING(SSprocessing, src)
+	enabled = FALSE
+	pending = FALSE
+	release_deletions()
+	bind_body(null)
+	QDEL_NULL(saved)
+	QDEL_NULL(pending_save)
+	return ..()
+
+/proc/z121_return_transfer_identity(mob/living/carbon/human/old_body, mob/living/carbon/human/new_body)
+	var/list/fields = list("real_name", "name", "job", "account_id", "faction", "patron", "origin", "statpack", "marriedto", "family_datum", "family_member_datum", "devotion", "inspiration", "charflaw", "flavortext", "ooc_notes", "ooc_extra", "headshot_link", "islatejoin", "allmig_reward", "received_resident_key")
+	for(var/field in fields)
+		if(field in old_body.vars)
+			var/value = old_body.vars[field]
+			if(islist(value))
+				var/list/values = value
+				value = values.Copy()
+			new_body.vars[field] = value
+	for(var/list/accounts as anything in list(SStreasury.bank_accounts, SStreasury.noble_incomes, SStreasury.poll_tax_advance_days, SStreasury.poll_tax_owed, SStreasury.poll_tax_debt_days))
+		if(old_body in accounts)
+			accounts[new_body] = accounts[old_body]
+			accounts -= old_body
+	SStreasury.poll_projection_dirty = TRUE
+	// 当前任务和领取记录随人迁移，避免回归重新抽取任务或重复领取奖励。
+	var/datum/component/rpg_journal/journal = old_body.GetComponent(/datum/component/rpg_journal)
+	if(journal)
+		new_body.TakeComponent(journal)

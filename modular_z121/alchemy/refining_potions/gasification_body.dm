@@ -2,16 +2,7 @@
 // 气化之躯药水 (Gasification Body Potion) —— 一味【精炼药剂(非酒)】
 // ----------------------------------------------------------------------------
 // 中文总览（为什么这样设计）：
-//   触发(气味)：★5 级"停滞的空气"气味★。"停滞的空气"是原版【强效耐力毒药】(big_stam_poison)
-//               配方的 smells_like，此前【尚无任何自定义精炼药剂占用】，符合题面"任取一种未被
-//               占用的(5 级)气味"的要求；且"停滞/凝滞的空气"这一意象与"化作雾气之躯"高度契合。
-//               带该气味且指向 big_stam_poison 的现成材料有：重楼(paris)[major,3]、地狱尘
-//               (infernaldust)[med,2]、矿物粉(mineraldust)[minor,1]。例：重楼(3)+地狱尘(2)=5，
-//               恰好达成 5 级气味门槛(须为不同类型，原版禁止重复投料)。全程不新增任何材料。
-//   液体底料：清水 70 + 强效魔力药水 30(=Great Mana Potion，/datum/reagent/medicine/strongmana)。
-//             二者皆为现成试剂、且都不含酒 → 成品为【非酒基】药剂(直接继承 /datum/reagent)。
-//   技能要求：炼金 4 级(SKILL_LEVEL_EXPERT 专家)——即题面"Alchemy-Level4"。
-//   产物：30 单位气化之躯药水。
+//   本药仅保留管理员调用，不提供精炼配方、商店兑换或普通合成途径。
 //   消化速度：每单位 12 秒(故 30 单位 ≈ 360 秒 ≈ 6 分钟的雾化时长)。
 //
 //   ★效果(化作一团雾气)★，只在【药剂尚在体内代谢的整段时间】内生效，药力散尽即恢复实体：
@@ -109,8 +100,10 @@
 // 中文：成品试剂——气化之躯药水。非酒基 → 直接继承 /datum/reagent(不走酒基 refined_potion 基类)。
 //   设计：雾化状态与药剂"同生共死"——代谢开始进入雾态、每拍补稳、代谢结束恢复实体。
 /datum/reagent/gasification_body_potion
+	// 管理员专用试剂，不允许普通合成机制复制。
+	can_synth = FALSE
 	name = "气化之躯药水"									// In-game name (Gasification Body Potion).
-	description = "循停滞空气的气息、以清水与强效魔力药水为底精炼出的乳白色雾液。饮下后周身消融、化作一团流动的雾气：只能随风飘移或凌空飞行，可穿人过物、穿门过窗，再不能挥拳、开口、取物或施法；怪物不视你为敌，寻常兵刃、烈焰与窒息皆无从加害——雾气烧不着，也无需呼吸。唯独被龙卷风吸入时，雾气之躯会被狂风一寸寸撕散。"	// Flavour + full mechanic hint.
+	description = "一缕被封存在瓶中的乳白色雾液。饮下后周身消融、化作一团流动的雾气：只能随风飘移或凌空飞行，可穿人过物、穿门过窗，再不能挥拳、开口、取物或施法；怪物不视你为敌，寻常兵刃、烈焰与窒息皆无从加害——雾气烧不着，也无需呼吸。唯独被龙卷风吸入时，雾气之躯会被狂风一寸寸撕散。"	// 雾态效果说明。
 	reagent_state = LIQUID									// Liquid potion.
 	color = "#e8eef2"										// Milky, misty white.
 	taste_description = "一口吸入肺腑却又无从抓握的凉雾"		// Taste flavour (cool, ungraspable mist).
@@ -455,26 +448,6 @@
 		M.status_flags |= GODMODE							// Re-arm damage-immunity against normal attacks.
 	// 中文：受创反馈——纯文字提示被龙卷风撕扯。
 	to_chat(M, span_userdanger("龙卷风正把我的雾气之躯一寸寸撕散——我在飞快地消散！"))	// Feedback: being torn apart.
-
-// ============================================================================
-// 配方：★按气味等级★——【5 级"停滞的空气"气味】+ 复合底料(清水70 + 强效魔力药水30) → 气化之躯药水。
-//   "停滞的空气"是原版 big_stam_poison(强效耐力毒药)配方的 smells_like，此前未被任何自定义精炼药剂占用；
-//   带该气味的现成材料指向 big_stam_poison：重楼(3)+地狱尘(2)=5，凑满 5 点即触发(无需新增材料)。
-//   底料 30 单位【强效魔力药水】即题面所述的"Great Mana Potion"(/datum/reagent/medicine/strongmana)。
-// ============================================================================
-/datum/alch_refining_formula/gasification_body
-	name = "气化之躯药水"									// Formula name.
-	// 中文：★气味档①★ 要求"停滞的空气"气味累计达到 5 点(即题面的"某种未占用气味，5 级")。
-	required_scent = "停滞的空气"							// Require the (unused) "stagnant air" scent...
-	required_scent_points = 5								// ...at level 5 (>= 5 accumulated points).
-	// 中文：★复合底料★ 清水 70 + 强效魔力药水 30(=Great Mana Potion)；均为现成试剂、无酒 → 成品非酒基。
-	required_base = list(/datum/reagent/water = 70, /datum/reagent/medicine/strongmana = 30)	// 70 water + 30 great mana potion.
-	// 中文：产物——30 单位气化之躯药水。
-	output_reagents = list(/datum/reagent/gasification_body_potion = 30)	// Refined output (30 units).
-	// 中文：所需技能——炼金 4 级(专家)。技能不足则整锅腐坏(框架 spoil_batch 处理)。
-	skill_required = SKILL_LEVEL_EXPERT						// Alchemy level 4 gate.
-	// 中文：成功气味词。
-	smells_like = "无孔不入的凝滞雾气"						// Success scent.
 
 // 中文：原有抓取免疫依赖战斗模式；雾态应在任何姿态与意识状态下直接拒绝抓取和拖拽。
 /mob/living/carbon/human/can_be_pulled(user, grab_state, force)

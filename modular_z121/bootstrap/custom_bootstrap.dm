@@ -10,12 +10,17 @@ SUBSYSTEM_DEF(custom_bootstrap)
 		/client/proc/bless,
 		/client/proc/grandcaster,
 		/client/proc/god,
+		/client/proc/z121_world_modulation,
 		/client/proc/toggle_god_blessings,
 		/client/proc/cleanup_world,	// 世界清理指令：必须在此登记，自定义 client 动词才会被挂到管理员的 -GameMaster- 标签下
 	)
 
 /datum/controller/subsystem/custom_bootstrap/Initialize(timeofday)
 	. = ..()
+	// 接入所有玩家的账号提示存档、角色登录与检视信号。
+	register_z121_ooc_examine()
+	// 自定义更新日志按客户端连接展示，角色切换不会重复弹出。
+	register_z121_changelog()
 	if(!islist(GLOB.learnable_spells))
 		GLOB.learnable_spells = list()
 	if(GLOB.custom_learnable_spells?.len)
@@ -53,15 +58,6 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	//   登记逻辑定义在 modular_z121/virtues/ancient_creation.dm 内（那里才有对应的特性宏），
 	//   这里只按 proc 名做一次调用，遵守宏的 #include 可见性规则。
 	register_ancient_existence_trait()
-
-	// 登记自定义美德"永无止境"的【指定演员】特性到玩家可见的特性表（GLOB.roguetraits）。
-	// 为什么放在这里：与上面同理——此刻核心表 roguetraits 已由 GLOBAL_LIST_INIT 完成初始化，
-	//   向其追加一个键值对，玩家点开特性自检面板时即可看到"指定演员"及其说明。
-	//   登记逻辑定义在 modular_z121/virtues/never_ending.dm 内（那里才有对应的特性宏
-	//   TRAIT_DESIGNATED_PERFORMER），这里只按 proc 名做一次调用，遵守宏的 #include 可见性规则。
-	// Register the never-ending virtue's "Designated Performer" trait into the player-visible
-	// GLOB.roguetraits, same rationale as the registrations above.
-	register_designated_performer_trait()
 
 	// 登记自定义美德"魅魔血脉"的【魅魔血脉 / 魅魔女王】特性到玩家可见的特性表（GLOB.roguetraits）。
 	// 为什么放在这里：与上面同理——此刻核心表 roguetraits 已由 GLOBAL_LIST_INIT 完成初始化，

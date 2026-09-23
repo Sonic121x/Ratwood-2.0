@@ -486,6 +486,9 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 		// 禁止贤者之石自我复制：跳过它自身及其任何子类型，杜绝“造石生石”的滚雪球作弊。
 		if(ispath(item_type, /obj/item/philosophers_stone))
 			continue
+		// 气化之躯仅供管理员调用，禁止通过造物获得预设瓶或其子类。
+		if(ispath(item_type, /obj/item/reagent_containers/glass/bottle/rogue/gasification_body))
+			continue
 		// initial(item_type.sellprice) 取得该类型编译期默认价值，不实例化、开销低。
 		if(initial(item_type.sellprice) <= PHILO_CREATE_MIN_VALUE)
 			continue                                              // 价值不达标者不收录

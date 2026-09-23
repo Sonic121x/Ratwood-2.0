@@ -594,6 +594,10 @@
 
 
 /datum/component/rpg_system/proc/get_weapon_catalog()
+	return z121_rpg_weapon_catalog()
+
+// 纯商品目录供管理员面板复用，不创建积分组件或任务监听。
+/proc/z121_rpg_weapon_catalog()
 	return list(
 		"狩猎刀（40积分）" = list(40, /obj/item/rogueweapon/huntingknife),                    // 轻便短刀，便宜的入门武器
 		"铁剑（80积分）"   = list(80, /obj/item/rogueweapon/sword/iron),                      // 入门级单手剑
@@ -622,6 +626,9 @@
 
 
 /datum/component/rpg_system/proc/get_equipment_catalog()
+	return z121_rpg_equipment_catalog()
+
+/proc/z121_rpg_equipment_catalog()
 	return list(
 		"兜帽（30积分）"     = list(30, /obj/item/clothing/head/roguetown/roguehood),        // 兜帽，遮风蔽脸
 		"长靴（40积分）"     = list(40, /obj/item/clothing/shoes/roguetown/boots),           // 基础脚部护具
@@ -653,6 +660,9 @@
 
 
 /datum/component/rpg_system/proc/get_consumable_catalog()
+	return z121_rpg_consumable_catalog()
+
+/proc/z121_rpg_consumable_catalog()
 	return list(
 		"清水（10积分）"     = list(10, /obj/item/reagent_containers/glass/bottle/rogue/water),      // 解渴的廉价补给
 		"箭矢（6积分）"      = list(6, /obj/item/ammo_casing/caseless/rogue/arrow),                  // 弓用弹药
@@ -699,12 +709,16 @@
 		"复原药剂（200积分）" = list(200, /obj/item/reagent_containers/glass/bottle/rogue/restorative_potion),
 		"回忆药剂（300积分）" = list(300, /obj/item/reagent_containers/glass/bottle/rogue/memory_potion),
 		"身体再生药剂（500积分）" = list(500, /obj/item/reagent_containers/glass/bottle/rogue/bodily_regeneration),
-		"气化之躯药水（1000积分）" = list(1000, /obj/item/reagent_containers/glass/bottle/rogue/gasification_body),
-		"复生药剂（2000积分）" = list(2000, /obj/item/reagent_containers/glass/bottle/revival),
+		"停滞药水（1000积分）" = list(1000, /obj/item/reagent_containers/glass/bottle/rogue/stasis_potion),
+		// 灵辉炼金配方的四十八单位复活灵药，用于复活椅。
+		"复活灵药（48u，2000积分）" = list(2000, /obj/item/reagent_containers/glass/bottle/frankenbrew),
 	)
 
 
 /datum/component/rpg_system/proc/get_material_catalog()
+	return z121_rpg_material_catalog()
+
+/proc/z121_rpg_material_catalog()
 	return list(
 		"灰烬（4积分）"     = list(4, /obj/item/ash),                     // 炼金 / 制作的廉价材料
 		"石块（5积分）"     = list(5, /obj/item/natural/stone),           // 基础建材 / 制石器材料
@@ -730,6 +744,9 @@
 
 
 /datum/component/rpg_system/proc/get_magic_catalog()
+	return z121_rpg_magic_catalog()
+
+/proc/z121_rpg_magic_catalog()
 	return list(
 		"见习传送卷轴（90积分）" = list(90, /obj/item/teleportation_scroll/apprentice),               // 入门级一次性魔法传送
 		"圣徽（120积分）"       = list(120, /obj/item/clothing/neck/roguetown/psicross),              // 神圣符号，可引导秘法
@@ -754,7 +771,7 @@
 		"附魔·坚不可摧（300积分）" = list(300, /obj/item/enchantmentscroll/superior/unbreaking), // 给武器 / 衣物附魔：更耐用
 		//   T3 强力附魔
 		"附魔·武器召回（420积分）" = list(420, /obj/item/enchantmentscroll/greater/returningweapon), // 给戒指 / 项链 / 手套附魔：召回武器
-		"附魔·箭术（440积分）"   = list(440, /obj/item/enchantmentscroll/greater/archery),     // 给戒指 / 护腕附魔：提升箭术
+		"附魔·神射（440积分）"   = list(440, /obj/item/enchantmentscroll/greater/sharpshooter), // 给戒指、圣徽、手套或护腕附魔：提升远程武器技能
 		"附魔·愈合（450积分）"   = list(450, /obj/item/enchantmentscroll/greater/woundclosing), // 给戒指附魔：定期闭合伤口
 		"附魔·霜幕（460积分）"   = list(460, /obj/item/enchantmentscroll/greater/frostveil),   // 给武器 / 护甲附魔：减速敌人
 		"附魔·闪电（480积分）"   = list(480, /obj/item/enchantmentscroll/greater/lightning),   // 给武器附魔：命中电击
@@ -772,6 +789,9 @@
 
 
 /datum/component/rpg_system/proc/get_delicacy_catalog()
+	return z121_rpg_delicacy_catalog()
+
+/proc/z121_rpg_delicacy_catalog()
 	return list(
 		"饼干（35积分）"     = list(35, /obj/item/reagent_containers/food/snacks/rogue/biscuit),        // 饼干，烤好的成品点心（cookie 图标缺失，改用图标确实存在的 biscuit）
 		"奶酪（40积分）"     = list(40, /obj/item/reagent_containers/food/snacks/rogue/cheese),         // 奶酪，成品乳制珍品
@@ -829,6 +849,9 @@
 
 
 /datum/component/rpg_system/proc/get_artifact_catalog()
+	return z121_rpg_artifact_catalog()
+
+/proc/z121_rpg_artifact_catalog()
 	return list(
 		"阿斯特拉塔护符（150积分）" = list(150, /obj/item/clothing/neck/roguetown/psicross/astrata),  // 太阳女神 阿斯特拉塔 的圣徽
 		"诺克护符（150积分）"       = list(150, /obj/item/clothing/neck/roguetown/psicross/noc),      // 求知之神 诺克 的圣徽
@@ -910,7 +933,10 @@
 	points -= cost
 	// 在玩家脚下的地块生成物品，随后尝试塞进手里：put_in_hands 失败（双手已满）时，物品仍留在
 	//   脚下地块（del_on_fail 默认 FALSE），不会凭空消失——玩家捡起即可，体验自洽。
+	var/return_generation = z121_return_generation
 	var/obj/item/bought = new item_path(delivery_turf)
+	if(QDELETED(src) || return_generation != z121_return_generation)
+		return
 	if(QDELETED(bought))
 		points += cost
 		to_chat(user, span_warning("【系统提示】物品生成失败，积分已退还。"))
@@ -1091,7 +1117,6 @@
 			list("trait" = TRAIT_BETTER_SLEEP, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_ZJUMP, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_LEAPER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
-			list("trait" = TRAIT_JACKOFALLTRADES, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_SEEPRICES, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_PERFECT_TRACKER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_INTELLECTUAL, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
@@ -1112,7 +1137,6 @@
 			list("trait" = TRAIT_NUTCRACKER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_BASHDOORS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_SCALEARMOR, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
-			list("trait" = TRAIT_HELLSPAWN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_ADRENALINE_RUSH, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_REGROW_LIMBS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_VENOMOUS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
@@ -1121,7 +1145,6 @@
 			list("trait" = TRAIT_TOXIMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_NOHUNGER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_ZOMBIE_IMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
-			list("trait" = TRAIT_UNLYCKERABLE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_KNEESTINGER_IMMUNITY, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_ROT_EATER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_ORGAN_EATER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
@@ -1240,7 +1263,12 @@
 			entry["name"] = names[trait] ? names[trait] : trait
 			var/description = GLOB.roguetraits[trait]
 			entry["description"] = descriptions[trait] ? descriptions[trait] : (description ? html_decode(GLOB.html_tags.Replace(description, "")) : "获得此特性，保留其原有生效条件。")
+		// 首次初始化时按价格稳定排序，同价保留原序；展示与结算共用排序后的编号。
+		sortTim(catalog, GLOBAL_PROC_REF(cmp_rpg_trait_cost))
 	return catalog
+
+/proc/cmp_rpg_trait_cost(list/first, list/second)
+	return first["cost"] - second["cost"]
 
 /datum/component/rpg_system/proc/do_buy_trait(mob/living/carbon/human/user, index)
 	if(!can_use_system(user))
