@@ -508,8 +508,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		if(pref_species.desc)
 			to_chat(user, "[pref_species.desc]")
 		if(pref_species.expanded_desc)
-			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
-		to_chat(user, "<font color='red'>Classes reset.</font>")
+			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>阅读更多</a>")
+		to_chat(user, "<font color='red'>职业选择已重置。</font>")
 	random_character(gender, FALSE, FALSE)
 	accessory = "Nothing"
 
@@ -639,9 +639,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>语音包</b>: <a href='?_src_=prefs;preference=voicepack;task=input'>[voice_pack]</a><BR>"
 
 			dat += "<BR>"
-			dat += "<b>种族:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			dat += "<b>种族:</b> <a href='?_src_=prefs;preference=species;task=input'>[get_species_display_name(pref_species.name)]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 			if(pref_species.use_titles)
-				var/display_title = selected_title ? selected_title : "无"
+				var/display_title = selected_title ? get_species_display_name(selected_title) : "无"
 				dat += "<b>种族头衔:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[display_title]</a><BR>"
 			dat += "<b>家族:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "无"]</a><BR>"
 			if(family != FAMILY_NONE)
@@ -655,7 +655,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					if(xenophobe_pref == 1)
 						species_text = "<font color='#FFA500'>同种族</font>"
 					else if(xenophobe_pref == 2 && restricted_species_pref)
-						species_text = "<font color='#aa0202'>仅[restricted_species_pref]</font>"
+						species_text = "<font color='#aa0202'>仅[get_species_display_name(restricted_species_pref)]</font>"
 					else
 						species_text = "<font color='#1cb308'>不限制</font>"
 					dat += "<b>限制种族:</b> <a href='?_src_=prefs;preference=species_choice'>[species_text]</a><BR>"
@@ -664,7 +664,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(race_bonus)
 					for(var/bonus in pref_species.custom_selection)
 						if(pref_species.custom_selection[bonus] == race_bonus)
-							race_bonus_display = bonus
+							race_bonus_display = get_species_customization_display_name(bonus)
 							break
 				dat += "<b>种族奖励:</b> <a href='?_src_=prefs;preference=race_bonus_select;task=input'>[race_bonus_display ? "[race_bonus_display]" : "无"]</a><BR>"
 			else
@@ -2116,7 +2116,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					for(var/A in titles)
 						if(A == pref_species.languages)
 							continue
-						choices += list(A)
+						choices[get_species_display_name(A)] = A
 					if(user?.client)
 						var/result = tgui_input_list(user, "您的同类如何称呼您？", "种族称号", choices)
 
@@ -2124,7 +2124,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							if(result == "无")
 								selected_title = "None"
 							else
-								selected_title = result
+								selected_title = choices[result]
 
 				if("voice_pitch")
 					var/new_voice_pitch = tgui_input_number(user, "选择您角色的语音音调（[MIN_VOICE_PITCH] 到 [MAX_VOICE_PITCH]，数值越低越深沉）：", "语音音调", 1, 1.35, 0.8, round_value = FALSE)
@@ -2245,7 +2245,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					dat +="肤色代码参考列表<br>"
 					dat += "<br>"
 					for(var/tone in pref_species.get_skin_list_tooltip())
-						dat += "[tone]<br>"
+						dat += "[get_species_customization_display_name(tone)]<br>"
 					var/datum/browser/popup = new(user, "Formatting Help", nwidth = 400, nheight = 450)
 					popup.set_content(dat.Join())
 					popup.open(FALSE)
@@ -2585,14 +2585,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 								continue
 						else
 							continue
-						species += race
+						species[get_species_display_name(race.name)] = race
 
-					species = sortNames(species)
+					species = sortList(species)
 
 					var/result = tgui_input_list(user, "您被何种形态所束缚？", "种族", species)
 
 					if(result)
-						set_new_race(result, user)
+						set_new_race(species[result], user)
 
 				if("update_mutant_colors")
 					update_mutant_colors = !update_mutant_colors
@@ -2621,9 +2621,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 				if("race_bonus_select")
 					if(length(pref_species.custom_selection))
-						var/choice = tgui_input_list(user, "命运赐予您的种族何种祝福？", "加成", pref_species.custom_selection)
+						var/choice = tgui_input_list(user, "命运赐予您的种族何种祝福？", "加成", get_species_display_options(pref_species.custom_selection))
 						if(choice)
-							race_bonus = pref_species.custom_selection[choice]
+							race_bonus = get_species_display_options(pref_species.custom_selection)[choice]
 
 				if("body_size")
 					var/new_body_size = tgui_input_number(user, "选择您想要的精灵尺寸：\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%)，警告：可能使您的角色看起来变形", "角色偏好", features["body_size"]*100)
@@ -2673,7 +2673,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 							try_update_mutant_colors()
 					if(prompt == "预设")
-						var/listy = pref_species.get_skin_list()
+						var/listy = get_species_display_options(pref_species.get_skin_list())
 						var/new_mutantcolor = input(user, "选择您角色的肤色：", "肤色")  as null|anything in listy
 						if(new_mutantcolor)
 							features["mcolor"] = listy[new_mutantcolor]
@@ -2692,7 +2692,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						features["legs"] = new_legs
 */
 				if("s_tone")
-					var/listy = pref_species.get_skin_list()
+					var/listy = get_species_display_options(pref_species.get_skin_list())
 					var/new_s_tone = tgui_input_list(user, "选择您角色的肤色：", "肤色", listy)
 					if(new_s_tone)
 						skin_tone = listy[new_s_tone]
@@ -2896,11 +2896,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					else if(choice == "选择特定种族")
 						var/list/available_races = list()
 						for(var/race_name in GLOB.roundstart_races)
-							available_races += race_name
+							available_races[get_species_display_name(race_name)] = race_name
 						var/selected_race = tgui_input_list(user, "选择允许的配偶种族", "物种选择", available_races)
 						if(selected_race)
 							xenophobe_pref = 2
-							restricted_species_pref = selected_race
+							restricted_species_pref = available_races[selected_race]
 							to_chat(user, "配偶种族将限制为 [selected_race]。")
 				if("hotkeys")
 					hotkeys = !hotkeys
