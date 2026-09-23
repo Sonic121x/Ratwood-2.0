@@ -17,7 +17,7 @@
 	其人类或精灵的传承。<br>\
 	(+1 体质, +1 感知)"
 
-	skin_tone_wording = "Identity"
+	skin_tone_wording = "族裔"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST
