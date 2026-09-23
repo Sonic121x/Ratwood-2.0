@@ -800,7 +800,7 @@
 		if(istype(role, /datum/job))
 			var/datum/job/J = role
 			title = J.get_informed_title(spouse_mob)
-		to_chat(src, span_info("[spouse_mob.real_name]，那位[spouse_mob.dna.species.name]的[title]，是我的爱人。"))
+		to_chat(src, span_info("[spouse_mob.real_name]，那位[get_species_display_name(spouse_mob.dna.species.name)]的[title]，是我的爱人。"))
 	if(family_datum)
 		family_datum.ListFamily(src)
 	else
