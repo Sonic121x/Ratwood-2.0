@@ -1635,10 +1635,10 @@
 
 /mob/living/proc/can_use_guns(obj/item/G)//actually used for more than guns!
 	if(G.trigger_guard == TRIGGER_GUARD_NONE)
-		to_chat(src, span_warning("I are unable to fire this!"))
+		to_chat(src, span_warning("我无法用这件武器射击！"))
 		return FALSE
 	if(G.trigger_guard != TRIGGER_GUARD_ALLOW_ALL && !IsAdvancedToolUser())
-		to_chat(src, span_warning("I try to fire [G], but can't use the trigger!"))
+		to_chat(src, span_warning("我试图用[G]射击，却无法扣动扳机！"))
 		return FALSE
 	return TRUE
 
