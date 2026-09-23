@@ -963,9 +963,9 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja/freifechter
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust/pick)
-	name = "mountaineer's navaja"
+	name = "山民纳瓦哈折刀"
 	icon = 'icons/roguetown/weapons/special/freifechter32.dmi'
-	desc = "A folding Etruscan knife valued by merchants, mercenaries and peasants for its convenience. This specific kind of ornate navaja is endemic to Szöréndnížina."
+	desc = "一把伊特鲁斯卡折刀，因携带方便而深受商人、佣兵和农民喜爱。这种华丽的纳瓦哈折刀是瑟伦迪尼日纳的特产。"
 	force = 5
 	icon_state = "mtnavaja_c"
 	item_state = "elfdag"

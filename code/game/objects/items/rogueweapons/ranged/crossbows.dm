@@ -200,7 +200,7 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/iron
 	name = "军用十字弩"
 	desc = "一种以惊人威力射出弩矢的致命武器。与普通弓不同，\
-	它采用精巧的机械结构来重新挂弦并卡住半长弩矢；这一点的掌握更依赖蛮力而非灵巧。 </br>这是普通十字弩的粗劣版本，以近似钢材的锻铁打造。\
+	它采用精巧的机械结构来重新挂弦并卡住半长弩矢；这一点的掌握更依赖蛮力而非灵巧。 <br>这是普通十字弩的粗劣版本，以近似钢材的锻铁打造。\
 	熔炼时得不到好钢锭，只有废钢。但它便宜、好用，常从格伦泽尔霍夫特成批进口。其中一些流入了寻常盗匪与拦路劫徒之手。"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 80
@@ -210,7 +210,7 @@
 	name = "远古十字弩"
 	desc = "一件来自异时的致命武器，能以惊人威力射出弩矢。与普通弓不同，它 \
 	采用精巧的机械结构来重新挂弦并卡住半长弩矢；掌握它更多依赖蛮力 \
-	而非灵巧。 </br>昔日，这些机械杰作曾是泽洛尔古老帝国的 \
+	而非灵巧。 <br>昔日，这些机械杰作曾是泽洛尔古老帝国的 \
 	骄傲；如今，它却在齐佐不死远征的掌握中战栗。"
 	icon_state = "ancientcrossbow0"
 	item_state = "ancientcrossbow"
@@ -236,9 +236,9 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy
 	name = "攻城弩"
-	desc = "一把更重的十字弩——架设式弩炮的基础，如今改造得可供手持使用。枪托正 \
+	desc = "一把更重的十字弩——架设式弩炮的基础，如今改造得可供手持使用。弩托正 \
 	下方集成了一个绞盘机构，用以克服攻城弩那骇人的拉力。它装填 \
-	更重、全长度的弩矢；专为粉碎目标而造。 </br>它在格伦泽尔霍夫特的附庸国瓦克兰组装，\
+	更重、全长度的弩矢；专为粉碎目标而造。 <br>它在格伦泽尔霍夫特的附庸国瓦克兰组装，\
 	并在瓦克兰内战中广泛使用，对大多数地方而言都相当陌生。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "heavycrossbow0"
@@ -278,11 +278,11 @@
 
 /datum/intent/arc/crossbow/heavy/prewarning()
 	if(mastermob)
-		mastermob.visible_message(span_warning("[mastermob]端起[masteritem]，准备精准一击！"))
+		mastermob.visible_message(span_warning("[mastermob]端起[masteritem]，准备弧射！"))
 		playsound(mastermob, pick('sound/combat/Ranged/crossbow_medium_reload-02.ogg'), 100, FALSE)
 
 /datum/intent/buttstroke/heavy
-	name = "重枪托击"
+	name = "弩托重击"
 	damfactor = 1.15
 	swingdelay = 6
 	icon_state = "instrike"
@@ -292,8 +292,8 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/ancient
 	name = "远古攻城弩"
 	desc = "一把来自异时的更重十字弩——架设式弩炮的基础，如今改造得可供手持 \
-	使用。枪托正下方集成了一个绞盘机构，用以克服攻城弩那骇人的 \
-	拉力。它装填更重、全长度的弩矢；专为粉碎目标而造。 </br>'鲁德马什的城墙在 \
+	使用。弩托正下方集成了一个绞盘机构，用以克服攻城弩那骇人的 \
+	拉力。它装填更重、全长度的弩矢；专为粉碎目标而造。 <br>'鲁德马什的城墙在 \
 	齐射下崩裂，而她的病痛从裂缝中渗流而出……'"
 	item_state = "ancientheavybow"
 
@@ -311,7 +311,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/relic/marque
 	name = "\"书信\""
-	desc = "'我无法解释那些厅堂里发生了什么，阁下……' </br>'……我只能相信，我做的是对的。'"
+	desc = "'我无法解释那些厅堂里发生了什么，阁下……' <br>'……我只能相信，我做的是对的。'"
 
 //Pseudo-Arbalest. This thing is intended to be fuckhuge, but it's using a temp sprite.
 //Retains an identical damage to the standard crossbow. The pen is what makes this.
