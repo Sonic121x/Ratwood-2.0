@@ -1,6 +1,6 @@
 /datum/foreign_realm/naledi
 	id = REALM_NALEDI
-	name = "Naledi"
+	name = "纳莱迪"
 	roll_weight = TRADE_REALM_WEIGHT_DISTANT
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_GARMENT_COMMON, NAVIGATOR_BUCKET_ENCHANTMENTS, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_TROPHIES, NAVIGATOR_BUCKET_VALUABLES_LOOTED, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
@@ -18,10 +18,10 @@
 		"Kamenji", "Ravalan", "Tessanda", "ibn-Asari", "Veshani",
 	)
 	ship_types = list(
-		list("name" = "Dhow", "tonnage" = 60, "weight" = 30),
-		list("name" = "Baghlah", "tonnage" = 180, "weight" = 35),
-		list("name" = "Sand-Galley", "tonnage" = 350, "weight" = 20),
-		list("name" = "Gilded Carrack", "tonnage" = 600, "weight" = 15),
+		list("name" = "三角帆船", "tonnage" = 60, "weight" = 30),
+		list("name" = "巴格拉商船", "tonnage" = 180, "weight" = 35),
+		list("name" = "沙海桨帆船", "tonnage" = 350, "weight" = 20),
+		list("name" = "镀金卡拉克帆船", "tonnage" = 600, "weight" = 15),
 	)
 	name_prefixes = list(
 		list("text" = "Shah ", "chance" = 8),
@@ -102,24 +102,24 @@
 		/datum/supply_pack/rogue/naledi/gold_finery,
 	)
 	hail_lines = list(
-		"Peace upon the Company. Naledi greets the factor, in Psydon's name, with the respect owed between honest houses.",
-		"I bring glass from the Dunes, gold from Veranda, the finest coffee and tea in Psydonia. A thirst for iron that no caravan can slake.",
-		"Every time we sell you coffee and tea, the finest in Psydonia, one of your stevedores would offer us wines and drinks. Know that us in Naledi do not indulge in such spirits nor bring them to court. We follow that very strictly. Now - do you happen to have some Kazengunese plum wine on hand?",
-		"We know in these lands you tolerate Tieflings and Goblins amongst your people, yet fight and slay them by the hundreds every dae. Do not bring them near the dock - my crew might suddenly remember their Warscholar heritage.",
-		"Do not point at my crew when you address them, factor. To do so is rude - and rudeness is how Djinn slip into a man's manners first, before all else.",
-		"Bring me no gifts of gold; we mine more than the daimyos can swallow. Bring exotic spice, ore foreign to my dunes, or do not bring me anything at all.",
-		"My weights are true under the gaze of Astrata - whom you call goddess and we call merely one of His aspects. Inspect them. Inspect them again if it pleases you.",
-		"I sailed under royal license of the Malikat Amalara herself. The seal you see at my prow is hers. Show it the respect you would show your own Duchess.",
-		"Two of my passengers travel veiled head to toe. They are Warscholars returning from the Otavan houses. Do not address them. Do not stare. They have killed more than thirty Djinn each, and the habit of vigilance does not lift at a friendly pier.",
-		"My hold smells of sand and hibiscus. I will not apologize for either. Pay fair and you may take a cup of the second before I depart.",
-		"You will hear no priests of the Ten preaching from my deck. If you wish to bring symbols of them aboard, leave them at the gangway - my crew will not pass them, and neither shall I.",
-		"My helmsman is Bilamak, sworn to the Crown, returning home after service abroad. His saber is sheathed in gilded silk; do not test him into drawing it. His blade dances faster than your eye, I promise you.",
-		"The Arisole sandstorms have closed three southern passes. My route was thirty days longer than last season. The fee should reflect the dunes' temper - not mine.",
-		"We are a welcoming people, factor. We will share bread and tea with anyone who asks honestly. But know that we do not share court with those who came here to convert us. Trade openly, drink openly, pray quietly.",
-		"A wandering Vizier-scholar rides with me, bound for your Avisa boards to study how foreign justice is recorded. She pays in knowledge, not coin. Direct her kindly when she asks, and she will write your magistrate's name well in her journals.",
-		"My grandmother saw the Otavan expedition return from the Dunes with the Pope's confession hanging from their saddles. She lived to a hundred and seven and never trusted a priest of the Ten again. I follow her in this.",
-		"A Vizier-scholar of the Olindar houses rides with me, returning from her tutoring at the Otavan abbeys. For one zenny they will read a passage of the Treatise of Endurance and explain it for as long as you will listen. She has lectured for nine hours without rest at the Hierophant houses. Pay her and you will know why the Warscholars endure where lesser men kneel.",
-		"The Dunes are beautiful two months past now. It is beautiful, and our architecture are most impressive. I would invite you on a trip, and then make a hefty profit by selling you the services of Warscholars to escort you from the Djinn of the sand. What say you, Factor? Do you want to see the Dunes with your own eyes?",
-		"Olindar is holding another conclave of the Warscholars. And us Naledi knows to partake moderately in joys and pleasures of the world, as is right under the gaze of Psydon. So, give me the finest of your wines, the most succulent of your shrimps, lobsters and crabs from the sea, and a platter of your best cheeses. Spices? Do not bother, ours are the best in the world, I have some in the hold for you.",
-		"My ship's surgeon ran out of aqua vitae at the second crossing of the dunes - the Warscholars cauterise their wounds with it, and the desert is not generous with wounds. If your distillers have bottles to spare, the Malikat's healers will repay you in iron-clean stitches and quiet recoveries. We do not drink it. We pour it on what should not have opened.",
+		"愿公司平安。纳莱迪以普赛顿之名，向商行管事致以诚信商家之间应有的敬意。",
+		"我带来了沙丘的玻璃、维兰达的黄金，以及普赛多尼亚最好的咖啡和茶叶。我们对铁的渴求，任何商队都无法满足。",
+		"每次卖给你们普赛多尼亚最好的咖啡和茶叶，总有个码头工人请我们喝酒。须知我们纳莱迪人不沉迷烈酒，也不将它带入宫廷，此戒恪守不渝。说起来，你手头可巧有些风郡梅酒？",
+		"我们知道，你们容许提夫林和哥布林混居在人群中，却又每天与他们厮杀，杀掉成百上千。别带他们靠近码头——我的船员可能会突然想起战学士的传承。",
+		"管事，与我的船员说话时，别指着他们。那很无礼，而灯灵侵蚀一个人的举止，总是先从无礼开始。",
+		"别拿黄金作礼物，我们挖出的黄金连大名们都吞不下。带来异域香料、沙丘里没有的矿石，否则就什么也别带。",
+		"阿斯特拉塔注视之下，我的秤绝无虚假——你们称她为女神，我们视她为祂的一种化身。尽管检查，愿意的话再检查一次。",
+		"我持阿玛拉女王亲授的王室许可出航。船首上的印记就是她的，请像尊重你们自己的女公爵一样尊重它。",
+		"我的两位乘客从头到脚都罩着面纱，他们是从奥塔瓦各家族归来的战学士。别搭话，别盯着看。他们每人杀过三十多个灯灵，即便在友善的码头，也不会放下警戒。",
+		"我的货舱散发着沙子与木槿的味道，这两样我都不打算道歉。价钱公道，我离港前可以请你喝一杯后者。",
+		"我的甲板上不会有十神祭司布道。若你想带他们的徽记上船，请留在舷梯处——船员不会准许，我也不会。",
+		"我的舵手是效忠王室的比拉马克，海外服役后正要归乡。他的弯刀裹在镀金丝绸中，别逼他拔刀。我保证，他的刀舞得比你的眼睛还快。",
+		"阿里索尔的沙暴封住了南方三个关口。我的航路比上季多花了三十天。费用应当反映沙丘的脾气，而不是我的。",
+		"管事，我们是好客的民族。诚心求取的人，我们愿与之分享面包和茶。但我们不会与前来改变我们信仰的人共处一廷。敞开做生意，敞开喝茶，安静祈祷。",
+		"一位游学的维齐尔学者与我同行，要到你们的公报板研究异国如何记载司法。她以知识而非钱币付账。问路时好好指引她，她会在日志里美言你们的治安官。",
+		"我的祖母见过奥塔瓦远征军从沙丘归来，马鞍上挂着教宗的忏悔书。她活到一百零七岁，此后再也不信任十神祭司。这点我随她。",
+		"一位奥林达家族的维齐尔学者与我同行，她刚结束在奥塔瓦修道院的授课。只需一枚泽尼，她便会诵读《忍耐论》的一段，并讲解到你听够为止。她曾在大祭司家中连续讲了九小时。付钱请教，你便会明白，为何弱者跪倒之处，战学士仍能坚持。",
+		"近两个月的沙丘美不胜收，我们的建筑也壮观非凡。我想邀你游览，再把战学士的护卫服务卖给你，保护你免受沙中灯灵侵害，顺便赚上一大笔。意下如何，管事？想亲眼看看沙丘吗？",
+		"奥林达又要召开战学士密会。我们纳莱迪人懂得适度享受世间欢愉，这在普赛顿的注视下也是正道。所以，给我最好的酒、最肥美多汁的海虾、龙虾和螃蟹，再来一盘最上等的奶酪。香料？不必费心，我们的举世无双，货舱里有些留给你。",
+		"第二次穿越沙丘时，船医的生命之水就用完了——战学士用它灼洗伤口，而沙漠伤起人来从不手软。若你们的蒸馏师有余货，女王的医师将以洁净的缝合与安稳的康复回报你们。我们不喝它，而是将它倒在不该裂开的地方。",
 	)
