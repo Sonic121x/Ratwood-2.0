@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/wildshape/cabbit //The baseline and tracker of the wildshapes
-	name = "Cabbit"
+	name = "猫兔"
 	race = /datum/species/shapecabbit
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -29,9 +29,9 @@
 	AddSpell(new /obj/effect/proc_holder/spell/self/cabbitclaws)
 	faction += "cabbits"
 	if(client.prefs?.wildshape_name)
-		real_name = "cabbit ([stored_mob.real_name])"
+		real_name = "猫兔（[stored_mob.real_name]）"
 	else
-		real_name = "cabbit"
+		real_name = "猫兔"
 
 	// Let cabbits walk through people
 	pass_flags = PASSMOB
@@ -45,7 +45,7 @@
 
 /mob/living/carbon/human/species/wildshape/cabbit/start_pulling(atom/movable/AM, state, force, supress_message, obj/item/item_override)
 	if(ismob(AM))
-		to_chat(src, span_warning("My tiny paws can't grab that!"))
+		to_chat(src, span_warning("我的小爪子抓不住那个！"))
 		return FALSE
 	return ..()
 
@@ -105,7 +105,7 @@
 // CABBIT SPECIFIC ITEMS //
 /obj/item/clothing/suit/roguetown/armor/skin_armor/cabbit_skin
 	slot_flags = null
-	name = "cabbit's skin"
+	name = "猫兔皮"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
@@ -117,7 +117,7 @@
 	item_flags = DROPDEL
 
 /datum/intent/simple/cabbit //Like a less defense dagger
-	name = "claw"
+	name = "爪击"
 	clickcd = 8
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
@@ -130,7 +130,7 @@
 	item_d_type = "slash"
 
 /obj/item/rogueweapon/cabbit_claw //Backscratcher
-	name = "cabbit claw"
+	name = "猫兔爪"
 	desc = ""
 	item_state = null
 	lefthand_file = null
@@ -175,7 +175,7 @@
 
 // CABBIT SPELLS //
 /obj/effect/proc_holder/spell/self/cabbitclaws
-	name = "Cabbit Claws"
+	name = "猫兔爪"
 	desc = "!"
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
@@ -195,12 +195,12 @@
 			user.dropItemToGround(active, TRUE)
 		if(istype(inactive, /obj/item/rogueweapon/cabbit_claw) && inactive != active)
 			user.dropItemToGround(inactive, TRUE)
-		to_chat(user, span_notice("My claws retract."))
+		to_chat(user, span_notice("我的利爪缩回了。"))
 		extended = FALSE
 	else
 		l = new(user, 1)
 		r = new(user, 2)
 		user.put_in_hands(l, TRUE, FALSE, TRUE)
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
-		to_chat(user, span_notice("My claws extend."))
+		to_chat(user, span_notice("我的利爪伸出了。"))
 		extended = TRUE

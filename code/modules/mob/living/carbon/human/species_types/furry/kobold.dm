@@ -117,7 +117,7 @@
 		/datum/language/draconic
 	)
 	stress_examine = TRUE
-	stress_desc = span_red("Thieving little kobold...")
+	stress_desc = span_red("偷鸡摸狗的小狗头人……")
 	descriptor_choices = list(
 		/datum/descriptor_choice/trait,
 		/datum/descriptor_choice/stature,
