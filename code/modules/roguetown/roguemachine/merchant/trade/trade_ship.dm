@@ -173,7 +173,7 @@ GLOBAL_LIST_EMPTY(brewing_recipe_by_reagent)
 			var/bottle_qty = max(1, round(rand(TRADE_DRINKS_BOTTLES_MIN, TRADE_DRINKS_BOTTLES_MAX) * volume_mult * tonnage_scale_mult()))
 			result += list(list(
 				"typepath" = "[typepath]",
-				"good_name" = "bottle of [initial(recipe.bottle_name)]",
+				"good_name" = "[initial(recipe.bottle_name)]（瓶装）",
 				"qty_target" = bottle_qty,
 				"qty_fulfilled" = 0,
 				"offered_price" = per_bottle,
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(brewing_recipe_by_reagent)
 		var/keg_qty = max(1, round(rand(TRADE_DRINKS_KEGS_MIN, TRADE_DRINKS_KEGS_MAX) * volume_mult * tonnage_scale_mult()))
 		result += list(list(
 			"typepath" = "[typepath]",
-			"good_name" = "keg of [initial(recipe.bottle_name)]",
+			"good_name" = "[initial(recipe.bottle_name)]（桶装）",
 			"qty_target" = keg_qty,
 			"qty_fulfilled" = 0,
 			"offered_price" = offered_price,

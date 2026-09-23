@@ -143,13 +143,13 @@ export const BrowseTab = (props: {
           paddingRight: '8px',
         }}
       >
-        <div style={railHeaderStyle}>Category</div>
+        <div style={railHeaderStyle}>类别</div>
         <button
           type="button"
           style={railRowStyle(category === ALL)}
           onClick={() => setCategory(ALL)}
         >
-          All ({data.catalog.length})
+          全部 ({data.catalog.length})
         </button>
         {groupOrder.map((g) => {
           const cats = grouped[g];
@@ -185,13 +185,13 @@ export const BrowseTab = (props: {
 
         {data.ingots.length > 0 && (
           <>
-            <div style={{ ...railHeaderStyle, marginTop: '12px' }}>Material</div>
+            <div style={{ ...railHeaderStyle, marginTop: '12px' }}>材料</div>
             <button
               type="button"
               style={railRowStyle(ingot === ALL)}
               onClick={() => setIngot(ALL)}
             >
-              Any
+              不限
             </button>
             {data.ingots.map((ing) => (
               <button
@@ -223,12 +223,12 @@ export const BrowseTab = (props: {
               color: INK_SOFT,
             }}
           >
-            Search:
+            搜索：
           </span>
           <Input
             value={search}
             onChange={setSearch}
-            placeholder="Filter by name..."
+            placeholder="按名称筛选..."
             width="100%"
           />
           {!!search && (
@@ -237,7 +237,7 @@ export const BrowseTab = (props: {
               style={inkButtonStyle()}
               onClick={() => setSearch('')}
             >
-              Clear
+              清空
             </button>
           )}
         </div>
@@ -251,8 +251,8 @@ export const BrowseTab = (props: {
             }}
           >
             {data.catalog.length === 0
-              ? 'No recipes available.'
-              : 'No recipes match the filter.'}
+              ? '没有可用配方。'
+              : '没有符合筛选条件的配方。'}
           </div>
         ) : (
           <>
@@ -353,10 +353,10 @@ export const BrowseTab = (props: {
                   disabled={safePage <= 0}
                   onClick={() => setPage(safePage - 1)}
                 >
-                  Prev
+                  上一页
                 </button>
                 <span>
-                  Page {safePage + 1} of {totalPages} ({filtered.length} wares)
+                  第 {safePage + 1} / {totalPages} 页（{filtered.length} 种商品）
                 </span>
                 <button
                   type="button"
@@ -366,7 +366,7 @@ export const BrowseTab = (props: {
                   disabled={safePage >= totalPages - 1}
                   onClick={() => setPage(safePage + 1)}
                 >
-                  Next
+                  下一页
                 </button>
               </div>
             )}

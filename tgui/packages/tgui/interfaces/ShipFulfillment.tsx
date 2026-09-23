@@ -56,20 +56,20 @@ const TAG_VICTUALLING_PRESERVED = 'victualling_preserved';
 const TAG_VICTUALLING_DRINKS = 'victualling_drinks';
 
 const SUBSECTION_LABELS: Record<string, string> = {
-  bulk: 'Bulk Trade',
-  [TAG_VICTUALLING_FRESH]: 'Victualling - Fresh',
-  [TAG_VICTUALLING_PRESERVED]: 'Victualling - Preserved',
-  [TAG_VICTUALLING_DRINKS]: 'Victualling - Drinks',
+  bulk: '大宗贸易',
+  [TAG_VICTUALLING_FRESH]: '补给 - 生鲜',
+  [TAG_VICTUALLING_PRESERVED]: '补给 - 耐储食品',
+  [TAG_VICTUALLING_DRINKS]: '补给 - 酒水',
 };
 
 const SUBSECTION_HINT: Record<string, string> = {
-  bulk: 'Bulk demand for the ship to carry back home.',
+  bulk: '船舶准备运回本国的大宗货物需求。',
   [TAG_VICTUALLING_FRESH]:
-    'Fresh provisions for the crew.',
+    '供船员食用的新鲜补给。',
   [TAG_VICTUALLING_PRESERVED]:
-    'Preserved foods for the voyage.',
+    '供航行途中食用的耐储食品。',
   [TAG_VICTUALLING_DRINKS]:
-    'Drinks for the crews and to resell back home. Sold by the keg - drag a finished, untapped fermentation keg onto the crate. Loose bottles are refused.',
+    '供船员饮用或运回本国转售的酒水。按桶出售 - 将酿制完成且未开封的发酵桶拖到货箱上。不收零散酒瓶。',
 };
 
 const SUBSECTION_ORDER = [
@@ -87,9 +87,9 @@ const SUBSECTION_GROUP: Record<string, 'goods' | 'food' | 'drinks'> = {
 };
 
 const GROUP_LABEL: Record<'goods' | 'food' | 'drinks', string> = {
-  goods: 'Goods',
-  food: 'Food',
-  drinks: 'Drinks',
+  goods: '货物',
+  food: '食品',
+  drinks: '酒水',
 };
 
 const GroupDivider = (props: { label: string }) => (
@@ -172,7 +172,7 @@ const LineRow = (props: { line: DemandLine; cutPercent: number }) => {
           </span>
         )}
         <span style={{ color: done ? INK_FAINT : hasKin ? SEAL_GREEN : SEAL_AMBER }}>
-          {effectivePrice}m each
+          每份 {effectivePrice}m
         </span>
       </span>
       <span
@@ -182,7 +182,7 @@ const LineRow = (props: { line: DemandLine; cutPercent: number }) => {
           color: done ? INK_FAINT : SEAL_GREEN,
         }}
       >
-        you get {producerPayout}m
+        你可得 {producerPayout}m
       </span>
     </div>
   );
@@ -264,7 +264,7 @@ const ManifestSection = (props: {
               verticalAlign: 'middle',
             }}
           >
-            KIN
+            同乡
           </span>
         )}
       </div>
@@ -280,7 +280,7 @@ const ManifestSection = (props: {
             borderLeft: `2px solid ${PARCHMENT_SHADOW}`,
           }}
         >
-          Typical provisions: {manifest.typical_provisions}
+          常用补给：{manifest.typical_provisions}
         </div>
       )}
       {(() => {
@@ -323,7 +323,7 @@ const Underledger = () => {
   } = data;
   return (
     <div style={{ ...cardStyle, marginTop: '14px', borderColor: SEAL_AMBER }}>
-      <div style={{ ...sectionHeaderStyle, color: SEAL_AMBER }}>Underledger</div>
+      <div style={{ ...sectionHeaderStyle, color: SEAL_AMBER }}>暗账</div>
       <div
         style={{
           fontFamily: SERIF,
@@ -333,15 +333,15 @@ const Underledger = () => {
           marginBottom: '6px',
         }}
       >
-        Export duty runs {duty_rate_pct}%. Dodging keeps it off the goods
-        sold here. The shortfall is only known to the Merchant or Shophand. The Crown must guess.
+        出口关税税率为 {duty_rate_pct}%。逃税后，此处出售的货物
+        将不再扣缴该税。少缴的数额只有商人或店伙计知晓，王室只能猜测。
       </div>
       <button
         type="button"
         style={inkButtonStyle({ color: duty_suspended ? SEAL_RED : SEAL_GREEN })}
         onClick={() => act('toggle_duty')}
       >
-        Crown Duty: {duty_suspended ? 'DODGING' : 'PAYING'}
+        王室关税：{duty_suspended ? '逃避缴纳' : '正常缴纳'}
       </button>
       <div
         style={{
@@ -351,7 +351,7 @@ const Underledger = () => {
           marginTop: '6px',
         }}
       >
-        Paid here: {duty_collected_here}m. Dodged here: {duty_evaded_here}m.
+        此处已缴：{duty_collected_here}m。此处逃缴：{duty_evaded_here}m。
       </div>
     </div>
   );
@@ -362,7 +362,7 @@ export const ShipFulfillment = () => {
   const { manifests, middleman_cut_percent, can_manage } = data;
 
   return (
-    <Window width={620} height={680} theme="parchment">
+    <Window display_title="船舶履约货箱" width={620} height={680} theme="parchment">
       <Window.Content scrollable>
         <div style={{ ...pageStyle, position: 'relative' }}>
           <button
@@ -373,10 +373,10 @@ export const ShipFulfillment = () => {
           >
             ?
           </button>
-          <div style={titleStyle}>Manifest of Bulk Demands</div>
+          <div style={titleStyle}>大宗需求清单</div>
           <div style={subtitleStyle}>
-            Drop matching goods at the crate to fulfill. The Merchant takes{' '}
-            {middleman_cut_percent}% as middleman.
+            将符合需求的货物交给货箱即可履约。商人将收取{' '}
+            {middleman_cut_percent}% 的中介费。
           </div>
           <div style={rulerStyle} />
           {manifests.length === 0 ? (
@@ -387,7 +387,7 @@ export const ShipFulfillment = () => {
                 color: INK_SOFT,
               }}
             >
-              No vessels at the pier are buying. Hail one to open a market.
+              码头目前没有收购货物的船舶。请招呼一艘船入港，开启贸易。
             </div>
           ) : (
             manifests.map((m) => (

@@ -1,6 +1,6 @@
 /datum/foreign_realm/aavnr
 	id = REALM_AAVNR
-	name = "Avar"
+	name = "阿瓦尔"
 	roll_weight = TRADE_REALM_WEIGHT_NEIGHBOR
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_VALUABLES_LOOTED, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
@@ -18,10 +18,10 @@
 		"Hetmanov", "Szabrik", "Ironwald", "Bloodgrip", "Khairov",
 	)
 	ship_types = list(
-		list("name" = "Koch", "tonnage" = 50, "weight" = 25),
-		list("name" = "Lodya", "tonnage" = 120, "weight" = 35),
-		list("name" = "Aavnic Galley", "tonnage" = 250, "weight" = 25),
-		list("name" = "Potentate Hulk", "tonnage" = 500, "weight" = 15),
+		list("name" = "抗冰帆船", "tonnage" = 50, "weight" = 25),
+		list("name" = "洛迪亚帆船", "tonnage" = 120, "weight" = 35),
+		list("name" = "阿夫尼克桨帆船", "tonnage" = 250, "weight" = 25),
+		list("name" = "权贵霍尔克船", "tonnage" = 500, "weight" = 15),
 	)
 	name_prefixes = list(
 		list("text" = "Hetman ", "chance" = 10),
@@ -94,13 +94,13 @@
 		/datum/supply_pack/rogue/alcohol/saigamilk,
 	)
 	hail_lines = list(
-		"Greetings, Factor. Hide, grain, fish and fur. Of the finest quality from the Steppes of Avar. Bring me silk and gemerald or do not bring me anything at all.",
-		"The Hetman of Tomorzurkh sends his regards and his demand for lemons. The second is not optional.",
-		"My crossing was peaceful. The four crossings before were not. I would speak to your Bleakisles watch about that.",
-		"Trade quickly, friend. The steppes do not wait, and neither do the wolves on my home road.",
-		"A saiga priest of Dalainkhair is in my hold blessing the cargo. He will not come out. He has been there three days. The cargo seems content.",
-		"The saiga milk is for selling, not for drinking on duty. Tell your stevedores. I have already told mine.",
-		"The Potentate weighs heavy on the keel and heavier on my purse. Lighten one and the other follows.",
-		"A saiga-binder of the Astrava-line rides with me, last of his teaching. For two zennies he will lay hands on a fogbeast and the creature will know your name without it ever being told. He sails because his sons cannot learn what he knows, and the line will end with him on this voyage or the next. Pay him while you can.",
-		"Pickled herrings for the sons and daughters of the steppes. Mare's milk and saiga sausage are great, but our warriors do like to have something foreign to chew on on their march."
+		"你好，商行管事。兽皮、谷物、鱼和毛皮，都是阿瓦尔草原最上等的货色。给我带来丝绸和翠晶，否则什么也别带。",
+		"托莫尔祖尔赫的首领捎来了问候，还要求运去柠檬。后一件事可由不得你选。",
+		"这次渡海很太平。之前四次可不是。我想跟你们荒凉群岛的守卫谈谈这件事。",
+		"快些交易，朋友。草原不会等人，我归乡路上的狼也不会。",
+		"一位达兰海尔的赛加羚羊祭司正在货舱里为货物祈福。他不肯出来，已经待了三天。货物似乎很满意。",
+		"赛加羚羊奶是拿来卖的，不是让人当值时喝的。告诉你们的码头工人，我已经提醒过我的人了。",
+		"君王的重担压着龙骨，更压着我的钱袋。减轻一边，另一边也会轻松。",
+		"一位阿斯特拉瓦传承的赛加羚羊驯师与我同行，他是这一传承的最后一人。只要两枚泽尼，他便会将手按在雾兽身上，不用任何人告知，那生灵就会知道你的名字。他出海，是因为儿子们学不会他的本领；这门传承将在这次或下次航程中随他而逝。趁来得及，付钱请他帮忙吧。",
+		"给草原的儿女们来些腌鲱鱼。马奶和赛加羚羊香肠固然不错，可我们的战士也喜欢在行军时嚼点异国吃食。"
 	)
