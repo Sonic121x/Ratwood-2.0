@@ -224,6 +224,8 @@
 				L.Knockdown(1)
 			if(self_points < target_points)
 				Knockdown(30)
+				apply_status_effect(/datum/status_effect/debuff/exposed, 3 SECONDS)
+				apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
 			if(self_points == target_points)
 				L.Knockdown(1)
 				Knockdown(30)
@@ -1208,6 +1210,7 @@
 	vis_contents += flaggy
 	Stun(300)
 	Knockdown(300)
+	drop_all_held_items()
 	apply_status_effect(/datum/status_effect/debuff/breedable)
 	apply_status_effect(/datum/status_effect/debuff/submissive)
 	src.visible_message(span_notice("[src] yields!"))
