@@ -873,7 +873,7 @@
 		force = H.move_force)
 
 /datum/intent/maul/spiked
-	name = "perforating strike"
+	name = "贯穿重击"
 	attack_verb = list("撕裂", "锤击", "痛击")
 	blade_class = BCLASS_PIERCE//TEAR CHUNKS OFF OF THEM. THROW IT ACROSS THE ROOM.
 	hitsound = list('sound/combat/hits/bladed/genthrust (1).ogg', 'sound/combat/hits/bladed/genthrust (2).ogg')
