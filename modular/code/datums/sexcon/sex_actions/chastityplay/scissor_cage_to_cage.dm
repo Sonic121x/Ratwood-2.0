@@ -6,10 +6,10 @@
 	target_needs_chastity = TRUE
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]贴近[target]，直到[user.p_their()]的贞操带撞上[target]的贞操带，沉闷的钢铁碰响随之传开。"))
+	user.visible_message(span_warning("[user]贴近[target]，直到[user.p_their()]贞操带撞上[target]的贞操带，沉闷的钢铁碰响随之传开。"))
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]扭动[user.p_their()]的腰胯，与[target]互相磨蹭，金属擦着金属发出刺耳难听的刮响……"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]扭动[user.p_their()]腰胯，与[target]互相磨蹭，金属擦着金属发出刺耳难听的刮响……"))
 	// Chastity device sound is handled internally by perform_sex_action via chastitycourse_noise — no outercourse noise here, it's purely metal-on-metal.
 	user.sexcon.perform_sex_action(user, 1.3, 1, TRUE)
 	user.sexcon.perform_sex_action(target, 1.3, 1, TRUE)
@@ -17,7 +17,7 @@
 	target.sexcon.handle_passive_ejaculation(user)
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]将[user.p_their()]的双腿从[target]身上抽开，两条贞操带在刺耳的刮擦声中分离。"))
+	user.visible_message(span_warning("[user]将[user.p_their()]双腿从[target]身上抽开，两条贞操带在刺耳的刮擦声中分离。"))
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

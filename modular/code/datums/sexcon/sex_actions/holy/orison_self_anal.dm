@@ -1,12 +1,12 @@
 /datum/sex_action/holy/masturbate_anus_orison
-	name = "Finger butt with godhand"
+	name = "用神圣之手指交自己的后穴"
 	category = SEX_CATEGORY_HANDS
 	user_sex_part = SEX_PART_ANUS
 	subtle_supported = TRUE
 	solo = TRUE
 
 /datum/sex_action/holy/masturbate_anus_orison/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] offers a quiet orison and starts fingering [user.p_their()] butt..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]低声祷告，开始指交自己的后穴……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/holy/masturbate_anus_orison/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -17,7 +17,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] presses sanctified fingers into [user.p_their()] asshole... [message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]将神圣手指插入自己的后穴……[message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.generic_sex_noise()
 	if(data["jingle"])
@@ -30,7 +30,7 @@
 	user.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/holy/masturbate_anus_orison/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] finishes the prayer and stops fingering [user.p_their()] butt."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]结束祷告，停止指交自己的后穴。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/holy/masturbate_anus_orison/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

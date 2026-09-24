@@ -255,7 +255,7 @@
 		return "平板贞操罩"
 	if(owner?.sexcon?.has_chastity_cage())
 		return "贞操笼"
-	return "chastity device"
+	return "贞操装置"
 
 // Unified sound helper: supports single sound or list input with optional chance gating.
 /datum/sex_action/chastityplay/proc/play_chastity_impact_sound(mob/living/carbon/human/target, sound_to_play, volume = 40, chance = 100, vary = TRUE, frequency = -1)

@@ -1,5 +1,5 @@
 /datum/sex_action/magic/masturbate_other_penis_prestidigitation
-	name = "Jerk them off with magehand"
+	name = "用法师之手为对方手淫"
 	check_same_tile = FALSE
 	ranged_los_action = TRUE
 	category = SEX_CATEGORY_HANDS
@@ -7,7 +7,7 @@
 	subtle_supported = TRUE
 
 /datum/sex_action/magic/masturbate_other_penis_prestidigitation/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] conjures arcyne hands to grip [target]'s cock..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]召出奥术之手，握住[target]的阴茎……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/magic/masturbate_other_penis_prestidigitation/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -15,7 +15,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] jerks off [target]'s cock with disembodied arcyne hands..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user]用悬空的奥术之手[user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]套弄着[target]的阴茎……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.generic_sex_noise()
 
@@ -26,7 +26,7 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/magic/masturbate_other_penis_prestidigitation/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] lowers [user.p_their()] hands as the prestidigitation fades."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("随着戏法术消散，[user]放下了双手。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/magic/masturbate_other_penis_prestidigitation/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())
