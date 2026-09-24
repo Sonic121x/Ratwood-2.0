@@ -124,7 +124,7 @@
 		to_chat(user, span_notice("对方强行把自己压上了我的[user.sexcon.get_knot_synonym()]！"))
 	else
 		var/knot_word_tie = user.sexcon.get_knot_synonym()
-		user.visible_message(span_notice("[user]把[user.p_their()]的[knot_word_tie]结在了[btm]体内！"), span_notice("我把自己的[knot_word_tie]结在了[btm]体内。"))
+		user.visible_message(span_notice("[user]把[user.p_their()][knot_word_tie]结在了[btm]体内！"), span_notice("我把自己的[knot_word_tie]结在了[btm]体内。"))
 	if(btm.stat != DEAD)
 		switch(btm.sexcon.knotted_part) // this is not a smart way to do this in hindsight, but it is fast at least
 			if(SEX_PART_CUNT,SEX_PART_ANUS,SEX_PART_JAWS,SEX_PART_SLIT_SHEATH)
@@ -136,7 +136,7 @@
 			else
 				to_chat(btm, span_userdanger("我被三重结住了！"))
 		if(we_got_baothad)
-			to_chat(btm, span_userdanger("Baothan 的魔力灌入体内，我已经没法正常思考了！"))
+			to_chat(btm, span_userdanger("巴奥莎的魔力灌入体内，我已经没法正常思考了！"))
 	if(!btm.has_status_effect(/datum/status_effect/knot_tied)) // only apply status if we don't have it already
 		btm.apply_status_effect(/datum/status_effect/knot_tied)
 	if(!user.has_status_effect(/datum/status_effect/knotted)) // only apply status if we don't have it already
@@ -368,7 +368,7 @@
 				if(btm_removed)
 					btm.visible_message(span_notice("[btm]猛地把自己从[top]的[knot_word_yank]上扯了出来！"), span_notice("我猛地把自己从[top]的[knot_word_yank]上扯了出来！"))
 				else
-					top.visible_message(span_notice("[top]猛地把[top.p_their()]的[knot_word_yank]从[btm]体内扯了出来！"), span_notice("我猛地把自己的[knot_word_yank]从[btm]体内扯了出来。"))
+					top.visible_message(span_notice("[top]猛地把[top.p_their()][knot_word_yank]从[btm]体内扯了出来！"), span_notice("我猛地把自己的[knot_word_yank]从[btm]体内扯了出来。"))
 			btm.sexcon.try_do_pain_effect(PAIN_HIGH_EFFECT, FALSE)
 		else if(notify)
 			playsound(btm, 'sound/misc/mat/insert (1).ogg', 50, TRUE, -2, ignore_walls = FALSE)
@@ -376,7 +376,7 @@
 			if(btm_removed)
 				btm.visible_message(span_notice("[btm]从[top]的[knot_word_slip]上轻轻滑脱了出来！"), span_notice("我从[top]的[knot_word_slip]上轻轻滑脱了出来。"))
 			else
-				top.visible_message(span_notice("[top]将[top.p_their()]的[knot_word_slip]从[btm]体内缓缓滑了出来！"), span_notice("我将自己的[knot_word_slip]从[btm]体内缓缓滑了出来。"))
+				top.visible_message(span_notice("[top]将[top.p_their()][knot_word_slip]从[btm]体内缓缓滑了出来！"), span_notice("我将自己的[knot_word_slip]从[btm]体内缓缓滑了出来。"))
 			btm.emote("painmoan", forced = TRUE)
 			btm.sexcon.try_do_pain_effect(PAIN_MILD_EFFECT, FALSE)
 		add_cum_floor(get_turf(btm))
