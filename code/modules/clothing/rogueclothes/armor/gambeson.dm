@@ -206,8 +206,8 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/suit/roguetown/shirt/freifechter/shepherd
-	name = "shepherd's shirt"
-	desc = "A strong loosely worn quilted shirt that places little weight on the arms."
+	name = "牧羊人衬衫"
+	desc = "结实宽松的绗缝衬衫，几乎不会给双臂增添负担。"
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER - 35
 
 /obj/item/clothing/suit/roguetown/shirt/freifechter/attack_right(mob/user)

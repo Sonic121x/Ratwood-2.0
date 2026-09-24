@@ -963,7 +963,7 @@
 		M.apply_damage(10, BURN)
 		M.adjust_fire_stacks(2, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed) // weaker then silver version
 		M.ignite_mob()
-		visible_message(span_warning("[target] erupts in divine flames upon being struck by [src]!"))
+		visible_message(span_warning("[target]被[src]击中，身上顿时燃起神圣的火焰！"))
 
 /obj/projectile/bullet/reusable/sling_bullet/silver
 	name = "银制投石弹"
