@@ -13,7 +13,7 @@
 	display_category = ITEM_CAT_ARMOR_LEGS
 
 /datum/crafting_recipe/roguetown/leather/unique/baggyleatherpants
-	name = "Pontifex 的 chaqchur"
+	name = "教宗恰克丘尔裤"
 	result = list(/obj/item/clothing/under/roguetown/trou/leather/pontifex)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1,
@@ -34,7 +34,7 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/crafting_recipe/roguetown/leather/unique/grenzelboots
-	name = "格伦泽尔霍夫特ian 靴子"
+	name = "格伦泽尔霍夫特靴子"
 	result = list(/obj/item/clothing/shoes/roguetown/boots/grenzelhoft)
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/reagent_containers/food/snacks/tallow = 1,
@@ -46,7 +46,7 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/crafting_recipe/roguetown/leather/unique/otavanleatherpants
-	name = "奥塔万 皮裤"
+	name = "奥塔万皮裤"
 	result = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/otavan)
 	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1,
 				/obj/item/natural/fibers = 1,
@@ -69,7 +69,7 @@
 	display_category = ITEM_CAT_ARMOR_LEGS
 
 /datum/crafting_recipe/roguetown/leather/unique/otavanboots
-	name = "奥塔万 皮靴"
+	name = "奥塔万皮靴"
 	result = list(/obj/item/clothing/shoes/roguetown/boots/otavan)
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/reagent_containers/food/snacks/tallow = 1,
@@ -91,7 +91,7 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/crafting_recipe/roguetown/leather/unique/monkleather
-	name = "Pontifex 的卡夫坦"
+	name = "教宗卡夫坦长袍"
 	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex)
 	reqs = list(/obj/item/natural/hide/cured = 4,
 				/obj/item/natural/cloth = 1,
@@ -145,7 +145,7 @@
 	display_category = ITEM_CAT_ARMOR_LIGHT
 
 /datum/crafting_recipe/roguetown/leather/unique/crafteast
-	name = "装饰 dobo 长袍"
+	name = "饰纹道袍"
 	result = list(/obj/item/clothing/suit/roguetown/armor/basiceast/crafteast)
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
