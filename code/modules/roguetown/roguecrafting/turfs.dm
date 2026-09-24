@@ -277,7 +277,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/turfs/stone/brick/bricklight
-	name = "wall (stonebrick light) (2 stoneblocks, 1 lamptern)"
+	name = "墙 (带灯石砖墙) (2 块石砖, 1 盏提灯)"
 	result = /turf/closed/wall/mineral/rogue/stonebrick/stonebricklight
 	reqs = list(/obj/item/natural/stoneblock = 2, /obj/item/flashlight/flare/torch/lantern = 1)
 	craftdiff = 3
@@ -526,7 +526,7 @@
 // Dark Wood Walls
 
 /datum/crafting_recipe/roguetown/turfs/wood/darkwoodwall
-	name = "深木墙(2 wood planks)"
+	name = "深色木墙(2 块木板)"
 	result = /turf/closed/wall/mineral/rogue/wooddark
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
@@ -535,7 +535,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/turfs/wood/darkwoodwindow
-	name =	"深木射孔（2 块木板）"
+	name =	"深色木墙射孔（2 块木板）"
 	result = /turf/closed/wall/mineral/rogue/wooddark/window
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
@@ -544,21 +544,21 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/turfs/wood/darkwoodwall/vertical
-	name = "dark wood wall vertical (2 wood planks)"
+	name = "竖向深色木墙 (2 块木板)"
 	result = /turf/closed/wall/mineral/rogue/wooddark/vertical
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
-	verbage_simple = "construct"
-	verbage = "constructs"
+	verbage_simple = "建造"
+	verbage = "建造"
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/turfs/wood/darkwoodwall/horizontal
-	name = "dark wood wall horizontal (2 wood planks)"
+	name = "横向深色木墙 (2 块木板)"
 	result = /turf/closed/wall/mineral/rogue/wooddark/horizontal
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
-	verbage_simple = "construct"
-	verbage = "constructs"
+	verbage_simple = "建造"
+	verbage = "建造"
 	craftdiff = 3
 
 // Druidic Grass Turfs
