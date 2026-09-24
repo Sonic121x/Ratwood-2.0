@@ -101,12 +101,12 @@
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
 /datum/crafting_recipe/roguetown/leather/unleatherbelt
-	name = "untie leather belt"
+	name = "解开皮腰带"
 	result = /obj/item/natural/hide/cured
 	reqs = list(/obj/item/storage/belt/rogue/leather = 1)
 	craftdiff = 0
-	verbage_simple = "untie"
-	verbage = "unties"
+	verbage_simple = "解开"
+	verbage = "解开"
 
 /datum/crafting_recipe/roguetown/leather/container/belt/black
 	name = "黑皮腰带"
@@ -136,7 +136,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/belt/suspenders_colored
-	name = "suspenders (colorable)"
+	name = "吊裤带 (可染色)"
 	result = /obj/item/storage/belt/rogue/leather/suspenders/butler/colored
 	reqs = list(
 		/obj/item/natural/hide/cured = 1,
