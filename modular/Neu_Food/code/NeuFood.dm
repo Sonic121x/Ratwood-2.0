@@ -47,10 +47,10 @@
 
 	if(cooked_type)
 		var/obj/item/CT = cooked_type
-		. += span_smallnotice("它已准备就绪，可以被<b>烹饪</b>成 [initial(CT.name)]。")
+		. += span_smallnotice("它已准备就绪，可以被<b>烘烤</b>成 [initial(CT.name)]。")
 	if(fried_type)
 		var/obj/item/FT = fried_type
-		. += span_smallnotice("它已准备就绪，可以被<b>油炸</b>成 [initial(FT.name)]。")
+		. += span_smallnotice("它已准备就绪，可以被<b>煎制</b>成 [initial(FT.name)]。")
 	if(slice_path)
 		var/obj/item/ST = slice_path
 		. += span_smallnotice("它已准备就绪，可以被<b>切片</b>成 [initial(ST.name)]。")
