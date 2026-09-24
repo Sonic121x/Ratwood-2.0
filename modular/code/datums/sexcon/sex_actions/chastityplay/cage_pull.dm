@@ -12,7 +12,7 @@
 	if(HAS_TRAIT(target, TRAIT_CHASTITY_SPIKED))
 		user.visible_message(span_warning("[user]小心抓住[target]尖刺[get_chastity_device_name(target)]的外缘，缓慢而刻意地拉扯。"))
 		return
-	user.visible_message(span_warning("[user]将[user.p_their()]的手指勾进[target]的[get_chastity_device_name(target)]边缘下方，缓慢地试探着拉了一下。"))
+	user.visible_message(span_warning("[user]将[user.p_their()]手指勾进[target]的[get_chastity_device_name(target)]边缘下方，缓慢地试探着拉了一下。"))
 
 /datum/sex_action/chastityplay/cage_pull/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(HAS_TRAIT(user, TRAIT_DEATHBYSNUSNU))

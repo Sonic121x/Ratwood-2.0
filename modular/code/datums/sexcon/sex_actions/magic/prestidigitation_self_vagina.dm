@@ -1,11 +1,11 @@
 /datum/sex_action/magic/masturbate_vagina_prestidigitation
-	name = "Rub clit with magehand"
+	name = "用法师之手揉弄自己的阴蒂"
 	category = SEX_CATEGORY_HANDS
 	user_sex_part = SEX_PART_CUNT
 	solo = TRUE
 
 /datum/sex_action/magic/masturbate_vagina_prestidigitation/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] conjures arcyne hands toward [user.p_their()] cunt..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]召出奥术之手，伸向自己的阴部……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/magic/masturbate_vagina_prestidigitation/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -13,7 +13,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] guides disembodied magical hands to tweak [user.p_their()] clit..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user]引导悬空的魔法之手[user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]揉弄着自己的阴蒂……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.generic_sex_noise()
 
@@ -24,7 +24,7 @@
 	user.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/magic/masturbate_vagina_prestidigitation/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] lowers [user.p_their()] hands as the prestidigitation fades."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("随着戏法术消散，[user]放下了双手。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/magic/masturbate_vagina_prestidigitation/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())
