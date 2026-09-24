@@ -30,7 +30,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots_heavy_footwrap
-	name = "hardened leather footwraps"
+	name = "硬皮裹脚布"
 	result = /obj/item/clothing/shoes/roguetown/boots/footwraps/hleather
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 1)
@@ -63,7 +63,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/thigh
-	name = "thigh boots"
+	name = "过膝长靴"
 	result = /obj/item/clothing/shoes/roguetown/boots/hand/thigh
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/cloth = 1) ///Padding for comfort ya know?

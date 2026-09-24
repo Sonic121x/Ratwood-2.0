@@ -58,11 +58,11 @@
 	display_category = ITEM_CAT_ENG_CONSTRUCTION
 
 /datum/crafting_recipe/roguetown/engineering/bars/cemetery
-	name = "cemetery bars"
+	name = "墓园栅栏"
 	result = /obj/structure/bars/cemetery
 	reqs = list(/obj/item/ingot/iron = 1)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "装配"
+	verbage = "装配"
 	ignoredensity = TRUE
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 1
@@ -149,7 +149,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/slurbow
-	name = "泥浆弓"
+	name = "轻弩"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
 	reqs = list(/obj/item/ingot/steel = 2, /obj/item/natural/fibers = 1, /obj/item/natural/wood/plank = 2)
 	structurecraft = /obj/machinery/artificer_table
@@ -227,7 +227,7 @@
 	
 //pyro arrow crafting, from stonekeep
 /datum/crafting_recipe/roguetown/engineering/pyrobolt
-	name = "火山碎屑弩箭"
+	name = "燃火弩矢"
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
@@ -237,7 +237,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/pyrobolt_five
-	name = "火山碎屑弩箭"
+	name = "燃火弩矢（x5）"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
 				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
@@ -253,7 +253,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/pyroarrow
-	name = "火山碎屑箭"
+	name = "燃火箭"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
@@ -263,7 +263,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/pyroarrow_five
-	name = "火山碎屑箭"
+	name = "燃火箭（x5）"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
@@ -279,7 +279,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/smokepowder
-	name = "Smokepowder Flask"
+	name = "火药瓶"
 	result = /obj/item/powderflask
 	reqs = list(/obj/item/natural/hide/cured = 2, /obj/item/alch/firedust = 2, /obj/item/alch/coaldust = 2)
 	craftdiff = 4
@@ -287,7 +287,7 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/engineering/minershelmet
-	name = "reinforced miners helmet"
+	name = "加固矿工头盔"
 	result = /obj/item/clothing/head/roguetown/helmet/kettle/minershelm
 	reqs = list(/obj/item/flashlight/flare/torch/lantern/bronzelamptern = 1, /obj/item/clothing/head/roguetown/articap = 1,/obj/item/roguegear/bronze = 1)
 	craftdiff = 2
@@ -315,20 +315,20 @@
 	display_category = ITEM_CAT_ENG_MACHINERY
 
 /datum/crafting_recipe/roguetown/engineering/smither
-	name = "Autosmither"
+	name = "自动锻造机"
 	result = /obj/structure/autosmither
 	reqs = list(
 		/obj/item/roguegear/bronze = 4,
 		/obj/item/ingot/steel = 2,
 		/obj/item/natural/wood/plank = 4,
 	)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "装配"
+	verbage = "装配"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/infernalengine
-	name = "infernal engine"
+	name = "炼狱引擎"
 	req_table = FALSE
 	result = /obj/structure/infernalengine
 	reqs = list(
@@ -339,7 +339,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/autogrinder
-	name = "autogrinder"
+	name = "自动研磨机"
 	category = "Rotational"
 	result = /obj/structure/autogrinder
 	reqs = list(
@@ -348,21 +348,21 @@
 		/obj/item/natural/wood/plank = 4,
 		/obj/item/natural/stone = 4,
 	)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "装配"
+	verbage = "装配"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/windmill
-	name = "windmill"
+	name = "风车"
 	result = /obj/structure/windmill
 	reqs = list(
 		/obj/item/natural/wood/plank = 4,
 		/obj/item/natural/cloth = 2,
 		/obj/item/grown/log/tree/stick = 2,
 	)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "装配"
+	verbage = "装配"
 	skillcraft = /datum/skill/craft/engineering
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 	craftdiff = 4
@@ -583,7 +583,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/signalflare
-	name = "signal flare canister (x4)"
+	name = "信号弹罐 (x4)"
 	category = "Ranged"
 	result = list(/obj/item/signal_flare,
 				  /obj/item/signal_flare,
@@ -669,7 +669,7 @@
 // high explosive shells for the bombard
 
 /datum/crafting_recipe/roguetown/engineering/highexplosiveimpact
-	name = "high explosive impact, bombard charge"
+	name = "触发式高爆弹，臼炮弹药"
 	category = "Explosives"
 	result = /obj/item/cannonball/explosive
 	reqs = list(/obj/item/tntstick = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
@@ -679,7 +679,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/canistershotimpact
-	name = "canister shot, bombard charge"
+	name = "霰弹，臼炮弹药"
 	category = "Explosives"
 	result = /obj/item/cannonball/canister
 	reqs = list(/obj/item/ammo_casing/caseless/bullet/grapeshot = 3, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
@@ -689,7 +689,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/smokeimpact
-	name = "smoke shell, bombard charge"
+	name = "烟雾弹，臼炮弹药"
 	category = "Explosives"
 	result = /obj/item/cannonball/smoke
 	reqs = list(/obj/item/bomb/smoke = 3, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
@@ -699,7 +699,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/flareimpact
-	name = "flare shell, bombard charge"
+	name = "照明弹，臼炮弹药"
 	category = "Explosives"
 	result = /obj/item/cannonball/flare
 	reqs = list(/obj/item/rogueore/cinnabar = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
@@ -709,7 +709,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/incendiaryimpact
-	name = "incendiary shell, bombard charge"
+	name = "燃烧弹，臼炮弹药"
 	category = "Explosives"
 	result = /obj/item/cannonball/incendiary
 	reqs = list(/obj/item/alch/firedust = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
@@ -719,7 +719,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/ramrod
-	name = "bombard ramrod"
+	name = "臼炮通条"
 	category = "Explosives"
 	result = /obj/item/rogueweapon/woodstaff/quarterstaff/bombard_sponge
 	reqs = list(/obj/item/rogueweapon/woodstaff/quarterstaff = 1, /obj/item/natural/cloth = 2)
@@ -729,7 +729,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/palantir
-	name = "bombard targeting palantir"
+	name = "臼炮瞄准真知晶球"
 	category = "Explosives"
 	result = /obj/item/rogueweapon/palantir
 	reqs = list(/obj/item/roguegear/bronze = 2, /obj/item/ingot/bronze = 1, /obj/item/paper = 2, /obj/item/rogueore/cinnabar = 1)
