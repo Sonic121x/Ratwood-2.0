@@ -310,7 +310,7 @@
 
 /obj/item/rogueweapon/flail/peasantwarflail/silver
 	name = "白银巨型连枷"
-	desc = "PSLM 81:59……祂下达了命令；\"把他们打得粉碎，就像陶匠的器皿砸在石头上！\"于是，我们出击了！"
+	desc = "圣咏 81:59……祂下达了命令；\"把他们打得粉碎，就像陶匠的器皿砸在石头上！\"于是，我们出击了！"
 	icon_state = "silver_greatflail"
 	wdefense = 6
 	minstr = 13
