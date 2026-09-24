@@ -89,7 +89,7 @@
 	filling_color = "#F0E68C"
 	bitesize_mod = 2
 	foodtype = GRAIN
-	tastes = list("wheat" = 1)
+	tastes = list("小麦味" = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	mill_result = /obj/item/reagent_containers/powder/flour
 	dropshrink = 0.9
@@ -104,7 +104,7 @@
 	filling_color = "#556B2F"
 	bitesize_mod = 2
 	foodtype = GRAIN
-	tastes = list("oat" = 1)
+	tastes = list("燕麦味" = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	mill_result = /obj/item/reagent_containers/powder/flour
 	dropshrink = 0.9
@@ -119,7 +119,7 @@
 	filling_color = "#f0f0f0"
 	bitesize_mod = 2
 	foodtype = GRAIN
-	tastes = list("rice" = 1)
+	tastes = list("米味" = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	mill_result = /obj/item/reagent_containers/powder/flour
 	dropshrink = 0.9
@@ -134,7 +134,7 @@
 	filling_color = "#FF4500"
 	bitesize = 3
 	foodtype = FRUIT
-	tastes = list("apple" = 1)
+	tastes = list("苹果味" = 1)
 	trash = /obj/item/trash/applecore
 	faretype = FARE_POOR
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
@@ -211,7 +211,7 @@
 	seed = /obj/item/seeds/pear
 	desc = "多汁、钟形水果，带有细腻甜味和柔软略带颗粒感的果肉。"
 	icon_state = "pear"
-	tastes = list("pear" = 1)
+	tastes = list("梨味" = 1)
 	splat_color = "#D2B48C"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/lemon
@@ -219,7 +219,7 @@
 	seed = /obj/item/seeds/lemon
 	desc = "一种明亮黄色的柑橘类水果，以其酸爽清新的果汁和芳香的果皮而备受青睐。"
 	icon_state = "lemon"
-	tastes = list("lemon" = 1)
+	tastes = list("柠檬味" = 1)
 	splat_color = "#FFFF00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/lime
@@ -227,7 +227,7 @@
 	seed = /obj/item/seeds/lime
 	desc = "一颗小个子的绿色柑橘类水果，味道尖锐辛辣，常用于烹饪和调制饮品。"
 	icon_state = "lime"
-	tastes = list("lime" = 1)
+	tastes = list("青柠味" = 1)
 	splat_color = "#00FF00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/lime/Initialize(mapload)
@@ -247,16 +247,16 @@
 	desc = "一种小型易剥的柑橘类水果，色泽鲜亮橙黄，果肉分瓣，甜美多汁。\
 	它最广为人知的是作为‘橘子酱’的前身；一种美味的可涂抹果酱，通过将橘子浸入糖中并用沸腾的油脂浇淋而成。"
 	icon_state = "tangerine"
-	tastes = list("tangerine" = 1)
+	tastes = list("柑橘味" = 1)
 	splat_color = "#FFA500"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine_sugared
-	name = "smothered tangerine"
-	desc = "Sugared tangerines, smothered in sweetness and awaiting to be baptized in a pot of boiling fat."
+	name = "糖渍柑橘"
+	desc = "裹满糖的柑橘，甜得发腻，正等着在一锅滚烫的油脂中接受洗礼。"
 	icon_state = "tangerinesugar"
 	faretype = FARE_FINE
 	splat_color = "#FFA500"
-	tastes = list("overpoweringly sweet" = 1)
+	tastes = list("甜得发腻" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 	deep_fried_type = /obj/item/reagent_containers/food/snacks/marmalade
 	eat_effect = /datum/status_effect/buff/sweet
@@ -266,7 +266,7 @@
 	seed = /obj/item/seeds/plum
 	desc = "一种表皮光滑的水果，果肉多汁，酸甜适中，呈深紫或红色。"
 	icon_state = "plum"
-	tastes = list("plum" = 1)
+	tastes = list("李子味" = 1)
 	splat_color = "#8B008B"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/strawberry
@@ -274,7 +274,7 @@
 	seed = /obj/item/seeds/strawberry
 	desc = "小型红色水果，味道甜，常用于甜点。"
 	icon_state = "strawberry"
-	tastes = list("strawberry" = 1)
+	tastes = list("草莓味" = 1)
 	splat_color = "#9A1B00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/strawberry/Initialize(mapload)
@@ -293,7 +293,7 @@
 	seed = /obj/item/seeds/blackberry
 	desc = "一种小型深色水果，味道甜中带微酸，常用于甜点制作。或——当裹上糖并用沸腾的油脂浇淋后——制成美味的果酱。"
 	icon_state = "blackberry"
-	tastes = list("blackberry" = 1)
+	tastes = list("黑莓味" = 1)
 	splat_color = "#272C3F"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/Initialize(mapload)
@@ -308,12 +308,12 @@
 		)
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry_sugared
-	name = "smothered blackberry"
-	desc = "Sugared blackberries, smothered in sweetness and awaiting to be baptized in a pot of boiling fat."
+	name = "糖渍黑莓"
+	desc = "裹满糖的黑莓，甜得发腻，正等着在一锅滚烫的油脂中接受洗礼。"
 	icon_state = "blackberrysugar"
 	faretype = FARE_FINE
 	splat_color = "#272C3F"
-	tastes = list("overpoweringly sweet" = 1)
+	tastes = list("甜得发腻" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 	deep_fried_type = /obj/item/reagent_containers/food/snacks/jamtallow
 	eat_effect = /datum/status_effect/buff/sweet
@@ -323,7 +323,7 @@
 	seed = /obj/item/seeds/raspberry
 	desc = "一种小型红色水果，味道甜中带微酸，常用于甜点制作。"
 	icon_state = "raspberry"
-	tastes = list("raspberry" = 1)
+	tastes = list("覆盆子味" = 1)
 	splat_color = "#A01600"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
@@ -331,17 +331,17 @@
 	seed = /obj/item/seeds/tomato
 	desc = "一颗饱满的红色果实，果肉多汁，酸甜适中。可生食，也可烹饪使用。经验丰富的厨师知道总要把番茄切开，以制作出最顺滑的酱汁。"
 	icon_state = "tomato"
-	tastes = list("tomato" = 1)
+	tastes = list("番茄味" = 1)
 	splat_color = "#CD5320"
 	slice_path = /obj/item/reagent_containers/food/snacks/grown/fruit/tomato_sliced
 	slices_num = 1
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tomato_sliced
-	name = "split tomato"
+	name = "切开的番茄"
 	seed = /obj/item/seeds/tomato
-	desc = "Split halves of a plump, red fruit with juicy flesh and a balanced sweet-tart flavor. Ruptured skin cradles a deliciously silky surprise, merely a palm away from being smeared into sauce atop flatdough."
+	desc = "切成两半的饱满红果，果肉多汁，酸甜适中。裂开的果皮兜着丝滑美味的果肉，只需用手一抹，就能化作擀平面团上的酱汁。"
 	icon_state = "tomato_split"
-	tastes = list("to" = 1, "mato" = 1)
+	tastes = list("番" = 1, "茄" = 1)
 	splat_color = "#CD5320"
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue
@@ -349,7 +349,7 @@
 	name = "杰克莓"
 	desc = "一小簇深色的杰克莓，汁液浓郁。"
 	icon_state = "berries"
-	tastes = list("berry" = 1)
+	tastes = list("浆果味" = 1)
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/water = 5)
 	faretype = FARE_NEUTRAL
@@ -405,7 +405,7 @@
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison
 	seed = /obj/item/seeds/berryrogue/poison
 	icon_state = "berries"
-	tastes = list("berry" = 1)
+	tastes = list("浆果味" = 1)
 	list_reagents = list(/datum/reagent/berrypoison = 5, /datum/reagent/consumable/nutriment = 3, /datum/reagent/water = 5)
 	grind_results = list(/datum/reagent/berrypoison = 5)
 	color_index = "bad"
@@ -426,7 +426,7 @@
 	desc = "一种带有刺激特性的芳香坚果，常与药草糖搭配享用。其粉末可用于制作手卷烟和混合香料。"
 	seed = /obj/item/seeds/nut
 	icon_state = "rocknut"
-	tastes = list("nutty" = 1)
+	tastes = list("坚果香" = 1)
 	filling_color = "#6b4d18"
 	bitesize = 1
 	foodtype = FRUIT
@@ -435,11 +435,11 @@
 	mill_result = /obj/item/reagent_containers/powder/rocknut
 
 /obj/item/reagent_containers/food/snacks/grown/nut_sugared
-	name = "smothered rocknut"
-	desc = "Sugary rocknuts, smothered in herbal sweetness and awaiting a baptism in boiling fat."
+	name = "糖渍石果"
+	desc = "裹满糖的石果，浸润着草药的甜香，正等待滚烫油脂的洗礼。"
 	icon_state = "rocknutssugar"
 	faretype = FARE_FINE
-	tastes = list("overpoweringly sweet and nutty" = 1)
+	tastes = list("浓得发腻的甜味与坚果香" = 1)
 	filling_color = "#6b4d18"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL)
 	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
@@ -502,7 +502,7 @@
 	desc = "抵御饥饿的盾牌，仅此而已。"
 	seed = /obj/item/seeds/turnip
 	icon_state = "turnip"
-	tastes = list("dirt" = 1)
+	tastes = list("泥土味" = 1)
 	bitesize = 1
 	slices_num = 1
 	slice_path = /obj/item/reagent_containers/food/snacks/veg/turnip_sliced
@@ -616,7 +616,7 @@
 	bitesize_mod = 1
 	foodtype = VEGETABLES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
-	tastes = list("sweet" = 1,"bitterness" = 1)
+	tastes = list("甜味" = 1,"苦味" = 1)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	rotprocess = SHELFLIFE_SHORT
 
@@ -628,7 +628,7 @@
 	filling_color = "#008000"
 	bitesize_mod = 1
 	foodtype = VEGETABLES
-	tastes = list("sweet" = 1,"bitterness" = 1)
+	tastes = list("甜味" = 1,"苦味" = 1)
 	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
 	grind_results = list(/datum/reagent/drug/nicotine = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
@@ -689,7 +689,7 @@
 	dropshrink = 0.6
 	icon_state = "onion"
 	slices_num = 2
-	tastes = list("spicy sweetness" = 1)
+	tastes = list("辛辣的甜味" = 1)
 	bitesize = 2
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
@@ -699,7 +699,7 @@
 	name = "卷心菜"
 	desc = "一种叶片紧实的蔬菜，清脆而成熟。是精灵族象征繁荣的作物。"
 	icon_state = "cabbage"
-	tastes = list("blandness" = 1)
+	tastes = list("寡淡的味道" = 1)
 	bitesize = 10
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	slices_num = 3
@@ -713,7 +713,7 @@
 	desc = "一颗块茎，矮人眼中的丰收之象。可以生吃。"
 	icon_state = "potato"
 	eat_effect = null
-	tastes = list("potato" = 1)
+	tastes = list("土豆味" = 1)
 	bitesize = 2
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	slices_num = 2
@@ -731,7 +731,7 @@
 	slices_num = 5
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
 	eat_effect = null
-	tastes = list("pungent savoriness" = 1)
+	tastes = list("浓烈的辛香" = 1)
 	bitesize = 2
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/water/blessed = 2)
 	rotprocess = null
@@ -757,7 +757,7 @@
 	desc = "一颗小小的甜美红色果实，内含一粒（有时是两粒）咖啡豆。干燥后可作为提神饮品冲泡。"
 	icon_state = "coffee"
 	seed = /obj/item/seeds/coffee
-	tastes = list("hibicus sweetness" = 1)
+	tastes = list("木槿般的甜香" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	mill_result = /obj/item/reagent_containers/food/snacks/grown/coffeebeans
@@ -768,7 +768,7 @@
 	desc = "从茶树上采摘的茶叶。仍然新鲜，使用前需干燥处理。"
 	icon_state = "tea"
 	seed = /obj/item/seeds/tea
-	tastes = list("grass" = 1)
+	tastes = list("青草味" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	rotprocess = null
@@ -778,7 +778,7 @@
 	desc = "一种据说有助于视力的大长蔬菜。常用于烘焙。"
 	icon_state = "carrot"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
-	tastes = list("carrot" = 1)
+	tastes = list("胡萝卜味" = 1)
 	dropshrink = 0.75
 	seed = /obj/item/seeds/carrot
 
@@ -797,43 +797,43 @@
 // Stored here, as it uses deepfrying to make. Let's cook, yo!
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/skysugarbase
-	name = "panacea of skysugar"
-	desc = "A combination of perplexingly diverse ingredients, that - when specifically boiled in fat - merges together to create an \
-	alchemically pure substance. South of Ferentia's border, it's known as 'skysugar'; a Pestran heresy, rumored to've originally been \
-	brewed to cure that which even a quicksilver poultice couldn't mend. Despite its fruity aroma, it probably shouldn't be nibbled at."
+	name = "天糖灵药原液"
+	desc = "由种类繁杂得令人费解的材料混合而成，只有放入油脂中煮炼，才会融合成一种 \
+	经炼金术提纯的物质。在费伦提亚边境以南，它被称为“天糖”，是一种佩斯特拉异端造物；据说最初 \
+	是为了医治连水银药膏也无能为力的病症而调制的。尽管散发着果香，最好还是别尝它。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "lux_impure_combo"
 	faretype = FARE_IMPOVERISHED
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	tastes = list("a horrifically bad idea" = 1, "slightly fruity aftertaste" = 1)
+	tastes = list("糟糕透顶的主意" = 1, "淡淡的果味余韵" = 1)
 	bitesize = 2
 	list_reagents = list(/datum/reagent/toxin/killersice = 1, /datum/reagent/starsugar = 8, /datum/reagent/water = 7, /datum/reagent/consumable/nutriment = 3) //Feeling a little.. under the weather?
 	deep_fried_type = /obj/item/reagent_containers/food/snacks/grown/skysugarslab
 	sellprice = 23
 
 /obj/item/reagent_containers/food/snacks/grown/skysugarslab
-	name = "skysugar slab"
-	desc = "A crystalline brick that radiates with an almost-ethereal hue, yet to be broken up at an alchemical lab. They call \
-	it 'luchtblauw' in Old Emperial; alchemically purified starsugar, to a ninth-of-a-hundreth dram. Born of a Pestran heresy, this \
-	mysterious substance is both ludicrously potent and condemned by the Church. Even so, it's worth its weight in gold; and in the \
-	hands of a yeoman willing to 'break bad', it can be sold to an amoral Merchant or Bathmatron for a hefty sum."
+	name = "天糖晶砖"
+	desc = "一块泛着近乎空灵光泽的结晶砖，尚待在炼金实验室中敲碎。古帝国语称它为 \
+	“luchtblauw”；这是经炼金术提纯的星糖，精细到九百分之一打兰。作为佩斯特拉异端的产物，这种 \
+	神秘物质效力强得荒唐，也遭到教会谴责。即便如此，它仍价值如金；若落到一个甘愿堕落的 \
+	自耕农手中，便能卖给毫无道德的商人或浴场主，换来一大笔钱。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "lux_slab"
 	gender = PLURAL
 	bitesize = 7
 	faretype = FARE_IMPOVERISHED //Have you ever tried eating a solid chunk of soul-meth, before?
-	tastes = list("a slightly less bad idea" = 1, "shards of fruit-tinged glass" = 1)
+	tastes = list("稍微没那么糟的主意" = 1, "带果味的玻璃碎片" = 1)
 	list_reagents = list(/datum/reagent/starsugar = 16, /datum/reagent/water = 6, /datum/reagent/consumable/nutriment = 6)
 	grind_results = list(/datum/reagent/starsugar = 98) //Add a custom reagent if you wish. I think that'd be pretty cool.
 	sellprice = 137
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 
 /obj/item/reagent_containers/powder/starsugar/skysugar
-	name = "skysugar"
-	desc = "A crystalline powder that radiates with an almost-ethereal hue, and feels deathly cold to the touch. They call \
-	it 'luchtblauw' in Old Emperial; alchemically purified starsugar, to a ninth-of-a-hundreth dram. Born of a Pestran heresy, this \
-	mysterious substance is both ludicrously potent and condemned by the Church. Even so, it's worth its weight in gold; and in the \
-	hands of a yeoman willing to 'break bad', it can be sold to an amoral Merchant or Bathmatron for a hefty sum."
+	name = "天糖"
+	desc = "一种泛着近乎空灵光泽的结晶粉末，摸上去冰冷刺骨。古帝国语称它为 \
+	“luchtblauw”；这是经炼金术提纯的星糖，精细到九百分之一打兰。作为佩斯特拉异端的产物，这种 \
+	神秘物质效力强得荒唐，也遭到教会谴责。即便如此，它仍价值如金；若落到一个甘愿堕落的 \
+	自耕农手中，便能卖给毫无道德的商人或浴场主，换来一大笔钱。"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "lux_powder"
 	item_state = "lux_powder"
@@ -852,7 +852,7 @@
 	dropshrink = 0.75
 	slices_num = 2
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/cucumber_sliced
-	tastes = list("cucumber" = 1)
+	tastes = list("黄瓜味" = 1)
 	chopping_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/eggplant
