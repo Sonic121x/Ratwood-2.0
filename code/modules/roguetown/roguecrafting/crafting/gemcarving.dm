@@ -686,7 +686,7 @@
 	craftdiff = SKILL_LEVEL_EXPERT
 
 /datum/crafting_recipe/roguetown/gemcarving/onyxa/urn
-	name = "onyxa 骨灰瓮"
+	name = "缟玛瑙骨灰瓮"
 	result = /obj/item/carvedgem/onyxa/urn
 	reqs = list(/obj/item/roguegem/onyxa = 1)
 	craftdiff = SKILL_LEVEL_EXPERT
