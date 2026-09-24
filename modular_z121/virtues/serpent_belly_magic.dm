@@ -85,7 +85,7 @@
 	var/mob/living/host = z121_serpent_cast.host()
 	if(!host)
 		return FALSE
-	z121_base_cast(targets, user)
+	z121_serpent_base_cast(targets, user)
 	fire_projectile(user, host)
 	update_icon()
 	// 冷却、咒语、资源及疲劳统一交给 perform，不能在这里再扣一遍。
@@ -152,15 +152,11 @@
 	update_icon()
 	return TRUE
 
-/datum/z121_metamagic_payload/New(datum/source)
-	. = ..()
-	z121_serpent_cast = source.z121_serpent_cast
-
 // 普通直接伤害本来就不检定外穿护甲；这里只为腹内攻击补齐反魔和无敌的判定。
 /obj/effect/proc_holder/spell/proc/z121_serpent_blocked(list/targets, mob/user)
 	if(!z121_serpent_cast || !z121_serpent_cast.blocks(targets?[1]))
 		return FALSE
-	z121_base_cast(targets, user)
+	z121_serpent_base_cast(targets, user)
 	to_chat(user, span_warning("魔力触及周遭的血肉，却被无形的屏障消解了。"))
 	return TRUE
 

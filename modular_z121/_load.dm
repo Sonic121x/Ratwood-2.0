@@ -220,11 +220,18 @@
 #include "admin/cleanup_world.dm"
 #include "admin/world_modulation.dm"
 #include "admin/world_modulation_catalog.dm"
+#include "admin/world_modulation_presets.dm"
+#include "admin/world_modulation_resources.dm"
+#include "admin/world_modulation_spells.dm"
+#include "admin/world_modulation_spell_presets.dm"
+#include "admin/world_modulation_traits.dm"
 #include "admin/world_modulation_copy.dm"
 #include "storytellers/god_blessings.dm"
 // 自定义美德：死亡回归，按清晨保存身体、特性与积分，每日一次。
 #include "virtues/never_ending.dm"
 #include "virtues/death_return_snapshot.dm"
+// 自定义特质：超级受虐狂，保留受虐狂效果，将流血与剧痛转为正面心情。
+#include "quirks/super_masochist.dm"
 // 自定义美德：魅魔血脉（限女性身体、消耗 24 凯旋点；获得 魅魔血脉/美貌/传奇情人 三特性。
 // 每当被内射：随机获得 12 分钟"餍足"（对应属性 +1）+ 随餍足数量递增的心情；对方获得 4 分钟
 // "魅魔之吻"（心情'与魅魔交合' + 力量-1/耐力-1）；对方处于该状态时再次内射不会餍足。
@@ -319,6 +326,8 @@
 #include "virtues/rpg_system_daily.dm"
 // RPG 任务的私人头顶箭头与距离提示。
 #include "virtues/rpg_system_tracking.dm"
+// 账号 KUKULING 登录时自动获得 RPG 系统及初始积分，须在系统定义后加载。
+#include "virtues/rpg_system_kukuling_autogrant.dm"
 // 按账号赠礼：唯一的登录派发器（统一持有 human/Login() 覆写，逐一调用各账号赠礼 proc）
 #include "account_perks/account_perks.dm"
 // 按账号赠礼：账号 Sonic121 进入游戏即自动获得自定义特性【温暖力场】（向周围玩家持续散发情绪增益）
@@ -347,7 +356,7 @@
 #include "species/shadekin_equipment_access.dm"
 #include "datum/loadout.dm"//添加新的开局物品选项
 #include "vices/grayscale.dm"
-// 超魔适配最后加载，使局部覆写能调用原有法术实现。
-#include "virtues/metamagic.dm"
+// 腹内法术适配须先于蛇腹者的施法拦截加载。
+#include "virtues/serpent_belly_spell_adapters.dm"
 // 蛇腹者美德及专属吞入、吐出能力。
 #include "virtues/serpent_belly.dm"

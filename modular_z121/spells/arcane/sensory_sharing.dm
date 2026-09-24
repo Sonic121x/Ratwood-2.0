@@ -190,7 +190,7 @@
 /obj/effect/proc_holder/spell/self/sensory_sharing
 	name = "视觉共享"
 	desc = "一道奇妙的法术，借魔力将两人的视觉彼此相连——可随时切换，透过对方的双眼观察世界。"
-	school = "transmutation"
+	school = "divination"
 	spell_tier = 2                          // T2 法术
 	cost = SENSORY_MANA_COST                // “法力 / 法术点”消耗 = 3
 	releasedrain = SENSORY_RESOURCE_COST    // “额外资源消耗”= 5（施法抽取的疲劳/耐力）
@@ -349,7 +349,7 @@
 		return FALSE
 
 	// 安排 3 分钟后自动到期。把 timer id 记到 link 上，便于一方提前失效时清掉它。
-	link.expire_timer_id = addtimer(CALLBACK(link, TYPE_PROC_REF(/datum/sensory_share_link, expire)), z121_duration(SENSORY_DURATION), TIMER_STOPPABLE)
+	link.expire_timer_id = addtimer(CALLBACK(link, TYPE_PROC_REF(/datum/sensory_share_link, expire)), SENSORY_DURATION, TIMER_STOPPABLE)
 
 	// 表现层：成功反馈与音效。
 	playsound(get_turf(user), 'sound/magic/whiteflame.ogg', 60, TRUE)

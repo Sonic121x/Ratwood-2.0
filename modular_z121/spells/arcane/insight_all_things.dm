@@ -35,7 +35,7 @@
 /obj/effect/proc_holder/spell/invoked/insight_all_things
 	name = "洞悉万物"
 	desc = "一道实用法术，借由魔力让目标对四周环境了如指掌——任何踏出门去的冒险者都不可或缺的本领。"
-	school = "transmutation"
+	school = "divination"
 	spell_tier = 2                          // T2 法术
 	cost = INSIGHT_MANA_COST                // “法力 / 法术点”消耗 = 3
 	releasedrain = INSIGHT_RESOURCE_COST    // “额外资源消耗”= 10（施法时抽取的疲劳/耐力）
@@ -119,7 +119,7 @@
 	// 把计算好的时长作为额外参数传给状态效果。
 	// apply_status_effect(effect, custom_duration) 会把它转交给 on_creation()，
 	// 由状态效果在自身被基类换算成绝对到期时间之前写入 duration。
-	z121_apply_status(target, /datum/status_effect/buff/all_seeing_insight, effect_duration)
+	target.apply_status_effect(/datum/status_effect/buff/all_seeing_insight, effect_duration)
 
 	// 防御性校验：确认效果确实挂上了，否则视为失败并退还冷却。
 	if(!target.has_status_effect(/datum/status_effect/buff/all_seeing_insight))
@@ -141,7 +141,7 @@
 		)
 		to_chat(target, span_green("一股温和的奥术之力涌入双眼，我的感知瞬间铺满四周，前后左右尽收眼底！"))
 	// 告知施法者本次时长，便于其据自身技能判断收益。
-	to_chat(user, span_info("此次『洞悉万物』的持续时间为 [effect_duration * z121_meta_duration / 10] 秒（取决于我的奥术造诣）。"))
+	to_chat(user, span_info("此次『洞悉万物』的持续时间为 [effect_duration / 10] 秒（取决于我的奥术造诣）。"))
 	return TRUE
 
 // ===========================================================================

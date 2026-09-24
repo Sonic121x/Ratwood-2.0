@@ -1,5 +1,6 @@
 /obj/effect/proc_holder/spell/targeted/conjure_item/summon_magic_bedroll
 	name = "召唤魔法睡袋"
+	school = "conjuration"
 	desc = "在手中召唤一只捆好的魔法睡袋。它与普通睡袋作用相同，但只能维持短短数分钟。"
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "summon_bedroll"
@@ -51,6 +52,6 @@
 /obj/effect/proc_holder/spell/targeted/conjure_item/summon_magic_bedroll/make_item()
 	var/obj/item/bedroll/magic/summoned_bedroll = new item_type
 	// 每次施法都生成一只独立计时的魔法睡袋，卷起/展开时会继承剩余寿命。
-	summoned_bedroll.set_magic_expiration(world.time + z121_duration(3 MINUTES))
+	summoned_bedroll.set_magic_expiration(world.time + 3 MINUTES)
 	item = summoned_bedroll
 	return item

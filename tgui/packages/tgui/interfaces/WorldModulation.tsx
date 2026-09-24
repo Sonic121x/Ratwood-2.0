@@ -6,11 +6,12 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type CatalogRow = {
-  id: number;
+  id: string;
   name: string;
   description: string;
-  source: string;
+  aliases?: string;
   category: string;
+  subcategory: string;
   terrain: BooleanLike;
 };
 
@@ -30,6 +31,25 @@ type Page<T> = {
 
 type ValueRow = { id: string | number; name: string; value: number };
 
+type ResourceRow = {
+  id: string;
+  name: string;
+  current: number;
+  maximum: number;
+  custom: BooleanLike;
+  rate: number;
+  enabled: BooleanLike;
+};
+
+type SpellRow = {
+  id: string;
+  path: string;
+  name: string;
+  description: string;
+  miracle: BooleanLike;
+  owned: BooleanLike;
+};
+
 type Data = {
   tab: string;
   busy: BooleanLike;
@@ -39,9 +59,14 @@ type Data = {
   godmode: BooleanLike;
   held_item: string | null;
   position: string;
-  source: string;
+  lookup: BooleanLike;
+  catalog_query: string;
   category: string;
-  catalog?: Page<CatalogRow> & { categories: string[] };
+  subcategory: string;
+  catalog?: Page<CatalogRow> & {
+    categories: string[];
+    subcategories: string[];
+  };
   weather_options?: { id: number; name: string }[];
   weather?: string;
   tod?: string;
@@ -53,6 +78,20 @@ type Data = {
   traits?: Page<TraitRow>;
   trait_query?: string;
   owned_only?: BooleanLike;
+  resources?: {
+    available: BooleanLike;
+    reason?: string;
+    miracles: string;
+    has_devotion: BooleanLike;
+    has_mind: BooleanLike;
+    points: number;
+    used_points: number;
+    rows: ResourceRow[];
+  };
+  spells?: Page<SpellRow> & { has_mind: BooleanLike };
+  spell_query?: string;
+  spell_filter?: string;
+  spell_owned_only?: BooleanLike;
 };
 
 const tabs = [
@@ -61,16 +100,11 @@ const tabs = [
   ['buildings', '调用建筑', 'hammer'],
   ['creatures', '生成生物', 'paw'],
   ['stats', '自身属性', 'user'],
+  ['resources', '资源与权限', 'heart'],
+  ['spells', '法术与奇迹', 'magic'],
   ['skills', '自身技能', 'book'],
   ['traits', '自身特性', 'star'],
 ];
-
-const sources = {
-  all: '全部来源',
-  craft: '制作菜单',
-  rpg: 'RPG 商店',
-  purchase: '购买目录',
-};
 
 const times = {
   natural: '自然昼夜',
@@ -87,8 +121,6 @@ const inputStyle = {
   padding: '6px 8px',
   borderRadius: '3px',
 };
-
-const sourceName = (source: string) => sources[source] || source;
 
 const Pagination = ({
   page,
@@ -219,6 +251,7 @@ const WorldControls = () => {
 
 const Catalog = () => {
   const { act, data } = useBackend<Data>();
+  const [query, setQuery] = useState(data.catalog_query || '');
   const catalog = data.catalog;
   if (!catalog) {
     return null;
@@ -226,33 +259,77 @@ const Catalog = () => {
   return (
     <>
       <Section title="选择目录">
-        <Box mb={1}>
-          {Object.entries(sources).map(([source, name]) => (
+        {data.tab === 'items' && (
+          <Box mb={1}>
             <Button
-              key={source}
-              selected={data.source === source}
+              selected={!data.lookup}
               disabled={!!data.busy}
-              onClick={() => act('source', { source })}
+              onClick={() => data.lookup && act('lookup')}
             >
-              {name}
+              独立预设目录
             </Button>
-          ))}
+            <Button
+              selected={!!data.lookup}
+              disabled={!!data.busy}
+              onClick={() => !data.lookup && act('lookup')}
+            >
+              按名称／ID 查找全部物品
+            </Button>
+          </Box>
+        )}
+        <Box mb={1}>
+          <input
+            aria-label="物品名称或 ID"
+            placeholder="输入名称、别名或完整 ID，搜索后选择候选项"
+            style={{ ...inputStyle, width: '75%', marginRight: 8 }}
+            value={query}
+            maxLength={256}
+            onChange={(event) => setQuery(event.target.value)}
+            onKeyDown={(event) =>
+              event.key === 'Enter' && act('catalog_query', { value: query })
+            }
+          />
+          <Button
+            disabled={!!data.busy}
+            onClick={() => act('catalog_query', { value: query })}
+          >
+            搜索
+          </Button>
         </Box>
-        <select
-          aria-label="目录分类"
-          style={{ ...inputStyle, width: '100%', marginBottom: 10 }}
-          value={data.category}
-          disabled={!!data.busy}
-          onChange={(event) =>
-            act('category', { category: event.target.value })
-          }
-        >
-          {catalog.categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        {!(data.tab === 'items' && data.lookup) && (
+          <>
+            <select
+              aria-label="目录分类"
+              style={{ ...inputStyle, width: '100%', marginBottom: 10 }}
+              value={data.category}
+              disabled={!!data.busy}
+              onChange={(event) =>
+                act('category', { category: event.target.value })
+              }
+            >
+              {catalog.categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            <select
+              aria-label="目录子分类"
+              style={{ ...inputStyle, width: '100%', marginBottom: 10 }}
+              value={data.subcategory}
+              disabled={!!data.busy}
+              onChange={(event) =>
+                act('subcategory', { value: event.target.value })
+              }
+            >
+              {catalog.subcategories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
         <Box>
           生成位置：
           <Button
@@ -304,9 +381,13 @@ const Catalog = () => {
           }
         >
           <Box color="label" mb={0.5}>
-            {sourceName(row.source)} · {row.category}
+            {row.category} · {row.subcategory}
           </Box>
           {row.description}
+          <Box color="label" mt={0.5} style={{ overflowWrap: 'anywhere' }}>
+            ID：{row.id}
+          </Box>
+          {row.aliases && <Box color="label">别名：{row.aliases}</Box>}
         </Section>
       ))}
       <Pagination {...catalog} action="page" />
@@ -384,12 +465,261 @@ const Traits = () => {
           }
         >
           <Box color={trait.owned ? 'good' : 'label'} mb={0.5}>
-            {trait.owned ? '已拥有' : '未拥有'}
+            {trait.owned ? '已拥有' : '未拥有'} · ID：{trait.id}
           </Box>
           {trait.description || '此特性尚无说明。'}
         </Section>
       ))}
       <Pagination {...traits} action="trait_page" />
+    </>
+  );
+};
+
+const AmountEditor = ({
+  label,
+  value,
+  action,
+  id,
+  minimum = 0,
+  integer = false,
+  disabled = false,
+}: {
+  label: string;
+  value: number;
+  action: string;
+  id?: string;
+  minimum?: number;
+  integer?: boolean;
+  disabled?: boolean;
+}) => {
+  const { act, data } = useBackend<Data>();
+  const [text, setText] = useState(String(value));
+  useEffect(() => setText(String(value)), [value, id]);
+  const number = Number(text);
+  const valid =
+    text.trim() !== '' &&
+    Number.isFinite(number) &&
+    number >= minimum &&
+    number <= 1000000 &&
+    (!integer || Number.isInteger(number));
+  return (
+    <Box mb={1}>
+      <Box inline width={13}>
+        {label}
+      </Box>
+      <input
+        aria-label={label}
+        type="number"
+        min={minimum}
+        max={1000000}
+        step={integer ? 1 : 'any'}
+        value={text}
+        disabled={disabled || !!data.busy}
+        style={{ ...inputStyle, width: 115, marginRight: 8 }}
+        onChange={(event) => setText(event.target.value)}
+      />
+      <Button
+        disabled={disabled || !!data.busy || !valid}
+        onClick={() => act(action, { id, value: number })}
+      >
+        应用
+      </Button>
+    </Box>
+  );
+};
+
+const Resources = () => {
+  const { act, data } = useBackend<Data>();
+  const resources = data.resources;
+  if (!resources?.available) {
+    return <Section>{resources?.reason || '当前角色无法调整资源。'}</Section>;
+  }
+  return (
+    <>
+      <Section title="奇迹权限">
+        {[
+          ['default', '原有规则'],
+          ['allow', '允许'],
+          ['deny', '禁止'],
+        ].map(([value, label]) => (
+          <Button
+            key={value}
+            selected={resources.miracles === value}
+            disabled={!!data.busy}
+            onClick={() => act('miracles', { value })}
+          >
+            {label}
+          </Button>
+        ))}
+        <Box color="label" mt={1}>
+          允许时仍需支付虔诚值并遵守冷却与施法条件；禁止不会删除已拥有的奇迹。
+          没有虔诚资源时，允许会建立上限 250、初始值 0
+          的资源池，按原生最低档被动恢复。 恢复原有规则会撤销此临时资源池。
+        </Box>
+      </Section>
+      <Section title="法术点">
+        {resources.has_mind ? (
+          <>
+            <AmountEditor
+              label="可用法术点"
+              value={resources.points}
+              action="spell_points"
+              integer
+            />
+            <Box color="label">
+              已使用：{resources.used_points}；直接添加法术不消耗法术点。
+            </Box>
+          </>
+        ) : (
+          <Box color="orange">当前角色没有心智，无法调整法术点。</Box>
+        )}
+      </Section>
+      <Box mb={1} color="label">
+        上限设置持续作用于当前身体。提高上限不补满资源；恢复倍率 1 为原速，0
+        为停止自然恢复。
+        倍率保留原有恢复条件，不影响药剂、法术、祈祷或虔诚晋升进度。
+      </Box>
+      {resources.rows.map((row) => (
+        <Section
+          key={row.id}
+          title={row.name}
+          buttons={
+            <Button
+              disabled={!row.enabled || !!data.busy}
+              onClick={() => act('resource_reset', { id: row.id })}
+            >
+              恢复默认
+            </Button>
+          }
+        >
+          {row.enabled ? (
+            <>
+              <Box mb={1}>
+                当前：{row.current} / {row.maximum} ·{' '}
+                {row.custom ? '自定义上限' : '原生上限'}
+              </Box>
+              <AmountEditor
+                label="最大值"
+                value={row.maximum}
+                action="resource_max"
+                id={row.id}
+                minimum={1}
+                integer
+              />
+              <AmountEditor
+                label="自然恢复倍率"
+                value={row.rate}
+                action="resource_rate"
+                id={row.id}
+              />
+            </>
+          ) : (
+            <Box color="label">当前没有虔诚资源，请先允许释放奇迹。</Box>
+          )}
+        </Section>
+      ))}
+    </>
+  );
+};
+
+const Spells = () => {
+  const { act, data } = useBackend<Data>();
+  const spells = data.spells;
+  if (!spells) {
+    return null;
+  }
+  return (
+    <>
+      <Section title="法术与奇迹">
+        <Box mb={1}>
+          <Button
+            selected={!data.spell_owned_only}
+            onClick={() => data.spell_owned_only && act('spell_owned_only')}
+          >
+            可添加目录
+          </Button>
+          <Button
+            selected={!!data.spell_owned_only}
+            onClick={() => !data.spell_owned_only && act('spell_owned_only')}
+          >
+            已拥有／移除
+          </Button>
+        </Box>
+        <Box mb={1}>
+          {[
+            ['all', '全部'],
+            ['spells', '法术'],
+            ['miracles', '奇迹'],
+          ].map(([value, label]) => (
+            <Button
+              key={value}
+              selected={data.spell_filter === value}
+              onClick={() => act('spell_filter', { value })}
+            >
+              {label}
+            </Button>
+          ))}
+        </Box>
+        <input
+          aria-label="搜索法术或奇迹"
+          style={{ ...inputStyle, width: '95%' }}
+          placeholder="搜索名称、说明或 ID"
+          value={data.spell_query || ''}
+          maxLength={256}
+          onChange={(event) =>
+            act('spell_query', { value: event.target.value })
+          }
+        />
+        <Box color="label" mt={1}>
+          直接添加无需学习条件或法术点，施放仍遵守原有规则。移除不返还法术点，
+          其他系统之后仍可能重新授予。奇迹施放权限在“资源与权限”中设置。
+        </Box>
+        {!spells.has_mind && (
+          <Box color="orange" mt={1}>
+            当前角色没有心智，无法添加法术。
+          </Box>
+        )}
+      </Section>
+      <Pagination {...spells} action="spell_page" />
+      {spells.rows.map((row) => (
+        <Section
+          key={row.id}
+          title={row.name}
+          buttons={
+            data.spell_owned_only ? (
+              <Button.Confirm
+                color="bad"
+                confirmContent="移除此法术？"
+                disabled={!data.body || !!data.busy}
+                onClick={() => act('remove_spell', { id: row.id })}
+              >
+                移除
+              </Button.Confirm>
+            ) : (
+              <Button
+                disabled={
+                  !data.body || !spells.has_mind || !!data.busy || !!row.owned
+                }
+                onClick={() => act('add_spell', { id: row.id })}
+              >
+                {row.owned ? '已拥有' : '添加'}
+              </Button>
+            )
+          }
+        >
+          <Box color="label" mb={0.5}>
+            {row.miracle ? '奇迹' : '法术'}
+          </Box>
+          {row.description}
+          <Box color="label" mt={0.5} style={{ overflowWrap: 'anywhere' }}>
+            ID：{row.path}
+          </Box>
+        </Section>
+      ))}
+      {!spells.rows.length && (
+        <Box color="label">没有符合筛选条件的法术或奇迹。</Box>
+      )}
+      <Pagination {...spells} action="spell_page" />
     </>
   );
 };
@@ -487,6 +817,8 @@ export const WorldModulation = () => {
                 </>
               )}
               {data.tab === 'traits' && <Traits />}
+              {data.tab === 'resources' && <Resources />}
+              {data.tab === 'spells' && <Spells />}
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@
 	charging_slowdown = 0
 	chargedloop = null
 	associated_skill = /datum/skill/magic/arcane
-	cost = 3
+	cost = 1
 	miracle = FALSE
 
 /obj/projectile/energy/mini_magic_missile

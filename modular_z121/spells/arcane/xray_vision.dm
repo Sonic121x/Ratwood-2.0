@@ -40,7 +40,7 @@
 	recharge_time = 30 SECONDS
 	human_req = TRUE
 	warnie = "spellwarning"
-	school = "transmutation"
+	school = "divination"
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "xray_vision"
 	spell_tier = 2
@@ -64,7 +64,7 @@
 
 	var/mob/living/spelltarget = target_atom
 	var/already_enchanted = spelltarget.has_status_effect(/datum/status_effect/buff/xray_vision)
-	z121_apply_status(spelltarget, /datum/status_effect/buff/xray_vision, 10 SECONDS)
+	spelltarget.apply_status_effect(/datum/status_effect/buff/xray_vision, 10 SECONDS)
 	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 70, TRUE, soundping = TRUE)
 
 	if(spelltarget == user)

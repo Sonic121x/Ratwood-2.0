@@ -13,7 +13,7 @@
 /obj/effect/proc_holder/spell/self/storage_spell
 	name = "储物术"
 	desc = "将当前手中的一件物品存入魔法空间，再次施法取出。最多保存一件，不限体积；不能存入背包等物品容器，但可以存入药瓶、水袋等液体容器。取出时若双手已满，物品会落在脚下。"
-	school = "transmutation"
+	school = "conjuration"
 	spell_tier = 1
 	cost = STORAGE_MANA_COST
 	releasedrain = STORAGE_RESOURCE_COST

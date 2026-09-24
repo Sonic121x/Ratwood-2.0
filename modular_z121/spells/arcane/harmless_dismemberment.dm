@@ -901,7 +901,7 @@
 		return FALSE
 	if(gesture_required && (user.handcuffed || !user.has_active_hand()))
 		return FALSE
-	if(!z121_silent(user) && (invocation_type == "whisper" || invocation_type == "shout"))
+	if(invocation_type == "whisper" || invocation_type == "shout")
 		if((!user.can_speak_vocal() && !(mute_allowed && HAS_TRAIT(user, TRAIT_PERMAMUTE) && !user.check_mouth_grabbed())) || !user.getorganslot(ORGAN_SLOT_TONGUE))
 			return FALSE
 		var/datum/language/default_language = user.get_default_language()
@@ -1171,7 +1171,7 @@
 		span_notice("[human_user] 将手轻轻按在自己的喉颈与腕骨之间，像在替一具尚未拆开的肉身丈量缝线。"),
 		span_notice("我开始维持那道漫长而古怪的拆解咒，引导即将降临的温柔断离。")
 	)
-	if(!do_after(human_user, z121_channel(10 SECONDS, human_user), target = human_user, progress = TRUE))
+	if(!do_after(human_user, 10 SECONDS, target = human_user, progress = TRUE))
 		if(!QDELETED(human_user))
 			to_chat(human_user, span_warning("我的拆解咒在成形前散掉了。"))
 		return revert_harmless_cast(human_user)
@@ -1228,7 +1228,7 @@
 			return revert_harmless_cast(human_user)
 
 	var/already_enchanted = spelltarget.has_status_effect(/datum/status_effect/buff/harmless_dismemberment)
-	z121_apply_status(spelltarget, /datum/status_effect/buff/harmless_dismemberment, 2 MINUTES, human_user)
+	spelltarget.apply_status_effect(/datum/status_effect/buff/harmless_dismemberment, 2 MINUTES, human_user)
 	var/datum/status_effect/buff/harmless_dismemberment/effect = spelltarget.has_status_effect(/datum/status_effect/buff/harmless_dismemberment)
 	if(QDELETED(effect))
 		return revert_harmless_cast(human_user)
@@ -1249,10 +1249,7 @@
 			to_chat(human_user, span_notice("我重新续上了 [spelltarget] 身上的无害肢解。"))
 			to_chat(spelltarget, span_notice("那道维系我断口的古怪柔力重新充盈了起来。"))
 		else
-			if(z121_silent(human_user))
-				human_user.visible_message(span_notice("[human_user] 贴近 [spelltarget]，以无声的魔力将一层柔和而诡异的魔力缝进了 [spelltarget.p_their()] 血肉。"))
-			else
-				human_user.visible_message(span_notice("[human_user] 贴近 [spelltarget]，以低缓咒语将一层柔和而诡异的魔力缝进了 [spelltarget.p_their()] 血肉。"))
+			human_user.visible_message(span_notice("[human_user] 贴近 [spelltarget]，以低缓咒语将一层柔和而诡异的魔力缝进了 [spelltarget.p_their()] 血肉。"))
 			to_chat(human_user, span_notice("我把无害肢解缝进了 [spelltarget] 的血肉里。接下来的两分钟里，[spelltarget.p_their()] 的身体会像一件还能活着的器皿那样被拆开。"))
 			to_chat(spelltarget, span_notice("[human_user] 的魔法轻柔地覆上了我的身体。接下来的两分钟里，只要切口平整迅速，我的肢体与头颅就能在不死不伤的古怪温柔中分离，并在归位时重新接回。"))
 			to_chat(human_user, span_notice("在法术维持期间，我还可以继续点按“指定脱落”来反复选择新的部位。"))

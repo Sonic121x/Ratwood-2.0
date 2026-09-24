@@ -58,10 +58,7 @@
 		return FALSE
 
 	playsound(get_turf(target_obj), 'sound/magic/whiteflame.ogg', 80, TRUE)
-	if(z121_silent(user))
-		user.visible_message(span_notice("[user] 朝着 [target_obj] 丝丝裂痕与磨损竟像倒流的时光一般自行愈合。"))
-	else
-		user.visible_message(span_notice("[user] 朝着 [target_obj] 念出古老咒言，丝丝裂痕与磨损竟像倒流的时光一般自行愈合。"))
+	user.visible_message(span_notice("[user] 朝着 [target_obj] 念出古老咒言，丝丝裂痕与磨损竟像倒流的时光一般自行愈合。"))
 	to_chat(user, span_notice("我将 [target_obj] 受到的损伤逆转回更完好的状态。"))
 	return TRUE
 

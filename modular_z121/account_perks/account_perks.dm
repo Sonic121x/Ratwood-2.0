@@ -3,7 +3,7 @@
 // 登录派发器（Login dispatcher）：按账号在"角色进入游戏"时统一赠礼
 // ----------------------------------------------------------------------------
 // 这个文件存在的唯一理由：
-//   本目录统一管理"按账号赠礼"的特例，目前保留 Sonic121 自动获得温暖力场。
+//   本目录统一管理账号赠礼：KUKULING 获得 RPG 系统与积分，Sonic121 获得温暖力场。
 //   赠礼需要在"角色进入游戏"那一刻触发，而该时刻对应引擎在人物上调用的
 //   /mob/living/carbon/human/Login()。但 DM 中同一类型路径的 Login() 只能定义一次——若每个特例
 //   各自覆写 Login()，会造成"重复定义"硬编译错误。
@@ -23,6 +23,7 @@
 //
 // 依赖（均为引擎 / 本模块已有内容）：
 //   - /mob/living/Login()                              核心登录入口（被 ..() 链到）
+//   - /mob/living/carbon/human/proc/grant_kukuling_perks()  KUKULING 的 RPG 系统赠礼
 //   - /mob/living/carbon/human/proc/grant_sonic121_perks()  Sonic121 赠礼（modular_z121/account_perks/warm_power_field.dm）
 //
 // 加载：本文件需在 _load.dm 中 #include。各赠礼 proc 由 proc 名全局解析，文件包含先后顺序不影响调用。
@@ -34,4 +35,5 @@
 	. = ..()
 	// 依次派发各"按账号赠礼"逻辑。每个 proc 内部自带 ckey 自检，不是对应账号即安静返回，
 	//   故这里无条件全部调用即可。新增受惠账号时在此追加一行调用。
+	grant_kukuling_perks()
 	grant_sonic121_perks()

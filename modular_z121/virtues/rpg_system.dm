@@ -102,20 +102,18 @@
 // 强化属性的"基础单价系数"（积分）。实际花费 = 基础系数 × 当前属性值。
 // 为什么按当前值线性递增：需求要求"属性越高，强化所需积分越多"——属性越接近上限越珍贵，
 //   单价随当前值水涨船高，能自然形成"前期易、后期贵"的成长曲线。
-// 为什么进一步上调到 60：配合"击杀积分降为 10% 最大生命值"（收入减半），属性强化要更显珍贵，
-//   故拉高系数（系数 60 时：10→11 需 600，15→16 需 900，19→20 需 1200）。单列为常量，平衡只改这一处。
-#define RPG_SYSTEM_STAT_COST_BASE 60
+// 系数为 120：10→11 需 1200，15→16 需 1800，19→20 需 2280 积分。
+#define RPG_SYSTEM_STAT_COST_BASE 120
 // 强化技能的"基础单价系数"（积分）。实际花费 = 基础系数 ×（目标等级）=（当前等级+1）。
 // 为什么按目标等级递增：同理，技能越高升级越贵——越往传奇越珍贵。
-// 为什么进一步上调到 180：同上，收入减半后技能强化也要更珍贵，故拉高系数（系数 180 时：
-//   0→1 需 180，2→3 需 540，5→6 需 1080）。单列为常量，平衡只改这一处。
-#define RPG_SYSTEM_SKILL_COST_BASE 180
+// 系数为 540：0→1 需 540，2→3 需 1620，5→6 需 3240 积分。
+#define RPG_SYSTEM_SKILL_COST_BASE 540
 
 // 特性按普通、强力、超模三档定价；目录与结算共用这些价格。
-#define RPG_SYSTEM_TRAIT_COST 2000
+#define RPG_SYSTEM_TRAIT_COST 2500
 #define RPG_SYSTEM_TRAIT_STRONG_COST 10000
 #define RPG_SYSTEM_TRAIT_OVERPOWERED_COST 99999
-#define RPG_SYSTEM_SPELL_POINT_COST 1000
+#define RPG_SYSTEM_SPELL_POINT_COST 5000
 // 通过本系统购买特性时使用的 ADD_TRAIT 来源标签：统一、可识别，便于将来需要时统一清理；
 //   不复用 TRAIT_VIRTUE / TRAIT_GENERIC 等其它来源，避免与别处授予的同名特性互相干扰。
 #define RPG_SYSTEM_TRAIT_SOURCE "rpg_system_purchase"
@@ -589,7 +587,6 @@
 		return
 	points -= RPG_SYSTEM_SPELL_POINT_COST
 	user.mind.adjust_spellpoints(1)
-	to_chat(user, span_green("【系统提示】法术点 +1，花费 [RPG_SYSTEM_SPELL_POINT_COST] 积分。（剩余积分：[points]）"))
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
 
@@ -942,8 +939,7 @@
 		to_chat(user, span_warning("【系统提示】物品生成失败，积分已退还。"))
 		return
 	user.put_in_hands(bought)
-	// 反馈本次兑换结果与剩余积分。
-	to_chat(user, span_green("【系统提示】兑换成功：[bought.name]。（剩余积分：[points]）"))
+	// 兑换结果通过界面与音效反馈，连续购买不向聊天栏刷屏。
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE) // 复用引擎已有音效，给一个轻量的"到账"反馈，无需新增音频资源。
 
 
@@ -995,8 +991,7 @@
 	// 扣费并 +1。change_stat 内部自带 1~20 封顶，这里再叠一层 get_stat 预检，双保险不浪费积分。
 	points -= cost
 	user.change_stat(stat_key, 1)
-	// 反馈强化结果与剩余积分。
-	to_chat(user, span_green("【系统提示】[display] +1（当前 [user.get_stat(stat_key)]），花费 [cost] 积分。（剩余积分：[points]）"))
+	// 强化后的属性与剩余积分由界面显示。
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
 
@@ -1086,13 +1081,12 @@
 		return
 	// 扣费并提升 1 级。adjust_skillrank 内部按经验阈值封顶到传奇，安全。
 	points -= cost
-	user.adjust_skillrank(skill_path, 1, TRUE) // 第三参 TRUE = 静默，由我们自己统一播报反馈
-	// 反馈强化结果与剩余积分。
-	to_chat(user, span_green("【系统提示】[display] 已提升至等级 [user.get_skill_level(skill_path)]，花费 [cost] 积分。（剩余积分：[points]）"))
+	user.adjust_skillrank(skill_path, 1, TRUE) // 静默强化，结果与余额由界面显示。
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
 
 // 每条记录显式指定价格档位；不自动开放职业身份、负面状态或整套美德。
+// 不上架尚无实际减速豁免效果的忽略减速，以及禁售的反反制咒。
 /datum/component/rpg_system/proc/get_trait_catalog()
 	var/static/list/catalog
 	if(!catalog)
@@ -1140,7 +1134,6 @@
 			list("trait" = TRAIT_ADRENALINE_RUSH, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_REGROW_LIMBS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_VENOMOUS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
-			list("trait" = TRAIT_COUNTERCOUNTERSPELL, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_NOBREATH, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_TOXIMMUNE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_NOHUNGER, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
@@ -1233,7 +1226,6 @@
 			list("trait" = TRAIT_SENTINELOFWITS, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_STRENGTH_UNCAPPED, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_UNCAPPED_SPEED, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
-			list("trait" = TRAIT_IGNORESLOWDOWN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_IGNOREDAMAGESLOWDOWN, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_NOFALLDAMAGE1, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
 			list("trait" = TRAIT_FORTITUDE, "cost" = RPG_SYSTEM_TRAIT_STRONG_COST, "tier" = "强力"),
@@ -1245,13 +1237,47 @@
 			list("trait" = TRAIT_INFINITE_STAMINA, "cost" = RPG_SYSTEM_TRAIT_OVERPOWERED_COST, "tier" = "超模"),
 			list("trait" = TRAIT_INFINITE_ENERGY, "cost" = RPG_SYSTEM_TRAIT_OVERPOWERED_COST, "tier" = "超模"),
 		)
-		// 使用中文显示名覆盖底层英文键，说明以现有特性说明为基础。
+		// 使用中文显示名覆盖底层英文键。
 		var/list/names = list(
 			TRAIT_EFFICIENT_WEAVER = "高效织工",
 			TRAIT_FORTITUDE = "坚毅",
 			TRAIT_GUIDANCE = "指引",
 		)
+		// 商店说明按实际效果补充条件，避免直接沿用角色背景描述。
+		// 部分全局说明登记在宏定义之前，键名并非实际特性值，需在此显式补齐。
 		var/list/descriptions = list(
+			TRAIT_HOLYWARRIOR = "身处圣地区域时，力量、感知、智力、体质、意志、速度与幸运各提高2点；离开圣地后失效。",
+			TRAIT_BASHDOORS = "可撞击破坏上锁的门，也能直接敲击损坏窗户；仍需造成足够伤害才能破坏。",
+			TRAIT_REGROW_LIMBS = "睡眠时可再生缺失的手臂或腿。每条肢体要求营养高于250，并消耗250营养；不能再生头部或器官。",
+			TRAIT_EXTEROCEPTION = "观察他人时，可以看出对方的饥饿与口渴状况。",
+			TRAIT_FASTSLEEP = "满足入睡条件时更快入睡；不直接提高睡眠时的恢复量。",
+			TRAIT_IGNOREDAMAGESLOWDOWN = "免除生命值下降造成的地面移动与悬浮移动减速；护甲、负重和地形等其他减速仍然有效。",
+			TRAIT_LEGENDARY_ALCHEMIST = "能辨认药草种子；检查炼金原料时，直接显示其适合制作的药剂及亲和度，而非仅显示气味。",
+			TRAIT_NATURALARMOR = "免受踩踏铁蒺藜等尖锐物造成的伤害与麻痹；不提供通用的劈砍或穿刺抗性。",
+			TRAIT_HARDSHELL = "攻击有玩家控制的目标时，将对方的招架成功率上限限制为70%；不降低自己的招架能力。",
+			TRAIT_TRAINED_SMITH = "用锤子修复护甲护层时，无需把护甲放在指定修理设施上；材料等其他修理条件仍然适用。",
+			TRAIT_DWARF_REPAIR = "解锁矮人武器与护甲的铁砧锻造配方；仍需满足对应材料与技能要求。",
+			TRAIT_MEDICINE_EXPERT = "允许将医术训练至传奇；不直接提高当前技能等级。",
+			TRAIT_ALCHEMY_EXPERT = "允许将炼金术训练至传奇，并能识别部分炼金物品的信息；不直接提高当前技能等级。",
+			TRAIT_SMITHING_EXPERT = "允许将武器锻造、护甲锻造、铁匠、冶炼、工程、采矿、石工与陶艺训练至传奇；不直接提高当前技能等级。",
+			TRAIT_SEWING_EXPERT = "允许将缝纫、皮革工艺与屠宰训练至传奇；不直接提高当前技能等级。",
+			TRAIT_SURVIVAL_EXPERT = "允许将烹饪、钓鱼、屠宰与皮革工艺训练至传奇，缝纫训练至熟练工；不直接提高当前技能等级。",
+			TRAIT_HOMESTEAD_EXPERT = "允许将耕作、采矿、烹饪、钓鱼、屠宰、伐木、石工与陶艺训练至传奇，缝纫与皮革工艺训练至熟练工；不直接提高当前技能等级。",
+			TRAIT_SELF_SUSTENANCE = "允许将受此特性限制的多项制造与劳作技能训练至熟练工，并允许部分装备修理；不提高炼金术上限，也不直接提高当前技能等级。",
+			TRAIT_MARTIAL_PROWESS = "允许将适用的战斗技能从专家继续训练至传奇；火器仍需火枪手特性，不直接提高当前技能等级。",
+			TRAIT_FORTITUDE = "耐力消耗减少30%，并相应减少这部分消耗带来的精力损失；不提高资源上限。",
+			TRAIT_STRENGTH_UNCAPPED = "使用武器攻击时，力量超过软上限的部分不再受到收益衰减；不直接增加力量，也不改变属性兑换上限。",
+			TRAIT_UNCAPPED_SPEED = "提高速度属性能够带来的移动加速上限，使较高速度继续发挥作用；不直接增加速度属性。",
+			TRAIT_NOFALLDAMAGE1 = "免受不超过两层的坠落冲击伤害，但落地后仍会短暂停步，并由奔跑切换为行走。更高处坠落仍会受伤。",
+			TRAIT_NOFALLDAMAGE2 = "免受坠落落地时的冲击伤害，不受坠落层数限制。",
+			TRAIT_ARCYNE_T1 = "允许学习最高一阶的奥术法术；不直接授予法术、法术点或技能等级。已有更高阶训练时不会叠加。",
+			TRAIT_ARCYNE_T2 = "允许学习最高二阶的奥术法术，包含较低阶法术；不直接授予法术、法术点或技能等级。已有更高阶训练时不会叠加。",
+			TRAIT_ARCYNE_T3 = "允许学习最高三阶的奥术法术，包含较低阶法术；不直接授予法术、法术点或技能等级。已有更高阶训练时不会叠加。",
+			TRAIT_ARCYNE_T4 = "允许学习最高四阶的奥术法术，包含较低阶法术；不直接授予法术、法术点或技能等级。",
+			TRAIT_MIRROR_MAGIC = "可借助镜子或水面改变发型、颜色等外观；不改变种族、属性或技能。",
+			TRAIT_RESONANCE = "施放「奇迹」时，强化自身周围两格视野内的碳基生物；厌恶亡灵的信仰会改为灼伤其中的亡灵。兑换此特性不会授予奇迹法术。",
+			TRAIT_LEYLINE_HASTE = "法术的蓄力时间与冷却时间缩短25%。",
+			TRAIT_SPELL_DISPERSION = "自身的抗魔效果不再阻止施法；此特性本身不提供魔法护盾或法术免疫。",
 			TRAIT_EFFICIENT_WEAVER = "织布时每份布料只需1份纤维。",
 			TRAIT_WATERLOVING = "冷水降温时，体温不会因此降至正常体温以下。",
 			TRAIT_CURSE_RESIST = "减轻神明诅咒的效果。",
@@ -1291,8 +1317,6 @@
 	// 移动效果有缓存，购买后立即重算，无需再受伤或切换步态。
 	if(trait == TRAIT_UNCAPPED_SPEED)
 		user.update_move_intent_slowdown()
-	if(trait == TRAIT_IGNORESLOWDOWN)
-		user.update_movespeed(FALSE)
 	if(trait == TRAIT_IGNOREDAMAGESLOWDOWN)
 		user.updatehealth()
 	// 无限资源不能将购买前耗尽的状态永久冻结，首次购买时同步恢复资源。
@@ -1303,7 +1327,6 @@
 		user.energy = user.max_energy
 		user.update_energy_hud()
 		user.update_stamina_hud()
-	to_chat(user, span_green("【系统提示】兑换成功，永久获得特性【[display]】，花费 [cost] 积分。（剩余积分：[points]）"))
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
 

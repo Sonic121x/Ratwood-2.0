@@ -9,7 +9,7 @@
 	recharge_time = 10 SECONDS
 	human_req = TRUE
 	warnie = "spellwarning"
-	school = "transmutation"
+	school = "conjuration"
 	overlay_state = "blink"
 	spell_tier = 2
 	action_icon = 'modular_z121/icon/custompell.dmi'

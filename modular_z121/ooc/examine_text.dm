@@ -32,6 +32,8 @@ GLOBAL_LIST_INIT(z121_ooc_examine_conflicts, list(
 
 /client
 	var/z121_ooc_examine_editing = FALSE
+	// 每次登录递增，避免旧连接或旧身体留下的延迟弹窗生效。
+	var/z121_ooc_lobby_prompt_id = 0
 
 /mob
 	// 保留账号数据引用，使断线与死亡后的身体仍能显示提示；接管时替换引用。
@@ -64,6 +66,7 @@ GLOBAL_LIST_INIT(z121_ooc_examine_conflicts, list(
 	RegisterSignal(player, COMSIG_MOB_EXAMINATE, PROC_REF(on_examinate))
 	if(player.client)
 		player.z121_ooc_profile = get_profile(player.client.ckey)
+		player.client.queue_z121_ooc_lobby_prompt(player)
 
 /datum/z121_ooc_examine_service/proc/get_profile(account_key)
 	account_key = ckey(account_key)
@@ -78,6 +81,23 @@ GLOBAL_LIST_INIT(z121_ooc_examine_conflicts, list(
 /datum/z121_ooc_examine_service/proc/on_login(mob/player, client/player_client)
 	SIGNAL_HANDLER
 	player.z121_ooc_profile = get_profile(player_client?.ckey)
+	player_client?.queue_z121_ooc_lobby_prompt(player)
+
+/client/proc/queue_z121_ooc_lobby_prompt(mob/player)
+	z121_ooc_lobby_prompt_id++
+	if(!istype(player, /mob/dead/new_player))
+		return
+	// 大厅的更新日志在登录四秒后打开，稍后再显示设置，且不阻塞登录流程。
+	addtimer(CALLBACK(src, PROC_REF(show_z121_ooc_lobby_prompt), WEAKREF(player), z121_ooc_lobby_prompt_id), 5 SECONDS)
+
+/client/proc/show_z121_ooc_lobby_prompt(datum/weakref/lobby_ref, prompt_id)
+	if(prompt_id != z121_ooc_lobby_prompt_id || z121_ooc_examine_editing)
+		return
+	var/mob/dead/new_player/lobby = lobby_ref?.resolve()
+	// 延迟期间入局、观战、断线或换身体后，不再自动弹出。
+	if(!istype(lobby) || QDELETED(lobby) || mob != lobby || lobby.client != src || lobby.spawning)
+		return
+	INVOKE_ASYNC(src, VERB_REF(z121_ooc_examine_text))
 
 /datum/z121_ooc_examine_service/proc/on_examine(mob/target, mob/viewer, list/examine_lines)
 	SIGNAL_HANDLER

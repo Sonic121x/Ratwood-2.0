@@ -44,7 +44,7 @@
 /obj/effect/proc_holder/spell/invoked/legilimency
 	name = "摄神取念"
 	desc = "一道侵入心神的高阶法术。以纯粹的意志撬开目标的心防，若对方的意志不足以抵抗，其身体便会暂时落入我的掌控；持续时间随我的奥术造诣而延长。"
-	school = "transmutation"
+	school = "enchantment"
 	spell_tier = 4                              // T4 法术
 	cost = LEGILIMENCY_MANA_COST                // “法力 / 法术点”消耗 = 6
 	releasedrain = LEGILIMENCY_RESOURCE_COST    // “额外资源消耗”= 15（施法时抽取的疲劳/耐力）
@@ -198,12 +198,12 @@
 	// 立即把施法者的客户端搬入目标身体。一旦搬走，再对 user 发消息就送不到玩家了（玩家已在目标体内）。
 	// 因此把面向施法者的提示音与时长告知放在接管“之前”发出。
 	playsound(get_turf(target), 'sound/magic/whiteflame.ogg', 70, TRUE)
-	to_chat(user, span_info("此次『摄神取念』可维持 [effect_duration * z121_meta_duration / 10] 秒（取决于我的奥术造诣）。"))
+	to_chat(user, span_info("此次『摄神取念』可维持 [effect_duration / 10] 秒（取决于我的奥术造诣）。"))
 
 	// 把计算好的时长与“施法者引用”一并传给状态效果。
 	// apply_status_effect(effect, custom_duration, caster) 会把这两个参数转发给 on_creation()，
 	// 由状态效果在 on_apply() 中完成真正的灵魂转移，并在到期/移除时归还身体。
-	z121_apply_status(target, /datum/status_effect/legilimency_control, effect_duration, user)
+	target.apply_status_effect(/datum/status_effect/legilimency_control, effect_duration, user)
 
 	// 防御性校验：确认接管状态确实挂上了，否则视为失败并退还冷却。
 	// （on_apply 内部若发现任何前置条件不满足会返回 FALSE，从而让状态效果自删；此时灵魂尚未转移，

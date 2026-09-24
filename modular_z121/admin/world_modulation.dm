@@ -18,11 +18,12 @@
 	var/busy = FALSE
 	var/notice = "所有操作无需积分、材料或货币。"
 	var/spawn_position = "here"
-	var/catalog_source = "all"
+	var/catalog_lookup = FALSE
+	var/catalog_query = ""
+	var/catalog_subcategory = "全部"
 	var/catalog_category = "全部"
 	var/catalog_page = 1
 	var/list/catalog_entries = list()
-	var/list/catalog_keys = list()
 	var/trait_query = ""
 	var/trait_page = 1
 	var/owned_traits_only = FALSE
@@ -92,7 +93,9 @@
 		"godmode" = body ? !!(body.status_flags & GODMODE) : FALSE,
 		"held_item" = held?.name,
 		"position" = spawn_position,
-		"source" = catalog_source,
+		"lookup" = catalog_lookup,
+		"catalog_query" = catalog_query,
+		"subcategory" = catalog_subcategory,
 		"category" = catalog_category,
 	)
 	if(current_tab == "world")
@@ -108,6 +111,13 @@
 		data["day"] = GLOB.dayspassed
 	else if(current_tab in list("items", "buildings", "creatures"))
 		data["catalog"] = catalog_data()
+	else if(current_tab == "resources")
+		data["resources"] = resource_data(user)
+	else if(current_tab == "spells")
+		data["spells"] = spell_data(user)
+		data["spell_query"] = spell_query
+		data["spell_filter"] = spell_filter
+		data["spell_owned_only"] = spell_owned_only
 	else if(current_tab == "stats")
 		var/list/rows = list()
 		for(var/list/definition as anything in stat_definitions())
@@ -132,21 +142,25 @@
 	for(var/define_name in GLOB.all_traits)
 		keys |= list(GLOB.all_traits[define_name])
 	for(var/trait in GLOB.roguetraits)
-		keys |= list(trait)
+		// 旧说明表有少量宏名键，统一到实际特性值，避免出现无效重复项。
+		keys |= list(GLOB.all_traits[trait] || trait)
 	for(var/trait in body?.status_traits)
 		keys |= list(trait)
 	return sortList(keys)
 
 /datum/z121_world_modulation/proc/trait_data(mob/living/body)
 	var/list/matches = list()
+	var/list/metadata = z121_world_trait_metadata()
 	for(var/trait in trait_keys(body))
 		var/owned = body && HAS_TRAIT(body, trait)
 		if(owned_traits_only && !owned)
 			continue
-		var/description = html_decode(GLOB.html_tags.Replace(GLOB.roguetraits[trait] || "", ""))
-		if(length(trait_query) && !findtext(trait, trait_query) && !findtext(description, trait_query))
+		var/list/info = metadata[trait]
+		var/display_name = info ? info["name"] : "未登记特性"
+		var/description = html_decode(GLOB.html_tags.Replace(info ? info["description"] : "说明未登记；请根据底层 ID 核对实际效果。", ""))
+		if(length(trait_query) && !findtext(trait, trait_query) && !findtext(display_name, trait_query) && !findtext(description, trait_query))
 			continue
-		matches += list(list("id" = trait, "name" = trait, "description" = description, "owned" = !!owned))
+		matches += list(list("id" = trait, "name" = display_name, "description" = description, "owned" = !!owned))
 	var/pages = max(1, CEILING(length(matches) / 24, 1))
 	trait_page = clamp(trait_page, 1, pages)
 	var/list/rows = list()
@@ -173,26 +187,39 @@
 		return
 	switch(action)
 		if("tab")
-			if(params["tab"] in list("world", "items", "buildings", "creatures", "stats", "skills", "traits"))
+			if(params["tab"] in list("world", "items", "buildings", "creatures", "stats", "skills", "traits", "resources", "spells"))
 				current_tab = params["tab"]
 				catalog_category = "全部"
+				catalog_subcategory = "全部"
+				catalog_query = ""
 				catalog_page = 1
 			return
-		if("source")
-			if(params["source"] in list("all", "craft", "rpg", "purchase"))
-				catalog_source = params["source"]
-				catalog_category = "全部"
+		if("lookup")
+			if(current_tab == "items")
+				catalog_lookup = !catalog_lookup
+				catalog_page = 1
+			return
+		if("catalog_query")
+			if(istext(params["value"]))
+				catalog_query = copytext(trim(params["value"]), 1, 257)
+				catalog_page = 1
+			return
+		if("subcategory")
+			var/list/catalog = catalog_data()
+			if(params["value"] in catalog["subcategories"])
+				catalog_subcategory = params["value"]
 				catalog_page = 1
 			return
 		if("category")
 			var/list/catalog = catalog_data()
 			if(params["category"] in catalog["categories"])
 				catalog_category = params["category"]
+				catalog_subcategory = "全部"
 				catalog_page = 1
 			return
 		if("page")
 			if(isnum(params["page"]))
-				catalog_page = clamp(round(params["page"]), 1, max(1, length(catalog_entries)))
+				catalog_page = clamp(round(params["page"]), 1, 100000)
 			return
 		if("position")
 			if(params["position"] in list("here", "front"))
@@ -220,11 +247,33 @@
 			if(isnum(params["page"]))
 				trait_page = max(1, round(params["page"]))
 			return
+		if("spell_query")
+			if(istext(params["value"]))
+				spell_query = copytext(trim(params["value"]), 1, 257)
+				spell_page = 1
+			return
+		if("spell_filter")
+			if(params["value"] in list("all", "spells", "miracles"))
+				spell_filter = params["value"]
+				spell_page = 1
+			return
+		if("spell_owned_only")
+			spell_owned_only = !spell_owned_only
+			spell_page = 1
+			return
+		if("spell_page")
+			if(isnum(params["page"]))
+				spell_page = max(1, round(params["page"]))
+			return
 	if(!isliving(user))
 		notice = "此功能需要当前控制一个生物角色。"
 		return
 	var/mob/living/body = user
 	switch(action)
+		if("resource_max", "resource_rate", "resource_reset", "spell_points", "miracles")
+			set_resource(user, action, params)
+		if("add_spell", "remove_spell")
+			change_spell(body, action, params["id"])
 		if("godmode")
 			body.status_flags ^= GODMODE
 			notice = "无敌模式已[body.status_flags & GODMODE ? "开启" : "关闭"]。"
@@ -272,10 +321,10 @@
 				// 必须显式复制来源列表，才能一并删除出生来源且不在遍历时修改同一列表。
 				var/list/all_sources = sources.Copy()
 				REMOVE_TRAIT(body, trait, all_sources)
-				notice = "已移除特性：[trait]（全部来源）。"
+				notice = "已移除特性：[z121_world_trait_metadata()[trait]?["name"] || trait]（全部来源）。"
 			else
 				ADD_TRAIT(body, trait, "z121_world_modulation")
-				notice = "已添加特性：[trait]。"
+				notice = "已添加特性：[z121_world_trait_metadata()[trait]?["name"] || trait]。"
 			audit("修改自身 Trait：[notice]")
 		if("duplicate")
 			duplicate_held_item(body)

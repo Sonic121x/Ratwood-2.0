@@ -6,11 +6,13 @@
 	desc = "晨光曾在你的影子里停留。此后，有些本该落定的句点，便迟迟没有落下。"
 	custom_text = null
 	triumph_cost = 99
-	added_traits = list(TRAIT_Z121_DEATH_RETURN)
+	// 选择界面会直接展示此列表；内部标记改在实际赋予美德时添加。
+	added_traits = list()
 
 /datum/virtue/utility/never_ending/apply_to_human(mob/living/carbon/human/recipient)
 	. = ..()
 	if(recipient)
+		ADD_TRAIT(recipient, TRAIT_Z121_DEATH_RETURN, TRAIT_VIRTUE)
 		recipient.AddComponent(/datum/component/z121_return_entry)
 
 // 入场流程尚可能进行职业选择，必须等角色实际就绪后建立初始存档。
