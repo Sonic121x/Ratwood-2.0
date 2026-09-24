@@ -3,7 +3,7 @@
 	category = "加固"
 
 /datum/crafting_recipe/roguetown/leather/reinforcement/crafteast
-	name = "装饰 dobo 长袍"
+	name = "饰纹道袍"
 	result = list(/obj/item/clothing/suit/roguetown/armor/basiceast/crafteast)
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
