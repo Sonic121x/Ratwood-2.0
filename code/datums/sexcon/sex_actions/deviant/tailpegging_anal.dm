@@ -6,11 +6,11 @@
 	user_sex_part = SEX_PART_TAIL
 
 /datum/sex_action/tailpegging_anal/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]将[user.p_their()]的尾巴滑入了[target]的后穴！"))
+	user.visible_message(span_warning("[user]将[user.p_their()]尾巴滑入了[target]的后穴！"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/tailpegging_anal/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]用[user.p_their()]的尾巴抽插着[target]的后穴。"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]用[user.p_their()]尾巴抽插着[target]的后穴。"))
 	user.sexcon.outercourse_noise(target)
 	user.sexcon.do_thrust_animate(target)
 
@@ -18,7 +18,7 @@
 	user.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/tailpegging_anal/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的尾巴从[target]的后穴中抽了出来。"))
+	user.visible_message(span_warning("[user]把[user.p_their()]尾巴从[target]的后穴中抽了出来。"))
 
 /datum/sex_action/tailpegging_anal/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())
