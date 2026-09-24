@@ -277,8 +277,8 @@
 	icon_state = "sallet_visor_s"
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron/snouted
-	name = "iron snouted visored sallet"
-	desc = "An iron 'sallet'-styled helmet with an adjustable visor, its bevor drawn forward into a muzzle. Favored by those with snouts. Out for a stroll, now, are we?"
+	name = "带吻部面罩铁制萨雷特盔"
+	desc = "一顶铁制“萨雷特”式头盔，配有可调面罩，其护颌前伸以容纳吻部，深受有吻部者喜爱。怎么，这是出来散步了？"
 	icon_state = "isallet_visor_s"
 
 /// The raised visor hides part of the plume, so these keep their own raised visor overlays
@@ -647,16 +647,16 @@
 	item_state = "roundface_s"
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron
-	name = "iron roundface bascinet"
-	desc = "An iron bascinet with a conical visor, favored by those without snouts and whiskers. Nestle a feather or length of cloth onto the rim to display your allegiance."
+	name = "铁制圆面盆盔"
+	desc = "一顶带锥形面罩的铁制盆盔，深受没有吻部与触须者喜爱。可在盔缘插上一根羽毛或一段布料，以表明你的效忠对象。"
 	icon_state = "iroundface"
 	item_state = "iroundface"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_IRON
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron/snouted
-	name = "iron snouted roundface bascinet"
-	desc = "An iron bascinet with a conical visor, drawn forward into a muzzle for those with snouts. Nestle a feather or length of cloth onto the rim to display your allegiance."
+	name = "带吻部铁制圆面盆盔"
+	desc = "一顶带锥形面罩的铁制盆盔，面罩前伸以容纳吻部。可在盔缘插上一根羽毛或一段布料，以表明你的效忠对象。"
 	icon_state = "iroundface_s"
 	item_state = "iroundface_s"
 
