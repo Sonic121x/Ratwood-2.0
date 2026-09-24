@@ -110,7 +110,7 @@
 
 /obj/item/clothing/under/roguetown/chainlegs/kilt/ancient
 	name = "远古锁甲裙铠"
-	desc = "抛光的gilbranze环片以丝带相连，组成腰间护衣。这些不死军团士兵曾为Vheslyn而行军，后来又追随Zizo；而如今，他们彻底听命于唤醒他们之人的心意。"
+	desc = "抛光的吉尔布兰兹环片以丝带相连，组成腰间护衣。这些不死军团士兵曾为维斯林而行军，后来又追随齐佐；而如今，他们彻底听命于唤醒他们之人的心意。"
 	icon_state = "achainkilt"
 	sleevetype = "achainkilt"
 	smeltresult = /obj/item/ingot/aaslag
@@ -124,8 +124,8 @@
 	anvilrepair = null
 
 /obj/item/clothing/under/roguetown/chainlegs/kilt/bronze
-	name = "bronze chain kilt"
-	desc = "Interlinked bronze rings that drape down all the way to the ankles."
+	name = "青铜链甲裙"
+	desc = "环环相扣的青铜锁环，一直垂到脚踝。"
 	icon_state = "bchainkilt"
 	item_state = "bchainkilt"
 	sleevetype = "bchainkilt"
