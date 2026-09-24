@@ -206,12 +206,12 @@
 	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/s2cto
-	name = "stone to clay"
+	name = "石料转黏土"
 	category = "Transmutation"
 	result = list(/obj/item/natural/clay = 2)
 	reqs = list(/obj/item/natural/stone = 1)
 	craftdiff = 2
-	verbage_simple = "transmute"
+	verbage_simple = "转化"
 	
 /datum/crafting_recipe/roguetown/alchemy/s2coa
 	name = "石料转煤炭"
@@ -262,7 +262,7 @@
 	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/d2ros
-	name = "钻石转 Riddle of Steel" /// holy grail requires legendary. (sell price on average is 350. rontz and diamond worth 100 each. you get to legndary you deserve 150-200 profit)
+	name = "钻石转钢铁之谜" /// holy grail requires legendary. (sell price on average is 350. rontz and diamond worth 100 each. you get to legndary you deserve 150-200 profit)
 	category = "转化"
 	result = list(/obj/item/riddleofsteel = 1)
 	reqs = list(/obj/item/roguegem/diamond = 2, /obj/item/rogueore/iron = 1, /obj/item/rogueore/coal = 1)
@@ -287,7 +287,7 @@
 	verbage_simple = "调配"
 
 /datum/crafting_recipe/roguetown/alchemy/frankenbrew_small
-	name = "再生灵药 (不纯 Lux)"
+	name = "再生灵药 (不纯灵辉)"
 	category = "台面"
 	result = list(
 		/obj/item/reagent_containers/glass/bottle/frankenbrew/third
