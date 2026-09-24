@@ -390,8 +390,12 @@
 
 /obj/effect/z121_arrow_image/Initialize(mapload, obj/item/weapon)
 	. = ..()
+	if(!istype(weapon) || QDELETED(weapon))
+		return INITIALIZE_HINT_QDEL
 	var/turf/start = get_turf(weapon)
 	var/turf/center = get_turf(src)
+	if(!start || !center)
+		return INITIALIZE_HINT_QDEL
 	appearance = weapon.appearance
 	filter_data = weapon.filter_data?.Copy()
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

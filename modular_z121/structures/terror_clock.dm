@@ -148,6 +148,10 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 	if(obstruction)
 		to_chat(user, span_warning("附近 [TERROR_CLOCK_CLEAR_RANGE] 格范围内存在建筑（[obstruction.name]），钟无法运作。请在空旷处使用。"))
 		return FALSE
+	var/ground_error = terror_clock_ground_error(clock_turf)
+	if(ground_error)
+		to_chat(user, span_warning(ground_error))
+		return FALSE
 	return TRUE
 
 /obj/structure/terror_clock/attack_hand(mob/user)
@@ -210,10 +214,30 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 			return found
 	return null
 
-// 刷怪和传送共用安全判定；忽略参数仅用于检查角色自己脚下的位置。
-/proc/terror_clock_safe_turf(turf/T, atom/movable/ignored)
+// 只判断地面本身，不把钟、玩家或试炼壁垒当成地面缺失。
+/proc/terror_clock_ground_turf(turf/T)
 	// 本仓库的深坑属于悬空地块，虚空使用冥界地板类型；旧太空宏指向不存在的类型。
 	if(!T || !isopenturf(T) || T.density || isgroundlessturf(T) || istype(T, /turf/open/floor/rogue/underworld/space))
+		return FALSE
+	return TRUE
+
+// 建造、启动和延迟刷怪共用完整场地检查，外环也必须有地面，避免悬空小平台通过净空校验。
+/proc/terror_clock_ground_error(turf/center)
+	if(!center)
+		return "恐怖之钟没有有效的放置地点。"
+	var/turf_count = 0
+	for(var/turf/T in range(TERROR_CLOCK_CLEAR_RANGE, center))
+		if(!terror_clock_ground_turf(T))
+			return "恐怖之钟周围 [TERROR_CLOCK_CLEAR_RANGE] 格范围内必须有完整的安全地面，不能包含悬空、水域、熔岩或虚空。"
+		turf_count++
+	// 地图边缘会截断范围，也不能被误判成完整场地。
+	if(turf_count != (2 * TERROR_CLOCK_CLEAR_RANGE + 1) ** 2)
+		return "恐怖之钟距离地图边缘太近，周围必须留出完整的 [TERROR_CLOCK_CLEAR_RANGE] 格场地。"
+	return null
+
+// 刷怪和传送还需检查实体占用；忽略参数仅用于检查角色自己脚下的位置。
+/proc/terror_clock_safe_turf(turf/T, atom/movable/ignored)
+	if(!terror_clock_ground_turf(T))
 		return FALSE
 	for(var/atom/movable/AM in T)
 		if(AM == ignored || QDELETED(AM))
@@ -240,6 +264,12 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 // 启动成功后不再要求使用者留在原地，但钟损坏时仍然中止召唤。
 /obj/structure/terror_clock/proc/do_summon(mob_type, amount, mob/living/user)
 	if(QDELETED(src) || obj_broken || active_challenge || !ispath(mob_type, /mob/living))
+		summoning = FALSE
+		return
+	// 倒计时内地板可能被拆除，不能仅从残留的小块地面中挑选出生点。
+	var/ground_error = terror_clock_ground_error(get_turf(src))
+	if(ground_error)
+		visible_message(span_warning("[src]的召唤中止：[ground_error]"))
 		summoning = FALSE
 		return
 	var/list/spawn_turfs = get_valid_spawn_turfs()

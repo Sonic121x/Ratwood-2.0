@@ -93,6 +93,8 @@
 /datum/species/shapedragon
 	name = "dragon"
 	id = "shapedragon"
+	// Keep the unlocked wildshape out of ordinary random species changes.
+	changesource_flags = MIRROR_BADMIN
 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
 	inherent_traits = list(
 		TRAIT_KNEESTINGER_IMMUNITY,
