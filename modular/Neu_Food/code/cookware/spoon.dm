@@ -24,7 +24,7 @@
 	sellprice = 6
 
 /obj/item/kitchen/spoon/bronze
-	name = "bronze spoon"
+	name = "青铜勺"
 	icon_state = "spoon_bronze"
 	sellprice = 10
 

@@ -266,12 +266,12 @@
 	M.visible_message(span_warning("[M]鼻中流出了鲜血。"))
 
 /datum/reagent/allspice
-	name = "allspice"
-	description = "A blend of toasted spices, temptingly aromatic to the senses." 
+	name = "什香粉调味液"
+	description = "由烘过的香料混合而成，散发着诱人的香气。" 
 	color = "#CE8C33"
 	overdose_threshold = 0
 	metabolization_rate = 1
-	taste_description = "fragrant spiciness"
+	taste_description = "馥郁的辛香"
 
 /datum/reagent/allspice/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/greatmealbuff)
