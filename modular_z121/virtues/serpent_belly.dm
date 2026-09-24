@@ -560,6 +560,9 @@
 
 /obj/effect/z121_serpent_stomach/Initialize(mapload, datum/component/z121_serpent_belly/new_controller)
 	. = ..()
+	// Validate before storing references or registering host signals.
+	if(!ishuman(loc) || !istype(new_controller) || QDELETED(new_controller) || new_controller.parent != loc)
+		return INITIALIZE_HINT_QDEL
 	controller = new_controller
 	host = loc
 	last_turf = get_turf(host)
