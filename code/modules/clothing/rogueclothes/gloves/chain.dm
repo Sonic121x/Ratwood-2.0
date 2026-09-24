@@ -64,7 +64,7 @@
 
 
 /obj/item/clothing/gloves/roguetown/chain/iron
-	name = "iron chain gauntlets"
+	name = "铁制锁甲护手"
 	icon_state = "icgloves"
 	desc = "由相扣铁环制成的护手。除了箭矢外，对常见兵器都有不错的防护。"
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -73,9 +73,9 @@
 
 /obj/item/clothing/gloves/roguetown/chain/bronze
 	icon_state = "bcgloves"
-	name = "bronze maille gauntlets"
-	desc = "Armored mittens, woven together from a series of interlinked bronze rings. It can comfortably accomadate the needs of a warrior in \
-	almost any action, be it stringing a longbow or wielding a sword."
+	name = "青铜锁甲护手"
+	desc = "以环环相扣的青铜环编成的连指护手。它能让战士自如地完成\
+	几乎任何动作，无论是给长弓上弦，还是挥舞长剑。"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = ARMOR_INT_SIDE_BRONZE

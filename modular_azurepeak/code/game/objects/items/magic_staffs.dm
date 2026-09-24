@@ -3,7 +3,7 @@
 /obj/item/rogueweapon/examine(mob/user)
 	.=..()
 	if(cast_time_reduction)
-		. += span_notice("This staff has been augmented with a gem, reducing a mage's spell casting time by [cast_time_reduction * 100]% when they hold it in their hand.")
+		. += span_notice("这根法杖镶嵌了宝石，法师将其持在手中时，施法时间缩短 [cast_time_reduction * 100]%。")
 	else
 		return
 
@@ -123,8 +123,8 @@
 	sellprice = 160
 
 /obj/item/rogueweapon/woodstaff/diamond/blacksteelstaff/royal
-	name = "refined ducal blacksteel staff"
-	desc = "A mage's staff that has been reinforced with blacksteel rivets and plating. An extravagent gift for a precocious heir that serves as both casting implement and mark of station. Perched atop it is a new beautiful Dorpel that shimmers with magical energies."
+	name = "精制公爵黑钢法杖"
+	desc = "一根以黑钢铆钉与镶板加固的法师法杖。这是赠予早慧继承人的奢华礼物，既是施法器具，也是身份象征。杖首安置着一枚崭新而美丽的多佩尔石，闪耀着魔力流光。"
 	sellprice = 230
 
 /obj/item/rogueweapon/woodstaff/riddle_of_steel

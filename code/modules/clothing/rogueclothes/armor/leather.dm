@@ -262,8 +262,8 @@
 	update_icon()
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/shepherd
-	name = "shepherd's vest"
-	desc = "A light, flexible leather vest worn by shepherds in the forested peaks of Aavnr."
+	name = "牧羊人皮背心"
+	desc = "阿瓦尔林木茂密的群山间，牧羊人穿着的轻便柔软皮背心。"
 	icon_state = "freijacket"
 	item_state = "freijacket"
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
