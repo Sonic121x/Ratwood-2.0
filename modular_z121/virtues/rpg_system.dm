@@ -102,20 +102,18 @@
 // 强化属性的"基础单价系数"（积分）。实际花费 = 基础系数 × 当前属性值。
 // 为什么按当前值线性递增：需求要求"属性越高，强化所需积分越多"——属性越接近上限越珍贵，
 //   单价随当前值水涨船高，能自然形成"前期易、后期贵"的成长曲线。
-// 为什么进一步上调到 60：配合"击杀积分降为 10% 最大生命值"（收入减半），属性强化要更显珍贵，
-//   故拉高系数（系数 60 时：10→11 需 600，15→16 需 900，19→20 需 1200）。单列为常量，平衡只改这一处。
-#define RPG_SYSTEM_STAT_COST_BASE 60
+// 系数为 120：10→11 需 1200，15→16 需 1800，19→20 需 2280 积分。
+#define RPG_SYSTEM_STAT_COST_BASE 120
 // 强化技能的"基础单价系数"（积分）。实际花费 = 基础系数 ×（目标等级）=（当前等级+1）。
 // 为什么按目标等级递增：同理，技能越高升级越贵——越往传奇越珍贵。
-// 为什么进一步上调到 180：同上，收入减半后技能强化也要更珍贵，故拉高系数（系数 180 时：
-//   0→1 需 180，2→3 需 540，5→6 需 1080）。单列为常量，平衡只改这一处。
-#define RPG_SYSTEM_SKILL_COST_BASE 180
+// 系数为 540：0→1 需 540，2→3 需 1620，5→6 需 3240 积分。
+#define RPG_SYSTEM_SKILL_COST_BASE 540
 
 // 特性按普通、强力、超模三档定价；目录与结算共用这些价格。
-#define RPG_SYSTEM_TRAIT_COST 2000
+#define RPG_SYSTEM_TRAIT_COST 2500
 #define RPG_SYSTEM_TRAIT_STRONG_COST 10000
 #define RPG_SYSTEM_TRAIT_OVERPOWERED_COST 99999
-#define RPG_SYSTEM_SPELL_POINT_COST 1000
+#define RPG_SYSTEM_SPELL_POINT_COST 5000
 // 通过本系统购买特性时使用的 ADD_TRAIT 来源标签：统一、可识别，便于将来需要时统一清理；
 //   不复用 TRAIT_VIRTUE / TRAIT_GENERIC 等其它来源，避免与别处授予的同名特性互相干扰。
 #define RPG_SYSTEM_TRAIT_SOURCE "rpg_system_purchase"

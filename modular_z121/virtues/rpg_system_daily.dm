@@ -285,13 +285,13 @@
 	id = new_id
 	switch(quest.quest_difficulty)
 		if(QUEST_DIFFICULTY_EASY)
-			reward = 500
+			reward = 250
 		if(QUEST_DIFFICULTY_MEDIUM)
-			reward = 1500
+			reward = 750
 		if(QUEST_DIFFICULTY_HARD)
-			reward = 3000
+			reward = 1500
 		if(QUEST_DIFFICULTY_NOTORIOUS)
-			reward = 5000
+			reward = 2500
 
 /datum/rpg_quest_entry/Destroy()
 	if(!QDELETED(quest))
@@ -597,5 +597,5 @@
 // 恶名任务保留原本的战斗、观战接管和时限，只将金钱加赏提示改为固定积分说明。
 /datum/quest/kill/notorious_bounty/rpg/announce_to_bearer(message)
 	if(findtext(message, "赏金增加"))
-		message = "敌人已作出应对。此 RPG 委托的奖励仍为固定 5000 积分。"
+		message = "敌人已作出应对。此 RPG 委托的奖励仍为固定 2500 积分。"
 	return ..(message)
