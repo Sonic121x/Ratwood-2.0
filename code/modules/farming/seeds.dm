@@ -111,7 +111,7 @@
 	if(burntime)
 		burning = burning + input
 		if(burning >= burntime)
-			name = "burned [name]"
+			name = "烧焦的[name]"
 			color = burned_color
 		if(burning > (burntime * 2))
 			burn()
