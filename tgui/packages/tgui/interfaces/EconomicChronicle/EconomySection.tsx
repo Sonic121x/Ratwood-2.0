@@ -18,16 +18,16 @@ const GeneralMammonsColumn = (props: Props) => {
   const { e } = props;
   return (
     <div>
-      <div style={columnSubheadStyle}>General Mammons</div>
+      <div style={columnSubheadStyle}>玛门收支概况</div>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Mammons Circulating" value={e.mammons_held} />
-          <Row label="Mammons Deposited" value={e.mammons_deposited} />
-          <Row label="Mammons Withdrawn" value={e.mammons_withdrawn} />
-          <Row label="Noble Estates Revenue" value={e.noble_income} />
-          <Row label="Bathmatron Vault Revenue" value={e.bathmatron_vault} />
-          <Row label="Sold to Stockpile" value={e.sold_to_stockpile} />
-          <Row label="Peddler Revenue" value={e.peddler} />
+          <Row label="流通玛门" value={e.mammons_held} />
+          <Row label="存入玛门" value={e.mammons_deposited} />
+          <Row label="取出玛门" value={e.mammons_withdrawn} />
+          <Row label="贵族领地收入" value={e.noble_income} />
+          <Row label="浴场金库收入" value={e.bathmatron_vault} />
+          <Row label="向库存出售所得" value={e.sold_to_stockpile} />
+          <Row label="行商收入" value={e.peddler} />
         </tbody>
       </table>
     </div>
@@ -38,28 +38,28 @@ const RoyalCrownColumn = (props: Props) => {
   const { e } = props;
   return (
     <div>
-      <div style={columnSubheadStyle}>Royal &amp; Crown</div>
+      <div style={columnSubheadStyle}>王室 &amp; 王权</div>
       <table style={twoColTable}>
         <tbody>
           <Row
-            label="Merchant's Levy Collected"
+            label="已收商人征缴"
             value={e.merchant_levy_collected}
           />
-          <Row label="Crown Duty on Levy" value={e.merchant_levy_taxed} />
+          <Row label="征缴中的王室税" value={e.merchant_levy_taxed} />
           <Row
-            label="Royal Taxes Evaded"
+            label="逃缴王室税款"
             value={e.taxes_evaded}
             color={SEAL_RED}
           />
         </tbody>
       </table>
-      <div style={{ ...columnSubheadStyle, marginTop: '6px' }}>Vendors</div>
+      <div style={{ ...columnSubheadStyle, marginTop: '6px' }}>售货机</div>
       <table style={twoColTable}>
         <tbody>
-          <Row label="GOLDFACE Imports" value={e.goldface} />
-          <Row label="SILVERFACE Imports" value={e.silverface} />
-          <Row label="COPPERFACE Imports" value={e.copperface} />
-          <Row label="PURITY Imports" value={e.purity} />
+          <Row label="金面进口额" value={e.goldface} />
+          <Row label="银面进口额" value={e.silverface} />
+          <Row label="铜面进口额" value={e.copperface} />
+          <Row label="纯净进口额" value={e.purity} />
         </tbody>
       </table>
     </div>
@@ -70,30 +70,30 @@ const TradeMarketsColumn = (props: Props) => {
   const { e } = props;
   return (
     <div>
-      <div style={columnSubheadStyle}>Trade &amp; Markets</div>
+      <div style={columnSubheadStyle}>贸易 &amp; 市场</div>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Trade Value Exported" value={e.trade_exported_total} />
+          <Row label="出口总值" value={e.trade_exported_total} />
         </tbody>
       </table>
       <Breakdown>
-        Real Market {e.trade_exported_real} &bull; Black Market{' '}
+        正规市场 {e.trade_exported_real} &bull; 黑市{' '}
         {e.trade_exported_bm}
       </Breakdown>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Trade Value Imported" value={e.trade_imported} />
-          <Row label="Company Gnomes Margin" value={e.gnome_margin} />
-          <Row label="Favor - Send-offs" value={e.favor_from_sendoffs} />
-          <Row label="Favor - Navigator" value={e.favor_from_navigator} />
-          <Row label="Favor - Goldface" value={e.favor_from_goldface} />
-          <Row label="Favor - Silverface" value={e.favor_from_silverface} />
+          <Row label="进口总值" value={e.trade_imported} />
+          <Row label="公司侏儒加价收入" value={e.gnome_margin} />
+          <Row label="恩惠 - 送行" value={e.favor_from_sendoffs} />
+          <Row label="恩惠 - 引航机" value={e.favor_from_navigator} />
+          <Row label="恩惠 - 金面" value={e.favor_from_goldface} />
+          <Row label="恩惠 - 银面" value={e.favor_from_silverface} />
           <Row
-            label="Favor - Penalties"
+            label="恩惠 - 惩罚扣除"
             value={e.favor_penalties}
             color={SEAL_RED}
           />
-          <Row label="Favor - Lifetime Peak" value={e.favor_high} />
+          <Row label="恩惠 - 历史峰值" value={e.favor_high} />
         </tbody>
       </table>
     </div>
@@ -103,7 +103,7 @@ const TradeMarketsColumn = (props: Props) => {
 export const EconomySection = (props: Props) => {
   return (
     <div style={compactCardStyle}>
-      <SectionTitle>Economy</SectionTitle>
+      <SectionTitle>经济概况</SectionTitle>
       <div style={threeColumnLayout}>
         <GeneralMammonsColumn e={props.e} />
         <RoyalCrownColumn e={props.e} />

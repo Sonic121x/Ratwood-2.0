@@ -13,7 +13,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = do_subtle
 
-	var/chosen_verb = pick(list("撸弄着[user.p_their()]的肉棒", "套弄着[user.p_their()]的肉棒", "自慰着", "自我撸弄着"))
+	var/chosen_verb = pick(list("撸弄着[user.p_their()]肉棒", "套弄着[user.p_their()]肉棒", "自慰着", "自我撸弄着"))
 	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] [chosen_verb]..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.generic_sex_noise()

@@ -77,15 +77,15 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 /obj/item/chastity/examine()
 	. = ..()
 	if(attached_toy)
-		. += "[span_notice("\An [attached_toy]似乎被安装在了[initial(name)]上。按 Alt+右键可拆下。")]"
+		. += "[span_notice("[attached_toy]似乎被安装在了[initial(name)]上。按 Alt+右键可拆下。")]"
 	if(chastity_cursed && received_cum_count > 0)
-		var/tally_text = received_cum_count == 1 ? "1 道刻痕。" : "[received_cum_count] 道刻痕。"
+		var/tally_text = received_cum_count == 1 ? "1 道刻痕" : "[received_cum_count] 道刻痕"
 		. += span_notice("[tally_text]刻在贞操装置的金属表面。")
 
 /obj/item/chastity/get_hover_examine_html(mob/user, self_examine = FALSE)
 	. = ..()
 	if(chastity_cursed && received_cum_count > 0)
-		var/tally_text = received_cum_count == 1 ? "1 道刻痕。" : "[received_cum_count] 道刻痕。"
+		var/tally_text = received_cum_count == 1 ? "1 道刻痕" : "[received_cum_count] 道刻痕"
 		var/tally_line = "<span class='notice'>[tally_text]刻在贞操装置的金属表面。</span>"
 		if(length(.))
 			. += "<br>[tally_line]"
