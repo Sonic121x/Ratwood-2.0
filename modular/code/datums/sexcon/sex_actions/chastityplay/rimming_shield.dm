@@ -5,10 +5,10 @@
 	target_needs_chastity = TRUE
 
 /datum/sex_action/chastityplay/rimming_shield/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]俯下身去，把[user.p_their()]的脸贴上[target]后庭护盾的下缘，寻找能够探入的角度。"))
+	user.visible_message(span_warning("[user]俯下身去，把[user.p_their()]脸贴上[target]后庭护盾的下缘，寻找能够探入的角度。"))
 
 /datum/sex_action/chastityplay/rimming_shield/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective()]将[user.p_their()]的舌头探入[target]的后庭护盾下方，顺着金属勉强容出的缝隙不断舔弄……"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective()]将[user.p_their()]舌头探入[target]的后庭护盾下方，顺着金属勉强容出的缝隙不断舔弄……"))
 	user.sexcon.oralcourse_noise(target)
 	user.sexcon.do_thrust_animate(target)
 

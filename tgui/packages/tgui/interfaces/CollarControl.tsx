@@ -56,7 +56,7 @@ export const CollarControl = () => {
     return (
       <Window width={700} height={300}>
         <Window.Content>
-          <NoticeBox danger>Collar control is no longer available.</NoticeBox>
+          <NoticeBox danger>项圈控制已不可用。</NoticeBox>
         </Window.Content>
       </Window>
     );
@@ -90,19 +90,19 @@ const PetSelection = () => {
       style={{ maxHeight: '300px' }}
       buttons={
         <>
-          <Button onClick={() => act('select_all')}>Select All</Button>
-          <Button onClick={() => act('clear_selection')}>Clear</Button>
+          <Button onClick={() => act('select_all')}>全选</Button>
+          <Button onClick={() => act('clear_selection')}>清空选择</Button>
         </>
       }
     >
       <Box style={{ maxHeight: '230px', overflowY: 'auto' }}>
       <Table>
         <Table.Row header>
-          <Table.Cell collapsing>Select</Table.Cell>
-          <Table.Cell>Name</Table.Cell>
-          <Table.Cell collapsing>Conn</Table.Cell>
-          <Table.Cell collapsing>Mental</Table.Cell>
-          <Table.Cell>Flags</Table.Cell>
+          <Table.Cell collapsing>选择</Table.Cell>
+          <Table.Cell>姓名</Table.Cell>
+          <Table.Cell collapsing>在线</Table.Cell>
+          <Table.Cell collapsing>意识</Table.Cell>
+          <Table.Cell>状态</Table.Cell>
         </Table.Row>
         {data.pets?.map((pet) => (
           <Table.Row key={pet.ref}>
@@ -119,7 +119,7 @@ const PetSelection = () => {
               />
             </Table.Cell>
             <Table.Cell>{pet.name}</Table.Cell>
-            <Table.Cell collapsing>{pet.connected ? 'Yes' : 'No'}</Table.Cell>
+            <Table.Cell collapsing>{pet.connected ? '是' : '否'}</Table.Cell>
             <Table.Cell collapsing>{pet.mental_state}</Table.Cell>
             <Table.Cell>{getPetFlags(pet)}</Table.Cell>
           </Table.Row>
@@ -133,14 +133,14 @@ const PetSelection = () => {
 const getPetFlags = (pet: PetEntry) => {
   return (
     [
-      pet.speech_altered && 'Muted',
-      pet.orgasm_denied && 'Denied',
-      pet.arousal_forced && 'Aroused',
-      pet.clothing_forbidden && 'Nudist',
-      pet.forced_love && 'Love',
+      pet.speech_altered && '禁言',
+      pet.orgasm_denied && '禁止高潮',
+      pet.arousal_forced && '强制兴奋',
+      pet.clothing_forbidden && '禁止穿衣',
+      pet.forced_love && '爱慕',
     ]
       .filter(Boolean)
-      .join(', ') || 'None'
+      .join('、') || '无'
   );
 };
 
@@ -150,25 +150,25 @@ const SelectedPetInfo = (props: { selectedPets: PetEntry[] }) => {
   return (
     <Section title={`Pet Information (${selectedPets.length} selected)`}>
       {!selectedPets.length ? (
-        <Box color="label">Select at least one pet to view details.</Box>
+        <Box color="label">请至少选择一名宠物以查看详情。</Box>
       ) : (
         <Stack vertical>
           {selectedPets.map((pet) => (
             <Stack.Item key={pet.ref}>
               <Section title={pet.name}>
                 <LabeledList>
-	                  <LabeledList.Item label="Condition">
+	                  <LabeledList.Item label="身体状况">
 	                    {pet.condition}
 	                  </LabeledList.Item>
-                  <LabeledList.Item label="Location">{pet.location}</LabeledList.Item>
-                  <LabeledList.Item label="Mental State">
+                  <LabeledList.Item label="位置">{pet.location}</LabeledList.Item>
+                  <LabeledList.Item label="意识状态">
                     {pet.mental_state}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Pet Flags">
+                  <LabeledList.Item label="宠物状态">
                     {getPetFlags(pet)}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Loads Received">
-                    {pet.received_cum_count ?? 'N/A'}
+                  <LabeledList.Item label="受射次数">
+                    {pet.received_cum_count ?? '不适用'}
                   </LabeledList.Item>
                 </LabeledList>
               </Section>
@@ -217,9 +217,9 @@ const toggleStateText = (
     return offText;
   }
   if (state === 'mixed') {
-    return 'MIXED';
+    return '状态不一';
   }
-  return 'N/A';
+  return '不适用';
 };
 
 const toggleStateColor = (state: ToggleVisualState) => {
@@ -280,8 +280,8 @@ const ControlPanel = () => {
 
   const cooldown = data.cooldown_remaining > 0;
   const cooldownText = cooldown
-    ? `${data.cooldown_remaining.toFixed(1)}s`
-    : 'Ready';
+    ? `${data.cooldown_remaining.toFixed(1)}秒`
+    : '就绪';
   const selectedPets = data.pets?.filter((pet) => pet.selected) ?? [];
   const selectedCursedPets = selectedPets.filter((pet) => pet.has_cursed_chastity);
   const hasSelection = selectedPets.length > 0;
@@ -296,18 +296,18 @@ const ControlPanel = () => {
   const denialState = getToggleVisualState(selectedPets, 'orgasm_denied');
 
   const reasonForGeneralAction = cooldown
-    ? `Cooling down (${cooldownText})`
+    ? `冷却中（${cooldownText}）`
     : !hasSelection
-      ? 'Select at least one pet'
+      ? '请至少选择一名宠物'
       : undefined;
   const reasonForCursedAction = cooldown
-    ? `Cooling down (${cooldownText})`
+    ? `冷却中（${cooldownText}）`
     : !hasSelection
-      ? 'Select at least one pet'
+      ? '请至少选择一名宠物'
       : !selectedCursedPets.length
-        ? 'No selected pets have cursed chastity'
+        ? '选中的宠物均未佩戴诅咒贞操装置'
         : selectedCursedPets.length > 1
-          ? 'Select exactly one cursed pet'
+          ? '请只选择一名佩戴诅咒贞操装置的宠物'
         : undefined;
 
   const generalActionDisabled = !!reasonForGeneralAction;
@@ -319,12 +319,12 @@ const ControlPanel = () => {
       <Stack.Item>
         <Section title="Status">
           <LabeledList>
-            <LabeledList.Item label="Master">
+            <LabeledList.Item label="主人">
               {data.master_name}
             </LabeledList.Item>
-            <LabeledList.Item label="Cooldown">{cooldownText}</LabeledList.Item>
-            <LabeledList.Item label="High Pop Mode">
-              {data.high_pop_mode ? 'Enabled' : 'Disabled'}
+            <LabeledList.Item label="冷却时间">{cooldownText}</LabeledList.Item>
+            <LabeledList.Item label="高在线人数模式">
+              {data.high_pop_mode ? '已启用' : '已禁用'}
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -341,7 +341,7 @@ const ControlPanel = () => {
               <Stack vertical>
                 <Stack.Item>
                   <CommandButton
-                    label="Listen (First Selected)"
+                    label="聆听（首个选中对象）"
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
                     onClick={() => act('listen')}
@@ -349,7 +349,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label="Force Surrender"
+                    label="强制投降"
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
                     onClick={() => act('force_surrender')}
@@ -357,7 +357,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label={`Speech: ${toggleStateText(speechState, 'MUTED', 'NORMAL')}`}
+                    label={`发言：${toggleStateText(speechState, '禁言', '正常')}`}
                     color={toggleStateColor(speechState)}
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
@@ -366,7 +366,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label={`Clothing: ${toggleStateText(clothingState, 'FORBIDDEN', 'ALLOWED')}`}
+                    label={`穿衣：${toggleStateText(clothingState, '禁止', '允许')}`}
                     color={toggleStateColor(clothingState)}
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
@@ -375,7 +375,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label={`Forced Love: ${toggleStateText(loveState, 'ON', 'OFF')}`}
+                    label={`强制爱慕：${toggleStateText(loveState, '开启', '关闭')}`}
                     color={toggleStateColor(loveState)}
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
@@ -389,7 +389,7 @@ const ControlPanel = () => {
               <Stack vertical>
                 <Stack.Item>
                   <CommandButton
-                    label="Shock Selected"
+                    label="电击选中对象"
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
                     color="average"
@@ -398,7 +398,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label="Force Strip"
+                    label="强制脱衣"
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
                     onClick={() => act('force_strip')}
@@ -406,7 +406,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label={`Arousal: ${toggleStateText(arousalState, 'FORCED', 'NORMAL')}`}
+                    label={`兴奋：${toggleStateText(arousalState, '强制', '正常')}`}
                     color={toggleStateColor(arousalState)}
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
@@ -415,7 +415,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label={`Orgasm Denial: ${toggleStateText(denialState, 'ON', 'OFF')}`}
+                    label={`禁止高潮：${toggleStateText(denialState, '开启', '关闭')}`}
                     color={toggleStateColor(denialState)}
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
@@ -424,7 +424,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label="Toggle Hallucinations"
+                    label="切换幻觉"
                     color="average"
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
@@ -433,7 +433,7 @@ const ControlPanel = () => {
                 </Stack.Item>
                 <Stack.Item>
                   <CommandButton
-                    label="Release Selected"
+                    label="释放选中对象"
                     color="red"
                     disabled={generalActionDisabled}
                     tooltip={reasonForGeneralAction}
@@ -454,7 +454,7 @@ const ControlPanel = () => {
                 fluid
                 value={message}
                 onChange={setMessage}
-                placeholder="Message to selected pets"
+                placeholder="发送给选中宠物的讯息"
               />
             </Stack.Item>
             <Stack.Item>
@@ -462,14 +462,14 @@ const ControlPanel = () => {
                 disabled={generalActionDisabled || !message}
                 tooltip={
                   reasonForGeneralAction ||
-                  (!message ? 'Enter a message first' : undefined)
+                  (!message ? '请先输入讯息' : undefined)
                 }
                 onClick={() => {
                   act('send_message', { message });
                   setMessage('');
                 }}
               >
-                Send
+                发送
               </Button>
             </Stack.Item>
           </Stack>
@@ -484,7 +484,7 @@ const ControlPanel = () => {
                 fluid
                 value={actionText}
                 onChange={setActionText}
-                placeholder="Speech or emote (example: *kneels)"
+                placeholder="话语或动作（例如：*kneels）"
               />
             </Stack.Item>
             <Stack.Item>
@@ -492,14 +492,14 @@ const ControlPanel = () => {
                 disabled={generalActionDisabled || !actionText}
                 tooltip={
                   reasonForGeneralAction ||
-                  (!actionText ? 'Enter action text first' : undefined)
+                  (!actionText ? '请先输入动作文本' : undefined)
                 }
                 onClick={() => {
                   act('force_action', { action_text: actionText });
                   setActionText('');
                 }}
               >
-                Force
+                强制执行
               </Button>
             </Stack.Item>
           </Stack>
@@ -514,7 +514,7 @@ const ControlPanel = () => {
                 fluid
                 value={willText}
                 onChange={setWillText}
-                placeholder="Unfiltered sensation/illusion text"
+                placeholder="未经筛选的感受／幻象文本"
               />
             </Stack.Item>
             <Stack.Item>
@@ -522,14 +522,14 @@ const ControlPanel = () => {
                 disabled={generalActionDisabled || !willText}
                 tooltip={
                   reasonForGeneralAction ||
-                  (!willText ? 'Enter imposed will text first' : undefined)
+                  (!willText ? '请先输入要施加的意志文本' : undefined)
                 }
                 onClick={() => {
                   act('impose_will', { will_text: willText });
                   setWillText('');
                 }}
               >
-                Impose
+                施加
               </Button>
             </Stack.Item>
           </Stack>
@@ -609,7 +609,7 @@ const CursedChastityControls = (props: {
             act('chastity_set_lock', { locked: currentLocked ? 0 : 1 })
           }
         >
-          {currentLocked ? 'LOCKED' : 'UNLOCKED'}
+          {currentLocked ? '已上锁' : '未上锁'}
         </Button>
       </Stack.Item>
 
@@ -622,7 +622,7 @@ const CursedChastityControls = (props: {
             tooltip={reasonForCursedAction}
             onClick={togglePenisFrontMode}
           >
-            {penisOpen ? 'PENIS OPEN' : 'PENIS CLOSED'}
+            {penisOpen ? '阴茎处已开放' : '阴茎处已封闭'}
           </Button>
         </Stack.Item>
       )}
@@ -636,7 +636,7 @@ const CursedChastityControls = (props: {
             tooltip={reasonForCursedAction}
             onClick={toggleVaginaFrontMode}
           >
-            {vaginaOpen ? 'VAGINA OPEN' : 'VAGINA CLOSED'}
+            {vaginaOpen ? '阴部已开放' : '阴部已封闭'}
           </Button>
         </Stack.Item>
       )}
@@ -653,7 +653,7 @@ const CursedChastityControls = (props: {
             })
           }
         >
-          {currentAnalOpen ? 'ANAL OPEN' : 'ANAL CLOSED'}
+          {currentAnalOpen ? '后庭已开放' : '后庭已封闭'}
         </Button>
       </Stack.Item>
 
@@ -667,7 +667,7 @@ const CursedChastityControls = (props: {
             act('chastity_set_spikes', { spikes_on: currentSpikesOn ? 0 : 1 })
           }
         >
-          {currentSpikesOn ? 'SPIKES EXTENDED' : 'SPIKES RETRACTED'}
+          {currentSpikesOn ? '尖刺已伸出' : '尖刺已收回'}
         </Button>
       </Stack.Item>
 
@@ -682,14 +682,14 @@ const CursedChastityControls = (props: {
               act('chastity_set_flat', { is_flat: currentFlat ? 0 : 1 })
             }
           >
-            {currentFlat ? 'FLAT FIT' : 'STANDARD FIT'}
+            {currentFlat ? '平板样式' : '标准样式'}
           </Button>
         </Stack.Item>
       )}
 
       <Box mt={1}>
         <NoticeBox>
-          Direct-state controls require exactly one selected cursed pet.
+          直接控制装置状态时，请只选择一名佩戴诅咒贞操装置的宠物。
         </NoticeBox>
       </Box>
     </Stack>

@@ -17,11 +17,11 @@ type Props = {
 const RealmTableHeader = () => (
   <thead>
     <tr>
-      <td style={compactHeaderCell}>Realm</td>
-      <td style={{ ...compactHeaderCell, textAlign: 'right' }}>Hails</td>
-      <td style={{ ...compactHeaderCell, textAlign: 'right' }}>Dock</td>
+      <td style={compactHeaderCell}>领地</td>
+      <td style={{ ...compactHeaderCell, textAlign: 'right' }}>招呼次数</td>
+      <td style={{ ...compactHeaderCell, textAlign: 'right' }}>平均停泊</td>
       <td style={{ ...compactHeaderCell, textAlign: 'right', paddingRight: 0 }}>
-        Favor
+        恩惠
       </td>
     </tr>
   </thead>
@@ -29,7 +29,7 @@ const RealmTableHeader = () => (
 
 const RealmTableRow = (props: { row: RealmRow }) => {
   const { row } = props;
-  const dockText = row.avg_dock_min === null ? '-' : `${row.avg_dock_min}m`;
+  const dockText = row.avg_dock_min === null ? '-' : `${row.avg_dock_min}分钟`;
   return (
     <tr>
       <td style={compactDataCell}>{row.name}</td>
@@ -63,8 +63,8 @@ export const ShipsSection = (props: Props) => {
   return (
     <div style={compactCardStyle}>
       <SectionTitle>
-        Foreign Ship Activity - {s.total_hails} hail
-        {s.total_hails === 1 ? '' : 's'}
+        外国船舶活动 - 共招呼 {s.total_hails} 次
+        {s.total_hails === 1 ? '' : ''}
       </SectionTitle>
       <div style={dividedTwoColumnLayout}>
         <RealmTable rows={leftHalf} />
