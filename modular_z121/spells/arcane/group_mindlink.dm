@@ -48,16 +48,16 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/expires_at
 	var/expiry_timer
 
-/datum/group_mindlink_custom/New(mob/living/caster, list/members, meta_duration = 1)
+/datum/group_mindlink_custom/New(mob/living/caster, list/members)
 	. = ..()
 	owner = caster
-	expires_at = world.time + (15 MINUTES) * meta_duration
+	expires_at = world.time + (15 MINUTES)
 	main_room = new(src, caster, "main", "主群")
 	rooms += main_room
 	for(var/mob/living/member as anything in members)
 		add_member(member)
 	main_room.system_message("心灵链接已建立。每位成员都可以发起私聊或创建小房间。")
-	expiry_timer = addtimer(CALLBACK(src, PROC_REF(end_link), "十五分钟已到，心灵链接逐渐消散。"), (15 MINUTES) * meta_duration, TIMER_STOPPABLE)
+	expiry_timer = addtimer(CALLBACK(src, PROC_REF(end_link), "十五分钟已到，心灵链接逐渐消散。"), (15 MINUTES), TIMER_STOPPABLE)
 
 /datum/group_mindlink_custom/Destroy()
 	active = FALSE
@@ -523,6 +523,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 
 /obj/effect/proc_holder/spell/self/group_mindlink
 	name = "群体心灵链接"
+	school = "divination"
 	desc = "选择任意数量的熟人，吟唱后建立持续十五分钟的心灵链接。成员可以在主群交流、单独私聊或创建小房间。发言前输入 ,m 会发送到当前选中的会话；使用 IC 下的 Group Mindlink 可重新打开窗口。"
 	associated_skill = /datum/skill/magic/arcane
 	cost = 5
@@ -635,7 +636,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		to_chat(user, span_notice("以下对象无法接入：[html_encode(english_list(missing))]。"))
 	if(length(members) < 2)
 		return FALSE
-	new /datum/group_mindlink_custom(user, members, z121_duration(1))
+	new /datum/group_mindlink_custom(user, members)
 	return ..()
 
 /obj/effect/proc_holder/spell/self/group_mindlink/Destroy()

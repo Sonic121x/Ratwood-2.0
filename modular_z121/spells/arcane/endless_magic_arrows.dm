@@ -2,6 +2,7 @@
 
 /obj/effect/proc_holder/spell/self/endless_magic_arrows
 	name = "无尽魔矢"
+	school = "conjuration"
 	desc = "极快地在手中凝聚一支限时存在的魔矢。最多同时维持十支魔矢，每支魔矢会在一分钟后自行溃散。"
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "endless_magic_arrows"
@@ -126,6 +127,7 @@
 
 /obj/effect/proc_holder/spell/self/recycle_magic_arrows
 	name = "回收魔矢"
+	school = "conjuration"
 	desc = "将目前维持着的所有魔矢回收为散逸的奥术流光。"
 	action_icon = 'icons/roguetown/weapons/ammo.dmi'
 	action_icon_state = "quiver0"

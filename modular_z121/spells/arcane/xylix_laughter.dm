@@ -9,7 +9,7 @@
 	recharge_time = 20 SECONDS
 	human_req = TRUE
 	warnie = "spellwarning"
-	school = "illusion"
+	school = "enchantment"
 	spell_tier = 2
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "xylix_laughter"
@@ -47,7 +47,7 @@
 
 	var/fail_chance = get_failure_chance(user, target)
 	if(prob(fail_chance))
-		target.Knockdown(z121_duration(3 SECONDS))
+		target.Knockdown(3 SECONDS)
 		target.visible_message(span_warning("[target] 突然像被什么荒诞笑话击中了心神，仰头狂笑着摔倒在地！"))
 		to_chat(target, span_userdanger("荒谬的笑意猛然撕开我的理智，我控制不住地狂笑着倒了下去！"))
 		to_chat(user, span_notice("[target] 没能撑住这场荒诞的心灵冲击。"))

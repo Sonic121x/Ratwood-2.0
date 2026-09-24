@@ -29,7 +29,7 @@
 	recharge_time = 10 SECONDS
 	human_req = TRUE
 	warnie = "spellwarning"
-	school = "evocation"
+	school = "enchantment"
 	spell_tier = 2
 	action_icon = 'modular_z121/icon/custompell.dmi'
 	overlay_state = "pain"
@@ -85,7 +85,7 @@
 	var/mob/living/caster = firer
 	if(!casting_spell)
 		return BULLET_ACT_HIT
-	if(!casting_spell.apply_pain_effect(living_target, caster, pain_amount, target_zone, z121_meta_duration))
+	if(!casting_spell.apply_pain_effect(living_target, caster, pain_amount, target_zone))
 		to_chat(caster, span_warning("[living_target] 似乎无法承受这道钻心剜骨。"))
 		return BULLET_ACT_HIT
 
@@ -122,8 +122,6 @@
 	projectile.pain_amount = get_pain_amount(user)
 	projectile.casting_spell = src
 	projectile.z121_serpent_cast = z121_serpent_cast
-	// 疼痛伤口的时限随弹丸保存，命中后不再读取当前超魔模式。
-	projectile.z121_meta_duration = z121_duration(1)
 	// 沿用现有投射法术的命中修正，让奥术等级也能略微提高命中率。
 	projectile.accuracy += (user.STAINT - 9) * 4
 	projectile.bonus_accuracy += (user.STAINT - 8) * 3
@@ -134,7 +132,7 @@
 	projectile.fire()
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/apply_pain_effect(mob/living/target, mob/living/user, pain_amount = null, preferred_zone = null, meta_duration = 1)
+/obj/effect/proc_holder/spell/invoked/pain/proc/apply_pain_effect(mob/living/target, mob/living/user, pain_amount = null, preferred_zone = null)
 	if(isnull(pain_amount))
 		pain_amount = get_pain_amount(user)
 
@@ -152,7 +150,7 @@
 
 		if(existing_agony)
 			existing_agony.woundpain = pain_amount
-			queue_bodypart_pain_expire(existing_agony.bodypart_owner || affected, existing_agony, meta_duration)
+			queue_bodypart_pain_expire(existing_agony.bodypart_owner || affected, existing_agony)
 			return TRUE
 
 		var/datum/wound/magical/pain_spell/agony = affected.add_wound(/datum/wound/magical/pain_spell, TRUE)
@@ -161,14 +159,14 @@
 		// 让法术伤口的痛感与施法者奥术等级同步。
 		agony.woundpain = pain_amount
 
-		queue_bodypart_pain_expire(affected, agony, meta_duration)
+		queue_bodypart_pain_expire(affected, agony)
 		return TRUE
 
 	if(HAS_TRAIT(target, TRAIT_SIMPLE_WOUNDS))
 		var/datum/wound/magical/pain_spell/existing_agony = target.has_wound(/datum/wound/magical/pain_spell)
 		if(existing_agony)
 			existing_agony.woundpain = pain_amount
-			queue_simple_pain_expire(target, existing_agony, meta_duration)
+			queue_simple_pain_expire(target, existing_agony)
 			return TRUE
 
 		var/datum/wound/magical/pain_spell/agony = target.simple_add_wound(/datum/wound/magical/pain_spell, TRUE)
@@ -176,7 +174,7 @@
 			return FALSE
 		agony.woundpain = pain_amount
 
-		queue_simple_pain_expire(target, agony, meta_duration)
+		queue_simple_pain_expire(target, agony)
 		return TRUE
 
 	target.apply_damage(pain_amount, STAMINA)
@@ -201,17 +199,17 @@
 	for(var/obj/item/bodypart/bodypart as anything in target.bodyparts)
 		bodypart.remove_wound(/datum/wound/magical/pain_spell)
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/queue_bodypart_pain_expire(obj/item/bodypart/affected, datum/wound/magical/pain_spell/agony, meta_duration = 1)
+/obj/effect/proc_holder/spell/invoked/pain/proc/queue_bodypart_pain_expire(obj/item/bodypart/affected, datum/wound/magical/pain_spell/agony)
 	if(QDELETED(affected) || QDELETED(agony))
 		return
 	reset_pain_expire_timer(agony)
-	agony.pain_expire_timer_id = addtimer(CALLBACK(src, PROC_REF(expire_bodypart_pain_wound), affected, agony), (10 SECONDS) * meta_duration, TIMER_STOPPABLE)
+	agony.pain_expire_timer_id = addtimer(CALLBACK(src, PROC_REF(expire_bodypart_pain_wound), affected, agony), (10 SECONDS), TIMER_STOPPABLE)
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/queue_simple_pain_expire(mob/living/target, datum/wound/magical/pain_spell/agony, meta_duration = 1)
+/obj/effect/proc_holder/spell/invoked/pain/proc/queue_simple_pain_expire(mob/living/target, datum/wound/magical/pain_spell/agony)
 	if(QDELETED(target) || QDELETED(agony))
 		return
 	reset_pain_expire_timer(agony)
-	agony.pain_expire_timer_id = addtimer(CALLBACK(src, PROC_REF(expire_simple_pain_wound), target, agony), (10 SECONDS) * meta_duration, TIMER_STOPPABLE)
+	agony.pain_expire_timer_id = addtimer(CALLBACK(src, PROC_REF(expire_simple_pain_wound), target, agony), (10 SECONDS), TIMER_STOPPABLE)
 
 /obj/effect/proc_holder/spell/invoked/pain/proc/reset_pain_expire_timer(datum/wound/magical/pain_spell/agony)
 	var/existing_timer = agony.pain_expire_timer_id

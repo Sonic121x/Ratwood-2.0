@@ -408,7 +408,7 @@
 	swallow_message(host, target, factor, "开始")
 	action_audio = new(host, factor, TRUE)
 	log_combat(host, target, "开始吞入")
-	// do_mob 使用固定时间，不受施法速度、技能或超魔的引导倍率影响。
+	// do_mob 使用固定时间，不受施法速度或技能影响。
 	var/completed = do_mob(host, target, (40 SECONDS) * factor, extra_checks = CALLBACK(src, PROC_REF(channel_valid), target))
 	if(QDELETED(src))
 		return FALSE
