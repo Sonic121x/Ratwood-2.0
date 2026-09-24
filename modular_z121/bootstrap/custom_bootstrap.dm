@@ -44,6 +44,8 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	//   登记逻辑本身定义在 modular_z121/vices/facial_blindness.dm 内，这里只做一次调用。
 	register_facial_blindness_vice()
 	register_grayscale_vice()
+	// 登记超级受虐狂的正式特性，使创角授予的效果在游戏内特性列表中可见。
+	register_z121_super_masochist_trait()
 
 	// 登记自定义恶习"涨奶"到可选恶习列表（GLOB.character_flaws）。
 	// 为什么放在这里：与上面的"洁癖""病娇""脸盲症"登记同理——custom_bootstrap 的 Initialize

@@ -226,6 +226,11 @@
 	if(QDELETED(clock) || clock.obj_broken)
 		abort_challenge("仪式的载体被摧毁了。")
 		return
+	// 准备期结束时复查整片地面，避免在新出现的悬空场地封场。
+	var/ground_error = terror_clock_ground_error(center)
+	if(ground_error)
+		abort_challenge(ground_error)
+		return
 	if(!mark_challengers())
 		abort_challenge("格拉加尔在周围找不到任何值得注视的灵魂。")
 		return
@@ -323,6 +328,11 @@
 		return
 	if(QDELETED(clock) || clock.obj_broken)
 		abort_challenge("仪式的载体被摧毁了。")
+		return
+	// 波次间隙也可能发生地形变化；场地不完整时取消后续波次并按原逻辑清理。
+	var/ground_error = terror_clock_ground_error(center)
+	if(ground_error)
+		abort_challenge(ground_error)
 		return
 	disqualify_absent_challengers()
 	if(!has_living_challenger())
