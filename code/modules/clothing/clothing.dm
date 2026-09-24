@@ -393,11 +393,11 @@
 		return
 	if(removed)
 		if(user.check_armor_skill())
-			to_chat(user, span_info("I feel lighter and more agile without that armor weighing me down."))
+			to_chat(user, span_info("少了那件护甲的负担，我感觉轻松灵活多了。"))
 		else
-			to_chat(user, span_info("I feel the weight lessens, but another piece of armor is still impairing my movements."))
+			to_chat(user, span_info("我感觉负担减轻了，但还有其他护甲在妨碍我的行动。"))
 		return
-	to_chat(user, span_warning("I'm not trained to wear armor of this weight. My ability to parry, dodge, run and cast spells will be greatly impaired."))
+	to_chat(user, span_warning("我没有接受过穿戴这么重的护甲的训练。我的招架、闪避、奔跑和施法能力都会受到严重影响。"))
 
 /obj/item/clothing/examine(mob/user)
 	. = ..()
@@ -470,7 +470,7 @@
 	var/mob/living/carbon/human/wearer = loc
 	if(istype(wearer))
 		if(HAS_TRAIT(wearer, TRAIT_LOOSE_STRAPS) && !HAS_TRAIT(src, TRAIT_NODROP))
-			wearer.visible_message(span_danger("[src] gets flung off!"))
+			wearer.visible_message(span_danger("[src]被甩飞了！"))
 			get_flung_off_forced()
 	..()
 
@@ -565,7 +565,7 @@ BLIND     // can't see anything
 			rolldown()
 
 /obj/item/clothing/under/verb/jumpsuit_adjust()
-	set name = "Adjust Jumpsuit Style"
+	set name = "调整衣物穿法"
 	set category = null
 	set src in usr
 	rolldown()

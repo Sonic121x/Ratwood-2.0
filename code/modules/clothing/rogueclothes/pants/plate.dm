@@ -37,7 +37,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs/ancient
 	name = "远古板甲腿铠"
-	desc = "抛光的gilbranze甲片层叠于丝质腿铠之上。唯有少数拥抱不死之人得以在Zizo升格时幸存；如今，他们统御着那些奉她之名进军、誓要撕裂造物的不死军团。"
+	desc = "抛光的吉尔布兰兹甲片层叠于丝质腿铠之上。唯有少数拥抱不死之人得以在齐佐升格时幸存；如今，他们统御着那些奉她之名进军、誓要撕裂造物的不死军团。"
 	icon_state = "ancientplate_legs"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -81,7 +81,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs/zizo
 	max_integrity = ARMOR_INT_LEG_ANTAG
-	name = "Avantyne下装"
+	name = "阿凡泰因下装"
 	desc = "唯有野心之女士真正受膏者才会穿上的腿部衣装。奉她之名。"
 	icon_state = "zizocloth"
 	armor = ARMOR_ASCENDANT
@@ -104,10 +104,10 @@
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
 /obj/item/clothing/under/roguetown/platelegs/medium/zizo
-	name = "avantyne vestments"
-	desc = "The fossilization of a memory, damned to be forgotten by all but the divine - Her lux, crystallized into a veil impenetratable by all but the sharpest \
-	blades. If the legends are to be believed, She had worn these very garments long ago during Psydonia's darkest hour; when the Ascendants were but-two, when the \
-	Sinistar blotted out Astrata's glare, and when the ashes of Her empire were still smoldering. </br>..and to think, it was all a war without reason."
+	name = "阿凡泰因礼服"
+	desc = "一段凝固的记忆，注定被神明以外的所有人遗忘——她的灵光凝结成帷幕，唯有最锋利的\
+	刀刃才能穿透。若传说可信，她曾在遥远的过去，于普赛多尼亚最黑暗的时刻穿过这身衣装；那时，升格者尚且只有两位，\
+	凶星遮蔽了阿斯特拉塔的光辉，她的帝国灰烬仍在闷燃。 </br>……想来，那竟是一场毫无缘由的战争。"
 	icon_state = "zizoplatelegs_med"
 	armor = ARMOR_ASCENDANT
 	max_integrity = ARMOR_INT_LEG_ANTAG

@@ -396,14 +396,14 @@
 	icon_state = "armet_s"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/iron
-	name = "iron armet"
-	desc = "Holy lamb, sacrificial hero, blessed idiot - Psydon endures. Will you endure alongside Him, as a knight of humenity, or crumble before temptation?"
+	name = "铁制阿米特盔"
+	desc = "神圣的羔羊、献身的英雄、蒙福的愚者——普赛顿始终坚忍。你会作为人类的骑士，与祂一同坚持，还是在诱惑面前崩溃？"
 	icon_state = "iarmet"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/iron/snouted
-	name = "iron snouted armet"
+	name = "带吻部铁制阿米特盔"
 	icon_state = "iarmet_s"
 
 

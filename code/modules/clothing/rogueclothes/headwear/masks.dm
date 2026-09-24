@@ -16,8 +16,8 @@
 //Eora content from Stonekeep
 
 /obj/item/clothing/head/roguetown/eoramask
-	name = "Eora 面具"
-	desc = "一副仿兔首造型的银面具。通常由 Eora 的信徒在仪式中佩戴，不过也没人真会阻止你戴上它，对吧？"
+	name = "伊欧拉面具"
+	desc = "一副仿兔首造型的银面具。通常由伊欧拉的信徒在仪式中佩戴，不过也没人真会阻止你戴上它，对吧？"
 	color = null
 	icon_state = "eoramask"
 	item_state = "eoramask"
