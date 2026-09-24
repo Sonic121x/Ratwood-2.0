@@ -221,7 +221,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/gemstaff/ducalblacksteelstaffupgrade
-	name = "Refined Ducal Blacksteel Staff"
+	name = "精制公爵黑钢法杖"
 	result = /obj/item/rogueweapon/woodstaff/diamond/blacksteelstaff/royal
 	reqs = list(/obj/item/rogueweapon/woodstaff/emerald/blacksteelstaff/royal = 1,
 				/obj/item/roguegem/diamond = 1)

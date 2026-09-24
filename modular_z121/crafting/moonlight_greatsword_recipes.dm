@@ -7,7 +7,7 @@
 		/obj/item/riddleofsteel = 1,
 	)
 	structurecraft = /obj/structure/table/wood
-	verbage = "mixes"
+	verbage = "融合制成"
 	craftsound = 'sound/foley/scribble.ogg'
 	skillcraft = /datum/skill/craft/alchemy
 	craftdiff = SKILL_LEVEL_MASTER
