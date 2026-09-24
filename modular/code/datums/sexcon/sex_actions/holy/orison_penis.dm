@@ -1,5 +1,5 @@
 /datum/sex_action/holy/masturbate_other_penis_orison
-	name = "Jerk them off with godhand"
+	name = "用神圣之手为对方手淫"
 	check_same_tile = FALSE
 	ranged_los_action = TRUE
 	category = SEX_CATEGORY_HANDS
@@ -7,7 +7,7 @@
 	subtle_supported = TRUE
 
 /datum/sex_action/holy/masturbate_other_penis_orison/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] offers a quiet orison, directing the energies toward [target]'s cock..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]低声祷告，将能量引向[target]的阴茎……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/holy/masturbate_other_penis_orison/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -18,7 +18,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] jerks [target]'s cock with sanctified disembodied fingers... [message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user]用悬空的神圣手指[user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]套弄着[target]的阴茎……[message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.generic_sex_noise()
 	if(data["jingle"])
@@ -31,7 +31,7 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/holy/masturbate_other_penis_orison/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] finishes the prayer and stops stroking [target]'s cock."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]结束祷告，停止抚弄[target]的阴茎。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/holy/masturbate_other_penis_orison/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

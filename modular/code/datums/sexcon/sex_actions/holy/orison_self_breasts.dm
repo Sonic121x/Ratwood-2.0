@@ -1,5 +1,5 @@
 /datum/sex_action/holy/masturbate_breasts_orison
-	name = "Rub your breasts with godhand"
+	name = "用神圣之手揉弄自己的乳房"
 	category = SEX_CATEGORY_HANDS
 	user_sex_part = SEX_PART_BREASTS
 	subtle_supported = TRUE
@@ -11,7 +11,7 @@
 	return TRUE
 
 /datum/sex_action/holy/masturbate_breasts_orison/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] offers a quiet orison while touching [user.p_their()] breasts..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]一边低声祷告，一边触碰自己的乳房……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/holy/masturbate_breasts_orison/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -22,7 +22,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] cups and strokes [user.p_their()] breasts, fondling them with a divine energy [message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]托住并抚摸自己的乳房，用神圣能量爱抚着它们。[message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(data["jingle"])
 		playsound(user, SFX_JINGLE_BELLS, 30, TRUE, -2, ignore_walls = FALSE)
 
@@ -33,7 +33,7 @@
 	user.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/holy/masturbate_breasts_orison/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] finishes the prayer and eases off [user.p_their()] tits."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]结束祷告，停止抚弄自己的乳房。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/holy/masturbate_breasts_orison/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

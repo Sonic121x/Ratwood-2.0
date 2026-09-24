@@ -39,7 +39,7 @@
 	if(user.sexcon.knotted_status == KNOTTED_AS_BTM)
 		user.visible_message(span_warning("[user]开始把[target]的肉结往[user.p_them()]自己体内更深处磨送……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	else
-		user.visible_message(span_warning("[user]在[target]体内揉蹭着[user.p_their()]的肉结……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.visible_message(span_warning("[user]在[target]体内揉蹭着[user.p_their()]肉结……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/knot_grinding/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -69,9 +69,9 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = do_subtle
 	if(is_bottom_grinding)
-		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]用[user.p_their()]的[zone_text]磨蹭着[target]的肉结……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]用[user.p_their()][zone_text]磨蹭着[target]的肉结……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	else
-		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]在[target]的[zone_text]里磨蹭着[user.p_their()]的肉结……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]在[target]的[zone_text]里磨蹭着[user.p_their()]肉结……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.make_sucking_noise()
 		user.sexcon.do_thrust_animate(target, pixels = 2, time = 1.5)

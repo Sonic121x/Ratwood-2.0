@@ -15,7 +15,7 @@
 	return TRUE
 
 /datum/sex_action/spanking/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]摆好了[user.p_their()]的手，准备拍打[target]的屁股！"))
+	user.visible_message(span_warning("[user]摆好了[user.p_their()]手，准备拍打[target]的屁股！"))
 
 /datum/sex_action/spanking/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/force = user.sexcon.force

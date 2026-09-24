@@ -20,11 +20,11 @@
 
 /datum/sex_action/toy_anal/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/dildo/dildo = get_dildo_in_either_hand(user)
-	user.visible_message(span_warning("[user]开始把[dildo]塞进[user.p_their()]的后穴里……"))
+	user.visible_message(span_warning("[user]开始把[dildo]塞进[user.p_their()]后穴里……"))
 
 /datum/sex_action/toy_anal/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/dildo/dildo = get_dildo_in_either_hand(user)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]用[dildo]玩弄着[user.p_their()]的后穴。"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]用[dildo]玩弄着[user.p_their()]后穴。"))
 	user.sexcon.outercourse_noise(user)
 
 	user.sexcon.perform_sex_action(user, 2, 6, TRUE)
@@ -35,7 +35,7 @@
 
 /datum/sex_action/toy_anal/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/dildo/dildo = get_dildo_in_either_hand(user)
-	user.visible_message(span_warning("[user]把[dildo]从[user.p_their()]的后穴里抽了出来。"))
+	user.visible_message(span_warning("[user]把[dildo]从[user.p_their()]后穴里抽了出来。"))
 
 /datum/sex_action/toy_anal/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())
