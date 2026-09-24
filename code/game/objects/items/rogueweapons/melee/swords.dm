@@ -858,7 +858,7 @@
 
 /obj/item/rogueweapon/sword/long/etruscan/freifechter
 	name = "普赛顿改革派长剑"
-	desc = "一柄新锻的长剑，其反向护手呈改革派普赛顿十字之形。它拥有与伊特鲁斯卡长剑相同的手部防护。收剑入鞘时，十字正立，青铜剑首将阳光径直反射而出——拔剑出鞘时，十字则倒转，成为危难的象征。Ad pacem servandam."
+	desc = "一柄新锻的长剑，其反向护手呈改革派普赛顿十字之形。它拥有与伊特鲁斯卡长剑相同的手部防护。收剑入鞘时，十字正立，青铜剑首将阳光径直反射而出——拔剑出鞘时，十字则倒转，成为危难的象征。为守护和平。"
 	sheathe_icon = "reform"
 	icon_state = "reformistsword"
 
@@ -941,7 +941,7 @@
 
 /obj/item/rogueweapon/sword/long/judgement
 	name = "“审判”"
-	desc = "一把工艺繁复的长剑，剑刃由阿夫纳尔最上等的维什沃钢打造，握柄则以当地“玛穆克”巨兽雕刻而成的象牙制成，外观当真独一无二。"
+	desc = "一把工艺繁复的长剑，剑刃由阿瓦尔最上等的维什沃钢打造，握柄则以当地“玛穆克”巨兽的象牙精雕而成，外观当真独一无二。"
 	icon_state = "judgement"
 	item_state = "judgement"
 	sheathe_icon = "judgement"
