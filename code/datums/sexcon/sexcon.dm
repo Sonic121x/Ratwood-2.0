@@ -406,14 +406,14 @@
 	if(user.client.prefs.edging == FALSE)
 		return FALSE
 	var/resist_msg = pick(
-		"[user]颤抖着嘶声道：\"每一根断骨我都曾发誓要活下去……是 HE 赐予了我 ENDURE 的力量！\"",
-		"[user]低下[user.p_their()]的头，将那股冲动强压了回去，在夜色逼近之时仍死死抓住自己的信仰。",
-		"[user]喘息着说道：\"PSYDON 仍在 LYVES，PSYDON 仍在 ENDURES，\"硬是拒绝让[user.p_them()]self释放出来。",
-		"[user]死死绷紧身体，稳住[user.p_their()]的呼吸，选择了 Saints 的戒律而非放纵。",
+		"[user]颤抖着嘶声道：\"每断一根骨头，我都曾发誓要活下去……是祂赐予了我坚忍的力量！\"",
+		"[user]低下[user.p_their()]头，将那股冲动强压了回去，在夜色逼近之时仍死死抓住自己的信仰。",
+		"[user]喘息着说道：\"普赛顿仍然活着，普赛顿依然长存。\"硬是拒绝让自己释放出来。",
+		"[user]死死绷紧身体，稳住[user.p_their()]呼吸，选择了圣徒的戒律而非放纵。",
 		"[user]浑身一颤，低声念出悔罪的祷词，以忍耐迎向痛苦，而非屈服。",
 	)
 	user.visible_message(span_boldwarning(resist_msg), vision_distance = (suppress_moan ? 1 : DEFAULT_MESSAGE_RANGE))
-	to_chat(user, span_notice("PSYDON，赐我沉默与忍耐；我绝不会屈服。"))
+	to_chat(user, span_notice("普赛顿，赐我沉默与忍耐；我绝不会屈服。"))
 	set_arousal(60)
 	user.emote("groan", forced = TRUE)
 	return TRUE
@@ -653,7 +653,7 @@
 	if(modular_try_handle_chastity_ejaculation())
 		return
 	if((has_chastity_cage() || has_chastity_anal()) && prob(50))
-		var/self_mess_msg = "[user]喷得[user.p_their()]自己的贞操装置里到处都是！"
+		var/self_mess_msg = "[user]喷得自己的贞操装置里到处都是！"
 		user.visible_message(span_love(self_mess_msg), vision_distance = (suppress_moan ? 1 : DEFAULT_MESSAGE_RANGE))
 		cum_onto(user)
 		return
@@ -676,7 +676,7 @@
 		climax_msg = modular_climax_msg
 	else
 		if(has_chastity_cage() || has_chastity_anal())
-			climax_msg = "[user]在[user.p_their()]的贞操装置里高潮了，弄得一片狼藉！"
+			climax_msg = "[user]在[user.p_their()]贞操装置里高潮了，弄得一片狼藉！"
 	user.visible_message(span_love(climax_msg), vision_distance = (suppress_moan ? 1 : DEFAULT_MESSAGE_RANGE))
 	playsound(user, 'sound/misc/mat/endout.ogg', suppress_moan ? 12 : 50, TRUE, ignore_walls = FALSE)
 	var/semen_vol = get_semen_volume()
@@ -1077,7 +1077,7 @@
 				damage_from_pain(chaffepain)
 				try_do_pain_effect(chaffepain)
 				last_moan = 0
-				M.visible_message(("<span class='love_mid'>[M]在[M.p_their()]的束缚中不安地扭动着身体。</span>"), \
+				M.visible_message(("<span class='love_mid'>[M]在[M.p_their()]束缚中不安地扭动着身体。</span>"), \
 					("<span class='love_extreme'>我感觉[M.handcuffed]正不舒服地磨蹭着我的皮肤。</span>"))
 			if(arousal < ACTIVE_EJAC_THRESHOLD)
 				adjust_arousal(0.25)
@@ -1225,7 +1225,7 @@
 		dat += "</center><center><a href='?src=[REF(src)];task=toggle_bottom_exposed'>[bottom_exposed ? "胯部已露出" : "胯部已遮住"]</a>"
 	if(got_cock || got_pussy || user.getorganslot(ORGAN_SLOT_TESTICLES))
 		dat += " | <a href='?src=[REF(src)];task=toggle_hide_pintle_visuals'>[hide_pintle_visuals ? "生殖器已遮住" : "生殖器露出"]</a>"
-	dat += " ~|~ <a href='?src=[REF(src)];task=toggle_freeuse'>[freeuse ? "随意使用打开" : "随意使用关闭"]</a>"
+	dat += " ~|~ <a href='?src=[REF(src)];task=toggle_freeuse'>[freeuse ? "自由使用已开启" : "自由使用已关闭"]</a>"
 	if(current_action && !desire_stop)
 		var/datum/sex_action/action = SEX_ACTION(current_action)
 		if(action.knot_on_finish)
@@ -1326,7 +1326,7 @@
 			update_exposure()
 		if("toggle_freeuse")
 			freeuse = !freeuse
-			to_chat(user, span_notice("Positioning and exposure checks are now [freeuse ? "disabled" : "enabled"]."))
+			to_chat(user, span_notice("位置与暴露状态检查现已[freeuse ? "禁用" : "启用"]。"))
 		if("set_arousal")
 			var/amount = input(user, "数值高于 120 会立刻导致高潮！", "设置欲望", arousal) as num
 			if(!isnull(amount) && amount > arousal)
@@ -1800,7 +1800,7 @@
 
 	if(ZMtop && ZMtop.has_turned && !ZMbottom)
 		if(prob(infection_probability))
-			var/answer = tgui_alert(top, "要传播 HER 的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
+			var/answer = tgui_alert(top, "要传播祂的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
 			if(!answer || answer == "Nae")
 				return
 			if(answer == "Yae")
@@ -1809,7 +1809,7 @@
 
 	if(ZMbottom && ZMbottom.has_turned && !ZMtop)
 		if(prob(infection_probability))
-			var/answer = tgui_alert(bottom, "要传播 HER 的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
+			var/answer = tgui_alert(bottom, "要传播祂的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
 			if(!answer || answer == "Nae")
 				return
 			if(answer == "Yae")

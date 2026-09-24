@@ -1,5 +1,5 @@
 /datum/sex_action/titsmother
-	name = "Smother them with boobs"
+	name = "用乳房捂住对方的脸"
 
 /datum/sex_action/titsmother/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -25,10 +25,10 @@
 /datum/sex_action/titsmother/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
 	if(breasts && breasts.breast_size < 3)
-		user.visible_message(span_warning("[user] presses [target]'s face against [user.p_their()] chest!"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.visible_message(span_warning("[user]将[target]的脸按在自己的胸膛上！"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 		user.sexcon.show_progress = 0
 		return
-	user.visible_message(span_warning("[user] smothers [target]'s head under [user.p_their()] tits!"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]将[target]的头捂在自己的双乳之下！"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/titsmother/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -43,9 +43,9 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = do_subtle
 
 	if(is_small_chest)
-		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] presses [target]'s face into [user.p_their()] chest..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]将[target]的脸按在自己的胸膛上……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	else
-		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] smothers [target]'s face with [user.p_their()] tits..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]用双乳捂住[target]的脸……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.outercourse_noise(user)
 
@@ -79,9 +79,9 @@
 /datum/sex_action/titsmother/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
 	if(breasts && breasts.breast_size < 3)
-		user.visible_message(span_warning("[user] eases [target]'s face away from [user.p_their()] chest."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.visible_message(span_warning("[user]将[target]的脸从自己的胸膛上移开。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 		return
-	user.visible_message(span_warning("[user] pulls [target]'s head out from under [user.p_their()] tits."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]将[target]的头从自己的双乳之下移开。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/titsmother/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())
