@@ -31,16 +31,16 @@
 			var/mob/living/carbon/human/H = M
 			if(!HAS_TRAIT(H, TRAIT_AGEUSIA))
 				if(foodtype & H.dna.species.toxic_food)
-					to_chat(H,span_warning("What the hell was that thing?!"))
+					to_chat(H,span_warning("刚才吃的到底是什么鬼东西？！"))
 					H.adjust_disgust(25 + 30 * fraction)
 				else if(foodtype & H.dna.species.disliked_food)
-					to_chat(H,span_notice("That didn't taste very good..."))
+					to_chat(H,span_notice("那味道不太好……"))
 					H.adjust_disgust(11 + 15 * fraction)
 				else if(foodtype & H.dna.species.liked_food)
-					to_chat(H,span_notice("I love this taste!"))
+					to_chat(H,span_notice("我喜欢这个味道！"))
 					H.adjust_disgust(-5 + -2.5 * fraction)
 			else
 				if(foodtype & H.dna.species.toxic_food)
-					to_chat(H, span_warning("I don't feel so good..."))
+					to_chat(H, span_warning("我感觉不太舒服……"))
 					H.adjust_disgust(25 + 30 * fraction)
 
