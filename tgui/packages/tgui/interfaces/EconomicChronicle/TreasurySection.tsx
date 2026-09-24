@@ -27,56 +27,56 @@ const RevenueColumn = (props: { t: TreasurySnapshot }) => {
     <div>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Starting Treasury" value={t.starting} />
-          <Row label="Rural Taxes Collected" value={t.rural_taxes} />
-          <Row label="Poll Tax Collected" value={t.poll.total} />
+          <Row label="初始国库余额" value={t.starting} />
+          <Row label="已收乡村税" value={t.rural_taxes} />
+          <Row label="已收人头税" value={t.poll.total} />
         </tbody>
       </table>
       <Breakdown>
-        Noble {t.poll.noble} &bull; Clergy {t.poll.clergy} &bull; Inquisition{' '}
-        {t.poll.inquisition} &bull; Courtier {t.poll.courtier} &bull; Garrison{' '}
-        {t.poll.garrison} &bull; Guilds {t.poll.guilds} &bull; Merchant{' '}
-        {t.poll.merchant} &bull; Burgher {t.poll.burgher} &bull; Adventurer{' '}
-        {t.poll.adventurer} &bull; Mercenary {t.poll.mercenary} &bull; Peasant{' '}
+        贵族 {t.poll.noble} &bull; 神职人员 {t.poll.clergy} &bull; 审判庭{' '}
+        {t.poll.inquisition} &bull; 廷臣 {t.poll.courtier} &bull; 驻军{' '}
+        {t.poll.garrison} &bull; 公会 {t.poll.guilds} &bull; 商人{' '}
+        {t.poll.merchant} &bull; 市民 {t.poll.burgher} &bull; 冒险者{' '}
+        {t.poll.adventurer} &bull; 佣兵 {t.poll.mercenary} &bull; 农民{' '}
         {t.poll.peasant}
       </Breakdown>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Royal Fines Collected" value={t.fines_income} />
-          <Row label="Royal Taxes Collected" value={t.royal.total} />
+          <Row label="已收王室罚款" value={t.fines_income} />
+          <Row label="已收王室税款" value={t.royal.total} />
         </tbody>
       </table>
       <Breakdown>
-        Contract Levy {t.royal.contract_levy} &bull; Headeater Levy{' '}
-        {t.royal.headeater_levy} &bull; Import Tariff {t.royal.import_tariff}{' '}
-        &bull; Export Duty {t.royal.export_duty} &bull; Other{' '}
+        契约税 {t.royal.contract_levy} &bull; 食首税{' '}
+        {t.royal.headeater_levy} &bull; 进口关税 {t.royal.import_tariff}{' '}
+        &bull; 出口税 {t.royal.export_duty} &bull; 其他{' '}
         {t.royal.other_fees}
       </Breakdown>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Stockpile Exports" value={t.stockpile_exports} />
-          <Row label="Bought from Stockpile" value={t.stockpile_revenue} />
+          <Row label="库存出口额" value={t.stockpile_exports} />
+          <Row label="库存销售收入" value={t.stockpile_revenue} />
           <Row
-            label="Direct Imports"
+            label="直接进口额"
             value={t.stockpile_direct_imports}
           />
-          <Row label="Standing Order Revenue" value={t.standing.revenue} />
+          <Row label="常备订单收入" value={t.standing.revenue} />
         </tbody>
       </table>
       <Breakdown>
-        {t.standing.fulfilled} fulfilled &bull; {t.standing.expired} expired{' '}
-        &bull; {t.standing.petitioned} petitioned (
-        {t.standing.petition_pledge_spent}p spent)
+        {t.standing.fulfilled} 份已完成 &bull; {t.standing.expired} 份已过期{' '}
+        &bull; {t.standing.petitioned} 份已请愿（消耗
+        {t.standing.petition_pledge_spent} 点认捐）
       </Breakdown>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Shortages Ended Early" value={t.shortages_ended} />
+          <Row label="提前解除的短缺" value={t.shortages_ended} />
         </tbody>
       </table>
       <div style={dividerStyle} />
       <table style={twoColTable}>
         <tbody>
-          <Row label="Total Revenue" value={t.total_revenue} color={SEAL_GREEN} />
+          <Row label="总收入" value={t.total_revenue} color={SEAL_GREEN} />
         </tbody>
       </table>
     </div>
@@ -85,11 +85,11 @@ const RevenueColumn = (props: { t: TreasurySnapshot }) => {
 
 const ExpensesColumn = (props: { t: TreasurySnapshot }) => {
   const { t } = props;
-  const debtLabel = t.bankruptcy_count > 0 ? 'Receivership' : 'Arrears';
+  const debtLabel = t.bankruptcy_count > 0 ? '破产接管' : '拖欠债务';
   const debtColor = t.bankruptcy_count > 0 ? '#c0392b' : '#e07b39';
   const debtPieces = [
-    t.arrears_count > 0 ? `${t.arrears_count}x arrears` : '',
-    t.bankruptcy_count > 0 ? `${t.bankruptcy_count}x bankruptcy` : '',
+    t.arrears_count > 0 ? `${t.arrears_count} 次拖欠` : '',
+    t.bankruptcy_count > 0 ? `${t.bankruptcy_count} 次破产` : '',
   ].filter(Boolean);
   const debtValue = debtPieces.join(', ');
   const showDebtRow =
@@ -102,18 +102,18 @@ const ExpensesColumn = (props: { t: TreasurySnapshot }) => {
     <div>
       <table style={twoColTable}>
         <tbody>
-          <Row label="Salary Payments" value={t.wages_paid} />
-          <Row label="Treasury Transfers" value={t.treasury_transfers} />
-          <Row label="Stockpile Imports" value={t.stockpile_imports} />
+          <Row label="薪资支出" value={t.wages_paid} />
+          <Row label="国库转账" value={t.treasury_transfers} />
+          <Row label="库存进口额" value={t.stockpile_imports} />
           <Row
-            label="Banditry Losses"
+            label="匪患损失"
             value={t.banditry_losses}
             color={SEAL_RED}
           />
         </tbody>
       </table>
       {t.banditry_owed > 0 && (
-        <Breakdown>{t.banditry_owed} still owed</Breakdown>
+        <Breakdown>尚欠 {t.banditry_owed}</Breakdown>
       )}
       {showDebtRow && (
         <table style={twoColTable}>
@@ -124,40 +124,40 @@ const ExpensesColumn = (props: { t: TreasurySnapshot }) => {
       )}
       {(t.treasury_debt_repaid > 0 || t.treasury_debt_owed > 0) && (
         <Breakdown>
-          {t.treasury_debt_repaid > 0 && `${t.treasury_debt_repaid} repaid`}
+          {t.treasury_debt_repaid > 0 && `已偿还 ${t.treasury_debt_repaid}`}
           {t.treasury_debt_repaid > 0 && t.treasury_debt_owed > 0 && ', '}
-          {t.treasury_debt_owed > 0 && `${t.treasury_debt_owed} still owed`}
+          {t.treasury_debt_owed > 0 && `尚欠 ${t.treasury_debt_owed}`}
         </Breakdown>
       )}
       {showForfeiture && (
         <>
           <table style={twoColTable}>
             <tbody>
-              <Row label="Forfeitures" value={`${t.forfeiture_amount}m`} />
+              <Row label="没收款项" value={`${t.forfeiture_amount}玛门`} />
             </tbody>
           </table>
           {t.forfeiture_count > 0 && (
             <Breakdown>
-              from {t.forfeiture_count} departing Keep insider
-              {t.forfeiture_count === 1 ? '' : 's'}
+              来自 {t.forfeiture_count} 名离任的城堡内部人员
+              {t.forfeiture_count === 1 ? '' : ''}
             </Breakdown>
           )}
         </>
       )}
       <table style={twoColTable}>
         <tbody>
-          <Row label="Forgone Revenue" value={t.exempt.total} />
+          <Row label="豁免税费总额" value={t.exempt.total} />
         </tbody>
       </table>
       <Breakdown>
-        Contract {t.exempt.contract} &bull; Headeater {t.exempt.headeater}{' '}
-        &bull; Import {t.exempt.import} &bull; Export {t.exempt.export}{' '}
-        &bull; Fines {t.exempt.fines} &bull; Poll Tax {t.exempt.poll_tax}
+        契约税 {t.exempt.contract} &bull; 食首税 {t.exempt.headeater}{' '}
+        &bull; 进口税 {t.exempt.import} &bull; 出口税 {t.exempt.export}{' '}
+        &bull; 罚款 {t.exempt.fines} &bull; 人头税 {t.exempt.poll_tax}
       </Breakdown>
       <div style={dividerStyle} />
       <table style={twoColTable}>
         <tbody>
-          <Row label="Total Expenses" value={t.total_expenses} color={SEAL_RED} />
+          <Row label="总支出" value={t.total_expenses} color={SEAL_RED} />
         </tbody>
       </table>
     </div>
@@ -183,21 +183,21 @@ const RealmInsight = (props: { t: TreasurySnapshot }) => {
       <table style={twoColTable}>
         <tbody>
           <Row
-            label="Net Treasury Result"
+            label="国库净收支"
             value={`${netSign}${t.net_treasury}`}
             color={netColor}
           />
           <Row
-            label="Trade Balance"
+            label="贸易差额"
             value={`${tradeSign}${t.trade_balance}`}
             color={tradeColor}
           />
-          <Row label="Foreign Trade Volume" value={t.foreign_trade_volume} />
+          <Row label="对外贸易总额" value={t.foreign_trade_volume} />
           <Row
-            label="Effective Tax Rate"
+            label="实际税率"
             value={formatPct(t.effective_tax_rate)}
           />
-          <Row label="Forgone Share" value={formatPct(t.exemption_share)} />
+          <Row label="豁免占比" value={formatPct(t.exemption_share)} />
         </tbody>
       </table>
     </div>
@@ -208,7 +208,7 @@ export const TreasurySection = (props: Props) => {
   const { t, balance } = props;
   return (
     <div style={compactCardStyle}>
-      <SectionTitle>Realm&apos;s Treasury - balance: {balance}</SectionTitle>
+      <SectionTitle>领地国库 - 余额： {balance}</SectionTitle>
       <div style={twoColumnLayout}>
         <RevenueColumn t={t} />
         <ExpensesColumn t={t} />

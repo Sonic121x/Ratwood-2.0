@@ -56,9 +56,9 @@
 	if(penis_organ && vagina_organ)
 		// Intersex: corkscrew/pull tears the cock loose and batters the remaining anatomy.
 		if(action_type == "pull")
-			target.visible_message(span_userdanger("[user]以灾难性的力量将[target]的尖刺贞操笼硬生生扯下——[target.p_their()]的肉棒还卡在里面，被整个撕断，其余腹股沟也被一并毁得不成样子。"))
+			target.visible_message(span_userdanger("[user]以灾难性的力量将[target]的尖刺贞操笼硬生生扯下——[target.p_their()]肉棒还卡在里面，被整个撕断，其余腹股沟也被一并毁得不成样子。"))
 		else
-			target.visible_message(span_userdanger("随着最后一次灾难性的扭转，[target]的尖刺贞操笼彻底脱落——[target.p_their()]的肉棒被整个撕断留在其中，脱离时碰触到的一切也都被毁坏。"))
+			target.visible_message(span_userdanger("随着最后一次灾难性的扭转，[target]的尖刺贞操笼彻底脱落——[target.p_their()]肉棒被整个撕断留在其中，脱离时碰触到的一切也都被毁坏。"))
 		playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamIntersex1.ogg', 'modular/sound/masomoans/agony/CBTScreamIntersex2.ogg'), 85, FALSE, 2)
 		target.add_splatter_floor(drop_turf)
 		penis_organ.Remove(target)
@@ -68,7 +68,7 @@
 	else if(penis_organ)
 		// Cock-only: device and organ torn free together.
 		if(action_type == "pull")
-			target.visible_message(span_userdanger("最后猛地一拽，[target]的尖刺贞操笼被整个扯下——[target.p_their()]的肉棒仍卡在其中，自根部被连根撕断。"))
+			target.visible_message(span_userdanger("最后猛地一拽，[target]的尖刺贞操笼被整个扯下——[target.p_their()]肉棒仍卡在其中，自根部被连根撕断。"))
 		else
 			target.visible_message(span_userdanger("伴随着令人作呕的最后一圈扭转，[target]的尖刺贞操笼从固定处彻底撕脱——[target.p_their()]被困住的肉棒也随之被内侧尖刺整个拖断。"))
 		playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2)

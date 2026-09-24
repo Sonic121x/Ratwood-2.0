@@ -246,7 +246,7 @@
 						penis_organ.forceMove(drop_turf)
 					else if(chest && !chest.has_wound(/datum/wound/cbt))
 						// Slip causes crushing/tearing internal groin injury but no avulsion.
-						H.visible_message(span_userdanger("锁崩开的瞬间，[user]的凿子狠狠咬进了[H.p_their()]的睾丸——装置脱落时，扭拧的金属猛地绞过[H.p_their()]的裆部。"))
+						H.visible_message(span_userdanger("锁崩开的瞬间，[user]的凿子狠狠咬进了[H.p_their()]睾丸——装置脱落时，扭拧的金属猛地绞过[H.p_their()]裆部。"))
 						playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2)
 						H.add_splatter_floor(drop_turf)
 						chest.add_wound(/datum/wound/cbt)
@@ -273,7 +273,7 @@
 	if(HAS_TRAIT(H, TRAIT_CHASTITY_SPIKED))
 		H.visible_message(span_userdanger("[H]膨胀变形的狼人之躯猛地撑爆了[H.p_their()]带刺贞操装置，碎片四处飞溅！"))
 	else
-		H.visible_message(span_userdanger("[H]膨胀变形的狼人之躯伴着一声尖锐的金属脆响，生生崩碎了[H.p_their()]的贞操装置！"))
+		H.visible_message(span_userdanger("[H]膨胀变形的狼人之躯伴着一声尖锐的金属脆响，生生崩碎了[H.p_their()]贞操装置！"))
 
 	playsound(get_turf(H), 'sound/combat/gib (1).ogg', 70, FALSE, 2)
 	remove_chastity(H)

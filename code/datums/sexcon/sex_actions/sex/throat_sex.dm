@@ -25,7 +25,7 @@
 	return TRUE
 
 /datum/sex_action/throat_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]将[user.p_their()]的肉棒滑入了[target]的喉咙！"))
+	user.visible_message(span_warning("[user]将[user.p_their()]肉棒滑入了[target]的喉咙！"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/throat_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -57,7 +57,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/throat_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的肉棒从[target]的喉咙里抽了出来。"))
+	user.visible_message(span_warning("[user]把[user.p_their()]肉棒从[target]的喉咙里抽了出来。"))
 
 /datum/sex_action/throat_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())
@@ -78,7 +78,7 @@
 	return ..()
 
 /datum/sex_action/throat_sex/double/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]将[user.p_their()]的双根肉棒滑入了[target]的喉咙！"))
+	user.visible_message(span_warning("[user]将[user.p_their()]双根肉棒滑入了[target]的喉咙！"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/throat_sex/double/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -106,4 +106,4 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/throat_sex/double/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的双根肉棒从[target]的喉咙里抽了出来。"))
+	user.visible_message(span_warning("[user]把[user.p_their()]双根肉棒从[target]的喉咙里抽了出来。"))
