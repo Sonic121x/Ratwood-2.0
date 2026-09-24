@@ -5,7 +5,7 @@
 	category = SEX_CATEGORY_HANDS
 
 /datum/sex_action/rub_body/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的手放到了[target]身上……"))
+	user.visible_message(span_warning("[user]把[user.p_their()]手放到了[target]身上……"))
 
 /datum/sex_action/rub_body/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]抚摸着[target]的身体……"))
