@@ -1,5 +1,5 @@
 /datum/sex_action/holy/masturbate_other_vagina_orison
-	name = "Rub their clit with godhand"
+	name = "用神圣之手揉弄对方的阴蒂"
 	check_same_tile = FALSE
 	ranged_los_action = TRUE
 	category = SEX_CATEGORY_HANDS
@@ -7,7 +7,7 @@
 	subtle_supported = TRUE
 
 /datum/sex_action/holy/masturbate_other_vagina_orison/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] offers a quiet orison, directing the energies toward [target]'s clit..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]低声祷告，将能量引向[target]的阴蒂……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/holy/masturbate_other_vagina_orison/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -18,7 +18,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] traces blessed circles over [target]'s clit with sanctified disembodied fingers... [message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user]用悬空的神圣手指[user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]在[target]的阴蒂上画着带有祝福的圆圈……[message_suffix]"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	if(!do_subtle)
 		user.sexcon.generic_sex_noise()
 	if(data["jingle"])
@@ -31,7 +31,7 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/holy/masturbate_other_vagina_orison/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] finishes the prayer and eases off [target]'s clit."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]结束祷告，停止揉弄[target]的阴蒂。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/holy/masturbate_other_vagina_orison/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

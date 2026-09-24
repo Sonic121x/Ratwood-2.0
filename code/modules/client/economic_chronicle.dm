@@ -8,8 +8,8 @@ GLOBAL_DATUM(economic_chronicle, /datum/economic_chronicle)
 // Ratwood deviation: AP reaches this via round-end panel hrefs; give ES players a live OOC verb too.
 /client/verb/view_realm_economics()
 	set category = "Options"
-	set name = "Realm Economics"
-	set desc = "Open the running economic chronicle of the realm - taxes, trade, ships and coin."
+	set name = "领地经济"
+	set desc = "查看领地当前的经济纪事——税收、贸易、船舶与钱币。"
 	var/datum/economic_chronicle/chronicle = get_economic_chronicle()
 	chronicle.ui_interact(mob)
 

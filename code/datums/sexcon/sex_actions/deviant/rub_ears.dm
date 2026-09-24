@@ -1,5 +1,5 @@
 /datum/sex_action/rub_ears
-	name = "Rub their ears"
+	name = "揉弄对方的耳朵"
 	check_same_tile = FALSE
 	category = SEX_CATEGORY_HANDS
 	subtle_supported = TRUE
@@ -17,7 +17,7 @@
 	return TRUE
 
 /datum/sex_action/rub_ears/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] places [user.p_their()] hands on [target] ears..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]将双手放在[target]的耳朵上……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 
 /datum/sex_action/rub_ears/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -28,9 +28,9 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = do_subtle
 
 	if(has_sensitive_ears)
-		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] rubs [target]'s ears... [target.p_their()] weakness..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]揉弄着[target]的耳朵……那正是[target.p_their()]弱点……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	else
-		user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)] rubs [target]'s ears..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+		user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]揉弄着[target]的耳朵……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 
 	if(!do_subtle)
 		target.sexcon.make_sucking_noise()
@@ -44,7 +44,7 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/rub_ears/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] stops rubbing [target]'s ears ..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]停止揉弄[target]的耳朵……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/rub_ears/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())
