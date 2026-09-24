@@ -16,7 +16,7 @@
 	user.sexcon.show_progress = !do_subtle
 	user.sexcon.suppress_moan = do_subtle
 
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]揉捏着[user.p_their()]自己的[user.get_chest_word()]..."), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective(is_stealth = do_subtle)]揉捏着[user.p_their()]自己的[user.get_chest_word()]……"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 
 	user.sexcon.perform_sex_action(user, 1, 4, TRUE)
 	user.sexcon.handle_passive_ejaculation()
