@@ -23,7 +23,7 @@
 
 /datum/sex_action/chastityplay/sounding_cock_cage/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(HAS_TRAIT(target, TRAIT_CHASTITY_SPIKED))
-		user.visible_message(span_warning("[user]取出一根细探针，小心调整角度，朝[target]的尿道口探去，同时避开[target.p_their()]的[get_chastity_device_name(target)]上的尖刺。"))
+		user.visible_message(span_warning("[user]取出一根细探针，小心调整角度，朝[target]的尿道口探去，同时避开[target.p_their()][get_chastity_device_name(target)]上的尖刺。"))
 		return
 	user.visible_message(span_warning("[user]取出一根细探针，对准[target]的[get_chastity_device_name(target)]上那一小处裸露的开口。"))
 
@@ -37,7 +37,7 @@
 		user.sexcon.try_do_pain_scream(target, 10.2)
 		target.sexcon.handle_passive_ejaculation(user)
 		return
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]顺着[target.p_their()]的[get_chastity_device_name(target)]开口，将探针一点点更深地送入[target]的尿道，动作缓慢而刻意……"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]顺着[target.p_their()][get_chastity_device_name(target)]开口，将探针一点点更深地送入[target]的尿道，动作缓慢而刻意……"))
 	user.sexcon.perform_sex_action(target, 0.5, 8.5, TRUE)
 	user.sexcon.try_do_pain_scream(target, 8.5)
 	target.sexcon.handle_passive_ejaculation(user)
