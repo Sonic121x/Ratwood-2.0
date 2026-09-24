@@ -1,5 +1,5 @@
 /datum/sex_action/force_titjob
-	name = "Jerk them off with tits"
+	name = "用胸部替对方撸弄"
 	require_grab = TRUE
 	target_sex_part = SEX_PART_COCK
 
@@ -27,10 +27,10 @@
 
 
 /datum/sex_action/force_titjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] grabs [target]'s cock and shoves it between [user.p_their()] [user.get_chest_word()]!"))
+	user.visible_message(span_warning("[user]抓住[target]的阴茎，将它塞进[user.p_their()]的[user.get_chest_word()]之间！"))
 
 /datum/sex_action/force_titjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] shoves [target]'s cock between [user.p_their()] [user.get_chest_word()]."))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]将[target]的阴茎塞进[user.p_their()]的[user.get_chest_word()]之间。"))
 	user.sexcon.outercourse_noise(user)
 
 	user.sexcon.perform_sex_action(target, 2, 4, TRUE)
@@ -38,7 +38,7 @@
 	target.sexcon.handle_passive_ejaculation(user)
 
 /datum/sex_action/force_titjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] pulls [target.p_their()] cock out from between [user.p_their()]'s [user.get_chest_word()]."))
+	user.visible_message(span_warning("[user]将[target.p_their()]的阴茎从[user.p_their()]的[user.get_chest_word()]之间抽出。"))
 
 /datum/sex_action/force_titjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

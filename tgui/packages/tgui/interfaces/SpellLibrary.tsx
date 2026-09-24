@@ -45,7 +45,7 @@ export const SpellLibrary = () => {
   }, [spells]);
 
   const schools = useMemo(() => {
-    const names: Record<string, string> = { All: '全部', abjuration: '防护术', conjuration: '咒法术', evocation: '塑能术', illusion: '幻术', necromancy: '死灵术', restoration: '恢复术', transmutation: '变化术', generic: '通用' };
+    const names: Record<string, string> = { All: '全部', abjuration: '防护术', conjuration: '咒法术', divination: '预言术', enchantment: '惑控术', evocation: '塑能术', illusion: '幻术', necromancy: '死灵术', restoration: '恢复术', transmutation: '变化术', generic: '通用' };
     const set = new Set<string>(['All']);
     spells.forEach((s) => {
       if (s.school) set.add(s.school);
