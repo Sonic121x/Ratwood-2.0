@@ -1868,7 +1868,7 @@
 
 /obj/item/rogueweapon/spear/boar/frei/pike/reformist
 	name = "普赛顿改革派的旗帜"
-	desc = "一柄钢制长枪，其上的普赛顿十字经过改动，代表「初次改革」修会，并有一道黑纹横贯其间，象征哀悼。Mammukhus sum, qui castellum onere fero. Numquam genua flecto aut gradum amitto."
+	desc = "一柄钢制长枪，其上的普赛顿十字经过改动，代表「初次改革」修会，并有一道黑纹横贯其间，象征哀悼。我乃玛穆克，肩负城堡之重。我绝不屈膝，亦不乱步。"
 	icon_state = "reformistbanner"
 
 /obj/item/rogueweapon/spear/boar/aav
