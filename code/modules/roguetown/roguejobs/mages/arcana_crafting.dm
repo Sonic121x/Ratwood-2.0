@@ -34,7 +34,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/arcana/ritechalk
-	name = "ritual chalk (blessed)"
+	name = "仪式粉笔 (祝圣)"
 	skillcraft = /datum/skill/magic/holy
 	result = /obj/item/ritechalk
 	reqs = list(/obj/item/rogueore/cinnabar = 1,
@@ -43,7 +43,7 @@
 	craft_xp_override = 0
 
 /datum/crafting_recipe/roguetown/arcana/ritechalk_unholy
-	name = "ritual chalk (unholy)"
+	name = "仪式粉笔 (亵渎)"
 	skillcraft = /datum/skill/magic/holy
 	result = /obj/item/ritechalk
 	reqs = list(/obj/item/rogueore/cinnabar = 1,
@@ -313,7 +313,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/arcana/arcynefission2 //gives T1, T2, and T3 arcane material, sorry Tudon
-	name = "arcyne 裂变"
+	name = "奥术裂变"
 	result = list(/obj/item/magic/manacrystal,
 				  /obj/item/magic/manacrystal,
 				  /obj/item/magic/manacrystal,
