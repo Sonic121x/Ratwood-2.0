@@ -39,6 +39,12 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	//   登记逻辑本身定义在 modular_z121/vices/facial_blindness.dm 内，这里只做一次调用。
 	register_facial_blindness_vice()
 
+	// 登记自定义恶习"涨奶"到可选恶习列表（GLOB.character_flaws）。
+	// 为什么放在这里：与上面的"洁癖""病娇""脸盲症"登记同理——custom_bootstrap 的 Initialize
+	//   执行时机晚于全局列表（GLOBAL_LIST_INIT）的初始化，此刻向"可选恶习列表"追加是安全的；
+	//   登记逻辑本身定义在 modular_z121/vices/engorged_breasts.dm 内，这里只做一次调用。
+	register_engorged_breasts_vice()
+
 	// 登记自定义美德"生命潜能"的特性到玩家可见的特性表（GLOB.roguetraits）。
 	// 为什么放在这里：与上面同理——此刻核心表 roguetraits 已由 GLOBAL_LIST_INIT 完成
 	//   初始化，向其追加一个键值对，玩家点开特性自检面板时即可看到"生命潜能"及其说明。

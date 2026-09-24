@@ -93,6 +93,18 @@
 #include "alchemy/refining_potions/flying.dm"				// 飞行药水 (3-minute magic flight)
 #include "alchemy/refining_potions/anticorruption.dm"		// 防腐药水 (splash: food never rots / corpse preserved)
 #include "alchemy/refining_potions/hardened_potion.dm"		// 硬化药剂 (take 20% less brute damage for the duration)
+// 抗火药水：气味"火焰"(5级) + 水70/魔力药水30；炼金4级(专家)；产出30单位。
+// 药效期间免疫一切火焰/烧伤伤害(TRAIT_NOFIRE：不被点燃、不受任何烧伤)，3秒消化1单位(≈1.5分钟)。
+// Fire Resistance potion: "flame" scent (lvl5) + 70 water/30 mana potion; alchemy lvl4 (Expert); 30u output; completes fire immunity (TRAIT_NOFIRE).
+#include "alchemy/refining_potions/fire_resistance.dm"		// 抗火药水 (complete fire/burn immunity for the duration)
+// 迷药：气味"平静"(5级) + 水70/毒药30；炼金4级(专家)；产出30单位。
+// 饮后立即强制昏睡(ignore_canstun 无视盔甲/TRAIT_SLEEPIMMUNE等一切睡眠免疫)，6秒消化1单位(≈3分钟)。
+// Knockout Potion: "calm" scent (lvl5) + 70 water/30 berrypoison; alchemy lvl4 (Expert); 30u output; forces sleep ignoring all sleep immunity.
+#include "alchemy/refining_potions/knockout_potion.dm"		// 迷药 (forced sleep that bypasses armor/trait sleep immunity)
+// 变换药水：气味"力量"(5级) + 水70/魔力药水30；炼金5级(大师)；产出30单位。
+// 饮后随机变成一种野生动物(猫/鹿兔/蝙蝠/狼/羚鹿/熊)，复用 wildshape 系统，6秒消化1单位(≈3分钟)；代谢完毕恢复人形。
+// Polymorph Potion: "strength" scent (lvl5) + 70 water/30 mana potion; alchemy lvl5 (Master); 30u output; randomly transforms into a wild animal via wildshape.
+#include "alchemy/refining_potions/polymorph_potion.dm"		// 变换药水 (random wildshape: cat/cabbit/bat/volf/saiga/bear)
 // 防蚂蟥药水：气味"死亡"(5级) + 水70/普通毒药30；炼金3级(熟练)；产出50单位。
 // 药效期间主动剥离饮用者身上"正在吸血"的水蛭(脱离肢体即停止吸血)，等效"水蛭咬不动你"；并挂 TRAIT_ANTILEECH 状态钩子。
 // Anti-leech potion: "death" scent (lvl5) + 70 water/30 common poison; alchemy lvl3; 50u output.
@@ -272,6 +284,11 @@
 // (the face-memory registry) so they can never remember or recognize anyone. Removing the vice
 // takes the trait back.
 #include "vices/facial_blindness.dm"
+// 自定义恶习：涨奶（被动）；持续泌乳使奶水不断胀满，涨到近满即胸口胀痛、心情变差（意志 -2）；
+// 用吸奶器/挤进容器/被人吸出把奶挤到低位即可缓解。无乳房者不生效。
+// Custom vice: Milk Engorgement (passive); constant lactation fills the breasts until near-full,
+// then they ache and mood drops (Willpower -2). Milking down below the relief threshold clears it.
+#include "vices/engorged_breasts.dm"
 // 自定义美德：地狱血脉后裔（仅限提夫林、消耗 29 凯旋点）；授予【地狱血脉】特性：
 // 免疫一切火焰/灼烧/高温伤害（不会被点燃），并习得火焰系法术（火球术/强效火球术/吐焰火球/生成营火）。
 // Custom virtue: Hell Bloody Descendants (Tiefling-only, costs 29 TRIUMPH); grants the "Hell Bloodline"
