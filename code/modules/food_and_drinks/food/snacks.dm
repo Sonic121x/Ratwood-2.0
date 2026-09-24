@@ -29,7 +29,7 @@ Here is an example of the new formatting for anyone who wants to add more food i
 All foods are distributed among various categories. Use common sense.
 */
 /obj/item/reagent_containers/food/snacks
-	name = "snack"
+	name = "食物"
 	desc = ""
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = null
@@ -100,10 +100,10 @@ All foods are distributed among various categories. Use common sense.
 	if(ismob(target))
 		var/mob/M = target
 		var/list/targetl = list(target)
-		user.visible_message(span_green("[user] beckons [M] with [masteritem]."), span_green("I beckon [M] with [masteritem]."), ignored_mobs = targetl)
+		user.visible_message(span_green("[user]拿着[masteritem]招呼[M]过来。"), span_green("我拿着[masteritem]招呼[M]过来。"), ignored_mobs = targetl)
 		if(M.client)
 			if(M.can_see_cone(user))
-				to_chat(M, span_green("[user] beckons me with [masteritem]."))
+				to_chat(M, span_green("[user]拿着[masteritem]招呼我过去。"))
 		M.food_tempted(masteritem, user)
 	return
 
@@ -174,7 +174,7 @@ All foods are distributed among various categories. Use common sense.
 		var/mutable_appearance/rotflies = mutable_appearance('icons/roguetown/mob/rotten.dmi', "rotten")
 		add_overlay(rotflies)
 		if(to_rename)
-			name = "rotten [initial(name)]"
+			name = "腐烂的[initial(name)]"
 		eat_effect = /datum/status_effect/debuff/rotfood
 		slices_num = 0
 		slice_path = null
@@ -242,7 +242,7 @@ All foods are distributed among various categories. Use common sense.
 		if(eat_effect != /datum/status_effect/debuff/burnedfood)
 			if(burning >= burntime)
 				color = burned_color
-				name = "burned [name]"
+				name = "烧焦的[name]"
 				slice_path = null
 				eat_effect = /datum/status_effect/debuff/burnedfood
 		if(burning > (burntime * 2))
@@ -275,36 +275,36 @@ All foods are distributed among various categories. Use common sense.
 			var/favorite_food_type = human_eater.culinary_preferences[CULINARY_FAVOURITE_FOOD]
 			if(favorite_food_type == type)
 				if(human_eater.add_stress(/datum/stressevent/favourite_food))
-					to_chat(human_eater, span_green("Yum! My favorite food!"))
+					to_chat(human_eater, span_green("真好吃！是我最喜欢的食物！"))
 			else if(ispath(type, favorite_food_type))
 				var/obj/item/reagent_containers/food/snacks/favorite_food_instance = favorite_food_type
 				var/favorite_food_name = initial(favorite_food_instance.name)
 				if(favorite_food_name == name)
 					if(human_eater.add_stress(/datum/stressevent/favourite_food))
-						to_chat(human_eater, span_green("Yum! My favorite food!"))
+						to_chat(human_eater, span_green("真好吃！是我最喜欢的食物！"))
 			else
 				var/obj/item/reagent_containers/food/snacks/favorite_food_instance = favorite_food_type
 				var/slice_path = initial(favorite_food_instance.slice_path)
 				if(slice_path && type == slice_path)
 					if(human_eater.add_stress(/datum/stressevent/favourite_food))
-						to_chat(human_eater, span_green("Yum! My favorite food!"))
+						to_chat(human_eater, span_green("真好吃！是我最喜欢的食物！"))
 
 			var/hated_food_type = human_eater.culinary_preferences[CULINARY_HATED_FOOD]
 			if(hated_food_type == type)
 				if(human_eater.add_stress(/datum/stressevent/hated_food))
-					to_chat(human_eater, span_red("Yuck! My hated food!"))
+					to_chat(human_eater, span_red("真难吃！是我最讨厌的食物！"))
 			else if(ispath(type, hated_food_type))
 				var/obj/item/reagent_containers/food/snacks/hated_food_instance = hated_food_type
 				var/hated_food_name = initial(hated_food_instance.name)
 				if(hated_food_name == name)
 					if(human_eater.add_stress(/datum/stressevent/hated_food))
-						to_chat(human_eater, span_red("Yuck! My hated food!"))
+						to_chat(human_eater, span_red("真难吃！是我最讨厌的食物！"))
 			else
 				var/obj/item/reagent_containers/food/snacks/hated_food_instance = hated_food_type
 				var/slice_path = initial(hated_food_instance.slice_path)
 				if(slice_path && type == slice_path)
 					if(human_eater.add_stress(/datum/stressevent/hated_food))
-						to_chat(human_eater, span_red("Yuck! My hated food!"))
+						to_chat(human_eater, span_red("真难吃！是我最讨厌的食物！"))
 
 		if (!HAS_TRAIT(human_eater, TRAIT_NASTY_EATER) && !HAS_TRAIT(human_eater, TRAIT_ORGAN_EATER) && !HAS_TRAIT(human_eater, TRAIT_WILD_EATER))
 			if (human_eater.is_noble())
@@ -312,7 +312,7 @@ All foods are distributed among various categories. Use common sense.
 					if(!(locate(/obj/structure/table) in range(1, eater)))
 						eater.add_stress(/datum/stressevent/noble_ate_without_table) // look i just had to okay?
 						if (prob(25))
-							to_chat(eater, span_red("I should really eat this at a table..."))
+							to_chat(eater, span_red("我真该坐到桌前享用这道菜……"))
 				switch (faretype)
 					if (FARE_IMPOVERISHED)
 						eater.add_stress(/datum/stressevent/noble_impoverished_food)
@@ -328,7 +328,7 @@ All foods are distributed among various categories. Use common sense.
 					if (FARE_POOR to FARE_NEUTRAL)
 						eater.add_stress(/datum/stressevent/noble_bland_food)
 						if (prob(25))
-							to_chat(eater, span_red("This is rather bland. I deserve better food than this..."))
+							to_chat(eater, span_red("这也太寡淡了。我理应享用更好的食物……"))
 						if(eat_effect != /datum/status_effect/debuff/rotfood && eat_effect != /datum/status_effect/debuff/burnedfood && eat_effect != /datum/status_effect/debuff/uncookedfood)
 							apply_effect = FALSE
 					if (FARE_FINE)
@@ -337,7 +337,7 @@ All foods are distributed among various categories. Use common sense.
 						eater.remove_stress(/datum/stressevent/noble_bland_food)
 						eater.add_stress(/datum/stressevent/noble_lavish_food)
 						if (prob(25))
-							to_chat(eater, span_green("Ah, food fit for my title."))
+							to_chat(eater, span_green("啊，这才是配得上我身份的佳肴。"))
 
 			// yeomen and courtiers are also used to a better quality of life but are way less picky
 			if (human_eater.is_yeoman() || human_eater.is_courtier())
@@ -347,7 +347,7 @@ All foods are distributed among various categories. Use common sense.
 						if(eat_effect != /datum/status_effect/debuff/rotfood && eat_effect != /datum/status_effect/debuff/burnedfood && eat_effect != /datum/status_effect/debuff/uncookedfood)
 							apply_effect = FALSE
 						if (prob(25))
-							to_chat(eater, span_red("This is rather bland. I deserve better food than this..."))
+							to_chat(eater, span_red("这也太寡淡了。我理应享用更好的食物……"))
 					if (FARE_POOR to FARE_LAVISH)
 						eater.remove_stress(/datum/stressevent/noble_bland_food)
 
@@ -374,10 +374,10 @@ All foods are distributed among various categories. Use common sense.
 	if(user.used_intent.type == INTENT_HARM || user.cmode)
 		return ..()
 	if(istype(src, /obj/item/reagent_containers/food/snacks/organ) && M.lying)
-		to_chat(user, span_warning("[M] can't eat this while lying down. What even?"))
+		to_chat(user, span_warning("[M]躺着时没法吃这个。这算怎么回事？"))
 		return FALSE
 	if(!eatverb)
-		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
+		eatverb = pick("咬着","咀嚼着","小口啃着","啃食着","大口吞着","大口嚼着")
 	if(iscarbon(M))
 		if(!canconsume(M, user))
 			return FALSE
@@ -405,11 +405,11 @@ All foods are distributed among various categories. Use common sense.
 				M.changeNext_move(CLICK_CD_MELEE * 0.5)*/
 			switch(M.nutrition)
 				if(NUTRITION_LEVEL_FAT to INFINITY)
-					user.visible_message(span_notice("[user] forces [M.p_them()]self to eat \the [src]."), span_notice("I force myself to eat \the [src]."))
+					user.visible_message(span_notice("[user]强迫[M.p_them()]自己吃下\the [src]。"), span_notice("我强迫自己吃下\the [src]。"))
 				if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_FAT)
-					user.visible_message(span_notice("[user] [eatverb]s \the [src]."), span_notice("I [eatverb] \the [src]."))
+					user.visible_message(span_notice("[user][eatverb]\the [src]。"), span_notice("我[eatverb]\the [src]。"))
 				if(0 to NUTRITION_LEVEL_STARVING)
-					user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src], gobbling it down!"), span_notice("I hungrily [eatverb] \the [src], gobbling it down!"))
+					user.visible_message(span_notice("[user]饥饿地[eatverb]\the [src]，狼吞虎咽地吃了下去！"), span_notice("我饥饿地[eatverb]\the [src]，狼吞虎咽地吃了下去！"))
 					M.changeNext_move(CLICK_CD_MELEE * 0.5)
 /*			if(M.energy <= 50)
 				user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src], gobbling it down!"), span_notice("I hungrily [eatverb] \the [src], gobbling it down!"))
@@ -423,18 +423,18 @@ All foods are distributed among various categories. Use common sense.
 			if(!isbrain(M))		//If you're feeding it to someone else.
 //				if(fullness <= (600 * (1 + M.overeatduration / 1000)))
 				if(M.nutrition in NUTRITION_LEVEL_FAT to INFINITY)
-					M.visible_message(span_warning("[user] cannot force any more of [src] down [M]'s throat!"), \
-										span_warning("[user] cannot force any more of [src] down your throat!"))
+					M.visible_message(span_warning("[user]没法再往[M]喉咙里塞更多[src]了！"), \
+										span_warning("[user]没法再往你喉咙里塞更多[src]了！"))
 					return FALSE
 				else
-					M.visible_message(span_danger("[user] tries to feed [M] [src]."), \
-										span_danger("[user] tries to feed me [src]."))
+					M.visible_message(span_danger("[user]试图喂[M]吃[src]。"), \
+										span_danger("[user]试图喂我吃[src]。"))
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
 					var/obj/item/bodypart/CH = C.get_bodypart(BODY_ZONE_HEAD)
 					if(C.cmode)
 						if(CH && !CH.grabbedby)
-							to_chat(user, span_info("[C.p_they(TRUE)] steals [C.p_their()] face from it."))
+							to_chat(user, span_info("[C.p_they(TRUE)]把[C.p_their()]脸转开，躲过了喂食。"))
 							return FALSE
 				if(!do_mob(user, M, double_progress = TRUE, can_move = FALSE))
 					return
@@ -443,7 +443,7 @@ All foods are distributed among various categories. Use common sense.
 					M.add_stress(/datum/stressevent/hand_fed_fruit)
 //				M.visible_message(span_danger("[user] forces [M] to eat [src]!"), span_danger("[user] forces you to eat [src]!"))
 			else
-				to_chat(user, span_warning("[M] doesn't seem to have a mouth!"))
+				to_chat(user, span_warning("[M]似乎没有嘴！"))
 				return
 
 		if(reagents)								//Handle ingestion of the reagent.
@@ -487,52 +487,52 @@ All foods are distributed among various categories. Use common sense.
 	var/nutrition = get_nutrition()
 	switch(nutrition)
 		if(0)
-			return "an inedible item"
+			return "不可食用的物品"
 		if(1 to BASE_NUTRIMENT_NUTRITION * NUTRITION_QUARTER_MEAL)
-			return "a quarter of a meal"
+			return "四分之一餐"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_QUARTER_MEAL to BASE_NUTRIMENT_NUTRITION * NUTRITION_HALF_MEAL)
-			return "half a meal"
+			return "半餐"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_HALF_MEAL to BASE_NUTRIMENT_NUTRITION * NUTRITION_THREE_QUARTER_MEAL)
-			return "three-quarters of a meal"
+			return "四分之三餐"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_THREE_QUARTER_MEAL to BASE_NUTRIMENT_NUTRITION * NUTRITION_FULL_MEAL)
-			return "a full meal"
+			return "一整餐"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_FULL_MEAL to BASE_NUTRIMENT_NUTRITION * NUTRITION_MEAL_AND_QUARTER)
-			return "a meal and a quarter"
+			return "一又四分之一餐"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_MEAL_AND_QUARTER to BASE_NUTRIMENT_NUTRITION * NUTRITION_MEAL_AND_HALF)
-			return "a meal and a half"
+			return "一餐半"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_MEAL_AND_HALF to BASE_NUTRIMENT_NUTRITION * NUTRITION_TWO_MEALS)
-			return "two meals"
+			return "两餐"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_TWO_MEALS to BASE_NUTRIMENT_NUTRITION * NUTRITION_TWO_AND_HALF_MEALS)
-			return "two-and-a-half meals"
+			return "两餐半"
 		if(BASE_NUTRIMENT_NUTRITION * NUTRITION_TWO_AND_HALF_MEALS to BASE_NUTRIMENT_NUTRITION * NUTRITION_THREE_AND_HALF_MEALS)
-			return "three-and-a-half meals"
+			return "三餐半"
 		else
-			return "five meals or more"
+			return "五餐或更多"
 
 /obj/item/reagent_containers/food/snacks/proc/rotprocess_to_text()
 	var/rot_text = ""
 	if(!rotprocess)
-		return "This food does not rot."
+		return "这种食物不会腐烂。"
 	switch(initial(rotprocess))
 		if(0 to SHELFLIFE_TINY)
-			rot_text = "This food will rot in less than a third of a dae."
+			rot_text = "这种食物不到三分之一天就会腐烂。"
 		if(SHELFLIFE_TINY to SHELFLIFE_SHORT)
-			rot_text = "This food will rot in half a dae."
+			rot_text = "这种食物半天就会腐烂。"
 		if(SHELFLIFE_SHORT to SHELFLIFE_DECENT)
-			rot_text = "This food will last about a dae."
+			rot_text = "这种食物能保存约一天。"
 		if(SHELFLIFE_DECENT to SHELFLIFE_LONG)
-			rot_text = "This food will last a dae and a half."
+			rot_text = "这种食物能保存一天半。"
 		if(SHELFLIFE_LONG to SHELFLIFE_EXTREME)
-			rot_text = "This food will last three daes."
+			rot_text = "这种食物能保存三天。"
 	switch(-1 * warming / initial(rotprocess))
 		if(-INFINITY to 0.25)
-			rot_text += " It is very fresh."
+			rot_text += " 它非常新鲜。"
 		if(0.25 to 0.5)
-			rot_text += " It is fairly fresh."
+			rot_text += " 它还算新鲜。"
 		if(0.5 to 0.75)
-			rot_text += " It is starting to go stale."
+			rot_text += " 它开始变得不新鲜了。"
 		if(0.75 to 1)
-			rot_text += " It is about to rot."
+			rot_text += " 它快要腐烂了。"
 	return rot_text
 
 /obj/item/reagent_containers/food/snacks/examine(mob/user)
@@ -541,42 +541,42 @@ All foods are distributed among various categories. Use common sense.
 		switch (bitecount)
 			if(0)
 			if(1)
-				. += span_smallnotice("[src] was bitten by someone!\n")
+				. += span_smallnotice("[src]被人咬过一口！\n")
 			if(2,3)
-				. += span_smallnotice("[src] was bitten [bitecount] times!\n")
+				. += span_smallnotice("[src]被咬过 [bitecount] 口！\n")
 			else
-				. += span_smallnotice("[src] was bitten multiple times!\n")
+				. += span_smallnotice("[src]被咬过好几口了！\n")
 	switch(faretype)
 		if(FARE_IMPOVERISHED)
-			. += span_smallnotice("It is food fit for the desperate.")
+			. += span_smallnotice("这是饥不择食时才会吃的粗劣饭食。")
 		if(FARE_POOR)
-			. += span_smallnotice("It is food fit for the poor.")
+			. += span_smallnotice("这是穷人吃的简陋饭食。")
 		if(FARE_NEUTRAL)
-			. += span_smallnotice("It is decent food.")
+			. += span_smallnotice("这是尚可的普通饭食。")
 		if(FARE_FINE)
-			. += span_smallnotice("It is fine food.")
+			. += span_smallnotice("这是一道精致的菜肴。")
 		if(FARE_LAVISH)
-			. += span_smallnotice("It is lavish food.")
+			. += span_smallnotice("这是一道奢华的佳肴。")
 	if(portable)
-		. += span_smallnotice("It can be eaten without a table.")
+		. += span_smallnotice("不用餐桌也能享用它。")
 	else
-		. += span_smallnotice("Eating this without a table would be disgraceful for a noble.")
-	. += span_smallnotice("It looks like [get_nutrition_to_text()]")
+		. += span_smallnotice("贵族若不坐在餐桌前享用它，会有失体面。")
+	. += span_smallnotice("看起来相当于[get_nutrition_to_text()]。")
 	switch(eat_effect)
 		if(/datum/status_effect/debuff/uncookedfood)
-			. += span_smallred("It is raw!")
+			. += span_smallred("它还是生的！")
 		if(/datum/status_effect/debuff/rotfood)
-			. += span_smallred("It is rotten!")
+			. += span_smallred("它已经腐烂了！")
 		if(/datum/status_effect/debuff/burnedfood)
-			. += span_smallred("It is burned!")
+			. += span_smallred("它已经烧焦了！")
 		if(/datum/status_effect/buff/snackbuff)
-			. += span_smallnotice("It looks good!")
+			. += span_smallnotice("它看起来很美味！")
 		if(/datum/status_effect/buff/greatsnackbuff)
-			. += span_smallnotice("It looks great!!")
+			. += span_smallnotice("它看起来美味极了！")
 		if(/datum/status_effect/buff/mealbuff)
-			. += span_smallnotice("It looks good!")
+			. += span_smallnotice("它看起来很美味！")
 		if(/datum/status_effect/buff/greatmealbuff)
-			. += span_smallnotice("It looks great!!")
+			. += span_smallnotice("它看起来美味极了！")
 	. += span_smallnotice("[rotprocess_to_text()]")
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
@@ -649,7 +649,7 @@ All foods are distributed among various categories. Use common sense.
 			!(locate(/obj/structure/table/optable) in src.loc) && \
 			!(locate(/obj/item/storage/bag/tray) in src.loc) \
 		)
-		to_chat(user, span_warning("I need to use a table."))
+		to_chat(user, span_warning("我需要一张桌子。"))
 		return FALSE
 
 	if(slice_sound)
@@ -666,7 +666,7 @@ All foods are distributed among various categories. Use common sense.
 				var/mob/living/carbon/H = user
 				var/obj/item/organ/eyes/E = H.getorganslot(ORGAN_SLOT_EYES) //FIXME: getorganslot() and getorgan() don't actually differentiate organ types! This means that transplanted eyes, regardless of type, will still cry, but I need to mess with all of the organ checking code to unfuck this!
 				if (E && !(H.eyesclosed || HAS_TRAIT(H,TRAIT_NOPAIN) || H.is_eyes_covered() || HAS_TRAIT(H,TRAIT_BLIND) || H.get_skill_level(/datum/skill/craft/cooking) > SKILL_LEVEL_JOURNEYMAN)) //The painless will not be irritated by onions. Golems, skellies, meth-heads, etc. Expert+ chefs will also be unaffected.
-					to_chat(user,span_warning("The onion's juices sting my eyes!"))
+					to_chat(user,span_warning("洋葱汁辣得我眼睛疼！"))
 					user.blur_eyes(4)
 					if (prob(50))
 						user.emote("cry",forced=TRUE)
@@ -768,15 +768,15 @@ All foods are distributed among various categories. Use common sense.
 		return
 	if(istype(M, /obj/item/reagent_containers/glass))	//you can dunk dunkable snacks into beakers or drinks
 		if(!M.is_drainable())
-			to_chat(user, span_warning("[M] is unable to be dunked in!"))
+			to_chat(user, span_warning("不能把食物浸入[M]！"))
 			return
 		if(M.reagents.trans_to(src, dunk_amount, transfered_by = user))	//if reagents were transfered, show the message
-			to_chat(user, span_notice("I dunk \the [src] into \the [M]."))
+			to_chat(user, span_notice("我把\the [src]浸入\the [M]。"))
 			return
 		if(!M.reagents.total_volume)
-			to_chat(user, span_warning("[M] is empty!"))
+			to_chat(user, span_warning("[M]是空的！"))
 		else
-			to_chat(user, span_warning("[src] is full!"))
+			to_chat(user, span_warning("[src]已经满了！"))
 
 // //////////////////////////////////////////////Store////////////////////////////////////////
 /// All the food items that can store an item inside itself, like bread or cake.
@@ -794,9 +794,9 @@ All foods are distributed among various categories. Use common sense.
 		if(!iscarbon(user))
 			return 0
 		if(contents.len >= 20)
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src]已经满了。"))
 			return 0
-		to_chat(user, span_notice("I slip [W] inside [src]."))
+		to_chat(user, span_notice("我把[W]塞进[src]里面。"))
 		user.transferItemToLoc(W, src)
 		add_fingerprint(user)
 		contents += W
@@ -813,8 +813,8 @@ All foods are distributed among various categories. Use common sense.
 
 
 /obj/item/reagent_containers/food/snacks/badrecipe
-	name = "burned mess"
-	desc = "A craggled affront to the culinary arts."
+	name = "焦黑的一团"
+	desc = "一团焦黑皱缩的东西，简直是对厨艺的侮辱。"
 	icon_state = "badrecipe"
 	list_reagents = list(/datum/reagent/toxin/bad_food = 30)
 	filling_color = "#8B4513"
