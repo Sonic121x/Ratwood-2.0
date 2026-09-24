@@ -36,8 +36,8 @@
 	max_heat_protection_temperature = 600
 
 /obj/item/clothing/gloves/roguetown/angle/grenzelgloves/freifechter
-	name = "fencing gloves"
-	desc = "A pair of hardened leather gloves used by fencers who aren't exactly convinced of losing a finger to a particularly strong feder cut. The inside is padded for extra durability."
+	name = "击剑手套"
+	desc = "一副硬化皮革手套，供不想被练习长剑的猛烈劈砍削掉手指的击剑手使用。内有衬垫，更加耐用。"
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER + 50
 	icon_state = "freigloves"
 	item_state = "freigloves"

@@ -271,7 +271,7 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 			return
 /*
 		if(z != 1)
-			to_chat(user, "<span class='warning'>You cannot fire [src] here.</span>")
+			to_chat(user, "<span class='warning'>无法在这里发射[src]。</span>")
 			return
 */
 		if(xinput == 0 && yinput == 0) //Bombard wasn't set
