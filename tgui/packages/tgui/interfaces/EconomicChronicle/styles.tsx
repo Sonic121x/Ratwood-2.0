@@ -133,4 +133,4 @@ export const SectionTitle = (props: { children: ReactNode }) => (
 );
 
 export const formatPct = (n: number | null) =>
-  n === null ? 'n/a' : `${n}%`;
+  n === null ? '不适用' : `${n}%`;

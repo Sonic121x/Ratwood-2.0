@@ -8,10 +8,10 @@
 	target_needs_chastity = TRUE
 
 /datum/sex_action/chastityplay/ride_cage_pussy/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]跨坐到[target]身上，缓缓压下[user.p_their()]的体重，直到[user.p_their()]的阴部贴上[target.p_their()]的[get_chastity_device_name(target)]栅栏。"))
+	user.visible_message(span_warning("[user]跨坐到[target]身上，缓缓压下[user.p_their()]体重，直到[user.p_their()]阴部贴上[target.p_their()][get_chastity_device_name(target)]栅栏。"))
 
 /datum/sex_action/chastityplay/ride_cage_pussy/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]扭动[user.p_their()]的腰胯，沿着[target]的[get_chastity_device_name(target)]来回磨蹭，让[user.p_their()]裸露的阴部压上那毫不退让的金属栅栏……"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]扭动[user.p_their()]腰胯，沿着[target]的[get_chastity_device_name(target)]来回磨蹭，让[user.p_their()]裸露的阴部压上那毫不退让的金属栅栏……"))
 	user.sexcon.outercourse_noise(target, TRUE)
 	user.sexcon.do_thrust_animate(target)
 
@@ -24,7 +24,7 @@
 	target.sexcon.handle_passive_ejaculation(user)
 
 /datum/sex_action/chastityplay/ride_cage_pussy/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]抬起[user.p_their()]的腰胯，从[target]的[get_chastity_device_name(target)]上滑开，随着[user.p_their()]的体温离去，金属又恢复了冰冷。"))
+	user.visible_message(span_warning("[user]抬起[user.p_their()]腰胯，从[target]的[get_chastity_device_name(target)]上滑开，随着[user.p_their()]体温离去，金属又恢复了冰冷。"))
 
 /datum/sex_action/chastityplay/ride_cage_pussy/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

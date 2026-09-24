@@ -8,7 +8,7 @@
 	knot_on_finish = TRUE
 
 /datum/sex_action/vaginal_ride_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]骑到了[target]身上，开始用[user.p_their()]的阴部套弄[target.p_them()]！"))
+	user.visible_message(span_warning("[user]骑到了[target]身上，开始用[user.p_their()]阴部套弄[target.p_them()]！"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/vaginal_ride_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
