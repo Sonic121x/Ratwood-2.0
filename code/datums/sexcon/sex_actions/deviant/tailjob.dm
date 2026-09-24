@@ -5,10 +5,10 @@
 	target_sex_part = SEX_PART_COCK
 
 /datum/sex_action/tailjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]用[user.p_their()]的尾巴缠上了[target]的肉棒……"))
+	user.visible_message(span_warning("[user]用[user.p_their()]尾巴缠上了[target]的肉棒……"))
 
 /datum/sex_action/tailjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]用[user.p_their()]的尾巴撸弄着[target]的肉棒。"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]用[user.p_their()]尾巴撸弄着[target]的肉棒。"))
 	user.sexcon.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(target, 2, 0, TRUE)
