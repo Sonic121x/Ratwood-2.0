@@ -53,7 +53,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/ceramics/glassraw
-	name = "玻璃陶土"
+	name = "玻璃料团"
 	tools = list(/obj/item/reagent_containers/glass/mortar, /obj/item/pestle)
 	result = list(/obj/item/natural/clay/glassbatch)
 	reqs = list(/obj/item/natural/clay = 2, /obj/item/ash = 2, /obj/item/alch/stonedust = 1)
@@ -183,7 +183,7 @@
 	hides_from_books = FALSE
 
 /datum/crafting_recipe/roguetown/ceramics/handbook_clay_pottery/jarhelm
-	name = "rather large jar"
+	name = "大陶罐"
 	result = list(/obj/item/clothing/head/roguetown/helmet/heavy/jar)
 	reqs = list(/obj/item/natural/clay = 3)
 	craftdiff = 5
