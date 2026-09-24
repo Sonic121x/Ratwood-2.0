@@ -674,12 +674,12 @@
 	return
 
 /datum/crafting_recipe/roguetown/quicksand
-	name = "quicksand pit"
+	name = "流沙坑"
 	result = /obj/structure/quicksand
 	reqs = list(/datum/reagent/water = 240)
 	time = 10 SECONDS
-	verbage_simple = "mixes together"
-	verbage = "mixes together"
+	verbage_simple = "混合制成"
+	verbage = "混合制成"
 	craftsound = 'sound/foley/Building-01.ogg'
 	craftdiff = 0
 
