@@ -61,7 +61,7 @@
 		to_chat(user, span_warning("鞘里已经有东西了！"))
 		return FALSE
 	if(HAS_TRAIT(A, TRAIT_NODROP))
-		to_chat(user, span_warning("I cannot sheath [A] while it is bound."))
+		to_chat(user, span_warning("[A]还被束缚着，我无法将其收入鞘中。"))
 		return FALSE
 	if(valid_blade && !istype(A, valid_blade))
 		to_chat(user, span_warning("[A]塞不进去。"))
@@ -82,7 +82,7 @@
 		return FALSE
 	if(obj_broken)
 		user.visible_message(
-			span_warning("[user] begins to force [A] into [src]!"),
+			span_warning("[user]开始把[A]硬塞进[src]！"),
 			span_warningbig("我开始把[A]硬塞进[src]。")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
@@ -111,7 +111,7 @@
 
 	if(obj_broken)
 		user.visible_message(
-			span_warning("[user] begins to force [sheathed] out of [src]!"),
+			span_warning("[user]开始把[sheathed]硬从[src]里拽出来！"),
 			span_warningbig("我开始把[sheathed]硬从[src]里拽出来。")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
@@ -537,8 +537,8 @@
 			return FALSE
 
 /obj/item/rogueweapon/scabbard/sword/noble
-	name = "silver-decorated scabbard"
-	desc = "A sword's noble scabbard, enamored with elaborate silver decorations. It carries an aristocrat's sword upon a silver platter, and - just like an actual platter - can suffice at riposting an errant blow."
+	name = "银饰剑鞘"
+	desc = "一副缀有精巧银饰的贵族剑鞘，犹如用银盘托起贵族的佩剑。而且，就像真正的银盘一样，它也足以招架偶然袭来的一击并加以还击。"
 	icon_state = "nscabbard"
 	associated_skill = /datum/skill/combat/swords
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK, SHIELD_SMASH)
@@ -549,8 +549,8 @@
 	resistance_flags = null
 
 /obj/item/rogueweapon/scabbard/sword/royal
-	name = "gold-decorated scabbard"
-	desc = "A sword's royal scabbard, enamored with exquisite golden decorations. It pampers a champion's sword in a veil of gilded silk, reluctant to let go."
+	name = "金饰剑鞘"
+	desc = "一副缀有精美金饰的王室剑鞘，以金丝绸缎温柔裹住勇士的佩剑，仿佛不愿放手。"
 	icon_state = "rscabbard"
 	associated_skill = /datum/skill/combat/swords
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK, SHIELD_SMASH)
@@ -561,8 +561,8 @@
 	resistance_flags = null
 
 /obj/item/rogueweapon/scabbard/sheath/courtphysician
-	name = "fancy cane"
-	desc = "A decorated cane bearing the visage of a vulture."
+	name = "华丽手杖"
+	desc = "一根饰有秃鹫面孔的精美手杖。"
 	icon_state = "doccanesheath"
 	item_state = "doccanesheath"
 	valid_blade = /obj/item/rogueweapon/sword/rapier/courtphysician
@@ -645,9 +645,9 @@
 				)
 
 /obj/item/rogueweapon/scabbard/sheath/courtphysician/hand
-	name = "velvet sister"
-	desc = "Sleek, fashionable and deadly. Traits shared by both staff and the one holding it. Never let yourself be outdone, never rely on merely one trick.\
-	The rontz embedded in the handle serves as focus for arcyne arts."
+	name = "天鹅绒姐妹"
+	desc = "优雅、时髦而致命，这根手杖与持杖者皆是如此。永远不要甘居人后，也永远不要只依赖一种手段。\
+	柄中镶嵌的隆兹石可作为施展奥术的聚焦媒介。"
 	icon = 'icons/roguetown/weapons/special/hand32.dmi'
 	icon_state = "staffsheath"
 	item_state = "staffsheath"
@@ -659,8 +659,8 @@
 ///////////////////////
 
 /obj/item/rogueweapon/scabbard/sheath/noble
-	name = "silver-decorated knife sheath"
-	desc = "A dagger's noble sheath, enamored with elaborate silver decorations. Oft-flaunted upon the faulds of a knight, it dangles and sways whenever its steely reserve is drawn."
+	name = "银饰匕首鞘"
+	desc = "一副缀有精巧银饰的贵族匕首鞘，常被骑士挂在腰甲上炫耀。每当其中的钢刃出鞘，它便随之摇晃。"
 	icon_state = "nsheath"
 	associated_skill = /datum/skill/combat/knives
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
@@ -671,8 +671,8 @@
 	resistance_flags = null
 
 /obj/item/rogueweapon/scabbard/sheath/royal
-	name = "gold-decorated knife sheath"
-	desc = "A dagger's royal sheath, enamored with exquisite golden decorations. The hand that draws will spell the fate of many; be it for the kingdom or the world."
+	name = "金饰匕首鞘"
+	desc = "一副缀有精美金饰的王室匕首鞘。拔出利刃的那只手将决定无数人的命运，无论是为了王国，还是整个世界。"
 	icon_state = "rsheath"
 	associated_skill = /datum/skill/combat/knives
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
