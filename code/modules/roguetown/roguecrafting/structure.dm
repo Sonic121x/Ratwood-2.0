@@ -157,33 +157,33 @@
 	result = /obj/structure/fluff/psycross/zizocross
 
 /datum/crafting_recipe/roguetown/structure/zizo_shrine/stone
-	name = "stone inverse cross"
+	name = "石制倒十字架"
 	reqs = list(/obj/item/natural/stone = 3)
 	result = /obj/structure/fluff/psycross/zizocross/stone
 
 /datum/crafting_recipe/roguetown/structure/zizo_shrine/gold
-	name = "gold inverse cross"
+	name = "金制倒十字架"
 	reqs = list(/obj/item/ingot/gold = 1,
 				/obj/item/ingot/steel = 2)
 	result = /obj/structure/fluff/psycross/zizocross/golden
 
 /datum/crafting_recipe/roguetown/structures/psycross/graggar
-	name = "stone graggarite cross"
+	name = "石制格拉加尔十字架"
 	reqs = list(/obj/item/natural/stone = 3)
 	result = /obj/structure/fluff/psycross/graggar
 
 /datum/crafting_recipe/roguetown/structures/psycross/matthios
-	name = "stone matthios cross"
+	name = "石制马西奥斯十字架"
 	reqs = list(/obj/item/natural/stone = 3)
 	result = /obj/structure/fluff/psycross/matthios
 
 /datum/crafting_recipe/roguetown/structures/psycross/baotha
-	name = "stone baotha cross"
+	name = "石制巴奥莎十字架"
 	reqs = list(/obj/item/natural/stone = 3)
 	result = /obj/structure/fluff/psycross/baotha
 
 /datum/crafting_recipe/roguetown/structures/psycross/necra
-	name = "stone necra cross"
+	name = "石制内克拉十字架"
 	reqs = list(/obj/item/natural/stone = 3)
 	result = /obj/structure/fluff/psycross/crafted/necra
 
@@ -208,19 +208,19 @@
 	skillcraft = /datum/skill/craft/masonry
 
 /datum/crafting_recipe/roguetown/structure/donjon
-	name = "metal door"
+	name = "金属门"
 	result = /obj/structure/mineral_door/wood/donjon
 	reqs = list(/obj/item/grown/log/tree/small = 1, /obj/item/ingot/iron = 2)
-	verbage_simple = "build"
-	verbage = "builds"
+	verbage_simple = "建造"
+	verbage = "建造"
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/celldoor
-	name = "cell door"
+	name = "牢门"
 	result =  /obj/structure/mineral_door/bars
 	reqs = list(/obj/item/ingot/iron = 2)
-	verbage_simple = "build"
-	verbage = "builds"
+	verbage_simple = "建造"
+	verbage = "建造"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 1
 
@@ -912,56 +912,56 @@
 //icon signs
 
 /datum/crafting_recipe/roguetown/structure/sign/zizoiconsign
-	name = "wooden zizo sign (1 small log)"
+	name = "木制齐佐标牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/zizosign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sign/psydoniconsign
-	name = "wooden psydon sign (1 small log)"
+	name = "木制普赛顿标牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/psycrosssign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sign/eaglesign
-	name = "wooden eagle sign (1 small log)"
+	name = "木制鹰形标牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/eaglesign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sign/spidersign
-	name = "wooden spider sign (1 small log)"
+	name = "木制蜘蛛标牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/spidersign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sign/smithsign
-	name = "wooden smith sign (1 small log)"
+	name = "木制铁匠铺招牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/smithsign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sign/innsign
-	name = "wooden inn sign (1 small log)"
+	name = "木制旅店招牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/innsign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sign/elksign
-	name = "wooden elk sign (1 small log)"
+	name = "木制麋鹿标牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/elksign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/structure/sign/skullsign
-	name = "wooden skull sign (1 small log)"
+	name = "木制骷髅标牌 (1 根小圆木)"
 	result = /obj/structure/fluff/iconsign/skullsign
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
@@ -1281,7 +1281,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/altcouchleft
-	name = "备用沙发（左）"
+	name = "沙发（另款，左）"
 	result = /obj/structure/chair/bench/coucha
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1289,7 +1289,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/altcouchright
-	name = "备用沙发（右）"
+	name = "沙发（另款，右）"
 	result = /obj/structure/chair/bench/coucha/r
 	reqs = list(/obj/item/natural/wood/plank = 3,
 				/obj/item/natural/silk = 2)
@@ -1323,7 +1323,7 @@
 	wallcraft = TRUE
 
 /datum/crafting_recipe/roguetown/structure/fireplace/blue
-	name = "blue fireplace (north)"
+	name = "蓝色壁炉 (朝北)"
 	result = /obj/machinery/light/rogue/campfire/fireplace/crafted/blue
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/stoneblock = 3,
@@ -1374,7 +1374,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/drawer2
-	name = "长梳妆柜（备用款）（2 块木板）"
+	name = "长梳妆柜（另款）（2 块木板）"
 	result = /obj/structure/closet/crate/drawer/drawer2
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
@@ -1416,14 +1416,14 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/structure/tablewood3
-	name = "木桌（备用款）（1 块木板）"
+	name = "木桌（另款）（1 块木板）"
 	result = /obj/structure/table/wood/poor/alt_alt
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/actualfancytable
-	name = "metallic wooden table (2 planks)"
+	name = "金属包边木桌 (2 块木板)"
 	result = /obj/structure/table/wood
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skillcraft = /datum/skill/craft/carpentry
@@ -1459,7 +1459,7 @@
 
 
 /datum/crafting_recipe/roguetown/structure/floorcandlealt
-	name = "备用落地蜡烛（2 蜡烛）"
+	name = "落地蜡烛（另款）（2 蜡烛）"
 	result = /obj/machinery/light/rogue/candle/floorcandle/alt
 	reqs = list(/obj/item/candle/yellow = 2)
 	verbage_simple = "建造"
@@ -1481,7 +1481,7 @@
 
 
 /datum/crafting_recipe/roguetown/structure/floorcandlealtpink
-	name = "备用 伊欧拉 落地蜡烛"
+	name = "伊欧拉落地蜡烛（另款）"
 	result = /obj/machinery/light/rogue/candle/floorcandle/alt/pink
 	reqs = list(/obj/item/candle/eora = 2)
 	verbage_simple = "建造"
