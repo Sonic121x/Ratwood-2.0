@@ -43,7 +43,7 @@
 
 /obj/item/clothing/head/roguetown/nochood
 	name = "月兜帽"
-	desc = "一顶由 Noc 信徒佩戴的兜帽，配有新月形面具。"
+	desc = "一顶由诺克信徒佩戴的兜帽，配有新月形面具。"
 	color = null
 	icon_state = "nochood"
 	item_state = "nochood"
@@ -67,7 +67,7 @@
 
 /obj/item/clothing/head/roguetown/necramask
 	name = "死者面具"
-	desc = "一顶在下巴处饰有颌骨装饰的兜帽，一些 Necra 的追随者会将其作为虔敬的象征佩戴。"
+	desc = "一顶在下巴处饰有颌骨装饰的兜帽，一些内克拉的追随者会将其作为虔敬的象征佩戴。"
 	color = null
 	icon_state = "deathface"
 	item_state = "deathface"
@@ -84,7 +84,7 @@
 
 /obj/item/clothing/head/roguetown/dendormask
 	name = "荆棘面具"
-	desc = "一副由木头与荆棘制成、供侍奉 Dendor 的德鲁伊佩戴的面具。"
+	desc = "一副由木头与荆棘制成、供侍奉登多尔的德鲁伊佩戴的面具。"
 	color = null
 	icon_state = "dendormask"
 	item_state = "dendormask"
