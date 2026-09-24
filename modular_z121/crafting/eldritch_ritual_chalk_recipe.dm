@@ -6,4 +6,4 @@
 	reqs = list(/obj/item/chalk = 1)
 	skillcraft = /datum/skill/magic/holy
 	craftdiff = 3
-	verbage_simple = "refine"
+	verbage_simple = "精炼"
