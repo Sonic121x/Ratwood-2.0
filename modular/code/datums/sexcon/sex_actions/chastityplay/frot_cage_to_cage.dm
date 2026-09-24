@@ -9,9 +9,9 @@
 	var/user_device = get_chastity_device_name(user)
 	var/target_device = get_chastity_device_name(target)
 	if(HAS_TRAIT(user, TRAIT_CHASTITY_SPIKED) || HAS_TRAIT(target, TRAIT_CHASTITY_SPIKED))
-		user.visible_message(span_warning("[user]把[user.p_their()]的[user_device]抵上[target]的[target_device]，初次碰撞时金属立刻刮上了尖刺。"))
+		user.visible_message(span_warning("[user]把[user.p_their()][user_device]抵上[target]的[target_device]，初次碰撞时金属立刻刮上了尖刺。"))
 		return
-	user.visible_message(span_warning("[user]逼近[target]，直到[user.p_their()]的[user_device]撞上[target]的[target_device]。"))
+	user.visible_message(span_warning("[user]逼近[target]，直到[user.p_their()][user_device]撞上[target]的[target_device]。"))
 
 /datum/sex_action/chastityplay/frot_cage_to_cage/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/user_device = get_chastity_device_name(user)

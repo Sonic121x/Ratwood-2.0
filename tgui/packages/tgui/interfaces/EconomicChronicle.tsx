@@ -17,12 +17,12 @@ import type { EconomicChronicleData } from './EconomicChronicle/types';
 export const EconomicChronicle = () => {
   const { data } = useBackend<EconomicChronicleData>();
   return (
-    <Window title="Realm Economics" width={920} height={660} theme="parchment">
+    <Window title="Realm Economics" display_title="领地经济" width={920} height={660} theme="parchment">
       <Window.Content scrollable>
         <div style={{ zoom: 1.15 }}>
         <div style={compactPageStyle}>
           <div style={{ ...titleStyle, fontSize: '18px', margin: '0 0 2px 0' }}>
-            Realm Economics
+            领地经济
           </div>
           <div
             style={{
@@ -31,7 +31,7 @@ export const EconomicChronicle = () => {
               marginBottom: '6px',
             }}
           >
-            A chronicle of mammons, ships, and crowns.
+            玛门、船舶与王室的经济纪事。
           </div>
           <hr style={{ ...rulerStyle, margin: '4px 0 8px 0' }} />
           <TreasurySection t={data.treasury} balance={data.treasury_balance} />

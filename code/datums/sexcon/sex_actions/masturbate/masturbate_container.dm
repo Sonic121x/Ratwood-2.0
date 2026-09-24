@@ -23,7 +23,7 @@
 	var/container_name = user.get_active_held_item()
 	if(!container_name)
 		container_name = "容器"
-	var/chosen_verb = pick(list("对着\the [container_name]取悦着自己", "隔着\the [container_name]色情地揉弄着自己", "对着\the [container_name]自慰"))
+	var/chosen_verb = pick(list("对着[container_name]取悦着自己", "对着[container_name]色情地揉弄着自己", "对着[container_name]自慰"))
 
 	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [chosen_verb]."))
 

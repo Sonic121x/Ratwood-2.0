@@ -26,8 +26,8 @@
 /obj/item/clothing/neck/roguetown/cursed_collar/get_hover_examine_html(mob/user, self_examine = FALSE)
 	. = ..()
 	if(received_cum_count > 0)
-		var/tally_text = received_cum_count == 1 ? "1 tally mark" : "[received_cum_count] tally marks"
-		var/tally_line = "<span class='notice'>[tally_text] are etched into the collar's metal surface.</span>"
+		var/tally_text = received_cum_count == 1 ? "1道刻痕" : "[received_cum_count]道刻痕"
+		var/tally_line = "<span class='notice'>项圈的金属表面刻着[tally_text]。</span>"
 		if(length(.))
 			. += "<br>[tally_line]"
 		else
@@ -36,8 +36,8 @@
 /obj/item/clothing/neck/roguetown/cursed_collar/examine(mob/user)
 	. = ..()
 	if(received_cum_count > 0)
-		var/tally_text = received_cum_count == 1 ? "1道刻痕。" : "[received_cum_count]道刻痕。"
-		. += span_notice("[tally_text]刻在贞操装置的金属表面。")
+		var/tally_text = received_cum_count == 1 ? "1道刻痕" : "[received_cum_count]道刻痕"
+		. += span_notice("项圈的金属表面刻着[tally_text]。")
 
 /obj/item/clothing/neck/roguetown/cursed_collar/proc/record_nonself_ejaculation(mob/living/carbon/human/source, mob/living/carbon/human/wearer)
 	if(!source || !wearer)
@@ -64,11 +64,11 @@
 		return ..()
 
 	if(!target.client?.prefs?.cursed_collarable)
-		to_chat(user, span_warning("[target]的脖子上已经戴着东西了！"))
+		to_chat(user, span_warning("[target]未在偏好设置中允许佩戴诅咒项圈！"))
 		return
 
 	if(target.get_item_by_slot(SLOT_NECK))
-		to_chat(user, span_warning("[target] is already wearing something around their neck!"))
+		to_chat(user, span_warning("[target]的脖子上已经戴着东西了！"))
 		return
 
 	var/obj/item/chastity/existing_chastity = target.chastity_device
@@ -96,9 +96,9 @@
 		applying = FALSE
 		return
 
-	if(tgui_alert(target, "Submit to the collar's control?", "Cursed Collar", list("Yes!", "No")) != "Yes!")
-		user.visible_message(span_warning("[target] resists the collar's control."))
-		to_chat(target, span_warning("Your defiant will prevents the collar from binding to you!"))
+	if(tgui_alert(target, "要向这只项圈的控制屈服吗？", "Cursed Collar", list("Yes!", "No")) != "Yes!")
+		user.visible_message(span_warning("[target]抗拒了项圈的控制。"))
+		to_chat(target, span_warning("你反抗的意志阻止了项圈绑定到你身上！"))
 		applying = FALSE
 		return
 
