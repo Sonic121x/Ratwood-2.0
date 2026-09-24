@@ -1,5 +1,5 @@
 /datum/sex_action/buttjob
-	name = "Give them a butt job"
+	name = "用臀部替对方磨弄"
 	user_sex_part = SEX_PART_ANUS
 	target_sex_part = SEX_PART_COCK
 
@@ -22,11 +22,11 @@
 	return TRUE
 
 /datum/sex_action/buttjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] shoves [target]'s cock between [user.p_their()] asscheeks!"))
+	user.visible_message(span_warning("[user]将[target]的阴茎夹进自己的臀瓣之间！"))
 
 /datum/sex_action/buttjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/verbstring = pick(list("rubs", "caresses", "squeezes", "grinds", "massages"))
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [verbstring] [target]'s cock with [user.p_their()] ass..."))
+	var/verbstring = pick(list("摩擦", "爱抚", "挤压", "磨蹭", "按摩"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user]用自己的臀部[user.sexcon.get_generic_force_adjective()][verbstring]着[target]的阴茎……"))
 	user.sexcon.outercourse_noise(target, TRUE)
 	user.sexcon.do_thrust_animate(target)
 
@@ -37,7 +37,7 @@
 	user.sexcon.handle_passive_ejaculation(user)
 
 /datum/sex_action/buttjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] pulls [target]'s cock out from inbetween [user.p_their()] asscheeks."))
+	user.visible_message(span_warning("[user]将[target]的阴茎从自己的臀瓣之间抽出。"))
 
 /datum/sex_action/buttjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

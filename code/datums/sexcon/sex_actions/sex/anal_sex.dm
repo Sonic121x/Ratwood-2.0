@@ -8,7 +8,7 @@
 	knot_on_finish = TRUE
 
 /datum/sex_action/anal_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的肉棒插进了[target]的屁股里！"))
+	user.visible_message(span_warning("[user]把[user.p_their()]肉棒插进了[target]的屁股里！"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/anal_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -40,7 +40,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/anal_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的肉棒从[target]的屁股里抽了出来。"))
+	user.visible_message(span_warning("[user]把[user.p_their()]肉棒从[target]的屁股里抽了出来。"))
 
 /datum/sex_action/anal_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())
@@ -61,7 +61,7 @@
 	return ..()
 
 /datum/sex_action/anal_sex/double/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的双茎插进了[target]的屁股里！"))
+	user.visible_message(span_warning("[user]把[user.p_their()]双茎插进了[target]的屁股里！"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/anal_sex/double/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -92,4 +92,4 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/anal_sex/double/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[user.p_their()]的双茎从[target]的屁股里抽了出来。"))
+	user.visible_message(span_warning("[user]把[user.p_their()]双茎从[target]的屁股里抽了出来。"))

@@ -27,16 +27,16 @@ const subTitle = {
 
 const RealMarketTable = (props: { rows: RealBucket[] }) => (
   <div>
-    <div style={subTitle}>Real Market</div>
+    <div style={subTitle}>正规市场</div>
     <table style={twoColTable}>
       <thead>
         <tr>
-          <td style={compactHeaderCell}>Bucket</td>
-          <td style={{ ...compactHeaderCell, textAlign: 'right' }}>Sold</td>
+          <td style={compactHeaderCell}>品类</td>
+          <td style={{ ...compactHeaderCell, textAlign: 'right' }}>售出额</td>
           <td
             style={{ ...compactHeaderCell, textAlign: 'right', paddingRight: 0 }}
           >
-            Relieved
+            已释放额度
           </td>
         </tr>
       </thead>
@@ -66,15 +66,15 @@ const RealMarketTable = (props: { rows: RealBucket[] }) => (
 
 const BlackMarketTable = (props: { rows: BmBucket[] }) => (
   <div>
-    <div style={subTitle}>Black Market</div>
+    <div style={subTitle}>黑市</div>
     <table style={twoColTable}>
       <thead>
         <tr>
-          <td style={compactHeaderCell}>Bucket</td>
+          <td style={compactHeaderCell}>品类</td>
           <td
             style={{ ...compactHeaderCell, textAlign: 'right', paddingRight: 0 }}
           >
-            Sold
+            售出额
           </td>
         </tr>
       </thead>
@@ -98,7 +98,7 @@ export const BucketsSection = (props: Props) => {
   const { b } = props;
   return (
     <div style={compactCardStyle}>
-      <SectionTitle>Navigator Buckets</SectionTitle>
+      <SectionTitle>引航机品类统计</SectionTitle>
       <div style={dividedTwoColumnLayout}>
         <RealMarketTable rows={b.real} />
         <div style={verticalDividerStyle} />

@@ -8,10 +8,10 @@
 	user_needs_chastity = TRUE
 
 /datum/sex_action/chastityplay/force_cage_blowjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]抓住[target]的后脑，把[target.p_their()]的脸猛地按进[user.p_their()]的[get_chastity_device_name(user)]里！"))
+	user.visible_message(span_warning("[user]抓住[target]的后脑，把[target.p_their()]脸猛地按进[user.p_their()][get_chastity_device_name(user)]里！"))
 
 /datum/sex_action/chastityplay/force_cage_blowjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]把[target]的脸死死压在[user.p_their()]的[get_chastity_device_name(user)]上，[target.p_their()]的口鼻都被挤进金属之中……"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]把[target]的脸死死压在[user.p_their()][get_chastity_device_name(user)]上，[target.p_their()]口鼻都被挤进金属之中……"))
 	user.sexcon.oralcourse_noise(target)
 	user.sexcon.perform_sex_action(user, 1.3, 0.5, TRUE)
 	user.sexcon.perform_sex_action(target, 0, 3, FALSE)
@@ -19,7 +19,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/chastityplay/force_cage_blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]松开[target]的头，让[target.p_them()]从[user.p_their()]的[get_chastity_device_name(user)]前挣脱开来。"))
+	user.visible_message(span_warning("[user]松开[target]的头，让[target.p_them()]从[user.p_their()][get_chastity_device_name(user)]前挣脱开来。"))
 
 /datum/sex_action/chastityplay/force_cage_blowjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())
