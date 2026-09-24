@@ -143,7 +143,7 @@
 	ADD_TRAIT(src, TRAIT_OAR, INNATE_TRAIT)
 
 /datum/crafting_recipe/roguetown/survival/oar
-	name = "Oar (1 Log, 2 Fibers)"
+	name = "船桨 (1 根圆木, 2 份纤维)"
 	category = "Tools"
 	result = /obj/item/rogueweapon/mace/oar
 	reqs = list(
@@ -153,7 +153,7 @@
 	time = 15
 
 /datum/crafting_recipe/roguetown/survival/boat
-	name = "Dinghy (4 Logs, 3 Ash, 5 Fibers)"
+	name = "小艇 (4 根圆木, 3 份灰烬, 5 份纤维)"
 	category = "Tools"
 	result = /obj/vehicle/ridden/dinghy
 	reqs = list(
