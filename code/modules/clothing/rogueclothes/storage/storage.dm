@@ -57,12 +57,12 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/storage/belt/rogue/leather/shalal
-	name = "shalal腰带"
+	name = "沙拉尔腰带"
 	icon_state = "shalal"
 	sellprice = 5
 
 /obj/item/storage/belt/rogue/leather/shalal/purple
-	name = "紫色shalal腰带"
+	name = "紫色沙拉尔腰带"
 	icon_state = "shalal"
 	color = CLOTHING_PURPLE
 	sellprice = 5
@@ -106,16 +106,16 @@
 	color = CLOTHING_BLACK
 
 /obj/item/storage/belt/rogue/leather/battleskirt/breechcloth
-	name = "belt with breechcloth"
-	desc = "A fine leather strap notched with holes for a buckle to secure itself, and nestled above a halved tabard's coverings."
+	name = "附裆布腰带"
+	desc = "一条精致的皮腰带，带身打孔，便于扣紧，下方垂着半截罩袍制成的裆布。"
 	icon_state = "breechcloth"
 	flags_inv = HIDECROTCH
 	sewrepair = FALSE
 	detail_tag = "_belt"
 
 /obj/item/storage/belt/rogue/leather/battleskirt/breechcloth/blackbelt
-	name = "black belt with breechcloth"
-	desc = "A fine black-leather strap notched with holes for a buckle to secure itself, and nestled above a halved tabard's coverings."
+	name = "附裆布黑腰带"
+	desc = "一条精致的黑皮腰带，带身打孔，便于扣紧，下方垂着半截罩袍制成的裆布。"
 	icon_state = "breechclothalt"
 	flags_inv = HIDECROTCH
 	sewrepair = FALSE
@@ -182,8 +182,8 @@
 	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/storage/belt/rogue/leather/suspenders/butler/colored
-	name = "suspenders"
-	desc = "A pair of suspenders which go over the shoulders. Used for keeping one's pants in place in an admittably fashionable style."
+	name = "背带"
+	desc = "一副搭在双肩上的裤背带，能防止裤子滑落，而且不得不承认，还挺时髦。"
 	icon = 'icons/roguetown/clothing/belts.dmi'
 	icon_state = "butlersuspenderscolorable"
 	item_state = "butlersuspenderscolorable"
@@ -216,8 +216,8 @@
 	)
 
 /obj/item/storage/backpack/rogue/satchel/otavan
-	name = "Otava皮挎包"
-	desc = "来自Otava、经久耐用的皮包，出自Psydon信仰的心脏地带。这就是Otava的上乘工艺。"
+	name = "奥塔万皮挎包"
+	desc = "来自奥塔万、经久耐用的皮包，出自普赛顿信仰的心脏地带。这就是奥塔万的上乘工艺。"
 	icon_state = "osatchel"
 	item_state = "osatchel"
 

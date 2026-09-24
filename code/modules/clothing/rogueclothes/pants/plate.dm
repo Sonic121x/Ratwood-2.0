@@ -37,7 +37,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs/ancient
 	name = "远古板甲腿铠"
-	desc = "抛光的gilbranze甲片层叠于丝质腿铠之上。唯有少数拥抱不死之人得以在Zizo升格时幸存；如今，他们统御着那些奉她之名进军、誓要撕裂造物的不死军团。"
+	desc = "抛光的吉尔布兰兹甲片层叠于丝质腿铠之上。唯有少数拥抱不死之人得以在齐佐升格时幸存；如今，他们统御着那些奉她之名进军、誓要撕裂造物的不死军团。"
 	icon_state = "ancientplate_legs"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -104,8 +104,8 @@
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
 /obj/item/clothing/under/roguetown/platelegs/medium/zizo
-	name = "avantyne vestments"
-	desc = "<font color='A50021'>Nothing beside remains. Round the decay of that colossal wreck, boundless and bare.</font>"
+	name = "阿万廷法衣"
+	desc = "<font color='A50021'>旁侧再无一物留存。那具庞大残骸的废墟四周，唯有空旷与荒芜。</font>"
 	armor = ARMOR_ASCENDANT
 	max_integrity = ARMOR_INT_LEG_ANTAG
 	peel_threshold = 5
