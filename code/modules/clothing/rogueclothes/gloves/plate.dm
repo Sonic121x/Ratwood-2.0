@@ -90,9 +90,9 @@
 	qdel(src)
 
 /obj/item/clothing/gloves/roguetown/plate/medium/zizo
-	name = "avantyne gauntlets"
-	desc = "A razor-tipped finger was all it took to splay the divine fillament; now, it is time to bring down the wrath of God's hand in full. </br> Do mind the forearm's guards, however - they \
-	tend to leave a stinging bruise, whenever used to parry an incoming strike."
+	name = "阿凡泰因护手"
+	desc = "只需一根指尖如刃的手指，便能撕开神圣的丝缕；如今，是时候让神之手的怒火尽数降临。 </br>不过，小心前臂上的护甲——用它们\
+	格挡袭来的攻击时，往往会留下刺痛的淤青。"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_ASCENDANT
