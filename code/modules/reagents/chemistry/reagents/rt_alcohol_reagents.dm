@@ -192,7 +192,7 @@
 // Dwarven Production - Best in the Realms
 
 /datum/reagent/consumable/ethanol/butterhairs
-	name = "黄油发丝"
+	name = "黄油须酒"
 	boozepwr = 40
 	taste_description = "浓郁奶油香"
 	color = "#D4A020"

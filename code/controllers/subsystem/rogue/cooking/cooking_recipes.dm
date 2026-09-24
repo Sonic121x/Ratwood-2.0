@@ -1,6 +1,6 @@
 /datum/food_recipe
 	abstract_type = /datum/food_recipe
-	var/name = "Generic Recipe"
+	var/name = "通用配方"
 	/// What item is used to start a recipe, e.g a piece of raw steak
 	var/base_item = null
 	/// Ingredients in order of completion
@@ -23,16 +23,16 @@
 
 	var/atom/base = base_item
 	if(base)
-		html += "<p><b>Start with:</b> [icon2html(new base, user)] [initial(base.name)]</p>"
+		html += "<p><b>起始材料：</b> [icon2html(new base, user)] [initial(base.name)]</p>"
 
 	if(length(ingredients))
-		html += "<h3>Then add, in order:</h3><ul>"
+		html += "<h3>然后依次加入：</h3><ul>"
 		for(var/i in 1 to length(ingredients))
 			var/entry = ingredients[i]
 			if(ispath(entry, /datum/reagent))
 				var/amt = ingredients[entry]
 				var/datum/reagent/R = entry
-				html += "<li>[amt] [UNIT_FORM_STRING(amt)] of [initial(R.name)]</li>"
+				html += "<li>[amt] [UNIT_FORM_STRING(amt)]的[initial(R.name)]</li>"
 			else
 				var/atom/A = entry
 				html += "<li>[icon2html(new A, user)] [initial(A.name)]</li>"
@@ -40,20 +40,20 @@
 
 	var/atom/result = result_type
 	if(result)
-		html += "<p><b>Produces:</b> [icon2html(new result, user)] [initial(result.name)]</p>"
+		html += "<p><b>产物：</b> [icon2html(new result, user)] [initial(result.name)]</p>"
 		var/result_details = describe_food_result(result)
 		if(result_details)
 			html += result_details
 
 	if(needs_cooking)
-		html += "<p>After assembly, this still needs to be cooked - place over a hearth in a pan, or bake in an oven.</p>"
+		html += "<p>组装完成后仍需加热：放入炉灶上的煎锅，或放进烤炉烘烤。</p>"
 
-	html += "<p>Each step takes about [time_per_step / 10] seconds before cooking skill modifiers.</p>"
+	html += "<p>未计入烹饪技能加成时，每步约需 [time_per_step / 10] 秒。</p>"
 
 	if(SScooking?.recipe_index && result_type)
 		var/list/follow_ups = SScooking.recipe_index[result_type]
 		if(length(follow_ups))
-			html += "<h3>Can be further prepared into:</h3><ul>"
+			html += "<h3>可继续加工为：</h3><ul>"
 			for(var/datum/food_recipe/F in follow_ups)
 				html += "<li>[F.name]</li>"
 			html += "</ul>"
@@ -68,15 +68,15 @@
 
 	switch(proto.faretype)
 		if(FARE_IMPOVERISHED)
-			lines += "Quality: Impoverished (fit for the desperate)."
+			lines += "品质：粗劣（饥不择食时才会吃）。"
 		if(FARE_POOR)
-			lines += "Quality: Poor (fit for the poor)."
+			lines += "品质：简陋（穷人的饭食）。"
 		if(FARE_NEUTRAL)
-			lines += "Quality: Neutral (decent food)."
+			lines += "品质：普通（尚可的饭食）。"
 		if(FARE_FINE)
-			lines += "Quality: Fine."
+			lines += "品质：精致。"
 		if(FARE_LAVISH)
-			lines += "Quality: Lavish."
+			lines += "品质：奢华。"
 
 	var/nutriment_total = 0
 	var/list/declared_reagents = proto.list_reagents
@@ -86,7 +86,7 @@
 	if(islist(declared_bonus))
 		nutriment_total += declared_bonus[/datum/reagent/consumable/nutriment] || 0
 	if(nutriment_total > 0)
-		lines += "Nutrition: [nutrition_unit_label(nutriment_total)] ([nutriment_total] units)."
+		lines += "营养：[nutrition_unit_label(nutriment_total)]（[nutriment_total] 单位）。"
 
 	var/list/other_reagents = list()
 	if(islist(declared_reagents))
@@ -96,19 +96,19 @@
 			var/datum/reagent/R = r_path
 			other_reagents += "[initial(R.name)] ([declared_reagents[r_path]]u)"
 	if(length(other_reagents))
-		lines += "Also contains: [other_reagents.Join(", ")]."
+		lines += "还含有：[other_reagents.Join(", ")]。"
 
 	var/buff_desc = describe_food_effect(proto.eat_effect)
 	if(buff_desc)
-		lines += "Effect on eating: [buff_desc]."
+		lines += "食用效果：[buff_desc]。"
 	var/extra_desc = describe_food_effect(proto.extra_eat_effect)
 	if(extra_desc)
-		lines += "Bonus effect: [extra_desc]."
+		lines += "额外效果：[extra_desc]。"
 
 	var/atom/slice_target = proto.slice_path
 	if(slice_target)
 		var/count = proto.slices_num || 1
-		lines += "Can be cut into [count] x [initial(slice_target.name)]."
+		lines += "可切成 [count] 份[initial(slice_target.name)]。"
 
 	qdel(proto)
 
@@ -131,36 +131,35 @@
 	var/list/parts = list("<b>[label]</b>")
 	var/duration = initial(S.duration)
 	if(duration && duration > 0)
-		parts += "for [duration_label(duration)]"
+		parts += "持续[duration_label(duration)]"
 	return parts.Join(" ")
 
 /proc/duration_label(deciseconds)
 	var/seconds = deciseconds / 10
 	if(seconds >= 60)
 		var/minutes = round(seconds / 60)
-		return "[minutes] minute[minutes == 1 ? "" : "s"]"
-	return "[seconds] seconds"
+		return "[minutes] 分钟[minutes == 1 ? "" : ""]"
+	return "[seconds] 秒"
 
 /proc/nutrition_unit_label(amount)
 	if(amount >= NUTRITION_FIVE_MEALS)
-		return "five meals or more"
+		return "五餐或更多"
 	if(amount >= NUTRITION_THREE_AND_HALF_MEALS)
-		return "three-and-a-half meals"
+		return "三餐半"
 	if(amount >= NUTRITION_TWO_AND_HALF_MEALS)
-		return "two-and-a-half meals"
+		return "两餐半"
 	if(amount >= NUTRITION_TWO_MEALS)
-		return "two meals"
+		return "两餐"
 	if(amount >= NUTRITION_MEAL_AND_HALF)
-		return "a meal and a half"
+		return "一餐半"
 	if(amount >= NUTRITION_MEAL_AND_QUARTER)
-		return "a meal and a quarter"
+		return "一又四分之一餐"
 	if(amount >= NUTRITION_FULL_MEAL)
-		return "a full meal"
+		return "一整餐"
 	if(amount >= NUTRITION_THREE_QUARTER_MEAL)
-		return "three-quarters of a meal"
+		return "四分之三餐"
 	if(amount >= NUTRITION_HALF_MEAL)
-		return "half a meal"
+		return "半餐"
 	if(amount >= NUTRITION_QUARTER_MEAL)
-		return "a quarter of a meal"
-	return "a small bite"
-
+		return "四分之一餐"
+	return "一小口"
