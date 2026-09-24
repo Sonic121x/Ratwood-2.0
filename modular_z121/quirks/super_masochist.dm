@@ -1,11 +1,12 @@
-// 超级受虐狂复用原恶习，仅改变流血与剧痛带来的心情。
-/datum/virtue/utility/super_masochist
+// 超级受虐狂作为创角特质收录，复用原恶习，仅改变流血与剧痛带来的心情。
+/datum/quirk/super_masochist
 	name = "超级受虐狂"
 	desc = "命运递来的荆棘，我总比旁人握得更紧。殷红沿指缝滑落时，喧嚣便远了；那些过分平静的日子，反倒叫我无处安放自己。"
 	triumph_cost = 0
+	point_cost = 1
 	custom_text = "旁人急于抚平的痕迹，于我却像一封久候的回信。待它们渐渐褪去，那份无人应答的空缺便又悄然归来。"
 
-/datum/virtue/utility/super_masochist/apply_to_human(mob/living/carbon/human/recipient)
+/datum/quirk/super_masochist/apply_to_human(mob/living/carbon/human/recipient)
 	. = ..()
 	if(!istype(recipient))
 		return
@@ -23,7 +24,7 @@
 		LAZYOR(recipient.vices, vice)
 	recipient.z121_super_masochist = TRUE
 
-	// 中途获得美德时转换已有负面事件，保留其剩余时间。
+	// 中途获得特质时转换已有负面事件，保留其剩余时间。
 	for(var/event_type in list(/datum/stressevent/bleeding, /datum/stressevent/painmax))
 		var/datum/stressevent/old_event = recipient.get_stress_event(event_type)
 		if(old_event)
@@ -57,7 +58,7 @@
 				event_type = /datum/stressevent/painmax/z121_super_masochist
 	return ..(event_type)
 
-// 继承原事件的持续时间与叠加上限，单独放行此美德，绕开原受虐狂的心情免疫。
+// 继承原事件的持续时间与叠加上限，单独放行此特质，绕开原受虐狂的心情免疫。
 /datum/stressevent/bleeding/z121_super_masochist
 	stressadd = -2
 	desc = span_green("流淌的鲜血让我感到愉悦。")
