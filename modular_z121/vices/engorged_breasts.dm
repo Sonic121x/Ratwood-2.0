@@ -302,7 +302,8 @@
 /atom/movable/screen/alert/status_effect/debuff/engorged_breasts
 	name = "涨奶胀痛"                                                          // HUD 悬浮标题。
 	desc = "我的乳房胀得发痛，奶水快要溢出来了（心情变差、意志 -2）。挤奶可以缓解。" // 悬浮说明：解释惩罚原因与解法。
-	icon_state = "debuff"                                                       // 复用引擎已有的通用减益图标，避免新增美术资源依赖。
+	icon = 'modular_z121/icon/engorged_breasts.dmi'                            // 状态效果图标：涨奶专用图标（engorged state）。
+	icon_state = "engorged"                                                     // 图标态名，对应 dmi 内的 "engorged"。
 
 
 // ----------------------------------------------------------------------------
