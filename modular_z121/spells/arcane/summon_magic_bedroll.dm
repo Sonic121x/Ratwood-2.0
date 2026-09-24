@@ -41,8 +41,6 @@
 		// 显式确认物品确实进手，避免沿用父类无返回值 cast 导致成功施法被判成失败。
 		if(!caster.put_in_hands(summoned_bedroll, TRUE))
 			qdel(summoned_bedroll)
-			if(item == summoned_bedroll)
-				item = null
 			continue
 		return TRUE
 
@@ -53,5 +51,5 @@
 	var/obj/item/bedroll/magic/summoned_bedroll = new item_type
 	// 每次施法都生成一只独立计时的魔法睡袋，卷起/展开时会继承剩余寿命。
 	summoned_bedroll.set_magic_expiration(world.time + 3 MINUTES)
-	item = summoned_bedroll
-	return item
+	set_conjured_item(summoned_bedroll)
+	return summoned_bedroll
