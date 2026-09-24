@@ -186,7 +186,7 @@
 	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_matricaria
-	name = "matricaria crown"
+	name = "洋甘菊花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/matricaria
 	reqs = list(
@@ -194,11 +194,11 @@
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_calendula
-	name = "calendula crown"
+	name = "金盏花花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/calendula
 	reqs = list(
@@ -206,11 +206,11 @@
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_manabloom
-	name = "manabloom crown"
+	name = "魔力花花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/manabloom
 	reqs = list(
@@ -218,11 +218,11 @@
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_rosa_thorns
-	name = "rosa crown with thorns"
+	name = "带刺玫瑰花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/rosa/thorns
 	reqs = list(
@@ -231,19 +231,19 @@
 		/obj/item/alch/rosa = 3,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_rosa_gray
-	name = "gray flower crown"
+	name = "灰色花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/rosa/dyecrown
 	reqs = list(
 		/obj/item/natural/fibers = 2
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 // Amulet
 /datum/crafting_recipe/roguetown/survival/pearlcross
@@ -333,7 +333,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/decorative_mentorhat
-	name = "decorative bamboo hat"
+	name = "饰纹斗笠"
 	category = "Clothes"
 	result = /obj/item/clothing/head/roguetown/mentorhat/decorative
 	reqs = list(
