@@ -31,12 +31,12 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/clothblindfold
-	name = "blindfold"
+	name = "蒙眼布"
 	result = list(/obj/item/clothing/mask/rogue/blindfold)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
-	verbage_simple = "tie"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/clothbelt
 	name = "布腰带"
