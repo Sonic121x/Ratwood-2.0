@@ -17,7 +17,7 @@
 	user.visible_message(span_warning("[user]开始朝着[target]自慰……"))
 
 /datum/sex_action/masturbate_penis_over/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/chosen_verb = pick(list("撸弄着[user.p_their()]的肉棒", "套弄着[user.p_their()]的肉棒", "自慰着", "自我撸弄着"))
+	var/chosen_verb = pick(list("撸弄着[user.p_their()]肉棒", "套弄着[user.p_their()]肉棒", "自慰着", "自我撸弄着"))
 	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]朝着[target][chosen_verb]"))
 	user.sexcon.generic_sex_noise()
 
