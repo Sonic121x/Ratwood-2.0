@@ -21,7 +21,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/examine(mob/user)
 	. = ..()
-	. += span_smallnotice("Smash this with a blunt object to extract seeds from it.")
+	. += span_smallnotice("用钝器砸碎它，可以取出种子。")
 
 /obj/item/reagent_containers/food/snacks/grown/attackby(obj/item/weapon, mob/user, params)
 	if(weapon && isturf(loc))
@@ -29,10 +29,10 @@
 		if(seed && (user.used_intent.blade_class == BCLASS_BLUNT) && (!user.used_intent.noaa))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			if(prob(5))
-				user.visible_message(span_warning("[user] fails to extract the seeds."))
+				user.visible_message(span_warning("[user]没能取出种子。"))
 				qdel(src)
 				return
-			user.visible_message(span_info("[user] extracts the seeds."))
+			user.visible_message(span_info("[user]取出了种子。"))
 			new seed(location)
 			if(prob(90))
 				new seed(location)
@@ -53,7 +53,7 @@
 /obj/item/reagent_containers/food/snacks/grown/proc/squash(atom/movable/hit_atom, datum/thrownthing/throwingdatum)
 	var/mob/living/thrower = throwingdatum?.thrower
 	if(istype(thrower) && (thrower.STASTR < 9 && prob(40 + (20 - thrower.STASTR))))
-		visible_message(span_warning("[src] bounces off [hit_atom]!"))
+		visible_message(span_warning("[src]撞上[hit_atom]后弹开了！"))
 		return FALSE // If thrower is weaker than average, it bounces off with no effect just for the pun of it.
 
 	var/turf/T = get_turf(src)
@@ -67,14 +67,14 @@
 		if(filling_color)
 			var/atom/movable/spawned_splat = new splat_type(T)
 			spawned_splat.color = splat_color
-			spawned_splat.name = "[name] smudge"
+			spawned_splat.name = "[name]污渍"
 	else if(splat_type)
 		new splat_type(T)
 
 	if(trash)
 		generate_trash(T)
 
-	visible_message(span_warning("[src] has been squashed."), null, span_hear("I hear a smack."))
+	visible_message(span_warning("[src]被砸烂了。"), null, span_hear("我听到啪的一声。"))
 
 	qdel(src)
 	return TRUE
@@ -360,7 +360,7 @@
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/examine(mob/user)
 	. = ..()
 	if(!user.get_client_color(/datum/client_colour/monochrome))
-		. += span_notice("These berries have a <b>[BERRYCOLORS[filling_color]]</b> hue.")
+		. += span_notice("这些浆果呈现出<b>[BERRYCOLORS[filling_color]]</b>的色泽。")
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize(mapload)
 	if(GLOB.berrycolors[color_index])
