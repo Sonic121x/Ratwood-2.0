@@ -288,7 +288,7 @@
 
 /datum/component/personal_crafting/proc/construct_item(mob/user, datum/crafting_recipe/R)
 	if (HAS_TRAIT(user, TRAIT_CURSE_MALUM))
-		to_chat(user, span_warning("你被诅咒的双手颤抖不止，根本无法制作任何东西……Malum 不允许如此。"))
+		to_chat(user, span_warning("你被诅咒的双手颤抖不止，根本无法制作任何东西……玛勒姆不允许如此。"))
 		return
 	if(user.doing)
 		return
@@ -345,7 +345,7 @@
 			if(ispath(R.structurecraft, /obj/))
 				var/obj/O = R.structurecraft
 				str = initial(O.name)
-			to_chat(user, span_warning("我缺少所需的结构：<b>[str]</b>"))
+			to_chat(user, span_warning("我缺少所需的设施：<b>[str]</b>"))
 			return
 	if(check_contents(R, contents))
 		if(check_tools(user, R, contents))
