@@ -35,15 +35,15 @@
 	cold_protection = GROIN
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
-	name = "Otava皮裤"
-	desc = "由Otava裁缝制成的带垫皮甲长裤，品质十分出众。"
+	name = "奥塔万皮裤"
+	desc = "由奥塔万裁缝制成的带垫皮甲长裤，品质十分出众。"
 	icon_state = "fencerpants"
 	cold_protection = GROIN | LEG_RIGHT | LEG_LEFT
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/shepherd
-	name = "shepherd's pants"
-	desc = "A pair of white pants decorated with red stripes and traditional patterning."
+	name = "牧羊人长裤"
+	desc = "一条饰有红色条纹与传统纹样的白色长裤。"
 	icon_state = "shepherdpants"
 	color = "#FFFFFF"
 
@@ -72,7 +72,7 @@
 	update_icon()
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
-	name = "Grenzelhoft绗缝裤"
+	name = "格伦泽尔霍夫绗缝裤"
 	desc = "带垫长裤，提供额外舒适与防护，并装点着鲜亮色彩。"
 	icon_state = "grenzelpants"
 	item_state = "grenzelpants"
@@ -117,7 +117,7 @@
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants2
 	name = "古怪破裤"
-	desc = "Kazengun穷苦人常穿的古怪裤子。或者，是想借此张扬时尚态度的人。"
+	desc = "风郡穷苦人常穿的古怪裤子。或者，是想借此张扬时尚态度的人。"
 	icon_state = "eastpants2"
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -134,7 +134,7 @@
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun //no, not 'eastpants3', silly!
 	name = "衬甲长裤"
-	desc = "Kazengun农民常穿的一种长裤。所用布料相当结实，大概能挡下几记攻击。"
+	desc = "风郡农民常穿的一种长裤。所用布料相当结实，大概能挡下几记攻击。"
 	icon_state = "baggypants"
 	item_state = "baggypants"
 	heat_protection = GROIN | LEG_RIGHT | LEG_LEFT

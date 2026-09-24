@@ -90,8 +90,8 @@
 	qdel(src)
 
 /obj/item/clothing/gloves/roguetown/plate/medium/zizo
-	name = "avantyne gauntlets"
-	desc = "<font color='A50021'><i>\"Look on HIS works, ye Mighty, and despair!\"</i></font>"
+	name = "阿万廷护手"
+	desc = "<font color='A50021'><i>「看看祂的杰作吧，尔等强者，然后绝望！」</i></font>"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_ASCENDANT
