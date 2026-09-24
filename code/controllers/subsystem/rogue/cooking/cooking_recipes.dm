@@ -138,7 +138,7 @@
 	var/seconds = deciseconds / 10
 	if(seconds >= 60)
 		var/minutes = round(seconds / 60)
-		return "[minutes] 分钟[minutes == 1 ? "" : ""]"
+		return "[minutes] minute[minutes == 1 ? "" : "s"]"
 	return "[seconds] 秒"
 
 /proc/nutrition_unit_label(amount)
@@ -163,3 +163,4 @@
 	if(amount >= NUTRITION_QUARTER_MEAL)
 		return "四分之一餐"
 	return "一小口"
+

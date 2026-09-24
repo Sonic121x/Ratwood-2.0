@@ -14,8 +14,8 @@
  * running and fed by a powered rotational network with enough RPM.
  */
 /obj/structure/autogrinder
-	name = "autogrinder"
-	desc = "A stout millstone lashed into a rotational drivetrain, grinding whatever it is fed without a miller's hand."
+	name = "自动磨坊"
+	desc = "一座接入旋转传动系统的结实磨石，无需磨坊工人动手，便能磨碎投入的原料。"
 	icon = 'icons/obj/autogrinder.dmi'
 	icon_state = "mill_off"
 	anchored = TRUE
@@ -65,18 +65,18 @@
 
 /obj/structure/autogrinder/examine(mob/user)
 	. = ..()
-	. += span_notice(working ? "It is switched <b>on</b>." : "It is switched <b>off</b>.")
+	. += span_notice(working ? "它已<b>启动</b>。" : "它已<b>关闭</b>。")
 	if(has_power_flow())
-		. += span_notice("RPM: [rotations_per_minute]")
+		. += span_notice("每分钟转数：[rotations_per_minute]")
 	else
-		. += span_warning("It is not drawing any rotational power.")
+		. += span_warning("它没有获得旋转动力。")
 
 /obj/structure/autogrinder/examine(mob/user)
 	. = ..()
-	. += span_info("Left-click it with an empty hand to switch it on or off; non-skilled engineers will rarely catch their hand under the stone.")
-	. += span_info("It grinds anything millable or anything an alchemy mortar and pestle could grind from its attached hopper and only works while connected to a powered rotational network with enough RPM.")
-	. += span_info("Drop grain or other grindables onto the attached hopper's tile and switch the grinder on; it feeds itself.")
-	. += span_info("Ground product is dropped onto the grinder's own tile.")
+	. += span_info("空手左键点击即可启动或关闭；工程技术不足的人偶尔会把手卷到磨石下面。")
+	. += span_info("它能处理附属料斗中可供磨石或炼金研钵研磨的材料，但必须连接有动力且转速足够的旋转传动网络。")
+	. += span_info("把谷物或其他可研磨材料放到附属料斗所在的格子上，再启动磨坊；它会自动进料。")
+	. += span_info("研磨产物会落在磨坊所在的格子上。")
 
 /obj/structure/autogrinder/attack_hand(mob/user)
 	. = ..()
@@ -256,7 +256,7 @@
 		return
 	if(!working)
 		if(!has_power_flow())
-			to_chat(user, span_warning("[src] has no rotational power to draw on."))
+			to_chat(user, span_warning("[src]没有可用的旋转动力。"))
 			return
 
 	var/was_working = working
@@ -266,26 +266,26 @@
 		return
 
 	if(was_working && engineering_skill < 3 && prob(10))
-		user.visible_message(span_danger("[user] gets a hand caught under [src]'s stone!"), span_danger("You get your hand caught under [src]'s grinding stone!"))
+		user.visible_message(span_danger("[user]的手被卷到了[src]的磨石下面！"), span_danger("你的手被卷到了[src]的磨石下面！"))
 		user.apply_damage(max(2, round((4 * max(1, rotations_per_minute / 8)) / max(1, engineering_skill), 1)), BRUTE, active_hand_zone(user))
 		playsound(src, 'sound/foley/stone_scrape.ogg', 100, FALSE)
 		return
 
 	if(working)
 		stop_work()
-		to_chat(user, span_notice("You shut down [src]."))
+		to_chat(user, span_notice("你关闭了[src]。"))
 	else
 		working = TRUE
 		update_working_visuals()
-		to_chat(user, span_notice("You start up [src]."))
+		to_chat(user, span_notice("你启动了[src]。"))
 
 /*
  * The hopper that feeds the autogrinder. A permanently open, lidless feed bin: grist dropped onto
  * its tile is pulled straight into the grinder. Two iron gears turn inside whenever the machine runs.
  */
 /obj/structure/closet/crate/chest/autogrinder
-	name = "autogrinder hopper"
-	desc = "A lidless material hopper that feeds an autogrinder its grist. Iron gears churn within."
+	name = "自动磨坊料斗"
+	desc = "一个为自动磨坊供料的无盖料斗，内部有铁齿轮转动。"
 	icon = 'icons/obj/autogrinder.dmi'
 	icon_state = "open_off"
 	base_icon_state = "open_off"
@@ -307,12 +307,12 @@
 
 /obj/structure/closet/crate/chest/autogrinder/examine(mob/user)
 	. = ..()
-	. += span_info("A lidless feed bin — drop grain or other grindables onto its tile and the autogrinder pulls them in.")
+	. += span_info("这是无盖进料斗：把谷物或其他可研磨材料放到它所在的格子上，自动磨坊就会将其卷入。")
 
 /// The hopper has no lid, so it can never be closed.
 /obj/structure/closet/crate/chest/autogrinder/close(mob/living/user)
 	if(user)
-		to_chat(user, span_warning("[src] has no lid to close."))
+		to_chat(user, span_warning("[src]没有可关闭的盖子。"))
 	return FALSE
 
 /obj/structure/closet/crate/chest/autogrinder/update_icon()
