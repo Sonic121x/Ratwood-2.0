@@ -25,7 +25,7 @@
 		user.visible_message(span_warning("[user]开始撸弄那件玩具了……"))
 
 /datum/sex_action/toy_masturbate/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/chosen_verb = pick(list("撸弄着[user.p_their()]的玩具", "抚弄着[user.p_their()]的玩具", "摩擦着[user.p_their()]的玩具", "套弄着[user.p_their()]的玩具", "把玩着[user.p_their()]的玩具"))
+	var/chosen_verb = pick(list("撸弄着[user.p_their()]玩具", "抚弄着[user.p_their()]玩具", "摩擦着[user.p_their()]玩具", "套弄着[user.p_their()]玩具", "把玩着[user.p_their()]玩具"))
 	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [chosen_verb]..."))
 	user.sexcon.generic_sex_noise()
 
