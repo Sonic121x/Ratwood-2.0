@@ -52,13 +52,13 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/sewing/loincloth
-	name = "兠裆布"
+	name = "兜裆布"
 	result = list(/obj/item/clothing/under/roguetown/loincloth)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/brownloincloth
-	name = "棕色兠裆布"
+	name = "棕色兜裆布"
 	result = list(/obj/item/clothing/under/roguetown/loincloth/brown)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
@@ -380,7 +380,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/clothpaddedfootwraps
-	name = "padded footwraps"
+	name = "衬垫裹脚布"
 	category = "Boots"
 	result = list(/obj/item/clothing/shoes/roguetown/boots/footwraps/padded)
 	reqs = list(/obj/item/natural/cloth = 2,
@@ -568,21 +568,21 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/basiceast
-	name = "简易多宝长袍"
+	name = "简式道袍"
 	result = list(/obj/item/clothing/suit/roguetown/armor/basiceast)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/decorative_mentorsuit
-	name = "decorative mentor robe"
+	name = "装饰性导师道袍"
 	result = list(/obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit/decorative)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/sewing/decorative_captainrobe
-	name = "decorative flowery robe"
+	name = "装饰性花纹长袍"
 	result = list(/obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe/decorative)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2)
@@ -950,7 +950,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/royaldress
 	display_category = ITEM_CAT_GARMENT_FINE
-	name = "无瑵连衣裙"
+	name = "无瑕礼裙"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/royal/princess)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2,
@@ -1144,7 +1144,7 @@
 	sellprice = 5
 
 /datum/crafting_recipe/roguetown/sewing/sailorshirt_colored
-	name = "striped shirt (colorable)"
+	name = "条纹衬衫 (可染色)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/colored)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
@@ -1480,7 +1480,7 @@
 
 // -- Caparisons
 /datum/crafting_recipe/roguetown/sewing/caparison
-	name = "caparison"
+	name = "鞍饰毯"
 	result = list(/obj/item/caparison)
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 2)
@@ -1488,24 +1488,24 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/caparison/psy
-	name = "psydonite caparison"
+	name = "普赛顿鞍饰毯"
 	result = list(/obj/item/caparison/psy)
 
 /datum/crafting_recipe/roguetown/sewing/caparison/astrata
-	name = "astratan caparison"
+	name = "阿斯特拉塔鞍饰毯"
 	result = list(/obj/item/caparison/astrata)
 
 /datum/crafting_recipe/roguetown/sewing/caparison/eora
-	name = "eoran caparison"
+	name = "伊欧拉鞍饰毯"
 	result = list(/obj/item/caparison/eora)
 
 /datum/crafting_recipe/roguetown/sewing/caparison/fogbeast
-	name = "fogbeast caparison"
+	name = "雾兽鞍饰毯"
 	result = list(/obj/item/caparison/fogbeast)
 
 // -- Barding
 /datum/crafting_recipe/roguetown/sewing/barding
-	name = "padded barding (saiga)"
+	name = "衬垫坐骑甲 (赛加羚羊)"
 	category = "Misc"
 	result = list(/obj/item/clothing/barding)
 	reqs = list(/obj/item/natural/cloth = 4,
@@ -1515,7 +1515,7 @@
 	sellprice = 20
 
 /datum/crafting_recipe/roguetown/sewing/barding/fogbeast
-	name = "padded barding (fogbeast)"
+	name = "衬垫坐骑甲 (雾兽)"
 	result = list(/obj/item/clothing/barding/fogbeast)
 
 /datum/crafting_recipe/roguetown/sewing/paperparasol
@@ -1557,12 +1557,12 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/bandithood
-	name = "自由之人裹尸布"
+	name = "自由之人兜帽"
 	result = list(/obj/item/clothing/head/roguetown/menacing/bandit)
 	reqs = list(/obj/item/natural/cloth = 1)
 
 /datum/crafting_recipe/roguetown/sewing/shroudwhite
-	name = "白色裹尸布"
+	name = "白色罩巾"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/shroudwhite)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
