@@ -7,10 +7,10 @@
 	user_needs_chastity = TRUE
 
 /datum/sex_action/chastityplay/cockcage_to_belt/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]逼近[target]，直到[user.p_their()]的贞操笼严丝合缝地顶上[target.p_their()]那条上锁的贞操带。"))
+	user.visible_message(span_warning("[user]逼近[target]，直到[user.p_their()]贞操笼严丝合缝地顶上[target.p_their()]那条上锁的贞操带。"))
 
 /datum/sex_action/chastityplay/cockcage_to_belt/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] grinds [user.p_their()] cage against [target]'s belt, the slow steel-on-steel drag loud enough to make nearby people wince..."))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user][user.sexcon.get_generic_force_adjective()]用自己的贞操笼磨蹭着[target]的贞操带，钢铁缓缓摩擦的刺耳声响让周围的人都不禁皱眉……"))
 	// Chastity device sound is handled internally by perform_sex_action via chastitycourse_noise — no outercourse noise here, it's purely metal-on-metal.
 
 	user.sexcon.perform_sex_action(user, 1.1, 1, TRUE)
