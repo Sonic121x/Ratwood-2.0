@@ -2,16 +2,18 @@
 // 隐身药水 (Invisibility Potion) —— 一味【精炼药剂(非酒)】
 // ----------------------------------------------------------------------------
 // 触发：5 级"纯净"气味 + 水70/魔力药水30；技能：大师。
-// 效果：代谢期间【隐身】(复用原版隐形术机制：alpha→0 + MT_INVISIBILITY 计时器)。
+// 效果：代谢期间【隐身】(复用原版隐形术机制：alpha→0 + MT_INVISIBILITY 计时器)
+//       +【消声】(TRAIT_SILENT_FOOTSTEPS 抑制脚步声)。
 // 框架见 refining_framework.dm。
 // ============================================================================
 
 // 中文：成品试剂——隐身药水。复用原版【隐形术】的隐身机制：把 alpha 渐隐为 0，并把 mob_timers[MT_INVISIBILITY]
 //       推到未来——只要该计时器在未来，原版 update_sneak_invis() 就会让其保持隐形(rogue_sneaking)。
 //       每代谢一拍刷新该计时器(并在被某些动作显形后重新淡隐)，使隐身【持续整个代谢期】；药剂耗尽即现形。
+//       同时挂载 TRAIT_SILENT_FOOTSTEPS 使隐身期间不发出任何脚步声，真正做到"无影无踪"。
 /datum/reagent/invisibility_potion
 	name = "隐身药水"										// In-game name (Invisibility Potion).
-	description = "循纯净的气味、以清水与魔力药水为底精炼的澄澈药水。饮下后身形如薄雾般淡去，隐没于无形之中。"	// Flavour + hint.
+	description = "循纯净的气味、以清水与魔力药水为底精炼的澄澈药水。饮下后身形如薄雾般淡去，隐没于无形之中，连脚步也轻得毫无声息。"	// Flavour + hint.
 	reagent_state = LIQUID									// Liquid potion.
 	color = "#cfe8ffaa"										// Pale, near-transparent blue.
 	taste_description = "几乎尝不出的清冽"					// Taste flavour (almost nothing).
@@ -19,6 +21,7 @@
 	metabolization_rate = 2 * REAGENTS_METABOLISM			// ~1 unit per 1 second.
 
 // 中文：代谢开始时——渐隐为 0、设置隐形计时器、并调用 update_sneak_invis() 即时进入隐形态。
+//       同时挂载 TRAIT_SILENT_FOOTSTEPS 消除脚步声。
 /datum/reagent/invisibility_potion/on_mob_metabolize(mob/living/M)
 	. = ..()												// Base setup.
 	// 中文：提示与淡隐(1 秒渐隐到全透明)。
@@ -27,6 +30,8 @@
 	// 中文：把隐形计时器推到未来；原版 update_sneak_invis 据此维持隐形。每拍会刷新它(见 on_mob_life)。
 	M.mob_timers[MT_INVISIBILITY] = world.time + 10 SECONDS	// Keep-alive window (refreshed each life tick).
 	M.update_sneak_invis()									// Enter the sneaking/invisible state now.
+	// ★消声★ 隐形期间不发出脚步声（TRAIT_SILENT_FOOTSTEPS 被 footstep component 检查跳过）。
+	ADD_TRAIT(M, TRAIT_SILENT_FOOTSTEPS, type)				// No footstep sounds while invisible.
 
 // 中文：每代谢一拍——刷新隐形计时器(防止中途到期)，并在因攻击/受击等被显形后重新淡隐，确保"持续隐身"。
 /datum/reagent/invisibility_potion/on_mob_life(mob/living/carbon/M)
@@ -41,9 +46,11 @@
 	return ..()												// Standard metabolism finish.
 
 // 中文：代谢结束(药剂耗尽/被清除)时——清空隐形计时器并以 reset=TRUE 强制现形(恢复 alpha)。
+//       同时拔除 TRAIT_SILENT_FOOTSTEPS 恢复脚步声。
 /datum/reagent/invisibility_potion/on_mob_end_metabolize(mob/living/M)
 	M.mob_timers[MT_INVISIBILITY] = 0						// Drop the invisibility keep-alive.
 	M.update_sneak_invis(TRUE)								// Force reveal + restore alpha (reset path).
+	REMOVE_TRAIT(M, TRAIT_SILENT_FOOTSTEPS, type)			// Restore footstep sounds.
 	M.visible_message(span_warning("[M]重新显现在众人眼前。"), span_notice("我重新显露了身形。"))	// Reappear message.
 	return ..()												// Let the base finish up.
 
