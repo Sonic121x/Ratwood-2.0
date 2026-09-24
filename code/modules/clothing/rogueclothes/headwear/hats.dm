@@ -85,7 +85,7 @@
 	min_cold_protection_temperature = 50
 
 /obj/item/clothing/head/roguetown/loadoutpapakha
-	name = "Soft-sided papakha"
+	name = "软边帕帕哈帽"
 	icon_state = "papakha"
 	item_state = "papakha"
 	resistance_flags = FIRE_PROOF //doesnt spawn, only a cosmetic loadout item. Keep the swag.
@@ -201,8 +201,8 @@
 	color = "#007fff"
 
 /obj/item/clothing/head/roguetown/chaperon/greyscale/shepherd
-	name = "mountaineer's chaperon"
-	desc = "A fashionable citygoer's chaperon worn around an insconspicuous iron skullcap. It has a cute little Mamük brooch on the tip of the hood. Szöréndnížine shepherds spend plenty of time in the city and have taken a liking to the chaperon's exaggerated swagger."
+	name = "山民头巾帽"
+	desc = "一顶城里人喜爱的时髦头巾帽，内藏一顶不起眼的铁制便盔，帽尖上别着一枚可爱的玛穆克小胸针。瑟伦迪尼日纳的牧羊人常在城里逗留，也喜欢上了这种头巾帽夸张张扬的派头。"
 	armor = ARMOR_LEATHER_STUDDED
 	max_integrity = ARMOR_INT_HELMET_IRON - 25
 
