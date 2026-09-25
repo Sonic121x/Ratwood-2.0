@@ -295,7 +295,7 @@
 	bloom_type = /obj/structure/flora/ausbushes/ywflowers
 
 /obj/structure/flower_sprout/brflower
-	name = "棕花苗"
+	name = "蓝红花苗"
 	bloom_type = /obj/structure/flora/ausbushes/brflowers
 
 /obj/structure/flower_sprout/ppflower
