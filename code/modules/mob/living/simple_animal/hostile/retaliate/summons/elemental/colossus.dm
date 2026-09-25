@@ -138,7 +138,7 @@
 	stomp_cd = world.time
 
 /obj/projectile/earthenchunk
-	name = "elemental chunk"
+	name = "元素碎块"
 	icon_state = "rock"
 	damage = 30
 	damage_type = BRUTE
