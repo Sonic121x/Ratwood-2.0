@@ -230,7 +230,7 @@
 		emote("laugh")
 
 /datum/intent/simple/slash
-	name = "chop"
+	name = "劈砍"
 	icon_state = "inchop"
 	attack_verb = list("切割", "砍")
 	animname = "cut"
