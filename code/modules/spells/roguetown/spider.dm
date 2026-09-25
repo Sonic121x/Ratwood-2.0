@@ -36,13 +36,13 @@
 	var/web_type = /obj/structure/spider/stickyweb/thin
 	var/spin_time = 4 SECONDS
 	var/stamina_cost = 30
-	var/web_name = "thin web"
+	var/web_name = "薄蛛网"
 
 /obj/effect/proc_holder/spell/self/spin_web/cast(mob/living/user)
 	var/turf/web_turf = get_turf(user)
 	if(!isopenturf(web_turf))
 		return TRUE
-	user.visible_message(span_notice("[user] begins spinning a [web_name]."))
+	user.visible_message(span_notice("[user]开始织出一张[web_name]。"))
 	if(!do_after(user, spin_time, target = user, progress = TRUE))
 		revert_cast(user)
 		return FALSE
@@ -53,20 +53,20 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/spin_web/thin
-	name = "Spin Thin Web"
-	desc = "Spin a translucent web on your current location."
+	name = "织薄蛛网"
+	desc = "在你所在的位置织出一张半透明的蛛网。"
 	overlay_state = "webthin"
 	recharge_time = 15 SECONDS
 
 /obj/effect/proc_holder/spell/self/spin_web/dense
-	name = "Spin Dense Web"
-	desc = "Spin a thick, opaque web on your current location."
+	name = "织密蛛网"
+	desc = "在你所在的位置织出一张厚实、不透光的蛛网。"
 	overlay_state = "webdense"
 	recharge_time = 30 SECONDS
 	web_type = /obj/structure/spider/stickyweb/thick
 	spin_time = 8 SECONDS
 	stamina_cost = 60
-	web_name = "dense web"
+	web_name = "密蛛网"
 
 /// Drow Merc mount summon spells, spider spells of a different kind.
 
@@ -82,8 +82,8 @@
 		|| istype(place, /area/rogue/under/underdarker)
 
 /obj/effect/proc_holder/spell/self/call_spider_mount
-	name = "Call Drider"
-	desc = "Call your saddled drider companion to your side. Usable outdoors or in the Underdark."
+	name = "召唤蛛骑"
+	desc = "将你备好鞍具的蛛骑同伴召唤到身边。可在户外或幽暗地域使用。"
 	school = "transmutation"
 	overlay_state = "book1"
 	chargedrain = 0
@@ -96,12 +96,12 @@
 		return FALSE
 
 	if(user.spiderborn_mount)
-		to_chat(user, span_warning("I have already called my darling pet."))
+		to_chat(user, span_warning("我已经召唤过我心爱的小家伙了。"))
 		revert_cast(user)
 		return FALSE
 
 	if(!isturf(user.loc) || !is_spiderborn_mount_area(get_area(user)))
-		to_chat(user, span_warning("I must be outdoors or in the Underdark to call my drider."))
+		to_chat(user, span_warning("我必须身处户外或幽暗地域，才能召唤我的蛛骑。"))
 		revert_cast(user)
 		return FALSE
 
@@ -113,8 +113,8 @@
 	user.AddSpell(new /obj/effect/proc_holder/spell/self/saddleborn/whistle/spiderborn)
 
 	user.visible_message(
-		span_notice("[user] whistles sharply, and [spider] scuttles to their side."),
-		span_notice("I whistle for my drider, and it scuttles to my side.")
+		span_notice("[user]尖啸一声，[spider]便窸窣爬到了他身侧。"),
+		span_notice("我一声尖啸唤来蛛骑，它便窸窣爬到我身侧。")
 	)
 	playsound(user, 'sound/magic/saddleborn-call.ogg', 150, FALSE, 5)
 
@@ -126,8 +126,8 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/saddleborn/sendaway/spiderborn
-	name = "Spider: Send Away"
-	desc = "Send your drider away while outdoors or in the Underdark."
+	name = "蛛骑：遣返"
+	desc = "在户外或幽暗地域时，将你的蛛骑遣走。"
 
 /obj/effect/proc_holder/spell/self/saddleborn/sendaway/spiderborn/get_mount(mob/living/carbon/human/user)
 	if(!ishuman(user) || !HAS_TRAIT(user, TRAIT_SPIDERBORN))
@@ -135,8 +135,8 @@
 	return user.spiderborn_mount?.resolve()
 
 /obj/effect/proc_holder/spell/self/saddleborn/whistle/spiderborn
-	name = "Spider: Recall"
-	desc = "Call your drider to your side. Unlike those wretched surface mounts, the noble drider is unbothered by trivialities like hostile terrain or fauna; an apex in its own right."
+	name = "蛛骑：召回"
+	desc = "将你的蛛骑召到身边。与那些可怜的地表坐骑不同，高贵的蛛骑不为险恶地形或野兽之类的琐事所扰；它本身就是一方霸主。"
 
 /obj/effect/proc_holder/spell/self/saddleborn/whistle/spiderborn/get_mount(mob/living/carbon/human/user)
 	if(!ishuman(user) || !HAS_TRAIT(user, TRAIT_SPIDERBORN))

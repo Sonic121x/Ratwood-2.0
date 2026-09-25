@@ -2,7 +2,7 @@
 /obj/effect/proc_holder/spell/invoked/song/dirge_fortune
 	name = "厄运挽歌"
 	desc = "奏出一曲降下厄运的哀歌。附近不属于听众的人会受到 `-2 LUCK`。"
-	invocations = list("plays the world's saddest song. The world around them seems to sulk.") 
+	invocations = list("奏起世间最悲伤的曲子。周围的一切仿佛都郁郁寡欢。") 
 	invocation_type = "emote"
 	overlay_state = "dirge_t1_base"
 	action_icon_state = "dirge_t1_base"
@@ -37,5 +37,5 @@
 
 /atom/movable/screen/alert/status_effect/debuff/song/dirge_misfortune
 	name = "厄运挽歌"
-	desc = "I can feel the sky laughing at my back. This music is reminding me of my fleeting, insignificant life."
+	desc = "我仿佛感到苍天在背后嘲笑我。这乐曲提醒着我，我的一生何其短暂而渺小。"
 	icon_state = "restrained"
