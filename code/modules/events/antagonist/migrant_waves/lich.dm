@@ -14,7 +14,7 @@
 	)
 
 /datum/migrant_wave/lich
-	name = "Wandering Lich"
+	name = "游荡巫妖"
 	track = MIGRANT_TRACK_EVENT
 	required_roles = list(
 		/datum/migrant_role/lich = 1,
@@ -22,5 +22,5 @@
 	can_roll = FALSE
 
 /datum/migrant_role/lich
-	name = "Lich"
+	name = "巫妖"
 	antag_datum = /datum/antagonist/lich
