@@ -1,13 +1,13 @@
 /mob/living/simple_animal/examine(mob/user)
 	var/t_He = p_they(TRUE)
 	var/t_his = p_their()
-	var/t_is = p_are()
+	var/t_is = ""
 
 	. = list("<span class='info'>✠ ------------ ✠\n这是\a <EM>[src]</EM>。")
 	if(desc)
 		. += desc
 
-	var/m1 = "[t_He] [t_is]"
+	var/m1 = "[t_He][t_is]"
 	var/m2 = "[t_his]"
 	if(user == src)
 		m1 = "我"
@@ -16,7 +16,7 @@
 	for(var/obj/item/held_item in held_items)
 		if(held_item.item_flags & ABSTRACT)
 			continue
-		. += "[m1] [m2]的[get_held_index_name(get_held_index_of_item(held_item))]握着[held_item.get_examine_string(user)]。"
+		. += "[m1]用[m2][get_held_index_name(get_held_index_of_item(held_item))]握着[held_item.get_examine_string(user)]。"
 
 	//Gets encapsulated with a warning span
 	var/list/msg = list()
@@ -87,15 +87,15 @@
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
 			if(5 to INFINITY)
-				. += span_warning("<B>[t_He]看[p_s()]起来比我强壮得多。</B>")
+				. += span_warning("<B>[t_He]看起来比我强壮得多。</B>")
 			if(1 to 5)
-				. += span_warning("[t_He]看[p_s()]起来比我强壮。")
+				. += span_warning("[t_He]看起来比我强壮。")
 			if(0)
-				. += "[t_He]看[p_s()]起来和我差不多强壮。"
+				. += "[t_He]看起来和我差不多强壮。"
 			if(-5 to -1)
-				. += span_warning("[t_He]看[p_s()]起来比我弱小。")
+				. += span_warning("[t_He]看起来比我弱小。")
 			if(-INFINITY to -5)
-				. += span_warning("<B>[t_He]看[p_s()]起来比我弱小得多。</B>")
+				. += span_warning("<B>[t_He]看起来比我弱小得多。</B>")
 
 	if(Adjacent(user))
 		if(has_simple_wounds)

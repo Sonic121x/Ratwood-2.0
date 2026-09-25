@@ -231,7 +231,7 @@
 	return ..()
 
 /datum/intent/simple/baroness
-	name = "baroness"
+	name = "男爵夫人攻击"
 	icon_state = "instrike"
 	attack_verb = list("魔法劈砍", "魔法切割", "魔法刺击")
 	animname = "blank22"

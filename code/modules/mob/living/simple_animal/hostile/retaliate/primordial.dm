@@ -33,7 +33,7 @@
 	. = ..()
 
 /datum/intent/simple/claw/primordial
-	name = "claw"
+	name = "爪击"
 	icon_state = "instrike"
 	attack_verb = list("抓", "啄")
 	animname = "blank22"
@@ -41,7 +41,7 @@
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 0
-	miss_text = "slash the air"
+	miss_text = "划破空气"
 	item_d_type = "slash"
 	clickcd = 12
 
