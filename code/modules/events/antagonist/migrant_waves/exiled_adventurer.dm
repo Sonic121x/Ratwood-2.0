@@ -14,7 +14,7 @@
 	)
 
 /datum/migrant_wave/werewolf
-	name = "Exiled Adventurer (Verevolf)"
+	name = "流亡冒险者（狼人）"
 	track = MIGRANT_TRACK_EVENT
 	required_roles = list(
 		/datum/migrant_role/werewolf = 1,
@@ -22,7 +22,7 @@
 	can_roll = FALSE
 
 /datum/migrant_role/werewolf
-	name = "Adventurer"
+	name = "冒险者"
 	role_category = "Adventurer"
 	antag_datum = /datum/antagonist/werewolf
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
@@ -43,7 +43,7 @@
 	)
 
 /datum/migrant_wave/vampire
-	name = "Exiled Adventurer (Vampire)"
+	name = "流亡冒险者（吸血鬼）"
 	track = MIGRANT_TRACK_EVENT
 	required_roles = list(
 		/datum/migrant_role/vampire = 1,
@@ -51,7 +51,7 @@
 	can_roll = FALSE
 
 /datum/migrant_role/vampire
-	name = "Adventurer"
+	name = "冒险者"
 	role_category = "Adventurer"
 	antag_datum = /datum/antagonist/vampire
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
@@ -72,7 +72,7 @@
 	)
 
 /datum/migrant_wave/unbound_death_knight
-	name = "Death knight (Unbound)"
+	name = "死亡骑士（无主）"
 	track = MIGRANT_TRACK_EVENT
 	required_roles = list(
 		/datum/migrant_role/unbound_death_knight = 1,
@@ -80,6 +80,6 @@
 	can_roll = FALSE
 
 /datum/migrant_role/unbound_death_knight
-	name = "Death Knight"
+	name = "死亡骑士"
 	antag_datum = /datum/antagonist/unbound_death_knight
 	advclass_cat_rolls = null
