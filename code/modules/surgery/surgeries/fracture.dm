@@ -1,5 +1,5 @@
 /datum/surgery/fix_bone
-	name = "Bone fixing"
+	name = "骨折复位"
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(
 		BODY_ZONE_PRECISE_SKULL,
@@ -24,7 +24,7 @@
 	)
 
 /datum/surgery_step/set_bone
-	name = "Set bones"
+	name = "复位断骨"
 	time = 6.4 SECONDS
 	accept_hand = TRUE
 	implements = list(
@@ -45,19 +45,19 @@
 	for(var/datum/wound/fracture/bone in bodypart.wounds)
 		can_set ||= bone.can_set
 	if(!can_set)
-		to_chat(user, span_warning("There are no more fractures to set in [target]'s [parse_zone(target_zone)]."))
+		to_chat(user, span_warning("[target]的[parse_zone(target_zone)]已没有需要复位的骨折。"))
 	return can_set
 
 /datum/surgery_step/set_bone/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to set the bone in [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to set the bone in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to set the bone in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始为[target]的[parse_zone(target_zone)]复位断骨……"),
+		span_notice("[user]开始为[target]的[parse_zone(target_zone)]复位断骨。"),
+		span_notice("[user]开始为[target]的[parse_zone(target_zone)]复位断骨。"))
 	return TRUE
 
 /datum/surgery_step/set_bone/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I successfully set the bone in [target]'s [parse_zone(target_zone)], they'll need to rest to fully heal now."),
-		span_notice("[user] successfully sets the bone in [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] successfully sets the bone in [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我成功为[target]的[parse_zone(target_zone)]复位了断骨，现在还需休养才能完全愈合。"),
+		span_notice("[user]成功为[target]的[parse_zone(target_zone)]复位了断骨！"),
+		span_notice("[user]成功为[target]的[parse_zone(target_zone)]复位了断骨！"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 		for(var/datum/wound/fracture/bone in bodypart.wounds)
