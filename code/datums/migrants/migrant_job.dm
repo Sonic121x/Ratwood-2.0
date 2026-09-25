@@ -4,7 +4,7 @@
 	department_flag = WANDERERS
 	faction = "Station"
 	job_greet_text = FALSE // Migration gives them their own greetings
-
+	display_title = "移民"
 	allowed_races = RACES_ALL_KINDS
 	outfit = null
 	outfit_female = null

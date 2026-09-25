@@ -1,6 +1,6 @@
 /datum/migrant_role/czwarteki/lord
 	name = "兹瓦尔特基领主"
-	greet_text = "你是兹瓦尔特基联邦的众多领主之一，无论是为外交、战争，还是仅仅路过以援助旧日盟约。你要率领自己的随员，为联邦带来荣耀。"
+	greet_text = "你是兹瓦尔特基联邦的众多领主之一，此行或为外交，或为战争，也可能只是途经此地去援助旧日盟友。你要率领自己的随员，为联邦带来荣耀。"
 	advclass_cat_rolls = list(CTAG_CZWAR_LORD = 20)
 	allowed_races = list(/datum/species/human/northern,/datum/species/lupian,/datum/species/demihuman)
 	grant_lit_torch = TRUE
