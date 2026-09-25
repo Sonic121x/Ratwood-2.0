@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/ifrit	//This way don't need new unqiue AI controller. Wolves are modular anyway.
 	icon = 'icons/roguetown/mob/monster/ifrit.dmi'
-	name = "ifrit"
+	name = "伊弗利特"
 	icon_state = "ifrit"
 	icon_living = "ifrit"
 	icon_dead = "ifrit_dead"
@@ -70,7 +70,7 @@
 	icon = 'icons/roguetown/mob/monster/ifritmatriarch.dmi'
 	health = DRAGON_BROODMOTHER_HEALTH
 	maxHealth = DRAGON_BROODMOTHER_HEALTH
-	name = "ifrit Matriarch"
+	name = "伊弗利特主母"
 	health = 8000
 	maxHealth = 8000
 	icon_state = "ifrit_queen"
@@ -123,15 +123,15 @@
 	loot = list(/obj/item/roguekey/mage/ifrit)
 
 /obj/item/roguekey/mage/ifrit
-	name = "drakian key"
-	desc = "An ancient drakian key. Once embedded in an ifrit matriach's flame, now no more than a trophy."
+	name = "龙裔钥匙"
+	desc = "一把古老的龙裔钥匙。它曾嵌在伊弗利特主母的烈焰之中，如今只是一件战利品。"
 	icon_state = "voidkey"//Temp. I hate temp sprites!!!!
 	lockid = "ifrit"
 
 /obj/effect/oneway/ifrit
-	name = "magical barrier"
+	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "Victory or death - once you pass this point you will either triumph or fall. Recommended 5 players or more."
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少5名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
@@ -140,5 +140,5 @@
 /obj/effect/oneway/ifrit/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	if(istype(W, /obj/item/roguekey/mage/ifrit))
-		visible_message(span_boldannounce("The magical barrier disperses!"))
+		visible_message(span_boldannounce("魔法屏障消散了！"))
 		qdel(src)
