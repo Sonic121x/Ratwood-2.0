@@ -55,7 +55,7 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/bat/crow/proc/change_stance()
-	set category = "Winged Form"
+	set category = "有翼形态"
 	set name = "切换姿态"
 	sitting = !sitting
 	update_icon()
@@ -70,7 +70,7 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/bat/crow/proc/emote_caw()
-	set category = "Winged Form"
+	set category = "有翼形态"
 	set name = "鸣叫"
 	emote("caw", intentional = TRUE, animal = TRUE)
 
@@ -79,7 +79,7 @@
 		return pick('sound/vo/mobs/bird/CROW_01.ogg', 'sound/vo/mobs/bird/CROW_02.ogg', 'sound/vo/mobs/bird/CROW_03.ogg')
 
 /mob/living/simple_animal/hostile/retaliate/bat/proc/fly_up()
-	set category = "Winged Form"
+	set category = "有翼形态"
 	set name = "起飞"
 
 	if(src.pulledby != null)
@@ -94,7 +94,7 @@
 			to_chat(src, span_notice("我被抓着没法飞走！"))
 
 /mob/living/simple_animal/hostile/retaliate/bat/proc/fly_down()
-	set category = "Winged Form"
+	set category = "有翼形态"
 	set name = "降落"
 
 	if(src.pulledby != null)

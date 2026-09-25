@@ -1,7 +1,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken
 	icon = 'icons/roguetown/mob/monster/chicken.dmi'
-	name = "\improper chicken"
+	name = "\improper 鸡"
 	desc = ""
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
@@ -9,7 +9,7 @@
 
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("pecks at the ground.","flaps its wings viciously.")
+	emote_see = list("啄着地面。","猛烈地扑打翅膀。")
 	density = FALSE
 	base_intents = list(/datum/intent/simple/claw)
 	speak_chance = 2
@@ -34,12 +34,12 @@
 		)
 	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue,/obj/item/natural/worms,/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat)
-	response_help_continuous = "pets"
-	response_help_simple = "pet"
-	response_disarm_continuous = "gently pushes aside"
-	response_disarm_simple = "gently push aside"
-	response_harm_continuous = "kicks"
-	response_harm_simple = "kick"
+	response_help_continuous = "抚摸"
+	response_help_simple = "抚摸"
+	response_disarm_continuous = "轻轻推开"
+	response_disarm_simple = "轻轻推开"
+	response_harm_continuous = "踢"
+	response_harm_simple = "踢"
 	melee_damage_lower = 1
 	melee_damage_upper = 8
 	pooptype = /obj/item/natural/poo/horse
@@ -148,13 +148,13 @@
 				if(CH)
 					qdel(CH)
 					new /obj/structure/fluff/nest(loc)
-					visible_message(span_notice("[src] builds a nest."))
+					visible_message(span_notice("[src]筑了一个窝。"))
 				else
 					CH = locate(/obj/item/grown/log/tree/stick) in loc
 					if(CH)
 						qdel(CH)
 						new /obj/structure/fluff/nest(loc)
-						visible_message(span_notice("[src] builds a nest."))
+						visible_message(span_notice("[src]筑了一个窝。"))
 				//if cant find, look for chaff in view and move to it
 				var/list/foundchaff = list()
 				for(var/obj/item/natural/fibers/C in oview(src))
@@ -173,7 +173,7 @@
 
 
 /obj/structure/fluff/nest
-	name = "nest"
+	name = "鸡窝"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "nest"
