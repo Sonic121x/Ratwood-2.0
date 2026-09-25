@@ -1,6 +1,6 @@
 /obj/structure/plough
-	name = "plough"
-	desc = "A wooden plough with iron blades to till the earth for crops."
+	name = "犁"
+	desc = "装有铁犁铧的木犁，用于翻耕土地、种植作物。"
 	icon = 'icons/obj/structures/plough.dmi'
 	icon_state = "plough"
 	density = TRUE
@@ -12,7 +12,7 @@
 
 /obj/structure/plough/examine(mob/user)
 	. = ..()
-	. += span_notice("TILTS any dirt/grass tile it's dragged over - requires user to drag it while having SNEAK active.")
+	. += span_notice("开启潜行后拖动它，可以翻耕沿途的泥地和草地。")
 
 /obj/structure/plough/Moved(oldLoc, movement_dir)
 	. = ..()

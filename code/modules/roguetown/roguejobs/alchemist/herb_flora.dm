@@ -183,7 +183,7 @@
 	herbtype = /obj/item/alch/rosa
 
 /obj/structure/flora/roguegrass/herb/manabloom
-	name = "魔力花"
+	name = "法绽花"
 	icon = 'icons/roguetown/misc/crops.dmi' // this is awful why am I doing this
 	icon_state = "manabloom2"
 
