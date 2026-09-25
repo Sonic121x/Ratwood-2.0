@@ -1,7 +1,7 @@
 /proc/parse_zone(zone, obj/item/bodypart/affecting = null)
 	// this helps adapt older code
 	if(affecting?.body_zone == BODY_ZONE_TAUR)
-		return "四足下身"
+		return "兽形下身"
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_HAND)
 			return "右手"
@@ -20,7 +20,7 @@
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "右脚"
 		if(BODY_ZONE_TAUR)
-			return "四足下身"
+			return "兽形下身"
 		if(BODY_ZONE_PRECISE_NECK)
 			return "咽喉"
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -46,53 +46,53 @@
 /proc/parse_organ_slot(slot)
 	switch(slot)
 		if(ORGAN_SLOT_BRAIN)
-			return "brain"
+			return "大脑"
 		if(ORGAN_SLOT_APPENDIX)
-			return "appendix"
+			return "阑尾"
 		if(ORGAN_SLOT_RIGHT_ARM_AUG)
-			return "right arm implant"
+			return "右臂植入物"
 		if(ORGAN_SLOT_LEFT_ARM_AUG)
-			return "left arm implant"
+			return "左臂植入物"
 		if(ORGAN_SLOT_STOMACH)
-			return "stomach"
+			return "胃"
 		if(ORGAN_SLOT_STOMACH_AID)
-			return "stomach aid"
+			return "胃部辅助器"
 		if(ORGAN_SLOT_BREATHING_TUBE)
-			return "breathing tube"
+			return "呼吸管"
 		if(ORGAN_SLOT_EARS)
-			return "ears"
+			return "耳朵"
 		if(ORGAN_SLOT_EYES)
-			return "eyes"
+			return "眼睛"
 		if(ORGAN_SLOT_LUNGS)
-			return "lungs"
+			return "肺"
 		if(ORGAN_SLOT_HEART)
-			return "heart"
+			return "心脏"
 		if(ORGAN_SLOT_ZOMBIE)
-			return "zombie gland"
+			return "僵尸腺体"
 		if(ORGAN_SLOT_THRUSTERS)
-			return "thrusters"
+			return "推进器"
 		if(ORGAN_SLOT_HUD)
-			return "eye implant"
+			return "眼部植入物"
 		if(ORGAN_SLOT_LIVER)
-			return "liver"
+			return "肝脏"
 		if(ORGAN_SLOT_TONGUE)
-			return "tongue"
+			return "舌头"
 		if(ORGAN_SLOT_VOICE)
-			return "vocal cords"
+			return "声带"
 		if(ORGAN_SLOT_ADAMANTINE_RESONATOR)
-			return "adamantine resonator"
+			return "精金共鸣器"
 		if(ORGAN_SLOT_HEART_AID)
-			return "heart aid"
+			return "心脏辅助器"
 		if(ORGAN_SLOT_BRAIN_ANTIDROP)
-			return "brain antidrop implant"
+			return "脑部防脱手植入物"
 		if(ORGAN_SLOT_BRAIN_ANTISTUN)
-			return "brain antistun implant"
+			return "脑部抗眩晕植入物"
 		if(ORGAN_SLOT_TAIL)
-			return "tail"
+			return "尾巴"
 		if(ORGAN_SLOT_PARASITE_EGG)
-			return "parasite egg"
+			return "寄生虫卵"
 		if(ORGAN_SLOT_REGENERATIVE_CORE)
-			return "regenerative core"
+			return "再生核心"
 	return slot
 
 /proc/parse_zone_fancy(zone, combat, combattarget, closeby, turnedaround, ontheground, grabbing, squinting, uncovered, dicked, pussied, strength, self = FALSE)

@@ -48,6 +48,6 @@
 	mob_overlay = "dis_ll"
 
 /datum/wound/dismemberment/taur
-	name = "四足下身残端"
-	check_name = span_danger("<B>四足下身残端</B>")
+	name = "兽形下身残端"
+	check_name = span_danger("<B>兽形下身残端</B>")
 	mob_overlay = "dis_taur"
