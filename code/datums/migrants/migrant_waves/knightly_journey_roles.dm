@@ -27,7 +27,7 @@
 
 /datum/advclass/kj_knight
 	name = "骑士"
-	tutorial = "你是一位来自遥远国度的骑士，出身于高贵家族，因为某种缘由来到 Rockwood 谷地。"
+	tutorial = "你是一位来自遥远国度的骑士，出身于高贵家族，因为某种缘由来到岩木谷地。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/adventurer/knighte_expert
@@ -76,7 +76,7 @@
 		"圆面巴斯基奈特盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
 		"凸鼻圆面巴斯基奈特盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
 		"伊特鲁里亚巴斯基奈特盔" 		= /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-		"开缝水壶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
+		"开缝锅盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 		"无"
 		)
 	var/helmchoice = input(H, "选择你的头盔。", "戴上头盔") as anything in helmets
@@ -85,7 +85,7 @@
 
 	var/armors = list(
 		"布面甲"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
-		"板片外套"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+		"板片甲"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
 		"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
 		"槽纹胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
 		"鳞甲"		= /obj/item/clothing/suit/roguetown/armor/plate/scale,

@@ -2,7 +2,7 @@
 /datum/advclass/slaver/master
 	name = "兹班图裔 奴隶主"
 	tutorial = "你是 兹班图裔 奴隶商队的首领。你自 兹班图的 西方荒漠来到大陆，希望靠训练与买卖那些不幸的劳工来积攒财富。 \
-	在有些人眼中，这门行当卑劣可憎；但毫无疑问，在你回到 Zybantynian 沙海之前，它最能让你的钱袋鼓起来。"
+	在有些人眼中，这门行当卑劣可憎；但毫无疑问，在你回到兹班图沙海之前，它最能让你的钱袋鼓起来。"
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	traits_applied = list(TRAIT_XENOPHOBIC, TRAIT_PERFECT_TRACKER, TRAIT_SLEUTH, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_MASTER)
