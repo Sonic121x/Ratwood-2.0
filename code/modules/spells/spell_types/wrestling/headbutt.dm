@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/invoked/headbutt // 1st of the grapple spells, this one does 50 damage and throws the target a good distance.
-	name = "Headbutt"
-	desc = "Requires an aggressive grab. After a brief wind up, slams your head into the target, knocking you both over and leaving the target vulnerable."
+	name = "头槌"
+	desc = "需要强力抓取。短暂蓄势后，用头猛撞目标，使双方倒地，并令目标露出破绽。"
 
 	recharge_time = 60 SECONDS
 	invocation_type = "emote"
@@ -14,18 +14,18 @@
 
 /obj/effect/proc_holder/spell/invoked/headbutt/cast(list/targets, mob/living/user,)
 	if(targets[1] == user)
-		to_chat(user, span_notice("You can't wrestle yourself."))
+		to_chat(user, span_notice("你不能和自己摔跤。"))
 		revert_cast()
 		return FALSE
 
 	var/mob/living/carbon/human/target = targets[1]
 	if(!ishuman(target))
-		to_chat(user, span_warning("This spell only works on humans!"))
+		to_chat(user, span_warning("此招式只能对人形目标使用！"))
 		revert_cast()
 		return FALSE
 
 	if(user.pulling != target || user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You must have an aggressive grab on [target] to begin the wrestling!"))
+		to_chat(user, span_warning("你必须先强力抓住[target]，才能施展摔跤招式！"))
 		revert_cast()
 		return FALSE
 
@@ -40,8 +40,8 @@
 	var/original_target_pixel_x = target.pixel_x
 	var/original_target_pixel_y = target.pixel_y
 
-	to_chat(user, span_notice("You line up with [target]!"))
-	to_chat(target, span_userdanger("[user] winds up for a headbutt!"))
+	to_chat(user, span_notice("你对准了[target]！"))
+	to_chat(target, span_userdanger("[user]蓄势准备使出头槌！"))
 	tracker.channeling_throw = TRUE
 	user.emote("attack")
 	
@@ -112,7 +112,7 @@
 	if(user.IsKnockdown()) // can't do it while on the floor.
 		tracker.channeling_throw = FALSE
 		user.stop_pulling(TRUE)
-		to_chat(user, span_notice("I'm interupted!"))
+		to_chat(user, span_notice("我的动作被打断了！"))
 		animate(user, pixel_x = original_user_pixel_x, pixel_y = original_user_pixel_y, time = 1 SECONDS) // reset animation
 		animate(target, pixel_x = original_target_pixel_x, pixel_y = original_target_pixel_y, time = 1 SECONDS) // reset animation
 		revert_cast()
@@ -198,7 +198,7 @@
 		user.Knockdown(2 SECONDS)
 		target.safe_throw_at(throw_target, 2, 4, user, force = MOVE_FORCE_DEFAULT)
 		target.remove_status_effect(/datum/status_effect/buff/clash)
-		to_chat(user, span_notice("A reversal!"))
+		to_chat(user, span_notice("被反制了！"))
 		playsound(user, 'sound/combat/crowdcheer.ogg', 100, TRUE) // sick parry dude
 	
 	else
@@ -207,7 +207,7 @@
 		target.Knockdown(2 SECONDS)
 		user.Knockdown(2 SECONDS)
 		playsound(user, 'sound/combat/tf2crit.ogg', 100, TRUE)
-		to_chat(user, span_notice("[user] slams their forehead into [target]!"))
+		to_chat(user, span_notice("[user]用额头猛撞[target]！"))
 		var/def_zone = user.zone_selected || BODY_ZONE_CHEST // this one does the strike here to not eat the expose
 		target.apply_damage(damage, BRUTE, def_zone)
 		target.apply_status_effect(/datum/status_effect/debuff/vulnerable, vulnerable_dur)

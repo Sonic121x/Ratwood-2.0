@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/invoked/regression
-	name = "Regression"
-	desc = "Uses Origin Magick to gradually rewind a target's body to a healthier state. The effects happen in order, and only one at a time. Removes embedded objects, stops bleeding, grants health regeneration and energy recovery. The nature of time-based manipulation allows this to work on most targets."
+	name = "回溯"
+	desc = "以本源魔法逐步将目标的身体回溯至更健康的状态。依次移除嵌入的异物、止血、赋予生命与精力恢复效果，每次只进行一个步骤。操纵时间的特性使其能对大多数目标生效。"
 	overlay_state = "regression"
 	releasedrain = 20
 	chargedrain = 0
@@ -38,7 +38,7 @@
 	new /obj/effect/temp_visual/origin_restoration_burst(user_turf, SOUTHWEST)
 	if(!istype(target, /mob/living/carbon))
 		target.apply_status_effect(/datum/status_effect/buff/originhealing)
-		target.visible_message(span_info("Origin arts stabilize [target]!"), span_notice("A brief temporal correction passes through me."))
+		target.visible_message(span_info("本源术法使[target]的状态稳定下来！"), span_notice("短暂的时间修正掠过我的身体。"))
 		return TRUE
 
 	var/mob/living/carbon/C = target
@@ -68,7 +68,7 @@
 			step_check = TRUE
 
 	if(step_check)
-		C.visible_message(span_info("Origin arts undo [C]'s embedded objects!"), span_notice("Foreign objects are rewound in time!"))
+		C.visible_message(span_info("本源术法移除了嵌入[C]体内的异物！"), span_notice("时间倒流，体内的异物随之消失！"))
 		return TRUE
 
 	// Wound bleed
@@ -82,11 +82,11 @@
 				step_check = TRUE
 
 	if(step_check)
-		C.visible_message(span_info("Origin arts reverse [C]'s bleeding!"),	span_notice("My bleeding wounds close, as if reverting in time!"))
+		C.visible_message(span_info("本源术法止住了[C]的流血！"),	span_notice("我的伤口不再流血，仿佛时间倒流！"))
 		return TRUE
 
 	// Healing
-	C.visible_message(span_info("Origin arts rewind [C]'s body!"), span_notice("My body slowly recalls to a prior form!"))
+	C.visible_message(span_info("本源术法正在回溯[C]的身体！"), span_notice("我的身体正缓缓恢复到先前的状态！"))
 	C.apply_status_effect(/datum/status_effect/buff/originhealing)
 	return
 
@@ -128,8 +128,8 @@
 	return INITIALIZE_HINT_NORMAL
 
 /obj/effect/proc_holder/spell/invoked/convergence
-	name = "Convergence"
-	desc = "Converges the targets past and present, empowering your Naledi arts to last longer."
+	name = "汇流"
+	desc = "将目标的过去与现在汇为一体，延长你的纳莱迪术法的持续时间。"
 	overlay_state = "convergence"
 	releasedrain = 10
 	chargedrain = 0
@@ -152,7 +152,7 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		target.visible_message(span_info("A convergence of fates surrounds [target]!"), span_notice("My past and present converge as one!"))
+		target.visible_message(span_info("命运的汇流环绕着[target]！"), span_notice("我的过去与现在汇为一体！"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			C.apply_status_effect(/datum/status_effect/buff/convergence)
@@ -165,8 +165,8 @@
 
 
 /obj/effect/proc_holder/spell/invoked/stasis
-	name = "Stasis"
-	desc = "You capture your target's current state in time, reverting them to such a state several seconds later. If under Convergence  when expiring, your target will keep any healing they receive."
+	name = "时序定格"
+	desc = "记录目标此刻的状态，并在数秒后将其还原。若效果结束时目标仍处于汇流状态，则会保留期间获得的治疗效果。"
 	releasedrain = 35
 	chargedrain = 1
 	chargetime = 30
@@ -206,7 +206,7 @@
 	if(target?.stat == DEAD)
 		if(!self.has_status_effect(/datum/status_effect/debuff/devitalised))
 			if(target.timeofdeath && (world.time - target.timeofdeath) <= 1 MINUTES)
-				if(alert(user, "[target] has very recently departed. Sacrifice your Lux to rewind their soul back?", "Origin Restoration", "Restore Them", "Leave Them") == "Restore Them")
+				if(alert(user, "[target]刚刚逝去。要牺牲你的 Lux，将其灵魂回溯至生前吗？", "本源复苏", "使其复苏", "任其逝去") == "使其复苏")
 					var/obj/effect/temp_visual/origin_restoration/V = new
 					target.vis_contents += V
 					var/turf/user_turf = get_turf(user)
@@ -224,7 +224,7 @@
 						if(target.mind)
 							target.mind.remove_antag_datum(/datum/antagonist/zombie)
 						target.apply_status_effect(/datum/status_effect/debuff/revived)
-						target.visible_message(span_blue("[user]'s Lux is forcefully torn away as [target]'s soul is rewound back into their body!"),	span_blue("A distant darkness releases its grip on me. I wake once more, feeling the remnants of a dying light..."))
+						target.visible_message(span_blue("[user]的 Lux 被强行撕离，[target]的灵魂随时间回溯重返躯体！"),	span_blue("遥远的黑暗松开了对我的束缚。我再次醒来，感受到一缕濒熄之光的余温……"))
 						return TRUE
 					else
 						revert_cast()
@@ -252,7 +252,7 @@
 		snapshot_wounds = target.get_wounds()
 		position = target.resting
 
-		to_chat(target, span_warning("I feel a part of me was left behind..."))
+		to_chat(target, span_warning("我感觉自己的一部分被留在了过去……"))
 		play_indicator(target,'icons/mob/overhead_effects.dmi', "timestop", 100, OBJ_LAYER)
 		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = 10 SECONDS)
 		return TRUE
@@ -331,8 +331,8 @@
 
 //Acceleration
 /obj/effect/proc_holder/spell/invoked/acceleration
-	name = "Acceleration"
-	desc = "Displace a target slightly ahead of local time, dramatically increasing their speed and reactions. When reality catches up, the resulting temporal strain leaves them sluggish and exhausted."
+	name = "时间加速"
+	desc = "将目标的时间稍稍向前推进，大幅提升其速度与反应。现实追上后，时间的负荷将使其迟缓而疲惫。"
 //	fluff_desc = "One of the earliest applications of Origin Magick, Acceleration was first devised to hasten crop growth and shorten agricultural cycles. The experiment revealed a fundamental limitation of the art: while a subject's personal timeline can be advanced, the debt incurred cannot be avoided. Reality inevitably reconciles the discrepancy, repaying every stolen moment in equal measure. Though unsuitable for cultivation, the technique found lasting use among Naledi Viziers as a potent, if taxing, combat tool."
 	overlay_state = "accel"
 	sound = list('sound/magic/haste.ogg')
@@ -365,7 +365,7 @@
 	new /obj/effect/temp_visual/origin_restoration_burst(user_turf, SOUTHEAST)
 	new /obj/effect/temp_visual/origin_restoration_burst(user_turf, SOUTHWEST)
 
-	target.visible_message(span_blue("Origin magicks skip [target]'s body ahead in time!"), span_blue("My form is thrown ahead of the present!"))
+	target.visible_message(span_blue("本源魔法将[target]的身体推向了未来！"), span_blue("我的身体被抛向了此刻之后！"))
 	if(target.has_status_effect(/datum/status_effect/buff/convergence))
 		target.apply_status_effect(/datum/status_effect/buff/accel, 16 SECONDS)
 		return TRUE
@@ -374,13 +374,13 @@
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/accel
-	name = "Acceleration"
-	desc = "My personal timeline has accelerated. My body moves before I can think!"
+	name = "时间加速"
+	desc = "我的时间线加速了。身体比思绪更快行动！"
 	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/debuff/decel
-	name = "Deceleration"
-	desc = "Time is catching up with me. Everything is in slow motion...!"
+	name = "时间减速"
+	desc = "时间正在追上我。一切都变得缓慢无比……！"
 	icon_state = "debuff"
 
 /datum/status_effect/buff/accel
@@ -407,7 +407,7 @@
 		owner.AddComponent(/datum/component/after_image)
 		afterimage_active = TRUE
 
-	to_chat(owner, span_green("My timeline races ahead of the present. I am unbound by time!"))
+	to_chat(owner, span_green("我的时间线超越了此刻，奔向未来。我挣脱了时间的束缚！"))
 
 /datum/status_effect/buff/accel/on_remove()
 	. = ..()
@@ -427,7 +427,7 @@
 	else
 		owner.apply_status_effect(/datum/status_effect/debuff/decel, 6 SECONDS)
 
-	to_chat(owner, span_red("Time catches up with me, with its toll."))
+	to_chat(owner, span_red("时间追上了我，也索取了代价。"))
 
 /datum/status_effect/buff/accel/nextmove_modifier()
 	return 0.5
@@ -450,14 +450,14 @@
 
 	ADD_TRAIT(owner, TRAIT_NODEF, TRAIT_STATUS_EFFECT(id))
 	owner.stamina_add(75)
-	to_chat(owner, span_red("Everything feels unbearably slow. I am defenseless!"))
+	to_chat(owner, span_red("一切都慢得令人难以忍受。我毫无招架之力！"))
 
 /datum/status_effect/debuff/decel/on_remove()
 	. = ..()
 
 	REMOVE_TRAIT(owner, TRAIT_NODEF, TRAIT_STATUS_EFFECT(id))
 
-	to_chat(owner, span_blue("My timeline stabilizes, finally."))
+	to_chat(owner, span_blue("我的时间线终于稳定了。"))
 
 /datum/status_effect/debuff/decel/nextmove_modifier()
 	return 2
@@ -486,14 +486,14 @@
 ///Divergence
 
 /obj/effect/proc_holder/spell/invoked/divergence
-	name = "Divergence"
-	desc = "Shatters a target across several competing timelines, briefly immobilizing them and spawning 4 to 8 Time Echoes around them. Recovering an echo restores the target's vitality, while destroying one forces reality to violently reconcile the contradiction, inflicting damage."
+	name = "分歧"
+	desc = "将目标分裂至数条相互冲突的时间线，短暂禁锢目标，并在其周围生成4至8个时间回响。收回回响可恢复目标的生命力；摧毁回响则会迫使现实以剧烈方式消解矛盾，造成伤害。"
 //	fluff_desc = "The Naledi teach that every living thing exists atop an endless lattice of unrealized possibilities. Divergence tears open that lattice and scatters fragments of a victim's fate across nearby histories. To reclaim an echo is to remember a life that almost was. To destroy one is to deny that possibility ever existed, and reality rarely forgives the contradiction."
 	overlay_state = "divergence"
 	sound = list('sound/magic/regression1.ogg', 'sound/magic/regression2.ogg', 'sound/magic/regression3.ogg')
 	range = 5
 	recharge_time = 60 SECONDS
-	invocations = list("Naf'ir! Diverge, timeline!")
+	invocations = list("纳菲尔！时间线，分裂吧！")
 	miracle = TRUE
 	devotion_cost = 30
 
@@ -505,38 +505,38 @@
 		return FALSE
 
 	if(target.has_status_effect(/datum/status_effect/debuff/divergence))
-		to_chat(user, span_warning("[target] is already fractured across diverging timelines!"))
+		to_chat(user, span_warning("[target]已经分裂在不同的时间线中！"))
 		revert_cast()
 		return FALSE
 
-	target.visible_message(span_blue("Origin Magick shatters [target] across diverging timelines!"), span_blue("I feel myself pulled apart into countless possibilities! I'm not here-- I'm there-- Huh?? Where??"))
+	target.visible_message(span_blue("本源魔法将[target]撕裂至不同的时间线！"), span_blue("我感觉自己被撕成了无数种可能！我不在这里——我在那里——啊？？在哪里？？"))
 	target.apply_status_effect(/datum/status_effect/debuff/divergence, user)
 	return TRUE
 
 /proc/arcyne_validate_blink_dest(turf/dest, mob/user)
 	if(!dest)
-		return "Invalid target location!"
+		return "目标位置无效！"
 	if(dest.teleport_restricted)
-		return "I can't teleport here!"
+		return "我不能传送到这里！"
 	var/turf/start = get_turf(user)
 	if(dest.z != start.z)
-		return "I can only teleport on the same plane!"
+		return "我只能在同一位面内传送！"
 	if(istransparentturf(dest))
-		return "I cannot teleport to the open air!"
+		return "我不能传送到空中！"
 	if(dest.density)
-		return "I cannot teleport into a wall!"
+		return "我不能传送进墙里！"
 	for(var/obj/structure/roguewindow/W in dest)
 		if(W.density)
-			return "I cannot teleport through a window!"
+			return "我不能穿过窗户传送！"
 	for(var/obj/structure/mineral_door/door in dest)
 		if(door.density)
-			return "I cannot teleport through a door!"
+			return "我不能穿过门传送！"
 	for(var/obj/structure/bars/B in dest)
 		if(B.density)
-			return "I cannot teleport through bars!"
+			return "我不能穿过栅栏传送！"
 	for(var/obj/structure/gate/G in dest)
 		if(G.density)
-			return "I cannot teleport through a gate!"
+			return "我不能穿过闸门传送！"
 	return null
 
 /datum/status_effect/debuff/divergence
@@ -570,8 +570,8 @@
 	slow_timer = addtimer(CALLBACK(src, PROC_REF(remove_slow)), 3 SECONDS, TIMER_STOPPABLE)
 
 	owner.visible_message(
-		span_warning("[owner]'s timeline fractures apart!"),
-		span_notice("I can feel pieces of myself scattered around me!")
+		span_warning("[owner]的时间线碎裂了！"),
+		span_notice("我能感觉到自己的碎片散落在四周！")
 	)
 
 	spawn_fragments(center)
@@ -653,8 +653,8 @@
 		addtimer(CALLBACK(src, PROC_REF(spawn_fragment), T), rand(3, 6))
 
 /obj/effect/divergence_fragment
-	name = "temporal simulacrum"
-	desc = "A discarded possibility struggling to remain real."
+	name = "时间幻身"
+	desc = "一种被舍弃的可能性，仍在竭力维系自身的存在。"
 	density = TRUE
 	anchored = TRUE
 	alpha = 140
@@ -709,7 +709,7 @@
 
 	// distance threshold (tweak freely)
 	if(get_dist(self_turf, T) > 6)
-		M.visible_message(span_warning("A fractured timeline collapses as its origin drifts too far away."), span_notice("One of your temporal echoes fades from existence."))
+		M.visible_message(span_warning("一条破碎的时间线因远离其源头而崩塌。"), span_notice("你的一个时间回响消失了。"))
 		qdel(src)
 
 /obj/effect/divergence_fragment/proc/jitter()
@@ -732,7 +732,7 @@
 		return
 	var/mob/living/L = AM
 	if(L.cmode)
-		to_chat(L, span_warning("I need a calm mind to properly match the simulacrum's frequency. Turn Combat Mode off!"))
+		to_chat(L, span_warning("我需要静下心来，才能与幻身的频率同步。请关闭战斗模式！"))
 		return
 	converge()
 
@@ -742,7 +742,7 @@
 		return
 	var/mob/living/L = AM
 	if(L.cmode)
-		to_chat(L, span_warning("I need a calm mind to properly match the simulacrum's frequency. Turn Combat Mode off!"))
+		to_chat(L, span_warning("我需要静下心来，才能与幻身的频率同步。请关闭战斗模式！"))
 		return
 	converge()
 
@@ -759,7 +759,7 @@
 		M.adjustBruteLoss(-master.heal_per_fragment)
 		M.adjustFireLoss(-master.heal_per_fragment)
 		M.adjustOxyLoss(-master.heal_per_fragment)
-		M.visible_message(span_blue("[src] rejoins [M]'s timeline."), span_blue("A lost possibility settles back into place, restoring you."))
+		M.visible_message(span_blue("[src]重新融入了[M]的时间线。"), span_blue("一种失落的可能性重归原位，恢复了你的生命力。"))
 	master.fragments -= src
 
 	qdel(src)
@@ -786,7 +786,7 @@
 		M.adjustBruteLoss(master.damage_per_fragment/2)
 		M.adjustFireLoss(master.damage_per_fragment/2)
 		M.adjustOxyLoss(master.damage_per_fragment/2)
-		M.visible_message(span_danger("Time violently distorts around [M] as a discarded timeline is forced back into reality!"), span_userdanger("One of my fractured timelines violently collapses!"))
+		M.visible_message(span_danger("一条被舍弃的时间线被强行推回现实，[M]周围的时间剧烈扭曲！"), span_userdanger("我破碎的时间线中，有一条猛烈崩塌了！"))
 		shake_camera(M, 2, 2)
 		if(!M.mind && iscarbon(M) && prob(30)) // 30% crit chance on NPCs, baybee
 			var/list/limb_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
@@ -795,7 +795,7 @@
 				var/obj/item/bodypart/L = M.get_bodypart(zone)
 				if(L)
 					if(L.dismember(damage = 999))
-						M.visible_message(span_userdanger("[M]'s timeline rejects one of its possibilities, tearing away a limb!"), span_userdanger("Reality violently disagrees on the existence of one of my limbs!"))
+						M.visible_message(span_userdanger("[M]的时间线排斥了其中一种可能，将一条肢体撕了下来！"), span_userdanger("现实猛烈地否定了我一条肢体的存在！"))
 					break
 
 
@@ -850,8 +850,8 @@
 // If Combat Mode is off, this will instead restore your Energy.
 
 /obj/effect/proc_holder/spell/invoked/ley_lines
-	name = "Obelisks of Power"
-	desc = "Creates a circle of arcyne power. Standing within it greatly enhances your spellcasting, increasing your intellect and reducing the cooldown of your spells. If you are not in Combat Mode, the obelisks instead restore your energy at a rapid pace.<br><br>While standing in a Arcyne Loop, you cannot defend yourself.<br><br>This will also grant a spell that makes you quickly move back to your Arcyne Loop."
+	name = "力量方尖碑"
+	desc = "创建一个奥术法阵。站在其中可大幅增强施法能力，提升智力并缩短法术冷却时间。若未开启战斗模式，方尖碑则会快速恢复你的精力。<br><br>站在奥术回路中时，你无法进行防御。<br><br>同时获得一个可让你迅速返回奥术回路的法术。"
 	overlay_state = "rune2"
 	sound = 'sound/magic/chargingold.ogg'
 	chargetime = 0
@@ -869,15 +869,15 @@
 	if(active_circle && !QDELETED(active_circle))
 		qdel(active_circle)
 	active_circle = new(get_turf(H), H, src)
-	to_chat(H, span_blue("Arcyne sigils spread beneath your feet as Ancient Obelisks fade in from a lost time. A connection forms, a loop, tying these obelisks to the sigils."))
+	to_chat(H, span_blue("奥术符文在你脚下铺展，古老的方尖碑从失落的时光中浮现。符文与方尖碑彼此相连，构成了一道回路。"))
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/ley_lines/proc/on_circle_removed()
 	active_circle = null
 
 /obj/effect/proc_holder/spell/invoked/between_the_lines
-	name = "Between the spires"
-	desc = "Return instantly to your Arcyne Loop, you addict."
+	name = "尖塔之间"
+	desc = "立刻返回你的奥术回路，你这魔法成瘾的家伙。"
 	overlay_state = "rune3"
 	recharge_time = 15 SECONDS
 	chargetime = 1.5 SECONDS
@@ -893,7 +893,7 @@
 	if(!linked_circle || QDELETED(linked_circle))
 		return FALSE
 	if(get_dist(user, linked_circle) > max_range)
-		user.balloon_alert(user, "too far from my arcyne loop!")
+		user.balloon_alert(user, "离我的奥术回路太远了！")
 		return FALSE
 	var/turf/T = get_turf(linked_circle)
 	if(!T)
@@ -937,12 +937,12 @@
 		return
 
 /atom/movable/screen/alert/status_effect/buff/circle_of_power
-	name = "Circle of Power"
-	desc = "The connected Ley Lines sharply empower my arcane prowess!"
+	name = "力量法阵"
+	desc = "相连的地脉大幅增强了我的奥术能力！"
 	icon_state = "circle_of_power"
 
 /obj/effect/phantom_leyline
-	name = "phantom obelisks"
+	name = "幻影方尖碑"
 	icon = 'icons/roguetown/misc/64x96.dmi'
 	icon_state = "obelisk"
 	anchored = TRUE
@@ -954,8 +954,8 @@
 	var/obj/effect/beam_target/beam_anchor
 
 /obj/structure/leyline_circle
-	name = "Arcyne Loop"
-	desc = "A circle of arcyne power woven into the land."
+	name = "奥术回路"
+	desc = "一道编织于大地之上的奥术法阵。"
 	icon = 'icons/roguetown/misc/rituals.dmi'
 	icon_state = "astrata_chalky"
 	layer = BELOW_OBJ_LAYER
