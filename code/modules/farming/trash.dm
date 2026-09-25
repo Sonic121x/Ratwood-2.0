@@ -1,5 +1,5 @@
 /obj/item/trash/applecore
-	name = "apple core"
+	name = "苹果核"
 	icon_state = "applecore"
 	icon = 'icons/roguetown/items/produce.dmi'
 

@@ -1,6 +1,6 @@
 /obj/structure/wild_plant
-	name = "wild plants"
-	desc = "A wild plant"
+	name = "野生植物"
+	desc = "一株野生植物。"
 	icon = 'icons/roguetown/misc/crops.dmi'
 	var/datum/plant_def/plant_type
 	var/spread_chance = 75
@@ -62,22 +62,22 @@
 	var/farming_skill = user.get_skill_level(/datum/skill/labor/farming)
 	var/chance_to_ruin = 50 - (farming_skill * 25)
 	if(prob(chance_to_ruin))
-		to_chat(user, span_warning("I ruin the produce..."))
+		to_chat(user, span_warning("我把收成全毁了……"))
 		qdel(src)
 		return
-	var/feedback = "I harvest the produce."
+	var/feedback = "我收获了农产品。"
 	var/modifier = 0
 	var/chance_to_ruin_single = 75 - (farming_skill * 25)
 	if(prob(chance_to_ruin_single))
-		feedback = "I harvest the produce, ruining a little."
+		feedback = "我收获了农产品，但弄坏了一小部分。"
 		modifier -= 1
 	var/chance_to_get_extra = -75 + (farming_skill * 25)
 	if(prob(chance_to_get_extra))
-		feedback = "I harvest the produce well."
+		feedback = "我顺利地收获了农产品。"
 		modifier += 1
 
 	if(has_world_trait(/datum/world_trait/dendor_fertility))
-		feedback = "Praise Dendor for our harvest is bountiful."
+		feedback = "赞美登多尔，赐予我们丰收。"
 		modifier += 3
 
 	record_featured_stat(FEATURED_STATS_FARMERS, user)
@@ -102,13 +102,13 @@
 	spread_chance = 0
 
 /obj/structure/wild_plant/nospread/manabloom
-	name = "wild manabloom"
-	desc = "Wild manabloom"
+	name = "野生法绽花"
+	desc = "野生的法绽花。"
 	icon_state = "manabloom2"
 	plant_type = /datum/plant_def/manabloom
 
 /obj/structure/wild_plant/nospread/poppy
-	name = "wild poppy"
-	desc = "Wild poppy"
+	name = "野生罂粟"
+	desc = "野生的罂粟。"
 	icon_state = "poppy2"
 	plant_type = /datum/plant_def/poppy
