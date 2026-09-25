@@ -1,10 +1,10 @@
 /obj/item/organ/tongue
-	name = "tongue"
+	name = "舌头"
 	desc = ""
 	icon_state = "tonguenormal"
 	zone = BODY_ZONE_PRECISE_MOUTH
 	slot = ORGAN_SLOT_TONGUE
-	attack_verb = list("licked", "slobbered", "slapped", "frenched", "tongued")
+	attack_verb = list("舔舐", "涂满口水", "扇打", "舌吻", "用舌头戳")
 	var/list/languages_possible
 	var/say_mod = null
 	var/taste_sensitivity = 15 // lower is more sensitive.
@@ -66,17 +66,17 @@
 	return is_type_in_typecache(dt, languages_possible)
 
 /obj/item/organ/tongue/construct
-	name = "construct tongue"
-	desc = "A beast's tongue, preserved through artifice and with crystals embedded in the base. It seems rather dead..."
+	name = "构装体舌头"
+	desc = "一条野兽的舌头，经人工技艺保存，根部嵌有晶体。它看起来毫无生气……"
 	icon_state = "tongue-con"
-	say_mod = "crackles"
+	say_mod = "噼啪作响地说"
 	taste_sensitivity = 30 //It's dead, jim.
 
 /obj/item/organ/tongue/lizard
-	name = "forked tongue"
+	name = "分叉舌"
 	desc = ""
 	icon_state = "tonguelizard"
-	say_mod = "hisses"
+	say_mod = "嘶嘶地说"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 //	modifies_speech = TRUE
 /*
@@ -90,10 +90,10 @@
 	speech_args[SPEECH_MESSAGE] = message
 */
 /obj/item/organ/tongue/fly
-	name = "proboscis"
+	name = "喙管"
 	desc = ""
 	icon_state = "tonguefly"
-	say_mod = "buzzes"
+	say_mod = "嗡嗡地说"
 	taste_sensitivity = 25 // you eat vomit, this is a mercy
 	modifies_speech = TRUE
 
@@ -107,10 +107,10 @@
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/abductor
-	name = "superlingual matrix"
+	name = "超语言矩阵"
 	desc = ""
 	icon_state = "tongueayylmao"
-	say_mod = "gibbers"
+	say_mod = "叽里咕噜地说"
 	taste_sensitivity = 101 // ayys cannot taste anything.
 	modifies_speech = TRUE
 	var/mothership
@@ -124,20 +124,20 @@
 		return
 
 	if(T.mothership == mothership)
-		to_chat(H, span_notice("[src] is already attuned to the same channel as my own."))
+		to_chat(H, span_notice("[src]已经调谐到与我相同的频道。"))
 
-	H.visible_message(span_notice("[H] holds [src] in their hands, and concentrates for a moment."), span_notice("I attempt to modify the attunation of [src]."))
+	H.visible_message(span_notice("[H]将[src]握在手中，凝神片刻。"), span_notice("我尝试调整[src]的调谐频道。"))
 	if(do_after(H, delay=15, target=src))
-		to_chat(H, span_notice("I attune [src] to my own channel."))
+		to_chat(H, span_notice("我将[src]调谐到自己的频道。"))
 		mothership = T.mothership
 
 /obj/item/organ/tongue/abductor/examine(mob/M)
 	. = ..()
 	if(HAS_TRAIT(M, TRAIT_ABDUCTOR_TRAINING) || HAS_TRAIT(M.mind, TRAIT_ABDUCTOR_TRAINING) || isobserver(M))
 		if(!mothership)
-			. += span_notice("It is not attuned to a specific mothership.")
+			. += span_notice("它尚未调谐到任何母舰。")
 		else
-			. += span_notice("It is attuned to [mothership].")
+			. += span_notice("它已调谐至[mothership]。")
 
 /obj/item/organ/tongue/abductor/handle_speech(datum/source, list/speech_args)
 	//Hacks
@@ -159,10 +159,10 @@
 	speech_args[SPEECH_MESSAGE] = ""
 
 /obj/item/organ/tongue/zombie
-	name = "rotting tongue"
+	name = "腐烂的舌头"
 	desc = ""
 	icon_state = "tonguezombie"
-	say_mod = "moans"
+	say_mod = "呻吟着说"
 	modifies_speech = TRUE
 	taste_sensitivity = 32
 
@@ -178,15 +178,15 @@
 			message_list[insertpos] = inserttext + "..."
 
 		if(prob(20) && message_list.len > 3)
-			message_list.Insert(insertpos, "[pick("BRAINS", "Brains", "Braaaiinnnsss", "BRAAAIIINNSSS")]...")
+			message_list.Insert(insertpos, "[pick("脑子", "脑子", "脑——子——", "脑——子——啊")]...")
 
 	speech_args[SPEECH_MESSAGE] = jointext(message_list, " ")
 
 /obj/item/organ/tongue/alien
-	name = "alien tongue"
+	name = "异星舌头"
 	desc = ""
 	icon_state = "tonguexeno"
-	say_mod = "hisses"
+	say_mod = "嘶嘶地说"
 	taste_sensitivity = 10 // LIZARDS ARE ALIENS CONFIRMED
 	modifies_speech = TRUE // not really, they just hiss
 	var/static/list/languages_possible_alien = typecacheof(list(
@@ -202,11 +202,11 @@
 	playsound(owner, "hiss", 25, TRUE, TRUE)
 
 /obj/item/organ/tongue/bone
-	name = "bone \"tongue\""
+	name = "骨质\"舌头\""
 	desc = ""
 	icon_state = "tonguebone"
-	say_mod = "rattles"
-	attack_verb = list("bitten", "chattered", "chomped", "enamelled", "boned")
+	say_mod = "咯咯作响地说"
+	attack_verb = list("咬", "磕牙", "啃咬", "用牙齿刮", "用骨头敲")
 	taste_sensitivity = 101 // skeletons cannot taste anything
 	modifies_speech = TRUE
 	var/chattering = FALSE
@@ -227,18 +227,18 @@
 			speech_args[SPEECH_SPANS] |= SPAN_PAPYRUS
 
 /obj/item/organ/tongue/bone/plasmaman
-	name = "plasma bone \"tongue\""
+	name = "等离子骨质\"舌头\""
 	desc = ""
 	icon_state = "tongueplasma"
 	modifies_speech = FALSE
 
 /obj/item/organ/tongue/robot
-	name = "robotic voicebox"
+	name = "机械发声器"
 	desc = ""
 	status = ORGAN_ROBOTIC
 	icon_state = "tonguerobot"
-	say_mod = "states"
-	attack_verb = list("beeped", "booped")
+	say_mod = "陈述道"
+	attack_verb = list("哔哔鸣叫", "嘟嘟鸣叫")
 	modifies_speech = TRUE
 	taste_sensitivity = 25 // not as good as an organic tongue
 
@@ -249,7 +249,7 @@
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
 
 /obj/item/organ/tongue/snail
-	name = "snailtongue"
+	name = "蜗牛舌"
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/snail/handle_speech(datum/source, list/speech_args)
@@ -263,17 +263,17 @@
 	speech_args[SPEECH_MESSAGE] = new_message
 
 /obj/item/organ/tongue/wild_tongue
-	name = "wild tongue"
+	name = "野兽舌头"
 
 /obj/item/organ/tongue/moth
-	name = "moth tongue"
-	say_mod = "flutters"
+	name = "蛾舌"
+	say_mod = "扑簌作响地说"
 
 /obj/item/organ/tongue/lamia_forked
-	name = "forked tongue"
-	desc = "A forked tongue, like that of a snake. Hssss."
+	name = "分叉舌"
+	desc = "一条如蛇信般分叉的舌头。嘶嘶。"
 	icon_state = "tonguelizard"
-	say_mod = "hisses"
+	say_mod = "嘶嘶地说"
 	taste_sensitivity = 5
 	modifies_speech = TRUE
 
@@ -287,9 +287,9 @@
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/harpy
-	name = "bird tongue"
-	desc = "Chirp chirp chirp chirp chirp!!"
+	name = "鸟舌"
+	desc = "啾啾啾啾啾！！"
 	icon_state = "tongue-con"
-	say_mod = "chirps"
+	say_mod = "啾啾地说"
 	taste_sensitivity = 5
 	modifies_speech = FALSE
