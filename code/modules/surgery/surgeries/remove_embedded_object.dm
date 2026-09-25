@@ -1,5 +1,5 @@
 /datum/surgery/embedded_removal
-	name = "Removal of embedded objects"
+	name = "嵌入物取出术"
 	steps = list(
 		/datum/surgery_step/incise,
 		/datum/surgery_step/clamp,
@@ -7,7 +7,7 @@
 	)
 
 /datum/surgery_step/remove_object
-	name = "Remove embedded objects"
+	name = "取出嵌入物"
 	implements = list(
 		TOOL_HEMOSTAT = 80,
 		TOOL_IMPROVISED_HEMOSTAT = 65,
@@ -34,9 +34,9 @@
 	return length(target.get_embedded_objects())
 
 /datum/surgery_step/remove_object/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I look for objects embedded in [target]'s [parse_zone(user.zone_selected)]..."),
-		span_notice("[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)]."),
-		span_notice("[user] looks for something in [target]'s [parse_zone(user.zone_selected)]."))
+	display_results(user, target, span_notice("我寻找着嵌在[target]的[parse_zone(user.zone_selected)]里的异物……"),
+		span_notice("[user]寻找着嵌在[target]的[parse_zone(user.zone_selected)]里的异物。"),
+		span_notice("[user]在[target]的[parse_zone(user.zone_selected)]里寻找着什么。"))
 	return TRUE
 
 /datum/surgery_step/remove_object/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
@@ -50,13 +50,13 @@
 		objects++
 		target.simple_remove_embedded_object(embedded)
 
-	var/s = (objects > 1 ? "s" : "")
+	var/s = (objects > 1 ? "件异物" : "件异物")
 	if(objects > 0)
-		display_results(user, target, span_notice("I successfully remove [objects] object[s] from [target]'s [bodypart]."),
-			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart]!"),
-			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart]!"))
+		display_results(user, target, span_notice("我成功从[target]的[bodypart]中取出了[objects][s]。"),
+			span_notice("[user]成功从[target]的[bodypart]中取出了[objects][s]！"),
+			span_notice("[user]成功从[target]的[bodypart]中取出了[objects][s]！"))
 	else if(bodypart)
-		to_chat(user, span_warning("I find no objects embedded in [target]'s [bodypart]!"))
+		to_chat(user, span_warning("我没有在[target]的[bodypart]里找到嵌入的异物！"))
 	else
-		to_chat(user, span_warning("I find no objects embedded in [target]!"))
+		to_chat(user, span_warning("我没有在[target]体内找到嵌入的异物！"))
 	return TRUE
