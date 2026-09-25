@@ -1,5 +1,5 @@
 /obj/item/organ/eyes
-	name = "eyes"
+	name = "眼睛"
 	icon_state = "eyeball"
 	desc = ""
 	zone = BODY_ZONE_PRECISE_R_EYE
@@ -12,12 +12,12 @@
 	high_threshold = 0.3 * STANDARD_ORGAN_THRESHOLD	//threshold at 30
 	low_threshold = 0.2 * STANDARD_ORGAN_THRESHOLD	//threshold at 20
 
-	low_threshold_passed = span_info("Distant objects become somewhat less tangible.")
-	high_threshold_passed = span_info("Everything starts to look a lot less clear.")
-	now_failing = span_warning("Darkness envelopes you, as my eyes go blind!")
-	now_fixed = span_info("Color and shapes are once again perceivable.")
-	high_threshold_cleared = span_info("My vision functions passably once more.")
-	low_threshold_cleared = span_info("My vision is cleared of any ailment.")
+	low_threshold_passed = span_info("远处的物体开始变得有些模糊。")
+	high_threshold_passed = span_info("眼前的一切都变得模糊不清。")
+	now_failing = span_warning("黑暗笼罩了我，我的双眼失明了！")
+	now_fixed = span_info("我再次看得见颜色和轮廓了。")
+	high_threshold_cleared = span_info("我的视力恢复到勉强能看清东西的程度了。")
+	low_threshold_cleared = span_info("我的视力完全恢复了。")
 
 	organ_dna_type = /datum/organ_dna/eyes
 	accessory_type = /datum/sprite_accessory/eyes/humanoid
@@ -116,7 +116,7 @@
 
 
 /obj/item/organ/eyes/night_vision
-	name = "shadow eyes"
+	name = "暗影眼"
 	desc = ""
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
@@ -139,21 +139,21 @@
 
 
 /obj/item/organ/eyes/night_vision/argonian
-	name = "sissean eyes"
+	name = "西塞亚眼睛"
 	desc = ""
 
 /obj/item/organ/eyes/night_vision/alien
-	name = "alien eyes"
+	name = "异星眼睛"
 	desc = ""
 	sight_flags = SEE_MOBS
 
 /obj/item/organ/eyes/night_vision/zombie
-	name = "undead eyes"
+	name = "亡灵眼睛"
 	desc = ""
 
 /obj/item/organ/eyes/construct
-	name = "construct eyes"
-	desc = "Some beast's eyes, preserved through artifice and with magical rock embedded in their back. Seems to fit a construct's head."
+	name = "构装体眼睛"
+	desc = "某种野兽的眼睛，经人工技艺保存，背面嵌有魔石。似乎适合装进构装体的头部。"
 	icon_state = "eyeball-con"
 
 /obj/item/organ/eyes/night_vision/zombie/on_life()
@@ -163,17 +163,17 @@
 			owner.adjustToxLoss(0.2)
 
 /obj/item/organ/eyes/night_vision/werewolf
-	name = "moonlight eyes"
+	name = "月光眼"
 	desc = ""
 
 /obj/item/organ/eyes/night_vision/nightmare
-	name = "burning red eyes"
+	name = "燃烧的赤眼"
 	desc = ""
 	icon_state = "burning_eyes"
 
 /obj/item/organ/eyes/night_vision/wild_goblin
-	name = "wild goblin eyes"
-	desc = "What manner of madness have these reddened orbs espied in the darker places of the realm?"
+	name = "野生哥布林眼睛"
+	desc = "这双通红的眼珠，曾在这片土地的阴暗之处目睹过怎样的疯狂？"
 	icon_state = "burning_eyes"
 
 /obj/item/organ/eyes/night_vision/wild_goblin/on_life()
@@ -184,10 +184,10 @@
 			applyOrganDamage(5)
 			owner.blur_eyes(3)
 			if(prob(50))
-				to_chat(owner, span_red("My eyes burn and my body aches."))
+				to_chat(owner, span_red("我的双眼灼痛，浑身酸疼。"))
 
 /obj/item/organ/eyes/night_vision/mushroom
-	name = "fung-eye"
+	name = "真菌眼"
 	desc = ""
 
 /obj/item/organ/eyes/night_vision/vampire/ui_action_click()
@@ -219,19 +219,19 @@
 	vampire_sight?.disable()
 
 /obj/item/organ/eyes/elf
-	name = "elf eyes"
+	name = "精灵眼睛"
 	desc = ""
 	see_in_dark = 4
 	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 /obj/item/organ/eyes/halfelf
-	name = "half-elf eyes"
+	name = "半精灵眼睛"
 	desc = ""
 	see_in_dark = 3
 	lighting_alpha = LIGHTING_PLANE_ALPHA_LESSER_NV_TRAIT
 
 /obj/item/organ/eyes/goblin
-	name = "goblin eyes"
+	name = "哥布林眼睛"
 	desc = ""
 	see_in_dark = 15
 	lighting_alpha = 200
@@ -239,7 +239,7 @@
 ///Robotic
 
 /obj/item/organ/eyes/robotic
-	name = "robotic eyes"
+	name = "机械眼"
 	icon_state = "cybernetic_eyeballs"
 	desc = ""
 	status = ORGAN_ROBOTIC
@@ -251,18 +251,18 @@
 		return
 	if(prob(10 * severity))
 		return
-	to_chat(owner, span_warning("Static obfuscates my vision!"))
+	to_chat(owner, span_warning("静电干扰模糊了我的视野！"))
 	owner.flash_act(visual = 1)
 
 /obj/item/organ/eyes/robotic/xray
-	name = "\improper X-ray eyes"
+	name = "\improper X射线眼"
 	desc = ""
 	eye_color = "000"
 	see_in_dark = 8
 	sight_flags = SEE_MOBS | SEE_OBJS | SEE_TURFS
 
 /obj/item/organ/eyes/robotic/thermals
-	name = "thermal eyes"
+	name = "热成像眼"
 	desc = ""
 	eye_color = "FC0"
 	sight_flags = SEE_MOBS
@@ -271,7 +271,7 @@
 	see_in_dark = 8
 
 /obj/item/organ/eyes/robotic/flashlight
-	name = "flashlight eyes"
+	name = "照明眼"
 	desc = ""
 	eye_color ="fee5a3"
 	icon = 'icons/obj/lighting.dmi'
@@ -282,7 +282,7 @@
 
 // Welding shield implant
 /obj/item/organ/eyes/robotic/shield
-	name = "shielded robotic eyes"
+	name = "屏蔽型机械眼"
 	desc = ""
 	flash_protect = FLASH_PROTECTION_WELDER
 
@@ -292,7 +292,7 @@
 #define RGB2EYECOLORSTRING(definitionvar) ("[copytext(definitionvar,2,3)][copytext(definitionvar,4,5)][copytext(definitionvar,6,7)]")
 
 /obj/item/organ/eyes/robotic/glow
-	name = "High Luminosity Eyes"
+	name = "高亮度眼睛"
 	desc = ""
 	eye_color = "000"
 	actions_types = list(/datum/action/item_action/organ_action/use, /datum/action/item_action/organ_action/toggle)
@@ -339,10 +339,10 @@
 		activate()
 
 /obj/item/organ/eyes/robotic/glow/proc/prompt_for_controls(mob/user)
-	var/C = input(owner, "Select Color", "Select color", "#ffffff") as color|null
+	var/C = input(owner, "选择颜色", "选择颜色", "#ffffff") as color|null
 	if(!C || QDELETED(src) || QDELETED(user) || QDELETED(owner) || owner != user)
 		return
-	var/range = input(user, "Enter range (0 - [max_light_beam_distance])", "Range Select", 0) as null|num
+	var/range = input(user, "输入距离（0 - [max_light_beam_distance]）", "选择距离", 0) as null|num
 
 	set_distance(CLAMP(range, 0, max_light_beam_distance))
 	assume_rgb(C)
@@ -389,14 +389,14 @@
 /obj/item/organ/eyes/robotic/glow/proc/activate(silent = FALSE)
 	start_visuals()
 	if(!silent)
-		to_chat(owner, span_warning("My [src] clicks and makes a whining noise, before shooting out a beam of light!"))
+		to_chat(owner, span_warning("我的[src]咔嗒一响，发出嗡鸣，随后射出一道光束！"))
 	active = TRUE
 	cycle_mob_overlay()
 
 /obj/item/organ/eyes/robotic/glow/proc/deactivate(silent = FALSE)
 	clear_visuals()
 	if(!silent)
-		to_chat(owner, span_warning("My [src] shuts off!"))
+		to_chat(owner, span_warning("我的[src]熄灭了！"))
 	active = FALSE
 	remove_mob_overlay()
 
@@ -470,7 +470,7 @@
 		return INITIALIZE_HINT_QDEL
 
 /obj/item/organ/eyes/moth
-	name = "fluvian eyes"
+	name = "弗卢维安眼睛"
 	desc = ""
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	accessory_type = /datum/sprite_accessory/eyes/moth
@@ -478,7 +478,7 @@
 	second_color = "000000"
 
 /obj/item/organ/eyes/snail
-	name = "snail eyes"
+	name = "蜗牛眼睛"
 	desc = ""
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
@@ -497,22 +497,22 @@
 		eyes.owner.update_body_parts(TRUE)
 
 /obj/item/organ/eyes/t1
-	name = "Eyes of the Scholar of Noс."
-	desc = "In the past, it was an honor for many students to be blessed with such eyes - proof that you had found knowledge…"
+	name = "诺克学者之眼"
+	desc = "过去，蒙赐这样的双眼是许多学徒的荣耀——这证明你已寻得知识……"
 	icon_state = "burning_eyes"
 	eye_color = "#24128a"
 	see_in_dark = 4
 
 /obj/item/organ/eyes/t2
-	name = "Blessed dendorite eyes"
-	desc = "Eyes, that will allow you to see your prey... Be blessed, hunter..."
+	name = "登多尔祝福之眼"
+	desc = "这双眼睛能让你看清猎物……愿你蒙福，猎人……"
 	color = "#c2ae40"
 	eye_color = "#864896"
 	see_in_dark = 5
 
 /obj/item/organ/eyes/t3
-	name = "Cursed necran eyes"
-	desc = "Pair of eyes that been stolen from one of Her hounds..."
+	name = "内克拉诅咒之眼"
+	desc = "从她的一只猎犬身上偷来的双眼……"
 	icon_state = "burning_eyes"
 	color = "#c2ae40"
 	eye_color = "#3c6696"
@@ -558,8 +558,8 @@
 	effectedstats = list(STATKEY_INT = 2, STATKEY_LCK = 2)
 
 /atom/movable/screen/alert/status_effect/buff/t1eyes
-	name = "Eyes of the Scholar"
-	desc = "The knowledge stares back."
+	name = "学者之眼"
+	desc = "知识也在凝视着你。"
 
 /datum/status_effect/buff/t2eyes
 	id = "t2eyes"
@@ -567,8 +567,8 @@
 	effectedstats = list(STATKEY_PER = 2, STATKEY_SPD = 1)
 
 /atom/movable/screen/alert/status_effect/buff/t2eyes
-	name = "Blessed dendorite eyes"
-	desc = "The hunt becomes clearer."
+	name = "登多尔祝福之眼"
+	desc = "狩猎的视野更加清晰。"
 
 /datum/status_effect/buff/t3eyes
 	id = "t3eyes"
@@ -576,5 +576,5 @@
 	effectedstats = list(STATKEY_WIL = 1, STATKEY_CON = 1, STATKEY_STR = 1)
 
 /atom/movable/screen/alert/status_effect/buff/t3eyes
-	name = "Cursed necran eyes"
-	desc = "Something stolen now sees through you."
+	name = "内克拉诅咒之眼"
+	desc = "某个被窃取之物如今正透过你凝视世界。"
