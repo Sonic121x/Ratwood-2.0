@@ -10,7 +10,7 @@
 	job_traits = list(TRAIT_NOBLE, TRAIT_HEARTFELT)
 	social_rank = SOCIAL_RANK_NOBLE
 	advclass_cat_rolls = list(CTAG_HFT_HAND)
-
+	display_title = "赤心执政之手"
 	job_subclasses = list(
 		/datum/advclass/heartfelt/hand/marshal,
 		/datum/advclass/heartfelt/hand/steward,
