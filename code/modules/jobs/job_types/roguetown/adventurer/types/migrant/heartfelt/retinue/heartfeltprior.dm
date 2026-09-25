@@ -2,7 +2,7 @@
 /datum/advclass/heartfelt/retinue/prior
 	name = "赤心 司铎长"
 	tutorial = "你是 赤心 的司铎长，本应在教会之中步步高升，却因男爵领的覆灭而被命运生生打断，前路也就此无限延后。\
-	然而 Astrata 的庇佑仍引领着你，你来到这片土地，决意尽自己所能施予援手与慰藉。"
+	然而阿斯特拉塔的庇佑仍引领着你，你来到这片土地，决意尽自己所能施予援手与慰藉。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/heartfelt/prior

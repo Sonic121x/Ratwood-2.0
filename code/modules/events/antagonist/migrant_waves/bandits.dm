@@ -24,4 +24,4 @@
 			if(!player.client)
 				continue
 
-			to_chat(player, span_danger("Matthios, is this true? Bandits flock to [SSmapping.map_adjustment.realm_name]. Three bandit slots have been opened."))
+			to_chat(player, span_danger("马西奥斯啊，这是真的吗？强盗正涌向[SSmapping.map_adjustment.realm_name]。新的强盗名额已开放。"))
