@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat
 	icon = 'icons/roguetown/mob/monster/bigrat.dmi'
-	name = "rous"
-	desc = "This is a big rat with beady red eyes, drawn to decay and filth."
+	name = "巨鼠"
+	desc = "一只长着红色小眼睛的巨鼠，总被腐败之物和污秽吸引。"
 	icon_state = "rat"
 	icon_living = "rat"
 	icon_dead = "rat1"
 	gender = MALE
-	emote_hear = list("squeaks.")
-	emote_see = list("cleans its nose.")
+	emote_hear = list("吱吱叫。")
+	emote_see = list("清理着鼻子。")
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
@@ -72,7 +72,7 @@
 	stat_attack = UNCONSCIOUS
 
 /obj/effect/decal/remains/bigrat
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "ratbones"
 	icon = 'icons/roguetown/mob/monster/bigrat.dmi'

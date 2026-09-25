@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/cat
-	name = "cat"
-	desc = "A ferocious little beast."
+	name = "猫"
+	desc = "一只凶猛的小野兽。"
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
-	speak = list("Meow!", "Esp!", "Purr!", "HSSSSS")
-	speak_emote = list("purrs", "meows")
-	emote_hear = list("meows", "mews")
-	emote_see = list("shakes its head", "shivers")
+	speak = list("喵！", "咪！", "呼噜！", "嘶——")
+	speak_emote = list("打着呼噜", "喵喵叫")
+	emote_hear = list("喵喵叫", "轻声喵叫")
+	emote_see = list("摇了摇头", "打着哆嗦")
 	speak_chance = 1
 	turns_per_move = 5
 	

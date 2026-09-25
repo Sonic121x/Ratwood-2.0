@@ -1,5 +1,5 @@
 /datum/intent/simple/elemental_unarmed
-	name = "elemental unarmed"
+	name = "元素徒手攻击"
 	icon_state = "instrike"
 	attack_verb = list("拳击", "击打", "滚压", "碾碎")
 	animname = "blank22"
@@ -10,7 +10,7 @@
 	swingdelay = 3
 
 /datum/intent/simple/elementalt2_unarmed
-	name = "elemental unarmed"
+	name = "元素徒手攻击"
 	icon_state = "instrike"
 	attack_verb = list("拳击", "击打", "踢", "踩踏", "碾碎")
 	animname = "blank22"
