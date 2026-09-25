@@ -49,7 +49,7 @@
 
 		if(tw_List.len)
 			playsound(get_turf(user), 'sound/magic/psydonbleeds.ogg', 50, TRUE)
-			C_caster.visible_message(span_warning("A thread of silvery lux spools out from [C_caster] and attaches to [C_target], softly aglow..."), span_warning("You begin twining your lux together with [C_target], drawing forth their wounds unto yourself..."))
+			C_caster.visible_message(span_warning("一缕银色 Lux 从[C_caster]身上延伸而出，连上[C_target]，散发着柔和的光芒……"), span_warning("你开始将自己的 Lux 与[C_target]的 Lux 交织，将对方的伤口转移到自己身上……"))
 			var/static/list/disallowed_wounds = typecacheof(list(/datum/wound/dismemberment, /datum/wound/facial, /datum/wound/fracture/head, /datum/wound/fracture/neck, /datum/wound/cbt/permanent, /datum/wound/grievous/pre_decapitation, /datum/wound/grievous/pre_skullshatter))
 			for(var/datum/wound/targetwound in tw_List)
 				if(disallowed_wounds[targetwound.type])
@@ -64,7 +64,7 @@
 					targetwound.apply_to_bodypart(c_BP, silent = TRUE, crit_message = FALSE)
 					targetwound.set_bleed_rate(pre_bleeding) // but we have to manually force a bleed_rate reset for it to cache properly
 					if(targetwound.severity >= WOUND_SEVERITY_SEVERE)
-						C_caster.visible_message(span_danger("Twisting threads of silvery lux blossom upon [C_caster]'s flesh, conveying [targetwound] upon [C_caster.p_their()] [c_BP.name]!"), span_boldwarning("You shudder in pain as a [targetwound] violently weeps into being upon your [c_BP.name]!"))
+						C_caster.visible_message(span_danger("扭动的银色 Lux 丝线在[C_caster]的皮肉上绽开，将[targetwound]转移到了[C_caster.p_their()][c_BP.name]上！"), span_boldwarning("你的[c_BP.name]上骤然裂开一道[targetwound]，令你痛得浑身颤抖！"))
 					new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#487e97")
 					new /obj/effect/temp_visual/psyheal_rogue(get_turf(user), "#487e97")
 					C_target.Beam(C_caster, icon_state="heal_psycross", icon='modular_azurepeak/icons/effects/miracle-healing.dmi', time = 5)
@@ -77,12 +77,12 @@
 		H.set_blood_volume(BLOOD_VOLUME_NORMAL)
 		user.adjust_blood_volume(-(blood_transfer))
 		to_chat(H, span_notice("我感到自己的血量恢复了！"))
-		user.visible_message(span_warning("一阵苍白骤然笼罩了[user]，[user.p_their()]的灵火之血从毛孔中涌出，流入[H]体内！"), span_warning("你感到自己的血液流入[H]体内！"))
+		user.visible_message(span_warning("一阵苍白骤然笼罩了[user]，[user.p_their()]灵火之血从毛孔中涌出，流入[H]体内！"), span_warning("你感到自己的血液流入[H]体内！"))
 		new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#487e97")
 		new /obj/effect/temp_visual/psyheal_rogue(get_turf(user), "#487e97")
 
 	if(!wounds_wept && !blood_wept)
-		to_chat(user, span_warning("There is no reason to purify [H]."))
+		to_chat(user, span_warning("[H]无需净化。"))
 		revert_cast()
 		return FALSE
 

@@ -324,19 +324,19 @@
 				BP.receive_damage(damage_per_target)
 
 				if(world.time > next_message)
-					C.visible_message(span_danger("[C]'s [BP.name] is cut by holy flames!"))
+					C.visible_message(span_danger("圣火切开了[C]的[BP.name]！"))
 					next_message = world.time + message_cooldown
 				target.update_damage_overlays()
 
 				// Dismember limb if damage exceeds max
 				if(BP.brute_dam >= BP.max_damage)
 					BP.dismember()
-					C.visible_message(span_danger("[C]'s [BP.name] is dismembered violently by cutting flames!"))
+					C.visible_message(span_danger("锋利的火焰猛烈地斩断了[C]的[BP.name]！"))
 		else
 			// Simple brute damage for non-carbons
 			target.adjustBruteLoss(damage_per_target * simple_mob_bonus)
 			if(world.time > next_message)
-				target.visible_message(span_danger("[target] is cut by holy flames!"))
+				target.visible_message(span_danger("圣火割伤了[target]！"))
 				next_message = world.time + message_cooldown
 
 	// Apply self-damage to caster
@@ -597,13 +597,13 @@
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/sacred_flame_rogue
-	name = "Fire Lance"
-	desc = "Deals damage and ignites target, Deals extra damage to undead."
+	name = "烈焰长枪"
+	desc = "造成伤害并点燃目标，对亡灵造成额外伤害。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "sacredflame"
 	sound = 'sound/magic/bless.ogg'
-	invocations = list("By fire, be cleansed!")//Not so sacred.
+	invocations = list("受烈火净化吧！")//Not so sacred.
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
@@ -614,7 +614,7 @@
 
 /obj/projectile/magic/astratablast
 	damage = 25
-	name = "lance of holy fire"
+	name = "圣火长枪"
 	nodamage = FALSE
 	damage_type = BURN
 	speed = 0.3
@@ -633,17 +633,17 @@
 	if(ismob(target))
 		var/mob/living/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			visible_message(span_warning("[src]触及[target]时消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
 		if(M.mob_biotypes & biotype_we_look_for || istype(M, /mob/living/simple_animal/hostile/rogue/skeleton))
 			damage *= fuck_that_guy_multiplier
 			M.adjust_fire_stacks(10)
-			visible_message(span_warning("[target] erupts in flame upon being struck by [src]!"))
+			visible_message(span_warning("[target]被[src]击中，浑身燃起火焰！"))
 			M.ignite_mob()
 		else
 			M.adjust_fire_stacks(4)
-			visible_message(span_warning("[src] ignites [target]!"))
+			visible_message(span_warning("[src]点燃了[target]！"))
 			M.ignite_mob()
 	return FALSE

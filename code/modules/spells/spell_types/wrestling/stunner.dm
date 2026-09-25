@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/invoked/stunner // 1st of the grapple spells, this one does 50 damage and throws the target a good distance.
-	name = "Stunner"
-	desc = "Requires an aggressive grab. After a brief wind up, drops your opponent in a stunner, knocking you both prone and leaving them dazed."
+	name = "碎颚摔"
+	desc = "需要强力抓取。短暂蓄势后，施展碎颚摔，使双方倒地，并令目标眩晕。"
 
 	recharge_time = 60 SECONDS
 	invocation_type = "emote"
@@ -13,18 +13,18 @@
 
 /obj/effect/proc_holder/spell/invoked/stunner/cast(list/targets, mob/living/user,)
 	if(targets[1] == user)
-		to_chat(user, span_notice("You can't wrestle yourself."))
+		to_chat(user, span_notice("你不能和自己摔跤。"))
 		revert_cast()
 		return FALSE
 
 	var/mob/living/carbon/human/target = targets[1]
 	if(!ishuman(target))
-		to_chat(user, span_warning("This spell only works on humans!"))
+		to_chat(user, span_warning("此招式只能对人形目标使用！"))
 		revert_cast()
 		return FALSE
 
 	if(user.pulling != target || user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You must have an aggressive grab on [target] to begin the wrestling!"))
+		to_chat(user, span_warning("你必须先强力抓住[target]，才能施展摔跤招式！"))
 		revert_cast()
 		return FALSE
 
@@ -34,8 +34,8 @@
 
 	var/channel_time = 1 SECONDS
 
-	to_chat(user, span_notice("You armlock [target]!"))
-	to_chat(target, span_userdanger("[user] armlocks your neck!"))
+	to_chat(user, span_notice("你用手臂锁住了[target]的脖子！"))
+	to_chat(target, span_userdanger("[user]用手臂锁住了你的脖子！"))
 	tracker.channeling_throw = TRUE
 	user.emote("attack")
 	
@@ -86,7 +86,7 @@
 	if(user.IsKnockdown()) // can't do it while on the floor.
 		tracker.channeling_throw = FALSE
 		user.stop_pulling(TRUE)
-		to_chat(user, span_notice("I'm interupted!"))
+		to_chat(user, span_notice("我的动作被打断了！"))
 		deltimer(drop_timer)
 		animate(user, pixel_x = original_user_pixel_x, pixel_y = original_user_pixel_y, pixel_z = original_user_pixel_z, time = 1 SECONDS) // reset animation
 		animate(target, pixel_z = original_target_pixel_z, time = 1 SECONDS) // reset animation
@@ -120,7 +120,7 @@
 		user.Knockdown(2 SECONDS)
 		target.safe_throw_at(throw_target, 2, 4, user, force = MOVE_FORCE_DEFAULT)
 		target.remove_status_effect(/datum/status_effect/buff/clash)
-		to_chat(user, span_notice("A reversal!"))
+		to_chat(user, span_notice("被反制了！"))
 		playsound(user, 'sound/combat/crowdcheer.ogg', 100, TRUE) // sick parry dude
 	
 	else
@@ -130,7 +130,7 @@
 		target.apply_status_effect(/datum/status_effect/debuff/dazed/stunner) // -2 con -2 int for 30 seconds
 		target.Knockdown(2 SECONDS)
 		user.Knockdown(2 SECONDS)
-		to_chat(user, span_notice("[user] drops [target] into a stunner!"))
+		to_chat(user, span_notice("[user]对[target]使出了碎颚摔！"))
 		playsound(user, 'sound/combat/tf2crit.ogg', 100, TRUE)
 		
 	// using spellblade melee thing for the damage and aimed zone.
