@@ -26,14 +26,14 @@
 /proc/rhythm_name(rhythm_type)
 	switch(rhythm_type)
 		if(RHYTHM_RESONATING)
-			return "Resonating"
+			return "共鸣"
 		if(RHYTHM_CONCUSSIVE)
-			return "Concussive"
+			return "冲击"
 		if(RHYTHM_REGENERATING)
-			return "Regenerating"
+			return "再生"
 		if(RHYTHM_MALAISE)
-			return "Malaise"
-	return "Unknown"
+			return "萎靡"
+	return "未知"
 
 /proc/bardic_get_frontal_turfs(mob/living/user)
 	var/list/turfs = list()
@@ -123,14 +123,14 @@
 
 /obj/effect/proc_holder/spell/self/rhythm/cast(list/targets, mob/living/carbon/human/user)
 	if(!user?.inspiration || user.inspiration.level < BARD_T2)
-		to_chat(user, span_warning("I do not know how to hold a battle rhythm."))
+		to_chat(user, span_warning("我不懂如何维持战斗韵律。"))
 		return FALSE
 	if(!has_instrument(user)) // T3 inspiration and above can use rhythm without a weapon in hand, but only if otherwise able to speak (mute, mouthgrab stops, etc)
 		if (user.inspiration.level == BARD_T2)
-			to_chat(user, span_warning("I need an instrument in hand to carry a rhythm!"))
+			to_chat(user, span_warning("我需要手持乐器才能维持韵律！"))
 			return FALSE
 		if (!user.can_speak_vocal())
-			to_chat(user, span_warning("I need to be able to sing to keep the rhythm!"))
+			to_chat(user, span_warning("我必须能唱出声才能维持韵律！"))
 			return FALSE
 	prime_rhythm(user)
 	return TRUE
@@ -160,8 +160,8 @@
 	bardic_clear_primed_rhythms(user, src)
 	primed = TRUE
 	user.add_filter(RHYTHM_FILTER, 2, list("type" = "outline", "color" = BARDIC_RHYTHM_COLOR, "alpha" = 100, "size" = 1))
-	to_chat(user, span_info("I attune my weapon to a [name] rhythm."))
-	user.visible_message(span_warning("[user]'s weapon resonates with a [name] rhythm."))
+	to_chat(user, span_info("我为武器注入了[name]。"))
+	user.visible_message(span_warning("[user]的武器与[name]一同共鸣。"))
 	RegisterSignal(user, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY, PROC_REF(on_melee_hit))
 	prime_timer_id = addtimer(CALLBACK(src, PROC_REF(rhythm_fizzle), user), RHYTHM_WINDOW, TIMER_STOPPABLE)
 
@@ -180,16 +180,16 @@
 		H.inspiration.rhythm_tracker.on_rhythm_proc(rhythm_type)
 		if(H.inspiration.level >= BARD_T3)
 			if(H.inspiration.rhythm_tracker.greater_stacks >= CRESCENDO_STACKS)
-				H.balloon_alert_to_viewers("Crescendo ready!")
+				H.balloon_alert_to_viewers("渐强已就绪！")
 			else
-				H.balloon_alert_to_viewers("Crescendo [H.inspiration.rhythm_tracker.greater_stacks]/[CRESCENDO_STACKS]")
+				H.balloon_alert_to_viewers("渐强 [H.inspiration.rhythm_tracker.greater_stacks]/[CRESCENDO_STACKS]")
 	return COMPONENT_ITEM_NO_DEFENSE
 
 /obj/effect/proc_holder/spell/self/rhythm/proc/rhythm_fizzle(mob/living/user)
 	if(!primed)
 		return
 	clear_prime(user, FALSE)
-	to_chat(user, span_warning("I failed to strike in time. My rhythm fades."))
+	to_chat(user, span_warning("我没能及时出手。韵律消散了。"))
 
 /obj/effect/proc_holder/spell/self/rhythm/Destroy()
 	if(primed && action?.owner)
@@ -219,7 +219,7 @@
 	var/armor_block = target.run_armor_check(def_zone, "slash", damage = RHYTHM_RESONATING_DAMAGE)
 	target.apply_damage(RHYTHM_RESONATING_DAMAGE, BRUTE, def_zone, armor_block)
 	new /obj/effect/temp_visual/kinetic_blast(get_turf(target))
-	target.visible_message(span_danger("韵律之力在[target]身上震荡！"), span_userdanger("Rhythmic force reverberates through my body!"))
+	target.visible_message(span_danger("韵律之力在[target]身上震荡！"), span_userdanger("韵律之力在我体内震荡！"))
 	playsound(target, 'sound/magic/blade_burst.ogg', 50, TRUE)
 
 /obj/effect/proc_holder/spell/self/rhythm/concussive
@@ -235,19 +235,19 @@
 		if(!push_dir)
 			push_dir = user.dir
 		target.safe_throw_at(get_ranged_target_turf(target, push_dir, 1), 1, 1, user, force = MOVE_FORCE_STRONG)
-	target.visible_message(span_danger("[user]'s strike repels [target] backward!"), span_userdanger("[user]'s strike repels me backward!"))
+	target.visible_message(span_danger("[user]的打击将[target]击退！"), span_userdanger("[user]的打击将我击退！"))
 	playsound(target, 'sound/magic/repulse.ogg', 50, TRUE)
 
 /obj/effect/proc_holder/spell/self/rhythm/regenerating
 	name = "再生韵律"
-	desc = "蓄力一次打击，每tick为你恢复0.5生命，持续10秒。"
+	desc = "蓄力一次打击，每次生效时为你恢复0.5点生命值，持续10秒。"
 	action_icon_state = "rhythm_regenerating"
 	rhythm_type = RHYTHM_REGENERATING
 
 /obj/effect/proc_holder/spell/self/rhythm/regenerating/apply_rhythm(mob/living/target, mob/living/user)
 	user.apply_status_effect(/datum/status_effect/buff/healing/rhythm_regen)
 	new /obj/effect/temp_visual/heal_rogue(get_turf(user))
-	to_chat(user, span_info("A soothing rhythm mends my wounds."))
+	to_chat(user, span_info("舒缓的韵律抚平了我的伤口。"))
 	playsound(user, 'sound/magic/heal.ogg', 40, TRUE)
 
 /obj/effect/proc_holder/spell/self/rhythm/malaise
@@ -258,7 +258,7 @@
 
 /obj/effect/proc_holder/spell/self/rhythm/malaise/apply_rhythm(mob/living/target, mob/living/user)
 	target.apply_status_effect(/datum/status_effect/debuff/bardic_malaise)
-	target.visible_message(span_danger("[target] staggers under a draining malaise!"), span_userdanger("A draining malaise makes my limbs heavy!"))
+	target.visible_message(span_danger("[target]因虚弱不适而踉跄！"), span_userdanger("虚弱与不适令我的四肢沉重无比！"))
 	playsound(target, 'sound/magic/debuffroll.ogg', 40, TRUE)
 
 /datum/status_effect/debuff/bardic_malaise
@@ -268,7 +268,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/bardic_malaise
 	name = "萎靡"
-	desc = "A cold, draining rhythm weighs down your limbs."
+	desc = "冰冷而耗人精力的韵律令你的四肢沉重无比。"
 	icon_state = "chilled"
 
 /datum/status_effect/debuff/bardic_malaise/on_apply()
@@ -320,21 +320,21 @@
 
 /obj/effect/proc_holder/spell/self/crescendo/cast(list/targets, mob/living/carbon/human/user)
 	if(!user?.inspiration || user.inspiration.level < BARD_T3)
-		to_chat(user, span_warning("I cannot build a crescendo yet."))
+		to_chat(user, span_warning("我还无法积蓄渐强之力。"))
 		return FALSE
 	if(!user.inspiration.rhythm_tracker)
 		user.inspiration.rhythm_tracker = new
 	user.inspiration.rhythm_tracker.check_decay()
 	if(user.inspiration.rhythm_tracker.greater_stacks < CRESCENDO_STACKS)
-		to_chat(user, span_warning("I haven't built enough rhythm yet! ([user.inspiration.rhythm_tracker.greater_stacks]/[CRESCENDO_STACKS])"))
+		to_chat(user, span_warning("我积累的韵律还不够！([user.inspiration.rhythm_tracker.greater_stacks]/[CRESCENDO_STACKS])"))
 		return FALSE
 	if(user.inspiration.rhythm_tracker.last_rhythm_type == RHYTHM_NONE)
 		return FALSE
 	primed = TRUE
 	user.add_filter(CRESCENDO_FILTER, 2, list("type" = "outline", "color" = BARDIC_RHYTHM_COLOR, "alpha" = 180, "size" = 2))
-	user.visible_message(span_warning("[user]'s weapon surges with building power!"))
-	to_chat(user, span_info("I channel my crescendo.. the moment is fleeting!"))
-	user.balloon_alert_to_viewers("Crescendo primed!")
+	user.visible_message(span_warning("[user]的武器涌动着不断积蓄的力量！"))
+	to_chat(user, span_info("我引导着渐强之力……机会转瞬即逝！"))
+	user.balloon_alert_to_viewers("渐强蓄势待发！")
 	RegisterSignal(user, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY, PROC_REF(on_melee_hit))
 	prime_timer_id = addtimer(CALLBACK(src, PROC_REF(crescendo_fizzle), user), RHYTHM_WINDOW, TIMER_STOPPABLE)
 	return TRUE
@@ -355,7 +355,7 @@
 	if(!istype(H) || !H.inspiration?.rhythm_tracker)
 		return
 	var/tname = rhythm_name(H.inspiration.rhythm_tracker.last_rhythm_type)
-	H.visible_message(span_danger("[H] unleashes a [tname] Crescendo!"))
+	H.visible_message(span_danger("[H]释放了[tname]渐强！"))
 	playsound(H, 'sound/magic/antimagic.ogg', 60, TRUE)
 	switch(H.inspiration.rhythm_tracker.last_rhythm_type)
 		if(RHYTHM_RESONATING)
@@ -397,7 +397,7 @@
 				continue
 			var/armor_block = L.run_armor_check(def_zone, "slash", damage = CRESCENDO_RESONATING_DAMAGE)
 			L.apply_damage(CRESCENDO_RESONATING_DAMAGE, BRUTE, def_zone, armor_block)
-			L.visible_message(span_danger("A wave of rhythmic force reverberates through [L]!"))
+			L.visible_message(span_danger("一股韵律之力在[L]体内震荡！"))
 
 /obj/effect/proc_holder/spell/self/crescendo/proc/crescendo_concussive(mob/living/carbon/human/user)
 	var/def_zone = user.zone_selected || BODY_ZONE_CHEST
@@ -413,7 +413,7 @@
 				if(!push_dir)
 					push_dir = user.dir
 				L.safe_throw_at(get_ranged_target_turf(L, push_dir, 3), 3, 2, user, force = MOVE_FORCE_STRONG)
-			L.visible_message(span_danger("[L] is repelled by the concussive blast!"))
+			L.visible_message(span_danger("[L]被冲击波击退！"))
 
 /obj/effect/proc_holder/spell/self/crescendo/proc/crescendo_regenerating(mob/living/carbon/human/user)
 	if(!user.inspiration)
@@ -425,7 +425,7 @@
 			continue
 		ally.apply_status_effect(/datum/status_effect/buff/healing/crescendo_mending)
 		new /obj/effect/temp_visual/heal_rogue(get_turf(ally))
-		to_chat(ally, span_info("A mending melody washes over me."))
+		to_chat(ally, span_info("治愈的旋律流遍我的全身。"))
 
 /obj/effect/proc_holder/spell/self/crescendo/proc/crescendo_malaise(mob/living/carbon/human/user)
 	for(var/turf/T in bardic_get_frontal_turfs(user))
@@ -434,7 +434,7 @@
 			if(L == user || L.stat == DEAD)
 				continue
 			L.apply_status_effect(/datum/status_effect/debuff/bardic_malaise)
-			L.visible_message(span_danger("[L] is overcome by a draining malaise!"))
+			L.visible_message(span_danger("[L]陷入了令人精疲力竭的不适之中！"))
 
 /datum/status_effect/buff/healing/crescendo_mending
 	id = "crescendo_mending"
