@@ -14,7 +14,7 @@
 		return TRUE
 	else
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
+		to_chat(user, span_warning("我必须先演奏，才能鼓舞听众！"))
 		return
 
 /datum/status_effect/buff/playing_melody/resolute_refrain
