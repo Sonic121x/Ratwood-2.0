@@ -86,7 +86,7 @@
 	inherent_spells = list(/obj/effect/proc_holder/spell/invoked/fire_obelisk_beam)
 
 /datum/intent/simple/slam
-	name = "slam"
+	name = "重击"
 	icon_state = "instrike"
 	attack_verb = list("重击", "冲撞")
 	animname = "blank22"
@@ -218,7 +218,7 @@
 
 /// Segments of the actual beam, these hurt if you stand in them
 /obj/effect/obeliskbeam
-	name = "abberant beam"
+	name = "畸变光束"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "obeliskbeam_mid"
 	layer = ABOVE_MOB_LAYER
