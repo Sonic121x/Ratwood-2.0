@@ -455,7 +455,7 @@
 					continue
 				valid_pubes[pube_accessory.name] = pubes_type
 
-			var/new_pubes = input(H, "Style your pubic hair", "Pube Styling") as null|anything in valid_pubes
+			var/new_pubes = input(H, "选择阴毛样式", "阴毛造型") as null|anything in valid_pubes
 			if(new_pubes)
 				var/obj/item/bodypart/chest = H.get_bodypart(BODY_ZONE_CHEST)
 				if(chest)
@@ -500,7 +500,7 @@
 					continue
 				valid_pits[pits_accessory.name] = pits_type
 
-			var/new_pits = input(H, "Style your armpit hair", "Pithair Styling") as null|anything in valid_pits
+			var/new_pits = input(H, "选择腋毛样式", "腋毛造型") as null|anything in valid_pits
 			if(new_pits)
 				var/obj/item/bodypart/chest = H.get_bodypart(BODY_ZONE_CHEST)
 				if(chest)

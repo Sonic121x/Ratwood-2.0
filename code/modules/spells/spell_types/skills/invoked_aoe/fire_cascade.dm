@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/fire_cascade
-	name = "Fire Cascade"
-	desc = "Heats the air around you."
+	name = "烈焰倾泻"
+	desc = "加热你周围的空气。"
 	overlay_state = "fireaura"
 	spell_tier = 3
 	cost = 6
@@ -14,7 +14,7 @@
 	no_early_release = TRUE
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
-	invocations = list("Ignis Cataracta.")
+	invocations = list("烈焰，倾泻。")
 	invocation_type = "whisper"
 	xp_gain = TRUE
 	associated_skill = /datum/skill/magic/arcane
