@@ -28,9 +28,9 @@
 		if(!(teacher in range(2, user)))
 			revert_cast()
 			return FALSE
-		to_chat(usr, span_notice("我请求[teacher]传授我[teacher.p_their()]的一项技能。"))
+		to_chat(usr, span_notice("我请求[teacher]传授我[teacher.p_their()]一项技能。"))
 		if(alert(teacher, "要把你的一项技能传授给[user]吗？", "教学", "是", "否") != "是")
-			to_chat(user, span_warning("[teacher]决定保留[teacher.p_their()]的知识，不向外传授。"))
+			to_chat(user, span_warning("[teacher]决定保留[teacher.p_their()]知识，不向外传授。"))
 			revert_cast()
 			return
 		to_chat(user, span_nicegreen("[teacher]决定教导你。靠近一些，等对方决定要传授什么......"))

@@ -36,13 +36,13 @@
 	var/web_type = /obj/structure/spider/stickyweb/thin
 	var/spin_time = 4 SECONDS
 	var/stamina_cost = 30
-	var/web_name = "thin web"
+	var/web_name = "薄蛛网"
 
 /obj/effect/proc_holder/spell/self/spin_web/cast(mob/living/user)
 	var/turf/web_turf = get_turf(user)
 	if(!isopenturf(web_turf))
 		return TRUE
-	user.visible_message(span_notice("[user] begins spinning a [web_name]."))
+	user.visible_message(span_notice("[user]开始织出一张[web_name]。"))
 	if(!do_after(user, spin_time, target = user, progress = TRUE))
 		revert_cast(user)
 		return FALSE
@@ -53,17 +53,17 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/spin_web/thin
-	name = "Spin Thin Web"
-	desc = "Spin a translucent web on your current location."
+	name = "织薄蛛网"
+	desc = "在你所在的位置织出一张半透明的蛛网。"
 	overlay_state = "webthin"
 	recharge_time = 15 SECONDS
 
 /obj/effect/proc_holder/spell/self/spin_web/dense
-	name = "Spin Dense Web"
-	desc = "Spin a thick, opaque web on your current location."
+	name = "织密蛛网"
+	desc = "在你所在的位置织出一张厚实、不透光的蛛网。"
 	overlay_state = "webdense"
 	recharge_time = 30 SECONDS
 	web_type = /obj/structure/spider/stickyweb/thick
 	spin_time = 8 SECONDS
 	stamina_cost = 60
-	web_name = "dense web"
+	web_name = "密蛛网"

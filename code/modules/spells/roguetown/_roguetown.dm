@@ -121,11 +121,11 @@
 	var/list/stats = ..(user)
 	// Remove the casting range line - not meaningful for projectile spells
 	for(var/i in stats)
-		if(findtext(i, "Range:"))
+		if(findtext(i, "射程："))
 			stats -= i
 			break
 	// Show the projectile's actual range
 	var/proj_range = initial(projectile_type.range)
 	if(proj_range)
-		stats.Insert(1, span_info("Projectile range: [proj_range] tiles"))
+		stats.Insert(1, span_info("飞射物射程：[proj_range]格"))
 	return stats

@@ -150,7 +150,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	/// Item conjured by this spell, unsummoned when a new one is conjured or the spell is lost.
 	var/obj/item/conjured_item
 	/// Fills in "The <item>'s borders begin to ...!" when the conjured item is unsummoned.
-	var/conjured_dispel_desc = "shimmer and fade, before it vanishes entirely"
+	var/conjured_dispel_desc = "闪烁、淡去，直至完全消失"
 	/// Outline colour for this spell's conjured item, null uses the component's own default.
 	var/conjured_item_glow
 	anchored = TRUE // Crap like fireball projectiles are proc_holders, this is needed so fireballs don't get blown back into your face via atmos etc.
@@ -285,19 +285,19 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(skill_level > 0)
 		var/skill_mod = chargetime * skill_level * CHARGE_REDUCTION_PER_SKILL
 		if(skill_mod > 0)
-			breakdown += span_smallgreen("  Skill: -[DisplayTimeText(skill_mod)]")
+			breakdown += span_smallgreen("  技能：-[DisplayTimeText(skill_mod)]")
 	var/obj/item/book/spellbook/sbook = user.is_holding_item_of_type(/obj/item/book/spellbook)
 	if(sbook && sbook?.open)
 		var/book_mod = chargetime * sbook.get_cdr()
 		if(book_mod > 0)
-			breakdown += span_smallgreen("  Spellbook: -[DisplayTimeText(book_mod)]")
+			breakdown += span_smallgreen("  法术书：-[DisplayTimeText(book_mod)]")
 	var/obj/item/rogueweapon/staff = user.is_holding_item_of_type(/obj/item/rogueweapon/)
 	if(staff && staff.cast_time_reduction)
 		var/staff_mod = chargetime * staff.cast_time_reduction
 		if(staff_mod > 0)
-			breakdown += span_smallgreen("  Staff: -[DisplayTimeText(staff_mod)]")
+			breakdown += span_smallgreen("  法杖：-[DisplayTimeText(staff_mod)]")
 	if(HAS_TRAIT(user, TRAIT_LEYLINE_HASTE))
-		breakdown += span_smallgreen("  <font color='#00e1ff'>Ley Lines (-25%)</font>")
+		breakdown += span_smallgreen("  <font color='#00e1ff'>地脉 (-25%)</font>")
 	return breakdown
 
 /obj/effect/proc_holder/spell/proc/get_cooldown_breakdown(mob/living/user)
@@ -305,11 +305,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(user.STAINT > SPELL_SCALING_THRESHOLD)
 		var/diff = min(user.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
 		var/int_mod = initial(recharge_time) * diff * COOLDOWN_REDUCTION_PER_INT
-		breakdown += span_smallgreen("  Intelligence: -[DisplayTimeText(int_mod)]")
+		breakdown += span_smallgreen("  智力：-[DisplayTimeText(int_mod)]")
 	else if(user.STAINT < SPELL_SCALING_THRESHOLD)
 		var/diffy = SPELL_SCALING_THRESHOLD - user.STAINT
 		var/int_mod = initial(recharge_time) * diffy * COOLDOWN_REDUCTION_PER_INT
-		breakdown += span_smallred("  Intelligence: +[DisplayTimeText(int_mod)]")
+		breakdown += span_smallred("  智力：+[DisplayTimeText(int_mod)]")
 	return breakdown
 
 /obj/effect/proc_holder/spell/proc/get_fatigue_breakdown(mob/living/user)
@@ -317,26 +317,26 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	var/skill_level = user.get_skill_level(associated_skill)
 	if(skill_level > 0)
 		var/skill_mod = releasedrain * skill_level * FATIGUE_REDUCTION_PER_SKILL
-		breakdown += span_smallgreen("  Skill: -[skill_mod]")
+		breakdown += span_smallgreen("  技能：-[skill_mod]")
 	if(user.STAINT > SPELL_SCALING_THRESHOLD)
 		var/diff = min(user.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
 		var/int_mod = releasedrain * diff * FATIGUE_REDUCTION_PER_INT
-		breakdown += span_smallgreen("  Intelligence: -[int_mod]")
+		breakdown += span_smallgreen("  智力：-[int_mod]")
 	else if(user.STAINT < SPELL_SCALING_THRESHOLD)
 		var/diffy = SPELL_SCALING_THRESHOLD - user.STAINT
 		var/int_mod = releasedrain * diffy * FATIGUE_REDUCTION_PER_INT
-		breakdown += span_smallred("  Intelligence: +[int_mod]")
+		breakdown += span_smallred("  智力：+[int_mod]")
 	if(!user.check_armor_skill())
-		breakdown += span_smallred("  Untrained armor: +[UNTRAINED_ARMOR_STAM_PENALTY]")
+		breakdown += span_smallred("  护甲训练不足：+[UNTRAINED_ARMOR_STAM_PENALTY]")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/ac = H.highest_ac_worn()
 		if(ac == ARMOR_CLASS_HEAVY)
 			var/armor_mod = releasedrain * HEAVY_ARMOR_STAM_PENALTY
-			breakdown += span_smallred("  Armor weight: +[armor_mod]")
+			breakdown += span_smallred("  护甲重量：+[armor_mod]")
 		else if(ac == ARMOR_CLASS_MEDIUM)
 			var/armor_mod = releasedrain * MEDIUM_ARMOR_STAM_PENALTY
-			breakdown += span_smallred("  Armor weight: +[armor_mod]")
+			breakdown += span_smallred("  护甲重量：+[armor_mod]")
 	return breakdown
 
 /obj/effect/proc_holder/spell/proc/calculate_cooldown(mob/living/user)
@@ -359,38 +359,38 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 /obj/effect/proc_holder/spell/proc/get_spell_statistics(mob/living/user)
 	var/list/stats = list()
 	if(range)
-		stats += span_info("Range: [range] tiles")
+		stats += span_info("射程：[range]格")
 	var/base_ct = chargetime
 	if(base_ct > 0)
 		var/dynamic_ct = user ? calculate_chargetime(user) : base_ct
 		if(dynamic_ct != base_ct)
-			stats += span_info("Charge time: [DisplayTimeText(base_ct)] (current: [DisplayTimeText(dynamic_ct)])")
+			stats += span_info("蓄力时间：[DisplayTimeText(base_ct)]（当前：[DisplayTimeText(dynamic_ct)]）")
 			if(user)
 				stats += get_chargetime_breakdown(user)
 		else
-			stats += span_info("Charge time: [DisplayTimeText(base_ct)]")
+			stats += span_info("蓄力时间：[DisplayTimeText(base_ct)]")
 	else
-		stats += span_info("Charge time: None")
+		stats += span_info("蓄力时间：无")
 	var/base_cd = initial(recharge_time)
 	if(base_cd)
 		var/dynamic_cd = user ? calculate_cooldown(user) : base_cd
 		if(dynamic_cd != base_cd)
-			stats += span_info("Cooldown: [DisplayTimeText(base_cd)] (current: [DisplayTimeText(dynamic_cd)])")
+			stats += span_info("冷却时间：[DisplayTimeText(base_cd)]（当前：[DisplayTimeText(dynamic_cd)]）")
 			if(user)
 				stats += get_cooldown_breakdown(user)
 		else
-			stats += span_info("Cooldown: [DisplayTimeText(base_cd)]")
+			stats += span_info("冷却时间：[DisplayTimeText(base_cd)]")
 	var/base_fd = releasedrain
 	if(base_fd > 0)
 		var/dynamic_fd = user ? calculate_fatigue_drain(user) : base_fd
 		if(dynamic_fd != base_fd)
-			stats += span_info("Stamina cost: [base_fd] (current: [dynamic_fd])")
+			stats += span_info("耐力消耗：[base_fd]（当前：[dynamic_fd]）")
 			if(user)
 				stats += get_fatigue_breakdown(user)
 		else
-			stats += span_info("Stamina cost: [base_fd]")
+			stats += span_info("耐力消耗：[base_fd]")
 	if(devotion_cost)
-		stats += span_info("Devotion cost: [devotion_cost]")
+		stats += span_info("虔诚消耗：[devotion_cost]")
 	return stats
 
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge, mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			if(isatom(antimagic))
 				to_chat(user, span_info("[antimagic]正在干扰我的魔法。"))
 			else
-				to_chat(user, span_warning("魔法似乎在逃离你，我无法聚集足够的力量施放这个法术。"))
+				to_chat(user, span_warning("魔法似乎在远离我，我无法聚集足够的力量施放这个法术。"))
 			return FALSE
 
 	if(!phase_allowed && istype(user.loc, /obj/effect/dummy))
@@ -590,7 +590,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 /obj/effect/proc_holder/spell/proc/dispel_conjured_item()
 	if(!conjured_item)
 		return
-	conjured_item.visible_message(span_warning("The [conjured_item]'s borders begin to [conjured_dispel_desc]!"))
+	conjured_item.visible_message(span_warning("[conjured_item]的轮廓开始[conjured_dispel_desc]！"))
 	qdel(conjured_item)
 	conjured_item = null
 
@@ -841,7 +841,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 				//Adds a safety check post-input to make sure those targets are actually in range.
 				var/mob/M
 				if(!random_target)
-					M = input("Choose the target for the spell.", "Targeting") as null|mob in sortNames(possible_targets)
+					M = input("选择法术目标。", "选择目标") as null|mob in sortNames(possible_targets)
 				else
 					switch(random_target_priority)
 						if(TARGET_RANDOM)

@@ -22,7 +22,7 @@ Given the nature of Psydon, two of these are INTENDED to be refluffed Tennite sp
 	associated_skill = /datum/skill/magic/holy
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/bloodheal.ogg'
-	invocations = list("*战吼")
+	invocations = list("*warcry")
 	invocation_type = "shout"
 	antimagic_allowed = TRUE
 	miracle = TRUE
@@ -166,7 +166,7 @@ Given the nature of Psydon, two of these are INTENDED to be refluffed Tennite sp
 	associated_skill = /datum/skill/magic/holy
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/woundheal_crunch.ogg'
-	invocations = list("*呜咽")
+	invocations = list("*whimper")
 	invocation_type = "shout"
 	antimagic_allowed = TRUE
 	miracle = TRUE
@@ -198,12 +198,12 @@ Given the nature of Psydon, two of these are INTENDED to be refluffed Tennite sp
 	associated_skill = /datum/skill/magic/holy
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/woundheal_crunch.ogg'
-	invocations = list("*狂怒")
+	invocations = list("*rage")
 	invocation_type = "shout"
 	antimagic_allowed = TRUE
 	miracle = TRUE
 	devotion_cost = 100
-	conjured_dispel_desc = "buckle and warp, before it disperses entirely"
+	conjured_dispel_desc = "弯曲、扭动，直至完全消散"
 
 /obj/effect/proc_holder/spell/self/psydonic_inviolability/cast(mob/living/carbon/human/user)
 	if(!isliving(user))
@@ -261,7 +261,7 @@ Given the nature of Psydon, two of these are INTENDED to be refluffed Tennite sp
 	associated_skill = /datum/skill/magic/holy
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/woundheal_crunch.ogg'
-	invocations = list("*尖啸")
+	invocations = list("*scream")
 	invocation_type = "shout"
 	antimagic_allowed = TRUE
 	miracle = TRUE
@@ -284,8 +284,8 @@ Given the nature of Psydon, two of these are INTENDED to be refluffed Tennite sp
 /*
 	var/obj/item/ammo_casing/caseless/rogue/heavy_bolt/holy/silver = user.get_active_held_item()
 	if(istype(silver)
-		target.visible_message(span_notice("[user] places a palm around the [silver], leaving it awash with crimson."), \
-			span_userdanger("The bolt is suffused with my own spark. It shall strike harder than before..."))
+		target.visible_message(span_notice("[user]用手掌包住[silver]，将其染得一片猩红。"), \
+			span_userdanger("弩矢浸透了我自身的火花。它的威力将更胜以往……"))
 		qdel(silver)
 		user.set_blood_volume(max(user.get_blood_volume()-300, 0))
 		user.handle_blood()

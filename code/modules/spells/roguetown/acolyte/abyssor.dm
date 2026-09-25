@@ -530,7 +530,7 @@
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/abyssal
-	name = "Abyssal strength"
+	name = "深渊之力"
 	desc = "我能感觉到一股不自然的力量盘踞在四肢之中。"
 	icon_state = "abyssal"
 

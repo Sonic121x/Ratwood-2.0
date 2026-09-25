@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/song/discordant_dirge
 	name = "不谐哀歌"
 	desc = "奏响一首不谐的哀歌，减缓敌人的速度。降低附近非听众目标的SPD。"
-	invocations = list("plays a grinding, dissonant melody. The air grows heavy and sluggish.")
+	invocations = list("奏起刺耳而不和谐的旋律。空气变得沉重而凝滞。")
 	invocation_type = "emote"
 	overlay_state = "dirge_t1_base"
 	action_icon_state = "dirge_t1_base"
@@ -17,7 +17,7 @@
 		return TRUE
 	else
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
+		to_chat(user, span_warning("我必须先演奏，才能鼓舞听众！"))
 		return
 
 /datum/status_effect/buff/playing_dirge/discordant_dirge
