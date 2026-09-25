@@ -292,7 +292,7 @@ export const SpellLibrary = () => {
                             flexGrow: 1,
                           }}
                         >
-                          {spell.desc || '典籍中没有相关说明.'}
+                          {spell.desc || '典籍中没有相关说明。'}
                         </div>
                       </div>
 
@@ -308,7 +308,7 @@ export const SpellLibrary = () => {
                           marginBottom: '8px',
                         }}
                       >
-                        {spell.charge_time ? <span>施法: {spell.charge_time}秒</span> : null}
+                        {spell.charge_time ? <span>蓄力: {spell.charge_time}秒</span> : null}
                         {spell.cooldown ? <span>冷却: {spell.cooldown}秒</span> : null}
                         {spell.fatigue ? <span>耐力: {spell.fatigue}</span> : null}
                         {spell.school && <span style={{ color: '#6882a8' }}>[{schools.find((school) => school.id === spell.school)?.label || spell.school}]</span>}
@@ -388,7 +388,7 @@ export const SpellLibrary = () => {
                               transition: 'all 0.1s ease-in-out',
                             }}
                           >
-                            编织 ({spell.cost} 点)
+                            学习 ({spell.cost} 点)
                           </div>
                         ) : (
                           <div
@@ -406,7 +406,7 @@ export const SpellLibrary = () => {
                               userSelect: 'none',
                             }}
                           >
-                            未解锁 ({spell.cost} 点)
+                            点数不足 (需要 {spell.cost} 点)
                           </div>
                         )}
                       </div>

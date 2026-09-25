@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/fleshcraft
-	name = "Fleshcraft"
-	desc = "Reshape flesh through divine craft."
+	name = "血肉塑形"
+	desc = "以神术重塑血肉。"
 	overlay_state = "fleshcraft"
 	overlay_icon = 'icons/mob/actions/pestramiracles.dmi'
 	action_icon = 'icons/mob/actions/pestramiracles.dmi'
@@ -14,7 +14,7 @@
 	movement_interrupt = FALSE
 	sound = 'sound/gore/flesh_eat_03.ogg'
 	spell_tier = 1
-	invocations = list("Flesh, remember the shape I give you...")
+	invocations = list("血肉啊，铭记我赐予你的形态……")
 	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/holy
 	devotion_cost = 25
@@ -31,11 +31,11 @@
 	var/mob/living/carbon/human/caster = user
 
 	if(!targets || !length(targets))
-		to_chat(caster, span_warning("You need to choose flesh to reshape."))
+		to_chat(caster, span_warning("你需要选择要重塑的血肉。"))
 		return FALSE
 
 	if(!ishuman(targets[1]))
-		to_chat(caster, span_warning("You need living human flesh to reshape."))
+		to_chat(caster, span_warning("你需要人形生物的活体血肉才能进行重塑。"))
 		return FALSE
 	
 	var/mob/living/carbon/human/target = targets[1]
@@ -45,7 +45,7 @@
 		return FALSE
 
 	if(get_dist(caster, target) > 1)
-		to_chat(caster, span_warning("They are too far away."))
+		to_chat(caster, span_warning("对方离得太远了。"))
 		return FALSE
 
 	return perform_fleshcraft_transform(target, caster)
@@ -61,41 +61,41 @@
 		return FALSE
 
 	if(get_dist(caster, target) > 1)
-		to_chat(caster, span_warning("They are too far away."))
+		to_chat(caster, span_warning("对方离得太远了。"))
 		return FALSE
 
 	var/list/choices = get_fleshcraft_transform_choices()
-	var/chosen = input(caster, "Change what?", "Fleshcraft") as null|anything in choices
+	var/chosen = input(caster, "要改变什么？", "血肉塑形") as null|anything in choices
 
 	if(!chosen)
-		to_chat(caster, span_warning("You stop shaping the flesh."))
+		to_chat(caster, span_warning("你停止了血肉塑形。"))
 		return FALSE
 
 	if(QDELETED(target) || QDELETED(caster))
 		return FALSE
 
 	if(get_dist(caster, target) > 1)
-		to_chat(caster, span_warning("They are too far away."))
+		to_chat(caster, span_warning("对方离得太远了。"))
 		return FALSE
 
 	if(target == caster)
-		caster.visible_message(span_notice("[caster]'s flesh begins to soften and shift."), span_notice("You begin reshaping your flesh..."))
+		caster.visible_message(span_notice("[caster]的血肉开始软化、移位。"), span_notice("你开始重塑自己的血肉……"))
 	else
-		caster.visible_message(span_notice("[caster] begins reshaping [target]'s flesh."), span_notice("You begin reshaping [target]'s flesh..."))
-		to_chat(target, span_notice("Your flesh begins to crawl beneath your skin..."))
+		caster.visible_message(span_notice("[caster]开始重塑[target]的血肉。"), span_notice("你开始重塑[target]的血肉……"))
+		to_chat(target, span_notice("你的血肉开始在皮肤下蠕动……"))
 
 	if(!do_after(caster, 10 SECONDS, target = target))
-		to_chat(caster, span_warning("Your fleshcraft is interrupted."))
+		to_chat(caster, span_warning("你的血肉塑形被打断了。"))
 		if(!QDELETED(target) && target != caster)
-			to_chat(target, span_warning("The fleshcraft fails."))
+			to_chat(target, span_warning("血肉塑形失败了。"))
 		return FALSE
 
 	if(QDELETED(target) || QDELETED(caster))
 		return FALSE
 
 	if(get_dist(caster, target) > 1)
-		to_chat(caster, span_warning("[target] moved too far away."))
-		to_chat(target, span_warning("The fleshcraft fails as you move too far away."))
+		to_chat(caster, span_warning("[target]走得太远了。"))
+		to_chat(target, span_warning("你走得太远，血肉塑形失败了。"))
 		return FALSE
 
 	return perform_fleshcraft_transform_choice(target, caster, chosen)
@@ -191,16 +191,16 @@
 			should_update = fleshcraft_change_eye_color(H, chooser)
 
 		if("skin color")
-			should_update = fleshcraft_change_simple_color_feature(H, chooser, "skin_tone", "Choose skin color", "Skin Color")
+			should_update = fleshcraft_change_simple_color_feature(H, chooser, "skin_tone", "选择肤色", "肤色")
 
 		if("mutant color")
-			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor", "Choose mutant color", "Mutant Color")
+			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor", "选择异种体色", "异种体色")
 
 		if("mutant color 2")
-			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor2", "Choose mutant color 2", "Mutant Color 2")
+			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor2", "选择第二异种体色", "第二异种体色")
 
 		if("mutant color 3")
-			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor3", "Choose mutant color 3", "Mutant Color 3")
+			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor3", "选择第三异种体色", "第三异种体色")
 
 		if("natural gradient")
 			should_update = fleshcraft_change_hair_gradient(H, chooser, TRUE)
@@ -215,127 +215,127 @@
 			should_update = fleshcraft_change_hair_gradient_color(H, chooser, FALSE)
 
 		if("accessory")
-			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/accessory, /datum/bodypart_feature/accessory, /datum/sprite_accessory/accessory, "Choose accessory", "Accessory Styling")
+			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/accessory, /datum/bodypart_feature/accessory, /datum/sprite_accessory/accessory, "选择装饰", "装饰造型")
 
 		if("face detail")
-			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/face_detail, /datum/bodypart_feature/face_detail, /datum/sprite_accessory/face_detail, "Choose face detail", "Face Detail")
+			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/face_detail, /datum/bodypart_feature/face_detail, /datum/sprite_accessory/face_detail, "选择面部细节", "面部细节")
 
 		if("crest")
-			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/crest, /datum/bodypart_feature/crest, /datum/sprite_accessory/crests, "Choose crest", "Crest Styling")
+			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/crest, /datum/bodypart_feature/crest, /datum/sprite_accessory/crests, "选择头冠", "头冠造型")
 
 		if("descriptors")
 			should_update = fleshcraft_change_descriptor(H, chooser)
 
 		if("horns")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_HORNS, /obj/item/organ/horns, /datum/sprite_accessory/horns, "Choose horns", "Horns Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_HORNS, /obj/item/organ/horns, /datum/sprite_accessory/horns, "选择角", "角部定制")
 
 		if("horn color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_HORNS, "Choose horn color", "Horn Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_HORNS, "选择角的颜色", "角的颜色", 1)
 
 		if("ears")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_EARS, /obj/item/organ/ears, /datum/sprite_accessory/ears, "Choose ears", "Ears Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_EARS, /obj/item/organ/ears, /datum/sprite_accessory/ears, "选择耳朵", "耳部定制")
 
 		if("ear color one")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_EARS, "Choose primary ear color", "Ear Color One", 1, "ears_color")
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_EARS, "选择耳朵主色", "耳朵主色", 1, "ears_color")
 
 		if("ear color two")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_EARS, "Choose secondary ear color", "Ear Color Two", 2, "ears_color2")
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_EARS, "选择耳朵副色", "耳朵副色", 2, "ears_color2")
 
 		if("tail")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TAIL, /obj/item/organ/tail/anthro, /datum/sprite_accessory/tail, "Choose tail", "Tail Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TAIL, /obj/item/organ/tail/anthro, /datum/sprite_accessory/tail, "选择尾巴", "尾部定制")
 
 		if("tail color one")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL, "Choose primary tail color", "Tail Color One", 1, "tail_color")
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL, "选择尾巴主色", "尾巴主色", 1, "tail_color")
 
 		if("tail color two")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL, "Choose secondary tail color", "Tail Color Two", 2, "tail_color2")
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL, "选择尾巴副色", "尾巴副色", 2, "tail_color2")
 
 		if("tail feature")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TAIL_FEATURE, /obj/item/organ/tail_feature, /datum/sprite_accessory/tail_feature, "Choose tail feature", "Tail Feature Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TAIL_FEATURE, /obj/item/organ/tail_feature, /datum/sprite_accessory/tail_feature, "选择尾部特征", "尾部特征定制")
 
 		if("tail feature color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL_FEATURE, "Choose tail feature color", "Tail Feature Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL_FEATURE, "选择尾部特征颜色", "尾部特征颜色", 1)
 
 		if("wings")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_WINGS, /obj/item/organ/wings, /datum/sprite_accessory/wings, "Choose wings", "Wings Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_WINGS, /obj/item/organ/wings, /datum/sprite_accessory/wings, "选择翅膀", "翅膀定制")
 
 		if("wing color one")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_WINGS, "Choose primary wing color", "Wing Color One", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_WINGS, "选择翅膀主色", "翅膀主色", 1)
 
 		if("wing color two")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_WINGS, "Choose secondary wing color", "Wing Color Two", 2)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_WINGS, "选择翅膀副色", "翅膀副色", 2)
 
 		if("frills")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_FRILLS, /obj/item/organ/frills, /datum/sprite_accessory/frills, "Choose frills", "Frills Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_FRILLS, /obj/item/organ/frills, /datum/sprite_accessory/frills, "选择颈褶", "颈褶定制")
 
 		if("frill color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_FRILLS, "Choose frill color", "Frill Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_FRILLS, "选择颈褶颜色", "颈褶颜色", 1)
 
 		if("antennas")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_ANTENNAS, /obj/item/organ/antennas, /datum/sprite_accessory/antenna, "Choose antennas", "Antennas Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_ANTENNAS, /obj/item/organ/antennas, /datum/sprite_accessory/antenna, "选择触角", "触角定制")
 
 		if("antenna color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_ANTENNAS, "Choose antenna color", "Antenna Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_ANTENNAS, "选择触角颜色", "触角颜色", 1)
 
 		if("snout")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_SNOUT, /obj/item/organ/snout, /datum/sprite_accessory/snout, "Choose snout", "Snout Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_SNOUT, /obj/item/organ/snout, /datum/sprite_accessory/snout, "选择口鼻", "口鼻定制")
 
 		if("snout color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_SNOUT, "Choose snout color", "Snout Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_SNOUT, "选择口鼻颜色", "口鼻颜色", 1)
 
 		if("head feature")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_HEAD_FEATURE, /obj/item/organ/head_feature, /datum/sprite_accessory/head_feature, "Choose head feature", "Head Feature Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_HEAD_FEATURE, /obj/item/organ/head_feature, /datum/sprite_accessory/head_feature, "选择头部特征", "头部特征定制")
 
 		if("head feature color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_HEAD_FEATURE, "Choose head feature color", "Head Feature Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_HEAD_FEATURE, "选择头部特征颜色", "头部特征颜色", 1)
 
 		if("neck feature")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_NECK_FEATURE, /obj/item/organ/neck_feature, /datum/sprite_accessory/neck_feature, "Choose neck feature", "Neck Feature Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_NECK_FEATURE, /obj/item/organ/neck_feature, /datum/sprite_accessory/neck_feature, "选择颈部特征", "颈部特征定制")
 
 		if("neck feature color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_NECK_FEATURE, "Choose neck feature color", "Neck Feature Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_NECK_FEATURE, "选择颈部特征颜色", "颈部特征颜色", 1)
 
 		if("back feature")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_BACK_FEATURE, /obj/item/organ/back_feature, /datum/sprite_accessory/back_feature, "Choose back feature", "Back Feature Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_BACK_FEATURE, /obj/item/organ/back_feature, /datum/sprite_accessory/back_feature, "选择背部特征", "背部特征定制")
 
 		if("back feature color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_BACK_FEATURE, "Choose back feature color", "Back Feature Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_BACK_FEATURE, "选择背部特征颜色", "背部特征颜色", 1)
 
 		if("penis")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_PENIS, /obj/item/organ/penis, /datum/sprite_accessory/penis, "Choose penis type", "Penis Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_PENIS, /obj/item/organ/penis, /datum/sprite_accessory/penis, "选择阴茎类型", "阴茎定制")
 
 		if("penis color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_PENIS, "Choose primary penis color", "Penis Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_PENIS, "选择阴茎主色", "阴茎主色", 1)
 
 		if("penis color 2")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_PENIS, "Choose secondary penis color", "Penis Color 2", 2)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_PENIS, "选择阴茎副色", "阴茎副色", 2)
 
 		if("penis size")
-			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_PENIS, "Choose penis size", "Penis Size", "penis_size", list("small" = 1, "average" = 2, "large" = 3))
+			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_PENIS, "选择阴茎大小", "阴茎大小", "penis_size", list("小" = 1, "中" = 2, "大" = 3))
 
 		if("testicles")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TESTICLES, /obj/item/organ/testicles, /datum/sprite_accessory/testicles, "Choose testicles type", "Testicles Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TESTICLES, /obj/item/organ/testicles, /datum/sprite_accessory/testicles, "选择睾丸类型", "睾丸定制")
 
 		if("testicles color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TESTICLES, "Choose testicles color", "Testicles Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TESTICLES, "选择睾丸颜色", "睾丸颜色", 1)
 
 		if("testicle size")
-			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_TESTICLES, "Choose testicle size", "Testicle Size", "ball_size", list("small" = 1, "average" = 2, "large" = 3))
+			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_TESTICLES, "选择睾丸大小", "睾丸大小", "ball_size", list("小" = 1, "中" = 2, "大" = 3))
 
 		if("breasts")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_BREASTS, /obj/item/organ/breasts, /datum/sprite_accessory/breasts, "Choose breast type", "Breast Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_BREASTS, /obj/item/organ/breasts, /datum/sprite_accessory/breasts, "选择乳房类型", "乳房定制")
 
 		if("breasts color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_BREASTS, "Choose breasts color", "Breasts Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_BREASTS, "选择乳房颜色", "乳房颜色", 1)
 
 		if("breast size")
-			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_BREASTS, "Choose breast size", "Breast Size", "breast_size", list("Flat" = 0, "Slight" = 1, "Small" = 2, "Moderate" = 3, "Large" = 4, "Generous" = 5, "Heavy" = 6, "Massive" = 7, "Heaping" = 8, "Obscene" = 9))
+			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_BREASTS, "选择乳房大小", "乳房大小", "breast_size", list("平坦" = 0, "微隆" = 1, "小巧" = 2, "适中" = 3, "丰满" = 4, "丰盈" = 5, "沉甸" = 6, "硕大" = 7, "庞大" = 8, "夸张" = 9))
 
 		if("vagina")
-			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_VAGINA, /obj/item/organ/vagina, /datum/sprite_accessory/vagina, "Choose vagina type", "Vagina Customization")
+			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_VAGINA, /obj/item/organ/vagina, /datum/sprite_accessory/vagina, "选择阴道类型", "阴道定制")
 
 		if("vagina color")
-			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_VAGINA, "Choose vagina color", "Vagina Color", 1)
+			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_VAGINA, "选择阴道颜色", "阴道颜色", 1)
 
 	if(should_update)
 		H.update_hair()
@@ -347,11 +347,11 @@
 
 /proc/fleshcraft_reset_appearance(mob/living/carbon/human/H, mob/living/carbon/human/chooser)
 	if(!H.client || !H.client.prefs)
-		to_chat(chooser, span_warning("They do not have character preferences saved."))
+		to_chat(chooser, span_warning("对方没有保存角色偏好设置。"))
 		return FALSE
 
-	var/confirm = alert(chooser, "Reset [H]'s appearance to match their character preferences? This will reapply physical features, colors, and descriptors but will not change name, skills, or abilities.", "Reset Appearance", "Yes", "No")
-	if(confirm != "Yes")
+	var/confirm = alert(chooser, "要将[H]的外貌重置为角色偏好设置中的样子吗？这会重新应用身体特征、颜色和外貌描述，但不会改变姓名、技能或能力。", "重置外貌", "是", "否")
+	if(confirm != "是")
 		return FALSE
 
 	if(!H.client || !H.client.prefs)
@@ -373,9 +373,9 @@
 	H.update_hair()
 	H.update_body_parts(TRUE)
 
-	to_chat(H, span_notice("Your flesh has been reset to match your character preferences."))
+	to_chat(H, span_notice("你的身体已重置为角色偏好设置中的样子。"))
 	if(H != chooser)
-		to_chat(chooser, span_notice("[H]'s appearance has been reset."))
+		to_chat(chooser, span_notice("[H]的外貌已重置。"))
 	return TRUE
 
 /proc/fleshcraft_change_head_hair(mob/living/carbon/human/H, mob/living/carbon/human/chooser)
@@ -385,7 +385,7 @@
 		var/datum/sprite_accessory/hair/head/hair = new hair_type()
 		valid_hairstyles[hair.name] = hair_type
 
-	var/new_style = input(chooser, "Choose hairstyle for [H]", "Hair Styling") as null|anything in valid_hairstyles
+	var/new_style = input(chooser, "为[H]选择发型", "发型设计") as null|anything in valid_hairstyles
 	if(!new_style)
 		return FALSE
 
@@ -422,7 +422,7 @@
 	return TRUE
 
 /proc/fleshcraft_change_head_hair_color(mob/living/carbon/human/H, mob/living/carbon/human/chooser)
-	var/new_hair_color = color_pick_sanitized(chooser, "Choose hair color for [H]", "Hair Color", H.hair_color)
+	var/new_hair_color = color_pick_sanitized(chooser, "为[H]选择发色", "发色", H.hair_color)
 	if(!new_hair_color)
 		return FALSE
 
@@ -465,7 +465,7 @@
 		var/datum/sprite_accessory/hair/facial/facial = new facial_type()
 		valid_facial_hairstyles[facial.name] = facial_type
 
-	var/new_style = input(chooser, "Choose facial hairstyle for [H]", "Hair Styling") as null|anything in valid_facial_hairstyles
+	var/new_style = input(chooser, "为[H]选择胡须样式", "胡须造型") as null|anything in valid_facial_hairstyles
 	if(!new_style)
 		return FALSE
 
@@ -494,7 +494,7 @@
 	return TRUE
 
 /proc/fleshcraft_change_facial_hair_color(mob/living/carbon/human/H, mob/living/carbon/human/chooser)
-	var/new_facial_hair_color = color_pick_sanitized(chooser, "Choose facial hair color for [H]", "Facial Hair Color", H.facial_hair_color)
+	var/new_facial_hair_color = color_pick_sanitized(chooser, "为[H]选择胡须颜色", "胡须颜色", H.facial_hair_color)
 	if(!new_facial_hair_color)
 		return FALSE
 
@@ -527,7 +527,7 @@
 	return TRUE
 
 /proc/fleshcraft_change_eye_color(mob/living/carbon/human/H, mob/living/carbon/human/chooser)
-	var/new_eye_color = color_pick_sanitized(chooser, "Choose eye color for [H]", "Eye Color", H.eye_color)
+	var/new_eye_color = color_pick_sanitized(chooser, "为[H]选择眼睛颜色", "眼睛颜色", H.eye_color)
 	if(!new_eye_color)
 		return FALSE
 
@@ -545,7 +545,7 @@
 
 /proc/fleshcraft_change_simple_color_feature(mob/living/carbon/human/H, mob/living/carbon/human/chooser, var_name, prompt, title)
 	var/current_color = H.vars[var_name]
-	var/new_color = color_pick_sanitized(chooser, "[prompt] for [H]", title, current_color)
+	var/new_color = color_pick_sanitized(chooser, "为[H][prompt]", title, current_color)
 	if(!new_color)
 		return FALSE
 
@@ -555,7 +555,7 @@
 
 /proc/fleshcraft_change_dna_color_feature(mob/living/carbon/human/H, mob/living/carbon/human/chooser, feature_key, prompt, title)
 	var/current_color = H.dna.features[feature_key] || "#FFFFFF"
-	var/new_color = color_pick_sanitized(chooser, "[prompt] for [H]", title, current_color)
+	var/new_color = color_pick_sanitized(chooser, "为[H][prompt]", title, current_color)
 	if(!new_color)
 		return FALSE
 
@@ -569,7 +569,7 @@
 	for(var/gradient_type in GLOB.hair_gradients)
 		valid_gradients[gradient_type] = gradient_type
 
-	var/new_style = input(chooser, "Choose [natural ? "natural" : "dye"] gradient for [H]", "Hair Gradient") as null|anything in valid_gradients
+	var/new_style = input(chooser, "为[H]选择[natural ? "天然" : "染色"]渐变", "头发渐变") as null|anything in valid_gradients
 	if(!new_style)
 		return FALSE
 
@@ -607,7 +607,7 @@
 	return TRUE
 
 /proc/fleshcraft_change_hair_gradient_color(mob/living/carbon/human/H, mob/living/carbon/human/chooser, natural = TRUE)
-	var/new_gradient_color = color_pick_sanitized(chooser, "Choose [natural ? "natural" : "dye"] gradient color for [H]", "[natural ? "Natural" : "Dye"] Gradient Color", H.hair_color)
+	var/new_gradient_color = color_pick_sanitized(chooser, "为[H]选择[natural ? "天然" : "染色"]渐变的颜色", "[natural ? "天然" : "染色"]渐变颜色", H.hair_color)
 	if(!new_gradient_color)
 		return FALSE
 
@@ -653,7 +653,7 @@
 		var/datum/sprite_accessory/A = new accessory_type()
 		valid_features[A.name] = accessory_type
 
-	var/new_style = input(chooser, "[prompt] for [H]", title) as null|anything in valid_features
+	var/new_style = input(chooser, "为[H][prompt]", title) as null|anything in valid_features
 	if(!new_style)
 		return FALSE
 
@@ -681,7 +681,7 @@
 		var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(choice_type)
 		descriptor_categories[choice.name] = choice_type
 
-	var/chosen_category = input(chooser, "Which descriptor category for [H]?", "Descriptor Category") as null|anything in descriptor_categories
+	var/chosen_category = input(chooser, "要修改[H]的哪类外貌描述？", "外貌描述类别") as null|anything in descriptor_categories
 	if(!chosen_category)
 		return FALSE
 
@@ -694,7 +694,7 @@
 		var/datum/mob_descriptor/desc = MOB_DESCRIPTOR(desc_type)
 		descriptor_options[desc.name] = desc_type
 
-	var/chosen_descriptor_name = input(chooser, "Choose [H]'s [chosen_category]", "[chosen_category] Selection") as null|anything in descriptor_options
+	var/chosen_descriptor_name = input(chooser, "选择[H]的[chosen_category]", "选择[chosen_category]") as null|anything in descriptor_options
 	if(!chosen_descriptor_name)
 		return FALSE
 
@@ -708,9 +708,9 @@
 				break
 
 	H.add_mob_descriptor(new_descriptor_type)
-	to_chat(H, span_notice("Your [chosen_category] has been changed to [chosen_descriptor_name]."))
+	to_chat(H, span_notice("你的[chosen_category]已变为[chosen_descriptor_name]。"))
 	if(H != chooser)
-		to_chat(chooser, span_notice("[H]'s [chosen_category] has been changed to [chosen_descriptor_name]."))
+		to_chat(chooser, span_notice("[H]的[chosen_category]已变为[chosen_descriptor_name]。"))
 	return TRUE
 
 /proc/fleshcraft_change_accessory_organ(mob/living/carbon/human/H, mob/living/carbon/human/chooser, organ_slot, organ_path, accessory_root, prompt, title)
@@ -719,7 +719,7 @@
 		var/datum/sprite_accessory/A = new accessory_path()
 		valid_types[A.name] = accessory_path
 
-	var/new_style = input(chooser, "[prompt] for [H]", title) as null|anything in valid_types
+	var/new_style = input(chooser, "为[H][prompt]", title) as null|anything in valid_types
 	if(!new_style)
 		return FALSE
 
@@ -745,7 +745,7 @@
 /proc/fleshcraft_change_organ_color(mob/living/carbon/human/H, mob/living/carbon/human/chooser, organ_slot, prompt, title, color_index = 1, dna_feature_key = null)
 	var/obj/item/organ/O = H.getorganslot(organ_slot)
 	if(!O)
-		to_chat(chooser, span_warning("[H] does not have that organ."))
+		to_chat(chooser, span_warning("[H]没有该器官。"))
 		return FALSE
 
 	var/list/current_colors = list()
@@ -756,7 +756,7 @@
 	while(length(current_colors) < color_index)
 		current_colors += fallback
 
-	var/new_color = color_pick_sanitized(chooser, "[prompt] for [H]", title, current_colors[color_index])
+	var/new_color = color_pick_sanitized(chooser, "为[H][prompt]", title, current_colors[color_index])
 	if(!new_color)
 		return FALSE
 
@@ -774,10 +774,10 @@
 /proc/fleshcraft_change_size(mob/living/carbon/human/H, mob/living/carbon/human/chooser, organ_slot, prompt, title, var_name, list/size_map)
 	var/obj/item/organ/O = H.getorganslot(organ_slot)
 	if(!O)
-		to_chat(chooser, span_warning("[H] does not have that organ."))
+		to_chat(chooser, span_warning("[H]没有该器官。"))
 		return FALSE
 
-	var/new_size = input(chooser, "[prompt] for [H]", title) as null|anything in size_map
+	var/new_size = input(chooser, "为[H][prompt]", title) as null|anything in size_map
 	if(!new_size)
 		return FALSE
 
