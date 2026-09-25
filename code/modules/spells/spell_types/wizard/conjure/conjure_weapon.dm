@@ -61,7 +61,7 @@
 	var/list/weapons = iron_weapons
 	if(user.STAINT >= 12)
 		weapons = steel_weapons
-	var/weapon_choice = input(user, "选择一件武器", "Conjure Weapon") as anything in weapons
+	var/weapon_choice = input(user, "选择一件武器", "召唤武器") as anything in weapons
 	if(!weapon_choice)
 		return
 	dispel_conjured_item()
