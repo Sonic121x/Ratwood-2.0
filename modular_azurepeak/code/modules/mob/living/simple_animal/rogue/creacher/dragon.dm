@@ -213,7 +213,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
 	health = DRAGON_BROODMOTHER_HEALTH
 	maxHealth = DRAGON_BROODMOTHER_HEALTH
-	name = "龙巢母"
+	name = "龙族育母"
 	ranged_cooldown_time = 20 SECONDS
 	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath
 	butcher_results = list(

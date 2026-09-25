@@ -73,13 +73,13 @@
 		/mob/living/simple_animal/pet/familiar/proc/fly_down)
 
 /mob/living/simple_animal/pet/familiar/proc/fly_up()
-	set category = "Flight"
-	set name = "Fly Up"
+	set category = "飞行"
+	set name = "向上飞"
 
 	if(src.pulledby != null)
 		to_chat(src, span_notice("我被抓住了，没法飞走！"))
 		return
-	src.visible_message(span_notice("[src]开始上升！"), span_notice("你起飞了……"))
+	src.visible_message(span_notice("[src]开始上升！"), span_notice("我开始向上飞……"))
 	if(do_after(src, flight_time))
 		if(src.pulledby == null)
 			src.zMove(UP, TRUE)
@@ -88,13 +88,13 @@
 			to_chat(src, span_notice("我被抓住了，没法飞走！"))
 
 /mob/living/simple_animal/pet/familiar/proc/fly_down()
-	set category = "Flight"
-	set name = "Fly Down"
+	set category = "飞行"
+	set name = "向下飞"
 
 	if(src.pulledby != null)
 		to_chat(src, span_notice("我被抓住了，没法飞走！"))
 		return
-	src.visible_message(span_notice("[src]开始下降！"), span_notice("你起飞了……"))
+	src.visible_message(span_notice("[src]开始下降！"), span_notice("我开始向下飞……"))
 	if(do_after(src, flight_time))
 		if(src.pulledby == null)
 			src.zMove(DOWN, TRUE)
@@ -148,7 +148,7 @@
 	STACON = 11
 	STASPD = 5
 	STALUC = 9
-	speak = list("Hrrrm.", "Grrup.", "Blorp.")
+	speak = list("呣。", "咕噜。", "噗噜。")
 	speak_emote = list("低沉地呱呱叫", "咕哝")
 	emote_hear = list("低沉地呱呱叫。", "发出咕噜咕噜的声音。")
 	emote_see = list("如石头般颤抖。", "在原地轻轻扑通。")
@@ -165,7 +165,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/familiar/settled_weight
 	name = "沉稳之重"
-	desc = "你感觉自己更沉稳了一些。推回去变得稍微容易了。"
+	desc = "你感觉自己更沉稳了一些。反推回去也更容易了。"
 
 
 /mob/living/simple_animal/pet/familiar/mist_lynx
@@ -204,7 +204,7 @@
 
 /mob/living/simple_animal/pet/familiar/rune_rat
 	name = "符文鼠"
-	desc = "这只老鼠抽动时会在空中留下消逝的符文。它的毛皮上粘着旧纸的气味。"
+	desc = "这只老鼠每次抽动，都会在空中留下转瞬即逝的符文。它的毛皮散发着旧纸的气味。"
 	animal_species = "符文鼠"
 	summoning_emote = "一丝微弱的火星在空气中舞动。一只尾巴微微发光的老鼠奔跳着出现了。"
 	icon_state = "runerat"
@@ -218,7 +218,7 @@
 	STACON = 7
 	STAWIL = 8
 	STASPD = 11
-	speak = list("Skrii!", "Tik-tik.", "Chrr.")
+	speak = list("吱——！", "叽叽。", "吱。")
 	speak_emote = list("吱吱叫", "叽喳")
 	emote_hear = list("若有所思地吱吱叫。", "嗅了嗅空气。")
 	emote_see = list("尾巴划出有规律的抽动。", "绕圈疾跑。")
@@ -232,7 +232,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/familiar/threaded_thoughts
 	name = "思绪交织"
-	desc = "你的思绪更容易凝聚在一起，像被拉成整齐编织的线。"
+	desc = "你的思绪更容易汇聚起来，如同丝线被整齐地编织在一起。"
 
 /mob/living/simple_animal/pet/familiar/vaporroot_wisp
 	name = "蒸气根精魄"
@@ -252,7 +252,7 @@
 	STACON = 11
 	STAWIL = 9
 	STASPD = 8
-	speak = list("Fffff...", "Whuuuh.")
+	speak = list("呼……", "呜——。")
 	speak_emote = list("低语", "呢喃")
 	emote_hear = list("轻柔地嗡鸣。", "散发出舒缓的雾气。")
 	emote_see = list("原地旋转。", "短暂地消散。")
@@ -284,7 +284,7 @@
 	STAWIL = 11
 	STASPD = 8
 	STALUC = 8
-	speak = list("Ssshh...", "Hhsss.", "Ffff.")
+	speak = list("嘶……", "嘶——。", "呼。")
 	speak_emote = list("嘶嘶作响", "粗声粗气")
 	emote_hear = list("微弱地嘶嘶作响。", "吐出一股灰烬。")
 	emote_see = list("缓慢地盘绕又松开。", "有节奏地移动重心。")
@@ -315,7 +315,7 @@
 	STASPD = 9
 	STALUC = 11
 	alpha = 150
-	speak = list("Tik!", "Tch!", "Hah!")
+	speak = list("叽！", "啾！", "哈！")
 	speak_emote = list("快速叽喳", "啁啾")
 	emote_hear = list("用脚敲着地面。", "洒落了些灰尘。")
 	emote_see = list("突然冲一下然后停下。", "微微震动。")
@@ -344,7 +344,7 @@
 	STAWIL = 9
 	STASPD = 9
 	STALUC = 11
-	speak = list("Hrrn.", "Mnnn.", "Chuff.")
+	speak = list("哼。", "呣——。", "呼哧。")
 	speak_emote = list("轻柔地鸣响", "呼唤")
 	emote_hear = list("发出悦耳的钟声。")
 	emote_see = list("如海市蜃楼般闪烁。", "刚好站在落尘触及不到的地方。")
@@ -356,7 +356,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/familiar/soft_favor
 	name = "温柔眷顾"
-	desc = "命运似乎向你倾斜。"
+	desc = "命运似乎对你有所眷顾。"
 
 /mob/living/simple_animal/pet/familiar/gravemoss_serpent
 	name = "墓苔巨蛇"
@@ -375,7 +375,7 @@
 	STAWIL = 11
 	STASPD = 6
 	STALUC = 8
-	speak = list("Grhh...", "Sssrrrh.", "Urrh.")
+	speak = list("咕……", "嘶——。", "呜。")
 	speak_emote = list("低沉嘶嘶", "咕哝")
 	emote_hear = list("从深处发出隆隆声。", "如穿根之风般嘶嘶作响。")
 	emote_see = list("半身沉入大地。", "沉稳注视。")
@@ -391,7 +391,7 @@
 
 /mob/living/simple_animal/pet/familiar/starfield_crow
 	name = "星域扎德"
-	desc = "它光泽的羽毛闪烁着流转的星座，即使在最暗的阴影中眼睛也闪烁着离奇的知觉。"
+	desc = "它光亮的羽毛上闪烁着流转的星座，即便身处最深的阴影，眼中也透着异样的灵性。"
 	summoning_emote = "空气裂开一道缝隙，显现出星空虚空的一角，一只羽毛如夜空般的利落扎德从中起飞。"
 	animal_species = "星域乌鸦"
 	icon_state = "crow_flying"
@@ -408,7 +408,7 @@
 	STACON = 6
 	STAWIL = 8
 	STALUC = 11
-	speak = list("Kraa.", "Caw.", "Krrrk.")
+	speak = list("嘎——。", "嘎。", "咔嘎。")
 	speak_emote = list("轻声啼叫", "呱呱叫")
 	emote_hear = list("发出通晓的啼叫。", "像星辰滴答般啁啾。")
 	emote_see = list("在星座间闪烁。", "歪了下头然后消失了一秒。")
@@ -440,7 +440,7 @@
 	STAWIL = 9
 	STASPD = 8
 	STALUC = 8
-	speak = list("Ffff.", "Rrrhh.", "Chhhh.")
+	speak = list("呼。", "吼——。", "嘶——。")
 	speak_emote = list("噼啪作响", "温声细语")
 	emote_hear = list("如壁炉般隆隆作响。", "火焰般闪烁。")
 	emote_see = list("亮度短暂一涨。", "留下一片短暂的热浪。")
@@ -469,7 +469,7 @@
 	STAWIL = 9
 	STASPD = 11
 	STALUC = 11
-	speak = list("Yip!", "Hrrnk.", "Tchk-tchk.")
+	speak = list("嗷！", "哼。", "啾啾。")
 	speak_emote = list("快速低语", "语速很快")
 	emote_hear = list("发出欢快的叫声。", "笑声如流水般。")
 	emote_see = list("如水波般模糊。", "已经不在刚才的位置了。")
@@ -500,7 +500,7 @@
 	STAWIL = 8
 	STASPD = 11
 	STALUC = 9
-	speak = list("Tchhh.", "Hmm.", "Skkk.")
+	speak = list("叽——。", "嗯。", "嘶。")
 	speak_emote = list("低语", "轻声说话")
 	emote_hear = list("朝你方向低语。", "发出一种你立刻忘记的声音。")
 	emote_see = list("缠绕着一道影子。", "溜进了一个念头背后。")
@@ -530,7 +530,7 @@
 	STACON = 11
 	STAWIL = 12
 	STALUC = 8
-	speak = list("Hrmm.", "Grunk.", "Mmm.")
+	speak = list("哼。", "咕噜。", "呣。")
 	speak_emote = list("隆隆作响", "缓缓而语")
 	emote_hear = list("如巨石挪动般哼鸣。", "如古旧木头般叹息。")
 	emote_see = list("微微缩进壳里。", "缓慢眨眼。")
@@ -542,4 +542,4 @@
 
 /atom/movable/screen/alert/status_effect/buff/familiar/worn_stone
 	name = "磨蚀之石"
-	desc = "没什么觉得是紧迫的。你可以慢慢来……并且挨得住一击。"
+	desc = "一切似乎都不再紧迫。你可以从容应对……也经得起一击。"
