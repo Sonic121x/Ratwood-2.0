@@ -1,11 +1,11 @@
 #define CTAG_EA_MERCHANT "ea_merchant"
 #define CTAG_EA_GUARD "ea_guard"
 /datum/migrant_role/ea_hasir/merchant
-	name = "EA Hasir黄金商人"
+	name = "艾亚-哈希尔黄金商人"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	advclass_cat_rolls = list(CTAG_EA_MERCHANT = 20)
-	greet_text = "备受尊崇的 EA-Hasir 掌管着你的黄金商会，只承诺提供格里莫里亚中最上乘的黄金。\
+	greet_text = "备受尊崇的艾亚-哈希尔掌管着你的黄金商会，承诺只提供格里莫里亚最上乘的黄金。\
 	你奉命随商队前来贩售金色的财富与奇珍异宝，并开出高昂的价码。"
 
 /datum/advclass/merchantEA
@@ -63,17 +63,17 @@
 	new /obj/structure/handcart/ea_hasir(src)
 
 /datum/migrant_role/ea_hasir/guard
-	name = "EA Hasir护卫"
+	name = "艾亚-哈希尔护卫"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	advclass_cat_rolls = list(CTAG_EA_GUARD = 20)
-	greet_text = "备受尊崇的 EA Hasir 掌管着你的黄金商会，只承诺提供格里莫里亚中最上乘的黄金。\
+	greet_text = "备受尊崇的艾亚-哈希尔掌管着你的黄金商会，承诺只提供格里莫里亚最上乘的黄金。\
 	你被派来护送他的商队，并在履职之余赚上一笔可观收入。"
 
 /datum/advclass/guard
-	name = "EA Hasir护卫"
+	name = "艾亚-哈希尔护卫"
 	tutorial = "你是一名商队护卫，早已习惯应付寻常盗贼和偶发的土匪袭击。\
-	EA-Hasir 是个可靠的雇主，而你这次护送的是位身价不菲的商人。\
+	艾亚-哈希尔是个可靠的雇主，而你这次护送的是位身价不菲的商人。\
 	让他们活下来，你也许就能领到足够的钱，好好歇上一阵子。"
 	outfit = /datum/outfit/job/roguetown/ea_guard
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_BREADY, TRAIT_STEELHEARTED, TRAIT_OUTLANDER)

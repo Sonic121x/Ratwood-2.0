@@ -13,4 +13,4 @@
 		/datum/migrant_role/otavan/preacher = 1,
 	)
 	min_optional_fills = 0
-	greet_text = "你是奥塔万外交使团的一员：一支小规模随从，外加一位普赛顿传教士，随时准备代表你的祖国。"
+	greet_text = "你是奥塔万外交使团的一员：一支由少数随员和一位普赛顿传教士组成的队伍，随时准备代表祖国出使。"
