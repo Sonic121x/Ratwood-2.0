@@ -2,8 +2,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf
 	icon = 'icons/roguetown/mob/monster/vol.dmi'
-	name = "volf"
-	desc = "A snarling beast of mangy fur and yellowed teeth. Volves are known to attack hapless travelers in the deep forests when prey is scarce."
+	name = "沃尔夫"
+	desc = "一头低吼着的野兽，皮毛疥癣斑驳，牙齿泛黄。猎物稀少时，沃尔夫会在密林中袭击倒霉的旅人。"
 	icon_state = "vv"
 	icon_living = "vv"
 	icon_dead = "vvd"
@@ -75,8 +75,8 @@
 	melee_cooldown = WOLF_ATTACK_SPEED
 
 /obj/effect/decal/remains/wolf
-	name = "remains"
-	desc = "Whether by starvation, disease, inter-pack conflict, or an unlucky kick from a saiga, this volf has died."
+	name = "遗骸"
+	desc = "无论是饥饿、疾病、狼群间的争斗，还是倒霉地挨了赛加羚羊一脚，这头沃尔夫已经死了。"
 	gender = PLURAL
 	icon_state = "bones"
 	icon = 'icons/roguetown/mob/monster/vol.dmi'
