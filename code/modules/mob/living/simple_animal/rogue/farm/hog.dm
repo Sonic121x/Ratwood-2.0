@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/swine
 	icon = 'modular/Creechers/icons/piggie.dmi'
-	name = "swine sow"
-	desc = "A domesticated hog, won't be finding you any truffles."
+	name = "母猪"
+	desc = "一头家猪，可不会帮你找松露。"
 	icon_state = "piggie_f"
 	icon_living = "piggie_f"
 	icon_dead = "piggie_dead"
 	icon_gib = "piggie_dead"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("eyes the surroundings.", "flicks its ears.")
+	emote_see = list("打量着四周。", "抖了抖耳朵。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -46,8 +46,8 @@
 	pooptype = /obj/item/natural/poo/horse
 	faction = list("pigs")
 	base_intents = list(/datum/intent/simple/headbutt/saiga)
-	attack_verb_simple = "ram"
-	attack_verb_continuous = "rams"
+	attack_verb_simple = "冲撞"
+	attack_verb_continuous = "冲撞"
 	melee_damage_lower = 15
 	melee_damage_upper = 40 //Ever been rammed by a boar? Exactly.
 	STACON = 15
@@ -71,7 +71,7 @@
 			return pick('modular/Creechers/sound/pig1.ogg','modular/Creechers/sound/pig2.ogg',)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/piglet
-	name = "piglet"
+	name = "猪崽"
 	desc = ""
 	icon_state = "piggie_piglin"
 	icon_living = "piggie_piglin"
@@ -135,15 +135,15 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/hog
 	icon = 'modular/Creechers/icons/piggie.dmi'
-	name = "swine hog"
-	desc = "A domesticated hog, won't be finding you any truffles. This one can even be saddled."
+	name = "公猪"
+	desc = "一头家猪，可不会帮你找松露。这头甚至能装上鞍具。"
 	icon_state = "piggie_m"
 	icon_living = "piggie_m"
 	icon_dead = "piggie_dead"
 	icon_gib = "piggie_dead"
 	gender = MALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("eyes the surroundings.", "flicks its ears.")
+	emote_see = list("打量着四周。", "抖了抖耳朵。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -173,8 +173,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_same = 0
 	base_intents = list(/datum/intent/simple/headbutt/saiga)
-	attack_verb_simple = "ram"
-	attack_verb_continuous = "rams"
+	attack_verb_simple = "冲撞"
+	attack_verb_continuous = "冲撞"
 	health = 250
 	maxHealth = 250
 	melee_damage_lower = 35
@@ -236,7 +236,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/piglet
-	name = "piglet"
+	name = "猪崽"
 	desc = ""
 	gender = MALE
 	icon_state = "piggie_piglin"
