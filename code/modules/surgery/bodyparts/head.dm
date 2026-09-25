@@ -133,13 +133,13 @@
 	for(var/obj/item/I in src)
 		if(I == brain)
 			if(user)
-				user.visible_message(span_warning("[user] saws [src] open and pulls out a brain!"), span_notice("I saw [src] open and pull out a brain."))
+				user.visible_message(span_warning("[user]锯开[src]，取出了大脑！"), span_notice("我锯开[src]，取出了大脑。"))
 			if(brainmob)
 				brainmob.forceMove(brain)
 				brain.brainmob = brainmob
 				brainmob = null
 			if(violent_removal && prob(rand(80, 100))) //ghetto surgery can damage the brain.
-				to_chat(user, span_warning("[brain] was damaged in the process!"))
+				to_chat(user, span_warning("[brain]在过程中受损了！"))
 				brain.setOrganDamage(brain.maxHealth)
 			brain.forceMove(T)
 			brain = null
@@ -249,5 +249,5 @@
 				eyes_overlay.color = "#" + eyes.eye_color
 
 /obj/item/bodypart/head/MiddleClick(mob/living/user, params)
-	to_chat(user, span_notice("You contemplate carving what little scraps of meat you can from \the [src], but then think better of it. Probably worth something to someone, somewhere..."))
+	to_chat(user, span_notice("我想从[src]上剔下仅剩的一点肉，但转念打消了这个念头。也许在某个地方，会有人愿意出价买下它……"))
 	return
