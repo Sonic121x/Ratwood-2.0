@@ -242,7 +242,7 @@
 			return
 		turf_below = get_step_multiz(carbon_flyer, DOWN)
 		if(!carbon_flyer.canZMove(DOWN, turf_below))
-			to_chat(carbon_flyer, span_red("I can't fly down there!!"))
+			to_chat(carbon_flyer, span_red("我不能飞到那下面去！！"))
 			return
 		if(QDELETED(pulling) || carbon_flyer.pulling != pulling)
 			pulling = null

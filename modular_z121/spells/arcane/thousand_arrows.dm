@@ -67,7 +67,7 @@
 
 /obj/effect/proc_holder/spell/invoked/thousand_arrows/get_spell_statistics(mob/living/user)
 	var/list/stats = ..()
-	stats -= span_info("Charge time: None")
+	stats -= span_info("蓄力时间：无")
 	stats += span_info("点选后引导：2秒（固定）")
 	if(user)
 		stats += span_info("最多驾驭武器：[clamp(user.get_skill_level(associated_skill), 0, 6)]把")

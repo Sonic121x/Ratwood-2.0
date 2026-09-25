@@ -86,12 +86,12 @@
 		AddSpell(new /obj/effect/proc_holder/spell/self/dragontalons)
 		faction += "dragons"
 		if(src.client?.prefs?.wildshape_name)
-			real_name = "dragon ([stored_mob.real_name])"
+			real_name = "巨龙 ([stored_mob.real_name])"
 		else
-			real_name = "dragon"
+			real_name = "巨龙"
 
 /datum/species/shapedragon
-	name = "dragon"
+	name = "巨龙"
 	id = "shapedragon"
 	// Keep the unlocked wildshape out of ordinary random species changes.
 	changesource_flags = MIRROR_BADMIN
@@ -185,7 +185,7 @@
 	penfactor = 20
 	dodgeable_intent = TRUE
 	parriable_intent = TRUE
-	miss_text = "slashes the air!"
+	miss_text = "划破空气！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"
 

@@ -154,9 +154,9 @@
 		message_range += (5 + buff.potency) // 最多额外增加 12 格传播范围。
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if (prob(buff.potency * 3) && S.speaking) // 每个正在发声的 SCOM 按强度每级 3% 的概率转播喊话，不受施法者位置限制。
-				S.verb_say = "shrieks in terror"
-				S.verb_exclaim = "shrieks in terror"
-				S.verb_yell = "shrieks in terror"
+				S.verb_say = "惊恐地尖叫"
+				S.verb_exclaim = "惊恐地尖叫"
+				S.verb_yell = "惊恐地尖叫"
 				S.say(message, spans = list("info", "reallybig"))
 				S.verb_say = initial(S.verb_say)
 				S.verb_exclaim = initial(S.verb_exclaim)
@@ -357,7 +357,7 @@
 	// 复刻核心 head/examine（head.dm，即当前生效的核心版本）的悬赏售卖提示：
 	// 本覆盖取代了核心同名过程，若不补回，所有头颅都会丢失这条提示。
 	if(sellprice && !no_head_bounty)
-		. += span_notice("This head seems to be wanted by the Judiciary of The Realm. It can be sold at the merchant or a HEADEATER.")
+		. += span_notice("这颗头颅似乎属于王国司法机关通缉的对象，可以卖给商人或食颅者。")
 	if(harmless_live_head && harmless_live_owner)
 		. += span_notice("这颗头还活着。它的眼神并未熄灭，仿佛正隔着自己的眼窝向外张望。")
 		if(harmless_live_owner.client?.eye == src)
@@ -432,12 +432,12 @@
 	if(length(contents) && I.get_sharpness() && !user.cmode)
 		add_fingerprint(user)
 		playsound(loc, 'sound/combat/hits/bladed/genstab (1).ogg', 60, vary = FALSE)
-		user.visible_message(span_warning("[user] begins to cut open [src]."),\
-			span_notice("You begin to cut open [src]..."))
+		user.visible_message(span_warning("[user]开始剖开[src]。"),\
+			span_notice("你开始剖开[src]……"))
 		if(do_after(user, 5 SECONDS, target = src))
 			drop_organs(user)
-			user.visible_message(span_danger("[user] cuts [src] open!"),\
-				span_notice("You finish cutting [src] open."))
+			user.visible_message(span_danger("[user]剖开了[src]！"),\
+				span_notice("你剖开了[src]。"))
 		return
 	return ..()
 
