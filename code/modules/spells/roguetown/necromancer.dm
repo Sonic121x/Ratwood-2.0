@@ -148,8 +148,8 @@
 
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_formation
-	name = "Raise Lesser Undead Formation"
-	desc = "Raises a formation of simple minded undead skeletons. Inferior shamblers. Husks in everything but zeal."
+	name = "唤起低等亡灵阵列"
+	desc = "唤起一队心智简单的骷髅亡灵。它们步履蹒跚、低劣不堪，除却狂热便只剩空壳。"
 	clothes_req = FALSE
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
@@ -175,7 +175,7 @@
 
 	var/turf/T = get_turf(targets[1])
 	if(!isopenturf(T))
-		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+		to_chat(user, span_warning("目标位置被阻挡。我的召唤物无法现身。"))
 		return FALSE
 
 
@@ -221,9 +221,9 @@
 
 
 /obj/effect/proc_holder/spell/invoked/tame_undead
-	name = "Tame Deadite"
-	desc = "Oftentymes, husks and shamblers walk aimlessly - uncertain of their future. Befriends the undead \
-	Requires the target to be within four tiles. Works on undead animals, too, and they will heed your command."
+	name = "驯服亡灵"
+	desc = "行尸与空壳常常漫无目的地游荡，不知前路何在。与亡灵建立友谊。\
+	目标必须在四格之内。对亡灵动物同样有效，它们也会听从你的命令。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "deadite_tame"
@@ -318,10 +318,10 @@
 		else if(istype(target, /mob/living/simple_animal))
 			if (faction_tag in target.faction)
 				target.faction -= faction_tag
-				user.say("Hostis declaratus es.")
+				user.say("我已宣你为敌。")
 			else
 				target.faction |= faction_tag
-				user.say("Amicus declaratus es.")
+				user.say("我已宣你为友。")
 				target.notify_faction_change()
 		return TRUE
 	return FALSE
