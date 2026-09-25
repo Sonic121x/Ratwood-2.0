@@ -19,8 +19,6 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	. = ..()
 	// 接入所有玩家的账号提示存档、角色登录与检视信号。
 	register_z121_ooc_examine()
-	// 自定义更新日志按客户端连接展示，角色切换不会重复弹出。
-	register_z121_changelog()
 	if(!islist(GLOB.learnable_spells))
 		GLOB.learnable_spells = list()
 	if(GLOB.custom_learnable_spells?.len)

@@ -2,10 +2,10 @@
 #define TRAIT_MARTINS_MORNING "平行存在"
 
 /datum/virtue/utility/martins_morning
-	name = "平行存在（-23）"
+	name = "平行存在（-12）"
 	desc = "每天清晨，你沉睡片刻，再次醒来时，自己的职业已悄然改变。"
 	custom_text = "仅限能够睡眠的角色。每天清晨沉睡30秒后更换合法的镇民或朝圣者职业及正式岗位。只回收有记录的职业能力和随身职业物品；私人财物落地，非职业能力与独立成长保留。来源不明的历史内容保留并提示。"
-	triumph_cost = 23
+	triumph_cost = 12
 
 /datum/virtue/utility/martins_morning/check_triumphs(mob/living/carbon/human/recipient)
 	// 在扣费之前检查资格与重复授予，不能依靠退款补救。

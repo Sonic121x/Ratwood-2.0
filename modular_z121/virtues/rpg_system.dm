@@ -114,6 +114,8 @@
 #define RPG_SYSTEM_TRAIT_STRONG_COST 10000
 #define RPG_SYSTEM_TRAIT_OVERPOWERED_COST 99999
 #define RPG_SYSTEM_SPELL_POINT_COST 3000
+// 单次材料兑换上限，界面提示和服务端校验共用。
+#define RPG_SYSTEM_MATERIAL_MAX_QUANTITY 50
 // 通过本系统购买特性时使用的 ADD_TRAIT 来源标签：统一、可识别，便于将来需要时统一清理；
 //   不复用 TRAIT_VIRTUE / TRAIT_GENERIC 等其它来源，避免与别处授予的同名特性互相干扰。
 #define RPG_SYSTEM_TRAIT_SOURCE "rpg_system_purchase"
@@ -521,6 +523,7 @@
 					"description" = html_decode(GLOB.html_tags.Replace(initial(item_type.desc), "")),
 					"cost" = entry[1],
 					"action" = "buy_item",
+					"max_quantity" = current_tab == "material" ? RPG_SYSTEM_MATERIAL_MAX_QUANTITY : 1,
 				))
 			if(current_tab == "magic")
 				rows.Insert(1, list(list(
@@ -563,7 +566,7 @@
 	purchase_busy = TRUE
 	switch(action)
 		if("buy_item")
-			do_buy_item(usr, current_tab, index)
+			do_buy_item(usr, current_tab, index, ("quantity" in params) ? params["quantity"] : 1)
 		if("buy_trait")
 			if(current_tab == "trait")
 				do_buy_trait(usr, index)
@@ -590,292 +593,366 @@
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
 
+// 输入目录始终保留基准单价；每次生成新目录，避免刷新界面时重复涨价。
+/proc/z121_rpg_price_catalog(list/base_catalog, multiplier, list/fixed_types)
+	var/list/catalog = list()
+	for(var/display in base_catalog)
+		var/list/entry = base_catalog[display]
+		var/cost = (entry[2] in fixed_types) ? entry[1] : CEILING(entry[1] * multiplier, 1)
+		catalog["[display]（[cost]积分）"] = list(cost, entry[2])
+	return catalog
+
+// 按保证产量分摊最终原料成本，再加两成加工费；不折算概率副产物。
+/proc/z121_rpg_processed_material_cost(ingredient_cost, output_count = 1)
+	return CEILING(ingredient_cost * 6 / (output_count * 5), 1)
+
 /datum/component/rpg_system/proc/get_weapon_catalog()
 	return z121_rpg_weapon_catalog()
 
 // 纯商品目录供管理员面板复用，不创建积分组件或任务监听。
 /proc/z121_rpg_weapon_catalog()
-	return list(
-		"狩猎刀（40积分）" = list(40, /obj/item/rogueweapon/huntingknife),                    // 轻便短刀，便宜的入门武器
-		"铁剑（80积分）"   = list(80, /obj/item/rogueweapon/sword/iron),                      // 入门级单手剑
-		"长矛（110积分）"  = list(110, /obj/item/rogueweapon/spear),                          // 长柄武器，攻击距离更远
-		"长剑（140积分）"  = list(140, /obj/item/rogueweapon/sword/long),                     // 更长、伤害更高的剑
-		"钢锤（160积分）"  = list(160, /obj/item/rogueweapon/mace/steel),                     // 钝击武器，破甲见长
-		"战斧（180积分）"  = list(180, /obj/item/rogueweapon/stoneaxe/battle),                // 重型斧，高伤害
-		"三叉戟（210积分）"= list(210, /obj/item/rogueweapon/spear/trident),                  // 高级长柄武器
-		"弩（240积分）"    = list(240, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow), // 远程武器（需自备弩矢）
-		"投石索（90积分）"= list(90, /obj/item/gun/ballistic/revolver/grenadelauncher/sling),      // 廉价远程武器（需自备弹丸）
-		"弓（200积分）"   = list(200, /obj/item/gun/ballistic/revolver/grenadelauncher/bow),        // 远程武器（需自备箭矢）
-		"弯刀（150积分）"  = list(150, /obj/item/rogueweapon/sword/falx),                     // 法尔克斯弯刀，劈砍见长
-		"短棍（50积分）"   = list(50, /obj/item/rogueweapon/mace/cudgel),                     // 廉价钝器，入门近战
-		"重锤（260积分）"  = list(260, /obj/item/rogueweapon/mace/goden),                     // 戈登大棒，重型钝击
-		"戟（280积分）"    = list(280, /obj/item/rogueweapon/halberd),                        // 长柄重武器，攻防兼备
-		"连枷（170积分）"  = list(170, /obj/item/rogueweapon/flail),                          // 链锤，无视格挡角度
-		"刺剑（220积分）"  = list(220, /obj/item/rogueweapon/estoc),                          // 重型刺剑，破甲穿刺
-		"木棍（25积分）"   = list(25, /obj/item/rogueweapon/mace/woodclub),                   // 最廉价的钝器
-		"短剑（70积分）"   = list(70, /obj/item/rogueweapon/sword/short),                     // 轻便单手短剑
-		"草叉（70积分）"   = list(70, /obj/item/rogueweapon/pitchfork),                       // 长柄农具，可作刺击武器
-		"鞭子（90积分）"   = list(90, /obj/item/rogueweapon/whip),                            // 长鞭，远距离软兵
-		"镐（60积分）"     = list(60, /obj/item/rogueweapon/pick),                            // 矿镐，亦可作刺击武器
-		"铁锤（90积分）"   = list(90, /obj/item/rogueweapon/hammer/iron),                     // 铁锻锤，钝击 / 打铁两用
-		"巨剑（300积分）"  = list(300, /obj/item/rogueweapon/greatsword),                     // 双手巨剑，高伤害重武器
-	)
+	return z121_rpg_price_catalog(list(
+		"狩猎刀" = list(40, /obj/item/rogueweapon/huntingknife),                    // 轻便短刀，便宜的入门武器
+		"铁剑"   = list(80, /obj/item/rogueweapon/sword/iron),                      // 入门级单手剑
+		"长矛"  = list(110, /obj/item/rogueweapon/spear),                          // 长柄武器，攻击距离更远
+		"长剑"  = list(140, /obj/item/rogueweapon/sword/long),                     // 更长、伤害更高的剑
+		"钢锤"  = list(160, /obj/item/rogueweapon/mace/steel),                     // 钝击武器，破甲见长
+		"战斧"  = list(180, /obj/item/rogueweapon/stoneaxe/battle),                // 重型斧，高伤害
+		"三叉戟"= list(210, /obj/item/rogueweapon/spear/trident),                  // 高级长柄武器
+		"弩"    = list(240, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow), // 远程武器（需自备弩矢）
+		"投石索"= list(90, /obj/item/gun/ballistic/revolver/grenadelauncher/sling),      // 廉价远程武器（需自备弹丸）
+		"弓"   = list(200, /obj/item/gun/ballistic/revolver/grenadelauncher/bow),        // 远程武器（需自备箭矢）
+		"弯刀"  = list(150, /obj/item/rogueweapon/sword/falx),                     // 法尔克斯弯刀，劈砍见长
+		"短棍"   = list(50, /obj/item/rogueweapon/mace/cudgel),                     // 廉价钝器，入门近战
+		"重锤"  = list(260, /obj/item/rogueweapon/mace/goden),                     // 戈登大棒，重型钝击
+		"戟"    = list(280, /obj/item/rogueweapon/halberd),                        // 长柄重武器，攻防兼备
+		"连枷"  = list(170, /obj/item/rogueweapon/flail),                          // 链锤，无视格挡角度
+		"刺剑"  = list(220, /obj/item/rogueweapon/estoc),                          // 重型刺剑，破甲穿刺
+		"木棍"   = list(25, /obj/item/rogueweapon/mace/woodclub),                   // 最廉价的钝器
+		"短剑"   = list(70, /obj/item/rogueweapon/sword/short),                     // 轻便单手短剑
+		"草叉"   = list(70, /obj/item/rogueweapon/pitchfork),                       // 长柄农具，可作刺击武器
+		"鞭子"   = list(90, /obj/item/rogueweapon/whip),                            // 长鞭，远距离软兵
+		"镐"     = list(60, /obj/item/rogueweapon/pick),                            // 矿镐，亦可作刺击武器
+		"铁锤"   = list(90, /obj/item/rogueweapon/hammer/iron),                     // 铁锻锤，钝击 / 打铁两用
+		"巨剑"  = list(300, /obj/item/rogueweapon/greatsword),                     // 双手巨剑，高伤害重武器
+	), 2)
 
 
 /datum/component/rpg_system/proc/get_equipment_catalog()
 	return z121_rpg_equipment_catalog()
 
 /proc/z121_rpg_equipment_catalog()
-	return list(
-		"兜帽（30积分）"     = list(30, /obj/item/clothing/head/roguetown/roguehood),        // 兜帽，遮风蔽脸
-		"长靴（40积分）"     = list(40, /obj/item/clothing/shoes/roguetown/boots),           // 基础脚部护具
-		"腰包（40积分）"     = list(40, /obj/item/storage/belt/rogue/pouch),                 // 腰间小袋，扩充携带空间
-		"皮护腕（50积分）"   = list(50, /obj/item/clothing/wrists/roguetown/bracers/leather), // 轻型皮护腕
-		"火把（50积分）"     = list(50, /obj/item/flashlight/flare/torch),                   // 照明工具（黑暗中作战必备）
-		"锁链手套（60积分）" = list(60, /obj/item/clothing/gloves/roguetown/chain),          // 手部护具
-		"护腕（70积分）"     = list(70, /obj/item/clothing/wrists/roguetown/bracers),        // 金属护腕，护住前臂
-		"木盾（70积分）"     = list(70, /obj/item/rogueweapon/shield/wood),                  // 入门盾牌，格挡攻击
-		"锁甲头巾（80积分）" = list(80, /obj/item/clothing/neck/roguetown/coif),             // 锁甲头巾，护住头颈
-		"皮盔（55积分）"     = list(55, /obj/item/clothing/head/roguetown/helmet/leather),    // 轻型皮制头盔
-		"头盔（90积分）"     = list(90, /obj/item/clothing/head/roguetown/helmet),           // 头部护具
-		"皮背心（70积分）"   = list(70, /obj/item/clothing/suit/roguetown/armor/leather/vest), // 轻型皮背心
-		"皮甲（100积分）"    = list(100, /obj/item/clothing/suit/roguetown/armor/leather),   // 基础躯干护甲
-		"水壶盔（110积分）"  = list(110, /obj/item/clothing/head/roguetown/helmet/kettle),   // 宽檐铁盔，遮挡上方
-		"铁盾（150积分）"    = list(150, /obj/item/rogueweapon/shield/iron),                 // 中级盾牌，格挡更强
-		"轻型半盔（150积分）"= list(150, /obj/item/clothing/head/roguetown/helmet/sallet),   // 半罩式骑士盔
-		"厚棉甲（130积分）"  = list(130, /obj/item/clothing/suit/roguetown/armor/gambeson),  // 软质护甲，缓冲钝击
-		"板甲手套（140积分）"= list(140, /obj/item/clothing/gloves/roguetown/plate),         // 重型手部护具
-		"重型头盔（170积分）"= list(170, /obj/item/clothing/head/roguetown/helmet/heavy),    // 重型头部护具
-		"面甲盔（185积分）"  = list(185, /obj/item/clothing/head/roguetown/helmet/bascinet), // 带面甲的骑士盔
-		"镶嵌甲（240积分）"  = list(240, /obj/item/clothing/suit/roguetown/armor/brigandine), // 镶钉皮甲，防护与灵活兼顾
-		"背包（50积分）"     = list(50, /obj/item/storage/backpack/rogue/backpack),          // 背负容器，扩充携带空间
-		"提灯（60积分）"     = list(60, /obj/item/flashlight/flare/torch/lantern),           // 可持续照明的提灯
-		"塔盾（220积分）"    = list(220, /obj/item/rogueweapon/shield/tower),                // 大型塔盾，防护面积最大
-		"锁子甲（200积分）"  = list(200, /obj/item/clothing/suit/roguetown/armor/chainmail), // 中级躯干护甲
-		"板甲（320积分）"    = list(320, /obj/item/clothing/suit/roguetown/armor/plate),     // 高级躯干护甲，防护最强
-	)
+	return z121_rpg_price_catalog(list(
+		"兜帽"     = list(30, /obj/item/clothing/head/roguetown/roguehood),        // 兜帽，遮风蔽脸
+		"长靴"     = list(40, /obj/item/clothing/shoes/roguetown/boots),           // 基础脚部护具
+		"腰包"     = list(40, /obj/item/storage/belt/rogue/pouch),                 // 腰间小袋，扩充携带空间
+		"皮护腕"   = list(50, /obj/item/clothing/wrists/roguetown/bracers/leather), // 轻型皮护腕
+		"火把"     = list(50, /obj/item/flashlight/flare/torch),                   // 照明工具（黑暗中作战必备）
+		"锁链手套" = list(60, /obj/item/clothing/gloves/roguetown/chain),          // 手部护具
+		"护腕"     = list(70, /obj/item/clothing/wrists/roguetown/bracers),        // 金属护腕，护住前臂
+		"木盾"     = list(70, /obj/item/rogueweapon/shield/wood),                  // 入门盾牌，格挡攻击
+		"锁甲头巾" = list(80, /obj/item/clothing/neck/roguetown/coif),             // 锁甲头巾，护住头颈
+		"皮盔"     = list(55, /obj/item/clothing/head/roguetown/helmet/leather),    // 轻型皮制头盔
+		"头盔"     = list(90, /obj/item/clothing/head/roguetown/helmet),           // 头部护具
+		"皮背心"   = list(70, /obj/item/clothing/suit/roguetown/armor/leather/vest), // 轻型皮背心
+		"皮甲"    = list(100, /obj/item/clothing/suit/roguetown/armor/leather),   // 基础躯干护甲
+		"水壶盔"  = list(110, /obj/item/clothing/head/roguetown/helmet/kettle),   // 宽檐铁盔，遮挡上方
+		"铁盾"    = list(150, /obj/item/rogueweapon/shield/iron),                 // 中级盾牌，格挡更强
+		"轻型半盔"= list(150, /obj/item/clothing/head/roguetown/helmet/sallet),   // 半罩式骑士盔
+		"厚棉甲"  = list(130, /obj/item/clothing/suit/roguetown/armor/gambeson),  // 软质护甲，缓冲钝击
+		"板甲手套"= list(140, /obj/item/clothing/gloves/roguetown/plate),         // 重型手部护具
+		"重型头盔"= list(170, /obj/item/clothing/head/roguetown/helmet/heavy),    // 重型头部护具
+		"面甲盔"  = list(185, /obj/item/clothing/head/roguetown/helmet/bascinet), // 带面甲的骑士盔
+		"镶嵌甲"  = list(240, /obj/item/clothing/suit/roguetown/armor/brigandine), // 镶钉皮甲，防护与灵活兼顾
+		"背包"     = list(50, /obj/item/storage/backpack/rogue/backpack),          // 背负容器，扩充携带空间
+		"提灯"     = list(60, /obj/item/flashlight/flare/torch/lantern),           // 可持续照明的提灯
+		"塔盾"    = list(220, /obj/item/rogueweapon/shield/tower),                // 大型塔盾，防护面积最大
+		"锁子甲"  = list(200, /obj/item/clothing/suit/roguetown/armor/chainmail), // 中级躯干护甲
+		"板甲"    = list(320, /obj/item/clothing/suit/roguetown/armor/plate),     // 高级躯干护甲，防护最强
+	), 2)
 
 
 /datum/component/rpg_system/proc/get_consumable_catalog()
 	return z121_rpg_consumable_catalog()
 
 /proc/z121_rpg_consumable_catalog()
-	return list(
-		"清水（10积分）"     = list(10, /obj/item/reagent_containers/glass/bottle/rogue/water),      // 解渴的廉价补给
-		"箭矢（6积分）"      = list(6, /obj/item/ammo_casing/caseless/rogue/arrow),                  // 弓用弹药
-		"石箭（7积分）"      = list(7, /obj/item/ammo_casing/caseless/rogue/arrow/stone),            // 石制弓用弹药
-		"弩矢（8积分）"      = list(8, /obj/item/ammo_casing/caseless/rogue/bolt),                   // 弩用弹药
-		"铁箭（12积分）"     = list(12, /obj/item/ammo_casing/caseless/rogue/arrow/iron),            // 更锋利的弓用弹药
-		"钢箭（20积分）"     = list(20, /obj/item/ammo_casing/caseless/rogue/arrow/steel),           // 钢制弓用弹药，穿透更强
-		"啤酒（15积分）"     = list(15, /obj/item/reagent_containers/glass/bottle/rogue/beer),         // 廉价酒水
-		"绷带（25积分）"     = list(25, /obj/item/natural/cloth/bandage),                            // 包扎止血
-		"面包（30积分）"     = list(30, /obj/item/reagent_containers/food/snacks/rogue/bread),       // 充饥的食物
-		"葡萄酒（25积分）"   = list(25, /obj/item/reagent_containers/glass/bottle/rogue/wine),          // 提神的酒水
-		"体力药水（50积分）" = list(50, /obj/item/reagent_containers/glass/bottle/rogue/stampot),       // 恢复体力
-		"治疗药水（60积分）" = list(60, /obj/item/reagent_containers/glass/bottle/rogue/healthpot),     // 回血
-		"魔力药水（60积分）" = list(60, /obj/item/reagent_containers/glass/bottle/rogue/manapot),       // 回蓝
-		"解毒剂（70积分）"   = list(70, /obj/item/reagent_containers/glass/bottle/rogue/antidote),      // 解除中毒
-		"强效体力药水（100积分）" = list(100, /obj/item/reagent_containers/glass/bottle/rogue/strongstampot),  // 大量恢复体力
-		"强效治疗药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/healthpotnew), // 强力回血
-		"强效魔力药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/strongmanapot),  // 大量回蓝
-		"强效解毒剂（140积分）"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/strong_antidote), // 强力解毒
+	return z121_rpg_price_catalog(list(
+		"清水"     = list(10, /obj/item/reagent_containers/glass/bottle/rogue/water),      // 解渴的廉价补给
+		"箭矢"      = list(6, /obj/item/ammo_casing/caseless/rogue/arrow),                  // 弓用弹药
+		"石箭"      = list(7, /obj/item/ammo_casing/caseless/rogue/arrow/stone),            // 石制弓用弹药
+		"弩矢"      = list(8, /obj/item/ammo_casing/caseless/rogue/bolt),                   // 弩用弹药
+		"铁箭"     = list(12, /obj/item/ammo_casing/caseless/rogue/arrow/iron),            // 更锋利的弓用弹药
+		"钢箭"     = list(20, /obj/item/ammo_casing/caseless/rogue/arrow/steel),           // 钢制弓用弹药，穿透更强
+		"啤酒"     = list(15, /obj/item/reagent_containers/glass/bottle/rogue/beer),         // 廉价酒水
+		"绷带"     = list(25, /obj/item/natural/cloth/bandage),                            // 包扎止血
+		"面包"     = list(30, /obj/item/reagent_containers/food/snacks/rogue/bread),       // 充饥的食物
+		"葡萄酒"   = list(25, /obj/item/reagent_containers/glass/bottle/rogue/wine),          // 提神的酒水
+		"体力药水" = list(50, /obj/item/reagent_containers/glass/bottle/rogue/stampot),       // 恢复体力
+		"治疗药水" = list(60, /obj/item/reagent_containers/glass/bottle/rogue/healthpot),     // 回血
+		"魔力药水" = list(60, /obj/item/reagent_containers/glass/bottle/rogue/manapot),       // 回蓝
+		"解毒剂"   = list(70, /obj/item/reagent_containers/glass/bottle/rogue/antidote),      // 解除中毒
+		"强效体力药水" = list(100, /obj/item/reagent_containers/glass/bottle/rogue/strongstampot),  // 大量恢复体力
+		"强效治疗药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/healthpotnew), // 强力回血
+		"强效魔力药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/strongmanapot),  // 大量回蓝
+		"强效解毒剂"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/strong_antidote), // 强力解毒
 		// —— 本模块自定义炼金药水（成品瓶，即用型）——
-		"温酒（40积分）"       = list(40, /obj/item/reagent_containers/glass/bottle/rogue/warm_wine),           // 驱寒温酒
-		"催乳剂（50积分）"     = list(50, /obj/item/reagent_containers/glass/bottle/rogue/lactation_enhancer),  // 加速泌乳恢复
-		"克林卡特（60积分）"   = list(60, /obj/item/reagent_containers/glass/bottle/rogue/klinkat),             // 精炼酒基药剂
-		"血之补剂（70积分）"   = list(70, /obj/item/reagent_containers/glass/bottle/rogue/blood_tonic),         // 补血
-		"暖心酒剂（80积分）"   = list(80, /obj/item/reagent_containers/glass/bottle/rogue/heart_tonic),         // 暖身暖心
-		"媚药（80积分）"       = list(80, /obj/item/reagent_containers/glass/bottle/rogue/aphrodisiac),         // 强效催情
-		"精力药剂（90积分）"   = list(90, /obj/item/reagent_containers/glass/bottle/rogue/vigor_potion),        // 短时振奋精力
-		"驱兽药水（100积分）"  = list(100, /obj/item/reagent_containers/glass/bottle/rogue/monster_repel),      // 令野兽退避
-		"万能修复溶剂（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/universal_repair), // 修复物品损耗
-		"变性药水（120积分）"  = list(120, /obj/item/reagent_containers/glass/bottle/rogue/gender_swap),        // 改变生理性别
-		"隐身药水（150积分）"  = list(150, /obj/item/reagent_containers/glass/bottle/rogue/invisibility),       // 短时隐形
-		"飞行药水（180积分）"  = list(180, /obj/item/reagent_containers/glass/bottle/rogue/flying),             // 短时飞行
+		"温酒"       = list(40, /obj/item/reagent_containers/glass/bottle/rogue/warm_wine),           // 驱寒温酒
+		"催乳剂"     = list(50, /obj/item/reagent_containers/glass/bottle/rogue/lactation_enhancer),  // 加速泌乳恢复
+		"克林卡特"   = list(60, /obj/item/reagent_containers/glass/bottle/rogue/klinkat),             // 精炼酒基药剂
+		"血之补剂"   = list(70, /obj/item/reagent_containers/glass/bottle/rogue/blood_tonic),         // 补血
+		"暖心酒剂"   = list(80, /obj/item/reagent_containers/glass/bottle/rogue/heart_tonic),         // 暖身暖心
+		"媚药"       = list(80, /obj/item/reagent_containers/glass/bottle/rogue/aphrodisiac),         // 强效催情
+		"精力药剂"   = list(90, /obj/item/reagent_containers/glass/bottle/rogue/vigor_potion),        // 短时振奋精力
+		"驱兽药水"  = list(100, /obj/item/reagent_containers/glass/bottle/rogue/monster_repel),      // 令野兽退避
+		"万能修复溶剂" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/universal_repair), // 修复物品损耗
+		"变性药水"  = list(120, /obj/item/reagent_containers/glass/bottle/rogue/gender_swap),        // 改变生理性别
+		"隐身药水"  = list(150, /obj/item/reagent_containers/glass/bottle/rogue/invisibility),       // 短时隐形
+		"飞行药水"  = list(180, /obj/item/reagent_containers/glass/bottle/rogue/flying),             // 短时飞行
 		// 补齐模组药水成品；原瓶装量和药效保持不变。
-		"荧光药水（80积分）" = list(80, /obj/item/reagent_containers/glass/bottle/rogue/luminescent_potion),
-		"防蚂蟥药水（80积分）" = list(80, /obj/item/reagent_containers/glass/bottle/rogue/anti_leech),
-		"愚人药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/idiot_potion),
-		"虚弱药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/weakness_potion),
-		"怠惰药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/sloth_potion),
-		"禁欲药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/forced_chastity),
-		"丰盈药水（120积分）" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/enlargement),
-		"硬化药剂（150积分）" = list(150, /obj/item/reagent_containers/glass/bottle/rogue/hardened_potion),
-		"防腐皂（150积分）" = list(150, /obj/item/anticorruption_soap),
-		"麻痹毒药（200积分）" = list(200, /obj/item/reagent_containers/glass/bottle/rogue/paralytic_poison),
-		"复原药剂（200积分）" = list(200, /obj/item/reagent_containers/glass/bottle/rogue/restorative_potion),
-		"回忆药剂（300积分）" = list(300, /obj/item/reagent_containers/glass/bottle/rogue/memory_potion),
-		"身体再生药剂（500积分）" = list(500, /obj/item/reagent_containers/glass/bottle/rogue/bodily_regeneration),
-		"停滞药水（1000积分）" = list(1000, /obj/item/reagent_containers/glass/bottle/rogue/stasis_potion),
+		"荧光药水" = list(80, /obj/item/reagent_containers/glass/bottle/rogue/luminescent_potion),
+		"防蚂蟥药水" = list(80, /obj/item/reagent_containers/glass/bottle/rogue/anti_leech),
+		"愚人药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/idiot_potion),
+		"虚弱药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/weakness_potion),
+		"怠惰药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/sloth_potion),
+		"禁欲药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/forced_chastity),
+		"丰盈药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/enlargement),
+		"硬化药剂" = list(150, /obj/item/reagent_containers/glass/bottle/rogue/hardened_potion),
+		"防腐皂" = list(150, /obj/item/anticorruption_soap),
+		"麻痹毒药" = list(200, /obj/item/reagent_containers/glass/bottle/rogue/paralytic_poison),
+		"复原药剂" = list(200, /obj/item/reagent_containers/glass/bottle/rogue/restorative_potion),
+		"回忆药剂" = list(300, /obj/item/reagent_containers/glass/bottle/rogue/memory_potion),
+		"身体再生药剂" = list(500, /obj/item/reagent_containers/glass/bottle/rogue/bodily_regeneration),
+		"停滞药水" = list(1000, /obj/item/reagent_containers/glass/bottle/rogue/stasis_potion),
 		// 灵辉炼金配方的四十八单位复活灵药，用于复活椅。
-		"复活灵药（48u，2000积分）" = list(2000, /obj/item/reagent_containers/glass/bottle/frankenbrew),
-	)
+		"复活灵药（48u）" = list(2000, /obj/item/reagent_containers/glass/bottle/frankenbrew),
+	), 1.5, list(/obj/item/reagent_containers/glass/bottle/frankenbrew, /obj/item/reagent_containers/glass/bottle/rogue/stasis_potion))
 
 
 /datum/component/rpg_system/proc/get_material_catalog()
 	return z121_rpg_material_catalog()
 
 /proc/z121_rpg_material_catalog()
-	return list(
-		"灰烬（4积分）"     = list(4, /obj/item/ash),                     // 炼金 / 制作的廉价材料
-		"石块（5积分）"     = list(5, /obj/item/natural/stone),           // 基础建材 / 制石器材料
-		"木材（8积分）"     = list(8, /obj/item/grown/log/tree/small),    // 基础木料（可加工成木板等）
-		"布料（10积分）"    = list(10, /obj/item/natural/cloth),          // 缝纫材料
-		"玻璃（12积分）"    = list(12, /obj/item/natural/glass),          // 制瓶 / 镶窗等的基础材料
-		"鞣制皮革（16积分）"= list(16, /obj/item/natural/hide/cured),     // 制甲 / 皮具材料
-		"锡锭（18积分）"    = list(18, /obj/item/ingot/tin),              // 低级金属锭（合金原料）
-		"铜锭（22积分）"    = list(22, /obj/item/ingot/copper),           // 低级金属锭
-		"铁锭（28积分）"    = list(28, /obj/item/ingot/iron),             // 常用锻造金属锭
-		"青铜锭（34积分）"  = list(34, /obj/item/ingot/bronze),           // 合金锭
-		"绿宝石（40积分）"  = list(40, /obj/item/roguegem/green),         // 普通宝石，可镶嵌 / 制作材料
-		"黄宝石（45积分）"  = list(45, /obj/item/roguegem/yellow),        // 普通宝石，可镶嵌 / 制作材料
-		"钢锭（45积分）"    = list(45, /obj/item/ingot/steel),            // 高级锻造金属锭
-		"银锭（55积分）"    = list(55, /obj/item/ingot/silver),           // 贵金属锭（克制特定敌人）
-		"蓝宝石（60积分）"  = list(60, /obj/item/roguegem/blue),          // 较珍贵的宝石材料
-		"金锭（70积分）"    = list(70, /obj/item/ingot/gold),             // 贵金属锭 / 高价值材料
-		"紫宝石（70积分）"  = list(70, /obj/item/roguegem/violet),        // 较珍贵的宝石材料
-		"黑钢锭（85积分）"  = list(85, /obj/item/ingot/blacksteel),       // 高级合金锭，质地坚硬
-		"红宝石（100积分）" = list(100, /obj/item/roguegem/ruby),         // 珍贵宝石，可镶嵌 / 高价值材料
-		"钻石（150积分）"   = list(150, /obj/item/roguegem/diamond),      // 最珍贵的宝石材料
-	)
+	// 基础材料先按普通材料倍率定价，加工品引用这些最终单价。
+	var/stone_cost = CEILING(5 * 1.5, 1)
+	var/tin_cost = CEILING(18 * 1.5, 1)
+	var/copper_cost = CEILING(22 * 1.5, 1)
+	var/iron_cost = CEILING(28 * 1.5, 1)
+	var/silver_cost = CEILING(55 * 1.5, 1)
+	var/gold_cost = CEILING(70 * 1.5, 1)
+	var/coal_cost = 15
+	var/bone_cost = 15
+	var/sinew_cost = 20
+	var/manabloom_cost = 40
+	var/infernal_ash_cost = 60
+	var/fae_dust_cost = 60
+	var/elemental_mote_cost = 60
+	// 大熔炉：三铜一锡出四青铜；三铁一煤出四钢；三钢一银出两黑钢。
+	var/bronze_cost = z121_rpg_processed_material_cost(copper_cost * 3 + tin_cost, 4)
+	var/steel_cost = z121_rpg_processed_material_cost(iron_cost * 3 + coal_cost, 4)
+	var/blacksteel_cost = z121_rpg_processed_material_cost(steel_cost * 3 + silver_cost, 2)
+	// 魔力结晶消耗四十五单位药剂；从消耗品目录获取五十单位成品瓶的最终售价。
+	var/manapot_cost
+	var/list/consumables = z121_rpg_consumable_catalog()
+	for(var/display in consumables)
+		var/list/entry = consumables[display]
+		if(entry[2] == /obj/item/reagent_containers/glass/bottle/rogue/manapot)
+			manapot_cost = entry[1]
+			break
+	// 以下全部是最终单价，统一生成带价格的名称，不再叠加分类倍率。
+	return z121_rpg_price_catalog(list(
+		"灰烬" = list(CEILING(4 * 1.5, 1), /obj/item/ash),
+		"石块" = list(stone_cost, /obj/item/natural/stone),
+		"木材" = list(CEILING(8 * 1.5, 1), /obj/item/grown/log/tree/small),
+		"布料" = list(CEILING(10 * 1.5, 1), /obj/item/natural/cloth),
+		"玻璃" = list(CEILING(12 * 1.5, 1), /obj/item/natural/glass),
+		"鞣制皮革" = list(CEILING(16 * 1.5, 1), /obj/item/natural/hide/cured),
+		"锡锭" = list(tin_cost, /obj/item/ingot/tin),
+		"铜锭" = list(copper_cost, /obj/item/ingot/copper),
+		"铁锭" = list(iron_cost, /obj/item/ingot/iron),
+		"青铜锭" = list(bronze_cost, /obj/item/ingot/bronze),
+		"绿宝石" = list(CEILING(40 * 1.5, 1), /obj/item/roguegem/green),
+		"黄宝石" = list(CEILING(45 * 1.5, 1), /obj/item/roguegem/yellow),
+		"钢锭" = list(steel_cost, /obj/item/ingot/steel),
+		"银锭" = list(silver_cost, /obj/item/ingot/silver),
+		"蓝宝石" = list(CEILING(60 * 1.5, 1), /obj/item/roguegem/blue),
+		"金锭" = list(gold_cost, /obj/item/ingot/gold),
+		"紫宝石" = list(CEILING(70 * 1.5, 1), /obj/item/roguegem/violet),
+		"黑钢锭" = list(blacksteel_cost, /obj/item/ingot/blacksteel),
+		"红宝石" = list(CEILING(100 * 1.5, 1), /obj/item/roguegem/ruby),
+		"钻石" = list(CEILING(150 * 1.5, 1), /obj/item/roguegem/diamond),
+		"煤炭" = list(coal_cost, /obj/item/rogueore/coal),
+		"天然骨头" = list(bone_cost, /obj/item/natural/bone),
+		"肌腱" = list(sinew_cost, /obj/item/alch/sinew),
+		"内脏" = list(z121_rpg_processed_material_cost(sinew_cost), /obj/item/alch/viscera),
+		"石粉" = list(z121_rpg_processed_material_cost(stone_cost), /obj/item/alch/stonedust),
+		"煤尘" = list(z121_rpg_processed_material_cost(coal_cost), /obj/item/alch/coaldust),
+		"骨粉" = list(z121_rpg_processed_material_cost(bone_cost), /obj/item/alch/bonemeal),
+		"铁粉" = list(z121_rpg_processed_material_cost(iron_cost), /obj/item/alch/irondust),
+		"银粉" = list(z121_rpg_processed_material_cost(silver_cost), /obj/item/alch/silverdust),
+		"金粉" = list(z121_rpg_processed_material_cost(gold_cost), /obj/item/alch/golddust),
+		"魔力花粉" = list(z121_rpg_processed_material_cost(manabloom_cost), /obj/item/alch/manabloompowder),
+		"颠茄" = list(25, /obj/item/alch/atropa),
+		"洋甘菊" = list(25, /obj/item/alch/matricaria),
+		"聚合草" = list(25, /obj/item/alch/symphitum),
+		"蒲公英" = list(25, /obj/item/alch/taraxacum),
+		"小米草" = list(25, /obj/item/alch/euphrasia),
+		"重楼" = list(25, /obj/item/alch/paris),
+		"金盏花" = list(25, /obj/item/alch/calendula),
+		"薄荷" = list(25, /obj/item/alch/mentha),
+		"荨麻" = list(25, /obj/item/alch/urtica),
+		"鼠尾草" = list(25, /obj/item/alch/salvia),
+		"金丝桃" = list(25, /obj/item/alch/hypericum),
+		"圣蓟" = list(25, /obj/item/alch/benedictus),
+		"缬草" = list(25, /obj/item/alch/valeriana),
+		"艾蒿" = list(25, /obj/item/alch/artemisia),
+		"玫瑰" = list(25, /obj/item/alch/rosa),
+		"黑曜石碎片" = list(30, /obj/item/magic/obsidian),
+		"魔力花" = list(manabloom_cost, /obj/item/reagent_containers/food/snacks/grown/manabloom),
+		"炼狱灰烬" = list(infernal_ash_cost, /obj/item/magic/infernal/ash),
+		"仙灵粉尘" = list(fae_dust_cost, /obj/item/magic/fae/dust),
+		"元素微尘" = list(elemental_mote_cost, /obj/item/magic/elemental/mote),
+		"结晶化魔力" = list(z121_rpg_processed_material_cost(manapot_cost * 45 / 50), /obj/item/magic/manacrystal),
+		"地脉碎晶" = list(150, /obj/item/magic/leyline),
+		"奥能融块" = list(z121_rpg_processed_material_cost(infernal_ash_cost + fae_dust_cost + elemental_mote_cost), /obj/item/magic/melded/t1),
+	), 1)
 
 
 /datum/component/rpg_system/proc/get_magic_catalog()
 	return z121_rpg_magic_catalog()
 
 /proc/z121_rpg_magic_catalog()
-	return list(
-		"见习传送卷轴（90积分）" = list(90, /obj/item/teleportation_scroll/apprentice),               // 入门级一次性魔法传送
-		"圣徽（120积分）"       = list(120, /obj/item/clothing/neck/roguetown/psicross),              // 神圣符号，可引导秘法
-		"传送卷轴（150积分）"   = list(150, /obj/item/teleportation_scroll),                          // 一次性魔法传送
-		"魔法戒指（200积分）"   = list(200, /obj/item/clothing/ring/active),                          // 可激活的魔法戒指
+	return z121_rpg_price_catalog(list(
+		"见习传送卷轴" = list(90, /obj/item/teleportation_scroll/apprentice),               // 入门级一次性魔法传送
+		"圣徽"       = list(120, /obj/item/clothing/neck/roguetown/psicross),              // 神圣符号，可引导秘法
+		"传送卷轴"   = list(150, /obj/item/teleportation_scroll),                          // 一次性魔法传送
+		"魔法戒指"   = list(200, /obj/item/clothing/ring/active),                          // 可激活的魔法戒指
 		// —— 附魔卷轴（对"物品"施加特殊附魔：手持卷轴点击目标物品即可附魔，不是教人法术）——
 		//   T1 基础附魔
-		"附魔·伐木（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木
-		"附魔·采矿（150积分）"   = list(150, /obj/item/enchantmentscroll/basic/mining),      // 给镐子附魔：高效采矿
-		"附魔·显照（170积分）"   = list(170, /obj/item/enchantmentscroll/basic/revealing),   // 给物品附魔：光源照明范围翻倍
-		"附魔·恒光（180积分）"   = list(180, /obj/item/enchantmentscroll/basic/light),       // 给武器 / 衣物附魔：自身发光
-		"附魔·幸运（200积分）"   = list(200, /obj/item/enchantmentscroll/basic/xylix),       // 给衣物附魔：赐予幸运
-		"附魔·储物（240积分）"   = list(240, /obj/item/enchantmentscroll/basic/holding),     // 给容器附魔：容量翻倍
+		"附魔·伐木"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木
+		"附魔·采矿"   = list(150, /obj/item/enchantmentscroll/basic/mining),      // 给镐子附魔：高效采矿
+		"附魔·显照"   = list(170, /obj/item/enchantmentscroll/basic/revealing),   // 给物品附魔：光源照明范围翻倍
+		"附魔·恒光"   = list(180, /obj/item/enchantmentscroll/basic/light),       // 给武器 / 衣物附魔：自身发光
+		"附魔·幸运"   = list(200, /obj/item/enchantmentscroll/basic/xylix),       // 给衣物附魔：赐予幸运
+		"附魔·储物"   = list(240, /obj/item/enchantmentscroll/basic/holding),     // 给容器附魔：容量翻倍
 		//   T2 高级附魔
-		"附魔·长步（240积分）"   = list(240, /obj/item/enchantmentscroll/superior/trekk),       // 给鞋 / 戒指附魔：沼泽中行走自如
-		"附魔·蛛行（250积分）"   = list(250, /obj/item/enchantmentscroll/superior/climbing),    // 给衣物附魔：攀爬陡壁
-		"附魔·夜视（250积分）"   = list(250, /obj/item/enchantmentscroll/superior/nightvision), // 给衣物附魔：黑暗中视物
-		"附魔·锻造（250积分）"   = list(250, /obj/item/enchantmentscroll/superior/smithing),    // 给锤子附魔：打铁更有效
-		"附魔·巧手（260积分）"   = list(260, /obj/item/enchantmentscroll/superior/thievery),    // 给手套 / 戒指附魔：偷窃撬锁
-		"附魔·羽步（280积分）"   = list(280, /obj/item/enchantmentscroll/superior/featherstep), // 给鞋 / 戒指附魔：加速且脚步无声
-		"附魔·抗火（280积分）"   = list(280, /obj/item/enchantmentscroll/superior/fireresist),  // 给衣物附魔：不会被点燃
-		"附魔·坚不可摧（300积分）" = list(300, /obj/item/enchantmentscroll/superior/unbreaking), // 给武器 / 衣物附魔：更耐用
+		"附魔·长步"   = list(240, /obj/item/enchantmentscroll/superior/trekk),       // 给鞋 / 戒指附魔：沼泽中行走自如
+		"附魔·蛛行"   = list(250, /obj/item/enchantmentscroll/superior/climbing),    // 给衣物附魔：攀爬陡壁
+		"附魔·夜视"   = list(250, /obj/item/enchantmentscroll/superior/nightvision), // 给衣物附魔：黑暗中视物
+		"附魔·锻造"   = list(250, /obj/item/enchantmentscroll/superior/smithing),    // 给锤子附魔：打铁更有效
+		"附魔·巧手"   = list(260, /obj/item/enchantmentscroll/superior/thievery),    // 给手套 / 戒指附魔：偷窃撬锁
+		"附魔·羽步"   = list(280, /obj/item/enchantmentscroll/superior/featherstep), // 给鞋 / 戒指附魔：加速且脚步无声
+		"附魔·抗火"   = list(280, /obj/item/enchantmentscroll/superior/fireresist),  // 给衣物附魔：不会被点燃
+		"附魔·坚不可摧" = list(300, /obj/item/enchantmentscroll/superior/unbreaking), // 给武器 / 衣物附魔：更耐用
 		//   T3 强力附魔
-		"附魔·武器召回（420积分）" = list(420, /obj/item/enchantmentscroll/greater/returningweapon), // 给戒指 / 项链 / 手套附魔：召回武器
-		"附魔·神射（440积分）"   = list(440, /obj/item/enchantmentscroll/greater/sharpshooter), // 给戒指、圣徽、手套或护腕附魔：提升远程武器技能
-		"附魔·愈合（450积分）"   = list(450, /obj/item/enchantmentscroll/greater/woundclosing), // 给戒指附魔：定期闭合伤口
-		"附魔·霜幕（460积分）"   = list(460, /obj/item/enchantmentscroll/greater/frostveil),   // 给武器 / 护甲附魔：减速敌人
-		"附魔·闪电（480积分）"   = list(480, /obj/item/enchantmentscroll/greater/lightning),   // 给武器附魔：命中电击
-		"附魔·凤凰守卫（480积分）" = list(480, /obj/item/enchantmentscroll/greater/phoenixguard), // 给衣物附魔：反伤点燃来犯者
-		"附魔·吸血（500积分）"   = list(500, /obj/item/enchantmentscroll/greater/lifesteal),   // 给武器附魔：命中回血
-		"附魔·虚空（520积分）"   = list(520, /obj/item/enchantmentscroll/greater/voidtouched), // 给武器附魔：将敌人短暂拽入虚空
+		"附魔·武器召回" = list(420, /obj/item/enchantmentscroll/greater/returningweapon), // 给戒指 / 项链 / 手套附魔：召回武器
+		"附魔·神射"   = list(440, /obj/item/enchantmentscroll/greater/sharpshooter), // 给戒指、圣徽、手套或护腕附魔：提升远程武器技能
+		"附魔·愈合"   = list(450, /obj/item/enchantmentscroll/greater/woundclosing), // 给戒指附魔：定期闭合伤口
+		"附魔·霜幕"   = list(460, /obj/item/enchantmentscroll/greater/frostveil),   // 给武器 / 护甲附魔：减速敌人
+		"附魔·闪电"   = list(480, /obj/item/enchantmentscroll/greater/lightning),   // 给武器附魔：命中电击
+		"附魔·凤凰守卫" = list(480, /obj/item/enchantmentscroll/greater/phoenixguard), // 给衣物附魔：反伤点燃来犯者
+		"附魔·吸血"   = list(500, /obj/item/enchantmentscroll/greater/lifesteal),   // 给武器附魔：命中回血
+		"附魔·虚空"   = list(520, /obj/item/enchantmentscroll/greater/voidtouched), // 给武器附魔：将敌人短暂拽入虚空
 		//   T4 神话附魔
-		"附魔·荆棘诅咒（700积分）" = list(700, /obj/item/enchantmentscroll/mythic/briars),     // 给武器附魔：伤害大增但反噬自身
-		"附魔·地狱火焰（750积分）" = list(750, /obj/item/enchantmentscroll/mythic/infernalflame), // 给武器 / 衣物附魔：命中点燃
-		"附魔·冰冻（780积分）"   = list(780, /obj/item/enchantmentscroll/mythic/freeze),      // 给武器 / 衣物附魔：命中冻结
-		"附魔·时间回溯（800积分）" = list(800, /obj/item/enchantmentscroll/mythic/rewind),     // 给武器 / 衣物附魔：受击后回溯位置
-		"附魔·混沌风暴（850积分）" = list(850, /obj/item/enchantmentscroll/mythic/chaos_storm), // 给武器附魔：随机混沌效果
-		"月光大剑（600积分）"   = list(600, /obj/item/rogueweapon/greatsword/moonlight_greatsword),   // 本模块自定义：高级魔法巨剑
-	)
+		"附魔·荆棘诅咒" = list(700, /obj/item/enchantmentscroll/mythic/briars),     // 给武器附魔：伤害大增但反噬自身
+		"附魔·地狱火焰" = list(750, /obj/item/enchantmentscroll/mythic/infernalflame), // 给武器 / 衣物附魔：命中点燃
+		"附魔·冰冻"   = list(780, /obj/item/enchantmentscroll/mythic/freeze),      // 给武器 / 衣物附魔：命中冻结
+		"附魔·时间回溯" = list(800, /obj/item/enchantmentscroll/mythic/rewind),     // 给武器 / 衣物附魔：受击后回溯位置
+		"附魔·混沌风暴" = list(850, /obj/item/enchantmentscroll/mythic/chaos_storm), // 给武器附魔：随机混沌效果
+		"月光大剑"   = list(600, /obj/item/rogueweapon/greatsword/moonlight_greatsword),   // 本模块自定义：高级魔法巨剑
+	), 2)
 
 
 /datum/component/rpg_system/proc/get_delicacy_catalog()
 	return z121_rpg_delicacy_catalog()
 
 /proc/z121_rpg_delicacy_catalog()
-	return list(
-		"饼干（35积分）"     = list(35, /obj/item/reagent_containers/food/snacks/rogue/biscuit),        // 饼干，烤好的成品点心（cookie 图标缺失，改用图标确实存在的 biscuit）
-		"奶酪（40积分）"     = list(40, /obj/item/reagent_containers/food/snacks/rogue/cheese),         // 奶酪，成品乳制珍品
-		"蜂蜜（45积分）"     = list(45, /obj/item/reagent_containers/food/snacks/rogue/honey),          // 蜂蜜，成品甘味珍品
-		"奶酪三明治（50积分）" = list(50, /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese), // 奶酪三明治，成品餐食（基类 sandwich 无图标，改用有图标的奶酪子类型）
-		"熟酿蛋（55积分）"   = list(55, /obj/item/reagent_containers/food/snacks/rogue/stuffedegg/cooked), // 熟酿蛋，烹好的成品菜
-		"果馅卷（80积分）"   = list(80, /obj/item/reagent_containers/food/snacks/rogue/strudel),        // 果馅卷，烤好的成品酥点
-		"糖渍果馅卷（95积分）" = list(95, /obj/item/reagent_containers/food/snacks/rogue/strudel/sugar), // 糖渍果馅卷，成品甜点
-		"红酒（70积分）"     = list(70, /obj/item/reagent_containers/glass/bottle/rogue/redwine),       // 红葡萄酒，餐桌佳酿
-		"白葡萄酒（70积分）" = list(70, /obj/item/reagent_containers/glass/bottle/rogue/whitewine),     // 白葡萄酒，清爽佳酿
-		"肉派（90积分）"     = list(90, /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat),  // 烤好的肉馅大派，成品硬菜
-		"蟹肉派（110积分）"  = list(110, /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/crab), // 烤好的蟹肉派，成品珍馐
-		"精灵红酒（150积分）"= list(150, /obj/item/reagent_containers/glass/bottle/rogue/elfred),       // 精灵红酒，名贵佳酿
-		"精灵蓝酒（160积分）"= list(160, /obj/item/reagent_containers/glass/bottle/rogue/elfblue),      // 精灵蓝酒，名贵佳酿
-		"仙馐蜂蜜（200积分）"= list(200, /obj/item/reagent_containers/food/snacks/rogue/honey/ambrosia), // 仙馐蜂蜜，传说级成品珍馐
+	return z121_rpg_price_catalog(list(
+		"饼干"     = list(35, /obj/item/reagent_containers/food/snacks/rogue/biscuit),        // 饼干，烤好的成品点心（cookie 图标缺失，改用图标确实存在的 biscuit）
+		"奶酪"     = list(40, /obj/item/reagent_containers/food/snacks/rogue/cheese),         // 奶酪，成品乳制珍品
+		"蜂蜜"     = list(45, /obj/item/reagent_containers/food/snacks/rogue/honey),          // 蜂蜜，成品甘味珍品
+		"奶酪三明治" = list(50, /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese), // 奶酪三明治，成品餐食（基类 sandwich 无图标，改用有图标的奶酪子类型）
+		"熟酿蛋"   = list(55, /obj/item/reagent_containers/food/snacks/rogue/stuffedegg/cooked), // 熟酿蛋，烹好的成品菜
+		"果馅卷"   = list(80, /obj/item/reagent_containers/food/snacks/rogue/strudel),        // 果馅卷，烤好的成品酥点
+		"糖渍果馅卷" = list(95, /obj/item/reagent_containers/food/snacks/rogue/strudel/sugar), // 糖渍果馅卷，成品甜点
+		"红酒"     = list(70, /obj/item/reagent_containers/glass/bottle/rogue/redwine),       // 红葡萄酒，餐桌佳酿
+		"白葡萄酒" = list(70, /obj/item/reagent_containers/glass/bottle/rogue/whitewine),     // 白葡萄酒，清爽佳酿
+		"肉派"     = list(90, /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat),  // 烤好的肉馅大派，成品硬菜
+		"蟹肉派"  = list(110, /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/crab), // 烤好的蟹肉派，成品珍馐
+		"精灵红酒"= list(150, /obj/item/reagent_containers/glass/bottle/rogue/elfred),       // 精灵红酒，名贵佳酿
+		"精灵蓝酒"= list(160, /obj/item/reagent_containers/glass/bottle/rogue/elfblue),      // 精灵蓝酒，名贵佳酿
+		"仙馐蜂蜜"= list(200, /obj/item/reagent_containers/food/snacks/rogue/honey/ambrosia), // 仙馐蜂蜜，传说级成品珍馐
 		// —— 珍馐（品质 5 / FARE_LAVISH 的成品美食；图标均已核验存在）——
 		//   蛋糕类甜点
-		"苹果蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/applecake),
-		"苹果坚果蛋糕（110积分）" = list(110, /obj/item/reagent_containers/food/snacks/rogue/applenutcake),
-		"浆果蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/berrycake),
-		"黑莓蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/blackberrycake),
-		"覆盆子蛋糕（110积分）" = list(110, /obj/item/reagent_containers/food/snacks/rogue/raspberrycake),
-		"草莓蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/strawberrycake),
-		"胡萝卜蛋糕（110积分）" = list(110, /obj/item/reagent_containers/food/snacks/rogue/carrotcake),
-		"柠檬蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/lemoncake),
-		"青柠蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/limecake),
-		"橘子蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/tangerinecake),
-		"薄荷蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/menthacake),
-		"石果蛋糕（110积分）"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/rocknutcake),
-		"和平蛋糕（120积分）"   = list(120, /obj/item/reagent_containers/food/snacks/rogue/peacecake),
-		"兹班图蛋糕（120积分）" = list(120, /obj/item/reagent_containers/food/snacks/rogue/hcake),
+		"苹果蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/applecake),
+		"苹果坚果蛋糕" = list(110, /obj/item/reagent_containers/food/snacks/rogue/applenutcake),
+		"浆果蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/berrycake),
+		"黑莓蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/blackberrycake),
+		"覆盆子蛋糕" = list(110, /obj/item/reagent_containers/food/snacks/rogue/raspberrycake),
+		"草莓蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/strawberrycake),
+		"胡萝卜蛋糕" = list(110, /obj/item/reagent_containers/food/snacks/rogue/carrotcake),
+		"柠檬蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/lemoncake),
+		"青柠蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/limecake),
+		"橘子蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/tangerinecake),
+		"薄荷蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/menthacake),
+		"石果蛋糕"   = list(110, /obj/item/reagent_containers/food/snacks/rogue/rocknutcake),
+		"和平蛋糕"   = list(120, /obj/item/reagent_containers/food/snacks/rogue/peacecake),
+		"兹班图蛋糕" = list(120, /obj/item/reagent_containers/food/snacks/rogue/hcake),
 		//   肉食硬菜
-		"嫩炸鸟排（150积分）"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/chickentender),
-		"炸肉排（150积分）"     = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel),
-		"香料烤禽（150积分）"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced),
-		"黄油烤禽（150积分）"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/butter),
-		"公爵烤禽（180积分）"   = list(180, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/ducal),
-		"公爵牛排（180积分）"   = list(180, /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal),
+		"嫩炸鸟排"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/chickentender),
+		"炸肉排"     = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/nitzel),
+		"香料烤禽"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced),
+		"黄油烤禽"   = list(150, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/butter),
+		"公爵烤禽"   = list(180, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/ducal),
+		"公爵牛排"   = list(180, /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal),
 		//   饭食套餐
-		"鸡蛋奶酪饭（120积分）" = list(120, /obj/item/reagent_containers/food/snacks/rogue/riceeggcheese),
-		"牛肉饭套餐（130积分）" = list(130, /obj/item/reagent_containers/food/snacks/rogue/ricebeefcar),
-		"猪肉饭套餐（130积分）" = list(130, /obj/item/reagent_containers/food/snacks/rogue/riceporkcuc),
-		"禽肉饭套餐（130积分）" = list(130, /obj/item/reagent_containers/food/snacks/rogue/ricebirdcar),
-		"虾仁饭套餐（140积分）" = list(140, /obj/item/reagent_containers/food/snacks/rogue/riceshrimpcar),
+		"鸡蛋奶酪饭" = list(120, /obj/item/reagent_containers/food/snacks/rogue/riceeggcheese),
+		"牛肉饭套餐" = list(130, /obj/item/reagent_containers/food/snacks/rogue/ricebeefcar),
+		"猪肉饭套餐" = list(130, /obj/item/reagent_containers/food/snacks/rogue/riceporkcuc),
+		"禽肉饭套餐" = list(130, /obj/item/reagent_containers/food/snacks/rogue/ricebirdcar),
+		"虾仁饭套餐" = list(140, /obj/item/reagent_containers/food/snacks/rogue/riceshrimpcar),
 		//   其它成品珍馐
-		"鳗鱼冻（120积分）"     = list(120, /obj/item/reagent_containers/food/snacks/rogue/jelliedeel),
-		"奶酪酿茄子（120积分）" = list(120, /obj/item/reagent_containers/food/snacks/rogue/preserved/eggplantstuffedcheese),
-		"铁锤堡式早餐（130积分）" = list(130, /obj/item/reagent_containers/food/snacks/rogue/friedegg/hammerhold),
+		"鳗鱼冻"     = list(120, /obj/item/reagent_containers/food/snacks/rogue/jelliedeel),
+		"奶酪酿茄子" = list(120, /obj/item/reagent_containers/food/snacks/rogue/preserved/eggplantstuffedcheese),
+		"铁锤堡式早餐" = list(130, /obj/item/reagent_containers/food/snacks/rogue/friedegg/hammerhold),
 		// —— 佳酿（品质 ≥ 3 的名贵酒水；elfblue 已在上方列出）——
-		"风间清酒（130积分）"   = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake),
-		"风间烧酎（140积分）"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunshochu),
-		"药酒（130积分）"       = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/yaojiu),
-		"蛇酒（150积分）"       = list(150, /obj/item/reagent_containers/glass/bottle/rogue/beer/shejiu),
-	)
+		"风郡清酒"   = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake),
+		"风郡烧酎"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunshochu),
+		"药酒"       = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/yaojiu),
+		"蛇酒"       = list(150, /obj/item/reagent_containers/glass/bottle/rogue/beer/shejiu),
+	), 1.5)
 
 
 /datum/component/rpg_system/proc/get_artifact_catalog()
 	return z121_rpg_artifact_catalog()
 
 /proc/z121_rpg_artifact_catalog()
-	return list(
-		"阿斯特拉塔护符（150积分）" = list(150, /obj/item/clothing/neck/roguetown/psicross/astrata),  // 太阳女神 阿斯特拉塔 的圣徽
-		"诺克护符（150积分）"       = list(150, /obj/item/clothing/neck/roguetown/psicross/noc),      // 求知之神 诺克 的圣徽
-		"阿比索尔护符（150积分）"   = list(150, /obj/item/clothing/neck/roguetown/psicross/abyssor),  // 深海之神 阿比索尔 的圣徽
-		"邓多尔护符（150积分）"     = list(150, /obj/item/clothing/neck/roguetown/psicross/dendor),   // 自然之神 邓多尔 的圣徽
-		"奈克拉护符（150积分）"     = list(150, /obj/item/clothing/neck/roguetown/psicross/necra),    // 死亡之神 奈克拉 的圣徽
-		"佩斯特拉护符（150积分）"   = list(150, /obj/item/clothing/neck/roguetown/psicross/pestra),   // 医疗之神 佩斯特拉 的圣徽
-		"拉沃克斯护符（150积分）"   = list(150, /obj/item/clothing/neck/roguetown/psicross/ravox),    // 战争 / 正义之神 拉沃克斯 的圣徽
-		"玛卢姆护符（150积分）"     = list(150, /obj/item/clothing/neck/roguetown/psicross/malum),    // 创造 / 火 之神 玛卢姆 的圣徽
-		"埃奥拉护符（150积分）"     = list(150, /obj/item/clothing/neck/roguetown/psicross/eora),     // 羁绊之神 埃奥拉 的圣徽
-		"希利克斯护符（150积分）"   = list(150, /obj/item/clothing/neck/roguetown/psicross/xylix),    // 戏谑之神 希利克斯 的圣徽
-		"圣印护符（220积分）"       = list(220, /obj/item/clothing/neck/roguetown/psicross/undivided), // 圣座信物，地位与恩典的象征
-		"受祝银制圣徽（350积分）"   = list(350, /obj/item/clothing/neck/roguetown/psicross/silver/astrata), // 受祝的银制 阿斯特拉塔 圣物（高阶神器）
+	return z121_rpg_price_catalog(list(
+		"阿斯特拉塔护符" = list(150, /obj/item/clothing/neck/roguetown/psicross/astrata),  // 太阳女神 阿斯特拉塔 的圣徽
+		"诺克护符"       = list(150, /obj/item/clothing/neck/roguetown/psicross/noc),      // 求知之神 诺克 的圣徽
+		"阿比索尔护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/abyssor),  // 深海之神 阿比索尔 的圣徽
+		"邓多尔护符"     = list(150, /obj/item/clothing/neck/roguetown/psicross/dendor),   // 自然之神 邓多尔 的圣徽
+		"奈克拉护符"     = list(150, /obj/item/clothing/neck/roguetown/psicross/necra),    // 死亡之神 奈克拉 的圣徽
+		"佩斯特拉护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/pestra),   // 医疗之神 佩斯特拉 的圣徽
+		"拉沃克斯护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/ravox),    // 战争 / 正义之神 拉沃克斯 的圣徽
+		"玛卢姆护符"     = list(150, /obj/item/clothing/neck/roguetown/psicross/malum),    // 创造 / 火 之神 玛卢姆 的圣徽
+		"埃奥拉护符"     = list(150, /obj/item/clothing/neck/roguetown/psicross/eora),     // 羁绊之神 埃奥拉 的圣徽
+		"希利克斯护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/xylix),    // 戏谑之神 希利克斯 的圣徽
+		"圣印护符"       = list(220, /obj/item/clothing/neck/roguetown/psicross/undivided), // 圣座信物，地位与恩典的象征
+		"受祝银制圣徽"   = list(350, /obj/item/clothing/neck/roguetown/psicross/silver/astrata), // 受祝的银制 阿斯特拉塔 圣物（高阶神器）
 		// 与激进派教士的神明神器表保持一致，佩斯特拉的三件分别出售。
-		"阿斯特拉塔·星辰（10000积分）" = list(10000, /obj/item/artifact/astrata_star),
-		"诺克·命匣（10000积分）" = list(10000, /obj/item/artefact/noc_phylactery),
-		"登多尔·无尽之管（10000积分）" = list(10000, /obj/item/artefact/dendor_hose),
-		"阿比索尔·深渊钓竿（10000积分）" = list(10000, /obj/item/fishingrod/abyssoid),
-		"拉沃克斯·透镜（10000积分）" = list(10000, /obj/item/artifact/ravox_lens),
-		"内克拉·香炉（10000积分）" = list(10000, /obj/item/artefact/necra_censer),
-		"赛利克斯·手套（10000积分）" = list(10000, /obj/item/clothing/gloves/xylix),
-		"佩斯特拉·手术工具（10000积分）" = list(10000, /obj/item/rogueweapon/surgery/multitool),
-		"佩斯特拉·缝合针（10000积分）" = list(10000, /obj/item/needle/pestra),
-		"佩斯特拉·圣蛭（10000积分）" = list(10000, /obj/item/natural/worms/leech/cheele),
-		"玛勒姆·神锤（10000积分）" = list(10000, /obj/item/rogueweapon/hammer/artefact/malum),
-		"伊欧拉·圣心（10000积分）" = list(10000, /obj/item/artefact/eora_heart),
-	)
+		"阿斯特拉塔·星辰" = list(10000, /obj/item/artifact/astrata_star),
+		"诺克·命匣" = list(10000, /obj/item/artefact/noc_phylactery),
+		"登多尔·无尽之管" = list(10000, /obj/item/artefact/dendor_hose),
+		"阿比索尔·深渊钓竿" = list(10000, /obj/item/fishingrod/abyssoid),
+		"拉沃克斯·透镜" = list(10000, /obj/item/artifact/ravox_lens),
+		"内克拉·香炉" = list(10000, /obj/item/artefact/necra_censer),
+		"赛利克斯·手套" = list(10000, /obj/item/clothing/gloves/xylix),
+		"佩斯特拉·手术工具" = list(10000, /obj/item/rogueweapon/surgery/multitool),
+		"佩斯特拉·缝合针" = list(10000, /obj/item/needle/pestra),
+		"佩斯特拉·圣蛭" = list(10000, /obj/item/natural/worms/leech/cheele),
+		"玛勒姆·神锤" = list(10000, /obj/item/rogueweapon/hammer/artefact/malum),
+		"伊欧拉·圣心" = list(10000, /obj/item/artefact/eora_heart),
+	), 2, list(/obj/item/artifact/astrata_star, /obj/item/artefact/noc_phylactery, /obj/item/artefact/dendor_hose, /obj/item/fishingrod/abyssoid, /obj/item/artifact/ravox_lens, /obj/item/artefact/necra_censer, /obj/item/clothing/gloves/xylix, /obj/item/rogueweapon/surgery/multitool, /obj/item/needle/pestra, /obj/item/natural/worms/leech/cheele, /obj/item/rogueweapon/hammer/artefact/malum, /obj/item/artefact/eora_heart))
 
 
 /datum/component/rpg_system/proc/get_catalog_for_tab(tab)
@@ -898,9 +975,14 @@
 	return list()
 
 
-/datum/component/rpg_system/proc/do_buy_item(mob/living/carbon/human/user, tab, index)
+/datum/component/rpg_system/proc/do_buy_item(mob/living/carbon/human/user, tab, index, quantity = 1)
 	// 防御：宿主状态校验（点击时玩家可能已死亡 / 离线）。
 	if(!can_use_system(user))
+		return
+	// 数量只接受有限范围内的整数；其它商品仍只能一次购买一件。
+	var/max_quantity = tab == "material" ? RPG_SYSTEM_MATERIAL_MAX_QUANTITY : 1
+	if(!isnum(quantity) || quantity != round(quantity) || quantity < 1 || quantity > max_quantity)
+		to_chat(user, span_warning("【系统提示】兑换数量必须为1至[max_quantity]的整数。"))
 		return
 	var/list/catalog = get_catalog_for_tab(tab)
 	// 行号健壮性校验：必须落在 [1, 目录长度] 内，越界一律忽略（防伪造参数）。
@@ -912,7 +994,11 @@
 	if(!islist(entry) || entry.len < 2)
 		to_chat(user, span_warning("【系统提示】该商品配置异常，兑换失败。"))
 		return
-	var/cost = entry[1]      // 该商品的积分价格
+	var/unit_cost = entry[1]
+	if(!isnum(unit_cost) || unit_cost <= 0)
+		to_chat(user, span_warning("【系统提示】该商品价格异常，兑换失败。"))
+		return
+	var/cost = unit_cost * quantity // 单价与总价均从服务端目录计算。
 	var/item_path = entry[2] // 该商品的物品类型路径
 	// 积分校验：不足则明确告知差额，不扣分、不发货（界面禁用按钮之外，服务端仍重新校验）。
 	if(points < cost)
@@ -928,9 +1014,11 @@
 		return
 	// 先扣费，再发货。先扣费可避免"发货成功但扣费抛错"导致的白嫖；即便物品最终落在脚下也算发货成功。
 	points -= cost
-	// 在玩家脚下的地块生成物品，随后尝试塞进手里：put_in_hands 失败（双手已满）时，物品仍留在
-	//   脚下地块（del_on_fail 默认 FALSE），不会凭空消失——玩家捡起即可，体验自洽。
 	var/return_generation = z121_return_generation
+	if(tab == "material")
+		deliver_material_batch(user, item_path, quantity, cost, return_generation)
+		return
+	// 非材料商品保留单件发货方式。
 	var/obj/item/bought = new item_path(delivery_turf)
 	if(QDELETED(src) || return_generation != z121_return_generation)
 		return
@@ -941,6 +1029,68 @@
 	user.put_in_hands(bought)
 	// 兑换结果通过界面与音效反馈，连续购买不向聊天栏刷屏。
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE) // 复用引擎已有音效，给一个轻量的"到账"反馈，无需新增音频资源。
+
+
+// 暂存物品不进入地图，整批生成成功之前不可被玩家取走。
+/obj/effect/rpg_purchase_staging
+	name = "材料兑换暂存"
+	invisibility = INVISIBILITY_ABSTRACT
+
+/obj/effect/rpg_purchase_staging/Destroy()
+	// 连初始化抛错、尚未来得及记入清单的物品也一并回收。
+	for(var/atom/movable/item in contents)
+		qdel(item)
+	return ..()
+
+/datum/component/rpg_system/proc/deliver_material_batch(mob/living/carbon/human/user, item_path, quantity, cost, return_generation)
+	var/obj/effect/rpg_purchase_staging/staging = new
+	var/list/bought_items = list()
+	var/failed = FALSE
+	try
+		for(var/i in 1 to quantity)
+			if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || QDELETED(staging))
+				failed = TRUE
+				break
+			var/obj/item/bought = new item_path(staging)
+			if(!QDELETED(bought))
+				bought_items += bought
+			if(QDELETED(bought) || bought.loc != staging)
+				failed = TRUE
+				break
+		// 构造过程可能让出执行权，发货前再次校验整批物品与角色状态。
+		if(!failed)
+			for(var/obj/item/bought in bought_items)
+				if(QDELETED(bought) || bought.loc != staging)
+					failed = TRUE
+					break
+		if(!failed && bought_items.len == quantity)
+			for(var/obj/item/bought in bought_items)
+				if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || !get_turf(user) || QDELETED(bought))
+					failed = TRUE
+					break
+				user.put_in_hands(bought)
+		else
+			failed = TRUE
+	catch(var/exception/error)
+		failed = TRUE
+		stack_trace("RPG材料批量兑换失败：[error]")
+	// 最后一件物品的装备信号也可能触发死亡回溯，不能遗漏这次校验。
+	if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user))
+		failed = TRUE
+	if(failed)
+		for(var/obj/item/bought in bought_items)
+			if(!QDELETED(bought))
+				qdel(bought)
+	qdel(staging)
+	// 回溯已经恢复了积分快照，旧事务不得向新世代退款或继续发货。
+	if(QDELETED(src) || return_generation != z121_return_generation)
+		return
+	if(failed)
+		points += cost
+		if(!QDELETED(user))
+			to_chat(user, span_warning("【系统提示】材料兑换未完成，本次积分已退还。"))
+		return
+	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
 
 /datum/component/rpg_system/proc/stat_upgrade_cost(current_value)
@@ -1351,4 +1501,5 @@
 #undef RPG_SYSTEM_TRAIT_STRONG_COST
 #undef RPG_SYSTEM_TRAIT_OVERPOWERED_COST
 #undef RPG_SYSTEM_SPELL_POINT_COST
+#undef RPG_SYSTEM_MATERIAL_MAX_QUANTITY
 #undef RPG_SYSTEM_TRAIT_SOURCE

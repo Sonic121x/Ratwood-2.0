@@ -2,10 +2,10 @@
 #define TRAIT_Z121_DEATH_RETURN "z121_death_return"
 
 /datum/virtue/utility/never_ending
-	name = "死亡回归"
+	name = "死亡回归（-39）"
 	desc = "晨光曾在你的影子里停留。此后，有些本该落定的句点，便迟迟没有落下。"
 	custom_text = null
-	triumph_cost = 99
+	triumph_cost = 39
 	// 选择界面会直接展示此列表；内部标记改在实际赋予美德时添加。
 	added_traits = list()
 

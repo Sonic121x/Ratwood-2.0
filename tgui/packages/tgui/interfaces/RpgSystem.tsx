@@ -1,5 +1,5 @@
-import { useLayoutEffect, useRef } from 'react';
-import { Box, Button, Section } from 'tgui-core/components';
+import { useLayoutEffect, useRef, useState } from 'react';
+import { Box, Button, NumberInput, Section } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
@@ -14,6 +14,7 @@ type ShopRow = {
   tier?: string;
   current?: number;
   blocked_reason?: string | null;
+  max_quantity?: number;
 };
 
 type Data = {
@@ -170,6 +171,10 @@ export const RpgSystem = () => {
     daily,
   } = data;
   const scrollRef = useRef<HTMLDivElement>(null);
+  // 数量按材料编号独立保存，余额刷新或切换分类不会重置。
+  const [materialQuantities, setMaterialQuantities] = useState<
+    Record<number, number>
+  >({});
 
   // 仅切换分类时回到顶部；积分更新和连续购买始终复用同一滚动容器。
   useLayoutEffect(() => {
@@ -270,64 +275,120 @@ export const RpgSystem = () => {
                   </Section>
                 </>
               )}
-              {rows.map((row) => (
-                <div
-                  key={`${current_tab}-${row.id}`}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '14px',
-                    padding: '12px',
-                    marginBottom: '6px',
-                    border: '1px solid rgba(170, 151, 116, 0.25)',
-                    background: 'rgba(0, 0, 0, 0.16)',
-                  }}
-                >
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <Box bold fontSize={1.1} mb={0.5}>
-                      {row.name}
-                    </Box>
-                    <Box color="label" style={{ lineHeight: 1.5 }}>
-                      {row.description}
-                    </Box>
-                    {row.tier && (
-                      <Box mt={0.5} color={tierColors[row.tier] || 'label'}>
-                        {row.tier}特性
-                      </Box>
-                    )}
-                    {row.current !== undefined && (
-                      <Box mt={0.5}>
-                        当前：{row.current}
-                        {current_tab === 'skill' ? ' 级' : ''}
-                      </Box>
-                    )}
-                  </div>
+              {rows.map((row) => {
+                const isMaterial = current_tab === 'material';
+                const maxQuantity = row.max_quantity ?? 1;
+                const quantity = isMaterial
+                  ? (materialQuantities[row.id] ?? 1)
+                  : 1;
+                const totalCost = row.cost * quantity;
+                const blockedReason =
+                  row.blocked_reason === '积分不足' ||
+                  (!row.blocked_reason && totalCost > points)
+                    ? `积分不足，需要 ${totalCost} 积分`
+                    : row.blocked_reason;
+                return (
                   <div
+                    key={`${current_tab}-${row.id}`}
                     style={{
-                      width: '112px',
-                      flexShrink: 0,
-                      textAlign: 'right',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '14px',
+                      padding: '12px',
+                      marginBottom: '6px',
+                      border: '1px solid rgba(170, 151, 116, 0.25)',
+                      background: 'rgba(0, 0, 0, 0.16)',
                     }}
                   >
-                    <Box bold color="#e2c58b" mb={0.7}>
-                      {row.cost ? `${row.cost} 积分` : '已达上限'}
-                    </Box>
-                    <Button
-                      fluid
-                      disabled={!!busy || !!row.blocked_reason}
-                      tooltip={row.blocked_reason || undefined}
-                      onClick={() =>
-                        act(row.action, { tab: current_tab, id: row.id })
-                      }
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <Box bold fontSize={1.1} mb={0.5}>
+                        {row.name}
+                      </Box>
+                      <Box color="label" style={{ lineHeight: 1.5 }}>
+                        {row.description}
+                      </Box>
+                      {row.tier && (
+                        <Box mt={0.5} color={tierColors[row.tier] || 'label'}>
+                          {row.tier}特性
+                        </Box>
+                      )}
+                      {row.current !== undefined && (
+                        <Box mt={0.5}>
+                          当前：{row.current}
+                          {current_tab === 'skill' ? ' 级' : ''}
+                        </Box>
+                      )}
+                    </div>
+                    <div
+                      style={{
+                        width: isMaterial ? '160px' : '112px',
+                        flexShrink: 0,
+                        textAlign: 'right',
+                      }}
                     >
-                      {row.blocked_reason ||
-                        (row.action.startsWith('enhance_')
-                          ? '强化 +1'
-                          : '兑换')}
-                    </Button>
+                      <Box bold color="#e2c58b" mb={0.7}>
+                        {row.cost
+                          ? `${row.cost} 积分${isMaterial ? '／份' : ''}`
+                          : '已达上限'}
+                      </Box>
+                      {isMaterial && (
+                        <>
+                          <Box color="label" mb={0.5}>
+                            数量（1–{maxQuantity} 份）
+                          </Box>
+                          <NumberInput
+                            value={quantity}
+                            minValue={1}
+                            maxValue={maxQuantity}
+                            step={1}
+                            width="100%"
+                            disabled={!!busy}
+                            onChange={(value: number) => {
+                              if (!Number.isFinite(value)) {
+                                return;
+                              }
+                              setMaterialQuantities((previous) => ({
+                                ...previous,
+                                [row.id]: Math.max(
+                                  1,
+                                  Math.min(maxQuantity, Math.round(value)),
+                                ),
+                              }));
+                            }}
+                          />
+                          <Box bold color="#e2c58b" my={0.7}>
+                            合计：{totalCost} 积分
+                          </Box>
+                        </>
+                      )}
+                      <Button
+                        fluid
+                        disabled={!!busy || !!blockedReason}
+                        tooltip={blockedReason || undefined}
+                        onClick={() =>
+                          act(row.action, {
+                            tab: current_tab,
+                            id: row.id,
+                            ...(isMaterial ? { quantity } : {}),
+                          })
+                        }
+                      >
+                        {isMaterial
+                          ? `兑换 ${quantity} 份`
+                          : blockedReason ||
+                            (row.action.startsWith('enhance_')
+                              ? '强化 +1'
+                              : '兑换')}
+                      </Button>
+                      {isMaterial && blockedReason && (
+                        <Box color="bad" mt={0.5}>
+                          {blockedReason}
+                        </Box>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

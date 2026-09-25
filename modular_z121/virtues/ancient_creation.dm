@@ -4,7 +4,7 @@
 // 种族限制（Restriction）：仅「金属构装体 / Metal Construct」可获取（Metal construction Limited）
 // ----------------------------------------------------------------------------
 // 设计目标（为什么要做这个文件）：
-//   实现一个全新的被动美德"远古造物"。它消耗 18 点凯旋点数（triumph_cost = 18），
+//   实现一个全新的被动美德"远古造物"。它消耗 12 点凯旋点数（triumph_cost = 12），
 //   授予被动特性【亘古长存 / Ancient existence】，其效果为：
 //     - 智力 +1（Intelligence / STATKEY_INT）。
 //     - 意志 +1（Will / STATKEY_WIL）。
@@ -86,7 +86,7 @@
 // ----------------------------------------------------------------------------
 /datum/virtue/utility/ancient_creation
 	// 菜单中显示的美德名（"金属构造受限"是限制说明，不写进名字本身）。
-	name = "远古造物（-18）"
+	name = "远古造物（-12）"
 	// 角色内描述（in-character）：呼应"自远古存活至今、见证矮人灭绝、知识与技艺历经千年累积"的设定。
 	desc = "我是一个自远古便已存在的个体，甚至亲历过矮人一族的灭绝。我的学识横跨数千年的历史，技艺也在漫长的岁月里层层累积。"
 	// custom_text 用机制语言把硬性规则讲清楚，避免玩家误解适用种族、加成范围与上限。
@@ -95,10 +95,10 @@
 	智力 +1、意志 +1；\n\
 	识字技能 +3（最高 6 级）；\n\
 	工匠系列全部技能 +3（最高 6 级），并将工匠系列技能的等级上限提升至 6 级（传说级）。"
-	// 消耗 18 点凯旋点数。基类 New() 会自动把"Costs 18 TRIUMPH"追加到 desc。
+	// 消耗 12 点凯旋点数。基类 New() 会自动把"Costs 12 TRIUMPH"追加到 desc。
 	// check_triumphs() 会在 apply_virtue 流程开头校验并扣除；若领取者非金属构装体，
 	//   apply_to_human 会把这笔点数全额退还（见下）。
-	triumph_cost = 18
+	triumph_cost = 12
 	// 为什么"不"用任何静态通道（added_stats / added_traits / added_skills）：
 	//   所有效果都必须先通过"种族限制"判定后才允许授予，而 handle_stats / handle_traits /
 	//   handle_skills 都在 apply_to_human 之后无条件执行——若把效果放进静态通道，非构装体

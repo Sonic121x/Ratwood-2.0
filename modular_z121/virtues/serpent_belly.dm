@@ -1,8 +1,8 @@
 // 蛇腹者：能力属于身体，腹部容器负责消化、语音隔离和释放时的清理。
 /datum/virtue/utility/serpent_belly
-	name = "蛇腹者（-9）"
+	name = "蛇腹者（-5）"
 	desc = "蛇蜕去旧皮，你却将它的饥饿留在了血肉里。你的喉腹懂得一种古老的进食方式，连尚未止息的心跳，也能藏进温热的黑暗。"
-	triumph_cost = 9
+	triumph_cost = 5
 	custom_text = "获得【吞入】与【吐出】。握牢近旁的血肉，耐心完成吞咽；越是庞大的猎物，越难下咽，也越令步履沉重。腹中仅容一具躯体，金铁会伤及内里，腐败与死灵亦会留下恶浊。饥饿随着血肉消融而平息，放还的躯体却未必完好。隔着腹壁，唯有你听得清其中的话语；尚有余力者仍可【抵抗】。"
 
 /datum/virtue/utility/serpent_belly/apply_to_human(mob/living/carbon/human/recipient)
