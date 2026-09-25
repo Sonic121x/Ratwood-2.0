@@ -1,7 +1,7 @@
 //Jarl. Heavy armour guy with a greataxe and a sidearm mace.
 /datum/migrant_role/hammerhold/jarl
-	name = "Hammerholdian Jarl"
-	greet_text = "You are a warrior-lord from Hammerhold and the leader of your warband. Guide them to glory and wealth or try to survive."
+	name = "铁锤堡领主"
+	greet_text = "你是来自铁锤堡的尚武领主，也是这支战帮的首领。带领他们追寻荣耀与财富，或至少设法活下去。"
 	outfit = /datum/outfit/job/roguetown/hammerhold/jarl
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp, /datum/species/tieberian, /datum/species/lizardfolk, /datum/species/lupian, /datum/species/anthromorph, /datum/species/demihuman, /datum/species/dwarf/mountain, /datum/species/dracon, /datum/species/tabaxi, /datum/species/akula) //Same racelocks as Gronn Chieftain, subject to change
@@ -60,12 +60,12 @@
 
 	if(!H.has_language(/datum/language/hammerholdian))
 		H.grant_language(/datum/language/hammerholdian)
-		to_chat(H, span_info("I can speak Hammerholdian with ,h before my speech."))
+		to_chat(H, span_info("我可以在发言前加上 ,h 来说铁锤堡语。"))
 
 //Tideweaver. T3 miraclist and some minor magics.
 /datum/migrant_role/hammerhold/tideweaver
-	name = "Hammerholdian Tideweaver"
-	greet_text = "You are a cleric of the Lord of Abyss, devoted to him in prayer and arcyne. You have minor magical spells and medical knowledge in addition to your miracles, and can convert those shunned by the Holy See."
+	name = "铁锤堡织潮者"
+	greet_text = "你是深渊之主的牧师，以祈祷与奥术虔诚侍奉祂。除了神迹，你还掌握一些基础法术与医术，并能引导那些被圣座排斥的人皈依。"
 	outfit = /datum/outfit/job/roguetown/hammerhold/tideweaver
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp, /datum/species/tieberian, /datum/species/lizardfolk, /datum/species/lupian, /datum/species/anthromorph, /datum/species/demihuman, /datum/species/dwarf/mountain, /datum/species/dracon, /datum/species/tabaxi, /datum/species/akula)
@@ -134,12 +134,12 @@
 
 	if(!H.has_language(/datum/language/hammerholdian))
 		H.grant_language(/datum/language/hammerholdian)
-		to_chat(H, span_info("I can speak Hammerholdian with ,h before my speech."))
+		to_chat(H, span_info("我可以在发言前加上 ,h 来说铁锤堡语。"))
 
 //Volfskin. CritResist+Enduring guy with two axes.
 /datum/migrant_role/hammerhold/volfskin
-	name = "Hammerholdian Volfskin"
-	greet_text = "You are a volfskin, one of the legendary Hammerholdian warriors who are said to be possessed by raging volf spirits in battles. Distrusted due to your less than savoury religious practices, but well-respected for your combat prowess."
+	name = "铁锤堡狼皮战士"
+	greet_text = "你是一名狼皮战士，属于铁锤堡的传奇勇士，据说你们在战斗时会被狂暴的狼灵附身。你那令人不齿的宗教仪式使人心存疑虑，但你的战斗本领仍备受敬重。"
 	outfit = /datum/outfit/job/roguetown/hammerhold/volfskin
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp, /datum/species/tieberian, /datum/species/lizardfolk, /datum/species/lupian, /datum/species/anthromorph, /datum/species/demihuman, /datum/species/dwarf/mountain, /datum/species/dracon, /datum/species/tabaxi, /datum/species/akula)
@@ -197,12 +197,12 @@
 
 	if(!H.has_language(/datum/language/hammerholdian))
 		H.grant_language(/datum/language/hammerholdian)
-		to_chat(H, span_info("I can speak Hammerholdian with ,h before my speech."))
+		to_chat(H, span_info("我可以在发言前加上 ,h 来说铁锤堡语。"))
 
 //Tribal
 /datum/migrant_role/hammerhold/huscarl
-	name = "Hammerholdian Huscarl"
-	greet_text = "You are a loyal and skilled bodyguard to your jarl, specialising in pillaging, kidnapping and fighting with an axe and shield."
+	name = "铁锤堡亲卫"
+	greet_text = "你是领主忠诚而技艺精湛的贴身护卫，擅长劫掠、绑架以及持斧盾作战。"
 	outfit = /datum/outfit/job/roguetown/hammerhold/huscarl
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp, /datum/species/tieberian, /datum/species/lizardfolk, /datum/species/lupian, /datum/species/anthromorph, /datum/species/demihuman, /datum/species/dwarf/mountain, /datum/species/dracon, /datum/species/tabaxi, /datum/species/akula)
@@ -258,13 +258,13 @@
 
 	if(!H.has_language(/datum/language/hammerholdian))
 		H.grant_language(/datum/language/hammerholdian)
-		to_chat(H, span_info("I can speak Hammerholdian with ,h before my speech."))
+		to_chat(H, span_info("我可以在发言前加上 ,h 来说铁锤堡语。"))
 
 
 //Thrall. Same as Gronn Wave's Slave, just with better clothes. Not required to be an Abyssorite like the rest of them.
 /datum/migrant_role/hammerhold/thrall
-	name = "Hammerholdian Thrall"
-	greet_text = "An unlucky soul. Perhaps caught in a pillaging raid, or alone in the wilderness, you have been enslaved by the warband. Work hard to appease your new masters."
+	name = "铁锤堡奴隶"
+	greet_text = "你是个倒霉的家伙，也许在一场劫掠中被俘，也许独自在荒野中落单，如今已被这支战帮奴役。努力劳作，取悦你的新主人吧。"
 	outfit = /datum/outfit/job/roguetown/hammerhold/thrall
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -294,13 +294,13 @@
 
 	if(!H.has_language(/datum/language/hammerholdian))
 		H.grant_language(/datum/language/hammerholdian)
-		to_chat(H, span_info("I can speak Hammerholdian with ,h before my speech."))
+		to_chat(H, span_info("我可以在发言前加上 ,h 来说铁锤堡语。"))
 
 	if(H.mind)
-		var/classes = list("Captured Worker", "Captured Artisan", "Captured Noble", "Captured Bard")
-		var/classchoice = input(H, "Choose your archetypes", "Available archetypes") as anything in classes
+		var/classes = list("被俘工人" = "Captured Worker", "被俘匠人" = "Captured Artisan", "被俘贵族" = "Captured Noble", "被俘吟游诗人" = "Captured Bard")
+		var/classchoice = input(H, "选择你的出身", "可选出身") as anything in classes
 
-		switch(classchoice)
+		switch(classes[classchoice])
 			if("Captured Worker")
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/blue
 				pants = /obj/item/clothing/under/roguetown/trou

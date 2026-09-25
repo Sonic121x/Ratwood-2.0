@@ -1,5 +1,5 @@
 /datum/migrant_wave/heartfelt
-	name = "Heartfelt宫廷"
+	name = "赤心宫廷"
 	max_spawns = 1
 	weight = 50
 	track = MIGRANT_TRACK_SPECIAL

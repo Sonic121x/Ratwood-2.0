@@ -2,7 +2,7 @@
 /datum/job/roguetown/heartfelt/lord
 	title = "Lord of Heartfelt"
 	tutorial = "你是 赤心 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
-	在 Magos 的指引下，你踏上前往山巅的旅程，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
+	在魔导师的指引下，你踏上前往山巅的旅程，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = null
@@ -11,7 +11,7 @@
 	job_traits = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR, TRAIT_HEARTFELT)
 	social_rank = SOCIAL_RANK_NOBLE
 	advclass_cat_rolls = list(CTAG_HFT_LORD)
-	
+	display_title = "赤心领主"
 	job_subclasses = list(
 		/datum/advclass/heartfelt/lord/lord,
 		/datum/advclass/heartfelt/lord/archmage,
@@ -23,7 +23,7 @@
 /datum/advclass/heartfelt/lord/lord
 	name = "赤心 领主"
 	tutorial = "你是 赤心 的领主，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
-	在 Magos 的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
+	在魔导师的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
 	outfit = /datum/outfit/job/heartfelt/lord/lord
@@ -100,7 +100,7 @@
 
 /datum/advclass/heartfelt/lord/archmage
 	name = "赤心 大法师领主"
-	tutorial = "你是 赤心 的大 Magos，统治着一座昔日繁荣、如今却已倾颓的奥术男爵领。\
+	tutorial = "你是赤心的大魔导师，统治着一座昔日繁荣、如今却已倾颓的奥术男爵领。\
 	在来自彼岸的幻视引领下，你踏上前往边疆的旅程，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
@@ -184,7 +184,7 @@
 /datum/advclass/heartfelt/lord/chief
 	name = "赤心 酋长"
 	tutorial = "你是 赤心 的酋长，统治着一座昔日繁荣、如今却已倾颓的男爵领。\
-	在 Magos 的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
+	在魔导师的指引下，你来到这片土地，寻求援助以重振旧土昔日荣光，或许也为自己夺下一座新的王座。"
 	category_tags = list(CTAG_HFT_LORD)
 	maximum_possible_slots = 1
 	outfit = /datum/outfit/job/heartfelt/lord/chief
