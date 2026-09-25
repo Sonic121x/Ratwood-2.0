@@ -5,7 +5,7 @@
 	allowed_races = ACCEPTED_RACES
 	job_traits = list(TRAIT_HEARTFELT)
 	social_rank = SOCIAL_RANK_YEOMAN
-
+	display_title = "赤心随员"
 	job_subclasses = list(
 	/datum/advclass/heartfelt/retinue/courtier,
 	/datum/advclass/heartfelt/retinue/magos,
