@@ -14,7 +14,7 @@
 	)
 
 /datum/migrant_wave/evil_knight
-	name = "The Unknightly journey"
+	name = "邪恶骑士之旅"
 	max_spawns = 1
 	shared_wave_type = /datum/migrant_wave/evil_knight
 	weight = 8
@@ -22,19 +22,19 @@
 		/datum/migrant_role/dark_itinerant_knight = 1,
 		/datum/migrant_role/dark_itinerant_squire = 1,
 	)
-	greet_text = "These lands have insulted once more Zizo, you are here to remind them of her prowess."
+	greet_text = "这片土地上的人再度亵渎了齐佐，你们前来让他们铭记她的威能。"
 
 /datum/migrant_role/dark_itinerant_knight
-	name = "Zizite Knight"
+	name = "齐佐骑士"
 	role_category = "Adventurer"
-	greet_text = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
+	greet_text = "你是一名邪恶的游历骑士，与侍从一同踏上旅途，要让混乱吞噬这片土地。"
 	antag_datum = /datum/antagonist/zizo_knight
 	grant_lit_torch = TRUE
 
 /datum/migrant_role/dark_itinerant_squire
-	name = "Underling Squire"
+	name = "邪恶骑士侍从"
 	role_category = "Adventurer"
-	greet_text = "You are the squire of an evil knight, they have taken you under their custody as you were the only one who didn't object to their dubious ethics."
+	greet_text = "你是一名邪恶骑士的侍从。你是唯一不反对其卑劣行径的人，因此被收留在麾下。"
 	antag_datum = /datum/antagonist/zizo_knight/squire
 	grant_lit_torch = TRUE
 

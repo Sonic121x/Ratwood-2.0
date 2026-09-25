@@ -23,4 +23,4 @@
 			if(!player.client)
 				continue
 
-			to_chat(player, span_danger("Graggar demands blood, assassins flock to [SSmapping.map_adjustment.realm_name]. An assassin slot has been opened."))
+			to_chat(player, span_danger("格拉加尔渴求鲜血，刺客正涌向[SSmapping.map_adjustment.realm_name]。一个刺客名额已开放。"))
