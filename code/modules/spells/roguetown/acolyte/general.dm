@@ -255,12 +255,12 @@
 		var/mob/living/carbon/human/UH = user
 
 		if(target == UH)
-			to_chat(UH, span_warning("I cannot transfer my own blood to myself."))
+			to_chat(UH, span_warning("我不能给自己输送自己的血液。"))
 			revert_cast()
 			return FALSE
 
 		if(UH.doing)
-			to_chat(UH, span_warning("I can't cast this while doing something else."))
+			to_chat(UH, span_warning("我在做其他事情时无法施放此法术。"))
 			revert_cast()
 			return FALSE
 
