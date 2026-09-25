@@ -219,7 +219,7 @@
 	if(!silent)
 		emote("embed")
 	if(crit_message)
-		next_attack_msg += " <span class='userdanger'>[embedder] is stuck in [src]!</span>"
+		next_attack_msg += " <span class='userdanger'>[embedder]嵌在了[src]体内！</span>"
 	return TRUE
 
 /// Simple version for removing an embedded object - DO NOT CALL THIS ON CARBON MOBS!

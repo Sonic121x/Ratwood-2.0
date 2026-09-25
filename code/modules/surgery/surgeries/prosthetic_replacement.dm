@@ -1,5 +1,5 @@
 /datum/surgery/prosthetic_replacement
-	name = "Prosthetic replacement"
+	name = "肢体移植"
 	steps = list(
 		/datum/surgery_step/add_prosthetic,
 	)
@@ -16,7 +16,7 @@
 	requires_bodypart_type = NONE
 
 /datum/surgery_step/add_taur
-	name = "Implant taur"
+	name = "移植兽形下身"
 	implements = list(
 		/obj/item/bodypart/taur = 80, 
 	)
@@ -44,12 +44,12 @@
 
 	if(bodypart.original_owner != target)
 		if(target.has_status_effect(/datum/status_effect/buff/necras_vow) || HAS_TRAIT(target, TRAIT_NECRAS_VOW))	//Status effects are cleared upon death, just in case you want to... attach a permakilled corpse's limbs.
-			to_chat(user, span_warning("This one has pledged a vow to Necra. The sinews reject the false flesh. It requires their own flesh and blood."))
+			to_chat(user, span_warning("此人已向内克拉立誓，筋肉排斥外来的血肉，必须使用其自身的血肉。"))
 			return FALSE
 
-	display_results(user, target, span_notice("I begin to replace [target]'s [parse_zone(target_zone)] with [bodypart]..."),
-		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)] with [bodypart]."),
-		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始用[bodypart]替换[target]的[parse_zone(target_zone)]……"),
+		span_notice("[user]开始用[bodypart]替换[target]的[parse_zone(target_zone)]。"),
+		span_notice("[user]开始替换[target]的[parse_zone(target_zone)]。"))
 	return TRUE
 
 /datum/surgery_step/add_taur/success(mob/user, mob/living/target, target_zone, obj/item/bodypart/taur/bodypart, datum/intent/intent)
@@ -57,13 +57,13 @@
 
 	if(bodypart.attach_limb(target) && bodypart.attach_wound)
 		bodypart.add_wound(bodypart.attach_wound)
-	display_results(user, target, span_notice("I succeed transplanting [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)] with [bodypart]!"),
-		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我成功为[target]移植了[parse_zone(target_zone)]。"),
+		span_notice("[user]成功将[bodypart]移植到[target]的[parse_zone(target_zone)]处！"),
+		span_notice("[user]成功为[target]移植了[parse_zone(target_zone)]！"))
 	return TRUE
 
 /datum/surgery_step/add_prosthetic
-	name = "Implant limb"
+	name = "移植肢体"
 	implements = list(
 		/obj/item/bodypart = 80,
 	)
@@ -93,39 +93,39 @@
 /datum/surgery_step/add_prosthetic/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/obj/item/bodypart/bodypart = tool
 	if(target_zone != bodypart.body_zone) //so we can't replace a leg with an arm, or a human arm with a monkey arm.
-		to_chat(user, span_warning("[tool] isn't the right type for [parse_zone(target_zone)]."))
+		to_chat(user, span_warning("[tool]的类型不适合替换[parse_zone(target_zone)]。"))
 		return FALSE
 
 	if(bodypart.original_owner != target)
 		if(target.has_status_effect(/datum/status_effect/buff/necras_vow) || HAS_TRAIT(target, TRAIT_NECRAS_VOW))	//Status effects are cleared upon death, just in case you want to... attach a permakilled corpse's limbs.
-			to_chat(user, span_warning("This one has pledged a vow to Necra. The sinews reject the false flesh. It requires their own flesh and blood."))
+			to_chat(user, span_warning("此人已向内克拉立誓，筋肉排斥外来的血肉，必须使用其自身的血肉。"))
 			return FALSE
 
 	// Dullahan-specific refusal should only apply when attaching a head
 		if(isdullahan(target) && target_zone == BODY_ZONE_HEAD)
-			to_chat(user, span_warning("The body is refusing the head."))
+			to_chat(user, span_warning("身体正在排斥这颗头颅。"))
 			return FALSE
 		if(istype(bodypart, /obj/item/bodypart/head/dullahan))
-			to_chat(user, span_warning("The head is refusing the body."))
+			to_chat(user, span_warning("头颅正在排斥这具身体。"))
 			return FALSE
 
 
-	display_results(user, target, span_notice("I begin to replace [target]'s [parse_zone(target_zone)] with [tool]..."),
-		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)] with [tool]."),
-		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始用[tool]替换[target]的[parse_zone(target_zone)]……"),
+		span_notice("[user]开始用[tool]替换[target]的[parse_zone(target_zone)]。"),
+		span_notice("[user]开始替换[target]的[parse_zone(target_zone)]。"))
 	return TRUE
 
 /datum/surgery_step/add_prosthetic/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/obj/item/bodypart/bodypart = tool
 	if(bodypart.attach_limb(target) && bodypart.attach_wound)
 		bodypart.add_wound(bodypart.attach_wound)
-	display_results(user, target, span_notice("I succeed transplanting [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)] with [tool]!"),
-		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我成功为[target]移植了[parse_zone(target_zone)]。"),
+		span_notice("[user]成功将[tool]移植到[target]的[parse_zone(target_zone)]处！"),
+		span_notice("[user]成功为[target]移植了[parse_zone(target_zone)]！"))
 	return TRUE
 
 /datum/surgery/prosthetic_removal
-	name = "Prosthetic removal"
+	name = "义肢移除术"
 	steps = list(
 		/datum/surgery_step/remove_prosthetic
 	)
@@ -140,7 +140,7 @@
 	requires_bodypart_type = BODYPART_ROBOTIC
 
 /datum/surgery_step/remove_prosthetic
-	name = "Remove prosthetic"
+	name = "移除义肢"
 	implements = list(
 		TOOL_SAW = 90,
 	)
@@ -163,15 +163,15 @@
 
 
 /datum/surgery_step/remove_prosthetic/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to saw through the base of [target]'s [parse_zone(target_zone)] prosthetic..."),
-		span_notice("[user] begins to saw through the base of [target]'s prosthetic [parse_zone(target_zone)]."),
-		span_notice("[user] begins to saw through the base of [target]'s prosthetic [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始锯断[target]的[parse_zone(target_zone)]义肢的基部……"),
+		span_notice("[user]开始锯断[target]的[parse_zone(target_zone)]义肢的基部。"),
+		span_notice("[user]开始锯断[target]的[parse_zone(target_zone)]义肢的基部。"))
 	return TRUE
 
 /datum/surgery_step/remove_prosthetic/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I saw through the base of [target]'s prosthetic [parse_zone(target_zone)]."),
-		span_notice("[user] saws through the base of [target]'s prosthetic [parse_zone(target_zone)]!"),
-		span_notice("[user] saws through the base of [target]'s prosthetic [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我锯断了[target]的[parse_zone(target_zone)]义肢的基部。"),
+		span_notice("[user]锯断了[target]的[parse_zone(target_zone)]义肢的基部！"),
+		span_notice("[user]锯断了[target]的[parse_zone(target_zone)]义肢的基部！"))
 	var/obj/item/bodypart/target_limb = target.get_bodypart(check_zone(target_zone))
 	target_limb?.drop_limb(TRUE)
 	return TRUE
