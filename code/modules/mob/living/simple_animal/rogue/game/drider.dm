@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/drider //lol
 	icon = 'icons/roguetown/mob/monster/drider.dmi'
-	name = "drider spider"
+	name = "蛛化精灵坐骑蛛"
 	desc = ""
 	pixel_x = -2
 	pixel_y = 7
@@ -198,9 +198,9 @@
 	var/turf/start = get_turf(src)
 	var/turf/landing = get_climb_target(wall)
 	if(!landing)
-		to_chat(rider, span_warning("My drider cannot find a clear ledge to climb onto here."))
+		to_chat(rider, span_warning("我的坐骑蛛在这里找不到可以攀上的空旷平台。"))
 		return FALSE
-	rider.visible_message(span_notice("[rider] guides [src] up [wall]..."), span_notice("I guide [src] up [wall]..."))
+	rider.visible_message(span_notice("[rider]引导[src]爬上[wall]……"), span_notice("我引导[src]爬上[wall]……"))
 	if(!do_after(rider, 2 SECONDS, needhand = FALSE, target = src, extra_checks = CALLBACK(src, PROC_REF(can_climb_with), rider)))
 		return FALSE
 	if(QDELETED(src) || !can_climb_with(rider) || loc != start || get_climb_target(wall) != landing)
