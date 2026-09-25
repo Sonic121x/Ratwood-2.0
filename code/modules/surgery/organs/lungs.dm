@@ -1,7 +1,7 @@
 /obj/item/organ/lungs
 	var/failed = FALSE
 	var/operated = FALSE	//whether we can still have our damages fixed through surgery
-	name = "lungs"
+	name = "肺"
 	icon_state = "lungs"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_LUNGS
@@ -11,16 +11,16 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
-	high_threshold_passed = "<span class='warning'>I feel some sort of constriction around my chest as my breathing becomes shallow and rapid.</span>"
-	now_fixed = "<span class='warning'>My lungs seem to once again be able to hold air.</span>"
-	high_threshold_cleared = "<span class='info'>The constriction around my chest loosens as my breathing calms down.</span>"
+	high_threshold_passed = "<span class='warning'>我感到胸口发紧，呼吸变得又浅又急。</span>"
+	now_fixed = "<span class='warning'>我的肺似乎又能吸入空气了。</span>"
+	high_threshold_cleared = "<span class='info'>胸口的紧绷感逐渐消退，我的呼吸也平稳下来。</span>"
 
 /obj/item/organ/lungs/on_life()
 	..()
 	if((!failed) && ((organ_flags & ORGAN_FAILING)))
 		if(owner.stat == CONSCIOUS)
-			owner.visible_message("<span class='danger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>", \
-								"<span class='danger'>I suddenly feel like you can't breathe!</span>")
+			owner.visible_message("<span class='danger'>[owner]抓着自己的喉咙，艰难地喘息！</span>", \
+								"<span class='danger'>我突然感觉喘不过气了！</span>")
 		failed = TRUE
 	else if(!(organ_flags & ORGAN_FAILING))
 		failed = FALSE
@@ -31,36 +31,36 @@
 	return S
 
 /obj/item/organ/lungs/plasmaman
-	name = "plasma filter"
+	name = "等离子过滤器"
 	desc = ""
 	icon_state = "lungs-plasma"
 
 
 /obj/item/organ/lungs/slime
-	name = "vacuole"
+	name = "液泡"
 	desc = ""
 
 /obj/item/organ/lungs/construct
-	name = "construct aersource"
-	desc = "A complex hollow crystal, which courses with air through unknowable means. Steam wisps around it in a vortex."
+	name = "构装体气源"
+	desc = "一块结构复杂的中空晶体，空气以难以理解的方式在其中流动。缕缕蒸汽在它周围盘旋。"
 	icon_state = "lungs-con"
 	
 /obj/item/organ/lungs/t1
-	name = "completed lungs"
+	name = "完善肺"
 	icon_state = "lungs"
-	desc = "The perfect art, it feels... Completed."
+	desc = "完美的造物，感觉它已经……臻于完善。"
 	sellprice = 100
 
 /obj/item/organ/lungs/t2
-	name = "blessed lungs"
+	name = "受祝福的肺"
 	icon_state = "lungs"
-	desc = "They accepted this heresy to defeat a greater heresy. They call it a blessing, but we all know it's not…"
+	desc = "为了击败更大的异端，他们接纳了这种异端。他们称之为祝福，但我们都知道并非如此……"
 	sellprice = 200
 
 /obj/item/organ/lungs/t3
-	name = "corrupted lungs"
+	name = "腐化肺"
 	icon_state = "lungs"
-	desc = "A cursed, perverted artifact. It can serve you well—what sacrifice are you willing to offer to survive?"
+	desc = "一件受诅咒的扭曲造物。它能为你所用——为了活下去，你愿意付出怎样的牺牲？"
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	sellprice = 300
 
@@ -69,8 +69,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t1lungs
 
 /atom/movable/screen/alert/status_effect/buff/t1lungs
-	name = "Completed lungs"
-	desc = "I have better version of lungs now "
+	name = "完善肺"
+	desc = "我现在有了更强健的肺。"
 
 /obj/item/organ/lungs/t1/Insert(mob/living/carbon/M)
 	..()
@@ -89,8 +89,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t2lungs
 
 /atom/movable/screen/alert/status_effect/buff/t2lungs //your helper against mages but not black king bar
-	name = "Blessed lungs"
-	desc = "A blessed lungs... Maybe"
+	name = "受祝福的肺"
+	desc = "受到祝福的肺……也许吧。"
 
 /obj/item/organ/lungs/t2/Insert(mob/living/carbon/M)
 	..()
@@ -115,8 +115,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t3lungs
 
 /atom/movable/screen/alert/status_effect/buff/t3lungs
-	name = "Corrupted lungs"
-	desc = "The cursed thing is inside me now."
+	name = "腐化肺"
+	desc = "那受诅咒的东西如今就在我体内。"
 
 
 /obj/item/organ/lungs/t3/Insert(mob/living/carbon/M)
