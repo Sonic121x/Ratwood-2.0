@@ -61,7 +61,7 @@
 // 时间静止力场实体：承载“冻结一片区域”的全部运行期状态与逻辑。
 // ===========================================================================
 /obj/effect/timestop_field
-	name = "stopped time"
+	name = "凝滞的时间"
 	icon = TIMESTOP_FIELD_ICON
 	icon_state = "time"
 	alpha = 125
