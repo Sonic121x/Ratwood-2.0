@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
-	name = "beespider"
+	name = "蜜蛛"
 	icon_state = "honeys"
 	icon_living = "honeys"
 	icon_dead = "honeys-dead"
@@ -58,7 +58,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
-	name = "skallax spider"
+	name = "斯卡拉克斯蛛"
 	icon_state = "skallax"
 	icon_living = "skallax"
 	icon_dead = "skallax-dead"
@@ -123,7 +123,7 @@
 		if(!target)
 			if(production >= 100)
 				production = 0
-				visible_message(span_alertalien("[src] creates some honey."))
+				visible_message(span_alertalien("[src]产出了一些蜂蜜。"))
 				var/turf/T = get_turf(src)
 				playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
 				new /obj/item/reagent_containers/food/snacks/rogue/honey/spider(T)
@@ -185,8 +185,8 @@
 	icon_state = "spiderrock"
 	icon_living = "spiderrock"
 	icon_dead = "spiderrock-dead"
-	name = "rockspider"
-	desc = "These beasts, native to rockhill, are similar in behaviour and tenacity to the beespider, differing in their recessed heads and hairy brown bodies."
+	name = "岩蛛"
+	desc = "这些原生于岩丘的野兽，习性和顽强程度与蜜蛛相似，区别在于内缩的头部和长满毛的棕色身躯。"
 
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1,

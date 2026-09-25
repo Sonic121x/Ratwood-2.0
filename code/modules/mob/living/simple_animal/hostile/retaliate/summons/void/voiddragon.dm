@@ -121,7 +121,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 			return pick('sound/vo/mobs/vdragon/drgn.ogg')
 
 /datum/intent/unarmed/dragonclaw
-	name = "gouge"
+	name = "凿击"
 	icon_state = "inchop"
 	attack_verb = list("切割", "凿击", "剔骨")
 	animname = "cut"
@@ -578,7 +578,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	var/mob/living/carbon/target = targets[1]
 	var/distance = get_dist(user.loc,target.loc)
 	if(distance>3)
-		to_chat(user, span_colossus("[target.p_theyre(TRUE)]太远了！"))
+		to_chat(user, span_colossus("[target.p_they(TRUE)]离得太远了！"))
 
 		return FALSE
 	if(do_after(user, 2 SECONDS, target = src))
@@ -664,14 +664,14 @@ It will also call down lightning strikes from the sky, and fling people with it'
 
 /obj/item/roguekey/mage/dragon
 	name = "虚空钥匙"
-	desc = "一把微微发亮、看起来极为不详的钥匙。曾经嵌在龙鳞之间，如今不过是个战利品。"
+	desc = "一把微微发亮、看起来极为不祥的钥匙。曾经嵌在龙鳞之间，如今不过是个战利品。"
 	icon_state = "voidkey"//Temp. I hate temp sprites!!!!
 	lockid = "void_dragon"
 
 /obj/effect/oneway/dragon
 	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "胜利或死亡——一旦越过此点，你要么凯旋，要么倒下。推荐5名以上玩家。"
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少5名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
