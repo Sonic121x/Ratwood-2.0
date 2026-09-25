@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/undead
-	name = "死灵赛加羚"
-	desc = "一头死灵化的赛加羚，双眼泛着诡异的幽光。"
+	name = "亡灵赛加羚羊"
+	desc = "一头化为亡灵的赛加羚羊，双眼泛着诡异的幽光。"
 	icon = 'modular_hearthstone/icons/mob/saiga_undead.dmi'
 	icon_state = "saiga"
 	icon_living = "saiga"
@@ -86,7 +86,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/undead/proc/reanimation()
 	if(!QDELETED(src) && stat != DEAD)
-		visible_message(span_danger("那头死灵赛加羚又站了起来。"))
+		visible_message(span_danger("那头亡灵赛加羚羊又站了起来。"))
 		health = maxHealth
 		leg_health = max_leg_health
 		head_health = max_head_health

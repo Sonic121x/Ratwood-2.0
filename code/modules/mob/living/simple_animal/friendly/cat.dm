@@ -7,7 +7,7 @@
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
 	gender = MALE
-	speak = list("Meow!", "Esp!", "Purr!", "HSSSSS")
+	speak = list("喵！", "咪！", "呼噜！", "嘶——")
 	speak_emote = list("呼噜叫", "喵喵叫")
 	emote_hear = list("喵喵叫。", "咪咪叫。")
 	emote_see = list("摇了摇头。", "颤抖着。")
