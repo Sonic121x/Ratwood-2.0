@@ -7,7 +7,7 @@
 	invocations = list("亵渎，迸发！")
 
 /obj/projectile/energy/unholyblast
-	name = "Unholy Blast"
+	name = "亵渎冲击"
 	icon_state = "divine_blast"
 	damage = 20 // wont do much to a heretical worshipper
 	woundclass = BCLASS_CUT // I REALLY wanted to do cut
