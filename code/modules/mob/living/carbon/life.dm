@@ -264,19 +264,19 @@
 		for(var/obj/item/embedded as anything in bodypart.embedded_objects)
 			if(embedded.item_flags & SURGICAL_TOOL)
 				if(prob(2))
-					to_chat(src, span_danger("[embedded] in my [bodypart.name] hurts!"))
+					to_chat(src, span_danger("嵌在我[bodypart.name]里的[embedded]让我疼痛难忍！"))
 				continue // surgical tools embedded as part of an ongoing operation shouldn't tick damage, This makes surgery hellish to do.
 			if(embedded.on_embed_life(src, bodypart))
 				continue
 
 			if(prob(embedded.embedding.embedded_pain_chance))
 				bodypart.receive_damage(embedded.w_class*embedded.embedding.embedded_pain_multiplier)
-				to_chat(src, span_danger("[embedded] in my [bodypart.name] hurts!"))
+				to_chat(src, span_danger("嵌在我[bodypart.name]里的[embedded]让我疼痛难忍！"))
 
 			if(prob(embedded.embedding.embedded_fall_chance))
 				bodypart.receive_damage(embedded.w_class*embedded.embedding.embedded_fall_pain_multiplier)
 				bodypart.remove_embedded_object(embedded)
-				to_chat(src,span_danger("[embedded] falls out of my [bodypart.name]!"))
+				to_chat(src,span_danger("[embedded]从我的[bodypart.name]中脱落了！"))
 
 /*
 Alcohol Poisoning Chart

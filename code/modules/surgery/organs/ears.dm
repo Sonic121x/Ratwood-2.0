@@ -1,5 +1,5 @@
 /obj/item/organ/ears
-	name = "ears"
+	name = "耳朵"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ear"
 	desc = ""
@@ -10,10 +10,10 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
-	low_threshold_passed = span_info("My ears begin to resonate with an internal ring sometimes.")
-	now_failing = span_warning("I are unable to hear at all!")
-	now_fixed = span_info("Noise slowly begins filling my ears once more.")
-	low_threshold_cleared = span_info("The ringing in my ears has died down.")
+	low_threshold_passed = span_info("我的耳中开始时不时响起嗡鸣。")
+	now_failing = span_warning("我什么都听不见了！")
+	now_fixed = span_info("声音再次缓缓传入我的耳中。")
+	low_threshold_cleared = span_info("我的耳鸣平息了。")
 
 	visible_organ = TRUE
 
@@ -56,7 +56,7 @@
 		if(prob(damage / 20) && (damage > low_threshold))
 			adjustEarDamage(0, 4)
 			SEND_SOUND(C, sound('sound/blank.ogg'))
-			to_chat(C, span_warning("The ringing in my ears grows louder, blocking out any external noises for a moment."))
+			to_chat(C, span_warning("我的耳鸣越来越响，一时间盖过了外界的所有声音。"))
 	else if((organ_flags & ORGAN_FAILING) && (deaf == 0))
 		deaf = 1	//stop being not deaf you deaf idiot
 
@@ -104,44 +104,44 @@
 
 
 /obj/item/organ/ears/cat
-	name = "cat ears"
+	name = "猫耳"
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "kitty"
 	damage_multiplier = 2
 	accessory_type = /datum/sprite_accessory/ears/cat_big
 
 /obj/item/organ/ears/penguin
-	name = "penguin ears"
+	name = "企鹅耳朵"
 	desc = ""
 	var/datum/component/waddle
 
 /obj/item/organ/ears/penguin/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
 	. = ..()
 	if(istype(H))
-		to_chat(H, span_notice("I suddenly feel like you've lost my balance."))
+		to_chat(H, span_notice("我突然感觉失去了平衡。"))
 		waddle = H.AddComponent(/datum/component/waddling)
 
 /obj/item/organ/ears/penguin/Remove(mob/living/carbon/human/H,  special = 0)
 	. = ..()
 	if(istype(H))
-		to_chat(H, span_notice("My sense of balance comes back to you."))
+		to_chat(H, span_notice("我的平衡感恢复了。"))
 		QDEL_NULL(waddle)
 
 /obj/item/organ/ears/bronze
-	name = "tin ears"
+	name = "锡耳"
 	desc = ""
 	damage_multiplier = 0.1 //STRONK
 	bang_protect = 1 //Fear me weaklings.
 
 /obj/item/organ/ears/cybernetic
-	name = "cybernetic ears"
+	name = "机械耳"
 	icon_state = "ears-c"
 	desc = ""
 	damage_multiplier = 0.9
 	organ_flags = ORGAN_SYNTHETIC
 
 /obj/item/organ/ears/cybernetic/upgraded
-	name = "upgraded cybernetic ears"
+	name = "强化机械耳"
 	icon_state = "ears-c-u"
 	desc = ""
 	damage_multiplier = 0.5
@@ -153,46 +153,46 @@
 	damage += 40/severity
 
 /obj/item/organ/ears/anthro
-	name = "wild-kin ears"
+	name = "兽裔耳朵"
 
 /obj/item/organ/ears/lupian
-	name = "lupian ears"
+	name = "卢皮安耳朵"
 
 /obj/item/organ/ears/vulpkanin
-	name = "venardine ears"
+	name = "维纳丁耳朵"
 	accessory_type = /datum/sprite_accessory/ears/fox
 
 /obj/item/organ/ears/tajaran
-	name = "tajaran ears"
+	name = "塔巴西耳朵"
 
 /obj/item/organ/ears/elf
-	name = "elf ears"
+	name = "精灵耳朵"
 	accessory_type = /datum/sprite_accessory/ears/elf
 
 /obj/item/organ/ears/elfw
-	name = "wood elf ears"
+	name = "木精灵耳朵"
 	accessory_type = /datum/sprite_accessory/ears/elfw
 
 /obj/item/organ/ears/tiefling
-	name = "tiefling ears"
+	name = "提夫林耳朵"
 	accessory_type = /datum/sprite_accessory/ears/elf
 
 /obj/item/organ/ears/akula
-	name = "axian ears"
+	name = "阿克西安耳朵"
 	accessory_type = /datum/sprite_accessory/ears/shark
 
 /obj/item/organ/ears/halforc
-	name = "halforc ears"
+	name = "半兽人耳朵"
 	accessory_type = /datum/sprite_accessory/ears/halforc
 
 /obj/item/organ/ears/goblin
-	name = "goblin ears"
+	name = "哥布林耳朵"
 	accessory_type = /datum/sprite_accessory/ears/goblin
 
 /obj/item/organ/ears/psy_vault_guard
-	name = "cobra hood"
+	name = "眼镜蛇颈罩"
 	accessory_type = /datum/sprite_accessory/ears/cobrahood
 
 /obj/item/organ/ears/harpy
-	name = "harpy ears"
-	desc = "You are a monster."
+	name = "哈比耳朵"
+	desc = "你真是个怪物。"
