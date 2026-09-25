@@ -3,7 +3,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf_undead
 //I'm not inhereting base wolf either because it uses cursed elements and AI.
 	icon = 'modular_hearthstone/icons/mob/wolf_undead.dmi'
-	name = "死灵狼"
+	name = "亡灵沃尔夫"
 	desc = "一头被拖入不死之途的狼，正不屈地龇牙低吼，渴求着新鲜血肉。"
 	icon_state = "wolf"
 	icon_living = "wolf"
@@ -148,39 +148,39 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "头部"
+			return "head"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "头部"
+			return "head"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "鼻部"
+			return "nose"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "嘴部"
+			return "mouth"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "头部"
+			return "head"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "头部"
+			return "head"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "颈部"
+			return "neck"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "前肢"
+			return "foreleg"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "前肢"
+			return "foreleg"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "后肢"
+			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "后肢"
+			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "腹部"
+			return "stomach"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "尾部"
+			return "tail"
 		if(BODY_ZONE_HEAD)
-			return "头部"
+			return "head"
 		if(BODY_ZONE_R_LEG)
-			return "后肢"
+			return "leg"
 		if(BODY_ZONE_L_LEG)
-			return "后肢"
+			return "leg"
 		if(BODY_ZONE_R_ARM)
-			return "前肢"
+			return "foreleg"
 		if(BODY_ZONE_L_ARM)
-			return "前肢"
+			return "foreleg"
 	return ..()

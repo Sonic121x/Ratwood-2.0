@@ -7,8 +7,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan
 	icon = 'icons/mob/summonable/32x32.dmi'
-	name = "灵脉狼人"
-	desc = "由灵脉能量构成的生物。极具领地意识，嫉妒地守护着自己的家园灵脉。"
+	name = "地脉狼人"
+	desc = "由地脉能量构成的生物。领地意识极强，寸步不让地守护着赖以为家的地脉。"
 	icon_state = "leycreature"
 	icon_living = "leycreature"
 	icon_dead = "leycreature"

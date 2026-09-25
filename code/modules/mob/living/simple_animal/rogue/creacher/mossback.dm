@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback
 	icon = 'icons/roguetown/mob/monster/boglobster.dmi'
-	name = "mossback"
+	name = "苔背兽"
 	icon_state = "mossback"
 	icon_living = "mossback"
 	icon_dead = "mossback_dead"
-	speak_emote = list("clicks")
-	emote_hear = list("clicks.")
-	emote_see = list("clacks.")
+	speak_emote = list("咔嗒作响")
+	emote_hear = list("发出咔嗒声。")
+	emote_see = list("咔哒作响。")
 	gender = MALE
 	emote_hear = null
 	emote_see = null

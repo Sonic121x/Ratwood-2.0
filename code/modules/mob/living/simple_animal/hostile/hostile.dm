@@ -420,7 +420,7 @@
 /mob/living/simple_animal/hostile/proc/Aggro()
 	vision_range = aggro_vision_range
 	if(target && emote_taunt.len && prob(taunt_chance))
-		emote("me", 1, "[pick(emote_taunt)] at [target].")
+		emote("me", 1, "对着[target][pick(emote_taunt)]。")
 		taunt_chance = max(taunt_chance-7,2)
 	emote("aggro")
 
