@@ -1,8 +1,8 @@
 //Badgers are about a little stronger than raccoons, but still weak compared to wolfs and foxes.
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/badger
 	icon = 'icons/roguetown/mob/monster/badger.dmi'
-	name = "bauson"
-	desc = "A hostile little thing, it can put some volfs to shame with it's aggression."
+	name = "獾"
+	desc = "一个凶悍的小家伙，凶起来连沃尔夫都要自愧不如。"
 	icon_state = "badger"
 	icon_living = "badger"
 	icon_dead = "badger_dead"
@@ -31,8 +31,8 @@
 	STASPD = 16	//Pretty fast.
 
 /obj/effect/decal/remains/badger
-	name = "remains"
-	desc = "Whether through unlucky circumstance or other means, this badger has passed. Lucky you."
+	name = "遗骸"
+	desc = "不管是遭遇不幸还是别的缘故，这只獾已经死了。算你走运。"
 	gender = PLURAL
 	icon_state = "bones"
 	icon = 'icons/roguetown/mob/monster/badger.dmi'
