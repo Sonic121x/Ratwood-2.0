@@ -3,13 +3,13 @@
 // 归类：-GameMaster-
 // 行为：管理员触发后，先发布一条全服醒目公告，告知玩家 60 秒后将进行清扫，
 //       请大家收好地上需要的物品；60 秒后删除整张地图地面上的下列杂物：
-//       器官、武器、头颅、肢体、骨头、肉、腐肉，以及“非玩家”尸体。
+//       器官、武器、头颅、颅骨、肢体、屠宰材料、残骸，以及“非玩家”尸体。
 // 设计要点（为什么这样写）：
 //   * 用类型缓存(typecache)而非逐个 istype()，因为世界物品数量庞大，
 //     O(1) 的关联数组查找能显著降低单次清理造成的卡顿。
 //   * 倒计时通过 addtimer 异步排程，避免阻塞游戏主循环；管理员在确认前可取消。
 //   * 尸体只删“从未被玩家控制过”的，绝不误删可复活/可返回的玩家躯体。
-// 仅本文件 + _load.dm 的一行 include 改动，全部位于 modular_z121 之内。
+// 清理逻辑集中在本文件，由模块加载文件引入。
 // =============================================================================
 
 // 倒计时时长（单位：游戏刻 deciseconds）。做成宏，使“公告文案”与“定时器”共用
@@ -30,6 +30,8 @@
 		/obj/item/rogueweapon,                                 // 武器（roguetown 所有武器的基类）
 		/obj/item/clothing,                                    // 衣服（含 /obj/item/clothing/armor 等子类）
 		/obj/item/bodypart,                                    // 肢体（含 /obj/item/bodypart/head 头颅子类）
+		/obj/item/skull,                                       // 颅骨（独立于肢体类型）
+		/obj/item/natural/head,                                // 动物/怪物的屠宰头颅
 		/obj/item/natural/bone,                                // 骨头
 		/obj/item/natural/bundle,                              // 物品（如肉、腐肉、皮等）
 		/obj/item/reagent_containers/food/snacks/rogue/meat,   // 肉（生肉 + 同类型的腐肉）
@@ -38,9 +40,20 @@
 		/obj/item/alch/viscera,                                // 内脏（炼金素材）
 		/obj/item/alch/bone,                                   // 骨料（炼金素材，区别于 natural/bone）
 		/obj/item/natural/fur,                                 // 毛皮
+		/obj/item/natural/feather,                             // 羽毛
+		/obj/item/natural/rabbitsfoot,                         // 兔脚
+		/obj/item/natural/silk,                                // 蛛丝
+		/obj/item/alch/horn,                                   // 兽角
+		/obj/item/roguegem/chitin,                             // 甲壳（仅此类，不扩展到所有宝石）
+		/obj/item/reagent_containers/food/snacks/fat,           // 脂肪（独立于肉类类型）
+		/obj/item/reagent_containers/food/snacks/rogue/honey/spider, // 蜘蛛蜜
+		/obj/item/reagent_containers/spidervenom_inert,         // 蛛毒
+		/obj/item/reagent_containers/powder/ozium,              // 沼泽怪物的屠宰产物
+		/obj/item/reagent_containers/powder/herozium,           // 沼泽怪物的屠宰产物
 		/obj/item/natural/worms/leech,                         // 水蛭
 		/obj/item/ash,                                         // 灰烬
 		/obj/item/natural/stone,                               // 石块
+		/obj/item/natural/dirtclod,                            // 土块（部分魔宠的屠宰产物）
 	))
 
 // -----------------------------------------------------------------------------
@@ -77,6 +90,12 @@
 		if(protective_typecache[S.type])
 			return TRUE
 	return FALSE
+
+// 残骸属于独立的贴花类型，需单独判断，并沿用地面与承托物保护规则。
+/proc/world_cleanup_should_delete_remains(obj/effect/decal/remains/remains, list/protective_typecache)
+	if(QDELETED(remains) || !isturf(remains.loc))
+		return FALSE
+	return !world_cleanup_turf_is_protected(remains.loc, protective_typecache)
 
 // -----------------------------------------------------------------------------
 // “污渍清理白名单（排除项）”类型缓存
@@ -152,6 +171,7 @@
 	var/list/stain_excluded_typecache = world_cleanup_stain_excluded_typecache()
 	var/deleted_items = 0       // 统计已删除的地面物品数量，便于反馈与排查。
 	var/deleted_corpses = 0     // 统计已删除的非玩家尸体数量。
+	var/deleted_remains = 0     // 统计已删除的地面残骸数量。
 	var/deleted_stains = 0      // 统计已清除的污渍（可清洁污迹）数量。
 	var/protected_items = 0     // 统计因处于受保护地块而被豁免的物品数量，便于反馈。
 
@@ -200,7 +220,17 @@
 		catch(var/exception/corpse_error)
 			log_admin("World cleanup failed to delete a corpse ([L ? L.type : "null"]): [corpse_error]")
 
-	// —— 第三步：清理污渍 ——
+	// —— 第三步：清理残骸 ——
+	for(var/obj/effect/decal/remains/remains in world)
+		try
+			if(!world_cleanup_should_delete_remains(remains, protective_typecache))
+				continue
+			qdel(remains)
+			deleted_remains++
+		catch(var/exception/remains_error)
+			log_admin("World cleanup failed to delete remains ([remains ? remains.type : "null"]): [remains_error]")
+
+	// —— 第四步：清理污渍 ——
 	// 污渍统一为 /obj/effect/decal/cleanable（血迹/泥污/食物残渍/呕吐物等），属于 /obj/effect，
 	// 不会被前面的 /obj/item 循环覆盖，故单独遍历清除。
 	// 注意：污渍是“满地脏污”，不受桌子/货架/箱柜的地块豁免影响——用户要求清除“全部污渍”，
@@ -218,10 +248,11 @@
 			// 单个污渍删除失败只记录、不中断整轮清理。
 			log_admin("World cleanup failed to delete a stain ([stain ? stain.type : "null"]): [stain_error]")
 
-	// —— 第四步：结果回执 ——
+	// —— 第五步：结果回执 ——
 	// 把本轮清理的统计结果（含污渍数与因承托物而豁免的数量）写入管理日志并广播到管理频道，形成可追溯记录。
-	log_admin("World cleanup (triggered by [initiator_name]) removed [deleted_items] ground item(s), [deleted_corpses] non-player corpse(s) and [deleted_stains] stain(s); spared [protected_items] item(s) resting on tables/racks/open containers.")
-	message_admins(span_adminnotice("World cleanup (triggered by [initiator_name]) removed [deleted_items] ground item(s), [deleted_corpses] non-player corpse(s) and [deleted_stains] stain(s); spared [protected_items] item(s) on tables/racks/open containers."))
+	var/result_message = "世界清理完成（发起者：[initiator_name]）：已清除 [deleted_items] 件地面物品、[deleted_corpses] 具非玩家尸体、[deleted_remains] 处残骸和 [deleted_stains] 处污渍；保留了桌子、货架或敞开的箱柜上的 [protected_items] 件物品。"
+	log_admin(result_message)
+	message_admins(span_adminnotice(result_message))
 
 // -----------------------------------------------------------------------------
 // 管理指令本体（GameMaster 分类下的可调用动词）
@@ -229,7 +260,7 @@
 /client/proc/cleanup_world()
 	set category = "-GameMaster-"
 	set name = "Clean up the world"
-	set desc = "Announce a 60-second warning, then delete loose organs, weapons, heads, limbs, bones, meat, rotten meat, and non-player corpses from the ground."
+	set desc = "Announce a 60-second warning, then delete loose organs, equipment, heads, skulls, limbs, butchering materials, remains, and non-player corpses from the ground."
 
 	// 权限校验：只有具备管理员权限者可执行，防止越权调用。
 	if(!check_rights(R_ADMIN))
@@ -238,7 +269,7 @@
 	// 二次确认对话框：给管理员一个“优雅取消”的入口（满足可取消的要求）。
 	// 选择 Cancel 或直接关闭弹窗（返回值非 "Yes"）都会安全中止。
 	var/confirm = alert(src,
-		"This will broadcast a server-wide warning and, in 60 seconds, delete loose organs, weapons, heads, limbs, bones, meat, rotten meat, and non-player corpses from every ground tile. Items on tables, racks/shelves, or inside open chests/closets are spared. Proceed?",
+		"This will broadcast a server-wide warning and, in 60 seconds, delete loose organs, equipment, heads, skulls, limbs, butchering materials, remains, and non-player corpses from every ground tile. Items and remains on tables, racks/shelves, or inside open chests/closets are spared. Proceed?",
 		"Clean up the world",
 		"Yes", "Cancel")
 	if(confirm != "Yes")
@@ -251,12 +282,12 @@
 	// 文案中明确告知玩家：放在桌子、货架或敞开的箱柜上的物品不会被清理，
 	// 引导玩家把想保留的东西归置到这些承托物上，而非散落在地面。
 	priority_announce(
-		"世界将在60秒后清理地面上的垃圾,包括装备和武器,以及屠宰生物会获得的大部分材料,同时会清除地面上的所有污渍(血迹、泥污等),若是有想要保留的物品,请尽快收好(放在桌子、货架或敞开的箱柜上的物品不会被清理)",
+		"世界将在60秒后清理地面上的垃圾,包括装备和武器、颅骨、残骸,以及屠宰材料(肉、脂肪、兽头、皮毛、骨头、兽角、羽毛、蛛丝、甲壳、蛛毒等),同时会清除地面上的所有污渍(血迹、泥污等),若是有想要保留的物品,请尽快收好(放在桌子、货架或敞开的箱柜上的物品和残骸不会被清理)",
 		title = "WORLD CLEANUP INCOMING",
 		sound = 'sound/misc/bell.ogg')
 
 	// 即时反馈给触发者本人 + 写入管理日志/管理频道，形成操作留痕。
-	to_chat(src, span_notice("World cleanup announced. Ground items and non-player corpses will be purged in 60 seconds."))
+	to_chat(src, span_notice("World cleanup announced. Ground items, remains and non-player corpses will be purged in 60 seconds."))
 	log_admin("[key_name(usr)] started a world cleanup; the ground purge will run in 60 seconds.")
 	message_admins(span_adminnotice("[key_name_admin(usr)] started a world cleanup; the ground purge will run in 60 seconds."))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Clean up the world")

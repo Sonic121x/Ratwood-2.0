@@ -84,7 +84,6 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 		"风之原初体" = /mob/living/simple_animal/hostile/retaliate/rogue/primordial/air,
 		"地狱犬" = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound,
 		"恶鬼" = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend,
-		"虚空巨龙" = /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon,
 		"大型梦魇魔" = /mob/living/simple_animal/hostile/rogue/dreamfiend/major/unbound,
 		"远古梦魇魔" = /mob/living/simple_animal/hostile/rogue/dreamfiend/ancient/unbound,
 	),

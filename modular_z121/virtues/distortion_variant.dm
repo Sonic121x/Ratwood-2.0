@@ -3,7 +3,7 @@
 // 自定义美德（Custom Virtue）：畸变变种 / Distortion Variant
 // ----------------------------------------------------------------------------
 // 设计目标（为什么要做这个文件）：
-//   实现一个全新的、需消耗 6 点凯旋点数（triumph_cost = 6）的被动美德"畸变变种"。
+//   实现一个全新的、需消耗 3 点凯旋点数（triumph_cost = 3）的被动美德"畸变变种"。
 //   背景：你曾被施以可怖的实验，肉体因此变得极不稳定——你的种族每天都会切换一次。
 //   限制（Requirement）：【仅限血肉之躯（flesh and blood）的角色可获取】。
 //   授予特性【畸变变种】，其效果为：
@@ -120,20 +120,20 @@
 // ----------------------------------------------------------------------------
 /datum/virtue/utility/distortion_variant
 	// 菜单中显示的美德名（"仅限血肉之躯"是限制说明，不写进名字本身）。
-	name = "畸变变种（-6）"
+	name = "畸变变种（-3）"
 	// 角色内描述（in-character）：呼应"被恐怖实验改造、肉体极不稳定、每日变种"的设定基调。
 	desc = "你曾被施以可怖的实验，肉体因此变得极不稳定——你的种族每天都会切换一次。\
 			每个夜晚，剧痛都会贯穿全身，你的血肉与骨骼在痛苦中重塑成另一副模样。"
 	// custom_text 用机制语言把硬性规则讲清楚：适用对象、代价、以及核心效果。
 	custom_text = "【仅限血肉之躯（flesh and blood）的角色获取】\n\
-	消耗 6 点凯旋点数。获得【畸变变种】特性：\n\
+	消耗 3 点凯旋点数。获得【畸变变种】特性：\n\
 	· 每天夜晚，你会在剧烈的疼痛中随机切换成另一个【血肉之躯】的种族；\n\
 	· 变种只会变成血肉之躯的种族，绝不会变成构造体 / 史莱姆 / 亡魂等非血肉种族；\n\
 	· 换种族时，上一个种族赋予的特性与能力会被一并清除（由引擎换种族流程处理）。"
-	// 消耗 6 点凯旋点数。基类 New() 会自动把"Costs 6 TRIUMPH"追加进 desc；
+	// 消耗 3 点凯旋点数。基类 New() 会自动把"Costs 3 TRIUMPH"追加进 desc；
 	//   check_triumphs() 会在 apply_virtue 流程开头校验并扣除；若领取者非血肉之躯，
 	//   apply_to_human 会把这笔点数全额退还（见下）。
-	triumph_cost = 6
+	triumph_cost = 3
 	// 为什么"不"用任何静态通道（added_traits / added_stats 等）：
 	//   所有效果都必须先通过"血肉之躯"判定后才允许授予，而 handle_traits / handle_stats 等
 	//   都在 apply_to_human 之后【无条件】执行——若把效果放进静态通道，非血肉之躯即便被
@@ -158,7 +158,7 @@
 	// 为什么校验：需求明确"必须是血肉之躯的种族"。对构造体 / 史莱姆 / 亡魂等非血肉角色，
 	//   "肉体在痛苦中重塑成另一副血肉之躯"在设定上不成立，故优雅降级：退款、提示、不授予能力。
 	if(!distortion_species_is_flesh_and_blood(recipient.dna?.species))
-		// 退还已扣除的凯旋点数：apply_virtue 顺序是 check_triumphs()（已扣 6 点）→ apply_to_human()。
+		// 退还已扣除的凯旋点数：apply_virtue 顺序是 check_triumphs()（已扣 3 点）→ apply_to_human()。
 		//   既然能力对非血肉者不生效，就把点数原数退回；adjust_triumphs 第二参 FALSE = 不弹提示音/特效。
 		if(triumph_cost)
 			recipient.adjust_triumphs(triumph_cost, FALSE)
