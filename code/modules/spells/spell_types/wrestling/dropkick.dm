@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/invoked/dropkick // 1st of the grapple spells, this one does 50 damage and throws the target a good distance.
-	name = "Dropkick"
-	desc = "Requires an aggressive grab. After a brief wind up, kicks the target far away from you, knock both of you over."
+	name = "腾空飞踢"
+	desc = "需要强力抓取。短暂蓄势后，将目标踢向远处，使双方倒地。"
 
 	recharge_time = 60 SECONDS
 	invocation_type = "emote"
@@ -14,17 +14,17 @@
 /obj/effect/proc_holder/spell/invoked/dropkick/cast(list/targets, mob/living/user,)
 	var/mob/living/target = targets[1]
 	if(!target)
-		to_chat(user, span_warning("You need a valid target to begin the wrestling!"))
+		to_chat(user, span_warning("你需要有效目标才能施展摔跤招式！"))
 		revert_cast()
 		return FALSE
 
 	if(target == user)
-		to_chat(user, span_notice("You can't wrestle yourself."))
+		to_chat(user, span_notice("你不能和自己摔跤。"))
 		revert_cast()
 		return FALSE
 
 	if(user.pulling != target || user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You must have an aggressive grab on [target] to begin the wrestling!"))
+		to_chat(user, span_warning("你必须先强力抓住[target]，才能施展摔跤招式！"))
 		revert_cast()
 		return FALSE
 
@@ -34,8 +34,8 @@
 
 	var/channel_time = 1 SECONDS
 
-	to_chat(user, span_notice("You begin lining up your kick onto [target]!"))
-	to_chat(target, span_userdanger("[user] lines up for a massive kick!"))
+	to_chat(user, span_notice("你瞄准[target]，准备飞踢！"))
+	to_chat(target, span_userdanger("[user]蓄势准备使出一记猛踢！"))
 
 	tracker.channeling_throw = TRUE
 	user.emote("attack") // plays the sound effect
@@ -80,7 +80,7 @@
 	if(user.IsKnockdown()) // can't do it while on the floor.
 		tracker.channeling_throw = FALSE
 		user.stop_pulling(TRUE)
-		to_chat(user, span_notice("I'm interupted!"))
+		to_chat(user, span_notice("我的动作被打断了！"))
 		revert_cast()
 		animate(user, pixel_x = original_pixel_x, pixel_y = original_pixel_y, pixel_z = original_pixel_z, time = 1 SECONDS)
 		return FALSE
@@ -137,7 +137,7 @@
 		user.Knockdown(2 SECONDS)
 		target.safe_throw_at(throw_target, 2, 4, user, force = MOVE_FORCE_DEFAULT)
 		target.remove_status_effect(/datum/status_effect/buff/clash)
-		to_chat(user, span_notice("A reversal!"))
+		to_chat(user, span_notice("被反制了！"))
 		playsound(user, 'sound/combat/crowdcheer.ogg', 100, TRUE) // sick parry dude
 	
 	else
@@ -146,7 +146,7 @@
 		target.Knockdown(2 SECONDS)
 		user.Knockdown(2 SECONDS)
 		playsound(user, 'sound/combat/tf2crit.ogg', 100, TRUE)
-		to_chat(user, span_notice("[user] rushes forward and dropkicks [target]!"))
+		to_chat(user, span_notice("[user]冲上前去，腾空踢向[target]！"))
 
 
 	// using spellblade melee thing for the damage and aimed zone.
