@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(migrants)
 	log_game("Migrants: FAILED to spawn wave: [wave_type]")
 	wave_cooldown[wave_type] = world.time + get_fail_cooldown(wave)
 	for(var/client/client as anything in get_wave_candidates(wave_type))
-		to_chat(client, span_boldwarning("The wave you queued for, [wave.name], failed to gather enough people and scattered into the mist. You have left the queue."))
+		to_chat(client, span_boldwarning("你排队等待的[wave.name]未能召集足够的人手，已消散在迷雾中。你已退出队列。"))
 	if(track == MIGRANT_TRACK_TRIUMPH)
 		refund_wave_contributions(wave)
 	reset_wave_queue(wave_type)
@@ -311,7 +311,7 @@ SUBSYSTEM_DEF(migrants)
 	if(spawn_on_location)
 		character.forceMove(assignment.spawn_location)
 
-	to_chat(character, span_alertsyndie("I am a [role.name]!"))
+	to_chat(character, span_alertsyndie("我是一名[role.name]！"))
 	var/wave_greet = isnull(greet_text) ? wave.greet_text : greet_text
 	if(wave_greet)
 		to_chat(character, span_notice("[wave_greet]"))
@@ -454,7 +454,7 @@ SUBSYSTEM_DEF(migrants)
 
 	var/current_triumph = SStriumphs.get_triumphs(player.ckey)
 	if(current_triumph < amount)
-		to_chat(player, span_warning("You don't have enough triumph! You have [current_triumph], need [amount]."))
+		to_chat(player, span_warning("你的凯旋点不足！你有 [current_triumph] 点，需要 [amount] 点。"))
 		return FALSE
 
 	player.adjust_triumphs(-amount, TRUE, "Wave influence: [wave.name]")
@@ -470,7 +470,7 @@ SUBSYSTEM_DEF(migrants)
 		global_triumph_contributions[player.ckey][wave_type] = 0
 	global_triumph_contributions[player.ckey][wave_type] += amount
 
-	to_chat(player, span_notice("You've contributed [amount] triumph to '[wave.name]'. Total: [wave.triumph_total]/[wave.triumph_threshold]"))
+	to_chat(player, span_notice("你已为“[wave.name]”贡献 [amount] 点凯旋点。总贡献：[wave.triumph_total]/[wave.triumph_threshold]"))
 
 	if(wave.triumph_total >= wave.triumph_threshold)
 		message_admins("TRIUMPH: Wave '[wave.name]' has reached its triumph threshold ([wave.triumph_total]/[wave.triumph_threshold]) and will be prioritized!")
@@ -509,7 +509,7 @@ SUBSYSTEM_DEF(migrants)
 		SStriumphs.triumph_adjust(amount, ckey)
 		var/client/client = GLOB.directory[ckey]
 		if(client)
-			to_chat(client, span_nicegreen("[wave.name] failed to arrive - your [amount] pledged triumph has been refunded."))
+			to_chat(client, span_nicegreen("[wave.name]未能抵达，你贡献的 [amount] 点凯旋点已返还。"))
 	wave.triumph_contributions.Cut()
 	wave.triumph_total = 0
 	for(var/ckey in global_triumph_contributions)
@@ -533,12 +533,12 @@ SUBSYSTEM_DEF(migrants)
 		var/datum/migrant_role/role = MIGRANT_ROLE(role_type)
 		slots += "[wave.optional_roles[role_type]] [role.name]"
 
-	var/line = "<b>A wave is forming: [wave.name]</b>"
+	var/line = "<b>一批移民正在集结：[wave.name]</b>"
 	if(length(needs))
-		line += "<br>Needs: [needs.Join(", ")]."
+		line += "<br>必需角色：[needs.Join(", ")]。"
 	if(length(slots))
-		line += "<br>Slots open for [slots.Join(", ")]."
-	line += "<br><a href='?src=[REF(src)];open_panel=1'>Click to join.</a> [wave_wait_time / (1 SECONDS)]s remaining."
+		line += "<br>可选名额：[slots.Join(", ")]。"
+	line += "<br><a href='?src=[REF(src)];open_panel=1'>点击加入。</a> 剩余 [wave_wait_time / (1 SECONDS)] 秒。"
 	for(var/mob/dead/new_player/lobby_nerd in GLOB.player_list)
 		if(!lobby_nerd.client)
 			continue
