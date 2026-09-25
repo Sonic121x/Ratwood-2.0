@@ -1,12 +1,12 @@
 /datum/migrant_role/heartfelt/lord
-	name = "Heartfelt领主"
+	name = "赤心领主"
 	advclass_cat_rolls = list(CTAG_HFT_LORD = 20)
 	allowed_races = RACES_NO_CONSTRUCT
 	show_wanderer_examine = FALSE
 	advjob_examine = FALSE
 
 /datum/migrant_role/heartfelt/hand
-	name = "Heartfelt执政之手"
+	name = "赤心执政之手"
 	advclass_cat_rolls = list(CTAG_HFT_HAND = 20)
 	allowed_races = ACCEPTED_RACES
 	grant_lit_torch = TRUE
@@ -14,7 +14,7 @@
 	advjob_examine = FALSE
 
 /datum/migrant_role/heartfelt/knight
-	name = "Heartfelt骑士"
+	name = "赤心骑士"
 	advclass_cat_rolls = list(CTAG_HFT_KNIGHT = 20)
 	allowed_races = RACES_NO_CONSTRUCT
 	grant_lit_torch = FALSE
@@ -45,7 +45,7 @@
 		GLOB.chosen_names += H.real_name
 
 /datum/migrant_role/heartfelt/retinue
-	name = "Heartfelt扈从"
+	name = "赤心随员"
 	advclass_cat_rolls = list(CTAG_HFT_RETINUE = 20)
 	allowed_races = ACCEPTED_RACES
 	grant_lit_torch = FALSE
