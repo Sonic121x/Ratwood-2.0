@@ -151,7 +151,7 @@
 	severity = WOUND_SEVERITY_FATAL
 	check_name = span_danger("颞骨")
 	crit_message = list(
-		"眼眶骨被刺破了！",
+		"颞骨被刺破了！",
 		"颞骨被刺穿了！",
 		"耳道被刺破了！",
 		"耳道被刺穿了！",
