@@ -26,7 +26,7 @@
 	sew_threshold = 35
 
 /datum/wound/puncture/large
-	name = "大洞穿刺伤"
+	name = "大创口穿刺伤"
 	whp = 40
 	sewn_whp = 20
 	bleed_rate = 1

@@ -94,7 +94,7 @@
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
 			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>[parse_zone(body_zone)]被[pick("扯掉", "劈断", "切断", "分离", "扯开缝线扯断")]了！</B>"))
+		C.visible_message(span_danger("<B>[parse_zone(body_zone)]被[pick("扯掉", "劈断", "切断", "分离", "扯断缝线撕下")]了！</B>"))
 	//past the two stage decapitation returns, so a first stage neck sever is not logged as a limb loss;
 	//the casterless branch is player-only or NPC mobs eating a body would spam it
 	if(user)
@@ -222,7 +222,7 @@
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
 			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>[src.name]被[pick("扯掉", "劈断", "切断", "分离", "扯开缝线扯断")]了！</B>"))
+		C.visible_message(span_danger("<B>[src.name]被[pick("扯掉", "劈断", "切断", "分离", "扯断缝线撕下")]了！</B>"))
 	if(body_zone != BODY_ZONE_HEAD)
 		C.delimb_pain()
 	if(!(NOBLOOD in C.dna?.species?.species_traits))

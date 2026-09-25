@@ -1,5 +1,5 @@
 /obj/item/organ/penis
-	name = "penis"
+	name = "阴茎"
 	icon_state = "severedtail" //placeholder
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -36,7 +36,7 @@
 		owner.update_body_parts(TRUE)
 
 /obj/item/organ/penis/knotted
-	name = "knotted penis"
+	name = "带结阴茎"
 	penis_type = PENIS_TYPE_KNOTTED
 	sheath_type = SHEATH_TYPE_NORMAL
 
@@ -44,83 +44,83 @@
 	penis_size = 3
 
 /obj/item/organ/penis/equine
-	name = "equine penis"
+	name = "马型阴茎"
 	penis_type = PENIS_TYPE_EQUINE
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/equine_knotted
-	name = "equine knotted penis"
+	name = "带结马型阴茎"
 	penis_type = PENIS_TYPE_EQUINE_KNOTTED
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/equine_slit
-	name = "equine penis"
+	name = "马型阴茎"
 	penis_type = PENIS_TYPE_EQUINE
 	sheath_type = SHEATH_TYPE_SLIT
 
 /obj/item/organ/penis/equine_knotted_slit
-	name = "equine knotted penis"
+	name = "带结马型阴茎"
 	penis_type = PENIS_TYPE_EQUINE_KNOTTED
 	sheath_type = SHEATH_TYPE_SLIT
 
 /obj/item/organ/penis/tapered_mammal
-	name = "tapered penis"
+	name = "锥形阴茎"
 	penis_type = PENIS_TYPE_TAPERED
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/tapered
-	name = "tapered penis"
+	name = "锥形阴茎"
 	penis_type = PENIS_TYPE_TAPERED
 	sheath_type = SHEATH_TYPE_SLIT
 
 /obj/item/organ/penis/tapered_knotted
-	name = "tapered knotted penis"
+	name = "带结锥形阴茎"
 	penis_type = PENIS_TYPE_TAPERED_KNOTTED
 	sheath_type = SHEATH_TYPE_SLIT
 
 /obj/item/organ/penis/tapered_knotted_mammal
-	name = "tapered knotted penis"
+	name = "带结锥形阴茎"
 	penis_type = PENIS_TYPE_TAPERED_KNOTTED
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/tapered_double
-	name = "hemi tapered penis"
+	name = "双根锥形阴茎"
 	penis_type = PENIS_TYPE_TAPERED_DOUBLE
 	sheath_type = SHEATH_TYPE_SLIT
 
 /obj/item/organ/penis/tapered_double_mammal
-	name = "hemi tapered penis"
+	name = "双根锥形阴茎"
 	penis_type = PENIS_TYPE_TAPERED_DOUBLE
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/tapered_double_knotted
-	name = "hemi knotted tapered penis"
+	name = "带结双根锥形阴茎"
 	penis_type = PENIS_TYPE_TAPERED_DOUBLE_KNOTTED
 	sheath_type = SHEATH_TYPE_SLIT
 
 /obj/item/organ/penis/tapered_double_knotted_mammal
-	name = "hemi knotted tapered penis (sheath)"
+	name = "带结双根锥形阴茎（带鞘）"
 	penis_type = PENIS_TYPE_TAPERED_DOUBLE_KNOTTED
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/barbed
-	name = "barbed penis"
+	name = "带刺阴茎"
 	penis_type = PENIS_TYPE_BARBED
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/barbed_knotted
-	name = "barbed knotted penis"
+	name = "带刺带结阴茎"
 	penis_type = PENIS_TYPE_BARBED_KNOTTED
 	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/tentacle
-	name = "tentacle penis"
+	name = "触手型阴茎"
 	penis_type = PENIS_TYPE_TENTACLE
 	sheath_type = SHEATH_TYPE_NONE
 
 	
 /obj/item/organ/vagina
-	name = "vagina"
+	name = "阴道"
 	icon_state = "severedtail" //placeholder
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -137,15 +137,15 @@
 	if(owner.stat == DEAD)
 		return FALSE
 	if(pregnant)
-		to_chat(owner, span_love("I feel a surge of warmth in my belly again..."))
+		to_chat(owner, span_love("我再次感到腹中涌起一股暖意……"))
 		return FALSE
-	to_chat(owner, span_love("I feel a surge of warmth in my belly, I'm definitely pregnant!"))
+	to_chat(owner, span_love("我感到腹中涌起一股暖意，我一定是怀孕了！"))
 	pregnant = TRUE
 	//TODO add a way to trigger lactating when pregnancy happens
 	return TRUE
 
 /obj/item/organ/breasts
-	name = "breasts"
+	name = "乳房"
 	icon_state = "severedtail" //placeholder
 	visible_organ = TRUE
 	zone = BODY_ZONE_CHEST
@@ -269,7 +269,7 @@
 	stop_jiggle()
 
 /obj/item/organ/testicles
-	name = "testicles"
+	name = "睾丸"
 	icon_state = "severedtail" //placeholder
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -281,6 +281,6 @@
 	var/branded_writing = ""
 
 /obj/item/organ/testicles/internal
-	name = "internal testicles"
+	name = "内置睾丸"
 	visible_organ = FALSE
 	accessory_type = /datum/sprite_accessory/none

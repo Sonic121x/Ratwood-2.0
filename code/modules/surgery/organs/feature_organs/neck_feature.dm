@@ -1,6 +1,6 @@
 /obj/item/organ/neck_feature
-	name = "neck fluff"
-	desc = "A severed bunch of fluff. What did you cut this off of?"
+	name = "颈部绒毛"
+	desc = "一簇被割下的绒毛。你从什么东西身上割下来的？"
 	icon_state = "severedtail" //placeholder
 	visible_organ = TRUE
 	zone = BODY_ZONE_CHEST

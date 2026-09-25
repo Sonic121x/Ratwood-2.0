@@ -1,5 +1,5 @@
 /obj/item/organ/heart
-	name = "heart"
+	name = "心脏"
 	desc = ""
 	icon_state = "heart-on"
 	zone = BODY_ZONE_CHEST
@@ -8,15 +8,15 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = 5 * STANDARD_ORGAN_DECAY		//designed to fail about 5 minutes after death
 
-	low_threshold_passed = span_info("Prickles of pain appear then die out from within my chest...")
-	high_threshold_passed = span_warning("Something inside my chest hurts, and the pain isn't subsiding. You notice myself breathing far faster than before.")
-	now_fixed = span_info("My heart begins to beat again.")
-	high_threshold_cleared = span_info("The pain in my chest has died down, and my breathing becomes more relaxed.")
+	low_threshold_passed = span_info("我的胸口传来阵阵刺痛，随后又渐渐消退……")
+	high_threshold_passed = span_warning("我的胸腔里持续疼痛，丝毫没有缓解。我察觉自己的呼吸比之前急促了许多。")
+	now_fixed = span_info("我的心脏重新开始跳动。")
+	high_threshold_cleared = span_info("我的胸痛减轻了，呼吸也变得轻松起来。")
 
 	// Heart attack code is in code/modules/mob/living/carbon/human/life.dm
 	var/beating = 1
 	var/icon_base = "heart"
-	attack_verb = list("beat", "thumped")
+	attack_verb = list("敲打", "捶打")
 	var/beat = BEAT_NONE//is this mob having a heatbeat sound played? if so, which?
 	var/failed = FALSE		//to prevent constantly running failing code
 	var/operated = FALSE	//whether the heart's been operated on to fix some of its damages
@@ -49,10 +49,10 @@
 	var/datum/antagonist/maniac/dreamer = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	if(dreamer)
 		if(!inscryption)
-			. += "<span class='danger'><b>There is NOTHING on this heart. \
-				Should be? Following the TRUTH - not here. I need to keep LOOKING. Keep FOLLOWING my heart.</b></span>"
+			. += "<span class='danger'><b>这颗心脏上什么都没有。\
+				本该有吗？追寻真相——它不在这里。我必须继续寻找。继续追随我的心。</b></span>"
 		else
-			. += "<b><span class='warning'>There's something CUT on this HEART.</span>\n\"[inscryption]. Add it to the other keys to exit INRL.\"</b>"
+			. += "<b><span class='warning'>这颗心脏上刻着什么。</span>\n\"[inscryption]。将它与其他钥匙组合，便能离开INRL。\"</b>"
 			if(!(inscryption in dreamer.hearts_seen))
 				dreamer.hearts_seen += inscryption
 				SEND_SOUND(dreamer, 'sound/villain/newheart.ogg')
@@ -80,8 +80,8 @@
 /obj/item/organ/heart/attack_self(mob/user)
 	..()
 	if(!beating)
-		user.visible_message("<span class='notice'>[user] squeezes [src] to \
-			make it beat again!</span>",span_notice("I squeeze [src] to make it beat again!"))
+		user.visible_message("<span class='notice'>[user]挤压[src]，\
+			让它重新跳动起来！</span>",span_notice("我挤压[src]，让它重新跳动起来！"))
 		Restart()
 		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 80)
 
@@ -135,21 +135,21 @@
 				H.playsound_local(null, heartbeat_sound, 40, FALSE, channel = CHANNEL_HEARTBEAT)
 	if(organ_flags & ORGAN_FAILING)	//heart broke, stopped beating, death imminent
 		if(owner.stat == CONSCIOUS)
-			owner.visible_message(span_danger("[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!"), \
-				span_danger("I feel a terrible pain in my chest, as if my heart has stopped!"))
+			owner.visible_message(span_danger("[owner]紧抓着自己的胸口，仿佛心脏就要停止跳动！"), \
+				span_danger("我的胸口传来剧痛，仿佛心脏已经停止跳动！"))
 		owner.set_heartattack(TRUE)
 		failed = TRUE
 		owner.stop_sound_channel(CHANNEL_HEARTBEAT)
 
 
 /obj/item/organ/heart/construct
-	name = "construct core"
-	desc = "Swirling with a blessing of Astrata and pulsing with lux inside. This allows a construct to move."
+	name = "构装体核心"
+	desc = "阿斯特拉塔的祝福萦绕其上，灵辉在内部脉动。它使构装体得以活动。"
 	icon_state = "heartcon-on"
 	icon_base = "heartcon"
 
 /obj/item/organ/heart/cursed
-	name = "cursed heart"
+	name = "诅咒心脏"
 	desc = ""
 	icon_state = "cursedheart-off"
 	icon_base = "cursedheart"
@@ -180,7 +180,7 @@
 			var/mob/living/carbon/human/H = owner
 			if(H.dna && !(NOBLOOD in H.dna.species.species_traits))
 				H.set_blood_volume(max(H.get_blood_volume() - blood_loss, 0))
-				to_chat(H, span_danger("I have to keep pumping my blood!"))
+				to_chat(H, span_danger("我必须不停地泵血！"))
 				if(add_colour)
 					H.add_client_colour(/datum/client_colour/cursed_heart_blood) //bloody screen so real
 					add_colour = FALSE
@@ -190,14 +190,14 @@
 /obj/item/organ/heart/cursed/Insert(mob/living/carbon/M, special = 0)
 	..()
 	if(owner)
-		to_chat(owner, span_danger("My heart has been replaced with a cursed one, you have to pump this one manually otherwise you'll die!"))
+		to_chat(owner, span_danger("我的心脏被换成了一颗诅咒心脏，我必须手动泵血，否则就会死！"))
 
 /obj/item/organ/heart/cursed/Remove(mob/living/carbon/M, special = 0)
 	..()
 	M.remove_client_colour(/datum/client_colour/cursed_heart_blood)
 
 /datum/action/item_action/organ_action/cursed_heart
-	name = "Pump my blood"
+	name = "手动泵血"
 
 //You are now brea- pumping blood manually
 /datum/action/item_action/organ_action/cursed_heart/Trigger()
@@ -206,12 +206,12 @@
 		var/obj/item/organ/heart/cursed/cursed_heart = target
 
 		if(world.time < (cursed_heart.last_pump + (cursed_heart.pump_delay-10))) //no spam
-			to_chat(owner, span_danger("Too soon!"))
+			to_chat(owner, span_danger("太快了！"))
 			return
 
 		cursed_heart.last_pump = world.time
 		playsound(owner,'sound/blank.ogg',40,TRUE)
-		to_chat(owner, span_notice("My heart beats."))
+		to_chat(owner, span_notice("我的心脏跳动了一下。"))
 
 		var/mob/living/carbon/human/H = owner
 		if(istype(H))
@@ -229,21 +229,21 @@
 	colour = "red"
 
 /obj/item/organ/heart/t1
-	name = "completed heart"
+	name = "完善心脏"
 	icon_state = "heart"
-	desc = "The perfect art, it feels... Completed."
+	desc = "完美的造物，感觉它已经……臻于完善。"
 	sellprice = 100
 
 /obj/item/organ/heart/t2
-	name = "blessed heart"
+	name = "受祝福的心脏"
 	icon_state = "heart"
-	desc = "They accepted this heresy to defeat a greater heresy. They call it a blessing, but we all know it's not…"
+	desc = "为了击败更大的异端，他们接纳了这种异端。他们称之为祝福，但我们都知道并非如此……"
 	sellprice = 200
 
 /obj/item/organ/heart/t3
-	name = "corrupted heart"
+	name = "腐化心脏"
 	icon_state = "heart"
-	desc = "A cursed, perverted artifact. It can serve you well—what sacrifice are you willing to offer to survive?"
+	desc = "一件受诅咒的扭曲造物。它能为你所用——为了活下去，你愿意付出怎样的牺牲？"
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	sellprice = 300
 
@@ -252,8 +252,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t1heart
 
 /atom/movable/screen/alert/status_effect/buff/t1heart
-	name = "Completed heart"
-	desc = "I have better version of heart now "
+	name = "完善心脏"
+	desc = "我现在有了一颗更强健的心脏。"
 
 /obj/item/organ/heart/t1/Insert(mob/living/carbon/M)
 	..()
@@ -272,8 +272,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t2heart
 
 /atom/movable/screen/alert/status_effect/buff/t2heart //your helper against mages
-	name = "Blessed heart"
-	desc = "A blessed heart... Maybe"
+	name = "受祝福的心脏"
+	desc = "一颗受祝福的心脏……也许吧。"
 
 /obj/item/organ/heart/t2/Insert(mob/living/carbon/M)
 	..()
@@ -295,8 +295,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t3heart
 
 /atom/movable/screen/alert/status_effect/buff/t3heart
-	name = "Corrupted heart"
-	desc = "The cursed thing is inside me now."
+	name = "腐化心脏"
+	desc = "那受诅咒的东西如今就在我体内。"
 
 /obj/item/organ/heart/t3/Insert(mob/living/carbon/M)
 	..()
