@@ -22,7 +22,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/weed
-	name = "烟草"
+	name = "西池烟草"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/pipeweed,
@@ -30,7 +30,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/swampweed
-	name = "沼泽草"
+	name = "沼泽烟草"
 	cost = 8
 	contains = list(
 					/obj/item/seeds/swampweed,
@@ -62,7 +62,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/potato
-	name = "马铃薯"
+	name = "土豆"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/potato,
@@ -160,7 +160,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/rocknut
-	name = "岩果"
+	name = "石果"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/nut,

@@ -70,7 +70,7 @@
 	desc = "一块断裂地脉的碎片，闪烁着失落的力量。"
 
 /obj/item/reagent_containers/food/snacks/grown/manabloom
-	name = "魔力花"
+	name = "法绽花"
 	icon_state = "manabloom"
 	desc = "浓郁魔力凝成了植物的形态。"
 	seed = /obj/item/herbseed/manabloom
