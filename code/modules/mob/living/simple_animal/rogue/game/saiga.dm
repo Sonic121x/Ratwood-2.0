@@ -1,7 +1,7 @@
 //the saiga
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga
-	name = "saiga doe"
+	name = "雌赛加羚羊"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/saiga.dmi'
 	icon_state = "saiga"
@@ -10,7 +10,7 @@
 	icon_gib = "saiga_gib"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("looks around.", "chews some leaves.")
+	emote_see = list("环顾四周。", "咀嚼着树叶。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -55,8 +55,8 @@
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
 	faction = list("saiga")
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头槌撞击"
+	attack_verb_simple = "头槌撞击"
 	melee_damage_lower = 10
 	melee_damage_upper = 25
 	retreat_distance = 10
@@ -78,7 +78,7 @@
 	remains_type = /obj/effect/decal/remains/saiga
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid
-	name = "saiga calf"
+	name = "赛加羚羊幼崽"
 	desc = ""
 	icon_state = "saigakid"
 	icon_living = "saigakid"
@@ -107,20 +107,20 @@
 	base_intents = list(/datum/intent/simple/headbutt/saiga)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck
-	name = "saiga buck"
+	name = "雄赛加羚羊"
 	desc = ""
 	icon_state = "buck"
 	icon_living = "buck"
 	icon_dead = "buck_dead"
 	icon_gib = "buck_gib"
 	gender = MALE
-	emote_see = list("stares.")
+	emote_see = list("凝视着前方。")
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
 	faction = list("saiga")
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头槌撞击"
+	attack_verb_simple = "头槌撞击"
 	health = 400
 	maxHealth = 400
 	melee_damage_lower = 60
@@ -143,7 +143,7 @@
 	base_intents = list(/datum/intent/simple/headbutt/saiga)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy
-	name = "saiga calf"
+	name = "赛加羚羊幼崽"
 	desc = ""
 	gender = MALE
 	icon_state = "saigaboy"
@@ -245,7 +245,7 @@
 	return
 
 /obj/effect/decal/remains/saiga
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "skele"
 	icon = 'icons/roguetown/mob/monster/saiga.dmi'
@@ -281,7 +281,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy
 	icon = 'icons/roguetown/mob/monster/saiga.dmi'
-	name = "saiga"
+	name = "赛加羚羊"
 	desc = ""
 	gender = MALE
 	icon_state = "saigaboy"

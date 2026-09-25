@@ -3,8 +3,8 @@
 							   istype(type, /turf/open/floor/rogue/AzureSand))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/sandworm
-	name = "sandworm"
-	desc = "A monstrous worm that swims effortlessly through the desert."
+	name = "沙虫"
+	desc = "一条能在沙漠中自如穿行的巨型蠕虫。"
 
 	icon = 'icons/roguetown/mob/monster/sandworm.dmi'
 	icon_state = "worm"
@@ -64,7 +64,7 @@
 		return
 	burrowed = TRUE
 	next_burrow = world.time + burrow_cooldown
-	visible_message(span_warning("[src] dives beneath the sand!"))
+	visible_message(span_warning("[src]钻入了沙下！"))
 	play_burrow_fx(burrow_fx_state)
 	addtimer(CALLBACK(src, PROC_REF(go_underground)), burrow_anim_time)
 
@@ -86,7 +86,7 @@
 	invisibility = 0
 	density = TRUE
 	mouse_opacity = initial(mouse_opacity)
-	visible_message(span_danger("[src] erupts from beneath the sand!"))
+	visible_message(span_danger("[src]从沙下猛然钻出！"))
 	play_burrow_fx(emerge_fx_state)
 	if(target)
 		AttackingTarget()
@@ -152,7 +152,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/sandworm/wormling
 
-	name = "sand wormling"
+	name = "幼沙虫"
 
 	icon_state = "hatchling"
 	icon_living = "hatchling"
@@ -179,7 +179,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/sandworm/stalker
 
-	name = "sand stalker"
+	name = "沙地潜猎者"
 	icon_living = "juvenile"
 	icon_state = "juvenile"
 	icon_dead = "juvenile-dead"
@@ -207,7 +207,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/sandworm/elder
 
-	name = "elder sandworm"
+	name = "年迈沙虫"
 	icon_living = "adult"
 	icon_state = "adult"
 	icon_dead = "adult-dead"
@@ -250,7 +250,7 @@
 	var/dist = get_dist(src, target_atom)
 	if(!can_see(src, target_atom, slam_range) || dist >= slam_range || dist > 1)
 		return
-	visible_message(span_boldwarning("[src] rears up, sand cascading off its coils!"))
+	visible_message(span_boldwarning("[src]昂起身躯，沙子从盘曲的身体上倾泻而下！"))
 	var/turf/warn_turf = get_turf(target_atom)
 	new /obj/effect/temp_visual/paw_swipe(warn_turf)
 	addtimer(CALLBACK(src, PROC_REF(do_slam), target_atom), slam_cast_time)
@@ -258,7 +258,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/sandworm/elder/proc/do_slam(atom/target_atom)
 	var/dist = get_dist(src, target_atom)
 	if(!can_see(src, target_atom, slam_range) || dist >= slam_range || dist > 1)
-		visible_message(span_alert("[src] slams into empty sand as [target_atom.p_they()] dodge clear!"))
+		visible_message(span_alert("[target_atom.p_they()]及时闪开，让[src]砸在了空无一物的沙地上！"))
 		return
 	playsound(loc, 'sound/combat/shieldraise.ogg', 100)
 	if(isliving(target_atom))
@@ -270,5 +270,5 @@
 			victim.Knockdown(slam_knockdown_time)
 		var/turf/target_turf = get_turf(target_atom)
 		new /obj/effect/temp_visual/paw_swipe(target_turf)
-		to_chat(victim, span_userdanger("[src] slams down on top of you!"))
+		to_chat(victim, span_userdanger("[src]重重砸在了你身上！"))
 		playsound(victim, 'sound/combat/hits/punch/punch (1).ogg', 100, TRUE)

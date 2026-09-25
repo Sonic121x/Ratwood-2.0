@@ -8,7 +8,7 @@
 	response_disarm_simple = "轻敲"
 	response_harm_continuous = "踢了"
 	response_harm_simple = "踢"
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU")
+	speak = list("汪", "汪呜！", "汪汪！", "嗷呜——")
 	speak_emote = list("吠叫", "汪汪叫")
 	emote_hear = list("汪汪！", "嗷呜！", "吠叫。","喘气。")
 	emote_see = list("摇了摇头。", "追着尾巴。","颤抖着。")
@@ -323,7 +323,7 @@
 	name = real_name
 	desc = initial(desc)
 	// BYOND/DM doesn't support the use of initial on lists.
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU")
+	speak = list("汪", "汪呜！", "汪汪！", "嗷呜——")
 	speak_emote = list("吠叫", "汪汪叫")
 	emote_hear = list("汪汪！", "嗷呜！", "吠叫。","喘气。")
 	emote_see = list("摇了摇头。", "追着尾巴。","颤抖着。")

@@ -4,7 +4,7 @@
 	icon_state = "imp"
 	icon_living = "imp"
 	icon_dead = "vvd"
-	summon_primer = "你是一只小鬼，一种在地狱位面中以自娱自乐和吃肉的时光中消磨的小型生物。如今你被从故乡拖入了一个新世界，而这个世界显然极度缺乏火焰。你将如何应对这些事件，只有时间才能揭晓。"
+	summon_primer = "你是一只小鬼，一种在地狱位面中靠玩乐和吃肉消磨时光的小型生物。如今你被从故乡拖入了一个新世界，而这个世界显然极度缺乏火焰。你将如何应对这些事件，只有时间才能揭晓。"
 	summon_tier = 1
 	gender = MALE
 	emote_hear = null

@@ -1,7 +1,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
-	name = "cow"
+	name = "母牛"
 	desc = ""
 	icon_state = "cow"
 	icon_living = "cow"
@@ -9,8 +9,8 @@
 	icon_gib = "cow_gib"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_hear = list("brays.")
-	emote_see = list("shakes its head.", "chews her cud.")
+	emote_hear = list("哞哞叫。")
+	emote_see = list("摇了摇头。", "反刍着。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -31,8 +31,8 @@
 	pooptype = /obj/item/natural/poo/cow
 	milkies = TRUE
 	faction = list("cows")
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头槌撞击"
+	attack_verb_simple = "头槌撞击"
 	melee_damage_lower = 10
 	melee_damage_upper = 25
 	STASPD = 2
@@ -42,7 +42,7 @@
 	remains_type = /obj/effect/decal/remains/cow
 
 /obj/effect/decal/remains/cow
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "skele"
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
@@ -60,7 +60,7 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet
-	name = "calf"
+	name = "牛犊"
 	desc = ""
 	icon_state = "cowlet"
 	icon_living = "cowlet"
@@ -124,9 +124,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/attack_hand(mob/living/carbon/M)
 	if(!stat && M.used_intent.type == INTENT_DISARM && icon_state != icon_dead && !has_buckled_mobs())
-		M.visible_message(span_warning("[M] tips over [src]."),
-			span_notice("I tip over [src]."))
-		to_chat(src, span_danger("I am tipped over by [M]!"))
+		M.visible_message(span_warning("[M]推倒了[src]。"),
+			span_notice("我推倒了[src]。"))
+		to_chat(src, span_danger("我被[M]推倒了！"))
 		Paralyze(60, ignore_canstun = TRUE)
 		icon_state = "[initial(icon_state)]_tip"
 		addtimer(CALLBACK(src, PROC_REF(untip_check), M), 60)
@@ -139,14 +139,14 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bull
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
-	name = "cow"
+	name = "公牛"
 	icon_state = "bull"
 	icon_living = "bull"
 	icon_dead = "bull_dead"
 	icon_gib = "bull_gib"
 	gender = MALE
-	emote_hear = list("chews.")
-	emote_see = list("shakes his head.", "chews his cud.")
+	emote_hear = list("咀嚼着。")
+	emote_see = list("摇了摇头。", "反刍着。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -160,8 +160,8 @@
 	faction = list("cows")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_same = 0
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头槌撞击"
+	attack_verb_simple = "头槌撞击"
 	health = 150
 	maxHealth = 150
 	melee_damage_lower = 25
@@ -241,7 +241,7 @@
 	return
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/bullet
-	name = "calf"
+	name = "牛犊"
 	desc = ""
 	gender = MALE
 	icon_state = "bullet"
