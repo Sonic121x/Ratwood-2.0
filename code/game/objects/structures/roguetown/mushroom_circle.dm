@@ -75,15 +75,15 @@ GLOBAL_LIST_EMPTY(mushroom_circles)
 		if(linked_soil.blessed_time <= 0)
 			. += span_warning("土壤中的祝福正在消退；若失去它，幼芽将难以存活。")
 		if(linked_soil.water <= 45)
-			. += span_warning("它下方的土壤很干渴。")
+			. += span_warning("它下方的土壤缺水。")
 		else if(linked_soil.water <= 150)
 			. += span_info("它下方的土壤很湿润。")
 		else
-			. += span_info("它下方的土壤很潮湿。")
+			. += span_info("它下方的土壤水分充足。")
 		if(linked_soil.nutrition <= 45)
 			. += span_warning("它下方的土壤很贫瘠。")
 		else if(linked_soil.nutrition <= 150)
-			. += span_info("它下方的土壤还算充足。")
+			. += span_info("它下方的土壤养分尚可。")
 		else
 			. += span_info("它下方的土壤看起来很肥沃。")
 
@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(mushroom_circles)
 //==============================================================================
 /obj/structure/mushroom_circle/fey
 	name = "妖精蘑菇环"
-	desc = "一圈泛着微光的淡白与紫色魔法蘑菇。Dendor 的德鲁伊以它为路标，能瞬间跨越长途。"
+	desc = "一圈泛着微光的淡白与紫色魔法蘑菇。登多尔的德鲁伊以它为路标，能瞬间跨越长途。"
 	max_integrity = 200
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	destroy_sound = "plantcross"
@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(mushroom_circles)
 		var/mob/living/carbon/human/H = user
 		if(H.patron && H.patron.type == /datum/patron/divine/dendor)
 			if(H.get_skill_level(/datum/skill/magic/druidic) >= SKILL_LEVEL_EXPERT)
-				. += span_notice("手持我的 Dendor 护符，将其按在这个蘑菇环上，就能前往另一处妖精蘑菇环。")
+				. += span_notice("手持我的登多尔护符，将其按在这个蘑菇环上，就能前往另一处妖精蘑菇环。")
 			else
 				. += span_warning("妖精的奥秘超出我当前的理解，我需要更高深的德鲁伊修行，才能与这个蘑菇环共鸣。")
 
@@ -241,7 +241,7 @@ GLOBAL_LIST_EMPTY(mushroom_circles)
 	// Dendor amulet — opens fey teleport menu
 	if(istype(I, /obj/item/clothing/neck/roguetown/psicross/dendor))
 		if(!user.patron || user.patron.type != /datum/patron/divine/dendor)
-			to_chat(user, span_warning("唯有 Dendor 的信徒才能与这个蘑菇环沟通。"))
+			to_chat(user, span_warning("唯有登多尔的信徒才能与这个蘑菇环沟通。"))
 			return
 		if(!active)
 			to_chat(user, span_warning("这个蘑菇环的力量已经衰弱，无法再将我送往任何地方。"))
