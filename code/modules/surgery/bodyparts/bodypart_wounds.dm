@@ -589,12 +589,12 @@
 			if (!owner.has_status_effect(/datum/status_effect/buff/drunk) && !owner.has_status_effect(/datum/status_effect/buff/ozium))
 				owner.emote("embed")
 		if(crit_message)
-			owner.next_attack_msg += " <span class='userdanger'>[embedder] runs through [owner]'s [src]!</span>"
+			owner.next_attack_msg += " <span class='userdanger'>[embedder]贯穿了[owner]的[src]！</span>"
 		update_disabled()
 		if(embedder.is_silver && HAS_TRAIT(owner, TRAIT_SILVER_WEAK) && !owner.has_status_effect(STATUS_EFFECT_ANTIMAGIC))
 			var/datum/component/silverbless/psyblessed = embedder.GetComponent(/datum/component/silverbless)
 			owner.adjust_fire_stacks(1, psyblessed?.is_blessed ? /datum/status_effect/fire_handler/fire_stacks/sunder/blessed : /datum/status_effect/fire_handler/fire_stacks/sunder)
-			to_chat(owner, span_danger("嵌在你体内的[embedder]晃动着，疼痛难忍！"))
+			to_chat(owner, span_danger("嵌在我体内的[embedder]晃动着，疼痛难忍！"))
 		owner.mark_zone_selector_hud_dirty()
 	return TRUE
 
