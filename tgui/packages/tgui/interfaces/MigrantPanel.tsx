@@ -36,8 +36,8 @@ type Role = {
 };
 
 const KIND_LABEL: Record<Role['kind'], string> = {
-  required: 'REQUIRED',
-  optional: 'OPTIONAL',
+  required: '必需',
+  optional: '可选',
 };
 
 type WaveInfo = {
@@ -199,24 +199,24 @@ const FormingRoster = (props: {
         {forming.name}
       </div>
       <div style={{ color: SEAL_GREEN, fontSize: '12px', marginBottom: '3px' }}>
-        Arrives in {fmtClock(forming.arrival_at - now)}
+        抵达倒计时：{fmtClock(forming.arrival_at - now)}
       </div>
       {required.length > 0 && (
         <>
-          <div style={sectionLabelStyle(SEAL_AMBER)}>Required</div>
-          <div style={noteStyle}>Must be filled or the wave will not arrive.</div>
+          <div style={sectionLabelStyle(SEAL_AMBER)}>必需角色</div>
+          <div style={noteStyle}>必须全部有人担任，否则此批移民无法抵达。</div>
           {required.map(rowFor)}
         </>
       )}
       {optional.length > 0 && (
         <>
           <div style={sectionLabelStyle(SEAL_BLUE)}>
-            {hasFloor ? 'Required-Optional' : 'Optional'}
+            {hasFloor ? '可选角色（有人数要求）' : '可选角色'}
           </div>
           <div style={noteStyle}>
             {hasFloor
-              ? `At least ${forming.min_optional_fills} of these must join, but specific slots may stay empty.`
-              : 'Extra companions - empty slots are fine.'}
+              ? `这些名额中至少须有 ${forming.min_optional_fills} 人加入，但不要求每种角色都有人担任。`
+              : '额外的同行者，名额可以空缺。'}
           </div>
           {optional.map(rowFor)}
         </>
@@ -296,11 +296,11 @@ const PurchaseCard = (props: { wave: WaveInfo; now: number; act: ActFn }) => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
         <span style={{ fontWeight: 'bold', color: ready ? SEAL_AMBER : INK, fontSize: '13px' }}>
           {wave.name}
-          {!!wave.maxed && <span style={{ color: INK_FAINT }}> (maxed)</span>}
-          {ready && !wave.maxed && <span style={{ color: SEAL_AMBER }}> (ready!)</span>}
+          {!!wave.maxed && <span style={{ color: INK_FAINT }}>（已达出现次数上限）</span>}
+          {ready && !wave.maxed && <span style={{ color: SEAL_AMBER }}>（贡献已达标！）</span>}
         </span>
         <span style={{ fontSize: '11px', color: INK_SOFT }}>
-          {locked ? `locked ${fmtClock(wave.locked_until - now)}` : `${wave.roll_chance}%`}
+          {locked ? `解锁倒计时：${fmtClock(wave.locked_until - now)}` : `${wave.roll_chance}%`}
         </span>
       </div>
       <div style={{ minHeight: '32px' }}>
@@ -314,9 +314,9 @@ const PurchaseCard = (props: { wave: WaveInfo; now: number; act: ActFn }) => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontSize: '11px', color: INK_SOFT }}>
           {wave.triumph_total}/{wave.triumph_threshold}
-          {wave.my_contribution > 0 ? ` (you: ${wave.my_contribution})` : ''}
+          {wave.my_contribution > 0 ? `（你的贡献：${wave.my_contribution}）` : ''}
           {wave.min_optional_fills > 0
-            ? ` · Min. Optionals: ${wave.min_optional_fills}`
+            ? ` · 可选角色至少需 ${wave.min_optional_fills} 人`
             : ''}
         </span>
         <button
@@ -325,7 +325,7 @@ const PurchaseCard = (props: { wave: WaveInfo; now: number; act: ActFn }) => {
           disabled={!!wave.maxed}
           onClick={() => act('buy_wave', { wave: wave.ref })}
         >
-          Pledge
+          贡献
         </button>
       </div>
     </div>
@@ -360,9 +360,9 @@ export const MigrantPanel = () => {
     <Window width={760} height={680} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>Find a Purpose</div>
+          <div style={titleStyle}>寻找人生目标</div>
           <div style={subtitleStyle}>
-            The mist parts, and travellers find their way to Rotwood Vale.
+            迷雾散去，旅人们循路而来，踏入腐木谷地。
           </div>
 
           <div
@@ -374,7 +374,7 @@ export const MigrantPanel = () => {
             }}
           >
             <span>
-              Wave {data.wave_number} &middot; Triumph: {data.player_triumph}
+              第 {data.wave_number} 批 &middot; 凯旋点：{data.player_triumph}
             </span>
             {queuedWave ? (
               <button
@@ -382,47 +382,47 @@ export const MigrantPanel = () => {
                 style={inkButtonStyle({ color: SEAL_GREEN })}
                 onClick={() => act('clear_queue')}
               >
-                Queued: {queuedWave.name} (leave)
+                已排队：{queuedWave.name}（退出）
               </button>
             ) : (
               <span style={{ color: INK_FAINT }}>
-                Pick a role on a forming wave to queue
+                选择正在集结的移民中的角色以加入队列
               </span>
             )}
-            <span style={{ color: INK_SOFT }}>Queued: {data.active_migrants}</span>
+            <span style={{ color: INK_SOFT }}>排队人数：{data.active_migrants}</span>
           </div>
 
           <div style={rulerStyle} />
 
-          <div style={sectionHeaderStyle}>Active Tracks - Queue Here</div>
+          <div style={sectionHeaderStyle}>正在集结——在此排队</div>
           <div style={{ display: 'flex', gap: '8px', marginBottom: '10px', alignItems: 'flex-start' }}>
             <FormingCard
-              label="Regular"
+              label="常规"
               color={SEAL_BLUE}
               forming={formingRegular}
-              emptyText={`Next in ${fmtClock(data.next_regular_at - now)}`}
+              emptyText={`下次集结：${fmtClock(data.next_regular_at - now)}`}
               now={now}
               act={act}
             />
             <FormingCard
-              label="Special"
+              label="特殊"
               color={SEAL_AMBER}
               forming={formingSpecial}
-              emptyText={`Next in ${fmtClock(data.next_special_at - now)}`}
+              emptyText={`下次集结：${fmtClock(data.next_special_at - now)}`}
               now={now}
               act={act}
             />
             <FormingCard
-              label="Triumph"
+              label="凯旋点"
               color={SEAL_GREEN}
               forming={formingTriumph}
-              emptyText="Pledge to call a wave"
+              emptyText="贡献凯旋点以召集移民"
               now={now}
               act={act}
             />
             {formingEvent && (
               <FormingCard
-                label="Event"
+                label="事件"
                 color={SEAL_RED}
                 forming={formingEvent}
                 emptyText=""
@@ -436,19 +436,19 @@ export const MigrantPanel = () => {
 
           <div style={tabBarStyle}>
             <div style={tabStyle(tab === 'regular')} onClick={() => setTab('regular')}>
-              Regular Migrants
+              常规移民
             </div>
             <div style={tabStyle(tab === 'special')} onClick={() => setTab('special')}>
-              Special Arrivals
+              特殊来客
             </div>
           </div>
 
           <div style={subtitleStyle}>
-            Pledge triumph to weight or guarantee a wave&apos;s arrival.
+            贡献凯旋点可提高某批移民被选中的概率，达到门槛后可确保其被选中集结。
           </div>
           {tabWaves.length === 0 ? (
             <div style={{ ...cardStyle, color: INK_SOFT, textAlign: 'center' }}>
-              None available.
+              暂无可选移民。
             </div>
           ) : (
             <div

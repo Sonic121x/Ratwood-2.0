@@ -197,7 +197,7 @@
 /datum/outfit/job/roguetown/grenzel/priest/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/divine/astrata)))
-		to_chat(H, span_warning("我已受 Astrata 祝福，她指引我的道路，正如我引领她的羊群。"))
+		to_chat(H, span_warning("我已受阿斯特拉塔祝福，她指引我的道路，正如我引领她的羊群。"))
 		H.set_patron(/datum/patron/divine/astrata)
 	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
