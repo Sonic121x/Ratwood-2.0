@@ -775,7 +775,7 @@
 	// If already summoned, unsummon
 	if(conjured_dryad && !QDELETED(conjured_dryad))
 		manual_unsummon = TRUE
-		conjured_dryad.visible_message(span_boldwarning("[conjured_dryad] dissolves back into the grove."))
+		conjured_dryad.visible_message(span_boldwarning("[conjured_dryad]消散，回归林间。"))
 		qdel(conjured_dryad)
 		manual_unsummon = FALSE
 		conjured_dryad = null
@@ -802,7 +802,7 @@
 	// Register cleanup if the dryad dies on its own
 	RegisterSignal(D, COMSIG_QDELETING, PROC_REF(on_dryad_deleted))
 	to_chat(H, span_green("一只小树妖自根须间现身，回应了我的呼唤。"))
-	D.visible_message(span_notice("[D] takes form beside [H]."))
+	D.visible_message(span_notice("[D]在[H]身旁显形。"))
 	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/summon_lesser_dryad/proc/on_dryad_deleted(datum/source)
