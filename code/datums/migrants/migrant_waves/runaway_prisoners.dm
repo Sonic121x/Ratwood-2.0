@@ -12,7 +12,7 @@
 		/datum/migrant_role/runaway_prisoner = 4,
 	)
 	min_optional_fills = 0
-	greet_text = "你已在牢房中腐烂了多年。虽然你成功逃脱，却早已一无所有，身体萎缩，心神迟钝。但有一件事你无比清楚，你绝不会再回去。"
+	greet_text = "你已在牢房中蹉跎多年。虽然你成功逃脱，却早已一无所有，身体衰弱，心神迟钝。但有一件事你无比清楚：你绝不会再回去。"
 
 /datum/migrant_role/runaway_prisoner
 	name = "越狱囚犯"
