@@ -1,15 +1,15 @@
 GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COLOR_GRAY, "Brown" = COLOR_DARK_BROWN, "Chestnut" = COLOR_DARK_ORANGE))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast
-	name = "fogbeast mare"
-	desc = "A distant cousin to the saiga, hailing from the mysterious islands of Kaizoku - rarer, but more strongly valued. Extensively used in the Steppes of Aavnr as pack animals and combat mounts."
+	name = "雌雾兽"
+	desc = "赛加羚羊的远亲，来自神秘的凯佐库群岛，更加稀少，也更受珍视。在阿夫纳尔草原被广泛用作驮兽和战斗坐骑。"
 	icon = 'icons/roguetown/mob/monster/fogbeast.dmi'
 	icon_state = "fogbeast"
 	icon_living = "fogbeast"
 	icon_dead = "fogbeast_dead"
 	icon_gib = "saiga_gib"
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("looks around.", "chews some leaves.", "neighs")
+	emote_see = list("环顾四周。", "咀嚼着树叶。", "嘶鸣着")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -30,8 +30,8 @@ GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COL
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
 	faction = list("horse")
-	attack_verb_continuous = "tramples"
-	attack_verb_simple = "kicks"
+	attack_verb_continuous = "践踏"
+	attack_verb_simple = "踢"
 	melee_damage_lower = 50
 	melee_damage_upper = 70
 	retreat_distance = 0
@@ -221,14 +221,14 @@ GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COL
 		UnregisterSignal(src, COMSIG_MOB_APPLY_DAMGE, PROC_REF(check_sprint_dismount))
 
 /obj/effect/decal/remains/fogbeast
-	name = "remains"
-	desc = "The remains of a once-proud fogbeast. Perhaps it was killed for food, or slain in battle with a valiant knight atop?"
+	name = "遗骸"
+	desc = "一头曾经威风凛凛的雾兽留下的遗骸。它也许被宰杀充饥了，也许驮着英勇的骑士战死沙场？"
 	gender = PLURAL
 	icon_state = "skele"
 	icon = 'icons/roguetown/mob/monster/fogbeast.dmi'
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/male
-	name = "fogbeast stallion"
+	name = "雄雾兽"
 	gender = MALE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/male/tame
@@ -242,15 +242,15 @@ GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COL
 
 // FOAL
 /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/kid
-	name = "fogbeast filly"
-	desc = "A young fogbeast, likely to be running around with its mother. Fogbeasts are a distant cousin to the saiga, hailing from the mysterious islands of Kaizoku - rarer, but more strongly valued. Extensively used in the Steppes of Aavnr as pack animals and combat mounts."
+	name = "雌雾兽幼崽"
+	desc = "一只年幼的雾兽，想必常跟着母亲四处奔跑。雾兽是赛加羚羊的远亲，来自神秘的凯佐库群岛，更加稀少，也更受珍视。在阿夫纳尔草原被广泛用作驮兽和战斗坐骑。"
 	icon = 'icons/roguetown/mob/monster/fogbeast.dmi'
 	icon_state = "foggie"
 	icon_living = "foggie"
 	icon_dead = "foggie_dead"
 	icon_gib = "foggie_dead"
 	animal_species = null
-	emote_see = list("looks around.", "chews some leaves.", "neighs", "hops about playfully")
+	emote_see = list("环顾四周。", "咀嚼着树叶。", "嘶鸣着", "嬉戏着蹦来蹦去")
 	animal_species = null
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bone = 3)
 	health = 20
@@ -269,14 +269,14 @@ GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COL
 	aggressive = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/kid/male
-	name = "fogbeast colt"
+	name = "雄雾兽幼崽"
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/male
 
 // INTENT
 /datum/intent/simple/fogbeast
-	name = "horse"
+	name = "马匹攻击"
 	icon_state = "instrike"
-	attack_verb = list("tramples", "rams", "kicks")
+	attack_verb = list("践踏", "冲撞", "踢")
 	animname = "blank22"
 	blade_class = BCLASS_BLUNT
 	hitsound = "punch_hard"

@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/troll
 	icon = 'icons/roguetown/mob/monster/trolls/trolls.dmi'
-	name = "troll"
-	desc = "Elven legends say these monsters were servants of Dendor tasked to guard his realm; nowadays they are sometimes found in the company of orcs. It's said that fire curbs their almost magical regeneration."
+	name = "巨魔"
+	desc = "精灵传说称，这些怪物曾是登多尔的仆从，负责守护他的领地；如今，它们有时会与兽人结伴。据说火焰能抑制它们近乎魔法般的再生能力。"
 	icon_state = "troll"
 	icon_living = "troll"
 	icon_dead = "troll_dead"
@@ -11,10 +11,10 @@
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	emote_hear = null
 	emote_see = null
-	verb_say = "groans"
-	verb_ask = "grunts"
-	verb_exclaim = "roars"
-	verb_yell = "roars"
+	verb_say = "呻吟"
+	verb_ask = "哼哼"
+	verb_exclaim = "咆哮"
+	verb_yell = "咆哮"
 
 	turns_per_move = 2
 	see_in_dark = 10
@@ -176,7 +176,7 @@
 	return ..()
 
 /obj/effect/decal/remains/troll
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "Trolld"
 	
