@@ -3,8 +3,8 @@
 	force_wielded = 15
 	possible_item_intents = list(MACE_STRIKE)
 	gripped_intents = list(/datum/intent/flailthresh,MACE_STRIKE)
-	name = "thresher"
-	desc = "A shredding tool for farmers."
+	name = "连枷"
+	desc = "农夫用来拍打脱粒的工具。"
 	icon_state = "flail"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "mace_greyscale"
@@ -20,7 +20,7 @@
 	is_tool = TRUE
 
 /datum/intent/flailthresh
-	name = "thresh"
+	name = "脱粒"
 	icon_state = "inthresh"
 	chargetime = 0
 	noaa = TRUE
@@ -30,7 +30,7 @@
 
 /obj/item/rogueweapon/thresher/examine(mob/user)
 	. = ..()
-	. += span_notice("Use on STRIKE intent to break up produce for seeds. THRESH on stalks to beat out grains.")
+	. += span_notice("使用敲击意图砸碎农产品，可以取出种子。对谷秆使用脱粒意图，可以打下谷粒。")
 
 /obj/item/rogueweapon/thresher/getonmobprop(tag)
 	. = ..()
@@ -51,14 +51,14 @@
 			if(found)
 				playsound(loc,"plantcross", 100, FALSE)
 				playsound(loc,"smashlimb", 50, FALSE)
-				user.visible_message(span_notice("[user] threshes the stalks!"), \
-									span_notice("I thresh the stalks."))
+				user.visible_message(span_notice("[user]正在给谷秆脱粒！"), \
+									span_notice("我正在给谷秆脱粒。"))
 			return
 	..()
 
 /obj/item/rogueweapon/thresher/decrepit
-	name = "decrepit thresher"
-	desc = "A thresher of wrought bronze; from when the wheat was plentiful, and when Man wasn't burdened with the weight of sin."
+	name = "残破连枷"
+	desc = "一把锻造青铜制成的连枷，来自小麦丰收、人类尚未背负沉重罪孽的年代。"
 	force = 5
 	force_wielded = 7
 	icon_state = "athresh"
@@ -67,8 +67,8 @@
 	sellprice = 15
 
 /obj/item/rogueweapon/thresher/blacksteel
-	name = "blacksteel thresher"
-	desc = "Hard work is only 'hard work' if you don't have the right tool for the job."
+	name = "黑钢连枷"
+	desc = "只有缺了趁手的工具，苦差事才真是苦差事。"
 	force = 20
 	force_wielded = 25
 	icon_state = "blacksteelthresh"
@@ -78,8 +78,8 @@
 /obj/item/rogueweapon/sickle
 	force = 10
 	possible_item_intents = list(DAGGER_CUT)
-	name = "sickle"
-	desc = "Rusted blade, worn handle, symbol of toil."
+	name = "镰刀"
+	desc = "锈蚀的刀刃，磨损的握柄，辛劳的象征。"
 	icon_state = "sickle"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "crysknife"
@@ -97,7 +97,7 @@
 
 /obj/item/rogueweapon/sickle/examine(mob/user)
 	. = ..()
-	. += span_notice("Use on any plant to instantly harvest it. HERBS turn to fiber when attacked.")
+	. += span_notice("对植物使用即可立即收获。用它砍药草会将其变成纤维。")
 
 /obj/item/rogueweapon/sickle/getonmobprop(tag)
 	. = ..()
@@ -107,21 +107,21 @@
 			if("onbelt") return list("shrink" = 0.5,"sx" = -2,"sy" = -3,"nx" = 3,"ny" = -3,"wx" = -2,"wy" = -3,"ex" = 3,"ey" = -2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/sickle/decrepit
-	name = "decrepit sickle"
-	desc = "Her thought was simple; to separate the wheat from the chaff. By removing the limitations set upon one's spirit by lyfe, only then could divinity be obtained. She was correct - yet Her ascension had gone terribly awry, all-the-same."
+	name = "残破镰刀"
+	desc = "她的想法很简单：如同将麦粒与糠秕分离，唯有摆脱生命施加于灵魂的桎梏，才能获得神性。她是对的——然而，她的飞升依旧出了可怕的差错。"
 	icon_state = "asickle"
 	color = "#bb9696"
 	sellprice = 15
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/sickle/copper
-	name = "copper sickle"
+	name = "铜镰刀"
 	icon_state = "csickle"
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/rogueweapon/sickle/blacksteel
-	name = "blacksteel sickle"
-	desc = "The burden of a dae's farmstead, accomplished in mere seconds. Why don't they make more of these?"
+	name = "黑钢镰刀"
+	desc = "一天的农活，眨眼间就能干完。他们为什么不多造些这种东西？"
 	force = 20
 	icon_state = "blacksteelsickle"
 	smeltresult = /obj/item/ingot/blacksteel
@@ -133,8 +133,8 @@
 	force_wielded = 15
 	possible_item_intents = list(TILL_INTENT, /datum/intent/pick)
 	gripped_intents = list(TILL_INTENT, /datum/intent/pick, SPEAR_BASH)
-	name = "hoe"
-	desc = "A tool for tiling soil. It's all dirty and worn."
+	name = "锄头"
+	desc = "用于翻耕土壤的工具，沾满泥土，磨损严重。"
 	icon_state = "hoe"
 	slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/roguetown/weapons/tools.dmi'
@@ -151,23 +151,23 @@
 	is_tool = TRUE
 
 /obj/item/rogueweapon/hoe/decrepit
-	name = "decrepit hoe"
-	desc = "Food is what cultivates lyfe; and without lyfe, there would be nothing left. At least, that is what His children would want you to believe."
+	name = "残破锄头"
+	desc = "食物滋养生命；没有生命，一切便不复存在。至少，祂的子民希望你如此相信。"
 	icon_state = "ahoe"
 	smeltresult = /obj/item/ingot/aaslag
 	color = "#bb9696"
 	sellprice = 15
 
 /obj/item/rogueweapon/hoe/copper
-	name = "copper hoe"
+	name = "铜锄头"
 	icon_state = "choe"
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/rogueweapon/hoe/blacksteel
 	force = 20
 	force_wielded = 25
-	name = "blacksteel hoe"
-	desc = "Wasting such valuable alloys on a dirty hoe? Shame, shame, shame! At least it can till the soil like a dagger-through-butter."
+	name = "黑钢锄头"
+	desc = "把如此贵重的合金浪费在一把脏锄头上？真是暴殄天物！不过，它翻起土来倒像匕首切黄油一样轻松。"
 	icon_state = "blacksteelhoe"
 	smeltresult = /obj/item/ingot/blacksteel
 	max_integrity = 500
@@ -175,8 +175,8 @@
 /obj/item/rogueweapon/hoe/stone
 	force = 7
 	force_wielded = 12
-	name = "stone hoe"
-	desc = "A makeshift hoe made out of stone, brittle."
+	name = "石锄"
+	desc = "用石头制成的简易锄头，很容易损坏。"
 	icon_state = "stonehoe"
 	//dropshrink = 0.8
 	smeltresult = null
@@ -187,7 +187,7 @@
 
 /obj/item/rogueweapon/hoe/examine(mob/user)
 	. = ..()
-	. += span_notice("TILT intent allows you to make new plots for plants. Using it (on any intent) on a plot that already has something planted removes WEEDS.")
+	. += span_notice("使用翻耕意图可以开垦新的种植地块。对已经种有植物的地块使用它，无论选择哪种意图，都可以清除杂草。")
 
 /obj/item/rogueweapon/hoe/getonmobprop(tag)
 	. = ..()
@@ -251,7 +251,7 @@
 			if (do_after(user, work_time, target = src))
 				apply_farming_fatigue(user, 10)
 				if(hoe_damage)
-					to_chat(user,span_warning("[src] degrades."))
+					to_chat(user,span_warning("[src]磨损了。"))
 					src.take_damage(hoe_damage, BRUTE, "blunt")
 				T.ChangeTurf(/turf/open/floor/rogue/grasscold, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
@@ -261,7 +261,7 @@
 			if (do_after(user, work_time, target = src))
 				apply_farming_fatigue(user, 10)
 				if(hoe_damage)
-					to_chat(user,span_warning("[src] degrades."))
+					to_chat(user,span_warning("[src]磨损了。"))
 					src.take_damage(hoe_damage, BRUTE, "blunt")
 				T.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
@@ -271,7 +271,7 @@
 			if (do_after(user, work_time, target = src))
 				apply_farming_fatigue(user, 10)
 				if(hoe_damage)
-					to_chat(user,span_warning("[src] degrades."))
+					to_chat(user,span_warning("[src]磨损了。"))
 					src.take_damage(hoe_damage, BRUTE, "blunt")
 				T.ChangeTurf(/turf/open/floor/rogue/dirt/desert, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
@@ -284,19 +284,19 @@
 				if(soil)
 					soil.user_till_soil(user)
 					if(hoe_damage)
-						to_chat(user,span_warning("[src] degrades."))
+						to_chat(user,span_warning("[src]磨损了。"))
 						src.take_damage(hoe_damage, BRUTE, "blunt")
 				else
 					apply_farming_fatigue(user, 10)
 					if(hoe_damage)
-						to_chat(user,span_warning("[src] degrades."))
+						to_chat(user,span_warning("[src]磨损了。"))
 						src.take_damage(hoe_damage, BRUTE, "blunt")
 					new /obj/structure/soil(T)
 			return
 	. = ..()
 
 /datum/intent/till
-	name = "hoe"
+	name = "翻耕"
 	icon_state = "inhoe"
 	chargetime = 0
 	noaa = TRUE
@@ -329,8 +329,8 @@
 	force_wielded = 15
 	possible_item_intents = list(SPEAR_BASH)
 	gripped_intents = list(SPEAR_BASH,SPEAR_THRUST,DUMP_INTENT)
-	name = "pitchfork"
-	desc = "Iron tines on a sturdy shaft essential for farmlike labour."
+	name = "草叉"
+	desc = "结实的长柄装着铁叉齿，是农活中不可或缺的工具。"
 	icon_state = "pitchfork"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "pitchfork"
@@ -348,7 +348,7 @@
 
 /obj/item/rogueweapon/pitchfork/examine(mob/user)
 	. = ..()
-	. += span_notice("Use RIGHT CLICK to flip compost in the bin. While wielded SCOOP intent allows you to pick up large amount (19) stalks.")
+	. += span_notice("右键点击可以翻动箱中的堆肥。双手握持时，使用挑起意图可以一次挑起大量谷秆（最多19份）。")
 
 /obj/item/rogueweapon/pitchfork/getonmobprop(tag)
 	. = ..()
@@ -359,15 +359,15 @@
 			if("onback") return list("shrink" = 0.7,"sx" = 1,"sy" = 3,"nx" = -1,"ny" = 3,"wx" = 4,"wy" = 3,"ex" = -3,"ey" = 3,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 8,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/pitchfork/decrepit
-	name = "decrepit pitchfork"
-	desc = "Do not fault the layman for fearing Her disciples, nor for driving them out of the villages with pitchforks-and-torches. They, too, will come to see the blessings of Zizo, all in due tyme."
+	name = "残破草叉"
+	desc = "不要责怪凡人畏惧她的门徒，也不要责怪他们用草叉与火把将门徒赶出村庄。时候到了，他们也会领悟齐佐的恩赐。"
 	icon_state = "apitchfork"
 	smeltresult = /obj/item/ingot/aaslag
 	color = "#bb9696"
 	sellprice = 15
 
 /obj/item/rogueweapon/pitchfork/copper
-	name = "copper pitchfork"
+	name = "铜草叉"
 	pixel_y = -16
 	pixel_x = -16
 	inhand_x_dimension = 64
@@ -378,14 +378,14 @@
 /obj/item/rogueweapon/pitchfork/blacksteel
 	force = 20
 	force_wielded = 25
-	name = "blacksteel pitchfork"
-	desc = "You're either the richest peasant in all of Psydonia, or the poorest noble."
+	name = "黑钢草叉"
+	desc = "你要么是整个普赛多尼亚最富有的农民，要么就是最穷的贵族。"
 	icon_state = "blacksteelpitchfork"
 	smeltresult = /obj/item/ingot/blacksteel
 	max_integrity = 500
 
 /datum/intent/pforkdump
-	name = "scoop"
+	name = "挑起"
 	icon_state = "inscoop"
 	chargetime = 0
 	noaa = TRUE
@@ -402,7 +402,7 @@
 			for(var/obj/item/I in forked)
 				I.forceMove(target)
 				forked -= I
-			to_chat(user, span_warning("I dump the stalks."))
+			to_chat(user, span_warning("我把谷秆倒了下来。"))
 		update_icon()
 		return
 	..()
