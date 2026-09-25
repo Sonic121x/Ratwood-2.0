@@ -1,8 +1,8 @@
 //The vile Vore Monster
 /mob/living/simple_animal/hostile/retaliate/rogue/headless
 	icon = 'icons/roguetown/mob/monster/lamia.dmi'
-	name = "headless"
-	desc = "A horrible beast of gluttony. Its body is built like a barrel with a maw that opens only to darkness."
+	name = "无首兽"
+	desc = "一头贪食的恐怖野兽。它的身体如木桶般粗壮，巨口张开时，里面只有一片黑暗。"
 	icon_state = "headless"
 	icon_living = "headless"
 	icon_dead = "headless_dead"
@@ -101,7 +101,7 @@
 				//They are full dead.
 				SpitUp()
 				adjustBruteLoss(-50)
-				visible_message(span_notice("[src] starts to rapidly heal."))
+				visible_message(span_notice("[src]开始迅速愈合。"))
 				//Half the cooldown since they successfully killed their target. Worst possible outcome has occured.
 				swallow_cooldown = world.time + (swallow_cooldown_delay / 2)
 	return ..()
@@ -183,7 +183,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/headless/proc/SwallowEnemy(mob/living/L)
 	if(swallowed_mob)
 		return
-	visible_message(span_notice("[src] grabs [L] and swallows them."))
+	visible_message(span_notice("[src]抓住[L]，将其吞了下去。"))
 	playsound(loc, 'sound/misc/eat.ogg', 25, TRUE)
 	L.forceMove(src)
 	swallowed_mob = L
@@ -194,7 +194,7 @@
 		// Only vomit them if they're actually still in there, and we have somewhere to put them
 		var/turf/spit_turf = get_turf(src)
 		if(spit_turf && swallowed_mob.loc == src)
-			visible_message(span_notice("[src] vomits a disheveled [swallowed_mob]."))
+			visible_message(span_notice("[src]吐出了狼狈不堪的[swallowed_mob]。"))
 			playsound(loc, 'sound/vo/vomit.ogg', 25, TRUE)
 			swallowed_mob.forceMove(spit_turf)
 		swallowed_mob = null

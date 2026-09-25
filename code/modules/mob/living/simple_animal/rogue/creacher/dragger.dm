@@ -3,8 +3,8 @@
 	icon_state = "dragger"
 	icon_living = "dragger"
 	icon_dead = "dragger_dead"
-	name = "dragger"
-	desc = "A husk of the once-dead."
+	name = "拖拽者"
+	desc = "一具曾经死去的空壳。"
 	pixel_x = -8
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	movement_type = GROUND
@@ -14,8 +14,8 @@
 	gender = FEMALE
 	speak_chance = 0
 	turns_per_move = 5
-	response_help_continuous = "passes through"
-	response_help_simple = "pass through"
+	response_help_continuous = "穿过"
+	response_help_simple = "穿过"
 	maxHealth = DRAGGER_HEALTH
 	health = DRAGGER_HEALTH
 	stat_attack = UNCONSCIOUS
@@ -30,7 +30,7 @@
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	parry_sound = "bladedmedium"
 	d_intent = INTENT_PARRY
-	speak_emote = list("growls")
+	speak_emote = list("低吼")
 	limb_destroyer = 1
 	del_on_death = FALSE
 	STALUC = 11
@@ -135,21 +135,21 @@
 	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
-		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
-				span_danger("\The [src] paralyzes me!"))
+		C.visible_message(span_danger("\The [src]吓得\the [C]动弹不得！"), \
+				span_danger("\The [src]让我动弹不得！"))
 		emote("laugh")
 
 
 /obj/effect/landmark/underworldsafe/Crossed(atom/movable/AM, oldloc)
 	if(istype(AM, /mob/living/simple_animal/hostile/rogue/dragger))
 		for(var/mob/living/carbon/human/A in view(4))
-			to_chat(A, "The monster's form dematerializes as it nears the Carriage.")
+			to_chat(A, "怪物靠近马车时，身形逐渐消散。")
 		qdel(AM)
 
 /datum/intent/simple/dragger
-	name = "chop"
+	name = "劈砍"
 	icon_state = "inchop"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切割", "挥砍")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
@@ -159,7 +159,7 @@
 	clickcd = DRAGGER_ATTACK_SPEED
 
 /mob/living/simple_animal/hostile/rogue/dragger/flesh
-	name = "FLESH HOMUNCULUS"
+	name = "血肉魔像"
 	desc = null
 	icon = 'icons/roguetown/mob/monster/flesh.dmi'
 	icon_state = "FLESH"
