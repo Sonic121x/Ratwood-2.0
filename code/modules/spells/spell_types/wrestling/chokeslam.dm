@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/invoked/chokeslam // 1st of the grapple spells, this one does 50 damage and throws the target a good distance.
-	name = "Chokeslam"
-	desc = "Requires an aggressive grab. After a brief wind up, slams the target on the floor. Knocking both of you over and causing stamina damage."
+	name = "锁喉摔"
+	desc = "需要强力抓取。短暂蓄势后，将目标摔向地面，使双方倒地并造成耐力伤害。"
 
 	recharge_time = 60 SECONDS
 	invocation_type = "emote"
@@ -13,18 +13,18 @@
 
 /obj/effect/proc_holder/spell/invoked/chokeslam/cast(list/targets, mob/living/user,)
 	if(targets[1] == user)
-		to_chat(user, span_notice("You can't wrestle yourself."))
+		to_chat(user, span_notice("你不能和自己摔跤。"))
 		revert_cast()
 		return FALSE
 
 	var/mob/living/carbon/human/target = targets[1]
 	if(!ishuman(target))
-		to_chat(user, span_warning("This spell only works on humans!"))
+		to_chat(user, span_warning("此招式只能对人形目标使用！"))
 		revert_cast()
 		return FALSE
 
 	if(user.pulling != target || user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You must have an aggressive grab on [target] to begin the wrestling!"))
+		to_chat(user, span_warning("你必须先强力抓住[target]，才能施展摔跤招式！"))
 		revert_cast()
 		return FALSE
 
@@ -34,8 +34,8 @@
 
 	var/channel_time = 1 SECONDS
 
-	to_chat(user, span_notice("You begin lifting up [target]!"))
-	to_chat(target, span_userdanger("[user] lifts [target] into the air by the throat!"))
+	to_chat(user, span_notice("你开始举起[target]！"))
+	to_chat(target, span_userdanger("[user]掐住[target]的喉咙，将其举到半空！"))
 
 	tracker.channeling_throw = TRUE
 	user.emote("attack")
@@ -56,7 +56,7 @@
 	if(user.IsKnockdown()) // can't do it while on the floor.
 		tracker.channeling_throw = FALSE
 		user.stop_pulling(TRUE)
-		to_chat(user, span_notice("I'm interupted!"))
+		to_chat(user, span_notice("我的动作被打断了！"))
 		deltimer(drop_timer)
 		animate(target, pixel_z = original_target_pixel_z, time = 1 SECONDS) // reset animation
 		revert_cast()
@@ -88,14 +88,14 @@
 		user.Knockdown(2 SECONDS)
 		target.safe_throw_at(throw_target, 2, 4, user, force = MOVE_FORCE_DEFAULT)
 		target.remove_status_effect(/datum/status_effect/buff/clash)
-		to_chat(user, span_notice("A reversal!"))
+		to_chat(user, span_notice("被反制了！"))
 		playsound(user, 'sound/combat/crowdcheer.ogg', 100, TRUE) // sick parry dude
 	
 	else
 		target.safe_throw_at(throw_target, 1, 4, user, force = MOVE_FORCE_DEFAULT)
 		damage = 50
 		target.stamina_add((target.max_stamina - target.stamina) / 2) // some-fucking-how this is how you drain half their current stamina
-		to_chat(user, span_notice("[user] slams [target] by the throat!"))
+		to_chat(user, span_notice("[user]掐着[target]的喉咙将其摔倒！"))
 		target.Knockdown(2 SECONDS)
 		user.Knockdown(2 SECONDS)
 		playsound(user, 'sound/combat/tf2crit.ogg', 100, TRUE)

@@ -27,9 +27,9 @@
 	cost = 3
 
 /obj/effect/proc_holder/spell/invoked/blindness/warscholar // Be very careful who this is given out to, Blindness can be surprisingly strong.
-	name = "Arcyne Blindness"
-	desc = "Direct a mote of living darkness to temporarily blind another. This imperfect replica of divine magick requires a Naledian Psycross to function."
-	invocations = list("Visus discede!")
+	name = "奥术致盲"
+	desc = "驱使一缕活生生的黑暗，令他人暂时失明。这是对神术的不完美模仿，需要纳莱迪圣十字架才能施展。"
+	invocations = list("视野，消逝吧！")
 	devotion_cost = 0
 	recharge_time = 25 SECONDS // +10 because improper Naledi imitation
 	miracle = FALSE
@@ -70,8 +70,8 @@
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/debuff/magical_blindness
-	name = "Magically Blinded"
-	desc = "A mote of darkness clouds my eyes! It's harder to see, and my weapon strikes are less accurate."
+	name = "魔法致盲"
+	desc = "一缕黑暗遮住了我的双眼！我的视野受阻，武器攻击也不再精准。"
 
 /obj/effect/proc_holder/spell/invoked/invisibility
 	name = "隐形术"
@@ -284,8 +284,8 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/silence/miracle
-	name = "Silence"
-	desc = "Shutter voices and empty the air of sound - naught mage-nor-man shall utter a word, be it invocation or insult."
+	name = "沉默术"
+	desc = "封锁嗓音，让空气归于寂静。无论法师还是凡人，都无法吐出半个字，不论咒语还是辱骂。"
 	overlay_state = "silencenoc"
 	clothes_req = FALSE
 	releasedrain = 30
@@ -296,7 +296,7 @@
 	movement_interrupt = FALSE
 	sound = 'sound/magic/zizo_snuff.ogg'
 	spell_tier = 0
-	invocations = list("Lunaria Silentium!")
+	invocations = list("月光之下，万籁俱寂！")
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	devotion_cost = 100 //Doubled devotion cost, because it's essentitally their Ultimate Move
@@ -308,12 +308,12 @@
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
 		if(HAS_TRAIT(target, TRAIT_COUNTERCOUNTERSPELL) || HAS_TRAIT(target, TRAIT_ANTIMAGIC) || HAS_TRAIT(target, TRAIT_MUTE))
-			to_chat(user, "<span class='warning'>The spell fizzles, it won't work on them!</span>")
+			to_chat(user, "<span class='warning'>法术消散了，对其无效！</span>")
 			revert_cast()
 			return
 		ADD_TRAIT(target, TRAIT_MUTE, MAGIC_TRAIT)
 		playsound(get_turf(target), 'sound/magic/zizo_snuff.ogg', 80, TRUE, soundping = TRUE)
-		to_chat(target, span_warning("The wind in my voice goes still. I can't speak!"))
+		to_chat(target, span_warning("我的声音归于寂静。我说不出话了！"))
 		var/dur = max((5 * (user.get_skill_level(associated_skill, 5))))
 		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = dur SECONDS)
 		return TRUE
@@ -321,12 +321,12 @@
 
 /obj/effect/proc_holder/spell/invoked/silence/miracle/proc/remove_buff(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_MUTE, MAGIC_TRAIT)
-	to_chat(target, span_warning("My voice returns to me!"))
+	to_chat(target, span_warning("我的声音回来了！"))
 
 
 /obj/effect/proc_holder/spell/invoked/magicshield
-	name = "Moonlit Ward"
-	desc = "Wrap a target in a ward of anti-magic."
+	name = "月光结界"
+	desc = "以反魔法结界笼罩目标。"
 	overlay_icon = 'icons/mob/actions/nocmiracles.dmi'
 	action_icon = 'icons/mob/actions/nocmiracles.dmi'
 	overlay_state = "antimagenoc"
@@ -339,7 +339,7 @@
 	movement_interrupt = FALSE
 	sound = 'sound/magic/antimagic.ogg'
 	spell_tier = 0
-	invocations = list("No spell shall touch thee!")
+	invocations = list("诸般法术，皆不得近你之身！")
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	devotion_cost = 100
@@ -353,13 +353,13 @@
 		return FALSE
 	var/mob/living/carbon/target = targets[1]
 	if(HAS_TRAIT(target, TRAIT_ANTIMAGIC))
-		to_chat(user, span_warning("They are already protected from magic!"))
+		to_chat(user, span_warning("对方已经受到反魔法保护！"))
 		revert_cast()
 		return FALSE
 	ADD_TRAIT(target, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
 	target.visible_message(
-		span_warning("[user] calls down a ward around [target]!"),
-		span_warning("A nullifying force settles over me!")
+		span_warning("[user]唤来结界，笼罩了[target]！"),
+		span_warning("一股消解魔法的力量笼罩了我！")
 	)
 	var/dur = max((5 * (user.get_skill_level(associated_skill, 5))))
 	addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = dur SECONDS)
@@ -368,4 +368,4 @@
 	if(!target)
 		return
 	REMOVE_TRAIT(target, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
-	to_chat(target, span_warning("The anti-magic ward fades."))
+	to_chat(target, span_warning("反魔法结界消散了。"))

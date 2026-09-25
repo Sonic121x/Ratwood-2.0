@@ -269,8 +269,8 @@
 		show_visible_message(target, "[user] 吟诵咒文时，鲜活的火焰在他们周身盘旋，随后化作一道活力之流涌向 [target]。", "[user] 吟诵咒文时，鲜活的火焰在他们周身盘旋，随后化作一道活力之流涌向我。我感到精神一振。")
 
 /obj/effect/proc_holder/spell/invoked/craftercovenant
-	name = "The Crafter's Covenant"
-	desc = "Melt a pile of valuables and convert them into a single item. Sacrifice is accepted even if its not valuable enough to make anything."
+	name = "工匠之契"
+	desc = "熔化一堆贵重物品，将其转化为一件物品。即使价值不足以造出任何东西，献祭之物仍会被收取。"
 	overlay_icon = 'icons/mob/actions/malummiracles.dmi'
 	action_icon = 'icons/mob/actions/malummiracles.dmi'
 	overlay_state = "craftercovenant"
@@ -283,7 +283,7 @@
 	no_early_release = TRUE
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/items/bsmithfail.ogg'
-	invocations = list("Coins to ash, flame to form, in Malum's name, let creation be born!")
+	invocations = list("钱币化灰，烈火铸形，以玛勒姆之名，让造物诞生！")
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
