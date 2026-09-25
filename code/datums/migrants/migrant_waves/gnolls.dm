@@ -21,4 +21,4 @@
 			if(!player.client)
 				continue
 
-			to_chat(player, span_danger("Graggar 渴求鲜血，豺狼人正涌向谷地！"))
+			to_chat(player, span_danger("格拉加尔渴求鲜血，豺狼人正涌向谷地！"))
