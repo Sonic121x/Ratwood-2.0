@@ -4,7 +4,7 @@
 #define COOLDOWN_NONE 100
 
 /obj/item/organ/vocal_cords //organs that are activated through speech with the :x/MODE_KEY_VOCALCORDS channel
-	name = "vocal cords"
+	name = "声带"
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "vocal_cords"
 	zone = BODY_ZONE_PRECISE_MOUTH
@@ -26,9 +26,9 @@
 ///harpy song stuff///
 
 /obj/item/organ/vocal_cords/harpy
-	name = "harpy's song"
+	name = "哈比之歌"
 	icon_state = "harpysong"		//Pulsating heart energy thing.
-	desc = "The blessed essence of harpysong. How did you get this... you monster!"
+	desc = "哈比歌声中受祝福的精华。你是怎么拿到它的……你这个怪物！"
 	should_regenerate = TRUE
 	var/obj/item/rogue/instrument/vocals/harpy_vocals/vocals
 
@@ -47,8 +47,8 @@
 		M.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/harpy_sing)
 
 /obj/effect/proc_holder/spell/self/harpy_sing
-	name = "Harpy's Song"
-	desc = "Project your voice through song."
+	name = "哈比之歌"
+	desc = "借歌声传扬你的声音。"
 	releasedrain = 10
 	chargedrain = 0
 	chargetime = 0
@@ -71,14 +71,14 @@
 		playsound(user, 'sound/foley/footsteps/flight_sounds/cliffracer.ogg', 100)
 
 /obj/item/organ/adamantine_resonator
-	name = "adamantine resonator"
+	name = "精金共鸣器"
 	desc = ""
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_ADAMANTINE_RESONATOR
 	icon_state = "adamantine_resonator"
 
 /obj/item/organ/vocal_cords/adamantine
-	name = "adamantine vocal cords"
+	name = "精金声带"
 	desc = ""
 	actions_types = list(/datum/action/item_action/organ_action/use/adamantine_vocal_cords)
 	icon_state = "adamantine_cords"
@@ -86,13 +86,13 @@
 /datum/action/item_action/organ_action/use/adamantine_vocal_cords/Trigger()
 	if(!IsAvailable())
 		return
-	var/message = input(owner, "Resonate a message to all nearby golems.", "Resonate")
+	var/message = input(owner, "通过共鸣向附近的所有魔像传递信息。", "共鸣")
 	if(QDELETED(src) || QDELETED(owner) || !message)
 		return
 	owner.say(".x[message]")
 
 /obj/item/organ/vocal_cords/adamantine/handle_speech(message)
-	var/msg = "<span class='resonate'><span class='name'>[owner.real_name]</span> <span class='message'>resonates, \"[message]\"</span></span>"
+	var/msg = "<span class='resonate'><span class='name'>[owner.real_name]</span> <span class='message'>共鸣道：\"[message]\"</span></span>"
 	for(var/m in GLOB.player_list)
 		if(iscarbon(m))
 			var/mob/living/carbon/C = m
@@ -104,7 +104,7 @@
 
 //Colossus drop, forces the listeners to obey certain commands
 /obj/item/organ/vocal_cords/colossus
-	name = "divine vocal cords"
+	name = "神圣声带"
 	desc = ""
 	icon_state = "voice_of_god"
 	actions_types = list(/datum/action/item_action/organ_action/colossus)
@@ -114,7 +114,7 @@
 	spans = list("colossus","yell")
 
 /datum/action/item_action/organ_action/colossus
-	name = "Voice of God"
+	name = "神之声"
 
 /datum/action/item_action/organ_action/colossus/IsAvailable()
 	var/obj/item/organ/vocal_cords/colossus/cords = target
@@ -134,9 +134,9 @@
 	if(!IsAvailable())
 		var/obj/item/organ/vocal_cords/colossus/cords = target
 		if(world.time < cords.next_command)
-			to_chat(owner, "<span class='notice'>I must wait [DisplayTimeText(cords.next_command - world.time)] before Speaking again.</span>")
+			to_chat(owner, "<span class='notice'>我必须再等[DisplayTimeText(cords.next_command - world.time)]才能再次发声。</span>")
 		return
-	var/command = input(owner, "Speak with the Voice of God", "Command")
+	var/command = input(owner, "以神之声发言", "命令")
 	if(QDELETED(src) || QDELETED(owner))
 		return
 	if(!command)
@@ -145,12 +145,12 @@
 
 /obj/item/organ/vocal_cords/colossus/can_speak_with()
 	if(world.time < next_command)
-		to_chat(owner, "<span class='notice'>I must wait [DisplayTimeText(next_command - world.time)] before Speaking again.</span>")
+		to_chat(owner, "<span class='notice'>我必须再等[DisplayTimeText(next_command - world.time)]才能再次发声。</span>")
 		return FALSE
 	if(!owner)
 		return FALSE
 	if(!owner.can_speak())
-		to_chat(owner, "<span class='warning'>I are unable to speak!</span>")
+		to_chat(owner, "<span class='warning'>我无法说话！</span>")
 		return FALSE
 	return TRUE
 
@@ -404,7 +404,7 @@
 		cooldown = COOLDOWN_MEME
 		for(var/V in listeners)
 			var/mob/living/L = V
-			addtimer(CALLBACK(L, /atom/movable/, "Who's there?"), 5 * i)
+			addtimer(CALLBACK(L, /atom/movable/, "谁在那儿？"), 5 * i)
 			i++
 
 	//MOVE
@@ -532,7 +532,7 @@
 		for(var/V in listeners)
 			var/mob/living/L = V
 			if(prob(25))
-				addtimer(CALLBACK(L, /atom/movable/, "HOW HIGH?!!"), 5 * i)
+				addtimer(CALLBACK(L, /atom/movable/, "跳多高？！！"), 5 * i)
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, emote), "jump"), 5 * i)
 			i++
 

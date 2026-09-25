@@ -2,7 +2,7 @@
 #define LIVER_DEFAULT_TOX_LETHALITY 0.01 //lower values lower how harmful toxins are to the liver
 
 /obj/item/organ/liver
-	name = "liver"
+	name = "肝脏"
 	icon_state = "liver"
 	w_class = WEIGHT_CLASS_SMALL
 	zone = BODY_ZONE_CHEST
@@ -44,7 +44,7 @@
 			C.reagents.metabolize(C, can_overdose=TRUE)
 
 			if(provide_pain_message && damage > 10 && prob(damage/3))//the higher the damage the higher the probability
-				to_chat(C, span_warning("I feel a dull pain in my abdomen."))
+				to_chat(C, span_warning("我的腹部隐隐作痛。"))
 
 		else	//for when our liver's failing
 			C.liver_failure()
@@ -70,29 +70,29 @@
 	return S
 
 /obj/item/organ/liver/fly
-	name = "insectoid liver"
+	name = "虫类肝脏"
 	icon_state = "liver-x" //xenomorph liver? It's just a black liver so it fits.
 	desc = ""
 	alcohol_tolerance = 0.007 //flies eat vomit, so a lower alcohol tolerance is perfect!
 
 /obj/item/organ/liver/plasmaman
-	name = "reagent processing crystal"
+	name = "试剂处理晶体"
 	icon_state = "liver-p"
 	desc = ""
 
 /obj/item/organ/liver/construct
-	name = "construct decay regulator"
+	name = "构装体衰变调节器"
 	icon_state = "liver-con"
-	desc = "A construct's decay regulator. Swirling with pestran energies, it prevents corrosion and rot. Unfortunately, this makes them susceptible to toxins."
+	desc = "构装体的衰变调节器。佩斯特拉的力量在其中流转，防止腐蚀与腐烂。不幸的是，这也使构装体容易受到毒素侵害。"
 /obj/item/organ/liver/alien
-	name = "alien liver" // doesnt matter for actual aliens because they dont take toxin damage
+	name = "异星肝脏" // doesnt matter for actual aliens because they dont take toxin damage
 	icon_state = "liver-x" // Same sprite as fly-person liver.
 	desc = ""
 	toxLethality = LIVER_DEFAULT_TOX_LETHALITY * 2.5 // rejects its owner early after too much punishment
 	toxTolerance = 15 // complete toxin immunity like xenos have would be too powerful
 
 /obj/item/organ/liver/cybernetic
-	name = "cybernetic liver"
+	name = "机械肝脏"
 	icon_state = "liver-c"
 	desc = ""
 	organ_flags = ORGAN_SYNTHETIC
@@ -101,7 +101,7 @@
 	toxLethality = 0.009
 
 /obj/item/organ/liver/cybernetic/upgraded
-	name = "upgraded cybernetic liver"
+	name = "强化机械肝脏"
 	icon_state = "liver-c-u"
 	desc = ""
 	alcohol_tolerance = 0.001
@@ -116,25 +116,25 @@
 	damage += 100/severity
 
 /obj/item/organ/liver/t1
-	name = "completed liver"
+	name = "完善肝脏"
 	icon_state = "liver"
-	desc = "The perfect art of Lady Pestra itself. This must be as she would wish to see it. Good work, student."
+	desc = "佩斯特拉女士的完美杰作。想必这正是她希望看到的模样。干得好，学徒。"
 	toxTolerance = 15 //can shrug off up to 15u of toxins
 	sellprice = 100
 
 /obj/item/organ/liver/t2
-	name = "blessed liver"
+	name = "受祝福的肝脏"
 	icon_state = "liver"
-	desc = "A liver that has received a blessing. A rare privilege granted only to Her followers."
+	desc = "一颗受到祝福的肝脏。这是仅赐予她的信徒的罕见恩宠。"
 	toxTolerance = 35 //can shrug off up to 35u of toxins
 	toxLethality = 0.008 //-20% toxin dmg from sources
 	sellprice = 200
 
 
 /obj/item/organ/liver/t3
-	name = "corrupted liver"
+	name = "腐化肝脏"
 	icon_state = "liver"
-	desc = "A cursed, perverted artifact. It can serve you well—what sacrifice are you willing to offer to survive?"
+	desc = "一件受诅咒的扭曲造物。它能为你所用——为了活下去，你愿意付出怎样的牺牲？"
 	alcohol_tolerance = 0.001
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	toxTolerance = 50 //ignore up to 50 tox
@@ -146,8 +146,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t1liver
 
 /atom/movable/screen/alert/status_effect/buff/t1liver
-	name = "Completed liver"
-	desc = "I have better version of liver now "
+	name = "完善肝脏"
+	desc = "我现在有了一颗更强健的肝脏。"
 
 /obj/item/organ/liver/t1/Insert(mob/living/carbon/M)
 	..()
@@ -166,8 +166,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t2liver
 
 /atom/movable/screen/alert/status_effect/buff/t2liver
-	name = "Blessed liver"
-	desc = "Blessed organ, by Pestra..."
+	name = "受祝福的肝脏"
+	desc = "受到佩斯特拉祝福的器官……"
 
 
 /obj/item/organ/liver/t2/Insert(mob/living/carbon/M)
@@ -192,8 +192,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/t3liver
 
 /atom/movable/screen/alert/status_effect/buff/t3liver
-	name = "Corrupted liver"
-	desc = "The cursed thing is inside me now."
+	name = "腐化肝脏"
+	desc = "那受诅咒的东西如今就在我体内。"
 
 
 /obj/item/organ/liver/t3/Insert(mob/living/carbon/M)
