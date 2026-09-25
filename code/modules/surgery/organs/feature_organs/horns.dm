@@ -1,6 +1,6 @@
 /obj/item/organ/horns
-	name = "horns"
-	desc = "A severed pair of horns. What did you cut this off of?"
+	name = "角"
+	desc = "一对被切下的角。你从什么东西身上割下来的？"
 	icon_state = "severedtail" //placeholder
 	visible_organ = TRUE
 	zone = BODY_ZONE_HEAD

@@ -1,6 +1,6 @@
 /obj/item/organ/wings
-	name = "wings"
-	desc = "A pair of wings. Those may or may not allow you to fly... or at the very least flap."
+	name = "翅膀"
+	desc = "一对翅膀。它们也许能让你飞起来……至少还能扑腾几下。"
 	visible_organ = TRUE
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_WINGS
@@ -63,44 +63,44 @@
 //TODO: Well you know what this flight stuff is a bit complicated and hardcoded, this is enough for now
 
 /obj/item/organ/wings/moth
-	name = "fluvian wings"
-	desc = "A pair of fuzzy moth wings."
+	name = "弗卢维安翅膀"
+	desc = "一对毛茸茸的蛾翼。"
 	flight_for_species = list("moth")
 
 /obj/item/organ/wings/dracon
-	name = "drakian wings"
-	desc = "A pair of majestic drakian wings."
+	name = "龙裔翅膀"
+	desc = "一对威风凛凛的龙裔翅膀。"
 //	flight_for_species = list("dracon") we'll revisit this later it's probably moth sprite only
 
 
 /obj/item/organ/wings/anthro
-	name = "wild-kin wings"
+	name = "兽裔翅膀"
 
 /obj/item/organ/wings/flight
 	unconditional_flight = TRUE
 	can_open = TRUE
 
 /obj/item/organ/wings/flight/angel
-	name = "angel wings"
-	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
+	name = "天使翅膀"
+	desc = "一对华丽的羽翼。看起来足够强壮，能带你飞上天空。"
 
 /obj/item/organ/wings/flight/dragon
-	name = "dragon wings"
-	desc = "A pair of intimidating, membranous wings. They look strong enough to lift you up in the air."
+	name = "龙翼"
+	desc = "一对骇人的膜翼。看起来足够强壮，能带你飞上天空。"
 
 /obj/item/organ/wings/flight/megamoth
-	name = "megamoth wings"
-	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
+	name = "巨蛾翅膀"
+	desc = "一对大得吓人的毛绒翅膀。看起来足够强壮，能带你飞上天空。"
 
 /obj/item/organ/wings/flight/night_kin
-	name = "Vampire Wings"
+	name = "吸血鬼翅膀"
 	accessory_type = /datum/sprite_accessory/wings/large/gargoyle
 	/// Flight datum
 	var/datum/action/item_action/organ_action/use/flight/fly
 
 /obj/item/organ/wings/harpy // we could... make it an arm subtype... but im lazy!
-	name = "harpy wings"
-	desc = "Oh, to fly again and feel the wind..."
+	name = "哈比翅膀"
+	desc = "啊，多想再次飞翔，感受风的吹拂……"
 	should_regenerate = TRUE
 	var/list/nullspace_items = list()
 
@@ -112,7 +112,7 @@
 			src.nullspace_items += new /obj/item/rogueweapon/huntingknife/idagger/harpy_talons
 			M.skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/harpy_skin
 		else
-			to_chat(M, span_bloody("I have the wings, yes... BUT HOW THE FARK DO I USE THEM?!!"))
+			to_chat(M, span_bloody("我是有翅膀了，没错……可这玩意儿到底他妈怎么用？！！"))
 
 /obj/item/organ/wings/harpy/Remove(mob/living/carbon/human/M, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
@@ -120,7 +120,7 @@
 		M.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/harpy_flight)
 
 /obj/effect/proc_holder/spell/self/harpy_flight
-	name = "Harpy Flight"
+	name = "哈比飞行"
 	releasedrain = 10
 	chargedrain = 0
 	chargetime = 0
@@ -141,34 +141,34 @@
 /obj/effect/proc_holder/spell/self/harpy_flight/cast(mob/living/carbon/human/user)
 	var/harpy_AC = user.highest_ac_worn()
 	if(harpy_AC != ARMOR_CLASS_NONE)
-		to_chat(user, span_bloody("THE ARMOR WEIGHS ME DOWN!!")) // LIGHT ON YO FEET SOULJA
+		to_chat(user, span_bloody("护甲太沉，压得我飞不起来！！")) // LIGHT ON YO FEET SOULJA
 		return
 	if(user.buckled)
-		to_chat(user, span_bloody("I CAN'T GET OFF THE GROUND WHILE... STUCK LIKE THIS!!"))
+		to_chat(user, span_bloody("我被这样固定着……根本飞不起来！！"))
 		return
 	if(user.pulledby)
-		to_chat(user, span_bloody("SOMEONE'S <b>HOLDING ME</b>, I CAN'T GET OFF THE GROUND LIKE THIS! </br> THE CRUELTY!!"))
+		to_chat(user, span_bloody("有人<b>抓着我</b>，这样根本飞不起来！</br>太残忍了！！"))
 		return
 
 	if(user.has_status_effect(/datum/status_effect/debuff/harpy_flight))
-		to_chat(user, span_bloody("Wah, back on the ground! How... quaint!!")) // sad emoji
+		to_chat(user, span_bloody("哇，又回到地上了！这感觉……真古怪！！")) // sad emoji
 		user.remove_status_effect(/datum/status_effect/debuff/harpy_flight)
 		playsound(user, pick(swoop_sound), 100)
 		user.emote("wingsfly", forced = TRUE)
 		return
 
 	if(!(user.mobility_flags & MOBILITY_STAND))
-		to_chat(user, span_bloody("I can't fly while imbalanced like this! AGHH!!"))
+		to_chat(user, span_bloody("我这样失去平衡，根本飞不起来！啊啊！！"))
 		return
 	if(user.restrained(ignore_grab = FALSE))
-		to_chat(user, span_bloody("The chains are restricting my freedom!!"))
+		to_chat(user, span_bloody("锁链束缚了我的自由！！"))
 
 	if(HAS_TRAIT(user, TRAIT_INFINITE_STAMINA))
-		to_chat(user, span_bloody("I am too energetic to control my flight!</br>AGHH!!"))
+		to_chat(user, span_bloody("我精力太旺盛，控制不住自己的飞行！</br>啊啊！！"))
 		user.Knockdown(10)
 		return
 
-	user.visible_message(span_notice("[user] prepares to take flight."))
+	user.visible_message(span_notice("[user]准备起飞。"))
 	if(!move_after(user, 3 SECONDS, target = user))
 		return
 

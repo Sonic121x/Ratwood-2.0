@@ -1,5 +1,5 @@
 /obj/item/organ
-	name = "organ"
+	name = "器官"
 	icon = 'icons/obj/surgery.dmi'
 	var/mob/living/carbon/owner = null
 	var/status = ORGAN_ORGANIC
@@ -31,7 +31,7 @@
 	/// Whether the organ is fully internal and should not be seen by bare eyes.
 	var/visible_organ = FALSE
 	/// Description when the organ is visible and examined while it's attached to a bodypart.
-	var/bodypart_desc = "This is an organ."
+	var/bodypart_desc = "这是一个器官。"
 	/// Icon of the organ when it's on a bodypart.
 	var/bodypart_icon
 	/// Icon state of the organ when it's on a bodypart.
@@ -140,12 +140,12 @@
 	. = ..()
 	if(organ_flags & ORGAN_FAILING)
 		if(status == ORGAN_ROBOTIC)
-			. += span_warning("[src] seems to be broken!")
+			. += span_warning("[src]似乎损坏了！")
 			return
-		. += span_warning("[src] has decayed for too long, and has turned a sickly color! It doesn't look like it will work anymore!")
+		. += span_warning("[src]腐烂已久，颜色变得极不正常！它看起来已经无法发挥功能了！")
 		return
 	if(damage > high_threshold)
-		. += span_warning("[src] is starting to look discolored.")
+		. += span_warning("[src]开始变色了。")
 
 
 /obj/item/organ/proc/prepare_eat(mob/living/carbon/human/user)
@@ -161,7 +161,7 @@
 	return S
 
 /obj/item/reagent_containers/food/snacks/organ
-	name = "appendix"
+	name = "阑尾"
 	icon_state = "appendix"
 	icon = 'icons/obj/surgery.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/organpoison = 1)
