@@ -79,7 +79,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/OpenFire(atom/A)
 	if(CheckFriendlyFire(A))
 		return
-	visible_message(span_danger("<b>[src]</b> [ranged_message]向[A]!"))
+	visible_message(span_danger("<b>[src]</b>向[A][ranged_message]！"))
 
 	if(world.time >= src.flame_cd + 25 SECONDS && !mind)
 		var/mob/living/targetted = target

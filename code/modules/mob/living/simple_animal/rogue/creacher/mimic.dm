@@ -1,7 +1,7 @@
 //chest mimic, ported from ratwood
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic
-	name = "chest"
+	name = "箱子"
 	icon = 'icons/roguetown/mob/monster/mimic.dmi'
 	icon_state = "mimicopen"
 	icon_living = "mimicopen"
@@ -23,13 +23,13 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 30
 	melee_damage_upper = 40
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
+	attack_verb_continuous = "咬"
+	attack_verb_simple = "咬"
 	attack_sound = list('sound/vo/mobs/mimic/mimic_attack1.ogg',
 						'sound/vo/mobs/mimic/mimic_attack2.ogg',
 						'sound/vo/mobs/mimic/mimic_attack3.ogg')
-	emote_taunt = list("howls")
-	speak_emote = list("clatters")
+	emote_taunt = list("嚎叫")
+	speak_emote = list("咔哒作响")
 
 	faction = list("mimic", "hostile")
 	stop_automated_movement = 1
@@ -91,7 +91,7 @@
 	icon_state = mimicking_chest::icon_state
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/proc/undisguise()
-	name = "\improper MIMIC"
+	name = "\improper 宝箱怪"
 	icon = initial(icon)
 	icon_state = (stat == DEAD) ? icon_dead : icon_living
 

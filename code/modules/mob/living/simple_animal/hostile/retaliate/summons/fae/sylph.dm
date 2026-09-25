@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph
 	icon = 'icons/mob/summonable/32x32.dmi'
-	name = "sylph"
+	name = "风精灵"
 	icon_state = "sylph"
 	icon_living = "sylph"
 	icon_dead = "vvd"
@@ -66,7 +66,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/OpenFire(atom/A)
 	if(CheckFriendlyFire(A))
 		return
-	visible_message(span_danger("<b>[src]</b> [ranged_message]向[A]!"))
+	visible_message(span_danger("<b>[src]</b>向[A][ranged_message]！"))
 
 	if(world.time >= shroom_cd + 25 SECONDS && !mind)
 		var/mob/living/targetted = target

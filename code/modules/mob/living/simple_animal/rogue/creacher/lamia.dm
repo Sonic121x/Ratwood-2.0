@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/lamia
 	icon = 'icons/roguetown/mob/monster/lamia.dmi'
-	name = "lamia"
-	desc = "This slithering monstrosity has a human torso, a large snake tail, and four bladed arms."
+	name = "拉弥亚"
+	desc = "这头蜿蜒爬行的怪物有着人类的躯干、巨大的蛇尾，以及四条刀刃般的手臂。"
 	icon_state = "lamia_f"
 	icon_living = "lamia_f"
 	icon_dead = "lamia_dead"
