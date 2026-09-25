@@ -182,7 +182,7 @@
 /*//Commented out, as they can sit as idle buff totems, effectively. No, thanks.
 	if(path_choice == "Summon a non-sentient familiar")
 		// Non-sentient familiar summoning
-		var/familiarchoice = input("Choose your familiar", "Available familiars") as anything in familiars
+		var/familiarchoice = input("选择你的使魔", "可选使魔") as anything in familiars
 		var/mob/living/simple_animal/pet/familiar/familiar_type = familiars[familiarchoice]
 		var/mob/living/simple_animal/pet/familiar/fam = new familiar_type(spawn_turf)
 		fam.familiar_summoner = user
