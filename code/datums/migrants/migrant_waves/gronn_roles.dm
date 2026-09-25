@@ -1,5 +1,5 @@
 /datum/migrant_role/gronn/chieftain
-	name = "Gronn酋长"
+	name = "格隆恩酋长"
 	greet_text = "你是部族的领袖。带领他们走向荣耀，或至少设法活下去。"
 	outfit = /datum/outfit/job/roguetown/gronn/chieftain
 	allowed_sexes = list(MALE, FEMALE)
@@ -59,12 +59,12 @@
 
 	if(!H.has_language(/datum/language/gronnic))
 		H.grant_language(/datum/language/gronnic)
-		to_chat(H, span_info("我可以在发言前加上 ,n 来说 Gronnic 语。"))
+		to_chat(H, span_info("我可以在发言前加上 ,n 来说格隆恩语。"))
 
 //Shaman
 /datum/migrant_role/gronn/shaman
-	name = "Gronn萨满"
-	greet_text = "你是部族中最睿智、很可能也是最年长的人。你与 Graggah 沟通，释放神圣之力，也照料部族中的伤者。"
+	name = "格隆恩萨满"
+	greet_text = "你是部族中最睿智、很可能也是最年长的人。你与格拉加尔沟通，施展神圣之力，也照料部族中的伤者。"
 	outfit = /datum/outfit/job/roguetown/gronn/shaman
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp, /datum/species/tieberian, /datum/species/lizardfolk, /datum/species/lupian, /datum/species/anthromorph, /datum/species/demihuman, /datum/species/dwarf/mountain, /datum/species/dracon, /datum/species/tabaxi)
@@ -115,11 +115,11 @@
 
 	if(!H.has_language(/datum/language/gronnic))
 		H.grant_language(/datum/language/gronnic)
-		to_chat(H, span_info("我可以在发言前加上 ,n 来说 Gronnic 语。"))
+		to_chat(H, span_info("我可以在发言前加上 ,n 来说格隆恩语。"))
 
 //Warrior
 /datum/migrant_role/gronn/warrior
-	name = "Gronn战士"
+	name = "格隆恩战士"
 	greet_text = "你是精锐中的精锐，是部族最优秀的战士。你与酋长并肩作战，并确保他能活下来。"
 	outfit = /datum/outfit/job/roguetown/gronn/warrior
 	allowed_sexes = list(MALE, FEMALE)
@@ -178,12 +178,12 @@
 
 	if(!H.has_language(/datum/language/gronnic))
 		H.grant_language(/datum/language/gronnic)
-		to_chat(H, span_info("我可以在发言前加上 ,n 来说 Gronnic 语。"))
+		to_chat(H, span_info("我可以在发言前加上 ,n 来说格隆恩语。"))
 
 //Tribal
 /datum/migrant_role/gronn/tribal
-	name = "Gronn部族民"
-	greet_text = "你是部族中的大多数。你擅长弓与斧，或长矛，也非常适应靠这片土地生存。"
+	name = "格隆恩部族民"
+	greet_text = "你是部族中众多普通成员之一。你擅长使用弓斧或长矛，也十分熟悉如何靠这片土地谋生。"
 	outfit = /datum/outfit/job/roguetown/gronn/tribal
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp, /datum/species/tieberian, /datum/species/lizardfolk, /datum/species/lupian, /datum/species/anthromorph, /datum/species/demihuman, /datum/species/dwarf/mountain, /datum/species/dracon, /datum/species/tabaxi)
@@ -224,17 +224,17 @@
 
 	if(!H.has_language(/datum/language/gronnic))
 		H.grant_language(/datum/language/gronnic)
-		to_chat(H, span_info("我可以在发言前加上 ,n 来说 Gronnic 语。"))
+		to_chat(H, span_info("我可以在发言前加上 ,n 来说格隆恩语。"))
 
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/classes = list("部族民", "猎手")
-		var/classchoice = input(H, "选择你的原型", "可选原型") as anything in classes
+		var/classchoice = input(H, "选择你的身份", "可选身份") as anything in classes
 		
 		switch(classchoice)
 			if("部族民")
 				H.set_blindness(0)
-				to_chat(H, span_warning("你是一名部族民，骑着 Saiga 与大部队同行，手持长矛与斧头。虽然你不像猎手那样外出搜集与追猎猎物，但你知道如何建造并协助搭建营地。"))
+				to_chat(H, span_warning("你是一名部族民，骑着赛加羚羊与大部队同行，手持长矛与斧头。虽然你不像猎手那样外出搜集食物、追猎野兽，但你掌握建造技艺，能够协助搭建营地。"))
 				beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 				l_hand = /obj/item/rogueweapon/spear/bonespear
 				H.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
@@ -244,7 +244,7 @@
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			if("猎手")
 				H.set_blindness(0)
-				to_chat(H, span_warning("你是一名猎手，无论是骑着 Saiga 随大部队冲锋作战，向眼前可怜的敌人射出箭矢，还是在行军途中狩猎以养活整个部族，这些都是你的职责。"))
+				to_chat(H, span_warning("你是一名猎手，无论是骑着赛加羚羊随大部队冲锋作战，向眼前可怜的敌人射出箭矢，还是在行军途中狩猎以养活整个部族，这些都是你的职责。"))
 				beltr = /obj/item/rogueweapon/stoneaxe/boneaxe
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 				l_hand = /obj/item/quiver/arrows
@@ -257,7 +257,7 @@
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 //Slave
 /datum/migrant_role/gronn/slave
-	name = "Gronn奴隶"
+	name = "格隆恩奴隶"
 	greet_text = "你是个倒霉的家伙，也许在一场劫掠中被抓，也许独自在荒野中落单。你已被这个部族奴役，努力劳作去取悦你的新主人吧。"
 	outfit = /datum/outfit/job/roguetown/gronn/slave
 	allowed_sexes = list(MALE, FEMALE)
@@ -289,12 +289,12 @@
 
 	if(!H.has_language(/datum/language/gronnic))
 		H.grant_language(/datum/language/gronnic)
-		to_chat(H, span_info("我可以在发言前加上 ,n 来说 Gronnic 语。"))
+		to_chat(H, span_info("我可以在发言前加上 ,n 来说格隆恩语。"))
 
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/classes = list("被俘工人", "被俘匠人","被俘贵族","被俘吟游诗人")
-		var/classchoice = input(H, "选择你的原型", "可选原型") as anything in classes
+		var/classchoice = input(H, "选择你的出身", "可选出身") as anything in classes
 		
 		switch(classchoice)
 			if("被俘工人")

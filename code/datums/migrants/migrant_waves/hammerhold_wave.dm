@@ -1,5 +1,5 @@
 /datum/migrant_wave/hammerhold
-	name = "Hammerholdian Reavers"
+	name = "铁锤堡劫掠队"
 	max_spawns = 1
 	weight = 40
 	track = MIGRANT_TRACK_SPECIAL
@@ -13,4 +13,4 @@
 		/datum/migrant_role/hammerhold/thrall = 4,
 	)
 	min_optional_fills = 0
-	greet_text = "You're a scouting party from Hammerhold, sworn to your jarl and the Ringbearer. Establish a foothold in this foreign land for raids to come and, perhaps, acquire some riches, converts and slaves before anyone else."
+	greet_text = "你们是来自铁锤堡的侦察队，立誓效忠于领主与持环者。在这片异乡建立据点，为日后的劫掠铺路，或许还能抢先夺取财富、招揽信徒并掳获奴隶。"
