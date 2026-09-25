@@ -1,6 +1,6 @@
 
 /obj/item/bodypart
-	name = "limb"
+	name = "肢体"
 	desc = ""
 	force = 3
 	throwforce = 3
@@ -66,15 +66,15 @@
 	var/list/cached_base_appearances
 
 	//Damage messages used by help_shake_act()
-	var/heavy_brute_msg = "MANGLED"
-	var/medium_brute_msg = "battered"
-	var/light_brute_msg = "bruised"
-	var/no_brute_msg = "unbruised"
+	var/heavy_brute_msg = "血肉模糊"
+	var/medium_brute_msg = "伤痕累累"
+	var/light_brute_msg = "淤青"
+	var/no_brute_msg = "无淤青"
 
-	var/heavy_burn_msg = "CHARRED"
-	var/medium_burn_msg = "peeling"
-	var/light_burn_msg = "blistered"
-	var/no_burn_msg = "unburned"
+	var/heavy_burn_msg = "焦黑"
+	var/medium_burn_msg = "脱皮"
+	var/light_burn_msg = "起泡"
+	var/no_burn_msg = "无烧伤"
 
 	var/add_extra = FALSE
 	var/offset
@@ -205,11 +205,11 @@
 /obj/item/bodypart/onbite(mob/living/carbon/human/user)
 	if((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
 		if(owner.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder) || owner.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))
-			to_chat(user, span_notice("My power is weakened, I cannot heal!"))
+			to_chat(user, span_notice("我的力量减弱了，无法恢复伤势！"))
 			return
 		if(do_after(user, 50, target = src))
-			user.visible_message(span_warning("[user] consumes [src]!"),\
-							span_notice("I consume [src]!"))
+			user.visible_message(span_warning("[user]吞食了[src]！"),\
+							span_notice("我吞食了[src]！"))
 			playsound(get_turf(user), pick(dismemsound), 100, FALSE, -1)
 			new /obj/effect/gibspawner/generic(get_turf(src), user)
 			user.fully_heal()
@@ -222,12 +222,12 @@
 	if(held_item)
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			if(skeletonized)
-				to_chat(user, span_warning("There's not even a sliver of flesh on this!"))
+				to_chat(user, span_warning("这上面连一丝肉都没有！"))
 				return
 			var/used_time = 210
 			if(user.mind)
 				used_time -= (user.get_skill_level(/datum/skill/labor/butchering) * 30)
-			visible_message("[user] begins to butcher \the [src].")
+			visible_message("[user]开始切割[src]上的肉。")
 			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 			var/steaks = 1
 			switch(user.get_skill_level(/datum/skill/labor/butchering))
@@ -257,11 +257,11 @@
 		if(HAS_TRAIT(C, TRAIT_LIMBATTACHMENT))
 			if(!H.get_bodypart(body_zone))
 				if(H == user)
-					H.visible_message(span_warning("[H] jams [src] into [H.p_their()] empty socket!"),\
-					span_notice("I force [src] into my empty socket, and it locks into place!"))
+					H.visible_message(span_warning("[H]将[src]塞进自己缺失肢体的接口！"),\
+					span_notice("我将[src]用力塞进自己缺失肢体的接口，它牢牢固定住了！"))
 				else
-					H.visible_message(span_warning("[user] jams [src] into [H]'s empty socket!"),\
-					span_notice("[user] forces [src] into my empty socket, and it locks into place!"))
+					H.visible_message(span_warning("[user]将[src]塞进[H]缺失肢体的接口！"),\
+					span_notice("[user]将[src]用力塞进我缺失肢体的接口，它牢牢固定住了！"))
 				user.temporarilyRemoveItemFromInventory(src, TRUE)
 				attach_limb(C)
 				return
@@ -271,12 +271,12 @@
 	if(length(contents) && I.get_sharpness() && !user.cmode)
 		add_fingerprint(user)
 		playsound(loc, 'sound/combat/hits/bladed/genstab (1).ogg', 60, vary = FALSE)
-		user.visible_message(span_warning("[user] begins to cut open [src]."),\
-			span_notice("You begin to cut open [src]..."))
+		user.visible_message(span_warning("[user]开始剖开[src]。"),\
+			span_notice("我开始剖开[src]……"))
 		if(do_after(user, 5 SECONDS, target = src))
 			drop_organs(user)
-			user.visible_message(span_danger("[user] cuts [src] open!"),\
-				span_notice("You finish cutting [src] open."))
+			user.visible_message(span_danger("[user]剖开了[src]！"),\
+				span_notice("我剖开了[src]。"))
 		return
 	return ..()
 
@@ -801,7 +801,7 @@
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_warning("I feel a sharp pain in my back!"))
+			to_chat(owner, span_warning("我的背部传来一阵剧痛！"))
 
 /obj/item/bodypart/chest/Destroy()
 	QDEL_NULL(cavity_item)
@@ -814,10 +814,10 @@
 	..()
 
 /obj/item/bodypart/l_arm
-	name = "left arm"
+	name = "左臂"
 	desc = ""
 	icon_state = "default_human_l_arm"
-	attack_verb = list("slapped", "punched")
+	attack_verb = list("扇打", "拳击")
 	max_damage = 200
 	max_stamina_damage = 50
 	body_zone = BODY_ZONE_L_ARM
@@ -845,12 +845,12 @@
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_boldwarning("I can no longer move my [name]!"))
+			to_chat(owner, span_boldwarning("我的[name]动不了了！"))
 		if(held_index)
 			owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_danger("I can no longer feel my [name]."))
+			to_chat(owner, span_danger("我的[name]失去了知觉。"))
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	if(owner.hud_used)
@@ -859,10 +859,10 @@
 			L.update_hand_vis()
 
 /obj/item/bodypart/r_arm
-	name = "right arm"
+	name = "右臂"
 	desc = ""
 	icon_state = "default_human_r_arm"
-	attack_verb = list("slapped", "punched")
+	attack_verb = list("扇打", "拳击")
 	max_damage = 200
 	body_zone = BODY_ZONE_R_ARM
 	body_part = ARM_RIGHT
@@ -890,12 +890,12 @@
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_danger("I can no longer move my [name]!"))
+			to_chat(owner, span_danger("我的[name]动不了了！"))
 		if(held_index)
 			owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_danger("I can no longer feel my [name]."))
+			to_chat(owner, span_danger("我的[name]失去了知觉。"))
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	if(owner.hud_used)
@@ -904,10 +904,10 @@
 			R.update_hand_vis()
 
 /obj/item/bodypart/l_leg
-	name = "left leg"
+	name = "左腿"
 	desc = ""
 	icon_state = "default_human_l_leg"
-	attack_verb = list("kicked", "stomped")
+	attack_verb = list("踢", "踩踏")
 	max_damage = 200
 	body_zone = BODY_ZONE_L_LEG
 	body_part = LEG_LEFT
@@ -932,21 +932,21 @@
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_danger("I can no longer move my [name]!"))
+			to_chat(owner, span_danger("我的[name]动不了了！"))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_danger("I can no longer feel my [name]."))
+			to_chat(owner, span_danger("我的[name]失去了知觉。"))
 
 /obj/item/bodypart/l_leg/digitigrade
-	name = "left digitigrade leg"
+	name = "左趾行腿"
 	use_digitigrade = FULL_DIGITIGRADE
 
 /obj/item/bodypart/r_leg
-	name = "right leg"
+	name = "右腿"
 	desc = ""
 	// alternative spellings of 'pokey' are availible
 	icon_state = "default_human_r_leg"
-	attack_verb = list("kicked", "stomped")
+	attack_verb = list("踢", "踩踏")
 	max_damage = 200
 	body_zone = BODY_ZONE_R_LEG
 	body_part = LEG_RIGHT
@@ -971,11 +971,11 @@
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_danger("I can no longer move my [name]!"))
+			to_chat(owner, span_danger("我的[name]动不了了！"))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, span_danger("I can no longer feel my [name]."))
+			to_chat(owner, span_danger("我的[name]失去了知觉。"))
 
 /obj/item/bodypart/r_leg/digitigrade
-	name = "right digitigrade leg"
+	name = "右趾行腿"
 	use_digitigrade = FULL_DIGITIGRADE

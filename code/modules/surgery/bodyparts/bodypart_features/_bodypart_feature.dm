@@ -1,6 +1,6 @@
 /datum/bodypart_feature
 	/// Name of the feature
-	var/name = "Feature"
+	var/name = "外观特征"
 	/// Body zone of the feature, it's to which bodypart the feature will be inserted to
 	var/body_zone
 	/// Sprite accessory of the feature

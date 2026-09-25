@@ -22,32 +22,32 @@
 	standing.overlays += gradient_appearance
 
 /datum/bodypart_feature/hair/head
-	name = "Hair"
+	name = "头发"
 	feature_slot = BODYPART_FEATURE_HAIR
 	body_zone = BODY_ZONE_HEAD
 
 /datum/bodypart_feature/hair/facial
-	name = "Facial Hair"
+	name = "胡须"
 	feature_slot = BODYPART_FEATURE_FACIAL_HAIR
 	body_zone = BODY_ZONE_HEAD
 
 /datum/bodypart_feature/face_detail
-	name = "Face Detail"
+	name = "面部细节"
 	feature_slot = BODYPART_FEATURE_FACE_DETAIL
 	body_zone = BODY_ZONE_HEAD
 
 /datum/bodypart_feature/accessory
-	name = "Accessory"
+	name = "饰品"
 	feature_slot = BODYPART_FEATURE_ACCESSORY
 	body_zone = BODY_ZONE_HEAD
 
 /datum/bodypart_feature/crest
-	name = "Crest"
+	name = "冠饰"
 	feature_slot = BODYPART_FEATURE_CREST
 	body_zone = BODY_ZONE_HEAD
 
 /datum/bodypart_feature/underwear
-	name = "Underwear"
+	name = "内衣"
 	feature_slot = BODYPART_FEATURE_UNDERWEAR
 	body_zone = BODY_ZONE_CHEST
 	var/obj/item/undies/underwear_item
@@ -68,7 +68,7 @@
 	underwear_item.color = accessory_colors
 
 /datum/bodypart_feature/legwear
-	name = "Legwear"
+	name = "腿部衣物"
 	feature_slot = BODYPART_FEATURE_LEGWEAR
 	body_zone = BODY_ZONE_CHEST
 	var/obj/item/legwears/legwear_item
@@ -89,7 +89,7 @@
 	legwear_item.color = accessory_colors
 
 /datum/bodypart_feature/chastity
-	name = "Chastity"
+	name = "贞操装具"
 	feature_slot = BODYPART_FEATURE_CHASTITY
 	body_zone = BODY_ZONE_CHEST
 	var/obj/item/chastity/chastity_item
@@ -106,7 +106,7 @@
 	chastity_item.color = accessory_colors
 
 /datum/bodypart_feature/pubes
-	name = "Pubic Hair"
+	name = "阴毛"
 	feature_slot = BODYPART_FEATURE_PUBES
 	body_zone = BODY_ZONE_CHEST
 	var/material = BODY_HAIR_MATERIAL_HAIR
@@ -120,31 +120,31 @@
 	)
 	switch(material)
 		if(BODY_HAIR_MATERIAL_FUR)
-			name = "Pubic Fur"
+			name = "阴部兽毛"
 		if(BODY_HAIR_MATERIAL_FEATHERS)
-			name = "Pubic Feathers"
+			name = "阴部羽毛"
 		if(BODY_HAIR_MATERIAL_FUZZ)
-			name = "Pubic Fuzz"
+			name = "阴部绒毛"
 		if(BODY_HAIR_MATERIAL_BRAIDS)
-			name = "Pubic Braids"
+			name = "阴毛辫"
 		else
-			name = "Pubic Hair"
+			name = "阴毛"
 	return material
 
 /datum/bodypart_feature/pubes/proc/get_description_name()
 	switch(material)
 		if(BODY_HAIR_MATERIAL_FUR)
-			return "pubic fur"
+			return "阴部兽毛"
 		if(BODY_HAIR_MATERIAL_FEATHERS)
-			return "pubic feathers"
+			return "阴部羽毛"
 		if(BODY_HAIR_MATERIAL_FUZZ)
-			return "pubic fuzz"
+			return "阴部绒毛"
 		if(BODY_HAIR_MATERIAL_BRAIDS)
-			return "pubic braids"
-	return "pubic hair"
+			return "阴毛辫"
+	return "阴毛"
 
 /datum/bodypart_feature/pits
-	name = "Armpit Hair"
+	name = "腋毛"
 	feature_slot = BODYPART_FEATURE_PITS
 	body_zone = BODY_ZONE_CHEST
 	var/material = BODY_HAIR_MATERIAL_HAIR
@@ -158,25 +158,25 @@
 	)
 	switch(material)
 		if(BODY_HAIR_MATERIAL_FUR)
-			name = "Armpit Fur"
+			name = "腋下兽毛"
 		if(BODY_HAIR_MATERIAL_FEATHERS)
-			name = "Armpit Feathers"
+			name = "腋下羽毛"
 		if(BODY_HAIR_MATERIAL_FUZZ)
-			name = "Armpit Fuzz"
+			name = "腋下绒毛"
 		if(BODY_HAIR_MATERIAL_BRAIDS)
-			name = "Armpit Braids"
+			name = "腋毛辫"
 		else
-			name = "Armpit Hair"
+			name = "腋毛"
 	return material
 
 /datum/bodypart_feature/pits/proc/get_description_name()
 	switch(material)
 		if(BODY_HAIR_MATERIAL_FUR)
-			return "armpit fur"
+			return "腋下兽毛"
 		if(BODY_HAIR_MATERIAL_FEATHERS)
-			return "armpit feathers"
+			return "腋下羽毛"
 		if(BODY_HAIR_MATERIAL_FUZZ)
-			return "armpit fuzz"
+			return "腋下绒毛"
 		if(BODY_HAIR_MATERIAL_BRAIDS)
-			return "armpit braids"
-	return "armpit hair"
+			return "腋毛辫"
+	return "腋毛"

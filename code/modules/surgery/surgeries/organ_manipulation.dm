@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	BODY_ZONE_CHEST=list(ORGAN_SLOT_BREASTS))) //Vrell - If we want to do this to other organs down the line, we can just add their slots here.
 
 /datum/surgery/organ_manipulation
-	name = "Organ manipulation"
+	name = "器官手术"
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_PRECISE_SKULL, BODY_ZONE_CHEST)
 	steps = list(
@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	)
 
 /datum/surgery_step/manipulate_organs
-	name = "Manipulate organs"
+	name = "处理器官"
 	time = 6.4 SECONDS
 	accept_hand = TRUE
 	implements = list(
@@ -79,26 +79,26 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 
 /datum/surgery_step/manipulate_organs/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	if(istype(tool, /obj/item/reagent_containers/food/snacks/organ))
-		to_chat(user, span_warning("[tool] was bitten by someone! It's too damaged to use!"))
+		to_chat(user, span_warning("[tool]被人咬过了！损坏太严重，无法使用！"))
 		return FALSE
 
 	var/obj/item/organ/organ_tool = tool
 	if(istype(organ_tool))
 		if(target_zone != organ_tool.zone)
-			to_chat(user, span_warning("[organ_tool] does not belong in [target]'s [parse_zone(target_zone)]!"))
+			to_chat(user, span_warning("[organ_tool]不该装在[target]的[parse_zone(target_zone)]里！"))
 			return FALSE
 		else if(target.getorganslot(organ_tool.slot))
-			to_chat(user, span_warning("[target] already has [parse_organ_slot(organ_tool.slot)]!"))
+			to_chat(user, span_warning("[target]已经有[parse_organ_slot(organ_tool.slot)]了！"))
 			return FALSE
 
 		user.select_organ_slot(organ_tool.slot)
-		display_results(user, target, span_notice("I begin to insert [tool] into [target]'s [parse_zone(target_zone)]..."),
-			span_notice("[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)]."),
-			span_notice("[user] begins to insert something into [target]'s [parse_zone(target_zone)]."))
+		display_results(user, target, span_notice("我开始将[tool]植入[target]的[parse_zone(target_zone)]……"),
+			span_notice("[user]开始将[tool]植入[target]的[parse_zone(target_zone)]。"),
+			span_notice("[user]开始将某样东西植入[target]的[parse_zone(target_zone)]。"))
 	else
 		var/list/organs = target.getorganszone(target_zone, subzones = FALSE)
 		if(!length(organs))
-			to_chat(user, span_warning("There are no removable organs in [target]'s [parse_zone(target_zone)]!"))
+			to_chat(user, span_warning("[target]的[parse_zone(target_zone)]里没有可摘除的器官！"))
 			return FALSE
 		for(var/obj/item/organ/found_organ as anything in organs)
 			found_organ.on_find(user)
@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 			if(!(found_organ.organ_flags & ORGAN_SURGERY_HIDDEN))
 				organs[found_organ.name] = found_organ
 
-		var/selected = input(user, "Remove which organ?", "PESTRA") as null|anything in sortList(organs)
+		var/selected = input(user, "摘除哪个器官？", "佩斯特拉") as null|anything in sortList(organs)
 		if(QDELETED(user) || QDELETED(target) || !user.Adjacent(target) || (user.get_active_held_item() != tool))
 			return FALSE
 		var/obj/item/organ/final_organ = organs[selected]
@@ -114,9 +114,9 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 			return FALSE
 
 		user.select_organ_slot(final_organ.slot)
-		display_results(user, target, span_notice("I begin to extract [final_organ] from [target]'s [parse_zone(target_zone)]..."),
-			span_notice("[user] begins to extract [final_organ] from [target]'s [parse_zone(target_zone)]."),
-			span_notice("[user] begins to extract something from [target]'s [parse_zone(target_zone)]."))
+		display_results(user, target, span_notice("我开始从[target]的[parse_zone(target_zone)]中摘除[final_organ]……"),
+			span_notice("[user]开始从[target]的[parse_zone(target_zone)]中摘除[final_organ]。"),
+			span_notice("[user]开始从[target]的[parse_zone(target_zone)]中取出某样东西。"))
 
 	return TRUE
 
@@ -124,19 +124,19 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	var/obj/item/organ/organ_tool = tool
 	if(istype(organ_tool) && user.temporarilyRemoveItemFromInventory(organ_tool))
 		organ_tool.Insert(target)
-		display_results(user, target, span_notice("I insert [tool] into [target]'s [parse_zone(target_zone)]."),
-			span_notice("[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!"),
-			span_notice("[user] inserts something into [target]'s [parse_zone(target_zone)]!"))
+		display_results(user, target, span_notice("我将[tool]植入了[target]的[parse_zone(target_zone)]。"),
+			span_notice("[user]将[tool]植入了[target]的[parse_zone(target_zone)]！"),
+			span_notice("[user]将某样东西植入了[target]的[parse_zone(target_zone)]！"))
 		return TRUE
 	var/obj/item/organ/selected_organ = target.getorganslot(user.organ_slot_selected)
 	if(QDELETED(selected_organ) || (selected_organ.owner != target))
-		display_results(user, target, span_warning("I can't extract anything from [target]'s [parse_zone(target_zone)]!"),
-			span_notice("[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!"),
-			span_notice("[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!"))
+		display_results(user, target, span_warning("我无法从[target]的[parse_zone(target_zone)]中取出任何东西！"),
+			span_notice("[user]似乎无法从[target]的[parse_zone(target_zone)]中取出任何东西！"),
+			span_notice("[user]似乎无法从[target]的[parse_zone(target_zone)]中取出任何东西！"))
 		return FALSE
-	display_results(user, target, span_notice("I successfully extract [selected_organ] from [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] successfully extracts [selected_organ] from [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] successfully extracts something from [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我成功从[target]的[parse_zone(target_zone)]中摘除了[selected_organ]。"),
+		span_notice("[user]成功从[target]的[parse_zone(target_zone)]中摘除了[selected_organ]！"),
+		span_notice("[user]成功从[target]的[parse_zone(target_zone)]中取出了某样东西！"))
 	log_combat(user, target, "surgically removed [selected_organ.name] from")
 
 	if(selected_organ == ORGAN_SLOT_BRAIN && isdullahan(target))
@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	return TRUE
 
 /datum/surgery_step/make_organs
-	name = "Mold organs"
+	name = "塑造器官"
 	time = 6.4 SECONDS
 	accept_hand = TRUE
 	implements = list(
@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 
 /datum/surgery_step/make_organs/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	if(!iscarbon(target))
-		to_chat(user, span_warning("There are no organs you can mold in [target]!"))
+		to_chat(user, span_warning("[target]体内没有可供塑造的器官！"))
 		return FALSE
 	var/mob/living/carbon/carbonize = target
 	var/list/organs = GLOB.moldable_organs[target_zone]
@@ -187,27 +187,27 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 			organs -= organslot
 			continue
 	if(!length(organs))
-		to_chat(user, span_warning("There are no organs you can mold in [target]'s [parse_zone(target_zone)]!"))
+		to_chat(user, span_warning("[target]的[parse_zone(target_zone)]里没有可供塑造的器官！"))
 		return FALSE
-	var/selected = input(user, "Create which organ?", "PESTRA") as null|anything in sortList(organs)
+	var/selected = input(user, "塑造哪个器官？", "佩斯特拉") as null|anything in sortList(organs)
 	if(QDELETED(user) || QDELETED(target) || !user.Adjacent(target) || (user.get_active_held_item() != tool))
 		return FALSE
 	if(target.getorganslot(selected))
-		to_chat(user, span_warning("[target] alread has that organ!"))
+		to_chat(user, span_warning("[target]已经有那个器官了！"))
 		return FALSE
 	user.select_organ_slot(selected)
-	display_results(user, target, span_notice("I begin to mold [parse_organ_slot(selected)] in [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to mold [parse_organ_slot(selected)] in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to mold something in [target]'s' [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始在[target]的[parse_zone(target_zone)]中塑造[parse_organ_slot(selected)]……"),
+		span_notice("[user]开始在[target]的[parse_zone(target_zone)]中塑造[parse_organ_slot(selected)]。"),
+		span_notice("[user]开始在[target]的[parse_zone(target_zone)]中塑造某样东西。"))
 	return TRUE
 
 /datum/surgery_step/make_organs/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	if(!isnull(target.getorganslot(user.organ_slot_selected)))
-		to_chat(user, span_warning("[target] alread has that organ!"))
+		to_chat(user, span_warning("[target]已经有那个器官了！"))
 		return FALSE
-	display_results(user, target, span_notice("I successfully mold [parse_organ_slot(user.organ_slot_selected)] in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] successfully molds [parse_organ_slot(user.organ_slot_selected)] in [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] successfully molds something in [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我成功在[target]的[parse_zone(target_zone)]中塑造了[parse_organ_slot(user.organ_slot_selected)]。"),
+		span_notice("[user]成功在[target]的[parse_zone(target_zone)]中塑造了[parse_organ_slot(user.organ_slot_selected)]！"),
+		span_notice("[user]成功在[target]的[parse_zone(target_zone)]中塑造了某样东西！"))
 	log_combat(user, target, "surgically made [parse_organ_slot(user.organ_slot_selected)] from")
 	var/mob/living/carbon/carbonized = target
 	var/datum/organ_dna/organ_template = carbonized.dna.organ_dna[user.organ_slot_selected]

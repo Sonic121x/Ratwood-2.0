@@ -44,13 +44,13 @@
 	if(owner && disabled)
 		switch(disabled)
 			if(BODYPART_DISABLED_DAMAGE)
-				bodypart_status += "[src]触感麻木。"
+				bodypart_status += "[src]已麻木。"
 			if(BODYPART_DISABLED_PARALYSIS)
-				bodypart_status += "[src] is limp."
+				bodypart_status += "[src]瘫软无力。"
 			if(BODYPART_DISABLED_CLAMPED)
-				bodypart_status += "[src] is clamped."
+				bodypart_status += "[src]被夹住了。"
 			else
-				bodypart_status += "[src] is crippled."
+				bodypart_status += "[src]已失去功能。"
 	if(has_wound(/datum/wound/fracture))
 		bodypart_status += "[src]骨折了。"
 	if(has_wound(/datum/wound/dislocation))
@@ -59,11 +59,11 @@
 	if(owner)
 		location_accessible = get_location_accessible(owner, body_zone)
 		if(!observer_privilege && !location_accessible)
-			bodypart_status += "Obscured by clothing."
+			bodypart_status += "被衣物遮盖。"
 	var/owner_ref = owner ? REF(owner) : REF(src)
 	if(observer_privilege || location_accessible)
 		if(skeletonized)
-			bodypart_status += "[src] is skeletonized."
+			bodypart_status += "[src]已化为白骨。"
 		else if(rotted)
 			bodypart_status += "[src]已坏死。"
 		
@@ -78,31 +78,31 @@
 		if(brute >= DAMAGE_PRECISION)
 			switch(brute/max_damage)
 				if(0.75 to INFINITY)
-					bodypart_status += "[src]呈[heavy_brute_msg]。"
+					bodypart_status += "[src]的伤势：[heavy_brute_msg]。"
 				if(0.25 to 0.75)
-					bodypart_status += "[src]呈[medium_brute_msg]。"
+					bodypart_status += "[src]的伤势：[medium_brute_msg]。"
 				else
-					bodypart_status += "[src]呈[light_brute_msg]。"
+					bodypart_status += "[src]的伤势：[light_brute_msg]。"
 		if(burn >= DAMAGE_PRECISION)
 			switch(burn/max_damage)
 				if(0.75 to INFINITY)
-					bodypart_status += "[src] is [heavy_burn_msg]."
+					bodypart_status += "[src]的伤势：[heavy_burn_msg]。"
 				if(0.25 to 0.75)
-					bodypart_status += "[src] is [medium_burn_msg]."
+					bodypart_status += "[src]的伤势：[medium_burn_msg]。"
 				else
-					bodypart_status += "[src] is [light_burn_msg]."
+					bodypart_status += "[src]的伤势：[light_burn_msg]。"
 
 		if(!location_accessible)
 			bodypart_status += "被衣物遮盖。"
 
 		if(bandage || length(wounds))
-			bodypart_status += "<B>Wounds:</B>"
+			bodypart_status += "<B>伤口：</B>"
 			if(bandage)
 				var/usedclass = "notice"
 				var/extratext = ""
 				if(bandage.return_blood_DNA())
 					usedclass = "bloody"
-					extratext = " (bloodied)"
+					extratext = "（染血）"
 				else if(istype(bandage, /obj/item/natural/cloth))
 					var/obj/item/natural/cloth/cloth = bandage
 					if(cloth.medicine_amount)
@@ -150,7 +150,7 @@
 
 	if(advanced)
 		if(brute)
-			status += brute >= 10 ? span_danger("[brute] 钝伤") : span_warning("[brute] 钝伤")
+			status += brute >= 10 ? span_danger("[brute] 外伤") : span_warning("[brute] 外伤")
 		if(burn)
 			status += burn >= 10 ? span_danger("[burn] 灼伤") : span_warning("[burn] 灼伤")
 	else
@@ -215,7 +215,7 @@
 		var/extratext = ""
 		if(HAS_BLOOD_DNA(bandage))
 			usedclass = "bloody"
-			extratext = "（血迹）"
+			extratext = "（染血）"
 		else if(istype(bandage, /obj/item/natural/cloth))
 			var/obj/item/natural/cloth/cloth = bandage
 			if(cloth.medicine_amount)
@@ -223,7 +223,7 @@
 		status += "<a href='?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='[usedclass]'>[uppertext(bandage.name)][extratext]</a>"
 
 	if(disabled)
-		status += span_deadsay("残废")
+		status += span_deadsay("失去功能")
 
 	return status
 

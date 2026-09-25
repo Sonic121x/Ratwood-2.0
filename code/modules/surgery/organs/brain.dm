@@ -1,5 +1,5 @@
 /obj/item/organ/brain
-	name = "brain"
+	name = "大脑"
 	desc = ""
 	icon_state = "brain"
 	throw_speed = 1
@@ -10,7 +10,7 @@
 	organ_flags = ORGAN_VITAL
 	/// Weakref to the body this brain spawned in. Never qdel this, /datum/weakref/Destroy() qdels its target
 	var/datum/weakref/original_body_ref
-	attack_verb = list("attacked", "slapped", "whacked")
+	attack_verb = list("攻击", "扇打", "敲打")
 
 	///The brain's organ variables are significantly more different than the other organs, with half the decay rate for balance reasons, and twice the maxHealth
 	decay_factor = STANDARD_ORGAN_DECAY	/ 2		//30 minutes of decaying to result in a fully damaged brain, since a fast decay rate would be unfun gameplay-wise
@@ -44,7 +44,7 @@
 	if(special && C && owner == C && !original_body_ref)
 		original_body_ref = WEAKREF(C)
 
-	name = "brain"
+	name = "大脑"
 
 	if(brainmob)
 //		if(C.key)
@@ -107,15 +107,15 @@
 	if((organ_flags & ORGAN_FAILING) && O.is_drainable()) //attempt to heal the brain
 		. = TRUE //don't do attack animation.
 		if(brain_death || brainmob?.health <= HEALTH_THRESHOLD_DEAD) //if the brain is fucked anyway, do nothing
-			to_chat(user, span_warning("[src] is far too damaged, there's nothing else we can do for it!"))
+			to_chat(user, span_warning("[src]损毁得太严重了，已经无能为力了！"))
 			return
 
-		user.visible_message(span_notice("[user] starts to pour the contents of [O] onto [src]."), span_notice("I start to slowly pour the contents of [O] onto [src]."))
+		user.visible_message(span_notice("[user]开始将[O]里的液体倒在[src]上。"), span_notice("我开始将[O]里的液体缓缓倒在[src]上。"))
 		if(!do_after(user, 60, TRUE, src))
-			to_chat(user, span_warning("I failed to pour [O] onto [src]!"))
+			to_chat(user, span_warning("我没能将[O]里的液体倒在[src]上！"))
 			return
 
-		user.visible_message(span_notice("[user] pours the contents of [O] onto [src], causing it to reform its original shape and turn a slightly brighter shade of pink."), span_notice("I pour the contents of [O] onto [src], causing it to reform its original shape and turn a slightly brighter shade of pink."))
+		user.visible_message(span_notice("[user]将[O]里的液体倒在[src]上，使它恢复原本的形状，粉红色也变得略微鲜亮了一些。"), span_notice("我将[O]里的液体倒在[src]上，使它恢复原本的形状，粉红色也变得略微鲜亮了一些。"))
 		setOrganDamage(damage - (0.05 * maxHealth))	//heals a small amount, and by using "setorgandamage", we clear the failing variable if that was up
 		O.reagents.clear_reagents()
 		return
@@ -130,27 +130,27 @@
 	. = ..()
 
 	if(suicided)
-		. += span_info("It's started turning slightly grey. They must not have been able to handle the stress of it all.")
+		. += span_info("它开始微微发灰。它的主人想必没能承受住这一切的压力。")
 	else if(brainmob)
 		if(brainmob.get_ghost(FALSE, TRUE))
 			if(brain_death || brainmob.health <= HEALTH_THRESHOLD_DEAD)
-				. += span_info("It's lifeless and severely damaged.")
+				. += span_info("它毫无生机，且损毁严重。")
 			else if(organ_flags & ORGAN_FAILING)
-				. += span_info("It seems to still have a bit of energy within it, but it's rather damaged... You may be able to restore it with some <b>mannitol</b>.")
+				. += span_info("它似乎还残留着些许活力，但损伤相当严重……你或许能用一些<b>甘露醇</b>修复它。")
 			else
-				. += span_info("I can feel the small spark of life still left in this one.")
+				. += span_info("我能感到其中还残留着微弱的生命火花。")
 		else if(organ_flags & ORGAN_FAILING)
-			. += span_info("It seems particularly lifeless and is rather damaged... You may be able to restore it with some <b>mannitol</b> in case it becomes functional again later.")
+			. += span_info("它显得格外死寂，且损伤严重……你或许能用一些<b>甘露醇</b>修复它，以备日后重新恢复功能。")
 		else
-			. += span_info("This one seems particularly lifeless. Perhaps it will regain some of its luster later.")
+			. += span_info("它显得格外死寂。也许以后还会重获些许生机。")
 	else
 		if(decoy_override)
 			if(organ_flags & ORGAN_FAILING)
-				. += span_info("It seems particularly lifeless and is rather damaged... You may be able to restore it with some <b>mannitol</b> in case it becomes functional again later.")
+				. += span_info("它显得格外死寂，且损伤严重……你或许能用一些<b>甘露醇</b>修复它，以备日后重新恢复功能。")
 			else
-				. += span_info("This one seems particularly lifeless. Perhaps it will regain some of its luster later.")
+				. += span_info("它显得格外死寂。也许以后还会重获些许生机。")
 		else
-			. += span_info("This one is completely devoid of life.")
+			. += span_info("它已经彻底失去了生机。")
 
 /obj/item/organ/brain/attack(mob/living/carbon/C, mob/user)
 	if(!istype(C))
@@ -164,7 +164,7 @@
 	var/target_has_brain = C.getorgan(/obj/item/organ/brain)
 
 	if(!target_has_brain && C.is_eyes_covered())
-		to_chat(user, span_warning("You're going to need to remove [C.p_their()] head cover first!"))
+		to_chat(user, span_warning("我得先移除[C]头部的遮挡物！"))
 		return
 
 //since these people will be dead M != usr
@@ -172,18 +172,18 @@
 	if(!target_has_brain)
 		if(!C.get_bodypart(BODY_ZONE_HEAD) || !user.temporarilyRemoveItemFromInventory(src))
 			return
-		var/msg = "[C] has [src] inserted into [C.p_their()] head by [user]."
+		var/msg = "[user]将[src]放进了[C]的头颅。"
 		if(C == user)
-			msg = "[user] inserts [src] into [user.p_their()] head!"
+			msg = "[user]将[src]放进了自己的头颅！"
 
 		C.visible_message(span_danger("[msg]"),
 						span_danger("[msg]"))
 
 		if(C != user)
-			to_chat(C, span_notice("[user] inserts [src] into your head."))
-			to_chat(user, span_notice("I insert [src] into [C]'s head."))
+			to_chat(C, span_notice("[user]将[src]放进了我的头颅。"))
+			to_chat(user, span_notice("我将[src]放进了[C]的头颅。"))
 		else
-			to_chat(user, span_notice("I insert [src] into your head.")	)
+			to_chat(user, span_notice("我将[src]放进了自己的头颅。")	)
 
 		Insert(C)
 	else
@@ -197,7 +197,7 @@
 
 /obj/item/organ/brain/on_life()
 	if(damage >= BRAIN_DAMAGE_DEATH) //rip
-		to_chat(owner, span_danger("The last spark of life in your brain fizzles out..."))
+		to_chat(owner, span_danger("我脑中最后一丝生命火花熄灭了……"))
 		owner.death()
 		brain_death = TRUE
 
@@ -221,11 +221,11 @@
 		if(owner.stat < UNCONSCIOUS) //conscious or soft-crit
 			var/brain_message
 			if(prev_damage < BRAIN_DAMAGE_MILD && damage >= BRAIN_DAMAGE_MILD)
-				brain_message = span_warning("I feel lightheaded.")
+				brain_message = span_warning("我感到头昏。")
 			else if(prev_damage < BRAIN_DAMAGE_SEVERE && damage >= BRAIN_DAMAGE_SEVERE)
-				brain_message = span_warning("I feel less in control of your thoughts.")
+				brain_message = span_warning("我感觉越来越难以控制自己的思绪。")
 			else if(prev_damage < (BRAIN_DAMAGE_DEATH - 20) && damage >= (BRAIN_DAMAGE_DEATH - 20))
-				brain_message = span_warning("I can feel your mind flickering on and off...")
+				brain_message = span_warning("我感觉自己的意识时断时续……")
 
 			if(.)
 				. += "\n[brain_message]"
@@ -233,13 +233,13 @@
 				return brain_message
 
 /obj/item/organ/brain/alien
-	name = "alien brain"
+	name = "异星大脑"
 	desc = ""
 	icon_state = "brain-x"
 
 /obj/item/organ/brain/construct
-	name = "construct brain"
-	desc = "The centre of thought for a construct. It crackles with knowledge... and something more sinister."
+	name = "构装体大脑"
+	desc = "构装体的思维中枢。其中涌动着知识……以及某种更为邪恶的东西。"
 	icon_state = "brain-con"
 
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
