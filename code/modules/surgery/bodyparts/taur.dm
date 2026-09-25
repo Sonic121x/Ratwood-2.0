@@ -1,10 +1,10 @@
 // TAURS
 /obj/item/bodypart/taur
-	name = "taur"
+	name = "兽形下身"
 	desc = ""
 	icon = 'icons/mob/taurs.dmi'
 	icon_state = ""
-	attack_verb = list("hit")
+	attack_verb = list("击打")
 	max_damage = 200
 	body_zone = BODY_ZONE_TAUR
 	body_part = LEGS
@@ -165,7 +165,7 @@
 GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 
 /obj/item/bodypart/taur/lamia
-	name = "Lamia Tail"
+	name = "拉弥亚蛇尾"
 
 	offset_x = -16
 	taur_icon_state = "altnaga_s"
@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/lamiastriped
-	name = "Striped Lamia Tail"
+	name = "条纹拉弥亚蛇尾"
 
 	offset_x = -16
 	taur_icon_state = "altnaga_s"
@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/fatlamia
-	name = "Fat Lamia Tail"
+	name = "粗壮拉弥亚蛇尾"
 
 	offset_x = -16
 	taur_icon_state = "nagafat_s"
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/mermaid
-	name = "Mermaid Tail"
+	name = "人鱼尾"
 
 	offset_x = -16
 	taur_icon_state = "altmermaid_s"
@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/orca
-	name = "Orca Tail"
+	name = "虎鲸尾"
 
 	offset_x = -16
 	taur_icon_state = "orcamermaid_s"
@@ -211,7 +211,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/tentacle
-	name = "Tentacles"
+	name = "触手"
 
 	offset_x = -16
 	taur_icon_state = "tentacle_s"
@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/otie
-	name = "Otie Body"
+	name = "奥提下身"
 	offset_x = -16
 	taur_icon_state = "otie_s"
 	taur_markings_state = "otie_markings"
@@ -229,7 +229,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/canine
-	name = "Canine Body"
+	name = "犬类下身"
 
 	offset_x = -16
 	taur_icon_state = "canine_s"
@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/venard
-	name = "Venard Body"
+	name = "维纳丁下身"
 
 	offset_x = -16
 	taur_icon_state = "venard_s"
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/drake
-	name = "Drake Body"
+	name = "龙兽下身"
 
 	offset_x = -16
 	taur_icon_state = "drake_s"
@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/dragon
-	name = "Dragon Body"
+	name = "巨龙下身"
 
 	offset_x = -16
 	taur_icon_state = "drake2_s"
@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/noodle
-	name = "Noodle Dragon Body"
+	name = "长条龙下身"
 
 	offset_x = -16
 	taur_icon_state = "noodle_s"
@@ -282,7 +282,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/horse
-	name = "Saiga Body"
+	name = "赛加羚羊下身"
 	offset_x = -16
 	taur_icon_state = "saiga_s"
 	taur_clothing_category = "s"
@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/deer
-	name = "Deer Body"
+	name = "鹿下身"
 
 	offset_x = -16
 	taur_icon_state = "deer_s"
@@ -302,7 +302,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/goat
-	name = "Goat Legs"
+	name = "山羊腿"
 
 	offset_x = -16
 	taur_icon_state = "goat_s"
@@ -313,7 +313,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/redpanda
-	name = "Red Panda Body"
+	name = "小熊猫下身"
 	offset_x = -16
 	taur_icon_state = "redpanda_s"
 	taur_markings_state = "redpanda_markings"
@@ -321,7 +321,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/rat
-	name = "Rat Body"
+	name = "鼠类下身"
 	offset_x = -16
 	taur_icon_state = "rat_s"
 	taur_markings_state = "rat_markings"
@@ -329,7 +329,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/skunk
-	name = "Skunk Body"
+	name = "臭鼬下身"
 
 	offset_x = -16
 	taur_icon_state = "skunk_s"
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/kitsune
-	name = "Kitsune Body"
+	name = "妖狐下身"
 
 	offset_x = -16
 	taur_icon_state = "kitsune_s"
@@ -350,7 +350,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/feline
-	name = "Feline Body"
+	name = "猫科下身"
 
 	offset_x = -16
 	taur_icon_state = "feline_s"
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/snep
-	name = "Tempest Body"
+	name = "Tempest下身"
 
 	offset_x = -16
 	taur_icon_state = "tempest_s"
@@ -372,7 +372,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/tiger
-	name = "Tiger Body"
+	name = "虎下身"
 	offset_x = -16
 	taur_icon_state = "feline_s"
 	taur_markings_state = "tiger_markings"
@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/spider
-	name = "Spider Body"
+	name = "蜘蛛下身"
 
 	offset_x = -16
 	taur_icon_state = "spider_s"
@@ -391,7 +391,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/centipede
-	name = "Centipede Body"
+	name = "蜈蚣下身"
 
 	offset_x = -16
 	taur_icon_state = "centipede_s"
@@ -401,7 +401,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/sloog
-	name = "Sloog Body"
+	name = "斯卢格下身"
 
 	offset_x = -16
 	taur_icon_state = "sloog_s"
@@ -411,7 +411,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/ant
-	name = "Ant Body"
+	name = "蚂蚁下身"
 
 	offset_x = -16
 	taur_icon_state = "ant_s"
@@ -420,7 +420,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/wasp
-	name = "Wasp Body"
+	name = "黄蜂下身"
 
 	offset_x = -16
 	taur_icon_state = "wasp_s"
@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/insect
-	name = "Insect Body"
+	name = "昆虫下身"
 
 	offset_x = -16
 	taur_icon_state = "insect_s"
