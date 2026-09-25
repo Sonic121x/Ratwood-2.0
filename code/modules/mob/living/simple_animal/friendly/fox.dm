@@ -6,7 +6,7 @@
 	icon_state = "fox"
 	icon_living = "fox"
 	icon_dead = "fox_dead"
-	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Geckers","Awoo","Tchoff")
+	speak = list("嗷嗷","嗷嗷嗷——呜","咯咯","嗷呜","呼哧")
 	speak_emote = list("嘎嘎叫", "吠叫")
 	emote_hear = list("嚎叫。","吠叫。")
 	emote_see = list("摇了摇头。", "颤抖着。")

@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/food/snacks/crow
 	name = "扎德"
-	desc = "一种常与涅克拉关联的黑鸟。它们曾被训练用于传递消息并因其聪明而受到尊敬，但如今却被视为与害虫无异。"
+	desc = "一种常与内克拉联系在一起的黑鸟。它们曾被训练来传递消息，也因聪明而受到敬重，如今却被视为与害兽无异。"
 	icon_state = "crow"
 	icon = 'icons/roguetown/mob/monster/crow.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
@@ -20,7 +20,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/friedcrow
 	name = "油炸扎德"
-	desc = "拔掉所有羽毛费了些功夫，但最终还是成功了。结果是一份出奇酥脆、即便寡淡的小食。"
+	desc = "拔掉所有羽毛费了些功夫，但最终还是成功了。做成的小食虽味道寡淡，却出奇地酥脆。"
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "fcrow"
 	bitesize = 2

@@ -5,7 +5,7 @@
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
-	speak = list("EHEHEHEHEH","eh?")
+	speak = list("咩咩咩咩","咩？")
 	speak_emote = list("叫唤")
 	emote_hear = list("叫唤。")
 	emote_see = list("摇了摇头。", "跺了跺脚。", "环顾四周瞪着。")
@@ -89,7 +89,7 @@
 	icon_gib = "cow_gib"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	speak = list("moo?","moo","MOOOOOO")
+	speak = list("哞？","哞","哞——")
 	speak_emote = list("哞哞叫")
 	emote_hear = list("咀嚼着。")
 	emote_see = list("摇了摇头。", "咀嚼着反刍物。")
@@ -189,7 +189,7 @@
 	icon_gib = "chick_gib"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	speak = list("Cherp.","Cherp?","Chirrup.","Cheep!")
+	speak = list("叽。","叽？","啾啾。","叽！")
 	speak_emote = list("啾啾叫")
 	emote_hear = list("啾啾叫。")
 	emote_see = list("啄了啄地面。","扑扇着小翅膀。")
@@ -243,7 +243,7 @@
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
 	icon_dead = "chicken_brown_dead"
-	speak = list("Cluck!","BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
+	speak = list("咯！","咯——咯咯咯！","咯咯。")
 	speak_emote = list("咯咯叫","咕咕低鸣")
 	emote_hear = list("咯咯叫。")
 	emote_see = list("啄了啄地面。","凶狠地扑扇着翅膀。")
@@ -375,7 +375,7 @@
 	icon_dead = "grenchen_dead"
 	gender = MALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	speak = list("GRA","AH!","HEEHEHE")
+	speak = list("嘎","啊！","嘿嘿嘿")
 	speak_emote = list("吱吱尖叫")
 	emote_hear = list("切齿作响。")
 	emote_see = list("跳舞。", "凝视着。")

@@ -55,7 +55,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat
 	icon = 'icons/roguetown/mob/monster/gote.dmi'
-	name = "goat"
+	name = "母山羊"
 	desc = ""
 	icon_state = "goat"
 	icon_living = "goat"
@@ -63,7 +63,7 @@
 	icon_gib = "goat_gib"
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("shakes her head.", "chews her cud.")
+	emote_see = list("摇了摇头。", "反刍着。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -98,8 +98,8 @@
 	pooptype = /obj/item/natural/poo/horse
 	milkies = TRUE
 	faction = list("goats")
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头槌撞击"
+	attack_verb_simple = "头槌撞击"
 	melee_damage_lower = 10
 	melee_damage_upper = 25
 	STASPD = 10
@@ -125,7 +125,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/goatlet
 	icon = 'icons/roguetown/mob/monster/gote.dmi'
-	name = "goatlet"
+	name = "山羊羔"
 	desc = ""
 	icon_state = "goatlet"
 	icon_living = "goatlet"
@@ -193,13 +193,13 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale
 	icon = 'icons/roguetown/mob/monster/gote.dmi'
-	name = "goat"
+	name = "公山羊"
 	icon_state = "goatmale"
 	icon_living = "goatmale"
 	icon_dead = "goatmale_dead"
 	icon_gib = "goatmale_gib"
 	gender = MALE
-	emote_see = list("shakes his head.", "chews his cud.")
+	emote_see = list("摇了摇头。", "反刍着。")
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
@@ -221,8 +221,8 @@
 						/obj/item/natural/bundle/bone/full = 1, /obj/item/alch/sinew = 4, /obj/item/alch/bone = 1, /obj/item/alch/viscera = 2, /obj/item/natural/head/goat = 1)
 	faction = list("goats")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "头槌撞击"
+	attack_verb_simple = "头槌撞击"
 	health = 150
 	maxHealth = 150
 	melee_damage_lower = 25
@@ -364,7 +364,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/goatletboy
 	icon = 'icons/roguetown/mob/monster/gote.dmi'
-	name = "goatlet"
+	name = "山羊羔"
 	desc = ""
 	gender = MALE
 	icon_state = "goatletboy"

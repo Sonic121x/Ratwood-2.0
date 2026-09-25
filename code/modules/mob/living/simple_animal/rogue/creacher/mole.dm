@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mole
 	icon = 'icons/roguetown/mob/monster/mole.dmi'
-	name = "mole"
+	name = "鼹鼠"
 	icon_state = "mole"
 	icon_living = "mole"
 	icon_dead = "mole_dead"
@@ -68,7 +68,7 @@
 	ai_controller = /datum/ai_controller/mole
 
 /obj/effect/decal/remains/mole
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "mole_bones"
 	icon = 'icons/roguetown/mob/monster/mole.dmi'
