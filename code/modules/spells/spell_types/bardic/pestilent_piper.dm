@@ -4,7 +4,7 @@
 	overlay_state = "dirge_t2_base"
 	action_icon_state = "dirge_t2_base"
 	warnie = "spellwarning"
-	invocations = list("plays a droning, shrill dirge! The world around them dries and crackles!") 
+	invocations = list("奏起单调而尖厉的挽歌！周围的世界干枯龟裂！") 
 	invocation_type = "emote"
 	sound = list('sound/magic/debuffroll.ogg')
 
