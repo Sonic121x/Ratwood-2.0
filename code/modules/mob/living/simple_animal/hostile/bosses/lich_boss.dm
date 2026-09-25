@@ -304,7 +304,7 @@
 	return ..()
 
 /datum/intent/simple/lich
-	name = "lich"
+	name = "巫妖攻击"
 	icon_state = "instrike"
 	attack_verb = list("击打", "切割", "劈开", "砍")
 	animname = "blank22"
