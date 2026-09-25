@@ -13,7 +13,7 @@
 	job_subclasses = list(
 		/datum/advclass/heartfelt/knight
 		)
-
+	display_title = "赤心骑士"
 /datum/job/roguetown/heartfelt/knight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(ishuman(L))
