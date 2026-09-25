@@ -18,13 +18,13 @@
 	if(wave.hidden && !SSmigrants.is_forced_forming(wave_type))
 		return
 	if(role_type && !SSmigrants.can_be_role(prefs.parent, role_type))
-		to_chat(prefs.parent, span_warning("You can't be this role. (Wrong species, gender, or age.)"))
+		to_chat(prefs.parent, span_warning("你无法担任此角色。（种族、性别或年龄不符合要求。）"))
 		return
 	queued_wave = wave_type
 	queued_role = role_type
 	if(prefs.parent)
 		var/datum/migrant_role/role = role_type ? MIGRANT_ROLE(role_type) : null
-		to_chat(prefs.parent, span_nicegreen("You are queued for [wave.name][role ? " as the [role.name]" : ""]. This does not guarantee a slot."))
+		to_chat(prefs.parent, span_nicegreen("你已加入[wave.name]的队列[role ? "，所选角色为[role.name]" : ""]。排队并不保证获得名额。"))
 
 /datum/migrant_pref/proc/clear_queue(silent = FALSE)
 	if(!queued_wave)
@@ -179,11 +179,11 @@
 		return
 	var/current_triumph = SStriumphs.get_triumphs(client.ckey)
 	if(current_triumph <= 0)
-		to_chat(client, span_warning("You don't have any triumph to contribute!"))
+		to_chat(client, span_warning("你没有可用于贡献的凯旋点！"))
 		return
 	var/player_contribution = wave.triumph_contributions[client.ckey] ? wave.triumph_contributions[client.ckey] : 0
 	var/max_contribute = min(current_triumph, 25)
-	var/amount = tgui_input_number(client, "Contribute triumph to '[wave.name]'?\n\nYour triumph: [current_triumph]\nYour contribution: [player_contribution]\nWave total: [wave.triumph_total]/[wave.triumph_threshold]", "Triumph Contribution", max_value = max_contribute, min_value = 1)
+	var/amount = tgui_input_number(client, "要为“[wave.name]”贡献凯旋点吗？\n\n你的凯旋点：[current_triumph]\n你已贡献：[player_contribution]\n本批移民的总贡献：[wave.triumph_total]/[wave.triumph_threshold]", "贡献凯旋点", max_value = max_contribute, min_value = 1)
 	if(!amount || amount <= 0 || amount > max_contribute)
 		return
 	SSmigrants.contribute_triumph_to_wave(client, wave_type, amount)
