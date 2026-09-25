@@ -1,5 +1,5 @@
 /datum/surgery/amputation
-	name = "Amputation"
+	name = "截肢术"
 	steps = list(
 		/datum/surgery_step/incise,
 		/datum/surgery_step/clamp,
@@ -17,7 +17,7 @@
 	target_mobtypes = list(/mob/living/carbon/human)
 
 /datum/surgery_step/amputate
-	name = "Amputate"
+	name = "截肢"
 	implements = list(
 		TOOL_SCALPEL = 80,
 		TOOL_SAW = 60,
@@ -42,15 +42,15 @@
 	success_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/amputate/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to sever [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to sever [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] begins to sever [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我开始切断[target]的[parse_zone(target_zone)]……"),
+		span_notice("[user]开始切断[target]的[parse_zone(target_zone)]！"),
+		span_notice("[user]开始切断[target]的[parse_zone(target_zone)]！"))
 	return TRUE
 
 /datum/surgery_step/amputate/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I sever [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] severs [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] severs [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我切断了[target]的[parse_zone(target_zone)]。"),
+		span_notice("[user]切断了[target]的[parse_zone(target_zone)]！"),
+		span_notice("[user]切断了[target]的[parse_zone(target_zone)]！"))
 	var/obj/item/bodypart/target_limb = target.get_bodypart(check_zone(target_zone))
 	target_limb?.drop_limb()
 	return TRUE
