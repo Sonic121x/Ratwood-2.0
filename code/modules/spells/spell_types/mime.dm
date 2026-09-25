@@ -79,7 +79,7 @@
 
 
 /obj/item/chair/mime
-	name = "invisible chair"
+	name = "隐形椅子"
 	desc = ""
 	item_state = null
 	lefthand_file = null

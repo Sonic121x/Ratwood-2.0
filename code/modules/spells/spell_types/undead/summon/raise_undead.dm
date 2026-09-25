@@ -28,7 +28,7 @@
 		revert_cast()
 		return FALSE
 
-	var/list/candidates = pollGhostCandidates("Do you want to play as a Lich's skeleton?", ROLE_LICH_SKELETON, null, null, 10 SECONDS, POLL_IGNORE_LICH_SKELETON)
+	var/list/candidates = pollGhostCandidates("你想扮演巫妖的骷髅仆从吗？", ROLE_LICH_SKELETON, null, null, 10 SECONDS, POLL_IGNORE_LICH_SKELETON)
 	if(!LAZYLEN(candidates))
 		var/message = "深渊空无一物。"
 		if(user.cmode)
