@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/antlion
 	icon = 'icons/roguetown/mob/monster/antlion.dmi'
-	name = "antlion"
+	name = "蚁狮"
 	desc = ""
 	pixel_x = -2
 	pixel_y = 7
@@ -47,7 +47,7 @@
 	remains_type = /obj/effect/decal/remains/antlion
 
 /obj/effect/decal/remains/antlion
-	name = "remains"
+	name = "遗骸"
 	gender = PLURAL
 	icon_state = "bones"
 	icon = 'icons/roguetown/mob/monster/antlion.dmi'

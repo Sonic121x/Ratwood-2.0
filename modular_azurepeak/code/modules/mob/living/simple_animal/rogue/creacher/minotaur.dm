@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur
 	icon = 'modular_hearthstone/icons/mob/newminotaur.dmi'
-	name = "牛头怪"
+	name = "牛头人"
 	icon_state = "MinotaurMale"
 	icon_living = "MinotaurMale"
 	icon_dead = "MinotaurMale_dead"
@@ -160,7 +160,7 @@
 	return ..()
 
 /datum/intent/simple/minotaur_unarmed
-	name = "牛头怪徒手"
+	name = "牛头人徒手攻击"
 	icon_state = "instrike"
 	attack_verb = list("挥拳猛击", "重击", "踢踹", "践踏", "碾碎", "撕咬")
 	animname = "blank22"
@@ -173,7 +173,7 @@
 	clickcd = MINOTAUR_ATTACK_SPEED
 
 /datum/intent/simple/minotaur_axe
-	name = "牛头怪战斧"
+	name = "牛头人战斧"
 	icon_state = "instrike"
 	attack_verb = list("劈砍", "斩击", "砍剁", "践踏", "碾碎", "撕咬")
 	animname = "blank22"
@@ -192,14 +192,14 @@
 
 // Dungeon-taur - Less health then normal.
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/wounded
-	name = "受伤的牛头怪"
+	name = "受伤的牛头人"
 	icon_state = "wminotaur"
 	icon_living = "wminotaur"
 	health = 400	//Regular is 600.
 	maxHealth = 400
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/wounded
-	name = "受伤的牛头怪"
+	name = "受伤的牛头人"
 	icon_state = "wminotaur_axe"
 	icon_living = "wminotaur_axe"
 	health = 400	//Regular is 600.
@@ -207,7 +207,7 @@
 
 //Same as usual wounded, unique for orc dungeon. Prisoner-minotaur, doesn't attack orcs for dungeon related stuff.
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/wounded/chained
-	name = "锁链牛头怪"
+	name = "锁链牛头人"
 	icon_state = "chainedminotaur"
 	icon_living = "chainedminotaur"
 	icon_dead = "chainedminotaur_dead"
