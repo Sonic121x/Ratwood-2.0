@@ -105,7 +105,7 @@
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list("罗姆法亚长刃","鞭与盾","长柄刃","军刀与弩")	//Bit more unique than footsman, you are a jack-of-all-trades + slightly more 'elite'.
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("罗姆法亚长刃")

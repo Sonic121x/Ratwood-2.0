@@ -33,9 +33,9 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"Armor Plates" =  /obj/item/repair_kit/metal,
+		"护甲片" =  /obj/item/repair_kit/metal,
 	)
-	extra_context = "This class is restricted from using the Equestrian virtue."
+	extra_context = "该职业不能选择“骑术娴熟”美德。"
 
 	virtue_restrictions = list(
 		/datum/virtue/utility/riding
