@@ -43,93 +43,93 @@
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
 
 	)
-	extra_context = "该子职业仅限黑暗精灵使用。 \
+	extra_context = "该子职业可选种族为黑暗精灵和半精灵。 \
 	女性卓尔获得碎卵者与破床者特质。男性卓尔 \
-	失去 -1 力量与 -1 幸运，但获得 1 速度与 1 意志。"
+	力量与幸运各降低 1，速度与意志各提高 1。"
 
 
 /datum/outfit/job/roguetown/mercenary/crocs/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		var/weapons = list("Sabre","Shotel","Aruval","Hooksword","Falx","Greatsabre","Thrusting Longsword","Kriegmesser","Whip","Urumi","Bardiche","Spined Greatflail - 12 STR MIN","Hefty Greatflail - 13 STR MIN")
-		var/weapon_choice = input(H, "Choose your weapon.", "How do you kill?") as anything in weapons
+		var/weapons = list("军刀","肖特尔弯剑","阿鲁瓦尔镰刀","钩剑","镰剑","大军刀","刺击长剑","双手战刀","长鞭","软剑","月刃斧","尖刺巨型连枷 - 最低力量 12","重型巨型连枷 - 最低力量 13")
+		var/weapon_choice = input(H, "选择你的武器。", "你如何取人性命？") as anything in weapons
 		switch(weapon_choice)
-			if("Sabre")
+			if("军刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/sabre/stalker
-			if("Shotel")
+			if("肖特尔弯剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/shotel/stalker
-			if("Aruval")
+			if("阿鲁瓦尔镰刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/rhomphaia/stalker
-			if("Hooksword")
+			if("钩剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/sabre/hook/stalker
-			if("Falx")
+			if("镰剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/falx/stalker
-			if("Greatsabre")
+			if("大军刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/elf/stalker
-			if("Thrusting Longsword")
+			if("刺击长剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/stalker
-			if("Kriegmesser")
+			if("双手战刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/stalker
-			if("Whip")
+			if("长鞭")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				r_hand = /obj/item/rogueweapon/whip/spiderwhip
-			if("Urumi")
+			if("软剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield
 				r_hand = /obj/item/rogueweapon/whip/urumi/spider
-			if("Bardiche")
+			if("月刃斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/shield/tower/spidershield//intentionally not the gwstrap, the bardiche pairs well with shield, much the same as nomad spear
 				r_hand = /obj/item/rogueweapon/halberd/bardiche/stalker
-			if("Spined Greatflail - 12 STR MIN")
+			if("尖刺巨型连枷 - 最低力量 12")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail/stalker
-			if("Hefty Greatflail - 13 STR MIN")
+			if("重型巨型连枷 - 最低力量 13")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail/stalker/alt
-		var/riding = list("I'm a spider-rider", "I'm a foot-soldier")
-		var/ridingchoice = input(H, "Choose your faith", "FAITH") as anything in riding
+		var/riding = list("我是蜘蛛骑手", "我是步兵")
+		var/ridingchoice = input(H, "选择骑乘作战或徒步作战。", "作战方式") as anything in riding
 		switch(ridingchoice)
-			if("I'm a spider-rider")
+			if("我是蜘蛛骑手")
 				ADD_TRAIT(H, TRAIT_SPIDERBORN, TRAIT_GENERIC)
 				H.AddSpell(new /obj/effect/proc_holder/spell/self/call_spider_mount)
-			if("I'm a foot-soldier")
+			if("我是步兵")
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
-		var/helmets = list("Full Chain Coif + Mantle", "Smiling Bascinet", "Winged Armet")
-		var/helmet_choice = input(H, "How do you dress?", "Get dressed.") as anything in helmets
+		var/helmets = list("全覆式链甲头罩与披肩", "微笑面罩盔", "翼饰闭面盔")
+		var/helmet_choice = input(H, "你要佩戴哪种头盔？", "穿戴装备") as anything in helmets
 		switch(helmet_choice)
-			if("Full Chain Coif + Mantle")
+			if("全覆式链甲头罩与披肩")
 				head = /obj/item/clothing/neck/roguetown/chaincoif/full/black
-			if("Smiling Bascinet")
+			if("微笑面罩盔")
 				head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/shadowplate
-			if("Winged Armet")
+			if("翼饰闭面盔")
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/shadowplate
 
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
@@ -169,8 +169,8 @@
 	H.merctype = 15
 
 /datum/advclass/mercenary/crocsass
-	name = "Crocs de l'araignee 刺客"
-	tutorial = "Crocs de l'araignee，直译即为“蛛牙”，是一支赫赫有名的雇佣团体，擅使刀剑、长鞭与坐骑，常受雇于庞大的卓尔地下城群，偶尔也会在地表活动。蛛牙之人因嗜战、残虐，以及驾驭蛛形坐骑的本领而恶名昭彰；在 普赛多尼亚，他们称得上是最凶悍、也最残酷的一批战士。黑暗精灵说到底只真正忠于自己与自身利益，这也使他们意外地成了务实而直白的佣兵，只要价钱合适，又能服务于他们更高的野心，卓尔便什么活都肯接。"
+	name = "蛛牙刺客"
+	tutorial = "蛛牙，字面意思即为“蜘蛛之牙”，是一支赫赫有名的雇佣团体，擅使刀剑、长鞭与坐骑，常受雇于庞大的卓尔地下城群，偶尔也会在地表活动。蛛牙之人因嗜战、残虐，以及驾驭蛛形坐骑的本领而恶名昭彰；在普赛多尼亚，他们称得上是最凶悍、也最残酷的一批战士。黑暗精灵说到底只真正忠于自己与自身利益，这也使他们意外地成了务实而直白的佣兵，只要价钱合适，又能服务于他们更高的野心，卓尔便什么活都肯接。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/elf/dark,
@@ -215,34 +215,34 @@
 /datum/outfit/job/roguetown/mercenary/crocsass/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		var/weapons = list("Slurbow","Shortbow","Dual Daggers","Dual Hookswords","Dual Falx","Dual Shotel","Dual Whips - 10 STR Min", "Dual Urumi - 10 STR Min")
-		var/weapon_choice = input(H, "Choose your weapon.", "How do you kill?") as anything in weapons
+		var/weapons = list("管弩","短弓","双持匕首","双持钩剑","双持镰剑","双持肖特尔弯剑","双持长鞭 - 最低力量 10", "双持软剑 - 最低力量 10")
+		var/weapon_choice = input(H, "选择你的武器。", "你如何取人性命？") as anything in weapons
 		switch(weapon_choice)
-			if("Slurbow")
+			if("管弩")
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker
 				beltl = /obj/item/rogueweapon/sword/falx/stalker//backup
 				beltr =  /obj/item/quiver/bolts/
-			if("Shortbow")
+			if("短弓")
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/falx/stalker//backup
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 				beltr = /obj/item/quiver/poisonarrows/
-			if("Dual Daggers")
+			if("双持匕首")
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/dirk
-			if("Dual Hookswords")
+			if("双持钩剑")
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/sword
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				beltr = /obj/item/rogueweapon/sword/sabre/hook/stalker
 				r_hand = /obj/item/rogueweapon/sword/sabre/hook/stalker
-			if("Dual Falx")
+			if("双持镰剑")
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/sword
@@ -256,37 +256,37 @@
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				beltr = /obj/item/rogueweapon/sword/sabre/stalker
 				r_hand = /obj/item/rogueweapon/sword/sabre/stalker
-			if("Dual Shotel")
+			if("双持肖特尔弯剑")
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/sword
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				beltr = /obj/item/rogueweapon/sword/long/shotel/stalker
 				r_hand = /obj/item/rogueweapon/sword/long/shotel/stalker
-			if("Dual Whips - 10 STR Min")//hilarious
+			if("双持长鞭 - 最低力量 10")//hilarious
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/whip/spiderwhip
 				beltl = /obj/item/rogueweapon/whip/spiderwhip
-			if("Dual Urumi - 10 STR Min")
+			if("双持软剑 - 最低力量 10")
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/whip/urumi/spider
 				beltl = /obj/item/rogueweapon/whip/urumi/spider
-		var/riding = list("I'm a spider-rider", "I'm a foot-soldier")
-		var/ridingchoice = input(H, "Choose your faith", "FAITH") as anything in riding
+		var/riding = list("我是蜘蛛骑手", "我是步兵")
+		var/ridingchoice = input(H, "选择骑乘作战或徒步作战。", "作战方式") as anything in riding
 		switch(ridingchoice)
-			if("I'm a spider-rider")
+			if("我是蜘蛛骑手")
 				ADD_TRAIT(H, TRAIT_SPIDERBORN, TRAIT_GENERIC)
 				H.AddSpell(new /obj/effect/proc_holder/spell/self/call_spider_mount)
-			if("I'm a foot-soldier")
+			if("我是步兵")
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
-		var/helmets = list("Full Chain Coif + Mantle", "Smiling Bascinet")
-		var/helmet_choice = input(H, "How do you dress?", "Get dressed.") as anything in helmets
+		var/helmets = list("全覆式链甲头罩与披肩", "微笑面罩盔")
+		var/helmet_choice = input(H, "你要佩戴哪种头盔？", "穿戴装备") as anything in helmets
 		switch(helmet_choice)
-			if("Full Chain Coif + Mantle")
+			if("全覆式链甲头罩与披肩")
 				head = /obj/item/clothing/neck/roguetown/chaincoif/full/black
-			if("Smiling Bascinet")
+			if("微笑面罩盔")
 				head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/shadowplate
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/shadowrobe
