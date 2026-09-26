@@ -55,7 +55,7 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_JOURNEYMAN,
 	)
 
-	extra_context = "This class is restricted from using the Natural Armor virtue."
+	extra_context = "该职业不能选择“天然护甲”美德。"
 
 	virtue_restrictions = list(
 		/datum/virtue/combat/tough_hide,
