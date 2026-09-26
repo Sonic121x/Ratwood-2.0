@@ -201,8 +201,8 @@
 /obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet
 
 /obj/item/clothing/neck/roguetown/skullamulet/alchemist
-	name = "sulphur amulet"
-	desc = "This yellow skull is the sigil of alchemists across Ferentia.<br>It reeks with a rotten odor."
+	name = "硫磺护符"
+	desc = "这枚黄色骷髅是费伦提亚各地炼金术士的标志。<br>它散发着腐臭。"
 	var/active_item
 
 /obj/item/clothing/neck/roguetown/skullamulet/alchemist/equipped(mob/living/user, slot)

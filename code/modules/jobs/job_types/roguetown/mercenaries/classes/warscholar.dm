@@ -151,20 +151,20 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/shadowstep)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 		H.mind.AddSpell(new/obj/effect/proc_holder/spell/invoked/projectile/repel)
-		var/weapons = list("Path of War","Path of Control","Path of Shadows","Path of Survival")
-		var/weapon_choice = input(H, "Choose your path.", "WHAT PATH DO YOU WALK?") as anything in weapons
+		var/weapons = list("战争之道","掌控之道","暗影之道","生存之道")
+		var/weapon_choice = input(H, "选择你的道路。", "你将踏上哪条道路？") as anything in weapons
 		switch(weapon_choice)
-			if("Path of War")//Weak combat stuff only
+			if("战争之道")//Weak combat stuff only
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/airblade)//longer CD than arcane bolt but more versatile
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
-			if("Path of Control")//Battlefield control, minimal damage dealing
+			if("掌控之道")//Battlefield control, minimal damage dealing
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/ensnare)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/forcewall/greater)
-			if("Path of Shadows")//Sneaky trickster punchmage
+			if("暗影之道")//Sneaky trickster punchmage
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/lesserknock)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/blindness/warscholar)
-			if("Path of Survival")//Trade magic for skills
+			if("生存之道")//Trade magic for skills
 				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/craft/alchemy, 2, TRUE)
