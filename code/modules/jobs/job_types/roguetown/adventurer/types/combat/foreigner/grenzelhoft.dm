@@ -73,9 +73,9 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				r_hand = /obj/item/rogueweapon/eaglebeak
 /datum/advclass/foreigner/fencerguy
-	name = "Foreign Fencer"
-	tutorial = "You're an itinerant weapons expert that was trained in a Grenzelhoftian fencing school, carrying with you your weapon, your skillset, your pride... And not much else, frankly."
-	extra_context = "This is a freeform class that's meant to evoke a similar feeling to playing a Freifechter, your equipment and skillset is limited compared to other classes - this is by design - but you start with cool weapons."
+	name = "异乡剑客"
+	tutorial = "你是一位四处游历的武器行家，曾在格伦泽尔霍夫的剑术学校受训。你随身带着武器、本领和自尊……坦白说，除此之外也没多少东西了。"
+	extra_context = "这是一个玩法自由的职业，体验类似自由剑士。与其他职业相比，你的装备和技能较为有限，这是有意为之的设计；不过，你开局就有出色的武器。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/fencerguy
@@ -99,24 +99,24 @@
 
 /datum/outfit/job/roguetown/adventurer/fencerguy/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You're an itinerant weapons expert that was trained in a Grenzelhoftian fencing school, carrying with you your weapon, your skillset, and your pride."))
+	to_chat(H, span_warning("你是一位四处游历的武器行家，曾在格伦泽尔霍夫的剑术学校受训，随身带着武器、本领和自尊。"))
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("Balanced Longsword","Spear & Punch Dagger","Sabre")
-		var/weapon_choice = input(H, "Choose your expertise.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("平衡长剑","长矛与拳刃","军刀")
+		var/weapon_choice = input(H, "选择你擅长的武器。", "拿起武器") as anything in weapons
 		switch(weapon_choice)
-			if("Balanced Longsword")
+			if("平衡长剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/sword/long/fencerguy
 				r_hand = /obj/item/rogueweapon/huntingknife/combat
 				backr = /obj/item/rogueweapon/scabbard/sword
-			if("Spear & Punch Dagger")
+			if("长矛与拳刃")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				l_hand = /obj/item/rogueweapon/spear/boar
 				r_hand = /obj/item/rogueweapon/katar/punchdagger
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Sabre")
+			if("军刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/sword/sabre
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger

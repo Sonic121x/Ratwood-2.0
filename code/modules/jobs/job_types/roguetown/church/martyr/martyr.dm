@@ -119,13 +119,13 @@
 		)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.mind)
-		var/helmets = list("Holy Silver Bascinet","Holy Silver Armet")
-		var/helmets_choice = input(H, "Choose your helmet.", "TAKE UP ARMS") as anything in helmets
+		var/helmets = list("圣银尖盔","圣银闭面盔")
+		var/helmets_choice = input(H, "选择你的头盔。", "拿起武器") as anything in helmets
 		H.set_blindness(0)
 		switch(helmets_choice)
-			if("Holy Silver Bascinet")
+			if("圣银尖盔")
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/holysee
-			if("Holy Silver Armet")
+			if("圣银闭面盔")
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/holysee/alt
 
 /datum/outfit/job/roguetown/martyr/basic/choose_loadout(mob/living/carbon/human/H)
