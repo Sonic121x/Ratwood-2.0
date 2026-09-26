@@ -1,8 +1,8 @@
 /datum/advclass/mercenary/newmoon
-	name = "新月 咒剑士"
-	tutorial = "Zybantia 的 新月 咒剑士，是 Lalvestine 某片未知地域中一座已然覆灭的 诺克 修道院残党， \
-	那曾是 Zybantian 帝国境内“十杰”最后一处重要据点。 \
-	在腐败之灾的重压下，他们的修院生活与虔诚信念迅速崩塌，被迫从孤绝苦修的日子里跌入普通佣兵的生涯；而 Noc 的赐福，在斩杀怪物与人类时倒是意外地好用。 \
+	name = "新月咒剑士"
+	tutorial = "兹班图的新月咒剑士，是 Lalvestine 某片未知地域中一座已然覆灭的诺克修道院的幸存者， \
+	那曾是兹班图帝国境内十神信仰最后一处重要据点。 \
+	在腐败之灾的重压下，他们的修院生活与虔诚信念迅速崩塌，被迫从孤绝苦修的日子里跌入普通佣兵的生涯；而诺克的赐福，在斩杀怪物与人类时倒是意外地好用。 \
 	无论出于何种缘由，你如今来到了这片地界，向出价最高者献上自己的技艺。知识即力量。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
@@ -40,7 +40,7 @@
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_NOVICE,
 	)
 
-	extra_context = "该分支仅限：Tabaxi | Wild-Kin | Half-Kin | Elves | Tiefling。"
+	extra_context = "该分支仅限：塔巴西 | 兽裔 | 半兽裔 | 木精灵 | 提夫林。"
 
 /datum/outfit/job/roguetown/mercenary/newmoon
 	allowed_patrons = list(/datum/patron/divine/noc)

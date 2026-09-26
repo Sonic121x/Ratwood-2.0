@@ -99,7 +99,7 @@
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list("双手阔剑","大战锤","战斧","巨斧","刺击剑","卢塞恩战锤","阔刃矛")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("双手阔剑")
@@ -185,7 +185,7 @@
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list("沙姆希尔弯刀","鞭","软剑","战锤","军刀")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("沙姆希尔弯刀")
@@ -383,8 +383,8 @@
 	if(H.mind)
 		var/weapons = list("弯刀与长弓","刺击剑与反曲弓","军刀与盾","鞭与弩")
 		var/armor_options = list("轻皮甲", "轻板甲衣", "鳞甲")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in armor_options
+		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
+		var/armor_choice = input(H, "选择你的护甲。", "拿起武器") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("弯刀与长弓")
