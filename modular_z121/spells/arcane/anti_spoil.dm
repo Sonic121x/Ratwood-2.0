@@ -74,13 +74,30 @@
 
 // ---------------------------------------------------------------------------
 // restore_freshness：把一件食物“复原为新鲜”的核心逻辑，独立成 proc 便于复用与调参。
-// 参数 F 为已判定合法的目标食物。返回 TRUE 表示确实改变了状态（有东西被复原），
-// 返回 FALSE 表示该食物本就新鲜、无需处理（供 cast 决定是否退还冷却）。
+// 参数 F 为已判定合法的目标食物。成功时返回复原后的食物，失败时返回 null。
+// 腐肉是独立类型，必须替换实体；调用方需要使用返回的新目标播放效果。
 //
 // why：把“判定”与“执行”分离——cast() 负责类型/合法性校验与表现层反馈，本 proc 只
 // 专注于精确地撤销主线 become_rotten() 与 warming 老化所带来的两层状态。
 // ---------------------------------------------------------------------------
 /obj/effect/proc_holder/spell/invoked/anti_spoil/proc/restore_freshness(obj/item/reagent_containers/food/snacks/F)
+	// 这些食物的初始状态就已腐烂，恢复初值仍会保留腐肉外观和负面效果。
+	// 普通肉腐烂时会丢失原类型，因此统一复原为生肉排；尸鬼鹿肉保留对应部位和生熟状态。
+	var/static/list/fresh_types = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat_rotten = /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/saiga_z = /obj/item/reagent_containers/food/snacks/rogue/meat/saiga,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/saiga_ribs_z = /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_ribs,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/saiga_loins_z = /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_loins,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/saiga_prime_z = /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_prime,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/saiga_z/cooked = /obj/item/reagent_containers/food/snacks/rogue/meat/saiga/cooked,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/saiga_ribs_z/cooked = /obj/item/reagent_containers/food/snacks/rogue/meat/saiga_ribs/cooked
+	)
+	if(F.eat_effect == /datum/status_effect/debuff/rotfood && initial(F.eat_effect) == /datum/status_effect/debuff/rotfood)
+		var/fresh_type = fresh_types[F.type]
+		if(!fresh_type)
+			return null
+		return replace_rotten_food(F, fresh_type)
+
 	// did_anything：只要撤销了“变质”或“腐烂”任一层，就置 TRUE；用于最终返回值。
 	var/did_anything = FALSE
 
@@ -101,6 +118,9 @@
 		F.slices_num = initial(F.slices_num)             // 恢复可切片数（腐烂时被清 0）
 		F.slice_path = initial(F.slice_path)             // 恢复切片产物路径（腐烂时被清 null）
 		F.cooktime = initial(F.cooktime)                 // 恢复烹饪时间（腐烂时被清 0）
+		// 食物初始化会为可烹饪但未声明时间的类型补上默认值，不能仅恢复编译期初值。
+		if(!F.cooktime && (F.cooked_type || F.fried_type))
+			F.cooktime = 30 SECONDS
 		did_anything = TRUE                              // 记录：确实撤销了“腐烂”这一层
 
 	// ---- 第二层：撤销“变质/发馊(Spoiled/stale)”老化 ----
@@ -118,7 +138,45 @@
 	if(did_anything && F.rotprocess)
 		F.begin_rotting()
 
-	return did_anything
+	return did_anything ? F : null
+
+// 替换独立腐肉类型，沿用剩余试剂和食用次数，避免净化凭空补充食物或移除添加物。
+/obj/effect/proc_holder/spell/invoked/anti_spoil/proc/replace_rotten_food(obj/item/reagent_containers/food/snacks/food, fresh_type)
+	var/atom/location = food.loc
+	var/turf/fallback_turf = get_turf(food)
+	if(!location || !fallback_turf)
+		return null
+	var/mob/holder
+	var/hand_index
+	if(ismob(location))
+		holder = location
+		hand_index = holder.get_held_index_of_item(food)
+
+	var/obj/item/reagent_containers/food/snacks/fresh_food = new fresh_type(null)
+	fresh_food.reagents.clear_reagents()
+	if(food.reagents)
+		fresh_food.reagents.maximum_volume = max(fresh_food.reagents.maximum_volume, food.reagents.total_volume)
+		food.reagents.trans_to(fresh_food, food.reagents.total_volume)
+	fresh_food.bitecount = food.bitecount
+	fresh_food.pixel_x = food.pixel_x
+	fresh_food.pixel_y = food.pixel_y
+	fresh_food.dir = food.dir
+	for(var/atom/movable/content in food.contents)
+		content.forceMove(fresh_food)
+	qdel(food)
+
+	// 使用库存接口恢复手持或收纳状态，避免残留旧物品引用和失效的背包图标。
+	if(holder)
+		if(!hand_index || !holder.put_in_hand(fresh_food, hand_index))
+			holder.put_in_hands(fresh_food)
+	else if(!SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, fresh_food, null, TRUE, TRUE))
+		if(location.GetComponent(/datum/component/storage))
+			fresh_food.forceMove(fallback_turf)
+		else
+			fresh_food.forceMove(location)
+	if(fresh_food.rotprocess)
+		fresh_food.begin_rotting()
+	return fresh_food
 
 // ---------------------------------------------------------------------------
 // cast：点击命中目标后由基类 InterceptClickOn -> perform 调用。
@@ -153,18 +211,23 @@
 		revert_cast()
 		return FALSE
 
-	// 调用核心逻辑执行复原；返回 FALSE 表示这件食物本就新鲜，无需净化。
+	// 调用核心逻辑并接收替换后的食物；无可恢复状态时退还冷却。
 	// 此时不消耗冷却（退还），给出合理反馈，避免玩家白白空放。
-	if(!restore_freshness(food))
-		to_chat(user, span_warning("[food] 本就新鲜可口，无需净化。"))
+	var/obj/item/reagent_containers/food/snacks/fresh_food = restore_freshness(food)
+	if(!fresh_food)
+		to_chat(user, span_warning("[food] 没有可由这道法术恢复的腐坏。"))
 		revert_cast()
 		return FALSE
+	food = fresh_food
 
 	// ---- 表现层反馈（成功）----
 	// 播放一声轻柔的“净化”音效并刷新外观（虽然改 color/name 会自动刷新，这里显式
 	// update_icon 兜底，确保切片数等衍生外观也同步）。
 	playsound(get_turf(food), 'sound/magic/whiteflame.ogg', 40, TRUE)
 	food.update_icon()
+	// 托盘会缓存食物外观，净化后需一并刷新。
+	if(istype(food.loc, /obj/item/cooking/platter))
+		food.loc.update_icon()
 	user.visible_message(
 		span_notice("[user] 指尖泛起一缕奥术微光，拂过 [food]——馊腐霉气尽数消散，它重新变得新鲜。"),
 		span_notice("我以奥术之力驱散了 [food] 上的腐坏，令它重归新鲜。")
