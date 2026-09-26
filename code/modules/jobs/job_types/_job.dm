@@ -615,7 +615,7 @@
 		var/height = 550
 		if(sclass_count >= 10)
 			height = 925
-		var/datum/browser/popup = new(usr, "classhelp", "<div style='text-align: center'>[title]</div>", nwidth = 475, nheight = height)
+		var/datum/browser/popup = new(usr, "classhelp", "<div style='text-align: center'>[display_title || title]</div>", nwidth = 475, nheight = height)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		if(winexists(usr, "classhelp"))
