@@ -41,7 +41,7 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "vanguard cloak ([index])"
+			S.name = "先锋披风 ([index])"
 
 /datum/outfit/job/roguetown/vanguard
 	backr = /obj/item/storage/backpack/rogue/satchel
