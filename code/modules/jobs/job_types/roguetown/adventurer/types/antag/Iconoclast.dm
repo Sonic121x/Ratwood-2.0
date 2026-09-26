@@ -60,16 +60,16 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	beltr = /obj/item/rogueweapon/katar
 	id = /obj/item/mattcoin
-	var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
-	var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
+	var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
+	var/technique_choice = input(H,"选择你的技法。", "将敌人摔出去") as anything in techniques
 	switch(technique_choice)
-		if("Dropkick - Pushback + Extra Damage")
+		if("腾空飞踢 - 击退与额外伤害")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-		if("Chokeslam - Stamina Damage")
+		if("锁喉摔 - 体力伤害")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-		if("Stunner - Dazed Debuff")
+		if("碎颚摔 - 眩晕减益")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-		if("Headbutt - Vulnerable Debuff")
+		if("头槌 - 易伤减益")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MINOR, start_maxed = TRUE)	//Starts off maxed out.
