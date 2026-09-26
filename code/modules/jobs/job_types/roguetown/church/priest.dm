@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 	你必须引领他们走向敬畏诸神的未来，因为你是圣座的一名主教。"
 	whitelist_req = FALSE
 	cmode_music = 'sound/music/cmode/church/combat_astrata.ogg'
-
+	display_title = "主教"
 	spells = list(/obj/effect/proc_holder/spell/invoked/cure_rot, /obj/effect/proc_holder/spell/self/convertrole/templar, /obj/effect/proc_holder/spell/self/convertrole/monk, /obj/effect/proc_holder/spell/invoked/projectile/divineblast, /obj/effect/proc_holder/spell/invoked/wound_heal, /obj/effect/proc_holder/spell/invoked/takeapprentice)
 	outfit = /datum/outfit/job/roguetown/priest
 	display_order = JDO_PRIEST
