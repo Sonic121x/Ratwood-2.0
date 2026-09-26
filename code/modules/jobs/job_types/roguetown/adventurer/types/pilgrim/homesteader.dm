@@ -445,7 +445,7 @@
 						var/unique_key = "[item_name] ([profession_set_name] [counter])"
 						H.mind.special_items[unique_key] = item_path
 					counter++
-				if(profession_set_name == "Craftsman Set")
+				if(profession_set_name == "工匠套装")
 					ADD_TRAIT(H, TRAIT_MASTER_CARPENTER, TRAIT_GENERIC)
 					ADD_TRAIT(H, TRAIT_MASTER_MASON, TRAIT_GENERIC)
 				if(profession_set_name in profession_sets)

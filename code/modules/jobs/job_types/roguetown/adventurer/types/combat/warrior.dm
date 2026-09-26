@@ -293,16 +293,16 @@
 				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
 
-		var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves for non-magic guys.
-		var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
+		var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves for non-magic guys.
+		var/technique_choice = input(H,"选择你的技法。", "将敌人摔出去") as anything in techniques
 		switch(technique_choice)
-			if("Dropkick - Pushback + Extra Damage")
+			if("腾空飞踢 - 击退与额外伤害")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-			if("Chokeslam - Stamina Damage")
+			if("锁喉摔 - 体力伤害")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-			if("Stunner - Dazed Debuff")
+			if("碎颚摔 - 眩晕减益")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-			if("Headbutt - Vulnerable Debuff")
+			if("头槌 - 易伤减益")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 
 		belt = /obj/item/storage/belt/rogue/leather/battleskirt/barbarian

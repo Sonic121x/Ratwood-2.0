@@ -475,8 +475,8 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
-		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
+		"十神诗篇与行传" = /obj/item/book/rogue/bibble,
+		"普赛顿之书" = /obj/item/book/rogue/bibble/psy
 	)
 	extra_context = "该子职业拥有更高阶的神迹，并可使用吟游激励。"
 
@@ -649,8 +649,8 @@
 		/datum/skill/labor/lumberjacking = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
-		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
+		"十神诗篇与行传" = /obj/item/book/rogue/bibble,
+		"普赛顿之书" = /obj/item/book/rogue/bibble/psy
 	)
 	extra_context = "该子职业可使用费伦提亚诸地最强大的神迹，但代价是其余方面将有所吃亏。"
 
@@ -818,7 +818,7 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
+		"普赛顿之书" = /obj/item/book/rogue/bibble/psy
 	)
 	extra_context = "这是 普赛顿 信徒专属的子职业；若你当前并非其信徒，它会强制将你改为该信仰。你将成为和平主义者，并能调用 普赛顿 赦罪者能力的较弱版本。"
 

@@ -33,7 +33,7 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 	) //No Swimming because skeletons in water is bad.
 	subclass_stashed_items = list(
-		"Armor Plates" =  /obj/item/repair_kit/metal,
+		"护甲片" =  /obj/item/repair_kit/metal,
 	)
 /datum/outfit/job/roguetown/wretch/ancientchampion
 	has_loadout = TRUE
