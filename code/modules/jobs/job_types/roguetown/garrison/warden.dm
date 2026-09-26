@@ -41,7 +41,7 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "warden cloak ([index])"
+			S.name = "守林人披风 ([index])"
 
 /datum/outfit/job/roguetown/warden
 	cloak = /obj/item/clothing/cloak/wardencloak
@@ -125,7 +125,7 @@
 			"熊首之盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear,
 			"无"
 		)
-		var/helmchoice = input(H, "选择你的道路。", "头盔选择") as anything in helmets
+		var/helmchoice = input(H, "选择你的头盔。", "头盔选择") as anything in helmets
 		if(helmchoice != "无")
 			head = helmets[helmchoice]
 
@@ -196,12 +196,12 @@
 	H.set_blindness(0)
 
 	if(H.mind)
-		var/weapons = list("Axe", "Sword & Shield")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("斧头", "剑与盾")
+		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		switch(weapon_choice)
-			if("Axe")
+			if("斧头")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
-			if("Sword & Shield")
+			if("剑与盾")
 				backl = /obj/item/rogueweapon/shield/iron
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/short/messer
@@ -221,7 +221,7 @@
 			"熊首之盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee,
 			"无"
 		)
-		var/helmchoice = input(H, "选择你的道路。", "头盔选择") as anything in helmets
+		var/helmchoice = input(H, "选择你的头盔。", "头盔选择") as anything in helmets
 		if(helmchoice != "无")
 			head = helmets[helmchoice]
 

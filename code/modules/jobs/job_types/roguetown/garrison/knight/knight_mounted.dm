@@ -31,13 +31,13 @@
 		/datum/skill/misc/tracking = SKILL_LEVEL_JOURNEYMAN,
 	)
 
-	extra_context = "This class is restricted from using the Equestrian virtue."
+	extra_context = "该职业不能选择“骑术娴熟”美德。"
 
 	virtue_restrictions = list(
 		/datum/virtue/utility/riding
 	)
 	subclass_stashed_items = list("Caparison (Saiga)" = /obj/item/caparison, "Caparison (Fogbeast)" = /obj/item/caparison/fogbeast)
-	extra_context = "This subclass receives a caparison in its stash. Use the Saiga or Fogbeast version depending on your mount."
+	extra_context = "该子职业的藏匿物品中有一条鞍饰毯。请根据坐骑选择赛加羚羊或雾兽款式。"
 
 /datum/outfit/job/roguetown/knight/mountedknight/pre_equip(mob/living/carbon/human/H)
 	..()
