@@ -137,36 +137,36 @@
 
 /datum/outfit/job/roguetown/mercenary/blackoak_ranger/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("Elvish Dagger", "Elvish Saber", "Elvish Shortsword")
-	var/weapon_choice = input(H, "Choose your WEAPON.", "FOR THE OAKS AND THE VALE.") as anything in weapons
+	var/weapons = list("精灵匕首", "精灵军刀", "精灵短剑")
+	var/weapon_choice = input(H, "选择你的武器。", "为了橡林与谷地") as anything in weapons
 	switch(weapon_choice)
-		if("Elvish Dagger") // The classic dagger option.
+		if("精灵匕首") // The classic dagger option.
 			H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/silver/elvish)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sheath, SLOT_BELT_R, TRUE)
-		if("Elvish Saber") // Dodge option for doing good damage at the cost of your poor stamina.
+		if("精灵军刀") // Dodge option for doing good damage at the cost of your poor stamina.
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/sword/sabre/elf)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
-		if("Elvish Shortsword") // Parry option for regular shortsword damage but high sharpness & integrity equals less damage decay.
+		if("精灵短剑") // Parry option for regular shortsword damage but high sharpness & integrity equals less damage decay.
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/sword/short/elf)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
 
-	var/armors = list("Woad Elven Maille", "Fur-Lined Trophy Robes")
-	var/armor_choice = input(H, "Choose your ARMOR.", "THE FOREST CLOAKS YOU.") as anything in armors
+	var/armors = list("靛蓝精灵锁甲", "毛皮衬里战利品长袍")
+	var/armor_choice = input(H, "选择你的护甲。", "森林庇护着你") as anything in armors
 	switch(armor_choice)
-		if("Woad Elven Maille")
+		if("靛蓝精灵锁甲")
 			REMOVE_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/elven_plate/light, SLOT_ARMOR, TRUE)
-		if("Fur-Lined Trophy Robes")
+		if("毛皮衬里战利品长袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/elven, SLOT_ARMOR, TRUE)
-	var/helmets = list("Woad Elven Barbute", "Elven Barbute", "Winged Elven Barbute")
-	var/helmet_choice = input(H, "Choose your HELMET.", "LEAVES OVER STEEL.") as anything in helmets
+	var/helmets = list("靛蓝精灵巴布特盔", "精灵巴布特盔", "翼饰精灵巴布特盔")
+	var/helmet_choice = input(H, "选择你的头盔。", "绿叶覆于钢铁之上") as anything in helmets
 	switch(helmet_choice)
-		if("Woad Elven Barbute")
+		if("靛蓝精灵巴布特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light, SLOT_HEAD, TRUE)
-		if("Elven Barbute")
+		if("精灵巴布特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak, SLOT_HEAD, TRUE)
-		if("Winged Elven Barbute")
+		if("翼饰精灵巴布特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak, SLOT_HEAD, TRUE)

@@ -53,8 +53,8 @@
 /datum/outfit/job/roguetown/proc/snouthelm_pick(mob/living/carbon/human/H, plain_path, snouted_path)
 	if(!H || !H.mind)
 		return plain_path
-	var/list/visages = list("Standard" = plain_path, "Snouted" = snouted_path)
-	var/choice = input(H, "Choose your helm's visage.", "TAKE UP HELMS") as anything in visages
+	var/list/visages = list("标准款" = plain_path, "长吻款" = snouted_path)
+	var/choice = input(H, "选择头盔的面罩样式。", "戴上头盔") as anything in visages
 	if(!choice)
 		return plain_path
 	return visages[choice]
