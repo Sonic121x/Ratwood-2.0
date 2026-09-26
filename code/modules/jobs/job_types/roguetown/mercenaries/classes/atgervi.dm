@@ -134,16 +134,16 @@
 	beltl = /obj/item/flashlight/flare/torch
 	H.put_in_hands(new /obj/item/rogueweapon/handclaw/gronn, FALSE)
 	
-	var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
-	var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
+	var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
+	var/technique_choice = input(H,"选择你的技法。", "将敌人摔出去") as anything in techniques
 	switch(technique_choice)
-		if("Dropkick - Pushback + Extra Damage")
+		if("腾空飞踢 - 击退与额外伤害")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-		if("Chokeslam - Stamina Damage")
+		if("锁喉摔 - 体力伤害")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-		if("Stunner - Dazed Debuff")
+		if("碎颚摔 - 眩晕减益")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-		if("Headbutt - Vulnerable Debuff")
+		if("头槌 - 易伤减益")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 
 	switch(H.patron?.type)
@@ -293,42 +293,42 @@
 ///////////////////////////////
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/gronn
-	name = "carved talisman" //plotting talisman
+	name = "雕刻护符" //plotting talisman
 	desc = "'The hunt, the studying of your prey, the learning of its routes, the knowledge our ancestors passed down, the empowerment of your people and yourself. Learn of the world, or fade away.'	</br>	</br>The Plotting Wolf embodies the virtues of progress and knowledge, so that no obstacle nor threat to the homeland remains insurmountable. To understand the truths of beast-and-bronze is to lighten the future's hardships. Do not humor magicka, however, for playing with fire shall always end in someone being burned."
 	icon_state = "gronnzizo"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/baotha/gronn
-	name = "carved talisman" //relishing talisma
+	name = "雕刻护符" //relishing talisma
 	desc = "'“The excess of desire, the want of more, the glory of victory, the lover's embrace. Embrace the Leopard, or forget your strength.'	</br>	</br>The Relishing Leopard embodies the virtues of love and glory, both in battle and at home. Enjoy the flesh, the drink, and the spice; but be wary to avoid overindulgence, for it shall leave you despondent and lethargic. To become too comfortable is to become weak, and such weakness would turn you into a delicious snack for the Leopard."
 	icon_state = "gronnbaotha"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/matthios/gronn
-	name = "carved talisman" //starving talisman
+	name = "雕刻护符" //starving talisman
 	desc = "'“The hunger, the destruction, the impending frost, the enemy of my enemy. Feed the Bear, or be consumed.'	</br>	</br>The Starving Bear embodies not a virtue, but the necessity to thrive above all else. Avarice is not a sin, but a virtue; to ensure that the homeland never suffers from poverty nor starvation again. Pillage, plunder, and perforate the wealth that others would keep from you, but do not forget that every choice begets consequences."
 	icon_state = "gronnmatthios"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/gronn
-	name = "carved talisman" //grinning talisman
+	name = "雕刻护符" //grinning talisman
 	desc = "'The battle, the combat, the violence, the rush of victory, the honored glories. Defeat the foe, or die with them.'	</br>	</br>The Grinning Moose embodies the virtues of strength and domination; to survive both the homeland's frigid blizzards and those who'd seek to maraud its countrymen. Be untamed and unstoppable, but do not lose yourself in the haze; for even the Moose was chained once. Kill your own without reason, and the chain shall be tugged; and your soul, too, shall be impaled on their horns."
 	icon_state = "gronngraggar"
 
 /obj/item/clothing/neck/roguetown/psicross/dendor/gronn
-	name = "carved talisman" //volfskinned talisman
+	name = "雕刻护符" //volfskinned talisman
 	desc = "'The world above, of knifetoothed plants and rotting carrion. From jungle to desert, even the stones are nature. Heed its call with the respect it commands, or succumb to madness.'	</br>	</br>The Volfskinned Man embodies the virtue of nature and temperance; to live in harmony with the world and its spirits. Pluck a jackberry, plant a seed - Slay a beast, see no part wasted. Yet, temperance must be shown; to take from the world without respect-nor-exchange is to curse the homeland with misfortune. Yet, to completely embrace the world's primality is to lose your humanity - and worse, to become the very beast you hunt."
 	icon_state = "gronndendor"
 
 /obj/item/clothing/neck/roguetown/psicross/abyssor/gronn
-	name = "carved talisman" //hadal talisman
+	name = "雕刻护符" //hadal talisman
 	desc = "'The chaos below, of coldblack pressure and crushing weight. Be the current. Control the waves. Reign your sails and hold fast against the storm, or be washed away onto an odyssey with no end.'	</br>	</br>The Spiraling Kraken is no virtue, but a presence; the homeland's nautical warden, whose tentacled presence is as unpredictable as the oceans it lords over. To embrace the uncertainty of lyfe is to be rewarded with fortune and mercy when it is most needed. Do not embrace such futility, however, lest you be swept away with all the others into the abyss."
 	icon_state = "gronnabyssor"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/gronn/special
-	name = "carved talisman" //familial talisman
+	name = "雕刻护符" //familial talisman
 	desc = "'The memories of the past, and the dreams of the future. A fetish of a beaste, and the carvings of a force that no one beyond your homeland could understand. Sail gracefully, countryman.'"
 
 /// Generic version of the matthios gronn necklace that has no examine highlights. Purely for loadout drip
 /obj/item/clothing/neck/roguetown/psicross/inhumen/matthios/gronn/generic
-	name = "tooth necklace" //starving talisman, (non-gronnic, generic)
-	desc = "A necklace with a large fanged tooth. Or is that a particularly large claw?"
+	name = "兽牙项链" //starving talisman, (non-gronnic, generic)
+	desc = "一条挂着巨大獠牙的项链。又或者，那其实是一枚硕大的爪子？"
 
 //

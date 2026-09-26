@@ -26,7 +26,7 @@
 		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT, //SNIFF OUT JUSTICE.
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" = /obj/item/repair_kit,
+		"缝纫工具包" = /obj/item/repair_kit,
 	)
 /datum/outfit/job/roguetown/wretch/vigilante/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/ //So your skull isn't caved in if you decide to wear a cool hat.
@@ -74,14 +74,14 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
 	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC) //No crit resist - you can still get folded pretty easily if overwhelmed
 	if(H.mind)
-		var/weapons = list("THE FISTS OF JUSTICE ARE UNISEX!","JUSTICE DISPENSED THROUGH KNUCKLE AND BLADE!")
-		var/weapon_choice = input(H, "Choose your WEAPON.", "THY FISTS ARE THY IMPLEMENT, WATCHMAN!") as anything in weapons
+		var/weapons = list("正义之拳不分男女！","以铁拳与利刃伸张正义！")
+		var/weapon_choice = input(H, "选择你的武器。", "守望者，你的双拳便是你的利器！") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("THE FISTS OF JUSTICE ARE UNISEX!")
+			if("正义之拳不分男女！")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE) //It's sovl.
 				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-			if("JUSTICE DISPENSED THROUGH KNUCKLE AND BLADE!")
+			if("以铁拳与利刃伸张正义！")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE) //No Civbarb.
 				l_hand = /obj/item/rogueweapon/katar
 				r_hand = /obj/item/rogueweapon/knuckles

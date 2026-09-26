@@ -241,23 +241,23 @@
 	GA.Topic(null, list("inspect" = "1"), src)
 
 /mob/living/carbon/human/proc/gnoll_view_tracked_char()
-	set name = "Remember Your Prey"
+	set name = "回忆猎物"
 	set category = "Gnoll"
-	set desc = "View your Track target's flavortext panel."
+	set desc = "查看追踪目标的角色描述面板。"
 	var/datum/antagonist/gnoll/gnoll_antag = mind?.has_antag_datum(/datum/antagonist/gnoll)
 	if(!gnoll_antag)
 		to_chat(src, span_warning(pick("What?", "Huh?", "How?")))
 		return
 	var/datum/weakref/tracked_target_ref = gnoll_antag.tracked_target_ref
 	if(!tracked_target_ref)
-		to_chat(src, span_warning("I can't remember anything. Did I forget to track my prey?"))
+		to_chat(src, span_warning("我什么也想不起来。难道我忘记追踪猎物了？"))
 		return
 	var/mob/living/carbon/human/tracked_target = tracked_target_ref.resolve()
 	if(!istype(tracked_target))
-		to_chat(src, span_warning("My prey is gone..."))
+		to_chat(src, span_warning("我的猎物不见了……"))
 		return
 
-	to_chat(src, span_warning("I recall my mark with blessed foreknowledge..."))
+	to_chat(src, span_warning("凭借神赐的先见之明，我忆起了标记的猎物……"))
 	var/datum/examine_panel/mob_examine_panel = new(src)
 	mob_examine_panel.holder = tracked_target
 	mob_examine_panel.viewing = src
