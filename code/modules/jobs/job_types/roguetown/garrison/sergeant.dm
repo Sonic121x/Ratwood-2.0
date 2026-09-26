@@ -86,10 +86,10 @@
 /datum/outfit/job/roguetown/sergeant/sergeant/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/visages = list(
-		"Standard"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-		"Snouted"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+		"标准款"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+		"长吻款"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
 	)
-	var/visage_choice = input(H, "Choose your helm's visage.", "TAKE UP HELMS") as anything in visages
+	var/visage_choice = input(H, "选择头盔的面罩样式。", "戴上头盔") as anything in visages
 	head = visages[visage_choice]
 
 	if(H.mind)
