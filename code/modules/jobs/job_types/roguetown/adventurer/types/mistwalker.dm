@@ -35,7 +35,7 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE, //social outcast but can still read protective charms
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" =  /obj/item/repair_kit, //I am sure you'll find a way to repair your bracers
+		"缝纫工具包" =  /obj/item/repair_kit, //I am sure you'll find a way to repair your bracers
 	)
 	extra_context = "This subclass gains additional stat points from weapon selection, and is race-limited from: Constructs and Ooze."
 	adv_stat_ceiling = list(STAT_STRENGTH = 14, STAT_INTELLIGENCE = 14) //grapplebeast/feintbeast protection. stat stacking was being obscenely abused to run builds with 15 in every stat.

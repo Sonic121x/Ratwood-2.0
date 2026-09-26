@@ -30,7 +30,7 @@
 		/datum/skill/misc/music = SKILL_LEVEL_EXPERT,
 	)
 
-	extra_context = "This class is restricted from using the Equestrian virtue."
+	extra_context = "该职业不能选择“骑术娴熟”美德。"
 
 	virtue_restrictions = list(
 		/datum/virtue/utility/riding
