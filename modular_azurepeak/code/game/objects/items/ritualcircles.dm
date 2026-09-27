@@ -1140,7 +1140,7 @@
 
 /obj/item/soulthread/examine(mob/user)
 	. = ..()
-	. += "</br>[strungtogether] threads are gathered of 10..."
+	. += "</br>所需的 10 根丝线已聚集了 [strungtogether] 根……"
 
 /obj/item/soulthread/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/soulthread))

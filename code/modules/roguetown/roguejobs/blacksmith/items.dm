@@ -117,13 +117,13 @@
 	. = ..()
 	if(glaze_bonus_pct > 0)
 		if(glazed)
-			. += span_info("Glazed in a dyebin - its value is increased by [glaze_bonus_pct]%.")
+			. += span_info("已在染缸中上釉 - 价值提高了 [glaze_bonus_pct]%。")
 		else
-			. += span_info("Can be glazed in a dyebin to increase its value by [glaze_bonus_pct]%.")
+			. += span_info("可在染缸中上釉，使价值提高 [glaze_bonus_pct]%。")
 	if(glazed && glaze_bonus_flat > 0)
-		. += span_info("Glazed - its value is increased by [glaze_bonus_flat] mammon.")
+		. += span_info("已上釉 - 价值提高了 [glaze_bonus_flat] 玛门币。")
 	else if(!glazed && icon && icon_exists(icon, "[icon_state]_glazed"))
-		. += span_info("Can be glazed with a dye brush to increase its value.")
+		. += span_info("可用染色刷上釉来提高价值。")
 
 /obj/item/get_real_price()
 	. = ..()
