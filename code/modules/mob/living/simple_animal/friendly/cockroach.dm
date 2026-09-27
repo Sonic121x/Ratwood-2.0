@@ -40,7 +40,7 @@
 					if(ishuman(A))
 						var/mob/living/carbon/human/H = A
 						if(HAS_TRAIT(H, TRAIT_PACIFISM))
-							H.visible_message(span_notice("[src]躲开了碾压。"), span_warning("我避开碾压了[src]！"))
+							H.visible_message(span_notice("[src]躲开了碾压。"), span_warning("我小心避开了[src]，没有踩到它！"))
 							return
 					A.visible_message(span_notice("[A]踩扁了[src]。"), span_notice("我踩扁了[src]。"))
 					adjustBruteLoss(1) //kills a normal cockroach
