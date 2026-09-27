@@ -197,7 +197,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src]在接触到[target]时嘶嘶作响了！"))
+			visible_message(span_warning("[src]接触到[target]后消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
@@ -408,7 +408,7 @@
 /obj/effect/oneway/lich //one way barrier to the boss room. Can be despawned with the key the boss drops.
 	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "要么胜利要么死亡——一旦你越过此点，要么凯旋要么陨落。推荐5名或以上玩家。"
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少5名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
