@@ -667,10 +667,10 @@ BLIND     // can't see anything
 
 	var/str = ""
 	str += "[colorgrade_rating("🔨 钝击 ", armor.blunt, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🪓 挥砍 ", armor.slash, elaborate = TRUE)]"
+	str += "[colorgrade_rating("🪓 劈砍 ", armor.slash, elaborate = TRUE)]"
 	str += "<br>"
-	str += "[colorgrade_rating("🗡️ 穿刺 ", armor.stab, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🏹 贯穿 ", armor.piercing, elaborate = TRUE)] "
+	str += "[colorgrade_rating("🗡️ 刺击 ", armor.stab, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🏹 穿刺 ", armor.piercing, elaborate = TRUE)] "
 
 	if(showcrits && prevent_crits)
 		str += "<br>———————————————<br>"
@@ -680,8 +680,8 @@ BLIND     // can't see anything
 		for(var/flag in prevent_crits)
 			index++
 			if(flag == BCLASS_PICK) //BCLASS_PICK is named "stab", and "stabbing" is its own damage class. Prevents confusion.
-				flag = "pick"
-			str += ("[capitalize(flag)] ")
+				flag = "凿击"
+			str += ("[list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[flag] || capitalize(flag)] ")
 			linebreak_count++
 			if(linebreak_count >= 3)
 				str += "<br>"
@@ -702,10 +702,10 @@ BLIND     // can't see anything
 
 	var/str = ""
 	str += "[colorgrade_rating("🔨 钝击  ", armor.blunt, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🪓 挥砍  ", armor.slash, elaborate = TRUE)]"
+	str += "[colorgrade_rating("🪓 劈砍  ", armor.slash, elaborate = TRUE)]"
 	str += "<br>"
-	str += "[colorgrade_rating("🗡️ 穿刺   ", armor.stab, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🏹 贯穿 ", armor.piercing, elaborate = TRUE)] "
+	str += "[colorgrade_rating("🗡️ 刺击   ", armor.stab, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🏹 穿刺 ", armor.piercing, elaborate = TRUE)] "
 
 	if(showcrits && prevent_crits)
 		str += "<br>———————————————<br>"
@@ -715,8 +715,8 @@ BLIND     // can't see anything
 		for(var/flag in prevent_crits)
 			index++
 			if(flag == BCLASS_PICK)
-				flag = "pick"
-			str += ("[capitalize(flag)] ")
+				flag = "凿击"
+			str += ("[list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[flag] || capitalize(flag)] ")
 			linebreak_count++
 			if(linebreak_count >= 3)
 				str += "<br>"
@@ -751,14 +751,14 @@ BLIND     // can't see anything
 			if(ARMOR_CLASS_HEAVY)
 				armor_class_text = "重型"
 		lines += "<b>护甲等级：</b> [armor_class_text]"
-		lines += "[colorgrade_rating("🔨 钝击", armor.blunt, TRUE)] | [colorgrade_rating("🪓 挥砍", armor.slash, TRUE)]"
-		lines += "[colorgrade_rating("🗡️ 穿刺", armor.stab, TRUE)] | [colorgrade_rating("🏹 贯穿", armor.piercing, TRUE)]"
+		lines += "[colorgrade_rating("🔨 钝击", armor.blunt, TRUE)] | [colorgrade_rating("🪓 劈砍", armor.slash, TRUE)]"
+		lines += "[colorgrade_rating("🗡️ 刺击", armor.stab, TRUE)] | [colorgrade_rating("🏹 穿刺", armor.piercing, TRUE)]"
 	if(length(prevent_crits))
 		var/list/prevents = list()
 		for(var/flag in prevent_crits)
-			var/prevent_text = "[flag]"
+			var/prevent_text = list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[flag] || "[flag]"
 			if(flag == BCLASS_PICK)
-				prevent_text = "pick"
+				prevent_text = "凿击"
 			prevents += capitalize(prevent_text)
 		lines += "<b>防止暴击：</b> [prevents.Join(", ")]"
 	if(self_examine)
