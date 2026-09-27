@@ -34,8 +34,8 @@
 	health = 3333
 	maxHealth = 3333 //Increased from 3000.
 	speak_chance = 3
-	speak = list("我的堡垒里来了入侵者？！我要把你的尸体扔给我的深渊去喂！", 
-	"恶心的生物，你的价值还抵不上你身上零件的总和。",
+	speak = list("竟敢闯进我的堡垒？！我要把你的尸体扔进坑里！", 
+	"恶心的生物，你还不如被拆成零碎来得值钱。",
 	"我要剥下你的皮，让你在每一刻的痛苦中都保持清醒！",
 	"你的灵魂将属于我——成为我永恒的玩具！")
 
@@ -261,7 +261,7 @@
 /obj/effect/oneway/baroness //one way barrier to the boss room. Can be despawned with the key the boss drops.
 	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "要么胜利要么死亡——一旦你越过此点，要么凯旋要么陨落。推荐3名或以上玩家。"
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少3名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
