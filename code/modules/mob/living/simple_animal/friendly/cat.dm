@@ -89,7 +89,7 @@
 
 /mob/living/simple_animal/pet/cat/rogue/black
 	name = "黑猫"
-	desc = "长着灯笼般的双眼，叫声如骨头的碰撞。黑猫对涅克拉来说是神圣的，据说会将游荡的亡灵带到运骨人那里。"
+	desc = "双眼如灯笼，叫声似枯骨相撞。黑猫是内克拉的圣兽，据说会将游荡的亡灵引向运骨人。"
 	gender = FEMALE
 	icon = 'icons/roguetown/topadd/takyon/Cat.dmi'
 	icon_state = "cat"
