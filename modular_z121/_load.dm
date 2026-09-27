@@ -225,6 +225,10 @@
 #include "items/memory_kiss_token.dm"
 // 记忆之吻制作配方：炼金台，宝石x1 + 水50 → 记忆之吻，炼金1级
 #include "crafting/memory_kiss_token_recipe.dm"
+// 连发燧枪、桌面组装零件及工匠台配方。
+#include "weapons/repeating_flintlock.dm"
+#include "weapons/repeating_flintlock_parts.dm"
+#include "crafting/repeating_flintlock_recipes.dm"
 #include "weapons/magical_archery.dm"
 #include "weapons/moonlight_greatsword.dm"
 #include "admin/adminspell.dm"
