@@ -30,9 +30,8 @@
 
 // 施法者“接管中”用的临时特性标记：占据期间挂在施法者“原身”上，
 // 用于防止施法者在一次摄神取念尚未结束时再次施放（避免灵魂转移逻辑叠加错乱）。
-// 仅在本文件内部使用，作为一个普通的字符串特性与来源字符串即可，无需对外暴露。
+// 每次状态效果用 REF(src) 作为来源，清理时不会移除其他来源的失能。
 #define TRAIT_LEGILIMENCY_CASTER  "legilimency_casting"
-#define LEGILIMENCY_TRAIT_SOURCE  "legilimency_spell"
 
 // ===========================================================================
 // 法术本体
@@ -155,7 +154,7 @@
 	//           无法发起施法，这里作为冗余保险一并检查）。
 	//   情形②：user 是“正被本法术占据中的身体”（身上挂着 legilimency_control 状态）——驱动这具
 	//           身体的正是施法者本人，必须禁止其再次施放。这是真正能堵住链式占据的关键判断。
-	if(HAS_TRAIT(user, TRAIT_LEGILIMENCY_CASTER) || user.has_status_effect(/datum/status_effect/legilimency_control))
+	if(user.legilimency_session || user.mind?.legilimency_session || HAS_TRAIT(user, TRAIT_LEGILIMENCY_CASTER) || user.has_status_effect(/datum/status_effect/legilimency_control))
 		to_chat(user, span_warning("我的心神仍寄居在他人体内，无法再发动一次摄神取念。"))
 		revert_cast()
 		return FALSE
@@ -171,8 +170,8 @@
 		revert_cast()
 		return FALSE
 
-	// 防重复占据：若目标身上已经挂着“被接管”状态，说明它正被别人控制，避免叠加冲突。
-	if(target.has_status_effect(/datum/status_effect/legilimency_control))
+	// 两具身体及双方心智均不能参与另一场接管，包括已经离魂的施法者原身。
+	if(target.legilimency_session || target.mind?.legilimency_session || HAS_TRAIT(target, TRAIT_LEGILIMENCY_CASTER) || target.has_status_effect(/datum/status_effect/legilimency_control))
 		to_chat(user, span_warning("[target] 的心神已被另一股意志所占据，我无从插足。"))
 		revert_cast()
 		return FALSE
@@ -215,208 +214,217 @@
 
 	return TRUE
 
-// ===========================================================================
-// 状态效果：摄神取念·接管（Legilimency Control）
-// ---------------------------------------------------------------------------
-// 这是真正执行“身体接管 / 到期归还”的载体。它挂在“目标身体”上，由 SSfastprocess
-// 按 duration 自动到期；到期或被移除时（含目标身体被删除）触发 on_remove 归还身体。
-//
-// 接管原理（全部复用主线 transfer_to / ghostize）：
-//   1) 进入时记下三方引用：施法者原身、施法者心智(mind)、目标原本心智(mind)。
-//   2) 施法者心智 transfer_to(目标身体)：施法者客户端被搬入目标身体；
-//      目标原本的客户端会被 transfer_to 内部 ghostize 成观察灵魂（被“挤出”身体）。
-//   3) 施法者“原身”此刻成为无主躯壳——令其沉睡，避免在被接管期间被随意摆布，
-//      并打上 TRAIT_LEGILIMENCY_CASTER 标记以阻止重复施放。
-// 归还原理（on_remove）：
-//   1) 施法者心智 transfer_to(施法者原身)：把施法者客户端送回自己身体。
-//   2) 目标心智 transfer_to(目标身体)：把目标客户端从灵魂状态拉回自己身体。
-//   3) 唤醒施法者原身、清除标记。全程对已删除对象做 QDELETED 兜底。
-// ===========================================================================
-/datum/status_effect/legilimency_control
-	id = "legilimency_control"
-	// UNIQUE：同一具身体上只允许存在一个“被接管”实例，杜绝多重占据。
-	status_type = STATUS_EFFECT_UNIQUE
-	// 默认/兜底时长；真正的时长会在 on_creation() 里被施法者传入的值覆盖。
-	duration = 5 SECONDS
-	// 即使“目标身体”被删除，也要触发 on_remove 把施法者送回自己身体，避免施法者卡在虚空。
-	on_remove_on_mob_delete = TRUE
-	// 控制类负面效果，给被接管者（归还后）一个可见的状态图标提示。
-	alert_type = /atom/movable/screen/alert/status_effect/legilimency_control
+// 一次接管同时登记双方身体和心智；外部转移完成后结束旧关系，不能抢回已经转移的心智。
+/mob/living
+	var/datum/status_effect/legilimency_control/legilimency_session
 
-	// 施法者“原身”的弱引用：归还时把施法者送回这里。用弱引用以防原身中途被删。
-	var/datum/weakref/caster_body_ref
-	// 目标“身体”的弱引用：即本状态效果的 owner，归还时把目标心智送回这里。
-	var/datum/weakref/target_body_ref
-	// 施法者心智（mind 数据本身一般不会被 GC，直接持引用即可；归还时用它搬回原身）。
-	var/datum/mind/caster_mind
-	// 目标原本的心智：接管前先抓存，归还时用它把目标客户端拉回身体。可能为 null（目标是无心智的 NPC）。
-	var/datum/mind/victim_mind
-	// 施法者的“技能数据”(/datum/skill_holder)：接管前先抓存其引用。用于在归还时把技能数据强制各归各位，
-	// 修复 transfer_to 在“占据活体玩家”场景下会把双方 skill_holder 指针交叉的 Bug（导致技能等级互换）。
-	var/datum/skill_holder/caster_skills
-	// 目标原本的“技能数据”。占据活体玩家时它会变成“悬挂监听”，归还时若不强制复位就会被错误拖到施法者身上。
-	// 目标是无 skill_holder 的简单 NPC 时此值为 null。
-	var/datum/skill_holder/victim_skills
+/datum/mind
+	var/datum/status_effect/legilimency_control/legilimency_session
+	// 原身被毁后暂存技能，观察者再次获得身体时恢复。
+	var/datum/skill_holder/legilimency_saved_skills
 
-// on_creation：在基类把 duration 换算成绝对到期时间之前，先写入施法者算好的时长，
-// 并记下施法者引用（随后 ..() 会触发 on_apply 真正执行接管）。
-// 形参 custom_duration / caster 来自 apply_status_effect(..., effect_duration, user) 的转发。
-/datum/status_effect/legilimency_control/on_creation(mob/living/new_owner, custom_duration, mob/living/caster)
-	// 仅在传入了有效正值时覆盖时长，否则保留默认，避免出现 0 或负的时长。
-	if(custom_duration && custom_duration > 0)
-		duration = custom_duration
-	// 记下施法者原身（弱引用，防止其中途被删导致悬空）。
-	if(caster)
-		caster_body_ref = WEAKREF(caster)
+/datum/mind/transfer_to(mob/new_character, force_key_move = FALSE)
+	var/list/sessions = list()
+	if(legilimency_session && !legilimency_session.internal_transfer)
+		sessions |= legilimency_session
+	if(isliving(new_character))
+		var/mob/living/destination = new_character
+		if(destination.legilimency_session && !destination.legilimency_session.internal_transfer)
+			sessions |= destination.legilimency_session
+	. = ..()
+	if(!QDELETED(legilimency_saved_skills) && !QDELETED(current) && current.mind == src)
+		legilimency_saved_skills.set_current(current)
+		legilimency_saved_skills = null
+	for(var/datum/status_effect/legilimency_control/session as anything in sessions)
+		if(!QDELETED(session))
+			qdel(session)
+
+/datum/mind/Destroy()
+	QDEL_NULL(legilimency_saved_skills)
 	return ..()
 
-// on_apply：效果挂载时执行“接管”。任一前置条件不满足都返回 FALSE，让基类自删该效果，
-// cast() 侧随即检测不到状态效果而退还冷却，保证不会出现“扣了冷却却没接管”的情况。
+/datum/status_effect/legilimency_control
+	id = "legilimency_control"
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 5 SECONDS
+	on_remove_on_mob_delete = TRUE
+	alert_type = /atom/movable/screen/alert/status_effect/legilimency_control
+	var/mob/living/caster_body
+	var/mob/living/target_body
+	var/datum/mind/caster_mind
+	var/datum/mind/victim_mind
+	var/datum/skill_holder/caster_skills
+	var/datum/skill_holder/victim_skills
+	var/datum/player_card/target_card
+	var/internal_transfer = FALSE
+	var/started = FALSE
+	var/cleaning_up = FALSE
+
+/datum/status_effect/legilimency_control/on_creation(mob/living/new_owner, custom_duration, mob/living/caster)
+	if(isnum(custom_duration) && custom_duration > 0)
+		duration = custom_duration
+	caster_body = caster
+	return ..()
+
 /datum/status_effect/legilimency_control/on_apply()
-	. = ..() // 基类负责挂载/属性处理（本效果无 effectedstats），返回是否成功
-	if(!.)
+	if(!..() || QDELETED(caster_body) || !caster_body.client)
+		return FALSE
+	if(QDELETED(caster_body) || QDELETED(owner) || owner == caster_body || owner.stat == DEAD)
+		return FALSE
+	if(QDELETED(caster_body.mind) || caster_body.mind.current != caster_body)
+		return FALSE
+	if(caster_body.legilimency_session || caster_body.mind.legilimency_session || owner.legilimency_session || owner.mind?.legilimency_session)
+		return FALSE
+	if(HAS_TRAIT(caster_body, TRAIT_LEGILIMENCY_CASTER) || HAS_TRAIT(owner, TRAIT_LEGILIMENCY_CASTER))
 		return FALSE
 
-	// 解析施法者原身；若引用已失效（施法者在蓄力到生效的瞬间消失），则放弃接管。
-	var/mob/living/caster = caster_body_ref?.resolve()
-	if(QDELETED(caster) || !caster.mind || !caster.client)
-		return FALSE
-
-	// owner 即“目标身体”。再次确认其有效。
-	if(QDELETED(owner))
-		return FALSE
-
-	// 记录目标身体的弱引用，供归还时使用。
-	target_body_ref = WEAKREF(owner)
-	// 关键：在任何转移发生之前，先抓存“目标原本的心智”。一旦 transfer_to 执行，
-	// owner.mind 会被改写为施法者的 mind，届时就再也拿不到目标心智了。
+	target_body = owner
+	caster_mind = caster_body.mind
 	victim_mind = owner.mind
-	// 抓存施法者心智，作为归还时把施法者搬回原身的句柄。
-	caster_mind = caster.mind
-
-	// 关键（技能互换 Bug 修复）：在任何 transfer_to 发生之前，先各自抓存“技能数据”引用。
-	// 因为 transfer_to 会让 skill_holder 跟随心智在身体间迁移（COMSIG_MIND_TRANSFER + set_current），
-	// 而占据活体玩家时，目标自己的 skill_holder 会留下“悬挂监听”，归还途中被错误地拖到施法者身上。
-	// 这里先把两个 skill_holder 句柄记下，待 on_remove 末尾再据此把它们强制复位，彻底消除交叉。
-	// caster 用 ensure_skills() 确保一定拿得到（施法者必有技能）；目标用 .skills 原样读取（NPC 可能为 null）。
-	caster_skills = caster.ensure_skills()
+	caster_skills = caster_body.ensure_skills()
 	victim_skills = owner.skills
 
-	// 在“挤出”目标之前先给目标本人发提示——此刻其客户端仍在 owner（目标身体）里，
-	// 直接对 owner 发消息一定能送达；转移之后目标客户端被挤成灵魂就不便定位了。
-	if(owner.client)
-		to_chat(owner, span_userdanger("一股冰冷而强大的意志攫住了你，把你硬生生挤出了自己的身体——你只能眼睁睁看着它被人操纵。"))
+	// transfer_to 不会保存被挤出者的资料。先刷新其资料卡，并另存身体快照以覆盖无心智 NPC。
+	if(ishuman(target_body))
+		var/mob/living/carbon/human/human_target = target_body
+		target_card = new
+		target_card.capture_from(human_target)
+		if(victim_mind && !human_target.is_shapeshift_shell())
+			if(!victim_mind.player_card)
+				victim_mind.player_card = new
+			victim_mind.player_card.capture_from(human_target)
 
-	// --- 执行灵魂转移：施法者客户端搬入目标身体 ---
-	// force_key_move = TRUE 确保连同 key（客户端）一起搬过去，使施法者真正“操纵”该身体。
-	// transfer_to 内部会把目标原本的客户端 ghostize 成观察灵魂（即“目标暂时丧失身体控制权”）。
-	caster_mind.transfer_to(owner, TRUE)
+	// 先摘除被害者技能的迁移监听，避免它随施法者离开目标身体。
+	if(victim_skills)
+		victim_skills.set_current(null)
+		target_body.skills = null
+	caster_body.legilimency_session = src
+	target_body.legilimency_session = src
+	caster_mind.legilimency_session = src
+	if(victim_mind)
+		victim_mind.legilimency_session = src
+	started = TRUE
+	RegisterSignal(caster_body, COMSIG_QDELETING, PROC_REF(participant_deleted))
+	RegisterSignal(target_body, COMSIG_QDELETING, PROC_REF(participant_deleted))
+	RegisterSignal(caster_mind, COMSIG_QDELETING, PROC_REF(participant_deleted))
+	if(victim_mind)
+		RegisterSignal(victim_mind, COMSIG_QDELETING, PROC_REF(participant_deleted))
 
-	// --- 处理施法者留下的无主躯壳 ---
-	// 给原身打上接管标记，阻止施法者（此刻客户端在目标体内，但原身仍在场）被重复施法逻辑利用。
-	ADD_TRAIT(caster, TRAIT_LEGILIMENCY_CASTER, LEGILIMENCY_TRAIT_SOURCE)
-	// 令无主的原身沉睡，避免被接管期间躯壳被随意操控/搬运；时长略大于接管时长，确保覆盖整个过程。
-	// 注意：on_apply 在基类把 duration 换算成绝对到期时间之前调用，此刻 duration 仍是“原始的剩余刻数”，
-	//       因此可直接使用，无需再减去 world.time。
-	caster.SetSleeping(duration + 10)
-
-	// --- 表现层与告知 ---
-	playsound(get_turf(owner), 'sound/magic/soulsteal.ogg', 60, TRUE)
-	// 转移完成后，owner 的客户端已变成施法者本人，故这条提示会送达施法者：你已接管该身体。
-	to_chat(owner, span_boldwarning("我的意志钻入了这具身体，夺过了它的掌控权——在魔力消散之前，它便是我的傀儡。"))
+	// 独立来源的昏迷只属于本次接管，不调用 SetSleeping，也不受普通睡眠免疫影响。
+	ADD_TRAIT(caster_body, TRAIT_LEGILIMENCY_CASTER, REF(src))
+	ADD_TRAIT(caster_body, TRAIT_DEATHCOMA, REF(src))
+	caster_body.update_stat()
+	caster_body.update_mobility()
+	to_chat(target_body, span_userdanger("一股冰冷而强大的意志攫住了你，把你硬生生挤出了自己的身体！"))
+	internal_transfer = TRUE
+	caster_mind.transfer_to(target_body, TRUE)
+	internal_transfer = FALSE
+	if(QDELETED(src))
+		return FALSE
+	playsound(get_turf(target_body), 'sound/magic/soulsteal.ogg', 60, TRUE)
+	to_chat(target_body, span_boldwarning("我的意志钻入了这具身体，夺过了它的掌控权。"))
 	return TRUE
 
-// on_remove：效果到期/被移除/owner 被删时触发，负责把双方各自送回自己的身体并清场。
-// 全程对可能已被删除的对象做 QDELETED 兜底，保证即使发生意外也不会让玩家卡死在错误的躯体里。
-/datum/status_effect/legilimency_control/on_remove()
-	// 解析归还所需的两具身体。
-	var/mob/living/caster_body = caster_body_ref?.resolve()
-	var/mob/living/target_body = target_body_ref?.resolve()
+/datum/status_effect/legilimency_control/proc/participant_deleted(datum/source)
+	SIGNAL_HANDLER
+	if(!cleaning_up)
+		qdel(src)
 
-	// --- 第一步：把施法者送回自己的身体 ---
-	// 只有当施法者心智仍“寄居在目标身体里”时才需要搬回（避免重复/错误转移）。
-	if(caster_mind && !QDELETED(caster_body))
-		caster_mind.transfer_to(caster_body, TRUE) // 连同客户端搬回原身
-		// 清除沉睡与接管标记，让施法者恢复正常行动。
-		caster_body.SetSleeping(0)
-		REMOVE_TRAIT(caster_body, TRAIT_LEGILIMENCY_CASTER, LEGILIMENCY_TRAIT_SOURCE)
-		to_chat(caster_body, span_notice("维系傀儡的魔力消散了，我的意志被拽回了自己的躯体。"))
-	else if(caster_mind && !QDELETED(caster_mind.current))
-		// 兜底：原身已不存在，但施法者心智还活着——至少把接管标记从其当前所在身体上清掉，
-		// 避免该玩家因残留标记而永久无法再次施放本法术。
-		REMOVE_TRAIT(caster_mind.current, TRAIT_LEGILIMENCY_CASTER, LEGILIMENCY_TRAIT_SOURCE)
+// 也处理管理员直接更换引用等未经过 transfer_to 的情况。
+/datum/status_effect/legilimency_control/tick()
+	if(QDELETED(caster_body) || QDELETED(caster_mind) || caster_mind.current != target_body || target_body.mind != caster_mind || caster_body.mind || (victim_mind && victim_mind.current))
+		qdel(src)
 
-	// --- 第二步：把目标心智送回自己的身体 ---
-	// victim_mind 可能为 null（目标本就是无心智 NPC），那样无需归还。
-	if(victim_mind && !QDELETED(target_body))
-		// 仅当目标身体此刻不是被目标自己占据时才搬回，避免无意义的重复转移。
-		if(victim_mind.current != target_body)
-			victim_mind.transfer_to(target_body, TRUE) // 把目标客户端从灵魂状态拉回自己身体
-			to_chat(target_body, span_notice("束缚我的意志骤然松脱，我重新夺回了对自己身体的掌控。"))
-
-	// --- 第三步：修复“技能等级互换”Bug —— 把两份技能数据强制各归各位 ---
-	// 成因：transfer_to 让 skill_holder 跟随心智迁移（靠 COMSIG_MIND_TRANSFER 信号 + set_current）。
-	//       占据活体玩家时，目标自己的 skill_holder 仍挂在目标身体上监听该信号，却已不再被 .skills 指向；
-	//       归还时第一步 transfer_to 在目标身体上 SEND_SIGNAL(COMSIG_MIND_TRANSFER)，这个“悬挂监听”被触发，
-	//       于是目标的技能数据被错误地拖到了“施法者原身”上——双方技能等级看起来就互换了。
-	// 修复思路：skill_holder 的“内容”（known_skills/经验）始终正确，错乱的只是“哪具身体指向哪份数据”。
-	//       因此在所有 transfer_to 都结束后，按开场抓存的引用把它们重新钉死：施法者技能→施法者原身，
-	//       目标技能→目标身体。先 UnregisterSignal 摘除两份数据在两具身体上的全部 COMSIG_MIND_TRANSFER 监听
-	//       （含归还途中产生的悬挂监听），避免随后 set_current 重复注册报错；再用 set_current 干净复位。
-	if(caster_skills)
-		// 先把施法者技能数据从两具身体上的迁移监听里彻底摘除（未注册时为无害空操作）。
-		if(!QDELETED(caster_body))
-			caster_skills.UnregisterSignal(caster_body, COMSIG_MIND_TRANSFER)
-		if(!QDELETED(target_body))
-			caster_skills.UnregisterSignal(target_body, COMSIG_MIND_TRANSFER)
-	if(victim_skills)
-		// 同样摘除目标技能数据在两具身体上的迁移监听，清掉占据期间遗留的悬挂监听。
-		if(!QDELETED(caster_body))
-			victim_skills.UnregisterSignal(caster_body, COMSIG_MIND_TRANSFER)
-		if(!QDELETED(target_body))
-			victim_skills.UnregisterSignal(target_body, COMSIG_MIND_TRANSFER)
-	// 把施法者技能数据钉回施法者原身：set_current 会重设 current、重新注册监听并令 caster_body.skills 指回它。
-	if(caster_skills && !QDELETED(caster_body))
-		caster_skills.set_current(caster_body)
-	// 把目标技能数据钉回目标身体（玩家目标）。
-	if(victim_skills && !QDELETED(target_body))
-		victim_skills.set_current(target_body)
-	else if(!QDELETED(target_body) && target_body.skills == caster_skills)
-		// 目标本是无 skill_holder 的简单 NPC：避免它残留指向“施法者技能数据”的悬挂指针，
-		// 直接置空，需要时引擎会通过 ensure_skills() 给它新建一份空白技能数据。
+// 只移除本次保存的技能引用；归属跟随心智实际所在身体，不按开场身体强行复位。
+/datum/status_effect/legilimency_control/proc/restore_skills(datum/skill_holder/holder, datum/mind/recipient, mob/living/npc_body)
+	if(QDELETED(holder))
+		return
+	holder.set_current(null)
+	if(caster_body?.skills == holder)
+		caster_body.skills = null
+	if(target_body?.skills == holder)
 		target_body.skills = null
+	if(!QDELETED(recipient))
+		if(!QDELETED(recipient.current) && recipient.current.mind == recipient)
+			holder.set_current(recipient.current)
+		else
+			recipient.legilimency_saved_skills = holder
+	else if(!QDELETED(npc_body) && !npc_body.mind && !npc_body.key)
+		holder.set_current(npc_body)
+	else
+		qdel(holder)
 
-	// --- 第四步：清除可能残留的“掉线/SSD”提示（头顶 zzz 标记）---
-	// 成因：施法者客户端从目标身体撤离时，主线 /mob/living/Logout() 会无条件给该身体
-	//       set_ssd_indicator(TRUE)，留下一个“zzz”掉线标记。对“玩家目标”而言，其本人随后
-	//       重新登入身体（Login）会清掉该标记；但若目标本是“简单生物 NPC”（victim_mind 为 null），
-	//       撤离后没有任何客户端回到它身上，于是 zzz 标记便无人清除、永久残留在它头顶。
-	// 处理：只要目标身体最终回到“无客户端”的状态，就显式调用 set_ssd_indicator(FALSE) 抹掉残留标记，
-	//       这同样覆盖“玩家目标因故没能归位（仍是灵魂）”等边角情况——此时身体确实无人控制，清掉也正确。
-	if(!QDELETED(target_body) && !target_body.client)
-		target_body.set_ssd_indicator(FALSE)
+/datum/status_effect/legilimency_control/on_remove()
+	if(cleaning_up)
+		return
+	cleaning_up = TRUE
+	internal_transfer = TRUE
+	if(started)
+		for(var/datum/participant as anything in list(caster_body, target_body, caster_mind, victim_mind))
+			if(participant)
+				UnregisterSignal(participant, COMSIG_QDELETING)
+		if(caster_body?.legilimency_session == src)
+			caster_body.legilimency_session = null
+		if(target_body?.legilimency_session == src)
+			target_body.legilimency_session = null
+		if(caster_mind?.legilimency_session == src)
+			caster_mind.legilimency_session = null
+		if(victim_mind?.legilimency_session == src)
+			victim_mind.legilimency_session = null
 
-	// 清理引用，避免悬挂。
+		// 仅归还仍由本次接管控制的心智，绝不挤走原身中的第三者。
+		if(!QDELETED(caster_mind) && caster_mind.current == target_body && target_body?.mind == caster_mind)
+			if(!QDELETED(caster_body) && !caster_body.mind && !caster_body.key)
+				caster_mind.transfer_to(caster_body, TRUE)
+				to_chat(caster_body, span_notice("维系傀儡的魔力消散了，我的意志回到了自己的躯体。"))
+			else
+				// 原身消失或被外部机制占用：退出 NPC/目标，保留观察者的心智及技能。
+				var/mob/dead/observer/ghost = target_body.ghostize(FALSE)
+				// 尸体的僵尸复起限制可能拒绝 ghostize；销毁归还不能把客户端遗留在傀儡里。
+				if(!ghost && target_body.key)
+					ghost = new /mob/dead/observer/rogue/nodraw(target_body)
+					ghost.can_reenter_corpse = FALSE
+					ghost.key = target_body.key
+				target_body.mind = null
+				caster_mind.set_current(null)
+
+		// 在被害者 Login 之前移走施法者技能，避免登录回调暂时读到错误的技能数据。
+		restore_skills(caster_skills, caster_mind)
+		if(!QDELETED(victim_mind) && !victim_mind.current && !QDELETED(target_body) && !target_body.mind && !target_body.key)
+			if(!QDELETED(victim_skills))
+				victim_skills.set_current(target_body)
+			victim_mind.transfer_to(target_body, TRUE)
+			to_chat(target_body, span_notice("束缚我的意志骤然松脱，我重新夺回了身体的掌控。"))
+
+		restore_skills(victim_skills, victim_mind, victim_mind ? null : target_body)
+		// 有第三者进入目标身体时尊重其资料；其余分支还原被暂时覆盖的身体资料。
+		if(target_card && !QDELETED(target_body) && (!target_body.mind || target_body.mind == victim_mind))
+			target_card.apply_card_to(target_body)
+		if(!QDELETED(caster_body))
+			REMOVE_TRAIT(caster_body, TRAIT_LEGILIMENCY_CASTER, REF(src))
+			REMOVE_TRAIT(caster_body, TRAIT_DEATHCOMA, REF(src))
+			caster_body.update_stat()
+			caster_body.update_mobility()
+		if(!QDELETED(target_body) && !victim_mind && !target_body.client)
+			target_body.set_ssd_indicator(FALSE)
+
+	QDEL_NULL(target_card)
 	caster_mind = null
 	victim_mind = null
 	caster_skills = null
 	victim_skills = null
-	caster_body_ref = null
-	target_body_ref = null
+	caster_body = null
+	target_body = null
 	return ..()
 
-// 状态效果对应的状态栏图标/提示（归还后，被害者会短暂看到自己曾被夺取过的余韵提示）。
-// 复用主线已存在的通用负面状态图标 "debuff"，保证图标一定有效；可日后替换为专属图标。
 /atom/movable/screen/alert/status_effect/legilimency_control
 	name = "摄神取念"
-	desc = "一股外来的意志曾攫住我的心神，夺走了对身体的掌控。"
+	desc = "一股外来的意志正在控制这具身体。"
 	icon_state = "debuff"
 
-// ===== 清理顶部定义的宏，避免泄漏到全局命名空间、与其它文件冲突 =====
 #undef LEGILIMENCY_MANA_COST
 #undef LEGILIMENCY_CHANNEL_TIME
 #undef LEGILIMENCY_COOLDOWN
 #undef LEGILIMENCY_RESOURCE_COST
 #undef LEGILIMENCY_TARGET_RANGE
 #undef TRAIT_LEGILIMENCY_CASTER
-#undef LEGILIMENCY_TRAIT_SOURCE
