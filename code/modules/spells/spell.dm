@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(sbook && sbook?.open)
 		var/book_mod = chargetime * sbook.get_cdr()
 		if(book_mod > 0)
-			breakdown += span_smallgreen("  法术书：-[DisplayTimeText(book_mod)]")
+			breakdown += span_smallgreen("  奥术秘典：-[DisplayTimeText(book_mod)]")
 	var/obj/item/rogueweapon/staff = user.is_holding_item_of_type(/obj/item/rogueweapon/)
 	if(staff && staff.cast_time_reduction)
 		var/staff_mod = chargetime * staff.cast_time_reduction
