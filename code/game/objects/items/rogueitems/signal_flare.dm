@@ -15,12 +15,12 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 
 	// Otherwise, set meaning to each pretty color! :D
 	var/list/meanings = shuffle(list(
-		"'Distress!'",
-		"'All Clear!'",
-		"'Enemy Sighted!'",
-		"'Reinforcements Requested!'",
-		"'Fall Back!'",
-		"'Regroup Here!'"
+		"'遇险求救！'",
+		"'一切安全！'",
+		"'发现敌人！'",
+		"'请求增援！'",
+		"'撤退！'",
+		"'在此集结！'"
 	))
 
 	// Assign the meaning to each color. Order is shuffled, so colors will always have unique meaning each round
@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 		"yellow" = meanings[4],
 		"white"  = meanings[5],
 		"purple" = meanings[6],
-		"orange" = "'Drop everything. Run and hide.'"
+		"orange" = "'放下一切，快跑，找地方躲起来。'"
 	)
 
 	return GLOB.signal_flare_codebook
@@ -46,18 +46,18 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	var/static/list/can_interpret = GLOB.garrison_positions + GLOB.noble_positions
 	var/static/list/townsfolk = GLOB.youngfolk_positions + GLOB.peasant_positions + GLOB.yeoman_positions + GLOB.church_positions + GLOB.courtier_positions
 	if(user.job in can_interpret)
-		lines += span_notice("You recognize the signal codes etched in cryptic shorthand markings:")
+		lines += span_notice("你认出了这些隐晦的简写刻痕所代表的信号含义：")
 		for(var/color in codebook)
-			lines += span_notice("&nbsp;&nbsp;<font color='[color]'><b>[color]</b></font>: [codebook[color]]")
+			lines += span_notice("&nbsp;&nbsp;<font color='[color]'><b>[list("red" = "红色", "blue" = "蓝色", "green" = "绿色", "yellow" = "黄色", "white" = "白色", "purple" = "紫色", "orange" = "橙色")[color] || color]</b></font>: [codebook[color]]")
 	else if(user.job in townsfolk)
-		lines += span_cult("You recognize the <font color='orange'><b>orange</b></font> flare: every man and woman knows it means [codebook[FLARE_SHELTER_COLOR]]")
+		lines += span_cult("你认出了<font color='orange'><b>橙色</b></font>信号弹：人人都知道它的含义是[codebook[FLARE_SHELTER_COLOR]]")
 	else
-		lines += span_notice("The colors carry meaning, but you lack the training to interpret them.")
+		lines += span_notice("这些颜色各有含义，但你没有受过解读它们的训练。")
 	return lines
 
 /obj/item/signal_flare
-	name = "signal flare canister"
-	desc = "A sealed alchemical canister brimming with flammable powder and colored cloth. Load it into a Wolkenmaw to send a brilliant plume of colored smoke visible for miles. One use only. Be wise with it, you fool."
+	name = "信号弹筒"
+	desc = "一个装满易燃粉末和彩色布料的密封炼金弹筒。将其装入 Wolkenmaw 信号枪，便能发射出数里外都能看见的鲜艳烟柱。只能使用一次。动动脑子再用，傻瓜。"
 	icon = 'icons/roguetown/items/flaregun.dmi'
 	icon_state = "flarecanister_ready"
 	w_class = WEIGHT_CLASS_TINY
@@ -68,8 +68,8 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 
 /obj/item/signal_flare/proc/mark_spent()
 	spent = TRUE
-	name = "spent flare canister"
-	desc = "An empty flare canister reeking of burnt powder. Useless now."
+	name = "用过的信号弹筒"
+	desc = "一个散发着刺鼻火药焦味的空信号弹筒。已经没用了。"
 	icon_state = "flarecanister_empty"
 
 /obj/item/signal_flare/examine(mob/user)
@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 
 /obj/item/signal_flare_gun
 	name = "Wolkenmaw"
-	desc = "A magical handgonne of wood and dark iron with a wide mouth, a Grenzelhoftian import. Break it open, feed it an alchemical flare canister, and cock it shut to send a brilliant plume of colored smoke visible for miles, inviting either friend or foe. Be wise with it, you fool."
+	desc = "一把由木材和黑铁制成的阔口魔法手铳，进口自格伦泽尔霍夫特。折开枪身，装入炼金信号弹筒，再合拢上膛，就能发射出数里外都能看见的鲜艳烟柱，引来朋友或敌人。动动脑子再用，傻瓜。"
 	icon = 'icons/roguetown/items/flaregun.dmi'
 	icon_state = "flaregun_unload"
 	item_state = "flaregun"
@@ -157,16 +157,16 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 /obj/item/signal_flare_gun/examine(mob/user)
 	. = ..()
 	if(!canister)
-		. += span_notice("Its chamber is empty.")
+		. += span_notice("弹膛是空的。")
 	else if(canister.spent)
-		. += span_notice("A spent canister sits in the chamber. It should be ejected.")
+		. += span_notice("弹膛里有一个用过的弹筒，需要将其退出。")
 	else if(!cocked)
-		. += span_notice("It's loaded, but must be cocked shut before it can fire.")
+		. += span_notice("已装入弹筒，但必须合拢上膛才能发射。")
 	else
-		. += span_notice("It's loaded and ready to fire.")
+		. += span_notice("已装填完毕，随时可以发射。")
 	if(primed_color)
-		. += span_notice("Its dial is set to [signal_label(primed_color)], ready to fire without further thought.")
-	. += span_info("Middle-click it to set its dial ahead of time, so it fires without asking.")
+		. += span_notice("旋钮已设为[signal_label(primed_color)]，发射时无需再次选择信号。")
+	. += span_info("用鼠标中键点击它可预先设置旋钮，发射时便不会再询问信号选择。")
 	. += get_signal_flare_codebook_lines(user)
 
 /obj/item/signal_flare_gun/attackby(obj/item/W, mob/living/user, params)
@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	user.visible_message(span_danger("[src]'s hammer falls on an empty chamber. *click*"))
 
 /obj/item/signal_flare_gun/proc/signal_label(signal)
-	return signal == FLARE_ILLUMINATION_COLOR ? "illumination" : signal
+	return signal == FLARE_ILLUMINATION_COLOR ? "照明" : (list("red" = "红色", "blue" = "蓝色", "green" = "绿色", "yellow" = "黄色", "white" = "白色", "purple" = "紫色", "orange" = "橙色")[signal] || signal)
 
 /obj/item/signal_flare_gun/MiddleClick(mob/user, params)
 	if(!isliving(user) || user.incapacitated())
