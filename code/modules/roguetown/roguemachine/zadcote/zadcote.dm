@@ -11,8 +11,8 @@
 //    operator_trait = TRAIT_AGENT_BATHHOUSE restored in the Step 16 Meister Panel port
 //    alongside the bathhouse writ of patronage (code/modules/banking/patronage_writ.dm).
 /obj/item/roguemachine/zadcote
-	name = "zadcote"
-	desc = "A great coop of wood and iron where carrier zads are kept, fed, and dispatched abroad."
+	name = "扎德鸟舍"
+	desc = "一座木铁结构的大型鸟舍，用来饲养、喂食并向远方派遣信使扎德鸟。"
 	icon = 'icons/roguetown/misc/zadcote.dmi'
 	icon_state = "zadcote"
 	density = FALSE
@@ -21,7 +21,7 @@
 	max_integrity = 0
 	blade_dulling = DULLING_BASH
 	var/faction = ZADCOTE_FACTION_MERCHANT
-	var/motto = "ZADCOTE"
+	var/motto = "扎德鸟舍"
 	var/list/operator_jobs = list()
 	var/operator_trait
 	var/list/datum/zadlink/slots = list()
@@ -69,9 +69,9 @@
 /obj/item/roguemachine/zadcote/examine()
 	. = ..()
 	. += span_notice(motto)
-	. += span_info("Reserve: [reserve] zads. Flights: [flight_count()] / [ZADCOTE_FLIGHT_CAP].")
+	. += span_info("备用扎德鸟：[reserve] 只。飞行任务：[flight_count()] / [ZADCOTE_FLIGHT_CAP]。")
 	if(bomb_stock)
-		. += span_info("Bombs stored: [bomb_stock] / [ZADCOTE_BOMB_STOCK_CAP].")
+		. += span_info("储存的炸弹：[bomb_stock] / [ZADCOTE_BOMB_STOCK_CAP]。")
 
 /obj/item/roguemachine/zadcote/proc/is_operator(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -424,27 +424,27 @@
 	return ..()
 
 /obj/item/roguemachine/zadcote/steward
-	name = "stewardry zadcote"
-	desc = "A zadcote of the stewardry, kept open to any members of the Royal Court."
+	name = "总管府扎德鸟舍"
+	desc = "总管府的扎德鸟舍，向所有宫廷成员开放。"
 	faction = ZADCOTE_FACTION_STEWARD
-	motto = "STEWARDRY ZADCOTE"
+	motto = "总管府扎德鸟舍"
 	operator_jobs = list("Grand Duke", "Regent", "Steward", "Clerk", "Councillor", "Hand")
 	allows_voyeur = FALSE
 
 /obj/item/roguemachine/zadcote/merchant
-	name = "trading zadcote"
-	desc = "A Ferentian Trading Company zadcote. The brass plate reads FTC and a tally of late dispatches. The zads are sold exclusively by the Ferentian Trading Company (officially), and sourced from the zad training grounds in Rosporth, where elven and humen keepers raise zads and train them to navigate and home in. In the yil 1421, in the nascent yils of the Company during the Actions off Rosporth between the Ferentian and Etruscan Trading Company, the Ferentian company attempted to use its newly acquired zads to bombard the Etruscan ships. Unfortunately, most of the zads homed back onto the FTC ships, leading to the loss of at least four warships and a hundred men. Since then, FTC has limited the usage of bomb zads to within Ferentian territories."
+	name = "贸易扎德鸟舍"
+	desc = "费伦提亚贸易公司的扎德鸟舍。黄铜牌上刻着 FTC 字样和延误派遣次数。扎德鸟由费伦提亚贸易公司独家销售（至少官方如此宣称），来自罗斯波斯的扎德鸟训练场；精灵和人类饲养员在那里繁育扎德鸟，并训练它们辨路归巢。1421 年，公司创立初期，费伦提亚与伊特鲁斯卡贸易公司在罗斯波斯近海交战，费伦提亚公司曾尝试用新购入的扎德鸟轰炸伊特鲁斯卡舰船。不幸的是，大多数扎德鸟飞回了费伦提亚贸易公司的舰船，导致至少四艘战舰被毁、一百人丧生。自那以后，公司便将炸弹扎德鸟的使用范围限制在费伦提亚境内。"
 	faction = ZADCOTE_FACTION_MERCHANT
-	motto = "COMPANY ZADCOTE"
+	motto = "贸易公司扎德鸟舍"
 	operator_jobs = list("Merchant", "Shophand")
 	operator_trait = TRAIT_AGENT_MERCHANT
 	allows_voyeur = TRUE
 
 /obj/item/roguemachine/zadcote/bathhouse
-	name = "bathhouse zadcote"
-	desc = "A bathhouse zadcote. The perches are warm with steam, a faint smell of incense in the air."
+	name = "浴场扎德鸟舍"
+	desc = "浴场的扎德鸟舍。栖木被蒸汽熏得温热，空气中飘着淡淡的熏香。"
 	faction = ZADCOTE_FACTION_BATHHOUSE
-	motto = "BATHHOUSE ZADCOTE"
+	motto = "浴场扎德鸟舍"
 	// Ratwood keeps AP job titles.
 	operator_jobs = list("Bathmaster", "Bathhouse Attendant")
 	operator_trait = TRAIT_AGENT_BATHHOUSE
