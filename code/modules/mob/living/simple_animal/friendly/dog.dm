@@ -213,7 +213,7 @@
 					update_corgi_fluff()
 					regenerate_icons()
 				else
-					to_chat(usr, "<span class='warning'>它的[remove_from]上没有任何东西可以取下！</span>")
+					to_chat(usr, "<span class='warning'>它头上没有任何东西可以取下！</span>")
 					return
 			if("back")
 				if(inventory_back)
@@ -222,7 +222,7 @@
 					update_corgi_fluff()
 					regenerate_icons()
 				else
-					to_chat(usr, "<span class='warning'>它的[remove_from]上没有任何东西可以取下！</span>")
+					to_chat(usr, "<span class='warning'>它背上没有任何东西可以取下！</span>")
 					return
 
 		show_inv(usr)
@@ -280,7 +280,7 @@
 /mob/living/simple_animal/pet/dog/corgi/proc/place_on_head(obj/item/item_to_add, mob/user)
 	if(inventory_head)
 		if(user)
-			to_chat(user, "<span class='warning'>我不能给[src]戴多于一个帽子！</span>")
+			to_chat(user, "<span class='warning'>我不能给[src]戴两顶帽子！</span>")
 		return
 	if(!item_to_add)
 		user.visible_message("<span class='notice'>[user]抚摸了[src]。</span>", "<span class='notice'>我把手放在[src]头上稍作停留。</span>")
@@ -300,10 +300,10 @@
 
 	if(valid)
 		if(health <= 0)
-			to_chat(user, "<span class='notice'>当你把[item_to_add]戴在[p_them()]身上时，[real_name]的眼中只有呆滞无神的目光。</span>")
+			to_chat(user, "<span class='notice'>我把[item_to_add]戴在[real_name]头上，迎来的却只有呆滞无神的目光。</span>")
 		else if(user)
 			user.visible_message("<span class='notice'>[user]把[item_to_add]戴在了[real_name]的头上。[src]看了看[user]，叫了一声。</span>",
-				"<span class='notice'>我把[item_to_add]戴在了[real_name]的头上。[src]奇怪地看了你一眼，然后摇了一下[p_their()]尾巴，叫了一声。</span>",
+				"<span class='notice'>我把[item_to_add]戴在了[real_name]的头上。[src]好奇地看了我一眼，随后摇着尾巴叫了一声。</span>",
 				"<span class='hear'>你听到一声友善的狗叫。</span>")
 		item_to_add.forceMove(src)
 		src.inventory_head = item_to_add
