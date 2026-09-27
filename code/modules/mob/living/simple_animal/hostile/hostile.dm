@@ -481,7 +481,7 @@
 		return FALSE
 	if(CheckFriendlyFire(A))
 		return
-	visible_message(span_danger("<b>[src]</b> [ranged_message]向[A]！"))
+	visible_message(span_danger("<b>[src]</b>向[A][ranged_message]！"))
 
 
 	if(rapid > 1)
