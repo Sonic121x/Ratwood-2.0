@@ -1263,17 +1263,17 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 /proc/weightclass2text(w_class)
 	switch(w_class)
 		if(WEIGHT_CLASS_TINY)
-			. = "tiny"
+			. = "微型"
 		if(WEIGHT_CLASS_SMALL)
-			. = "small"
+			. = "小型"
 		if(WEIGHT_CLASS_NORMAL)
-			. = "normal-sized"
+			. = "中型"
 		if(WEIGHT_CLASS_BULKY)
-			. = "bulky"
+			. = "大型"
 		if(WEIGHT_CLASS_HUGE)
-			. = "huge"
+			. = "巨型"
 		if(WEIGHT_CLASS_GIGANTIC)
-			. = "gigantic"
+			. = "超巨型"
 		else
 			. = ""
 

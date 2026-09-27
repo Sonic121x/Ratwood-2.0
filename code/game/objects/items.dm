@@ -498,8 +498,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		to_chat(usr, output)
 
 	if(href_list["explainlength"])
-		var/output = span_info("短武器在命中任意部位时获得 +10% 精准度，但站在地面时只能攻击腿部。\n\
-		长武器站在地面时可以打到胸口及以下部位，站立时还能攻击脚部。\n\
+		var/output = span_info("短武器在命中任意部位时获得 +10% 精准度，但倒地时只能攻击腿部。\n\
+		长武器倒地时可以打到胸口及以下部位，站立时还能攻击脚部。\n\
 		巨型武器则能在任何位置攻击任何身体部位。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
@@ -507,9 +507,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(href_list["explainbalance"])
 		var/output = span_info("沉重武器更容易被闪避，并且每相差 1 点力量，都会让成功招架的防守者额外承受 2 点体力伤害。 \n\
-		迅捷平衡的武器会按双方速度差，每级使敌人的招架几率降低 10%，最多降低到 30%。 \n\
-		但如果防守者感知更高，这项惩罚会按每点差值减少 10%，直到归零。\n\
-		智力也会按每点差值额外减少 3% 的惩罚，直到归零。")
+		迅捷平衡的武器会按双方速度差，每点使敌人的招架几率降低 10 个百分点，最多降低 30 个百分点。 \n\
+		但如果防守者感知更高，这项惩罚会按每点差值减少 10 个百分点，直到归零。\n\
+		如果防守者智力更高，这项惩罚还会按每点差值减少 3 个百分点，直到归零。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
@@ -573,7 +573,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(minstr)
 			inspec += "\n<b>最低力量：</b> [minstr]"
 		if(minstr_req)
-			inspec += "\n<b>双持时不减半</b>"
+			inspec += "\n<b>双手持握时最低力量要求不减半</b>"
 
 		if(force)
 			inspec += "\n<b>力度：</b> [get_force_string(force)] <span class='info'><a href='?src=[REF(src)];showforce=1'>{?}</a></span>"
@@ -674,7 +674,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 					for(var/X in C.prevent_crits)
 						if(X == BCLASS_PICK)	//BCLASS_PICK is named "stab", and "stabbing" is its own damage class. Prevents confusion.
 							X = "凿击"
-						inspec += ("\n<b>[capitalize(X)]</b>")
+						inspec += ("\n<b>[list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[X] || capitalize(X)]</b>")
 				inspec += "<br>"
 			var/thermal_text = C.thermal_examine_text()
 			if(thermal_text)
@@ -758,7 +758,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(minstr)
 		lines += "<b>最低力量：</b> [minstr]"
 	if(minstr_req)
-		lines += "<b>双持时不减半</b>"
+		lines += "<b>双手持握时最低力量要求不减半</b>"
 	if(force)
 		lines += "<b>力度：</b> [get_force_string(force)]"
 	if(gripped_intents && force_wielded)
@@ -1757,7 +1757,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!length(parts))
 		return "未知"
 
-	return english_list(parts)
+	return english_list(parts, and_text = "和", comma_text = "、")
 /obj/item/clothing/proc/thermal_examine_text()
 	var/list/out = list()
 
