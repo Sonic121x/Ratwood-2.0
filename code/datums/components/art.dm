@@ -36,5 +36,5 @@
 /datum/component/art/rev/apply_moodlet(mob/M, impress)
 	M.visible_message(
 		span_notice("[M] 停下来察看[parent]。"),
-		span_notice("我端详着[parent]，细看这属于 proletariat 的精巧工艺。"),
+		span_notice("我端详着[parent]，细看这属于无产阶级的精巧工艺。"),
 	)

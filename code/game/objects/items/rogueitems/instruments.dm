@@ -313,8 +313,8 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	if (ishuman(user))
 		var/mob/living/carbon/human/viewer_human = user
 		if (viewer_human.inspiration)
-			. += span_notice("You can quickly add and remove people from your audience by <b>middle-clicking</b> on them with this instrument in your hand.")
-			. += span_notice("If you try to play with combat mode active, you'll automatically play your last song.")
+			. += span_notice("手持这件乐器时，<b>用鼠标中键点击</b>他人即可快速将其加入或移出听众名单。")
+			. += span_notice("在战斗模式下尝试演奏，会自动演奏你上次选择的曲目。")
 
 
 /obj/item/rogue/instrument/attack_self(mob/living/user)
