@@ -66,7 +66,7 @@
 
 /mob/living/simple_animal/hostile/rogue/crow_vengeance
 	name = "怨毒之鸦"
-	desc = "涅克拉的黑翼仆从。"
+	desc = "内克拉的黑翼仆从。"
 	icon = 'icons/roguetown/mob/monster/crow.dmi'
 	icon_state = "crow_flying"
 	icon_living = "crow_flying"
