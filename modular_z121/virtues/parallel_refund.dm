@@ -4,7 +4,7 @@
 	if(!user_mind)
 		return
 	if(user_mind.has_changed_spell)
-		to_chat(user, span_warning("I have already unbinded my spells today!"))
+		to_chat(user, span_warning("我今天已经解绑过法术了！"))
 		return
 	var/mob/living/carbon/human/H = ishuman(user) ? user : null
 	var/datum/z121_profession_record/R = H?.z121_profession
@@ -16,12 +16,12 @@
 				label += " *"
 			resettable_spells[label] = S
 	if(!length(resettable_spells))
-		to_chat(user, span_warning("I have no spells to unbind!"))
+		to_chat(user, span_warning("我没有可解绑的法术！"))
 		return
 	user_mind.has_changed_spell = TRUE
 	var/unlearn_success = FALSE
 	for(var/i in 1 to 2)
-		var/choice = input(user, "Choose up to two spells to unbind. Cancel both to not use up your daily unbinding.") as null|anything in resettable_spells
+		var/choice = input(user, "最多选择两个法术进行解绑。取消会结束选择；若未成功解绑任何法术，则不会消耗今日的解绑次数。") as null|anything in resettable_spells
 		if(QDELETED(user) || user.mind != user_mind || !user.client || (H && H.z121_profession != R))
 			break
 		var/obj/effect/proc_holder/spell/S = resettable_spells[choice]
