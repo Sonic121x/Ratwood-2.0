@@ -85,7 +85,7 @@
 	if(src.pulledby != null)
 		to_chat(src, span_notice("我被抓着没法飞走！"))
 		return
-	src.visible_message(span_notice("[src]开始上升！"), span_notice("你起飞了……"))
+	src.visible_message(span_notice("[src]开始上升！"), span_notice("我开始向上飞……"))
 	if(do_after(src, fly_time, target))
 		if(src.pulledby == null)
 			src.zMove(UP, TRUE)
@@ -100,7 +100,7 @@
 	if(src.pulledby != null)
 		to_chat(src, span_notice("我被抓着没法飞走！"))
 		return
-	src.visible_message(span_notice("[src]开始下降！"), span_notice("你起飞了……"))
+	src.visible_message(span_notice("[src]开始下降！"), span_notice("我开始向下飞……"))
 	if(do_after(src, fly_time, target))
 		if(src.pulledby == null)
 			src.zMove(DOWN, TRUE)

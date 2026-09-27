@@ -55,7 +55,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 			to_chat(user, "我开始用[magicmaterial]治疗[src]。")
 			if(do_mob(user, src, 20))
 				var/tier_diff = 0.5 //Voidstone is uncommon, and if your trying to heal the dragon, you deserve the half health heal.
-				visible_message("[src]吸收了[magicmaterial]，伤势痊愈。")
+				visible_message("[src]吸收了[magicmaterial]，伤势有所恢复。")
 				adjustBruteLoss(-maxHealth * tier_diff)
 				qdel(magicmaterial)
 				return
@@ -225,7 +225,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 			to_chat(user,span_warning("太快了！"))
 			revert_cast()
 			return FALSE
-		dragon.visible_message(span_colossus("[src]张开巨口，闪电在它的齿间噼啪作响！"))
+		dragon.visible_message(span_colossus("[dragon]张开巨口，闪电在它的齿间噼啪作响！"))
 		if(!dragon.chain_lightning(targets[1], dragon))
 			revert_cast()
 			return FALSE
@@ -428,7 +428,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 					throw_dir = pick(GLOB.alldirs)
 				var/throwtarget = get_edge_target_turf(src, throw_dir)
 				L.throw_at(throwtarget, 3)
-				visible_message(span_warning("[L]被弹飞离开了[src]！</span>"))
+				visible_message(span_warning("[L]被[src]撞飞了！"))
 	for(var/mob/M in range(7, src))
 		shake_camera(M, 15, 1)
 	movement_type = GROUND
@@ -597,9 +597,9 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	if(current.anti_magic_check())
 		current.visible_message(span_warning("[current]吸收了法术，毫发无伤！"), span_danger("我吸收了法术，毫发无伤！"))
 	else if(bounces < 1)
-		current.electrocute_act(bolt_energy,"Lightning Bolt",flags = SHOCK_NOGLOVES)
+		current.electrocute_act(bolt_energy,"闪电",flags = SHOCK_NOGLOVES)
 	else
-		current.electrocute_act(bolt_energy,"Lightning Bolt",flags = SHOCK_NOGLOVES)
+		current.electrocute_act(bolt_energy,"闪电",flags = SHOCK_NOGLOVES)
 		var/list/possible_targets = new
 		for(var/mob/living/M in view(7,target))
 			if(user == M || target == M && los_check(current,M)) // || origin == M ? Not sure double shockings is good or not
