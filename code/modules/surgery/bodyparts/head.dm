@@ -64,7 +64,7 @@
 /obj/item/bodypart/head/examine()
 	. = ..()
 	if(sellprice && !no_head_bounty)
-		. += span_notice("This head seems to be wanted by the Judiciary of The Realm. It can be sold at the merchant or a HEADEATER.")
+		. += span_notice("这颗头颅似乎在王国司法机构的悬赏名单上。可以卖给商人或投入食首机换取赏金。")
 
 /obj/item/bodypart/head/drop_limb(special)
 	. = ..()

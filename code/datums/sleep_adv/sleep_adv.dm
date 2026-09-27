@@ -447,7 +447,7 @@ GLOBAL_LIST_INIT(cross_training_map, list(
 		return
 	if(mind.has_changed_spell)
 		mind.has_changed_spell = FALSE
-		to_chat(mind.current, span_smallnotice("我感觉自己又能再次更换法术了。"))
+		to_chat(mind.current, span_smallnotice("我感觉自己又能解绑法术了。"))
 	if(mind.has_rituos)
 		mind.has_rituos = FALSE
 		to_chat(mind.current, span_smallnotice("施行“她的次级之作”带来的劳累已经离开我这孱弱之躯。我可以继续我的蜕变了……"))
