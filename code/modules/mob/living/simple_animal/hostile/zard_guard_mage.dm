@@ -131,7 +131,7 @@
 /obj/effect/oneway/psy_bog //one way barrier to the boss room. Can be despawned with the key the boss drops.
 	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "要么胜利要么死亡——一旦你越过此点，要么凯旋要么陨落。推荐6名或以上玩家。"
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少6名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
@@ -146,7 +146,7 @@
 /obj/effect/oneway/psy_bog_two //one way barrier to the boss room. Can be despawned with the key the boss drops.
 	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "要么胜利要么死亡——一旦你越过此点，要么凯旋要么陨落。推荐6名或以上玩家。"
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少6名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
