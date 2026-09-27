@@ -12,32 +12,32 @@
 	var/style = "info"
 	switch(item_quality)
 		if(ITEM_QUALITY_LOOTED)
-			word = "scavenged"
+			word = "捡来的"
 			style = "warning"
 		if(ITEM_QUALITY_RUINED)
-			word = "ruined"
+			word = "损毁"
 			style = "warning"
 		if(ITEM_QUALITY_AWFUL)
-			word = "awful"
+			word = "糟糕"
 			style = "warning"
 		if(ITEM_QUALITY_CRUDE)
-			word = "crude"
+			word = "粗制"
 			style = "warning"
 		if(ITEM_QUALITY_ROUGH)
-			word = "rough"
+			word = "粗糙"
 		if(ITEM_QUALITY_STANDARD)
-			word = "standard"
+			word = "标准"
 		if(ITEM_QUALITY_FINE)
-			word = "fine"
+			word = "精良"
 		if(ITEM_QUALITY_FLAWLESS)
-			word = "flawless"
+			word = "无瑕"
 			style = "green"
 		if(ITEM_QUALITY_MASTERWORK)
-			word = "masterwork"
+			word = "杰作"
 			style = "green"
 	if(!word)
 		return null
-	return list("text" = "Quality: <b>[capitalize(word)]</b> ([qpct]% value)", "style" = style)
+	return list("text" = "品质：<b>[capitalize(word)]</b>（价值为标准的 [qpct]%）", "style" = style)
 
 /obj/item/examine(mob/user) //This might be spammy. Remove?
 	. = ..()
@@ -71,15 +71,15 @@
 	if(quality_data)
 		switch(quality_data["style"])
 			if("warning")
-				. += span_warning("[quality_data["text"]].")
+				. += span_warning("[quality_data["text"]]。")
 			if("green")
-				. += span_green("[quality_data["text"]].")
+				. += span_green("[quality_data["text"]]。")
 			else
-				. += span_info("[quality_data["text"]].")
+				. += span_info("[quality_data["text"]]。")
 
 	if(smeltresult)
 		var/obj/item/smelted = smeltresult
-		. += span_info("可被冶炼成[smelted.name].")
+		. += span_info("可被熔炼成[smelted.name]。")
 
 	if(nudist_approved)
 		if(HAS_TRAIT(user, TRAIT_NUDE_SLEEPER))
@@ -90,15 +90,15 @@
 
 	var/list/seals = list()
 	if(atc_sealed)
-		seals += "ATC seal"
+		seals += "费伦提亚贸易公司封印"
 	if(unmintable)
-		seals += "town-property stamp"
+		seals += "城镇财产印记"
 	if(length(seals))
-		. += span_info("Marked with [english_list(seals)] - the navigator will not take it.")
+		. += span_info("带有[english_list(seals, and_text = "和")] - 引航机不会收购它。")
 	else if(was_crafted)
-		. += span_info("It appears to be crafted by the hand of a local artisan.")
+		. += span_info("它看起来出自当地工匠之手。")
 	else if(is_carved)
-		. += span_info("It is a carved item.")
+		. += span_info("这是一件雕刻品。")
 	for(var/datum/examine_effect/E in examine_effects)
 		E.trigger(user)
 
