@@ -137,7 +137,7 @@
 				color = "#3c9c24"
 			if(11 to 999)
 				color = "#fdfdfd"
-		examine_list += span_info("<b>[type]:</b><font color = '[color]'> \Roman[val]</font>")
+		examine_list += span_info("<b>[list("blunt" = "钝击", "slash" = "劈砍", "stab" = "刺击", "piercing" = "穿刺")[type] || type]:</b><font color = '[color]'> \Roman[val]</font>")
 	//Can I do repairs on it at all?
 	if(length(race_repair))
 		if(ishuman(user))

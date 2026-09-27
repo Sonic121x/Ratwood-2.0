@@ -135,6 +135,6 @@
 /obj/item/clothing/neck/roguetown/luckcharm/mercmedal/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>With the destruction of an old empire, came a great sadness. A profound longing for what was lost. \
-		No greater is this felt than by those who'd lyved it, such as the ones who carry this now. A relic of daes gone by. \
-		<br>Where were you, when it all came to an end? Are you not the <b>hero</b>?</small>"
+		. += "<small>古老帝国的覆灭带来了无尽的悲伤，以及对逝去之物深切的眷恋。 \
+		无人比亲历过那个时代的人更懂得这种感受，就像如今携带此物的人。这是往昔岁月留下的遗物。 \
+		<br>当一切走向终结时，你又身在何处？你难道不是那位<b>英雄</b>吗？</small>"
