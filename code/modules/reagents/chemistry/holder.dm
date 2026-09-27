@@ -871,7 +871,7 @@
 					out += "[intensity_desc] [scent_desc]"
 				else
 					out += "[scent_desc]"
-	return english_list(out, "something")
+	return english_list(out, "某种难以辨认的气味", "和", "、")
 
 /datum/reagents/proc/generate_taste_message(minimum_percent=15)
 	// the lower the minimum percent, the more sensitive the message is.
