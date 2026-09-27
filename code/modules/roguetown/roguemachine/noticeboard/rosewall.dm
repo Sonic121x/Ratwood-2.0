@@ -15,8 +15,8 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 #define ROSEWALL_STATUS_DND "Do not Disturb"
 
 /obj/structure/roguemachine/rosewall
-	name = "The Rosewall"
-	desc = "A rosewood board scented with bath-oils, hung with perfumed slips of parchment. The bathhouse's workers pin their offerings here for any passerby to peruse."
+	name = "蔷薇墙"
+	desc = "一块浸染着浴油香气的红木告示板，上面挂着散发芬芳的羊皮纸笺。浴场侍者在这里张贴服务告示，供来往之人浏览。"
 	icon = 'icons/roguetown/structure/noticeboard32.dmi'
 	icon_state = "noticeboardbh0"
 	density = FALSE
@@ -140,7 +140,7 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 		return
 	var/mob/living/carbon/human/H = usr
 	if(!Adjacent(H))
-		to_chat(H, span_warning("I need to be closer to the board."))
+		to_chat(H, span_warning("我得再靠近告示板一些。"))
 		return
 	switch(action)
 		if("set_status")
@@ -155,7 +155,7 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 				rosewall_adverts[H.real_name] = advert_data
 			advert_data["status"] = new_status
 			advert_data["mob"] = H
-			to_chat(H, span_notice("I set my Rosewall status to: <b>[new_status]</b>"))
+			to_chat(H, span_notice("我将自己在蔷薇墙上的状态设为：<b>[new_status == ROSEWALL_STATUS_AVAILABLE ? "可接待" : new_status == ROSEWALL_STATUS_HIRED ? "已受雇" : "请勿打扰"]</b>"))
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			log_admin_private("[key_name(H)] set Rosewall status to [new_status]")
 			update_all_boards()
@@ -168,15 +168,15 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 				advert_data = list("status" = ROSEWALL_STATUS_AVAILABLE, "mob" = H, "message" = "")
 				rosewall_adverts[H.real_name] = advert_data
 			var/current_msg = advert_data["message"] || ""
-			var/new_msg = stripped_input(H, "Compose my advert for the Rosewall (max [message_char_limit] characters):", "Rosewall Advert", current_msg, message_char_limit)
+			var/new_msg = stripped_input(H, "撰写我要张贴在蔷薇墙上的告示（最多[message_char_limit]个字符）：", "蔷薇墙告示", current_msg, message_char_limit)
 			if(new_msg == null)
 				return
 			if(!Adjacent(H))
-				to_chat(H, span_warning("I moved too far from the board."))
+				to_chat(H, span_warning("我离告示板太远了。"))
 				return
 			advert_data["message"] = new_msg
 			advert_data["mob"] = H
-			to_chat(H, span_notice("My advert has been pinned to the Rosewall."))
+			to_chat(H, span_notice("我的告示已张贴在蔷薇墙上。"))
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			log_admin_private("[key_name(H)] set Rosewall advert: \"[new_msg]\"")
 			update_all_boards()
@@ -185,10 +185,10 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 			if(!is_bathhouse_worker(H))
 				return
 			if(!rosewall_adverts[H.real_name])
-				to_chat(H, span_warning("I have no advert pinned here."))
+				to_chat(H, span_warning("我没有在这里张贴告示。"))
 				return
 			rosewall_adverts -= H.real_name
-			to_chat(H, span_notice("I take my advert down from the Rosewall."))
+			to_chat(H, span_notice("我从蔷薇墙上撤下了自己的告示。"))
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			log_admin_private("[key_name(H)] removed their Rosewall advert")
 			update_all_boards()
@@ -210,13 +210,13 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 /obj/structure/roguemachine/rosewall/proc/examine_headshot(mob/living/carbon/human/viewer, target_key)
 	var/list/advert_data = rosewall_adverts[target_key]
 	if(!advert_data)
-		to_chat(viewer, span_warning("That advert is no longer pinned here."))
+		to_chat(viewer, span_warning("那张告示已经不在这里了。"))
 		return
 	var/mob/living/carbon/human/worker = advert_data["mob"]
 	if(!worker || QDELETED(worker))
 		rosewall_adverts -= target_key
 		update_all_boards()
-		to_chat(viewer, span_warning("That advert is no longer pinned here."))
+		to_chat(viewer, span_warning("那张告示已经不在这里了。"))
 		return
 	var/datum/examine_panel/mob_examine_panel = new(worker)
 	mob_examine_panel.holder = worker
@@ -227,32 +227,32 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 /obj/structure/roguemachine/rosewall/proc/send_offer(mob/living/carbon/human/sender, target_key)
 	var/list/advert_data = rosewall_adverts[target_key]
 	if(!advert_data)
-		to_chat(sender, span_warning("That advert is no longer pinned here."))
+		to_chat(sender, span_warning("那张告示已经不在这里了。"))
 		return
 	var/mob/living/carbon/human/worker = advert_data["mob"]
 	if(!worker || QDELETED(worker) || worker.stat == DEAD || !worker.ckey)
 		rosewall_adverts -= target_key
 		update_all_boards()
-		to_chat(sender, span_warning("My offer cannot be delivered for some reason."))
+		to_chat(sender, span_warning("不知为何，我的邀约无法送达。"))
 		return
 	if(advert_data["status"] == ROSEWALL_STATUS_DND)
-		to_chat(sender, span_warning("[worker.real_name] is not to be disturbed."))
+		to_chat(sender, span_warning("[worker.real_name]目前不希望被打扰。"))
 		return
 	var/cooldown_key = "rosewall_[sender.real_name]_[worker.real_name]"
 	if(sender_cooldowns[cooldown_key])
 		var/time_left = sender_cooldowns[cooldown_key] + offer_cooldown - world.time
 		if(time_left > 0)
 			var/mins_left = max(1, round(time_left / 600))
-			to_chat(sender, span_warning("I need to wait [mins_left] minute[mins_left == 1 ? "" : "s"] before sending [worker.real_name] another offer."))
+			to_chat(sender, span_warning("我还得等[mins_left]分钟，才能再次向[worker.real_name]发出邀约。"))
 			return
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I need to stay close to the board."))
+		to_chat(sender, span_warning("我得待在告示板附近。"))
 		return
-	var/message = stripped_input(sender, "What offer do I wish to send? (Max [message_char_limit] characters)", "Rosewall Offer", "", message_char_limit)
+	var/message = stripped_input(sender, "我想发出怎样的邀约？（最多[message_char_limit]个字符）", "蔷薇墙邀约", "", message_char_limit)
 	if(!message)
 		return
 	if(!Adjacent(sender))
-		to_chat(sender, span_warning("I moved too far from the board."))
+		to_chat(sender, span_warning("我离告示板太远了。"))
 		return
 	sender_cooldowns[cooldown_key] = world.time
 	response_id_counter++
@@ -261,8 +261,8 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 		// Tracked by expiry time rather than an addtimer bound to this board, so the
 		// entry cannot leak (holding refs to both mobs) if this board is destroyed.
 		pending_offer_responses[response_id] = list("responder" = worker, "sender" = sender, "expires" = world.time + response_timeout)
-	to_chat(worker, span_boldnotice("A perfumed slip finds its way to me from the Rosewall: <i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];offer_response=yae;response_id=[response_id]'>\[YAE\]</a> | <a href='?src=[REF(src)];offer_response=nae;response_id=[response_id]'>\[NAE\]</a>"))
-	to_chat(sender, span_notice("My offer has been sent to [worker.real_name]."))
+	to_chat(worker, span_boldnotice("一张散发芬芳的纸笺从蔷薇墙飘到了我面前：<i>[message]</i> - [sender.real_name]<br><a href='?src=[REF(src)];offer_response=yae;response_id=[response_id]'>\[接受\]</a> | <a href='?src=[REF(src)];offer_response=nae;response_id=[response_id]'>\[拒绝\]</a>"))
+	to_chat(sender, span_notice("我的邀约已送达[worker.real_name]。"))
 	playsound(worker.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 	sender.log_talk(message, LOG_SAY, tag="rosewall offer (to [key_name(worker)])")
 	worker.log_talk(message, LOG_SAY, tag="rosewall offer (from [key_name(sender)])", log_globally=FALSE)
@@ -277,34 +277,34 @@ passerby may peruse the board, examine a worker's headshot, or send them an offe
 		var/response_id = href_list["response_id"]
 
 		if(!pending_offer_responses[response_id])
-			to_chat(responder, span_warning("That response link has expired or already been used."))
+			to_chat(responder, span_warning("这个回复链接已过期或已被使用。"))
 			return
 
 		var/list/response_data = pending_offer_responses[response_id]
 		if(world.time > response_data["expires"])
 			pending_offer_responses -= response_id
-			to_chat(responder, span_warning("That response link has expired or already been used."))
+			to_chat(responder, span_warning("这个回复链接已过期或已被使用。"))
 			return
 		var/mob/living/carbon/human/stored_responder = response_data["responder"]
 		var/mob/living/carbon/human/sender = response_data["sender"]
 
 		if(responder != stored_responder)
-			to_chat(responder, span_warning("That response link is not for me."))
+			to_chat(responder, span_warning("这个回复链接不是给我的。"))
 			return
 
 		if(!sender || QDELETED(sender))
-			to_chat(responder, span_warning("The sender is no longer available."))
+			to_chat(responder, span_warning("已经联系不上邀约人了。"))
 			pending_offer_responses -= response_id
 			return
 
 		pending_offer_responses -= response_id
 
 		if(response_type == "yae")
-			to_chat(sender, span_notice("[responder.real_name] responded in affirmation to my offer."))
-			to_chat(responder, span_notice("I responded in affirmation to [sender.real_name]."))
+			to_chat(sender, span_notice("[responder.real_name]接受了我的邀约。"))
+			to_chat(responder, span_notice("我接受了[sender.real_name]的邀约。"))
 		else
-			to_chat(sender, span_notice("[responder.real_name] responded negatively to my offer."))
-			to_chat(responder, span_notice("I responded negatively to [sender.real_name]."))
+			to_chat(sender, span_notice("[responder.real_name]拒绝了我的邀约。"))
+			to_chat(responder, span_notice("我拒绝了[sender.real_name]的邀约。"))
 
 		playsound(sender.loc, 'sound/misc/notice (2).ogg', 100, FALSE, -1)
 		playsound(responder.loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
