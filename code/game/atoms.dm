@@ -443,8 +443,8 @@
 				var/obj/item/reagent_containers/container = src
 				is_closed = !container.spillable
 			if(is_closed == FALSE && reagents.total_volume) // if the container is open, and there's liquids in there
-				user.visible_message(span_info("[user] takes a whiff of [src]..."), span_info("I take a whiff of [src]..."))
-				. += span_notice("I smell [src.reagents.generate_scent_message()].")
+				user.visible_message(span_info("[user]闻了闻[src]……"), span_info("我闻了闻[src]……"))
+				. += span_notice("我闻到的气味是：[src.reagents.generate_scent_message()]。")
 				if (HAS_TRAIT(user, TRAIT_ALCHEMY_EXPERT))
 					var/full_reagents = ""
 					for (var/datum/reagent/R in reagents.reagent_list)
@@ -452,7 +452,7 @@
 							if (full_reagents)
 								full_reagents += ", "
 							full_reagents += "[LOWER_TEXT(R.name)]"
-					. += span_notice("My expert nose lets me distinguish this liquid as [full_reagents].")
+					. += span_notice("凭借训练有素的嗅觉，我辨认出这份液体中含有[full_reagents]。")
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
