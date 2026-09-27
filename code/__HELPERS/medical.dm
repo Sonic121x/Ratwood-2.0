@@ -41,7 +41,7 @@
 			return "颅骨"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "嘴巴"
-	return zone == BODY_ZONE_HEAD ? "头部" : (zone == BODY_ZONE_CHEST ? "胸部" : (zone == BODY_ZONE_PRECISE_STOMACH ? "腹部" : zone))
+	return zone == BODY_ZONE_HEAD ? "头部" : (zone == BODY_ZONE_CHEST ? "胸部" : (zone == BODY_ZONE_PRECISE_STOMACH ? "腹部" : (list("body" = "身体", "torso" = "躯干", "foreleg" = "前肢", "leg" = "腿部", "tail" = "尾巴", "wing" = "翅膀", "snout" = "口鼻", "beak" = "喙", "belly" = "腹部", "claw" = "爪子", "arm" = "手臂", "hand" = "手部", "foot" = "足部", "bladed arm" = "刃臂")[zone] || zone)))
 
 /proc/parse_organ_slot(slot)
 	switch(slot)
