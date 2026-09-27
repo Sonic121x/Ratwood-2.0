@@ -112,9 +112,9 @@
 	. = ..()
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
-			. += span_boldannounce("[src] is not moving.")
+			. += span_boldannounce("[src]一动不动。")
 		if(CONSCIOUS)
-			. += span_boldannounce("[src] seems to be active!")
+			. += span_boldannounce("[src]似乎正在活动！")
 
 /obj/item/clothing/mask/rogue/goblin_mask/throw_at(atom/target, range, speed, mob/thrower, spin = FALSE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE) //If this returns FALSE then callback will not be called.
 	. = ..()
