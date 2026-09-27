@@ -122,7 +122,7 @@
 	. = ..()
 	emote("deathgasp")
 	if(familiar_summoner)
-		to_chat(familiar_summoner, span_warning("[src.name]倒下了，你们的羁绊随之暗淡。但在远处的寂静中，它们一丝精华的微光依然留存。"))
+		to_chat(familiar_summoner, span_warning("[src.name]倒下了，你们的羁绊随之暗淡。然而，在彼岸的寂静中，它的一缕精魄仍闪着微光。"))
 
 /mob/living/simple_animal/pet/familiar/Destroy()
 	if(familiar_summoner)
@@ -134,7 +134,7 @@
 
 /mob/living/simple_animal/pet/familiar/pondstone_toad
 	name = "池塘石蟾蜍"
-	desc = "这只潮湿沉重的蟾蜍搏动着无形的力量。它的皮肤冰凉，布满了矿物脉络。"
+	desc = "这只湿润而沉重的蟾蜍体内涌动着无形的力量。它的皮肤冰凉，遍布矿物纹路。"
 	animal_species = "池塘石蟾蜍"
 	summoning_emote = "你脚下回荡起一阵低沉的嗡鸣，一只苔藓覆盖的蟾蜍推开泥土，发出低沉的哼鸣。"
 	icon_state = "pondstone"
@@ -151,7 +151,7 @@
 	speak = list("呣。", "咕噜。", "噗噜。")
 	speak_emote = list("低沉地呱呱叫", "咕哝")
 	emote_hear = list("低沉地呱呱叫。", "发出咕噜咕噜的声音。")
-	emote_see = list("如石头般颤抖。", "在原地轻轻扑通。")
+	emote_see = list("如石头般震颤。", "在原地轻轻蹦跳。")
 	var/icon/original_icon = null
 	var/original_icon_state = ""
 	var/original_icon_living = ""
@@ -221,7 +221,7 @@
 	speak = list("吱——！", "叽叽。", "吱。")
 	speak_emote = list("吱吱叫", "叽喳")
 	emote_hear = list("若有所思地吱吱叫。", "嗅了嗅空气。")
-	emote_see = list("尾巴划出有规律的抽动。", "绕圈疾跑。")
+	emote_see = list("有规律地甩动尾巴。", "绕圈疾跑。")
 	var/stored_books = list()
 	var/storage_limit = 5
 
@@ -236,7 +236,7 @@
 
 /mob/living/simple_animal/pet/familiar/vaporroot_wisp
 	name = "蒸气根精魄"
-	desc = "这只蒸气根精魄闪烁流转如烟，但靠上去却感觉足够坚实。"
+	desc = "这只蒸气根精魄如烟雾般闪烁变幻，触感却坚实得足以倚靠。"
 	animal_species = "蒸气根"
 	summoning_emote = "一团银色的雾旋转凝聚，化作一束蒸气根的小小精魄。"
 	icon_state = "vaporroot"
@@ -268,7 +268,7 @@
 
 /mob/living/simple_animal/pet/familiar/ashcoiler
 	name = "灰烬盘绕者"
-	desc = "这条长身蛇缓慢地盘绕，像一根加热的绳索。它的呼吸带着淡淡的烧焦草药味。"
+	desc = "这条身躯修长的蛇缓缓盘绕，如同一根温热的绳索。它的吐息带着淡淡的焦草药气味。"
 	summoning_emote = "尘土扬起盘旋，随后盘绕成一只有着灰色鳞片、散发着干燥余温的生物。"
 	animal_species = "灰烬盘绕者"
 	icon_state = "ashcoiler"
@@ -296,7 +296,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/familiar/desert_bred_tenacity
 	name = "沙漠淬炼之韧"
-	desc = "你感到沉稳而有耐心，就像某个在无雨之年存活下来的存在。"
+	desc = "你感到沉稳而有耐心，仿佛早已熬过多年的干旱。"
 
 /mob/living/simple_animal/pet/familiar/glimmer_hare
 	name = "微光兔"
@@ -318,7 +318,7 @@
 	speak = list("叽！", "啾！", "哈！")
 	speak_emote = list("快速叽喳", "啁啾")
 	emote_hear = list("用脚敲着地面。", "洒落了些灰尘。")
-	emote_see = list("突然冲一下然后停下。", "微微震动。")
+	emote_see = list("突然蹿出，又停了下来。", "微微颤动。")
 
 /datum/status_effect/buff/familiar/lightstep
 	id = "lightstep"
@@ -331,7 +331,7 @@
 
 /mob/living/simple_animal/pet/familiar/hollow_antlerling
 	name = "空心角鹿"
-	desc = "一只狗大小的鹿，长着闪烁的空心鹿角，发出笛子般的声音。"
+	desc = "一只犬只大小的鹿，空心鹿角闪着微光，发出悠扬的笛音。"
 	summoning_emote = "一阵悦耳的钟声响起。一只角如骨笛的小鹿轻柔地走到视野中。"
 	animal_species = "空心角鹿"
 	icon_state = "antlerling"
@@ -347,7 +347,7 @@
 	speak = list("哼。", "呣——。", "呼哧。")
 	speak_emote = list("轻柔地鸣响", "呼唤")
 	emote_hear = list("发出悦耳的钟声。")
-	emote_see = list("如海市蜃楼般闪烁。", "刚好站在落尘触及不到的地方。")
+	emote_see = list("如海市蜃楼般闪烁。", "轻轻迈步，恰好避开飘落的尘埃。")
 
 /datum/status_effect/buff/familiar/soft_favor
 	id = "soft_favor"
@@ -360,7 +360,7 @@
 
 /mob/living/simple_animal/pet/familiar/gravemoss_serpent
 	name = "墓苔巨蛇"
-	desc = "它的鳞片上斑驳着地衣和墓尘。它所经之处，泥土中的根须微颤。"
+	desc = "它的鳞片上散布着地衣与墓尘。它所经之处，泥土中的根须微微颤动。"
 	summoning_emote = "地面微微起伏，一条覆满苔藓的长蛇从中盘绕而出。"
 	animal_species = "墓苔巨蛇"
 	icon_state = "gravemoss"
@@ -392,7 +392,7 @@
 /mob/living/simple_animal/pet/familiar/starfield_crow
 	name = "星域扎德"
 	desc = "它光亮的羽毛上闪烁着流转的星座，即便身处最深的阴影，眼中也透着异样的灵性。"
-	summoning_emote = "空气裂开一道缝隙，显现出星空虚空的一角，一只羽毛如夜空般的利落扎德从中起飞。"
+	summoning_emote = "空气中裂开一道缝隙，露出繁星点缀的虚空一角。一只体态修长、羽毛宛如夜空的扎德从中飞出。"
 	animal_species = "星域乌鸦"
 	icon_state = "crow_flying"
 	icon_living = "crow_flying"
@@ -410,7 +410,7 @@
 	STALUC = 11
 	speak = list("嘎——。", "嘎。", "咔嘎。")
 	speak_emote = list("轻声啼叫", "呱呱叫")
-	emote_hear = list("发出通晓的啼叫。", "像星辰滴答般啁啾。")
+	emote_hear = list("了然般地啼叫一声。", "啁啾着，仿佛星辰在滴答作响。")
 	emote_see = list("在星座间闪烁。", "歪了下头然后消失了一秒。")
 
 /datum/status_effect/buff/familiar/starseam
@@ -443,7 +443,7 @@
 	speak = list("呼。", "吼——。", "嘶——。")
 	speak_emote = list("噼啪作响", "温声细语")
 	emote_hear = list("如壁炉般隆隆作响。", "火焰般闪烁。")
-	emote_see = list("亮度短暂一涨。", "留下一片短暂的热浪。")
+	emote_see = list("短暂地亮了起来。", "留下一片转瞬即逝的热霭。")
 
 /datum/status_effect/buff/familiar/steady_spark
 	id = "steady_spark"
@@ -456,8 +456,8 @@
 
 /mob/living/simple_animal/pet/familiar/ripplefox
 	name = "涟漪狐"
-	desc = "不直视它的时候它会闪烁。不留痕迹。你并不总是确定它是否还在附近。"
-	summoning_emote = "空气泛起涟漪，化作一只身形流畅的狐狸，毛皮在色彩间跳动，踱步走来。"
+	desc = "不直视它时，它的身影便会闪烁不定。它行走时不留足迹，让你时常拿不准它是否还在附近。"
+	summoning_emote = "空气泛起涟漪，化作一只体态修长的狐狸。它轻步走来，皮毛的色泽不断变幻。"
 	animal_species = "涟漪狐"
 	icon_state = "ripple"
 	icon_living = "ripple"
