@@ -20,7 +20,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 	associated_skill = /datum/skill/misc/reading
 	possible_item_intents = list(/datum/intent/use, /datum/intent/special/magicarc)
 	name = "\improper 奥术秘典"
-	desc = "一本噼啪作响、泛着微光的书，满载着让人一眼望去便头痛欲裂的符文与记号。可用于解绑法术，或辅助施法者使部分投射物偏转。"
+	desc = "一本噼啪作响、泛着微光的书，满载着让人凝视时便头痛欲裂的符文与记号。可用于解绑法术，或辅助施法者让部分法术投射物沿弧线飞向目标。"
 	var/picked // if the book has had it's style picked or not
 	var/born_of_rock = FALSE // was a magical stone used to make it instead of a gem
 
@@ -82,11 +82,11 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 
 /obj/item/book/spellbook/examine(mob/user)
 	. = ..()
-	. += span_notice("每天阅读一次，可解绑两个法术并返还其法术点。")
+	. += span_notice("每天可通过阅读此书解绑最多两个法术，并返还相应的法术点。")
 	if(born_of_rock)
-		. += span_notice("这本魔典是用魔法石而非正统宝石制成的。将其展开握在手中时，可使法术充能时间缩短[ROCK_CHARGE_REDUCTION * 100]%。")
+		. += span_notice("这本秘典用魔法石代替真正的宝石制成。将其翻开并握在手中，可使法术蓄力时间减少基础值的[ROCK_CHARGE_REDUCTION * 100]%。")
 	else
-		. += span_notice("这本魔典由宝石制成。将其展开握在手中时，可使法术充能时间缩短[GEM_CHARGE_REDUCTION * 100]%。")
+		. += span_notice("这本秘典由宝石制成。将其翻开并握在手中，可使法术蓄力时间减少基础值的[GEM_CHARGE_REDUCTION * 100]%。")
 
 /obj/item/book/spellbook/attack_self(mob/user)
 	if(!open)
@@ -123,7 +123,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 	user_mind.has_changed_spell = TRUE //To pre-empt a halting duplication in the for loop here
 	var/unlearn_success = FALSE
 	for(var/i = 1, i <= 2, i++)
-		var/choice = input(user, "最多选择两个法术进行解绑。若两次都取消，则不会消耗今日的解绑次数。") as null|anything in resettable_spells
+		var/choice = input(user, "最多选择两个法术进行解绑。取消会结束选择；若未成功解绑任何法术，则不会消耗今日的解绑次数。") as null|anything in resettable_spells
 		var/obj/effect/proc_holder/spell/item = resettable_spells[choice]
 		if(!item)
 			break
@@ -145,14 +145,14 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 
 /obj/item/book/spellbook/attack_right(mob/user)
 	if(!picked)
-		var/list/designlist = list("green", "yellow", "brown", "steel", "gem", "skin", "mimic", "wyrdbark", "sunfire", "abyssal", "cinder", "vessel", "edgebound", "sovereign")
+		var/list/designlist = list("绿色" = "green", "黄色" = "yellow", "棕色" = "brown", "钢铁" = "steel", "宝石" = "gem", "皮质" = "skin", "宝箱怪" = "mimic", "诡木树皮" = "wyrdbark", "日焰" = "sunfire", "深渊" = "abyssal", "余烬" = "cinder", "容器" = "vessel", "刃缚" = "edgebound", "君王" = "sovereign")
 		var/the_time = world.time
-		var/design = input(user, "选择一种外观。","法术书样式") as null|anything in designlist
+		var/design = input(user, "选择一种外观。","奥术秘典样式") as null|anything in designlist
 		if(!design)
 			return
 		if(world.time > (the_time + 30 SECONDS))
 			return
-		base_icon_state = "spellbook[design]"
+		base_icon_state = "spellbook[designlist[design]]"
 		update_icon()
 		picked = TRUE
 		return
@@ -179,11 +179,11 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 	dropshrink = 0.6
 	icon = 'icons/roguetown/items/books.dmi'
 	icon_state ="basic_book_0"
-	desc = "厚实的卷轴纸在书脊处装订成册。它还缺少书页。"
+	desc = "厚实的卷轴纸沿书脊装订成册，书页还未补齐。"
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
-	attack_verb = list("bashed", "whacked", "educated")
+	attack_verb = list("猛砸", "痛击", "教训")
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
 	pickup_sound =  'sound/blank.ogg'
@@ -191,7 +191,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 /obj/item/spellbook_unfinished/pre_arcyne
 	name = "待成之书"
 	icon_state = "spellbook_unfinished"
-	desc = "一本已经完全装订好的卷纸书册。它还缺少某种奥术能量。"
+	desc = "一本用卷轴纸装订完成的书册，还需要注入奥术能量。"
 	grid_width = 32
 	grid_height = 64
 
@@ -202,7 +202,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 			var/crafttime = (100 - ((user.get_skill_level(/datum/skill/magic/arcane))*5))
 			if(do_after(user, crafttime, target = src))
 				playsound(loc, 'sound/items/book_close.ogg', 100, TRUE)
-				to_chat(user, span_notice("我把最初几页装进了皮革封面里......"))
+				to_chat(user, span_notice("我把最初几页装进了皮革封面里……"))
 				new /obj/item/spellbook_unfinished(loc)
 				qdel(P)
 				qdel(src)
@@ -220,14 +220,14 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 				if(pages_left > 0)
 					playsound(loc, 'sound/items/book_page.ogg', 100, TRUE)
 					pages_left -= 1
-					to_chat(user, span_notice("还剩[pages_left+1]页......"))
+					to_chat(user, span_notice("还需添加[pages_left+1]张卷轴纸……"))
 					qdel(P)
 				else
 					playsound(loc, 'sound/items/book_open.ogg', 100, TRUE)
 					if(isarcyne(user))
 						to_chat(user, span_notice("书已经装订好了。现在我得找个媒介，把奥术能量导入其中。"))
 					else
-						to_chat(user, span_notice("我做出了一本由厚重废纸构成的空书。它甚至都没法好好翻阅！"))
+						to_chat(user, span_notice("我用厚实却毫无用处的卷轴纸做出了一本空书。它甚至都没法好好翻阅！"))
 					new /obj/item/spellbook_unfinished/pre_arcyne(loc)
 					qdel(P)
 					qdel(src)
@@ -245,7 +245,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 				if(isarcyne(user))
 					playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 					user.visible_message(span_warning("[user]捏碎了[user.p_their()]手中的[P]！粉末渗入了[src]之中。"), \
-						span_notice("我将自己的奥术能量灌入晶石之中。它随即碎裂，渗入魔典封面！如今书页上已布满某种不可知语言的符文与记号......"))
+						span_notice("我将自己的奥术能量灌入晶石之中。它随即碎裂，粉末渗入秘典封面！如今书页上已布满某种不可知语言的符文与记号……"))
 					var/obj/item/book/spellbook/newbook = new /obj/item/book/spellbook(loc)
 					newbook.desc += " [P]留下的粉尘痕迹仍残存在页边。"
 					qdel(P)
@@ -262,7 +262,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 					else
 						playsound(loc, 'modular_azurepeak/sound/spellbooks/icicle.ogg', 100, TRUE)
 						user.visible_message(span_warning("[user]捏碎了[user.p_their()]手中的[P]！可那粉末只是尴尬地堆在[src]表面。"), \
-							span_notice("......我为什么，又是怎么，把这颗宝石砸进一本毫无价值的卷纸书里的？真是浪费mammon！"))
+							span_notice("……我为什么，又是怎么，把这颗宝石砸进一本毫无价值的卷轴纸书册里的？真是白白浪费玛门币！"))
 						qdel(P)
 					return ..()
 		else
@@ -276,27 +276,27 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 					if (isarcyne(user))
 						playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 						user.visible_message(span_warning("[user]捏碎了[user.p_their()]手中的[P]！粉末渗入了[src]之中。"), \
-							span_notice("我将自己的奥术能量与手中魔法石的力量相融。它短暂颤动后，化作点点灰烬消散。如今书页上已布满某种不可知语言的符文与记号......"))
-						to_chat(user, span_notice("......可即便对奥术之谜而言，这些字符也与我以往所见的任何东西都截然不同。它们会变得极其难懂......"))
+							span_notice("我将自己的奥术能量与手中魔法石的力量相融。它短暂颤动后，化作点点灰烬。如今书页上已布满某种不可知语言的符文与记号……"))
+						to_chat(user, span_notice("……即便在玄奥莫测的奥术中，这些字符也与我以往见过的一切截然不同。要理解它们，可要困难得多……"))
 						var/obj/item/book/spellbook/newbook = new /obj/item/book/spellbook(loc)
 						newbook.born_of_rock = TRUE
-						newbook.desc += " 彩石留下的痕迹勾勒在书页边缘。"
+						newbook.desc += " 书页边缘留有斑斓石粉勾勒出的痕迹。"
 						qdel(P)
 						qdel(src)
 					else
 						if (prob(the_rock.magic_power)) // for reference, this is never higher than 15 and usually significantly lower
 							playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 							user.visible_message(span_warning("[user]小心地将[the_rock]放到[src]上。起初什么也没发生，可片刻之后，萦绕石头的辉光竟如液体般流下，浸透了整本书！"), \
-							span_notice("我就知道这块石头不一般！它那缤纷的魔力已经渗入了我的魔典，并赐予我神秘的馈赠！"))
-							to_chat(user, span_notice("......这些涂写出来的东西到底都是什么意思？"))
+							span_notice("我就知道这块石头不一般！它那缤纷的魔力已经渗入了我的秘典，并赐予我神秘的馈赠！"))
+							to_chat(user, span_notice("……这些涂写出来的东西到底都是什么意思？"))
 							var/obj/item/book/spellbook/newbook = new /obj/item/book/spellbook(loc)
 							newbook.born_of_rock = TRUE
-							newbook.desc += " 彩石留下的痕迹勾勒在书页边缘。"
+							newbook.desc += " 书页边缘留有斑斓石粉勾勒出的痕迹。"
 							qdel(P)
 							qdel(src)
 						else
 							user.visible_message(span_warning("[user]把[the_rock]放到[src]表面，满怀期待地盯着它。毫无预兆地，那石头像被踩爆的葫芦一样猛然炸开了！"), \
-							span_notice("不！我珍贵的石头！它一定是不愿把自己的秘密分享给我......"))
+							span_notice("不！我珍贵的石头！它一定是不愿把自己的秘密分享给我……"))
 							user.electrocute_act(5, src)
 							qdel(P)
 		else
