@@ -38,7 +38,7 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 	extra_context = "该子职业拥有多种独特法术，其中一种表现为“奥术屏障”。 \
 	只要它处于激活状态，使用者便会免疫魔法，同时仍可继续施法。"

@@ -207,20 +207,20 @@
 			H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-	var/gang = list("帮派 Rontz Ratz", "帮派 Blortz Volves", "算了")
+	var/gang = list("隆兹鼠帮", "布洛兹狼帮", "算了")
 	var/gang_choice = input(H, "想加入帮派吗？") as anything in gang
 
 	switch(gang_choice)
-		if("帮派 Rontz Ratz")
-			to_chat(H, span_warning("我是街头帮派 隆兹石 Ratz 的一员，已经过去了太久太久，现在我们得重新壮大势力。\
-			Blortz Volves 那帮杂种迟早得付出代价。\
-			Rontz Rats 会咬人, 来感受这场恶斗吧！"))
+		if("隆兹鼠帮")
+			to_chat(H, span_warning("我是街头帮派隆兹鼠帮的一员，已经过去了太久太久，现在我们得重新壮大势力。\
+			布洛兹狼帮那帮混蛋迟早得付出代价。\
+			隆兹鼠帮会咬人，来感受这场恶斗吧！"))
 			ADD_TRAIT(H, TRAIT_GANG_A, TRAIT_GENERIC)
 			mask = /obj/item/clothing/mask/rogue/ragmask/red
-		if("帮派 Blortz Volves")
-			to_chat(H, span_warning("我是街头帮派 布洛兹石 Volves 的一员，已经过去了太久太久，现在我们得重新壮大势力。\
-			Rontz Ratz 那帮杂种迟早得付出代价。 \
-			Blortz Wolves 一嚎叫, 敌人就得发抖！"))
+		if("布洛兹狼帮")
+			to_chat(H, span_warning("我是街头帮派布洛兹狼帮的一员，已经过去了太久太久，现在我们得重新壮大势力。\
+			隆兹鼠帮那帮混蛋迟早得付出代价。 \
+			布洛兹狼帮一嚎叫，敌人就得发抖！"))
 			ADD_TRAIT(H, TRAIT_GANG_B, TRAIT_GENERIC)
 			mask = /obj/item/clothing/mask/rogue/ragmask/azure
 		if("算了")

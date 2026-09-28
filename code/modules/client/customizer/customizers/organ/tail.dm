@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/vulpkanin)
 
 /datum/customizer_choice/organ/tail/vulpkanin
-	name = "Vulpkian Tail"
+	name = "维纳丁尾"
 	organ_type = /obj/item/organ/tail/vulpkanin
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/fox,
