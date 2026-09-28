@@ -39,22 +39,22 @@
 		. += head_status
 
 /obj/item/bodypart/proc/inspect_limb(mob/user)
-	var/bodypart_status = list("<B>[capitalize(name)]:</B>")
+	var/bodypart_status = list("<B>[parse_zone(body_zone, src)]：</B>")
 	var/observer_privilege = isobserver(user)
 	if(owner && disabled)
 		switch(disabled)
 			if(BODYPART_DISABLED_DAMAGE)
-				bodypart_status += "[src]已麻木。"
+				bodypart_status += "[parse_zone(body_zone, src)]已麻木。"
 			if(BODYPART_DISABLED_PARALYSIS)
-				bodypart_status += "[src]瘫软无力。"
+				bodypart_status += "[parse_zone(body_zone, src)]瘫软无力。"
 			if(BODYPART_DISABLED_CLAMPED)
-				bodypart_status += "[src]被夹住了。"
+				bodypart_status += "[parse_zone(body_zone, src)]被夹住了。"
 			else
-				bodypart_status += "[src]已失去功能。"
+				bodypart_status += "[parse_zone(body_zone, src)]已失去功能。"
 	if(has_wound(/datum/wound/fracture))
-		bodypart_status += "[src]骨折了。"
+		bodypart_status += "[parse_zone(body_zone, src)]骨折了。"
 	if(has_wound(/datum/wound/dislocation))
-		bodypart_status += "[src]脱臼了。"
+		bodypart_status += "[parse_zone(body_zone, src)]脱臼了。"
 	var/location_accessible = TRUE
 	if(owner)
 		location_accessible = get_location_accessible(owner, body_zone)
@@ -63,9 +63,9 @@
 	var/owner_ref = owner ? REF(owner) : REF(src)
 	if(observer_privilege || location_accessible)
 		if(skeletonized)
-			bodypart_status += "[src]已化为白骨。"
+			bodypart_status += "[parse_zone(body_zone, src)]已化为白骨。"
 		else if(rotted)
-			bodypart_status += "[src]已坏死。"
+			bodypart_status += "[parse_zone(body_zone, src)]已坏死。"
 		
 		var/brute = brute_dam
 		var/burn = burn_dam
@@ -78,19 +78,19 @@
 		if(brute >= DAMAGE_PRECISION)
 			switch(brute/max_damage)
 				if(0.75 to INFINITY)
-					bodypart_status += "[src]的伤势：[heavy_brute_msg]。"
+					bodypart_status += "[parse_zone(body_zone, src)]的伤势：[heavy_brute_msg]。"
 				if(0.25 to 0.75)
-					bodypart_status += "[src]的伤势：[medium_brute_msg]。"
+					bodypart_status += "[parse_zone(body_zone, src)]的伤势：[medium_brute_msg]。"
 				else
-					bodypart_status += "[src]的伤势：[light_brute_msg]。"
+					bodypart_status += "[parse_zone(body_zone, src)]的伤势：[light_brute_msg]。"
 		if(burn >= DAMAGE_PRECISION)
 			switch(burn/max_damage)
 				if(0.75 to INFINITY)
-					bodypart_status += "[src]的伤势：[heavy_burn_msg]。"
+					bodypart_status += "[parse_zone(body_zone, src)]的伤势：[heavy_burn_msg]。"
 				if(0.25 to 0.75)
-					bodypart_status += "[src]的伤势：[medium_burn_msg]。"
+					bodypart_status += "[parse_zone(body_zone, src)]的伤势：[medium_burn_msg]。"
 				else
-					bodypart_status += "[src]的伤势：[light_burn_msg]。"
+					bodypart_status += "[parse_zone(body_zone, src)]的伤势：[light_burn_msg]。"
 
 		if(!location_accessible)
 			bodypart_status += "被衣物遮盖。"
@@ -115,7 +115,7 @@
 					bodypart_status += wound.get_visible_name(user)
 		
 	if(length(bodypart_status) <= 1)
-		bodypart_status += "[src]状况良好。"
+		bodypart_status += "[parse_zone(body_zone, src)]状况良好。"
 
 	if(length(embedded_objects))
 		bodypart_status += "<B>嵌入物：</B>"
@@ -126,7 +126,7 @@
 
 /obj/item/bodypart/proc/check_for_injuries(mob/user, advanced = FALSE)
 	var/examination = "<span class='info'>"
-	examination += "☼ [capitalize(src.name)]: "
+	examination += "☼ [parse_zone(body_zone, src)]："
 
 	var/list/status = get_injury_status(user, advanced)
 	if(!length(status))
