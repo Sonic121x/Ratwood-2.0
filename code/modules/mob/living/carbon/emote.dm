@@ -7,29 +7,29 @@
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	vary = TRUE
-	message = "gasps out their last breath."
-	message_simple =  "falls limp."
+	message = "咽下了最后一口气。"
+	message_simple =  "软倒了。"
 	stat_allowed = UNCONSCIOUS
 	mob_type_ignore_stat_typecache = list(/mob/living/carbon/human)
 
 /datum/emote/living/carbon/airguitar
 	key = "airguitar"
-	message = "strums an invisible lute."
+	message = "拨弄着一把看不见的鲁特琴。"
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/blink
 	key = "blink"
 	key_third_person = "blinks"
-	message = "blinks."
+	message = "眨了眨眼。"
 
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
-	message = "blinks rapidly."
+	message = "快速眨着眼睛。"
 
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
-	message = "claps."
+	message = "鼓起掌来。"
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
@@ -44,7 +44,7 @@
 /datum/emote/living/carbon/slowclap
 	key = "slowclap"
 	key_third_person = "claps"
-	message = "claps slowly."
+	message = "慢慢地鼓着掌。"
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
@@ -58,7 +58,7 @@
 /datum/emote/living/carbon/clap1
 	key = "clap1"
 	key_third_person = "claps"
-	message = "claps their hands together."
+	message = "拍了一下双手。"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
@@ -72,8 +72,8 @@
 /datum/emote/living/moan
 	key = "moan"
 	key_third_person = "moans"
-	message = "moans."
-	message_mime = "appears to moan!"
+	message = "呻吟着。"
+	message_mime = "做出呻吟的样子！"
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_moan()
@@ -90,11 +90,11 @@
 /datum/emote/living/carbon/sign/signal
 	key = "signal"
 	key_third_person = "signals"
-	message_param = "raises %t fingers."
+	message_param = "竖起了%t根手指。"
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/wink
 	key = "wink"
 	key_third_person = "winks"
-	message = "winks."
+	message = "眨了一下单眼。"

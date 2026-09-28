@@ -688,7 +688,7 @@
 	id = "originhealing"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
 	duration = 10 SECONDS
-	examine_text = "<font color='#ffae00'>SUBJECTPRONOUN is slowly being rewound in time!</font>"
+	examine_text = "<font color='#ffae00'>SUBJECTPRONOUN正缓缓回溯到过去的状态！</font>"
 	var/healing_on_tick = 2.5
 	var/outline_colour = "#ffc558"
 	var/increment
