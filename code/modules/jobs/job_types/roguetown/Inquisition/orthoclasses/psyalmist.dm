@@ -31,7 +31,7 @@
 		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 
 /datum/outfit/job/roguetown/psyaltrist/pre_equip(mob/living/carbon/human/H)

@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	var/material = BODY_HAIR_MATERIAL_HAIR
 
 /datum/customizer/bodypart_feature/pubes
-	name = "Pubes"
+	name = "阴毛"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/pubes)
 	allows_disabling = TRUE
 	default_disabled = TRUE
@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	var/material = BODY_HAIR_MATERIAL_HAIR
 
 /datum/customizer/bodypart_feature/pits
-	name = "Armpits"
+	name = "腋窝"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/pits)
 	allows_disabling = TRUE
 	default_disabled = TRUE

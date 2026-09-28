@@ -41,7 +41,7 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 
 /datum/outfit/job/roguetown/puritan/arbiter/pre_equip(mob/living/carbon/human/H)
@@ -79,28 +79,28 @@
 
 /datum/outfit/job/roguetown/puritan/arbiter/choose_loadout(mob/living/carbon/human/H)
 	. = ..()//Just as with the stats, this has a mixture of weapon choice between Ordinators and Inspectors. A less-used weapon list.
-	var/weapons = list("Psydonic 阔剑", "Daybreak（鞭）", "Stigmata（长戟）", "Consecratia（连枷）")
+	var/weapons = list("普赛顿式阔剑", "破晓（鞭）", "圣痕（长戟）", "圣誓（连枷）")
 	var/weapon_choice = input(H,"寻得你的真理。", "以祂之名执兵。") as anything in weapons
 	switch(weapon_choice)
-		if("Psydonic 阔剑")
+		if("普赛顿式阔剑")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/kriegmesser/psy/preblessed(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-		if("Daybreak（鞭）")
+		if("破晓（鞭）")
 			H.put_in_hands(new /obj/item/rogueweapon/whip/antique/psywhip(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
-		if("Stigmata（长戟）")
+		if("圣痕（长戟）")
 			H.put_in_hands(new /obj/item/rogueweapon/halberd/psyhalberd/relic(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
-		if("Consecratia（连枷）")
+		if("圣誓（连枷）")
 			H.put_in_hands(new /obj/item/rogueweapon/flail/sflail/psyflail/relic(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
 	//Now, for their 'sect'. They can either choose a heavy gambeson and +1SPD, or inquisitor coat and +1STR.
-	var/sect = list("古派 - Gilbranze、棉甲与速度", "新派 - 白银、外袍与力量")
+	var/sect = list("古派 - 吉尔青铜、棉甲与速度", "新派 - 白银、外袍与力量")
 	var/sect_choice = input(H,"择定你的教派。", "我们是谁？") as anything in sect
 	switch(sect_choice)
-		if("古派 - Gilbranze、棉甲与速度")
+		if("古派 - 吉尔青铜、棉甲与速度")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/arbiter, SLOT_HEAD, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/otavan/psygloves/arbiter, SLOT_GLOVES, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq/arbiter, SLOT_ARMOR, TRUE)
@@ -119,7 +119,7 @@ Here because they're unused elsewhere.
 /obj/item/storage/belt/rogue/leather/arbiter
 	name = "织带腰具"
 	desc = "一条皮带，搭配若干 奥塔万 风格的织带与小袋。<br>\
-	这种样式由早年某位 Arbiter 首创，历经一两百年后，仍被那些有相同需求的人沿用至今。"
+	这种样式由早年某位裁决官首创，历经一两百年后，仍被那些有相同需求的人沿用至今。"
 	icon_state = "overseerbelt"
 	item_state = "overseerbelt"
 	icon = 'icons/roguetown/clothing/special/overseer/overseer.dmi'

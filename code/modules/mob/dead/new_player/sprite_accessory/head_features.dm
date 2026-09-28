@@ -10,7 +10,7 @@
 /datum/sprite_accessory/head_feature/skrell_hair
 	abstract_type = /datum/sprite_accessory/head_feature/skrell_hair
 	icon = 'icons/mob/sprite_accessory/head_features/skrell_hair.dmi'
-	color_key_name = "Tentacles"
+	color_key_name = "触手"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/head_feature/skrell_hair/long
@@ -176,7 +176,7 @@
 	name = "Regular"
 	icon_state = "regular"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/bushy
 	name = "蓬松"
@@ -188,7 +188,7 @@
 	name = "Mohawk"
 	icon_state = "mohawk"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/spiky
 	name = "尖刺"
@@ -206,7 +206,7 @@
 	name = "Upright"
 	icon_state = "upright"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/mane
 	name = "鬃羽"
@@ -218,7 +218,7 @@
 	name = "Droopy"
 	icon_state = "droopy"
 	color_keys = 2
-	color_key_names = list("Feathers", "Details")
+	color_key_names = list("羽毛", "细节")
 
 /datum/sprite_accessory/head_feature/teshari_feathers/longway
 	name = "长条"
