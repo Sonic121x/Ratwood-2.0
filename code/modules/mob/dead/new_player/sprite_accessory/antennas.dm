@@ -1,6 +1,6 @@
 /datum/sprite_accessory/antenna
 	abstract_type = /datum/sprite_accessory/antenna
-	color_key_name = "Antennae"
+	color_key_name = "触角"
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/antenna/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
