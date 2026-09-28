@@ -42,7 +42,7 @@
 		"斥退异端者 - 普赛顿 依然长存！",
 	)
 	storyteller = /datum/storyteller/xylix
-
+	sign_icon_state = "sign_Xylix"
 // Near a gambling machine, cross, or within the church
 /datum/patron/divine/xylix/can_pray(mob/living/follower)
 	. = ..()
