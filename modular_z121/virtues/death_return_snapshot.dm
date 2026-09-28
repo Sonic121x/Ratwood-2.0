@@ -237,6 +237,14 @@
 	H.update_stamina_hud()
 	H.mark_zone_selector_hud_dirty()
 	H.mark_pain_hud_dirty()
+	// 直接还原伤害数值不会刷新挫伤、烧伤等级，必须重算后再重建贴图。
+	// 按存档伤势生成外观，不能把清晨已有的伤痕一并清除。
+	for(var/obj/item/bodypart/B as anything in H.bodyparts)
+		B.update_bodypart_damage_state()
+		B.invalidate_limb_cache()
+	H.body_overlay_cache_key = null
+	H.damage_overlay_cache_key = null
+	H.update_damage_overlays_real()
 
 /datum/z121_return_snapshot/proc/restore_anatomy(mob/living/carbon/human/H, list/source_map)
 	// 保留类型相同的肢体与器官，避免无意义地拆手掉装备或转移大脑里的灵魂。

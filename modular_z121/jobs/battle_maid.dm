@@ -32,7 +32,7 @@
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 	)
-	extra_context = "入局时可选择剑、锤、匕、斧、盾或长柄女仆，获得对应武器，并将对应技能提升至熟练（三级）；匕女仆额外获得双持者。"
+	extra_context = "入局时可选择剑、锤、匕、斧、盾或长柄女仆，获得对应武器；盾女仆将盾术提升至大师（五级），其余分支将对应技能提升至专家（四级）；匕女仆额外获得双持者。"
 
 /datum/outfit/job/roguetown/adventurer/z121_battle_maid
 	head = /obj/item/clothing/head/roguetown/maidband
@@ -67,8 +67,9 @@
 	if(QDELETED(H))
 		return
 
-	// 专长提供三级技能下限，不在基础等级上累加三级，也不降低已有技能。
+	// 盾术专长提供五级技能下限，其余专长提供四级下限，不降低已有技能。
 	var/chosen_skill = /datum/skill/combat/swords
+	var/chosen_skill_level = SKILL_LEVEL_EXPERT
 	switch(maid_choice)
 		if("锤女仆")
 			chosen_skill = /datum/skill/combat/maces
@@ -85,6 +86,7 @@
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
 		if("盾女仆")
 			chosen_skill = /datum/skill/combat/shields
+			chosen_skill_level = SKILL_LEVEL_MASTER
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
 			// 盾牌没有配套刀鞘，左背位保持空置。
 			backl = null
@@ -92,7 +94,7 @@
 			chosen_skill = /datum/skill/combat/polearms
 			l_hand = /obj/item/rogueweapon/spear/trident
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
-	H.adjust_skillrank_up_to(chosen_skill, SKILL_LEVEL_JOURNEYMAN, TRUE)
+	H.adjust_skillrank_up_to(chosen_skill, chosen_skill_level, TRUE)
 
 // 使用独立钱袋，确保初始金额为五至二十马蒙，不受普通穷人钱袋的双堆随机影响。
 /obj/item/storage/belt/rogue/pouch/z121_battle_maid/Initialize(mapload)
