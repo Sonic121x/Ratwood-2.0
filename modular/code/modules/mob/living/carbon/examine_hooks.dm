@@ -1,6 +1,6 @@
 /mob/living/carbon/proc/carbon_modular_examine_extension(mob/user, t_He, m1, m2, m3)
 	var/list/lines = list()
-	var/ssd_text = get_ssd_examine_text(m3)
+	var/ssd_text = get_ssd_examine_text(m1)
 	if(ssd_text)
 		lines += ssd_text
 	if(sexcon?.has_chastity_cage() && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
@@ -9,7 +9,7 @@
 
 /mob/living/carbon/human/proc/human_modular_examine_extension(mob/user, observer_privilege, m1, m2, m3)
 	var/list/lines = list()
-	var/ssd_text = get_ssd_examine_text(m3)
+	var/ssd_text = get_ssd_examine_text(m1)
 	if(ssd_text)
 		lines += ssd_text
 	var/user_is_gnoll = FALSE
@@ -44,4 +44,4 @@
 		return null
 	if(!isobserver(user) && perception_level < 8)
 		return null
-	return "[m3]的[get_examine_item_name_with_hover(user, chastity_device.attached_toy)]装在[m2]的贞操装置上。 "
+	return "[capitalize(m2)]贞操装置上装着[get_examine_item_name_with_hover(user, chastity_device.attached_toy)]。 "
