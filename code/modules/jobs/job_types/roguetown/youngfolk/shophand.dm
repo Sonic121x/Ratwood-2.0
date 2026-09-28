@@ -31,7 +31,7 @@
 
 /datum/advclass/shophand
 	name = "店伙计"
-	tutorial = "你在 Peaks 最大的商铺里干活，全靠那位把你拴死在这份苦差事上的商人才有口饭吃。\
+	tutorial = "你在城里最大的商铺里干活，全靠那位把你拴死在这份苦差事上的商人才有口饭吃。\
 	替东家理货、补架、盘点库存的活计既枯燥又重复，不过至少你还有个住处，身边环境也算舒坦。\
 	也许时日久了，你终有一天不会只是个被包装得体面的仆役。"
 	outfit = /datum/outfit/job/roguetown/shophand/basic

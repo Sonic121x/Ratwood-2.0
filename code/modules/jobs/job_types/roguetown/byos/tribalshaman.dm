@@ -16,7 +16,7 @@
 	tutorial = "你见过火焰与熔岩的幻景，见过撕咬的利爪与猩红鳞片。巨龙的意志灼烧在你的眼后，而 格拉加 的低语夜夜回荡在你的梦中。 \
 	你狂乱的幻觉与预言般的出神使你与族人截然不同，有人惧你，有人敬你，但所有人都知道，你已被更伟大的存在所触碰。 \
 	你是部族的灵魂核心，以狂热而有时令人不安的虔诚，引导着酋长与同胞。 \
-	不要让任何人怀疑你的信仰：你是巨龙拣选之人，为了让 Graggar 的异象化作现实，无论多么疯狂的事，你都会去做。"
+	不要让任何人怀疑你的信仰：你是巨龙拣选之人，为了让格拉加的异象化作现实，无论多么疯狂的事，你都会去做。"
 	outfit = /datum/outfit/job/roguetown/tribalshaman
 	whitelist_req = TRUE
 	min_pq = 8 //High potential for abuse, lovepotion/killersice/greater fireball is not for the faint of heart

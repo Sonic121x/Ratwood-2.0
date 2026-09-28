@@ -771,7 +771,7 @@
 	return ..()
 
 /obj/item/bodypart/chest
-	name = BODY_ZONE_CHEST
+	name = "胸部"
 	desc = ""
 	icon_state = "default_human_chest"
 	max_damage = 300

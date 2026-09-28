@@ -212,7 +212,7 @@
 	else if(slot == SLOT_NECK)
 		var/mob/living/carbon/human/H = user
 		active_item = TRUE
-		to_chat(user, span_green("'..all the world is a fluid; it takes but one hand to make a ripple..'"))
+		to_chat(user, span_green("'……世间万物皆如流水，只需一只手便能泛起涟漪……'"))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet)
 	return
 
@@ -220,7 +220,7 @@
 	..()
 	if(active_item && ishuman(user))
 		var/mob/living/carbon/human/H = user
-		to_chat(user, span_green("'..the air is clean and still once more.'"))
+		to_chat(user, span_green("'……空气再度清新而宁静。'"))
 		H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet)
 		active_item = FALSE
 	return
