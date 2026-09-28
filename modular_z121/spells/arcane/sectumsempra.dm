@@ -1,6 +1,6 @@
 // modular_z121 自定义奥术法术：神锋无影（Sectumsempra）
 // ---------------------------------------------------------------------------
-// 设计目标：一个 T4“单体精准”法术。激活法术 -> 0.8 秒蓄力 -> 瞄准 9 格内的一名活物
+// 设计目标：一个 T4“单体精准”法术。激活法术 -> 0.6 秒基础蓄力 -> 瞄准 9 格内的方向
 //           -> 射出一道无形利刃，在“命中的那一处部位”上撕开一道恐怖的深长撕裂创，
 //           追求“一击致命”。与追求大范围的高级法术不同，本法术把全部杀伤集中于
 //           单一目标的“受击部位”，伤害强度对标 T4 法术的定位。
@@ -8,8 +8,8 @@
 // 本次调整（三点）：
 //   1) 伤害集中到“受击部位”：不再把割伤分散到目标全身，而是把恐怖的撕裂伤害
 //      全部灌注到投射物实际命中的那一处肢体上（局部、深、致命）。
-//   2) 不强制锁定命中部位、也不强制瞄准活物：受击部位取施法者“当前瞄准的部位”
-//      （zone_selected），而非硬编码锁死为胸口；施放时只要朝某个方向瞄准即可发射，
+//   2) 不强制锁定命中部位、也不强制瞄准活物：瞄准部位经主线命中率检定后，
+//      以实际受击部位结算；施放时只要朝某个方向瞄准即可发射，
 //      投射物会朝瞄准方向飞出，命中活物时才结算撕裂（与 arcyne_bolt 一致）。
 //   3) 改用投射物法术基类：完全比照主线“奥术飞矢”（arcyne_bolt）的做法，继承
 //      /obj/effect/proc_holder/spell/invoked/projectile，由基类负责发射投射物、
@@ -34,9 +34,9 @@
 
 // ===== 可调参数（文件末尾统一 #undef，避免污染全局命名空间）=====
 #define SECTUM_MANA_COST          9             // 法力 / 法术点消耗（cost）= 9
-#define SECTUM_RESOURCE_COST      10            // “额外资源消耗”：每次施放抽取的疲劳/耐力（releasedrain）= 10
+#define SECTUM_RESOURCE_COST      30            // “额外资源消耗”：每次施放抽取的基础疲劳/耐力（releasedrain）= 30
 #define SECTUM_CHANNEL_TIME       (0.6 SECONDS) // 蓄力时长 = 0.6 秒（由基类点击拦截按 chargetime 校验）
-#define SECTUM_COOLDOWN           (1 SECONDS)   // 成功施放后的冷却 = 1 秒（短冷却换取单体高爆发）
+#define SECTUM_COOLDOWN           (1 SECONDS)   // 基础冷却 = 1 秒（实际冷却由施法框架修正）
 #define SECTUM_TARGET_RANGE       9             // 瞄准 / 投射的最大距离 = 9 格
 
 // ===== 伤害模型参数：实现“集中于受击部位的恐怖撕裂 + 近乎一击致命”（T4 强度）=====
@@ -51,7 +51,7 @@
 // 激活后进入“瞄准”模式，蓄力满即朝瞄准点发射一枚投射物；命中由弹道系统判定，
 // 命中伤害由投射物的 damage / woundclass 自然结算到受击部位。
 // 本子类只做两件事：
-//   - 重写 cast()：强制要求“瞄准活物”，否则优雅取消并退还冷却；
+//   - 重写 cast()：检查瞄准点，并按施法意图选择直射或弧射；
 //   - 重写 ready_projectile()：按施法者奥术造诣动态调高投射物伤害，并把施法等级
 //     传给投射物，供命中后追加“恐怖撕裂创 + 斩肢”使用。
 // ===========================================================================
@@ -63,11 +63,10 @@
 	school = "evocation"                       // 归类为塑能系（直接造成伤害的攻击法术）
 	spell_tier = 4                             // T4 法术
 	cost = SECTUM_MANA_COST                    // 法力 / 法术点消耗 = 9
-	releasedrain = SECTUM_RESOURCE_COST        // 额外资源消耗 = 10（施法时抽取的疲劳/耐力）
+	releasedrain = SECTUM_RESOURCE_COST        // 基础额外资源消耗 = 30（实际疲劳/耐力消耗由施法框架修正）
 	chargedrain = 1                            // 蓄力期间每刻的额外抽取
-	chargetime = SECTUM_CHANNEL_TIME           // 蓄力 = 0.8 秒（基类点击拦截会校验是否蓄满）
-	recharge_time = SECTUM_COOLDOWN            // 冷却 = 1.2 秒（由 charge_check 强制执行）
-	cooldown_min = SECTUM_COOLDOWN             // 即便被“加速”，冷却也不会低于 1.2 秒
+	chargetime = SECTUM_CHANNEL_TIME           // 基础蓄力 = 0.6 秒
+	recharge_time = SECTUM_COOLDOWN            // 基础冷却 = 1 秒
 	range = SECTUM_TARGET_RANGE                // 瞄准 / 投射目标的最大距离 = 9 格
 	projectile_type = /obj/projectile/energy/sectumsempra_bolt // 本法术发射的投射物类型
 	human_req = TRUE                           // 只有人类施法者能施放
@@ -166,6 +165,7 @@
 	woundclass = BCLASS_CUT                     // 以“割裂”方式结算伤害——命中即在受击部位造成撕裂创
 	nodamage = FALSE                            // 由弹道系统正常结算伤害到受击部位（与 arcyne_bolt 一致）
 	speed = 0.6                                 // 飞行速度（比普通弹更快，体现“疾如闪电”的锋锐）
+	range = SECTUM_TARGET_RANGE                 // 直射和弧射的实际弹道射程均为 9 格
 	// 注意：标准版不设 arcshot（直线飞行）。弧射效果由独立的 /arc 子型承载，由法术按意图择一发射。
 	muzzle_type = null                          // 不显示枪口特效（无形）
 	impact_type = null                          // 不显示命中特效（命中观感由消息/音效负责）
@@ -175,6 +175,15 @@
 	// 弧射伤害系数：标准版为 1（不减伤）。弧射版会下调此值，体现“越过盟友头顶”换取的代价
 	//（与 arcyne_bolt 的弧射形态少造成伤害的设计一致）。在 ready_projectile 内乘算到最终伤害。
 	var/arc_damage_mult = 1
+	// on_hit 发生在 apply_damage 之前；保存损伤快照，供伤害结算后的伤口钩子核验。
+	var/mob/living/pending_target
+	var/brute_before_hit
+	var/list/bodypart_brute_before_hit
+
+/obj/projectile/energy/sectumsempra_bolt/Destroy()
+	pending_target = null
+	bodypart_brute_before_hit = null
+	return ..()
 
 // ---------------------------------------------------------------------------
 // 弧射版投射物（独立子型，承载 arcshot 效果）：
@@ -191,14 +200,16 @@
 // on_hit：投射物命中某物时由弹道系统调用。
 // 返回值遵循主线投射物接口：BULLET_ACT_BLOCK 表示被挡下，BULLET_ACT_HIT 表示有效命中。
 /obj/projectile/energy/sectumsempra_bolt/on_hit(atom/target, blocked = FALSE)
+	pending_target = null
+	bodypart_brute_before_hit = null
 	// 只对活物结算斩击；命中墙体/物件等非生物时走父级默认逻辑（直接消失）。
 	if(!isliving(target))
 		return ..()
 
 	var/mob/living/living_target = target
-	// 命中被完全格挡（blocked == 100）时不结算伤害，交回父级处理。
-	if(blocked == 100)
-		return ..()
+	if(blocked >= 100 || (living_target.status_flags & GODMODE))
+		..()
+		return BULLET_ACT_BLOCK
 
 	// 反魔法检定（先于伤害结算）：被反魔法保护的目标会让这道锋刃凭空溃散，施法失败。
 	if(living_target.anti_magic_check())
@@ -206,60 +217,97 @@
 		playsound(get_turf(living_target), 'sound/magic/magic_nulled.ogg', 100)
 		return BULLET_ACT_BLOCK
 
-	// 先执行父级命中流程：弹道系统据 damage / woundclass / def_zone 把撕裂伤害结算到“受击部位”。
+	// 父级这里只处理命中特效和日志；基础伤害由 bullet_act 随后结算。
 	. = ..()
-	if(. == BULLET_ACT_BLOCK)
+	if(. == BULLET_ACT_BLOCK || nodamage || damage <= 0 || QDELETED(living_target))
 		return .
 
-	// 命中表现：受击部位骤然迸裂、鲜血飞溅，强化“恐怖撕裂”的临场感。
-	living_target.visible_message(
-		span_danger("[living_target] 被一道无形利刃掠过，受击之处骤然绽开一道深可见骨的恐怖裂创，鲜血激涌而出！"),
-		span_userdanger("一道看不见的锋刃精准割开了我的身体，受创处传来撕心裂肺的剧痛与汹涌的鲜血！")
-	)
+	pending_target = living_target
+	brute_before_hit = living_target.getBruteLoss()
+	if(iscarbon(living_target))
+		var/mob/living/carbon/carbon_target = living_target
+		bodypart_brute_before_hit = list()
+		for(var/obj/item/bodypart/part as anything in carbon_target.bodyparts)
+			bodypart_brute_before_hit[part] = part.brute_dam
 
-	// 把“恐怖撕裂创 + 斩肢”集中追加到受击部位（不再波及全身）。
-	apply_concentrated_laceration(living_target)
-	return .
+// 只消费一次本次命中。apply_damage 的成功返回值不足以排除伤害倍率为零的目标，
+// 因此还需确认实际受击肢体（或无肢体生物）的暴力损伤确实增加。
+/obj/projectile/energy/sectumsempra_bolt/proc/consume_damaging_hit(mob/living/target, hit_zone)
+	if(target != pending_target || QDELETED(target))
+		return FALSE
+	pending_target = null
+	var/list/part_damage = bodypart_brute_before_hit
+	bodypart_brute_before_hit = null
+	if(target.status_flags & GODMODE)
+		return FALSE
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		var/obj/item/bodypart/part = carbon_target.get_bodypart(check_zone(hit_zone))
+		return !QDELETED(part) && (part in part_damage) && part.brute_dam > part_damage[part]
+	return target.getBruteLoss() > brute_before_hit
+
+// 主线仅在 apply_damage 成功后调用此钩子，传入命中率修正后的精确部位。
+// carbon 的主线实现不调用 living 父级，因此两处分别接入；其它投射物保持原流程。
+/mob/living/check_projectile_wounding(obj/projectile/P, def_zone, blocked)
+	var/obj/projectile/energy/sectumsempra_bolt/bolt = P
+	var/add_laceration = istype(bolt) && bolt.consume_damaging_hit(src, def_zone)
+	. = ..()
+	if(add_laceration && !QDELETED(bolt))
+		bolt.apply_concentrated_laceration(src, def_zone)
+
+/mob/living/carbon/check_projectile_wounding(obj/projectile/P, def_zone, blocked)
+	var/obj/projectile/energy/sectumsempra_bolt/bolt = P
+	var/add_laceration = istype(bolt) && bolt.consume_damaging_hit(src, def_zone)
+	. = ..()
+	if(add_laceration && !QDELETED(bolt))
+		bolt.apply_concentrated_laceration(src, def_zone)
 
 // ---------------------------------------------------------------------------
 // apply_concentrated_laceration：把额外的恐怖撕裂创集中施加到“受击部位”。
-// 通过 src.def_zone 取得弹道系统判定的受击部位，仅在该处追加深长撕裂创，
+// 使用伤口钩子传入的实际受击部位，仅在该处追加深长撕裂创，
 // 并在施法者造诣足够时尝试将该受击肢体整个斩落，体现“一击致命”。
 // ---------------------------------------------------------------------------
-/obj/projectile/energy/sectumsempra_bolt/proc/apply_concentrated_laceration(mob/living/target)
+/obj/projectile/energy/sectumsempra_bolt/proc/apply_concentrated_laceration(mob/living/target, hit_zone)
 	// 目标无敌（GODMODE）时不再追加任何效果，直接返回。
-	if(target.status_flags & GODMODE)
+	if(QDELETED(target) || (target.status_flags & GODMODE))
 		return
 
 	// 类人 carbon 目标：把撕裂创集中到“受击肢体”上。
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		// 取受击部位对应的肢体；def_zone 即弹道系统判定/施法者瞄准的部位（未被强制锁死）。
-		var/obj/item/bodypart/hit_part = carbon_target.get_bodypart(check_zone(def_zone))
+		var/obj/item/bodypart/hit_part = carbon_target.get_bodypart(check_zone(hit_zone))
 		// 受击肢体已不存在（极端情况，例如刚被打掉）时无法追加局部创伤，安全返回。
-		if(!hit_part)
+		if(QDELETED(hit_part) || hit_part.owner != carbon_target)
 			return
 		// 在受击肢体上追加一道“可怖割伤”（高流血、深创），由主线伤口系统接管出血/缝合等后续。
-		hit_part.add_wound(/datum/wound/slash/large, TRUE)
+		if(hit_part.add_wound(/datum/wound/slash/large, TRUE))
+			show_laceration(target)
 		// 高造诣斩肢：奥术等级达到阈值时，尝试把“受击的这一处肢体”整个斩落。
-		try_dismember_hit_part(carbon_target, hit_part)
+		try_dismember_hit_part(carbon_target, hit_part, hit_zone)
 		return
 
 	// 拥有“简易伤口系统”的非类人生物：追加一道等效的简易割伤（无独立肢体可结算）。
 	if(HAS_TRAIT(target, TRAIT_SIMPLE_WOUNDS))
-		target.simple_add_wound(/datum/wound/slash/large, TRUE)
+		if(target.simple_add_wound(/datum/wound/slash/large, TRUE))
+			show_laceration(target)
 		return
 
-	// 兜底：其余活物（无肢体/无伤口系统）已由父级 ..() 结算过受击伤害，这里无需再处理。
+	// 无伤口系统的活物已由主线结算过基础伤害。
+
+/obj/projectile/energy/sectumsempra_bolt/proc/show_laceration(mob/living/target)
+	target.visible_message(
+		span_danger("[target] 被一道无形利刃掠过，受击之处骤然绽开一道深可见骨的恐怖裂创，鲜血激涌而出！"),
+		span_userdanger("一道看不见的锋刃精准割开了我的身体，受创处传来撕心裂肺的剧痛与汹涌的鲜血！")
+	)
 
 // ---------------------------------------------------------------------------
 // try_dismember_hit_part：在满足条件时把“受击的这一处肢体”整个斩落。
 // 仅在施法者奥术等级达到阈值、且目标未受“防断肢”保护时触发；
 // 调用主线 bodypart.dismember()，由其内部处理护甲、断肢音效与残肢生成。
 // ---------------------------------------------------------------------------
-/obj/projectile/energy/sectumsempra_bolt/proc/try_dismember_hit_part(mob/living/carbon/target, obj/item/bodypart/part)
+/obj/projectile/energy/sectumsempra_bolt/proc/try_dismember_hit_part(mob/living/carbon/target, obj/item/bodypart/part, hit_zone)
 	// 受击肢体已失效则无需斩断。
-	if(QDELETED(part))
+	if(QDELETED(target) || QDELETED(part) || part.owner != target || !(part in target.bodyparts))
 		return FALSE
 	// 造诣不足（低于阈值等级）时不触发斩肢，保留给高阶施法者的强力收割。
 	if(caster_arcane_level < SECTUM_DISMEMBER_LEVEL)
@@ -267,11 +315,16 @@
 	// 目标带有“不可断肢”特性时跳过（尊重主线的免疫设计）。
 	if(HAS_TRAIT(target, TRAIT_NODISMEMBER))
 		return FALSE
+	// 即使发射者已经消失，也保留精确部位的限制。
+	if(hit_zone in list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_PRECISE_L_HAND))
+		return FALSE
+	if(part.body_zone == BODY_ZONE_HEAD && hit_zone != BODY_ZONE_PRECISE_NECK)
+		return FALSE
 
 	// 以割裂类型（BCLASS_CUT）请求斩断受击肢体；护甲/部位限制由 dismember 内部判定。
 	// 传入本投射物伤害作为破甲参考，并以发射者（施法者）作为 user 归因。
 	var/mob/living/caster = firer
-	if(part.dismember(BRUTE, BCLASS_CUT, caster, part.body_zone, damage))
+	if(part.dismember(BRUTE, BCLASS_CUT, caster, hit_zone, damage))
 		// 斩落成功时的额外表现，凸显“无形利刃齐根斩断受击部位”的恐怖。
 		target.visible_message(
 			span_danger("那道无形的锋刃去势不止，竟将 [target] 的[part.name]自受创处齐根斩落！"),

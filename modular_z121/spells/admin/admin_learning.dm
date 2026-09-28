@@ -103,6 +103,11 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 	var/mob/living/user = usr
 	if(!istype(user) || QDELETED(user) || QDELETED(user.mind))
 		return TRUE
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.is_void_clone())
+			to_chat(user, span_warning("虚空分身无法学习新的法术。"))
+			return TRUE
 	if(action != "learn")
 		return TRUE
 

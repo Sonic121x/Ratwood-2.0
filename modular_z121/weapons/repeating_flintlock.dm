@@ -2,9 +2,9 @@
 /obj/item/gun/ballistic/z121_repeating_flintlock
 	name = "连发燧枪"
 	desc = "以齿轮机构连续供弹的燧枪，可分别储存十二颗铅弹和十二份烟火药。"
-	icon = 'modular_helmsguard/icons/weapons/fusil.dmi'
-	icon_state = "fusil"
-	item_state = "fusil"
+	icon = 'modular_z121/icon/weapon64.dmi'
+	icon_state = "Kalthoff repeater 1"
+	item_state = "Kalthoff repeater 1"
 	force = 10
 	force_wielded = 15
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
@@ -18,7 +18,8 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	bigboy = TRUE
-	gripsprite = TRUE
+	// 新贴图使用独立姿态名称，手持图在生成时选择，关闭旧的数字后缀拼接。
+	gripsprite = FALSE
 	wlength = WLENGTH_LONG
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
@@ -298,6 +299,18 @@
 /obj/item/gun/ballistic/z121_repeating_flintlock/proc/spawn_smoke(mob/user, distance)
 	if(!QDELETED(user))
 		new /obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, distance))
+
+// 普通、双手持握和背负分别使用文件中的三张姿态图。
+/obj/item/gun/ballistic/z121_repeating_flintlock/generateonmob(tag, prop, behind = FALSE, mirrored = FALSE, used_index = null)
+	if(!used_index)
+		switch(tag)
+			if("wielded", "altgrip")
+				used_index = "Kalthoff repeater 2"
+			if("onback")
+				used_index = "Kalthoff repeater 3"
+			else
+				used_index = "Kalthoff repeater 1"
+	return ..(tag, prop, behind, mirrored, used_index)
 
 // 持握与背负位置沿用燧枪。
 /obj/item/gun/ballistic/z121_repeating_flintlock/getonmobprop(tag)

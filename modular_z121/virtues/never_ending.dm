@@ -62,6 +62,7 @@
 	var/restoring = FALSE
 	var/destroying_body = FALSE
 	var/enabled = TRUE
+	var/was_dying = FALSE
 	var/mob/living/carbon/human/return_origin
 	var/mob/living/brain/transfer_brain
 	var/list/deferred_deletions = list()
@@ -75,11 +76,13 @@
 
 /datum/component/z121_death_return/proc/bind_body(mob/living/carbon/human/H)
 	if(body)
-		UnregisterSignal(body, list(COMSIG_LIVING_DEATH, COMSIG_MOB_DAWNED, COMSIG_PREQDELETED, COMSIG_MIND_TRANSFER, SIGNAL_REMOVETRAIT(TRAIT_Z121_DEATH_RETURN)))
+		UnregisterSignal(body, list(COMSIG_LIVING_HEALTH_UPDATE, COMSIG_LIVING_DEATH, COMSIG_MOB_DAWNED, COMSIG_PREQDELETED, COMSIG_MIND_TRANSFER, SIGNAL_REMOVETRAIT(TRAIT_Z121_DEATH_RETURN)))
 	body = H
+	was_dying = FALSE
 	if(!body)
 		return
 	RegisterSignal(body, COMSIG_LIVING_DEATH, PROC_REF(on_death))
+	RegisterSignal(body, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(on_health_update))
 	RegisterSignal(body, COMSIG_MOB_DAWNED, PROC_REF(on_dawn))
 	RegisterSignal(body, COMSIG_PREQDELETED, PROC_REF(on_body_deleting))
 	RegisterSignal(body, COMSIG_MIND_TRANSFER, PROC_REF(on_transfer))
@@ -88,6 +91,8 @@
 /datum/component/z121_death_return/process()
 	if(enabled && !restoring && !pending && save_day != z121_return_day())
 		refresh_save()
+	// 补查未经过健康更新信号的状态变更，持续濒死不会重复触发。
+	check_dying()
 
 /datum/component/z121_death_return/proc/on_dawn()
 	SIGNAL_HANDLER
@@ -126,28 +131,46 @@
 	// 已经独立转生或被其他躯体接管的灵魂不能被旧存档夺回。
 	on_removed()
 
-/datum/component/z121_death_return/proc/on_death(datum/source, gibbed)
+/datum/component/z121_death_return/proc/on_health_update()
 	SIGNAL_HANDLER
+	check_dying()
+
+/datum/component/z121_death_return/proc/check_dying()
+	if(!enabled || restoring || pending || QDELETED(body))
+		return
+	// 与引擎濒死判定一致，普通睡眠或昏迷不触发，直接死亡也不另行读档。
+	var/dying = body.InCritical()
+	var/entered_dying = dying && !was_dying
+	was_dying = dying
+	if(!entered_dying)
+		return
 	var/datum/mind/M = parent
-	if(!enabled || restoring || pending || !saved || M.current != body || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN))
+	if(!saved || M.current != body || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN))
 		return
 	var/day = z121_return_day()
 	if(save_day != day || used_day == day)
 		return
 	pending = TRUE
 	return_origin = body
-	destroying_body = gibbed
+	destroying_body = FALSE
 	pending_day = day
 	// 转交快照所有权，避免清晨覆盖已经触发的回归。
 	pending_save = saved
 	saved = null
-	addtimer(CALLBACK(src, PROC_REF(return_from_death)), 0)
+	// 等本次伤害与状态更新结束后读档，避免后续处理覆盖恢复结果。
+	addtimer(CALLBACK(src, PROC_REF(return_from_dying)), 0)
+
+/datum/component/z121_death_return/proc/on_death(datum/source, gibbed)
+	SIGNAL_HANDLER
+	// 死亡仅补记已经触发的濒死回归是否发生毁体，不创建新的回归。
+	if(pending && !restoring && source == return_origin && gibbed)
+		destroying_body = TRUE
 
 /datum/component/z121_death_return/proc/on_body_deleting(datum/source, force)
 	SIGNAL_HANDLER
 	if(pending && source == return_origin)
 		destroying_body = TRUE
-		// 信号内只暂缓删除，由死亡调用链结束后的回归任务接管灵魂。
+		// 信号内只暂缓删除，由本次调用链结束后的回归任务接管灵魂。
 		deferred_deletions[source] = force || deferred_deletions[source]
 		return TRUE
 
@@ -172,7 +195,7 @@
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), target, deferred_deletions[target]), 0)
 	deferred_deletions.Cut()
 
-/datum/component/z121_death_return/proc/return_from_death()
+/datum/component/z121_death_return/proc/return_from_dying()
 	if(!pending || restoring || !enabled || !pending_save)
 		return
 	var/datum/mind/M = parent
@@ -180,7 +203,8 @@
 	if(QDELETED(body) || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN) || (old_current != body && !istype(old_current, /mob/living/brain)))
 		finish_return()
 		return
-	if(!destroying_body && body.stat != DEAD)
+	// 濒死后在同一调用链内死亡仍完成已锁定的回归；被救出濒死则取消。
+	if(!destroying_body && body.stat != DEAD && !body.InCritical())
 		finish_return()
 		return
 	var/turf/destination = pending_save.find_destination(body)
@@ -233,6 +257,7 @@
 	restoring = FALSE
 	pending = FALSE
 	destroying_body = FALSE
+	was_dying = !QDELETED(body) && body.InCritical()
 	release_deletions()
 	if(save_day == z121_return_day())
 		QDEL_NULL(saved)
