@@ -24,7 +24,7 @@
 	prefix = ""
 
 /datum/mob_descriptor/height/giant
-	name = "巨人般"
+	name = "如巨人般高大"
 	prefix = ""
 
 /datum/mob_descriptor/height/tiny
@@ -32,7 +32,7 @@
 	prefix = ""
 
 /datum/mob_descriptor/height/giant
-	name = "巨人般"
+	name = "如巨人般高大"
 	prefix = ""
 
 /datum/mob_descriptor/height/custom
@@ -50,7 +50,7 @@
 	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
 	switch(entry.prefix_type)
 		if(CUSTOM_PREFIX_HAS_A)
-			return "a "
+			return ""
 		if(CUSTOM_PREFIX_HAS_AN)
-			return "an "
+			return ""
 	return null
