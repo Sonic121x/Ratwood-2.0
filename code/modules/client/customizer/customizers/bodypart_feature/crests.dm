@@ -5,7 +5,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/bodypart_feature/crest
-	name = "Crest"
+	name = "冠饰"
 	feature_type = /datum/bodypart_feature/crest
 	allows_accessory_color_customization = FALSE
 	sprite_accessories = list(
