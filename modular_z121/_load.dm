@@ -26,7 +26,7 @@
 #include "spells/arcane/group_buffs.dm"
 #include "spells/arcane/group_mindlink.dm"
 #include "spells/arcane/group_mindlink_vision.dm"
-#include "spells/arcane/endless_magic_arrows.dm"
+#include "spells/arcane/arcane_archery.dm"
 #include "spells/arcane/clearwater_spring.dm"
 #include "spells/arcane/cleaning.dm"
 #include "spells/arcane/harmless_dismemberment.dm"
