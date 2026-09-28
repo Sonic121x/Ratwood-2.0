@@ -1,10 +1,10 @@
 /datum/customizer/organ/antennas
 	abstract_type = /datum/customizer/organ/antennas
-	name = "Antennas"
+	name = "触角"
 
 /datum/customizer_choice/organ/antennas
 	abstract_type = /datum/customizer_choice/organ/antennas
-	name = "Antennas"
+	name = "触角"
 	organ_type = /obj/item/organ/antennas
 	organ_slot = ORGAN_SLOT_ANTENNAS
 
@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/antennas/moth)
 
 /datum/customizer_choice/organ/antennas/moth
-	name = "Fluvian Antennas"
+	name = "弗卢维安触角"
 	organ_type = /obj/item/organ/antennas/moth
 	sprite_accessories = list(
 		/datum/sprite_accessory/antenna/moth/plain,

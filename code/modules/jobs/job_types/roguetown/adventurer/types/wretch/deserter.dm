@@ -232,10 +232,10 @@
 		"萨雷特盔" 		 = /obj/item/clothing/head/roguetown/helmet/sallet,
 		"翼盔" 		 = /obj/item/clothing/head/roguetown/helmet/winged,
 		"护顶盔"				 = /obj/item/clothing/head/roguetown/helmet/skullcap,
-		"Gronn Ownel 头盔" 	 = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel,
+		"格隆恩欧内尔头盔" 	 = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel,
 		"钢制希沙克盔" 		 = /obj/item/clothing/head/roguetown/helmet/sallet/shishak,
 		"游牧头盔" 			 = /obj/item/clothing/head/roguetown/helmet/nomadhelmet,
-		"Grenzelhoft 羽饰帽"  = /obj/item/clothing/head/roguetown/grenzelhofthat,
+		"格伦泽尔霍夫特羽饰帽"  = /obj/item/clothing/head/roguetown/grenzelhofthat,
 		"近卫军盔"  = /obj/item/clothing/head/roguetown/helmet/janissaryhelm,
 		"无"
 		)
@@ -255,7 +255,7 @@
 		if(maskchoice != "无")
 			mask = masks[maskchoice]
 
-		var/armor_options = list("锁子布面甲套装", "锁子甲套装", "胸甲套装", "Hammerhold 套装", "草原套装", "Gronn 套装", "Grenzelhoft 套装", "Otava 套装")
+		var/armor_options = list("锁子布面甲套装", "锁子甲套装", "胸甲套装", "铁锤堡套装", "草原套装", "格隆恩套装", "格伦泽尔霍夫特套装", "奥塔瓦套装")
 		var/armor_choice = input(H, "选择你的护甲。", "时髦赴死") as anything in armor_options
 		switch(armor_choice)
 			if("锁子布面甲套装")
@@ -282,7 +282,7 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				gloves = /obj/item/clothing/gloves/roguetown/chain
 				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("Hammerhold 套装") //It is actually called Gronn in-game, but it's from AP's lore where Gronns are Totally-Not-Vikings, whereas on RW Gronns are Mongols and Hammerholdians are Vikings.
+			if("铁锤堡套装") //It is actually called Gronn in-game, but it's from AP's lore where Gronns are Totally-Not-Vikings, whereas on RW Gronns are Mongols and Hammerholdians are Vikings.
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/gronn
 				pants = /obj/item/clothing/under/roguetown/splintlegs/iron/gronn
@@ -298,7 +298,7 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				gloves = /obj/item/clothing/gloves/roguetown/chain
 				shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
-			if("Gronn 套装")
+			if("格隆恩套装")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/chargah //Better gambeson but your dedicated leg protection is worse.
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/steppe
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/nomadpants
@@ -306,7 +306,7 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				gloves = /obj/item/clothing/gloves/roguetown/angle
 				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("Grenzelhoft 套装")
+			if("格伦泽尔霍夫特套装")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft //Better gambeson but your dedicated leg protection is worse.
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate //Better chest protection but worse limb protection, a fair trade-off.
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
@@ -314,7 +314,7 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				shoes = /obj/item/clothing/shoes/roguetown/boots/grenzelhoft
 				gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
-			if("Otava 套装")
+			if("奥塔瓦套装")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan //Better gambeson but your dedicated leg protection is worse.
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted //Actual Otavan plate's AC is heavy.
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
