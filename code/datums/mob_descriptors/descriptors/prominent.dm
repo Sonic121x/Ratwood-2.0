@@ -44,11 +44,11 @@
 	custom_index = 2
 
 /datum/mob_descriptor/prominent/custom/three
-	name = "Custom #3"
+	name = "自定义 #3"
 	custom_index = 3
 
 /datum/mob_descriptor/prominent/custom/four
-	name = "Custom #4"
+	name = "自定义 #4"
 	custom_index = 4
 
 /datum/mob_descriptor/prominent/hunched_over
@@ -144,7 +144,7 @@
 	prefix = ""
 
 /datum/mob_descriptor/prominent/prominent_chest
-	name = "胸部突出"
+	name = "突出的胸部"
 	verbage = "%HAVE%"
 	prefix = ""
 	show_obscured = TRUE
@@ -294,7 +294,7 @@
 	name = "异想天开的气息"
 	verbage = "%HAVE%"
 	prefix = ""
-	suffix = "环绕在 %HIM% 身边"
+	suffix = "环绕在%HIM%身边"
 	show_obscured = TRUE
 
 /datum/mob_descriptor/prominent/dim_look
