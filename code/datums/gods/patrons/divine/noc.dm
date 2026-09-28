@@ -24,7 +24,7 @@
 		"我寻求月亮的奥秘！",
 	)
 	storyteller = /datum/storyteller/noc
-
+	sign_icon_state = "sign_Noc"
 // In moonlight, church, cross, or ritual chalk
 /datum/patron/divine/noc/can_pray(mob/living/follower)
 	. = ..()
