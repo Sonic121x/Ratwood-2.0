@@ -55,7 +55,7 @@
 
 	var/choice = alert(H, "选择你的道路。", "侍僧教义", "守旧派", "激进派")
 
-	if(choice == "Radical")
+	if(choice == "激进派")
 		grant_radical_path(H)
 	else
 		grant_old_path(H)
