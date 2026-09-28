@@ -44,7 +44,7 @@
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 
 /datum/outfit/job/roguetown/puritan/inspector/pre_equip(mob/living/carbon/human/H)
@@ -83,33 +83,33 @@
 
 /datum/outfit/job/roguetown/puritan/inspector/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("Psydonic 长剑", "Psydonic 刺剑", "Daybreak（鞭）", "Stigmata（长戟）", "Eucharist（刺剑）")
+	var/weapons = list("普赛顿式长剑", "普赛顿式刺剑", "破晓（鞭）", "圣痕（长戟）", "圣餐（刺剑）")
 	var/weapon_choice = input(H,"亮出你的银兵。", "以祂之名执兵。") as anything in weapons
 	switch(weapon_choice)
-		if("Psydonic 长剑")
+		if("普赛顿式长剑")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/psysword/preblessed(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 			H.change_stat(STATKEY_WIL, 1) // the stats for each weapon choice was retuned to ensure appropriate STR values for wielding. Otherwise, returned to original statline.
 			H.change_stat(STATKEY_SPD, 1)
-		if("Psydonic 刺剑")
+		if("普赛顿式刺剑")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/psy/preblessed(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 			H.change_stat(STATKEY_WIL, 1)
 			H.change_stat(STATKEY_SPD, 1)
-		if("Daybreak（鞭）")
+		if("破晓（鞭）")
 			H.put_in_hands(new /obj/item/rogueweapon/whip/antique/psywhip(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 5, TRUE)
 			H.change_stat(STATKEY_STR, 1)
 			H.change_stat(STATKEY_PER, 1)
-		if("Stigmata（长戟）")
+		if("圣痕（长戟）")
 			H.put_in_hands(new /obj/item/rogueweapon/halberd/psyhalberd/relic(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
 			H.change_stat(STATKEY_WIL, 1)
 			H.change_stat(STATKEY_STR, 1)
-		if("Eucharist（刺剑）")
+		if("圣餐（刺剑）")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/psy/relic(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)

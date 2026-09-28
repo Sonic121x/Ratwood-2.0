@@ -28,7 +28,7 @@
 	// Also because the alternative is not very clean codewise.
 	subclass_stashed_items = list(
 		"《十神箴行录》" = /obj/item/book/rogue/bibble,
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy,
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy,
 	)
 	extra_context = "该子职业可从多种修行路线中择一。\
 	不过，你所选的路线离徒手格斗越远，你在拳斗与摔跤上的本领也会衰退得越明显。\
@@ -191,8 +191,8 @@
 /datum/advclass/cleric/paladin
 	name = "圣骑士"
 	tutorial = "你是一名圣洁骑士，披链甲，执钢兵。\
-	别的教士或许会把闲暇花在研读经书上，而你却将自己的一切都献给了对抗 Psydonia 诸般邪恶之事。\
-	一手长剑，一手紧握 psycross，便是你的道路。"
+	别的教士或许会把闲暇花在研读经书上，而你却将自己的一切都献给了对抗普赛多尼亚诸般邪恶之事。\
+	一手长剑，一手紧握普赛圣十字，便是你的道路。"
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
@@ -217,15 +217,15 @@
 	)
 	subclass_stashed_items = list(
 		"《十神箴行录》" = /obj/item/book/rogue/bibble,
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 	extra_context = "该子职业可在两件圣物中择其一同行：一瓶命血药剂与医疗新手技艺，\
-	或一把白银长剑，使剑术提升至熟练。Psydon 信徒则改为在两种教派分支间作出选择。"
+	或一把白银长剑，使剑术提升至熟练。普赛顿信徒则改为在两种教派分支间作出选择。"
 
 /datum/outfit/job/roguetown/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
 	to_chat(H, span_warning("你是一名圣洁骑士，披链甲，执钢兵。\
-	别的教士或许会把闲暇花在研读经书上，而你却将自己的一切都献给了对抗 Psydonia 诸般邪恶之事。\
-	一手长剑，一手紧握 psycross，便是你的道路。"))
+	别的教士或许会把闲暇花在研读经书上，而你却将自己的一切都献给了对抗普赛多尼亚诸般邪恶之事。\
+	一手长剑，一手紧握普赛圣十字，便是你的道路。"))
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/shield/iron
