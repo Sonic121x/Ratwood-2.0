@@ -22,7 +22,7 @@
 		"征服之神渴求鲜血！",
 	)
 	storyteller = /datum/storyteller/graggar
-
+	sign_icon_state = "sign_Graggar"
 /datum/patron/inhumen/graggar/on_lesser_heal(
 	mob/living/user,
 	mob/living/target,

@@ -25,7 +25,7 @@
 	)
 
 	storyteller = /datum/storyteller/malum
-
+	sign_icon_state = "sign_Malum"
 // Near a smelter, hearth, cross, within the smithy, or within the church
 /datum/patron/divine/malum/can_pray(mob/living/follower)
 	. = ..()
