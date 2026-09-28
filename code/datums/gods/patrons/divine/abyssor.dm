@@ -27,7 +27,7 @@
 	)
 
 	storyteller = /datum/storyteller/abyssor
-
+	sign_icon_state = "sign_Abyssor"
 // Near water, cross, or within the church.
 /datum/patron/divine/abyssor/can_pray(mob/living/follower)
 	. = ..()

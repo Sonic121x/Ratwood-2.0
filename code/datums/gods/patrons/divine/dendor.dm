@@ -26,7 +26,7 @@
 		"我回应荒野的呼唤！",
 	)
 	storyteller = /datum/storyteller/dendor
-
+	sign_icon_state = "sign_Dendor"
 // In grove, bog, cross, or ritual chalk
 // Yes, he is NOT calling the master cus he's unique. Whole bog is his prayer zone. Druids exist for a reason instead of in the church.
 /datum/patron/divine/dendor/can_pray(mob/living/follower)
