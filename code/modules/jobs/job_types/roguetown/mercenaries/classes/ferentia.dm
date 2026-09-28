@@ -406,7 +406,7 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
 	)
-	extra_context = "该分支会在所选武器上获得老练级熟练，无论你选的是斧还是匕首。此外，此分支的基础属性略低，以平衡 Woodsman 特质在满足条件时带来的更高总体强度。"
+	extra_context = "该分支会在所选武器上获得熟练级技能，无论你选的是斧还是匕首。此外，此分支的基础属性略低，以平衡“老练林人”特质在满足条件时带来的更高总体强度。"
 
 /datum/outfit/job/roguetown/mercenary/ferentia_longbowman/pre_equip(mob/living/carbon/human/H)
 	..()
