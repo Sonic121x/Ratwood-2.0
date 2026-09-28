@@ -615,7 +615,7 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 		if(!patron_choice || !patron_choice.name)
 			continue
 
-		god_choice += list("[patron_choice.name]" = icon(icon = 'icons/mob/overhead_effects.dmi', icon_state = "sign_[patron_choice.name]"))
+		god_choice += list("[patron_choice.name]" = icon(icon = 'icons/mob/overhead_effects.dmi', icon_state = patron_choice.sign_icon_state))
 		god_type[patron_choice.name] = patron_choice.type
 
 	var/string_choice = show_radial_menu(src, src, god_choice, require_near = FALSE)
