@@ -27,7 +27,7 @@
 	)
 	traits_tier = list(TRAIT_EORAN_CALM = CLERIC_T0, TRAIT_EORAN_SERENE = CLERIC_T2)
 	storyteller = /datum/storyteller/eora
-
+	sign_icon_state = "sign_Eora"
 // Near a psycross, by an eoran sacred tree, inside the church, at the eoran shrine, holding poppy flowers, or has pacifism trait
 /datum/patron/divine/eora/can_pray(mob/living/follower)
 	. = ..()
