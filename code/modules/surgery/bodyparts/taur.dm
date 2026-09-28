@@ -317,7 +317,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/snep
-	name = "Tempest下身"
+	name = "坦佩斯特下身"
 
 	offset_x = -16
 	taur_icon_state = "tempest_s"
