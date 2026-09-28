@@ -1,7 +1,7 @@
 /datum/advclass/peasant
 	name = "农夫"
 	tutorial = "作为农夫，你是经验娴熟的耕作者，能种出各式各样的作物。\
-	你可以去加入本地的 Soilsmen，在他们的农场里劳作，也可以自己经营一片小小果园。"
+	你可以去加入本地的农人，在他们的农场里劳作，也可以自己经营一片小小果园。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/peasant

@@ -32,7 +32,7 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE,
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 	extra_context = "该子职业可从多种修行路数中择一。你所选的路数离徒手格斗越远，你在拳斗与摔跤上的造诣就会萎缩得越厉害。若选择四分杖，则会小幅提升感知与智力，但会失去“重创抗性”特质。"
 
