@@ -75,7 +75,7 @@
 	name = "修长"
 
 /datum/mob_descriptor/face/custom
-	name = "Custom Face"
+	name = "自定义面容"
 	prefix = null
 	custom_index = 9
 
@@ -90,14 +90,14 @@
 	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
 	switch(entry.prefix_type)
 		if(CUSTOM_PREFIX_HAS_A)
-			return "a "
+			return ""
 		if(CUSTOM_PREFIX_HAS_AN)
-			return "an "
+			return ""
 	return null
 
 /datum/mob_descriptor/face_exp
 	abstract_type = /datum/mob_descriptor/face_exp
-	suffix = "面容"
+	suffix = "的神情"
 	slot = MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION
 
 /datum/mob_descriptor/face_exp/refined
@@ -157,7 +157,7 @@
 // Gnoll muzzle shapes — slot FACE_SHAPE; output e.g. "a scarred muzzle"
 /datum/mob_descriptor/face/gnoll
 	abstract_type = /datum/mob_descriptor/face/gnoll
-	suffix = "吻部"
+	suffix = "的吻部"
 
 /datum/mob_descriptor/face/gnoll/long_muzzle
 	name = "修长"
@@ -194,7 +194,7 @@
 // Gnoll expressions — slot FACE_EXPRESSION; output e.g. "a predatory look"
 /datum/mob_descriptor/face_exp/gnoll
 	abstract_type = /datum/mob_descriptor/face_exp/gnoll
-	suffix = "神情"
+	suffix = "的神情"
 
 /datum/mob_descriptor/face_exp/gnoll/alert
 	name = "警觉"
