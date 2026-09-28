@@ -5,6 +5,7 @@
 #include "changelog/changelog.dm"
 #include "ooc/examine_text.dm"
 #include "jobs/arcane_archer.dm"
+#include "jobs/battle_maid.dm"
 #include "jobs/musketeer.dm"
 #include "jobs/otavan_musketeer.dm"
 #include "jobs/war_shaman.dm"
@@ -227,6 +228,7 @@
 #include "crafting/memory_kiss_token_recipe.dm"
 // 连发燧枪、桌面组装零件及工匠台配方。
 #include "weapons/repeating_flintlock.dm"
+#include "weapons/repeating_flintlock_failures.dm"
 #include "weapons/repeating_flintlock_parts.dm"
 #include "crafting/repeating_flintlock_recipes.dm"
 #include "weapons/magical_archery.dm"

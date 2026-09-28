@@ -39,15 +39,22 @@
 	var/range_bonus = 0.10
 	var/penetration_bonus = 0
 	var/accuracy_bonus = 0.07
-	var/jam_chance = 8
+	var/base_failure_chance = 6
+	var/jam_chance = 9
+	var/projectile_damage = 60
 	var/jammed = FALSE
 	var/powder_charges = 0
 	var/powder_capacity = 12
 	var/ammo_capacity = 12
 	var/next_shot_time = 0
-	var/shot_interval = 2.5 SECONDS
+	var/shot_interval = 3 SECONDS
 	var/operating = FALSE
 	var/firing = FALSE
+	var/bursting = FALSE
+	// 故障值仅保存在枪械上，显示时只输出状态描述。
+	var/failure_points = 0
+	var/failure_decay_time = 0
+	var/failure_decay_interval = 5 SECONDS
 	var/obj/item/ramrod/myrod
 
 /obj/item/ammo_box/magazine/internal/z121_repeating_flintlock
@@ -81,6 +88,9 @@
 	SIGNAL_HANDLER
 	if(!istype(projectile, /obj/projectile/bullet/firearm/lead))
 		return
+	// 只缩放此枪发射的铅弹，保留弹丸上已有的伤害倍率。
+	var/obj/projectile/bullet/firearm/lead/base_projectile = /obj/projectile/bullet/firearm/lead
+	projectile.damage *= projectile_damage / initial(base_projectile.damage)
 	// 此信号在弹丸真正发射时触发；保留曲射落点与骑乘精度惩罚。
 	projectile.range = projectile.arcshot ? min(projectile.range, effective_range()) : effective_range()
 	projectile.armor_penetration *= 1 + penetration_bonus
@@ -88,9 +98,11 @@
 
 /obj/item/gun/ballistic/z121_repeating_flintlock/examine(mob/user)
 	. = ..()
+	update_failure_decay()
 	. += span_notice("机匣：[receiver_material]；长枪管：[barrel_material]；齿轮：[gear_material]×3。")
 	. += span_notice("铅弹：[get_ammo()]/[ammo_capacity]（含膛内弹）；火药：[powder_charges]/[powder_capacity]。")
-	. += span_notice("射程：[effective_range()] 格（+[range_bonus * 100]%）；穿透：+[penetration_bonus * 100]%；精确度：+[accuracy_bonus * 100]%；卡壳率：[jam_chance]%。")
+	. += span_notice("射程：[effective_range()] 格（+[range_bonus * 100]%）；穿透：+[penetration_bonus * 100]%；精确度：+[accuracy_bonus * 100]%；基础故障率：[jam_chance]%。")
+	. += span_notice(failure_description())
 	if(jammed)
 		. += span_warning("机构已卡壳，需要使用通条排障。")
 	if(operating)
@@ -100,6 +112,8 @@
 	. += span_notice(rod_notice)
 
 /obj/item/gun/ballistic/z121_repeating_flintlock/attack_self(mob/living/user)
+	if(bursting)
+		return
 	if(twohands_required)
 		return
 	if(altgripped || wielded)
@@ -112,7 +126,7 @@
 	update_icon()
 
 /obj/item/gun/ballistic/z121_repeating_flintlock/proc/can_service(mob/user)
-	return user && user.canUseTopic(src, BE_CLOSE) && (user.is_holding(src) || isturf(loc))
+	return !bursting && user && user.canUseTopic(src, BE_CLOSE) && (user.is_holding(src) || isturf(loc))
 
 /obj/item/gun/ballistic/z121_repeating_flintlock/attack_right(mob/user)
 	if(!can_service(user) || user.get_active_held_item() || operating || firing)
@@ -215,7 +229,7 @@
 		to_chat(user, span_notice("我装满了火药仓（[powder_charges]/[powder_capacity]）。"))
 
 /obj/item/gun/ballistic/z121_repeating_flintlock/can_shoot()
-	return chambered?.BB && powder_charges > 0 && !jammed && !operating && !firing && world.time >= next_shot_time
+	return chambered?.BB && powder_charges > 0 && !jammed && !operating && !firing && !bursting && world.time >= next_shot_time
 
 /obj/item/gun/ballistic/z121_repeating_flintlock/shoot_with_empty_chamber(mob/living/user)
 	if(operating || firing)
@@ -243,7 +257,14 @@
 	if(user.used_intent?.arc_check() && get_dist_euclidian(target, user) > effective_range())
 		to_chat(user, span_warning("目标超出了这把枪的曲射射程。"))
 		return FALSE
-	if(prob(jam_chance))
+	update_failure_decay()
+	if(prob(clamp(jam_chance + failure_points, 1, 100)))
+		// 本次故障按累积前的概率判定，故障击发同样增加一点。
+		record_ignition(user)
+		next_shot_time = world.time + shot_interval
+		if(prob(15))
+			burst_barrel(user)
+			return FALSE
 		jammed = TRUE
 		playsound(src, dry_fire_sound, 100, FALSE)
 		to_chat(user, span_warning("齿轮机构卡住了！需要使用通条排障。"))
@@ -260,6 +281,7 @@
 
 /obj/item/gun/ballistic/z121_repeating_flintlock/shoot_live_shot(mob/living/user, pointblank = 0, mob/pbtarget = null, message = 1)
 	// 父类只有在弹丸成功发射后才调用此过程，失败开火不扣资源或开始冷却。
+	record_ignition(user)
 	powder_charges = max(0, powder_charges - 1)
 	next_shot_time = world.time + shot_interval
 	fire_sound = pick('modular_helmsguard/sound/arquebus/arquefire.ogg', 'modular_helmsguard/sound/arquebus/arquefire2.ogg', 'modular_helmsguard/sound/arquebus/arquefire3.ogg', 'modular_helmsguard/sound/arquebus/arquefire4.ogg', 'modular_helmsguard/sound/arquebus/arquefire5.ogg')
