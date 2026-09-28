@@ -62,8 +62,8 @@
 		if(!(holder.wear_armor && holder.wear_armor.flags_inv) && !(holder.wear_shirt && holder.wear_shirt.flags_inv) && !(holder_human.underwear))
 			is_naked = TRUE
 		obscured = ((!isobserver(user)) && !holder_human.client?.prefs?.masked_examine) && ((holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE)))
-		flavor_text = obscured ? "Obscured" : holder.flavortext
-		flavor_text_nsfw = obscured ? "Obscured" : holder.nsfwflavortext
+		flavor_text = obscured ? "外貌被遮挡" : holder.flavortext
+		flavor_text_nsfw = obscured ? "外貌被遮挡" : holder.nsfwflavortext
 		nsfw_examine_always = holder_human.client?.prefs?.nsfw_examine_always
 		ooc_notes += holder.ooc_notes
 		ooc_notes_nsfw += holder.erpprefs
@@ -143,7 +143,7 @@
 
 	var/list/data = list(
 		// Identity
-		"character_name" = obscured ? "Unknown" : char_name,
+		"character_name" = obscured ? "未知者" : char_name,
 		"headshot" = headshot,
 		"obscured" = obscured ? TRUE : FALSE,
 		// Descriptions
@@ -177,7 +177,7 @@
 
 	var/client/C
 	var/web_sound_url
-	var/artist_name = "Song Artist Hidden"
+	var/artist_name = "歌手信息已隐藏"
 	var/song_title
 	var/list/music_extra_data = list()
 
@@ -214,7 +214,7 @@
 				is_playing = TRUE
 				music_extra_data["link"] = web_sound_url
 				music_extra_data["title"] = song_title
-				music_extra_data["duration"] = "Song Duration Hidden"
+				music_extra_data["duration"] = "歌曲时长已隐藏"
 				music_extra_data["artist"] = artist_name
 				C.tgui_panel?.play_music(web_sound_url, music_extra_data)
 			else
@@ -222,7 +222,7 @@
 				C.tgui_panel?.stop_music()
 			return TRUE
 		if("vet_chat")
-			to_chat(viewing, span_boldgreen("This player is age-verified!"))
+			to_chat(viewing, span_boldgreen("这位玩家已通过年龄验证！"))
 			return TRUE
 
 /datum/examine_panel/ui_close()
