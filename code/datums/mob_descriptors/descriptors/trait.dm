@@ -32,7 +32,7 @@
 	prefix = "很"
 
 /datum/mob_descriptor/trait/giant
-	name = "巨人般"
+	name = "巨人"
 	prefix = "像个"
 
 /datum/mob_descriptor/trait/tiny
