@@ -91,31 +91,31 @@
 	var/list/lines = list()
 	var/list/desc_copy = descriptors.Copy()
 
-	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "You see %DESC1%, %DESC2% %DESC3% with %DESC4%, %DESC5%", watcher)
+	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "你看到一位%DESC3%，身形%DESC1%、体态%DESC2%，面部特征为%DESC4%，带着%DESC5%。", watcher)
 	if(first_line)
 		lines += first_line
 
-	var/second_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_AGE, MOB_DESCRIPTOR_SLOT_SKIN, MOB_DESCRIPTOR_SLOT_VOICE), "%THEY% %DESC1%, %DESC2% and %DESC3%.", watcher)
+	var/second_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_AGE, MOB_DESCRIPTOR_SLOT_SKIN, MOB_DESCRIPTOR_SLOT_VOICE), "%THEY%%DESC1%，%DESC2%，%DESC3%。", watcher)
 	if(second_line)
 		lines += second_line
 
-	var/third_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/third_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY%%DESC1%，且%DESC2%。", watcher)
 	if(third_line)
 		lines += third_line
 
-	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY%%DESC1%，且%DESC2%。", watcher)
 	if(fourth_line)
 		lines += fourth_line
 
-	var/fifth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/fifth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY%%DESC1%，还%DESC2%。", watcher)
 	if(fifth)
 		lines += fifth
 
-	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY%%DESC1%，还%DESC2%。", watcher)
 	if(sixth)
 		lines += sixth
 
-	var/pits_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PITS), "%THEY% %DESC1%.", watcher)
+	var/pits_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PITS), "%THEY%%DESC1%。", watcher)
 	if(pits_line)
 		lines += pits_line
 
@@ -130,31 +130,31 @@
 	var/list/lines = list()
 	var/list/desc_copy = descriptors.Copy()
 
-	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE), "You see %DESC1%, %DESC2% %DESC3%.", watcher)
+	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE), "你看到一位%DESC3%，身形%DESC1%、体态%DESC2%。", watcher)
 	if(first_line)
 		lines += first_line
 
-	var/second_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_VOICE), "%THEY% %DESC1%.", watcher)
+	var/second_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_VOICE), "%THEY%%DESC1%。", watcher)
 	if(second_line)
 		lines += second_line
 
-	var/third_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/third_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY%%DESC1%，且%DESC2%。", watcher)
 	if(third_line)
 		lines += third_line
 
-	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY%%DESC1%，且%DESC2%。", watcher)
 	if(fourth_line)
 		lines += fourth_line
 
-	var/fifth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/fifth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY%%DESC1%，还%DESC2%。", watcher)
 	if(fifth)
 		lines += fifth
 
-	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY% %DESC1% and %DESC2%.", watcher)
+	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY%%DESC1%，还%DESC2%。", watcher)
 	if(sixth)
 		lines += sixth
 
-	var/pits_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PITS), "%THEY% %DESC1%.", watcher)
+	var/pits_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PITS), "%THEY%%DESC1%。", watcher)
 	if(pits_line)
 		lines += pits_line
 
@@ -174,7 +174,7 @@
 	for(var/i in 1 to descs.len)
 		var/desc_type = descs[i]
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
-		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described, used_verbage, watcher))
+		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described, null, watcher))
 		var/used_verb = descriptor.get_verbage(described)
 		if(used_verb)
 			used_verbage |= used_verb
@@ -200,62 +200,62 @@
 /proc/treat_mob_descriptor_string(string, mob/living/described)
 	var/they_replace
 	if(described.gender == MALE)
-		they_replace = "he"
+		they_replace = "他"
 	else
-		they_replace = "she"
+		they_replace = "她"
 	var/man_replace
 	if(described.gender == MALE)
-		man_replace = "man"
+		man_replace = "男人"
 	else
-		man_replace = "woman"
+		man_replace = "女人"
 	var/him_replace
 	if(described.gender == MALE)
-		him_replace = "him"
+		him_replace = "他"
 	else
-		him_replace = "her"
+		him_replace = "她"
 	// LETHALSTONE EDIT: pronoun support
 	if (described.pronouns)
 		switch (described.pronouns)
 			if (HE_HIM)
-				they_replace = "he"
-				man_replace = "man"
-				him_replace = "him"
+				they_replace = "他"
+				man_replace = "男人"
+				him_replace = "他"
 			if (HE_HIM_F)
-				they_replace = "he"
-				man_replace = "man"
-				him_replace = "him"
+				they_replace = "他"
+				man_replace = "男人"
+				him_replace = "他"
 			if (SHE_HER)
-				they_replace = "she"
-				man_replace = "woman"
-				him_replace = "her"
+				they_replace = "她"
+				man_replace = "女人"
+				him_replace = "她"
 			if (SHE_HER_M)
-				they_replace = "she"
-				man_replace = "woman"
-				him_replace = "her"
+				they_replace = "她"
+				man_replace = "女人"
+				him_replace = "她"
 			if (THEY_THEM)
-				they_replace = "they"
-				man_replace = "person"
-				him_replace = "them"
+				they_replace = "他们"
+				man_replace = "人"
+				him_replace = "他们"
 			if (THEY_THEM_F)
-				they_replace = "they"
-				man_replace = "person"
-				him_replace = "them"
+				they_replace = "他们"
+				man_replace = "人"
+				him_replace = "他们"
 			if (IT_ITS)
-				they_replace = "it"
-				man_replace = "creacher"
-				him_replace = "it"
+				they_replace = "它"
+				man_replace = "生物"
+				him_replace = "它"
 	// LETHALSTONE EDIT END
 	string = replacetext(string, "%THEY%", they_replace)
-	if(they_replace == "they")
-		string = replacetext(string, "%HAVE%", "have")
-		string = replacetext(string, "%ARE%", "are")
-		string = replacetext(string, "%LOOK%", "look")
-		string = replacetext(string, "%SPEAK%", "speak with")
+	if(they_replace == "他们")
+		string = replacetext(string, "%HAVE%", "有着")
+		string = replacetext(string, "%ARE%", "")
+		string = replacetext(string, "%LOOK%", "看起来")
+		string = replacetext(string, "%SPEAK%", "有着")
 	else
-		string = replacetext(string, "%HAVE%", "has")
-		string = replacetext(string, "%ARE%", "is")
-		string = replacetext(string, "%LOOK%", "looks")
-		string = replacetext(string, "%SPEAK%", "speaks with")
+		string = replacetext(string, "%HAVE%", "有着")
+		string = replacetext(string, "%ARE%", "")
+		string = replacetext(string, "%LOOK%", "看起来")
+		string = replacetext(string, "%SPEAK%", "有着")
 	string = replacetext(string, "%MAN%", man_replace)
 	string = replacetext(string, "%HIM%", him_replace)
 	string = capitalize(string)
