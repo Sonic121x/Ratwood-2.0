@@ -63,7 +63,7 @@
 	var/classes = list("古老魔法", "神血", "秘仪师")
 	var/classchoice = input("你的力量如何显现？", "古老之道") as anything in classes
 
-	var/shapeshifts = list("Zad", "猫", "猫（黑）", "蝙蝠", "Cabbit", "小型 Rous", "小型 Venard", "小型 Volf", "青蛙")
+	var/shapeshifts = list("扎德", "猫", "猫（黑）", "蝙蝠", "卡比特", "小型老鼠", "小型维纳德狐", "小型沃尔夫", "青蛙")
 	var/shapeshiftchoice = input("你的第二层皮会化作什么形态？", "古老之道") as anything in shapeshifts
 
 	switch (classchoice)
@@ -137,7 +137,7 @@
 
 	if(H.mind)
 		switch (shapeshiftchoice)
-			if("Zad")
+			if("扎德")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/crow)
 			if("猫")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cat)
@@ -145,13 +145,13 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cat/black)
 			if("蝙蝠")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/bat)
-			if("小型 Volf")
+			if("小型沃尔夫")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_wolf)
-			if("小型 Venard")
+			if("小型维纳德狐")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_vernard)
-			if("小型 Rous")
+			if("小型老鼠")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/rous)
-			if("Cabbit")
+			if("卡比特")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cabbit)
 			if("青蛙")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/frog)
@@ -287,13 +287,13 @@
 	attack_verb = list("抓挠", "claws")
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_vernard
-	name = "小型 Vernard 形态"
+	name = "小型维纳德狐形态"
 	desc = ""
 	overlay_state = "vernard_transform"
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/rogue/fox/witch_shifted
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/witch/rous
-	name = "小型 Rous 形态"
+	name = "小型老鼠形态"
 	desc = ""
 	overlay_state = "rous_transform"
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/smallrat/witch_shifted
@@ -306,8 +306,8 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fox/witch_shifted
-	name = "小型 vernard"
-	desc = "附近林地中潜行出没的狡黠 vernard 也有这种更小、更瘦弱的变种。这里很少见到它们，而它看上去也远没有那些体型更大的同类危险。只是这只黄色眼睛里，透着股异样的灵性……"
+	name = "小型维纳德狐"
+	desc = "附近林地中潜行出没的狡黠维纳德狐也有这种更小、更瘦弱的变种。这里很少见到它们，而它看上去也远没有那些体型更大的同类危险。只是这只狐狸的黄色眼睛里，透着股异样的灵性……"
 	defprob = 90
 	STASPD = 18
 	STASTR = 2
@@ -318,7 +318,7 @@
 	defprob = 70
 
 /mob/living/simple_animal/hostile/retaliate/smallrat/witch_shifted
-	name = "小型 rous"
+	name = "小型老鼠"
 	desc = "据说这些小小的、有时还会传播疫病的生灵是 佩斯特拉 的圣物，通常出没于食品储藏间和船只之中。可这一只看起来似乎比其他同类更聪明一些……"
 	defprob = 90
 	STASPD = 18
@@ -353,7 +353,7 @@
 	show_true_name = FALSE
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/witch/crow
-	name = "Zad 形态"
+	name = "扎德形态"
 	overlay_state = "zad"
 	desc = ""
 	gesture_required = TRUE

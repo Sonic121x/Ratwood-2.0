@@ -41,7 +41,7 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,//Imperial is not your mother tongue.
 	)
-	extra_context = "该分支仅限：Drakian"// | Middle-Aged & Old"
+	extra_context = "该分支仅限：龙裔"// | Middle-Aged & Old"
 	subclass_stashed_items = list(//They come prepared. We really should just give this to all mercs.
 		"服役文书" = /obj/item/merctoken
 	)
@@ -208,9 +208,9 @@
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>Hadrûnzhar，他家族中最杰出的一位。作为一名 Drakian，他超然于诸多族内纷争之上。\
+		. += "<small>Hadrûnzhar，他家族中最杰出的一位。作为一名龙裔，他超然于诸多族内纷争之上。\
 		他曾给予自己的誓印者唯一的使命：<br>\
-		毁灭一切损害 Astrata 高贵秩序之物，将左手 magyks 的污秽自世间彻底根除。</small>"
+		毁灭一切损害阿斯特拉塔高贵秩序之物，将左道魔法的污秽自世间彻底根除。</small>"
 
 /obj/item/clothing/cloak/cape/oathmarked
 	name = "誓印披风"
@@ -226,7 +226,7 @@
 		. += "<small>Hadrûnzhar 以张扬作风与突如其来的暴烈脾性而闻名。\
 		这件披风本是用来羞辱那些心怀怨恨的誓印者，如今却象征着更宏大的东西。\
 		那便是希望，希望有朝一日他会归来。\
-		正如他当年消失在 Eressioth 的领域之中那般，如今所有 Drakian，无论是否知情，都在祈祷他重返人世。</small>"
+		正如他当年消失在 Eressioth 的领域之中那般，如今所有龙裔，无论是否知情，都在祈祷他重返人世。</small>"
 
 //The RP tome.
 /obj/item/book/rogue/secret/oathmarked

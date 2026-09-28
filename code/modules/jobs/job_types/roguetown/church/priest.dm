@@ -537,16 +537,16 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 		return
 
 	var/list/curse_choices = list(
-		"Astrata 之咒" = /datum/curse/astrata,
-		"Noc 之咒" = /datum/curse/noc,
-		"Dendor 之咒" = /datum/curse/dendor,
-		"Abyssor 之咒" = /datum/curse/abyssor,
-		"Ravox 之咒" = /datum/curse/ravox,
-		"Necra 之咒" = /datum/curse/necra,
-		"Xylix 之咒" = /datum/curse/xylix,
-		"Pestra 之咒" = /datum/curse/pestra,
-		"Malum 之咒" = /datum/curse/malum,
-		"Eora 之咒" = /datum/curse/eora,
+		"阿斯特拉塔之咒" = /datum/curse/astrata,
+		"诺克之咒" = /datum/curse/noc,
+		"登多尔之咒" = /datum/curse/dendor,
+		"阿比索尔之咒" = /datum/curse/abyssor,
+		"拉沃克斯之咒" = /datum/curse/ravox,
+		"内克拉之咒" = /datum/curse/necra,
+		"赛利克斯之咒" = /datum/curse/xylix,
+		"佩斯特拉之咒" = /datum/curse/pestra,
+		"玛勒姆之咒" = /datum/curse/malum,
+		"伊欧拉之咒" = /datum/curse/eora,
 	)
 
 	var/curse_pick = input("选择要施加或解除的诅咒。", "选择诅咒") as null|anything in curse_choices
