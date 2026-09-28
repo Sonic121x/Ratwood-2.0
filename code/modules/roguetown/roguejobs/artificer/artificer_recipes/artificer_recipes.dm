@@ -87,7 +87,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/wood/bulk
-	name = "Bulk Wooden Cogs 3x (+2 Planks)"
+	name = "批量木制齿轮 3x (+2 木板)"
 	created_item = list(/obj/item/roguegear/wood/basic, /obj/item/roguegear/wood/basic, /obj/item/roguegear/wood/basic)
 	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank)
 	hammers_per_item = 10
@@ -102,7 +102,7 @@
 	i_type = "通用"
 
 /datum/artificer_recipe/bronze/bulk
-	name = "Bulk Bronze Cogs 6x (+2 Bronze Bars)"
+	name = "批量青铜齿轮 6x (+2 青铜锭)"
 	created_item = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze)
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/ingot/bronze)
 	hammers_per_item = 10
@@ -134,7 +134,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/iron/lockpickring
-	name = "开锁环 (x3)"
+	name = "撬锁工具环 (x3)"
 	required_item = /obj/item/ingot/iron
 	created_item = list(/obj/item/lockpickring,/obj/item/lockpickring,/obj/item/lockpickring)
 	hammers_per_item = 5
@@ -163,14 +163,14 @@
 	hammers_per_item = 5
 
 /datum/artificer_recipe/bronze/tools/skillcore
-	name = "Golem Skill Exhibitor (+2 Cog)"
+	name = "构装体技能拓展器 (+2 齿轮)"
 	created_item = /obj/item/construct_skill_core
 	additional_items = list(/obj/item/roguegear, /obj/item/roguegear)
 	hammers_per_item = 10
 	skill_level = 3
 
 /datum/artificer_recipe/bronze/tools/headhook
-	name = "头钩 (+2 纤维)"
+	name = "青铜头颅挂钩 (+2 纤维)"
 	created_item = /obj/item/storage/hip/headhook/bronze
 	additional_items = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
 	skill_level = 3
@@ -194,28 +194,28 @@
 	i_type = "装置"
 
 /datum/artificer_recipe/contraptions/serfstone
-	name = "农奴石 (+1 齿轮, +1 Topar)"
+	name = "农奴石 (+1 齿轮, +1 托珀石)"
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegem/yellow) //using topar since the description calls it a "dull gem"
 	created_item = /obj/item/scomstone/bad
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/houndstone
-	name = "猎犬石 (+1 齿轮, +1 Topar, +1 Houndstone Gem)"
+	name = "猎犬石 (+1 齿轮, +1 托珀石, +1 猎犬石宝石)"
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegem/yellow, /obj/item/roguegem/houndgem)
 	created_item = /obj/item/scomstone/bad/garrison
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/scomstone
-	name = "SCOM传讯网 石 (+1 齿轮, +1 翠晶, Arcyne)"
+	name = "传讯石 (+1 齿轮, +1 翠晶, 奥术)"
 	required_item = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegem/green)
 	created_item = /obj/item/scomstone
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/emeraldchoker
-	name = "绿宝石项圈 (+1 齿轮, +黄金, +1 翠晶, Arcyne)"
+	name = "翡翠颈环 (+1 齿轮, +金锭, +1 翠晶, 奥术)"
 	required_item = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/ingot/gold, /obj/item/roguegem/green)
 	created_item = /obj/item/listenstone
@@ -230,7 +230,7 @@
 	skill_level = 1
 
 /datum/artificer_recipe/contraptions/folding_alchcauldron
-	name = "折叠坩埚架 (+1 小原木, +石锅, +锡)"
+	name = "折叠坩埚架 (+1 小原木, +石锅, +锡锭)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/reagent_containers/glass/bucket/pot/stone, /obj/item/ingot/tin)
 	created_item = /obj/item/folding_table_stored/alchcauldron
@@ -244,7 +244,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/mess_kit
-	name = "行军炊具 (+2 铁)" // 3 Iron, cuz you get a pot, a pan and other things for free.
+	name = "行军炊具 (+2 铁锭)" // 3 Iron, cuz you get a pot, a pan and other things for free.
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/storage/gadget/messkit
@@ -252,7 +252,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/contraptions/mobilestove
-	name = "便携炉 (+齿轮 +锡)" // capitalized to fall in line with the rest of engineering recipes T_T
+	name = "便携炉 (+齿轮 +锡锭)" // capitalized to fall in line with the rest of engineering recipes T_T
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/ingot/tin)
 	created_item = /obj/item/mobilestove
@@ -260,7 +260,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/shears
-	name = "截肢剪 (+2 青铜)"
+	name = "截肢剪 (+2 青铜锭)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/ingot/bronze = 2)
 	created_item = /obj/item/contraption/shears
@@ -303,7 +303,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/orestore
-	name = "机械矿袋，青铜 (+1 麻袋, +1 齿轮)"
+	name = "青铜机械化矿石袋 (+1 麻袋, +1 齿轮)"
 	required_item = /obj/item/ingot/bronze
 	created_item = /obj/item/storage/hip/orestore/bronze
 	hammers_per_item = 12
@@ -311,7 +311,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/artificerarmor
-	name = "工匠护甲 (+3 吉尔青铜, +2 青铜齿轮)"
+	name = "工匠护甲 (+3 吉尔青铜锭, +2 青铜齿轮)"
 	required_item = /obj/item/ingot/gilbranze
 	additional_items = list(/obj/item/ingot/gilbranze,/obj/item/ingot/gilbranze, /obj/item/roguegear/bronze,/obj/item/roguegear/bronze)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/ancient/artificer
@@ -319,7 +319,7 @@
 	skill_level = 4
 
 /datum/artificer_recipe/contraptions/volticgauntlet
-	name = "伏特护手 (+1 锡锭)(+2 青铜齿轮)(+1 cinnabar ore)"
+	name = "伏特护手 (+1 锡锭)(+2 青铜齿轮)(+1 辰砂)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/ingot/tin, /obj/item/rogueore/cinnabar)
 	created_item = /obj/item/clothing/gloves/roguetown/contraption/voltic
@@ -342,7 +342,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/bombardframe
-	name = "Bombard Frame (+1 Steel Ingot, +2 Bronze Cog, +3 Wooden Plank)"
+	name = "轻型臼炮架 (+1 钢锭, +2 青铜齿轮, +3 木板)"
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/ingot/steel)
 	created_item = /obj/item/bombard_frame
@@ -350,7 +350,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/partiallyrefinedbarrel
-	name = "Partially refined barrel (5 iron ingot + rough iron barrel)"
+	name = "初步精炼的炮管 (5 铁锭 + 粗糙铁炮管)"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_roughbarrel)
 	created_item = /obj/item/bombard_partiallyrefinedbarrel
@@ -358,7 +358,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/bombardbarrel
-	name = "Bombard Barrel (+5 iron ingot + repaired sanded barrel)"
+	name = "轻型臼炮管 (+5 铁锭 + 修补过的打磨炮管)"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_sandedrepairedbarrel, /obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/bombard_barrel
@@ -366,7 +366,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/dwarven_music_box
-	name = "Dwarven Music Box (+2 Bronze) (+2 Bronze Cog) (+1 Amethyst)"
+	name = "矮人音乐盒 (+2 青铜锭) (+2 青铜齿轮) (+1 阿米索兹)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/roguegem/amethyst)
 	created_item = /obj/item/dmusicbox
@@ -415,7 +415,7 @@
 	sellprice = 6
 
 /datum/artificer_recipe/wood/weapons/hshield
-	name = "鸢形盾 (+1 熟皮)"
+	name = "熨斗盾 (+1 熟皮)"
 	created_item = /obj/item/rogueweapon/shield/heater/crafted
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/hide/cured = 1)
 	hammers_per_item = 6
@@ -434,7 +434,7 @@
 /// CROSSBOW
 
 /datum/artificer_recipe/wood/weapons/crossbow
-	name = "弩 (+1 钢) (+1 纤维)"
+	name = "弩 (+1 钢锭) (+1 纤维)"
 	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/fibers)
 	hammers_per_item = 10
@@ -446,7 +446,7 @@
 	i_type = "弹药"
 
 /datum/artificer_recipe/ammunition/bolts
-	name = "弩箭 20x (+2 木板, +1 铁)"
+	name = "弩箭 20x (+2 木板, +1 铁锭)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt,
@@ -474,7 +474,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/ammunition/bsbolts//faster way to craft blacksteel ammo, not a cheaper craft
-	name = "Blacksteel Bolts 10x (+1 plank, +1 Silk, +2 Blacksteel)"
+	name = "黑钢弩矢 10x (+1 木板, +1 蛛丝, +2 黑钢锭)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/silk, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt/blacksteel,
@@ -492,7 +492,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/ammunition/arrows
-	name = "箭矢 20x (+2 木板, +1 铁)"
+	name = "箭矢 20x (+2 木板, +1 铁锭)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank,  /obj/item/ingot/iron)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,
@@ -520,7 +520,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/ammunition/bodkinarrows
-	name = "Bodkin Arrows 20x (+2 Planks, +1 Steel)"
+	name = "钢锥头箭 20x (+2 木板, +1 钢锭)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank,  /obj/item/ingot/steel)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/steel,
@@ -548,7 +548,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/ammunition/bsarrows//faster way to craft blacksteel ammo, not a cheaper craft
-	name = "Blacksteel Arrows 10x (+1 Planks, +1 Silk, +2 Blacksteel)"
+	name = "黑钢箭 10x (+1 木板, +1 蛛丝, +2 黑钢锭)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/silk,  /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/blacksteel,
@@ -566,7 +566,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/ammunition/pyrobolt_five
-	name = "火碎弩箭 x5 (+1 铁) (+1 fyritius)"
+	name = "燃火弩矢 x5 (+1 铁锭) (+1 焰蕊花)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
 	created_item = list(
@@ -581,7 +581,7 @@
 
 
 /datum/artificer_recipe/ammunition/pyroarrow_five
-	name = "火碎箭 x5 (+1 铁) (+1 fyritius)"
+	name = "燃火箭 x5 (+1 铁锭) (+1 焰蕊花)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
 	created_item = list(
@@ -595,7 +595,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/ammunition/lead_ball
-	name = "铅弹 x8 (+2 铁)"
+	name = "铅弹 x8 (+2 铁锭)"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = list(//Enough for a pouch.
@@ -612,7 +612,7 @@
 	skill_level = 4
 
 /datum/artificer_recipe/ammunition/grapeshot
-	name = "葡萄弹 x8 (+3 铁)"
+	name = "葡萄弹 x8 (+3 铁锭)"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = list(
@@ -689,7 +689,7 @@
 // --------- STEEL -----------
 
 /datum/artificer_recipe/steel/prosthetic
-	name = "钢制义肢 (+1 钢, +1 齿轮)"
+	name = "钢制义肢 (+1 钢锭, +1 齿轮)"
 	created_item = /obj/item/contraption/steelprosthetic
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/roguegear/bronze = 1)
@@ -714,7 +714,7 @@
 
 
 /datum/artificer_recipe/general/tntbomb
-	name = "火药棒(x5)"
+	name = "爆粉棒(x5)"
 	required_item = /obj/item/rogueore/coal
 	additional_items = list(/obj/item/paper/scroll,
 							/obj/item/alch/coaldust,
@@ -728,7 +728,7 @@
 	skill_level = 4
 
 /datum/artificer_recipe/general/satchelbomb
-	name = "火药包"
+	name = "爆粉挎包"
 	required_item = /obj/item/storage/backpack/rogue/satchel
 	additional_items = list(/obj/item/tntstick,
 							/obj/item/tntstick,
@@ -738,7 +738,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/general/smokebomb
-	name = "喷气枪弹 (x3) (+齿轮)"
+	name = "喷气壳 (x3) (+齿轮)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear)
 	created_item = list(/obj/item/smokeshell,

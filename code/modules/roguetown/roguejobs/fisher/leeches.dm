@@ -132,17 +132,17 @@
 	. = ..()
 	switch(blood_storage/blood_maximum)
 		if(0.8 to INFINITY)
-			. += span_bloody("<B>[p_theyre(TRUE)]肥硕鼓胀，吸满了鲜血。</B>")
+			. += span_bloody("<B>[p_they(TRUE)]肥硕鼓胀，吸满了鲜血。</B>")
 		if(0.5 to 0.8)
-			. += span_bloody("[p_theyre(TRUE)]吃得很饱。")
+			. += span_bloody("[p_they(TRUE)]吃得很饱。")
 		if(0.1 to 0.5)
 			. += span_warning("[p_they(TRUE)]想进食了。")
 		if(-INFINITY to 0.1)
-			. += span_dead("[p_theyre(TRUE)]饿死了。")
+			. += span_dead("[p_they(TRUE)]饿坏了。")
 	if(!giving)
-		. += span_warning("[p_theyre(TRUE)] [pick("吮吸着", "抽吸着", "吞饮着")]。")
+		. += span_warning("[p_they(TRUE)]正[pick("吮吸着", "抽吸着", "吞饮着")]。")
 	else
-		. += span_notice("[p_theyre(TRUE)] [pick("反呕着", "干呕着", "呼吐着")]。")
+		. += span_notice("[p_they(TRUE)]正[pick("反吐着", "干呕着", "吐出血液")]。")
 	if(drainage)
 		START_PROCESSING(SSobj, src)
 
@@ -170,9 +170,9 @@
 		src.forceMove(H)
 		affecting.add_embedded_object(src, silent = TRUE, crit_message = FALSE)
 		if(M == user)
-			user.visible_message(span_notice("[user]把[src]放到了[user.p_their()]的[affecting]上。"), span_notice("我把一只水蛭放到了自己的[affecting]上。"))
+			user.visible_message(span_notice("[user]把[src]放到了自己的[parse_zone(affecting.body_zone, affecting)]上。"), span_notice("我把[src]放到了自己的[parse_zone(affecting.body_zone, affecting)]上。"))
 		else
-			user.visible_message(span_notice("[user]把[src]放到了[M]的[affecting]上。"), span_notice("我把一只水蛭放到了[M]的[affecting]上。"))
+			user.visible_message(span_notice("[user]把[src]放到了[M]的[parse_zone(affecting.body_zone, affecting)]上。"), span_notice("我把[src]放到了[M]的[parse_zone(affecting.body_zone, affecting)]上。"))
 		return
 	return ..()
 

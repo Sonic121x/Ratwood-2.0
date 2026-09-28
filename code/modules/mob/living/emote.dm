@@ -6,12 +6,12 @@
 /datum/emote/living/blush
 	key = "blush"
 	key_third_person = "blushes"
-	message = "blushes."
+	message = "脸红了。"
 
 /datum/emote/living/pray
 	key = "pray"
 	key_third_person = "prays"
-	message = "prays something."
+	message = "低声祈祷着。"
 	restraint_check = FALSE
 	emote_type = EMOTE_VISIBLE
 	// We let people pray unconcious for death-gasp style prayers in crit.
@@ -28,7 +28,7 @@
 	var/mob/living/carbon/follower = user
 	var/datum/patron/patron = follower.patron
 
-	var/prayer = input("Whisper your prayer:", "Prayer") as text|null
+	var/prayer = input("低声说出你的祷词：", "祈祷") as text|null
 	if(!prayer)
 		return
 
@@ -51,7 +51,7 @@
 					continue
 				//Do they even have the boon/trait? If so, send it and heal them.
 				if (HAS_TRAIT(player, TRAIT_CONVICTION))
-					to_chat(player, span_dead("I hear the passing of whispers, knowledge forbidden to share: <br>[span_info(prayer)]"))
+					to_chat(player, span_dead("我听见一阵低语，诉说着不可泄露的秘密：<br>[span_info(prayer)]"))
 					player.apply_status_effect(/datum/status_effect/buff/healing/prayer_power, 6)//GET IT?
 
 	/* admin stuff - tells you the followers name, key, and what patron they follow */
@@ -68,7 +68,7 @@
 /datum/emote/living/meditate
 	key = "meditate"
 	key_third_person = "meditates"
-	message = "meditates."
+	message = "冥想着。"
 	restraint_check = FALSE
 	emote_type = EMOTE_VISIBLE
 
@@ -82,13 +82,13 @@
 	. = ..()
 	if(do_after(user, 1 MINUTES))
 		user.add_stress(/datum/stressevent/meditation)
-		to_chat(user, span_green("My meditations were rewarding."))
+		to_chat(user, span_green("这次冥想让我获益良多。"))
 
 /datum/emote/living/bow
 	key = "bow"
 	key_third_person = "bows"
-	message = "bows."
-	message_param = "bows to %t."
+	message = "鞠了一躬。"
+	message_param = "向%t鞠了一躬。"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
@@ -114,8 +114,8 @@
 /datum/emote/living/burp
 	key = "burp"
 	key_third_person = "burps"
-	message = "burps."
-	message_muffled = "makes a muffled noise."
+	message = "打了个嗝。"
+	message_muffled = "发出一声闷响。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -128,7 +128,7 @@
 /datum/emote/living/choke
 	key = "choke"
 	key_third_person = "chokes"
-	message = "chokes!"
+	message = "噎住了！"
 	emote_type = EMOTE_AUDIBLE
 	ignore_silent = TRUE
 	show_runechat = FALSE
@@ -142,7 +142,7 @@
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"
-	message = "crosses their arms."
+	message = "双臂交叉抱在胸前。"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
@@ -155,7 +155,7 @@
 /datum/emote/living/collapse
 	key = "collapse"
 	key_third_person = "collapses"
-	message = "collapses."
+	message = "瘫倒了。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -168,8 +168,8 @@
 /datum/emote/living/whisper
 	key = "whisper"
 	key_third_person = "whispers"
-	message = "whispers."
-	message_mime = "appears to whisper."
+	message = "低声耳语。"
+	message_mime = "做出耳语的样子。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -184,8 +184,8 @@
 /datum/emote/living/cough
 	key = "cough"
 	key_third_person = "coughs"
-	message = "coughs."
-	message_muffled = "makes a muffled noise."
+	message = "咳嗽了。"
+	message_muffled = "发出一声闷咳。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -198,8 +198,8 @@
 /datum/emote/living/clearthroat
 	key = "clearthroat"
 	key_third_person = "clearsthroat"
-	message = "clears their throat."
-	message_muffled = "makes a muffled noise."
+	message = "清了清嗓子。"
+	message_muffled = "发出一声闷响。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -212,7 +212,7 @@
 /datum/emote/living/dance
 	key = "dance"
 	key_third_person = "dances"
-	message = "dances."
+	message = "跳起舞来。"
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
@@ -225,8 +225,8 @@
 /datum/emote/living/deathgasp
 	key = ""
 	key_third_person = ""
-	message = "gasps out their last breath."
-	message_simple =  "falls limp."
+	message = "咽下了最后一口气。"
+	message_simple =  "软倒了。"
 	stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/deathgasp/run_emote(mob/user, params, type_override, intentional)
@@ -245,7 +245,7 @@
 /datum/emote/living/drool
 	key = "drool"
 	key_third_person = "drools"
-	message = "drools."
+	message = "流着口水。"
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_drool()
@@ -257,7 +257,7 @@
 /datum/emote/living/faint
 	key = "faint"
 	key_third_person = "faints"
-	message = "faints."
+	message = "昏倒了。"
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_faint()
@@ -279,7 +279,7 @@
 /datum/emote/living/flap
 	key = "flap"
 	key_third_person = "flaps"
-	message = "flaps their wings."
+	message = "拍打着翅膀。"
 	restraint_check = TRUE
 	var/wing_time = 20
 
@@ -289,7 +289,7 @@
 /datum/emote/living/flap/aflap
 	key = "aflap"
 	key_third_person = "aflaps"
-	message = "flaps their wings ANGRILY!"
+	message = "愤怒地拍打着翅膀！"
 	restraint_check = TRUE
 	wing_time = 10
 
@@ -299,7 +299,7 @@
 /datum/emote/living/frown
 	key = "frown"
 	key_third_person = "frowns"
-	message = "frowns."
+	message = "皱了皱眉。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_frown()
 	set name = "Frown"
@@ -310,7 +310,7 @@
 /datum/emote/living/gag
 	key = "gag"
 	key_third_person = "gags"
-	message = "gags."
+	message = "干呕着。"
 	emote_type = EMOTE_AUDIBLE
 	ignore_silent = TRUE
 	show_runechat = FALSE
@@ -324,8 +324,8 @@
 /datum/emote/living/gasp
 	key = "gasp"
 	key_third_person = "gasps"
-	message = "gasps!"
-	message_muffled = "makes a muffled noise."
+	message = "倒吸一口气！"
+	message_muffled = "发出一声闷响。"
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = UNCONSCIOUS
 	show_runechat = FALSE
@@ -339,16 +339,16 @@
 /datum/emote/living/breathgasp
 	key = "breathgasp"
 	key_third_person = "breathgasps"
-	message = "gasps for air!"
+	message = "大口喘着气！"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
 /datum/emote/living/giggle
 	key = "giggle"
 	key_third_person = "giggles"
-	message = "giggles."
-	message_mime = "giggles silently!"
-	message_muffled = "makes a muffled giggle."
+	message = "咯咯地笑着。"
+	message_mime = "无声地偷笑着！"
+	message_muffled = "发出一阵闷闷的偷笑声。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -362,7 +362,7 @@
 				continue
 			if(HAS_TRAIT(H, TRAIT_XYLIX) && !H.has_status_effect(/datum/status_effect/buff/xylix_joy))
 				H.apply_status_effect(/datum/status_effect/buff/xylix_joy)
-				to_chat(H, span_info("The giggling brings a smile to my face, and fortune to my steps!"))
+				to_chat(H, span_info("这阵笑声让我露出微笑，也为我的脚步带来好运！"))
 
 /mob/living/carbon/human/verb/emote_giggle()
 	set name = "Giggle"
@@ -373,8 +373,8 @@
 /datum/emote/living/chuckle
 	key = "chuckle"
 	key_third_person = "chuckles"
-	message = "chuckles."
-	message_muffled = "makes a muffled chuckle."
+	message = "轻笑着。"
+	message_muffled = "发出一声闷闷的轻笑。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -388,7 +388,7 @@
 				continue
 			if(HAS_TRAIT(H, TRAIT_XYLIX) && !H.has_status_effect(/datum/status_effect/buff/xylix_joy))
 				H.apply_status_effect(/datum/status_effect/buff/xylix_joy)
-				to_chat(H, span_info("The chuckling brings a smile to my face, and fortune to my steps!"))
+				to_chat(H, span_info("这阵轻笑让我露出微笑，也为我的脚步带来好运！"))
 
 /mob/living/carbon/human/verb/emote_chuckle()
 	set name = "Chuckle"
@@ -399,8 +399,8 @@
 /datum/emote/living/glare
 	key = "glare"
 	key_third_person = "glares"
-	message = "glares."
-	message_param = "glares at %t."
+	message = "怒目而视。"
+	message_param = "怒视着%t。"
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_glare()
@@ -412,7 +412,7 @@
 /datum/emote/living/grin
 	key = "grin"
 	key_third_person = "grins"
-	message = "grins."
+	message = "咧嘴笑了。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_grin()
 	set name = "Grin"
@@ -423,8 +423,8 @@
 /datum/emote/living/groan
 	key = "groan"
 	key_third_person = "groans"
-	message = "groans."
-	message_muffled = "makes a muffled groan."
+	message = "呻吟着。"
+	message_muffled = "发出一声闷闷的呻吟。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 	needs_emotion = TRUE
@@ -438,7 +438,7 @@
 /datum/emote/living/grimace
 	key = "grimace"
 	key_third_person = "grimaces"
-	message = "grimaces."
+	message = "龇牙咧嘴。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_grimace()
 	set name = "Grimace"
@@ -449,21 +449,21 @@
 /datum/emote/living/jump
 	key = "jump"
 	key_third_person = "jumps"
-	message = "jumps!"
+	message = "跳了起来！"
 	restraint_check = TRUE
 
 /datum/emote/living/leap
 	key = "leap"
 	key_third_person = "leaps"
-	message = "leaps!"
+	message = "纵身一跃！"
 	restraint_check = TRUE
 	only_forced_audio = TRUE
 
 /datum/emote/living/kiss
 	key = "kiss"
 	key_third_person = "kisses"
-	message = "blows a kiss."
-	message_param = "kisses %t."
+	message = "送出一个飞吻。"
+	message_param = "亲吻了%t。"
 	emote_type = EMOTE_VISIBLE
 	use_params_for_runechat = TRUE
 
@@ -488,29 +488,29 @@
 				do_change = TRUE
 		if(do_change)
 			if(H.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-				message_param = "kisses %t deeply."
+				message_param = "深深地吻了%t。"
 			else if(H.zone_selected == BODY_ZONE_PRECISE_EARS)
-				message_param = "kisses %t on the ear."
+				message_param = "亲吻了%t的耳朵。"
 				if(!HAS_TRAIT(target, TRAIT_DECEIVING_MEEKNESS) && !HAS_TRAIT(target, TRAIT_NOMOOD))
 					var/mob/living/carbon/human/E = target
 					if(iself(E) || ishalfelf(E) || isdarkelf(E))
 						if(!E.cmode)
-							to_chat(target, span_love("It tickles..."))
+							to_chat(target, span_love("痒痒的……"))
 							E.emote("eflick", intentional = TRUE)
 			else if(H.zone_selected == BODY_ZONE_PRECISE_R_EYE || H.zone_selected == BODY_ZONE_PRECISE_L_EYE)
-				message_param = "kisses %t on the brow."
+				message_param = "亲吻了%t的眉间。"
 			else if(H.zone_selected == BODY_ZONE_PRECISE_SKULL)
-				message_param = "kisses %t on the forehead."
+				message_param = "亲吻了%t的额头。"
 			else if(H.zone_selected == BODY_ZONE_HEAD)
-				message_param = "kisses %t on the cheek."
+				message_param = "亲吻了%t的脸颊。"
 			else if(H.zone_selected == BODY_ZONE_PRECISE_GROIN)
-				message_param = "kisses %t between the legs."
+				message_param = "亲吻了%t的两腿之间。"
 				var/mob/living/carbon/human/L = target
 				if(isliving(L))
 					if(!L.cmode)
-						to_chat(target, span_love("It's somewhat stimulating..."))
+						to_chat(target, span_love("这有些刺激……"))
 			else
-				message_param = "kisses %t on \the [parse_zone(H.zone_selected)]."
+				message_param = "亲吻了%t的[parse_zone(H.zone_selected)]。"
 	playsound(target.loc, pick('sound/vo/kiss (1).ogg','sound/vo/kiss (2).ogg'), 100, FALSE, -1)
 	if(user.mind)
 		record_round_statistic(STATS_KISSES_MADE)
@@ -521,8 +521,8 @@
 /datum/emote/living/lick
 	key = "lick"
 	key_third_person = "licks"
-	message = "licking."
-	message_param = "licks %t."
+	message = "舔舐着。"
+	message_param = "舔了舔%t。"
 	emote_type = EMOTE_VISIBLE
 	use_params_for_runechat = TRUE
 
@@ -546,32 +546,32 @@
 				do_change = TRUE
 		if(do_change)
 			if(J.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-				message_param = "licks %t lips."
+				message_param = "舔了舔%t的嘴唇。"
 			else if(J.zone_selected == BODY_ZONE_PRECISE_EARS)
-				message_param = "licks the ear of %t."
+				message_param = "舔了舔%t的耳朵。"
 				if(!HAS_TRAIT(target, TRAIT_DECEIVING_MEEKNESS) && !HAS_TRAIT(target, TRAIT_NOMOOD))
 					var/mob/living/carbon/human/O = target
 					if(iself(O) || ishalfelf(O) || isdarkelf(O))
 						if(!O.cmode)
-							to_chat(target, span_love("It tickles..."))
+							to_chat(target, span_love("痒痒的……"))
 							O.emote("eflick", intentional = TRUE)
 			else if(J.zone_selected == BODY_ZONE_PRECISE_GROIN)
-				message_param = "licks %t between the legs."
+				message_param = "舔舐着%t的两腿之间。"
 				var/mob/living/carbon/human/M = target
 				if(isliving(M))
 					if(!M.cmode)
-						to_chat(target, span_love("It's somewhat stimulating..."))
+						to_chat(target, span_love("这有些刺激……"))
 			else if(J.zone_selected == BODY_ZONE_HEAD)
-				message_param = "licks %t on the cheek."
+				message_param = "舔了舔%t的脸颊。"
 			else
-				message_param = "licks %t on \the [parse_zone(J.zone_selected)]."
+				message_param = "舔了舔%t的[parse_zone(J.zone_selected)]。"
 	playsound(target.loc, pick("sound/vo/lick.ogg"), 100, FALSE, -1)
 
 /datum/emote/living/spit
 	key = "spit"
 	key_third_person = "spits"
-	message = "spits on the ground."
-	message_param = "spits on %t."
+	message = "往地上吐了口唾沫。"
+	message_param = "朝%t吐了口唾沫。"
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_spit()
@@ -587,7 +587,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.mouth)
 			if(H.mouth.spitoutmouth)
-				H.visible_message(span_warning("[H] spits out [H.mouth]."))
+				H.visible_message(span_warning("[H]吐出了[H.mouth]。"))
 				H.dropItemToGround(H.mouth, silent = FALSE)
 			return
 	..()
@@ -606,7 +606,7 @@
 	key = "hug"
 	key_third_person = "hugs"
 	message = ""
-	message_param = "hugs %t."
+	message_param = "拥抱了%t。"
 	emote_type = EMOTE_VISIBLE
 	restraint_check = TRUE
 
@@ -652,18 +652,18 @@
 	if(is_holding)
 		REMOVE_TRAIT(H, TRAIT_HOLDBREATH, "[type]")
 		H.visible_message(
-			span_notice("[H] stops holding [H.p_their()] breath."),
-			span_notice("You stop holding your breath.")
+			span_notice("[H]不再屏住呼吸。"),
+			span_notice("我不再屏住呼吸。")
 		)
 		H.log_message("stopped holding their breath.", LOG_ATTACK)
 	else
-		var/confirm = alert(H, "Are you sure you want to hold your breath? This will kill you if held long enough. You can undo it by pressing the emote again.", "Hold Breath", "Yes", "No")
-		if(confirm != "Yes")
+		var/confirm = alert(H, "确定要屏住呼吸吗？屏息过久会导致死亡。再次使用这个动作即可恢复呼吸。", "屏住呼吸", "是", "否")
+		if(confirm != "是")
 			return FALSE
 		ADD_TRAIT(H, TRAIT_HOLDBREATH, "[type]")
 		H.visible_message(
-			span_notice("[H] begins to hold [H.p_their()] breath."),
-			span_notice("You begin to hold your breath.")
+			span_notice("[H]开始屏住呼吸。"),
+			span_notice("我开始屏住呼吸。")
 		)
 		H.log_message("started holding their breath.", LOG_ATTACK)
 
@@ -673,7 +673,7 @@
 	key = "pat"
 	key_third_person = "pats"
 	message = ""
-	message_param = "pats %t"
+	message_param = "轻拍了%t。"
 	emote_type = EMOTE_VISIBLE
 	restraint_check = TRUE
 
@@ -695,27 +695,27 @@
 		return
 	switch(user.zone_selected)
 		if(BODY_ZONE_PRECISE_SKULL)
-			message_param = "pats %t on the forehead"
+			message_param = "轻拍了%t的额头。"
 		if(BODY_ZONE_HEAD)
-			message_param = "pats %t' cheek"
+			message_param = "轻拍了%t的脸颊。"
 		if(BODY_ZONE_PRECISE_EARS)
-			message_param = "grabs %t ear and pats it"
+			message_param = "握住%t的耳朵，轻轻拍了拍。"
 		if(BODY_ZONE_CHEST)
-			message_param = "pats %t on the back"
+			message_param = "轻拍了%t的后背。"
 		if(BODY_ZONE_L_ARM)
-			message_param = "pats left shoulder of %t"
+			message_param = "轻拍了%t的左肩。"
 		if(BODY_ZONE_R_ARM)
-			message_param = "pats right shoulder of %t"
+			message_param = "轻拍了%t的右肩。"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			message_param = "pats %t' belly"
+			message_param = "轻拍了%t的肚子。"
 		if(BODY_ZONE_PRECISE_GROIN)
-			message_param = "pats %t' ass"
+			message_param = "轻拍了%t的臀部。"
 
 /datum/emote/living/slap
 	key = "slap"
 	key_third_person = "slaps"
 	message = ""
-	message_param = "slaps %t in the face."
+	message_param = "扇了%t一耳光。"
 	emote_type = EMOTE_VISIBLE
 	restraint_check = TRUE
 
@@ -725,13 +725,13 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.zone_selected == BODY_ZONE_PRECISE_GROIN)
-			message_param = "slaps %t's ass!"
+			message_param = "拍了一下%t的臀部！"
 		else if(H.zone_selected == BODY_ZONE_PRECISE_SKULL)
-			message_param = "slaps %t's head!"
+			message_param = "拍了一下%t的脑袋！"
 		else if(H.zone_selected == BODY_ZONE_PRECISE_L_HAND || H.zone_selected == BODY_ZONE_PRECISE_R_HAND)
-			message_param = "slaps %t's hand!"
+			message_param = "拍了一下%t的手！"
 		else if(H.zone_selected == BODY_ZONE_CHEST)
-			message_param = "slaps %t's chest!"
+			message_param = "拍了一下%t的胸口！"
 	..()
 
 /mob/living/carbon/human/verb/emote_slap()
@@ -754,7 +754,7 @@
 	key = "pinch"
 	key_third_person = "pinches"
 	message = ""
-	message_param = "pinches %t."
+	message_param = "捏了%t一下。"
 	emote_type = EMOTE_VISIBLE
 	restraint_check = TRUE
 
@@ -780,9 +780,9 @@
 /datum/emote/living/laugh
 	key = "laugh"
 	key_third_person = "laughs"
-	message = "laughs."
-	message_mime = "laughs silently!"
-	message_muffled = "makes a muffled laugh."
+	message = "大笑起来。"
+	message_mime = "无声地大笑着！"
+	message_muffled = "发出一阵闷闷的笑声。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 	needs_emotion = TRUE
@@ -803,7 +803,7 @@
 				continue
 			if(HAS_TRAIT(H, TRAIT_XYLIX) && !H.has_status_effect(/datum/status_effect/buff/xylix_joy))
 				H.apply_status_effect(/datum/status_effect/buff/xylix_joy)
-				to_chat(H, span_info("The laughter brings a smile to my face, and fortune to my steps!"))
+				to_chat(H, span_info("这阵大笑让我露出微笑，也为我的脚步带来好运！"))
 
 /mob/living/carbon/human/verb/emote_laugh()
 	set name = "Laugh"
@@ -814,14 +814,14 @@
 /datum/emote/living/look
 	key = "look"
 	key_third_person = "looks"
-	message = "stares blankly."
-	message_param = "looks at %t."
+	message = "目光呆滞地望着前方。"
+	message_param = "看向%t。"
 
 /datum/emote/living/nod
 	key = "nod"
 	key_third_person = "nods"
-	message = "nods."
-	message_param = "nods at %t."
+	message = "点了点头。"
+	message_param = "朝%t点了点头。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_nod()
 	set name = "Nod"
@@ -832,8 +832,8 @@
 /datum/emote/living/point
 	key = "point"
 	key_third_person = "points"
-	message = "points."
-	message_param = "points at %t."
+	message = "伸手指了指。"
+	message_param = "指向%t。"
 	restraint_check = TRUE
 
 /datum/emote/living/point/run_emote(mob/user, params, type_override, intentional)
@@ -842,26 +842,26 @@
 		var/mob/living/carbon/human/H = user
 		if(H.get_num_arms() == 0)
 			if(H.get_num_legs() != 0)
-				message_param = "tries to point at %t with a leg, <span class='danger'>falling down</span> in the process!"
+				message_param = "试图用腿指向%t，却<span class='danger'>摔倒了</span>！"
 				H.Paralyze(20)
 			else
-				message_param = "<span class='danger'>bumps [user.p_their()] head on the ground</span> trying to motion towards %t."
+				message_param = "试图向%t示意，却<span class='danger'>一头撞在地上</span>。"
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 	..()
 
 /datum/emote/living/pout
 	key = "pout"
 	key_third_person = "pouts"
-	message = "pouts."
+	message = "噘起了嘴。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
 /datum/emote/living/scream
 	key = "scream"
 	key_third_person = "screams"
-	message = "screams!"
-	message_mime = "acts out a scream!"
-	message_muffled = "makes a muffled noise in attempt to scream!"
+	message = "尖叫起来！"
+	message_mime = "做出尖叫的样子！"
+	message_muffled = "试图尖叫，却只发出一声闷响！"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 	needs_emotion = TRUE
@@ -878,7 +878,7 @@
 		var/mob/living/carbon/C = user
 		if(intentional)
 			if(!C.stamina_add(10))
-				to_chat(C, span_warning("I try to scream but my voice fails me."))
+				to_chat(C, span_warning("我想尖叫，却发不出声音。"))
 				. = FALSE
 
 /datum/emote/living/scream/run_emote(mob/user, params, type_override, intentional, targetted)
@@ -888,7 +888,7 @@
 
 /datum/emote/living/scream/painscream
 	key = "painscream"
-	message = "screams in pain!"
+	message = "痛得尖叫起来！"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	show_runechat = FALSE
@@ -907,14 +907,14 @@
 
 /datum/emote/living/scream/strain
 	key = "strain"
-	message = "strains themselves!"
+	message = "使出了浑身的力气！"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	show_runechat = FALSE
 
 /datum/emote/living/scream/agony
 	key = "agony"
-	message = "screams in agony!"
+	message = "发出痛苦的惨叫！"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	show_runechat = FALSE
@@ -1048,14 +1048,14 @@
 
 /datum/emote/living/haltyell
 	key = "haltyell"
-	message = "shouts a halt!"
+	message = "大喊一声：“站住！”"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	show_runechat = FALSE
 
 /datum/emote/living/rage
 	key = "rage"
-	message = "screams in rage!"
+	message = "愤怒地咆哮！"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1072,8 +1072,8 @@
 
 /datum/emote/living/attnwhistle
 	key = "attnwhistle"
-	message = "whistles for attention!"
-	message_muffled = "makes a muffled noise."
+	message = "吹了声口哨以引起注意！"
+	message_muffled = "发出一声闷响。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1086,21 +1086,21 @@
 /datum/emote/living/choke
 	key = "choke"
 	key_third_person = "chokes"
-	message = "chokes!"
+	message = "噎住了！"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
 /datum/emote/living/scowl
 	key = "scowl"
 	key_third_person = "scowls"
-	message = "scowls."
+	message = "阴沉着脸。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
 /datum/emote/living/shakehead
 	key = "shakehead"
 	key_third_person = "shakeshead"
-	message = "shakes their head."
+	message = "摇了摇头。"
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_shakehead()
@@ -1112,7 +1112,7 @@
 /datum/emote/living/shiver
 	key = "shiver"
 	key_third_person = "shiver"
-	message = "shivers."
+	message = "打了个寒颤。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
@@ -1161,8 +1161,8 @@
 /datum/emote/living/sigh
 	key = "sigh"
 	key_third_person = "sighs"
-	message = "sighs."
-	message_muffled = "makes a muffled sigh."
+	message = "叹了口气。"
+	message_muffled = "发出一声闷闷的叹息。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1175,8 +1175,8 @@
 /datum/emote/living/whistle
 	key = "whistle"
 	key_third_person = "whistles"
-	message = "whistles."
-	message_muffled = "makes a muffled noise."
+	message = "吹着口哨。"
+	message_muffled = "发出一声闷响。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1189,8 +1189,8 @@
 /datum/emote/living/hmm
 	key = "hmm"
 	key_third_person = "hmms"
-	message = "hmms."
-	message_muffled = "makes a muffled hmm."
+	message = "沉吟了一声。"
+	message_muffled = "发出一声闷闷的沉吟。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1203,7 +1203,7 @@
 /datum/emote/living/huh
 	key = "huh"
 	key_third_person = "huhs"
-	message_muffled = "makes a muffled noise."
+	message_muffled = "发出一声闷响。"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	show_runechat = FALSE
@@ -1217,9 +1217,9 @@
 /datum/emote/living/hum
 	key = "hum"
 	key_third_person = "hums"
-	message = "hums."
+	message = "哼着小曲。"
 	emote_type = EMOTE_AUDIBLE
-	message_muffled = "makes a muffled hum."
+	message_muffled = "闷闷地哼着小曲。"
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_hum()
@@ -1231,7 +1231,7 @@
 /datum/emote/living/smile
 	key = "smile"
 	key_third_person = "smiles"
-	message = "smiles."
+	message = "微笑着。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_smile()
 	set name = "Smile"
@@ -1242,24 +1242,24 @@
 /datum/emote/living/sneeze
 	key = "sneeze"
 	key_third_person = "sneezes"
-	message = "sneezes."
-	message_muffled = "makes a muffled sneeze."
+	message = "打了个喷嚏。"
+	message_muffled = "闷闷地打了个喷嚏。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
 /datum/emote/living/hmph
 	key = "hmph"
 	key_third_person = "hmphs"
-	message = "hmphs."
-	message_muffled = "makes a muffled sneeze."
+	message = "哼了一声。"
+	message_muffled = "闷闷地哼了一声。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
 /datum/emote/living/shh
 	key = "shh"
 	key_third_person = "shhs"
-	message = "shooshes."
-	message_muffled = "makes a muffled shh."
+	message = "嘘了一声，示意安静。"
+	message_muffled = "闷闷地嘘了一声。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1272,20 +1272,20 @@
 /datum/emote/living/smug
 	key = "smug"
 	key_third_person = "smugs"
-	message = "grins smugly."
+	message = "得意地咧嘴笑了。"
 
 /datum/emote/living/sniff
 	key = "sniff"
 	key_third_person = "sniffs"
-	message = "sniffs."
+	message = "嗅了嗅。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
 /datum/emote/living/snore
 	key = "snore"
 	key_third_person = "snores"
-	message = "snores."
-	message_mime = "sleeps soundly."
+	message = "打着鼾。"
+	message_mime = "睡得很熟。"
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = UNCONSCIOUS
 	snd_range = -4
@@ -1294,46 +1294,46 @@
 /datum/emote/living/stare
 	key = "stare"
 	key_third_person = "stares"
-	message = "stares."
-	message_param = "stares at %t."
+	message = "凝视着前方。"
+	message_param = "盯着%t。"
 
 /datum/emote/living/strech
 	key = "stretch"
 	key_third_person = "stretches"
-	message = "stretches their arms."
+	message = "伸展着双臂。"
 
 /datum/emote/living/sulk
 	key = "sulk"
 	key_third_person = "sulks"
-	message = "sulks down sadly."
+	message = "垂头丧气地生着闷气。"
 
 /datum/emote/living/sway
 	key = "sway"
 	key_third_person = "sways"
-	message = "sways around dizzily."
+	message = "晕头转向地摇晃着。"
 
 /datum/emote/living/tremble
 	key = "tremble"
 	key_third_person = "trembles"
-	message = "trembles in fear!"
+	message = "害怕得浑身发抖！"
 
 /datum/emote/living/twitch
 	key = "twitch"
 	key_third_person = "twitches"
-	message = "twitches violently."
+	message = "剧烈抽搐着。"
 
 /datum/emote/living/twitch_s
 	key = "twitch_s"
-	message = "twitches."
+	message = "抽搐了一下。"
 	stat_allowed = UNCONSCIOUS
 	mob_type_ignore_stat_typecache = list(/mob/living/carbon/human)
 
 /datum/emote/living/warcry
 	key = "warcry"
 	key_third_person = "warcrys"
-	message = "lets out an inspiring battle cry!"
+	message = "发出振奋人心的战吼！"
 	emote_type = EMOTE_AUDIBLE
-	message_muffled = "makes a muffled shout!"
+	message_muffled = "发出一声闷闷的呐喊！"
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_warcry()
@@ -1345,14 +1345,14 @@
 /datum/emote/living/wave
 	key = "wave"
 	key_third_person = "waves"
-	message = "waves."
+	message = "挥了挥手。"
 
 /datum/emote/living/whimper
 	key = "whimper"
 	key_third_person = "whimpers"
-	message = "whimpers."
-	message_mime = "appears hurt."
-	message_muffled = "makes a muffled whimper."
+	message = "呜咽着。"
+	message_mime = "露出痛苦的神情。"
+	message_muffled = "发出一声闷闷的呜咽。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1365,13 +1365,13 @@
 /datum/emote/living/wsmile
 	key = "wsmile"
 	key_third_person = "wsmiles"
-	message = "smiles weakly."
+	message = "勉强露出一丝微笑。"
 
 /datum/emote/living/yawn
 	key = "yawn"
 	key_third_person = "yawns"
-	message = "yawns."
-	message_muffled = "makes a muffled yawn."
+	message = "打了个哈欠。"
+	message_muffled = "闷闷地打了个哈欠。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -1473,8 +1473,8 @@
 /datum/emote/beep
 	key = "beep"
 	key_third_person = "beeps"
-	message = "beeps."
-	message_param = "beeps at %t."
+	message = "发出哔哔声。"
+	message_param = "朝%t发出哔哔声。"
 	sound = 'sound/blank.ogg'
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon)
 /*
@@ -1487,10 +1487,10 @@
 	. = ..()
 	var/obj/item/circlegame/N = new(user)
 	if(user.put_in_hands(N))
-		to_chat(user, span_notice("I make a circle with your hand."))
+		to_chat(user, span_notice("我用手比了个圈。"))
 	else
 		qdel(N)
-		to_chat(user, span_warning("I don't have any free hands to make a circle with."))
+		to_chat(user, span_warning("我没有空闲的手来比圈。"))
 
 /datum/emote/living/slap
 	key = "slap"
@@ -1503,15 +1503,15 @@
 		return
 	var/obj/item/slapper/N = new(user)
 	if(user.put_in_hands(N))
-		to_chat(user, span_notice("I ready your slapping hand."))
+		to_chat(user, span_notice("我扬起手，准备扇一巴掌。"))
 	else
-		to_chat(user, span_warning("You're incapable of slapping in your current state."))
+		to_chat(user, span_warning("我现在没法扇巴掌。"))
 */
 
 /datum/emote/living/shake
 	key = "shake"
 	key_third_person = "shakes"
-	message = "shakes their head."
+	message = "摇了摇头。"
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_shake()
@@ -1523,7 +1523,7 @@
 /datum/emote/living/squint
 	key = "squint"
 	key_third_person = "squints"
-	message = "squints their eyes."
+	message = "眯起了眼睛。"
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_squint()
@@ -1535,9 +1535,9 @@
 /datum/emote/living/meow
 	key = "meow"
 	key_third_person = "meows!"
-	message = "meows!"
+	message = "喵地叫了一声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1659,7 +1659,7 @@
 		verbs += allowed_verbs
 
 /mob/living/carbon/human/proc/show_tongue_noise_warning()
-	to_chat(src, span_warning("Your tongue doesn't do that"))
+	to_chat(src, span_warning("我的舌头发不出这种声音。"))
 
 /mob/living/carbon/human/verb/emote_meow()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
@@ -1673,9 +1673,9 @@
 /datum/emote/living/caw
 	key = "caw"
 	key_third_person = "caws!"
-	message = "caws!"
+	message = "发出乌鸦般的叫声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1692,9 +1692,9 @@
 /datum/emote/living/peep
 	key = "peep"
 	key_third_person = "peeps!"
-	message = "peeps!"
+	message = "啾啾地叫着！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1711,9 +1711,9 @@
 /datum/emote/living/hoot
 	key = "hoot"
 	key_third_person = "hoots!"
-	message = "hoots!"
+	message = "发出猫头鹰般的咕咕声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1730,9 +1730,9 @@
 /datum/emote/living/squeak
 	key = "squeak"
 	key_third_person = "squeaks!"
-	message = "squeaks!"
+	message = "吱吱地叫着！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1749,9 +1749,9 @@
 /datum/emote/living/chirp
 	key = "chirp"
 	key_third_person = "chirps!"
-	message = "chirps!"
+	message = "啁啾鸣叫！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1768,9 +1768,9 @@
 /datum/emote/living/warble
 	key = "warble"
 	key_third_person = "warbles!"
-	message = "warbles!"
+	message = "婉转啼鸣！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1787,9 +1787,9 @@
 /datum/emote/living/dove
 	key = "dove"
 	key_third_person = "coos!"
-	message = "coos!"
+	message = "发出鸽子般的咕咕声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1806,9 +1806,9 @@
 /datum/emote/living/loudcaw
 	key = "loudcaw"
 	key_third_person = "calls!"
-	message = "calls!"
+	message = "高声鸣叫！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1825,9 +1825,9 @@
 /datum/emote/living/raptor
 	key = "raptor"
 	key_third_person = "Makes a guttural noise!"
-	message = "makes a guttural noise!"
+	message = "从喉咙深处发出低沉的叫声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1845,9 +1845,9 @@
 /datum/emote/living/hiss
 	key = "hiss"
 	key_third_person = "hisses!"
-	message = "hisses!"
+	message = "发出嘶嘶声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1868,9 +1868,9 @@
 /datum/emote/living/phiss
 	key = "phiss"
 	key_third_person = "hisses!"
-	message = "hisses!"
+	message = "发出嘶嘶声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1891,9 +1891,9 @@
 /datum/emote/living/roar
 	key = "roar"
 	key_third_person = "roars!"
-	message = "roars!"
+	message = "发出一声咆哮！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 
@@ -1909,9 +1909,9 @@
 /datum/emote/living/howl
 	key = "howl"
 	key_third_person = "howls!"
-	message = "howls!"
+	message = "仰头长嚎！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1928,9 +1928,9 @@
 /datum/emote/living/cackle
 	key = "cackle"
 	key_third_person = "cackles!"
-	message = "cackles!"
+	message = "嘎嘎怪笑！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1947,9 +1947,9 @@
 /datum/emote/living/whine
 	key = "whine"
 	key_third_person = "whines."
-	message = "whines."
+	message = "哀鸣着。"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1966,9 +1966,9 @@
 /datum/emote/living/trill
 	key = "trill"
 	key_third_person = "trills!"
-	message = "trills!"
+	message = "发出颤鸣！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -1985,7 +1985,7 @@
 /datum/emote/living/snap
 	key = "snap"
 	key_third_person = "finger snaps!"
-	message = "finger snaps!"
+	message = "打了个响指！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	show_runechat = FALSE
 
@@ -1998,7 +1998,7 @@
 /datum/emote/living/blink
 	key = "blink"
 	key_third_person = "blinks."
-	message = "blinks."
+	message = "眨了眨眼。"
 	emote_type = EMOTE_VISIBLE
 	show_runechat = FALSE
 
@@ -2011,7 +2011,7 @@
 /datum/emote/living/stomp
 	key = "stomp"
 	key_third_person = "stomps!"
-	message = "stomps!"
+	message = "跺了跺脚！"
 	emote_type = EMOTE_VISIBLE
 	show_runechat = FALSE
 
@@ -2024,7 +2024,7 @@
 /datum/emote/living/snap2
 	key = "snap2"
 	key_third_person = "finger snaps twice!"
-	message = "finger snaps twice!"
+	message = "打了两个响指！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	show_runechat = FALSE
 
@@ -2037,7 +2037,7 @@
 /datum/emote/living/snap3
 	key = "snap3"
 	key_third_person = "finger snaps thrice!"
-	message = "finger snaps thrice!"
+	message = "打了三个响指！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	show_runechat = FALSE
 
@@ -2050,9 +2050,9 @@
 /datum/emote/living/purr
 	key = "purr"
 	key_third_person = "purrs!"
-	message = "purrs!"
+	message = "发出满足的呼噜声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2069,9 +2069,9 @@
 /datum/emote/living/moo
 	key = "moo"
 	key_third_person = "moos!"
-	message = "moos!"
+	message = "哞哞叫着！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2088,9 +2088,9 @@
 /datum/emote/living/bark
 	key = "bark"
 	key_third_person = "barks!"
-	message = "barks!"
+	message = "汪汪叫着！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2107,9 +2107,9 @@
 /datum/emote/living/growl
 	key = "growl"
 	key_third_person = "growls!"
-	message = "growls!"
+	message = "发出低吼！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2126,9 +2126,9 @@
 /datum/emote/living/bleat
 	key = "bleat"
 	key_third_person = "bleats!"
-	message = "bleats!"
+	message = "咩咩叫着！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2145,9 +2145,9 @@
 /datum/emote/living/chitter
 	key = "chitter"
 	key_third_person = "chitters!"
-	message = "chitters!"
+	message = "发出吱吱的啼叫！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled chitter!"
+	message_muffled = "发出闷闷的吱吱声！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2168,7 +2168,7 @@
 /datum/emote/living/flutter
 	key = "flutter"
 	key_third_person = "flutters!"
-	message = "flutters!"
+	message = "扑扇着翅膀！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	show_runechat = FALSE
 
@@ -2178,13 +2178,13 @@
 		set category = "Noises"
 		emote("flutter", intentional = TRUE)
 	else
-		to_chat(usr, span_warning("Your back doesn't do that"))
+		to_chat(usr, span_warning("我的背部做不出这种动作。"))
 		return
 
 /datum/emote/living/fsalute
 	key = "fsalute"
 	key_third_person = "salutes their faith."
-	message = "salutes their faith."
+	message = "向信仰致敬。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
@@ -2202,7 +2202,7 @@
 /datum/emote/living/ffsalute
 	key = "ffsalute"
 	key_third_person = "salutes their faith."
-	message = "salutes their faith."
+	message = "向信仰致敬。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
@@ -2219,9 +2219,9 @@
 /datum/emote/living/yip
 	key = "yip"
 	key_third_person = "yips"
-	message = "yips!"
+	message = "短促地吠了一声！"
 	emote_type = EMOTE_AUDIBLE
-	message_muffled = "makes a muffled yip!"
+	message_muffled = "发出一声闷闷的短吠！"
 	is_animal = TRUE
 	show_runechat = FALSE
 
@@ -2234,9 +2234,9 @@
 /datum/emote/living/yap
 	key = "yap"
 	key_third_person = "yaps"
-	message = "yaps!"
+	message = "尖声吠叫！"
 	emote_type = EMOTE_AUDIBLE
-	message_muffled = "makes a muffled yap!"
+	message_muffled = "发出闷闷的吠叫声！"
 	is_animal = TRUE
 	show_runechat = FALSE
 /mob/living/carbon/human/verb/yap()
@@ -2264,7 +2264,7 @@
 /datum/emote/living/gulp
 	key = "gulp"
 	key_third_person = "gulps"
-	message = "gulps."
+	message = "咽了口唾沫。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
@@ -2277,7 +2277,7 @@
 /datum/emote/living/crack
 	key = "crack"
 	key_third_person = "cracks"
-	message = "cracks their knuckles."
+	message = "把指关节掰得咔咔响。"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	show_runechat = TRUE
 
@@ -2290,7 +2290,7 @@
 /datum/emote/living/facepalm
 	key = "facepalm"
 	key_third_person = "facepalms"
-	message = "facepalms."
+	message = "无奈地捂住了脸。"
 	emote_type =  EMOTE_AUDIBLE
 	show_runechat = TRUE
 
@@ -2303,7 +2303,7 @@
 /datum/emote/living/eye_roll
 	key = "eye_roll"
 	key_third_person = "eye rolls"
-	message = "rolls their eye."
+	message = "翻了个白眼。"
 	emote_type = EMOTE_VISIBLE
 	show_runechat = TRUE
 
@@ -2316,7 +2316,7 @@
 /datum/emote/living/salute
 	key = "salute"
 	key_third_person = "salutes"
-	message = "salutes!"
+	message = "敬了个礼！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	show_runechat = TRUE
 
@@ -2329,7 +2329,7 @@
 /datum/emote/living/carbon/human/eflick
 	key = "eflick"
 	key_third_person = "flicks"
-	message = "flicks their ears."
+	message = "抖了抖耳朵。"
 	emote_type = EMOTE_VISIBLE
 	show_runechat = TRUE
 
@@ -2358,14 +2358,14 @@
 /datum/emote/living/carbon/human/bjiggle
 	key = "bjiggle"
 	key_third_person = "jiggles"
-	message = "shakes their chest and bounces on the spot!"
+	message = "晃动着胸部，在原地蹦跳！"
 	emote_type = EMOTE_VISIBLE
 	show_runechat = TRUE
 
 /proc/jiggle_duration_label(duration)
 	if(duration > BREAST_JIGGLE_FREE_DURATION)
-		return "[duration / 10] seconds (tiring)"
-	return "[duration / 10] seconds"
+		return "[duration / 10]秒（会消耗体力）"
+	return "[duration / 10]秒"
 
 /proc/jiggle_duration_choices()
 	var/static/list/choices
@@ -2375,7 +2375,7 @@
 	for(var/duration = BREAST_JIGGLE_MIN_DURATION; duration < BREAST_JIGGLE_MAX_DURATION; duration += BREAST_JIGGLE_PROMPT_STEP)
 		choices[jiggle_duration_label(duration)] = duration
 	choices[jiggle_duration_label(BREAST_JIGGLE_MAX_DURATION)] = BREAST_JIGGLE_MAX_DURATION
-	choices["Until I stop myself (very tiring)"] = BREAST_JIGGLE_ENDLESS
+	choices["直到我主动停止（非常耗费体力）"] = BREAST_JIGGLE_ENDLESS
 	return choices
 
 /datum/emote/living/carbon/human/bjiggle/run_emote(mob/user, params, type_override, intentional)
@@ -2386,7 +2386,7 @@
 	var/endless = FALSE
 	if(intentional && H.client)
 		var/list/choices = jiggle_duration_choices()
-		var/picked = tgui_input_list(H, "How long should I keep it up?", "Jiggle", choices)
+		var/picked = tgui_input_list(H, "我要持续多久？", "晃动胸部", choices)
 		if(isnull(picked))
 			return
 		if(QDELETED(H) || !H.dna || !H.dna.species || !H.dna.species.can_jiggle_breasts(H))
@@ -2404,7 +2404,7 @@
 		return
 	var/costs_stamina = endless || (duration > BREAST_JIGGLE_FREE_DURATION)
 	if(costs_stamina && !H.jiggle_stamina_is_free() && H.stamina >= H.max_stamina)
-		to_chat(H, span_warning("I am far too weary to keep this up."))
+		to_chat(H, span_warning("我太累了，已经坚持不下去了。"))
 		duration = BREAST_JIGGLE_MIN_DURATION
 		endless = FALSE
 		costs_stamina = FALSE
@@ -2440,7 +2440,7 @@
 /datum/emote/living/sniff
 	key = "sniff"
 	key_third_person = "sniffs"
-	message = "sniffs."
+	message = "嗅了嗅。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
@@ -2491,7 +2491,7 @@
 
 		chance *= chance_per_point
 
-		var/msg = success ? span_green("SUCCEEDS and [pick(success_message_list)]") : span_danger("FAILS and [pick(failure_message_list)] [chance]%")
+		var/msg = success ? span_green("检定成功，[pick(success_message_list)]") : span_danger("检定失败，[pick(failure_message_list)] [chance]%")
 
 		msg = replace_pronoun(user, msg)
 
@@ -2522,9 +2522,9 @@
 		var/seen_log_msg = "[emotelocation] [msg]"
 		// Checks to see if we're emoting on the body while we have a head, or if we're emoting on the head.
 		if(human && human.voice_color)
-			msg = "<span style='color:#[human.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[emotelocation]</b></span> " + msg
+			msg = "<span style='color:#[human.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[list("Unknown" = "未知者", "Unknown Man" = "未知男子", "Unknown Woman" = "未知女子")[emotelocation.name] || emotelocation]</b></span> " + msg
 		else
-			msg = "<b>[emotelocation]</b> " + msg
+			msg = "<b>[list("Unknown" = "未知者", "Unknown Man" = "未知男子", "Unknown Woman" = "未知女子")[emotelocation.name] || emotelocation]</b> " + msg
 		for(var/mob/M in GLOB.dead_mob_list)
 			if(!M.client || isnewplayer(M))
 				continue
@@ -2543,21 +2543,21 @@
 	key = "strength"
 	key_third_person = "str"
 	attempt_message_list = list(
-		"tests their strength...",
-		"puts their back into it...",
-		"begins to flex...",
+		"试着展示力量……",
+		"使出了浑身力气……",
+		"开始绷紧肌肉……",
 	)
 
 	success_message_list = list(
-		"is brimming with power!",
-		"is truly beefy!",
-		"shows off their muscle!",
+		"力量充沛！",
+		"真是壮实！",
+		"秀出了肌肉！",
 	)
 
 	failure_message_list = list(
-		"is a little wet noodle...",
-		"would lose in an arm wrestling match against a rous...",
-		"should eat more sausage...",
+		"软得像根面条……",
+		"掰手腕恐怕连巨鼠都赢不了……",
+		"该多吃点香肠了……",
 	)
 
 /mob/living/carbon/human/verb/emote_strength_roll()
@@ -2570,21 +2570,21 @@
 	key = "perception"
 	key_third_person = "per"
 	attempt_message_list = list(
-		"takes a good, long look...",
-		"focuses in...",
-		"squints...",
+		"仔细端详了许久……",
+		"集中注意力……",
+		"眯起了眼睛……",
 	)
 
 	success_message_list = list(
-		"has eyes like a hawk!",
-		"sees what others don't!",
-		"has perfect 20/20 vision!",
+		"目光如鹰般锐利！",
+		"看见了别人没注意到的东西！",
+		"视力极佳！",
 	)
 
 	failure_message_list = list(
-		"is totally oblivious...",
-		"has cataracts in their eyes...",
-		"is blind...",
+		"完全没有察觉……",
+		"眼睛像是蒙了白内障……",
+		"简直像个瞎子……",
 	)
 
 /mob/living/carbon/human/verb/emote_perception_roll()
@@ -2598,21 +2598,21 @@
 	key = "intelligence"
 	key_third_person = "int"
 	attempt_message_list = list(
-		"thinks hard...",
-		"furrows their brows...",
-		"rubs their chin...",
+		"苦思冥想……",
+		"紧锁眉头……",
+		"揉了揉下巴……",
 	)
 
 	success_message_list = list(
-		"is a genius!",
-		"has a mind sharp as a whip!",
-		"knows what they're doing!",
+		"真是个天才！",
+		"思维敏捷！",
+		"心中自有分寸！",
 	)
 
 	failure_message_list = list(
-		"is as dumb as a rock...",
-		"has an empty head...",
-		"couldn't put 2 and 2 together...",
+		"笨得像块石头……",
+		"脑袋空空……",
+		"连二加二都算不出来……",
 	)
 
 /mob/living/carbon/human/verb/emote_intelligence_roll()
@@ -2625,21 +2625,21 @@
 	key = "constitution"
 	key_third_person = "con"
 	attempt_message_list = list(
-		"tests their toughness...",
-		"braces for impact...",
-		"prepares to endure...",
+		"试着展示体魄……",
+		"绷紧身体，准备承受冲击……",
+		"准备咬牙撑住……",
 	)
 
 	success_message_list = list(
-		"doesn't even flinch!",
-		"is solid as an oak!",
-		"is one tough nut to crack!",
+		"连眉头都没皱一下！",
+		"像橡树一样坚实！",
+		"可真够硬朗！",
 	)
 
 	failure_message_list = list(
-		"has paper skin...",
-		"would be torn to shreds by a light breeze...",
-		"has a glass jaw...",
+		"身体像纸一样脆弱……",
+		"仿佛一阵微风就能吹散……",
+		"不堪一击……",
 	)
 
 /mob/living/carbon/human/verb/emote_constitution_roll()
@@ -2652,21 +2652,21 @@
 	key = "willpower"
 	key_third_person = "wil"
 	attempt_message_list = list(
-		"tests their willpower...",
-		"gathers their courage...",
-		"prepares to use their determination...",
+		"试着展示意志力……",
+		"鼓起勇气……",
+		"下定决心……",
 	)
 
 	success_message_list = list(
-		"proves mighty!",
-		"never gives up!",
-		"persists through anything!",
+		"展现了坚强的意志！",
+		"绝不放弃！",
+		"无论如何都能坚持到底！",
 	)
 
 	failure_message_list = list(
-		"is a weak willed chicken...",
-		"gives up trying...",
-		"faints when they get a splinter...",
+		"是个意志薄弱的胆小鬼……",
+		"放弃了尝试……",
+		"仿佛扎根木刺就会晕过去……",
 	)
 
 /mob/living/carbon/human/verb/emote_willpower_roll()
@@ -2679,21 +2679,21 @@
 	key = "speed"
 	key_third_person = "spd"
 	attempt_message_list = list(
-		"prepares their moves...",
-		"starts to get limber...",
-		"tries to get speedy...",
+		"准备活动身手……",
+		"开始舒展筋骨……",
+		"试着加快动作……",
 	)
 
 	success_message_list = list(
-		"is in perfect control!",
-		"is as agile as a cat!",
-		"is very flexible!",
+		"动作收放自如！",
+		"像猫一样敏捷！",
+		"身手十分灵活！",
 	)
 
 	failure_message_list = list(
-		"has two left feet...",
-		"trips over themselves...",
-		"is slower than a snail...",
+		"笨手笨脚……",
+		"被自己的脚绊倒了……",
+		"比蜗牛还慢……",
 	)
 
 /mob/living/carbon/human/verb/emote_speed_roll()
@@ -2706,21 +2706,21 @@
 	key = "fortune"
 	key_third_person = "for"
 	attempt_message_list = list(
-		"tries their fortune...",
-		"takes a chance...",
-		"prepares to gamble...",
+		"试试运气……",
+		"冒险一试……",
+		"准备赌上一把……",
 	)
 
 	success_message_list = list(
-		"could make an arrow turn around and climb back into the bow!",
-		"has a rabbit's paw in their pocket!",
-		"persists through pure luck!",
+		"运气好得连射来的箭都能掉头飞回弓上！",
+		"口袋里准是藏着幸运兔脚！",
+		"全凭好运撑了过来！",
 	)
 
 	failure_message_list = list(
-		"realizes the game was rigged from the start...",
-		"gets dealt a bad hand...",
-		"has the odds stacked against them...",
+		"发现这场赌局从一开始就被做了手脚……",
+		"摸到了一手烂牌……",
+		"运气完全不站在自己这边……",
 	)
 
 /mob/living/carbon/human/verb/emote_fortune_roll()
@@ -2747,10 +2747,10 @@
 		return FALSE
 
 	var/mob/living/L = user
-	to_chat(L, span_danger("I pray to my patron for my death... and I am heard."))
+	to_chat(L, span_danger("我向主神祈求死亡……祂听到了我的祈求。"))
 	var/lastmsg = params
 	if(!lastmsg)
-		lastmsg = input("Whisper your final words:", "Last Words") as text|null
+		lastmsg = input("低声说出你的遗言：", "遗言") as text|null
 	if(!lastmsg)
 		return FALSE
 	L.whisper(lastmsg)
@@ -2765,9 +2765,9 @@
 /datum/emote/living/arf
 	key = "arf"
 	key_third_person = "arfs!"
-	message = "arfs!"
+	message = "汪地叫了一声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled arf!"
+	message_muffled = "闷闷地汪了一声！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2784,9 +2784,9 @@
 /datum/emote/living/awuff
 	key = "awuff"
 	key_third_person = "awuffs!"
-	message = "awuffs!"
+	message = "嗷呜叫了一声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled awuff!"
+	message_muffled = "闷闷地嗷呜叫了一声！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2803,9 +2803,9 @@
 /datum/emote/living/dcomplain
 	key = "dcomplain"
 	key_third_person = "complains!"
-	message = "complains!"
+	message = "不满地叫着！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled sound!"
+	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2822,9 +2822,9 @@
 /datum/emote/living/dgrowl
 	key = "dgrowl"
 	key_third_person = "growls!"
-	message = "growls!"
+	message = "发出低吼！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled growl!"
+	message_muffled = "发出一声闷闷的低吼！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
@@ -2841,9 +2841,9 @@
 /datum/emote/living/dwhine
 	key = "dwhine"
 	key_third_person = "whines!"
-	message = "whines!"
+	message = "哀鸣起来！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled whine!"
+	message_muffled = "发出一声闷闷的哀鸣！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
