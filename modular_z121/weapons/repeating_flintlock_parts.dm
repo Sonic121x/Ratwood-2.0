@@ -101,9 +101,9 @@
 /obj/item/z121_flintlock_part/unfinished
 	name = "未完成的连发燧枪"
 	desc = "已安装三枚齿轮的机匣，还需要在桌面上安装一根长枪管。"
-	icon = 'modular_helmsguard/icons/weapons/fusil.dmi'
-	icon_state = "fusil"
-	item_state = "fusil"
+	icon = 'modular_z121/icon/weapon64.dmi'
+	icon_state = "Kalthoff repeater 1"
+	item_state = "Kalthoff repeater 1"
 	pixel_x = -16
 	pixel_y = -16
 	w_class = WEIGHT_CLASS_BULKY
