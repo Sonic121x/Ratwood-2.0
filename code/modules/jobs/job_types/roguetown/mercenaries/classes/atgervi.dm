@@ -294,37 +294,37 @@
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/gronn
 	name = "雕刻护符" //plotting talisman
-	desc = "'The hunt, the studying of your prey, the learning of its routes, the knowledge our ancestors passed down, the empowerment of your people and yourself. Learn of the world, or fade away.'	</br>	</br>The Plotting Wolf embodies the virtues of progress and knowledge, so that no obstacle nor threat to the homeland remains insurmountable. To understand the truths of beast-and-bronze is to lighten the future's hardships. Do not humor magicka, however, for playing with fire shall always end in someone being burned."
+	desc = "'狩猎，钻研猎物，摸清它的行踪，传承先祖的智慧，让族人与自己变得强大。认识世界，否则便归于消亡。'	</br>	</br>谋略之狼象征进取与求知的美德，使故土面临的阻碍与威胁皆可克服。洞悉野兽与青铜的真理，便能减轻未来的艰辛。但切莫沾染魔法，玩火总会有人被灼伤。"
 	icon_state = "gronnzizo"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/baotha/gronn
 	name = "雕刻护符" //relishing talisma
-	desc = "'“The excess of desire, the want of more, the glory of victory, the lover's embrace. Embrace the Leopard, or forget your strength.'	</br>	</br>The Relishing Leopard embodies the virtues of love and glory, both in battle and at home. Enjoy the flesh, the drink, and the spice; but be wary to avoid overindulgence, for it shall leave you despondent and lethargic. To become too comfortable is to become weak, and such weakness would turn you into a delicious snack for the Leopard."
+	desc = "'满溢的欲望，无尽的渴求，胜利的荣光，爱人的拥抱。拥抱花豹，否则便忘却你的力量。'	</br>	</br>享乐之豹象征爱与荣耀的美德，无论身在战场还是家园。享受肉欲、美酒与香料，但须警惕过度放纵，那会令人萎靡不振、懒散迟钝。过于安逸便会变得软弱，而这份软弱会让你沦为花豹的美餐。"
 	icon_state = "gronnbaotha"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/matthios/gronn
 	name = "雕刻护符" //starving talisman
-	desc = "'“The hunger, the destruction, the impending frost, the enemy of my enemy. Feed the Bear, or be consumed.'	</br>	</br>The Starving Bear embodies not a virtue, but the necessity to thrive above all else. Avarice is not a sin, but a virtue; to ensure that the homeland never suffers from poverty nor starvation again. Pillage, plunder, and perforate the wealth that others would keep from you, but do not forget that every choice begets consequences."
+	desc = "'饥饿，毁灭，迫近的霜寒，吾敌之敌。喂饱巨熊，否则便被吞噬。'	</br>	</br>饥饿之熊象征的并非美德，而是不惜一切求得繁盛的必要。贪婪并非罪过，而是美德；唯有如此，才能使故土不再遭受贫穷与饥荒。劫掠、抢夺，夺取他人不愿与你分享的财富，但别忘了，每一个选择都会带来后果。"
 	icon_state = "gronnmatthios"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/gronn
 	name = "雕刻护符" //grinning talisman
-	desc = "'The battle, the combat, the violence, the rush of victory, the honored glories. Defeat the foe, or die with them.'	</br>	</br>The Grinning Moose embodies the virtues of strength and domination; to survive both the homeland's frigid blizzards and those who'd seek to maraud its countrymen. Be untamed and unstoppable, but do not lose yourself in the haze; for even the Moose was chained once. Kill your own without reason, and the chain shall be tugged; and your soul, too, shall be impaled on their horns."
+	desc = "'战争，搏杀，暴力，胜利的狂喜，受人敬仰的荣耀。击败敌人，否则便与之同赴黄泉。'	</br>	</br>狞笑驼鹿象征力量与支配的美德，使人能熬过故土的凛冽暴雪，也能抵御劫掠同胞的敌人。桀骜不驯，势不可挡，但切莫在狂乱中迷失自我；就连驼鹿也曾被锁链束缚。无故杀害同胞，锁链便会收紧，你的灵魂也将被鹿角贯穿。"
 	icon_state = "gronngraggar"
 
 /obj/item/clothing/neck/roguetown/psicross/dendor/gronn
 	name = "雕刻护符" //volfskinned talisman
-	desc = "'The world above, of knifetoothed plants and rotting carrion. From jungle to desert, even the stones are nature. Heed its call with the respect it commands, or succumb to madness.'	</br>	</br>The Volfskinned Man embodies the virtue of nature and temperance; to live in harmony with the world and its spirits. Pluck a jackberry, plant a seed - Slay a beast, see no part wasted. Yet, temperance must be shown; to take from the world without respect-nor-exchange is to curse the homeland with misfortune. Yet, to completely embrace the world's primality is to lose your humanity - and worse, to become the very beast you hunt."
+	desc = "'地上的世界，遍布利齿如刀的植物与腐败的尸骸。从丛林到荒漠，就连石头也属于自然。怀着应有的敬意聆听它的呼唤，否则便陷入疯狂。'	</br>	</br>披狼皮者象征自然与节制的美德，教人同世界及其中的灵体和谐共处。摘下一颗杰克莓，便种下一粒种子；猎杀一头野兽，便物尽其用。但务必有所节制：毫无敬意、不知回报地索取，只会为故土招来厄运。然而，若彻底投入原始野性，也会丧失人性——更甚者，会变成自己所猎杀的野兽。"
 	icon_state = "gronndendor"
 
 /obj/item/clothing/neck/roguetown/psicross/abyssor/gronn
 	name = "雕刻护符" //hadal talisman
-	desc = "'The chaos below, of coldblack pressure and crushing weight. Be the current. Control the waves. Reign your sails and hold fast against the storm, or be washed away onto an odyssey with no end.'	</br>	</br>The Spiraling Kraken is no virtue, but a presence; the homeland's nautical warden, whose tentacled presence is as unpredictable as the oceans it lords over. To embrace the uncertainty of lyfe is to be rewarded with fortune and mercy when it is most needed. Do not embrace such futility, however, lest you be swept away with all the others into the abyss."
+	desc = "'深处的混沌，冰冷漆黑的水压与碾碎一切的重负。化作洋流，驾驭波涛。掌好风帆，在风暴中坚守，否则便被卷入永无止境的漂泊。'	</br>	</br>盘旋海怪并不象征美德，而是一位真实的存在：故土海域的守护者，遍身触腕，如其统御的大海一般变幻莫测。接纳人生的无常，便能在最需要时得到好运与垂怜。但切莫因此自暴自弃，否则你也会与其他人一同被卷入深渊。"
 	icon_state = "gronnabyssor"
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/gronn/special
 	name = "雕刻护符" //familial talisman
-	desc = "'The memories of the past, and the dreams of the future. A fetish of a beaste, and the carvings of a force that no one beyond your homeland could understand. Sail gracefully, countryman.'"
+	desc = "'过往的回忆，未来的梦想。一尊兽形神物，雕刻着故土之外无人能懂的力量。同胞，愿你航行顺遂。'"
 
 /// Generic version of the matthios gronn necklace that has no examine highlights. Purely for loadout drip
 /obj/item/clothing/neck/roguetown/psicross/inhumen/matthios/gronn/generic

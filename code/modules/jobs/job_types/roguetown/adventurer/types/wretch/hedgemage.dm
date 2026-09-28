@@ -65,24 +65,24 @@
 		wretch_select_bounty(H)
 
 	var/staffs = list(
-		"ronts 系法杖",
-		"blortz 系法杖",
-		"saffira 系法杖",
-		"gemerald 系法杖",
-		"amethyst 系法杖",
-		"toper 系法杖",
+		"隆兹石法杖",
+		"布洛兹石法杖",
+		"蓝晶法杖",
+		"翠晶法杖",
+		"紫水晶法杖",
+		"托珀石法杖",
 	)
 	var/staffchoice = input(H, H, "选择你的法杖", "可选法杖") as anything in staffs
 	switch(staffchoice)
-		if("ronts 系法杖")
+		if("隆兹石法杖")
 			backr = /obj/item/rogueweapon/woodstaff/ruby
-		if("blortz 系法杖")
+		if("布洛兹石法杖")
 			backr = /obj/item/rogueweapon/woodstaff/quartz
-		if("saffira 系法杖")
+		if("蓝晶法杖")
 			backr = /obj/item/rogueweapon/woodstaff/sapphire
-		if("gemerald 系法杖")
+		if("翠晶法杖")
 			backr = /obj/item/rogueweapon/woodstaff/emerald
-		if("amethyst 系法杖")
+		if("紫水晶法杖")
 			backr = /obj/item/rogueweapon/woodstaff/amethyst
-		if("toper 系法杖")
+		if("托珀石法杖")
 			backr = /obj/item/rogueweapon/woodstaff/toper

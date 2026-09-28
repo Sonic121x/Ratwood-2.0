@@ -6,7 +6,7 @@
 	name = "异端宗主" //formerly Doomsayer
 	tutorial = "他们自命不凡。他们软弱无能。他们安于现状。并且毫无希望。可你不同。你将改变这一切。\
 	你曾是圣教会中的高阶人物，因你的行迹，四位升天者赐福于你，要你带来改变，成为他们的神之手。\
-	但这种改变必会遭到抗拒。粉碎异见吧。让他们明白，为何统治于 Gehenna 之上，也胜过匍匐侍奉于 Firmament 之下。"
+	但这种改变必会遭到抗拒。粉碎异见吧。让他们明白，为何在地狱称王，也胜过在天穹屈膝为奴。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS //The Inhumen discriminate not.
 	outfit = /datum/outfit/job/roguetown/wretch/antipope
@@ -38,7 +38,7 @@
 	subclass_stashed_items = list(
 		"针线包" = /obj/item/repair_kit,
 	)
-	extra_context = "仅限异民。无 wretch 悬赏，便于渗透与传播末日预言。拥有邪恶布道、拷问能力、所属神祇的满级神迹，以及来自其他异民神祇的额外神迹。"
+	extra_context = "仅限异民。不带流放者悬赏，便于渗透与传播末日预言。拥有邪恶布道、拷问能力、所属神祇的满级神迹，以及来自其他异民神祇的额外神迹。"
 
 /datum/outfit/job/roguetown/wretch/antipope
 	has_loadout = TRUE

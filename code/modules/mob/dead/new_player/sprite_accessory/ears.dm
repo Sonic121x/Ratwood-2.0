@@ -1,7 +1,7 @@
 /datum/sprite_accessory/ears
 	abstract_type = /datum/sprite_accessory/ears
 	icon = 'icons/mob/sprite_accessory/ears/ears.dmi'
-	color_key_name = "Ears"
+	color_key_name = "耳朵"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/can_flick = FALSE
 
@@ -37,7 +37,7 @@
 	name = "Bat"
 	icon_state = "bat"
 	color_keys = 2
-	color_key_names = list("Ears", "Inner")
+	color_key_names = list("耳朵", "内耳")
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/ears/bear
@@ -48,7 +48,7 @@
 	name = "Big Wolf"
 	icon_state = "bigwolf"
 	color_keys = 2
-	color_key_names = list("Ears", "Inner")
+	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/bigwolf_inner
 	name = "大狼（内耳）"
@@ -67,7 +67,7 @@
 	name = "Bunny (Perky)"
 	icon_state = "bunny_perky"
 	color_keys = 3
-	color_key_names = list("Ears", "Inner", "Tips")
+	color_key_names = list("耳朵", "内耳", "耳尖")
 
 /datum/sprite_accessory/ears/cat_big
 	name = "猫（大）"
@@ -197,7 +197,7 @@
 	name = "Shark"
 	icon_state = "shark"
 	color_keys = 2
-	color_key_names = list("Ears", "Inner")
+	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/skunk
 	name = "臭鼬"
@@ -221,7 +221,7 @@
 	name = "Perky"
 	icon_state = "perky"
 	color_keys = 2
-	color_key_names = list("Ears", "Inner")
+	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/antenna_simple1
 	name = "Insect antenna 1"
@@ -249,13 +249,13 @@
 	name = "Fuzzball antenna 2"
 	icon_state = "antenna_fuzzball2"
 	color_keys = 2
-	color_key_names = list("Ears", "Inner")
+	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/cobrahood
 	name = "Cobra Hood"
 	icon_state = "cobrahood"
 	color_keys = 2
-	color_key_names = list("Ears", "Inner")
+	color_key_names = list("耳朵", "内耳")
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/ears/cobrahoodears
@@ -368,7 +368,7 @@
 	icon_state = "sandfox"
 	name = "Sandfox"
 	color_keys = 2
-	color_key_names = list("Ears", "Inner")
+	color_key_names = list("耳朵", "内耳")
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/ears/lynx
@@ -389,7 +389,7 @@
 	name = "Four Ears"
 	icon_state = "four_ears"
 	color_keys = 2
-	color_key_names = list("Ears", "Details")
+	color_key_names = list("耳朵", "细节")
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/shadekin/band_left

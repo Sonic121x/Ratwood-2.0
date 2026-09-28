@@ -5,7 +5,7 @@
 	var/list/descriptors = list()
 
 /datum/descriptor_choice/face
-	name = "Face"
+	name = "面部"
 	default_descriptor = /datum/mob_descriptor/face/unremarkable
 	descriptors = list(
 		/datum/mob_descriptor/face/unremarkable,
@@ -80,7 +80,7 @@
 	)
 
 /datum/descriptor_choice/body
-	name = "Body"
+	name = "身体"
 	default_descriptor = /datum/mob_descriptor/body/average
 	descriptors = list(
 		/datum/mob_descriptor/body/average,
@@ -227,7 +227,7 @@
 	)
 
 /datum/descriptor_choice/skin
-	name = "Skin"
+	name = "皮肤"
 	default_descriptor = /datum/mob_descriptor/skin/normal
 	descriptors = list(
 		/datum/mob_descriptor/skin/normal,
@@ -248,7 +248,7 @@
 	)
 
 /datum/descriptor_choice/scales
-	name = "Scales"
+	name = "鳞片"
 	default_descriptor = /datum/mob_descriptor/scales/plain
 	descriptors = list(
 		/datum/mob_descriptor/scales/plain,
@@ -260,7 +260,7 @@
 	)
 
 /datum/descriptor_choice/fur
-	name = "Fur"
+	name = "毛皮"
 	default_descriptor = /datum/mob_descriptor/fur/plain
 	descriptors = list(
 		/datum/mob_descriptor/fur/plain,
@@ -279,7 +279,7 @@
 	)
 
 /datum/descriptor_choice/feathers
-	name = "Feathers"
+	name = "羽毛"
 	descriptors = list(
 		/datum/mob_descriptor/feathers/fine,
 		/datum/mob_descriptor/feathers/stiff,
@@ -290,7 +290,7 @@
 	)
 
 /datum/descriptor_choice/chitin
-	name = "Chitin"
+	name = "甲壳"
 	descriptors = list(
 		/datum/mob_descriptor/chitin/smooth,
 		/datum/mob_descriptor/chitin/hard,
@@ -381,7 +381,7 @@
 	)
 
 /datum/descriptor_choice/skin_all
-	name = "Skin/Fur/Scales"
+	name = "皮肤/毛皮/鳞片"
 	default_descriptor = /datum/mob_descriptor/fur/plain
 	descriptors = list(
 		/datum/mob_descriptor/skin/normal,
@@ -424,7 +424,7 @@
 	)
 
 /datum/descriptor_choice/skin_lamia
-	name = "Skin & Scales"
+	name = "皮肤与鳞片"
 	default_descriptor = /datum/mob_descriptor/fur/plain
 	descriptors = list(
 		/datum/mob_descriptor/skin/normal,
@@ -449,7 +449,7 @@
 	)
 
 /datum/descriptor_choice/skin_harpy
-	name = "Skin & Feathers"
+	name = "皮肤与羽毛"
 	default_descriptor = /datum/mob_descriptor/feathers/fine
 	descriptors = list(
 		/datum/mob_descriptor/skin/normal,

@@ -3,8 +3,8 @@
 /datum/advclass/foreigner/dunewell
 	name = "沙泉 游民"
 	tutorial = "坐落于 兹班图的 沙海深处的 沙泉，是一片疯狂之地，也是信仰与异端并存的疆域。\
-	多年以来，无数人为了那座古老 Psydonian 据点遗下的财富与废墟厮杀不休；从那里走出的人，大多也是那场轮回的一部分。\
-	传教者与杀手，不过一体两面。你既然远行至 Ferentia，要么是想逃离这场轮回，要么就是准备再度投身其中。"
+	多年以来，无数人为了那座古老普赛顿据点遗下的财富与废墟厮杀不休；从那里走出的人，大多也是那场轮回的一部分。\
+	传教者与杀手，不过一体两面。你既然远行至费伦提亚，要么是想逃离这场轮回，要么就是准备再度投身其中。"
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/dnomad
 	subclass_languages = list(/datum/language/celestial)
@@ -24,12 +24,12 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy,
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy,
 		"故土遗物" = /obj/item/clothing/neck/roguetown/psicross,
 	)
-	extra_context = "此子职业仅限 普赛顿ites 与 异民，玩法分为两条路线。\
-	你可以选择武斗配装，获得：+2 感知 / +1 力量、熟练长矛、大师盾术。\
-	也可以舍弃纯武斗，获得：+2 感知 / +1 速度、熟练神圣、大师长柄武器、T2 神迹。"
+	extra_context = "此子职业仅限普赛顿信徒与异民，玩法分为两条路线。\
+	你可以选择武斗配装，获得：+2 感知 / +1 力量、熟练级长柄武器、专家级盾术。\
+	也可以舍弃纯武斗，获得：+2 感知 / +1 速度、熟练级神圣魔法、专家级长柄武器、二阶神迹。"
 
 //This is gross, but it works. Better than a new define.
 /datum/outfit/job/roguetown/adventurer/dnomad
