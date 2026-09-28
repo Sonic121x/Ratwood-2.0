@@ -90,11 +90,11 @@
 
 /datum/customizer/bodypart_feature/hair/head
 	abstract_type = /datum/customizer/bodypart_feature/hair/head
-	name = "Hair"
+	name = "头发"
 
 /datum/customizer_choice/bodypart_feature/hair/head
 	abstract_type = /datum/customizer_choice/bodypart_feature/hair/head
-	name = "Hair"
+	name = "头发"
 	feature_type = /datum/bodypart_feature/hair/head
 
 /datum/customizer/bodypart_feature/hair/facial
@@ -106,7 +106,7 @@
 
 /datum/customizer_choice/bodypart_feature/hair/facial
 	abstract_type = /datum/customizer_choice/bodypart_feature/hair/facial
-	name = "Facial Hair"
+	name = "面部毛发"
 	feature_type = /datum/bodypart_feature/hair/facial
 	customizer_entry_type = /datum/customizer_entry/hair/facial
 

@@ -4,7 +4,7 @@
 	name = "大厨"
 	tutorial = "你是一位大厨，堪称世间最出色的厨师之一。\
 	你出身不凡，曾在神秘的飨宴同盟中师从烹饪名家，学遍天下各地的异国佳肴。\
-	如今你四处游历，自由试验、烹制珍馐美味与华宴佳餐，连国王都配得上享用。"
+	如今你四处游历，自由试验、烹制珍馐美味与华宴佳餐，足以款待国王。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterchef
