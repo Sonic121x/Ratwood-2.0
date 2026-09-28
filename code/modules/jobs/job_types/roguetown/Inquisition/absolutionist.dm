@@ -63,7 +63,7 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_MASTER, // Psydon's Holiest Guy
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 
 // REMEMBER FLAGELLANT? REMEMBER LASZLO? THIS IS HIM NOW. FEEL OLD YET?

@@ -126,21 +126,21 @@
 		var/named_zone = " "
 		switch(zone)
 			if(BODY_ZONE_R_ARM)
-				named_zone = "Right Arm"
+				named_zone = "右臂"
 			if(BODY_ZONE_L_ARM)
-				named_zone = "Left Arm"
+				named_zone = "左臂"
 			if(BODY_ZONE_HEAD)
-				named_zone = "Head"
+				named_zone = "头部"
 			if(BODY_ZONE_CHEST)
-				named_zone = "Chest"
+				named_zone = "胸部"
 			if(BODY_ZONE_R_LEG)
-				named_zone = "Right Leg"
+				named_zone = "右腿"
 			if(BODY_ZONE_L_LEG)
-				named_zone = "Left Leg"
+				named_zone = "左腿"
 			if(BODY_ZONE_PRECISE_R_HAND)
-				named_zone = "Right Hand"
+				named_zone = "右手"
 			if(BODY_ZONE_PRECISE_L_HAND)
-				named_zone = "Left Hand"
+				named_zone = "左手"
 		dat += "<center><h3>[named_zone]</h3></center>"
 		dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#1c1313'>"
 		dat += "<tr style='vertical-align:top'>"
