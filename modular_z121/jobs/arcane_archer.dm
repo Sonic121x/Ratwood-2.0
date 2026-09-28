@@ -1,13 +1,13 @@
-// modular_z121 自定义冒险者子职业：魔弓手
-// 仅在 modular_z121 内挂入 Adventurer 的 Mage 分栏，不改动主线职业定义。
+// 自定义佣兵子职业：魔弓手。
+// 通过佣兵标签注册，保留法师分栏，不改动主线职业定义。
 
 /datum/advclass/z121_arcane_archer
 	name = "魔弓手"
-	tutorial = "你来自一个强迫你学习魔法的世家，尽管学习魔法占用了你大多数时间，但仍有闲暇的时间去练习你最喜欢的弓术，你的智慧发现了魔法的新机缘，但你却再也无法进一步改良它的威力。"
+	tutorial = "家族盼你埋首于书页，你却总惦记着窗外的靶场。许多年里，指尖的墨迹与弓弦留下的薄茧相伴而生。如今，当你再次搭上弓弦，那些曾经拗口的咒文终于有了自己的去处。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/z121_arcane_archer
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_MERCENARY)
 	class_select_category = CLASS_CAT_MAGE
 	subclass_social_rank = SOCIAL_RANK_PEASANT
 	cmode_music = 'sound/music/cmode/adventurer/combat_outlander3.ogg'
@@ -35,18 +35,21 @@
 		/datum/skill/misc/tracking = SKILL_LEVEL_NOVICE,
 		/datum/skill/labor/butchering = SKILL_LEVEL_NOVICE,
 	)
-	// 给少量法术点以匹配“学徒级奥术训练”，只够学习基础战斗法术，不直接发强力成型法术。
+	// 保留学徒奥术的学习点，三种专属箭术由职业直接授予。
 	subclass_spellpoints = 10
-	extra_context = "拥有魔法障壁、闪避专家与奥术训练（学徒）；擅长弓术与基础奥术，但不会直接获得现成战斗法术。"
+	extra_context = "略通家传奥术，也熟悉林间的步伐。随身的黑角弓罕见箭羽，弦上却总有微光未散；至于那道最深的咒式，你向来不轻易念起。"
 
 /datum/outfit/job/roguetown/adventurer/z121_arcane_archer/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你来自一个强迫你学习魔法的世家，尽管学习魔法占用了你大多数时间，但仍有闲暇的时间去练习你最喜欢的弓术，你的智慧发现了魔法的新机缘，但你却再也无法进一步改良它的威力。"))
+	to_chat(H, span_warning("离家时，你带走了那张黑角弓，也带走了几句没有写在书上的咒文。如今书房与靶场都已远去，唯有指尖的薄茧还记得弓弦该停在何处。"))
+	for(var/spell_type in list(/obj/effect/proc_holder/spell/self/z121_arcane_archery/empower, /obj/effect/proc_holder/spell/self/z121_arcane_archery/tracking, /obj/effect/proc_holder/spell/self/z121_arcane_archery/heartpiercing))
+		if(H.mind && !H.mind.has_spell(spell_type, TRUE))
+			H.mind.AddSpell(new spell_type, H)
 
 	// 按需求固定发放轻装弓术与学徒奥术混合配置。
 	head = /obj/item/clothing/head/roguetown/roguehood/random
 	cloak = /obj/item/clothing/cloak/raincloak/blue
-	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic
 	backr = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
@@ -54,7 +57,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/rogueweapon/huntingknife/idagger
-	beltr = /obj/item/quiver/magic
+	beltr = null
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 
