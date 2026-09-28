@@ -1,10 +1,10 @@
 /datum/customizer/organ/frills
 	abstract_type = /datum/customizer/organ/frills
-	name = "Frills"
+	name = "颈褶"
 
 /datum/customizer_choice/organ/frills
 	abstract_type = /datum/customizer_choice/organ/frills
-	name = "Frills"
+	name = "颈褶"
 	organ_type = /obj/item/organ/frills
 	organ_slot = ORGAN_SLOT_FRILLS
 

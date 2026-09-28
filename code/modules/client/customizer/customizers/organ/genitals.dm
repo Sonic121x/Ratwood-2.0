@@ -1,6 +1,6 @@
 /datum/customizer/organ/penis
 	abstract_type = /datum/customizer/organ/penis
-	name = "Penis"
+	name = "阴茎"
 	allows_disabling = TRUE
 	default_disabled = TRUE
 	gender_enabled = MALE
@@ -137,47 +137,47 @@
 		)
 
 /datum/customizer_choice/organ/penis/human
-	name = "Plain Penis"
+	name = "普通阴茎"
 	organ_type = /obj/item/organ/penis
 	sprite_accessories = list(/datum/sprite_accessory/penis/human)
 	allows_accessory_color_customization = FALSE
 
 /datum/customizer_choice/organ/penis/human_anthro
-	name = "Plain Penis"
+	name = "普通阴茎"
 	organ_type = /obj/item/organ/penis
 	sprite_accessories = list(/datum/sprite_accessory/penis/human)
 	allows_accessory_color_customization = TRUE
 
 /datum/customizer_choice/organ/penis/knotted
-	name = "结节阴茎"
+	name = "带结阴茎"
 	organ_type = /obj/item/organ/penis/knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/knotted,
 		)
 
 /datum/customizer_choice/organ/penis/equine
-	name = "马阴茎"
+	name = "马型阴茎"
 	organ_type = /obj/item/organ/penis/equine
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared,
 		)
 
 /datum/customizer_choice/organ/penis/equine_knotted
-	name = "Equine Knotted Penis"
+	name = "带结马型阴茎"
 	organ_type = /obj/item/organ/penis/equine_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared_knotted,
 		)
 
 /datum/customizer_choice/organ/penis/equine_slit
-	name = "Equine Penis (Slit)"
+	name = "马型阴茎（裂隙型）"
 	organ_type = /obj/item/organ/penis/equine_slit
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared,
 		)
 
 /datum/customizer_choice/organ/penis/equine_knotted_slit
-	name = "马结节阴茎（裂缝）"
+	name = "带结马型阴茎（裂隙型）"
 	organ_type = /obj/item/organ/penis/equine_knotted_slit
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared_knotted,
@@ -198,42 +198,42 @@
 		)
 
 /datum/customizer_choice/organ/penis/tapered_knot
-	name = "结节锥形阴茎"
+	name = "带结锥形阴茎"
 	organ_type = /obj/item/organ/penis/tapered_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/taperedknot,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_knot_mammal
-	name = "结节锥形阴茎（哺乳类）"
+	name = "带结锥形阴茎（哺乳类）"
 	organ_type = /obj/item/organ/penis/tapered_knotted_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/taperedknot_mammal,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double
-	name = "Hemi Tapered Penis"
+	name = "双根锥形阴茎"
 	organ_type = /obj/item/organ/penis/tapered_double
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemi,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double_mammal
-	name = "半锥形阴茎（哺乳类）"
+	name = "双根锥形阴茎（哺乳类）"
 	organ_type = /obj/item/organ/penis/tapered_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemi_mammal,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double_knot
-	name = "结节半锥形阴茎"
+	name = "带结双根锥形阴茎"
 	organ_type = /obj/item/organ/penis/tapered_double_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemiknot,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double_knot_mammal
-	name = "结节半锥形阴茎（哺乳类）"
+	name = "带结双根锥形阴茎（哺乳类）"
 	organ_type = /obj/item/organ/penis/tapered_double_knotted_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemiknot,
@@ -247,14 +247,14 @@
 		)
 
 /datum/customizer_choice/organ/penis/barbed_knotted
-	name = "Barbed Knotted Penis"
+	name = "带刺带结阴茎"
 	organ_type = /obj/item/organ/penis/barbed_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/barbknot,
 		)
 
 /datum/customizer_choice/organ/penis/tentacle
-	name = "Tentacle Penis"
+	name = "触手型阴茎"
 	organ_type = /obj/item/organ/penis/tentacle
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/tentacle,
@@ -328,7 +328,7 @@
 	)
 
 /datum/customizer_choice/organ/testicles/external
-	name = "Testicles"
+	name = "睾丸"
 	sprite_accessories = list(/datum/sprite_accessory/testicles/pair)
 
 /datum/customizer_choice/organ/testicles/human
@@ -430,7 +430,7 @@
 
 /datum/customizer_choice/organ/vagina
 	abstract_type = /datum/customizer_choice/organ/vagina
-	name = "Vagina"
+	name = "阴道"
 	customizer_entry_type = /datum/customizer_entry/organ/vagina
 	organ_type = /obj/item/organ/vagina
 	organ_slot = ORGAN_SLOT_VAGINA
