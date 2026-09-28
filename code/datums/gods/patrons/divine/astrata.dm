@@ -23,7 +23,7 @@
 		"我侍奉太阳的荣光！",
 	)
 	storyteller = /datum/storyteller/astrata
-
+	sign_icon_state = "sign_Astrata"
 // In daylight, church, cross, or ritual chalk.
 /datum/patron/divine/astrata/can_pray(mob/living/follower)
 	. = ..()
