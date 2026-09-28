@@ -128,7 +128,7 @@
 	gun.range_bonus = range_bonus + barrel.range_bonus
 	gun.penetration_bonus = penetration_bonus
 	gun.accuracy_bonus = barrel.accuracy_bonus
-	gun.jam_chance = clamp(5 + jam_modifier + (gear_material == "木制" ? 3 : 0), 0, 100)
+	gun.jam_chance = clamp(gun.base_failure_chance + jam_modifier + (gear_material == "木制" ? 3 : 0), 1, 100)
 	user.visible_message(span_notice("[user]完成了连发燧枪的组装。"))
 	qdel(barrel)
 	qdel(src)
