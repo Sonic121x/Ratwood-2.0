@@ -916,7 +916,7 @@
 				else
 					out += "[taste_desc]"
 
-	return english_list(out, "something")
+	return english_list(out, "某种难以辨认的味道", "和", "、")
 
 /datum/reagents/proc/expose_temperature(temperature, coeff=0.02)
 	if(istype(my_atom,/obj/item/reagent_containers))
