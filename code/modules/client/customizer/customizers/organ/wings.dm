@@ -1,6 +1,6 @@
 /datum/customizer/organ/wings
 	abstract_type = /datum/customizer/organ/wings
-	name = "Wings"
+	name = "翅膀"
 	var/wings_color = "#FFFFFF"
 	var/natural_gradient = /datum/hair_gradient/none
 	var/natural_color = "#FFFFFF"
@@ -153,7 +153,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/wings/anthro
-	name = "Wings"
+	name = "翅膀"
 	organ_type = /obj/item/organ/wings/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/bat,
@@ -226,7 +226,7 @@
 	default_disabled = FALSE
 
 /datum/customizer_choice/organ/wings/dracon
-	name = "Drake Wings"
+	name = "龙翼"
 	organ_type = /obj/item/organ/wings/dracon
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/bat,
@@ -254,12 +254,12 @@
 	)
 
 /datum/customizer/organ/wings/harpy
-	name = "Harpy Wings"
+	name = "哈比翅膀"
 	customizer_choices = list(/datum/customizer_choice/organ/wings/harpy)
 	allows_disabling = FALSE
 
 /datum/customizer_choice/organ/wings/harpy
-	name = "Harpy Wings"
+	name = "哈比翅膀"
 	organ_type = /obj/item/organ/wings/harpy
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/wide/harpywings,
