@@ -6,7 +6,7 @@
 /datum/advclass/arbalist
 	name = "劲弩手"
 	tutorial = "你曾被从队列中抽调出来，本该成为一名告解官。如今？你已成了审判官手下眼最锐、手最稳的人之一。 \
-	手执你心爱的 sauterelle，你会一枚一枚地将圣桩送出，把黑暗逐步逼退。"
+	手执你心爱的重弩，你会一枚一枚地将圣桩送出，把黑暗逐步逼退。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/arbalist
@@ -37,7 +37,7 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"《Psydon 圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
 	)
 
 /datum/outfit/job/roguetown/arbalist
