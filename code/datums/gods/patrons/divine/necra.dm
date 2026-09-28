@@ -25,7 +25,7 @@
 		"我无惧死亡，我的女主人正等待着我！",
 	)
 	storyteller = /datum/storyteller/necra
-
+	sign_icon_state = "sign_Necra"
 // Near a grave, cross, or within the church
 /datum/patron/divine/necra/can_pray(mob/living/follower)
 	. = ..()

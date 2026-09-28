@@ -27,7 +27,7 @@
 		"齐佐是永恒的女王！",
 	)
 	storyteller = /datum/storyteller/zizo
-
+	sign_icon_state = "sign_Zizo"
 /datum/patron/inhumen/zizo/post_equip(mob/living/pious)
 	. = ..()
 	if(ishuman(pious))
