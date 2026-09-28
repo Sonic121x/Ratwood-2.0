@@ -413,7 +413,7 @@
 
 
 /datum/crafting_recipe/roguetown/structure/art_table
-	name = "工艺师工作台"
+	name = "工匠工作台"
 	result = /obj/machinery/artificer_table
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	skillcraft = /datum/skill/craft/engineering

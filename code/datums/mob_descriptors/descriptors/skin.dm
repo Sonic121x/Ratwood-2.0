@@ -46,8 +46,8 @@
 	name = "灰白皮肤"
 
 /datum/mob_descriptor/skin/custom
-	name = "Custom Skin"
-	suffix = "skin"
+	name = "自定义皮肤"
+	suffix = "皮肤"
 	custom_index = 11
 
 /datum/mob_descriptor/skin/custom/can_describe(mob/living/described)

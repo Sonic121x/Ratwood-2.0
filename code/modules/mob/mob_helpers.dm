@@ -1022,12 +1022,12 @@
 	if(HAS_TRAIT(src, TRAIT_DISSECTED))
 		var/dissectionmsg = ""
 		if(HAS_TRAIT_FROM(src, TRAIT_DISSECTED,"Extraterrestrial Dissection"))
-			dissectionmsg = " via Extraterrestrial Dissection. It is no longer worth experimenting on"
+			dissectionmsg = "（外星解剖），已没有继续实验的价值"
 		else if(HAS_TRAIT_FROM(src, TRAIT_DISSECTED,"Experimental Dissection"))
-			dissectionmsg = " via Experimental Dissection"
+			dissectionmsg = "（实验性解剖）"
 		else if(HAS_TRAIT_FROM(src, TRAIT_DISSECTED,"Thorough Dissection"))
-			dissectionmsg = " via Thorough Dissection"
-		. += "<span class='notice'>This body has been dissected and analyzed[dissectionmsg].</span><br>"
+			dissectionmsg = "（彻底解剖）"
+		. += "<span class='notice'>这具身体已经被解剖分析过[dissectionmsg]。</span><br>"
 
 /**
  * Get the list of keywords for policy config
@@ -1062,7 +1062,7 @@
 	else if(job)
 		var/datum/job/J = SSjob.GetJob(job)
 		if(!J)
-			return "unknown"
+			return "未知职业"
 		used_title =  J.display_title || J.title
 		if(J.f_title && (pronouns == SHE_HER || pronouns == THEY_THEM_F))
 			used_title = J.f_title

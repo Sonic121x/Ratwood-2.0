@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(disconnected_admin_alert_role_times, list(
 /mob/living/proc/get_ssd_examine_text(m3)
 	if(client || !last_logout_time || stat == DEAD || HAS_TRAIT(src, TRAIT_NOSSDINDICATOR))
 		return
-	return span_warning("[m3] been in a deep slumber for [DisplayTimeText(world.time - last_logout_time, 1)].")
+	return span_warning("[m3]已沉睡了[DisplayTimeText(world.time - last_logout_time, 1, TRUE)]。")
 
 /mob/living/proc/queue_disconnected_admin_alert()
 	cancel_disconnected_admin_alert()

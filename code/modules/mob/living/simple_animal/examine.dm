@@ -3,7 +3,7 @@
 	var/t_his = p_their()
 	var/t_is = ""
 
-	. = list("<span class='info'>✠ ------------ ✠\n这是\a <EM>[src]</EM>。")
+	. = list("<span class='info'>✠ ------------ ✠\n这是<EM>[src]</EM>。")
 	if(desc)
 		. += desc
 
@@ -65,7 +65,7 @@
 
 	//Fire/water stacks
 	if(has_status_effect(/datum/status_effect/fire_handler))
-		msg += "[m1]披着易燃物。"
+		msg += "[m1]身上沾着某种易燃物。"
 	else if(has_status_effect(/datum/status_effect/fire_handler/wet_stacks))
 		msg += "[m1]浑身湿透。"
 
