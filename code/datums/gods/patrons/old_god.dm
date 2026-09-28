@@ -22,7 +22,7 @@
 		"宽恕他们吧，全父，因为他们不知道自己在做什么！",
 		"见证吧，我的神；这份牺牲已然显现！",
 	)
-
+	sign_icon_state = "sign_Psydon"
 
 /obj/effect/proc_holder/spell/self/check_boot
 	name = "靴中寻物"
