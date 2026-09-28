@@ -246,7 +246,7 @@
 	set desc = "查看追踪目标的角色描述面板。"
 	var/datum/antagonist/gnoll/gnoll_antag = mind?.has_antag_datum(/datum/antagonist/gnoll)
 	if(!gnoll_antag)
-		to_chat(src, span_warning(pick("What?", "Huh?", "How?")))
+		to_chat(src, span_warning(pick("什么？", "嗯？", "怎么回事？")))
 		return
 	var/datum/weakref/tracked_target_ref = gnoll_antag.tracked_target_ref
 	if(!tracked_target_ref)
