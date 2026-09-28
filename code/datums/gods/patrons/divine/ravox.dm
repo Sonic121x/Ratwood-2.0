@@ -24,7 +24,7 @@
 	)
 	storyteller = /datum/storyteller/ravox
 	COOLDOWN_DECLARE(lesser_heal_buff_cooldown)
-
+	sign_icon_state = "sign_Ravox"
 // Near a knight statue, cross, or within the church
 /datum/patron/divine/ravox/can_pray(mob/living/follower)
 	. = ..()
