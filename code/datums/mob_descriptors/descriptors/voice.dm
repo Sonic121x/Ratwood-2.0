@@ -3,7 +3,7 @@
 	slot = MOB_DESCRIPTOR_SLOT_VOICE
 	verbage = "%SPEAK%"
 	prefix = ""
-	suffix = "嗓音"
+	suffix = "的嗓音"
 	show_obscured = TRUE
 	var/voice_string
 
@@ -91,7 +91,7 @@
 	name = "讥讽"
 
 /datum/mob_descriptor/voice/smoker
-	name = "烟嗓"
+	name = "烟熏般沙哑"
 	voice_string = "烟嗓"
 
 /datum/mob_descriptor/voice/venomous
@@ -112,9 +112,9 @@
 	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
 	switch(entry.prefix_type)
 		if(CUSTOM_PREFIX_HAS_A)
-			return "a "
+			return ""
 		if(CUSTOM_PREFIX_HAS_AN)
-			return "an "
+			return ""
 	return null
 
 /datum/mob_descriptor/voice/custom/get_speaking_name(voice_gender, mob/living/described = null)

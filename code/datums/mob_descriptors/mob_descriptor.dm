@@ -20,9 +20,9 @@
 	if(!describe)
 		describe = LOWER_TEXT(name)
 	if(prefix)
-		pre_string = "[prefix] "
+		pre_string = "[prefix]"
 	if(suffix)
-		post_string = " [suffix]"
+		post_string = "[suffix]"
 	
 /datum/mob_descriptor/proc/get_pre_string(mob/living/described)
 	return pre_string
@@ -47,10 +47,10 @@
 	return TRUE
 
 /datum/mob_descriptor/proc/get_standalone_text(mob/living/described, mob/watcher)
-	return "%THEY% [get_coalesce_text(described, null, watcher)]"
+	return "%THEY%[get_verbage(described) ? "" : (slot == MOB_DESCRIPTOR_SLOT_HEIGHT ? "身形" : slot == MOB_DESCRIPTOR_SLOT_BODY ? "体态" : slot == MOB_DESCRIPTOR_SLOT_STATURE ? "是个" : slot == MOB_DESCRIPTOR_SLOT_FACE_SHAPE ? "的面部特征为" : slot == MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION ? "带着" : "")][get_coalesce_text(described, null, watcher)]。"
 
 /datum/mob_descriptor/proc/get_coalesce_text(mob/living/described, list/used_verbage, mob/watcher)
-	var/descriptor_text = "[should_add_verbage(described, used_verbage) ? "[get_verbage(described)] " : ""][get_pre_string(described)][get_description_for_watcher(described, watcher)][post_string]"
+	var/descriptor_text = "[should_add_verbage(described, used_verbage) ? "[get_verbage(described)]" : ""][get_pre_string(described)][get_description_for_watcher(described, watcher)][post_string]"
 	var/color = get_descriptor_color(described, watcher)
 	if(color)
 		return "<span style='color:[color]'>[descriptor_text]</span>"
