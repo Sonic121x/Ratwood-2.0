@@ -11,16 +11,16 @@
 /datum/mob_descriptor/age/get_description(mob/living/described)
 	var/mob/living/carbon/human/H = described
 	if(H.age == AGE_OLD)
-		return "年迈"
+		return "年事已高"
 	else if (H.age == AGE_MIDDLEAGED)
-		return "中年"
+		return "已到中年"
 	else
-		return "成年"
+		return "已经成年"
 
 /datum/mob_descriptor/penis
 	name = "阴茎"
 	slot = MOB_DESCRIPTOR_SLOT_PENIS
-	verbage = "%有着%"
+	verbage = "%HAVE%"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
@@ -101,7 +101,7 @@
 /datum/mob_descriptor/testicles
 	name = "睾丸"
 	slot = MOB_DESCRIPTOR_SLOT_TESTICLES
-	verbage = "%有着%"
+	verbage = "%HAVE%"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
@@ -155,7 +155,7 @@
 /datum/mob_descriptor/vagina
 	name = "阴道"
 	slot = MOB_DESCRIPTOR_SLOT_VAGINA
-	verbage = "%有着%"
+	verbage = "%HAVE%"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
@@ -215,7 +215,7 @@
 		brand_text = "一个所有权的标记"
 	if(length(brand_text))
 		branded = ",烙有<span style='font-size:125%;'>[span_boldwarning(brand_text)]</span>"
-	var/base_description = "a [vagina_type][arousal_modifier][branded]"
+	var/base_description = "[vagina_type][arousal_modifier][branded]"
 	if(H.getorganslot(ORGAN_SLOT_PENIS) || H.getorganslot(ORGAN_SLOT_TESTICLES))
 		return base_description
 	var/datum/mob_descriptor/pubes/pubes_descriptor = MOB_DESCRIPTOR(/datum/mob_descriptor/pubes)
@@ -224,7 +224,7 @@
 /datum/mob_descriptor/breasts
 	name = "乳房"
 	slot = MOB_DESCRIPTOR_SLOT_BREASTS
-	verbage = "%有着%"
+	verbage = "%HAVE%"
 	show_obscured = TRUE
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"

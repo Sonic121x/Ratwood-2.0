@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	var/observer_privilege = isobserver(usr)
 
 	if(href_list["task"] == "bloodpoolinfo")
-		to_chat(usr, span_notice("Usable blood that yields Vitae and total blood is not the same thing. It takes some time for blood to become nourishing for us."))
+		to_chat(usr, span_notice("能提供血能的可用血液与总血量并不相同。血液需要一段时间，才能成为我们的养分。"))
 		return
 
 	if(href_list["task"] == "open_language_menu")
@@ -38,11 +38,11 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			if(length(bodypart_status))
 				msg += bodypart_status
 			else
-				msg += "<B>[capitalize(bodypart.name)]:</B>"
-				msg += "[bodypart] is healthy."
+				msg += "<B>[parse_zone(bodypart.body_zone, bodypart)]：</B>"
+				msg += "[parse_zone(bodypart.body_zone, bodypart)]状况良好。"
 		else
-			msg += "<B>[capitalize(parse_zone(checked_zone))]:</B>"
-			msg += "<span class='dead'>Limb is missing!</span>"
+			msg += "<B>[parse_zone(checked_zone)]：</B>"
+			msg += "<span class='dead'>该部位缺失！</span>"
 		to_chat(usr, "<span class='info'>[msg.Join("\n")]</span>")
 
 	if(href_list["embedded_object"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
@@ -54,9 +54,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			return
 		var/time_taken = I.embedding.embedded_unsafe_removal_time*I.w_class
 		if(usr == src)
-			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from [usr.p_their()] [L.name].</span>","<span class='warning'>I attempt to remove [I] from my [L.name]...</span>")
+			usr.visible_message("<span class='warning'>[usr]试图从自己的[parse_zone(L.body_zone, L)]中取出[I]。</span>","<span class='warning'>我试图从自己的[parse_zone(L.body_zone, L)]中取出[I]……</span>")
 		else
-			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from [src]'s [L.name].</span>","<span class='warning'>I attempt to remove [I] from [src]'s [L.name]...</span>")
+			usr.visible_message("<span class='warning'>[usr]试图从[src]的[parse_zone(L.body_zone, L)]中取出[I]。</span>","<span class='warning'>我试图从[src]的[parse_zone(L.body_zone, L)]中取出[I]……</span>")
 		if(do_after(usr, time_taken, needhand = TRUE, target = src))
 			if(QDELETED(I) || QDELETED(L) || !L.remove_embedded_object(I))
 				return
@@ -67,9 +67,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				emote("pain", TRUE)
 			playsound(loc, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 			if(usr == src)
-				usr.visible_message("<span class='notice'>[usr] rips [I] out of [usr.p_their()] [L.name]!</span>", "<span class='notice'>I successfully remove [I] from my [L.name].</span>")
+				usr.visible_message("<span class='notice'>[usr]从自己的[parse_zone(L.body_zone, L)]中拔出了[I]！</span>", "<span class='notice'>我成功从自己的[parse_zone(L.body_zone, L)]中取出了[I]。</span>")
 			else
-				usr.visible_message("<span class='notice'>[usr] rips [I] out of [src]'s [L.name]!</span>", "<span class='notice'>I successfully remove [I] from [src]'s [L.name].</span>")
+				usr.visible_message("<span class='notice'>[usr]从[src]的[parse_zone(L.body_zone, L)]中拔出了[I]！</span>", "<span class='notice'>我成功从[src]的[parse_zone(L.body_zone, L)]中取出了[I]。</span>")
 
 	if(href_list["bandage"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		var/obj/item/bodypart/L = locate(href_list["bandaged_limb"]) in bodyparts
@@ -77,7 +77,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			return
 
 		if(!usr.Adjacent(src))
-			to_chat(usr, span_warning("I need to be closer to remove that!"))
+			to_chat(usr, span_warning("我得靠近些才能取下它！"))
 			return
 
 		var/obj/item/I = L.bandage
@@ -86,9 +86,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/time_to_unbandage = 5 SECONDS
 		time_to_unbandage *= (1 - (usr.get_skill_level(/datum/skill/misc/medicine) * 0.15))
 		if(usr == src)
-			usr.visible_message("<span class='warning'>[usr] starts unbandaging [usr.p_their()] [L.name].</span>","<span class='warning'>I start unbandaging [L.name]...</span>")
+			usr.visible_message("<span class='warning'>[usr]开始拆下自己[parse_zone(L.body_zone, L)]上的绷带。</span>","<span class='warning'>我开始拆下自己[parse_zone(L.body_zone, L)]上的绷带……</span>")
 		else
-			usr.visible_message("<span class='warning'>[usr] starts unbandaging [src]'s [L.name].</span>","<span class='warning'>I start unbandaging [src]'s [L.name]...</span>")
+			usr.visible_message("<span class='warning'>[usr]开始拆下[src]的[parse_zone(L.body_zone, L)]上的绷带。</span>","<span class='warning'>我开始拆下[src]的[parse_zone(L.body_zone, L)]上的绷带……</span>")
 		if(do_after(usr, time_to_unbandage, needhand = TRUE, target = src))
 			if(QDELETED(I) || QDELETED(L) || (L.bandage != I))
 				return
@@ -98,7 +98,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	if(href_list["item"]) //canUseTopic check for this is handled by mob/Topic()
 		var/slot = text2num(href_list["item"])
 		if(slot in check_obscured_slots(TRUE))
-			to_chat(usr, span_warning("I can't reach that! Something is covering it."))
+			to_chat(usr, span_warning("我够不着那里！有东西遮住了它。"))
 			return
 
 	if(href_list["species_lore"])
@@ -129,30 +129,30 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				social_rank = SOCIAL_RANK_MINOR_NOBLE
 			switch(social_rank)
 				if(SOCIAL_RANK_DIRT)
-					rank_name = "dirt"
+					rank_name = "贱民"
 				if(SOCIAL_RANK_PEASANT)
-					rank_name = "a peasant"
+					rank_name = "农民"
 				if(SOCIAL_RANK_YEOMAN)
-					rank_name = "a yeoman"
+					rank_name = "自由民"
 				if(SOCIAL_RANK_MINOR_NOBLE)
-					rank_name = is_clergy ? "low clergy" : "a minor noble"
+					rank_name = is_clergy ? "低阶神职人员" : "低阶贵族"
 				if(SOCIAL_RANK_NOBLE)
-					rank_name = is_clergy ? "clergy" : "a noble"
+					rank_name = is_clergy ? "神职人员" : "贵族"
 				if(SOCIAL_RANK_ROYAL)
-					rank_name = is_clergy ? "head of the clergy" : "royalty"
+					rank_name = is_clergy ? "教会领袖" : "王室成员"
 			if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
-				rank_name = "a disgraced noble"
+				rank_name = "失势贵族"
 				social_rank = 3
 			if(is_jester)
-				rank_name = "the jester"
+				rank_name = "弄臣"
 			if(is_druid)
-				rank_name = "a druid"
+				rank_name = "德鲁伊"
 			if(social_rank > examiner_rank)
-				to_chat(usr, span_notice("This persons social standing is equivalent to <EM>[rank_name]</EM>, they are my better."))
+				to_chat(usr, span_notice("此人的社会地位相当于<EM>[rank_name]</EM>，比我尊贵。"))
 			if(social_rank == examiner_rank)
-				to_chat(usr, span_notice("This person social standing is equivalent to <EM>[rank_name]</EM>, they are my equal."))
+				to_chat(usr, span_notice("此人的社会地位相当于<EM>[rank_name]</EM>，与我平等。"))
 			if(social_rank < examiner_rank)
-				to_chat(usr, span_notice("This person social standing is equivalent to <EM>[rank_name]</EM>, they are my lesser."))
+				to_chat(usr, span_notice("此人的社会地位相当于<EM>[rank_name]</EM>，比我卑微。"))
 			if(family_datum)
 				var/datum/family_member/FM = family_datum.GetMemberForPerson(src)
 				var/spousetext = ""
@@ -162,24 +162,24 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 						if(S.person)
 							spouse_list += S.person.real_name
 					if(spouse_list.len)
-						spousetext = jointext(spouse_list, ", ")
-				to_chat(usr, span_notice("They are a member of house[family_datum.housename].[spousetext ? " Married to [spousetext]." : ""]"))
+						spousetext = jointext(spouse_list, "、")
+				to_chat(usr, span_notice("此人是[family_datum.housename]家族的成员。[spousetext ? "配偶是[spousetext]。" : ""]"))
 
 
 
 	if(href_list["reveal_cosmetic"])
 		if(mind && mind.cosmetic_class_title)
-			var/actual_job = job ? job : "Unknown"
-			to_chat(usr, span_notice("[mind.cosmetic_class_title] is [actual_job]."))
+			var/actual_job = job ? (SSjob.GetJob(job)?.display_title || job) : "未知职业"
+			to_chat(usr, span_notice("[mind.cosmetic_class_title]的实际职业是[actual_job]。"))
 		return
 
 	if(href_list["undiesthing"]) //canUseTopic check for this is handled by mob/Topic()
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, grabs = FALSE, skipundies = TRUE))
-			to_chat(usr, span_warning("I can't reach that! Something is covering it."))
+			to_chat(usr, span_warning("我够不着那里！有东西遮住了它。"))
 			return
 		if(!underwear)
 			return
-		usr.visible_message(span_warning("[usr] starts taking off [src]'s [underwear.name]."),span_warning("I start taking off [src]'s [underwear.name]..."))
+		usr.visible_message(span_warning("[usr]开始脱下[src]的[underwear.name]。"),span_warning("我开始脱下[src]的[underwear.name]……"))
 		if(do_after(usr, 50, needhand = 1, target = src))
 			var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 			chest.remove_bodypart_feature(underwear.undies_feature)
@@ -191,11 +191,11 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 	if(href_list["legwearsthing"]) //canUseTopic check for this is handled by mob/Topic()
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, grabs = FALSE, skipundies = TRUE))
-			to_chat(usr, span_warning("I can't reach that! Something is covering it."))
+			to_chat(usr, span_warning("我够不着那里！有东西遮住了它。"))
 			return
 		if(!legwear_socks)
 			return
-		usr.visible_message(span_warning("[usr] starts taking off [src]'s [legwear_socks.name]."),span_warning("I start taking off [src]'s [legwear_socks.name]..."))
+		usr.visible_message(span_warning("[usr]开始脱下[src]的[legwear_socks.name]。"),span_warning("我开始脱下[src]的[legwear_socks.name]……"))
 		if(do_after(usr, 50, needhand = 1, target = src))
 			var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 			chest.remove_bodypart_feature(legwear_socks.legwears_feature)
@@ -217,10 +217,10 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/delay_denominator = 1
 		if(pocket_item && !(pocket_item.item_flags & ABSTRACT))
 			if(HAS_TRAIT(pocket_item, TRAIT_NODROP))
-				to_chat(usr, "<span class='warning'>I try to empty [src]'s [pocket_side] pocket, it seems to be stuck!</span>")
-			to_chat(usr, "<span class='notice'>I try to empty [src]'s [pocket_side] pocket.</span>")
+				to_chat(usr, "<span class='warning'>我试图掏空[src]的[pocket_side == "right" ? "右" : "左"]口袋，里面的东西好像卡住了！</span>")
+			to_chat(usr, "<span class='notice'>我试图掏空[src]的[pocket_side == "right" ? "右" : "左"]口袋。</span>")
 		else if(place_item && place_item.mob_can_equip(src, usr, pocket_id, 1) && !(place_item.item_flags & ABSTRACT))
-			to_chat(usr, "<span class='notice'>I try to place [place_item] into [src]'s [pocket_side] pocket.</span>")
+			to_chat(usr, "<span class='notice'>我试图把[place_item]放进[src]的[pocket_side == "right" ? "右" : "左"]口袋。</span>")
 			delay_denominator = 4
 		else
 			return
@@ -238,7 +238,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				//updating inv screen after handled by living/Topic()
 		else
 			// Display a warning if the user mocks up
-			to_chat(src, "<span class='warning'>I feel your [pocket_side] pocket being fumbled with!</span>")
+			to_chat(src, "<span class='warning'>我感觉有人在摸索我的[pocket_side == "right" ? "右" : "左"]口袋！</span>")
 
 	if(href_list["task"] == "assess")
 		if(!ishuman(usr))
@@ -264,9 +264,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		if(get_dist(user, H) <= (2 + clamp(floor(((user.STAPER - 10))),-1, 4) + intellectual))
 			success = TRUE
 		if(!success)
-			to_chat(user, span_info("They've moved too far away!"))
+			to_chat(user, span_info("对方已经走得太远了！"))
 			return
-		user.visible_message("[user] begins assessing [src].")
+		user.visible_message("[user]开始打量[src]。")
 
 		if(do_mob(user, src, ((intellectual ? 20 : 40)) - (user.STAINT - 10) - (user.STAPER - 10) - user.get_skill_level(/datum/skill/misc/reading), uninterruptible = intellectual, double_progress = (intellectual ? FALSE : TRUE)))
 			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)	//Will scramble Stats and prevent skills from being shown
@@ -287,23 +287,23 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			dat += "<tr>"
 			dat += "<td style='width:16%;text-align:left;vertical-align: text-top'>"
 			if(intellectual && (!obscured_name || H.client?.prefs.masked_examine))
-				dat += "<b>STATS:</b><br><br>"
+				dat += "<b>属性：</b><br><br>"
 				if(!is_guarded)
-					dat +=("STR: \Roman [H.STASTR]<br>")
-					dat +=("PER: \Roman [H.STAPER]<br>")
-					dat +=("INT: \Roman [H.STAINT]<br>")
-					dat +=("CON: \Roman [H.STACON]<br>")
-					dat +=("END: \Roman [H.STAWIL]<br>")
-					dat +=("SPD: \Roman [H.STASPD]<br>")
+					dat +=("力量：\Roman [H.STASTR]<br>")
+					dat +=("感知：\Roman [H.STAPER]<br>")
+					dat +=("智力：\Roman [H.STAINT]<br>")
+					dat +=("体质：\Roman [H.STACON]<br>")
+					dat +=("意志：\Roman [H.STAWIL]<br>")
+					dat +=("速度：\Roman [H.STASPD]<br>")
 				else
-					dat +=("STR: \Roman [rand(1,20)]<br>")
-					dat +=("PER: \Roman [rand(1,20)]<br>")
-					dat +=("INT: \Roman [rand(1,20)]<br>")
-					dat +=("CON: \Roman [rand(1,20)]<br>")
-					dat +=("END: \Roman [rand(1,20)]<br>")
-					dat +=("SPD: \Roman [rand(1,20)]<br>")
+					dat +=("力量：\Roman [rand(1,20)]<br>")
+					dat +=("感知：\Roman [rand(1,20)]<br>")
+					dat +=("智力：\Roman [rand(1,20)]<br>")
+					dat +=("体质：\Roman [rand(1,20)]<br>")
+					dat +=("意志：\Roman [rand(1,20)]<br>")
+					dat +=("速度：\Roman [rand(1,20)]<br>")
 				if(is_guarded || job == "Jester")
-					dat += "Something feels off..."
+					dat += "感觉有些不对劲……"
 				dat += "</td>"
 			else
 				dat += "</td>"
@@ -363,7 +363,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 							for(var/critzone in critclasses)
 								if(critzone == BCLASS_PICK)
 									critzone = "Pick"
-								str += "| [capitalize(critzone)] | "
+								str += "| [list(BCLASS_CUT = "割伤", BCLASS_STAB = "刺伤", BCLASS_CHOP = "劈砍", BCLASS_BLUNT = "钝击", BCLASS_TWIST = "扭伤", BCLASS_SMASH = "重击", "Pick" = "凿击")[critzone] || critzone] | "
 							crit_weakness[coverageflag] = str
 						switch(coverageflag)		//This removes covered zones from the _exposed list. The remainder, if any, will be highlighted in red as an "exposed" zone.
 							if(READABLE_ZONE_L_ARM)
@@ -432,7 +432,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 						coverage_exposed.Remove(READABLE_ZONE_MOUTH, READABLE_ZONE_EYES, READABLE_ZONE_NOSE)
 
 			if(!is_stupid)
-				dat += "<b><center>BODY:</center></b><br>"
+				dat += "<b><center>身体防护：</center></b><br>"
 			if(length(coverage))
 				var/str
 				if(!is_smart && !is_normal)	//We get a significantly simplified printout if we don't have the stats / trait
@@ -443,19 +443,19 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 					if(is_normal || is_smart)
 						if(length(coverage_exposed))
 							for(var/exposed in coverage_exposed)
-								str += "<b>[exposed]</b>: <font color = '#770404'><b>EXPOSED!</B></font><br>"
+								str += "<b>[exposed]</b>：<font color = '#770404'><b>没有防护！</B></font><br>"
 					for(var/thing in coverage)
-						str += "<b>[thing]</b> LAYERS: <b>[coverage[thing]]</b> | [colorgrade_rating("", blunt_max[thing], TRUE)] | [colorgrade_rating("", slash_max[thing], TRUE)] | [colorgrade_rating("", stab_max[thing], TRUE)] | [colorgrade_rating("", piercing_max[thing], TRUE)] <br><font color = '#a35252'>[crit_weakness[thing]]</font><br>"
+						str += "<b>[thing]</b> 防护层数：<b>[coverage[thing]]</b> | [colorgrade_rating("", blunt_max[thing], TRUE)] | [colorgrade_rating("", slash_max[thing], TRUE)] | [colorgrade_rating("", stab_max[thing], TRUE)] | [colorgrade_rating("", piercing_max[thing], TRUE)] <br><font color = '#a35252'>[crit_weakness[thing]]</font><br>"
 					dat += str
 				else
-					dat += "<b><center>I don't know! Just hit them!</center></b>"
+					dat += "<b><center>我看不懂！打就完了！</center></b>"
 			else
-				dat += "<b><center>They're wearing nothing.</center></b>"
+				dat += "<b><center>对方没有穿戴有效护甲。</center></b>"
 			dat += "</td>"
 
 			dat += "<td style='width:40%;text-align:center;vertical-align: text-top'>"
 			if(!is_guarded && !is_stupid && (!obscured_name || H.client?.prefs.masked_examine))	//We don't see Guarded people's skills at all.
-				dat += "<b>SKILLS:</b><br><br>"
+				dat += "<b>技能：</b><br><br>"
 				var/list/wornstuff = list(H.backr, H.backl, H.beltl, H.beltr)
 				if(!is_normal && !is_smart)	//At minimum we get to see the skills of the weapons the person is holding, if we have them.
 					for(var/stuff in wornstuff)
@@ -500,11 +500,11 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 			dat += "</td>"
 			dat += "</tr>"
-			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 1000, nheight = 600)
+			var/datum/browser/popup = new(user, "assess", ntitle = "评估[src]", nwidth = 1000, nheight = 600)
 			popup.set_content(dat.Join())
 			popup.open(FALSE)
 		else
-			user.visible_message("[user] fails to assess [src]!")
+			user.visible_message("[user]没能完成对[src]的评估！")
 		return
 
 	if(href_list["task"] == "view_rumours_gossip")
@@ -515,18 +515,18 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			var/rumour_display = rumour
 			rumour_display = html_encode(rumour_display)
 			rumour_display = parsemarkdown_basic(rumour_display, hyperlink = TRUE)
-			msg += "<b>You recall what you heard around Town about [src]...</b><br>[rumour_display]"
+			msg += "<b>我想起镇上关于[src]的传闻……</b><br>[rumour_display]"
 		if(((HAS_TRAIT(usr, TRAIT_NOBLE)) || (HAS_TRAIT(usr, TRAIT_SLEUTH)) || (HAS_TRAIT(usr, TRAIT_GOSSIPER)) || observer_privilege) && length(noble_gossip))
 			if(msg)
 				msg += "<br><br>"
 			var/gossip_display = noble_gossip
 			gossip_display = html_encode(gossip_display)
 			gossip_display = parsemarkdown_basic(gossip_display, hyperlink = TRUE)
-			msg += "<b>You recall what the other Blue-bloods hushed about [src]...</b><br>[gossip_display]"
+			msg += "<b>我想起其他贵族私下议论过的、关于[src]的闲话……</b><br>[gossip_display]"
 		if(msg)
 			to_chat(usr, "<span class='info'>[msg]</span>")
 		else //Edge-case of there being ONLY noble gossip, but we aren't a noble.
-			to_chat(usr, "<span class='info'>Any tales of intrigue of this one are reserved to the nobility...</span>")
+			to_chat(usr, "<span class='info'>关于此人的秘闻只在贵族之间流传……</span>")
 		return
 
 	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that. - I made it worse sorry guys.
@@ -632,28 +632,28 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 /proc/skilldiff_report(input)
 	switch (input)
 		if(-6)
-			return "<font color = '#ff4ad2'>I know nothing. They -- everything</font>"
+			return "<font color = '#ff4ad2'>我一窍不通，对方却无所不知</font>"
 		if(-5)
-			return "<font color = '#eb0000'><i>I stand no chance against them</i></font>"
+			return "<font color = '#eb0000'><i>我毫无胜算</i></font>"
 		if(-4)
-			return "<font color = '#c53c3c'><i>I am inferior</i></font>"
+			return "<font color = '#c53c3c'><i>我远不如对方</i></font>"
 		if(-3)
-			return "<font color = '#db8484'><i>I am notably worse</i></font>"
+			return "<font color = '#db8484'><i>我明显逊色</i></font>"
 		if(-2)
-			return "<font color = '#e4a1a1'><i>I am worse</i></font>"
+			return "<font color = '#e4a1a1'><i>我不如对方</i></font>"
 		if(-1)
-			return "<font color = '#f8d3d3'><i>I am slightly worse</i></font>"
+			return "<font color = '#f8d3d3'><i>我略逊一筹</i></font>"
 		if(0)
-			return "We are equal"
+			return "我们旗鼓相当"
 		if(1)
-			return "<font color = '#3f6343'>I am slightly better</font>"
+			return "<font color = '#3f6343'>我略胜一筹</font>"
 		if(2)
-			return "<font color = '#49944f'>I am better</font>"
+			return "<font color = '#49944f'>我更胜一筹</font>"
 		if(3)
-			return "<font color = '#44db51'>I am notably better</font>"
+			return "<font color = '#44db51'>我明显胜过对方</font>"
 		if(4)
-			return"<font color = '#62b4be'>I am superior</font>"
+			return"<font color = '#62b4be'>我远胜对方</font>"
 		if(5)
-			return "<font color = '#2bdcfc'>They have no chance in this field</font>"
+			return "<font color = '#2bdcfc'>对方在这方面毫无胜算</font>"
 		if(6)
-			return "<font color = '#ff4ad2'>They know nothing. A whelp</font>"
+			return "<font color = '#ff4ad2'>对方一窍不通，不过是个毛头小子</font>"
