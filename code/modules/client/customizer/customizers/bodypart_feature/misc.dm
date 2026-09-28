@@ -1,5 +1,5 @@
 /datum/customizer/bodypart_feature/face_detail
-	name = "Face Detail"
+	name = "面部细节"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/face_detail)
 	allows_disabling = TRUE
 	default_disabled = TRUE
