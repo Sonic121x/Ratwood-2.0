@@ -512,7 +512,7 @@
 // Mostly here to avoid having to use spark-generating 6 step recipes around impact grenades and other instant explosives
 
 /datum/crafting_recipe/roguetown/engineering/tntbomb
-	name = "爆砂棒(x3)"
+	name = "爆粉棒(x3)"
 	category = "爆炸物"
 	result = list(/obj/item/tntstick, /obj/item/tntstick, /obj/item/tntstick)
 	reqs = list(/obj/item/paper = 3, /obj/item/alch/coaldust = 2, /obj/item/compost = 2, /obj/item/natural/fibers = 1)
@@ -522,7 +522,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/satchelbomb
-	name = "爆砂袋"
+	name = "爆粉挎包"
 	category = "爆炸物"
 	result = /obj/item/satchel_bomb
 	reqs = list(/obj/item/storage/backpack/rogue/satchel = 1, /obj/item/tntstick = 3, /obj/item/alch/firedust = 1, /obj/item/natural/fibers = 1)

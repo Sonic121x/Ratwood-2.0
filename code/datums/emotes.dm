@@ -129,9 +129,9 @@
 		var/seen_log_msg = "[emotelocation] [msg]"
 		// Checks to see if we're emoting on the body while we have a head, or if we're emoting on the head.
 		if(human && human.voice_color)
-			msg = "<span style='color:#[human.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[emotelocation]</b></span> " + msg
+			msg = "<span style='color:#[human.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[list("Unknown" = "未知者", "Unknown Man" = "未知男子", "Unknown Woman" = "未知女子")[emotelocation.name] || emotelocation]</b></span> " + msg
 		else
-			msg = "<b>[emotelocation]</b> " + msg
+			msg = "<b>[list("Unknown" = "未知者", "Unknown Man" = "未知男子", "Unknown Woman" = "未知女子")[emotelocation.name] || emotelocation]</b> " + msg
 		var/list/hidden_ghosts = get_hidden_ghosts_for_target(user)
 		for(var/mob/M in GLOB.dead_mob_list)
 			if(!M.client || isnewplayer(M))
