@@ -41,7 +41,7 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,//Imperial is not your mother tongue.
 	)
-	extra_context = "该分支仅限：Drakian"// | Middle-Aged & Old"
+	extra_context = "该分支仅限：龙裔"// | Middle-Aged & Old"
 	subclass_stashed_items = list(//They come prepared. We really should just give this to all mercs.
 		"服役文书" = /obj/item/merctoken
 	)
@@ -208,9 +208,9 @@
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>Hadrûnzhar，他家族中最杰出的一位。作为一名德拉基安，他超然于诸多族内纷争之上。\
+		. += "<small>Hadrûnzhar，他家族中最杰出的一位。作为一名龙裔，他超然于诸多族内纷争之上。\
 		他曾给予自己的誓印者唯一的使命：<br>\
-		毁灭一切危害阿斯特拉塔高贵秩序之物，将左手魔法的污秽自世间彻底根除。</small>"
+		毁灭一切损害阿斯特拉塔高贵秩序之物，将左道魔法的污秽自世间彻底根除。</small>"
 
 /obj/item/clothing/cloak/cape/oathmarked
 	name = "誓印披风"

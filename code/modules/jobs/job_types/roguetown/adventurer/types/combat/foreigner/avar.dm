@@ -33,7 +33,7 @@
 	)
 
 	extra_context = "该子职业为玩家提供四种配置。\
-	选择 Saiga 骑射手之路会获得骑术特质。\
+	选择赛加羚羊骑射手之路会获得骑术特质。\
 	其余路线则都会提供中甲训练。"
 
 /datum/outfit/job/roguetown/adventurer/aavnik/pre_equip(mob/living/carbon/human/H)
