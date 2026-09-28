@@ -26,7 +26,7 @@
 		"巴奥莎就是我的快乐！",
 	)
 	storyteller = /datum/storyteller/baotha
-
+	sign_icon_state = "sign_Baotha"
 /datum/patron/inhumen/baotha/can_pray(mob/living/follower)
 	. = ..()
 	// Allows prayer in the Zzzzzzzurch(!)
