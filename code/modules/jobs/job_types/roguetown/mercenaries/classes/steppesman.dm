@@ -2,7 +2,7 @@
 	name = "阿夫尼克 联盟军"
 	tutorial = "作为对你所属 哥萨克 赫特曼履行的强制服役之一环，你在这一年的轮调中离开故土先锋军， \
 	转而加入北方草原的统一佣兵军 阿夫尼克 联盟，并投身 费伦提亚的 战线。 \
-	为祖国带回黄金与荣耀。Chest' cherez pobedu."
+	为祖国带回黄金与荣耀。以胜利赢得荣誉。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/steppesman
@@ -62,7 +62,7 @@
 				H.set_blindness(0)
 				to_chat(H, span_warning("军士长 是北方草原 哥萨克 中的初级军官阶层，历经 格里莫里亚 各地战火的老兵。 \
 				漫长的服役岁月为你赢来了你的尖顶盔、盾牌与甲胄，但别搞错了。 \
-				你可不是什么坐着喝苦酒的 Grenzel 贵族。带头冲锋吧，Zoloto i slava。"))
+				你可不是什么坐着喝苦酒的格伦泽尔贵族。带头冲锋吧，为了黄金与荣耀。"))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/shishak
 				gloves = /obj/item/clothing/gloves/roguetown/chain
@@ -99,8 +99,8 @@
 			if("Obyvatel' - 精锐工兵")	//Tl;dr - medium armor sappers with less mobility in exchange for their different statblock and equipment.
 				H.set_blindness(0)
 				to_chat(H, span_warning("精锐工兵 是一支训练方式独特的 哥萨克 步兵部队，精于破坏与筑垒之术。 \
-				他们往往最先跟随 Starshina 投入战斗，也往往最先倒下。 \
-				你是盾，而你的弟兄们是剑。Dvigaytes' ni dlya kogo." ))
+				他们往往最先跟随军士长投入战斗，也往往最先倒下。 \
+				你是盾，而你的弟兄们是剑。绝不向任何人退让。" ))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/shishak
 				gloves = /obj/item/clothing/gloves/roguetown/chain
@@ -147,7 +147,7 @@
 				H.set_blindness(0)
 				to_chat(H, span_warning("爆雷工兵 是 精锐工兵 中规模较小的一支， \
 				专门负责连队爆炸物的保管与频繁使用。 \
-				让常识指引你，也让你的投掷手臂足够有力。Ne ubivay sebya, pozhaluysta."))
+				让常识指引你，也让你的投掷手臂足够有力。拜托，别把自己炸死。"))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 				head = /obj/item/clothing/head/roguetown/papakha
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
@@ -239,10 +239,10 @@
 
 			if("Plastunsky - 潜踪步兵")		//Tl;dr - Old Steppesman whip build, light armor, be the glass canon you always wanted to be. Live your life, king.
 				H.set_blindness(0)
-				to_chat(H, span_warning("成为 阿夫尼克的、成为 哥萨克，并非一种头衔，也非单靠出身就能拥有，而是一种活法。 \
+				to_chat(H, span_warning("成为阿夫尼克人、成为哥萨克，并非获得一种头衔，也非单靠出身就能做到，而是一种活法。 \
 				这些离经叛道的边地人看待贵族与农夫时，目光里并无差别。 \
-				新近征召而来的他们以 Plastunsky 之名上阵，带着自己能拿得出的全部家当投入战斗。 \
-				他们看似不过是农兵杂牌，却正是文明战士最厌恶的克星。Pust' chetyre zverya vedut tebya." ))
+				新近征召而来的他们以潜踪步兵之名上阵，带着自己能拿得出的全部家当投入战斗。 \
+				他们看似不过是农兵杂牌，却正是文明战士最厌恶的克星。愿四兽指引你。" ))
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 				head = /obj/item/clothing/head/roguetown/papakha	//No helm
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather

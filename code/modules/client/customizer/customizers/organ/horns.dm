@@ -78,7 +78,7 @@
 	default_disabled =  TRUE
 
 /datum/customizer_choice/organ/horns/demihuman
-	name = "Horns"
+	name = "角"
 	organ_type = /obj/item/organ/horns
 	sprite_accessories = list(
 		/datum/sprite_accessory/horns/simple,
