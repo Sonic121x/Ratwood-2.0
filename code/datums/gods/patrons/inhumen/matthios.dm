@@ -24,7 +24,7 @@
 		"马西奥斯是我的主！",
 	)
 	storyteller = /datum/storyteller/matthios
-
+	sign_icon_state = "sign_Matthios"
 // When near coin of at least 100 mammon, zchurch, bad-cross, or ritual talk
 /datum/patron/inhumen/matthios/can_pray(mob/living/follower)
 	. = ..()
