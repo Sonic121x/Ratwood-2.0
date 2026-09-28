@@ -27,7 +27,7 @@
 		"我的苦难便是我的见证！",
 	)
 	storyteller = /datum/storyteller/pestra
-
+	sign_icon_state = "sign_Pestra"
 // Near a well, cross, within the physicians, or within the church
 /datum/patron/divine/pesta/can_pray(mob/living/follower)
 	. = ..()
