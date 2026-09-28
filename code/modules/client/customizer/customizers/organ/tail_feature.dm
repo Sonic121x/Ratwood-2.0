@@ -1,10 +1,10 @@
 /datum/customizer/organ/tail_feature
 	abstract_type = /datum/customizer/organ/tail_feature
-	name = "Tail Feature"
+	name = "尾部特征"
 
 /datum/customizer_choice/organ/tail_feature
 	abstract_type = /datum/customizer_choice/organ/tail_feature
-	name = "Tail Feature"
+	name = "尾部特征"
 	organ_type = /obj/item/organ/tail_feature
 	organ_slot = ORGAN_SLOT_TAIL_FEATURE
 
@@ -13,7 +13,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/tail_feature/lizard_spines
-	name = "Tail Spines"
+	name = "尾部棘刺"
 	organ_type = /obj/item/organ/tail_feature/lizard_spines
 	generic_random_pick = TRUE
 	sprite_accessories = list(

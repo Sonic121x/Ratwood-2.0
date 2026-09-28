@@ -2,7 +2,7 @@
 /datum/advclass/foreigner/slaver
 	name = "兹班图的 奴贩"
 	tutorial = "在 普赛多尼亚 的某些地方，奴隶买卖依旧司空见惯。\
-	你来自 Zybantine 帝国，那里的血肉市场古老而从未断绝，而你的钱财正是靠贩卖活生生的灵魂换来的。"
+	你来自兹班图帝国，那里的血肉市场古老而从未断绝，而你的钱财正是靠贩卖活生生的灵魂换来的。"
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/slaver
 	subclass_languages = list(/datum/language/celestial)
@@ -28,7 +28,7 @@
 /datum/outfit/job/roguetown/adventurer/slaver/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("在 普赛多尼亚 的某些地方，奴隶买卖依旧司空见惯。\
-	你来自 Zybantine 帝国，那里的血肉市场古老而从未断绝，而你的钱财正是靠贩卖活生生的灵魂换来的。"))
+	你来自兹班图帝国，那里的血肉市场古老而从未断绝，而你的钱财正是靠贩卖活生生的灵魂换来的。"))
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/purple
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
