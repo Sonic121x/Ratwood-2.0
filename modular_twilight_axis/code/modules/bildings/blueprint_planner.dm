@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 /proc/init_blueprint_buildable_types()
 	var/list/temp_types = list(
 	"wood_floor" = list(
-		"name" = "Wooden Floor",
+		"name" = "木地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wooden_floor"
 	),
 	"wood_floor_polished" = list(
-		"name" = "Polished Wood Floor",
+		"name" = "抛光木地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wooden_floor2"
 	),
 	"floor_herringbone_weathered" = list(
-		"name" = "Weathered Herringbone Floor",
+		"name" = "风化人字纹地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "herringbonewood"
 	),
 	"floor_herringbone_stamped" = list(
-		"name" = "Stamped Herringbone Floor",
+		"name" = "压纹人字纹地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "weird2"
 	),
 	"floor_slanted" = list(
-		"name" = "Slanted Wood Floor",
+		"name" = "斜纹木地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "weird1"
 	),
 	"platform_wood" = list(
-		"name" = "Wooden Platform",
+		"name" = "木平台",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wooden_floor"
 	),
 	"floor_hay" = list(
-		"name" = "Hay Floor",
+		"name" = "干草地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "hay"
 	),
 	"floor_twig" = list(
-		"name" = "Twig Floor",
+		"name" = "树枝地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "twig"
 	),
 	"platform_twig" = list(
-		"name" = "Twig Platform",
+		"name" = "树枝平台",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "twig"
 	),
 	"stone_floor" = list(
-		"name" = "Stone Block Floor",
+		"name" = "石块地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "blocks"
 	),
 	"stone_floor_new" = list(
-		"name" = "Newstone Floor",
+		"name" = "新石地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bluestone"
 	),
 	"stone_hex_floor" = list(
-		"name" = "Hexagonal Stone Floor",
+		"name" = "六角石地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "hexstone"
 	),
 	"stone_herringbone_floor" = list(
-		"name" = "Stone Herringbone Floor",
+		"name" = "人字纹石地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "herringbone"
 	),
 	"cobblestone_floor" = list(
-		"name" = "Cobblestone Floor",
+		"name" = "鹅卵石地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cobblestone1"
 	),
 	"cobblerock_road" = list(
-		"name" = "Cobblerock Road",
+		"name" = "块石路面",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -155,7 +155,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cobblerock"
 	),
 	"redstone_floor" = list(
-		"name" = "Large Redstone Floor",
+		"name" = "大块红石地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stoneredlarge"
 	),
 	"tiny_redstone_floor" = list(
-		"name" = "Tiny Redstone Floor",
+		"name" = "小块红石地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stoneredtiny"
 	),
 	"marble_floor" = list(
-		"name" = "Marble Floor",
+		"name" = "大理石地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "church_marble"
 	),
 	"bluestone_slabs" = list(
-		"name" = "Bluestone Slabs",
+		"name" = "青石板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bluestone2"
 	),
 	"concrete_slab" = list(
-		"name" = "Large Stone Slabs",
+		"name" = "大石板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "concretefloor1"
 	),
 	"floor_masonic" = list(
-		"name" = "Masonic Decorative Floor",
+		"name" = "石匠装饰地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -215,7 +215,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "masonic"
 	),
 	"floor_masonic_alt" = list(
-		"name" = "Masonic Inverse Floor",
+		"name" = "石匠反色地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -225,7 +225,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "masonicsingleinvert"
 	),
 	"floor_masonic_spiral" = list(
-		"name" = "Masonic Spiral Floor",
+		"name" = "石匠螺旋地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -235,7 +235,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "masonicspiral"
 	),
 	"floor_blue_tiles" = list(
-		"name" = "Blue Large Tiles",
+		"name" = "蓝色大地砖",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bfloorz"
 	),
 	"floor_church_red_brick" = list(
-		"name" = "Red Masonic Bricks",
+		"name" = "红色石匠砖",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -255,7 +255,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "church_brick"
 	),
 	"floor_harem_green" = list(
-		"name" = "Harem Green Bricks",
+		"name" = "后宫绿砖",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "harem1"
 	),
 	"floor_harem_red" = list(
-		"name" = "Harem Red Bricks",
+		"name" = "后宫红砖",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -275,7 +275,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "harem"
 	),
 	"floor_harem_pink" = list(
-		"name" = "Harem Pink Bricks",
+		"name" = "后宫粉砖",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -285,7 +285,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "harem2"
 	),
 	"floor_brick" = list(
-		"name" = "Brick Floor",
+		"name" = "砖地板",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -295,7 +295,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bricktile"
 	),
 	"druid_grass" = list(
-		"name" = "Druidic Grass",
+		"name" = "德鲁伊草地",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -305,7 +305,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "grass"
 	),
 	"druid_grass_red" = list(
-		"name" = "Red Druidic Grass",
+		"name" = "红色德鲁伊草地",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -315,7 +315,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "grass_red"
 	),
 	"druid_grass_yellow" = list(
-		"name" = "Yellow Druidic Grass",
+		"name" = "黄色德鲁伊草地",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "grass_yel"
 	),
 	"druid_grass_cold" = list(
-		"name" = "Cold Druidic Grass",
+		"name" = "寒地德鲁伊草地",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "grass_cold"
 	),
 	"druid_grass_desert" = list(
-		"name" = "Desert Grass",
+		"name" = "沙漠草地",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "desertgrass"
 	),
 	"druid_grass_purple" = list(
-		"name" = "Purple Druidic Grass",
+		"name" = "紫色德鲁伊草地",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "grass_purple"
 	),
 	"carpet_inn" = list(
-		"name" = "Inn Carpet",
+		"name" = "旅店地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "carpet"
 	),
 	"carpet_purple" = list(
-		"name" = "Purple Carpet",
+		"name" = "紫色地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "carpet"
 	),
 	"carpet_red" = list(
-		"name" = "Red Carpet",
+		"name" = "红色地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -385,7 +385,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "carpet"
 	),
 	"carpet_royal" = list(
-		"name" = "Royal Black Carpet",
+		"name" = "皇家黑色地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -395,7 +395,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "carpet"
 	),
 	"carpet_stellar" = list(
-		"name" = "Stellar Carpet",
+		"name" = "星辰地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -405,7 +405,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "carpet"
 	),
 	"bear_rug" = list(
-		"name" = "Bear Rug",
+		"name" = "熊皮地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -415,7 +415,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bear"
 	),
 	"fox_rug" = list(
-		"name" = "Fox Rug",
+		"name" = "狐皮地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -425,7 +425,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "fox"
 	),
 	"lynx_rug" = list(
-		"name" = "Bobcat Rug",
+		"name" = "山猫皮地毯",
 		"category" = "Floors & Pathways",
 		"layer_type" = "floor",
 		"build_order" = 1,
@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bobcat"
 	),
 	"wood_wall" = list(
-		"name" = "Wood Wall",
+		"name" = "木墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -445,7 +445,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wood"
 	),
 	"wood_wall_fancy" = list(
-		"name" = "Fancy Wood Wall",
+		"name" = "精致木墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "decowood"
 	),
 	"wood_wall_dark" = list(
-		"name" = "Dark Wood Wall",
+		"name" = "深色木墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -465,7 +465,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wood"
 	),
 	"tent_wall" = list(
-		"name" = "Tent Wall",
+		"name" = "帐篷墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tent"
 	),
 	"stone_wall" = list(
-		"name" = "Stone Wall",
+		"name" = "石墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -485,7 +485,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stone"
 	),
 	"stone_wall_brick" = list(
-		"name" = "Stone Brick Wall",
+		"name" = "石砖墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -495,7 +495,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonebrick"
 	),
 	"stone_wall_brick_light" = list(
-		"name" = "Stone Brick Wall (With Lantern)",
+		"name" = "石砖墙（带灯笼）",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -505,7 +505,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonebrick"
 	),
 	"stone_wall_craft" = list(
-		"name" = "Crafted Stone Wall",
+		"name" = "砌筑石墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -515,7 +515,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "box"
 	),
 	"stone_wall_deco" = list(
-		"name" = "Decorated Stone Wall",
+		"name" = "装饰石墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -525,7 +525,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "decostone-b"
 	),
 	"brick_wall" = list(
-		"name" = "Brick Wall",
+		"name" = "砖墙",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -535,7 +535,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "brick"
 	),
 	"roof_wood" = list(
-		"name" = "Wood Rooftop",
+		"name" = "木屋顶",
 		"category" = "Walls & Roofs",
 		"layer_type" = "wall",
 		"build_order" = 4,
@@ -545,7 +545,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "roof"
 	),
 	"wood_window_murderhole" = list(
-		"name" = "Wood Murderhole",
+		"name" = "木制射孔",
 		"category" = "Windows & Glass",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -555,7 +555,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodwindow"
 	),
 	"dark_wood_window_murderhole" = list(
-		"name" = "Dark Wood Murderhole",
+		"name" = "深色木制射孔",
 		"category" = "Windows & Glass",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -565,7 +565,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodwindow"
 	),
 	"stone_window_murderhole" = list(
-		"name" = "Stone Murderhole",
+		"name" = "石制射孔",
 		"category" = "Windows & Glass",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -575,7 +575,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonewindow"
 	),
 	"brick_window_murderhole" = list(
-		"name" = "Brick Murderhole",
+		"name" = "砖制射孔",
 		"category" = "Windows & Glass",
 		"layer_type" = "wall",
 		"build_order" = 2,
@@ -585,7 +585,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "brickwindow"
 	),
 	"window_glass_static" = list(
-		"name" = "Fixed Glass Window",
+		"name" = "固定玻璃窗",
 		"category" = "Windows & Glass",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -595,7 +595,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "window-solid"
 	),
 	"window_glass_openable" = list(
-		"name" = "Openable Window",
+		"name" = "可开启窗户",
 		"category" = "Windows & Glass",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -605,7 +605,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodwindowdir"
 	),
 	"window_glass_reinforced" = list(
-		"name" = "Reinforced Window",
+		"name" = "加固窗户",
 		"category" = "Windows & Glass",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -615,7 +615,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "reinforcedwindowdir"
 	),
 	"window_brick_reinforced" = list(
-		"name" = "Reinforced Brick Window",
+		"name" = "加固砖窗",
 		"category" = "Windows & Glass",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -625,7 +625,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "reinforcedwindowdir"
 	),
 	"window_stained_psydon" = list(
-		"name" = "Psydonian Stained Glass",
+		"name" = "普赛顿彩绘玻璃窗",
 		"category" = "Windows & Glass",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -635,7 +635,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stained-silver"
 	),
 	"stairs_wood" = list(
-		"name" = "Wooden Stairs (Up)",
+		"name" = "木楼梯（向上）",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -646,7 +646,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stairs"
 	),
 	"stairs_wood_down" = list(
-		"name" = "Wooden Stairs (Down)",
+		"name" = "木楼梯（向下）",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -657,7 +657,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stairs"
 	),
 	"stairs_stone" = list(
-		"name" = "Stone Stairs (Up)",
+		"name" = "石楼梯（向上）",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -668,7 +668,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonestairs"
 	),
 	"stairs_stone_down" = list(
-		"name" = "Stone Stairs (Down)",
+		"name" = "石楼梯（向下）",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -679,7 +679,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonestairs"
 	),
 	"ladder" = list(
-		"name" = "Ladder",
+		"name" = "梯子",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -690,7 +690,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "ladder11"
 	),
 	"wall_ladder" = list(
-		"name" = "Wall Ladder",
+		"name" = "壁梯",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -701,7 +701,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "ladderwall"
 	),
 	"door_wood" = list(
-		"name" = "Wooden Door",
+		"name" = "木门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -711,7 +711,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodhandle"
 	),
 	"door_wood_deadbolt" = list(
-		"name" = "Deadbolt Wooden Door",
+		"name" = "插销木门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -721,7 +721,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wooddir"
 	),
 	"door_wood_fancy" = list(
-		"name" = "Fancy Wooden Door",
+		"name" = "精致木门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -731,7 +731,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "fancy_wood"
 	),
 	"door_wood_glass" = list(
-		"name" = "Wooden Glass Door",
+		"name" = "木框玻璃门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -741,7 +741,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodwindow"
 	),
 	"door_metal_donjon" = list(
-		"name" = "Donjon Metal Door",
+		"name" = "城堡金属门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -751,7 +751,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "donjondir"
 	),
 	"door_cell_bars" = list(
-		"name" = "Cell Bar Door",
+		"name" = "牢房栅栏门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -761,7 +761,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bars"
 	),
 	"door_swing" = list(
-		"name" = "Swing Door",
+		"name" = "双向摆门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -771,7 +771,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodhandle"
 	),
 	"door_stone" = list(
-		"name" = "Stone Door",
+		"name" = "石门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -781,7 +781,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stone"
 	),
 	"tent_door" = list(
-		"name" = "Tent Door",
+		"name" = "帐篷门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -791,7 +791,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tent_door1"
 	),
 	"fence_palisade" = list(
-		"name" = "Palisade Fence",
+		"name" = "木栅栏",
 		"category" = "Doors & Stairs",
 		"layer_type" = "border",
 		"build_order" = 3,
@@ -801,7 +801,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "fence"
 	),
 	"railing_wood" = list(
-		"name" = "Wooden Railing",
+		"name" = "木栏杆",
 		"category" = "Doors & Stairs",
 		"layer_type" = "border",
 		"build_order" = 3,
@@ -811,7 +811,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodrailing"
 	),
 	"border_wood" = list(
-		"name" = "Wooden Border",
+		"name" = "木围栏",
 		"category" = "Doors & Stairs",
 		"layer_type" = "border",
 		"build_order" = 3,
@@ -821,7 +821,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "border"
 	),
 	"border_corner" = list(
-		"name" = "Border Corner",
+		"name" = "围栏转角",
 		"category" = "Doors & Stairs",
 		"layer_type" = "border",
 		"build_order" = 3,
@@ -831,7 +831,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "border"
 	),
 	"mineshaft_support" = list(
-		"name" = "Mineshaft Support",
+		"name" = "矿道支架",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -841,7 +841,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woodenbarricade_mineshaft"
 	),
 	"passage_bars" = list(
-		"name" = "Metal Passage Gate",
+		"name" = "金属通道门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -851,7 +851,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "passage0"
 	),
 	"passage_shutters" = list(
-		"name" = "Passage Shutters",
+		"name" = "通道闸门",
 		"category" = "Doors & Stairs",
 		"layer_type" = "obj",
 		"build_order" = 2,
@@ -861,7 +861,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "shutter0"
 	),
 	"table_wood" = list(
-		"name" = "Wooden Table",
+		"name" = "木桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -871,7 +871,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tablewood1"
 	),
 	"table_wood_alt" = list(
-		"name" = "Rough Wooden Table",
+		"name" = "粗制木桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -881,7 +881,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tablewood_alt"
 	),
 	"table_metallic_fancy" = list(
-		"name" = "Reinforced Wooden Table",
+		"name" = "加固木桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -891,7 +891,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tablewood1"
 	),
 	"table_ornate" = list(
-		"name" = "Ornate Wooden Table",
+		"name" = "华丽木桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -901,7 +901,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tablefine"
 	),
 	"table_long" = list(
-		"name" = "Long Table",
+		"name" = "长桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -911,7 +911,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "longtable"
 	),
 	"table_long_mid" = list(
-		"name" = "Long Table mid",
+		"name" = "长桌中段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -921,7 +921,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "longtable_mid"
 	),
 	"table_large" = list(
-		"name" = "Large Table",
+		"name" = "大桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -931,7 +931,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "largetable"
 	),
 	"table_stone" = list(
-		"name" = "Stone Table",
+		"name" = "石桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -941,7 +941,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "churchtable"
 	),
 	"table_finestone" = list(
-		"name" = "Fine Stone Table",
+		"name" = "精制石桌",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -951,7 +951,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonetable_small"
 	),
 	"table_operating" = list(
-		"name" = "Operating Table",
+		"name" = "手术台",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -961,7 +961,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "optable"
 	),
 	"chair_wood" = list(
-		"name" = "Wooden Chair",
+		"name" = "木椅",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -971,7 +971,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "chair2"
 	),
 	"chair_fancy" = list(
-		"name" = "Fancy Chair",
+		"name" = "精致椅子",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -981,7 +981,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "chair1"
 	),
 	"stool_wood" = list(
-		"name" = "Bar Stool",
+		"name" = "吧台凳",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -991,7 +991,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "barstool"
 	),
 	"throne_small" = list(
-		"name" = "Small Throne",
+		"name" = "小王座",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1001,7 +1001,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "thronechair"
 	),
 	"bench_park" = list(
-		"name" = "Park Bench middle",
+		"name" = "公园长椅中段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1011,7 +1011,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "parkbench_sofamiddle"
 	),
 	"bench_park_L" = list(
-		"name" = "Park Bench Left",
+		"name" = "公园长椅左段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1021,7 +1021,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "parkbench_sofaend_left"
 	),
 	"bench_park_R" = list(
-		"name" = "Park Bench Right",
+		"name" = "公园长椅右段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1031,7 +1031,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "parkbench_sofaend_right"
 	),
 	"couch_red" = list(
-		"name" = "Red Couch left",
+		"name" = "红色沙发左段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1041,7 +1041,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "redcouch"
 	),
 	"couch_red_r" = list(
-		"name" = "Red Couch right",
+		"name" = "红色沙发右段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1051,7 +1051,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "couchablackaright"
 	),
 	"couch_black" = list(
-		"name" = "Black Couch left",
+		"name" = "黑色沙发左段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1061,7 +1061,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "couchablackaleft"
 	),
 	"couch_black_r" = list(
-		"name" = "Black Couch right",
+		"name" = "黑色沙发右段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1071,7 +1071,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "couchablackaright"
 	),
 	"couch_ultima" = list(
-		"name" = "Ultima Couch left",
+		"name" = "乌尔蒂玛沙发左段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1081,7 +1081,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "ultimacouchleft"
 	),
 	"couch_ultima_r" = list(
-		"name" = "Ultima Couch right",
+		"name" = "乌尔蒂玛沙发右段",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1091,7 +1091,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "ultimacouchright"
 	),
 	"bed_straw" = list(
-		"name" = "Straw Bed",
+		"name" = "草床",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1101,7 +1101,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "shitbed"
 	),
 	"bed_inn" = list(
-		"name" = "Inn Bed",
+		"name" = "旅店床铺",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1111,7 +1111,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "inn_bed"
 	),
 	"bed_wool" = list(
-		"name" = "Wool Bed",
+		"name" = "羊毛床",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1121,7 +1121,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "woolbed"
 	),
 	"bed_double" = list(
-		"name" = "Double Bed",
+		"name" = "双人床",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1131,7 +1131,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "double"
 	),
 	"bed_double_wool" = list(
-		"name" = "Double Wool Bed",
+		"name" = "双人羊毛床",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1141,7 +1141,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "double"
 	),
 	"curtain_red" = list(
-		"name" = "Red Curtains",
+		"name" = "红色帘幕",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1151,7 +1151,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "curtain-open"
 	),
 	"curtain_blue" = list(
-		"name" = "Blue Curtains",
+		"name" = "蓝色帘幕",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1161,7 +1161,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "curtain-open"
 	),
 	"curtain_dir" = list(
-		"name" = "Directional Curtain",
+		"name" = "定向帘幕",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1171,7 +1171,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "curtain-open"
 	),
 	"mirror_wood" = list(
-		"name" = "Wall Mirror",
+		"name" = "壁镜",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1181,7 +1181,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "mirror"
 	),
 	"mirror_fancy" = list(
-		"name" = "Fancy Mirror",
+		"name" = "精致镜子",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1191,7 +1191,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "fancymirror"
 	),
 	"floor_clock" = list(
-		"name" = "Grandfather Clock",
+		"name" = "落地钟",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1201,7 +1201,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "clock"
 	),
 	"wall_clock" = list(
-		"name" = "Wall Clock",
+		"name" = "挂钟",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1211,7 +1211,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wallclock"
 	),
 	"telescope" = list(
-		"name" = "Telescope",
+		"name" = "望远镜",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1221,7 +1221,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "telescope"
 	),
 	"globe" = list(
-		"name" = "World Globe",
+		"name" = "地球仪",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1231,7 +1231,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "globe"
 	),
 	"floor_pillows" = list(
-		"name" = "Floor Pillows",
+		"name" = "坐垫",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1241,7 +1241,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "pillow"
 	),
 	"display_stand" = list(
-		"name" = "Mannequin Stand",
+		"name" = "人台",
 		"category" = "Furniture",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1251,7 +1251,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "coat_hanger"
 	),
 	"chest_wood" = list(
-		"name" = "Wooden Chest",
+		"name" = "木箱",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1261,7 +1261,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "chest3s"
 	),
 	"closet_wood" = list(
-		"name" = "Wooden Closet",
+		"name" = "木柜",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1271,7 +1271,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "closet"
 	),
 	"dresser_drawer" = list(
-		"name" = "Bedside Drawer",
+		"name" = "床头柜",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1281,7 +1281,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "drawer5"
 	),
 	"dresser_long" = list(
-		"name" = "Long Dresser",
+		"name" = "长衣柜",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1291,7 +1291,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "drawer2"
 	),
 	"rack_wood" = list(
-		"name" = "Weapon Rack",
+		"name" = "武器架",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1301,7 +1301,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "rack"
 	),
 	"wall_shelf" = list(
-		"name" = "Wall Shelf",
+		"name" = "壁架",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1311,7 +1311,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "shelf"
 	),
 	"barrel_wood" = list(
-		"name" = "Wooden Barrel",
+		"name" = "木桶",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1321,7 +1321,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "barrel_tapless"
 	),
 	"coffin_wood" = list(
-		"name" = "Wooden Coffin",
+		"name" = "木棺",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1331,7 +1331,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "casket"
 	),
 	"sleep_coffin" = list(
-		"name" = "Vampire Sleep Coffin",
+		"name" = "吸血鬼寝棺",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1341,7 +1341,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "vcasket"
 	),
 	"wicker_basket" = list(
-		"name" = "Wicker Basket",
+		"name" = "柳条篮",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1351,7 +1351,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wicker"
 	),
 	"wooden_bin" = list(
-		"name" = "Wooden Bin",
+		"name" = "木料箱",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1361,7 +1361,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "washbin1"
 	),
 	"minecart" = list(
-		"name" = "Minecart",
+		"name" = "矿车",
 		"category" = "Storage",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1372,7 +1372,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 	),
 
 	"fireplace_north" = list(
-		"name" = "Wall Fireplace",
+		"name" = "壁炉",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1382,7 +1382,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wallfire1"
 	),
 	"fireplace_blue" = list(
-		"name" = "Blue Fireplace",
+		"name" = "蓝焰壁炉",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1392,7 +1392,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wallfire1"
 	),
 	"torch_holder" = list(
-		"name" = "Torch Sconce",
+		"name" = "壁挂火炬架",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1402,7 +1402,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "torchwall1"
 	),
 	"torch_standing" = list(
-		"name" = "Standing Fire",
+		"name" = "立式火盆",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1412,7 +1412,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "standing1"
 	),
 	"torch_standing_blue" = list(
-		"name" = "Blue Standing Fire",
+		"name" = "蓝焰立式火盆",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1422,7 +1422,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "standing1"
 	),
 	"brazier_stump" = list(
-		"name" = "Wood Stump Brazier",
+		"name" = "树桩火盆",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1432,7 +1432,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stumpfire1"
 	),
 	"torch_lantern_standing" = list(
-		"name" = "Standing Stone Lantern",
+		"name" = "立式石灯",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1442,7 +1442,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonelantern_standing1"
 	),
 	"torch_lantern_ground" = list(
-		"name" = "Ground Stone Lantern",
+		"name" = "落地石灯",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1452,7 +1452,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "stonelantern1"
 	),
 	"wall_candles" = list(
-		"name" = "Wall Candles",
+		"name" = "壁挂蜡烛",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1462,7 +1462,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wallcandle1"
 	),
 	"wall_candles_blue" = list(
-		"name" = "Blue Wall Candles",
+		"name" = "蓝焰壁挂蜡烛",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1472,7 +1472,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wallcandle1"
 	),
 	"floor_candles" = list(
-		"name" = "Floor Candles",
+		"name" = "落地蜡烛",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1482,7 +1482,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "floorcandle1"
 	),
 	"campfire" = list(
-		"name" = "Campfire",
+		"name" = "营火",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1492,7 +1492,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "badfire1"
 	),
 	"dense_campfire" = list(
-		"name" = "Greater Campfire",
+		"name" = "大型营火",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1502,7 +1502,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "badfire1"
 	),
 	"hearth" = list(
-		"name" = "Hearth",
+		"name" = "炉灶",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1512,7 +1512,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "hearth1"
 	),
 	"oven" = list(
-		"name" = "Oven",
+		"name" = "烤炉",
 		"category" = "Heating & Lighting",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1522,7 +1522,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "oven1"
 	),
 	"anvil_iron" = list(
-		"name" = "Iron Anvil",
+		"name" = "铁砧",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1532,7 +1532,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "anvil"
 	),
 	"forge" = list(
-		"name" = "Blacksmith Forge",
+		"name" = "锻炉",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1542,7 +1542,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "forge0"
 	),
 	"smelter_ore" = list(
-		"name" = "Ore Smelter",
+		"name" = "矿石熔炉",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1552,7 +1552,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cavesmelter0"
 	),
 	"smelter_bloomery" = list(
-		"name" = "Bloomery Smelter",
+		"name" = "块炼炉",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1562,7 +1562,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "hironsmelter0"
 	),
 	"smelter_bronze" = list(
-		"name" = "Bronze Melter",
+		"name" = "青铜熔炉",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1572,7 +1572,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cavesmelter0"
 	),
 	"smelter_great" = list(
-		"name" = "Great Smelter",
+		"name" = "大型熔炉",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1582,7 +1582,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "smelter0"
 	),
 	"grindwheel" = list(
-		"name" = "Grindwheel",
+		"name" = "磨刀轮",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1592,7 +1592,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "grindwheel"
 	),
 	"artificer_table" = list(
-		"name" = "Artificer Table",
+		"name" = "工匠工作台",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1602,7 +1602,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "art_table"
 	),
 	"loom" = list(
-		"name" = "Loom",
+		"name" = "织布机",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1612,7 +1612,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "loom"
 	),
 	"potters_wheel" = list(
-		"name" = "Potter's Wheel",
+		"name" = "陶轮",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1622,7 +1622,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "potwheel"
 	),
 	"dye_station" = list(
-		"name" = "Dye Station",
+		"name" = "染色台",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1632,7 +1632,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "dyestation"
 	),
 	"alchemy_station" = list(
-		"name" = "Alchemy Table",
+		"name" = "炼金台",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1642,7 +1642,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "alch"
 	),
 	"cauldron_alchemy" = list(
-		"name" = "Alchemy Cauldron",
+		"name" = "炼金坩埚",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1652,7 +1652,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cauldron1"
 	),
 	"cooling_table" = list(
-		"name" = "Cooling Table",
+		"name" = "冷却台",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1662,7 +1662,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tablewood_alt"
 	),
 	"distiller" = list(
-		"name" = "Copper Distiller",
+		"name" = "铜制蒸馏器",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1672,7 +1672,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "distillery"
 	),
 	"autosmither" = list(
-		"name" = "Autosmither",
+		"name" = "自动锻造机",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1682,7 +1682,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "1"
 	),
 	"autogrinder" = list(
-		"name" = "Autogrinder",
+		"name" = "自动研磨机",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1692,7 +1692,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "mill_off"
 	),
 	"windmill" = list(
-		"name" = "Windmill",
+		"name" = "风车",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1702,7 +1702,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "1"
 	),
 	"grille" = list(
-		"name" = "Floor Grille",
+		"name" = "地板格栅",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1712,7 +1712,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "floorgrille"
 	),
 	"floordoor" = list(
-		"name" = "Floor Hatch",
+		"name" = "地板活板门",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1722,7 +1722,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "floorhatch1"
 	),
 	"lever" = list(
-		"name" = "Mechanical Lever",
+		"name" = "机械拉杆",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1732,7 +1732,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "leverwall0"
 	),
 	"pressure_plate" = list(
-		"name" = "Pressure Plate",
+		"name" = "压力板",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1742,7 +1742,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "pressureplate"
 	),
 	"eng_launcher" = list(
-		"name" = "Engineer's Launcher",
+		"name" = "工程师发射器",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1752,7 +1752,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "activator"
 	),
 	"bars_metal" = list(
-		"name" = "Metal Bars",
+		"name" = "金属栅栏",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1762,7 +1762,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "bars"
 	),
 	"bars_cemetery" = list(
-		"name" = "Cemetery Bars",
+		"name" = "墓地栅栏",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1772,7 +1772,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cemetery"
 	),
 	"bars_shop" = list(
-		"name" = "Shop Bars",
+		"name" = "商店栅栏",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1782,7 +1782,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "barsbent"
 	),
 	"rcom_radio" = list(
-		"name" = "RCOM Terminal",
+		"name" = "RCOM终端",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1792,7 +1792,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "scomm1"
 	),
 	"millstone" = list(
-		"name" = "Millstone",
+		"name" = "石磨",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1802,7 +1802,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "millstone"
 	),
 	"tanning_rack" = list(
-		"name" = "Tanning Rack",
+		"name" = "鞣皮架",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1812,7 +1812,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "dryrack"
 	),
 	"apiary_beehive" = list(
-		"name" = "Beehive",
+		"name" = "蜂箱",
 		"category" = "Crafting & Machinery",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1822,7 +1822,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "beebox-empty"
 	),
 	"wall_deco_stone" = list(
-		"name" = "Stone Wall Deco",
+		"name" = "石墙装饰",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1832,7 +1832,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "walldec1"
 	),
 	"hanging_chains" = list(
-		"name" = "Hanging Chains",
+		"name" = "悬挂锁链",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1842,7 +1842,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "chains1"
 	),
 	"cross_pantheon_wood" = list(
-		"name" = "Wooden Cross",
+		"name" = "木制十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1852,7 +1852,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "psycrosscrafted"
 	),
 	"cross_pantheon_stone" = list(
-		"name" = "Stone Cross",
+		"name" = "石制十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1862,7 +1862,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "psycross"
 	),
 	"cross_psydon_wood" = list(
-		"name" = "Wooden Psydonic Cross",
+		"name" = "木制普赛顿十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1872,7 +1872,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "psycruci"
 	),
 	"cross_psydon_stone" = list(
-		"name" = "Stone Psydonic Cross",
+		"name" = "石制普赛顿十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1882,7 +1882,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "psycruci_r"
 	),
 	"cross_psydon_silver" = list(
-		"name" = "Silver Psydonic Cross",
+		"name" = "银制普赛顿十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1892,7 +1892,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "psycruci_s"
 	),
 	"cross_zizo_wood" = list(
-		"name" = "Wooden Inverse Cross",
+		"name" = "木制倒十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1902,7 +1902,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cross_zizo"
 	),
 	"cross_zizo_stone" = list(
-		"name" = "Stone Inverse Cross",
+		"name" = "石制倒十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1912,7 +1912,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cross_zizo"
 	),
 	"cross_zizo_gold" = list(
-		"name" = "Gold Inverse Cross",
+		"name" = "金制倒十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1922,7 +1922,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cross_zizo_u"
 	),
 	"cross_graggar_stone" = list(
-		"name" = "Stone Graggarite Cross",
+		"name" = "石制格拉加尔十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1932,7 +1932,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cross_graggar"
 	),
 	"cross_matthios_stone" = list(
-		"name" = "Stone Matthios Cross",
+		"name" = "石制马西奥斯十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1942,7 +1942,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cross_matthios"
 	),
 	"cross_baotha_stone" = list(
-		"name" = "Stone Baotha Cross",
+		"name" = "石制巴奥莎十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1952,7 +1952,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cross_baotha"
 	),
 	"cross_necra_stone" = list(
-		"name" = "Stone Necra Cross",
+		"name" = "石制内克拉十字架",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1962,7 +1962,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cross_necra"
 	),
 	"training_dummy" = list(
-		"name" = "Training Dummy",
+		"name" = "训练假人",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1972,7 +1972,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "p_dummy"
 	),
 	"custom_sign" = list(
-		"name" = "Wooden Sign",
+		"name" = "木制标牌",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1982,7 +1982,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "sign"
 	),
 	"sign_zizo" = list(
-		"name" = "Zizo Sign",
+		"name" = "齐佐标牌",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -1992,7 +1992,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "signdeath"
 	),
 	"sign_psydon" = list(
-		"name" = "Psydon Sign",
+		"name" = "普赛顿标牌",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2002,7 +2002,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "signlife"
 	),
 	"sign_smith" = list(
-		"name" = "Smithy Sign",
+		"name" = "铁匠铺招牌",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2012,7 +2012,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "signdwarf"
 	),
 	"sign_inn" = list(
-		"name" = "Inn Sign",
+		"name" = "旅店招牌",
 		"category" = "Religion & Statues",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2022,7 +2022,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "signmug"
 	),
 	"spike_pit_trap" = list(
-		"name" = "Spike Pit Trap",
+		"name" = "尖刺陷坑",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2032,7 +2032,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "spike_pit"
 	),
 	"head_stake" = list(
-		"name" = "Head on a Stake",
+		"name" = "木桩上的头颅",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2042,7 +2042,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "headstake"
 	),
 	"pillory_stocks" = list(
-		"name" = "Pillory Stocks",
+		"name" = "枷锁",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2052,7 +2052,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "pillory_single"
 	),
 	"meathook_hanging" = list(
-		"name" = "Hanging Meat Hook",
+		"name" = "悬挂肉钩",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2062,7 +2062,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "meathook"
 	),
 	"noose_hanging" = list(
-		"name" = "Hanging Noose",
+		"name" = "悬挂绞索",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2072,7 +2072,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "noose"
 	),
 	"gallows_hanging" = list(
-		"name" = "Gallows Scaffold",
+		"name" = "绞刑台",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2082,7 +2082,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "gallows"
 	),
 	"handcart_wagon" = list(
-		"name" = "Handcart",
+		"name" = "手推车",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2092,7 +2092,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "cart-empty"
 	),
 	"wooden_horse" = list(
-		"name" = "Wooden Horse",
+		"name" = "木马刑具",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2102,7 +2102,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "wooden_horse"
 	),
 	"torture_table" = list(
-		"name" = "Torture Table",
+		"name" = "刑讯台",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2112,7 +2112,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "tort_table"
 	),
 	"x_pillory" = list(
-		"name" = "X-Pillory",
+		"name" = "X形刑架",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2122,7 +2122,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "x_pillory"
 	),
 	"chains_bondage" = list(
-		"name" = "Wall Shackles",
+		"name" = "壁挂镣铐",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2132,7 +2132,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "CHAINS"
 	),
 	"trap_sawblade" = list(
-		"name" = "Sawblade Trap",
+		"name" = "锯刃陷阱",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2142,7 +2142,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "saw_trap_plate"
 	),
 	"trap_flame" = list(
-		"name" = "Flame Trap",
+		"name" = "火焰陷阱",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2152,7 +2152,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		"icon_state" = "trap_plate"
 	),
 	"trap_shock" = list(
-		"name" = "Shock Trap",
+		"name" = "电击陷阱",
 		"category" = "Defense & Traps",
 		"layer_type" = "obj",
 		"build_order" = 3,
@@ -2252,13 +2252,13 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		reqs_text += "[initial(temp.name)] x[totals[r_path]], "
 	if(length(reqs_text) > 2)
 		reqs_text = copytext(reqs_text, 1, length(reqs_text) - 1)
-	return reqs_text ? reqs_text : "No resources"
+	return reqs_text ? reqs_text : "无需材料"
 
 /proc/handle_blueprint_library_act(action, params, mob/user, datum/tgui/ui)
 	if(action == "save_to_library")
 		var/bp_name = trim(params["name"])
 		if(!bp_name || length(bp_name) > 32)
-			to_chat(user, span_warning("Invalid blueprint name (1-32 chars)."))
+			to_chat(user, span_warning("蓝图名称无效（须为1-32个字符）。"))
 			return TRUE
 
 		var/list/packed_data = params["packed_data"]
@@ -2291,7 +2291,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 				))
 
 		if(!length(safe_data))
-			to_chat(user, span_warning("Cannot save an empty blueprint to the library!"))
+			to_chat(user, span_warning("无法将空白蓝图保存至蓝图库！"))
 			return TRUE
 
 		var/user_count = 0
@@ -2300,7 +2300,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 				user_count++
 
 		if(user_count >= 3)
-			to_chat(user, span_warning("You cannot save more than 3 blueprints in the library! Delete an old one first."))
+			to_chat(user, span_warning("你在蓝图库中最多只能保存3份蓝图！请先删除一份旧蓝图。"))
 			return TRUE
 
 		var/list/new_bp = list(
@@ -2316,7 +2316,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		blueprint_library_cache += list(new_bp)
 		save_blueprint_library()
 		
-		to_chat(user, span_notice("Blueprint '[bp_name]' saved to the library!"))
+		to_chat(user, span_notice("蓝图‘[bp_name]’已保存至蓝图库！"))
 		if(ui) ui.send_full_update()
 		return TRUE
 
@@ -2332,13 +2332,13 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 			return TRUE
 
 		if(found_entry["author_ckey"] != user.ckey)
-			to_chat(user, span_warning("You can only delete your own blueprints!"))
+			to_chat(user, span_warning("你只能删除自己的蓝图！"))
 			return TRUE
 
 		blueprint_library_cache -= list(found_entry)
 		save_blueprint_library()
 		
-		to_chat(user, span_notice("Blueprint deleted from the library."))
+		to_chat(user, span_notice("蓝图已从蓝图库中删除。"))
 		if(ui) ui.send_full_update()
 		return TRUE
 
@@ -2414,7 +2414,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 
 		var/turf/target_turf = get_blueprint_target_turf(origin_turf, dx, dy, dz)
 		if(!target_turf)
-			to_chat(user, span_warning("Not enough space: blueprint extends beyond world boundaries!"))
+			to_chat(user, span_warning("空间不足：蓝图超出了世界边界！"))
 			return FALSE
 
 		if(info["requires_floor"])
@@ -2422,28 +2422,28 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 			var/has_planned_floor = ("floor" in future_grid[key])
 			var/has_real_floor = isfloorturf(target_turf) && !istype(target_turf, /turf/open/transparent/openspace) && !istype(target_turf, /turf/open/water)
 			if(!has_planned_floor && !has_real_floor)
-				to_chat(user, span_warning("[info["name"]] at ([target_turf.x], [target_turf.y]) requires a solid floor underneath!"))
+				to_chat(user, span_warning("位于([target_turf.x], [target_turf.y])的[info["name"]]需要下方有坚实的地板！"))
 				return FALSE
 
 		if(isclosedturf(target_turf))
-			to_chat(user, span_warning("Cannot build: there is already a wall ([target_turf.name]) at ([target_turf.x], [target_turf.y])!"))
+			to_chat(user, span_warning("无法建造：([target_turf.x], [target_turf.y])处已有墙体（[target_turf.name]）！"))
 			return FALSE
 
 		for(var/obj/structure/S in target_turf)
 			if(S.density || istype(S, /obj/structure/mineral_door) || istype(S, /obj/structure/stairs) || istype(S, /obj/structure/blueprint_site))
-				to_chat(user, span_warning("Not enough space: obstacle ([S.name]) at ([target_turf.x], [target_turf.y])!"))
+				to_chat(user, span_warning("空间不足：([target_turf.x], [target_turf.y])处有障碍物（[S.name]）！"))
 				return FALSE
 
 		for(var/obj/machinery/M in target_turf)
 			if(M.density)
-				to_chat(user, span_warning("Not enough space: machinery ([M.name]) in the way!"))
+				to_chat(user, span_warning("空间不足：机械（[M.name]）挡住了位置！"))
 				return FALSE
 
 	return TRUE
 
 /obj/effect/blueprint_ghost
-	name = "blueprint plan"
-	desc = "A holographic framework of the planned construction."
+	name = "蓝图投影"
+	desc = "规划中建筑的全息框架。"
 	anchored = TRUE
 	density = FALSE
 	alpha = 140
@@ -2454,8 +2454,8 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 	var/list/entry_data
 
 /obj/structure/blueprint_site
-	name = "construction site"
-	desc = "Strike with a hammer to build. Place required resources nearby."
+	name = "建筑工地"
+	desc = "用锤子敲击以进行建造。将所需材料放在附近。"
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "decowood"
 	density = FALSE
@@ -2471,7 +2471,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 /obj/structure/blueprint_site/examine(mob/user)
 	. = ..()
 	var/percent = total_tiles_count > 0 ? round((built_tiles_count / total_tiles_count) * 100) : 0
-	. += span_notice("Construction progress: <b>[percent]%</b> ([built_tiles_count]/[total_tiles_count] parts).")
+	. += span_notice("施工进度：<b>[percent]%</b>（[built_tiles_count]/[total_tiles_count]个部件）。")
 
 	var/missing = ""
 	for(var/res in required_resources)
@@ -2480,9 +2480,9 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 			missing += "[initial(temp.name)]: [required_resources[res]] pcs. "
 
 	if(missing != "")
-		. += span_warning("Missing resources: [missing]")
+		. += span_warning("缺少材料：[missing]")
 	else
-		. += span_info("All resources have been absorbed! Keep hammering away.")
+		. += span_info("所有材料都已吸收！继续挥锤施工吧。")
 
 /obj/structure/blueprint_site/proc/setup_design(list/data, mob/user)
 	total_tiles_count = length(data)
@@ -2529,15 +2529,15 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 
 	if(info && info["requires_floor"])
 		if(!isfloorturf(target_turf) || istype(target_turf, /turf/open/transparent/openspace) || istype(target_turf, /turf/open/water))
-			to_chat(user, span_warning("[info["name"]] cannot be erected without a solid floor underneath!"))
+			to_chat(user, span_warning("下方没有坚实的地板，无法建造[info["name"]]！"))
 			return FALSE
 
 	for(var/mob/living/M in target_turf)
-		to_chat(user, span_warning("A creature ([M.name]) at ([target_turf.x], [target_turf.y]) is obstructing construction! Ask it to move."))
+		to_chat(user, span_warning("([target_turf.x], [target_turf.y])处的生物（[M.name]）挡住了施工位置！请让其移开。"))
 		return FALSE
 
 	for(var/obj/item/I in target_turf)
-		to_chat(user, span_warning("An item ([I.name]) at ([target_turf.x], [target_turf.y]) is obstructing construction! Clear the area."))
+		to_chat(user, span_warning("([target_turf.x], [target_turf.y])处的物品（[I.name]）挡住了施工位置！请清理该区域。"))
 		return FALSE
 
 	for(var/obj/structure/S in target_turf)
@@ -2552,7 +2552,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 			continue
 
 		if(S.density)
-			to_chat(user, span_warning("A structure ([S.name]) at ([target_turf.x], [target_turf.y]) is obstructing construction!"))
+			to_chat(user, span_warning("([target_turf.x], [target_turf.y])处的结构（[S.name]）挡住了施工位置！"))
 			return FALSE
 
 	return TRUE
@@ -2570,7 +2570,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 				missing += "[initial(temp.name)]: [required_resources[res]] pcs. "
 
 		if(missing != "")
-			to_chat(user, span_warning("Missing resources! Place them nearby on the floor: [missing]"))
+			to_chat(user, span_warning("缺少材料！请将以下材料放在附近地面上：[missing]"))
 			playsound(src, 'sound/items/bsmithfail.ogg', 50, 1)
 			return TRUE
 
@@ -2600,7 +2600,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		playsound(src, 'sound/items/bsmith4.ogg', 100, 1)
 
 		var/percent = total_tiles_count > 0 ? round((built_tiles_count / total_tiles_count) * 100) : 0
-		user.visible_message(span_notice("[user] hammers the construction site."), span_notice("You are building... (<b>[percent]%</b>)"))
+		user.visible_message(span_notice("[user]挥锤敲打着建筑工地。"), span_notice("你正在施工……（<b>[percent]%</b>）"))
 
 		if(!length(active_ghosts) && !length(unbuilt_entries))
 			finish_site(user)
@@ -2616,14 +2616,14 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		return
 
 	user.visible_message(
-		span_warning("[user] begins deconstructing [src]..."),
-		span_notice("You begin deconstructing [src]...")
+		span_warning("[user]开始拆除[src]……"),
+		span_notice("你开始拆除[src]……")
 	)
 
 	if(do_after(user, 10 SECONDS, target = src))
 		user.visible_message(
-			span_warning("[user] has completely deconstructed [src]!"),
-			span_notice("You have deconstructed the construction site.")
+			span_warning("[user]彻底拆除了[src]！"),
+			span_notice("你拆除了建筑工地。")
 		)
 		qdel(src)
 
@@ -2652,7 +2652,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		G.icon = i_file
 		G.icon_state = i_state
 		G.setDir(chosen_dir)
-		G.name = "blueprint: [info["name"]]"
+		G.name = "蓝图：[info["name"]]"
 		G.master = src
 		G.entry_data = entry
 		active_ghosts += G
@@ -2720,7 +2720,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 					break
 
 /obj/structure/blueprint_site/proc/finish_site(mob/user)
-	visible_message(span_notice("<b>[src] complete! The building has been fully erected!</b>"))
+	visible_message(span_notice("<b>[src]已完工！建筑已全部建成！</b>"))
 	playsound(src, 'sound/foley/Building-01.ogg', 100, 1)
 	qdel(src)
 
@@ -2730,8 +2730,8 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 	var/arcyne_blueprint_floors = 2
 
 /obj/effect/proc_holder/spell/self/architect_plan
-	name = "Architect's Design"
-	desc = "Opens a mental blueprint to plan construction. The design is stored in your memory."
+	name = "建筑师的构想"
+	desc = "展开脑海中的蓝图以规划建筑。设计将保存在你的记忆中。"
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	action_icon_state = "spell0"
 	panel = "Spells"
@@ -2841,18 +2841,18 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 
 		L.arcyne_blueprint_data = safe_data
 		L.arcyne_blueprint_floors = clamp(text2num(params["max_floors"]) || 2, 2, 4)
-		to_chat(L, span_notice("Architectural design saved to memory!"))
+		to_chat(L, span_notice("建筑设计已存入记忆！"))
 		SStgui.close_uis(src)
 		return TRUE
 
 	if(action == "clear_design")
 		L.arcyne_blueprint_data = list()
-		to_chat(L, span_notice("Architectural design cleared from memory."))
+		to_chat(L, span_notice("建筑设计已从记忆中清除。"))
 		return TRUE
 
 /obj/effect/proc_holder/spell/targeted/architect_conjure
-	name = "Materialize Matrix"
-	desc = "Conjures the stored architectural matrix onto the targeted area."
+	name = "矩阵具现"
+	desc = "将记忆中的建筑矩阵具现于目标区域。"
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	action_icon_state = "shieldsparkles"
 	panel = "Spells"
@@ -2864,7 +2864,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 	range = 1
 
 /obj/effect/proc_holder/spell/targeted/architect_conjure/choose_targets(mob/user = usr)
-	to_chat(user, span_notice("You prepare to materialize the matrix. <b>Middle-click</b> on the targeted ground to cast."))
+	to_chat(user, span_notice("你准备将矩阵具现。<b>鼠标中键点击</b>目标地面以施法。"))
 	add_ranged_ability(user, null, TRUE)
 
 /obj/effect/proc_holder/spell/targeted/architect_conjure/InterceptClickOn(mob/living/caller, params, atom/A)
@@ -2874,15 +2874,15 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 	if(!T) return TRUE
 
 	if(get_dist(caller, T) > range)
-		to_chat(caller, span_warning("Too far away!"))
+		to_chat(caller, span_warning("太远了！"))
 		return TRUE
 
 	if(get_turf(caller) != T && !caller.Adjacent(T))
-		to_chat(caller, span_warning("You cannot reach that area through obstacles!"))
+		to_chat(caller, span_warning("你无法越过障碍触及该区域！"))
 		return TRUE
 		
 	perform(list(T), user=caller)
-	remove_ranged_ability(span_notice("You release the weave."))
+	remove_ranged_ability(span_notice("你释放了编织的魔力。"))
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/architect_conjure/cast(list/targets, mob/living/user = usr)
@@ -2892,12 +2892,12 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		return FALSE
 
 	if(!length(user.arcyne_blueprint_data))
-		to_chat(user, span_warning("Your mind is empty... Cast 'Architect's Design' first."))
+		to_chat(user, span_warning("你的脑海中空空如也……请先施放‘建筑师的构想’。"))
 		revert_cast(user)
 		return FALSE
 
 	if(!check_blueprint_placement_valid(T, user, user.arcyne_blueprint_data, user.arcyne_blueprint_floors))
-		to_chat(user, span_warning("Invalid placement! The matrix collapses with a snap."))
+		to_chat(user, span_warning("放置位置无效！矩阵啪的一声崩解了。"))
 		revert_cast(user)
 		return FALSE
 
@@ -2906,8 +2906,8 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 	site.setup_design(user.arcyne_blueprint_data, user)
 
 	user.visible_message(
-		span_notice("[user] materializes a construction matrix for [user.arcyne_blueprint_floors] fl.!"),
-		span_notice("You weave the arcane flows, successfully materializing the matrix for [user.arcyne_blueprint_floors] fl.!")
+		span_notice("[user]具现出了一座[user.arcyne_blueprint_floors]层建筑的矩阵！"),
+		span_notice("你编织奥术之流，成功具现出了一座[user.arcyne_blueprint_floors]层建筑的矩阵！")
 	)
 	return TRUE
 
