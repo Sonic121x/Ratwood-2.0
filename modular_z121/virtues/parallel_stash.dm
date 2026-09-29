@@ -9,7 +9,7 @@
 		if(user_area?.no_special_item_retrieval)
 			return
 		if(user.mind.special_items && user.mind.special_items.len)
-			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
+			var/item = input(user, "我要取出什么？", "藏匿物品") as null|anything in user.mind.special_items
 			if(user.mind != original_mind || (H && H.z121_profession != R))
 				return
 			if(item)
@@ -45,9 +45,9 @@
 
 
 							if(I.desc)
-								I.desc += " The overall look and feel of the item suggests this may be a mere reproduction."
+								I.desc += " 从整体外观和质感来看，这件物品可能只是一件仿制品。"
 							else
-								I.desc = "The overall look and feel of the item suggests this may be a mere reproduction."
+								I.desc = "从整体外观和质感来看，这件物品可能只是一件仿制品。"
 
 
 							I.sellprice = 0

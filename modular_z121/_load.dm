@@ -228,6 +228,14 @@
 // 记忆之吻制作配方：炼金台，宝石x1 + 水50 → 记忆之吻，炼金1级
 #include "crafting/memory_kiss_token_recipe.dm"
 // 连发燧枪、桌面组装零件及工匠台配方。
+#include "weapons/millicombat_pistol.dm"
+// 拦路悍匪：武器命中武技、架势、反击与手枪终结技。
+#include "combat/highwayman.dm"
+#include "combat/highwayman_melee.dm"
+#include "combat/highwayman_counter.dm"
+#include "combat/highwayman_projectiles.dm"
+#include "combat/highwayman_native.dm"
+#include "jobs/highwayman.dm"
 #include "weapons/repeating_flintlock.dm"
 #include "weapons/repeating_flintlock_failures.dm"
 #include "weapons/repeating_flintlock_parts.dm"

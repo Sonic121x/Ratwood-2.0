@@ -18,7 +18,7 @@
 					if(istype(patron, /datum/patron/divine/xylix) && newspell.miracle)
 						newspell.mute_allowed = TRUE
 					if(!silent)
-						to_chat(holder, span_boldnotice("I have unlocked a new spell: [newspell]"))
+						to_chat(holder, span_boldnotice("我解锁了一个新法术：[newspell]"))
 					holder.mind.AddSpell(newspell, holder)
 					holder.z121_profession?.remember_miracle(src, newspell, required_tier)
 					LAZYADD(granted_spells, newspell)
@@ -28,7 +28,7 @@
 				var/required_tier = patron.traits_tier[trait]
 				if(required_tier <= level)
 					if(!silent)
-						to_chat(holder, span_boldnotice("I have unlocked a new trait: [trait]"))
+						to_chat(holder, span_boldnotice("我解锁了一个新特性：[trait]"))
 					if(holder.z121_profession?.owns_miracle_tier(src, required_tier))
 						holder.z121_profession.add_trait(holder, trait)
 					else

@@ -51,26 +51,26 @@
 		H.hydration = 1000
 
 		if(H.mind)
-			H.mind?.special_items["Pouch of Coins"] = /obj/item/storage/belt/rogue/pouch/coins/readyuppouch
+			H.mind?.special_items["一袋金币"] = /obj/item/storage/belt/rogue/pouch/coins/readyuppouch
 			if (HAS_TRAIT(H, TRAIT_MEDIUMARMOR) || HAS_TRAIT(H, TRAIT_HEAVYARMOR))
-				H.mind?.special_items["Metal Scrap (Repair kit)"] = /obj/item/repair_kit/metal/bad
+				H.mind?.special_items["金属废料(修理包)"] = /obj/item/repair_kit/metal/bad
 			else
-				H.mind?.special_items["Fabric Patch (Repair kit)"] = /obj/item/repair_kit/bad
-		to_chat(M, span_notice("Rising early, you made sure to pack a pouch of coins in your stash and eat a hearty breakfast before starting your day. A true TRIUMPH!"))
+				H.mind?.special_items["织物补丁(修理包)"] = /obj/item/repair_kit/bad
+		to_chat(M, span_notice("你早早起床，在开始一天的生活前，将一袋钱币放进藏匿处，并吃了一顿丰盛的早餐。真是一次凯旋！"))
 
 	if(HAS_TRAIT(H, TRAIT_EXPLOSIVE_SUPPLY))
 		H.mind.has_bomb = TRUE
-		to_chat(H.mind, span_smallnotice("I need to check on HERMES. I think a new package has arrived."))
+		to_chat(H.mind, span_smallnotice("我得去查看赫尔墨斯递送系统，应该有新包裹到了。"))
 
 	if(HAS_TRAIT(H, TRAIT_DRUG_SUPPLY))
 		H.mind.has_drug_delivery = TRUE
-		to_chat(H.mind, span_smallnotice("The Guild left something for me. I should check HERMES for my delivery."))
+		to_chat(H.mind, span_smallnotice("公会给我留了东西。我应该去赫尔墨斯递送系统查看包裹。"))
 
 	if(H.islatejoin && announce_latejoin)
 		var/used_title = display_title || title
 		if((H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) && f_title)
 			used_title = f_title
-		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
+		scom_announce("[used_title][H.real_name]从新王田抵达了此地。")
 
 	if(give_bank_account)
 		if(give_bank_account > 1)
@@ -99,14 +99,14 @@
 		var/mob/living/carbon/human/Hu = H
 		if (istype(H, /mob/living/carbon/human))
 			if (obsfuscated_job)
-				GLOB.actors_list["Wanderers"] += list("[H.mobid]" = "[H.real_name] as the [Hu.dna.species.name] Adventurer<BR>")
+				GLOB.actors_list["Wanderers"] += list("[H.mobid]" = "[H.real_name]，饰演[Hu.dna.species.name]冒险者<BR>")
 			else
-				GLOB.actors_list[department] += list("[H.mobid]" = "[H.real_name] as the [Hu.dna.species.name] [H.mind.assigned_role]<BR>")
+				GLOB.actors_list[department] += list("[H.mobid]" = "[H.real_name]，饰演[Hu.dna.species.name][display_title || H.mind.assigned_role]<BR>")
 		else
 			if (obsfuscated_job)
-				GLOB.actors_list["Wanderers"] += list("[H.mobid]" = "[H.real_name] as Adventurer<BR>")
+				GLOB.actors_list["Wanderers"] += list("[H.mobid]" = "[H.real_name]，饰演冒险者<BR>")
 			else
-				GLOB.actors_list[department] += list("[H.mobid]" = "[H.real_name] as [H.mind.assigned_role]<BR>")
+				GLOB.actors_list[department] += list("[H.mobid]" = "[H.real_name]，饰演[display_title || H.mind.assigned_role]<BR>")
 
 	if(islist(advclass_cat_rolls))
 		hugboxify_for_class_selection(H)
@@ -134,7 +134,7 @@
 		picked_class.boost_by_plus_power(plus_factor, H)
 
 	if(related_handler.register_id)
-		add_class_register_msg(related_handler.register_id, "[H.real_name] is the [picked_class.name]", related_handler.linked_client.mob)
+		add_class_register_msg(related_handler.register_id, "[H.real_name]的职业是[picked_class.name]", related_handler.linked_client.mob)
 
 
 
