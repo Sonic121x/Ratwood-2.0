@@ -1,12 +1,12 @@
 /datum/sex_action/manticore_maw2pit
 	parent_type = /datum/sex_action/tailmaw
-	name = "Suck their armpit with tail maw"
+	name = "用尾口吮吸对方的腋下"
 	check_same_tile = FALSE
 	target_sex_part = SEX_PART_CHEST
 	user_sex_part = SEX_PART_TAIL_MAW
 
 /datum/sex_action/manticore_maw2pit/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(span_notice("[user]'s tail puckers against [target]'s raised arm suctions to their pit, its feelers beginning to smear the pungent skin with a gloss of sexual fluids."))
+	user.sexcon_action_message(span_notice("[user]的尾口贴着[target]抬起的手臂收拢，吸住对方的腋下，触须开始将性液涂满气味浓烈的肌肤，使其泛起湿光。"))
 
 /datum/sex_action/manticore_maw2pit/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!can_perform(user, target))
@@ -16,13 +16,13 @@
 	var/message
 	switch(user.sexcon.force)
 		if(SEX_FORCE_LOW)
-			message = "[user]'s tail maw nuzzles [user.sexcon.get_generic_force_adjective()] beneath [target]'s arm, suckling [target.p_their()] [armpit_description] inward before letting the skin pop free with a moist +snap+!"
+			message = "[user]的尾口[user.sexcon.get_generic_force_adjective()]磨蹭着[target]的臂下，将[target.p_their()][armpit_description]吸入其中，随后松开，让肌肤发出湿润的+啪+声！"
 		if(SEX_FORCE_MID)
-			message = "Tendrils lick and fondle [target]'s [armpit_description], [user.sexcon.get_generic_force_adjective()] slurping the salt from [target.p_their()] skin while the bud maintains a warm, snug seal."
+			message = "触须舔舐、抚弄着[target]的[armpit_description]，[user.sexcon.get_generic_force_adjective()]吮去[target.p_their()]皮肤上的盐分，尾苞则温热而紧密地吸附着。"
 		if(SEX_FORCE_HIGH)
-			message = "[user]'s tail clamps [user.sexcon.get_generic_force_adjective()] beneath [target]'s arm, feelers painting [target.p_their()] [armpit_description] with venom gloss as the maw drinks in the heady scent of stewed sweat and nectar."
+			message = "[user]的尾巴[user.sexcon.get_generic_force_adjective()]夹在[target]的臂下，触须将亮晶晶的毒液涂上[target.p_their()][armpit_description]，尾口贪婪地吸入汗水与蜜液混合的浓烈气味。"
 		if(SEX_FORCE_EXTREME to SEX_FORCE_LUDICROUS)
-			message = "The tail overflows with ooze as it [user.sexcon.get_generic_force_adjective()] frots against [target]'s [armpit_description]. Tendrils extrude, anchoring around [target]'s shoulder as [user] pleasures their tailcunt with [target.p_their()] underarms."
+			message = "尾巴[user.sexcon.get_generic_force_adjective()]摩擦着[target]的[armpit_description]，黏液四溢。触须伸出，缠住[target]的肩膀，[user]用[target.p_their()]腋下取悦着自己的尾穴。"
 	user.sexcon_action_message(user.sexcon.spanify_force(message))
 	user.sexcon.oralcourse_noise(user, TRUE)
 	user.sexcon.perform_sex_action(target, 1, 0, TRUE)
@@ -32,7 +32,7 @@
 	return TRUE
 
 /datum/sex_action/manticore_maw2pit/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(span_notice("[user]'s tail releases [target]'s pit with a damp pop, its feelers trailing away, leaving the violated skin tingling and slick with [user.p_their()] tailcunt's dischage."))
+	user.sexcon_action_message(span_notice("[user]的尾巴伴着湿润的啪声松开[target]的腋下，触须拖曳着离去，留下受蹂躏的肌肤阵阵酥麻，沾满[user.p_their()]尾穴的湿滑分泌物。"))
 
 /datum/sex_action/manticore_maw2pit/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return user.sexcon.finished_check() || target.sexcon.finished_check()

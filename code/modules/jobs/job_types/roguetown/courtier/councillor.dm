@@ -52,8 +52,8 @@
 	)
 
 /datum/advclass/councillor/huntmaster
-	name = "Huntmaster"
-	tutorial = "You organize hunts for the crown. You know the woods, the quarry, and how to keep a hunting party alive."
+	name = "御猎官"
+	tutorial = "你为王室组织狩猎。你熟知森林与猎物，也知道如何让狩猎队全员生还。"
 	outfit = /datum/outfit/job/roguetown/councillor/huntmaster
 	category_tags = list(CTAG_COUNCILLOR)
 	subclass_stats = list(
