@@ -177,7 +177,7 @@
 		"Half-Monster" = "半魔物裔",
 		"Half-Drakian" = "半龙裔"
 	)
-	return display_names[internal_name] || internal_name
+	return display_names[internal_name] || (internal_name == "White Stag" ? "白鹿" : internal_name)
 
 /proc/get_species_customization_display_name(internal_name)
 	var/static/list/display_names = list(

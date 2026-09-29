@@ -68,16 +68,16 @@
 /datum/advclass/physician/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	var/list/mask_options = list(
-		"Original plague mask" = /obj/item/clothing/mask/rogue/physician,
-		"Head physician's plague mask" = /obj/item/clothing/mask/rogue/physician/head,
-		"Both (head physician's mask equipped)" = "both",
+		"经典瘟疫面具" = /obj/item/clothing/mask/rogue/physician,
+		"首席医师瘟疫面具" = /obj/item/clothing/mask/rogue/physician/head,
+		"两者都要（佩戴首席医师面具）" = "both",
 	)
-	var/mask_choice = input(H, "Choose your plague mask.", "HEAD PHYSICIAN") as null|anything in mask_options
+	var/mask_choice = input(H, "选择你的瘟疫面具。", "首席医师") as null|anything in mask_options
 	if(!mask_choice)
 		return
 
 	var/mask_type = mask_options[mask_choice]
-	if(mask_choice == "Both (head physician's mask equipped)")
+	if(mask_choice == "两者都要（佩戴首席医师面具）")
 		var/obj/item/clothing/mask/original_mask = new /obj/item/clothing/mask/rogue/physician(H)
 		var/obj/item/storage/satchel = H.get_item_by_slot(SLOT_BACK_L)
 		if(!satchel || !SEND_SIGNAL(satchel, COMSIG_TRY_STORAGE_INSERT, original_mask, null, TRUE, TRUE))
