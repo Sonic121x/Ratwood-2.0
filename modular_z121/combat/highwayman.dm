@@ -344,14 +344,14 @@
 	name = "霰弹轰扫"
 	desc = "消耗三层架势，为手枪准备终结弹。最远3格，命中点周围3×3内除自己外的活体受到80%枪伤并失衡3秒；刷新小技能冷却。"
 	skill_id = Z121_HW_SWEEP
-	button_icon_state = "thousand_arrows"
+	button_icon_state = "ShotgunSweep"
 	finisher = TRUE
 
 /datum/action/z121_highwayman/aim
 	name = "精确打击"
 	desc = "消耗三层架势，为手枪准备终结弹。最远8格，命中造成150%枪伤，受护甲影响；刷新小技能冷却。"
 	skill_id = Z121_HW_AIM
-	button_icon_state = "Shooting"
+	button_icon_state = "PrecisionStrike"
 	finisher = TRUE
 
 /datum/action/z121_highwayman_manage
