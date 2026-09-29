@@ -215,7 +215,7 @@
 	H.mind.check_learnspell()
 	H.update_body()
 	log_game("平行存在提交完成：目标=[P.profession.type]，岗位=[P.job.title]，收尾异常=[P.cleanup_failed]")
-	to_chat(H, span_nicegreen("你如今是【[P.profession.name]】，正式岗位为【[P.job.title]】。私人财物已安全放在脚下。"))
+	to_chat(H, span_nicegreen("你如今是【[P.profession.name]】，正式岗位为【[P.job.display_title || P.job.title]】。私人财物已安全放在脚下。"))
 	return TRUE
 
 // 网格仓库在删除内容时会调用内容的图标更新；先移出，避免容器组件已销毁后被再次访问。
@@ -298,7 +298,7 @@
 	var/department = SSjob.bitflag_to_department(P.job.department_flag, P.job.obsfuscated_job)
 	var/list/entries = GLOB.actors_list[department]
 	if(islist(entries))
-		entries["[H.mobid]"] = "[H.real_name] as [P.profession.name]<BR>"
+		entries["[H.mobid]"] = "[H.real_name]，饰演[P.profession.name]<BR>"
 	H.add_credit(TRUE)
 	SSrole_class_handler.adjust_class_amount(P.profession, 0)
 

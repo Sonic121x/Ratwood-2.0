@@ -98,18 +98,18 @@
 
 	if(H.mind)
 		var/molds = list(
-			"Iron sword mold" = /obj/item/mold/sword,
-			"Iron axe mold" = /obj/item/mold/axe,
-			"Iron mace mold" = /obj/item/mold/mace,
-			"Iron knife mold" = /obj/item/mold/knife,
-			"Iron polearm mold" = /obj/item/mold/polearm,
-			"Iron plate" = /obj/item/mold/plate
+			"铁剑模具" = /obj/item/mold/sword,
+			"铁斧模具" = /obj/item/mold/axe,
+			"铁锤模具" = /obj/item/mold/mace,
+			"铁刀模具" = /obj/item/mold/knife,
+			"铁制长柄武器模具" = /obj/item/mold/polearm,
+			"铁板模具" = /obj/item/mold/plate
 		)
 		var/mold_names = list()
 		for (var/name in molds)
 			mold_names += name
 		for (var/i = 1 to 2)
-			var/mold_choice = input(H, "Choose your starting molds", "Select") as anything in mold_names
+			var/mold_choice = input(H, "选择你的初始模具", "选择") as anything in mold_names
 			if (i == 1)
 				l_hand = molds[mold_choice]
 			else
@@ -319,322 +319,322 @@
 
 	H.adjust_blindness(-3)
 	var/cosmetic_titles = list(
-	"Angler",
-	"Artisan", "Artisana",
-	"Butcher",
-	"Craftsman", "Craftswoman",
-	"Devotee", "Devotess",
-	"Fieldworker",
-	"Forager",
-	"Forester",
-	"Freeholder",
-	"Gardener",
-	"Handiworker",
-	"Hedgefolk",
-	"Herbalist",
-	"Homesteader", "Homesteadress",
-	"Housekeeper",
-	"Householder", "Househusband", "Housewife",
-	"Hunter",
-	"Laborer",
-	"Lordling",
-	"Mason",
-	"Nurse", "Nun",
-	"Patrician",
-	"Pioneer",
-	"Prospector",
-	"Scholar",
-	"Scribe",
-	"Scion",
-	"Settler",
-	"Shepherd",
-	"Smith",
-	"Town Doctor",
-	"Town Ranger",
-	"Tradesman", "Tradewoman",
-	"Varlet",
-	"Villager",
-	"Weaver",
-	"Wench",
-	"Woodsman", "Woodswoman",
-	"Chirurgeon",
-	"Wench", "Varlet")
-	var/cosmetic_choice = input(H, "Select your cosmetic title.", "Cosmetic Titles") as anything in cosmetic_titles
+	"垂钓者",
+	"工艺师", "女工艺师",
+	"屠夫",
+	"工匠", "女工匠",
+	"虔信者", "女虔信者",
+	"农工",
+	"采集者",
+	"护林人",
+	"自耕农",
+	"园丁",
+	"杂务工",
+	"乡野居民",
+	"草药师",
+	"拓荒农", "女拓荒农",
+	"家政工",
+	"户主", "家庭主夫", "家庭主妇",
+	"猎人",
+	"劳工",
+	"年轻贵族",
+	"石匠",
+	"护理员", "修女",
+	"望族",
+	"开拓者",
+	"勘探者",
+	"学者",
+	"抄写员",
+	"贵族后裔",
+	"定居者",
+	"牧羊人",
+	"铁匠",
+	"城镇医生",
+	"城镇游侠",
+	"手艺商人", "女手艺商人",
+	"仆役",
+	"村民",
+	"织工",
+	"平民姑娘",
+	"林地居民", "林地女居民",
+	"外科医师",
+	"平民姑娘", "仆役")
+	var/cosmetic_choice = input(H, "选择你的外观头衔。", "外观头衔") as anything in cosmetic_titles
 
 	switch(cosmetic_choice)
-		if("Devotee")
-			to_chat(H, span_notice("You are a Devotee, a pious peasant devoted to faith and community."))
-			H.mind.cosmetic_class_title = "Devotee"
+		if("虔信者")
+			to_chat(H, span_notice("你是虔信者，一名虔诚的农民，献身于信仰与乡邻。"))
+			H.mind.cosmetic_class_title = "虔信者"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Devotess")
-			to_chat(H, span_notice("You are a Devotess, a pious peasant devoted to faith and community."))
-			H.mind.cosmetic_class_title = "Devotess"
+		if("女虔信者")
+			to_chat(H, span_notice("你是女虔信者，一名虔诚的农民，献身于信仰与乡邻。"))
+			H.mind.cosmetic_class_title = "女虔信者"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Fieldworker")
-			to_chat(H, span_notice("You are a Fieldworker, a laborer of fields and land."))
-			H.mind.cosmetic_class_title = "Fieldworker"
+		if("农工")
+			to_chat(H, span_notice("你是农工，在田间土地上辛勤劳作。"))
+			H.mind.cosmetic_class_title = "农工"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Fieldwoman")
-			to_chat(H, span_notice("You are a Fieldwoman, a laborer of fields and land."))
-			H.mind.cosmetic_class_title = "Fieldwoman"
+		if("女农工")
+			to_chat(H, span_notice("你是女农工，在田间土地上辛勤劳作。"))
+			H.mind.cosmetic_class_title = "女农工"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Handiworker")
-			to_chat(H, span_notice("You are a Handiworker, skilled in small crafts and repairs."))
-			H.mind.cosmetic_class_title = "Handiworker"
+		if("杂务工")
+			to_chat(H, span_notice("你是杂务工，擅长小手工和修补工作。"))
+			H.mind.cosmetic_class_title = "杂务工"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Handiwoman")
-			to_chat(H, span_notice("You are a Handiwoman, skilled in small crafts and repairs."))
-			H.mind.cosmetic_class_title = "Handiwoman"
+		if("女杂务工")
+			to_chat(H, span_notice("你是女杂务工，擅长小手工和修补工作。"))
+			H.mind.cosmetic_class_title = "女杂务工"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Hedgefolk")
-			to_chat(H, span_notice("You are Hedgefolk, a rural dweller of modest means."))
-			H.mind.cosmetic_class_title = "Hedgefolk"
+		if("乡野居民")
+			to_chat(H, span_notice("你是乡野居民，是一名家境平常的乡野居民。"))
+			H.mind.cosmetic_class_title = "乡野居民"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Herbalist")
-			to_chat(H, span_notice("You are an Herbalist, skilled in plants and their remedies."))
-			H.mind.cosmetic_class_title = "Herbalist"
+		if("草药师")
+			to_chat(H, span_notice("你是草药师，熟悉植物及其药用功效。"))
+			H.mind.cosmetic_class_title = "草药师"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Homesteader")
-			to_chat(H, span_notice("You are a Homesteader, a settler and keeper of land."))
-			H.mind.cosmetic_class_title = "Homesteader"
+		if("拓荒农")
+			to_chat(H, span_notice("你是拓荒农，开垦并守护自己的土地。"))
+			H.mind.cosmetic_class_title = "拓荒农"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Homesteadress")
-			to_chat(H, span_notice("You are a Homesteadress, a settler and keeper of land."))
-			H.mind.cosmetic_class_title = "Homesteadress"
+		if("女拓荒农")
+			to_chat(H, span_notice("你是女拓荒农，开垦并守护自己的土地。"))
+			H.mind.cosmetic_class_title = "女拓荒农"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Householder")
-			to_chat(H, span_notice("You are a Householder, a keeper of dwelling and family."))
-			H.mind.cosmetic_class_title = "Householder"
+		if("户主")
+			to_chat(H, span_notice("你是户主，照料着居所与家人。"))
+			H.mind.cosmetic_class_title = "户主"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Househusband")
-			to_chat(H, span_notice("You are a Househusband, a keeper of dwelling and family."))
-			H.mind.cosmetic_class_title = "Househusband"
+		if("家庭主夫")
+			to_chat(H, span_notice("你是家庭主夫，照料着居所与家人。"))
+			H.mind.cosmetic_class_title = "家庭主夫"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Housewife")
-			to_chat(H, span_notice("You are a Housewife, a keeper of dwelling and family."))
-			H.mind.cosmetic_class_title = "Housewife"
+		if("家庭主妇")
+			to_chat(H, span_notice("你是家庭主妇，照料着居所与家人。"))
+			H.mind.cosmetic_class_title = "家庭主妇"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Hunter")
-			to_chat(H, span_notice("You are a Hunter, skilled in tracking and game."))
-			H.mind.cosmetic_class_title = "Hunter"
+		if("猎人")
+			to_chat(H, span_notice("你是猎人，擅长追踪与狩猎。"))
+			H.mind.cosmetic_class_title = "猎人"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Laborer")
-			to_chat(H, span_notice("You are a Laborer, a hard worker and commoner."))
-			H.mind.cosmetic_class_title = "Laborer"
+		if("劳工")
+			to_chat(H, span_notice("你是劳工，是一名勤劳的平民。"))
+			H.mind.cosmetic_class_title = "劳工"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Lordling")
-			to_chat(H, span_notice("You are a Lordling, a young noble of minor standing."))
-			H.mind.cosmetic_class_title = "Lordling"
+		if("年轻贵族")
+			to_chat(H, span_notice("你是年轻贵族，出身地位不高的贵族家庭。"))
+			H.mind.cosmetic_class_title = "年轻贵族"
 			H.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Laboress")
-			to_chat(H, span_notice("You are a Laboress, a hard worker and commoner."))
-			H.mind.cosmetic_class_title = "Laboress"
+		if("女劳工")
+			to_chat(H, span_notice("你是女劳工，是一名勤劳的平民。"))
+			H.mind.cosmetic_class_title = "女劳工"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Villager")
-			to_chat(H, span_notice("You are a Villager, common folk of the settlement."))
-			H.mind.cosmetic_class_title = "Villager"
+		if("村民")
+			to_chat(H, span_notice("你是村民，是聚居地中的普通人。"))
+			H.mind.cosmetic_class_title = "村民"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Villagewoman")
-			to_chat(H, span_notice("You are a Villagewoman, common folk of the settlement."))
-			H.mind.cosmetic_class_title = "Villagewoman"
+		if("女村民")
+			to_chat(H, span_notice("你是女村民，是聚居地中的普通人。"))
+			H.mind.cosmetic_class_title = "女村民"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Artisan")
-			to_chat(H, span_notice("You are an Artisan, skilled in your craft and trade."))
-			H.mind.cosmetic_class_title = "Artisan"
+		if("工艺师")
+			to_chat(H, span_notice("你是工艺师，精通自己的手艺与行当。"))
+			H.mind.cosmetic_class_title = "工艺师"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Artisana")
-			to_chat(H, span_notice("You are an Artisana, skilled in your craft and trade."))
-			H.mind.cosmetic_class_title = "Artisana"
+		if("女工艺师")
+			to_chat(H, span_notice("你是女工艺师，精通自己的手艺与行当。"))
+			H.mind.cosmetic_class_title = "女工艺师"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Patrician")
-			to_chat(H, span_notice("You are a Patrician, a member of the wealthy class."))
-			H.mind.cosmetic_class_title = "Patrician"
+		if("望族")
+			to_chat(H, span_notice("你是望族，属于富裕阶层。"))
+			H.mind.cosmetic_class_title = "望族"
 			H.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Scion")
-			to_chat(H, span_notice("You are a Scion, a descendant of noble blood."))
-			H.mind.cosmetic_class_title = "Scion"
+		if("贵族后裔")
+			to_chat(H, span_notice("你是贵族后裔，身上流淌着贵族的血脉。"))
+			H.mind.cosmetic_class_title = "贵族后裔"
 			H.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Pioneer")
-			to_chat(H, span_notice("You are a Pioneer, a brave settler of new lands."))
-			H.mind.cosmetic_class_title = "Pioneer"
+		if("开拓者")
+			to_chat(H, span_notice("你是开拓者，勇敢地开拓新的土地。"))
+			H.mind.cosmetic_class_title = "开拓者"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Pioneress")
-			to_chat(H, span_notice("You are a Pioneress, a brave settler of new lands."))
-			H.mind.cosmetic_class_title = "Pioneress"
+		if("女开拓者")
+			to_chat(H, span_notice("你是女开拓者，勇敢地开拓新的土地。"))
+			H.mind.cosmetic_class_title = "女开拓者"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Settler")
-			to_chat(H, span_notice("You are a Settler, one who makes a home in strange lands."))
-			H.mind.cosmetic_class_title = "Settler"
+		if("定居者")
+			to_chat(H, span_notice("你是定居者，在陌生土地上安家。"))
+			H.mind.cosmetic_class_title = "定居者"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Settleress")
-			to_chat(H, span_notice("You are a Settleress, one who makes a home in strange lands."))
-			H.mind.cosmetic_class_title = "Settleress"
+		if("女定居者")
+			to_chat(H, span_notice("你是女定居者，在陌生土地上安家。"))
+			H.mind.cosmetic_class_title = "女定居者"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Tradesman")
-			to_chat(H, span_notice("You are a Tradesman, skilled in commerce and craft."))
-			H.mind.cosmetic_class_title = "Tradesman"
+		if("手艺商人")
+			to_chat(H, span_notice("你是手艺商人，擅长贸易与手工艺。"))
+			H.mind.cosmetic_class_title = "手艺商人"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Tradewoman")
-			to_chat(H, span_notice("You are a Tradewoman, skilled in commerce and craft."))
-			H.mind.cosmetic_class_title = "Tradewoman"
+		if("女手艺商人")
+			to_chat(H, span_notice("你是女手艺商人，擅长贸易与手工艺。"))
+			H.mind.cosmetic_class_title = "女手艺商人"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Varlet")
-			to_chat(H, span_notice("You are a Varlet, a servant and attendant."))
-			H.mind.cosmetic_class_title = "Varlet"
+		if("仆役")
+			to_chat(H, span_notice("你是仆役，从事服侍与随从工作。"))
+			H.mind.cosmetic_class_title = "仆役"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Villager")
-			to_chat(H, span_notice("You are a Villager, common folk of the settlement."))
-			H.mind.cosmetic_class_title = "Villager"
+		if("村民")
+			to_chat(H, span_notice("你是村民，是聚居地中的普通人。"))
+			H.mind.cosmetic_class_title = "村民"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Villagewoman")
-			to_chat(H, span_notice("You are a Villagewoman, common folk of the settlement."))
-			H.mind.cosmetic_class_title = "Villagewoman"
+		if("女村民")
+			to_chat(H, span_notice("你是女村民，是聚居地中的普通人。"))
+			H.mind.cosmetic_class_title = "女村民"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Weaver")
-			to_chat(H, span_notice("You are a Weaver, skilled in textiles and cloth."))
-			H.mind.cosmetic_class_title = "Weaver"
+		if("织工")
+			to_chat(H, span_notice("你是织工，擅长纺织与布料制作。"))
+			H.mind.cosmetic_class_title = "织工"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Wench")
-			to_chat(H, span_notice("You are a Wench, a working girl of the commons."))
-			H.mind.cosmetic_class_title = "Wench"
+		if("平民姑娘")
+			to_chat(H, span_notice("你是平民姑娘，是一名靠劳动谋生的平民姑娘。"))
+			H.mind.cosmetic_class_title = "平民姑娘"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Woodsman")
-			to_chat(H, span_notice("You are a Woodsman, at home in forest and timber."))
-			H.mind.cosmetic_class_title = "Woodsman"
+		if("林地居民")
+			to_chat(H, span_notice("你是林地居民，熟悉森林与木材。"))
+			H.mind.cosmetic_class_title = "林地居民"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Woodswoman")
-			to_chat(H, span_notice("You are a Woodswoman, at home in forest and timber."))
-			H.mind.cosmetic_class_title = "Woodswoman"
+		if("林地女居民")
+			to_chat(H, span_notice("你是林地女居民，熟悉森林与木材。"))
+			H.mind.cosmetic_class_title = "林地女居民"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Craftsman")
-			to_chat(H, span_notice("You are a Craftsman, skilled in your trade."))
-			H.mind.cosmetic_class_title = "Craftsman"
+		if("工匠")
+			to_chat(H, span_notice("你是工匠，精通自己的手艺。"))
+			H.mind.cosmetic_class_title = "工匠"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Craftswoman")
-			to_chat(H, span_notice("You are a Craftswoman, skilled in your trade."))
-			H.mind.cosmetic_class_title = "Craftswoman"
+		if("女工匠")
+			to_chat(H, span_notice("你是女工匠，精通自己的手艺。"))
+			H.mind.cosmetic_class_title = "女工匠"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Forager")
-			to_chat(H, span_notice("You are a Forager, gathering from the wilds."))
-			H.mind.cosmetic_class_title = "Forager"
+		if("采集者")
+			to_chat(H, span_notice("你是采集者，在荒野中采集物资。"))
+			H.mind.cosmetic_class_title = "采集者"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Nurse")
-			to_chat(H, span_notice("You are a Nurse, caring for the sick and wounded."))
-			H.mind.cosmetic_class_title = "Nurse"
+		if("护理员")
+			to_chat(H, span_notice("你是护理员，照料病人与伤者。"))
+			H.mind.cosmetic_class_title = "护理员"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Nun")
-			to_chat(H, span_notice("You are a Nun, devoted to faith and service."))
-			H.mind.cosmetic_class_title = "Nun"
+		if("修女")
+			to_chat(H, span_notice("你是修女，献身于信仰与侍奉。"))
+			H.mind.cosmetic_class_title = "修女"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Chirurgeon")
-			to_chat(H, span_notice("You are a Chirurgeon, skilled in surgical arts and healing."))
-			H.mind.cosmetic_class_title = "Chirurgeon"
+		if("外科医师")
+			to_chat(H, span_notice("你是外科医师，擅长外科手术与治疗。"))
+			H.mind.cosmetic_class_title = "外科医师"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Angler")
-			to_chat(H, span_notice("You are an Angler, skilled in fishing and catching."))
-			H.mind.cosmetic_class_title = "Angler"
+		if("垂钓者")
+			to_chat(H, span_notice("你是垂钓者，擅长垂钓捕鱼。"))
+			H.mind.cosmetic_class_title = "垂钓者"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Weaver")
-			to_chat(H, span_notice("You are a Weaver, skilled in textiles and cloth."))
-			H.mind.cosmetic_class_title = "Weaver"
+		if("织工")
+			to_chat(H, span_notice("你是织工，擅长纺织与布料制作。"))
+			H.mind.cosmetic_class_title = "织工"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Mason")
-			to_chat(H, span_notice("You are a Mason, skilled in stonework and building."))
-			H.mind.cosmetic_class_title = "Mason"
+		if("石匠")
+			to_chat(H, span_notice("你是石匠，擅长石作与建筑。"))
+			H.mind.cosmetic_class_title = "石匠"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Forester")
-			to_chat(H, span_notice("You are a Forester, keeper of woods and timber."))
-			H.mind.cosmetic_class_title = "Forester"
+		if("护林人")
+			to_chat(H, span_notice("你是护林人，守护林地与林木。"))
+			H.mind.cosmetic_class_title = "护林人"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Town Ranger")
-			to_chat(H, span_notice("You are a Town Ranger, protector of roads and wilderness."))
-			H.mind.cosmetic_class_title = "Town Ranger"
+		if("城镇游侠")
+			to_chat(H, span_notice("你是城镇游侠，守护道路与荒野。"))
+			H.mind.cosmetic_class_title = "城镇游侠"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Prospector")
-			to_chat(H, span_notice("You are a Prospector, seeking minerals and fortune."))
-			H.mind.cosmetic_class_title = "Prospector"
+		if("勘探者")
+			to_chat(H, span_notice("你是勘探者，寻找矿藏与财富。"))
+			H.mind.cosmetic_class_title = "勘探者"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Freeholder")
-			to_chat(H, span_notice("You are a Freeholder, owner of your own land."))
-			H.mind.cosmetic_class_title = "Freeholder"
+		if("自耕农")
+			to_chat(H, span_notice("你是自耕农，拥有自己的土地。"))
+			H.mind.cosmetic_class_title = "自耕农"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Housekeeper")
-			to_chat(H, span_notice("You are a Housekeeper, maintaining home and hearth."))
-			H.mind.cosmetic_class_title = "Housekeeper"
+		if("家政工")
+			to_chat(H, span_notice("你是家政工，打理家务与居所。"))
+			H.mind.cosmetic_class_title = "家政工"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Town Doctor")
-			to_chat(H, span_notice("You are a Town Doctor, healer of the common folk."))
-			H.mind.cosmetic_class_title = "Town Doctor"
+		if("城镇医生")
+			to_chat(H, span_notice("你是城镇医生，为平民治病疗伤。"))
+			H.mind.cosmetic_class_title = "城镇医生"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Scribe")
-			to_chat(H, span_notice("You are a Scribe, keeper of records and letters."))
-			H.mind.cosmetic_class_title = "Scribe"
+		if("抄写员")
+			to_chat(H, span_notice("你是抄写员，负责文书与记录。"))
+			H.mind.cosmetic_class_title = "抄写员"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Scion")
-			to_chat(H, span_notice("You are a Scion, heir of a noble house."))
-			H.mind.cosmetic_class_title = "Scion"
+		if("贵族后裔")
+			to_chat(H, span_notice("你是贵族后裔，是贵族家族的继承人。"))
+			H.mind.cosmetic_class_title = "贵族后裔"
 			H.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Scholar")
-			to_chat(H, span_notice("You are a Scholar, learned in books and knowledge."))
-			H.mind.cosmetic_class_title = "Scholar"
+		if("学者")
+			to_chat(H, span_notice("你是学者，饱读诗书，学识丰富。"))
+			H.mind.cosmetic_class_title = "学者"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Butcher")
-			to_chat(H, span_notice("You are a Butcher, skilled in meat and trade."))
-			H.mind.cosmetic_class_title = "Butcher"
+		if("屠夫")
+			to_chat(H, span_notice("你是屠夫，擅长肉类处理与买卖。"))
+			H.mind.cosmetic_class_title = "屠夫"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Gardener")
-			to_chat(H, span_notice("You are a Gardener, tending plants and soil."))
-			H.mind.cosmetic_class_title = "Gardener"
+		if("园丁")
+			to_chat(H, span_notice("你是园丁，照料植物与土壤。"))
+			H.mind.cosmetic_class_title = "园丁"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Shepherd")
-			to_chat(H, span_notice("You are a Shepherd, keeper of flocks."))
-			H.mind.cosmetic_class_title = "Shepherd"
+		if("牧羊人")
+			to_chat(H, span_notice("你是牧羊人，照看着羊群。"))
+			H.mind.cosmetic_class_title = "牧羊人"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Smith")
-			to_chat(H, span_notice("You are a Smith, forger of metal and tools."))
-			H.mind.cosmetic_class_title = "Smith"
+		if("铁匠")
+			to_chat(H, span_notice("你是铁匠，锻造金属与工具。"))
+			H.mind.cosmetic_class_title = "铁匠"
 			H.social_rank = SOCIAL_RANK_YEOMAN
-		if("Wench")
-			to_chat(H, span_notice("You are a Wench, a common girl of humble birth."))
-			H.mind.cosmetic_class_title = "Wench"
+		if("平民姑娘")
+			to_chat(H, span_notice("你是平民姑娘，是一名出身平凡的姑娘。"))
+			H.mind.cosmetic_class_title = "平民姑娘"
 			H.social_rank = SOCIAL_RANK_PEASANT
-		if("Varlet")
-			to_chat(H, span_notice("You are a Varlet, a low-born fellow accustomed to errands."))
-			H.mind.cosmetic_class_title = "Varlet"
+		if("仆役")
+			to_chat(H, span_notice("你是仆役，出身平民，习惯了跑腿杂务。"))
+			H.mind.cosmetic_class_title = "仆役"
 			H.social_rank = SOCIAL_RANK_PEASANT
 
 
-	var/stat_packs = list("Agile - SPD +2, CON +1, STR -1, WIL -1", "Bookworm - INT +1, PER +2, WIL +2, STR -2, CON -2", "Toned - STR +1, CON +1, WIL +1, INT -1", "All-Rounded - No Changes")
-	var/stat_choice = input(H, "Select your stat focus. [1/1]", "Stat Pack Selection") as anything in stat_packs
+	var/stat_packs = list("敏捷——速度 +2，体质 +1，力量 -1，意志 -1", "书痴——智力 +1，感知 +2，意志 +2，力量 -2，体质 -2", "健壮——力量 +1，体质 +1，意志 +1，智力 -1", "均衡——属性不变")
+	var/stat_choice = input(H, "选择你的属性倾向。[1/1]", "属性组合选择") as anything in stat_packs
 
 	switch(stat_choice)
-		if("Agile - SPD +2, CON +1, STR -1, WIL -1")
-			to_chat(H, span_notice("You are agile and nimble."))
+		if("敏捷——速度 +2，体质 +1，力量 -1，意志 -1")
+			to_chat(H, span_notice("你身手敏捷，行动灵活。"))
 			H.z121_birth_stat(STATKEY_SPD, 2)
 			H.z121_birth_stat(STATKEY_WIL, -1)
 			H.z121_birth_stat(STATKEY_STR, -1)
 			H.z121_birth_stat(STATKEY_CON, 1)
-		if("Bookworm - INT +1, PER +2, WIL +2, STR -2, CON -2")
-			to_chat(H, span_notice("You are learned and wise."))
+		if("书痴——智力 +1，感知 +2，意志 +2，力量 -2，体质 -2")
+			to_chat(H, span_notice("你学识渊博，富有智慧。"))
 			H.z121_birth_stat(STATKEY_INT, 1)
 			H.z121_birth_stat(STATKEY_PER, 2)
 			H.z121_birth_stat(STATKEY_WIL, 2)
 			H.z121_birth_stat(STATKEY_STR, -2)
 			H.z121_birth_stat(STATKEY_CON, -2)
-		if("Toned - STR +1, CON +1, WIL +1, INT -1")
-			to_chat(H, span_notice("You are strong and hardy."))
+		if("健壮——力量 +1，体质 +1，意志 +1，智力 -1")
+			to_chat(H, span_notice("你强壮而坚韧。"))
 			H.z121_birth_stat(STATKEY_STR, 1)
 			H.z121_birth_stat(STATKEY_CON, 1)
 			H.z121_birth_stat(STATKEY_WIL, 1)
 			H.z121_birth_stat(STATKEY_INT, -1)
-		if("All-Rounded - No Changes")
-			to_chat(H, span_notice("You are balanced in all aspects."))
+		if("均衡——属性不变")
+			to_chat(H, span_notice("你的各项能力十分均衡。"))
 
 
 
 
 	var/profession_sets = list(
-		"Physiker Set" = list(
+		"医师套装" = list(
 			/obj/item/bedroll,
 			/obj/item/rogueweapon/huntingknife/scissors,
 			/obj/item/storage/belt/rogue/surgery_bag/full,
@@ -643,14 +643,14 @@
 			/obj/item/storage/magebag/alchemist,
 			/obj/item/folding_table_stored
 		),
-		"Provider Set" = list(
+		"补给者套装" = list(
 			/obj/item/storage/roguebag/food,
 			/obj/item/folding_table_stored,
 			/obj/item/storage/meatbag,
 			/obj/item/millstone,
 			/obj/item/rogueweapon/hoe
 		),
-		"Prospector Set" = list(
+		"勘探者套装" = list(
 			/obj/item/rogueweapon/hammer/steel,
 			/obj/item/folding_table_stored,
 			/obj/item/lockpickring/mundane,
@@ -658,7 +658,7 @@
 			/obj/item/rogueweapon/huntingknife/scissors,
 			/obj/item/rogueweapon/scabbard/gwstrap
 		),
-		"Blacksmith Set" = list(
+		"铁匠套装" = list(
 			/obj/item/rogueweapon/hammer/copper,
 			/obj/item/rogueweapon/tongs,
 			/obj/item/rogueweapon/huntingknife/bronze,
@@ -666,12 +666,12 @@
 			/obj/item/ingot/iron,
 			/obj/item/rogueore/coal
 		),
-		"Craftsman Set" = list(
+		"工匠套装" = list(
 			/obj/item/rogueweapon/stoneaxe/handaxe,
 			/obj/item/rogueweapon/hammer/steel,
 			/obj/item/folding_table_stored
 		),
-		"Hunter Set" = list(
+		"猎人套装" = list(
 			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 			/obj/item/quiver/arrows,
 			/obj/item/rogueweapon/huntingknife/bronze,
@@ -679,7 +679,7 @@
 			/obj/item/natural/worms,
 			/obj/item/natural/worms
 		),
-		"Fisher Set" = list(
+		"渔夫套装" = list(
 			/obj/item/fishingrod,
 			/obj/item/natural/worms,
 			/obj/item/natural/worms,
@@ -687,7 +687,7 @@
 			/obj/item/rogueweapon/huntingknife/bronze,
 			/obj/item/storage/roguebag
 		),
-		"Tailor Set" = list(
+		"裁缝套装" = list(
 			/obj/item/rogueweapon/huntingknife/scissors,
 			/obj/item/needle,
 			/obj/item/natural/cloth,
@@ -695,7 +695,7 @@
 			/obj/item/natural/cloth,
 			/obj/item/natural/bundle/fibers
 		),
-		"Scribe Set" = list(
+		"抄写员套装" = list(
 			/obj/item/paper,
 			/obj/item/paper,
 			/obj/item/paper,
@@ -706,19 +706,19 @@
 
 
 	var/daily_tools_combos = list(
-		"Bronze Axe + Bronze Knife + Sheath" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
-		"Simple Bow + Quiver" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
-		"Iron Spear + Backup Dagger" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
-		"Fishing Rod + Worms" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
-		"Sickle + Farming Hoe" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
-		"Mining Pick + Copper Hammer" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
-		"Cudgel + Rope" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
+		"青铜斧 + 青铜刀 + 刀鞘" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
+		"简易弓 + 箭袋" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
+		"铁矛 + 备用匕首" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
+		"钓竿 + 蚯蚓" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
+		"镰刀 + 农用锄" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
+		"矿镐 + 铜锤" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
+		"短棍 + 绳索" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
 	)
 
 	if(H.mind)
 
 		for(var/i in 1 to 1)
-			var/profession_set_name = input(H, "Choose a profession set [i]/1.", "Profession Sets") as anything in profession_sets
+			var/profession_set_name = input(H, "选择一套职业装备。[i]/1", "职业装备") as anything in profession_sets
 			if(profession_set_name)
 				var/profession_list = profession_sets[profession_set_name]
 				var/counter = 1
@@ -732,14 +732,14 @@
 						var/unique_key = "[item_name] ([profession_set_name] [counter])"
 						H.z121_birth_stash(unique_key, item_path)
 					counter++
-				if(profession_set_name == "Craftsman Set")
+				if(profession_set_name == "工匠套装")
 					H.z121_birth_trait(TRAIT_MASTER_CARPENTER, TRAIT_GENERIC)
 					H.z121_birth_trait(TRAIT_MASTER_MASON, TRAIT_GENERIC)
 				if(profession_set_name in profession_sets)
 					profession_sets -= profession_set_name
 
 
-		var/combo_name = input(H, "Choose a daily tools combination [1/1].", "Daily Tools") as anything in daily_tools_combos
+		var/combo_name = input(H, "选择一组日常工具。[1/1]", "日常工具") as anything in daily_tools_combos
 		if(combo_name)
 			var/combo_list = daily_tools_combos[combo_name]
 			var/counter = 1
@@ -751,28 +751,28 @@
 
 
 	var/outfit_styles = list(
-		"Laborer - Worker vest, trou, boots",
-		"Field Hand - Straw hat, shortshirt, trou",
-		"Woodsman - Hood, workervest, bracers",
-		"Fisher - Fisherhat, shortshirt, work vest",
-		"Artisan - Tunic, tights, furcloak",
-		"Seamster - Armordress, white tunic, cloth belt",
-		"Traveler - Half cloak, undershirt, boots",
-		"Rustic - Fur hat, shortshirt, leather boots",
-		"Miner - Arming cap, trou, work vest",
-		"Entertainer - Fancy hat, tunic, half cloak",
-		"Modest Scholar - Spectacles, scholar's robe, chaperon",
-		"Countryside - Straw hat, chemise, shortboots"
+		"劳工——工人背心、长裤、靴子",
+		"农工——草帽、短衫、长裤",
+		"林地居民——兜帽、工人背心、护腕",
+		"渔夫——渔夫帽、短衫、工作背心",
+		"工艺师——束腰外衣、紧身裤、毛皮斗篷",
+		"缝纫师——护甲裙、白色束腰外衣、布腰带",
+		"旅人——短斗篷、内衫、靴子",
+		"乡民——毛皮帽、短衫、皮靴",
+		"矿工——武装帽、长裤、工作背心",
+		"艺人——华丽帽子、束腰外衣、短斗篷",
+		"朴素学者——眼镜、学者长袍、包头帽",
+		"乡村风格——草帽、衬裙、短靴"
 	)
 
-	var/outfit_choice = input(H, "Choose your outfit style.", "Outfit Selection") as anything in outfit_styles
+	var/outfit_choice = input(H, "选择你的服装风格。", "服装选择") as anything in outfit_styles
 
 
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 
 	switch(outfit_choice)
-		if("Laborer - Worker vest, trou, boots")
+		if("劳工——工人背心、长裤、靴子")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -784,7 +784,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				head = /obj/item/clothing/head/roguetown/armingcap
 
-		if("Field Hand - Straw hat, shortshirt, trou")
+		if("农工——草帽、短衫、长裤")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -794,7 +794,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/strawhat
 
-		if("Woodsman - Hood, workervest, bracers")
+		if("林地居民——兜帽、工人背心、护腕")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -806,7 +806,7 @@
 			head = /obj/item/clothing/head/roguetown/roguehood
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 
-		if("Fisher - Fisherhat, shortshirt, work vest")
+		if("渔夫——渔夫帽、短衫、工作背心")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -816,14 +816,14 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/fisherhat
 
-		if("Artisan - Tunic, tights, furcloak")
+		if("工艺师——束腰外衣、紧身裤、毛皮斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			head = /obj/item/clothing/head/roguetown/hatblu
 
-		if("Seamster - Armordress, white tunic, cloth belt")
+		if("缝纫师——护甲裙、白色束腰外衣、布腰带")
 			armor = /obj/item/clothing/suit/roguetown/armor/armordress
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -831,7 +831,7 @@
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 
-		if("Traveler - Half cloak, undershirt, boots")
+		if("旅人——短斗篷、内衫、靴子")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -842,7 +842,7 @@
 			cloak = /obj/item/clothing/cloak/half
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 
-		if("Rustic - Fur hat, shortshirt, leather boots")
+		if("乡民——毛皮帽、短衫、皮靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -851,7 +851,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/hatfur
 
-		if("Miner - Arming cap, trou, work vest")
+		if("矿工——武装帽、长裤、工作背心")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/brown
@@ -862,7 +862,7 @@
 			head = /obj/item/clothing/head/roguetown/armingcap
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 
-		if("Entertainer - Fancy hat, tunic, half cloak")
+		if("艺人——华丽帽子、束腰外衣、短斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -870,14 +870,14 @@
 			head = /obj/item/clothing/head/roguetown/fancyhat
 			belt = /obj/item/storage/belt/rogue/leather/cloth
 
-		if("Modest Scholar - Spectacles, tunic, chaperon")
+		if("朴素学者——眼镜、学者长袍、包头帽")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			head = /obj/item/clothing/head/roguetown/chaperon
 			mask = /obj/item/clothing/mask/rogue/spectacles
 
-		if("Countryside - Straw hat, chemise, shortboots")
+		if("乡村风格——草帽、衬裙、短靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -908,53 +908,53 @@
 	if(H.mind)
 
 		var/misc_skills = list(
-			"Stealing" = /datum/skill/misc/stealing,
-			"Music" = /datum/skill/misc/music,
-			"Reading" = /datum/skill/misc/reading,
-			"Medicine" = /datum/skill/misc/medicine,
-			"Tracking" = /datum/skill/misc/tracking,
-			"Lockpicking" = /datum/skill/misc/lockpicking,
-			"Sneaking" = /datum/skill/misc/sneaking,
-			"Riding" = /datum/skill/misc/riding
+			"偷窃" = /datum/skill/misc/stealing,
+			"音乐" = /datum/skill/misc/music,
+			"阅读" = /datum/skill/misc/reading,
+			"医疗" = /datum/skill/misc/medicine,
+			"追踪" = /datum/skill/misc/tracking,
+			"开锁" = /datum/skill/misc/lockpicking,
+			"潜行" = /datum/skill/misc/sneaking,
+			"骑术" = /datum/skill/misc/riding
 		)
 		var/labor_skills = list(
-			"Farming" = /datum/skill/labor/farming,
-			"Lumberjacking" = /datum/skill/labor/lumberjacking,
-			"Fishing" = /datum/skill/labor/fishing,
-			"Butchering" = /datum/skill/labor/butchering,
-			"Mining" = /datum/skill/labor/mining
+			"耕作" = /datum/skill/labor/farming,
+			"伐木" = /datum/skill/labor/lumberjacking,
+			"钓鱼" = /datum/skill/labor/fishing,
+			"屠宰" = /datum/skill/labor/butchering,
+			"采矿" = /datum/skill/labor/mining
 		)
 		var/craft_skills = list(
-			"Sewing" = /datum/skill/craft/sewing,
-			"Ceramics" = /datum/skill/craft/ceramics,
-			"Carpentry" = /datum/skill/craft/carpentry,
-			"Masonry" = /datum/skill/craft/masonry,
-			"Engineering" = /datum/skill/craft/engineering,
-			"Alchemy" = /datum/skill/craft/alchemy,
-			"Tanning" = /datum/skill/craft/tanning,
-			"Cooking" = /datum/skill/craft/cooking,
-			"Weaponsmithing" = /datum/skill/craft/weaponsmithing,
-			"Armorsmithing" = /datum/skill/craft/armorsmithing,
-			"Blacksmithing" = /datum/skill/craft/blacksmithing,
-			"Smelting" = /datum/skill/craft/smelting
+			"缝纫" = /datum/skill/craft/sewing,
+			"制陶" = /datum/skill/craft/ceramics,
+			"木工" = /datum/skill/craft/carpentry,
+			"石工" = /datum/skill/craft/masonry,
+			"工程" = /datum/skill/craft/engineering,
+			"炼金" = /datum/skill/craft/alchemy,
+			"制革" = /datum/skill/craft/tanning,
+			"烹饪" = /datum/skill/craft/cooking,
+			"武器锻造" = /datum/skill/craft/weaponsmithing,
+			"护甲锻造" = /datum/skill/craft/armorsmithing,
+			"铁匠工艺" = /datum/skill/craft/blacksmithing,
+			"冶炼" = /datum/skill/craft/smelting
 		)
 		var/combat_skills = list(
-			"Axes" = /datum/skill/combat/axes,
-			"Unarmed" = /datum/skill/combat/unarmed,
-			"Knives" = /datum/skill/combat/knives,
-			"Wrestling" = /datum/skill/combat/wrestling,
-			"Whips & Flails" = /datum/skill/combat/whipsflails,
-			"Bows" = /datum/skill/combat/bows,
-			"Crossbows" = /datum/skill/combat/crossbows,
-			"Polearms" = /datum/skill/combat/polearms,
-			"Shields" = /datum/skill/combat/shields,
-			"Slings" = /datum/skill/combat/slings,
-			"Swords" = /datum/skill/combat/swords,
-			"Maces" = /datum/skill/combat/maces
+			"斧术" = /datum/skill/combat/axes,
+			"徒手格斗" = /datum/skill/combat/unarmed,
+			"短刃" = /datum/skill/combat/knives,
+			"摔跤" = /datum/skill/combat/wrestling,
+			"鞭与连枷" = /datum/skill/combat/whipsflails,
+			"弓术" = /datum/skill/combat/bows,
+			"弩术" = /datum/skill/combat/crossbows,
+			"长柄武器" = /datum/skill/combat/polearms,
+			"盾术" = /datum/skill/combat/shields,
+			"投石索" = /datum/skill/combat/slings,
+			"剑术" = /datum/skill/combat/swords,
+			"锤术" = /datum/skill/combat/maces
 		)
 
 
-		var/expert_skill_name = input(H, "Choose one skill to EXPERT. [1/1]", "Skill Selection") as anything in misc_skills + labor_skills + craft_skills
+		var/expert_skill_name = input(H, "选择一项技能提升至专家级。[1/1]", "技能选择") as anything in misc_skills + labor_skills + craft_skills
 		if(expert_skill_name)
 			H.z121_birth_skill_floor(misc_skills[expert_skill_name] || labor_skills[expert_skill_name] || craft_skills[expert_skill_name], SKILL_LEVEL_EXPERT, TRUE)
 			if(expert_skill_name in misc_skills)
@@ -966,7 +966,7 @@
 
 
 		for(var/i in 1 to 4)
-			var/journeyman_name = input(H, "Choose a skill to JOURNEYMAN. [i]/4", "Skill Selection") as anything in misc_skills + labor_skills + craft_skills + combat_skills
+			var/journeyman_name = input(H, "选择一项技能提升至熟练级。[i]/4", "技能选择") as anything in misc_skills + labor_skills + craft_skills + combat_skills
 			if(journeyman_name)
 				H.z121_birth_skill_floor(misc_skills[journeyman_name] || labor_skills[journeyman_name] || craft_skills[journeyman_name] || combat_skills[journeyman_name], SKILL_LEVEL_JOURNEYMAN, TRUE)
 				if(journeyman_name in misc_skills)
@@ -980,7 +980,7 @@
 
 
 		for(var/i in 1 to 3)
-			var/apprentice_name = input(H, "Choose a skill to APPRENTICE. [i]/3", "Skill Selection") as anything in misc_skills + labor_skills + craft_skills + combat_skills
+			var/apprentice_name = input(H, "选择一项技能提升至学徒级。[i]/3", "技能选择") as anything in misc_skills + labor_skills + craft_skills + combat_skills
 			if(apprentice_name)
 				H.z121_birth_skill_floor(misc_skills[apprentice_name] || labor_skills[apprentice_name] || craft_skills[apprentice_name] || combat_skills[apprentice_name], SKILL_LEVEL_APPRENTICE, TRUE)
 				if(apprentice_name in misc_skills)
@@ -994,7 +994,7 @@
 
 
 		for(var/i in 1 to 5)
-			var/novice_name = input(H, "Choose a skill to NOVICE. [i]/5", "Skill Selection") as anything in misc_skills + labor_skills + craft_skills + combat_skills
+			var/novice_name = input(H, "选择一项技能提升至入门级。[i]/5", "技能选择") as anything in misc_skills + labor_skills + craft_skills + combat_skills
 			if(novice_name)
 				H.z121_birth_skill_floor(misc_skills[novice_name] || labor_skills[novice_name] || craft_skills[novice_name] || combat_skills[novice_name], SKILL_LEVEL_NOVICE, TRUE)
 				if(novice_name in misc_skills)
@@ -1041,15 +1041,15 @@
 		H.z121_birth_skill_floor(/datum/skill/craft/tanning, 4, TRUE)
 	if(H.mind)
 		H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/huntersyell)
-		var/weapons = list("Machete","Hatchet")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("砍刀","短柄斧")
+		var/weapon_choice = input(H, "选择你的武器。", "选择装备") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Machete")
+			if("砍刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/short/messer/iron
 				H.z121_birth_skill_floor(/datum/skill/combat/swords, 2, TRUE)
-			if("Hatchet")
+			if("短柄斧")
 				beltl = /obj/item/rogueweapon/stoneaxe/handaxe
 				H.z121_birth_skill_floor(/datum/skill/combat/axes, 2, TRUE)
 
@@ -1058,7 +1058,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning("You are a hunter who specializes in spears, excelling in strength and endurance."))
+	to_chat(H, span_warning("你是专精长矛的猎人，力量和耐力都十分出众。"))
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
@@ -1163,37 +1163,37 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shalal
 		belt = /obj/item/storage/belt/rogue/leather/cloth/sash/random
 	if(H.mind)
-		var/weapons = list("Accordion","Bagpipe","Drum","Flute","Guitar","Harp","Hurdy-Gurdy","Jaw Harp","Lute","Psyaltery","Shamisen","Trumpet","Viola","Vocal Talisman")
-		var/weapon_choice = tgui_input_list(H, "Choose your instrument.", "TAKE UP ARMS", weapons)
+		var/weapons = list("手风琴","风笛","鼓","长笛","吉他","竖琴","手摇琴","口弦琴","鲁特琴","拨弦琴","三味线","小号","中提琴","歌唱护符")
+		var/weapon_choice = tgui_input_list(H, "选择你的乐器。", "选择装备", weapons)
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Accordion")
+			if("手风琴")
 				backr = /obj/item/rogue/instrument/accord
-			if("Bagpipe")
+			if("风笛")
 				backr = /obj/item/rogue/instrument/bagpipe
-			if("Drum")
+			if("鼓")
 				backr = /obj/item/rogue/instrument/drum
-			if("Flute")
+			if("长笛")
 				backr = /obj/item/rogue/instrument/flute
-			if("Guitar")
+			if("吉他")
 				backr = /obj/item/rogue/instrument/guitar
-			if("Harp")
+			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("Hurdy-Gurdy")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
-			if("Jaw Harp")
+			if("口弦琴")
 				backr = /obj/item/rogue/instrument/jawharp
-			if("Lute")
+			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("Psyaltery")
+			if("拨弦琴")
 				backr = /obj/item/rogue/instrument/psyaltery
-			if("Shamisen")
+			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
-			if("Trumpet")
+			if("小号")
 				backr = /obj/item/rogue/instrument/trumpet
-			if("Viola")
+			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("Vocal Talisman")
+			if("歌唱护符")
 				backr = /obj/item/rogue/instrument/vocals
 	if(H.age == AGE_OLD)
 		H.z121_birth_skill_floor(/datum/skill/misc/music, 6, TRUE)
@@ -1652,14 +1652,14 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/beer = 1)
 
-	var/classes = list("Goon", "Miscreant", "Muscle", "Longshoreman")
-	var/classchoice = input(H, "What kind of thug are you?", "TAKE UP ARMS") as anything in classes
+	var/classes = list("街头打手", "恶棍", "壮汉", "码头工")
+	var/classchoice = input(H, "你是哪种街头混混？", "选择装备") as anything in classes
 
 	switch(classchoice)
 
-		if("Goon")
-			H.mind.cosmetic_class_title = "Goon"
-			to_chat(H, span_warning("You're a goon, a low-lyfe thug in a painful world - not good enough for war, not smart enough for peace. What you lack in station you make up for in daring."))
+		if("街头打手")
+			H.mind.cosmetic_class_title = "街头打手"
+			to_chat(H, span_warning("你是一名街头打手，在苦难世道里讨生活的小混混——本事不足以上战场，头脑也不足以安稳度日。地位上的不足，你用胆量来弥补。"))
 			H.set_blindness(0)
 
 			H.z121_birth_stat(STATKEY_STR, 2)
@@ -1683,26 +1683,26 @@
 			H.z121_birth_skill_floor(/datum/skill/labor/fishing, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			var/options = list("Frypan", "Knuckles", "Navaja", "Bare Hands")
-			var/option_choice = input(H, "Choose your means.", "TAKE UP ARMS") as anything in options
+			var/options = list("煎锅", "指虎", "折刀", "赤手空拳")
+			var/option_choice = input(H, "选择你的手段。", "选择装备") as anything in options
 
 			switch(option_choice)
-				if("Frypan")
+				if("煎锅")
 					H.z121_birth_skill_floor(/datum/skill/craft/cooking, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/cooking/pan
-				if("Knuckles")
+				if("指虎")
 					H.z121_birth_skill_floor(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/knuckles
-				if("Navaja")
+				if("折刀")
 					H.z121_birth_skill_floor(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/huntingknife/idagger/navaja
-				if("Bare Hands")
+				if("赤手空拳")
 					H.z121_birth_skill_floor(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_trait(TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 
-		if("Miscreant")
-			H.mind.cosmetic_class_title = "Miscreant"
-			to_chat(H, span_warning("You're smarter than the rest, by a stone's throw - and you know better than to get up close and personal. Unlike most others, you can read."))
+		if("恶棍")
+			H.mind.cosmetic_class_title = "恶棍"
+			to_chat(H, span_warning("你比其他人聪明那么一点，也懂得避免贴身肉搏。与大多数同伴不同，你识字。"))
 			H.set_blindness(0)
 
 			H.z121_birth_stat(STATKEY_CON, -2)
@@ -1728,28 +1728,28 @@
 			H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("Stone Sling", "Magic Bricks", "Lockpicking Equipment")
-			var/option_choice = input(H, "Choose your means.", "TAKE UP ARMS") as anything in options
+			var/options = list("投石索", "魔法砖块", "开锁工具")
+			var/option_choice = input(H, "选择你的手段。", "选择装备") as anything in options
 
 			switch(option_choice)
-				if("Stone Sling")
+				if("投石索")
 					H.z121_birth_skill_floor(/datum/skill/combat/slings, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 					l_hand = /obj/item/quiver/sling
-				if("Magic Bricks")
+				if("魔法砖块")
 					H.z121_birth_skill_floor(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_spell(new /obj/effect/proc_holder/spell/self/magicians_brick)
 					H.z121_birth_trait(TRAIT_ARCYNE_T1, TRAIT_GENERIC)
-				if("Lockpicking Equipment")
+				if("开锁工具")
 					H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_skill_floor(/datum/skill/misc/lockpicking, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_trait(TRAIT_LIGHT_STEP, TRAIT_GENERIC)
 					r_hand = /obj/item/lockpickring/mundane
 
-		if("Muscle")
-			H.mind.cosmetic_class_title = "Muscle"
-			to_chat(H, span_warning("More akin to a corn-fed monster than a normal man, your size and strength are your greatest weapons; though they hardly supplement what's missing of your brains."))
+		if("壮汉")
+			H.mind.cosmetic_class_title = "壮汉"
+			to_chat(H, span_warning("比起常人，你更像个吃得膘肥体壮的怪物。体格和蛮力是你最强的武器，却很难弥补脑子的不足。"))
 			H.set_blindness(0)
 
 			H.z121_birth_trait(TRAIT_STEELHEARTED, TRAIT_GENERIC)
@@ -1772,25 +1772,23 @@
 			H.z121_birth_skill_floor(/datum/skill/labor/mining, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/labor/lumberjacking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("Hands-On", "Big Axe", "Big Stick")
-			var/option_choice = input(H, "Choose your means.", "TAKE UP ARMS") as anything in options
+			var/options = list("近身搏斗", "大斧", "大棒")
+			var/option_choice = input(H, "选择你的手段。", "选择装备") as anything in options
 
 			switch(option_choice)
-				if("Hands-On")
+				if("近身搏斗")
 					H.z121_birth_trait(TRAIT_BIGGUY, TRAIT_GENERIC)
 					H.z121_birth_trait(TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-				if("Big Axe")
+				if("大斧")
 					H.z121_birth_skill_floor(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/greataxe
-				if("Big Stick")
+				if("大棒")
 					H.z121_birth_skill_floor(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/mace
 
-		if("Longshoreman")
-			H.mind.cosmetic_class_title = "Longshoreman"
-			to_chat(H, span_warning("You answered Abyssor's call when you were young, though in troublesome ways, \
-	pilaging for treasury from anyone who'd cross your path. Now your captain retires from a life of crime, \
-	settling down as do you. Still, there is coin to be made on land."))
+		if("码头工")
+			H.mind.cosmetic_class_title = "码头工"
+			to_chat(H, span_warning("你年轻时响应了阿比索的召唤，却走上了歧途，劫掠所有途经你面前的人。如今船长金盆洗手，你也随之安定下来。不过，陆地上仍有赚钱的机会。"))
 			H.set_blindness(0)
 
 			H.z121_birth_trait(TRAIT_STEELHEARTED, TRAIT_GENERIC)
@@ -1825,23 +1823,19 @@
 			H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-	var/gang = list("Gang Rontz Ratz", "Gang Blortz Volves", "Neverminde")
-	var/gang_choice = input(H, "Want to become a gang member?") as anything in gang
+	var/gang = list("朗茨鼠帮", "布洛茨狼帮", "算了")
+	var/gang_choice = input(H, "要加入帮派吗？") as anything in gang
 
 	switch(gang_choice)
-		if("Gang Rontz Ratz")
-			to_chat(H, span_warning("I'm a member of street gang Rontz Ratz, a lot of time has passed and now we have to build up our power again,\
-			those bastards from Blortz Volves will answer for this.\
-			Rontz Rats bite - feel the fight!"))
+		if("朗茨鼠帮")
+			to_chat(H, span_warning("我是朗茨鼠帮的一员。时过境迁，我们如今必须重振势力，布洛茨狼帮的家伙们终将为此付出代价。朗茨群鼠亮利齿，战意昂扬不退缩！"))
 			H.z121_birth_trait(TRAIT_GANG_A, TRAIT_GENERIC)
 			mask = /obj/item/clothing/mask/rogue/ragmask/red
-		if("Gang Blortz Volves")
-			to_chat(H, span_warning("I'm a member of street gang Blortz Volves, a lot of time has passed and now we have to build up our power again, \
-			those bastards from Rontz Ratz will answer for this. \
-			Blortz Wolves howl - enemies cower!"))
+		if("布洛茨狼帮")
+			to_chat(H, span_warning("我是布洛茨狼帮的一员。时过境迁，我们如今必须重振势力，朗茨鼠帮的家伙们终将为此付出代价。布洛茨群狼齐嚎，敌人闻声胆寒！"))
 			H.z121_birth_trait(TRAIT_GANG_B, TRAIT_GENERIC)
 			mask = /obj/item/clothing/mask/rogue/ragmask/azure
-		if("Neverminde")
+		if("算了")
 			return null
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm
@@ -1897,28 +1891,28 @@
 		H.z121_birth_skill_floor(/datum/skill/craft/alchemy, 6, TRUE)
 
 	var/hats = list(
-		"Witch Hat" 		= /obj/item/clothing/head/roguetown/witchhat,
-		"Witch Hat (Old)"	= /obj/item/clothing/head/roguetown/witchhat/old,
-		"None"
+		"巫师帽" 		= /obj/item/clothing/head/roguetown/witchhat,
+		"旧巫师帽"	= /obj/item/clothing/head/roguetown/witchhat/old,
+		"无"
 	)
-	var/hatchoice = input(H, "Choose your hat.", "WITCH ATTIRE") as anything in hats
-	if(hatchoice != "None")
+	var/hatchoice = input(H, "选择你的帽子。", "巫师装束") as anything in hats
+	if(hatchoice != "无")
 		head = hats[hatchoice]
 
-	var/classes = list("Old Magick", "Godsblood", "Mystagogue")
-	var/classchoice = input("How do your powers manifest?", "THE OLD WAYS") as anything in classes
+	var/classes = list("古老魔法", "神之血脉", "秘仪师")
+	var/classchoice = input("你的力量以何种形式显现？", "古老之道") as anything in classes
 
-	var/shapeshifts = list("Zad", "Cat", "Cat (Black)", "Bat", "Cabbit", "Small Rous", "Lesser Venard", "Lesser Volf", "Frog")
-	var/shapeshiftchoice = input("What form does your second skin take?", "THE OLD WAYS") as anything in shapeshifts
+	var/shapeshifts = list("扎德", "猫", "黑猫", "蝙蝠", "卡比特", "小型老鼠", "小型维纳德狐", "小型沃尔夫", "青蛙")
+	var/shapeshiftchoice = input("你的第二副身躯是什么形态？", "古老之道") as anything in shapeshifts
 
 	switch (classchoice)
-		if("Old Magick")
+		if("古老魔法")
 
 			H.z121_birth_trait(TRAIT_ARCYNE_T2, TRAIT_GENERIC)
 			H.z121_birth_skill_add(/datum/skill/magic/arcane, 1, TRUE)
 			H.z121_birth_points(9)
 			neck = null
-		if("Godsblood")
+		if("神之血脉")
 
 			var/datum/devotion/D = H.z121_birth_devotion()
 			H.z121_birth_skill_add(/datum/skill/magic/holy, 1, TRUE)
@@ -1947,7 +1941,7 @@
 					neck = /obj/item/clothing/neck/roguetown/psicross/xylix
 				else
 					neck = /obj/item/clothing/neck/roguetown/psicross/wood
-		if("Mystagogue")
+		if("秘仪师")
 
 			var/datum/devotion/D = H.z121_birth_devotion()
 			H.z121_birth_skill_add(/datum/skill/magic/holy, 1, TRUE)
@@ -1982,27 +1976,27 @@
 
 	if(H.mind)
 		switch (shapeshiftchoice)
-			if("Zad")
+			if("扎德")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/crow)
-			if("Cat")
+			if("猫")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cat)
-			if("Cat (Black)")
+			if("黑猫")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cat/black)
-			if("Bat")
+			if("蝙蝠")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/bat)
-			if("Lesser Volf")
+			if("小型沃尔夫")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_wolf)
-			if("Lesser Venard")
+			if("小型维纳德狐")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_vernard)
-			if("Small Rous")
+			if("小型老鼠")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/rous)
-			if("Cabbit")
+			if("卡比特")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cabbit)
-			if("Frog")
+			if("青蛙")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/frog)
 
 		switch (classchoice)
-			if("Old Magick")
+			if("古老魔法")
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/guidance)
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/projectile/arcynebolt)
 				H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/fortitude)
@@ -2073,7 +2067,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning("You make your coin peddling imported alcohols from all over the world, though you're no stranger to the craft, and have experience brewing your own ale in a pinch. You have the equipments and know how on how to make your own distiller, too."))
+	to_chat(H, span_warning("你靠兜售世界各地的进口酒谋生，也熟悉酿酒手艺，必要时能自己酿些麦酒。你还拥有制作蒸馏器的工具与知识。"))
 	mask = /obj/item/clothing/mask/rogue/ragmask/black
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -2103,8 +2097,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning("Whether a disciple of a culinary school, a storied royal chef, or a mercenary cook for hire, your trade is plied at the counter, \
-	the cutting board, and the hearth."))
+	to_chat(H, span_warning("无论你是烹饪流派的传人、声名远扬的御厨，还是受雇谋生的厨师，你施展手艺的地方总是柜台、砧板和炉灶。"))
 	if(H.age == AGE_MIDDLEAGED)
 		H.z121_birth_skill_floor(/datum/skill/craft/cooking, SKILL_LEVEL_MASTER, TRUE)
 		H.z121_birth_skill_floor(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -2138,7 +2131,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning("THE WORLD IS ENDING!!! At least, that's what you want your clients to believe. You'll offer them a safe place in the new world, of course - built by yours truly."))
+	to_chat(H, span_warning("世界末日就要到了！！！至少，你希望顾客相信这一点。你会为他们在新世界提供一个安全的住处——当然，得由你亲手建造。"))
 	head = /obj/item/clothing/head/roguetown/roguehood/black
 	mask = /obj/item/clothing/mask/rogue/skullmask
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -2165,7 +2158,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning ("You are a travelling entertainer - a jester by trade. Where you go, chaos follows - and mischief is made."))
+	to_chat(H, span_warning ("你是一名四处游历的艺人，以弄臣为业。你走到哪里，混乱与恶作剧就跟到哪里。"))
 	shoes = /obj/item/clothing/shoes/roguetown/jester
 	pants = /obj/item/clothing/under/roguetown/tights
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
@@ -2184,41 +2177,41 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 	if(H.mind)
-		var/weapons = list("Accordion","Bagpipe", "Banjo","Drum","Flute","Guitar","Harmonica","Harp","Hurdy-Gurdy","Jaw Harp","Lute","Psyaltery","Shamisen","Trumpet","Viola","Vocal Talisman")
-		var/weapon_choice = input(H, "Choose your instrument.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口弦琴","鲁特琴","拨弦琴","三味线","小号","中提琴","歌唱护符")
+		var/weapon_choice = input(H, "选择你的乐器。", "选择装备") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Accordion")
+			if("手风琴")
 				backr = /obj/item/rogue/instrument/accord
-			if("Bagpipe")
+			if("风笛")
 				backr = /obj/item/rogue/instrument/bagpipe
-			if("Banjo")
+			if("班卓琴")
 				backr = /obj/item/rogue/instrument/banjo
-			if("Drum")
+			if("鼓")
 				backr = /obj/item/rogue/instrument/drum
-			if("Flute")
+			if("长笛")
 				backr = /obj/item/rogue/instrument/flute
-			if("Guitar")
+			if("吉他")
 				backr = /obj/item/rogue/instrument/guitar
-			if("Harmonica")
+			if("口琴")
 				backr = /obj/item/rogue/instrument/harmonica
-			if("Harp")
+			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("Hurdy-Gurdy")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
-			if("Jaw Harp")
+			if("口弦琴")
 				backr = /obj/item/rogue/instrument/jawharp
-			if("Lute")
+			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("Psyaltery")
+			if("拨弦琴")
 				backr = /obj/item/rogue/instrument/psyaltery
-			if("Shamisen")
+			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
-			if("Trumpet")
+			if("小号")
 				backr = /obj/item/rogue/instrument/trumpet
-			if("Viola")
+			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("Vocal Talisman")
+			if("歌唱护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/jeweler.dm
@@ -2226,7 +2219,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning("You make your coin peddling exotic jewelry, gems, and shiny things."))
+	to_chat(H, span_warning("你靠兜售异国珠宝、宝石和各种亮闪闪的东西谋生。"))
 	mask = /obj/item/clothing/mask/rogue/lordmask
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/under/roguetown/tights/black
@@ -2261,7 +2254,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning("You make your coin peddling in spices and performing back-alley 'medical' procedures. Hope your patient didn't need that kidney."))
+	to_chat(H, span_warning("你靠贩卖香料和在后巷进行“医疗”手术谋生。希望你的病人不需要那颗肾。"))
 	head = /obj/item/clothing/head/roguetown/roguehood
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -2289,7 +2282,7 @@
 	if(!H.z121_profession?.capturing_birth)
 		return ..()
 	z121_birth_parent(H)
-	to_chat(H, span_warning("You are a scholar traveling the world in order to write a book about your ventures. Although not quite as dedicated to your studies as some, you trade in stories and tales of your travels."))
+	to_chat(H, span_warning("你是一名游历世界的学者，想把自己的经历写成一本书。虽然你不像某些人那般专注学问，但你能靠旅途中的见闻与故事谋生。"))
 	head = /obj/item/clothing/head/roguetown/roguehood/black
 	mask = /obj/item/clothing/mask/rogue/spectacles
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots

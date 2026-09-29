@@ -93,18 +93,18 @@
 
 	if(H.mind)
 		var/molds = list(
-			"Iron sword mold" = /obj/item/mold/sword,
-			"Iron axe mold" = /obj/item/mold/axe,
-			"Iron mace mold" = /obj/item/mold/mace,
-			"Iron knife mold" = /obj/item/mold/knife,
-			"Iron polearm mold" = /obj/item/mold/polearm,
-			"Iron plate" = /obj/item/mold/plate
+			"铁剑模具" = /obj/item/mold/sword,
+			"铁斧模具" = /obj/item/mold/axe,
+			"铁锤模具" = /obj/item/mold/mace,
+			"铁刀模具" = /obj/item/mold/knife,
+			"铁制长柄武器模具" = /obj/item/mold/polearm,
+			"铁板模具" = /obj/item/mold/plate
 		)
 		var/mold_names = list()
 		for (var/name in molds)
 			mold_names += name
 		for (var/i = 1 to 2)
-			var/mold_choice = P.choose(mold_names, "Choose your starting molds", "Select")
+			var/mold_choice = P.choose(mold_names, "选择你的初始模具", "选择")
 			if(P.cancelled)
 				return
 			if (i == 1)
@@ -304,259 +304,259 @@
 /datum/outfit/job/roguetown/homesteader/z121_prepare(mob/living/carbon/human/H, datum/z121_profession_plan/P)
 
 	var/cosmetic_titles = list(
-	"Angler",
-	"Artisan", "Artisana",
-	"Butcher",
-	"Craftsman", "Craftswoman",
-	"Devotee", "Devotess",
-	"Fieldworker",
-	"Forager",
-	"Forester",
-	"Freeholder",
-	"Gardener",
-	"Handiworker",
-	"Hedgefolk",
-	"Herbalist",
-	"Homesteader", "Homesteadress",
-	"Housekeeper",
-	"Householder", "Househusband", "Housewife",
-	"Hunter",
-	"Laborer",
-	"Lordling",
-	"Mason",
-	"Nurse", "Nun",
-	"Patrician",
-	"Pioneer",
-	"Prospector",
-	"Scholar",
-	"Scribe",
-	"Scion",
-	"Settler",
-	"Shepherd",
-	"Smith",
-	"Town Doctor",
-	"Town Ranger",
-	"Tradesman", "Tradewoman",
-	"Varlet",
-	"Villager",
-	"Weaver",
-	"Wench",
-	"Woodsman", "Woodswoman",
-	"Chirurgeon",
-	"Wench", "Varlet")
-	var/cosmetic_choice = P.choose(cosmetic_titles, "Select your cosmetic title.", "Cosmetic Titles")
+	"垂钓者",
+	"工艺师", "女工艺师",
+	"屠夫",
+	"工匠", "女工匠",
+	"虔信者", "女虔信者",
+	"农工",
+	"采集者",
+	"护林人",
+	"自耕农",
+	"园丁",
+	"杂务工",
+	"乡野居民",
+	"草药师",
+	"拓荒农", "女拓荒农",
+	"家政工",
+	"户主", "家庭主夫", "家庭主妇",
+	"猎人",
+	"劳工",
+	"年轻贵族",
+	"石匠",
+	"护理员", "修女",
+	"望族",
+	"开拓者",
+	"勘探者",
+	"学者",
+	"抄写员",
+	"贵族后裔",
+	"定居者",
+	"牧羊人",
+	"铁匠",
+	"城镇医生",
+	"城镇游侠",
+	"手艺商人", "女手艺商人",
+	"仆役",
+	"村民",
+	"织工",
+	"平民姑娘",
+	"林地居民", "林地女居民",
+	"外科医师",
+	"平民姑娘", "仆役")
+	var/cosmetic_choice = P.choose(cosmetic_titles, "选择你的外观头衔。", "外观头衔")
 	if(P.cancelled)
 		return
 
 	switch(cosmetic_choice)
-		if("Devotee")
-			P.cosmetic_title = "Devotee"
+		if("虔信者")
+			P.cosmetic_title = "虔信者"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Devotess")
-			P.cosmetic_title = "Devotess"
+		if("女虔信者")
+			P.cosmetic_title = "女虔信者"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Fieldworker")
-			P.cosmetic_title = "Fieldworker"
+		if("农工")
+			P.cosmetic_title = "农工"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Fieldwoman")
-			P.cosmetic_title = "Fieldwoman"
+		if("女农工")
+			P.cosmetic_title = "女农工"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Handiworker")
-			P.cosmetic_title = "Handiworker"
+		if("杂务工")
+			P.cosmetic_title = "杂务工"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Handiwoman")
-			P.cosmetic_title = "Handiwoman"
+		if("女杂务工")
+			P.cosmetic_title = "女杂务工"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Hedgefolk")
-			P.cosmetic_title = "Hedgefolk"
+		if("乡野居民")
+			P.cosmetic_title = "乡野居民"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Herbalist")
-			P.cosmetic_title = "Herbalist"
+		if("草药师")
+			P.cosmetic_title = "草药师"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Homesteader")
-			P.cosmetic_title = "Homesteader"
+		if("拓荒农")
+			P.cosmetic_title = "拓荒农"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Homesteadress")
-			P.cosmetic_title = "Homesteadress"
+		if("女拓荒农")
+			P.cosmetic_title = "女拓荒农"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Householder")
-			P.cosmetic_title = "Householder"
+		if("户主")
+			P.cosmetic_title = "户主"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Househusband")
-			P.cosmetic_title = "Househusband"
+		if("家庭主夫")
+			P.cosmetic_title = "家庭主夫"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Housewife")
-			P.cosmetic_title = "Housewife"
+		if("家庭主妇")
+			P.cosmetic_title = "家庭主妇"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Hunter")
-			P.cosmetic_title = "Hunter"
+		if("猎人")
+			P.cosmetic_title = "猎人"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Laborer")
-			P.cosmetic_title = "Laborer"
+		if("劳工")
+			P.cosmetic_title = "劳工"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Lordling")
-			P.cosmetic_title = "Lordling"
+		if("年轻贵族")
+			P.cosmetic_title = "年轻贵族"
 			P.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Laboress")
-			P.cosmetic_title = "Laboress"
+		if("女劳工")
+			P.cosmetic_title = "女劳工"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Villager")
-			P.cosmetic_title = "Villager"
+		if("村民")
+			P.cosmetic_title = "村民"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Villagewoman")
-			P.cosmetic_title = "Villagewoman"
+		if("女村民")
+			P.cosmetic_title = "女村民"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Artisan")
-			P.cosmetic_title = "Artisan"
+		if("工艺师")
+			P.cosmetic_title = "工艺师"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Artisana")
-			P.cosmetic_title = "Artisana"
+		if("女工艺师")
+			P.cosmetic_title = "女工艺师"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Patrician")
-			P.cosmetic_title = "Patrician"
+		if("望族")
+			P.cosmetic_title = "望族"
 			P.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Scion")
-			P.cosmetic_title = "Scion"
+		if("贵族后裔")
+			P.cosmetic_title = "贵族后裔"
 			P.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Pioneer")
-			P.cosmetic_title = "Pioneer"
+		if("开拓者")
+			P.cosmetic_title = "开拓者"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Pioneress")
-			P.cosmetic_title = "Pioneress"
+		if("女开拓者")
+			P.cosmetic_title = "女开拓者"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Settler")
-			P.cosmetic_title = "Settler"
+		if("定居者")
+			P.cosmetic_title = "定居者"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Settleress")
-			P.cosmetic_title = "Settleress"
+		if("女定居者")
+			P.cosmetic_title = "女定居者"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Tradesman")
-			P.cosmetic_title = "Tradesman"
+		if("手艺商人")
+			P.cosmetic_title = "手艺商人"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Tradewoman")
-			P.cosmetic_title = "Tradewoman"
+		if("女手艺商人")
+			P.cosmetic_title = "女手艺商人"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Varlet")
-			P.cosmetic_title = "Varlet"
+		if("仆役")
+			P.cosmetic_title = "仆役"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Villager")
-			P.cosmetic_title = "Villager"
+		if("村民")
+			P.cosmetic_title = "村民"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Villagewoman")
-			P.cosmetic_title = "Villagewoman"
+		if("女村民")
+			P.cosmetic_title = "女村民"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Weaver")
-			P.cosmetic_title = "Weaver"
+		if("织工")
+			P.cosmetic_title = "织工"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Wench")
-			P.cosmetic_title = "Wench"
+		if("平民姑娘")
+			P.cosmetic_title = "平民姑娘"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Woodsman")
-			P.cosmetic_title = "Woodsman"
+		if("林地居民")
+			P.cosmetic_title = "林地居民"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Woodswoman")
-			P.cosmetic_title = "Woodswoman"
+		if("林地女居民")
+			P.cosmetic_title = "林地女居民"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Craftsman")
-			P.cosmetic_title = "Craftsman"
+		if("工匠")
+			P.cosmetic_title = "工匠"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Craftswoman")
-			P.cosmetic_title = "Craftswoman"
+		if("女工匠")
+			P.cosmetic_title = "女工匠"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Forager")
-			P.cosmetic_title = "Forager"
+		if("采集者")
+			P.cosmetic_title = "采集者"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Nurse")
-			P.cosmetic_title = "Nurse"
+		if("护理员")
+			P.cosmetic_title = "护理员"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Nun")
-			P.cosmetic_title = "Nun"
+		if("修女")
+			P.cosmetic_title = "修女"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Chirurgeon")
-			P.cosmetic_title = "Chirurgeon"
+		if("外科医师")
+			P.cosmetic_title = "外科医师"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Angler")
-			P.cosmetic_title = "Angler"
+		if("垂钓者")
+			P.cosmetic_title = "垂钓者"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Weaver")
-			P.cosmetic_title = "Weaver"
+		if("织工")
+			P.cosmetic_title = "织工"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Mason")
-			P.cosmetic_title = "Mason"
+		if("石匠")
+			P.cosmetic_title = "石匠"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Forester")
-			P.cosmetic_title = "Forester"
+		if("护林人")
+			P.cosmetic_title = "护林人"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Town Ranger")
-			P.cosmetic_title = "Town Ranger"
+		if("城镇游侠")
+			P.cosmetic_title = "城镇游侠"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Prospector")
-			P.cosmetic_title = "Prospector"
+		if("勘探者")
+			P.cosmetic_title = "勘探者"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Freeholder")
-			P.cosmetic_title = "Freeholder"
+		if("自耕农")
+			P.cosmetic_title = "自耕农"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Housekeeper")
-			P.cosmetic_title = "Housekeeper"
+		if("家政工")
+			P.cosmetic_title = "家政工"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Town Doctor")
-			P.cosmetic_title = "Town Doctor"
+		if("城镇医生")
+			P.cosmetic_title = "城镇医生"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Scribe")
-			P.cosmetic_title = "Scribe"
+		if("抄写员")
+			P.cosmetic_title = "抄写员"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Scion")
-			P.cosmetic_title = "Scion"
+		if("贵族后裔")
+			P.cosmetic_title = "贵族后裔"
 			P.social_rank = SOCIAL_RANK_MINOR_NOBLE
-		if("Scholar")
-			P.cosmetic_title = "Scholar"
+		if("学者")
+			P.cosmetic_title = "学者"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Butcher")
-			P.cosmetic_title = "Butcher"
+		if("屠夫")
+			P.cosmetic_title = "屠夫"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Gardener")
-			P.cosmetic_title = "Gardener"
+		if("园丁")
+			P.cosmetic_title = "园丁"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Shepherd")
-			P.cosmetic_title = "Shepherd"
+		if("牧羊人")
+			P.cosmetic_title = "牧羊人"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Smith")
-			P.cosmetic_title = "Smith"
+		if("铁匠")
+			P.cosmetic_title = "铁匠"
 			P.social_rank = SOCIAL_RANK_YEOMAN
-		if("Wench")
-			P.cosmetic_title = "Wench"
+		if("平民姑娘")
+			P.cosmetic_title = "平民姑娘"
 			P.social_rank = SOCIAL_RANK_PEASANT
-		if("Varlet")
-			P.cosmetic_title = "Varlet"
+		if("仆役")
+			P.cosmetic_title = "仆役"
 			P.social_rank = SOCIAL_RANK_PEASANT
 
-	var/stat_packs = list("Agile - SPD +2, CON +1, STR -1, WIL -1", "Bookworm - INT +1, PER +2, WIL +2, STR -2, CON -2", "Toned - STR +1, CON +1, WIL +1, INT -1", "All-Rounded - No Changes")
-	var/stat_choice = P.choose(stat_packs, "Select your stat focus. [1/1]", "Stat Pack Selection")
+	var/stat_packs = list("敏捷——速度 +2，体质 +1，力量 -1，意志 -1", "书痴——智力 +1，感知 +2，意志 +2，力量 -2，体质 -2", "健壮——力量 +1，体质 +1，意志 +1，智力 -1", "均衡——属性不变")
+	var/stat_choice = P.choose(stat_packs, "选择你的属性倾向。[1/1]", "属性组合选择")
 	if(P.cancelled)
 		return
 
 	switch(stat_choice)
-		if("Agile - SPD +2, CON +1, STR -1, WIL -1")
+		if("敏捷——速度 +2，体质 +1，力量 -1，意志 -1")
 			P.add_stat(STATKEY_SPD, 2)
 			P.add_stat(STATKEY_WIL, -1)
 			P.add_stat(STATKEY_STR, -1)
 			P.add_stat(STATKEY_CON, 1)
-		if("Bookworm - INT +1, PER +2, WIL +2, STR -2, CON -2")
+		if("书痴——智力 +1，感知 +2，意志 +2，力量 -2，体质 -2")
 			P.add_stat(STATKEY_INT, 1)
 			P.add_stat(STATKEY_PER, 2)
 			P.add_stat(STATKEY_WIL, 2)
 			P.add_stat(STATKEY_STR, -2)
 			P.add_stat(STATKEY_CON, -2)
-		if("Toned - STR +1, CON +1, WIL +1, INT -1")
+		if("健壮——力量 +1，体质 +1，意志 +1，智力 -1")
 			P.add_stat(STATKEY_STR, 1)
 			P.add_stat(STATKEY_CON, 1)
 			P.add_stat(STATKEY_WIL, 1)
 			P.add_stat(STATKEY_INT, -1)
-		if("All-Rounded - No Changes")
+		if("均衡——属性不变")
 			P.cancelled = FALSE
 
 	var/profession_sets = list(
-		"Physiker Set" = list(
+		"医师套装" = list(
 			/obj/item/bedroll,
 			/obj/item/rogueweapon/huntingknife/scissors,
 			/obj/item/storage/belt/rogue/surgery_bag/full,
@@ -565,14 +565,14 @@
 			/obj/item/storage/magebag/alchemist,
 			/obj/item/folding_table_stored
 		),
-		"Provider Set" = list(
+		"补给者套装" = list(
 			/obj/item/storage/roguebag/food,
 			/obj/item/folding_table_stored,
 			/obj/item/storage/meatbag,
 			/obj/item/millstone,
 			/obj/item/rogueweapon/hoe
 		),
-		"Prospector Set" = list(
+		"勘探者套装" = list(
 			/obj/item/rogueweapon/hammer/steel,
 			/obj/item/folding_table_stored,
 			/obj/item/lockpickring/mundane,
@@ -580,7 +580,7 @@
 			/obj/item/rogueweapon/huntingknife/scissors,
 			/obj/item/rogueweapon/scabbard/gwstrap
 		),
-		"Blacksmith Set" = list(
+		"铁匠套装" = list(
 			/obj/item/rogueweapon/hammer/copper,
 			/obj/item/rogueweapon/tongs,
 			/obj/item/rogueweapon/huntingknife/bronze,
@@ -588,12 +588,12 @@
 			/obj/item/ingot/iron,
 			/obj/item/rogueore/coal
 		),
-		"Craftsman Set" = list(
+		"工匠套装" = list(
 			/obj/item/rogueweapon/stoneaxe/handaxe,
 			/obj/item/rogueweapon/hammer/steel,
 			/obj/item/folding_table_stored
 		),
-		"Hunter Set" = list(
+		"猎人套装" = list(
 			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 			/obj/item/quiver/arrows,
 			/obj/item/rogueweapon/huntingknife/bronze,
@@ -601,7 +601,7 @@
 			/obj/item/natural/worms,
 			/obj/item/natural/worms
 		),
-		"Fisher Set" = list(
+		"渔夫套装" = list(
 			/obj/item/fishingrod,
 			/obj/item/natural/worms,
 			/obj/item/natural/worms,
@@ -609,7 +609,7 @@
 			/obj/item/rogueweapon/huntingknife/bronze,
 			/obj/item/storage/roguebag
 		),
-		"Tailor Set" = list(
+		"裁缝套装" = list(
 			/obj/item/rogueweapon/huntingknife/scissors,
 			/obj/item/needle,
 			/obj/item/natural/cloth,
@@ -617,7 +617,7 @@
 			/obj/item/natural/cloth,
 			/obj/item/natural/bundle/fibers
 		),
-		"Scribe Set" = list(
+		"抄写员套装" = list(
 			/obj/item/paper,
 			/obj/item/paper,
 			/obj/item/paper,
@@ -627,19 +627,19 @@
 	)
 
 	var/daily_tools_combos = list(
-		"Bronze Axe + Bronze Knife + Sheath" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
-		"Simple Bow + Quiver" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
-		"Iron Spear + Backup Dagger" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
-		"Fishing Rod + Worms" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
-		"Sickle + Farming Hoe" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
-		"Mining Pick + Copper Hammer" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
-		"Cudgel + Rope" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
+		"青铜斧 + 青铜刀 + 刀鞘" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
+		"简易弓 + 箭袋" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
+		"铁矛 + 备用匕首" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
+		"钓竿 + 蚯蚓" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
+		"镰刀 + 农用锄" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
+		"矿镐 + 铜锤" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
+		"短棍 + 绳索" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
 	)
 
 	if(H.mind)
 
 		for(var/i in 1 to 1)
-			var/profession_set_name = P.choose(profession_sets, "Choose a profession set [i]/1.", "Profession Sets")
+			var/profession_set_name = P.choose(profession_sets, "选择一套职业装备。[i]/1", "职业装备")
 			if(P.cancelled)
 				return
 			if(profession_set_name)
@@ -655,13 +655,13 @@
 						var/unique_key = "[item_name] ([profession_set_name] [counter])"
 						P.stash[unique_key] = item_path
 					counter++
-				if(profession_set_name == "Craftsman Set")
+				if(profession_set_name == "工匠套装")
 					P.add_trait(TRAIT_MASTER_CARPENTER)
 					P.add_trait(TRAIT_MASTER_MASON)
 				if(profession_set_name in profession_sets)
 					profession_sets -= profession_set_name
 
-		var/combo_name = P.choose(daily_tools_combos, "Choose a daily tools combination [1/1].", "Daily Tools")
+		var/combo_name = P.choose(daily_tools_combos, "选择一组日常工具。[1/1]", "日常工具")
 		if(P.cancelled)
 			return
 		if(combo_name)
@@ -674,21 +674,21 @@
 				counter++
 
 	var/outfit_styles = list(
-		"Laborer - Worker vest, trou, boots",
-		"Field Hand - Straw hat, shortshirt, trou",
-		"Woodsman - Hood, workervest, bracers",
-		"Fisher - Fisherhat, shortshirt, work vest",
-		"Artisan - Tunic, tights, furcloak",
-		"Seamster - Armordress, white tunic, cloth belt",
-		"Traveler - Half cloak, undershirt, boots",
-		"Rustic - Fur hat, shortshirt, leather boots",
-		"Miner - Arming cap, trou, work vest",
-		"Entertainer - Fancy hat, tunic, half cloak",
-		"Modest Scholar - Spectacles, scholar's robe, chaperon",
-		"Countryside - Straw hat, chemise, shortboots"
+		"劳工——工人背心、长裤、靴子",
+		"农工——草帽、短衫、长裤",
+		"林地居民——兜帽、工人背心、护腕",
+		"渔夫——渔夫帽、短衫、工作背心",
+		"工艺师——束腰外衣、紧身裤、毛皮斗篷",
+		"缝纫师——护甲裙、白色束腰外衣、布腰带",
+		"旅人——短斗篷、内衫、靴子",
+		"乡民——毛皮帽、短衫、皮靴",
+		"矿工——武装帽、长裤、工作背心",
+		"艺人——华丽帽子、束腰外衣、短斗篷",
+		"朴素学者——眼镜、学者长袍、包头帽",
+		"乡村风格——草帽、衬裙、短靴"
 	)
 
-	var/outfit_choice = P.choose(outfit_styles, "Choose your outfit style.", "Outfit Selection")
+	var/outfit_choice = P.choose(outfit_styles, "选择你的服装风格。", "服装选择")
 	if(P.cancelled)
 		return
 
@@ -696,7 +696,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 
 	switch(outfit_choice)
-		if("Laborer - Worker vest, trou, boots")
+		if("劳工——工人背心、长裤、靴子")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -708,7 +708,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				head = /obj/item/clothing/head/roguetown/armingcap
 
-		if("Field Hand - Straw hat, shortshirt, trou")
+		if("农工——草帽、短衫、长裤")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -718,7 +718,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/strawhat
 
-		if("Woodsman - Hood, workervest, bracers")
+		if("林地居民——兜帽、工人背心、护腕")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -730,7 +730,7 @@
 			head = /obj/item/clothing/head/roguetown/roguehood
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 
-		if("Fisher - Fisherhat, shortshirt, work vest")
+		if("渔夫——渔夫帽、短衫、工作背心")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -740,14 +740,14 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/fisherhat
 
-		if("Artisan - Tunic, tights, furcloak")
+		if("工艺师——束腰外衣、紧身裤、毛皮斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			head = /obj/item/clothing/head/roguetown/hatblu
 
-		if("Seamster - Armordress, white tunic, cloth belt")
+		if("缝纫师——护甲裙、白色束腰外衣、布腰带")
 			armor = /obj/item/clothing/suit/roguetown/armor/armordress
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -755,7 +755,7 @@
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 
-		if("Traveler - Half cloak, undershirt, boots")
+		if("旅人——短斗篷、内衫、靴子")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -766,7 +766,7 @@
 			cloak = /obj/item/clothing/cloak/half
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 
-		if("Rustic - Fur hat, shortshirt, leather boots")
+		if("乡民——毛皮帽、短衫、皮靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -775,7 +775,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/hatfur
 
-		if("Miner - Arming cap, trou, work vest")
+		if("矿工——武装帽、长裤、工作背心")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/brown
@@ -786,7 +786,7 @@
 			head = /obj/item/clothing/head/roguetown/armingcap
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 
-		if("Entertainer - Fancy hat, tunic, half cloak")
+		if("艺人——华丽帽子、束腰外衣、短斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -794,14 +794,14 @@
 			head = /obj/item/clothing/head/roguetown/fancyhat
 			belt = /obj/item/storage/belt/rogue/leather/cloth
 
-		if("Modest Scholar - Spectacles, tunic, chaperon")
+		if("朴素学者——眼镜、学者长袍、包头帽")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			head = /obj/item/clothing/head/roguetown/chaperon
 			mask = /obj/item/clothing/mask/rogue/spectacles
 
-		if("Countryside - Straw hat, chemise, shortboots")
+		if("乡村风格——草帽、衬裙、短靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -828,52 +828,52 @@
 	if(H.mind)
 
 		var/misc_skills = list(
-			"Stealing" = /datum/skill/misc/stealing,
-			"Music" = /datum/skill/misc/music,
-			"Reading" = /datum/skill/misc/reading,
-			"Medicine" = /datum/skill/misc/medicine,
-			"Tracking" = /datum/skill/misc/tracking,
-			"Lockpicking" = /datum/skill/misc/lockpicking,
-			"Sneaking" = /datum/skill/misc/sneaking,
-			"Riding" = /datum/skill/misc/riding
+			"偷窃" = /datum/skill/misc/stealing,
+			"音乐" = /datum/skill/misc/music,
+			"阅读" = /datum/skill/misc/reading,
+			"医疗" = /datum/skill/misc/medicine,
+			"追踪" = /datum/skill/misc/tracking,
+			"开锁" = /datum/skill/misc/lockpicking,
+			"潜行" = /datum/skill/misc/sneaking,
+			"骑术" = /datum/skill/misc/riding
 		)
 		var/labor_skills = list(
-			"Farming" = /datum/skill/labor/farming,
-			"Lumberjacking" = /datum/skill/labor/lumberjacking,
-			"Fishing" = /datum/skill/labor/fishing,
-			"Butchering" = /datum/skill/labor/butchering,
-			"Mining" = /datum/skill/labor/mining
+			"耕作" = /datum/skill/labor/farming,
+			"伐木" = /datum/skill/labor/lumberjacking,
+			"钓鱼" = /datum/skill/labor/fishing,
+			"屠宰" = /datum/skill/labor/butchering,
+			"采矿" = /datum/skill/labor/mining
 		)
 		var/craft_skills = list(
-			"Sewing" = /datum/skill/craft/sewing,
-			"Ceramics" = /datum/skill/craft/ceramics,
-			"Carpentry" = /datum/skill/craft/carpentry,
-			"Masonry" = /datum/skill/craft/masonry,
-			"Engineering" = /datum/skill/craft/engineering,
-			"Alchemy" = /datum/skill/craft/alchemy,
-			"Tanning" = /datum/skill/craft/tanning,
-			"Cooking" = /datum/skill/craft/cooking,
-			"Weaponsmithing" = /datum/skill/craft/weaponsmithing,
-			"Armorsmithing" = /datum/skill/craft/armorsmithing,
-			"Blacksmithing" = /datum/skill/craft/blacksmithing,
-			"Smelting" = /datum/skill/craft/smelting
+			"缝纫" = /datum/skill/craft/sewing,
+			"制陶" = /datum/skill/craft/ceramics,
+			"木工" = /datum/skill/craft/carpentry,
+			"石工" = /datum/skill/craft/masonry,
+			"工程" = /datum/skill/craft/engineering,
+			"炼金" = /datum/skill/craft/alchemy,
+			"制革" = /datum/skill/craft/tanning,
+			"烹饪" = /datum/skill/craft/cooking,
+			"武器锻造" = /datum/skill/craft/weaponsmithing,
+			"护甲锻造" = /datum/skill/craft/armorsmithing,
+			"铁匠工艺" = /datum/skill/craft/blacksmithing,
+			"冶炼" = /datum/skill/craft/smelting
 		)
 		var/combat_skills = list(
-			"Axes" = /datum/skill/combat/axes,
-			"Unarmed" = /datum/skill/combat/unarmed,
-			"Knives" = /datum/skill/combat/knives,
-			"Wrestling" = /datum/skill/combat/wrestling,
-			"Whips & Flails" = /datum/skill/combat/whipsflails,
-			"Bows" = /datum/skill/combat/bows,
-			"Crossbows" = /datum/skill/combat/crossbows,
-			"Polearms" = /datum/skill/combat/polearms,
-			"Shields" = /datum/skill/combat/shields,
-			"Slings" = /datum/skill/combat/slings,
-			"Swords" = /datum/skill/combat/swords,
-			"Maces" = /datum/skill/combat/maces
+			"斧术" = /datum/skill/combat/axes,
+			"徒手格斗" = /datum/skill/combat/unarmed,
+			"短刃" = /datum/skill/combat/knives,
+			"摔跤" = /datum/skill/combat/wrestling,
+			"鞭与连枷" = /datum/skill/combat/whipsflails,
+			"弓术" = /datum/skill/combat/bows,
+			"弩术" = /datum/skill/combat/crossbows,
+			"长柄武器" = /datum/skill/combat/polearms,
+			"盾术" = /datum/skill/combat/shields,
+			"投石索" = /datum/skill/combat/slings,
+			"剑术" = /datum/skill/combat/swords,
+			"锤术" = /datum/skill/combat/maces
 		)
 
-		var/expert_skill_name = P.choose(misc_skills + labor_skills + craft_skills, "Choose one skill to EXPERT. [1/1]", "Skill Selection")
+		var/expert_skill_name = P.choose(misc_skills + labor_skills + craft_skills, "选择一项技能提升至专家级。[1/1]", "技能选择")
 		if(P.cancelled)
 			return
 		if(expert_skill_name)
@@ -886,7 +886,7 @@
 				craft_skills -= expert_skill_name
 
 		for(var/i in 1 to 4)
-			var/journeyman_name = P.choose(misc_skills + labor_skills + craft_skills + combat_skills, "Choose a skill to JOURNEYMAN. [i]/4", "Skill Selection")
+			var/journeyman_name = P.choose(misc_skills + labor_skills + craft_skills + combat_skills, "选择一项技能提升至熟练级。[i]/4", "技能选择")
 			if(P.cancelled)
 				return
 			if(journeyman_name)
@@ -901,7 +901,7 @@
 					combat_skills -= journeyman_name
 
 		for(var/i in 1 to 3)
-			var/apprentice_name = P.choose(misc_skills + labor_skills + craft_skills + combat_skills, "Choose a skill to APPRENTICE. [i]/3", "Skill Selection")
+			var/apprentice_name = P.choose(misc_skills + labor_skills + craft_skills + combat_skills, "选择一项技能提升至学徒级。[i]/3", "技能选择")
 			if(P.cancelled)
 				return
 			if(apprentice_name)
@@ -916,7 +916,7 @@
 					combat_skills -= apprentice_name
 
 		for(var/i in 1 to 5)
-			var/novice_name = P.choose(misc_skills + labor_skills + craft_skills + combat_skills, "Choose a skill to NOVICE. [i]/5", "Skill Selection")
+			var/novice_name = P.choose(misc_skills + labor_skills + craft_skills + combat_skills, "选择一项技能提升至入门级。[i]/5", "技能选择")
 			if(P.cancelled)
 				return
 			if(novice_name)
@@ -963,17 +963,17 @@
 		P.skill_floor(/datum/skill/craft/tanning, 4, TRUE)
 	if(H.mind)
 		P.add_spell(/obj/effect/proc_holder/spell/invoked/huntersyell)
-		var/weapons = list("Machete","Hatchet")
-		var/weapon_choice = P.choose(weapons, "Choose your weapon.", "TAKE UP ARMS")
+		var/weapons = list("砍刀","短柄斧")
+		var/weapon_choice = P.choose(weapons, "选择你的武器。", "选择装备")
 		if(P.cancelled)
 			return
 
 		switch(weapon_choice)
-			if("Machete")
+			if("砍刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/short/messer/iron
 				P.skill_floor(/datum/skill/combat/swords, 2, TRUE)
-			if("Hatchet")
+			if("短柄斧")
 				beltl = /obj/item/rogueweapon/stoneaxe/handaxe
 				P.skill_floor(/datum/skill/combat/axes, 2, TRUE)
 
@@ -1080,39 +1080,39 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shalal
 		belt = /obj/item/storage/belt/rogue/leather/cloth/sash/random
 	if(H.mind)
-		var/weapons = list("Accordion","Bagpipe","Drum","Flute","Guitar","Harp","Hurdy-Gurdy","Jaw Harp","Lute","Psyaltery","Shamisen","Trumpet","Viola","Vocal Talisman")
-		var/weapon_choice = P.choose(weapons, "Choose your instrument.", "TAKE UP ARMS")
+		var/weapons = list("手风琴","风笛","鼓","长笛","吉他","竖琴","手摇琴","口弦琴","鲁特琴","拨弦琴","三味线","小号","中提琴","歌唱护符")
+		var/weapon_choice = P.choose(weapons, "选择你的乐器。", "选择装备")
 		if(P.cancelled)
 			return
 
 		switch(weapon_choice)
-			if("Accordion")
+			if("手风琴")
 				backr = /obj/item/rogue/instrument/accord
-			if("Bagpipe")
+			if("风笛")
 				backr = /obj/item/rogue/instrument/bagpipe
-			if("Drum")
+			if("鼓")
 				backr = /obj/item/rogue/instrument/drum
-			if("Flute")
+			if("长笛")
 				backr = /obj/item/rogue/instrument/flute
-			if("Guitar")
+			if("吉他")
 				backr = /obj/item/rogue/instrument/guitar
-			if("Harp")
+			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("Hurdy-Gurdy")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
-			if("Jaw Harp")
+			if("口弦琴")
 				backr = /obj/item/rogue/instrument/jawharp
-			if("Lute")
+			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("Psyaltery")
+			if("拨弦琴")
 				backr = /obj/item/rogue/instrument/psyaltery
-			if("Shamisen")
+			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
-			if("Trumpet")
+			if("小号")
 				backr = /obj/item/rogue/instrument/trumpet
-			if("Viola")
+			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("Vocal Talisman")
+			if("歌唱护符")
 				backr = /obj/item/rogue/instrument/vocals
 	if(H.age == AGE_OLD)
 		P.skill_floor(/datum/skill/misc/music, 6, TRUE)
@@ -1546,15 +1546,15 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/beer = 1)
 
-	var/classes = list("Goon", "Miscreant", "Muscle", "Longshoreman")
-	var/classchoice = P.choose(classes, "What kind of thug are you?", "TAKE UP ARMS")
+	var/classes = list("街头打手", "恶棍", "壮汉", "码头工")
+	var/classchoice = P.choose(classes, "你是哪种街头混混？", "选择装备")
 	if(P.cancelled)
 		return
 
 	switch(classchoice)
 
-		if("Goon")
-			P.cosmetic_title = "Goon"
+		if("街头打手")
+			P.cosmetic_title = "街头打手"
 
 			P.add_stat(STATKEY_STR, 2)
 			P.add_stat(STATKEY_WIL, 1)
@@ -1577,27 +1577,27 @@
 			P.skill_floor(/datum/skill/labor/fishing, SKILL_LEVEL_APPRENTICE, TRUE)
 			P.skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_APPRENTICE, TRUE)
 			P.skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			var/options = list("Frypan", "Knuckles", "Navaja", "Bare Hands")
-			var/option_choice = P.choose(options, "Choose your means.", "TAKE UP ARMS")
+			var/options = list("煎锅", "指虎", "折刀", "赤手空拳")
+			var/option_choice = P.choose(options, "选择你的手段。", "选择装备")
 			if(P.cancelled)
 				return
 
 			switch(option_choice)
-				if("Frypan")
+				if("煎锅")
 					P.skill_floor(/datum/skill/craft/cooking, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/cooking/pan
-				if("Knuckles")
+				if("指虎")
 					P.skill_floor(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/knuckles
-				if("Navaja")
+				if("折刀")
 					P.skill_floor(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/huntingknife/idagger/navaja
-				if("Bare Hands")
+				if("赤手空拳")
 					P.skill_floor(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 					P.add_trait(TRAIT_CIVILIZEDBARBARIAN)
 
-		if("Miscreant")
-			P.cosmetic_title = "Miscreant"
+		if("恶棍")
+			P.cosmetic_title = "恶棍"
 
 			P.add_stat(STATKEY_CON, -2)
 			P.add_stat(STATKEY_SPD, 2)
@@ -1622,29 +1622,29 @@
 			P.skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			P.skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("Stone Sling", "Magic Bricks", "Lockpicking Equipment")
-			var/option_choice = P.choose(options, "Choose your means.", "TAKE UP ARMS")
+			var/options = list("投石索", "魔法砖块", "开锁工具")
+			var/option_choice = P.choose(options, "选择你的手段。", "选择装备")
 			if(P.cancelled)
 				return
 
 			switch(option_choice)
-				if("Stone Sling")
+				if("投石索")
 					P.skill_floor(/datum/skill/combat/slings, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 					l_hand = /obj/item/quiver/sling
-				if("Magic Bricks")
+				if("魔法砖块")
 					P.skill_floor(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
 					P.add_spell(/obj/effect/proc_holder/spell/self/magicians_brick)
 					P.add_trait(TRAIT_ARCYNE_T1)
-				if("Lockpicking Equipment")
+				if("开锁工具")
 					P.skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					P.skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)
 					P.skill_floor(/datum/skill/misc/lockpicking, SKILL_LEVEL_EXPERT, TRUE)
 					P.add_trait(TRAIT_LIGHT_STEP)
 					r_hand = /obj/item/lockpickring/mundane
 
-		if("Muscle")
-			P.cosmetic_title = "Muscle"
+		if("壮汉")
+			P.cosmetic_title = "壮汉"
 
 			P.add_trait(TRAIT_STEELHEARTED)
 			P.add_trait(TRAIT_HARDDISMEMBER)
@@ -1666,24 +1666,24 @@
 			P.skill_floor(/datum/skill/labor/mining, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			P.skill_floor(/datum/skill/labor/lumberjacking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("Hands-On", "Big Axe", "Big Stick")
-			var/option_choice = P.choose(options, "Choose your means.", "TAKE UP ARMS")
+			var/options = list("近身搏斗", "大斧", "大棒")
+			var/option_choice = P.choose(options, "选择你的手段。", "选择装备")
 			if(P.cancelled)
 				return
 
 			switch(option_choice)
-				if("Hands-On")
+				if("近身搏斗")
 					P.add_trait(TRAIT_BIGGUY)
 					P.add_trait(TRAIT_CIVILIZEDBARBARIAN)
-				if("Big Axe")
+				if("大斧")
 					P.skill_floor(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/greataxe
-				if("Big Stick")
+				if("大棒")
 					P.skill_floor(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/mace
 
-		if("Longshoreman")
-			P.cosmetic_title = "Longshoreman"
+		if("码头工")
+			P.cosmetic_title = "码头工"
 
 			P.add_trait(TRAIT_STEELHEARTED)
 
@@ -1717,19 +1717,19 @@
 			P.skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_APPRENTICE, TRUE)
 			P.skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-	var/gang = list("Gang Rontz Ratz", "Gang Blortz Volves", "Neverminde")
-	var/gang_choice = P.choose(gang, "Want to become a gang member?")
+	var/gang = list("朗茨鼠帮", "布洛茨狼帮", "算了")
+	var/gang_choice = P.choose(gang, "要加入帮派吗？")
 	if(P.cancelled)
 		return
 
 	switch(gang_choice)
-		if("Gang Rontz Ratz")
+		if("朗茨鼠帮")
 			P.add_trait(TRAIT_GANG_A)
 			mask = /obj/item/clothing/mask/rogue/ragmask/red
-		if("Gang Blortz Volves")
+		if("布洛茨狼帮")
 			P.add_trait(TRAIT_GANG_B)
 			mask = /obj/item/clothing/mask/rogue/ragmask/azure
-		if("Neverminde")
+		if("算了")
 			return null
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/townelder.dm
@@ -1781,34 +1781,34 @@
 		P.skill_floor(/datum/skill/craft/alchemy, 6, TRUE)
 
 	var/hats = list(
-		"Witch Hat" 		= /obj/item/clothing/head/roguetown/witchhat,
-		"Witch Hat (Old)"	= /obj/item/clothing/head/roguetown/witchhat/old,
-		"None"
+		"巫师帽" 		= /obj/item/clothing/head/roguetown/witchhat,
+		"旧巫师帽"	= /obj/item/clothing/head/roguetown/witchhat/old,
+		"无"
 	)
-	var/hatchoice = P.choose(hats, "Choose your hat.", "WITCH ATTIRE")
+	var/hatchoice = P.choose(hats, "选择你的帽子。", "巫师装束")
 	if(P.cancelled)
 		return
-	if(hatchoice != "None")
+	if(hatchoice != "无")
 		head = hats[hatchoice]
 
-	var/classes = list("Old Magick", "Godsblood", "Mystagogue")
-	var/classchoice = P.choose(classes, "How do your powers manifest?", "THE OLD WAYS")
+	var/classes = list("古老魔法", "神之血脉", "秘仪师")
+	var/classchoice = P.choose(classes, "你的力量以何种形式显现？", "古老之道")
 	if(P.cancelled)
 		return
 
-	var/shapeshifts = list("Zad", "Cat", "Cat (Black)", "Bat", "Cabbit", "Small Rous", "Lesser Venard", "Lesser Volf", "Frog")
-	var/shapeshiftchoice = P.choose(shapeshifts, "What form does your second skin take?", "THE OLD WAYS")
+	var/shapeshifts = list("扎德", "猫", "黑猫", "蝙蝠", "卡比特", "小型老鼠", "小型维纳德狐", "小型沃尔夫", "青蛙")
+	var/shapeshiftchoice = P.choose(shapeshifts, "你的第二副身躯是什么形态？", "古老之道")
 	if(P.cancelled)
 		return
 
 	switch (classchoice)
-		if("Old Magick")
+		if("古老魔法")
 
 			P.add_trait(TRAIT_ARCYNE_T2)
 			P.skill_add(/datum/skill/magic/arcane, 1, TRUE)
 			P.add_points(9)
 			neck = null
-		if("Godsblood")
+		if("神之血脉")
 
 
 			P.skill_add(/datum/skill/magic/holy, 1, TRUE)
@@ -1837,7 +1837,7 @@
 					neck = /obj/item/clothing/neck/roguetown/psicross/xylix
 				else
 					neck = /obj/item/clothing/neck/roguetown/psicross/wood
-		if("Mystagogue")
+		if("秘仪师")
 
 
 			P.skill_add(/datum/skill/magic/holy, 1, TRUE)
@@ -1872,27 +1872,27 @@
 
 	if(H.mind)
 		switch (shapeshiftchoice)
-			if("Zad")
+			if("扎德")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/crow)
-			if("Cat")
+			if("猫")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/cat)
-			if("Cat (Black)")
+			if("黑猫")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/cat/black)
-			if("Bat")
+			if("蝙蝠")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/bat)
-			if("Lesser Volf")
+			if("小型沃尔夫")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_wolf)
-			if("Lesser Venard")
+			if("小型维纳德狐")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_vernard)
-			if("Small Rous")
+			if("小型老鼠")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/rous)
-			if("Cabbit")
+			if("卡比特")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/cabbit)
-			if("Frog")
+			if("青蛙")
 				P.add_spell(/obj/effect/proc_holder/spell/targeted/shapeshift/witch/frog)
 
 		switch (classchoice)
-			if("Old Magick")
+			if("古老魔法")
 				P.add_spell(/obj/effect/proc_holder/spell/invoked/guidance)
 				P.add_spell(/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt)
 				P.add_spell(/obj/effect/proc_holder/spell/invoked/fortitude)
@@ -2059,43 +2059,43 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 	if(H.mind)
-		var/weapons = list("Accordion","Bagpipe", "Banjo","Drum","Flute","Guitar","Harmonica","Harp","Hurdy-Gurdy","Jaw Harp","Lute","Psyaltery","Shamisen","Trumpet","Viola","Vocal Talisman")
-		var/weapon_choice = P.choose(weapons, "Choose your instrument.", "TAKE UP ARMS")
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口弦琴","鲁特琴","拨弦琴","三味线","小号","中提琴","歌唱护符")
+		var/weapon_choice = P.choose(weapons, "选择你的乐器。", "选择装备")
 		if(P.cancelled)
 			return
 
 		switch(weapon_choice)
-			if("Accordion")
+			if("手风琴")
 				backr = /obj/item/rogue/instrument/accord
-			if("Bagpipe")
+			if("风笛")
 				backr = /obj/item/rogue/instrument/bagpipe
-			if("Banjo")
+			if("班卓琴")
 				backr = /obj/item/rogue/instrument/banjo
-			if("Drum")
+			if("鼓")
 				backr = /obj/item/rogue/instrument/drum
-			if("Flute")
+			if("长笛")
 				backr = /obj/item/rogue/instrument/flute
-			if("Guitar")
+			if("吉他")
 				backr = /obj/item/rogue/instrument/guitar
-			if("Harmonica")
+			if("口琴")
 				backr = /obj/item/rogue/instrument/harmonica
-			if("Harp")
+			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("Hurdy-Gurdy")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
-			if("Jaw Harp")
+			if("口弦琴")
 				backr = /obj/item/rogue/instrument/jawharp
-			if("Lute")
+			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("Psyaltery")
+			if("拨弦琴")
 				backr = /obj/item/rogue/instrument/psyaltery
-			if("Shamisen")
+			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
-			if("Trumpet")
+			if("小号")
 				backr = /obj/item/rogue/instrument/trumpet
-			if("Viola")
+			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("Vocal Talisman")
+			if("歌唱护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/jeweler.dm
