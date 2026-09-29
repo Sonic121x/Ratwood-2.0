@@ -228,6 +228,7 @@
 // 记忆之吻制作配方：炼金台，宝石x1 + 水50 → 记忆之吻，炼金1级
 #include "crafting/memory_kiss_token_recipe.dm"
 // 连发燧枪、桌面组装零件及工匠台配方。
+#include "weapons/millicombat_pistol.dm"
 #include "weapons/repeating_flintlock.dm"
 #include "weapons/repeating_flintlock_failures.dm"
 #include "weapons/repeating_flintlock_parts.dm"

@@ -822,10 +822,7 @@
 
 /proc/z121_rpg_magic_catalog()
 	return z121_rpg_price_catalog(list(
-		"见习传送卷轴" = list(90, /obj/item/teleportation_scroll/apprentice),               // 入门级一次性魔法传送
 		"圣徽"       = list(120, /obj/item/clothing/neck/roguetown/psicross),              // 神圣符号，可引导秘法
-		"传送卷轴"   = list(150, /obj/item/teleportation_scroll),                          // 一次性魔法传送
-		"魔法戒指"   = list(200, /obj/item/clothing/ring/active),                          // 可激活的魔法戒指
 		// —— 附魔卷轴（对"物品"施加特殊附魔：手持卷轴点击目标物品即可附魔，不是教人法术）——
 		//   T1 基础附魔
 		"附魔·伐木"   = list(150, /obj/item/enchantmentscroll/basic/woodcut),     // 给斧子附魔：高效伐木

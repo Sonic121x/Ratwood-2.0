@@ -35,14 +35,14 @@
 		/datum/skill/misc/tracking = SKILL_LEVEL_NOVICE,
 		/datum/skill/labor/butchering = SKILL_LEVEL_NOVICE,
 	)
-	// 保留学徒奥术的学习点，三种专属箭术由职业直接授予。
+	// 保留学徒奥术的学习点，穿心箭与归弦秘术由职业直接授予。
 	subclass_spellpoints = 10
-	extra_context = "略通家传奥术，也熟悉林间的步伐。随身的黑角弓罕见箭羽，弦上却总有微光未散；至于那道最深的咒式，你向来不轻易念起。"
+	extra_context = "略通家传奥术，也熟悉林间的步伐。黑角弓的低吟随心意而变，时而如余烬，时而似薄霜；偶尔，弓臂深处也会传来与你脉搏相应的轻颤。纵使相隔遥远，那道弦音仍认得归途。"
 
 /datum/outfit/job/roguetown/adventurer/z121_arcane_archer/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("离家时，你带走了那张黑角弓，也带走了几句没有写在书上的咒文。如今书房与靶场都已远去，唯有指尖的薄茧还记得弓弦该停在何处。"))
-	for(var/spell_type in list(/obj/effect/proc_holder/spell/self/z121_arcane_archery/empower, /obj/effect/proc_holder/spell/self/z121_arcane_archery/tracking, /obj/effect/proc_holder/spell/self/z121_arcane_archery/heartpiercing))
+	for(var/spell_type in list(/obj/effect/proc_holder/spell/self/z121_arcane_archery/heartpiercing, /obj/effect/proc_holder/spell/self/z121_arcane_archery/binding))
 		if(H.mind && !H.mind.has_spell(spell_type, TRUE))
 			H.mind.AddSpell(new spell_type, H)
 
@@ -67,3 +67,10 @@
 		/obj/item/chalk = 1,
 		/obj/item/flashlight/flare/torch = 1,
 	)
+
+/datum/outfit/job/roguetown/adventurer/z121_arcane_archer/post_equip(mob/living/carbon/human/H)
+	..()
+	// 等实体装备发放完毕后绑定开局弓，不创建替代品或覆盖尚存的绑定。
+	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = H.backl
+	if(istype(bow) && H.mind)
+		bow.bind_to_archer(H.mind)
