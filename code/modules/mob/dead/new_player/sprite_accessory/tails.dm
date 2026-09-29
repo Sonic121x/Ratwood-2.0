@@ -432,7 +432,7 @@
 
 /datum/sprite_accessory/tail/manticore
 	icon = 'modular/icons/mob/tails/manticore_tail.dmi'
-	name = "尾噬（蝎狮）"
+	name = "尾口（蝎狮）"
 	icon_state = "manticore"
 	color_keys = 3
 	color_key_names = list("尾巴", "内脏", "棘刺")

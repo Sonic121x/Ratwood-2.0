@@ -5,11 +5,11 @@
 // because it occupies the standard ORGAN_SLOT_TAIL.
 
 /obj/item/organ/tail/manticore
-	name = "manticore tail"
-	desc = "A thick, undulating appendage of dark-furred base \
-		tapering into reddish serpentine scales, tipped with a \
-		maw-like orifice ringed by interlocking bonelike plates. \
-		Even severed, the feelers inside still twitch."
+	name = "蝎狮尾"
+	desc = "一条粗壮而扭动的尾巴，根部覆盖着深色毛皮，\
+		向末端逐渐收细，转为赤红色的蛇鳞，尾尖长着\
+		一张巨口般的孔穴，周围环绕着相互咬合的骨质板片。\
+		即使已被斩断，里面的触须仍在抽动。"
 	icon_state = "severedtail"
 	accessory_type = /datum/sprite_accessory/tail/manticore
 	can_wag = TRUE
@@ -61,9 +61,9 @@
 	if(!owner || owner.stat == DEAD || !fertility)
 		return FALSE
 	if(pregnant)
-		to_chat(owner, span_love("I feel a surge of warmth in my belly again..."))
+		to_chat(owner, span_love("我再次感到一股暖流涌入腹中..."))
 		return FALSE
-	to_chat(owner, span_love("I feel a surge of warmth in my belly, I'm definitely pregnant!"))
+	to_chat(owner, span_love("我感到一股暖流涌入腹中，我肯定怀孕了！"))
 	pregnant = TRUE
 	return TRUE
 
@@ -80,8 +80,8 @@
 	if(!owner)
 		return
 	if(maw_engorged)
-		return "The maw at [owner.p_their()] tail's tip is splayed open, feelers writhing visibly and slick with sweet-smelling nectar."
-	return "The bonelike plates at [owner.p_their()] tail's tip are sealed tightly shut, with only a faint bead of fluid visible at the seam."
+		return "[owner.p_their()]尾口大张，里面的触须清晰可见，扭动着，沾满了散发甜香的蜜液。"
+	return "[owner.p_their()]尾尖的骨质板片紧紧闭合，缝隙间只能隐约看见一滴液体。"
 
 /obj/item/organ/tail/manticore/proc/update_maw_state()
 	if(!owner || !owner.sexcon)
@@ -107,7 +107,7 @@
 		. += /datum/mob_descriptor/manticore_tail
 
 /datum/mob_descriptor/manticore_tail
-	name = "Manticore tail"
+	name = "蝎狮尾"
 	descriptor_color = "#ff66cc"
 	aroused_descriptor_color = "#ff5555"
 
@@ -121,9 +121,9 @@
 		return
 	var/datum/status_effect/creampie_leak/leak = described.has_status_effect(/datum/status_effect/creampie_leak/long) || described.has_status_effect(/datum/status_effect/creampie_leak)
 	if(leak?.orifice & SEX_PART_TAIL_MAW)
-		. += " Fluid is leaking from the tail maw."
+		. += " 液体正从尾口中流出。"
 	else if(described.has_status_effect(/datum/status_effect/facial/internal/tailmaw))
-		. += " The tail maw is stained with fluid."
+		. += " 尾口沾满了液体。"
 
 /datum/mob_descriptor/manticore_tail/get_standalone_text(mob/living/described, mob/watcher)
 	return get_coalesce_text(described, null, watcher)

@@ -10,7 +10,7 @@
 
 /datum/sex_action/force_armpit_nuzzle/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/armpit_description = user.sexcon.get_armpit_description(user)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]强迫[target]在[user.p_their()][armpit_description]磨蹭。"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]强迫[target]磨蹭并嗅闻[user.p_their()][armpit_description]。"))
 	target.sexcon.do_thrust_animate(user)
 
 	user.sexcon.perform_sex_action(user, 0.5, 0, TRUE)
