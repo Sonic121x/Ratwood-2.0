@@ -1,6 +1,6 @@
 /obj/item/hunting_map
-	name = "crumpled map"
-	desc = "A rough sketch of animal migratory patterns and bedding sites."
+	name = "皱巴巴的地图"
+	desc = "一张粗略标绘动物迁徙路线与栖息地点的草图。"
 	icon = 'icons/roguetown/items/books.dmi'
 	icon_state = "hunt_map"
 	w_class = WEIGHT_CLASS_TINY
@@ -17,27 +17,27 @@
 
 /obj/item/hunting_map/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Use this map on a fresh mound to improve the chance of finding its listed quarry.")
-	. += span_info("Some maps scale with hunting skill, degrade with use, or eventually tear apart.")
+	. += span_info("对新鲜的土堆使用这张地图，可以提高找到图中所记猎物的概率。")
+	. += span_info("部分地图的效果取决于狩猎技能，也可能随使用而降低，最终破损。")
 
 /obj/item/hunting_map/afterattack(obj/effect/hunting_track/target, mob/user, proximity)
 	if(!proximity || !istype(target))
 		return
 
 	if(target.trail_depth > 0 || target.track_revealed)
-		to_chat(user, span_warning("The trail is already cold or established. You must use this on a fresh mound."))
+		to_chat(user, span_warning("这条踪迹已经失去线索或开始追踪了。你必须对新鲜的土堆使用地图。"))
 		return
 
 	if(target.hunt_category)
-		to_chat(user, span_warning("This trail has already been identified."))
+		to_chat(user, span_warning("这条踪迹已经辨认过了。"))
 		return
 
 	if(target.influence_attempted)
-		to_chat(user, span_warning("This trail has been cross-examined with a map for the best routes."))
+		to_chat(user, span_warning("这条踪迹已经对照地图确认过最佳路线了。"))
 		return
 
-	user.visible_message(span_notice("[user] consults [src] while examining the earth."), \
-		span_notice("You cross-reference the signs in the dirt with the markings on [src]..."))
+	user.visible_message(span_notice("[user]一边查阅[src]，一边检查地面。"), \
+		span_notice("你将泥土中的痕迹与[src]上的标记相互对照..."))
 
 	if(!do_after(user, 3 SECONDS, target = target))
 		return
@@ -49,13 +49,13 @@
 	if(prob(final_chance))
 		target.secret_map_influence = target_category
 	target.influence_attempted = TRUE
-	to_chat(user, span_info("You feel a bit more confident about the direction of this trail."))
+	to_chat(user, span_info("你对这条踪迹的去向多了几分把握。"))
 
 	// Handle Degradation
 	if(degradation_rate > 0)
 		current_potency = max(0, current_potency - degradation_rate)
 		if(current_potency <= 0)
-			to_chat(user, span_danger("[src] has become completely illegible and falls apart."))
+			to_chat(user, span_danger("[src]已经完全无法辨认，散成了碎片。"))
 			qdel(src)
 			return
 
@@ -63,12 +63,12 @@
 	if(uses_left > 0)
 		uses_left--
 		if(uses_left <= 0)
-			to_chat(user, span_danger("[src] tears into useless scraps from heavy use."))
+			to_chat(user, span_danger("[src]因反复使用而破成了无用的纸屑。"))
 			qdel(src)
 
 /obj/item/hunting_map/white_stag
-	name = "legend of the white stag"
-	desc = "An esoteric map detailed with blessed silver ink. It claims to track the movements of a Great White Stag. Only the best hunters can decipher the signs properly when examining this against an animal track."
+	name = "白鹿传说"
+	desc = "一张用受祝福的银墨精细绘制的神秘地图，据说记录了巨型白鹿的行踪。只有最出色的猎人才能将其与动物踪迹相互对照，正确解读其中的线索。"
 	target_category = /datum/hunting_category/white_stag
 	skill_chances = list(1, 1, 5, 10, 14, 18, 20)
 	degradation_rate = 0.1 // 10% drop per use
@@ -80,8 +80,8 @@
 	degradation_rate = 0
 
 /obj/item/hunting_map/boars
-	name = "boar signs"
-	desc = "A simple map denoting recent areas where there have been boar attacks. It is easy to use for skilled hunters"
+	name = "野猪踪迹图"
+	desc = "一张标明近期野猪袭击地点的简易地图，熟练的猎人很容易看懂。"
 	target_category = /datum/hunting_category/boars
 	skill_chances = list(20, 30, 40, 50, 70, 90, 100)
 	degradation_rate = 0

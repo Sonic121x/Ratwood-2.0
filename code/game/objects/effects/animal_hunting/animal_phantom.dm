@@ -1,6 +1,6 @@
 /obj/effect/temp_visual/hunting_phantom
-	name = "approaching quarry"
-	desc = "Something is moving in the brush..."
+	name = "接近中的猎物"
+	desc = "有什么东西正在灌木丛中移动..."
 	icon_state = ""
 	layer = MOB_LAYER
 	plane = GAME_PLANE
@@ -47,6 +47,6 @@
 			real_mob.rot_type = rot_path
 		real_mob.faction |= "hunting_ambush"
 
-		spawn_turf.visible_message(span_boldwarning("The [real_mob.name] lunges out from the shadows!"))
+		spawn_turf.visible_message(span_boldwarning("[real_mob.name]从阴影中猛扑出来！"))
 		playsound(spawn_turf, 'sound/items/seedextract.ogg', 100, TRUE)
 	qdel(src)

@@ -636,7 +636,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			// LETHALSTONE EDIT BEGIN: add voice type prefs
 			dat += "<b>语音身份</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
 			// LETHALSTONE EDIT END
-			dat += "<b>语音包</b>: <a href='?_src_=prefs;preference=voicepack;task=input'>[voice_pack]</a><BR>"
+			dat += "<b>语音包</b>: <a href='?_src_=prefs;preference=voicepack;task=input'>[voice_pack == VOICE_PACK_CHOSEN ? "被选中者（男性）" : voice_pack]</a><BR>"
 
 			dat += "<BR>"
 			dat += "<b>种族:</b> <a href='?_src_=prefs;preference=species;task=input'>[get_species_display_name(pref_species.name)]</a>[spec_check(user) ? "" : " (!)"]<BR>"
@@ -1967,9 +1967,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						to_chat(user, "<font color='red'>您的角色现在将以 [LOWER_TEXT(voice_type)] 的效果发声。</font>")
 
 				if ("voicepack")
-					var/voicepack_input = tgui_input_list(user, "选择您角色的表情语音包", "语音包", GLOB.voice_packs_list)
+					var/voicepack_input = tgui_input_list(user, "选择您角色的表情语音包", "语音包", (GLOB.voice_packs_list - VOICE_PACK_CHOSEN) + list("被选中者（男性）"))
 					if(voicepack_input)
-						voice_pack = voicepack_input
+						voice_pack = voicepack_input == "被选中者（男性）" ? VOICE_PACK_CHOSEN : voicepack_input
 						if(voicepack_input != "Default")
 							to_chat(user, span_red("<font color='red'>您的角色现在将以 [LOWER_TEXT(voicepack_input)] 的效果发出有声表情。") + span_notice("<br>这将覆盖您的语音身份和职业特定的语音包。</font>"))
 						else
