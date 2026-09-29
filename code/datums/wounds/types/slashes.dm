@@ -337,11 +337,11 @@
 	sew_threshold = 95
 
 /datum/wound/slash/boar_gore
-	name = "tusk shaped wound"
-	check_name = span_userdanger("<B>GUTS</B>")
+	name = "獠牙刺创"
+	check_name = span_userdanger("<B>肠道</B>")
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
-		"%VICTIM is gored!",
+		"%VICTIM被獠牙刺穿了！",
 	)
 	sound_effect = 'sound/combat/crit2.ogg'
 	whp = 100

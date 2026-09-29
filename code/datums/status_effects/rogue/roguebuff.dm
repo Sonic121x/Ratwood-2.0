@@ -1616,56 +1616,56 @@
 
 // escalating buffs applied on bleed out tied to TRAIT_JOURNEYS_END, currently only used by mistwalker
 /atom/movable/screen/alert/status_effect/buff/journey_ending
-	name = "An end in sight..."
-	desc = "Is this to be my story?"
+	name = "终点在望..."
+	desc = "这就是我的故事的结局吗？"
 	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/buff/journey_end
-	name = "The chapter's closing."
-	desc = "Treading the fine line of lyfe and death."
+	name = "篇章将尽。"
+	desc = "游走于生死一线之间。"
 	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/buff/journey_end_final
-	name = "The final act!"
-	desc = "A death worthy of song!"
+	name = "最后一幕！"
+	desc = "值得传唱的死亡！"
 	icon_state = "buff"
 
 /datum/status_effect/buff/journey_ending
 	id = "journey_ending"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/journey_ending
 	effectedstats = list(STATKEY_SPD = 2, STATKEY_WIL = 2)
-	examine_text = "<font color= 'blue'>SUBJECTPRONOUN coughs out a portion of blood. They appear to be quicker..</font>"
+	examine_text = "<font color= 'blue'>SUBJECTPRONOUN咳出了一口血，动作似乎更快了..</font>"
 	duration = -1
 
 /datum/status_effect/buff/journey_end
 	id = "journey_end"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/journey_end
 	effectedstats = list(STATKEY_STR = 2, STATKEY_SPD = 3, STATKEY_WIL = 2, STATKEY_CON = 2)
-	examine_text = "<font color= 'blue'>SUBJECTPRONOUN is infused with an unatural determination to fight! Their muscles have seemed to have hardened.</font>"
+	examine_text = "<font color= 'blue'>SUBJECTPRONOUN充满了超乎寻常的战斗决心！肌肉似乎也变得更加坚实。</font>"
 	duration = -1
 
 /datum/status_effect/buff/journey_end_final //takes ages for them to die to bloodloss, but they *do* die to it
 	id = "journey_end_final"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/journey_end_final
 	effectedstats = list(STATKEY_STR = 3, STATKEY_SPD = 4, STATKEY_WIL = 4, STATKEY_CON = 4)
-	examine_text = "<font color= 'blue'>SUBJECTPRONOUN appears to have a final burst of strength! You dont think you will be able to hold them down..</font>"
+	examine_text = "<font color= 'blue'>SUBJECTPRONOUN似乎爆发出了最后的力量！你觉得自己恐怕压制不住对方了..</font>"
 	duration = -1
 
 /datum/status_effect/buff/journey_end_final/on_apply()
 	. = ..()
-	to_chat(owner, span_warning("You feel a wave of calming tides throughout your body... Are you truly free?"))
+	to_chat(owner, span_warning("你感到一股宁静的潮流涌遍全身...你真的自由了吗？"))
 
 /datum/status_effect/buff/journey_end_final/on_remove()
 	. = ..()
-	to_chat(owner, span_warning("The tides of your failures were too strong.. It seems your freedom will have to wait another dae.."))
+	to_chat(owner, span_warning("失败的潮水太过汹涌..看来你的自由还得再等一天.."))
 
 /datum/status_effect/buff/journey_end/on_apply()
 	. = ..()
-	to_chat(owner, span_warning("You feel the raging currents coursing through your veins.."))
+	to_chat(owner, span_warning("你感到汹涌的激流在血管中奔腾.."))
 
 /datum/status_effect/buff/journey_ending/on_apply()
 	. = ..()
-	to_chat(owner, span_warning("You feel the lake of guilt swallowing you whole."))
+	to_chat(owner, span_warning("你感到愧疚之湖正将你整个吞没。"))
 
 /datum/status_effect/buff/stagehands_silence
 	id = "Stagehand"
