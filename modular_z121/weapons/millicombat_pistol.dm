@@ -73,6 +73,9 @@
 	projectile.damage *= projectile_damage / initial(base_projectile.damage)
 	projectile.armor_penetration *= projectile_penetration / initial(base_projectile.armor_penetration)
 	projectile.range = projectile.arcshot ? min(projectile.range, projectile_range) : projectile_range
+	if(istype(projectile, /obj/projectile/bullet/firearm/lead/z121_highwayman))
+		var/obj/projectile/bullet/firearm/lead/z121_highwayman/finisher = projectile
+		finisher.configure_shot()
 
 // 膛内弹不再留在弹仓列表中，确保计数正确且总共只能装一颗铅弹。
 /obj/item/gun/ballistic/z121_millicombat_pistol/chamber_round(keep_bullet = FALSE)
@@ -154,6 +157,8 @@
 	update_icon()
 
 /obj/item/gun/ballistic/z121_millicombat_pistol/can_shoot()
+	if(z121_highwayman_weapon?.finisher && !operating && !firing && !firing_stage)
+		z121_highwayman_load()
 	return chambered?.BB && gunpowder && !operating && !firing && !firing_stage
 
 /obj/item/gun/ballistic/z121_millicombat_pistol/shoot_with_empty_chamber(mob/living/user)
@@ -171,6 +176,8 @@
 	if(user.used_intent?.arc_check() && get_dist_euclidian(target, user) > projectile_range)
 		to_chat(user, span_warning("目标超出了这把手枪的曲射射程。"))
 		return FALSE
+	if(z121_highwayman_weapon?.finisher && !z121_highwayman_prepare_shot(target, user))
+		return FALSE
 	spread = user.client ? max(0, 150 - 150 * (user.client.chargedprog / 100)) : 0
 	var/fully_aimed = user.client && user.client.chargedprog >= 100
 	firing = TRUE
@@ -178,6 +185,9 @@
 	if(QDELETED(src))
 		return
 	firing = FALSE
+	// 发射被原生流程拒绝时解除在途锁，武技仍可再次尝试。
+	if(!. && z121_highwayman_weapon?.finisher)
+		z121_highwayman_weapon.flying_bullet = null
 	if(. && fully_aimed)
 		adjust_experience(user, /datum/skill/combat/firearms, user.STAINT * 4)
 
