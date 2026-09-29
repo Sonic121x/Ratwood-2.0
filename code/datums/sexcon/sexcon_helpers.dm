@@ -80,14 +80,14 @@
 	var/datum/bodypart_feature/pits/pit_hair = described?.get_bodypart_feature_of_slot(BODYPART_FEATURE_PITS)
 	switch(pit_hair?.accessory_type)
 		if(/datum/sprite_accessory/pits/trim)
-			return pick("trimmed armpit", "stubbly armpit", "prickly armpit")
+			return pick("修剪整齐的腋下", "带着短毛的腋下", "毛茬扎人的腋下")
 		if(/datum/sprite_accessory/pits/moderate)
-			return pick("fluffy pit", "wispy-haired armpit", "downy armpit")
+			return pick("毛茸茸的腋下", "长着细毛的腋下", "覆着绒毛的腋下")
 		if(/datum/sprite_accessory/pits/hairy)
-			return pick("hairy pit", "unshaved pit", "bushy armpit")
+			return pick("多毛的腋下", "未经剃毛的腋下", "毛发浓密的腋下")
 		if(/datum/sprite_accessory/pits/extreme)
-			return pick("jungle-bushed pit", "unkempt pit", "overgrown armpit")
-	return "armpit"
+			return pick("毛发丛生的腋下", "毛发凌乱的腋下", "毛发过于茂盛的腋下")
+	return "腋下"
 
 /datum/sex_controller/proc/make_sucking_noise()
 	if (!user || QDELETED(user) || !istype(user))
