@@ -1,6 +1,6 @@
 /datum/sex_action/manticore_reacharound_anal
 	parent_type = /datum/sex_action/tailmaw
-	name = "Fuck their ass while engulfing their dick"
+	name = "肛交并用尾口包住对方的肉棒"
 	check_same_tile = FALSE
 	user_needs_functional = TRUE
 	category = SEX_CATEGORY_PENETRATE
@@ -8,7 +8,7 @@
 	user_sex_part = SEX_PART_TAIL_MAW | SEX_PART_COCK
 
 /datum/sex_action/manticore_reacharound_anal/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(span_notice("[user]'s tail curls around to the front of [target] before swallowing up their quivering dick. With arms wrapped tightly around [target.p_their()] waist, [user] eases [user.p_their()] partner down around [user.p_their()] length..."))
+	user.sexcon_action_message(span_notice("[user]的尾巴绕到[target]身前，吞住对方颤抖的肉棒。[user]双臂紧抱着[target.p_their()]腰，让[user.p_their()]伴侣缓缓坐下，将[user.p_their()]肉棒纳入体内..."))
 
 /datum/sex_action/manticore_reacharound_anal/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
@@ -17,13 +17,13 @@
 	var/message
 	switch(user.sexcon.force)
 		if(SEX_FORCE_LOW)
-			message = "[user]'s tail paints long, luscious licks up and down [target]'s penis while [user.p_their()] dick [user.sexcon.get_generic_force_adjective()] scrapes along [target.p_their()] insides until kissing [target]'s rim."
+			message = "[user]的尾巴沿着[target]的阴茎上下绵长而撩人地舔舐，同时[user.p_their()]肉棒[user.sexcon.get_generic_force_adjective()]擦过[target.p_their()]内部，一路退到[target]的肛缘。"
 		if(SEX_FORCE_MID)
-			message = "[user]'s tailcunt [user.sexcon.get_generic_force_adjective()] milks the cloudy precum beading from [target]'s dick. Each thrust against [target]'s prostate causes full-body shivers, of which the tailcunt takes ample advantage."
+			message = "[user]的尾穴[user.sexcon.get_generic_force_adjective()]榨取着[target]肉棒上渗出的浑浊前液。每次撞击[target]的前列腺都会引发全身战栗，尾穴也趁势尽情榨取。"
 		if(SEX_FORCE_HIGH)
-			message = "[user]'s cock [user.sexcon.get_generic_force_adjective()] tugs at [target]'s asshole with growing ease. Hundreds of feelers wriggle and grope [target]'s cock with the single-minded goal of wringing it of all it has."
+			message = "[user]的肉棒越来越轻松地[user.sexcon.get_generic_force_adjective()]牵扯着[target]的肛门。数百根触须蠕动、抚弄着[target]的肉棒，一心只想将其彻底榨干。"
 		if(SEX_FORCE_EXTREME to SEX_FORCE_LUDICROUS)
-			message = "[user] [user.sexcon.get_generic_force_adjective()] ruts [target]'s guts. [target.p_their(TRUE)] stomach bulges and guts bleed as the tail pussy painfully pumps [target.p_their()] tormented dick. Each two-pronged, fuck-hungry thrust produces a wet slap from the tailcunt and a meaty thwack from the sodomy."
+			message = "[user] [user.sexcon.get_generic_force_adjective()]猛干着[target]的肠道。[target.p_their(TRUE)]腹部鼓起、肠道出血，尾穴痛苦地抽吸着[target.p_their()]饱受折磨的肉棒。每次欲壑难填的双重冲刺，都伴着尾穴的湿响与肛交时肉体撞击的闷声。"
 	user.sexcon_action_message(user.sexcon.spanify_force(message))
 	user.sexcon.intercourse_noise(target, TRUE)
 	user.sexcon.perform_sex_action(target, 4, 1, TRUE)
@@ -44,7 +44,7 @@
 	handle_tailmaw_ejaculation(user, target, target, user)
 
 /datum/sex_action/manticore_reacharound_anal/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]'s tail slides free from [target]'s spasming, venom-soaked dick. The tired member spurts out a trickle of pre as [user] yanks free of [target.p_their()] equally exhausted asshole."))
+	user.visible_message(span_warning("[user]的尾巴从[target]痉挛、浸满毒液的肉棒上滑开。疲惫的肉棒溢出一缕前液，[user]也从[target.p_their()]同样不堪重负的肛门中猛然抽出。"))
 
 /datum/sex_action/manticore_reacharound_anal/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return user.sexcon.finished_check() || target.sexcon.finished_check()

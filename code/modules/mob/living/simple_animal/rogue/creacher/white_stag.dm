@@ -50,7 +50,7 @@
 	)
 
 /mob/living/carbon/human/species/wildshape/white_stag
-	name = "The White Stag"
+	name = "白鹿"
 	race = /datum/species/white_stag
 	ai_controller = /datum/ai_controller/white_stag
 	d_intent = INTENT_PARRY
@@ -94,38 +94,38 @@
 	skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/stag_hide
 
 	var/static/list/stag_titles = list(
-		"The White Spectre",
-		"Lord Of The Woods",
-		"The Ivory Wraith",
-		"The Pale Sovereign",
-		"The White Scourge",
-		"The Pale Vengeance",
-		"The Bleak Tyrant",
-		"The Alabaster Monarch",
-		"The Winter Herald",
-		"The Ivory Giant",
-		"The Forest Patriarch",
-		"The Mist-Walker",
-		"The Ghost of the Peak",
-		"Kingslayer",
-		"Durin's Bane",
-		"The One",
-		"King's Fever",
-		"Lord Of The Hunt",
-		"The Wild Hunter",
-		"The Bleached Terror",
-		"Terror Of The Woods",
-		"Night Stalker",
-		"The Silent Witness",
-		"The Hunter's Ruin",
-		"The Ivory Reaper",
-		"The Uncatchable",
-		"Winter's Wrath",
-		"The Great White Calamity",
-		"The Beast Of Old",
-		"Snow Wraith",
-		"Heart Of Ice",
-		"Bone Stalker"
+		"苍白幽灵",
+		"林地之主",
+		"象牙怨灵",
+		"苍白君王",
+		"白色天灾",
+		"苍白复仇者",
+		"阴郁暴君",
+		"雪石帝王",
+		"寒冬先驱",
+		"象牙巨兽",
+		"森林族长",
+		"行雾者",
+		"山巅之魂",
+		"弑君者",
+		"都林之祸",
+		"唯一者",
+		"君王热病",
+		"狩猎之主",
+		"荒野猎手",
+		"惨白恐惧",
+		"林中梦魇",
+		"夜行猎手",
+		"沉默见证者",
+		"猎人末日",
+		"象牙收割者",
+		"不可捕获者",
+		"寒冬之怒",
+		"大白灾",
+		"远古巨兽",
+		"雪中怨灵",
+		"寒冰之心",
+		"骸骨潜猎者"
 	)
 	real_name = pick(stag_titles)
 	name = real_name
@@ -133,7 +133,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/skin_armor/stag_hide
 	slot_flags = null
-	name = "white stag skin"
+	name = "白鹿皮"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
@@ -146,20 +146,20 @@
 	item_flags = DROPDEL
 
 /datum/intent/simple/stag_gore
-	name = "gore"
+	name = "角刺"
 	clickcd = CLICK_CD_QUICK
 	icon_state = "stab"
 	blade_class = BCLASS_STAB
-	attack_verb = list("gores", "rams", "skewers")
+	attack_verb = list("顶刺", "冲撞", "贯穿")
 	animname = "stab"
 	hitsound = 'sound/combat/rend_hit.ogg'
 	penfactor = 50
-	miss_text = "thrusts its antlers wildly!"
+	miss_text = "胡乱地用鹿角猛刺！"
 	miss_sound = "bladewooshmed"
 
 /obj/item/rogueweapon/stag_antlers
-	name = "ancient antlers"
-	desc = "Sharp, calcified points of power."
+	name = "远古鹿角"
+	desc = "坚硬锋利的角尖，蕴藏着强大的力量。"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = null
 	force = 45
@@ -187,8 +187,8 @@
 
 // The corpse the white stag becomes on death - allows butchering.
 /mob/living/simple_animal/hostile/retaliate/rogue/white_stag_corpse
-	name = "White Stag"
-	desc = "A creature of legend, now slain."
+	name = "白鹿"
+	desc = "一头传说中的生灵，如今已被猎杀。"
 	icon = 'icons/mob/unique_shapeshifts/white_stag_shape.dmi'
 	icon_state = "stag"
 	icon_living = "stag"
@@ -241,8 +241,8 @@
 	ADD_TRAIT(src, TRAIT_DNR, TRAIT_GENERIC)
 
 /obj/item/natural/head/white_stag
-	name = "white stag head"
-	desc = "The enormous head and rack of the ever elusive white stag, priceless."
+	name = "白鹿头"
+	desc = "行踪难觅的白鹿硕大的头颅与鹿角，无价之宝。"
 	icon = 'icons/roguetown/items/bounty_heads_big.dmi'
 	icon_state = "white_stag"
 	layer = 3.1
@@ -259,7 +259,7 @@
 	if(!(dir_to_wall in GLOB.cardinals))
 		return ..()
 
-	to_chat(user, span_notice("You begin mounting [src] to the wall..."))
+	to_chat(user, span_notice("你开始将[src]固定到墙上..."))
 	if(do_after(user, 30, target = target_turf))
 		var/obj/structure/fluff/walldeco/mounted_head/mounted = new(user.loc)
 
@@ -275,14 +275,14 @@
 			if(EAST)
 				mounted.pixel_x = 16
 
-		to_chat(user, span_notice("You mount [src] firmly."))
+		to_chat(user, span_notice("你将[src]牢牢固定好了。"))
 		qdel(src)
 
 	return
 
 /obj/structure/fluff/walldeco/mounted_head
-	name = "mounted white stag head"
-	desc = "A grand trophy, looming from the wall with sightless, ivory eyes."
+	name = "壁挂白鹿头"
+	desc = "一件壮观的战利品，从墙上俯视着下方，一双象牙色的眼睛早已失去神采。"
 	icon = 'icons/roguetown/items/bounty_heads_big.dmi'
 	icon_state = "white_stag"
 	anchored = TRUE
@@ -293,7 +293,7 @@
 
 /obj/structure/fluff/walldeco/mounted_head/attack_hand(mob/user)
 	if(do_after(user, 50, target = src)) // Heavier than a painting
-		to_chat(user, span_notice("You carefully pry [src] off the wall."))
+		to_chat(user, span_notice("你小心地将[src]从墙上撬下。"))
 		var/obj/item/stolen = new stolen_item(user.loc)
 		user.put_in_hands(stolen)
 		qdel(src)
@@ -328,7 +328,7 @@
 	corpse.name = human.real_name
 	spawn(1)
 		corpse.death() // Immediately kill it so it's just a corpse
-	human.visible_message(span_userdanger("[human] lets out a final, haunting bell as its spirit departs, leaving a heavy carcass behind."))
+	human.visible_message(span_userdanger("[human]发出最后一声摄人心魄的长鸣，灵魂离去，只留下一具沉重的尸骸。"))
 	qdel(human)
 
 // WHITE RUSH - the stag's combat adrenaline
@@ -341,8 +341,8 @@
 	var/healing_per_tick = 1
 
 /atom/movable/screen/alert/status_effect/buff/white_rush
-	name = "Forest Rush"
-	desc = "I WILL NOT BE HUNTED."
+	name = "森林奔涌"
+	desc = "我绝不会沦为猎物。"
 	icon_state = "stag_heal"
 
 /datum/status_effect/buff/white_rush/on_apply()
