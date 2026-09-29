@@ -9,7 +9,7 @@
 /datum/component/hunting_blocker/proc/can_start_hunt()
 	if(!COOLDOWN_FINISHED(src, hunt_cooldown))
 		var/time_left = DisplayTimeText(COOLDOWN_TIMELEFT(src, hunt_cooldown))
-		to_chat(parent, span_warning("You've recently disturbed a fresh trail. You need to wait [time_left] before you can scout another new one."))
+		to_chat(parent, span_warning("你刚刚扰动过一条新鲜踪迹。还需要等待[time_left]，才能探查另一条新踪迹。"))
 		return FALSE
 	return TRUE
 

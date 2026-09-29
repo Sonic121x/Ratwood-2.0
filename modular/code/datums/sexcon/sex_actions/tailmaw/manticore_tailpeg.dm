@@ -1,13 +1,13 @@
 /datum/sex_action/manticore_tailpeg
 	parent_type = /datum/sex_action/tailmaw
-	name = "Peg them with tail"
+	name = "用尾巴肛交对方"
 	check_same_tile = FALSE
 	category = SEX_CATEGORY_PENETRATE
 	target_sex_part = SEX_PART_ANUS
 	user_sex_part = SEX_PART_TAIL_MAW
 
 /datum/sex_action/manticore_tailpeg/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]'s tail curls between [target]'s legs, the sealed bud pressing against [target]'s rim before pushing inside with a slow, deliberate pressure."))
+	user.visible_message(span_warning("[user]的尾巴卷入[target]双腿之间，闭合的尾苞抵住[target]的肛缘，随后以缓慢而坚定的力道推入。"))
 	playsound(target, 'sound/misc/mat/insert (1).ogg', 25, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/manticore_tailpeg/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -18,13 +18,13 @@
 	var/message
 	switch(user.sexcon.force)
 		if(SEX_FORCE_LOW)
-			message = "[user]'s tail eases in and out of [target]'s rear, the sealed bud's ridged plates dragging across [target]'s walls with each careful stroke."
+			message = "[user]的尾巴缓缓进出[target]的后穴，每次小心的抽动都让闭合尾苞上带棱的板片擦过[target]的内壁。"
 		if(SEX_FORCE_MID)
-			message = "[user] works [user.p_their()] tail deeper, the bud twisting as it pumps [target]'s ass, plates grinding against the stretched rim."
+			message = "[user]将[user.p_their()]尾巴探得更深，尾苞扭转着抽插[target]的后穴，板片摩擦着被撑开的肛缘。"
 		if(SEX_FORCE_HIGH)
-			message = "[user]'s tail pistons into [target]'s ass, the sealed bud punching deep enough to make [target]'s stomach bulge, plates rattling with each wet thrust."
+			message = "[user]的尾巴如活塞般抽插[target]的后穴，闭合的尾苞撞得极深，让[target]的腹部鼓起，每次湿润的冲刺都让板片咔哒作响。"
 		if(SEX_FORCE_EXTREME to SEX_FORCE_LUDICROUS)
-			message = "[user] ruts [target]'s guts with [user.p_their()] tail like an animal, the bud hammering [target]'s insides without care, each thrust accompanied by a sickening wet slap."
+			message = "[user]像野兽般用[user.p_their()]尾巴猛干[target]的肠道，尾苞毫不顾忌地锤击着[target]的内部，每次冲刺都伴着令人作呕的湿润拍打声。"
 	user.sexcon_action_message(user.sexcon.spanify_force(message))
 	user.sexcon.intercourse_noise(target, TRUE)
 	user.sexcon.perform_sex_action(target, 2, 3, TRUE)
@@ -32,7 +32,7 @@
 	user.sexcon.handle_passive_ejaculation(climax_part = SEX_PART_TAIL_MAW)
 
 /datum/sex_action/manticore_tailpeg/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]'s tail slides free from [target]'s ruined rear, the bud glistening with slick."))
+	user.visible_message(span_warning("[user]的尾巴从[target]饱受摧残的后穴中滑出，尾苞沾满黏液，闪着湿光。"))
 
 /datum/sex_action/manticore_tailpeg/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return target.sexcon.finished_check()
