@@ -1,12 +1,12 @@
 /datum/sex_action/manticore_earfuck
 	parent_type = /datum/sex_action/tailmaw
-	name = "Fuck their ears with tendrils"
+	name = "用触须插弄对方的耳朵"
 	check_same_tile = FALSE
 	user_sex_part = SEX_PART_TAIL_MAW
 	var/wound_type = /datum/wound/fracture/head/ears
 
 /datum/sex_action/manticore_earfuck/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(span_notice("[user]'s tail rises, engulfing [target]'s head, its bonelike plates glomping tight as a fan of fuckhungry feelers begin probing [target.p_their()] ears."))
+	user.sexcon_action_message(span_notice("[user]的尾巴抬起，吞住[target]的头，骨质板片紧紧合拢，一簇欲火难耐的触须开始探入[target.p_their()]耳朵。"))
 
 /datum/sex_action/manticore_earfuck/proc/apply_force_effects(mob/living/carbon/human/target, force)
 	var/obj/item/organ/ears/ears = target.getorganslot(ORGAN_SLOT_EARS)
@@ -47,13 +47,13 @@
 	var/message
 	switch(user.sexcon.force)
 		if(SEX_FORCE_LOW)
-			message = "Gingerly and sweet, the tendrils from [user]'s tail [user.sexcon.get_generic_force_adjective()] pump [target]'s ears, each worming feeler leaving the insides faintly tingling with a heavy, unwanted pressure."
+			message = "[user]尾部的触须带着小心而甜腻的动作，[user.sexcon.get_generic_force_adjective()]抽插着[target]的耳朵，每根蠕动的触须都在内部留下轻微酥麻，以及沉重、令人不适的压力。"
 		if(SEX_FORCE_MID)
-			message = "Tinnitus fills [target]'s head as [user]'s feelers [user.sexcon.get_generic_force_adjective()] invade [target.p_their()] ear canal. The pressure is wrong, a disorienting wave of fuzzy nausea building behind [target.p_their()] eyes."
+			message = "[user]的触须[user.sexcon.get_generic_force_adjective()]侵入[target.p_their()]耳道，耳鸣充斥着[target]的脑海。这股压力很不对劲，一阵令人晕眩的朦胧恶心感在[target.p_their()]眼后积聚。"
 		if(SEX_FORCE_HIGH)
-			message = "Dozens of tendrils squirms past [target]'s eardrums, [user.sexcon.get_generic_force_adjective()] frotting against [target.p_their()] brain, lacing its squishy ridges with intoxicating envenomed-slick."
+			message = "数十根触须蠕动着穿过[target]的耳膜，[user.sexcon.get_generic_force_adjective()]摩擦[target.p_their()]大脑，将令人迷醉的有毒黏液涂满柔软的脑回。"
 		if(SEX_FORCE_EXTREME to SEX_FORCE_LUDICROUS)
-			message = "[user]'s tail maw [user.sexcon.get_generic_force_adjective()] grips the sides of [target]'s head, feelers swarming into [target.p_their()] head. [target]'s hearing gives way under the onslaught; coherence gives way to deafening ringing and concussive pressure boring into [target.p_their()] skull."
+			message = "[user]的尾口[user.sexcon.get_generic_force_adjective()]夹紧[target]的头部两侧，触须蜂拥钻入[target.p_their()]头颅。[target]的听觉在冲击下崩溃；意识被震耳欲聋的鸣响取代，震荡般的压力钻入[target.p_their()]颅骨。"
 	user.sexcon_action_message(user.sexcon.spanify_force(message))
 	user.sexcon.oralcourse_noise(target, TRUE)
 	user.sexcon.perform_sex_action(target, 2, 0, TRUE)
@@ -63,7 +63,7 @@
 	return TRUE
 
 /datum/sex_action/manticore_earfuck/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(span_notice("[user]'s tail draws away from [target]'s head, tendrils pulled free from [target.p_their()] ravaged ears leaving them weeping with a stewed mixed of venom, blood, and intercranial juices."))
+	user.sexcon_action_message(span_notice("[user]的尾巴从[target]头上退开，触须从[target.p_their()]遭到摧残的耳中抽出，留下毒液、鲜血与颅内液体混成的浊液不断渗出。"))
 
 /datum/sex_action/manticore_earfuck/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return user.sexcon.finished_check() || target.sexcon.finished_check()
