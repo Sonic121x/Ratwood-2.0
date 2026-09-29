@@ -82,25 +82,25 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 		return FALSE
 	if(target in audience)
 		audience -= target
-		to_chat(holder, span_notice("I stop performing for [target.real_name]."))
-		target.balloon_alert(holder, "removed from audience")
+		to_chat(holder, span_notice("我停止为[target.real_name]演奏。"))
+		target.balloon_alert(holder, "已移出听众名单")
 		return TRUE
 	if(audience.len >= maxaudience)
-		to_chat(holder, span_warning("I cannot maintain an audience larger than [maxaudience]!"))
+		to_chat(holder, span_warning("我的听众不能超过[maxaudience]人！"))
 		return FALSE
 	audience |= target
-	to_chat(holder, span_notice("I begin performing for [target.real_name]."))
-	target.balloon_alert(holder, "added to audience")
+	to_chat(holder, span_notice("我开始为[target.real_name]演奏。"))
+	target.balloon_alert(holder, "已加入听众名单")
 	return TRUE
 
 /mob/living/carbon/human/proc/setaudience()
-	set name = "Audience Choice"
+	set name = "选择听众"
 	set category = "Inspiration"
 
 	if(!inspiration)
 		return FALSE
 	if(inspiration.audience.len >= inspiration.maxaudience)
-		to_chat(src, "I cannot maintain a audience larger than [inspiration.maxaudience]!")
+		to_chat(src, "我的听众不能超过[inspiration.maxaudience]人！")
 		return FALSE
 	var/list/folksnearby = list()
 	for(var/mob/living/carbon/human/folks in view(7, loc))
@@ -109,7 +109,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 	if(!folksnearby)
 		return
-	var/target = tgui_input_list(src, "Who will you perform for?", "Audience Choice", folksnearby)
+	var/target = tgui_input_list(src, "你要为谁演奏？", "选择听众", folksnearby)
 	if(target)
 		inspiration.audience |= target
 
@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 
 /mob/living/carbon/human/proc/clearaudience()
-	set name = "Clear Audience"
+	set name = "清空听众"
 	set category = "Inspiration"
 	if(!inspiration)
 		return FALSE
@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 
 /mob/living/carbon/human/proc/checkaudience()
-	set name = "Check Audience"
+	set name = "查看听众"
 	set category = "Inspiration"
 
 	if(!inspiration)
@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 		text += "[folks.real_name], "
 	if(!text)
 		return
-	to_chat(src, "My audience members are: [text]")
+	to_chat(src, "我的听众有：[text]")
 
 	return TRUE
 	
@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 
 /mob/living/carbon/human/proc/picksongs()
-	set name = "Fill Songbook"
+	set name = "填写歌本"
 	set category = "Inspiration"
 
 
@@ -170,19 +170,19 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 		var/obj/effect/proc_holder/spell/spell_item = songs[i]
 		choices["[spell_item.name]"] = spell_item
 
-	var/choice = input("Choose a song") as anything in choices
+	var/choice = input("选择一首歌曲") as anything in choices
 	var/obj/effect/proc_holder/spell/invoked/song/item = choices[choice]
 
 	if(!item)
 		inspiration.is_picking = FALSE
 		return     // user canceled;
-	if(alert(src, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
+	if(alert(src, "[item.desc]", "[item.name]", "学习", "取消") == "取消") //gives a preview of the spell's description to let people know what a spell does
 		inspiration.is_picking = FALSE
 		return
 
 	for(var/obj/effect/proc_holder/spell/knownsong in mind.spell_list)
 		if(knownsong.type == item.type)
-			to_chat(src, span_warning("You already know this one!"))
+			to_chat(src, span_warning("你已经学会这首歌了！"))
 			inspiration.is_picking = FALSE
 			return
 	var/obj/effect/proc_holder/spell/invoked/song/new_song = new item
@@ -193,15 +193,15 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 	inspiration.is_picking = FALSE
 
 /mob/living/carbon/human/proc/resetsongs()
-	set name = "Reset Songbook"
+	set name = "重选歌曲"
 	set category = "Inspiration"
 
 	if(!mind || !inspiration)
 		return
 	if(world.time < inspiration.next_song_reset)
-		to_chat(src, span_warning("I need [DisplayTimeText(inspiration.next_song_reset - world.time)] before I can rewrite my songbook again."))
+		to_chat(src, span_warning("我还需要等[DisplayTimeText(inspiration.next_song_reset - world.time)]才能再次改写歌本。"))
 		return
-	if(alert(src, "Forget all chosen songs and choose them again?", "Reset Songbook", "Reset", "Cancel") == "Cancel")
+	if(alert(src, "忘记所有已选歌曲并重新选择？", "重选歌曲", "重选", "取消") == "取消")
 		return
 
 	var/list/spells_to_remove = list()
@@ -210,7 +210,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 			spells_to_remove += knownsong
 
 	if(!spells_to_remove.len)
-		to_chat(src, span_warning("I have no chosen songs to forget."))
+		to_chat(src, span_warning("我没有可遗忘的已选歌曲。"))
 		return
 
 	for(var/obj/effect/proc_holder/spell/knownsong in spells_to_remove)
@@ -219,10 +219,10 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 	inspiration.songsbought = 0
 	inspiration.next_song_reset = world.time + BARD_RESET_COOLDOWN
 	verbs |= list(/mob/living/carbon/human/proc/picksongs)
-	to_chat(src, span_notice("Memorized sheet music spils from my mind. I can choose my songs again."))
+	to_chat(src, span_notice("记住的乐谱从我脑海中流逝。我可以重新选择歌曲了。"))
 
 /mob/living/carbon/human/proc/pickrhythms()
-	set name = "Choose Rhythms"
+	set name = "选择节奏"
 	set category = "Inspiration"
 
 	if(!mind)
@@ -241,19 +241,19 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 		var/obj/effect/proc_holder/spell/spell_item = GLOB.learnable_rhythms[i]
 		choices["[spell_item.name]"] = spell_item
 
-	var/choice = input("Choose a rhythm") as anything in choices
+	var/choice = input("选择一种节奏") as anything in choices
 	var/obj/effect/proc_holder/spell/self/rhythm/item = choices[choice]
 
 	if(!item)
 		inspiration.is_picking_rhythm = FALSE
 		return
-	if(alert(src, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel")
+	if(alert(src, "[item.desc]", "[item.name]", "学习", "取消") == "取消")
 		inspiration.is_picking_rhythm = FALSE
 		return
 
 	for(var/obj/effect/proc_holder/spell/knownrhythm in mind.spell_list)
 		if(knownrhythm.type == item.type)
-			to_chat(src, span_warning("You already know this rhythm!"))
+			to_chat(src, span_warning("你已经学会这种节奏了！"))
 			inspiration.is_picking_rhythm = FALSE
 			return
 	var/obj/effect/proc_holder/spell/self/rhythm/new_rhythm = new item
@@ -264,15 +264,15 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 	inspiration.is_picking_rhythm = FALSE
 
 /mob/living/carbon/human/proc/resetrhythms()
-	set name = "Reset Rhythms"
+	set name = "重选节奏"
 	set category = "Inspiration"
 
 	if(!mind || !inspiration || inspiration.level < BARD_T2)
 		return
 	if(world.time < inspiration.next_rhythm_reset)
-		to_chat(src, span_warning("I need [DisplayTimeText(inspiration.next_rhythm_reset - world.time)] before I can rewrite my rhythms again."))
+		to_chat(src, span_warning("我还需要等[DisplayTimeText(inspiration.next_rhythm_reset - world.time)]才能再次改写节奏。"))
 		return
-	if(alert(src, "Forget all chosen rhythms and choose them again?", "Reset Rhythms", "Reset", "Cancel") == "Cancel")
+	if(alert(src, "忘记所有已选节奏并重新选择？", "重选节奏", "重选", "取消") == "取消")
 		return
 
 	var/list/spells_to_remove = list()
@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 			spells_to_remove += knownrhythm
 
 	if(!spells_to_remove.len)
-		to_chat(src, span_warning("I have no chosen rhythms to forget."))
+		to_chat(src, span_warning("我没有可遗忘的已选节奏。"))
 		return
 
 	for(var/obj/effect/proc_holder/spell/knownrhythm in spells_to_remove)
@@ -296,14 +296,14 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 		inspiration.rhythm_tracker.last_rhythm_type = 0
 	inspiration.next_rhythm_reset = world.time + BARD_RESET_COOLDOWN
 	verbs |= list(/mob/living/carbon/human/proc/pickrhythms)
-	to_chat(src, span_notice("The harmonies escape me. I can choose my rhythms again."))
+	to_chat(src, span_notice("那些和声从我脑海中消散。我可以重新选择节奏了。"))
 
 /mob/living/carbon/human/MiddleClickOn(atom/A, params)
 	// if we're holding an instrument and have inspiration with no other intents active, we'll add them to our inspiration audience, if possible
 	if(!mmb_intent && inspiration && A != src && isliving(A))
 		if(istype(get_active_held_item(), /obj/item/rogue/instrument))
 			if(get_dist(src, A) > 7 || A.loc.z != src.loc.z) // cheap quick dist test instead of calling hearers
-				to_chat(src, span_warning("[A] is too far away for me to invite into my audience."))
+				to_chat(src, span_warning("[A]离得太远，我无法将其加入听众名单。"))
 				return
 			inspiration.toggle_audience_member(A)
 			return
