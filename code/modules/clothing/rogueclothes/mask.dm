@@ -580,8 +580,8 @@
 	nudist_approved = TRUE
 
 /obj/item/clothing/mask/rogue/physician/head
-	name = "head physician's mask"
-	desc = "An important person, warrants the largest beak of them all."
+	name = "首席医师面具"
+	desc = "身份显赫之人，自然要配上最大的鸟喙。"
 	icon_state = "head_phys" // shoutout the_hotline for allowing me to use this sprites. I love you.
 
 
