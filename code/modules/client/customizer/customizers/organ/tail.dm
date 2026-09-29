@@ -26,7 +26,7 @@
 	if(entry.accessory_type != /datum/sprite_accessory/tail/manticore)
 		return
 	var/datum/customizer_entry/organ/tail/tail_entry = entry
-	dat += "<br>Fertile: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=fertile'>[tail_entry.fertility ? "Fertile" : "Sterile"]</a>"
+	dat += "<br>生育能力：<a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=fertile'>[tail_entry.fertility ? "可育" : "不育"]</a>"
 
 /datum/customizer_choice/organ/tail/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
@@ -521,13 +521,13 @@
 	)
 
 /datum/customizer/organ/tail/manticore
-	name = "Tail Maw"
+	name = "尾口"
 	customizer_choices = list(/datum/customizer_choice/organ/tail/manticore)
 	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tail/manticore
-	name = "Manticore Tail"
+	name = "蝎狮尾"
 	organ_type = /obj/item/organ/tail/manticore
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/manticore,

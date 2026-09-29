@@ -21,9 +21,9 @@
 		return
 	eater_tracker[eater.real_name]++
 	if(eater_tracker[eater.real_name] == 1)
-		to_chat(eater, span_bigbold("A tingle of power. Not enough, you need it all, consume the whole cut!"))
+		to_chat(eater, span_bigbold("一丝力量掠过全身。还不够，你需要全部的力量，把这整块肉吃下去！"))
 	if(eater_tracker[eater.real_name] >= bites_required)
-		to_chat(eater, span_bigbold("Your muscles strengthen. Something has changed, the power of the stag dwells within you now."))
+		to_chat(eater, span_bigbold("你的肌肉变得强健。有些东西改变了，白鹿的力量如今已寄宿在你体内。"))
 		eater.AddComponent(/datum/component/stag_protection)
 		ADD_TRAIT(eater, TRAIT_WHITE_STAG, TRAIT_STATUS_EFFECT("stag_essence"))
 
@@ -53,7 +53,7 @@
 		return FALSE
 	owner.add_movespeed_modifier(MOVESPEED_ID_FOREST_RUSH, update=TRUE, priority=15, multiplicative_slowdown=-0.25)
 	if(prob(30))
-		owner.visible_message(span_danger("[owner.name] swells with a rush of power upon being struck!"))
+		owner.visible_message(span_danger("[owner.name]受到打击时，体内骤然涌起一股力量！"))
 	return TRUE
 
 /datum/status_effect/buff/forest_rush/tick()
