@@ -453,7 +453,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			return FALSE
 
 		if(moving_mount_blocks_cast(H))
-			to_chat(user, span_warning("The thing I'm riding needs to stop moving first."))
+			to_chat(user, span_warning("我骑乘的对象需要先停止移动。"))
 			return FALSE
 
 		if(miracle && !H.devotion?.check_devotion(src))
@@ -461,7 +461,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			return FALSE
 		if(gesture_required)
 			if(H.buckled && H.buckled.buckle_blocks_spells)
-				to_chat(user, span_warning("[H.buckled] prevents me from casting [name]!"))
+				to_chat(user, span_warning("[H.buckled]使我无法施放[name]！"))
 				return FALSE
 			if(H.handcuffed)
 				to_chat(user, span_warning("双手被绑时我无法施放[name]！"))
