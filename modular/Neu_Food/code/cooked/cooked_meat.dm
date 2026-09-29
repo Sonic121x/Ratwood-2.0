@@ -311,11 +311,11 @@
 
 /* .............  Garlicked Fried Volf w/ Cucumber  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlickcucumber
-	name = "hunter's feast"
-	desc = "A slab of volf, fried to a perfect medium rare. A bit gamey and chewy, but tasty. This piece has been coated over in glove of garlick and served with side of cucumber."
+	name = "猎人盛宴"
+	desc = "一大块煎至恰到好处三分熟的沃尔夫肉。有些野味和嚼劲，却很美味。这块肉裹上了蒜瓣，并配有黄瓜。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
 	icon_state = "fryvolf_garlick_cucumber"
-	tastes = list("gamey volf" = 1, "garlick" = 1, "cucumber" = 1)
+	tastes = list("沃尔夫肉的野味" = 1, "蒜香" = 1, "黄瓜" = 1)
 	eat_effect = /datum/status_effect/buff/mealbuff
 	faretype = FARE_LAVISH
 
