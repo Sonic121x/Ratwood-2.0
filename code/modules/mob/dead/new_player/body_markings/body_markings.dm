@@ -86,7 +86,7 @@
 
 /datum/body_marking/face_paint
 	icon = 'icons/mob/body_markings/other_markings.dmi'
-	name = "Face Paint"
+	name = "面部彩绘"
 	icon_state = "face_paint"
 	default_color = "FF0000"
 	affected_bodyparts = HEAD

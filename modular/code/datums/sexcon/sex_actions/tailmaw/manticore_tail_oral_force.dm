@@ -1,12 +1,12 @@
 /datum/sex_action/manticore_tail_oral_force
 	parent_type = /datum/sex_action/tailmaw
-	name = "Force tail maw onto their mouth"
+	name = "强行用尾口覆住对方的嘴"
 	check_same_tile = FALSE
 	target_sex_part = SEX_PART_JAWS
 	user_sex_part = SEX_PART_TAIL_MAW
 
 /datum/sex_action/manticore_tail_oral_force/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]'s tail rises and clamps over [target]'s mouth, the maw blooming open to seal around [target]'s lips, feelers spilling past [target]'s teeth."))
+	user.visible_message(span_warning("[user]的尾巴抬起，夹住[target]的嘴，尾口绽开后紧紧包住[target]的嘴唇，触须涌过[target]的牙齿。"))
 
 /datum/sex_action/manticore_tail_oral_force/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
@@ -16,13 +16,13 @@
 	var/message
 	switch(user.sexcon.force)
 		if(SEX_FORCE_LOW)
-			message = "[user]'s tail maw pulses gently over [target]'s mouth, the feelers lazily exploring [target]'s tongue and gums, secreting a tingling sweet nectar."
+			message = "[user]的尾口覆着[target]的嘴轻轻搏动，触须慵懒地探索[target]的舌头与牙龈，分泌出令人酥麻的甜蜜液体。"
 		if(SEX_FORCE_MID)
-			message = "The feelers inside [user]'s tail push deeper into [target]'s mouth, curling around [target]'s tongue and pulling it into the warm, slick maw."
+			message = "[user]尾巴里的触须深入[target]口中，缠住[target]的舌头，将其拉入温热湿滑的尾口。"
 		if(SEX_FORCE_HIGH)
-			message = "[user]'s tail maw clamps down on [target]'s face, feelers shoving deep into [target]'s throat, the orifice pulsing as it force-feeds its sweet slick down [target]'s gullet."
+			message = "[user]的尾口夹紧[target]的脸，触须深深挤入[target]的喉咙，孔口搏动着，将甜腻黏液强行灌入[target]的食道。"
 		if(SEX_FORCE_EXTREME to SEX_FORCE_LUDICROUS)
-			message = "[user]'s tail seals [target]'s mouth completely, the feelers writhing down [target]'s throat in a suffocating mass, pumping nectar until it bubbles from [target]'s nose."
+			message = "[user]的尾巴将[target]的嘴完全封住，触须扭成令人窒息的一团钻进[target]的喉咙，不断泵出蜜液，直到它冒着泡从[target]的鼻中溢出。"
 	user.sexcon_action_message(user.sexcon.spanify_force(message))
 	user.sexcon.oralcourse_noise(target, TRUE)
 	user.sexcon.perform_sex_action(target, 2, 2, TRUE)
@@ -30,7 +30,7 @@
 	handle_tailmaw_oral_climax(user, target)
 
 /datum/sex_action/manticore_tail_oral_force/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]'s tail releases [target]'s mouth, the feelers peeling free with strings of nectar and saliva trailing between them."))
+	user.visible_message(span_warning("[user]的尾巴松开[target]的嘴，触须逐渐脱离，其间牵着缕缕蜜液与唾液。"))
 
 /datum/sex_action/manticore_tail_oral_force/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return target.sexcon.finished_check()

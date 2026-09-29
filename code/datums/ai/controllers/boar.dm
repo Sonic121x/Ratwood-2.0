@@ -48,7 +48,7 @@
 
 	if(do_after(boar, 0.5 SECONDS))
 		controller.set_blackboard_key(BB_BOAR_CHARGE_COOLDOWN, world.time + 20 SECONDS)
-		boar.visible_message("<b>[boar]</b> lowers its head and charges!")
+		boar.visible_message("<b>[boar]</b>低下头，发起了冲锋！")
 		playsound(boar, 'sound/vo/mobs/boar/boar_charge.ogg', 75, TRUE)
 		var/charge_dir = get_dir(boar, target)
 		boar.throw_at(target, 7, 2.5, boar, callback = CALLBACK(src, PROC_REF(on_charge_end), controller, charge_dir))
@@ -90,7 +90,7 @@
 			break // We found a target!
 	if(victim)
 		did_hit = TRUE
-		victim.visible_message(span_userdanger("[boar] gores [victim]!"))
+		victim.visible_message(span_userdanger("[boar]用獠牙刺伤了[victim]！"))
 		if(iscarbon(victim))
 			var/mob/living/carbon/victim_carbon = victim
 			var/obj/item/bodypart/chest = victim_carbon.get_bodypart(BODY_ZONE_CHEST)
@@ -104,7 +104,7 @@
 		return
 	if(impact_turf.is_blocked_turf(exclude_mobs = TRUE))
 		did_hit = TRUE
-		boar.visible_message("<span class='danger'>[boar] slams into [impact_turf] with bone-shattering force!</span>")
+		boar.visible_message("<span class='danger'>[boar]以足以粉碎骨头的力道撞上了[impact_turf]！</span>")
 		playsound(boar, 'sound/combat/hits/onwood/fence_hit3.ogg', 100, TRUE)
 		boar.Stun(3 SECONDS)
 		for(var/turf/smash_turf in range(1, impact_turf))
@@ -115,7 +115,7 @@
 		for(var/mob/living/nearby_mob in range(1, impact_turf))
 			if(nearby_mob == boar)
 				continue
-			nearby_mob.visible_message("<span class='warning'>The shockwave from [boar]'s impact knocks [nearby_mob] off their feet!</span>")
+			nearby_mob.visible_message("<span class='warning'>[boar]撞击产生的冲击波将[nearby_mob]掀翻在地！</span>")
 			nearby_mob.Knockdown(3 SECONDS)
 			nearby_mob.apply_status_effect(/datum/status_effect/debuff/dazed)
 			nearby_mob.adjustBruteLoss(20)
@@ -124,7 +124,7 @@
 		if(attempts < 1)
 			controller.set_blackboard_key(BB_BOAR_CHARGE_ATTEMPTS, 1)
 			controller.set_blackboard_key(BB_BOAR_CHARGE_COOLDOWN, 0) // Reset cooldown
-			boar.visible_message(span_notice("[boar] skids to a halt and prepares to lunge again!"))
+			boar.visible_message(span_notice("[boar]滑行着停下，准备再次猛扑！"))
 		else
 			// If they miss the second time, they have to wait for the full cooldown
 			controller.set_blackboard_key(BB_BOAR_CHARGE_ATTEMPTS, 0)
