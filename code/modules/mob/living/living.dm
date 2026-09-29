@@ -2254,18 +2254,18 @@
 			closest_track = nearby_track
 	if(!closest_track)
 		return
-	var/dir_text = dir2text(get_dir(src, closest_track))
+	var/dir_text = list("north" = "北方", "south" = "南方", "east" = "东方", "west" = "西方", "northeast" = "东北方", "southeast" = "东南方", "northwest" = "西北方", "southwest" = "西南方")[dir2text(get_dir(src, closest_track))] || "原地"
 	var/dist_text = ""
 	switch(min_dist)
 		if(0 to 1)
-			dist_text = "right beneath your feet"
+			dist_text = "就在脚下"
 		if(2 to 3)
-			dist_text = "very close by"
+			dist_text = "近在咫尺"
 		if(4 to 5)
-			dist_text = "a few paces away"
+			dist_text = "几步之外"
 		else
-			dist_text = "in the distance"
-	to_chat(src, span_notice("You spot a faint trail [dist_text] to the [dir_text]."))
+			dist_text = "远处"
+	to_chat(src, span_notice("你发现了一条隐约的踪迹，方向：[dir_text]，距离：[dist_text]。"))
 
 /proc/found_ping(atom/A, client/C, state)
 	if(!A || !C || !state)
