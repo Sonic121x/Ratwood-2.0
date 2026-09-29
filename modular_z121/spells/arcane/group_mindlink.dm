@@ -11,13 +11,15 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	return session
 
 // 熟人姓名只用于查找候选对象，后续选择与权限检查均使用实际对象。
-// NPC 和离线角色仍可加入链接；客户端只决定能否开窗和主动发言，不决定成员资格。
+// 只接入玩家熟人；离线玩家通过当前身体所属思维的账号标识保留资格，纯 NPC 不列入。
 /proc/group_mindlink_candidates(mob/living/user)
 	var/list/result = list()
 	if(QDELETED(user) || !user.mind)
 		return result
 	for(var/mob/living/carbon/human/member as anything in GLOB.human_list)
 		if(member == user || QDELETED(member) || member.stat == DEAD)
+			continue
+		if(!member.client && (QDELETED(member.mind) || !member.mind.key || member.mind.current != member))
 			continue
 		if(member.real_name in user.mind.known_people)
 			result[REF(member)] = member

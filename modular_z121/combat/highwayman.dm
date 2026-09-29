@@ -33,6 +33,7 @@
 	var/selecting = FALSE
 	var/selection_complete = FALSE
 	var/attacking = FALSE
+	var/lunging = FALSE
 
 /datum/component/z121_highwayman/Initialize()
 	if(!ishuman(parent))
@@ -146,6 +147,8 @@
 // 突刺只在实际攻击点击时移位，检查通行，不使用穿墙传送。
 /datum/component/z121_highwayman/proc/on_click(datum/source, atom/target, params)
 	SIGNAL_HANDLER
+	if(lunging)
+		return COMSIG_MOB_CANCEL_CLICKON
 	if(!enforce_armor())
 		return
 	var/obj/item/I = fighter.get_active_held_item()
@@ -170,10 +173,45 @@
 	if(!length(path))
 		to_chat(fighter, span_warning("没有可供突进的通路。"))
 		return COMSIG_MOB_CANCEL_CLICKON
+	// 移动可能触发会等待的碰撞、挟持攻击或表情，不能在信号回调中同步执行。
+	lunging = TRUE
+	INVOKE_ASYNC(src, PROC_REF(lunge_and_attack), victim, I, W, fighter.used_intent, path, params, fighter.next_click)
+	return COMSIG_MOB_CANCEL_CLICKON
+
+/datum/component/z121_highwayman/proc/lunge_and_attack(mob/living/victim, obj/item/weapon, datum/component/z121_highwayman_weapon/preparation, datum/intent/intent, list/path, params, click_time)
+	var/reached_target = advance_lunge(victim, weapon, preparation, intent, path, click_time)
+	lunging = FALSE
+	if(!reached_target || QDELETED(src) || QDELETED(fighter))
+		return
+	// 原点击已被取消；仅接续这一次点击，仍由原生流程检查蓄力、冷却和攻击条件。
+	var/saved_next_click = fighter.next_click
+	fighter.next_click = world.time - 1
+	fighter.ClickOn(victim, params)
+	if(!QDELETED(fighter))
+		fighter.next_click = max(fighter.next_click, saved_next_click)
+
+/datum/component/z121_highwayman/proc/advance_lunge(mob/living/victim, obj/item/weapon, datum/component/z121_highwayman_weapon/preparation, datum/intent/intent, list/path, click_time)
 	for(var/turf/T as anything in path)
+		// 每步重新检查，防止等待期间换武器、换甲或新点击后继续旧突刺。
+		if(!can_continue_lunge(victim, weapon, preparation, intent, click_time))
+			return FALSE
+		var/turf/origin = get_turf(fighter)
+		if(get_dist(origin, T) != 1 || !z121_highwayman_clear_step(origin, T, fighter))
+			return FALSE
 		if(!fighter.Move(T, get_dir(fighter, T)))
-			return COMSIG_MOB_CANCEL_CLICKON
-	// 返回后让原本的点击流程执行普攻，不额外生成第二次攻击。
+			return FALSE
+	return can_continue_lunge(victim, weapon, preparation, intent, click_time) && fighter.Adjacent(victim)
+
+/datum/component/z121_highwayman/proc/can_continue_lunge(mob/living/victim, obj/item/weapon, datum/component/z121_highwayman_weapon/preparation, datum/intent/intent, click_time)
+	if(QDELETED(src) || QDELETED(fighter) || QDELETED(victim) || QDELETED(weapon) || QDELETED(preparation))
+		return FALSE
+	if(fighter.next_click != click_time || fighter.get_active_held_item() != weapon || weapon.z121_highwayman_weapon != preparation || preparation.controller != src || fighter.used_intent != intent)
+		return FALSE
+	if(!enforce_armor() || !fighter.cmode || fighter.incapacitated() || fighter.restrained() || fighter.in_throw_mode || fighter.next_move > world.time || attacking)
+		return FALSE
+	if(victim.stat == DEAD || fighter.z != victim.z || !(fighter.mobility_flags & MOBILITY_MOVE) || fighter.pulledby || fighter.buckled || fighter.has_status_effect(/datum/status_effect/z121_highwayman_counter))
+		return FALSE
+	return TRUE
 
 /datum/component/z121_highwayman/proc/find_lunge_path(mob/living/target)
 	var/turf/start = get_turf(fighter)

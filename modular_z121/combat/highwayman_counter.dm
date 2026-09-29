@@ -79,7 +79,8 @@
 		return
 	var/actual = max(0, owner.get_damage_amount(damage_type) - damage_before)
 	if(actual > 0)
-		retaliate(actual, damage_type)
+		// 异步调用立即锁定并移除反击状态，后续伤害流程即使等待也不会阻塞信号。
+		INVOKE_ASYNC(src, PROC_REF(retaliate), actual, damage_type)
 
 /datum/status_effect/z121_highwayman_counter/proc/finish_attack(serial)
 	if(serial != attack_serial || spent)
