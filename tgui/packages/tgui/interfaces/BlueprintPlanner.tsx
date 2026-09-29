@@ -136,7 +136,7 @@ const BlueprintPreview = ({
       ctx.font = '10px sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('No Ground', boxSize / 2, boxSize / 2);
+      ctx.fillText('无底层设计', boxSize / 2, boxSize / 2);
       return;
     }
 
@@ -398,7 +398,7 @@ export const BlueprintPlanner = () => {
     if (!importString.trim()) return;
     const parsed = importBlueprintFromString(importString);
     if (!parsed || !Array.isArray(parsed.grid) || parsed.grid.length === 0) {
-      setImportError('Invalid blueprint string or empty design!');
+      setImportError('蓝图字符串无效或设计为空！');
       return;
     }
 
@@ -416,7 +416,7 @@ export const BlueprintPlanner = () => {
     });
 
     if (safeGrid.length === 0) {
-      setImportError('No valid tiles found in blueprint!');
+      setImportError('蓝图中没有有效的地块！');
       return;
     }
 
@@ -482,29 +482,29 @@ export const BlueprintPlanner = () => {
   }, [buildableTypes, selectedCategory, searchText]);
 
   const floorNames = [
-    '1st Floor (Ground)',
-    totalFloors === 2 ? '2nd Floor / Roof' : '2nd Floor',
-    totalFloors === 3 ? '3rd Floor / Roof' : '3rd Floor',
-    '4th Floor / Roof',
+    '一层（地面）',
+    totalFloors === 2 ? '二层 / 屋顶' : '二层',
+    totalFloors === 3 ? '三层 / 屋顶' : '三层',
+    '四层 / 屋顶',
   ];
 
   const currentGridDimension = `${gridRadius * 2 + 1}x${gridRadius * 2 + 1}`;
 
   return (
-    <Window title="Architectural Blueprint Planner" width={1100} height={720}>
+    <Window title="Architectural Blueprint Planner" display_title="建筑蓝图规划器" width={1100} height={720}>
       {isPublishModalOpen && (
         <Modal>
           <Section title="Save to Persistent Library">
             <Stack vertical>
               <Stack.Item mb={1}>
-                Enter a title for this blueprint. It will be saved permanently across rounds. (Limit: {mySavedCount}/3 blueprints).
+                为这份蓝图输入名称。蓝图将永久保存，可跨回合使用。（已用额度：{mySavedCount}/3份蓝图）。
               </Stack.Item>
               <Stack.Item mb={1.5}>
                 <Input
                   key="modal_save_input"
                   fluid
                   autoFocus
-                  placeholder="e.g., Cozy Tavern, Stone Outpost..."
+                  placeholder="例如：温馨酒馆、石制哨站……"
                   value={publishName}
                   onChange={(val: string) => setPublishName(val)}
                   onEnter={handlePublishToLibrary}
@@ -519,14 +519,14 @@ export const BlueprintPlanner = () => {
                       setPublishName('');
                     }}
                   >
-                    Cancel
+                    取消
                   </Button>
                   <Button
                     color="good"
                     disabled={!publishName.trim() || mySavedCount >= 3}
                     onClick={handlePublishToLibrary}
                   >
-                    Save Blueprint
+                    保存蓝图
                   </Button>
                 </Stack>
               </Stack.Item>
@@ -540,14 +540,14 @@ export const BlueprintPlanner = () => {
           <Section title="Paste Blueprint String">
             <Stack vertical>
               <Stack.Item mb={1}>
-                Paste your blueprint string (starts with <b>BP:...</b>) to import it directly into your editor:
+                粘贴蓝图字符串（以<b>BP:...</b>开头），即可直接导入编辑器：
               </Stack.Item>
               <Stack.Item mb={1.5}>
                 <Input
                   key="modal_import_input"
                   fluid
                   autoFocus
-                  placeholder="Paste BP:... code here"
+                  placeholder="在此粘贴BP:...代码"
                   value={importString}
                   onChange={(val: string) => {
                     setImportString(val);
@@ -571,14 +571,14 @@ export const BlueprintPlanner = () => {
                       setImportError('');
                     }}
                   >
-                    Cancel
+                    取消
                   </Button>
                   <Button
                     color="good"
                     disabled={!importString.trim()}
                     onClick={handleImportBlueprintString}
                   >
-                    Load into Editor
+                    载入编辑器
                   </Button>
                 </Stack>
               </Stack.Item>
@@ -598,14 +598,14 @@ export const BlueprintPlanner = () => {
                     onClick={() => setActiveView('editor')}
                     icon="pencil-alt"
                   >
-                    Blueprint Editor
+                    蓝图编辑器
                   </Tabs.Tab>
                   <Tabs.Tab
                     selected={activeView === 'library'}
                     onClick={() => setActiveView('library')}
                     icon="book"
                   >
-                    Blueprint Library ({libraryBlueprints.length})
+                    蓝图库（{libraryBlueprints.length}）
                   </Tabs.Tab>
                 </Tabs>
               </Stack.Item>
@@ -618,7 +618,7 @@ export const BlueprintPlanner = () => {
                       disabled={grid.length === 0}
                       onClick={handleCopyBlueprintString}
                     >
-                      {isCopied ? 'Copied!' : 'Copy Blueprint'}
+                      {isCopied ? '已复制！' : '复制蓝图'}
                     </Button>
 
                     <Button
@@ -630,7 +630,7 @@ export const BlueprintPlanner = () => {
                         setIsImportModalOpen(true);
                       }}
                     >
-                      Paste Blueprint
+                      粘贴蓝图
                     </Button>
 
                     <Button
@@ -639,7 +639,7 @@ export const BlueprintPlanner = () => {
                       disabled={grid.length === 0}
                       onClick={() => setIsPublishModalOpen(true)}
                     >
-                      Save to Library ({mySavedCount}/3)
+                      保存至蓝图库（{mySavedCount}/3）
                     </Button>
                   </Stack>
                 </Stack.Item>
@@ -652,7 +652,7 @@ export const BlueprintPlanner = () => {
               <Section title={`Permanent Blueprints Catalog (${mySavedCount}/3 used by you)`}>
                 {libraryBlueprints.length === 0 ? (
                   <Box color="gray" textAlign="center" mt={4}>
-                    {'No blueprints saved in the library yet. Build one in the Editor and click "Save to Library"!'}
+                    {'蓝图库中尚无蓝图。在编辑器中绘制蓝图，再点击“保存至蓝图库”吧！'}
                   </Box>
                 ) : (
                   <Stack vertical>
@@ -676,7 +676,7 @@ export const BlueprintPlanner = () => {
                                     {bp.name}
                                   </Box>
                                   <Box ml={1.5} color="#8a8a8a" fontSize="0.85em">
-                                    by <span style={{ color: '#bbb' }}>{bp.author_name}</span> • <span style={{ color: '#d4af37' }}>{bp.max_floors} fl.</span>
+                                    作者：<span style={{ color: '#bbb' }}>{bp.author_name}</span> • <span style={{ color: '#d4af37' }}>{bp.max_floors}层</span>
                                   </Box>
                                 </Stack>
                               </Stack.Item>
@@ -687,7 +687,7 @@ export const BlueprintPlanner = () => {
                                     color="good"
                                     onClick={() => handleLoadBlueprint(bp)}
                                   >
-                                    Load into Editor
+                                    载入编辑器
                                   </Button>
                                   {isAuthor && (
                                     <Button
@@ -695,7 +695,7 @@ export const BlueprintPlanner = () => {
                                       color="danger"
                                       onClick={() => handleDeletePublished(bp.id)}
                                     >
-                                      Delete
+                                      删除
                                     </Button>
                                   )}
                                 </Stack>
@@ -714,10 +714,10 @@ export const BlueprintPlanner = () => {
                               <Stack.Item grow>
                                 <Box fontSize="0.9em" style={{ lineHeight: '1.4em' }}>
                                   <Box bold color="#aaa" mb={0.5}>
-                                    Required Resources:
+                                    所需材料：
                                   </Box>
                                   <Box color="#d2d2d2" style={{ wordBreak: 'break-word' }}>
-                                    {bp.reqs_summary || 'None'}
+                                    {bp.reqs_summary || '无'}
                                   </Box>
                                 </Box>
                               </Stack.Item>
@@ -742,7 +742,7 @@ export const BlueprintPlanner = () => {
                         <Input
                           key="search_input"
                           fluid
-                          placeholder="Search structure..."
+                          placeholder="搜索建筑构件……"
                           value={searchText}
                           onChange={(val: string) => setSearchText(val)}
                         />
@@ -757,7 +757,7 @@ export const BlueprintPlanner = () => {
                               onClick={() => setSelectedCategory(cat)}
                               style={{ fontSize: '0.85em', padding: '3px 6px' }}
                             >
-                              {cat}
+                              {({ All: '全部', 'Floors & Pathways': '地板与道路', 'Walls & Roofs': '墙体与屋顶', 'Windows & Glass': '窗户与玻璃', 'Doors & Stairs': '门与楼梯', Furniture: '家具', Storage: '储物', 'Heating & Lighting': '供暖与照明', 'Crafting & Machinery': '制作与机械', 'Religion & Statues': '宗教与雕像', 'Defense & Traps': '防御与陷阱' } as Record<string, string>)[cat] || cat}
                             </Button>
                           ))}
                         </Box>
@@ -771,13 +771,13 @@ export const BlueprintPlanner = () => {
                               selected={selectedBrush === null}
                               onClick={() => setSelectedBrush(null)}
                             >
-                              Eraser
+                              橡皮擦
                             </Button>
                           </Stack.Item>
                           <Stack.Item>
                             <Stack align="center">
                               <Box fontSize="0.85em" color="gray" mr={0.5}>
-                                Dir:
+                                朝向：
                               </Box>
                               <Button
                                 icon="arrow-up"
@@ -874,17 +874,17 @@ export const BlueprintPlanner = () => {
                     buttons={
                       <Stack align="center">
                         <Button color="blue" icon="satellite-dish" onClick={handleScan}>
-                          Scan Area
+                          扫描区域
                         </Button>
                         <Button
                           color={confirmClear ? 'bad' : 'danger'}
                           icon="trash"
                           onClick={handleClear}
                         >
-                          {confirmClear ? 'Confirm Clear?' : 'Clear'}
+                          {confirmClear ? '确认清空？' : '清空'}
                         </Button>
                         <Button color="good" icon="save" onClick={saveDesign}>
-                          Finish Blueprint
+                          完成蓝图
                         </Button>
                       </Stack>
                     }
@@ -909,7 +909,7 @@ export const BlueprintPlanner = () => {
                           <Stack.Item ml={2}>
                             <Stack align="center">
                               <Box fontSize="0.85em" color="gray" mr={0.5}>
-                                Grid:
+                                网格：
                               </Box>
                               <Button
                                 disabled={gridRadius <= 1}
@@ -937,7 +937,7 @@ export const BlueprintPlanner = () => {
                               </Box>
 
                               <Box fontSize="0.85em" color="gray" mr={0.5}>
-                                Floors:
+                                层数：
                               </Box>
                               <Button
                                 disabled={totalFloors <= 2}

@@ -308,9 +308,9 @@
 
 
 /obj/effect/proc_holder/spell/invoked/resurrect/matthios
-	name = "Rekindled Exchange"
-	desc = "Revives the target by invoking a deal with Matthios. In exchange for their lyfe returned, they will be placed\
-	in a lasting debt to Him. Any coins within their hands will be spent paying off said debt. Blood for gold."
+	name = "复生之契"
+	desc = "与马西奥斯立下契约，使目标复生。作为重获生命的代价，他们将\
+	长期背负对祂的债务。手中的任何钱币都会被用于偿还债务。以血换金。"
 	debuff_type = /datum/status_effect/debuff/debt_indicator
 	alt_required_items = list()
 	required_items = list()
@@ -367,7 +367,7 @@
 	if(total_real_value > debt_remaining)
 		var/refund_budget = total_real_value - debt_remaining
 		refund_budget = max(0, floor(refund_budget))
-		to_chat(human, span_warning("A golden hand claims [coin] and manifest the remainder."))
+		to_chat(human, span_warning("一只金色的手收走了[coin]，并返还了余款。"))
 
 		qdel(coin)
 		// We need a delay to stop the old coin pile from merging with the refund prematurely. Delay one tick :D
@@ -382,22 +382,22 @@
 
 	else
 		debt_remaining -= total_real_value
-		to_chat(human, span_warning("As you grasp [coin], [total_real_value] worth of debt vanishes. Remaining: [debt_remaining]."))
+		to_chat(human, span_warning("当你握住[coin]时，价值[total_real_value]的债务随之消失。剩余债务：[debt_remaining]。"))
 		playsound(human, 'sound/foley/coins1.ogg', 50, TRUE)
 		qdel(coin)
 		if(debt_remaining <= 0)
 			clear_debt(human)
 
 /datum/component/debt_collector/proc/clear_debt(mob/living/carbon/human/human)
-	to_chat(human, span_nicegreen("The weight of your debt has lifted!"))
+	to_chat(human, span_nicegreen("你终于卸下了债务的重担！"))
 	human.remove_status_effect(/datum/status_effect/debuff/debt_indicator)
 	qdel(src)
 
 #undef NOBLE_MULTIPLIER
 
 /atom/movable/screen/alert/status_effect/debuff/debt_indicator
-	name = "Indentured Spirit"
-	desc = "A spiritual debt weighs heavy on your soul, sapping your vitality. Standard coins you touch are consumed to appease Matthios."
+	name = "负债之魂"
+	desc = "灵魂的债务沉重地压在你身上，消磨着你的活力。你触碰的通用钱币会被收走，用以平息马西奥斯的索求。"
 	icon_state = "pom_regret"
 
 /atom/movable/screen/alert/status_effect/debuff/debt_indicator/examine_ui(mob/user)
@@ -409,7 +409,7 @@
 	// Find the component to show the live debt count
 	var/datum/component/debt_collector/DC = user.GetComponent(/datum/component/debt_collector)
 	if(DC)
-		inspec += "<br><span class='boldwarning'>Current Debt: [DC.debt_remaining] mammon.</span>"
+		inspec += "<br><span class='boldwarning'>当前债务：[DC.debt_remaining]玛蒙。</span>"
 
 	// Stat penalties logic from the base proc
 	for(var/S in attached_effect?.effectedstats)
@@ -436,8 +436,8 @@
 /datum/status_effect/debuff/debt_indicator/on_apply()
 	. = ..()
 	owner.AddComponent(/datum/component/debt_collector, 200)
-	to_chat(owner, span_userdanger("A cold, crushing weight settles over your limbs... you are indentured."))
+	to_chat(owner, span_userdanger("冰冷而沉重的压力笼罩你的四肢……你已背上债务。"))
 
 /datum/status_effect/debuff/debt_indicator/on_remove()
 	. = ..()
-	to_chat(owner, span_nicegreen("The crushing weight lifts from your soul. You are free!"))
+	to_chat(owner, span_nicegreen("压在你灵魂上的重担消散了。你自由了！"))
