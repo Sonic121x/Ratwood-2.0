@@ -17,12 +17,16 @@
 	var/mixed_cost = FALSE
 	var/next_blood_repair = 0
 	var/datum/weakref/bound_mind_ref
+	var/draw_fatigue_timer
+	var/datum/weakref/draw_intent_ref
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/Initialize(mapload)
 	. = ..()
 	add_filter("z121_magic_bow", 2, list("type" = "outline", "color" = Z121_MAGIC_ARCHERY_GLOW, "alpha" = 150, "size" = 1))
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/clear_magic_arrow()
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/clear_magic_arrow(stop_drawing = TRUE)
+	if(stop_drawing)
+		stop_draw_fatigue()
 	var/list/arrows = get_ammo_list(TRUE, TRUE)
 	for(var/obj/item/ammo_casing/arrow as anything in arrows)
 		qdel(arrow)
@@ -184,7 +188,8 @@
 		arrow.element = arrow_element
 		arrow.configuration = "[configuration_text()]；已支付[cost_text()]"
 		arrow.icon_state = arrow_tier == 3 ? "blacksteelarrow" : (arrow_tier == 2 ? "ironarrow" : "arrow")
-	clear_magic_arrow()
+	// 凝聚穿心箭替换旧箭时，已开始的拉弓仍然需要消耗耐力。
+	clear_magic_arrow(FALSE)
 	// 原版弓在射击前从内部箭仓取出弹药，因此同时登记已搭箭与箭仓。
 	magazine.stored_ammo += arrow
 	chambered = arrow
@@ -221,6 +226,72 @@
 	if(!. && !QDELETED(arrow) && chambered == arrow)
 		magazine.stored_ammo |= arrow
 
+// 原版疲劳接口同时扣除能量；魔弓按原版满弓节奏单独结算耐力。
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/start_draw_fatigue(datum/intent/draw_intent)
+	stop_draw_fatigue()
+	draw_intent_ref = WEAKREF(draw_intent)
+	draw_fatigue_timer = addtimer(CALLBACK(src, PROC_REF(process_draw_fatigue)), SSmousecharge.wait, TIMER_LOOP | TIMER_STOPPABLE)
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/stop_draw_fatigue()
+	if(draw_fatigue_timer)
+		deltimer(draw_fatigue_timer)
+		draw_fatigue_timer = null
+	draw_intent_ref = null
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/process_draw_fatigue()
+	var/datum/intent/draw_intent = draw_intent_ref?.resolve()
+	var/mob/living/user = draw_intent?.mastermob
+	if(QDELETED(user) || !user.client?.charging || user.used_intent != draw_intent || user.get_active_held_item() != src || !chambered)
+		stop_draw_fatigue()
+		return
+	// 与普通弓一致，只在蓄力完成后持续消耗耐力，未满弓时不收费。
+	if(!user.client.doneset || HAS_TRAIT(user, TRAIT_INFINITE_STAMINA))
+		return
+	var/datum/intent/bow_template = istype(draw_intent, /datum/intent/arc/bow) ? /datum/intent/arc/bow : /datum/intent/shoot/bow
+	var/added = initial(bow_template.chargedrain)
+	if(HAS_TRAIT(user, TRAIT_FORTITUDE))
+		added *= 0.7
+	if(user.bodytemperature > BODYTEMP_HEAT_LEVEL_ONE_MAX && added >= 1)
+		added = round(added * 1.5, 1)
+	var/previous_stamina = user.stamina
+	user.stamina = CLAMP(user.stamina + added, 0, user.max_stamina)
+	user.adjust_nutrition(-user.stamina_nutrition_mod(added))
+	// 保留普通疲劳的阶段提示，实际力竭处理仍交给原版接口。
+	if(ishuman(user) && user.mind)
+		var/mob/living/carbon/human/human_user = user
+		var/fatigue_text
+		var/y_offset
+		var/stamratio = user.stamina / user.max_stamina
+		var/previous_ratio = previous_stamina / user.max_stamina
+		if(stamratio >= 0.25 && previous_ratio < 0.25)
+			fatigue_text = "<font color = '#a8af9b'>Winded</font>"
+			y_offset = BALLOON_Y_OFFSET_TIER1
+		if(stamratio >= 0.5 && previous_ratio < 0.5)
+			fatigue_text = "<font color = '#d4d36c'>Drained</font>"
+			y_offset = BALLOON_Y_OFFSET_TIER2
+		if(stamratio >= 0.75 && previous_ratio < 0.75)
+			fatigue_text = "<font color = '#a8665a'>Fatigued</font>"
+			y_offset = BALLOON_Y_OFFSET_TIER3
+		if(fatigue_text)
+			if(!HAS_TRAIT(human_user, TRAIT_DECEIVING_MEEKNESS))
+				human_user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, fatigue_text, 20, y_offset)
+			else if(prob(10))
+				human_user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, "<i>Tired...?</i>", 20, y_offset)
+	// 传入零只刷新耐力界面、恢复延迟并处理力竭，不会扣除能量。
+	if(!user.stamina_add(0))
+		user.stop_attack()
+		stop_draw_fatigue()
+
+// 凝箭只付费一次，维持满弓的耐力由魔弓独立结算。
+/datum/intent/shoot/bow/z121_magic
+	chargedrain = 0
+
+/datum/intent/shoot/bow/z121_magic/on_charge_start()
+	. = ..()
+	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = masteritem
+	if(istype(bow))
+		bow.start_draw_fatigue(src)
+
 /datum/intent/shoot/bow/z121_magic/can_charge(atom/clicked_object)
 	// 原版鼠标入口没有把点击对象传给蓄力检查，须取回本次按下的对象。
 	if(!clicked_object)
@@ -232,6 +303,16 @@
 		return FALSE
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = masteritem
 	return istype(bow) && bow.nock_magic_arrow(mastermob)
+
+// 弧射同样分开结算凝箭能量与满弓耐力。
+/datum/intent/arc/bow/z121_magic
+	chargedrain = 0
+
+/datum/intent/arc/bow/z121_magic/on_charge_start()
+	. = ..()
+	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = masteritem
+	if(istype(bow))
+		bow.start_draw_fatigue(src)
 
 /datum/intent/arc/bow/z121_magic/can_charge(atom/clicked_object)
 	// 弧射同样要排除自用菜单与界面点击，不在调整模式时生成普通箭。

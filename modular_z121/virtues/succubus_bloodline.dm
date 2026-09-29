@@ -167,7 +167,7 @@
 // 关键安全做法（为什么先 ..()）：先执行原版内射逻辑，确保即便本钩子后续出错，
 //   也不会破坏引擎原有的性结算流程；本钩子的附加逻辑全部包在防御式判断里。
 // ----------------------------------------------------------------------------
-/datum/sex_controller/cum_into(oral = FALSE, mob/living/carbon/human/splashed_user = null, datum/sex_action/knot_action = null, knot_swap_roles = FALSE, mob/living/carbon/human/knot_btm = null, orifice = SEX_PART_NULL, skip_knot_try = FALSE, consume_charge = TRUE)
+/datum/sex_controller/cum_into(oral = FALSE, mob/living/carbon/human/splashed_user = null, datum/sex_action/knot_action = null, knot_swap_roles = FALSE, mob/living/carbon/human/knot_btm = null, orifice = SEX_PART_NULL, skip_knot_try = FALSE, consume_charge = TRUE, source_part = SEX_PART_NULL)
 	. = ..()                                                                   // 先执行原版内射结算，绝不破坏既有行为。
 
 	// 为什么取 splashed_user||target：与原版 effective_target 取法一致，
