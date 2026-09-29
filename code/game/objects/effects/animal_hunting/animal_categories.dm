@@ -1,5 +1,5 @@
 /datum/hunting_category
-	var/name = "Generic"
+	var/name = "普通猎物"
 	/// List of animal type paths associated with their relative weights: list(/mob/path = 10)
 	var/list/animals = list()
 	/// Weight of this category being picked based on skill level (0 to 6)
@@ -12,7 +12,7 @@
 	var/bonus_animal_amount = 1
 
 /datum/hunting_category/low_tier
-	name = "Small Game"
+	name = "小型猎物"
 	skill_weights = list(100, 80, 50, 20, 10, 5, 5) // Common for beginners, rare for experts
 	bonus_animal_amount = 8
 	animals = list(
@@ -53,7 +53,7 @@
 	)
 
 /datum/hunting_category/mid_tier
-	name = "Forest Denizens"
+	name = "林中生灵"
 	skill_weights = list(10, 40, 100, 80, 50, 30, 10)
 	bonus_animal_amount = 5
 	animals = list(
@@ -85,7 +85,7 @@
 	)
 
 /datum/hunting_category/high_tier
-	name = "Great Beasts"
+	name = "巨兽"
 	skill_weights = list(0, 5, 20, 50, 100, 120, 150) // Only highly skilled hunters find these
 	bonus_animal_amount = 8
 	animals = list(
@@ -126,7 +126,7 @@
 	)
 
 /datum/hunting_category/cursed
-	name = "Undead Signs"
+	name = "亡灵踪迹"
 	skill_weights = list(50, 30, 20, 15, 15, 10, 10) // Low static chance
 	bonus_animal_amount = 10
 	animals = list(
@@ -149,7 +149,7 @@
 	)
 
 /datum/hunting_category/spiders
-	name = "Common Arachnids"
+	name = "常见蛛类"
 	skill_weights = list(30, 30, 30, 25, 20, 10, 5)
 	bonus_animal_amount = 3
 	animals = list(
@@ -177,7 +177,7 @@
 	)
 
 /datum/hunting_category/mire_spiders
-	name = "Mire Dwellers"
+	name = "沼泽生物"
 	skill_weights = list(30, 30, 30, 25, 25, 20, 20)
 	bonus_animal_amount = 6
 	animals = list(
@@ -212,7 +212,7 @@
 
 /datum/hunting_category/white_stag
 	// Named the same as to make it impossible to tell when a stag is there.
-	name = "Great Beasts"
+	name = "巨兽"
 	// May become even rarer down the line.
 	skill_weights = list(1, 1, 1, 1, 1, 1, 2) // Stumbling into this aimlessly is nigh-impossible
 	bonus_animal_amount = 0 // Hahahhaa No.
@@ -225,7 +225,7 @@
 	preferred_areas = list()
 
 /datum/hunting_category/boars
-	name = "Fierce Boars"
+	name = "凶猛野猪"
 	skill_weights = list(1, 1, 1, 1, 1, 1, 1)
 	bonus_animal_amount = 10
 	animals = list(
