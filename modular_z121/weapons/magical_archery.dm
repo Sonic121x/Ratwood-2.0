@@ -221,6 +221,10 @@
 	if(!. && !QDELETED(arrow) && chambered == arrow)
 		magazine.stored_ammo |= arrow
 
+// 魔矢在凝聚时一次付费，不能继承普通弓通过疲劳接口产生的持续能量消耗。
+/datum/intent/shoot/bow/z121_magic
+	chargedrain = 0
+
 /datum/intent/shoot/bow/z121_magic/can_charge(atom/clicked_object)
 	// 原版鼠标入口没有把点击对象传给蓄力检查，须取回本次按下的对象。
 	if(!clicked_object)
@@ -232,6 +236,10 @@
 		return FALSE
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = masteritem
 	return istype(bow) && bow.nock_magic_arrow(mastermob)
+
+// 弧射同样只收取凝箭费用，保持拉弓不额外扣除能量。
+/datum/intent/arc/bow/z121_magic
+	chargedrain = 0
 
 /datum/intent/arc/bow/z121_magic/can_charge(atom/clicked_object)
 	// 弧射同样要排除自用菜单与界面点击，不在调整模式时生成普通箭。
