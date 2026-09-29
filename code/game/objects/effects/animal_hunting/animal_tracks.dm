@@ -1,6 +1,6 @@
 /obj/effect/hunting_track
-	name = "disturbed earth"
-	desc = "A mound of dirt and broken twigs. Something passed through here recently."
+	name = "翻动过的土堆"
+	desc = "一堆泥土与折断的细枝。最近有什么东西从这里经过。"
 	icon = 'icons/obj/flora/animaltracks.dmi'
 	icon_state = "hidden"
 	anchored = TRUE
@@ -44,11 +44,11 @@
 
 /obj/effect/hunting_track/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Interact with a fresh, dark-brown mound to start a hunt.")
-	. += span_info("Follow the direction of each lighter track; only the hunting party can see the next mound.")
-	. += span_info("Hunting maps improve the odds of finding specific creatures, while hunting skill improves quarry quality and shortens trails.")
-	. += span_info("Right-click your eye to locate the nearest visible track you are following.")
-	. += span_info("A spade or shovel can clear a mound, but doing so triggers the same cooldown as starting a hunt.")
+	. += span_info("与新鲜的深褐色土堆互动，即可开始狩猎。")
+	. += span_info("沿着每处浅色踪迹指示的方向前进；只有狩猎队成员能看见下一个土堆。")
+	. += span_info("狩猎地图可提高找到特定生物的概率，狩猎技能则能提升猎物品质并缩短追踪路线。")
+	. += span_info("右键点击眼睛图标，可定位你正在追踪的最近可见踪迹。")
+	. += span_info("铲子可以清除土堆，但会触发与开始狩猎相同的冷却时间。")
 
 /obj/effect/hunting_track/attackby(obj/item/item, mob/user, params)
 	if(item.tool_behaviour != TOOL_SHOVEL)
@@ -59,15 +59,15 @@
 		blocker = user.AddComponent(/datum/component/hunting_blocker)
 
 	if(!blocker.can_start_hunt())
-		to_chat(user, span_notice("You've recently disturbed a trail; it wouldn't be wise to demolish another so soon."))
+		to_chat(user, span_notice("你刚刚扰动过一条踪迹；这么快又破坏另一处可不明智。"))
 		return TRUE
 
 	user.visible_message(
-		span_notice("[user] begins digging up [src]..."),
-		span_notice("You begin digging up [src]...")
+		span_notice("[user]开始挖掘[src]..."),
+		span_notice("你开始挖掘[src]...")
 	)
 	if(item.use_tool(src, user, 2 SECONDS, volume = 50))
-		to_chat(user, span_notice("You flatten and dig away the disturbed mound of earth."))
+		to_chat(user, span_notice("你铲平并清除了这堆翻动过的泥土。"))
 		blocker.register_hunt()
 		qdel(src)
 	return TRUE
@@ -75,25 +75,25 @@
 /obj/effect/hunting_track/examine(mob/user)
 	. = ..()
 	if(trail_depth > 0)
-		. += span_notice("You are tracking this track.")
+		. += span_notice("你正在追踪这条踪迹。")
 	if(track_dir)
-		var/dir_text = dir2text(track_dir)
-		. += span_notice("The tracks seem to be heading <b>[dir_text]</b>.")
+		var/dir_text = list("north" = "北方", "south" = "南方", "east" = "东方", "west" = "西方", "northeast" = "东北方", "southeast" = "东南方", "northwest" = "西北方", "southwest" = "西南方")[dir2text(track_dir)]
+		. += span_notice("这些踪迹似乎通向<b>[dir_text]</b>。")
 	var/skill = user.get_skill_level(/datum/skill/misc/hunting)
 	if(skill < 4)
 		return
 
 	// Skill 4+ identifies the category
 	if(hunt_category)
-		. += span_notice("You identify these signs as belonging to <b>[hunt_category.name]</b>.")
+		. += span_notice("你认出这些是<b>[hunt_category.name]</b>留下的痕迹。")
 
 	// Skill 5+ shows area efficiency
 	if(skill >= 5)
 		var/area/current_area = get_area(src)
 		var/bonus = hunt_category?.preferred_areas[current_area.type]
 		if(bonus)
-			. += "<br><details><summary><span class='nicegreen'>Environmental Analysis</span></summary>"
-			. += span_info("The local terrain ([current_area.name]) increases discovery chances by <b>[bonus]%</b>.")
+			. += "<br><details><summary><span class='nicegreen'>环境分析</span></summary>"
+			. += span_info("当地地形（[current_area.name]）使发现概率提高了<b>[bonus]%</b>。")
 			. += "</details>"
 
 /obj/effect/hunting_track/attack_right(mob/user)
@@ -102,7 +102,7 @@
 
 	var/skill = user.get_skill_level(/datum/skill/misc/hunting)
 	if(skill < 4)
-		to_chat(user, span_warning("You aren't skilled enough to influence the trail."))
+		to_chat(user, span_warning("你的技能尚不足以决定追踪哪类猎物。"))
 		return
 
 	var/area/current_area = get_area(src)
@@ -115,15 +115,15 @@
 			valid_cats[category.name] = category
 
 	if(!valid_cats.len)
-		to_chat(user, span_warning("The local environment doesn't favor any specific prey enough to track."))
+		to_chat(user, span_warning("当地环境并没有特别适合追踪的某类猎物。"))
 		return
 
-	var/selection = tgui_input_list(user, "Choose a focus for this hunt:", "Hunting Focus", valid_cats)
+	var/selection = tgui_input_list(user, "选择本次狩猎的主要目标：", "狩猎目标", valid_cats)
 	if(!selection)
 		return
 
 	preferred_hunt = valid_cats[selection]
-	to_chat(user, span_nicegreen("You focus your senses on tracking [selection]."))
+	to_chat(user, span_nicegreen("你集中感官，开始追踪[selection]。"))
 
 /obj/effect/hunting_track/Initialize(mapload)
 	. = ..()
@@ -167,11 +167,11 @@
 			return
 
 	if(get_dist(user, src) < 1)
-		to_chat(user, span_warning("You are standing too close to see where the trail leads. Step back."))
+		to_chat(user, span_warning("你站得太近，看不清踪迹的去向。往后退一点。"))
 		return
 
 	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, span_info("You begin analyzing the signs..."))
+	to_chat(user, span_info("你开始分析这些痕迹..."))
 
 	// Interaction time
 	if(!do_after(user, get_hunting_do_time(user, 4 SECONDS), target = src))
@@ -181,7 +181,7 @@
 		return
 
 	if(uncover_trail(user))
-		to_chat(user, span_nicegreen("The trail continues further ahead!"))
+		to_chat(user, span_nicegreen("踪迹继续向前延伸！"))
 		distribute_party_exp(6)
 		track_revealed = TRUE
 		fade_and_die(user)
@@ -189,7 +189,7 @@
 			var/datum/component/hunting_blocker/blocker = user.GetComponent(/datum/component/hunting_blocker)
 			blocker?.register_hunt()
 	else
-		to_chat(user, span_warning("The trail seems to disappear into the brush here."))
+		to_chat(user, span_warning("踪迹似乎在这里消失于灌木丛中。"))
 
 /obj/effect/hunting_track/proc/uncover_trail(mob/living/user)
 	var/skill = process_party_and_get_skill()
@@ -248,13 +248,13 @@
 
 				// Spawn Animal if depth reached
 				if(trail_depth >= max_trail_depth)
-					to_chat(user, span_boldwarning("You see your quarry in the distance faintly!"))
+					to_chat(user, span_boldwarning("你隐约看见远处的猎物！"))
 					var/mob/living/example_animal = target_animal_type
 					var/chosen_rot = initial(example_animal.rot_type) ? /datum/component/rot/simple/hunt : null
 					new /obj/effect/temp_visual/hunting_phantom(next_turf, target_animal_type, chosen_rot)
 					var/bonus_spawned = spawn_group_bonus_animals(next_turf, target_animal_type)
 					if(bonus_spawned)
-						visible_message(span_boldwarning("There seems to be a herd in the distance!"))
+						visible_message(span_boldwarning("远处似乎有一群野兽！"))
 					distribute_party_exp(35 + (15 * bonus_spawned))
 					return TRUE
 
@@ -297,7 +297,7 @@
 	hunter_ref = WEAKREF(best_hunter)
 
 	if(potential_party.len > 1)
-		to_chat(potential_party, "<b>Group Hunt started!</b> [best_hunter.name] is leading the tracks. There are [party_refs.len] hunters participating.")
+		to_chat(potential_party, "<b>集体狩猎开始！</b>由[best_hunter.name]领队追踪，共有[party_refs.len]名猎人参与。")
 
 /obj/effect/hunting_track/proc/process_party_and_get_skill()
 	var/highest_skill = 0
@@ -350,8 +350,8 @@
 	invisibility = 0
 	plane = GAME_PLANE
 	icon_state = locked_track_icon
-	name = "[icon_state] tracks"
-	desc = "Fresh prints leading away into the wilderness."
+	name = "[list("cervine" = "鹿类", "small" = "小型动物", "ursine" = "熊类", "canine" = "犬类", "suidae" = "猪类")[icon_state]]踪迹"
+	desc = "通向荒野的新鲜足迹。"
 	color = null
 
 	// Calculate rotation

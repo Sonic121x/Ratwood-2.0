@@ -84,9 +84,9 @@
 				beltr = /obj/item/quiver/arrows
 
 		var/sidearms = list("大砍刀", "手斧")
-		var/sidearm_choice = input(H, "选择你的武器。", "拿起武器") as anything in sidearms
+		var/sidearm_choice = input(H, "选择你的副武器。", "拿起武器") as anything in sidearms
 		switch(sidearm_choice)
-			if("M大砍刀")
+			if("大砍刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/short/messer/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
