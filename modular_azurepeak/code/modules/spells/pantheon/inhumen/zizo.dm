@@ -586,8 +586,8 @@
 				qdel(I)
 
 /obj/effect/proc_holder/spell/invoked/raise_spirits_vengeance
-	name = "Avenging Spirits"
-	desc = "Summon three spiteful skulls in Zizo's name to harry a chosen foe."
+	name = "复仇怨灵"
+	desc = "以齐佐之名召唤三颗满怀怨恨的颅骨，袭扰选定的敌人。"
 	range = 7
 	sound = list('sound/magic/magnet.ogg')
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
@@ -607,7 +607,7 @@
 	overlay_state = "spirits"
 	action_icon_state = "spirits"
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
-	invocations = list("Woe to the restless who spite Her name!")
+	invocations = list("诋毁她名讳的躁动之徒，灾祸将临！")
 	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/raise_spirits_vengeance/cast(list/targets, mob/living/user)
@@ -630,8 +630,8 @@
 
 
 /obj/effect/proc_holder/spell/invoked/raise_spirit_respite
-	name = "Summon Avatar"
-	desc = "Call forth a towering skeletal aspect of Zizo, granting your foe the only respite she permits."
+	name = "召唤化身"
+	desc = "召来齐佐高耸的骸骨化身，赐予敌人她所允许的唯一安息。"
 	range = 7
 	sound = list('sound/magic/necra_sight.ogg')
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
@@ -670,16 +670,16 @@
 
 
 /obj/effect/proc_holder/spell/invoked/silence/miracle/zizo
-	name = "Profane Silence"
-	desc = "Fill their throat with profane silence - ensure neither mage-nor-man shall interrupt you, be it invocation or insult."
+	name = "亵渎缄默"
+	desc = "以亵渎的寂静封住他们的喉咙——无论法师还是凡人，都无法再以咒语或辱骂打断你。"
 	overlay_state = "silencezizo"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "silencezizo"
 
 /obj/effect/proc_holder/spell/invoked/cascade
-	name = "Flensing Cataclysm"
-	desc = "Woe to the despairing in the face of Ambition. Unleash a cascade of unholy devotion upon the unbeliever - the more devotion they've consumed, the stronger the effect."
+	name = "剥皮浩劫"
+	desc = "在野心面前绝望者，灾祸将临。向不信者倾泻亵渎的信仰洪流——他们消耗的虔诚越多，效果就越强。"
 	range = 7
 	sound = list('sound/magic/churn.ogg')
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
@@ -711,7 +711,7 @@
 	var/mob/living/carbon/human/target = targets[1]
 
 	if(user.z != target.z)
-		to_chat(user, span_warning("Zizo demands that progress be witnessed on the same level."))
+		to_chat(user, span_warning("齐佐要求你与目标身处同一楼层，见证进步。"))
 		revert_cast()
 		return FALSE
 
@@ -721,35 +721,35 @@
 	var/maximum_devotion = target_devotion?.max_devotion
 
 	if(!isnum(current_devotion) || maximum_devotion <= 0)
-		to_chat(user, span_warning("[target] has no devotion for Zizo to measure."))
+		to_chat(user, span_warning("[target]没有可供齐佐衡量的虔诚。"))
 		revert_cast()
 		return FALSE
 
 	var/missing_devotion = maximum_devotion - current_devotion
 
 	if(missing_devotion <= 10)
-		to_chat(user, span_warning("[target]'s faith is not weakened enough to yield."))
+		to_chat(user, span_warning("[target]的信仰尚未衰弱到足以屈服。"))
 		revert_cast()
 		return FALSE
 
 	if(missing_devotion <= 250)
-		user.say("Yield to the Pale Damsel!")
-		target.visible_message(span_danger("[target] is seared by Zizo's cascade!"), span_userdanger("My weakened faith burns under the weight of dark ambition!"))
+		user.say("向苍白少女屈服！")
+		target.visible_message(span_danger("[target]遭到齐佐的洪流灼烧！"), span_userdanger("我衰弱的信仰在黑暗野心的重压下燃烧！"))
 		target.adjustFireLoss(30)
 		playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
 		return TRUE
 
 	if(missing_devotion <= 500)
-		user.say("Falter in the face of TRUE FAITH!")
-		target.visible_message(span_danger("[target] is burned by Zizo's cascade!"), span_userdanger("My devotion falters under searing aspiration!"))
+		user.say("在真正的信仰面前动摇吧！")
+		target.visible_message(span_danger("[target]被齐佐的洪流烧灼！"), span_userdanger("我的虔诚在灼热的野望下动摇！"))
 		target.adjustFireLoss(60)
 		target.adjust_fire_stacks(5, /datum/status_effect/fire_handler/fire_stacks/divine)
 		playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
 		return TRUE
 
 	if(missing_devotion <= 600)
-		user.say("PALE IN THE PATH OF MY DAMSEL'S PROGRESS!!")
-		target.visible_message(span_danger("[target] staggers as Zizo's cascade strikes them!"), span_userdanger("My faith buckles, a burning pain engulfing me!"))
+		user.say("在我的女士开辟的进步之路前黯然失色吧！！")
+		target.visible_message(span_danger("[target]遭到齐佐的洪流冲击，踉跄不稳！"), span_userdanger("我的信仰摇摇欲坠，灼烧的剧痛将我吞没！"))
 		target.adjustFireLoss(80)
 		target.adjust_fire_stacks(7, /datum/status_effect/fire_handler/fire_stacks/divine)
 		target.Stun(20)
@@ -757,8 +757,8 @@
 		return TRUE
 
 	if(missing_devotion <= 750)
-		user.say("KNEEL! KNEEL AND WEEP FOR MY LADY!!")
-		target.visible_message(span_danger("[target] is consumed by a cascading, unholy force!"), span_userdanger("My devotion is weakened as a looming, burning darkness fills the gap!"))
+		user.say("跪下！跪下，为我的女士哭泣！！")
+		target.visible_message(span_danger("[target]被倾泻而下的亵渎之力吞没！"), span_userdanger("我的虔诚正在衰退，逼近的灼热黑暗填满了空缺！"))
 		target.adjustFireLoss(100)
 		target.adjust_fire_stacks(9, /datum/status_effect/fire_handler/fire_stacks/divine)
 		target.Stun(20)
@@ -768,8 +768,8 @@
 		return TRUE
 
 	if(missing_devotion <= 800) //something bad happens
-		user.say("YOUR GOD'S FAITH ENDS HERE!!")
-		target.visible_message(span_danger("[target] is wreathed in Zizo's cascading flame!"), span_userdanger("MY SOUL IS NEARLY BURNT ASUNDER - WHERE HAS MY PATRON GONE? IT HURTS."))
+		user.say("你对神的信仰到此为止了！！")
+		target.visible_message(span_danger("[target]被齐佐倾泻的烈焰包裹！"), span_userdanger("我的灵魂几乎被烧得四分五裂——我的守护神去了哪里？好痛。"))
 		target.adjustFireLoss(120)
 		target.adjust_fire_stacks(9, /datum/status_effect/fire_handler/fire_stacks/divine)
 		target.ignite_mob()
@@ -779,8 +779,8 @@
 		return TRUE
 
 	if(missing_devotion <= 900) //NOTE - THIS IS NOT A CHURN WEALTHY INSTAKILL MOVE. YOU CAN REASONABLY SURVIVE THIS WITH PEOPLE AROUND. 
-		user.say("ZIZO!! ZIZO!! ZIZO!!")
-		target.visible_message(span_danger("[target] begins to SMOLDER AND SCREAM - THE SCENT IS THICK IN FAITHLESS PETRICHOR."), span_userdanger("I CAN ENDVRE NO LONGER - I BRIEFLY LOSE GRIP UPON THE FIRMAMENT OF MY FAITH - A GRAND MISTAKE. THE FINAL SIGHT UPON MYNE VISION IS A PALE FIGURE, ENCROACHING THE APPROACHING DARKNESS. SHE SMILES. I BURN INTO NAUGHT BUT BLOOD AND BONE."))
+		user.say("齐佐！！齐佐！！齐佐！！")
+		target.visible_message(span_danger("[target]开始焦燃并惨叫——空气中弥漫着不信者如雨后泥土般的浓重气息。"), span_userdanger("我再也无法忍受——我曾有片刻未能守住信仰的根基——那是何等大错。我最后看见的，是一个苍白的身影，步入逼近的黑暗。她微笑着。我被烧得只剩鲜血与白骨。"))
 		target.Stun(60)
 		target.emote("agony")
 		target.adjustFireLoss(140)
@@ -792,8 +792,8 @@
 		return TRUE
 
 	else //NOTE - THIS IS IMPOSSIBLE TO ACTUALLY ACHIEVE UNLESS YOU VAREDIT THEIR MAX DEVOTION ABOVE 1000. 
-		user.say("ZIZO BLAST!!") //hilarious
-		target.visible_message(span_danger("[target] begins to SMOLDER AND SCREAM - THE SCENT IS THICK IN FAITHLESS PETRICHOR."), span_userdanger("I CAN ENDVRE NO LONGER - I BRIEFLY LOSE GRIP UPON THE FIRMAMENT OF MY FAITH - A GRAND MISTAKE. THE FINAL SIGHT UPON MYNE VISION IS A PALE FIGURE, ENCROACHING THE APPROACHING DARKNESS. SHE SMILES. I BURN INTO NAUGHT BUT BLOOD AND BONE."))
+		user.say("齐佐冲击！！") //hilarious
+		target.visible_message(span_danger("[target]开始焦燃并惨叫——空气中弥漫着不信者如雨后泥土般的浓重气息。"), span_userdanger("我再也无法忍受——我曾有片刻未能守住信仰的根基——那是何等大错。我最后看见的，是一个苍白的身影，步入逼近的黑暗。她微笑着。我被烧得只剩鲜血与白骨。"))
 		target.Stun(80)
 		target.emote("agony")
 		target.adjustFireLoss(160)
