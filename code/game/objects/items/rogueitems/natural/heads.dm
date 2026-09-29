@@ -54,8 +54,8 @@
 	sellprice = 20
 
 /obj/item/natural/head/boar
-	name = "boar head"
-	desc = "The head of a terrifying brambleboar."
+	name = "野猪头"
+	desc = "一头可怕的荆棘獠猪的头颅。"
 	icon_state = "boarhead"
 	layer = 3.1
 	// More than other animals that drop a significant amount. Boars are harder to kill and more dangerous.

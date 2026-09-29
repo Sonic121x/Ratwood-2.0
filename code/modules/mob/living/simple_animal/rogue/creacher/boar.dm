@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/boar
 	icon = 'icons/roguetown/mob/monster/boar.dmi'
-	name = "bramblesnout"
-	desc = "The ever terrifying bramblesnout. Not just large, but its many tusks hook into flesh to create grievous wounds. Being charged is a surefire way to perish. It is a hulking mass of muscle, yet still nimble. Oft hunted in pairs, with at least one hunter getting their stomach gouged..."
+	name = "荆棘獠猪"
+	desc = "令人闻风丧胆的荆棘獠猪。不仅体型庞大，众多獠牙还会钩入血肉，造成严重创伤。遭它冲撞几乎必死无疑。它浑身肌肉、硕大如山，却依然敏捷。猎人往往结伴猎杀它，可即便如此，通常仍有至少一人被挑破肚皮..."
 	icon_state = "boar"
 	icon_living = "boar"
 	icon_dead = "boar_dead"
@@ -147,7 +147,7 @@
 
 /datum/intent/simple/claw/boar
 	clickcd = BOAR_ATTACK_SPEED
-	name = "tusks"
-	attack_verb = list("gores", "impales", "eviscerates")
+	name = "獠牙"
+	attack_verb = list("顶刺", "刺穿", "剖开")
 	penfactor = 50
 	blade_class = BCLASS_STAB
