@@ -441,8 +441,8 @@
 // --- Restore variant ---
 
 /atom/movable/screen/alert/status_effect/buff/obelisk_power
-	name = "Invigorated"
-	desc = "The obelisk replenishes my energy."
+	name = "活力焕发"
+	desc = "方尖碑正在恢复我的精力。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/energy_shift/obelisk_power
@@ -455,8 +455,8 @@
 // --- Drain variant ---
 
 /atom/movable/screen/alert/status_effect/debuff/leyline_drain
-	name = "Drained"
-	desc = "The obelisk pulls energy from my body."
+	name = "精力流失"
+	desc = "方尖碑正在抽取我体内的能量。"
 	icon_state = "leyline_drain"
 
 /datum/status_effect/buff/energy_shift/leyline_drain
