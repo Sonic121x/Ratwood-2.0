@@ -513,18 +513,24 @@
 				))
 		else
 			var/list/catalog = get_catalog_for_tab(current_tab)
+			var/static/list/material_group_names = list("金属锭", "宝石", "普通材料", "炼金材料", "奥术材料")
 			for(var/display in catalog)
 				index++
 				var/list/entry = catalog[display]
 				var/obj/item/item_type = entry[2]
-				rows += list(list(
+				var/list/row = list(
 					"id" = index,
 					"name" = display,
 					"description" = html_decode(GLOB.html_tags.Replace(initial(item_type.desc), "")),
 					"cost" = entry[1],
 					"action" = "buy_item",
 					"max_quantity" = current_tab == "material" ? RPG_SYSTEM_MATERIAL_MAX_QUANTITY : 1,
-				))
+				)
+				if(current_tab == "material")
+					var/group_order = z121_rpg_material_group(item_type)
+					row["group_order"] = group_order
+					row["group"] = material_group_names[group_order]
+				rows += list(row)
 			if(current_tab == "magic")
 				rows.Insert(1, list(list(
 					"id" = 0,
@@ -534,6 +540,8 @@
 					"action" = "buy_spell_point",
 					"blocked_reason" = host.mind ? null : "意识尚不稳定",
 				)))
+	// 材料先分组，再按实际单价升序；其他页面按价格排序，始终保留原目录编号。
+	sortTim(rows, GLOBAL_PROC_REF(cmp_rpg_shop_cost))
 	for(var/list/row in rows)
 		if(!row["blocked_reason"] && points < row["cost"])
 			row["blocked_reason"] = "积分不足"
@@ -730,6 +738,18 @@
 
 /datum/component/rpg_system/proc/get_material_catalog()
 	return z121_rpg_material_catalog()
+
+// 分组仅用于展示，不改变目录编号、售价及批量兑换记录。
+/proc/z121_rpg_material_group(item_path)
+	if(ispath(item_path, /obj/item/ingot))
+		return 1
+	if(ispath(item_path, /obj/item/roguegem))
+		return 2
+	if(ispath(item_path, /obj/item/alch))
+		return 4
+	if(ispath(item_path, /obj/item/magic) || ispath(item_path, /obj/item/reagent_containers/food/snacks/grown/manabloom))
+		return 5
+	return 3
 
 /proc/z121_rpg_material_catalog()
 	// 基础材料先按普通材料倍率定价，加工品引用这些最终单价。
@@ -1171,6 +1191,7 @@
 		"骑术"     = /datum/skill/misc/riding,
 		"音乐"     = /datum/skill/misc/music,
 		"追踪"     = /datum/skill/misc/tracking,
+		"狩猎"     = /datum/skill/misc/hunting,
 		// —— 劳作：采集 / 生产 ——
 		"耕作"     = /datum/skill/labor/farming,
 		"采矿"     = /datum/skill/labor/mining,
@@ -1313,6 +1334,8 @@
 			list("trait" = TRAIT_SMITHING_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_SEWING_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_SURVIVAL_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_EXPERT_HUNTER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
+			list("trait" = TRAIT_MASTERFUL_HUNTER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_HOMESTEAD_EXPERT, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_SELF_SUSTENANCE, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
 			list("trait" = TRAIT_FUSILIER, "cost" = RPG_SYSTEM_TRAIT_COST, "tier" = "普通"),
@@ -1386,6 +1409,8 @@
 		)
 		// 使用中文显示名覆盖底层英文键。
 		var/list/names = list(
+			TRAIT_EXPERT_HUNTER = "狩猎专家",
+			TRAIT_MASTERFUL_HUNTER = "狩猎大师",
 			TRAIT_EFFICIENT_WEAVER = "高效织工",
 			TRAIT_FORTITUDE = "坚毅",
 			TRAIT_GUIDANCE = "指引",
@@ -1393,6 +1418,8 @@
 		// 商店说明按实际效果补充条件，避免直接沿用角色背景描述。
 		// 部分全局说明登记在宏定义之前，键名并非实际特性值，需在此显式补齐。
 		var/list/descriptions = list(
+			TRAIT_EXPERT_HUNTER = "允许将狩猎自然训练至专家（4级）；不直接提高当前技能等级，已有更高训练上限时不会降低上限。",
+			TRAIT_MASTERFUL_HUNTER = "允许将狩猎自然训练至传奇（6级）；不直接提高当前技能等级，无需先拥有狩猎专家。",
 			TRAIT_HOLYWARRIOR = "身处圣地区域时，力量、感知、智力、体质、意志、速度与幸运各提高2点；离开圣地后失效。",
 			TRAIT_BASHDOORS = "可撞击破坏上锁的门，也能直接敲击损坏窗户；仍需造成足够伤害才能破坏。",
 			TRAIT_REGROW_LIMBS = "睡眠时可再生缺失的手臂或腿。每条肢体要求营养高于250，并消耗250营养；不能再生头部或器官。",
@@ -1437,10 +1464,18 @@
 			var/description = GLOB.roguetraits[trait]
 			entry["description"] = descriptions[trait] ? descriptions[trait] : (description ? html_decode(GLOB.html_tags.Replace(description, "")) : "获得此特性，保留其原有生效条件。")
 		// 首次初始化时按价格稳定排序，同价保留原序；展示与结算共用排序后的编号。
-		sortTim(catalog, GLOBAL_PROC_REF(cmp_rpg_trait_cost))
+		sortTim(catalog, GLOBAL_PROC_REF(cmp_rpg_shop_cost))
 	return catalog
 
-/proc/cmp_rpg_trait_cost(list/first, list/second)
+/proc/cmp_rpg_shop_cost(list/first, list/second)
+	// 材料按金属锭、宝石、普通材料、炼金材料、奥术材料排列，组内再比较单价。
+	if(first["group_order"] != second["group_order"])
+		return first["group_order"] - second["group_order"]
+	// 满级项目已无可兑换价格，放在可强化项目之后；同价保持原有相对顺序。
+	var/first_at_limit = first["blocked_reason"] == "已满级"
+	var/second_at_limit = second["blocked_reason"] == "已满级"
+	if(first_at_limit != second_at_limit)
+		return first_at_limit - second_at_limit
 	return first["cost"] - second["cost"]
 
 /datum/component/rpg_system/proc/do_buy_trait(mob/living/carbon/human/user, index)
