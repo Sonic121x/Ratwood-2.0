@@ -492,8 +492,8 @@
 	duration = 20 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/blackvitae
-	name = "Bloodrot"
-	desc = span_bloody("BLACKENED ROT SEEPS INTO MY WOUNDS! IT HURTS, IT HURTS, IT HURTS, IT HURTS!!")
+	name = "血腐"
+	desc = span_bloody("漆黑的腐败渗进了我的伤口！好痛，好痛，好痛，好痛！！")
 	icon_state = "ritesexpended"
 
 /datum/status_effect/debuff/blackvitae/on_apply()
@@ -529,8 +529,8 @@
 	status_type = STATUS_EFFECT_REFRESH
 
 /atom/movable/screen/alert/status_effect/debuff/dazed/longsword
-	name = "CAN'T FUCKING BREATHE"
-	desc = "How HOW THE FUCK DID THEY DO THAT?! MY EARS RING, MY BREATHING IS HEAVY."
+	name = "他妈的喘不过气了"
+	desc = "怎么，他们他妈的怎么做到的？！我的耳朵嗡嗡作响，呼吸沉重。"
 	icon_state = "mstrike"
 
 /datum/status_effect/debuff/dazed/longsword2h
@@ -541,8 +541,8 @@
 	status_type = STATUS_EFFECT_REFRESH
 
 /atom/movable/screen/alert/status_effect/debuff/dazed/longsword2h
-	name = "CAN'T FUCKING SEE"
-	desc = "HOW THE FUCK DID THEY DO THAT?! MY EYE!!"
+	name = "他妈的看不见了"
+	desc = "他们他妈的怎么做到的？！我的眼睛！！"
 	icon_state = "mstrike"
 
 /datum/status_effect/debuff/dazed/freisabre
@@ -553,8 +553,8 @@
 	status_type = STATUS_EFFECT_REFRESH
 
 /atom/movable/screen/alert/status_effect/debuff/dazed/freisabre
-	name = "Master Strike"
-	desc = "How the fuck did they do that!? My wrist!"
+	name = "大师一击"
+	desc = "他们他妈的怎么做到的！？我的手腕！"
 	icon_state = "mstrike"
 
 /datum/status_effect/debuff/dazed/swipe
@@ -565,8 +565,8 @@
 	status_type = STATUS_EFFECT_REFRESH
 
 /atom/movable/screen/alert/status_effect/debuff/dazed/swipe
-	name = "Clinched and Swiped!"
-	desc = "Urgh! My face! My grip is weakened!"
+	name = "缠抱掌击！"
+	desc = "呃！我的脸！我快握不住了！"
 	icon_state = "swiped"
 
 
@@ -1342,11 +1342,11 @@
 /datum/status_effect/debuff/stinky_contact/on_apply()
 	. = ..()
 	if(scent_type == "Pleasant")
-		to_chat(owner, span_notice("I share someone else's pleasant scent now!"))
+		to_chat(owner, span_notice("我身上也沾上了别人的宜人香气！"))
 	else if(scent_type == "Neutral")
-		to_chat(owner, span_notice("I stink of someone else now..."))
+		to_chat(owner, span_notice("我身上沾上了别人的气味……"))
 	else
-		to_chat(owner, span_warning("I reek of someone else's stench now...ew..."))
+		to_chat(owner, span_warning("我身上沾满了别人的恶臭……呕……"))
 	process_inherited_scent(TRUE)
 
 /datum/status_effect/debuff/stinky_contact/tick()
@@ -1371,7 +1371,7 @@
 	redolent_stink_aura(H, scent_type)
 
 /datum/status_effect/debuff/stinky_contact/on_remove()
-	to_chat(owner, span_notice("The lingering scent finally fades off me."))
+	to_chat(owner, span_notice("我身上残留的气味终于散去了。"))
 	if(!HAS_TRAIT(owner, TRAIT_REDOLENT))
 		owner.remove_status_effect(/datum/status_effect/debuff/redolent_stink)
 	return ..()
@@ -1380,8 +1380,8 @@
 	return redolent_examine_text(scent_type, scent)
 
 /atom/movable/screen/alert/status_effect/debuff/stinky_contact
-	name = "Musked"
-	desc = "Someone's stench rubbed off on me. I should be able to wash it off, or wait it out."
+	name = "气味沾染"
+	desc = "我身上沾上了别人的臭味。我应该能把它洗掉，或者等它自行散去。"
 	icon_state = "debuff"
 
 /datum/status_effect/debuff/enchantmenttriggered
@@ -1395,8 +1395,8 @@
 	return ..()
 	
 /atom/movable/screen/alert/status_effect/debuff/enchantmenttriggered
-	name = "Enchantment Dormant"
-	desc = "The Enchantments you wear have activated and are temporarily Dormant!"
+	name = "附魔休眠"
+	desc = "我身上装备的附魔已被触发，暂时进入休眠状态！"
 	icon_state = "dazed"
 
 
