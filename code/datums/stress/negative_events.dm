@@ -57,12 +57,12 @@
 /datum/stressevent/prominent_scent
 	timer = 1 MINUTES
 	stressadd = 1
-	desc = span_red("There's a prominent scent in the air.")
+	desc = span_red("空气中弥漫着一股浓烈的气味。")
 
 /datum/stressevent/herald_progress_music
 	timer = 2 MINUTES
 	stressadd = 5
-	desc = span_boldred("This music makes me feel hollow. Something is terribly wrong.")
+	desc = span_boldred("这音乐让我感到内心空洞。有什么很不对劲。")
 
 /datum/stressevent/peckish
 	timer = 10 MINUTES
@@ -431,7 +431,7 @@
 
 /datum/stressevent/syoncalamity
 	stressadd = 15
-	desc = span_boldred("以 Psydon 之名，伟大彗星的碎片已经不复存在！我们接下来该怎么办？！")
+	desc = span_boldred("以普赛顿之名，伟大彗星的碎片已经不复存在！我们接下来该怎么办？！")
 	timer = 15 MINUTES
 
 /datum/stressevent/hithead
