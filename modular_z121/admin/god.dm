@@ -62,13 +62,13 @@
 
 	if(already_god)
 		to_chat(src, span_notice("Reapplied the God trait to [target] and restored all stats and skills to their divine maximum."))
-		to_chat(target, span_notice("Divine power floods through me once more. My God trait restores my stats and skills to perfection."))
+		to_chat(target, span_notice("神力再次涌入我的体内。神明特性让我的属性与技能重归完美。"))
 		log_admin("[key_name(usr)] reapplied the God trait to [key_name(target)] and restored all stats and skills to their maximum.")
 		message_admins(span_adminnotice("[key_name_admin(usr)] reapplied the God trait to [key_name_admin(target)] and restored all stats and skills to their maximum."))
 		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has reapplied the God trait to you and restored all stats and skills to their maximum.</font>")
 	else
 		to_chat(src, span_notice("Granted the God trait to [target]. Their stats are now 20 and all skills are capped and set to 6."))
-		to_chat(target, span_notice("I have been granted the God trait. My stats are now perfect, and all my skills are legendary."))
+		to_chat(target, span_notice("我获得了神明特性。我的属性已臻完美，所有技能都已达到传奇境界。"))
 		log_admin("[key_name(usr)] granted the God trait to [key_name(target)], setting all stats to 20 and all skill caps and levels to 6.")
 		message_admins(span_adminnotice("[key_name_admin(usr)] granted the God trait to [key_name_admin(target)], setting all stats to 20 and all skill caps and levels to 6."))
 		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has granted you the God trait, setting all stats to 20 and all skill caps and levels to 6.</font>")

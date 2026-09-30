@@ -66,7 +66,7 @@
 
 	var/spell_summary = english_list(granted_names)
 	to_chat(src, span_notice("Granted [spell_summary] to [target]."))
-	to_chat(target, span_notice("You have been granted [spell_summary]."))
+	to_chat(target, span_notice("你获得了以下法术：[spell_summary]。"))
 
 	log_admin("[key_name(usr)] granted the admin spell package ([spell_summary]) to [key_name(target)].")
 	var/msg = span_adminnotice("[key_name_admin(usr)] granted the admin spell package ([spell_summary]) to [key_name_admin(target)].")
@@ -109,7 +109,7 @@
 
 	var/spell_summary = english_list(removed_names)
 	to_chat(src, span_notice("Removed [spell_summary] from [target]."))
-	to_chat(target, span_notice("[spell_summary] have been removed from you."))
+	to_chat(target, span_notice("你失去了以下法术：[spell_summary]。"))
 
 	log_admin("[key_name(usr)] removed the admin spell package ([spell_summary]) from [key_name(target)].")
 	var/msg = span_adminnotice("[key_name_admin(usr)] removed the admin spell package ([spell_summary]) from [key_name_admin(target)].")

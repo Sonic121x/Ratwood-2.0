@@ -26,7 +26,7 @@
 		return FALSE
 
 	if(force && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm other living beings!"))
+		to_chat(user, span_warning("我不想伤害其他生灵！"))
 		return
 
 	M.lastattacker = user.real_name
@@ -90,7 +90,7 @@
 	if(bad_guard)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			H.bad_guard(span_suicide("I switched stances too quickly! It drains me!"), cheesy = TRUE)
+			H.bad_guard(span_suicide("我切换架势太快了！这让我疲惫不堪！"), cheesy = TRUE)
 
 	if(user.mob_biotypes & MOB_UNDEAD)
 		if(M.has_status_effect(/datum/status_effect/buff/necras_vow))
@@ -99,7 +99,7 @@
 				user.ignite_mob()
 			else
 				if(prob(30))
-					to_chat(M, span_warning("The foul blessing of the Undermaiden hurts us!"))
+					to_chat(M, span_warning("冥下侍女的邪恶赐福伤害了我们！"))
 			user.adjust_blurriness(3)
 			user.adjustBruteLoss(5)
 			user.apply_status_effect(/datum/status_effect/churned, M)
@@ -110,7 +110,7 @@
 				user.ignite_mob()
 			else
 				if(prob(30))
-					to_chat(M, span_warning("Some matter of force harms us!"))
+					to_chat(M, span_warning("某种力量伤害了我们！"))
 			user.adjust_blurriness(2)
 			user.adjustBruteLoss(rand(10, 15))
 
@@ -135,8 +135,8 @@
 				M.throw_item(get_step(M,turn(M.dir, 90)), offhand = offh)
 			else
 				M.dropItemToGround(W)
-			M.visible_message(span_notice("[user] disarms [M]!"), \
-							span_boldwarning("I'm disarmed by [user]!"))
+			M.visible_message(span_notice("[user]缴了[M]的械！"), \
+							span_boldwarning("我被[user]缴械了！"))
 			return
 
 	if(user.zone_selected == BODY_ZONE_PRECISE_L_INHAND)
@@ -147,8 +147,8 @@
 				M.throw_item(get_step(M,turn(M.dir, 270)), offhand = offh)
 			else
 				M.dropItemToGround(W)
-			M.visible_message(span_notice("[user] disarms [M]!"), \
-							span_boldwarning("I'm disarmed by [user]!"))
+			M.visible_message(span_notice("[user]缴了[M]的械！"), \
+							span_boldwarning("我被[user]缴械了！"))
 			return
 
 	if(z121_highwayman_hit(M, user))
@@ -178,7 +178,7 @@
 	affecting = get_bodypart(check_zone(useder))
 
 	if(!affecting)
-		to_chat(user, span_warning("Unfortunately, there's nothing there."))
+		to_chat(user, span_warning("可惜，那里什么也没有。"))
 		return 0
 
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
@@ -194,11 +194,11 @@
 /datum/species/proc/z121_highwayman_spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H, selzone)
 
 	if(user != H && !I.z121_highwayman_cut_ready(user))
-		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
+		if(H.check_shields(I, I.force, "[I.name]", MELEE_ATTACK, I.armor_penetration))
 			return 0
 	if(!I.z121_highwayman_cut_ready(user) && H.check_block())
-		H.visible_message(span_warning("[H] blocks [I]!"), \
-						span_danger("I block [I]!"))
+		H.visible_message(span_warning("[H]挡住了[I]！"), \
+						span_danger("我挡住了[I]！"))
 		return 0
 
 	SEND_SIGNAL(H, COMSIG_SPECIES_ATTACKED_BY)
@@ -271,7 +271,7 @@
 		var/text = "[bodyzone2readablezone(selzone)]..."
 		if(HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS))
 			if(prob(10))
-				text = "<i>I can't tell...</i>"
+				text = "<i>我看不清……</i>"
 				user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
 		else
 			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
@@ -287,7 +287,7 @@
 		H.next_attack_msg.Cut()
 		if(!apply_damage(Iforce * weakness, I.damtype, def_zone, armor_block, H))
 			nodmg = TRUE
-			H.next_attack_msg += " <span class='warning'>The armor yet remains...</span>"
+			H.next_attack_msg += " <span class='warning'>护甲仍然完好……</span>"
 			if(I)
 				I.remove_bintegrity(1)
 				I.take_damage(1, BRUTE, I.d_type)
@@ -295,7 +295,7 @@
 				if(user.used_intent.blunt_chipping)
 					var/blunt_chip_block = H.run_armor_check(selzone, "blunt", armor_penetration = 80)
 					H.apply_damage(Iforce * user.used_intent.blunt_chip_strength, BRUTE, def_zone, blunt_chip_block)
-					H.next_attack_msg += " <span class='warning'>and yet the force punches through!</span>"
+					H.next_attack_msg += " <span class='warning'>但冲击力仍然穿透了护甲！</span>"
 		I.z121_highwayman_landed(user, H, selzone)
 		if(!nodmg)
 			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE, weapon = I, armor_penetration = pen)
@@ -310,13 +310,13 @@
 					H.emote("embed")
 					H.Stun(10)
 					playsound(H.loc, "genblunt", 100, FALSE, -1)
-					user.visible_message(span_notice("[user] embeds [I] within [H]'s [affecting.name]!"), span_notice("I embed my [I] in [H]'s [affecting.name]."))
+					user.visible_message(span_notice("[user]将[I]嵌入了[H]的[affecting.name]！"), span_notice("我将[I]嵌入了[H]的[affecting.name]。"))
 					var/list/targets = list(H)
 					if(do_after_mob(user,targets, 10, progress = 0, uninterruptible = 1, required_mobility_flags = null))
 						affecting.receive_damage(I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class)
 						H.emote("paincrit", forced = TRUE)
 						playsound(H, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
-						user.visible_message(span_notice("[user] rips [I] out of [H]'s [affecting.name]!"), span_notice("I rip [I] from [H]'s [affecting.name]."))
+						user.visible_message(span_notice("[user]从[H]的[affecting.name]中拔出了[I]！"), span_notice("我从[H]的[affecting.name]中拔出了[I]。"))
 			I.do_special_attack_effect(user, affecting, intent, H, selzone)
 
 	I.funny_attack_effects(H, user, nodmg)
@@ -398,7 +398,7 @@
 			next_attack_msg.Cut()
 			if(armor > 0)
 				nodmg = TRUE
-				next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
+				next_attack_msg += " <span class='warning'>护甲挡住了伤害。</span>"
 			apply_damage(newforce, I.damtype, hitlim, armor)
 			I.z121_highwayman_landed(user, src, user.zone_selected)
 			I.remove_bintegrity(1)
@@ -572,9 +572,9 @@
 		defender_dualw = TRUE
 
 	if(client?.prefs.showrolls)
-		var/text = "Roll to parry... [prob2defend]%"
+		var/text = "招架判定……[prob2defend]%"
 		if(defender_dualw)
-			text += " Twice! Disadvantage! ([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
+			text += " 两次判定！处于劣势！([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
 		to_chat(src, span_info("[text]"))
 
 	var/parry_status = FALSE
@@ -590,12 +590,12 @@
 			if(intenty.masteritem.wbalance < WBALANCE_NORMAL && attacker.STASTR > STASTR)
 				stamina_drained = stamina_drained + ( intenty.masteritem.wbalance * ((attacker.STASTR - STASTR) * (-2)) )
 	else
-		to_chat(src, span_warning("The enemy defeated my parry!"))
+		to_chat(src, span_warning("敌人突破了我的招架！"))
 		if(HAS_TRAIT(src, TRAIT_MAGEARMOR))
 			if(magearmor == 0)
 				magearmor = 1
 				apply_status_effect(/datum/status_effect/buff/magearmor)
-				to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+				to_chat(src, span_boldwarning("我的法师护甲吸收了这一击，随之消散！"))
 				return TRUE
 			else
 				return FALSE
@@ -603,7 +603,7 @@
 			if(scalearmor == 0)
 				scalearmor = 1
 				apply_status_effect(/datum/status_effect/buff/scalearmor)
-				to_chat(src, span_boldwarning("My scales absorb the hit and dissipate the force!"))
+				to_chat(src, span_boldwarning("我的鳞片承受了这一击，化解了冲击力！"))
 				return TRUE
 			else
 				return FALSE
@@ -680,7 +680,7 @@
 			var/text = "[bodyzone2readablezone(attacker.zone_selected)]..."
 			if(HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS))
 				if(prob(10))
-					text = "<i>Somewhere...</i>"
+					text = "<i>某个部位……</i>"
 					attacker.balloon_alert(src, text)
 			else
 				attacker.balloon_alert(src, text)
@@ -738,7 +738,7 @@
 	if(!human_dodger)
 		prob2defend = clamp(prob2defend + 20, 5, 90)
 		if(client?.prefs.showrolls)
-			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
+			to_chat(src, span_info("闪避判定……[prob2defend]%"))
 		if(!prob(prob2defend))
 			return FALSE
 
@@ -803,21 +803,21 @@
 
 		var/attacker_feedback
 		if(attacker.client?.prefs.showrolls && (attacker_dualw || defender_dualw))
-			attacker_feedback = "Attacking with advantage. ([100 - ((prob2defend / 100) * (prob2defend / 100) * 100)]%)"
+			attacker_feedback = "攻击时处于优势。([100 - ((prob2defend / 100) * (prob2defend / 100) * 100)]%)"
 
 		if(client?.prefs.showrolls)
-			var/text = "Roll to dodge... [prob2defend]%"
+			var/text = "闪避判定……[prob2defend]%"
 			if((defender_dualw || attacker_dualw))
 				if(defender_dualw && attacker_dualw)
-					text += " Our dual wielding cancels out!"
+					text += " 双方的双持优势相互抵消了！"
 				else
-					text += " Twice! Disadvantage! ([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
+					text += " 两次判定！处于劣势！([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
 			to_chat(src, span_info("[text]"))
 
 		var/dodge_status = FALSE
 		if((!defender_dualw && !attacker_dualw) || (defender_dualw && attacker_dualw))
 			if(attacker_feedback)
-				attacker_feedback = "Advantage cancelled out!"
+				attacker_feedback = "优势被抵消了！"
 			if(prob(prob2defend))
 				dodge_status = TRUE
 		else if(attacker_dualw)
@@ -835,7 +835,7 @@
 		if(!attacker?.mind)
 			drained = drained_npc
 		if(!human_dodger.stamina_add(max(drained,5)))
-			to_chat(src, span_warning("I'm too tired to dodge!"))
+			to_chat(src, span_warning("我太累了，无法闪避！"))
 			return FALSE
 
 	if(client)
@@ -844,9 +844,9 @@
 	playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
 
 	if(drained > 0)
-		visible_message(span_warning("<b>[src]</b> dodges [attacker]'s attack!"))
+		visible_message(span_warning("<b>[src]</b>躲过了[attacker]的攻击！"))
 	else
-		visible_message(span_warning("<b>[src]</b> easily dodges [attacker]'s attack!"))
+		visible_message(span_warning("<b>[src]</b>轻松躲过了[attacker]的攻击！"))
 	if(get_dist(src, attacker) <= attacker.used_intent?.reach)
 		var/probclip = 50
 		var/obj/item/IS = get_active_held_item()
@@ -872,14 +872,14 @@
 			IS.take_damage(intdam, BRUTE, IU.d_type)
 			IS.remove_bintegrity(sharp_loss, src)
 
-			attacker.visible_message(span_warning("<b>[attacker]</b> clips [src]'s weapon!"))
+			attacker.visible_message(span_warning("<b>[attacker]</b>擦中了[src]的武器！"))
 			playsound(attacker, 'sound/misc/weapon_clip.ogg', 100)
 
 	if(mind && attacker.mind && HAS_TRAIT(src, TRAIT_COMBAT_AWARE))
 		var/text = "[bodyzone2readablezone(attacker.zone_selected)]..."
 		if(HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS))
 			if(prob(10))
-				text = "<i>Can't tell...</i>"
+				text = "<i>看不清……</i>"
 				attacker.balloon_alert(src, text)
 		else
 			attacker.balloon_alert(src, text)
@@ -889,12 +889,12 @@
 // 徒手流程保持原样，仅在前摇完成后为反击标记本次伤害来源。
 /datum/species/proc/z121_highwayman_counter_harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm [target]!"))
+		to_chat(user, span_warning("我不想伤害[target]！"))
 		return FALSE
 	if(target.check_block())
-		target.visible_message(span_warning("[target] blocks [user]'s attack!"), \
-						span_danger("I block [user]'s attack!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("My attack at [target] was blocked!"))
+		target.visible_message(span_warning("[target]挡住了[user]的攻击！"), \
+						span_danger("我挡住了[user]的攻击！"), span_hear("我听到一阵破空声！"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("我对[target]的攻击被挡住了！"))
 		return FALSE
 	if(attacker_style && attacker_style.harm_act(user,target))
 		return TRUE
@@ -924,7 +924,7 @@
 					user.ignite_mob()
 				else
 					if(prob(30))
-						to_chat(user, span_warning("The foul blessing of the Undermaiden hurts us!"))
+						to_chat(user, span_warning("冥下侍女的邪恶赐福伤害了我们！"))
 				user.adjust_blurriness(2)
 				user.adjustBruteLoss(rand(5, 10))
 				user.apply_status_effect(/datum/status_effect/churned, target)
@@ -936,7 +936,7 @@
 					user.ignite_mob()
 				else
 					if(prob(30))
-						to_chat(user, span_warning("Some matter of force harms us!"))
+						to_chat(user, span_warning("某种力量伤害了我们！"))
 				user.adjust_blurriness(2)
 				user.adjustBruteLoss(rand(10, 15))
 
@@ -945,7 +945,7 @@
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 
 		if(!affecting)
-			to_chat(user, span_warning("Unfortunately, there's nothing there."))
+			to_chat(user, span_warning("可惜，那里什么也没有。"))
 			return 0
 
 		if(!target.lying_attack_check(user))
@@ -968,7 +968,7 @@
 
 		if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
 			nodmg = TRUE
-			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
+			target.next_attack_msg += " <span class='warning'>护甲挡住了伤害。</span>"
 		else
 			affecting.bodypart_attacked_by(user.used_intent.blade_class, damage, user, selzone, crit_message = TRUE)
 			SEND_SIGNAL(target, COMSIG_ATOM_ATTACK_HAND, user)
@@ -988,14 +988,14 @@
 				if(prob(probability) && affecting.dismember())
 					playsound(get_turf(target), "desecration", 80, TRUE)
 
-		var/message_verb = "punched"
+		var/message_verb = "拳击了"
 		if(user.used_intent)
 			message_verb = "[pick(user.used_intent.attack_verb)]"
 		var/message_hit_area = ""
 		if(selzone)
-			message_hit_area = " in the [span_userdanger(parse_zone(selzone, affecting))]"
+			message_hit_area = "的[span_userdanger(parse_zone(selzone, affecting))]"
 		var/attack_message = "[user] [message_verb] [target][message_hit_area]!"
-		var/attack_message_local = "[user] [message_verb] me[message_hit_area]!"
+		var/attack_message_local = "[user] [message_verb] 我[message_hit_area]!"
 		target.visible_message(span_danger("[attack_message][target.next_attack_msg.Join()]"),\
 			span_danger("[attack_message_local][target.next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 		target.next_attack_msg.Cut()

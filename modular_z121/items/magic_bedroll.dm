@@ -32,7 +32,7 @@
 	QDEL_IN(src, remaining_duration)
 
 /obj/structure/bed/rogue/bedroll/magic/attack_hand(mob/user, params)
-	user.visible_message(span_notice("[user] begins rolling up \the [src]."))
+	user.visible_message(span_notice("[user]开始卷起\the [src]。"))
 	if(do_after(user, 2 SECONDS, TRUE, src))
 		var/obj/item/bedroll/magic/new_bedroll = new /obj/item/bedroll/magic(get_turf(src))
 		new_bedroll.color = src.color
@@ -71,16 +71,16 @@
 /obj/item/bedroll/magic/attack_self(mob/user, params)
 	var/turf/T = get_turf(loc)
 	if(!isfloorturf(T))
-		to_chat(user, span_warning("I need ground to plant this on!"))
+		to_chat(user, span_warning("我得在地面上铺开它！"))
 		return
 	for(var/obj/A in T)
 		if(istype(A, /obj/structure))
-			to_chat(user, span_warning("I need some free space to deploy a [src] here!"))
+			to_chat(user, span_warning("我需要足够的空地才能在这里铺开[src]！"))
 			return
 		if(A.density && !(A.flags_1 & ON_BORDER_1))
-			to_chat(user, span_warning("There is already something here!</span>"))
+			to_chat(user, span_warning("这里已经有东西了！</span>"))
 			return
-	user.visible_message(span_notice("[user] begins placing \the [src] down on the ground."))
+	user.visible_message(span_notice("[user]开始将\the [src]铺在地上。"))
 	if(do_after(user, 2 SECONDS, TRUE, src))
 		var/obj/structure/bed/rogue/bedroll/magic/new_bedroll = new /obj/structure/bed/rogue/bedroll/magic(get_turf(src))
 		new_bedroll.color = src.color

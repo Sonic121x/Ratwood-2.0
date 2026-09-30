@@ -40,7 +40,7 @@
 
 	if(target.anti_magic_check())
 		target.visible_message(span_warning("[target] 周身的反魔法波纹震散了那股滑稽而危险的咒力！"))
-		to_chat(user, span_warning("[target] 身上的反魔法抵消了 Xylix狂笑术。"))
+		to_chat(user, span_warning("[target] 身上的反魔法抵消了赛利克斯笑术。"))
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 		revert_cast()
 		return FALSE
@@ -56,7 +56,7 @@
 
 	target.visible_message(span_notice("[target] 肩膀一抖，勉强忍住了那股突如其来的狂乱笑意，只剩一声短促窃笑。"))
 	to_chat(target, span_notice("一阵荒诞的笑意掠过我的脑海，但我还是稳住了心神。"))
-	to_chat(user, span_warning("[target] 顶住了 Xylix 的戏谑，只是短促地笑了一声。"))
+	to_chat(user, span_warning("[target] 顶住了赛利克斯的戏谑，只是短促地笑了一声。"))
 	target.emote("giggle", intentional = TRUE)
 	return TRUE
 

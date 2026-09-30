@@ -80,7 +80,7 @@
 /datum/customizer_choice/organ/tail/shadekin
 	// name：该自定义条目的标题。
 	// name: the title of this customizer entry.
-	name = "Shadekin Tail"
+	name = "暗影裔尾巴"
 	// organ_type：复用既有的 anthro 尾巴器官(无需新建器官类)，它支持任意 anthro 风格的精灵配件。
 	// organ_type: reuse the existing anthro tail organ (no new organ class needed); it supports
 	// arbitrary anthro-style sprite accessories.
@@ -102,7 +102,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/ears/shadekin)
 
 /datum/customizer_choice/organ/ears/shadekin
-	name = "Shadekin Ears"
+	name = "暗影裔兽耳"
 	// 复用既有 anthro 耳朵器官。
 	// Reuse the existing anthro ears organ.
 	organ_type = /obj/item/organ/ears/anthro

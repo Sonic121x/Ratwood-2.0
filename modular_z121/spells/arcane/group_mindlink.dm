@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	main_room.add_member(member)
 	if(first_link)
 		session.current_room = main_room
-	to_chat(member, span_notice("你已加入[html_encode(owner.real_name)]建立的心灵链接。请在 IC 分类下点击「Group Mindlink」打开心灵链接窗口；输入 ,m 可向当前选中的会话发言。"))
+	to_chat(member, span_notice("你已加入[html_encode(owner.real_name)]建立的心灵链接。请在 IC 分类下点击「群体心灵链接」打开心灵链接窗口；输入 ,m 可向当前选中的会话发言。"))
 	refresh()
 	return TRUE
 
@@ -526,7 +526,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 /obj/effect/proc_holder/spell/self/group_mindlink
 	name = "群体心灵链接"
 	school = "divination"
-	desc = "选择任意数量的熟人，吟唱后建立持续十五分钟的心灵链接。成员可以在主群交流、单独私聊或创建小房间。发言前输入 ,m 会发送到当前选中的会话；使用 IC 下的 Group Mindlink 可重新打开窗口。"
+	desc = "选择任意数量的熟人，吟唱后建立持续十五分钟的心灵链接。成员可以在主群交流、单独私聊或创建小房间。发言前输入 ,m 会发送到当前选中的会话；使用 IC 下的群体心灵链接可重新打开窗口。"
 	associated_skill = /datum/skill/magic/arcane
 	cost = 5
 	xp_gain = TRUE
@@ -654,7 +654,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	return ..()
 
 /mob/living/proc/group_mindlink_reopen()
-	set name = "Group Mindlink"
+	set name = "群体心灵链接"
 	set category = "IC"
 	set desc = "重新打开群体心灵链接，选择主群、私聊或小房间。"
 	var/datum/group_mindlink_session/session = group_mindlink_session(src, FALSE)

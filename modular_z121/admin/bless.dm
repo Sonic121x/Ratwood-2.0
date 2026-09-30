@@ -73,8 +73,8 @@
 
 // 为什么需要独立 alert：让被祝福者在 HUD 上看到一个图标和说明，知道自己处于增益中。
 /atom/movable/screen/alert/status_effect/buff/gods_blessings
-	name = "God's Blessings"                                                    // Alert title shown on hover.
-	desc = "Divine favor eases my pain, lightens my fatigue, and slowly mends my injuries." // Alert tooltip describing the milder effect.
+	name = "诸神祝福"                                                    // Alert title shown on hover.
+	desc = "神恩减轻了我的疼痛与疲劳，并缓缓治愈我的伤势。" // Alert tooltip describing the milder effect.
 	icon_state = "regenerative_core"                                            // Alert icon reused from existing buff art.
 
 
@@ -117,8 +117,8 @@
 
 // 为什么需要 alert：让目标知道自己获得了 10 分钟的活力恢复增益。
 /atom/movable/screen/alert/status_effect/buff/divine_vigor
-	name = "Divine Vigor"                                                       // Alert title.
-	desc = "Holy vitality knits my body whole over ten minutes and sharpens every attribute." // Alert tooltip describing the why.
+	name = "神圣活力"                                                       // Alert title.
+	desc = "神圣的生命力将在十分钟内修复我的身体，并提升我的所有属性。" // Alert tooltip describing the why.
 	icon_state = "regenerative_core"                                            // Reuse existing regen icon to avoid new asset deps.
 
 
@@ -196,12 +196,12 @@
 	//   所以只有在目标仍存活时才施加 3 分钟强制睡眠这一代价。
 	if(owner && owner.stat != DEAD)                                            // Only enforce the sleep cost on a living owner.
 		owner.SetSleeping(3 MINUTES, ignore_canstun = TRUE)                   // Force 3 minutes of sleep (ignore_canstun so the cost always lands).
-		to_chat(owner, span_warning("The war-fury drains away and drags me into a deep, exhausted sleep.")) // Tell the player why they collapsed.
+		to_chat(owner, span_warning("战斗的狂怒消退，筋疲力尽的我陷入了深沉的睡眠。")) // Tell the player why they collapsed.
 
 // 为什么需要 alert：让目标看到自己处于战神状态，并提示其会有结束后的睡眠代价。
 /atom/movable/screen/alert/status_effect/buff/avatar_of_war
-	name = "Avatar of War"                                                      // Alert title.
-	desc = "I feel no pain and never tire; my wounds will not bleed - but when this fades I will collapse into sleep." // Alert tooltip with the cost.
+	name = "战神附体"                                                      // Alert title.
+	desc = "我感受不到疼痛，也永不疲倦；我的伤口不会流血——但效果结束后，我将倒下沉睡。" // Alert tooltip with the cost.
 	icon_state = "regenerative_core"                                            // Reuse existing icon to avoid new asset deps.
 
 
@@ -316,13 +316,13 @@
 	// 为什么区分刷新/首次：给管理员、目标、以及管理日志提供精确的行为描述。
 	if(already_blessed)                                                       // The blessing was already active and just got refreshed...
 		to_chat(src, span_notice("Refreshed '[chosen_label]' on [target]."))                 // Admin feedback.
-		to_chat(target, span_notice("A familiar blessing is renewed upon me."))               // Target feedback.
+		to_chat(target, span_notice("熟悉的赐福再次降临于我。"))               // Target feedback.
 		log_admin("[key_name(usr)] refreshed blessing [effect_name] on [key_name(target)].")  // Plain admin log.
 		message_admins(span_adminnotice("[key_name_admin(usr)] refreshed blessing [effect_name] on [key_name_admin(target)].")) // Broadcast to admins.
 		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has refreshed a blessing ([effect_name]) on you.</font>") // Ticket trail.
 	else                                                                      // The blessing was freshly granted...
 		to_chat(src, span_notice("Granted '[chosen_label]' to [target]."))                    // Admin feedback.
-		to_chat(target, span_notice("A divine blessing settles over me."))                    // Target feedback.
+		to_chat(target, span_notice("神圣的赐福降临于我。"))                    // Target feedback.
 		log_admin("[key_name(usr)] granted blessing [effect_name] to [key_name(target)].")    // Plain admin log.
 		message_admins(span_adminnotice("[key_name_admin(usr)] granted blessing [effect_name] to [key_name_admin(target)].")) // Broadcast to admins.
 		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has blessed you ([effect_name]).</font>") // Ticket trail.

@@ -34,13 +34,13 @@
 
 // 弹出菜单里 7 个愿望的显示文本。用 #define 常量而不是散落的字符串字面量，
 // 是为了让“菜单选项”和“switch 分支”一一对应、不会因笔误而对不上。
-#define WISH_OPT_RESURRECT    "复活生者（Resurrect Someone）"
-#define WISH_OPT_KILL         "夺取性命（Kill Someone）"
-#define WISH_OPT_WEALTH       "泼天富贵（Massive Wealth）"
-#define WISH_OPT_STATS        "属性飞升（Increase Stats）"
-#define WISH_OPT_SKILLS       "技艺精进（Upgrade Skills）"
-#define WISH_OPT_BREAKLIMIT   "解放技能上限（Break Skill Limits）"
-#define WISH_OPT_TRAIT        "天赋恩赐（Gain Beneficial Trait）"
+#define WISH_OPT_RESURRECT    "复活逝者"
+#define WISH_OPT_KILL         "夺取性命"
+#define WISH_OPT_WEALTH       "泼天富贵"
+#define WISH_OPT_STATS        "属性飞升"
+#define WISH_OPT_SKILLS       "技艺精进"
+#define WISH_OPT_BREAKLIMIT   "解放技能上限"
+#define WISH_OPT_TRAIT        "天赋恩赐"
 
 // ===========================================================================
 // 法术本体
@@ -199,7 +199,7 @@
 		return FALSE
 
 	// 弹窗选择目标。可取消。
-	var/chosen_label = tgui_input_list(user, "选择要复活的逝者：", "复活生者", candidates)
+	var/chosen_label = tgui_input_list(user, "选择要复活的逝者：", "复活逝者", candidates)
 	if(isnull(chosen_label))
 		to_chat(user, span_warning("我收回了复活的念头。"))
 		revert_cast()
