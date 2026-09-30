@@ -62,7 +62,7 @@
 	var/selection
 	switch(choice)
 		if("箭矢档位")
-			selection = input(user, "选择弦上锋芒的轻重。", name) as null|anything in list("一档·石箭", "二档·铁箭", "三档·黑钢箭")
+			selection = input(user, "选择弦上锋芒的轻重。", name) as null|anything in list("一档·石箭", "二档·铁箭")
 		if("元素选择")
 			selection = input(user, "让哪一种气息流入弓弦？", name) as null|anything in list("无", "火", "冰")
 	if(!can_configure(user))
@@ -72,7 +72,7 @@
 		if("箭矢档位")
 			if(!selection)
 				return
-			arrow_tier = list("一档·石箭", "二档·铁箭", "三档·黑钢箭").Find(selection)
+			arrow_tier = list("一档·石箭", "二档·铁箭").Find(selection)
 		if("追踪开关")
 			tracking_enabled = !tracking_enabled
 		if("元素选择")
@@ -94,7 +94,7 @@
 	return "档位：[arrow_tier]；追踪：[tracking_enabled ? "开启" : "关闭"]；元素：[arrow_element]；消耗：[mixed_cost ? "魔力与血液" : "魔力"]"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/arrow_cost()
-	var/list/tier_costs = list(5, 15, 30)
+	var/list/tier_costs = list(5, 15)
 	return tier_costs[arrow_tier] + (tracking_enabled ? 20 : 0) + (arrow_element != "无" ? 10 : 0)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/cost_text()
@@ -179,7 +179,7 @@
 		arrow.configuration = "穿心箭；基础伤害[arrow.base_damage]，独立箭术"
 	else
 		// 凝箭时固定全部参数，已付费的箭不会随菜单改变或重复收费。
-		var/list/templates = list(/obj/projectile/bullet/reusable/arrow/stone, /obj/projectile/bullet/reusable/arrow/iron, /obj/projectile/bullet/reusable/arrow/blacksteel)
+		var/list/templates = list(/obj/projectile/bullet/reusable/arrow/stone, /obj/projectile/bullet/reusable/arrow/iron)
 		var/obj/projectile/template = templates[arrow_tier]
 		arrow.base_damage = initial(template.damage)
 		arrow.base_accuracy = initial(template.accuracy)
@@ -187,7 +187,7 @@
 		arrow.tracking = tracking_enabled
 		arrow.element = arrow_element
 		arrow.configuration = "[configuration_text()]；已支付[cost_text()]"
-		arrow.icon_state = arrow_tier == 3 ? "blacksteelarrow" : (arrow_tier == 2 ? "ironarrow" : "arrow")
+		arrow.icon_state = arrow_tier == 2 ? "ironarrow" : "arrow"
 	// 凝聚穿心箭替换旧箭时，已开始的拉弓仍然需要消耗耐力。
 	clear_magic_arrow(FALSE)
 	// 原版弓在射击前从内部箭仓取出弹药，因此同时登记已搭箭与箭仓。
@@ -216,8 +216,9 @@
 	projectile.armor_penetration = arrow.base_penetration
 	projectile.bonus_accuracy = initial(projectile.bonus_accuracy)
 	projectile.element = arrow.element
-	projectile.damage_type = arrow.element == "火" ? BURN : BRUTE
-	projectile.woundclass = arrow.element == "火" ? BCLASS_BURN : (arrow.element == "冰" ? BCLASS_BLUNT : BCLASS_PIERCE)
+	// 火元素保留箭矢的物理穿刺伤害，仅在造成实际损伤后附加燃烧。
+	projectile.damage_type = BRUTE
+	projectile.woundclass = arrow.element == "冰" ? BCLASS_BLUNT : BCLASS_PIERCE
 	if(arrow.tracking && !isturf(target) && !projectile.valid_tracking_target(target, user))
 		to_chat(user, span_warning("追踪箭只能锁定同层十五格内可见的目标。"))
 		return FALSE
@@ -230,7 +231,9 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/start_draw_fatigue(datum/intent/draw_intent)
 	stop_draw_fatigue()
 	draw_intent_ref = WEAKREF(draw_intent)
-	draw_fatigue_timer = addtimer(CALLBACK(src, PROC_REF(process_draw_fatigue)), SSmousecharge.wait, TIMER_LOOP | TIMER_STOPPABLE)
+	// 取消拉弓或力竭时会在回调内停止计时器，必须允许删除正在执行的循环。
+	// 否则删除失败后编号仍被清空，遗留循环会在下次拉弓时叠加扣除耐力。
+	draw_fatigue_timer = addtimer(CALLBACK(src, PROC_REF(process_draw_fatigue)), SSmousecharge.wait, TIMER_LOOP | TIMER_STOPPABLE | TIMER_DELETE_ME)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/stop_draw_fatigue()
 	if(draw_fatigue_timer)
@@ -375,7 +378,7 @@
 	damage_type = BRUTE
 	armor_penetration = 10
 	accuracy = 60
-	npc_simple_damage_mult = 2
+	npc_simple_damage_mult = 1.2
 	embedchance = 0
 	woundclass = BCLASS_PIERCE
 	flag = "piercing"

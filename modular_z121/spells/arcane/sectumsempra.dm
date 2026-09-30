@@ -35,8 +35,8 @@
 // ===== 可调参数（文件末尾统一 #undef，避免污染全局命名空间）=====
 #define SECTUM_MANA_COST          9             // 法力 / 法术点消耗（cost）= 9
 #define SECTUM_RESOURCE_COST      30            // “额外资源消耗”：每次施放抽取的基础疲劳/耐力（releasedrain）= 30
-#define SECTUM_CHANNEL_TIME       (0.6 SECONDS) // 蓄力时长 = 0.6 秒（由基类点击拦截按 chargetime 校验）
-#define SECTUM_COOLDOWN           (1 SECONDS)   // 基础冷却 = 1 秒（实际冷却由施法框架修正）
+#define SECTUM_CHANNEL_TIME       (1 SECONDS) // 蓄力时长 = 0.6 秒（由基类点击拦截按 chargetime 校验）
+#define SECTUM_COOLDOWN           (3 SECONDS)   // 基础冷却 = 1 秒（实际冷却由施法框架修正）
 #define SECTUM_TARGET_RANGE       9             // 瞄准 / 投射的最大距离 = 9 格
 
 // ===== 伤害模型参数：实现“集中于受击部位的恐怖撕裂 + 近乎一击致命”（T4 强度）=====
@@ -65,8 +65,8 @@
 	cost = SECTUM_MANA_COST                    // 法力 / 法术点消耗 = 9
 	releasedrain = SECTUM_RESOURCE_COST        // 基础额外资源消耗 = 30（实际疲劳/耐力消耗由施法框架修正）
 	chargedrain = 1                            // 蓄力期间每刻的额外抽取
-	chargetime = SECTUM_CHANNEL_TIME           // 基础蓄力 = 0.6 秒
-	recharge_time = SECTUM_COOLDOWN            // 基础冷却 = 1 秒
+	chargetime = SECTUM_CHANNEL_TIME           // 基础蓄力 = 1 秒
+	recharge_time = SECTUM_COOLDOWN            // 基础冷却 = 3 秒
 	range = SECTUM_TARGET_RANGE                // 瞄准 / 投射目标的最大距离 = 9 格
 	projectile_type = /obj/projectile/energy/sectumsempra_bolt // 本法术发射的投射物类型
 	human_req = TRUE                           // 只有人类施法者能施放
