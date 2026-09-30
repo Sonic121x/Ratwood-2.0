@@ -171,7 +171,7 @@
 		if(iscarbon(M))	// Check before the spirit gets consumed below, or a refused revival strands the player with no afterlife mob
 			var/mob/living/carbon/balm_target = M
 			if(balm_target.has_foreign_brain())
-				M.visible_message(span_warning("[M]'s body shudders, but the soul within does not know this flesh!"))
+				M.visible_message(span_warning("[M]的身体颤抖着，但其中的灵魂并不认得这副血肉之躯！"))
 				M.remove_status_effect(src)
 				return
 
