@@ -396,8 +396,8 @@
 	var/riddle_answer
 
 /atom/movable/screen/alert/riddle
-	name = "Riddle"
-	desc = "You have a riddle to solve!"
+	name = "谜题"
+	desc = "你有一道谜题需要解答！"
 	icon_state = "riddle"
 
 	var/datum/riddle/riddle
