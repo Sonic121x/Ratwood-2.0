@@ -194,13 +194,13 @@
 		patient.remove_overlay(MUTATIONS_LAYER)
 
 /datum/stressevent/artistic_inspiration
-	desc = span_love("I feel divinely inspired to create something beautiful!")
+	desc = span_love("神圣的灵感激励着我，去创造美好的事物！")
 	stressadd = -3
 	timer = 5 MINUTES
 	quality_modifier = 3
 
 /datum/stressevent/artistic_inspiration_minor
-	desc = span_love("I feel... Inspired!")
+	desc = span_love("我感到……灵感涌现！")
 	stressadd = -1
 	timer = 2 MINUTES
 	quality_modifier = 1

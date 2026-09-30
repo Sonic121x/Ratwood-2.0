@@ -95,7 +95,7 @@
 /atom/movable/screen/alert
 	icon = 'icons/mob/screen_alert.dmi'
 	icon_state = "status"
-	name = "Alert"
+	name = "状态提示"
 	desc = ""
 	mouse_opacity = MOUSE_OPACITY_ICON
 	var/timeout = 0 //If set to a number, this alert will clear itself after that many deciseconds
@@ -151,115 +151,115 @@
 
 //Gas alerts
 /atom/movable/screen/alert/not_enough_oxy
-	name = "Choking"
+	name = "窒息"
 	desc = ""
 	icon_state = "not_enough_oxy"
 
 /atom/movable/screen/alert/too_much_oxy
-	name = "Choking (O2)"
+	name = "窒息（氧气过量）"
 	desc = ""
 	icon_state = "too_much_oxy"
 
 /atom/movable/screen/alert/not_enough_nitro
-	name = "Choking (No N2)"
+	name = "窒息（缺少氮气）"
 	desc = ""
 	icon_state = "not_enough_nitro"
 
 /atom/movable/screen/alert/too_much_nitro
-	name = "Choking (N2)"
+	name = "窒息（氮气过量）"
 	desc = ""
 	icon_state = "too_much_nitro"
 
 /atom/movable/screen/alert/not_enough_co2
-	name = "Choking (No CO2)"
+	name = "窒息（缺少二氧化碳）"
 	desc = ""
 	icon_state = "not_enough_co2"
 
 /atom/movable/screen/alert/too_much_co2
-	name = "Choking (CO2)"
+	name = "窒息（二氧化碳过量）"
 	desc = ""
 	icon_state = "too_much_co2"
 
 /atom/movable/screen/alert/not_enough_tox
-	name = "Choking (No Plasma)"
+	name = "窒息（缺少等离子体）"
 	desc = ""
 	icon_state = "not_enough_tox"
 
 /atom/movable/screen/alert/too_much_tox
-	name = "Choking (Plasma)"
+	name = "窒息（等离子体过量）"
 	desc = ""
 	icon_state = "too_much_tox"
 //End gas alerts
 
 
 /atom/movable/screen/alert/fat
-	name = "Fat"
+	name = "肥胖"
 	desc = ""
 	icon_state = "fat"
 
 /atom/movable/screen/alert/hungry
-	name = "Hungry"
+	name = "饥饿"
 	desc = ""
 	icon_state = "hungry"
 
 /atom/movable/screen/alert/starving
-	name = "Starving"
+	name = "饥饿难耐"
 	desc = ""
 	icon_state = "starving"
 
 /atom/movable/screen/alert/gross
-	name = "Grossed out."
+	name = "反胃。"
 	desc = ""
 	icon_state = "gross"
 
 /atom/movable/screen/alert/verygross
-	name = "Very grossed out."
+	name = "强烈反胃。"
 	desc = ""
 	icon_state = "gross2"
 
 /atom/movable/screen/alert/disgusted
-	name = "DISGUSTED"
+	name = "恶心至极"
 	desc = ""
 	icon_state = "gross3"
 
 /atom/movable/screen/alert/hot
-	name = "Too Hot"
+	name = "过热"
 	desc = ""
 	icon_state = "hot"
 
 /atom/movable/screen/alert/cold
-	name = "Too Cold"
+	name = "过冷"
 	desc = ""
 	icon_state = "cold"
 
 /atom/movable/screen/alert/lowpressure
-	name = "Low Pressure"
+	name = "低压"
 	desc = ""
 	icon_state = "lowpressure"
 
 /atom/movable/screen/alert/highpressure
-	name = "High Pressure"
+	name = "高压"
 	desc = ""
 	icon_state = "highpressure"
 
 /atom/movable/screen/alert/blind
-	name = "Blind"
+	name = "失明"
 	desc = ""
 	icon_state = "blind"
 
 /atom/movable/screen/alert/high
-	name = "High"
+	name = "飘然"
 	desc = ""
 	icon_state = "high"
 
 /atom/movable/screen/alert/hypnosis
-	name = "Hypnosis"
+	name = "催眠"
 	desc = ""
 	icon_state = "hypnosis"
 	var/phrase
 
 /atom/movable/screen/alert/mind_control
-	name = "Mind Control"
+	name = "心灵控制"
 	desc = ""
 	icon_state = "mind_control"
 	var/command
@@ -270,12 +270,12 @@
 	to_chat(L, span_mind_control("[command]"))
 
 /atom/movable/screen/alert/drunk //Not implemented
-	name = "Drunk"
+	name = "醉酒"
 	desc = ""
 	icon_state = "drunk"
 
 /atom/movable/screen/alert/embeddedobject
-	name = "Embedded Objects"
+	name = "异物嵌入"
 	desc = ""
 	icon_state = "embeddedobject"
 
@@ -291,12 +291,12 @@
 			to_chat(H, "[msg.Join()]")
 
 /atom/movable/screen/alert/weightless
-	name = "Weightless"
+	name = "失重"
 	desc = ""
 	icon_state = "weightless"
 
 /atom/movable/screen/alert/fire
-	name = "On Fire"
+	name = "着火"
 	desc = ""
 	icon_state = "fire"
 
@@ -310,19 +310,19 @@
 		return L.resist_fire() //I just want to start a flame in your hearrrrrrtttttt.
 
 /atom/movable/screen/alert/fire/sunder
-	name = "Sundered!"
+	name = "圣火灼烧！"
 	desc = ""
 	icon_state = "sunder"
 
 /atom/movable/screen/alert/fire/sunder/blessed
-	name = "Sundered!"
+	name = "圣火灼烧！"
 	desc = ""
 	icon_state = "supersunder"
 
 //BLOBS
 
 /atom/movable/screen/alert/nofactory
-	name = "No Factory"
+	name = "缺少工厂"
 	desc = ""
 	icon_state = "blobbernaut_nofactory"
 	alerttooltipstyle = "blob"
@@ -330,19 +330,19 @@
 //GUARDIANS
 
 /atom/movable/screen/alert/cancharge
-	name = "Charge Ready"
+	name = "冲锋就绪"
 	desc = ""
 	icon_state = "guardian_charge"
 	alerttooltipstyle = "parasite"
 
 /atom/movable/screen/alert/canstealth
-	name = "Stealth Ready"
+	name = "潜行就绪"
 	desc = ""
 	icon_state = "guardian_canstealth"
 	alerttooltipstyle = "parasite"
 
 /atom/movable/screen/alert/instealth
-	name = "In Stealth"
+	name = "潜行中"
 	desc = ""
 	icon_state = "guardian_instealth"
 	alerttooltipstyle = "parasite"
@@ -350,14 +350,14 @@
 //Ethereal
 
 /atom/movable/screen/alert/etherealcharge
-	name = "Low Blood Charge"
+	name = "血液电量不足"
 	desc = ""
 	icon_state = "etherealcharge"
 
 //GHOSTS
 //TODO: expand this system to replace the pollCandidates/CheckAntagonist/"choose quickly"/etc Yes/No messages
 /atom/movable/screen/alert/notify_cloning
-	name = "Revival"
+	name = "复生"
 	desc = ""
 	icon_state = "template"
 	timeout = 300
@@ -369,7 +369,7 @@
 	G.reenter_corpse()
 
 /atom/movable/screen/alert/notify_action
-	name = "Body created"
+	name = "躯体已生成"
 	desc = ""
 	icon_state = "template"
 	timeout = 300
@@ -398,17 +398,17 @@
 //OBJECT-BASED
 
 /atom/movable/screen/alert/restrained/buckled
-	name = "Sitting/laying"
+	name = "坐下/躺卧"
 	desc = ""
 	icon_state = "buckled"
 
 /atom/movable/screen/alert/restrained/handcuffed
-	name = "Restrained (arms)"
+	name = "束缚（双臂）"
 	desc = ""
 	icon_state = "restrained"
 
 /atom/movable/screen/alert/restrained/legcuffed
-	name = "Restrained (legs)"
+	name = "束缚（双腿）"
 	desc = ""
 	icon_state = "restrained"
 
