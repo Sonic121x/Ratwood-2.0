@@ -95,4 +95,4 @@
 		if(excluding_turf && get_dist(board, excluding_turf) <= 1)
 			continue
 		playsound(board, 'sound/ambience/noises/birds (7).ogg', 50, FALSE, -1)
-		board.visible_message(span_smallred("A ZAD lands, delivering a new posting!"))
+		board.visible_message(span_smallred("一只扎德鸟落下，送来了一张新告示！"))
