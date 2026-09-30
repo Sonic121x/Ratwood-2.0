@@ -301,7 +301,7 @@ const PostingForm = ({
               }}
               onClick={() => setTier(POSTING_TIER_NOTICE)}
             >
-              临时告示 (30分钟后过期)
+              临时告示（180分钟后过期）
             </button>
             <button
               type="button"
