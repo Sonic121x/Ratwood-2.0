@@ -135,7 +135,7 @@
 		var/obj/item/clothing/suit/roguetown/armor/skin_armor/harpy_skin = human_owner.skin_armor
 		if(harpy_skin.obj_integrity < harpy_skin.max_integrity)
 			harpy_skin.obj_integrity += 10
-			to_chat(human_owner, "I can feel the skin on my feet mend...")
+			to_chat(human_owner, "我能感觉到双脚的皮肤正在愈合……")
 		else if((harpy_skin.obj_integrity >= harpy_skin.max_integrity) && harpy_skin.obj_broken)
 			harpy_skin.obj_broken = FALSE
 
@@ -725,7 +725,7 @@
 
 // Reduces some stats, applies a high overlay, increases slurring by 10 and keeps slurring at a minimum of 10.
 /atom/movable/screen/alert/status_effect/mishap_arcane_high
-	name = "Arcyne 飘然"
+	name = "奥术飘然"
 	desc = ""
 	icon_state = "high"
 
@@ -760,7 +760,7 @@
 
 // Increases drunkenness by 50. Prevents drunkenness from falling below 50.
 /atom/movable/screen/alert/status_effect/mishap_arcane_drunkenness
-	name = "Arcyne 醉态"
+	name = "奥术醉态"
 	desc = "我感觉醉得厉害……可我明明没喝酒！哈……"
 	icon_state = "drunk"
 
@@ -793,7 +793,7 @@
 // On application, each limb has a 50% chance of being paralyzed.
 // At least one limb is guaranteed to be paralyzed.
 /atom/movable/screen/alert/status_effect/mishap_arcane_paralysis
-	name = "Arcyne 麻痹"
+	name = "奥术麻痹"
 	desc = "我的身体有些部位动不了了……"
 	icon_state = "paralyze"
 
@@ -850,8 +850,8 @@
 
 // Makes the victim blind... Obviously
 /atom/movable/screen/alert/status_effect/mishap_blindness
-	name = "Arcyne 致盲"
-	desc = "Arcyne 的黑暗蒙蔽了我的双眼！"
+	name = "奥术致盲"
+	desc = "奥术的黑暗蒙蔽了我的双眼！"
 	icon_state = "blind"
 
 /datum/status_effect/debuff/mishap_blindness
@@ -876,7 +876,7 @@
 
 // Keep putting the user to sleep for the duration.
 /atom/movable/screen/alert/status_effect/mishap_sleepy
-	name = "Arcyne 嗜睡"
+	name = "奥术嗜睡"
 	desc = "我快撑不住清醒了……"
 	icon_state = "hypnosis"
 
@@ -901,7 +901,7 @@
 
 // Makes the victim confused for 5 minutes
 /atom/movable/screen/alert/status_effect/mishap_confused
-	name = "Arcyne 混乱"
+	name = "奥术混乱"
 	desc = "这儿是……我是在哪儿……？"
 	icon_state = "mind_control"
 

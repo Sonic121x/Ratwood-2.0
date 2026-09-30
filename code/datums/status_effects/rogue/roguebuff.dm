@@ -14,7 +14,7 @@
 	icon_state = "drunk"
 
 /atom/movable/screen/alert/status_effect/buff/drunkmurk
-	name = "Murk 之识"
+	name = "浊水之识"
 	desc = ""
 	icon_state = "drunk"
 
@@ -509,8 +509,8 @@
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, TRAIT_STATUS_EFFECT(id))
 
 /atom/movable/screen/alert/status_effect/buff/wardenbuff
-	name = "Woodsman"
-	desc = "I've trekked these woods for some time now. I find traversal easier here."
+	name = "林地行者"
+	desc = "我已在这片林地中跋涉多时。在这里行走对我来说更轻松了。"
 	icon_state = "guardsman"
 
 // Innkeeper area buff
@@ -526,8 +526,8 @@
 		owner.remove_status_effect(/datum/status_effect/buff/barkeepbuff)
 
 /atom/movable/screen/alert/status_effect/buff/barkeepbuff
-	name = "Vigilant Tavernkeep"
-	desc = "My home. I watch vigilantly and respond swiftly."
+	name = "警觉的酒馆老板"
+	desc = "这里是我的家。我警觉地观察四周，反应迅速。"
 	icon_state = "drunk"
 
 // Guard area buff
@@ -543,8 +543,8 @@
 		owner.remove_status_effect(/datum/status_effect/buff/guardbuffone)
 
 /atom/movable/screen/alert/status_effect/buff/guardbuffone
-	name = "Vigilant Guardsman"
-	desc = "My home. I watch vigilantly and respond swiftly."
+	name = "警觉的卫兵"
+	desc = "这里是我的家。我警觉地观察四周，反应迅速。"
 	icon_state = "guardsman"
 
 // Dungeoneer area buff
@@ -610,8 +610,8 @@
 		owner.remove_status_effect(/datum/status_effect/debuff/holy_blessing)
 
 /atom/movable/screen/alert/status_effect/holy_empowerement
-	name = "Holy Ground"
-	desc = "These grounds are where I feel the most connection to my patron. Their blessing is strongest here!"
+	name = "神圣之地"
+	desc = "在这片土地上，我与主神的联系最为紧密。祂的祝福在这里最为强大！"
 	icon_state = "guardsman"
 
 // Lesser Miracle effect
@@ -1203,7 +1203,7 @@
 	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/buff/censerbuff
-	name = "受 SYON 启迪"
+	name = "受西昂启迪"
 	desc = "那枚大彗星碎片激励我去坚忍。"
 	icon_state = "censerbuff"
 
@@ -1269,7 +1269,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/churnernegative
 	name = "魔力紊乱"
-	desc = "那台可憎的装置正在抽干我的 Arcyne 本源！"
+	desc = "那台可憎的装置正在抽干我的奥术本源！"
 	icon_state = "buff"
 
 /datum/status_effect/buff/churnerprotection
@@ -1304,15 +1304,15 @@
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_STATUS_EFFECT(id))
-	to_chat(owner, span_warning("我感觉自己与 Arcyne 的联系彻底消失了。空气都像静止了一样......"))
-	owner.visible_message("[owner]身上的 Arcyne 灵光似乎正在消退。")
+	to_chat(owner, span_warning("我感觉自己与奥术的联系彻底消失了。空气都像静止了一样......"))
+	owner.visible_message("[owner]身上的奥术灵光似乎正在消退。")
 
 /datum/status_effect/buff/churnernegative/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_STATUS_EFFECT(id))
-	to_chat(owner, span_warning("我感觉 Arcyne 再次环绕着我。"))
-	owner.visible_message("[owner]身上的 Arcyne 灵光似乎又回来了。")
+	to_chat(owner, span_warning("我感觉奥术再次环绕着我。"))
+	owner.visible_message("[owner]身上的奥术灵光似乎又回来了。")
 
 #define BLESSINGOFSUN_FILTER "sun_glow"
 /atom/movable/screen/alert/status_effect/buff/guidinglight
@@ -1927,7 +1927,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/graggar_bloodrage
 	name = "血怒"
-	desc = "GRAGGAR！GRAGGAR！GRAGGAR！"
+	desc = "格拉加尔！格拉加尔！格拉加尔！"
 	icon_state = "bloodrage"
 
 /datum/status_effect/buff/bloodrage
@@ -2023,8 +2023,8 @@
 #define INVIGORATION_FILTER "invigoration_filter"
 
 /atom/movable/screen/alert/status_effect/buff/invigoration
-	name = "Invigoration"
-	desc = "My energy is being replenished."
+	name = "活力焕发"
+	desc = "我的精力正在恢复。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/invigoration
@@ -2041,7 +2041,7 @@
 
 /datum/status_effect/buff/invigoration/on_apply()
 	owner.add_filter(INVIGORATION_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 80, "size" = 1))
-	to_chat(owner, span_notice("A surge of energy begins to circulate through my body!"))
+	to_chat(owner, span_notice("一股能量开始在我体内流转！"))
 	return TRUE
 
 /datum/status_effect/buff/invigoration/tick()
@@ -2113,17 +2113,17 @@
 
 /datum/status_effect/buff/griefflower/on_apply()
 	. = ..()
-	to_chat(owner, span_notice("Rosa 之环会见血，但真正伤人的却是那些回忆。一次又一次的失败像向内盛开的荆棘般穿透着你。"))
+	to_chat(owner, span_notice("罗莎之环会见血，但真正伤人的却是那些回忆。一次又一次的失败像向内盛开的荆棘般穿透着你。"))
 	ADD_TRAIT(owner, TRAIT_CRACKHEAD, TRAIT_STATUS_EFFECT(id))
 
 /datum/status_effect/buff/griefflower/on_remove()
 	. = ..()
-	to_chat(owner, span_notice("你脱离了 Rosa 的触碰，疼痛也随之退去......"))
+	to_chat(owner, span_notice("你脱离了罗莎的触碰，疼痛也随之退去......"))
 	REMOVE_TRAIT(owner, TRAIT_CRACKHEAD, TRAIT_STATUS_EFFECT(id))
 
 /atom/movable/screen/alert/status_effect/buff/griefflower
-	name = "Rosa 之环"
-	desc = "Rosa 之环会见血，但真正伤人的却是那些回忆。一次又一次的失败像向内盛开的荆棘般穿透着你。"
+	name = "罗莎之环"
+	desc = "罗莎之环会见血，但真正伤人的却是那些回忆。一次又一次的失败像向内盛开的荆棘般穿透着你。"
 	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/buff/adrenaline_rush
@@ -2360,8 +2360,8 @@
 	status_type = STATUS_EFFECT_REPLACE
 
 /atom/movable/screen/alert/status_effect/buff/potence
-	name = "Potence"
-	desc = "I am a force of destruction."
+	name = "巨力"
+	desc = "我就是毁灭之力。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/potence/New(list/arguments)
@@ -2374,8 +2374,8 @@
 	tick_interval = 2 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/obfuscate_veil
-	name = "Obfuscated"
-	desc = "A supernatural veil hides me from sight."
+	name = "隐匿"
+	desc = "一层超自然的帷幕遮蔽了我的身形。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/obfuscate_veil/on_apply()
