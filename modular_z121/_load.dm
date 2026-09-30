@@ -191,6 +191,7 @@
 #include "structures/terror_clock.dm"
 #include "structures/glaggar_challenge.dm"
 #include "items/magic_bedroll.dm"
+#include "items/endless_pots.dm"
 #include "items/goldface_supply_packs.dm"
 // 自定义药水成品瓶：为 modular_z121 各自定义炼金药水（精力/暖心/温酒/克林卡特/驱兽/隐身/飞行/
 // 万能修复/变性/媚药）补一个"预装 50 单位该药水的玻璃瓶物品"，使其能作为即用消耗品在商店兑换。
