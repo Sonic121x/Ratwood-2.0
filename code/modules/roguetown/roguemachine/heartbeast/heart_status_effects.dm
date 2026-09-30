@@ -82,7 +82,7 @@
 		to_remove = right_leg
 	
 	if(to_remove)
-		C.visible_message(span_userdanger("[C]'s [to_remove.name] is torn off by the tendrils!"))
+		C.visible_message(span_userdanger("[C]的[to_remove.name]被触须撕下了！"))
 		to_remove.dismember(damage = 999)
 
 		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(get_turf(C), pick(GLOB.cardinals))
@@ -92,7 +92,7 @@
 /datum/status_effect/territorial_rage/proc/remove_head(mob/living/carbon/C)
 	var/obj/item/bodypart/head = C.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
-		C.visible_message(span_userdanger("[C]'s head is violently torn off by the tendrils!"))
+		C.visible_message(span_userdanger("[C]的头被触须猛烈地撕下了！"))
 		head.dismember(damage = 999, vorpal = TRUE)
 		C.adjustBruteLoss(200)
 		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(get_turf(C), pick(GLOB.cardinals))
