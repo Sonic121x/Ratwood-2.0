@@ -10,6 +10,9 @@ type ShopRow = {
   name: string;
   description: string;
   cost: number;
+  currency: string;
+  currency_name: string;
+  balance: number;
   action: string;
   tier?: string;
   current?: number;
@@ -21,6 +24,14 @@ type ShopRow = {
 type Data = {
   points: number;
   spell_points: number;
+  growth: {
+    level: number;
+    experience: number;
+    next_level_experience: number;
+    attribute_points: number;
+    skill_points: number;
+    trait_points: number;
+  };
   current_tab: string;
   busy: BooleanLike;
   tabs: { id: string; name: string }[];
@@ -165,6 +176,7 @@ export const RpgSystem = () => {
   const {
     points,
     spell_points,
+    growth,
     current_tab,
     busy,
     tabs = [],
@@ -172,10 +184,8 @@ export const RpgSystem = () => {
     daily,
   } = data;
   const scrollRef = useRef<HTMLDivElement>(null);
-  // 数量按材料编号独立保存，余额刷新或切换分类不会重置。
-  const [materialQuantities, setMaterialQuantities] = useState<
-    Record<number, number>
-  >({});
+  // 数量按分类与商品编号独立保存，余额刷新或切换分类不会重置。
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   // 仅切换分类时回到顶部；积分更新和连续购买始终复用同一滚动容器。
   useLayoutEffect(() => {
@@ -213,11 +223,32 @@ export const RpgSystem = () => {
               可用法术点：<b>{spell_points}</b>
             </Box>
             <Box mt={1}>
+              等级：<b>{growth.level}</b> · 经验：{growth.experience} /{' '}
+              {growth.next_level_experience}
+            </Box>
+            <div
+              title="每级获得1属性点，每2级获得1技能点，每3级获得1特性点"
+              style={{ height: '5px', background: '#302a22', marginTop: '6px' }}
+            >
+              <div
+                style={{
+                  height: '100%',
+                  width: `${Math.min(100, (growth.experience / growth.next_level_experience) * 100)}%`,
+                  background: '#e2c58b',
+                }}
+              />
+            </div>
+            <Box mt={1} color="#e2c58b">
+              属性点：<b>{growth.attribute_points}</b> · 技能点：
+              <b>{growth.skill_points}</b> · 特性点：
+              <b>{growth.trait_points}</b>
+            </Box>
+            <Box mt={1}>
               <Button
                 icon="calendar-check"
                 disabled={!!busy || !!daily.checked_in}
                 onClick={() => act('check_in', { day: daily.day })}
-                tooltip="每日黎明刷新，随机获得 100–1000 积分；当前 storyteller 与信仰相符时，有 10% 概率获得双倍积分。"
+                tooltip="每日黎明刷新，随机获得 100–1000 积分及等量经验；当前叙事者与信仰相符时，有 10% 概率获得双倍积分。"
               >
                 {daily.checked_in ? '今日已签到' : '每日签到'}
               </Button>
@@ -277,20 +308,19 @@ export const RpgSystem = () => {
                 </>
               )}
               {rows.map((row, rowIndex) => {
-                const isMaterial = current_tab === 'material';
+                const isBulk = (row.max_quantity ?? 1) > 1;
+                const quantityKey = `${current_tab}-${row.id}`;
                 const maxQuantity = row.max_quantity ?? 1;
-                const quantity = isMaterial
-                  ? (materialQuantities[row.id] ?? 1)
-                  : 1;
+                const quantity = isBulk ? (quantities[quantityKey] ?? 1) : 1;
                 const totalCost = row.cost * quantity;
                 const blockedReason =
-                  row.blocked_reason === '积分不足' ||
-                  (!row.blocked_reason && totalCost > points)
-                    ? `积分不足，需要 ${totalCost} 积分`
+                  row.blocked_reason === `${row.currency_name}不足` ||
+                  (!row.blocked_reason && totalCost > row.balance)
+                    ? `${row.currency_name}不足，需要 ${totalCost} ${row.currency_name}`
                     : row.blocked_reason;
                 return (
                   <Fragment key={`${current_tab}-${row.id}`}>
-                    {isMaterial && row.group !== rows[rowIndex - 1]?.group && (
+                    {row.group && row.group !== rows[rowIndex - 1]?.group && (
                       <Box
                         bold
                         color="#e2c58b"
@@ -305,7 +335,7 @@ export const RpgSystem = () => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '14px',
-                        padding: isMaterial ? '8px 12px' : '12px',
+                        padding: isBulk ? '8px 12px' : '12px',
                         marginBottom: '6px',
                         border: '1px solid rgba(170, 151, 116, 0.25)',
                         background: 'rgba(0, 0, 0, 0.16)',
@@ -332,16 +362,16 @@ export const RpgSystem = () => {
                       </div>
                       <div
                         style={{
-                          width: isMaterial ? '196px' : '112px',
+                          width: isBulk ? '196px' : '112px',
                           flexShrink: 0,
                           textAlign: 'right',
                         }}
                       >
                         <Box bold color="#e2c58b" mb={0.7}>
-                          {isMaterial
+                          {isBulk
                             ? `${row.cost}／份 · 合计 ${totalCost} 积分`
                             : row.cost
-                              ? `${row.cost} 积分`
+                              ? `${row.cost} ${row.currency_name}`
                               : '已达上限'}
                         </Box>
                         <div
@@ -351,7 +381,7 @@ export const RpgSystem = () => {
                             gap: '6px',
                           }}
                         >
-                          {isMaterial && (
+                          {isBulk && (
                             <div title={`兑换数量：1–${maxQuantity} 份`}>
                               <NumberInput
                                 value={quantity}
@@ -364,9 +394,9 @@ export const RpgSystem = () => {
                                   if (!Number.isFinite(value)) {
                                     return;
                                   }
-                                  setMaterialQuantities((previous) => ({
+                                  setQuantities((previous) => ({
                                     ...previous,
-                                    [row.id]: Math.max(
+                                    [quantityKey]: Math.max(
                                       1,
                                       Math.min(maxQuantity, Math.round(value)),
                                     ),
@@ -384,11 +414,11 @@ export const RpgSystem = () => {
                                 act(row.action, {
                                   tab: current_tab,
                                   id: row.id,
-                                  ...(isMaterial ? { quantity } : {}),
+                                  ...(isBulk ? { quantity } : {}),
                                 })
                               }
                             >
-                              {isMaterial
+                              {isBulk
                                 ? `兑换 ${quantity} 份`
                                 : blockedReason ||
                                   (row.action.startsWith('enhance_')
@@ -397,7 +427,7 @@ export const RpgSystem = () => {
                             </Button>
                           </div>
                         </div>
-                        {isMaterial && blockedReason && (
+                        {isBulk && blockedReason && (
                           <Box color="bad" mt={0.5}>
                             {blockedReason}
                           </Box>

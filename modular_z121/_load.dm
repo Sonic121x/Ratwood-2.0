@@ -351,14 +351,11 @@
 // immune to every drunkenness debuff (INT loss / slurring / confusion / dizziness / toxin / sleep);
 // once drunk, the Sword-fighting skill is instantly boosted to Legendary until the alcohol wears off.
 #include "virtues/wine_sword_immortal.dm"
-// 自定义美德：RPG系统（消耗 99 凯旋点）；授予【RPG系统】特性：
-// 你是世界旅人、持有作弊外挂——获得专属"系统面板"动词；击杀怪物（敌对 simple_animal）赚取
-// 系统积分，积分可在系统商店兑换 物品 / 装备 / 武器 / 消耗品，并可强化技能等级与六维属性。
-// Custom virtue: RPG System (costs 99 TRIUMPH); grants the "RPG System" trait: you are a world
-// traveler with a cheat system — you get a personal "system panel" verb; killing monsters (hostile
-// simple_animals) earns system points, spent in the system shop on items / equipment / weapons /
-// consumables, and on enhancing skill levels and the six attributes.
+// 自定义美德：RPG系统。收入获得积分及等量经验，积分购买物品，升级获得成长点。
 #include "virtues/rpg_system.dm"
+// 等级成长与静态商店扩展。
+#include "virtues/rpg_system_progression.dm"
+#include "virtues/rpg_system_catalogs.dm"
 // 角色独立的每日签到与冒险任务记录。
 #include "virtues/rpg_system_daily.dm"
 // RPG 任务的私人头顶箭头与距离提示。

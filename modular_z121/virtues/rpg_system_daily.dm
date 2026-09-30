@@ -169,8 +169,8 @@
 		if(patron && storyteller && patron.storyteller == storyteller.type && prob(10))
 			gain *= 2
 			doubled = TRUE
-		system.points += gain
-		check_result = "签到获得 [gain] 积分[doubled ? "（信仰共鸣，双倍奖励）" : ""]。"
+		system.grant_income(gain)
+		check_result = "签到获得 [gain] 积分及等量经验[doubled ? "（信仰共鸣，双倍奖励）" : ""]。"
 		to_chat(user, span_green("【系统签到】[check_result]"))
 		return TRUE
 	if(system.current_tab != "quests" || params["tab"] != "quests")
@@ -213,8 +213,8 @@
 			chosen.quest.mark_complete()
 		for(var/obj/item/item as anything in submission_items)
 			qdel(item)
-		system.points += chosen.reward
-		announce("已提交「[chosen.quest.title]」，获得 [chosen.reward] 积分。")
+		system.grant_income(chosen.reward)
+		announce("已提交「[chosen.quest.title]」，获得 [chosen.reward] 积分及等量经验。")
 		qdel(chosen)
 		busy = FALSE
 		return TRUE
