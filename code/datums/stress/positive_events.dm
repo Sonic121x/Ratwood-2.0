@@ -6,7 +6,7 @@
 /datum/stressevent/pleasant_scent
 	timer = 1 MINUTES
 	stressadd = -1
-	desc = span_green("A pleasant scent lifts my mood.")
+	desc = span_green("宜人的香气让我心情舒畅。")
 
 /datum/stressevent/chastity_devout
 	timer = INFINITY
@@ -249,7 +249,7 @@
 	timer = 2 MINUTES
 
 /datum/stressevent/pretty
-	desc = span_green("Their face is certainly easy on the eyes.")
+	desc = span_green("那张脸真是赏心悦目。")
 	timer = 1 MINUTES
 
 /datum/stressevent/night_owl
