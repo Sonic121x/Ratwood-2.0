@@ -231,7 +231,9 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/start_draw_fatigue(datum/intent/draw_intent)
 	stop_draw_fatigue()
 	draw_intent_ref = WEAKREF(draw_intent)
-	draw_fatigue_timer = addtimer(CALLBACK(src, PROC_REF(process_draw_fatigue)), SSmousecharge.wait, TIMER_LOOP | TIMER_STOPPABLE)
+	// 取消拉弓或力竭时会在回调内停止计时器，必须允许删除正在执行的循环。
+	// 否则删除失败后编号仍被清空，遗留循环会在下次拉弓时叠加扣除耐力。
+	draw_fatigue_timer = addtimer(CALLBACK(src, PROC_REF(process_draw_fatigue)), SSmousecharge.wait, TIMER_LOOP | TIMER_STOPPABLE | TIMER_DELETE_ME)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/proc/stop_draw_fatigue()
 	if(draw_fatigue_timer)
