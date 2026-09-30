@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(stress_messages, world.file2list("strings/rt/stress_messages.tx
 	stress_freakout()
 
 /mob/living/carbon/proc/stress_freakout()
-	to_chat(src, span_boldred("I PANIC!!!"))
+	to_chat(src, span_boldred("我惊慌失措！！！"))
 	Stun(2 SECONDS)
 	blur_eyes(2)
 	freakout_hud_skew()

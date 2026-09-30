@@ -127,6 +127,6 @@
 
 //non-small temperature changes apply a notice effect
 		if(amount < -20)
-			to_chat(src, span_notice("You feel yourself cooling down."))
+			to_chat(src, span_notice("你感觉身体正在降温。"))
 		else if(L && amount > 20 && !L.on_fire)
-			to_chat(src, span_notice("You feel yourself warming up."))
+			to_chat(src, span_notice("你感觉身体正在回暖。"))
