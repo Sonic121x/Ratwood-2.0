@@ -8,17 +8,17 @@
 //   该美德会为持有者打开一个专属的"系统面板"：
 //     · 击杀怪物可以赚取【系统积分】；
 //     · 积分可以在系统商店里兑换各种 物品 / 装备 / 武器 / 消耗品；
-//     · 甚至可以用积分直接强化技能（提升技能等级）与属性（提升六维 / 幸运）。
+//     · 收入同步获得经验，升级获得属性点、技能点和特性点，分别用于角色成长。
 //
 //   需求拆解：
 //     · 名称：RPG System / RPG 系统
-//     · 消耗：99 点凯旋点数（triumph_cost = 99）
+//     · 消耗：66 点凯旋点数（triumph_cost = 66）
 //     · 赋予一个"独一无二的系统界面"（玩家可主动呼出的动词 / 菜单）
 //     · 击杀怪物 → 获得积分
 //     · 积分 → 兑换 物品 / 装备 / 武器 / 消耗品
-//     · 积分 → 强化技能、强化属性
+//     · 经验 → 升级 → 成长点 → 强化属性、技能或兑换特性
 //
-// 为什么所有逻辑都放在本文件内：
+// 模块内组织方式：
 //   按硬性约束，自定义内容只能放在 modular_z121 目录下，且不得改动该目录之外的任何
 //   游戏逻辑文件；TGUI 前端允许放在对应界面目录。本文件通过"向已有类型追加子类型 / 组件 / 动词（verb）"的方式接入引擎，不修改
 //   任何核心文件，因此完全满足约束。
@@ -79,9 +79,9 @@
 // ----------------------------------------------------------------------------
 #define TRAIT_RPG_SYSTEM "RPG系统"
 
-// 本美德的凯旋点数消耗：99 点。需求明确为"消耗 99 点"。
+// 本美德的凯旋点数消耗：66 点。
 // 单列为常量，便于将来平衡性调整只改这一处。
-#define RPG_SYSTEM_TRIUMPH_COST 99
+#define RPG_SYSTEM_TRIUMPH_COST 66
 
 // 击杀监听组件每"巡检"一次的范围（以持有者为中心的视野格数）。
 // 为什么是 9：略大于默认视野（7），确保玩家屏幕内（含边缘）正在交战的怪物都能被及时挂上监听。
@@ -99,22 +99,12 @@
 //   故仅设为 1（最低限度的非零保证），不破坏"积分=10% 最大生命值"的基本设定。
 #define RPG_SYSTEM_MIN_KILL_POINTS 1
 
-// 强化属性的"基础单价系数"（积分）。实际花费 = 基础系数 × 当前属性值。
-// 为什么按当前值线性递增：需求要求"属性越高，强化所需积分越多"——属性越接近上限越珍贵，
-//   单价随当前值水涨船高，能自然形成"前期易、后期贵"的成长曲线。
-// 系数为 90：10→11 需 900，15→16 需 1350，19→20 需 1710 积分。
-#define RPG_SYSTEM_STAT_COST_BASE 90
-// 强化技能的"基础单价系数"（积分）。实际花费 = 基础系数 ×（目标等级）=（当前等级+1）。
-// 为什么按目标等级递增：同理，技能越高升级越贵——越往传奇越珍贵。
-// 系数为 540：0→1 需 540，2→3 需 1620，5→6 需 3240 积分。
-#define RPG_SYSTEM_SKILL_COST_BASE 540
-
-// 特性按普通、强力、超模三档定价；目录与结算共用这些价格。
-#define RPG_SYSTEM_TRAIT_COST 2500
-#define RPG_SYSTEM_TRAIT_STRONG_COST 10000
-#define RPG_SYSTEM_TRAIT_OVERPOWERED_COST 99999
-#define RPG_SYSTEM_SPELL_POINT_COST 3000
-// 单次材料兑换上限，界面提示和服务端校验共用。
+// 属性与技能每次消耗一个对应成长点；特性按档位消耗特性点。
+#define RPG_SYSTEM_TRAIT_COST 1
+#define RPG_SYSTEM_TRAIT_STRONG_COST 2
+#define RPG_SYSTEM_TRAIT_OVERPOWERED_COST 4
+#define RPG_SYSTEM_SPELL_POINT_COST 1
+// 材料与生食单次最多兑换五十份。
 #define RPG_SYSTEM_MATERIAL_MAX_QUANTITY 50
 // 通过本系统购买特性时使用的 ADD_TRAIT 来源标签：统一、可识别，便于将来需要时统一清理；
 //   不复用 TRAIT_VIRTUE / TRAIT_GENERIC 等其它来源，避免与别处授予的同名特性互相干扰。
@@ -129,7 +119,7 @@
 // ----------------------------------------------------------------------------
 /datum/virtue/utility/rpg_system
 	// 菜单中显示的美德名。
-	name = "RPG系统（-99）"
+	name = "RPG系统（-66）"
 	// 角色内描述（in-character）：呼应"世界旅人 + 作弊外挂 + 此世即超真实 RPG"的设定。
 	desc = "你是来自异界的旅人，持有只属于世界旅人的作弊外挂。对你而言，这个世界不过是一款无比真实的 RPG 游戏。"
 	// custom_text 用机制语言把硬性规则讲清楚，避免玩家误解。
@@ -137,8 +127,8 @@
 	custom_text = "获得【RPG系统】特性：\n\
 	你会获得一个独一无二的【系统面板】（在指令栏的 IC 分类下呼出「打开RPG系统」）。\n\
 	击杀怪物可赚取【系统积分】，积分可在系统商店中兑换 武器 / 装备 / 消耗品 / 材料 / 魔法物品，\n\
-	也可直接用于强化你的技能等级与六维属性。"
-	// 消耗 99 点凯旋点数。基类 New() 会自动把"Costs 99 TRIUMPH"追加到 desc。
+	收入同时获得等量经验，升级获得属性点、技能点和特性点，用于角色成长。"
+	// 消耗 66 点凯旋点数，基类会自动将价格追加到说明。
 	// check_triumphs() 会在 apply_virtue 流程开头校验并扣除，点数不足则不授予。
 	triumph_cost = RPG_SYSTEM_TRIUMPH_COST
 	// 为什么"不"用 added_traits 授予 TRAIT_RPG_SYSTEM：
@@ -182,7 +172,7 @@
 /datum/component/rpg_system
 	// 唯一组件：同一 mob 上只允许一个实例，重复 AddComponent 会被丢弃，杜绝重复扫描 / 双份积分。
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	// 这名玩家当前的系统积分。所有发放（击杀）与扣除（兑换）都读写此字段，是玩家独立的存档位。
+	// 角色的物品兑换积分；真实收入统一调用 grant_income，同步获得经验。
 	var/points = 0
 	// 分类保存在组件中；购买只刷新数据，不重新打开窗口。
 	var/current_tab = "weapon"
@@ -335,10 +325,10 @@
 		return
 	var/mob/living/carbon/human/host = parent
 	// 累加积分。这是玩家的核心成长资源，兑换时再从这里扣除。
-	points += amount
+	grant_income(amount)
 	// 即时反馈：用"系统提示"的口吻播报本次收益与当前总积分，强化 RPG 升级打怪的爽感。
 	//   victim?.name 做空安全：即使受害者已被 gib / 清理，也不会空引用。
-	to_chat(host, span_green("【系统提示】击败了 [victim ? victim.name : "一只怪物"]，获得 [amount] 系统积分。（当前积分：[points]）"))
+	to_chat(host, span_green("【系统提示】击败了 [victim ? victim.name : "一只怪物"]，获得 [amount] 系统积分及等量经验。（当前积分：[points]）"))
 
 
 // ============================================================================
@@ -455,6 +445,7 @@
 		"equipment" = "装备",
 		"consumable" = "消耗品",
 		"material" = "材料",
+		"raw_food" = "生食",
 		"magic" = "魔法物品",
 		"delicacy" = "美食",
 		"artifact" = "神器",
@@ -475,6 +466,7 @@
 	data["current_tab"] = current_tab
 	data["busy"] = purchase_busy
 	var/datum/component/rpg_journal/journal = get_journal()
+	data["growth"] = journal.growth_data()
 	journal.refresh_day()
 	data["daily"] = journal.get_ui_data(host)
 	data["busy"] = purchase_busy || journal.busy
@@ -492,6 +484,7 @@
 				var/list/row = entry.Copy()
 				row["id"] = index
 				row["action"] = "buy_trait"
+				row["currency"] = "trait_points"
 				row["blocked_reason"] = HAS_TRAIT(host, entry["trait"]) ? "已拥有" : null
 				row -= "trait"
 				rows += list(row)
@@ -505,9 +498,10 @@
 				rows += list(list(
 					"id" = index,
 					"name" = display,
-					"description" = is_skill ? "技能越高，强化所需积分越多；最高为传奇（6级）。" : "属性越高，强化所需积分越多；最高为20。",
+					"description" = is_skill ? "每次消耗1技能点提升1级；最高为传奇（6级）。" : "每次消耗1属性点提高1点；最高为20。",
 					"current" = current_value,
-					"cost" = at_limit ? 0 : (is_skill ? skill_upgrade_cost(current_value) : stat_upgrade_cost(current_value)),
+					"cost" = at_limit ? 0 : 1,
+					"currency" = is_skill ? "skill_points" : "attribute_points",
 					"action" = is_skill ? "enhance_skill" : "enhance_stat",
 					"blocked_reason" = (is_skill && !host.mind) ? "意识尚不稳定" : (at_limit ? "已满级" : null),
 				))
@@ -521,10 +515,12 @@
 				var/list/row = list(
 					"id" = index,
 					"name" = display,
-					"description" = html_decode(GLOB.html_tags.Replace(initial(item_type.desc), "")),
+					"description" = entry["description"] ? entry["description"] : html_decode(GLOB.html_tags.Replace(initial(item_type.desc), "")),
+					"group" = entry["group"],
+					"group_order" = entry["group_order"],
 					"cost" = entry[1],
 					"action" = "buy_item",
-					"max_quantity" = current_tab == "material" ? RPG_SYSTEM_MATERIAL_MAX_QUANTITY : 1,
+					"max_quantity" = (current_tab in list("material", "raw_food")) ? RPG_SYSTEM_MATERIAL_MAX_QUANTITY : 1,
 				)
 				if(current_tab == "material")
 					var/group_order = z121_rpg_material_group(item_type)
@@ -535,16 +531,21 @@
 				rows.Insert(1, list(list(
 					"id" = 0,
 					"name" = "法术点 +1",
-					"description" = "直接获得1法术点，无奥术技能门槛。首次获得时同步开放学习法术，并授予尚未掌握的戏法术。",
+					"description" = "消耗1技能点获得1法术点，无奥术技能门槛。首次获得时同步开放学习法术，并授予尚未掌握的戏法术。",
 					"cost" = RPG_SYSTEM_SPELL_POINT_COST,
 					"action" = "buy_spell_point",
+					"currency" = "skill_points",
 					"blocked_reason" = host.mind ? null : "意识尚不稳定",
 				)))
-	// 材料先分组，再按实际单价升序；其他页面按价格排序，始终保留原目录编号。
+	// 有分组的页面先按分类、再按单价升序；保留原编号，排序不影响结算。
 	sortTim(rows, GLOBAL_PROC_REF(cmp_rpg_shop_cost))
 	for(var/list/row in rows)
-		if(!row["blocked_reason"] && points < row["cost"])
-			row["blocked_reason"] = "积分不足"
+		if(!row["currency"])
+			row["currency"] = "points"
+		row["currency_name"] = z121_rpg_currency_name(row["currency"])
+		row["balance"] = currency_balance(row["currency"])
+		if(!row["blocked_reason"] && row["balance"] < row["cost"])
+			row["blocked_reason"] = "[row["currency_name"]]不足"
 	data["rows"] = rows
 	return data
 
@@ -593,10 +594,12 @@
 /datum/component/rpg_system/proc/do_buy_spell_point(mob/living/carbon/human/user)
 	if(!can_use_system(user) || !user.mind)
 		return
-	if(points < RPG_SYSTEM_SPELL_POINT_COST)
-		to_chat(user, span_warning("【系统提示】积分不足，需要 [RPG_SYSTEM_SPELL_POINT_COST] 积分。"))
+	var/datum/component/rpg_journal/journal = get_journal()
+	if(journal.rpg_skill_points < RPG_SYSTEM_SPELL_POINT_COST)
+		to_chat(user, span_warning("【系统提示】技能点不足，需要 [RPG_SYSTEM_SPELL_POINT_COST] 技能点。"))
 		return
-	points -= RPG_SYSTEM_SPELL_POINT_COST
+	journal.rpg_skill_points -= RPG_SYSTEM_SPELL_POINT_COST
+	journal.rpg_spell_point_grants++
 	user.mind.adjust_spellpoints(1)
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
@@ -607,7 +610,9 @@
 	for(var/display in base_catalog)
 		var/list/entry = base_catalog[display]
 		var/cost = (entry[2] in fixed_types) ? entry[1] : CEILING(entry[1] * multiplier, 1)
-		catalog["[display]（[cost]积分）"] = list(cost, entry[2])
+		var/list/priced_entry = entry.Copy()
+		priced_entry[1] = cost
+		catalog["[display]（[cost]积分）"] = priced_entry
 	return catalog
 
 // 按保证产量分摊最终原料成本，再加两成加工费；不折算概率副产物。
@@ -619,7 +624,7 @@
 
 // 纯商品目录供管理员面板复用，不创建积分组件或任务监听。
 /proc/z121_rpg_weapon_catalog()
-	return z121_rpg_price_catalog(list(
+	return z121_rpg_expand_combat_catalog(z121_rpg_price_catalog(list(
 		"狩猎刀" = list(40, /obj/item/rogueweapon/huntingknife),                    // 轻便短刀，便宜的入门武器
 		"铁剑"   = list(80, /obj/item/rogueweapon/sword/iron),                      // 入门级单手剑
 		"长矛"  = list(110, /obj/item/rogueweapon/spear),                          // 长柄武器，攻击距离更远
@@ -643,14 +648,14 @@
 		"镐"     = list(60, /obj/item/rogueweapon/pick),                            // 矿镐，亦可作刺击武器
 		"铁锤"   = list(90, /obj/item/rogueweapon/hammer/iron),                     // 铁锻锤，钝击 / 打铁两用
 		"巨剑"  = list(300, /obj/item/rogueweapon/greatsword),                     // 双手巨剑，高伤害重武器
-	), 2)
+	), 2), "weapon")
 
 
 /datum/component/rpg_system/proc/get_equipment_catalog()
 	return z121_rpg_equipment_catalog()
 
 /proc/z121_rpg_equipment_catalog()
-	return z121_rpg_price_catalog(list(
+	return z121_rpg_expand_combat_catalog(z121_rpg_price_catalog(list(
 		"兜帽"     = list(30, /obj/item/clothing/head/roguetown/roguehood),        // 兜帽，遮风蔽脸
 		"长靴"     = list(40, /obj/item/clothing/shoes/roguetown/boots),           // 基础脚部护具
 		"腰包"     = list(40, /obj/item/storage/belt/rogue/pouch),                 // 腰间小袋，扩充携带空间
@@ -677,7 +682,7 @@
 		"塔盾"    = list(220, /obj/item/rogueweapon/shield/tower),                // 大型塔盾，防护面积最大
 		"锁子甲"  = list(200, /obj/item/clothing/suit/roguetown/armor/chainmail), // 中级躯干护甲
 		"板甲"    = list(320, /obj/item/clothing/suit/roguetown/armor/plate),     // 高级躯干护甲，防护最强
-	), 2)
+	), 2), "equipment")
 
 
 /datum/component/rpg_system/proc/get_consumable_catalog()
@@ -747,7 +752,7 @@
 		return 2
 	if(ispath(item_path, /obj/item/alch))
 		return 4
-	if(ispath(item_path, /obj/item/magic) || ispath(item_path, /obj/item/reagent_containers/food/snacks/grown/manabloom))
+	if(item_path == /obj/item/riddleofsteel || ispath(item_path, /obj/item/magic) || ispath(item_path, /obj/item/reagent_containers/food/snacks/grown/manabloom))
 		return 5
 	return 3
 
@@ -780,6 +785,7 @@
 			break
 	// 以下全部是最终单价，统一生成带价格的名称，不再叠加分类倍率。
 	return z121_rpg_price_catalog(list(
+		"谜之钢" = list(9999, /obj/item/riddleofsteel, "description" = "神秘的钢铁之谜，可用于现有的特殊制作；并非普通金属锭。"),
 		"灰烬" = list(CEILING(4 * 1.5, 1), /obj/item/ash),
 		"石块" = list(stone_cost, /obj/item/natural/stone),
 		"木材" = list(CEILING(8 * 1.5, 1), /obj/item/grown/log/tree/small),
@@ -842,6 +848,10 @@
 
 /proc/z121_rpg_magic_catalog()
 	return z121_rpg_price_catalog(list(
+		"无尽水壶" = list(1200, /obj/item/reagent_containers/glass/z121_endless_pot/water, "description" = "能不断倒出清水的魔法壶。"),
+		"无尽茶壶" = list(3200, /obj/item/reagent_containers/glass/z121_endless_pot/tea, "description" = "能不断倒出茶水的魔法壶。"),
+		"无尽奶壶" = list(6000, /obj/item/reagent_containers/glass/z121_endless_pot/milk, "description" = "能不断倒出牛奶的魔法壶。"),
+		"占卜球" = list(1200, /obj/item/scrying, "description" = "可用来窥视他人的水晶球，沿用其原有占卜条件与限制。"),
 		"圣徽"       = list(120, /obj/item/clothing/neck/roguetown/psicross),              // 神圣符号，可引导秘法
 		// —— 附魔卷轴（对"物品"施加特殊附魔：手持卷轴点击目标物品即可附魔，不是教人法术）——
 		//   T1 基础附魔
@@ -876,7 +886,7 @@
 		"附魔·时间回溯" = list(800, /obj/item/enchantmentscroll/mythic/rewind),     // 给武器 / 衣物附魔：受击后回溯位置
 		"附魔·混沌风暴" = list(850, /obj/item/enchantmentscroll/mythic/chaos_storm), // 给武器附魔：随机混沌效果
 		"月光大剑"   = list(600, /obj/item/rogueweapon/greatsword/moonlight_greatsword),   // 本模块自定义：高级魔法巨剑
-	), 2)
+	), 2, list(/obj/item/reagent_containers/glass/z121_endless_pot/water, /obj/item/reagent_containers/glass/z121_endless_pot/tea, /obj/item/reagent_containers/glass/z121_endless_pot/milk, /obj/item/scrying))
 
 
 /datum/component/rpg_system/proc/get_delicacy_catalog()
@@ -944,6 +954,8 @@
 
 /proc/z121_rpg_artifact_catalog()
 	return z121_rpg_price_catalog(list(
+		"虚空魔方" = list(10000, /obj/item/void_cube, "description" = "能将物品封存于虚空的魔方，保留其原有容量和操作限制。"),
+		"贤者之石" = list(99999, /obj/item/philosophers_stone, "description" = "炼金终极造物，可施展点石成金、百药嬗变与凭空造物，沿用原有条件与冷却。"),
 		"阿斯特拉塔护符" = list(150, /obj/item/clothing/neck/roguetown/psicross/astrata),  // 太阳女神 阿斯特拉塔 的圣徽
 		"诺克护符"       = list(150, /obj/item/clothing/neck/roguetown/psicross/noc),      // 求知之神 诺克 的圣徽
 		"阿比索尔护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/abyssor),  // 深海之神 阿比索尔 的圣徽
@@ -969,7 +981,7 @@
 		"佩斯特拉·圣蛭" = list(10000, /obj/item/natural/worms/leech/cheele),
 		"玛勒姆·神锤" = list(10000, /obj/item/rogueweapon/hammer/artefact/malum),
 		"伊欧拉·圣心" = list(10000, /obj/item/artefact/eora_heart),
-	), 2, list(/obj/item/artifact/astrata_star, /obj/item/artefact/noc_phylactery, /obj/item/artefact/dendor_hose, /obj/item/fishingrod/abyssoid, /obj/item/artifact/ravox_lens, /obj/item/artefact/necra_censer, /obj/item/clothing/gloves/xylix, /obj/item/rogueweapon/surgery/multitool, /obj/item/needle/pestra, /obj/item/natural/worms/leech/cheele, /obj/item/rogueweapon/hammer/artefact/malum, /obj/item/artefact/eora_heart))
+	), 2, list(/obj/item/void_cube, /obj/item/philosophers_stone, /obj/item/artifact/astrata_star, /obj/item/artefact/noc_phylactery, /obj/item/artefact/dendor_hose, /obj/item/fishingrod/abyssoid, /obj/item/artifact/ravox_lens, /obj/item/artefact/necra_censer, /obj/item/clothing/gloves/xylix, /obj/item/rogueweapon/surgery/multitool, /obj/item/needle/pestra, /obj/item/natural/worms/leech/cheele, /obj/item/rogueweapon/hammer/artefact/malum, /obj/item/artefact/eora_heart))
 
 
 /datum/component/rpg_system/proc/get_catalog_for_tab(tab)
@@ -982,6 +994,8 @@
 			return get_consumable_catalog()
 		if("material")
 			return get_material_catalog()
+		if("raw_food")
+			return z121_rpg_raw_food_catalog()
 		if("magic")
 			return get_magic_catalog()
 		if("delicacy")
@@ -997,7 +1011,7 @@
 	if(!can_use_system(user))
 		return
 	// 数量只接受有限范围内的整数；其它商品仍只能一次购买一件。
-	var/max_quantity = tab == "material" ? RPG_SYSTEM_MATERIAL_MAX_QUANTITY : 1
+	var/max_quantity = (tab in list("material", "raw_food")) ? RPG_SYSTEM_MATERIAL_MAX_QUANTITY : 1
 	if(!isnum(quantity) || quantity != round(quantity) || quantity < 1 || quantity > max_quantity)
 		to_chat(user, span_warning("【系统提示】兑换数量必须为1至[max_quantity]的整数。"))
 		return
@@ -1016,14 +1030,19 @@
 		to_chat(user, span_warning("【系统提示】该商品价格异常，兑换失败。"))
 		return
 	var/cost = unit_cost * quantity // 单价与总价均从服务端目录计算。
-	var/item_path = entry[2] // 该商品的物品类型路径
-	// 积分校验：不足则明确告知差额，不扣分、不发货（界面禁用按钮之外，服务端仍重新校验）。
-	if(points < cost)
-		to_chat(user, span_warning("【系统提示】积分不足。需要 [cost]，你只有 [points]。"))
+	var/list/contents = entry["contents"] ? entry["contents"] : list(entry[2])
+	var/list/delivery_paths = list()
+	// 套装来自服务端静态目录；数量只表示购买份数，不能由客户端指定内容。
+	if(!length(contents))
 		return
-	// 类型路径健壮性校验：必须是 /obj/item 的子类型才生成，杜绝因配置笔误生成出奇怪的东西。
-	if(!ispath(item_path, /obj/item))
-		to_chat(user, span_warning("【系统提示】该商品配置异常（无效物品），兑换失败。"))
+	for(var/item_path in contents)
+		if(!ispath(item_path, /obj/item))
+			to_chat(user, span_warning("【系统提示】商品内容配置异常，未扣费。"))
+			return
+	for(var/i in 1 to quantity)
+		delivery_paths += contents
+	if(points < cost)
+		to_chat(user, span_warning("【系统提示】积分不足，需要 [cost] 积分。"))
 		return
 	var/turf/delivery_turf = get_turf(user)
 	if(!delivery_turf)
@@ -1032,25 +1051,12 @@
 	// 先扣费，再发货。先扣费可避免"发货成功但扣费抛错"导致的白嫖；即便物品最终落在脚下也算发货成功。
 	points -= cost
 	var/return_generation = z121_return_generation
-	if(tab == "material")
-		deliver_material_batch(user, item_path, quantity, cost, return_generation)
-		return
-	// 非材料商品保留单件发货方式。
-	var/obj/item/bought = new item_path(delivery_turf)
-	if(QDELETED(src) || return_generation != z121_return_generation)
-		return
-	if(QDELETED(bought))
-		points += cost
-		to_chat(user, span_warning("【系统提示】物品生成失败，积分已退还。"))
-		return
-	user.put_in_hands(bought)
-	// 兑换结果通过界面与音效反馈，连续购买不向聊天栏刷屏。
-	playsound(user, 'sound/misc/click.ogg', 50, FALSE) // 复用引擎已有音效，给一个轻量的"到账"反馈，无需新增音频资源。
+	deliver_item_batch(user, delivery_paths, cost, return_generation)
 
 
 // 暂存物品不进入地图，整批生成成功之前不可被玩家取走。
 /obj/effect/rpg_purchase_staging
-	name = "材料兑换暂存"
+	name = "物品兑换暂存"
 	invisibility = INVISIBILITY_ABSTRACT
 
 /obj/effect/rpg_purchase_staging/Destroy()
@@ -1059,12 +1065,12 @@
 		qdel(item)
 	return ..()
 
-/datum/component/rpg_system/proc/deliver_material_batch(mob/living/carbon/human/user, item_path, quantity, cost, return_generation)
+/datum/component/rpg_system/proc/deliver_item_batch(mob/living/carbon/human/user, list/item_paths, cost, return_generation)
 	var/obj/effect/rpg_purchase_staging/staging = new
 	var/list/bought_items = list()
 	var/failed = FALSE
 	try
-		for(var/i in 1 to quantity)
+		for(var/item_path in item_paths)
 			if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || QDELETED(staging))
 				failed = TRUE
 				break
@@ -1080,7 +1086,7 @@
 				if(QDELETED(bought) || bought.loc != staging)
 					failed = TRUE
 					break
-		if(!failed && bought_items.len == quantity)
+		if(!failed && bought_items.len == item_paths.len)
 			for(var/obj/item/bought in bought_items)
 				if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || !get_turf(user) || QDELETED(bought))
 					failed = TRUE
@@ -1090,7 +1096,7 @@
 			failed = TRUE
 	catch(var/exception/error)
 		failed = TRUE
-		stack_trace("RPG材料批量兑换失败：[error]")
+		stack_trace("RPG物品兑换失败：[error]")
 	// 最后一件物品的装备信号也可能触发死亡回溯，不能遗漏这次校验。
 	if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user))
 		failed = TRUE
@@ -1105,21 +1111,9 @@
 	if(failed)
 		points += cost
 		if(!QDELETED(user))
-			to_chat(user, span_warning("【系统提示】材料兑换未完成，本次积分已退还。"))
+			to_chat(user, span_warning("【系统提示】物品兑换未完成，本次积分已退还。"))
 		return
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
-
-
-/datum/component/rpg_system/proc/stat_upgrade_cost(current_value)
-	// 防御：把入参夹到合法属性区间 [1,20]，避免异常值算出负价 / 离谱价。
-	current_value = clamp(current_value, 1, 20)
-	return RPG_SYSTEM_STAT_COST_BASE * current_value
-
-
-/datum/component/rpg_system/proc/skill_upgrade_cost(current_level)
-	// 防御：把入参夹到合法等级区间 [0,6]，避免异常值算出负价 / 离谱价。
-	current_level = clamp(current_level, 0, SKILL_LEVEL_LEGENDARY)
-	return RPG_SYSTEM_SKILL_COST_BASE * (current_level + 1)
 
 
 /datum/component/rpg_system/proc/get_attribute_defs()
@@ -1146,17 +1140,18 @@
 	var/stat_key = defs[display] // 其对应的属性键
 	// 以"此刻真实值"为准定价与封顶，杜绝差价 / 越界。
 	var/cur = user.get_stat(stat_key)
-	// 满级校验：已达 20 则不扣费（否则 change_stat 会把加成吞进 BUF，等于白花积分）。
+	// 满级校验：已达 20 则不扣费（否则 change_stat 会把加成吞进 BUF，等于浪费成长点）。
 	if(cur >= 20)
 		to_chat(user, span_warning("【系统提示】[display] 已达上限（20），无法继续强化。"))
 		return
-	var/cost = stat_upgrade_cost(cur) // 本次升级的实际花费（随当前值递增）
-	// 积分校验：不足则提示，不扣分（界面禁用按钮之外，服务端仍重新校验）。
-	if(points < cost)
-		to_chat(user, span_warning("【系统提示】积分不足。需要 [cost]，你只有 [points]。"))
+	var/cost = 1
+	// 成长点校验：不足则提示，不扣点（界面禁用按钮之外，服务端仍重新校验）。
+	var/datum/component/rpg_journal/journal = get_journal()
+	if(journal.rpg_attribute_points < cost)
+		to_chat(user, span_warning("【系统提示】属性点不足，需要 [cost] 属性点。"))
 		return
-	// 扣费并 +1。change_stat 内部自带 1~20 封顶，这里再叠一层 get_stat 预检，双保险不浪费积分。
-	points -= cost
+	// 扣费并 +1。change_stat 内部自带 1~20 封顶，这里再叠一层 get_stat 预检，避免浪费属性点。
+	journal.rpg_attribute_points -= cost
 	user.change_stat(stat_key, 1)
 	// 强化后的属性与剩余积分由界面显示。
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
@@ -1238,17 +1233,18 @@
 		return
 	// 以"此刻真实等级"为准定价与封顶，杜绝差价 / 越界。
 	var/lvl = user.get_skill_level(skill_path)
-	// 满级校验：已达传奇（6）则不扣费（否则 adjust_skillrank 不会再升，等于白花积分）。
+	// 满级校验：已达传奇（6）则不扣费（否则 adjust_skillrank 不会再升，等于浪费成长点）。
 	if(lvl >= SKILL_LEVEL_LEGENDARY)
 		to_chat(user, span_warning("【系统提示】[display] 已达传奇等级，无法继续强化。"))
 		return
-	var/cost = skill_upgrade_cost(lvl) // 本次升级的实际花费（随当前等级递增）
-	// 积分校验：不足则提示，不扣分。
-	if(points < cost)
-		to_chat(user, span_warning("【系统提示】积分不足。需要 [cost]，你只有 [points]。"))
+	var/cost = 1
+	// 成长点校验：不足则提示，不扣点。
+	var/datum/component/rpg_journal/journal = get_journal()
+	if(journal.rpg_skill_points < cost)
+		to_chat(user, span_warning("【系统提示】技能点不足，需要 [cost] 技能点。"))
 		return
 	// 扣费并提升 1 级。adjust_skillrank 内部按经验阈值封顶到传奇，安全。
-	points -= cost
+	journal.rpg_skill_points -= cost
 	user.adjust_skillrank(skill_path, 1, TRUE) // 静默强化，结果与余额由界面显示。
 	playsound(user, 'sound/misc/click.ogg', 50, FALSE)
 
@@ -1491,10 +1487,11 @@
 	if(HAS_TRAIT(user, trait))
 		to_chat(user, span_warning("【系统提示】你已拥有【[display]】，无需重复兑换。"))
 		return
-	if(points < cost)
-		to_chat(user, span_warning("【系统提示】积分不足。需要 [cost]，你只有 [points]。"))
+	var/datum/component/rpg_journal/journal = get_journal()
+	if(journal.rpg_trait_points < cost)
+		to_chat(user, span_warning("【系统提示】特性点不足，需要 [cost] 特性点。"))
 		return
-	points -= cost
+	journal.rpg_trait_points -= cost
 	ADD_TRAIT(user, trait, RPG_SYSTEM_TRAIT_SOURCE)
 	// 移动效果有缓存，购买后立即重算，无需再受伤或切换步态。
 	if(trait == TRAIT_UNCAPPED_SPEED)
@@ -1519,7 +1516,7 @@
 	// 写入「特性键 -> 玩家自检描述」，第一人称、span_info 样式，与表中其它条目风格一致。
 	//   幂等：重复调用只是覆盖同一个键，二次启动也安全。
 	GLOB.roguetraits[TRAIT_RPG_SYSTEM] = span_info("我是世界旅人，持有只属于旅人的系统外挂：\
-		击杀怪物可赚取系统积分，积分能兑换 武器 / 装备 / 消耗品 / 材料 / 魔法物品，也能强化我的技能与属性。")
+		击杀怪物可赚取系统积分，积分能兑换 武器 / 装备 / 消耗品 / 材料 / 魔法物品，收入同时获得等量经验，升级获得成长点，用于强化属性、技能与兑换特性。")
 
 
 // 清理本文件使用的内部价格与规则常量；系统特性键保留供模块调用。
@@ -1527,8 +1524,6 @@
 #undef RPG_SYSTEM_SCAN_RANGE
 #undef RPG_SYSTEM_POINTS_PER_MAXHP
 #undef RPG_SYSTEM_MIN_KILL_POINTS
-#undef RPG_SYSTEM_STAT_COST_BASE
-#undef RPG_SYSTEM_SKILL_COST_BASE
 #undef RPG_SYSTEM_TRAIT_COST
 #undef RPG_SYSTEM_TRAIT_STRONG_COST
 #undef RPG_SYSTEM_TRAIT_OVERPOWERED_COST

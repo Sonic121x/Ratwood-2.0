@@ -83,6 +83,7 @@
 	var/chem_temp
 	var/rpg_present = FALSE
 	var/rpg_points = 0
+	var/list/rpg_growth
 
 /datum/z121_return_snapshot/New(mob/living/carbon/human/H)
 	body_ref = REF(H)
@@ -132,6 +133,8 @@
 	rpg_present = !!system
 	if(system)
 		rpg_points = system.points
+	var/datum/component/rpg_journal/journal = H.GetComponent(/datum/component/rpg_journal)
+	rpg_growth = journal ? journal.growth_data() : null
 
 /datum/z121_return_snapshot/proc/find_destination(mob/living/carbon/human/H)
 	var/turf/origin = locate(saved_x, saved_y, saved_z)
@@ -321,6 +324,12 @@
 			ADD_TRAIT(H, trait, source)
 
 /datum/z121_return_snapshot/proc/restore_rpg(mob/living/carbon/human/H)
+	// 成长点与属性、技能、特性一同回滚，不触发升级奖励。
+	var/datum/component/rpg_journal/journal = H.GetComponent(/datum/component/rpg_journal)
+	if(!journal && (rpg_present || rpg_growth))
+		journal = H.AddComponent(/datum/component/rpg_journal)
+	if(journal)
+		journal.restore_growth(rpg_growth)
 	var/datum/component/rpg_system/system = H.GetComponent(/datum/component/rpg_system)
 	if(rpg_present)
 		if(!system)
