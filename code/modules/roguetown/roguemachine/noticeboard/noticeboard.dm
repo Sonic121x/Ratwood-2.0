@@ -1,7 +1,7 @@
 
 /obj/structure/roguemachine/noticeboard
 	name = "告示板"
-	desc = "一块巨大的木制告示板，上面贴满了来自整个腐木谷的告示。顶部还设有一处 ZAD告示台 的栖架。"
+	desc = "一块巨大的木制告示板，上面贴满了来自整个腐木谷的告示。顶部设有供扎德鸟停歇的栖架。"
 	icon = 'icons/roguetown/structure/noticeboard64.dmi'
 	icon_state = "noticeboard0"
 	density = TRUE
@@ -14,7 +14,7 @@
 
 /obj/structure/roguemachine/boardbarrier //Blocks sprite locations
 	name = ""
-	desc = "A large wooden notice board, carrying postings from all across Rotwood Vale. A ZAD perch sits atop it."
+	desc = "一块巨大的木制告示板，上面贴满了来自整个腐木谷的告示。顶部设有供扎德鸟停歇的栖架。"
 	icon = 'icons/roguetown/underworld/underworld.dmi'
 	icon_state = "spiritpart"
 	density = TRUE
@@ -171,7 +171,7 @@
 			var/datum/economic_region/ER = B.get_region()
 			row["blockaded"] = TRUE
 			row["blockade_writ_out"] = B.has_active_scroll() ? TRUE : FALSE
-			row["blockade_faction_label"] = F ? "[F.group_word] of [F.name_plural]" : (B.faction_id || "")
+			row["blockade_faction_label"] = F ? "[F.name_plural][F.group_word]" : (B.faction_id || "")
 			row["blockade_region_label"] = ER ? ER.name : (B.region_id || "")
 			row["blockade_days_active"] = max(0, GLOB.dayspassed - B.day_started)
 		else
@@ -313,7 +313,7 @@
 		var/status = merc_data["status"] || "Available"
 		var/list/entry = list(
 			"name" = merc.real_name,
-			"advjob" = merc.advjob || "Mercenary",
+			"advjob" = merc.advjob || "佣兵",
 			"message" = merc_data["message"] || "",
 		)
 		switch(status)
@@ -472,10 +472,10 @@
 	if(!P)
 		return
 	if(P.tier == POSTING_TIER_LISTING)
-		to_chat(H, span_warning("A Standing Listing may not be taken down by authority while its issuer lives."))
+		to_chat(H, span_warning("只要发布者尚在人世，就不能凭职权撤下其常设告示。"))
 		return
 	playsound(loc, 'sound/foley/dropsound/paper_drop.ogg', 50, FALSE, -1)
-	loc.visible_message(span_smallred("[H] tears down a posting!"))
+	loc.visible_message(span_smallred("[H]撕下了一张告示！"))
 	noticeboard_remove_posting(P)
 	message_admins("[ADMIN_LOOKUPFLW(H)] has authoritatively removed a noticeboard post by [P.truename].")
 
