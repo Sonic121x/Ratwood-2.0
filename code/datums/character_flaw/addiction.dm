@@ -278,8 +278,8 @@
 	status_type = STATUS_EFFECT_REFRESH
 
 /atom/movable/screen/alert/status_effect/debuff/false_sensation
-	name = "False Sensation"
-	desc = "My body is aflame, but it's not real. Only a real touch of passion will sate my urges."
+	name = "虚假快感"
+	desc = "我的身体欲火如焚，但这感觉并不真实。只有真正的激情爱抚才能满足我的渴望。"
 	icon_state = "debuff"
 
 /datum/charflaw/addiction/baothamarked

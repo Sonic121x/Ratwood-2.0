@@ -1111,6 +1111,6 @@
 	status_type = STATUS_EFFECT_UNIQUE
 
 /atom/movable/screen/alert/status_effect/debuff/swapped_intent_npc
-	name = "Swapped Intent Cooldown (NPC)"
-	desc = "I swapped my weapon intent, I must wait before I can do it again."
+	name = "武器意图切换冷却（NPC）"
+	desc = "我刚切换过武器意图，必须等一会儿才能再次切换。"
 	icon_state = "strikecd"
