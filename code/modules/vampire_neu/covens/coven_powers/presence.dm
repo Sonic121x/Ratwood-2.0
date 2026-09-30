@@ -307,8 +307,8 @@
 		return
 
 	if(prob(60))
-		to_chat(user, "<span class='warning'>You find yourself unable to bring yourself to harm [source]! Their presence is too overwhelming!</span>")
-		to_chat(source, "<span class='notice'>[user] hesitates, overwhelmed by your majesty.</span>")
+		to_chat(user, "<span class='warning'>你发现自己根本无法下手伤害[source]！对方的威势太过强大！</span>")
+		to_chat(source, "<span class='notice'>[user]被你的威严震慑，犹豫不决。</span>")
 		return COMPONENT_NO_AFTERATTACK
 
 /datum/status_effect/majesty_compulsion
@@ -319,7 +319,7 @@
 
 /datum/status_effect/majesty_compulsion/on_creation(mob/living/new_owner, mob/living/user)
 	majesty_user = user
-	to_chat(new_owner, span_cultbigbold("You are compelled by an overwhelming presence. You find it nearly impossible to act against them."))
+	to_chat(new_owner, span_cultbigbold("你受到一股强大威势的压制，几乎无法做出任何违抗对方的举动。"))
 	return ..()
 
 /datum/status_effect/majesty_compulsion/on_apply()
@@ -355,7 +355,7 @@
 /datum/status_effect/majesty_compulsion/proc/on_majesty_user_gone()
 	SIGNAL_HANDLER
 
-	to_chat(owner, span_notice("The overwhelming presence releases its grip on you."))
+	to_chat(owner, span_notice("那股强大的威势终于不再压制你了。"))
 	qdel(src)
 
 /datum/status_effect/majesty_compulsion/proc/on_pre_attack(obj/item/source, atom/target, mob/user, params)
@@ -365,7 +365,7 @@
 		return
 
 	if(prob(80))
-		to_chat(user, "<span class='warning'>You cannot bring yourself to attack [majesty_user]! Their presence is too overwhelming!</span>")
+		to_chat(user, "<span class='warning'>你无法下手攻击[majesty_user]！对方的威势太过强大！</span>")
 		return COMPONENT_NO_ATTACK
 
 /datum/status_effect/majesty_compulsion/proc/on_pre_attack_secondary(obj/item/source, atom/target, mob/user, params)
@@ -375,7 +375,7 @@
 		return
 
 	if(prob(80))
-		to_chat(user, "<span class='warning'>You cannot bring yourself to attack [majesty_user]! Their presence is too overwhelming!</span>")
+		to_chat(user, "<span class='warning'>你无法下手攻击[majesty_user]！对方的威势太过强大！</span>")
 		return FALSE
 	//	COMPONENT_SECONDARY_CANCEL_ATTACK_CHAIN
 
@@ -389,14 +389,14 @@
 
 	if(findtext(message, majesty_user.name) && (findtext(message, "fuck") || findtext(message, "shit") || findtext(message, "damn") || findtext(message, "kill") || findtext(message, "attack")))
 		if(prob(70))
-			to_chat(source, "<span class='warning'>The words die in your throat. You cannot speak ill of [majesty_user]!</span>")
+			to_chat(source, "<span class='warning'>话语卡在你的喉咙里。你无法说出[majesty_user]的坏话！</span>")
 			speech_args[SPEECH_MESSAGE] = ""
 
 /atom/movable/screen/alert/status_effect/majesty_compulsion
-	name = "Overwhelming Presence"
-	desc = "You are compelled by an overwhelming presence. You find it nearly impossible to act against them."
+	name = "威势震慑"
+	desc = "你受到一股强大威势的压制，几乎无法做出任何违抗对方的举动。"
 	icon_state = "debuff"
 
 /datum/stressevent/majesty_compelled
-	desc = "There's someone here with such an overwhelming presence that I can barely think straight around them."
+	desc = "这里有人的威势如此强大，我在对方身边几乎无法清醒地思考。"
 	stressadd = -3
