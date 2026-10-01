@@ -928,10 +928,10 @@
 	randomize_blade_int_on_init = TRUE
 
 /obj/item/rogueweapon/halberd/bardiche/stalker
-	name = "drow bardiche"
-	desc = "While similar to the iron bardiche wielded by petty drow raiders, this elegant polearm cut a far more striking image. \
-	Finely forged and superbly balanced, the bardiche of a drow cavalier can cleave through enemy chaff both one-handed on spiderback \
-	& two-handed on foot."
+	name = "卓尔长柄战斧"
+	desc = "虽然与寻常卓尔掠袭者使用的铁制长柄战斧相似，这柄优雅的长柄武器却显得更为夺目。 \
+	卓尔骑兵的长柄战斧锻造精良，重心平衡，无论是在蜘蛛背上单手挥舞， \
+	还是徒步作战时双手持握，都能劈开敌军杂兵。"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	icon_state = "drowbardiche"
 	force = 25
