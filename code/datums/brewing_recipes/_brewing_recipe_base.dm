@@ -69,7 +69,7 @@
 	if(helpful_hints)
 		html += "<strong>[helpful_hints]</stong><br>"
 	if(pre_reqs)
-		html += "<strong>需要我刚刚在[heat_required ? "蒸馏器" : "酒桶"]中制成过[initial(pre_reqs.name)]。</stong><br>"
+		html += "<strong>需要先在同一个[heat_required ? "蒸馏器" : "发酵桶"]中制成[initial(pre_reqs.name)]。</stong><br>"
 	if(heat_required)
 		html += "<strong>需要在温度至少为 [heat_required - 273.1] 摄氏度的蒸馏器中制作。</stong><br>"
 

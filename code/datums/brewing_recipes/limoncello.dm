@@ -1,8 +1,8 @@
 /datum/brewing_recipe/limoncello
-	name = "柠檬酒"
+	name = "柠檬甜酒"
 	category = "烈酒"
-	bottle_name = "柠檬酒"
-	bottle_desc = "一瓶本地蒸馏的柠檬酒。口感甜润、带有柑橘清香与灼热余韵。"
+	bottle_name = "柠檬甜酒"
+	bottle_desc = "一瓶本地蒸馏的柠檬甜酒。口感甜润、带有柑橘清香与灼热余韵。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/limoncello
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/limoncello
 	pre_reqs = /datum/reagent/consumable/ethanol/voddena
