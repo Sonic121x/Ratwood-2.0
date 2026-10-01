@@ -1,6 +1,6 @@
 /datum/brewing_recipe/butterhairs
 	name = "黄油须酒"
-	category = "Grain"
+	category = "谷物"
 	bottle_name = "黄油须酒"
 	bottle_desc = "一瓶矮人酿制的黄油须酒。浓郁顺滑，带着黄油般的温润口感。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/butterhairs
@@ -13,7 +13,7 @@
 
 /datum/brewing_recipe/stonebeards
 	name = "石须珍藏"
-	category = "Grain"
+	category = "谷物"
 	bottle_name = "石须珍藏"
 	bottle_desc = "一瓶矮人酿制的石须珍藏。采用矮人工艺酿成的烈酒，带有浓烈的燕麦风味。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/stonebeards
