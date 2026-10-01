@@ -249,9 +249,9 @@
 	anvilrepair = null
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/shadowplate
-	name = "drow cavalier helm"
-	desc = "A greathelm commonly worn by Underdark spider-jockies. The golden wings convey both a feminine elegance and martriarchal tyranny.\
-	While lacking an adjustable visor, the winged halo and accompanying plumage can detach from the helm and be worn seperately."
+	name = "卓尔骑兵头盔"
+	desc = "幽暗地域的蜘蛛骑手常戴的一种大盔。金色翼饰既展现女性的优雅，也彰显女族长的暴虐威权。\
+	虽然没有可调节的面甲，但带翼的冠环与羽饰可以从头盔上拆下，单独佩戴。"
 	item_state = "gildeddrowhelm"
 	icon_state = "gildeddrowhelm"
 	adjustable = CAN_CADJUST
@@ -269,7 +269,7 @@
 	..()
 	if(!(istype(W, /obj/item/natural/feather) && !detail_tag))
 		return
-	user.visible_message(span_warning("[user] adds [W] to [src]."))
+	user.visible_message(span_warning("[user]把[W]加到了[src]上。"))
 	user.transferItemToLoc(W, src, FALSE, FALSE)
 	detail_color = COLOR_WHITE
 	detail_tag = "_detail"
