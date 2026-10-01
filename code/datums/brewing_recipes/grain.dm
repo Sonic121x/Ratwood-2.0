@@ -1,8 +1,8 @@
 /datum/brewing_recipe/beer
-	name = "小麦啤酒"
+	name = "啤酒"
 	category = "谷物"
-	bottle_name = "小麦啤酒"
-	bottle_desc = "一瓶本地酿造的小麦啤酒。口感清淡，是西境的常见饮品。"
+	bottle_name = "啤酒"
+	bottle_desc = "一瓶本地用小麦酿造的啤酒。口感清淡，是西境的常见饮品。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/beer
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/beer
 	needed_reagents = list(/datum/reagent/water = 198)
@@ -12,9 +12,9 @@
 	sell_value = 30
 
 /datum/brewing_recipe/beer/oat
-	name = "燕麦酒"
-	bottle_name = "燕麦酒"
-	bottle_desc = "一瓶本地酿造的燕麦酒。风味浓郁而饱满。"
+	name = "艾尔啤酒"
+	bottle_name = "艾尔啤酒"
+	bottle_desc = "一瓶本地用燕麦酿造的艾尔啤酒。风味浓郁而饱满。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/ale
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/beer_oat
 	needed_items = list(/obj/item/reagent_containers/food/snacks/grown/oat = 6)
