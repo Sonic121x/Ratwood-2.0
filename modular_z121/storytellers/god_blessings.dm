@@ -117,7 +117,7 @@
 
 // --- Astrata（日光 / 秩序 / 治疗）：一缕穿云日光，闪光 + 小幅治愈 + 好心情 ----
 /datum/god_blessing/astrata
-	name = "Astrata 的日光"
+	name = "阿斯特拉塔的日光"
 	sound = 'sound/magic/astrata_choir.ogg'
 
 /datum/god_blessing/astrata/bestow(mob/living/follower)
@@ -133,12 +133,12 @@
 	// 一段“受庇佑”的好心情（情绪事件本就存在于引擎中）。
 	if(iscarbon(follower))
 		follower.add_stress(/datum/stressevent/blessed)
-	announce(follower, "一缕温暖的日光穿透云层洒在我身上，Astrata 的辉光抚平了些许伤痛。")
+	announce(follower, "一缕温暖的日光穿透云层洒在我身上，阿斯特拉塔的辉光抚平了些许伤痛。")
 	return TRUE
 
 // --- Noc（知识 / 魔法 / 书籍）：一闪灵感的低语，并落下一本无名薄册 -----------
 /datum/god_blessing/noc
-	name = "Noc 的启示"
+	name = "诺克的启示"
 	sound = 'sound/magic/bless.ogg'
 	// 随机低语库：每次惊喜都念出其中一条，增添“偶得灵感”的味道。
 	var/static/list/insights = list(
@@ -157,7 +157,7 @@
 
 // --- Ravox（荣耀 / 战争 / 武勇）：号角回响，瞬间恢复耐力（“第二口气”）--------
 /datum/god_blessing/ravox
-	name = "Ravox 的战意"
+	name = "拉沃克斯的战意"
 	sound = 'sound/magic/holyshield.ogg'
 
 /datum/god_blessing/ravox/bestow(mob/living/follower)
@@ -166,12 +166,12 @@
 	// “第二口气”：把耐力消耗清零并刷新——小而提神，不改变战力上限。
 	follower.setStaminaLoss(0, FALSE)
 	follower.update_stamina()
-	announce(follower, "Zericho 的号角在血脉中骤然回响，疲惫一扫而空，我重新挺直了脊背！")
+	announce(follower, "泽里科的号角在血脉中骤然回响，疲惫一扫而空，我重新挺直了脊背！")
 	return TRUE
 
 // --- Abyssor（流水 / 潮汐 / 渔获）：一条鱼随潮水拍在脚边 ---------------------
 /datum/god_blessing/abyssor
-	name = "Abyssor 的渔获"
+	name = "阿比索尔的渔获"
 	sound = 'sound/magic/abyssor_splash.ogg'
 	// 随机鱼种库，让每次渔获都略有不同。
 	var/static/list/fish_types = list(
@@ -186,7 +186,7 @@
 
 // --- Xylix（无常 / 机缘 / 幸运）：命运掷骰——半数掉几枚铜币，半数只是个玩笑 ---
 /datum/god_blessing/xylix
-	name = "Xylix 的机缘"
+	name = "赛利克斯的机缘"
 	sound = 'sound/magic/comedy.ogg'
 
 /datum/god_blessing/xylix/bestow(mob/living/follower)
@@ -204,7 +204,7 @@
 
 // --- Necra（死亡 / 安宁）：坟墓般的凉意，平复毒性与心绪 ---------------------
 /datum/god_blessing/necra
-	name = "Necra 的安息"
+	name = "内克拉的安息"
 	sound = 'sound/magic/psydonrespite.ogg'
 
 /datum/god_blessing/necra/bestow(mob/living/follower)
@@ -215,12 +215,12 @@
 	follower.updatehealth()
 	if(iscarbon(follower))
 		follower.add_stress(/datum/stressevent/blessed)
-	announce(follower, "一阵腐朽却宁静的凉意漫过周身，Necra 让我的心绪归于沉静，体内的毒性也悄然褪去。")
+	announce(follower, "一阵腐朽却宁静的凉意漫过周身，内克拉让我的心绪归于沉静，体内的毒性也悄然褪去。")
 	return TRUE
 
 // --- Pestra（安康 / 医疗 / 炼金）：一缕药香，缝合伤口、驱散病气 -------------
 /datum/god_blessing/pestra
-	name = "Pestra 的良方"
+	name = "佩斯特拉的良方"
 	sound = 'sound/magic/churn.ogg'
 
 /datum/god_blessing/pestra/bestow(mob/living/follower)
@@ -231,12 +231,12 @@
 	follower.heal_wounds(4)
 	follower.adjustToxLoss(-4, FALSE)
 	follower.updatehealth()
-	announce(follower, "一缕清凉的炼金药香拂过，Pestra 的良方为我缝合了伤口、驱散了病气。")
+	announce(follower, "一缕清凉的炼金药香拂过，佩斯特拉的良方为我缝合了伤口、驱散了病气。")
 	return TRUE
 
 // --- Malum（劳作 / 锻造 / 矿井）：一声沉响，落下一块铜矿石 -------------------
 /datum/god_blessing/malum
-	name = "Malum 的矿藏"
+	name = "玛勒姆的矿藏"
 	sound = 'sound/magic/clang.ogg'
 
 /datum/god_blessing/malum/bestow(mob/living/follower)
@@ -246,7 +246,7 @@
 
 // --- Eora（爱意 / 正面）：温柔花香，一只玫瑰花冠落入怀中 + 好心情 ----------
 /datum/god_blessing/eora
-	name = "Eora 的爱意"
+	name = "伊欧拉的爱意"
 	sound = 'sound/magic/eora_bless.ogg'
 
 /datum/god_blessing/eora/bestow(mob/living/follower)
@@ -259,7 +259,7 @@
 
 // --- Dendor（自然 / 丰收）：晨露闪烁，一份山林的馈赠出现在身旁 -------------
 /datum/god_blessing/dendor
-	name = "Dendor 的馈赠"
+	name = "登多尔的馈赠"
 	sound = 'sound/magic/birdsong.ogg'
 	// 随机山野食材库（均为已确认存在的可生长作物）。
 	var/static/list/forage = list(
@@ -281,19 +281,19 @@
 
 // --- Zizo（死灵 / 进步 / 腐朽）：虚空低语，留下一根森冷白骨 -----------------
 /datum/god_blessing/zizo
-	name = "Zizo 的低语"
+	name = "齐佐的低语"
 	sound = 'sound/magic/zizo_snuff.ogg'
 
 /datum/god_blessing/zizo/bestow(mob/living/follower)
 	if(QDELETED(follower))
 		return FALSE
 	// 先来一段阴森低语（感官），再留下一根白骨（实物，契合死灵主题）。
-	announce(follower, "受诅者的低语自虚空飘来，Zizo 将一缕腐朽的力量轻触我的指尖……")
+	announce(follower, "受诅者的低语自虚空飘来，齐佐将一缕腐朽的力量轻触我的指尖……")
 	return give_gift(follower, /obj/item/natural/bone, "一根森白的骨头凭空出现，落在 [follower] 脚边。", null)
 
 // --- Baotha（香料 / 混沌 / 沉醉）：突如其来的微醺（温和的醉酒状态）---------
 /datum/god_blessing/baotha
-	name = "Baotha 的微醺"
+	name = "巴奥莎的微醺"
 	sound = 'sound/magic/comedy.ogg'
 
 /datum/god_blessing/baotha/bestow(mob/living/follower)
@@ -301,12 +301,12 @@
 		return FALSE
 	// 施加引擎自带的温和“醉酒”状态（INT-2/WIL+1，约 5 分钟）——轻巧的“上头”小惊喜。
 	follower.apply_status_effect(/datum/status_effect/buff/drunk)
-	announce(follower, "一股甜腻的酒气没来由地涌上头顶，Baotha 让我没缘由地咯咯笑起来，脚步都有些发飘。")
+	announce(follower, "一股甜腻的酒气没来由地涌上头顶，巴奥莎让我没缘由地咯咯笑起来，脚步都有些发飘。")
 	return TRUE
 
 // --- Graggar（流血 / 食人 / 征服）：血腥味中，一块生肉砸在脚边 ---------------
 /datum/god_blessing/graggar
-	name = "Graggar 的血食"
+	name = "格拉加尔的血食"
 	sound = 'sound/magic/barbroar.ogg'
 
 /datum/god_blessing/graggar/bestow(mob/living/follower)
@@ -316,7 +316,7 @@
 
 // --- Matthios（盗窃 / 贪婪）：几枚铜币神不知鬼不觉地滑入脚边 ----------------
 /datum/god_blessing/matthios
-	name = "Matthios 的私囊"
+	name = "马西奥斯的私囊"
 	sound = 'sound/foley/coins1.ogg'
 
 /datum/god_blessing/matthios/bestow(mob/living/follower)

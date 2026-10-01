@@ -267,19 +267,19 @@
 		var/stamratio = user.stamina / user.max_stamina
 		var/previous_ratio = previous_stamina / user.max_stamina
 		if(stamratio >= 0.25 && previous_ratio < 0.25)
-			fatigue_text = "<font color = '#a8af9b'>Winded</font>"
+			fatigue_text = "<font color = '#a8af9b'>气喘吁吁</font>"
 			y_offset = BALLOON_Y_OFFSET_TIER1
 		if(stamratio >= 0.5 && previous_ratio < 0.5)
-			fatigue_text = "<font color = '#d4d36c'>Drained</font>"
+			fatigue_text = "<font color = '#d4d36c'>体力不支</font>"
 			y_offset = BALLOON_Y_OFFSET_TIER2
 		if(stamratio >= 0.75 && previous_ratio < 0.75)
-			fatigue_text = "<font color = '#a8665a'>Fatigued</font>"
+			fatigue_text = "<font color = '#a8665a'>疲惫不堪</font>"
 			y_offset = BALLOON_Y_OFFSET_TIER3
 		if(fatigue_text)
 			if(!HAS_TRAIT(human_user, TRAIT_DECEIVING_MEEKNESS))
 				human_user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, fatigue_text, 20, y_offset)
 			else if(prob(10))
-				human_user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, "<i>Tired...?</i>", 20, y_offset)
+				human_user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, "<i>累了……？</i>", 20, y_offset)
 	// 传入零只刷新耐力界面、恢复延迟并处理力竭，不会扣除能量。
 	if(!user.stamina_add(0))
 		user.stop_attack()

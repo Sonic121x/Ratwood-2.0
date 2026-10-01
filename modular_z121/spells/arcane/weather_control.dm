@@ -38,7 +38,7 @@
 // “晴天 / 放晴”这一项的菜单显示文本 + 其在天气总表里对应的“哨兵值”。
 // 放晴与其它天气不同：它没有对应的 /datum/particle_weather 类型，本质是“结束当前天气”，
 // 因此在天气总表里用一个特殊的字符串哨兵 WEATHER_SENTINEL_CLEAR 标记，dispatch 时特判。
-#define WEATHER_OPT_SUNNY       "晴天 · 放晴（Clear / Sunny）"
+#define WEATHER_OPT_SUNNY       "晴天 · 放晴"
 #define WEATHER_SENTINEL_CLEAR  "__clear__"
 
 // ===========================================================================
@@ -148,22 +148,22 @@
 	// 其余每一项的值都是主线 /datum/particle_weather 的具体子类型（仅调用、不修改）。
 	var/static/list/weather_menu = list(
 		WEATHER_OPT_SUNNY    = WEATHER_SENTINEL_CLEAR,              // 放晴 = 结束当前天气
-		"小雨（Rain）"        = /datum/particle_weather/rain_gentle, // 温和小雨
-		"暴雨（Rainstorm）"   = /datum/particle_weather/rain_storm,  // 电闪雷鸣的暴雨
-		"飓风（Hurricane）"   = /datum/particle_weather/hurricane,   // 狂暴飓风
-		"降雪（Snowfall）"    = /datum/particle_weather/snow_gentle, // 静谧小雪
-		"暴雪（Snowstorm）"   = /datum/particle_weather/snow_storm,  // 凛冽暴雪
-		"冰雹（Hail）"        = /datum/particle_weather/hail,        // 砸落的冰雹
-		"干燥阵风（Dry Gale）" = /datum/particle_weather/sand_gentle, // 干燥的阵风
-		"沙暴（Sandstorm）"   = /datum/particle_weather/sand_storm,  // 遮天蔽日的沙暴
-		"浓雾（Fog）"         = /datum/particle_weather/fog,         // 弥漫的浓雾
-		"落叶劲风（Falling Leaves）" = /datum/particle_weather/leaves_gentle, // 卷起落叶的劲风
-		"樱吹雪（Sakura Breeze）"    = /datum/particle_weather/sakura_gentle, // 和煦的樱花风
-		"热浪（Heat Wave）"   = /datum/particle_weather/heat_wave,   // 灼人的热浪
-		"干雷暴（Dry Thunderstorm）" = /datum/particle_weather/dry_thunderstorm, // 无雨的干雷暴
-		"灰烬风暴（Ashstorm）" = /datum/particle_weather/ashstorm,   // 焚灼的灰烬风暴
-		"萤火之夜（Fireflies）" = /datum/particle_weather/fireflies, // 萤火漫舞（无害氛围）
-		"诡异血雨（Blood Rain）" = /datum/particle_weather/blood_rain_gentle, // 不祥的血雨
+		"小雨"        = /datum/particle_weather/rain_gentle, // 温和小雨
+		"暴雨"   = /datum/particle_weather/rain_storm,  // 电闪雷鸣的暴雨
+		"飓风"   = /datum/particle_weather/hurricane,   // 狂暴飓风
+		"降雪"    = /datum/particle_weather/snow_gentle, // 静谧小雪
+		"暴雪"   = /datum/particle_weather/snow_storm,  // 凛冽暴雪
+		"冰雹"        = /datum/particle_weather/hail,        // 砸落的冰雹
+		"干燥阵风" = /datum/particle_weather/sand_gentle, // 干燥的阵风
+		"沙暴"   = /datum/particle_weather/sand_storm,  // 遮天蔽日的沙暴
+		"浓雾"         = /datum/particle_weather/fog,         // 弥漫的浓雾
+		"落叶劲风" = /datum/particle_weather/leaves_gentle, // 卷起落叶的劲风
+		"樱吹雪"    = /datum/particle_weather/sakura_gentle, // 和煦的樱花风
+		"热浪"   = /datum/particle_weather/heat_wave,   // 灼人的热浪
+		"干雷暴" = /datum/particle_weather/dry_thunderstorm, // 无雨的干雷暴
+		"灰烬风暴" = /datum/particle_weather/ashstorm,   // 焚灼的灰烬风暴
+		"萤火之夜" = /datum/particle_weather/fireflies, // 萤火漫舞（无害氛围）
+		"诡异血雨" = /datum/particle_weather/blood_rain_gentle, // 不祥的血雨
 	)
 
 	// 弹出 tgui 列表菜单让施法者选择想要的天气。传入关联列表时，

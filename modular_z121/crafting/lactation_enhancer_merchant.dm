@@ -24,7 +24,7 @@
 	// 中文：分类必须等于 bathvend 七个分类之一，否则不会出现在任何页签。
 	group = "Drugs"											// Must match a bathvend category to be visible.
 	// 中文：货箱名/类型沿用商贩公会通用箱（与其它浴场补给包一致的观感）。
-	crate_name = "merchant guild's crate"					// Cosmetic crate label (matches sibling packs).
+	crate_name = "商人行会货箱"					// Cosmetic crate label (matches sibling packs).
 	crate_type = /obj/structure/closet/crate/chest/merchant	// Cosmetic crate type (matches sibling packs).
 	// 中文：货品名称——商贩机清单中显示的条目名。
 	name = "催乳剂"											// Display name in the BRASSFACE listing.

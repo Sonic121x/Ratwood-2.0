@@ -41,7 +41,7 @@
 		// 实测 Novice 下火枪手仍可能表现为不识字，这里上调到 Apprentice 以确保稳定识字。
 		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
 	)
-	extra_context = "拥有铁心、火枪手与闪避大师；精通火器，兼具军刀近战与追踪能力，是佣兵-Grenzelhoft 旗下极为罕见的火器专家。"
+	extra_context = "拥有铁心、火枪手与闪避大师；精通火器，兼具军刀近战与追踪能力，是格伦泽尔霍夫特佣兵中极为罕见的火器专家。"
 
 /datum/outfit/job/roguetown/mercenary/z121_musketeer/pre_equip(mob/living/carbon/human/H)
 	..()

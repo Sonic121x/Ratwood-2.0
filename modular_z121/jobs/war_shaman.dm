@@ -101,7 +101,7 @@
 	if(!chosen_label)
 		// 若玩家一时取消，补发通用选马法术，避免这次机会永久丢失。
 		H.AddSpell(new /obj/effect/proc_holder/spell/self/choose_riding_virtue_mount)
-		to_chat(H, span_notice("你暂时没有决定坐骑。稍后可使用“Choose Mount”能力重新选择。"))
+		to_chat(H, span_notice("你暂时没有决定坐骑。稍后可使用坐骑选择能力重新选择。"))
 		return
 
 	var/chosen_mount_type = mount_choices[chosen_label]

@@ -19,6 +19,7 @@
 	icon_state = "shortgun1"
 	item_state = "shortgun1"
 	force = 10
+	max_integrity = 99999
 	possible_item_intents = list(/datum/intent/shoot/firearm/z121_millicombat_pistol, /datum/intent/arc/firearm/z121_millicombat_pistol, /datum/intent/mace/strike/wood)
 	gripped_intents = null
 	twohands_required = FALSE
