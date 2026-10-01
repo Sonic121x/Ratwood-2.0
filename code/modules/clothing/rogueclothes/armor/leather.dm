@@ -228,8 +228,8 @@
 	cold_protection = CHEST | ARM_LEFT | ARM_RIGHT
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/shadowvest
-	name = "drowcraft vest"
-	desc = "Traditional Drow armour made from the hide of one of the Underdark's many beasts, underlayered with the chitin plates of a drider. Durable yet still flexible, perfect for skirmishers."
+	name = "卓尔精制背心"
+	desc = "一件传统卓尔护甲，以幽暗地域野兽的皮革制成，内层衬有蛛化卓尔的几丁质甲片。既耐用又灵活，是散兵的理想装备。"
 	icon_state = "shadowvest"
 	item_state = "shadowvest"
 	body_parts_covered = COVERAGE_FULL
