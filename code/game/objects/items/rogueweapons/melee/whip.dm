@@ -363,9 +363,9 @@
 	)
 
 /obj/item/rogueweapon/whip/urumi/spider
-	name = "drow urumi"
-	desc = "Two darkly shimmering and flexible blades coiling outwards from a gilded hilt wrapped with a small piece of spider-silk. \
-	The knuckleguarded handle betrays the weapon's grim purpose: to bring the enemies of the drow to their knees, be it through blade or bludgeon."
+	name = "卓尔软剑"
+	desc = "两条泛着幽暗微光的柔韧剑刃，从缠着一小片蛛丝的鎏金剑柄向外盘卷延伸。 \
+	带护手的剑柄揭示了这件武器的残酷用途：无论以刃斩击，还是以柄重击，都要让卓尔的敌人屈膝倒地。"
 	icon_state = "spider_urumi"
 	force = 31//+1, same as spider whip
 	minstr = 10
