@@ -19,77 +19,77 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/spiderurumi
-	name = "Drow Urumi"
+	name = "卓尔软剑"
 	cost = 95
 	contains = list(/obj/item/rogueweapon/whip/urumi/spider)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/spider_falx
-	name = "Stalker Falx"
+	name = "潜猎者镰刃"
 	cost = 95
 	contains = list(/obj/item/rogueweapon/sword/falx/stalker)
 	ship_qty_min = 2
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_greatsabre
-	name = "Greatsabre"
+	name = "大军刀"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/sword/long/elf/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_longsword
-	name = "Thrusting Longsword"
+	name = "刺击长剑"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/sword/long/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_messer
-	name = "Drow Kriegmesser"
+	name = "卓尔战刀"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/sword/long/kriegmesser/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_shotel
-	name = "Drow Shotel"
+	name = "卓尔绍特尔弯刀"
 	cost = 95
 	contains = list(/obj/item/rogueweapon/sword/long/shotel/stalker)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/spider_hooksword
-	name = "Drow Hooksword"
+	name = "卓尔钩镰刀"
 	cost = 95
 	contains = list(/obj/item/rogueweapon/sword/sabre/hook/stalker)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/spider_aruval
-	name = "Drow Aruval"
+	name = "卓尔阿鲁瓦尔刀"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/sword/long/rhomphaia/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_bardiche
-	name = "Drow Bardiche"
+	name = "卓尔长柄战斧"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/halberd/bardiche/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_spikedflail
-	name = "Drow Spined-Greatflail"
+	name = "卓尔尖刺巨型连枷"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/flail/peasantwarflail/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_greatflail
-	name = "Drow Hefty Greatflail"
+	name = "卓尔重型巨型连枷"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/flail/peasantwarflail/stalker/alt)
 	ship_qty_min = 1
@@ -117,21 +117,21 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/scourge_helm
-	name = "Crocs Cavallier's Helm"
+	name = "蛛牙骑兵头盔"
 	cost = 130
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/shadowplate)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/smiling_helm
-	name = "Smiling Helm"
+	name = "笑面头盔"
 	cost = 90
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/shadowplate)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/shadowvest
-	name = "Drowcraft Vest"
+	name = "卓尔精制背心"
 	cost = 130
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/shadowvest)
 	ship_qty_min = 1
