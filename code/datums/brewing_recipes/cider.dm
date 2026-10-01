@@ -1,8 +1,8 @@
 /datum/brewing_recipe/cider
-	name = "苹果西打酒"
+	name = "苹果西打"
 	category = "果酒"
-	bottle_name = "苹果西打酒"
-	bottle_desc = "一瓶本地酿造的苹果西打酒。带着香甜清爽的苹果风味。"
+	bottle_name = "苹果西打"
+	bottle_desc = "一瓶本地酿造的苹果西打。带着香甜清爽的苹果风味。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/cider
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/cider
 	needed_reagents = list(/datum/reagent/water = 198)
@@ -12,17 +12,17 @@
 	sell_value = 50
 
 /datum/brewing_recipe/cider/pear
-	name = "梨西打酒"
-	bottle_name = "梨西打酒"
-	bottle_desc = "一瓶本地酿造的梨西打酒。带着香甜而细腻的梨子风味。"
+	name = "梨子西打"
+	bottle_name = "梨子西打"
+	bottle_desc = "一瓶本地酿造的梨子西打。带着香甜而细腻的梨子风味。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/cider/pear
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle
 	needed_crops = list(/obj/item/reagent_containers/food/snacks/grown/fruit/pear = 6)
 
 /datum/brewing_recipe/cider/strawberry
-	name = "草莓西打酒"
-	bottle_name = "草莓西打酒"
-	bottle_desc = "一瓶本地酿造的草莓西打酒。带着香甜而细腻的草莓风味。"
+	name = "草莓西打"
+	bottle_name = "草莓西打"
+	bottle_desc = "一瓶本地酿造的草莓西打。带着香甜而细腻的草莓风味。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/cider/strawberry
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle
 	needed_crops = list(/obj/item/reagent_containers/food/snacks/grown/fruit/strawberry = 6)
