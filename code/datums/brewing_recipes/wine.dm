@@ -1,6 +1,6 @@
 /datum/brewing_recipe/jack_wine
-	name = "葡萄酒，杰克莓"
-	category = "水果"
+	name = "杰克莓酒"
+	category = "果酒"
 	bottle_name = "杰克莓酒"
 	bottle_desc = "一瓶本地酿制的杰克莓酒。口感香甜果香浓郁，并带着一丝酸意。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/jackberrywine
@@ -18,8 +18,8 @@
 	)
 
 /datum/brewing_recipe/plum_wine
-	name = "葡萄酒，梅子"
-	category = "水果"
+	name = "梅酒"
+	category = "果酒"
 	bottle_name = "梅酒"
 	bottle_desc = "一瓶本地酿制的梅酒。口感香甜，略带酸味。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/plum_wine
@@ -37,10 +37,10 @@
 	)
 
 /datum/brewing_recipe/tangerine_wine
-	name = "葡萄酒，柑橘"
-	category = "水果"
-	bottle_name = "柑橘酒"
-	bottle_desc = "一瓶本地酿制的柑橘酒。口感酸甜微苦，带着鲜明的柑橘风味。"
+	name = "橘子酒"
+	category = "果酒"
+	bottle_name = "橘子酒"
+	bottle_desc = "一瓶本地酿制的橘子酒。口感酸甜微苦，带着鲜明的柑橘风味。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/tangerine
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/tangerine_wine
 	needed_reagents = list(/datum/reagent/water = 198)
@@ -56,10 +56,10 @@
 	)
 
 /datum/brewing_recipe/raspberry_wine
-	name = "葡萄酒，树莓"
-	category = "水果"
-	bottle_name = "树莓酒"
-	bottle_desc = "一瓶本地酿制的树莓酒。口感香甜而酸爽。"
+	name = "覆盆子酒"
+	category = "果酒"
+	bottle_name = "覆盆子酒"
+	bottle_desc = "一瓶本地酿制的覆盆子酒。口感香甜而酸爽。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/raspberry
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/raspberry_wine
 	needed_reagents = list(/datum/reagent/water = 198)
@@ -75,8 +75,8 @@
 	)
 
 /datum/brewing_recipe/blackberry_wine
-	name = "葡萄酒，黑莓"
-	category = "水果"
+	name = "黑莓酒"
+	category = "果酒"
 	bottle_name = "黑莓酒"
 	bottle_desc = "一瓶本地酿制的黑莓酒。口感微苦而酸。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/blackberry
@@ -94,10 +94,10 @@
 	)
 
 /datum/brewing_recipe/whipwine
-	name = "鞭酒"
+	name = "魔鞭酒"
 	category = "其他"
-	bottle_name = "仿制鞭酒" // knockoff divine whip wine (magical penis wine)
-	bottle_desc = "一瓶本地酿制的鞭酒。据说是基于 Kazengun 的配方改制而来。带有一种格外...皮革般的风味。"
+	bottle_name = "魔鞭酒" // knockoff divine whip wine (magical penis wine)
+	bottle_desc = "一瓶本地酿制的魔鞭酒。据说是基于风玄的配方改制而来的仿制品。带有一种格外...皮革般的风味。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/whipwine
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/whipwine
 	needed_reagents = list(/datum/reagent/water = 198)
@@ -113,10 +113,10 @@
 	sell_value = 30
 
 /datum/brewing_recipe/luxintenebre
-	name = "葡萄酒，灵魂核心"
+	name = "光暗同酿"
 	category = "其他"
-	bottle_name = "幽光酒" // knockoff divine whip wine (magical penis wine)
-	bottle_desc = "一种可能带有异端色彩的酿品，灵魂核心在发酵后会分解为生命精华，而生命精华还能进一步发酵成可口的美酒。"
+	bottle_name = "光暗同酿" // knockoff divine whip wine (magical penis wine)
+	bottle_desc = "一瓶可能带有异端色彩的光暗同酿。灵魂核心在发酵后会分解为生命精华，而生命精华还能进一步发酵成可口的美酒。"
 	reagent_to_brew = /datum/reagent/consumable/ethanol/luxwine
 	output_bottle_type = /obj/item/reagent_containers/glass/bottle/brewing_bottle/luxintenebre
 	needed_reagents = list(/datum/reagent/water = 198) // standard
