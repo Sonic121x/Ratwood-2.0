@@ -367,9 +367,9 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "FLAIL")
 
 /obj/item/rogueweapon/flail/peasantwarflail/stalker
-	name = "spined drow greatflail"
-	desc = "A pendulous, bladed, and spined orb of dark mithril hung from a thorned link of chains. For more robustly built drow caviliers, there is \
-	nothing quite as potent as these fearsome greatflails. The spikes have a nasty habit of gumming up with gore; this is intentional."
+	name = "卓尔尖刺巨型连枷"
+	desc = "一颗装有利刃与尖刺的暗色秘银球，悬挂在带刺的链条末端。对于体格更为健壮的卓尔骑兵而言， \
+	没有什么武器能比这些可怖的巨型连枷更具威力。尖刺很容易挂满血肉；这正是刻意设计的效果。"
 	icon = 'icons/roguetown/weapons/blunt64.dmi'
 	icon_state = "drowgreatflail"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/dagger/sucker_punch)//always be punching
@@ -384,9 +384,9 @@
 	bigboy = TRUE
 
 /obj/item/rogueweapon/flail/peasantwarflail/stalker/alt
-	name = "drow greatflail"
-	desc = "A pendulous orb of dark mithril hung from a thorned link of chains. For more robustly built drow caviliers, there is \
-	nothing quite as potent as these fearsome greatflails."
+	name = "卓尔巨型连枷"
+	desc = "一颗暗色秘银球，悬挂在带刺的链条末端。对于体格更为健壮的卓尔骑兵而言， \
+	没有什么武器能比这些可怖的巨型连枷更具威力。"
 	icon_state = "drowgreatflailb"
 	possible_item_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/dagger/sucker_punch)//we use the better intents here since it's fully focused on blunt damage
 	gripped_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/mace/smash/flail/matthiosflail, /datum/intent/flail/sweep)
