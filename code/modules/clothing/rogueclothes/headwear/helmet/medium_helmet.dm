@@ -631,8 +631,8 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/shadowplate
-	name = "smiling bascinet"
-	desc = "A helmet of drowsmith sporting a gold wreath and a grinning visor."
+	name = "笑面盆盔"
+	desc = "一顶由卓尔匠人打造的头盔，饰有金色花冠，面甲呈咧嘴笑脸状。"
 	icon_state = "drowhelm"
 	item_state = "drowhelm"
 
