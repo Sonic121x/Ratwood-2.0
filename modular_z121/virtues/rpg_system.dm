@@ -885,7 +885,6 @@
 		"冰封附魔卷轴"   = list(780, /obj/item/enchantmentscroll/mythic/freeze),      // 给武器 / 衣物附魔：命中冻结
 		"时序回溯附魔卷轴" = list(800, /obj/item/enchantmentscroll/mythic/rewind),     // 给武器 / 衣物附魔：受击后回溯位置
 		"混沌风暴附魔卷轴" = list(850, /obj/item/enchantmentscroll/mythic/chaos_storm), // 给武器附魔：随机混沌效果
-		"月光大剑"   = list(600, /obj/item/rogueweapon/greatsword/moonlight_greatsword),   // 本模块自定义：高级魔法巨剑
 	), 2, list(/obj/item/reagent_containers/glass/z121_endless_pot/water, /obj/item/reagent_containers/glass/z121_endless_pot/tea, /obj/item/reagent_containers/glass/z121_endless_pot/milk, /obj/item/scrying))
 
 
