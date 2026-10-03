@@ -193,7 +193,7 @@
 	. += focus_overlay
 
 /obj/item/tk_grab/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] is using [user.p_their()] telekinesis to choke [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]正用念动力掐住自己的脖子！看起来是想自杀！"))
 	return (OXYLOSS)
 
 
