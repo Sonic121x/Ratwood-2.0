@@ -10,7 +10,7 @@
 	max_integrity = 0
 	pixel_y = 32
 	anchored = TRUE
-	verb_say = "squeaks"
+	verb_say = "吱吱作响地说"
 	var/next_decree = 0
 	var/listening = TRUE
 	var/speaking = TRUE
