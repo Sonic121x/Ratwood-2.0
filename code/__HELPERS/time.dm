@@ -94,19 +94,19 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 		var/text_to_show
 		switch(get_current_day_of_week())
 			if(1)
-				text_to_show = "DAWN OF THE FIRST DAE\nMOON'S DAE"
+				text_to_show = "第一日的黎明\n月曜日"
 			if(2)
-				text_to_show = "DAWN OF THE SECOND DAE\nTIW'S DAE"
+				text_to_show = "第二日的黎明\n蒂尔日"
 			if(3)
-				text_to_show = "DAWN OF THE THIRD DAE\nWEDDING'S DAE"
+				text_to_show = "第三日的黎明\n婚礼日"
 			if(4)
-				text_to_show = "DAWN OF THE FOURTH DAE\nTHULE'S DAE"
+				text_to_show = "第四日的黎明\n图勒日"
 			if(5)
-				text_to_show = "DAWN OF THE FIFTH DAE\nFREYJA'S DAE"
+				text_to_show = "第五日的黎明\n弗蕾雅日"
 			if(6)
-				text_to_show = "DAWN OF THE SIXTH DAE\nSATURN'S DAE"
+				text_to_show = "第六日的黎明\n萨图恩日"
 			if(7)
-				text_to_show = "DAWN OF THE SEVENTH DAE\nSUN'S DAE"
+				text_to_show = "第七日的黎明\n日曜日"
 		if(!text_to_show)
 			return
 		// IC calendar: stamp the date and any active feast daes onto the dawn splash. Also makes the
@@ -114,7 +114,7 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 		text_to_show += "\n[uppertext(get_ic_date_short_as_string())]"
 		var/list/active_titles = get_active_calendar_event_titles()
 		if(length(active_titles))
-			text_to_show += "\n- [uppertext(active_titles.Join(" & "))] -"
+			text_to_show += "\n- [uppertext(active_titles.Join("、"))] -"
 		if(text_to_show in mind.areas_entered)
 			return
 		mind.areas_entered += text_to_show

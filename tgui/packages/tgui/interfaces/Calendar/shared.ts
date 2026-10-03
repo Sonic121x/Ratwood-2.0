@@ -14,8 +14,8 @@ export type CalendarEvent = {
   title: string;
   desc: string;
   color_tag: string;
+  display_title?: string;
 };
-
 export type CalendarData = {
   today_day: number;
   today_month: number;
