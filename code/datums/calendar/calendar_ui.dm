@@ -8,8 +8,8 @@
 // Emerald Summit still uses the legacy stat panel (no clickable rows), so expose a verb instead.
 /client/verb/view_ic_calendar()
 	set category = "IC"
-	set name = "View Calendar"
-	set desc = "View the Vale Calendar - the month, season, and upcoming feast daes."
+	set name = "查看日历"
+	set desc = "查看谷地日历中的月份、季节与即将到来的节庆。"
 	open_calendar_ui()
 
 /datum/calendar_ui
@@ -27,7 +27,7 @@
 /datum/calendar_ui/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Calendar", "Calendar")
+		ui = new(user, src, "Calendar", "日历")
 		ui.open()
 
 /datum/calendar_ui/ui_state(mob/user)
@@ -60,7 +60,7 @@
 		"today_week" = today_week,
 		"view_month" = view_month,
 		"view_year" = view_year,
-		"weekday_names" = list("Moon's", "Tiw's", "Wedding's", "Thule's", "Freyja's", "Saturn's", "Sun's"), // ES weekday set
+		"weekday_names" = list("月曜日", "蒂尔日", "婚礼日", "图勒日", "弗蕾雅日", "萨图恩日", "日曜日"), // ES weekday set
 		"days_in_month" = CALENDAR_DAYS_IN_MONTH,
 		"days_in_week" = CALENDAR_DAYS_IN_WEEK,
 		"months" = months_meta,

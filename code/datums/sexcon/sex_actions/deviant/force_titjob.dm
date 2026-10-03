@@ -5,13 +5,13 @@
 	target_needs_functional = TRUE
 
 /datum/sex_action/force_titjob/get_display_name(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return "Jerk them off with [user.get_chest_word()]"
+	return "用[user.get_chest_word()]替对方撸弄"
 
 /datum/sex_action/force_titjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]抓住[target]的肉棒，狠狠干进了[user.p_their()] [user.get_chest_word()]之间!"))
+	user.visible_message(span_warning("[user]抓住[target]的肉棒，将它塞进[user.p_their()]的[user.get_chest_word()]之间!"))
 
 /datum/sex_action/force_titjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]把[target]的肉棒夹在[user.p_their()] [user.get_chest_word()]之间套弄。"))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]把[target]的肉棒夹在[user.p_their()]的[user.get_chest_word()]之间套弄。"))
 	user.sexcon.outercourse_noise(user)
 
 	user.sexcon.perform_sex_action(target, 2, 4, TRUE)
@@ -19,7 +19,7 @@
 	target.sexcon.handle_passive_ejaculation(user)
 
 /datum/sex_action/force_titjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]把[target.p_their()]肉棒从[user.p_their()][user.get_chest_word()]间抽了出来。"))
+	user.visible_message(span_warning("[user]把[target.p_their()]的肉棒从[user.p_their()]的[user.get_chest_word()]间抽了出来。"))
 
 /datum/sex_action/force_titjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())
