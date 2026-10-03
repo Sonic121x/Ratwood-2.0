@@ -3,21 +3,21 @@
 
 /atom/movable/screen/alert/status_effect/buff/moonlight_blessing
 	name = "月之祝福"
-	desc = "月光抚慰着我的躯体与灵魂，全属性暂时提高。"
+	desc = "月光抚慰着我的躯体与灵魂，全属性提高 1，持续两分钟。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/moonlight_blessing
 	id = "moonlight_blessing"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/moonlight_blessing
-	duration = 3 MINUTES
+	duration = 2 MINUTES
 	effectedstats = list(
-		STATKEY_STR = 2,
-		STATKEY_PER = 2,
-		STATKEY_INT = 2,
-		STATKEY_CON = 2,
-		STATKEY_WIL = 2,
-		STATKEY_SPD = 2,
-		STATKEY_LCK = 2,
+		STATKEY_STR = 1,
+		STATKEY_PER = 1,
+		STATKEY_INT = 1,
+		STATKEY_CON = 1,
+		STATKEY_WIL = 1,
+		STATKEY_SPD = 1,
+		STATKEY_LCK = 1,
 	)
 
 /datum/status_effect/buff/moonlight_blessing/on_creation(mob/living/new_owner, new_duration = null)
@@ -74,10 +74,16 @@
 	next_damage_tick = world.time + 1 SECONDS
 	var/mob/living/creator = creator_ref?.resolve()
 	for(var/mob/living/target in loc)
-		if(target == creator || z121_serpent_cast?.blocks(target))
+		if(target == creator || (target.status_flags & GODMODE) || z121_serpent_cast?.blocks(target))
 			continue
-		target.apply_damage(15, BRUTE)
-		target.apply_damage(15, BURN)
+		// 腹内宿主已由 blocks 检查，不重复消耗其反魔法防护。
+		if(target != z121_serpent_cast?.host() && target.anti_magic_check())
+			continue
+		var/def_zone = ran_zone()
+		var/slash_block = target.run_armor_check(def_zone, "slash", damage = 15, blade_dulling = BCLASS_CUT, intdamfactor = 1)
+		var/fire_block = target.run_armor_check(def_zone, "fire", damage = 15, intdamfactor = 1)
+		target.apply_damage(15, BRUTE, def_zone, slash_block)
+		target.apply_damage(15, BURN, def_zone, fire_block)
 		to_chat(target, span_userdanger("幽蓝的月光洪流撕裂并灼烧着我的身体！"))
 
 /obj/effect/proc_holder/spell/self/moonlight_weapon_spell
@@ -97,6 +103,7 @@
 	gesture_required = TRUE
 	action_icon = MOONLIGHT_ACTION_ICON
 	action_background_icon_state = ""
+	base_action = /datum/action/spell_action/spell
 	var/datum/weakref/source_weapon_ref
 
 /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/New(obj/item/rogueweapon/greatsword/moonlight_greatsword/source_weapon)
@@ -113,7 +120,7 @@
 		if(!silent)
 			to_chat(user, span_warning("唤醒这道秘术的月光大剑已经不在我手中了。"))
 		return FALSE
-	if(!weapon.moonlight_active)
+	if(!weapon.moonlight_active || !weapon.is_moonlight_night())
 		if(!silent)
 			to_chat(user, span_warning("天穹中没有足够明亮的月色，月光大剑暂时无法回应我的呼唤。"))
 		return FALSE
@@ -127,10 +134,22 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/cast_check(skipcharge = 0, mob/user = usr)
-	. = ..()
-	if(!.)
+	if(!validate_moonlight_weapon(user))
 		return FALSE
-	return validate_moonlight_weapon(user)
+	return ..()
+
+/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/can_cast(mob/user = usr)
+	return validate_moonlight_weapon(user, TRUE) && ..()
+
+/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/proc/can_continue_moonlight_cast(mob/living/user)
+	return !QDELETED(src) && validate_moonlight_weapon(user, TRUE) && action?.owner == user
+
+/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/start_recharge()
+	if(ranged_ability_user || action?.owner)
+		return ..()
+	// 中途离手后仍可撤销施法；父类的特质检查要求存在持有者。
+	last_process_time = world.time
+	START_PROCESSING(SSfastprocess, src)
 
 /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_wave
 	name = "月之波动"
@@ -150,7 +169,10 @@
 		return FALSE
 
 	user.visible_message(span_notice("[user] 将月光大剑横在身前，幽蓝月华正沿着剑脊迅速汇聚。"), span_notice("我将月光大剑横在身前，任由月华在剑身之上奔涌汇聚。"))
-	if(!do_after(user, 2 SECONDS, target = user))
+	var/completed = do_after(user, 2 SECONDS, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
+	if(QDELETED(src))
+		return FALSE
+	if(!completed)
 		to_chat(user, span_warning("月之波动的蓄势被打断了。"))
 		revert_cast(user)
 		return FALSE
@@ -191,18 +213,25 @@
 	var/obj/effect/moonlight_wave_segment/first_segment = beam_segments[1]
 	var/obj/effect/moonlight_wave_segment/last_segment = beam_segments[beam_segments.len]
 	first_segment.icon_state = "obeliskbeam_start"
-	last_segment.icon_state = "obeliskbeam_end"
+	if(first_segment == last_segment)
+		var/mutable_appearance/end_cap = mutable_appearance(last_segment.icon, "obeliskbeam_end")
+		end_cap.dir = last_segment.dir
+		last_segment.add_overlay(end_cap)
+	else
+		last_segment.icon_state = "obeliskbeam_end"
 
 	playsound(origin, 'sound/magic/obeliskbeam.ogg', 100, FALSE, 0, 3)
-	user.Paralyze(MOONLIGHT_WAVE_DURATION)
+	user.Immobilize(MOONLIGHT_WAVE_DURATION)
 	user.visible_message(span_warning("[user] 将月光大剑朝前一引，幽蓝洪流沿着夜色轰然奔涌！"), span_notice("我将月色压入剑身，再一口气把它释放成奔腾的月光洪流。"))
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_blessing
 	name = "月之祝福"
-	desc = "呼唤月光的力量，祈求月亮的祝福。"
-	recharge_time = 15 MINUTES
-	cooldown_min = 15 MINUTES
+	desc = "呼唤月光，使全属性提高 1，持续两分钟。每把剑在下一天夜晚到来之前只能成功赐福一次。"
+	// 不按秒或智力缩减冷却；可用性由源武器的游戏日历记录控制。
+	recharge_time = 0
+	cooldown_min = 0
+	is_cdr_exempt = TRUE
 	chargetime = 0
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
@@ -210,22 +239,41 @@
 	action_icon_state = "moon_blessing"
 	overlay_state = "moon_blessing"
 
+/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_blessing/charge_check(mob/user, silent = FALSE)
+	var/obj/item/rogueweapon/greatsword/moonlight_greatsword/weapon = get_source_weapon()
+	if(!weapon?.is_blessing_ready())
+		if(!silent)
+			to_chat(user, span_warning("月之祝福尚未恢复，必须等到下一天的夜晚。"))
+		return FALSE
+	return ..()
+
+/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_blessing/get_spell_statistics(mob/living/user)
+	. = ..()
+	. += span_info("冷却：直到下一天的夜晚；转交或收起武器不会重置。")
+
 /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_blessing/cast(list/targets, mob/living/user = usr)
-	if(!validate_moonlight_weapon(user))
+	if(!validate_moonlight_weapon(user) || !charge_check(user))
 		revert_cast(user)
 		return FALSE
 
 	user.visible_message(span_notice("[user] 双手稳住月光大剑，低声祈请夜空中的月辉降下赐福。"), span_notice("我稳住月光大剑，向月色献上祈请，让那股古老而清冷的力量缓缓汇入体内。"))
-	if(!do_after(user, 10 SECONDS, target = user))
+	var/completed = do_after(user, 10 SECONDS, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
+	if(QDELETED(src))
+		return FALSE
+	if(!completed)
 		to_chat(user, span_warning("月之祝福的祈祷被打断了。"))
 		revert_cast(user)
 		return FALSE
-	if(!validate_moonlight_weapon(user))
+	if(!validate_moonlight_weapon(user) || !charge_check(user))
 		revert_cast(user)
 		return FALSE
 
 	var/already_blessed = user.has_status_effect(/datum/status_effect/buff/moonlight_blessing)
-	user.apply_status_effect(/datum/status_effect/buff/moonlight_blessing, 3 MINUTES)
+	if(!user.apply_status_effect(/datum/status_effect/buff/moonlight_blessing, 2 MINUTES))
+		revert_cast(user)
+		return FALSE
+	var/obj/item/rogueweapon/greatsword/moonlight_greatsword/weapon = get_source_weapon()
+	weapon.last_blessing_day = GLOB.dayspassed
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
 	if(already_blessed)
 		user.visible_message(span_notice("[user] 周身再度漾起柔和月华。"))

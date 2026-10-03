@@ -394,3 +394,6 @@
 #include "virtues/serpent_belly_spell_adapters.dm"
 // 蛇腹者美德及专属吞入、吐出能力。
 #include "virtues/serpent_belly.dm"
+// 管理员通过 VV 调整角色冷却倍率与物品属性加成。
+#include "admin/custom_spell_cooldown.dm"
+#include "items/custom_stat_bonuses.dm"
