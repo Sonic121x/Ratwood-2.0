@@ -97,12 +97,12 @@
 #endif
 		if(world.time > mob.mob_timers["lastdied"] + 60 SECONDS)
 			if(is_banned_from(mob.ckey, "Observer"))
-				to_chat(src, span_danger("You are banned from observing."))
+				to_chat(src, span_danger("你已被禁止旁观。"))
 				return FALSE
 			mob.ghostize()
 		else
 			if(!world.time%5)
-				to_chat(src, span_warning("My spirit hasn't manifested yet."))
+				to_chat(src, span_warning("我的灵魂还未显现。"))
 		return FALSE
 	if(mob.force_moving)
 		return FALSE
@@ -205,11 +205,11 @@
 			if(P.facepull)
 				mob.setDir(turn(mob.dir, 180))
 	if(mob.used_intent?.movement_interrupt && mob.atkswinging == "left" && charging)
-		to_chat(src, span_warning("I lost my concentration!"))
+		to_chat(src, span_warning("我无法集中注意力了！"))
 		mob.stop_attack(FALSE)
 		mob.changeNext_move(CLICK_CD_MELEE)
 	if(mob.mmb_intent?.movement_interrupt && mob.atkswinging == "middle" && charging)
-		to_chat(src, span_warning("I lost my concentration!"))
+		to_chat(src, span_warning("我无法集中注意力了！"))
 		mob.stop_attack(FALSE)
 		mob.changeNext_move(CLICK_CD_MELEE)
 
@@ -233,18 +233,18 @@
 			return FALSE
 		if(mob.pulledby == mob.pulling)			//Don't autoresist grabs if we're grabbing them too.
 			move_delay = world.time + 10
-			to_chat(src, span_warning("I can't move!"))
+			to_chat(src, span_warning("我动不了了！"))
 			return TRUE
 		if(mob.incapacitated(ignore_restraints = 1))
 			move_delay = world.time + 10
-			to_chat(src, span_warning("I can't move!"))
+			to_chat(src, span_warning("我动不了了！"))
 			return TRUE
 		if(mob.restrained(ignore_grab = 1))
 			move_delay = world.time + 10
-			to_chat(src, span_warning("I'm restrained! I can't move!"))
+			to_chat(src, span_warning("我被束缚住了，动不了了！"))
 			return TRUE
 		move_delay = world.time + 10
-		to_chat(src, span_warning("I can't move!"))
+		to_chat(src, span_warning("我动不了了！"))
 		return TRUE
 
 	if(mob.pulling && isliving(mob.pulling))
@@ -263,21 +263,21 @@
 		if (L.compliance)
 			return FALSE
 		move_delay = world.time + 10
-		to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
+		to_chat(src, span_warning("[L]仍然站得很稳！我得抓得更紧！"))
 		return TRUE
 
 	if(isanimal(mob.pulling))
 		var/mob/living/simple_animal/bound = mob.pulling
 		if(bound.binded)
 			move_delay = world.time + 10
-			to_chat(src, span_warning("[bound] is bound in a summoning circle. I can't move them!"))
+			to_chat(src, span_warning("[bound]被束缚在召唤法阵中，我无法拖动！"))
 			return TRUE
 
 	if(isanimal(mob.pulling))
 		var/mob/living/simple_animal/bound = mob.pulling
 		if(bound.binded)
 			move_delay = world.time + 10
-			to_chat(src, span_warning("[bound] is bound in a summoning circle. I can't move them!"))
+			to_chat(src, span_warning("[bound]被束缚在召唤法阵中，我无法拖动！"))
 			return TRUE
 
 // similar to the above, but for NPCs mostly
@@ -365,13 +365,13 @@
 			var/turf/open/floor/stepTurf = get_step(L, direct)
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
-					to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
+					to_chat(L, "<span class='warning'>[S.name]挡住了你的去路！</span>")
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
-					to_chat(L, "<span class='warning'>Some strange aura is blocking the way.</span>")
+					to_chat(L, "<span class='warning'>一股奇异的气息挡住了去路。</span>")
 					return
 				if (locate(/obj/effect/blessing, stepTurf))
-					to_chat(L, "<span class='warning'>Holy energies block your path!</span>")
+					to_chat(L, "<span class='warning'>神圣的力量挡住了你的去路！</span>")
 					return
 
 				L.forceMove(stepTurf)
@@ -572,7 +572,7 @@
 		if(!HAS_TRAIT(user, TRAIT_NORUN))
 			m_intent = MOVE_INTENT_RUN
 		else
-			to_chat(user, span_warning("My joints have decayed too much for running!"))
+			to_chat(user, span_warning("我的关节腐朽得太严重，跑不起来了！"))
 	if(hud_used && hud_used.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
@@ -712,19 +712,19 @@
 			switch(intent)
 				if(MOVE_INTENT_RUN)
 					if(H.m_intent != MOVE_INTENT_RUN)
-						H.visible_message(span_notice("[H] steadies atop [animal_mount], preparing to break into a run."))
+						H.visible_message(span_notice("[H]在[animal_mount]背上坐稳，准备策骑奔跑。"))
 						animal_mount.emote("aggro")
 						if(do_after(H, mounted_intent_swap_time))
 							H.m_intent = MOVE_INTENT_RUN
 				if(MOVE_INTENT_SNEAK)
 					if(H.m_intent != MOVE_INTENT_SNEAK)
-						H.visible_message(span_notice("[H] reins in [animal_mount], slowing into a cautious gait."))
+						H.visible_message(span_notice("[H]勒住[animal_mount]，放慢速度，小心前行。"))
 						if(do_after(H, mounted_intent_swap_time))
 							H.m_intent = MOVE_INTENT_SNEAK
 							H.update_sneak_invis()
 				if(MOVE_INTENT_WALK)
 					if(H.m_intent != MOVE_INTENT_WALK)
-						H.visible_message(span_notice("[animal_mount] calms, returning to a steady pace."))
+						H.visible_message(span_notice("[animal_mount]平静下来，恢复了平稳的步伐。"))
 						animal_mount.emote("idle")
 						if(do_after(H, 15))
 							H.m_intent = MOVE_INTENT_WALK
@@ -748,7 +748,7 @@
 					//If mob is trying to switch to run, fail if any of these are true
 					if (L.stamina >= L.max_stamina || L.energy <= 0 || HAS_TRAIT(L, TRAIT_NORUN))
 						if (HAS_TRAIT(L, TRAIT_NORUN)) // If has trait blocker then inform them
-							to_chat(L, span_warning("My joints have decayed too much for running!"))
+							to_chat(L, span_warning("我的关节腐朽得太严重，跑不起来了！"))
 						return
 
 					if(ishuman(L))
@@ -878,12 +878,12 @@
 
 /mob/proc/ghost_up()
 	if(zMove(UP, TRUE))
-		to_chat(src, span_notice("I move upwards."))
+		to_chat(src, span_notice("我向上移动。"))
 
 ///Moves a mob down a z level
 /mob/proc/ghost_down()
 	if(zMove(DOWN, TRUE))
-		to_chat(src, span_notice("I move down."))
+		to_chat(src, span_notice("我向下移动。"))
 
 ///Move a mob between z levels, if it's valid to move z's on this turf
 /mob/proc/zMove(dir, feedback = FALSE)
@@ -892,11 +892,11 @@
 	var/turf/target = get_step_multiz(src, dir)
 	if(!target)
 		if(feedback)
-			to_chat(src, span_warning("There's nothing in that direction!"))
+			to_chat(src, span_warning("那个方向空无一物！"))
 		return FALSE
 	if(!canZMove(dir, target))
 		if(feedback)
-			to_chat(src, span_warning("I couldn't move there!"))
+			to_chat(src, span_warning("我无法移动到那里！"))
 		return FALSE
 	forceMove(target)
 	return TRUE
