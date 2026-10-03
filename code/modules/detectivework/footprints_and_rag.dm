@@ -4,7 +4,7 @@
 
 
 /obj/item/reagent_containers/glass/rag
-	name = "damp rag"
+	name = "湿抹布"
 	desc = ""
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/toy.dmi'
@@ -17,7 +17,7 @@
 	spillable = FALSE
 
 /obj/item/reagent_containers/glass/rag/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] is smothering [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]正用[src.name]捂住自己的口鼻！看起来是想自杀！"))
 	return (OXYLOSS)
 
 /obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user,proximity)

@@ -77,22 +77,22 @@
 		var/suicide_message
 
 		if(used_intent.type == INTENT_DISARM)
-			suicide_message = pick("[src] is attempting to push [p_their()] own head off [p_their()] shoulders! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is pushing [p_their()] thumbs into [p_their()] eye sockets! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is ripping [p_their()] own arms off! It looks like [p_theyre()] trying to commit suicide.")//heheh get it?
+			suicide_message = pick("[src]试图将自己的头从肩上推掉！看起来是想自杀。", \
+								"[src]正把拇指按进自己的眼窝！看起来是想自杀。", \
+								"[src]正撕扯自己的双臂，试图将其扯断！看起来是想自杀。")//heheh get it?
 		if(used_intent.type == INTENT_GRAB)
-			suicide_message = pick("[src] is attempting to pull [p_their()] own head off! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is aggressively grabbing [p_their()] own neck! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is pulling [p_their()] eyes out of their sockets! It looks like [p_theyre()] trying to commit suicide.")
+			suicide_message = pick("[src]试图扯掉自己的头！看起来是想自杀。", \
+									"[src]正用力掐住自己的脖子！看起来是想自杀。", \
+									"[src]正将自己的眼睛从眼窝中扯出来！看起来是想自杀。")
 		if(used_intent.type == INTENT_HELP)
-			suicide_message = pick("[src] is hugging [p_them()]self to death! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is high-fiving [p_them()]self to death! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is getting too high on life! It looks like [p_theyre()] trying to commit suicide.")
+			suicide_message = pick("[src]正死命地抱紧自己！看起来是想自杀。", \
+									"[src]正拼命地与自己击掌！看起来是想自杀。", \
+									"[src]兴奋得快要没命了！看起来是想自杀。")
 		else
-			suicide_message = pick("[src] is attempting to bite [p_their()] tongue off! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is jamming [p_their()] thumbs into [p_their()] eye sockets! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is twisting [p_their()] own neck! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is holding [p_their()] breath! It looks like [p_theyre()] trying to commit suicide.")
+			suicide_message = pick("[src]试图咬断自己的舌头！看起来是想自杀。", \
+								"[src]正把拇指戳进自己的眼窝！看起来是想自杀。", \
+								"[src]正扭转自己的脖子！看起来是想自杀。", \
+								"[src]正屏住呼吸！看起来是想自杀。")
 
 		visible_message(span_danger("[suicide_message]"), span_danger("[suicide_message]"))
 
