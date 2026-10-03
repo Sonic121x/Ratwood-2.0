@@ -459,9 +459,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		message_range += (5 + buff.potency) // maximum 12 tiles extra, which is a lot!
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if (prob(buff.potency * 3) && S.speaking) // 3% chance per holy level, per SCOM for it to shriek your message in town wherever you are
-				S.verb_say = "shrieks in terror"
-				S.verb_exclaim = "shrieks in terror"
-				S.verb_yell = "shrieks in terror"
+				S.verb_say = "惊恐地尖叫"
+				S.verb_exclaim = "惊恐地尖叫"
+				S.verb_yell = "惊恐地尖叫"
 				S.say(message, spans = list("info", "reallybig"))
 				S.verb_say = initial(S.verb_say)
 				S.verb_exclaim = initial(S.verb_exclaim)
@@ -713,11 +713,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(message_mode == MODE_WHISPER)
 		. = verb_whisper
 	else if(message_mode == MODE_WHISPER_CRIT)
-		. = "[verb_whisper] in [p_their()] last breath"
+		. = "用最后一口气[verb_whisper]"
 	else if(stuttering)
-		. = "stammers"
+		. = "结结巴巴地说"
 	else if(derpspeech)
-		. = "gibbers"
+		. = "语无伦次地说"
 	else if(message_mode == MODE_SING)
 		. = verb_sing
 	else
