@@ -23,7 +23,7 @@
 			var/atom/choice = input(user, "Choose an area to open the portal", "Choices") as null|anything in possibleportals
 			if(!choice)
 				return
-			user.visible_message("[user] begins to summon a portal.", "I begin to summon a portal.")
+			user.visible_message("[user]开始召唤传送门。", "我开始召唤传送门。")
 			if(!do_after(user, 3 SECONDS, src))
 				return
 
@@ -47,7 +47,7 @@
 			var/atom/choice = input(user, "Choose an area to open the portal to", "Choices") as null|anything in possibleportals
 			if(!choice)
 				return
-			user.visible_message("[user] begins to summon a portal.", "I begin to summon a portal.")
+			user.visible_message("[user]开始召唤传送门。", "我开始召唤传送门。")
 			if(do_after(user, 3 SECONDS, src))
 				user.has_bloodpool_cost(-1000)
 				if(istype(choice, /obj/item/clothing/neck/portalamulet))
