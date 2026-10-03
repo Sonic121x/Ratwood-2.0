@@ -6,9 +6,13 @@
 	var/mob/living/user = W.controller.fighter
 	if(!user.is_holding(src) || user.stat == DEAD || !W.controller.enforce_armor())
 		return FALSE
+	// 免费装填只在准备终结技时执行一次；重复调用仅检查现有弹药。
+	if(W.finisher_load_used)
+		return can_shoot()
 	// 弹丸仍在飞行时不能先补出第二颗，避免命中消耗武技后遗留免费弹药。
 	if(W.flying_bullet?.resolve() && !chambered?.BB)
 		return FALSE
+	W.finisher_load_used = TRUE
 	if(!chambered?.BB)
 		QDEL_NULL(chambered)
 		chamber_round()
@@ -36,7 +40,7 @@
 		to_chat(user, span_warning("终结技必须瞄准[distance]格内的活体目标。"))
 		return FALSE
 	var/mob/living/victim = target
-	if(victim.stat == DEAD || !z121_highwayman_load() || !chambered?.BB)
+	if(victim.stat == DEAD || !can_shoot())
 		return FALSE
 	QDEL_NULL(chambered.BB)
 	var/obj/projectile/bullet/firearm/lead/z121_highwayman/P = new(get_turf(src))
