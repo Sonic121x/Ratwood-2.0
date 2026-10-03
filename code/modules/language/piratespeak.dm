@@ -1,9 +1,9 @@
 /datum/language/piratespeak
 	name = "Piratespeak"
 	desc = ""
-	speech_verb = "says"
-	ask_verb = "asks"
-	exclaim_verb = "exclaims"
+	speech_verb = "说道"
+	ask_verb = "问道"
+	exclaim_verb = "惊呼"
 	key = "4"
 	space_chance = 100
 	default_priority = 90

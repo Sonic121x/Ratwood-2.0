@@ -1,6 +1,6 @@
 /mob/living/carbon/spirit
 	name = "Wanderer"
-	verb_say = "moans"
+	verb_say = "呻吟着说"
 	initial_language_holder = /datum/language_holder/universal
 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
 	icon_state = "hollow"
