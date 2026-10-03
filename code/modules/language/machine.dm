@@ -1,9 +1,9 @@
 /datum/language/machine
 	name = "Encoded Audio Language"
 	desc = ""
-	speech_verb = "whistles"
-	ask_verb = "chirps"
-	exclaim_verb = "whistles loudly"
+	speech_verb = "鸣哨"
+	ask_verb = "啾啾鸣叫"
+	exclaim_verb = "大声鸣哨"
 	spans = list(SPAN_ROBOT)
 	key = "8"
 	flags = NO_STUTTER

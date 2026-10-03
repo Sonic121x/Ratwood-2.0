@@ -1,9 +1,9 @@
 /datum/language/hammerholdian
 	name = "Hammerholdian"
-	desc = "The language of the Hammerhold, a proud warrior people whose traditions echo with the sagas of ancient seafarers and raiders. Harsh and rhythmic, it has been called the \"Language of Iron and Ice\"."
-	speech_verb = "utters"
-	ask_verb = "demands"
-	exclaim_verb = "bellows"
+	desc = "锤堡人的语言。这个自豪的战士民族传承着古代航海者与劫掠者的史诗，其语言粗犷而富有韵律，被称为\"铁与冰之语\"。"
+	speech_verb = "说道"
+	ask_verb = "厉声问道"
+	exclaim_verb = "吼道"
 	key = "h"
 	space_chance = 75
 	default_priority = 90

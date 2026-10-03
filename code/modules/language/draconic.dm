@@ -1,9 +1,9 @@
 /datum/language/draconic
 	name = "Draconic"
 	desc = "The ancient and powerful language of dragons, spoken with hisses and roars. Its words carry the weight of primordial magic and draconic might."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verb = "roars"
+	speech_verb = "嘶嘶地说"
+	ask_verb = "嘶嘶地问"
+	exclaim_verb = "咆哮"
 	key = "s"
 	space_chance = 40
 	default_priority = 90
