@@ -16,13 +16,13 @@
 	return FALSE
 
 /obj/item/rune/proc/on_start(mob/user)
-	to_chat(user, "<span class='notice'>I start reading [name]...</span>")
+	to_chat(user, "<span class='notice'>我开始阅读[name]...</span>")
 
 /obj/item/rune/proc/on_stopped(mob/user)
-	to_chat(user, "<span class='notice'>I stop reading...</span>")
+	to_chat(user, "<span class='notice'>我停止阅读...</span>")
 
 /obj/item/rune/proc/on_finished(mob/user)
-	to_chat(user, "<span class='notice'>I finish reading [name]!</span>")
+	to_chat(user, "<span class='notice'>我读完了[name]！</span>")
 
 /obj/item/rune/proc/onlearned(mob/user)
 	qdel(src)
@@ -32,10 +32,10 @@
 		//to_chat(user, "<span class='warning'>You're already reading this!</span>")
 		return FALSE
 	if(already_known(user))
-		to_chat(user, "<span class='notice'>I already know this spell.</span>")
+		to_chat(user, "<span class='notice'>我已经学会这个法术了。</span>")
 		return FALSE
 	if(!user.get_skill_level(/datum/skill/magic/arcane))
-		to_chat(user, "<span class='warning'>I don't have the knowledge to learn this spell.</span>")
+		to_chat(user, "<span class='warning'>我的知识不足以学习这个法术。</span>")
 		return FALSE
 	on_start(user)
 	reading = TRUE
@@ -60,7 +60,7 @@
 	icon_state = "spellbookpower1_0" //temporary sprite
 
 /obj/item/rune/spell/on_start(mob/user)
-	user.visible_message("<span class='warning'>[user] begins siphoning the rune.</span>")
+	user.visible_message("<span class='warning'>[user]开始汲取符文的力量。</span>")
 
 /obj/item/rune/spell/on_finished(mob/user)
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)

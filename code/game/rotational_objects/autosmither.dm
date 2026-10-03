@@ -253,7 +253,7 @@
 	var/mob/living/carbon/victim = grab.grabbed
 	if(!istype(victim))
 		return
-	user.visible_message(span_danger("[user] starts to put [victim] under [src]!"), span_danger("You start to put [victim] under [src]!"))
+	user.visible_message(span_danger("[user]开始把[victim]放到[src]下面！"), span_danger("我开始把[victim]放到[src]下面！"))
 	if(!do_after(user, 10 SECONDS, src))
 		return
 

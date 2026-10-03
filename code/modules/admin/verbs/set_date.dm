@@ -1,44 +1,44 @@
 /client/proc/cmd_admin_set_ic_date()
 	set category = "Admin.Special"
-	set name = "Set IC Date"
+	set name = "设置角色日期"
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/choice = alert(src, "What would you like to do?", "IC Date Override", "Set Custom Date", "Clear Override")
+	var/choice = alert(src, "要进行什么操作？", "角色日期覆盖", "设置自定义日期", "清除覆盖")
 
-	if(!choice || choice == "Clear Override")
+	if(!choice || choice == "清除覆盖")
 		if(GLOB.date_override_enabled)
 			GLOB.date_override_enabled = FALSE
 			GLOB.date_override_offset = 0
 			log_admin("[key_name(usr)] cleared the IC date override")
-			message_admins(span_adminnotice("[key_name_admin(usr)] cleared the IC date override. Date is now: [get_current_ic_date_as_string()]"))
+			message_admins(span_adminnotice("[key_name_admin(usr)]清除了角色日期覆盖。当前日期：[get_current_ic_date_as_string()]"))
 			SSblackbox.record_feedback("tally", "admin_verb", 1, "Set IC Date - Clear")
 		return
 
-	if(choice == "Set Custom Date")
+	if(choice == "设置自定义日期")
 		var/month_names = list(
-			"1 - Psyrise (March)",
-			"2 - Eora (April)",
-			"3 - Dendor (May)",
-			"4 - Astrata (June)",
-			"5 - Xylix (July)",
-			"6 - Malum (August)",
-			"7 - Syonfall (September)",
-			"8 - Pestra (October)",
-			"9 - Necra (November)",
-			"10 - Noc (December)",
-			"11 - Abyssor (January)",
-			"12 - Ravox (February)"
+			"1 - 普赛初升月（三月）",
+			"2 - 伊欧拉月（四月）",
+			"3 - 登多尔月（五月）",
+			"4 - 阿斯特拉塔月（六月）",
+			"5 - 赛利克斯月（七月）",
+			"6 - 玛勒姆月（八月）",
+			"7 - 赛昂落月（九月）",
+			"8 - 佩斯特拉月（十月）",
+			"9 - 内克拉月（十一月）",
+			"10 - 诺克月（十二月）",
+			"11 - 阿比索尔月（一月）",
+			"12 - 拉沃克斯月（二月）"
 		)
 
-		var/month_choice = input(src, "Select the month:", "Set IC Date - Month") as null|anything in month_names
+		var/month_choice = input(src, "选择月份：", "设置角色日期 - 月份") as null|anything in month_names
 		if(!month_choice)
 			return
 
 		var/target_month = text2num(copytext(month_choice, 1, 3))
 
-		var/target_day = input(src, "Enter the day of the month (1-28):", "Set IC Date - Day", 1) as num|null
+		var/target_day = input(src, "输入本月日期（1-28）：", "设置角色日期 - 日期", 1) as num|null
 		if(isnull(target_day))
 			return
 
@@ -57,7 +57,7 @@
 		GLOB.date_override_offset = offset
 
 		log_admin("[key_name(usr)] set IC date override to [target_day]/[target_month] (offset: [offset] days)")
-		message_admins(span_adminnotice("[key_name_admin(usr)] set IC date override. New date: [get_current_ic_date_as_string()], time: [get_current_ic_time_as_string()]"))
-		to_chat(src, span_notice("IC Date set to: [get_current_ic_date_as_string()]"))
-		to_chat(src, span_notice("This date will advance naturally as days pass."))
+		message_admins(span_adminnotice("[key_name_admin(usr)]设置了角色日期覆盖。新日期：[get_current_ic_date_as_string()]，时间：[get_current_ic_time_as_string()]"))
+		to_chat(src, span_notice("角色日期已设为：[get_current_ic_date_as_string()]"))
+		to_chat(src, span_notice("日期会随着日子流逝自然推进。"))
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Set IC Date")
