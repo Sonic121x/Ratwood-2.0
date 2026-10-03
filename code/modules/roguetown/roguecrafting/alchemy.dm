@@ -305,22 +305,22 @@
 	tech_unlocked = FALSE
 
 /datum/crafting_recipe/roguetown/alchemy/skysugarbase
-	name = "panacea of skysugar"
+	name = "天糖灵药原液"
 	category = "Transmutation"
 	result = list(/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/skysugarbase = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/raisins/blackberry = 1, /obj/item/reagent_containers/lux_impure = 1, /obj/item/reagent_containers/powder/starsugar = 1)
 	craftdiff = 5 //Better hope you've been practicing!
-	verbage_simple = "transmute"
+	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/skysugar
-	name = "skysugar slab to skysugar powder (x3)"
+	name = "天糖晶砖转天糖粉末 (x3)"
 	category = "Transmutation"
 	result = list(/obj/item/reagent_containers/powder/starsugar/skysugar,
 					/obj/item/reagent_containers/powder/starsugar/skysugar,
 					/obj/item/reagent_containers/powder/starsugar/skysugar)
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/skysugarslab = 1)
 	craftdiff = 1 //Hard part's done. Time to break it up!
-	verbage_simple = "transmute"
+	verbage_simple = "转化"
 
 /datum/crafting_recipe/roguetown/alchemy/bandage
 	name = "绷带（炼金）"
