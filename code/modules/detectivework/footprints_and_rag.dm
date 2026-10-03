@@ -30,16 +30,16 @@
 		var/log_object = "containing [reagentlist]"
 		if(user.used_intent.type == INTENT_HARM && !C.is_mouth_covered())
 			reagents.trans_to(C, reagents.total_volume, transfered_by = user, method = INGEST)
-			C.visible_message(span_danger("[user] has smothered \the [C] with \the [src]!"), span_danger("[user] has smothered you with \the [src]!"), span_hear("I hear some struggling and muffled cries of surprise."))
+			C.visible_message(span_danger("[user]用[src]捂住了[C]的口鼻！"), span_danger("[user]用[src]捂住了我的口鼻！"), span_hear("我听到一阵挣扎声和含糊的惊叫。"))
 			log_combat(user, C, "smothered", src, log_object)
 		else
 			reagents.reaction(C, TOUCH)
 			reagents.clear_reagents()
-			C.visible_message(span_notice("[user] has touched \the [C] with \the [src]."))
+			C.visible_message(span_notice("[user]用[src]碰了碰[C]。"))
 			log_combat(user, C, "touched", src, log_object)
 
 	else if(istype(A) && (src in user))
-		user.visible_message(span_notice("[user] starts to wipe down [A] with [src]!"), span_notice("I start to wipe down [A] with [src]..."))
+		user.visible_message(span_notice("[user]开始用[src]擦拭[A]！"), span_notice("我开始用[src]擦拭[A]..."))
 		if(do_after(user,30, target = A))
-			user.visible_message(span_notice("[user] finishes wiping off [A]!"), span_notice("I finish wiping off [A]."))
+			user.visible_message(span_notice("[user]擦完了[A]！"), span_notice("我擦完了[A]。"))
 			SEND_SIGNAL(A, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_MEDIUM)

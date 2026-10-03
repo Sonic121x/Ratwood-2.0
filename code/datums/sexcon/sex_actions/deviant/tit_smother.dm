@@ -3,10 +3,10 @@
 
 /datum/sex_action/titsmother/get_display_name(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
-	var/word = "boobs"
+	var/word = "乳房"
 	if(breasts && breasts.is_pecs())
-		word = "pecs"
-	return "Smother them with [word]"
+		word = "胸肌"
+	return "用[word]捂住对方的脸"
 
 /datum/sex_action/titsmother/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

@@ -164,7 +164,7 @@
 		to_chat(src, span_warning("You are already chanting!"))
 		return
 		
-	visible_message("<span class='danger'>[src] begins muttering an unsettling chant...</span>")
+	visible_message("<span class='danger'>[src]开始低声吟诵令人不安的咒文...</span>")
 	chanting = TRUE
 	
 	// Check for nearby chanters and trigger omen if found

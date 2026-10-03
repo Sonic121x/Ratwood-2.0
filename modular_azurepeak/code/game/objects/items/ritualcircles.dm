@@ -987,7 +987,7 @@
 /obj/structure/ritualcircle/necra/attackby(obj/item/I, mob/user, params)
 	. = ..()
 	if(istype(I, /obj/item/thetoll))
-		loc.visible_message(span_warning("[user] begins to break [I] over the ritual circle..."))
+		loc.visible_message(span_warning("[user]开始在仪式法阵上方掰碎[I]..."))
 		if(do_after(user, 50))
 			loc.visible_message(span_warning("[user] shatters [I] over the ritual circle..."))
 			coinslot += 1
@@ -1800,7 +1800,7 @@
 		span_userdanger("IT HURTS! IT BURNS!")
 	)
 
-	to_chat(world, span_danger("A war ritual has been completed! Goblin portals begin to tear open across the land!"))
+	to_chat(world, span_danger("战争仪式已完成！哥布林传送门开始在各地撕裂空间，接连开启！"))
 	playsound(loc, 'sound/magic/bloodrage.ogg', 100, FALSE, -1)
 	var/datum/round_event_control/gobinvade/E = new()
 	E.req_omen = FALSE
@@ -2084,7 +2084,7 @@
 			if(do_after(user, 5 SECONDS))
 				to_chat(user, span_warning("You reach out, a hold upon [user.p_their()] lux..."))
 				if(do_after(user, 5 SECONDS))
-					to_chat(user, span_warning("You begin rooting around, searching for traces of the taint..."))
+					to_chat(user, span_warning("我开始四处翻找，寻找污染的痕迹..."))
 					if(do_after(user, 5 SECONDS))
 						to_chat(user, span_warning("A blind leap, as you call upon the One to rebuke the Inhumen..."))
 						user.emote("cry")
