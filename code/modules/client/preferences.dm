@@ -165,14 +165,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 /datum/preferences/proc/get_default_redolent_scent(scent_type)
 	switch(scent_type)
 		if("Gross")
-			return "rotting meat and sour sweat"
+			return "腐肉与酸臭的汗味"
 		if("Pleasant")
-			return "wildflowers and clean rain"
-	return "earth and sweat"
+			return "野花与清新雨水的气味"
+	return "泥土与汗水的气味"
 
 /// The leading text shown on examine before the custom scent, matching redolent_examine_text().
 /datum/preferences/proc/redolent_scent_leadin(scent_type)
-	return scent_type == "Gross" ? "They reek of" : "They smell of"
+	return scent_type == "Gross" ? "对方身上散发着刺鼻的气味：" : "对方身上散发着"
 
 // Points gained from additional selected vices (+1 per vice after slot one)
 /datum/preferences/proc/get_vice_points()
