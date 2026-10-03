@@ -52,18 +52,18 @@ export const DayDetail = (props: DayDetailProps) => {
   return (
     <div style={detailPanelStyle}>
       {selectedDay === null ? (
-        <div style={emptyHintStyle}>Click a day to see its festivals.</div>
+        <div style={emptyHintStyle}>点击日期查看当日节庆。</div>
       ) : (
         <>
           <div style={dashedHeaderStyle}>
-            {monthName} {selectedDay}, {year} AP
+            普赛顿纪元{year}年 {monthName}{selectedDay}日
           </div>
           {events.length === 0 ? (
-            <div style={emptyHintStyle}>No events on this date.</div>
+            <div style={emptyHintStyle}>这一天没有节庆。</div>
           ) : (
             events.map((e) => (
               <div key={e.id} style={eventRowStyle}>
-                <div style={eventTitleStyle(e.color_tag)}>{e.title}</div>
+                <div style={eventTitleStyle(e.color_tag)}>{e.display_title || e.title}</div>
                 {e.desc &&
                   splitParagraphs(e.desc).map((para, i) => (
                     <div key={i} style={eventDescStyle}>
@@ -72,9 +72,9 @@ export const DayDetail = (props: DayDetailProps) => {
                   ))}
                 {e.duration_days > 1 && (
                   <div style={eventSpanStyle}>
-                    {monthName} {e.day}
+                    {monthName}{e.day}日
                     {' - '}
-                    {monthName} {e.day + e.duration_days - 1}
+                    {monthName}{e.day + e.duration_days - 1}日
                   </div>
                 )}
               </div>
