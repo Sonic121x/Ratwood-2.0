@@ -471,8 +471,8 @@
 	//outlived its attempt, so fall through and start fresh rather than lock the item forever
 	if((I.item_flags & BEING_REMOVED) && doing)
 		doing = FALSE
-		visible_message("<span class='warning'>[src] stops struggling with [I].</span>", \
-						"<span class='warning'>I stop struggling with [I].</span>")
+		visible_message("<span class='warning'>[src]停止挣脱[I]。</span>", \
+						"<span class='warning'>我停止挣脱[I]。</span>")
 		log_message("stopped struggling out of [I]", LOG_ATTACK, color = "orange")
 		return
 	I.item_flags |= BEING_REMOVED
@@ -491,18 +491,18 @@
 		cuff_break = INSTANT_CUFFBREAK
 		breakouttime = I.breakouttime
 	if(!cuff_break)
-		to_chat(src, "<span class='notice'>I attempt to remove [I]...</span>")
+		to_chat(src, "<span class='notice'>我试着解开[I]...</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, "<span class='danger'>I fail to remove [I]!</span>")
+			to_chat(src, "<span class='danger'>我没能解开[I]！</span>")
 
 	else if(cuff_break == FAST_CUFFBREAK)
-		to_chat(src, "<span class='notice'>I attempt to break [I]...</span>")
+		to_chat(src, "<span class='notice'>我试着挣断[I]...</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, "<span class='danger'>I fail to break [I]!</span>")
+			to_chat(src, "<span class='danger'>我没能挣断[I]！</span>")
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		clear_cuffs(I, cuff_break)
@@ -547,10 +547,10 @@
 	//getting free clears the breakout cooldown, or a fast escape leaves you locked out of everything
 	//for the remainder of the 10 seconds resist_restraints charged up front. Same as uncuff() does
 	changeNext_move(0, override = TRUE)
-	visible_message("[cuff_break ? "<span class='danger'>" : "<span class='warning'>"][src] manages to [cuff_break ? "break" : "slip"] out of [I]!</span>")
+	visible_message("[cuff_break ? "<span class='danger'>" : "<span class='warning'>"][src]成功[cuff_break ? "挣断" : "挣脱"]了[I]！</span>")
 	if(cuff_break)
 		playsound(src, 'sound/misc/chain_snap.ogg', 100, FALSE, 10)
-	to_chat(src, "<span class='notice'>I [cuff_break ? "break" : "slip"] out of [I]!</span>")
+	to_chat(src, "<span class='notice'>我[cuff_break ? "挣断" : "挣脱"]了[I]！</span>")
 
 	if(istype(I, /obj/item/net))
 		if(has_status_effect(/datum/status_effect/debuff/netted))

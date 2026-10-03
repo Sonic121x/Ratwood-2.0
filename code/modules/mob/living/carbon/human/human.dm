@@ -8,9 +8,9 @@
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			if(has_stubble)
 				if(user == src)
-					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮自己的胡茬。</span>")
 				else
-					user.visible_message("<span class='danger'>[user] starts to shave [src]'s stubble with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮[src]的胡茬。</span>")
 				if(do_after(user, 50, needhand = 1, target = src))
 					has_stubble = FALSE
 					update_hair()
@@ -18,9 +18,9 @@
 					held_item.melee_attack_chain(user, src, params)
 			else if(facial_hairstyle != "None")
 				if(user == src)
-					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮自己的胡须。</span>")
 				else
-					user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮[src]的胡须。</span>")
 				if(do_after(user, 50, needhand = 1, target = src))
 					facial_hairstyle = "None"
 					update_hair()
@@ -38,7 +38,7 @@
 			if(!underwear)
 				modular_handle_chastity_middleclick_strip(user)
 				return
-			src.visible_message(span_notice("[user] begins to take off [(src==user)?" ":"[src]'s"][underwear]..."))
+			src.visible_message(span_notice("[user]开始脱下[(src==user)?"自己的":"[src]的"][underwear]..."))
 			if(do_after(user, 30, needhand = 1, target = src))
 				var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 				var/obj/item/undies/undies = underwear
@@ -51,7 +51,7 @@
 		if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 			if(!legwear_socks)
 				return
-			src.visible_message(span_notice("[user] begins to take off [(src==user)?" ":"[src]'s"][legwear_socks]..."))
+			src.visible_message(span_notice("[user]开始脱下[(src==user)?"自己的":"[src]的"][legwear_socks]..."))
 			if(do_after(user, 30, needhand = 1, target = src))
 				var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 				var/obj/item/legwears/legwears = legwear_socks
@@ -62,7 +62,7 @@
 			return
 	if(HAS_TRAIT(src, TRAIT_PONYGIRL_RIDEABLE))
 		var/mob/living/livinguser = user
-		user.visible_message(span_notice("[livinguser] is trying to mount [src]..."))
+		user.visible_message(span_notice("[livinguser]正试着骑到[src]身上..."))
 		if(!do_after(livinguser, 15, target = src))
 			return
 		if(!istype(livinguser))
@@ -414,20 +414,20 @@
 	CHECK_DNA_AND_SPECIES(C)
 
 	if(C.stat == DEAD || (HAS_TRAIT(C, TRAIT_FAKEDEATH)))
-		to_chat(src, span_warning("[C.name] is dead!"))
+		to_chat(src, span_warning("[C.name]已经死了！"))
 		return
 	if(is_mouth_covered())
-		to_chat(src, span_warning("Remove your mask first!"))
+		to_chat(src, span_warning("先摘下我的面罩！"))
 		return 0
 	if(C.is_mouth_covered())
-		to_chat(src, span_warning("Remove [p_their()] mask first!"))
+		to_chat(src, span_warning("先摘下[C]的面罩！"))
 		return 0
 
 	if(C.cpr_time < world.time + 30)
-		visible_message(span_notice("[src] is trying to perform CPR on [C.name]!"), \
-						span_notice("I try to perform CPR on [C.name]... Hold still!"))
+		visible_message(span_notice("[src]正试着为[C.name]进行心肺复苏！"), \
+						span_notice("我试着为[C.name]进行心肺复苏... 别动！"))
 		if(!do_mob(src, C))
-			to_chat(src, span_warning("I fail to perform CPR on [C]!"))
+			to_chat(src, span_warning("我没能为[C]完成心肺复苏！"))
 			return 0
 
 		var/they_breathe = !HAS_TRAIT(C, TRAIT_NOBREATH)
@@ -436,7 +436,7 @@
 		if(C.health > C.crit_threshold)
 			return
 
-		src.visible_message(span_notice("[src] performs CPR on [C.name]!"), span_notice("I perform CPR on [C.name]."))
+		src.visible_message(span_notice("[src]为[C.name]进行了心肺复苏！"), span_notice("我为[C.name]进行了心肺复苏。"))
 		C.cpr_time = world.time
 		log_combat(src, C, "CPRed")
 
@@ -444,11 +444,11 @@
 			var/suff = min(C.getOxyLoss(), 7)
 			C.adjustOxyLoss(-suff)
 			C.updatehealth()
-			to_chat(C, span_unconscious("I feel a breath of fresh air enter your lungs... It feels good..."))
+			to_chat(C, span_unconscious("我感觉一口新鲜空气进入肺中... 真舒服..."))
 		else if(they_breathe && !they_lung)
-			to_chat(C, span_unconscious("I feel a breath of fresh air... but you don't feel any better..."))
+			to_chat(C, span_unconscious("我感觉到一口新鲜空气... 却没有好转..."))
 		else
-			to_chat(C, span_unconscious("I feel a breath of fresh air... which is a sensation you don't recognise..."))
+			to_chat(C, span_unconscious("我感觉到一口新鲜空气... 这种感觉十分陌生..."))
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
 	if(..())
@@ -898,9 +898,9 @@
 
 	if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
 		if(backnotshoulder)
-			visible_message(span_notice("[src] starts lifting [target] onto their back.."))
+			visible_message(span_notice("[src]开始将[target]背起.."))
 		else
-			visible_message(span_notice("[src] starts lifting [target] onto their shoulder.."))
+			visible_message(span_notice("[src]开始把[target]扛到肩上.."))
 		if(do_after(src, carrydelay, TRUE, target))
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
@@ -910,7 +910,7 @@
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(can_piggyback(target))
-		visible_message(span_notice("[target] starts to climb onto [src]..."))
+		visible_message(span_notice("[target]开始爬到[src]身上..."))
 		if(do_after(target, 15, target = src))
 			if(can_piggyback(target))
 				if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
