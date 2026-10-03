@@ -1,9 +1,9 @@
 /datum/language/narsie
 	name = "Nar'Sian"
 	desc = ""
-	speech_verb = "intones"
-	ask_verb = "inquires"
-	exclaim_verb = "invokes"
+	speech_verb = "吟诵"
+	ask_verb = "询问"
+	exclaim_verb = "高声呼唤"
 	key = "6"
 	sentence_chance = 8
 	space_chance = 95 //very high due to the potential length of each syllable
