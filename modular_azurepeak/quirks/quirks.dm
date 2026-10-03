@@ -111,7 +111,7 @@
 /mob/living/carbon/human/proc/redolent_on_bath()
 	redolent_suppressed_until = world.time + 30 MINUTES
 	remove_status_effect(/datum/status_effect/debuff/redolent_stink)
-	to_chat(src, span_notice("I scrub the stink away. I should stay fresh for a while."))
+	to_chat(src, span_notice("我洗去了身上的臭味，应该能清爽一阵子了。"))
 
 /mob/living/carbon/human/proc/redolent_apply_contact_stink(mob/living/carbon/human/target)
 	target.apply_status_effect(/datum/status_effect/debuff/stinky_contact, redolent_scent_type, redolent_scent)
@@ -142,13 +142,13 @@
 	return 30 SECONDS
 
 /proc/redolent_examine_text(scent_type, scent)
-	var/scent_text = html_encode(scent || "an unusual scent")
+	var/scent_text = html_encode(scent || "一股异样的气味")
 	switch(scent_type)
 		if("Gross")
-			return span_greentext("They reek of [scent_text].")
+			return span_greentext("对方身上散发着刺鼻的气味：[scent_text]。")
 		if("Pleasant")
-			return "<span style='color:#FFB6C1'>They smell of [scent_text].</span>"
-	return "<span style='color:#d8cf8a'>They smell of [scent_text].</span>"
+			return "<span style='color:#FFB6C1'>对方身上散发着[scent_text]。</span>"
+	return "<span style='color:#d8cf8a'>对方身上散发着[scent_text]。</span>"
 
 /proc/redolent_visual_effect(mob/living/carbon/human/H, scent_type)
 	switch(scent_type)
@@ -172,15 +172,15 @@
 		switch(scent_type)
 			if("Gross")
 				if(!nearby.has_stress_event(/datum/stressevent/stinky_aura))
-					to_chat(nearby, "<span class='warning' style='color:#48c75a'>Something nearby reeks.</span>")
+					to_chat(nearby, "<span class='warning' style='color:#48c75a'>附近有什么东西散发着恶臭。</span>")
 					nearby.add_stress(/datum/stressevent/stinky_aura)
 			if("Neutral")
 				if(!nearby.has_stress_event(/datum/stressevent/prominent_scent))
-					to_chat(nearby, "<span class='warning' style='color:#d8cf8a'>There's a prominent scent in the air.</span>")
+					to_chat(nearby, "<span class='warning' style='color:#d8cf8a'>空气中弥漫着一股浓重的气味。</span>")
 					nearby.add_stress(/datum/stressevent/prominent_scent)
 			if("Pleasant")
 				if(!nearby.has_stress_event(/datum/stressevent/pleasant_scent))
-					to_chat(nearby, "<span class='warning' style='color:#ffb6c1'>A pleasant scent drifts through the air.</span>")
+					to_chat(nearby, "<span class='warning' style='color:#ffb6c1'>一股怡人的香气在空气中飘荡。</span>")
 					nearby.add_stress(/datum/stressevent/pleasant_scent)
 
 /datum/quirk/hunted

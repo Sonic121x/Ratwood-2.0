@@ -1152,7 +1152,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
 		if(istype(current_quirk, /datum/quirk/redolent))
 			var/scent_display = redolent_scent || get_default_redolent_scent(redolent_type)
-			html += "<div class='statpack-stats' style='margin-top: 4px;'><b>[redolent_type]</b>: [scent_display]</div>"
+			html += "<div class='statpack-stats' style='margin-top: 4px;'><b>[redolent_type == "Gross" ? "刺鼻" : (redolent_type == "Pleasant" ? "宜人" : "普通")]</b>: [scent_display]</div>"
 
 		if(current_quirk.custom_text)
 			html += "<div class='statpack-stats' style='margin-top: 4px;'>" + current_quirk.custom_text + "</div>"
@@ -1806,25 +1806,25 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			return
 
 		var/list/scent_types = list(
-			"Gross" = "Gross",
-			"Neutral" = "Neutral",
-			"Pleasant" = "Pleasant"
+			"刺鼻" = "Gross",
+			"普通" = "Neutral",
+			"宜人" = "Pleasant"
 		)
-		var/type_choice = tgui_input_list(usr, "Choose how others perceive your scent:", "Redolent", scent_types)
+		var/type_choice = tgui_input_list(usr, "选择他人对你体味的感受：", "体味浓郁", scent_types)
 		if(!type_choice)
 			return
 		var/new_scent_type = scent_types[type_choice]
-		var/list/scent_actions = list("Describe scent", "Use default")
-		var/scent_action = tgui_input_list(usr, "Describe the scent:", "Redolent", scent_actions)
+		var/list/scent_actions = list("描述气味" = "Describe scent", "使用默认" = "Use default")
+		var/scent_action = tgui_input_list(usr, "如何描述你的气味？", "体味浓郁", scent_actions)
 		if(!scent_action)
 			return
 		var/new_scent
-		if(scent_action == "Use default")
+		if(scent_actions[scent_action] == "Use default")
 			new_scent = get_default_redolent_scent(new_scent_type)
 		else
 			var/scent_leadin = redolent_scent_leadin(new_scent_type)
-			var/scent_prompt = "Describe the scent - a preview of the output in game is shown below:"
-			new_scent = tgui_input_text(usr, scent_prompt, "Redolent", redolent_scent, max_length = 100, multiline = TRUE, preview_leadin = scent_leadin)
+			var/scent_prompt = "描述你的气味，下方会预览它在游戏中的显示效果："
+			new_scent = tgui_input_text(usr, scent_prompt, "体味浓郁", redolent_scent, max_length = 100, multiline = TRUE, preview_leadin = scent_leadin)
 			if(isnull(new_scent))
 				return
 			if(!length(trim(new_scent)))
@@ -1833,7 +1833,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		save_to_history()
 		redolent_type = new_scent_type
 		redolent_scent = new_scent
-		to_chat(usr, span_notice("Set my Redolent scent to [redolent_type]."))
+		to_chat(usr, span_notice("我将自己的体味设为了[type_choice]。"))
 		open_vices_menu(usr)
 		return
 
