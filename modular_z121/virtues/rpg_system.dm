@@ -32,13 +32,13 @@
 //   的积分、注册 / 反注册信号，并在宿主消失时自动清理，是承载"每名玩家独立系统数据"的正解。
 //
 // 击杀归属（kill attribution）如何判定：
-//   引擎里每个 mob 被攻击时都会写入 lastattacker_weakref（见 species.dm 近战 / 远程攻击、
-//   simple_animal/animal_defense.dm 等处），它弱引用"最后一个攻击者"。当怪物死亡时，
+//   近战等核心攻击通过 lastattacker_weakref 记录最后攻击者；部分法术并不填写该字段，
+//   由 rpg_system_damage.dm 在实际弹道命中及火球爆炸期间补充明确来源。当怪物死亡时，
 //   /mob/living/death() 会发出 COMSIG_LIVING_DEATH 信号（death.dm:128）。因此：
 //     · 我们给"系统持有者附近的怪物"挂一个一次性的"击杀监听组件"，监听其 COMSIG_LIVING_DEATH；
 //     · 怪物一死，就解析它的 lastattacker_weakref，若凶手是持有【RPG 系统】特性的人类，
 //       就给那名凶手发放积分。
-//   这样无论玩家用近战 / 远程 / 法术哪种方式击杀，归属都准确（都依赖统一的 lastattacker）。
+//   致死伤害先提交本次命中的来源，再按统一的最后攻击者字段结算。
 //
 // 为什么用"轮询附近怪物并挂监听组件"而不是"重写怪物的 death()"：
 //   核心在 /mob/living/death() 之外的多个子类型（hostile/death、rogue/death……）都重写了
@@ -368,6 +368,8 @@
 	if(!isliving(parent))
 		return
 	var/mob/living/victim = parent
+	// 死亡信号可能在伤害过程内部发出，此时先提交仍在结算中的明确来源。
+	victim.z121_rpg_damage_context?.record_attacker()
 	// 解析"最后攻击者"。lastattacker_weakref 是弱引用：凶手若已登出 / 被删除，resolve() 返回 null。
 	//   为什么用弱引用而非直接存指针：避免怪物因持有凶手强引用而妨碍其被垃圾回收（引擎设计如此）。
 	var/mob/living/carbon/human/killer = victim.lastattacker_weakref?.resolve()

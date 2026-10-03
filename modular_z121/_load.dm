@@ -353,6 +353,8 @@
 #include "virtues/wine_sword_immortal.dm"
 // 自定义美德：RPG系统。收入获得积分及等量经验，积分购买物品，升级获得成长点。
 #include "virtues/rpg_system.dm"
+// 法术弹道与爆炸的击杀来源归属。
+#include "virtues/rpg_system_damage.dm"
 // 等级成长与静态商店扩展。
 #include "virtues/rpg_system_progression.dm"
 #include "virtues/rpg_system_catalogs.dm"
