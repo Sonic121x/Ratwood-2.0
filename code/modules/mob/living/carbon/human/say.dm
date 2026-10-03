@@ -1,7 +1,7 @@
 /mob/living/carbon/human/say_mod(input, message_mode)
 	verb_say = dna.species.say_mod
 	if(slurring)
-		return "slurs"
+		return "含糊地说"
 	else
 		. = ..()
 

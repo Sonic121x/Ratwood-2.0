@@ -1,9 +1,9 @@
 /datum/language/drone
 	name = "Drone"
 	desc = ""
-	speech_verb = "chitters"
-	ask_verb = "chitters inquisitively"
-	exclaim_verb = "chitters loudly"
+	speech_verb = "唧唧地说"
+	ask_verb = "好奇地唧唧叫"
+	exclaim_verb = "大声唧唧叫"
 	spans = list(SPAN_ROBOT)
 	key = "9"
 	flags = NO_STUTTER

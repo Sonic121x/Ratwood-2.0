@@ -93,7 +93,7 @@
 		holder?.hud_used?.bloodpool?.set_value((100 / (max_devotion / devotion)) / 100, 1 SECONDS)
 	//Max devotion limit
 	if((devotion >= max_devotion) && !silent)
-		to_chat(holder, span_warning("I have reached the limit of my devotion..."))
+		to_chat(holder, span_warning("我的虔诚已达到上限……"))
 	if(!prog_amt) // no point in the rest if it's just an expenditure
 		return TRUE
 	progression = clamp(progression + prog_amt, 0, max_progression)
@@ -169,7 +169,7 @@
 					if(istype(patron, /datum/patron/divine/xylix) && newspell.miracle)
 						newspell.mute_allowed = TRUE
 					if(!silent)
-						to_chat(holder, span_boldnotice("I have unlocked a new spell: [newspell]"))
+						to_chat(holder, span_boldnotice("我解锁了新的法术：[newspell]"))
 					holder.mind.AddSpell(newspell, holder)
 					LAZYADD(granted_spells, newspell)
 
@@ -178,7 +178,7 @@
 				var/required_tier = patron.traits_tier[trait]
 				if(required_tier <= level)
 					if(!silent)
-						to_chat(holder, span_boldnotice("I have unlocked a new trait: [trait]"))
+						to_chat(holder, span_boldnotice("我解锁了新的特质：[trait]"))
 					ADD_TRAIT(holder, trait, TRAIT_MIRACLE)
 
 
@@ -223,7 +223,7 @@
 	if(!devotion)
 		return FALSE
 
-	var/changeamt = input(src, "My devotion is [devotion.devotion]. How much to change?", "How much to change?") as null|num
+	var/changeamt = input(src, "我的虔诚为 [devotion.devotion]。要调整多少？", "调整虔诚") as null|num
 	if(!changeamt)
 		return FALSE
 	devotion.update_devotion(changeamt)
@@ -236,7 +236,7 @@
 	if(!devotion)
 		return FALSE
 
-	to_chat(src,"My devotion is [devotion.devotion].")
+	to_chat(src,"我的虔诚为 [devotion.devotion]。")
 	return TRUE
 
 /mob/living/carbon/human/proc/clericpray()
@@ -247,14 +247,14 @@
 		return FALSE
 
 	if (HAS_TRAIT(src, TRAIT_WITCH))
-		to_chat(src, span_warning("What need have I to pray? I draw my power from the old ways, whether my patron likes it or not."))
+		to_chat(src, span_warning("我何须祈祷？无论我的守护神是否赞同，我的力量都来自古老之道。"))
 		return FALSE
 
 	var/prayersesh = 0
-	visible_message("[src] kneels their head in prayer to the Gods.", "I kneel my head in prayer to [devotion.patron.name].")
+	visible_message("[src]低下头，向诸神祈祷。", "我低下头，向[devotion.patron.name]祈祷。")
 	for(var/i in 1 to 50)
 		if(devotion.devotion >= devotion.max_devotion)
-			to_chat(src, span_warning("I have reached the limit of my devotion..."))
+			to_chat(src, span_warning("我的虔诚已达到上限……"))
 			break
 		if(!do_after(src, 30))
 			break
@@ -264,8 +264,8 @@
 		var/prayer_effectiveness = round(devotion.prayer_effectiveness * devotion_multiplier)
 		devotion.update_devotion(prayer_effectiveness, prayer_effectiveness)
 		prayersesh += prayer_effectiveness
-	visible_message("[src] concludes their prayer.", "I conclude my prayer.")
-	to_chat(src, "<font color='purple'>I gained [prayersesh] devotion!</font>")
+	visible_message("[src]结束了祈祷。", "我结束了祈祷。")
+	to_chat(src, "<font color='purple'>我的虔诚增加了 [prayersesh]！</font>")
 	return TRUE
 
 /mob/living/carbon/human/proc/reset_clergy_devotion(cleric_tier, passive_gain, start_maxed = FALSE, devotion_limit = CLERIC_REQ_4)
@@ -297,7 +297,7 @@
 	set name = "Change Second Voice (Can only use Once!)"
 	set category = "IC"
 
-	var/newcolor = input(src, "Choose your character's SECOND voice color:", "VIRTUE","#a0a0a0") as color|null
+	var/newcolor = input(src, "选择角色第二种声音的颜色：", "美德","#a0a0a0") as color|null
 	if(newcolor)
 		second_voice = sanitize_hexcolor(newcolor)
 		src.verbs -= /mob/living/carbon/human/proc/changevoice
@@ -310,15 +310,15 @@
 	set category = "IC"
 
 	if(!second_voice)
-		to_chat(src, span_info("I haven't decided on my second voice yet."))
+		to_chat(src, span_info("我还没有选定第二种声音。"))
 		return FALSE
 	if(voice_color != second_voice)
 		original_voice = voice_color
 		voice_color = second_voice
-		to_chat(src, span_info("I've changed my voice to the second one."))
+		to_chat(src, span_info("我切换到了第二种声音。"))
 	else
 		voice_color = original_voice
-		to_chat(src, span_info("I've returned to my natural voice."))
+		to_chat(src, span_info("我恢复了原本的声音。"))
 	return TRUE
 
 /mob/living/carbon/human/proc/toggleblindness()
@@ -338,4 +338,4 @@
 		REMOVE_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE)
 	else
 		ADD_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE)
-	to_chat(src, "I will see [HAS_TRAIT(src, TRAIT_COMBAT_AWARE) ? "more" : "less"] combat information now.")
+	to_chat(src, "现在我会看到[HAS_TRAIT(src, TRAIT_COMBAT_AWARE) ? "更多" : "更少"]战斗信息。")
