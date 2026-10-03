@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	/// this is sorta... weird. it basically lets you equip stuff that usually needs jumpsuits without one, like belts and pockets and ids
 	var/nojumpsuit = 0
 	/// affects the speech message
-	var/say_mod = "says"
+	var/say_mod = "说"
 	// Default mutant bodyparts for this species. Don't forget to set one for every mutant bodypart you allow this species to have.
 	var/list/default_features = MANDATORY_FEATURE_LIST
 	// Visible CURRENT bodyparts that are unique to a species. DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK SHIT UP! Changes to this list for non-species specific bodyparts (ie cat ears and tails) should be assigned at organ level if possible. Layer hiding is handled by handle_mutant_bodyparts() below.
