@@ -109,7 +109,7 @@
 	if(to_hand && user)
 		user.put_in_hands(gore)
 	if(user)
-		to_chat(user, span_danger("The unholy net collapses back into a mess of viscera!"))
+		to_chat(user, span_danger("渎神之网塌回了一团内脏!"))
 
 /obj/item/net/unholy_grasp/ensnare(mob/living/carbon/C, mob/user)
 	slipouttime = max(2 SECONDS, 10 SECONDS - max(0, C.STASTR - 10) * 0.5 SECONDS)

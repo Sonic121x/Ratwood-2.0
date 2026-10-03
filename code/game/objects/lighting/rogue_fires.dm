@@ -53,7 +53,7 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		if(on)
-			L.visible_message(span_info("[user] starts to warm their hands."), span_info("You warm your hands."))
+			L.visible_message(span_info("[user]开始暖手。"), span_info("我暖了暖手。"))
 			if(do_after(L, 4 SECONDS, target = src))
 				if(L.bodytemperature < BODYTEMP_NORMAL_MIN)
 					L.adjust_bodytemperature(10)

@@ -178,7 +178,7 @@
 
 /datum/sprite_accessory/breasts/pecs
 	icon_state = "pecs"
-	name = "Pecs"
+	name = "胸肌"
 	color_key_defaults = list(KEY_CHEST_COLOR)
 	can_jiggle = TRUE
 
@@ -189,7 +189,7 @@
 	return "[icon_state]_1"
 
 /datum/sprite_accessory/breasts/pecs/nippleless
-	name = "Pecs (Nippleless)"
+	name = "胸肌（无乳头）"
 
 /datum/sprite_accessory/breasts/pecs/nippleless/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	var/obj/item/organ/breasts/badonkers = organ

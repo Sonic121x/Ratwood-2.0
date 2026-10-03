@@ -71,8 +71,8 @@
 		var/datum/antagonist/lich/L = mind.has_antag_datum(/datum/antagonist/lich)
 		if (L && !L.out_of_lives)
 			if(L.consume_phylactery())
-				visible_message(span_warning("[src]'s body begins to shake violently, as eldritch forces begin to whisk them away!"))
-				to_chat(src, span_userdanger("Death is not the end for me. I begin to rise again."))
+				visible_message(span_warning("[src]的身体开始剧烈颤抖，诡异的力量正要将其带走！"))
+				to_chat(src, span_userdanger("死亡并非我的终点。我开始重获新生。"))
 				playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE)
 			else
 				to_chat(src, span_userdanger("No, NO! This cannot be!"))
