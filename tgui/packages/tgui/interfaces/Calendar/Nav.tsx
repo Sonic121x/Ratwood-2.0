@@ -53,18 +53,18 @@ export const Nav = (props: NavProps) => {
     <>
       <div style={navRowStyle}>
         <button type="button" style={inkButtonStyle({})} onClick={onPrev}>
-          {'< Prev'}
+          {'< 上月'}
         </button>
         <div style={monthTitleStyle}>{monthName}</div>
         <button type="button" style={inkButtonStyle({})} onClick={onNext}>
-          {'Next >'}
+          {'下月 >'}
         </button>
       </div>
       <div style={monthSubStyle}>{seasonLine}</div>
       {showReturn && (
         <div style={returnRowStyle}>
           <button type="button" style={inkButtonStyle({})} onClick={onReturn}>
-            Return to Today
+            返回今日
           </button>
         </div>
       )}

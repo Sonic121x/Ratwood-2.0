@@ -2,7 +2,7 @@
 	var/observer_privilege = isobserver(usr)
 	if(href_list["check_hb"] && (observer_privilege || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
 		if(!observer_privilege)
-			usr.visible_message(span_info("[usr] tries to hear [src]'s heartbeat."))
+			usr.visible_message(span_info("[usr]试着听[src]的心跳。"))
 			if(!do_after(usr, 30, needhand = TRUE, target = src))
 				return
 		var/list/following_my_heart = check_heartbeat(usr)
@@ -14,9 +14,9 @@
 /mob/living/proc/check_heartbeat(mob/user)
 	var/list/message = list()
 	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || HAS_TRAIT(src, TRAIT_ROTMAN))
-		message += "<B>No heartbeat...</B>"
+		message += "<B>没有心跳...</B>"
 	else
-		message += "<B>The heart is still beating.</B>"
+		message += "<B>心脏仍在跳动。</B>"
 	var/list/soul_message = soul_examine(user)
 	if(length(soul_message))
 		message += soul_message
