@@ -8,6 +8,17 @@
 #define TERROR_CLOCK_BOSS_MAX 2
 #define TERROR_CLOCK_TRIAL_LABEL "格拉加尔的凝视"
 #define TERROR_CLOCK_PURGE_RANGE 10
+// 仅普通召唤进行整批翻倍判定，惩罚队伍保持固定数量。
+#define TERROR_CLOCK_DOUBLE_CHANCE 10
+#define TERROR_CLOCK_GRAGGAR_DOUBLE_CHANCE 25
+#define TERROR_CLOCK_PUNISHMENT_AMOUNT 8
+
+// 摧毁惩罚使用独立名单，不与试炼第四波共享配置，也不包含蜥蜴人狱卒。
+GLOBAL_LIST_INIT(terror_clock_punishment_roster, list(
+	/mob/living/carbon/human/species/human/northern/mad_touched_treasure_hunter,
+	/mob/living/carbon/human/species/human/northern/deranged_knight,
+	/mob/living/carbon/human/species/elf/dark/drowraider,
+))
 
 // 分类与怪物类型保持原有配置；人形怪物自行完成延迟装备初始化。
 GLOBAL_LIST_INIT(terror_clock_roster, list(
@@ -111,10 +122,84 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 	var/datum/glaggar_challenge/active_challenge
 	// 记录最近启动的游戏日；空值表示这座钟尚未使用，游戏首日也能正常启动。
 	var/last_used_day = null
+	// 先登记再处理摧毁，避免重入或重复回调生成多批惩罚怪物。
+	var/destruction_punishment_triggered = FALSE
+	// 仅在当前攻击结算期间保存来源，不把后续无来源的环境伤害归给旧攻击者。
+	var/mob/damage_attacker
+
+/obj/structure/terror_clock/attacked_by(obj/item/I, mob/living/user)
+	var/mob/previous_attacker = damage_attacker
+	damage_attacker = user
+	. = ..()
+	if(!QDELETED(src))
+		damage_attacker = previous_attacker
+
+/obj/structure/terror_clock/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, armor_penetration = 0)
+	var/mob/previous_attacker = damage_attacker
+	damage_attacker = user
+	. = ..()
+	if(!QDELETED(src))
+		damage_attacker = previous_attacker
+
+/obj/structure/terror_clock/bullet_act(obj/projectile/P)
+	var/mob/previous_attacker = damage_attacker
+	damage_attacker = ismob(P.firer) ? P.firer : null
+	. = ..()
+	if(!QDELETED(src))
+		damage_attacker = previous_attacker
+
+/obj/structure/terror_clock/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, damage_flag = "blunt")
+	var/mob/previous_attacker = damage_attacker
+	damage_attacker = throwingdatum?.thrower
+	. = ..()
+	if(!QDELETED(src))
+		damage_attacker = previous_attacker
 
 // 钟没有单独的损坏贴图，沿用父类的完整性处理。
 /obj/structure/terror_clock/obj_break(damage_flag)
 	..()
+
+// 仅完全摧毁触发；不挂接通用删除回调，管理员删除和地图清理不会产生惩罚。
+/obj/structure/terror_clock/obj_destruction(damage_flag)
+	if(QDELETED(src) || obj_destroyed || destruction_punishment_triggered)
+		return
+	destruction_punishment_triggered = TRUE
+	obj_destroyed = TRUE
+	summoning = FALSE
+	var/turf/center = get_turf(src)
+	var/mob/living/destroyer = isliving(damage_attacker) ? damage_attacker : null
+	var/spawned = 0
+	// 先终止旧试炼并拆除壁垒，惩罚怪物不登记进旧控制器，避免被随后清理。
+	if(!QDELETED(active_challenge))
+		active_challenge.abort_challenge("恐怖之钟被彻底摧毁了。")
+	active_challenge = null
+	if(center)
+		playsound(center, 'sound/misc/demon_attack1.ogg', 100, FALSE, extrarange = 14)
+		visible_message(span_danger("[src]在崩裂中发出骇人的嘶吼，恶意从残骸中涌出！"))
+		// 绕过每日次数和整片净空要求，但每个落点仍需安全且未被占用。
+		var/list/spawn_turfs = get_valid_spawn_turfs(center)
+		var/mob_type = pick(GLOB.terror_clock_punishment_roster)
+		for(var/i in 1 to TERROR_CLOCK_PUNISHMENT_AMOUNT)
+			var/turf/target = terror_clock_take_safe_turf(spawn_turfs)
+			if(!target)
+				break
+			var/mob/living/M = new mob_type(target)
+			if(QDELETED(M))
+				continue
+			terror_clock_awaken_mob(M)
+			spawned++
+		if(spawned)
+			visible_message(span_danger("钟的毁灭招来了报复——[spawned] 名敌人出现在周围！"))
+			if(spawned < TERROR_CLOCK_PUNISHMENT_AMOUNT)
+				visible_message(span_warning("惩罚原本将招来 [TERROR_CLOCK_PUNISHMENT_AMOUNT] 名敌人，但因安全空位不足或生成失败，仅有 [spawned] 名现身。"))
+		else
+			visible_message(span_warning("恐怖的嘶吼渐渐消散——没有可用的安全落点或敌人生成失败，惩罚召唤落空了。"))
+	// 完全未生成敌人时才诅咒摧毁者，部分生成不追加惩罚，也不触发试炼的传送流程。
+	if(!spawned && !QDELETED(destroyer))
+		destroyer.apply_status_effect(/datum/status_effect/glaggar_curse)
+		to_chat(destroyer, span_danger("惩罚召唤未能成形，格拉加尔的怒火转而降临到摧毁恐怖之钟的你身上！你受到了格拉加尔的诅咒！"))
+	// 保留父类的残骸、燃烧或酸蚀处理，不使用会清除地面物品的敲钟流程。
+	return ..()
 
 // 每次菜单返回及最终提交都重新校验；这里不等待，也不消耗冷却。
 /obj/structure/terror_clock/proc/can_activate(mob/living/user)
@@ -131,7 +216,7 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 	if(!clock_turf || !user_turf || clock_turf.z != user_turf.z || !Adjacent(user))
 		to_chat(user, span_warning("你必须靠近恐怖之钟才能操作，召唤已取消。"))
 		return FALSE
-	if(obj_broken)
+	if(obj_broken || obj_destroyed)
 		to_chat(user, span_warning("这座钟已经损毁，无法敲响。"))
 		return FALSE
 	if(summoning)
@@ -253,16 +338,20 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 			return T
 	return null
 
-/obj/structure/terror_clock/proc/get_valid_spawn_turfs()
+/obj/structure/terror_clock/proc/get_valid_spawn_turfs(turf/center)
 	var/list/valid = list()
-	for(var/turf/T in range(TERROR_CLOCK_SUMMON_RANGE, src))
-		if(T != get_turf(src) && terror_clock_safe_turf(T))
+	if(!center)
+		center = get_turf(src)
+	if(!center)
+		return valid
+	for(var/turf/T in range(TERROR_CLOCK_SUMMON_RANGE, center))
+		if(T != center && terror_clock_safe_turf(T))
 			valid += T
 	return valid
 
 // 启动成功后不再要求使用者留在原地，但钟损坏时仍然中止召唤。
 /obj/structure/terror_clock/proc/do_summon(mob_type, amount, mob/living/user)
-	if(QDELETED(src) || obj_broken || active_challenge || !ispath(mob_type, /mob/living))
+	if(QDELETED(src) || obj_broken || obj_destroyed || active_challenge || !ispath(mob_type, /mob/living))
 		summoning = FALSE
 		return
 	// 倒计时内地板可能被拆除，不能仅从残留的小块地面中挑选出生点。
@@ -271,9 +360,15 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 		visible_message(span_warning("[src]的召唤中止：[ground_error]"))
 		summoning = FALSE
 		return
+	// 倒计时结束后读取当前讲述者；每批仅判定一次，不影响试炼及摧毁惩罚。
+	var/double_chance = istype(SSgamemode?.current_storyteller, /datum/storyteller/graggar) ? TERROR_CLOCK_GRAGGAR_DOUBLE_CHANCE : TERROR_CLOCK_DOUBLE_CHANCE
+	var/target_amount = amount
+	if(prob(double_chance))
+		target_amount *= 2
+		visible_message(span_danger("[src]的余音骤然扭曲——这次召唤的怪物数量翻倍了！"))
 	var/list/spawn_turfs = get_valid_spawn_turfs()
 	var/spawned = 0
-	for(var/i in 1 to amount)
+	for(var/i in 1 to target_amount)
 		var/turf/target = terror_clock_take_safe_turf(spawn_turfs)
 		if(!target)
 			break
@@ -284,8 +379,8 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 		spawned++
 	if(spawned)
 		visible_message(span_danger("伴随着[src]最后的余音，[spawned] 只怪物凭空浮现，獠牙毕露！"))
-		if(spawned < amount && !QDELETED(user))
-			to_chat(user, span_warning("本次请求召唤 [amount] 只怪物，实际仅生成 [spawned] 只；其余因安全空位不足或生成失败而取消。"))
+		if(spawned < target_amount && !QDELETED(user))
+			to_chat(user, span_warning("本次选择了 [amount] 只怪物，最终应召唤 [target_amount] 只，实际仅生成 [spawned] 只；其余因安全空位不足或生成失败而取消。"))
 		ring_bell()
 	else
 		visible_message(span_warning("[src]的钟声归于沉寂——没有可用的安全空地或怪物生成失败，召唤落空了。"))
@@ -344,3 +439,6 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 #undef TERROR_CLOCK_BOSS_MAX
 #undef TERROR_CLOCK_TRIAL_LABEL
 #undef TERROR_CLOCK_PURGE_RANGE
+#undef TERROR_CLOCK_DOUBLE_CHANCE
+#undef TERROR_CLOCK_GRAGGAR_DOUBLE_CHANCE
+#undef TERROR_CLOCK_PUNISHMENT_AMOUNT

@@ -92,6 +92,9 @@
 	var/datum/explosion/blast = new /datum/explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, ignorecap, flame_range, silent, smoke, soundin)
 	// 原构造函数在处理地块前先让出执行，因此此处先于所有实际伤害完成。
 	blast.z121_serpent_cast = z121_serpent_cast
+	if(istype(src, /obj/projectile))
+		var/obj/projectile/projectile = src
+		blast.z121_rpg_caster_ref = WEAKREF(projectile.firer)
 	return blast
 
 /mob/living/carbon/human/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
@@ -511,8 +514,7 @@
 	return TRUE
 
 /obj/projectile/magic/aoe/fireball/on_hit(target)
-	if(!z121_serpent_cast)
-		return ..()
+	// 普通火球也沿用原有爆炸流程，同时为异步爆炸保留发射者。
 	return z121_serpent_fireball_hit(target)
 
 /obj/projectile/magic/aoe/fireball/proc/z121_serpent_fireball_hit(target)
