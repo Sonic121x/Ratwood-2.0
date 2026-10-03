@@ -985,7 +985,7 @@
 		if(L.alpha == 0 && L.rogue_sneaking)
 			// we just got hit by something hidden so try and find them
 			if (prob(5))
-				visible_message(span_notice("[src] begins searching around frantically..."))
+				visible_message(span_notice("[src]开始疯狂地四处搜寻..."))
 			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
 			if (!npc_detect_sneak(L, extra_chance))
 				return
