@@ -183,8 +183,8 @@
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message(span_danger("[src] begins to fall down. It looks like [p_theyve()] lost the will to live."), \
-						span_danger("[src] begins to fall down. It looks like [p_theyve()] lost the will to live."))
+		visible_message(span_danger("[src]开始倒下，似乎已失去活下去的意愿。"), \
+						span_danger("[src]开始倒下，似乎已失去活下去的意愿。"))
 
 		suicide_log()
 

@@ -905,7 +905,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			if(!H.wear_pants && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
-					to_chat(H, span_warning("I need a jumpsuit before you can attach this [I.name]!"))
+					to_chat(H, span_warning("我得先穿上衣裤才能挂上[I.name]！"))
 				return FALSE
 			if(I.slot_flags & ITEM_SLOT_DENYPOCKET)
 				return FALSE
@@ -921,7 +921,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			if(!H.wear_pants && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
-					to_chat(H, span_warning("I need a jumpsuit before you can attach this [I.name]!"))
+					to_chat(H, span_warning("我得先穿上衣裤才能挂上[I.name]！"))
 				return FALSE
 			if(I.slot_flags & ITEM_SLOT_DENYPOCKET)
 				return FALSE
@@ -935,15 +935,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			if(!H.wear_armor)
 				if(!disable_warning)
-					to_chat(H, span_warning("I need a suit before you can attach this [I.name]!"))
+					to_chat(H, span_warning("我得先穿上外衣才能挂上[I.name]！"))
 				return FALSE
 			if(!H.wear_armor.allowed)
 				if(!disable_warning)
-					to_chat(H, span_warning("I somehow have a suit with no defined allowed items for suit storage, stop that."))
+					to_chat(H, span_warning("我这件外衣没有可存放物品的设置，不能往上挂东西。"))
 				return FALSE
 			if(I.w_class > WEIGHT_CLASS_BULKY)
 				if(!disable_warning)
-					to_chat(H, span_warning("The [I.name] is too big to attach!")) //should be src?
+					to_chat(H, span_warning("[I.name]太大了，挂不上去！")) //should be src?
 				return FALSE
 			return FALSE
 		if(SLOT_HANDCUFFED)
@@ -989,7 +989,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(HAS_TRAIT(H, TRAIT_CHUNKYFINGERS))
 		return do_after(H, 5 MINUTES, target = H)
 	if(I.equip_delay_self > 10)
-		H.visible_message(span_smallnotice("[H] start putting on [I]..."), span_smallnotice("I start putting on [I]..."))
+		H.visible_message(span_smallnotice("[H]开始穿戴[I]..."), span_smallnotice("我开始穿戴[I]..."))
 	if(I.edelay_type)
 		return move_after(H, minone(I.equip_delay_self-H.STASPD), target = H)
 	else
