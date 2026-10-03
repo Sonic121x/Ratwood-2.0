@@ -513,7 +513,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK && src.stat != DEAD)
-		var/target = "\the [A]"
+		var/target = "[A.name]"
 		var/message = "[src]注视着"
 		if(!isturf(A))
 			if(A == src)
@@ -556,8 +556,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 						if(parsed_zone)
 							target = "[src.p_their()][parsed_zone]"
 					else
-						target = "[T]的[parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck)]"
-			visible_message(span_emote("[message][target]."))
+						target = "[T.name]的[parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck)]"
+			visible_message(span_emote("[message][target]。"))
 
 	var/list/result = A.examine(src)
 	if(result)
