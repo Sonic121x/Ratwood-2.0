@@ -261,7 +261,7 @@
 
 	var/was_working = working
 	var/engineering_skill = user.get_skill_level(/datum/skill/craft/engineering)
-	user.visible_message(span_notice("[user] starts to [was_working ? "shut down" : "start up"] [src]."), span_notice("You start to [was_working ? "shut down" : "start up"] [src]."))
+	user.visible_message(span_notice("[user]开始[was_working ? "关闭" : "启动"][src]。"), span_notice("我开始[was_working ? "关闭" : "启动"][src]。"))
 	if(!do_after(user, 1.2 SECONDS, src))
 		return
 
