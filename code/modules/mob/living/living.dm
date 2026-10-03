@@ -2473,7 +2473,7 @@
 	var/time_left = COOLDOWN_TIMELEFT(src, offer_cooldown)
 
 	if(time_left)
-		to_chat(src, span_danger("I must wait [time_left / 10] seconds before offering again."))
+		to_chat(src, span_danger("我还得等[time_left / 10]秒才能再次递出物品。"))
 		return FALSE
 
 	offered_item_ref = WEAKREF(offered_item)
@@ -2484,27 +2484,27 @@
 		offered_item_other = offered_to.offered_item_ref?.resolve()
 
 	if(stealthy)
-		to_chat(src, span_notice("I secretly offer [offered_item] to [offered_to]."))
-		to_chat(offered_to, span_notice("[offered_to] secretly offers [offered_item] to me..."))
+		to_chat(src, span_notice("我悄悄向[offered_to]递出[offered_item]。"))
+		to_chat(offered_to, span_notice("[src]悄悄向我递出[offered_item]……"))
 	else if(!isnull(offered_item_other) && istype(offered_item_other) && offered_item_other?.reagents?.maximum_volume > 0) // clink drinks
 		playsound(src,offered_item_other.reagents.maximum_volume > 50 ? 'sound/misc/clink_drink_big.ogg' : 'sound/misc/clink_drink.ogg', 100, TRUE)
 		addtimer(CALLBACK(src, PROC_REF(stop_offering_item)), 0.6 SECONDS)
 		addtimer(CALLBACK(offered_to, PROC_REF(stop_offering_item)), 0.6 SECONDS)
 		visible_message(
-			span_notice("[src] clinks [offered_item] with [offered_to]!"), \
-			span_notice("I clink [offered_item] with [offered_to]!"), \
+			span_notice("[src]举起[offered_item]，与[offered_to]碰杯！"), \
+			span_notice("我举起[offered_item]，与[offered_to]碰杯！"), \
 			vision_distance = COMBAT_MESSAGE_RANGE, \
 			ignored_mobs = list(offered_to)
 		)
-		to_chat(offered_to, span_notice("[src] clinks [offered_item] with me!"))
+		to_chat(offered_to, span_notice("[src]举起[offered_item]，与我碰杯！"))
 	else
 		visible_message(
-			span_notice("[src] offers [offered_item] to [offered_to] with an outstretched hand."), \
-			span_notice("I offer [offered_item] to [offered_to] with an outstretched hand."), \
+			span_notice("[src]伸出手，向[offered_to]递出[offered_item]。"), \
+			span_notice("我伸出手，向[offered_to]递出[offered_item]。"), \
 			vision_distance = COMBAT_MESSAGE_RANGE, \
 			ignored_mobs = list(offered_to)
 		)
-		to_chat(offered_to, span_notice("[src] offers [offered_item] to me..."))
+		to_chat(offered_to, span_notice("[src]向我递出[offered_item]……"))
 
 	new /obj/effect/temp_visual/offered_item_effect(get_turf(src), offered_item, src, offered_to, stealthy)
 
@@ -2514,11 +2514,11 @@
 		stop_offering_item()
 		return
 	if(stealthy)
-		to_chat(src, "I stop offering [offered_item ? offered_item : "the item"].")
+		to_chat(src, "我不再递出[offered_item ? offered_item : "这件物品"]。")
 	else
 		visible_message(
-			span_notice("[src] puts their hand back down."), \
-			span_notice("I stop offering [offered_item ? offered_item : "the item"]."), \
+			span_notice("[src]放下了手。"), \
+			span_notice("我不再递出[offered_item ? offered_item : "这件物品"]。"), \
 			vision_distance = COMBAT_MESSAGE_RANGE, \
 		)
 	stop_offering_item()
@@ -2531,7 +2531,7 @@
 
 /mob/living/proc/try_accept_offered_item(mob/living/offerer, obj/offered_item, stealthy)
 	if(get_active_held_item())
-		to_chat(src, span_warning("I need a free hand to take it!"))
+		to_chat(src, span_warning("我得腾出一只手才能接过它！"))
 		return FALSE
 
 	accept_offered_item(offerer, offered_item, stealthy)
@@ -2541,13 +2541,13 @@
 	transferItemToLoc(offered_item, src)
 	put_in_active_hand(offered_item)
 	if(stealthy)
-		to_chat(offerer, span_notice("[src] takes the secretly offered [offered_item]."))
-		to_chat(src, span_notice("I take the secretly offered [offered_item] from [offerer]."))
+		to_chat(offerer, span_notice("[src]接过了悄悄递来的[offered_item]。"))
+		to_chat(src, span_notice("我接过了[offerer]悄悄递来的[offered_item]。"))
 	else
-		to_chat(offerer, span_notice("[src] takes [offered_item] from my outstretched hand."))
+		to_chat(offerer, span_notice("[src]从我伸出的手中接过了[offered_item]。"))
 		visible_message(
-			span_warning("[src] takes [offered_item] from [offerer]'s outstretched hand!"), \
-			span_notice("I take [offered_item] from [offerer]'s outstretched hand."), \
+			span_warning("[src]从[offerer]伸出的手中接过了[offered_item]！"), \
+			span_notice("我从[offerer]伸出的手中接过了[offered_item]。"), \
 			vision_distance = COMBAT_MESSAGE_RANGE, \
 			ignored_mobs = list(offerer)
 		)
