@@ -321,7 +321,7 @@
 				var/mob/living/carbon/human/H = src
 				for(var/Item in H.get_equipped_items()) // Find this item
 					if(Item == I)
-						to_chat(src, span_warn("I can't remove \the [I.name]!"))
+						to_chat(src, span_warn("我没法取下[I.name]！"))
 						return FALSE
 	var/hand_index = get_held_index_of_item(I)
 	if(hand_index)
@@ -448,7 +448,7 @@
 
 /obj/item/proc/equip_to_best_slot(mob/M)
 	if(src != M.get_active_held_item())
-		to_chat(M, span_warning("I are not holding anything to equip!"))
+		to_chat(M, span_warning("我手上没有可以穿戴的东西！"))
 		return FALSE
 
 	if(M.equip_to_appropriate_slot(src))
@@ -469,7 +469,7 @@
 		if(SEND_SIGNAL(I, COMSIG_TRY_STORAGE_INSERT, src, M))
 			return TRUE
 
-	to_chat(M, span_warning("I couldn't equip that."))
+	to_chat(M, span_warning("我没法穿戴那件东西。"))
 	return FALSE
 
 

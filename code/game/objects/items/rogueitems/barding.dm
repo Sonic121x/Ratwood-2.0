@@ -27,27 +27,27 @@
 
 /obj/item/clothing/barding/attack(mob/living/M, mob/living/user)
 	if(!issimple(M))
-		to_chat(user, span_warning("\The [src] can only be used on animals!"))
+		to_chat(user, span_warning("[src]只能用于动物！"))
 		return
 	if(!is_type_in_list(M, valid_animal_types))
-		to_chat(user, span_warning("\The [src] cannot be used on [M]! It is only meant for specific animals."))
+		to_chat(user, span_warning("[src]不能用于[M]！它只适合特定动物。"))
 		return
 
 	var/mob/living/simple_animal/animal = M
 	if(animal.adult_growth)
-		to_chat(user, span_warning("[animal] is a juvenile and cannot wear a bard!"))
+		to_chat(user, span_warning("[animal]尚未成年，不能穿戴兽甲！"))
 		return
 	if(animal.bbarding)
-		to_chat(user, span_warning("[animal] is already wearing a bard!"))
+		to_chat(user, span_warning("[animal]已经穿着兽甲了！"))
 		return
 	if(!animal.ssaddle)
-		to_chat(user, span_warning("[animal] needs to be saddled before you can fit a bard onto it!"))
+		to_chat(user, span_warning("得先给[animal]装上鞍，才能为它穿戴兽甲！"))
 		return
 	if(user.buckled)
-		to_chat(user, span_warning("You need to hop off [user.buckled] before you can drape [src] on [animal]."))
+		to_chat(user, span_warning("我得先从[user.buckled]身上下来，才能给[animal]披上[src]。"))
 		return
 
-	user.visible_message(span_notice("[user] is fitting a bard onto [animal]..."), span_notice("I start fitting a bard onto [animal]..."))
+	user.visible_message(span_notice("[user]正为[animal]穿戴兽甲..."), span_notice("我开始为[animal]穿戴兽甲..."))
 	if(!do_after(user, 5 SECONDS, TRUE, animal))
 		return
 
@@ -56,7 +56,7 @@
 	animal.barding_speed_mult = slowdown_factor
 	animal.updatehealth()
 	animal.update_icon()
-	user.visible_message(span_notice("[user] fits a bard onto [animal]."), span_notice("I fit a bard onto [animal]."))
+	user.visible_message(span_notice("[user]为[animal]穿上了兽甲。"), span_notice("我为[animal]穿上了兽甲。"))
 
 /obj/item/clothing/barding/obj_destruction(damage_flag)
 	if(istype(loc, /mob/living/simple_animal))

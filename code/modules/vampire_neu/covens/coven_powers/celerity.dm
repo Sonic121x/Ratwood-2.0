@@ -25,7 +25,7 @@
 	if(level > 2)
 		owner.AddComponent(/datum/component/after_image)
 		playsound(owner, 'sound/magic/timeforward.ogg', 40, TRUE)
-		owner.visible_message(span_warning("[owner] starts moving at inhumen speeds, their every action a blur!"))
+		owner.visible_message(span_warning("[owner]开始以非人的速度移动，每个动作都化作残影！"))
 		if(level > 3)
 			ADD_TRAIT(owner, TRAIT_LEAPER, VAMPIRE_TRAIT)
 		if(level > 4)

@@ -74,7 +74,7 @@
 				var/mob/living/carbon/human/bather = user
 				bather.relaxing_bath(2)
 				return
-			user.visible_message(span_info("[user] starts to wash in [src]."))
+			user.visible_message(span_info("[user]开始在[src]中洗浴。"))
 			if(do_after(L, 3 SECONDS, target = src))
 				wash_atom(user, CLEAN_STRONG)
 				user.remove_stress(/datum/stressevent/sewertouched)
@@ -84,7 +84,7 @@
 				if(user.bodytemperature > BODYTEMP_NORMAL_MAX)	//washing yourself helps to cool you off.
 					user.adjust_bodytemperature(-75)
 		else
-			user.visible_message(span_info("[user] starts to wash [item2wash] in [src]."))
+			user.visible_message(span_info("[user]开始在[src]中清洗[item2wash]。"))
 			if(do_after(L, 30, target = src))
 				wash_atom(item2wash, CLEAN_STRONG)
 				L.update_inv_hands()
