@@ -282,7 +282,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo
 	name = "阿万廷臂铠"
-	desc = "<font color='A50021'>它们至今犹存，镌刻在这些死物之上——那只曾嘲弄它们的手，与那颗曾滋养它们的心：</font>"
+	desc = "<font color='A50021'>这些情感镌刻在无生命之物上，至今犹存，比雕摹它们的手与滋养它们的心更为长久：</font>"
 	icon_state = "zizobracers"
 	item_state = "zizobracers"
 	max_integrity = ARMOR_INT_SIDE_ANTAG

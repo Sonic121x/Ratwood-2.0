@@ -66,7 +66,7 @@ export const DayCell = (props: DayCellProps) => {
     <div
       style={cellStyle(isSelected, isToday)}
       onClick={onClick}
-      title={events.map((e) => e.title).join(', ')}
+      title={events.map((e) => e.display_title || e.title).join('、')}
     >
       <div style={dayNumberStyle(isToday)}>{day}</div>
       <div style={barsContainerStyle}>
@@ -76,10 +76,10 @@ export const DayCell = (props: DayCellProps) => {
             color={e.color_tag}
             isStart={day === e.day}
             isEnd={day === e.day + e.duration_days - 1}
-            label={e.title}
+            label={e.display_title || e.title}
           />
         ))}
-        {overflow > 0 && <div style={overflowStyle}>+{overflow} more</div>}
+        {overflow > 0 && <div style={overflowStyle}>另有{overflow}项</div>}
       </div>
     </div>
   );

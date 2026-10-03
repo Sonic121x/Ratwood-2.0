@@ -44,59 +44,59 @@
 	var/month_name = get_month_number_to_text(month_number)
 	var/season = get_season_from_month(month_number)
 	var/season_phase = get_season_phase(month_number)
-	return "[day_of_month] [month_name] [year_number] AP (Month [month_number] [season_phase] [season]), Cycle [current_cycle]"
+	return "普赛顿纪元[year_number]年 [month_name][day_of_month]日（第[month_number]月 [season_phase][season]），第[current_cycle]轮回"
 
 /// Compact IC date - what players say in-character. e.g. "3 Eora 1513 AP".
 /// (ES reading of the epoch suffix: "After Psydon".)
 /proc/get_ic_date_short_as_string(day_number)
 	var/list/parts = resolve_ic_date_parts(day_number)
-	return "[parts[1]] [get_month_number_to_text(parts[2])] [parts[3]] AP"
+	return "普赛顿纪元[parts[3]]年 [get_month_number_to_text(parts[2])][parts[1]]日"
 
 // Returns the current IC time as a string in the format [DAYS] ᛉ HH:MM ([Time Of Day])
 /proc/get_current_ic_time_as_string()
 	// Ratwood deviation: Emerald Summit keeps its long-standing weekday names (Tiw's/Thule's/Freyja's/
 	// Saturn's Dae) instead of AP's secular renames - see get_current_day_of_week_name() below.
 	var/weekday = get_current_day_of_week_name()
-	return  "[weekday] ᛉ [capitalize(GLOB.tod)] ᛉ [station_time_timestamp("hh:mm")]"
+	return  "[weekday] ᛉ [list("night" = "夜晚", "dawn" = "黎明", "day" = "白昼", "dusk" = "黄昏")[GLOB.tod]] ᛉ [station_time_timestamp("hh:mm")]"
 
 // Given a number between 1 to 12, returns the month name as text
 /proc/get_month_number_to_text(month_number)
 	switch(month_number)
 		if(1)
-			return "Psyrise" // March - The first month of a year is dedicated to the original god that created the world
+			return "普赛初升月" // March - The first month of a year is dedicated to the original god that created the world
 		if(2)
-			return "Eora" // April
+			return "伊欧拉月" // April
 		if(3)
-			return "Dendor" // May
+			return "登多尔月" // May
 		if(4)
 		// June, the hottest month is the month of the god of the SUN, because this is when they come into prominence
 		// Historically, the winter solstice was celebrated as the rebirth of the sun / sun god, so it makes sense for the hottest month to be dedicated to the night god
-			return "Astrata" // June  
+			return "阿斯特拉塔月" // June  
 		if(5)
-			return "Xylix" // July
+			return "赛利克斯月" // July
 		if(6)
-			return "Malum" // August
+			return "玛勒姆月" // August
 		if(7)
 			// This neatly split the year into two half of rise and fall of Psydon.
 			// It also happens to be the start of "Fall" / Autumn.
 			// And it matches the "Psydonia is a minecraft world" joke quite well with Psydon going back to school
-			return "Syonfall"
+			return "赛昂落月"
 		if(8)
 			// Middle / End of harvesting seasons for some crops. It make sense that the goddess of rot / decay follows
 			// And after Syonfall comes the gradual move to winter
-			return "Pestra" // October
+			return "佩斯特拉月" // October
 		if(9)
 			// A month dedicated to the goddess of death, before the sun's rebirth and after the goddess of rot
-			return "Necra" // November
+			return "内克拉月" // November
 		if(10)
 			// And on winter solstice and the longest night of the year, we have the month dedicated to the god of night 
-			return "Noc" // December
+			return "诺克月" // December
 		if(11)
-			return "Abyssor" // January
+			return "阿比索尔月" // January
 		if(12)
-			return "Ravox" // February
+			return "拉沃克斯月" // February
 		else
-			return "Unknown Month ([month_number])"
+			return "未知月份（[month_number]）"
 
 /* Returns the season based on month number (1-12)
 Months 1 - 3: Spring, 4 - 6: Summer, 7 - 9: Autumn, 10 - 12: Winter
@@ -104,14 +104,14 @@ Months 1 - 3: Spring, 4 - 6: Summer, 7 - 9: Autumn, 10 - 12: Winter
 /proc/get_season_from_month(month_number)
 	switch(CEILING(month_number, 3) / 3)
 		if(1)
-			return "Spring"
+			return "春"
 		if(2)
-			return "Summer"
+			return "夏"
 		if(3)
-			return "Autumn"
+			return "秋"
 		if(4)
-			return "Winter"
-	return "Unknown"
+			return "冬"
+	return "未知季节"
 
 /* Returns Early/Mid/Late based on position within the season
 1st month of season: Early, 2nd: Mid, 3rd: Late
@@ -119,11 +119,11 @@ Months 1 - 3: Spring, 4 - 6: Summer, 7 - 9: Autumn, 10 - 12: Winter
 /proc/get_season_phase(month_number)
 	switch(MODULUS(month_number - 1, 3) + 1)
 		if(1)
-			return "Early"
+			return "初"
 		if(2)
-			return "Mid"
+			return "仲"
 		if(3)
-			return "Late"
+			return "暮"
 	return ""
 
 /proc/get_calendar_events_for_month(month_number)
@@ -144,7 +144,7 @@ Months 1 - 3: Spring, 4 - 6: Summer, 7 - 9: Autumn, 10 - 12: Winter
 	var/list/parts = resolve_ic_date_parts(GLOB.dayspassed)
 	var/list/titles = list()
 	for(var/datum/calendar_event/event in get_calendar_events_for_day(parts[2], parts[1]))
-		titles += event.title
+		titles += event.display_title || event.title
 	return titles
 
 GLOBAL_LIST_INIT(event_day_ordinals, list(
@@ -170,8 +170,8 @@ GLOBAL_LIST_INIT(event_day_ordinals, list(
 /proc/scom_announce_new_dawn()
 	var/list/parts = resolve_ic_date_parts(GLOB.dayspassed)
 	for(var/datum/calendar_event/event in get_calendar_events_for_day(parts[2], parts[1]))
-		var/ordinal = get_event_day_ordinal(event.day_index(parts[2], parts[1]))
-		var/line = "The [ordinal] dae of [event.title]."
+		var/ordinal = event.day_index(parts[2], parts[1])
+		var/line = "[event.display_title || event.title]的第[ordinal]天。"
 		var/reminder_line = event.get_reminder_for_day(parts[2], parts[1])
 		if(reminder_line)
 			line = "[line] [reminder_line]"
@@ -193,17 +193,17 @@ GLOBAL_LIST_INIT(event_day_ordinals, list(
 
 	switch(day_of_week)
 		if(1)
-			return "Moon's Dae"
+			return "月曜日"
 		if(2)
-			return "Tiw's Dae"
+			return "蒂尔日"
 		if(3)
-			return "Wedding's Dae"
+			return "婚礼日"
 		if(4)
-			return "Thule's Dae"
+			return "图勒日"
 		if(5)
-			return "Freyja's Dae"
+			return "弗蕾雅日"
 		if(6)
-			return "Saturn's Dae"
+			return "萨图恩日"
 		if(7)
-			return "Sun's Dae"
-	return "Unknown Dae"
+			return "日曜日"
+	return "未知日期"

@@ -319,7 +319,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
 	name = "阿万廷全身板甲"
-	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷命令式的讥笑，都告诉人：那位雕刻者早已把那些激情读得透彻。</font>"
+	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷发号施令的讥笑，足见那位雕刻者深谙这些情感。</font>"
 	icon_state = "zizoplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	peel_threshold = 5	//-Any- weapon will require 5 peel hits to peel coverage off of this armor.
@@ -337,7 +337,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
 	name = "阿万廷织纹锁甲"
-	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷命令式的讥笑，都告诉人：那位雕刻者早已把那些激情读得透彻。</font>"
+	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷发号施令的讥笑，足见那位雕刻者深谙这些情感。</font>"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL // We are probably one of the best medium armor sets. At higher integ than most.
 	peel_threshold = 5	//-Any- weapon will require 5 peel hits to peel coverage off of this armor.
