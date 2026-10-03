@@ -1,9 +1,9 @@
 /datum/language/swarmer
 	name = "Swarmer"
 	desc = ""
-	speech_verb = "tones"
-	ask_verb = "tones inquisitively"
-	exclaim_verb = "tones loudly"
+	speech_verb = "发出鸣音"
+	ask_verb = "好奇地发出鸣音"
+	exclaim_verb = "大声发出鸣音"
 	spans = list(SPAN_ROBOT)
 	key = "2"
 	flags = NO_STUTTER
