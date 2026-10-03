@@ -1483,8 +1483,8 @@
 		return
 
 	if(!enhanced_strip)
-		who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
-						span_danger("[src] tries to remove my [what.name]."), null, null, src)
+		who.visible_message(span_warning("[src]试着脱下[who]的[what.name]。"), \
+						span_danger("[src]试着脱下我的[what.name]。"), null, null, src)
 
 	to_chat(src, span_danger("我试着脱下[who]的[what.name]......"))
 	what.add_fingerprint(src)
@@ -1539,8 +1539,8 @@
 			if(L.compliance || L.surrendering)
 				surrender_mod = 0.5
 
-		who.visible_message(span_notice("[src] tries to put [what] on [who]."), \
-						span_notice("[src] tries to put [what] on you."), null, null, src)
+		who.visible_message(span_notice("[src]试着给[who]穿上[what]。"), \
+						span_notice("[src]试着给我穿上[what]。"), null, null, src)
 		to_chat(src, span_notice("我试着把[what]穿到[who]身上......"))
 		if(do_mob(src, who, what.equip_delay_other * surrender_mod))
 			if(what && Adjacent(who) && what.mob_can_equip(who, src, final_where, TRUE, TRUE))
@@ -2035,9 +2035,9 @@
 	if(buckled)
 		to_chat(user, span_warning("[src] is buckled to something!"))
 		return FALSE
-	user.visible_message(span_warning("[user] starts trying to scoop up [src]!"), \
-					span_danger("I start trying to scoop up [src]..."), null, null, src)
-	to_chat(src, span_danger("[user] starts trying to scoop you up!"))
+	user.visible_message(span_warning("[user]开始试着抱起[src]！"), \
+					span_danger("我开始试着抱起[src]..."), null, null, src)
+	to_chat(src, span_danger("[user]开始试着把我抱起来！"))
 	if(!do_after(user, 20, target = src))
 		return FALSE
 	mob_pickup(user)
@@ -2154,7 +2154,7 @@
 		return
 	changeNext_move(HAS_TRAIT(src, TRAIT_SLEUTH) ? CLICK_CD_SLEUTH : CLICK_CD_TRACKING)
 	if(m_intent != MOVE_INTENT_SNEAK)
-		visible_message(span_info("[src] begins looking around."))
+		visible_message(span_info("[src]开始环顾四周。"))
 	var/looktime = 50 - (STAPER * 2) - (get_skill_level(/datum/skill/misc/tracking) * 5)
 	looktime = clamp(looktime, 7, 50)
 	if(HAS_TRAIT(src, TRAIT_SLEUTH) ? move_after(src, looktime, target = src) : do_after(src, looktime, target = src))

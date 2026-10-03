@@ -5,7 +5,7 @@
 	target_sex_part = SEX_PART_BREASTS
 
 /datum/sex_action/masturbate_other_breasts/get_display_name(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return "Rub their [target.get_chest_word()]"
+	return "揉弄对方的[target.get_chest_word()]"
 
 /datum/sex_action/masturbate_other_breasts/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(span_warning("[user]开始揉弄[target]的[target.get_chest_word()]..."), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
@@ -24,7 +24,7 @@
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = FALSE
 
 /datum/sex_action/masturbate_other_breasts/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user]停下了揉弄[target][target.get_chest_word()]的动作。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
+	user.visible_message(span_warning("[user]停下了揉弄[target]的[target.get_chest_word()]的动作。"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 
 /datum/sex_action/masturbate_other_breasts/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

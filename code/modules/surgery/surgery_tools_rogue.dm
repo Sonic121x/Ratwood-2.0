@@ -499,21 +499,21 @@
 		if("branded_writing" in organ.vars && length(organ.vars["branded_writing"]))
 			return TRUE
 	return FALSE
-
+GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = "胸部", "Left Arm" = "左臂", "Right Arm" = "右臂", "Left Leg" = "左腿", "Right Leg" = "右腿", "Tauric Half" = "兽形下身", "Hind" = "臀部", "Stomach" = "腹部", "Neck" = "颈部", "Breasts" = "乳房", "Dick" = "阴茎", "Vagina" = "阴道", "Testes" = "睾丸", "Mouth" = "嘴部"))
 // Keeps the do_after announcement text centralized for both modes
 /obj/item/rogueweapon/surgery/cautery/branding/proc/send_branding_attempt_messages(mob/living/user, mob/living/carbon/human/target, final_answer, branding_self)
 	if(!branding_self)
 		if(remove_existing_brand)
-			user.visible_message(span_warning("[user] slowly wields [src] towards [target]'s [LOWER_TEXT(final_answer)] to burn away an old mark."))
-			to_chat(target, span_userdanger("[user] is trying to burn away a brand on my [LOWER_TEXT(final_answer)]!"))
+			user.visible_message(span_warning("[user]缓缓将[src]伸向[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]，准备烧去旧烙印。"))
+			to_chat(target, span_userdanger("[user]正试着烧去我[GLOB.branding_zone_display_names[final_answer] || final_answer]上的烙印！"))
 		else
-			user.visible_message(span_warning("[user] slowly wields [src] towards [target]'s [LOWER_TEXT(final_answer)]."))
-			to_chat(target, span_userdanger("[user] is trying to brand me on the [LOWER_TEXT(final_answer)]!"))
+			user.visible_message(span_warning("[user]缓缓将[src]伸向[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]。"))
+			to_chat(target, span_userdanger("[user]正试着在我的[GLOB.branding_zone_display_names[final_answer] || final_answer]上烙印！"))
 	else
 		if(remove_existing_brand)
-			user.visible_message(span_warning("[user] slowly wields [src] onto [user.p_their()] [LOWER_TEXT(final_answer)] to burn away an old mark."))
+			user.visible_message(span_warning("[user]缓缓将[src]贴向自己的[GLOB.branding_zone_display_names[final_answer] || final_answer]，准备烧去旧烙印。"))
 		else
-			user.visible_message(span_warning("[user] slowly wields [src] onto [user.p_their()] [LOWER_TEXT(final_answer)]."))
+			user.visible_message(span_warning("[user]缓缓将[src]贴向自己的[GLOB.branding_zone_display_names[final_answer] || final_answer]。"))
 
 /obj/item/rogueweapon/surgery/cautery/branding/proc/send_branding_result_messages(mob/living/user, mob/living/carbon/human/target, description_recoil, final_answer, branding_text)
 	if(remove_existing_brand)

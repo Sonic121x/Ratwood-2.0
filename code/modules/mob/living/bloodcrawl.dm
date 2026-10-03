@@ -86,7 +86,7 @@
 	return TRUE
 
 /mob/living/proc/bloodcrawl_consume(mob/living/victim)
-	to_chat(src, span_danger("I begin to feast on [victim]... You can not move while you are doing this."))
+	to_chat(src, span_danger("我开始吞食[victim]... 在此期间无法移动。"))
 
 	var/sound = 'sound/blank.ogg'
 
@@ -151,7 +151,7 @@
 	if(notransform)
 		to_chat(src, span_warning("Finish eating first!"))
 		return FALSE
-	B.visible_message(span_warning("[B] starts to bubble..."))
+	B.visible_message(span_warning("[B]开始冒泡..."))
 	if(!do_after(src, 20, target = B))
 		return
 	if(!B)
