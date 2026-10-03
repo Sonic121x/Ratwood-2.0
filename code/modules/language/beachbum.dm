@@ -1,9 +1,9 @@
 /datum/language/beachbum
 	name = "Beachtongue"
 	desc = ""
-	speech_verb = "mumbles"
-	ask_verb = "grills"
-	exclaim_verb = "hollers"
+	speech_verb = "含糊地说"
+	ask_verb = "追问"
+	exclaim_verb = "大声叫喊"
 	key = "15"
 	space_chance = 85
 	default_priority = 90
