@@ -53,26 +53,26 @@
 	var/obj/item/bodypart/affecting
 	if(prob(66))
 		affecting = get_bodypart("[pick("r","l")]_leg")
-		to_chat(src, "<span class='warning'>I land on my leg!</span>")
+		to_chat(src, "<span class='warning'>我落地时撞到了腿！</span>")
 		if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
 			update_damage_overlays()
 	else
 		switch(rand(1,3))
 			if(1)
 				affecting = get_bodypart("[pick("r","l")]_arm")
-				to_chat(src, "<span class='warning'>I land on my arm!</span>")
+				to_chat(src, "<span class='warning'>我落地时撞到了手臂！</span>")
 				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
 					update_damage_overlays()
 			if(2)
 				affecting = get_bodypart("chest")
-				to_chat(src, "<span class='warning'>I land on my chest!</span>")
+				to_chat(src, "<span class='warning'>我落地时撞到了胸部！</span>")
 				adjustOxyLoss(50)
 				emote("breathgasp")
 				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
 					update_damage_overlays()
 			if(3)
 				affecting = get_bodypart("head")
-				to_chat(src, "<span class='warning'>I land on my head!</span>")
+				to_chat(src, "<span class='warning'>我落地时撞到了头！</span>")
 				if(levels > 2)
 					AdjustUnconscious(levels * 100)
 					if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
@@ -93,7 +93,7 @@
 	if(item_in_hand) //this segment checks if the item in your hand is twohanded.
 		if(istype(item_in_hand))
 			if(item_in_hand.wielded == 1)
-				to_chat(usr, "<span class='warning'>My other hand is too busy holding [item_in_hand].</span>")
+				to_chat(usr, "<span class='warning'>我的另一只手正握着[item_in_hand.name]，腾不出来。</span>")
 				return FALSE
 	if(atkswinging || atkreleasing)
 		stop_attack(FALSE)
@@ -115,7 +115,7 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.has_status_effect(/datum/status_effect/buff/clash))
-			H.bad_guard(span_warning("I swapped away from the weapon!"))
+			H.bad_guard(span_warning("我切换到了没握武器的手！"))
 	return TRUE
 
 
@@ -152,7 +152,7 @@
 		if(possible_len)
 			var/datum/surgery_step/done_step
 			if(possible_len > 1)
-				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				var/input = input(user, "你想进行哪一步手术？", "PESTRA", ) as null|anything in possible_steps
 				if(input)
 					done_step = possible_steps[input]
 			else
@@ -185,8 +185,8 @@
 		if(hurt)
 			victim.take_bodypart_damage(10,check_armor = TRUE)
 			take_bodypart_damage(10,check_armor = TRUE)
-			visible_message("<span class='danger'>[src] crashes into [victim]!",\
-				"<span class='danger'>I violently crash into [victim]!</span>")
+			visible_message("<span class='danger'>[src]撞上了[victim]！",\
+				"<span class='danger'>我狠狠地撞上了[victim]！</span>")
 		playsound(src,"genblunt",100,TRUE)
 
 
@@ -272,13 +272,13 @@
 			dropItemToGround(I, silent = TRUE)
 
 			if(HAS_TRAIT(src, TRAIT_PACIFISM) && I.throwforce)
-				to_chat(src, "<span class='notice'>I set [I] down gently on the ground.</span>")
+				to_chat(src, "<span class='notice'>我把[I.name]轻轻放在地上。</span>")
 				return
 
 
 	if(thrown_thing)
 		if(src in thrown_thing.buckled_mobs) //Buckling to a chair and then grab-throwing the chair
-			to_chat(src, span_notice("I am not tricky enough to throw [thrown_thing] while I am buckled to it."))
+			to_chat(src, span_notice("我被固定在[thrown_thing.name]上，没法连自己一起扔出去。"))
 			return
 		// Admin alert for coin throws
 		if(istype(thrown_thing, /obj/item/roguecoin))
@@ -319,38 +319,38 @@
 	<HR>
 	<B><FONT size=3>[name]</FONT></B>
 	<HR>
-	<BR><B>Head:</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "Nothing"]</A>"}
+	<BR><B>头部：</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head.name : "无"]</A>"}
 
 	var/list/obscured = check_obscured_slots()
 
 	if(SLOT_NECK in obscured)
-		dat += "<BR><B>Neck:</B> Obscured"
+		dat += "<BR><B>颈部：</B> 被遮挡"
 	else
-		dat += "<BR><B>Neck:</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck) : "Nothing"]</A>"
+		dat += "<BR><B>颈部：</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck.name) : "无"]</A>"
 
 	if(SLOT_WEAR_MASK in obscured)
-		dat += "<BR><B>Mask:</B> Obscured"
+		dat += "<BR><B>面具：</B> 被遮挡"
 	else
-		dat += "<BR><B>Mask:</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask	: "Nothing"]</a>"
+		dat += "<BR><B>面具：</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask.name	: "无"]</a>"
 
 	for(var/i in 1 to held_items.len)
 		var/obj/item/I = get_item_for_held_index(i)
-		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I : "Nothing"]</a>"
+		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I.name : "无"]</a>"
 
-	dat += "<BR><B>Back:</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back : "Nothing"]</A>"
+	dat += "<BR><B>背部：</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back.name : "无"]</A>"
 
 	if(handcuffed)
-		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Handcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>手部束缚</A>"
 	if(legcuffed)
-		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Legcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>腿部束缚</A>"
 
 	var/datum/status_effect/bugged/effect = has_status_effect(/datum/status_effect/bugged)
 	if(effect && HAS_TRAIT(user, TRAIT_INQUISITION))
-		dat += "<BR><A href='?src=[REF(src)];item=[effect.device]'>BUGGED</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[effect.device]'>被窃听</A>"
 
 	dat += {"
 	<BR>
-	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>Close</A>
+	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>关闭</A>
 	"}
 	user << browse(dat, "window=mob[REF(src)];size=325x500")
 	onclose(user, "mob[REF(src)]")
@@ -389,15 +389,15 @@
 				buckle_cd += S.breakoutextra
 			if(istype(S, /obj/structure/bondage/torture_table) && !handcuffed)
 				buckle_cd = 3 MINUTES
-		visible_message("<span class='warning'>[src] attempts to struggle free!</span>", \
-					"<span class='notice'>I attempt to struggle free...</span>")
+		visible_message("<span class='warning'>[src]试图挣脱束缚！</span>", \
+					"<span class='notice'>我试图挣脱束缚...</span>")
 		if(do_after(src, buckle_cd, 0, target = src))
 			if(!buckled)
 				return
 			buckled.user_unbuckle_mob(src,src)
 		else
 			if(src && buckled)
-				to_chat(src, "<span class='warning'>I fail to struggle free!</span>")
+				to_chat(src, "<span class='warning'>我没能挣脱束缚！</span>")
 	else
 		buckled.user_unbuckle_mob(src,src)
 
@@ -418,9 +418,9 @@
 		adjust_fire_stacks(-5, /datum/status_effect/fire_handler/fire_stacks/sunder)
 		adjust_fire_stacks(-5, /datum/status_effect/fire_handler/fire_stacks/divine)
 		adjust_fire_stacks(-5, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
-		visible_message(span_warning("[src] rolls on the ground, trying to put [p_them()]self out!"))
+		visible_message(span_warning("[src]在地上打滚，试图扑灭身上的火焰！"))
 	else
-		visible_message(span_notice("[src] pats the flames to extinguish them."))
+		visible_message(span_notice("[src]拍打着身上的火焰，试图将其扑灭。"))
 	addtimer(CALLBACK(src, PROC_REF(check_try_extinguish)), 3 SECONDS)
 
 /mob/living/carbon/proc/check_try_extinguish()
@@ -428,14 +428,14 @@
 		extinguish_mob(TRUE)
 
 /mob/living/carbon/resist_leash()
-	to_chat(src, span_notice("I reach for the hook on my collar..."))
+	to_chat(src, span_notice("我伸手去解项圈上的挂钩..."))
 	//Determine how long it takes to remove the leash
 	var/deleash = 15
 	if(src.handcuffed)
 		deleash = 60
 	if(move_after(src, deleash, 0, target = src))
 		if(!QDELETED(src))
-			to_chat(src, "<span class='warning'>[src] has removed their leash!</span>")
+			to_chat(src, "<span class='warning'>[src]解开了牵绳！</span>")
 			src.remove_status_effect(/datum/status_effect/leash_pet)
 
 /mob/living/carbon/resist_restraints()
@@ -658,15 +658,15 @@
 			if(world.time > mob_timers["puke"] + 16 SECONDS)
 				mob_timers["puke"] = world.time
 				if(getorgan(/obj/item/organ/stomach))
-					to_chat(src, "<span class='warning'>I'm going to puke...</span>")
+					to_chat(src, "<span class='warning'>我要吐了...</span>")
 					addtimer(CALLBACK(src, PROC_REF(vomit), 50), rand(8 SECONDS, 15 SECONDS))
 			else
 				if(prob(3))
-					to_chat(src, "<span class='warning'>I feel sick...</span>")
+					to_chat(src, "<span class='warning'>我觉得恶心...</span>")
 		else
 			if(getorgan(/obj/item/organ/stomach))
 				mob_timers["puke"] = world.time
-				to_chat(src, "<span class='warning'>I'm going to puke...</span>")
+				to_chat(src, "<span class='warning'>我要吐了...</span>")
 				addtimer(CALLBACK(src, PROC_REF(vomit), 50), rand(8 SECONDS, 15 SECONDS))
 	add_nausea(-1)
 
@@ -702,22 +702,22 @@
 		if(vomitrelay && ishuman(vomitrelay.loc))
 			var/mob/living/carbon/human/parent = vomitrelay.loc
 			if(message)
-				visible_message("<span class='danger'>[vomitrelay] throws up all over [parent]!</span>", \
-								"<span class='danger'>I puke all over [parent]!</span>")
+				visible_message("<span class='danger'>[vomitrelay.name]吐了[parent]一身！</span>", \
+								"<span class='danger'>我吐了[parent]一身！</span>")
 				parent.add_stress(/datum/stressevent/vomitother)
 				src.add_stress(/datum/stressevent/vomitedonother)
 			distance = 0
 		else if(is_mouth_covered()) //make this add a blood/vomit overlay later it'll be hilarious
 			if(message)
-				visible_message("<span class='danger'>[src] throws up all over [p_them()]self!</span>", \
-								"<span class='danger'>I puke all over myself!</span>")
+				visible_message("<span class='danger'>[src]吐了自己一身！</span>", \
+								"<span class='danger'>我吐了自己一身！</span>")
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
 					C.add_stress(/datum/stressevent/vomitself)
 			distance = 0
 		else
 			if(message)
-				visible_message("<span class='danger'>[vomit_source] pukes!</span>", "<span class='danger'>I puke!</span>")
+				visible_message("<span class='danger'>[vomit_source.name]吐了！</span>", "<span class='danger'>我吐了！</span>")
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
 					C.add_stress(/datum/stressevent/vomit)
@@ -725,7 +725,7 @@
 		if(NOBLOOD in dna?.species?.species_traits || (INVISBLOOD in dna.species.species_traits)) //OV EDIT
 			return TRUE
 		if(message)
-			visible_message("<span class='danger'>[vomit_source] coughs up blood!</span>", "<span class='danger'>I cough up blood!</span>")
+			visible_message("<span class='danger'>[vomit_source.name]咳出了血！</span>", "<span class='danger'>我咳出了血！</span>")
 
 	if(stun)
 		Immobilize(59)
@@ -1245,7 +1245,7 @@
 			O.Remove(src)
 			O.forceMove(drop_location())
 	if(organs_amt)
-		to_chat(user, "<span class='notice'>I retrieve some of [src]\'s internal organs!</span>")
+		to_chat(user, "<span class='notice'>我取出了[src]的一些内脏！</span>")
 
 /mob/living/carbon/extinguish_mob(itemz = TRUE)
 	if(itemz)
@@ -1434,14 +1434,14 @@
 		return FALSE
 
 /mob/living/carbon/resist_leash()
-	to_chat(src, span_notice("I reach for the hook on my collar..."))
+	to_chat(src, span_notice("我伸手去解项圈上的挂钩..."))
 	//Determine how long it takes to remove the leash
 	var/deleash = 5 SECONDS
 	if(src.handcuffed)
 		deleash = 20 SECONDS
 	if(move_after(src, deleash, 0, target = src))
 		if(!QDELETED(src))
-			to_chat(src, "<span class='warning'>[src] has removed their leash!</span>")
+			to_chat(src, "<span class='warning'>[src]解开了牵绳！</span>")
 			src.remove_status_effect(/datum/status_effect/leash_pet)
 
 /mob/living/carbon/can_buckle()
