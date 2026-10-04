@@ -90,9 +90,9 @@
 						if(prob(25)) // PSYDONIC WEIGHTED COINFLIP. TWEAK THIS AS THOU WILT. DON'T LET THEM BE BROKEN, PSYDON WILLING. THROW CON-MAXXERS A BONE, TOO.
 							Immobilize(15) // EAT A MICROSTUN. YOU'RE AVOIDING A PAINCRIT.
 							if(HAS_TRAIT(src, TRAIT_PSYDONIAN_GRIT))
-								visible_message(span_info("[src] audibly grits their teeth. ENDURING through their pain."), span_info("Through my faith in HIM, I ENDURE."))
+								visible_message(span_info("[src]咬牙作响，忍受着痛苦。"), span_info("凭着对祂的信仰，我忍耐着。"))
 							else
-								visible_message(span_info("[src] trembled for a moment, but they remain stood."), span_info("My strong constitution keeps me upright."))
+								visible_message(span_info("[src]颤抖了片刻，却依然站立着。"), span_info("强健的体魄让我屹立不倒。"))
 							stuttering += 5
 							emote("painmoan")
 							return
@@ -145,12 +145,12 @@
 	if(HAS_TRAIT(src, TRAIT_PSYDONIAN_GRIT))
 		emote("warcry", forced = TRUE)
 		var/hiswill = pick(
-			"THROUGH HIM, I ENDURE!!",
-			"THE BELLS TOLL MY NAME, BUT I CAN STILL FIGHT!!",
-			"ENDURE!!",
-			"IF I AM TO FALL, THEN THEY SHALL FALL WITH ME!!",
+			"凭借祂的力量，我将忍耐到底！！",
+			"丧钟为我而鸣，但我仍能战斗！！",
+			"忍耐到底！！",
+			"若我倒下，他们也得与我一同倒下！！",
 		)
-		visible_message(span_reallybig(span_danger("[src] ROARS through the pain, teeth bared in defiant fury!")), span_extremelybig(span_userdanger(hiswill)))
+		visible_message(span_reallybig(span_danger("[src]忍痛咆哮，愤怒地龇着牙，毫不屈服！")), span_extremelybig(span_userdanger(hiswill)))
 		playsound(src, 'sound/magic/PSYDONE.ogg', 100, FALSE)
 		playsound(src, 'sound/combat/clash_struck.ogg', 100) // Kino
 		var/datum/status_effect/buff/adrenaline_rush/rush = apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
@@ -161,7 +161,7 @@
 			stirring.duration += 4 SECONDS
 	else
 		emote("painscream", forced = TRUE)
-		visible_message(span_danger("[src] staggers back from the shock, but holds fast with fire in their eyes!"), span_reallybig(span_danger("I can still fight!")))
+		visible_message(span_danger("[src]被冲击震得踉跄后退，却依然站稳，眼中燃着怒火！"), span_reallybig(span_danger("我还能战斗！")))
 		if(STAWIL > 14)
 			apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
 
@@ -421,13 +421,13 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		if(drunkenness >= 81)
 			adjustToxLoss(3)
 			if(prob(5) && !stat)
-				to_chat(src, span_warning("Maybe I should lie down for a bit..."))
+				to_chat(src, span_warning("也许我该躺一会儿……"))
 
 		if(drunkenness >= 91)
 			adjustToxLoss(5)
 //			adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.4)
 			if(prob(20) && !stat)
-				to_chat(src, span_warning("Just a quick nap..."))
+				to_chat(src, span_warning("只要打个盹……"))
 				Sleeping(900)
 
 		if(drunkenness >= 101)

@@ -493,7 +493,7 @@
 			var/mob/living/carbon/C = target
 			var/obj/item/grabbing/O = new()
 			var/used_limb = C.find_used_grab_limb(src)
-			O.name = "[C]'s [parse_zone(used_limb)]"
+			O.name = "[C]的[parse_zone(used_limb)]"
 			var/obj/item/bodypart/BP = C.get_bodypart(check_zone(used_limb))
 			LAZYADD(C.grabbedby, O)
 			O.grabbed = C
@@ -917,7 +917,7 @@
 	if(!.)
 		return
 	if(!bypass_foreign_brain_check && has_foreign_brain())	// The Fulmenor chair is the one caller allowed to pass bypass_foreign_brain_check
-		to_chat(user, span_danger("The soul within does not know this flesh. It will not answer through a stranger's body. Only the lightning of a Fulmenor chair, brimming with elixir under a master's hand, could bind it."))
+		to_chat(user, span_danger("体内的灵魂不认识这具血肉，不会借陌生人的躯体回应。唯有大师操控下、灌满灵药的弗尔梅诺椅释放的雷电，才能将其绑定。"))
 		return FALSE
 
 /// The single DEAD-to-alive transition, every revival and rise routes through it.
@@ -1171,7 +1171,7 @@
 	if(!can_resist() || surrendering)
 		return
 	if(HAS_TRAIT(src, TRAIT_PARALYSIS))
-		to_chat(src, span_info("I can't resist right now."))
+		to_chat(src, span_info("我现在无法挣扎。"))
 		return
 
 	changeNext_move(CLICK_CD_RESIST)
@@ -1629,7 +1629,7 @@
 		to_chat(src, span_warning("我离得太远了！"))
 		return FALSE
 	if(!no_dexterity)
-		to_chat(src, span_warning("I don't have the dexterity to do this!"))
+		to_chat(src, span_warning("我没有足够的灵巧度来做这件事！"))
 		return FALSE
 	return TRUE
 
@@ -1804,7 +1804,7 @@
 			return
 
 		if(!(mobility_flags & MOBILITY_STAND) && spread_to.m_intent == MOVE_INTENT_WALK)// don't ignite because we stepped over someone burning unless we are sprinting
-			to_chat(spread_to, span_notice("You step over [src]'s burning body."))
+			to_chat(spread_to, span_notice("你跨过[src]燃烧的躯体。"))
 			return
 
 		adjust_fire_stacks(-fire_stacks / 2, fire_status.type)
@@ -1832,12 +1832,12 @@
 /mob/living/proc/knockOver(mob/living/carbon/C)
 	if(C.key) //save us from monkey hordes
 		C.visible_message("<span class='warning'>[pick( \
-						"[C] dives out of [src]'s way!", \
-						"[C] stumbles over [src]!", \
-						"[C] jumps out of [src]'s path!", \
-						"[C] trips over [src] and falls!", \
-						"[C] topples over [src]!", \
-						"[C] leaps out of [src]'s way!")]</span>")
+						"[C]扑向一旁，避开了[src]！", \
+						"[C]被[src]绊得踉跄！", \
+						"[C]跳开，避开了[src]！", \
+						"[C]被[src]绊倒了！", \
+						"[C]翻倒在[src]身上！", \
+						"[C]跃向一旁，避开了[src]！")]</span>")
 	C.Paralyze(40)
 
 /mob/living/ConveyorMove()
@@ -2030,10 +2030,10 @@
 	if(!ishuman(user))
 		return
 	if(user.get_active_held_item())
-		to_chat(user, span_warning("My hands are full!"))
+		to_chat(user, span_warning("我的双手都拿着东西！"))
 		return FALSE
 	if(buckled)
-		to_chat(user, span_warning("[src] is buckled to something!"))
+		to_chat(user, span_warning("[src]被固定在某样东西上！"))
 		return FALSE
 	user.visible_message(span_warning("[user]开始试着抱起[src]！"), \
 					span_danger("我开始试着抱起[src]..."), null, null, src)
@@ -2181,16 +2181,16 @@
 				marked = TRUE
 				if(M.m_intent == MOVE_INTENT_SNEAK || M.mob_timers[MT_INVISIBILITY] > world.time)
 					emote("huh")
-					to_chat(M, span_danger("[src] sees me! I'm found!"))
+					to_chat(M, span_danger("[src]看见我了！我被发现了！"))
 					M.mob_timers[MT_INVISIBILITY] = world.time
 					M.mob_timers[MT_FOUNDSNEAK] = world.time
 					M.update_sneak_invis(reset = TRUE)
 			else
 				if(M.m_intent == MOVE_INTENT_SNEAK || M.mob_timers[MT_INVISIBILITY] > world.time)
 					if(M.client?.prefs.showrolls)
-						to_chat(M, span_warning("[src] didn't find me... [probby]%"))
+						to_chat(M, span_warning("[src]没发现我…… [probby]%"))
 					else
-						to_chat(M, span_warning("[src] didn't find me."))
+						to_chat(M, span_warning("[src]没发现我。"))
 				else
 					marked = TRUE
 			if(marked)
@@ -2292,7 +2292,7 @@
 		return
 	changeNext_move(CLICK_CD_MELEE)
 	if(m_intent != MOVE_INTENT_SNEAK)
-		visible_message(span_info("[src] looks up."))
+		visible_message(span_info("[src]抬头看去。"))
 	var/turf/ceiling = get_step_multiz(src, UP)
 	var/turf/T = get_turf(src)
 	var/datum/controller/subsystem/ParticleWeather/PW = SSParticleWeather //used so we can see what's the weather outside
@@ -2301,11 +2301,11 @@
 			if(PW.runningWeather)
 				to_chat(src, span_warning("[PW.runningWeather.warning_message]"))
 				return
-			to_chat(src, span_warning("There is nothing special to say about this weather."))
+			to_chat(src, span_warning("这天气没什么特别的。"))
 			do_time_change()
 		return
 	else if(!istransparentturf(ceiling)) //There is no turf we can look through above us
-		to_chat(src, span_warning("A ceiling above my head."))
+		to_chat(src, span_warning("我的头顶是天花板。"))
 		return
 
 	if(T.can_see_sky())
@@ -2342,7 +2342,7 @@
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
 	var/dist = get_dist(src, T)
-	var/message = span_info("[src] looks into the distance.")
+	var/message = span_info("[src]望向远方。")
 	if(dist > 7 || dist  <= 2)
 		return
 	hide_cone()
@@ -2354,7 +2354,7 @@
 		if(STAPER == 10)
 			offset = 1
 		else
-			message = span_info("[src] struggles to look ahead.")
+			message = span_info("[src]费力地望向前方。")
 		if(_x > 0)
 			_x -= offset
 			_x = max(0, _x)
@@ -2372,7 +2372,7 @@
 		if(offset > 5)	//Caps the bonus at 15 PER, which is a whole extra screen in an orthogonal direction. Anymore will get disorienting.
 			offset = 5
 		if(STAPER >= 12)
-			message = span_info("[src] easily peers afar.")
+			message = span_info("[src]轻松地眺望远方。")
 		if(_x > 0)
 			_x += offset
 		else if(_x != 0)
@@ -2382,7 +2382,7 @@
 		else if(_y != 0)
 			_y -= offset
 		if(_y == 0 && _x == 0)	//Their PER was too low to see anything.
-			message = span_info("[src] oafishly stares in front of themselves.")
+			message = span_info("[src]笨拙地盯着自己面前。")
 	if(m_intent == MOVE_INTENT_SNEAK)
 		to_chat(src, message)
 	else
@@ -2418,9 +2418,9 @@
 			ttime = 0
 
 	if(m_intent != MOVE_INTENT_SNEAK)
-		visible_message(span_info("[src] looks down through [T]."))
+		visible_message(span_info("[src]透过[T]向下看。"))
 	else
-		to_chat(src, span_info("[src] looks down through [T]."))
+		to_chat(src, span_info("[src]透过[T]向下看。"))
 
 	if(!do_after(src, ttime, target = src))
 		return

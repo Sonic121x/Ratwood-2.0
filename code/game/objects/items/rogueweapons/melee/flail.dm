@@ -98,9 +98,9 @@
 	item_d_type = "blunt"
 
 /datum/intent/mace/smash/flailchop
-	name = "pendulous chop"
+	name = "摆荡劈砍"
 	icon_state = "inchop"
-	attack_verb = list("chops", "hacks")
+	attack_verb = list("劈砍", "猛劈")
 	chargetime = 1.2 SECONDS
 	recovery = 40
 	damfactor = 1.3

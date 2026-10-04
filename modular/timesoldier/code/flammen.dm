@@ -1,6 +1,6 @@
 /obj/effect/hotspot/timesoldier_fire
-	name = "scorching fire"
-	desc = "A roaring, clinging flame."
+	name = "灼烧烈焰"
+	desc = "熊熊燃烧、紧附不散的火焰。"
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "3"
 
@@ -56,8 +56,8 @@
 // LAVA GLOB
 
 /obj/projectile/bullet/firearm/timesoldier_fire
-	name = "lava glob"
-	desc = "A glob of violently burning material."
+	name = "熔岩团"
+	desc = "一团猛烈燃烧的物质。"
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
 	nondirectional_sprite = TRUE
@@ -170,8 +170,8 @@
 // FUEL CANISTER
 
 /obj/item/ammo_box/magazine/timesoldier_fire
-	name = "Hei Long Pao canister"
-	desc = "A heavy sealed container, with some arcyne sigils, sealing away incredibly hot lava."
+	name = "黑龙炮储罐"
+	desc = "一个沉重的密封容器，上面的奥术符印封存着极其炽热的熔岩。"
 	grid_width = 64
 	grid_height = 32
 
@@ -190,7 +190,7 @@
 
 // do not let people pull the invisible internal charges out.
 /obj/item/ammo_box/magazine/timesoldier_fire/attack_self(mob/user)
-	to_chat(user, span_notice("[src] has [ammo_count(FALSE)] charge\s remaining."))
+	to_chat(user, span_notice("[src]还剩[ammo_count(FALSE)]份装药。"))
 	return
 
 
@@ -210,8 +210,8 @@
 
 
 /obj/item/gun/ballistic/timesoldier_fire_wep
-	name = "Hei Long Pao"
-	desc = "<span class='red'><i>Created in the Great Jade Empire, this Xinyi piece of arcyne wonder is now MY TOY. Such wondrous carnage I shall sow!</i></span>"
+	name = "黑龙炮"
+	desc = "<span class='red'><i>这件信义氏族的奥术奇物诞生于大玉帝国，如今是我的玩具了。我将用它制造何等壮观的杀戮！</i></span>"
 
 	icon = 'modular/timesoldier/sprites/nu_guns.dmi'
 	icon_state = "heilong_e"
@@ -234,8 +234,8 @@
 	automatic = 0
 	casing_ejector = FALSE
 
-	magazine_wording = "canister"
-	cartridge_wording = "charge"
+	magazine_wording = "储罐"
+	cartridge_wording = "装药"
 
 	load_sound = 'modular/timesoldier/sounds/wepons/cannon_load.ogg'
 	load_empty_sound = 'modular/timesoldier/sounds/wepons/cannon_load.ogg'
@@ -388,7 +388,7 @@
 
 /obj/item/gun/ballistic/timesoldier_fire_wep/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	if(!wielded)
-		to_chat(user, span_warning("I need to brace [src] with both hands before firing it."))
+		to_chat(user, span_warning("我得先用双手稳住[src]才能开火。"))
 		return
 
 	return ..()
@@ -445,7 +445,7 @@
 	. = ..()
 
 	if(owner.stat == CONSCIOUS && !HAS_TRAIT(owner, TRAIT_NOPAIN))
-		to_chat(owner, span_userdanger("FUCK!! THEY'RE TRYING TO BURN ME ALIVE!!"))
+		to_chat(owner, span_userdanger("操！！他们想把我活活烧死！！"))
 		owner.emote("firescream", forced = TRUE)
 
 	return TRUE
@@ -462,12 +462,12 @@
 		return
 
 	var/pain_message = pick(
-		"IT BURNS!! THE PAIN IS UNBEARABLE!!",
-		"MY FLESH IS MELTING OFF MY BONES!!",
-		"THE PAIN IS SEARING INTO MY NERVES!!",
-		"I CAN'T BEAR THIS AGONY!! KILL ME PLEASE!!",
-		"PLEASE END MY SUFFERING!!",
-		"OH GODS!!!")
+		"烧起来了！！疼得受不了了！！",
+		"我的皮肉正从骨头上熔落！！",
+		"剧痛烧进了我的神经！！",
+		"我受不了这折磨了！！求求你杀了我！！",
+		"求求你结束我的痛苦！！",
+		"诸神啊！！！")
 
 	to_chat(owner, span_userdanger(pain_message))
 	owner.emote("firescream", forced = TRUE)

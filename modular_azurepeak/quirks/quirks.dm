@@ -309,16 +309,16 @@
 	added_traits = list(TRAIT_UNDERDARK_CHEF)
 
 /datum/quirk/unsettling
-	name = "Unsettling"
-	desc = "My appearance is deeply unsettling to most. There's something profoundly wrong about my features."
+	name = "令人不安"
+	desc = "我的外表让大多数人深感不安。我的面容有种极其不对劲的感觉。"
 	point_cost = 1
 	added_traits = list(TRAIT_UNSETTLING)
 	incompatible_virtues = list(/datum/virtue/utility/socialite)
 	incompatible_quirks = list(/datum/quirk/ugly, /datum/quirk/pretty)
 
 /datum/quirk/selfaware
-	name = "Self Aware"
-	desc = "I've always been conscious about how hurt my body can get."
-	warning_text = "This quirk costs nothing and does not apply if you are playing a role that already has self aware!"
+	name = "伤情自知"
+	desc = "我一直清楚自己的身体受伤有多严重。"
+	warning_text = "此特质无需花费点数；若你的职业已拥有伤情自知，则不会生效！"
 	added_traits = list(TRAIT_SELF_AWARE)
 	incompatible_traits = list(TRAIT_SELF_AWARE)

@@ -128,7 +128,7 @@
 			user.STAWIL += rand(1,5)
 			playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 			playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
-			src.visible_message(span_warning("\The [src] crumbles to dust."))
+			src.visible_message(span_warning("[src]碎成了尘埃。"))
 			qdel(src) //one solve per box, no passing it around the keep
 		else
 			to_chat(user, span_warning("我甚至无从开始解开[src]。我感觉自己蠢透了，只好把它搁到一边。"))
@@ -160,19 +160,19 @@
 	switch(menu_item)
 		if(1)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_THREE_QUARTER_MEAL, /datum/reagent/drug/space_drugs = 2, /datum/reagent/berrypoison = 1)
-			tastes = list("salty bitter syrup" = 2, "bad mushrooms" = 1)
+			tastes = list("咸苦的糖浆" = 2, "坏蘑菇" = 1)
 		if(2)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_QUARTER, /datum/reagent/medicine/stronghealth = 1, /datum/reagent/water/salty = 3)
-			tastes = list("overpoweringly salty rous meat" = 2)
+			tastes = list("咸得发齁的巨鼠肉" = 2)
 		if(3)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF, /datum/reagent/medicine/stronghealth = 3, /datum/reagent/water/salty = 3)
-			tastes = list("cabbit meat" = 1, "thin stew" = 1)
+			tastes = list("猫兔肉" = 1, "稀炖汤" = 1)
 		if(4)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_HALF, /datum/reagent/medicine/stronghealth = 3, /datum/reagent/medicine/strongmana = 3, /datum/reagent/water/salty = 3)
-			tastes = list("salt" = 2, "saiga meat" = 1, "vegetables" = 1)
+			tastes = list("盐" = 2, "赛加羚羊肉" = 1, "蔬菜" = 1)
 		if(5)
 			list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_TWO_MEALS, /datum/reagent/medicine/stronghealth = 6, /datum/reagent/medicine/strongmana = 6)
-			tastes = list("hearty meat stew" = 1, "fresh vegetables" = 1)
+			tastes = list("浓郁的炖肉" = 1, "新鲜蔬菜" = 1)
 	. = ..()
 
 

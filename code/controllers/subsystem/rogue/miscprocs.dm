@@ -85,8 +85,8 @@
 
 /datum/devotion/proc/update_devotion(dev_amt, prog_amt, silent = FALSE)
 	devotion = clamp(devotion + dev_amt, 0, max_devotion)
-	holder?.hud_used?.bloodpool?.name = "Devotion: [devotion]"
-	holder?.hud_used?.bloodpool?.desc = "Devotion: [devotion]/[max_devotion]"
+	holder?.hud_used?.bloodpool?.name = "虔诚：[devotion]"
+	holder?.hud_used?.bloodpool?.desc = "虔诚：[devotion]/[max_devotion]"
 	if(devotion <= 0)
 		holder?.hud_used?.bloodpool?.set_value(0, 1 SECONDS)
 	else

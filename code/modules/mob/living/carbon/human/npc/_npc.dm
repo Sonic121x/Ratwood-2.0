@@ -1042,7 +1042,7 @@
 	if (prob(probby))
 		// whoops it saw us
 		target.mob_timers[MT_FOUNDSNEAK] = world.time
-		to_chat(target, span_danger("[src] sees me! I'm found!"))
+		to_chat(target, span_danger("[src]看见我了！我被发现了！"))
 		target.update_sneak_invis(TRUE)
 		return TRUE
 	else

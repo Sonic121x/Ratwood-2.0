@@ -963,7 +963,7 @@
 
 /obj/item/smallDelivery/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/rogueweapon/huntingknife))
-		user.visible_message(span_warning("[user] starts cutting open [src]."))
+		user.visible_message(span_warning("[user]开始割开[src]。"))
 		if(do_after(user, 5 SECONDS, target = src))
 			open_package(user, 20)
 		return

@@ -1071,7 +1071,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "HELM", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "头盔", "撕裂")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/graggar/equipped(mob/living/user, slot)
 	. = ..()

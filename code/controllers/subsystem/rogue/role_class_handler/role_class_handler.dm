@@ -155,7 +155,7 @@ SUBSYSTEM_DEF(role_class_handler)
 		picked_class.boost_by_plus_power(plus_factor, H)
 
 	if(related_handler.register_id)
-		add_class_register_msg(related_handler.register_id, "[H.real_name] is the [picked_class.name]", related_handler.linked_client.mob)
+		add_class_register_msg(related_handler.register_id, "[H.real_name]担任[picked_class.name]", related_handler.linked_client.mob)
 
 
 	// In retrospect, If I don't just delete these Ill have to actually attempt to keep track of when a byond browser window is actually open lol
