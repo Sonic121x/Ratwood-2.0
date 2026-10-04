@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/brutal_round
-	name = "zizite killer round"
-	desc = "<span class='yellow'><i>We've been fighting this war against the Zizites for decades. It's been over 60 years by now. <br>It's exhausting. Though, after the efforts from Kingsfield and from the Zybantine sands, we've managed to create something beyond the lead spheres of the past. This turns any deadite to gore, and any skeleton's bones to dust.<br> No matter how hard their Avantyne is.</i></span>"
+	name = "齐佐信徒杀手弹"
+	desc = "<span class='yellow'><i>我们与齐佐信徒的战争已持续了数十年。至今已有六十多年了。 <br>这场战争令人精疲力竭。不过，凭借王田和兹班图沙漠各地的努力，我们终于造出了超越旧式铅弹的东西。它能把任何行尸打成血肉碎块，把任何骷髅的骨头轰成粉末。<br> 无论他们的阿万廷有多坚硬。</i></span>"
 	icon = 'modular/timesoldier/sprites/nu_guns.dmi'
 	icon_state = "kz41_bullet"
 	caliber = "brutal"
@@ -8,7 +8,7 @@
 
 
 /obj/projectile/bullet/firearm/brutal_round
-	name = "zizite killer round"
+	name = "齐佐信徒杀手弹"
 	hitscan = TRUE
 	tracer_type = /obj/effect/projectile/tracer/tracer/aiming
 	color = "#FFD45A"
@@ -19,8 +19,8 @@
 	ammo_type = /obj/item/ammo_casing/brutal_round
 
 /obj/item/quiver/bullet/brutals
-	name = "BRUTALITY round box"
-	desc = "<span class='yellow'><i>A box meant to dispense BRUTALITY towards Zizites, also known as BRUTAL rounds, or Zizite Killers.<br>When that crazy Dwarf from Kingsfield invented this kind of projectile that surpassed the lead sphere, the entire war on Zizo changed.<br>The Zizites barely adapted the blackpowder to their undead troops, but we adapted and overcame them.</i></span>"
+	name = "暴虐弹药箱"
+	desc = "<span class='yellow'><i>这箱子装着专门向齐佐信徒施以暴虐的弹药，也称暴虐弹，或齐佐信徒杀手弹。<br>当王田那个疯矮人发明了这种超越铅弹的弹丸后，整场对抗齐佐的战争都变了。<br>齐佐信徒才勉强让亡灵部队用上黑火药，我们却已经适应了战局，并压倒了他们。</i></span>"
 	max_storage = 20 // this might be overkill. oh well!!! :wilted_rose:
 	icon = 'modular/timesoldier/sprites/nu_guns.dmi'
 	icon_state = "kz_box"
@@ -37,7 +37,7 @@
 	..()
 	if(!BB)
 		icon_state = "kz41_spent"
-		name = "spent zizite killer round"
+		name = "齐佐信徒杀手弹空弹壳"
 	else
 		icon_state = initial(icon_state)
 		name = initial(name)

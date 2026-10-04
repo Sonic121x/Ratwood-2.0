@@ -1,14 +1,14 @@
 /datum/language/new_imperial
-	name = "New Imperial"
-	desc = "After decades of Imperial being spoken freely with many, many people, it has evolved to incorporate a lot of common words from other languages. Old Imperial speakers can discern it, if they try hard enough."
+	name = "新帝国语"
+	desc = "帝国语经过数十年在众多人群之间的广泛使用，逐渐融入了许多其他语言的常用词。会说旧帝国语的人只要足够努力，也能辨认其中的意思。"
 	key = "?"
 	default_priority = 0
 	icon_state = "galcom"
 
-	speech_verb = "says"
-	whisper_verb = "whispers"
-	exclaim_verb = "yells"
-	ask_verb = "asks"
+	speech_verb = "说道"
+	whisper_verb = "低语"
+	exclaim_verb = "大喊"
+	ask_verb = "问道"
 
 
 	// originally i wanted to give new imperial a discerning effect like the radio has, but i found out, that's just too much effort for me.
@@ -34,7 +34,7 @@
 
 /datum/language/new_imperial/proc/translate_for(mob/living/hearer, message)
 	if(!isliving(hearer))
-		return "\[The speech is completely unintelligible.\]"
+		return "\[完全听不懂这番话。\]"
 
 	var/mob/living/L = hearer
 	// if we know new imperial, then we obviously understand it. duh.
@@ -42,12 +42,12 @@
 		return message
 
 	if(!ishuman(L))
-		return "\[The speech is completely unintelligible.\]" // this probably makes it so druids never understand it. deserved. animals are dumb!!!
+		return "\[完全听不懂这番话。\]" // this probably makes it so druids never understand it. deserved. animals are dumb!!!
 
 	var/mob/living/carbon/human/H = hearer
 
 	if(H.STAINT <= 10)
-		return "\[The words are completely unfamiliar.\]" // dumbass.
+		return "\[这些词语完全陌生。\]" // dumbass.
 
 	if(H.STAINT < 14)
 		return partial_comprehension(message, prob(35) ? 2: 1) // sometimes you can tell one word out. sometimes two.
@@ -61,7 +61,7 @@
 	var/list/words = splittext(message, " ")
 
 	if(!length(words))
-		return "\[The words sound vaguely familiar..\]"
+		return "\[这些词语听起来有些耳熟……\]"
 
 	var/list/discerned = list()
 
@@ -80,15 +80,15 @@
 		discerned += capitalize(word)
 	
 	if(!length(discerned))
-		return "\[The speech sounds strangely familiar, but I cannot make anything out..\]"
+		return "\[这番话听起来莫名耳熟，但我什么也听不懂……\]"
 
 	if(length(discerned) == 1)
-		return "\[Something about...[discerned[1]]?\]"
+		return "\[似乎在说……[discerned[1]]？\]"
 
 	if(length(discerned) == 2)
-		return "\[Something about... [discerned[1]]... and [discerned[2]]?\]"
+		return "\[似乎在说…… [discerned[1]]……还有[discerned[2]]？\]"
 
-	return "\[Something about... [discerned[1]]... [discerned[2]]... and [discerned[3]]?\]"
+	return "\[似乎在说…… [discerned[1]]…… [discerned[2]]……还有[discerned[3]]？\]"
 
 
 /proc/setup_timesoldier_languages(mob/living/carbon/human/H)

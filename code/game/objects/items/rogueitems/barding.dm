@@ -1,6 +1,6 @@
 /obj/item/clothing/barding
-	name = "padded barding"
-	desc = "A set of padded body armor for a Saiga, designed to protect your mount's vital organs. Slightly slows down your mount."
+	name = "衬垫兽甲"
+	desc = "一套用于保护赛加羚羊要害的衬垫护甲。会略微降低坐骑的速度。"
 	slot_flags = null
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "sewingkit"
@@ -68,8 +68,8 @@
 	. = ..()
 
 /obj/item/clothing/barding/chain
-	name = "chainmail barding"
-	desc = "A set of chainmail body armor for a Saiga, designed to protect your mount's vital organs. Slows down your mount by a mild degree."
+	name = "锁子兽甲"
+	desc = "一套用于保护赛加羚羊要害的锁子护甲。会小幅降低坐骑的速度。"
 	icon_state = "armorkit"
 	barding_state = "barding_chain"
 	female_barding_state = "barding_chain-f"
@@ -86,8 +86,8 @@
 	slowdown_factor = 1.2
 
 /obj/item/clothing/barding/fogbeast
-	name = "padded barding"
-	desc = "A set of padded body armor for a Fogbeast, designed to protect your mount's vital organs."
+	name = "衬垫兽甲"
+	desc = "一套用于保护雾兽要害的衬垫护甲。"
 	icon_state = "sewingkit"
 	barding_icon = 'icons/roguetown/mob/monster/fogbeast.dmi'
 	barding_state = "barding"
@@ -97,8 +97,8 @@
 	)
 
 /obj/item/clothing/barding/fogbeast/chain
-	name = "chainmail barding"
-	desc = "A set of chainmail body armor for a Fogbeast, designed to protect your mount's vital organs."
+	name = "锁子兽甲"
+	desc = "一套用于保护雾兽要害的锁子护甲。"
 	icon_state = "armorkit"
 	barding_state = "barding_chain"
 	female_barding_state = "barding_chain"
@@ -114,8 +114,8 @@
 	fiber_salvage = FALSE
 
 /obj/item/clothing/barding/drider
-	name = "drider chitin"
-	desc = "A drider's tough, living carapace."
+	name = "蛛化卓尔甲壳"
+	desc = "蛛化卓尔坚韧的活体甲壳。"
 	icon = null
 	icon_state = null
 	invisibility = INVISIBILITY_ABSTRACT
