@@ -1,6 +1,6 @@
 /datum/coven/fae_trickery
-	name = "Fae Trickery"
-	desc = "This coven typically develops in vampires born near the swamps of Daftmarsh surrounded by the Fae."
+	name = "妖精诡术"
+	desc = "这一结社通常出现在愚沼附近、被妖精环绕之地诞生的吸血鬼之中。"
 	icon_state = "mytherceria"
 	power_type = /datum/coven_power/fae_trickery
 
@@ -10,8 +10,8 @@
 
 //DARKLING TRICKERY
 /datum/coven_power/fae_trickery/darkling_trickery
-	name = "Darkling Trickery"
-	desc = "Disarm your victims from afar."
+	name = "暗影诡术"
+	desc = "从远处缴下猎物的武器。"
 
 	level = 1
 	research_cost = 0
@@ -28,8 +28,8 @@
 		return
 
 	var/generation = max(owner.get_vampire_generation() || GENERATION_THINBLOOD, GENERATION_THINBLOOD)
-	target.visible_message(span_suicide("[target] is disarmed!"),
-					span_boldwarning("I'm disarmed!"))
+	target.visible_message(span_suicide("[target]被缴械了！"),
+					span_boldwarning("我被缴械了！"))
 	playsound(get_turf(target), 'sound/magic/mockery.ogg', 40, FALSE)
 	var/turnangle = (prob(50) ? 270 : 90)
 	var/turndir = turn(target.dir, turnangle)
@@ -42,8 +42,8 @@
 
 //GOBLINISM
 /datum/coven_power/fae_trickery/goblinism
-	name = "Goblinism"
-	desc = "Summon a mischievous goblin to latch onto your enemies' faces."
+	name = "哥布林戏法"
+	desc = "召唤一只淘气的哥布林，让它扑到敌人的脸上。"
 
 	level = 2
 	research_cost = 1
@@ -64,8 +64,8 @@
 	goblin.throw_at(target, 10, 14, owner)
 
 /obj/item/clothing/mask/rogue/goblin_mask
-	name = "goblin"
-	desc = "A green changeling creature."
+	name = "哥布林"
+	desc = "一种绿色的变形生物。"
 	icon_state = "goblin"
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PEEL, BCLASS_PIERCE, BCLASS_CHOP, BCLASS_LASHING, BCLASS_STAB)
 	max_integrity = 200
@@ -92,15 +92,15 @@
 	icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
 
-	visible_message(span_danger("[src] curls up into a ball!"))
+	visible_message(span_danger("[src]蜷缩成了一团！"))
 
 /obj/item/clothing/mask/rogue/goblin_mask/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		var/used_hand_zone = C.used_hand == 1 ? BODY_ZONE_PRECISE_L_HAND : BODY_ZONE_PRECISE_R_HAND
-		to_chat(user, span_warning("[src] bites!"))
+		to_chat(user, span_warning("[src]咬人了！"))
 		if(!C.apply_damage(5, BRUTE, used_hand_zone, C.run_armor_check(used_hand_zone, "stab", damage = 5)))
-			to_chat(user, span_warning("Armor stops the damage."))
+			to_chat(user, span_warning("护甲挡住了伤害。"))
 		playsound(get_turf(src), pick('sound/vo/mobs/gob/aggro (1).ogg','sound/vo/mobs/gob/aggro (2).ogg','sound/vo/mobs/gob/aggro (3).ogg','sound/vo/mobs/gob/aggro (4).ogg'), 100, FALSE, -1)
 		return
 	if((stat == CONSCIOUS))
@@ -206,8 +206,8 @@
 		var/mob/living/carbon/target = M
 		if(target.wear_mask && istype(target.wear_mask, /obj/item/clothing/mask/rogue/goblin_mask))
 			return FALSE
-	M.visible_message(span_danger("[src] leaps at [M]'s face!"), \
-		span_userdanger("[src] leaps at your face!"))
+	M.visible_message(span_danger("[src]扑向[M]的脸！"), \
+		span_userdanger("[src]扑向你的脸！"))
 	playsound(get_turf(src), 'sound/vo/mobs/gob/aggro (2).ogg', 100, FALSE, -1)
 	if(iscarbon(M))
 		var/mob/living/carbon/target = M
@@ -216,8 +216,8 @@
 			headgear = M.get_item_by_slot(SLOT_WEAR_MASK)
 			M.transferItemToLoc(headgear, src)
 			target.visible_message(
-				span_danger("[src] tears [headgear] off of [target]'s face!"), \
-				span_userdanger("[src] tears [headgear] off of your face!"))
+				span_danger("[src]将[headgear]从[target]的脸上扯了下来！"), \
+				span_userdanger("[src]将[headgear]从你的脸上扯了下来！"))
 		target.equip_to_slot_if_possible(src, SLOT_WEAR_MASK, disable_warning = TRUE, bypass_equip_delay_self = TRUE)
 		var/datum/cb = CALLBACK(src, PROC_REF(eat_head))
 		for(var/i in 1 to 10)
@@ -228,13 +228,13 @@
 /obj/item/clothing/mask/rogue/goblin_mask/proc/eat_head()
 	if(iscarbon(loc))
 		var/mob/living/carbon/C = loc
-		to_chat(C, span_warning("[src] is eating your face!"))
+		to_chat(C, span_warning("[src]正在啃你的脸！"))
 		if(!C.apply_damage(5, BRUTE, BODY_ZONE_HEAD, C.run_armor_check(BODY_ZONE_HEAD, "stab", damage = 5)))
-			to_chat(C, span_warning("Armor stops the damage."))
+			to_chat(C, span_warning("护甲挡住了伤害。"))
 
 /obj/fae_trickery_trap
-	name = "fae trap"
-	desc = "Creates a fae trap to protect your domain."
+	name = "妖精陷阱"
+	desc = "创造妖精陷阱，保护你的领地。"
 	anchored = TRUE
 	density = FALSE
 	alpha = 64
@@ -260,8 +260,8 @@
 				qdel(src)
 
 /obj/fae_trickery_trap/disorient
-	name = "fae trap"
-	desc = "Creates a fae trap to protect your domain."
+	name = "妖精陷阱"
+	desc = "创造妖精陷阱，保护你的领地。"
 	anchored = TRUE
 	density = FALSE
 	unique = TRUE
@@ -287,8 +287,8 @@
 		animate(whole_screen, transform = matrix(), time = 0.5 SECONDS, easing = QUAD_EASING)
 
 /obj/fae_trickery_trap/drop
-	name = "fae trap"
-	desc = "Creates a fae trap to protect your domain."
+	name = "妖精陷阱"
+	desc = "创造妖精陷阱，保护你的领地。"
 	anchored = TRUE
 	density = FALSE
 	unique = TRUE
@@ -300,8 +300,8 @@
 		if(AM != owner && !AM.is_clanmate(owner))
 			AM.adjustBruteLoss(35)
 			AM.Knockdown(5)
-			AM.visible_message(span_suicide("[AM] is disarmed!"),
-							span_boldwarning("I'm disarmed!"))
+			AM.visible_message(span_suicide("[AM]被缴械了！"),
+							span_boldwarning("我被缴械了！"))
 			playsound(get_turf(AM), 'sound/magic/mockery.ogg', 40, FALSE)
 			var/target_turf = get_ranged_target_turf(get_turf(AM), pick(GLOB.cardinals), rand(2, 5))
 			AM.throw_item(target_turf, FALSE)
@@ -309,8 +309,8 @@
 
 //CHANJELIN WARD
 /datum/coven_power/fae_trickery/chanjelin_ward
-	name = "Chanjelin Ward"
-	desc = "Plants a symbol under you. Brutal traps throw victims violently, spin makes them dizzy, drop knocks them on the ground and throws their weapon away."
+	name = "变形灵守护符"
+	desc = "在脚下布置符号。暴烈陷阱将猎物猛力抛出，旋转陷阱使其眩晕，跌落陷阱将其击倒并甩开武器。"
 
 	level = 3
 	research_cost = 2
@@ -324,25 +324,25 @@
 
 /datum/coven_power/fae_trickery/chanjelin_ward/activate()
 	. = ..()
-	var/try_trap = input(owner, "Select a Trap:", "Trap") as null|anything in list("Brutal", "Spin", "Drop")
+	var/try_trap = input(owner, "选择陷阱：", "陷阱") as null|anything in list("暴烈", "旋转", "跌落")
 	if(!try_trap)
 		return
 
 	switch(try_trap)
-		if("Brutal")
+		if("暴烈")
 			var/obj/fae_trickery_trap/trap = new (get_turf(owner))
 			trap.owner = owner
-		if("Spin")
+		if("旋转")
 			var/obj/fae_trickery_trap/disorient/trap = new (get_turf(owner))
 			trap.owner = owner
-		if("Drop")
+		if("跌落")
 			var/obj/fae_trickery_trap/drop/trap = new (get_turf(owner))
 			trap.owner = owner
 
 //RIDDLE PHANTASTIQUE
 /datum/coven_power/fae_trickery/riddle_phantastique
-	name = "Riddle Phantastique"
-	desc = "Pose a confounding riddle to your victim, forcing them to answer it before they can do anything else."
+	name = "奇幻谜题"
+	desc = "向猎物提出一道令人困惑的谜题，迫使其先作答，才能进行其他行动。"
 
 	level = 4
 	research_cost = 3
@@ -359,12 +359,12 @@
 /datum/coven_power/fae_trickery/riddle_phantastique/activate(mob/living/target)
 	. = ..()
 	if(length(stored_riddles))
-		var/list/riddle_list = list("Create a new riddle...")
+		var/list/riddle_list = list("创建新谜题……")
 		for(var/datum/riddle/riddle in stored_riddles)
 			riddle_list += riddle.riddle_text
-		var/try_riddle = input(owner, "Select a Riddle:", "Riddle") as null|anything in riddle_list
+		var/try_riddle = input(owner, "选择谜题：", "谜题") as null|anything in riddle_list
 		if(try_riddle)
-			if(try_riddle == "Create a new riddle...")
+			if(try_riddle == "创建新谜题……")
 				var/datum/riddle/riddle = new ()
 				if(riddle.create_riddle(owner))
 					stored_riddles += riddle
@@ -377,7 +377,7 @@
 					if(RIDDLE.riddle_text == try_riddle)
 						actual_riddle = RIDDLE
 			if(!actual_riddle)
-				to_chat(owner, span_warning("That riddle has slipped your mind."))
+				to_chat(owner, span_warning("你已经忘记了那道谜题。"))
 				return
 			actual_riddle.ask(target)
 			owner.say(actual_riddle.riddle_text)
@@ -410,7 +410,7 @@
 			riddle.try_answer(M, src)
 
 /datum/riddle/proc/try_answer(mob/living/answerer, atom/movable/screen/alert/riddle/new_alert)
-	var/try_answer = input(answerer, riddle_text, "Riddle") as null|anything in riddle_options
+	var/try_answer = input(answerer, riddle_text, "谜题") as null|anything in riddle_options
 	if(try_answer)
 		answer_riddle(answerer, try_answer, new_alert)
 
@@ -420,38 +420,38 @@
 
 /datum/riddle/proc/create_riddle(mob/living/carbon/human/riddler)
 	var/proceed = FALSE
-	var/text_riddle = input(riddler, "Create a riddle:", "Riddle", "Is it something?") as null|text
+	var/text_riddle = input(riddler, "编写谜题：", "谜题", "它是什么？") as null|text
 	if(text_riddle)
 		riddle_text = trim(copytext_char(sanitize(text_riddle), 1, MAX_MESSAGE_LEN))
-		var/right_answer = input(riddler, "Create a right answer:", "Riddle", "Something") as null|text
+		var/right_answer = input(riddler, "编写正确答案：", "谜题", "某样东西") as null|text
 		if(right_answer)
 			riddle_answer = trim(copytext_char(sanitize(right_answer), 1, MAX_MESSAGE_LEN))
 			riddle_options += trim(copytext_char(sanitize(right_answer), 1, MAX_MESSAGE_LEN))
 			proceed = TRUE
-			var/answer1 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
+			var/answer1 = input(riddler, "编写另一个答案：", "谜题", "任意答案") as null|text
 			if(answer1)
 				riddle_options += trim(copytext_char(sanitize(answer1), 1, MAX_MESSAGE_LEN))
-				var/answer2 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
+				var/answer2 = input(riddler, "编写另一个答案：", "谜题", "任意答案") as null|text
 				if(answer2)
 					riddle_options += trim(copytext_char(sanitize(answer2), 1, MAX_MESSAGE_LEN))
-					var/answer3 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
+					var/answer3 = input(riddler, "编写另一个答案：", "谜题", "任意答案") as null|text
 					if(answer3)
 						riddle_options += trim(copytext_char(sanitize(answer3), 1, MAX_MESSAGE_LEN))
-						var/answer4 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
+						var/answer4 = input(riddler, "编写另一个答案：", "谜题", "任意答案") as null|text
 						if(answer4)
 							riddle_options += trim(copytext_char(sanitize(answer4), 1, MAX_MESSAGE_LEN))
 	if(proceed)
-		to_chat(riddler, "New riddle created.")
+		to_chat(riddler, "已创建新谜题。")
 		return src
 	else
-		to_chat(riddler, span_danger("Your riddle is too complicated."))
+		to_chat(riddler, span_danger("你的谜题太复杂了。"))
 		return FALSE
 
 /datum/riddle/proc/answer_riddle(mob/living/answerer, the_answer, atom/movable/screen/alert/riddle/alert)
 	if(the_answer != riddle_answer)
 		alert.bad_answers++
 		to_chat(answerer,
-			span_danger("WRONG ANSWER."))
+			span_danger("答案错误。"))
 		if(alert.bad_answers >= round(length(riddle_options)/2))
 			if(HAS_TRAIT(answerer, TRAIT_CRITICAL_WEAKNESS))
 				if(iscarbon(answerer))
@@ -460,10 +460,10 @@
 					if(tongue)
 						tongue.Remove(C)
 				to_chat(answerer,
-					span_danger("THE RIDDLE REMOVES YOUR LYING TONGUE AS IT FLEES."))
+					span_danger("谜题消散时，带走了你那说谎的舌头。"))
 			else
 				to_chat(answerer,
-					span_danger("THE RIDDLE PUNISHES YOU FOR LYING."))
+					span_danger("谜题因你说谎而惩罚了你。"))
 				answerer.adjust_fire_stacks(6)
 				answerer.ignite_mob()
 				answerer.adjustFireLoss(45)
@@ -474,7 +474,7 @@
 			answerer.clear_alert("riddle")
 	else
 		to_chat(answerer,
-			span_nicegreen("You feel the riddle's hold over you vanish."))
+			span_nicegreen("你感到谜题对你的束缚消失了。"))
 		alert.riddle = null
 		answerer.remove_movespeed_modifier("riddle")
 		answerer.say(the_answer)
@@ -482,8 +482,8 @@
 
 //FAE WRATH T5
 /datum/coven_power/fae_trickery/fae_wrath
-	name = "Fae Wrath"
-	desc = "Unleash a barrage of strikes upon thine foes."
+	name = "妖精之怒"
+	desc = "向敌人发动连番打击。"
 
 	level = 5
 	research_cost = 4

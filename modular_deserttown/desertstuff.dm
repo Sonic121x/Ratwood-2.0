@@ -245,7 +245,7 @@
 	craftdiff = 4
 
 /obj/structure/large_pillar
-	name = "pillar"
+	name = "石柱"
 	desc = ""
 	icon = 'modular_deserttown/icons/temple_objects_tall.dmi'
 	opacity = 0
@@ -277,8 +277,8 @@
 	icon_state = "tall_pillar_5"
 
 /obj/structure/obelisk
-	name = "ancient obelisk"
-	desc = "An ancient obelisk. It has archaic inscriptions in the stone work- ancient Drakian, maybe?"
+	name = "古代方尖碑"
+	desc = "一座古代方尖碑。石面上刻着古老的铭文——也许是古代龙裔文字？"
 	icon = 'modular_deserttown/icons/temple_objects_verytall.dmi'
 	opacity = 0
 	max_integrity = 1000
@@ -301,23 +301,23 @@
 
 /obj/structure/obelisk/proc/attempt_translate(mob/living/user)
 	if(!translation)
-		to_chat(user, span_notice("You find nothing decipherable on the obelisk."))
+		to_chat(user, span_notice("你在方尖碑上找不到任何能解读的文字。"))
 		return
-	to_chat(user, span_notice("You begin studying the archaic inscriptions..."))
+	to_chat(user, span_notice("你开始研究这些古老的铭文……"))
 	if(!do_after(user, 3 SECONDS, target = src))
 		return
 	var/chance = 	clamp(20 + (user.STAINT - 10) * 6, 0, 100)
 	if(prob(chance))
-		to_chat(user, span_notice("Understanding dawns on you: [translation]"))
+		to_chat(user, span_notice("你终于明白了：[translation]"))
 	else
-		to_chat(user, span_warning("The drakian script remains indecipherable to you."))
+		to_chat(user, span_warning("你仍然无法解读这些龙裔文字。"))
 
 /obj/structure/obelisk/destroyed
-	desc = "An ancient obelisk. Whatever magic it once held is long since gone, damaged beyond function."
+	desc = "一座古代方尖碑。它已损毁到无法使用，曾经蕴含的魔力也早已消散。"
 	icon_state = "obelisk_destroyed"
 
 /obj/structure/obelisk/active
-	desc = "An ancient obelisk"
+	desc = "一座古代方尖碑"
 	icon_state = "obelisk_short"
 	var/scan_range = 3					// how far it reaches out to players
 	var/list/mob/living/carbon/human/targets = list()
@@ -476,8 +476,8 @@
 	icon_state = "obelisk_writing_damaged"
 
 /obj/structure/ozymandias
-	name = "ruined ancient statue"
-	desc = "Look upon my works ye Mighty, and despair!"
+	name = "残破的古代雕像"
+	desc = "强者啊，看看我的功业，然后绝望吧！"
 	icon = 'modular_deserttown/icons/temple_objects_big.dmi'
 	icon_state = "ozymandias"
 	opacity = 0
@@ -493,8 +493,8 @@
 	plane = GAME_PLANE_UPPER
 
 /obj/structure/ancienthead
-	name = "ruined ancient statue"
-	desc = "Colors fade, temples crumble, empires fall..."
+	name = "残破的古代雕像"
+	desc = "色彩褪去，神殿崩塌，帝国覆灭……"
 	icon = 'modular_deserttown/icons/temple_objects_big.dmi'
 	icon_state = "head"
 	opacity = 0
@@ -510,7 +510,7 @@
 	plane = GAME_PLANE_UPPER
 
 /obj/structure/dualpillar
-	name = "dual pillar"
+	name = "双柱"
 	desc = ""
 	icon = 'modular_deserttown/icons/temple_objects_big.dmi'
 	icon_state = "dual_pillar_1"
@@ -545,7 +545,7 @@
 
 
 /obj/structure/table/templestoneslab
-	name = "stone slab"
+	name = "石板"
 	desc = ""
 	icon = 'modular_deserttown/icons/temple_objects.dmi'
 	icon_state = "slab_1"
@@ -589,8 +589,8 @@
 /// Quicksand
 
 /obj/structure/quicksand
-	name = "quicksand"
-	desc = "The sand shifts unnaturally beneath your feet."
+	name = "流沙"
+	desc = "你脚下的沙子正诡异地流动。"
 	icon = 'modular_deserttown/icons/quicksand.dmi'
 	icon_state = "quicksand"
 
@@ -622,14 +622,14 @@
 		return
 	buckle_mob(Living, TRUE, check_loc = FALSE)
 	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_UPDATE, Living)
-	visible_message(span_warning("[Living] sinks into the quicksand!"))
+	visible_message(span_warning("[Living]陷入了流沙！"))
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/quicksand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	var/mob/living/carbon/human/Human = buckled_mob
 	var/escape_amount = max(CEILING((20 - user.STASTR) / 2, 1), 2)
 	var/escape_time = escape_amount SECONDS
-	user.visible_message(span_warning("[user] struggles to escape the quicksand!"))
+	user.visible_message(span_warning("[user]挣扎着想逃出流沙！"))
 
 	if(!do_after(user, escape_time, FALSE, src))
 		return
@@ -640,13 +640,13 @@
 	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_REMOVE, Human)
 	Human.stamina_add(75)
 
-	visible_message(span_notice("[buckled_mob] drags themselves free of the quicksand!"))
+	visible_message(span_notice("[buckled_mob]挣脱了流沙！"))
 
 /obj/structure/quicksand/attackby(obj/item/I, mob/user, params)
 
 	if(istype(I, /obj/item/rogueweapon/shovel))
 		playsound(loc,'sound/items/dig_shovel.ogg', 100, TRUE)
-		to_chat(user, span_info("I start digging up \the [name]..."))
+		to_chat(user, span_info("我开始挖掘\the [name]……"))
 		if(do_after(user, 5 SECONDS, src))
 			playsound(loc,'sound/items/empty_shovel.ogg', 100, TRUE)
 			qdel(src)
@@ -657,11 +657,11 @@
 	if(has_buckled_mobs())
 		var/person = buckled_mobs[1].name
 		if(user == buckled_mobs[1])
-			person = "themself"
-		user.visible_message(span_warning("[user.name] starts to pull [person] out of the quicksand!"))
+			person = "自己"
+		user.visible_message(span_warning("[user.name]开始将[person]拉出流沙！"))
 		if(do_after(user, 2 SECONDS))
 			unbuckle_mob(buckled_mobs[1], TRUE)
-			user.visible_message(span_warning("[user.name] pulls [person] out of the quicksand."))
+			user.visible_message(span_warning("[user.name]将[person]拉出了流沙。"))
 	. = ..()
 
 /obj/structure/quicksand/process()
@@ -695,8 +695,8 @@
 ////decorative templestuff
 
 /obj/structure/fluff/templedebris
-	name = "sand pile"
-	desc = "A pile of loose sand."
+	name = "沙堆"
+	desc = "一堆松散的沙子。"
 	icon_state = "sandpile"
 	var/sandamt = 5
 	icon = 'modular_deserttown/icons/temple_objects.dmi'
@@ -705,60 +705,60 @@
 	climb_offset = 10
 
 /obj/structure/fluff/templedebris/pillar
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_1"
 /obj/structure/fluff/templedebris/pillar2
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_2"
 /obj/structure/fluff/templedebris/pillar3
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_3"
 /obj/structure/fluff/templedebris/pillar4
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_4"
 /obj/structure/fluff/templedebris/debris
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "debris_1"
 /obj/structure/fluff/templedebris/debris2
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "debris_2"
 /obj/structure/fluff/templedebris/debris3
-	name = "rocky debris"
-	desc = "The destroyed remains of some old stone object."
+	name = "碎石残骸"
+	desc = "某件古老石制物品被摧毁后留下的残骸。"
 	icon_state = "debris_3"
 /obj/structure/fluff/templedebris/debris4
-	name = "rocky debris"
-	desc = "The destroyed remains of some old stone object."
+	name = "碎石残骸"
+	desc = "某件古老石制物品被摧毁后留下的残骸。"
 	icon_state = "debris_4"
 /obj/structure/fluff/templedebris/debris5
-	name = "rocky debris"
-	desc = "The destroyed remains of some old stone object."
+	name = "碎石残骸"
+	desc = "某件古老石制物品被摧毁后留下的残骸。"
 	icon_state = "debris_5"
 /obj/structure/fluff/templedebris/ruinedslab
-	name = "cracked slab"
-	desc = "A stone slab now ruined and broken."
+	name = "开裂的石板"
+	desc = "一块破损碎裂的石板。"
 	icon_state = "slab_6"
 /obj/structure/fluff/templedebris/ruinedslab2
-	name = "cracked slab"
-	desc = "A stone slab now ruined and broken."
+	name = "开裂的石板"
+	desc = "一块破损碎裂的石板。"
 	icon_state = "slab_7"
 /obj/structure/fluff/templedebris/bricks
-	name = "pile of bricks"
-	desc = "A some stone bricks left about."
+	name = "石砖堆"
+	desc = "一些散落的石砖。"
 	icon_state = "smallbricks_1"
 /obj/structure/fluff/templedebris/bricks2
-	name = "pile of bricks"
-	desc = "A some stone bricks left about."
+	name = "石砖堆"
+	desc = "一些散落的石砖。"
 	icon_state = "smallbricks_2"
 /obj/structure/fluff/templedebris/bricks3
-	name = "pile of bricks"
-	desc = "A some stone bricks left about."
+	name = "石砖堆"
+	desc = "一些散落的石砖。"
 	icon_state = "smallbricks_3"
 ////chairs
 

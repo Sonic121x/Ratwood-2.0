@@ -57,7 +57,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "护甲", "撕裂")
 
 /obj/item/clothing/under/roguetown/platelegs/matthios
 	max_integrity = ARMOR_INT_LEG_ANTAG
@@ -114,7 +114,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs/medium/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲", "撕裂")
 
 /obj/item/clothing/under/roguetown/platelegs/skirt
 	name = "钢制垂腿甲"

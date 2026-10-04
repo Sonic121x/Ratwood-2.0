@@ -75,7 +75,7 @@
 				to_chat(src, span_userdanger("死亡并非我的终点。我开始重获新生。"))
 				playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE)
 			else
-				to_chat(src, span_userdanger("No, NO! This cannot be!"))
+				to_chat(src, span_userdanger("不，不！这不可能！"))
 				L.out_of_lives = TRUE
 				gib()
 				return
@@ -106,8 +106,8 @@
 		if(!has_world_trait(/datum/world_trait/necra_requiem))
 			if(!is_in_roguetown(src) || has_world_trait(/datum/world_trait/zizo_defilement))
 				if(!zombie_check_can_convert()) //Gives the dead unit the zombie antag flag
-					to_chat(src, span_userdanger("..is this to be my end..?"))
-					to_chat(src, span_danger("The cold consumes the final flicker of warmth in your chest and begins to seep into your limbs..."))
+					to_chat(src, span_userdanger("……这就是我的结局吗……？"))
+					to_chat(src, span_danger("寒冷吞噬了你胸中最后一丝暖意，开始渗入四肢……"))
 
 	stop_sound_channel(CHANNEL_HEARTBEAT)
 	var/obj/item/organ/heart/H = getorganslot(ORGAN_SLOT_HEART)
@@ -125,8 +125,8 @@
 		if(H in SStreasury.bank_accounts)
 			for(var/obj/structure/roguemachine/camera/C in view(7, src))
 				var/area_name = A.name
-				var/texty = "<CENTER><B>Death of a Living Being</B><br>---<br></CENTER>"
-				texty += "[real_name] perished in front of face #[C.number] ([area_name]) at [station_time_timestamp("hh:mm")]."
+				var/texty = "<CENTER><B>生灵之死</B><br>---<br></CENTER>"
+				texty += "[real_name]于[station_time_timestamp("hh:mm")]在第[C.number]号面孔前([area_name])死去。"
 				SSroguemachine.death_queue += texty
 				break
 
@@ -204,7 +204,7 @@
 	if(!.)
 		return
 	if(needs_binding && mind?.player_card)
-		visible_message(span_danger("[src]'s flesh ripples and reshapes as the soul within claims it for its own!"))
+		visible_message(span_danger("[src]体内的灵魂占据了这具躯壳，令其血肉涌动、重塑！"))
 		mind.player_card.apply_identity_to(src)
 		// The conversion regenerates organs and replaces the brain, so re-fetch rather than reuse a stale ref
 		var/obj/item/organ/brain/new_brain = getorganslot(ORGAN_SLOT_BRAIN)

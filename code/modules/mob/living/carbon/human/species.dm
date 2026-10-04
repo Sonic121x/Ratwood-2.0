@@ -799,7 +799,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			if(DIGITIGRADE in species_traits)
 				if(!disable_warning)
-					to_chat(H, span_warning("The footwear around here isn't compatible with my feet!"))
+					to_chat(H, span_warning("这里的鞋子不适合我的脚！"))
 				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(SLOT_BELT)
@@ -1927,7 +1927,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/text = "[bodyzone2readablezone(selzone)]..."
 		if(HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS))
 			if(prob(10))
-				text = "<i>I can't tell...</i>"
+				text = "<i>我看不出来……</i>"
 				user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
 		else
 			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
