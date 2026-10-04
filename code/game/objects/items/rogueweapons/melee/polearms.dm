@@ -110,9 +110,9 @@
 	desc = "一记劈斩，会连第一个目标身后的第二个目标一并斩开。"
 
 /datum/intent/spear/cut/bardiche/cleave/chop
-	name = "cleaving chop"
+	name = "劈裂重斩"
 	blade_class = BCLASS_CHOP
-	attack_verb = list("chops", "hacks")
+	attack_verb = list("劈砍", "猛劈")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 35

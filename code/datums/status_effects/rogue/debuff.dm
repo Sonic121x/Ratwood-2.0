@@ -201,13 +201,13 @@
 	icon_state = "sleepy"
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytimet2
-	name = "Fatigued"
-	desc = "When was the last time I even slept...?"
+	name = "疲惫"
+	desc = "我上一次睡觉到底是什么时候……？"
 	icon_state = "sleepy2"
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytimet3
-	name = "Exhausted"
-	desc = "Just... one little quick nap... five minute rest... please..."
+	name = "精疲力竭"
+	desc = "只要……稍微打个盹……休息五分钟……求求了……"
 	icon_state = "sleepy3"
 
 /datum/status_effect/debuff/muscle_sore
@@ -516,8 +516,8 @@
 		phy.pain_mod /= 2
 
 /*/atom/movable/screen/alert/status_effect/debuff/dazed/shield
-	name = "Dazed by fencer's wrap"
-	desc = "That stupid piece of cloth is so distracting! It pisses me off!"
+	name = "被剑士裹布晃花了眼"
+	desc = "那块蠢布实在太碍眼了！真让人火大！"
 	icon_state = "dazed" */
 
 ///// Freifechter Daze Variants /////

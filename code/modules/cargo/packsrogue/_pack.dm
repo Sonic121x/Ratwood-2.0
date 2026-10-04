@@ -1,5 +1,5 @@
 /datum/supply_pack
-	var/name = "Crate"
+	var/name = "货箱"
 	var/group = ""
 	/// Foreign trade cultural stock: units per ship manifest roll (trade_ship.dm's
 	/// roll_cultural_stock reads these off packs listed in a realm's cultural_stock_pool).

@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(nightshift)
 	if(mind.assigned_role != "Unassigned" && istype(mind.assigned_role, /datum/job) && (mind.assigned_role.title in towner_jobs)) //If you play a towner-related role, you get an additonal triumph
 		triumphs_to_add++
 	adjust_triumphs(triumphs_to_add)
-	to_chat(src, span_danger("Days Survived: \Roman[allmig_reward]"))
+	to_chat(src, span_danger("存活天数：\Roman[allmig_reward]"))
 
 /mob/living/carbon/human
 	var/survived_cycles = 0

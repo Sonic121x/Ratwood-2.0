@@ -66,7 +66,7 @@
 	* Deletes itself if it is ever not in my hand, or if you should have no access to TK.
 */
 /obj/item/tk_grab
-	name = "Telekinetic Grab"
+	name = "念力抓取"
 	desc = ""
 	icon = 'icons/obj/magic.dmi'//Needs sprites
 	icon_state = "2"
@@ -153,7 +153,7 @@
 /proc/tkMaxRangeCheck(mob/user, atom/target)
 	var/d = get_dist(user, target)
 	if(d > TK_MAXRANGE)
-		to_chat(user, span_warning("My mind won't reach that far."))
+		to_chat(user, span_warning("我的念力够不到那么远。"))
 		return
 	return TRUE
 
