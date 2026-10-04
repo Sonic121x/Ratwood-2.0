@@ -6,8 +6,8 @@
 	max_w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/backpack/rogue/backpack/timesoldier
-	name = "expeditionary backpack"
-	desc = "A large, expeditionary backpack often used by Kingsfield forces to carry enough supplies to keep a soldier alive away from friendly lines for a while."
+	name = "远征背包"
+	desc = "王田军队常用的大型远征背包，能装下足够的补给，让士兵远离己方战线时也能维持一段时间。"
 	icon = 'modular/timesoldier/sprites/gear.dmi'
 	icon_state = "WU_backpack"
 	component_type = /datum/component/storage/concrete/roguetown/backpack/timesoldier

@@ -112,8 +112,8 @@
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message(span_danger("[src]'s brain is growing dull and lifeless. [p_they(TRUE)] look[p_s()] like [p_theyve()] lost the will to live."), \
-						span_danger("[src]'s brain is growing dull and lifeless. [p_they(TRUE)] look[p_s()] like [p_theyve()] lost the will to live."))
+		visible_message(span_danger("[src]的大脑正变得迟钝，逐渐失去生机。[p_they(TRUE)]似乎已经失去了活下去的意愿。"), \
+						span_danger("[src]的大脑正变得迟钝，逐渐失去生机。[p_they(TRUE)]似乎已经失去了活下去的意愿。"))
 
 		suicide_log()
 
@@ -123,13 +123,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("你确定要自杀吗？", "确认自杀", "是", "否")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "是")
 		set_suicide(TRUE)
-		visible_message(span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."), \
-				span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."))
+		visible_message(span_danger("[src]正在关闭电源，似乎是想自杀。"), \
+				span_danger("[src]正在关闭电源，似乎是想自杀。"))
 
 		suicide_log()
 
@@ -141,13 +141,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("你确定要自杀吗？", "确认自杀", "是", "否")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "是")
 		set_suicide(TRUE)
-		visible_message(span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."), \
-				span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."))
+		visible_message(span_danger("[src]正在关闭电源，似乎是想自杀。"), \
+				span_danger("[src]正在关闭电源，似乎是想自杀。"))
 
 		suicide_log()
 
@@ -157,20 +157,20 @@
 
 /mob/living/silicon/pai/verb/suicide()
 	set hidden = 1
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
-	if(confirm == "Yes")
+	var/confirm = alert("你确定要自杀吗？", "确认自杀", "是", "否")
+	if(confirm == "是")
 		var/turf/T = get_turf(src.loc)
 		T.visible_message(
-			span_notice("[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\""),
+			span_notice("[src]的屏幕上闪过一条消息：\"正在清除核心文件。请获取新人格以继续使用 pAI 设备功能。\""),
 			null,
-			span_notice("[src] bleeps electronically.")
+			span_notice("[src]发出电子哔声。")
 		)
 
 		suicide_log()
 
 		death(FALSE)
 	else
-		to_chat(src, "Aborting suicide attempt.")
+		to_chat(src, "已取消自杀。")
 
 /mob/living/simple_animal/verb/suicide()
 	set hidden = 1
@@ -201,17 +201,17 @@
 		if(CONSCIOUS)
 			return TRUE
 		if(SOFT_CRIT)
-			to_chat(src, span_warning("I can't commit suicide while in a critical condition!"))
+			to_chat(src, span_warning("我无法在濒危状态下自杀！"))
 		if(UNCONSCIOUS)
-			to_chat(src, span_warning("I need to be conscious to commit suicide!"))
+			to_chat(src, span_warning("我得保持清醒才能自杀！"))
 		if(DEAD)
-			to_chat(src, span_warning("You're already dead!"))
+			to_chat(src, span_warning("你已经死了！"))
 	return
 
 /mob/living/carbon/canSuicide()
 	if(!..())
 		return
 	if(!(mobility_flags & MOBILITY_USE))	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
-		to_chat(src, span_warning("I can't commit suicide whilst immobile! ((You can type Ghost instead however.))"))
+		to_chat(src, span_warning("我无法在不能行动时自杀！((不过你可以输入 Ghost 来脱离身体。))"))
 		return
 	return TRUE

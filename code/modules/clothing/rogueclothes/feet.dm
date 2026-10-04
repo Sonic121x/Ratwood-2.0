@@ -397,7 +397,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "护甲", "撕裂")
 
 
 /obj/item/clothing/shoes/roguetown/boots/armor/matthios
@@ -443,7 +443,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲", "撕裂")
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	name = "铁板靴"

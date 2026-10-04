@@ -777,12 +777,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			var/arousal_preview_label
 			switch(preview_erect_state)
 				if(ERECT_STATE_PARTIAL)
-					arousal_preview_label = "Partial"
+					arousal_preview_label = "半勃起"
 				if(ERECT_STATE_HARD)
-					arousal_preview_label = "Hard"
+					arousal_preview_label = "勃起"
 				else
-					arousal_preview_label = "None"
-			dat += "<div style='text-align: center'><br>Arousal Preview:<br> <a href='?_src_=prefs;preference=preview_erect_state'>[arousal_preview_label]</a></div>"
+					arousal_preview_label = "无"
+			dat += "<div style='text-align: center'><br>兴奋状态预览：<br> <a href='?_src_=prefs;preference=preview_erect_state'>[arousal_preview_label]</a></div>"
 			// Rightmost column, 40% width
 			dat += "<td width=40% valign='top'>"
 			dat += "<h2>身体</h2>"
@@ -943,7 +943,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 //			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Enabled":"Disabled"]</a><br>"
 
-			dat += "<b>Preferred Map:</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[preferred_map || "Default"]</a><br>"
+			dat += "<b>偏好地图：</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[preferred_map || "默认"]</a><br>"
 			dat += "</td><td width='300px' height='300px' valign='top'>"
 
 			dat += "<h2>特殊角色设置</h2>"
@@ -1442,7 +1442,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 		return
 
 	if (!isnum(desiredLvl))
-		to_chat(user, span_danger("UpdateJobPreference - desired level was not a number. Please notify coders!"))
+		to_chat(user, span_danger("UpdateJobPreference - 期望等级不是数字。请通知开发者！"))
 		ShowChoices(user,4)
 		return
 
@@ -1939,7 +1939,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					for(var/map_name in config.maplist)
 						available_maps += map_name
 
-					var/new_map = tgui_input_list(user, "Choose your preferred map.", "MAP PREFERENCE", available_maps)
+					var/new_map = tgui_input_list(user, "选择你偏好的地图。", "地图偏好", available_maps)
 
 					if(new_map)
 						if(new_map == "Default")
@@ -1947,7 +1947,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						else
 							preferred_map = new_map
 
-						to_chat(user, span_notice("Preferred map set to: [new_map]"))
+						to_chat(user, span_notice("偏好地图已设为：[new_map]"))
 
 					return
 				// LETHALSTONE EDIT: add pronouns
@@ -2728,7 +2728,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						to_chat(user, span_info("<b>[selectedaccent] 预览：</b> [preview_text]"))
 
 				if("char_mannerism")
-					var/selected_mannerism = tgui_input_list(user, "Choose your character's speech mannerism:", "Character Preference", GLOB.character_mannerisms)
+					var/selected_mannerism = tgui_input_list(user, "选择你角色的说话习惯：", "角色偏好", GLOB.character_mannerisms)
 					if(selected_mannerism)
 						char_mannerism = selected_mannerism
 						var/test_message = "Hello friend, yes this is good. My Lord rides through the Duchy with servants and soldiers; the captain and sergeant guard the church while archers and cavalry hold the north road. My sword and shield are sharp, the water flows refreshingly, and we thank the Duke before saying goodbye."
@@ -2742,7 +2742,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							if(accent_preview_span)
 								preview_text = "<span class='[accent_preview_span]'>[preview_text]</span>"
 
-						to_chat(user, span_info("<b>[selected_mannerism] Preview:</b> [preview_text]"))
+						to_chat(user, span_info("<b>[selected_mannerism] 预览：</b> [preview_text]"))
 
 				if("ooccolor")
 					var/new_ooccolor = color_pick_sanitized(user, "选择您的 OOC 颜色：", "游戏偏好", ooccolor)
@@ -3112,7 +3112,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 				if("observe")
 					if(is_banned_from(user.ckey, "Observer"))
-						to_chat(user, span_danger("You are banned from observing."))
+						to_chat(user, span_danger("你已被禁止旁观。"))
 						return
 					var/mob/dead/new_player/P = user
 					P.make_me_an_observer()

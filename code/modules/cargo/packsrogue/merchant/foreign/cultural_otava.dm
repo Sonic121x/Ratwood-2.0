@@ -130,7 +130,7 @@
 	ship_qty_max = 7
 
 /datum/supply_pack/rogue/otava/ring_wisdom
-	name = "Ring of Wisdom"
+	name = "智慧之戒"
 	cost = 450
 	contains = list(/obj/item/clothing/ring/statamythortz)
 	ship_qty_min = 1
