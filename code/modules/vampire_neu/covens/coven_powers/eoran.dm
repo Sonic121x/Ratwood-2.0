@@ -1,6 +1,6 @@
 /datum/coven/eora
-	name = "Eoran Embrace"
-	desc = "Blessed by the Goddess of Love, Family, and Art, these vampires have developed powers that strengthen bonds, inspire beauty, and heal emotional wounds."
+	name = "伊奥拉之拥"
+	desc = "受爱情、家庭与艺术女神祝福，这些吸血鬼发展出了巩固羁绊、激发美感与治愈心灵创伤的能力。"
 	icon_state = "eora"
 	power_type = /datum/coven_power/eora
 	max_level = 4
@@ -11,8 +11,8 @@
 
 //EMPATHIC BOND
 /datum/coven_power/eora/empathic_bond
-	name = "Empathic Bond"
-	desc = "Touch someone to sense their emotional state and immediate needs, making you obsessed with them for a short time."
+	name = "共情羁绊"
+	desc = "触碰他人以感知其情绪与当前需求，让你短暂地迷恋对方。"
 
 	level = 1
 	research_cost = 0
@@ -27,7 +27,7 @@
 	if(!.)
 		return
 	if(!ishuman(target))
-		to_chat(owner, span_warning("You can only sense the emotions of other people."))
+		to_chat(owner, span_warning("你只能感知其他人的情绪。"))
 		return
 
 	var/mob/living/carbon/human/victim = target
@@ -37,39 +37,39 @@
 	var/list/needs = list()
 
 	if(victim.getBruteLoss() > 20 || victim.getFireLoss() > 20)
-		emotions += "pain"
-		needs += "healing"
+		emotions += "疼痛"
+		needs += "治疗"
 	if(victim.getToxLoss() > 20)
-		emotions += "sickness"
-		needs += "cleansing"
+		emotions += "病痛"
+		needs += "净化"
 	if(victim.getOxyLoss() > 20)
-		emotions += "exhaustion"
-		needs += "rest"
+		emotions += "疲惫"
+		needs += "休息"
 	if(victim.nutrition < 200)
-		emotions += "hunger"
-		needs += "sustenance"
+		emotions += "饥饿"
+		needs += "食物"
 	if(victim.getOrganLoss(ORGAN_SLOT_BRAIN) > 20)
-		emotions += "confusion"
-		needs += "mental clarity"
+		emotions += "困惑"
+		needs += "清晰的思绪"
 
 	// Add some randomized emotional states
-	var/list/possible_emotions = list("loneliness", "contentment", "anxiety", "hope", "sadness", "joy", "fear", "love", "anger", "peace")
+	var/list/possible_emotions = list("孤独", "满足", "焦虑", "希望", "悲伤", "喜悦", "恐惧", "爱意", "愤怒", "平静")
 	emotions += pick(possible_emotions)
 
-	var/list/possible_needs = list("companionship", "understanding", "safety", "purpose", "acceptance", "creative expression")
+	var/list/possible_needs = list("陪伴", "理解", "安全", "目标", "接纳", "创意表达")
 	needs += pick(possible_needs)
 
 	var/emotion_text = english_list(emotions)
 	var/needs_text = english_list(needs)
 
-	to_chat(owner, span_notice("You sense [victim]'s emotional state: [emotion_text]. They seem to need: [needs_text]."))
-	to_chat(victim, span_info("You feel [owner] understanding your inner state with surprising clarity."))
+	to_chat(owner, span_notice("你感知到[victim]的情绪：[emotion_text]。对方似乎需要：[needs_text]。"))
+	to_chat(victim, span_info("你感到[owner]对你的内心了如指掌，清晰得令人惊讶。"))
 	owner.AddComponent(/datum/component/empathic_obsession, victim, 2 MINUTES)
 
 //ARTISTIC INSPIRATION
 /datum/coven_power/eora/artistic_inspiration
-	name = "Artistic Inspiration"
-	desc = "Inspire others with divine creativity, enhancing their artistic abilities and mood."
+	name = "艺术灵感"
+	desc = "以神圣的创造力启迪他人，提升其艺术能力并改善心情。"
 
 	level = 2
 	research_cost = 1
@@ -85,13 +85,13 @@
 	if(!.)
 		return
 	if(!ishuman(target))
-		to_chat(owner, span_warning("Only humans can receive artistic inspiration."))
+		to_chat(owner, span_warning("只有人类才能接受艺术灵感。"))
 		return
 
 	var/mob/living/carbon/human/inspired = target
 
-	to_chat(owner, span_notice("You whisper words of divine inspiration to [inspired]."))
-	to_chat(inspired, span_purple("You feel a surge of creative energy flow through you, your mind buzzing with artistic possibilities!"))
+	to_chat(owner, span_notice("你向[inspired]低语，传授神圣的灵感。"))
+	to_chat(inspired, span_purple("你感到创造的力量涌遍全身，无数艺术构想在脑海中翻腾！"))
 	target.heal_overall_damage(30, 30)
 	target.mind?.sleep_adv?.retained_dust += 200
 	target.mind?.sleep_adv?.grant_inspiration_xp(2)
@@ -104,12 +104,12 @@
 /datum/coven_power/eora/artistic_inspiration/deactivate(atom/target, direct = FALSE)
 	. = ..()
 	if(ismob(target))
-		to_chat(target, span_info("The divine inspiration fades, but the memory of it remains."))
+		to_chat(target, span_info("神圣的灵感消退了，但那份记忆仍然留存。"))
 
 //FAMILIAL BOND
 /datum/coven_power/eora/familial_bond
-	name = "Familial Bond"
-	desc = "Create a temporary spiritual connection between two people, allowing them to sense each other's location and well-being."
+	name = "亲情羁绊"
+	desc = "在两人之间建立暂时的心灵联系，让他们感知彼此的位置与安危。"
 
 	level = 3
 	research_cost = 1
@@ -125,20 +125,20 @@
 	if(!.)
 		return
 	if(!ishuman(target))
-		to_chat(owner, span_warning("You can only bond with other people."))
+		to_chat(owner, span_warning("你只能与其他人建立羁绊。"))
 		return
 
 	var/mob/living/carbon/human/bonded = target
 
 	// Get second target
-	var/mob/living/carbon/human/second_target = input(owner, "Who will you bond [bonded] with?") as null|mob in (oviewers(5, owner) - bonded)
+	var/mob/living/carbon/human/second_target = input(owner, "你想让[bonded]与谁建立羁绊？") as null|mob in (oviewers(5, owner) - bonded)
 	if(!second_target || !ishuman(second_target))
-		to_chat(owner, span_warning("You need a second person to create a familial bond."))
+		to_chat(owner, span_warning("你需要第二个人才能建立亲情羁绊。"))
 		return
 
-	to_chat(owner, span_notice("You weave a spiritual connection between [bonded] and [second_target]."))
-	to_chat(bonded, span_purple("You feel a warm connection forming with [second_target], as if they were family."))
-	to_chat(second_target, span_purple("You feel a warm connection forming with [bonded], as if they were family."))
+	to_chat(owner, span_notice("你在[bonded]与[second_target]之间编织了一道心灵联系。"))
+	to_chat(bonded, span_purple("你感到与[second_target]之间形成了一份温暖的联系，仿佛对方就是家人。"))
+	to_chat(second_target, span_purple("你感到与[bonded]之间形成了一份温暖的联系，仿佛对方就是家人。"))
 
 	// Store the bond information
 	bonded.AddComponent(/datum/component/familial_bond, second_target, duration_length)
@@ -146,8 +146,8 @@
 
 //BEAUTY'S RESTORATION
 /datum/coven_power/eora/beautys_restoration
-	name = "Beauty's Restoration"
-	desc = "Channel Eora's power to restore physical beauty and heal disfigurements."
+	name = "容貌修复"
+	desc = "引导伊奥拉的力量，恢复容貌并治愈毁容的创伤。"
 
 	level = 4
 	research_cost = 1
@@ -162,13 +162,13 @@
 	if(!.)
 		return
 	if(!ishuman(target))
-		to_chat(owner, span_warning("You can only restore the beauty of people."))
+		to_chat(owner, span_warning("你只能为人恢复容貌。"))
 		return
 
 	var/mob/living/carbon/human/patient = target
 
-	to_chat(owner, span_notice("You channel Eora's restorative power into [patient]."))
-	to_chat(patient, span_purple("You feel divine energy coursing through you, restoring your natural beauty!"))
+	to_chat(owner, span_notice("你将伊奥拉的修复之力引导进[patient]体内。"))
+	to_chat(patient, span_purple("你感到神圣的力量流遍全身，恢复了你天生的美貌！"))
 
 	// Visual effect
 	patient.remove_overlay(MUTATIONS_LAYER)

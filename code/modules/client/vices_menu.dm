@@ -1222,7 +1222,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			html += "<span class='slot-required'>必需(0 Q-Pts)</span>"
 		else if(current_vice)
 			var/quirk_points_from_slot = current_vice.point_value
-			html += "<span class='slot-cost'>+[quirk_points_from_slot] Q-Point[quirk_points_from_slot == 1 ? "" : "s"]</span>"
+			html += "<span class='slot-cost'>+[quirk_points_from_slot] 特质点</span>"
 
 		html += "</div>"
 

@@ -31,7 +31,7 @@
 	add_to_cache(input, .)
 
 /obj/item/codespeak_manual
-	name = "codespeak manual"
+	name = "暗语手册"
 	desc = ""
 	icon = 'icons/obj/library.dmi'
 	icon_state = "book2"
@@ -79,5 +79,5 @@
 		user.put_in_active_hand(book)
 
 /obj/item/codespeak_manual/unlimited
-	name = "deluxe codespeak manual"
+	name = "豪华暗语手册"
 	charges = INFINITY
