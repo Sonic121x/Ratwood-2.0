@@ -141,20 +141,20 @@
 		var/y_offset
 		var/stamratio = stamina / max_stamina
 		if(stamratio >= 0.25 && ((stamina - added) / max_stamina) < 0.25)
-			text = "<font color = '#a8af9b'>Winded</font>"
+			text = "<font color = '#a8af9b'>气喘吁吁</font>"
 			y_offset = BALLOON_Y_OFFSET_TIER1
 		if(stamratio >= 0.5 && ((stamina - added) / max_stamina) < 0.5)
-			text = "<font color = '#d4d36c'>Drained</font>"
+			text = "<font color = '#d4d36c'>体力不支</font>"
 			y_offset = BALLOON_Y_OFFSET_TIER2
 		if(stamratio >= 0.75 && ((stamina - added) / max_stamina) < 0.75)
-			text = "<font color = '#a8665a'>Fatigued</font>"
+			text = "<font color = '#a8665a'>疲惫</font>"
 			y_offset = BALLOON_Y_OFFSET_TIER3
 		if(text)
 			if(!HAS_TRAIT(H, TRAIT_DECEIVING_MEEKNESS))
 				H.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, x_offset, y_offset)
 			else
 				if(prob(10))
-					text = "<i>Tired...?</i>"
+					text = "<i>累了……？</i>"
 					H.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, x_offset, y_offset)
 
 	if(stamina >= max_stamina)
@@ -174,7 +174,7 @@
 
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
-			var/balloon_text = "<font color = '#bb2b2b'>Exhausted... </font>"
+			var/balloon_text = "<font color = '#bb2b2b'>精疲力竭…… </font>"
 			H.balloon_alert_to_viewers(balloon_text, balloon_text, DEFAULT_MESSAGE_RANGE)
 
 		if(energy <= 0)
@@ -208,7 +208,7 @@
 		heart_attacking = TRUE
 		shake_camera(src, 1, 3)
 		blur_eyes(10)
-		var/stuffy = list("ZIZO GRABS MY WEARY HEART!","ARGH! MY HEART BEATS NO MORE!","NO... MY HEART HAS BEAT IT'S LAST!","MY HEART HAS GIVEN UP!","MY HEART BETRAYS ME!","THE METRONOME OF MY LIFE STILLS!")
+		var/stuffy = list("齐佐攥住了我疲惫的心脏！","啊！我的心脏不再跳动了！","不……我的心脏已经跳完最后一下了！","我的心脏放弃了！","我的心脏背叛了我！","我生命的节拍器停下了！")
 		to_chat(src, span_userdanger("[pick(stuffy)]"))
 		emote("breathgasp", forced = TRUE)
 		addtimer(CALLBACK(src, PROC_REF(adjustOxyLoss), 110), 30)

@@ -17,9 +17,9 @@
 	. = ..()
 	if(key_type)
 		if(!inserted_key)
-			. += span_notice("Put a key inside it by clicking it with the key.")
+			. += span_notice("拿着钥匙点击它，就能插入钥匙。")
 		else
-			. += span_notice("Alt-click [src] to remove the key.")
+			. += span_notice("Alt点击[src]可取出钥匙。")
 
 /obj/vehicle/ridden/generate_action_type(actiontype)
 	var/datum/action/vehicle/ridden/A = ..()
@@ -61,14 +61,14 @@
 /obj/vehicle/ridden/driver_move(mob/user, direction)
 	if(key_type && !is_key(inserted_key))
 		if(message_cooldown < world.time)
-			to_chat(user, span_warning("[src] has no key inserted!"))
+			to_chat(user, span_warning("[src]没有插入钥匙！"))
 			message_cooldown = world.time + 5 SECONDS
 		return FALSE
 	if(legs_required)
 		var/how_many_legs = user.get_num_legs()
 		if(how_many_legs < legs_required)
 			if(message_cooldown < world.time)
-				to_chat(user, span_warning("I can't seem to manage that with[how_many_legs ? " my leg[how_many_legs > 1 ? "s" : null]" : "out legs"]..."))
+				to_chat(user, span_warning("[how_many_legs ? "我仅有[how_many_legs]条腿" : "我没有腿"]，似乎无法操作它……"))
 				message_cooldown = world.time + 5 SECONDS
 			return FALSE
 	if(arms_required)
@@ -76,15 +76,15 @@
 		if(how_many_arms < arms_required)
 			if(fall_off_if_missing_arms)
 				unbuckle_mob(user, TRUE)
-				user.visible_message(span_danger("[user] falls off \the [src]."),\
-				span_danger("I fall off \the [src] while trying to operate it without [arms_required ? "both arms":"an arm"]!"))
+				user.visible_message(span_danger("[user]从[src]上摔了下来。"),\
+				span_danger("我没[arms_required ? "双臂":"手臂"]却想操作[src]，结果摔了下来！"))
 				if(isliving(user))
 					var/mob/living/L = user
 					L.Stun(30)
 				return FALSE
 
 			if(message_cooldown < world.time)
-				to_chat(user, span_warning("I can't seem to manage that with[how_many_arms ? " my arm[how_many_arms > 1 ? "s" : null]" : "out arms"]..."))
+				to_chat(user, span_warning("[how_many_arms ? "我仅有[how_many_arms]条手臂" : "我没有手臂"]，似乎无法操作它……"))
 				message_cooldown = world.time + 5 SECONDS
 			return FALSE
 	var/datum/component/riding/R = GetComponent(/datum/component/riding)

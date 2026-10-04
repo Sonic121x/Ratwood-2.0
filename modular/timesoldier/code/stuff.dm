@@ -6,12 +6,12 @@
 
 
 /obj/item/reagent_containers/food/snacks/rogue/timesoldier/ferenchow
-	name = "Ferentian Ration Can"
-	desc = "<span class='yellow'><i>Made in bulk in Kingsfield, filling, and surprisingly tasty. It's made from everyone's favorite Eoran blessed Meat Stew.</i></span>"
+	name = "费伦提亚军粮罐头"
+	desc = "<span class='yellow'><i>在王田大批量生产，管饱，而且出乎意料地好吃。里面装的是人人喜爱、受伊奥拉祝福的炖肉。</i></span>"
 	icon = 'modular/timesoldier/sprites/stuff.dmi'
 	icon_state = "ferenchow"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
-	tastes = list("salt" = 2, "meat stew" = 2, "home" = 1)
+	tastes = list("盐" = 2, "炖肉" = 2, "家乡" = 1)
 	foodtype = MEAT | GRAIN
 	faretype = FARE_POOR
 	bitesize = 5
@@ -25,7 +25,7 @@
 		return ..()
 
 	if(!opened)
-		to_chat(user, span_warning("I need to open [src] first."))
+		to_chat(user, span_warning("我得先打开[src]。"))
 		return
 
 	return ..()
@@ -37,39 +37,39 @@
 
 	if(W.wlength == WLENGTH_SHORT && (user.used_intent?.blade_class in list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB)))
 		user.visible_message(
-			span_notice("[user] pries open [src] with [W]."),
-			span_notice("I pry open [src] with [W].")
+			span_notice("[user]用[W]撬开了[src]。"),
+			span_notice("我用[W]撬开了[src]。")
 		)
 		playsound(src, 'modular/timesoldier/sounds/canopen.ogg', 60, TRUE)
 		opened = TRUE
 		icon_state = "ferenchow_open"
 		return
 
-	to_chat(user, span_warning("I need something short and sharp to pry [src] open."))
+	to_chat(user, span_warning("我需要一件短而锋利的东西来撬开[src]。"))
 	return
 
 
 /obj/item/trash/timesoldier/ferenchow
-	name = "empty Ferentian Ration Can"
-	desc = "An empty military ration can. There's still meat stew at the bottom. It looks like something out of Kingsfield!"
+	name = "空费伦提亚军粮罐头"
+	desc = "一个空军粮罐，底部还剩些炖肉。看起来像是王田出产的东西！"
 	icon = 'modular/timesoldier/sprites/stuff.dmi'
 	icon_state = "ferenchow_empty"
 	experimental_inhand = TRUE
 
 
 /obj/item/timesoldier/radio
-	name = "field transceiver"
-	desc = "<span class='yellow'><i>I still remember when we replaced these over the old SCOMRING. We'd be able to receive orders from so far away. They're powered by arcyne magick, and this one in particular has a piece of the comet in it. They told me it's so they can communicate across 'time'.</span><br><br>You can sense the power of the Comet SYON within this...It must have a very small fragment of it."
+	name = "野战收发器"
+	desc = "<span class='yellow'><i>我还记得我们用它们替换旧传讯戒指的时候。即使相隔遥远，我们也能接到命令。它们由奥术魔法驱动，而这一台里面特别装了一块彗星碎片。他们告诉我，这样就能跨越'时间'通信。</span><br><br>你能感受到其中蕴藏着SYON彗星的力量……里面一定有一块极小的彗星碎片。"
 	icon = 'modular/timesoldier/sprites/radio.dmi'
 	icon_state = "HEART"
 	var/broadcasting = FALSE
 	var/voice_template = FUTURE_VOICE_MALE_GENERIC
 	var/broadcast_language = FUTURE_LANGUAGE_NEW_IMPERIAL
 	var/radio_noise_timer
-	verb_say = "coldly states"
-	verb_ask = "coldly states"
-	verb_exclaim = "coldly states"
-	verb_yell = "coldly states"
+	verb_say = "冷冷地说道"
+	verb_ask = "冷冷地说道"
+	verb_exclaim = "冷冷地说道"
+	verb_yell = "冷冷地说道"
 	grid_width = 32
 	grid_height = 32 // smol
 	voicecolor_override = "97cefd"
@@ -82,7 +82,7 @@
 
 
 /obj/item/timesoldier/radio/GetVoice()
-	return "[language_icon_html]<span style='font-size: 115%;'><b>UNKNOWN</b></span>"
+	return "[language_icon_html]<span style='font-size: 115%;'><b>未知</b></span>"
 
 /obj/item/timesoldier/radio/proc/get_language_icon_for(atom/movable/hearer, datum/language/language) // blatantly stolen from our language stuff.
 	if(!language)
@@ -133,7 +133,7 @@
 	broadcast_language = selected_language
 
 	visible_message(
-		span_notice("[src]'s Naledi time-crystal gently clinks against the COMET shard, its strange internals sending it to lyfe with a low, steady hum.")
+		span_notice("[src]中的纳莱迪时间水晶轻轻碰上彗星碎片，发出清脆声响；奇异的内部构件让它启动，响起低沉平稳的嗡鸣。")
 	)
 
 	playsound(src, 'modular/timesoldier/sounds/comms/broadstart.ogg', 55, FALSE)
@@ -226,7 +226,7 @@
 	)
 
 	visible_message(
-		span_notice("[src]'s internal hum winds down before falling completely silent, the Naledi time-crystal pushing away from the COMET shard.")
+		span_notice("[src]内部的嗡鸣逐渐减弱，直至完全沉寂；纳莱迪时间水晶与彗星碎片分开了。")
 	)
 
 	if(radio_noise_timer)
@@ -277,7 +277,7 @@
 		if(!hearer)
 			continue
 
-		var/heard_message = "\[The speech is completely unintelligible..\]"
+		var/heard_message = "\[完全听不懂这番话……\]"
 		var/datum/language/delivery_language = /datum/language/common
 		if(isobserver(hearer))
 			heard_message = message

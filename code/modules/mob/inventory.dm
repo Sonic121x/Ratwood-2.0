@@ -203,7 +203,7 @@
 	if((I.is_silver || I.smeltresult == /obj/item/ingot/silver) && (HAS_TRAIT(src, TRAIT_SILVER_WEAK) &&  !has_status_effect(STATUS_EFFECT_ANTIMAGIC)))
 		var/datum/antagonist/vampire/V_lord = mind?.has_antag_datum(/datum/antagonist/vampire)
 		if(!istype(V_lord) || V_lord?.generation < GENERATION_METHUSELAH)
-			to_chat(src, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			to_chat(src, span_userdanger("我拿不了银制品，它是我的克星！"))
 			Knockdown(10)
 			Paralyze(10)
 			adjustFireLoss(25)

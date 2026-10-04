@@ -161,7 +161,7 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/grenzelhoft/ring_vitality
-	name = "Ring of Vitality"
+	name = "活力之戒"
 	cost = 450
 	contains = list(/obj/item/clothing/ring/statonyx)
 	ship_qty_min = 1

@@ -194,7 +194,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "护甲", "撕裂")
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
 	name = "普赛顿半身板甲"
@@ -350,7 +350,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲", "撕裂")
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	name = "全板甲胸衣"
