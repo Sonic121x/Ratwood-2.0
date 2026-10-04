@@ -4,10 +4,10 @@
 // ----------------------------------------------------------------------------
 // 需求（为什么要做这个文件）：
 //   实现一个全新的"涨奶（Milk Engorgement）"恶习，核心设定为：
-//     "拥有此恶习的人需要定时挤奶，否则会有心情下降的 debuff。"
-//   即——拥有此恶习的角色会【持续泌乳】，乳房里的乳汁会不断累积、胀满；
-//   一旦奶水积到接近满溢（涨奶），角色就会胸口胀痛、心情变差（心情 debuff）；
-//   只有及时把奶挤出来（用吸奶器、挤进容器、或被人吸出），胀痛才会缓解、心情恢复。
+//     "拥有此恶习的人每搁 40 分钟就需要挤一次奶，否则胸口胀痛、心情变差。"
+//   即——拥有此恶习的角色会【持续泌乳】，每 40 分钟胸口必然胀满一次（心情 debuff + 意志 -2）；
+//   只有及时把奶挤出来（用吸奶器、挤进容器、或被人吸出），胀痛才会缓解、心情恢复，
+//   并且计时归零、40 分钟后再来一轮。
 //
 // 为什么这是一个"恶习（Vice）"而不是"美德（Virtue）"：
 //   本游戏里玩家可选的"恶习/缺陷"是 /datum/charflaw 的子类（见
@@ -22,14 +22,26 @@
 //   另一处是同在 modular_z121 内的 bootstrap/custom_bootstrap.dm，用于把本恶习登记进
 //   "可选恶习列表"，详见文件末尾的登记说明。
 //
-// 为什么"是否已挤奶"不需要去 hook 挤奶代码：
-//   本恶习的判定完全基于乳房器官的"当前奶量 milk_stored"这一客观数值：
-//     · 奶量高（涨奶）→ 施加心情 debuff；
-//     · 奶量低（刚被挤过）→ 解除 debuff。
-//   而游戏里一切"挤奶"手段——手持容器挤奶 try_milking()（milking.dm）、吸奶器
-//   milk_breasts()（modular_z121/structures/breast_pump.dm）、吸乳 suck_nipples——
-//   最终都只会做同一件事：把 breasts.milk_stored 往下减。所以本恶习只需在
-//   flaw_on_life 里定期读 milk_stored 即可自动感知"挤没挤过"，无需改动任何挤奶代码。
+// 为什么改成"固定 40 分钟定时"而非"按奶量阈值判定"：
+//   旧实现靠"乳房当前奶量 milk_stored 是否涨到 80% 容量"触发涨奶、靠"奶量是否被挤回
+//   40% 容量以下"判定缓解。这套"看奶量阈值"的做法有两个无法自愈的 bug：
+//     · 胸太小：容量 milk_max = max(75, 罩杯*100) 很小，奶量很快填满；但一次手挤只能
+//       挤出 max(罩杯,1) 单位、且旧实现每拍还在补奶，想把奶量压到 40% 以下十分困难，
+//       于是 debuff 长时间解不掉。
+//     · 血奶特质（TRAIT_NOHUNGER，如吸血鬼/亡灵等不死者）：这类角色的挤奶走"血→奶"
+//       转化路径（milking.dm 的 try_blood_milking / 吸奶器的 milk_blood），根本不扣
+//       milk_stored，奶量永远降不下去，debuff 也就永远解不掉。
+//   因此改为【纯时间驱动】：每 40 分钟必触发一次涨奶；"挤没挤奶"只看"奶量有没有下降"
+//   （血奶角色改看"血量有没有下降 / 烧伤有没有上升"），与容量大小、挤奶路径完全解耦，
+//   上面两种 bug 一并消除。
+//
+// 为什么"是否挤过奶"这样判定（不再 hook 挤奶代码）：
+//   · 普通角色：只要检测周期内 milk_stored 下降了，就认为挤过奶——游戏里一切挤奶手段
+//     （手持容器挤奶 try_milking、吸奶器 milk_breasts、吸乳 suck_nipples）最终都只会做
+//     同一件事：把 breasts.milk_stored 往下减。所以只需周期读 milk_stored 对比上一拍即可。
+//   · 血奶角色（TRAIT_NOHUNGER）：挤奶扣的是 blood_volume（无血时改为烧伤 fireloss），
+//     所以改看血量下降 / 烧伤上升。
+//   判定只做"是否下降"，不设任何阈值——胸再小（一次只挤出 1 单位）也能立刻被感知到。
 //
 // 依赖（均为引擎已有内容，本文件只调用 / 继承，不修改其源文件）：
 //   - /datum/charflaw                      恶习基类，提供 on_mob_creation/flaw_on_life/on_removal 钩子。
@@ -51,43 +63,44 @@
 // 可调参数（#define）。集中放在文件顶部，便于统一调节节奏，并在文件末尾 #undef，
 // 避免污染全局宏命名空间（与本项目其它自定义恶习/法术文件的写法保持一致）。
 // ----------------------------------------------------------------------------
-// 为什么做检测节流：flaw_on_life 每个生命 tick 都被调用（非常频繁），而"补奶 + 判涨奶"
-//   没必要每 tick 都跑。10 秒一次：既保证涨奶/缓解反馈足够灵敏，又不造成性能负担。
-#define ENGORGEMENT_CHECK_INTERVAL (10 SECONDS)
-// 为什么每拍固定补 1 单位奶（约 0.1 单位/秒）：配合默认乳房容量（milk_max = max(75, 罩杯*100)，
-//   罩杯 3 时为 300），从空到涨奶阈值（80% 即 240 单位）约需 2400 秒 = 40 分钟——
-//   构成一个"需要定时挤奶"的宽松周期。注：涨奶耗时随罩杯等比例缩放（罩杯越大容量越大、填得越慢）。
-#define ENGORGEMENT_MILK_PER_CHECK 1
-// 为什么设"涨奶阈值 = 80% 容量"：奶水涨到八成以上胸口就开始胀痛，比"完全满溢"更贴近真实，
-//   也让 debuff 在真正溢出前就出现，给玩家留出反应余裕。
-#define ENGORGEMENT_THRESHOLD_RATIO 0.8
-// 为什么设"缓解阈值 = 40% 容量"：用【涨奶 80% / 缓解 40%】做成一个滞回区间——
-//   挤一点（还高于 40%）不会立即解除 debuff，必须把奶真正挤出去（降到 40% 以下）才缓解；
-//   否则奶量只降了一丁点、转瞬又补满，debuff 会疯狂闪烁。滞回让"挤奶缓解"有实感。
-#define ENGORGEMENT_RELIEF_RATIO 0.4
+// 为什么设"周期 = 40 分钟"：需求原文就是"每搁 40 分钟需要挤奶"，作为固定的胀奶节奏。
+//   由于触发不再依赖奶量，任何罩杯、任何血奶/普通体质的角色节奏完全一致。
+#define ENGORGEMENT_PERIOD (40 MINUTES)
+// 为什么设"检测节流 = 5 秒"：flaw_on_life 每个生命 tick 都被调用（非常频繁），而这里只需
+//   周期性地做"是否该涨奶 / 是否挤过奶"的判定。5 秒一次既让"挤奶→缓解"的反馈足够灵敏
+//   （挤奶动作本身通常持续数秒），又不造成性能负担。
+#define ENGORGEMENT_CHECK_INTERVAL (5 SECONDS)
 // 为什么设"提醒冷却 = 2 分钟"：涨奶期间每隔约 2 分钟在右下角聊天框发一条身体不适的提示，
-//   提醒玩家"该挤奶了"，又不至于每 10 秒检测一次就刷一条、把聊天框刷爆。
+//   提醒玩家"该挤奶了"，又不至于每 5 秒检测一次就刷一条、把聊天框刷爆。
 #define ENGORGEMENT_REMINDER_COOLDOWN (2 MINUTES)
 
 
 // ----------------------------------------------------------------------------
 // 恶习定义：涨奶（Milk Engorgement）
 // 为什么直接继承 /datum/charflaw：涨奶是一种"被动持续生效"的性格缺陷——强迫泌乳、
-//   靠 flaw_on_life 周期补奶并判定是否涨奶即可驱动全部逻辑，不需要主动技能/读条，
+//   靠 flaw_on_life 周期定时并判定是否挤过奶即可驱动全部逻辑，不需要主动技能/读条，
 //   因此最基础的 /datum/charflaw 父类就足够。
 // ----------------------------------------------------------------------------
 /datum/charflaw/engorged_breasts
 	name = "涨奶"                                                              // 角色定制菜单中显示的恶习名（Milk Engorgement）。
-	// 为什么这样写描述：用第一人称讲清硬性机制——我会一直泌乳、奶水不断胀满；
-	//   不及时挤奶就会涨奶胀痛、心情变差。
-	desc = "我的身体总在源源不断地泌乳，乳汁在乳房里一点点积攒、胀满。\
-			若不能及时把奶挤出来，胸口就会胀得发痛、心情也随之低落。"
+	// 为什么这样写描述：用第一人称讲清硬性机制——我会一直泌乳、每隔约 40 分钟胸口就胀满；
+	//   不及时挤奶就会胀痛、心情变差。
+	desc = "我的身体总在源源不断地泌乳，每隔一段时间胸口就会胀满发痛、心情低落。\
+			只有及时把奶挤出来才能缓解，否则这份胀痛会一直缠着我。"
 
 	// —— 周期性逻辑的节流与状态 ——
-	var/last_check = 0                                                        // 上次执行"补奶 + 判涨奶"的世界时间（节流用）。
-	// 为什么记录"上一次是否涨奶"：用于做状态翻转判断，从而只在【由缓解变为涨奶】或
-	//   【由涨奶变为缓解】的那一刻给玩家发一次提示，避免每个检测 tick 都刷屏。
-	var/was_engorged = FALSE                                                  // 上一次检测时是否处于涨奶状态。
+	var/last_check = 0                                                        // 上次执行"定时 / 判定挤奶"的世界时间（节流用）。
+	// 为什么记录"下一次该涨奶的时间"：本恶习是纯时间驱动，用 next_engorge 记下一轮
+	//   胀奶的时间戳；世界时间走到它即为"该挤奶了"。挤奶缓解后把它重置为 now+周期。
+	var/next_engorge = 0                                                      // 下一次"该涨奶"的世界时间。
+	// 为什么记录"当前是否涨奶"：用于区分"等待下一轮胀奶"与"正在胀奶、等挤奶缓解"两种状态。
+	var/engorged = FALSE                                                      // 当前是否处于涨奶状态。
+	// 为什么记录"上一拍的奶量"：判定普通角色"挤过奶"的依据——只要本拍奶量比上一拍少，就是挤过了。
+	var/prev_milk_stored = 0                                                  // 上一拍检测时的奶量。
+	// 为什么记录"上一拍的血量 / 烧伤"：血奶角色（TRAIT_NOHUNGER）挤奶扣血（无血则加烧伤），
+	//   因此用"血量下降 / 烧伤上升"判定血奶角色"挤过奶"。
+	var/prev_blood_volume = 0                                                 // 上一拍检测时的血量。
+	var/prev_fireloss = 0                                                     // 上一拍检测时的烧伤。
 	// 为什么记录"下次可发提醒的时间"：涨奶期间要周期性在右下角聊天框提醒玩家，但不能每次检测
 	//   都发（会刷屏）；用独立冷却时间戳控制频率，约 2 分钟提醒一次。
 	var/next_reminder = 0                                                     // 下一次允许在聊天框发"涨奶提醒"的世界时间。
@@ -99,8 +112,9 @@
 // ----------------------------------------------------------------------------
 // 创建钩子：恶习刚挂到角色身上时
 // 为什么重写 on_mob_creation：这是"恶习上身即刻生效"的标准入口。涨奶的前提是"有乳房且
-//   处于泌乳状态"，所以这里做两件事：①若没有乳房则本恶习无法生效，给玩家一句说明；
-//   ②若有乳房，则确保其进入泌乳（lactating=TRUE）并记下"这是我们开的"。
+//   处于泌乳状态"，所以这里做三件事：①若无乳房则本恶习无法生效，给玩家一句说明；
+//   ②若有乳房，确保其进入泌乳（lactating=TRUE）并记下"这是我们开的"；③初始化定时与
+//   检测基准（下一轮胀奶时间、当前奶量/血量/烧伤）。
 // ----------------------------------------------------------------------------
 /datum/charflaw/engorged_breasts/on_mob_creation(mob/user)
 	. = ..()                                                                   // 先跑基类逻辑（当前为空实现，保留以兼容未来扩展）。
@@ -124,15 +138,20 @@
 		B.lactating = TRUE                                                     // …… 强制开启泌乳。
 		forced_lactation = TRUE                                                // …… 记录"这是我们开启的"，移除时据此回收。
 
+	// 初始化时间戳与检测基准：下一轮胀奶 = 现在 + 40 分钟；并记录当前奶量/血量/烧伤作为对比起点。
+	next_engorge = world.time + ENGORGEMENT_PERIOD                             // 40 分钟后首次需要挤奶。
+	prev_milk_stored = B.milk_stored                                           // 记录当前奶量作为对比基准。
+	prev_blood_volume = H.blood_volume                                         // 记录当前血量作为对比基准（血奶角色用）。
+	prev_fireloss = H.getFireLoss()                                            // 记录当前烧伤作为对比基准（无血血奶角色用）。
+
 	// 给玩家一段私密的"身体变化"提示，明确告知这份恶习已经生效（只有本人看得到）。
-	to_chat(H, span_notice("我感到胸口沉甸甸的……身体开始止不住地泌乳，奶水正一点一点地积攒起来。\
-		我得记住及时把奶挤出来，否则胸口会胀得难受。"))
+	to_chat(H, span_notice("我感到胸口沉甸甸的……身体开始止不住地泌乳。我得记住每隔一段时间就把奶挤出来，否则胸口会胀得难受。"))
 
 
 // ----------------------------------------------------------------------------
 // 核心驱动：每生命 tick 的处理
 // 为什么重写 flaw_on_life：这是恶习系统提供的"周期性心跳"钩子（human/life.dm 对每个非
-//   ephemeral 的已装备恶习调用），是实现"持续泌乳 + 判定是否涨奶"的标准位置。
+//   ephemeral 的已装备恶习调用），是实现"定时胀奶 + 判定是否挤过奶"的标准位置。
 // ----------------------------------------------------------------------------
 /datum/charflaw/engorged_breasts/flaw_on_life(mob/user)
 	. = ..()                                                                   // 先跑基类逻辑。
@@ -158,63 +177,75 @@
 	if(!B.lactating)                                                           // 泌乳状态被意外关闭 ……
 		B.lactating = TRUE                                                     // …… 兜底重新开启。
 
-	// 节流：未到检测间隔就直接返回，省去频繁的补奶与判定。
+	// 节流：未到检测间隔就直接返回，省去频繁的判定。
 	if(world.time < last_check + ENGORGEMENT_CHECK_INTERVAL)                   // 距上次检测还不到设定间隔 ……
 		return                                                                 // …… 本 tick 不做实际检测。
 	last_check = world.time                                                    // 记录本次检测时间，作为下次节流基准。
 
-	// —— 持续补奶：模拟"身体不断产奶、奶水胀满" ——
-	// 为什么由本恶习自己补奶，而不是只靠引擎的自然泌乳（species.dm）：引擎的自然补奶
-	//   要求"营养 > 饥饿线"才进行，角色一旦饿了就不产奶，涨奶周期会被打断。本恶习要的
-	//   是"无论饥饱都持续胀奶"的稳定负担，故自己驱动补奶，与引擎自然补奶互不冲突、只会叠加。
-	if(B.milk_stored < B.milk_max)                                             // 尚未涨满 ……
-		var/to_add = min(ENGORGEMENT_MILK_PER_CHECK, B.milk_max - B.milk_stored) // 本拍补充量，夹在剩余容量内。
-		B.milk_stored += to_add                                                // …… 把本拍分泌的奶计入存储。
+	// 区分体质：血奶角色（TRAIT_NOHUNGER）挤奶走"血→奶"转化路径，判定口径不同。
+	var/blood_milk = HAS_TRAIT(H, TRAIT_NOHUNGER)                              // 是否"血奶"体质（无饥不死者）。
 
-	// —— 判定涨奶 / 缓解（带滞回，见顶部阈值注释）——
-	var/engorged = (B.milk_stored >= B.milk_max * ENGORGEMENT_THRESHOLD_RATIO) // 是否达到"涨奶"阈值。
-	if(engorged)                                                               // —— 情况 A：涨奶 ——
-		apply_engorgement(H)                                                   // 施加 / 刷新心情 debuff + 属性减益。
-	else                                                                       // —— 情况 B：奶量不高 ——
-		if(B.milk_stored <= B.milk_max * ENGORGEMENT_RELIEF_RATIO)             // 且已降到"缓解"阈值以下 ……
-			clear_engorgement(H)                                               // …… 解除 debuff（恢复心情与属性）。
+	// —— 判定"是否挤过奶"：只看数值是否下降，不设阈值 ——
+	// 为什么这样判定：普通角色挤奶 = milk_stored 下降；血奶角色挤奶 = 血量下降（无血时
+	//   改为烧伤上升）。不设阈值，因此胸再小（一次只挤出 1 单位）也能立刻被感知到。
+	var/milked = FALSE                                                         // 本拍是否检测到"挤过奶"。
+	if(!blood_milk)                                                            // 普通角色 ……
+		milked = (B.milk_stored < prev_milk_stored)                            // …… 奶量下降即视为挤过。
+	else                                                                       // 血奶角色 ……
+		milked = (H.blood_volume < prev_blood_volume) || (H.getFireLoss() > prev_fireloss) // …… 血量下降或烧伤上升即视为挤过。
+
+	if(engorged)                                                               // —— 状态 A：当前正在涨奶 ——
+		if(milked)                                                             // 本拍挤过奶 ……
+			to_chat(H, span_notice("奶水被挤出来后，胸口的胀痛终于舒缓下来，心里也松快了。")) // 挤奶缓解时提示一次。
+			clear_engorgement(H)                                               // …… 解除心情 debuff + 意志减益。
+			engorged = FALSE                                                   // …… 退出涨奶状态。
+			next_engorge = world.time + ENGORGEMENT_PERIOD                     // …… 计时归零，40 分钟后再来一轮。
+		else                                                                   // 还没挤 ……
+			apply_engorgement(H)                                               // …… 继续维持 / 刷新惩罚与提醒。
+	else if(world.time >= next_engorge)                                        // —— 状态 B：还没涨奶，但已到时间 ——
+		// 触发涨奶：普通角色补满奶量（保证有奶可挤）；血奶角色挤奶走血路、不依赖奶量，无需补奶。
+		if(!blood_milk)                                                        // 普通角色 ……
+			B.milk_stored = B.milk_max                                         // …… 把奶量补满，模拟"胀满"。
+		engorged = TRUE                                                        // 进入涨奶状态。
+		to_chat(H, span_warning("我的胸口胀得厉害……乳房又沉又痛，奶水快要溢出来了。得赶紧把奶挤出来。")) // 刚涨奶时提示一次。
+		next_reminder = world.time + ENGORGEMENT_REMINDER_COOLDOWN             // 从此刻起隔一个冷却期再发周期性提醒，避免与刚涨奶的提示叠在一起。
+		apply_engorgement(H)                                                   // 施加心情 debuff + 意志减益。
+
+	// 更新检测基准（放在最后，确保本拍"补满奶量"不会被误判成下一拍的"挤过奶"）。
+	prev_milk_stored = B.milk_stored                                           // 更新奶量基准。
+	prev_blood_volume = H.blood_volume                                         // 更新血量基准。
+	prev_fireloss = H.getFireLoss()                                            // 更新烧伤基准。
 
 
 // ----------------------------------------------------------------------------
 // 施加 / 刷新涨奶惩罚：心情变差 + 意志 -2
 // 为什么单独成 proc：把"施加惩罚"与"主流程/检测"解耦，逻辑清晰、便于复用与维护。
 // 为什么可以反复调用：压力事件与状态效果都被设计为"可刷新"（add_stress 续期、debuff 的
-//   REFRESH 续时长），即便每次检测都调用本 proc 也不会叠加成多份惩罚，只会续期。
+//   重复 apply 仅续期），即便每次检测都调用本 proc 也不会叠加成多份惩罚，只会续期。
 // ----------------------------------------------------------------------------
 /datum/charflaw/engorged_breasts/proc/apply_engorgement(mob/living/carbon/human/H)
 	if(!istype(H))                                                             // 防御式校验：无效持有者直接返回。
 		return
 
-	// 只在"刚刚由缓解变为涨奶"的那一刻提示一次，避免持续涨奶期间反复刷屏。
-	if(!was_engorged)                                                          // 上一次还不是涨奶状态（本次刚涨）……
-		to_chat(H, span_warning("我的胸口胀得厉害……乳房又沉又痛，奶水快要溢出来了。得赶紧把奶挤出来。"))
-		next_reminder = world.time + ENGORGEMENT_REMINDER_COOLDOWN            // 从此刻起隔一个冷却期再发周期性提醒，避免与刚涨奶的提示叠在一起。
 	// 为什么用 add_stress：这是本游戏表现"心情/情绪恶化"的标准系统；恶习类压力事件
 	//   /datum/stressevent/vice/engorged_breasts 会拉低心情，重复调用只续期不叠加。
 	H.add_stress(/datum/stressevent/vice/engorged_breasts)                    // 施加 / 续期"涨奶"压力事件（心情变差）。
 
 	// 意志 -2 减益（附带 HUD 提示）。为什么用 status_effect/debuff + effectedstats：
 	//   与洁癖恶习同理——可逆的限时属性惩罚，涨奶时施加、挤奶缓解时由 clear 精确回收，
-	//   且有 1~20 越界保护。REFRESH 类型下重复 apply 只续期、不叠加多层 -2。
+	//   且有 1~20 越界保护。重复 apply 只续期、不叠加多层 -2。
 	H.apply_status_effect(/datum/status_effect/debuff/engorged_breasts)       // 施加 / 刷新意志 -2 减益。
 
 	// 周期性提醒：涨奶持续期间，每隔约 2 分钟在右下角聊天框发一条身体不适的提示，
 	// 强化"该挤奶了"的压迫感。为什么用 pick 随机句式：避免每次都一模一样、显得机械。
 	if(world.time >= next_reminder)                                            // 已到下一次提醒时间 ……
-		next_reminder = world.time + ENGORGEMENT_REMINDER_COOLDOWN            // …… 重置下一次提醒时间。
+		next_reminder = world.time + ENGORGEMENT_REMINDER_COOLDOWN             // …… 重置下一次提醒时间。
 		to_chat(H, span_warning(pick(list(
 			"胸口的胀痛一阵阵传来，奶水还在止不住地积攒，再不挤出来怕是要溢了……",
 			"乳房沉甸甸地坠着，稍微一动就胀得发疼，我必须找个地方把奶挤出来。",
 			"胀满的乳汁压得我坐立难安，胸前的衣料似乎都快要被打湿了……",
 			"奶水在胸口越积越多，涨得我呼吸都不太顺畅，得赶紧挤掉才行。",
 		))))
-
-	was_engorged = TRUE                                                        // 记录"当前为涨奶状态"，供下次做翻转判断。
 
 
 // ----------------------------------------------------------------------------
@@ -227,14 +258,8 @@
 	if(!istype(H))                                                             // 防御式校验：无效持有者直接返回。
 		return
 
-	// 只在"刚刚由涨奶变为缓解"时提示一次，与施加端对称，避免反复刷屏。
-	if(was_engorged)                                                           // 上一次还是涨奶（本次刚挤出来）……
-		to_chat(H, span_notice("奶水被挤出来后，胸口的胀痛终于舒缓下来，心里也松快了。"))
-
 	H.remove_stress(/datum/stressevent/vice/engorged_breasts)                 // 移除心情惩罚（对不存在的事件调用也安全）。
 	H.remove_status_effect(/datum/status_effect/debuff/engorged_breasts)      // 移除意志减益（属性自动回正）。
-
-	was_engorged = FALSE                                                       // 记录"当前为缓解状态"，供下次做翻转判断。
 
 
 // ----------------------------------------------------------------------------
@@ -288,7 +313,7 @@
 /datum/status_effect/debuff/engorged_breasts
 	id = "engorged_breasts"                                                    // 唯一标识，用于 has_status_effect / remove_status_effect 查询。
 	// 为什么设 duration 而非永久：作为兜底——即便某些极端时序下 clear 流程没跑到，减益也
-	//   会自然到期。正常情况下涨奶期间 flaw_on_life 会持续 apply 刷新（REFRESH 仅续期），
+	//   会自然到期。正常情况下涨奶期间 flaw_on_life 会持续 apply 刷新（重复 apply 仅续期），
 	//   挤奶缓解后立即被 remove。
 	duration = 2 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/engorged_breasts  // 关联 HUD 提示图标，让玩家直观看到自己正在涨奶。
@@ -330,8 +355,6 @@
 // ----------------------------------------------------------------------------
 // #undef：清理本文件定义的临时宏，避免污染全局宏命名空间（与项目其它自定义文件写法一致）。
 // ----------------------------------------------------------------------------
+#undef ENGORGEMENT_PERIOD
 #undef ENGORGEMENT_CHECK_INTERVAL
-#undef ENGORGEMENT_MILK_PER_CHECK
-#undef ENGORGEMENT_THRESHOLD_RATIO
-#undef ENGORGEMENT_RELIEF_RATIO
 #undef ENGORGEMENT_REMINDER_COOLDOWN
