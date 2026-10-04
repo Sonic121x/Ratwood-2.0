@@ -186,7 +186,7 @@
 /datum/reagent/buff/temperature_normalize
 	name = "调温剂"
 	color = "#ff9000"
-	taste_description = "like water"
+	taste_description = "像水一样"
 
 /datum/reagent/buff/temperature_normalize/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/temperaturepot)
@@ -195,7 +195,7 @@
 /datum/reagent/buff/strength
 	name = STATKEY_STR
 	color = "#ff9000"
-	taste_description = "old meat"
+	taste_description = "陈肉"
 
 /datum/reagent/buff/strength/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/strengthpot)
@@ -214,7 +214,7 @@
 /datum/reagent/buff/intelligence
 	name = STATKEY_INT
 	color = "#438127"
-	taste_description = "bog water"
+	taste_description = "沼泽水"
 	metabolization_rate = REAGENTS_METABOLISM * 0.05
 
 /datum/reagent/buff/intelligence/on_mob_life(mob/living/carbon/M)
@@ -224,7 +224,7 @@
 /datum/reagent/buff/constitution
 	name = STATKEY_CON
 	color = "#130604"
-	taste_description = "bile"
+	taste_description = "胆汁"
 
 /datum/reagent/buff/constitution/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/constitutionpot)
@@ -251,7 +251,7 @@
 /datum/reagent/buff/fortune
 	name = STATKEY_LCK
 	color = "#ffff00"
-	taste_description = "sour lemons"
+	taste_description = "酸柠檬"
 	metabolization_rate = REAGENTS_METABOLISM * 0.05
 
 /datum/reagent/buff/fortune/on_mob_life(mob/living/carbon/M)
@@ -310,7 +310,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	description = ""
 	reagent_state = LIQUID
 	color = "#ff3300"
-	taste_description = "burning"
+	taste_description = "灼烧感"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	harmful = TRUE
 
@@ -333,7 +333,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	description = ""
 	reagent_state = LIQUID
 	color = "#2c1818"
-	taste_description = "sour meat"
+	taste_description = "酸败的肉"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	harmful = TRUE
 
@@ -366,7 +366,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	description = ""
 	reagent_state = LIQUID
 	color = "#041d0e"
-	taste_description = "frozen air"
+	taste_description = "冰冷的空气"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	harmful = TRUE
 
@@ -397,42 +397,42 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	id = /datum/reagent/medicine/stronghealth
 	results = list(/datum/reagent/medicine/stronghealth = 1)
 	required_reagents = list(/datum/reagent/medicine/healthpot = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
+	mix_message = "坩埚短暂地发出光芒。"
 
 /datum/chemical_reaction/alch/strongmana
 	name = "强效魔力药水"
 	id = /datum/reagent/medicine/strongmana
 	results = list(/datum/reagent/medicine/strongmana = 1)
 	required_reagents = list(/datum/reagent/medicine/manapot = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
+	mix_message = "坩埚短暂地发出光芒。"
 
 /datum/chemical_reaction/alch/strongstam
 	name = "强效耐力药水"
 	id = /datum/reagent/medicine/strongstam
 	results = list(/datum/reagent/medicine/strongstam = 1)
 	required_reagents = list(/datum/reagent/medicine/stampot = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
+	mix_message = "坩埚短暂地发出光芒。"
 
 /datum/chemical_reaction/alch/strongpoison
 	name = "强效伤身毒药"
 	id = /datum/reagent/strongpoison
 	results = list(/datum/reagent/strongpoison = 1)
 	required_reagents = list(/datum/reagent/berrypoison = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
+	mix_message = "坩埚短暂地发出光芒。"
 
 /datum/chemical_reaction/alch/strongstampoison
 	name = "强效耐力汲取药剂"
 	id = /datum/reagent/strongstampoison
 	results = list(/datum/reagent/strongstampoison = 1)
 	required_reagents = list(/datum/reagent/stampoison = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
+	mix_message = "坩埚短暂地发出光芒。"
 
 /datum/chemical_reaction/alch/vitae_essence
 	name = "命髓煎剂"
 	id = /datum/reagent/medicine/vitae_essence
 	results = list(/datum/reagent/medicine/vitae_essence = 1)
 	required_reagents = list(/datum/reagent/vitae = 1, /datum/reagent/toxin/fyritiusnectar = 5)
-	mix_message = "The cauldron glows for a moment."
+	mix_message = "坩埚短暂地发出光芒。"
 
 /*----------\
 |Ingredients|
@@ -442,7 +442,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	description = ""
 	reagent_state = SOLID
 	color = "#330066"
-	taste_description = "tombstones"
+	taste_description = "墓碑"
 	metabolization_rate = 0.1
 
 /datum/reagent/toxin/fyritiusnectar
@@ -522,7 +522,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 /datum/reagent/fire_resist
 	name = "耐火药剂"
 	color = "#ff7300"
-	taste_description = "burning coal"
+	taste_description = "燃烧的煤炭"
 
 /datum/reagent/fire_resist/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/alch/fire_resist)
@@ -534,7 +534,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	color = "#abaa7c"
 	overdose_threshold = 15
 	metabolization_rate = 0.2
-	taste_description = "randcid, putrid crab"
+	taste_description = "酸败腐臭的蟹肉"
 
 /datum/reagent/fermented_crab/overdose_process(mob/living/M)
 	M.adjustToxLoss(1, FALSE)

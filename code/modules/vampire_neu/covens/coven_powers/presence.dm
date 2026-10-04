@@ -1,6 +1,6 @@
 /datum/coven/presence
-	name = "Presence"
-	desc = "Makes targets in radius more vulnerable to damages."
+	name = "威仪"
+	desc = "让范围内的目标更容易受到伤害。"
 	icon_state = "presence"
 	power_type = /datum/coven_power/presence
 
@@ -10,8 +10,8 @@
 
 //AWE
 /datum/coven_power/presence/awe
-	name = "Awe"
-	desc = "Make those around you admire and want to be closer to you."
+	name = "敬慕"
+	desc = "让周围的人仰慕你，并渴望靠近你。"
 	gif = "Awe.gif"
 
 	level = 1
@@ -32,13 +32,13 @@
 		return FALSE
 
 	if(target.is_clanmate(owner))
-		to_chat(owner, span_warning("You will not bend your own Clan to heel like cattle."))
+		to_chat(owner, span_warning("你不会像驱使牲畜那样迫使自己的氏族屈服。"))
 		return FALSE
 
 	var/mypower = owner.STAINT
 	var/theirpower = target.STAINT - 5
 	if((theirpower >= mypower))
-		to_chat(owner, span_warning("[target]'s mind is too powerful to sway!"))
+		to_chat(owner, span_warning("[target]的意志太强大，无法动摇！"))
 		return FALSE
 
 	return TRUE
@@ -54,11 +54,11 @@
 	target.create_walk_to(2 SECONDS, owner)
 
 	if(!owner.cmode)
-		to_chat(target, "<span class='userlove'><b>Follow me~</b></span>")
-		owner.say("Follow me~")
+		to_chat(target, "<span class='userlove'><b>跟我来~</b></span>")
+		owner.say("跟我来~")
 	else
-		to_chat(target, "<span class='userlove'><b>COME HERE</b></span>")
-		owner.say("COME HERE!!")
+		to_chat(target, "<span class='userlove'><b>过来</b></span>")
+		owner.say("过来！！")
 
 
 /datum/coven_power/presence/awe/deactivate(mob/living/carbon/human/target, direct = FALSE)
@@ -67,8 +67,8 @@
 
 //DREAD GAZE
 /datum/coven_power/presence/dread_gaze
-	name = "Dread Gaze"
-	desc = "Incite fear in others through only your words and gaze."
+	name = "恐惧凝视"
+	desc = "仅凭言语与目光便让他人心生恐惧。"
 
 	level = 2
 	research_cost = 1
@@ -88,8 +88,8 @@
 	target.overlays_standing[MUTATIONS_LAYER] = presence_overlay
 	target.apply_overlay(MUTATIONS_LAYER)
 
-	to_chat(target, "<span class='userlove'><b>FEAR ME</b></span>")
-	owner.say("FEAR ME!!")
+	to_chat(target, "<span class='userlove'><b>畏惧我吧</b></span>")
+	owner.say("畏惧我吧！！")
 	var/datum/cb = CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, step_away_caster), owner)
 	for(var/i in 1 to 15)
 		addtimer(cb, (i - 1) * target.total_multiplicative_slowdown())
@@ -107,8 +107,8 @@
 		step_away(src, step_from, 99)
 
 /datum/coven_power/presence/fall
-	name = "Kneel"
-	desc = "Make those kneel before you."
+	name = "跪伏"
+	desc = "让他人在你面前跪下。"
 
 	level = 3
 	research_cost = 2
@@ -129,8 +129,8 @@
 	target.apply_overlay(MUTATIONS_LAYER)
 
 	target.Immobilize(2 SECONDS)
-	to_chat(target, "<span class='userlove'><b>KNEEL</b></span>")
-	owner.say("KNEEL!!")
+	to_chat(target, "<span class='userlove'><b>跪下</b></span>")
+	owner.say("跪下！！")
 	target.set_resting(TRUE, TRUE)
 
 /datum/coven_power/presence/fall/deactivate(mob/living/carbon/human/target, direct = FALSE)
@@ -139,8 +139,8 @@
 
 //SUMMON
 /datum/coven_power/presence/summon
-	name = "Summon"
-	desc = "Keep your friends close, but your enemies closer. Teleport a target to you."
+	name = "召来"
+	desc = "与朋友保持亲近，与敌人更加亲近。将目标传送到你身边。"
 
 	level = 4
 	research_cost = 3
@@ -159,8 +159,8 @@
 	target.overlays_standing[MUTATIONS_LAYER] = presence_overlay
 	target.apply_overlay(MUTATIONS_LAYER)
 
-	to_chat(target, "<span class='userlove'><b>TO ME</b></span>")
-	owner.say("TO ME!!")
+	to_chat(target, "<span class='userlove'><b>到我身边来</b></span>")
+	owner.say("到我身边来！！")
 	target.Immobilize(1.5 SECONDS)
 	new /obj/effect/temp_visual/vamp_summon (get_turf(target))
 	new /obj/effect/temp_visual/vamp_summon/end (get_turf(owner))
@@ -173,13 +173,13 @@
 		target.forceMove(target_turf)
 
 		// Messages
-		to_chat(user, "<span class='notice'>You summon [target.real_name] to your location.</span>")
-		to_chat(target, "<span class='userdanger'>You are compelled to appear before [user.real_name]!</span>")
+		to_chat(user, "<span class='notice'>你将[target.real_name]召到了身边。</span>")
+		to_chat(target, "<span class='userdanger'>你被迫出现在[user.real_name]面前！</span>")
 
 		// Announce to nearby clan members
 		for(var/mob/living/carbon/human/observer in view(7, user))
 			if(observer.is_clanmate(user) && observer != user && observer != target)
-				to_chat(observer, "<span class='info'>[user.real_name] has summoned [target.real_name].</span>")
+				to_chat(observer, "<span class='info'>[user.real_name]召来了[target.real_name]。</span>")
 
 /datum/coven_power/presence/summon/deactivate(mob/living/carbon/human/target, direct = FALSE)
 	. = ..()
@@ -193,8 +193,8 @@
 
 //MAJESTY
 /datum/coven_power/presence/majesty
-	name = "Majesty"
-	desc = "Become so grand that others find it nearly impossible to disobey or harm you."
+	name = "王者威严"
+	desc = "展现至高的威严，让他人几乎无法违抗或伤害你。"
 
 	level = 5
 	research_cost = 4
@@ -224,8 +224,8 @@
 			continue
 		apply_majesty_effect(M)
 
-	to_chat(owner, "<span class='notice'>You radiate an aura of absolute authority and grandeur. Others find themselves compelled to obey.</span>")
-	owner.visible_message("<span class='warning'>[owner] seems to become incredibly imposing and majestic!</span>", "<span class='notice'>You feel your presence become overwhelming.</span>")
+	to_chat(owner, "<span class='notice'>你散发出绝对权威与尊贵的气场，让他人不由自主地服从。</span>")
+	owner.visible_message("<span class='warning'>[owner]变得威严无比，令人敬畏！</span>", "<span class='notice'>你感到自己的威仪令人无法抗拒。</span>")
 
 /datum/coven_power/presence/majesty/on_refresh()
 	var/list/nearby_mobs = range(7, owner)
@@ -250,7 +250,7 @@
 		remove_majesty_effect(M)
 	affected_mobs.Cut()
 
-	to_chat(owner, "<span class='notice'>Your overwhelming presence fades away.</span>")
+	to_chat(owner, "<span class='notice'>你那令人无法抗拒的威仪消退了。</span>")
 
 /datum/coven_power/presence/majesty/proc/can_affect_target(mob/living/target)
 	if(!istype(target))
@@ -272,7 +272,7 @@
 
 	if(prob(70))
 		if(target.get_active_held_item())
-			target.visible_message("<span class='warning'>[target] seems overwhelmed by [owner]'s presence!</span>")
+			target.visible_message("<span class='warning'>[target]似乎被[owner]的威仪震慑了！</span>")
 			target.dropItemToGround(target.get_active_held_item())
 
 		target.stop_pulling()
