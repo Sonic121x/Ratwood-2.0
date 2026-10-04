@@ -422,7 +422,7 @@ SUBSYSTEM_DEF(treasury)
 	if(!account)
 		return
 	if(account.balance < amt)
-		send_ooc_note("<b>NERVELOCK:</b> Error: Insufficient funds in the account to complete the withdrawal.", name = target_name)
+		send_ooc_note("<b>神经锁：</b> 错误：账户余额不足，无法完成取款。", name = target_name)
 		return
 	if(!burn(account, amt, "NERVELOCK withdraw by [target_name]"))
 		return
@@ -445,7 +445,7 @@ SUBSYSTEM_DEF(treasury)
 		return FALSE
 	record_round_statistic(STATS_NOBLE_INCOME_TOTAL, payout)
 	total_noble_income += payout
-	send_ooc_note("<b>NERVELOCK:</b> You received [payout]m. ([source])", name = recipient.real_name)
+	send_ooc_note("<b>神经锁：</b> 你收到了[payout]m。([recipient.job == "Merchant" ? "费伦提亚贸易公司" : "贵族庄园"])", name = recipient.real_name)
 	return TRUE
 
 /datum/controller/subsystem/treasury/proc/distribute_estate_incomes()

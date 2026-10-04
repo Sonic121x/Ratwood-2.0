@@ -52,7 +52,7 @@
 
 /obj/item/clothing/gloves/roguetown/plate/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "护甲", "撕裂")
 
 /obj/item/clothing/gloves/roguetown/plate/matthios
 	name = "镀金护手"
@@ -99,7 +99,7 @@
 
 /obj/item/clothing/gloves/roguetown/plate/medium/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲", "撕裂")
 
 /obj/item/clothing/gloves/roguetown/plate/shadowgauntlets
 	name = "暗板护手"
