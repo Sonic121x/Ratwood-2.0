@@ -290,7 +290,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 			continue
 		var/mob/living/L = M
 		if(istype(L) && L.STAPER <= 8)
-			to_chat(L, span_warning("You hear something... somewhere!"))
+			to_chat(L, span_warning("你听到某处……传来了什么声音！"))
 			continue
 		listening += M
 
@@ -1101,7 +1101,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return mind.grab_ghost(force = force)
 
 ///Notify a ghost that it's body is being cloned
-/mob/proc/notify_ghost_cloning(message = "Someone is trying to revive you. Re-enter your corpse if you want to be revived!", sound = 'sound/blank.ogg', atom/source = null, flashwindow)
+/mob/proc/notify_ghost_cloning(message = "有人正试图复活你。如果你希望复活，请重新进入自己的尸体！", sound = 'sound/blank.ogg', atom/source = null, flashwindow)
 	var/mob/dead/observer/ghost = get_ghost()
 	if(ghost)
 		ghost.notify_cloning(message, sound, source, flashwindow)
