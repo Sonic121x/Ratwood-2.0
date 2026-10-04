@@ -132,7 +132,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/naledi/ring_swiftness
-	name = "Ring of Swiftness"
+	name = "迅捷之戒"
 	cost = 450
 	contains = list(/obj/item/clothing/ring/statgemerald)
 	ship_qty_min = 1

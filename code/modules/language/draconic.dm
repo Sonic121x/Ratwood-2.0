@@ -1,6 +1,6 @@
 /datum/language/draconic
 	name = "Draconic"
-	desc = "The ancient and powerful language of dragons, spoken with hisses and roars. Its words carry the weight of primordial magic and draconic might."
+	desc = "古老而强大的龙族语言，以嘶鸣与咆哮诉说。每个词语都承载着原初魔法与龙族的威能。"
 	speech_verb = "嘶嘶地说"
 	ask_verb = "嘶嘶地问"
 	exclaim_verb = "咆哮"

@@ -1,5 +1,5 @@
 /obj/structure/vampire/scryingorb // Method of spying on the town
-	name = "Eye of Night"
+	name = "夜之眼"
 	icon_state = "scrying"
 
 /obj/structure/vampire/scryingorb/attack_hand(mob/living/carbon/human/user)
@@ -8,7 +8,7 @@
 		if(do_after(user, 6 SECONDS, src))
 			user.scry(can_reenter_corpse = 1, force_respawn = FALSE)
 	else
-		to_chat(user, span_warning("I don't have the power to use this!"))
+		to_chat(user, span_warning("我没有使用它的力量！"))
 
 /mob/dead/observer/rogue/arcaneeye
 	sight = 0
@@ -25,18 +25,18 @@
 /mob/dead/observer/rogue/arcaneeye/proc/scry_tele()
 	set category = "Arcane Eye"
 	set name = "Teleport"
-	set desc= "Teleport to a location"
+	set desc= "传送至某处"
 	set hidden = 0
 
 	if(!isobserver(usr))
-		to_chat(usr, span_warning("You're not an Eye!"))
+		to_chat(usr, span_warning("你并非奥术之眼！"))
 		return
 	var/list/filtered = list()
 	for(var/V in GLOB.sortedAreas)
 		var/area/A = V
 		if(!A.hidden)
 			filtered += A
-	var/area/thearea  = input("Area to jump to", "BOOYEA") as null|anything in filtered
+	var/area/thearea  = input("选择要传送到的区域", "传送") as null|anything in filtered
 
 	if(!thearea)
 		return
@@ -46,7 +46,7 @@
 		L+=T
 
 	if(!L || !L.len)
-		to_chat(usr, span_warning("No area available."))
+		to_chat(usr, span_warning("没有可用的区域。"))
 		return
 
 	usr.forceMove(pick(L))
@@ -60,19 +60,19 @@
 		/mob/dead/observer/rogue/arcaneeye/proc/eye_down,
 		/mob/dead/observer/rogue/arcaneeye/proc/eye_up,
 		/mob/dead/observer/rogue/arcaneeye/proc/vampire_telepathy)
-	name = "Arcane Eye"
+	name = "奥术之眼"
 	grant_all_languages()
 
 /mob/dead/observer/rogue/arcaneeye/proc/cancel_scry()
 	set category = "Arcane Eye"
 	set name = "Cancel Eye"
-	set desc= "Return to Body"
+	set desc= "返回躯体"
 
 	if(vampirelord)
 		vampirelord.ckey = ckey
 		qdel(src)
 	else
-		to_chat(src, "My body has been destroyed! I'm trapped!")
+		to_chat(src, "我的躯体已被摧毁！我被困住了！")
 
 /mob/dead/observer/rogue/arcaneeye/Crossed(mob/living/L)
 	if(istype(L, /mob/living/carbon/human))
@@ -80,42 +80,42 @@
 		var/holyskill = V.get_skill_level(/datum/skill/magic/holy)
 		var/magicskill = V.get_skill_level(/datum/skill/magic/arcane)
 		if(magicskill >= 2)
-			to_chat(V, "<font color='red'>An ancient and unusual magic looms in the air around you.</font>")
+			to_chat(V, "<font color='red'>你周围的空气中隐隐笼罩着古老而异样的魔法。</font>")
 			return
 		if(holyskill >= 2)
-			to_chat(V, "<font color='red'>An ancient and unholy magic looms in the air around you.</font>")
+			to_chat(V, "<font color='red'>你周围的空气中隐隐笼罩着古老而邪恶的魔法。</font>")
 			return
 		if(prob(20))
-			to_chat(V, "<font color='red'>You feel like someone is watching you, or something.</font>")
+			to_chat(V, "<font color='red'>你感觉有人，或是什么东西，正在注视你。</font>")
 			return
 
 /mob/dead/observer/rogue/arcaneeye/proc/vampire_telepathy()
 	set name = "Telepathy"
 	set category = "Arcane Eye"
 
-	var/msg = sanitize(input("Send a message.", "Command") as text|null)
+	var/msg = sanitize(input("发送一条消息。", "传讯") as text|null)
 	if(!msg)
 		return
 	for(var/datum/mind/V in SSmapping.retainer.vampires)
-		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(V, span_boldnotice("来自[src.real_name]的消息：[msg]"))
 	for(var/datum/mind/D in SSmapping.retainer.death_knights)
-		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(D, span_boldnotice("来自[src.real_name]的消息：[msg]"))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
-		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(A, span_boldnotice("来自[src.real_name]的消息：[msg]"))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_up()
 	set category = "Arcane Eye"
 	set name = "Move Up"
 
 	if(zMove(UP, TRUE))
-		to_chat(src, span_notice("I move upwards."))
+		to_chat(src, span_notice("我向上移动。"))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_down()
 	set category = "Arcane Eye"
 	set name = "Move Down"
 
 	if(zMove(DOWN, TRUE))
-		to_chat(src, span_notice("I move down."))
+		to_chat(src, span_notice("我向下移动。"))
 
 /mob/dead/observer/rogue/arcaneeye/Move(NewLoc, direct)
 	if(world.time < next_gmove)
