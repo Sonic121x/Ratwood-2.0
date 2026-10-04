@@ -17,8 +17,8 @@
 	. = ..()
 
 /obj/structure/autosmither
-	name = "auto anvil"
-	desc = "A holy amalgamation of buttons and levers built purposely to fulfill Malum's will."
+	name = "自动铁砧"
+	desc = "由按钮与杠杆组成的神圣装置，专为践行玛勒姆的意志而造。"
 
 	icon = 'icons/obj/autosmithy.dmi'
 	icon_state = "1"
@@ -91,28 +91,28 @@
 	if (user.get_skill_level(/datum/skill/craft/engineering) > 3)
 		switch(next_step)
 			if(STEP_FIDDLE)
-				. += span_notice("To toggle the machine, fiddle with the dials")
+				. += span_notice("要开关机器，请调节旋钮")
 			if(STEP_BUTTON)
-				. += span_notice("To toggle the machine, push the buttons")
+				. += span_notice("要开关机器，请按下按钮")
 			if(STEP_LEVER)
-				. += span_notice("To toggle the machine, pull the lever")
+				. += span_notice("要开关机器，请拉动拉杆")
 
 /obj/structure/autosmither/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click it with an empty hand to open its control interface and manage its crafting queue.")
-	. += span_info("It crafts from the attached hopper chest and only works while connected to a powered rotational network with enough RPM.")
-	. += span_info("Use its interface to perform its start or stop sequence: pull the lever, push the buttons, and fiddle with the dials in the correct order.")
-	. += span_info("Open the hopper chest while the autosmithy is off, load materials into it, then close it before starting the machine.")
-	. += span_info("Each recipe consumes its required materials as soon as that recipe starts.")
+	. += span_info("空手左键点击以打开控制界面，管理制作队列。")
+	. += span_info("它使用相连料斗箱中的材料制作物品，只有接入转速足够的动力传动网络时才能工作。")
+	. += span_info("通过界面执行启动或停止流程：按正确顺序拉动拉杆、按下按钮和调节旋钮。")
+	. += span_info("在自动铁砧关闭时打开料斗箱，装入材料，再关上箱子后启动机器。")
+	. += span_info("每项配方开始制作时，便会立即消耗所需材料。")
 	if(user.get_skill_level(/datum/skill/craft/engineering) > 3)
-		. += span_info("Skilled engineers can read the next required step from the machine's normal examine text.")
+		. += span_info("熟练的工程师可以从机器的普通查看说明中得知下一步操作。")
 
 /obj/structure/autosmither/ui_interact(mob/user, datum/tgui/ui)
 	if(isobserver(user)) // observers/ghosts shouldn't be able to open or peek at the machine UI
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Autosmither", "Auto Anvil")
+		ui = new(user, src, "Autosmither", "自动铁砧")
 		ui.open()
 
 /obj/structure/autosmither/ui_assets(mob/user)
@@ -260,7 +260,7 @@
 	if (user.get_skill_level(/datum/skill/craft/engineering) < 3)
 		var/fiftyfifty = pick(TRUE,FALSE)
 		if(fiftyfifty)
-			user.visible_message(span_danger("[user] gets their arm caught in [src] instead!"), span_danger("You get your arm caught in [src]!"))
+			user.visible_message(span_danger("[user]的手臂反而被卷进了[src]！"), span_danger("你的手臂被卷进了[src]！"))
 			user.apply_damage(4 * max(1, (rotations_per_minute / 8)), BRUTE, active_arm_zone(user))
 			playsound(src, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 			return
@@ -525,9 +525,9 @@
 	if(length(created_items))
 		new_item = created_items[length(created_items)]
 	if(inserted_into_hopper)
-		visible_message(span_notice("[src] finishes [new_item] and deposits it into [hopper]."))
+		visible_message(span_notice("[src]完成了[new_item]，并将其放入[hopper]。"))
 	else
-		visible_message(span_notice("[src] finishes [new_item] and drops it out."))
+		visible_message(span_notice("[src]完成了[new_item]，并将其送了出来。"))
 	playsound(src, pick('sound/combat/armor_degrade2.ogg','sound/combat/armor_degrade3.ogg'), 200, FALSE, 3)
 	remove_entry_id(current_queue_id)
 	clear_current_recipe()
@@ -572,14 +572,14 @@
 	if (engineering_skill < 3)
 		var/fiftyfifty = pick(TRUE,FALSE)
 		if(fiftyfifty)
-			user.visible_message(span_danger("[user] gets their arm caught in [src]!"), span_danger("You get your arm caught in [src]!"))
+			user.visible_message(span_danger("[user]的手臂被卷进了[src]！"), span_danger("你的手臂被卷进了[src]！"))
 			user.apply_damage(startup_injury(), BRUTE, active_arm_zone(user))
 			playsound(src, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 			return
 
 	if(next_step != step_type)
-		user.visible_message(span_danger("[user] messes with [src]! The sequence is reset!"), span_danger("You mess with [src]! The sequence is reset!"))
-		user.visible_message(span_danger("[user] gets their arm caught in [src]!"), span_danger("You get your arm caught in [src]!"))
+		user.visible_message(span_danger("[user]胡乱摆弄[src]！操作流程重置了！"), span_danger("你胡乱摆弄[src]！操作流程重置了！"))
+		user.visible_message(span_danger("[user]的手臂被卷进了[src]！"), span_danger("你的手臂被卷进了[src]！"))
 		user.apply_damage(startup_injury(engineering_skill), BRUTE, active_arm_zone(user))
 		playsound(src, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 		step_list = list()
@@ -588,7 +588,7 @@
 	if(!do_after(user, 1.2 SECONDS, src))
 		return
 
-	to_chat(user, span_notice("You [step_type]."))
+	to_chat(user, span_notice("你[step_type == STEP_FIDDLE ? "摆弄机器" : step_type == STEP_LEVER ? "拉动拉杆" : "按下按钮"]。"))
 	step_list |= step_type
 
 	if(working)
@@ -597,7 +597,7 @@
 	else
 		if(length(step_list) == length(pre_start_list))
 			if(hopper?.opened)
-				to_chat(user, span_warning("The anvil refuses to operate, for [hopper] is open."))
+				to_chat(user, span_warning("[hopper]开着，铁砧拒绝运行。"))
 				step_list = list()
 				return
 			working = TRUE
@@ -605,8 +605,8 @@
 			update_animation_effect()
 
 /obj/structure/closet/crate/chest/autosmither
-	name = "auto anvil hopper"
-	desc = "A hopper that feeds on materials. It yearns to help create, and is usually connected to the auto anvil by a series of pipes."
+	name = "自动铁砧料斗"
+	desc = "吞入材料的料斗。它渴望协助创造，通常通过一系列管道与自动铁砧相连。"
 	icon = 'icons/obj/autosmithy.dmi'
 	icon_state = "material"
 	base_icon_state = "material"
@@ -624,13 +624,13 @@
 
 /obj/structure/closet/crate/chest/autosmither/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Use it like a chest. It only opens while the autosmithy is off.")
-	. += span_info("Load materials into it, then close it so the autosmithy can consume them when a recipe begins.")
+	. += span_info("像箱子一样使用它。只有自动铁砧关闭时才能打开。")
+	. += span_info("装入材料后将其关上，自动铁砧便能在开始制作时消耗其中的材料。")
 
 /obj/structure/closet/crate/chest/autosmither/can_open(mob/living/user)
 	if(parent && parent.working)
 		if(user)
-			to_chat(user, span_warning("The hopper locks shut while the auto anvil is running."))
+			to_chat(user, span_warning("自动铁砧运行时，料斗会锁紧。"))
 		return FALSE
 	return ..()
 

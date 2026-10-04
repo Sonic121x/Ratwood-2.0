@@ -108,7 +108,7 @@
 
 				if(length(valid_parts))
 					var/obj/item/bodypart/BP = pick(valid_parts)
-					BP.add_wound(/datum/wound/slash, FALSE, "looks sickly and ashen.")
+					BP.add_wound(/datum/wound/slash, FALSE, "看起来病恹恹的，灰白无光。")
 					new /obj/item/ash(owner.loc)
 					to_chat(owner, span_warning("你的身体皲裂开来，一道新的伤口张开，灰烬从中簌簌落下。"))
 

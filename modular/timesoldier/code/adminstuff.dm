@@ -277,7 +277,7 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 		if(TIMESOLDIER_SPAWN_OFFER)
 
 			var/list/mob/dead/observer/candidates = pollGhostCandidates(
-				"Time and space raptures. A Naledi Timelord has opened the way. Will you come back from the future, to embark on a mission?",
+				"时空裂开了。一位纳莱迪时间领主已开启通路。你愿意从未来归来，执行一项任务吗？",
 				null,
 				null,
 				FALSE,
