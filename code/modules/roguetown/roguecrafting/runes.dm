@@ -56,7 +56,7 @@
 	name = "符文"
 	pages_to_mastery = 3
 	var/spell
-	var/spellname = "no spell"
+	var/spellname = "无法术"
 	icon_state = "spellbookpower1_0" //temporary sprite
 
 /obj/item/rune/spell/on_start(mob/user)
@@ -67,20 +67,20 @@
 		if(knownspell.type == spell)
 			spell = null
 	if(spell)
-		to_chat(user, "<span class='notice'>The power of [spellname] is emblazened in your mind!</span>")
+		to_chat(user, "<span class='notice'>[spellname]的力量烙印在你的脑海中！</span>")
 		var/obj/effect/proc_holder/spell/S = new spell
 		user.mind.AddSpell(S)
 		if(user.get_skill_level(/datum/skill/magic/arcane) <= 5)
 			user.adjust_experience(/datum/skill/magic/arcane, 100, FALSE)
 	else if(user.get_skill_level(/datum/skill/magic/arcane) <= 5)
-		to_chat(user, "<span class='notice'>Arcane power is emblazened in your mind!</span>")
+		to_chat(user, "<span class='notice'>奥术力量烙印在你的脑海中！</span>")
 		user.adjust_experience(/datum/skill/magic/arcane, 150, FALSE)
-	user.visible_message("<span class='warning'>[src] glows dark, and then crumbles!</span>")
+	user.visible_message("<span class='warning'>[src]泛起幽暗的光芒，随后碎裂！</span>")
 	qdel(src)
 
 /obj/item/rune/spell/fire_rune
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball
-	spellname = "fireball"
+	spellname = "火球术"
 	// icon_state = "fire_rune"
 	name = "火焰符文"
 	desc = "散发着温热的力量。"
@@ -88,7 +88,7 @@
 
 /obj/item/rune/spell/water_rune
 	spell = /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
-	spellname = "ethereal jaunt"
+	spellname = "以太漫游"
 	// icon_state = "water_rune"
 	name = "水之符文"
 	desc = "有些潮湿。"
@@ -96,7 +96,7 @@
 
 /obj/item/rune/spell/air_rune
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
-	spellname = "lightning"
+	spellname = "闪电术"
 	// icon_state = "air_rune"
 	name = "风之符文"
 	desc = "摸起来很凉。"
@@ -104,7 +104,7 @@
 
 /obj/item/rune/spell/earth_rune
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/fetch
-	spellname = "fetch"
+	spellname = "牵引术"
 	// icon_state = "earth_rune"
 	name = "土之符文"
 	desc = "比看起来更沉。"
@@ -112,7 +112,7 @@
 
 /obj/item/rune/spell/blank_rune
 	spell = null
-	spellname = "arcane magic"
+	spellname = "奥术魔法"
 	// icon_state = "blank_rune"
 	name = "符文精华"
 	desc = "我们这个世界中魔法的源头。"

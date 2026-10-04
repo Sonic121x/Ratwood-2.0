@@ -143,14 +143,14 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 				to_chat(mind.current, span_smallnotice("我感觉自己又能解绑法术了。"))
 			if(mind.has_rituos)
 				mind.has_rituos = FALSE
-				to_chat(mind.current, span_smallnotice("The toil of invoking Her Lesser Work has fled my feeble form. I can continue my transfiguration..."))
+				to_chat(mind.current, span_smallnotice("施展祂的小型伟业带来的疲惫已从我孱弱的身躯中消退。我可以继续变形了……"))
 			if (mind.rituos_spell)
-				to_chat(mind.current, span_warning("My glimpse of [mind.rituos_spell.name] flees my mind as the new dae dawns..."))
+				to_chat(mind.current, span_warning("新的一天破晓时，我对[mind.rituos_spell.name]的短暂领悟从脑海中消散了……"))
 				mind.RemoveSpell(mind.rituos_spell)
 				mind.rituos_spell = null
 			if(HAS_TRAIT(mind.current, TRAIT_STUDENT))//golems can learn, too!
 				REMOVE_TRAIT(mind.current, TRAIT_STUDENT, null)
-				to_chat(mind.current, span_nicegreen("I feel that I can be educated in a skill once more."))
+				to_chat(mind.current, span_nicegreen("我觉得又能接受一次技能教导了。"))
 
 
 	else if(GLOB.tod == "day")

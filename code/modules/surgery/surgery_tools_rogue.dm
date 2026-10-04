@@ -451,7 +451,7 @@
 		return FALSE
 	var/text_var = target_data["text_var"]
 	if(length(holder.vars[text_var]))
-		to_chat(user, span_warning("I reburn over the existing marking."))
+		to_chat(user, span_warning("我在原有印记上重新烙烧。"))
 	holder.vars[text_var] = branding_text
 	set_holder_ownership_data(holder, should_enslave, user)
 	return TRUE
@@ -517,11 +517,11 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 
 /obj/item/rogueweapon/surgery/cautery/branding/proc/send_branding_result_messages(mob/living/user, mob/living/carbon/human/target, description_recoil, final_answer, branding_text)
 	if(remove_existing_brand)
-		user.visible_message(span_info("[target] [description_recoil] as \the [src] sears away a brand on [target.p_their()] [LOWER_TEXT(final_answer)]!"))
-		to_chat(target, span_userdanger("A brand has been burned away!"))
+		user.visible_message(span_info("[src]烧去了[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]上的烙印，令其[description_recoil]！"))
+		to_chat(target, span_userdanger("一道烙印被烧去了！"))
 	else
-		user.visible_message(span_info("[target] [description_recoil] as \the [src] sears a mark on [target.p_their()] [LOWER_TEXT(final_answer)]! The fresh brand shows [span_boldwarning(branding_text)]."))
-		to_chat(target, span_userdanger("You have been branded!"))
+		user.visible_message(span_info("[src]在[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]上烙下印记，令其[description_recoil]！新烙印的内容是[span_boldwarning(branding_text)]。"))
+		to_chat(target, span_userdanger("你被烙下了印记！"))
 
 // Single entry point for action-phase combat logs
 /obj/item/rogueweapon/surgery/cautery/branding/proc/log_branding_action(mob/living/user, mob/living/carbon/human/target, action_type, final_answer, branding_text, branding_delay, ownership_state, enslave)
@@ -553,10 +553,10 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	if(!heated)
 		return ..()
 	if(!remove_existing_brand && !length(setbranding))
-		to_chat(user, span_warning("There is nothing to brand, add some symbols before using again."))
+		to_chat(user, span_warning("没有可烙印的内容，请先添加一些符号再使用。"))
 		return TRUE
 	if(!ishuman(A))
-		to_chat(user, span_warning("I cannot brand [A]."))
+		to_chat(user, span_warning("我无法给[A]烙印。"))
 		return TRUE
 	var/mob/living/carbon/human/target = A
 	var/precise_zone = user.zone_selected // We need this up here to stay consistent past the do_after.
@@ -564,12 +564,12 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	var/obj/item/bodypart/branding_part = target.get_bodypart(body_zone)
 	var/branding_self = user == target
 	if(!get_location_accessible(target, user.zone_selected))
-		to_chat(user, span_warning("That part is obstructed by clothing."))
+		to_chat(user, span_warning("那处被衣物遮住了。"))
 		return TRUE
 
 	// Get the area we want to brand, and then prompt the user for what to brand/whether we should brand that zone.
 	if(QDELETED(branding_part) || !istype(branding_part))
-		to_chat(user, span_warning("They don't have this part..."))
+		to_chat(user, span_warning("对方没有这个部位……"))
 		return TRUE
 
 	var/list/zone_data = build_branding_zone_data(target, precise_zone, body_zone, branding_part)
@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	if(remove_existing_brand)
 		var/list/removable_options = filter_zone_options_for_brand_removal(zone_data["options"], branding_part, penis, vagina, testes, tits)
 		if(!length(removable_options))
-			to_chat(user, span_warning("There are no removable brands on any accessible body part."))
+			to_chat(user, span_warning("所有可触及的身体部位上都没有可移除的烙印。"))
 			return TRUE
 		removable_options += "Cancel"
 		zone_options = removable_options
@@ -632,7 +632,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 					return TRUE
 
 	if(!remove_existing_brand && enslave && target_has_active_ownership_mark(target))
-		to_chat(user, span_warning("I cannot mark them as owned, they already have a mark of ownership! I need to burn that away first..."))
+		to_chat(user, span_warning("对方已有归属印记，我无法再次标记！得先烧掉原来的印记……"))
 		return TRUE
 
 	// A part has been selected, now we start printing messages to chat and showing the do_after
@@ -666,7 +666,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	// Rebuild options after do_after so limb/coverage changes cannot apply to stale selections
 	var/list/live_zone_data = rebuild_branding_selection_data(target, precise_zone)
 	if(!length(live_zone_data))
-		to_chat(user, span_warning("They no longer have that part."))
+		to_chat(user, span_warning("对方已没有那个部位了。"))
 		return TRUE
 	branding_part = live_zone_data["branding_part"]
 	penis = live_zone_data["penis"]
@@ -677,11 +677,11 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	if(remove_existing_brand)
 		zone_options = filter_zone_options_for_brand_removal(zone_options, branding_part, penis, vagina, testes, tits)
 	if(!(final_answer in zone_options))
-		to_chat(user, span_warning("That body part is no longer available for [remove_existing_brand ? "brand removal" : "branding"]."))
+		to_chat(user, span_warning("那个身体部位已无法进行[remove_existing_brand ? "烙印移除" : "烙印"]。"))
 		return TRUE
 
 	// Attempt to re-get the part and place the brand
-	var/description_recoil = target.stat < UNCONSCIOUS ? pick("抽搐", "扭动", "挣扎", "颤抖") : "lays still"
+	var/description_recoil = target.stat < UNCONSCIOUS ? pick("抽搐", "扭动", "挣扎", "颤抖") : "一动不动"
 	var/apply_knockdown = selection_applies_knockdown(final_answer)
 	var/apply_message = TRUE
 	var/list/selected_target_data = get_brand_target_data(final_answer, branding_part, penis, vagina, testes, tits)
@@ -690,18 +690,18 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 			to_chat(user, span_warning("那处灼伤无法通过这种方式移除。"))
 			return TRUE
 		if(!clear_brand_from_target_data(selected_target_data, user))
-			to_chat(user, span_warning("There is no existing brand to remove there."))
+			to_chat(user, span_warning("那里没有可移除的烙印。"))
 			return TRUE
 	else
 		switch(final_answer)
 			if("Mouth")
-				user.visible_message(span_info("[target] [description_recoil] as \the [src] sears onto [target.p_their()] lips! The branding leaves an unrecognizable burn."))
+				user.visible_message(span_info("[src]烙上[target]的嘴唇，令其[description_recoil]！烙印留下了一处难以辨认的灼伤。"))
 				target.apply_status_effect(/datum/status_effect/mouth_branded)
-				to_chat(target, span_userdanger("Your mouth has been seared!"))
+				to_chat(target, span_userdanger("你的嘴被烫伤了！"))
 				apply_message = FALSE
 			else
 				if(!apply_brand_to_target_data(user, selected_target_data, branding_text, enslave))
-					to_chat(user, span_warning("There's a problem with branding this body part."))
+					to_chat(user, span_warning("给这个身体部位烙印时出了问题。"))
 					return TRUE
 
 	if(length(selected_target_data))
