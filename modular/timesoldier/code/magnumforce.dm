@@ -3,8 +3,8 @@
 
 /obj/item/gun/ballistic/heavysniper
 	var/bolt_open = FALSE
-	name = "KZ-41 'Last Rites'"
-	desc = "<span class='yellow'><i>I can still remember when this weapon was given to us. We were fighting on the borders of Grenzelhoft with the Otavans, and this beauty came in a shipment alongside others, and some ammo.<br>We were...stunned at how effective it was. It killed deadites in a singular shot to the head, and tore through lyfeblood armor like it was hot butter. It wouldn't take long for it to be made a war-crime to use it on your fellow man.<br> KZ-41 - it stood for an obvious name.<br>KILL ZIZITES.</i></span>"
+	name = "KZ-41 '临终礼'"
+	desc = "<span class='yellow'><i>我还记得领到这把武器的时候。当时我们正与奥塔瓦人在格伦泽尔霍夫特边境作战，这个漂亮家伙连同其他武器和一些弹药一起运了过来。<br>我们……被它的威力惊呆了。只需一枪命中头部，它就能杀死行尸，穿透生命之血护甲就像热刀切黄油一样。不久之后，用它对付同类就被列为战争罪。<br> KZ-41 - 这个名字的含义显而易见。<br>诛杀齐佐信徒。</i></span>"
 	icon = 'modular/timesoldier/sprites/nu_guns.dmi'
 	icon_state = "kz41"
 	experimental_inhand = TRUE
@@ -42,7 +42,7 @@
 /obj/item/gun/ballistic/heavysniper/attackby(obj/item/A, mob/user, params)
 	if(istype(A, /obj/item/ammo_casing/brutal_round)) 
 		if(!bolt_open)
-			to_chat(user, "<span class='red'>The bolt is closed. You can't load a round into the chamber.</span>")
+			to_chat(user, "<span class='red'>枪机已关闭，无法向弹膛装入子弹。</span>")
 			return
 	return ..()
 
@@ -68,7 +68,7 @@
 
 /obj/item/gun/ballistic/heavysniper/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	if(bolt_open)
-		to_chat(user, "<span class='red'>The bolt is open. You can't fire the weapon.</span>")
+		to_chat(user, "<span class='red'>枪机未关闭，无法开火。</span>")
 		playsound(src, 'modular/timesoldier/sounds/gun_empty.ogg', 100)
 		return
 	return ..()

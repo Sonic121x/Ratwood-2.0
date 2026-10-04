@@ -73,22 +73,22 @@
 		var/mob/living/carbon/human/H = M
 		if(metabolized_caffeine >= metabolization_rate && M.has_status_effect(/datum/status_effect/debuff/sleepytime)) // Remove the sleepytime status effect after consumption
 			H.remove_sleep_depravation()
-			to_chat(M, span_green("I feel more focused from that coffee!"))
-			M.visible_message(span_info("[M] gains a look of focus in their eyes, the weary expression lifting from [M.p_them()]."))
+			to_chat(M, span_green("这杯咖啡让我更专注了！"))
+			M.visible_message(span_info("[M]的眼神变得专注，[M.p_them()]脸上的倦意消散了。"))
 			if(M.mind?.sleep_adv)
 				M.mind.sleep_adv.sleep_adv_points += 2
 				M.mind.sleep_adv.advance_cycle()
 		else if(M.has_status_effect(/datum/status_effect/debuff/sleepytime/t2) && metabolized_caffeine >= 20)
 			H.remove_sleep_depravation(TRUE)
-			to_chat(M, span_green("I feel SO much more focused from that coffee!"))
-			M.visible_message(span_info("[M] visibly wakes up, their eyes opening fully and the weary tired expression lifting from [M.p_them()]."))
+			to_chat(M, span_green("这杯咖啡让我精神多了！"))
+			M.visible_message(span_info("[M]明显清醒了过来，双眼完全睁开，[M.p_them()]脸上的疲惫神情消散了。"))
 			if(M.mind?.sleep_adv)
 				M.mind.sleep_adv.sleep_adv_points += 4
 				M.mind.sleep_adv.advance_cycle()
 		else if(M.has_status_effect(/datum/status_effect/debuff/sleepytime/t2) && metabolized_caffeine >= 40)
 			H.remove_sleep_depravation(TRUE)
-			to_chat(M, span_green("That coffee hit the spot, I can think and move again without my eyelids weighing the same as my entire body."))
-			M.visible_message(span_info("[M] suddenly looks like [M.p_they()] aren't about to collapse anymore, blinking a couple of times as some conciousness comes back to [M.p_them()]."))
+			to_chat(M, span_green("这杯咖啡来得正好，我又能思考和行动了，眼皮也不再沉得像整个身子一样。"))
+			M.visible_message(span_info("[M]突然看起来不再摇摇欲坠，[M.p_they()]眨了几下眼，意识渐渐回到了[M.p_them()]身上。"))
 			if(M.mind?.sleep_adv)
 				M.mind.sleep_adv.sleep_adv_points += 6
 				M.mind.sleep_adv.advance_cycle()

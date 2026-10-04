@@ -577,7 +577,7 @@
 		if(!PA)
 			continue
 		if(PA.ship_chance < 100)
-			result += "[PA.name] (rare)"
+			result += "[PA.name] (稀有)"
 		else
 			result += PA.name
 	return result

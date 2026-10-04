@@ -228,9 +228,9 @@
 
 /obj/effect/proc_holder/spell/invoked/resurrect/graggar
 	name = "血祭格拉加尔"
-	desc = "你无法支配死者。将一对格拉加尔之眼置于一名倒下的凡人身上，赐予他们\
-	再次战斗的机会……但需付出代价。他们的智力将被削弱一段时间，直到\
-	他们从祂的领域中斩杀一名兽人挑战者。"
+	desc = "你无法支配死者。将一对眼睛置于一名倒下的凡人身上，赐予他们\
+	再次战斗的机会……但需付出代价。他们的智力将被削弱一段时间，或直到\
+	他们斩杀一名来自祂领域的兽人挑战者。"
 	debuff_type = /datum/status_effect/debuff/graggar_challenge
 	alt_required_items = list(/obj/item/organ/eyes = 1) //Easiest organ to obtain - everyone has eyes. Let's not make it hard.
 	required_items = list(/obj/item/organ/eyes = 1)

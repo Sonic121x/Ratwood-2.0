@@ -1,6 +1,6 @@
 /datum/coven/celerity
-	name = "Celerity"
-	desc = "Boosts your speed. Violates Masquerade."
+	name = "迅捷"
+	desc = "提升你的速度。使用会违反避世戒律。"
 	icon_state = "celerity"
 	power_type = /datum/coven_power/celerity
 
@@ -45,8 +45,8 @@
 
 //CELERITY 1
 /datum/coven_power/celerity/one
-	name = "Celerity 1"
-	desc = "Enhances your speed to make everything a little bit easier."
+	name = "迅捷 1"
+	desc = "提升你的速度，让行动轻松一些。"
 
 	level = 1
 	research_cost = 0
@@ -59,8 +59,8 @@
 //CELERITY 2
 
 /datum/coven_power/celerity/two
-	name = "Celerity 2"
-	desc = "Significantly improves your speed and reaction time."
+	name = "迅捷 2"
+	desc = "显著提升你的速度与反应能力。"
 
 	level = 2
 	research_cost = 1
@@ -73,8 +73,8 @@
 
 //CELERITY 3
 /datum/coven_power/celerity/three
-	name = "Celerity 3"
-	desc = "Move faster. React in less time. Your body is under perfect control."
+	name = "迅捷 3"
+	desc = "行动更快，反应更迅速。你的身体尽在掌控之中。"
 
 	level = 3
 	research_cost = 2
@@ -87,8 +87,8 @@
 
 //CELERITY 4
 /datum/coven_power/celerity/four
-	name = "Celerity 4"
-	desc = "Breach the limits of what is humanly possible. Move like a lightning bolt."
+	name = "迅捷 4"
+	desc = "突破人类的极限，如闪电般行动。"
 
 	level = 4
 	research_cost = 3
@@ -101,8 +101,8 @@
 
 //CELERITY 5
 /datum/coven_power/celerity/five
-	name = "Celerity 5"
-	desc = "You are like light. Blaze your way through the world."
+	name = "迅捷 5"
+	desc = "你如光芒一般，疾驰穿行于世间。"
 
 	level = 5
 	research_cost = 4

@@ -1,5 +1,5 @@
 /obj/structure/vampire/portalmaker
-	name = "Rift Gate"
+	name = "裂隙之门"
 	icon_state = "obelisk"
 	var/sending = FALSE
 
@@ -10,17 +10,17 @@
 
 
 	if(!user.has_bloodpool_cost(1000))
-		to_chat(user, span_warning("This costs 1000 vitae, I lack that."))
+		to_chat(user, span_warning("这需要1000点血能，我没有那么多。"))
 		return
-	var/list/choices = list("RETURN", "SENDING", "I RESCIND")
-	switch(input(user, "Which type of portal?", "Portal Type") as null|anything in choices)
-		if("I RESCIND")
+	var/list/choices = list("返回", "送往", "我收回决定")
+	switch(input(user, "选择哪种传送门？", "传送门类型") as null|anything in choices)
+		if("我收回决定")
 			return
 
-		if("RETURN")
+		if("返回")
 			for(var/obj/item/clothing/neck/portalamulet/P in GLOB.vampire_objects)
 				possibleportals += P
-			var/atom/choice = input(user, "Choose an area to open the portal", "Choices") as null|anything in possibleportals
+			var/atom/choice = input(user, "选择开启传送门的区域", "选择") as null|anything in possibleportals
 			if(!choice)
 				return
 			user.visible_message("[user]开始召唤传送门。", "我开始召唤传送门。")
@@ -36,15 +36,15 @@
 				create_portal_return(A.name, 3000)
 				user.playsound_local(get_turf(src), 'sound/misc/portalactivate.ogg', 100, FALSE, pressure_affected = FALSE)
 				if(A.uses <= 0)
-					A.visible_message("[A] shatters!")
+					A.visible_message("[A]碎裂了！")
 					qdel(A)
-		if("SENDING")
+		if("送往")
 			if(sending)
-				to_chat(user, "A portal is already active!")
+				to_chat(user, "已有一扇传送门开启了！")
 				return
 			for(var/obj/item/clothing/neck/portalamulet/P in GLOB.vampire_objects)
 				possibleportals += P
-			var/atom/choice = input(user, "Choose an area to open the portal to", "Choices") as null|anything in possibleportals
+			var/atom/choice = input(user, "选择传送门通往的区域", "选择") as null|anything in possibleportals
 			if(!choice)
 				return
 			user.visible_message("[user]开始召唤传送门。", "我开始召唤传送门。")
@@ -56,13 +56,13 @@
 					var/turf/G = get_turf(A)
 					new /obj/effect/landmark/vteleportsenddest(G.loc)
 					if(A.uses <= 0)
-						A.visible_message("[A] shatters!")
+						A.visible_message("[A]碎裂了！")
 						qdel(A)
 					create_portal()
 					user.playsound_local(get_turf(src), 'sound/misc/portalactivate.ogg', 100, FALSE, pressure_affected = FALSE)
 
 /obj/structure/vampire/portal
-	name = "Eerie Portal"
+	name = "诡异传送门"
 	icon_state = "portal"
 	var/duration = 999
 	var/spawntime = null
@@ -76,7 +76,7 @@
 	addtimer(CALLBACK(src, PROC_REF(delete)), 60 SECONDS)
 
 /obj/structure/vampire/portal/proc/delete()
-	visible_message(span_boldnotice("[src] shudders before rapidly closing."))
+	visible_message(span_boldnotice("[src]颤动着，随后迅速关闭。"))
 	qdel(src)
 
 /obj/structure/vampire/portal/Crossed(atom/movable/AM)
@@ -88,7 +88,7 @@
 			break
 
 /obj/structure/vampire/portal/sending
-	name = "Eerie Portal"
+	name = "诡异传送门"
 	icon_state = "portal"
 	duration = 999
 	spawntime = null
@@ -112,17 +112,17 @@
 			var/obj/structure/vampire/portal/P = new(get_turf(Vamp))
 			P.duration = duration
 			P.spawntime = world.time
-			P.visible_message(span_boldnotice("A sickening tear is heard as a sinister portal emerges."))
+			P.visible_message(span_boldnotice("伴随着令人作呕的撕裂声，一扇阴森的传送门出现了。"))
 		qdel(Vamp)
 
 /obj/structure/vampire/portalmaker/proc/create_portal(choice,duration)
 	sending = TRUE
 	for(var/obj/effect/landmark/vteleportsending/S in GLOB.landmarks_list)
 		var/obj/structure/vampire/portal/sending/P = new(S.loc)
-		P.visible_message(span_boldnotice("A sickening tear is heard as a sinister portal emerges."))
+		P.visible_message(span_boldnotice("伴随着令人作呕的撕裂声，一扇阴森的传送门出现了。"))
 
 /obj/item/clothing/neck/portalamulet
-	name = "Gate Amulet"
+	name = "传送门护符"
 	icon_state = "bloodtooth"
 	icon = 'icons/roguetown/clothing/neck.dmi'
 	var/uses = 3

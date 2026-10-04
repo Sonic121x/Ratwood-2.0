@@ -90,7 +90,7 @@ All foods are distributed among various categories. Use common sense.
 
 
 /datum/intent/food
-	name = "feed"
+	name = "喂食"
 	noaa = TRUE
 	icon_state = "infeed"
 	rmb_ranged = TRUE

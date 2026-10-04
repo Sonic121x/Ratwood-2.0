@@ -6,7 +6,7 @@ And it also helps for the character set panel
 */
 /datum/clan
 	var/name = "Caitiff"
-	var/desc = "The clanless. The rabble. Of no importance."
+	var/desc = "无氏族者。乌合之众。无足轻重。"
 	var/clanicon
 
 	var/list/clane_covens = list() //coven datums
@@ -78,10 +78,10 @@ And it also helps for the character set panel
 	return clane_traits | extra_clan_traits
 
 /datum/clan/proc/get_downside_string()
-	return "burn in sunlight"
+	return "在阳光下燃烧"
 
 /datum/clan/proc/get_blood_preference_string()
-	return "any blood"
+	return "任何血液"
 
 /datum/clan/proc/handle_bloodsuck(mob/living/carbon/human/drinker, blood_types)
 	var/unwanted_blood = (blood_types & ~blood_preference)
@@ -89,7 +89,7 @@ And it also helps for the character set panel
 	if(!unwanted_blood)
 		return
 	drinker.apply_status_effect(/datum/status_effect/debuff/blood_disgust)
-	to_chat(drinker, span_warning("This blood tastes revolting to you!"))
+	to_chat(drinker, span_warning("这血的味道让你作呕！"))
 
 /datum/clan/proc/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -202,12 +202,12 @@ And it also helps for the character set panel
 	H.clan = src
 	on_gain(H, is_vampire = FALSE)
 
-	to_chat(H, "<span class='notice'>You have been inducted into [name] as a [non_vampire_title]!</span>")
+	to_chat(H, "<span class='notice'>你已以[non_vampire_title]的身份加入[name]！</span>")
 
 	// Announce to clan
 	for(var/mob/living/carbon/human/member in clan_members)
 		if(member != H)
-			to_chat(member, "<span class='notice'>[H.real_name] has joined [name] as a [non_vampire_title].</span>")
+			to_chat(member, "<span class='notice'>[H.real_name]已以[non_vampire_title]的身份加入[name]。</span>")
 
 	return TRUE
 
@@ -221,12 +221,12 @@ And it also helps for the character set panel
 		leader.lord_title = leader_title
 		leader.make_new_leader(H)
 		clan_leader = H
-		to_chat(H, "<span class='notice'>You have been appointed as the [leader_title] of [name]!</span>")
+		to_chat(H, "<span class='notice'>你已被任命为[name]的[leader_title]！</span>")
 		return
 
 	// Otherwise, they join as an unassigned member
 	var/member_type = is_vampire ? "vampire" : non_vampire_title
-	to_chat(H, "<span class='notice'>You have joined [name] as a [member_type]! Speak with leadership for position assignment.</span>")
+	to_chat(H, "<span class='notice'>你已以[member_type]的身份加入[name]！请与领袖交谈，安排你的职位。</span>")
 
 /datum/clan/proc/initialize_hierarchy()
 	if(hierarchy_root)
@@ -378,21 +378,21 @@ And it also helps for the character set panel
 		hierarchy_root.assign_member(new_leader)
 		leader.make_new_leader(new_leader)
 
-		to_chat(new_leader, "<span class='notice'>You have been promoted to [leader_title] of [name]!</span>")
+		to_chat(new_leader, "<span class='notice'>你已晋升为[name]的[leader_title]！</span>")
 
 		// Announce to clan
 		for(var/mob/living/carbon/human/member in clan_members)
 			if(member != new_leader)
-				to_chat(member, "<span class='notice'>[new_leader.real_name] has become the new [leader_title] of [name].</span>")
+				to_chat(member, "<span class='notice'>[new_leader.real_name]已成为[name]的新任[leader_title]。</span>")
 
 
 /datum/clan/proc/get_frenzy_messages()
 	return list(
-		"A crimson haze bleeds into the edges of my sight, and the [span_danger("Beast")] shifts.",
-		"My fingers curl - they want to [span_danger("tear")], to [span_danger("crush")].",
-		"The [span_danger("thirst")] rises in my throat, and my patience burns away.",
-		"Every pulse around me is an [span_danger("invitation")] I strain not to answer.",
-		"The Beast hurls itself at its chains - it is [span_userdanger("almost loose")].",
+		"猩红的雾霭侵入我的视野边缘，[span_danger("心兽")]蠢蠢欲动。",
+		"我的手指蜷起——它们渴望[span_danger("撕裂")]，渴望[span_danger("碾碎")]。",
+		"[span_danger("饥渴")]涌上喉头，我的耐心燃烧殆尽。",
+		"周围的每一次脉搏都是[span_danger("邀约")]，我竭力克制着回应的冲动。",
+		"心兽猛撞着锁链——它[span_userdanger("几乎挣脱了")]。",
 	)
 
 /datum/clan/proc/frenzy_message(mob/living/message)
@@ -462,7 +462,7 @@ And it also helps for the character set panel
 			if(member in non_vampire_members)
 				continue
 			member.give_coven(new_coven)
-			to_chat(member, "<span class='notice'>Your clan has gained access to the [new_coven.name] coven!</span>")
+			to_chat(member, "<span class='notice'>你的氏族已能加入[new_coven.name]结社！</span>")
 
 	return TRUE
 
@@ -592,14 +592,14 @@ And it also helps for the character set panel
 
 /datum/clan/proc/open_clan_menu(mob/living/carbon/human/user)
 	if(!user.covens || !length(user.covens))
-		to_chat(user, "<span class='warning'>You have no covens to manage!</span>")
+		to_chat(user, "<span class='warning'>你没有可管理的结社！</span>")
 		return
 
 	user.open_clan_menu()
 
 /datum/action/clan_menu
-	name = "Clan Menu"
-	desc = "Open your clan's power management interface"
+	name = "氏族菜单"
+	desc = "打开氏族能力管理界面"
 	background_icon_state = "spell"
 	button_icon_state = "coven"
 
@@ -609,7 +609,7 @@ And it also helps for the character set panel
 
 	var/mob/living/carbon/human/user = owner
 	if(!user.clan)
-		to_chat(user, "<span class='warning'>You have no clan!</span>")
+		to_chat(user, "<span class='warning'>你没有氏族！</span>")
 		return
 
 	user.open_clan_menu()
