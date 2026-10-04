@@ -131,21 +131,21 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/kazengun/puzzlebox_easy
-	name = "Wooden Puzzle-Box"
+	name = "木制谜盒"
 	cost = 20
 	contains = list(/obj/item/mundane/puzzlebox/easy)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/kazengun/puzzlebox_medium
-	name = "Ebony Puzzle-Box"
+	name = "乌木谜盒"
 	cost = 40
 	contains = list(/obj/item/mundane/puzzlebox/medium)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/puzzlebox_royal
-	name = "Royal Puzzle-Box"
+	name = "皇家谜盒"
 	cost = 1800
 	contains = list(/obj/item/mundane/puzzlebox/impossible)
 	ship_qty_min = 1

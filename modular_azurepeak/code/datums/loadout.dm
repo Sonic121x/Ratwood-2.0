@@ -255,17 +255,17 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 // TENT KITS
 
 /datum/loadout_item/small_tent
-    name = "Small Tent"
+    name = "小帐篷"
     path = /obj/item/tent_kit
     triumph_cost = 4
 
 /datum/loadout_item/ger_kit
-    name = "Ger Tent"
+    name = "毡帐"
     path = /obj/item/tent_kit/ger
     triumph_cost = 6
 
 /datum/loadout_item/yurt_tent
-     name = "Yurt Tent"
+     name = "圆顶毡帐"
      path = /obj/item/tent_kit/yurt
      triumph_cost = 8
 
@@ -323,7 +323,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/head/roguetown/hatfur
 
 /datum/loadout_item/bluehat
-	name = "Blue Hat"
+	name = "蓝色帽子"
 	path = /obj/item/clothing/head/roguetown/hatblu
 
 /datum/loadout_item/smokingcap
@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/head/roguetown/roguehood
 
 /datum/loadout_item/necromhood
-    name = "Necromancer Hood"
+    name = "死灵法师兜帽"
     path = /obj/item/clothing/head/roguetown/necromhood
 
 /datum/loadout_item/hijab
@@ -375,11 +375,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/flowercrown/rosa
 
 /datum/loadout_item/thorn_rosa_crown
-	name = "Rosa Crown with Thorns"
+	name = "带刺玫瑰花冠"
 	path = /obj/item/flowercrown/rosa/thorns
 
 /datum/loadout_item/dyeable_crown
-	name = "Gray Flower Crown"
+	name = "灰色花冠"
 	path = /obj/item/flowercrown/rosa/dyecrown
 
 /datum/loadout_item/salvia_crown
@@ -387,15 +387,15 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/flowercrown/salvia
 
 /datum/loadout_item/matricaria_crown
-	name = "Matricaria Crown"
+	name = "洋甘菊花冠"
 	path = /obj/item/flowercrown/matricaria
 
 /datum/loadout_item/calendula_crown
-	name = "Calendula Crown"
+	name = "金盏花花冠"
 	path = /obj/item/flowercrown/calendula
 
 /datum/loadout_item/manabloom_crown
-	name = "Manabloom Crown"
+	name = "魔力花花冠"
 	path = /obj/item/flowercrown/manabloom
 
 /datum/loadout_item/tri_grenzelhoft_hat_capless
@@ -403,7 +403,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/head/roguetown/caplessgrenzelhofthat
 
 /datum/loadout_item/loadoutpapakha
-	name = "Soft-sided papakha"
+	name = "软边高加索毛帽"
 	path = /obj/item/clothing/head/roguetown/loadoutpapakha
 
 //CLOAKS
@@ -592,12 +592,12 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/shoes/roguetown/simpleshoes
 
 /datum/loadout_item/paddedfootwraps
-	name = "Padded Footwraps"
+	name = "衬垫裹脚布"
 	path = /obj/item/clothing/shoes/roguetown/boots/footwraps/padded
 	triumph_cost = 2
 
 /datum/loadout_item/heleatherfootwraps
-	name = "Hardened Leather Footwraps"
+	name = "硬化皮革裹脚布"
 	path = /obj/item/clothing/shoes/roguetown/boots/footwraps/hleather
 	triumph_cost = 2
 
@@ -611,11 +611,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/robe
 
 /datum/loadout_item/Necromrobe
-    name = "Necromancer Robes"
+    name = "死灵法师长袍"
     path = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
 
 /datum/loadout_item/guilder_jacket
-	name = "Guilder Jacket"
+	name = "行会夹克"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
 
 /datum/loadout_item/phys_robe
@@ -643,7 +643,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 
 /datum/loadout_item/sailorshirt_colorable
-	name = "Striped Shirt (Colorable)"
+	name = "条纹衬衫（可染色）"
 	path = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/colored
 
 /datum/loadout_item/sailorjacket
@@ -663,11 +663,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra
 
 /datum/loadout_item/greenbra
-	name = "Green Exotic Silk Bra"
+	name = "绿色异域丝绸胸罩"
 	path = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra/green
 
 /datum/loadout_item/redbra
-	name = "Red Exotic Silk Bra"
+	name = "红色异域丝绸胸罩"
 	path = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra/red
 
 /datum/loadout_item/bottomtunic
@@ -823,11 +823,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/under/roguetown/skirt
 
 /datum/loadout_item/sirwal
-	name = "Sirwal"
+	name = "宽松灯笼裤"
 	path = /obj/item/clothing/under/roguetown/sirwal
 
 /datum/loadout_item/thong
-	name = "Thong"
+	name = "丁字裤"
 	path = /obj/item/clothing/under/roguetown/thong
 
 //ACCESSORIES
@@ -837,15 +837,15 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 
 
 /datum/loadout_item/bronze_duelist_goggles
-	name = "Bronze Duelist Goggles"
+	name = "青铜决斗者护目镜"
 	path = /obj/item/clothing/mask/rogue/spectacles/duelist/bronze
 
 /datum/loadout_item/golden_spectacles
-	name = "Golden Spectacles"
+	name = "金框眼镜"
 	path = /obj/item/clothing/mask/rogue/spectacles/golden
 
 /datum/loadout_item/fingerless_leather_gloves
-	name = "Fingerless Leather Gloves"
+	name = "露指皮手套"
 	path = /obj/item/clothing/gloves/roguetown/fingerless_leather
 
 /datum/loadout_item/allwrappings
@@ -873,11 +873,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/storage/belt/rogue/leather/exoticsilkbelt
 
 /datum/loadout_item/greenskirt
-	name = "Green Exotic Silk Belt"
+	name = "绿色异域丝绸腰带"
 	path = /obj/item/storage/belt/rogue/leather/exoticsilkbelt/skirtgreen
 
 /datum/loadout_item/redskirt
-	name = "Red Exotic Silk Belt"
+	name = "红色异域丝绸腰带"
 	path = /obj/item/storage/belt/rogue/leather/exoticsilkbelt/skirtred
 
 /datum/loadout_item/butlersuspenders
@@ -885,7 +885,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/storage/belt/rogue/leather/suspenders/butler
 
 /datum/loadout_item/butlersuspenders_colorable
-	name = "Suspenders (Colorable)"
+	name = "吊裤带（可染色）"
 	path = /obj/item/storage/belt/rogue/leather/suspenders/butler/colored
 
 /datum/loadout_item/ragmask
@@ -905,11 +905,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/mask/rogue/exoticsilkmask
 
 /datum/loadout_item/maskgreen
-	name = "Green Exotic Silk Mask"
+	name = "绿色异域丝绸面罩"
 	path = /obj/item/clothing/mask/rogue/exoticsilkmask/green
 
 /datum/loadout_item/maskred
-	name = "Red Exotic Silk Mask"
+	name = "红色异域丝绸面罩"
 	path = /obj/item/clothing/mask/rogue/exoticsilkmask/red
 
 /datum/loadout_item/duelmask
@@ -1041,7 +1041,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/storage/belt/rogue/leather/battleskirt/faulds
 
 /datum/loadout_item/breechskirt
-	name = "Belt with Breechcloth"
+	name = "兜裆布腰带"
 	path = /obj/item/storage/belt/rogue/leather/battleskirt/breechcloth
 
 /datum/loadout_item/tri_cloth_belt
@@ -1150,27 +1150,27 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/neck/roguetown/psicross/ten
 
 /datum/loadout_item/psicross/gronngraggar
-	name = "Amulet of the Moose"
+	name = "驼鹿护符"
 	path = /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/gronn
 
 /datum/loadout_item/psicross/gronnmatthios
-	name = "Amulet of the Bear"
+	name = "熊护符"
 	path = /obj/item/clothing/neck/roguetown/psicross/inhumen/matthios/gronn
 
 /datum/loadout_item/psicross/gronnzizo
-	name = "Amulet of the Wolf"
+	name = "狼护符"
 	path = /obj/item/clothing/neck/roguetown/psicross/inhumen/gronn
 
 /datum/loadout_item/psicross/gronnmbaotha
-	name = "Amulet of the Leopard"
+	name = "豹护符"
 	path = /obj/item/clothing/neck/roguetown/psicross/inhumen/baotha/gronn
 
 /datum/loadout_item/psicross/gronnabyssor
-	name = "Amulet of the Kraken"
+	name = "海怪护符"
 	path = /obj/item/clothing/neck/roguetown/psicross/abyssor/gronn
 
 /datum/loadout_item/psicross/gronndendor
-	name = "Amulet of the Volfskinned Man"
+	name = "狼皮人护符"
 	path = /obj/item/clothing/neck/roguetown/psicross/dendor/gronn
 
 /datum/loadout_item/wedding_band
@@ -1320,7 +1320,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe
 
 /datum/loadout_item/decorative_captain_robe
-	name = "Decorative Flowery Robe"
+	name = "装饰花纹长袍"
 	path = /obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe/decorative
 
 /datum/loadout_item/mentor_suit
@@ -1328,7 +1328,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
 
 /datum/loadout_item/decorative_mentor_suit
-	name = "Decorative Mentor Robe"
+	name = "装饰导师长袍"
 	path = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit/decorative
 
 /datum/loadout_item/crafteast
@@ -1375,7 +1375,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/head/roguetown/mentorhat
 
 /datum/loadout_item/decorative_mentorhat
-	name = "decorative bamboo hat"
+	name = "装饰斗笠"
 	path = /obj/item/clothing/head/roguetown/mentorhat/decorative
 
 // ROBES - ASTRATA
@@ -1704,12 +1704,12 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 3
 
 /datum/loadout_item/tri_fencing_shirt_shepherd
-	name = "Shepherd's Shirt (Padded)"
+	name = "牧羊人衬衫（衬垫）"
 	path = /obj/item/clothing/suit/roguetown/shirt/freifechter/shepherd
 	triumph_cost = 3
 
 /datum/loadout_item/tri_fencing_vest_shepherd
-	name = "Shepherd's Vest (Padded)"
+	name = "牧羊人背心（衬垫）"
 	path = /obj/item/clothing/suit/roguetown/armor/leather/heavy/shepherd
 	triumph_cost = 3
 
@@ -2315,7 +2315,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 4
 
 /datum/loadout_item/saddle
-	name = "Saddle"
+	name = "鞍具"
 	path = /obj/item/natural/saddle
 	triumph_cost = 4
 
@@ -2340,25 +2340,25 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 1
 
 /datum/loadout_item/scabbard/noble
-	name = "Noble Scabbard"
+	name = "贵族剑鞘"
 	path = /obj/item/rogueweapon/scabbard/sword/noble
 	triumph_cost = 2
 	requires_nobility = TRUE
 
 /datum/loadout_item/scabbard/royal
-	name = "Royal Scabbard"
+	name = "王室剑鞘"
 	path = /obj/item/rogueweapon/scabbard/sword/royal
 	triumph_cost = 3
 	requires_nobility = TRUE
 
 /datum/loadout_item/scabbard/sheathe/noble
-	name = "Noble Sheathe"
+	name = "贵族刀鞘"
 	path = /obj/item/rogueweapon/scabbard/sheath/noble
 	triumph_cost = 1
 	requires_nobility = TRUE
 
 /datum/loadout_item/scabbard/sheathe/royal
-	name = "Royal Sheathe"
+	name = "王室刀鞘"
 	path = /obj/item/rogueweapon/scabbard/sheath/royal
 	triumph_cost = 1
 	requires_nobility = TRUE
@@ -2461,29 +2461,29 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 //CAPARISONS
 
 /datum/loadout_item/caparison
-	name = "Caparison"
+	name = "坐骑披衣"
 	path = /obj/item/caparison
 
 /datum/loadout_item/caparison/psy
-	name = "Psydonite Caparison"
+	name = "普赛顿坐骑披衣"
 	path = /obj/item/caparison/psy
 
 /datum/loadout_item/caparison/astrata
-	name = "Astratan Caparison"
+	name = "阿斯特拉塔坐骑披衣"
 	path = /obj/item/caparison/astrata
 
 /datum/loadout_item/caparison/eora
-	name = "Eoran Caparison"
+	name = "伊奥拉坐骑披衣"
 	path = /obj/item/caparison/eora
 
 /datum/loadout_item/caparison/azure
-	name = "Ducal Caparison"
+	name = "公爵坐骑披衣"
 	path = /obj/item/caparison/azure
 
 /datum/loadout_item/caparison/fogbeast
-	name = "Fogbeast Caparison"
+	name = "雾兽披衣"
 	path = /obj/item/caparison/fogbeast
 
 /datum/loadout_item/caparison/fogbeast/azure
-	name = "Ducal Caparison (Fogbeast)"
+	name = "公爵坐骑披衣（雾兽）"
 	path = /obj/item/caparison/fogbeast/azure
