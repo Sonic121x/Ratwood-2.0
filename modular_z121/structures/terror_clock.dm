@@ -13,11 +13,16 @@
 #define TERROR_CLOCK_GRAGGAR_DOUBLE_CHANCE 25
 #define TERROR_CLOCK_PUNISHMENT_AMOUNT 8
 
-// 摧毁惩罚使用独立名单，不与试炼第四波共享配置，也不包含蜥蜴人狱卒。
+// 摧毁惩罚按职业顺序生成，空位不足时也尽早形成混编，不读取试炼配置。
 GLOBAL_LIST_INIT(terror_clock_punishment_roster, list(
-	/mob/living/carbon/human/species/human/northern/mad_touched_treasure_hunter,
-	/mob/living/carbon/human/species/human/northern/deranged_knight,
-	/mob/living/carbon/human/species/elf/dark/drowraider,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter/archer,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter/mage,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter/priest,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter/archer,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter,
+	/mob/living/carbon/human/species/human/northern/terror_clock_hunter,
 ))
 
 // 分类与怪物类型保持原有配置；人形怪物自行完成延迟装备初始化。
@@ -178,14 +183,15 @@ GLOBAL_LIST_INIT(terror_clock_roster, list(
 		visible_message(span_danger("[src]在崩裂中发出骇人的嘶吼，恶意从残骸中涌出！"))
 		// 绕过每日次数和整片净空要求，但每个落点仍需安全且未被占用。
 		var/list/spawn_turfs = get_valid_spawn_turfs(center)
-		var/mob_type = pick(GLOB.terror_clock_punishment_roster)
 		for(var/i in 1 to TERROR_CLOCK_PUNISHMENT_AMOUNT)
 			var/turf/target = terror_clock_take_safe_turf(spawn_turfs)
 			if(!target)
 				break
-			var/mob/living/M = new mob_type(target)
+			var/mob_type = GLOB.terror_clock_punishment_roster[i]
+			var/mob/living/carbon/human/species/human/northern/terror_clock_hunter/M = new mob_type(target)
 			if(QDELETED(M))
 				continue
+			M.preferred_victim = WEAKREF(destroyer)
 			terror_clock_awaken_mob(M)
 			spawned++
 		if(spawned)
