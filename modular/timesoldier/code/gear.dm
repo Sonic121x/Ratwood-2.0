@@ -1,12 +1,12 @@
 /obj/item/storage/backpack/rogue/satchel/short/timesoldier_ifak
-	name = "individiual aid satchel"
-	desc = "<span class='yellow'><i>Whenever crates of this stuff came around, we knew we'd have to start digging into our own wounds that following dae. Doubles as a small satchel, too.</i></span>"
+	name = "个人急救挎包"
+	desc = "<span class='yellow'><i>每当一箱箱这种东西运来，我们就知道第二天得开始挖开自己的伤口了。它也能当小挎包用。</i></span>"
 	icon = 'modular/timesoldier/sprites/gear.dmi'
 	icon_state = "ifak" // ditto as above
 
 /obj/item/reagent_containers/glass/bottle/waterskin/timesoldier
-	name = "iron canteen"
-	desc = "Also known as the Soldier's Drink, it's commonly used by the Grenzelhoft Military in long expeditions. How did it end up here, though?"
+	name = "铁制水壶"
+	desc = "也称士兵饮壶，格伦泽尔霍夫特军队在长途远征时经常使用。不过，它怎么会出现在这里？"
 
 	volume = 225
 	list_reagents = list(
@@ -19,8 +19,8 @@
 // fragmentation
 
 /obj/projectile/bullet/timesoldier_shrapnel
-	name = "shrapnel fragment"
-	desc = "A jagged piece of violently propelled metal."
+	name = "弹片"
+	desc = "一块被猛烈抛射而出的锯齿状金属碎片。"
 
 	damage = 55
 	damage_type = BRUTE
@@ -105,8 +105,8 @@
 // STIELHANDGRANATE
 
 /obj/item/timesoldier/grenade/stick
-	name = "Stielhandgranate"
-	desc = "A Grenzelhoftian marvel. It was invented to replace the impact grenade most would know in this time, this is a lot more deadly."
+	name = "柄式手榴弹"
+	desc = "格伦泽尔霍夫特的奇妙发明。它是为替代这个时代大多数人熟悉的撞击式手榴弹而造的，杀伤力要强得多。"
 
 	icon = 'modular/timesoldier/sprites/nu_guns.dmi'
 	icon_state = "sticknade"
@@ -128,7 +128,7 @@
 	. = ..()
 
 	if(armed)
-		to_chat(user, span_warning("[src] is already armed!"))
+		to_chat(user, span_warning("[src]已经启动了！"))
 		return
 
 	arm(user)
@@ -144,8 +144,8 @@
 	detonation_time = world.time + fuze
 
 	visible_message(
-		span_warning("[user] arms [src]!"),
-		span_userdanger("I arm [src]!")
+		span_warning("[user]启动了[src]！"),
+		span_userdanger("我启动了[src]！")
 	)
 
 	playsound(src, pick(
@@ -186,7 +186,7 @@
 		qdel(src)
 		return
 
-	visible_message(span_danger("[src] explodes!"))
+	visible_message(span_danger("[src]爆炸了！"))
 
 	// anyone directly on top of the grenade is uhhhhh....probably fucked.
 	for(var/mob/living/L in T)

@@ -933,7 +933,7 @@
 	if(!user.has_flaw(/datum/charflaw/addiction/lovefiend) && !user.has_flaw(/datum/charflaw/addiction/baothamarked))
 		return
 	if(!user.has_status_effect(/datum/status_effect/debuff/false_sensation)) // So chat isn't spammed
-		to_chat(user, span_warning("My arousal is hollow and false. It won't sate my urges."))
+		to_chat(user, span_warning("这份兴奋空虚而虚假，无法满足我的欲望。"))
 	user.apply_status_effect(/datum/status_effect/debuff/false_sensation)
 
 /datum/sex_controller/proc/update_erect_state()
