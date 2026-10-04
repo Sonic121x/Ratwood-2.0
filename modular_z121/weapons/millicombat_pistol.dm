@@ -158,8 +158,7 @@
 	update_icon()
 
 /obj/item/gun/ballistic/z121_millicombat_pistol/can_shoot()
-	if(z121_highwayman_weapon?.finisher && !operating && !firing && !firing_stage)
-		z121_highwayman_load()
+	// 射击检查不改变弹药或装药，避免保留中的终结技在检查时重复补弹。
 	return chambered?.BB && gunpowder && !operating && !firing && !firing_stage
 
 /obj/item/gun/ballistic/z121_millicombat_pistol/shoot_with_empty_chamber(mob/living/user)

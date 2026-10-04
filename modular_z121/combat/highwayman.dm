@@ -262,6 +262,8 @@
 
 /datum/action/z121_highwayman/New()
 	desc += " 穿戴中甲或重甲时禁用，换装会清除待发招式和临时增益。"
+	if(finisher)
+		desc += " 准备时最多免费装填一次；未命中会保留招式，但再次射击需要正常装填。"
 	..()
 
 /datum/action/z121_highwayman/UpdateButtonIcon(status_only = FALSE, force = FALSE)
@@ -391,6 +393,8 @@
 	var/skill_id
 	var/finisher = FALSE
 	var/datum/weakref/flying_bullet
+	// 本次终结技的装填机会一旦使用，未命中或弹丸消失都不会重置。
+	var/finisher_load_used = FALSE
 	var/obj/item/ammo_casing/z121_generated_round
 
 /datum/component/z121_highwayman_weapon/Initialize(datum/component/z121_highwayman/C, datum/action/z121_highwayman/A)
