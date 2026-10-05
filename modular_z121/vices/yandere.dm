@@ -4,7 +4,7 @@
 // ----------------------------------------------------------------------------
 // 需求（为什么要做这个文件）：
 //   实现一个全新的"病娇（Yandere）"恶习，进入游戏后：
-//     1) 随机指定场上的某位【玩家】作为"暗恋对象（crush）"。
+//     1) 入场后 24 分钟内自主指定眼前的玩家为"暗恋对象（crush）"，超时才随机指定。
 //     2) 自动习得【病娇寻人术】，无需同意即可追踪唯一的暗恋对象。
 //     3) 把暗恋对象自动加入"熟人名单（known_people / 相识之人）"。
 //     4) 当能【看见】暗恋对象时——心情达到顶峰（强力正面情绪）。
@@ -61,9 +61,8 @@
 // 为什么指定暗恋对象要可重试：游戏刚开局时其他玩家可能尚未完全生成（仍在创角/读条），
 //   一次找不到就等一会儿再找，直到场上出现可作为暗恋对象的玩家为止。
 #define YANDERE_DESIGNATE_RETRY (30 SECONDS)
-// 为什么有初始延迟：on_mob_creation 触发时本人/他人都可能还没准备好（mind 未就绪、
-//   仍在 advsetup）。先等一小段时间再尝试指定，能拿到更稳定、更完整的玩家快照。
-#define YANDERE_INITIAL_DELAY (15 SECONDS)
+// 从角色完成入场起计算个人期限，迟加入玩家同样有完整的一天。
+#define YANDERE_SELECTION_WINDOW (24 MINUTES)
 
 
 // ----------------------------------------------------------------------------
@@ -73,10 +72,11 @@
 // ----------------------------------------------------------------------------
 /datum/charflaw/yandere
 	name = "病娇"                                                              // 角色定制菜单中显示的恶习名（Yandere）。
-	// 为什么这样写描述：向玩家说明核心机制——开局随机暗恋一名玩家、自动获得寻人术、
+	// 为什么这样写描述：向玩家说明核心机制——一天内自主选择爱慕对象、选定后获得寻人术、
 	//   见到对方时心花怒放、见不到时心情每况愈下，久久不见还会失控地呼喊其名。
-	desc = "我的心里只装得下一个人。进入这个世界后，我会不由自主地深深爱上某个人。\
-			我天生懂得【病娇寻人术】，无需同意便能追踪唯一的爱慕对象，即使 ta 离线或死亡也一样。\
+	desc = "我的心里只装得下一个人。入场后的一天（24 分钟）内，我可以用【指定爱慕对象】选择眼前的一名玩家。\
+			对象只能指定一次；若未及时选择，我便会不由自主地爱上随机的一名玩家。\
+			选定后我会学会【病娇寻人术】，无需同意便能追踪唯一的爱慕对象，即使 ta 离线或死亡也一样。\
 			只要能看见心爱之人，我便心花怒放；一旦见不到 ta，我就坐立难安、心情每况愈下；\
 			若太久见不到 ta，我会失了分寸，一遍又一遍地呼喊 ta 的名字……"
 
@@ -97,6 +97,10 @@
 	// 为什么记录下次可尝试指定的时间：指定可能因"暂时没有可选玩家"而失败，需要隔一段时间
 	//   重试；用时间戳节流重试频率，避免每 tick 都做一次全表扫描。
 	var/next_designate_attempt = 0                                             // 下一次允许尝试"指定暗恋对象"的世界时间。
+	var/selection_deadline = null                                              // null 表示尚未完成入场，不开始计时。
+	var/selection_pending = FALSE                                             // 防止同时打开多个选择/确认弹窗。
+	var/removed = FALSE                                                       // on_removal 可能先于持有者名单更新。
+	var/datum/action/yandere_designate_crush/selection_action
 
 	// 仅记录本怪癖实际授予的专属法术实例，移除时不影响普通寻人术。
 	var/datum/weakref/granted_spell
@@ -125,19 +129,111 @@
 
 
 // ----------------------------------------------------------------------------
-// 创建钩子：恶习刚挂到角色身上时
-// 为什么重写 on_mob_creation：在这里给"首次指定暗恋对象"设一个初始延迟。
-//   注意——此刻角色的 mind 往往尚未就绪（参见 badsight 等恶习的注释），因此这里
-//   绝不立刻指定，只设定"最早可在 YANDERE_INITIAL_DELAY 之后尝试"，真正的指定放到
-//   flaw_on_life 里反复重试（那时 mind / 其他玩家更可能已经就绪）。
+// 创建时只记录持有者；等生命 tick 确认 mind 和创角流程就绪后再开始选择期限。
 // ----------------------------------------------------------------------------
 /datum/charflaw/yandere/on_mob_creation(mob/user)
 	. = ..()                                                                   // 先跑基类逻辑（当前为空实现，保留以兼容未来扩展）。
 	// 为什么把"最近看见时间"先设为当前时刻：避免恶习一上身、暗恋对象还没指定时，
 	//   就因为 last_seen_time=0 而被判定为"已经几百分钟没见到"从而立刻开始嘶喊。
 	last_seen_time = world.time
-	// 设定首次指定的最早时间（给世界一点时间把所有玩家生成完毕）。
-	next_designate_attempt = world.time + YANDERE_INITIAL_DELAY
+	if(ishuman(user))
+		owner_wref = WEAKREF(user)
+
+/datum/charflaw/yandere/Destroy()
+	clear_selection_action()
+	clear_all_murder_targets()
+	owner_wref = null
+	return ..()
+
+// 所有弹窗返回和自动指定入口都要核对实际持有者，防止恶习移除后继续绑定。
+/datum/charflaw/yandere/proc/is_current_owner(mob/living/carbon/human/H)
+	return !QDELETED(src) && !removed && istype(H) && !QDELETED(H) && H.get_flaw(/datum/charflaw/yandere) == src
+
+/datum/charflaw/yandere/proc/begin_selection(mob/living/carbon/human/H)
+	if(!is_current_owner(H) || designated || !isnull(selection_deadline) || !H.mind || H.advsetup || H.stat == DEAD)
+		return FALSE
+	selection_deadline = world.time + YANDERE_SELECTION_WINDOW
+	next_designate_attempt = selection_deadline
+	selection_action = new
+	selection_action.flaw_ref = WEAKREF(src)
+	selection_action.Grant(H)
+	update_selection_action()
+	to_chat(H, span_boldnotice("我有一天（24 分钟）的时间，用【指定爱慕对象】选择眼前的一名玩家。只能选定一次；若错过期限，我的心便会自行选择。"))
+	return TRUE
+
+/datum/charflaw/yandere/proc/can_choose_crush(mob/living/carbon/human/H)
+	return is_current_owner(H) && H.mind && !H.advsetup && H.stat == CONSCIOUS && !designated && !isnull(selection_deadline) && world.time < selection_deadline
+
+/datum/charflaw/yandere/proc/selection_time_text()
+	var/seconds_left = ceil(max(0, selection_deadline - world.time) / (1 SECONDS))
+	return "[FLOOR(seconds_left / 60, 1)] 分 [seconds_left % 60] 秒"
+
+/datum/charflaw/yandere/proc/update_selection_action()
+	if(selection_action)
+		selection_action.desc = "选择当前视野内活着的其他玩家作为唯一爱慕对象。确认后无法更改。剩余 [selection_time_text()]；超时将随机指定。"
+		selection_action.UpdateButtonIcon()
+
+/datum/charflaw/yandere/proc/clear_selection_action()
+	QDEL_NULL(selection_action)
+
+// 主动选择额外要求目标已经入场，并且确实处于持有者眼前的视野内。
+/datum/charflaw/yandere/proc/can_choose_target(mob/living/carbon/human/H, mob/living/carbon/human/target)
+	if(!can_choose_crush(H) || !is_crush_candidate(H, target) || target.advsetup || is_blind(H))
+		return FALSE
+	return (target in view(H.client ? H.client.view : world.view, H)) && H.can_see_cone(target)
+
+/datum/charflaw/yandere/proc/get_visible_crush_candidates(mob/living/carbon/human/H)
+	var/list/options = list()
+	for(var/mob/living/carbon/human/target in get_crush_candidates(H))
+		if(can_choose_target(H, target))
+			// 编号区分同名角色，不向玩家展示 ckey 或内部引用。
+			options["[target.name]（[length(options) + 1]）"] = target
+	return options
+
+/datum/charflaw/yandere/proc/choose_crush(mob/living/carbon/human/H)
+	if(!can_choose_crush(H) || !H.client || selection_pending)
+		return FALSE
+	var/list/options = get_visible_crush_candidates(H)
+	if(!length(options))
+		to_chat(H, span_warning("我的视野内没有可以指定的玩家。"))
+		return FALSE
+	selection_pending = TRUE
+	update_selection_action()
+	var/choice = tgui_input_list(H, "选择唯一的爱慕对象。剩余 [selection_time_text()]。", "指定爱慕对象", options, timeout = selection_deadline - world.time)
+	if(QDELETED(src))
+		return FALSE
+	var/mob/living/carbon/human/target = isnull(choice) ? null : options[choice]
+	if(!can_choose_target(H, target))
+		selection_pending = FALSE
+		update_selection_action()
+		return FALSE
+	var/confirmation = tgui_alert(H, "确定将 [target.name] 指定为爱慕对象吗？对象只能指定一次，确定后无法更改。\n剩余 [selection_time_text()]。", "指定爱慕对象", list("确定", "取消"), timeout = selection_deadline - world.time)
+	if(QDELETED(src))
+		return FALSE
+	selection_pending = FALSE
+	update_selection_action()
+	if(confirmation != "确定" || !can_choose_target(H, target))
+		return FALSE
+	return designate_crush(H, target)
+
+/datum/action/yandere_designate_crush
+	name = "指定爱慕对象"
+	icon_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "spell0"
+	check_flags = AB_CHECK_CONSCIOUS
+	var/datum/weakref/flaw_ref
+
+/datum/action/yandere_designate_crush/IsAvailable()
+	if(!..() || !ishuman(owner))
+		return FALSE
+	var/datum/charflaw/yandere/flaw = flaw_ref?.resolve()
+	return flaw && !flaw.selection_pending && flaw.can_choose_crush(owner)
+
+/datum/action/yandere_designate_crush/Trigger()
+	if(!..())
+		return FALSE
+	var/datum/charflaw/yandere/flaw = flaw_ref?.resolve()
+	return flaw?.choose_crush(owner)
 
 
 // ----------------------------------------------------------------------------
@@ -153,10 +249,17 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user                                       // 取得人类引用。
+	if(!is_current_owner(H))
+		return
 
 	// 为什么每 tick 刷新持有者弱引用：情敌死亡的异步回调（on_rival_death）需要凭它找回
 	//   病娇本人。把它放在生命 tick 里持续更新，可保证它始终指向当前有效的持有者。
 	owner_wref = WEAKREF(H)
+	if(!designated)
+		begin_selection(H)
+		if(!isnull(selection_deadline) && world.time >= selection_deadline && selection_action)
+			clear_selection_action()
+			to_chat(H, span_warning("一天已过，我错过了亲自选择的机会……我的心将自行寻找爱慕之人。"))
 
 	// 为什么死亡时不处理：对尸体计较"病娇心情/嘶喊"既无意义，也会在错误时机打扰玩家。
 	//   待其复活/转生后自然恢复处理。
@@ -168,12 +271,10 @@
 		return
 	last_check = world.time                                                    // 记录本次检测时间，作为下次节流基准。
 
-	// —— 阶段一：若尚未指定暗恋对象，则尝试指定 ——
-	// 为什么放在每 tick（节流后）里反复尝试：开局玩家陆续就绪，单次尝试可能失败；
-	//   反复重试可保证"只要场上出现合适的玩家，就一定会指定一个暗恋对象"。
+	// —— 阶段一：期限内等待自主选择；超时才尝试随机指定 ——
 	if(!designated)
-		// 仍在等待初始延迟 / 重试间隔时，本次不尝试。
-		if(world.time < next_designate_attempt)
+		update_selection_action()
+		if(isnull(selection_deadline) || world.time < next_designate_attempt)
 			return
 		try_designate_crush(H)                                                 // 尝试指定（成功会把 designated 置 TRUE）。
 		return                                                                 // 指定当 tick 不再继续往下走（等下一 tick 进入正常监测）。
@@ -195,8 +296,8 @@
 //   若此刻 mind 还没就绪，就推迟到下次重试，不强行执行以免空引用。
 // ----------------------------------------------------------------------------
 /datum/charflaw/yandere/proc/try_designate_crush(mob/living/carbon/human/H)
-	if(!istype(H))                                                             // 防御式校验：无效持有者直接返回。
-		return
+	if(!is_current_owner(H) || designated || isnull(selection_deadline) || world.time < selection_deadline || world.time < next_designate_attempt)
+		return FALSE
 	// 为什么先安排好"下次重试时间"：无论本次成功与否，都先把重试时钟往后拨，
 	//   这样即便中途 return 也不会出现"同一 tick 反复全表扫描"的情况。
 	next_designate_attempt = world.time + YANDERE_DESIGNATE_RETRY
@@ -215,16 +316,21 @@
 		//   这是正常情形；等以后有玩家出现时下一次重试自然会成功。
 		return
 
-	// 从候选中随机挑一个作为暗恋对象（需求 1："随机指定一名玩家"）。
+	// 仅在自主选择期限结束后，从全场候选中随机挑选。
 	var/mob/living/carbon/human/crush = pick(candidates)
-	if(!istype(crush))                                                         // 极端兜底：挑出来的不是有效人类则放弃本次，等待重试。
-		return
+	return designate_crush(H, crush)
+
+// 主动选择与超时随机共用的一次性绑定过程。
+/datum/charflaw/yandere/proc/designate_crush(mob/living/carbon/human/H, mob/living/carbon/human/crush)
+	if(!is_current_owner(H) || !H.mind || H.advsetup || H.stat == DEAD || designated || !is_crush_candidate(H, crush))
+		return FALSE
 
 	// 记录暗恋对象（弱引用 + 真名，原因见字段定义处注释）。
 	crush_ref = WEAKREF(crush)
 	locate_crush_ref = WEAKREF(crush)
 	crush_name = crush.real_name
 	designated = TRUE                                                          // 标记"已指定"，今后不再重新挑人（病娇专一）。
+	clear_selection_action()
 	last_seen_time = world.time                                               // 以指定时刻作为"最近看见"的起点，避免立刻触发嘶喊。
 
 	// 需求 2：自动习得【病娇寻人术】。
@@ -240,6 +346,8 @@
 		从今往后，我的世界里只有 ta。我必须时时刻刻知道 ta 在哪里。"))
 	// 心动当下也给一点点正面情绪铺垫（轻微，不喧宾夺主；真正的"顶峰"留给"看见"时）。
 	to_chat(H, span_green("只是想到 ta，我的心里就泛起一阵甜蜜。"))
+	process_crush_state(H)
+	return TRUE
 
 
 // ----------------------------------------------------------------------------
@@ -253,18 +361,12 @@
 /datum/charflaw/yandere/proc/get_crush_candidates(mob/living/carbon/human/H)
 	var/list/candidates = list()
 	for(var/mob/living/carbon/human/other in GLOB.human_list)
-		if(other == H)                                                         // 不能暗恋自己。
-			continue
-		if(QDELETED(other))                                                    // 跳过正在被删除的无效对象。
-			continue
-		if(!other.ckey)                                                        // 没有 ckey -> 不是玩家角色（NPC）-> 排除。
-			continue
-		if(!other.mind)                                                        // 没有 mind 的异常对象 -> 排除。
-			continue
-		if(other.stat == DEAD)                                                 // 一开局就是死人 -> 排除（暗恋对象应当是活人）。
-			continue
-		candidates += other
+		if(is_crush_candidate(H, other))
+			candidates += other
 	return candidates
+
+/datum/charflaw/yandere/proc/is_crush_candidate(mob/living/carbon/human/H, mob/living/carbon/human/other)
+	return istype(other) && !QDELETED(other) && other != H && other.ckey && other.mind && other.stat != DEAD
 
 
 // ----------------------------------------------------------------------------
@@ -437,6 +539,9 @@
 // ----------------------------------------------------------------------------
 /datum/charflaw/yandere/on_removal(mob/user)
 	. = ..()                                                                   // 先跑基类清理逻辑。
+	removed = TRUE
+	clear_selection_action()
+	owner_wref = null
 	if(!ishuman(user))                                                         // 非人类无需清理。
 		return
 	var/mob/living/carbon/human/H = user
@@ -828,4 +933,4 @@
 #undef YANDERE_SCREAM_COOLDOWN_MIN
 #undef YANDERE_SCREAM_COOLDOWN_MAX
 #undef YANDERE_DESIGNATE_RETRY
-#undef YANDERE_INITIAL_DELAY
+#undef YANDERE_SELECTION_WINDOW
