@@ -233,7 +233,7 @@ And it also helps for the character set panel
 		return
 
 	// Create the root leadership position
-	hierarchy_root = new /datum/clan_hierarchy_node("Clan Leader", "The supreme leader of the clan", 0)
+	hierarchy_root = new /datum/clan_hierarchy_node("氏族领袖", "氏族的最高领袖", 0)
 	hierarchy_root.position_color = "#gold"
 	hierarchy_root.can_assign_positions = TRUE
 	hierarchy_root.max_subordinates = 10
