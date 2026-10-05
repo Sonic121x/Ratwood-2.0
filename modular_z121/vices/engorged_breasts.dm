@@ -141,7 +141,7 @@
 	// 初始化时间戳与检测基准：下一轮胀奶 = 现在 + 40 分钟；并记录当前奶量/血量/烧伤作为对比起点。
 	next_engorge = world.time + ENGORGEMENT_PERIOD                             // 40 分钟后首次需要挤奶。
 	prev_milk_stored = B.milk_stored                                           // 记录当前奶量作为对比基准。
-	prev_blood_volume = H.blood_volume                                         // 记录当前血量作为对比基准（血奶角色用）。
+	prev_blood_volume = H.get_blood_volume()                                         // 记录当前血量作为对比基准（血奶角色用）。
 	prev_fireloss = H.getFireLoss()                                            // 记录当前烧伤作为对比基准（无血血奶角色用）。
 
 	// 给玩家一段私密的"身体变化"提示，明确告知这份恶习已经生效（只有本人看得到）。
@@ -192,7 +192,7 @@
 	if(!blood_milk)                                                            // 普通角色 ……
 		milked = (B.milk_stored < prev_milk_stored)                            // …… 奶量下降即视为挤过。
 	else                                                                       // 血奶角色 ……
-		milked = (H.blood_volume < prev_blood_volume) || (H.getFireLoss() > prev_fireloss) // …… 血量下降或烧伤上升即视为挤过。
+		milked = (H.get_blood_volume() < prev_blood_volume) || (H.getFireLoss() > prev_fireloss) // …… 血量下降或烧伤上升即视为挤过。
 
 	if(engorged)                                                               // —— 状态 A：当前正在涨奶 ——
 		if(milked)                                                             // 本拍挤过奶 ……
@@ -213,7 +213,7 @@
 
 	// 更新检测基准（放在最后，确保本拍"补满奶量"不会被误判成下一拍的"挤过奶"）。
 	prev_milk_stored = B.milk_stored                                           // 更新奶量基准。
-	prev_blood_volume = H.blood_volume                                         // 更新血量基准。
+	prev_blood_volume = H.get_blood_volume()                                         // 更新血量基准。
 	prev_fireloss = H.getFireLoss()                                            // 更新烧伤基准。
 
 

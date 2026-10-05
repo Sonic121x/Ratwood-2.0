@@ -80,6 +80,16 @@
 		myrod = null
 	return ..()
 
+// 此枪只有三张完整姿态图，没有普通弹道枪械的独立弹仓图层。
+/obj/item/gun/ballistic/z121_repeating_flintlock/update_icon()
+	if(QDELETED(src))
+		return
+	// 父级刷新持枪者外观前先清除旧图层，避免把不存在的弹仓状态合成为第二把枪。
+	cut_overlays()
+	. = ..()
+	// 弹道枪械父级会在刷新外观后再次添加弹仓图层，必须清除以免后续持握刷新重复合成。
+	cut_overlays()
+
 /obj/item/gun/ballistic/z121_repeating_flintlock/proc/effective_range()
 	var/obj/projectile/bullet/firearm/lead/base_projectile = /obj/projectile/bullet/firearm/lead
 	// 单参数取整向下截断，先加半格实现四舍五入。

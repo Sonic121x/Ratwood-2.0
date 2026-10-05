@@ -309,7 +309,7 @@
 // cleanable filth on the body) it continuously worsens mood (stress event) and
 // applies a Willpower -2 debuff; washing the body clean removes the penalties
 #include "vices/neat_freak.dm"
-// 自定义恶习：病娇（开局随机暗恋一名玩家）；自动习得专属【病娇寻人术】并把暗恋对象加入熟人名单；
+// 自定义恶习：病娇（入场后 24 分钟内指定眼前玩家，超时随机指定）；选定后习得专属【病娇寻人术】并加入熟人名单；
 // 看见暗恋对象时心情达到顶峰，看不见时心情持续变差，超过 5 分钟看不见则不断嘶喊其名
 // 专属寻人术只定位最初的爱慕对象，无需同意，且不受其生死或在线状态限制。
 #include "vices/yandere.dm"
