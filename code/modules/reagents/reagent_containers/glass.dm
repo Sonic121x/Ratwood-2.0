@@ -239,8 +239,8 @@
 
 	if(!isnull(reagents))
 		if(reagents.total_volume && user.used_intent.type == INTENT_SPLASH)
-			user.visible_message(span_danger("[user] splashes the contents of [src] onto [target]!"), \
-								span_notice("I splash the contents of [src] onto [target]."))
+			user.visible_message(span_danger("[user]将[src]中的液体泼向[target]！"), \
+								span_notice("我将[src]中的液体泼向[target]。"))
 			reagents.reaction(target, TOUCH)
 			reagents.clear_reagents()
 			return
@@ -262,8 +262,8 @@
 
 	if(isturf(target))
 		if(reagents.total_volume && user.used_intent.type == INTENT_SPLASH)
-			user.visible_message(span_danger("[user] splashes the contents of [src] onto [target]!"), \
-								span_notice("I splash the contents of [src] onto [target]."))
+			user.visible_message(span_danger("[user]将[src]中的液体泼向[target]！"), \
+								span_notice("我将[src]中的液体泼向[target]。"))
 			reagents.reaction(target, TOUCH)
 			reagents.clear_reagents()
 			return
@@ -278,7 +278,7 @@
 		var/obj/item/reagent_containers/food/snacks/egg/E = I
 		if(reagents)
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, span_notice("[src] is full."))
+				to_chat(user, span_notice("[src]已经满了。"))
 			else
 				to_chat(user, span_notice("我把[E]打进了[src]里。"))
 				E.reagents.trans_to(src, E.reagents.total_volume, transfered_by = user)
@@ -289,7 +289,7 @@
 	if(istype(I, /obj/item/natural/cloth))
 		var/obj/item/natural/cloth/T = I
 		if(T.wet >= 10)
-			to_chat(user, span_warning("[T] is already soaked!"))
+			to_chat(user, span_warning("[T]已经湿透了！"))
 			return
 		var/removereg = /datum/reagent/water
 		if(!reagents.has_reagent(/datum/reagent/water, 5))

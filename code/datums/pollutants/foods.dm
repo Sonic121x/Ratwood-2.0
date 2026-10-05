@@ -22,7 +22,7 @@
 
 /datum/pollutant/food/spider_pie
 	name = "spider pie"
-	scent = "spider pie"
+	scent = "蜘蛛肉派"
 
 /datum/pollutant/food/pot_pie
 	name = "炖派"
@@ -38,23 +38,23 @@
 
 /datum/pollutant/food/pumpkin_pie
 	name = "pumpkin pie"
-	scent = "pumpkin pie"
+	scent = "南瓜派"
 
 /datum/pollutant/food/cookies_chocolate
 	name = "freshly baked chocolate cookies"
-	scent = "freshly baked chocolate cookies"
+	scent = "新鲜出炉的巧克力曲奇"
 
 /datum/pollutant/food/cookies_caramel
 	name = "freshly baked caramelized cookies"
-	scent = "freshly baked caramelized cookies"
+	scent = "新鲜出炉的焦糖曲奇"
 
 /datum/pollutant/food/cookies_dragee
 	name = "freshly baked herbal cookies"
-	scent = "freshly baked herbal cookies"
+	scent = "新鲜出炉的草药曲奇"
 
 /datum/pollutant/food/cookies_raisins
 	name = "freshly baked raisined cookies"
-	scent = "freshly baked raisined cookies"
+	scent = "新鲜出炉的葡萄干曲奇"
 
 /datum/pollutant/food/bread
 	name = "新鲜出炉的面包"
@@ -62,15 +62,15 @@
 
 /datum/pollutant/food/bookbread
 	name = "fresh baked loaf of bookbread"
-	scent = "fresh baked loaf of bookbread"
+	scent = "新鲜出炉的书形面包"
 
 /datum/pollutant/food/fruity_bookbread
 	name = "fresh baked loaf of fruity bookbread"
-	scent = "fresh baked loaf of fruity bookbread"
+	scent = "新鲜出炉的水果书形面包"
 
 /datum/pollutant/food/chocolate_bookbread
 	name = "fresh baked loaf of chocolately bookbread"
-	scent = "fresh baked loaf of chocolately bookbread"
+	scent = "新鲜出炉的巧克力书形面包"
 
 /datum/pollutant/food/bun
 	name = "新鲜出炉的面包卷"
@@ -86,7 +86,7 @@
 
 /datum/pollutant/food/hardtack
 	name = "fresh baked crackers"
-	scent = "fresh baked crackers"
+	scent = "新鲜出炉的硬饼"
 
 /datum/pollutant/food/toast
 	name = "烤吐司"
@@ -98,35 +98,35 @@
 
 /datum/pollutant/food/apple_bread
 	name = "fresh baked loaf of apple bread"
-	scent = "fresh baked loaf of apple bread"
+	scent = "新鲜出炉的苹果面包"
 
 /datum/pollutant/food/fruity_dottart
 	name = "fresh fruit-stuffed pastry"
-	scent = "fresh fruit-stuffed pastry"
+	scent = "新鲜的水果馅点心"
 
 /datum/pollutant/food/tomatoplate
 	name = "fresh tomatoes and cheesy flatbread"
-	scent = "fresh tomatoes and cheesy flatbread"
+	scent = "新鲜番茄与芝士薄饼"
 
 /datum/pollutant/food/tomatoplate_meat
 	name = "fresh tomatoes and meaty flatbread"
-	scent = "fresh tomatoes and meaty flatbread"
+	scent = "新鲜番茄与肉馅薄饼"
 
 /datum/pollutant/food/tomatoplate_fish
 	name = "fresh tomatoes and fishy flatbread"
-	scent = "fresh tomatoes and fishy flatbread"
+	scent = "新鲜番茄与鱼肉薄饼"
 
 /datum/pollutant/food/tomatoplate_truffle
 	name = "fresh tomatoes and truffled flatbread"
-	scent = "fresh tomatoes and truffled flatbread"
+	scent = "新鲜番茄与松露薄饼"
 
 /datum/pollutant/food/tomatoplate_pear
 	name = "fresh tomatoes and peared flatbread"
-	scent = "fresh tomatoes and peared flatbread"
+	scent = "新鲜番茄与梨肉薄饼"
 
 /datum/pollutant/food/tomatoplate_onion
 	name = "fresh tomatoes and teary-eyed flatbread"
-	scent = "fresh tomatoes and teary-eyed flatbread"
+	scent = "新鲜番茄与令人眼眶湿润的洋葱薄饼"
 
 /datum/pollutant/food/cheese_bun
 	name = "新鲜出炉的芝士面包卷"
@@ -174,7 +174,7 @@
 
 /datum/pollutant/food/fried_spidermeat
 	name = "fried spidermeat"
-	scent = "fried spidermeat"
+	scent = "煎蜘蛛肉"
 
 /datum/pollutant/food/cooked_chicken
 	name = "熟鸡肉"
