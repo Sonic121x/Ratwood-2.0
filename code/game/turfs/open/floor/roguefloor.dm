@@ -447,7 +447,7 @@
 
 /turf/open/floor/rogue/grassyel
 	name = "黄草地"
-	desc = "受到 Astrata 之光祝福的草地。"
+	desc = "受到阿斯特拉塔之光祝福的草地。"
 	icon_state = "grass_yel"
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_GRASS
@@ -1826,8 +1826,8 @@
 	return
 
 /obj/structure/roguesand/dune
-	name = "dune"
-	desc = "A high bank of sand blocks the view beyond it. Reach its top to see across, traveler."
+	name = "沙丘"
+	desc = "高耸的沙堤挡住了后方的景色。旅人，登上堤顶便能眺望远方。"
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "dune_1"
 
