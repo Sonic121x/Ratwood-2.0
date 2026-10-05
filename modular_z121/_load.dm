@@ -400,3 +400,5 @@
 // 管理员通过 VV 调整角色冷却倍率与物品属性加成。
 #include "admin/custom_spell_cooldown.dm"
 #include "items/custom_stat_bonuses.dm"
+// 技能排序：同步调整能力栏顺序与数字快捷键对应位置。
+#include "ic/skill_sort.dm"
