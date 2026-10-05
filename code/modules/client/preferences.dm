@@ -2275,7 +2275,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					log_game("[user] 已设置其 OOC 备注。")
 
 				if("rumour")
-					to_chat(user, span_notice("谣言是其他人可能知道或自以为了解您的事情，它们不必精确，甚至不必真实。但请记住，它们可以为其他玩家提供如何与您的角色互动甚至思考的提示。\n<b>避免 explicit 的身体描述，但像“经常与人厮混”这样的谣言是可以的。</b>"))
+					to_chat(user, span_notice("谣言是其他人可能知道或自以为了解您的事情，它们不必精确，甚至不必真实。但请记住，它们可以为其他玩家提供如何与您的角色互动甚至思考的提示。\n<b>避免露骨的身体描述，但像“经常与人厮混”这样的谣言是可以的。</b>"))
 					var/new_rumour = tgui_input_text(user, "输入关于您角色的谣言：（400 字符限制）", "谣言", rumour, multiline = TRUE, encode = FALSE, bigmodal = TRUE)
 					if(new_rumour == null)
 						return
@@ -2292,7 +2292,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					log_game("[user] 已设置其谣言。")
 
 				if("gossip")
-					to_chat(user, span_notice("八卦是四处传播的谣言，仅在贵族圈内知晓，只有其他出身高贵的人才知道。与普通谣言类似，八卦不需要精确或真实，但请记住，它可以为其他贵族提供与您角色互动和评判的提示和途径。\n<b>避免 explicit 的身体描述，但像“经常与人厮混”这样的谣言是可以的。</b>"))
+					to_chat(user, span_notice("八卦是四处传播的谣言，仅在贵族圈内知晓，只有其他出身高贵的人才知道。与普通谣言类似，八卦不需要精确或真实，但请记住，它可以为其他贵族提供与您角色互动和评判的提示和途径。\n<b>避免露骨的身体描述，但像“经常与人厮混”这样的谣言是可以的。</b>"))
 					var/new_gossip = tgui_input_text(user, "输入关于您角色的贵族八卦：（400 字符限制）", "贵族八卦", noble_gossip, multiline = TRUE, encode = FALSE, bigmodal = TRUE)
 					if(new_gossip == null)
 						return
@@ -2309,7 +2309,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					log_game("[user] 已设置其贵族八卦。")
 
 				if("nsfwflavortext")
-					to_chat(user, "<span class='notice'>["<span class='bold'>NSFW 风味文本可用于设置身体描述和其他可能被视为 explicit 的身体细节。</span>"]</span>")
+					to_chat(user, "<span class='notice'>["<span class='bold'>NSFW 风味文本可用于设置身体描述和其他可能被视为露骨的身体细节。</span>"]</span>")
 					to_chat(user, "<font color = '#d6d6d6'>留空以清除。</font>")
 					var/new_nsfwflavortext = tgui_input_text(user, "输入您的角色描述：", "NSFW 风味文本", nsfwflavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
 					if(new_nsfwflavortext == null)
@@ -2731,7 +2731,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/selected_mannerism = tgui_input_list(user, "选择你角色的说话习惯：", "角色偏好", GLOB.character_mannerisms)
 					if(selected_mannerism)
 						char_mannerism = selected_mannerism
-						var/test_message = "Hello friend, yes this is good. My Lord rides through the Duchy with servants and soldiers; the captain and sergeant guard the church while archers and cavalry hold the north road. My sword and shield are sharp, the water flows refreshingly, and we thank the Duke before saying goodbye."
+						var/test_message = "你好，朋友，是的，这很好。我的领主带着仆人和士兵骑马穿过公国；队长和中士守卫着教堂，弓箭手和骑兵把守北方道路。我的剑和盾都很锋利，流水清冽，我们在告别前向公爵致谢。"
 						var/accent_preview = apply_accent_preview(char_accent, test_message)
 						var/preview_message = accent_preview ? "[accent_preview]" : test_message
 						var/preview_text = apply_mannerism_preview(selected_mannerism, preview_message)
