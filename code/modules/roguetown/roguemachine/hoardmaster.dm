@@ -19,17 +19,17 @@
 	var/namechance = rand(1,6)
 	switch(namechance)
 		if(1)
-			name = "藏宝主宰 Skyblue"
+			name = "藏宝主宰苍蓝"
 		if(2)
-			name = "藏宝主宰 Thea"
+			name = "藏宝主宰忒娅"
 		if(3)
-			name = "藏宝主宰 Radagon"
+			name = "藏宝主宰拉达冈"
 		if(4)
-			name = "藏宝主宰 Shiver"
+			name = "藏宝主宰战栗"
 		if(5)
-			name = "藏宝主宰 Deathbringer"
+			name = "藏宝主宰死亡使者"
 		if(6)
-			name = "藏宝主宰 Darkstalker"
+			name = "藏宝主宰暗影猎手"
 
 /obj/structure/roguemachine/Hoardmaster/examine(mob/user)
 	. = ..()
@@ -91,8 +91,8 @@
 		return
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	var/contents
-	contents = "<center>Wishes for the Free<BR>"
-	contents += "<a href='?src=[REF(src)];change=1'>Your favor:</a> [B.favor]<BR>"
+	contents = "<center>自由民的愿望<BR>"
+	contents += "<a href='?src=[REF(src)];change=1'>你的恩惠：</a> [B.favor]<BR>"
 
 
 	var/list/unlocked_cats = list("补给品", "医疗用品", "衣物") // English: Supplies; Medicaments; Clothing
