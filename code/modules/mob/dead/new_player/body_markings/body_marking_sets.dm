@@ -5,61 +5,61 @@
 	var/body_marking_list
 
 /datum/body_marking_set/none
-	name = "None"
+	name = "无"
 	body_marking_list = list()
 
 /datum/body_marking_set/gradient
-	name = "Gradient"
+	name = "渐变"
 	body_marking_list = list(
 		/datum/body_marking/gradient
 		)
 
 /datum/body_marking_set/socks
-	name = "Socks"
+	name = "袜状"
 	body_marking_list = list(
 		/datum/body_marking/sock
 		)
 
 /datum/body_marking_set/belly
-	name = "Belly"
+	name = "腹部"
 	body_marking_list = list(
 		/datum/body_marking/belly
 		)
 
 /datum/body_marking_set/bellysocks
-	name = "Belly & Socks"
+	name = "腹部与袜状"
 	body_marking_list = list(
 		/datum/body_marking/belly,
 		/datum/body_marking/sock,
 	)
 
 /datum/body_marking_set/bellysockstertiary
-	name = "Belly & Socks"
+	name = "腹部与袜状"
 	body_marking_list = list(
 		/datum/body_marking/belly,
 		/datum/body_marking/sock/tertiary,
 	)
 
 /datum/body_marking_set/bellyscale
-	name = "Scaled Belly"
+	name = "腹鳞"
 	body_marking_list = list(
 		/datum/body_marking/bellyscale
 	)
 
 /datum/body_marking_set/kobold_scale
-	name = "Kobold Scales"
+	name = "狗头人鳞片"
 	body_marking_list = list(
 		/datum/body_marking/kobold_scale
 	)
 
 /datum/body_marking_set/tiger
-	name = "Tiger"
+	name = "虎纹"
 	body_marking_list = list(
 		/datum/body_marking/tiger
 	)
 
 /datum/body_marking_set/tiger_dark
-	name = "Tiger (Dark)"
+	name = "虎纹（深色）"
 	body_marking_list = list(
 		/datum/body_marking/tiger/dark
 	)
@@ -69,55 +69,55 @@
 /datum/body_marking_set/moth
 
 /datum/body_marking_set/moth/reddish
-	name = "Reddish"
+	name = "淡红"
 	body_marking_list = list(/datum/body_marking/moth/reddish)
 
 /datum/body_marking_set/moth/royal
-	name = "Royal"
+	name = "皇家"
 	body_marking_list = list(/datum/body_marking/moth/royal)
 
 /datum/body_marking_set/moth/gothic
-	name = "Gothic"
+	name = "哥特"
 	body_marking_list = list(/datum/body_marking/moth/gothic)
 
 /datum/body_marking_set/moth/whitefly
-	name = "Whitefly"
+	name = "白蝇"
 	body_marking_list = list(/datum/body_marking/moth/whitefly)
 
 /datum/body_marking_set/moth/burnt_off
-	name = "Burnt Off"
+	name = "烧焦"
 	body_marking_list = list(/datum/body_marking/moth/burnt_off)
 
 /datum/body_marking_set/moth/deathhead
-	name = "Deathhead"
+	name = "骷髅天蛾"
 	body_marking_list = list(/datum/body_marking/moth/deathhead)
 
 /datum/body_marking_set/moth/poison
-	name = "Poison"
+	name = "毒纹"
 	body_marking_list = list(/datum/body_marking/moth/poison)
 
 /datum/body_marking_set/moth/ragged
-	name = "Ragged"
+	name = "残破"
 	body_marking_list = list(/datum/body_marking/moth/ragged)
 
 /datum/body_marking_set/moth/moonfly
-	name = "Moonfly"
+	name = "月蛾"
 	body_marking_list = list(/datum/body_marking/moth/moonfly)
 
 /datum/body_marking_set/moth/oakworm
-	name = "Oakworm"
+	name = "橡木蚕"
 	body_marking_list = list(/datum/body_marking/moth/oakworm)
 
 /datum/body_marking_set/moth/jungle
-	name = "Jungle"
+	name = "丛林"
 	body_marking_list = list(/datum/body_marking/moth/jungle)
 
 /datum/body_marking_set/moth/witchwing
-	name = "Witchwing"
+	name = "巫翼"
 	body_marking_list = list(/datum/body_marking/moth/witchwing)
 
 /datum/body_marking_set/moth/lovers
-	name = "Lovers"
+	name = "恋人"
 	body_marking_list = list(/datum/body_marking/moth/lovers)
 
 //////////////
@@ -125,13 +125,13 @@
 ////////////
 
 /datum/body_marking_set/harpy_feet_claws
-	name = "Feet Claws"
+	name = "足爪"
 	body_marking_list = list(
 		/datum/body_marking/harpy_feet_claws
 	)
 
 /datum/body_marking_set/harpy_leg
-	name = "Harpy Leg Color Override"
+	name = "哈比腿部颜色覆盖"
 	body_marking_list = list(
 		/datum/body_marking/harpy_leg
 	)

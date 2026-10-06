@@ -34,7 +34,7 @@
 /mob/living/proc/resume_bleeding()
 	bleedsuppress = 0
 	if(stat != DEAD && bleed_rate)
-		to_chat(src, span_warning("The blood soaks through my bandage."))
+		to_chat(src, span_warning("鲜血浸透了我的绷带。"))
 
 /mob/living/proc/handle_blood()
 	if(HAS_TRAIT(src, TRAIT_HUSK)) //husked people do not pump the blood.
@@ -56,7 +56,7 @@
 						apply_status_effect(/datum/status_effect/buff/journey_ending)
 					else	
 						if(prob(3))
-							to_chat(src, span_warning("I feel dizzy."))
+							to_chat(src, span_warning("我感到头晕。"))
 
 						remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 						remove_status_effect(/datum/status_effect/debuff/bleedingworst)
@@ -74,7 +74,7 @@
 					else
 						if(prob(3))
 							blur_eyes(6)
-							to_chat(src, span_warning("I feel faint."))
+							to_chat(src, span_warning("我感到快要昏倒了。"))
 						remove_status_effect(/datum/status_effect/debuff/bleeding)
 						remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 						apply_status_effect(/datum/status_effect/debuff/bleedingworse)
@@ -90,11 +90,11 @@
 					else
 						if(prob(3))
 							blur_eyes(6)
-							to_chat(src, span_warning("I feel faint."))
+							to_chat(src, span_warning("我感到快要昏倒了。"))
 
 						if(prob(3) && !IsUnconscious())
 							Unconscious(rand(5 SECONDS,10 SECONDS))
-							to_chat(src, span_warning("I feel drained."))
+							to_chat(src, span_warning("我感到浑身无力。"))
 							
 						remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 						remove_status_effect(/datum/status_effect/debuff/bleeding)
@@ -171,20 +171,20 @@
 				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 					current_bleeding_tier = 1
 					if(prob(3))
-						to_chat(src, span_warning("I feel dizzy."))
+						to_chat(src, span_warning("我感到头晕。"))
 				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 					current_bleeding_tier = 2
 					if(prob(3))
 						blur_eyes(6)
-						to_chat(src, span_warning("I feel faint."))
+						to_chat(src, span_warning("我感到快要昏倒了。"))
 				if(0 to BLOOD_VOLUME_BAD)
 					current_bleeding_tier = 3
 					if(prob(3))
 						blur_eyes(6)
-						to_chat(src, span_warning("I feel faint."))
+						to_chat(src, span_warning("我感到快要昏倒了。"))
 					if(prob(3) && !HAS_TRAIT(src, TRAIT_JOURNEYS_END))
 						Unconscious(rand(5 SECONDS,10 SECONDS))
-						to_chat(src, span_warning("I feel drained."))
+						to_chat(src, span_warning("我感到浑身无力。"))
 				else
 					current_bleeding_tier = bleeding_tier
 
@@ -310,7 +310,7 @@
 	var/old_volume = blood_volume
 	set_blood_volume(blood_volume - amt)
 	if (old_volume > 0 && !blood_volume) // it looks like we've just bled out. bummer.
-		to_chat(src, span_userdanger("The last of your lyfeblood ebbs from your ravaged body and soaks the cold earth below..."))
+		to_chat(src, span_userdanger("最后一滴命血从你残破的身躯中流尽，渗入脚下冰冷的大地……"))
 	record_round_statistic(STATS_BLOOD_SPILT, amt)
 	if(isturf(src.loc))
 		add_drip_floor(src.loc, amt)
