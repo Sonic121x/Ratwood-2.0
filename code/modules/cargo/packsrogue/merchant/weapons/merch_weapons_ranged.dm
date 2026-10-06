@@ -43,7 +43,7 @@
 				)
 
 /datum/supply_pack/rogue/ranged_weapons/longbow
-	name = "长弓"
+	name = "紫杉长弓"
 	cost = 45
 	contains = list(
 					/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow,
@@ -134,7 +134,7 @@
 				)
 
 /datum/supply_pack/rogue/ranged_weapons/slingsteel
-	name = "Sling Bullets Pouch, Steel"
+	name = "投石弹袋，钢制"
 	cost = 80 // 2 Steel Ingots
 	contains = list(
 					/obj/item/quiver/sling/steel,

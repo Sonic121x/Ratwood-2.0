@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Supplies
 	group = "补给品" // English: Supplies
-	crate_name = "Gifts of Toil"
+	crate_name = "劳作的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////////
@@ -163,7 +163,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/collar/leather)
 
 /datum/supply_pack/rogue/Supplies/cursedcollar
-	name = "Cursed Collar"
+	name = "诅咒项圈"
 	cost =	25
 	contains = list(/obj/item/clothing/neck/roguetown/cursed_collar)
 

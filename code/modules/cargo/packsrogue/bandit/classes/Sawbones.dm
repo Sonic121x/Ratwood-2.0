@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Sawbones
 	group = "锯骨郎中" // English: Sawbones
-	crate_name = "Gifts of Medicine"
+	crate_name = "医术的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////
@@ -28,7 +28,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/iron)
 
 /datum/supply_pack/rogue/Sawbones/coif/steel
-	name = "钢锁子头巾"
+	name = "锁链护头巾"
 	cost = 40
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
@@ -52,12 +52,12 @@
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe/physician)
 
 /datum/supply_pack/rogue/Sawbones/gambeson
-	name = "棉甲"
+	name = "绗缝护甲衣"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/Sawbones/hgambeson
-	name = "重型棉甲"
+	name = "加厚绗缝护甲衣"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
