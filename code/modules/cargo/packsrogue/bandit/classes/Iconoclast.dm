@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Iconoclast
 	group = "破像者" // English: Iconoclast
-	crate_name = "Gifts of Faith"
+	crate_name = "信仰的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////
@@ -43,7 +43,7 @@
 //////////
 
 /datum/supply_pack/rogue/Iconoclast/coif/steel
-	name = "钢锁子头巾"
+	name = "锁链护头巾"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
