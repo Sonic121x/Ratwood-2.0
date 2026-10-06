@@ -535,7 +535,7 @@
 	desc = "一朵精致的橙色花朵，散发着暖意。"
 	icon_state = "fyritius"
 	filling_color = "#ff5e00"
-	tastes = list("tastes like a burning coal and fire" = 1)
+	tastes = list("燃烧的煤炭与火焰" = 1)
 	obj_flags = CAN_BE_HIT
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
@@ -582,7 +582,7 @@
 		var/success
 		if(HAS_TRAIT(user, TRAIT_INQUISITION))
 			if(IND.cursedblood)
-				if(alert(user, "DRENCH THE FYRITIUS?", "CURSED BLOOD", "YES", "NO") != "NO")
+				if(alert(user, "要浸透焰蕊花吗？", "诅咒之血", "是", "否") != "否")
 					success = TRUE
 					IND.fullreset(user)
 				else
@@ -596,7 +596,7 @@
 	desc = "一朵曾经精致的橙色花朵，如今被可怖的诅咒之血浸透。它在其间沸腾翻涌。"
 	icon_state = "fyritius_blood"
 	filling_color = "#ff3300"
-	tastes = list("tastes like a burning coal and fire and blood" = 1)
+	tastes = list("燃烧的煤炭、火焰与鲜血" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
 	rotprocess = SHELFLIFE_SHORT

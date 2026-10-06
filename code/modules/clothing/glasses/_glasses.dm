@@ -18,7 +18,7 @@
 	var/glass_colour_type //colors your vision when worn
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user]正把\the [src]刺进自己的眼睛！看起来[user.p_they()]想自杀！</span>")
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/examine(mob/user)
