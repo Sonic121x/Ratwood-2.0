@@ -49,14 +49,14 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/falchion
-	name = "弯刃刀"
+	name = "法刀"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/falchion,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/messer
-	name = "梅塞尔刀"
+	name = "钢猎剑"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/messer,
@@ -86,7 +86,7 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/quarterstaff
-	name = "加固四分杖 - 钢制"
+	name = "钢头长杖"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/woodstaff/quarterstaff/steel,
@@ -100,7 +100,7 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/broadsword
-	name = "阔剑"
+	name = "钢制阔剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/broadsword/steel,
@@ -128,14 +128,14 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greatsword
-	name = "巨剑"
+	name = "大剑"
 	cost = 105 // 3 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/greatsword,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/zweihander
-	name = "双手巨剑"
+	name = "钢制双手剑"
 	cost = 105 // 3 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/greatsword/grenz,
@@ -149,7 +149,7 @@
 	)
 
 /datum/supply_pack/rogue/steel_weapons/estoc
-	name = "刺击剑"
+	name = "穿甲刺剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/estoc,
@@ -203,7 +203,7 @@
 	contains = list(/obj/item/rogueweapon/flail/peasantwarflail/steel)
 
 /datum/supply_pack/rogue/steel_weapons/partizan
-	name = "阔刃矛"
+	name = "帕提赞长戟"
 	cost = 80 // 2 Steel Ingot, 1 Small Log. Slight increase cuz gated behind skill 4
 	contains = list(
 					/obj/item/rogueweapon/spear/partizan,
@@ -237,14 +237,14 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/falx
-	name = "镰刃"
+	name = "法尔克斯弯刀"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/falx,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/glaive
-	name = "长柄刃"
+	name = "偃月刀"
 	cost = 105 // 3 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/halberd/glaive,
