@@ -2,10 +2,10 @@
 	var/temporary_flavortext = null
 
 /mob/living/carbon/human/verb/temp_flavor()
-	set name = "Set temporary flavortext"
+	set name = "设置临时人物描述"
 	set category = "IC"
 
-	var/new_temp_flavortext = input(usr, "Choose a new flavortext (Empty will remove any active ones)", "Temporary flavortext") as null|text
+	var/new_temp_flavortext = input(usr, "输入新的临时人物描述（留空可移除当前内容）", "临时人物描述") as null|text
 	if(isnull(new_temp_flavortext))
 		return
 	if(new_temp_flavortext == "")

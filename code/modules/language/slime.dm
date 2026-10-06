@@ -1,5 +1,5 @@
 /datum/language/slime
-	name = "Slime"
+	name = "史莱姆语"
 	desc = ""
 	speech_verb = "颤声鸣叫"
 	ask_verb = "颤声鸣叫"

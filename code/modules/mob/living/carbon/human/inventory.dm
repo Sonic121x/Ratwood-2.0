@@ -427,7 +427,7 @@
 		return
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
-			to_chat(src, span_warning("I have no backpack to take something out of!"))
+			to_chat(src, span_warning("我没有可供取出物品的背包！"))
 			return
 		if(equip_to_slot_if_possible(thing, slot_id))
 			update_inv_hands()
@@ -436,17 +436,17 @@
 		if(!thing)
 			equipped_back.attack_hand(src)
 		else
-			to_chat(src, span_warning("I can't fit anything in!"))
+			to_chat(src, span_warning("我什么也塞不进去！"))
 		return
 	if(thing) // put thing in backpack
 		if(thing.inv_storage_delay)
 			if(!move_after(src, thing.inv_storage_delay, target = thing, progress = TRUE))
 				return
 		if(!SEND_SIGNAL(equipped_back, COMSIG_TRY_STORAGE_INSERT, thing, src))
-			to_chat(src, span_warning("I can't fit anything in!"))
+			to_chat(src, span_warning("我什么也塞不进去！"))
 		return
 	if(!equipped_back.contents.len) // nothing to take out
-		to_chat(src, span_warning("There's nothing in your backpack to take out!"))
+		to_chat(src, span_warning("我的背包里没有可取出的物品！"))
 		return
 	var/obj/item/stored = equipped_back.contents[equipped_back.contents.len]
 	if(!stored || stored.on_found(src))
@@ -465,7 +465,7 @@
 		return
 	if(!equipped_belt) // We also let you equip a belt like this
 		if(!thing)
-			to_chat(src, span_warning("I have no belt to take something out of!"))
+			to_chat(src, span_warning("我没有可供取出物品的腰带！"))
 			return
 		if(equip_to_slot_if_possible(thing, SLOT_BELT))
 			update_inv_hands()
@@ -474,17 +474,17 @@
 		if(!thing)
 			equipped_belt.attack_hand(src)
 		else
-			to_chat(src, span_warning("I can't fit anything in!"))
+			to_chat(src, span_warning("我什么也塞不进去！"))
 		return
 	if(thing) // put thing in belt
 		if(thing.inv_storage_delay)
 			if(!move_after(src, thing.inv_storage_delay, target = thing, progress = TRUE))
 				return
 		if(!SEND_SIGNAL(equipped_belt, COMSIG_TRY_STORAGE_INSERT, thing, src))
-			to_chat(src, span_warning("I can't fit anything in!"))
+			to_chat(src, span_warning("我什么也塞不进去！"))
 		return
 	if(!equipped_belt.contents.len) // nothing to take out
-		to_chat(src, span_warning("There's nothing in your belt to take out!"))
+		to_chat(src, span_warning("我的腰带里没有可取出的物品！"))
 		return
 	var/obj/item/stored = equipped_belt.contents[equipped_belt.contents.len]
 	if(!stored || stored.on_found(src))

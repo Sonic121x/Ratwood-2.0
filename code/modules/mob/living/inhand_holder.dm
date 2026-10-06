@@ -52,12 +52,12 @@
 		return FALSE
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, span_warning("[held_mob] wriggles free!"))
+		to_chat(L, span_warning("[held_mob]扭动着挣脱了！"))
 		L.dropItemToGround(src)
 	held_mob.forceMove(get_turf(held_mob))
 	held_mob.reset_perspective()
 	held_mob.setDir(SOUTH)
-	held_mob.visible_message(span_warning("[held_mob] uncurls!"))
+	held_mob.visible_message(span_warning("[held_mob]舒展开了身体！"))
 	held_mob = null
 	if(del_on_release && !destroying)
 		qdel(src)

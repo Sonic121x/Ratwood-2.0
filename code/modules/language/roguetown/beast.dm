@@ -1,5 +1,5 @@
 /datum/language/beast
-	name = "Beastish"
+	name = "兽语"
 	desc = "(用 ,b 说) 野兽、德鲁伊与狼人所使用的原初语言。它由低吼与嚎叫构成，以野性的嗓音诉说内在的荒性。"
 	speech_verb = "低吼"
 	ask_verb = "咕噜着问"

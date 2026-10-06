@@ -173,9 +173,9 @@ GLOBAL_LIST_EMPTY(last_words)
 					continue
 				if (HAS_TRAIT(player, TRAIT_DEATHSIGHT))
 					if (HAS_TRAIT(player, TRAIT_CABAL))
-						to_chat(player, span_warning("I feel the faint passage of disjointed life essence as it flees [locale]."))
+						to_chat(player, span_warning("我隐约感到一缕破碎的生命精华正在逃离[locale]。"))
 					else
-						to_chat(player, span_warning("Veiled whispers herald the Undermaiden's gaze in my mind's eye as it turn towards [locale] for but a brief, singular moment."))
+						to_chat(player, span_warning("朦胧的低语在我心中传来，预示着冥下侍女的目光转向了[locale]，仅仅停留了短暂的一瞬。"))
 	// AZURE EDIT END
 
 	return TRUE
@@ -183,5 +183,5 @@ GLOBAL_LIST_EMPTY(last_words)
 /mob/living/proc/prepare_deathsight_message()
 	var/area/A = get_area(src)
 	if(!A)
-		return "a locale wreathed in enigmatic fog" // fallback if we can't find the area somehow??
+		return "一处笼罩在神秘迷雾中的地方" // fallback if we can't find the area somehow??
 	return A.deathsight_message

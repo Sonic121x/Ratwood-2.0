@@ -30,15 +30,15 @@
 	gendered = FALSE
 
 /datum/body_marking_set/construct_plating_light
-	name = "Light Plating"
+	name = "轻型装甲板"
 	body_marking_list = list(/datum/body_marking/construct_plating_light)
 
 /datum/body_marking_set/construct_plating_medium
-	name = "Medium Plating"
+	name = "中型装甲板"
 	body_marking_list = list(/datum/body_marking/construct_plating_medium)
 
 /datum/body_marking_set/construct_plating_heavy
-	name = "Heavy Plating"
+	name = "重型装甲板"
 	body_marking_list = list(/datum/body_marking/construct_plating_heavy)
 
 /datum/body_marking/construct_head_standard
