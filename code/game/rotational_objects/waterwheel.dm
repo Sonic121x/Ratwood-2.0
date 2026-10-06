@@ -1,5 +1,5 @@
 /obj/structure/waterwheel
-	name = "waterwheel"
+	name = "水车"
 
 	icon = 'icons/roguetown/misc/waterwheel.dmi'
 	icon_state = "1"

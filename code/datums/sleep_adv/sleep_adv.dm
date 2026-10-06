@@ -461,10 +461,10 @@ GLOBAL_LIST_INIT(cross_training_map, list(
 		to_chat(mind.current, span_nicegreen("我感觉自己可以再次接受一项技能的教导了。"))
 	if(HAS_TRAIT(mind.current, TRAIT_EXPLOSIVE_SUPPLY))
 		mind.has_bomb = TRUE
-		to_chat(mind.current, span_smallnotice("我需要去检查一下HERMES。我想有新的包裹到了。"))
+		to_chat(mind.current, span_smallnotice("我需要去检查一下赫尔墨斯。我想有新的包裹到了。"))
 	if(HAS_TRAIT(mind.current, TRAIT_DRUG_SUPPLY))
 		mind.has_drug_delivery = TRUE
-		to_chat(mind.current, span_smallnotice("公会给我留了东西。我应该去HERMES查看我的包裹。"))
+		to_chat(mind.current, span_smallnotice("公会给我留了东西。我应该去赫尔墨斯查看我的包裹。"))
 	for(var/obj/effect/proc_holder/spell/self/martial_prowess/martialspell in mind.spell_list)
 		to_chat(mind.current, span_nicegreen("我的旧躯感到休息充分、焕然一新。我可以再收一位门徒了。"))
 		martialspell.charges++

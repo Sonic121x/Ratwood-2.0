@@ -264,7 +264,7 @@
 			return
 		turf_below = get_step_multiz(carbon_flyer, DOWN) // Harpy can move during fly_down so we check the turf and make sure they move down from the new turf
 		if(!carbon_flyer.canZMove(DOWN, turf_below))
-			to_chat(carbon_flyer, span_red("I can't fly down there!!"))
+			to_chat(carbon_flyer, span_red("我没法飞到下面去！！"))
 			return
 		if(QDELETED(pulling) || carbon_flyer.pulling != pulling) // our grab could have been broken or the grabbed deleted while taking off
 			pulling = null

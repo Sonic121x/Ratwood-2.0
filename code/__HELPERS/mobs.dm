@@ -147,17 +147,17 @@ GLOBAL_LIST_EMPTY(species_list)
 /proc/age2agedescription(age)
 	switch(age)
 		if(0 to 30)
-			return "young adult"
+			return "青年"
 		if(30 to 45)
-			return "adult"
+			return "成年"
 		if(45 to 60)
-			return "middle-aged"
+			return "中年"
 		if(60 to 70)
-			return "aging"
+			return "年迈"
 		if(70 to INFINITY)
-			return "elderly"
+			return "老年"
 		else
-			return "unknown"
+			return "未知"
 
 /proc/do_mob(mob/user , mob/target, time = 30, uninterruptible = 0, progress = 1, datum/callback/extra_checks = null, double_progress = 0, can_move = TRUE)
 	if(!user || !target)

@@ -3,7 +3,7 @@
 
 /datum/vote/custom_vote
 	name = "Custom"
-	default_message = "Click here to start a custom vote."
+	default_message = "点击这里发起自定义投票。"
 
 // Custom votes ares always accessible.
 /datum/vote/custom_vote/is_accessible_vote()
@@ -24,7 +24,7 @@
 
 	// Custom votes can only be created if they're forced to be made.
 	// (Either an admin makes it, or otherwise.)
-	return "Only admins can create custom votes."
+	return "只有管理员可以发起自定义投票。"
 
 /datum/vote/custom_vote/create_vote(mob/vote_creator)
 	var/custom_count_method = tgui_input_list(

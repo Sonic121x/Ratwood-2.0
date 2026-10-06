@@ -269,7 +269,7 @@
 
 	if(special_session_queue && special_session_queue.len)
 		for(var/datum/advclass/datums in special_session_queue)
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : datums.name]<img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : (istype(datums, /datum/advclass/pick_everything) ? "自由选择职业" : datums.name)]<img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
 
 	if(showing_combat_classes)
 		for(var/datum/advclass/datums in rolled_classes)

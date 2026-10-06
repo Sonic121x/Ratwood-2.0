@@ -991,7 +991,7 @@
 /atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
 	if(!istype(I, /obj/item/multitool))
 		if(user && !silent)
-			to_chat(user, "<span class='warning'>[I] has no data buffer!</span>")
+			to_chat(user, "<span class='warning'>[I]没有数据缓冲区！</span>")
 		return FALSE
 	return TRUE
 

@@ -55,7 +55,7 @@
 #define ASSEMBLY_ABS "ABSTAIN"
 
 // Announcement titles.
-#define ASSEMBLY_ANNOUNCE_TITLE "THE CITY ASSEMBLY"
+#define ASSEMBLY_ANNOUNCE_TITLE "议事会"
 
 // Session state.
 #define ASSEMBLY_SESSION_PENDING "pending"

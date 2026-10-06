@@ -630,7 +630,7 @@
 						I.blade_int = I.max_blade_int
 			
 			to_chat(usr, span_notice("Repaired [repaired_count] items for [target.name]."))
-			to_chat(target, span_notice("Your equipment has been magically repaired!"))
+			to_chat(target, span_notice("我的装备被魔法修复了！"))
 			message_admins("[key_name_admin(usr)] repaired all equipment for [key_name_admin(target)].")
 			log_admin("[key_name(usr)] repaired all equipment for [key_name(target)].")
 			show_inventory_panel(target)
@@ -652,7 +652,7 @@
 						damaged_count++
 			
 			to_chat(usr, span_notice("Damaged [damaged_count] items for [target.name]."))
-			to_chat(target, span_warning("Your equipment suddenly feels weaker!"))
+			to_chat(target, span_warning("我的装备突然变得脆弱了！"))
 			message_admins("[key_name_admin(usr)] damaged all equipment for [key_name_admin(target)].")
 			log_admin("[key_name(usr)] damaged all equipment for [key_name(target)].")
 			show_inventory_panel(target)
@@ -675,7 +675,7 @@
 					destroyed_count++
 			
 			to_chat(usr, span_notice("Destroyed [destroyed_count] items for [target.name]."))
-			to_chat(target, span_danger("All your equipment disintegrates!"))
+			to_chat(target, span_danger("我的所有装备都瓦解了！"))
 			message_admins("[key_name_admin(usr)] destroyed all equipment for [key_name_admin(target)].")
 			log_admin("[key_name(usr)] destroyed all equipment for [key_name(target)].")
 			show_inventory_panel(target)
@@ -715,7 +715,7 @@
 				else
 					I.forceMove(get_turf(target))
 				to_chat(usr, span_notice("Dropped [item_name]."))
-				to_chat(target, span_warning("Your [item_name] falls to the ground!"))
+				to_chat(target, span_warning("我的[item_name]掉到了地上！"))
 				message_admins("[key_name_admin(usr)] dropped [item_name] for [key_name_admin(target)].")
 				log_admin("[key_name(usr)] dropped [item_name] for [key_name(target)].")
 				// Check if item was in a container, if so refresh contents panel
@@ -741,7 +741,7 @@
 				var/obj/container = I.loc
 				qdel(I)
 				to_chat(usr, span_notice("Destroyed [item_name]."))
-				to_chat(target, span_warning("Your [item_name] disintegrates!"))
+				to_chat(target, span_warning("我的[item_name]瓦解了！"))
 				message_admins("[key_name_admin(usr)] destroyed [item_name] for [key_name_admin(target)].")
 				log_admin("[key_name(usr)] destroyed [item_name] for [key_name(target)].")
 				// Check if item was in a container, if so refresh contents panel
@@ -884,7 +884,7 @@
 	if(!amt2change && !raisin)
 		return
 	adjust_playerquality(amt2change, ckey, admin, raisin)
-	to_chat(M.client, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [admin] for reason: [raisin]</span></span>")
+	to_chat(M.client, "<span class=\"admin\"><span class=\"prefix\">管理员记录：</span> <span class=\"message linkify\">[admin]将你的玩家质量分（PQ）调整了[amt2change]，原因：[raisin]</span></span>")
 
 /datum/admins/proc/Game()
 	if(!check_rights(0))
@@ -943,13 +943,13 @@
 				if("Regular Restart")
 					SSticker.Reboot(init_by, "admin reboot - by Admin", 10)
 				if("Hard Restart (No Delay, No Feeback Reason)")
-					to_chat(world, "World reboot - [init_by]")
+					to_chat(world, "游戏世界重启 - [init_by]")
 					world.Reboot()
 				if("Hardest Restart (No actions, just reboot)")
-					to_chat(world, "Hard world reboot - [init_by]")
+					to_chat(world, "游戏世界强制重启 - [init_by]")
 					world.Reboot(fast_track = TRUE)
 				if("Server Restart (Kill and restart DD)")
-					to_chat(world, "Server restart - [init_by]")
+					to_chat(world, "服务器重启 - [init_by]")
 					world.TgsEndProcess()
 
 /datum/admins/proc/end_round()
@@ -978,7 +978,7 @@
 	if(message)
 		if(!check_rights(R_SERVER,0))
 			message = adminscrub(message,500)
-		to_chat(world, "<span class='adminnotice'><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b></span>\n \t [message]")
+		to_chat(world, "<span class='adminnotice'><b>[usr.client.holder.fakekey ? "管理员" : usr.key]发布公告：</b></span>\n \t [message]")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Announce") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1000,7 +1000,7 @@
 	else
 		message_admins("[key_name(usr)] set the admin notice.")
 		log_admin("[key_name(usr)] set the admin notice:\n[new_admin_notice]")
-		to_chat(world, span_adminnotice("<b>Admin Notice:</b>\n \t [new_admin_notice]"))
+		to_chat(world, span_adminnotice("<b>管理员通知：</b>\n \t [new_admin_notice]"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Admin Notice") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	GLOB.admin_notice = new_admin_notice
 	return
@@ -1050,9 +1050,9 @@
 	set name="Toggle Entering"
 	GLOB.enter_allowed = !( GLOB.enter_allowed )
 	if (!( GLOB.enter_allowed ))
-		to_chat(world, "<B>New players may no longer enter the game.</B>")
+		to_chat(world, "<B>新玩家暂时无法进入游戏。</B>")
 	else
-		to_chat(world, "<B>New players may now enter the game.</B>")
+		to_chat(world, "<B>新玩家现在可以进入游戏。</B>")
 	log_admin("[key_name(usr)] toggled new player game entering.")
 	message_admins(span_adminnotice("[key_name_admin(usr)] toggled new player game entering."))
 	world.update_status()
@@ -1066,9 +1066,9 @@
 	var/alai = CONFIG_GET(flag/allow_ai)
 	CONFIG_SET(flag/allow_ai, !alai)
 	if (alai)
-		to_chat(world, "<B>The AI job is no longer chooseable.</B>")
+		to_chat(world, "<B>人工智能职业暂时无法选择。</B>")
 	else
-		to_chat(world, "<B>The AI job is chooseable now.</B>")
+		to_chat(world, "<B>人工智能职业现在可以选择。</B>")
 	log_admin("[key_name(usr)] toggled AI allowed.")
 	world.update_status()
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle AI", "[!alai ? "Disabled" : "Enabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -1081,9 +1081,9 @@
 	var/new_nores = !CONFIG_GET(flag/norespawn)
 	CONFIG_SET(flag/norespawn, new_nores)
 	if (!new_nores)
-		to_chat(world, "<B>I may now respawn.</B>")
+		to_chat(world, "<B>现在可以重生。</B>")
 	else
-		to_chat(world, "<B>I may no longer respawn :(</B>")
+		to_chat(world, "<B>暂时无法重生 :(</B>")
 	message_admins(span_adminnotice("[key_name_admin(usr)] toggled respawn to [!new_nores ? "On" : "Off"]."))
 	log_admin("[key_name(usr)] toggled respawn to [!new_nores ? "On" : "Off"].")
 	world.update_status()
@@ -1101,10 +1101,10 @@
 		newtime = newtime*10
 		SSticker.SetTimeLeft(newtime)
 		if(newtime < 0)
-			to_chat(world, "<b>The game start has been delayed.</b>")
+			to_chat(world, "<b>游戏开始时间已推迟。</b>")
 			log_admin("[key_name(usr)] delayed the round start.")
 		else
-			to_chat(world, "<b>The game will start in [DisplayTimeText(newtime)].</b>")
+			to_chat(world, "<b>游戏将在[DisplayTimeText(newtime)]后开始。</b>")
 			SEND_SOUND(world, sound('sound/blank.ogg'))
 			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -1217,9 +1217,9 @@
 	set name="Toggle tinted welding helmes"
 	GLOB.tinted_weldhelh = !( GLOB.tinted_weldhelh )
 	if (GLOB.tinted_weldhelh)
-		to_chat(world, "<B>The tinted_weldhelh has been enabled!</B>")
+		to_chat(world, "<B>已启用焊接头盔视野着色（tinted_weldhelh）！</B>")
 	else
-		to_chat(world, "<B>The tinted_weldhelh has been disabled!</B>")
+		to_chat(world, "<B>已关闭焊接头盔视野着色（tinted_weldhelh）！</B>")
 	log_admin("[key_name(usr)] toggled tinted_weldhelh.")
 	message_admins("[key_name_admin(usr)] toggled tinted_weldhelh.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Tinted Welding Helmets", "[GLOB.tinted_weldhelh ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -1232,9 +1232,9 @@
 	var/new_guest_ban = !CONFIG_GET(flag/guest_ban)
 	CONFIG_SET(flag/guest_ban, new_guest_ban)
 	if (new_guest_ban)
-		to_chat(world, "<B>Guests may no longer enter the game.</B>")
+		to_chat(world, "<B>游客暂时无法进入游戏。</B>")
 	else
-		to_chat(world, "<B>Guests may now enter the game.</B>")
+		to_chat(world, "<B>游客现在可以进入游戏。</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.")
 	message_admins(span_adminnotice("[key_name_admin(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed."))
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Guests", "[!new_guest_ban ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

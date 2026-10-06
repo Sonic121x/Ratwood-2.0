@@ -1,5 +1,5 @@
-#define CHOICE_RESTART "Restart Round"
-#define CHOICE_CONTINUE "Continue Playing"
+#define CHOICE_RESTART "重启回合"
+#define CHOICE_CONTINUE "继续游戏"
 
 /datum/vote/restart_vote
 	name = "Restart"
@@ -7,8 +7,8 @@
 		CHOICE_RESTART,
 		CHOICE_CONTINUE,
 	)
-	default_message = "Vote to restart the ongoing round. \
-		Only works if there are no non-AFK admins online."
+	default_message = "投票决定是否重启当前回合。 \
+		仅在没有处于活动状态的管理员在线时生效。"
 
 /// This proc checks to see if any admins are online for the purposes of this vote to see if it can pass. Returns TRUE if there are valid admins online (Has +SERVER and is not AFK), FALSE otherwise.
 /datum/vote/restart_vote/proc/admins_present()
@@ -36,8 +36,8 @@
 
 /datum/vote/restart_vote/proc/async_alert_about_admins(mob/vote_creator)
 	set waitfor = FALSE
-	tgui_alert(vote_creator, "Note: Regardless of the results of this vote, \
-		the round will not automatically restart because an active admin is online.")
+	tgui_alert(vote_creator, "提醒：由于有处于活动状态的管理员在线， \
+		无论本次投票结果如何，回合都不会自动重启。")
 
 /datum/vote/restart_vote/get_vote_result(list/non_voters)
 	if(!CONFIG_GET(flag/default_no_vote))
@@ -52,14 +52,14 @@
 
 	if(winning_option == CHOICE_RESTART)
 		if(admins_present())
-			to_chat(world, span_boldannounce("Notice: A restart vote will not restart the server automatically because there are active admins on."))
+			to_chat(world, span_boldannounce("提醒：有处于活动状态的管理员在线，重启投票不会自动重启服务器。"))
 			message_admins("A restart vote has passed, but there are active admins on with +SERVER, so it has been canceled. If you wish, you may restart the server.")
 			return
 
 		// If there was a previous map vote, we revert the change.
 		if(!isnull(SSmap_vote.next_map_config))
 			log_game("The next map has been reset due to successful restart vote.")
-			send_to_playing_players(span_boldannounce("The next map has been reset due to successful restart vote."))
+			send_to_playing_players(span_boldannounce("由于重启投票通过，下一回合的地图已重置。"))
 			SSmap_vote.revert_next_map()
 
 		SSticker.force_ending = 1

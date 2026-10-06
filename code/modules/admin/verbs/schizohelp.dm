@@ -10,15 +10,15 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(!msg)
 		return
 
-	to_chat(src, span_info("<i>You ask the mentors...</i>\n[msg]"))
+	to_chat(src, span_info("<i>我向导师们请教……</i>\n[msg]"))
 	var/datum/schizohelp/ticket = new(src)
 	var/display_name = get_schizo_name()
-	var/message = span_info("<i>[display_name] meditates...</i>\n[msg]")
+	var/message = span_info("<i>[display_name]正在冥想……</i>\n[msg]")
 	var/message_admins = span_info("<i>[display_name] ([key || "NO KEY"]) [ADMIN_FLW(src)] [ADMIN_SM(src)] meditates...</i>\n[msg]")
 	for(var/client/voice in (GLOB.clients - client))
 		if(!(voice.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
 			continue
-		var/answer_button = span_info("(<a href='?src=[voice];schizohelp=[REF(ticket)];'>ANSWER</a>)")
+		var/answer_button = span_info("(<a href='?src=[voice];schizohelp=[REF(ticket)];'>回应</a>)")
 		to_chat(voice, "[message] [answer_button]")
 
 	for(var/client/admin in GLOB.admins)
@@ -32,21 +32,21 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 
 /mob/proc/get_schizo_name()
 	var/static/list/possible_adjectives = list(
-		"Indecisive",
-		"Doubtful",
-		"Confused",
-		"Hysteric",
-		"Unstable",
-		"Unsure",
-		"Unsettled",
+		"犹豫的",
+		"怀疑的",
+		"困惑的",
+		"歇斯底里的",
+		"不安定的",
+		"迟疑的",
+		"忐忑的",
 	)
 	var/static/list/possible_nouns = list(
-		"Fool",
-		"Madman",
-		"Nimrod",
-		"Lunatic",
-		"Imbecile",
-		"Simpleton",
+		"愚人",
+		"狂人",
+		"糊涂虫",
+		"疯子",
+		"呆子",
+		"傻瓜",
 	)
 	/// generate a consistent but anonymous name
 	var/static/fumbling_seed = text2num(GLOB.rogue_round_id)
@@ -57,12 +57,12 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 
 /client/proc/answer_schizohelp(datum/schizohelp/schizo)
 	if(QDELETED(schizo))
-		to_chat(src, span_warning("This meditation can no longer be answered..."))
+		to_chat(src, span_warning("这次冥想已经无法回应了……"))
 		return
 	if(schizo.owner == src.mob)
-		to_chat(src, span_warning("I can't answer my own meditation!"))
+		to_chat(src, span_warning("我不能回应自己的冥想！"))
 		return
-	var/answer = input("Answer their meditations...", "VOICE")
+	var/answer = input("回应这次冥想……", "心中之声")
 	if(!answer || QDELETED(schizo))
 		return
 	schizo.answer_schizo(answer, src.mob)
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(QDELETED(src) || !voice.client)
 		return
 	answer = copytext(sanitize(answer), 1, MAX_MESSAGE_LEN)
-	to_chat(owner, "<i>I hear a voice in my head...\n<b>[answer]</i></b>")
+	to_chat(owner, "<i>我的脑海中响起一个声音……\n<b>[answer]</i></b>")
 
 	for(var/client/listener in (GLOB.clients - owner.client))
 		if(listener in GLOB.admins)
@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		else
 			if(!(listener.prefs.toggles & SCHIZO_VOICE))
 				continue
-			to_chat(listener, span_info("Someone answers:<i>[answer]</i>"))
+			to_chat(listener, span_info("有人回应：<i>[answer]</i>"))
 	// Comes out to GAME: MENTOR HELP: GilbertRobert1337/(Generic Bandito) answered CluelessSherlock01/(Greatest Detective)'s medition : You can look for footsteps by right clicking the eyeball HUD.
 	log_game("MENTOR HELP: [key_name(voice)] answered [key_name(owner)]'s meditation : [answer]")
 	answers[voice.key] = answer

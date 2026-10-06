@@ -135,13 +135,13 @@
 	)
 
 
-	var/weapons = list("双手剑","Kriegmesser 与圆盾","戟斧","长戟")
+	var/weapons = list("双手剑","战刀与圆盾","戟斧","长戟")
 	var/weapon_choice = input("选择你的武器。", "拿起武器") as anything in weapons
 	switch(weapon_choice)
 		if("双手剑")
 			r_hand = /obj/item/rogueweapon/greatsword/grenz
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
-		if("Kriegmesser 与圆盾") // Buckler cuz they have no shield skill.
+		if("战刀与圆盾") // Buckler cuz they have no shield skill.
 			beltr = /obj/item/rogueweapon/scabbard/sword
 			r_hand = /obj/item/rogueweapon/sword/long/kriegmesser
 			backl = /obj/item/rogueweapon/shield/buckler

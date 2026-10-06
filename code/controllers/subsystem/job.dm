@@ -877,7 +877,7 @@ SUBSYSTEM_DEF(job)
 	if(PopcapReached())
 		JobDebug("Popcap overflow Check observer located, Player: [player]")
 	JobDebug("Player rejected :[player]")
-	to_chat(player, "<b>I couldn't find a job to be..</b>")
+	to_chat(player, "<b>我没能找到可以担任的职位……</b>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
 

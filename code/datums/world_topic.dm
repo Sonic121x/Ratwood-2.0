@@ -91,7 +91,7 @@
 	require_comms_key = TRUE
 
 /datum/world_topic/news_report/Run(list/input)
-	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+	minor_announce(input["message"], "来自[input["message_sender"]]的最新消息")
 
 /datum/world_topic/server_hop
 	keyword = "server_hop"

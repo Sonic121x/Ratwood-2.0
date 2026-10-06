@@ -887,5 +887,5 @@ GLOBAL_LIST_INIT(character_flaws, list(
 				var/height = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_HEIGHT), "%DESC1%")
 				var/body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
 				var/voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
-				add_bounty_noface(H.real_name, H.dna.species, H.gender, height, body, voice, rand(100, 200), FALSE, "Failure to pay outstanding debts.", "The Justiciary of [SSmapping.map_adjustment.realm_name]")
+				add_bounty_noface(H.real_name, H.dna.species, H.gender, height, body, voice, rand(100, 200), FALSE, "未偿还欠债。", "[SSmapping.map_adjustment.realm_name]司法厅")
 			bounty_added = TRUE

@@ -105,15 +105,15 @@
 /datum/component/armour_filtering/proc/handle_boons(mob/living/carbon/human/user, equip)
 	if(equip)
 		if(!positive)
-			to_chat(user, span_info("[parent] is not to my liking. ([required_trait])"))
+			to_chat(user, span_info("[parent]不合我的心意。 ([required_trait])"))
 			if(HAS_TRAIT(user, TRAIT_ARMOUR_DISLIKED) && !additive)
-				to_chat(user, span_info("...yet, another piece of my armour is on my mind."))
+				to_chat(user, span_info("……不过，另一件护甲仍让我挂心。"))
 				return
 			ADD_TRAIT(user, TRAIT_ARMOUR_DISLIKED, TRAIT_GENERIC)
 		else
-			to_chat(user, span_info("[parent] fits me well. ([required_trait])"))
+			to_chat(user, span_info("[parent]很合我的心意。 ([required_trait])"))
 			if(HAS_TRAIT(user, TRAIT_ARMOUR_LIKED) && !additive)
-				to_chat(user, span_info("..yet another piece of my armour is on my mind."))
+				to_chat(user, span_info("……不过，另一件护甲仍让我挂心。"))
 				// Id-specific boons (e.g. clearing the lost mask debuff) must still apply.
 				trait_boon_equip(user, filter_id)
 				return
@@ -122,11 +122,11 @@
 		return
 
 	if(!positive)
-		to_chat(user, span_info("Free at last of [parent]. ([required_trait])"))
+		to_chat(user, span_info("终于摆脱了[parent]。 ([required_trait])"))
 		if(HAS_TRAIT(user, TRAIT_ARMOUR_DISLIKED))
 			REMOVE_TRAIT(user, TRAIT_ARMOUR_DISLIKED, TRAIT_GENERIC)
 	else
-		to_chat(user, span_info("I miss [parent] already. ([required_trait])"))
+		to_chat(user, span_info("我已经开始想念[parent]了。 ([required_trait])"))
 		if(HAS_TRAIT(user, TRAIT_ARMOUR_LIKED))
 			REMOVE_TRAIT(user, TRAIT_ARMOUR_LIKED, TRAIT_GENERIC)
 	trait_boon_drop(user, filter_id)
