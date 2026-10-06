@@ -4,8 +4,8 @@
 #define OBFUSCATE_FADE_TIME 0.5 SECONDS
 
 /datum/coven/obfuscate
-	name = "Obfuscate"
-	desc = "Makes you less noticeable to living and unliving beings."
+	name = "隐匿"
+	desc = "让活物与不死生物更难察觉你的存在。"
 	icon_state = "obfuscate"
 	power_type = /datum/coven_power/obfuscate
 
@@ -24,7 +24,7 @@
 /datum/coven_power/obfuscate/proc/on_combat_signal(datum/source)
 	SIGNAL_HANDLER
 
-	to_chat(owner, span_danger("Your Obfuscate falls away as you reveal yourself!"))
+	to_chat(owner, span_danger("你暴露了自己，隐匿效果随之消散！"))
 	try_deactivate(direct = TRUE)
 
 	deltimer(cooldown_timer)
@@ -79,15 +79,15 @@
 		if (owner.is_clanmate(viewer))
 			continue
 
-		to_chat(owner, span_warning("You cannot use [src] while you're being observed!"))
+		to_chat(owner, span_warning("被他人注视时，你无法使用[src]！"))
 		return FALSE
 
 	return TRUE
 
 //CLOAK OF SHADOWS - Basic stealth, broken by movement
 /datum/coven_power/obfuscate/cloak_of_shadows
-	name = "Cloak of Shadows"
-	desc = "Meld into the shadows and stay unnoticed so long as you draw no attention. Broken by any movement."
+	name = "暗影斗篷"
+	desc = "融入阴影，只要不引起注意便能隐匿身形。任何移动都会破坏效果。"
 
 	level = 1
 	research_cost = 0
@@ -120,7 +120,7 @@
 /datum/coven_power/obfuscate/cloak_of_shadows/proc/handle_move(datum/source, atom/moving_thing, dir)
 	SIGNAL_HANDLER
 
-	to_chat(owner, span_danger("Your [src] falls away as you move from your position!"))
+	to_chat(owner, span_danger("你离开了原位，[src]的效果随之消散！"))
 	try_deactivate(direct = TRUE)
 
 	deltimer(cooldown_timer)
@@ -128,8 +128,8 @@
 
 //UNSEEN PRESENCE - Can move while stealthed, but only walking speed
 /datum/coven_power/obfuscate/unseen_presence
-	name = "Unseen Presence"
-	desc = "Move among the crowds without ever being noticed. Achieve invisibility while walking."
+	name = "无形之影"
+	desc = "穿行于人群之中而不被察觉。行走时保持隐形。"
 
 	level = 2
 	research_cost = 1
@@ -158,7 +158,7 @@
 	SIGNAL_HANDLER
 
 	if (owner.m_intent == MOVE_INTENT_RUN)
-		to_chat(owner, span_danger("Your [src] falls away as you move too quickly!"))
+		to_chat(owner, span_danger("你移动得太快，[src]的效果随之消散！"))
 		try_deactivate(direct = TRUE)
 
 		deltimer(cooldown_timer)
@@ -166,8 +166,8 @@
 
 //VANISH FROM THE MIND'S EYE - Instant stealth activation + memory wipe
 /datum/coven_power/obfuscate/vanish_from_the_minds_eye
-	name = "Vanish from the Mind's Eye"
-	desc = "Disappear from plain view instantly, and wipe your presence from recent memory."
+	name = "抹去心影"
+	desc = "瞬间从众目睽睽之下消失，并抹去他人近期记忆中你的身影。"
 
 	level = 3
 	research_cost = 2
@@ -187,8 +187,8 @@
 	// Memory wipe effect - make nearby people forget they saw you
 	for(var/mob/living/carbon/human/viewer in oviewers(7, owner))
 		if(viewer.client && viewer.stat < UNCONSCIOUS && !viewer.is_immune_to_vampire_domination())
-			to_chat(viewer, span_hypnophrase("<span style='font-size: 200%; text-shadow: 0 0 8px #ffffff;'>Wait... wasn't someone just here? No, must be my imagination...</span>"))
-			to_chat(viewer, span_hypnophrase("<span style='font-size: 80%; text-shadow: 0 0 6px #ffffff;'>You forget that you saw [owner].</span>"))
+			to_chat(viewer, span_hypnophrase("<span style='font-size: 200%; text-shadow: 0 0 8px #ffffff;'>等等……刚才这里不是有人吗？不，一定是我的错觉……</span>"))
+			to_chat(viewer, span_hypnophrase("<span style='font-size: 80%; text-shadow: 0 0 6px #ffffff;'>你忘记了自己曾看见[owner]。</span>"))
 			// Could add more memory effects here like removing recent chat logs mentioning the user
 
 /datum/coven_power/obfuscate/vanish_from_the_minds_eye/deactivate()
@@ -203,7 +203,7 @@
 	SIGNAL_HANDLER
 
 	if (owner.m_intent == MOVE_INTENT_RUN)
-		to_chat(owner, span_danger("Your [src] falls away as you move too quickly!"))
+		to_chat(owner, span_danger("你移动得太快，[src]的效果随之消散！"))
 		try_deactivate(direct = TRUE)
 
 		deltimer(cooldown_timer)
@@ -211,8 +211,8 @@
 
 //CLOAK THE GATHERING - Group stealth for multiple people
 /datum/coven_power/obfuscate/cloak_the_gathering
-	name = "Cloak the Gathering"
-	desc = "Hide yourself and others in a small area. All nearby allies become invisible."
+	name = "群影之幕"
+	desc = "隐去小范围内自己与他人的身形。附近所有盟友都会隐形。"
 
 	level = 4
 	research_cost = 3
@@ -246,10 +246,10 @@
 
 		conceal(target)
 		cloaked_mobs += target
-		to_chat(target, span_notice("You feel a supernatural veil fall over you..."))
+		to_chat(target, span_notice("你感到一层超自然的帷幕笼罩了自己……"))
 		RegisterSignal(target, aggressive_signals, PROC_REF(on_ally_combat_signal), override = TRUE)
 
-	to_chat(owner, span_notice("You extend your cloak to [length(cloaked_mobs) - 1] nearby allies."))
+	to_chat(owner, span_notice("你将隐匿帷幕延伸至附近的[length(cloaked_mobs) - 1]名盟友身上。"))
 
 /datum/coven_power/obfuscate/cloak_the_gathering/deactivate()
 	. = ..()
@@ -261,14 +261,14 @@
 		unconceal(target)
 		UnregisterSignal(target, aggressive_signals)
 		if(target != owner)
-			to_chat(target, span_warning("The supernatural veil fades away..."))
+			to_chat(target, span_warning("超自然的帷幕消散了……"))
 
 	cloaked_mobs.Cut()
 
 /datum/coven_power/obfuscate/cloak_the_gathering/proc/handle_move(datum/source, atom/moving_thing, dir)
 	SIGNAL_HANDLER
 
-	to_chat(owner, span_danger("Your [src] falls away as you move from your position!"))
+	to_chat(owner, span_danger("你离开了原位，[src]的效果随之消散！"))
 	try_deactivate(direct = TRUE)
 
 	deltimer(cooldown_timer)
@@ -278,7 +278,7 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/ally = source
-	to_chat(ally, span_danger("Your actions break the supernatural veil!"))
+	to_chat(ally, span_danger("你的举动打破了超自然的帷幕！"))
 
 	// Remove this ally from the cloak
 	unconceal(ally)

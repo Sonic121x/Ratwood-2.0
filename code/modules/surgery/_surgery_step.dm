@@ -138,7 +138,7 @@
 			return FALSE
 	if(skill_used && skill_min && (user.get_skill_level(skill_used) < skill_min))
 		if(visible_required_skill)
-			to_chat(user, span_warning("I'm not skilled enough to do this!"))
+			to_chat(user, span_warning("我的技艺还不足以进行这项操作！"))
 		return FALSE
 	return TRUE
 
@@ -302,9 +302,9 @@
 		play_failure_sound(user, target, target_zone, tool)
 		if(user.client?.prefs.showrolls)
 			if(try_to_fail)
-				to_chat(user, span_warning("Intentional surgery fail... [success_prob]%"))
+				to_chat(user, span_warning("故意使手术失败……成功率：[success_prob]%"))
 			else
-				to_chat(user, span_warning("Surgery fail... [success_prob]%"))
+				to_chat(user, span_warning("手术失败……成功率：[success_prob]%"))
 		if(repeatingonfail && can_do_step(user, target, target_zone, tool, intent, try_to_fail))
 			initiate(user, target, target_zone, tool, intent, try_to_fail)
 		return FALSE
@@ -312,9 +312,9 @@
 	return FALSE
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to perform surgery on [target]..."),
-		span_notice("[user] begins to perform surgery on [target]."),
-		span_notice("[user] begins to perform surgery on [target]."))
+	display_results(user, target, span_notice("我开始为[target]做手术……"),
+		span_notice("[user]开始为[target]做手术。"),
+		span_notice("[user]开始为[target]做手术。"))
 	return TRUE
 
 /datum/surgery_step/proc/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -331,9 +331,9 @@
 	playsound(get_turf(target), sound_file_use, 75, TRUE, -2)
 
 /datum/surgery_step/proc/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I succeed."),
-		span_notice("[user] succeeds!"),
-		span_notice("[user] finishes."))
+	display_results(user, target, span_notice("我成功了。"),
+		span_notice("[user]成功了！"),
+		span_notice("[user]完成了操作。"))
 	return TRUE
 
 /datum/surgery_step/proc/play_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -342,9 +342,9 @@
 	playsound(get_turf(target), success_sound, 75, TRUE, -2)
 
 /datum/surgery_step/proc/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	display_results(user, target, span_warning("I screw up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] finishes."), TRUE) //By default the patient will notice if the wrong thing has been cut
+	display_results(user, target, span_warning("我失手了！"),
+		span_warning("[user]失手了！"),
+		span_notice("[user]完成了操作。"), TRUE) //By default the patient will notice if the wrong thing has been cut
 	switch (success_prob)
 		if (0 to 15)
 			target.reagents.add_reagent(/datum/reagent/infection/major, rand(2,5))
