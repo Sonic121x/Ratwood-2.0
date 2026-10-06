@@ -264,7 +264,7 @@
 		available_walls.Cut(1, 2)
 		wall.forceMove(upper_wall_turf)
 		wall.dir = get_wall_dir(center_turf, upper_wall_turf)
-		wall.name = "tent roof wall"
+		wall.name = "帐篷顶层墙布"
 		wall.invisibility = 0
 		wall.alpha = 255
 		RegisterSignal(wall, COMSIG_QDELETING, PROC_REF(part_destroyed))
