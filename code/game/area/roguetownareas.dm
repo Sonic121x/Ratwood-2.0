@@ -297,21 +297,21 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 
 // rogueworld areas
 /area/rogue/outdoors/town/sargoth
-	name = "outdoors"
+	name = "户外"
 	icon_state = "sargoth"
 	soundenv = 16
 	droning_sound = 'sound/music/area/sargoth.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/indoors/shelter/town/sargoth
-	first_time_text = "SARGOTH"
+	first_time_text = "萨戈斯"
 
 /area/rogue/indoors/shelter/town/sargoth
 	icon_state = "sargoth"
 	droning_sound = 'sound/music/area/sargoth.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	first_time_text = "SARGOTH"
+	first_time_text = "萨戈斯"
 
 
 /area/rogue/indoors/lich_start //Quieter so our droning noise doesn't cut out the on-spawn stinger, not yet. I want this experience to be thematic

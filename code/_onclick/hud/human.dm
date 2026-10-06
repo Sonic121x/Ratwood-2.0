@@ -35,7 +35,7 @@
 
 /atom/movable/screen/devil/soul_counter
 	icon = 'icons/mob/screen_gen.dmi'
-	name = "souls owned"
+	name = "持有的灵魂"
 	icon_state = "Devil-6"
 	screen_loc = ui_devilsouldisplay
 
@@ -533,7 +533,7 @@
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "suit storage"
+	inv_box.name = "外衣储物"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "suit_storage"
 	inv_box.screen_loc = ui_sstore1
@@ -770,7 +770,7 @@
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()
 	set category = "OOC"
-	set name = "Toggle hotkey buttons"
+	set name = "切换快捷键按钮"
 	set desc = ""
 	set hidden = 1
 	if(hud_used.hotkey_ui_hidden)

@@ -82,7 +82,7 @@
 
 #define CLOTHING_WET			"#bbbbbb"
 
-#define CLOTHING_COLOR_NAMES	list("Red","Purple","Black","Brown","Green","Blue","Yellow","Teal","White","Orange","Magenta")
+#define CLOTHING_COLOR_NAMES	list("红色","紫色","黑色","棕色","绿色","蓝色","黄色","青绿色","白色","橙色","品红色")
 
 // Patron colors
 #define COLOR_PATRON_ABYSSOR "#0077BE"
@@ -105,27 +105,27 @@
 
 /proc/clothing_color2hex(input)
 	switch(input)
-		if("Red")
+		if("Red", "红色")
 			return CLOTHING_RED
-		if("Purple")
+		if("Purple", "紫色")
 			return CLOTHING_PURPLE
-		if("Black")
+		if("Black", "黑色")
 			return CLOTHING_BLACK
-		if("Brown")
+		if("Brown", "棕色")
 			return CLOTHING_BROWN
-		if("Green")
+		if("Green", "绿色")
 			return CLOTHING_GREEN
-		if("Blue")
+		if("Blue", "蓝色")
 			return CLOTHING_BLUE
-		if("Yellow")
+		if("Yellow", "黄色")
 			return CLOTHING_YELLOW
-		if("Teal")
+		if("Teal", "青绿色")
 			return CLOTHING_TEAL
-		if("Azure")
+		if("Azure", "蔚蓝色")
 			return CLOTHING_AZURE
-		if("White")
+		if("White", "白色")
 			return CLOTHING_WHITE
-		if("Orange")
+		if("Orange", "橙色")
 			return CLOTHING_ORANGE
-		if("Magenta")
+		if("Magenta", "品红色")
 			return CLOTHING_MAGENTA
