@@ -10,7 +10,7 @@
 	possible_locs = list(BODY_ZONE_CHEST)
 
 /datum/surgery_step/heal
-	name = "Repair body"
+	name = "修复身体"
 	implements = list(
 		TOOL_SUTURE = 80,
 		TOOL_HEMOSTAT = 60,
@@ -54,19 +54,19 @@
 /datum/surgery_step/heal/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/woundtype
 	if(brutehealing && burnhealing)
-		woundtype = "wounds"
+		woundtype = "伤口"
 	else if(brutehealing)
-		woundtype = "bruises"
+		woundtype = "瘀伤"
 	else //why are you trying to 0,0...?
-		woundtype = "burns"
-	display_results(user, target, span_notice("I attempt to patch some of [target]'s [woundtype]."),
-			span_notice("[user] attempts to patch some of [target]'s [woundtype]."),
-			span_notice("[user] attempts to patch some of [target]'s [woundtype]."))
+		woundtype = "烧伤"
+	display_results(user, target, span_notice("我尝试处理[target]的部分[woundtype]。"),
+			span_notice("[user]尝试处理[target]的部分[woundtype]。"),
+			span_notice("[user]尝试处理[target]的部分[woundtype]。"))
 	return TRUE
 
 /datum/surgery_step/heal/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	var/umsg = "You succeed in fixing some of [target]'s wounds" //no period, add initial space to "addons"
-	var/tmsg = "[user] fixes some of [target]'s wounds" //see above
+	var/umsg = "你成功处理了[target]的部分伤口" //no period, add initial space to "addons"
+	var/tmsg = "[user]处理了[target]的部分伤口" //see above
 	var/healing_multiplier = 1
 	switch(user.get_skill_level(skill_used))
 		if(SKILL_LEVEL_JOURNEYMAN)
@@ -86,8 +86,8 @@
 	if(!get_location_accessible(target, target_zone))
 		urhealedamt_brute *= 0.55
 		urhealedamt_burn *= 0.55
-		umsg += " as best as you can while they have clothing on"
-		tmsg += " as best as they can while [target] has clothing on"
+		umsg += "，在对方穿着衣物的情况下尽力进行了治疗"
+		tmsg += "，在[target]穿着衣物的情况下尽力进行了治疗"
 	target.heal_bodypart_damage(urhealedamt_brute,urhealedamt_burn)
 	display_results(user, target, span_notice("[umsg]."),
 		"[tmsg].",
@@ -96,9 +96,9 @@
 	return TRUE
 
 /datum/surgery_step/heal/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	display_results(user, target, span_warning("I screwed up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] fixes some of [target]'s wounds."), TRUE)
+	display_results(user, target, span_warning("我失手了！"),
+		span_warning("[user]失手了！"),
+		span_notice("[user]处理了[target]的部分伤口。"), TRUE)
 	var/urdamageamt_burn = brutehealing * 0.8
 	var/urdamageamt_brute = burnhealing * 0.8
 	if(missinghpbonus)
@@ -111,21 +111,21 @@
 
 /********************BRUTE STEPS********************/
 /datum/surgery_step/heal/brute/basic
-	name = "Tend bruises"
+	name = "处理瘀伤"
 	brutehealing = 15
 	missinghpbonus = 7
 	requires_tech = FALSE
 	replaced_by = /datum/surgery_step/heal/brute/upgraded
 
 /datum/surgery_step/heal/brute/upgraded
-	name = "Tend bruises (Adv.)"
+	name = "处理瘀伤（高级）"
 	brutehealing = 20
 	missinghpbonus = 4
 	requires_tech = TRUE
 	replaced_by = /datum/surgery_step/heal/brute/upgraded/femto
 
 /datum/surgery_step/heal/brute/upgraded/femto
-	name = "Tend bruises (Exp.)"
+	name = "处理瘀伤（实验级）"
 	brutehealing = 20
 	missinghpbonus = 2
 	requires_tech = TRUE
@@ -133,21 +133,21 @@
 
 /********************BURN STEPS********************/
 /datum/surgery_step/heal/burn/basic
-	name = "Tend burns"
+	name = "处理烧伤"
 	burnhealing = 15
 	missinghpbonus = 7
 	requires_tech = FALSE
 	replaced_by = /datum/surgery_step/heal/burn/upgraded
 
 /datum/surgery_step/heal/burn/upgraded
-	name = "Tend burns (Adv.)"
+	name = "处理烧伤（高级）"
 	burnhealing = 20
 	missinghpbonus = 4
 	requires_tech = TRUE
 	replaced_by = /datum/surgery_step/heal/burn/upgraded/femto
 
 /datum/surgery_step/heal/burn/upgraded/femto
-	name = "Tend burns (Exp.)"
+	name = "处理烧伤（实验级）"
 	burnhealing = 20
 	missinghpbonus = 2
 	requires_tech = TRUE
@@ -155,7 +155,7 @@
 
 /********************COMBO STEPS********************/
 /datum/surgery_step/heal/combo
-	name = "Tend damage"
+	name = "处理损伤"
 	brutehealing = 7
 	burnhealing = 7
 	missinghpbonus = 7
@@ -163,7 +163,7 @@
 	replaced_by = /datum/surgery_step/heal/combo/upgraded
 
 /datum/surgery_step/heal/combo/upgraded
-	name = "Tend damage (Adv.)"
+	name = "处理损伤（高级）"
 	brutehealing = 7
 	burnhealing = 7
 	missinghpbonus = 4
@@ -171,7 +171,7 @@
 	replaced_by = /datum/surgery_step/heal/combo/upgraded/femto
 
 /datum/surgery_step/heal/combo/upgraded/femto
-	name = "Tend damage (Exp.)"
+	name = "处理损伤（实验级）"
 	brutehealing = 7
 	burnhealing = 7
 	missinghpbonus = 2
@@ -179,8 +179,8 @@
 	replaced_by = null
 
 /datum/surgery_step/heal/combo/upgraded/femto/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	display_results(user, target, span_warning("I screwed up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] fixes some of [target]'s wounds."), TRUE)
+	display_results(user, target, span_warning("我失手了！"),
+		span_warning("[user]失手了！"),
+		span_notice("[user]处理了[target]的部分伤口。"), TRUE)
 	target.take_bodypart_damage(5,5)
 	return TRUE

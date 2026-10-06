@@ -1,6 +1,6 @@
 /datum/clan_hierarchy_node
-	var/name = "Position"
-	var/desc = "A position within the clan hierarchy"
+	var/name = "职位"
+	var/desc = "氏族层级中的一个职位"
 	var/mob/living/carbon/human/assigned_member
 	var/datum/clan_hierarchy_node/superior // Who this position reports to
 	var/list/datum/clan_hierarchy_node/subordinates = list() // Who reports to this position
@@ -130,8 +130,8 @@
 
 // Command Subordinate Action
 /datum/action/clan_hierarchy/command_subordinate
-	name = "Command Subordinate"
-	desc = "Give a telepathic command to a subordinate."
+	name = "命令下属"
+	desc = "通过心灵感应向一名下属下达命令。"
 	button_icon_state = "command"
 	cooldown_time = 100
 
@@ -162,26 +162,26 @@
 			valid_targets += sub.assigned_member
 
 	if(!length(valid_targets))
-		to_chat(user, "<span class='warning'>You have no subordinates!</span>")
+		to_chat(user, "<span class='warning'>你没有下属！</span>")
 		return
 
-	var/mob/living/carbon/human/target = input(user, "Choose subordinate to command:", "Command Subordinate") as null|anything in valid_targets
+	var/mob/living/carbon/human/target = input(user, "选择要命令的下属：", "命令下属") as null|anything in valid_targets
 
 	if(!target || !target.clan_position || !user.clan_position.is_superior_to(target.clan_position))
-		to_chat(user, "<span class='warning'>Invalid target!</span>")
+		to_chat(user, "<span class='warning'>目标无效！</span>")
 		return
 
-	var/command = sanitize(input(user, "What is your command?", "Command") as text|null)
+	var/command = sanitize(input(user, "你的命令是什么？", "命令") as text|null)
 
 	if(!command || length(command) > 200)
-		to_chat(user, "<span class='warning'>Invalid command!</span>")
+		to_chat(user, "<span class='warning'>命令无效！</span>")
 		return
 
 	start_cooldown()
 
 	// Send the command
-	to_chat(user, "<span class='notice'>You telepathically command [target.real_name]: \"[command]\"</span>")
-	to_chat(target, "<span class='userdanger'><b>[user.real_name] commands you telepathically:</b> \"[command]\"</span>")
+	to_chat(user, "<span class='notice'>你通过心灵感应向[target.real_name]下令：\"[command]\"</span>")
+	to_chat(target, "<span class='userdanger'><b>[user.real_name]通过心灵感应向你下令：</b>\"[command]\"</span>")
 
 	// Play sound to target
 	//playsound(target, 'sound/magic/whisper.ogg', 30, TRUE)
@@ -202,8 +202,8 @@
 
 // Summon Subordinate Action
 /datum/action/clan_hierarchy/summon_subordinate
-	name = "Summon Subordinate"
-	desc = "Command a subordinate to come to your location immediately."
+	name = "召来下属"
+	desc = "命令一名下属立即来到你所在的位置。"
 	button_icon_state = "summon"
 	cooldown_time = 300
 
@@ -237,13 +237,13 @@
 			valid_targets += sub.assigned_member
 
 	if(!length(valid_targets))
-		to_chat(user, "<span class='warning'>No subordinates in range!</span>")
+		to_chat(user, "<span class='warning'>范围内没有下属！</span>")
 		return
 
-	var/mob/living/carbon/human/target = input(user, "Choose subordinate to summon:", "Summon Subordinate") as null|anything in valid_targets
+	var/mob/living/carbon/human/target = input(user, "选择要召来的下属：", "召来下属") as null|anything in valid_targets
 
 	if(!target || !target.clan_position || !user.clan_position.is_superior_to(target.clan_position))
-		to_chat(user, "<span class='warning'>Invalid target!</span>")
+		to_chat(user, "<span class='warning'>目标无效！</span>")
 		return
 
 	start_cooldown()
@@ -262,18 +262,18 @@
 		target.forceMove(target_turf)
 
 		// Messages
-		to_chat(user, "<span class='notice'>You summon [target.real_name] to your location.</span>")
-		to_chat(target, "<span class='userdanger'>You are compelled to appear before [user.real_name]!</span>")
+		to_chat(user, "<span class='notice'>你将[target.real_name]召到了自己身边。</span>")
+		to_chat(target, "<span class='userdanger'>你被迫来到[user.real_name]面前！</span>")
 
 		// Announce to nearby clan members
 		for(var/mob/living/carbon/human/observer in view(7, user))
 			if(observer.clan == user.clan && observer != user && observer != target)
-				to_chat(observer, "<span class='info'>[user.real_name] has summoned [target.real_name].</span>")
+				to_chat(observer, "<span class='info'>[user.real_name]召来了[target.real_name]。</span>")
 
 // Mass Command Action
 /datum/action/clan_hierarchy/mass_command
-	name = "Mass Command"
-	desc = "Send a telepathic message to all your subordinates."
+	name = "集体号令"
+	desc = "通过心灵感应向所有下属发送消息。"
 	button_icon_state = "mass_command"
 	cooldown_time = 600
 
@@ -306,28 +306,28 @@
 			valid_targets += sub.assigned_member
 
 	if(!length(valid_targets))
-		to_chat(user, "<span class='warning'>You have no subordinates!</span>")
+		to_chat(user, "<span class='warning'>你没有下属！</span>")
 		return
 
-	var/command = sanitize(input(user, "What is your mass command?", "Mass Command") as text|null)
+	var/command = sanitize(input(user, "你要向所有下属下达什么命令？", "集体号令") as text|null)
 
 	if(!command || length(command) > 300)
-		to_chat(user, "<span class='warning'>Invalid command!</span>")
+		to_chat(user, "<span class='warning'>命令无效！</span>")
 		return
 
 	start_cooldown()
 
 	// Send to all subordinates
-	to_chat(user, "<span class='notice'>You send a mass command to [length(valid_targets)] subordinate(s): \"[command]\"</span>")
+	to_chat(user, "<span class='notice'>你向[length(valid_targets)]名下属下达了集体号令：\"[command]\"</span>")
 
 	for(var/mob/living/carbon/human/target in valid_targets)
-		to_chat(target, "<span class='userdanger'><b>[user.real_name] commands all subordinates:</b> \"[command]\"</span>")
+		to_chat(target, "<span class='userdanger'><b>[user.real_name]向所有下属下令：</b>\"[command]\"</span>")
 		//playsound(target, 'sound/magic/whisper.ogg', 30, TRUE)
 
 // Locate Subordinate Action
 /datum/action/clan_hierarchy/locate_subordinate
-	name = "Locate Subordinate"
-	desc = "Sense the location of your subordinates."
+	name = "感知下属"
+	desc = "感知下属所在的位置。"
 	button_icon_state = "locate"
 	cooldown_time = 200
 
@@ -357,14 +357,14 @@
 			var/turf/target_turf = get_turf(target)
 			if(is_in_zweb(user.z, target_turf.z))
 				var/dist = get_dist_3d(user, target_turf)
-				location_info += "[target.real_name] ([sub.name]) [(dist > 20 ? "far away" : "nearby")])"
+				location_info += "[target.real_name] ([sub.name]) [(dist > 20 ? "远处" : "附近")])"
 
 	if(!length(location_info))
-		to_chat(user, "<span class='warning'>You have no subordinates to locate!</span>")
+		to_chat(user, "<span class='warning'>你没有可供感知的下属！</span>")
 		return
 
 	start_cooldown()
 
-	to_chat(user, "<span class='notice'><b>Subordinate Locations:</b></span>")
+	to_chat(user, "<span class='notice'><b>下属位置：</b></span>")
 	for(var/info in location_info)
 		to_chat(user, "<span class='info'>[info]</span>")
