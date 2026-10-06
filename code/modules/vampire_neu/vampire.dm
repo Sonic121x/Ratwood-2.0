@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	vampdude.set_clan_direct(new_clan)
 	clan_selected = TRUE
 
-	to_chat(vampdude, span_notice("You are now a member of the [custom_clan_name] clan with [length(selected_covens)] coven(s)."))
+	to_chat(vampdude, span_notice("你现在是[custom_clan_name]氏族的一员，拥有[length(selected_covens)]个盟会。"))
 
 /datum/antagonist/vampire/proc/after_gain()
 	owner.current.set_bloodpool(owner.current.get_maxbloodpool() / 100 * INITIAL_BLOODPOOL_PERCENTAGE)
@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		vampdude.set_clan(null)
 	owner.current?.hud_used?.shutdown_bloodpool()
 	if(!silent && owner.current)
-		to_chat(owner.current, span_danger("I am no longer a [job_rank]!"))
+		to_chat(owner.current, span_danger("我不再是[job_rank]了！"))
 	owner.special_role = null
 	return ..()
 

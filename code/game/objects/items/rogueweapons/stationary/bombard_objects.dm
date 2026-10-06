@@ -2,7 +2,7 @@
 Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 */
 /obj/item/rogueweapon/palantir
-	name = "\improper 真知晶球"
+	name = "\proper 真知晶球"
 	desc = "一具刻满符文、灌注了能量的奥术罗盘。\
 	换句话说，它能够侦测地脉交汇点。\
 	这是件贵得惊人的装置，多半是从女王麾下某位法师手里撬来的。"
@@ -60,7 +60,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 
 //The portable bombard's frame, lacking a barrel.
 /obj/item/bombard_frame
-	name = "\improper 轻型臼炮架"
+	name = "\proper 轻型臼炮架"
 	desc = "一门轻型臼炮的炮架。要是你有炮管，就能把轻型臼炮架设起来…… <br>\
 	<small>要这么做，你必须同时持有两部分，然后用“制作”组装。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
@@ -71,7 +71,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 
 //And the barrel it lacks.
 /obj/item/bombard_barrel
-	name = "\improper 轻型臼炮管"
+	name = "\proper 轻型臼炮管"
 	desc = "一门轻型臼炮的炮管。要是你有炮架，就能把轻型臼炮架设起来…… <br>\
 	<small>要这么做，你必须同时持有两部分，然后用“制作”组装。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
@@ -83,7 +83,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 //craftable bombard
 
 /obj/item/bombard_roughbarrel
-	name = "\improper 粗糙铁炮管"
+	name = "\proper 粗糙铁炮管"
 	desc = "一根尚未经过妥善处理的粗糙铁炮管。 <br>\
 	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
@@ -93,7 +93,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 	possible_item_intents = list(INTENT_GENERIC)
 
 /obj/item/bombard_partiallyrefinedbarrel
-	name = "\improper 初步精炼的炮管"
+	name = "\proper 初步精炼的炮管"
 	desc = "一根经过初步处理的铁制炮管，内壁却依旧粗糙，仍需打磨，<br>\
 	<small>你觉得可以把它带到铁砧上进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
@@ -103,7 +103,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 	possible_item_intents = list(INTENT_GENERIC)
 
 /obj/item/bombard_sandedbarrel
-	name = "\improper 打磨过的臼炮炮管"
+	name = "\proper 打磨过的臼炮炮管"
 	desc = "一根经过打磨处理的铁炮管，但内部仍有缺口需要修补，<br>\
 	<small> 你觉得可以把它带到铁砧处进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
@@ -113,7 +113,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 	possible_item_intents = list(INTENT_GENERIC)
 
 /obj/item/bombard_sandedrepairedbarrel
-	name = "\improper 修补过的打磨炮管"
+	name = "\proper 修补过的打磨炮管"
 	desc = "一根经过打磨处理的铁炮管，其内部空腔光滑平整，<br>\
 	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'

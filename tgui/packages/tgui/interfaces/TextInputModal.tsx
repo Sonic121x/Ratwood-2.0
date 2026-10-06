@@ -105,7 +105,7 @@ export const TextInputModal = (props) => {
   };
 
   return (
-    <Window title={title} width={windowWidth} height={windowHeight}>
+    <Window title={title} display_title={title === 'Prayer of Foolish Repentance' ? '愚者悔罪祷文' : title} width={windowWidth} height={windowHeight}>
       {timeout && <Loader value={timeout} />}
       <Window.Content onKeyDown={handleKeyDown}>
         <Section fill>
@@ -129,7 +129,7 @@ export const TextInputModal = (props) => {
                   maxLength={max_length}
                   onEscape={() => act('cancel')}
                   onChange={onType}
-                  placeholder="Type something..."
+                  placeholder="请输入内容……"
                   value={input}
                 />
               </div>

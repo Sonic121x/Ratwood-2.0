@@ -14,32 +14,32 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
 /datum/supply_pack/rogue/Brigand/bascinet
-	name = "巴西内盔"
+	name = "盆盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet)
 
 /datum/supply_pack/rogue/Brigand/pbascinet
-	name = "猪面巴西内盔"
+	name = "猪面盆盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface)
 
 /datum/supply_pack/rogue/Brigand/hbascinet
-	name = "犬嘴巴西内盔"
+	name = "犬嘴盆盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull)
 
 /datum/supply_pack/rogue/Brigand/sallet
-	name = "萨莱盔"
+	name = "萨雷特盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
 /datum/supply_pack/rogue/Brigand/visoredsallet
-	name = "面罩萨莱盔"
+	name = "面罩萨雷特盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
 /datum/supply_pack/rogue/Brigand/wolfhelm
-	name = "沃尔夫板甲盔"
+	name = "沃尔夫钢盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 

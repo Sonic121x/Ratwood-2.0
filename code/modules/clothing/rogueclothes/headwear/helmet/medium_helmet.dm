@@ -446,7 +446,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
-	name = "精灵巴布塔盔"
+	name = "精灵巴尔布特盔"
 	desc = "它能紧贴精灵的头部轮廓，并为他们更尖的耳朵留有专门的开槽。"
 	body_parts_covered = FULL_HEAD
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT
@@ -482,8 +482,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged
-	name = "翼饰精灵巴布塔盔"
-	desc = "精灵巴布塔盔的翼饰版本。他们一向以虚荣闻名。"
+	name = "翼饰精灵巴尔布特盔"
+	desc = "精灵巴尔布特盔的翼饰版本。他们一向以虚荣闻名。"
 	icon_state = "elven_barbute_winged"
 	item_state = "elven_barbute_winged"
 
@@ -510,7 +510,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak
-	desc = "一顶覆有薄金镀层、专为精灵林地守卫打造的精灵巴布塔盔。"
+	desc = "一顶覆有薄金镀层、专为精灵林地守卫打造的精灵巴尔布特盔。"
 	color = COLOR_ASSEMBLY_GOLD
 	detail_color = COLOR_ASSEMBLY_GOLD
 
@@ -519,7 +519,7 @@
 	update_icon()
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak
-	desc = "覆有薄金镀层、专为精灵林地守卫打造的翼饰精灵巴布塔盔。"
+	desc = "覆有薄金镀层、专为精灵林地守卫打造的翼饰精灵巴尔布特盔。"
 	color = COLOR_ASSEMBLY_GOLD
 	detail_color = COLOR_ASSEMBLY_GOLD
 
@@ -706,7 +706,7 @@
 	item_state = "iroundface_s"
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-	name = "\improper 伊特鲁斯卡盆盔"
+	name = "\proper 伊特鲁斯卡盆盔"
 	desc = "一顶带直式面罩的钢制盆盔，也就是\"掀面式盆盔\"，会大幅限制视野。它虽最早诞生于伊特鲁斯卡，如今也在格伦泽尔霍夫特广为使用。"
 	icon_state = "klappvisier"
 	item_state = "klappvisier"

@@ -47,10 +47,10 @@
 	var/obj/effect/proc_holder/spell/self/create_abyssoid/abyssoid_spell = new()
 	chosen_one.mind.AddSpell(abyssoid_spell)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_blue("Abyssor wants everyone to remember him! Create an army of holy abyssoid leeches and distribute them among the ingrates!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_blue("阿比索尔要让所有人记住祂！创造一支神圣的深渊水蛭大军，将它们分发给那些忘恩负义之徒！"))
 	chosen_one.playsound_local(chosen_one, 'sound/items/bucket_transfer (2).ogg', 100)
 
-	to_chat(chosen_one, span_notice("Abyssor grants you a power to create abyssoids from the common leeches! You will just need to pay a small blood price..."))
+	to_chat(chosen_one, span_notice("阿比索尔赐予你将普通水蛭转化为深渊水蛭的力量！你只需付出少许鲜血的代价……"))
 
 	chosen_one.mind.announce_personal_objectives()

@@ -29,7 +29,7 @@
 /datum/storyteller/psydon
 	name = "Psydon"
 	vote_desc = "和平主宰一切。不会有恶人现身。祂的子民终于得以安歇，因为他们已赢得片刻喘息。"
-	desc = "Psydon 几乎不会干预世事，事件会较为常见，因为祂对世界采取放任态度。可将其视为一种“延展版”体验。"
+	desc = "普赛顿几乎不会干预世事，事件会较为常见，因为祂对世界采取放任态度。可将其视为一种“延展版”体验。"
 	welcome_text = "一阵温和的微风吹过寂静的街道……"
 	weight = 6
 	always_votable = TRUE
@@ -47,7 +47,7 @@
 /datum/storyteller/astrata
 	name = "Astrata"
 	vote_desc = "秩序主宰一切。所有事件都被完美平衡，不偏不倚。她的恩泽照耀着贵族与他们的法令。"
-	desc = "Astrata 会带来均衡而多样的体验。可将其视作默认体验。"
+	desc = "阿斯特拉塔会带来均衡而多样的体验。可将其视作默认体验。"
 	welcome_text = "日光的暖意将我从沉眠中唤醒……"
 	weight = 6
 	always_votable = TRUE
@@ -76,7 +76,7 @@
 /datum/storyteller/noc
 	name = "Noc"
 	vote_desc = "知识主宰一切。事件整体平稳，却仍可能受 arcyne 干预。祂的恩泽照耀着追逐更高理想之人。"
-	desc = "Noc 会尝试带来更多魔法相关事件。"
+	desc = "诺克会尝试带来更多魔法相关事件。"
 	welcome_text = "空气中噼啪作响，弥漫着 arcyne 能量……"
 	weight = 4
 	always_votable = TRUE
@@ -106,7 +106,7 @@
 /datum/storyteller/ravox
 	name = "Ravox"
 	vote_desc = "荣耀主宰一切。袭击、恶人和凶兆更容易降临。祂的恩泽照耀着钢铁交击与战争呐喊。"
-	desc = "Ravox 会让袭击自然发生，而不只是在大量人员死亡时才出现。"
+	desc = "拉沃克斯会让袭击自然发生，而不只是在大量人员死亡时才出现。"
 	welcome_text = "“Zericho 的号角正在远方回响……”"
 	weight = 4
 	always_votable = TRUE
@@ -144,7 +144,7 @@
 /datum/storyteller/abyssor
 	name = "Abyssor"
 	vote_desc = "流水主宰一切。事件整体平稳，却常随潮汐起伏而变化。祂的恩泽照耀着捕鱼者、吸蛭者与溺亡者。"
-	desc = "Abyssor 喜欢降下与水和贸易相关的事件。"
+	desc = "阿比索尔喜欢降下与水和贸易相关的事件。"
 	welcome_text = "天际逐渐昏暗，乌云为将至的风暴汇聚……"
 	weight = 4
 	always_votable = TRUE
@@ -163,7 +163,7 @@
 			STATS_WATER_CONSUMED = list("name" = "饮用的水量：", "points" = 0.014, "capacity" = 90),
 		),
 		"Set 3" = list(
-			STATS_ABYSSOR_REMEMBERED = list("name" = "铭记 Abyssor 次数：", "points" = 1.1, "capacity" = 50),
+			STATS_ABYSSOR_REMEMBERED = list("name" = "铭记阿比索尔次数：", "points" = 1.1, "capacity" = 50),
 			STATS_ALIVE_AXIAN = list("name" = "axian 人数：", "points" = 8, "capacity" = 70),
 		),
 		"Set 4" = list(
@@ -178,7 +178,7 @@
 /datum/storyteller/xylix
 	name = "Xylix"
 	vote_desc = "无常主宰一切。没有什么注定不变，但一切皆有可能。祂的恩泽照耀着机缘与奇想之举。"
-	desc = "Xylix 是不可预测的变数，拨动着命运之轮。"
+	desc = "赛利克斯是不可预测的变数，拨动着命运之轮。"
 	welcome_text = "“……好吧，这就是香料和美酒过量后的下场！”"
 	weight = 4
 	always_votable = TRUE
@@ -215,7 +215,7 @@
 /datum/storyteller/necra
 	name = "Necra"
 	vote_desc = "死亡主宰一切。事件发生得更少，恶人也更难出现。她的恩泽照耀着将不死者重新送回坟墓之人。"
-	desc = "Necra 的节奏极慢，极少带来新的来客。"
+	desc = "内克拉的节奏极慢，极少带来新的来客。"
 	welcome_text = "“在 Zenmarke 的封地中，弥漫着腐朽的气息……”"
 	weight = 4
 	always_votable = TRUE
@@ -257,7 +257,7 @@
 /datum/storyteller/pestra
 	name = "Pestra"
 	vote_desc = "安康主宰一切。事件整体平稳，却也会因熟练之手而偏转。她的恩泽照耀着缝合者与炼金术士。"
-	desc = "Pestra 让一切保持简明，但会稍稍偏向炼金相关内容。"
+	desc = "佩斯特拉让一切保持简明，但会稍稍偏向炼金相关内容。"
 	welcome_text = "器械碰撞作响，炼金奇迹在沸腾翻涌……"
 	color_theme = "#AADDAA"
 
@@ -289,7 +289,7 @@
 /datum/storyteller/malum
 	name = "Malum"
 	vote_desc = "劳作主宰一切。神明干预会更常出现。祂的恩泽照耀着杰作与矿井。"
-	desc = "Malum 崇尚辛勤劳动，因此比其他神更常出手干预。"
+	desc = "玛勒姆崇尚辛勤劳动，因此比其他神更常出手干预。"
 	welcome_text = "炽热钢铁被反复锻打，百双满是老茧的手正在辛劳……"
 	color_theme = "#D4A56C"
 
@@ -326,7 +326,7 @@
 /datum/storyteller/eora
 	name = "Eora"
 	vote_desc = " 爱意主宰一切。正面的际遇更常出现，而袭击鲜少发生。她的恩泽照耀着恋情。"
-	desc = "Eora 憎恶死亡并鼓励爱意。袭击不会自然升级，只有死亡才会将其引来。"
+	desc = "伊欧拉憎恶死亡并鼓励爱意。袭击不会自然升级，只有死亡才会将其引来。"
 	welcome_text = "“空气里弥漫着爱意？不，那是窗台上新鲜烤派的香气！”"
 	color_theme = "#9966CC"
 
@@ -363,7 +363,7 @@
 /datum/storyteller/dendor
 	name = "Dendor"
 	vote_desc = " 自然主宰一切。过度生长与狼人更容易出现。祂的恩泽照耀着丰收与狼人。"
-	desc = "Dendor 喜欢降下自然主题的事件。"
+	desc = "登多尔喜欢降下自然主题的事件。"
 	welcome_text = "栖枝 zads 的咯咯怪笑，与晨露闪烁的微光……"
 	weight = 4
 	always_votable = TRUE
@@ -404,7 +404,7 @@
 /datum/storyteller/zizo
 	name = "Zizo"
 	vote_desc = "混沌主宰一切。恶人必将现身，而尸鬼也会更加凶残。她的恩泽照耀着尸体，无论圣洁、尊贵，还是复苏之躯。"
-	desc = "Zizo 以风险与回报为食，偏爱大胆而难测之人。"
+	desc = "齐佐以风险与回报为食，偏爱大胆而难测之人。"
 	welcome_text = "一阵阴森的风拂过，携来受诅者的哀嚎……"
 	weight = 4
 	always_votable = TRUE
@@ -450,7 +450,7 @@
 /datum/storyteller/baotha
 	name = "Baotha"
 	vote_desc = "香料主宰一切。事件会更加混乱且负面。她的恩泽照耀着醉鬼与瘾君子。"
-	desc = "Baotha 沉迷混沌，使事件与现实都变得难以预测。"
+	desc = "巴奥莎沉迷混沌，使事件与现实都变得难以预测。"
 	welcome_text = "空气中弥漫着甜得发腻的酒香与香料气息……"
 	weight = 4
 	always_votable = TRUE
@@ -498,7 +498,7 @@
 /datum/storyteller/graggar
 	name = "Graggar"
 	vote_desc = " 异民主宰一切。恶人必将现身，袭击也会更加频繁。祂的恩泽照耀着流血与食人。"
-	desc = "Graggar 鼓励战争与征服，使战斗成为解决一切的手段。"
+	desc = "格拉加尔鼓励战争与征服，使战斗成为解决一切的手段。"
 	welcome_text = "滚滚烟柱穿过街巷，散发着灰烬与鲜血的腥味……"
 	weight = 4
 	always_votable = TRUE
@@ -541,7 +541,7 @@
 /datum/storyteller/matthios
 	name = "Matthios"
 	vote_desc = "盗窃主宰一切。匪盗横行无忌。祂的恩泽照耀着偷盗与献给某座神龛的供奉。"
-	desc = "Matthios 操弄财富与腐化，奖赏那些愿意交易的人。"
+	desc = "马西奥斯操弄财富与腐化，奖赏那些愿意交易的人。"
 	welcome_text = "钱币叮当作响，刚签好的悬赏文书上墨迹尚未滴干……"
 	weight = 4
 	always_votable = TRUE

@@ -413,7 +413,7 @@
 		if(I.smeltresult == /obj/item/ingot/iron)
 			if(!do_after(user, 4 SECONDS, target = I))
 				return
-			to_chat(user, span_warning("The [user] breaks an [I] using stake into small parts!"))
+			to_chat(user, span_warning("[user]用木桩将[I]拆成了碎片！"))
 			new /obj/item/scrap(get_turf(I))
 			qdel(I)
 

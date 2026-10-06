@@ -158,7 +158,7 @@
 
 /obj/item/rogueweapon/flail/sflail/ancient
 	name = "远古连枷"
-	desc = "一颗抛光吉尔青铜钉球，以锁链连在加固手柄之上。人们说祂的子民曾将连枷奉若至宝，因为它旋舞时的轨迹仿佛重现了普赛顿彗星炽烈的飞行。"
+	desc = "一颗抛光吉尔青铜钉球，以锁链连在加固手柄之上。人们说祂的子民曾将连枷奉若至宝，因为它旋舞时的轨迹仿佛重现了彗星西昂炽烈的飞行。"
 	icon_state = "aflail"
 	smeltresult = /obj/item/ingot/aaslag
 

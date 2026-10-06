@@ -122,7 +122,7 @@
 
 /obj/item/carvedgem/shell/turtle
 	name = "海龟雕件"
-	desc = "一件以蛤壳雕成的中型海龟雕件。遗憾的是，海龟蛋已成了 Grenzelhoftians 的珍馐，导致其数量迅速下降。"
+	desc = "一件以蛤壳雕成的中型海龟雕件。遗憾的是，海龟蛋已成了格伦泽尔霍夫特人的珍馐，导致其数量迅速下降。"
 	icon_state = "turtle_shell"
 	grid_height = 64
 	grid_width = 64
@@ -137,7 +137,7 @@
 
 /obj/item/carvedgem/rose/rawrose
 	name = "玫瑰石"
-	desc = "这些由化石蛤壳孕育出的珍珠色泽粉润、光彩莹泽，深受 Eorans 珍视，常被赠予准母亲与新婚伴侣。"
+	desc = "这些由化石蛤壳孕育出的珍珠色泽粉润、光彩莹泽，深受伊欧拉信徒珍视，常被赠予准母亲与新婚伴侣。"
 	icon_state = "raw_rose"
 	grid_height = 32
 	grid_width = 32
@@ -229,7 +229,7 @@
 
 /obj/item/carvedgem/rose/flower
 	name = "玫瑰石花卉雕件"
-	desc = "一件以玫瑰石雕成的美丽花朵。Eora 也会为这样的技艺感到骄傲。"
+	desc = "一件以玫瑰石雕成的美丽花朵。伊欧拉也会为这样的技艺感到骄傲。"
 	icon_state = "flower_rose"
 	dropshrink = 0.8
 	grid_height = 64
@@ -237,7 +237,7 @@
 
 /obj/item/carvedgem/rose/carp
 	name = "玫瑰石鲤鱼雕像"
-	desc = "一件以玫瑰石雕成的中型鲤鱼雕像。Eorans 通过选育让这种鱼的鳞片呈现华美纹样，但因人为疏忽，它们在某些地区已成为入侵物种。"
+	desc = "一件以玫瑰石雕成的中型鲤鱼雕像。伊欧拉信徒通过选育让这种鱼的鳞片呈现华美纹样，但因人为疏忽，它们在某些地区已成为入侵物种。"
 	icon_state = "carp_rose"
 	grid_height = 64
 	grid_width = 64
@@ -338,7 +338,7 @@
 
 /obj/item/carvedgem/jade/wyrm
 	name = "玉石飞龙"
-	desc = "一尊以玉石雕成的大型飞龙雕塑。如今 Faience 中已鲜有飞龙踪影，但它们的遗产仍在人类艺术中长存。"
+	desc = "一尊以玉石雕成的大型飞龙雕塑。如今法恩斯已鲜有飞龙踪影，但它们的遗产仍在人类艺术中长存。"
 	icon_state = "dragon_jade"
 	grid_height = 64
 	grid_width = 32
@@ -439,7 +439,7 @@
 
 /obj/item/carvedgem/onyxa/snake
 	name = "缟玛瑙蛇像"
-	desc = "一尊以缟玛瑙雕成的飞翼角蛇雕像。它曾被视作 Subterra 的圣兽，如今却只被当成害兽。"
+	desc = "一尊以缟玛瑙雕成的飞翼角蛇雕像。它曾被视作地底世界的圣兽，如今却只被当成害兽。"
 	icon_state = "snake_onyxa"
 	grid_height = 64
 	grid_width = 32
@@ -547,14 +547,14 @@
 
 /obj/item/carvedgem/turq/ka
 	name = "蔚蓝石卡灵像"
-	desc = "一尊以蔚蓝石雕成的大型卡灵雕像，源自 Lakkarian 神话。人们相信它能引导新逝者前往 Necra 的国度。"
+	desc = "一尊以蔚蓝石雕成的大型卡灵雕像，源自拉卡利亚神话。人们相信它能引导新逝者前往内克拉的国度。"
 	icon_state = "ka_turq"
 	grid_height = 64
 	grid_width = 32
 
 /obj/item/carvedgem/turq/scarab
 	name = "蔚蓝石圣甲虫"
-	desc = "一件以蔚蓝石雕成的大型圣甲虫。它是 Lakkarians 的神圣昆虫，在他们的神庙与陵台间随处可见。"
+	desc = "一件以蔚蓝石雕成的大型圣甲虫。它是拉卡尔人的神圣昆虫，在他们的神庙与陵台间随处可见。"
 	icon_state = "scarab_turq"
 	dropshrink = 0.8
 	grid_height = 64
@@ -663,7 +663,7 @@
 
 /obj/item/carvedgem/coral/shark
 	name = "心石鲨鱼雕像"
-	desc = "一尊以心石雕成的鲨鱼雕像。有些水手相信它们是 Abyssor 的使者。"
+	desc = "一尊以心石雕成的鲨鱼雕像。有些水手相信它们是阿比索尔的使者。"
 	icon_state = "shark_coral"
 	grid_height = 64
 	grid_width = 64

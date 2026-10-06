@@ -132,7 +132,7 @@
 	log_game("The round has ended.")
 	dump_chronicle_stats() // weekly economy-stats disk dump (data/chronicle_stats/)
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale on Ratwood Keep.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>腐木要塞的这段故事就此落幕。</span>")
 	get_end_reason()
 
 	var roundend_music = pick('sound/music/roundend.ogg','sound/music/roundend2.ogg','sound/music/roundend3.ogg')
@@ -148,7 +148,7 @@
 			if(H.get_triumphs() < 0)
 				H.adjust_triumphs(1)
 			if(H.unspent_quirk_points > 0)
-				to_chat(H, "\n<font color='purple'>TRIUMPH[H.unspent_quirk_points > 1 ? "S" : ""] AWARDED for [H.unspent_quirk_points] unspent quirk point[H.unspent_quirk_points > 1 ? "s" : ""].</font>")
+				to_chat(H, "\n<font color='purple'>你因剩余[H.unspent_quirk_points]点未使用的怪癖点数而获得凯旋点奖赏。</font>")
 				H.playsound_local(get_turf(H), 'sound/misc/notice (2).ogg', 100, FALSE, pressure_affected = FALSE)
 				H.adjust_triumphs(H.unspent_quirk_points)
 				H.unspent_quirk_points = 0
@@ -156,7 +156,7 @@
 			if((GLOB.round_join_times[H.ckey] + 45 MINUTES) < world.time)
 				var/datum/job/job = SSjob.GetJob(H.job)
 				if(job && job.round_contrib_points)
-					to_chat(H, "\n<font color='purple'><b>[job.round_contrib_points]</b> ROUND CONTRIBUTOR POINTS AWARDED. Thank you for playing!</font>")
+					to_chat(H, "\n<font color='purple'>获得 <b>[job.round_contrib_points]</b> 点轮次贡献点。感谢游玩！</font>")
 					add_roundpoints(job.round_contrib_points, H.ckey)
 	add_roundplayed(key_list)
 	update_god_rankings()
@@ -169,7 +169,7 @@
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
 
-	to_chat(world, "Round ID: [GLOB.rogue_round_id]")
+	to_chat(world, "轮次编号：[GLOB.rogue_round_id]")
 
 	sleep(5 SECONDS)
 
@@ -224,27 +224,27 @@
 	var/end_reason
 
 	if(!check_for_lord())
-		end_reason = pick("Without a Duke, they were doomed to become slaves of Zizo.",
-						"Without a Duke, they were doomed to be eaten by nite creachers.",
-						"Without a Duke, they were doomed to become victims of Gehenna.",
-						"Without a Duke, they were doomed to enjoy a mass-suicide.",
-						"Without a Duke, the Lich made them his playthings.",
-						"Without a Duke, some jealous rival reigned in tyranny.",
-						"Without a Duke, the town was abandoned.")
+		end_reason = pick("没有公爵，他们注定沦为齐佐的奴隶。",
+						"没有公爵，他们注定被夜间怪物吞食。",
+						"没有公爵，他们注定成为地狱的受害者。",
+						"没有公爵，他们注定走向集体自尽。",
+						"没有公爵，巫妖将他们变成了自己的玩物。",
+						"没有公爵，嫉妒的对手实行了暴政。",
+						"没有公爵，小镇遭到了遗弃。")
 
 	if(vampire_werewolf() == "vampire")
-		end_reason = "When the Vampires finished sucking the town dry, they moved on to the next one."
+		end_reason = "吸血鬼榨干小镇后，转向了下一个目标。"
 	if(vampire_werewolf() == "werewolf")
-		end_reason = "The Werevolves formed an unholy clan, marauding Ratwood Keep until the end of its daes."
+		end_reason = "狼人组成了亵渎的族群，劫掠腐木要塞直至其末日。"
 
 	if(SSmapping.retainer.head_rebel_decree)
-		end_reason = "The peasant rebels took control of the throne, hail the new community!"
+		end_reason = "农民起义军夺取了王座，向新共同体致敬！"
 
 
 	if(end_reason)
 		to_chat(world, span_bigbold("[end_reason]."))
 	else
-		to_chat(world, span_bigbold("The town has managed to survive another week."))
+		to_chat(world, span_bigbold("小镇又成功熬过了一周。"))
 
 /datum/controller/subsystem/ticker/proc/gamemode_report()
 	var/list/all_teams = list()
@@ -253,7 +253,7 @@
 	var/list/header_parts
 	if(GLOB.antagonist_teams.len || GLOB.antagonists.len)
 		header_parts += "<br>"
-		header_parts += "<div style='text-align: center; font-size: 1.2em;'>VILLAINS:</div>"
+		header_parts += "<div style='text-align: center; font-size: 1.2em;'>反派：</div>"
 		header_parts += "<hr class='paneldivider'>"
 		to_chat(world, header_parts)
 
@@ -346,10 +346,10 @@
 		if(SSblackbox.first_death)
 			var/list/ded = SSblackbox.first_death
 			if(ded.len)
-				parts += "[FOURSPACES]First Death: <b>[ded["name"]], [ded["role"]], at [ded["area"]]. Damage taken: [ded["damage"]].[ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""]</b>"
+				parts += "[FOURSPACES]首位死者：<b>[ded["name"]]，[ded["role"]]，死于[ded["area"]]。受到的伤害：[ded["damage"]]。[ded["last_words"] ? " 遗言：\"[ded["last_words"]]\"" : ""]</b>"
 			//ignore this comment, it fixes the broken sytax parsing caused by the " above
 			else
-				parts += "[FOURSPACES]<i>Nobody died this shift!</i>"
+				parts += "[FOURSPACES]<i>本轮无人死亡！</i>"
 	return parts.Join("<br>")
 
 /client/proc/roundend_report_file()
@@ -382,14 +382,14 @@
 		if(M.stat != DEAD && !isbrain(M))
 			if(round_end)
 				parts += "<div class='panel greenborder'>"
-				parts += "<span class='greentext'>I managed to survive the events on [station_name()] as [M.real_name].</span>"
+				parts += "<span class='greentext'>我以[M.real_name]的身份，在[station_name()]的变故中幸存。</span>"
 			else
 				parts += "<div class='panel greenborder'>"
-				parts += "<span class='greentext'>I managed to survive the events on [station_name()] as [M.real_name].</span>"
+				parts += "<span class='greentext'>我以[M.real_name]的身份，在[station_name()]的变故中幸存。</span>"
 
 		else
 			parts += "<div class='panel redborder'>"
-			parts += "<span class='redtext'>I did not survive the events on [station_name()]...</span>"
+			parts += "<span class='redtext'>我没能在[station_name()]的变故中幸存……</span>"
 	else
 		parts += "<div class='panel stationborder'>"
 	parts += "<br>"

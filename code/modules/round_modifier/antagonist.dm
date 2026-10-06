@@ -1,13 +1,13 @@
 /datum/round_modifier/low_bandits
 	name = "Low Bandits"
-	desc = "Some free men have come."
+	desc = "一些自由民来了。"
 	cost = 1
 	min_chaos = 1
 	job_slots = list("Bandit" = 4)
 
 /datum/round_modifier/medium_bandits
 	name = "Medium Bandits"
-	desc = "The free men have come."
+	desc = "自由民来了。"
 	cost = 2
 	weight = 30
 	min_chaos = 2
@@ -16,14 +16,14 @@
 
 /datum/round_modifier/low_gnolls
 	name = "Low Gnolls"
-	desc = "The dregs of a bloodbeast pack."
+	desc = "一群血兽中的残兵败将。"
 	cost = 1
 	weight = 20
 	job_slots = list("Gnoll" = 2)
 
 /datum/round_modifier/medium_gnolls
 	name = "Medium Gnolls"
-	desc = "A pack of bloodbeasts."
+	desc = "一群血兽。"
 	cost = 2
 	min_chaos = 1
 	incompatible = list(/datum/round_modifier/low_gnolls)
@@ -31,7 +31,7 @@
 
 /datum/round_modifier/high_gnolls
 	name = "High Gnolls"
-	desc = "The bloodbeasts swarm! The GORESTAR laughs!"
+	desc = "血兽蜂拥而至！血腥之星狂笑着！"
 	cost = 4
 	min_chaos = 2
 	incompatible = list(/datum/round_modifier/low_gnolls, /datum/round_modifier/medium_gnolls)
@@ -39,14 +39,14 @@
 
 /datum/round_modifier/high_wretches
 	name = "High Wretches"
-	desc = "Heresy spreads like a plague in the hearts of men!"
+	desc = "异端如瘟疫般在人心中蔓延！"
 	cost = 4
 	min_chaos = 3
 	job_slots = list("Wretch" = 5)
 
 /datum/round_modifier/high_bandits
 	name = "High Bandits"
-	desc = "The free men have come in force."
+	desc = "自由民大举来袭。"
 	cost = 4
 	weight = 15
 	min_chaos = 3
@@ -65,14 +65,14 @@
 
 /datum/round_modifier/vampire
 	name = "Vampyres"
-	desc = "Astrata's cursed spawn blights the land!"
+	desc = "阿斯特拉塔受诅咒的子嗣正在荼毒大地！"
 	cost = 4
 	min_chaos = 2
 	villain_events = list(/datum/round_event_control/antagonist/solo/masquerade)
 
 /datum/round_modifier/vampirelord
 	name = "Vampyre Lord"
-	desc = "Hail! Hail! Kneel before the bastard tyrant!"
+	desc = "致敬！致敬！跪倒在那混账暴君面前！"
 	cost = 8
 	weight = 5
 	min_chaos = 3
@@ -80,27 +80,27 @@
 
 /datum/round_modifier/assassin
 	name = "Assassins"
-	desc = "Ware! Knives in the dark!"
+	desc = "当心！黑暗中藏着利刃！"
 	cost = 1
 	villain_events = list(/datum/round_event_control/antagonist/solo/assassins)
 
 /datum/round_modifier/rebel
 	name = "Rebellion"
-	desc = "The lowborn think to rule themselves!"
+	desc = "卑贱之人竟妄图自治！"
 	cost = 2
 	min_chaos = 1
 	villain_events = list(/datum/round_event_control/antagonist/solo/rebel)
 
 /datum/round_modifier/dreamwalker
 	name = "Dreamwalker"
-	desc = "Abyssor stirs in his slumber."
+	desc = "阿比索尔在沉眠中躁动。"
 	cost = 2
 	min_chaos = 2
 	villain_events = list(/datum/round_event_control/antagonist/solo/dreamwalker)
 
 /datum/round_modifier/lich
 	name = "Lich"
-	desc = "The dead march forward in lockstep!"
+	desc = "死者步调一致地向前进军！"
 	cost = 6
 	weight = 6
 	min_chaos = 3

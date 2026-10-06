@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/brutal_round
 	name = "齐佐信徒杀手弹"
-	desc = "<span class='yellow'><i>我们与齐佐信徒的战争已持续了数十年。至今已有六十多年了。 <br>这场战争令人精疲力竭。不过，凭借王田和兹班图沙漠各地的努力，我们终于造出了超越旧式铅弹的东西。它能把任何行尸打成血肉碎块，把任何骷髅的骨头轰成粉末。<br> 无论他们的阿万廷有多坚硬。</i></span>"
+	desc = "<span class='yellow'><i>我们与齐佐信徒的战争已持续了数十年。至今已有六十多年了。 <br>这场战争令人精疲力竭。不过，凭借王田和兹班图沙漠各地的努力，我们终于造出了超越旧式铅弹的东西。它能把任何行尸打成血肉碎块，把任何骷髅的骨头轰成粉末。<br> 无论他们的阿凡泰因有多坚硬。</i></span>"
 	icon = 'modular/timesoldier/sprites/nu_guns.dmi'
 	icon_state = "kz41_bullet"
 	caliber = "brutal"

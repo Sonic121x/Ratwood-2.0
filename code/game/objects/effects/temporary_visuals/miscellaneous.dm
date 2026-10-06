@@ -148,7 +148,7 @@
 	update_icon()
 
 /obj/effect/temp_visual/bsa_splash
-	name = "\improper 蓝空能量波"
+	name = "\proper 蓝空能量波"
 	desc = ""
 	icon = 'icons/effects/beam_splash.dmi'
 	icon_state = "beam_splash_l"

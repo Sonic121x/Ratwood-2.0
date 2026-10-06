@@ -1,8 +1,8 @@
 /datum/decree/noc_pestra_covenant
 	id = DECREE_NOC_PESTRA_COVENANT
-	name = "The Covenant of Noc & Pestra"
+	name = "诺克与佩斯特拉盟约"
 	category = DECREE_CATEGORY_NEW
-	mechanical_text = "Caps poll tax for university and apothecary staff, and floors their wages: Court Magician 40m, Archivist 20m, Magos Thrall 10m, Court Physician 80m, Apothecary 40m."
+	mechanical_text = "限制大学与药剂行人员的人头税，并保障其最低工资：宫廷法师40玛门币、档案员20玛门币、法师仆从10玛门币、宫廷医师80玛门币、药剂师40玛门币。"
 	/// Jobs covered by the scholarly half of the covenant (Noc's mantle).
 	var/static/list/university_jobs = list(
 		"Court Magician",
@@ -21,13 +21,13 @@
 		"Head Physician" = 40,
 		"Apothecary" = 15,
 	)
-	flavor_text = {"This Covenant of Noc & Pestra, sworne under the watchful eye of Noc and the merciful hand of Pestra, witnesseth that the scholars of the University and the healers of the Apothecary shall bear no greater levy than the lightest measure upon their heads, and shall be paid from the Crown's purse an honest minimum of their due whilst this Covenant standeth.
+	flavor_text = {"本《诺克与佩斯特拉盟约》，于诺克警醒的目光与佩斯特拉慈悲的手掌之下立誓，规定：盟约有效期间，大学学者与药剂行医者所负人头税不得超过最低税额，并应由王室财库支付其应得的合理最低薪资。
 
-In exchange, the chartered scholars of the University shall keep the lore and knowledge of the Realm, preserve it, and teach it unto those worthy and of bright minds, for Noc granted humen the gift of magick and wisdom that we may pass it on. And the chartered healers of the Apothecary, agents of Pestra, shall tend the hurt of every subject who cometh to their door, be they beggar or burgher, and shall never refuse the wounded for want of coin, for Pestra is merciful and taught us medicine that we may care for one another.
+作为回报，大学的特许学者应守护、保存王国的学识，并传授给品行端正、才智明敏之人，因为诺克赐予人类魔法与智慧，正是为让我们将其传承。药剂行的特许医者作为佩斯特拉的使者，应治疗每一位登门臣民，无论乞丐还是市民，不得因伤者缺少钱币而拒绝医治，因为佩斯特拉慈悲，教我们医术，是为让我们彼此照料。
 
-Yeven under the seal of the Crown, in witness of Noc and Pestra."}
-	revoke_text = "The %RULER% has suspended the Covenant of Noc & Pestra. The scholars and healers of the Vale now bear the Crown's common levy in full - and Noc and Pestra may reckon how long their mercy lasts without their chartered hands."
-	restore_text = "The %RULER% has affirmed the Covenant of Noc & Pestra. The scholars and healers of the Vale resume their sheltered station, that the Realm may keep both its lore and its mercy."
+于诺克与佩斯特拉见证之下，钤王室之印颁行。"}
+	revoke_text = "%RULER%已中止《诺克与佩斯特拉盟约》。谷地的学者与医者现在须全额承担王室的普通税负——诺克与佩斯特拉不妨思量，失去特许的双手后，祂们的慈悲还能延续多久。"
+	restore_text = "%RULER%已确认《诺克与佩斯特拉盟约》。谷地的学者与医者重获庇护，使王国得以同时保全学识与慈悲。"
 
 /datum/decree/noc_pestra_covenant/roll_initial_year()
 	return CALENDAR_EPOCH_YEAR - rand(20, 60)
