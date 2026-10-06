@@ -39,7 +39,7 @@
 	var/atom/Tsec = drop_location()
 	for(var/mob/M in src)
 		M.forceMove(Tsec)
-		visible_message(span_danger("[M] bursts out of [src]!"))
+		visible_message(span_danger("[M]从[src]体内破体而出！"))
 	. = ..()
 
 /mob/living/carbon/spill_embedded_objects()

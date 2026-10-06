@@ -16,7 +16,7 @@
 	icon_state = "plain"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/monarch
-	name = "Monarch"
+	name = "帝王蝶"
 	icon_state = "monarch"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/luna
@@ -28,7 +28,7 @@
 	icon_state = "atlas"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/reddish
-	name = "Reddish"
+	name = "淡红"
 	icon_state = "redish"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/royal
@@ -36,11 +36,11 @@
 	icon_state = "royal"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/gothic
-	name = "Gothic"
+	name = "哥特"
 	icon_state = "gothic"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/lovers
-	name = "Lovers"
+	name = "恋人"
 	icon_state = "lovers"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/whitefly
@@ -52,7 +52,7 @@
 	icon_state = "burnt_off"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/firewatch
-	name = "Firewatch"
+	name = "火警瞭望"
 	icon_state = "firewatch"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/deathhead
@@ -60,7 +60,7 @@
 	icon_state = "deathhead"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/poison
-	name = "Poison"
+	name = "毒纹"
 	icon_state = "poison"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/ragged
@@ -68,7 +68,7 @@
 	icon_state = "ragged"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/moonfly
-	name = "Moon Fly"
+	name = "月蛾"
 	icon_state = "moonfly"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/snow
@@ -76,11 +76,11 @@
 	icon_state = "snow"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/oakworm
-	name = "Oak Worm"
+	name = "橡木蚕"
 	icon_state = "oakworm"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/jungle
-	name = "Jungle"
+	name = "丛林"
 	icon_state = "jungle"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/witchwing

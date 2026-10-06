@@ -31,7 +31,7 @@
 	color_key_names = list("外层", "内层")
 
 /datum/sprite_accessory/frills/aquatic
-	name = "Aquatic"
+	name = "水生"
 	icon_state = "aqua"
 
 /datum/sprite_accessory/frills/aquaticdualcolor
@@ -53,7 +53,7 @@
 	icon_state = "hornsdouble"
 
 /datum/sprite_accessory/frills/big
-	name = "Big"
+	name = "大型"
 	icon_state = "big"
 
 /datum/sprite_accessory/frills/cobrahood
@@ -87,7 +87,7 @@
 	color_key_names = list("外层", "内层")
 
 /datum/sprite_accessory/frills/earlike_thick
-	name = "Earlike (Thick)"
+	name = "耳状（厚）"
 	icon_state = "earlike_thick"
 
 /datum/sprite_accessory/frills/earlike_angled

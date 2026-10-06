@@ -1,5 +1,5 @@
 /datum/language/narsie
-	name = "Nar'Sian"
+	name = "纳尔西语"
 	desc = ""
 	speech_verb = "吟诵"
 	ask_verb = "询问"
