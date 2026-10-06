@@ -1,5 +1,5 @@
 /datum/language/hammerholdian
-	name = "Hammerholdian"
+	name = "铁锤堡语"
 	desc = "锤堡人的语言。这个自豪的战士民族传承着古代航海者与劫掠者的史诗，其语言粗犷而富有韵律，被称为\"铁与冰之语\"。"
 	speech_verb = "说道"
 	ask_verb = "厉声问道"

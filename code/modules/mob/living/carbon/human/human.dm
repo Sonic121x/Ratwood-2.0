@@ -141,7 +141,7 @@
 	return !keen_ears_disabled
 
 /mob/living/carbon/human/verb/toggle_keen_ears_ic()
-	set name = "Toggle Keen Ears"
+	set name = "切换敏锐听觉"
 	set category = "IC"
 	toggle_keen_ears()
 

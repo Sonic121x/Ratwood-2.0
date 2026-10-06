@@ -11,7 +11,7 @@
 /datum/language_menu/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "LanguageMenu", "Language Menu")
+		ui = new(user, src, "LanguageMenu", "语言菜单")
 		ui.set_state(GLOB.language_menu_state)
 		ui.open()
 

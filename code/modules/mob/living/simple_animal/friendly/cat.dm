@@ -137,7 +137,7 @@
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_animal/pet/cat/Runtime
-	name = "Runtime"
+	name = "运行时"
 	desc = ""
 	icon_state = "cat"
 	icon_living = "cat"
@@ -215,7 +215,7 @@
 				new cat_type(loc)
 
 /mob/living/simple_animal/pet/cat/Proc
-	name = "Proc"
+	name = "过程"
 	gender = MALE
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE

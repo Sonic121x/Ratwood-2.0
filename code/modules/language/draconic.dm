@@ -1,5 +1,5 @@
 /datum/language/draconic
-	name = "Draconic"
+	name = "龙语"
 	desc = "古老而强大的龙族语言，以嘶鸣与咆哮诉说。每个词语都承载着原初魔法与龙族的威能。"
 	speech_verb = "嘶嘶地说"
 	ask_verb = "嘶嘶地问"

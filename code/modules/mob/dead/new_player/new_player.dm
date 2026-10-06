@@ -153,11 +153,11 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(!target_server)
 			return 1
 
-		if(alert(src, "Switch to [target_server]? This will close my current connection.", "Switch Server", "Yes", "No") != "Yes")
+		if(alert(src, "切换到[target_server]？这会关闭我当前的连接。", "切换服务器", "是", "否") != "是")
 			return 1
 
 		src << browse({"<a id='link' href='[target_server]'>[target_server]</a><script type='text/javascript'>document.getElementById('link').click();window.location='byond://winset?command=.quit'</script>"}, "border=0;titlebar=0;size=1x1;window=server_switch")
-		to_chat(src, "<a href='[target_server]' style='color:#638500;text-decoration:underline;'><b>If I was not switched automatically, click here.</b></a>")
+		to_chat(src, "<a href='[target_server]' style='color:#638500;text-decoration:underline;'><b>如果未自动切换，请点击此处。</b></a>")
 		return 1
 
 	if(href_list["open_changelog"])
@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(SSticker.round_start_time)
 			if(world.time < SSticker.round_start_time + timetojoin)
 				var/ttime = round((SSticker.round_start_time + timetojoin - world.time) / 10)
-				var/list/choicez = list("Not yet.", "You cannot join yet.", "It won't work yet.", "Please be patient.", "Try again later.", "Late-joining is not yet possible.")
+				var/list/choicez = list("还没到时候。", "你还不能加入。", "现在还不行。", "请耐心等待。", "请稍后再试。", "目前尚不能中途加入。")
 				to_chat(usr, span_warning("[pick(choicez)] ([ttime])."))
 				return
 
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	var/list/dat = list()
 	dat += GLOB.roleplay_readme
 	if(dat)
-		var/datum/browser/popup = new(src, "Primer", "ROTWOOD VALE", 460, 550)
+		var/datum/browser/popup = new(src, "Primer", "腐木谷", 460, 550)
 		popup.set_content(dat.Join())
 		popup.open()
 
@@ -345,9 +345,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = alert(src,"Are you sure you wish to observe? Playing is a lot more fun.","SPECTATE","Yes","No")
+	var/this_is_like_playing_right = alert(src,"确定要旁观吗？亲自游玩会更有趣。","旁观","是","否")
 
-	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+	if(QDELETED(src) || !src.client || this_is_like_playing_right != "是")
 		ready = PLAYER_NOT_READY
 		src << browse(null, "window=playersetup") //closes the player setup window
 		new_player_panel()
@@ -524,7 +524,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
 	if(rank == "Enslaved Adventurer" && istype(SSmapping?.map_adjustment, /datum/map_adjustment/template/rockhill))
-		to_chat(src, span_warning("Enslaved Adventurer is roundstart-only on Rockhill."))
+		to_chat(src, span_warning("在岩丘，被奴役的冒险者只能在开局时加入。"))
 		return FALSE
 
 	var/error = IsJobUnavailable(rank)
@@ -533,7 +533,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		return FALSE
 
 	if(SSticker.late_join_disabled)
-		alert(src, "Something went bad.")
+		alert(src, "发生了错误。")
 		return FALSE
 /*
 	var/arrivals_docked = TRUE
@@ -637,7 +637,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		character.client.update_ooc_verb_visibility()
 
 /mob/dead/new_player/proc/LateChoices()
-	var/list/dat = list("<div class='notice' style='font-style: normal; font-size: 14px; margin-bottom: 2px; padding-bottom: 0px'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]</div>")
+	var/list/dat = list("<div class='notice' style='font-style: normal; font-size: 14px; margin-bottom: 2px; padding-bottom: 0px'>本局时长：[DisplayTimeText(world.time - SSticker.round_start_time, 1)]</div>")
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job
@@ -678,37 +678,37 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			var/cat_name = ""
 			switch (SSjob.name_occupations[category[1]].department_flag)
 				if (NOBLEMEN)
-					cat_name = "Nobles"
+					cat_name = "贵族"
 				if (COURTIERS)
-					cat_name = "Courtiers"
+					cat_name = "廷臣"
 				if (GARRISON)
-					cat_name = "Garrison"
+					cat_name = "驻军"
 				if (CHURCHMEN)
-					cat_name = "Churchmen"
+					cat_name = "教会"
 				if (YEOMEN)
-					cat_name = "Yeomen"
+					cat_name = "自耕农"
 				if (PEASANTS)
-					cat_name = "Peasants"
+					cat_name = "平民"
 				if (YOUNGFOLK)
-					cat_name = "Sidefolk"
+					cat_name = "年轻人"
 				if (WANDERERS)
-					cat_name = "Wanderers"
+					cat_name = "漫游者"
 				if (INQUISITION)
-					cat_name = "Inquisition"
+					cat_name = "宗教裁判所"
 				if (TRIBAL)
-					cat_name = "Tribe"
+					cat_name = "部族"
 
 			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
 
 			if(has_world_trait(/datum/world_trait/skeleton_siege))
-				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Skeleton'>BECOME AN EVIL SKELETON</a>"
+				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Skeleton'>成为邪恶骷髅</a>"
 				dat += "</fieldset><br>"
 				column_counter++
 				if(column_counter > 0 && (column_counter % 3 == 0))
 					dat += "</td><td valign='top'>"
 			if(has_world_trait(/datum/world_trait/goblin_siege))
-				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Goblin'>BECOME A GOBLIN</a>"
+				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Goblin'>成为哥布林</a>"
 				dat += "</fieldset><br>"
 				column_counter++
 				if(column_counter > 0 && (column_counter % 3 == 0))
@@ -740,7 +740,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 				dat += "</td><td valign='top'>"
 	dat += "</td></tr></table></center>"
 	dat += "</div></div>"
-	var/datum/browser/popup = new(src, "latechoices", "Choose Class", 720, 580)
+	var/datum/browser/popup = new(src, "latechoices", "选择职业", 720, 580)
 	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
 	popup.set_content(jointext(dat, ""))
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc

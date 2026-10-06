@@ -1,5 +1,5 @@
 /datum/language/mushroom
-	name = "Mushroom"
+	name = "蘑菇语"
 	desc = ""
 	speech_verb = "噗噗地说"
 	ask_verb = "好奇地噗噗作响"

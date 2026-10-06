@@ -1,5 +1,5 @@
 /datum/language/codespeak
-	name = "Codespeak"
+	name = "暗号语"
 	desc = ""
 	key = "14"
 	default_priority = 0
