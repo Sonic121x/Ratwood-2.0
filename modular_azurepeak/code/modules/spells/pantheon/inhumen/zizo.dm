@@ -573,7 +573,7 @@
 		if(have < needed) {
 			var/obj/item/I = item_type
 			var/amount_needed = needed - have
-			missing_items += "[amount_needed] [initial(I.name)][amount_needed > 1 ? "s" : ""] "
+			missing_items += "[amount_needed] 份[initial(I.name)] "
 		}
 
 	if(length(missing_items))
