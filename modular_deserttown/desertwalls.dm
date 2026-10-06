@@ -73,8 +73,8 @@
 	above_floor = /turf/closed/mineral/rogue/bedrock
 
 /turf/closed/mineral/rogue/bedrock/sandbrick
-	name = "sandstone"
-	desc = "Seems barren and nigh-indestructable"
+	name = "砂岩"
+	desc = "看似荒芜，近乎不可摧毁。"
 	icon = 'modular_deserttown/icons/sandstone.dmi'
 	icon_state = "sand-stone"
 //	smooth_icon = 'icons/turf/walls/hardrock.dmi'
