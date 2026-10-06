@@ -12,7 +12,7 @@
 #define INITIATE_ANYONE 2
 
 /obj/structure/vampire/bloodpool
-	name = "Crimson Crucible"
+	name = "猩红熔炉"
 	icon_state = "vat"
 	var/current = 0
 	var/datum/clan/owner_clan
@@ -34,11 +34,11 @@
 
 /obj/structure/vampire/bloodpool/examine(mob/user)
 	. = ..()
-	to_chat(user, span_boldnotice("Blood level: [current]"))
+	to_chat(user, span_boldnotice("血液存量：[current]"))
 
 	// Show active projects
 	if(active_projects.len)
-		to_chat(user, span_notice("Active Projects:"))
+		to_chat(user, span_notice("进行中的项目："))
 		for(var/project_key in active_projects)
 			var/datum/vampire_project/project = active_projects[project_key]
 			var/progress_percent = round((project.paid_amount / project.total_cost) * 100, 1)
@@ -65,13 +65,13 @@
 
 	// Add option to contribute to existing projects
 	if(active_projects.len)
-		available_options_lord["Contribute to Project"] = "contribute"
-		available_options_contributor["Contribute to Project"] = "contribute"
+		available_options_lord["为项目献血"] = "contribute"
+		available_options_contributor["为项目献血"] = "contribute"
 	// Add option to view/cancel projects
 	if(active_projects.len)
-		available_options_lord["Manage Projects"] = "manage"
+		available_options_lord["管理项目"] = "manage"
 
-	var/choice = input(user, "What to do?", "VAMPYRE") as null|anything in available_options_lord
+	var/choice = input(user, "要做什么？", "血族") as null|anything in available_options_lord
 	if(!choice)
 		return
 
@@ -111,20 +111,20 @@
 
 	active_projects[project_type] = project
 
-	to_chat(user, span_greentext("Started project: [project.display_name]. Begin contributing vitae to progress."))
+	to_chat(user, span_greentext("项目已启动：[project.display_name]。献出命髓以推进项目。"))
 
 /obj/structure/vampire/bloodpool/proc/handle_project_contribution(mob/living/user)
 	if(!active_projects.len)
-		to_chat(user, span_warning("No active projects to contribute to."))
+		to_chat(user, span_warning("没有可供献血的进行中项目。"))
 		return
 
 	var/list/project_choices = list()
 	for(var/project_type in active_projects)
 		var/datum/vampire_project/project = active_projects[project_type]
 		var/remaining = project.total_cost - project.paid_amount
-		project_choices["[project.display_name] (Remaining: [remaining])"] = project_type
+		project_choices["[project.display_name]（剩余：[remaining]）"] = project_type
 
-	var/choice = input(user, "Select project to contribute to:", "CONTRIBUTION") as null|anything in project_choices
+	var/choice = input(user, "选择要献血的项目：", "献血") as null|anything in project_choices
 	if(!choice)
 		return
 
@@ -135,7 +135,7 @@
 
 /obj/structure/vampire/bloodpool/proc/handle_project_management(mob/living/user)
 	if(!active_projects.len)
-		to_chat(user, span_warning("No active projects to manage."))
+		to_chat(user, span_warning("没有可管理的进行中项目。"))
 		return
 
 	var/list/project_options = list()
@@ -144,20 +144,20 @@
 		var/progress_percent = round((project.paid_amount / project.total_cost) * 100, 1)
 		project_options["[project.display_name] ([progress_percent]%)"] = project_type
 
-	var/choice = input(user, "Select project to manage:", "PROJECT MANAGEMENT") as null|anything in project_options
+	var/choice = input(user, "选择要管理的项目：", "项目管理") as null|anything in project_options
 	if(!choice)
 		return
 
 	var/project_type = project_options[choice]
 	var/datum/vampire_project/project = active_projects[project_type]
 
-	var/action = input(user, "What would you like to do?", "MANAGEMENT") as null|anything in list("View Details", "Cancel Project")
+	var/action = input(user, "你想做什么？", "管理") as null|anything in list("查看详情", "取消项目")
 
 	switch(action)
-		if("View Details")
+		if("查看详情")
 			project.show_details(user)
-		if("Cancel Project")
-			if(alert(user, "Cancel [project.display_name]?<BR>All invested vitae will be refunded.", "CANCELLATION", "Yes", "No") == "Yes")
+		if("取消项目")
+			if(alert(user, "取消[project.display_name]？<BR>所有已投入的命髓都会退还。", "取消项目", "是", "否") == "是")
 				cancel_project(project_type)
 
 /obj/structure/vampire/bloodpool/proc/complete_project(project_type)
@@ -170,7 +170,7 @@
 
 	// Notify all contributors
 	for(var/mob/living/contributor in project.contributors)
-		to_chat(contributor, span_boldannounce("[project.display_name] has been completed!"))
+		to_chat(contributor, span_boldannounce("[project.display_name]已经完成！"))
 		contributor.playsound_local(get_turf(src), project.completion_sound, 100, FALSE, pressure_affected = FALSE)
 
 	// Execute project completion
@@ -190,8 +190,8 @@
 	qdel(project)
 
 /datum/vampire_project
-	var/display_name = "Unknown Project"
-	var/description = "A mysterious undertaking."
+	var/display_name = "未知项目"
+	var/description = "一项神秘的事业。"
 	var/total_cost = 1000
 	var/paid_amount = 0
 	/// Assoc list of contributor mob -> vitae they personally paid in, so refunds can't mint blood
@@ -199,7 +199,7 @@
 	var/obj/structure/vampire/bloodpool/bloodpool
 	var/mob/living/initiator
 	var/datum/clan/initiator_clan
-	var/start_failure_message = "This project cannot be started."
+	var/start_failure_message = "无法启动此项目。"
 	var/completion_sound = 'sound/misc/batsound.ogg'
 	var/can_be_initiated_by = INITIATE_LORDE
 
@@ -214,13 +214,13 @@
 			return TRUE
 		else
 			if(!silent)
-				to_chat(user, span_warning("This project can only be initiate by your Lorde."))
+				to_chat(user, span_warning("只有你的领主才能启动此项目。"))
 			return FALSE
 
 	return TRUE
 
 /datum/vampire_project/proc/confirm_start(mob/living/user)
-	return alert(user, "Begin [display_name]? [description]. Total Cost: [total_cost].You can contribute vitae over time.", "PROJECT START", "MAKE IT SO", "I RESCIND") == "MAKE IT SO"
+	return alert(user, "启动[display_name]？[description] 总消耗：[total_cost]。你可以分次献出命髓。", "启动项目", "启动", "取消") == "启动"
 
 /datum/vampire_project/proc/on_start(mob/living/user)
 	return
@@ -228,28 +228,28 @@
 /datum/vampire_project/proc/get_max_contribution(mob/living/user)
 	var/datum/antagonist/vampire/lord/lord = user.mind?.has_antag_datum(/datum/antagonist/vampire/lord)
 	var/headroom = total_cost - paid_amount
-	if(!lord && (display_name != "Wicked Plate") && (display_name != "World Anchor"))
+	if(!lord && (display_name != "邪铸板甲") && (display_name != "World Anchor"))
 		headroom -= 100
 	return min(user.get_bloodpool(), headroom)
 
 /datum/vampire_project/proc/handle_contribution(mob/living/user)
 	var/max_contribution = get_max_contribution(user)
 	if(max_contribution <= 0)
-		to_chat(user, span_warning("I have nothing left to give to [display_name]."))
+		to_chat(user, span_warning("我已无法再为[display_name]献出命髓。"))
 		return
 
-	var/contribution = input(user, "How much vitae to contribute? (Max: [max_contribution])", "CONTRIBUTION") as num|null
+	var/contribution = input(user, "献出多少命髓？（最多：[max_contribution]）", "献血") as num|null
 
 	if(!contribution || contribution <= 0)
 		return
 
 	// Revalidate after the blocking prompt - the project may have finished, been cancelled, or been paid down further
 	if(QDELETED(src) || !bloodpool || !(bloodpool.active_projects[type] == src))
-		to_chat(user, span_warning("[display_name] is no longer underway."))
+		to_chat(user, span_warning("[display_name]已不再进行。"))
 		return
 
 	if(user.get_bloodpool() < contribution)
-		to_chat(user, span_warning("I do not have enough vitae."))
+		to_chat(user, span_warning("我的命髓不足。"))
 		return
 
 	contribution = clamp(round(contribution), 1, max_contribution)
@@ -258,16 +258,16 @@
 	paid_amount += contribution
 	contributors[user] += contribution
 
-	to_chat(user, span_greentext("Contributed [contribution] vitae to [display_name]. ([paid_amount]/[total_cost])"))
+	to_chat(user, span_greentext("已为[display_name]献出[contribution]命髓。（[paid_amount]/[total_cost]）"))
 
 	if(paid_amount >= total_cost)
 		bloodpool.complete_project(type)
 
 /datum/vampire_project/proc/show_details(mob/living/user)
-	to_chat(user, span_notice("Project: [display_name]"))
-	to_chat(user, span_notice("Description: [description]"))
-	to_chat(user, span_notice("Progress: [paid_amount]/[total_cost]"))
-	to_chat(user, span_notice("Contributors: [english_list(contributors)]"))
+	to_chat(user, span_notice("项目：[display_name]"))
+	to_chat(user, span_notice("描述：[description]"))
+	to_chat(user, span_notice("进度：[paid_amount]/[total_cost]"))
+	to_chat(user, span_notice("献血者：[english_list(contributors)]"))
 
 /datum/vampire_project/proc/on_complete()
 	return
@@ -279,15 +279,15 @@
 		if(refund_amount <= 0)
 			continue
 		contributor.adjust_bloodpool(refund_amount)
-		to_chat(contributor, span_notice("Received [refund_amount] vitae refund from cancelled project: [display_name]"))
+		to_chat(contributor, span_notice("项目[display_name]已取消，退还了[refund_amount]命髓。"))
 
 	contributors.Cut()
 	paid_amount = 0
 
 // Specific project types
 /datum/vampire_project/power_growth
-	display_name = "Rite of Stirring"
-	description = "The ancient blood stirs once more. Forgotten whispers echo through the marrow of the land."
+	display_name = "复苏之仪"
+	description = "古老之血再度涌动，被遗忘的低语回荡在大地骨髓之中。"
 	total_cost = VAMPCOST_ONE
 	completion_sound = 'sound/misc/batsound.ogg'
 
@@ -301,7 +301,7 @@
 		var/datum/antagonist/vampire/lord/lord = user.mind?.has_antag_datum(/datum/antagonist/vampire/lord)
 		if(lord && !lord.ascended)
 			var/mob/living/carbon/human/lord_body = user
-			to_chat(user, span_greentext("My power grows through collective sacrifice."))
+			to_chat(user, span_greentext("众人的献祭使我的力量不断增长。"))
 			for(var/S in MOBSTATS)
 				lord_body.change_stat(S, 2)
 			lord_body.adjust_maxbloodpool(1000)
@@ -310,8 +310,8 @@
 			break
 
 /datum/vampire_project/power_growth_2
-	display_name = "Rite of Reclamation"
-	description = "Strength long sealed returns. The soil, the stone, and the shadows bend again to their rightful master."
+	display_name = "归还之仪"
+	description = "封存已久的力量重新归来。泥土、岩石与暗影再次臣服于它们真正的主人。"
 	total_cost = VAMPCOST_TWO
 	completion_sound = 'sound/misc/batsound.ogg'
 
@@ -321,7 +321,7 @@
 		var/datum/antagonist/vampire/lord/lord = user.mind?.has_antag_datum(/datum/antagonist/vampire/lord)
 		if(lord && !lord.ascended)
 			var/mob/living/carbon/human/lord_body = user
-			to_chat(user, span_greentext("My power grows through collective sacrifice."))
+			to_chat(user, span_greentext("众人的献祭使我的力量不断增长。"))
 			for(var/S in MOBSTATS)
 				lord_body.change_stat(S, 2)
 			lord_body.adjust_maxbloodpool(1000)
@@ -330,8 +330,8 @@
 			break
 
 /datum/vampire_project/power_growth_3
-	display_name = "Rite of Dominion"
-	description = "The veil of time shreds. The Elder's will pours forth, binding trespassers within the grasp of the Land."
+	display_name = "统御之仪"
+	description = "时间的帷幕被撕裂。长老的意志倾泻而出，将闯入者禁锢于大地的掌握之中。"
 	total_cost = VAMPCOST_THREE
 	completion_sound = 'sound/misc/batsound.ogg'
 
@@ -341,7 +341,7 @@
 		var/datum/antagonist/vampire/lord/lord = user.mind?.has_antag_datum(/datum/antagonist/vampire/lord)
 		if(lord && !lord.ascended)
 			var/mob/living/carbon/human/lord_body = user
-			to_chat(user, span_greentext("My power grows through collective sacrifice."))
+			to_chat(user, span_greentext("众人的献祭使我的力量不断增长。"))
 			for(var/S in MOBSTATS)
 				lord_body.change_stat(S, 2)
 			lord_body.adjust_maxbloodpool(1000)
@@ -350,8 +350,8 @@
 			break
 
 /datum/vampire_project/power_growth_4
-	display_name = "Rite of Sovereignty"
-	description = "The Lord is whole. Ancient power saturates every stone and vein, for the Land and its master are one."
+	display_name = "君临之仪"
+	description = "领主已重归完整。古老的力量浸透每块岩石与每条血脉，大地与其主人本为一体。"
 	total_cost = VAMPCOST_FOUR
 	completion_sound = 'sound/misc/batsound.ogg'
 
@@ -364,7 +364,7 @@
 			for(var/S in MOBSTATS)
 				lord_body.change_stat(S, 2)
 			lord_body.adjust_maxbloodpool(1000)
-			to_chat(user, span_danger("I AM ANCIENT, I AM THE LAND. EVEN THE SUN BOWS TO ME."))
+			to_chat(user, span_danger("我即亘古，我即大地。就连太阳也向我俯首。"))
 			lord.ascended = TRUE
 			var/list/all_subordinates = user.clan_position.get_all_subordinates()
 			for(var/mob/living/carbon/human/subordinate_body  in all_subordinates)
@@ -376,8 +376,8 @@
 			break
 
 /datum/vampire_project/armor_crafting
-	display_name = "Wicked Plate"
-	description = "Craft a complete set of vampiric armor from crystallized blood."
+	display_name = "邪铸板甲"
+	description = "用结晶之血打造一整套血族盔甲。"
 	total_cost = 5000
 	completion_sound = 'sound/misc/vcraft.ogg'
 
@@ -388,11 +388,11 @@
 	new /obj/item/clothing/shoes/roguetown/boots/armor/vampire (bloodpool.loc)
 	new /obj/item/clothing/head/roguetown/helmet/heavy/vampire (bloodpool.loc)
 	new /obj/item/clothing/gloves/roguetown/chain/vampire (bloodpool.loc)
-	creation_point.visible_message(span_notice("A complete set of armor materializes from the crimson crucible."))
+	creation_point.visible_message(span_notice("一整套盔甲从猩红熔炉中凝现。"))
 
 /datum/vampire_project/sunsteal
-	display_name = "Steal the Sun"
-	description = "The scorching gaze of the Sun-Tyrant shall hamper our plans no more. This project can only be initiated by your lorde."
+	display_name = "窃取太阳"
+	description = "太阳暴君灼热的目光将不再阻挠我们的计划。只有你的领主才能启动此项目。"
 	total_cost = SUN_STEAL_COST
 	completion_sound = 'sound/misc/vcraft.ogg'
 	can_be_initiated_by = INITIATE_LORDE
@@ -405,15 +405,15 @@
 	SSticker.sunsteal(initiator_clan?.clan_leader)
 
 /datum/vampire_project/servant/proc/summon(type, atom/feedback_atom)
-	feedback_atom.visible_message("The crucible stirs, summoning a servant from the realms beyond...")
-	var/list/candidates = pollGhostCandidates("Do you want to play as a Vampire's [type]?", ROLE_VAMPIRE_SUMMON, null, null, 10 SECONDS, POLL_IGNORE_VL_SERVANT)
+	feedback_atom.visible_message("熔炉开始翻涌，从异界召唤一名仆从……")
+	var/list/candidates = pollGhostCandidates("你想扮演血族的[type == "Vampire Servant" ? "仆从" : type == "Vampire Guard" ? "卫士" : "骑士子嗣"]吗？", ROLE_VAMPIRE_SUMMON, null, null, 10 SECONDS, POLL_IGNORE_VL_SERVANT)
 	if(!LAZYLEN(candidates))
-		feedback_atom.visible_message("But alas, the depths are hollow...")
+		feedback_atom.visible_message("然而，深处空无一物……")
 		return FALSE
 
 	var/mob/C = pick(candidates)
 	if(!C || !istype(C, /mob/dead))
-		feedback_atom.visible_message("But alas, the depths are hollow...")
+		feedback_atom.visible_message("然而，深处空无一物……")
 		return FALSE
 
 	. = TRUE
@@ -424,7 +424,7 @@
 
 	var/mob/living/carbon/human/species/human/northern/target = new /mob/living/carbon/human/species/human/northern(get_turf(feedback_atom))
 	target.key = C.key
-	target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
+	target.visible_message(span_warning("[target]的眼中亮起诡异的光芒！"))
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, load_char_or_namechoice)), 3 SECONDS)
 	switch(type)
 		if("Vampire Servant")
@@ -442,8 +442,8 @@
 	ADD_TRAIT(target, TRAIT_BLOODPOOL_BORN, TRAIT_GENERIC)
 
 /datum/vampire_project/servant/servant_t1
-	display_name = "Summon Servant"
-	description = "A loyal servant to do your bidding."
+	display_name = "召唤仆从"
+	description = "一名听命于你的忠诚仆从。"
 	total_cost = SERVANT_COST
 	completion_sound = 'sound/misc/vcraft.ogg'
 
@@ -452,8 +452,8 @@
 		on_cancel()
 
 /datum/vampire_project/servant/servant_t2
-	display_name = "Summon Guard"
-	description = "A loyal servant to do your bidding."
+	display_name = "召唤卫士"
+	description = "一名听命于你的忠诚仆从。"
 	total_cost = SERVANT_T2_COST
 	completion_sound = 'sound/misc/vcraft.ogg'
 
@@ -462,8 +462,8 @@
 		on_cancel()
 
 /datum/vampire_project/servant/servant_t3
-	display_name = "Summon Knight Spawn"
-	description = "A loyal servant to do your bidding."
+	display_name = "召唤骑士子嗣"
+	description = "一名听命于你的忠诚仆从。"
 	total_cost = SERVANT_T3_COST
 	completion_sound = 'sound/misc/vcraft.ogg'
 
