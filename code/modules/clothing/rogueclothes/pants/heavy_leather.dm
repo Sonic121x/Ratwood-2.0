@@ -149,8 +149,8 @@
 	max_heat_protection_temperature = 600
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants/maille
-	name = "silk-wreathed maille tights"
-	desc = "Form-fitting silk tights layered over fine drowsmithed maille."
+	name = "丝裹锁甲紧身裤"
+	desc = "贴身丝裤，内衬卓尔精工打造的细密锁甲。"
 	armor = ARMOR_MAILLE
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_LEG_HARDLEATHER + 25//slight boost cause it's maille or something

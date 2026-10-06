@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(vote)
 	// No valid vote found? No vote
 	if(!istype(to_vote))
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("Invalid voting choice."))
+			to_chat(vote_initiator, span_warning("无效的投票选项。"))
 		return FALSE
 
 	// Vote can't be initiated in our circumstances? No vote
@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(vote)
 		if(current_vote != to_vote)
 			break
 		var/datum/action/vote/voting_action = new()
-		voting_action.name = "Vote: [to_vote.override_question || to_vote.name]"
+		voting_action.name = "投票：[to_vote.override_question || to_vote.name]"
 		voting_action.Grant(new_voter.mob)
 
 		new_voter.player_details.player_actions += voting_action
@@ -274,19 +274,19 @@ SUBSYSTEM_DEF(vote)
 
 	if(!SSticker.setup_done)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("You cannot start a vote now, the server is not done initializing."))
+			to_chat(vote_initiator, span_warning("服务器尚未完成初始化，暂时无法发起投票。"))
 		return FALSE
 
 
 	var/next_allowed_time = last_vote_time + CONFIG_GET(number/vote_delay)
 	if(next_allowed_time > world.time)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("A vote was initiated recently. You must wait [DisplayTimeText(next_allowed_time - world.time)] before a new vote can be started!"))
+			to_chat(vote_initiator, span_warning("刚刚有人发起过投票，必须等待[DisplayTimeText(next_allowed_time - world.time)]后才能再次发起！"))
 		return FALSE
 
 	if(current_vote)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("There is already a vote in progress! Please wait for it to finish."))
+			to_chat(vote_initiator, span_warning("已有投票正在进行！请等待投票结束。"))
 		return FALSE
 
 	return TRUE
@@ -459,7 +459,7 @@ SUBSYSTEM_DEF(vote)
 
 	// Give them the vote action button
 	var/datum/action/vote/voting_action = new()
-	voting_action.name = "Vote: [current_vote.override_question || current_vote.name]"
+	voting_action.name = "投票：[current_vote.override_question || current_vote.name]"
 	voting_action.Grant(C.mob)
 
 	C.player_details.player_actions += voting_action
@@ -484,14 +484,14 @@ SUBSYSTEM_DEF(vote)
 	set name = "Vote"
 
 	if(!SSvote.initialized)
-		to_chat(usr, span_notice("<i>Voting is not set up yet!</i>"))
+		to_chat(usr, span_notice("<i>投票功能尚未就绪！</i>"))
 		return
 
 	SSvote.ui_interact(usr)
 
 /// Datum action given to mobs that allows players to vote on the current vote.
 /datum/action/vote
-	name = "Vote!"
+	name = "投票！"
 	button_icon_state = "vote"
 
 /datum/action/vote/IsAvailable(feedback = FALSE)

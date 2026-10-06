@@ -29,13 +29,13 @@
 	if(!istype(user))
 		return ..()
 	if(HAS_TRAIT(user, TRAIT_RESIDENT))
-		to_chat(user, span_warning("I am already a Citizen of the Vale."))
+		to_chat(user, span_warning("我已经是谷地公民了。"))
 		return
 	if(user.job == "Steward" || user.job == "Grand Duke")
-		to_chat(user, span_warning("This letter is meant for another. I must hand it over."))
+		to_chat(user, span_warning("这封文书是给别人的，我必须交给对方。"))
 		return
-	user.visible_message(span_notice("[user] unfolds the letter and accepts its seal."), \
-		span_notice("I claim the rights of Citizenry and Burghership granted by this letter."))
+	user.visible_message(span_notice("[user]展开文书，接受了印玺授予的资格。"), \
+		span_notice("我接受本文书授予的公民权与市民资格。"))
 	ADD_TRAIT(user, TRAIT_RESIDENT, TRAIT_CITIZENRY_LETTER)
 	playsound(get_turf(user), 'sound/misc/gold_license.ogg', 60, FALSE, -1)
 	qdel(src)

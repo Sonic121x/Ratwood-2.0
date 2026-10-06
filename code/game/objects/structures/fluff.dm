@@ -481,7 +481,7 @@
 			var/passagename
 			passagename = stripped_input(user, "你想在这条通道上刻下什么名字？", "", "", MAX_NAME_LEN)
 			if (passagename)
-				name = passagename + "(passage)"
+				name = passagename + "（通道）"
 				desc = "一条刻上了名字的通道"
 			else
 				name = "通道"
@@ -548,7 +548,7 @@
 			var/grillename
 			grillename = stripped_input(user, "你想在这面格栅上刻下什么名字？", "", "", MAX_NAME_LEN)
 			if (grillename)
-				name = grillename + "(grille)"
+				name = grillename + "（栅栏）"
 				desc = "一面刻上了名字的格栅"
 			else
 				name = "格栅"
