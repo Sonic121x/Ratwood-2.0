@@ -36,16 +36,16 @@
 	category = "Steward"
 
 /datum/book_entry/treasury_realm/budgets
-	name = "01. Budgets and Authority"
+	name = "01. 预算与职权"
 
 /datum/book_entry/treasury_realm/budgets/inner_book_html(mob/user)
 	return {"
 		<div>
-		<h3>Crown's Purse</h3>
-		<p>The Crown's actual mammon balance. Used to pay wages, imports, deposits, and any other expenditure drawn through the Nerve Master (KEEP IT LOCKED!). Replenished by taxes, fines, direct deposit into the Nerve Master, exports, and fulfilling standing orders.</p>
+		<h3>王室金库</h3>
+		<p>王室实际持有的玛门余额，用于支付工资、进口、押金及其他通过神经主支取的开销（务必锁好！）。税收、罚款、向神经主直接存款、出口及履行长期订单均可补充金库。</p>
 
-		<h3>Burgher Pledge</h3>
-		<p>Not actual coin, but a virtual pool pledged by the Burghers of the realm. It refills daily, scaling with a flat base and the active player count.</p>
+		<h3>市民认捐</h3>
+		<p>这是领地市民承诺提供的虚拟资金池，而非实际硬币。每天补充，金额由固定基础额度和活跃玩家人数决定。</p>
 
 		<h3>宫廷总管与市政长老</h3>
 		<p>宫廷总管长期掌管这两项资金。领地也可以通过城市议会选出一位<b>市政长老</b>（参见下一章）；在任期间，市政长老拥有议会另行授予的每日支出授权，分为贸易额度与防务额度。席位空缺时，两项资金均由宫廷总管独自负责。</p>
@@ -86,26 +86,26 @@
 
 
 /datum/book_entry/treasury_realm/defense
-	name = "03. Defense and Blockades"
+	name = "03. 防务与封锁"
 
 /datum/book_entry/treasury_realm/defense/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>A region's trade road can be <b>blockaded</b> by a hostile faction. A handful stand up at round start (<b>[BLOCKADE_ROUNDSTART_COUNT_MIN]-[BLOCKADE_ROUNDSTART_COUNT_MAX]</b>), and more may fall upon the realm on later days. Only factions fierce enough to besiege a road can raise one, and only in regions whose threat is high enough to harbour them - so tame regions stay open and dangerous ones do not.</p>
+		<p>敌对势力可以<b>封锁</b>地区商路。回合开始时会出现少量封锁（<b>[BLOCKADE_ROUNDSTART_COUNT_MIN]-[BLOCKADE_ROUNDSTART_COUNT_MAX]</b>处），此后几天还可能出现更多。只有足以围攻商路的强悍势力才能发起封锁，且只能出现在威胁程度足以容纳它们的地区，因此安定地区保持畅通，危险地区则未必。</p>
 
-		<h3>The Bite</h3>
-		<p>While a region is blockaded its trade is throttled - Import Price x<b>[BLOCKADE_IMPORT_MULT]</b>, Export Revenue x<b>[BLOCKADE_EXPORT_MULT]</b> - and the Crown is called to answer it. The blockade holds until it is broken.</p>
+		<h3>封锁的代价</h3>
+		<p>地区遭封锁期间，贸易受到限制：进口价格乘以<b>[BLOCKADE_IMPORT_MULT]</b>，出口收入乘以<b>[BLOCKADE_EXPORT_MULT]</b>。王室必须作出应对，封锁会持续到被打破为止。</p>
 
-		<h3>Breaking a Blockade</h3>
+		<h3>打破封锁</h3>
 		<p>王室，或使用议会<b>防务额度</b>的市政长老（参见<i>城市议会与市政长老</i>），可在大契约台账上发布<b>反封锁防务契约</b>。冒险者接下令状，击退围攻势力的一波波敌人后，道路便会重新开放。刚解除封锁的地区在<b>[BLOCKADE_RECLEAR_COOLDOWN]</b>天内不会再次遭到封锁。</p>
 
-		<p>Separately, a region's <b>Dangerous</b> or <b>Bleak</b> threat classification drains the Crown's Purse every dawn on its own, whether or not a blockade stands - see <i>Banditry</i>.</p>
+		<p>此外，威胁等级为<b>危险</b>或<b>凶险</b>的地区，无论是否遭到封锁，都会在每次黎明消耗王室金库资金，参见<i>匪患</i>。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_realm/trade
-	name = "04. Regional Trade"
+	name = "04. 地区贸易"
 
 /datum/book_entry/treasury_realm/trade/inner_book_html(mob/user)
 	// Built from the live table so a map that swaps a region out doesn't advertise a county
@@ -117,147 +117,147 @@
 			region_names += ER.name
 	return {"
 		<div>
-		<p>The Crown trades with [length(region_names)] regions: [english_list(region_names)]. Trade and Stockpile interfaces are accessed through the Nerve Master.</p>
+		<p>王室与[length(region_names)]个地区开展贸易：[english_list(region_names)]。通过神经主可进入贸易与库存界面。</p>
 
-		<h3>Trade Pricing</h3>
+		<h3>贸易定价</h3>
 		<ul>
-			<li>Each region has daily production and demand for specific goods. Volumes scale with active player count.</li>
-			<li><b>Import</b> price rises sharply once purchases exceed daily production.</li>
-			<li><b>Export</b> price falls sharply once sales exceed daily demand.</li>
-			<li><b>Export</b> price is always <b>[IMPORT_EXPORT_SPREAD * 100]%</b> less than the matching import price. Buying and re-selling on the same day is always a loss.</li>
-			<li><b>Blockade</b> (when one manages to stand): Import Price x<b>[BLOCKADE_IMPORT_MULT]</b>, Export Revenue x<b>[BLOCKADE_EXPORT_MULT]</b>.</li>
-			<li>Each trade action is capped at <b>[TRADE_MAX_BULK_UNITS]</b> units per click.</li>
+			<li>每个地区都有特定货物的每日产量与需求量，数量随活跃玩家人数变化。</li>
+			<li>购买量超过每日产量后，<b>进口</b>价格会急剧上涨。</li>
+			<li>销售量超过每日需求量后，<b>出口</b>价格会急剧下降。</li>
+			<li><b>出口</b>价格始终比对应的进口价格低<b>[IMPORT_EXPORT_SPREAD * 100]%</b>。同一天买入再转售必定亏损。</li>
+			<li><b>封锁</b>生效时，进口价格乘以<b>[BLOCKADE_IMPORT_MULT]</b>，出口收入乘以<b>[BLOCKADE_EXPORT_MULT]</b>。</li>
+			<li>每次点击进行贸易，最多交易<b>[TRADE_MAX_BULK_UNITS]</b>单位货物。</li>
 		</ul>
 
-		<h3>Stockpile Pricing, Autoprice and Autolimit</h3>
-		<p>Each stockpiled good has two prices: a <b>buy price</b> (Crown pays the depositing player) and a <b>sell price</b> (Crown charges the withdrawing player). On <b>Autoprice</b>, prices peg to the good's global reference so the Crown always profits a margin per transaction; the Steward may override either price by hand, which switches the entry to <b>Manual</b>. Manual entries hold whatever the Steward set until restored to Auto.</p>
+		<h3>库存定价、自动定价与自动限额</h3>
+		<p>每种库存货物有两种价格：<b>收购价</b>（王室支付给存入货物的玩家）和<b>出售价</b>（王室向取出货物的玩家收取）。采用<b>自动定价</b>时，价格跟随货物的全局参考价，使王室每笔交易都能赚取差价。宫廷总管可以手动改写任一种价格，使该项切换为<b>手动</b>模式。手动设定的价格会一直保持，直到恢复自动模式。</p>
 
-		<h3>Stockpile Limit - Auto and Manual</h3>
-		<p>Each stockpile entry has a per-day limit beyond which deposits no longer pay, computed from total daily demand across all regions, scaled by population, with <b>[STOCKPILE_AUTO_LIMIT_DAYS]</b> days of headroom and a <b>[STOCKPILE_LIMIT_MIN]</b>-unit floor for goods with no demand line. The Steward may override by hand, flipping the entry to <b>Manual</b>.</p>
+		<h3>库存限额：自动与手动</h3>
+		<p>每种库存货物都有每日限额，超过后再存入便不再获得报酬。限额根据各地区每日总需求量与人口计算，预留<b>[STOCKPILE_AUTO_LIMIT_DAYS]</b>天的余量；没有需求记录的货物，最低限额为<b>[STOCKPILE_LIMIT_MIN]</b>单位。宫廷总管可以手动改写限额，使该项切换为<b>手动</b>模式。</p>
 
-		<h3>Surplus Exports</h3>
-		<p>Stock above a per-good surplus floor is cleared by the Crown's daily auto-export sweep to the highest-paying region, capped at that region's remaining daily demand. Manual-priced entries are skipped by the sweep - hand-export those yourself.</p>
+		<h3>盈余出口</h3>
+		<p>王室每天自动检查库存，将超过各货物盈余底线的部分出口至出价最高的地区，数量不超过该地区当天剩余需求量。自动检查会跳过手动定价的货物，这些货物需要自行手动出口。</p>
 
-		<h3>Imports and the Stockpile</h3>
-		<p>Regional imports enter the Crown's stockpile and feed standing orders and the city's economy at large. The Steward may set a <b>purchase floor</b>: imports are refused when they would drop the Purse below it.</p>
+		<h3>进口与库存</h3>
+		<p>地区进口货物进入王室库存，用于履行长期订单并供应整个城市的经济需求。宫廷总管可以设置<b>采购余额底线</b>：若进口会使金库余额低于底线，该笔进口便会被拒绝。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_realm/auto_import
-	name = "05. Standing (Auto) Imports"
+	name = "05. 长期（自动）进口"
 
 /datum/book_entry/treasury_realm/auto_import/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>The Crown may auto-import essential goods each dawn, sparing the Steward from manually re-importing the same basics every day. Goods stay on the list until removed.</p>
+		<p>王室可以在每次黎明自动进口必需货物，免去宫廷总管每天手动购入相同基础物资的麻烦。货物会一直保留在清单上，直到被移除。</p>
 
-		<h3>Essentials</h3>
-		<p>Seven goods are on standing import by default: <b>coal, wood, grain, iron ore, hide, fur, and fat</b>. The Steward may remove any of them from the Market Scroll's Auto-Import tab and re-add them later. Any other importable good with an active producing region can also be placed on standing import.</p>
+		<h3>必需货物</h3>
+		<p>默认长期进口七种货物：<b>煤炭、木材、谷物、铁矿石、兽皮、毛皮和脂肪</b>。宫廷总管可在市场卷轴的自动进口页移除任一种货物，之后也可重新添加。其他可进口货物，只要存在仍在供应的生产地区，也可以加入长期进口。</p>
 
-		<h3>Rules</h3>
-		<p>Each dawn, for each good on the list:</p>
+		<h3>规则</h3>
+		<p>每次黎明，清单上的每种货物均按以下规则处理：</p>
 		<ul>
-			<li>If the stockpile already holds <b>[AUTO_IMPORT_FLOOR]</b> or more units, no import is made.</li>
-			<li>Otherwise, the Crown buys <b>[AUTO_IMPORT_BATCH]</b> units from the cheapest producing region.</li>
-			<li>The import is skipped if any unit would cost more than <b>[AUTO_IMPORT_MAX_PRICE_MULT]x</b> the good's base price.</li>
-			<li>The import is skipped if it would drop the Crown's Purse below the Steward's purse floor (default <b>[AUTO_IMPORT_PURSE_FLOOR_DEFAULT]m</b>, adjustable).</li>
+			<li>若库存已有<b>[AUTO_IMPORT_FLOOR]</b>单位或更多，则不进行进口。</li>
+			<li>否则，王室从价格最低的生产地区购买<b>[AUTO_IMPORT_BATCH]</b>单位。</li>
+			<li>若任何一单位的价格超过货物基础价格的<b>[AUTO_IMPORT_MAX_PRICE_MULT]倍</b>，则跳过进口。</li>
+			<li>若进口会使王室金库低于宫廷总管设定的余额底线，则跳过进口（默认<b>[AUTO_IMPORT_PURSE_FLOOR_DEFAULT]m</b>，可调整）。</li>
 		</ul>
 
-		<p>The panel retains the last <b>[AUTO_IMPORT_HISTORY_DAYS]</b> days of activity. Standing imports draw from the Crown's Purse only.</p>
+		<p>面板保留最近<b>[AUTO_IMPORT_HISTORY_DAYS]</b>天的记录。长期进口仅使用王室金库资金。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_realm/standing_orders
-	name = "06. Of Standing Orders"
+	name = "06. 长期订单详解"
 
 /datum/book_entry/treasury_realm/standing_orders/inner_book_html(mob/user)
 	return {"
 		<div>
-		<h3>Types</h3>
+		<h3>类型</h3>
 		<ul>
-			<li><b>Regular</b> - rolled each dawn (<b>[STANDING_ORDERS_BASE_PER_DAY]</b> base, plus more per active player), capped at <b>[STANDING_ORDERS_MAX_PER_DAY]</b>/day. <b>[STANDING_ORDER_DURATION]</b>-day lifespan. Payout: base x<b>[1 + STANDING_ORDER_BASE_BONUS]</b> per unit.</li>
-			<li><b>Urgent</b> - spawned by shortage events, capped at <b>[STANDING_ORDERS_MAX_URGENT]</b> standing at a time. One-day lifespan, higher payout.</li>
-			<li><b>Warehouse</b> - for finished goods (equipment, potions). Settled from the export warehouse, not the stockpile.</li>
+			<li><b>常规</b>——每次黎明生成（基础数量为<b>[STANDING_ORDERS_BASE_PER_DAY]</b>份，并随活跃玩家人数增加），每天最多<b>[STANDING_ORDERS_MAX_PER_DAY]</b>份。有效期为<b>[STANDING_ORDER_DURATION]</b>天。每单位报酬为基础价格乘以<b>[1 + STANDING_ORDER_BASE_BONUS]</b>。</li>
+			<li><b>紧急</b>——由短缺事件生成，同时最多存在<b>[STANDING_ORDERS_MAX_URGENT]</b>份。有效期一天，报酬更高。</li>
+			<li><b>仓库</b>——用于成品（装备、药剂），从出口仓库结算，而非库存。</li>
 		</ul>
 
-		<h3>Fulfillment</h3>
-		<p>Stockpile orders: deposit goods, confirm at the Nerve Master, payout minted to the Crown's Purse. Warehouse orders: matched automatically against registered export machines.</p>
+		<h3>履行订单</h3>
+		<p>库存订单：存入货物，在神经主处确认，报酬随即计入王室金库。仓库订单：自动与已登记的出口机器匹配。</p>
 
-		<p><b>Partial fulfillment:</b> if the on-hand goods cover at least <b>[round(STANDING_ORDER_PARTIAL_THRESHOLD * 100)]%</b> of an order's posted value, the Steward may settle it anyway. The buyer pays <b>[round(STANDING_ORDER_PARTIAL_PAYOUT_MULT * 100)]%</b> of the delivered share's value and the missing share is forfeit.</p>
+		<p><b>部分履行：</b>若现有货物价值达到订单公布价值的至少<b>[round(STANDING_ORDER_PARTIAL_THRESHOLD * 100)]%</b>，宫廷总管仍可结算。买家支付已交货部分价值的<b>[round(STANDING_ORDER_PARTIAL_PAYOUT_MULT * 100)]%</b>，未交货部分的报酬则作废。</p>
 
-		<h3>Limits</h3>
-		<p>Max <b>[STANDING_ORDERS_MAX_PER_REGION]</b> orders per region. Max <b>[STANDING_ORDERS_POOL_CAP]</b> orders in the realm.</p>
+		<h3>上限</h3>
+		<p>每个地区最多<b>[STANDING_ORDERS_MAX_PER_REGION]</b>份订单，整个领地最多<b>[STANDING_ORDERS_POOL_CAP]</b>份订单。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_realm/warehouse
-	name = "07. Warehouse"
+	name = "07. 仓库"
 
 /datum/book_entry/treasury_realm/warehouse/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>Registered Steward export machines accept finished goods that fulfill warehouse-tagged standing orders.</p>
+		<p>已登记的宫廷总管出口机器接受成品，用于履行标记为仓库类型的长期订单。</p>
 
-		<h3>Equipment Orders</h3>
-		<p>Swept for exact-type match. Subtypes and variants are not consumed.</p>
+		<h3>装备订单</h3>
+		<p>检查时只接受完全相同的装备类型，不会消耗其子类型或变体。</p>
 
-		<h3>Potion Orders</h3>
-		<p>Swept by reagent and volume. Any container holding the right reagent counts, consumed from the top until the order is met.</p>
+		<h3>药剂订单</h3>
+		<p>按试剂种类与容量检查。任何装有正确试剂的容器都可计入，按顺序消耗，直到满足订单。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_realm/insolvent
-	name = "08. Insolvency, Sequestration and Loans"
+	name = "08. 无力偿付、财产扣押与贷款"
 
 /datum/book_entry/treasury_realm/insolvent/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>The Crown becomes insolvent if it fails to meet payroll from the Crown's Purse at dawn. Insolvency triggers in stages: first an interest-free advance, then an optional emergency loan, and finally sequestration if the Crown fails again.</p>
+		<p>若王室在黎明无法从金库足额支付工资，便会陷入无力偿付状态。处理分阶段进行：首先提供无息垫款，随后可选择紧急贷款，若王室再次无法付款，最终会进入财产扣押。</p>
 
-		<h3>First Failure - Arrears</h3>
-		<p>If the Crown's Purse cannot meet the day's wages, an advance of <b>at least [TREASURY_ARREARS_LOAN]m, up to the actual shortfall</b>, is issued without interest. Wages pay normally for the day. The advance is registered as <b>arrears</b>; until settled, every coin of inflow into the Crown's Purse is skimmed against it before reaching the balance.</p>
+		<h3>首次欠薪：欠款</h3>
+		<p>若王室金库无法支付当天工资，便会获得无息垫款，金额<b>至少为[TREASURY_ARREARS_LOAN]m，并可补足实际缺口</b>，以确保当天正常发薪。垫款会登记为<b>欠款</b>；在还清之前，所有流入王室金库的资金都会先用于偿还欠款，再计入余额。</p>
 
-		<h3>The Emergency Loan</h3>
-		<p>On any day, the Crown may draw a loan for <b>[ATC_LOAN_MIN_AMOUNT]m to [ATC_LOAN_MAX_AMOUNT]m</b>. The principal is paid into the Crown's Purse immediately. Interest is <b>[round(ATC_LOAN_INTEREST_RATE * 100)]%</b>, repaid silently from skimmed inflow. No second loan may be drawn until the first is settled. Drawing the loan <b>forfeits the arrears grace</b>: missing payroll while the loan is outstanding sends the Crown directly to sequestration.</p>
+		<h3>紧急贷款</h3>
+		<p>王室可在任意一天借入<b>[ATC_LOAN_MIN_AMOUNT]m至[ATC_LOAN_MAX_AMOUNT]m</b>，本金立即计入王室金库。利息为<b>[round(ATC_LOAN_INTEREST_RATE * 100)]%</b>，从金库收入中自动扣还。首笔贷款还清前，不可再借第二笔。借款会<b>取消欠款宽限</b>：贷款尚未还清时若无法发薪，王室将直接进入财产扣押。</p>
 
-		<h3>Second Failure - Sequestration</h3>
-		<p>If the Crown misses payroll on a second consecutive dawn (or once with an outstanding loan), the realm enters <b>sequestration</b>:</p>
+		<h3>再次欠薪：财产扣押</h3>
+		<p>若王室连续第二次在黎明无法发薪（或尚有贷款未清时欠薪一次），领地便会进入<b>财产扣押</b>：</p>
 		<ul>
-			<li>Crown's Purse is reset to <b>[BANKRUPTCY_OPERATING_FLOOR]m</b>. Anything above the floor is forfeit; anything below is topped up.</li>
-			<li>A debt of <b>[BANKRUPTCY_DEBT_FLAT]m</b> is registered on top of any existing arrears or loan debt.</li>
-			<li>All Crown salaries are suspended until sequestration lifts.</li>
-			<li>Every importable good is placed on standing import; auto-export ratchets to <b>[round(BANKRUPTCY_AUTOEXPORT_PERCENTAGE * 100)]%</b> of stockpile limit. Manual import/export and stockpile pricing controls are disabled.</li>
+			<li>王室金库重置为<b>[BANKRUPTCY_OPERATING_FLOOR]m</b>。超过底线的资金被没收，不足底线则补足。</li>
+			<li>在原有欠款或贷款之外，另登记<b>[BANKRUPTCY_DEBT_FLAT]m</b>债务。</li>
+			<li>暂停所有王室工资，直到财产扣押解除。</li>
+			<li>所有可进口货物均加入长期进口；自动出口提高到库存限额的<b>[round(BANKRUPTCY_AUTOEXPORT_PERCENTAGE * 100)]%</b>。手动进出口及库存定价功能被禁用。</li>
 		</ul>
 
-		<h3>Recovery</h3>
-		<p>When the debt reaches zero, sequestration lifts. Salaries resume the next day. The Crown's Purse is seeded with <b>[BANKRUPTCY_RECOVERY_RESET]m</b>. The realm may enter sequestration multiple times in the same round - each declaration adds fresh debt.</p>
+		<h3>恢复运作</h3>
+		<p>债务归零后，财产扣押解除，工资于次日恢复。王室金库获得<b>[BANKRUPTCY_RECOVERY_RESET]m</b>启动资金。同一回合内领地可能多次进入财产扣押，每次都会新增债务。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_realm/banditry
-	name = "09. Banditry"
+	name = "09. 匪患"
 
 /datum/book_entry/treasury_realm/banditry/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>Regions classified as <b>Dangerous</b> or <b>Bleak</b> drain the Crown's Purse each dawn.</p>
+		<p>威胁等级为<b>危险</b>或<b>凶险</b>的地区，会在每次黎明消耗王室金库资金。</p>
 
-		<h3>Banditry Drain</h3>
-		<p>Per region, per dawn:</p>
+		<h3>匪患损耗</h3>
+		<p>每个地区在每次黎明造成以下损耗：</p>
 		<ul>
-			<li><b>Dangerous</b>: [BANDITRY_DRAIN_DANGEROUS_FLAT]m base + [BANDITRY_DRAIN_DANGEROUS_PER_PLAYER]m per active player.</li>
-			<li><b>Bleak</b>: [BANDITRY_DRAIN_BLEAK_FLAT]m base + [BANDITRY_DRAIN_BLEAK_PER_PLAYER]m per active player.</li>
+			<li><b>危险</b>：基础[BANDITRY_DRAIN_DANGEROUS_FLAT]m，每位活跃玩家另加[BANDITRY_DRAIN_DANGEROUS_PER_PLAYER]m。</li>
+			<li><b>凶险</b>：基础[BANDITRY_DRAIN_BLEAK_FLAT]m，每位活跃玩家另加[BANDITRY_DRAIN_BLEAK_PER_PLAYER]m。</li>
 		</ul>
 
-		<h3>The Floor and Banditry Debt</h3>
-		<p>Banditry alone will not reduce the Crown's Purse below <b>[BANDITRY_DEBT_FLOOR]m</b>. Anything beyond that becomes <b>banditry debt</b> - an accruing arrears that skims every coin of treasury inflow until paid.</p>
+		<h3>余额底线与匪患债务</h3>
+		<p>仅由匪患造成的损耗不会使王室金库低于<b>[BANDITRY_DEBT_FLOOR]m</b>。超过这条底线的损耗会成为<b>匪患债务</b>，不断累积为欠款，并从金库的所有收入中扣还，直到结清。</p>
 
-		<h3>What You Can Do</h3>
-		<p>As regional threat falls, so does the dawn drain. Banditry debt only shrinks as new income is earned and skimmed. This dawn drain is a placeholder until fuller raid and siege content ships; unlike a blockade (see <i>Defense and Blockades</i>), it cannot be lifted by a single commission - only a lasting fall in the region's threat will ease it.</p>
+		<h3>应对办法</h3>
+		<p>地区威胁下降，黎明损耗也会随之减少。匪患债务只能通过获取新收入并扣还来减少。在更完整的突袭与围攻内容推出之前，黎明损耗是一项临时机制；它无法像封锁那样通过一次委托解除（参见<i>防务与封锁</i>），只有地区威胁长期降低，才能缓解损耗。</p>
 		</div>
 	"}

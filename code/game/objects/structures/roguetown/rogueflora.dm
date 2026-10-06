@@ -823,7 +823,7 @@
 		var/obj/item/natural/thorn/TH = new(src.loc)
 		BP.add_embedded_object(TH, silent = TRUE)
 		BP.receive_damage(10)
-		to_chat(H, span_danger("\A [TH] impales my [BP.name]!"))
+		to_chat(H, span_danger("[TH]刺穿了我的[BP.name]！"))
 		return
 
 	// Kneestinger immunity prevents the thorn effects unless cursed.
@@ -850,7 +850,7 @@
 		var/obj/item/natural/thorn/TH = new(src.loc)
 		BP.add_embedded_object(TH, silent = TRUE)
 		BP.receive_damage(10)
-		to_chat(H, span_danger("\A [TH] impales my [BP.name]!"))
+		to_chat(H, span_danger("[TH]刺穿了我的[BP.name]！"))
 		return
 
 	// Otherwise, just take a normal cut.

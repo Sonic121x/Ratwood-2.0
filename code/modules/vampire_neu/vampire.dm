@@ -8,9 +8,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	antag_hud_type = ANTAG_HUD_VAMPIRE
 	antag_hud_name = "Vspawn"
 	confess_lines = list(
-		"I WANT YOUR BLOOD!",
-		"DRINK THE BLOOD!",
-		"CHILD OF KAIN!",
+		"我要你的血！",
+		"喝下鲜血！",
+		"该隐之子！",
 	)
 	rogue_enabled = TRUE
 	typecache_datum_blacklist = list(/datum/antagonist/zombie) //the rot cannot claim what the Curse already holds
@@ -62,13 +62,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampire/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
 	if(istype(examined_datum, /datum/antagonist/vampire/lord))
-		return span_boldnotice("Kaine's firstborn!")
+		return span_boldnotice("该隐的长子！")
 	if(istype(examined_datum, /datum/antagonist/vampire))
-		return span_boldnotice("A child of Kaine.")
+		return span_boldnotice("该隐之子。")
 	if(istype(examined_datum, /datum/antagonist/zombie))
-		return span_boldnotice("Another deadite.")
+		return span_boldnotice("另一名尸鬼。")
 	if(istype(examined_datum, /datum/antagonist/skeleton))
-		return span_boldnotice("Another deadite.")
+		return span_boldnotice("另一名尸鬼。")
 
 /datum/antagonist/vampire/on_gain()
 	// the Curse takes precedence over the rot - covers dying to it partway through being sired
@@ -115,9 +115,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			clan_options[temp_clan.name] = clan_type
 		qdel(temp_clan)
 
-	clan_options["Create Custom Clan"] = "custom"
+	clan_options["创建自定义氏族"] = "custom"
 
-	var/choice = input(vampdude, "Choose your vampire clan:", "Clan Selection") as null|anything in clan_options
+	var/choice = input(vampdude, "选择你的吸血鬼氏族：", "选择氏族") as null|anything in clan_options
 
 	if(!choice)
 		// Default to nosferatu if no choice made
@@ -135,9 +135,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampire/proc/create_custom_clan(mob/living/carbon/human/vampdude)
 	// Get custom clan name
-	custom_clan_name = sanitize(input(vampdude, "Enter your custom clan name:", "Custom Clan", "Custom Clan") as text|null)
+	custom_clan_name = sanitize(input(vampdude, "输入自定义氏族名称：", "自定义氏族", "自定义氏族") as text|null)
 	if(!custom_clan_name)
-		custom_clan_name = "Custom Clan"
+		custom_clan_name = "自定义氏族"
 
 	var/datum/clan/custom/new_clan = new /datum/clan/custom()
 	new_clan.name = custom_clan_name
