@@ -41,7 +41,7 @@
 	var/mob/living/carbon/human/target = targets[1]
 
 	if(istype(target.dna?.species,  /datum/species/gnoll) || istype(target.dna?.species, /datum/species/werewolf))
-		to_chat(caster, span_warning("The mad god's hold over this flesh is unbreakable, any changes will be undone the instant I stop shaping."))
+		to_chat(caster, span_warning("疯神对这副血肉的掌控无法打破；只要我停止塑形，一切改变就会立刻复原。"))
 		return FALSE
 
 	if(get_dist(caster, target) > 1)
@@ -102,61 +102,61 @@
 
 /proc/get_fleshcraft_transform_choices()
 	return list(
-		"reset appearance",
-		"hairstyle",
-		"facial hairstyle",
-		"accessory",
-		"face detail",
-		"crest",
-		"horns",
-		"horn color",
-		"ears",
-		"ear color one",
-		"ear color two",
-		"tail",
-		"tail color one",
-		"tail color two",
-		"tail feature",
-		"tail feature color",
-		"wings",
-		"wing color one",
-		"wing color two",
-		"frills",
-		"frill color",
-		"antennas",
-		"antenna color",
-		"snout",
-		"snout color",
-		"head feature",
-		"head feature color",
-		"neck feature",
-		"neck feature color",
-		"back feature",
-		"back feature color",
-		"descriptors",
-		"hair color",
-		"facial hair color",
-		"eye color",
-		"skin color",
-		"mutant color",
-		"mutant color 2",
-		"mutant color 3",
-		"natural gradient",
-		"natural gradient color",
-		"dye gradient",
-		"dye gradient color",
-		"penis",
-		"penis color",
-		"penis color 2",
-		"testicles",
-		"testicles color",
-		"breasts",
-		"breasts color",
-		"vagina",
-		"vagina color",
-		"breast size",
-		"penis size",
-		"testicle size"
+		"重置外观",
+		"发型",
+		"胡须造型",
+		"装饰",
+		"面部细节",
+		"头冠",
+		"角",
+		"角的颜色",
+		"耳朵",
+		"耳朵主色",
+		"耳朵副色",
+		"尾巴",
+		"尾巴主色",
+		"尾巴副色",
+		"尾部特征",
+		"尾部特征颜色",
+		"翅膀",
+		"翅膀主色",
+		"翅膀副色",
+		"颈褶",
+		"颈褶颜色",
+		"触角",
+		"触角颜色",
+		"口鼻",
+		"口鼻颜色",
+		"头部特征",
+		"头部特征颜色",
+		"颈部特征",
+		"颈部特征颜色",
+		"背部特征",
+		"背部特征颜色",
+		"外貌描述",
+		"发色",
+		"胡须颜色",
+		"眼睛颜色",
+		"肤色",
+		"异种体色",
+		"第二异种体色",
+		"第三异种体色",
+		"天然渐变",
+		"天然渐变颜色",
+		"染色渐变",
+		"染色渐变颜色",
+		"阴茎",
+		"阴茎主色",
+		"阴茎副色",
+		"睾丸",
+		"睾丸颜色",
+		"乳房",
+		"乳房颜色",
+		"阴道",
+		"阴道颜色",
+		"乳房大小",
+		"阴茎大小",
+		"睾丸大小"
 	)
 
 /proc/perform_fleshcraft_transform_choice(mob/living/carbon/human/H, mob/living/carbon/human/chooser, chosen)
@@ -172,169 +172,169 @@
 	var/should_update = FALSE
 
 	switch(chosen)
-		if("reset appearance")
+		if("重置外观")
 			should_update = fleshcraft_reset_appearance(H, chooser)
 
-		if("hairstyle")
+		if("发型")
 			should_update = fleshcraft_change_head_hair(H, chooser)
 
-		if("hair color")
+		if("发色")
 			should_update = fleshcraft_change_head_hair_color(H, chooser)
 
-		if("facial hairstyle")
+		if("胡须造型")
 			should_update = fleshcraft_change_facial_hair(H, chooser)
 
-		if("facial hair color")
+		if("胡须颜色")
 			should_update = fleshcraft_change_facial_hair_color(H, chooser)
 
-		if("eye color")
+		if("眼睛颜色")
 			should_update = fleshcraft_change_eye_color(H, chooser)
 
-		if("skin color")
+		if("肤色")
 			should_update = fleshcraft_change_simple_color_feature(H, chooser, "skin_tone", "选择肤色", "肤色")
 
-		if("mutant color")
+		if("异种体色")
 			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor", "选择异种体色", "异种体色")
 
-		if("mutant color 2")
+		if("第二异种体色")
 			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor2", "选择第二异种体色", "第二异种体色")
 
-		if("mutant color 3")
+		if("第三异种体色")
 			should_update = fleshcraft_change_dna_color_feature(H, chooser, "mcolor3", "选择第三异种体色", "第三异种体色")
 
-		if("natural gradient")
+		if("天然渐变")
 			should_update = fleshcraft_change_hair_gradient(H, chooser, TRUE)
 
-		if("natural gradient color")
+		if("天然渐变颜色")
 			should_update = fleshcraft_change_hair_gradient_color(H, chooser, TRUE)
 
-		if("dye gradient")
+		if("染色渐变")
 			should_update = fleshcraft_change_hair_gradient(H, chooser, FALSE)
 
-		if("dye gradient color")
+		if("染色渐变颜色")
 			should_update = fleshcraft_change_hair_gradient_color(H, chooser, FALSE)
 
-		if("accessory")
+		if("装饰")
 			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/accessory, /datum/bodypart_feature/accessory, /datum/sprite_accessory/accessory, "选择装饰", "装饰造型")
 
-		if("face detail")
+		if("面部细节")
 			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/face_detail, /datum/bodypart_feature/face_detail, /datum/sprite_accessory/face_detail, "选择面部细节", "面部细节")
 
-		if("crest")
+		if("头冠")
 			should_update = fleshcraft_change_head_feature(H, chooser, /datum/customizer_choice/bodypart_feature/crest, /datum/bodypart_feature/crest, /datum/sprite_accessory/crests, "选择头冠", "头冠造型")
 
-		if("descriptors")
+		if("外貌描述")
 			should_update = fleshcraft_change_descriptor(H, chooser)
 
-		if("horns")
+		if("角")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_HORNS, /obj/item/organ/horns, /datum/sprite_accessory/horns, "选择角", "角部定制")
 
-		if("horn color")
+		if("角的颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_HORNS, "选择角的颜色", "角的颜色", 1)
 
-		if("ears")
+		if("耳朵")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_EARS, /obj/item/organ/ears, /datum/sprite_accessory/ears, "选择耳朵", "耳部定制")
 
-		if("ear color one")
+		if("耳朵主色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_EARS, "选择耳朵主色", "耳朵主色", 1, "ears_color")
 
-		if("ear color two")
+		if("耳朵副色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_EARS, "选择耳朵副色", "耳朵副色", 2, "ears_color2")
 
-		if("tail")
+		if("尾巴")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TAIL, /obj/item/organ/tail/anthro, /datum/sprite_accessory/tail, "选择尾巴", "尾部定制")
 
-		if("tail color one")
+		if("尾巴主色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL, "选择尾巴主色", "尾巴主色", 1, "tail_color")
 
-		if("tail color two")
+		if("尾巴副色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL, "选择尾巴副色", "尾巴副色", 2, "tail_color2")
 
-		if("tail feature")
+		if("尾部特征")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TAIL_FEATURE, /obj/item/organ/tail_feature, /datum/sprite_accessory/tail_feature, "选择尾部特征", "尾部特征定制")
 
-		if("tail feature color")
+		if("尾部特征颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TAIL_FEATURE, "选择尾部特征颜色", "尾部特征颜色", 1)
 
-		if("wings")
+		if("翅膀")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_WINGS, /obj/item/organ/wings, /datum/sprite_accessory/wings, "选择翅膀", "翅膀定制")
 
-		if("wing color one")
+		if("翅膀主色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_WINGS, "选择翅膀主色", "翅膀主色", 1)
 
-		if("wing color two")
+		if("翅膀副色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_WINGS, "选择翅膀副色", "翅膀副色", 2)
 
-		if("frills")
+		if("颈褶")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_FRILLS, /obj/item/organ/frills, /datum/sprite_accessory/frills, "选择颈褶", "颈褶定制")
 
-		if("frill color")
+		if("颈褶颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_FRILLS, "选择颈褶颜色", "颈褶颜色", 1)
 
-		if("antennas")
+		if("触角")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_ANTENNAS, /obj/item/organ/antennas, /datum/sprite_accessory/antenna, "选择触角", "触角定制")
 
-		if("antenna color")
+		if("触角颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_ANTENNAS, "选择触角颜色", "触角颜色", 1)
 
-		if("snout")
+		if("口鼻")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_SNOUT, /obj/item/organ/snout, /datum/sprite_accessory/snout, "选择口鼻", "口鼻定制")
 
-		if("snout color")
+		if("口鼻颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_SNOUT, "选择口鼻颜色", "口鼻颜色", 1)
 
-		if("head feature")
+		if("头部特征")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_HEAD_FEATURE, /obj/item/organ/head_feature, /datum/sprite_accessory/head_feature, "选择头部特征", "头部特征定制")
 
-		if("head feature color")
+		if("头部特征颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_HEAD_FEATURE, "选择头部特征颜色", "头部特征颜色", 1)
 
-		if("neck feature")
+		if("颈部特征")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_NECK_FEATURE, /obj/item/organ/neck_feature, /datum/sprite_accessory/neck_feature, "选择颈部特征", "颈部特征定制")
 
-		if("neck feature color")
+		if("颈部特征颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_NECK_FEATURE, "选择颈部特征颜色", "颈部特征颜色", 1)
 
-		if("back feature")
+		if("背部特征")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_BACK_FEATURE, /obj/item/organ/back_feature, /datum/sprite_accessory/back_feature, "选择背部特征", "背部特征定制")
 
-		if("back feature color")
+		if("背部特征颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_BACK_FEATURE, "选择背部特征颜色", "背部特征颜色", 1)
 
-		if("penis")
+		if("阴茎")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_PENIS, /obj/item/organ/penis, /datum/sprite_accessory/penis, "选择阴茎类型", "阴茎定制")
 
-		if("penis color")
+		if("阴茎主色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_PENIS, "选择阴茎主色", "阴茎主色", 1)
 
-		if("penis color 2")
+		if("阴茎副色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_PENIS, "选择阴茎副色", "阴茎副色", 2)
 
-		if("penis size")
+		if("阴茎大小")
 			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_PENIS, "选择阴茎大小", "阴茎大小", "penis_size", list("小" = 1, "中" = 2, "大" = 3))
 
-		if("testicles")
+		if("睾丸")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_TESTICLES, /obj/item/organ/testicles, /datum/sprite_accessory/testicles, "选择睾丸类型", "睾丸定制")
 
-		if("testicles color")
+		if("睾丸颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_TESTICLES, "选择睾丸颜色", "睾丸颜色", 1)
 
-		if("testicle size")
+		if("睾丸大小")
 			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_TESTICLES, "选择睾丸大小", "睾丸大小", "ball_size", list("小" = 1, "中" = 2, "大" = 3))
 
-		if("breasts")
+		if("乳房")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_BREASTS, /obj/item/organ/breasts, /datum/sprite_accessory/breasts, "选择乳房类型", "乳房定制")
 
-		if("breasts color")
+		if("乳房颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_BREASTS, "选择乳房颜色", "乳房颜色", 1)
 
-		if("breast size")
+		if("乳房大小")
 			should_update = fleshcraft_change_size(H, chooser, ORGAN_SLOT_BREASTS, "选择乳房大小", "乳房大小", "breast_size", list("平坦" = 0, "微隆" = 1, "小巧" = 2, "适中" = 3, "丰满" = 4, "丰盈" = 5, "沉甸" = 6, "硕大" = 7, "庞大" = 8, "夸张" = 9))
 
-		if("vagina")
+		if("阴道")
 			should_update = fleshcraft_change_accessory_organ(H, chooser, ORGAN_SLOT_VAGINA, /obj/item/organ/vagina, /datum/sprite_accessory/vagina, "选择阴道类型", "阴道定制")
 
-		if("vagina color")
+		if("阴道颜色")
 			should_update = fleshcraft_change_organ_color(H, chooser, ORGAN_SLOT_VAGINA, "选择阴道颜色", "阴道颜色", 1)
 
 	if(should_update)

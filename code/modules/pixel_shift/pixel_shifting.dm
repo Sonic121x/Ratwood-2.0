@@ -8,8 +8,8 @@
 /datum/keybinding/mob/pixel_shift
 	hotkey_keys = list() // purposefully left blank
 	name = "pixel_shift"
-	full_name = "Pixel Shift"
-	description = "Shift your characters offset."
+	full_name = "微调位置"
+	description = "微调角色在格子内的位置。"
 
 /datum/keybinding/mob/pixel_shift/down(client/user)
 	. = ..()

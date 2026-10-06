@@ -29,7 +29,7 @@
 	var/drugrade_flags
 	var/budget
 	/// Motto displayed at the top of the TGUI interface.
-	var/motto = "PURITY - In the name of pleasure."
+	var/motto = "纯净——以欢愉之名。"
 	/// Running tally of Crown import tariff actually collected via this machine.
 	var/tariff_collected_here = 0
 	/// Running tally of tariff dodged via DRUGRADE_NOTAX, for the Bathmaster's audit.
@@ -85,7 +85,7 @@
 			if(drugrade_flags & DRUGRADE_MONEYB)
 				amt = recent_payments * 0.50
 			recent_payments = 0
-			send_ooc_note("<b>Income from PURITY:</b> [amt]", job = "Bathmaster")
+			send_ooc_note("<b>纯净的收入：</b> [amt]", job = "Bathmaster")
 			secret_budget += amt
 			last_payout = world.time
 
@@ -156,7 +156,7 @@
 		var/tariff = dodging ? 0 : FLOOR(tariff_rate * base, 1)
 		items += list(list(
 			"ref" = "[I]",
-			"name" = held_items[I]["NAME"] || "thing",
+			"name" = held_items[I]["NAME"] || "物品",
 			"category" = "Vice",
 			"qty" = 1,
 			"price_base" = base,
@@ -196,7 +196,7 @@
 			else
 				full_price += tax_amt
 			if(budget < full_price)
-				say("Not enough!")
+				say("不够！")
 				return TRUE
 			budget -= full_price
 			record_round_statistic(STATS_PURITY_VALUE_SPENT, full_price)
@@ -240,7 +240,7 @@
 				if(drugrade_flags & DRUGRADE_MONEYA)
 					return TRUE
 				if(budget < PURITY_CUT_A_COST)
-					say("Ask again when you're serious.")
+					say("等你认真了再来问。")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return TRUE
 				budget -= PURITY_CUT_A_COST
@@ -249,7 +249,7 @@
 				if(!(drugrade_flags & DRUGRADE_MONEYA) || (drugrade_flags & DRUGRADE_MONEYB))
 					return TRUE
 				if(budget < PURITY_CUT_B_COST)
-					say("Ask again when you're serious.")
+					say("等你认真了再来问。")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return TRUE
 				budget -= PURITY_CUT_B_COST
@@ -262,7 +262,7 @@
 			if(H.job != "Bathmaster")
 				return TRUE
 			if(secret_budget < 1)
-				say("There is no mammon to move, Master.")
+				say("没有可转出的玛门，主人。")
 				return TRUE
 			var/mode = "[params["mode"]]"
 			switch(mode)
@@ -271,10 +271,10 @@
 					var/tax_amt = FLOOR(cut * SStreasury.get_tax_rate(TAX_CATEGORY_IMPORT_TARIFF), 1)
 					var/deposit = cut - tax_amt
 					if(deposit < 1)
-						say("The duty would swallow your whole cut, Master. Take it in coin instead.")
+						say("关税会吞掉您全部的分成，主人。还是领取钱币吧。")
 						return TRUE
 					if(!(SStreasury.generate_money_account(deposit, H))) //We returned false on executing the transfer
-						say("I could not put your cut in your account, Master. My apologies.")
+						say("无法将您的分成存入账户，主人。请见谅。")
 						return TRUE
 					secret_budget = 0
 					// Banking the cut launders it through the ledger, so the Crown takes its
@@ -295,9 +295,9 @@
 							record_round_statistic(STATS_REVENUE_IMPORT_TARIFF, tax_amt)
 						tariff_collected_here += tax_amt
 					if(SStreasury.bathhouse_ordinance_active)
-						say("[deposit]m to your account, Master. The Church keeps [tax_amt]m.")
+						say("[deposit]玛门已存入您的账户，主人。教会收取[tax_amt]玛门。")
 					else
-						say("[deposit]m to your account, Master. The Crown keeps [tax_amt]m.")
+						say("[deposit]玛门已存入您的账户，主人。王室收取[tax_amt]玛门。")
 				if("direct")
 					// The cut leaves as untraced coin, so the Crown's duty is dodged entirely.
 					var/cut = floor(secret_budget)
@@ -337,25 +337,25 @@
 	. = ..()
 	START_PROCESSING(SSroguemachine, src)
 	update_icon()
-	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(41,55),"NAME" = "chuckledust")
-	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(6,15),"NAME" = "ozium")
-	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(13,25),"NAME" = "moondust")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "swampweed zig")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/mentha] = list("PRICE" = rand(6,11),"NAME" = "mentha zig")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/nicotine] = list("PRICE" = rand(5,10),"NAME" = "zig")
-	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(40,60), "NAME" = "Shhig brand premium zigs")
-	held_items[/obj/item/alch/transisdust] = list("PRICE" = rand(80,120), "NAME" = "sui dust")
-	held_items[/obj/item/portable_hookah] = list("PRICE" = rand(90,130), "NAME" = "portable hookah")
+	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(41,55),"NAME" = "笑尘")
+	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(6,15),"NAME" = "奥兹姆")
+	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(13,25),"NAME" = "月尘")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "沼泽草卷烟")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/mentha] = list("PRICE" = rand(6,11),"NAME" = "薄荷卷烟")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/nicotine] = list("PRICE" = rand(5,10),"NAME" = "卷烟")
+	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(40,60), "NAME" = "Shhig牌高级卷烟")
+	held_items[/obj/item/alch/transisdust] = list("PRICE" = rand(80,120), "NAME" = "自我之尘")
+	held_items[/obj/item/portable_hookah] = list("PRICE" = rand(90,130), "NAME" = "便携水烟壶")
 	// azure peak addition start - lipstick
-	held_items[/obj/item/azure_lipstick] = list("PRICE" = rand(33,50),"NAME" = "red lipstick")
-	held_items[/obj/item/azure_lipstick/jade] = list("PRICE" = rand(33,50),"NAME" = "jade lipstick")
-	held_items[/obj/item/azure_lipstick/purple] = list("PRICE" = rand(33,50),"NAME" = "purple lipstick")
-	held_items[/obj/item/azure_lipstick/black] = list("PRICE" = rand(33,50),"NAME" = "black lipstick")
+	held_items[/obj/item/azure_lipstick] = list("PRICE" = rand(33,50),"NAME" = "红色唇膏")
+	held_items[/obj/item/azure_lipstick/jade] = list("PRICE" = rand(33,50),"NAME" = "翡翠色唇膏")
+	held_items[/obj/item/azure_lipstick/purple] = list("PRICE" = rand(33,50),"NAME" = "紫色唇膏")
+	held_items[/obj/item/azure_lipstick/black] = list("PRICE" = rand(33,50),"NAME" = "黑色唇膏")
 	//azure peak addition - zigbox
-	held_items[/obj/item/quiver/zigs] = list("PRICE" = rand(5,10), "NAME" = "zigbox, empty")
-	held_items[/obj/item/reagent_containers/glass/bottle/alchemical/fermented_crab] = list("PRICE" = rand(50,70), "NAME" = "fermented crab")
+	held_items[/obj/item/quiver/zigs] = list("PRICE" = rand(5,10), "NAME" = "空烟盒")
+	held_items[/obj/item/reagent_containers/glass/bottle/alchemical/fermented_crab] = list("PRICE" = rand(50,70), "NAME" = "发酵蟹液")
 	// azure peak addition end
-	held_items[/obj/item/reagent_containers/glass/bottle/rogue/emberwine] = list("PRICE" = rand(100,140),"NAME" = "unlabeled emberwine")
+	held_items[/obj/item/reagent_containers/glass/bottle/rogue/emberwine] = list("PRICE" = rand(100,140),"NAME" = "无标签的余烬酒")
 
 #undef DRUGRADE_MONEYA
 #undef DRUGRADE_MONEYB

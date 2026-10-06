@@ -1,8 +1,8 @@
 /datum/decree/indenture_of_war
 	id = DECREE_INDENTURE_OF_WAR
-	name = "The Indenture of War"
+	name = "军役契约"
 	category = DECREE_CATEGORY_ANCIENT
-	mechanical_text = "Sets minimum daily wages for soldiery: Marshal 60m, Knight/Sergeant 40m, Man-at-Arms/Warden 20m, Squire 10m."
+	mechanical_text = "规定军人的最低日薪：执法官60玛门，骑士／军士长40玛门，府卫／守林人20玛门，侍从10玛门。"
 	/// Per-rank mandated daily wage. Steward cannot set below these amounts while the Indenture
 	/// stands, and any existing below-floor wage is bumped up at activation. Military ranks only -
 	/// courtiers, healers, scholars, and civilian staff are not covered by this charter.
@@ -14,17 +14,17 @@
 		"Warden" = 20,
 		"Squire" = 10,
 	)
-	flavor_text = {"This Indenture of War, made betwene the Crown of the Vale on the one part, and the armed men of the Realm on the other part, witnesseth that:
+	flavor_text = {"兹由谷地王室与领地武装人员订立本军役契约，约定如下：
 
-The Crown shall paye unto its soldiery their just wages, by the daye, and without lette or delay, according to the ranks herein set forth. The Marshal of the Realm at threescore marks, the Knights at twoscore, a Sergeant at twoscore likewise, a Man at Armes at a score, a Warden at a score, and a Squire at ten. Beneath these sums no wage shall fall whilst this Indenture stands.
+王室应依本契约所列军阶，按日向军人支付应得薪饷，不得阻挠或拖延。领地执法官每日六十玛门，骑士四十玛门，军士长亦为四十玛门，府卫二十玛门，守林人二十玛门，侍从十玛门。本契约有效期间，薪饷不得低于上述数额。
 
-In return, the armed men of the Realm shall do their trewe service to the Duke, and shall obey the Duke's lieutenants and officers in all things lawful and reasonable. And if the saide armed men shall break or contravene this Indenture, they shall be at the Duke's wille and mercye. And if the Crown shall break this Indenture - withholding the wages herein pledged, or setting them lower than here set forth - the soldier is released from his oath, and the Crown shall answer for the faith it hath broken.
+作为回报，领地武装人员应忠实为公爵效力，并服从公爵副官及军官一切合法合理的命令。若武装人员违反本契约，应由公爵裁处。若王室违反本契约，扣留所承诺的薪饷，或将薪饷降至本契约所定数额以下，则军人的效忠誓言即告解除，王室须为背弃承诺承担责任。
 
-In witness whereof, the Crown of the Vale hath set his seale to this Indenture, and the said armed men of the Realm have set their seales in like manner.
+为昭信守，谷地王室于本契约加盖印玺，领地武装人员亦以各自印章为证。
 
-Yeven under the seal of the Crown."}
-	revoke_text = "The %RULER% has broken the Indenture of War. The soldier's oath is dissolved, and the Crown's armed men stand at liberty of service - let the garrison remember whose seal was cut first."
-	restore_text = "The %RULER% has renewed the Indenture of War. The soldier's wage is pledged, and the soldier's oath stands - each binds the other."
+本契约经王室印玺颁行。"}
+	revoke_text = "%RULER%已毁弃军役契约。军人的效忠誓言即告解除，王室武装人员可自由决定是否效力——愿驻军铭记，究竟是谁先撕毁了约定。"
+	restore_text = "%RULER%已重订军役契约。军饷得到承诺，效忠誓言亦告成立——双方相互约束。"
 
 /datum/decree/indenture_of_war/roll_initial_year()
 	return CALENDAR_EPOCH_YEAR - rand(40, 120)
