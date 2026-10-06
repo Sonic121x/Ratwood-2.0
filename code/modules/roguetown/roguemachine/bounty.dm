@@ -153,7 +153,7 @@
 
 	// Has user a bank account?
 	if(!SStreasury.has_account(user))
-		say("You have no bank account.")
+		say("你没有银行账户。")
 		return
 
 	// Has user enough money?
@@ -475,7 +475,7 @@
 			A.emote("whimper")
 			return
 	if(!ismob(M))
-		say("若没有对象被固定在 Castifico 上，无法开始颅骨结构分析。")
+		say("若没有对象被固定在惩戒机上，无法开始颅骨结构分析。")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(!ishuman(M))

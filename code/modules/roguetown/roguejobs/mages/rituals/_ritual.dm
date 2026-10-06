@@ -195,9 +195,9 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 /datum/runeritual/proc/parse_required_item(atom/item_path, number_of_things)
 	// If we need a human, there is a high likelihood we actually need a (dead) body
 	if(ispath(item_path, /mob/living/carbon/human))
-		return "bod[number_of_things > 1 ? "ies" : "y"]"
+		return "尸体[number_of_things > 1 ? "（多具）" : ""]"
 	if(ispath(item_path, /mob/living))
-		return "carcass[number_of_things > 1 ? "es" : ""] of any kind"
+		return "任意种类的尸体[number_of_things > 1 ? "（多具）" : ""]"
 	return "[initial(item_path.name)]\s"
 
 /**

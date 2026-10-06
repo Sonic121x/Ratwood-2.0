@@ -11,11 +11,11 @@
 /proc/zad_tier_label(tier)
 	switch(tier)
 		if(ZAD_CAPACITY_TIER_1)
-			return "1 zad (small / tiny)"
+			return "1只扎德鸟（小型／微型物品）"
 		if(ZAD_CAPACITY_TIER_2)
-			return "2 zads (normal-sized, pouch)"
+			return "2只扎德鸟（普通大小物品、小袋）"
 		if(ZAD_CAPACITY_TIER_3)
-			return "3 zads (bulky, large container)"
+			return "3只扎德鸟（笨重物品、大容器）"
 	return ""
 
 /obj/item/roguemachine/zadcote/proc/scan_payload_items(mob/user)
@@ -37,44 +37,44 @@
 /obj/item/roguemachine/zadcote/proc/dispatch(datum/zadlink/link, zad_count, message_text, list/payload_refs, bomb_count, mob/operator, bomb_caw = "")
 	if(!link || link.severed)
 		if(operator)
-			to_chat(operator, span_warning("That zadlink is severed."))
+			to_chat(operator, span_warning("那条扎德鸟连结已被切断。"))
 		return FALSE
 	var/obj/item/zadcage/cage = link.resolve_cage()
 	if(!cage)
 		if(operator)
-			to_chat(operator, span_warning("That zadlink has no bonded zadcage."))
+			to_chat(operator, span_warning("那条扎德鸟连结没有相连的鸟笼。"))
 		return FALSE
 	if(link.resolve_flight())
 		if(operator)
-			to_chat(operator, span_warning("A flight is already on that slot."))
+			to_chat(operator, span_warning("那个栏位已有鸟群在飞行中。"))
 		return FALSE
 	if(cage.current_occupancy)
 		if(operator)
-			to_chat(operator, span_warning("That zadcage is already occupied. Wait for it to return."))
+			to_chat(operator, span_warning("那个扎德鸟笼已被占用。请等待鸟群返回。"))
 		return FALSE
 	if(length(cage.held_payload))
 		if(operator)
-			to_chat(operator, span_warning("Unclaimed parcels still sit in that zadcage. Wait for the holder to retrieve them."))
+			to_chat(operator, span_warning("那个扎德鸟笼里还有未领取的包裹。请等待持有人取走。"))
 		return FALSE
 	zad_count = clamp(zad_count, ZAD_CAPACITY_TIER_1, ZAD_CAPACITY_TIER_3)
 	bomb_count = clamp(bomb_count, 0, ZAD_CAPACITY_TIER_3)
 	if(bomb_count > 0 && !can_send_bombs())
 		if(operator)
-			to_chat(operator, span_warning("The zads refuse - you may only send a bombs flight every 5 minutes, you maniac."))
+			to_chat(operator, span_warning("扎德鸟拒绝出发——你每5分钟才能派遣一次携带炸弹的鸟群，你这个疯子。"))
 		return FALSE
 	if(bomb_count > bomb_stock)
 		if(operator)
-			to_chat(operator, span_warning("The zadcote has only [bomb_stock] bottlebombs stored."))
+			to_chat(operator, span_warning("扎德鸟舍里只存有[bomb_stock]枚瓶装炸弹。"))
 		return FALSE
 	if(bomb_count > 0 && bomb_count != zad_count)
 		zad_count = bomb_count
 	if(reserve < zad_count)
 		if(operator)
-			to_chat(operator, span_warning("Only [reserve] zads remain in the cote."))
+			to_chat(operator, span_warning("鸟舍里只剩[reserve]只扎德鸟了。"))
 		return FALSE
 	if(flight_count() >= ZADCOTE_FLIGHT_CAP)
 		if(operator)
-			to_chat(operator, span_warning("Too many flights in the air."))
+			to_chat(operator, span_warning("正在飞行的鸟群太多。"))
 		return FALSE
 	var/list/payload_items = list()
 	if(bomb_count == 0 && length(payload_refs) && operator)
@@ -88,7 +88,7 @@
 	for(var/obj/item/I in payload_items)
 		if(I.w_class > max_weight)
 			if(operator)
-				to_chat(operator, span_warning("[I] is too heavy for [zad_count] zad\s. Use a larger tier or send a smaller parcel."))
+				to_chat(operator, span_warning("[I]对[zad_count]只扎德鸟来说太重了。请选择更高的运载档位，或寄送更小的包裹。"))
 			return FALSE
 	consume_reserve(zad_count)
 	if(bomb_count > 0)
@@ -103,7 +103,7 @@
 	link.pending_flight = WEAKREF(flight)
 	playsound(loc, 'sound/vo/mobs/bird/birdfly.ogg', 65, TRUE, 2)
 	playsound(loc, pick('sound/vo/mobs/bird/CROW_01.ogg','sound/vo/mobs/bird/CROW_02.ogg','sound/vo/mobs/bird/CROW_03.ogg'), 55, TRUE, 2)
-	visible_message(span_notice("[zad_count] zad\s leap from [src] and beat for the sky."))
+	visible_message(span_notice("[zad_count]只扎德鸟从[src]跃出，振翅飞向天空。"))
 	play_zad_ascend(src, zad_count, payload_items, bomb_count)
 	var/list/sent_names = list()
 	for(var/obj/item/I in payload_items)
@@ -148,7 +148,7 @@
 	if(link)
 		link.pending_flight = null
 	pending_outbound -= flight
-	visible_message(span_warning("The zads return to [src] - there was nowhere to land."))
+	visible_message(span_warning("扎德鸟返回[src]——它们找不到落脚的地方。"))
 
 /obj/item/roguemachine/zadcote/proc/resolve_arrival(datum/zad_flight/flight)
 	var/datum/zadlink/link = flight.resolve_target_link()
@@ -164,7 +164,7 @@
 	addtimer(CALLBACK(src, PROC_REF(clear_link_pending), link), ZAD_DESCEND_DURATION)
 	var/mob/holder = cage.holder_mob()
 	if(!holder)
-		visible_message(span_warning("[src] chimes. The zads report Zadcage #[link.slot_index] is not on a person."))
+		visible_message(span_warning("[src]响起铃声。扎德鸟报告第[link.slot_index]号鸟笼没有被人携带。"))
 
 /obj/item/roguemachine/zadcote/proc/clear_link_pending(datum/zadlink/link)
 	if(link)
@@ -195,7 +195,7 @@
 	if(!flight)
 		return
 	var/datum/zadlink/link = flight.resolve_target_link()
-	var/sender_label = link ? link.get_label() : "an unknown slot"
+	var/sender_label = link ? link.get_label() : "未知栏位"
 	var/slot_index = link ? link.slot_index : 0
 	var/list/item_names = list()
 	for(var/obj/item/I in flight.payload_items)
@@ -210,26 +210,26 @@
 		if(lost > 0)
 			var/loss_text
 			if(flight.zads_used == 1)
-				loss_text = "the zad perished of exhaustion."
+				loss_text = "那只扎德鸟因力竭而死。"
 			else if(lost == flight.zads_used)
-				loss_text = "all [lost] zads perished of exhaustion."
+				loss_text = "全部[lost]只扎德鸟都因力竭而死。"
 			else
-				loss_text = "[lost] of [flight.zads_used] zads dropped from the sky, exhausted - [flight.zads_used - lost] returned home."
-			visible_message(span_warning("[src] reports [loss_text]"))
+				loss_text = "[flight.zads_used]只扎德鸟中有[lost]只因力竭从空中坠落——[flight.zads_used - lost]只回到了鸟舍。"
+			visible_message(span_warning("[src]报告：[loss_text]"))
 	log_mail(slot_index, sender_label, flight.message_text, item_names, lost, flight.zads_used)
 	if(length(flight.message_text) || length(item_names))
 		var/list/parts = list()
 		var/display_name = link ? link.display_name : ""
-		var/slot_header = length(display_name) ? "Slot [slot_index] ([display_name])" : "Slot [slot_index]"
+		var/slot_header = length(display_name) ? "第[slot_index]号栏位 ([display_name])" : "第[slot_index]号栏位"
 		parts += slot_header
 		if(length(flight.message_text))
-			parts += "says: \"[flight.message_text]\""
+			parts += "传话：\"[flight.message_text]\""
 		if(length(item_names))
-			parts += "brings: [english_list(item_names)]"
-		visible_message(span_notice("A zad returns to [src] - [parts.Join(" ")]"))
+			parts += "带来：[english_list(item_names)]"
+		visible_message(span_notice("一只扎德鸟返回[src]——[parts.Join(" ")]"))
 		playsound(src, 'sound/misc/notice.ogg', 60, FALSE, -1)
 	else if(lost == 0)
-		visible_message(span_notice("A zad returns to [src] - empty-clawed."))
+		visible_message(span_notice("一只扎德鸟返回[src]——双爪空空。"))
 
 /obj/item/roguemachine/zadcote/proc/log_mail(slot_index, sender_label, message_text, list/item_names, lost = 0, zads_used = 0)
 	mail_log.Insert(1, list(list(

@@ -359,12 +359,12 @@
 	. = ..()
 
 /datum/reagent/drug/mentha // distinct from SS13 menthol, for the mentha zigs
-	name = "Mentha"
-	description = "Extract from the mentha herb. Produces a cooling sensation."
+	name = "薄荷"
+	description = "薄荷的提取物，会带来清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#3eb489"
 	addiction_threshold = 999
-	taste_description = "mentha"
+	taste_description = "薄荷"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -386,12 +386,12 @@
 	return TRUE
 
 /datum/reagent/drug/blackberry
-	name = "Blackberry"
-	description = "Extract from the blackberry. Produces a sweet-tart sensation."
+	name = "黑莓"
+	description = "黑莓的提取物，会带来酸甜的感觉。"
 	reagent_state = LIQUID
 	color = "#4D0135"
 	addiction_threshold = 999
-	taste_description = "blackberry"
+	taste_description = "黑莓"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -413,12 +413,12 @@
 	return TRUE
 	
 /datum/reagent/drug/apple 
-	name = "Apple"
-	description = "Extract from the apple. Produces a sourness and coolness sensation."
+	name = "苹果"
+	description = "苹果的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#AF4D43"
 	addiction_threshold = 999
-	taste_description = "apple"
+	taste_description = "苹果"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -437,12 +437,12 @@
 	return TRUE
 
 /datum/reagent/drug/chocolate 
-	name = "Chocolate"
-	description = "Extract from the chocolate. Produces a sourness and coolness sensation."
+	name = "巧克力"
+	description = "巧克力的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#7B3F00"
 	addiction_threshold = 999
-	taste_description = "chocolate"
+	taste_description = "巧克力"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -463,12 +463,12 @@
 	return TRUE
 
 /datum/reagent/drug/strawberry 
-	name = "Strawberry"
-	description = "Extract from the strawberry. Produces a sourness and coolness sensation."
+	name = "草莓"
+	description = "草莓的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#FC5A8D"
 	addiction_threshold = 999
-	taste_description = "strawberry"
+	taste_description = "草莓"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -489,12 +489,12 @@
 	return TRUE
 
 /datum/reagent/drug/carrot  
-	name = "Carrot"
-	description = "Extract from the carrot. Produces a sourness and coolness sensation."
+	name = "胡萝卜"
+	description = "胡萝卜的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#ED9121"
 	addiction_threshold = 999
-	taste_description = "carrot"
+	taste_description = "胡萝卜"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -515,12 +515,12 @@
 	return TRUE
 
 /datum/reagent/drug/lime
-	name = "Lime"
-	description = "Extract from the lime. Produces a sourness and coolness sensation."
+	name = "青柠"
+	description = "青柠的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#BFFF00"
 	addiction_threshold = 999
-	taste_description = "lime"
+	taste_description = "青柠"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -542,12 +542,12 @@
 	return TRUE
 
 /datum/reagent/drug/salvia
-	name = "Salvia"
-	description = "Extract from the salvia. Produces a spicy, earthy and bitter sensation."
+	name = "鼠尾草"
+	description = "鼠尾草的提取物，会带来辛辣、土腥和苦涩的感觉。"
 	reagent_state = LIQUID
 	color = "#FF33FF"
 	addiction_threshold = 999
-	taste_description = "salvia"
+	taste_description = "鼠尾草"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -568,12 +568,12 @@
 	return TRUE
 
 /datum/reagent/drug/valeriana
-	name = "Valeriana"
-	description = "Extract from the valeriana. Produces a bitter-spicy and tart sensation."
+	name = "缬草"
+	description = "缬草的提取物，会带来苦辣和酸涩的感觉。"
 	reagent_state = LIQUID
 	color = "#4a3c5f"
 	addiction_threshold = 999
-	taste_description = "valeriana"
+	taste_description = "缬草"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -584,7 +584,7 @@
 	if(prob(20))
 		M.drowsyness += 3
 		M.emote("yawn")
-		M.visible_message("<span class='notice'>[M]'s looks sleepy and relaxed</span>")
+		M.visible_message("<span class='notice'>[M]看起来困倦而放松。</span>")
 	..()
 
 
@@ -595,12 +595,12 @@
 	return TRUE
 
 /datum/reagent/drug/calendula
-	name = "Calendula"
-	description = "Extract from the calendula. Produces a bitter-spicy and tart sensation."
+	name = "金盏花"
+	description = "金盏花的提取物，会带来苦辣和酸涩的感觉。"
 	reagent_state = LIQUID
 	color = "#a57006"
 	addiction_threshold = 999
-	taste_description = "calendula"
+	taste_description = "金盏花"
 	trippy = FALSE
 	overdose_threshold = 30 // lower, cuz of it's healing properties
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
@@ -630,12 +630,12 @@
 	. = 1
 
 /datum/reagent/drug/petun
-	name = "Petun"
-	description = "A highly concentrated form of nicotine. Produces a causes sore throat and mild relaxation."
+	name = "浓缩烟草精"
+	description = "一种高浓度的尼古丁制剂，会引起喉咙疼痛和轻微的放松感。"
 	reagent_state = LIQUID
 	color = "#7ed9ad"
 	addiction_threshold = 999
-	taste_description = "concentrated bitterness"
+	taste_description = "浓烈的苦味"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -649,7 +649,7 @@
 	if(prob(10))
 		M.emote(pick("drool","sigh"))
 	if(prob(5))
-		M.visible_message("<span class='notice'>[M]'s pleasantly relaxing.</span>")
+		M.visible_message("<span class='notice'>[M]惬意地放松下来。</span>")
 	..()
 
 /datum/reagent/drug/petun/on_mob_life(mob/living/carbon/M)
@@ -665,12 +665,12 @@
 	return TRUE
 
 /datum/reagent/drug/jacksberries
-	name = "jacksberries"
-	description = "Extract from the jacksberries. Produces a causes sore throat and mild relaxation."
+	name = "杰克莓"
+	description = "杰克莓的提取物，会引起喉咙疼痛和轻微的放松感。"
 	reagent_state = LIQUID
 	color = "#57628C"
 	addiction_threshold = 999
-	taste_description = "jacksberries"
+	taste_description = "杰克莓"
 	trippy = FALSE
 	overdose_threshold=999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -694,12 +694,12 @@
 	return TRUE
 
 /datum/reagent/drug/abyss
-	name = "Abyss"
-	description = "Extract from the jacksberries. Produces a causes sore throat and mild relaxation."
+	name = "深渊"
+	description = "杰克莓的提取物，会引起喉咙疼痛和轻微的放松感。"
 	reagent_state = LIQUID
 	color = "#5С0120"
 	addiction_threshold = 999
-	taste_description = "jacksberries"
+	taste_description = "杰克莓"
 	trippy = FALSE
 	overdose_threshold=999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -713,7 +713,7 @@
 	if(prob(10))
 		M.emote(pick("drool","gasp"))
 	if(prob(3))
-		M.visible_message("<span class='notice'>[M]'s feels slightly uneasy, <span class='notice'>[M]'s gaze appears puzzled and distant</span>")
+		M.visible_message("<span class='notice'>[M]感到有些不安，<span class='notice'>[M]的目光显得困惑而恍惚。</span>")
 	..()
 
 /datum/reagent/drug/abyss/on_mob_life(mob/living/carbon/M)

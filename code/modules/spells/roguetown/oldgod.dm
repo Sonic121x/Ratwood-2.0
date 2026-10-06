@@ -87,8 +87,8 @@
 		return FALSE
 
 	// Notify the user and target
-	to_chat(user, span_notice("片刻之间，我以彼此相融的 Lux 净化了对方。"))
-	to_chat(H, span_info("我感到一股奇异的悸动漫过自己的 Lux，将伤痛一并带走。"))
+	to_chat(user, span_notice("片刻之间，我以彼此相融的灵辉净化了对方。"))
+	to_chat(H, span_info("我感到一股奇异的悸动漫过自己的灵辉，将伤痛一并带走。"))
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/psydonrespite
@@ -342,13 +342,13 @@
 		if(!H.check_revive(user))
 			revert_cast()
 			return FALSE
-		if(alert(user, "要伸手将其拉回来吗？", "其中已无 Lux", "否", "是") != "是")
+		if(alert(user, "要伸手将其拉回来吗？", "其中已无灵辉", "否", "是") != "是")
 			revert_cast()
 			return FALSE
 		to_chat(user, span_warning("我试图以“赦免”将 [H] 拉回人世！"))
 		// Dramatic effect
 		user.visible_message(span_danger("[user] 一把抓住了 [H] 的手腕，试图将其赦免回生！"))
-		if(alert(H, "对方想要赦免你，将你拉回人世。你愿意吗？", "ABSOLUTION", "我愿接受", "我拒绝") != "我愿接受")
+		if(alert(H, "对方想要赦免你，将你拉回人世。你愿意吗？", "赦免", "我愿接受", "我拒绝") != "我愿接受")
 			H.visible_message(span_notice("什么也没有发生。"))
 			return FALSE
 		// Create visual effects
@@ -460,7 +460,7 @@
 	var/clone_transfer = H.getCloneLoss()
 
 	if (oxy_transfer >= 150)
-		if (alert(user, "对方面如死灰、呼吸停滞。施展“分担”可能会立刻害死你，受印者。还要继续吗？", "自保", "YES", "NO") != "YES")
+		if (alert(user, "对方面如死灰、呼吸停滞。施展“分担”可能会立刻害死你，受印者。还要继续吗？", "自保", "是", "否") != "是")
 			revert_cast()
 			return
 	

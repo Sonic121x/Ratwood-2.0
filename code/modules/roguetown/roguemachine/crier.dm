@@ -91,9 +91,9 @@
 			contents += "</center>"
 
 		if(TAB_SCOMLOG)
-			contents += "<center><b>BROADCAST LOG</b></center><hr>"
+			contents += "<center><b>广播记录</b></center><hr>"
 			if(!length(GLOB.broadcast_list))
-				contents += "<i>No broadcasts logged yet.</i><br>"
+				contents += "<i>尚无广播记录。</i><br>"
 			else
 				// Show most recent first
 				for(var/i = length(GLOB.broadcast_list), i > 0, i--)
@@ -102,22 +102,22 @@
 					var/tag = entry["tag"]
 					var/time = entry["timestamp"]
 
-					contents += "[tag ? " ( [tag] )" : ""] broadcasted at [time]:<br>"
+					contents += "[tag ? " ( [tag] )" : ""]于[time]广播：<br>"
 					contents += "[msg]<br><hr>"
 
-			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[Back\]</a>"
+			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[返回\]</a>"
 
 		if(TAB_MANAGESCOMS)
-			contents += "<center><b>Manage Broadcasters</b></center><hr>"
+			contents += "<center><b>管理广播器</b></center><hr>"
 
 			if(!length(SSroguemachine.broadcaster_machines))
-				contents += "<i>No broadcasters found.</i><br>"
+				contents += "<i>未找到广播器。</i><br>"
 			else
 				for(var/obj/structure/broadcast_horn/paid/H in SSroguemachine.broadcaster_machines)
-					var/locked_text = H.is_locked ? "Locked" : "Unlocked"
-					contents += "Streetpipe [H.broadcaster_tag ? " ( [H.broadcaster_tag] )" : ""] "
-					contents += "<span style='float:right;'>[locked_text] <a href='?src=\ref[src];togglehorn=\ref[H]'>\[Toggle\]</a></span><br>"
-			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[Back\]</a>"
+					var/locked_text = H.is_locked ? "已锁定" : "未锁定"
+					contents += "街巷传声筒 [H.broadcaster_tag ? " ( [H.broadcaster_tag] )" : ""] "
+					contents += "<span style='float:right;'>[locked_text] <a href='?src=\ref[src];togglehorn=\ref[H]'>\[切换\]</a></span><br>"
+			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[返回\]</a>"
 
 	if(!canread)
 		contents = stars(contents)

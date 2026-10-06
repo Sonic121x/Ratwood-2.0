@@ -8,7 +8,7 @@
 
 /obj/effect/proc_holder/spell/self/telljoke/cast(list/targets,mob/user = usr)
 	. = ..()
-	var/joker = input(user, "说点好笑的吧！", "Comedia")
+	var/joker = input(user, "说点好笑的吧！", "喜剧")
 	if(!joker)
 		return FALSE
 	user.say(joker, forced = "spell")
@@ -43,7 +43,7 @@
 
 /obj/effect/proc_holder/spell/self/telltragedy/cast(list/targets,mob/user = usr)
 	. = ..()
-	var/joker = input(user, "说点悲伤的吧！", "Tragedia")
+	var/joker = input(user, "说点悲伤的吧！", "悲剧")
 	if(!joker)
 		return FALSE
 	user.say(joker, forced = "spell")

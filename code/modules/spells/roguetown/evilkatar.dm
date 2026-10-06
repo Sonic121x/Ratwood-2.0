@@ -15,7 +15,7 @@
 	hand_path = /obj/item/melee/touch_attack/rogueweapon/inhumenblade
 
 /obj/item/melee/touch_attack/rogueweapon/inhumenblade
-	name = "\improper arcyne push dagger"
+	name = "\improper 奥术拳刃"
 	desc = "这把刀刃微微搏动，半透明而泛着虹彩，幽暗能量已准备在战斗中助我一臂之力……"
 	catchphrase = null
 	icon = 'icons/mob/actions/roguespells.dmi'
