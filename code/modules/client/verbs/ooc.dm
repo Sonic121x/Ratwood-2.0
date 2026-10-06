@@ -303,7 +303,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		prefs.save_preferences()
 
 /client/verb/toggle_ooc_anonymize()
-	set name = "Toggle OOC Anonymize"
+	set name = "切换OOC匿名"
 	set category = "OOC"
 	set desc = "在大厅 OOC 中使用随机匿名昵称，或显示真实账号标识。"
 	if(!mob)
@@ -418,7 +418,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		to_chat(src, span_notice("尚未设置每日公告。"))
 
 /client/proc/self_notes()
-	set name = "View Admin Remarks"
+	set name = "查看管理员备注"
 	set category = "OOC"
 	set desc = ""
 	set hidden = 1
@@ -433,7 +433,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	browse_messages(null, usr.ckey, null, TRUE)
 
 /client/proc/self_playtime()
-	set name = "View tracked playtime"
+	set name = "查看游玩时长"
 	set category = "OOC"
 	set desc = ""
 
@@ -442,7 +442,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		return
 
 	var/list/body = list()
-	body += "<html><head><title>Playtime for [key]</title></head><BODY><BR>游玩时长："
+	body += "<html><head><title>[key]的游玩时长</title></head><BODY><BR>游玩时长："
 	body += get_exp_report()
 	body += "</BODY></HTML>"
 	usr << browse(body.Join(), "window=playerplaytime[ckey];size=550x615")
@@ -488,7 +488,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	ignore_key(selection, displayed_choicename)
 
 /client/proc/show_previous_roundend_report()
-	set name = "Your Last Round"
+	set name = "你的上一回合"
 	set category = "OOC"
 	set desc = ""
 
@@ -543,7 +543,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		winset(src, "mainwindow.split", "splitter=[pct]")
 
 /client/verb/combat_music() // if you touch this, touch the option in game preferences too
-	set name = "Combat Mode Music"
+	set name = "战斗模式音乐"
 	set category = "Options"
 	set desc = ""
 	if(!isliving(mob))
@@ -552,7 +552,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	var/mob/living/L = mob
 	var/datum/combat_music/combat_music = pick_combat_music_with_listen(
 		"选择临时使用的战斗音乐。\n可在游戏偏好中永久设置。",
-		"Combat Music",
+		"战斗音乐",
 		L.cmode_music_override_name,
 	)
 	if(combat_music)
@@ -607,7 +607,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	combat_music_preview_active = FALSE
 	combat_music_preview_track_key = null
 
-/client/proc/pick_combat_music_with_listen(prompt_text, window_title = "Combat Music", default_track_name = null)
+/client/proc/pick_combat_music_with_listen(prompt_text, window_title = "战斗音乐", default_track_name = null)
 	var/track_select = tgui_input_list(src, prompt_text, window_title, GLOB.cmode_tracks_by_name, default_track_name, 0, FALSE, GLOB.tgui_always_state, TRUE)
 	if(!track_select)
 		return null
@@ -615,7 +615,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	return GLOB.cmode_tracks_by_name[track_select]
 
 /client/verb/runm()
-	set name = "Run Mode"
+	set name = "奔跑模式"
 	set desc = "切换持续奔跑，或在转向时停止奔跑"
 	set category = "Options"
 	prefs.runmode = !prefs.runmode
@@ -651,7 +651,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	usr << browse(policytext.Join(""),"window=policy")
 
 /client/verb/toggle_ghost_protection()
-	set name = "Toggle Ghost Protection"
+	set name = "切换幽灵保护"
 	set category = "OOC"
 	set desc = "允许或禁止幽灵看见你或围绕你观察。"
 	if(!mob)
@@ -666,7 +666,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 // Need to add hide emotes, etc
 
 /client/verb/map_vote_tally_count()
-	set name = "Show Map Vote Tallies"
+	set name = "查看地图投票票数"
 	set desc = "查看自己积攒的地图投票票数。"
 	set category = "OOC"
 	to_chat(src, SSmap_vote.get_personal_tally_text(ckey))

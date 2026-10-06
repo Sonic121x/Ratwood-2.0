@@ -187,7 +187,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight)
 
 /datum/supply_pack/rogue/armor_steel/helmet_armet
-	name = "头盔，阿梅特"
+	name = "头盔，阿米特盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/armet)
 

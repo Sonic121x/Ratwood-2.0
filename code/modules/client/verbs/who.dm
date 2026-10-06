@@ -1,6 +1,6 @@
 
 /client/verb/who()
-	set name = "Whom"
+	set name = "在线玩家"
 	set category = "Options"
 
 	var/msg = ""
@@ -91,7 +91,7 @@
 //#else
 //	for(var/line in sortList(Lines))
 //		msg += "[line]\n"
-	msg += "<b>Players at the table:</b> [length(Lines)]"
+	msg += "<b>在席玩家:</b> [length(Lines)]"
 	if(holder)
 		msg += "<br><b>Whitelisted players:</b> [wled]"
 	to_chat(src, msg)
@@ -99,9 +99,9 @@
 /client/verb/adminwho()
 	set category = "-Admin-"
 	set name = "Adminwho"
-	set desc = "Lists all admins currently online."
+	set desc = "列出当前在线的所有管理员。"
 
-	var/msg = "<b>Current Admins:</b>\n"
+	var/msg = "<b>当前在线管理员:</b>\n"
 	if(holder)
 		for(var/client/C in GLOB.admins)
 			msg += "\t[C] is a [C.holder.rank]"
@@ -124,7 +124,7 @@
 			if(C.is_afk())
 				continue //Don't show afk admins to adminwho
 			if(!C.holder.fakekey)
-				msg += "\t[C] is a [C.holder.rank]\n"
-		msg += span_info("Adminhelps are also sent to IRC. If no admins are available in game adminhelp anyways and an admin on IRC will see it and respond.")
+				msg += "\t[C]的权限组为[C.holder.rank]\n"
+		msg += span_info("管理员求助也会发送至IRC。即使游戏中没有管理员在线，你仍可提交求助，IRC上的管理员可以看到并回复。")
 	to_chat(src, msg)
 

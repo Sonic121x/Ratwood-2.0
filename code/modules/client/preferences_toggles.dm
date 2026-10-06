@@ -22,7 +22,7 @@
 #endif
 
 /client/verb/setup_character()
-	set name = "Character Preferences"
+	set name = "角色偏好"
 	set category = "Options"
 	set desc = ""
 	if(prefs)
@@ -30,7 +30,7 @@
 		usr.client.prefs.ShowChoices(usr, 4)
 
 /client/verb/toggle_options_menu()
-	set name = "Toggles"
+	set name = "选项开关"
 	set category = "Options"
 	set desc = ""
 
@@ -43,7 +43,7 @@
 	toggles_menu.ui_interact(mob)
 
 /client/verb/keybindings_menu()
-	set name = "Keybindings"
+	set name = "按键绑定"
 	set category = "Options"
 	set desc = ""
 
@@ -68,7 +68,7 @@
 /datum/toggle_options_menu/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ToggleOptionsMenu", "Toggles")
+		ui = new(user, src, "ToggleOptionsMenu", "选项开关")
 		ui.set_state(GLOB.always_state)
 		ui.open()
 
@@ -511,12 +511,12 @@
 	else
 		// Disabling requires the humiliation prayer
 		to_chat(src, span_notice("要解除永久束缚，你必须向伊欧拉诵念愚者悔罪祷文。"))
-		var/sacred_prayer = "Dear Eora, I embraced this binding in foolish haste because I'm a dullard and I'm sorry, so so so sorry for being such a stupid stupid stupid person and I'm begging you please please please free my loins."
+		var/sacred_prayer = "亲爱的伊欧拉，我是个蠢人，才会愚昧而仓促地接受这束缚。我很抱歉，非常非常非常抱歉，竟然如此愚蠢愚蠢愚蠢。我恳求你，求求你求求你求求你，解放我的腰身。"
 		var/encoded_sacred_prayer = html_encode(sacred_prayer)
 		var/prayer_prompt = "逐字诵念下列愚者悔罪祷文：\n\n\"[sacred_prayer]\"\n\n（必须亲手输入——神律禁止复制）"
 		// multiline=TRUE so the wrapping textarea is readable; bigmodal=TRUE for a large window that shows the full prompt.
 		// disable_paste=TRUE enforces hand-typing; max_length locks out anything longer than the prayer itself.
-		var/prayer_attempt = tgui_input_text(src, prayer_prompt, "Prayer of Foolish Repentance", default = "", max_length = length(encoded_sacred_prayer), multiline = TRUE, encode = TRUE, ui_state = GLOB.tgui_always_state, bigmodal = TRUE, disable_paste = TRUE)
+		var/prayer_attempt = tgui_input_text(src, prayer_prompt, "愚者悔罪祷文", default = "", max_length = length(encoded_sacred_prayer), multiline = TRUE, encode = TRUE, ui_state = GLOB.tgui_always_state, bigmodal = TRUE, disable_paste = TRUE)
 
 		if(!prayer_attempt)
 			to_chat(src, span_warning("伊欧拉听不见你的沉默。"))
@@ -1099,7 +1099,7 @@ GLOBAL_LIST_INIT(ghost_forms, sortList(list("ghost","ghostking","ghostian2","ske
 	if(!is_content_unlocked())
 		alert("此设置仅供 BYOND 高级会员账号使用。")
 		return
-	var/new_form = input(src, "感谢支持 BYOND——请选择幽灵外形：","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
+	var/new_form = input(src, "感谢支持 BYOND——请选择幽灵外形：","感谢支持BYOND",null) as null|anything in GLOB.ghost_forms
 	if(new_form)
 		prefs.ghost_form = new_form
 		prefs.save_preferences()
@@ -1113,7 +1113,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!is_content_unlocked())
 		alert("此设置仅供 BYOND 高级会员账号使用。")
 		return
-	var/new_orbit = input(src, "感谢支持 BYOND——请选择幽灵环绕轨迹：","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_orbits
+	var/new_orbit = input(src, "感谢支持 BYOND——请选择幽灵环绕轨迹：","感谢支持BYOND",null) as null|anything in GLOB.ghost_orbits
 	if(new_orbit)
 		prefs.ghost_orbit = new_orbit
 		prefs.save_preferences()
@@ -1122,14 +1122,14 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 			O.ghost_orbit = new_orbit
 
 /client/proc/pick_ghost_accs()
-	var/new_ghost_accs = alert("你希望幽灵尽可能显示完整配饰，隐藏配饰但保留方向外观，还是忽略方向并使用默认外观？",,"full accessories", "only directional sprites", "default sprites")
+	var/new_ghost_accs = alert("你希望幽灵尽可能显示完整配饰，隐藏配饰但保留方向外观，还是忽略方向并使用默认外观？",,"完整配饰", "仅方向外观", "默认外观")
 	if(new_ghost_accs)
 		switch(new_ghost_accs)
-			if("full accessories")
+			if("完整配饰")
 				prefs.ghost_accs = GHOST_ACCS_FULL
-			if("only directional sprites")
+			if("仅方向外观")
 				prefs.ghost_accs = GHOST_ACCS_DIR
-			if("default sprites")
+			if("默认外观")
 				prefs.ghost_accs = GHOST_ACCS_NONE
 		prefs.save_preferences()
 		if(isobserver(mob))

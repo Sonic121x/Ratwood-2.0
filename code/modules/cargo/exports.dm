@@ -230,7 +230,7 @@
 	var/total_value = ex.total_value[src]
 	var/total_amount = ex.total_amount[src]
 
-	var/msg = "[total_value] credits: Received [total_amount] "
+	var/msg = "[total_value]信用点：收到[total_amount] "
 	if(total_value > 0)
 		msg = "+" + msg
 
