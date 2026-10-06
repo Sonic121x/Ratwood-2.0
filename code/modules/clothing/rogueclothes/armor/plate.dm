@@ -296,7 +296,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/ordinator
 	name = "奥塔万宗审庭裁决官板甲"
-	desc = "据说是从格伦泽尔霍夫-奥塔万战争中幸存下来的遗物，经翻修后以普赛顿之名再度用于诛灭宿敌。 <br> 一件加厚衬垫并额外增设肩甲的沟槽胸甲。你将坚持到底。"
+	desc = "据说是从格伦泽尔霍夫特-奥塔万战争中幸存下来的遗物，经翻修后以普赛顿之名再度用于诛灭宿敌。 <br> 一件加厚衬垫并额外增设肩甲的沟槽胸甲。你将坚持到底。"
 	icon_state = "ordinatorplate"
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/matthios
@@ -318,7 +318,7 @@
 	qdel(src)
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
-	name = "阿万廷全身板甲"
+	name = "阿凡泰因全身板甲"
 	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷发号施令的讥笑，足见那位雕刻者深谙这些情感。</font>"
 	icon_state = "zizoplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
@@ -336,7 +336,7 @@
 	qdel(src)
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
-	name = "阿万廷织纹锁甲"
+	name = "阿凡泰因织纹锁甲"
 	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷发号施令的讥笑，足见那位雕刻者深谙这些情感。</font>"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL // We are probably one of the best medium armor sets. At higher integ than most.

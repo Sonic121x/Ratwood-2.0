@@ -30,7 +30,7 @@
 	result = /obj/structure/fluff/statue/femalestatue2
 
 /datum/crafting_recipe/roguetown/structure/statue/aasimar
-	name = "雕像（亚斯玛）"
+	name = "雕像（亚斯玛尔）"
 	result = /obj/structure/fluff/statue/aasimar
 
 /datum/crafting_recipe/roguetown/structure/statue/tiefling

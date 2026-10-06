@@ -8,7 +8,7 @@
 
 /obj/item/citizenry_letter
 	name = "市民资格文书"
-	desc = "一封来自神经主的密封文书，上面有总管家的签名。"
+	desc = "一封来自神经主的密封文书，上面有宫廷总管的签名。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "paper"
 	w_class = WEIGHT_CLASS_TINY

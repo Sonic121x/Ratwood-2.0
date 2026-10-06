@@ -36,7 +36,7 @@
 	icon_state = "beam_omni"
 
 /obj/effect/projectile/tracer/xray
-	name = "\improper X射线激光"
+	name = "\proper X射线激光"
 	icon_state = "xray"
 
 /obj/effect/projectile/tracer/pulse

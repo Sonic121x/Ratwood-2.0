@@ -4,7 +4,7 @@
 
 
 /obj/item/mundane/puzzlebox/easy
-	name = "\improper 木制谜盒"
+	name = "\proper 木制谜盒"
 	desc = "一个谜盒。"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "wood_box"
@@ -20,7 +20,7 @@
 /obj/item/mundane/puzzlebox/easy/Initialize(mapload)
 	. = ..()
 	dice_roll = rand(6,15)
-	fluff_desc = pick("坦白说，它看起来相当令人沮丧。","我能看见侧面刻着普赛顿送出Syon彗星的雕纹。","看起来似乎没那么难。","它又脏又无聊。","为什么我会想花上几个小时摆弄这玩意？","我大概能找个流浪汉把它解开。","看起来像是给傻子做的。")
+	fluff_desc = pick("坦白说，它看起来相当令人沮丧。","我能看见侧面刻着普赛顿送出彗星西昂的雕纹。","看起来似乎没那么难。","它又脏又无聊。","为什么我会想花上几个小时摆弄这玩意？","我大概能找个流浪汉把它解开。","看起来像是给傻子做的。")
 	desc += "[fluff_desc]"
 
 
@@ -49,7 +49,7 @@
 //medium
 
 /obj/item/mundane/puzzlebox/medium
-	name = "\improper 乌木谜盒"
+	name = "\proper 乌木谜盒"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "ebon_box"
 	var/fluff_desc = null
@@ -94,7 +94,7 @@
 
 
 /obj/item/mundane/puzzlebox/impossible //literally nearly impossible to solve - if you do, you get a fairly lengthy buff and a stat boost.
-	name = "\improper 皇家谜盒"
+	name = "\proper 皇家谜盒"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "grimace_box"
 	var/fluff_desc = null

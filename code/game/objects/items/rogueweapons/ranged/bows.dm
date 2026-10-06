@@ -517,7 +517,7 @@
 
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/eora
-	name = "艾欧拉竖琴弓"
+	name = "伊欧拉竖琴弓"
 	desc = "琴弦，亦可为弓弦。"
 	icon = 'icons/roguetown/weapons/special/boweoran64.dmi'
 	icon_state = "harpbow"
@@ -528,7 +528,7 @@
 	damfactor = 1.25
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/eora//subtype of recurve bow for the sprite sizes, but stats of a shortbow
-	name = "艾欧拉竖琴弓"
+	name = "伊欧拉竖琴弓"
 	desc = "琴弦，亦可为弓弦。"
 	icon = 'icons/roguetown/weapons/special/boweoran64.dmi'
 	icon_state = "harpbowb"

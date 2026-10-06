@@ -81,7 +81,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs/zizo
 	max_integrity = ARMOR_INT_LEG_ANTAG
-	name = "阿万廷下装"
+	name = "阿凡泰因下装"
 	desc = "<font color='A50021'>旁侧再无一物留存。那具庞大残骸的废墟四周，唯有空旷与荒芜。</font>"
 	icon_state = "zizocloth"
 	armor = ARMOR_ASCENDANT
@@ -104,7 +104,7 @@
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
 /obj/item/clothing/under/roguetown/platelegs/medium/zizo
-	name = "阿万廷法衣"
+	name = "阿凡泰因法衣"
 	desc = "<font color='A50021'>旁侧再无一物留存。那具庞大残骸的废墟四周，唯有空旷与荒芜。</font>"
 	icon_state = "zizoplatelegs_med"
 	armor = ARMOR_ASCENDANT

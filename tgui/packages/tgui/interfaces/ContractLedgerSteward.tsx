@@ -484,7 +484,7 @@ const ComposeView = () => {
             }
             title={
               aldermanActing
-                ? '请令乃总管之权柄, 而非议会参事之权柄.'
+                ? '请令乃宫廷总管之权柄, 而非议会参事之权柄.'
                 : undefined
             }
           >

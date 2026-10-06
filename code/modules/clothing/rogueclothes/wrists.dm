@@ -281,7 +281,7 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo
-	name = "阿万廷臂铠"
+	name = "阿凡泰因臂铠"
 	desc = "<font color='A50021'>这些情感镌刻在无生命之物上，至今犹存，比雕摹它们的手与滋养它们的心更为长久：</font>"
 	icon_state = "zizobracers"
 	item_state = "zizobracers"

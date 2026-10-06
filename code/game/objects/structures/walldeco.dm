@@ -60,8 +60,8 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/walldeco/steward
-	name = "总管招牌"
-	desc = "抛光木料与金箔标志着总管的办公室，他是城主地产和金库的管理者。"
+	name = "宫廷总管招牌"
+	desc = "抛光木料与金箔标志着宫廷总管的办公室，他是城主地产和金库的管理者。"
 	icon_state = "steward"
 	layer = ABOVE_MOB_LAYER
 
