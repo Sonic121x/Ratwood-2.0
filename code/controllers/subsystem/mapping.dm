@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_config/old_config = current_map
 		current_map = global.config.defaultmap
 		if(!current_map || current_map.defaulted)
-			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to [old_config.map_name] </span>")
+			to_chat(world, "<span class='boldannounce'>无法加载下一张地图或默认地图的配置，将使用[old_config.map_name]。</span>")
 			current_map = old_config
 	if(map_adjustment)
 		map_adjustment.on_mapping_init()
@@ -312,7 +312,7 @@ SUBSYSTEM_DEF(mapping)
 	// load the station
 	station_start = world.maxz + 1
 	#ifdef TESTING
-	INIT_ANNOUNCE("Loading [current_map.map_name]...")
+	INIT_ANNOUNCE("正在加载[current_map.map_name]……")
 	#endif
 
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.map_folder, current_map.traits, ZTRAITS_STATION)
@@ -347,11 +347,11 @@ SUBSYSTEM_DEF(mapping)
 	#endif
 
 	if(LAZYLEN(FailedZs))	//but seriously, unless the server's filesystem is messed up this will never happen
-		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
+		var/msg = "严重警报！以下地图文件加载失败：[FailedZs[1]]"
 		if(FailedZs.len > 1)
 			for(var/I in 2 to FailedZs.len)
 				msg += ", [FailedZs[I]]"
-		msg += ". Yell at your server host!"
+		msg += "。请通知服务器维护者！"
 		INIT_ANNOUNCE(msg)
 #undef INIT_ANNOUNCE
 

@@ -28,7 +28,7 @@
 	icon_state = "cultout"
 
 /obj/effect/temp_visual/cult/sac
-	name = "Nar'Sie 之口"
+	name = "纳尔西之口"
 	icon_state = "sacconsume"
 
 /obj/effect/temp_visual/cult/door

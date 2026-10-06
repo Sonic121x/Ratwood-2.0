@@ -49,15 +49,15 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 	var/spell_points
 	var/used_spell_points
-	var/movemovemovetext = "Move!!"
-	var/takeaimtext = "Take aim!!"
-	var/holdtext = "Hold!!"
-	var/onfeettext = "On your feet!!"
-	var/focustargettext = "Focus target!!"
-	var/retreattext = "Fall back!!"
-	var/bolstertext = "Hold the line!!"
-	var/brotherhoodtext = "Stand proud, for the Brotherhood!!"
-	var/chargetext = "Chaaaaaarge!!"
+	var/movemovemovetext = "前进！！"
+	var/takeaimtext = "瞄准！！"
+	var/holdtext = "坚守！！"
+	var/onfeettext = "站起来！！"
+	var/focustargettext = "集中攻击目标！！"
+	var/retreattext = "撤退！！"
+	var/bolstertext = "守住阵线！！"
+	var/brotherhoodtext = "昂首挺胸，为了兄弟会！！"
+	var/chargetext = "冲——锋！！"
 
 	//Prince champion vars.
 	var/mob/living/carbon/champion = null

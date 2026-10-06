@@ -150,7 +150,7 @@
 	var/matthioslines =list("'我最后一笔交易……他再也收不到我应有的价值了……全被这些怪物夺走了……'", "'同道啊，我被锁进了这可怖的机关里，放我出去！'", "'我能感觉到我们的镣铐正彼此纠缠着……'")
 	var/zizolines =list("'齐佐！我的魔法失灵了！把这些普赛顿信徒狗崽子全都劈死！'", "'密教徒？这里有扭曲的魔法，提防那音乐！我们的声音全被强迫着唱了出来！'", "'毁掉这口箱子，杀了持有者。你们的魔法就能得到自由。'")
 	var/graggarlines =list("'受膏者！砍下这个奥塔瓦人的脑袋！'", "'受膏者！砸碎这口箱子，我们就能一起把他们杀光！'", "'格拉加尔，赐我力量，让我挣断自己的枷锁！'")
-	var/baothalines =list("'我怀念 ozium 的温度……在这里我什么也感觉不到……'", "'放纵之徒，把我从这机关里救出去吧，我有的是东西想与你分享。'", "'我的完美，全被这些 Otava 怪物夺走了！'")
+	var/baothalines =list("'我怀念奥兹姆的温度……在这里我什么也感觉不到……'", "'放纵之徒，把我从这机关里救出去吧，我有的是东西想与你分享。'", "'我的完美，全被这些奥塔瓦怪物夺走了！'")
 	var/psydonianlines =list("'放我们出去！放我们出去！我们受的苦已经够多了！'", "'求求你，放了我们！", "我们想念自己的家人！'", "'等我们逃出去，就会一路追杀你到坟墓里。'")
 /datum/status_effect/buff/cranking_soulchurner/on_creation(mob/living/new_owner, stress, colour)
 	effect_color = "#800000"
@@ -1306,7 +1306,7 @@ Inquisitorial armory down here
 	if(broken && !bloody)
 		to_chat(user, span_warning("镜子已经碎了，无法再使用。至少它现在是干净的。"))
 		if(HAS_TRAIT(user, TRAIT_INQUISITION))
-			to_chat(user, span_notice("现在可以通过“HERMES”把它退回去了。我应该能拿回两枚马克。"))
+			to_chat(user, span_notice("现在可以通过“赫尔墨斯”把它退回去了。我应该能拿回两枚马克。"))
 		return
 	if(bloody)
 		to_chat(user, span_warning("镜面已经起雾了。再次使用前，我得用布把上面的血擦干净。"))

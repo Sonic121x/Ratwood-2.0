@@ -770,7 +770,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 //ZIPPO//
 /////////
 /obj/item/lighter
-	name = "\proper Zippo 打火机"
+	name = "\proper 芝宝打火机"
 	desc = ""
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "zippo"

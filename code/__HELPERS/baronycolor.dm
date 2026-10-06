@@ -15,10 +15,10 @@ GLOBAL_VAR(baronsecondary)
 		return
 	var/prim
 	var/sec
-	var/choice = input(src, "Choose a Primary Color", "ROGUETOWN") as anything in GLOB.colorlist
+	var/choice = input(src, "选择主色", "罗格镇") as anything in GLOB.colorlist
 	if(choice)
 		prim = GLOB.colorlist[choice]
-	choice = input(src, "Choose a Secondary Color", "ROGUETOWN") as anything in GLOB.colorlist
+	choice = input(src, "选择副色", "罗格镇") as anything in GLOB.colorlist
 	if(choice)
 		sec = GLOB.colorlist[choice]
 	if(!prim || !sec)

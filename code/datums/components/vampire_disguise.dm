@@ -71,7 +71,7 @@
 
 	restore_original_appearance(H)
 
-	to_chat(H, span_notice("I assume a mortal guise."))
+	to_chat(H, span_notice("我披上了凡人的伪装。"))
 	return TRUE
 
 // Restore human appearance
