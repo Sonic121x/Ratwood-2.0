@@ -1,15 +1,15 @@
 /datum/supply_pack/rogue/Pioneer
 	group = "拓荒工兵" // English: Pioneer
-	crate_name = "Gifts of Engineering"
+	crate_name = "工程的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/Pioneer/gambeson
-	name = "棉甲"
+	name = "绗缝护甲衣"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/Pioneer/hgambeson
-	name = "重型棉甲"
+	name = "加厚绗缝护甲衣"
 	cost = 15
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
@@ -29,7 +29,7 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
 
 /datum/supply_pack/rogue/Pioneer/leather/hcoat
-	name = "硬化皮外套"
+	name = "硬化皮大衣"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 
@@ -39,12 +39,12 @@
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
 /datum/supply_pack/rogue/Pioneer/steelgorget
-	name = "Steel Gorget"
+	name = "钢护喉"
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/steel)
 
 /datum/supply_pack/rogue/Pioneer/steelcoif
-	name = "钢锁子头巾"
+	name = "锁链护头巾"
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
@@ -115,7 +115,7 @@
 //Tools of the trade.
 
 /datum/supply_pack/rogue/Pioneer/Mancatcher
-	name = "捕人叉"
+	name = "捕兽夹"
 	cost = 10
 	contains = list(/obj/item/restraints/legcuffs/beartrap)
 
@@ -145,27 +145,27 @@
 	contains = list(/obj/item/contraption/linker)
 
 /datum/supply_pack/rogue/Pioneer/polishing_cream
-	name = "Polishing Cream"
+	name = "抛光膏"
 	cost = 50
 	contains = list(/obj/item/polishing_cream)
 
 /datum/supply_pack/rogue/Pioneer/armor_brush
-	name = "Armor Brush"
+	name = "细刷"
 	cost = 50
 	contains = list(/obj/item/armor_brush)
 
 /datum/supply_pack/rogue/Pioneer/Sarrows
-	name = "Steel Bodkin Arrow"
+	name = "钢锥头箭"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/steel)
 
 /datum/supply_pack/rogue/Pioneer/pyroarrows // Engineering arrows... they can have them...
-	name = "Pyroclastic Arrow"
+	name = "燃火箭"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/pyro)
 
 /datum/supply_pack/rogue/Pioneer/pyrobolts
-	name = "Pyroclastic bolt"
+	name = "燃火弩矢"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/bolt/pyro)
 
@@ -297,43 +297,43 @@
 // Ranged Weaponry
 
 /datum/supply_pack/rogue/Pioneer/bow
-	name = "Bow"
+	name = "短弓"
 	cost = 10
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow)
 
 /datum/supply_pack/rogue/Pioneer/crossbow
-	name = "Crossbow"
+	name = "十字弩"
 	cost = 20
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
 /datum/supply_pack/rogue/Pioneer/recurvebow
-	name = "Recurve Bow"
+	name = "反曲弓"
 	cost = 20
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
 
 /datum/supply_pack/rogue/Pioneer/longbow
-	name = "Longbow"
+	name = "紫杉长弓"
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow)
 
 /datum/supply_pack/rogue/Pioneer/slurbow
-	name = "Slurbow"
+	name = "轻弩"
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow)
 
 // Standard Ammunition
 
 /datum/supply_pack/rogue/Pioneer/quiver
-	name = "Empty Quiver"
+	name = "空箭袋"
 	cost = 5
 	contains = list(/obj/item/quiver)
 
 /datum/supply_pack/rogue/Pioneer/quivers/arrows
-	name = "Quiver of Arrows"
+	name = "一袋箭矢"
 	cost = 10
 	contains = list(/obj/item/quiver/arrows)
 
 /datum/supply_pack/rogue/Pioneer/quivers/bolts
-	name = "Quiver of Bolts"
+	name = "一袋弩矢"
 	cost = 20
 	contains = list(/obj/item/quiver/bolts)
