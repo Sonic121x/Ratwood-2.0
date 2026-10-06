@@ -141,7 +141,7 @@
 	for(var/i in 1 to rand(1, 3))
 		new /obj/effect/temp_visual/heart/sex_effects/invisible(get_turf(spawn_target), seers, icon_state_name)
 	for(var/mob/seer in seers)
-		spawn_target.balloon_alert(seer, "plap!", rand(-15, 15), rand(0, 25))
+		spawn_target.balloon_alert(seer, "啪！", rand(-15, 15), rand(0, 25))
 
 /datum/sex_controller/proc/do_thrust_animate(atom/movable/target, pixels = 4, time = 2.7)
 	var/obj/item/organ/breasts/target_breasts
@@ -1830,20 +1830,20 @@
 
 	if(WWtop && WWtop.transformed && !WWbottom)
 		if(prob(infection_probability))
-			var/answer = tgui_alert(top, "要感染你的伴侣吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
-			if(!answer || answer == "Nae")
+			var/answer = tgui_alert(top, "要感染你的伴侣吗？", "请在 [DisplayTimeText(200)] 内作答！", list("是","否"),200)
+			if(!answer || answer == "否")
 				return
-			if(answer == "Yae")
+			if(answer == "是")
 				bottom.werewolf_infect_attempt()
 		return
 
 
 	if(WWbottom && WWbottom.transformed && !WWtop)
 		if(prob(infection_probability))
-			var/answer = tgui_alert(bottom, "要感染你的伴侣吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
-			if(!answer || answer == "Nae")
+			var/answer = tgui_alert(bottom, "要感染你的伴侣吗？", "请在 [DisplayTimeText(200)] 内作答！", list("是","否"),200)
+			if(!answer || answer == "否")
 				return
-			if(answer == "Yae")
+			if(answer == "是")
 				top.werewolf_infect_attempt()
 		return
 
@@ -1865,19 +1865,19 @@
 
 	if(ZMtop && ZMtop.has_turned && !ZMbottom)
 		if(prob(infection_probability))
-			var/answer = tgui_alert(top, "要传播祂的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
-			if(!answer || answer == "Nae")
+			var/answer = tgui_alert(top, "要传播祂的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("是","否"),200)
+			if(!answer || answer == "否")
 				return
-			if(answer == "Yae")
+			if(answer == "是")
 				bottom.zaids_check()
 		return
 
 	if(ZMbottom && ZMbottom.has_turned && !ZMtop)
 		if(prob(infection_probability))
-			var/answer = tgui_alert(bottom, "要传播祂的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("Yae","Nae"),200)
-			if(!answer || answer == "Nae")
+			var/answer = tgui_alert(bottom, "要传播祂的恩赐吗？", "请在 [DisplayTimeText(200)] 内作答！", list("是","否"),200)
+			if(!answer || answer == "否")
 				return
-			if(answer == "Yae")
+			if(answer == "是")
 				top.zaids_check()
 		return
 ///Making sure there're not any other antag or immune, then applies zombie infection

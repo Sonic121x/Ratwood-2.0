@@ -886,7 +886,7 @@
 
 /obj/item/rogueweapon/sword/long/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "剑")
 
 /obj/item/rogueweapon/sword/arming/zizo
 	name = "阿凡泰因单手剑"
@@ -904,7 +904,7 @@
 
 /obj/item/rogueweapon/sword/arming/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "剑")
 
 /obj/item/rogueweapon/sword/rapier/zizo
 	name = "阿凡泰因刺剑"
@@ -918,7 +918,7 @@
 
 /obj/item/rogueweapon/sword/rapier/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "剑")
 
 /obj/item/rogueweapon/sword/long/heirloom
 	name = "古旧长剑"
@@ -2523,7 +2523,7 @@
 
 /obj/item/rogueweapon/sword/long/kriegmesser/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "剑")
 
 /obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo
 	name = "双手刀"

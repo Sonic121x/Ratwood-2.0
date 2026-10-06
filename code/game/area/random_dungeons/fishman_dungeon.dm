@@ -8,7 +8,7 @@
 	// detail_text = DETAIL_TEXT_FISHMAN_DUNGEON
 
 /area/rogue/under/cavewet/fishmandungeon
-	name = "deep ones lair"
-	first_time_text = "South Coast Caves"
-	first_time_text = "DEEP ONES LAIR"
+	name = "深潜者巢穴"
+	first_time_text = "南海岸洞穴"
+	first_time_text = "深潜者巢穴"
 	ceiling_protected = TRUE

@@ -374,8 +374,8 @@
 	lockid = "roomx"
 
 /obj/item/roguekey/roomhunt
-	name = "HUNT套房钥匙"
-	desc = "通往HUNT套房的钥匙，那是本地旅店的顶层客房。"
+	name = "猎人套房钥匙"
+	desc = "通往猎人套房的钥匙，那是本地旅店的顶层客房。"
 	icon_state = "brownkey"
 	lockid = "roomhunt"
 
@@ -795,32 +795,32 @@
 
 //Rockhill Slaver/Baron and Related Keys
 /obj/item/roguekey/baron
-	name = "Lowtown Manor Key"
-	desc = "A key to the Lowtown Manor, home of the Baron"
+	name = "低镇庄园钥匙"
+	desc = "通往低镇庄园的钥匙，那是男爵的住所。"
 	icon_state = "brownkey"
 	lockid = "BaronManor"
 
 /obj/item/roguekey/baronguest
-	name = "Lowtown Manor Guest Key"
-	desc = "A key to the guest rooms of the Lowtown Manor."
+	name = "低镇庄园客房钥匙"
+	desc = "通往低镇庄园客房的钥匙。"
 	icon_state = "brownkey"
 	lockid = "BaronManorGuest"
 
 /obj/item/roguekey/slaverhouse
-	name = "Slaver's Office Key"
-	desc = "A key to the Slaver Office in Lowtown"
+	name = "奴隶贩子办公室钥匙"
+	desc = "通往低镇奴隶贩子办公室的钥匙。"
 	icon_state = "brownkey"
 	lockid = "SlaverHome"
 
 /obj/item/roguekey/slaverdungeon
-	name = "Slaver's Dungeon Key"
-	desc = "A key to the Slaver Dungeon in Lowtown"
+	name = "奴隶贩子地牢钥匙"
+	desc = "通往低镇奴隶贩子地牢的钥匙。"
 	icon_state = "spikekey"
 	lockid = "DTManorCells"
 
 /obj/item/roguekey/slaverpillory
-	name = "Auction Pillory Key"
-	desc = "A key to the Slaver Pillories in Lowtown"
+	name = "拍卖枷锁钥匙"
+	desc = "用于打开低镇奴隶贩子枷锁的钥匙。"
 	icon_state = "brownkey"
 	lockid = "SlaveAuction"
 

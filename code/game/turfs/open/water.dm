@@ -226,7 +226,7 @@
 
 	if(HAS_TRAIT(living_movable, TRAIT_CURSE_ABYSSOR))
 		living_movable.freak_out()
-		living_movable.visible_message(span_warning("[living_movable] spasms violently upon touching the water!"), span_danger("The water... it burns me!"))
+		living_movable.visible_message(span_warning("[living_movable]一碰到水就剧烈抽搐！"), span_danger("这水……它在灼烧我！"))
 		living_movable.adjustFireLoss(25)
 		return
 	if (istype(src,/turf/open/water/bloody))
@@ -360,7 +360,7 @@
 		for(var/drink in 1 to 40)
 			if(drink_act(user, L))
 				return
-		to_chat(user, span_warning("I've had enough."))
+		to_chat(user, span_warning("我已经喝够了。"))
 		return
 	..()
 
@@ -463,7 +463,7 @@
 			var/mob/living/carbon/C = user
 			if(C.is_mouth_covered())
 				return
-		to_chat(L, span_userdanger("Have I gone mad!? Why am I drinking sewage?"))
+		to_chat(L, span_userdanger("我疯了吗！？为什么我在喝污水？"))
 	..()
 
 /turf/open/water/swamp

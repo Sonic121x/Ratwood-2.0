@@ -276,7 +276,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+		to_chat(world, "<span class='boldannounce'>主控制器出现问题，需要重新初始化所有内容。</span>")
 		Initialize(20, TRUE)
 
 // Please don't stuff random bullshit here,
@@ -293,7 +293,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 #ifdef TESTING
-	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	to_chat(world, "<span class='boldannounce'>正在初始化子系统……</span>")
 #endif
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
@@ -318,7 +318,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	current_ticklimit = TICK_LIMIT_RUNNING
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
-	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
+	var/msg = "初始化已完成，用时[time]秒！"
 
 #ifdef TESTING
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")

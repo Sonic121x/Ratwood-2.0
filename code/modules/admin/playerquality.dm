@@ -212,7 +212,7 @@
 	adjust_playerquality(amt2change, theykey, src.ckey, raisin)
 	for(var/client/C in GLOB.clients) // I hate this, but I'm not refactoring the cancer above this point.
 		if(LOWER_TEXT(C.key) == LOWER_TEXT(theykey))
-			to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [key] for reason: [raisin]</span></span>")
+			to_chat(C, "<span class=\"admin\"><span class=\"prefix\">管理员记录：</span> <span class=\"message linkify\">[key]将你的玩家质量分（PQ）调整了[amt2change]，原因：[raisin]</span></span>")
 			return
 
 /proc/add_commend(key, giver)

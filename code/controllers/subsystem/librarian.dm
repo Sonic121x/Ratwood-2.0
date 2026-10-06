@@ -30,11 +30,11 @@ SUBSYSTEM_DEF(librarian)
 
 /datum/controller/subsystem/librarian/proc/playerbook2file(input, book_title = "Unknown", author = "Unknown", author_ckey = "Unknown", icon = "basic_book")
 	if(!input)
-		return "There is no text in the book!"
+		return "书中没有文字！"
 	if(fexists("data/player_generated_books/[url_encode(book_title)].json"))
-		return "there is already a book by this title!"
+		return "已经有一本同名的书了！"
 	if(!(istext(input) && istext(book_title) && istext(author) && istext(author_ckey) && istext(icon)))
-		return "This book is incorrectly formatted!"
+		return "这本书的格式不正确！"
 
 	testing("playerbook2file1")
 	var/list/contents = list("book_title" = "[book_title]", "author" = "[author]", "author_ckey" = "[author_ckey]", "icon" = "[icon]",  "text" = "[input]")
@@ -49,11 +49,11 @@ SUBSYSTEM_DEF(librarian)
 		fdel("data/player_generated_books/_book_titles.json")
 		text2file(json_encode(_book_titles_contents), "data/player_generated_books/_book_titles.json")
 		message_admins("Book [book_title] has been saved to the player book database by [author_ckey]([author])")
-		return "You have a feeling the newly written book will remain in the archive for a very long time..."
+		return "你觉得这本新写的书会在档案中保存很长时间……"
 	else
 		message_admins("!!! _book_titles.json no longer exists, previous book title list has been lost. making a new one without old books... !!!")
 		text2file(json_encode(list(book_title)), "data/player_generated_books/_book_titles.json")
-		return "_book_titles.json no longer exists, yell at your server host that some books have been lost!"
+		return "_book_titles.json已不存在，请通知服务器维护者：部分书籍已丢失！"
 
 /datum/controller/subsystem/librarian/proc/file2playerbook(filename)
 	if(!filename)
@@ -106,7 +106,7 @@ SUBSYSTEM_DEF(librarian)
 		var/list/contents = file2playerbook(book_title)
 		del_player_book(book_title)
 		contents[amend_type] = amend_text
-		if(playerbook2file(contents["text"], book_title = contents["book_title"], author = contents["author"], author_ckey = contents["author_ckey"], icon = contents["icon"]) == "You have a feeling the newly written book will remain in the archive for a very long time...")
+		if(playerbook2file(contents["text"], book_title = contents["book_title"], author = contents["author"], author_ckey = contents["author_ckey"], icon = contents["icon"]) == "你觉得这本新写的书会在档案中保存很长时间……")
 			return TRUE
 		return FALSE
 	else

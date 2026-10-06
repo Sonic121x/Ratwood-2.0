@@ -470,7 +470,7 @@
 	return TRUE
 
 /obj/item/riding_offhand
-	name = "offhand"
+	name = "骑乘占用"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE
