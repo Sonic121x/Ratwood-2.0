@@ -59,10 +59,10 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 
 /proc/hud_colorblind_palette_options()
 	return list(
-		list("value" = HUD_COLORBLIND_NONE, "label" = "Default"),
-		list("value" = HUD_COLORBLIND_DEUTERANOPIA, "label" = "Deuteranopia"),
-		list("value" = HUD_COLORBLIND_PROTANOPIA, "label" = "Protanopia"),
-		list("value" = HUD_COLORBLIND_TRITANOPIA, "label" = "Tritanopia"),
+		list("value" = HUD_COLORBLIND_NONE, "label" = "默认"),
+		list("value" = HUD_COLORBLIND_DEUTERANOPIA, "label" = "绿色盲"),
+		list("value" = HUD_COLORBLIND_PROTANOPIA, "label" = "红色盲"),
+		list("value" = HUD_COLORBLIND_TRITANOPIA, "label" = "蓝色盲"),
 	)
 
 /datum/hud
@@ -395,9 +395,9 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 
 	if(hud_used && client)
 		hud_used.show_hud() //Shows the next hud preset
-		to_chat(usr, span_info("Switched HUD mode. Press F12 to toggle."))
+		to_chat(usr, span_info("已切换界面模式。按 F12 切换。"))
 	else
-		to_chat(usr, span_warning("This mob type does not use a HUD."))
+		to_chat(usr, span_warning("此类角色没有状态界面。"))
 
 
 //(re)builds the hand ui slots, throwing away old ones

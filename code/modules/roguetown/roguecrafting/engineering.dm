@@ -187,7 +187,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/bronzeboltstwenty
-	name = "Bronze Crossbow Bolts 20x"
+	name = "青铜弩矢 20支"
 	reqs = list(/obj/item/natural/wood/plank = 3, /obj/item/ingot/bronze)
 	result = list(/obj/item/ammo_casing/caseless/rogue/bolt/bronze,
 						/obj/item/ammo_casing/caseless/rogue/bolt/bronze,
@@ -211,7 +211,7 @@
 						/obj/item/ammo_casing/caseless/rogue/bolt/bronze
 					)
 /datum/crafting_recipe/roguetown/engineering/heavyboltsten
-	name = "Heavy Bolts 10x"
+	name = "重型弩矢 10支"
 	reqs = list(/obj/item/natural/wood/plank = 4, /obj/item/ingot/iron = 2)
 	result = list(/obj/projectile/bullet/reusable/heavy_bolt,
 					/obj/projectile/bullet/reusable/heavy_bolt,
