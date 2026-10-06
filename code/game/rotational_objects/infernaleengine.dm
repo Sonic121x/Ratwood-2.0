@@ -1,7 +1,7 @@
 /obj/structure/infernalengine
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "infernal engine"
-	desc = "This engine uses cycling magma from an internal core to rotate large machinery."
+	name = "炼狱引擎"
+	desc = "这台引擎通过内部核心循环流动的岩浆，驱动大型机械旋转。"
 	icon_state = "infernal0"
 	var/base_state = "infernal"
 	var/on = FALSE
@@ -16,8 +16,8 @@
 
 /obj/structure/infernalengine/examine(mob/user)
 	. = ..()
-	. += span_info("This engine generates rotational power continuously for connected machinery while it remains active.")
-	. += span_info("Keep it out of wet terrain. Water can extinguish it and stop the engine.")
+	. += span_info("运转期间，这台引擎会持续为相连的机械提供旋转动力。")
+	. += span_info("请远离潮湿地形。水会熄灭火焰，使引擎停转。")
 
 /obj/structure/infernalengine/find_rotation_network()
 	. = ..()

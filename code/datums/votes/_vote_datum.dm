@@ -16,7 +16,7 @@
 	/// Does the name of this vote contain the word "vote"?
 	var/contains_vote_in_name = FALSE
 	/// What message do we show as the tooltip of this vote if the vote can be initiated?
-	var/default_message = "Click to initiate a vote."
+	var/default_message = "点击发起投票。"
 	/// The counting method we use for votes.
 	var/count_method = VOTE_COUNT_METHOD_SINGLE
 	/// The method for selecting a winner.
@@ -82,7 +82,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(!forced && !is_config_enabled())
-		return "This vote is currently disabled by the server configuration."
+		return "服务器配置目前禁用了这项投票。"
 
 	return VOTE_AVAILABLE
 
@@ -110,7 +110,7 @@
 	started_time = world.time
 	time_remaining = round(duration / 10)
 
-	return "[contains_vote_in_name ? "[capitalize(name)]" : "[capitalize(name)] vote"] started by [initiator || "Central Command"]."
+	return "[initiator || "中央司令部"]发起了[list("Custom" = "自定义", "endround" = "结束本轮", "Map" = "地图", "Restart" = "重启回合", "chaos" = "回合类型")[name] || capitalize(name)][contains_vote_in_name ? "" : "投票"]。"
 
 /**
  * Gets the result of the vote.
@@ -175,26 +175,26 @@
 	if(override_question)
 		title_text += span_bold(override_question)
 	else
-		title_text += span_bold("[capitalize(name)] Vote")
+		title_text += span_bold("[list("Custom" = "自定义", "endround" = "结束本轮", "Map" = "地图", "Restart" = "重启回合", "chaos" = "回合类型")[name] || capitalize(name)]投票")
 
-	returned_text += "Winner Selection: "
+	returned_text += "胜出方式： "
 	switch(winner_method)
 		if(VOTE_WINNER_METHOD_NONE)
-			returned_text += "None"
+			returned_text += "不选出胜者"
 		if(VOTE_WINNER_METHOD_WEIGHTED_RANDOM)
-			returned_text += "Weighted Random"
+			returned_text += "按票数加权随机选择"
 		else
-			returned_text += "Simple"
+			returned_text += "票数最多者胜出"
 
 	var/total_votes = 0 // for determining percentage of votes
 	for(var/option in choices)
 		total_votes += choices[option]
 
 	if(total_votes <= 0)
-		return span_bold("Vote Result: Inconclusive - No Votes!")
+		return span_bold("投票结果：无人投票，无法得出结果！")
 
 	if (display_statistics)
-		returned_text += "\nResults:"
+		returned_text += "\n统计结果："
 		for(var/option in choices)
 			returned_text += "\n"
 			var/votes = choices[option]
@@ -230,11 +230,11 @@
 /datum/vote/proc/get_winner_text(list/all_winners, real_winner, list/non_voters)
 	var/returned_text = ""
 	if(length(all_winners) > 1)
-		returned_text += "\n[span_bold("Vote Tied Between:")]"
+		returned_text += "\n[span_bold("以下选项票数持平：")]"
 		for(var/a_winner in all_winners)
 			returned_text += "\n\t[a_winner]"
 
-	returned_text += span_bold("\nVote Result: [real_winner]")
+	returned_text += span_bold("\n投票结果：[real_winner]")
 	return returned_text
 
 /**

@@ -206,6 +206,6 @@ GLOBAL_LIST_INIT(roundid, world.file2list("strings/roundid.txt"))
 
 GLOBAL_LIST_INIT(station_numerals, greek_letters + phonetic_alphabet + numbers_as_words + generate_number_strings())
 
-GLOBAL_LIST_INIT(admiral_messages, list("Do you know how expensive these stations are?","Stop wasting my time.","I was sleeping, thanks a lot.","Stand and fight you cowards!","You knew the risks coming in.","Stop being paranoid.","Whatever's broken just build a new one.","No.", "<i>null</i>","<i>Error: No comment given.</i>", "It's a good day to die!"))
+GLOBAL_LIST_INIT(admiral_messages, list("你们知道这些空间站有多贵吗？","别再浪费我的时间。","我刚才在睡觉，真是谢谢你们。","站起来战斗，你们这些懦夫！","来之前你们就知道风险。","别再疑神疑鬼。","什么坏了就再造一个。","不。", "<i>无</i>","<i>错误：未提供回应。</i>", "今天是个赴死的好日子！"))
 
 GLOBAL_LIST_EMPTY(persistent_sound_loops) //Used in sound subsystem to keep track of persistent sounds (musicboxes and instruments mostly)

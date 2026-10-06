@@ -75,9 +75,9 @@
 
 /datum/storyteller/noc
 	name = "Noc"
-	vote_desc = "知识主宰一切。事件整体平稳，却仍可能受 arcyne 干预。祂的恩泽照耀着追逐更高理想之人。"
+	vote_desc = "知识主宰一切。事件整体平稳，却仍可能受奥术干预。祂的恩泽照耀着追逐更高理想之人。"
 	desc = "诺克会尝试带来更多魔法相关事件。"
-	welcome_text = "空气中噼啪作响，弥漫着 arcyne 能量……"
+	welcome_text = "空气中噼啪作响，弥漫着奥术能量……"
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#F0F0F0"
@@ -107,7 +107,7 @@
 	name = "Ravox"
 	vote_desc = "荣耀主宰一切。袭击、恶人和凶兆更容易降临。祂的恩泽照耀着钢铁交击与战争呐喊。"
 	desc = "拉沃克斯会让袭击自然发生，而不只是在大量人员死亡时才出现。"
-	welcome_text = "“Zericho 的号角正在远方回响……”"
+	welcome_text = "“泽里科的号角正在远方回响……”"
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#228822"
@@ -164,7 +164,7 @@
 		),
 		"Set 3" = list(
 			STATS_ABYSSOR_REMEMBERED = list("name" = "铭记阿比索尔次数：", "points" = 1.1, "capacity" = 50),
-			STATS_ALIVE_AXIAN = list("name" = "axian 人数：", "points" = 8, "capacity" = 70),
+			STATS_ALIVE_AXIAN = list("name" = "阿克西安人数：", "points" = 8, "capacity" = 70),
 		),
 		"Set 4" = list(
 			STATS_LEECHES_EMBEDDED = list("name" = "附着的水蛭：", "points" = 0.75, "capacity" = 70),
@@ -216,7 +216,7 @@
 	name = "Necra"
 	vote_desc = "死亡主宰一切。事件发生得更少，恶人也更难出现。她的恩泽照耀着将不死者重新送回坟墓之人。"
 	desc = "内克拉的节奏极慢，极少带来新的来客。"
-	welcome_text = "“在 Zenmarke 的封地中，弥漫着腐朽的气息……”"
+	welcome_text = "“在泽恩马克的封地中，弥漫着腐朽的气息……”"
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#888888"
@@ -275,8 +275,8 @@
 			STATS_WOUNDS_SEWED = list("name" = "缝合的伤口：", "points" = 0.48, "capacity" = 100),
 		),
 		"Set 3" = list(
-			STATS_LUX_HARVESTED = list("name" = "提取的 Lux：", "points" = 8, "capacity" = 70),
-			STATS_LUX_REVIVALS = list("name" = "Lux 复生次数：", "points" = 16, "capacity" = 70),
+			STATS_LUX_HARVESTED = list("name" = "提取的灵辉：", "points" = 8, "capacity" = 70),
+			STATS_LUX_REVIVALS = list("name" = "灵辉复生次数：", "points" = 16, "capacity" = 70),
 		),
 		"Set 4" = list(
 			STATS_ROT_CURED = list("name" = "治愈的腐败：", "points" = 5, "capacity" = 70),
@@ -364,7 +364,7 @@
 	name = "Dendor"
 	vote_desc = " 自然主宰一切。过度生长与狼人更容易出现。祂的恩泽照耀着丰收与狼人。"
 	desc = "登多尔喜欢降下自然主题的事件。"
-	welcome_text = "栖枝 zads 的咯咯怪笑，与晨露闪烁的微光……"
+	welcome_text = "栖枝扎德鸟的咯咯怪笑，与晨露闪烁的微光……"
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#664422"
@@ -488,7 +488,7 @@
 			STATS_JUNKIES = list("name" = "瘾君子人数：", "points" = 9, "capacity" = 70),
 		),
 		"Set 5" = list(
-			STATS_KNOTTED_NOT_LUPIANS = list("name" = "非 Lupian 的结缔次数：", "points" = 2.5, "capacity" = 50),
+			STATS_KNOTTED_NOT_LUPIANS = list("name" = "非卢皮安的结缔次数：", "points" = 2.5, "capacity" = 50),
 		),
 		"Set 6" = list(
 			STATS_IMPREGNATIONS = list("name" = "受孕次数：", "points" = 5, "capacity" = 50),

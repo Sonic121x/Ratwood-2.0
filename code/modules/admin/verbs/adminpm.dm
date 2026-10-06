@@ -37,7 +37,7 @@
 
 /client/proc/cmd_ahelp_reply(whom)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."))
+		to_chat(src, span_danger("无法使用管理员私信：你已被禁言。"))
 		return
 	var/client/C
 	if(istext(whom))
@@ -65,12 +65,12 @@
 //Fetching a message if needed. src is the sender and C is the target client
 /client/proc/cmd_admin_pm(whom, msg)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."))
+		to_chat(src, span_danger("无法使用管理员私信：你已被禁言。"))
 		return
 
 	if(!holder && !current_ticket)	//no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
-		to_chat(src, span_danger("I can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be."))
-		to_chat(src, span_notice("Message: [msg]"))
+		to_chat(src, span_danger("已无法回复此次求助。如有需要，请使用Adminhelp求助命令创建新的求助。"))
+		to_chat(src, span_notice("消息：[msg]"))
 		return
 
 	var/client/recipient
@@ -90,7 +90,7 @@
 		if(!ircreplyamount)	//to prevent people from spamming irc
 			return
 		if(!msg)
-			msg = input(src,"Message:", "Private message to Administrator") as message|null
+			msg = input(src,"消息：", "发送给管理员的私信") as message|null
 
 		if(!msg)
 			return
@@ -112,13 +112,13 @@
 
 		//get message text, limit it's length.and clean/escape html
 		if(!msg)
-			msg = input(src,"Message:", "Private message to [recipient.holder?.fakekey ? "an Administrator" : key_name(recipient, 0, 0)].") as message|null
+			msg = input(src,"消息：", "发送给[recipient.holder?.fakekey ? "管理员" : key_name(recipient, 0, 0)]的私信") as message|null
 			msg = trim(msg)
 			if(!msg)
 				return
 
 			if(prefs.muted & MUTE_ADMINHELP)
-				to_chat(src, span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."))
+				to_chat(src, span_danger("无法使用管理员私信：你已被禁言。"))
 				return
 
 			if(!recipient)
@@ -145,7 +145,7 @@
 	var/keywordparsedmsg = keywords_lookup(msg)
 
 	if(irc)
-		to_chat(src, type = MESSAGE_TYPE_ADMINPM, html = span_notice("PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span>"))
+		to_chat(src, type = MESSAGE_TYPE_ADMINPM, html = span_notice("发送给<b>管理员</b>的私信：<span class='linkify'>[rawmsg]</span>"))
 		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)]</b> to <i>IRC</i>: [keywordparsedmsg]</font>")
 		ircreplyamount--
 		send2irc("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
@@ -165,7 +165,7 @@
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
 				admin_ticket_log(src, "<font color='red'>[replymsg]</font>")
 				to_chat(recipient, type = MESSAGE_TYPE_ADMINPM, html = span_danger("[replymsg]"))
-				to_chat(src, type = MESSAGE_TYPE_ADMINPM, html = span_notice("PM to-<b>Admins</b>: <span class='linkify'>[msg]</span>"))
+				to_chat(src, type = MESSAGE_TYPE_ADMINPM, html = span_notice("发送给<b>管理员</b>的私信：<span class='linkify'>[msg]</span>"))
 
 			//play the receiving admin the adminhelp sound (if they have them enabled)
 			if(recipient.prefs.toggles & SOUND_ADMINHELP)
@@ -178,10 +178,10 @@
 			else
 				created_ticket = recipient.current_ticket
 
-			to_chat(recipient, type = MESSAGE_TYPE_ADMINPM, html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
-			to_chat(recipient, type = MESSAGE_TYPE_ADMINPM, html = span_adminsay("Admin PM from-<b>[key_name(src, recipient, 0)]</b>: <span class='linkify'>[msg]</span>"))
+			to_chat(recipient, type = MESSAGE_TYPE_ADMINPM, html = "<font color='red' size='4'><b>-- 管理员私信 --</b></font>")
+			to_chat(recipient, type = MESSAGE_TYPE_ADMINPM, html = span_adminsay("来自<b>[key_name(src, recipient, 0)]</b>的管理员私信：<span class='linkify'>[msg]</span>"))
 			// Provide explicit ticket controls for the new ticket system
-			to_chat(recipient, type = MESSAGE_TYPE_ADMINPM, html = span_adminsay("<i><a href='?viewticket=1'>View ticket</a> | <a href='?replyticket=1'>Quick reply</a></i>"))
+			to_chat(recipient, type = MESSAGE_TYPE_ADMINPM, html = span_adminsay("<i><a href='?viewticket=1'>查看求助</a> | <a href='?replyticket=1'>快速回复</a></i>"))
 			to_chat(src, type = MESSAGE_TYPE_ADMINPM, html = span_notice("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"))
 
 			admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
@@ -200,7 +200,7 @@
 				GLOB.ahelp_tickets.ui_interact(usr)
 
 		else		//neither are admins
-			to_chat(src, span_danger("Error: Admin-PM: Non-admin to non-admin PM communication is forbidden."))
+			to_chat(src, span_danger("无法发送私信：普通玩家之间禁止使用管理员私信通信。"))
 			return
 
 	if(irc)
@@ -218,7 +218,7 @@
 /client/proc/popup_admin_pm(client/recipient, msg)
 	var/sender = src
 	var/sendername = key
-	var/reply = input(recipient, msg,"Admin PM from-[sendername]", "") as message|null		//show message and await a reply
+	var/reply = input(recipient, msg,"来自[sendername]的管理员私信", "") as message|null		//show message and await a reply
 	if(recipient && reply)
 		if(sender)
 			recipient.cmd_admin_pm(sender,reply)										//sender is still about, let's reply to them
@@ -303,9 +303,9 @@
 	log_admin_private("IRC PM: [sender] -> [key_name(C)] : [msg]")
 	//msg = emoji_parse(msg)
 
-	to_chat(C, "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
-	to_chat(C, span_adminsay("Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]"))
-	to_chat(C, span_adminsay("<i>Click on the administrator's name to reply.</i>"))
+	to_chat(C, "<font color='red' size='4'><b>-- 管理员私信 --</b></font>")
+	to_chat(C, span_adminsay("来自<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>的管理员私信：[msg]"))
+	to_chat(C, span_adminsay("<i>点击管理员的名字即可回复。</i>"))
 
 	admin_ticket_log(C, "<font color='purple'>PM From [irc_tagged]: [msg]</font>")
 

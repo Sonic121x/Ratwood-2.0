@@ -399,7 +399,7 @@
 	return ..()
 
 /turf/closed/indestructible
-	name = "wall"
+	name = "墙"
 	icon = 'icons/turf/walls.dmi'
 	explosion_block = 50
 	baseturfs = /turf/closed/indestructible

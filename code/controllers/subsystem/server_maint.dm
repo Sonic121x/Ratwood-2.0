@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(server_maint)
 			var/cmob = C.mob
 			if (!isnewplayer(cmob) || !SSticker.queued_players.Find(cmob))
 				log_access("AFK: [key_name(C)]")
-				to_chat(C, span_danger("I have been inactive for more than [DisplayTimeText(afk_period)] and have been disconnected.</span><br><span class='danger'>I may reconnect via the button in the file menu or by <b><u><a href='byond://winset?command=.reconnect'>clicking here to reconnect</a></u></b>."))
+				to_chat(C, span_danger("我已超过[DisplayTimeText(afk_period, chinese=TRUE)]没有活动，因此被断开连接。</span><br><span class='danger'>我可以使用文件菜单中的按钮，或<b><u><a href='byond://winset?command=.reconnect'>点击这里重新连接</a></u></b>。"))
 				QDEL_IN(C, 1) //to ensure they get our message before getting disconnected
 				continue
 

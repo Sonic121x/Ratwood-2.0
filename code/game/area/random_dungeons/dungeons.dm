@@ -55,10 +55,10 @@
 	deathsight_message = "一座沾满地精痕迹的隐秘堡垒"
 
 /area/rogue/under/dungeon/orcfort
-	name = "orc encampment"
+	name = "兽人营地"
 	// first_time_text = "idk what a good name is for this"
 	droning_sound = 'sound/music/area/gobcamp.ogg'
-	deathsight_message = "A hidden orc-stained fortress"
+	deathsight_message = "一座沾满兽人痕迹的隐秘堡垒"
 
 /area/rogue/under/dungeon/inferno
 	name = "炼狱"

@@ -320,13 +320,13 @@
 	min_val = 0
 
 /datum/config_entry/string/soft_popcap_message
-	config_entry_value = "Be warned that the server is currently serving a high number of users, consider using alternative game servers."
+	config_entry_value = "提醒：服务器当前人数较多，请考虑选择其他游戏服务器。"
 
 /datum/config_entry/string/hard_popcap_message
-	config_entry_value = "The server is currently serving a high number of users, You cannot currently join. You may wait for the number of living to decline, observe, or find alternative servers."
+	config_entry_value = "服务器当前人数较多，你暂时无法加入。你可以等待存活人数减少、选择旁观，或寻找其他服务器。"
 
 /datum/config_entry/string/extreme_popcap_message
-	config_entry_value = "The server is currently serving a high number of users, find alternative servers."
+	config_entry_value = "服务器当前人数较多，请选择其他服务器。"
 
 /datum/config_entry/flag/byond_member_bypass_popcap
 
@@ -335,12 +335,12 @@
 /datum/config_entry/number/border_control // If border control is enabled
 
 /datum/config_entry/string/panic_bunker_message
-	config_entry_value = "Sorry but the server is currently not accepting connections from never before seen players."
+	config_entry_value = "很抱歉，服务器当前不接受首次连接的玩家。"
 
 /datum/config_entry/flag/whitelist_bunker
 
 /datum/config_entry/string/whitelist_bunker_message
-	config_entry_value = "Sorry but the server is currently not accepting connections from unwhitelisted players."
+	config_entry_value = "很抱歉，服务器当前不接受未列入白名单的玩家。"
 
 /datum/config_entry/number/notify_new_player_age	// how long do we notify admins of a new player
 	min_val = -1
@@ -402,7 +402,7 @@
 	min_val = 500
 
 /datum/config_entry/string/client_warn_message
-	config_entry_value = "Your version of byond may have issues or be blocked from accessing this server in the future."
+	config_entry_value = "你的BYOND版本可能存在问题，今后也可能无法访问此服务器。"
 
 /datum/config_entry/flag/client_warn_popup
 
@@ -411,7 +411,7 @@
 	min_val = 500
 
 /datum/config_entry/string/client_error_message
-	config_entry_value = "Your version of byond is too old, may have issues, and is blocked from accessing this server."
+	config_entry_value = "你的BYOND版本过旧，可能存在问题，因此无法访问此服务器。"
 
 /datum/config_entry/number/client_error_build
 	config_entry_value = null

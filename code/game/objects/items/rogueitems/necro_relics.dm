@@ -107,7 +107,7 @@
 	active_skeletons += W
 
 	target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
-	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "FORTIFIED SKELETON"), 3 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "强化骷髅"), 3 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_pronouns_and_body)), 7 SECONDS)
 	target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
 	target.faction |= list("[user.mind.current.real_name]_faction")
@@ -134,8 +134,8 @@
 	for(var/datum/weakref/W in active_skeletons)
 		var/mob/living/carbon/human/skele = W.resolve()
 		if(skele && !QDELETED(skele) && skele.stat != DEAD)
-			skele.visible_message(span_warning("[skele] collapses into a pile of inert bones as the dark power binding it fades!"))
-			to_chat(skele, span_warning("The crystal binding your form to this world has been severed. You crumble into dust."))
+			skele.visible_message(span_warning("随着维系[skele]的黑暗力量消散，[skele]坍塌成了一堆毫无生气的白骨！"))
+			to_chat(skele, span_warning("将你的形体维系于此世的水晶已被毁去。你崩解成了尘埃。"))
 			skele.death() // kill rather then delete
 	active_skeletons.Cut()
 	qdel(src)

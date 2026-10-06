@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(biggates)
 			attached_gate.toggle()
 
 /obj/structure/gate/psy_vault
-	name = "\proper HIS 闸门"
+	name = "\proper 祂的闸门"
 	redstone_id = "swamp_psy_dungeon_hour"
 	max_integrity = 9999
 

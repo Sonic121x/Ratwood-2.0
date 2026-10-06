@@ -1605,7 +1605,7 @@
 		"Trident" = CALLBACK(src, PROC_REF(summon_and_equip_spear), user)
 	)
 
-	var/result = tgui_input_list(user, "选择要召唤的殉道者武器：", "Martyr Weapon", weapon_choices)
+	var/result = tgui_input_list(user, "选择要召唤的殉道者武器：", "殉道者武器", weapon_choices)
 
 	if(result && weapon_choices[result])
 		var/datum/callback/selected_callback = weapon_choices[result]
