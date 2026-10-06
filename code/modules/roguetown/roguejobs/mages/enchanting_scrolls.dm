@@ -17,7 +17,7 @@ T1 Enchantments below here*/
 
 /obj/item/enchantmentscroll/attack_obj(obj/item/O, mob/living/user)
 	if(O.unenchantable)
-		to_chat(user, span_warning("You cannot enchant this item."))
+		to_chat(user, span_warning("你无法为这件物品附魔。"))
 		return FALSE
 	var/datum/component/magic_item/M = O.GetComponent(/datum/component/magic_item, component)
 	if(M)

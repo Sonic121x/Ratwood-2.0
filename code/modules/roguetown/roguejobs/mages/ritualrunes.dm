@@ -875,7 +875,7 @@ GLOBAL_LIST(teleport_runes)
 	can_be_scribed = TRUE
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/adv	//160x160 rune t2(5x5 tile)
-	name = "warded 海印石 拘束矩阵"
+	name = "结界海印石拘束矩阵"
 	desc = "一座以 海印石 矩阵强化、且被充分施加结界的拘束矩阵，用于在召唤时囚禁更大、更危险的目标。"
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "warded"
@@ -887,7 +887,7 @@ GLOBAL_LIST(teleport_runes)
 	can_be_scribed = TRUE
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/max	//224x224 rune t3(7x7 tile)
-	name = "诺克之眼 warded 海印石 拘束矩阵"
+	name = "诺克之眼结界海印石拘束矩阵"
 	desc = "一座以 诺克之眼 封印与 海印石 矩阵双重强化、并施加了重重结界的拘束矩阵，用于囚禁可召唤出的最大、最危险之物。"
 	icon = 'icons/effects/224x224.dmi'
 	icon_state = "huge_runeblued"

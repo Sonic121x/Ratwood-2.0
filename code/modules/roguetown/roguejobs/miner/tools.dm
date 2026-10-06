@@ -42,8 +42,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/pick/bronze
-	name = "dolabra"
-	desc = "A so-called 'legionnaire's tool'; antiquated, but nevertheless beloved by many for its versatility. It offers an answer for labors both above-and-below, courtesy of its bronze axhead-and-picktip."
+	name = "军团斧镐"
+	desc = "所谓的“军团士兵工具”；虽已过时，却仍因用途广泛而备受喜爱。青铜斧刃与镐尖相结合，让它既能应付地表劳作，也能胜任地下作业。"
 	force = 20
 	force_wielded = 25
 	icon_state = "bronzepick"

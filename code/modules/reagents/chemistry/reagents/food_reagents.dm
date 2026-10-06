@@ -160,11 +160,11 @@
 	taste_description = "胡椒味"
 
 /datum/reagent/consumable/allspice
-	name = "Allspice"
-	description = "A blend of various spices, used to liven food and stew."
+	name = "什香粉"
+	description = "多种香料的混合物，用来为食物和炖菜增添风味。"
 	reagent_state = SOLID
 	color = "#CE8C33" 
-	taste_description = "a myriad of fragrant spices"
+	taste_description = "多种芬芳香料"
 
 /datum/reagent/drug/mushroomhallucinogen
 	name = "蘑菇致幻剂"

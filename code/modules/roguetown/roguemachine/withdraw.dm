@@ -10,9 +10,9 @@
 
 /obj/structure/roguemachine/withdraw/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click with an open hand to open the vomitorium. Insert mammons to fund purchases, then buy or import goods from the local stockpile.")
-	. += span_info("Withdrawals are cheapest. Direct imports pay a surcharge - duty flows to the Crown once Royal Custom is invoked.")
-	. += span_info("The vomitorium does not buy goods. Take deposits to a stockpile instead.")
+	. += span_info("空手左键点击以打开呕食厅。投入玛门后，即可购买本地储备货物或进口商品。")
+	. += span_info("提取本地货物最便宜。直接进口需支付附加费用；王权关税生效后，关税收入归王室所有。")
+	. += span_info("呕食厅不收购货物。要存入货物，请前往储备库。")
 
 /obj/structure/roguemachine/withdraw/Initialize(mapload)
 	. = ..()
@@ -76,7 +76,7 @@
 	data["charter_threshold"] = SStreasury.royal_custom_threshold
 	data["no_deposit"] = TRUE
 	data["title"] = "Vomitorium"
-	data["subtitle"] = "Insert mammons, then withdraw goods from the local stockpile or import from afar."
+	data["subtitle"] = "投入玛门，然后提取本地储备货物或从远方进口。"
 
 	var/list/rows = list()
 	for(var/datum/roguestock/stockpile/R in SStreasury.stockpile_datums)

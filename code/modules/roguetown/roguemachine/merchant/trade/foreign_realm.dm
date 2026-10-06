@@ -179,7 +179,7 @@
 
 /datum/foreign_realm/proc/make_compound_name()
 	if(!length(ship_name_words))
-		return "Vessel"
+		return "船舶"
 	if(single_word_base || length(ship_name_words) == 1)
 		return pick(ship_name_words)
 	var/word_a = pick(ship_name_words)
@@ -207,8 +207,8 @@
 	return ""
 
 /datum/foreign_realm/proc/generate_captain_name()
-	var/first = length(captain_first_names) ? pick(captain_first_names) : "Unnamed"
-	var/last = length(captain_last_names) ? pick(captain_last_names) : "Captain"
+	var/first = length(captain_first_names) ? pick(captain_first_names) : "无名"
+	var/last = length(captain_last_names) ? pick(captain_last_names) : "船长"
 	return "[first] [last]"
 
 /datum/foreign_realm/proc/pick_hail_line()
