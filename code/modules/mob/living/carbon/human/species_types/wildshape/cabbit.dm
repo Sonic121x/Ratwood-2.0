@@ -121,11 +121,11 @@
 	clickcd = 8
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("claws", "cuts", "scratches")
+	attack_verb = list("爪击", "划伤", "抓挠")
 	animname = "cut"
 	hitsound = "genslash"
 	penfactor = 10
-	miss_text = "slashes the air!"
+	miss_text = "挥爪划过空气！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"
 

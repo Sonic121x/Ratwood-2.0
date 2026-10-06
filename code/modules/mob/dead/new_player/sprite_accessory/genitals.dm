@@ -56,17 +56,17 @@
 
 /datum/sprite_accessory/penis/flared
 	icon_state = "flared"
-	name = "Flared"
+	name = "喇叭形"
 	color_key_defaults = list(KEY_CHEST_COLOR, KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/penis/flared_knotted
 	icon_state = "flared"
-	name = "Flared, Knotted"
+	name = "喇叭形（结节）"
 	color_key_defaults = list(KEY_CHEST_COLOR, KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/penis/barbknot
 	icon_state = "barbknot"
-	name = "Barbed, Knotted"
+	name = "倒刺（结节）"
 	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
@@ -77,7 +77,7 @@
 
 /datum/sprite_accessory/penis/taperedknot
 	icon_state = "taperedknot"
-	name = "Tapered, Knotted"
+	name = "带结节的锥形"
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/taperedknot_mammal
@@ -99,7 +99,7 @@
 
 /datum/sprite_accessory/penis/hemi
 	icon_state = "hemi"
-	name = "Hemi"
+	name = "双叉"
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/hemi_mammal
@@ -110,7 +110,7 @@
 
 /datum/sprite_accessory/penis/hemiknot
 	icon_state = "hemiknot"
-	name = "Knotted Hemi"
+	name = "双叉（结节）"
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/testicles
@@ -168,7 +168,7 @@
 
 /datum/sprite_accessory/breasts/quad
 	icon_state = "quad"
-	name = "Quad"
+	name = "四只"
 	color_key_defaults = list(KEY_CHEST_COLOR)
 	can_jiggle = TRUE
 
@@ -216,22 +216,22 @@
 
 /datum/sprite_accessory/vagina/human
 	icon_state = "human"
-	name = "Plain"
+	name = "普通"
 	default_colors = list("ea6767")
 
 /datum/sprite_accessory/vagina/hairy
 	icon_state = "hairy"
-	name = "Hairy"
+	name = "浓密阴毛"
 	color_key_defaults = list(KEY_HAIR_COLOR)
 
 /datum/sprite_accessory/vagina/trimmed
 	icon_state = "trimmed"
-	name = "Trimmed"
+	name = "修剪阴毛"
 	color_key_defaults = list(KEY_HAIR_COLOR)
 
 /datum/sprite_accessory/vagina/spade
 	icon_state = "spade"
-	name = "Spade"
+	name = "黑桃形"
 	default_colors = list("C52828")
 
 /datum/sprite_accessory/vagina/furred
@@ -246,5 +246,5 @@
 
 /datum/sprite_accessory/vagina/cloaca
 	icon_state = "cloaca"
-	name = "Cloaca"
+	name = "泄殖腔"
 	default_colors = list("f99696")

@@ -3,7 +3,7 @@
  *
  */
 /mob/dead/new_player/proc/handle_player_polling()
-	var/list/output = list("<div align='center'><B>Player polls</B><hr><table>")
+	var/list/output = list("<div align='center'><B>玩家投票</B><hr><table>")
 	var/rs = REF(src)
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
@@ -21,7 +21,7 @@
 	if(!poll)
 		return
 	if(!SSdbcore.Connect())
-		to_chat(src, span_danger("Failed to establish database connection."))
+		to_chat(src, span_danger("无法连接数据库。"))
 		return
 	switch(poll.poll_type)
 		if(POLLTYPE_OPTION)
@@ -53,12 +53,12 @@
 	if(query_option_get_voted.NextRow())
 		voted_option_id = text2num(query_option_get_voted.item[1])
 	qdel(query_option_get_voted)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>投票时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>允许重新投票。</font>"
 	if(!voted_option_id || poll.allow_revoting)
 		output += {"<form action='?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
@@ -75,7 +75,7 @@
 		output += ">[option.text]</label><br>"
 	output += "</td></tr></table>"
 	if(!voted_option_id || poll.allow_revoting)
-		output += "<p><input type='submit' value='Vote'></form>"
+		output += "<p><input type='submit' value='投票'></form>"
 	output += "</div>"
 	src << browse(jointext(output, ""),"window=playerpoll;size=500x250")
 
@@ -97,19 +97,19 @@
 	if(query_text_get_replytext.NextRow())
 		reply_text = query_text_get_replytext.item[1]
 	qdel(query_text_get_replytext)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Feedback gathering runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>意见征集时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>允许重新投票。</font>"
 	if(!reply_text || poll.allow_revoting)
 		output += {"<form action='?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
-		<font size='2'>Please provide feedback below. You can use any letters of the English alphabet, numbers and the symbols: . , ! ? : ; -</font><br>
+		<font size='2'>请在下方填写意见。可使用英文字母、数字及以下符号：. , ! ? : ; -</font><br>
 		<textarea name='replytext' cols='50' rows='14'>[reply_text]</textarea>
-		<p><input type='submit' value='Submit'></form>
+		<p><input type='submit' value='提交'></form>
 		"}
 	else
 		output += "[reply_text]"
@@ -134,12 +134,12 @@
 	while(query_rating_get_votes.NextRow())
 		voted_ratings += list("[query_rating_get_votes.item[1]]" = query_rating_get_votes.item[2])
 	qdel(query_rating_get_votes)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>投票时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>允许重新投票。</font>"
 	if(!length(voted_ratings) || poll.allow_revoting)
 		output += {"<form action='?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
@@ -167,7 +167,7 @@
 			output += "</option>"
 		output += "</select></label>"
 	if(!length(voted_ratings) || poll.allow_revoting)
-		output += "<p><input type='submit' value='Submit'></form>"
+		output += "<p><input type='submit' value='提交'></form>"
 	output += "</div>"
 	src << browse(jointext(output, ""),"window=playerpoll;size=500x500")
 
@@ -189,12 +189,12 @@
 	while(query_multi_get_votes.NextRow())
 		voted_for += text2num(query_multi_get_votes.item[1])
 	qdel(query_multi_get_votes)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "You can select up to [poll.options_allowed] options. If you select more, the first [poll.options_allowed] will be saved.<br><font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "最多可选择[poll.options_allowed]项。若超出数量，只保存前[poll.options_allowed]项。<br><font size='2'>投票时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>允许重新投票。</font>"
 	if(!length(voted_for) || poll.allow_revoting)
 		output += {"<form action='?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
@@ -211,7 +211,7 @@
 		output += ">[option.text]</label><br>"
 	output += "</td></tr></table>"
 	if(!length(voted_for) || poll.allow_revoting)
-		output += "<p><input type='submit' value='Vote'></form>"
+		output += "<p><input type='submit' value='投票'></form>"
 	output += "</div>"
 	src << browse(jointext(output, ""),"window=playerpoll;size=500x300")
 
@@ -280,26 +280,26 @@
 	</script>
 	</head>
 	<body>
-	<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>"})
+	<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>"})
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>投票时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
-	output += "Please sort the options in the order of <b>most preferred</b> to <b>least preferred</b><br></div>"
+		output += "<font size='2'>允许重新投票。</font>"
+	output += "请将选项按<b>最喜欢</b>到<b>最不喜欢</b>的顺序排列。<br></div>"
 	if(!length(voted_for) || poll.allow_revoting)
 		output += {"<form action='?src=[REF(src)]' method='POST'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		<input type='hidden' name='IRVdata' id='IRVdata'>
 		"}
-	output += "<div id='ballot' class='center'><b><center>Most Preferred</center></b><ol id='sortable' class='rankings' style='padding:0px'>"
+	output += "<div id='ballot' class='center'><b><center>最喜欢</center></b><ol id='sortable' class='rankings' style='padding:0px'>"
 	for(var/o in prepared_options)
 		var/datum/poll_option/option = o
 		output += "<li optionref='[REF(option)]' class='ranking'><span class='grippy'></span> [option.text]</li>\n"
-	output += "</ol><b><center>Least Preferred</center></b><br>"
+	output += "</ol><b><center>最不喜欢</center></b><br>"
 	if(!length(voted_for) || poll.allow_revoting)
-		output += "<p><input type='submit' value='Vote'></form>"
+		output += "<p><input type='submit' value='投票'></form>"
 	output += "</div>"
 	src << browse(jointext(output, ""),"window=playerpoll;size=500x500")
 
@@ -313,15 +313,15 @@
  */
 /mob/dead/new_player/proc/vote_on_poll_handler(datum/poll_question/poll, href_list)
 	if(!SSdbcore.Connect())
-		to_chat(src, span_danger("Failed to establish database connection."))
+		to_chat(src, span_danger("无法连接数据库。"))
 		return
 	if(!poll || !href_list)
 		return
 	if(IsAdminAdvancedProcCall())
 		log_game("[key_name(usr)] attempted to rig the vote by voting as [key]")
 		message_admins("[key_name_admin(usr)] attempted to rig the vote by voting as [key]")
-		to_chat(usr, span_danger("You don't seem to be [key]."))
-		to_chat(src, span_danger("Something went horribly wrong processing your vote. Please contact an administrator, they should have gotten a message about this"))
+		to_chat(usr, span_danger("你的身份似乎并非[key]。"))
+		to_chat(src, span_danger("处理你的投票时发生严重错误。请联系管理员，他们应该已收到相关通知。"))
 		return
 	var/admin_rank
 	if(client.holder)
@@ -349,11 +349,11 @@
 	if(query_validate_poll_vote.NextRow())
 		vote_id = text2num(query_validate_poll_vote.item[1])
 		if(vote_id && !poll.allow_revoting)
-			to_chat(usr, span_danger("Poll revoting is disabled and you've already replied to this poll."))
+			to_chat(usr, span_danger("此投票不允许重新投票，而你已经作答。"))
 			qdel(query_validate_poll_vote)
 			return
 	else
-		to_chat(usr, span_danger("Selected poll is not open."))
+		to_chat(usr, span_danger("所选投票尚未开放或已结束。"))
 		qdel(query_validate_poll_vote)
 		return
 	qdel(query_validate_poll_vote)
@@ -372,7 +372,7 @@
 	if(vote_success)
 		if(!vote_id)
 			poll.poll_votes++
-		to_chat(usr, span_notice("Vote successful."))
+		to_chat(usr, span_notice("投票成功。"))
 
 /**
  * Processes vote form data and saves results to the database for an option type poll.
@@ -380,13 +380,13 @@
  */
 /mob/dead/new_player/proc/vote_on_poll_option(datum/poll_question/poll, href_list, admin_rank, sql_poll_id, vote_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, span_danger("Failed to establish database connection."))
+		to_chat(src, span_danger("无法连接数据库。"))
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	var/datum/poll_option/option = locate(href_list["voteoptionref"]) in poll.options
 	if(!option)
-		to_chat(src, span_danger("No option was selected."))
+		to_chat(src, span_danger("尚未选择选项。"))
 		return
 	var/datum/DBQuery/query_vote_option = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank)
@@ -412,13 +412,13 @@
  */
 /mob/dead/new_player/proc/vote_on_poll_text(href_list, admin_rank, sql_poll_id, vote_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, span_danger("Failed to establish database connection."))
+		to_chat(src, span_danger("无法连接数据库。"))
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	var/reply_text = href_list["replytext"]
 	if(!reply_text || (length(reply_text) > 2048))
-		to_chat(src, span_danger("The text you entered was blank or too long. Please correct the text and submit again."))
+		to_chat(src, span_danger("输入内容为空或过长。请修改后重新提交。"))
 		return
 	var/datum/DBQuery/query_vote_text = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("poll_textreply")] (id, datetime, pollid, ckey, ip, replytext, adminrank)
@@ -444,7 +444,7 @@
  */
 /mob/dead/new_player/proc/vote_on_poll_rating(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, span_danger("Failed to establish database connection."))
+		to_chat(src, span_danger("无法连接数据库。"))
 		return
 	if(IsAdminAdvancedProcCall())
 		return
@@ -487,14 +487,14 @@
  */
 /mob/dead/new_player/proc/vote_on_poll_multi(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, span_danger("Failed to establish database connection."))
+		to_chat(src, span_danger("无法连接数据库。"))
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	if(length(href_list) > 2)
 		href_list.Cut(1,3) //first two values aren't options
 	else
-		to_chat(src, span_danger("No options were selected."))
+		to_chat(src, span_danger("尚未选择任何选项。"))
 
 	var/special_columns = list(
 		"datetime" = "NOW()",
@@ -505,7 +505,7 @@
 	var/vote_count = 0
 	for(var/h in href_list)
 		if(vote_count == poll.options_allowed)
-			to_chat(src, span_danger("Allowed option count exceeded, only the first [poll.options_allowed] selected options have been saved."))
+			to_chat(src, span_danger("所选数量超过上限，只保存了前[poll.options_allowed]个选项。"))
 			break
 		vote_count++
 		var/datum/poll_option/option = locate(h) in poll.options
@@ -534,13 +534,13 @@
  */
 /mob/dead/new_player/proc/vote_on_poll_irv(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, span_danger("Failed to establish database connection."))
+		to_chat(src, span_danger("无法连接数据库。"))
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	var/list/votelist = splittext(href_list["IRVdata"], ",")
 	if(!length(votelist))
-		to_chat(src, span_danger("No ordering data found. Please try again or contact an administrator."))
+		to_chat(src, span_danger("未找到排序数据。请重试或联系管理员。"))
 
 	var/list/special_columns = list(
 		"datetime" = "NOW()",

@@ -1,5 +1,5 @@
 /datum/language/swarmer
-	name = "Swarmer"
+	name = "蜂群机器人语"
 	desc = ""
 	speech_verb = "发出鸣音"
 	ask_verb = "好奇地发出鸣音"

@@ -5,7 +5,7 @@
 	var/icon_state
 
 /datum/hair_gradient/none
-	name = "None"
+	name = "无"
 	icon = null
 	icon_state = null
 
@@ -18,11 +18,11 @@
 	icon_state = "fadedown"
 
 /datum/hair_gradient/vertical_split
-	name = "Vertical Split"
+	name = "垂直分色"
 	icon_state = "vsplit"
 
 /datum/hair_gradient/_split
-	name = "Horizontal Split"
+	name = "水平分色"
 	icon_state = "bottomflat"
 
 /datum/hair_gradient/reflected
@@ -38,7 +38,7 @@
 	icon_state = "wavy"
 
 /datum/hair_gradient/long_fade_up
-	name = "Long Fade Up"
+	name = "长上渐变"
 	icon_state = "long_fade_up"
 
 /datum/hair_gradient/long_fade_down
@@ -46,7 +46,7 @@
 	icon_state = "long_fade_down"
 
 /datum/hair_gradient/short_fade_up
-	name = "Short Fade Up"
+	name = "短上渐变"
 	icon_state = "short_fade_up"
 
 /datum/hair_gradient/short_fade_down
@@ -54,7 +54,7 @@
 	icon_state = "short_fade_down"
 
 /datum/hair_gradient/wavy_spike
-	name = "Spiked Wavy"
+	name = "尖刺波浪"
 	icon_state = "wavy_spiked"
 
 /datum/hair_gradient/streaks

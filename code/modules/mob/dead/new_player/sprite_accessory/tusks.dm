@@ -1,7 +1,7 @@
 /datum/sprite_accessory/tusks
 	abstract_type = /datum/sprite_accessory/tusks
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
-	color_key_name = "Tusks"
+	color_key_name = "獠牙"
 	relevant_layers = list(BODY_FRONT_LAYER)
 	default_colors = list("#F4F4BE")
 
@@ -12,11 +12,11 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/tusks/halforc
-	name = "Orc"
+	name = "兽人"
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
 	icon_state = "orctusk"
 
 /datum/sprite_accessory/tusks/longtusk
-	name = "Long"
+	name = "长獠牙"
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
 	icon_state = "longtusk"
