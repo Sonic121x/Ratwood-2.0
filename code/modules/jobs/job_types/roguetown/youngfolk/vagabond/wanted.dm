@@ -56,5 +56,5 @@
 			if ("重赏")
 				bounty_total = rand(150, 200)
 	
-		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, "The Justiciary of [SSmapping.map_adjustment.realm_name]")
+		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, "[SSmapping.map_adjustment.realm_name]司法厅")
 		to_chat(H, span_notice("我正在逃避律法追捕，而我的脑袋上挂着一笔[LOWER_TEXT(bounty_amount)]的血金悬赏……最好低调点。"))

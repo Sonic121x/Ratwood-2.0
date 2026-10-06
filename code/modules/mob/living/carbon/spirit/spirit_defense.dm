@@ -18,15 +18,15 @@
 			if(HAS_TRAIT(M, TRAIT_PACIFISM))
 				playsound(loc, 'sound/combat/shove.ogg', 100, TRUE, -1)
 				M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
-				visible_message(span_warning("[M]'s punch goes through [name]!"), \
-								span_warning("[M]'s punch goes through you!"), span_hear("I hear the sound of scuffling of the damned!"), COMBAT_MESSAGE_RANGE, M)
-				to_chat(M, span_danger("My punch goes through [name]!"))
+				visible_message(span_warning("[M]的拳头穿过了[name]！"), \
+								span_warning("[M]的拳头穿过了我！"), span_hear("我听到了亡魂搏斗的声音！"), COMBAT_MESSAGE_RANGE, M)
+				to_chat(M, span_danger("我的拳头穿过了[name]！"))
 				return
 			M.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 			if (prob(75))
-				visible_message(span_danger("[M] punches [name]!"), \
-								span_danger("[M] punches you!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
-				to_chat(M, span_danger("I punch [name]!"))
+				visible_message(span_danger("[M]拳击了[name]！"), \
+								span_danger("[M]拳击了我！"), span_hear("我听到了令人作呕的血肉碰撞声！"), COMBAT_MESSAGE_RANGE, M)
+				to_chat(M, span_danger("我拳击了[name]！"))
 
 				playsound(loc, "punch", 25, TRUE, -1)
 				var/damage = rand(5, 10)
@@ -34,9 +34,9 @@
 					damage = rand(10, 15)
 					if(AmountUnconscious() < 100 && health > 0)
 						Unconscious(rand(200, 300))
-						visible_message(span_danger("[M] knocks [name] out!"), \
-										span_danger("[M] knocks you out!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), 5, M)
-						to_chat(M, span_danger("I knock [name] out!"))
+						visible_message(span_danger("[M]打昏了[name]！"), \
+										span_danger("[M]打昏了我！"), span_hear("我听到了令人作呕的血肉碰撞声！"), 5, M)
+						to_chat(M, span_danger("我打昏了[name]！"))
 				var/obj/item/bodypart/affecting = get_bodypart(ran_zone(M.zone_selected))
 				if(!affecting)
 					affecting = get_bodypart(BODY_ZONE_CHEST)
@@ -45,30 +45,30 @@
 
 			else
 				playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-				visible_message(span_danger("[M]'s punch misses [name]!"), \
-								span_danger("I avoid [M]'s punch!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, M)
-				to_chat(M, span_warning("My punch misses [name]!"))
+				visible_message(span_danger("[M]的拳头未能击中[name]！"), \
+								span_danger("我躲开了[M]的拳头！"), span_hear("我听到了一阵破空声！"), COMBAT_MESSAGE_RANGE, M)
+				to_chat(M, span_warning("我的拳头未能击中[name]！"))
 		if(INTENT_DISARM)
 			if(HAS_TRAIT(M, TRAIT_PACIFISM))
 				playsound(loc, 'sound/combat/shove.ogg', 100, TRUE, -1)
 				M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
-				visible_message(span_warning("[M]'s shove goes through [name]!"), \
-								span_warning("[M]'s shove goes through you!"), span_hear("I hear the sound scuffling of the damned!"), COMBAT_MESSAGE_RANGE, M)
-				to_chat(M, span_danger("My shove goes through [name]!"))
+				visible_message(span_warning("[M]推搡的手穿过了[name]！"), \
+								span_warning("[M]推搡的手穿过了我！"), span_hear("我听到了亡魂搏斗的声音！"), COMBAT_MESSAGE_RANGE, M)
+				to_chat(M, span_danger("我推搡的手穿过了[name]！"))
 			if(!IsUnconscious())
 				M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 				if (prob(25))
 					Paralyze(40)
 					playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 					log_combat(M, src, "pushed")
-					visible_message(span_danger("[M] pushes [src] down!"), \
-									span_danger("[M] pushes you down!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), null, M)
-					to_chat(M, span_danger("I push [src] down!"))
+					visible_message(span_danger("[M]推倒了[src]！"), \
+									span_danger("[M]推倒了我！"), span_hear("我听到了激烈的搏斗声，随后传来一声重响！"), null, M)
+					to_chat(M, span_danger("我推倒了[src]！"))
 				else if(dropItemToGround(get_active_held_item()))
 					playsound(src, 'sound/blank.ogg', 50, TRUE, -1)
-					visible_message(span_danger("[M] disarms [src]!"), \
-									span_danger("[M] disarms you!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, M)
-					to_chat(M, span_danger("I disarm [src]!"))
+					visible_message(span_danger("[M]缴了[src]的械！"), \
+									span_danger("[M]缴了我的械！"), span_hear("我听到了激烈的搏斗声！"), COMBAT_MESSAGE_RANGE, M)
+					to_chat(M, span_danger("我缴了[src]的械！"))
 
 /mob/living/carbon/spirit/attack_animal(mob/living/simple_animal/M)
 	. = ..()
@@ -89,13 +89,13 @@
 			if(!(wear_mask.resistance_flags & UNACIDABLE))
 				wear_mask.acid_act(acidpwr, acid_volume)
 			else
-				to_chat(src, span_warning("My mask protects you from the acid."))
+				to_chat(src, span_warning("我的面具挡住了酸液。"))
 			return
 		if(head)
 			if(!(head.resistance_flags & UNACIDABLE))
 				head.acid_act(acidpwr, acid_volume)
 			else
-				to_chat(src, span_warning("My hat protects you from the acid."))
+				to_chat(src, span_warning("我的帽子挡住了酸液。"))
 			return
 	take_bodypart_damage(acidpwr * min(0.6, acid_volume*0.1))
 

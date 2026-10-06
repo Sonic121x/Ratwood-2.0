@@ -1,6 +1,6 @@
 // 'basic' language; spoken by default.
 /datum/language/common
-	name = "Imperial"
+	name = "帝国语"
 	desc = ""
 	speech_verb = "说道"
 	whisper_verb = "低语"

@@ -284,7 +284,7 @@
 
 /datum/intent/simple/claw/witch_cat
 	name = "抓挠"
-	attack_verb = list("抓挠", "claws")
+	attack_verb = list("抓挠", "爪击")
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/witch/lesser_vernard
 	name = "小型维纳德狐形态"

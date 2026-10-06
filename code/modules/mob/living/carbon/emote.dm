@@ -36,8 +36,8 @@
 	vary = TRUE
 
 /mob/living/carbon/human/verb/emote_clap()
-	set name = "Clap"
-	set category = "Noises"
+	set name = "鼓掌"
+	set category = "发声"
 
 	emote("clap", intentional = TRUE)
 
@@ -50,8 +50,8 @@
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_slowclap()
-	set name = "Slow clap"
-	set category = "Noises"
+	set name = "缓慢鼓掌"
+	set category = "发声"
 
 	emote("slowclap", intentional = TRUE)
 
@@ -64,8 +64,8 @@
 	restraint_check = TRUE
 
 /mob/living/carbon/human/verb/emote_clap1()
-	set name = "Clap once"
-	set category = "Noises"
+	set name = "拍手一次"
+	set category = "发声"
 
 	emote("clap1", intentional = TRUE)
 
@@ -77,8 +77,8 @@
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_moan()
-	set name = "Moan"
-	set category = "Noises"
+	set name = "呻吟"
+	set category = "发声"
 
 	emote("moan")
 
