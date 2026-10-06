@@ -1,7 +1,7 @@
 // If clothing appears on a bathmaiden. Then it should be sold here. 
 /datum/supply_pack/rogue/bath_clothes
 	group = "异域服饰" // English: Exotic Apparel
-	crate_name = "bathmatron's crate"
+	crate_name = "浴场主的货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/bath_clothes/exoticsilkbra
