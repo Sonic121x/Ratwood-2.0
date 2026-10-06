@@ -330,7 +330,7 @@
 
 /obj/item/clothing/neck/roguetown/bevor/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
 /obj/item/clothing/neck/roguetown/bevor/iron
 	name = "铁护颚"

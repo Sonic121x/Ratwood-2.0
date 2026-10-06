@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(named_body_hair_materials, list(
 	..()
 	var/datum/customizer_entry/bodypart_feature/pits/pits_entry = entry
 	var/material_name = find_key_by_value(GLOB.named_body_hair_materials, pits_entry.material)
-	dat += "<br>Material: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=body_hair_material'>[material_name]</a>"
+	dat += "<br>材质: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=body_hair_material'>[material_name]</a>"
 
 /datum/customizer_choice/bodypart_feature/pits/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()

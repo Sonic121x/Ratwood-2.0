@@ -291,7 +291,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
 /obj/item/clothing/wrists/roguetown/splintarms/iron
 	name = "拼铁臂甲"

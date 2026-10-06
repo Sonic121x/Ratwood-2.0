@@ -37,7 +37,7 @@
 	var/fakekey = ckey
 	if(ckey in GLOB.anonymize)
 		fakekey = get_fake_key(ckey)
-	GLOB.character_list[mobid] = "[fakekey] was [real_name] ([input])<BR>"
+	GLOB.character_list[mobid] = "[fakekey] 扮演了 [real_name] ([input])<BR>"
 	if(GLOB.character_ckey_list[old_name])
 		GLOB.character_ckey_list -= old_name
 	GLOB.character_ckey_list[real_name] = ckey

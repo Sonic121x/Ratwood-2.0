@@ -1,11 +1,11 @@
 // Get the display names of the underlying TGUI themes
 /datum/preferences/proc/get_tgui_theme_display_name()
 	var/static/list/theme_names = list(
-		"azure_default" = "Ascendant",
-		"azure_green" = "Undivided",
-		"azure_lane" = "Cerulean",
-		"azure_purple" = "Zybantium",
-		"trey_liam" = "Trey Liam"
+		"azure_default" = "飞升者",
+		"azure_green" = "无分",
+		"azure_lane" = "天蓝",
+		"azure_purple" = "兹班图",
+		"trey_liam" = "特雷·利亚姆"
 	)
 	return theme_names[tgui_theme] || tgui_theme
 
@@ -17,7 +17,7 @@
 		current_index = 1
 	var/next_index = (current_index % styles.len) + 1
 	tgui_theme = styles[next_index]
-	to_chat(usr, "<span class='notice'>TGUI style set to [get_tgui_theme_display_name()].</span>")
+	to_chat(usr, "<span class='notice'>TGUI样式已设为[get_tgui_theme_display_name()]。</span>")
 	save_preferences()
 	
 
@@ -25,9 +25,9 @@
 // player's parchment_skin pref in tgui Layout - plain parchment, leatherbound, or vellum.
 /proc/get_parchment_skins()
 	var/static/list/skins = list(
-		"vellum" = "Vellum",
-		"parchment" = "Parchment",
-		"leatherbound" = "Leatherbound",
+		"vellum" = "犊皮纸",
+		"parchment" = "羊皮纸",
+		"leatherbound" = "皮革装帧",
 	)
 	return skins
 

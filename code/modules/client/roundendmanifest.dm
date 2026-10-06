@@ -1,10 +1,10 @@
 /client/proc/view_rogue_manifest()
 	var/dat
-	dat += "<h3>Round ID: [GLOB.rogue_round_id]</h1>"
+	dat += "<h3>回合编号: [GLOB.rogue_round_id]</h1>"
 	for(var/X in GLOB.character_list)
 		dat += "[GLOB.character_list[X]]"
 
-	var/datum/browser/popup = new(src, "actors", "<center>Inhabitants of the Realm</center>", 387, 420)
+	var/datum/browser/popup = new(src, "actors", "<center>领地居民</center>", 387, 420)
 	popup.set_content(dat)
 	popup.open(FALSE)
 
@@ -17,7 +17,7 @@
 			for(var/X in GLOB.actors_list[department]) // Woe be the key value pair WITH another kv inside!!! Mwahahaha
 				dat += "[GLOB.actors_list[department][X]]"
 
-	var/datum/browser/popup = new(src, "actors", "<center>This Story's Actors</center>", 387, 420)
+	var/datum/browser/popup = new(src, "actors", "<center>本篇故事的演员</center>", 387, 420)
 	popup.set_content(dat)
 	popup.open(FALSE)
 
@@ -26,6 +26,6 @@
 	for(var/X in GLOB.roleplay_ads)
 		dat += "[GLOB.roleplay_ads[X]]"
 
-	var/datum/browser/popup = new(src, "actors", "<center>Roleplay Ads</center>", 500, 600)
+	var/datum/browser/popup = new(src, "actors", "<center>角色扮演招募</center>", 500, 600)
 	popup.set_content(dat)
 	popup.open(FALSE)
