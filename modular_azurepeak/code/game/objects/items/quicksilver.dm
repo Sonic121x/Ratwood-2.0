@@ -47,7 +47,7 @@
 		return
 
 	if(user.patron in ALL_INHUMEN_PATRONS)
-		to_chat(user, span_warning("这整套涂敷仪式听起来就是TEN派胡言乱语。为什么要阻止混乱？再说，这膏药还烧手。"))
+		to_chat(user, span_warning("这整套涂敷仪式听起来就是十神派的胡言乱语。为什么要阻止混乱？再说，这膏药还烧手。"))
 		return
 
 	if(user == M)
