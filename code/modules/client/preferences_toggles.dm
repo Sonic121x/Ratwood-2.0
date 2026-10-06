@@ -492,11 +492,11 @@
 			• 无法强行拆除\n\
 			• 在钥匙将你释放之前，你将一直受缚\n\n\
 			你是否接受这些永久束缚条款？",
-			"Permanent Chastity Binding",
-			"I accept the binding",
-			"I refuse")
+			"永久贞操束缚",
+			"我接受束缚",
+			"我拒绝")
 		
-		if(confirm != "I accept the binding")
+		if(confirm != "我接受束缚")
 			to_chat(src, span_notice("你拒绝了永久束缚。"))
 			return
 		
@@ -1211,9 +1211,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	prefs.inquisitive_ghost = !prefs.inquisitive_ghost
 	prefs.save_preferences()
 	if(prefs.inquisitive_ghost)
-		to_chat(src, span_notice("I will now examine everything you click on."))
+		to_chat(src, span_notice("现在会自动查看你点击的所有事物。"))
 	else
-		to_chat(src, span_notice("I will no longer examine things you click on."))
+		to_chat(src, span_notice("不再自动查看你点击的事物。"))
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Inquisitiveness", "[prefs.inquisitive_ghost ? "Enabled" : "Disabled"]"))
 
 //Admin Preferences
