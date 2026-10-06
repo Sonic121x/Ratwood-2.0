@@ -99,7 +99,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ancient
 	name = "远古锁子甲"

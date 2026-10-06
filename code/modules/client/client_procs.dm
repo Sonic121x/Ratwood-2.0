@@ -4,9 +4,9 @@
 #define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
-	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
-	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
-	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
+	"1407" = "客户端显示覆盖失效，导致玩家能看到本不应看见的物品或角色",
+	"1408" = "客户端显示覆盖失效，导致玩家能看到本不应看见的物品或角色",
+	"1428" = "右键菜单显示过多操作选项；此问题已在1429版本修复",
 
 	))
 
@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, span_danger("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
+		to_chat(src, span_danger("检测到客户端接收资源时发生错误，正在尝试修复……（如果反复出现此提示，请关闭BYOND后重新连接。）"))
 		src << browse("...", "window=asset_cache_browser")
 		return
 	if (href_list["asset_cache_preload_data"])
@@ -131,9 +131,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Quick reply to the current ticket using the adminhelp system
 	if(href_list["replyticket"])
 		if(!current_ticket)
-			to_chat(src, span_notice("You don't have an active admin help ticket to reply to."))
+			to_chat(src, span_notice("你没有正在处理的管理员求助工单可供回复。"))
 			return
-		var/msg = input(src, "Reply to the admin team:", "Adminhelp reply") as message|null
+		var/msg = input(src, "回复管理员团队：", "回复管理员求助") as message|null
 		if(!msg)
 			return
 		// Route through the normal adminhelp flow so spam checks and
@@ -216,14 +216,14 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	..()	//redirect to hsrc.Topic()
 
 /client/proc/view_stats()
-	set name = "View Chronicle"
+	set name = "查看纪事"
 	set category = "OOC"
 
 	show_round_stats(pick_assoc(GLOB.featured_stats))
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
-		to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
+		to_chat(src, "成为BYOND会员即可使用会员福利和功能，并支持让本游戏得以运行的引擎。三个月仅需10美元！<a href=\"https://secure.byond.com/membership\">点击此处了解详情</a>。")
 		return 0
 	return 1
 
@@ -275,11 +275,11 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if(CONFIG_GET(flag/automute_on) && !holder && last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
-			to_chat(src, span_danger("I have exceeded the spam filter limit for identical messages. An auto-mute was applied."))
+			to_chat(src, span_danger("我重复发送相同消息的次数已超过反刷屏限制，已被自动禁言。"))
 			cmd_admin_mute(src, mute_type, 1)
 			return 1
 		if(src.last_message_count >= SPAM_TRIGGER_WARNING)
-			to_chat(src, span_danger("I are nearing the spam filter limit for identical messages."))
+			to_chat(src, span_danger("我重复发送相同消息的次数即将达到反刷屏限制。"))
 			return 0
 	else
 		last_message = message
@@ -420,9 +420,9 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 		if (num2text(byond_build) in GLOB.blacklisted_builds)
 			log_access("Failed login: [key] - blacklisted byond version")
-			to_chat(src, span_danger("My version of byond is blacklisted."))
-			to_chat(src, span_danger("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]."))
-			to_chat(src, span_danger("Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions."))
+			to_chat(src, span_danger("我的BYOND版本已被列入黑名单。"))
+			to_chat(src, span_danger("BYOND构建[byond_build]（[byond_version].[byond_build]）已被列入黑名单，原因如下：[GLOB.blacklisted_builds[num2text(byond_build)]]。"))
+			to_chat(src, span_danger("请下载新版本的BYOND。如果[byond_build]已是最新版本，你可以前往<a href=\"https://secure.byond.com/download/build\">BYOND官网</a>下载其他版本。"))
 			if(connecting_admin)
 				to_chat(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
 			else
@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	if(alert_mob_dupe_login)
 		spawn()
-			alert(mob, "You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
+			alert(mob, "你在本回合已使用另一个账号登录，请立即退出当前账号，否则可能遭到封禁！")
 
 	tgui_panel.initialize()
 
@@ -447,11 +447,11 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	var/ceb = CONFIG_GET(number/client_error_build)
 	var/cwv = CONFIG_GET(number/client_warn_version)
 	if (byond_version < cev || byond_build < ceb)		//Out of date client.
-		to_chat(src, span_danger("<b>My version of BYOND is too old:</b>"))
+		to_chat(src, span_danger("<b>我的BYOND版本过旧：</b>"))
 		to_chat(src, CONFIG_GET(string/client_error_message))
-		to_chat(src, "Your version: [byond_version].[byond_build]")
-		to_chat(src, "Required version: [cev].[ceb] or later")
-		to_chat(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+		to_chat(src, "你的版本：[byond_version].[byond_build]")
+		to_chat(src, "要求版本：[cev].[ceb]或更高版本")
+		to_chat(src, "前往<a href=\"https://secure.byond.com/download\">BYOND官网</a>获取最新版本的BYOND。")
 		if (connecting_admin)
 			to_chat(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
 		else
@@ -459,26 +459,26 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			return 0
 	else if (byond_version < cwv)	//We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>My version of byond may be getting out of date:</b><br>"
+			var/msg = "<b>我的BYOND版本可能已过时：</b><br>"
 			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
-			msg += "Your version: [byond_version]<br>"
-			msg += "Required version to remove this message: [cwv] or later<br>"
-			msg += "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
+			msg += "你的版本：[byond_version]<br>"
+			msg += "不再显示此提示所需的版本：[cwv]或更高版本<br>"
+			msg += "前往<a href=\"https://secure.byond.com/download\">BYOND官网</a>获取最新版本的BYOND。<br>"
 			src << browse(msg, "window=warning_popup")
 		else
-			to_chat(src, span_danger("<b>My version of byond may be getting out of date:</b>"))
+			to_chat(src, span_danger("<b>我的BYOND版本可能已过时：</b>"))
 			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version]")
-			to_chat(src, "Required version to remove this message: [cwv] or later")
-			to_chat(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+			to_chat(src, "你的版本：[byond_version]")
+			to_chat(src, "不再显示此提示所需的版本：[cwv]或更高版本")
+			to_chat(src, "前往<a href=\"https://secure.byond.com/download\">BYOND官网</a>获取最新版本的BYOND。")
 
 	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
-			to_chat(src, "Web client is disabled")
+			to_chat(src, "网页客户端已被禁用")
 			qdel(src)
 			return 0
 		if (CONFIG_GET(flag/webclient_only_byond_members) && !IsByondMember())
-			to_chat(src, "Sorry, but the web client is restricted to byond members only.")
+			to_chat(src, "网页客户端仅限BYOND会员使用。")
 			qdel(src)
 			return 0
 
@@ -495,7 +495,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		if(joined_area)
 			joined_area.reconnect_game(mob)
 	else if(!BC_IsKeyAllowedToConnect(ckey))
-		src << "Sorry, but the server is currently only accepting whitelisted players.  Please see the discord to be whitelisted."
+		src << "服务器当前仅允许白名单玩家加入。请前往Discord申请白名单资格。"
 		message_admins("[ckey] was denied a connection due to not being whitelisted.")
 		log_admin("[ckey] was denied a connection due to not being whitelisted.")
 		qdel(src)
@@ -530,7 +530,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, span_info("You have unread updates in the changelog."))
+		to_chat(src, span_info("更新日志中有你尚未阅读的内容。"))
 		if(CONFIG_GET(flag/aggressive_changelog))
 			changelog()
 		else
@@ -557,7 +557,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	to_chat(src, get_message_output("message", ckey))
 
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
-		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
+		to_chat(src, span_warning("无法访问资源缓存浏览器。如果你使用自定义界面文件，请允许Dream Seeker下载更新版本；否则，请提交错误报告。此问题并不严重，但会导致客户端无法确认额外资源何时送达，从而影响资源下载。"))
 
 	update_ambience_pref()
 
@@ -705,7 +705,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
 			if(panic_addr && !connectiontopic_a["redirect"])
 				var/panic_name = CONFIG_GET(string/panic_server_name)
-				to_chat(src, span_notice("Sending you to [panic_name ? panic_name : panic_addr]."))
+				to_chat(src, span_notice("正在将你转至[panic_name ? panic_name : panic_addr]。"))
 				winset(src, null, "command=.options")
 				src << link("[panic_addr]?redirect=1")
 			qdel(query_client_in_db)
@@ -879,8 +879,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		if (oldcid != computer_id && computer_id != lastcid) //IT CHANGED!!!
 			cidcheck -= ckey //so they can try again after removing the cid randomizer.
 
-			to_chat(src, span_danger("Connection Error:"))
-			to_chat(src, span_danger("Invalid ComputerID(spoofed). Please remove the ComputerID spoofer from my byond installation and try again."))
+			to_chat(src, span_danger("连接错误："))
+			to_chat(src, span_danger("无效的ComputerID（疑似伪造）。请移除BYOND安装中的ComputerID伪造工具后重试。"))
 
 			if (!cidcheck_failedckeys[ckey])
 				message_admins(span_adminnotice("[key_name(src)] has been detected as using a cid randomizer. Connection rejected."))
@@ -920,7 +920,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	var/url = winget(src, null, "url")
 	//special javascript to make them reconnect under a new window.
 	src << browse({"<a id='link' href="byond://[url]?token=[token]">byond://[url]?token=[token]</a><script type="text/javascript">document.getElementById("link").click();window.location="byond://winset?command=.quit"</script>"}, "border=0;titlebar=0;size=1x1;window=redirect")
-	to_chat(src, {"<a href="byond://[url]?token=[token]">I will be automatically taken to the game, if not, click here to be taken manually</a>"})
+	to_chat(src, {"<a href="byond://[url]?token=[token]">我将自动进入游戏；若未自动跳转，请点击此处手动进入</a>"})
 
 /client/proc/note_randomizer_user()
 	add_system_note("CID-Error", "Detected as using a cid randomizer.")
@@ -987,11 +987,11 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			clicklimiter[MINUTE_COUNT] = 0
 		clicklimiter[MINUTE_COUNT] += 1+(ab)
 		if (clicklimiter[MINUTE_COUNT] > mcl)
-			var/msg = "Your previous click was ignored because you've done too many in a minute."
+			var/msg = "你在一分钟内点击了太多次，上一次点击已被忽略。"
 			if (minute != clicklimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
 				clicklimiter[ADMINSWARNED_AT] = minute
 
-				msg += " Administrators have been informed."
+				msg += " 已通知管理员。"
 				if (ab)
 					log_game("[key_name(src)] is using the middle click aimbot exploit")
 					message_admins("[ADMIN_LOOKUPFLW(usr)] [ADMIN_KICK(usr)] is using the middle click aimbot exploit</span>")
@@ -1241,24 +1241,24 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		return FALSE
 	if(prefs.commendedsomeone)
 		if(!silent)
-			to_chat(src, span_danger("You already commended someone this round."))
+			to_chat(src, span_danger("你在本回合已赞许过一名玩家。"))
 		return FALSE
 	return TRUE
 
 /client/proc/commendsomeone(forced = FALSE)
 	if(!can_commend(forced))
 		return
-	if(alert(src,"Was there a character during this round that you would like to anonymously commend?", "Commendation", "YES", "NO") != "YES")
+	if(alert(src,"本回合有你想匿名赞许的角色吗？", "赞许", "是", "否") != "是")
 		return
 	var/list/selections = GLOB.character_ckey_list.Copy()
 	if(!selections.len)
 		return
-	var/selection = input(src,"Which Character?") as null|anything in sortList(selections)
+	var/selection = input(src,"选择哪位角色？") as null|anything in sortList(selections)
 	if(!selection)
 		return
 	var/theykey = selections[selection]
 	if(theykey == ckey)
-		to_chat(src,"You can't commend yourself.")
+		to_chat(src,"你不能赞许自己。")
 		return
 	if(!can_commend(forced))
 		return

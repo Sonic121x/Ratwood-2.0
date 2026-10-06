@@ -12,7 +12,7 @@
 /datum/loadout_menu/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "LoadoutMenu", "Loadout Menu")
+		ui = new(user, src, "LoadoutMenu", "配装菜单")
 		ui.set_state(GLOB.always_state)
 		ui.open()
 
@@ -79,14 +79,14 @@
 				var/datum/loadout_item/other_item = prefs.vars[slot == 1 ? "loadout" : "loadout[slot]"]
 				if(other_item)
 					if(other_item == item)
-						to_chat(usr, span_warning("[item.name] is already in slot [slot]."))
+						to_chat(usr, span_warning("[item.name]已在栏位[slot]中。"))
 						prefs.open_vices_menu(user)
 						ui.close()
 						prefs.open_vices_menu(user)
 						return TRUE
 					spent_points += other_item.triumph_cost
 			if(spent_points + item.triumph_cost > total_points)
-				to_chat(usr, span_warning("Not enough points! Need [item.triumph_cost], but only have [total_points - spent_points] remaining."))
+				to_chat(usr, span_warning("点数不足！需要[item.triumph_cost]点，但只剩[total_points - spent_points]点。"))
 				prefs.temp_loadout_selection = null
 				ui.close()
 				prefs.open_vices_menu(user)
@@ -94,7 +94,7 @@
 			// apply item to loadout
 			var/slot_var = (current_slot == 1) ? "loadout" : "loadout[current_slot]"
 			prefs.vars[slot_var] = item
-			to_chat(usr, span_notice("Selected [item.name] for slot [current_slot]."))
+			to_chat(usr, span_notice("已为栏位[current_slot]选择[item.name]。"))
 			prefs.temp_loadout_selection = null
 			ui.close()
 			prefs.open_vices_menu(user)
