@@ -91,7 +91,7 @@
 		var/damapply = stored.maxHealth * damage_percent
 
 		stored.apply_damage(damapply, source.convert_damage_type, forced = TRUE)
-	to_chat(stored, span_notice("Bug notice: If you can no longer see emotes, move to a different z level and back (up/down a level). This is a known bug."))
+	to_chat(stored, span_notice("已知问题：如果看不到表情动作，请前往其他高度层后再返回（上下移动一层）。"))
 	qdel(shape)
 	if (!QDELETED(src))
 		qdel(src)

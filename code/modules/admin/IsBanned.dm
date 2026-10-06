@@ -15,7 +15,7 @@ GLOBAL_VAR(last_connection)
 		if(real_bans_only)
 			return FALSE
 		log_access("Failed Login (invalid data): [key] [address]-[computer_id]")
-		return list("reason"="invalid login data", "desc"="Error: Could not check ban status, Please try again. Error message: Your computer provided invalid or blank information to the server on connection (byond username, IP, and Computer ID.) Provided information for reference: Username:'[key]' IP:'[address]' Computer ID:'[computer_id]'. (If you continue to get this error, please restart byond or contact byond support.)")
+		return list("reason"="invalid login data", "desc"="错误：无法检查封禁状态，请重试。连接时，你的电脑向服务器提供了无效或空白信息（BYOND用户名、IP地址、电脑ID）。参考信息：用户名：'[key]'，IP：'[address]'，电脑ID：'[computer_id]'。如果问题持续，请重启BYOND或联系BYOND支持。")
 
 	var/admin = FALSE
 	var/ckey = ckey(key)
@@ -45,7 +45,7 @@ GLOBAL_VAR(last_connection)
 					addclientmessage(ckey,span_adminnotice("I have been allowed to bypass the whitelist"))
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
-				return list("reason"="whitelist", "desc" = "\nBecome whitelisted! discord.gg/NCFXUAgCPT")
+				return list("reason"="whitelist", "desc" = "\n请申请加入白名单！discord.gg/NCFXUAgCPT")
 /*
 #ifdef MATURESERVER
 	if(!check_whitelist(ckey))
@@ -74,16 +74,16 @@ GLOBAL_VAR(last_connection)
 		if (!admin)
 			if(get_playerquality(ckey) <= -100)
 				log_access("Failed Login: [ckey] - PQ at -100")
-				return list("reason"="pqlow", "desc"="\nYou have completed the game!")
+				return list("reason"="pqlow", "desc"="\n你已经完成了游戏！")
 
 	//Guest Checking
 	if(!real_bans_only && !C && IsGuestKey(key))
 		if (CONFIG_GET(flag/guest_ban))
 			log_access("Failed Login: [key] - Guests not allowed")
-			return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
+			return list("reason"="guest", "desc"="\n原因：不允许游客进入。请使用BYOND账号登录。")
 		if (CONFIG_GET(flag/panic_bunker) && SSdbcore.Connect())
 			log_access("Failed Login: [key] - Guests not allowed during panic bunker")
-			return list("reason"="guest", "desc"="\nReason: Sorry but the server is currently not accepting connections from never before seen players or guests. If you have played on this server with a byond account before, please log in to the byond account you have played from.")
+			return list("reason"="guest", "desc"="\n原因：服务器目前不接受新玩家或游客连接。如果你曾使用BYOND账号在本服务器游玩，请登录当时使用的账号。")
 
 	//Population Cap Checking
 	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
@@ -92,7 +92,7 @@ GLOBAL_VAR(last_connection)
 		if(popcap_value >= extreme_popcap && !GLOB.joined_player_list.Find(ckey))
 			if(!IsPatreon(ckey))
 				log_access("Failed Login: [key] - Population cap reached")
-				return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
+				return list("reason"="popcap", "desc"= "\n原因：[CONFIG_GET(string/extreme_popcap_message)]")
 
 	if(CONFIG_GET(flag/sql_enabled))
 		if(!SSdbcore.Connect())
@@ -116,12 +116,12 @@ GLOBAL_VAR(last_connection)
 							message_admins(msg)
 							addclientmessage(ckey,span_adminnotice("Admin [key] has been allowed to bypass a matching non-admin ban on [i["key"]] [i["ip"]]-[i["computerid"]]."))
 						continue
-				var/expires = "This is a permanent ban."
+				var/expires = "这是永久封禁。"
 				if(i["expiration_time"])
-					expires = " The ban is for [DisplayTimeText(text2num(i["duration"]) MINUTES)] and expires on [i["expiration_time"]] (server time)."
-				var/desc = {"You, or another user of this computer or connection ([i["key"]]) is banned from playing here.
-				The ban reason is: [i["reason"]]
-				This ban (BanID #[i["id"]]) was applied by [i["admin_key"]] on [i["bantime"]] during round ID [i["round_id"]].
+					expires = " 封禁时长为[DisplayTimeText(text2num(i["duration"]) MINUTES)]，于[i["expiration_time"]]到期（服务器时间）。"
+				var/desc = {"你或使用同一电脑、连接的另一位用户（[i["key"]]）已被本服务器封禁。
+				封禁原因：[i["reason"]]
+				此次封禁（封禁编号 #[i["id"]]）由[i["admin_key"]]于[i["bantime"]]在回合[i["round_id"]]中实施。
 				[expires]"}
 				log_access("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]])")
 				return list("reason"="Banned","desc"="[desc]")
@@ -251,7 +251,7 @@ GLOBAL_VAR(last_connection)
 			return null
 
 		if (C) //user is already connected!.
-			to_chat(C, span_redtext("I are about to get disconnected for matching a sticky ban after you connected. If this turns out to be the ban evasion detection system going haywire, we will automatically detect this and revert the matches. if you feel that this is the case, please wait EXACTLY 6 seconds then reconnect using file -> reconnect to see if the match was automatically reversed."))
+			to_chat(C, span_redtext("连接后，你匹配到了关联封禁，即将被断开连接。如果这是规避封禁检测系统的误判，系统会自动识别并撤销匹配。如果你认为发生了误判，请等待整整6秒，再使用File（文件）→Reconnect（重新连接），查看匹配是否已自动撤销。"))
 
 		var/desc = ""
 		. = list("reason" = "Stickyban", "desc" = desc)

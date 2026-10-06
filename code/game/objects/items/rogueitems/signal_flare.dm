@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 
 /obj/item/signal_flare
 	name = "信号弹筒"
-	desc = "一个装满易燃粉末和彩色布料的密封炼金弹筒。将其装入 Wolkenmaw 信号枪，便能发射出数里外都能看见的鲜艳烟柱。只能使用一次。动动脑子再用，傻瓜。"
+	desc = "一个装满易燃粉末和彩色布料的密封炼金弹筒。将其装入云口信号枪，便能发射出数里外都能看见的鲜艳烟柱。只能使用一次。动动脑子再用，傻瓜。"
 	icon = 'icons/roguetown/items/flaregun.dmi'
 	icon_state = "flarecanister_ready"
 	w_class = WEIGHT_CLASS_TINY
@@ -81,19 +81,19 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 
 /obj/item/signal_flare/attack_self(mob/living/user)
 	if(spent)
-		to_chat(user, span_notice("It's spent. Nothing left but the smell of burnt powder."))
+		to_chat(user, span_notice("它已经用过了，只剩下火药的焦味。"))
 		return
-	to_chat(user, span_notice("I need to load this into a Wolkenmaw to fire it."))
+	to_chat(user, span_notice("我需要将它装入云口信号枪才能发射。"))
 
 // Held to full charge like shooting a crossbow, so a stray click can't loose a signal.
 /datum/intent/use/flaregun
-	name = "aim"
+	name = "瞄准"
 	chargetime = 8
 	no_early_release = TRUE
 	charging_slowdown = 1
 
 /obj/item/signal_flare_gun
-	name = "Wolkenmaw"
+	name = "云口信号枪"
 	desc = "一把由木材和黑铁制成的阔口魔法手铳，进口自格伦泽尔霍夫特。折开枪身，装入炼金信号弹筒，再合拢上膛，就能发射出数里外都能看见的鲜艳烟柱，引来朋友或敌人。动动脑子再用，傻瓜。"
 	icon = 'icons/roguetown/items/flaregun.dmi'
 	icon_state = "flaregun_unload"
@@ -173,20 +173,20 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	if(istype(W, /obj/item/signal_flare))
 		var/obj/item/signal_flare/new_canister = W
 		if(canister)
-			to_chat(user, span_warning("There's already a canister in the chamber."))
+			to_chat(user, span_warning("弹膛里已经有一个弹筒了。"))
 			return
 		if(cocked)
-			to_chat(user, span_warning("[src] is snapped shut. I need to break it open before I can load it."))
+			to_chat(user, span_warning("[src]已经合拢，我需要先折开枪身才能装填。"))
 			return
 		if(new_canister.spent)
-			to_chat(user, span_warning("This canister is spent. It would accomplish nothing."))
+			to_chat(user, span_warning("这个弹筒已经用过了，装进去也毫无用处。"))
 			return
 		if(!user.transferItemToLoc(new_canister, src))
 			return
 		canister = new_canister
 		update_gun_icon()
 		playsound(src, load_sound, 100)
-		user.visible_message(span_notice("[user] slots [new_canister] into [src]'s open chamber. It must be cocked shut before it can fire."))
+		user.visible_message(span_notice("[user]将[new_canister]装进[src]敞开的弹膛里，必须合拢上膛才能发射。"))
 		return
 	return ..()
 
@@ -195,13 +195,13 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 		cocked = TRUE
 		update_gun_icon()
 		playsound(src, cock_sound, 100)
-		user.visible_message(span_notice("[user] snaps [src] shut and cocks it[canister ? ". It's ready to fire" : ""]."))
+		user.visible_message(span_notice("[user]合拢[src]并将其上膛[canister ? "，随时可以发射" : ""]。"))
 		return
 	eject_canister(user)
 
 /obj/item/signal_flare_gun/proc/dry_fire(mob/living/user)
 	playsound(src, dry_fire_sound, 30, TRUE)
-	user.visible_message(span_danger("[src]'s hammer falls on an empty chamber. *click*"))
+	user.visible_message(span_danger("[src]的击锤敲在空弹膛上。*咔哒*"))
 
 /obj/item/signal_flare_gun/proc/signal_label(signal)
 	return signal == FLARE_ILLUMINATION_COLOR ? "照明" : (list("red" = "红色", "blue" = "蓝色", "green" = "绿色", "yellow" = "黄色", "white" = "白色", "purple" = "紫色", "orange" = "橙色")[signal] || signal)
@@ -217,18 +217,18 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	var/list/choices = list()
 	var/list/signals = build_flare_choices(user)
 	for(var/label in signals)
-		choices["Set dial: [label]"] = signals[label]
-	choices["Ask each time"] = null
-	var/picked = input(user, "Set which signal fires without prompting.", "Prime Signal") as null|anything in choices
+		choices["设置旋钮：[label]"] = signals[label]
+	choices["每次询问"] = null
+	var/picked = input(user, "预设无需再次询问即可发射的信号。", "预设信号") as null|anything in choices
 	if(!picked)
 		return
 	if(QDELETED(src) || !Adjacent(user) || user.incapacitated())
 		return
 	primed_color = choices[picked]
 	if(!primed_color)
-		to_chat(user, span_notice("I clear [src]'s dial. It will ask before each shot."))
+		to_chat(user, span_notice("我清除了[src]的旋钮设置，每次发射前都会询问信号选择。"))
 		return
-	to_chat(user, span_notice("I set [src]'s dial to [signal_label(primed_color)]."))
+	to_chat(user, span_notice("我将[src]的旋钮设为[signal_label(primed_color)]。"))
 
 /obj/item/signal_flare_gun/attack_right(mob/user)
 	if(canister && isliving(user))
@@ -243,14 +243,14 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	if(proximity_flag && ((target in user.contents) || !isturf(target)))
 		return
 	if(!cocked)
-		to_chat(user, span_warning("[src] needs to be cocked first."))
+		to_chat(user, span_warning("[src]需要先上膛。"))
 		return
 	if(!canister || canister.spent)
 		dry_fire(user)
 		return
 	// Checked here rather than in the click chain, as bows and crossbows do.
 	if(user.client && user.client.chargedprog < 100)
-		to_chat(user, span_warning("I didn't hold [src] skyward long enough."))
+		to_chat(user, span_warning("我将[src]举向天空的时间还不够长。"))
 		return
 	fire_flare(user)
 
@@ -261,20 +261,20 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	update_gun_icon()
 	playsound(src, break_open_sound, 100)
 	if(!ejected_canister)
-		user.visible_message(span_notice("[user] breaks [src] open. The chamber is empty."))
+		user.visible_message(span_notice("[user]折开[src]，弹膛是空的。"))
 		return
 	ejected_canister.forceMove(get_turf(src))
 	if(ejected_canister.spent)
-		user.visible_message(span_notice("[user] breaks open [src], and the spent canister clatters to the ground."))
+		user.visible_message(span_notice("[user]折开[src]，用过的弹筒叮当落地。"))
 	else
-		user.visible_message(span_notice("[user] breaks open [src], and the canister tumbles to the ground."))
+		user.visible_message(span_notice("[user]折开[src]，弹筒滚落到地上。"))
 
 /obj/item/signal_flare_gun/proc/fire_flare(mob/living/user)
 	if(firing)
 		return
 	var/area/user_area = get_area(user)
 	if(!user_area.outdoors)
-		to_chat(user, span_warning("I need to be under open sky to fire this."))
+		to_chat(user, span_warning("我需要在露天处才能发射它。"))
 		return
 	firing = TRUE
 	do_fire_flare(user)
@@ -287,7 +287,7 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	var/list/choices = list()
 
 	// Carries no code, so anyone can fire it and nobody reads meaning into it. Just light.
-	choices["Illumination"] = FLARE_ILLUMINATION_COLOR
+	choices["照明"] = FLARE_ILLUMINATION_COLOR
 
 	for(var/color in codebook)
 		if(color == FLARE_SHELTER_COLOR && !can_fire_shelter_signal(user))
@@ -295,10 +295,10 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 		// Sorted by alphabet in both instances, cannot be cheesed by non-garrison players.
 		if(user_can_interpret)
 			// Sorted by meaning
-			choices["[codebook[color]]: ([capitalize(color)])"] = color
+			choices["[codebook[color]]：（[signal_label(color)]）"] = color
 		else
 			// Sorted by color. So no ability to cheese by memorizing order, methinks?
-			choices["[capitalize(color)]"] = color
+			choices["[signal_label(color)]"] = color
 
 	return choices
 
@@ -317,7 +317,7 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 
 	if(!chosen_color)
 		var/list/choices = build_flare_choices(user)
-		var/picked = input(user, "Choose which signal to fire.", "Signal Flare") as null|anything in choices
+		var/picked = input(user, "选择要发射的信号。", "信号弹") as null|anything in choices
 		if(!picked)
 			return
 		chosen_color = choices[picked]
@@ -325,10 +325,10 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	if(!canister || canister.spent)
 		return
 
-	user.visible_message(span_warning("[user] raises [src] skyward, preparing to fire..."))
+	user.visible_message(span_warning("[user]将[src]举向天空，准备发射……"))
 	playsound(src, fuse_sound, 80)
 	if(!do_after(user, 1.5 SECONDS, target = src))
-		to_chat(user, span_warning("I was interrupted!"))
+		to_chat(user, span_warning("我被打断了！"))
 		return
 
 	if(!canister || canister.spent || !cocked)
@@ -337,16 +337,16 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	// Re-check outdoors, the wind-up takes time, and the shooter may have stepped inside since.
 	var/area/user_area = get_area(user)
 	if(!user_area.outdoors)
-		to_chat(user, span_warning("I'm no longer under open sky!"))
+		to_chat(user, span_warning("我已经不在露天处了！"))
 		return
 
 	var/turf/origin = get_turf(user)
 	var/meaning = codebook[chosen_color]
-	var/colored_name = "<font color='[chosen_color]'><b>[chosen_color]</b></font>"
+	var/colored_name = "<font color='[chosen_color]'><b>[signal_label(chosen_color)]</b></font>"
 	if(chosen_color == FLARE_ILLUMINATION_COLOR)
-		colored_name = "<font color='white'><b>brilliant white</b></font>"
+		colored_name = "<font color='white'><b>耀眼的白色</b></font>"
 
-	user.visible_message(span_warning("[user] fires [src]! A [chosen_color] plume of smoke erupts skyward!"))
+	user.visible_message(span_warning("[user]发射了[src]！一道[signal_label(chosen_color)]烟柱冲上天空！"))
 	playsound(user.loc, pick(fire_sound), 100, TRUE)
 	canister.mark_spent()
 
@@ -447,44 +447,44 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 		var/can_interpret_flare = (player.job in can_interpret)
 		var/is_townsfolk_and_shelter_signal = (chosen_color == FLARE_SHELTER_COLOR) && (player.job in townsfolk)
 
-		var/dirtext = "to the "
+		var/dirtext = "在"
 		var/direction = angle2dir(Get_Angle(player, origin))
 
 		switch(direction)
 			if(NORTH)
-				dirtext += "north"
+				dirtext += "北方"
 			if(SOUTH)
-				dirtext += "south"
+				dirtext += "南方"
 			if(EAST)
-				dirtext += "east"
+				dirtext += "东方"
 			if(WEST)
-				dirtext += "west"
+				dirtext += "西方"
 			if(NORTHWEST)
-				dirtext += "northwest"
+				dirtext += "西北方"
 			if(NORTHEAST)
-				dirtext += "northeast"
+				dirtext += "东北方"
 			if(SOUTHWEST)
-				dirtext += "southwest"
+				dirtext += "西南方"
 			if(SOUTHEAST)
-				dirtext += "southeast"
+				dirtext += "东南方"
 			else
-				dirtext = "although I cannot make out an exact direction"
+				dirtext = "在某个无法辨明的方向"
 
 		var/disttext
 
 		if(distance < 50)
-			disttext = "somewhat close"
+			disttext = "距离比较近"
 		else if(distance < 100)
-			disttext = "some distance away"
+			disttext = "有一段距离"
 		else
-			disttext = "an appreciable distance away"
+			disttext = "距离相当远"
 
-		var/msg = "<big>A [colored_name] signal flare illuminates the sky [dirtext], [disttext]!</big>"
+		var/msg = "<big>一枚[colored_name]信号弹[dirtext]照亮了天空，[disttext]！</big>"
 
 		if(can_interpret_flare && meaning)
-			msg += " <i>You know this color to mean: [meaning]</i>"
+			msg += " <i>你知道这个颜色的含义是：[meaning]</i>"
 		else if(is_townsfolk_and_shelter_signal)
-			msg += span_userdanger(" You know what this means: [meaning]")
+			msg += span_userdanger(" 你知道这代表着：[meaning]")
 
 		to_chat(player, span_boldnotice(msg))
 
@@ -494,8 +494,8 @@ GLOBAL_LIST_EMPTY(signal_flare_codebook)
 	invisibility = INVISIBILITY_ABSTRACT
 
 /obj/effect/signal_flare_remnant
-	name = "smoldering ash"
-	desc = "Glowing embers from a signal flare."
+	name = "余烬"
+	desc = "信号弹留下的发光余烬。"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ash"
 	anchored = TRUE

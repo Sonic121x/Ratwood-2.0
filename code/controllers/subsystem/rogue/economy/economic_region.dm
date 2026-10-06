@@ -487,8 +487,8 @@ GLOBAL_LIST_INIT(economic_regions, init_economic_regions())
 /proc/build_regions_primer_html()
 	var/list/parts = list()
 	parts += "<details>"
-	parts += "<summary><strong><span style='font-size:130%'> REGIONS OF [uppertext(SSmapping.map_adjustment.realm_name)] </span></strong></summary>"
-	parts += "<strong><span style='font-size:115%'> THE INTERNAL VASSALS AND DEMESNES </span></strong>"
+	parts += "<summary><strong><span style='font-size:130%'> [uppertext(SSmapping.map_adjustment.realm_name)]的各地区 </span></strong></summary>"
+	parts += "<strong><span style='font-size:115%'> 境内封臣与领地 </span></strong>"
 	parts += "<br><br>"
 	for(var/region_id in GLOB.economic_regions)
 		var/datum/economic_region/region = GLOB.economic_regions[region_id]

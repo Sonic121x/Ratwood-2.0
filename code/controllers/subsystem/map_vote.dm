@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(map_vote)
 	var/list/previous_bonus
 
 	// UI tally
-	var/tally_printout = span_red("Loading...")
+	var/tally_printout = span_red("加载中……")
 
 /datum/controller/subsystem/map_vote/Initialize()
 	if(rustg_file_exists(MAP_VOTE_CACHE_LOCATION))
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(map_vote)
 	last_message_at = world.time
 
 	var/list/messages = args.Copy()
-	to_chat(world, span_purple(examine_block("Map Vote\n<hr>\n[messages.Join("\n")]")))
+	to_chat(world, span_purple(examine_block("地图投票\n<hr>\n[messages.Join("\n")]")))
 
 /datum/controller/subsystem/map_vote/proc/get_valid_map_vote_choices()
 	var/list/choices = list()
@@ -158,12 +158,12 @@ SUBSYSTEM_DEF(map_vote)
 	update_tally_printout(round_tally)
 
 	if(admin_override)
-		send_map_vote_notice("Admin override active. Map not changed.")
+		send_map_vote_notice("管理员已指定地图，本次投票不会更改地图。")
 		return
 
 	var/list/valid_maps = filter_cache_to_valid_maps()
 	if(!length(valid_maps))
-		send_map_vote_notice("No valid maps.")
+		send_map_vote_notice("没有可用的地图。")
 		return
 
 	// Pick the highest tally among maps that were actually voted on this round
@@ -185,11 +185,11 @@ SUBSYSTEM_DEF(map_vote)
 
 	var/datum/map_config/winner_cfg = config.maplist[winner_id]
 	if(!winner_cfg)
-		send_map_vote_notice("Winner map could not be resolved (bad map_id: [winner_id]).")
+		send_map_vote_notice("无法找到获选地图（无效的map_id：[winner_id]）。")
 		return
 
 	if(!set_next_map(winner_cfg))
-		send_map_vote_notice("Failed to set next map.")
+		send_map_vote_notice("无法设置下一回合的地图。")
 		return
 
 	// Apply the pity adjustments. Only touches ckeys who actually voted this
@@ -214,9 +214,9 @@ SUBSYSTEM_DEF(map_vote)
 
 	var/list/messages = list()
 
-	messages += "Map Selected - [span_bold(next_map_config.map_name)]"
+	messages += "已选地图 - [span_bold(next_map_config.map_name)]"
 	messages += ""
-	messages += "The next round will be played on [span_bold(next_map_config.map_name)]."
+	messages += "下一回合将在[span_bold(next_map_config.map_name)]进行。"
 
 	send_map_vote_notice(arglist(messages))
 
@@ -237,7 +237,7 @@ SUBSYSTEM_DEF(map_vote)
 	already_voted = FALSE
 	admin_override = FALSE
 
-	send_map_vote_notice("Next map reverted. Voting re-enabled.")
+	send_map_vote_notice("下一回合的地图已还原，投票已重新启用。")
 	update_tally_printout()
 
 // Shows how many players currently have a banked bonus for each map, and
@@ -282,10 +282,10 @@ SUBSYSTEM_DEF(map_vote)
 		if(!bonus)
 			continue
 
-		data += "[cfg.map_name] - bonus votes banked: [bonus]"
+		data += "[cfg.map_name] - 已积累的额外票数：[bonus]"
 
 	if(!length(data))
-		return boxed_message("Your Map Vote Bonuses\n<hr>You aren't currently holding a bonus for any map. \
-			Bonuses build up when a map you vote for doesn't win, and clear once it does.")
+		return boxed_message("你的地图投票加成\n<hr>你目前没有任何地图的额外票数。 \
+			你投的地图落选时会积累额外票数，获选时则会清零。")
 
-	return boxed_message("Your Map Vote Bonuses\n<hr>[data.Join("\n")]")
+	return boxed_message("你的地图投票加成\n<hr>[data.Join("\n")]")

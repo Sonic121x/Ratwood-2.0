@@ -211,7 +211,7 @@
 				new_message += word + suffix
 			else
 				if(prob(30) && message_split.len > 2)
-					new_message += pick("uh","erm")
+					new_message += pick("呃","嗯")
 					break
 				else
 					var/list/charlist = string2charlist(word) // Stupid shit code

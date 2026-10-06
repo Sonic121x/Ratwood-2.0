@@ -174,7 +174,7 @@
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "hip r"
+	inv_box.name = "右胯"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "hip"
 	inv_box.screen_loc = rogueui_beltr
@@ -183,7 +183,7 @@
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "hip l"
+	inv_box.name = "左胯"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "hip"
 	inv_box.screen_loc = rogueui_beltl

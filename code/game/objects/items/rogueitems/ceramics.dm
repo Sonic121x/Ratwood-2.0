@@ -47,7 +47,7 @@
 
 /obj/item/reagent_containers/glass/bottle/claybottleclassic
 	name = "素陶瓶"
-	desc = "一只陶制瓶子。Tyme 轻抚其曲线与裂纹，泛着淡淡空灵微光。"
+	desc = "一只陶制瓶子。岁月轻抚其曲线与裂纹，泛着淡淡空灵微光。"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claybottlebaked"
 	obj_flags = CAN_BE_HIT|UNIQUE_RENAME
@@ -133,7 +133,7 @@
 	
 /obj/item/reagent_containers/glass/bottle/clayvaseclassic
 	name = "素陶花瓶"
-	desc = "一只大型陶花瓶。Tyme 轻抚其曲线与裂纹，泛着淡淡空灵微光。"
+	desc = "一只大型陶花瓶。岁月轻抚其曲线与裂纹，泛着淡淡空灵微光。"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "clayvasebaked"
 	obj_flags = CAN_BE_HIT|UNIQUE_RENAME
@@ -218,7 +218,7 @@
 
 /obj/item/reagent_containers/glass/bottle/clayfancyvaseclassic
 	name = "华美素陶花瓶"
-	desc = "一只大型华美陶花瓶。Tyme 轻抚其曲线与裂纹，泛着淡淡空灵微光。"
+	desc = "一只大型华美陶花瓶。岁月轻抚其曲线与裂纹，泛着淡淡空灵微光。"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "clayfancyvasebaked"
 	obj_flags = CAN_BE_HIT|UNIQUE_RENAME
@@ -302,7 +302,7 @@
 
 /obj/item/reagent_containers/glass/cup/claycupclassic
 	name = "素陶罐"
-	desc = "一个小巧的陶罐。Tyme 轻抚其曲线与裂纹，泛着淡淡空灵微光。"
+	desc = "一个小巧的陶罐。岁月轻抚其曲线与裂纹，泛着淡淡空灵微光。"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claycupbaked"
 	obj_flags = CAN_BE_HIT|UNIQUE_RENAME
@@ -424,8 +424,8 @@
 	cooked_type = /obj/item/roguestatue/clay/design5
 
 /obj/item/natural/clay/jarhelm
-	name = "uncooked large jar"
-	desc = "A large, upturned, and uncooked jar. It still needs to be cooked in a kiln."
+	name = "未烧制的大陶罐"
+	desc = "一只倒扣着的未烧制大陶罐，还需要放进窑中烧制。"
 	icon = 'icons/roguetown/clothing/special/jar.dmi'
 	icon_state = "rawjar"
 	obj_flags = UNIQUE_RENAME
