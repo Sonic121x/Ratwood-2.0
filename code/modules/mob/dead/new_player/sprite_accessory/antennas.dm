@@ -20,11 +20,11 @@
 	icon_state = "plain"
 
 /datum/sprite_accessory/antenna/moth/reddish
-	name = "Reddish"
+	name = "淡红"
 	icon_state = "reddish"
 
 /datum/sprite_accessory/antenna/moth/royal
-	name = "Royal"
+	name = "皇家"
 	icon_state = "royal"
 
 /datum/sprite_accessory/antenna/moth/gothic
@@ -32,7 +32,7 @@
 	icon_state = "gothic"
 
 /datum/sprite_accessory/antenna/moth/whitefly
-	name = "White Fly"
+	name = "白蝇"
 	icon_state = "whitefly"
 
 /datum/sprite_accessory/antenna/moth/lovers
@@ -40,7 +40,7 @@
 	icon_state = "lovers"
 
 /datum/sprite_accessory/antenna/moth/burnt_off
-	name = "Burnt Off"
+	name = "烧焦"
 	icon_state = "burnt_off"
 
 /datum/sprite_accessory/antenna/moth/firewatch
@@ -52,7 +52,7 @@
 	icon_state = "deathhead"
 
 /datum/sprite_accessory/antenna/moth/poison
-	name = "Poison"
+	name = "毒纹"
 	icon_state = "poison"
 
 /datum/sprite_accessory/antenna/moth/ragged
@@ -64,7 +64,7 @@
 	icon_state = "moonfly"
 
 /datum/sprite_accessory/antenna/moth/oakworm
-	name = "Oak Worm"
+	name = "橡木蚕"
 	icon_state = "oakworm"
 
 /datum/sprite_accessory/antenna/moth/jungle
@@ -76,7 +76,7 @@
 	icon_state = "witchwing"
 
 /datum/sprite_accessory/antenna/moth/regal
-	name = "Regal"
+	name = "王者"
 	icon_state = "regal"
 
 /datum/sprite_accessory/antenna/moth/mothra

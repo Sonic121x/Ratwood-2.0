@@ -12,7 +12,7 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/horns/simple
-	name = "Simple"
+	name = "简洁"
 	icon_state = "simple"
 
 /datum/sprite_accessory/horns/short
@@ -20,7 +20,7 @@
 	icon_state = "short"
 
 /datum/sprite_accessory/horns/curled
-	name = "Curled"
+	name = "卷曲"
 	icon_state = "curled"
 
 /datum/sprite_accessory/horns/ram
@@ -28,7 +28,7 @@
 	icon_state = "ram"
 
 /datum/sprite_accessory/horns/angler
-	name = "Angeler"
+	name = "鮟鱇鱼"
 	icon_state = "angler"
 
 /datum/sprite_accessory/horns/guilmon
@@ -36,12 +36,12 @@
 	icon_state = "guilmon"
 
 /datum/sprite_accessory/horns/uni
-	name = "Uni"
+	name = "独角"
 	icon_state = "uni"
 	relevant_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/horns/oni
-	name = "Oni"
+	name = "鬼族"
 	icon_state = "oni"
 	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 
@@ -55,15 +55,15 @@
 	icon_state = "broken"
 
 /datum/sprite_accessory/horns/rbroken
-	name = "Broken (Right)"
+	name = "断角（右）"
 	icon_state = "rbroken"
 
 /datum/sprite_accessory/horns/lbroken
-	name = "Broken (Left)"
+	name = "断角（左）"
 	icon_state = "lbroken"
 
 /datum/sprite_accessory/horns/drake
-	name = "Drake"
+	name = "龙兽"
 	icon_state = "drake"
 
 /datum/sprite_accessory/horns/drake_wide
@@ -75,7 +75,7 @@
 	icon_state = "knight"
 
 /datum/sprite_accessory/horns/dragon
-	name = "Dragon"
+	name = "巨龙"
 	icon_state = "dragon"
 
 /datum/sprite_accessory/horns/antlers
@@ -83,7 +83,7 @@
 	icon_state = "antlers"
 
 /datum/sprite_accessory/horns/ramalt
-	name = "Ram Alt"
+	name = "公羊角（替代样式）"
 	icon_state = "ramalt"
 
 /datum/sprite_accessory/horns/smallantlers
@@ -95,15 +95,15 @@
 	icon_state = "ramcurled"
 
 /datum/sprite_accessory/horns/curledramhornsalt
-	name = "Curled Ram Horns Alt"
+	name = "卷曲公羊角（替代样式）"
 	icon_state = "ramcurledalt"
 
 /datum/sprite_accessory/horns/smallramhorns
-	name = "Small Ram Horns"
+	name = "小公羊角"
 	icon_state = "ramcurledsmall"
 
 /datum/sprite_accessory/horns/smallramhornsalt
-	name  = "Small Ram Horns Alt"
+	name  = "小公羊角（替代样式）"
 	icon_state = "ramcurledsmallalt"
 
 /datum/sprite_accessory/horns/smallramhornsthree
@@ -111,7 +111,7 @@
 	icon_state = "ramcurledsmall3"
 
 /datum/sprite_accessory/horns/liftedhorns
-	name = "Lifted Horns"
+	name = "上扬角"
 	icon_state = "lifted"
 
 /datum/sprite_accessory/horns/brokenliftedhorns
@@ -119,11 +119,11 @@
 	icon_state = "liftedbroken"
 
 /datum/sprite_accessory/horns/sideswept
-	name = "Side Swept Horns"
+	name = "侧掠角"
 	icon_state = "sideswept"
 
 /datum/sprite_accessory/horns/bigcurlyhorns
-	name = "Big Curly Horns"
+	name = "大卷角"
 	icon_state = "bigcurly"
 
 /datum/sprite_accessory/horns/billberry
@@ -135,7 +135,7 @@
 	icon_state = "stabbers"
 
 /datum/sprite_accessory/horns/unihorn
-	name = "Unihorn"
+	name = "独角兽角"
 	icon_state = "unihorn"
 
 /datum/sprite_accessory/horns/longhorns
@@ -143,7 +143,7 @@
 	icon_state = "longhorns"
 
 /datum/sprite_accessory/horns/outstretched
-	name = "Outstretched"
+	name = "外伸角"
 	icon_state = "outstretched"
 
 /datum/sprite_accessory/horns/halo
@@ -159,7 +159,7 @@
 	icon_state = "bunhorns"
 
 /datum/sprite_accessory/horns/marauder
-	name = "Marauder"
+	name = "掠夺者"
 	icon_state = "marauder"
 
 /datum/sprite_accessory/horns/faceguard
@@ -184,7 +184,7 @@
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/large_antlers
-	name = "Large Antlers"
+	name = "大鹿角"
 	icon_state = "large_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -199,7 +199,7 @@
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/short_antlers
-	name = "Short Antlers"
+	name = "短鹿角"
 	icon_state = "short_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -209,12 +209,12 @@
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/pronghorn
-	name = "Pronghorn Antlers"
+	name = "叉角羚角"
 	icon_state = "pronghorn_antlers"
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/large/spire
-	name = "Spires"
+	name = "尖塔"
 	icon_state = "spirehorns"
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -224,9 +224,9 @@
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/tiefling
-	name = "Tiefling"
+	name = "提夫林"
 	icon_state = "tiebhorns"
 
 /datum/sprite_accessory/horns/tieflingalt
-	name = "Tiefling Alt"
+	name = "提夫林（替代样式）"
 	icon_state = "tiebhornsalt"

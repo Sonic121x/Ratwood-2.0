@@ -314,7 +314,7 @@
 	animate(src, alpha = 0, time = 0 SECONDS, easing = EASE_IN)
 	src.mob_timers[MT_INVISIBILITY] = world.time + timeinvis
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, update_sneak_invis), TRUE), timeinvis)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[src] fades back into view."), span_notice("You become visible again.")), timeinvis)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[src]的身影逐渐显现。"), span_notice("你重新显现了。")), timeinvis)
 
 /mob/living/carbon/human/proc/create_walk_to(duration, mob/living/walk_to)
 	ADD_TRAIT(src, TRAIT_MOVEMENT_BLOCKED, VAMPIRE_TRAIT)

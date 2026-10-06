@@ -1,5 +1,5 @@
 /datum/language/drone
-	name = "Drone"
+	name = "无人机语"
 	desc = ""
 	speech_verb = "唧唧地说"
 	ask_verb = "好奇地唧唧叫"

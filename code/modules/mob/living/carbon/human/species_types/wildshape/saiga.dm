@@ -108,11 +108,11 @@
 	name = "蹄击"
 	icon_state = "instrike"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("hits", "mauls", "bashes")
+	attack_verb = list("撞击", "猛击", "重击")
 	animname = "strike"
 	hitsound = "punch_hard"
 	penfactor = BLUNT_DEFAULT_PENFACTOR
-	miss_text = "kicks the air!"
+	miss_text = "踢了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "blunt"
 	swingdelay = 8

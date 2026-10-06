@@ -9,8 +9,8 @@
 	needs_emotion = TRUE
 
 /mob/living/carbon/human/verb/emote_cry()
-	set name = "Cry"
-	set category = "Noises"
+	set name = "哭泣"
+	set category = "发声"
 
 	emote("cry", intentional = TRUE)
 
@@ -54,8 +54,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_eyebrow()
-	set name = "Raise Eyebrow"
-	set category = "Emotes"
+	set name = "挑眉"
+	set category = "表情动作"
 
 	emote("eyebrow", intentional = TRUE)
 
@@ -66,8 +66,8 @@
 	nomsg = TRUE
 
 /mob/living/carbon/human/verb/emote_psst()
-	set name = "Psst"
-	set category = "Noises"
+	set name = "嘘声招呼"
+	set category = "发声"
 
 	emote("psst", intentional = TRUE)
 
@@ -79,8 +79,8 @@
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_grumble()
-	set name = "Grumble"
-	set category = "Noises"
+	set name = "嘟囔"
+	set category = "发声"
 
 	emote("grumble", intentional = TRUE)
 
@@ -124,8 +124,8 @@
 	key = "wag"
 
 /mob/living/carbon/human/verb/emote_wag()
-	set name = "Wag"
-	set category = "Emotes"
+	set name = "摇尾巴"
+	set category = "表情动作"
 
 	emote("wag")
 
@@ -206,8 +206,8 @@
 
 // FEEL EMOTE VERB
 /mob/living/carbon/human/verb/emote_feel()
-	set name = "Feel (Desire/Dread)"
-	set category = "Emotes"
+	set name = "感受（欲望／恐惧）"
+	set category = "表情动作"
 
 	var/list/options = list("渴望", "恐惧")
 	var/choice = input(src, "你想表达什么感受？", "感受") as null|anything in options

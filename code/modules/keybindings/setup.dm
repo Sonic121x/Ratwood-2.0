@@ -9,27 +9,27 @@
 	return
 
 /client/verb/change_macrosets()
-	set name = "Switch Keybinding Mode"
-	set desc = "Switch between classic and modern keybinding modes."
+	set name = "切换按键绑定模式"
+	set desc = "在经典与现代按键绑定模式之间切换。"
 	set category = "OOC"
 
 	var/list/macrosets = list(
-		"Classic" = SKIN_MACROSET_CLASSIC_INPUT,
-		"Modern" = SKIN_MACROSET_HOTKEYS
+		"经典" = SKIN_MACROSET_CLASSIC_INPUT,
+		"现代" = SKIN_MACROSET_HOTKEYS
 	)
-	var/choice = input("Select a keybinding mode:") as null|anything in macrosets
+	var/choice = input("选择按键绑定模式：") as null|anything in macrosets
 	if(!choice)
 		return
 	winset(src, null, "mainwindow.macro=[macrosets[choice]]")
 
 /client/verb/fix_macros()
-	set name = "Fix Keybindings"
-	set desc = "Re-assert all your macros/keybindings."
+	set name = "修复按键绑定"
+	set desc = "重新应用所有宏与按键绑定。"
 	set category = "OOC"
 	if(!SSinput.initialized)
-		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
+		to_chat(src, "<span class='warning'>输入系统尚未初始化，请稍候。</span>")
 		return
-	to_chat(src, "<span class='danger'>Force-reasserting all macros.</span>")
+	to_chat(src, "<span class='danger'>正在强制重新应用所有宏。</span>")
 	set_macros()
 
 // removes all the existing macros

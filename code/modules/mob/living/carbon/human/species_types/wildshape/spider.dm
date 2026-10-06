@@ -112,11 +112,11 @@
 	clickcd = 12
 	icon_state = "instab"
 	blade_class = BCLASS_STAB
-	attack_verb = list("bites", "pierces", "impales")
+	attack_verb = list("啃咬", "刺穿", "贯穿")
 	animname = "stab"
 	hitsound = "genslash"
 	penfactor = 20
-	miss_text = "bites the air!"
+	miss_text = "咬了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "stab"
 
