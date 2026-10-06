@@ -5,21 +5,21 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/iron_weapons/sword
-	name = "剑"
+	name = "铁单手剑"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/iron,
 				)
 
 /datum/supply_pack/rogue/iron_weapons/shortsword
-	name = "短剑"
+	name = "铁短剑"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/iron,
 				)
 
 /datum/supply_pack/rogue/iron_weapons/messer
-	name = "梅塞尔刀"
+	name = "猎剑"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/messer/iron,
@@ -40,7 +40,7 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/cudgel
-	name = "棍棒"
+	name = "警棍"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/mace/cudgel,
@@ -61,7 +61,7 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/quarterstaff
-	name = "加固四分杖 - 铁制"
+	name = "铁头长杖"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/woodstaff/quarterstaff/iron,
@@ -96,7 +96,7 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/claymore
-	name = "双手大剑"
+	name = "克莱摩大剑"
 	cost = 40 // 2 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/greatsword/zwei,
@@ -110,7 +110,7 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/bardiche
-	name = "巴迪什斧"
+	name = "长柄战斧"
 	cost = 45 // 2 Iron Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/halberd/bardiche,

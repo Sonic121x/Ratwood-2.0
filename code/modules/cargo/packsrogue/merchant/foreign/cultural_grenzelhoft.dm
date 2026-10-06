@@ -26,7 +26,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/partizan
-	name = "阔刃矛"
+	name = "帕提赞长戟"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/spear/partizan)
 	ship_qty_min = 1

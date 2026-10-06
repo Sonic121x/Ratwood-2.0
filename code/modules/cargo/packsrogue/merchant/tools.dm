@@ -11,12 +11,12 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/tools/scomst
-	name = "SCOM传讯石"
+	name = "传讯石"
 	cost = 120
 	contains = list(/obj/item/scomstone)
 
 /datum/supply_pack/rogue/tools/serfst
-	name = "农奴传讯石"
+	name = "农奴石"
 	cost = 40
 	contains = list(/obj/item/scomstone/bad)
 
@@ -44,7 +44,7 @@
 				)
 
 /datum/supply_pack/rogue/tools/paper
-	name = "纸张"
+	name = "卷轴"
 	cost = 20
 	contains = list(
 					/obj/item/paper/scroll,
