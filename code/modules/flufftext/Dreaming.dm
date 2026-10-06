@@ -11,7 +11,7 @@
 	for(var/obj/item/bedsheet/sheet in loc)
 		custom_dream_nouns += sheet.dream_messages
 
-	dream_fragments += "you see"
+	dream_fragments += "你看见"
 
 	//Subject
 	if(custom_dream_nouns.len && prob(90))
@@ -34,7 +34,7 @@
 			fragment += "[pick(GLOB.adverbs)] "
 		fragment += pick(GLOB.ing_verbs)
 	else
-		fragment += "will "
+		fragment += "将会 "
 		fragment += pick(GLOB.verbs)
 	dream_fragments += fragment
 

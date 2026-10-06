@@ -195,7 +195,7 @@
 		var/static/list/slop_lore = list(
 			span_deadsay("……[SSmapping.map_adjustment.realm_name]？不……这里并不存在……"),
 			span_deadsay("……我叫特雷。特雷·利亚姆，利亚姆提菲克·特罗维希尔……"),
-			span_deadsay("……我在 NT“利亚姆”号 上，一艘能够自我维持的船，用来保存 roguemanity 残存的一切……"),
+			span_deadsay("……我在 纳米“利亚姆”号 上，一艘能够自我维持的船，用来保存人类文明残存的一切……"),
 			span_deadsay("……被发射进无尽黑暗之中，法特·格里姆尼斯 保存着他们的 冷酷……他们的锋芒……"),
 			span_deadsay("……让他们在那只有暗黑的残酷未来里继续活下去……"),
 			span_deadsay("……已经不剩下任何希望了。只有太空站13 还能让我活在特雷·利亚姆之中……"),

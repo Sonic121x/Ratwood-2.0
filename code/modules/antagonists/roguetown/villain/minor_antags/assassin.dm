@@ -58,16 +58,16 @@
 	mind.recall_targets(src)
 
 /mob/living/carbon/human/proc/draw_graggar_sigil()
-	set name = "Draw Blood Sigil"
-	set category = "Graggar"
+	set name = "绘制鲜血符印"
+	set category = "格拉加尔"
 	if(incapacitated() || stat >= UNCONSCIOUS)
 		return
 	if(!get_bleed_rate())
-		to_chat(src, span_danger("I must be bleeding to draw this."))
+		to_chat(src, span_danger("我必须正在流血才能绘制这个符印。"))
 		return
 	var/turf/T = get_turf(src)
 	if(locate(/obj/effect/decal/cleanable/graggar_sigil) in T)
-		to_chat(src, span_warning("There is already a sigil here."))
+		to_chat(src, span_warning("这里已经有一个符印了。"))
 		return
 	if(!do_after(src, 5 SECONDS, src))
 		return
@@ -75,8 +75,8 @@
 	new /obj/effect/decal/cleanable/graggar_sigil(T)
 
 /obj/effect/decal/cleanable/graggar_sigil
-	name = "bloody sigil"
-	desc = "A crude sigil created with smeared blood."
+	name = "鲜血符印"
+	desc = "一个用鲜血涂抹而成的粗糙符印。"
 	icon = 'icons/roguetown/misc/rituals.dmi'
 	icon_state = "graggar_active"
 
@@ -85,15 +85,15 @@
 	if(!istype(user) || !HAS_TRAIT(user, TRAIT_ASSASSIN))
 		return
 	var/turf/T = get_turf(src)
-	var/choice = input(user, "Which rite?", "Graggar") as null|anything in list("Profane Dagger")
-	if(choice == "Profane Dagger")
+	var/choice = input(user, "进行哪种仪式？", "格拉加尔") as null|anything in list("亵渎匕首")
+	if(choice == "亵渎匕首")
 		var/obj/item/rogueweapon/huntingknife/dagger = locate() in T
 		var/obj/item/organ/organ = locate() in T
 		if(!dagger || istype(dagger, /obj/item/rogueweapon/huntingknife/idagger/steel/profane))
-			to_chat(user, span_warning("The ritual needs: Any knife, any organ."))
+			to_chat(user, span_warning("仪式需要：一把任意小刀、一个任意器官。"))
 			return
 		if(!organ)
-			to_chat(user, span_warning("The ritual needs: Any knife, any organ."))
+			to_chat(user, span_warning("仪式需要：一把任意小刀、一个任意器官。"))
 			return
 		if(!do_after(user, 3 SECONDS, src))
 			return

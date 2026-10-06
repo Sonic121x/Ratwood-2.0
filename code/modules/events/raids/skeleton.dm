@@ -8,7 +8,7 @@
 	tags = list(TAG_HAUNTED, TAG_COMBAT, TAG_RAID)
 	track = EVENT_TRACK_RAIDS
 	var/last_siege
-	var/raid_text = "The skeleton horde approaches."
+	var/raid_text = "骷髅大军正在逼近。"
 
 /datum/round_event_control/worldsiege/canSpawnEvent(players_amt, gamemode, fake_check)
 	if(earliest_start >= world.time-SSticker.round_start_time)

@@ -9,7 +9,7 @@
 	tags = list(TAG_HAUNTED, TAG_COMBAT, TAG_RAID)
 	track = EVENT_TRACK_RAIDS
 
-	raid_text = "The goblin horde approaches."
+	raid_text = "哥布林大军正在逼近。"
 
 /datum/round_event_control/worldsiege/goblin/canSpawnEvent(players_amt, gamemode, fake_check)
 	if(earliest_start >= world.time-SSticker.round_start_time)

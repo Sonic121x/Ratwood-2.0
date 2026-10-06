@@ -1,5 +1,5 @@
 /datum/advclass/foreigner/shepherd
-	name = "Szöréndnížine 牧羊人"
+	name = "瑟伦德尼日内牧羊人"
 	tutorial = "你是一名来自阿瓦尔自由城茨瓦尔特卡的普通牧羊人，或是在朝圣途中，或是因某种缘故逃离了故乡。你能轻松地在荒野中自给自足；只要勤加练习，即使面对披甲的敌人，也能用传统斧头保护自己。"
 	extra_context = "该职业适合熟练掌握走位和体力管理的资深冒险者。你的武器具有特殊的攻击意图，灵活切换能让战斗轻松些……至少有时如此。"
 	allowed_sexes = list(MALE, FEMALE)

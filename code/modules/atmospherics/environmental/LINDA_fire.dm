@@ -166,7 +166,7 @@
 		try_fire_act(L, 1, 20)
 
 /obj/effect/dummy/lighting_obj/moblight/fire
-	name = "fire"
+	name = "火焰"
 	light_color = LIGHT_COLOR_FIRE
 	light_outer_range =  LIGHT_RANGE_FIRE
 
