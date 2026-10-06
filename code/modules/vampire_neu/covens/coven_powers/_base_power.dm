@@ -83,9 +83,9 @@
 
 	src.discipline = discipline
 
-	desc += "\n\nCost: [vitae_cost] vitae"
-	desc += "\nCooldown: [cooldown_length > 0 ? DisplayTimeText(cooldown_length) : "None"]"
-	desc += "\nRight click to switch this coven's level, alt right click to cycle backwards."
+	desc += "\n\n消耗：[vitae_cost] 命髓"
+	desc += "\n冷却时间：[cooldown_length > 0 ? DisplayTimeText(cooldown_length) : "无"]"
+	desc += "\n右键点击切换此盟会的能力等级，按住 Alt 右键点击可反向切换。"
 
 /**
  * Setter to handle registering of signals.
@@ -180,7 +180,7 @@
 	//the power is currently active
 	if (active && !multi_activate)
 		if (alert)
-			to_chat(owner, span_warning("[src] is already active!"))
+			to_chat(owner, span_warning("[src]已经启用了！"))
 		return FALSE
 
 	//a mutually exclusive power is already active or on cooldown
@@ -197,70 +197,70 @@
 					return TRUE
 				else
 					if (alert)
-						to_chat(owner, span_warning("You cannot have [src] and [found_power] active at the same time!"))
+						to_chat(owner, span_warning("你无法同时启用[src]和[found_power]！"))
 					return FALSE
 			if (found_power.get_cooldown())
 				if (alert)
-					to_chat(owner, span_warning("You cannot activate [src] before [found_power]'s cooldown expires in [DisplayTimeText(found_power.get_cooldown())]."))
+					to_chat(owner, span_warning("你必须等到[found_power]的冷却结束才能启用[src]，还需[DisplayTimeText(found_power.get_cooldown())]。"))
 				return FALSE
 
 	//the user cannot afford the power's vitae expenditure
 	if (!can_afford())
 		if (alert)
-			to_chat(owner, span_warning("You do not have enough blood to cast [src]!"))
+			to_chat(owner, span_warning("你的血液不足以施展[src]！"))
 		return FALSE
 
 	//the power's cooldown has not elapsed
 	if (get_cooldown())
 		if (alert)
-			to_chat(owner, span_warning("[src] is still on cooldown for [DisplayTimeText(get_cooldown())]!"))
+			to_chat(owner, span_warning("[src]仍在冷却中，还需[DisplayTimeText(get_cooldown())]！"))
 		return FALSE
 
 	//status checks
 	if ((check_flags & COVEN_CHECK_TORPORED) && HAS_TRAIT(owner, TRAIT_TORPOR))
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] while in Torpor!"))
+			to_chat(owner, span_warning("你无法在休眠中施展[src]！"))
 		return FALSE
 
 	if ((check_flags & COVEN_CHECK_CONSCIOUS) && owner.IsKnockdown())
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] while unconscious!"))
+			to_chat(owner, span_warning("你无法在昏迷时施展[src]！"))
 		return FALSE
 
 	if ((check_flags & COVEN_CHECK_CAPABLE) && owner.incapacitated(FALSE, TRUE))
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] while incapacitated!"))
+			to_chat(owner, span_warning("你无法在失去行动能力时施展[src]！"))
 		return FALSE
 
 	if ((check_flags & COVEN_CHECK_IMMOBILE) && owner.IsImmobilized())
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] while immobilised!"))
+			to_chat(owner, span_warning("你无法在被定身时施展[src]！"))
 		return FALSE
 
 	if ((check_flags & COVEN_CHECK_LYING) && !(owner.mobility_flags & MOBILITY_STAND))
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] while lying on the floor!"))
+			to_chat(owner, span_warning("你无法在倒地时施展[src]！"))
 		return FALSE
 
 	if ((check_flags & COVEN_CHECK_SEE) && HAS_TRAIT(owner, TRAIT_BLIND))
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] without your sight!"))
+			to_chat(owner, span_warning("你无法在看不见时施展[src]！"))
 		return FALSE
 
 	if ((check_flags & COVEN_CHECK_SPEAK) && HAS_TRAIT(owner, TRAIT_MUTE))
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] without speaking!"))
+			to_chat(owner, span_warning("你无法在不能说话时施展[src]！"))
 		return FALSE
 
 	if ((check_flags & COVEN_CHECK_FREE_HAND) && HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED))
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] without free hands!"))
+			to_chat(owner, span_warning("你必须腾出双手才能施展[src]！"))
 		return FALSE
 
 	//respect pacifism, prevent hostile Discipline usage from pacifists
 	if (hostile && HAS_TRAIT(owner, TRAIT_PACIFISM))
 		if (alert)
-			to_chat(owner, span_warning("You cannot cast [src] as a pacifist!"))
+			to_chat(owner, span_warning("作为和平主义者，你无法施展[src]！"))
 		return FALSE
 
 	//nothing found, it can be casted
@@ -302,7 +302,7 @@
 	//check if distance is in range
 	if (get_dist(owner, target) > range)
 		if (alert)
-			to_chat(owner, span_warning("[target] is out of range!"))
+			to_chat(owner, span_warning("[target]超出了范围！"))
 		return FALSE
 
 	//handling for if a ranged Discipline is being used on its caster
@@ -311,13 +311,13 @@
 			return TRUE
 		else
 			if (alert)
-				to_chat(owner, span_warning("You can't use this power on yourself!"))
+				to_chat(owner, span_warning("你不能对自己使用此能力！"))
 			return FALSE
 
 	//account for complete supernatural resistance
 	if (HAS_TRAIT(target, TRAIT_ANTIMAGIC))
 		if (alert)
-			to_chat(owner, span_warning("[target] resists your Disciplines!"))
+			to_chat(owner, span_warning("[target]抵抗了你的血族异能！"))
 		return FALSE
 
 	//check target type
@@ -327,17 +327,17 @@
 		var/mob/living/living_target = target
 		if ((target_type & TARGET_LIVING) && (living_target.stat == DEAD))
 			if (alert)
-				to_chat(owner, span_warning("You cannot cast [src] on dead things!"))
+				to_chat(owner, span_warning("你无法对死者施展[src]！"))
 			return FALSE
 
 		if ((target_type & TARGET_PLAYER) && !living_target.client)
 			if (alert)
-				to_chat(owner, span_warning("You can only cast [src] on other players!"))
+				to_chat(owner, span_warning("你只能对其他玩家施展[src]！"))
 			return FALSE
 
 		if ((target_type & TARGET_VAMPIRE) && !living_target.clan)
 			if (alert)
-				to_chat(owner, span_warning("You can only cast [src] on Vampires!"))
+				to_chat(owner, span_warning("你只能对血族施展[src]！"))
 			return FALSE
 
 		if (ishuman(target))
@@ -345,7 +345,7 @@
 			//todo: remove this variable and refactor it and TRAIT_ANTIMAGIC into a tiered system
 			if (HAS_TRAIT(human_target, TRAIT_COVEN_RESISTANT))
 				if (alert)
-					to_chat(owner, span_warning("[target] resists your Disciplines!"))
+					to_chat(owner, span_warning("[target]抵抗了你的血族异能！"))
 				return FALSE
 
 			if (target_type & TARGET_HUMAN)
@@ -353,7 +353,7 @@
 
 		if (target_type & TARGET_HUMAN)
 			if (alert)
-				to_chat(owner, span_warning("You can only cast [src] on humans!"))
+				to_chat(owner, span_warning("你只能对人类施展[src]！"))
 			return FALSE
 
 		return TRUE
@@ -369,7 +369,7 @@
 
 	//target doesn't match any targeted types, so can't activate on them
 	if (alert)
-		to_chat(owner, span_warning("You cannot cast [src] on [target]!"))
+		to_chat(owner, span_warning("你无法对[target]施展[src]！"))
 	return FALSE
 
 /**
@@ -542,7 +542,7 @@
 		return
 	try_deactivate(direct = TRUE)
 	if(!active)
-		to_chat(source, span_danger("As [power.name] is activated, [name] is deactivated!"))
+		to_chat(source, span_danger("随着[power.name]启用，[name]已被停用！"))
 
 
 /**
@@ -593,7 +593,7 @@
  * the power.
  */
 /datum/coven_power/proc/do_caster_notification(target)
-	to_chat(owner, span_warning("You cast [name][target ? " on [target]!" : "."]"))
+	to_chat(owner, span_warning("你[target ? "对[target]" : ""]施展了[name]！"))
 
 /**
  * Overridable proc handling the combat log created by using this power.
@@ -795,7 +795,7 @@
 		deactivate(target, direct)
 
 		if (alert)
-			to_chat(owner, span_warning("You deactivate [src]."))
+			to_chat(owner, span_warning("你停用了[src]。"))
 
 /**
  * Overridable proc that allows for code to affect the power's owner
@@ -832,13 +832,13 @@
 
 	if (spend_resources())
 		if((vitae_cost > 0) && (duration_length > 10 SECONDS)) // No spam please
-			to_chat(owner, span_warning("[src] consumes your blood to stay active."))
+			to_chat(owner, span_warning("[src]消耗着你的血液以维持效果。"))
 		grant_usage_xp(target, TRUE)
 		if (!duration_override)
 			do_duration(target)
 		on_refresh(target)
 	else
-		to_chat(owner, span_warning("You don't have enough blood to keep [src] active!"))
+		to_chat(owner, span_warning("你没有足够的血液来维持[src]！"))
 		try_deactivate(target)
 
 /**
@@ -947,7 +947,7 @@
 	discipline.gain_experience_from_source(amount, "admin_grant", src, 1.0)
 
 	if(owner)
-		to_chat(owner, span_boldnotice("You have been granted [amount] XP in [discipline.name] for: [reason]"))
+		to_chat(owner, span_boldnotice("你获得了[amount]点[discipline.name]经验，原因：[reason]"))
 
 	log_admin("[key_name(usr)] granted [amount] XP to [key_name(owner)] in [discipline.name] for: [reason]")
 
