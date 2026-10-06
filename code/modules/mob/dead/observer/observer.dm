@@ -1083,7 +1083,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		reset_perspective(null)
 		return TRUE
 	if(is_hidden_from_ghosts(mob_eye, src))
-		to_chat(src, span_warning("That one is hidden from me."))
+		to_chat(src, span_warning("我无法看见那个目标。"))
 		return FALSE
 	//Two ghosts must never watch each other. A sight update would then bounce between them forever.
 	var/mob/chain = mob_eye
@@ -1105,7 +1105,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		mob_eye.hud_used.show_hud(mob_eye.hud_used.hud_version, src)
 	RegisterSignal(mob_eye, COMSIG_MOB_UPDATE_SIGHT, PROC_REF(on_observed_sight_change))
 	sync_observed_vision()
-	to_chat(src, span_notice("I see through [mob_eye]'s eyes. Orbit or follow something else to stop."))
+	to_chat(src, span_notice("我正在透过[mob_eye]的双眼观察。环绕或跟随其他目标即可退出。"))
 	return TRUE
 
 /// Stop observing and restore our own eyes.

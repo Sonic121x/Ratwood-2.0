@@ -427,7 +427,7 @@
 	// Header
 	parts += "<div class='panel stationborder'>"
 	if(GLOB.personal_objective_minds.len)
-		parts += "<div style='text-align: center; font-size: 1.2em;'>GODS' CHAMPIONS:</div>"
+		parts += "<div style='text-align: center; font-size: 1.2em;'>诸神的勇士：</div>"
 		parts += "<hr class='paneldivider'>"
 
 	// Process all minds with personal objectives
@@ -453,14 +453,14 @@
 		if(mind.current)
 			name_with_title = printplayer(mind)
 		else
-			name_with_title = "<b>Unknown Champion</b>"
+			name_with_title = "<b>无名勇士</b>"
 
 		parts += "[name_with_title]"
 
 		var/obj_count = 1
 		for(var/datum/objective/objective as anything in mind.personal_objectives)
-			var/result = objective.check_completion() ? span_greentext("TRIUMPH!") : span_redtext("FAIL")
-			parts += "<B>Goal #[obj_count]</B>: [objective.explanation_text] - [result]"
+			var/result = objective.check_completion() ? span_greentext("凯旋！") : span_redtext("失败")
+			parts += "<B>目标 #[obj_count]</B>: [objective.explanation_text] - [result]"
 			obj_count++
 
 		if(current_index < last_index)
@@ -468,12 +468,12 @@
 		CHECK_TICK
 
 	if(!has_any_objectives)
-		parts += "<div style='text-align: center;'>No personal objectives were assigned this round.</div>"
+		parts += "<div style='text-align: center;'>本回合未分配个人目标。</div>"
 	else if(failed_chosen > 0)
 		if(failed_chosen == 1)
-			parts += "<div style='text-align: center;'>1 god's chosen has failed to become a champion.</div>"
+			parts += "<div style='text-align: center;'>1 位神选者未能成为勇士。</div>"
 		else
-			parts += "<div style='text-align: center;'>[failed_chosen] gods' chosen have failed to become champions.</div>"
+			parts += "<div style='text-align: center;'>[failed_chosen] 位神选者未能成为勇士。</div>"
 
 	parts += "</div>"
 
@@ -536,17 +536,17 @@
 	var/datum/action/report/R = new
 	C.player_details.player_actions += R
 	R.Grant(C.mob)
-	to_chat(C,"<a href='?src=[REF(R)];report=1'>Show roundend report again</a>")
+	to_chat(C,"<a href='?src=[REF(R)];report=1'>再次查看回合结算报告</a>")
 
 /datum/controller/subsystem/ticker/proc/give_show_playerlist_button(client/C)
 	set waitfor = 0
-	to_chat(C,"<a href='?src=[C];playerlistrogue=1'>* SHOW PLAYER LIST *</a>")
-	to_chat(C,"<a href='byond://?src=[C];viewstats=1'>* View Statistics *</a>")
+	to_chat(C,"<a href='?src=[C];playerlistrogue=1'>* 查看玩家列表 *</a>")
+	to_chat(C,"<a href='byond://?src=[C];viewstats=1'>* 查看统计数据 *</a>")
 	C.show_round_stats(pick_assoc(GLOB.featured_stats))
 	C.commendsomeone(forced = TRUE)
 
 /datum/action/report
-	name = "Show roundend report"
+	name = "查看回合结算报告"
 	button_icon_state = "round_end"
 
 /datum/action/report/Trigger()
@@ -566,20 +566,20 @@
 /proc/printplayer(datum/mind/ply, fleecheck)
 	var/jobtext = ""
 	if(ply.assigned_role)
-		jobtext = " the <b>[ply.assigned_role]</b>"
+		jobtext = "（<b>[SSjob.GetJob(ply.assigned_role)?.display_title || ply.assigned_role]</b>）"
 	var/usede = ply.key
 	if(ply.key)
 		usede = ckey(ply.key)
 		if(ckey(ply.key) in GLOB.anonymize)
 			usede = get_fake_key(ckey(ply.key))
-	var/text = "<b>[usede]</b> was <b>[ply.name]</b>[jobtext] and"
+	var/text = "<b>[usede]</b> 扮演了 <b>[ply.name]</b>[jobtext]，并"
 	if(ply.current)
 		if(ply.current.stat == DEAD)
-			text += span_redtext(" died.")
+			text += span_redtext("已死亡。")
 		else
-			text += span_greentext(" survived.")
+			text += span_greentext("存活了下来。")
 	else
-		text += span_redtext(" died.")
+		text += span_redtext("已死亡。")
 	return text
 
 /proc/printplayerlist(list/players,fleecheck)
@@ -599,9 +599,9 @@
 	var/count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			objective_parts += "<b>目标 #[count]</b>: [objective.explanation_text] <span class='greentext'>成功！</span>"
 		else
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			objective_parts += "<b>目标 #[count]</b>: [objective.explanation_text] <span class='redtext'>失败。</span>"
 		count++
 	return objective_parts.Join("<br>")
 
