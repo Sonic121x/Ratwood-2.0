@@ -136,7 +136,7 @@
 	restricted_virtues = list(/datum/virtue/utility/deathless)
 
 	stress_examine = TRUE
-	stress_desc = span_red("Accursed. I should keep my distance...")
+	stress_desc = span_red("被诅咒的家伙。我应该保持距离……")
 	// Faster to check the head directly than looping through with get_bodypart.
 	var/headless = FALSE
 	var/obj/item/bodypart/head/dullahan/my_head

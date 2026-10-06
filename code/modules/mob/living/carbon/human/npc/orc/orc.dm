@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/orc/
-	name = "orc"
+	name = "兽人"
 	skin_tone = SKIN_COLOR_GROONN
 	hairstyle = "Bald"
 	facial_hairstyle = "Shaved"

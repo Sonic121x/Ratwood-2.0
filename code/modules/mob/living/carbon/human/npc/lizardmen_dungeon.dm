@@ -76,7 +76,7 @@
 	ears.Insert(src)
 	//This Stuff handles their parts
 	job = "Sissean Jailer"
-	real_name = "Sissean Jailer"
+	real_name = "西塞亚狱卒"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)

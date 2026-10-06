@@ -1,5 +1,5 @@
 /datum/language/xenocommon
-	name = "Xenomorph"
+	name = "异形语"
 	desc = ""
 	speech_verb = "嘶嘶地说"
 	ask_verb = "嘶嘶地问"
