@@ -69,7 +69,7 @@
 	. += span_small("普通线路有 [NORMAL_SCOM_TRANSMISSION_DELAY / 10] 秒延迟。高级的驻军线路则不受此限制。")
 	. += span_smallnotice("你看见里面有几只老鼠在来回乱窜！也许它们会想吃一片奶酪？")
 	if(scom_number)
-		. += span_smallnotice("它的编号是 #[scom_number][scom_tag ? "，标识为 [scom_tag]" : ""]。")
+		. += span_smallnotice("它的编号是 #[scom_number][scom_tag ? "，标识为 [scom_tag == "Pestra - Sanctum" ? "佩斯特拉圣所" : scom_tag]" : ""]。")
 	. += "<a href='?src=[REF(src)];directory=1'>名录</a>"
 	. += "<b>国土法令：</b>"
 	if(!length(GLOB.laws_of_the_land))
@@ -93,7 +93,7 @@
 /obj/structure/roguemachine/scomm/proc/view_directory(mob/user)
 	var/dat
 	for(var/obj/structure/roguemachine/scomm/X in SSroguemachine.scomm_machines)
-		dat += "#[X.scom_number] [X.scom_tag]<br>"
+		dat += "#[X.scom_number] [X.scom_tag == "Pestra - Sanctum" ? "佩斯特拉圣所" : X.scom_tag]<br>"
 
 	var/datum/browser/popup = new(user, "scom_directory", "<center>鼠群名录</center>", 387, 420)
 	popup.set_content(dat)
@@ -349,7 +349,7 @@
 		// Build message prefix with SCOM location.
 		var/message_affix = ""
 		if(scom_number)
-			message_affix = "- [scom_tag ? "([scom_tag])" : ""]"
+			message_affix = "- [scom_tag ? "([scom_tag == "Pestra - Sanctum" ? "佩斯特拉圣所" : scom_tag])" : ""]"
 		if(message_affix)
 			raw_message = "[raw_message][message_affix]"
 

@@ -6,9 +6,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/verb/ooc(msg as text)
 	set name = "OOC"
 	set category = "OOC"
-	set desc = "Talk with other players in the lobby."
+	set desc = "在大厅与其他玩家交谈。"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("管理员已暂时禁用发言。"))
 		return
 
 	if(!mob)
@@ -16,30 +16,30 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	if(CONFIG_GET(flag/usewhitelist))
 		if(whitelisted() != 1)
-			to_chat(src, span_danger("I can't use that."))
+			to_chat(src, span_danger("我无法使用此功能。"))
 			return
 
 	if(blacklisted())
-		to_chat(src, span_danger("I can't use that."))
+		to_chat(src, span_danger("我无法使用此功能。"))
 		return
 
 	if(get_playerquality(ckey) <= -5)
-		to_chat(src, span_danger("I can't use that."))
+		to_chat(src, span_danger("我无法使用此功能。"))
 		return
 
 	if(!holder)
 		if(SSticker.current_state < GAME_STATE_FINISHED && !istype(mob, /mob/dead/new_player))
-			to_chat(src, span_danger("OOC is lobby-only during the round. After the round ends it re-opens to everyone."))
+			to_chat(src, span_danger("回合进行期间，OOC 仅限大厅使用；回合结束后将重新向所有人开放。"))
 			return
 		if(!GLOB.ooc_allowed)
-			to_chat(src, span_danger("OOC is globally muted."))
+			to_chat(src, span_danger("OOC 已全局静音。"))
 			return
 		// Allow lobby new_player usage regardless of dooc settings; preserve dead restriction for non-lobby via earlier check.
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, span_danger("I cannot use OOC (muted)."))
+			to_chat(src, span_danger("我无法使用 OOC（已被禁言）。"))
 			return
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, span_danger("I have been banned from OOC."))
+		to_chat(src, span_danger("我已被禁止使用 OOC。"))
 		return
 	if(QDELETED(src))
 		return
@@ -57,13 +57,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>FOOL</B>")
+			to_chat(src, "<B>蠢货</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		to_chat(src, span_danger("I have OOC muted."))
+		to_chat(src, span_danger("我已将 OOC 静音。"))
 		return
 
 	mob.log_talk(raw_msg, LOG_OOC)
@@ -130,10 +130,10 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/proc/lobbyooc(msg as text)
 	set category = "OOC"
 	set name = "OOC"
-	set desc = "Talk with the other players."
+	set desc = "与其他玩家交谈。"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("管理员已暂时禁用发言。"))
 		return
 
 	if(!mob)
@@ -141,26 +141,26 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	if(CONFIG_GET(flag/usewhitelist))
 		if(whitelisted() != 1)
-			to_chat(src, span_danger("I can't use that."))
+			to_chat(src, span_danger("我无法使用此功能。"))
 			return
 
 	if(blacklisted())
-		to_chat(src, span_danger("I can't use that."))
+		to_chat(src, span_danger("我无法使用此功能。"))
 		return
 
 	if(get_playerquality(ckey) <= -5)
-		to_chat(src, span_danger("I can't use that."))
+		to_chat(src, span_danger("我无法使用此功能。"))
 		return
 
 	if(!holder)
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, span_danger("I cannot use OOC (muted)."))
+			to_chat(src, span_danger("我无法使用 OOC（已被禁言）。"))
 			return
 		if(!GLOB.ooc_allowed)
-			to_chat(src, span_danger("OOC is currently disabled."))
+			to_chat(src, span_danger("OOC 当前已禁用。"))
 			return
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, span_danger("I have been banned from OOC."))
+		to_chat(src, span_danger("我已被禁止使用 OOC。"))
 		return
 	if(QDELETED(src))
 		return
@@ -178,13 +178,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>FOOL</B>")
+			to_chat(src, "<B>蠢货</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		to_chat(src, span_danger("I have OOC muted."))
+		to_chat(src, span_danger("我已将 OOC 静音。"))
 		return
 
 	mob.log_talk(raw_msg, LOG_OOC)
@@ -279,7 +279,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(!is_content_unlocked())
 			return
 
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color", prefs.ooccolor) as color|null
+	var/new_ooccolor = input(src, "请选择你的 OOC 颜色。", "OOC color", prefs.ooccolor) as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = sanitize_ooccolor(new_ooccolor)
 		prefs.save_preferences()
@@ -305,7 +305,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/verb/toggle_ooc_anonymize()
 	set name = "Toggle OOC Anonymize"
 	set category = "OOC"
-	set desc = "Use a random anonymized handle or show your real ckey in Lobby OOC."
+	set desc = "在大厅 OOC 中使用随机匿名昵称，或显示真实账号标识。"
 	if(!mob)
 		return
 	// Flip preference
@@ -315,22 +315,22 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	else
 		GLOB.anonymize -= ckey
 	prefs.save_preferences()
-	to_chat(src, span_notice("OOC Anonymize is now [prefs.anonymize ? "ENABLED (your handle will be randomized)" : "DISABLED (your ckey will be shown)"]."))
+	to_chat(src, span_notice("OOC 匿名现已[prefs.anonymize ? "开启（昵称将随机生成）" : "关闭（将显示账号标识）"]。"))
 
 //Checks admin notice
 /client/verb/admin_notice()
 	set name = "Adminnotice"
 	set category = "-Admin-"
-	set desc ="Check the admin notice if it has been set"
+	set desc ="查看已发布的管理员公告"
 	set hidden = 1
 	if(!holder)
 		return
 	if(!check_rights(0))
 		return
 	if(GLOB.admin_notice)
-		to_chat(src, "<span class='boldnotice'>Admin Notice:</span>\n \t [GLOB.admin_notice]")
+		to_chat(src, "<span class='boldnotice'>管理员公告：</span>\n \t [GLOB.admin_notice]")
 	else
-		to_chat(src, span_notice("There are no admin notices at the moment."))
+		to_chat(src, span_notice("目前没有管理员公告。"))
 #ifdef TESTSERVER
 /client/verb/smiteselfverily()
 	set name = "KillSelf"
@@ -339,7 +339,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set hidden = 1
 	if(!check_rights(0))
 		return*/
-	var/confirm = alert(src, "Should I really kill myself?", "Feed the crows", "Yes", "No")
+	var/confirm = alert(src, "我真的要自尽吗？", "Feed the crows", "Yes", "No")
 	if(confirm == "Yes")
 		log_admin("[key_name(usr)] used killself.")
 		message_admins(span_adminnotice("[key_name_admin(usr)] used killself."))
@@ -399,13 +399,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set category = "Options"
 	set hidden = FALSE
 
-	to_chat(src, "Going back to old chat.")
+	to_chat(src, "正在切换回旧版聊天界面。")
 	winset(src, "outputwindow.legacy_output_selector", "left=output_legacy")
 
 /client/verb/motd()
 	set name = "MOTD"
 	set category = "OOC"
-	set desc ="Check the Message of the Day"
+	set desc ="查看每日公告"
 	set hidden = 1
 	if(!holder)
 		return
@@ -415,7 +415,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 	else
-		to_chat(src, span_notice("The Message of the Day has not been set."))
+		to_chat(src, span_notice("尚未设置每日公告。"))
 
 /client/proc/self_notes()
 	set name = "View Admin Remarks"
@@ -427,7 +427,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(!check_rights(0))
 		return
 	if(!CONFIG_GET(flag/see_own_notes))
-		to_chat(usr, span_notice("Sorry, that function is not enabled on this server."))
+		to_chat(usr, span_notice("本服务器未启用该功能。"))
 		return
 
 	browse_messages(null, usr.ckey, null, TRUE)
@@ -438,11 +438,11 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set desc = ""
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, span_notice("Sorry, tracking is currently disabled."))
+		to_chat(usr, span_notice("游玩时长记录当前已禁用。"))
 		return
 
 	var/list/body = list()
-	body += "<html><head><title>Playtime for [key]</title></head><BODY><BR>Playtime:"
+	body += "<html><head><title>Playtime for [key]</title></head><BODY><BR>游玩时长："
 	body += get_exp_report()
 	body += "</BODY></HTML>"
 	usr << browse(body.Join(), "window=playerplaytime[ckey];size=550x615")
@@ -453,13 +453,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		prefs.ignoring -= C.key
 	else
 		prefs.ignoring |= C.key
-	to_chat(src, "You are [(C.key in prefs.ignoring) ? "now" : "no longer"] ignoring [displayed_key] on the OOC channel.")
+	to_chat(src, "你[(C.key in prefs.ignoring) ? "现已屏蔽" : "已取消屏蔽"] OOC 频道中 [displayed_key] 的消息。")
 	prefs.save_preferences()
 
 /client/verb/select_ignore()
 	set name = "Ignore"
 	set category = "Options"
-	set desc ="Ignore a player's messages on the OOC channel"
+	set desc ="屏蔽一名玩家在 OOC 频道中的消息"
 	set hidden = 1
 	if(!holder)
 		return
@@ -477,13 +477,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		else
 			choices[displayed_choicename] = C
 	choices = sortList(choices)
-	var/selection = input("Please, select a player!", "Ignore", null, null) as null|anything in choices
+	var/selection = input("请选择一名玩家！", "Ignore", null, null) as null|anything in choices
 	if(!selection || !(selection in choices))
 		return
 	displayed_choicename = selection // ckey string
 	selection = choices[selection] // client
 	if(selection == src)
-		to_chat(src, "You can't ignore myself.")
+		to_chat(src, "你无法屏蔽自己。")
 		return
 	ignore_key(selection, displayed_choicename)
 
@@ -547,11 +547,11 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set category = "Options"
 	set desc = ""
 	if(!isliving(mob))
-		to_chat(src, span_warning("You're not alive yet. Set this in your Game Preferences instead."))
+		to_chat(src, span_warning("你尚未进入活着的角色，请在游戏偏好中设置此项。"))
 		return
 	var/mob/living/L = mob
 	var/datum/combat_music/combat_music = pick_combat_music_with_listen(
-		"Choose a combat music track to use TEMPORARILY.\nYou can set this permanently in Game Preferences.",
+		"选择临时使用的战斗音乐。\n可在游戏偏好中永久设置。",
 		"Combat Music",
 		L.cmode_music_override_name,
 	)
@@ -559,11 +559,11 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(!isliving(mob)) // mob might've changed between then and now
 			return
 		L = mob
-		to_chat(src, span_notice("Selected track: <b>[combat_music.name]</b>."))
+		to_chat(src, span_notice("已选择曲目：<b>[combat_music.shortname || combat_music.name]</b>。"))
 		if(combat_music.desc)
 			to_chat(src, "<i>[combat_music.desc]</i>")
 		if(combat_music.credits)
-			to_chat(src, span_info("Song name: <b>[combat_music.credits]</b>"))
+			to_chat(src, span_info("曲目署名：<b>[combat_music.credits]</b>"))
 		// also change it for Werewolf & Wildshape transformations, else it'd be annoying to keep changing this (lol)
 		var/mob/living/carbon/human/H
 		var/mob/living/S
@@ -616,13 +616,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/runm()
 	set name = "Run Mode"
-	set desc = "Changes if you run continually or if you stop running when you turn"
+	set desc = "切换持续奔跑，或在转向时停止奔跑"
 	set category = "Options"
 	prefs.runmode = !prefs.runmode
 	if(prefs.runmode)
-		to_chat(usr, "Running changed (no turning)")
+		to_chat(usr, "奔跑模式已切换（转向时停止）。")
 	else
-		to_chat(usr, "Running changed (turning)")
+		to_chat(usr, "奔跑模式已切换（转向时继续）。")
 	prefs.save_preferences()
 
 /client/verb/policy()
@@ -646,20 +646,20 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			policytext += "<hr>"
 			anything = TRUE
 	if(!anything)
-		policytext += "No related rules found."
+		policytext += "未找到相关规则。"
 
 	usr << browse(policytext.Join(""),"window=policy")
 
 /client/verb/toggle_ghost_protection()
 	set name = "Toggle Ghost Protection"
 	set category = "OOC"
-	set desc = "Permit or forbid ghosts from orbiting or seeing you."
+	set desc = "允许或禁止幽灵看见你或围绕你观察。"
 	if(!mob)
 		return
 	// Flip preference
 	prefs.ghost_protection = !prefs.ghost_protection
 	prefs.save_preferences()
-	to_chat(src, span_notice("Ghost protection is now [prefs.ghost_protection ? "ENABLED (Ghosts can no longer see or orbit you)" : "DISABLED (Ghosts can now see and orbit you)"]."))
+	to_chat(src, span_notice("幽灵保护现已[prefs.ghost_protection ? "开启（幽灵无法看见你或围绕你观察）" : "关闭（幽灵可以看见你并围绕你观察）"]。"))
 
 // Currently ghost sprite not displaying
 // Can't return to afterlife or use for teleporting
@@ -667,6 +667,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/map_vote_tally_count()
 	set name = "Show Map Vote Tallies"
-	set desc = "View your own banked map vote tallies."
+	set desc = "查看自己积攒的地图投票票数。"
 	set category = "OOC"
 	to_chat(src, SSmap_vote.get_personal_tally_text(ckey))

@@ -24,8 +24,8 @@
 	is_tool = TRUE
 
 /obj/item/rogueweapon/handsaw/blacksteel
-	name = "blacksteel handsaw"
-	desc = "Embrace the joy of creation, one motion at a time."
+	name = "黑钢手锯"
+	desc = "每一次运锯，都享受创造的喜悦。"
 	icon_state = "bshandsaw"
 	max_blade_int = 400
 	max_integrity = 300
@@ -60,8 +60,8 @@
 	var/chisel_prefix = ""
 
 /obj/item/rogueweapon/chisel/blacksteel
-	name = "blacksteel chisel"
-	desc = "The pen that'll scrawl a masterwork through this parchment-of-stone. Add something to strike it with before doing stonework, like a mallet or a stone."
+	name = "黑钢凿子"
+	desc = "以石为纸、以凿为笔，刻出一件杰作。进行石工之前，先配上一件敲击工具，例如木槌或石头。"
 	icon_state = "bschisel"
 	max_blade_int = 500
 	max_integrity = 300

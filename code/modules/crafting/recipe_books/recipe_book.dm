@@ -295,7 +295,7 @@
 	// Add category buttons with direct links
 	for(var/category in categories)
 		var/active_class = category == current_category ? "active" : ""
-		html += "<button class='category-btn [active_class]' onclick=\"location.href='byond://?src=\ref[src];action=set_category&category=[url_encode(category)]'\">[category]</button>"
+		html += "<button class='category-btn [active_class]' onclick=\"location.href='byond://?src=\ref[src];action=set_category&category=[url_encode(category)]'\">[category == "Transmutation" ? "转化" : category == "Rotational" ? "传动" : category == "Ranged" ? "远程" : category == "Explosives" ? "爆炸物" : category == "Clothes" ? "服装" : category == "Boots" ? "靴类" : category == "Misc" ? "杂项" : category == "Table" ? "台面" : category == "Smithing" ? "锻造" : category]</button>"
 
 	html += {"
 					</div>

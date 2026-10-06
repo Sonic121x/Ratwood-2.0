@@ -624,8 +624,8 @@
 
 // The exact same as the Grenzelhoft hat w/ the cap, but capless; no armor stats. Allows for drip with the helmet aesthetic PR
 /obj/item/clothing/head/roguetown/caplessgrenzelhofthat
-	name = "无内帽格伦泽尔霍夫羽饰帽"
-	desc = "无论怪物还是佳人，真正的格伦泽尔霍夫人都能一并征服。只是这顶下面没有任何防护。"
+	name = "无内帽格伦泽尔霍夫特羽饰帽"
+	desc = "无论怪物还是佳人，真正的格伦泽尔霍夫特人都能一并征服。只是这顶下面没有任何防护。"
 	icon_state = "grenzelhat"
 	item_state = "grenzelhat"
 	icon = 'icons/roguetown/clothing/head.dmi'

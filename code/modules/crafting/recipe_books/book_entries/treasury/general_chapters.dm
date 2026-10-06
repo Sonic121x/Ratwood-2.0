@@ -46,78 +46,78 @@
 
 // Numbered 00 so it leads the shelf without renumbering the chapters below.
 /datum/book_entry/treasury_general/charters
-	name = "00. Charters of the Realm"
+	name = "00. 王国宪章"
 
 /datum/book_entry/treasury_general/charters/inner_book_html(mob/user)
 	var/datum/decree/great_writ = SStreasury.get_decree(DECREE_GREAT_WRIT)
-	var/great_writ_name = great_writ?.name || "The Great Writ of the Vale"
+	var/great_writ_name = great_writ?.name || "谷地大宪章"
 
 	var/datum/decree/golden_bull = SStreasury.get_decree(DECREE_GOLDEN_BULL)
-	var/golden_bull_name = golden_bull?.name || "The Golden Bull of Kingsfield"
+	var/golden_bull_name = golden_bull?.name || "王田金玺诏书"
 
 	var/datum/decree/guild_charter = SStreasury.get_decree(DECREE_GUILD_CHARTER_OF_ARMS)
-	var/guild_charter_name = guild_charter?.name || "The Guild Charter of Arms"
+	var/guild_charter_name = guild_charter?.name || "武备行会宪章"
 
 	var/datum/decree/indenture_of_war = SStreasury.get_decree(DECREE_INDENTURE_OF_WAR)
-	var/indenture_of_war_name = indenture_of_war?.name || "The Indenture of War"
+	var/indenture_of_war_name = indenture_of_war?.name || "战争契约"
 	return {"
 		<div>
-		<p>Charters protect classes of subject from the Crown's taxation and levies.
-		The Ruler and Regent may suspend or restore a Charter, at the throne, by speaking <b>revise charter</b>. State is shown on the Charters section of the Notice Board. Note that tax exemption only applies to direct taxation like the Headeater Levy, not indirect taxation like Import or Export tariffs. Outlaws forfeit every Charter protection.</p>
+		<p>宪章保护各类臣民，使其免受王室的税收与征费。
+		统治者与摄政者可在王座前说出<b>revise charter</b>，暂停或恢复宪章。公告板的宪章栏目会显示当前状态。免税仅适用于食首者征费等直接税，不适用于进出口关税等间接税。法外之徒失去一切宪章保护。</p>
 		</div>
 
 		<ul>
-			<li><b>[great_writ_name]</b> - Nobility pays no tax and levy, and cannot be fined.</li>
-			<li><b>The Zenitstadt Concordat</b> - The Church, and any declared benefactors of the Church, pays no taxation and levy. While in force, [round(CONCORDAT_TITHE_RATE * 100)]% of every taxed transaction is tithed to the Church Fund.</li>
-			<li><b>The Otavan Accords</b> - The Inquisition pays no tax and no levy.</li>
-			<li><b>[golden_bull_name]</b> - burghers are capped at [GOLDEN_BULL_BURGHER_CAP * 100]% of balance per levy or fine, with a [GOLDEN_BULL_DAILY_FINE_CAP]-mammon ceiling on each fine and a [GOLDEN_BULL_POLL_CAP]m poll-tax cap. While it stands, the burghers replenish the Burgher Pledge daily.</li>
-			<li><b>The Covenant of Noc and Pestra</b> - University members, the Apothecary and the Court Physician are limited to the lightest poll tax of [NOC_PESTRA_POLL_CAP]m, and a minimum wage from the Crown's payroll.</li>
-			<li><b>[guild_charter_name]</b> - Guild mercenaries are capped at [GUILD_CHARTER_OF_ARMS_POLL_CAP]m of poll tax per day, and the Guild remits [GUILD_CHARTER_OF_ARMS_PLEDGE_BONUS]m daily to the Burgher's Pledge while in force.</li>
-			<li><b>[indenture_of_war_name]</b> - Garrison ranks are subject to a minimum salary floor while this is in effect.</li>
-			<li><b>The Magna Carta</b> - a dormant modern charter; if the Lord dares press it, every Crown levy and poll tax is zeroed. Fines remain.</li>
+			<li><b>[great_writ_name]</b>——贵族免缴税收与征费，也不得被罚款。</li>
+			<li><b>天顶城协约</b>——教会及获认定的教会恩主免缴税收与征费。协约生效期间，每笔应税交易的[round(CONCORDAT_TITHE_RATE * 100)]%作为什一税划入教会基金。</li>
+			<li><b>奥塔瓦协定</b>——宗教裁判所免缴税收与征费。</li>
+			<li><b>[golden_bull_name]</b>——市民每次征费或罚款不超过余额的[GOLDEN_BULL_BURGHER_CAP * 100]%，每笔罚款不超过[GOLDEN_BULL_DAILY_FINE_CAP]玛门，人头税上限为[GOLDEN_BULL_POLL_CAP]m。生效期间，市民每天补充市民认捐。</li>
+			<li><b>诺克与佩斯特拉盟约</b>——大学成员、药剂师和宫廷医师适用最低的人头税，上限为[NOC_PESTRA_POLL_CAP]m，并由王室支付最低工资。</li>
+			<li><b>[guild_charter_name]</b>——公会佣兵每日人头税上限为[GUILD_CHARTER_OF_ARMS_POLL_CAP]m，生效期间公会每天向市民认捐汇入[GUILD_CHARTER_OF_ARMS_PLEDGE_BONUS]m。</li>
+			<li><b>[indenture_of_war_name]</b>——生效期间，驻军各级成员享有最低工资保障。</li>
+			<li><b>大宪章</b>——一份尚未启用的现代宪章；领主若敢施行，所有王室征费与人头税都会归零，罚款仍然保留。</li>
 		</ul>
 
-		<p>Each Charter has a [DECREE_COOLDOWN / 600]-minute cooldown after revision. No more than one suspension and one restoration may be proclaimed per day. Sequestration force-suspends most Charters until the Crown's debt is settled.</p>
+		<p>每份宪章修订后有[DECREE_COOLDOWN / 600]分钟冷却。每天最多宣布一次暂停及一次恢复。王室财产被扣押时，多数宪章会被强制暂停，直至王室债务结清。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_general/levies
-	name = "01. Taxation and Levies"
+	name = "01. 税收与征费"
 
 /datum/book_entry/treasury_general/levies/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>The Crown draws revenue from a mix of direct and indirect taxes. Charters of the Realm (see chapter 00) may exempt or cap certain classes of subject while they stand.</p>
+		<p>王室通过直接税与间接税获取收入。王国宪章（见第00章）生效期间，可为某些臣民提供免税或税额上限。</p>
 		</div>
 
-		<h3>Tax Categories</h3>
+		<h3>税收类别</h3>
 		<ul>
-			<li><b>Contract Levy</b> - on contract payouts.</li>
-			<li><b>Headeater Levy</b> - on bounty heads fed directly to the HEADEATER.</li>
-			<li><b>Import Tariff</b> - on goods bought from merchant vendors including SILVERFACE and GOLDFACE.</li>
-			<li><b>Export Duty</b> - on goods sold through the Navigator or the Ship Fulfillment Crate.</li>
-			<li><b>Fine</b> - a one-off penalty struck against a subject's account.</li>
+			<li><b>契约征费</b>——对契约报酬征收。</li>
+			<li><b>食首者征费</b>——对直接喂给食首者的悬赏人头征收。</li>
+			<li><b>进口关税</b>——对从银面、金面等商贸机器购买的货物征收。</li>
+			<li><b>出口税</b>——对通过领航员或船舶履约箱出售的货物征收。</li>
+			<li><b>罚款</b>——从臣民账户中扣除的一次性处罚。</li>
 		</ul>
 
-		<p>Per-category rates (levies and poll taxes) are set from the throne by speaking <b>"Set Taxes"</b>, which opens the Ruler's tax panel; levies and poll rates each carry an independent one-day cooldown. Should the ruler be absent from the realm, the Steward's <b>"Adjust Taxes"</b> verb opens the same panel. While the Zenitstadt Concordat stands, no levy may be set below the Church's tithe rate.</p>
+		<p>在王座前说出<b>"Set Taxes"</b>即可打开统治者税务面板，设置各类征费和人头税税率；两者各有独立的一天冷却。统治者不在王国内时，宫廷总管的<b>"Adjust Taxes"</b>动作可打开同一面板。天顶城协约生效期间，征费税率不得低于教会什一税税率。</p>
 
-		<h3>Poll Tax</h3>
-		<p>Poll tax is levied daily against every subject with a bank account, drained automatically. Categories exist per social station (noble, clergy, inquisition, courtier, garrison, guilds, merchant, burgher, adventurer, mercenary, peasant). Poll taxes are hardcapped at <b>[POLL_TAX_MAX_RATE]m/day</b>, and can be set as low as a subsidy of <b>-[POLL_TAX_MAX_SUBSIDY]m/day</b> (a negative rate pays subjects from the Crown's Purse instead).</p>
+		<h3>人头税</h3>
+		<p>每天向拥有银行账户的臣民自动扣缴人头税。类别按社会身份区分：贵族、神职人员、宗教裁判所、廷臣、驻军、公会、商人、市民、冒险者、佣兵和农民。人头税上限为<b>每天[POLL_TAX_MAX_RATE]m</b>，最低可设置为<b>每天-[POLL_TAX_MAX_SUBSIDY]m</b>的补贴（负税率会从王室金库向臣民付款）。</p>
 
-		<p>Unpaid poll tax accumulates arrears. After <b>[POLL_TAX_DEBT_DAYS_TO_DEBTOR]</b> day(s) of arrears, the subject is marked <b>destitute</b>. Poll tax arrears do not authorise kill-on-sight or attack-on-sight - treat arrears as a roleplay opportunity to recover or forgive the debt, not an ERP exemption.</p>
+		<p>未缴人头税会累积为欠税。欠税达到<b>[POLL_TAX_DEBT_DAYS_TO_DEBTOR]</b>天后，臣民将被标记为<b>赤贫</b>。欠税不意味着允许见面就杀或见面就打——应将其视为追讨或豁免债务的角色扮演机会，而非色情角色扮演规则的豁免。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_general/fines
-	name = "02. Fines"
+	name = "02. 罚款"
 
 /datum/book_entry/treasury_general/fines/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>A fine strikes a subject's account directly for a stated amount, capped at <b>[GENERIC_RATE_CAP * 100]%</b> of their current balance per stroke, and no subject may be fined more than once per day. The Great Writ shields nobles from fines entirely, and the Golden Bull softens the cap for burghers (see chapter 00) - outlaws enjoy no such mercy.</p>
-		<p>Fines are voluntarily consented to by nature of holding an account under the Crown's jurisdiction; treat repeated or excessive fining as an IC matter to resolve, not a mechanical guarantee.</p>
+		<p>罚款会直接从臣民账户扣除指定金额，单次不超过当前余额的<b>[GENERIC_RATE_CAP * 100]%</b>，每天不得对同一臣民罚款超过一次。大宪章使贵族完全免受罚款，金玺诏书则降低市民的罚款上限（见第00章）；法外之徒不享有这些宽免。</p>
+		<p>在王室管辖下开立账户即表示自愿接受罚款。反复或过度罚款应作为角色内问题处理，不应把机制当作保障。</p>
 		</div>
 	"}
 
@@ -142,103 +142,103 @@
 
 
 /datum/book_entry/treasury_general/supply
-	name = "04. Supply and Demand"
+	name = "04. 供给与需求"
 
 /datum/book_entry/treasury_general/supply/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>Economic events last <b>[ECON_EVENT_DURATION]</b> day(s) and are posted on the noticeboard under <b>Economic Events</b>.</p>
+		<p>经济事件持续<b>[ECON_EVENT_DURATION]</b>天，并公布在公告板的<b>经济事件</b>栏目中。</p>
 
 		<ul>
-			<li><b>Shortage</b> - affected goods spike in price. One urgent standing order is posted against the afflicted region, <b>provided fewer than [STANDING_ORDERS_MAX_URGENT] urgent orders are already standing</b>. Past that cap, the shortage's price spike still happens, but no urgent order is spawned.</li>
-			<li><b>Oversupply</b> - affected goods drop in price.</li>
+			<li><b>短缺</b>——受影响货物价格暴涨。若现有紧急长期订单<b>少于[STANDING_ORDERS_MAX_URGENT]份</b>，便会针对受灾地区发布一份。达到上限后，短缺仍会推高价格，但不会生成紧急订单。</li>
+			<li><b>供过于求</b>——受影响货物价格下降。</li>
 		</ul>
 
-		<h3>Ending a Shortage Early</h3>
-		<p>A shortage does not have to run its full <b>[ECON_EVENT_DURATION]</b>-day course. Every unit of an affected good that the Crown <b>exports</b> to a region that demands it counts toward relief.</p>
+		<h3>提前结束短缺</h3>
+		<p>短缺无需持续满<b>[ECON_EVENT_DURATION]</b>天。王室向有需求地区<b>出口</b>的每一单位受影响货物，都会计入救济进度。</p>
 
-		<p>Once cumulative deliveries cross <b>[round(ECON_EVENT_SATURATION_MULT * 100)]%</b> of the average stockpile limit across the affected goods, the shortage ends immediately: prices snap back to normal and SCOM announces the relief.</p>
+		<p>累计交货量达到受影响货物平均库存上限的<b>[round(ECON_EVENT_SATURATION_MULT * 100)]%</b>后，短缺立即结束：价格恢复正常，传讯网会宣布救济完成。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_general/tax_evasion
-	name = "05. Jolly Tax Evasion"
+	name = "05. 快乐逃税"
 
 /datum/book_entry/treasury_general/tax_evasion/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>Two legitimate dodge switches exist, both risk-bearing:</p>
+		<p>有两种可用的逃税开关，两者都有风险：</p>
 
 		<ul>
-			<li><b>GOLDFACE's Secrets menu</b> - FTC members (Merchant, Shophand) can toggle "Stop Paying Taxes" to skip the import tariff on purchases. The machine tracks tariff paid and tariff evaded per-machine, visible to FTC members only.</li>
-			<li><b>The Ship Fulfillment Crate's underledger toggle</b> - Merchant/Shophand can toggle Crown export duty between PAID and DODGED on that crate. Evaded duty is tallied per-machine.</li>
+			<li><b>金面的秘密菜单</b>——费伦提亚贸易公司成员（商人、店员）可切换“停止纳税”，跳过购买货物的进口关税。每台机器分别记录已缴与逃缴关税，仅公司成员可见。</li>
+			<li><b>船舶履约箱的暗账开关</b>——商人或店员可在该箱上切换王室出口税为已缴或逃缴。每台机器分别统计逃缴税额。</li>
 		</ul>
 
-		<p>The risk of being caught and penalised by the Crown falls on whoever is dodging. The Crown has no automatic audit tool - it can only guess and accuse, with or without proof.</p>
+		<p>逃税者自行承担被王室发现与处罚的风险。王室没有自动审计工具，只能猜测与指控，无论是否有证据。</p>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_general/mercenary_statue
-	name = "06. The Mercenary Statue"
+	name = "06. 佣兵雕像"
 
 /datum/book_entry/treasury_general/mercenary_statue/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>The Mercenary Statue is a talkstatue that lets townsfolk reach registered mercenaries for hire.</p>
+		<p>佣兵雕像是一座传话雕像，让镇民联系已登记、可供雇用的佣兵。</p>
 
 		<ul>
-			<li>Mercenaries register with the statue and cycle their status: Available, Contracted, Do not Disturb.</li>
-			<li>Anyone may open the statue, browse the roster, and send a registered mercenary a direct message. Recipients on Do not Disturb are hidden from the picker.</li>
-			<li>A sender may also broadcast a message to every available mercenary at once.</li>
-			<li>Each sender-recipient pairing has its own cooldown to prevent spam, and broadcasts carry a separate cooldown.</li>
-			<li>Messages are logged. Senders must stand adjacent to the statue to send, and mercenaries reply with a simple YAE/NAE or a signal of interest.</li>
+			<li>佣兵在雕像处登记，并切换状态：可雇用、已有契约、请勿打扰。</li>
+			<li>任何人都可打开雕像，浏览名册，并给已登记佣兵发送私信。请勿打扰状态的收件人不会出现在选择列表中。</li>
+			<li>发送者也可一次向所有可雇用佣兵广播消息。</li>
+			<li>每对发送者与收件人有独立冷却以防刷屏，广播另有独立冷却。</li>
+			<li>消息会被记录。发送者须站在雕像旁发送，佣兵可简单答复接受或拒绝，也可表示兴趣。</li>
 		</ul>
 		</div>
 	"}
 
 
 /datum/book_entry/treasury_general/zadcote
-	name = "07. Zadcote and Zadcage"
+	name = "07. 扎德鸟舍与鸟笼"
 
 /datum/book_entry/treasury_general/zadcote/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p>The Zadcote is used to send messages, parcels, and for the nefarious - bottlebombs to linked zadcages. Each Zadcote is bound to a single faction - the Crown, the Ferentian Trading Company, or the Bathhouse and accepts orders only from its faction.</p>
+		<p>扎德鸟舍用于向绑定的鸟笼递送消息、包裹，心怀恶意者也可递送瓶装炸弹。每座鸟舍只隶属王室、费伦提亚贸易公司或澡堂中的一个势力，并只接受该势力的命令。</p>
 
-		<p>A Zadcage can ride in a pack, on a person, or be set down, and the zad will route to it reliably. Each zadcote spawns with its linked zadcages automatically..</p>
+		<p>鸟笼可放在背包内、随身携带或置于地上，扎德鸟都能可靠地找到它。每座鸟舍生成时会自动附带绑定的鸟笼。</p>
 
-		<h3>Bonding a Zadcage</h3>
-		<p>Strike a free Zadcage against a Zadcote to bond it to one of [ZADCOTE_SLOT_CAP] slots. The Zadcote operator may rename the slot in the interface. Bond persists until the operator severs it; the Zadcage holder cannot break it themselves. If you sever a slot while a zad is in flight, that zad completes its current trip before the bond goes dead.</p>
+		<h3>绑定鸟笼</h3>
+		<p>用未绑定鸟笼触碰鸟舍，即可绑定到[ZADCOTE_SLOT_CAP]个槽位之一。鸟舍操作者可在界面中重命名槽位。绑定会持续到操作者解除，持笼者无法自行解除。若扎德鸟飞行时解除槽位，它会完成当前行程后再断开绑定。</p>
 
-		<h3>Capacity tiers</h3>
-		<p>Each dispatch chooses how many zads to send. Each of them may send a message, alongside a payload:</p>
+		<h3>载荷等级</h3>
+		<p>每次派遣可选择出动多少只扎德鸟。它们可在携带载荷的同时递送消息：</p>
 		<ul>
-			<li><b>1 zad</b> - A small item.</li>
-			<li><b>2 zads</b> - A medium (normal) item or a pouch.</li>
-			<li><b>3 zads</b> - A large / bulky item or container.</li>
+			<li><b>1只扎德鸟</b>——一件小型物品。</li>
+			<li><b>2只扎德鸟</b>——一件中型（普通）物品或一个小袋。</li>
+			<li><b>3只扎德鸟</b>——一件大型或笨重物品，或一个容器。</li>
 		</ul>
 
-		<h3>Flight time and turnback</h3>
-		<p>A dispatched zad team takes about a minute to reach the Zadcage. If the Zadcage has been destroyed by then, the zads turn back with the payload intact. If the Zadcage is bonded but not on a person, delivery still completes - the Zadcote chimes to its operator so they know the cage was unattended.</p>
+		<h3>飞行时间与折返</h3>
+		<p>派出的鸟队约一分钟抵达鸟笼。若鸟笼届时已被摧毁，鸟队会带着完好载荷折返。绑定鸟笼即使无人携带，递送仍会完成；鸟舍会鸣响，告知操作者该鸟笼无人看管。</p>
 
-		<h3>Reply window</h3>
-		<p>Once a zad lands, the Zadcage holder has three minutes to write a reply and place a return payload. After three minutes the zad lifts off on its own. Return capacity is equal to the dispatch capacity. <b>Auto-departure carries no message and no package.</b> The last 30 seconds tint the countdown red.</p>
+		<h3>回复时限</h3>
+		<p>扎德鸟落地后，持笼者有三分钟写回复并放入返程载荷。三分钟后鸟会自行起飞。返程容量与派遣容量相同。<b>自动起飞不会携带消息或包裹。</b>最后30秒的倒计时会变红。</p>
 
-		<h3>Attrition and Zadpacks</h3>
-		<p>A returning zad has a small chance of being lost to exhaustion or harm. Bottlebomb flights are <b>one-way</b> - those zads are never recovered. A faction restocks its Zadcote with a Pack of Trained Zads bought through its supply machine: the ATC's at GOLDFACE, the Bathhouse's through BRASSFACE, and the Stewardry's through the NERVE MASTER's Crown imports. Strike the pack against the Zadcote to add [ZADPACK_BUNDLE_SIZE] fresh zads to the reserve.</p>
+		<h3>损耗与鸟群补充包</h3>
+		<p>返程扎德鸟有小概率因疲劳或伤害而损失。投送瓶装炸弹是<b>单程</b>任务，出动的鸟无法回收。势力可通过供应机器购买训练扎德鸟补充包：贸易公司使用金面，澡堂使用铜面，总管府通过神经主宰的王室进口渠道购买。用补充包触碰鸟舍，即可补入[ZADPACK_BUNDLE_SIZE]只扎德鸟。</p>
 
-		<h3>Summoning</h3>
-		<p>A Zadcage holder can actively summon zads from the linked zadcote, so they can send a message or package back proactively. The owner of the zadcote could turn it off if they are low on zads or think the bearer is abusing it.</p>
+		<h3>召唤</h3>
+		<p>持笼者可主动从绑定鸟舍召唤扎德鸟，以便主动回寄消息或包裹。若鸟量不足，或认为持笼者滥用此功能，鸟舍所有者可关闭召唤。</p>
 
-		<h3>Bombing!</h3>
-		<p>The Zadcote can carry bottlebombs as a payload - up to three per dispatch. Bomb can only be sent once every five minutes. The Zadcage holder sees the zads arriving with bombs slung beneath, has time to drop or throw the cage, and may even weaponize it against someone they dislike. Admin logs every bomb dispatch by sender, receiver, and place of detonation.</p>
+		<h3>投弹！</h3>
+		<p>鸟舍可递送瓶装炸弹，每次最多三枚，每五分钟只能派出一次。持笼者会看到鸟下方悬挂的炸弹，有时间丢下或扔出鸟笼，甚至可借此攻击不喜欢的人。管理员日志会记录每次投弹的发送者、接收者和爆炸地点。</p>
 
-		<h3>Scrying (ATC and Bathhouse only)</h3>
-		<p>The Merchant's Zadcote and the Bathmaster's Zadcote may scry through the bonded zad on a Zadcage. Scrying draws from a small <b>scrying fund</b> kept by the Zadcote itself. Feed coins of any denomination directly into the Zadcote to add to the fund, each scry deducts [ZAD_VOYEUR_COST_MAMMON] mammon. The Zadcage holder feels arcane energy stir, and the cage glows blue while the scrying is active. The view lasts three minutes, long enough to confirm the holder is safe - or to make trouble. The Steward and Crown have no scrying access through Zadcotes, they must relies on the Court Mage's expertise scrying.</p>
+		<h3>窥视（仅贸易公司与澡堂）</h3>
+		<p>商人与浴场主管的鸟舍可通过鸟笼上的绑定扎德鸟窥视。窥视消耗鸟舍自身储存的少量<b>窥视基金</b>。直接投入任意面额硬币即可充值，每次窥视扣除[ZAD_VOYEUR_COST_MAMMON]玛门。持笼者会感觉奥术能量涌动，鸟笼在窥视期间发蓝光。视野持续三分钟，足以确认持笼者安全，也足以惹麻烦。宫廷总管与王室无法通过鸟舍窥视，必须依靠宫廷法师的专业窥视术。</p>
 
-		<h3>Spare zadcages & zads</h3>
-		<p>Spare Zadcages cost [ZADCOTE_NEW_CAGE_COST_MAMMON] mammon at the can be replaced by purchase from the faction's import machine. Trained zads sell as packs of [ZADPACK_BUNDLE_SIZE].</p>
+		<h3>备用鸟笼与扎德鸟</h3>
+		<p>备用鸟笼可从势力进口机器购买，每个[ZADCOTE_NEW_CAGE_COST_MAMMON]玛门。训练扎德鸟以每包[ZADPACK_BUNDLE_SIZE]只出售。</p>
 		</div>
 	"}

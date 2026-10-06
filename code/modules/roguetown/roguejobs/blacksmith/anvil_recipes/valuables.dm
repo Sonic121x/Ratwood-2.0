@@ -25,7 +25,7 @@
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/valuables/decrepit
-	name = "Statue, Decrepit" // decrepit
+	name = "破败雕像" // decrepit
 	req_bar = /obj/item/ingot/decrepit
 	created_item = /obj/item/roguestatue/decrepit
 	display_category = ITEM_CAT_DECORATION
@@ -43,7 +43,7 @@
 	display_category = ITEM_CAT_DECORATION
 /*
 /datum/anvil_recipe/valuables/eargol
-	name = "gold 耳环"
+	name = "黄金耳环"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/rogueacc/eargold,
 						/obj/item/rogueacc/eargold,
@@ -51,7 +51,7 @@
 	type = "Valuables"
 
 /datum/anvil_recipe/valuables/earsil
-	name = "silver 耳环"
+	name = "白银耳环"
 	req_bar = /obj/item/ingot/silver
 	created_item = list(/obj/item/rogueacc/earsilver,
 						/obj/item/rogueacc/earsilver,
@@ -167,7 +167,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/signet/silver/inq
-	name = "Blessed Silver Signet Ring"
+	name = "祝圣白银印戒"
 	craftdiff = SKILL_LEVEL_MASTER
 	req_bar = /obj/item/ingot/silverblessed/bullion
 	created_item = /obj/item/clothing/ring/signet/silver
@@ -224,7 +224,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/terminus
-	name = "特米努斯之终 (+1 黄金 Bar, +1 钢, +1 隆兹石)"
+	name = "特米努斯之终 (+1 黄金锭, +1 钢, +1 隆兹石)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem/ruby)
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth
@@ -303,7 +303,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/anointedberserksword
-	name = "Anointed Berserkers Sword (Secret!)"
+	name = "受膏狂战士之剑 (秘密！)"
 	req_bar = /obj/item/ingot/component/glutcrystal
 	hides_from_books = TRUE
 	additional_items = list(/obj/item/rogueweapon/sword/long/exe/berserk)
@@ -312,8 +312,8 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /obj/item/rogueweapon/sword/long/exe/berserk/gnoll
-	name = "anointed berserkers sword"
-	desc = "A raw heap of iron, hewn into an intimidatingly massive cleaver. Most could never aspire to effectively swing such a laborsome blade about; those few that have the strength, however, can force even the strongest opponents to stagger back. </br>The thrummage of your heart matches the otherworldly aura that has overtaken this blade. Someone's smiling down upon you, but it certainly isn't who you think it is."
+	name = "受膏狂战士之剑"
+	desc = "一大块粗铁被凿成令人胆寒的巨型砍刀。大多数人根本无力有效挥动如此沉重的刀刃；少数力气足够的人，却能凭它将最强的对手也逼得踉跄后退。 </br>你的心跳与笼罩刀刃的异界气息产生了共鸣。有人正从高处向你微笑，但那绝不是你以为的那一位。"
 	max_blade_int = 666
 
 /obj/item/rogueweapon/sword/long/exe/berserk/gnoll/Initialize(mapload)

@@ -1,5 +1,5 @@
 /obj/item/melee/touch_attack
-	name = "\improper 伸出的手掌"
+	name = "\proper 伸出的手掌"
 	desc = ""
 	var/catchphrase = "击掌！"
 	var/on_use_sound = null

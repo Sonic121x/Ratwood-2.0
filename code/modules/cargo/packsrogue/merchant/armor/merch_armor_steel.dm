@@ -142,12 +142,12 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
 /datum/supply_pack/rogue/armor_steel/helmet_sallet
-	name = "头盔，萨莱"
+	name = "头盔，萨雷特盔"
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
 /datum/supply_pack/rogue/armor_steel/helmet_sallet_visor
-	name = "头盔，带面罩萨莱"
+	name = "头盔，带面罩萨雷特盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
@@ -172,12 +172,12 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 
 /datum/supply_pack/rogue/armor_steel/helmet_bascinet
-	name = "头盔，巴西内"
+	name = "头盔，盆盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet)
 
 /datum/supply_pack/rogue/armor_steel/helmet_etruscan_bascinet
-	name = "头盔，伊特鲁斯卡巴西内"
+	name = "头盔，伊特鲁斯卡盆盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/etruscan)
 

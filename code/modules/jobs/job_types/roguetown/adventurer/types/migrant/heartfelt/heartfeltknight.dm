@@ -146,7 +146,7 @@
 		else //In case they DC or don't choose close the panel, etc
 			r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 
-	var/helmet = list("猪面尖盔","卫兵头盔","格栅头盔","桶盔","骑士头盔","狼首板甲盔" ,"带面罩沙勒盔","长吻带面罩沙勒盔","阿米特盔","长吻阿米特盔","猎犬头尖盔", "伊特鲁斯卡尖盔", "开缝锅盔")
+	var/helmet = list("猪面尖盔","卫兵头盔","格栅头盔","桶盔","骑士头盔","狼首板甲盔" ,"带面罩萨雷特盔","长吻带面罩萨雷特盔","阿米特盔","长吻阿米特盔","猎犬头尖盔", "伊特鲁斯卡尖盔", "开缝锅盔")
 	var/helmet_choice = input(H, "选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
 		if("猪面尖盔") 
@@ -161,9 +161,9 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
 		if("狼首板甲盔") 
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩沙勒盔")	
+		if("带面罩萨雷特盔")	
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻带面罩沙勒盔")
+		if("长吻带面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		if("阿米特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet

@@ -77,7 +77,7 @@
 	bonus_chance_outputs = list(/obj/item/alch/earthdust = 33)
 
 /datum/alch_grind_recipe/swampweed_dried
-	name = "干燥 Swampweed"
+	name = "干燥沼泽烟叶"
 	valid_input = /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry
 	valid_outputs = list(/obj/item/alch/swampdust = 1)
 	bonus_chance_outputs = list(/obj/item/alch/earthdust = 50,/obj/item/alch/swampdust = 50)
@@ -89,7 +89,7 @@
 	bonus_chance_outputs = list(/obj/item/alch/airdust = 33)
 
 /datum/alch_grind_recipe/dry_westleach
-	name = "干燥 Westleach"
+	name = "干燥西池烟叶"
 	valid_input = /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	valid_outputs = list(/obj/item/alch/tobaccodust = 1)
 	bonus_chance_outputs = list(/obj/item/alch/airdust = 50,/obj/item/alch/tobaccodust = 50)
@@ -199,7 +199,7 @@
 	bonus_chance_outputs = list(/obj/item/alch/waterdust = 25)
 
 /datum/alch_grind_recipe/manabloompowder
-	name = "Manabloom 粉"
+	name = "魔力花粉"
 	valid_input = /obj/item/reagent_containers/food/snacks/grown/manabloom
 	valid_outputs = list(/obj/item/alch/manabloompowder = 1)
 	bonus_chance_outputs = list(/obj/item/alch/manabloompowder = 25)
@@ -243,7 +243,7 @@
 	bonus_chance_outputs = list(/obj/item/alch/golddust = 66)
 
 /datum/alch_grind_recipe/mineraldustriddle //why are you doing this...
-	name = "矿物粉（Riddle of Steel）"
+	name = "矿物粉（钢铁之谜）"
 	valid_input = /obj/item/riddleofsteel
 	valid_outputs = list(/obj/item/alch/mineraldust = 2, /obj/item/alch/airdust = 1, /obj/item/alch/irondust = 1, /obj/item/alch/firedust = 1, /obj/item/alch/magicdust = 1, /obj/item/alch/silverdust = 1, /obj/item/alch/coaldust = 1, /obj/item/alch/runedust = 1, /obj/item/alch/waterdust = 1)  // if you're crazy enough to grind a riddle you should get at LEAST one of every dust.
 	bonus_chance_outputs = list(/obj/item/alch/mineraldust = 25, /obj/item/alch/airdust = 25, /obj/item/alch/irondust = 25, /obj/item/alch/firedust = 25, /obj/item/alch/magicdust = 25, /obj/item/alch/silverdust = 25, /obj/item/alch/coaldust = 25, /obj/item/alch/runedust = 25, /obj/item/alch/waterdust = 25)
@@ -253,76 +253,76 @@
 
 //Herb -> Herbseed
 /datum/alch_grind_recipe/atropa_seed
-	name = "草药种子（Atropa）"
+	name = "草药种子（颠茄）"
 	valid_input = /obj/item/alch/atropa
 	valid_outputs = list(/obj/item/herbseed/atropa = 1)
 
 /datum/alch_grind_recipe/matricaria_seed
-	name = "草药种子（Matricaria）"
+	name = "草药种子（洋甘菊）"
 	valid_input = /obj/item/alch/matricaria
 	valid_outputs = list(/obj/item/herbseed/matricaria = 1)
 
 /datum/alch_grind_recipe/symphitum_seed
-	name = "草药种子（Symphitum）"
+	name = "草药种子（聚合草）"
 	valid_input = /obj/item/alch/symphitum
 	valid_outputs = list(/obj/item/herbseed/symphitum = 1)
 
 /datum/alch_grind_recipe/taraxacum_seed
-	name = "草药种子（Taraxacum）"
+	name = "草药种子（蒲公英）"
 	valid_input = /obj/item/alch/taraxacum
 	valid_outputs = list(/obj/item/herbseed/taraxacum = 1)
 
 /datum/alch_grind_recipe/euphrasia_seed
-	name = "草药种子（Euphrasia）"
+	name = "草药种子（小米草）"
 	valid_input = /obj/item/alch/euphrasia
 	valid_outputs = list(/obj/item/herbseed/euphrasia = 1)
 
 /datum/alch_grind_recipe/paris_seed
-	name = "草药种子（Paris）"
+	name = "草药种子（重楼）"
 	valid_input = /obj/item/alch/paris
 	valid_outputs = list(/obj/item/herbseed/paris = 1)
 
 /datum/alch_grind_recipe/calendula_seed
-	name = "草药种子（Calendula）"
+	name = "草药种子（金盏花）"
 	valid_input = /obj/item/alch/calendula
 	valid_outputs = list(/obj/item/herbseed/calendula = 1)
 
 /datum/alch_grind_recipe/mentha_seed
-	name = "草药种子（Mentha）"
+	name = "草药种子（薄荷）"
 	valid_input = /obj/item/alch/mentha
 	valid_outputs = list(/obj/item/herbseed/mentha = 1)
 
 /datum/alch_grind_recipe/urtica_seed
-	name = "草药种子（Urtica）"
+	name = "草药种子（荨麻）"
 	valid_input = /obj/item/alch/urtica
 	valid_outputs = list(/obj/item/herbseed/urtica = 1)
 
 /datum/alch_grind_recipe/salvia_seed
-	name = "草药种子（Salvia）"
+	name = "草药种子（鼠尾草）"
 	valid_input = /obj/item/alch/salvia
 	valid_outputs = list(/obj/item/herbseed/salvia = 1)
 
 /datum/alch_grind_recipe/hypericum_seed
-	name = "草药种子（Hypericum）"
+	name = "草药种子（金丝桃）"
 	valid_input = /obj/item/alch/hypericum
 	valid_outputs = list(/obj/item/herbseed/hypericum = 1)
 
 /datum/alch_grind_recipe/benedictus_seed
-	name = "草药种子（Benedictus）"
+	name = "草药种子（圣蓟）"
 	valid_input = /obj/item/alch/benedictus
 	valid_outputs = list(/obj/item/herbseed/benedictus = 1)
 
 /datum/alch_grind_recipe/valeriana_seed
-	name = "草药种子（Valeriana）"
+	name = "草药种子（缬草）"
 	valid_input = /obj/item/alch/valeriana
 	valid_outputs = list(/obj/item/herbseed/valeriana = 1)
 
 /datum/alch_grind_recipe/artemisia_seed
-	name = "草药种子（Artemisia）"
+	name = "草药种子（艾蒿）"
 	valid_input = /obj/item/alch/artemisia
 	valid_outputs = list(/obj/item/herbseed/artemisia = 1)
 
 /datum/alch_grind_recipe/rosa_seed
-	name = "草药种子（Rosa）"
+	name = "草药种子（玫瑰）"
 	valid_input = /obj/item/alch/rosa
 	valid_outputs = list(/obj/item/herbseed/rosa = 1)

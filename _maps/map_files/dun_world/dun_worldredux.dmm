@@ -243,7 +243,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "tower";
-	name = "Mages dormitory II"
+	name = "二号法师宿舍"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -493,7 +493,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -513,7 +513,7 @@
 "aeZ" = (
 /obj/structure/bars/passage{
 	max_integrity = 15000;
-	name = "Dwarven Artificer";
+	name = "矮人匠师";
 	redstone_id = "dwarven_artificer"
 	},
 /obj/effect/decal/cobbleedge{
@@ -766,7 +766,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs/keep)
@@ -1131,8 +1131,8 @@
 "amw" = (
 /obj/structure/lever/wall{
 	redstone_id = "3celldungeon";
-	name = "Peculiar Lever";
-	desc = "A peculiar lever. It looks like it could turn on the machine in the room with me, if only it weren't broken."
+	name = "奇特拉杆";
+	desc = "一根奇特的拉杆。若不是坏了，它似乎能启动房间里的机器。"
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/cell)
@@ -1284,7 +1284,7 @@
 /obj/structure/mineral_door/wood/window{
 	locked = 1;
 	lockid = "tower";
-	name = "Private section"
+	name = "私人区域"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -1413,7 +1413,7 @@
 "apV" = (
 /obj/structure/mineral_door/wood{
 	lockid = "vesseldeck";
-	name = "Storage"
+	name = "储藏室"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
@@ -2182,7 +2182,7 @@
 "aAh" = (
 /obj/machinery/light/rogue/oven{
 	desc = "...?";
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /turf/closed/wall/mineral/rogue/pipe/line/four,
 /area/rogue/under/underdark/north)
@@ -2220,7 +2220,7 @@
 /obj/structure/bars/pipe,
 /obj/machinery/light/rogue/oven/west{
 	desc = "...?";
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/underdark/north)
@@ -2318,7 +2318,7 @@
 "aBN" = (
 /obj/structure/winch{
 	gid = "dwarven_ruinsg";
-	name = "Dwarven Gate";
+	name = "矮人大门";
 	redstone_id = "dwarven_ruinsg"
 	},
 /turf/open/floor/rogue/cobble,
@@ -2397,7 +2397,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "keeper2";
 	locked = 1;
-	name = "Keeper Dorm"
+	name = "看守宿舍"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
@@ -2531,7 +2531,7 @@
 "aEy" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	opacity = 0
@@ -2577,7 +2577,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "fancyv";
-	name = "Luxury Room V"
+	name = "五号豪华客房"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -2632,7 +2632,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Cell"
+	name = "牢房"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/beach)
@@ -2776,9 +2776,9 @@
 /area/rogue/indoors/town)
 "aGW" = (
 /obj/structure/toilet{
-	desc = "A man's throne is his throne";
+	desc = "一个人的宝座，终究是他自己的宝座。";
 	icon_state = "0,2";
-	name = "Very Fancy Toilet";
+	name = "极其华丽的马桶";
 	pixel_y = 10
 	},
 /obj/structure/rack/rogue/shelf,
@@ -2898,7 +2898,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Gatehouse";
+	name = "门楼";
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -3170,7 +3170,7 @@
 /area/rogue/under/cave/scarymaze)
 "aKU" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /obj/machinery/light/rogue/candle/off/l,
 /obj/item/reagent_containers/glass/bottle/rogue{
@@ -3610,7 +3610,7 @@
 "aPD" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	opacity = 0
@@ -3714,9 +3714,9 @@
 "aRd" = (
 /obj/structure/closet/dirthole/closed,
 /obj/item/roguekey/walls{
-	desc = "This is a rusty key. You're not sure where it goes to.";
+	desc = "一把生锈的钥匙。我不知道它能打开什么。";
 	lockid = "vesseldeck";
-	name = "strange key"
+	name = "奇异钥匙"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/cave/central)
@@ -3729,7 +3729,7 @@
 /area/rogue/under/cavewet/bogcaves/north)
 "aRl" = (
 /obj/structure/fluff/walldeco/bsmith{
-	name = "DWARVEN KEEP"
+	name = "矮人要塞"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/mountains/decap/minotaurfort)
@@ -3779,7 +3779,7 @@
 "aRR" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/mountains/decap/gunduzirak)
@@ -3818,7 +3818,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "physician";
-	name = "Apothecary's office"
+	name = "药剂师办公室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/physician)
@@ -3835,7 +3835,7 @@
 /area/rogue/under/cave/skeletoncrypt)
 "aSN" = (
 /obj/structure/bearpelt{
-	desc = "A hide of a slain bear. It looks rich and expensive.";
+	desc = "猎杀熊所得的毛皮，看起来奢华而昂贵。";
 	pixel_y = 20
 	},
 /obj/structure/fluff/railing/corner/south_west,
@@ -3845,7 +3845,7 @@
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Washroom"
+	name = "盥洗室"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/beach)
@@ -4002,7 +4002,7 @@
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
 	lockid = "tavern";
-	name = "STAFF"
+	name = "员工室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -4084,7 +4084,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Solitary Confinement";
+	name = "禁闭室";
 	dir = 4
 	},
 /turf/open/floor/rogue/blocks,
@@ -4483,7 +4483,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "steward";
-	name = "Bathroom"
+	name = "浴室"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
@@ -4546,7 +4546,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "hand";
-	name = "Hand's Chambers"
+	name = "国王之手居室"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -4709,7 +4709,7 @@
 	},
 /obj/structure/winch{
 	gid = "dwarven_ruinsg";
-	name = "Dwarven Gate";
+	name = "矮人大门";
 	redstone_id = "dwarven_ruinsg"
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -4823,7 +4823,7 @@
 /obj/structure/lever{
 	redstone_id = "dungeonpit";
 	pixel_y = 5;
-	name = "Bypass Tunnel"
+	name = "绕行隧道"
 	},
 /turf/open/floor/rogue/cobblerock{
 	smooth = 0
@@ -4922,7 +4922,7 @@
 /area/rogue/indoors/town/manor)
 "bfe" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach)
@@ -4930,7 +4930,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -5051,7 +5051,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "craftermaster";
-	name = "Guildmaster's Office"
+	name = "公会会长办公室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/dwarfin)
@@ -5183,7 +5183,7 @@
 	color = "#755f48";
 	layer = 4;
 	max_integrity = 400;
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -5301,7 +5301,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "steward";
-	name = "Steward Bedroom"
+	name = "首席管家卧室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
@@ -5339,8 +5339,8 @@
 /area/rogue/outdoors/exposed/town/keep)
 "bjf" = (
 /obj/structure/fluff/sellsign{
-	desc = "A hastily scrabbled wooden sign that warns of the dangers that lie within in big red letters.";
-	name = "DANGER: UNSTABLE ALCHEMYCAL REACTION"
+	desc = "一块匆忙刻写的木牌，用醒目的红字警告里面潜藏的危险。";
+	name = "危险：不稳定的炼金反应"
 	},
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/naturalstone,
@@ -5987,7 +5987,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "East Wing"
+	name = "东侧厅"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -6209,7 +6209,7 @@
 "btV" = (
 /obj/structure/bars/passage{
 	max_integrity = 10000;
-	name = "gate of escape";
+	name = "逃脱之门";
 	redstone_id = "mazedungeonescape"
 	},
 /turf/open/floor/rogue/blocks,
@@ -6400,11 +6400,11 @@
 "bwe" = (
 /obj/structure/table/optable{
 	pixel_y = 3;
-	name = "Peculiar Table";
-	desc = "A peculiar table which appears to be designed for someone to lay on. It has mechanical clamps that, when powered, appear to be capable of spreading someone's legs by force. It, however, seems broken."
+	name = "奇特台子";
+	desc = "一张奇特的台子，似乎供人躺卧。其机械夹具在通电时似乎能强行分开人的双腿，不过它看来已经坏了。"
 	},
 /obj/item/dildo/iron{
-	desc = "You have to finish it first. This one looks like it can affix to a shaft.";
+	desc = "你得先把它做完。这件似乎可以装在杆柄上。";
 	pixel_x = -18;
 	pixel_y = -5
 	},
@@ -6735,7 +6735,7 @@
 /obj/structure/winch{
 	dir = 4;
 	gid = "innersouthgate";
-	name = "inner gate winch";
+	name = "内门绞盘";
 	pixel_x = 1;
 	pixel_y = 3;
 	redstone_id = "innersouthgate"
@@ -6819,7 +6819,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "manor";
-	name = "Service Halls"
+	name = "勤务走廊"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement/keep)
@@ -7138,7 +7138,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "courtesan room 1"
+	name = "一号交际花房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -7786,7 +7786,7 @@
 "bMv" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4;
-	name = "Abandoned Hut"
+	name = "废弃小屋"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter)
@@ -7938,7 +7938,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "manor";
-	name = "Dungeons";
+	name = "地牢";
 	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -7974,7 +7974,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 8
 	},
 /turf/open/floor/rogue/cobble,
@@ -8040,7 +8040,7 @@
 "bPr" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -8104,7 +8104,7 @@
 "bQs" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - NORTHEAST"
+	wrotesign = "腐木谷——向东北"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/southeast)
@@ -8534,7 +8534,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "knight";
-	name = "Knight's Armory"
+	name = "骑士军械库"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
@@ -8586,7 +8586,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "church";
-	name = "Storage Room"
+	name = "储藏室"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/cave)
@@ -8609,7 +8609,7 @@
 "bVn" = (
 /obj/structure/gate{
 	gid = "dwarven_ruinsg";
-	name = "Dwarven Gate";
+	name = "矮人大门";
 	redstone_id = "dwarven_ruinsg"
 	},
 /turf/open/floor/rogue/concrete/bronze,
@@ -8753,7 +8753,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "stable1";
-	name = "stable i"
+	name = "一号马厩"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town)
@@ -8916,7 +8916,7 @@
 	dir = 1;
 	locked = 1;
 	lockid = "physician";
-	name = "Revivificatorium"
+	name = "复生室"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/physician)
@@ -8924,7 +8924,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "manor";
-	name = "Dungeons";
+	name = "地牢";
 	dir = 1
 	},
 /turf/open/floor/rogue/concrete,
@@ -8941,7 +8941,7 @@
 	pixel_y = 8
 	},
 /obj/structure/floordoor/open{
-	name = "Dwarven Bridge";
+	name = "矮人桥";
 	redstone_id = "dwarven_artificer"
 	},
 /turf/open/transparent/openspace,
@@ -9030,7 +9030,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "physician";
-	name = "Private surgery room"
+	name = "私人手术室"
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/physician)
@@ -9236,7 +9236,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "servant";
-	name = "Servant's Bunks"
+	name = "仆人宿舍"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement/keep)
@@ -9366,7 +9366,7 @@
 "cdC" = (
 /obj/structure/bars{
 	max_integrity = 2000;
-	name = "reinforced bars"
+	name = "加固栅栏"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/bog/north)
@@ -9415,7 +9415,7 @@
 "cdW" = (
 /obj/structure/gate{
 	gid = "psydoor";
-	name = "Ancient Library";
+	name = "古老图书馆";
 	redstone_id = "psydoor"
 	},
 /turf/open/floor/rogue/blocks,
@@ -9949,7 +9949,7 @@
 "ckJ" = (
 /obj/structure/bars/passage/steel{
 	redstone_id = "dungeonpit";
-	name = "Bypass Tunnel"
+	name = "绕行隧道"
 	},
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/cobblerock{
@@ -10005,7 +10005,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
@@ -10016,7 +10016,7 @@
 "clX" = (
 /obj/structure/closet/crate/chest/crate{
 	pixel_y = 8;
-	name = "evidence"
+	name = "证物"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/cell/warden)
@@ -10716,8 +10716,8 @@
 "ctm" = (
 /turf/closed/wall/mineral/rogue/wooddark/end/west{
 	max_integrity = 300;
-	name = "rough barricade";
-	desc = "Wooden beams braced hastily";
+	name = "粗制路障";
+	desc = "匆忙架起的木梁。";
 	dir = 4
 	},
 /area/rogue/under/town/sewer)
@@ -10970,8 +10970,8 @@
 	dir = 1
 	},
 /obj/structure/winch{
-	desc = "The ship's anchor winch. You're not going anywhere with it lowered.";
-	name = "anchor winch"
+	desc = "船上的起锚绞盘。锚未升起时，船哪儿也去不了。";
+	name = "起锚绞盘"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
@@ -11020,7 +11020,7 @@
 	dir = 4;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal{
 	icon_state = "plating2"
@@ -11177,7 +11177,7 @@
 /area/rogue/under/town/sewer)
 "cyK" = (
 /obj/structure/fluff/statue/knightalt{
-	desc = "A statue of Ravox, wielding a relix of his father as an emblem. The warrior watches over the flame, much like how he Serves everloyal to her justice. Or is it Tyranny?"
+	desc = "一尊拉沃克斯雕像，手持父亲的遗物作为象征。这位战士守望着火焰，正如祂始终忠于她的正义。还是说，那其实是暴政？"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/woods/southeast)
@@ -11329,10 +11329,10 @@
 /area/rogue/outdoors/town/roofs)
 "cAr" = (
 /turf/open/lava/acid{
-	desc = "This unearthy glowing fluid sizzles gently with strange power. Occasionally, bubbles swell and burst with sprays of liquid, the droplets sinking into the rock like a hot knife into butter.  If you touch it, you will die.";
+	desc = "这种泛着诡异光芒的液体蕴含奇异的力量，发出轻微的嘶响。气泡偶尔鼓起破裂，飞溅的液滴如热刀切入黄油般融入岩石。触碰它会致命。";
 	light_outer_range = 5;
 	light_power = 4;
-	name = "alchemical waste"
+	name = "炼金废液"
 	},
 /area/rogue/under/town/sewer)
 "cAB" = (
@@ -11616,7 +11616,7 @@
 /obj/structure/bars{
 	color = "#755f48";
 	max_integrity = 400;
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
@@ -11934,7 +11934,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "physician";
-	name = "examination room"
+	name = "诊疗室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/physician)
@@ -11959,7 +11959,7 @@
 /area/rogue/outdoors/town)
 "cHI" = (
 /obj/structure/fluff/walldeco/goblet{
-	name = "Vale's Pints Inn and Bath"
+	name = "谷地品脱旅店与浴场"
 	},
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -12057,7 +12057,7 @@
 /area/rogue/under/cavewet/bogcaves/west)
 "cIR" = (
 /obj/structure/closet/crate/chest{
-	name = "Evidence Storage"
+	name = "证物库"
 	},
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
@@ -12195,7 +12195,7 @@
 "cKg" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 1
@@ -12385,7 +12385,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomii";
-	name = "Room II"
+	name = "二号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -12558,7 +12558,7 @@
 "cOR" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -12880,7 +12880,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Barracks";
+	name = "兵营";
 	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -12958,7 +12958,7 @@
 	icon_state = "cobbleedge-sread"
 	},
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/sewer)
@@ -13086,7 +13086,7 @@
 /obj/structure/table/wood/long_table,
 /obj/item/roguekey/walls{
 	lockid = "farm";
-	name = "farm key"
+	name = "农场钥匙"
 	},
 /obj/item/rogueweapon/huntingknife,
 /turf/open/floor/rogue/twig,
@@ -13119,9 +13119,9 @@
 /area/rogue/outdoors/town/roofs/keep)
 "cUL" = (
 /turf/closed/wall/mineral/rogue/stone{
-	name = "granite stone wall";
+	name = "花岗岩墙";
 	max_integrity = 5800;
-	desc = "A wall of smooth unyielding stone. It seems harder than most other kinds."
+	desc = "一面由光滑坚硬的石块砌成的墙，似乎比多数石墙都坚固。"
 	},
 /area/rogue/outdoors/town)
 "cUM" = (
@@ -13549,7 +13549,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "tower";
-	name = "bathroom"
+	name = "浴室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -13731,7 +13731,7 @@
 "dbV" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "archive";
-	name = "Vale's Public Library"
+	name = "谷地公共图书馆"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -14395,8 +14395,8 @@
 /area/rogue/outdoors/woods/south)
 "diL" = (
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill"
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/town/sewer)
@@ -15042,8 +15042,8 @@
 /area/rogue/outdoors/mountains)
 "dqH" = (
 /obj/item/reagent_containers/glass/bowl/iron{
-	name = "Collection Bowl";
-	desc = "A bowl set aside for collecting something."
+	name = "收集碗";
+	desc = "一个专门用来收集某种东西的碗。"
 	},
 /turf/open/floor/rogue/tile/bath{
 	icon_state = "bathtileratwood"
@@ -15580,7 +15580,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "royal";
-	name = "Ducal Exit";
+	name = "公爵出口";
 	lock_strength = 250;
 	dir = 8
 	},
@@ -15820,7 +15820,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "sheriff";
-	name = "Captain's quarter"
+	name = "队长居室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -15963,7 +15963,7 @@
 /area/rogue/under/cavewet/bogcaves/north)
 "dBI" = (
 /obj/structure/fluff/statue{
-	desc = "Dead stone designed to compel living minds. The engraving is faded and unable to be read properly, there is however an Astratan cross roughly carved into the base of the statue."
+	desc = "一块意在触动生者心灵的无生命石头。刻文已经褪色，难以辨读，不过雕像底座上还粗略刻着阿斯特拉塔十字。"
 	},
 /obj/machinery/light/rogue/candle/floorcandle/alt,
 /turf/open/floor/rogue/dirt,
@@ -16012,7 +16012,7 @@
 "dCh" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -16112,7 +16112,7 @@
 "dDh" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 1;
-	wrotesign = "TERRORBOG - NORTHWEST"
+	wrotesign = "恐惧沼泽——向西北"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/southwest)
@@ -16186,7 +16186,7 @@
 	dir = 1;
 	locked = 1;
 	lockid = "physician";
-	name = "Laboratory"
+	name = "实验室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/physician)
@@ -16240,7 +16240,7 @@
 "dEz" = (
 /obj/effect/landmark/start/barkeep{
 	dir = 1;
-	name = "Innkeeper"
+	name = "旅店老板"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
@@ -16261,9 +16261,9 @@
 	pixel_y = 16
 	},
 /obj/item/roguekey/manor{
-	desc = "This key will open a Manor guest room.";
+	desc = "这把钥匙能打开庄园的一间客房。";
 	lockid = "guestroom1";
-	name = "Manor Guestroom I Key"
+	name = "庄园一号客房钥匙"
 	},
 /obj/structure/mirror,
 /obj/item/roguekey/manor,
@@ -16768,7 +16768,7 @@
 /area/rogue/under/cave/skeletoncrypt)
 "dLq" = (
 /obj/structure/roguewindow/harem3{
-	name = "Frosted Glass Window"
+	name = "磨砂玻璃窗"
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/tavern)
@@ -17020,7 +17020,7 @@
 	redstone_id = "cryptexit";
 	gid = "cryptexit";
 	max_integrity = 40000;
-	desc = "A very strong-looking steel gate, built firmly into solid stone. It looks as if it would take a stupendously long time to break through."
+	desc = "一道看起来极其坚固的钢门，牢牢嵌在坚实的石墙中。要打破它，恐怕得花费极长的时间。"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/scarymaze)
@@ -17117,7 +17117,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "manor";
-	name = "stables"
+	name = "马厩"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/manor)
@@ -17312,7 +17312,7 @@
 "dQR" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/fox{
 	aggressive = 0;
-	name = "Mimi the fox"
+	name = "狐狸咪咪"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
@@ -17363,7 +17363,7 @@
 /obj/structure/roguewindow,
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars";
+	name = "窗户栅栏";
 	opacity = 1
 	},
 /obj/structure/fluff/littlebanners/bluered{
@@ -17389,7 +17389,7 @@
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
 	lockid = "innkeep";
-	name = "INNKEEP"
+	name = "旅店老板"
 	},
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/tavern)
@@ -17578,7 +17578,7 @@
 /area/rogue/outdoors/town/grove)
 "dUa" = (
 /obj/effect/oneway/baroness{
-	desc = "A magical barrier that prevents you from accessing whatever lay on the other side.";
+	desc = "一道魔法屏障，阻止你触及另一侧的任何事物。";
 	opacity = 1
 	},
 /obj/structure/bars/passage{
@@ -17891,7 +17891,7 @@
 "dXp" = (
 /obj/structure/roguewindow/harem3{
 	max_integrity = 800;
-	name = "frosted glass window";
+	name = "磨砂玻璃窗";
 	opacity = 1;
 	plane = -3
 	},
@@ -18199,7 +18199,7 @@
 "eaZ" = (
 /obj/machinery/light/rogue/candle/weak/l,
 /turf/open/floor/rogue/tile/bath{
-	name = "small tile floor"
+	name = "小块瓷砖地板"
 	},
 /area/rogue/indoors/town/physician)
 "eba" = (
@@ -18243,7 +18243,7 @@
 /area/rogue/indoors/cave/east)
 "ebw" = (
 /turf/open/water/bath{
-	desc = "clear, lightly foamy water, perfect for dipping into after a long day."
+	desc = "清澈的水泛着淡淡泡沫，最适合在劳累一天后泡个澡。"
 	},
 /area/rogue/under/cave)
 "ebx" = (
@@ -18284,7 +18284,7 @@
 "ecj" = (
 /obj/structure/mineral_door/wood{
 	lockid = "vesseldeck";
-	name = "Kitchen"
+	name = "厨房"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
@@ -18952,7 +18952,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "manor";
-	name = "Service Halls"
+	name = "勤务走廊"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -19196,7 +19196,7 @@
 /area/rogue/under/cave)
 "emo" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
@@ -19688,7 +19688,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker III";
+	name = "三号佣兵储物柜";
 	lockid = "merc_bunk_iii"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -20401,9 +20401,9 @@
 /area/rogue/indoors/town/church/chapel)
 "ezP" = (
 /turf/closed/wall/mineral/rogue/stone{
-	name = "granite stone wall";
+	name = "花岗岩墙";
 	max_integrity = 5800;
-	desc = "A wall of smooth unyielding stone. It seems harder than most other kinds."
+	desc = "一面由光滑坚硬的石块砌成的墙，似乎比多数石墙都坚固。"
 	},
 /area/rogue/indoors/town/garrison)
 "ezW" = (
@@ -20603,7 +20603,7 @@
 	},
 /obj/structure/fluff/walldeco/mercenaryflag{
 	pixel_y = 32;
-	name = "mercenary's guild"
+	name = "佣兵公会"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -20925,7 +20925,7 @@
 /area/rogue/under/cave/orcdungeon)
 "eGc" = (
 /obj/structure/fluff/sellsign{
-	name = "DANGER: PIT"
+	name = "危险：深坑"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach/forest/north)
@@ -21127,7 +21127,7 @@
 /area/rogue/indoors/town/manor)
 "eIl" = (
 /obj/structure/standingbell{
-	name = "church service bell"
+	name = "教堂服务铃"
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
@@ -21231,8 +21231,8 @@
 /area/rogue/under/underdarker/dunsouth)
 "eJn" = (
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill"
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/sewer)
@@ -21696,7 +21696,7 @@
 "eOK" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced,
 /obj/structure/curtain/directional/purple,
@@ -21826,7 +21826,7 @@
 /area/rogue/under/cave/scarymaze)
 "eQz" = (
 /obj/structure/closet/crate/chest{
-	name = "Evidence Storage"
+	name = "证物库"
 	},
 /obj/machinery/light/rogue/candle/r,
 /turf/open/floor/rogue/concrete,
@@ -21895,7 +21895,7 @@
 	pixel_y = -1
 	},
 /obj/structure/fluff/nest{
-	name = "Hay"
+	name = "干草"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/underdark/north)
@@ -21954,7 +21954,7 @@
 "eRx" = (
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
-	name = "Crypt Great Mausoleum"
+	name = "地下大陵墓"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/cave/scarymaze)
@@ -22006,7 +22006,7 @@
 "eSd" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "counsil1";
-	name = "Councillor's Quarters I"
+	name = "一号议员居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -22215,7 +22215,7 @@
 /area/rogue/under/cave/scarymaze)
 "eUu" = (
 /obj/structure/mineral_door/wood/fancywood{
-	name = "Rogue's Den"
+	name = "盗贼窝点"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/under/town/sewer)
@@ -22259,7 +22259,7 @@
 "eUP" = (
 /obj/machinery/light/rogue/oven/south{
 	desc = "...?";
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /obj/item/ash,
 /turf/open/floor/rogue/churchmarble,
@@ -22374,7 +22374,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
@@ -22932,7 +22932,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "The Tower"
+	name = "高塔"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -23065,7 +23065,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "merchant";
-	name = "Merchant's Bedroom"
+	name = "商人卧室"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
@@ -23160,7 +23160,7 @@
 "feW" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -23220,7 +23220,7 @@
 	icon_state = "cobweb2"
 	},
 /obj/structure/fluff/sellsign{
-	name = "DANGER: DAMAGED"
+	name = "危险：已损坏"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
@@ -23278,7 +23278,7 @@
 "ffP" = (
 /obj/structure/bookcase{
 	density = 0;
-	name = "suspicious bookcase"
+	name = "可疑书柜"
 	},
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/rogue/church,
@@ -23322,7 +23322,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Throneroom Rear Patrol Tunnel";
+	name = "王座厅后方巡逻隧道";
 	dir = 8
 	},
 /turf/open/floor/rogue/tile,
@@ -23454,9 +23454,9 @@
 /area/rogue/under/cave/scarymaze)
 "fie" = (
 /turf/closed/wall/mineral/rogue/stone{
-	name = "granite stone wall";
+	name = "花岗岩墙";
 	max_integrity = 5800;
-	desc = "A wall of smooth unyielding stone. It seems harder than most other kinds."
+	desc = "一面由光滑坚硬的石块砌成的墙，似乎比多数石墙都坚固。"
 	},
 /area/rogue/indoors/town)
 "fil" = (
@@ -23605,7 +23605,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 8
 	},
 /turf/open/floor/rogue/cobble,
@@ -23711,8 +23711,8 @@
 /area/rogue/outdoors/exposed/bath/vault)
 "fkN" = (
 /obj/structure/fluff/statue/femalestatue/zizo{
-	desc = "An ancient statue depicting an elven woman.";
-	name = "Ancient Statue";
+	desc = "一座描绘精灵女子的古老雕像。";
+	name = "古老雕像";
 	pixel_y = 0
 	},
 /obj/structure/fluff/wallclock,
@@ -23732,7 +23732,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "tower";
-	name = "Tutoring Room"
+	name = "辅导室"
 	},
 /turf/closed/void,
 /area/rogue/indoors/town/magician)
@@ -24262,7 +24262,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "servant";
-	name = "Kitchen Storage"
+	name = "厨房储藏室"
 	},
 /turf/open/floor/rogue/blocks/flipped,
 /area/rogue/under/town/basement/keep)
@@ -24274,7 +24274,7 @@
 "fsv" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "manor";
-	name = "West Wing Entrance"
+	name = "西侧厅入口"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -24303,7 +24303,7 @@
 /area/rogue/indoors/town/manor)
 "fsT" = (
 /mob/living/simple_animal/pet/cat/rogue/black{
-	name = "Malice"
+	name = "恶意"
 	},
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/under/underdarker/dunsouth)
@@ -24477,7 +24477,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
@@ -24769,7 +24769,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "servant";
-	name = "Kitchen Storage"
+	name = "厨房储藏室"
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -25110,7 +25110,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomviii";
-	name = "Room VIII"
+	name = "八号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -25227,7 +25227,7 @@
 "fEN" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "manor";
-	name = "Storage Room";
+	name = "储藏室";
 	locked = 1
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -25414,7 +25414,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "archive";
-	name = "Archivist's bedroom"
+	name = "档案员卧室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -25552,7 +25552,7 @@
 "fJq" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	opacity = 0
@@ -25610,7 +25610,7 @@
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
 	lockid = "steward";
-	name = "Clerk Bedroom"
+	name = "书记员卧室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
@@ -25650,7 +25650,7 @@
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Pantry"
+	name = "食品储藏室"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/inq)
@@ -25707,7 +25707,7 @@
 "fLl" = (
 /obj/structure/bookcase{
 	density = 0;
-	name = "suspicious bookcase"
+	name = "可疑书柜"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/sewer)
@@ -25761,7 +25761,7 @@
 "fLP" = (
 /obj/item/ash,
 /obj/machinery/light/rogue/oven/north{
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/town/sewer)
@@ -25795,11 +25795,11 @@
 "fMl" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill";
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液";
 	pixel_x = 36;
 	plane = -3
 	},
@@ -26017,7 +26017,7 @@
 "fNR" = (
 /obj/structure/standingbell{
 	dir = 1;
-	name = "guild service bell"
+	name = "公会服务铃"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/dwarfin)
@@ -26400,9 +26400,9 @@
 "fTt" = (
 /obj/effect/wisp/prestidigitation{
 	color = "#ffff00";
-	desc = "A small, fiery ball of light made up of mystical energy.";
+	desc = "由神秘能量构成的小小炽热光球。";
 	light_color = "#33ff00";
-	name = "Will-o'-the-wisp";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/dirt,
@@ -27303,7 +27303,7 @@
 /area/rogue/outdoors/town/grove)
 "ggK" = (
 /obj/structure/roguewindow/harem3{
-	name = "Frosted Glass Window"
+	name = "磨砂玻璃窗"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -27346,7 +27346,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 4
 	},
 /turf/open/floor/rogue/concrete,
@@ -27601,7 +27601,7 @@
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
 	lockid = "innkeep";
-	name = "INNKEEP"
+	name = "旅店老板"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -27639,7 +27639,7 @@
 /area/rogue/outdoors/beach)
 "gkC" = (
 /obj/structure/fluff/signage{
-	name = "COAST - NORTH";
+	name = "海岸——向北";
 	dir = 1
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -28320,13 +28320,13 @@
 /area/rogue/under/cave)
 "gsN" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave/fishmandungeon)
 "gsO" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -28939,7 +28939,7 @@
 	dir = 4
 	},
 /obj/item/roguekey/psy_bog/exit{
-	desc = "A strange key...ever enduring. Use this to break the magical barrier and leave this place.";
+	desc = "一把奇异的钥匙……恒久不朽。用它打破魔法屏障，离开此地。";
 	lockid = "minotaur"
 	},
 /turf/open/floor/rogue/metal,
@@ -29012,7 +29012,7 @@
 /obj/structure/roguewindow,
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars";
+	name = "窗户栅栏";
 	opacity = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -29037,7 +29037,7 @@
 "gCc" = (
 /obj/structure/winch{
 	gid = "manorgate";
-	name = "Outer Bailey Gate";
+	name = "外堡城门";
 	redstone_id = "manorgate"
 	},
 /turf/open/floor/rogue/hexstone,
@@ -29410,7 +29410,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "Council Chamber"
+	name = "议会厅"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -29886,9 +29886,9 @@
 "gLt" = (
 /obj/structure/rack/rogue/shelf,
 /obj/structure/toilet{
-	desc = "A man's throne is his throne";
+	desc = "一个人的宝座，终究是他自己的宝座。";
 	icon_state = "0,2";
-	name = "Very Fancy Toilet";
+	name = "极其华丽的马桶";
 	pixel_y = 10
 	},
 /obj/item/book/rogue/abyssor{
@@ -30312,7 +30312,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "East Wing"
+	name = "东侧厅"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -30516,7 +30516,7 @@
 "gSN" = (
 /obj/structure/roguewindow/harem3{
 	max_integrity = 800;
-	name = "frosted glass window";
+	name = "磨砂玻璃窗";
 	opacity = 1;
 	plane = -3
 	},
@@ -30543,7 +30543,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
@@ -30607,7 +30607,7 @@
 "gTE" = (
 /obj/structure/gate/bars/preopen{
 	gid = "innersouthgate";
-	name = "inner south gate";
+	name = "内南门";
 	redstone_id = "innersouthgate"
 	},
 /obj/structure/fluff/littlebanners{
@@ -30694,7 +30694,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker II";
+	name = "二号佣兵储物柜";
 	lockid = "merc_bunk_ii"
 	},
 /obj/machinery/light/rogue/candle/l,
@@ -30925,7 +30925,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "servant";
-	name = "Service Halls"
+	name = "勤务走廊"
 	},
 /turf/open/floor/rogue/blocks/flipped,
 /area/rogue/under/town/basement/keep)
@@ -30937,7 +30937,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "dungeon";
-	name = "Holding Cell"
+	name = "拘留室"
 	},
 /turf/open/floor/rogue/cobblerock{
 	smooth = 0
@@ -30974,7 +30974,7 @@
 /obj/structure/chair/wood/rogue/throne,
 /mob/living/carbon/human/species/orc/npc/warlord{
 	health = 650;
-	name = "Orc Chief"
+	name = "兽人酋长"
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/under/cave/orcdungeon)
@@ -31343,7 +31343,7 @@
 /obj/structure/mineral_door/wood/window{
 	locked = 1;
 	lockid = "tower";
-	name = "Arcyne studies wing"
+	name = "奥术研究侧厅"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -31663,7 +31663,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "royal";
-	name = "Lord's Apartment"
+	name = "领主住所"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -32152,7 +32152,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Throneroom Rear Patrol Tunnel";
+	name = "王座厅后方巡逻隧道";
 	dir = 8
 	},
 /turf/open/floor/rogue/cobble,
@@ -32443,7 +32443,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Throneroom Rear Patrol Tunnel";
+	name = "王座厅后方巡逻隧道";
 	dir = 1
 	},
 /turf/open/floor/rogue/tile,
@@ -32866,7 +32866,7 @@
 /area/rogue/indoors)
 "hrC" = (
 /obj/structure/fluff/walldeco/mageguild{
-	name = "Vale's University"
+	name = "谷地大学"
 	},
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/outdoors/exposed/town/keep)
@@ -32885,7 +32885,7 @@
 "hrI" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "royal";
-	name = "Lord's Closet"
+	name = "领主衣帽间"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/manor)
@@ -33180,7 +33180,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "knight";
-	name = "Vale Justiciar"
+	name = "谷地审判官"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -33284,7 +33284,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "garrison";
-	name = "Squire Bunk"
+	name = "侍从宿舍"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -33553,7 +33553,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "royal";
-	name = "Ducal Crypt"
+	name = "公爵地下墓室"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/outdoors/exposed/town/keep)
@@ -33588,8 +33588,8 @@
 "hAZ" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	desc = "This is a rather finely carved sign directing. While the sign looks quite freshly put up, it is dug into truly ancient looking stones.";
-	wrotesign = "MOUNT GOLGOTHA CRYPT DIRECTIONS: Mourning Folk, Funerale Attendees, & Clergy folk o' the Lady Veil'd. Mount Golgotha Crypt of Her Dignified Grace'."
+	desc = "一块雕刻精细的指路牌。牌子看起来刚立不久，却嵌在年代极为久远的石块中。";
+	wrotesign = "戈尔戈萨山墓室指引：哀悼者、葬礼宾客及蒙面女士的神职人员请往此处。尊贵女士的戈尔戈萨山墓室。"
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/under/cave/scarymaze)
@@ -33657,7 +33657,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -34071,7 +34071,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/clothing/cloak/apron/cook{
-	name = "barber's apron"
+	name = "理发师围裙"
 	},
 /obj/structure/fluff/walldeco/med{
 	pixel_y = 32
@@ -34592,7 +34592,7 @@
 "hMc" = (
 /obj/structure/bars{
 	max_integrity = 2000;
-	name = "reinforced bars"
+	name = "加固栅栏"
 	},
 /obj/structure/fluff/littlebanners/bluewhite{
 	pixel_y = -6;
@@ -34634,7 +34634,7 @@
 /area/rogue/outdoors/woods/southeast)
 "hMF" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
@@ -34650,7 +34650,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Throneroom Rear Patrol Tunnel";
+	name = "王座厅后方巡逻隧道";
 	dir = 1
 	},
 /turf/open/floor/rogue/blocks,
@@ -34877,7 +34877,7 @@
 /obj/structure/winch{
 	dir = 4;
 	gid = "innernorthgate";
-	name = "inner gate winch";
+	name = "内门绞盘";
 	pixel_x = 1;
 	pixel_y = 3;
 	redstone_id = "northinnergate"
@@ -35096,7 +35096,7 @@
 	color = "#755f48";
 	layer = 4;
 	max_integrity = 400;
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
@@ -35688,7 +35688,7 @@
 /area/rogue/under/cave/goblinfort)
 "hZV" = (
 /obj/structure/fluff/statue/small{
-	desc = "A small statue depicting an elven woman bearing a harp. The engraving reads: 'Here lay the body of Ashley, known to many as the broken tree widow. While her late yills were marred with darkness, her smile never faded.'"
+	desc = "一座描绘持竖琴的精灵女子的小雕像。铭文写道：‘阿什莉长眠于此，许多人称她为断树寡妇。尽管晚年被黑暗笼罩，她的笑容从未消退。’"
 	},
 /obj/machinery/light/rogue/candle/floorcandle,
 /turf/open/floor/rogue/dirt,
@@ -35703,7 +35703,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "fancyiv";
-	name = "Luxury Room IV"
+	name = "四号豪华客房"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -36048,7 +36048,7 @@
 	},
 /obj/machinery/light/rogue/oven/east{
 	desc = "...?";
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /obj/structure/bars/pipe,
 /turf/open/floor/rogue/concrete,
@@ -36243,7 +36243,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomiv";
-	name = "Room IV"
+	name = "四号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -36251,7 +36251,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "tailor";
-	name = "Tailor"
+	name = "裁缝铺"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town)
@@ -36279,7 +36279,7 @@
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
 	lockid = "puritan";
-	name = "Vault"
+	name = "金库"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/beach)
@@ -36421,7 +36421,7 @@
 	icon_state = "graggar_active"
 	},
 /obj/structure/wonder{
-	name = "graggarite altar"
+	name = "格拉加尔祭坛"
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/under/cave/orcdungeon)
@@ -36718,7 +36718,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "garrison";
-	name = "veterans house"
+	name = "老兵之家"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town)
@@ -36875,7 +36875,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "shop";
-	name = "Shophand's Bedroom"
+	name = "店员卧室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
@@ -37015,7 +37015,7 @@
 "ipF" = (
 /obj/structure/table/wood,
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish{
-	name = "royal elvish dagger";
+	name = "精灵皇家匕首";
 	sellprice = 150
 	},
 /turf/open/floor/rogue/tile/harem2,
@@ -37169,7 +37169,7 @@
 "irF" = (
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of rest";
+	name = "安息之门";
 	redstone_id = "mazedungeonrest"
 	},
 /turf/open/floor/rogue/blocks,
@@ -37380,14 +37380,14 @@
 	dir = 1;
 	locked = 1;
 	lockid = "sergeant";
-	name = "Sargeant Office"
+	name = "军士办公室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/warden)
 "iul" = (
 /turf/closed/wall/mineral/rogue/pipe/line{
 	density = 0;
-	name = "suspicious metal wall"
+	name = "可疑金属墙"
 	},
 /area/rogue/indoors/town/magician)
 "iun" = (
@@ -37453,7 +37453,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Squire's Dorm";
+	name = "侍从宿舍";
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -37739,9 +37739,9 @@
 	pixel_y = 16
 	},
 /obj/item/roguekey/manor{
-	desc = "This key will open a Manor guest room.";
+	desc = "这把钥匙能打开庄园的一间客房。";
 	lockid = "guestroom2";
-	name = "Manor Guestroom II Key"
+	name = "庄园二号客房钥匙"
 	},
 /obj/structure/mirror,
 /obj/item/roguekey/manor,
@@ -37764,7 +37764,7 @@
 "iym" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 4;
@@ -37848,7 +37848,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "royal";
-	name = "Ducal Crypt";
+	name = "公爵地下墓室";
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
@@ -37914,7 +37914,7 @@
 "iAr" = (
 /obj/effect/lily_petal/three,
 /turf/open/water/bath{
-	desc = "clear, lightly foamy water, perfect for dipping into after a long day."
+	desc = "清澈的水泛着淡淡泡沫，最适合在劳累一天后泡个澡。"
 	},
 /area/rogue/outdoors/beach)
 "iAt" = (
@@ -38336,7 +38336,7 @@
 /area/rogue/indoors/town/magician)
 "iEG" = (
 /obj/structure/fluff/customsign/arrow{
-	wrotesign = "WOODS - SOUTH"
+	wrotesign = "森林——向南"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/beach/forest/south)
@@ -38512,7 +38512,7 @@
 "iGA" = (
 /obj/structure/mineral_door/wood{
 	lockid = "vesseldeck";
-	name = "Bunks"
+	name = "宿舍"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
@@ -38935,7 +38935,7 @@
 "iKv" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - NORTHEAST"
+	wrotesign = "腐木谷——向东北"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/mountains)
@@ -39118,7 +39118,7 @@
 	dir = 4;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -39385,7 +39385,7 @@
 /obj/effect/landmark/start/bogguardsman{
 	dir = 8;
 	jobspawn_override = list("Bog Master","Bog Guard","Warden");
-	name = "Warden"
+	name = "守林人"
 	},
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/twig,
@@ -39443,15 +39443,15 @@
 "iRe" = (
 /obj/item/roguekey/nightmaiden{
 	lockid = "bath1";
-	name = "room I key"
+	name = "一号房间钥匙"
 	},
 /obj/item/roguekey/nightmaiden{
 	lockid = "bath2";
-	name = "room II key"
+	name = "二号房间钥匙"
 	},
 /obj/item/roguekey/nightmaiden{
 	lockid = "bath3";
-	name = "room III key"
+	name = "三号房间钥匙"
 	},
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/effect/decal/carpet/square/black{
@@ -39651,7 +39651,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "West Wing"
+	name = "西侧厅"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -39772,7 +39772,7 @@
 /area/rogue/outdoors/mountains/decap/gunduzirak)
 "iUL" = (
 /obj/structure/fluff/customsign/wrote{
-	wrotesign = "West: Vale Woods, Warden Lodge, TERRORBOG. Southwest - Druid's Grove. East, Docks, North, Vale City"
+	wrotesign = "向西：谷地森林、守林人小屋、恐惧沼泽。向西南：德鲁伊林地。向东：码头。向北：谷地城。"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
@@ -39808,7 +39808,7 @@
 /obj/structure/fluff/walldeco/med3{
 	icon_state = "medposter2";
 	pixel_x = -32;
-	desc = "This dagram regards some sort of vampyric, undead flesh. It is written in Otavii, and looks wicked."
+	desc = "这幅图涉及某种吸血鬼的不死血肉，用奥塔瓦语写成，看起来十分邪恶。"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/beach)
@@ -39823,7 +39823,7 @@
 	icon_state = "wcr";
 	locked = 1;
 	lockid = "dungeon";
-	name = "dungeoneer's room"
+	name = "地牢看守房间"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -39944,7 +39944,7 @@
 /area/rogue/outdoors/mountains/decap)
 "iWx" = (
 /obj/structure/closet/crate/chest{
-	name = "Evidence Storage"
+	name = "证物库"
 	},
 /obj/machinery/light/rogue/candle/l,
 /turf/open/floor/rogue/concrete,
@@ -39957,7 +39957,7 @@
 /area/rogue/indoors/shelter/woods)
 "iWD" = (
 /obj/structure/fluff/nest{
-	name = "Hay"
+	name = "干草"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/underdark/north)
@@ -40178,7 +40178,7 @@
 /area/rogue/indoors/town)
 "iYR" = (
 /obj/structure/fluff/sellsign{
-	name = "CONDEMNED BY THE HOLY SEE"
+	name = "教廷查封"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains/decap/stepbelow)
@@ -40348,7 +40348,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "knight";
-	name = "Knight Emergency Access";
+	name = "骑士应急通道";
 	lock_strength = 250;
 	dir = 4
 	},
@@ -40444,8 +40444,8 @@
 /area/rogue/outdoors/mountains/decap/stepbelow)
 "jcz" = (
 /obj/structure/fluff/statue/psybloody{
-	desc = "An inscription reads: upon what is your precious unity built?";
-	name = "fool"
+	desc = "铭文写道：你们珍视的统一究竟建立在何物之上？";
+	name = "愚者"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/mazedungeon)
@@ -40544,7 +40544,7 @@
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Pantry"
+	name = "食品储藏室"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/inq)
@@ -40666,7 +40666,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker VIII";
+	name = "八号佣兵储物柜";
 	lockid = "merc_bunk_viii"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -40837,7 +40837,7 @@
 /obj/machinery/light/rogue/smelter/great{
 	color = "#485775";
 	desc = "";
-	name = "ancyent engine"
+	name = "古老引擎"
 	},
 /obj/structure/bars/pipe{
 	pixel_x = 8
@@ -41122,7 +41122,7 @@
 	color = "#778079";
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane)
@@ -41140,7 +41140,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "bath2";
-	name = "room II"
+	name = "二号房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -41343,7 +41343,7 @@
 "jns" = (
 /obj/machinery/light/rogue/oven/south{
 	desc = "...?";
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/town/sewer)
@@ -41393,8 +41393,8 @@
 "jnE" = (
 /obj/structure/toilet{
 	color = "#058FFF";
-	name = "Arcyne Toilet";
-	desc = "An undulating arcyne toilet. The contents simply vanish. Where does it go? Who knows."
+	name = "奥术马桶";
+	desc = "一只泛着奥术波动的马桶，里面的东西会凭空消失。去了哪里？谁知道呢。"
 	},
 /obj/effect/decal/cleanable/roguerune/arcyne/knowledge,
 /turf/open/floor/rogue/concrete,
@@ -41793,7 +41793,7 @@
 "jrz" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 1
@@ -42421,10 +42421,10 @@
 /area/rogue/under/cave/goblindungeon)
 "jzn" = (
 /turf/closed/wall/mineral/rogue/pipe{
-	desc = "Solid steel made into an impenetrable obstacle. This stretch of wall however seems to have thin hairline cracks in it's bronzed coating.";
+	desc = "坚实的钢铁构成难以穿透的屏障。不过，这段墙的青铜镀层似乎有几道细如发丝的裂缝。";
 	icon_state = "iron_line";
 	max_integrity = 2000;
-	name = "damaged metal wall"
+	name = "破损金属墙"
 	},
 /area/rogue/under/town/sewer)
 "jzw" = (
@@ -42595,7 +42595,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "servant";
-	name = "Service Halls"
+	name = "勤务走廊"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -42658,7 +42658,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
@@ -42920,7 +42920,7 @@
 "jEx" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "manor";
-	name = "East Wing Entrance"
+	name = "东侧厅入口"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -43065,7 +43065,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomvii";
-	name = "Room VII"
+	name = "七号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -43075,7 +43075,7 @@
 /area/rogue/outdoors/bog/south)
 "jGg" = (
 /obj/structure/fluff/statue{
-	desc = "Dead stone designed to compel living minds. The engraving reads: 'Here rests the body of Jon known to us as Big Jon the cobblers son. May his body fynd rest and may his lux know Necras peace.'"
+	desc = "一块意在触动生者心灵的无生命石头。刻文写道：'鞋匠之子、我们称作大乔恩的乔恩长眠于此。愿他的躯体安息，愿他的灵辉享有内克拉的宁静。'"
 	},
 /obj/machinery/light/rogue/candle/floorcandle/alt,
 /turf/open/floor/rogue/dirt,
@@ -43087,7 +43087,7 @@
 "jGm" = (
 /obj/structure/fluff/walldeco/mercenaryflag{
 	pixel_y = 32;
-	name = "mercenary's guild"
+	name = "佣兵公会"
 	},
 /obj/structure/chair/smallbench,
 /turf/open/floor/carpet/red,
@@ -43204,7 +43204,7 @@
 "jHu" = (
 /obj/structure/mineral_door/wood{
 	lockid = "captain_bedroom";
-	name = "Captain's Quarters"
+	name = "队长居室"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
@@ -43253,7 +43253,7 @@
 "jIa" = (
 /obj/structure/bars/passage/shutter{
 	max_integrity = 15000;
-	name = "Lockdown Shutter";
+	name = "封锁闸门";
 	redstone_id = "forgotten_artificer"
 	},
 /turf/open/floor/rogue/concrete/bronze,
@@ -43335,7 +43335,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 8
 	},
 /turf/open/floor/rogue/tile/bath{
@@ -43352,7 +43352,7 @@
 /area/rogue/outdoors/exposed/town/keep)
 "jIH" = (
 /obj/structure/fluff/customsign{
-	name = "DANGEROUS FOE AHEAD!"
+	name = "前方有危险敌人！"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/licharena)
@@ -44162,7 +44162,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "puritan";
-	name = "Proscribed Items"
+	name = "违禁物品"
 	},
 /obj/structure/trap/wall_projectile/acidsplash,
 /obj/structure/fluff/walldeco/alarm{
@@ -44199,7 +44199,7 @@
 "jRx" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - NORTHEAST"
+	wrotesign = "腐木谷——向东北"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods/above)
@@ -44625,7 +44625,7 @@
 /area/rogue/indoors/town/vault)
 "jXp" = (
 /obj/structure/fluff/statue{
-	name = "The Veiled Lady"
+	name = "蒙面女士"
 	},
 /obj/machinery/light/rogue/candle/blue,
 /turf/open/floor/rogue/concrete,
@@ -45066,8 +45066,8 @@
 /area/rogue/outdoors/mountains/decap/gunduzirak)
 "kcb" = (
 /obj/structure/fluff/customsign{
-	desc = "I should probably listen to this sign.";
-	wrotesign = "<-- BARRICADED BY ORDER OF LORD MARSHAL -- DO NOT DESTROY"
+	desc = "我最好听从这块路牌的警告。";
+	wrotesign = "<-- 奉元帅大人之命封堵——禁止破坏"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement/keep)
@@ -45127,7 +45127,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "garrison";
-	name = "Guard's Barracks"
+	name = "卫兵营房"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -45218,7 +45218,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "jesters chambers"
+	name = "小丑居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -45260,7 +45260,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "manor";
-	name = "Hand's Office"
+	name = "国王之手办公室"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -45287,7 +45287,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "warden";
-	name = "stables"
+	name = "马厩"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/warden)
@@ -46128,7 +46128,7 @@
 "knx" = (
 /obj/structure/mineral_door/wood{
 	lockid = "stall3";
-	name = "stall iii"
+	name = "三号畜栏"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town)
@@ -46270,9 +46270,9 @@
 	pixel_y = 8
 	},
 /obj/item/roguekey/manor{
-	desc = "This key will open a Manor guest room.";
+	desc = "这把钥匙能打开庄园的一间客房。";
 	lockid = "counsil2";
-	name = "Counsillor's Room II Key"
+	name = "二号议员房间钥匙"
 	},
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -46381,7 +46381,7 @@
 /area/rogue/under/underdark/north)
 "kqo" = (
 /mob/living/simple_animal/pet/cat/rogue/black{
-	name = "Boo"
+	name = "布布"
 	},
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/town/manor)
@@ -46470,7 +46470,7 @@
 /area/rogue/outdoors/town)
 "kru" = (
 /obj/structure/fluff/walldeco/artificerflag{
-	name = "Crafter's Guild"
+	name = "工匠行会"
 	},
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/dwarfin)
@@ -46940,7 +46940,7 @@
 "kxg" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -46952,7 +46952,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "dungeon";
-	name = "Holding Cell"
+	name = "拘留室"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/cell)
@@ -47028,9 +47028,9 @@
 /area/rogue/outdoors/woods/above)
 "kxU" = (
 /obj/structure/bookcase{
-	desc = "It seems awfully flimsy, to me.";
+	desc = "在我看来，它似乎格外不结实。";
 	max_integrity = 50;
-	name = "suspicious bookcase"
+	name = "可疑书柜"
 	},
 /obj/effect/spawner/trap,
 /turf/open/floor/rogue/churchrough,
@@ -47038,7 +47038,7 @@
 "kxY" = (
 /obj/structure/winch{
 	gid = "manorgate2";
-	name = "Inner Bailey Gate";
+	name = "内堡城门";
 	redstone_id = "manorgate2"
 	},
 /turf/open/floor/rogue/hexstone,
@@ -47493,7 +47493,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker VII";
+	name = "七号佣兵储物柜";
 	lockid = "merc_bunk_vii"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -47776,7 +47776,7 @@
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
 	lockid = "keeper2";
-	name = "Pestra's Sanctum"
+	name = "佩斯特拉圣所"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/cave)
@@ -47974,7 +47974,7 @@
 "kJJ" = (
 /obj/structure/fluff/walldeco/bsmith{
 	dir = 1;
-	name = "DWARVEN KEEP"
+	name = "矮人要塞"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/mountains/decap/minotaurfort)
@@ -48184,7 +48184,7 @@
 /area/rogue/indoors/town)
 "kMl" = (
 /obj/structure/fluff/sellsign{
-	name = "<-- ROAD THRU TERRORBOG"
+	name = "<-- 穿过恐惧沼泽的道路"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog/south)
@@ -48638,7 +48638,7 @@
 "kRT" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 1;
@@ -48741,7 +48741,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 8
 	},
 /turf/open/floor/rogue/woodturned,
@@ -48750,7 +48750,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
@@ -48834,7 +48834,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "knight";
-	name = "Knight's Armory"
+	name = "骑士军械库"
 	},
 /turf/open/floor/rogue/tile/bath{
 	icon_state = "bathtileratwood"
@@ -48888,7 +48888,7 @@
 /area/rogue/outdoors/beach/forest/south)
 "kUR" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /obj/effect/decal/cleanable/blood,
@@ -48948,8 +48948,8 @@
 "kVt" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/cup/silver{
-	desc = "A pewter goblet, cheaper than silver, but with a similar shine!";
-	name = "pewter goblet";
+	desc = "一只锡制高脚杯，比银杯便宜，却有相似的光泽！";
+	name = "锡制高脚杯";
 	pixel_x = 9;
 	pixel_y = 10
 	},
@@ -49212,7 +49212,7 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/white,
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
-	name = "locker 4";
+	name = "四号储物柜";
 	redstone_id = "bathlocker4"
 	},
 /turf/open/floor/rogue/tile/harem2,
@@ -50101,7 +50101,7 @@
 /area/rogue/indoors/cave/underhamlet)
 "ljy" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/sewer)
@@ -50265,7 +50265,7 @@
 "lkZ" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	opacity = 0
@@ -50664,7 +50664,7 @@
 /area/rogue/outdoors/beach/forest/hamlet)
 "lpT" = (
 /obj/structure/floordoor/open{
-	name = "Dwarven Bridge";
+	name = "矮人桥";
 	redstone_id = "dwarven_ruinsb"
 	},
 /turf/open/transparent/openspace,
@@ -50679,7 +50679,7 @@
 /obj/structure/stationary_bell{
 	pixel_y = -20;
 	pixel_x = -32;
-	name = "Keep Bell"
+	name = "要塞钟"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors/town/garrison)
@@ -50740,7 +50740,7 @@
 "lqE" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 1;
@@ -51141,7 +51141,7 @@
 	color = "#755f48";
 	layer = 4;
 	max_integrity = 400;
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -51449,7 +51449,7 @@
 /area/rogue/outdoors/woods/north)
 "lzU" = (
 /obj/structure/fluff/walldeco/artificerflag{
-	name = "Crafter's Guild"
+	name = "工匠行会"
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/dwarfin)
@@ -51806,7 +51806,7 @@
 /obj/item/rogueweapon/huntingknife/scissors/steel,
 /obj/structure/table/wood,
 /turf/open/floor/rogue/tile/bath{
-	name = "small tile floor"
+	name = "小块瓷砖地板"
 	},
 /area/rogue/indoors/town/physician)
 "lCK" = (
@@ -51913,7 +51913,7 @@
 "lDD" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 8;
@@ -51955,7 +51955,7 @@
 /area/rogue/under/cave/scarymaze)
 "lDQ" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves/central)
@@ -52462,7 +52462,7 @@
 "lJN" = (
 /obj/structure/fluff/walldeco/mercenaryflag{
 	pixel_y = 32;
-	name = "mercenary's guild"
+	name = "佣兵公会"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -52521,7 +52521,7 @@
 /area/rogue/indoors/town)
 "lKm" = (
 /obj/machinery/light/rogue/oven/north{
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/town/sewer)
@@ -52846,8 +52846,8 @@
 "lOa" = (
 /obj/structure/table/wood,
 /obj/item/rogueweapon/stoneaxe/battle{
-	desc = "A steel battleaxe of war. Has a wicked edge. Stained in the blood of countless victims.";
-	name = "gutspiller"
+	desc = "一把钢制战斧，刃口凶险，染满无数死者的鲜血。";
+	name = "破肚斧"
 	},
 /obj/item/roguestatue/gold/loot{
 	pixel_x = -6;
@@ -52923,7 +52923,7 @@
 /area/rogue/outdoors/beach/forest/hamlet)
 "lOH" = (
 /obj/structure/fluff/walldeco/artificerflag{
-	name = "Crafter's Guild"
+	name = "工匠行会"
 	},
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/dwarfin)
@@ -52952,7 +52952,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "warden";
-	name = "warden's barracks"
+	name = "守林人营房"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/warden)
@@ -53072,7 +53072,7 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/white,
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
-	name = "locker I";
+	name = "一号储物柜";
 	redstone_id = "bathlocker2"
 	},
 /turf/open/floor/rogue/tile/harem2,
@@ -53083,7 +53083,7 @@
 	dir = 8;
 	locked = 1;
 	lockid = "steward";
-	name = "To Stewardry"
+	name = "通往总管府"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
@@ -53470,7 +53470,7 @@
 "lVF" = (
 /obj/structure/bars{
 	max_integrity = 2000;
-	name = "reinforced bars"
+	name = "加固栅栏"
 	},
 /obj/structure/fluff/littlebanners{
 	pixel_y = -5
@@ -53630,13 +53630,13 @@
 "lXi" = (
 /obj/structure/vertical_gearbox{
 	dir = 4;
-	name = "Peculiar Piston";
-	desc = "A peculiar piston that looks to drive a wooden shaft towards the adjacent table. It does so repetitively, when you pull on the shaft. It does so in a smooth, gear-actuated method along a narrow guide. However, the machine appears broken as it no longer receives power."
+	name = "奇特活塞";
+	desc = "一个奇特的活塞，似乎会将木杆推向旁边的台子。拉动木杆时，它会反复动作，通过齿轮沿狭窄导轨平稳运转。不过机器似乎已损坏，不再获得动力。"
 	},
 /obj/item/roguegear/wood/basic{
 	pixel_y = 11;
 	pixel_x = -1;
-	desc = "A very simple cog that has the ability to increase the power provided by an energy source."
+	desc = "一个十分简单的齿轮，能增强能源提供的动力。"
 	},
 /obj/structure/fluff/statue/pillar{
 	pixel_x = 10;
@@ -53725,7 +53725,7 @@
 	icon_state = "cobbleedge-w"
 	},
 /obj/structure/fluff/customsign{
-	name = "TURN BACK NOW!!!"
+	name = "立刻回头！！！"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains/decap/gunduzirak)
@@ -53801,7 +53801,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "fancyii";
-	name = "Luxury Room II"
+	name = "二号豪华客房"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -54168,7 +54168,7 @@
 "mcG" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 8;
-	name = "Artificers Workshop"
+	name = "匠师工坊"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
@@ -54464,7 +54464,7 @@
 /area/rogue/indoors/town/warden)
 "mgn" = (
 /obj/structure/bookcase{
-	name = "inconspicuous bookcase"
+	name = "不起眼的书柜"
 	},
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/floor/rogue/blocks,
@@ -55032,8 +55032,8 @@
 "mnr" = (
 /obj/structure/table/wood/map/six,
 /obj/item/reagent_containers/glass/cup/silver{
-	desc = "A pewter goblet, cheaper than silver, but with a similar shine!";
-	name = "pewter goblet";
+	desc = "一只锡制高脚杯，比银杯便宜，却有相似的光泽！";
+	name = "锡制高脚杯";
 	pixel_x = -11
 	},
 /obj/item/candle/silver/lit,
@@ -55087,7 +55087,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of glory";
+	name = "荣耀之门";
 	redstone_id = "mazedungeonglory"
 	},
 /turf/open/floor/rogue/blocks,
@@ -55256,8 +55256,8 @@
 /obj/structure/fluff/railing/corner/south_west,
 /turf/closed/wall/mineral/rogue/tent{
 	dir = 4;
-	name = "sail";
-	desc = "A sail made from durable fabric. Used to propel a boat by harnessing Abyssor's tidal winds.";
+	name = "船帆";
+	desc = "一面以耐用织物制成的船帆，借阿比索尔的潮风推动船只。";
 	opacity = 0
 	},
 /area/rogue/outdoors/mountains)
@@ -55320,7 +55320,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "bath3";
-	name = "room III"
+	name = "三号房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -55395,7 +55395,7 @@
 "mre" = (
 /obj/structure/gate/bars/preopen{
 	gid = "manorgate";
-	name = "Manor's gate";
+	name = "庄园大门";
 	redstone_id = "manorgate"
 	},
 /turf/open/floor/rogue/metal,
@@ -55690,9 +55690,9 @@
 /area/rogue/outdoors/town/grove)
 "mtb" = (
 /obj/structure/pillory{
-	desc = "A convenient method of Penance!";
+	desc = "一种方便的赎罪方式！";
 	lockid = list("church");
-	name = "Church Pillory"
+	name = "教堂颈手枷"
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/cobble,
@@ -55739,7 +55739,7 @@
 /obj/effect/landmark/start/bogguardsman{
 	dir = 4;
 	jobspawn_override = list("Bog Master","Bog Guard","Warden");
-	name = "Warden"
+	name = "守林人"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town/warden)
@@ -55897,7 +55897,7 @@
 	},
 /obj/structure/roguewindow/harem3{
 	max_integrity = 800;
-	name = "frosted glass window";
+	name = "磨砂玻璃窗";
 	opacity = 1;
 	plane = -3
 	},
@@ -55932,7 +55932,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "dungeon";
-	name = "oubliette"
+	name = "地牢"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
@@ -56028,7 +56028,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "manor";
-	name = "Gate Bypass";
+	name = "城门绕行通道";
 	dir = 1
 	},
 /turf/open/floor/rogue/concrete,
@@ -56100,7 +56100,7 @@
 /area/rogue/outdoors/mountains/decap/gunduzirak)
 "myw" = (
 /obj/structure/lever{
-	name = "Artificers Gate";
+	name = "匠师大门";
 	redstone_id = "dwarven_artificer"
 	},
 /turf/open/floor/rogue/cobble,
@@ -56238,8 +56238,8 @@
 /obj/structure/fluff/railing/corner,
 /turf/closed/wall/mineral/rogue/tent{
 	dir = 4;
-	name = "sail";
-	desc = "A sail made from durable fabric. Used to propel a boat by harnessing Abyssor's tidal winds.";
+	name = "船帆";
+	desc = "一面以耐用织物制成的船帆，借阿比索尔的潮风推动船只。";
 	opacity = 0
 	},
 /area/rogue/outdoors/mountains)
@@ -56457,8 +56457,8 @@
 /area/rogue/indoors/town/cell/warden)
 "mCs" = (
 /obj/structure/fluff/customsign{
-	desc = "SHOP";
-	name = "SHOPPE";
+	desc = "商店";
+	name = "商铺";
 	icon_state = "signwrote"
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -56592,8 +56592,8 @@
 	dir = 2
 	},
 /obj/structure/winch{
-	desc = "The ship's anchor winch. You're not going anywhere with it lowered.";
-	name = "anchor winch"
+	desc = "船上的起锚绞盘。锚未升起时，船哪儿也去不了。";
+	name = "起锚绞盘"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
@@ -56686,7 +56686,7 @@
 /area/rogue/indoors/shelter)
 "mEK" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/cavewet/bogcaves/coastcaves)
@@ -56718,7 +56718,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "dungeon";
-	name = "oubliette"
+	name = "地牢"
 	},
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -56931,7 +56931,7 @@
 "mHv" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars";
+	name = "窗户栅栏";
 	opacity = 1
 	},
 /obj/structure/roguewindow/openclose/reinforced{
@@ -57160,7 +57160,7 @@
 	},
 /obj/effect/particle_effect/smoke,
 /turf/open/water/bath{
-	desc = "clear, lightly foamy water, perfect for dipping into after a long day."
+	desc = "清澈的水泛着淡淡泡沫，最适合在劳累一天后泡个澡。"
 	},
 /area/rogue/outdoors/beach)
 "mKv" = (
@@ -57254,7 +57254,7 @@
 	dir = 1;
 	locked = 1;
 	lockid = "vault";
-	name = "Vault Door"
+	name = "金库门"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/vault)
@@ -57478,7 +57478,7 @@
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
 	lockid = "steward";
-	name = "Reception Desk"
+	name = "接待台"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
@@ -57500,7 +57500,7 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/white,
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
-	name = "locker 3";
+	name = "三号储物柜";
 	redstone_id = "bathlocker3"
 	},
 /turf/open/floor/rogue/tile/harem2,
@@ -57597,7 +57597,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "physician";
-	name = "storage room"
+	name = "储藏室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/physician)
@@ -57615,7 +57615,7 @@
 "mPQ" = (
 /obj/structure/table/church,
 /obj/item/rogueweapon/shield/tower{
-	name = "fool's peace"
+	name = "愚者的安宁"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/mazedungeon)
@@ -57738,7 +57738,7 @@
 	},
 /obj/structure/bars/passage/shutter{
 	max_integrity = 15000;
-	name = "Lockdown Shutter";
+	name = "封锁闸门";
 	redstone_id = "forgotten_artificer"
 	},
 /turf/open/floor/rogue/concrete/bronze,
@@ -58070,7 +58070,7 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/white,
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
-	name = "locker 2";
+	name = "二号储物柜";
 	redstone_id = "bathlocker1"
 	},
 /turf/open/floor/rogue/tile/harem2,
@@ -58472,9 +58472,9 @@
 	icon_state = "tablewood3"
 	},
 /obj/item/roguekey/manor{
-	desc = "This key will open a Manor guest room.";
+	desc = "这把钥匙能打开庄园的一间客房。";
 	lockid = "counsil1";
-	name = "Counsillor's Room I Key"
+	name = "一号议员房间钥匙"
 	},
 /obj/structure/rogue/trophy/deer,
 /turf/open/floor/rogue/tile/masonic/single,
@@ -58622,7 +58622,7 @@
 /obj/structure/winch{
 	dir = 4;
 	gid = "outernorthgate";
-	name = "outer gate winch";
+	name = "外门绞盘";
 	pixel_x = 1;
 	pixel_y = 3;
 	redstone_id = "outernorthgate"
@@ -58668,7 +58668,7 @@
 /obj/item/reagent_containers/powder/salt,
 /obj/machinery/light/rogue/candle/r,
 /obj/structure/closet/crate/chest/old_crate{
-	name = "meat chest"
+	name = "肉柜"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
@@ -59061,8 +59061,8 @@
 /area/rogue/outdoors/woods/northeast)
 "nhY" = (
 /obj/structure/fluff/statue/femalestatue/zizo{
-	desc = "An inscription reads: She who split that which was one into that which is many.";
-	name = "savior";
+	desc = "铭文写道：她将本为一体之物分裂为众多。";
+	name = "救世者";
 	pixel_x = -20;
 	pixel_y = -30
 	},
@@ -59204,7 +59204,7 @@
 	},
 /obj/machinery/light/rogue/oven/south{
 	desc = "...?";
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/underdark/north)
@@ -59663,7 +59663,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "reception"
+	name = "接待处"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -59896,8 +59896,8 @@
 /area/rogue/under/cave/scarymaze)
 "nrV" = (
 /obj/structure/fluff/statue/femalestatue/zizo{
-	desc = "An ancient statue depicting an elven woman.";
-	name = "Ancient Statue";
+	desc = "一座描绘精灵女子的古老雕像。";
+	name = "古老雕像";
 	pixel_y = 0
 	},
 /turf/open/floor/rogue/concrete,
@@ -60562,7 +60562,7 @@
 "nAe" = (
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
-	name = "Crypt Foyer"
+	name = "墓室前厅"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/cave/scarymaze)
@@ -60690,7 +60690,7 @@
 "nBg" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 8;
@@ -60787,7 +60787,7 @@
 "nBX" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - NORTHEAST"
+	wrotesign = "腐木谷——向东北"
 	},
 /obj/structure/fluff/railing/wood/north{
 	pixel_y = 15
@@ -61230,7 +61230,7 @@
 "nGj" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "garrison";
-	name = "Watchouse"
+	name = "岗哨"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/garrison)
@@ -61323,7 +61323,7 @@
 /obj/structure/lever{
 	redstone_id = "dungeonpit";
 	pixel_y = 5;
-	name = "Bypass Tunnel"
+	name = "绕行隧道"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/garrison)
@@ -61428,7 +61428,7 @@
 "nIG" = (
 /turf/closed/wall/mineral/rogue/pipe/line{
 	density = 0;
-	name = "suspicious metal wall"
+	name = "可疑金属墙"
 	},
 /area/rogue/under/town/sewer)
 "nIK" = (
@@ -61662,7 +61662,7 @@
 /area/rogue/outdoors/woods/southwest)
 "nLm" = (
 /obj/structure/fluff/walldeco/mageguild{
-	name = "Vale's University";
+	name = "谷地大学";
 	pixel_y = 32
 	},
 /turf/open/transparent/openspace,
@@ -61741,7 +61741,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "servant";
-	name = "Kitchen"
+	name = "厨房"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -62103,7 +62103,7 @@
 "nQm" = (
 /obj/structure/roguewindow/harem3{
 	max_integrity = 800;
-	name = "frosted glass window";
+	name = "磨砂玻璃窗";
 	opacity = 1;
 	plane = -3
 	},
@@ -62123,8 +62123,8 @@
 	pixel_y = 11
 	},
 /obj/item/reagent_containers/glass/cup/silver{
-	desc = "A pewter goblet, cheaper than silver, but with a similar shine!";
-	name = "pewter goblet";
+	desc = "一只锡制高脚杯，比银杯便宜，却有相似的光泽！";
+	name = "锡制高脚杯";
 	pixel_x = -11
 	},
 /turf/open/floor/rogue/churchmarble,
@@ -62227,7 +62227,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "nightman";
-	name = "Stash";
+	name = "藏匿处";
 	pixel_x = 3
 	},
 /obj/item/reagent_containers/powder/ozium,
@@ -62380,15 +62380,15 @@
 /obj/machinery/light/rogue/candle/l,
 /obj/item/roguekey/dungeon{
 	lockid = "drow";
-	name = "cell key"
+	name = "牢房钥匙"
 	},
 /obj/item/roguekey/dungeon{
 	lockid = "drow";
-	name = "cell key"
+	name = "牢房钥匙"
 	},
 /obj/item/roguekey/dungeon{
 	lockid = "drow";
-	name = "cell key"
+	name = "牢房钥匙"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/underdarker/dunsouth)
@@ -62423,7 +62423,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "steward";
-	name = "Stewardry Office"
+	name = "总管府办公室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
@@ -62490,7 +62490,7 @@
 /area/rogue/outdoors/beach)
 "nUv" = (
 /turf/closed/wall/mineral/rogue/decostone{
-	name = "chimney"
+	name = "烟囱"
 	},
 /area/rogue/outdoors/town/roofs)
 "nUy" = (
@@ -62727,14 +62727,14 @@
 	color = "#755f48";
 	layer = 4;
 	max_integrity = 400;
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/mineral_door/wood/deadbolt{
 	color = "#778079";
 	dir = 1;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -62975,7 +62975,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "courtesan room 3"
+	name = "三号交际花房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -63188,7 +63188,7 @@
 	light_outer_range = 1
 	},
 /obj/item/paper{
-	info = "Here rests my dearest weedflower, plucked so unfairly from me."
+	info = "我最亲爱的野花安息于此，命运如此不公，将她从我身边夺走。"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield/abandonedhotsprings)
@@ -63294,7 +63294,7 @@
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "ocX" = (
 /obj/structure/closet/crate/chest{
-	name = "Prisoner Clothes"
+	name = "囚服"
 	},
 /obj/item/clothing/under/roguetown/loincloth/brown,
 /obj/item/clothing/under/roguetown/loincloth/brown,
@@ -63380,7 +63380,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Throneroom Rear Patrol Tunnel";
+	name = "王座厅后方巡逻隧道";
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/bath{
@@ -63420,7 +63420,7 @@
 	dir = 1;
 	locked = 1;
 	lockid = "nightman";
-	name = "bathmaster's office"
+	name = "浴场主管办公室"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -63779,7 +63779,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -64055,7 +64055,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "knight";
-	name = "Knight's Quarters II"
+	name = "二号骑士居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -64201,8 +64201,8 @@
 "ond" = (
 /obj/structure/fluff/railing/border/west,
 /obj/structure/winch{
-	desc = "The centerpiece of any ship. You're not going anywhere without it.";
-	name = "nautical wheel";
+	desc = "任何船只的核心部件。没有它，船哪儿也去不了。";
+	name = "船舵";
 	pixel_x = -3
 	},
 /obj/structure/fluff/walldeco/church/line{
@@ -64245,7 +64245,7 @@
 "onl" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -64360,7 +64360,7 @@
 	locked = 1;
 	lockhash = 0;
 	lockid = "physician";
-	name = "Revivification Supplies";
+	name = "复生用品";
 	pixel_y = 2
 	},
 /obj/item/rogueweapon/mace/woodclub,
@@ -64381,7 +64381,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "royal";
-	name = "Ducal Crypt"
+	name = "公爵地下墓室"
 	},
 /obj/structure/fluff/walldeco/alarm{
 	pixel_x = -32;
@@ -64867,8 +64867,8 @@
 /obj/structure/table/wood/map/three,
 /obj/item/candle/silver/lit,
 /obj/item/reagent_containers/glass/cup/silver{
-	desc = "A pewter goblet, cheaper than silver, but with a similar shine!";
-	name = "pewter goblet";
+	desc = "一只锡制高脚杯，比银杯便宜，却有相似的光泽！";
+	name = "锡制高脚杯";
 	pixel_x = -11
 	},
 /turf/open/floor/carpet/royalblack,
@@ -64879,7 +64879,7 @@
 	},
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars";
+	name = "窗户栅栏";
 	opacity = 1
 	},
 /obj/structure/bars/passage/shutter/open{
@@ -65222,8 +65222,8 @@
 /area/rogue/outdoors/rtfield/abandonedhotsprings)
 "oyx" = (
 /obj/structure/fluff/buysign{
-	desc = "This is a coarsely carved sign willing 'Curses variede and terrible be upon ye who interrupts the resting cadavers of this place!' The sign of the Necran cross is marked roughly into one corner. It's rather doubtful it has stopped anyone.";
-	name = "CURSES UPON YE"
+	desc = "一块粗糙雕刻的告示牌，写着：'愿各般可怕的诅咒降临于打扰此地遗体安息之人！'一角潦草刻着内克拉十字的标记。很难相信它曾阻止过任何人。";
+	name = "诅咒你们"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/mountains/decap)
@@ -65418,7 +65418,7 @@
 /obj/structure/table/wood/crafted,
 /obj/structure/bars/passage/shutter{
 	max_integrity = 15000;
-	name = "Lockdown Shutter";
+	name = "封锁闸门";
 	redstone_id = "forgotten_artificer"
 	},
 /turf/open/floor/rogue/concrete/bronze,
@@ -65518,7 +65518,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker I";
+	name = "一号佣兵储物柜";
 	lockid = "merc_bunk_i"
 	},
 /obj/machinery/light/rogue/candle/l,
@@ -65539,7 +65539,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 4
 	},
 /turf/open/floor/rogue/wood,
@@ -65869,7 +65869,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "royal";
-	name = "Ducal Crypt";
+	name = "公爵地下墓室";
 	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -65952,8 +65952,8 @@
 /obj/effect/decal/cleanable/sigil/N,
 /obj/structure/fluff/statue/femalestatue/zizo{
 	pixel_y = 21;
-	desc = "A intrepetation of Zizo in statue form. The base reads 'Let the Lady of Ambition guide us forth, out of this ever rotting world.' ";
-	name = "Statue of Zizo"
+	desc = "一尊以雕像形式诠释齐佐的作品。底座写着：'愿野心女神引领我们前行，走出这个不断腐烂的世界。' ";
+	name = "齐佐雕像"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/cave)
@@ -66113,7 +66113,7 @@
 "oHQ" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - EAST"
+	wrotesign = "腐木谷——向东"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach/forest/south)
@@ -66145,7 +66145,7 @@
 /area/rogue/indoors/town/tavern)
 "oHV" = (
 /obj/structure/roguewindow/harem3{
-	name = "Frosted Glass Window"
+	name = "磨砂玻璃窗"
 	},
 /turf/closed/void,
 /area/rogue/indoors/town/tavern)
@@ -66160,7 +66160,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 8
 	},
 /turf/open/floor/rogue/wood,
@@ -66307,10 +66307,10 @@
 /area/rogue/indoors/shelter/mountains/decap)
 "oJe" = (
 /obj/structure/bars/grille{
-	desc = "greenhouse roof";
+	desc = "温室屋顶。";
 	icon = 'icons/roguetown/misc/roguewindow.dmi';
 	icon_state = "harem3-solid";
-	name = "greenhouse roof"
+	name = "温室屋顶"
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
@@ -66403,7 +66403,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town/roofs/keep)
@@ -66889,7 +66889,7 @@
 /area/rogue/outdoors/mountains/decap)
 "oPv" = (
 /obj/item/reagent_containers/food/snacks/smallrat{
-	name = "Remy"
+	name = "雷米"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/under/town/sewer)
@@ -66936,7 +66936,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "tower";
-	name = "Summoning circle"
+	name = "召唤法阵"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/magician)
@@ -67053,7 +67053,7 @@
 "oRd" = (
 /obj/structure/bars{
 	max_integrity = 2000;
-	name = "reinforced bars"
+	name = "加固栅栏"
 	},
 /obj/structure/fluff/littlebanners{
 	pixel_y = -5
@@ -67768,7 +67768,7 @@
 	icon_state = "lilypetals2"
 	},
 /turf/open/water/bath{
-	desc = "clear, lightly foamy water, perfect for dipping into after a long day."
+	desc = "清澈的水泛着淡淡泡沫，最适合在劳累一天后泡个澡。"
 	},
 /area/rogue/outdoors/beach)
 "oZx" = (
@@ -68354,7 +68354,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomi";
-	name = "Room I"
+	name = "一号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -68521,7 +68521,7 @@
 	dir = 4;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -68753,7 +68753,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "warden";
-	name = "warden's watchtower"
+	name = "守林人瞭望塔"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/cell/warden)
@@ -68773,7 +68773,7 @@
 /area/rogue/indoors/shelter/woods)
 "pld" = (
 /mob/living/simple_animal/pet/cat/rogue/black{
-	name = "morticia"
+	name = "莫蒂西亚"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town/roofs)
@@ -69492,7 +69492,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "courtesan room 2"
+	name = "二号交际花房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -69702,7 +69702,7 @@
 /area/rogue/indoors/town/physician)
 "pwC" = (
 /turf/open/water/bath{
-	desc = "clear, lightly foamy water, perfect for dipping into after a long day."
+	desc = "清澈的水泛着淡淡泡沫，最适合在劳累一天后泡个澡。"
 	},
 /area/rogue/outdoors/beach)
 "pwF" = (
@@ -69808,7 +69808,7 @@
 /obj/machinery/light/rogue/candle/off/l,
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -69832,7 +69832,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "tower";
-	name = "Mages dormitory I"
+	name = "一号法师宿舍"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -69882,7 +69882,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section"
+	name = "管制区"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -70855,8 +70855,8 @@
 /area/rogue/outdoors/mountains)
 "pIp" = (
 /obj/structure/fluff/buysign{
-	desc = "This is quite a large, well-carved sign stating calmly and serenely that this area contains sanctified dead which, despite the general effectivness of church-sanctioned ceremony, may rise as deadites on rare occasion. It also instructs you to use available sharp implements in the crypt to penetrate the skull of any risen deadite, for the safety of thyself and thy fellow crypt-goers. Some folks say crypts and graveyards once had no need of weapons to protect the living from their restless ancestors, but it is standard practice in modern days.";
-	name = "BEWARE, TIRELESS DEAD"
+	desc = "这块大而精雕的告示牌平静地写道：此地安葬着受祝圣的死者。尽管教会仪式通常有效，他们仍偶尔会作为亡尸复起。为保障你与其他访客的安全，请用墓室内的锐器刺穿任何复起亡尸的头颅。有人说，墓室与墓地从前无需武器来保护活人免受不安祖先的侵扰，但如今这已是惯例。";
+	name = "当心，不知疲倦的死者"
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/under/cave/scarymaze)
@@ -71187,7 +71187,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 1
 	},
 /turf/open/floor/rogue/woodturned,
@@ -71262,14 +71262,14 @@
 	dir = 4;
 	locked = 1;
 	lockid = "inquisition";
-	name = "Inquisitorial Wing"
+	name = "宗教裁判所侧厅"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/inq)
 "pNa" = (
 /obj/structure/winch{
-	desc = "The ship's anchor winch. You're not going anywhere with it lowered.";
-	name = "anchor winch"
+	desc = "船上的起锚绞盘。锚未升起时，船哪儿也去不了。";
+	name = "起锚绞盘"
 	},
 /obj/structure/fluff/railing/border/north,
 /turf/open/floor/rogue/ruinedwood,
@@ -71285,7 +71285,7 @@
 	},
 /obj/effect/particle_effect/smoke,
 /turf/open/water/bath{
-	desc = "clear, lightly foamy water, perfect for dipping into after a long day."
+	desc = "清澈的水泛着淡淡泡沫，最适合在劳累一天后泡个澡。"
 	},
 /area/rogue/outdoors/beach)
 "pNh" = (
@@ -71590,7 +71590,7 @@
 "pRB" = (
 /obj/structure/bars{
 	max_integrity = 2000;
-	name = "reinforced bars"
+	name = "加固栅栏"
 	},
 /obj/structure/fluff/littlebanners/bluewhite{
 	pixel_y = -6;
@@ -71915,7 +71915,7 @@
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 4;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/town)
 "pVj" = (
@@ -72055,9 +72055,9 @@
 /area/rogue/indoors/town/dwarfin)
 "pWK" = (
 /turf/closed/wall/mineral/rogue/stone{
-	name = "granite stone wall";
+	name = "花岗岩墙";
 	max_integrity = 5800;
-	desc = "A wall of smooth unyielding stone. It seems harder than most other kinds."
+	desc = "一面由光滑坚硬的石块砌成的墙，似乎比多数石墙都坚固。"
 	},
 /area/rogue/outdoors/exposed/town/keep)
 "pWM" = (
@@ -72105,7 +72105,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomiii";
-	name = "Room III"
+	name = "三号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -72344,7 +72344,7 @@
 "pZU" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 4;
@@ -72394,7 +72394,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "garrison";
-	name = "Guard's Barracks"
+	name = "卫兵营房"
 	},
 /turf/open/floor/rogue/cobblerock{
 	smooth = 0
@@ -72407,7 +72407,7 @@
 "qat" = (
 /obj/structure/gate{
 	gid = "gatemanor2";
-	name = "Throne Room Gate";
+	name = "王座厅大门";
 	redstone_id = "gatemanor3"
 	},
 /turf/open/floor/rogue/concrete,
@@ -72545,13 +72545,13 @@
 	pixel_y = 39
 	},
 /obj/item/reagent_containers/glass/bowl/iron{
-	name = "pewter bowl";
+	name = "锡碗";
 	pixel_x = 3;
 	pixel_y = 5;
 	sellprice = 30
 	},
 /obj/item/reagent_containers/glass/bowl/iron{
-	name = "pewter bowl";
+	name = "锡碗";
 	sellprice = 30
 	},
 /obj/item/kitchen/spoon{
@@ -72605,9 +72605,9 @@
 /area/rogue/indoors/town/bath)
 "qcn" = (
 /obj/structure/bars/passage/shutter{
-	desc = "Extremely strong. I don't think I can easily get through this with brute force. Where might the way to open it be?";
+	desc = "极其坚固。我恐怕无法轻易靠蛮力突破它。开启它的机关会在哪儿呢？";
 	max_integrity = 15000;
-	name = "reinforced shutter";
+	name = "加固闸门";
 	redstone_id = "meltedcitysmelteralleyway"
 	},
 /obj/effect/spawner/trap,
@@ -72790,8 +72790,8 @@
 /area/rogue/outdoors/rtfield)
 "qeN" = (
 /obj/structure/fluff/buysign{
-	desc = "A large, jaggedly carved sign warning mourners and holy-folk that the eastern and lower sections of the crypt have been long-since pried from control of the faithful, and are not to be traversed unless it be with righteous wish to purify a sacred site of the inhumen scourge. It's quite strongly worded.";
-	name = "WARNING TO MOURNERS"
+	desc = "一块巨大而雕刻粗犷的告示牌警告哀悼者与圣职人员：墓室东部及下层早已脱离信众控制。除非怀着净化圣地、驱除异民灾祸的正义愿望，否则不得进入。措辞十分严厉。";
+	name = "哀悼者警告"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/scarymaze)
@@ -73908,7 +73908,7 @@
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Wine Cellar"
+	name = "酒窖"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/beach)
@@ -74018,7 +74018,7 @@
 "qup" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "counsil2";
-	name = "Councillor's Quarters II"
+	name = "二号议员居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -74048,7 +74048,7 @@
 "quQ" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - EAST"
+	wrotesign = "腐木谷——向东"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/northeast)
@@ -74317,7 +74317,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "priest";
-	name = "Bishop's Apartment"
+	name = "主教住所"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town/roofs)
@@ -74494,7 +74494,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "bathmaid room 1"
+	name = "一号浴场女仆房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -74511,7 +74511,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "royal";
-	name = "Ducal Exit";
+	name = "公爵出口";
 	lock_strength = 250;
 	dir = 4
 	},
@@ -74647,7 +74647,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "manor";
-	name = "Gate Bypass"
+	name = "城门绕行通道"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -74877,7 +74877,7 @@
 /area/rogue/indoors/shelter/mountains/decap)
 "qEv" = (
 /mob/living/simple_animal/pet/familiar/whisper_stoat{
-	name = "Kenneth";
+	name = "肯尼斯";
 	faction = list("neutral")
 	},
 /turf/open/floor/rogue/carpet/lord/right,
@@ -75266,7 +75266,7 @@
 /area/rogue/outdoors/exposed/town/keep)
 "qJc" = (
 /mob/living/simple_animal/pet/cat/rogue/black{
-	name = "Eddie"
+	name = "埃迪"
 	},
 /obj/structure/fluff/railing/border/north,
 /turf/open/floor/rogue/tile/brick,
@@ -75539,7 +75539,7 @@
 "qMm" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "tower";
-	name = "Vale's University"
+	name = "谷地大学"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -75750,7 +75750,7 @@
 	pixel_y = 8
 	},
 /obj/structure/floordoor/open{
-	name = "Dwarven Bridge";
+	name = "矮人桥";
 	redstone_id = "dwarven_artificer"
 	},
 /turf/open/transparent/openspace,
@@ -76243,7 +76243,7 @@
 "qUk" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -76410,7 +76410,7 @@
 	dir = 1;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -76575,7 +76575,7 @@
 /obj/structure/mineral_door/wood/window{
 	locked = 1;
 	lockid = "tower";
-	name = "Communal room"
+	name = "公共房间"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -76637,7 +76637,7 @@
 /area/rogue/indoors/shelter)
 "qYG" = (
 /mob/living/simple_animal/pet/cat/inn{
-	name = "Bintu"
+	name = "宾图"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
@@ -76709,8 +76709,8 @@
 "qZy" = (
 /turf/closed/wall/mineral/rogue/wooddark/end/west{
 	max_integrity = 300;
-	name = "rough barricade";
-	desc = "Wooden beams braced hastily"
+	name = "粗制路障";
+	desc = "匆忙架起的木梁。"
 	},
 /area/rogue/under/town/sewer)
 "qZz" = (
@@ -76805,7 +76805,7 @@
 "raB" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/passage{
 	density = 0;
@@ -76839,7 +76839,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker IV";
+	name = "四号佣兵储物柜";
 	lockid = "merc_bunk_iv"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -77049,7 +77049,7 @@
 /area/rogue/under/cavewet/bogcaves/west)
 "rdE" = (
 /obj/structure/standingbell{
-	name = "clinic service bell"
+	name = "诊所服务铃"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/physician)
@@ -77316,7 +77316,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Mess";
+	name = "食堂";
 	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -77457,7 +77457,7 @@
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Foreign Import"
+	name = "进口货物"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/beach)
@@ -77592,7 +77592,7 @@
 	icon_state = "lilypetals2"
 	},
 /turf/open/water/bath{
-	desc = "clear, lightly foamy water, perfect for dipping into after a long day."
+	desc = "清澈的水泛着淡淡泡沫，最适合在劳累一天后泡个澡。"
 	},
 /area/rogue/under/cave)
 "rjV" = (
@@ -77723,7 +77723,7 @@
 /obj/structure/fluff/walldeco/med3{
 	icon_state = "medposter";
 	pixel_x = 32;
-	desc = "A diagram showing the effects of Fyritius Flower upon the body -- an entire person is being immolated on the poster, likely after consuming the strange plant. I hope they don't have any .."
+	desc = "一张展示焰蕊花对人体影响的图解——图中一个人全身燃烧，可能是吃了这种奇异植物所致。希望他们没有这种花……"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/beach)
@@ -78058,7 +78058,7 @@
 	dir = 1;
 	locked = 1;
 	lockid = "steward";
-	name = "To Stewardry"
+	name = "通往总管府"
 	},
 /obj/structure/fluff/walldeco/alarm{
 	pixel_x = 32;
@@ -78113,7 +78113,7 @@
 "rqw" = (
 /obj/structure/gate{
 	gid = "dungeondoor";
-	name = "Temple of the Ten";
+	name = "十神神殿";
 	redstone_id = "dungeondoor"
 	},
 /turf/open/floor/rogue/cobblerock,
@@ -78255,7 +78255,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "farm";
-	name = "stream access"
+	name = "溪流入口"
 	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/town/outskirts)
@@ -78279,7 +78279,7 @@
 	color = "#778079";
 	dir = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane)
@@ -78411,9 +78411,9 @@
 "rtM" = (
 /obj/structure/closet/dirthole/closed,
 /obj/item/roguekey/walls{
-	desc = "This is a rusty key. You're not sure where it goes to.";
+	desc = "一把生锈的钥匙。我不知道它能打开什么。";
 	lockid = "vesseldeck";
-	name = "strange key"
+	name = "奇异钥匙"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/cave/northern)
@@ -78546,8 +78546,8 @@
 /area/rogue/indoors/town/dwarfin)
 "rvj" = (
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill"
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液"
 	},
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/town/sewer)
@@ -78708,7 +78708,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "manor";
-	name = "Meeting Room"
+	name = "会议室"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -78716,7 +78716,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "merchant";
-	name = "Merchant's Bedroom"
+	name = "商人卧室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
@@ -79054,7 +79054,7 @@
 "rAL" = (
 /obj/structure/table/church/end,
 /obj/item/rogueweapon/spear{
-	name = "fool's conquest"
+	name = "愚者的征服"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/mazedungeon)
@@ -79283,7 +79283,7 @@
 	icon_state = "wcr";
 	locked = 1;
 	lockid = "sergeant";
-	name = "Sergeant's Office";
+	name = "军士办公室";
 	lockdifficulty = 1.5
 	},
 /turf/open/floor/rogue/tile,
@@ -79553,7 +79553,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "nightman";
-	name = "Stash";
+	name = "藏匿处";
 	pixel_x = 3
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
@@ -79769,7 +79769,7 @@
 /area/rogue/under/town/basement/keep)
 "rIH" = (
 /obj/structure/fluff/customsign{
-	name = "TURN BACK NOW!!!"
+	name = "立刻回头！！！"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/licharena)
@@ -80344,7 +80344,7 @@
 /area/rogue/under/cave/mazedungeon)
 "rPT" = (
 /mob/living/simple_animal/pet/familiar/ripplefox{
-	name = "Tommy";
+	name = "汤米";
 	faction = list("neutral")
 	},
 /turf/open/floor/rogue/carpet/lord/left,
@@ -80566,9 +80566,9 @@
 /area/rogue/outdoors/woods/above)
 "rSe" = (
 /obj/structure/fluff/statue/femalestatue{
-	desc = "Kneel before her and she will acknowledge your presence.";
+	desc = "在她面前跪下，她便会回应你的到来。";
 	icon_state = "2";
-	name = "Her Grace";
+	name = "尊贵女士";
 	pixel_x = -30;
 	pixel_y = -4
 	},
@@ -80928,7 +80928,7 @@
 	dir = 1;
 	locked = 1;
 	lockid = "inquisition";
-	name = "Inquisitorial Manor"
+	name = "宗教裁判所庄园"
 	},
 /obj/structure/fluff/littlebanners{
 	pixel_y = -5
@@ -81012,7 +81012,7 @@
 "rXf" = (
 /obj/structure/table/wood/crafted,
 /obj/structure/lever{
-	name = "Dwarven Bridge";
+	name = "矮人桥";
 	pixel_x = 5;
 	pixel_y = 15;
 	redstone_id = "dwarven_ruinsb"
@@ -81111,7 +81111,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "physician";
-	name = "Physician's office"
+	name = "医师办公室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/physician)
@@ -81283,7 +81283,7 @@
 "rZT" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 4
@@ -81484,7 +81484,7 @@
 	dir = 2;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane)
@@ -81535,7 +81535,7 @@
 /area/rogue/indoors/town)
 "scF" = (
 /obj/structure/winch{
-	name = "Ducal Crypt Entrance";
+	name = "公爵地下墓室入口";
 	redstone_id = "ducalcrypt";
 	gid = "ducalcrypt"
 	},
@@ -81762,7 +81762,7 @@
 /obj/machinery/light/rogue/smelter/great{
 	color = "#485775";
 	desc = "";
-	name = "ancyent engine"
+	name = "古老引擎"
 	},
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -82170,7 +82170,7 @@
 /area/rogue/indoors/town)
 "sjS" = (
 /obj/item/rogueweapon/greatsword{
-	name = "ducal greatsword"
+	name = "公爵巨剑"
 	},
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 /obj/structure/closet/crate/roguecloset/lord/duke_preset,
@@ -82292,7 +82292,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "stable2";
-	name = "stable ii"
+	name = "二号马厩"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town)
@@ -82831,8 +82831,8 @@
 "sqR" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/cup/silver{
-	desc = "A pewter goblet, cheaper than silver, but with a similar shine!";
-	name = "pewter goblet";
+	desc = "一只锡制高脚杯，比银杯便宜，却有相似的光泽！";
+	name = "锡制高脚杯";
 	pixel_x = 9;
 	pixel_y = 10
 	},
@@ -83007,7 +83007,7 @@
 "ssY" = (
 /obj/structure/gate/bars/preopen{
 	gid = "outernorthgate";
-	name = "outer north gate";
+	name = "外北门";
 	redstone_id = "outernorthgate"
 	},
 /obj/structure/fluff/littlebanners/bluewhite{
@@ -83355,7 +83355,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "fancyi";
-	name = "Luxury Room I"
+	name = "一号豪华客房"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -83598,7 +83598,7 @@
 /area/rogue/under/town/basement)
 "syz" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf{
-	name = "Bitey"
+	name = "小咬"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/shelter)
@@ -83719,7 +83719,7 @@
 /obj/structure/winch{
 	dir = 4;
 	gid = "outersouthgate";
-	name = "outer gate winch";
+	name = "外门绞盘";
 	pixel_x = 1;
 	pixel_y = 3;
 	redstone_id = "outersouthgate"
@@ -83789,7 +83789,7 @@
 "sAt" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 1;
@@ -83853,7 +83853,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomvi";
-	name = "Room VI"
+	name = "六号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -84097,7 +84097,7 @@
 /area/rogue/indoors/town/manor)
 "sEg" = (
 /obj/structure/gate{
-	name = "Ducal Crypt";
+	name = "公爵地下墓室";
 	redstone_id = "ducalcrypt";
 	gid = "ducalcrypt"
 	},
@@ -84218,7 +84218,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Mess"
+	name = "食堂"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison)
@@ -85201,7 +85201,7 @@
 /area/rogue/under/cave/scarymaze)
 "sPE" = (
 /obj/item/paper{
-	info = "The Inquisition will hardly come search for me here - yet the drow have started to notice my presence in the area. I fear everyday upon which I take breath, risking death by their hand or the Otavans."
+	info = "宗教裁判所几乎不会来这里搜寻我——然而卓尔已开始注意到我在这一带的踪迹。每个仍能呼吸的日子都令我恐惧，我随时可能死在他们或奥塔万人手中。"
 	},
 /obj/structure/table/wood/poor,
 /turf/open/floor/rogue/ruinedwood/turned,
@@ -85405,8 +85405,8 @@
 /area/rogue/outdoors/mountains)
 "sSd" = (
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/loudmouth{
-	name = "trimmed garb";
-	desc = "A gold-trimmed robe."
+	name = "镶边袍服";
+	desc = "一件镶金边的长袍。"
 	},
 /obj/item/clothing/neck/roguetown/psicross/g,
 /obj/item/clothing/suit/roguetown/shirt/vampire,
@@ -85426,7 +85426,7 @@
 	},
 /obj/structure/flora/roguegrass/bush/wall/tall{
 	max_integrity = 500000;
-	name = "do not use bush"
+	name = "不宜使用的灌木"
 	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/town)
@@ -85506,7 +85506,7 @@
 "sSV" = (
 /obj/structure/winch{
 	gid = "tertiarygate";
-	name = "gate winch";
+	name = "城门绞盘";
 	redstone_id = "tertiarygate"
 	},
 /turf/open/floor/rogue/blocks,
@@ -85580,7 +85580,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Squire's Dorm"
+	name = "侍从宿舍"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -85644,7 +85644,7 @@
 "sUH" = (
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/tile/bath{
-	name = "small tile floor"
+	name = "小块瓷砖地板"
 	},
 /area/rogue/indoors/town/physician)
 "sUJ" = (
@@ -85780,7 +85780,7 @@
 /area/rogue/outdoors/beach/forest/hamlet)
 "sWA" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/sewer)
@@ -85816,7 +85816,7 @@
 /area/rogue/indoors/shelter)
 "sWR" = (
 /obj/structure/fluff/customsign/arrow{
-	wrotesign = "ROTWOOD VALE - NORTH";
+	wrotesign = "腐木谷——向北";
 	dir = 4
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -85864,7 +85864,7 @@
 	dir = 1;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane)
@@ -86051,7 +86051,7 @@
 /area/rogue/indoors/town/manor)
 "sZp" = (
 /turf/open/floor/rogue/tile/bath{
-	name = "small tile floor"
+	name = "小块瓷砖地板"
 	},
 /area/rogue/indoors/town/physician)
 "sZr" = (
@@ -86102,7 +86102,7 @@
 	pixel_y = 22
 	},
 /turf/open/floor/rogue/tile/bath{
-	name = "small tile floor"
+	name = "小块瓷砖地板"
 	},
 /area/rogue/indoors/town/physician)
 "sZG" = (
@@ -86348,7 +86348,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "sheriff";
-	name = "Marshal's quarter"
+	name = "元帅居室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -86766,7 +86766,7 @@
 "thX" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 1;
-	wrotesign = "The HIGH ROAD"
+	wrotesign = "大道"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog/north)
@@ -86914,7 +86914,7 @@
 /obj/machinery/light/rogue/smelter/great{
 	color = "#485775";
 	desc = "";
-	name = "ancyent engine"
+	name = "古老引擎"
 	},
 /obj/structure/bars/pipe{
 	pixel_x = -11
@@ -87195,7 +87195,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "fancyiii";
-	name = "Luxury Room III"
+	name = "三号豪华客房"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -87326,7 +87326,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "bathworker quarters"
+	name = "浴场工宿舍"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -87431,7 +87431,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of diligence";
+	name = "勤勉之门";
 	redstone_id = "mazedungeondiligence"
 	},
 /turf/open/floor/rogue/blocks,
@@ -87465,7 +87465,7 @@
 /area/rogue/under/town/basement)
 "tqj" = (
 /obj/structure/fluff/walldeco/mageguild{
-	name = "Vale's University"
+	name = "谷地大学"
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/magician)
@@ -87793,7 +87793,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Knight's Dorm";
+	name = "骑士宿舍";
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -88016,7 +88016,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "knight";
-	name = "Court of justice"
+	name = "法庭"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -88376,7 +88376,7 @@
 "tBx" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "crier";
-	name = "Town Crier"
+	name = "城镇传令员"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
@@ -88650,7 +88650,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
@@ -88861,7 +88861,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker VI";
+	name = "六号佣兵储物柜";
 	lockid = "merc_bunk_vi"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -89000,7 +89000,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "tower";
-	name = "Alchemy laboratory"
+	name = "炼金实验室"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -89352,7 +89352,7 @@
 "tMW" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 1;
@@ -89384,7 +89384,7 @@
 	color = "#755f48";
 	layer = 4;
 	max_integrity = 400;
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -90022,7 +90022,7 @@
 "tUw" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - NORTHEAST"
+	wrotesign = "腐木谷——向东北"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
@@ -90407,7 +90407,7 @@
 /area/rogue/outdoors/rtfield/abandonedhotsprings)
 "tYv" = (
 /obj/structure/closet/crate/chest{
-	name = "Prisoner Clothes"
+	name = "囚服"
 	},
 /obj/item/clothing/suit/roguetown/shirt/rags,
 /obj/item/clothing/suit/roguetown/shirt/rags,
@@ -91435,8 +91435,8 @@
 "umx" = (
 /obj/structure/table/fine,
 /obj/structure/fluff/statue/small{
-	desc = "For whatever reason this elven statue is placed on this table amidst a boat? Your suprised nobody has stolen it. Or the table.";
-	name = "Suspiciously Convenient Statue";
+	desc = "不知为何，这座精灵雕像被摆在船中央的桌子上。居然没人偷走它，连桌子也没被偷，真令人惊讶。";
+	name = "便利得可疑的雕像";
 	pixel_y = 17
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -91445,7 +91445,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "heir";
-	name = "Heir's Apartment"
+	name = "继承人住所"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -91555,7 +91555,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "warden";
-	name = "warden's watchtower"
+	name = "守林人瞭望塔"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/warden)
@@ -91656,8 +91656,8 @@
 /area/rogue/outdoors/rtfield)
 "uoQ" = (
 /obj/item/rogueweapon/mace/church{
-	desc = "This heavy hammer is used to ring a large stationary bell.";
-	name = "alarm bell ringer"
+	desc = "这把沉重的锤子用来敲响大型固定警钟。";
+	name = "警钟敲锤"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/garrison)
@@ -91916,7 +91916,7 @@
 	},
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - EAST"
+	wrotesign = "腐木谷——向东"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods/southwest)
@@ -91951,7 +91951,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Interrogation Room";
+	name = "审讯室";
 	dir = 8
 	},
 /turf/open/floor/rogue/blocks,
@@ -92512,7 +92512,7 @@
 /obj/structure/table/wood/poor,
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/underdark/north)
@@ -92828,7 +92828,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "knight";
-	name = "Knight's Quarters I"
+	name = "一号骑士居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -93185,7 +93185,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
 	locked = 1;
-	name = "mercenary locker V";
+	name = "五号佣兵储物柜";
 	lockid = "merc_bunk_v"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -93439,7 +93439,7 @@
 "uJk" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "Druid's Grove"
+	wrotesign = "德鲁伊林地"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods/above)
@@ -93514,12 +93514,12 @@
 	pixel_y = 13
 	},
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill"
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液"
 	},
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill"
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液"
 	},
 /obj/item/clothing/mask/rogue/physician,
 /turf/open/floor/rogue/metal,
@@ -93753,7 +93753,7 @@
 /area/rogue/under/cavewet/bogcaves/west)
 "uMH" = (
 /obj/structure/fluff/sellsign{
-	name = "CONDEMNED BY THE HOLY SEE"
+	name = "教廷查封"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/mountains/decap)
@@ -93815,7 +93815,7 @@
 /obj/effect/landmark/start/bogguardsman{
 	dir = 8;
 	jobspawn_override = list("Bog Master","Bog Guard","Warden");
-	name = "Warden"
+	name = "守林人"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town/warden)
@@ -93829,7 +93829,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "manor";
-	name = "Free Room"
+	name = "空房间"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -94088,7 +94088,7 @@
 /area/rogue/indoors/town)
 "uQJ" = (
 /obj/structure/fluff/statue{
-	name = "The Veiled Lady"
+	name = "蒙面女士"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town/roofs)
@@ -94346,8 +94346,8 @@
 /area/rogue/outdoors/town)
 "uTl" = (
 /obj/item/reagent_containers/food/snacks/smallrat{
-	desc = "A scurrying rodent often found in sewers and pantries. This one seems more evil, somehow.";
-	name = "Zat"
+	desc = "常见于下水道和食品库、四处乱窜的啮齿动物。不知为何，这只似乎更加邪恶。";
+	name = "扎鼠"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
@@ -94650,8 +94650,8 @@
 /area/rogue/indoors/town/manor)
 "uWg" = (
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill"
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液"
 	},
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/indoors/town/physician)
@@ -94673,8 +94673,8 @@
 /area/rogue/indoors/town)
 "uWu" = (
 /obj/structure/fluff/buysign{
-	desc = "This very impromptu-looking sign looks as if it were assembled in a few minutes flat. Its jagged lettering warns the reader to not proceed forward, 'or elsewise be eat'n alyve by bastard white-eyed husks'. An icon of a dragon has been carved into one corner.";
-	name = "BEWARE!! TIRELESS DEAD!"
+	desc = "这块仓促制成的告示牌似乎只花了几分钟。歪斜的字迹警告读者不要继续前进，‘否则就会被那些白眼尸壳混账活活吃掉’。一角刻着龙的图案。";
+	name = "当心！！不知疲倦的死者！"
 	},
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
@@ -94844,7 +94844,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "manor";
-	name = "stables"
+	name = "马厩"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/garrison)
@@ -94887,7 +94887,7 @@
 "uYp" = (
 /obj/structure/gate{
 	gid = "dungeonfool";
-	name = "Allfather's Shrine";
+	name = "众父神龛";
 	redstone_id = "dungeonfool"
 	},
 /turf/open/floor/rogue/blocks,
@@ -95149,7 +95149,7 @@
 "vbs" = (
 /obj/structure/gate/bars/preopen{
 	gid = "manorgate2";
-	name = "Manor's gate";
+	name = "庄园大门";
 	redstone_id = "manorgate2"
 	},
 /turf/open/floor/rogue/metal,
@@ -95297,8 +95297,8 @@
 	},
 /turf/closed/wall/mineral/rogue/tent{
 	dir = 4;
-	name = "sail";
-	desc = "A sail made from durable fabric. Used to propel a boat by harnessing Abyssor's tidal winds.";
+	name = "船帆";
+	desc = "一面以耐用织物制成的船帆，借阿比索尔的潮风推动船只。";
 	opacity = 0
 	},
 /area/rogue/outdoors/mountains)
@@ -95415,7 +95415,7 @@
 /obj/structure/fluff/walldeco/med3{
 	icon_state = "medposter5";
 	pixel_y = 32;
-	desc = "A creepy diagram of the humanoid heart. Whoever made this knows sickening detail about this organ ... how?"
+	desc = "一张令人毛骨悚然的类人心脏图解。作者对这个器官的细节了解得令人作呕……他是怎么知道的？"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/beach)
@@ -95822,7 +95822,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "dungeon";
-	name = "Holding Cell"
+	name = "拘留室"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/cell)
@@ -95968,7 +95968,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "servant";
-	name = "Kitchen"
+	name = "厨房"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement/keep)
@@ -96023,7 +96023,7 @@
 /area/rogue/outdoors/mountains)
 "vlw" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
@@ -96418,7 +96418,7 @@
 "vqb" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "guestroom2";
-	name = "Guest Room"
+	name = "客房"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -96471,11 +96471,11 @@
 /area/rogue/outdoors/mountains/decap/gunduzirak)
 "vqM" = (
 /obj/structure/mineral_door/wood/donjon{
-	desc = "a large door. It seems big enough to fit a mount.";
+	desc = "一扇大门，看起来足以让坐骑通过。";
 	dir = 8;
 	locked = 1;
 	lockid = "merc";
-	name = "Bunks"
+	name = "宿舍"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
@@ -96624,8 +96624,8 @@
 	pixel_y = -5
 	},
 /obj/item/reagent_containers/glass/cup/silver{
-	desc = "A pewter goblet, cheaper than silver, but with a similar shine!";
-	name = "pewter goblet";
+	desc = "一只锡制高脚杯，比银杯便宜，却有相似的光泽！";
+	name = "锡制高脚杯";
 	pixel_x = -11
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -96665,7 +96665,7 @@
 "vta" = (
 /obj/structure/gate/bars/preopen{
 	gid = "outersouthgate";
-	name = "outer south gate";
+	name = "外南门";
 	redstone_id = "outersouthgate"
 	},
 /obj/structure/fluff/littlebanners{
@@ -96732,9 +96732,9 @@
 	pixel_y = 0
 	},
 /obj/structure/winch{
-	name = "nautical wheel";
+	name = "船舵";
 	pixel_x = -10;
-	desc = "The very heart of a ship. Only the bravest of fools dare to venture out at sea."
+	desc = "船只真正的心脏。只有最勇敢的傻瓜才敢出海冒险。"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
@@ -97075,7 +97075,7 @@
 	dir = 8;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -97199,7 +97199,7 @@
 "vzV" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/mountains/decap)
@@ -97365,7 +97365,7 @@
 "vBZ" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 1;
-	wrotesign = "COAST - NORTH"
+	wrotesign = "海岸——向北"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/north)
@@ -97467,7 +97467,7 @@
 /obj/item/natural/bundle/cloth/bandage/full,
 /obj/item/natural/bundle/cloth/bandage/full,
 /turf/open/floor/rogue/tile/bath{
-	name = "small tile floor"
+	name = "小块瓷砖地板"
 	},
 /area/rogue/indoors/town/physician)
 "vDk" = (
@@ -97552,7 +97552,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "manor";
-	name = "Service Halls"
+	name = "勤务走廊"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement/keep)
@@ -97730,11 +97730,11 @@
 "vGj" = (
 /obj/item/roguekey/roomiv{
 	lockid = "roomvi";
-	name = "room VI key"
+	name = "六号房间钥匙"
 	},
 /obj/item/roguekey/roomiv{
 	lockid = "roomv";
-	name = "room V key"
+	name = "五号房间钥匙"
 	},
 /obj/item/roguekey/roomiv,
 /obj/item/roguekey/roomiii,
@@ -97747,7 +97747,7 @@
 /obj/item/roguekey/fancyroomv,
 /obj/structure/closet/crate/chest/crate{
 	color = "#8f7f62";
-	name = "Spare keys"
+	name = "备用钥匙"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/tavern)
@@ -97826,8 +97826,8 @@
 /area/rogue/under/cave)
 "vHe" = (
 /obj/effect/decal/cleanable/greenglow{
-	desc = "Just looking at it makes you feel strangely warm inside.";
-	name = "alchemycal spill"
+	desc = "只是看着它，你就感到体内泛起一股奇异的暖意。";
+	name = "洒出的炼金液"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/beach)
@@ -97890,7 +97890,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "The Tower"
+	name = "高塔"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -98009,7 +98009,7 @@
 "vJb" = (
 /obj/structure/table/church/m,
 /obj/item/rogueweapon/pitchfork/decrepit{
-	name = "trident"
+	name = "三叉戟"
 	},
 /obj/item/clothing/neck/roguetown/psicross/pearl,
 /turf/open/floor/rogue/churchmarble,
@@ -98207,7 +98207,7 @@
 /area/rogue/indoors/town/bath)
 "vLZ" = (
 /mob/living/simple_animal/grenchensnacker{
-	desc = "Why is it smiling like that? Wait ... wait- NO!"
+	desc = "它为什么那样笑？等等……等等——不！"
 	},
 /turf/open/floor/rogue/tile/bath{
 	icon_state = "bathtileratwood"
@@ -98431,7 +98431,7 @@
 "vOk" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4;
-	name = "PUBLIC MEETING ROOM"
+	name = "公共会议室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -98539,7 +98539,7 @@
 "vPt" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 1;
-	wrotesign = "TERRORBOG - NORTHWEST"
+	wrotesign = "恐惧沼泽——向西北"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods/southwest)
@@ -98580,7 +98580,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "bath1";
-	name = "room I"
+	name = "一号房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -98795,13 +98795,13 @@
 /area/rogue/under/cave/mazedungeon)
 "vSV" = (
 /obj/structure/lever{
-	name = "Drawbridge";
+	name = "吊桥";
 	pixel_x = -8;
 	pixel_y = 11;
 	redstone_id = "gatelava"
 	},
 /obj/structure/lever{
-	name = "Shutters";
+	name = "闸门";
 	pixel_x = 7;
 	pixel_y = 11;
 	redstone_id = "keep_front"
@@ -98824,7 +98824,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "royal";
-	name = "Royal Balcony"
+	name = "皇家阳台"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -98996,7 +98996,7 @@
 "vVE" = (
 /obj/structure/fluff/customsign/arrow{
 	dir = 4;
-	wrotesign = "ROTWOOD VALE - NORTHEAST"
+	wrotesign = "腐木谷——向东北"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods/south)
@@ -99020,7 +99020,7 @@
 	},
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars";
+	name = "窗户栅栏";
 	opacity = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -99141,7 +99141,7 @@
 	dir = 8;
 	locked = 1;
 	lockid = "inquisition";
-	name = "Inquisitorial Wing"
+	name = "宗教裁判所侧厅"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/beach)
@@ -99216,7 +99216,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "church";
-	name = "Storage Room"
+	name = "储藏室"
 	},
 /turf/open/floor/rogue/blocks/flipped,
 /area/rogue/under/cave)
@@ -99323,7 +99323,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "roomv";
-	name = "Room V"
+	name = "五号房间"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -99345,7 +99345,7 @@
 "vZY" = (
 /obj/structure/gate/bars/preopen{
 	gid = "tertiarygate";
-	name = "tertiary gate";
+	name = "第三道门";
 	redstone_id = "tertiarygate"
 	},
 /turf/open/floor/rogue/cobble,
@@ -99722,7 +99722,7 @@
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "weS" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/sewer)
@@ -99843,7 +99843,7 @@
 "wgj" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "guestroom1";
-	name = "Guest Room"
+	name = "客房"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor)
@@ -100159,7 +100159,7 @@
 "wkp" = (
 /turf/closed/wall/mineral/rogue/pipe/line{
 	density = 0;
-	name = "suspicious metal wall";
+	name = "可疑金属墙";
 	dir = 4
 	},
 /area/rogue/under/town/sewer)
@@ -100415,7 +100415,7 @@
 "wnL" = (
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of beauty";
+	name = "美之门";
 	redstone_id = "mazedungeonbeauty"
 	},
 /turf/open/floor/rogue/blocks,
@@ -100667,18 +100667,18 @@
 "wqG" = (
 /obj/structure/bars/passage{
 	max_integrity = 15000;
-	name = "Dwarven Artificer";
+	name = "矮人匠师";
 	redstone_id = "dwarven_artificer"
 	},
 /turf/open/floor/rogue/concrete/bronze,
 /area/rogue/outdoors/mountains/decap/gunduzirak)
 "wqO" = (
 /obj/structure/mineral_door/wood/donjon{
-	desc = "a large door. It seems big enough to fit a mount.";
+	desc = "一扇大门，看起来足以让坐骑通过。";
 	dir = 1;
 	locked = 1;
 	lockid = "merc";
-	name = "Mercenaries Guild"
+	name = "佣兵公会"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -100832,7 +100832,7 @@
 /obj/structure/bars/pipe,
 /obj/machinery/light/rogue/oven/east{
 	desc = "...?";
-	name = "ancient intake"
+	name = "古老吸入口"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/underdark/north)
@@ -100980,7 +100980,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "bathmaid room 2"
+	name = "二号浴场女仆房间"
 	},
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/town/bath)
@@ -101069,12 +101069,12 @@
 "wvB" = (
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of life";
+	name = "生命之门";
 	redstone_id = "mazedungeonlife"
 	},
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of glory";
+	name = "荣耀之门";
 	redstone_id = "mazedungeonglory"
 	},
 /turf/open/floor/rogue/blocks,
@@ -101300,7 +101300,7 @@
 	color = "#778079";
 	dir = 8;
 	locked = 1;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -101459,14 +101459,14 @@
 	dir = 2;
 	locked = 1;
 	max_integrity = 500;
-	name = "rotting door"
+	name = "腐朽木门"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "wAI" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars";
+	name = "窗户栅栏";
 	opacity = 1
 	},
 /obj/structure/roguewindow/openclose/reinforced{
@@ -101494,7 +101494,7 @@
 /area/rogue/indoors/town)
 "wAW" = (
 /obj/structure/fluff/sellsign{
-	name = "WARNING: UNSTABLE LAVA FLOES"
+	name = "警告：不稳定的熔岩流"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/mountains/decap)
@@ -101510,7 +101510,7 @@
 /area/rogue/under/cave/licharena)
 "wBc" = (
 /obj/structure/floordoor/open{
-	name = "Dwarven Bridge";
+	name = "矮人桥";
 	redstone_id = "dwarven_artificer"
 	},
 /obj/effect/decal/cobbleedge{
@@ -101710,7 +101710,7 @@
 /obj/structure/mineral_door/wood/window{
 	locked = 1;
 	lockid = "manor";
-	name = "Gatehouse"
+	name = "门楼"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/garrison)
@@ -101834,7 +101834,7 @@
 "wFv" = (
 /obj/structure/fluff/walldeco/med3{
 	pixel_y = 32;
-	desc = "The diagram represents an explanation of the spinal column. The picture shows, in detail, the entire spinal length of some unlucky person surgically removed from the body. Eugh .."
+	desc = "这幅图解释了脊柱的结构，详细展示了某个倒霉人的整条脊柱被手术取出的样子。呕……"
 	},
 /obj/machinery/light/rogue/candle/red/r,
 /turf/open/floor/rogue/blocks,
@@ -102102,7 +102102,7 @@
 "wHI" = (
 /obj/structure/gate/bars/preopen{
 	gid = "innernorthgate";
-	name = "inner north gate";
+	name = "内北门";
 	redstone_id = "innernorthgate"
 	},
 /obj/structure/fluff/littlebanners/bluewhite{
@@ -102191,7 +102191,7 @@
 "wIH" = (
 /obj/structure/flora/roguetree/burnt{
 	color = "#454545";
-	name = "Necra's Hand";
+	name = "内克拉之手";
 	pixel_x = 0
 	},
 /obj/item/roguecoin/copper{
@@ -102636,7 +102636,7 @@
 "wPx" = (
 /obj/structure/lever/wall{
 	dir = 8;
-	name = "shutters";
+	name = "闸门";
 	redstone_id = "crier"
 	},
 /obj/structure/roguemachine/atm{
@@ -102792,7 +102792,7 @@
 /area/rogue/indoors/town/church/chapel)
 "wRp" = (
 /obj/structure/fluff/sellsign{
-	name = "OUR FORT. FUCK OFF"
+	name = "我们的堡垒。滚开"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog/south)
@@ -103364,7 +103364,7 @@
 "wXj" = (
 /obj/structure/fluff/customsign{
 	pixel_y = 7;
-	wrotesign = "CONDEMNED BY ORDER OF THE VALE GUILD OF CRAFTS";
+	wrotesign = "奉谷地工匠公会之命查封";
 	icon_state = "signwrote";
 	pixel_x = 0
 	},
@@ -103389,7 +103389,7 @@
 	color = "#755f48";
 	layer = 4;
 	max_integrity = 400;
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -103722,7 +103722,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4;
 	lockid = "counsil3";
-	name = "Councillor's Quarters III"
+	name = "三号议员居室"
 	},
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/indoors/town/manor)
@@ -103811,7 +103811,7 @@
 /area/rogue/indoors/town/garrison)
 "xaP" = (
 /obj/structure/winch{
-	name = "Exit Winch";
+	name = "出口绞盘";
 	redstone_id = "cryptexit";
 	gid = "cryptexit"
 	},
@@ -103942,9 +103942,9 @@
 "xbX" = (
 /obj/effect/wisp/prestidigitation{
 	color = "#ffff00";
-	desc = "A small, fiery ball of light made up of mystical energy.";
+	desc = "由神秘能量构成的小小炽热光球。";
 	light_color = "#33ff00";
-	name = "Will-o'-the-wisp";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -104688,7 +104688,7 @@
 	},
 /obj/machinery/light/rogue/candle/blue,
 /obj/item/clothing/cloak/apron/cook{
-	name = "barber's apron"
+	name = "理发师围裙"
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/outdoors/town/roofs)
@@ -104972,7 +104972,7 @@
 "xoP" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "royal";
-	name = "Lord's Restroom"
+	name = "领主盥洗室"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor)
@@ -105087,7 +105087,7 @@
 /obj/structure/roguewindow,
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -105132,9 +105132,9 @@
 /area/rogue/indoors/town/grove)
 "xrn" = (
 /turf/closed/wall/mineral/rogue/stone{
-	name = "granite stone wall";
+	name = "花岗岩墙";
 	max_integrity = 5800;
-	desc = "A wall of smooth unyielding stone. It seems harder than most other kinds."
+	desc = "一面由光滑坚硬的石块砌成的墙，似乎比多数石墙都坚固。"
 	},
 /area/rogue/indoors/town/warden)
 "xro" = (
@@ -105262,7 +105262,7 @@
 "xsI" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "tower";
-	name = "Balcony"
+	name = "阳台"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
@@ -105345,7 +105345,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "royal";
-	name = "Ducal Crypt"
+	name = "公爵地下墓室"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
@@ -105588,7 +105588,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "West Wing"
+	name = "西侧厅"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
@@ -105596,7 +105596,7 @@
 /obj/machinery/light/rogue/smelter/great{
 	color = "#485775";
 	desc = "";
-	name = "ancyent engine"
+	name = "古老引擎"
 	},
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue/under/cave/dungeon1/gethsmane)
@@ -105641,7 +105641,7 @@
 /area/rogue/outdoors/woods/southeast)
 "xxD" = (
 /obj/structure/fluff/statue{
-	desc = "Dead stone designed to compel living minds. The engravement reads. 'Here rests the body of Brandon. Known for his love of ale and life. May he know nothing but peace beyond our realm.'"
+	desc = "无生命的石头，却为打动活人的心而雕琢。铭文写道：‘布兰登长眠于此。他热爱麦酒与生活，愿他在此世之外只享安宁。’"
 	},
 /obj/machinery/light/rogue/candle/floorcandle,
 /turf/open/floor/rogue/dirt,
@@ -105793,9 +105793,9 @@
 	icon_state = "tablewood3"
 	},
 /obj/item/roguekey/manor{
-	desc = "This key will open a Manor guest room.";
+	desc = "这把钥匙能打开庄园的一间客房。";
 	lockid = "counsil3";
-	name = "Counsillor's Room III Key"
+	name = "三号议员房间钥匙"
 	},
 /obj/item/candle/gold/lit{
 	pixel_x = 6;
@@ -105907,7 +105907,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "tower";
-	name = "Summoning circle"
+	name = "召唤法阵"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/magician)
@@ -105925,8 +105925,8 @@
 "xAb" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/cup/silver{
-	desc = "A pewter goblet, cheaper than silver, but with a similar shine!";
-	name = "pewter goblet";
+	desc = "一只锡制高脚杯，比银杯便宜，却有相似的光泽！";
+	name = "锡制高脚杯";
 	pixel_x = -10;
 	pixel_y = 4
 	},
@@ -106128,7 +106128,7 @@
 "xCg" = (
 /obj/structure/mannequin/male/female,
 /obj/item/clothing/suit/roguetown/shirt/robe/necromancer{
-	name = "dubious robes"
+	name = "可疑长袍"
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone_clear{
 	color = "#a1c0ff"
@@ -106197,8 +106197,8 @@
 /area/rogue/outdoors/exposed/town/keep)
 "xCU" = (
 /obj/structure/fluff/statue{
-	desc = "To remind us how precious lyfe is.";
-	name = "The Veiled Lady";
+	desc = "提醒我们生命何其珍贵。";
+	name = "蒙面女士";
 	pixel_y = 4
 	},
 /obj/structure/fluff/walldeco/church/line{
@@ -106228,7 +106228,7 @@
 	},
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /obj/structure/bars/pipe{
 	pixel_x = 41;
@@ -106538,7 +106538,7 @@
 /area/rogue/indoors/cave/northern)
 "xGC" = (
 /obj/structure/lever{
-	name = "Lockdown";
+	name = "封锁";
 	redstone_id = "forgotten_artificer"
 	},
 /turf/open/floor/rogue/herringbone,
@@ -107070,7 +107070,7 @@
 "xMk" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "manor";
-	name = "Feast Hall"
+	name = "宴会厅"
 	},
 /turf/open/floor/rogue/blocks{
 	icon_state = "bluestone"
@@ -107165,9 +107165,9 @@
 "xNw" = (
 /obj/effect/wisp/prestidigitation{
 	color = "#ffff00";
-	desc = "A small, fiery ball of light made up of mystical energy.";
+	desc = "由神秘能量构成的小小炽热光球。";
 	light_color = "#33ff00";
-	name = "Will-o'-the-wisp";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/grasscold,
@@ -107308,7 +107308,7 @@
 /area/rogue/outdoors/beach)
 "xOX" = (
 /obj/structure/bed/rogue/shit{
-	name = "makeshift bed"
+	name = "简易床铺"
 	},
 /mob/living/simple_animal/hostile/rogue/deepone,
 /turf/open/floor/rogue/hexstone,
@@ -107506,7 +107506,7 @@
 	pixel_y = 6
 	},
 /obj/item/reagent_containers/glass/bowl/iron{
-	name = "pewter bowl";
+	name = "锡碗";
 	pixel_x = 3;
 	pixel_y = 5;
 	sellprice = 30
@@ -107619,7 +107619,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "garrison";
-	name = "Secure section";
+	name = "管制区";
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
@@ -107729,7 +107729,7 @@
 "xTv" = (
 /obj/structure/bars{
 	color = "#755f48";
-	name = "rusted bars"
+	name = "锈蚀栅栏"
 	},
 /turf/open/water/swamp,
 /area/rogue/under/town/sewer)
@@ -107796,7 +107796,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "servant";
-	name = "Seneschal's Quarters"
+	name = "首席管家居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement/keep)
@@ -107820,7 +107820,7 @@
 "xUn" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "heir";
-	name = "Heir's Apartment";
+	name = "继承人住所";
 	locked = 1
 	},
 /turf/open/floor/rogue/wood,
@@ -108098,7 +108098,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "garrison";
-	name = "veterans house"
+	name = "老兵之家"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
@@ -108529,7 +108529,7 @@
 "ybC" = (
 /obj/structure/bars/grille{
 	density = 1;
-	name = "window bars"
+	name = "窗户栅栏"
 	},
 /obj/structure/roguewindow/openclose/reinforced{
 	opacity = 0
@@ -108674,7 +108674,7 @@
 "ydM" = (
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of wisdom";
+	name = "智慧之门";
 	redstone_id = "mazedungeonwisdom"
 	},
 /turf/open/floor/rogue/blocks,
@@ -108843,8 +108843,8 @@
 "yfF" = (
 /obj/structure/fluff/statue/psy{
 	pixel_y = 10;
-	desc = "An ancient statue depicting Psydon, the fallen God. Under its watchful gaze, I feel as though this small clearing in the forest is safe to rest in. I feel an overwhelming desire to do good in the face of evil in His name. This statue was meticulously hand-crafted a long time ago -- but why would someone put it here, in this awful place? Maybe it wasn't always so evil here. I wish He could help us.";
-	name = "STATUE OF PSYDON"
+	desc = "一尊描绘陨落之神普赛顿的古老雕像。在它警醒的注视下，我觉得这片林间空地可以安心休息。我强烈地渴望以祂之名，面对邪恶而行善。这尊雕像在很久以前被精心手工雕成——可为什么有人把它放在这种可怕的地方？也许这里并非一直如此邪恶。我希望祂能帮助我们。";
+	name = "普赛顿雕像"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/river)
@@ -109155,7 +109155,7 @@
 "yjb" = (
 /obj/structure/bars/passage{
 	max_integrity = 3000;
-	name = "gate of mercy";
+	name = "仁慈之门";
 	redstone_id = "mazedungeonmercy"
 	},
 /turf/open/floor/rogue/blocks,
