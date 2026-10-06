@@ -373,9 +373,9 @@
 			return
 
 /obj/item/grown/log/tree/stake
-	name = "木桩"
+	name = "尖木棍"
 	icon_state = "stake"
-	desc = "一截削尖的木头，非常适合用来穿刺。"
+	desc = "一根削尖的木棍，非常适合用来穿刺。"
 	grid_width = 32
 	grid_height = 64
 	force = 10
@@ -413,7 +413,7 @@
 		if(I.smeltresult == /obj/item/ingot/iron)
 			if(!do_after(user, 4 SECONDS, target = I))
 				return
-			to_chat(user, span_warning("[user]用木桩将[I]拆成了碎片！"))
+			to_chat(user, span_warning("[user]用尖木棍将[I]拆成了碎片！"))
 			new /obj/item/scrap(get_turf(I))
 			qdel(I)
 

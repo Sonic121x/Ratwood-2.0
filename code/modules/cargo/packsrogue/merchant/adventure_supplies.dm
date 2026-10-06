@@ -121,7 +121,7 @@
 
 
 /datum/supply_pack/rogue/adventure_supplies/mess_kit
-	name = "行军餐具"
+	name = "行军炊具"
 	cost = 60
 	contains = list(/obj/item/storage/gadget/messkit)
 

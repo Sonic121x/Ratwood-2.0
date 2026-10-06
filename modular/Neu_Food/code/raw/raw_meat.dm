@@ -61,7 +61,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/get_mechanics_examine(mob/user)
     . = ..()
     . += span_info("在桌上用刀、剁刀或匕首切生肉，可以把它变成肉糜。肉糜可用于高级菜谱，也能在炖菜的高汤里“以小博大”。")
-    . += span_info("副手持刀、匕首或木桩时，左键点击火焰即可烤制生肉。烤肉比烹煮更快，无需正规厨具也能进行，但失败的几率更高。")
+    . += span_info("副手持刀、匕首或尖木棍时，左键点击火焰即可烤制生肉。烤肉比烹煮更快，无需正规厨具也能进行，但失败的几率更高。")
 
 /* ............. Pork (Fatty Sprite) ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/fatty //pork

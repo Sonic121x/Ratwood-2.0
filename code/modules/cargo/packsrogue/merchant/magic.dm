@@ -36,7 +36,7 @@
 	contains = list(/obj/item/listenstone)
 
 /datum/supply_pack/rogue/magic/talkstone
-	name = "传话石"
+	name = "话石"
 	cost = 100
 	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
 

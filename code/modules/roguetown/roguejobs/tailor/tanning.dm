@@ -1,6 +1,6 @@
 /obj/machinery/tanningrack
 	name = "晾干架"
-	desc = "一个用于晾干肉类或将兽皮刮制成皮革的架子。可以借助木桩来移动它。"
+	desc = "一个用于晾干肉类或将兽皮刮制成皮革的架子。可以借助尖木棍来移动它。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dryrack"
 	var/obj/item/natural/hide/hide
@@ -75,7 +75,7 @@
 				new /obj/item/natural/hide/cured(get_turf(user))
 			return
 		else
-			to_chat(user, span_warning("我得先用木桩把它固定住，才能处理这张兽皮。"))
+			to_chat(user, span_warning("我得先用尖木棍把它固定住，才能处理这张兽皮。"))
 			return
 	if(istype(I, /obj/item/grown/log/tree/stake))
 		if(anchored)
