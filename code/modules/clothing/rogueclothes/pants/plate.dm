@@ -71,7 +71,7 @@
 /obj/item/clothing/under/roguetown/platelegs/matthios/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "护甲")
 
 /obj/item/clothing/under/roguetown/platelegs/matthios/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -92,7 +92,7 @@
 /obj/item/clothing/under/roguetown/platelegs/zizo/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
 /obj/item/clothing/under/roguetown/platelegs/zizo/dropped(mob/living/carbon/human/user)
 	. = ..()

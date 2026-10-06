@@ -18,11 +18,11 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 		mob.ghost_down()
 
 /client/proc/descend()
-	set name = "Journey to the Underworld"
+	set name = "前往冥界"
 	set category = "Spirit"
 
-	switch(alert("Descend to the Underworld?",,"Yes","No"))
-		if("Yes")
+	switch(alert("进入冥界吗？",,"是","否"))
+		if("是")
 			if(istype(mob, /mob/living/carbon/spirit))
 				return
 
@@ -41,12 +41,12 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 						GLOB.job_respawn_delays[src.ckey] = world.time + target_job.same_job_respawn_delay
 			verbs -= GLOB.ghost_verbs
 			mob.returntolobby()
-		if("No")
-			usr << "You have second thoughts."
+		if("否")
+			usr << "你改变了主意。"
 
 /client/proc/reenter_corpse()
 	set category = "Spirit"
-	set name = "Reenter Corpse"
+	set name = "返回尸体"
 	if(isobserver(mob))
 		var/mob/dead/observer/O = mob
 		O.reenter_corpse()
@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 
 	log_game("[key_name(usr)] respawned from underworld")
 
-	to_chat(src, span_info("Returned to lobby successfully."))
+	to_chat(src, span_info("已成功返回大厅。"))
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")

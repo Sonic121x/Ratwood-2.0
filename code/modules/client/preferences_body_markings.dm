@@ -8,12 +8,12 @@
 /datum/preferences/proc/handle_body_markings_topic(mob/user, href_list)
 	switch(href_list["preference"])
 		if("use_preset")
-			var/action = alert(usr, "Are you sure you want to use a preset (This will clear your existing markings)?", "Markings Preset", "Yes", "No")
-			if(action && action == "Yes")
+			var/action = alert(usr, "确定使用预设吗？这会清除你现有的斑纹。", "斑纹预设", "是", "否")
+			if(action && action == "是")
 				var/list/candidates = marking_sets_for_species(pref_species)
 				if(length(candidates) == 0)
 					return
-				var/desired_set = input(user, "Choose your new body markings:", "Character Preference") as null|anything in candidates
+				var/desired_set = input(user, "选择新的身体斑纹：", "角色偏好") as null|anything in candidates
 				if(desired_set)
 					var/datum/body_marking_set/BMS = GLOB.body_marking_sets[desired_set]
 					body_markings = assemble_body_markings_from_set(BMS, features, pref_species)
@@ -30,7 +30,7 @@
 			if(!body_markings[zone] || !body_markings[zone][name])
 				return
 			var/color = body_markings[zone][name]
-			var/new_color = color_pick_sanitized(user, "Choose your markings color:", "Character Preference","#[color]")
+			var/new_color = color_pick_sanitized(user, "选择斑纹颜色：", "角色偏好","#[color]")
 			if(new_color)
 				if(!body_markings[zone] || !body_markings[zone][name])
 					return
@@ -71,7 +71,7 @@
 					possible_candidates -= keyed_name
 			if(possible_candidates.len == 0)
 				return
-			var/desired_marking = input(user, "Choose your new marking to add:", "Character Preference") as null|anything in possible_candidates
+			var/desired_marking = input(user, "选择要添加的新斑纹：", "角色偏好") as null|anything in possible_candidates
 			if(desired_marking)
 				var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
 				if(!body_markings[zone])
@@ -95,7 +95,7 @@
 					possible_candidates -= keyed_name
 			if(possible_candidates.len == 0)
 				return
-			var/desired_marking = input(user, "Choose a marking to change the current one to:", "Character Preference") as null|anything in possible_candidates
+			var/desired_marking = input(user, "选择用于替换当前斑纹的斑纹：", "角色偏好") as null|anything in possible_candidates
 			if(desired_marking)
 				if(!body_markings[zone] || !body_markings[zone][changing_name])
 					return
@@ -111,7 +111,7 @@
 
 /datum/preferences/proc/print_body_markings_page()
 	var/list/dat = list()
-	dat += "Use a <b>markings preset</b>: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>  | <a href='?_src_=prefs;preference=reset_all_colors;task=change_marking'>Reset marking colors</a>"
+	dat += "使用<b>斑纹预设</b>: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>选择</a>  | <a href='?_src_=prefs;preference=reset_all_colors;task=change_marking'>重置斑纹颜色</a>"
 	/*
 	dat += "<table width='100%' align='center'>"
 	dat += " Mutant color #1:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a>"
@@ -158,18 +158,18 @@
 				var/color_line = " "
 				var/current_index = LAZYFIND(body_markings[zone], key)
 				var/color = body_markings[zone][key]
-				color_line = "<a href='?_src_=prefs;name=[key];key=[zone];preference=reset_color;task=change_marking'>R</a>"
+				color_line = "<a href='?_src_=prefs;name=[key];key=[zone];preference=reset_color;task=change_marking'>重置</a>"
 				color_line += "<a href='?_src_=prefs;name=[key];key=[zone];preference=change_color;task=change_marking'><span class='color_holder_box' style='background-color:["#[color]"]'></span></a>"
 				if(current_index < length(body_markings[zone]))
-					can_move_down = "<a href='?_src_=prefs;name=[key];key=[zone];preference=marking_move_down;task=change_marking'>Down</a>"
+					can_move_down = "<a href='?_src_=prefs;name=[key];key=[zone];preference=marking_move_down;task=change_marking'>下移</a>"
 				if(current_index > 1)
-					can_move_up = "<a href='?_src_=prefs;name=[key];key=[zone];preference=marking_move_up;task=change_marking'>Up</a>"
+					can_move_up = "<a href='?_src_=prefs;name=[key];key=[zone];preference=marking_move_up;task=change_marking'>上移</a>"
 				dat += "<tr style='vertical-align:top;'>"
 				dat += "<td>[can_move_up]</td>"
 				dat += "<td>[can_move_down]</td>"
 				dat += "<td><a href='?_src_=prefs;name=[key];key=[zone];preference=change_marking;task=change_marking'>[key]</a></td>"
 				dat += "<td>[color_line]</td>"
-				dat += "<td><a href='?_src_=prefs;name=[key];key=[zone];preference=remove_marking;task=change_marking'>Remove</a></td>"
+				dat += "<td><a href='?_src_=prefs;name=[key];key=[zone];preference=remove_marking;task=change_marking'>移除</a></td>"
 				dat += "</tr>"
 
 		if(!(body_markings[zone]) || body_markings[zone].len < MAXIMUM_MARKINGS_PER_LIMB)
@@ -178,7 +178,7 @@
 			dat += "<td> </td>"
 			dat += "<td> </td>"
 			dat += "<td> </td>"
-			dat += "<td><a href='?_src_=prefs;key=[zone];preference=add_marking;task=change_marking'>Add</a></td>"
+			dat += "<td><a href='?_src_=prefs;key=[zone];preference=add_marking;task=change_marking'>添加</a></td>"
 			dat += "</tr>"
 
 		dat += "</table>"
@@ -195,7 +195,7 @@
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += print_body_markings_page()
-	var/datum/browser/popup = new(user, "markings_cusotmization", "<div align='center'>Markings customization</div>", 650, 710)
+	var/datum/browser/popup = new(user, "markings_cusotmization", "<div align='center'>斑纹自定义</div>", 650, 710)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 

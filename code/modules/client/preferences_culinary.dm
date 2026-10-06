@@ -80,7 +80,7 @@
 			if(ispath(food_type, /obj/item/reagent_containers/food/snacks))
 				var/opposite_preference = (preference_type == CULINARY_FAVOURITE_FOOD) ? CULINARY_HATED_FOOD : CULINARY_FAVOURITE_FOOD
 				if(culinary_preferences[opposite_preference] == food_type)
-					to_chat(user, span_warning("You can't set the same item as both favorite and hated!"))
+					to_chat(user, span_warning("同一种食物不能同时设为最爱和厌恶！"))
 				else
 					culinary_preferences[preference_type] = food_type
 					user << browse(null, "window=food_selection")
@@ -91,7 +91,7 @@
 			if(ispath(drink_type, /datum/reagent/consumable))
 				var/opposite_preference = (preference_type == CULINARY_FAVOURITE_DRINK) ? CULINARY_HATED_DRINK : CULINARY_FAVOURITE_DRINK
 				if(culinary_preferences[opposite_preference] == drink_type)
-					to_chat(user, span_warning("You can't set the same drink as both favorite and hated!"))
+					to_chat(user, span_warning("同一种饮品不能同时设为最爱和厌恶！"))
 				else
 					culinary_preferences[preference_type] = drink_type
 					user << browse(null, "window=drink_selection")
@@ -105,14 +105,14 @@
 	var/current_hated_food = culinary_preferences[CULINARY_HATED_FOOD]
 	var/current_hated_drink = culinary_preferences[CULINARY_HATED_DRINK]
 
-	var/food_name = "None"
+	var/food_name = "无"
 	var/food_icon
 	if(current_food)
 		var/obj/item/food_instance = current_food
 		food_name = capitalize(initial(food_instance.name))
 		food_icon = get_cached_food_flat_icon(current_food)
 
-	var/drink_name = "None"
+	var/drink_name = "无"
 	var/drink_icon
 	if(current_drink)
 		var/datum/reagent/consumable/drink_instance = current_drink
@@ -120,14 +120,14 @@
 		var/drink_quality = initial(drink_instance.quality)
 		drink_icon = get_cached_drink_flat_icon(drink_quality)
 
-	var/hated_food_name = "None"
+	var/hated_food_name = "无"
 	var/hated_food_icon
 	if(current_hated_food)
 		var/obj/item/hated_food_instance = current_hated_food
 		hated_food_name = capitalize(initial(hated_food_instance.name))
 		hated_food_icon = get_cached_food_flat_icon(current_hated_food)
 
-	var/hated_drink_name = "None"
+	var/hated_drink_name = "无"
 	var/hated_drink_icon
 	if(current_hated_drink)
 		var/datum/reagent/consumable/hated_drink_instance = current_hated_drink
@@ -141,10 +141,10 @@
 	dat += ".culinary-text { vertical-align: middle; line-height: 32px; }"
 	dat += "</style>"
 
-	dat += "<div class='culinary-item'><b>Favourite Food:</b> <span class='culinary-icon'>[food_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_food;preference_type=[CULINARY_FAVOURITE_FOOD];task=change_culinary_preferences'>[encode_special_chars(food_name)]</a></span></div>"
-	dat += "<div class='culinary-item'><b>Favourite Drink:</b> <span class='culinary-icon'>[drink_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_drink;preference_type=[CULINARY_FAVOURITE_DRINK];task=change_culinary_preferences'>[encode_special_chars(drink_name)]</a></span></div>"
-	dat += "<div class='culinary-item'><b>Hated Food:</b> <span class='culinary-icon'>[hated_food_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_hated_food;preference_type=[CULINARY_HATED_FOOD];task=change_culinary_preferences'>[encode_special_chars(hated_food_name)]</a></span></div>"
-	dat += "<div class='culinary-item'><b>Hated Drink:</b> <span class='culinary-icon'>[hated_drink_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_hated_drink;preference_type=[CULINARY_HATED_DRINK];task=change_culinary_preferences'>[encode_special_chars(hated_drink_name)]</a></span></div>"
+	dat += "<div class='culinary-item'><b>最爱的食物:</b> <span class='culinary-icon'>[food_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_food;preference_type=[CULINARY_FAVOURITE_FOOD];task=change_culinary_preferences'>[encode_special_chars(food_name)]</a></span></div>"
+	dat += "<div class='culinary-item'><b>最爱的饮品:</b> <span class='culinary-icon'>[drink_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_drink;preference_type=[CULINARY_FAVOURITE_DRINK];task=change_culinary_preferences'>[encode_special_chars(drink_name)]</a></span></div>"
+	dat += "<div class='culinary-item'><b>厌恶的食物:</b> <span class='culinary-icon'>[hated_food_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_hated_food;preference_type=[CULINARY_HATED_FOOD];task=change_culinary_preferences'>[encode_special_chars(hated_food_name)]</a></span></div>"
+	dat += "<div class='culinary-item'><b>厌恶的饮品:</b> <span class='culinary-icon'>[hated_drink_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_hated_drink;preference_type=[CULINARY_HATED_DRINK];task=change_culinary_preferences'>[encode_special_chars(hated_drink_name)]</a></span></div>"
 
 	return dat
 
@@ -164,10 +164,10 @@
 
 		var/display_name = capitalize(food_name)
 		var/food_icon = get_cached_food_flat_icon(food_type)
-		dat += "<div class='food-item'><span class='food-icon'>[food_icon]</span> <span class='food-text'><a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];preference_type=[preference_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [food_faretype])</span></div>"
+		dat += "<div class='food-item'><span class='food-icon'>[food_icon]</span> <span class='food-text'><a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];preference_type=[preference_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a>（品质: [food_faretype]）</span></div>"
 
 	var/title = (preference_type == CULINARY_FAVOURITE_FOOD) ? "Select Favourite Food" : "Select Hated Food"
-	var/datum/browser/popup = new(user, "food_selection", "<div align='center'>[title]</div>", 400, 600)
+	var/datum/browser/popup = new(user, "food_selection", "<div align='center'>[title == "Select Favourite Food" ? "选择最爱的食物" : "选择厌恶的食物"]</div>", 400, 600)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 
@@ -187,10 +187,10 @@
 
 		var/display_name = capitalize(drink_name)
 		var/drink_icon = get_cached_drink_flat_icon(drink_quality)
-		dat += "<div class='drink-item'><span class='drink-icon'>[drink_icon]</span> <span class='drink-text'><a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];preference_type=[preference_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [drink_quality])</span></div>"
+		dat += "<div class='drink-item'><span class='drink-icon'>[drink_icon]</span> <span class='drink-text'><a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];preference_type=[preference_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a>（品质: [drink_quality]）</span></div>"
 
 	var/title = (preference_type == CULINARY_FAVOURITE_DRINK) ? "Select Favourite Drink" : "Select Hated Drink"
-	var/datum/browser/popup = new(user, "drink_selection", "<div align='center'>[title]</div>", 400, 600)
+	var/datum/browser/popup = new(user, "drink_selection", "<div align='center'>[title == "Select Favourite Drink" ? "选择最爱的饮品" : "选择厌恶的饮品"]</div>", 400, 600)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 
@@ -198,7 +198,7 @@
 	var/list/dat = list()
 	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
 	dat += print_culinary_page(user)
-	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>Culinary Preferences</div>", 345, 215)
+	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>饮食偏好</div>", 345, 215)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 
