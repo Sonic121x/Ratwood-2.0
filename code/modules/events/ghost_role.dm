@@ -62,7 +62,7 @@
 	var/list/mob/regular_candidates
 	// don't get their hopes up
 	if(priority_candidates.len < minimum_required)
-		regular_candidates = pollGhostCandidates("Do you wish to be considered for the special role of '[role_name]'?", jobban, gametypecheck, be_special)
+		regular_candidates = pollGhostCandidates("你想报名成为特殊角色“[role_name]”吗？", jobban, gametypecheck, be_special)
 	else
 		regular_candidates = list()
 

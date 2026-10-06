@@ -304,7 +304,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/action_buttons_screen_locs = list()
 
 	var/domhand = 2
-	var/nickname = "Please Change Me"
+	var/nickname = "请修改昵称"
 	var/highlight_color = "#FF0000"
 	var/datum/charflaw/charflaw
 	// Multiple vice selection (up to 6, slot 1 falls back to No Flaw if cleared)
@@ -808,8 +808,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>声音颜色: </b><a href='?_src_=prefs;preference=voice;task=input'>更改</a>"
 			dat += "<br><b>昵称颜色: </b> </b><a href='?_src_=prefs;preference=highlight_color;task=input'>更改</a>"
 			dat += "<br><b>语音音高: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
-			dat += "<br><b>口音:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
-			dat += "<br><b>措辞习惯:</b> <a href='?_src_=prefs;preference=char_mannerism;task=input'>[char_mannerism]</a>"
+			dat += "<br><b>口音:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent == "No accent" ? "无口音" : char_accent]</a>"
+			dat += "<br><b>措辞习惯:</b> <a href='?_src_=prefs;preference=char_mannerism;task=input'>[char_mannerism == "No mannerism" ? "无特殊措辞习惯" : char_mannerism]</a>"
 			dat += "<br><b>特征:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>更改</a>"
 			dat += "<br><b>图像缩放:</b><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a>"
 			dat += "<br><b>斑纹:</b> <a href='?_src_=prefs;preference=markings;task=menu'>更改</a>"

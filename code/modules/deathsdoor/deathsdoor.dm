@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(deaths_door_entries,list())
 GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 
 /obj/structure/deaths_door_shrine
-	name = "A Way Out"
+	name = "出路"
 	desc = "无论以何种方式，这诡异的宁静终将结束。"
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "doorway"
@@ -89,7 +89,7 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 			label = "[get_area(T)]"
 		named[label] = T
 
-	var/choice = input(user, "选择一条离开死亡边缘的道路：", "Necra's Way") \
+	var/choice = input(user, "选择一条离开死亡边缘的道路：", "内克拉之路") \
 		as null|anything in named
 	if(!choice)
 		return null
@@ -279,7 +279,7 @@ GLOBAL_VAR_INIT(underworld_strands, 0)
 	return pick(candidates)
 
 /obj/structure/waywardspirit
-	name = "A Wayward Soul"
+	name = "迷途的灵魂"
 	desc = "迷失于死亡的宁静，永不归来。"
 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
 	icon_state = "hollow"

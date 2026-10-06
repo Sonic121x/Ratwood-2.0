@@ -1,10 +1,10 @@
 /datum/customizer/organ/tusks
 	abstract_type = /datum/customizer/organ/tusks
-	name = "Tusks"
+	name = "獠牙"
 
 /datum/customizer_choice/organ/tusks
 	abstract_type = /datum/customizer_choice/organ/tusks
-	name = "Tusks"
+	name = "獠牙"
 	organ_type = /obj/item/organ/tusks
 	organ_slot = ORGAN_SLOT_TUSKS
 
@@ -14,7 +14,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tusks/humanoid
-	name = "Tusks"
+	name = "獠牙"
 	organ_type = /obj/item/organ/tusks/humanoid
 	generic_random_pick = TRUE
 	sprite_accessories = list(
