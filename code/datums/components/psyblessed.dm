@@ -93,7 +93,7 @@
 		I.max_integrity += round(added_int * blessing_divisor)
 		I.obj_integrity = I.max_integrity
 		I.wdefense += round(added_def * blessing_divisor)
-		I.name = "blessed [I.name]"
+		I.name = "受祝福的[I.name]"
 		I.AddComponent(/datum/component/metal_glint)
 
 // This is called right after the object is fixed and all of its force / wdefense values are reset to initial. We re-apply the relevant bonuses.

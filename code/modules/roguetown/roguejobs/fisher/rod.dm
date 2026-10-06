@@ -176,8 +176,8 @@
 		M.update_inv_hands()
 
 /obj/item/fishingrod/blacksteel
-	name = "blacksteel fishing rod"
-	desc = "G'morning! Nice dae for fishin', ain't it? Hu-hah!"
+	name = "黑钢鱼竿"
+	desc = "早上好！真是钓鱼的好天气，对吧？哈哈！"
 	icon_state = "blacksteelrod"
 	max_integrity = 333
 
