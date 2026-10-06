@@ -15,7 +15,7 @@
 // Bronze Golem Pack: Both Bronze Arms
 // For those who have replaced both arms with mechanical prosthetics
 /datum/virtue/pack/bronzegolem
-	name = "青铜魔像（-3 TRI）"
+	name = "青铜魔像（-3 凯旋）"
 	desc = "出于财富、厄运，或也许只是实验，我的双臂都被青铜义肢所取代。我半人半机，是一具行走着的工艺明证。"
 	triumph_cost = 3
 	granted_virtues = list(
@@ -30,7 +30,7 @@
 // Enchanting Performer Pack: Socialite + Performer + Second Voice
 // For entertainers, bards, and charismatic performers
 /datum/virtue/pack/enchanter
-	name = "迷人演者（-6 TRI）"
+	name = "迷人演者（-6 凯旋）"
 	desc = "无论舞台还是沙龙，我都是其中的主人。美丽、多才，也能凭借声音与魅力化身万千人物。我的表演令人沉醉，而我的社交风度足以打开每一扇门。"
 	triumph_cost = 6
 	granted_virtues = list(
@@ -44,7 +44,7 @@
 // Traveling Scholar Pack: Linguist + Rich and Shrewd + Equestrian
 // For worldly scholars who have traveled extensively and accumulated wealth and knowledge
 /datum/virtue/pack/travelingscholar
-	name = "游历学者（-15 TRI）"
+	name = "游历学者（-15 凯旋）"
 	desc = "远方旅途让我在财富与见识上都变得富足。我会说多种语言，懂得万物价值，也能熟练骑乘。世界便是我的图书馆，每一条道路都在教我新的东西。"
 	triumph_cost = 15
 	granted_virtues = list(
@@ -59,7 +59,7 @@
 
 // Scrappy Survivor Pack: Cunning Provisioner + Forester + Feral Appetite
 /datum/virtue/pack/scrappysurvivor
-	name = "顽强求生者（-10 TRI）"
+	name = "顽强求生者（-10 凯旋）"
 	desc = "我熬过了艰难岁月。贫穷、饥荒或流放都教会了我如何靠手头之物活下去。我会捕鱼、耕种、采集，而最重要的是，我什么都吃得下。变质口粮？生肉？无所谓，我吃完照样继续前行。"
 	triumph_cost = 10
 	granted_virtues = list(
@@ -72,7 +72,7 @@
 
 // Trusted Housekeeper Pack: Resident + Cunning Provisioner
 /datum/virtue/pack/housekeeper
-	name = "可靠管家（-9 TRI）"
+	name = "可靠管家（-9 凯旋）"
 	desc = "我已在这座城市的各个宅邸中服务多年，负责烹饪、清扫与管理储备。我熟悉每一条街道，在此也有自己的住处，而我的厨艺更是无人能及。城市信任我，我也知道如何把日子过下去。"
 	triumph_cost = 9
 	granted_virtues = list(
@@ -85,7 +85,7 @@
 
 // Broken Soul Pack: Tolerant + Deadened
 /datum/virtue/pack/brokensoul
-	name = "破碎灵魂（-2 TRI）"
+	name = "破碎灵魂（-2 凯旋）"
 	desc = "生活待我残酷。我的外貌令旁人退避三舍，我学会了承受多数人无法承受之物，而我麻木得太久，几乎已记不起情感原本是什么样子。我是靠苦难存活至今的活生生证明。"
 	triumph_cost = 2
 	granted_virtues = list(
