@@ -225,7 +225,7 @@
 
 /obj/item/clothing/shoes/roguetown/sandals/ancient/decrepit
 	name = "残破甲胄凉鞋"
-	desc = "破旧的青铜高底凉鞋向上卷起，托住双足。它曾踏过的海滩早已不复存在；珍珠般的沙地早在普赛顿彗星撞击时化为了琉璃。"
+	desc = "破旧的青铜高底凉鞋向上卷起，托住双足。它曾踏过的海滩早已不复存在；珍珠般的沙地早在彗星西昂撞击时化为了琉璃。"
 	max_integrity = 50
 	color = "#bb9696"
 	anvilrepair = null
@@ -256,7 +256,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	name = "硬化皮靴"
-	desc = "由熟皮缝制而成的结实靴子。样式体面、包裹牢靠，每一步都会发出令人满足的吱呀声。"
+	desc = "由鞣制皮革缝制而成的结实靴子。样式体面、包裹牢靠，每一步都会发出令人满足的吱呀声。"
 	icon_state = "alboots"
 	item_state = "alboots"
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)	//Same as gloves
@@ -268,7 +268,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short
 	name = "礼靴"
-	desc = "一双用熟皮缝成的结实靴子。比常见款更短，适合日常穿着和决斗。"
+	desc = "一双用鞣制皮革缝成的结实靴子。比常见款更短，适合日常穿着和决斗。"
 	icon_state = "albootsb"
 	item_state = "albootsb"
 
@@ -419,7 +419,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/zizo
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	name = "阿万廷战靴"
+	name = "阿凡泰因战靴"
 	desc = "<font color='A50021'>孤寂而平坦的沙海，向远方无尽延伸。</font> </br>‎<font color='FF0000'>向现实的边缘进军，把它的尸骸抛在身后。</font>"
 	icon_state = "zizoboots"
 	armor = ARMOR_ASCENDANT
@@ -435,7 +435,7 @@
 	qdel(src)
 
 /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo
-	name = "阿万廷织纹铁鞋"
+	name = "阿凡泰因织纹铁鞋"
 	desc = "<font color='A50021'>孤寂而平坦的沙海，向远方无尽延伸。</font> </br>‎<font color='FF0000'>向现实的边缘进军，把它的尸骸抛在身后。</font>"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_ASCENDANT

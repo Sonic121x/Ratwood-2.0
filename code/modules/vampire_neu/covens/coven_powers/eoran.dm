@@ -1,5 +1,5 @@
 /datum/coven/eora
-	name = "伊奥拉之拥"
+	name = "伊欧拉之拥"
 	desc = "受爱情、家庭与艺术女神祝福，这些吸血鬼发展出了巩固羁绊、激发美感与治愈心灵创伤的能力。"
 	icon_state = "eora"
 	power_type = /datum/coven_power/eora
@@ -147,7 +147,7 @@
 //BEAUTY'S RESTORATION
 /datum/coven_power/eora/beautys_restoration
 	name = "容貌修复"
-	desc = "引导伊奥拉的力量，恢复容貌并治愈毁容的创伤。"
+	desc = "引导伊欧拉的力量，恢复容貌并治愈毁容的创伤。"
 
 	level = 4
 	research_cost = 1
@@ -167,7 +167,7 @@
 
 	var/mob/living/carbon/human/patient = target
 
-	to_chat(owner, span_notice("你将伊奥拉的修复之力引导进[patient]体内。"))
+	to_chat(owner, span_notice("你将伊欧拉的修复之力引导进[patient]体内。"))
 	to_chat(patient, span_purple("你感到神圣的力量流遍全身，恢复了你天生的美貌！"))
 
 	// Visual effect

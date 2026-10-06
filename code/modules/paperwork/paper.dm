@@ -133,7 +133,7 @@
 /obj/item/paper/proc/append_writer_chunk(mob/living/carbon/human/user, sign_after = FALSE)
 	var/obj/item/P = get_writer_tool(user)
 	if(!can_use_writer(user, P))
-		to_chat(user, span_warning("我需要手持羽毛笔或刺棘才能书写。"))
+		to_chat(user, span_warning("我需要手持羽毛或刺棘才能书写。"))
 		return FALSE
 
 	var/chunk_input = writer_draft || ""
@@ -295,7 +295,7 @@
 
 /obj/item/paper/examine()
 	. = ..()
-	. += span_info("可用羽毛笔在上面书写。你还可以把两张都写有内容的纸合成为双页手稿，之后可制成书本。")
+	. += span_info("可用羽毛在上面书写。你还可以把两张都写有内容的纸合成为双页手稿，之后可制成书本。")
 
 /obj/item/paper/get_real_price()
 	if(info)
@@ -711,7 +711,7 @@
 			return
 		var/obj/item/i = usr.get_active_held_item()	// Check implement first so the prompt only opens when write-capable.
 		if(!istype(i, /obj/item/natural/thorn) && !istype(i, /obj/item/natural/feather))
-			to_chat(usr, span_warning("我需要手持羽毛笔或刺棘才能书写。"))
+			to_chat(usr, span_warning("我需要手持羽毛或刺棘才能书写。"))
 			return
 		var/t =  stripped_multiline_input("输入你想写的内容：", "书写", no_trim=TRUE)
 		if(!t || !usr.canUseTopic(src, BE_CLOSE, literate))

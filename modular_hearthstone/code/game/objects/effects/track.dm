@@ -80,7 +80,7 @@
 #define ANALYSIS_PERFECT 5
 
 /obj/effect/track
-	name = "\improper 痕迹"
+	name = "\proper 痕迹"
 	desc = null
 	anchored = TRUE
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF

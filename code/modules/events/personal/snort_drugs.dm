@@ -44,8 +44,8 @@
 	var/datum/objective/snort_drugs/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("Baotha demands chemical ecstasy! Snort drugs to earn Baotha's favor!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_notice("巴奥莎渴求药物带来的狂喜！吸食毒品，赢得巴奥莎的青睐！"))
 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

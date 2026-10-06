@@ -54,7 +54,7 @@
 	contains = list(/obj/item/paper)
 
 /datum/supply_pack/rogue/Supplies/quill
-	name = "羽毛笔"
+	name = "羽毛"
 	cost = 2
 	contains = list(/obj/item/natural/feather)
 

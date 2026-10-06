@@ -175,7 +175,7 @@
 
 /obj/item/roguegem/amber
 	name = "琥珀"
-	desc = "一块石化的阳光。人们相信它是第一轮太阳碎裂时洒落的残片，因此在阿斯特拉信徒中价值连城。拉阿内希人有时甚至会拿它的碎片代替玛蒙作为货币。"
+	desc = "一块石化的阳光。人们相信它是第一轮太阳碎裂时洒落的残片，因此在阿斯特拉塔信徒中价值连城。拉阿内希人有时甚至会拿它的碎片代替玛门作为货币。"
 	icon = 'icons/roguetown/gems/gem_amber.dmi'
 	icon_state = "raw_amber"
 	sellprice = SELLPRICE_AMBER
@@ -236,7 +236,7 @@
 	)
 
 /obj/item/roguegem/amethyst/naledi
-	name = "纳勒迪阿米索兹"
+	name = "纳莱迪阿米索兹石"
 	desc = "一块深薰衣草色的晶体，噼啪作响地涌动着魔法能量。对门徒而言，它也许只是一次异乡朝圣带回的纪念物；但对旅者来说，它却是将武技与奥术相融的地脉媒介。</br>拥有奥术潜质者可将这颗宝石嵌入尚未完成的法术书中，以此回忆起更多法术。"
 
 /obj/item/roguegem/random

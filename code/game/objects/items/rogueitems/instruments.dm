@@ -352,12 +352,12 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 			// quickly just play the last song we chose if we do this in combat
 			var/quickfile = song_list[last_played]
 			if(quickfile)
-				user.balloon_alert(user, "quick-playing last song! (combat)")
+				user.balloon_alert(user, "快速演奏上一首曲目！（战斗）")
 				soundloop.set_mid_sounds(list(quickfile))
 				soundloop.volume = clamp(curvol, 10, 100)
 				soundloop.repeat_sound = loop_enabled
 				if(!soundloop.start(user))
-					to_chat(user, span_warning("Could not play - no sound channels available. Try again in a moment."))
+					to_chat(user, span_warning("无法演奏，当前没有可用的声音通道。请稍后再试。"))
 					return
 				playing = TRUE
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 				if(user.mind && user.get_skill_level(/datum/skill/misc/music) >= 4)
 					options[" "] = " "
 					options["上传新曲"] = "upload"
-				choice = input(user, "要演奏哪首曲子？", "音乐", name) as null|anything in options
+				choice = tgui_input_list(user, "要演奏哪首曲子？", "音乐", options, name, strict_modern = TRUE)
 				if(!choice || !user)
 					return
 				if(choice == " ")
@@ -501,7 +501,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 		if(src.playing)
 			to_chat(user, span_warning("先停止演奏。"))
 			return
-		var/song_choice = input(user, "为这个乐队位置选择你的曲目", "乐队大厅", name) as null|anything in song_list
+		var/song_choice = tgui_input_list(user, "为这个乐队位置选择你的曲目", "乐队大厅", song_list, name, strict_modern = TRUE)
 		if(!song_choice)
 			return
 		var/song_file = song_list[song_choice]
@@ -543,7 +543,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 		var/datum/instrument_band_lobby/chosen_lobby = search_results[picked_lobby_name]
 		if(!chosen_lobby)
 			return
-		var/join_song_choice = input(user, "为这个乐队位置选择你的曲目", "乐队大厅", name) as null|anything in song_list
+		var/join_song_choice = tgui_input_list(user, "为这个乐队位置选择你的曲目", "乐队大厅", song_list, name, strict_modern = TRUE)
 		if(!join_song_choice)
 			return
 		var/join_song = song_list[join_song_choice]
@@ -564,7 +564,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 			to_chat(user, span_warning("你并没有拥有一个乐队大厅。"))
 			return
 		if(!curfile)
-			var/owner_song_choice = input(user, "为这个乐队位置选择你的曲目", "乐队大厅", name) as null|anything in song_list
+			var/owner_song_choice = tgui_input_list(user, "为这个乐队位置选择你的曲目", "乐队大厅", song_list, name, strict_modern = TRUE)
 			if(!owner_song_choice)
 				return
 			curfile = song_list[owner_song_choice]
@@ -783,8 +783,8 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	"We Shall Sail Together" = 'sound/music/instruments/hurdy (6).ogg')
 
 /obj/item/rogue/instrument/ztratocaster
-	name = "ztratocaster"
-	desc = "A strange guitar-like instrument with two necks, and a body sharp enough to shred."
+	name = "齐特拉卡斯特琴"
+	desc = "一件形似吉他的奇怪乐器，有两个琴颈，琴身锋利得足以撕裂东西。"
 	icon_state = "ztratocaster"
 	force = 15
 	force_wielded = 35
@@ -828,7 +828,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 
 /obj/item/rogue/instrument/psyaltery
 	name = "圣咏琴"
-	desc = "一种传统箱式齐特琴或箱式竖琴，可用手拨、拨片或小槌演奏。它们尤其常与神圣存在、亚斯玛以及礼拜仪式联系在一起。"
+	desc = "一种传统箱式齐特琴或箱式竖琴，可用手拨、拨片或小槌演奏。它们尤其常与神圣存在、亚斯玛尔以及礼拜仪式联系在一起。"
 	icon_state = "psyaltery"
 	song_list = list(
 	"Disciples Tower" = 'sound/music/instruments/psyaltery (1).ogg',
@@ -844,7 +844,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 
 /obj/item/rogue/instrument/shamisen
 	name = "三味线"
-	desc = "三味线，字面意为“三根弦”，是一种卡赞郡风格的弦乐器，通常借助拨子演奏。"
+	desc = "三味线，字面意为“三根弦”，是一种风郡风格的弦乐器，通常借助拨子演奏。"
 	icon_state = "shamisen"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'

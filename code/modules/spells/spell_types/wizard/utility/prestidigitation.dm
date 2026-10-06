@@ -33,7 +33,7 @@
 		hand.apply_mote_color(hand.default_mote_color)
 
 /obj/item/melee/touch_attack/prestidigitation
-	name = "\improper 戏法之触"
+	name = "\proper 戏法之触"
 	desc = "你回想起自己学过的如下咒式：\n \
 	<b>触碰</b>：用奥术之力把物件或某样东西擦拭干净，如同肥皂一般。也被称作“学徒之苦”。\n \
 	<b>推搡</b>：在你选定的物品上引出一点火星（若对地面使用，则在你面前），可点燃易燃物以及火把、提灯、营火等事物。 \n \

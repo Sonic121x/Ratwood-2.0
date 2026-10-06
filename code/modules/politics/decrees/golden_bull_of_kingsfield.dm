@@ -1,19 +1,19 @@
 /datum/decree/golden_bull
 	id = DECREE_GOLDEN_BULL
-	name = "The Golden Bull of Kingsfield"
+	name = "王田金玺诏书"
 	category = DECREE_CATEGORY_ANCIENT
-	mechanical_text = "Burghers and residents are capped at 25% balance-rate on taxes/fines, with daily fine ceiling 50m and a poll-tax cap."
-	flavor_text = {"This Golden Bull of Kingsfield, sealed under Astrata's Sun and with Ravox as witness, witnesseth the ancient compact between the Crown of the Vale and the makers of her wealth.
+	mechanical_text = "市民与居民的税款及罚款最高按余额的25%计收，每日罚款上限为50m，人头税亦设上限。"
+	flavor_text = {"本《王田金玺诏书》，于阿斯特拉塔的太阳之下钤印，以拉沃克斯为见证，记录谷地王室与财富创造者之间的古老契约。
 
-It is attested, by name of the Grand Duke of the Vale, and by the Councils of the Notables and Burghers of Rotwood Vale duly assembled to set this seal, that the said Councils do hereby assent, in this yil and in perpetuity, that the Crown shall levy upon the Burghers no greater portion than one quarter part of their nervelock account, and shall exact in fine no more than fifty mammon by the day, nor poll-tax beyond twenty mammon by the day; such being the limits deemed meet in time of peace, of war, and of necessite alike. Beyond these bounds no Burgher shall be taxed, nor deprived of their wealth, save by the law of the land.
+以谷地大公之名，并由腐木谷名流与市民议会正式集会钤印，特此确认：议会同意自本年至永久，王室向市民征收的款项不得超过其神经锁账户的四分之一，每日罚金不得超过五十玛门币，每日人头税不得超过二十玛门币；此限额适用于和平、战争及紧急之时。除依本地法律外，不得超出这些界限对市民征税或剥夺其财富。
 
-In return, the Burghers of the Vale shall undertake to furnish, for the common defense of the Realm against pirates, brigands, and such other malefactors as do threaten the peace, a yearly Budget - the sum collected from amongst their members according to their wealth, and apportioned by their own assembly.
+作为回报，谷地市民应每年提供预算，用于共同保卫王国，抵御海盗、匪徒及其他威胁和平的恶人；款项按成员财富募集，由市民自身议会分配。
 
-And should the Crown exceed these ratified bounds, or otherwise violate this Charter, the Burghers are absolved of their obligation, that the Realm may know the cost of breaking faith with its makers of wealth.
+若王室超出此批准的界限，或以其他方式违反特许状，市民便免除该义务，使王国知晓背弃财富创造者的代价。
 
-Yeven under the seal of the Crown."}
-	revoke_text = "The %RULER% has suspended the Golden Bull of Kingsfield. The burghers stand exposed to the Crown's full levy, and the outraged merchants shall contribute no more to the common defense of the Realm."
-	restore_text = "The %RULER% has restored the Golden Bull of Kingsfield. The compact stands renewed, and the burghers resume their tribute to the common defense."
+钤王室之印颁行。"}
+	revoke_text = "%RULER%已暂停《王田金玺诏书》。市民将全额承担王室征税，愤怒的商人也不再为王国的共同防务出资。"
+	restore_text = "%RULER%已恢复《王田金玺诏书》。协约重新生效，市民再次为共同防务进贡。"
 
 /datum/decree/golden_bull/roll_initial_year()
 	return CALENDAR_EPOCH_YEAR - rand(40, 100)

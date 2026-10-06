@@ -30,7 +30,7 @@
 
 /datum/flesh_quirk/obedient/apply_language_quirk(mob/speaker, message, response_time, datum/component/chimeric_heart_beast/beast)
 	var/list/effects = list()
-	var/last_char = copytext(message, -1)
+	var/last_char = replacetext(replacetext(replacetext(replacetext(copytext_char(message, -1), "？", "?"), "！", "!"), "。", "."), "．", ".")
 
 	effects["punctuation_override"] = "!"
 
@@ -51,7 +51,7 @@
 
 /datum/flesh_quirk/curious/apply_language_quirk(mob/speaker, message, response_time, datum/component/chimeric_heart_beast/beast)
 	var/list/effects = list()
-	var/last_char = copytext(message, -1)
+	var/last_char = replacetext(replacetext(replacetext(replacetext(copytext_char(message, -1), "？", "?"), "！", "!"), "。", "."), "．", ".")
 
 	effects["punctuation_override"] = "?"
 
@@ -157,7 +157,7 @@
 
 /datum/flesh_quirk/repetitive
 	name = "重复"
-	description = "常会连续两次重复相近的话题，之后才可能中断。"
+	description = "有较高概率再次提出同一道题，可能连续重复多次。"
 	quirk_type = QUIRK_BEHAVIOR
 	color = "#808080"
 	required_item = /obj/item/alch/paris
@@ -177,7 +177,7 @@
 
 /datum/flesh_quirk/timid/apply_language_quirk(mob/speaker, message, response_time, datum/component/chimeric_heart_beast/beast)
 	var/list/effects = list()
-	var/last_char = copytext(message, -1)
+	var/last_char = replacetext(replacetext(replacetext(replacetext(copytext_char(message, -1), "？", "?"), "！", "!"), "。", "."), "．", ".")
 
 	//Honestly, they're happy if you say nothing at all :)
 	effects["punctuation_override"] = " "
@@ -193,7 +193,7 @@
 
 /datum/flesh_quirk/ambitious
 	name = "雄心勃勃"
-	description = "对有头衔或权势的人回应更好，也可能被冒犯。对低智心兽无效。"
+	description = "偏好具有贵族特质的答题者；其他答题者会被扣分。仅在心兽语言等级2及以上生效。"
 	rarity = 1
 	quirk_type = QUIRK_LANGUAGE
 	color = "#b22222"
@@ -221,7 +221,7 @@
 
 /datum/flesh_quirk/forgetful
 	name = "健忘"
-	description = "它可能会忘记你的回答，不管答得多好都给出负面结果。智力越高越不容易触发，5个词以内的回答不会被忘。"
+	description = "它可能会忘记你的回答，不管答得多好都给出负面结果。心兽语言等级越高越不容易触发。回答长度不超过5时不会被忘（中文按字、英文按词，中英混合累计）。"
 	quirk_type = QUIRK_LANGUAGE
 	var/forget_chance = 25
 	color = "#d3d3d3"
@@ -230,7 +230,7 @@
 /datum/flesh_quirk/forgetful/apply_language_quirk(mob/speaker, message, response_time, datum/component/chimeric_heart_beast/beast)
 	var/list/effects = list()
 
-	var/word_count = length(splittext(message, " "))
+	var/word_count = length_char(replacetext(replacetext(html_decode(message), regex(@"[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*", "g"), "a"), regex(@"[^a\u3007\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\U020000-\U03FFFF]", "g"), ""))
 	if(word_count < 6)
 		return effects
 
@@ -477,7 +477,7 @@
 
 /datum/flesh_quirk/stubborn
 	name = "固执"
-	description = "常会否定那些不够相近的回答，而且通常会连续发生两次。"
+	description = "表现得固执，但当前不会额外改变答题评分。"
 	conflicting_quirks = list(/datum/flesh_quirk/obedient)
 	quirk_type = QUIRK_LANGUAGE
 	var/last_successful_score = null

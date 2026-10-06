@@ -232,9 +232,9 @@
 			H.update_damage_overlays()
 
 			if(M == user)
-				user.visible_message(span_notice("[user] hammers [user.p_their()] [affecting.name]."), span_notice("I hammer my [affecting.name]."))
+				user.visible_message(span_notice("[user]敲打着[user.p_their()][affecting.name]。"), span_notice("我敲打着自己的[affecting.name]。"))
 			else
-				user.visible_message(span_notice("[user] hammers [M]'s [affecting.name]."), span_notice("I hammer [M]'s [affecting.name]."))
+				user.visible_message(span_notice("[user]敲打着[M]的[affecting.name]。"), span_notice("我敲打着[M]的[affecting.name]。"))
 		if(affecting.get_damage() == 0 && !length(affecting.wounds))//if the bodypart has no damage nor wounds on it...
 			if(M == user)
 				to_chat(user, span_warning("我的[affecting.name]并没有受损。"))

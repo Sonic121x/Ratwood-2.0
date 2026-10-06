@@ -1362,10 +1362,10 @@
 	H.drop_all_held_items()
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending/lesser)
 
-	var/helmets = list("巴布塔盔 - 带面罩", "蛙嘴盔 - 强化护颈", "尖顶盔", "狼面盔 - 带面罩")
+	var/helmets = list("巴尔布特盔 - 带面罩", "蛙嘴盔 - 强化护颈", "尖顶盔", "狼面盔 - 带面罩")
 	var/helmet_choice = input(H, "选择你的头盔。", "来自那位女士的庇护") as anything in helmets
 	switch(helmet_choice)
-		if("巴布塔盔 - 带面罩")
+		if("巴尔布特盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
 		if("蛙嘴盔 - 强化护颈")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo
@@ -1661,7 +1661,7 @@
 		to_chat(target, span_userdanger("难以想象的剧痛！"))
 		target.emote("Agony")
 		target.apply_damage(100, BURN, BODY_ZONE_HEAD)
-		loc.visible_message(span_cult("[target]胆敢违抗马蒂奥斯，在符文上剧烈挣扎、扭动。"))
+		loc.visible_message(span_cult("[target]胆敢违抗马西奥斯，在符文上剧烈挣扎、扭动。"))
 
 
 
