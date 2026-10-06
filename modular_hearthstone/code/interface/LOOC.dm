@@ -61,7 +61,7 @@
 		return
 
 	if(isobserver(mob) && !(holder && istype(mob, /mob/dead/observer/admin)))
-		to_chat(src, span_danger("I cannot use SLOOC while ghosted."))
+		to_chat(src, span_danger("我处于幽灵状态，无法使用 SLOOC。"))
 		return
 
 	if(!mob)
