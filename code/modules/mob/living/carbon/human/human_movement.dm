@@ -41,7 +41,7 @@
 		if(hostage) // If we have a hostage.
 			hostage.hostagetaker = null
 			hostage = null
-			to_chat(src, "<span class='danger'>I need to stand still to make sure I don't lose concentration on my hostage!</span>")
+			to_chat(src, "<span class='danger'>我必须站着不动，才能保持对人质的专注！</span>")
 
 		if(hostagetaker) // If we are TAKEN hostage. Confusing vars at first but then it makes sense.
 			attackhostage()
@@ -89,10 +89,10 @@
 		if(mouth)
 
 			if(mouth.spitoutmouth && prob(5))
-				visible_message(span_warning("[src] spits out [mouth]."))
+				visible_message(span_warning("[src]吐出了[mouth]。"))
 				dropItemToGround(mouth, silent = FALSE)
 			if(src.mind?.has_antag_datum(/datum/antagonist/zombie) && (!src.handcuffed) && prob(50))
-				visible_message(span_warning("[src] spits out [mouth]."))
+				visible_message(span_warning("[src]吐出了[mouth]。"))
 				dropItemToGround(mouth, silent = FALSE)
 		if(istype(get_turf(src), /turf/open/floor/rogue/snow) && !HAS_TRAIT(src, TRAIT_LIGHT_STEP))
 			var/obj/effect/decal/cleanable/blood/footprints/mud/mudprint = new /obj/effect/decal/cleanable/blood/footprints/mud(get_turf(src))
@@ -147,14 +147,14 @@
 	if(HAS_TRAIT(src, TRAIT_PONYGIRL_RIDEABLE) && buckled_mobs)
 		for(var/mob/living/carbon/human/rider in buckled_mobs)
 			unbuckle_mob(rider, TRUE)
-			to_chat(rider, span_warning("You fall off [src] as they collapse!"))
-			to_chat(src, span_warning("[rider] tumbles off you as you fall!"))
+			to_chat(rider, span_warning("[src]倒下时，你从其身上跌落！"))
+			to_chat(src, span_warning("你倒下时，[rider]从你身上跌落！"))
 
 /mob/living/carbon/human/attackby(obj/item/I, mob/living/user, params)
 	if(buckled && istype(buckled, /mob/living/carbon/human))
 		var/mob/living/carbon/human/mount = buckled
 		if(HAS_TRAIT(mount, TRAIT_PONYGIRL_RIDEABLE))
-			visible_message(span_warning("[user]'s attack is redirected to [mount]'s chest!"))
+			visible_message(span_warning("[user]的攻击被转移到了[mount]的胸部！"))
 			user.zone_selected = BODY_ZONE_CHEST
 			return mount.attackby(I, user, params)
 	return ..()
@@ -163,7 +163,7 @@
 	if(buckled && istype(buckled, /mob/living/carbon/human))
 		var/mob/living/carbon/human/mount = buckled
 		if(HAS_TRAIT(mount, TRAIT_PONYGIRL_RIDEABLE))
-			visible_message(span_warning("[M]'s attack is redirected to [mount]!"))
+			visible_message(span_warning("[M]的攻击被转移到了[mount]身上！"))
 			mount.attack_animal(M)
 			return TRUE
 	return ..()

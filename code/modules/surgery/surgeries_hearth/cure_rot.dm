@@ -9,7 +9,7 @@
 	possible_locs = list(BODY_ZONE_CHEST)
 
 /datum/surgery_step/burn_rot
-	name = "burn rot"
+	name = "烧除腐败"
 	implements = list(
 		TOOL_CAUTERY = 85,
 		/obj/item/clothing/neck/roguetown/psicross = 85,
@@ -25,9 +25,9 @@
 	success_sound = 'sound/surgery/cautery2.ogg'
 
 /datum/surgery_step/burn_rot/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to burn the rot within [target]..."),
-		span_notice("[user] begins to burn the rot from [target]'s heart."),
-		span_notice("[user] begins to burn the rot from [target]'s heart."))
+	display_results(user, target, span_notice("我开始烧除[target]体内的腐败……"),
+		span_notice("[user]开始烧除[target]心脏中的腐败。"),
+		span_notice("[user]开始烧除[target]心脏中的腐败。"))
 	return TRUE
 
 // calls the remove_rot which is shared with the pestra prayer to remove rot
@@ -50,14 +50,14 @@
 				stinky = TRUE				
 
 	if(remove_rot(target = target, user = user, method = "surgery", damage = burndam,
-		success_message = "You burn away the rot inside of [target].",
-		fail_message = "The surgery fails to remove the rot."))
+		success_message = "你烧除了[target]体内的腐败。",
+		fail_message = "手术未能清除腐败。"))
 		target.remove_status_effect(/datum/status_effect/debuff/rotted_zombie)	//Removes the rotted-zombie debuff if they have it. (It's perma for zombies, NEEDS to be removed on de-zombify)
 		if(stinky)
 			target.apply_status_effect(/datum/status_effect/debuff/rotted)			//Temp debuff, needs cure - adds this on surgery.
 
-		display_results(user, target, span_notice("You burn away the rot inside of [target]."),
-		"[user] burns the rot within [target].",
+		display_results(user, target, span_notice("你烧除了[target]体内的腐败。"),
+		"[user]烧除了[target]体内的腐败。",
 		"[user]用[tool]处理[target]的内脏。")
 		return TRUE
 	return TRUE

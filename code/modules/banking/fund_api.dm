@@ -107,7 +107,7 @@
 	var/grace = indenture_grace_phrase(source)
 	var/job_label = accepter?.job ? "[accepter.job][accepter.real_name]" : (accepter?.real_name || "一名未具名的签署者")
 	var/msg = "[grace]，[source_label]慷慨地提供了[L.principal]m的贷款，每天利息为[pct]%，期限为[L.days_total]天，由[job_label]代表[target_label]接受。"
-	priority_announce(msg, "Writ of Indenture", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
+	priority_announce(msg, "契约令状", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
 
 /datum/controller/subsystem/treasury/proc/indenture_grace_phrase(datum/fund/F)
 	if(istype(F, /datum/fund/church))
