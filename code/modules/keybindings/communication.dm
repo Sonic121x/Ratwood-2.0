@@ -4,7 +4,7 @@
 /datum/keybinding/client/communication/say
 	hotkey_keys = list("T")
 	name = "Say"
-	full_name = "Say"
+	full_name = "说话"
 	clientside = "say_typing_indicator"
 
 /datum/keybinding/client/communication/say/down(client/user)
@@ -15,7 +15,7 @@
 /datum/keybinding/client/communication/me
 	hotkey_keys = list("M")
 	name = "Me"
-	full_name = "Me (emote)"
+	full_name = "动作（表情动作）"
 	clientside = "me_typing_indicator"
 
 /datum/keybinding/client/communication/me/down(client/user)
@@ -26,7 +26,7 @@
 /datum/keybinding/client/communication/me_big
 	hotkey_keys = list(",")
 	name = "Me (big)"
-	full_name = "Me (big emote)"
+	full_name = "动作（大范围表情动作）"
 	clientside = "me_big_verb_indicator"
 
 /datum/keybinding/client/communication/me_big/down(client/user)
@@ -37,7 +37,7 @@
 /datum/keybinding/client/communication/subtle
 	hotkey_keys = list()
 	name = "Subtle"
-	full_name = "Subtle (emote)"
+	full_name = "隐蔽动作（表情动作）"
 
 /datum/keybinding/client/communication/subtle/down(client/user)
 	var/mob/M = user.mob
@@ -47,7 +47,7 @@
 /datum/keybinding/client/communication/subtle_big
 	hotkey_keys = list()
 	name = "Subtle (big)"
-	full_name = "Subtle (big emote)"
+	full_name = "隐蔽动作（大范围表情动作）"
 
 /datum/keybinding/client/communication/subtle_big/down(client/user)
 	var/mob/M = user.mob

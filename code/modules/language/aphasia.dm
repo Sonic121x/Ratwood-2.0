@@ -1,5 +1,5 @@
 /datum/language/aphasia
-	name = "Gibbering"
+	name = "胡言乱语"
 	desc = ""
 	speech_verb = "语无伦次地说"
 	ask_verb = "含糊地问"

@@ -164,8 +164,8 @@
 					mob_timers["painstun"] = world.time
 					Immobilize(10)
 					emote("painscream")
-					visible_message(span_warning("[src] freezes in pain!"),
-								span_warning("I'm frozen in pain!"))
+					visible_message(span_warning("[src]痛得动弹不得！"),
+								span_warning("我痛得动弹不得！"))
 					sleep(10)
 					Stun(110)
 					Knockdown(110)
@@ -196,11 +196,11 @@
 			if(embedded.is_silver && HAS_TRAIT(src, TRAIT_SILVER_WEAK) && !has_status_effect(STATUS_EFFECT_ANTIMAGIC))
 				var/datum/component/silverbless/psyblessed = embedded.GetComponent(/datum/component/silverbless)
 				adjust_fire_stacks(1, psyblessed?.is_blessed ? /datum/status_effect/fire_handler/fire_stacks/sunder/blessed : /datum/status_effect/fire_handler/fire_stacks/sunder)
-			to_chat(src, span_danger("[embedded] in me hurts!"))
+			to_chat(src, span_danger("嵌在我体内的[embedded]让我感到疼痛！"))
 
 		if(prob(embedded.embedding.embedded_fall_chance))
 			simple_remove_embedded_object(embedded)
-			to_chat(src,span_danger("[embedded] falls out of me!"))
+			to_chat(src,span_danger("[embedded]从我体内掉了出来！"))
 
 //this updates all special effects: knockdown, druggy, stuttering, etc..
 /mob/living/proc/handle_status_effects(additional)

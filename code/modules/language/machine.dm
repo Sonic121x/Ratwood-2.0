@@ -1,5 +1,5 @@
 /datum/language/machine
-	name = "Encoded Audio Language"
+	name = "编码音频语"
 	desc = ""
 	speech_verb = "鸣哨"
 	ask_verb = "啾啾鸣叫"
