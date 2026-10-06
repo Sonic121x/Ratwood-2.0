@@ -676,7 +676,7 @@
 		"萨雷特盔"= list(150, /obj/item/clothing/head/roguetown/helmet/sallet),   // 半罩式骑士盔
 		"绗缝护甲衣"  = list(130, /obj/item/clothing/suit/roguetown/armor/gambeson),  // 软质护甲，缓冲钝击
 		"板甲护手"= list(140, /obj/item/clothing/gloves/roguetown/plate),         // 重型手部护具
-		"巴布塔盔"= list(170, /obj/item/clothing/head/roguetown/helmet/heavy),    // 重型头部护具
+		"巴尔布特盔"= list(170, /obj/item/clothing/head/roguetown/helmet/heavy),    // 重型头部护具
 		"盆盔"  = list(185, /obj/item/clothing/head/roguetown/helmet/bascinet), // 带面甲的骑士盔
 		"板甲衣"  = list(240, /obj/item/clothing/suit/roguetown/armor/brigandine), // 镶钉皮甲，防护与灵活兼顾
 		"背包"     = list(50, /obj/item/storage/backpack/rogue/backpack),          // 背负容器，扩充携带空间
@@ -959,7 +959,7 @@
 		"贤者之石" = list(99999, /obj/item/philosophers_stone),
 		"阿斯特拉塔护符" = list(150, /obj/item/clothing/neck/roguetown/psicross/astrata),  // 太阳女神 阿斯特拉塔 的圣徽
 		"诺克护符"       = list(150, /obj/item/clothing/neck/roguetown/psicross/noc),      // 求知之神 诺克 的圣徽
-		"阿比索护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/abyssor),  // 深海之神 阿比索尔 的圣徽
+		"阿比索尔护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/abyssor),  // 深海之神 阿比索尔 的圣徽
 		"登多尔护符"     = list(150, /obj/item/clothing/neck/roguetown/psicross/dendor),   // 自然之神 邓多尔 的圣徽
 		"内克拉护符"     = list(150, /obj/item/clothing/neck/roguetown/psicross/necra),    // 死亡之神 奈克拉 的圣徽
 		"佩斯特拉护符"   = list(150, /obj/item/clothing/neck/roguetown/psicross/pestra),   // 医疗之神 佩斯特拉 的圣徽

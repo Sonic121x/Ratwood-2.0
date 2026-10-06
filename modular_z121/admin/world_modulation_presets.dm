@@ -2550,7 +2550,7 @@
 	add_catalog_entry(/obj/item/clothing/suit/roguetown/shirt/dress/skyrim_dress, "装备", "衣服与饰品", "浅蓝色长裙", "浅蓝色长裙")
 	add_catalog_entry(/obj/item/clothing/suit/roguetown/shirt/dress/hw_dress, "装备", "衣服与饰品", "浅绿色长裙", "浅绿色长裙")
 	add_catalog_entry(/obj/item/clothing/under/roguetown/platelegs/iron/gronn, "装备", "衣服与饰品", "怯薛铁护腿", "诺尔西板甲套装（重型）；怯薛重型装具；怯薛铁护腿")
-	add_catalog_entry(/obj/item/clothing/under/roguetown/heavy_leather_pants/bronzeskirt, "装备", "衣服与饰品", "青铜锁甲裙", "青铜锁甲裙；链甲裙，青铜 (+1 熟皮)")
+	add_catalog_entry(/obj/item/clothing/under/roguetown/chainlegs/skirt/bronze, "装备", "衣服与饰品", "青铜锁甲裙", "青铜锁甲裙；链甲裙，青铜 (+1 熟皮)")
 	add_catalog_entry(/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy, "装备", "衣服与饰品", "轻透短裙", "透纱连衣裙；轻透短裙")
 	add_catalog_entry(/obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown, "装备", "衣服与饰品", "秋日礼裙", "礼袍（秋，丝质）；秋日礼裙")
 	add_catalog_entry(/obj/item/clothing/under/roguetown/skirt, "装备", "衣服与饰品", "裙子", "裙子")
