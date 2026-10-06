@@ -34,8 +34,8 @@
 	spookynight = SPOOKY_FOREST
 
 /area/rogue/outdoors/desert/oasis
-	name = "Oasis"
-	first_time_text = "Forgotten Oasis"
+	name = "绿洲"
+	first_time_text = "遗忘绿洲"
 	icon_state = "river"
 	ambientsounds = AMB_RIVERDAY
 	ambientnight = AMB_RIVERNIGHT
@@ -43,8 +43,8 @@
 	spookynight = SPOOKY_FOREST
 
 /area/rogue/outdoors/desert/mirage
-	name = "Fleeting Repose"
-	first_time_text = "Fleeting Repose"
+	name = "浮梦小憩"
+	first_time_text = "浮梦小憩"
 	icon_state = ""
 	ambientsounds = AMB_TOWNDAY
 	ambientnight = AMB_TOWNNIGHT
