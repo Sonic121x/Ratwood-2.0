@@ -34,23 +34,23 @@
 	category = "Merchant"
 
 /datum/book_entry/treasury_merchant/navigator
-	name = "01. The Navigator"
+	name = "01. 引航机"
 
 /datum/book_entry/treasury_merchant/navigator/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>NAVIGATOR:</b> The heart of everyday commerce in [SSmapping.map_adjustment.realm_name]. This machine lifts sellable goods up by balloon roughly every two minutes.</p>
+		<p><b>引航机：</b>[SSmapping.map_adjustment.realm_name]日常贸易的核心。这台机器大约每两分钟用气球运走可出售的货物。</p>
 
-		<h3>How it works</h3>
+		<h3>运作方式</h3>
 		<ul>
-			<li>Drop sellable items on the eight tiles surrounding the machine. A balloon arrives on a two-to-three minute timer and lifts everything sitting on its pads into the air.</li>
-			<li>Anchored items, coins, and handcarts are skipped.</li>
-			<li>Each lifted item's payout is its price, less the Guild's Tax (the realm's general tax rate). Items priced too low to clear a single mammon after tax are still lifted and lost - the machine does not refuse them outright.</li>
-			<li>Clicking the Navigator shows the current Guild's Tax rate and the time to the next balloon.</li>
+			<li>将可出售的物品放在机器周围的八个格子上。气球每隔两到三分钟抵达一次，将平台上的物品运上天空。</li>
+			<li>固定的物品、钱币和手推车不会被运走。</li>
+			<li>每件运走的物品按售价扣除公会税（领地的普通税率）后结算。税后价值不足一枚玛门币的物品仍会被运走并损失掉，机器不会拒收。</li>
+			<li>点击引航机可查看当前公会税率和下次气球抵达的时间。</li>
 		</ul>
 
-		<h3>The Suspicious (Black Market) Navigator</h3>
-		<p>A separate variant found at the black market ruin skims a flat 70% off every lift instead of the Guild's Tax - "this is used at the navigator at the black market ruin, which rips you off." There is no per-machine duty toggle, tally, or Public/Private/Smuggler distinction on either variant in this build.</p>
+		<h3>可疑的（黑市）引航机</h3>
+		<p>黑市废墟中的另一种引航机每次运货固定抽走70%的货款，而不按公会税率收税——“黑市废墟的引航机就是这样坑你的。”在当前版本中，两种引航机都没有单独的税收开关、统计计数，也不区分公用、私用或走私用途。</p>
 		</div>
 	"}
 
@@ -192,12 +192,12 @@
 
 
 /datum/book_entry/treasury_merchant/avisa_market
-	name = "06. The Market on the Notice Board"
+	name = "06. 公告板市场"
 
 /datum/book_entry/treasury_merchant/avisa_market/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>MARKET VIEW:</b> The Notice Board carries a live Market view alongside its postings - the same view you're reading this guide from. It refreshes on demand and shows regional stockpile and trade conditions relevant to producers and traders.</p>
+		<p><b>市场视图：</b>公告板除了张贴公告，还提供实时市场视图，你正是从这里打开本指南的。视图按需刷新，显示与生产者和商人有关的地区库存与贸易状况。</p>
 		</div>
 	"}
 
@@ -236,12 +236,12 @@
 
 
 /datum/book_entry/treasury_merchant/rag_picker
-	name = "08. The Scrapper"
+	name = "08. 废料回收机"
 
 /datum/book_entry/treasury_merchant/rag_picker/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>SCRAPPER:</b> A machine that pays coin immediately for scrap and cast-off materials it has been set up to accept. Bring it items matching its enabled material list and it weighs the offer and pays out from its own budget on the spot. It starts with a <b>50m</b> seed budget; once that runs dry, new mammon must be deposited before it can keep paying.</p>
-		<p>The proprietor role for a given Scrapper sets its rates, enables or disables specific materials, and can adjust the machine as needed.</p>
+		<p><b>废料回收机：</b>这台机器会收购已设置为接收的废料和弃置材料，并立即支付钱币。带来符合其已启用材料列表的物品，它便会称量估价，从自身预算中当场付款。初始预算为<b>50枚玛门币</b>；预算耗尽后，必须投入新的玛门币才能继续付款。</p>
+		<p>废料回收机的经营者可以设置收购价格，启用或禁用特定材料，并按需调整机器。</p>
 		</div>
 	"}
