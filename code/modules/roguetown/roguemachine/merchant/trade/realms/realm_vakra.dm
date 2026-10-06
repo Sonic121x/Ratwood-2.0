@@ -4,18 +4,18 @@
 	roll_weight = TRADE_REALM_WEIGHT_RARE
 	demanded_categories = list(NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_ARMOR_HEAVY, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
-		"Otter", "Noc-lit", "Vakran", "Packlord", "Lupianowy",
-		"Seavolf", "Toothy", "Fanged", "Claw", "Forder",
-		"Paddler", "Noc-bounty",
+		"水獭", "诺克之光", "瓦克兰", "群狼之主", "鲁皮亚诺维",
+		"海狼", "利齿", "獠牙", "利爪", "弗德",
+		"划桨者", "诺克之赐",
 	)
 	captain_first_names = list(
-		"Larai", "Jaromir", "Marek", "Slazri", "Dobromir",
-		"Kasim", "Rudai", "Valmir", "Borai", "Jarek",
-		"Razmir", "Velar", "Brazir", "Varik", "Lazmir",
+		"拉赖", "雅罗米尔", "马雷克", "斯拉兹里", "多布罗米尔",
+		"卡西姆", "鲁代", "瓦尔米尔", "博赖", "雅雷克",
+		"拉兹米尔", "维拉尔", "布拉齐尔", "瓦里克", "莱兹米尔",
 	)
 	captain_last_names = list(
-		"Sturmvolf", "the Sockeye", "Torn-Ear", "Swiftwoda", "the Kundlu",
-		"Noclicht", "the Kunda", "Long-Tooth", "the lupianowy",
+		"风暴狼", "红鲑", "裂耳", "迅水", "昆德鲁",
+		"诺克光", "昆达", "长牙", "鲁皮亚诺维",
 	)
 //Grenzelhoftian ship- Vakra's a clientstate/loosely 'governed' even before the civilwar
 	ship_types = list(

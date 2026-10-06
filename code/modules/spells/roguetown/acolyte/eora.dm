@@ -1170,7 +1170,7 @@
 		var/obj/item/roguegem/ruby/new_gem = new(eater.loc)
 		qdel(G)
 		eater.put_in_hands(new_gem)
-		to_chat(eater, span_notice("[G] 在你手中变成了一颗 rontz！"))
+		to_chat(eater, span_notice("[G]在你手中变成了一颗隆兹石！"))
 		//Probably best not to allow 2 at once...
 		break
 

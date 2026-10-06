@@ -106,6 +106,6 @@
 	if(length(raw_message) > 100)
 		raw_message = "<small>[raw_message]</small>"
 	for(var/obj/item/speakerinq/S in SSroguemachine.scomm_machines)
-		S.name = label ? "#[label]" : "#NOTSET"
+		S.name = label ? "#[label]" : "#未设置"
 		S.repeat_message(raw_message, src, usedcolor, message_language)
 		S.name = (S.fakename)
