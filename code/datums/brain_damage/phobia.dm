@@ -21,9 +21,9 @@
 	if(!phobia_type)
 		phobia_type = pick(SStraumas.phobia_types)
 
-	gain_text = span_warning("我开始对[phobia_type]感到极度不安……")
-	lose_text = span_notice("我不再对[phobia_type]感到恐惧了。")
-	scan_desc += "，对象为 [phobia_type]"
+	gain_text = span_warning("我开始对[list("spiders" = "蜘蛛", "space" = "太空", "security" = "安保人员", "clowns" = "小丑", "greytide" = "灰潮", "lizards" = "蜥蜴", "skeletons" = "骷髅", "snakes" = "蛇", "robots" = "机器人", "doctors" = "医生", "authority" = "权威", "the supernatural" = "超自然事物", "strangers" = "陌生人", "birds" = "鸟类", "falling" = "坠落", "anime" = "动漫", "conspiracies" = "阴谋")[phobia_type] || phobia_type]感到极度不安……")
+	lose_text = span_notice("我不再对[list("spiders" = "蜘蛛", "space" = "太空", "security" = "安保人员", "clowns" = "小丑", "greytide" = "灰潮", "lizards" = "蜥蜴", "skeletons" = "骷髅", "snakes" = "蛇", "robots" = "机器人", "doctors" = "医生", "authority" = "权威", "the supernatural" = "超自然事物", "strangers" = "陌生人", "birds" = "鸟类", "falling" = "坠落", "anime" = "动漫", "conspiracies" = "阴谋")[phobia_type] || phobia_type]感到恐惧了。")
+	scan_desc += "，对象为 [list("spiders" = "蜘蛛", "space" = "太空", "security" = "安保人员", "clowns" = "小丑", "greytide" = "灰潮", "lizards" = "蜥蜴", "skeletons" = "骷髅", "snakes" = "蛇", "robots" = "机器人", "doctors" = "医生", "authority" = "权威", "the supernatural" = "超自然事物", "strangers" = "陌生人", "birds" = "鸟类", "falling" = "坠落", "anime" = "动漫", "conspiracies" = "阴谋")[phobia_type] || phobia_type]"
 	trigger_words = SStraumas.phobia_words[phobia_type]
 	trigger_mobs = SStraumas.phobia_mobs[phobia_type]
 	trigger_objs = SStraumas.phobia_objs[phobia_type]

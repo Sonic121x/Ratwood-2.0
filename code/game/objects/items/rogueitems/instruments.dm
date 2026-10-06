@@ -705,82 +705,82 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	name = "手风琴"
 	desc = "一件承载怀旧与欢庆的和谐乐器。"
 	icon_state = "accordion"
-	song_list = list("Her Healing Tears" = 'sound/music/instruments/accord (1).ogg',
-	"Peddler's Tale" = 'sound/music/instruments/accord (2).ogg',
-	"We Toil Together" = 'sound/music/instruments/accord (3).ogg',
-	"Just One More, Tavern Wench" = 'sound/music/instruments/accord (4).ogg',
-	"Moonlight Carnival" = 'sound/music/instruments/accord (5).ogg',
-	"'Ye Best Be Goin'" = 'sound/music/instruments/accord (6).ogg',
-	"Beloved Blue" = 'sound/music/instruments/accord (7).ogg')
+	song_list = list("她治愈的泪水" = 'sound/music/instruments/accord (1).ogg',
+	"小贩的故事" = 'sound/music/instruments/accord (2).ogg',
+	"我们一同劳作" = 'sound/music/instruments/accord (3).ogg',
+	"酒馆姑娘，再来一杯" = 'sound/music/instruments/accord (4).ogg',
+	"月下狂欢" = 'sound/music/instruments/accord (5).ogg',
+	"'你最好走吧'" = 'sound/music/instruments/accord (6).ogg',
+	"挚爱的蔚蓝" = 'sound/music/instruments/accord (7).ogg')
 
 /obj/item/rogue/instrument/drum
 	name = "鼓"
 	desc = "紧绷的皮面覆在结实鼓架上，搏动声宛如巨人的心跳。"
 	icon_state = "drum"
-	song_list = list("Barbarian's Moot" = 'sound/music/instruments/drum (1).ogg',
-	"Muster the Wardens" = 'sound/music/instruments/drum (2).ogg',
-	"The Earth That Quakes" = 'sound/music/instruments/drum (3).ogg',
-	"The Power" = 'sound/music/instruments/drum (4).ogg', //BG3 Song
-	"Bard Dance" = 'sound/music/instruments/drum (5).ogg', // BG3 Song
-	"Old Time Battles" = 'sound/music/instruments/drum (6).ogg') // BG3 Song
+	song_list = list("蛮族议会" = 'sound/music/instruments/drum (1).ogg',
+	"集结守林人" = 'sound/music/instruments/drum (2).ogg',
+	"震颤的大地" = 'sound/music/instruments/drum (3).ogg',
+	"力量" = 'sound/music/instruments/drum (4).ogg', //BG3 Song
+	"吟游诗人之舞" = 'sound/music/instruments/drum (5).ogg', // BG3 Song
+	"昔日战役" = 'sound/music/instruments/drum (6).ogg') // BG3 Song
 
 /obj/item/rogue/instrument/flute
 	name = "长笛"
 	desc = "一排长短不一的细长空管，吹奏时会发出轻盈空灵的声音。"
 	icon_state = "flute"
-	song_list = list("Half-Dragon's Ten Mammon" = 'sound/music/instruments/flute (1).ogg',
-	"'The Local Favorite'" = 'sound/music/instruments/flute (2).ogg',
-	"Rous in the Cellar" = 'sound/music/instruments/flute (3).ogg',
-	"Her Boots, So Incandescent" = 'sound/music/instruments/flute (4).ogg',
-	"Moondust Minx" = 'sound/music/instruments/flute (5).ogg',
-	"Quest to the Ends" = 'sound/music/instruments/flute (6).ogg',
-	"Spit Shine" = 'sound/music/instruments/flute (7).ogg',
-	"The Power" = 'modular_azurepeak/sound/music/instruments/flute (8).ogg', //Baldur's Gate 3 Song
-	"Bard Dance" = 'modular_azurepeak/sound/music/instruments/flute (9).ogg', //Baldur's Gate 3 Song
-	"Old Time Battles" = 'modular_azurepeak/sound/music/instruments/flute (10).ogg') //Baldur's Gate 3 Song
+	song_list = list("半龙人的十枚玛门币" = 'sound/music/instruments/flute (1).ogg',
+	"'本地人的最爱'" = 'sound/music/instruments/flute (2).ogg',
+	"地窖里的大鼠" = 'sound/music/instruments/flute (3).ogg',
+	"她的靴子如此耀眼" = 'sound/music/instruments/flute (4).ogg',
+	"月尘妖女" = 'sound/music/instruments/flute (5).ogg',
+	"远征至天涯" = 'sound/music/instruments/flute (6).ogg',
+	"擦得锃亮" = 'sound/music/instruments/flute (7).ogg',
+	"力量" = 'modular_azurepeak/sound/music/instruments/flute (8).ogg', //Baldur's Gate 3 Song
+	"吟游诗人之舞" = 'modular_azurepeak/sound/music/instruments/flute (9).ogg', //Baldur's Gate 3 Song
+	"昔日战役" = 'modular_azurepeak/sound/music/instruments/flute (10).ogg') //Baldur's Gate 3 Song
 
 /obj/item/rogue/instrument/guitar
 	name = "吉他"
 	desc = "这是一把吉他，流浪者与伤心人最偏爱的乐器。" // YIPPEE I LOVE GUITAR
 	icon_state = "guitar"
-	song_list = list("Fire-Cast Shadows" = 'sound/music/instruments/guitar (1).ogg',
-	"The Forced Hand" = 'sound/music/instruments/guitar (2).ogg',
-	"Regrets Unpaid" = 'sound/music/instruments/guitar (3).ogg',
-	"'Took the Mammon and Ran'" = 'sound/music/instruments/guitar (4).ogg',
-	"Poor Man's Tithe" = 'sound/music/instruments/guitar (5).ogg',
-	"In His Arms Ye'll Find Me" = 'sound/music/instruments/guitar (6).ogg',
-	"El Odio" = 'sound/music/instruments/guitar (7).ogg',
-	"Danza De Las Lanzas" = 'sound/music/instruments/guitar (8).ogg',
-	"The Feline, Forever Returning" = 'sound/music/instruments/guitar (9).ogg',
-	"El Beso Carmesí" = 'sound/music/instruments/guitar (10).ogg',
-	"The Queen's High Seas" = 'sound/music/instruments/guitar (11).ogg',
-	"Harsh Testimony" = 'sound/music/instruments/guitar (12).ogg',
-	"Someone Fair" = 'sound/music/instruments/guitar (13).ogg',
-	"Daisies in Bloom" = 'sound/music/instruments/guitar (14).ogg')
+	song_list = list("火光投下的影子" = 'sound/music/instruments/guitar (1).ogg',
+	"迫不得已" = 'sound/music/instruments/guitar (2).ogg',
+	"未偿的遗憾" = 'sound/music/instruments/guitar (3).ogg',
+	"'拿了玛门币就跑'" = 'sound/music/instruments/guitar (4).ogg',
+	"穷人的什一税" = 'sound/music/instruments/guitar (5).ogg',
+	"在他怀里寻到我" = 'sound/music/instruments/guitar (6).ogg',
+	"仇恨" = 'sound/music/instruments/guitar (7).ogg',
+	"长枪之舞" = 'sound/music/instruments/guitar (8).ogg',
+	"那只永远归来的猫" = 'sound/music/instruments/guitar (9).ogg',
+	"猩红之吻" = 'sound/music/instruments/guitar (10).ogg',
+	"女王的远洋" = 'sound/music/instruments/guitar (11).ogg',
+	"严酷的证词" = 'sound/music/instruments/guitar (12).ogg',
+	"一位佳人" = 'sound/music/instruments/guitar (13).ogg',
+	"雏菊盛开" = 'sound/music/instruments/guitar (14).ogg')
 
 /obj/item/rogue/instrument/harp
 	name = "竖琴"
 	desc = "一把出自精灵工艺的竖琴。"
 	icon_state = "harp"
-	song_list = list("Through Thine Window, He Glanced" = 'sound/music/instruments/harb (1).ogg',
-	"The Lady of Red Silks" = 'sound/music/instruments/harb (2).ogg',
-	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg',
-	"On the Breeze" = 'sound/music/instruments/harb (4).ogg',
-	"Never Enough" = 'sound/music/instruments/harb (5).ogg',
-	"Sundered Heart" = 'sound/music/instruments/harb (6).ogg',
-	"Corridors of Time" = 'sound/music/instruments/harb (7).ogg',
-	"Determination" = 'sound/music/instruments/harb (8).ogg')
+	song_list = list("他望过你的窗" = 'sound/music/instruments/harb (1).ogg',
+	"红绸女士" = 'sound/music/instruments/harb (2).ogg',
+	"伊欧拉在注视" = 'sound/music/instruments/harb (3).ogg',
+	"随微风而去" = 'sound/music/instruments/harb (4).ogg',
+	"永不满足" = 'sound/music/instruments/harb (5).ogg',
+	"破碎的心" = 'sound/music/instruments/harb (6).ogg',
+	"时光长廊" = 'sound/music/instruments/harb (7).ogg',
+	"决心" = 'sound/music/instruments/harb (8).ogg')
 
 /obj/item/rogue/instrument/hurdygurdy
 	name = "手摇琴"
 	desc = "一种以摇柄驱动的木制弦乐器，总让人想起遥远的海洋。"
 	icon_state = "hurdygurdy"
-	song_list = list("Ruler's One Ring" = 'sound/music/instruments/hurdy (1).ogg',
-	"Tangled Trod" = 'sound/music/instruments/hurdy (2).ogg',
-	"Motus" = 'sound/music/instruments/hurdy (3).ogg',
-	"Becalmed" = 'sound/music/instruments/hurdy (4).ogg',
-	"The Bloody Throne" = 'sound/music/instruments/hurdy (5).ogg',
-	"We Shall Sail Together" = 'sound/music/instruments/hurdy (6).ogg')
+	song_list = list("君王的唯一指环" = 'sound/music/instruments/hurdy (1).ogg',
+	"曲折的小径" = 'sound/music/instruments/hurdy (2).ogg',
+	"律动" = 'sound/music/instruments/hurdy (3).ogg',
+	"风平浪静" = 'sound/music/instruments/hurdy (4).ogg',
+	"染血王座" = 'sound/music/instruments/hurdy (5).ogg',
+	"我们将一同远航" = 'sound/music/instruments/hurdy (6).ogg')
 
 /obj/item/rogue/instrument/ztratocaster
 	name = "齐特拉卡斯特琴"
@@ -791,10 +791,10 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH)
 	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, SPEAR_BASH)
 	associated_skill = /datum/skill/combat/axes
-	song_list = list("Laid To Rest" = 'sound/music/instruments/ztrato (1).ogg',
-	"Fulmen" = 'sound/music/instruments/ztrato (2).ogg',
-	"Painkiller" = 'sound/music/instruments/ztrato (3).ogg',
-	"Abyssor's Bane" = 'sound/music/instruments/ztrato (4).ogg')
+	song_list = list("安息" = 'sound/music/instruments/ztrato (1).ogg',
+	"雷霆" = 'sound/music/instruments/ztrato (2).ogg',
+	"止痛剂" = 'sound/music/instruments/ztrato (3).ogg',
+	"阿比索尔之灾" = 'sound/music/instruments/ztrato (4).ogg')
 	blade_dulling = DULLING_BASHCHOP
 	w_class = WEIGHT_CLASS_HUGE
 	minstr = 8
@@ -809,38 +809,38 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 /obj/item/rogue/instrument/ztratocaster/Initialize(mapload)
 	. = ..()
 	soundloop.extra_range = 5 //stop blowing up my ears ser
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "INSTRUMENT")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "乐器")
 
 /obj/item/rogue/instrument/lute
 	name = "鲁特琴"
 	desc = "它优雅的曲线仿佛天生就是为了织出欢快旋律。"
 	icon_state = "lute"
-	song_list = list("A Knight's Return" = 'sound/music/instruments/lute (1).ogg',
-	"Amongst Fare Friends" = 'sound/music/instruments/lute (2).ogg',
-	"The Road Traveled by Few" = 'sound/music/instruments/lute (3).ogg',
-	"Tip Thine Tankard" = 'sound/music/instruments/lute (4).ogg',
-	"A Reed On the Wind" = 'sound/music/instruments/lute (5).ogg',
-	"Jests On Steel Ears" = 'sound/music/instruments/lute (6).ogg',
-	"Merchant in the Mire" = 'sound/music/instruments/lute (7).ogg',
-	"The Power" = 'modular_azurepeak/sound/music/instruments/lute (8).ogg', //Baldur's Gate 3 Song
-	"Bard Dance" = 'modular_azurepeak/sound/music/instruments/lute (9).ogg', //Baldur's Gate 3 Song
-	"Old Time Battles" = 'modular_azurepeak/sound/music/instruments/lute (10).ogg') //Baldur's Gate 3 Song
+	song_list = list("骑士归来" = 'sound/music/instruments/lute (1).ogg',
+	"旅途友人之间" = 'sound/music/instruments/lute (2).ogg',
+	"少有人走的路" = 'sound/music/instruments/lute (3).ogg',
+	"举起你的酒杯" = 'sound/music/instruments/lute (4).ogg',
+	"风中的芦苇" = 'sound/music/instruments/lute (5).ogg',
+	"钢铁耳畔的笑话" = 'sound/music/instruments/lute (6).ogg',
+	"泥沼中的商人" = 'sound/music/instruments/lute (7).ogg',
+	"力量" = 'modular_azurepeak/sound/music/instruments/lute (8).ogg', //Baldur's Gate 3 Song
+	"吟游诗人之舞" = 'modular_azurepeak/sound/music/instruments/lute (9).ogg', //Baldur's Gate 3 Song
+	"昔日战役" = 'modular_azurepeak/sound/music/instruments/lute (10).ogg') //Baldur's Gate 3 Song
 
 /obj/item/rogue/instrument/psyaltery
 	name = "圣咏琴"
 	desc = "一种传统箱式齐特琴或箱式竖琴，可用手拨、拨片或小槌演奏。它们尤其常与神圣存在、亚斯玛尔以及礼拜仪式联系在一起。"
 	icon_state = "psyaltery"
 	song_list = list(
-	"Disciples Tower" = 'sound/music/instruments/psyaltery (1).ogg',
-	"Green Sleeves" = 'sound/music/instruments/psyaltery (2).ogg',
-	"Midyear Melancholy" = 'sound/music/instruments/psyaltery (3).ogg',
-	"Santa Psydonia" = 'sound/music/instruments/psyaltery (4).ogg',
-	"Le Venardine" = 'sound/music/instruments/psyaltery (5).ogg',
-	"Vespermill Fair" = 'sound/music/instruments/psyaltery (6).ogg',
-	"Amoroso" = 'sound/music/instruments/psyaltery (7).ogg',
-	"Lupian's Lullaby" = 'sound/music/instruments/psyaltery (8).ogg',
-	"White Wine Before Breakfast" = 'sound/music/instruments/psyaltery (9).ogg',
-	"Chevalier de Naledi" = 'sound/music/instruments/psyaltery (10).ogg')
+	"门徒之塔" = 'sound/music/instruments/psyaltery (1).ogg',
+	"绿袖子" = 'sound/music/instruments/psyaltery (2).ogg',
+	"年中的忧愁" = 'sound/music/instruments/psyaltery (3).ogg',
+	"神圣普赛多尼亚" = 'sound/music/instruments/psyaltery (4).ogg',
+	"维纳丁" = 'sound/music/instruments/psyaltery (5).ogg',
+	"暮溪磨坊集市" = 'sound/music/instruments/psyaltery (6).ogg',
+	"柔情" = 'sound/music/instruments/psyaltery (7).ogg',
+	"卢皮安的摇篮曲" = 'sound/music/instruments/psyaltery (8).ogg',
+	"早餐前的白葡萄酒" = 'sound/music/instruments/psyaltery (9).ogg',
+	"纳莱迪骑士" = 'sound/music/instruments/psyaltery (10).ogg')
 
 /obj/item/rogue/instrument/shamisen
 	name = "三味线"
@@ -849,27 +849,27 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	song_list = list(
-	"A Rambling Tongue" = 'sound/music/instruments/shamisen A Rambling Tongue.ogg',
-	"Ashitaka" = 'sound/music/instruments/shamisen The Legend of Ashitaka.ogg',
-	"Daimyo Dreamwalker" = 'sound/music/instruments/shamisen Daimyo Dreamwalker.ogg',
-	"Emperor of Flame" = 'sound/music/instruments/shamisen Emperor of Flame.ogg',
-	"Fire Phoenix" = 'sound/music/instruments/shamisen Fire Phoenix.ogg',
-	"Kaiju Islands" = 'sound/music/instruments/shamisen Kaiju Islands.ogg',
-	"Lavender Village" = 'sound/music/instruments/shamisen Lavender Village.ogg',
-	"Morning Is Coming" = 'sound/music/instruments/shamisen Morning is Coming.ogg',
-	"Pouncing Shadow" = 'sound/music/instruments/shamisen Pouncing Shadow.ogg',
-	"Rising Sun" = 'sound/music/instruments/shamisen Rising Sun.ogg',
-	"Those Who Fight" = 'sound/music/instruments/shamisen Those Who Fight.ogg',
-	"Village in the Mountains" = 'sound/music/instruments/shamisen Village in the Mountains.ogg',
-	"Winning the Soul" = 'sound/music/instruments/shamisen Winning the Soul.ogg',
-	"Cursed Apple" = 'sound/music/instruments/shamisen (1).ogg',
-	"Fire Dance" = 'sound/music/instruments/shamisen (2).ogg',
-	"Lute" = 'sound/music/instruments/shamisen (3).ogg',
-	"Tsugaru Ripple" = 'sound/music/instruments/shamisen (4).ogg',
-	"Tsugaru" = 'sound/music/instruments/shamisen (5).ogg',
-	"Season" = 'sound/music/instruments/shamisen (6).ogg',
-	"Parade" = 'sound/music/instruments/shamisen (7).ogg',
-	"Koshiro" = 'sound/music/instruments/shamisen (8).ogg')
+	"漫谈" = 'sound/music/instruments/shamisen A Rambling Tongue.ogg',
+	"阿希塔卡" = 'sound/music/instruments/shamisen The Legend of Ashitaka.ogg',
+	"梦行大名" = 'sound/music/instruments/shamisen Daimyo Dreamwalker.ogg',
+	"烈焰帝王" = 'sound/music/instruments/shamisen Emperor of Flame.ogg',
+	"火凤凰" = 'sound/music/instruments/shamisen Fire Phoenix.ogg',
+	"巨兽群岛" = 'sound/music/instruments/shamisen Kaiju Islands.ogg',
+	"薰衣草村" = 'sound/music/instruments/shamisen Lavender Village.ogg',
+	"晨光将至" = 'sound/music/instruments/shamisen Morning is Coming.ogg',
+	"跃袭之影" = 'sound/music/instruments/shamisen Pouncing Shadow.ogg',
+	"旭日" = 'sound/music/instruments/shamisen Rising Sun.ogg',
+	"奋战之人" = 'sound/music/instruments/shamisen Those Who Fight.ogg',
+	"山间村落" = 'sound/music/instruments/shamisen Village in the Mountains.ogg',
+	"赢得灵魂" = 'sound/music/instruments/shamisen Winning the Soul.ogg',
+	"诅咒之苹果" = 'sound/music/instruments/shamisen (1).ogg',
+	"火之舞" = 'sound/music/instruments/shamisen (2).ogg',
+	"鲁特琴" = 'sound/music/instruments/shamisen (3).ogg',
+	"津轻涟漪" = 'sound/music/instruments/shamisen (4).ogg',
+	"津轻" = 'sound/music/instruments/shamisen (5).ogg',
+	"四季" = 'sound/music/instruments/shamisen (6).ogg',
+	"游行" = 'sound/music/instruments/shamisen (7).ogg',
+	"库希罗" = 'sound/music/instruments/shamisen (8).ogg')
 
 /obj/item/rogue/instrument/vocals/harpy_vocals
 	name = "鹰身女妖之歌"
@@ -882,13 +882,13 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	name = "小号"
 	desc = "一根盘绕成形、末端外张的黄铜长管，上方装着几个可按压的活塞。"
 	icon_state = "trumpet"
-	song_list = list("Royal Entrance" = 'sound/music/instruments/trumpet (1).ogg',
-	"Royal Exit" = 'sound/music/instruments/trumpet (2).ogg',
-	"Royal News" = 'sound/music/instruments/trumpet (3).ogg',
-	"Royal Fanfare" = 'sound/music/instruments/trumpet (4).ogg',
-	"Royal Fanfare 2" = 'sound/music/instruments/trumpet (5).ogg',
-	"Royal Wedding" = 'sound/music/instruments/trumpet (6).ogg', //It has a little bit of organ in the background that I couldn't completely remove
-	"Honoring the Fallen" = 'sound/music/instruments/trumpet (7).ogg')
+	song_list = list("王室入场" = 'sound/music/instruments/trumpet (1).ogg',
+	"王室退场" = 'sound/music/instruments/trumpet (2).ogg',
+	"王室消息" = 'sound/music/instruments/trumpet (3).ogg',
+	"王室号角" = 'sound/music/instruments/trumpet (4).ogg',
+	"王室号角二" = 'sound/music/instruments/trumpet (5).ogg',
+	"王室婚礼" = 'sound/music/instruments/trumpet (6).ogg', //It has a little bit of organ in the background that I couldn't completely remove
+	"向阵亡者致敬" = 'sound/music/instruments/trumpet (7).ogg')
 
 /obj/item/rogue/instrument/bagpipe
 	name = "风笛"
@@ -897,13 +897,13 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	grid_height = 32
 	w_class = WEIGHT_CLASS_NORMAL
 	icon_state = "bagpipe"
-	song_list = list("Dainty Man" = 'sound/music/instruments/bagpipe (1).ogg',
-	"Harpy in the Morning" = 'sound/music/instruments/bagpipe (2).ogg',
-	"Heartfelt Forever" = 'sound/music/instruments/bagpipe (3).ogg',
-	"Homeward Jig" = 'sound/music/instruments/bagpipe (4).ogg',
-	"On the Sea Shore" = 'sound/music/instruments/bagpipe (5).ogg',
-	"Soldier's Rest" = 'sound/music/instruments/bagpipe (6).ogg',
-	"Otavan Madame" = 'sound/music/instruments/bagpipe (7).ogg')
+	song_list = list("精致男子" = 'sound/music/instruments/bagpipe (1).ogg',
+	"晨间哈比" = 'sound/music/instruments/bagpipe (2).ogg',
+	"赤心永存" = 'sound/music/instruments/bagpipe (3).ogg',
+	"归乡吉格舞" = 'sound/music/instruments/bagpipe (4).ogg',
+	"在海岸边" = 'sound/music/instruments/bagpipe (5).ogg',
+	"士兵的安息" = 'sound/music/instruments/bagpipe (6).ogg',
+	"奥塔万女士" = 'sound/music/instruments/bagpipe (7).ogg')
 
 /obj/item/rogue/instrument/banjo
 	name = "班卓琴"
@@ -912,13 +912,13 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	grid_height = 32
 	w_class = WEIGHT_CLASS_NORMAL
 	icon_state = "banjo"
-	song_list = list("Bog Man's Jig" = 'sound/music/instruments/banjo (1).ogg',
-	"Pockets Full o' Mammon" = 'sound/music/instruments/banjo (2).ogg',
-	"Kickin' the Muck Off" = 'sound/music/instruments/banjo (3).ogg',
-	"Soggy Shoes n' Bilgewater Boots" = 'sound/music/instruments/banjo (4).ogg',
-	"Nothin' but Fog" = 'sound/music/instruments/banjo (5).ogg',
-	"The Tipsy Toad" = 'sound/music/instruments/banjo (6).ogg',
-	"Tangled in th' Reeds" = 'sound/music/instruments/banjo (7).ogg')
+	song_list = list("沼泽人的吉格舞" = 'sound/music/instruments/banjo (1).ogg',
+	"满袋玛门币" = 'sound/music/instruments/banjo (2).ogg',
+	"踢掉泥巴" = 'sound/music/instruments/banjo (3).ogg',
+	"湿鞋与污水靴" = 'sound/music/instruments/banjo (4).ogg',
+	"唯有浓雾" = 'sound/music/instruments/banjo (5).ogg',
+	"微醺蟾蜍" = 'sound/music/instruments/banjo (6).ogg',
+	"困在芦苇丛" = 'sound/music/instruments/banjo (7).ogg')
 
 /obj/item/rogue/instrument/harmonica
 	name = "口琴"
@@ -927,13 +927,13 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	grid_height = 32
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "harmonica"
-	song_list = list("Deep in the Peat" = 'sound/music/instruments/harmonica (1).ogg',
-	"Militia Man's Woes" = 'sound/music/instruments/harmonica (2).ogg',
-	"My Chilly Bones" = 'sound/music/instruments/harmonica (3).ogg',
-	"Lonesome by the Campfire" = 'sound/music/instruments/harmonica (4).ogg',
-	"Herding in the Heat" = 'sound/music/instruments/harmonica (5).ogg',
-	"Soaked to the Bone" = 'sound/music/instruments/harmonica (6).ogg',
-	"To Our Friends Felled" = 'sound/music/instruments/harmonica (7).ogg')
+	song_list = list("深陷泥炭" = 'sound/music/instruments/harmonica (1).ogg',
+	"民兵的烦恼" = 'sound/music/instruments/harmonica (2).ogg',
+	"冰冷的骨头" = 'sound/music/instruments/harmonica (3).ogg',
+	"篝火旁的孤独" = 'sound/music/instruments/harmonica (4).ogg',
+	"烈日下放牧" = 'sound/music/instruments/harmonica (5).ogg',
+	"湿透入骨" = 'sound/music/instruments/harmonica (6).ogg',
+	"致我们逝去的朋友" = 'sound/music/instruments/harmonica (7).ogg')
 
 /obj/item/rogue/instrument/jawharp
 	name = "口簧琴"
@@ -943,11 +943,11 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	grid_height = 32
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "jawharp"
-	song_list = list("Fly Away" = 'sound/music/instruments/jawharp (1).ogg',
-	"Nomad's Call" = 'sound/music/instruments/jawharp (2).ogg',
-	"Spirit of the Steppes" = 'sound/music/instruments/jawharp (3).ogg',
-	"The Mountain of Wisdom" = 'sound/music/instruments/jawharp (4).ogg',
-	"Who Told You" = 'sound/music/instruments/jawharp (5).ogg')
+	song_list = list("飞远" = 'sound/music/instruments/jawharp (1).ogg',
+	"游牧者的呼唤" = 'sound/music/instruments/jawharp (2).ogg',
+	"草原之魂" = 'sound/music/instruments/jawharp (3).ogg',
+	"智慧之山" = 'sound/music/instruments/jawharp (4).ogg',
+	"谁告诉你的" = 'sound/music/instruments/jawharp (5).ogg')
 /obj/item/rogue/instrument/jawharp/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -961,31 +961,31 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	name = "中提琴"
 	desc = "端庄而雅正的中提琴，是每位王子最先学习的乐器。"
 	icon_state = "viola"
-	song_list = list("Far Flung Tale" = 'sound/music/instruments/viola (1).ogg',
-	"G Major Cello Suite No. 1" = 'sound/music/instruments/viola (2).ogg',
-	"Ursine's Home" = 'sound/music/instruments/viola (3).ogg',
-	"Mead, Gold and Blood" = 'sound/music/instruments/viola (4).ogg',
-	"Gasgow's Reel" = 'sound/music/instruments/viola (5).ogg',
-	"The Power" = 'sound/music/instruments/viola (6).ogg', //BG3 Song, I KNOW THIS ISNT A VIOLIN, LEAVE ME ALONE
-	"Bard Dance" = 'sound/music/instruments/viola (7).ogg', // BG3 Song
-	"Old Time Battles" = 'sound/music/instruments/viola (8).ogg') // BG3 Song
+	song_list = list("远方的故事" = 'sound/music/instruments/viola (1).ogg',
+	"G大调第一大提琴组曲" = 'sound/music/instruments/viola (2).ogg',
+	"熊的家园" = 'sound/music/instruments/viola (3).ogg',
+	"蜜酒、黄金与鲜血" = 'sound/music/instruments/viola (4).ogg',
+	"加斯戈的里尔舞" = 'sound/music/instruments/viola (5).ogg',
+	"力量" = 'sound/music/instruments/viola (6).ogg', //BG3 Song, I KNOW THIS ISNT A VIOLIN, LEAVE ME ALONE
+	"吟游诗人之舞" = 'sound/music/instruments/viola (7).ogg', // BG3 Song
+	"昔日战役" = 'sound/music/instruments/viola (8).ogg') // BG3 Song
 
 
 /obj/item/rogue/instrument/vocals
 	name = "歌者护符"
 	desc = "这枚护符散发着柔和微光。握在手中时，它能放大，甚至改变吟游诗人的嗓音。"
 	icon_state = "vtalisman"
-	song_list = list("Harpy's Call (Feminine)" = 'sound/music/instruments/vocalsf (1).ogg',
-	"Necra 的摇篮曲（女声）" = 'sound/music/instruments/vocalsf (2).ogg',
-	"Death Touched Aasimar (Feminine)" = 'sound/music/instruments/vocalsf (3).ogg',
-	"Our Mother, Our Divine (Feminine)" = 'sound/music/instruments/vocalsf (4).ogg',
-	"Wed, Forever More (Feminine)" = 'sound/music/instruments/vocalsf (5).ogg',
-	"Paper Boats (Feminine + Vocals)" = 'sound/music/instruments/vocalsf (6).ogg',
-	"The Dragon's Blood Surges (Masculine)" = 'sound/music/instruments/vocalsm (1).ogg',
-	"Timeless Temple (Masculine)" = 'sound/music/instruments/vocalsm (2).ogg',
-	"Angel's Earnt Halo (Masculine)" = 'sound/music/instruments/vocalsm (3).ogg',
-	"A Fabled Choir (Masculine)" = 'sound/music/instruments/vocalsm (4).ogg',
-	"A Pained Farewell (Masculine + Feminine)" = 'sound/music/instruments/vocalsx (1).ogg',
-	"The Power (Whistling)" = 'sound/music/instruments/vocalsx (2).ogg',
-	"Bard Dance (Whistling)" = 'sound/music/instruments/vocalsx (3).ogg',
-	"Old Time Battles (Whistling)" = 'sound/music/instruments/vocalsx (4).ogg')
+	song_list = list("哈比的呼唤（女声）" = 'sound/music/instruments/vocalsf (1).ogg',
+	"内克拉的摇篮曲（女声）" = 'sound/music/instruments/vocalsf (2).ogg',
+	"受死亡触碰的亚斯玛尔（女声）" = 'sound/music/instruments/vocalsf (3).ogg',
+	"我们的母亲，我们的神（女声）" = 'sound/music/instruments/vocalsf (4).ogg',
+	"永结同心（女声）" = 'sound/music/instruments/vocalsf (5).ogg',
+	"纸船（女声伴唱）" = 'sound/music/instruments/vocalsf (6).ogg',
+	"龙血奔涌（男声）" = 'sound/music/instruments/vocalsm (1).ogg',
+	"永恒神殿（男声）" = 'sound/music/instruments/vocalsm (2).ogg',
+	"天使赢得的光环（男声）" = 'sound/music/instruments/vocalsm (3).ogg',
+	"传说中的合唱团（男声）" = 'sound/music/instruments/vocalsm (4).ogg',
+	"痛苦的告别（男女合唱）" = 'sound/music/instruments/vocalsx (1).ogg',
+	"力量（口哨）" = 'sound/music/instruments/vocalsx (2).ogg',
+	"吟游诗人之舞（口哨）" = 'sound/music/instruments/vocalsx (3).ogg',
+	"昔日战役（口哨）" = 'sound/music/instruments/vocalsx (4).ogg')

@@ -10,7 +10,7 @@
 	return string_list(values)
 
 /turf/closed/indestructible/baseturfs_ded
-	name = "Report this"
-	desc = "It looks like base turfs went to the fucking moon, TELL YOUR LOCAL CODER TODAY"
+	name = "请报告此问题"
+	desc = "基础地块似乎出了大问题，请立即向本服开发人员报告。"
 	icon = 'icons/turf/debug.dmi'
 	icon_state = "debug_turf"

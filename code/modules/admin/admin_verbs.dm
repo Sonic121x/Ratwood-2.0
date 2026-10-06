@@ -544,10 +544,10 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/choice = input(src,"","Set time of day override") as null|anything in TODs
 	if(choice)
 		GLOB.todoverride = choice
-		world << "[ckey] has set the time of day override to [choice]."
+		world << "[ckey]已将时段强制设为[list("day" = "白昼", "night" = "夜晚", "dawn" = "黎明", "dusk" = "黄昏")[choice] || choice]。"
 	else
 		GLOB.todoverride = null
-		world << "[ckey] has disabled the time of day override."
+		world << "[ckey]已关闭强制时段设置。"
 	settod()
 
 /client/proc/stresstest_chat()
@@ -984,7 +984,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	for(var/datum/bounty/removing_bounty in GLOB.head_bounties)
 		if(removing_bounty.target == target_name)
 			GLOB.head_bounties -= removing_bounty
-			scom_announce("An unknown force has erased the bounty on [target_name]. The gods are displeased.")
+			scom_announce("一股未知的力量抹去了对[target_name]的悬赏。诸神对此感到不悦。")
 			message_admins("[ADMIN_LOOKUPFLW(src)] has removed the bounty on [ADMIN_LOOKUPFLW(target_name)]")
 			return
 	to_chat(src, "Error. Bounty no longer active.")

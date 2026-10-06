@@ -23,7 +23,7 @@
 	var/res = alert(usr, "Show the title of this song to the players?",, "Yes","No", "Cancel")
 	switch(res)
 		if("Yes")
-			to_chat(world, span_boldannounce("An admin played: [S]"))
+			to_chat(world, span_boldannounce("管理员播放了：[S]"))
 		if("Cancel")
 			return
 
@@ -329,7 +329,7 @@
 					var/res = alert(usr, "Show the title of and link to this song to the players?\n[title]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
 					switch(res)
 						if("Yes")
-							to_chat(world, span_boldannounce("An admin played: [webpage_url]"))
+							to_chat(world, span_boldannounce("管理员播放了：[webpage_url]"))
 						if("No")
 							// Hide detailed metadata in the chat media widget while still playing the song
 							music_extra_data["title"] = null
@@ -406,7 +406,7 @@
 		var/res = alert(usr, "Show the title and link of this song to the players?\n[title ? title : web_sound_input]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
 		switch(res)
 			if("Yes")
-				to_chat(world, span_boldannounce("An admin played: [title ? title : web_sound_input]"))
+				to_chat(world, span_boldannounce("管理员播放了：[title ? title : web_sound_input]"))
 			if("No")
 				music_extra_data["title"] = null
 				music_extra_data["link"] = "Song Link Hidden"
@@ -481,7 +481,7 @@
 		var/res = alert(usr, "Show the title and link of this song to nearby players?\n[title ? title : web_sound_input]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
 		switch(res)
 			if("Yes")
-				to_chat(world, span_boldannounce("An admin played locally: [title ? title : web_sound_input]"))
+				to_chat(world, span_boldannounce("管理员在附近播放了：[title ? title : web_sound_input]"))
 			if("No")
 				music_extra_data["title"] = null
 				music_extra_data["link"] = "Song Link Hidden"
@@ -564,7 +564,7 @@
 		var/res = alert(usr, "Show the title and link of this song to [M]?\n[title ? title : web_sound_input]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
 		switch(res)
 			if("Yes")
-				to_chat(M, span_boldannounce("An admin played: [title ? title : web_sound_input]"))
+				to_chat(M, span_boldannounce("管理员播放了：[title ? title : web_sound_input]"))
 			if("No")
 				music_extra_data["title"] = null
 				music_extra_data["link"] = "Song Link Hidden"

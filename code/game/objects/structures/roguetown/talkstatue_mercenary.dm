@@ -63,7 +63,7 @@ upstream. That cost gate was not reimplemented here - flagged for follow-up if w
 			continue
 
 		var/status_text = merc_data["status"] || "Available"
-		var/display_name = "[merc.real_name] ([status_text])"
+		var/display_name = "[merc.real_name] ([list("Available" = "可接委托", "Contracted" = "已签约", "Do not Disturb" = "请勿打扰")[status_text] || status_text])"
 		available_mercenaries[display_name] = merc
 
 	for(var/key in stale_keys)

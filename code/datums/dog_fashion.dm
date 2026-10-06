@@ -59,21 +59,21 @@
 	desc = ""
 
 /datum/dog_fashion/head/kitty
-	name = "Runtime"
+	name = "运行时"
 	emote_see = list("咳出一团毛球", "伸了个懒腰")
 	emote_hear = list("发出呼噜声")
-	speak = list("Purrr", "Meow!", "MAOOOOOW!", "HISSSSS", "MEEEEEEW")
+	speak = list("呼噜", "喵！", "喵——！", "嘶——", "喵呜——")
 	desc = ""
 
 /datum/dog_fashion/head/rabbit
-	name = "Hoppy"
+	name = "蹦蹦"
 	emote_see = list("抽动着鼻子", "蹦跳了几下")
 	desc = ""
 
 /datum/dog_fashion/head/beret
-	name = "Yann"
+	name = "扬恩"
 	desc = ""
-	speak = list("le woof!", "le bark!", "JAPPE!!")
+	speak = list("汪！", "汪汪！", "汪呜！！")
 	emote_see = list("吓得缩成一团。", "投降了。", "开始装死。","像是看到面前有堵墙一样。")
 
 
@@ -92,11 +92,11 @@
 	desc = ""
 	emote_see = list("正在寻找宝藏。","冷冷地盯着前方……","咬得自己小小的柯基牙齿咯咯作响！")
 	emote_hear = list("凶狠地低吼！", "龇牙咆哮。")
-	speak = list("Arrrrgh!!","Grrrrrr!")
+	speak = list("啊呜——！！","呜——！")
 
 /datum/dog_fashion/head/pirate/New(mob/M)
 	..()
-	name = "[pick("老","坏血病","黑","朗姆","瘸腿","血腥","坏疽","死神","长约翰")] [pick("狗粮","腿","胡子","牙","臭甲板","Threepwood","Le Chuck","海盗","西尔弗","Crusoe")]"
+	name = "[pick("老","坏血病","黑","朗姆","瘸腿","血腥","坏疽","死神","长约翰")] [pick("狗粮","腿","胡子","牙","臭甲板","三木","勒查克","海盗","西尔弗","克鲁索")]"
 
 /datum/dog_fashion/head/ushanka
 	name = "Communist-title Realname"
@@ -114,21 +114,21 @@
 
 /datum/dog_fashion/head/blue_wizard
 	name = "大法师 REAL_NAME"
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU", "EI NATH!")
+	speak = list("汪", "汪！", "汪汪！", "嗷呜——", "EI NATH!")
 
 /datum/dog_fashion/head/red_wizard
 	name = "炎术师 REAL_NAME"
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU", "ONI SOMA!")
+	speak = list("汪", "汪！", "汪汪！", "嗷呜——", "ONI SOMA!")
 
 /datum/dog_fashion/head/cardborg
-	name = "Borgi"
-	speak = list("Ping!","Beep!","Woof!")
+	name = "机械柯基"
+	speak = list("叮！","哔！","汪！")
 	emote_see = list("开始失控。", "嗅探着非人类。")
 	desc = ""
 
 /datum/dog_fashion/head/ghost
 	name = "\proper 幽灵"
-	speak = list("WoooOOOooo~","AUUUUUUUUUUUUUUUUUU")
+	speak = list("呜——呜——～","嗷呜————")
 	emote_see = list("跌跌撞撞地游荡。", "瑟瑟发抖。")
 	emote_hear = list("发出嚎叫！","呻吟着。")
 	desc = ""
@@ -168,7 +168,7 @@
 /datum/dog_fashion/head/clown
 	name = "小丑 REAL_NAME"
 	desc = ""
-	speak = list("HONK!", "Honk!")
+	speak = list("嘎！", "嘎！")
 	emote_see = list("耍着滑稽把戏。", "啪叽一声滑倒了。")
 
 /datum/dog_fashion/back/deathsquad

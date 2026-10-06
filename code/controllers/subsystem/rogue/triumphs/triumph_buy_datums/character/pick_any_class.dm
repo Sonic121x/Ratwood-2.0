@@ -1,6 +1,6 @@
 /datum/triumph_buy/pick_any_class
 	triumph_buy_id = "PickAny"
-	desc = "Get single run of a class that can pick any class BYPASSING CLASS RESTRICTIONS on any class selection! WARNING: MAY BE BUGGY"
+	desc = "获得一次自由选职业的机会，可在选择职业时跳过职业限制！警告：可能存在缺陷。"
 	triumph_cost = 5
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
@@ -29,7 +29,7 @@
 //For triumph buy pick-all
 /datum/advclass/pick_everything
 	name = "Pick-Classes"
-	tutorial = "This will open up another menu when you spawn allowing you to pick from any class as long as its not disabled."
+	tutorial = "出生时将打开一个额外菜单，让你从所有未被禁用的职业中自由选择。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	maximum_possible_slots = 0
@@ -44,5 +44,5 @@
 			continue
 		possible_classes += CHECKS
 
-	var/datum/advclass/C = input(H.client, "What is my class?", "Adventure") as null|anything in possible_classes
+	var/datum/advclass/C = input(H.client, "我的职业是什么？", "冒险") as null|anything in possible_classes
 	C.equipme(H)

@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(lobbymenu)
 		"Wretch",
 		"Court Agent"
 	)
-	actor_list += "<center><b>Classes:</b></center><hr>"
+	actor_list += "<center><b>职业：</b></center><hr>"
 	for (var/mob/dead/new_player/player in GLOB.player_list)
 		if (player.client?.ckey in GLOB.hiderole)
 			continue
@@ -57,13 +57,13 @@ SUBSYSTEM_DEF(lobbymenu)
 			key = SSjob.bitflag_to_department(J.department_flag)
 
 		var/list/job_players = ready_players_by_job[job_name]
-		job_list_by_department[key] += "<B>[job_name]</B> ([job_players.len]) - [job_players.Join(", ")]<br>"
+		job_list_by_department[key] += "<B>[J?.display_title || (job_name == "Wanderer" ? "漫游者" : job_name)]</B> ([job_players.len]) - [job_players.Join(", ")]<br>"
 
 	for(var/department in job_list_by_department)
 		var/list/jobs_under_department = job_list_by_department[department]
 		if(jobs_under_department.len)
 			sortTim(jobs_under_department, cmp = GLOBAL_PROC_REF(cmp_text_asc))
-			actor_list += "<h3><center><font color='[JCOLOR_BY_DEPARTMENT[department]]'>----- [department] -----</font></center></h3>"
+			actor_list += "<h3><center><font color='[JCOLOR_BY_DEPARTMENT[department]]'>----- [list("Noblemen" = "贵族", "Courtiers" = "廷臣", "Garrison" = "驻军", "Church" = "教会", "Inquisition" = "宗教审判所", "Yeomen" = "自耕民", "Guildsmen" = "行会成员", "Peasants" = "农民", "Sidefolk" = "边缘居民", "Wanderers" = "漫游者", "Tribe" = "部族")[department] || department] -----</font></center></h3>"
 			actor_list += jobs_under_department
 
 	actor_list = actor_list.Join()

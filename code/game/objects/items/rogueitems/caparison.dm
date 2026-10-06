@@ -51,12 +51,12 @@
 	if(length(symbol_types))
 		possible_detail_types += list("纹章" = null)
 
-	var/chosen_design = input(user, "选择一种图案。", "Caparison Design") as null|anything in possible_detail_types
+	var/chosen_design = input(user, "选择一种图案。", "鞍饰毯图案") as null|anything in possible_detail_types
 	if(!chosen_design)
 		return
 
 	if(chosen_design == "纹章")
-		var/chosen_symbol = input(user, "选择一种纹章。", "Caparison Design") as null|anything in symbol_types
+		var/chosen_symbol = input(user, "选择一种纹章。", "鞍饰毯图案") as null|anything in symbol_types
 		if(!chosen_symbol)
 			return
 		detail_state = symbol_types[chosen_symbol]
@@ -71,14 +71,14 @@
 	var/list/color_map_list = GLOB.colorlist
 	colors_to_pick += color_map_list.Copy()
 
-	var/primary_color = input(user, "选择一种主色。", "Caparison Design") as null|anything in colors_to_pick
+	var/primary_color = input(user, "选择一种主色。", "鞍饰毯图案") as null|anything in colors_to_pick
 	if(!primary_color)
 		return
 	color = colors_to_pick[primary_color]
 
 	if(chosen_design != "无")
 		if(chosen_design != "纹章")
-			var/secondary_color = input(user, "选择一种辅色。", "Caparison Design") as null|anything in colors_to_pick
+			var/secondary_color = input(user, "选择一种辅色。", "鞍饰毯图案") as null|anything in colors_to_pick
 			if(!secondary_color)
 				return
 			detail_color = colors_to_pick[secondary_color]
