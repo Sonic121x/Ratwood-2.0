@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	if(!challenger)
 		return
 
-	priority_announce("[challenger.name]挑战阿斯特拉塔的领导地位！这场冲突将在不到2天内，以双方存活支持者的数量决定胜负。[challenger.name]承诺获胜后重赏信徒，而阿斯特拉塔誓言报复一切胆敢违抗祂的人。选择你的阵营，或置身事外……", "Schism within the Ten", 'sound/magic/marked.ogg')
+	priority_announce("[challenger.name]挑战阿斯特拉塔的领导地位！这场冲突将在不到2天内，以双方存活支持者的数量决定胜负。[challenger.name]承诺获胜后重赏信徒，而阿斯特拉塔誓言报复一切胆敢违抗祂的人。选择你的阵营，或置身事外……", "十神分裂", 'sound/magic/marked.ogg')
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		setup_mob(H)
 
@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			challenger_count++
 
 	if(astrata_count >= challenger_count)
-		priority_announce("阿斯特拉塔的光辉战胜了[challenger.name]的挑战！太阳女王证明了自己是普赛顿真正的继承者！", "Astrata is VICTORIOUS!", 'sound/magic/ahh2.ogg')
+		priority_announce("阿斯特拉塔的光辉战胜了[challenger.name]的挑战！太阳女王证明了自己是普赛顿真正的继承者！", "阿斯特拉塔获胜！", 'sound/magic/ahh2.ogg')
 		adjust_storyteller_influence("Astrata", 200)
 		adjust_storyteller_influence(challenger.name, -50)
 
@@ -132,7 +132,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 		addtimer(CALLBACK(src, PROC_REF(select_and_announce_vice_priest), challenger), 30 SECONDS)
 
 /datum/tennite_schism/proc/astrata_scorn()
-		priority_announce("你们不配沐浴我的圣光，忘恩负义的猪猡！", "Astrata's Scorn", 'sound/magic/fireball.ogg')
+		priority_announce("你们不配沐浴我的圣光，忘恩负义的猪猡！", "阿斯特拉塔的蔑视", 'sound/magic/fireball.ogg')
 		GLOB.todoverride = "night"
 		settod()
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reset_tod_override)), 20 MINUTES)
@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 		//selected_priest.verbs |= /mob/living/carbon/human/proc/churchcurse	- Add this back seperate later in a seperate PR. Good feature, PR too big tho.
 		selected_priest.verbs |= /mob/living/carbon/human/proc/churchannouncement
 
-		priority_announce("[challenger.name]选定[selected_priest.real_name]为新任主教！权力共享开始了！", "Bishop rises", 'sound/magic/inspire_02.ogg')
+		priority_announce("[challenger.name]选定[selected_priest.real_name]为新任主教！权力共享开始了！", "新任主教诞生", 'sound/magic/inspire_02.ogg')
 
 		if(was_supporter)
 			to_chat(selected_priest, span_green("[challenger.name]向你投以微笑！你在分裂期间忠诚的支持，为你赢得了副主教之位！"))
@@ -214,9 +214,9 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			challenger_count++
 
 	if(astrata_count >= challenger_count)
-		priority_announce("阿斯特拉塔在分裂中领先！祂很快便会施行报复……", "Schism Rages On", 'sound/magic/marked.ogg')
+		priority_announce("阿斯特拉塔在分裂中领先！祂很快便会施行报复……", "分裂愈演愈烈", 'sound/magic/marked.ogg')
 	else if(challenger_count > astrata_count)
-		priority_announce("[challenger.name]在分裂中领先！阿斯特拉塔很快便会被迫让步……", "Schism Rages On", 'sound/magic/marked.ogg')
+		priority_announce("[challenger.name]在分裂中领先！阿斯特拉塔很快便会被迫让步……", "分裂愈演愈烈", 'sound/magic/marked.ogg')
 
 	halfway_passed = TRUE
 
@@ -239,7 +239,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			to_chat(user, span_notice("你已宣布在分裂中保持中立。"))
 
 /obj/effect/proc_holder/spell/self/choose_schism_side
-	name = "Choose your side"
+	name = "选择阵营"
 	overlay_state = "limb_attach"
 	recharge_time = 20 SECONDS
 	var/chose_early = FALSE
@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	options["中立"] = "neutral"
 	if(challenger)
 		options["[challenger.name]"] = "challenger"
-	var/choice = input(user, "选择你在分裂中的阵营，你还可以改变[uses_remaining]次立场", "Choose your side") as null|anything in options
+	var/choice = input(user, "选择你在分裂中的阵营，你还可以改变[uses_remaining]次立场", "选择阵营") as null|anything in options
 	if(!choice || !current_schism)
 		return
 

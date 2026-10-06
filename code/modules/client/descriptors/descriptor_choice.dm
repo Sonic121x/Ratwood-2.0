@@ -1,6 +1,6 @@
 /datum/descriptor_choice
 	abstract_type = /datum/descriptor_choice
-	var/name = "Descriptor"
+	var/name = "外貌描述"
 	var/default_descriptor
 	var/list/descriptors = list()
 
@@ -35,7 +35,7 @@
 	)
 
 /datum/descriptor_choice/face_exp
-	name = "Resting Expression"
+	name = "常态神情"
 	descriptors = list(
 		/datum/mob_descriptor/face_exp/refined,
 		/datum/mob_descriptor/face_exp/disinterested,
@@ -117,7 +117,7 @@
 	)
 
 /datum/descriptor_choice/stature
-	name = "Stature"
+	name = "体格"
 	default_descriptor = /datum/mob_descriptor/stature/man
 	descriptors = list(
 		/datum/mob_descriptor/stature/lad,
@@ -192,7 +192,7 @@
 	)
 
 /datum/descriptor_choice/voice
-	name = "Voice"
+	name = "嗓音"
 	default_descriptor = /datum/mob_descriptor/voice/ordinary
 	descriptors = list(
 		/datum/mob_descriptor/voice/ordinary,
@@ -299,7 +299,7 @@
 	)
 
 /datum/descriptor_choice/height
-	name = "Height"
+	name = "身高"
 	default_descriptor = /datum/mob_descriptor/height/moderate
 	descriptors = list(
 		/datum/mob_descriptor/height/moderate,
@@ -314,7 +314,7 @@
 	)
 
 /datum/descriptor_choice/trait
-	name = "Physical Descriptor"
+	name = "身体描述"
 	default_descriptor = /datum/mob_descriptor/trait/moderate
 	descriptors = list(
 		/datum/mob_descriptor/trait/moderate,
@@ -544,42 +544,42 @@
 	/datum/mob_descriptor/prominent/vulpine_features
 
 /datum/descriptor_choice/prominent_one
-	name = "Prominent #1"
+	name = "显著特征 #1"
 	default_descriptor = /datum/mob_descriptor/prominent/unkempt
 	descriptors = list(PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_two
-	name = "Prominent #2"
+	name = "显著特征 #2"
 	default_descriptor = /datum/mob_descriptor/prominent/dim_look
 	descriptors = list(PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_three
-	name = "Prominent #3"
+	name = "显著特征 #3"
 	default_descriptor = /datum/mob_descriptor/prominent/none
 	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_four
-	name = "Prominent #4"
+	name = "显著特征 #4"
 	default_descriptor = /datum/mob_descriptor/prominent/none
 	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_one_wild
-	name = "Prominent #1"
+	name = "显著特征 #1"
 	default_descriptor = /datum/mob_descriptor/prominent/unkempt
 	descriptors = list(PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_two_wild
-	name = "Prominent #2"
+	name = "显著特征 #2"
 	default_descriptor = /datum/mob_descriptor/prominent/dim_look
 	descriptors = list(PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_three_wild
-	name = "Prominent #3"
+	name = "显著特征 #3"
 	default_descriptor = /datum/mob_descriptor/prominent/none
 	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_four_wild
-	name = "Prominent #4"
+	name = "显著特征 #4"
 	default_descriptor = /datum/mob_descriptor/prominent/none
 	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
 

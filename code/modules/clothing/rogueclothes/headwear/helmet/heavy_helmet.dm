@@ -1045,7 +1045,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "HELMET")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "头盔")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/matthios
 	name = "鎏金圣容"
@@ -1092,7 +1092,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/matthios/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "VISAGE")
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "面甲")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo
 	name = "阿凡泰因巴尔布特盔"
@@ -1105,7 +1105,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "HELMET")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "头盔")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo/ComponentInitialize()
 	. = ..()
@@ -1123,7 +1123,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "HELMET")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "头盔")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo/ComponentInitialize()
 	. = ..()
@@ -1143,7 +1143,7 @@
 	
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "HELMET")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "头盔")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo/ComponentInitialize()
 	. = ..()

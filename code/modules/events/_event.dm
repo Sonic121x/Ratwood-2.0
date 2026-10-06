@@ -406,4 +406,4 @@ GLOBAL_LIST_INIT(badomens, list())
 		if(OMEN_SUNSTEAL)
 			used = "太阳，祂受伤了！"
 	if(eventreason && used)
-		priority_announce(used, "Bad Omen", 'sound/misc/evilevent.ogg')
+		priority_announce(used, "不祥之兆", 'sound/misc/evilevent.ogg')

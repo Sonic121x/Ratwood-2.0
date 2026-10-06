@@ -23,12 +23,12 @@
 	if(!canSuicide())
 		return
 	var/oldkey = ckey
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("你确定要自杀吗？", "确认自杀", "是", "否")
 	if(ckey != oldkey)
 		return
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "是")
 		set_suicide(TRUE) //need to be called before calling suicide_act as fuck knows what suicide_act will do with your suicider
 		var/obj/item/held_item = get_active_held_item()
 		if(held_item)
@@ -107,10 +107,10 @@
 		return
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("你确定要自杀吗？", "确认自杀", "是", "否")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "是")
 		set_suicide(TRUE)
 		visible_message(span_danger("[src]的大脑正变得迟钝，逐渐失去生机。[p_they(TRUE)]似乎已经失去了活下去的意愿。"), \
 						span_danger("[src]的大脑正变得迟钝，逐渐失去生机。[p_they(TRUE)]似乎已经失去了活下去的意愿。"))
@@ -178,10 +178,10 @@
 		return
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("你确定要自杀吗？", "确认自杀", "是", "否")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "是")
 		set_suicide(TRUE)
 		visible_message(span_danger("[src]开始倒下，似乎已失去活下去的意愿。"), \
 						span_danger("[src]开始倒下，似乎已失去活下去的意愿。"))
