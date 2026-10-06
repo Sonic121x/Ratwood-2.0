@@ -161,10 +161,10 @@
 	clickcd = 6 //Very fast.
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("bites, chomps")
+	attack_verb = list("啃咬、噬咬")
 	animname = "cut"
 	hitsound = "genslash"
 	penfactor = 5
-	miss_text = "slashes the air with its fangs!"
+	miss_text = "用尖牙咬了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"

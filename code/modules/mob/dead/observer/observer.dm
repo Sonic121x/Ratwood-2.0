@@ -1561,48 +1561,48 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return null
 
 	if(istype(A, /datum/antagonist/vampire/lord))
-		return list("priority" = 10, "group" = "major", "label" = "Vampire Lord")
+		return list("priority" = 10, "group" = "major", "label" = "吸血鬼领主")
 	if(istype(A, /datum/antagonist/vampire/ancillae))
-		return list("priority" = 11, "group" = "major", "label" = "Ancillae Vampire")
+		return list("priority" = 11, "group" = "major", "label" = "资深吸血鬼")
 	if(istype(A, /datum/antagonist/vampire/licker))
-		return list("priority" = 12, "group" = "major", "label" = "Lesser Vampire")
+		return list("priority" = 12, "group" = "major", "label" = "低阶吸血鬼")
 	if(istype(A, /datum/antagonist/vampire/thinblood))
-		return list("priority" = 13, "group" = "major", "label" = "Thinblood Vampire")
+		return list("priority" = 13, "group" = "major", "label" = "薄血吸血鬼")
 	if(istype(A, /datum/antagonist/vampire))
 		var/datum/antagonist/vampire/V = A
 		if(V.generation >= GENERATION_METHUSELAH)
-			return list("priority" = 14, "group" = "major", "label" = "Vampire Lord")
+			return list("priority" = 14, "group" = "major", "label" = "吸血鬼领主")
 		if(special_role == "Vampire Spawn")
-			return list("priority" = 15, "group" = "major", "label" = "Vampire Spawn")
-		return list("priority" = 16, "group" = "major", "label" = "Lesser Vampire")
+			return list("priority" = 15, "group" = "major", "label" = "吸血鬼衍体")
+		return list("priority" = 16, "group" = "major", "label" = "低阶吸血鬼")
 
 	if(istype(A, /datum/antagonist/werewolf))
 		if(A.name == "Lesser Verevolf")
-			return list("priority" = 20, "group" = "major", "label" = "Lesser Werewolf")
-		return list("priority" = 21, "group" = "major", "label" = "Werewolf")
+			return list("priority" = 20, "group" = "major", "label" = "低阶狼人")
+		return list("priority" = 21, "group" = "major", "label" = "狼人")
 
 	if(istype(A, /datum/antagonist/lich))
-		return list("priority" = 30, "group" = "major", "label" = "Lich")
+		return list("priority" = 30, "group" = "major", "label" = "巫妖")
 
 	if(istype(A, /datum/antagonist/skeleton/knight))
-		return list("priority" = 40, "group" = "minor", "label" = "Death Knight")
+		return list("priority" = 40, "group" = "minor", "label" = "死亡骑士")
 	if(istype(A, /datum/antagonist/skeleton))
 		if(special_role == ROLE_LICH_SKELETON)
-			return list("priority" = 41, "group" = "minor", "label" = "Lich Skeleton")
+			return list("priority" = 41, "group" = "minor", "label" = "巫妖骷髅")
 		if(special_role == ROLE_NECRO_SKELETON)
-			return list("priority" = 42, "group" = "minor", "label" = "Necromancer Skeleton")
+			return list("priority" = 42, "group" = "minor", "label" = "死灵法师骷髅")
 		if(HAS_TRAIT(M, TRAIT_LICHLAIR))
-			return list("priority" = 43, "group" = "minor", "label" = "Lich Skeleton")
+			return list("priority" = 43, "group" = "minor", "label" = "巫妖骷髅")
 		if(assigned_role == "Fortified Skeleton" || assigned_role == "Greater Skeleton")
-			return list("priority" = 44, "group" = "minor", "label" = "Necromancer Skeleton")
-		return list("priority" = 45, "group" = "minor", "label" = "Skeleton")
+			return list("priority" = 44, "group" = "minor", "label" = "死灵法师骷髅")
+		return list("priority" = 45, "group" = "minor", "label" = "骷髅")
 
 	if(istype(A, /datum/antagonist/bandit))
-		return list("priority" = 50, "group" = "minor", "label" = "Bandit")
+		return list("priority" = 50, "group" = "minor", "label" = "强盗")
 	if(istype(A, /datum/antagonist/wretch))
-		return list("priority" = 51, "group" = "minor", "label" = "Wretch")
+		return list("priority" = 51, "group" = "minor", "label" = "弃民")
 	if(istype(A, /datum/antagonist/gnoll))
-		return list("priority" = 52, "group" = "minor", "label" = "Gnoll")
+		return list("priority" = 52, "group" = "minor", "label" = "豺狼人")
 
 	var/list/extra_candidate = get_orbit_extra_antag_candidate(A, special_role)
 	if(extra_candidate)
@@ -1628,7 +1628,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			return list(
 				"priority" = def["priority"],
 				"group" = def["group"],
-				"label" = A.name || special_role || "Antagonist",
+				"label" = A.name || special_role || "反派",
 			)
 
 	return null
@@ -1687,6 +1687,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			if(L.maxHealth > 0)
 				entry["health_percent"] = round(clamp((L.health / L.maxHealth) * 100, 0, 100))
 		if(istype(M, /mob/living/carbon/human/species/npc/deadite))
-			entry["role"] = "Deadite NPC"
+			entry["role"] = "尸鬼NPC"
 
 	return entry

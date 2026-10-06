@@ -24,7 +24,7 @@
 	icon = 'icons/mob/sprite_accessory/ears/ears_big.dmi'
 
 /datum/sprite_accessory/ears/cat
-	name = "Cat"
+	name = "猫耳"
 	icon_state = "cat"
 	extra_state = TRUE
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
@@ -34,7 +34,7 @@
 	icon_state = "axolotl"
 
 /datum/sprite_accessory/ears/bat
-	name = "Bat"
+	name = "蝙蝠耳"
 	icon_state = "bat"
 	color_keys = 2
 	color_key_names = list("耳朵", "内耳")
@@ -45,7 +45,7 @@
 	icon_state = "bear"
 
 /datum/sprite_accessory/ears/bigwolf
-	name = "Big Wolf"
+	name = "大狼耳"
 	icon_state = "bigwolf"
 	color_keys = 2
 	color_key_names = list("耳朵", "内耳")
@@ -64,7 +64,7 @@
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/bunny_perky
-	name = "Bunny (Perky)"
+	name = "兔耳（竖起）"
 	icon_state = "bunny_perky"
 	color_keys = 3
 	color_key_names = list("耳朵", "内耳", "耳尖")
@@ -90,7 +90,7 @@
 	icon_state = "horn"
 
 /datum/sprite_accessory/ears/deer
-	name = "Deer"
+	name = "鹿耳"
 	icon_state = "deer"
 
 /datum/sprite_accessory/ears/eevee
@@ -137,7 +137,7 @@
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/jellyfish
-	name = "Jellyfish"
+	name = "水母"
 	icon_state = "jellyfish"
 
 /datum/sprite_accessory/ears/kangaroo
@@ -194,7 +194,7 @@
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/shark
-	name = "Shark"
+	name = "鲨鱼"
 	icon_state = "shark"
 	color_keys = 2
 	color_key_names = list("耳朵", "内耳")
@@ -218,17 +218,17 @@
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/perky
-	name = "Perky"
+	name = "竖耳"
 	icon_state = "perky"
 	color_keys = 2
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/antenna_simple1
-	name = "Insect antenna 1"
+	name = "昆虫触角1"
 	icon_state = "antenna_simple1"
 
 /datum/sprite_accessory/ears/antenna_simple2
-	name = "Insect antenna 2"
+	name = "昆虫触角2"
 	icon_state = "antenna_simple2"
 
 /datum/sprite_accessory/ears/antenna_simple3
@@ -246,13 +246,13 @@
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/antenna_fuzzball2
-	name = "Fuzzball antenna 2"
+	name = "绒球触角2"
 	icon_state = "antenna_fuzzball2"
 	color_keys = 2
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/cobrahood
-	name = "Cobra Hood"
+	name = "眼镜蛇颈罩"
 	icon_state = "cobrahood"
 	color_keys = 2
 	color_key_names = list("耳朵", "内耳")
@@ -329,7 +329,7 @@
 	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/ears/goblin_alt
-	name = "Goblin Alt"
+	name = "哥布林（替代样式）"
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
 	icon_state = "goblinalt"
 	color_key_defaults = list(KEY_SKIN_COLOR)
@@ -366,7 +366,7 @@
 
 /datum/sprite_accessory/ears/big/sandfox_large
 	icon_state = "sandfox"
-	name = "Sandfox"
+	name = "沙狐"
 	color_keys = 2
 	color_key_names = list("耳朵", "内耳")
 	relevant_layers = list(BODY_ADJ_LAYER)
@@ -386,7 +386,7 @@
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/four_ears
-	name = "Four Ears"
+	name = "四耳"
 	icon_state = "four_ears"
 	color_keys = 2
 	color_key_names = list("耳朵", "细节")
@@ -401,7 +401,7 @@
 	icon_state = "m_ears_shadekinbandright"
 
 /datum/sprite_accessory/ears/shadekin/fluffy
-	name = "Shadekin (Fluffy)"
+	name = "影族（蓬松）"
 	icon_state = "m_ears_shadekinfluffy"
 
 /datum/sprite_accessory/ears/shadekin/smooth
@@ -410,7 +410,7 @@
 
 ///CONSTRUCT-GOLEM ACCESORIES, MADE OF METAL///
 /datum/sprite_accessory/ears/dendorite
-	name = "Dendorite Construct"
+	name = "登多尔构装体"
 	icon_state = "dendorite"
 
 /datum/sprite_accessory/ears/eoran
@@ -418,7 +418,7 @@
 	icon_state = "eoran"
 
 /datum/sprite_accessory/ears/pestran
-	name = "Pestran Construct"
+	name = "佩斯特拉构装体"
 	icon_state = "pestran"
 
 /datum/sprite_accessory/ears/zorzor

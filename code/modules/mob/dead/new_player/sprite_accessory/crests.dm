@@ -8,15 +8,15 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/crests/rubyb
-	name = "Rontz-Brass Crest"
+	name = "隆兹石黄铜冠饰"
 	icon_state = "rontzb"
 
 /datum/sprite_accessory/crests/ironc
-	name = "Iron Crown Crest"
+	name = "铁王冠冠饰"
 	icon_state = "ironc"
 
 /datum/sprite_accessory/crests/bronzer
-	name = "Bronze Rune Crest"
+	name = "青铜符文冠饰"
 	icon_state = "bronzer"
 
 /datum/sprite_accessory/crests/steelt
@@ -24,5 +24,5 @@
 	icon_state = "steelt"	
 
 /datum/sprite_accessory/crests/astratan
-	name = "astratan crown Crest"
+	name = "阿斯特拉塔王冠冠饰"
 	icon_state = "astratan"	
