@@ -260,14 +260,14 @@
 	add_overlay(M)
 
 /obj/structure/fluff/walldeco/customflag/barony
-	name = "Banner of the Lowtown Barony"
-	desc = "Prominently fluttering in the breeze you see the sturdy banner of the barony, the heraldry of the local baron. Many would be honored to wear these colors in loyal service to lowtown."
+	name = "低镇男爵领旗帜"
+	desc = "男爵领坚实的旗帜在微风中醒目地飘扬，绘有当地男爵的纹章。许多人以披戴这些颜色、忠诚效力于低镇为荣。"
 	icon_state = "wallflag"
 
 /obj/structure/fluff/walldeco/customflag/barony/Initialize(mapload)
 	. = ..(mapload)
-	name = "Banner of the Lowtown Barony" //parent's map-based renaming is ducal-specific, override it back
-	desc = "Prominently fluttering in the breeze you see the sturdy banner of the barony, the heraldry of the local baron. Many would be honored to wear these colors in loyal service to lowtown."
+	name = "低镇男爵领旗帜" //parent's map-based renaming is ducal-specific, override it back
+	desc = "男爵领坚实的旗帜在微风中醒目地飘扬，绘有当地男爵的纹章。许多人以披戴这些颜色、忠诚效力于低镇为荣。"
 	if(GLOB.baronprimary)
 		baronycolor(GLOB.baronprimary,GLOB.baronsecondary)
 	GLOB.baronycolor += src
