@@ -2,15 +2,15 @@
 16-20
 7-Zark-7
 790
-Adaptive Manipulator
-Allied Mastercomputer
+自适应操作机
+联合主计算机
 Alpha 5
 Alpha 6
 Alpha 7
 AM
 AMEE
 AmigoBot
-Android
+仿生人
 Aniel
 Asimov
 ASTAR
@@ -29,16 +29,16 @@ Cassandra One
 Cell
 Chii
 Chip
-Computer
+计算机
 Conky 2000
-Cutie
+小可爱
 Data
 Decimus
 Dee Model
-Deep Thought
+深思
 Dor-15
 Dorfl
-Dot Matrix
+点阵
 Duey
 E D I 
 E-Man
@@ -49,7 +49,7 @@ Ez-27
 Fagor
 Faith
 Fi
-FRIEND COMPUTER
+计算机朋友
 Frost
 Fum
 Futura
@@ -79,13 +79,13 @@ LUH 3417
 Maria
 MARK13
 Marvin
-Master Control Program
+主控程序
 Max 404
 Maximillian
 Mechagodzilla
 Mechani-Kong
 Megatron
-Metalhead
+金属脑袋
 Mr R I N G 
 Mugsy3000
 NCH
@@ -93,16 +93,16 @@ Necron-99
 Norby
 OMM 0910
 Optimus
-Orange v 3 5
-Project 2501
+橙子 v 3 5
+2501 计划
 PTO
 R I C 2 0
 R2-D2
 R4-P17
-Revelation
+启示
 Ro-Man
 Robbie
-Robot Devil
+机器魔鬼
 S A M 
 S H O C K 
 S H R O U D 
@@ -113,10 +113,10 @@ SHODAN
 Shrike
 SID 6 7
 Solo
-Soundwave
-Speedy
-Super 17
-Surgeon General Kraken
+声波
+飞毛腿
+超级 17 号
+军医总监克拉肯
 T-1000
 T-800
 T-850
@@ -127,7 +127,7 @@ Tik-Tok
 Tobor
 Trurl
 TWA
-ULTRABOT
+超级机器人
 Ulysses
 Uniblab
 V I N CENT 
