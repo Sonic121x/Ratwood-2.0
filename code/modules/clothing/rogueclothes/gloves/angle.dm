@@ -23,8 +23,8 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_MAGEDEXTERITY)
 
 /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
-	name = "格伦泽尔霍夫手套"
-	desc = "格伦泽尔霍夫风格的华贵手套，与其说是防具，不如说是时尚宣言。"
+	name = "格伦泽尔霍夫特手套"
+	desc = "格伦泽尔霍夫特风格的华贵手套，与其说是防具，不如说是时尚宣言。"
 	icon_state = "grenzelgloves"
 	item_state = "grenzelgloves"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'

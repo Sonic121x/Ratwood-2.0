@@ -207,10 +207,10 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/chain/psydon, SLOT_GLOVES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/psydonboots, SLOT_SHOES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/cloak/psydontabard, SLOT_CLOAK, TRUE)
-					var/helmets = list("巴布塔盔", "沙勒盔", "阿米特盔", "桶盔", "狼颅护鼻盔")
+					var/helmets = list("巴尔布特盔", "萨雷特盔", "阿米特盔", "桶盔", "狼颅护鼻盔")
 					var/helmet_choice = input(H,"选择你的普赛顿头盔。", "披挂普赛顿之盔") as anything in helmets
 					switch(helmet_choice)
-						if("巴布塔盔")
+						if("巴尔布特盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute, SLOT_HEAD, TRUE)
 						if("萨雷特盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psysallet, SLOT_HEAD, TRUE)

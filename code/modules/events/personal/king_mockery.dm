@@ -48,12 +48,12 @@
 	var/datum/objective/mock/monarch/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_biginfo("Xylix demands great entertainment! Seek out and viciously mock the ruler to prove your devotion and earn Xylix's favor!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_biginfo("赛利克斯渴求一场好戏！找到统治者并狠狠嘲弄，证明你的虔诚，赢得赛利克斯的青睐！"))
 	chosen_one.playsound_local(chosen_one, 'sound/vo/male/evil/laugh (1).ogg', 100)
 
 	var/obj/effect/proc_holder/spell/invoked/mockery/mock_spell = new()
 	chosen_one.mind.AddSpell(mock_spell)
-	to_chat(chosen_one, span_notice("Xylix has granted you the gift of savage mockery! Use it to ridicule your target."))
+	to_chat(chosen_one, span_notice("赛利克斯赐予你恶毒嘲讽的能力！用它来羞辱你的目标。"))
 
 	chosen_one.mind.announce_personal_objectives()

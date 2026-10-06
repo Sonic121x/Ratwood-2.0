@@ -60,15 +60,15 @@ export const ChimericTechWeb = (props) => {
     );
 
   return (
-    <Window width={600} height={500} title="Chimeric Tech Web">
+    <Window width={600} height={500} title="Chimeric Tech Web" display_title="嵌合科技树">
       <Window.Content>
         <Section title="Current Status">
           <Stack>
             <Stack.Item grow>
-                <Box bold color="label">Tech Points:</Box> {points}
+                <Box bold color="label">科技点：</Box> {points}
             </Stack.Item>
             <Stack.Item grow>
-                <Box bold color="label">Language Tier:</Box> {tier}
+                <Box bold color="label">语言等级：</Box> {tier}
             </Stack.Item>
           </Stack>
         </Section>
@@ -81,8 +81,8 @@ export const ChimericTechWeb = (props) => {
         >
           {filteredChoices.length === 0 && (
             <NoticeBox>
-                No new research is currently available. 
-                You may need more Tech Points, a higher Language Tier, or you may be missing a prerequisite for all remaining nodes.
+                目前没有新的研究可供选择。 
+                你可能需要更多科技点、更高的语言等级，或尚未完成其余研究节点所需的前置研究。
             </NoticeBox>
           )}
 
@@ -91,7 +91,7 @@ export const ChimericTechWeb = (props) => {
               <Stack align="center" justify="space-between">
                 <Stack.Item grow>
                   <Box bold>{node.name}</Box>
-                  <Box color="label">Tier {node.required_tier} | Cost {node.cost}</Box>
+                  <Box color="label">等级 {node.required_tier} | 消耗 {node.cost}</Box>
                   <Box className="text-desc">{node.desc}</Box>
                 </Stack.Item>
 
@@ -102,7 +102,7 @@ export const ChimericTechWeb = (props) => {
                     disabled={!node.can_afford}
                     onClick={() => act('unlock_node', { path: node.path })}
                   >
-                    {node.can_afford ? 'Unlock' : 'Too Expensive'}
+                    {node.can_afford ? '解锁' : '科技点不足'}
                   </Button>
                 </Stack.Item>
               </Stack>

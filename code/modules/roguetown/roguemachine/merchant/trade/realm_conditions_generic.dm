@@ -137,7 +137,7 @@
 /datum/realm_condition/gronn_raid_season
 	id = "gronn_raid_season"
 	name = "劫掠季"
-	description = "长船从南方海岸满载战利品归来。铁、毛皮和劫来的奢侈品在沃尔夫斯港码头廉价出售。为下一次航行备货的船员愿出高价购买盐与熟皮。"
+	description = "长船从南方海岸满载战利品归来。铁、毛皮和劫来的奢侈品在沃尔夫斯港码头廉价出售。为下一次航行备货的船员愿出高价购买盐与鞣制皮革。"
 	weight = 12
 	affected_realms = list(REALM_GRONN)
 	supply_modifiers = list(
@@ -200,7 +200,7 @@
 /datum/realm_condition/hammerhold_brigand_uprising
 	id = "hammerhold_brigand_uprising"
 	name = "匪徒暴乱"
-	description = "巴纳的边境领主未尽守土之责，匪帮从花岗岩山口南下。毛皮难觅，诺瓦丁正高价收购布匹、谷物与熟皮，为清剿行动备足物资。"
+	description = "巴纳的边境领主未尽守土之责，匪帮从花岗岩山口南下。毛皮难觅，诺瓦丁正高价收购布匹、谷物与鞣制皮革，为清剿行动备足物资。"
 	weight = 8
 	affected_realms = list(REALM_HAMMERHOLD)
 	supply_modifiers = list(
@@ -230,7 +230,7 @@
 /datum/realm_condition/kazengun_rebellion
 	id = "kazengun_rebellion"
 	name = "叛逆起兵"
-	description = "一名叛逆头领在南方本土岛屿举旗起兵。稻米停止出口，丝绸贸易受限。朝廷不惜代价订购铁、煤炭与熟皮，为效忠的大名配备军资。"
+	description = "一名叛逆头领在南方本土岛屿举旗起兵。稻米停止出口，丝绸贸易受限。朝廷不惜代价订购铁、煤炭与鞣制皮革，为效忠的大名配备军资。"
 	weight = 8
 	affected_realms = list(REALM_KAZENGUN)
 	supply_modifiers = list(
@@ -246,7 +246,7 @@
 /datum/realm_condition/kazengun_mainland_expedition
 	id = "kazengun_mainland_expedition"
 	name = "大陆远征"
-	description = "各氏族已向大陆派兵。军队装备急需熟皮与布匹，收购价高昂；南方航路被征用，茶叶出口也因此放缓。"
+	description = "各氏族已向大陆派兵。军队装备急需鞣制皮革与布匹，收购价高昂；南方航路被征用，茶叶出口也因此放缓。"
 	weight = 8
 	affected_realms = list(REALM_KAZENGUN)
 	demand_modifiers = list(
@@ -373,7 +373,7 @@
 /datum/realm_condition/naledi_sandstorm_season
 	id = "naledi_sandstorm_season"
 	name = "沙暴季"
-	description = "阿里索尔的风暴提早来临，久久不散。沙尘阻断了玻璃与金沙的生产。封闭的沙漠聚落需要布匹和熟皮，修补商队车辆，并在风暴中遮护普赛顿的圣像。"
+	description = "阿里索尔的风暴提早来临，久久不散。沙尘阻断了玻璃与金沙的生产。封闭的沙漠聚落需要布匹和鞣制皮革，修补商队车辆，并在风暴中遮护普赛顿的圣像。"
 	weight = 10
 	affected_realms = list(REALM_NALEDI)
 	supply_modifiers = list(
@@ -401,7 +401,7 @@
 /datum/realm_condition/otava_inquisition_writ
 	id = "otava_inquisition_writ"
 	name = "审判庭令状"
-	description = "神圣法庭对滨海瓦卢伊兹的码头颁下令状。告解师分队高价求购熟皮与铁，从异端家族没收的丝绸和宝石则在埃斯佩朗斯的拍卖台上廉价出售。兽脂价格高昂，审判庭要烧的东西很多。"
+	description = "神圣法庭对滨海瓦卢伊兹的码头颁下令状。告解师分队高价求购鞣制皮革与铁，从异端家族没收的丝绸和宝石则在埃斯佩朗斯的拍卖台上廉价出售。兽脂价格高昂，审判庭要烧的东西很多。"
 	weight = 8
 	affected_realms = list(REALM_OTAVA)
 	demand_modifiers = list(
@@ -448,7 +448,7 @@
 /datum/realm_condition/zybantium_caravan_raids
 	id = "zybantium_caravan_raids"
 	name = "商队遇袭"
-	description = "匪徒盘踞恩什科姆与弗尔达克南之间的东部山口。运糖和咖啡的商队姗姗来迟，货物也大为减少。受影响地区的谢赫正高价求购铁与熟皮，为反击配备军资。"
+	description = "匪徒盘踞恩什科姆与弗尔达克南之间的东部山口。运糖和咖啡的商队姗姗来迟，货物也大为减少。受影响地区的谢赫正高价求购铁与鞣制皮革，为反击配备军资。"
 	weight = 8
 	affected_realms = list(REALM_ZYBANTIUM)
 	supply_modifiers = list(

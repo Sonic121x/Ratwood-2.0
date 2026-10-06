@@ -521,95 +521,95 @@ GLOBAL_LIST_EMPTY(patron_follower_counts)
 
 GLOBAL_LIST_INIT(featured_stats, list(
 	FEATURED_STATS_TREE_FELLERS = list(
-		"name" = "TOP Lumberjacks",
+		"name" = "伐木排行榜",
 		"color" = "#9b6937",
 		"entries" = list()
 	),
 	FEATURED_STATS_TAX_PAYERS = list(
-		"name" = "TOP Tax Payers",
+		"name" = "纳税排行榜",
 		"color" = "#f1e35d",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRIMINALS = list(
-		"name" = "TOP Criminals",
+		"name" = "犯罪排行榜",
 		"color" = "#bb6976",
 		"entries" = list()
 	),
 	FEATURED_STATS_SPEAKERS = list(
-		"name" = "TOP Speakers",
+		"name" = "发言排行榜",
 		"color" = "#93cabe",
 		"entries" = list()
 	),
 	FEATURED_STATS_MINERS = list(
-		"name" = "TOP Miners",
+		"name" = "采矿排行榜",
 		"color" = "#bd8e60",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCHEMISTS = list(
-		"name" = "TOP Alchemists",
+		"name" = "炼金排行榜",
 		"color" = "#3bac5d",
 		"entries" = list()
 	),
 	FEATURED_STATS_STORYTELLERS = list(
-		"name" = "TOP Reigning Gods",
+		"name" = "神祇统治排行榜",
 		"color" = "#eeca2c",
 		"entries" = list()
 	),
 	FEATURED_STATS_GOURMETS = list(
-		"name" = "TOP Gourmets",
+		"name" = "美食排行榜",
 		"color" = "#6765cf",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTED_ITEMS = list(
-		"name" = "TOP Crafted Items",
+		"name" = "制作物品排行榜",
 		"color" = "#a5953a",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_FISHERS = list(
-		"name" = "TOP Fishers",
+		"name" = "钓鱼排行榜",
 		"color" = "#559bbb",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTERS = list(
-		"name" = "TOP Crafters",
+		"name" = "制作排行榜",
 		"color" = "#a8a24e",
 		"entries" = list()
 	),
 	FEATURED_STATS_FARMERS = list(
-		"name" = "TOP Farmers",
+		"name" = "农耕排行榜",
 		"color" = "#50eb77",
 		"entries" = list()
 	),
 	FEATURED_STATS_DRINKS = list(
-		"name" = "TOP Beverages",
+		"name" = "饮品排行榜",
 		"color" = "#5487c0",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_SCREAMERS = list(
-		"name" = "TOP Screamers",
+		"name" = "尖叫排行榜",
 		"color" = "#d34747",
 		"entries" = list()
 	),
 	FEATURED_STATS_THIEVES = list(
-		"name" = "TOP Thieves",
+		"name" = "偷窃排行榜",
 		"color" = "#6e4a25",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCOHOLICS = list(
-		"name" = "TOP Alcoholics",
+		"name" = "饮酒排行榜",
 		"color" = "#945d96",
 		"entries" = list()
 	),
 	FEATURED_STATS_MAGES = list(
-		"name" = "TOP Mages",
+		"name" = "法师排行榜",
 		"color" = "#9eaceb",
 		"entries" = list()
 	),
 
 	FEATURED_STATS_SPELLS = list(
-		"name" = "TOP Spells",
+		"name" = "法术排行榜",
 		"color" = "#6375c5",
 		"entries" = list(),
 		"object_stat" = TRUE
@@ -628,13 +628,13 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"admin_only" = TRUE
 	),
 	FEATURED_STATS_VICES = list(
-		"name" = "TOP 10 Vices",
+		"name" = "恶习前十榜",
 		"color" = "#791368",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_QUIRKS = list(
-		"name" = "TOP 10 Quirks",
+		"name" = "怪癖前十榜",
 		"color" = "#5cb896",
 		"entries" = list(),
 		"object_stat" = TRUE,
@@ -673,7 +673,7 @@ GLOBAL_LIST_EMPTY(chronicle_stats)
 /proc/format_top_stats(stat_category)
 	var/list/stat_data = GLOB.featured_stats[stat_category]
 	if(!stat_data || !stat_data["entries"])
-		return "Nobody"
+		return "无人"
 
 	var/list/entries = list()
 	for(var/key in stat_data["entries"])
@@ -685,14 +685,14 @@ GLOBAL_LIST_EMPTY(chronicle_stats)
 	for(var/i in 1 to min(14, entries.len))
 		var/list/entry = entries[i]
 		var/rounded_count = round(entry["count"])
-		result += "[i]. [entry["name"]] - [rounded_count]"
+		result += "[i]. [stat_category == FEATURED_STATS_STORYTELLERS ? list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Dendor" = "登多尔", "Eora" = "伊欧拉", "Malum" = "玛勒姆", "Noc" = "诺克", "Xylix" = "赛利克斯", "Ravox" = "拉沃克斯", "Zizo" = "齐佐", "Graggar" = "格拉加尔", "Baotha" = "巴奥莎", "Abyssor" = "阿比索尔", "Matthios" = "马西奥斯")[entry["name"]] : entry["name"]] - [rounded_count]"
 
 	return result.Join("<br>")
 
 /proc/format_top_stats_objects(stat_category)
 	var/list/stat_data = GLOB.featured_stats[stat_category]
 	if(!stat_data || !stat_data["entries"])
-		return "None"
+		return "无"
 
 	var/list/entries = list()
 	for(var/key in stat_data["entries"])

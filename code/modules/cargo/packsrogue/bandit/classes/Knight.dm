@@ -19,17 +19,17 @@
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel)
 
 /datum/supply_pack/rogue/Knight/wolfhelm
-	name = "沃尔夫板甲盔"
+	name = "沃尔夫钢盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 
 /datum/supply_pack/rogue/Knight/pigface
-	name = "猪面巴西内盔"
+	name = "猪面盆盔"
 	cost = 40
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface)
 
 /datum/supply_pack/rogue/Knight/hbascinet
-	name = "犬嘴巴西内盔"
+	name = "犬嘴盆盔"
 	cost = 40
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull)
 
@@ -64,7 +64,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket)
 
 /datum/supply_pack/rogue/Knight/vsallet
-	name = "面罩萨莱盔"
+	name = "面罩萨雷特盔"
 	cost = 40
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 

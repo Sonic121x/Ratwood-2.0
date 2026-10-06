@@ -150,7 +150,7 @@ export const MiaCraft = (props, context) => {
           <Stack.Item>
             {
               Object.entries(crafting_recipes).sort(([a], [b]) => String(a).localeCompare(String(b))).map(([key, item]) => (
-                <CraftingCategory crafties={item} key3={key} onlyCraftable={onlyCraftable} craftability={craftability} key={key} actfunc={act} searchText={searchText} />
+                <CraftingCategory crafties={item} key3={{ Transmutation: '转化', Rotational: '传动', Ranged: '远程', Explosives: '爆炸物', Clothes: '服装', Boots: '靴类', Misc: '杂项', Table: '台面', Smithing: '锻造' }[key] ?? key} onlyCraftable={onlyCraftable} craftability={craftability} key={key} actfunc={act} searchText={searchText} />
               ))
             }
           </Stack.Item>

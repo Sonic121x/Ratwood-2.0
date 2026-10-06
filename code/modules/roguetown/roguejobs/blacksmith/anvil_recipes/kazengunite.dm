@@ -14,7 +14,7 @@
 
 
 /datum/anvil_recipe/kazengunite/kabuto
-	name = "胴丸盔 (+1 钢, +1 熟皮)"
+	name = "胴丸盔 (+1 钢, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/kabuto
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -30,7 +30,7 @@
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/kazengunite/samsibsa
-	name = "三十四鳞板甲 (+1 半身板甲, 钢, +1 钢, +2 熟皮)"
+	name = "三十四鳞板甲 (+1 半身板甲, 钢, +1 钢, +2 鞣制皮革)"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
@@ -51,7 +51,7 @@
 // I do not know why the kazen craftbook is so limited, so here is some more stuff because YAAAY more kazen stuff! //
 
 /datum/anvil_recipe/kazengunite/mulyeog
-	name = "Hwando"
+	name = "环刀"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"
 	req_blade = /obj/item/blade/steel_sword
@@ -59,19 +59,19 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/kazengunite/armoredsandals
-	name = "Armored Sandals (+1 Cured Leather)"
+	name = "铠甲凉鞋 (+1 鞣制皮革)"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/kazengun
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/anvil_recipe/kazengunite/kabuto
-	name = "Jingasa (+1 Cloth)"
+	name = "阵笠 (+1 布料)"
 	additional_items = list(/obj/item/natural/cloth)
 	created_item = /obj/item/clothing/head/roguetown/helmet/kettle/jingasa
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/kazengunite/tanto
-	name = "Steel Tanto"
+	name = "钢短刀"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"
 	req_blade = /obj/item/blade/steel_knife
@@ -79,13 +79,13 @@
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/kazengunite/haraate
-	name = "Hansimhae Cuirass (+1 Steel, +2 Cloth)"
+	name = "韩心海胸甲 (+1 钢, +2 布料)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/cloth, /obj/item/natural/cloth)
 	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/haraate
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/kazengunite/naginata
-	name = "Naginata (+1 Big Log)"
+	name = "薙刀 (+1 大原木)"
 	additional_items = list(/obj/item/grown/log/tree/)
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"
@@ -94,7 +94,7 @@
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/kazengunite/kanabo
-	name = "Kanabo (+1 Steel, +2 Small Log)"
+	name = "铁包棒 (+1 钢, +2 小原木)"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/, /obj/item/grown/log/tree/small)
 	i_type = "Weapons"
@@ -103,7 +103,7 @@
 	display_category = ITEM_CAT_WEAPONS_MACES	
 
 /datum/anvil_recipe/kazengunite/kodachi
-	name = "Kodachi"
+	name = "钢小太刀"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"
 	req_blade = /obj/item/blade/steel_sword
@@ -111,7 +111,7 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/kazengunite/hook
-	name = "Hook Sword, Steel"
+	name = "钩剑, 钢"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"
 	req_blade = /obj/item/blade/steel_sword
@@ -119,6 +119,6 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/kazengunite/ogremask
-	name = "Ogre Mask"
+	name = "鬼面甲"
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel/kazengun/full
 	display_category = ITEM_CAT_ARMOR_MASKS

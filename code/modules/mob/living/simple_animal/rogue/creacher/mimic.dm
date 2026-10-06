@@ -91,7 +91,7 @@
 	icon_state = mimicking_chest::icon_state
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/proc/undisguise()
-	name = "\improper 宝箱怪"
+	name = "\proper 宝箱怪"
 	icon = initial(icon)
 	icon_state = (stat == DEAD) ? icon_dead : icon_living
 
