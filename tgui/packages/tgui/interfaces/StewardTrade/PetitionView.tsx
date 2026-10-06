@@ -256,10 +256,10 @@ const RegionPicker = (props: {
             : !eligible
               ? blocker
               : petitionsRemaining <= 0
-                ? 'no petitions remaining today'
+                ? '今日请愿次数已用尽'
                 : pledgeBalance < category.cost
-                  ? `pledge short ${category.cost - pledgeBalance}p`
-                  : `petition the ${regionName} hall for a ${category.label} order`;
+                  ? `认捐额度还差 ${category.cost - pledgeBalance}p`
+                  : `向${regionName}贸易大厅请愿，申请${category.label}订单`;
           return (
             <div
               key={rid}

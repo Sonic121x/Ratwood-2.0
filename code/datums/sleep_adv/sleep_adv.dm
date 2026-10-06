@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(cross_training_map, list(
 		community_status_points++
 		pending_community_bonus += STOCKPILE_COMMUNITY_CONTRIBUTION_DREAM_BONUS
 		if(mind?.current)
-			to_chat(mind.current, span_nicegreen("Word of my hard work to the town spreads. I can rest a bit easier with a sense of community."))
+			to_chat(mind.current, span_nicegreen("我为城镇辛勤付出的事迹传开了。有了这份归属感，我可以睡得更安心些。"))
 
 // Called when stock is withdrawn from the town stockpile. Reduces progress toward the
 // next community status point; Withdrawing to free up room shouldn't let a subsequent
@@ -302,7 +302,7 @@ GLOBAL_LIST_INIT(cross_training_map, list(
 
 	sleep_adv_points += dream_points + 1 //Have a dream point. Because you're awesome.
 	if(pending_community_bonus > 0)
-		to_chat(mind.current, span_notice("My good standing with the town enriches my dreams..."))
+		to_chat(mind.current, span_notice("我在镇上的好名声让梦境更加美好……"))
 		sleep_adv_points += pending_community_bonus
 		pending_community_bonus = 0
 	sleep_adv_cycle++
