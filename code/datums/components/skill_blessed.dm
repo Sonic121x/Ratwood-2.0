@@ -65,10 +65,10 @@
 	if(!HAS_TRAIT(user, required_trait))
 		return
 	if(HAS_TRAIT(user, TRAIT_SKILLBLESSED))
-		to_chat(user, span_warning("My mind is already focused on a different weapon."))
+		to_chat(user, span_warning("我的心思已经专注在另一件武器上了。"))
 		return
 
-	to_chat(user, span_info("[parent] and I are old friends. ([required_trait])"))
+	to_chat(user, span_info("[parent]和我是老朋友了。 ([required_trait])"))
 	original_skill = user.get_skill_level(weapon_skill)
 	user.adjust_skillrank_up_to(weapon_skill, skill_amount, silent = TRUE)
 	ADD_TRAIT(user, TRAIT_SKILLBLESSED, TRAIT_GENERIC)
@@ -96,7 +96,7 @@
 		other_skill = skill_comp
 
 	user.adjust_skillrank_down_to(weapon_skill, original_skill, silent = TRUE)
-	to_chat(user, span_info("Another tyme, old friend. ([required_trait])"))
+	to_chat(user, span_info("下次再会，老朋友。 ([required_trait])"))
 	REMOVE_TRAIT(user, TRAIT_SKILLBLESSED, TRAIT_GENERIC)
 
 	if(unique)

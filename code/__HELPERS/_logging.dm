@@ -327,7 +327,7 @@
 		if(C && C.holder && C.holder.fakekey && !include_name)
 			if(include_link)
 				. += "<a href='?priv_msg=[C.findStealthKey()]'>"
-			. += "Administrator"
+			. += "管理员"
 		else
 			if(include_link)
 				. += "<a href='?priv_msg=[ckey]'>"

@@ -510,7 +510,7 @@
 
 /datum/stressevent/dragon_scale
 	stressadd = -6
-	desc = span_suppradio("Hoardmaster 的贪婪正在拨弄我的心智……")
+	desc = span_suppradio("藏宝大师的贪婪正在拨弄我的心智……")
 	timer = INFINITY
 
 /datum/stressevent/oath_ring

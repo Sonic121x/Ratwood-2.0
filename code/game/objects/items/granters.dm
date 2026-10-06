@@ -213,147 +213,147 @@
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball
 	spellname = "火球术"
 	icon_state ="scrollred"
-	remarks = list("Ignis et oleum..", "Flammam continere ad momentum..", "Flammam iactare..", "Sit flamma constructum..")
+	remarks = list("火与油..", "将火焰暂时收束..", "投出烈焰..", "令火焰凝聚成形..")
 
 /obj/item/book/granter/spell/blackstone/greaterfireball
 	name = "高等火球术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	spellname = "高等火球术"
 	icon_state ="scrollred"
-	remarks = list("Ignis et oleum..", "Flammam continere ad momentum..", "Flammam iactare..", "Sit flamma constructum..")
+	remarks = list("火与油..", "将火焰暂时收束..", "投出烈焰..", "令火焰凝聚成形..")
 
 /obj/item/book/granter/spell/blackstone/lightning
 	name = "闪电术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	spellname = "闪电术"
 	icon_state ="scrollyellow"
-	remarks = list("Essentia fulgurum digitorum..", "Fulgur de nubibus desuper..", "Fulgur eiecit digitos..", "Praecipe intus aedificatur..")
+	remarks = list("指尖凝聚雷电精华..", "闪电自云端落下..", "雷光迸出指尖..", "电荷在体内积聚..")
 
 /obj/item/book/granter/spell/blackstone/fetch
 	name = "摄物术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/fetch
 	spellname = "摄物术"
 	icon_state ="scrollpurple"
-	remarks = list("Returnus Revico..", "Manus de reverti..", "Menus de returnus..")
+	remarks = list("召回归返..", "回到手中..", "归返之手..")
 
 /obj/item/book/granter/spell/blackstone/invisibility
 	name = "隐形术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/invisibility
 	spellname = "隐形术"
 	icon_state ="scrollpurple"
-	remarks = list("Pallium nihilum..", "Occultare veritatem..", "Veritatem removan menor..")
+	remarks = list("虚无之幕..", "遮蔽真相..", "抹去真实的痕迹..")
 
 /obj/item/book/granter/spell/blackstone/skeleton//BEWARE this is the super powerful LICH player skeleton spawner
 	name = "唤骷卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/raise_undead
 	spellname = "唤骷"
 	icon_state ="scrolldarkred"
-	remarks = list("Redi damnatos..", "Exitio ad Necram scriptor exolvuntur..", "Ossa in propinquus..")
+	remarks = list("受诅咒者归来..", "向内克拉解开灭亡之文..", "骸骨聚拢..")
 
 /obj/item/book/granter/spell/blackstone/sicknessray
 	name = "病蚀射线卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	spellname = "病蚀射线"
 	icon_state ="scrollgreen"
-	remarks = list("Foe rubiginem meam..", "Pestilentia in terris..", "Trabes putrida..")
+	remarks = list("我的锈蚀之敌..", "瘟疫遍布大地..", "腐败之光束..")
 
 /obj/item/book/granter/spell/blackstone/bonechill
 	name = "蚀骨寒意卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/bonechill
 	spellname = "蚀骨寒意"
 	icon_state ="scrolldarkred"
-	remarks = list("Mediolanum ventis..", "Sana damnatorum..", "Frigidus ossa mortuorum..")
+	remarks = list("米迪奥拉努姆之风..", "治愈受诅咒者..", "亡者的冰冷骸骨..")
 
 /obj/item/book/granter/spell/blackstone/acidsplash
 	name = "酸液飞溅卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/acidsplash
 	spellname = "酸液飞溅"
 	icon_state ="scrolldarkred"
-	remarks = list("Lapides corrodunt..", "Spuma venenosa..", "Guttae flavescentes..")
+	remarks = list("岩石遭到腐蚀..", "有毒的泡沫..", "泛黄的液滴..")
 
 /obj/item/book/granter/spell/blackstone/spitfire
 	name = "吐焰术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	spellname = "吐焰术"
 	icon_state ="scrollred"
-	remarks = list("Ignis et oleum..", "Flammam continere ad momentum..", "Flammam iactare..", "Sit flamma constructum..")
+	remarks = list("火与油..", "将火焰暂时收束..", "投出烈焰..", "令火焰凝聚成形..")
 
 /obj/item/book/granter/spell/blackstone/lesserknock
 	name = "次级开锁术卷轴"
 	spell = /obj/effect/proc_holder/spell/targeted/touch/lesserknock
 	spellname = "次级开锁术"
 	icon_state ="scrollred"
-	remarks = list("Clavis vetusta portam..", "Perdita numquam..", "Manus tremens..")
+	remarks = list("古老钥匙开启门扉..", "永不遗失..", "颤抖之手..")
 
 /obj/item/book/granter/spell/blackstone/repel
 	name = "斥退术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/repel
 	spellname = "斥退术"
 	icon_state ="scrolldarkred"
-	remarks = list("Ventos adversos..", "Terra sibilat..", "Lapides vetusti..")
+	remarks = list("逆向之风..", "大地低鸣..", "古老的岩石..")
 
 /obj/item/book/granter/spell/blackstone/guidance
 	name = "指引术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/guidance
 	spellname = "指引术"
 	icon_state ="scrolldarkred"
-	remarks = list("Lux in tenebris..", "Passus certus umbras non timet..", "Anima viam scit..")
+	remarks = list("黑暗中的光明..", "坚定的步伐不惧阴影..", "灵魂知晓道路..")
 
 /obj/item/book/granter/spell/blackstone/frostbolt
 	name = "寒霜箭卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/frostbolt
 	spellname = "寒霜箭"
 	icon_state ="scrolldarkred"
-	remarks = list("Gelum serpentibus..", "Crystallum in silentio..", "Nullum ardor glaciem..")
+	remarks = list("寒冰蜿蜒而行..", "寂静中的结晶..", "无热之冰..")
 
 /obj/item/book/granter/spell/blackstone/fortitude
 	name = "坚韧术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/fortitude
 	spellname = "坚韧术"
 	icon_state ="scrolldarkred"
-	remarks = list("Animus in adversis..", "Gravitas oneris..", "Vita renascitur..")
+	remarks = list("逆境中的意志..", "重担的分量..", "生命再生..")
 
 /obj/item/book/granter/spell/blackstone/message
 	name = "传讯术卷轴"
 	spell = /obj/effect/proc_holder/spell/self/message
 	spellname = "传讯术"
 	icon_state ="scrolldarkred"
-	remarks = list("Verba volant..", "Vincula inter mentes..", "Inter verba et silentium..")
+	remarks = list("言语飞扬..", "心智之间的纽带..", "介于言语与沉默之间..")
 
 /obj/item/book/granter/spell/blackstone/ensnare
 	name = "缠缚术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/ensnare
 	spellname = "缠缚术"
 	icon_state ="scrolldarkred"
-	remarks = list("Qui intrat..", "Radices in tenebris..", "Nexus occultus..")
+	remarks = list("踏入之人..", "黑暗中的根系..", "隐秘的联系..")
 
 /obj/item/book/granter/spell/blackstone/forcewall_weak
 	name = "力墙术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/forcewall
 	spellname = "力墙术"
 	icon_state ="scrolldarkred"
-	remarks = list("Murus non solum hostem..", "Manus invisibiles saxa invicem..", "Infracta moenia..")
+	remarks = list("墙壁不只阻挡敌人..", "无形之手将石块相接..", "坚不可摧的城墙..")
 
 /obj/item/book/granter/spell/blackstone/featherfall
 	name = "羽落术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/featherfall
 	spellname = "羽落术"
 	icon_state ="scrolldarkred"
-	remarks = list("In silentio cadit..", "Alis levitas..", "Plumis taciti dolores..")
+	remarks = list("无声落下..", "羽翼的轻盈..", "羽毛中沉默的痛楚..")
 
 /obj/item/book/granter/spell/blackstone/enlarge
 	name = "巨化术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/enlarge
 	spellname = "巨化术"
 	icon_state ="scrolldarkred"
-	remarks = list("Immensum agitur..", "Montes tremunt..", "Quantitas expanditur..")
+	remarks = list("巨物行动..", "山岳震颤..", "体量扩张..")
 
 /obj/item/book/granter/spell/blackstone/leap
 	name = "腾跃术卷轴"
 	spell = /obj/effect/proc_holder/spell/invoked/leap
 	spellname = "腾跃术"
 	icon_state ="scrolldarkred"
-	remarks = list("Altitudinem revelat..", "Cuius pedes in aere volant..", "In levitate audacia..")
+	remarks = list("显露高处..", "双足在空中飞行..", "轻盈中的勇气..")
 
 /obj/item/book/granter/spell/blackstone/familiar //Find Familiar Scroll
 	name = "寻得魔宠卷轴"
@@ -367,7 +367,7 @@
 	spell = /obj/effect/proc_holder/spell/invoked/mirror_transform
 	spellname = "镜像变形"
 	icon_state ="scrolldarkred"
-	remarks = list("Aspectum rebis adopta..", "Fac me novum..", "Pulcher ero..")
+	remarks = list("采纳新的形貌..", "让我焕然一新..", "我将变得美丽..")
 
 //scroll for giving the reader 3 spell points, this should be dungeon loot
 /obj/item/book/granter/spell_points
@@ -405,4 +405,4 @@
 	spell = /obj/effect/proc_holder/spell/invoked/raise_undead_formation
 	spellname = "次级唤骷"
 	icon_state ="scrolldarkred"
-	remarks = list("Redi damnatos..", "Exitio ad Necram scriptor exolvuntur..", "Ossa in propinquus..")
+	remarks = list("受诅咒者归来..", "向内克拉解开灭亡之文..", "骸骨聚拢..")

@@ -1,6 +1,6 @@
 /datum/vote/map_vote
 	name = "Map"
-	default_message = "Vote for next round's map!"
+	default_message = "为下一回合的地图投票！"
 	count_method = VOTE_COUNT_METHOD_SINGLE
 	winner_method = VOTE_WINNER_METHOD_SIMPLE
 	display_statistics = TRUE
@@ -18,12 +18,12 @@
 	if(length(choices) == 1) // Only one choice, no need to vote. Let's just auto-rotate it to the only remaining map because it would just happen anyways.
 		var/datum/map_config/change_me_out = global.config.maplist[choices[1]]
 		finalize_vote(choices[1])// voted by not voting, very sad.
-		to_chat(world, span_boldannounce("The map vote has been skipped because there is only one map left to vote for. \
-			The map has been changed to [change_me_out.map_name]."))
+		to_chat(world, span_boldannounce("由于只有一张可选地图，已跳过地图投票。 \
+			地图已更改为[change_me_out.map_name]。"))
 		return FALSE
 	if(length(choices) == 0)
-		to_chat(world, span_boldannounce("A map vote was called, but there are no maps to vote for! \
-			Players, complain to the admins. Admins, complain to the coders."))
+		to_chat(world, span_boldannounce("已发起地图投票，但没有可选地图！ \
+			请玩家联系管理员，管理员联系开发人员。"))
 		return FALSE
 
 	return TRUE
@@ -40,7 +40,7 @@
 		return .
 
 	if(SSmap_vote.next_map_config)
-		return "The next map has already been selected."
+		return "下一回合的地图已经选定。"
 
 	// The below case will be caught in create_vote() if the vote is being forced
 	// This ensures proper map rotation if there aren't enough votable maps for whatever reason
@@ -50,7 +50,7 @@
 	var/list/new_choices = SSmap_vote.get_valid_map_vote_choices()
 	var/num_choices = length(new_choices)
 	if(num_choices <= 1)
-		return "There [num_choices == 1 ? "is only one map" : "are no maps"] to choose from."
+		return "[num_choices == 1 ? "只有一张可选地图" : "没有可选地图"]。"
 
 	return VOTE_AVAILABLE
 
@@ -81,22 +81,22 @@
 	if(override_question)
 		title_text = span_bold(override_question)
 	else
-		title_text = span_bold("[capitalize(name)] Vote")
+		title_text = span_bold("地图投票")
 
-	var/returned_text = "Winner Selection: Simple"
+	var/returned_text = "胜出方式：票数最多者胜出"
 
 	var/total_votes = 0
 	for(var/map in choices)
 		total_votes += choices[map]
 
 	if(total_votes <= 0)
-		return span_bold("Vote Result: Inconclusive - No Votes!")
+		return span_bold("投票结果：无人投票，未选出获选地图！")
 
 	returned_text += "\n"
-	returned_text += "\nTotal Votes: [total_votes]"
+	returned_text += "\n总票数：[total_votes]"
 
 	if(display_statistics)
-		returned_text += "\n\nResults:"
+		returned_text += "\n\n结果："
 
 		for(var/map in choices)
 			var/direct_votes = choices[map]
@@ -114,9 +114,9 @@
 					bonus_voters++
 					total_bonus_weight += bonus
 
-			var/text = "[span_bold(map)]: [direct_votes] vote(s)"
+			var/text = "[span_bold(map)]：[direct_votes]票"
 			if(bonus_voters)
-				text += " (+[total_bonus_weight] bonus from [bonus_voters] returning voter[bonus_voters == 1 ? "" : "s"])"
+				text += "（[bonus_voters]位再次投票的玩家提供了[total_bonus_weight]张额外票数）"
 
 			returned_text += "\n[text]"
 

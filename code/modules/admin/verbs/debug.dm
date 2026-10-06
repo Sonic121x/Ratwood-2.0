@@ -1351,7 +1351,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			var/difference = source_rank - target_rank
 			target.adjust_skillrank(skill_type, difference, TRUE)
 	
-	to_chat(target, span_notice("Skills have been copied to match [source.name]'s abilities."))
+	to_chat(target, span_notice("我的技能已调整为与[source.name]的能力一致。"))
 
 /client/proc/copy_stats(mob/living/carbon/human/source, mob/living/carbon/human/target)
 	// Copy all stats using the correct stat names
@@ -1365,7 +1365,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		if(difference != 0)
 			target.change_stat(stat, difference)
 	
-	to_chat(target, span_notice("Stats have been copied to match [source.name]'s attributes."))
+	to_chat(target, span_notice("我的属性已调整为与[source.name]一致。"))
 
 /client/proc/copy_traits(mob/living/carbon/human/source, mob/living/carbon/human/target)
 	// Get source's job datum to find job traits
@@ -1397,7 +1397,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			for(var/trait in S.species_traits)
 				ADD_TRAIT(target, trait, SPECIES_TRAIT)
 	
-	to_chat(target, span_notice("Job traits have been copied, but your racial traits remain unchanged."))
+	to_chat(target, span_notice("职业特质已复制，种族特质保持不变。"))
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"

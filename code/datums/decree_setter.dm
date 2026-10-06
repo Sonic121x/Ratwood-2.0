@@ -3,7 +3,7 @@
 /datum/decree_setter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "DecreeSetter", "Charters of the Realm")
+		ui = new(user, src, "DecreeSetter", "领地宪章")
 		ui.open()
 
 /datum/decree_setter/ui_data(mob/user)
