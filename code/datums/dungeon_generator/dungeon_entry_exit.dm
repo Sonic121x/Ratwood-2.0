@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	claim_free_exit = TRUE
 
 /obj/structure/dungeon_entry
-	name = "Alotheos 之墓"
+	name = "阿洛西俄斯之墓"
 	desc = "贪婪的蠢货，你会带着财富与胜利归来，还是永远葬身其中？"
 
 	icon = 'icons/roguetown/misc/portal.dmi'

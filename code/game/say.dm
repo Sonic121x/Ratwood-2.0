@@ -149,9 +149,9 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					namepart = human.get_alt_name(TRUE)
 				else if(istype(speaker, /mob/living))
 					var/mob/living/L = speaker
-					namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
+					namepart = "陌生[(L.gender == FEMALE) ? "女子" : "男子"]"
 				else
-					namepart = "Unknown"
+					namepart = "陌生人"
 			spanpart1 = "<span class='smallyell'>"
 
 	var/languageicon = ""
@@ -246,7 +246,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		else
 			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode)
 	else
-		return "makes a strange sound."
+		return "发出奇怪的声音。"
 
 /proc/get_radio_span(freq)
 	var/returntext = GLOB.freqtospan["[freq]"]

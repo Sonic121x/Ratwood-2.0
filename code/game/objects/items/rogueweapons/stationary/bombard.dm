@@ -152,10 +152,10 @@ Also this is later going to the siege mode. But for now, brigands. Woohoo!!!!
 			to_chat(user, "<span class='warning'>这个位置上方有天花板！你不能直接瞄准那里！重新调整！</span>")
 			return
 /*		if(T.arcyne_shroud_check())//Has the magos warded the area? Some locations are protected by default, such as his tower...
-			to_chat(user, "<span class='warning'>This target is protected by an arcyne shroud! You cannot aim directly at it! Adjust!</span>")
+			to_chat(user, "<span class='warning'>这个目标受到奥术帷幕保护！你无法直接瞄准它！重新调整！</span>")
 			return
 		if(R.ceiling_protected)//As above. Separate, for good reason. | Commented out. For now.
-			to_chat(user, "<span class='warning'>This target is hardened against intrusion! You cannot dial directly to it! Adjust!</span>")
+			to_chat(user, "<span class='warning'>这个目标具有防侵入加固！你无法直接将落点调到那里！重新调整！</span>")
 			return*/
 
 		if(busy)

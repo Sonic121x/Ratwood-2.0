@@ -364,7 +364,7 @@
 
 /obj/item/rogueweapon/flail/peasantwarflail/matthios/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "FLAIL")
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "链枷")
 
 /obj/item/rogueweapon/flail/peasantwarflail/stalker
 	name = "卓尔尖刺巨型连枷"

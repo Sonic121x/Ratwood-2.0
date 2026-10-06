@@ -63,7 +63,7 @@
 		last_used = world.time
 
 /datum/magic_item/mythic/briarcurse
-	name = "Briar 的诅咒"
+	name = "荆棘诅咒"
 	description = "它的握柄似乎满是荆刺。用起来一定很痛。"
 	var/last_used
 

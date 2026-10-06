@@ -45,12 +45,12 @@
 		))
 	var/list/turfs = detect_room(get_turf(creator), area_or_turf_fail_types, BP_MAX_ROOM_SIZE*2)
 	if(!turfs)
-		to_chat(creator, "<span class='warning'>The new area must be completely airtight and not a part of a shuttle.</span>")
+		to_chat(creator, "<span class='warning'>新区域必须完全气密，且不能属于穿梭艇的一部分。</span>")
 		return
 	if(turfs.len > BP_MAX_ROOM_SIZE)
-		to_chat(creator, "<span class='warning'>The room you're in is too big. It is [turfs.len >= BP_MAX_ROOM_SIZE *2 ? "more than 100" : ((turfs.len / BP_MAX_ROOM_SIZE)-1)*100]% larger than allowed.</span>")
+		to_chat(creator, "<span class='warning'>你所在的房间过大，比允许的面积大出[turfs.len >= BP_MAX_ROOM_SIZE *2 ? "超过100" : ((turfs.len / BP_MAX_ROOM_SIZE)-1)*100]%。</span>")
 		return
-	var/list/areas = list("New Area" = /area)
+	var/list/areas = list("新建区域" = /area)
 	for(var/i in 1 to turfs.len)
 		var/area/place = get_area(turfs[i])
 		if(blacklisted_areas[place.type])
@@ -58,19 +58,19 @@
 		if(place.noteleport || place.hidden)
 			continue // No expanding powerless rooms etc
 		areas[place.name] = place
-	var/area_choice = input(creator, "Choose an area to expand or make a new area.", "Area Expansion") as null|anything in areas
+	var/area_choice = input(creator, "选择要扩建的区域，或新建一个区域。", "区域扩建") as null|anything in areas
 	area_choice = areas[area_choice]
 
 	if(!area_choice)
-		to_chat(creator, "<span class='warning'>No choice selected. The area remains undefined.</span>")
+		to_chat(creator, "<span class='warning'>未选择任何选项，此区域仍未定义。</span>")
 		return
 	var/area/newA
 	if(!isarea(area_choice))
-		var/str = stripped_input(creator,"New area name:", "Blueprint Editing", "", MAX_NAME_LEN)
+		var/str = stripped_input(creator,"新区域名称：", "蓝图编辑", "", MAX_NAME_LEN)
 		if(!str || !length(str)) //cancel
 			return
 		if(length(str) > 50)
-			to_chat(creator, "<span class='warning'>The given name is too long. The area remains undefined.</span>")
+			to_chat(creator, "<span class='warning'>输入的名称过长，此区域仍未定义。</span>")
 			return
 		newA = new area_choice
 		newA.setup(str)
@@ -86,7 +86,7 @@
 
 	newA.reg_in_areas_in_z()
 
-	to_chat(creator, "<span class='notice'>I have created a new area, named [newA.name]. It is now weather proof, and constructing an APC will allow it to be powered.</span>")
+	to_chat(creator, "<span class='notice'>我已创建名为[newA.name]的新区域。它现在可以抵御天气，建造区域电力控制器后即可供电。</span>")
 	return TRUE
 
 #undef BP_MAX_ROOM_SIZE

@@ -86,7 +86,7 @@
 		var/mob/living/lead = F.get_leader()
 		invites += list(list(
 			"fellowship_name" = F.name,
-			"leader_name" = lead ? lead.real_name : "Unknown",
+			"leader_name" = lead ? lead.real_name : "未知",
 			"member_count" = length(F.get_members()),
 			"max_members" = FELLOWSHIP_MAX_MEMBERS,
 			"expires_at" = entry[1],
@@ -119,21 +119,21 @@
 		return TRUE
 	var/raw = params["name"]
 	if(!raw)
-		raw = tgui_input_text(holder, "Name your fellowship:", "Fellowship", max_length = FELLOWSHIP_NAME_MAX_LEN)
+		raw = tgui_input_text(holder, "为你的冒险团取名：", "冒险团", max_length = FELLOWSHIP_NAME_MAX_LEN)
 	if(!raw)
 		return TRUE
 	var/candidate = trim(raw)
 	if(length(candidate) < FELLOWSHIP_NAME_MIN_LEN)
-		to_chat(holder, span_warning("That name is too short."))
+		to_chat(holder, span_warning("名称太短了。"))
 		return TRUE
 	if(length(candidate) > FELLOWSHIP_NAME_MAX_LEN)
-		to_chat(holder, span_warning("That name is too long."))
+		to_chat(holder, span_warning("名称太长了。"))
 		return TRUE
 	if(!fellowship_name_available(candidate))
-		to_chat(holder, span_warning("That fellowship name is already taken or invalid."))
+		to_chat(holder, span_warning("这个冒险团名称已被占用或无效。"))
 		return TRUE
 	new /datum/fellowship(holder, candidate)
-	to_chat(holder, span_notice("You have founded the fellowship '[candidate]'."))
+	to_chat(holder, span_notice("你组建了冒险团‘[candidate]’。"))
 	return TRUE
 
 /datum/fellowship_ui/proc/handle_leave()
@@ -161,7 +161,7 @@
 		return TRUE
 	var/list/living = F.get_members()
 	if(length(living) >= FELLOWSHIP_MAX_MEMBERS)
-		to_chat(holder, span_warning("The fellowship is full."))
+		to_chat(holder, span_warning("冒险团人数已满。"))
 		return TRUE
 	var/list/candidates = list()
 	for(var/mob/living/carbon/human/H in view(7, holder))
@@ -179,9 +179,9 @@
 			suffix++
 		candidates[label] = H
 	if(!length(candidates))
-		to_chat(holder, span_warning("There is no one nearby you can invite."))
+		to_chat(holder, span_warning("附近没有可以邀请的人。"))
 		return TRUE
-	var/choice = tgui_input_list(holder, "Invite whom to the fellowship?", "Fellowship", candidates)
+	var/choice = tgui_input_list(holder, "邀请谁加入冒险团？", "冒险团", candidates)
 	if(!choice)
 		return TRUE
 	var/mob/living/target = candidates[choice]

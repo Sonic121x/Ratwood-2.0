@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 /mob/living/carbon/human/proc/setaudience()
 	set name = "选择听众"
-	set category = "Inspiration"
+	set category = "鼓舞"
 
 	if(!inspiration)
 		return FALSE
@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 /mob/living/carbon/human/proc/clearaudience()
 	set name = "清空听众"
-	set category = "Inspiration"
+	set category = "鼓舞"
 	if(!inspiration)
 		return FALSE
 	if(src.has_status_effect(/datum/status_effect/buff/playing_music)) // cant clear while playing
@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 /mob/living/carbon/human/proc/checkaudience()
 	set name = "查看听众"
-	set category = "Inspiration"
+	set category = "鼓舞"
 
 	if(!inspiration)
 		return FALSE
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 /mob/living/carbon/human/proc/picksongs()
 	set name = "填写歌本"
-	set category = "Inspiration"
+	set category = "鼓舞"
 
 
 	if(!mind)
@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 /mob/living/carbon/human/proc/resetsongs()
 	set name = "重选歌曲"
-	set category = "Inspiration"
+	set category = "鼓舞"
 
 	if(!mind || !inspiration)
 		return
@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 /mob/living/carbon/human/proc/pickrhythms()
 	set name = "选择节奏"
-	set category = "Inspiration"
+	set category = "鼓舞"
 
 	if(!mind)
 		return
@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(learnable_rhythms, (list(/obj/effect/proc_holder/spell/self/rhy
 
 /mob/living/carbon/human/proc/resetrhythms()
 	set name = "重选节奏"
-	set category = "Inspiration"
+	set category = "鼓舞"
 
 	if(!mind || !inspiration || inspiration.level < BARD_T2)
 		return

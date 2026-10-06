@@ -77,8 +77,8 @@
 	user.faction |= faction_tag
 	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(on_member_qdel), override = TRUE)
 	remove_pending_invite(user.real_name)
-	to_chat(user, span_notice("You have joined the fellowship '[name]'."))
-	notify_members("[user.real_name] has joined the fellowship.", exclude = user)
+	to_chat(user, span_notice("你加入了冒险团‘[name]’。"))
+	notify_members("[user.real_name]加入了冒险团。", exclude = user)
 	push_updates()
 	return TRUE
 
@@ -92,13 +92,13 @@
 	strip_fellowship_from(user)
 	switch(reason)
 		if(FELLOWSHIP_REASON_KICKED)
-			to_chat(user, span_warning("You have been removed from the fellowship '[name]'."))
-			notify_members("[user.real_name] has been removed from the fellowship.")
+			to_chat(user, span_warning("你被移出了冒险团‘[name]’。"))
+			notify_members("[user.real_name]被移出了冒险团。")
 		if(FELLOWSHIP_REASON_DESTROYED)
-			notify_members("[user.real_name] is no longer among the fellowship.")
+			notify_members("[user.real_name]已不再是冒险团的一员。")
 		else
-			to_chat(user, span_notice("You have left the fellowship '[name]'."))
-			notify_members("[user.real_name] has left the fellowship.")
+			to_chat(user, span_notice("你离开了冒险团‘[name]’。"))
+			notify_members("[user.real_name]离开了冒险团。")
 	if(!check_auto_disband())
 		push_updates()
 	return TRUE
@@ -130,7 +130,7 @@
 	return FALSE
 
 /datum/fellowship/proc/disband(reason = "leader")
-	notify_members("The fellowship '[name]' has been disbanded.")
+	notify_members("冒险团‘[name]’已解散。")
 	var/list/affected = get_members()
 	for(var/invitee_name in pending_invites)
 		var/list/entry = pending_invites[invitee_name]
@@ -150,27 +150,27 @@
 
 /datum/fellowship/proc/invite(mob/living/inviter, mob/living/target)
 	if(!is_leader(inviter))
-		to_chat(inviter, span_warning("Only the fellowship leader can invite others."))
+		to_chat(inviter, span_warning("只有冒险团首领才能邀请他人。"))
 		return FALSE
 	if(!istype(target) || QDELETED(target))
-		to_chat(inviter, span_warning("That target cannot be invited."))
+		to_chat(inviter, span_warning("无法邀请这个目标。"))
 		return FALSE
 	if(target == inviter)
 		return FALSE
 	if(has_member(target))
-		to_chat(inviter, span_warning("[target.real_name] is already in the fellowship."))
+		to_chat(inviter, span_warning("[target.real_name]已经是冒险团的成员了。"))
 		return FALSE
 	if(target.current_fellowship)
-		to_chat(inviter, span_warning("[target.real_name] is already in a fellowship."))
+		to_chat(inviter, span_warning("[target.real_name]已经加入了一个冒险团。"))
 		return FALSE
 	if(length(get_members()) >= FELLOWSHIP_MAX_MEMBERS)
-		to_chat(inviter, span_warning("The fellowship is full."))
+		to_chat(inviter, span_warning("冒险团人数已满。"))
 		return FALSE
 	pending_invites[target.real_name] = list(world.time + FELLOWSHIP_INVITE_EXPIRY, WEAKREF(target))
 	target.incoming_fellowship_invites |= WEAKREF(src)
-	var/href = "<a href='?src=[REF(src)];accept_invite=1;invitee=[target.real_name]'>\[Accept\]</a>"
-	to_chat(target, span_notice("[inviter.real_name] has invited you to join the fellowship '[name]'. [href]"))
-	to_chat(inviter, span_notice("You have invited [target.real_name] to the fellowship."))
+	var/href = "<a href='?src=[REF(src)];accept_invite=1;invitee=[target.real_name]'>\[接受\]</a>"
+	to_chat(target, span_notice("[inviter.real_name]邀请你加入冒险团‘[name]’。 [href]"))
+	to_chat(inviter, span_notice("你邀请了[target.real_name]加入冒险团。"))
 	push_updates()
 	refresh_fellowship_ui_for(target)
 	return TRUE
@@ -181,7 +181,7 @@
 	if(!(invitee_name in pending_invites))
 		return FALSE
 	remove_pending_invite(invitee_name)
-	to_chat(user, span_notice("You have rescinded the invitation for [invitee_name]."))
+	to_chat(user, span_notice("你撤回了发给[invitee_name]的邀请。"))
 	push_updates()
 	return TRUE
 
@@ -215,7 +215,7 @@
 		return FALSE
 	prune_invites()
 	if(!(user.real_name in pending_invites))
-		to_chat(user, span_warning("That invitation has expired or was rescinded."))
+		to_chat(user, span_warning("邀请已过期或已被撤回。"))
 		return FALSE
 	return add_member(user)
 

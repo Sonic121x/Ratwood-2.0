@@ -534,7 +534,7 @@
 		/obj/item/storage/belt/rogue/leather/plaquegold/baotha = 10,
 	)
 /obj/item/carvedgem/rose/statue/baotha
-	name = "Baotha小像"
+	name = "巴奥莎小像"
 	desc = "一尊用污秽至极的玫瑰石雕成的小像。"
 	color = "#b85cb3"
 

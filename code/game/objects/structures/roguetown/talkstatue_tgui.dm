@@ -24,7 +24,7 @@
 		registry[user.real_name] = data
 	data["status"] = new_status
 	data["mob"] = user
-	to_chat(user, span_notice("我已将状态设为：<b>[new_status]</b>"))
+	to_chat(user, span_notice("我已将状态设为：<b>[list("Available" = "可接委托", "Contracted" = "已签约", "Do not Disturb" = "请勿打扰", "Away" = "外出", "Resting" = "休息", "On a Job" = "正在办事", "Lying Low" = "暂避风头")[new_status] || new_status]</b>"))
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	log_admin_private("[key_name(user)] set statue status to [new_status]")
 
@@ -82,7 +82,7 @@
 			if(d["status"] == "Do not Disturb")
 				continue
 			var/status_text = d["status"] || "Available"
-			picker["[adv.real_name] ([status_text])"] = adv.real_name
+			picker["[adv.real_name] ([list("Available" = "可接委托", "Away" = "外出", "Resting" = "休息", "Do not Disturb" = "请勿打扰")[status_text] || status_text])"] = adv.real_name
 		if(!picker.len)
 			to_chat(sender, span_warning("目前没有可供联络的冒险者。"))
 			return
@@ -146,7 +146,7 @@
 				continue
 			var/display = d["nom_de_guerre"] || w.real_name
 			var/status_text = d["status"] || "Available"
-			picker["[display] ([status_text])"] = w.real_name
+			picker["[display] ([list("Available" = "可接委托", "On a Job" = "正在办事", "Lying Low" = "暂避风头", "Do not Disturb" = "请勿打扰")[status_text] || status_text])"] = w.real_name
 		if(!picker.len)
 			to_chat(sender, span_warning("目前没有可供联络的弃民。"))
 			return

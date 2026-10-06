@@ -6,7 +6,7 @@
 	..()
 
 /atom/movable/screen/ghost/jumptomob
-	name = "Jump to mob"
+	name = "跳转至角色"
 	icon_state = "jumptomob"
 
 /atom/movable/screen/ghost/jumptomob/Click()
@@ -14,7 +14,7 @@
 	G.jumptomob()
 
 /atom/movable/screen/ghost/orbit
-	name = "Orbit"
+	name = "跟随"
 	icon_state = "orbit"
 
 /atom/movable/screen/ghost/orbit/Click()
@@ -22,7 +22,7 @@
 	G.open_orbit_menu()
 //skull
 /atom/movable/screen/ghost/orbit/rogue
-	name = "AFTER LIFE"
+	name = "来世"
 	icon = 'icons/mob/ghostspin.dmi'
 	icon_state = ""
 	screen_loc = "WEST-4,SOUTH+6"
@@ -37,7 +37,7 @@
 		if(G.client)
 			if(istype(G, /mob/dead/observer/rogue/arcaneeye))
 				return
-			if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
+			if(alert("要随摆渡人启程吗？", "", "是", "否") == "是")
 				if(G.mind)
 					var/datum/job/target_job = SSjob.GetJob(G.mind.assigned_role)
 					if(target_job)
@@ -50,7 +50,7 @@
 				G.returntolobby(0)
 
 /atom/movable/screen/ghost/reenter_corpse
-	name = "Reenter corpse"
+	name = "返回躯体"
 	icon_state = "reenter_corpse"
 
 /atom/movable/screen/ghost/reenter_corpse/Click()
@@ -58,7 +58,7 @@
 	G.reenter_corpse()
 
 /atom/movable/screen/ghost/teleport
-	name = "Teleport"
+	name = "传送"
 	icon_state = "teleport"
 
 /atom/movable/screen/ghost/teleport/Click()
@@ -66,7 +66,7 @@
 	G.dead_tele()
 
 /atom/movable/screen/ghost/moveup
-	name = "move up"
+	name = "向上移动"
 	icon_state = "up"
 
 /atom/movable/screen/ghost/moveup/Click()
@@ -74,11 +74,11 @@
 	G.ghost_up()
 
 /atom/movable/screen/ghost/movedown
-	name = "move down"
+	name = "向下移动"
 	icon_state = "down"
 
 /atom/movable/screen/ghost/bigassuselessbutton
-	name = "AFTER LIFE"
+	name = "来世"
 	icon = 'icons/mob/ghostspin.dmi'
 	icon_state = ""
 	screen_loc = "WEST-4,SOUTH+6"

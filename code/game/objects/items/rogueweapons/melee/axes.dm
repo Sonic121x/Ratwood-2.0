@@ -748,7 +748,7 @@
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "AXE", "RENDERED ASUNDER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "斧", "撕裂")
 
 ////////////////////////////////////////
 // Unique loot axes; mostly from mobs //

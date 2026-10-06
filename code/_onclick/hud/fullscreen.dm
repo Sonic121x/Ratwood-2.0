@@ -185,7 +185,7 @@
 	var/mob/living/L = usr
 	if(L.stat == DEAD)
 		return
-	if(alert("你已不想再活下去了吗？", "", "Yes", "No") == "No")
+	if(alert("你已不想再活下去了吗？", "", "是", "否") == "否")
 		return
 	L.succumb(reaper = TRUE)
 
