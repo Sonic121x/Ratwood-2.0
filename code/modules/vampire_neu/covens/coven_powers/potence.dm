@@ -1,6 +1,6 @@
 /datum/coven/potence
-	name = "Potence"
-	desc = "Boosts melee and unarmed damage."
+	name = "巨力"
+	desc = "提高近战与徒手攻击伤害。"
 	icon_state = "potence"
 	power_type = /datum/coven_power/potence
 
@@ -23,7 +23,7 @@
 	owner.dna.species.punch_damage += POTENCE_PUNCH_DAMAGE_PER_LEVEL * level
 	owner.apply_status_effect(/datum/status_effect/buff/potence, level)
 	if(level > 2)
-		owner.visible_message(span_warning("[owner] tenses their muscles, looking exceptionally stronger!"))
+		owner.visible_message(span_warning("[owner]绷紧肌肉，看起来强壮了许多！"))
 		if(level > 3)
 			ADD_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, VAMPIRE_TRAIT)
 			ADD_TRAIT(owner, TRAIT_ZJUMP, VAMPIRE_TRAIT)
@@ -34,15 +34,15 @@
 	owner.dna.species.punch_damage -= POTENCE_PUNCH_DAMAGE_PER_LEVEL * level
 	owner.remove_status_effect(/datum/status_effect/buff/potence)
 	if(level > 2)
-		owner.visible_message(span_warning("[owner] relaxes their body."))
+		owner.visible_message(span_warning("[owner]放松了身体。"))
 		if(level > 3)
 			REMOVE_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, VAMPIRE_TRAIT)
 			REMOVE_TRAIT(owner, TRAIT_ZJUMP, VAMPIRE_TRAIT)
 			REMOVE_TRAIT(owner, TRAIT_NOFALLDAMAGE1, VAMPIRE_TRAIT)
 //POTENCE 1
 /datum/coven_power/potence/one
-	name = "Potence 1"
-	desc = "Enhance your muscles. Never hit softly."
+	name = "巨力一阶"
+	desc = "强化你的肌肉，每一击都势大力沉。"
 
 	level = 1
 	research_cost = 0
@@ -52,8 +52,8 @@
 
 //POTENCE 2
 /datum/coven_power/potence/two
-	name = "Potence 2"
-	desc = "Become powerful beyond your muscles. Wreck people and things."
+	name = "巨力二阶"
+	desc = "获得超越肌肉极限的力量，摧毁人和物。"
 
 	level = 2
 	research_cost = 1
@@ -65,8 +65,8 @@
 
 //POTENCE 3
 /datum/coven_power/potence/three
-	name = "Potence 3"
-	desc = "Become a force of destruction. Lift and break the unliftable and the unbreakable."
+	name = "巨力三阶"
+	desc = "化身毁灭之力，举起不可举之物，击碎不可碎之物。"
 
 	level = 3
 	research_cost = 2
@@ -77,8 +77,8 @@
 
 //POTENCE 4
 /datum/coven_power/potence/four
-	name = "Potence 4"
-	desc = "Become an unyielding machine for as long as your Vitae lasts."
+	name = "巨力四阶"
+	desc = "只要命髓尚存，你便是一具不屈的战争机器。"
 
 	level = 4
 	research_cost = 3
@@ -89,8 +89,8 @@
 
 //POTENCE 5
 /datum/coven_power/potence/five
-	name = "Potence 5"
-	desc = "The people could worship you as a god if you showed them this."
+	name = "巨力五阶"
+	desc = "若向世人展示这份力量，他们或许会奉你为神。"
 
 	level = 5
 	research_cost = 4

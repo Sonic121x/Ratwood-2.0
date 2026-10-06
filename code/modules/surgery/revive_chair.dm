@@ -323,10 +323,10 @@
 		binding_foreign = human_occupant.has_foreign_brain()
 	if(binding_foreign)
 		if(H.get_skill_level(/datum/skill/misc/medicine) < SKILL_LEVEL_MASTER)
-			to_chat(H, span_warning("Binding a soul to stranger's flesh is beyond my skill. Only a master of medicine could attempt it."))
+			to_chat(H, span_warning("将灵魂绑定到他人的躯体上超出了我的技艺。只有医术大师才能尝试。"))
 			return
 		if(current_brew < max_brew)
-			to_chat(H, span_warning("Binding a stranger's soul to this flesh would drink the entire tank. It must be filled to the brim!"))
+			to_chat(H, span_warning("将他人的灵魂绑定到这具躯体上会耗尽整罐药液。必须将药罐装满！"))
 			return
 
 	// Check if occupant is valid

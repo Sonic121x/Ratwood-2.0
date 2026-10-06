@@ -54,7 +54,7 @@
 // This should match the coven research tree structure - Kinda important since it just replaces the dynamic content with it.
 /datum/clan_hierarchy_interface/proc/generate_hierarchy_html()
 	if(!user_clan || !user_clan.hierarchy_root)
-		return "<div class='error'>No clan hierarchy found</div>"
+		return "<div class='error'>未找到氏族层级</div>"
 
 	var/hierarchy_html = {"
 	<div class="parallax-container">
@@ -169,7 +169,7 @@
 	var/html = ""
 
 	for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
-		var/member_name = position.assigned_member ? position.assigned_member.real_name : "Vacant"
+		var/member_name = position.assigned_member ? position.assigned_member.real_name : "空缺"
 		var/node_classes = "hierarchy-node"
 
 		if(position.assigned_member)
@@ -220,11 +220,11 @@
 	var/sidebar_html = {"
 	<div class="hierarchy-sidebar" id="hierarchy-sidebar">
 		<div class="sidebar-header">
-			<h3>Position Details</h3>
-			[can_manage_hierarchy() ? "<button onclick='createNewPosition()' class='btn-primary'>Create Position</button>" : ""]
+			<h3>职位详情</h3>
+			[can_manage_hierarchy() ? "<button onclick='createNewPosition()' class='btn-primary'>创建职位</button>" : ""]
 		</div>
 		<div class="sidebar-content" id="sidebar-content">
-			[selected_position ? generate_position_details_html() : "<p>Select a position to view details</p>"]
+			[selected_position ? generate_position_details_html() : "<p>选择一个职位以查看详情</p>"]
 		</div>
 	</div>
 
@@ -345,30 +345,30 @@
 
 /datum/clan_hierarchy_interface/proc/generate_position_details_html()
 	if(!selected_position)
-		return "<p>No position selected</p>"
+		return "<p>尚未选择职位</p>"
 
-	var/member_info = selected_position.assigned_member ? selected_position.assigned_member.real_name : "Vacant"
+	var/member_info = selected_position.assigned_member ? selected_position.assigned_member.real_name : "空缺"
 	var/can_modify = can_manage_position(selected_position)
 
 	var/html = {"
 	<div class="position-details">
 		<h4 style="color: #fff; margin-top: 0;">[selected_position.name]</h4>
-		<p><strong>Description:</strong> [selected_position.desc]</p>
-		<p><strong>Assigned Member:</strong> [member_info]</p>
-		<p><strong>Rank Level:</strong> [selected_position.rank_level]</p>
-		<p><strong>Subordinates:</strong> [selected_position.subordinates.len]/[selected_position.max_subordinates]</p>
-		<p><strong>Can Assign Positions:</strong> [selected_position.can_assign_positions ? "Yes" : "No"]</p>
+		<p><strong>描述：</strong>[selected_position.desc]</p>
+		<p><strong>任职成员：</strong>[member_info]</p>
+		<p><strong>阶级：</strong>[selected_position.rank_level]</p>
+		<p><strong>下属：</strong>[selected_position.subordinates.len]/[selected_position.max_subordinates]</p>
+		<p><strong>可任命职位：</strong>[selected_position.can_assign_positions ? "是" : "否"]</p>
 
 		[can_modify ? {"
 		<div class="position-actions" style="margin-top: 15px;">
-			<button onclick='editPosition("[REF(selected_position)]")' class='btn-primary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #2196F3; color: white; border: none; border-radius: 3px; cursor: pointer;'>Edit Position</button>
-			<button onclick='assignMember("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer;'>Assign Member</button>
-			<button onclick='toggleAssignPermission("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #006600; color: white; border: none; border-radius: 3px; cursor: pointer;'>[selected_position.can_assign_positions ? "Remove" : "Grant"] Assign Permission</button>
-			[selected_position != user_clan.hierarchy_root ? "<button onclick='removePosition(\"[REF(selected_position)]\")' class='btn-danger' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #cc0000; color: white; border: none; border-radius: 3px; cursor: pointer;'>Remove Position</button>" : ""]
+			<button onclick='editPosition("[REF(selected_position)]")' class='btn-primary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #2196F3; color: white; border: none; border-radius: 3px; cursor: pointer;'>编辑职位</button>
+			<button onclick='assignMember("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer;'>任命成员</button>
+			<button onclick='toggleAssignPermission("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #006600; color: white; border: none; border-radius: 3px; cursor: pointer;'>[selected_position.can_assign_positions ? "撤销" : "授予"]任命权限</button>
+			[selected_position != user_clan.hierarchy_root ? "<button onclick='removePosition(\"[REF(selected_position)]\")' class='btn-danger' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #cc0000; color: white; border: none; border-radius: 3px; cursor: pointer;'>移除职位</button>" : ""]
 		</div>
 		"} : can_manage_hierarchy() ? {"
 		<div class="position-actions" style="margin-top: 15px;">
-			<p style="color: #888; font-style: italic; font-size: 11px;">This position is outside your management scope.</p>
+			<p style="color: #888; font-style: italic; font-size: 11px;">此职位不在你的管理范围内。</p>
 		</div>
 		"} : ""]
 	</div>
@@ -381,7 +381,7 @@
 	<div id="management-modal" class="modal" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
 		<div class="modal-content" style="background-color: #2a2a2a; margin: 10% auto; padding: 20px; border: 1px solid #444; border-radius: 5px; width: 500px; color: #ccc;">
 			<span class="close" onclick="closeHierarchyModal()" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-			<h3 id="modal-title" style="color: #fff;">Manage Position</h3>
+			<h3 id="modal-title" style="color: #fff;">管理职位</h3>
 			<div id="modal-body">
 				<!-- Dynamic content goes here -->
 			</div>
@@ -400,10 +400,10 @@
 				tooltip.innerHTML = `
 					<strong>${nodeData.name}</strong><br>
 					<em>${nodeData.desc}</em><br>
-					<strong>Member:</strong> ${nodeData.member}<br>
-					<strong>Rank Level:</strong> ${nodeData.rank_level}<br>
-					<strong>Subordinates:</strong> ${nodeData.subordinates}<br>
-					<strong>Can Assign:</strong> ${nodeData.can_assign ? 'Yes' : 'No'}
+					<strong>成员：</strong>${nodeData.member}<br>
+					<strong>阶级：</strong>${nodeData.rank_level}<br>
+					<strong>下属：</strong>${nodeData.subordinates}<br>
+					<strong>可任命：</strong>${nodeData.can_assign ? '是' : '否'}
 				`;
 
 				tooltip.style.display = 'block';
@@ -456,7 +456,7 @@
 		}
 
 		function removePosition(positionRef) {
-			if(confirm('Are you sure you want to remove this position?')) {
+			if(confirm('你确定要移除这个职位吗？')) {
 				window.location.href = '?src=[REF(src)];action=remove_position;position_id=' + positionRef;
 			}
 		}
@@ -499,43 +499,43 @@
 
 	var/modal_content = {"
 	<div class='dialog-content'>
-		<h3>Edit Position: [selected_position.name]</h3>
+		<h3>编辑职位：[selected_position.name]</h3>
 		<form id='edit-position-form'>
 			<div class='form-group'>
-				<label for='edit-position-name'>Position Name:</label>
+				<label for='edit-position-name'>职位名称：</label>
 				<input type='text' id='edit-position-name' name='position_name' value='[selected_position.name]' required maxlength='50'>
 			</div>
 
 			<div class='form-group'>
-				<label for='edit-position-desc'>Description:</label>
+				<label for='edit-position-desc'>描述：</label>
 				<textarea id='edit-position-desc' name='position_desc' rows='3' maxlength='200'>[selected_position.desc]</textarea>
 			</div>
 
 			<div class='form-group'>
-				<label for='edit-rank-level'>Rank Level:</label>
+				<label for='edit-rank-level'>阶级：</label>
 				<input type='number' id='edit-rank-level' name='rank_level' min='1' max='10' value='[selected_position.rank_level]'>
 			</div>
 
 			<div class='form-group'>
-				<label for='edit-max-subordinates'>Max Subordinates:</label>
+				<label for='edit-max-subordinates'>下属上限：</label>
 				<input type='number' id='edit-max-subordinates' name='max_subordinates' min='1' max='20' value='[selected_position.max_subordinates]'>
 			</div>
 
 			<div class='form-group'>
-				<label for='edit-position-color'>Position Color:</label>
+				<label for='edit-position-color'>职位颜色：</label>
 				<input type='color' id='edit-position-color' name='position_color' value='[selected_position.position_color]'>
 			</div>
 
 			<div class='form-group'>
 				<label>
 					<input type='checkbox' id='edit-can-assign-positions' name='can_assign_positions' value='1' [selected_position.can_assign_positions ? "checked" : ""]>
-					Can assign subordinate positions
+					可任命下级职位
 				</label>
 			</div>
 
 			<div class='form-actions'>
-				<button type='button' onclick='submitEditPosition()' class='btn-primary'>Save Changes</button>
-				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary'>Cancel</button>
+				<button type='button' onclick='submitEditPosition()' class='btn-primary'>保存修改</button>
+				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary'>取消</button>
 			</div>
 		</form>
 	</div>
@@ -599,13 +599,13 @@
 				selected_position = target_position
 				show_assign_member_dialog()
 			else
-				to_chat(user, "<span class='warning'>You don't have permission to assign members to this position.</span>")
+				to_chat(user, "<span class='warning'>你无权为此职位任命成员。</span>")
 
 		if("submit_assign_member")
 			if(selected_position && can_manage_position(selected_position))
 				handle_assign_member(href_list)
 			else
-				to_chat(user, "<span class='warning'>You don't have permission to manage this position.</span>")
+				to_chat(user, "<span class='warning'>你无权管理此职位。</span>")
 
 		if("toggle_assign_permission")
 			var/position_ref = href_list["position_id"]
@@ -613,9 +613,9 @@
 				if(REF(position) == position_ref)
 					if(can_manage_position(position))
 						position.can_assign_positions = !position.can_assign_positions
-						to_chat(user, "<span class='notice'>[position.name] assignment permission [position.can_assign_positions ? "granted" : "removed"]</span>")
+						to_chat(user, "<span class='notice'>已[position.can_assign_positions ? "授予" : "撤销"][position.name]的任命权限。</span>")
 					else
-						to_chat(user, "<span class='warning'>You don't have permission to modify this position.</span>")
+						to_chat(user, "<span class='warning'>你无权修改此职位。</span>")
 					break
 			refresh_hierarchy()
 
@@ -626,9 +626,9 @@
 					if(can_manage_position(position) && position != user_clan.hierarchy_root)
 						user_clan.remove_position(position)
 						selected_position = null
-						to_chat(user, "<span class='notice'>Position removed successfully.</span>")
+						to_chat(user, "<span class='notice'>已成功移除职位。</span>")
 					else
-						to_chat(user, "<span class='warning'>You don't have permission to remove this position.</span>")
+						to_chat(user, "<span class='warning'>你无权移除此职位。</span>")
 					break
 			refresh_hierarchy()
 
@@ -644,13 +644,13 @@
 				selected_position = target_position
 				show_edit_position_dialog()
 			else
-				to_chat(user, "<span class='warning'>You don't have permission to edit this position.</span>")
+				to_chat(user, "<span class='warning'>你无权编辑此职位。</span>")
 
 		if("submit_edit_position")
 			if(selected_position && can_manage_position(selected_position))
 				handle_edit_position(href_list)
 			else
-				to_chat(user, "<span class='warning'>You don't have permission to edit this position.</span>")
+				to_chat(user, "<span class='warning'>你无权编辑此职位。</span>")
 
 
 /datum/clan_hierarchy_interface/proc/refresh_hierarchy()
@@ -669,58 +669,58 @@
 
 	var/modal_content = {"
 	<div class='dialog-content'>
-		<h3>Create New Position</h3>
+		<h3>创建新职位</h3>
 		<form id='create-position-form'>
 			<div class='form-group'>
-				<label for='position-name'>Position Name:</label>
+				<label for='position-name'>职位名称：</label>
 				<input type='text' id='position-name' name='position_name' required maxlength='50'>
 			</div>
 
 			<div class='form-group'>
-				<label for='position-desc'>Description:</label>
+				<label for='position-desc'>描述：</label>
 				<textarea id='position-desc' name='position_desc' rows='3' maxlength='200'></textarea>
 			</div>
 
 			<div class='form-group'>
-				<label for='superior-position'>Reports To:</label>
+				<label for='superior-position'>直属上级：</label>
 				<select id='superior-position' name='superior_position' required>
-					<option value=''>Select Superior Position</option>
+					<option value=''>选择上级职位</option>
 					[generate_all_position_options()]
 				</select>
 			</div>
 
 			<div class='form-group'>
-				<label for='rank-level'>Rank Level:</label>
+				<label for='rank-level'>阶级：</label>
 				<input type='number' id='rank-level' name='rank_level' min='1' max='10' value='[selected_position ? selected_position.rank_level + 1 : 1]'>
 			</div>
 
 			<div class='form-group'>
-				<label for='max-subordinates'>Max Subordinates:</label>
+				<label for='max-subordinates'>下属上限：</label>
 				<input type='number' id='max-subordinates' name='max_subordinates' min='1' max='100' value='5'>
 			</div>
 
 			<div class='form-group'>
-				<label for='position-color'>Position Color:</label>
+				<label for='position-color'>职位颜色：</label>
 				<input type='color' id='position-color' name='position_color' value='#ffffff'>
 			</div>
 
 			<div class='form-group'>
 				<label>
 					<input type='checkbox' id='can-assign-positions' name='can_assign_positions' value='1'>
-					Can assign subordinate positions
+					可任命下级职位
 				</label>
 			</div>
 
 			<div class='form-actions'>
-				<button type='button' onclick='submitCreatePosition()' class='btn-primary'>Create Position</button>
-				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary'>Cancel</button>
+				<button type='button' onclick='submitCreatePosition()' class='btn-primary'>创建职位</button>
+				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary'>取消</button>
 			</div>
 		</form>
 	</div>
 
 	<script>
 		document.getElementById('management-modal').style.display = 'block';
-		document.getElementById('modal-title').textContent = 'Create New Position';
+		document.getElementById('modal-title').textContent = '创建新职位';
 		document.getElementById('modal-body').innerHTML = document.querySelector('.dialog-content').outerHTML;
 	</script>
 	"}
@@ -744,7 +744,7 @@
 		if(!can_create_position_under(position))
 			continue
 
-		html += "<option value='[REF(position)]'>[position.name] (Level [position.rank_level]) - [position.subordinates.len]/[position.max_subordinates] slots</option>"
+		html += "<option value='[REF(position)]'>[position.name]（阶级 [position.rank_level]）- 下属名额 [position.subordinates.len]/[position.max_subordinates]</option>"
 
 	return html
 
@@ -759,19 +759,19 @@
 
 	var/modal_content = {"
 	<div class='dialog-content'>
-		<h3>Assign Member to [selected_position.name]</h3>
-		[selected_position.assigned_member ? "<p><strong>Current Assignment:</strong> [selected_position.assigned_member.real_name]</p>" : "<p><strong>Current Assignment:</strong> Vacant</p>"]
+		<h3>为[selected_position.name]任命成员</h3>
+		[selected_position.assigned_member ? "<p><strong>现任成员：</strong>[selected_position.assigned_member.real_name]</p>" : "<p><strong>现任成员：</strong>空缺</p>"]
 		<form id='assign-member-form'>
 			<div class='form-group' style='margin-bottom: 15px;'>
-				<label for='member-select' style='display: block; margin-bottom: 5px; color: #fff;'>Select Member:</label>
+				<label for='member-select' style='display: block; margin-bottom: 5px; color: #fff;'>选择成员：</label>
 				<select id='member-select' name='member_ref' required style='width: 100%; padding: 8px; background: #444; color: #fff; border: 1px solid #666; border-radius: 3px;'>
-					<option value=''>-- Leave Vacant --</option>
+					<option value=''>-- 保持空缺 --</option>
 					[generate_member_options(available_members)]
 				</select>
 			</div>
 			<div class='form-actions' style='text-align: right; margin-top: 20px;'>
-				<button type='button' onclick='submitAssignMember()' class='btn-primary' style='padding: 8px 16px; background: #0066cc; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;'>Assign Member</button>
-				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary' style='padding: 8px 16px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer;'>Cancel</button>
+				<button type='button' onclick='submitAssignMember()' class='btn-primary' style='padding: 8px 16px; background: #0066cc; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;'>任命成员</button>
+				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary' style='padding: 8px 16px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer;'>取消</button>
 			</div>
 		</form>
 	</div>
@@ -809,7 +809,7 @@
 				can_assign_under = TRUE
 
 			if(can_assign_under)
-				html += "<option value='[REF(position)]'>[position.name] (Level [position.rank_level]) - [position.subordinates.len]/[position.max_subordinates]</option>"
+				html += "<option value='[REF(position)]'>[position.name]（阶级 [position.rank_level]）- [position.subordinates.len]/[position.max_subordinates]</option>"
 
 	return html
 
@@ -831,7 +831,7 @@
 
 /datum/clan_hierarchy_interface/proc/handle_edit_position(list/params)
 	if(!selected_position || !can_manage_position(selected_position))
-		to_chat(user, "<span class='warning'>You don't have permission to edit this position.</span>")
+		to_chat(user, "<span class='warning'>你无权编辑此职位。</span>")
 		return
 
 	var/position_name = sanitize(params["position_name"])
@@ -842,12 +842,12 @@
 	var/can_assign = params["can_assign_positions"] ? TRUE : FALSE
 
 	if(!position_name || !max_subordinates)
-		to_chat(user, "<span class='warning'>Error: Missing required fields</span>")
+		to_chat(user, "<span class='warning'>错误：缺少必填项。</span>")
 		return
 
 	// Validate max_subordinates - can't be less than current subordinates
 	if(max_subordinates < selected_position.subordinates.len)
-		to_chat(user, "<span class='warning'>Error: Cannot set max subordinates below current count ([selected_position.subordinates.len])</span>")
+		to_chat(user, "<span class='warning'>错误：下属上限不能低于现有数量（[selected_position.subordinates.len]）。</span>")
 		return
 
 	// Update the position
@@ -858,7 +858,7 @@
 	selected_position.position_color = position_color
 	selected_position.can_assign_positions = can_assign
 
-	to_chat(user, "<span class='notice'>Position '[position_name]' updated successfully!</span>")
+	to_chat(user, "<span class='notice'>职位“[position_name]”更新成功！</span>")
 	refresh_hierarchy()
 
 /datum/clan_hierarchy_interface/proc/handle_create_position(list/params)
@@ -878,7 +878,7 @@
 	var/can_assign = params["can_assign_positions"] ? TRUE : FALSE
 
 	if(!position_name || !superior_ref || !rank_level)
-		to_chat(user, "<span class='warning'>Error: Missing required fields</span>")
+		to_chat(user, "<span class='warning'>错误：缺少必填项。</span>")
 		return
 
 	// Find the superior position
@@ -889,12 +889,12 @@
 			break
 
 	if(!superior_position)
-		to_chat(user, "<span class='warning'>Error: Invalid superior position</span>")
+		to_chat(user, "<span class='warning'>错误：上级职位无效。</span>")
 		return
 
 	// Check if user can create position under this superior
 	if(!can_create_position_under(superior_position))
-		to_chat(user, "<span class='warning'>Error: You don't have permission to create positions under [superior_position.name]</span>")
+		to_chat(user, "<span class='warning'>错误：你无权在[superior_position.name]之下创建职位。</span>")
 		return
 
 	var/datum/clan_hierarchy_node/new_position = user_clan.create_position(position_name, position_desc, superior_position, rank_level)
@@ -903,21 +903,21 @@
 		new_position.max_subordinates = max_subordinates
 		new_position.position_color = position_color
 		new_position.can_assign_positions = can_assign
-		to_chat(user, "<span class='notice'>Position '[position_name]' created successfully!</span>")
+		to_chat(user, "<span class='notice'>职位“[position_name]”创建成功！</span>")
 		refresh_hierarchy()
 	else
-		to_chat(user, "<span class='warning'>Error: Failed to create position</span>")
+		to_chat(user, "<span class='warning'>错误：创建职位失败。</span>")
 
 /datum/clan_hierarchy_interface/proc/handle_assign_member(list/params)
 	if(!selected_position || !can_manage_position(selected_position))
-		to_chat(user, "<span class='warning'>You don't have permission to manage this position.</span>")
+		to_chat(user, "<span class='warning'>你无权管理此职位。</span>")
 		return
 
 	var/member_ref = params["member_ref"]
 
 	if(!member_ref)
 		selected_position.remove_member()
-		to_chat(user, "<span class='notice'>Position vacated successfully</span>")
+		to_chat(user, "<span class='notice'>已成功将职位设为空缺。</span>")
 		refresh_hierarchy()
 		return
 
@@ -928,17 +928,17 @@
 			break
 
 	if(!target_member)
-		to_chat(user, "<span class='warning'>Error: Invalid member selection</span>")
+		to_chat(user, "<span class='warning'>错误：所选成员无效。</span>")
 		return
 
 	// Check if the member currently has a position we can't manage
 	if(target_member.clan_position && !can_manage_position(target_member.clan_position))
-		to_chat(user, "<span class='warning'>Error: You don't have permission to reassign [target_member.real_name] from their current position</span>")
+		to_chat(user, "<span class='warning'>错误：你无权调动[target_member.real_name]的现有职位。</span>")
 		return
 
 	if(selected_position.assign_member(target_member))
-		to_chat(user, "<span class='notice'>[target_member.real_name] assigned to [selected_position.name]</span>")
+		to_chat(user, "<span class='notice'>已任命[target_member.real_name]担任[selected_position.name]。</span>")
 		refresh_hierarchy()
 	else
-		to_chat(user, "<span class='warning'>Error: Failed to assign member</span>")
+		to_chat(user, "<span class='warning'>错误：任命成员失败。</span>")
 
