@@ -184,7 +184,7 @@
 	return ..()
 
 /obj/item/clothing/neck/petcollar/attack_self(mob/user)
-	tagname = copytext(sanitize(input(user, "你想更改铭牌上的名字吗？", "Name your new pet", "小斑点") as null|text),1,MAX_NAME_LEN)
+	tagname = copytext(sanitize(input(user, "你想更改铭牌上的名字吗？", "为你的新宠物取名", "小斑点") as null|text),1,MAX_NAME_LEN)
 	name = "[initial(name)] - [tagname]"
 
 //////////////

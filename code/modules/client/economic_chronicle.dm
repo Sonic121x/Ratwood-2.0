@@ -21,7 +21,7 @@ GLOBAL_DATUM(economic_chronicle, /datum/economic_chronicle)
 /datum/economic_chronicle/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "EconomicChronicle", "Realm Economics")
+		ui = new(user, src, "EconomicChronicle", "领地经济")
 		ui.open()
 		ui.set_autoupdate(FALSE)
 

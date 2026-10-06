@@ -34,7 +34,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/sheriff)
 
 /datum/supply_pack/rogue/Iconoclast/armet
-	name = "阿梅特盔"
+	name = "阿米特盔"
 	cost = 40
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/armet)
 

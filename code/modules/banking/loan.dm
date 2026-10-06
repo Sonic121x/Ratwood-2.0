@@ -75,8 +75,8 @@
 /datum/loan/proc/format()
 	var/pct = round(interest_rate * 100)
 	if(defaulted)
-		return "[debtor_name]: [principal]m principal @ [pct]%/day over [days_total] day\s - [get_remaining_due()]m outstanding (DEFAULTED day [due_on_day])"
-	return "[debtor_name]: [principal]m principal @ [pct]%/day over [days_total] day\s - [get_remaining_due()]m due (day [due_on_day], [days_until_due()] day\s left)"
+		return "[debtor_name]：本金[principal]m，日利率[pct]%，期限[days_total]天——尚欠[get_remaining_due()]m（已于第[due_on_day]天违约）"
+	return "[debtor_name]：本金[principal]m，日利率[pct]%，期限[days_total]天——应还[get_remaining_due()]m（第[due_on_day]天到期，剩余[days_until_due()]天）"
 
 /datum/loan/proc/get_debtor_mob()
 	if(!debtor_ref)
@@ -111,7 +111,7 @@
 	amount = min(amount, outstanding, target.balance)
 	if(amount <= 0)
 		return 0
-	if(!transfer(target, source, amount, L.defaulted ? "Indenture settlement (manual)" : "Indenture repayment (early)"))
+	if(!transfer(target, source, amount, L.defaulted ? "契约债务清偿（手动）" : "契约借款偿还（提前）"))
 		return 0
 	L.repaid_so_far += amount
 	if(L.get_remaining_due() <= 0)
@@ -136,7 +136,7 @@
 	amount = min(amount, outstanding, account.balance)
 	if(amount <= 0)
 		return 0
-	if(!transfer(account, destination, amount, L.defaulted ? "Default debt settlement" : "Loan repayment"))
+	if(!transfer(account, destination, amount, L.defaulted ? "违约债务清偿" : "贷款偿还"))
 		return 0
 	L.repaid_so_far += amount
 	if(L.get_remaining_due() <= 0)
@@ -174,14 +174,14 @@
 			qdel(L)
 			continue
 		if(account && account.balance >= outstanding)
-			if(transfer(account, destination, outstanding, L.defaulted ? "Default debt settlement (auto)" : "Loan repayment (maturity)"))
+			if(transfer(account, destination, outstanding, L.defaulted ? "违约债务清偿（自动）" : "贷款偿还（到期）"))
 				L.repaid_so_far += outstanding
 				if(L.defaulted)
 					REMOVE_TRAIT(debtor, TRAIT_DEBTOR, TRAIT_GENERIC)
 					REMOVE_TRAIT(debtor, L.get_faction_debtor_trait(), TRAIT_GENERIC)
-					send_ooc_note("<b>NERVELOCK:</b> The stigma of default is lifted. [outstanding]m was drawn from your account to settle the outstanding debt in full.", name = debtor.real_name)
+					send_ooc_note("<b>神经锁：</b> 违约的污名已被洗清。已从你的账户扣取[outstanding]m，全额清偿未还债务。", name = debtor.real_name)
 				else
-					send_ooc_note("<b>NERVELOCK:</b> Your loan of [L.principal]m has been repaid in full ([outstanding]m drawn from your account).", name = debtor.real_name)
+					send_ooc_note("<b>神经锁：</b> 你借入的[L.principal]m贷款已全部偿还（从你的账户扣取[outstanding]m）。", name = debtor.real_name)
 				loans -= L
 				qdel(L)
 				continue
@@ -190,12 +190,12 @@
 			var/seized = 0
 			if(account && account.balance > 0)
 				seized = account.balance
-				if(transfer(account, destination, seized, "Loan default seizure"))
+				if(transfer(account, destination, seized, "贷款违约扣押"))
 					L.repaid_so_far += seized
 			ADD_TRAIT(debtor, TRAIT_DEBTOR, TRAIT_GENERIC)
 			ADD_TRAIT(debtor, L.get_faction_debtor_trait(), TRAIT_GENERIC)
 			var/still_owed = L.get_remaining_due()
-			send_ooc_note("<b>MEISTER:</b> Your loan of [L.principal]m has come due and you cannot pay. [seized]m was seized; [still_owed]m remains owed to [destination.name]. You are marked a defaulter until the debt is settled.", name = debtor.real_name)
+			send_ooc_note("<b>神经主：</b> 你借入的[L.principal]m贷款已到期，但你无力偿还。已扣押[seized]m；你仍欠[destination.name][still_owed]m。债务清偿前，你将被标记为违约者。", name = debtor.real_name)
 			record_round_statistic(STATS_LOANS_DEFAULTED, 1)
 			log_game("LOAN DEFAULT: [L.debtor_name] defaulted on [outstanding]m loan from [destination.name]. [seized]m seized, [still_owed]m remaining.")
 
@@ -214,7 +214,7 @@
 		qdel(L)
 		return
 	if(target.balance >= outstanding)
-		if(transfer(target, source, outstanding, L.defaulted ? "Indenture settlement (auto)" : "Indenture repayment (maturity)"))
+		if(transfer(target, source, outstanding, L.defaulted ? "契约债务清偿（自动）" : "契约借款偿还（到期）"))
 			L.repaid_so_far += outstanding
 			loans -= L
 			qdel(L)
@@ -224,7 +224,7 @@
 		var/seized = 0
 		if(target.balance > 0)
 			seized = target.balance
-			if(transfer(target, source, seized, "Indenture default seizure"))
+			if(transfer(target, source, seized, "契约违约扣押"))
 				L.repaid_so_far += seized
 		var/still_owed = L.get_remaining_due()
 		announce_indenture_default(L, seized, still_owed)
@@ -247,4 +247,4 @@
 		msg = "澡堂向[target_label]追讨贷款，却发现金库空虚。祂的慷慨遭到滥用！祂的爱受到羞辱！向澡堂借钱已是耻辱，不还钱更是耻辱。已没收[seized]m，仍欠[still_owed]m。"
 	else
 		msg = "总管府向[target_label]追讨贷款，却发现金库空虚。王室应得的款项必须归还，王室将昭示其权威。已没收[seized]m，仍欠[still_owed]m。"
-	priority_announce(msg, "Indenture Defaulted", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
+	priority_announce(msg, "契约违约", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)

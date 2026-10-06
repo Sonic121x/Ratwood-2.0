@@ -36,7 +36,7 @@
 	contains = list(/obj/item/listenstone)
 
 /datum/supply_pack/rogue/magic/talkstone
-	name = "传话石"
+	name = "话石"
 	cost = 100
 	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
 
@@ -50,7 +50,7 @@
 			)
 
 /datum/supply_pack/rogue/magic/manaflower
-	name = "法力花"
+	name = "法绽花"
 	cost = 55
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/grown/manabloom,
