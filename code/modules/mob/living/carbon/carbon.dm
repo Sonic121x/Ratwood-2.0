@@ -152,7 +152,7 @@
 		if(possible_len)
 			var/datum/surgery_step/done_step
 			if(possible_len > 1)
-				var/input = input(user, "你想进行哪一步手术？", "PESTRA", ) as null|anything in possible_steps
+				var/input = input(user, "你想进行哪一步手术？", "佩斯特拉", ) as null|anything in possible_steps
 				if(input)
 					done_step = possible_steps[input]
 			else
