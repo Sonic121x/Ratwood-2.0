@@ -302,7 +302,7 @@ At least, it should. Fingers crossed.
 /obj/item/gun/ballistic/firearm/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
 /*	if(!reloaded)
-		to_chat(user, span_warning("The [src] is not properly loaded yet!"))
+		to_chat(user, span_warning("[src]尚未正确装填！"))
 		return*/
 
 /obj/item/gun/ballistic/firearm/can_shoot()

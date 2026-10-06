@@ -27,7 +27,7 @@
 	tech_unlocked = FALSE
 
 /datum/crafting_recipe/roguetown/fleshcrafting/flesh_node
-	name = "血肉节点（1 份腐肉）"
+	name = "血肉结节（1 份腐肉）"
 	category = "血肉"
 	result = list(/obj/item/flesh_node)
 	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/meat_rotten = 1)

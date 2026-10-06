@@ -358,7 +358,7 @@
 	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/bronze/whip
-	name = "鞭, 青铜尖头 (+3 熟皮)"
+	name = "鞭, 青铜尖头 (+3 鞣制皮革)"
 	additional_items = list(/obj/item/natural/hide/cured, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/whip/bronze
 	display_category = ITEM_CAT_WEAPONS_FLAILS
@@ -1194,43 +1194,43 @@
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/steel/kiteshield
-	name = "鸢盾 (+1 钢, +1 熟皮)"
+	name = "鸢盾 (+1 钢, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/ancient
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/decrepit/shield
-	name = "鸢盾, 衰朽 (+1 合金, +1 熟皮)"
+	name = "鸢盾, 衰朽 (+1 合金, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/decrepit, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal/ancient/decrepit
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/gilbranze)
 	created_item = /obj/item/rogueweapon/shield/gilbranze
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/decrepit/shield
-	name = "鸢盾, 衰朽 (+1 合金, +1 熟皮)"
+	name = "鸢盾, 衰朽 (+1 合金, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/decrepit)
 	created_item = /obj/item/rogueweapon/shield/gilbranze/decrepit
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/ancient/shield
-	name = "鸢盾, 古代 (+1 吉尔青铜, +1 熟皮)"
+	name = "鸢盾, 古代 (+1 吉尔青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze, /obj/item/ingot/gilbranze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/gilbranze/great
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
 
 /datum/anvil_recipe/weapons/decrepit/shield
-	name = "鸢盾, 衰朽 (+1 合金, +1 熟皮)"
+	name = "鸢盾, 衰朽 (+1 合金, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/decrepit, /obj/item/ingot/decrepit, /obj/item/ingot/decrepit, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/gilbranze/great/decrepit
 	display_category = ITEM_CAT_WEAPONS_SHIELDS
@@ -1260,12 +1260,12 @@
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/bronze/bronzeshield
-	name = "盾, 青铜 (+1 青铜, +1 熟皮)"
+	name = "盾, 青铜 (+1 青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/bronze
 
 /datum/anvil_recipe/weapons/bronze/bronzegreatshield
-	name = "巨盾, 青铜 (+2 青铜, +1 熟皮)"
+	name = "巨盾, 青铜 (+2 青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/bronze/great
 	craftdiff = 2
@@ -1387,7 +1387,7 @@
 	display_category = ITEM_CAT_WEAPONS_AMMO
 
 /datum/anvil_recipe/weapons/steel/slingbullets
-	name = "Sling Bullets, Steel (x10)"
+	name = "投石弹, 钢 (x10)"
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/steel
 	createditem_num = 10
 	i_type = "Ammo"
@@ -1454,7 +1454,7 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/valuables/iron/berserkswordgrip
-	name = "狂战士之剑的剑柄 (+1 行刑长剑, +2 小原木, +2 熟皮)"
+	name = "狂战士之剑的剑柄 (+1 行刑长剑, +2 小原木, +2 鞣制皮革)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/rogueweapon/sword/long/exe, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/ingot/component/berserkswordgrip
@@ -1777,13 +1777,13 @@
 	additional_items = list(/obj/item/ingot/silverblessed)
 
 /datum/anvil_recipe/weapons/psy/whip
-	name = "普赛顿式 鞭 (+3 熟皮)"
+	name = "普赛顿式 鞭 (+3 鞣制皮革)"
 	created_item = /obj/item/rogueweapon/whip/psywhip_lesser
 	additional_items = list(/obj/item/natural/hide/cured, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	display_category = ITEM_CAT_WEAPONS_FLAILS
 
 /datum/anvil_recipe/weapons/psy/urumi
-	name = "Psydonic Urumi (+2 Blessed Silver)"
+	name = "普赛顿软剑 (+2 祝圣白银)"
 	created_item = /obj/item/rogueweapon/whip/urumi/silver/psydonic
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed)//3 blades so 1 more buillion over non-psydonite silver urumi
 	display_category = ITEM_CAT_WEAPONS_FLAILS

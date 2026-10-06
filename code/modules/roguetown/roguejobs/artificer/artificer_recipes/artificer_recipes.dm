@@ -439,7 +439,7 @@
 	sellprice = 6
 
 /datum/artificer_recipe/wood/weapons/hshield
-	name = "熨斗盾 (+1 熟皮)"
+	name = "熨斗盾 (+1 鞣制皮革)"
 	created_item = /obj/item/rogueweapon/shield/heater/crafted
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/hide/cured = 1)
 	hammers_per_item = 6

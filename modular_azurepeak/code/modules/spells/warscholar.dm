@@ -16,7 +16,7 @@
 	req_items = list(/obj/item/clothing/mask/rogue/lordmask/naledi)
 
 /obj/item/melee/touch_attack/rogueweapon/bladeofpsydon
-	name = "\improper 奥术推匕"
+	name = "\proper 奥术推匕"
 	desc = "这柄刀刃微微搏动，半透明而流彩，淡蓝色的奥术能量正沿着其通透的表面流淌......"
 	catchphrase = null
 	icon = 'icons/mob/actions/roguespells.dmi'

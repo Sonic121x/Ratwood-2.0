@@ -84,16 +84,16 @@
 	)
 	H.verbs |= /mob/proc/haltyell
 
-	var/helmet = list("伊特鲁斯卡护鼻盔","沃尔夫板甲盔","带面罩沙勒盔","长吻面罩沙勒盔","开缝锅盔","简易头盔","锅盔","沙勒盔","翼盔",)
+	var/helmet = list("伊特鲁斯卡护鼻盔","沃尔夫钢盔","带面罩萨雷特盔","长吻面罩萨雷特盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼盔",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
 		if("伊特鲁斯卡护鼻盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("沃尔夫板甲盔")
+		if("沃尔夫钢盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩沙勒盔")
+		if("带面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻面罩沙勒盔")
+		if("长吻面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		if("开缝锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle
@@ -101,7 +101,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet
 		if("锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
-		if("沙勒盔")
+		if("萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet
 		if("翼盔")
 			head = /obj/item/clothing/head/roguetown/helmet/winged
@@ -191,16 +191,16 @@
 	)
 	H.verbs |= /mob/proc/haltyell
 
-	var/helmet = list("伊特鲁斯卡护鼻盔","沃尔夫板甲盔","带面罩沙勒盔","长吻面罩沙勒盔","开缝锅盔","简易头盔","锅盔","沙勒盔","翼盔",)
+	var/helmet = list("伊特鲁斯卡护鼻盔","沃尔夫钢盔","带面罩萨雷特盔","长吻面罩萨雷特盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼盔",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
 		if("伊特鲁斯卡护鼻盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("沃尔夫板甲盔")
+		if("沃尔夫钢盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩沙勒盔")
+		if("带面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻面罩沙勒盔")
+		if("长吻面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		if("开缝锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle
@@ -208,7 +208,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet
 		if("锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
-		if("沙勒盔")
+		if("萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet
 		if("翼盔")
 			head = /obj/item/clothing/head/roguetown/helmet/winged
@@ -310,14 +310,14 @@
 			beltr = /obj/item/rogueweapon/sword
 			backl = /obj/item/rogueweapon/shield/iron
 
-	var/helmet = list("伊特鲁斯卡护鼻盔","带面罩沙勒盔","长吻面罩沙勒盔","狼首板甲盔","开缝锅盔","简易头盔","锅盔","沙勒盔","翼盔",)
+	var/helmet = list("伊特鲁斯卡护鼻盔","带面罩萨雷特盔","长吻面罩萨雷特盔","狼首板甲盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼盔",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
 		if("伊特鲁斯卡护鼻盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("带面罩沙勒盔")
+		if("带面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻面罩沙勒盔")
+		if("长吻面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		if("狼首板甲盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
@@ -329,7 +329,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet
 		if("锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
-		if("沙勒盔")
+		if("萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet
 		if("翼盔")
 			head = /obj/item/clothing/head/roguetown/helmet/winged

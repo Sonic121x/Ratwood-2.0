@@ -52,8 +52,8 @@
 	var/datum/objective/steal_items/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("Matthios demands you prove your cunning! Pickpocket fools to earn Matthios' favor!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_notice("马西奥斯要你证明自己的狡黠！扒窃那些蠢货，赢得马西奥斯的青睐！"))
 	chosen_one.playsound_local(chosen_one, 'sound/items/matidol2.ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

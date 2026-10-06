@@ -48,8 +48,8 @@
 	var/datum/objective/hoard_mammons/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("Accumulate [new_objective.target_mammons] mammons to prove your greed to Matthios!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_notice("积攒[new_objective.target_mammons]枚玛门币，向马西奥斯证明你的贪婪！"))
 	chosen_one.playsound_local(chosen_one, 'sound/items/matidol2.ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

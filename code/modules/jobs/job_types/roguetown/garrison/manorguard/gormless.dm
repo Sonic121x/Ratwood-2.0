@@ -68,7 +68,7 @@
 	if(H.mind)
 		var/helmets = list(
 		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle/iron,
-		"萨莱特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
+		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
 		"角盔" 	= /obj/item/clothing/head/roguetown/helmet/horned,
 		"护顶盔"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 		"无"

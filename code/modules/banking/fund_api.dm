@@ -105,18 +105,18 @@
 	var/source_label = indenture_faction_label(source)
 	var/target_label = indenture_faction_label(target)
 	var/grace = indenture_grace_phrase(source)
-	var/job_label = accepter?.job ? "[accepter.real_name], the [accepter.job]" : (accepter?.real_name || "an unnamed signatory")
-	var/msg = "[grace], [source_label] has extended a most generous loan of [L.principal]m at [pct]% per dae over [L.days_total] dae, accepted by [job_label] on behalf of [target_label]."
+	var/job_label = accepter?.job ? "[accepter.job][accepter.real_name]" : (accepter?.real_name || "一名未具名的签署者")
+	var/msg = "[grace]，[source_label]慷慨地提供了[L.principal]m的贷款，每天利息为[pct]%，期限为[L.days_total]天，由[job_label]代表[target_label]接受。"
 	priority_announce(msg, "Writ of Indenture", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
 
 /datum/controller/subsystem/treasury/proc/indenture_grace_phrase(datum/fund/F)
 	if(istype(F, /datum/fund/church))
-		return "By grace of Astrata"
+		return "承蒙阿斯特拉塔的恩典"
 	if(istype(F, /datum/fund/merchant))
-		return "By grace of Malum"
+		return "承蒙玛勒姆的恩典"
 	if(istype(F, /datum/fund/bathhouse))
-		return "By grace of Eora"
-	return "By grace of the Crown"
+		return "承蒙伊欧拉的恩典"
+	return "承蒙王室的恩典"
 
 /datum/controller/subsystem/treasury/proc/skim_for_banditry_debt(datum/fund/to_fund, amount)
 	if(amount <= 0 || banditry_debt <= 0 || to_fund != discretionary_fund)

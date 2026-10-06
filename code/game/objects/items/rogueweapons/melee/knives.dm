@@ -675,7 +675,7 @@
 	name = "船帆匕首"
 	force = 15
 	throwforce = 15
-	desc = "这是一种在厄特鲁斯卡群岛颇受欢迎、防护性极强的格挡匕首，装有一片造型朴素、形如船帆的金属护手。"
+	desc = "这是一种在伊特鲁斯卡群岛颇受欢迎、防护性极强的格挡匕首，装有一片造型朴素、形如船帆的金属护手。"
 	max_integrity = 200
 	wdefense = 9		//This way with expert dagger skill you'd have ~13 defense. 2 higher than a kiteshield, but no arrow protection.
 	icon_state = "sail_dagger"
@@ -1051,7 +1051,7 @@
 
 /obj/item/rogueweapon/huntingknife/throwingknife/bauernwehr
 	name = "鲍恩维尔刀"
-	desc = "朝圣者最亲近的伙伴，一截短小却锋利的刀刃，装在木制握柄上。在格伦泽尔霍夫，这类刀被称作“鲍恩维尔刀”，能让任何辛劳都有所回应。这把刀可以藏在靴子里。"
+	desc = "朝圣者最亲近的伙伴，一截短小却锋利的刀刃，装在木制握柄上。在格伦泽尔霍夫特，这类刀被称作“鲍恩维尔刀”，能让任何辛劳都有所回应。这把刀可以藏在靴子里。"
 	icon_state = "throw_knifei"
 	wdefense = 1
 	max_blade_int = 250

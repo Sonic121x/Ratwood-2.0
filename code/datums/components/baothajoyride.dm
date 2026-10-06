@@ -79,6 +79,6 @@
 
 /atom/movable/screen/alert/status_effect/baotha_joyride
 	name = "极乐驰行"
-	desc = "唇舌之间，是 Baotha 最纯粹的祝福。"
+	desc = "唇舌之间，是巴奥莎最纯粹的祝福。"
 
 #undef JOYRIDE_FILTER
