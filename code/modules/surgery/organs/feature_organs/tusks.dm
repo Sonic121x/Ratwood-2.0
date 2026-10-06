@@ -1,6 +1,6 @@
 /obj/item/organ/tusks
-	name = "tusks"
-	desc = "A severed pair of tusks. What mouth did you rip this out of?"
+	name = "獠牙"
+	desc = "一对被切下的獠牙。你究竟从什么生物的嘴里拔出了这东西？"
 	icon_state = "severedtail" //placeholder
 	visible_organ = TRUE
 	zone = BODY_ZONE_HEAD

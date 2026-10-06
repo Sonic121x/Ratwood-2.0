@@ -42,8 +42,8 @@
 	user << browse(html, "window=clan_menu;size=1400x900;can_resize=1")
 
 /datum/clan_menu_interface/proc/generate_welcome_screen_html()
-	var/clan_downside = "burn in sunlight"
-	var/blood_preference = "any blood"
+	var/clan_downside = "在阳光下燃烧"
+	var/blood_preference = "任何血液"
 
 	if(user_clan)
 		clan_downside = user_clan.get_downside_string()
@@ -51,41 +51,41 @@
 
 	return {"
 	<div class="welcome-screen">
-		<h2>Welcome to your Clan</h2>
+		<h2>欢迎加入氏族</h2>
 
 		<div class="intro-section">
-			<p>Select a coven from the sidebar to view its research tree and manage your powers.
-			Each coven represents a different aspect of your vampiric abilities.</p>
+			<p>从侧栏选择一个盟会，查看其研究树并管理你的能力。
+			每个盟会都代表着血族能力的不同领域。</p>
 		</div>
 
 		<div class="vampire-mechanics">
-			<h3>Vampiric Nature</h3>
+			<h3>血族本性</h3>
 			<div class="mechanic-item">
-				<strong>Blood Hunger:</strong> You must drink blood to survive. You prefer <span class="blood-type">[blood_preference]</span>.
+				<strong>嗜血之饥：</strong>你必须饮血才能生存。你偏好的血液是<span class="blood-type">[blood_preference]</span>。
 			</div>
 			<div class="mechanic-item">
-				<strong>Clan Weakness:</strong> Your clan's curse means you <span class="weakness">[clan_downside]</span>.
+				<strong>氏族弱点：</strong>氏族的诅咒使你<span class="weakness">[clan_downside]</span>。
 			</div>
 			<div class="mechanic-item">
-				<strong>Silver Vulnerability:</strong> Silver weaponry may trigger a blood frenzy, causing you to lose control and attack indiscriminately.
+				<strong>惧怕白银：</strong>银制武器可能引发嗜血狂乱，使你失去控制并无差别地攻击。
 			</div>
 		</div>
 
 		<div class="gameplay-tips">
-			<h3>Gameplay Tips</h3>
+			<h3>游玩提示</h3>
 			<div class="tip-item">
-				<strong>Coven Abilities:</strong> Right-click on any coven ability to switch between different powers from that coven.
+				<strong>盟会能力：</strong>右键点击任意盟会能力，即可切换该盟会的不同能力。
 			</div>
 			<div class="tip-item">
-				<strong>Creating Progeny:</strong> Drain someone's blood to critical levels to gain the option to embrace them as a new vampire.
+				<strong>创造子嗣：</strong>将某人的血液吸取至危急水平后，你便能选择赐予对方初拥，将其转化为新的血族。
 			</div>
 		</div>
 	</div>
 	"}
 
 /datum/clan_menu_interface/proc/generate_setup_html()
-	var/clan_downside = "burn in sunlight"
-	var/blood_preference = "any blood"
+	var/clan_downside = "在阳光下燃烧"
+	var/blood_preference = "任何血液"
 
 	if(user_clan)
 		clan_downside = user_clan.get_downside_string()
@@ -94,7 +94,7 @@
 	return {"
 	<script>
 		function submitCovens() {
-			if(confirm('This choice is final, you will not be able to change covens later. Are you sure??')) {
+			if(confirm('选择一经确认便无法更换盟会。你确定吗？')) {
 				window.location.href = '?src=[REF(src)];action=select_covens';
 			}
 		}
@@ -139,35 +139,35 @@
 		}
 	</script>
 	<div class="welcome-screen">
-		<h2>Welcome to your Clan</h2>
+		<h2>欢迎加入氏族</h2>
 
 		<div class="intro-section">
-			<p>Select up to three covens (two if you are a wretch)
-			Each coven represents a different aspect of your vampiric abilities.
-			Select a coven from the sidebar to view its research tree and manage your powers.
+			<p>最多选择三个盟会（若你是弃民，则为两个）。
+			每个盟会都代表着血族能力的不同领域。
+			从侧栏选择一个盟会，查看其研究树并管理你的能力。
 			</p>
 		</div>
 		[generate_coven_selection()]
 		<div class="vampire-mechanics">
-			<h3>Vampiric Nature</h3>
+			<h3>血族本性</h3>
 			<div class="mechanic-item">
-				<strong>Blood Hunger:</strong> You must drink blood to survive. You prefer <span class="blood-type">[blood_preference]</span>.
+				<strong>嗜血之饥：</strong>你必须饮血才能生存。你偏好的血液是<span class="blood-type">[blood_preference]</span>。
 			</div>
 			<div class="mechanic-item">
-				<strong>Clan Weakness:</strong> Your clan's curse means you <span class="weakness">[clan_downside]</span>.
+				<strong>氏族弱点：</strong>氏族的诅咒使你<span class="weakness">[clan_downside]</span>。
 			</div>
 			<div class="mechanic-item">
-				<strong>Silver Vulnerability:</strong> Silver weaponry may trigger a blood frenzy, causing you to lose control and attack indiscriminately.
+				<strong>惧怕白银：</strong>银制武器可能引发嗜血狂乱，使你失去控制并无差别地攻击。
 			</div>
 		</div>
 
 		<div class="gameplay-tips">
-			<h3>Gameplay Tips</h3>
+			<h3>游玩提示</h3>
 			<div class="tip-item">
-				<strong>Coven Abilities:</strong> Right-click on any coven ability to switch between different powers from that coven.
+				<strong>盟会能力：</strong>右键点击任意盟会能力，即可切换该盟会的不同能力。
 			</div>
 			<div class="tip-item">
-				<strong>Creating Progeny:</strong> Drain someone's blood to critical levels to gain the option to embrace them as a new vampire.
+				<strong>创造子嗣：</strong>将某人的血液吸取至危急水平后，你便能选择赐予对方初拥，将其转化为新的血族。
 			</div>
 		</div>
 	</div>
@@ -183,7 +183,7 @@
 				<div class='form-group' style='margin-right: 15px;'>
 					<label for='coven-select' style='display: block; margin-left: 5px; margin-right: 5px;margin-bottom: 5px; color: #fff;'></label>
 					<select id='coven-select' onchange='selectCovenOne()' name='coven-type' required style='padding: 8px; background: #444; color: #fff; border: 1px solid #666; border-radius: 3px;'>
-						<option value=''>[ispath(coven_one_preliminary) ? initial(coven_one_preliminary.name) : "-- EMPTY --"]</option>
+						<option value=''>[ispath(coven_one_preliminary) ? initial(coven_one_preliminary.name) : "-- 空 --"]</option>
 						[coven_choice()]
 					</select>
 				</div>
@@ -197,7 +197,7 @@
 				<div class='form-group' style='margin-right: 15px;'>\
 					<label for='coven-select' style='display: block; margin-bottom: 5px; color: #fff;'></label>\
 					<select id='coven-select' onchange='selectCovenTwo()' name='coven-type' required style='padding: 8px; background: #444; color: #fff; border: 1px solid #666; border-radius: 3px;'>\
-						<option value=''>[ispath(coven_two_preliminary) ? initial(coven_two_preliminary.name) : "-- EMPTY --"]</option>\
+						<option value=''>[ispath(coven_two_preliminary) ? initial(coven_two_preliminary.name) : "-- 空 --"]</option>\
 						[coven_choice()]\
 					</select>\
 				</div>\
@@ -212,7 +212,7 @@
 				<div class='form-group' style='margin-right: 15px;'>\
 					<label for='coven-select' style='display: block; margin-bottom: 5px; color: #fff;'></label>\
 					<select id='coven-select' onchange='selectCovenThree()' name='coven-type' required style='padding: 8px; background: #444; color: #fff; border: 1px solid #666; border-radius: 3px;'>\
-						<option value=''>[ispath(coven_three_preliminary) ? initial(coven_three_preliminary.name) : "-- EMPTY --"]</option>\
+						<option value=''>[ispath(coven_three_preliminary) ? initial(coven_three_preliminary.name) : "-- 空 --"]</option>\
 						[coven_choice()]\
 					</select>\
 				</div>\
@@ -222,7 +222,7 @@
 		</div>\
 		":""]
 	</div>
-	<button type='button' onclick='submitCovens()' class='btn-primary' style='padding: 8px 16px; background: #0066cc; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;'>Select Covens</button>
+	<button type='button' onclick='submitCovens()' class='btn-primary' style='padding: 8px 16px; background: #0066cc; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;'>选择盟会</button>
 	"}
 
 /datum/clan_menu_interface/proc/coven_choice()
@@ -243,7 +243,7 @@
 	var/html = ""
 
 	if(!user_covens || !length(user_covens))
-		return "<li style='color: #999; padding: 20px; text-align: center;'>No covens available</li>"
+		return "<li style='color: #999; padding: 20px; text-align: center;'>没有可用的盟会</li>"
 
 	for(var/coven_name in user_covens)
 		var/datum/coven/coven = user_covens[coven_name]
@@ -253,8 +253,8 @@
 		<li class="coven-item" onclick="selectCoven('[coven_name]')">
 			<div class="coven-name">[coven.name]</div>
 			<div class="coven-stats">
-				<span>Level [coven.level]/[coven.max_level]</span>
-				<span>[coven.experience]/[coven.experience_needed] XP</span>
+				<span>等级 [coven.level]/[coven.max_level]</span>
+				<span>经验 [coven.experience]/[coven.experience_needed]</span>
 			</div>
 			<div class="coven-progress">
 				<div class="coven-progress-fill" style="width: [experience_percent]%"></div>
@@ -986,27 +986,27 @@
 	<body>
 		<div class="clan-header">
 			<div class="clan-info">
-				<div class="clan-name">[user_clan ? user_clan.name : "Unknown Clan"]</div>
+				<div class="clan-name">[user_clan ? user_clan.name : "未知氏族"]</div>
 				<div class="clan-desc">[user_clan ? user_clan.desc : ""]</div>
-				<div class="clan-desc">RP: [vampire ? vampire.research_points : ""]</div>
+				<div class="clan-desc">研究点数：[vampire ? vampire.research_points : ""]</div>
 			</div>
 			<div class="header-controls">
-				<a href="?src=[REF(src)];action=refresh_clan_menu" class="header-btn">Refresh</a>
+				<a href="?src=[REF(src)];action=refresh_clan_menu" class="header-btn">刷新</a>
 			</div>
 		</div>
 
 		<div class="main-container">
 			<div class="sidebar">
-				<h3>Clan Hierarchy</h3>
+				<h3>氏族层级</h3>
 				<ul class="coven-list">
 					<li class="coven-item hierarchy-button" onclick="window.location.href='?src=[REF(src)];action=show_hierarchy'">
-					<div class="coven-name">Clan Hierarchy</div>
+					<div class="coven-name">氏族层级</div>
 					<div class="coven-stats">
-						<span>Management</span>
-						<span>View & Edit</span>
+						<span>管理</span>
+						<span>查看与编辑</span>
 					</div>
 				</ul>
-				<h3>Your Covens</h3>
+				<h3>你的盟会</h3>
 				<ul class="coven-list">
 					[generate_coven_list_html()]
 				</ul>
@@ -1017,7 +1017,7 @@
 			</div>
 		</div>
 
-		<a href="byond://?src=[REF(src)];action=[in_preview ? "refresh_clan_menu" : "close_clan_menu"]" class="close-btn">[in_preview ? "Return" : "Close"]</a>
+		<a href="byond://?src=[REF(src)];action=[in_preview ? "refresh_clan_menu" : "close_clan_menu"]" class="close-btn">[in_preview ? "返回" : "关闭"]</a>
 
 		<script>
 
@@ -1215,7 +1215,7 @@
 				if (!tooltip) return;
 
 				const nodeData = JSON.parse(node.dataset.nodeData || '{}');
-				let tooltipContent = '<h3>' + (nodeData.name || 'Unknown Power') + '</h3>';
+				let tooltipContent = '<h3>' + (nodeData.name || '未知能力') + '</h3>';
 
 				if (nodeData.desc) {
 					tooltipContent += '<p>' + nodeData.desc + '</p>';
@@ -1229,38 +1229,38 @@
 					tooltipContent += '<div class="gif-showcase">';
 					tooltipContent += '<div class="gif-container" style="width: ' + gifWidth + 'px; height: ' + gifHeight + 'px; background-image: url(' + gifUrl + '); background-size: cover; background-position: center; background-repeat: no-repeat;">';
 					tooltipContent += '<div class="gif-overlay">';
-					tooltipContent += '<span class="gif-label">Ability Preview</span>';
+					tooltipContent += '<span class="gif-label">能力预览</span>';
 					tooltipContent += '</div>';
 					tooltipContent += '</div>';
 					tooltipContent += '</div>';
 				}
 
 				if (nodeData.cooldown && nodeData.cooldown > 0) {
-					tooltipContent += '<div class="power-stats">Cooldown: ' + nodeData.cooldown + ' Seconds</div>';
+					tooltipContent += '<div class="power-stats">冷却时间：' + nodeData.cooldown + '秒</div>';
 				}
 
 				if (nodeData.upkeep_cost && nodeData.upkeep_cost > 0) {
-					tooltipContent += '<div class="power-stats">Upkeep Cost: ' + nodeData.upkeep_cost + ' every ' + nodeData.upkeep_duration + ' Seconds</div>';
+					tooltipContent += '<div class="power-stats">维持消耗：每' + nodeData.upkeep_duration + '秒消耗' + nodeData.upkeep_cost + '</div>';
 				}
 
 				if (nodeData.vitae_cost && nodeData.vitae_cost > 0) {
-					tooltipContent += '<div class="power-stats">Vitae Cost: ' + nodeData.vitae_cost + '</div>';
+					tooltipContent += '<div class="power-stats">命髓消耗：' + nodeData.vitae_cost + '</div>';
 				}
 
 				if (nodeData.research_cost && nodeData.research_cost > 0) {
-					tooltipContent += '<div class="research-cost">Research Cost: ' + nodeData.research_cost + ' RP</div>';
+					tooltipContent += '<div class="research-cost">研究消耗：' + nodeData.research_cost + '研究点数</div>';
 				}
 
 				if (nodeData.prerequisites && nodeData.prerequisites.length > 0) {
-					tooltipContent += '<div class="requirements">Requires: ' + nodeData.prerequisites.join(', ') + '</div>';
+					tooltipContent += '<div class="requirements">前置条件：' + nodeData.prerequisites.join(', ') + '</div>';
 				}
 
 				if (nodeData.minimal_generation) {
-					tooltipContent += '<div class="requirements">Minimal Generation: ' + nodeData.minimal_generation + '</div>';
+					tooltipContent += '<div class="requirements">最低世代：' + nodeData.minimal_generation + '</div>';
 				}
 
 				if (nodeData.special_effect) {
-					tooltipContent += '<div class="power-stats">Special: ' + nodeData.special_effect + '</div>';
+					tooltipContent += '<div class="power-stats">特殊效果：' + nodeData.special_effect + '</div>';
 				}
 
 				tooltip.innerHTML = tooltipContent;

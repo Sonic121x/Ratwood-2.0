@@ -8,9 +8,9 @@
 	antag_hud_type = ANTAG_HUD_VAMPIRE
 	antag_hud_name = "vamplord"
 	confess_lines = list(
-		"I AM ANCIENT!",
-		"I AM THE LAND!",
-		"FIRSTBORNE CHILD OF KAIN!",
+		"我即亘古！",
+		"我即大地！",
+		"该隐的初生之子！",
 	)
 	show_in_roundend = TRUE
 	var/ascended = FALSE
@@ -20,7 +20,7 @@
 
 /datum/antagonist/vampire/lord/on_gain()
 	. = ..()
-	addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "[name]"), 5 SECONDS)
+	addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "血族始祖"), 5 SECONDS)
 
 	owner.unknow_all_people()
 	for(var/datum/mind/MF in get_minds())
@@ -40,7 +40,7 @@
 	H.forceMove(pick(GLOB.vlord_starts))
 
 /datum/antagonist/vampire/lord/greet()
-	to_chat(owner.current, span_userdanger("I am ancient. I am the Land. And I am now awoken to trespassers upon my domain."))
+	to_chat(owner.current, span_userdanger("我即亘古，我即大地。如今我已苏醒，而我的领地竟有外人擅闯。"))
 	. = ..()
 
 /datum/outfit/job/vamplord/pre_equip(mob/living/carbon/human/H)
@@ -71,35 +71,35 @@
 
 // NEW VERBS
 /mob/living/carbon/human/proc/demand_submission()
-	set name = "Demand Submission"
+	set name = "要求臣服"
 	set category = "VAMPIRE"
 	if(SSmapping.retainer.king_submitted)
-		to_chat(src, span_warning("I am already the Master of [SSmapping.current_map.map_name]."))
+		to_chat(src, span_warning("我已经是[SSmapping.current_map.map_name]的主人。"))
 		return
 
 	var/mob/living/carbon/ruler = SSticker.rulermob
 
 	if(!ruler || (get_dist(src, ruler) > 1))
-		to_chat(src, span_warning("The Master of [SSmapping.current_map.map_name] is not beside me."))
+		to_chat(src, span_warning("[SSmapping.current_map.map_name]的主人不在我身边。"))
 		return
 
 	if(ruler.stat <= CONSCIOUS)
-		to_chat(src, span_warning("[ruler] is still conscious."))
+		to_chat(src, span_warning("[ruler]仍然清醒。"))
 		return
 
-	switch(alert(ruler, "Submit and Pledge Allegiance to [name]?", "SUBMISSION", "Yes", "No"))
-		if("Yes")
+	switch(alert(ruler, "要向[name]臣服并宣誓效忠吗？", "臣服", "是", "否"))
+		if("是")
 			SSmapping.retainer.king_submitted = TRUE
-		if("No")
-			to_chat(ruler, span_boldnotice("I refuse!"))
-			to_chat(src, span_boldnotice("[p_they(TRUE)] refuse[ruler.p_s()]!"))
+		if("否")
+			to_chat(ruler, span_boldnotice("我拒绝！"))
+			to_chat(src, span_boldnotice("[ruler]拒绝了！"))
 
 /mob/living/carbon/human/proc/punish_spawn()
-	set name = "Punish Minion"
+	set name = "惩戒仆从"
 	set category = "VAMPIRE"
 
 	if(!clan_position)
-		to_chat(src, span_warning("You have no subordinates to punish."))
+		to_chat(src, span_warning("你没有可惩戒的下属。"))
 		return
 
 	var/list/possible = list()
@@ -109,38 +109,38 @@
 			continue
 		possible[member.real_name] = member
 	if(!length(possible))
-		to_chat(src, span_warning("You have no subordinates to punish."))
+		to_chat(src, span_warning("你没有可惩戒的下属。"))
 		return
 
-	var/name_choice = input(src, "Who to punish?", "PUNISHMENT") as null|anything in possible
+	var/name_choice = input(src, "惩戒谁？", "惩戒") as null|anything in possible
 	if(!name_choice)
 		return
 	var/mob/living/carbon/human/choice = possible[name_choice]
 	if(!choice || QDELETED(choice))
 		return
-	var/punishmentlevels = list("Pause", "Pain", "DESTROY")
-	var/punishment = input(src, "Severity?", "PUNISHMENT") as null|anything in punishmentlevels
+	var/punishmentlevels = list("定身", "痛苦", "毁灭")
+	var/punishment = input(src, "惩戒的程度？", "惩戒") as null|anything in punishmentlevels
 	if(!punishment)
 		return
 	switch(punishment)
-		if("Pain")
-			to_chat(choice, span_boldnotice("You are wracked with pain as your master punishes you!"))
+		if("痛苦")
+			to_chat(choice, span_boldnotice("主人降下惩戒，剧痛折磨着你！"))
 			choice.apply_damage(30, BRUTE)
 			choice.emote_scream()
 			playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
-		if("Pause")
-			to_chat(choice, span_boldnotice("Your body is frozen in place as your master punishes you!"))
+		if("定身")
+			to_chat(choice, span_boldnotice("主人降下惩戒，你的身体僵在原地！"))
 			choice.Paralyze(300)
 			choice.emote_scream()
 			playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
-		if("DESTROY")
-			to_chat(choice, span_boldnotice("You feel only darkness. Your master no longer has use of you."))
+		if("毁灭")
+			to_chat(choice, span_boldnotice("你只感到一片黑暗。主人已不再需要你。"))
 			addtimer(CALLBACK(choice, TYPE_PROC_REF(/mob/living, dust)), 10 SECONDS)
-	visible_message(span_danger("[src] reaches out, gripping [choice]'s soul, inflicting punishment!"), ignored_mobs = list(choice))
+	visible_message(span_danger("[src]伸出手，攥住[choice]的灵魂施以惩戒！"), ignored_mobs = list(choice))
 
 ////////Outfits////////
 /obj/item/clothing/under/roguetown/platelegs/vampire
-	name = "ancient plate greaves"
+	name = "远古板甲护胫"
 	desc = ""
 	gender = PLURAL
 	icon_state = "vpants"
@@ -157,15 +157,15 @@
 
 /obj/item/clothing/suit/roguetown/shirt/vampire
 	slot_flags = ITEM_SLOT_SHIRT
-	name = "regal silks"
-	desc = "A set of ornate robes with a sash coming across the breast."
+	name = "王者丝袍"
+	desc = "一套华美的长袍，胸前斜系着一条绶带。"
 	body_parts_covered = COVERAGE_ALL_BUT_ARMS
 	icon_state = "vrobe"
 	item_state = "vrobe"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/head/roguetown/vampire
-	name = "crown of darkness"
+	name = "黑暗之冠"
 	icon_state = "vcrown"
 	body_parts_covered = null
 	slot_flags = ITEM_SLOT_HEAD
@@ -177,7 +177,7 @@
 	icon_state = "vunder"
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	name = "ancient chain shirt"
+	name = "远古链甲衫"
 	desc = ""
 	body_parts_covered = COVERAGE_TORSO
 	body_parts_inherent = FULL_BODY
@@ -189,7 +189,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/vampire
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "ancient ceremonial plate"
+	name = "远古仪式板甲"
 	desc = ""
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = FULL_BODY
@@ -207,7 +207,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/shoes/roguetown/boots/armor/vampire
-	name = "ancient ceremonial plated boots"
+	name = "远古仪式甲靴"
 	desc = ""
 	body_parts_covered = FEET
 	body_parts_inherent = FULL_BODY
@@ -221,7 +221,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/head/roguetown/helmet/heavy/vampire
-	name = "ancient ceremonial helm"
+	name = "远古仪式头盔"
 	icon_state = "vhelmet"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
 	body_parts_inherent = FULL_BODY
@@ -246,7 +246,7 @@
 	REMOVE_TRAIT(user, TRAIT_BITERHELM, TRAIT_GENERIC)
 
 /obj/item/clothing/gloves/roguetown/chain/vampire
-	name = "ancient ceremonial gloves"
+	name = "远古仪式手套"
 	icon_state = "vgloves"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = ARMOR_VAMP
@@ -255,7 +255,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PEEL, BCLASS_PIERCE, BCLASS_CHOP, BCLASS_LASHING, BCLASS_STAB)
 
 /obj/structure/vampire/necromanticbook // Used to summon undead to attack town/defend manor.
-	name = "Tome of Souls"
+	name = "灵魂之典"
 	icon_state = "tome"
 	pixel_x = -16
 	var/list/useoptions = list("Create Death Knight", "Steal the Sun")

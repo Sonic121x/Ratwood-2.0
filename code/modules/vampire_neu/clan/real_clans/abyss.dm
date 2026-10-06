@@ -1,8 +1,8 @@
 /// Baali from aliexpress
 /datum/clan/abyss
-	name = "Children of the Abyss"
-	desc = "The Children of the Abyss are a bloodline of vampires that worship the demons of old. Because of their affinity with the unholy, they are extremely vulnerable to the Church."
-	curse = "Fear of the Religion."
+	name = "深渊之子"
+	desc = "深渊之子是崇拜古老恶魔的血族血脉。由于与邪秽之物亲近，他们在教会面前极为脆弱。"
+	curse = "畏惧信仰。"
 	clanicon = "daimonion"
 	clane_covens = list(
 		/datum/coven/obfuscate,
@@ -22,13 +22,13 @@
 	vampire.RemoveElement(/datum/element/holy_weakness)
 
 /datum/clan/abyss/get_downside_string()
-	return "burn in sunlight, and in the presence of the Ten"
+	return "在阳光下或十神面前燃烧"
 
 /datum/clan/abyss/get_frenzy_messages()
 	return list(
-		"The demons of old whisper, and their only counsel is [span_danger("blood")].",
-		"Something [span_danger("ancient")] uncoils in my chest, unholy and starving.",
-		"The dark I worship reaches back through me, and it means to [span_danger("feed")].",
-		"My patrons stir in the abyss - they would have me [span_userdanger("rend and drink")].",
-		"Faith and reason [span_danger("burn away")]. Only black appetite is left.",
+		"古老恶魔低语着，给我的唯一指引便是[span_danger("鲜血")]。",
+		"某种[span_danger("古老")]之物在我胸中舒展开来，邪恶而饥饿。",
+		"我崇拜的黑暗借我伸出触手，它要[span_danger("进食")]。",
+		"我的庇护者在深渊中蠢动——它们要我[span_userdanger("撕裂并痛饮")]。",
+		"信仰与理智[span_danger("燃烧殆尽")]，只剩下黑暗的食欲。",
 	)

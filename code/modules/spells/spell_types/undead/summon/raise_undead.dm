@@ -50,8 +50,8 @@
 	target.key = C.key
 	SSjob.EquipRank(target, "Fortified Skeleton", TRUE)
 	target.copy_known_languages_from(user, TRUE)
-	target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
-	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "FORTIFIED SKELETON"), 3 SECONDS)
+	target.visible_message(span_warning("[target]的眼中亮起诡异的光芒！"))
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "强化骷髅"), 3 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_pronouns_and_body)), 7 SECONDS)
 	target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
 	return TRUE

@@ -2,7 +2,7 @@
 
 /// Incision
 /datum/surgery_step/incise
-	name = "Incise"
+	name = "切开"
 	implements = list(
 		TOOL_SCALPEL = 80,
 		TOOL_SHARP = 60,
@@ -17,14 +17,14 @@
 	success_sound = 'sound/surgery/scalpel2.ogg'
 
 /datum/surgery_step/incise/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to make an incision in [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to make an incision in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to make an incision in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始在[target]的[parse_zone(target_zone)]上切开一道口子……"),
+		span_notice("[user]开始在[target]的[parse_zone(target_zone)]上切开一道口子。"),
+		span_notice("[user]开始在[target]的[parse_zone(target_zone)]上切开一道口子。"))
 	return TRUE
 
 /datum/surgery_step/incise/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("Blood pools around the incision in [target]'s [parse_zone(target_zone)]."),
-		span_notice("Blood pools around the incision in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("鲜血在[target][parse_zone(target_zone)]的切口周围积聚。"),
+		span_notice("鲜血在[target][parse_zone(target_zone)]的切口周围积聚。"))
 	var/obj/item/bodypart/gotten_part = target.get_bodypart(check_zone(target_zone))
 	if(gotten_part)
 		gotten_part.add_wound(/datum/wound/slash/incision)
@@ -32,7 +32,7 @@
 
 /// Clamping
 /datum/surgery_step/clamp
-	name = "Clamp bleeders"
+	name = "钳夹止血"
 	implements = list(
 		TOOL_HEMOSTAT = 75,
 		TOOL_WIRECUTTER = 60,
@@ -45,22 +45,22 @@
 	preop_sound = 'sound/surgery/hemostat1.ogg'
 
 /datum/surgery_step/clamp/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to clamp bleeders in [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始夹住[target][parse_zone(target_zone)]上的出血点……"),
+		span_notice("[user]开始夹住[target][parse_zone(target_zone)]上的出血点。"),
+		span_notice("[user]开始夹住[target][parse_zone(target_zone)]上的出血点。"))
 	return TRUE
 
 /datum/surgery_step/clamp/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I clamp the bleeders in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] clamps the bleeders in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] clamps the bleeders in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我夹住了[target][parse_zone(target_zone)]上的出血点。"),
+		span_notice("[user]夹住了[target][parse_zone(target_zone)]上的出血点。"),
+		span_notice("[user]夹住了[target][parse_zone(target_zone)]上的出血点。"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	bodypart?.add_embedded_object(tool, crit_message = FALSE)
 	return TRUE
 
 /// Retracting
 /datum/surgery_step/retract
-	name = "Retract incision"
+	name = "撑开切口"
 	implements = list(
 		TOOL_RETRACTOR = 75,
 		TOOL_SCREWDRIVER = 50,
@@ -74,22 +74,22 @@
 	preop_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/retract/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to retract [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to retract [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to retract [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始撑开[target][parse_zone(target_zone)]上的切口……"),
+		span_notice("[user]开始撑开[target][parse_zone(target_zone)]上的切口。"),
+		span_notice("[user]开始撑开[target][parse_zone(target_zone)]上的切口。"))
 	return TRUE
 
 /datum/surgery_step/retract/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I retract [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] retracts [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] retracts [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我撑开了[target][parse_zone(target_zone)]上的切口。"),
+		span_notice("[user]撑开了[target][parse_zone(target_zone)]上的切口。"),
+		span_notice("[user]撑开了[target][parse_zone(target_zone)]上的切口。"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	bodypart?.add_embedded_object(tool, crit_message = FALSE)
 	return TRUE
 
 /// Cauterize
 /datum/surgery_step/cauterize
-	name = "Cauterize wounds"
+	name = "烧灼伤口"
 	implements = list(
 		TOOL_CAUTERY = 100,
 		TOOL_WELDER = 70,
@@ -116,15 +116,15 @@
 	return length(bodypart.wounds)
 
 /datum/surgery_step/cauterize/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to cauterize the wounds on [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to cauterize the wounds on [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to cauterize the wounds on [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始烧灼[target][parse_zone(target_zone)]上的伤口……"),
+		span_notice("[user]开始烧灼[target][parse_zone(target_zone)]上的伤口。"),
+		span_notice("[user]开始烧灼[target][parse_zone(target_zone)]上的伤口。"))
 	return TRUE
 
 /datum/surgery_step/cauterize/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I cauterize the wounds on [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] cauterizes the wounds on [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] cauterizes the wounds on [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我烧灼了[target][parse_zone(target_zone)]上的伤口。"),
+		span_notice("[user]烧灼了[target][parse_zone(target_zone)]上的伤口。"),
+		span_notice("[user]烧灼了[target][parse_zone(target_zone)]上的伤口。"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 		for(var/datum/wound/bleeder in bodypart.wounds)
@@ -138,7 +138,7 @@
 
 /// Saw bone
 /datum/surgery_step/saw
-	name = "Saw bone"
+	name = "锯开骨骼"
 	implements = list(
 		TOOL_SAW = 80,
 		TOOL_SHOVEL = 50,
@@ -168,15 +168,15 @@
 	success_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/saw/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to saw through the bone in [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始锯开[target][parse_zone(target_zone)]的骨骼……"),
+		span_notice("[user]开始锯开[target][parse_zone(target_zone)]的骨骼。"),
+		span_notice("[user]开始锯开[target][parse_zone(target_zone)]的骨骼。"))
 	return TRUE
 
 /datum/surgery_step/saw/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I saw [target]'s [parse_zone(target_zone)] open."),
-		span_notice("[user] saws [target]'s [parse_zone(target_zone)] open!"),
-		span_notice("[user] saws [target]'s [parse_zone(target_zone)] open!"))
+	display_results(user, target, span_notice("我锯开了[target][parse_zone(target_zone)]的骨骼。"),
+		span_notice("[user]锯开了[target][parse_zone(target_zone)]的骨骼！"),
+		span_notice("[user]锯开了[target][parse_zone(target_zone)]的骨骼！"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 		var/fracture_type = /datum/wound/fracture
@@ -197,7 +197,7 @@
 
 /// Drill bone
 /datum/surgery_step/drill
-	name = "Drill bone"
+	name = "钻开骨骼"
 	implements = list(
 		TOOL_DRILL = 80,
 		TOOL_SCREWDRIVER = 25,
@@ -209,15 +209,15 @@
 	skill_median = SKILL_LEVEL_EXPERT
 
 /datum/surgery_step/drill/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("I begin to drill into [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to drill into [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to drill into [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始钻开[target][parse_zone(target_zone)]的骨骼……"),
+		span_notice("[user]开始钻开[target][parse_zone(target_zone)]的骨骼。"),
+		span_notice("[user]开始钻开[target][parse_zone(target_zone)]的骨骼。"))
 	return TRUE
 
 /datum/surgery_step/drill/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("I drill into [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] drills into [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] drills into [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我钻开了[target][parse_zone(target_zone)]的骨骼。"),
+		span_notice("[user]钻开了[target][parse_zone(target_zone)]的骨骼！"),
+		span_notice("[user]钻开了[target][parse_zone(target_zone)]的骨骼！"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	bodypart?.add_wound(/datum/wound/puncture/drilling)
 	target.emote("scream")

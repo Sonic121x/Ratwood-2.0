@@ -1,5 +1,5 @@
 /datum/surgery/bloodletting
-	name = "Force toxins out"
+	name = "排出毒素"
 	steps = list(
 		/datum/surgery_step/incise,
 		/datum/surgery_step/clamp,
@@ -16,7 +16,7 @@
 
 
 /datum/surgery_step/cutvein
-	name = "Cut vein"
+	name = "切开静脉"
 	implements = list(
 		TOOL_SCALPEL = 75,
 		TOOL_SHARP = 30,
@@ -37,21 +37,21 @@
 	success_sound = 'sound/surgery/scalpel2.ogg'
 
 /datum/surgery_step/cutvein/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to cut [target]'s vein on [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to cut [target]'s vein on [parse_zone(target_zone)]."),
-		span_notice("[user] begins to cut [target]'s vein on [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始切开[target][parse_zone(target_zone)]的静脉……"),
+		span_notice("[user]开始切开[target][parse_zone(target_zone)]的静脉。"),
+		span_notice("[user]开始切开[target][parse_zone(target_zone)]的静脉。"))
 	return TRUE
 
 /datum/surgery_step/cutvein/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("Blood dips out of the cut vein in [target]'s [parse_zone(target_zone)]."),
-		span_notice("Blood drips out of the cut vein in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("鲜血从[target][parse_zone(target_zone)]被切开的静脉中滴落。"),
+		span_notice("鲜血从[target][parse_zone(target_zone)]被切开的静脉中滴落。"))
 	var/obj/item/bodypart/gotten_part = target.get_bodypart(check_zone(target_zone))
 	if(gotten_part)
 		gotten_part.add_wound(/datum/wound/slash/vein)
 	return TRUE
 
 /datum/surgery_step/bloodlet
-	name = "Force out bad blood"
+	name = "排出污血"
 	implements = list(
 		TOOL_HAND = 80,
 	)
@@ -72,15 +72,15 @@
 	success_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/bloodlet/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to force the blood out of [target]'s vein in [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to force the blood out of [target]'s vein in [parse_zone(target_zone)]!"),
-		span_notice("[user] begins to force the blood out of [target]'s vein in [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我开始从[target][parse_zone(target_zone)]的静脉中挤出血液……"),
+		span_notice("[user]开始从[target][parse_zone(target_zone)]的静脉中挤出血液！"),
+		span_notice("[user]开始从[target][parse_zone(target_zone)]的静脉中挤出血液！"))
 	return TRUE
 
 /datum/surgery_step/bloodlet/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I force blood out [target]'s vein in [parse_zone(target_zone)]."),
-		span_notice("[user] forces blood out [target]'s vein in [parse_zone(target_zone)]!"),
-		span_notice("[user] forces blood out [target]'s vein in [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我从[target][parse_zone(target_zone)]的静脉中挤出血液。"),
+		span_notice("[user]从[target][parse_zone(target_zone)]的静脉中挤出血液！"),
+		span_notice("[user]从[target][parse_zone(target_zone)]的静脉中挤出血液！"))
 	target.adjustToxLoss (-25, 0)
 	target.adjust_blood_volume(-(50))
 	return TRUE
