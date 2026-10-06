@@ -235,9 +235,9 @@
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker
-	name = "gilded drow crossbow"
-	desc = "A stripped-down crossbow specifically made for the small engagement ranges of the Underdark and caverns. A practical tool of the Drow assassin - \
-	a lady's friend is a man's end. The machining is finely tuned, and the whole of the bow is ornamented in gold - a symbol of rank among drow markswomen."
+	name = "镀金卓尔弩"
+	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，是卓尔刺客的实用利器—— \
+	女士的挚友，男人的终结。其机件调校精密，弩身通体饰金，象征着卓尔女射手的地位。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "drowcrossbowgilded0"
 	item_state = "drowcrossbowgilded"
@@ -252,9 +252,9 @@
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker/lesser
-	name = "drow crossbow"
-	desc = "A stripped-down crossbow specifically made for the small engagement ranges of the Underdark and caverns. The body is well worn \
-	and lacks the gilding one commonly sees on the equipment of established Drow warriors."
+	name = "卓尔弩"
+	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，弩身已磨损严重， \
+	也没有久经沙场的卓尔战士装备上常见的镀金装饰。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "drowcrossbow0"
 	item_state = "drowcrossbow"

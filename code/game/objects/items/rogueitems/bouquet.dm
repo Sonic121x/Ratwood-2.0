@@ -58,19 +58,19 @@
 	icon_state = "rosa_crown"
 
 /obj/item/flowercrown/matricaria
-	name = "crown of matricaria"
+	name = "洋甘菊花冠"
 	item_state = "matricaria_crown"
 	icon_state = "matricaria_crown"
 
 /obj/item/flowercrown/calendula
-	name = "crown of calendula"
+	name = "金盏花花冠"
 	item_state = "calendula_crown"
 	icon_state = "calendula_crown"
 
 /obj/item/flowercrown/manabloom
-	name = "crown of manabloom"
-	desc = "A crown formed of manabloom flowers. Often worn by those who find themselves in need of a \
-	deeper attunement to the arcyne; a favourite of young apprentices and faltering old masters both."
+	name = "法绽花花冠"
+	desc = "一顶由法绽花编成的花冠，常由想要 \
+	加深奥术感应的人佩戴；年轻学徒和日渐衰弱的老法师都很喜爱它。"
 	item_state = "manabloom_crown"
 	icon_state = "manabloom_crown"
 
@@ -80,19 +80,19 @@
 	icon_state = "salvia_crown"
 
 /obj/item/flowercrown/rosa/thorns
-	name = "crown of rosas with thorns"
-	desc = "Beauty is pain, Suffering is beautiful."
+	name = "带刺玫瑰花冠"
+	desc = "美丽即痛苦，苦难亦美丽。"
 	item_state = "rosecirclet"
 	icon_state = "rosecirclet"
 
 /obj/item/flowercrown/rosa/thorns/pickup(mob/living/user)
 	. = ..()
-	to_chat(user, span_warning ("The thorns prick me, but it feels good."))
+	to_chat(user, span_warning ("尖刺扎着我，却让我感到愉悦。"))
 	user.adjustBruteLoss(4)
 
 /obj/item/flowercrown/rosa/dyecrown
-	name = "crown of flowers"
-	desc = "A simple crown of flowers, they seem to be easily dyed."
+	name = "花冠"
+	desc = "一顶简单的花冠，似乎很容易染色。"
 	item_state = "flower"
 	icon_state = "flower"
 	color = "#FFFFFF"

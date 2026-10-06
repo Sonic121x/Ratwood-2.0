@@ -208,7 +208,7 @@
 
 /obj/structure/fluff/traveltile/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Shift-right-click to peer through to the other side.")
+	. += span_info("按住Shift并右键点击，可以窥看另一侧。")
 
 /obj/structure/fluff/traveltile/ShiftRightClick(mob/user)
 	if(!isliving(user))
@@ -225,11 +225,11 @@
 		return TRUE
 	var/list/destinations = return_connected_turfs()
 	if(!length(destinations))
-		to_chat(L, "<b>It is a dead end.</b>")
+		to_chat(L, "<b>这是一条死路。</b>")
 		return TRUE
 	var/turf/destination = destinations[1]
 	if(L.m_intent != MOVE_INTENT_SNEAK)
-		L.visible_message(span_info("[L] peers through [src]."))
+		L.visible_message(span_info("[L]透过[src]向另一侧窥看。"))
 	var/ttime = 10
 	if(L.STAPER > 5)
 		ttime = 10 - (L.STAPER - 5)
@@ -282,23 +282,23 @@
 	color = "#ff0d00"
 
 /obj/structure/fluff/traveltile/rockhillentrance
-	desc = "一处通往 Rockhill 的入口。"
-	name = "前往 Rockhill"
+	desc = "一处通往岩丘的入口。"
+	name = "前往岩丘"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "underworldportal"
 
 /obj/structure/fluff/traveltile/eventarea
 
 /obj/structure/fluff/traveltile/bathhouse_passage// this is IN the bathhouse
-	name = "suspicious passage"
-	desc = "A crevice in the wall. It looks like it leads somewhere."
+	name = "可疑通道"
+	desc = "墙上的一道裂隙，看起来通往某处。"
 	required_trait = TRAIT_AGENT_BATHHOUSE
 	required_jobs = list("Bathmaster", "Bathhouse Attendant")
 	travel_time = 15 SECONDS // If there's an active chase you basically cannot use it to escape quickly
-	travel_message = "I begin to squeeze through the passage..."
-	travel_deny_message = "You're not supple enough to use this passage."
+	travel_message = "我开始挤进通道……"
+	travel_deny_message = "我的身体不够柔韧，无法通过这条通道。"
 	watchable = FALSE
-	travel_access_hint = "A tight passage that leads between the bathhouse and the northern coast, with many twists and turns - only a bathhouse staff member can fit through it. It takes a while to travel through, and is a popular route for smuggling goods in and out of town."
+	travel_access_hint = "这条狭窄曲折的通道连接着澡堂与北部海岸，只有澡堂工作人员能够挤过去。穿行需要一些时间，是往返城镇走私货物的常用路线。"
 	aportalid = "smuggler_bathhouse"
 	aportalgoesto = "smuggler_cove"
 	craftblock = FALSE // maybe dont block crafting in half of the bathouse?

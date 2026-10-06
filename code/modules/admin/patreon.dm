@@ -201,30 +201,30 @@ GLOBAL_LIST_EMPTY(anonymize)
 	if(get_playerquality(client.ckey) <= -5)
 		client.prefs.anonymize = FALSE
 		client.prefs.save_preferences()
-		to_chat(src, span_warning("Your PQ is too low!"))
+		to_chat(src, span_warning("你的玩家质量分（PQ）过低！"))
 		return
 //	if(!check_whitelist(client.ckey))
 //		to_chat(src, span_warning("Whitelisted players only."))
 //		return
 	if(client.prefs.anonymize == TRUE)
-		if(alert(src, "Disable Anonymize? (Not Recommended)", "ROGUETOWN", "YES", "NO") == "YES")
+		if(alert(src, "关闭匿名模式？（不推荐）", "ROGUETOWN", "是", "否") == "是")
 			if(GLOB.respawncounts[client.ckey])
-				to_chat(src, span_warning("You have already spawned."))
+				to_chat(src, span_warning("你已经进入过本轮游戏了。"))
 				return
 			client.prefs.anonymize = FALSE
 			client.prefs.save_preferences()
-			to_chat(src, "No longer anonymous.")
+			to_chat(src, "已关闭匿名模式。")
 			GLOB.anonymize -= client.ckey
 	else
-		if(alert(src, "Enable Anonymize? This will hide your BYOND name from anyone except \
-		Dungeon Masters while playing here, useful for dealing with negative OOC bias or \
-		maintaining privacy from other BYOND users.", "ROGUETOWN", "YES", "NO") == "YES")
+		if(alert(src, "启用匿名模式？游玩期间，这会向除 \
+		地下城主持人以外的人隐藏你的BYOND用户名，有助于避免角色外偏见， \
+		或保护你在其他BYOND用户面前的隐私。", "ROGUETOWN", "是", "否") == "是")
 			if(GLOB.respawncounts[client.ckey])
-				to_chat(src, span_warning("You have already spawned."))
+				to_chat(src, span_warning("你已经进入过本轮游戏了。"))
 				return
 			client.prefs.anonymize = TRUE
 			client.prefs.save_preferences()
-			to_chat(src, "Anonymous... OK")
+			to_chat(src, "匿名模式……已启用。")
 			GLOB.anonymize |= client.ckey
 
 GLOBAL_LIST_EMPTY(temporary_donators)

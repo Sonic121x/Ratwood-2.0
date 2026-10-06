@@ -32,7 +32,7 @@
 	hub_id = MEDAL_THANKSALOT
 
 /datum/award/achievement/misc/helbitaljanken
-	name = "Helbitaljanken"
+	name = "冥界猜拳"
 	desc = ""
 	hub_id = MEDAL_HELBITALJANKEN
 

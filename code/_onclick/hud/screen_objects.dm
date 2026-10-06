@@ -148,7 +148,7 @@
 /atom/movable/screen/swap_hand
 	layer = HUD_LAYER
 	plane = HUD_PLANE
-	name = "swap hand"
+	name = "切换手"
 
 /atom/movable/screen/swap_hand/handle_click()
 	// At this point in client Click() code we have passed the 1/10 sec check and little else
@@ -162,7 +162,7 @@
 	return 1
 
 /atom/movable/screen/skills
-	name = "skills"
+	name = "技能"
 	icon_state = "skills"
 	screen_loc = ui_skill_menu
 
@@ -198,16 +198,16 @@
 						finn = TRUE
 						to_chat(usr, "<span class='info'>[LA.name] - ,[LA.key]</span>")
 					if(!finn)
-						to_chat(usr, "<span class='warning'>I don't know any languages.</span>")
+						to_chat(usr, "<span class='warning'>我不懂任何语言。</span>")
 					else if(owner == usr) // open_language_menu
-						to_chat(usr, "<a href='?src=[REF(M)];task=open_language_menu;'>Language Menu</a>")
+						to_chat(usr, "<a href='?src=[REF(M)];task=open_language_menu;'>语言菜单</a>")
 					to_chat(usr, "*----*")
 		for(var/X in GLOB.roguetraits)
 			if(HAS_TRAIT(owner, X))
 				to_chat(usr, "[X] - <span class='info'>[GLOB.roguetraits[X]]</span>")
 				ht = TRUE
 		if(!ht)
-			to_chat(usr, "<span class='warning'>I have no special traits.</span>")
+			to_chat(usr, "<span class='warning'>我没有特殊特质。</span>")
 		to_chat(usr, "*----*")
 		return
 
@@ -219,7 +219,7 @@
 		H.ensure_skills().print_levels(usr)
 
 /atom/movable/screen/craft
-	name = "crafting menu"
+	name = "制作菜单"
 	icon_state = "craft"
 	screen_loc = rogueui_craft
 	var/last_craft
@@ -235,12 +235,12 @@
 		if(modifiers["right"])
 			var/area/A = get_area(H)
 			if(!A.can_craft_here())
-				to_chat(H, span_warning("You cannot craft here."))
+				to_chat(H, span_warning("你无法在这里制作物品。"))
 				return
 			if(H.craftingthing && (H.mind?.lastrecipe != null))
 				last_craft = world.time
 				var/datum/component/personal_crafting/C = H.craftingthing
-				to_chat(H, span_warning("I am crafting \a [H.mind?.lastrecipe] again."))
+				to_chat(H, span_warning("我再次开始制作\a [H.mind?.lastrecipe]。"))
 				C.construct_item(H, H.mind?.lastrecipe)
 		else
 			H.playsound_local(H, 'sound/misc/click.ogg', 100)
@@ -255,7 +255,7 @@
 				testing("what")
 
 /atom/movable/screen/area_creator
-	name = "create new area"
+	name = "创建新区域"
 	icon_state = "area_edit"
 	screen_loc = ui_building
 
@@ -264,12 +264,12 @@
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
-		to_chat(usr, "<span class='warning'>There is already a defined structure here.</span>")
+		to_chat(usr, "<span class='warning'>这里已有划定的建筑。</span>")
 		return TRUE
 	create_area(usr)
 
 /atom/movable/screen/language_menu
-	name = "language menu"
+	name = "语言菜单"
 	icon_state = "talk_wheel"
 	screen_loc = ui_language_menu
 
@@ -477,7 +477,7 @@
 	return TRUE
 
 /atom/movable/screen/close
-	name = "close"
+	name = "关闭"
 	layer = ABOVE_HUD_LAYER
 	plane = ABOVE_HUD_PLANE
 	icon_state = "backpack_close"
@@ -492,7 +492,7 @@
 	return TRUE
 
 /atom/movable/screen/drop
-	name = "drop"
+	name = "丢弃"
 	icon_state = "act_drop"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -505,7 +505,7 @@
 		usr.dropItemToGround(usr.get_active_held_item())
 
 /atom/movable/screen/act_intent
-	name = "intent"
+	name = "意图"
 	icon_state = "help"
 	screen_loc = ui_acti
 
@@ -743,7 +743,7 @@
 
 
 /atom/movable/screen/give_intent
-	name = "give/take"
+	name = "给予/拿取"
 	icon_state = "take0"
 	icon = 'icons/mob/roguehud.dmi'
 	screen_loc = rogueui_give
@@ -827,7 +827,7 @@
 			update_icon()
 
 /atom/movable/screen/mov_intent
-	name = "run/walk toggle"
+	name = "切换奔跑/行走"
 	icon_state = "running"
 
 /atom/movable/screen/mov_intent/handle_click(location, control, params)
@@ -846,7 +846,7 @@
 	user.toggle_move_intent(user)
 
 /atom/movable/screen/rogmove
-	name = "sneak mode"
+	name = "潜行模式"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "sneak0"
 	screen_loc = rogueui_moves
@@ -872,7 +872,7 @@
 		icon_state = "sneak0"
 
 /atom/movable/screen/rogmove/sprint
-	name = "sprint mode"
+	name = "冲刺模式"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "sprint0"
 	screen_loc = rogueui_moves
@@ -937,7 +937,7 @@
 		SSrole_class_handler.setup_class_handler(H)
 
 /atom/movable/screen/eye_intent
-	name = "eye intent"
+	name = "目光意图"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "eye"
 
@@ -1011,7 +1011,7 @@
 	user.toggle_eye_intent(user)
 
 /atom/movable/screen/pull
-	name = "stop pulling"
+	name = "停止拖拽"
 	icon_state = "pull"
 
 /atom/movable/screen/pull/handle_click()
@@ -1026,7 +1026,7 @@
 		icon_state = "pull0"
 
 /atom/movable/screen/rest
-	name = "rest"
+	name = "休息"
 	icon_state = "act_rest"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -1047,7 +1047,7 @@
 		icon_state = "act_rest0"
 
 /atom/movable/screen/restup
-	name = "stand up"
+	name = "站起"
 	icon_state = "act_rest_up"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -1063,7 +1063,7 @@
 			L.stand_up()
 
 /atom/movable/screen/restdown
-	name = "lay down"
+	name = "躺下"
 	icon_state = "act_rest_down"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -1084,7 +1084,7 @@
 			L.lay_down()
 
 /atom/movable/screen/storage
-	name = "storage"
+	name = "储物"
 	icon_state = "block"
 	screen_loc = "7,7 to 10,8"
 	layer = HUD_LAYER
@@ -1121,7 +1121,7 @@
 	return TRUE
 
 /atom/movable/screen/throw_catch
-	name = "throw/catch"
+	name = "投掷/接住"
 	icon_state = "catch0"
 	var/throwy = 0
 
@@ -1610,7 +1610,7 @@
 #undef ZONE_SELECTOR_HIGHLIGHT_SLOTS
 
 /atom/movable/screen/flash
-	name = "flash"
+	name = "闪光"
 	icon_state = "blank"
 	blend_mode = BLEND_ADD
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
@@ -1620,7 +1620,7 @@
 /atom/movable/screen/damageoverlay
 	icon = 'icons/mob/screen_full.dmi'
 	icon_state = "oxydamageoverlay0"
-	name = "dmg"
+	name = "伤害"
 	blend_mode = BLEND_MULTIPLY
 	screen_loc = "CENTER-7,CENTER-7"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -1628,7 +1628,7 @@
 	plane = FULLSCREEN_PLANE
 
 /atom/movable/screen/healths
-	name = "health"
+	name = "健康"
 	icon_state = "health0"
 	screen_loc = ui_health
 
@@ -1639,7 +1639,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/healthdoll
-	name = "health doll"
+	name = "身体状况"
 	screen_loc = rogueui_targetdoll
 
 /atom/movable/screen/healthdoll/handle_click(location, control, params)
@@ -1648,12 +1648,12 @@
 		H.check_for_injuries(H)
 
 /atom/movable/screen/mood
-	name = "mood"
+	name = "心情"
 	icon_state = "mood5"
 	screen_loc = null
 
 /atom/movable/screen/healths/blood
-	name = "life"
+	name = "生命"
 	icon_state = "blood100"
 	screen_loc = rogueui_blood
 	icon = 'icons/mob/rogueheat.dmi'
@@ -1712,7 +1712,7 @@
 			if(length(H.mind.known_people))
 				H.mind.display_known_people(H)
 			else
-				to_chat(H, "<span class='warning'>I don't know anyone.</span>")
+				to_chat(H, "<span class='warning'>我谁也不认识。</span>")
 
 /atom/movable/screen/splash
 	icon = 'icons/blank_title.png'
@@ -1857,7 +1857,7 @@
 	plane = HUD_PLANE
 
 /atom/movable/screen/aim/boxaim
-	name = "tile selection indicator"
+	name = "地块选择指示器"
 	icon_state = "boxoff"
 
 /atom/movable/screen/aim/boxaim/handle_click()
@@ -1882,7 +1882,7 @@
 
 
 /atom/movable/screen/stress
-	name = "sanity"
+	name = "理智"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "stressback"
 	var/atom/movable/screen/hud_component/layer/stress_state_layer
@@ -1987,9 +1987,9 @@
 			to_chat(M, "*--------*")
 		if(modifiers["right"])
 			if(M.get_triumphs() <= 0)
-				to_chat(M, span_warning("I haven't TRIUMPHED."))
+				to_chat(M, span_warning("我尚未取得凯旋。"))
 				return
-			if(alert("Do you want to remember a TRIUMPH?", "", "Yes", "No") == "Yes")
+			if(alert("你想铭记一次凯旋吗？", "", "是", "否") == "是")
 				M.add_stress(/datum/stressevent/triumph)
 				M.adjust_triumphs(-1)
 				M.playsound_local(M, 'sound/misc/notice (2).ogg', 100, FALSE)
@@ -2146,7 +2146,7 @@
 	index == -1 ? swap_rmb_intent(possible_rmb_intents[1]) : swap_rmb_intent(possible_rmb_intents[(index % possible_rmb_intents.len) + 1])
 
 /atom/movable/screen/time
-	name = "Sir Sun"
+	name = "太阳先生"
 	icon = 'icons/time.dmi'
 	icon_state = "day"
 	var/atom/movable/screen/hud_component/layer/cloud_layer
@@ -2170,16 +2170,16 @@
 	switch(GLOB.tod)
 		if("day")
 			icon_state = "day"
-			name = "Sir Sun"
+			name = "太阳先生"
 		if("dusk")
 			icon_state = "dusk"
-			name = "Sir Sun - Dusk"
+			name = "太阳先生 - 黄昏"
 		if("night")
 			icon_state = "night"
-			name = "Miss Moon"
+			name = "月亮小姐"
 		if("dawn")
 			icon_state = "dawn"
-			name = "Sir Sun - Dawn"
+			name = "太阳先生 - 黎明"
 	for(var/datum/weather/rain/R in SSweather.curweathers)
 		if(R.stage < 2)
 			show_clouds = TRUE
@@ -2235,7 +2235,7 @@
 		add_filter("meter_fill", 1, alpha_mask_filter(y = offset, icon = icon(icon, full_state)))
 
 /atom/movable/screen/stamina
-	name = "stamina"
+	name = "耐力"
 	icon_state = "stam100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
@@ -2244,12 +2244,12 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		var/remaining = max(L.max_stamina - L.stamina, 0)
-		to_chat(user, span_info("<b>Stamina:</b> [round(remaining, 0.1)] / [round(L.max_stamina, 0.1)]"))
+		to_chat(user, span_info("<b>耐力：</b> [round(remaining, 0.1)] / [round(L.max_stamina, 0.1)]"))
 	else
 		..()
 
 /atom/movable/screen/energy
-	name = "energy"
+	name = "精力"
 	icon_state = "energy100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
@@ -2257,7 +2257,7 @@
 /atom/movable/screen/energy/examine_ui(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
-		to_chat(user, span_info("<b>Energy:</b> [round(L.energy, 0.1)] / [round(L.max_energy, 0.1)]"))
+		to_chat(user, span_info("<b>精力：</b> [round(L.energy, 0.1)] / [round(L.max_energy, 0.1)]"))
 	else
 		..()
 
@@ -2278,7 +2278,7 @@
 
 
 /atom/movable/screen/temperature
-	name = "Temperature"
+	name = "温度"
 	icon_state = "tempnormal"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_temperature
@@ -2313,7 +2313,7 @@
 	blend_mode = BLEND_MULTIPLY
 
 /atom/movable/screen/char_preview
-	name = "Me."
+	name = "我。"
 	icon_state = ""
 //	var/list/prevcolors = list("background-color=#000000","background-color=#242f28","background-color=#302323","background-color=#999a63","background-color=#7e7e7e")
 

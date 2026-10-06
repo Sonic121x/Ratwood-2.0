@@ -27,13 +27,13 @@
 
 #define RDSCREEN_NOBREAK "<NO_HTML_BREAK>"
 
-#define RDSCREEN_TEXT_NO_PROTOLATHE "<div><h3>No Protolathe Linked!</h3></div><br>"
-#define RDSCREEN_TEXT_NO_IMPRINTER "<div><h3>No Circuit Imprinter Linked!</h3></div><br>"
-#define RDSCREEN_TEXT_NO_DECONSTRUCT "<div><h3>No Destructive Analyzer Linked!</h3></div><br>"
-#define RDSCREEN_TEXT_NO_TDISK "<div><h3>No Technology Disk Inserted!</h3></div><br>"
-#define RDSCREEN_TEXT_NO_DDISK "<div><h3>No Design Disk Inserted!</h3></div><br>"
-#define RDSCREEN_TEXT_NO_SNODE "<div><h3>No Technology Node Selected!</h3></div><br>"
-#define RDSCREEN_TEXT_NO_SDESIGN "<div><h3>No Design Selected!</h3></div><br>"
+#define RDSCREEN_TEXT_NO_PROTOLATHE "<div><h3>未连接原型车床！</h3></div><br>"
+#define RDSCREEN_TEXT_NO_IMPRINTER "<div><h3>未连接电路印刷机！</h3></div><br>"
+#define RDSCREEN_TEXT_NO_DECONSTRUCT "<div><h3>未连接破坏性分析仪！</h3></div><br>"
+#define RDSCREEN_TEXT_NO_TDISK "<div><h3>未插入科技磁盘！</h3></div><br>"
+#define RDSCREEN_TEXT_NO_DDISK "<div><h3>未插入设计磁盘！</h3></div><br>"
+#define RDSCREEN_TEXT_NO_SNODE "<div><h3>未选择科技节点！</h3></div><br>"
+#define RDSCREEN_TEXT_NO_SDESIGN "<div><h3>未选择设计！</h3></div><br>"
 
 #define RDSCREEN_UI_LATHE_CHECK if(QDELETED(linked_lathe)) { return RDSCREEN_TEXT_NO_PROTOLATHE }
 #define RDSCREEN_UI_IMPRINTER_CHECK if(QDELETED(linked_imprinter)) { return RDSCREEN_TEXT_NO_IMPRINTER }
@@ -70,8 +70,8 @@
 
 //defined here so people don't forget to change this!
 #define TECHWEB_POINT_TYPE_LIST_ASSOCIATIVE_NAMES list(\
-	TECHWEB_POINT_TYPE_GENERIC = "General Research",\
-	TECHWEB_POINT_TYPE_NANITES = "Nanite Research"\
+	TECHWEB_POINT_TYPE_GENERIC = "通用研究",\
+	TECHWEB_POINT_TYPE_NANITES = "纳米机器人研究"\
 	)
 
 #define TECHWEB_BOMB_POINTCAP		50000 //Adjust as needed; Stops toxins from nullifying RND progression mechanics. Current Value Cap Radius: 100

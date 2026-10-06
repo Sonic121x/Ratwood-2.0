@@ -4,8 +4,8 @@
 #define WINDMILL_STRESS_GENERATION 256
 
 /obj/structure/windmill
-	name = "windmill"
-	desc = "A squat wooden mill crowned with broad canvas sails. Given open sky and a steady wind, it turns the machinery linked below it."
+	name = "风车"
+	desc = "一座矮壮的木制风车，顶着宽阔的帆布叶片。在天空开阔、风力稳定的地方，它能带动下方相连的机械。"
 	icon = 'icons/roguetown/misc/windmill.dmi'
 	icon_state = "1"
 	// Tall 2-tile sprite: render on the upper game plane so anyone standing in the overhang tile
@@ -28,9 +28,9 @@
 
 /obj/structure/windmill/examine(mob/user)
 	. = ..()
-	. += span_info("Place it somewhere with a clear view of the sky - a roof or an upper floor stops it catching the wind.")
-	. += span_info("It spins fastest on the highest level; the wind weakens, halving its output, for each z-level it sits below the top.")
-	. += span_info("Middle-click it with an engineering wrench to disassemble it.")
+	. += span_info("请放置在能直接看到天空的地方，屋顶或上方楼层会挡住风。")
+	. += span_info("它在最高层转得最快；每比最高层低一层，风力减弱，输出就会减半。")
+	. += span_info("手持工程扳手并用鼠标中键点击，可以将它拆解。")
 
 /obj/structure/windmill/find_rotation_network()
 	. = ..()

@@ -344,82 +344,82 @@
 	switch(flavor)
 		if("divine")
 			choices_self = list(
-				"A burning light sears through your chest",
-				"A crushing judgment presses against your soul",
-				"You feel holy wrath claw through your veins",
-				"A lance of radiant pain pierces you",
-				"You feel condemned by a merciless power"
+				"灼热的光芒烧穿了我的胸口",
+				"沉重的审判压在我的灵魂上",
+				"我感到神圣的怒火在血管中撕扯",
+				"耀眼的痛楚如长枪般刺穿了我",
+				"我感到自己受到了无情力量的裁决"
 			)
 			choices_other = list(
-				"A harsh blaze of light strikes [owner] from above",
-				"[owner] flinches as scorch-bright radiance slams into them",
-				"A crack of punishing light lashes across [owner]",
-				"[owner] recoils beneath a smiting flash",
-				"A blast of searing brilliance crashes down on [owner]"
+				"一道猛烈的光焰从上方击中[owner]",
+				"灼眼的光芒猛击[owner]，令其畏缩",
+				"惩戒的光芒如鞭子般抽过[owner]",
+				"[owner]在惩戒的闪光下退缩",
+				"灼热的耀光轰然落在[owner]身上"
 			)
 
 		if("demonic")
 			choices_self = list(
-				"A chill coils through your gut",
-				"A shadow presses against your mind",
-				"You feel stained by something foul",
-				"A harsh cold grips your spirit",
-				"You feel watched by darkness"
+				"一股寒意盘绕在我的腹中",
+				"阴影压迫着我的心智",
+				"我感到某种污秽沾染了自己",
+				"刺骨的寒冷攥住了我的灵魂",
+				"我感到黑暗正注视着自己"
 			)
 			choices_other = list(
-				"Shadows deepen around [owner]",
-				"[owner]'s features harden sharply",
-				"A dimness hangs around [owner]",
-				"[owner]'s eyes catch a cruel glint",
-				"The air near [owner] seems colder"
+				"[owner]周围的阴影愈发深沉",
+				"[owner]的面容骤然变得冷峻",
+				"阴霾笼罩着[owner]",
+				"[owner]眼中闪过残忍的光芒",
+				"[owner]身旁的空气似乎变冷了"
 			)
 
 		if("witchcraft")
 			choices_self = list(
-				"Old magic stirs beneath your skin",
-				"A tingle runs through your veins",
-				"You feel spells coil around you",
-				"A shimmer brushes your senses",
-				"You feel bound to unseen forces"
+				"古老的魔法在我的皮肤下苏醒",
+				"一阵刺麻流过我的血管",
+				"我感到咒法正缠绕着自己",
+				"一道微光掠过我的感官",
+				"我感到自己被无形的力量束缚"
 			)
 			choices_other = list(
-				"Faint motes flicker around [owner]",
-				"[owner]'s hair stirs without wind",
-				"A brief glow outlines [owner]'s shape",
-				"[owner]'s gaze grows distant and strange",
-				"[owner] moves as if tugged by threads"
+				"微弱的光点在[owner]周围闪烁",
+				"[owner]的头发无风自动",
+				"短暂的辉光勾勒出[owner]的轮廓",
+				"[owner]的目光变得恍惚而古怪",
+				"[owner]的动作仿佛受到丝线牵引"
 			)
 
 		if("fey")
 			choices_self = list(
-				"A mocking giggle echoes in your skull",
-				"You feel unseen hands tug and tease at you",
-				"A prankster's malice dances across your nerves",
-				"You hear taunting whispers just behind your ear",
-				"A sharp jolt of mischief jolts through your body"
+				"嘲弄的轻笑在我的脑海中回荡",
+				"我感到无形的手正在拉扯、戏弄自己",
+				"恶作剧者的恶意撩拨着我的神经",
+				"我听见耳后传来挑衅的低语",
+				"恶作剧带来的刺痛猛然窜过我的身体"
 			)
 			choices_other = list(
-				"A faint chorus of cruel laughter surrounds [owner]",
-				"[owner] flinches at unseen teasing hands",
-				"Whispering mockery drifts around [owner]",
-				"[owner]'s posture jolts as if pranked by the unseen",
-				"Soft snickering and rustling circle [owner] without source"
+				"轻微而残酷的笑声包围着[owner]",
+				"[owner]因无形之手的戏弄而畏缩",
+				"嘲弄的低语在[owner]周围飘荡",
+				"[owner]的身体猛地一颤，仿佛遭到了无形之物的恶作剧",
+				"不知源自何处的窃笑与沙沙声环绕着[owner]"
 			)
 
 		if("mutation")
 			choices_self = list(
-				"A strange tension ripples through you",
-				"You feel something shift inside",
-				"A wrongness tingles through your limbs",
-				"Your body feels briefly unfamiliar",
-				"You feel bent by twisting forces"
+				"古怪的紧绷感掠过我的全身",
+				"我感到体内有什么东西在移动",
+				"异常的刺麻感传遍我的四肢",
+				"我的身体一瞬间变得陌生",
+				"我感到扭曲的力量正在弯折自己"
 			)
 			choices_other = list(
-				"[owner]'s outline ripples slightly",
-				"[owner]'s posture shudders oddly",
-				"[owner]'s features shift, then settle",
-				"Movement warps strangely around [owner]",
-				"[owner] looks subtly out of alignment"
+				"[owner]的轮廓微微波动",
+				"[owner]的身体古怪地颤抖",
+				"[owner]的面容变化了一下，随后恢复平静",
+				"[owner]周围的动作出现了诡异的扭曲",
+				"[owner]的身形似乎略有错位"
 			)
 
 	flavor_text_self = pick(choices_self)
@@ -428,74 +428,74 @@
 	// ----- Trigger phrasing -----
 	switch(trigger)
 		if("on death")
-			trigger_text_self = "as you die";trigger_text_other = "as life leaves them"
+			trigger_text_self = "，就在我死去时";trigger_text_other = "，就在生命离其而去时"
 		if("on beheaded")
-			trigger_text_self = "as you are beheaded";trigger_text_other = "as their head is severed"
+			trigger_text_self = "，就在我被斩首时";trigger_text_other = "，就在其头颅被斩下时"
 		if("on dismembered")
-			trigger_text_self = "as you lose a limb";trigger_text_other = "as a limb is torn from them"
+			trigger_text_self = "，就在我失去肢体时";trigger_text_other = "，就在其肢体被撕下时"
 		if("on sleep")
-			trigger_text_self = "as you fall asleep";trigger_text_other = "as their body slackens"
+			trigger_text_self = "，就在我入睡时";trigger_text_other = "，就在其身体松弛下来时"
 		if("on attack")
-			trigger_text_self = "as you strike";trigger_text_other = "as their blow lands"
+			trigger_text_self = "，就在我发动攻击时";trigger_text_other = "，就在其攻击命中时"
 		if("on receive damage")
-			trigger_text_self = "as you are harmed";trigger_text_other = "as blood is drawn"
+			trigger_text_self = "，就在我受伤时";trigger_text_other = "，就在鲜血流出时"
 		if("on cast spell")
-			trigger_text_self = "as you invoke power";trigger_text_other = "as words of power leave their lips"
+			trigger_text_self = "，就在我唤起力量时";trigger_text_other = "，就在其念出力量之言时"
 		if("on spell or miracle target")
-			trigger_text_self = "as magic touches you";trigger_text_other = "as magic strikes their form"
+			trigger_text_self = "，就在魔法触及我时";trigger_text_other = "，就在魔法击中其身体时"
 		if("on cut tree")
-			trigger_text_self = "as you swing your axe";trigger_text_other = "as wood splinters beneath their strike"
+			trigger_text_self = "，就在我挥动斧头时";trigger_text_other = "，就在木头被其劈碎时"
 		if("on kiss")
-			trigger_text_self = "as you kiss";trigger_text_other = "as their lips meet another"
+			trigger_text_self = "，就在我亲吻别人时";trigger_text_other = "，就在其双唇触及别人时"
 		if("on kissed")
-			trigger_text_self = "as you are kissed";trigger_text_other = "as a kiss touches them"
+			trigger_text_self = "，就在我被亲吻时";trigger_text_other = "，就在亲吻落在其身上时"
 		if("on orgasm")
-			trigger_text_self = "as pleasure peaks";trigger_text_other = "as their body tenses and releases"
+			trigger_text_self = "，就在快感达到顶点时";trigger_text_other = "，就在其身体绷紧又放松时"
 		if("on move")
-			trigger_text_self = "as you move";trigger_text_other = "with each step they take"
+			trigger_text_self = "，就在我移动时";trigger_text_other = "，伴随着其每一步"
 		if("on dawn")
-			trigger_text_self = "as dawn breaks";trigger_text_other = "as first light touches them"
+			trigger_text_self = "，就在黎明到来时";trigger_text_other = "，就在晨光触及其身体时"
 		if("on day")
-			trigger_text_self = "as day rises";trigger_text_other = "as daylight gathers"
+			trigger_text_self = "，就在白昼到来时";trigger_text_other = "，就在天光渐亮时"
 		if("on dusk")
-			trigger_text_self = "as dusk descends";trigger_text_other = "as shadows deepen around them"
+			trigger_text_self = "，就在黄昏降临时";trigger_text_other = "，就在周围阴影渐深时"
 		if("on night")
-			trigger_text_self = "as night falls";trigger_text_other = "as darkness settles"
+			trigger_text_self = "，就在夜幕降临时";trigger_text_other = "，就在黑暗笼罩时"
 
 	// ----- Effect phrasing -----
 	switch(effect)
 		if("buff or debuff")
-			effect_text_self = "your body shifts and twists inside you";effect_text_other = "their stance subtly changes"
+			effect_text_self = "我的身体内部发生了变化与扭曲";effect_text_other = "其姿态发生了细微变化"
 		if("remove trait")
-			effect_text_self = "something familiar fades from you";effect_text_other = "a familiar quality disappears from them"
+			effect_text_self = "某种熟悉的东西从我身上消退";effect_text_other = "一种熟悉的特质从其身上消失"
 		if("add trait")
-			effect_text_self = "a new aspect awakens within you";effect_text_other = "something new takes shape in them"
+			effect_text_self = "一种新的特质在我体内苏醒";effect_text_other = "某种新事物在其体内成形"
 		if("scream")
-			effect_text_self = "you let out a scream";effect_text_other = "they begin to wail"
+			effect_text_self = "我发出一声尖叫";effect_text_other = "其开始哀嚎"
 		if("cry")
-			effect_text_self = "tears drip from your eyes";effect_text_other = "salty tears baste their cheeks"
+			effect_text_self = "泪水从我的眼中滴落";effect_text_other = "咸涩的泪水润湿了其脸颊"
 		if("add reagent")
-			effect_text_self = "your blood feels altered";effect_text_other = "a strange tint touches their veins"
+			effect_text_self = "我感到血液发生了变化";effect_text_other = "其血管染上了古怪的颜色"
 		if("add arousal")
-			effect_text_self = "heat eminates from your loins";effect_text_other = "their breath quickens and their cheeks flush"
+			effect_text_self = "一股燥热从我的下腹升起";effect_text_other = "其呼吸加快，双颊泛红"
 		if("orgasm")
-			effect_text_self = "a climax is set upon you";effect_text_other = "they look wracked with pleasure"
+			effect_text_self = "高潮袭向了我";effect_text_other = "其身体因强烈快感而颤抖"
 		if("shrink sex organs")
-			effect_text_self = "your sex organs seem to retract";effect_text_other = "they look less confident"
+			effect_text_self = "我的性器官似乎缩小了";effect_text_other = "其看起来没那么自信了"
 		if("enlarge sex organs")
-			effect_text_self = "your sex organs seem to swell";effect_text_other = "they look more confident"
+			effect_text_self = "我的性器官似乎增大了";effect_text_other = "其看起来更加自信了"
 		if("add nausea")
-			effect_text_self = "your stomach twists";effect_text_other = "their face pales and their balance falters"
+			effect_text_self = "我的胃一阵翻搅";effect_text_other = "其脸色苍白，身形摇晃"
 		if("clothesplosion")
-			effect_text_self = "your equipment flies away";effect_text_other = "equipment bursts away from them"
+			effect_text_self = "我的装备飞了出去";effect_text_other = "装备从其身上迸飞出去"
 		if("slip")
-			effect_text_self = "your footing vanishes";effect_text_other = "they stumble and fall"
+			effect_text_self = "我的脚下一滑";effect_text_other = "其踉跄着摔倒了"
 		if("arcyne prison")
-			effect_text_self = "you are trapped in arcyne walls";effect_text_other = "they become entrapped in arcyne walls"
+			effect_text_self = "我被困在奥术墙壁之中";effect_text_other = "其被困在奥术墙壁之中"
 
 		if("make deadite")
 			no_notify_on_false_arg = FALSE
-			effect_text_self = (arg == TRUE ? "you begin to crave brains" : "you no longer crave brains") ;effect_text_other = (arg == TRUE ? "their body rapidly decomposes" : "their body rapidly restores itself") 
+			effect_text_self = (arg == TRUE ? "我开始渴望脑髓" : "我不再渴望脑髓") ;effect_text_other = (arg == TRUE ? "其身体迅速腐烂" : "其身体迅速恢复原状")
 		/*if("make vampire")
 			no_notify_on_false_arg = FALSE
 			effect_text_self = (arg == TRUE ? "you begin to crave blood" : "you no longer crave blood") ;effect_text_other = (arg == TRUE ? "they become rather pale" : "life seems to rush into them") 
@@ -504,21 +504,21 @@
 			effect_text_self = (arg == TRUE ? "you begin to crave flesh" : "you no longer crave flesh") ;effect_text_other = (arg == TRUE ? "their hair and nails lengthen" : "their hair and nails shorten") 
 		*/
 		if("shock")
-			effect_text_self = "a jolt tears through you";effect_text_other = "their body convulses sharply"
+			effect_text_self = "一阵电流贯穿了我";effect_text_other = "其身体猛烈抽搐"
 		if("add fire stack")
-			effect_text_self = "flames lick your skin";effect_text_other = "fire catches against them"
+			effect_text_self = "火焰舔舐着我的皮肤";effect_text_other = "其身上燃起了火焰"
 		if("cbt")
-			effect_text_self = "your genitals wrench and twist out of place";effect_text_other = "they look to be in agonizing pain"
+			effect_text_self = "我的下体受到扭曲与拉扯";effect_text_other = "其看起来痛苦不堪"
 		if("explode")
-			effect_text_self = "you detonate violently";effect_text_other = "they erupt in a sudden blast"
+			effect_text_self = "我的身体猛烈爆炸";effect_text_other = "其突然炸裂"
 		if("shapeshift")
-			effect_text_self = "your form twists and reshapes";effect_text_other = "their shape changes before your eyes"
+			effect_text_self = "我的身形扭曲并重塑";effect_text_other = "其身形在众目睽睽之下变化"
 		if("gib")
-			effect_text_self = "you burst apart";effect_text_other = "they are torn into pieces"
+			effect_text_self = "我的身体炸成了碎块";effect_text_other = "其被撕成了碎片"
 
 	// final messages
-	var/self_message   = "[flavor_text_self] [trigger_text_self]. [effect_text_self]."
-	var/others_message = "[flavor_text_other] [trigger_text_other]. [effect_text_other]!"
+	var/self_message   = "[flavor_text_self][trigger_text_self]。[effect_text_self]。"
+	var/others_message = "[flavor_text_other][trigger_text_other]。[effect_text_other]！"
 
 	if(arg == FALSE && no_notify_on_false_arg == TRUE)
 		return

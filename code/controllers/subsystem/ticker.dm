@@ -264,7 +264,7 @@ SUBSYSTEM_DEF(ticker)
 				if(player.ready == PLAYER_READY_TO_PLAY)
 					if(player.client.prefs.lastclass == V)
 						if(player.IsJobUnavailable(V) != JOB_AVAILABLE)
-							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
+							to_chat(player, span_warning("你无法担任[SSjob.GetJob(V)?.display_title || V]，因此不会被纳入候选。"))
 							continue
 				readied_jobs.Add(V)
 		/*
@@ -552,7 +552,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!hpc)
 		listclearnulls(queued_players)
 		for (var/mob/dead/new_player/NP in queued_players)
-			to_chat(NP, span_danger("The alive players limit has been released!<br><a href='?src=[REF(NP)];late_join=override'>[html_encode(">>Join Game<<")]</a>"))
+			to_chat(NP, span_danger("存活玩家人数限制已解除！<br><a href='?src=[REF(NP)];late_join=override'>[html_encode(">>加入游戏<<")]</a>"))
 			SEND_SOUND(NP, sound('sound/blank.ogg'))
 			NP.LateChoices()
 		queued_players.len = 0
@@ -567,14 +567,14 @@ SUBSYSTEM_DEF(ticker)
 			listclearnulls(queued_players)
 			if(living_player_count() < hpc)
 				if(next_in_line && next_in_line.client)
-					to_chat(next_in_line, span_danger("A slot has opened! You have approximately 20 seconds to join. <a href='?src=[REF(next_in_line)];late_join=override'>\>\>Join Game\<\<</a>"))
+					to_chat(next_in_line, span_danger("有空位了！你有约20秒时间加入。<a href='?src=[REF(next_in_line)];late_join=override'>\>\>加入游戏\<\<</a>"))
 					SEND_SOUND(next_in_line, sound('sound/blank.ogg'))
 					next_in_line.LateChoices()
 					return
 				queued_players -= next_in_line //Client disconnected, remove he
 			queue_delay = 0 //No vacancy: restart timer
 		if(25 to INFINITY)  //No response from the next in line when a vacancy exists, remove he
-			to_chat(next_in_line, span_danger("No response received. You have been removed from the line."))
+			to_chat(next_in_line, span_danger("未收到回应，你已被移出队列。"))
 			queued_players -= next_in_line
 			queue_delay = 0
 
@@ -625,48 +625,48 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
-	var/news_source = "Nanotrasen News Network"
+	var/news_source = "纳米新闻网"
 	switch(news_report)
 		if(NUKE_SYNDICATE_BASE)
-			news_message = "In a daring raid, the heroic crew of [station_name()] detonated a nuclear device in the heart of a terrorist base."
+			news_message = "在一次大胆的突袭中，[station_name()]的英勇船员在恐怖分子基地的核心引爆了一枚核装置。"
 		if(STATION_DESTROYED_NUKE)
-			news_message = "We would like to reassure all employees that the reports of a Syndicate backed nuclear attack on [station_name()] are, in fact, a hoax. Have a secure day!"
+			news_message = "请全体员工放心，有关辛迪加支持对[station_name()]发动核袭击的报道其实是骗局。祝各位平安度过今天！"
 		if(STATION_EVACUATED)
-			news_message = "The crew of [station_name()] has been evacuated amid unconfirmed reports of enemy activity."
+			news_message = "在传出尚未证实的敌方活动消息后，[station_name()]的船员已经撤离。"
 		if(BLOB_WIN)
-			news_message = "[station_name()] was overcome by an unknown biological outbreak, killing all crew on board. Don't let it happen to you! Remember, a clean work station is a safe work station."
+			news_message = "[station_name()]遭到未知生物灾害侵袭，全体船员遇难。别让同样的事发生在你身上！请记住，干净的工作环境才是安全的工作环境。"
 		if(BLOB_NUKE)
-			news_message = "[station_name()] is currently undergoing decontanimation after a controlled burst of radiation was used to remove a biological ooze. All employees were safely evacuated prior, and are enjoying a relaxing vacation."
+			news_message = "[station_name()]以一次可控的辐射爆发清除了生物黏液，目前正在进行净化。全体员工此前已安全撤离，正享受轻松的假期。"
 		if(BLOB_DESTROYED)
-			news_message = "[station_name()] is currently undergoing decontamination procedures after the destruction of a biological hazard. As a reminder, any crew members experiencing cramps or bloating should report immediately to security for incineration."
+			news_message = "[station_name()]在消灭生物危害后，正在进行净化处理。提醒各位船员：出现痉挛或腹胀者，请立即到安保部门报到并接受焚烧处理。"
 		if(CULT_ESCAPE)
-			news_message = "Security Alert: A group of religious fanatics have escaped from [station_name()]."
+			news_message = "安全警报：一群宗教狂热分子已从[station_name()]逃脱。"
 		if(CULT_FAILURE)
-			news_message = "Following the dismantling of a restricted cult aboard [station_name()], we would like to remind all employees that worship outside of the Chapel is strictly prohibited, and cause for termination."
+			news_message = "[station_name()]上的非法教派已被瓦解。提醒全体员工：严禁在礼拜堂之外进行宗教崇拜，违者将被终止雇佣。"
 		if(CULT_SUMMON)
-			news_message = "Company officials would like to clarify that [station_name()] was scheduled to be decommissioned following meteor damage earlier this year. Earlier reports of an unknowable eldritch horror were made in error."
+			news_message = "公司发言人特此澄清：[station_name()]在今年早些时候遭到陨石损坏后，就已被安排退役。此前关于不可名状的恐怖存在的报道有误。"
 		if(NUKE_MISS)
-			news_message = "The Syndicate have bungled a terrorist attack [station_name()], detonating a nuclear weapon in empty space nearby."
+			news_message = "辛迪加对[station_name()]的恐怖袭击失败，核武器在附近的空旷太空中引爆。"
 		if(OPERATIVES_KILLED)
-			news_message = "Repairs to [station_name()] are underway after an elite Syndicate death squad was wiped out by the crew."
+			news_message = "船员歼灭了一支辛迪加精锐死亡小队后，[station_name()]的维修工作已展开。"
 		if(OPERATIVE_SKIRMISH)
-			news_message = "A skirmish between security forces and Syndicate agents aboard [station_name()] ended with both sides bloodied but intact."
+			news_message = "[station_name()]上的安保部队与辛迪加特工发生了一场小规模冲突，双方均有伤亡，但仍保持战斗力。"
 		if(REVS_WIN)
-			news_message = "Company officials have reassured investors that despite a union led revolt aboard [station_name()] there will be no wage increases for workers."
+			news_message = "公司发言人向投资者保证，尽管[station_name()]发生了工会领导的叛乱，工人的工资仍不会提高。"
 		if(REVS_LOSE)
-			news_message = "[station_name()] quickly put down a misguided attempt at mutiny. Remember, unionizing is illegal!"
+			news_message = "[station_name()]迅速镇压了一场误入歧途的叛变。请记住，组织工会是违法行为！"
 		if(WIZARD_KILLED)
-			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [station_name()]."
+			news_message = "太空巫师联邦的一名成员在[station_name()]死亡，双方关系因此趋于紧张。"
 		if(STATION_NUKED)
-			news_message = "[station_name()] activated its self destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
+			news_message = "[station_name()]因未知原因启动了自毁装置。目前正尝试克隆船长，以便将其逮捕并处决。"
 		if(CLOCK_SUMMON)
-			news_message = "The garbled messages about hailing a mouse and strange energy readings from [station_name()] have been discovered to be an ill-advised, if thorough, prank by a clown."
+			news_message = "[station_name()]传出的关于向老鼠致敬的混乱消息及异常能量读数，经查是一名小丑策划的恶作剧。准备虽周全，却十分不明智。"
 		if(CLOCK_SILICONS)
-			news_message = "The project started by [station_name()] to upgrade their silicon units with advanced equipment have been largely successful, though they have thus far refused to release schematics in a violation of company policy."
+			news_message = "[station_name()]使用先进设备升级硅基单位的项目已大体成功，但他们至今拒绝公开设计图，违反了公司政策。"
 		if(CLOCK_PROSELYTIZATION)
-			news_message = "The burst of energy released near [station_name()] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
+			news_message = "[station_name()]附近释放的能量爆发已被证实只是新武器试验。不过，一次意外的机械故障导致其通信系统离线。"
 		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
+			news_message = "在例行撤离过程中，[station_name()]的紧急穿梭机因导航协议受损而偏离航线，但不久后便被找回。"
 
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")
@@ -724,18 +724,18 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("A game master has delayed the round end."))
+		to_chat(world, span_boldannounce("游戏管理员推迟了回合结束。"))
 		return
 
 	SStriumphs.end_triumph_saving_time()
-	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, span_boldannounce("世界将在[DisplayTimeText(delay, chinese=TRUE)]后重启。[reason]"))
 
 	var/start_wait = world.time
 	UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("Reboot was cancelled by an admin."))
+		to_chat(world, span_boldannounce("管理员取消了重启。"))
 		return
 	if(end_string)
 		end_state = end_string
@@ -743,14 +743,14 @@ SUBSYSTEM_DEF(ticker)
 	var/statspage = CONFIG_GET(string/roundstatsurl)
 	var/gamelogloc = CONFIG_GET(string/gamelogurl)
 	if(statspage)
-		to_chat(world, span_info("Round statistics and logs can be viewed <a href=\"[statspage][GLOB.round_id]\">at this website!</a>"))
+		to_chat(world, span_info("可在<a href=\"[statspage][GLOB.round_id]\">此网站</a>查看回合统计和日志！"))
 	else if(gamelogloc)
-		to_chat(world, span_info("Round logs can be located <a href=\"[gamelogloc]\">at this website!</a>"))
+		to_chat(world, span_info("可在<a href=\"[gamelogloc]\">此网站</a>查看回合日志！"))
 
 	log_game(span_boldannounce("Rebooting World. [reason]"))
 
 	if(end_party)
-		to_chat(world, span_boldannounce("It's over!"))
+		to_chat(world, span_boldannounce("结束了！"))
 		world.Del()
 	else
 		world.Reboot()
@@ -781,13 +781,13 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/on_sunsteal()
 	GLOB.todoverride = "night"
 	settod()
-	priority_announce("The Sun is torn from the sky!", "Terrible Omen", 'sound/misc/astratascream.ogg')
+	priority_announce("太阳被从天空中撕去了！", "可怖的凶兆", 'sound/misc/astratascream.ogg')
 	addomen(OMEN_SUNSTEAL)
 	SSParticleWeather.run_weather(/datum/particle_weather/fog/blood, TRUE)
 	for(var/mob/living/carbon/human/astrater as anything in GLOB.human_list)
 		if(!istype(astrater.patron, /datum/patron/divine/astrata))
 			continue
-		to_chat(astrater, span_userdanger("You feel the pain of [astrater.patron]!"))
+		to_chat(astrater, span_userdanger("你感受到了[astrater.patron]的痛苦！"))
 		astrater.emote("painscream", intentional = FALSE)
 
 	for(var/turf/open/water/W in world)

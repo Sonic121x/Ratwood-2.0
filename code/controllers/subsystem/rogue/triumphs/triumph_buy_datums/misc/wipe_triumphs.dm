@@ -1,6 +1,6 @@
 /datum/triumph_buy/wipe_triumphs
 	triumph_buy_id = "WipeTriumphs"
-	desc = "Burn down the hall of triumphs! Bring everyone back to ZERO!"
+	desc = "烧毁凯旋殿堂！让所有人的凯旋归零！"
 	triumph_cost = 180
 	category = TRIUMPH_CAT_MISC
 	pre_round_only = FALSE
@@ -9,4 +9,4 @@
 // We fire this on activate
 /datum/triumph_buy/wipe_triumphs/on_activate()
 	SStriumphs.wipe_all_triumphs(ckey_of_buyer) // ha haha .... woops guys
-	to_chat(world, span_redtext("[key_of_buyer] burns the hall of triumphs to the ground!"))
+	to_chat(world, span_redtext("[key_of_buyer]将凯旋殿堂付之一炬！"))

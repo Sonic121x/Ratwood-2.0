@@ -202,7 +202,7 @@
 		if(roll_counts[face] > 0)
 			menu += "[face]"
 
-	var/choice = input(active, "精确选择一个骰子留下，并在这轮搁到一旁。", "Three's Away 对局") as null|anything in menu
+	var/choice = input(active, "精确选择一个骰子留下，并在这轮搁到一旁。", "三去无踪对局") as null|anything in menu
 	if(!choice)
 		for(var/f in 1 to 6)
 			if(roll_counts[f] > 0)
@@ -286,7 +286,7 @@
 		to_chat(user, span_notice("请稍等片刻……"))
 		return
 	if(user != current_player)
-		input(user, "还没轮到你。总分：[get_score_display()]", "Three's Away 对局") as null|anything in list("确定")
+		input(user, "还没轮到你。总分：[get_score_display()]", "三去无踪对局") as null|anything in list("确定")
 		return
 	if(current_player_index < 1 || current_player_index > players.len)
 		to_chat(user, span_warning("回合顺序正在重新同步。稍后再试。"))
@@ -320,7 +320,7 @@
 		else if(total == best_score)
 			contenders += M
 
-	game_bag.visible_message(span_notice("--- Three's Away 本轮结束 ---<br>总分：[get_score_display()]"))
+	game_bag.visible_message(span_notice("--- 三去无踪本轮结束 ---<br>总分：[get_score_display()]"))
 
 	if(!contenders.len)
 		game_bag.visible_message(span_warning("无人获胜。所有人都爆掉了。"))
