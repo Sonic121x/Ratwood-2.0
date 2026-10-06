@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/scrapper
-	name = "scrapper"
-	desc = "A brass-trimmed contraption with a hopper above and an iron strongbox beneath. Bring rag-and-bone and broken stock; the scrapper weighs the offer and pays in coin. The proprietor sets the rate."
+	name = "废料回收机"
+	desc = "一台镶着黄铜边的装置，上方是料斗，下方是铁制钱箱。带来破布、骨头和损坏的物品，回收机会称量并支付钱币。收购价格由业主设定。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -67,23 +67,23 @@
 
 /obj/structure/roguemachine/scrapper/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("The proprietor lists per-material prices, capacities, and which wares to call out. Coins fed into the machine fund the coffer; when it runs dry, the scrapper turns away offers.")
-	. += span_info("Strike with an item to offer it. The scrapper weighs by what it would smelt down to.")
+	. += span_info("业主可设定各种材料的价格、收购容量和吆喝项目。投入的钱币会存入钱箱；钱箱空了，回收机就会拒绝收购。")
+	. += span_info("用物品点击它即可出售。回收机会按照物品熔炼后所得的材料估价。")
 
 /obj/structure/roguemachine/scrapper/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
 		if(K.lockid in keycontrol)
-			to_chat(user, span_notice("I rattle the lock to confirm my standing with the machine."))
+			to_chat(user, span_notice("我拨动锁具，确认自己对这台机器的使用权限。"))
 			SStgui.update_uis(src)
 			return
-		to_chat(user, span_warning("Wrong key."))
+		to_chat(user, span_warning("钥匙不对。"))
 		return
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/KR = P
 		for(var/obj/item/roguekey/KE in KR)
 			if(KE.lockid in keycontrol)
-				to_chat(user, span_notice("I rattle the lock to confirm my standing with the machine."))
+				to_chat(user, span_notice("我拨动锁具，确认自己对这台机器的使用权限。"))
 				SStgui.update_uis(src)
 				return
 
@@ -91,7 +91,7 @@
 		return
 	if(istype(P, /obj/item/roguecoin))
 		if(!is_keyholder(user))
-			to_chat(user, span_warning("Only the proprietor may fund the machine."))
+			to_chat(user, span_warning("只有业主才能为机器补充资金。"))
 			return
 		budget += P.get_real_price()
 		bark_dirty = TRUE
@@ -107,27 +107,27 @@
 /obj/structure/roguemachine/scrapper/proc/try_recycle(obj/item/I, mob/user)
 	var/path = identify_material(I)
 	if(!path)
-		to_chat(user, span_warning("[src] sees no worth in [I]."))
+		to_chat(user, span_warning("[src]认为[I]没有回收价值。"))
 		return
 	var/units = 1
 	if(I.salvage_result == path)
 		units = I.salvage_amount
 		if(units <= 0)
-			to_chat(user, span_warning("[src] sees no worth in [I]."))
+			to_chat(user, span_warning("[src]认为[I]没有回收价值。"))
 			return
 	var/unit_price = material_prices[path] || 0
 	if(unit_price <= 0)
-		to_chat(user, span_warning("[src] is not taking [material_name(path)] today."))
+		to_chat(user, span_warning("[src]今天不收购[material_name(path)]。"))
 		return
 	var/total_price = unit_price * units
 	var/cap = material_caps[path] || 0
 	var/held = material_held[path] || 0
 	if(cap > 0 && held + units > cap)
-		to_chat(user, span_warning("[src]'s [material_name(path)] hopper has no room for that."))
+		to_chat(user, span_warning("[src]的[material_name(path)]料斗装不下这些了。"))
 		playsound(loc, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(budget < total_price)
-		to_chat(user, span_warning("[src]'s coffer hasn't the coin for that."))
+		to_chat(user, span_warning("[src]的钱箱里没有足够的钱币。"))
 		playsound(loc, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	material_held[path] = held + units
@@ -136,9 +136,9 @@
 	I.forceMove(src)
 	budget2change(total_price, user)
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
-	var/cap_text = cap > 0 ? "[max(0, cap - material_held[path])] / [cap] left" : "no cap"
-	var/units_text = units > 1 ? " ([units] units)" : ""
-	to_chat(user, span_notice("[material_name(path)] weighed and paid: [total_price]m[units_text]. [cap_text]."))
+	var/cap_text = cap > 0 ? "剩余容量：[max(0, cap - material_held[path])] / [cap]" : "不限容量"
+	var/units_text = units > 1 ? "（[units]份）" : ""
+	to_chat(user, span_notice("[material_name(path)]已称量，支付[total_price]玛门[units_text]。[cap_text]。"))
 	SStgui.update_uis(src)
 
 /obj/structure/roguemachine/scrapper/proc/rebuild_bark_candidates()
@@ -174,8 +174,8 @@
 	var/price = material_prices[pick]
 	var/cap = material_caps[pick] || 0
 	var/held = material_held[pick] || 0
-	var/left_text = cap > 0 ? "[cap - held] left" : "no cap"
-	say("Rags and scrap! [material_name(pick)] paid at [price]m a piece! [left_text]!")
+	var/left_text = cap > 0 ? "还能收购[cap - held]份" : "不限收购数量"
+	say("收破布，收废料！[material_name(pick)]每份[price]玛门！[left_text]！")
 
 /obj/structure/roguemachine/scrapper/ui_state(mob/user)
 	return GLOB.human_adjacent_state
@@ -293,7 +293,7 @@
 			bark_dirty = TRUE
 			budget2change(amount, usr)
 			playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
-			to_chat(usr, span_notice("I withdraw [amount]m from the coffer."))
+			to_chat(usr, span_notice("我从钱箱中取出[amount]玛门。"))
 			return TRUE
 
 /obj/structure/roguemachine/scrapper/obj_break(damage_flag)
@@ -310,8 +310,8 @@
 	update_icon()
 
 /obj/structure/roguemachine/scrapper/smith
-	name = "smith's scrapper"
-	desc = "A brass-trimmed contraption with a hopper above and an iron strongbox beneath. Takes whatever a smith can smelt back into ingots."
+	name = "铁匠废料回收机"
+	desc = "一台镶着黄铜边的装置，上方是料斗，下方是铁制钱箱。收购铁匠可以重新熔炼成金属锭的物品。"
 	seed_budget = 50
 
 /obj/structure/roguemachine/scrapper/smith/populate_defaults()
@@ -338,8 +338,8 @@
 		material_advertise[path] = (path in defaults_on)
 
 /obj/structure/roguemachine/scrapper/tailor
-	name = "rag-picker"
-	desc = "A brass-trimmed contraption with a hopper above and an iron strongbox beneath. Takes whatever a tailor can rework into fabrics."
+	name = "旧衣回收机"
+	desc = "一台镶着黄铜边的装置，上方是料斗，下方是铁制钱箱。收购裁缝可以重新加工成织物的物品。"
 	seed_budget = 50
 
 /obj/structure/roguemachine/scrapper/tailor/populate_defaults()

@@ -20,7 +20,7 @@
 	var/static/search_result_cap = 30
 	lockid = "nightman"
 	/// Motto displayed at the top of the TGUI interface.
-	var/motto = "BRASSFACE - Sweet Dreams for Cheap"
+	var/motto = "黄铜面——廉价美梦"
 	/// Running tally of Crown import tariff actually collected via this machine.
 	var/tariff_collected_here = 0
 	/// Running tally of tariff dodged via UPGRADE_NOTAX, for the Bathmaster's audit.
@@ -245,7 +245,7 @@
 			if(!(upgrade_flags & UPGRADE_NOTAX))
 				cost += tax_amt
 			if(budget < cost)
-				say("Not enough!")
+				say("不够！")
 				return TRUE
 			budget -= cost
 			playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
@@ -367,12 +367,12 @@ SUBSYSTEM_DEF(BMtreasury)
 			amt_to_generate -= tithe
 			SStreasury.church_fund.balance += tithe
 		SStreasury.bathhouse_fund.balance += amt_to_generate
-		send_ooc_note("Income from smuggling hoard (deposited to Bathhouse Fund): +[amt_to_generate][tithe > 0 ? " (after [tithe]m tithe to the Church)" : ""]", job = "Bathmaster")
+		send_ooc_note("走私宝藏收入（已存入浴场基金）：+[amt_to_generate][tithe > 0 ? "（已扣除缴给教会的[tithe]玛门什一税）" : ""]", job = "Bathmaster")
 	else
 		brassface.budget += amt_to_generate
-		send_ooc_note("Income from smuggling hoard to the BRASSFACE: +[amt_to_generate]", job = "Bathmaster")
+		send_ooc_note("走私宝藏收入已存入黄铜面：+[amt_to_generate]", job = "Bathmaster")
 	if(amt_to_generate > 0)
-		add_hoard_log("payout", "Income from smuggling hoard", amt_to_generate)
+		add_hoard_log("payout", "走私宝藏收入", amt_to_generate)
 	record_round_statistic(STATS_BATHMATRON_VAULT_TOTAL_REVENUE, amt_to_generate)
 
 
