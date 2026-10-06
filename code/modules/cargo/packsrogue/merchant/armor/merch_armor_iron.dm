@@ -7,17 +7,17 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/armor_iron/chainmail_iron
-	name = "锁子短甲"
+	name = "铁制锁子短甲"
 	cost = 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/iron)
 
 /datum/supply_pack/rogue/armor_iron/hauberk_iron
-	name = "锁子甲"
+	name = "铁制锁子甲"
 	cost = 40
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/iron)
 
 /datum/supply_pack/rogue/armor_iron/chaincoif_iron
-	name = "锁子头巾"
+	name = "铁锁链护头巾"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/iron)
 
@@ -27,57 +27,57 @@
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
 /datum/supply_pack/rogue/armor_iron/bevor_iron
-	name = "护颌"
+	name = "铁护颚"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/bevor/iron)
 
 /datum/supply_pack/rogue/armor_iron/breastplate_iron
-	name = "胸甲"
+	name = "铁胸甲"
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/iron)
 
 /datum/supply_pack/rogue/armor_iron/halfplate
-	name = "半身板甲"
+	name = "铁胸甲"
 	cost = 75 // Uhhh I don't think I should be selling them for 65 LOL
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/iron)
 
 /datum/supply_pack/rogue/armor_iron/fullplate
-	name = "全身板甲"
+	name = "铁制板甲"
 	cost = 220 // Uhhh I don't think I should be selling them for 80
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/iron)
 
 /datum/supply_pack/rogue/armor_iron/rearbraces
-	name = "拼条臂甲"
+	name = "拼铁臂甲"
 	cost = 30 //1 Iron 1 Leather
 	contains = list(/obj/item/clothing/wrists/roguetown/splintarms/iron)
 
 /datum/supply_pack/rogue/armor_iron/bracers
-	name = "板臂甲"
+	name = "铁臂甲"
 	cost = 25
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/iron)
 
 /datum/supply_pack/rogue/armor_iron/chaingloves_iron
-	name = "锁链手甲"
+	name = "铁制锁甲护手"
 	cost = 20
 	contains = list(/obj/item/clothing/gloves/roguetown/chain/iron)
 
 /datum/supply_pack/rogue/armor_iron/chainleg_iron
-	name = "锁链腿甲"
+	name = "铁制锁甲腿铠"
 	cost = 25
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/iron)
 
 /datum/supply_pack/rogue/armor_iron/chausses_brigandine
-	name = "拼条腿甲"
+	name = "拼铁护腿"
 	cost = 35 // 1 Iron 2 Leather
 	contains = list(/obj/item/clothing/under/roguetown/splintlegs/iron)
 
 /datum/supply_pack/rogue/armor_iron/chausses_plate
-	name = "板腿甲"
+	name = "铁制板甲腿铠"
 	cost = 40
 	contains = list(/obj/item/clothing/under/roguetown/platelegs/iron)
 
 /datum/supply_pack/rogue/armor_iron/chainkilt
-	name = "锁裙"
+	name = "铁制锁甲裙铠"
 	cost = 25
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/iron/kilt)
 

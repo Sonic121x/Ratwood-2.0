@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Knight
 	group = "落魄骑士" // English: Knight
-	crate_name = "Gifts from your Past"
+	crate_name = "往昔的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////
@@ -78,7 +78,7 @@
 //////////
 
 /datum/supply_pack/rogue/Knight/coif/steel
-	name = "钢锁子头巾"
+	name = "锁链护头巾"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
@@ -88,7 +88,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/full)
 
 /datum/supply_pack/rogue/Knight/coif/hpcoif
-	name = "重型衬垫头巾"
+	name = "厚实衬垫护头巾"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/coif/heavypadding)
 
@@ -234,7 +234,7 @@
 	contains = list(/obj/item/rogueweapon/greatsword/grenz/flamberge)
 
 /datum/supply_pack/rogue/Knight/greatsword
-	name = "巨剑"
+	name = "大剑"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/greatsword)
 

@@ -78,7 +78,7 @@
 				)
 
 /datum/supply_pack/rogue/food/rosa
-	name = "干 Rosa 花瓣"
+	name = "干玫瑰花瓣"
 	cost = 20
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_dried,

@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/bath_perfume
 	group = "香水" // English: Perfumes
-	crate_name = "perfumery' crate"
+	crate_name = "香水货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/bath_perfume/lavender
