@@ -1,30 +1,30 @@
-Erik the Bloodthirsty
-Bjorn the Ruthless
-Ragnar the Cruel
-Harald the Hammer
-Ivar the Wolf
-Sigurd the Silent
-Ulfric the Ironfist
-Leif the Vicious
-Hakon the Black
-Torsten the Reaver
-Einar the Flame
-Asger the Bold
-Frode the Fierce
-Jorund the Storm
-Ketill the Stoneheart
-Sten the Grim
-Viggo the Thunderer
-Skarde the Dreadful
-Magnus the Merciless
-Odinvar the Relentless
-Trygve the Bonebreaker
-Brandr the Scourge
-Dagfinn the Savage
-Gunnar the Howler
-Thrain the Wretched
-Orvar the Ghost
-Rolf the Devourer
-Valbrand the Cold
-Yngvar the Cruel-hearted
-Kjell the Deathless
+嗜血者 Erik
+冷酷者 Bjorn
+残暴者 Ragnar
+战锤 Harald
+恶狼 Ivar
+沉默者 Sigurd
+铁拳 Ulfric
+凶恶者 Leif
+漆黑者 Hakon
+劫掠者 Torsten
+烈焰 Einar
+勇者 Asger
+凶猛者 Frode
+风暴 Jorund
+石心 Ketill
+冷峻者 Sten
+雷鸣者 Viggo
+恐怖者 Skarde
+无情者 Magnus
+不屈不挠者 Odinvar
+碎骨者 Trygve
+灾祸 Brandr
+野蛮人 Dagfinn
+嚎叫者 Gunnar
+悲惨者 Thrain
+幽灵 Orvar
+吞噬者 Rolf
+冷漠者 Valbrand
+狠心者 Yngvar
+不死者 Kjell

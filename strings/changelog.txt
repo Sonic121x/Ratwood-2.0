@@ -1,1 +1,1 @@
-Please refer to open TMs and the Discord's git-update channel for changes!
+更新内容请参阅当前开放的测试合并（TM）及 Discord 的 git-update 频道！
