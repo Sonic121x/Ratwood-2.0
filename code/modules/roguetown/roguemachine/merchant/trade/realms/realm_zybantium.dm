@@ -5,18 +5,18 @@
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_ENCHANTMENTS, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
 	ship_name_words = list(
-		"Thalassa", "Abyssoros", "Khimaira", "Eos", "Aetos",
-		"Astrateios", "Anemos", "Galene", "Drakon", "Pelagos",
-		"Astraios", "Noctaios", "Korax", "Boreas", "Aigle",
+		"大海", "阿比索尔", "奇美拉", "黎明", "雄鹰",
+		"阿斯特拉塔之辉", "风", "平静", "巨龙", "远洋",
+		"星辰", "诺克之辉", "渡鸦", "北风", "光耀",
 	)
 	captain_first_names = list(
-		"Eumelos", "Kallias", "Damaskios", "Hieron", "Polyphron",
-		"Andronikos", "Doros", "Aram", "Vartan", "Niyaz",
-		"Helike", "Anthousa", "Korinna", "Astrateia", "Nairi",
+		"欧梅洛斯", "卡利亚斯", "达马斯基奥斯", "希耶隆", "波利弗龙",
+		"安德罗尼科斯", "多罗斯", "阿拉姆", "瓦尔坦", "尼亚兹",
+		"赫莉刻", "安苏萨", "科琳娜", "阿斯特拉忒娅", "奈里",
 	)
 	captain_last_names = list(
-		"Khariotes", "Pelasgos", "Anaktor", "Phaleron", "Abyssoreios",
-		"of Chorodiaki", "Vrdaqnani", "Nshkor", "Müccevbey", "Sayyari",
+		"哈里奥特斯", "佩拉斯戈斯", "阿纳克托尔", "法勒隆", "阿比索尔裔",
+		"科罗迪亚基的", "弗尔达克纳尼", "恩什科尔", "穆杰夫贝伊", "萨亚里",
 	)
 	ship_types = list(
 		list("name" = "阿卡提翁轻帆船", "tonnage" = 40, "weight" = 15),
@@ -25,7 +25,7 @@
 			list("name" = "潘菲洛斯战船", "tonnage" = 600, "weight" = 20),
 	)
 	city_tags = list(
-		"Zybantium", "Chorodiaki", "Müccevkabher", "Nshkormh", "Vrdaqnan",
+		"兹班图", "科罗迪亚基", "穆杰夫卡伯尔", "恩什科姆", "弗尔达克南",
 	)
 	city_tag_chance = 30
 	cultural_goods = list()

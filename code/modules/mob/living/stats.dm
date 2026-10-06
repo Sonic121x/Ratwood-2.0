@@ -24,8 +24,8 @@
 /mob/living/proc/print_stats(mob/user)
 	if(!user)
 		return
-	to_chat(user, "<span class='info'>STR: \Roman [STASTR] | PER: \Roman [STAPER] | INT: \Roman [STAINT] | CON: \Roman [STACON]</span>")
-	to_chat(user, "<span class='info'>WIL: \Roman [STAWIL] | SPD: \Roman [STASPD] | FOR: \Roman [STALUC] | PATRON: [patron]</span>")
+	to_chat(user, "<span class='info'>力量：\Roman [STASTR] | 感知：\Roman [STAPER] | 智力：\Roman [STAINT] | 体质：\Roman [STACON]</span>")
+	to_chat(user, "<span class='info'>意志：\Roman [STAWIL] | 速度：\Roman [STASPD] | 幸运：\Roman [STALUC] | 信仰：[patron]</span>")
 
 /mob/living/proc/init_faith()
 	set_patron(/datum/patron/godless)

@@ -151,7 +151,7 @@
 	if(ishuman(user))
 		switch(pick(1,2,3,4,5,6,7,8,9,10,11,12,13))
 			if(1)
-				user.say("你母亲是只 Rous，你父亲闻起来像杰克莓！", forced = "spell")
+				user.say("你母亲是只大鼠，你父亲闻起来像杰克莓！", forced = "spell")
 			if(2)
 				user.say("等大魔鬼来把屁股讨回去时，你准备用什么当脸面？！", forced = "spell")
 			if(3)
@@ -173,7 +173,7 @@
 			if(11)
 				user.say("你恐怕得去找铁匠了，因为你根本没资格来打一场智斗！", forced = "spell")
 			if(12)
-				user.say("看来你真是 PSY-DONE 了！不？太早了？行吧。", forced = "spell")
+				user.say("看来你真是普赛“顿”时完蛋了！不好笑？太早了？行吧。", forced = "spell")
 			if(13)
 				user.say("愿 拉沃克斯 替你那无用的导师降下正义，阁下！", forced = "spell")
 
