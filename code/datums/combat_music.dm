@@ -92,7 +92,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/astrata
 	name = "Astrata 之光"
 	desc = ""
-	shortname = "Astrata"
+	shortname = "阿斯特拉塔"
 	credits = "T-87 SULFURHEAD - Heliotrix (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/cmode/church/combat_astrata.ogg')
 
@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/astratan_zeal
 	name = "Astrata 狂热"
 	desc = "在她的指引下挥击时，你的双手永不会染血。"
-	shortname = "Astrata"
+	shortname = "阿斯特拉塔"
 	credits = "Jesper Kyd - Light of the Imperium"
 	musicpath = list('sound/music/combat_holy.ogg')
 
@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/blackoak
 	name = "Black Oak 的守卫"
 	desc = "树木天生就是用来吊人的。"
-	shortname = "Black Oak"
+	shortname = "黑橡"
 	musicpath = list('sound/music/combat_blackoak.ogg')
 
 /datum/combat_music/beggar
@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/conddottiero
 	name = "Condottiero 公会成员"
 	desc = "去悔恨那微笑着逐利之人的时代吧。"
-	shortname = "Condottiero"
+	shortname = "佣兵首领"
 	musicpath = list('sound/music/combat_condottiero.ogg')
 
 /datum/combat_music/cultic
@@ -173,27 +173,27 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/combat_old_2
 	name = "Combat Old 2"
 	desc = ""
-	shortname = "Combat Old 2"
+	shortname = "经典战斗 2"
 	musicpath = list('sound/music/combat2.ogg')
 */
 
 /datum/combat_music/darkstar
 	name = "暗星（维尔沃夫/野蛮人/狂战士）"
 	desc = ""
-	shortname = "Dark Star"
+	shortname = "暗星"
 	credits = " T-87 SULFURHEAD - Archetype of the Dark Star (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/cmode/antag/combat_darkstar.ogg')
 
 /datum/combat_music/deadite
 	name = "尸鬼"
 	desc = "踢！抓！咬！"
-	shortname = "Deadite"
+	shortname = "尸鬼"
 	musicpath = list('sound/music/combat_weird.ogg')
 
 /datum/combat_music/dendor
 	name = "Dendor 教士（守林者）"
 	desc = ""
-	shortname = "Dendor"
+	shortname = "登多尔"
 	credits = "T87-Sulfurhead - Metamorphosis (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/cmode/garrison/combat_warden.ogg')
 
@@ -227,14 +227,14 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/eora
 	name = "Eora 教士"
 	desc = "刚分手的时候，千万别听这首。" // from the credits.txt lol
-	shortname = "Eora"
+	shortname = "伊欧拉"
 	credits = "T-87 SULFURHEAD - Family Melts Away (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/cmode/church/combat_eora.ogg')
 
 /datum/combat_music/forlorn
 	name = "死士先锋佣兵"
 	desc = "你觉得自己从死亡手里逃出来了吗，先锋？"
-	shortname = "Forlorn Hope"
+	shortname = "死士先锋"
 	musicpath = list('sound/music/combat_blackstar.ogg')
 
 /datum/combat_music/fullplate
@@ -247,7 +247,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/grenzelhoft
 	name = "格伦泽尔霍夫特佣兵"
 	desc = "你的态度令人无法忍受，你的笑容也让人作呕。你被录用了。"
-	shortname = "Grenzelhoft"
+	shortname = "格伦泽尔霍夫特"
 	credits = "Helbrede - Sons of Tyr"
 	musicpath = list('sound/music/combat_grenzelhoft.ogg')
 
@@ -266,35 +266,35 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/heretic_zizo
 	name = "异端 - 齐佐（巫妖）"
 	desc = "谁都别信，因为力量始终都在你自己体内。"
-	shortname = "Zizo"
+	shortname = "齐佐"
 	credits = "T87-Sulfurhead - DEMESNE (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/combat_heretic.ogg')
 
 /datum/combat_music/heretic_matthios
 	name = "异端 - 马西奥斯"
 	desc = "一阵精力狂涌而来。你早已忘记上一次有人告诉你何为正确、该做什么，是在什么时候了。"
-	shortname = "Matthios"
+	shortname = "马西奥斯"
 	credits = "T87-Sulfurhead - Amontillado (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/combat_matthios.ogg')
 
 /datum/combat_music/heretic_graggar
 	name = "异端 - 格拉加尔"
 	desc = "也许这一次，你终于会感受到真正的强大。"
-	shortname = "Graggar"
+	shortname = "格拉加尔"
 	credits = "T87-Sulfurhead - Black Powder (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/combat_graggar.ogg')
 
 /datum/combat_music/heretic_graggar_2
 	name = "异端 - 格拉加尔（替代）"
 	desc = "也许这一次，你终于会感受到真正的强大。它可能很吵，所以小心。"
-	shortname = "Graggar 2"
+	shortname = "格拉加尔 2"
 	credits = "Devil's Meat Grinder - OTXO OST"
 	musicpath = list('sound/music/combat_graggar_new.ogg')
 
 /datum/combat_music/heretic_baotha
 	name = "异端 - 巴奥莎"
 	desc = "去他的明天。"
-	shortname = "Baotha"
+	shortname = "巴奥莎"
 	credits = "T87-Sulfurhead - Love Within You (Rough Mix) (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/combat_baotha.ogg')
 
@@ -322,7 +322,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/inquis_ordinator
 	name = "审判官 - Ordinator"
 	desc = ""
-	shortname = "Ordinator"
+	shortname = "律令官"
 	musicpath = list('sound/music/combat_inqordinator.ogg')
 
 /datum/combat_music/jester
@@ -335,7 +335,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/kazengite
 	name = "风郡裔"
 	desc = ""
-	shortname = "Kazengite"
+	shortname = "风郡裔"
 	musicpath = list('sound/music/combat_kazengite.ogg')
 
 /datum/combat_music/firestorm
@@ -390,7 +390,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/maniac_old
 	name = "Maniac (Old)"
 	desc = ""
-	shortname = "Maniac Old"
+	shortname = "疯子（旧版）"
 	musicpath = list('sound/music/combat_maniac.ogg')
 */
 
@@ -419,7 +419,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/necra
 	name = "内克拉教士"
 	desc = ""
-	shortname = "Necra"
+	shortname = "内克拉"
 	credits = "T-87 SULFURHEAD - Formerly Known as Toulouse Lautrec (https://www.youtube.com/@T87-Sulfurhead)"
 	musicpath = list('sound/music/cmode/church/combat_necra.ogg')
 
@@ -439,7 +439,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/ozium
 	name = "奥兹姆滥用（很吵！）"
 	desc = "唉，我必须赶紧来上一口。"
-	shortname = "Ozium"
+	shortname = "奥兹姆"
 	credits = "Light Club - FAHKEET"
 	musicpath = list('sound/music/combat_ozium.ogg')
 
@@ -458,8 +458,8 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 
 /datum/combat_music/psydonite
 	name = "Psydonite"
-	desc = "WEEP for Him. Fight for Him. Kill for Him."
-	shortname = "Psydonite"
+	desc = "为祂悲泣。为祂战斗。为祂杀戮。"
+	shortname = "普赛顿信徒"
 	credits = "Lotchek - a2 Untitled"
 	musicpath = list('sound/music/psydonite.ogg')
 
@@ -507,7 +507,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/starsugar
 	name = "星糖滥用（很吵！）"
 	desc = ""
-	shortname = "Starsugar"
+	shortname = "星糖"
 	credits = "FEMTANYL - DOGMATICA"
 	musicpath = list('sound/music/combat_starsugar.ogg')
 
@@ -520,8 +520,8 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 
 /datum/combat_music/league
 	name = "阿夫尼克联盟"
-	desc = "Oni zaplatyat tysyachi za odin dyuym。为了一寸之地，千人赴死。"
-	shortname = "Liga"
+	desc = "为了一寸之地，千人赴死。"
+	shortname = "联盟"
 	credits = "The Heathen - Jan J. Močnik"
 	musicpath = list('sound/music/combat_league.ogg')
 
@@ -556,7 +556,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/varangian
 	name = "瓦兰吉安"
 	desc = ""
-	shortname = "Varangian"
+	shortname = "瓦兰吉安"
 	credits = "Heilung - Svanrand"
 	musicpath = list('sound/music/combat_vagarian.ogg')
 
@@ -571,14 +571,14 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/vampire_old
 	name = "Vampire (Old)"
 	desc = ""
-	shortname = "Vampire Old"
+	shortname = "吸血鬼（旧版）"
 	musicpath = list('sound/music/combat_vamp.ogg')
 */
 
 /datum/combat_music/vaquero
 	name = "牧侠"
 	desc = ""
-	shortname = "Vaquero"
+	shortname = "牧侠"
 	musicpath = list('sound/music/combat_vaquero.ogg')
 
 /datum/combat_music/veteran
@@ -606,7 +606,7 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/werewolf_old
 	name = "Werewolf (Old)"
 	desc = ""
-	shortname = "Werewolf Old"
+	shortname = "狼人（旧版）"
 	credits = "Filmmaker - Federal Bestiary"
 	musicpath = list('sound/music/combat_werewolf.ogg')
 */
@@ -614,21 +614,21 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 /datum/combat_music/zybantine
 	name = "兹班图奴隶贩子"
 	desc = "拥有奴隶的权利，是一个人所能要求的最大自由。"
-	shortname = "Zybantine"
+	shortname = "兹班图"
 	credits = "Hakan Glante - Crusader Kings 3 Fate of Iberia OST - War \"Short\""
 	musicpath = list('sound/music/combat_zybantine.ogg')
 
 /datum/combat_music/czwarteki
 	name = "兹瓦尔特基翼骑兵"
 	desc = "为了上帝、荣誉与家园。"
-	shortname = "Czwarteki"
+	shortname = "兹瓦尔特基"
 	credits = " Andrius Klimka & Andrey Kulik - World of Tanks Original Soundtrack: Studzianki "
 	musicpath = list('sound/music/combat_czwarteki.ogg')
 
 /datum/combat_music/thespian
 	name = "Thespian-Errant"
-	desc = "Witness us! We, who are about to die, salute thee!"
-	shortname = "Thespian"
+	desc = "见证我们！即将赴死的我们，向你致敬！"
+	shortname = "巡游演员"
 	credits = "Tai Tomisawa - Elden Ring Nightreign Original Soundtrack - Fulghor, Champion of the Nightglow"
 	musicpath = list('sound/music/combat_thespian.ogg')
 
@@ -641,55 +641,55 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 
 /datum/combat_music/herald
 	name = "Herald of Progress"
-	desc = "You cannot stop change."
-	shortname = "Herald"
+	desc = "你无法阻止变革。"
+	shortname = "进步先驱"
 	credits = "Bathory - Call from the Grave"
 	musicpath = list('sound/music/combatheraldprogress.ogg')
 
 /datum/combat_music/delf
 	name = "Crocs de l'araignée"
-	desc = "Oh, I know very well. How the secrets beckon so sweetly."
-	shortname = "Crocs"
+	desc = "啊，我再清楚不过。秘密的召唤是多么甜美。"
+	shortname = "蜘蛛之牙"
 	credits = "Tsukasa Saitoh - Bloodborne (Original Soundtrack) - Darkbeast"
 	musicpath = list('sound/music/combat_delf.ogg')
 
 /datum/combat_music/delfclassic
 	name = "Drow Classic"
-	desc = "The right to own slaves is the greatest freedom a woman could ask for."
-	shortname = "Drow"
+	desc = "拥有奴隶的权利，是女人所能追求的最大自由。"
+	shortname = "卓尔"
 	musicpath = list('sound/music/combat_delfclassic.ogg')
 
 /datum/combat_music/freifechter
 	name = "Freifechter"
-	desc = "'It occured to me that our God had left us, but not our ability to endure hardship. We shall make something out of this world, I said, before we pass onto the next.'"
-	shortname = "Freifechter - Default"
+	desc = "'我意识到，我们的神已经离开，但我们承受苦难的能力仍在。我说，在踏入下一个世界之前，我们要在这个世界有所作为。'"
+	shortname = "自由剑士（默认）"
 	credits = "MusicImaginary - Old Church"
 	musicpath = list('sound/music/combat_fencer.ogg')
 
 /datum/combat_music/freifencer
 	name = "Freifechter, Fencer"
-	desc = "God is dead, yet I follow his word! No fire made by any man will snuff out the Reformation! Paradise awaits!"
-	shortname = "Fencer"
+	desc = "神已死去，我却仍遵循祂的教诲！任何凡人点燃的烈火都无法扑灭改革！乐园正等待着我们！"
+	shortname = "击剑手"
 	credits = "MusicImaginary - Old Church"
 	musicpath = list('sound/music/frei_fencer.ogg')
 
 /datum/combat_music/freilancer
 	name = "Freifechter, Lancer"
-	desc = "Etruscan pike companies are some of Psydonia's most sought-after mercenaries - but you're not one of those. You're a master."
-	shortname = "Lancer"
+	desc = "伊特鲁斯卡长枪连队是普赛多尼亚最抢手的雇佣兵之一——但你并非普通成员，你是一位大师。"
+	shortname = "长枪手"
 	credits = "Lucas Gitano - The Mask of Zorro (Fingerstyle Acoustic Cover)"
 	musicpath = list('sound/music/frei_lancer.ogg')
 
 /datum/combat_music/freisabrist
 	name = "Freifechter, Sabrist"
-	desc = "So long as we still lyve, what the foreign powers have seized from us, we shall recapture with a sabre in hand."
-	shortname = "Sabrist"
+	desc = "只要我们仍然活着，异国势力夺走的一切，都将由我们手持军刀夺回。"
+	shortname = "军刀手"
 	credits = "MusicImaginary - Lyra"
 	musicpath = list('sound/music/frei_sabre.ogg')
 
 /datum/combat_music/aavshepherd
 	name = "Aavnic Shepherd"
-	desc = "\"No saber in hand, they crush bones with their fokos!\""
-	shortname = "Shepherd"
+	desc = "\"他们手中没有军刀，却用牧羊斧砸碎骨头！\""
+	shortname = "阿夫尼克牧羊人"
 	credits = "MusicImaginary - Yendrek"
 	musicpath = list('sound/music/frei_shepherd.ogg')

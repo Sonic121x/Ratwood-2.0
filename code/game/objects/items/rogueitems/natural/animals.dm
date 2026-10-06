@@ -157,7 +157,7 @@
 /obj/item/natural/cured/essence
 	name = "荒野精华"
 	icon_state = "wessence"
-	desc = "一大滴据说蕴含 Dendor 本源之力的神秘树液，\n\
+	desc = "一大滴据说蕴含登多尔本源之力的神秘树液，\n\
 	猎人与其他荒野居民常将其带在身上以求好运。熟练的裁缝可将它注入某些衣物或皮革中以提供防护。"
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL

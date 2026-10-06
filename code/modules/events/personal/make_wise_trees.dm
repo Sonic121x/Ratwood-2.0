@@ -50,10 +50,10 @@
 	var/obj/effect/proc_holder/spell/invoked/transform_tree/tree_spell = new()
 	chosen_one.mind.AddSpell(tree_spell)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_biginfo("Dendor wants you to choose suitable trees, which are to become guardians of the forest! [new_objective.explanation_text]"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_biginfo("登多尔要你选出合适的树木，让它们成为森林的守护者！[new_objective.explanation_text]"))
 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
 
-	to_chat(chosen_one, span_notice("Dendor grants you the power to transform trees into wise trees!"))
+	to_chat(chosen_one, span_notice("登多尔赐予你将树木转化为智慧树的力量！"))
 
 	chosen_one.mind.announce_personal_objectives()

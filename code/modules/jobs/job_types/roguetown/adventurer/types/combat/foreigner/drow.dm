@@ -129,20 +129,20 @@
 				mask = /obj/item/clothing/mask/rogue/facemask
 				neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
 				backr = /obj/item/rogueweapon/shield/tower
-		var/helmets = list("全覆式链甲头罩", "微笑面罩盔", "面罩萨莱特盔", "铁笠盔", "精灵巴布特盔", "翼饰精灵巴布特盔")
+		var/helmets = list("全覆式链甲头罩", "微笑面罩盔", "面罩萨雷特盔", "铁笠盔", "精灵巴尔布特盔", "翼饰精灵巴尔布特盔")
 		var/helmet_choice = input(H, "你要佩戴哪种头盔？", "穿戴装备") as anything in helmets
 		switch(helmet_choice)
 			if("全覆式链甲头罩")
 				head = /obj/item/clothing/neck/roguetown/chaincoif/full/black
 			if("微笑面罩盔")
 				head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/shadowplate
-			if("面罩萨莱特盔")
+			if("面罩萨雷特盔")
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/shadow
 			if("铁笠盔")
 				head = /obj/item/clothing/head/roguetown/helmet/kettle/shadow
-			if("精灵巴布特盔")
+			if("精灵巴尔布特盔")
 				head = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/shadow
-			if("翼饰精灵巴布特盔")
+			if("翼饰精灵巴尔布特盔")
 				head = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/shadow
 
 	if(H.gender == FEMALE)

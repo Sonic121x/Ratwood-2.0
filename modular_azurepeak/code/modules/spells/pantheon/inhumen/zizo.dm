@@ -208,7 +208,7 @@
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "lacrima"
 	clothes_req = FALSE
-	drawmessage = "我向ZIZO祈求一缕她的力量，让异端能量缠上我的手掌！"
+	drawmessage = "我向齐佐祈求一缕她的力量，让异端能量缠上我的手掌！"
 	dropmessage = "我让手上的能量缓缓散去。"
 	chargedrain = 0
 	chargetime = 0
@@ -223,7 +223,7 @@
 	miracle = FALSE
 
 /obj/item/melee/touch_attack/lacrima
-	name = "\improper 灵辉裂割器"
+	name = "\proper 灵辉裂割器"
 	desc = "齐佐的意志，就是扭曲生者的灵辉。凭借她赐下的一缕微力，你便能做到这一点。"
 	catchphrase = null
 	possible_item_intents = list(/datum/intent/use, INTENT_DISARM)
@@ -572,7 +572,7 @@
 		var/string = ""
 		for(var/item in missing_items)
 			string += item
-		return "Missing components: [string]."
+		return "缺少材料：[string]。"
 	return ""
 
 /obj/effect/proc_holder/spell/invoked/evil_resurrect/proc/consume_items(atom/center)

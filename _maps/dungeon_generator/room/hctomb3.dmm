@@ -908,8 +908,8 @@
 "Gr" = (
 /turf/closed/wall/mineral/rogue/craftstone{
 	max_integrity = 400;
-	desc = "A weak, crumbling wall made from specially crafted stone.";
-	name = "weak craftstone wall"
+	desc = "一堵用特制加工石砌成的墙，脆弱而摇摇欲坠。";
+	name = "脆弱的加工石墙"
 	},
 /area/rogue/under/tomb/indoors)
 "Gt" = (

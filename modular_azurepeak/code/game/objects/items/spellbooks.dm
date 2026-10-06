@@ -19,7 +19,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 	force = 5
 	associated_skill = /datum/skill/misc/reading
 	possible_item_intents = list(/datum/intent/use, /datum/intent/special/magicarc)
-	name = "\improper 奥术秘典"
+	name = "\proper 奥术秘典"
 	desc = "一本噼啪作响、泛着微光的书，满载着让人凝视时便头痛欲裂的符文与记号。可用于解绑法术，或辅助施法者让部分法术投射物沿弧线飞向目标。"
 	var/picked // if the book has had it's style picked or not
 	var/born_of_rock = FALSE // was a magical stone used to make it instead of a gem

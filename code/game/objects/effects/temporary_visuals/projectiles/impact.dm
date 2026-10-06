@@ -15,7 +15,7 @@
 	icon_state = "impact_omni"
 
 /obj/effect/projectile/impact/xray
-	name = "\improper X射线冲击"
+	name = "\proper X射线冲击"
 	icon_state = "impact_xray"
 
 /obj/effect/projectile/impact/pulse

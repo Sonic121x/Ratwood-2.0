@@ -88,7 +88,7 @@
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
-	name = "阿万廷锁甲袍"
+	name = "阿凡泰因锁甲袍"
 	desc = "<font color='A50021'>而在基座之上，浮现出这样几行字：<i>「吾名齐佐，万后之后：」</i></font>"
 	icon_state = "zizohauberk"
 	item_state = "zizohauberk"

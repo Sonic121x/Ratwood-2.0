@@ -580,7 +580,7 @@
 
 /obj/item/rogueweapon/mace/warhammer/bronze/decorated
 	name = "装饰青铜战棍"
-	desc = "鲜花、丝绸与黄金缠绕着这根雕琢并布满尖刺的原木；这是一尊备受敬奉的图腾，其根源可追溯至西昂陨落之前的岁月。神话中记载，古代精灵与休门都曾挥舞这样的青铜重棍，对抗大魔君肆虐的军团。"
+	desc = "鲜花、丝绸与黄金缠绕着这根雕琢并布满尖刺的原木；这是一尊备受敬奉的图腾，其根源可追溯至西昂陨落之前的岁月。神话中记载，古代精灵与人类都曾挥舞这样的青铜重棍，对抗大魔君肆虐的军团。"
 	icon_state = "bronzeclubdec"
 	smeltresult = /obj/item/ingot/gold
 	wdefense = 5

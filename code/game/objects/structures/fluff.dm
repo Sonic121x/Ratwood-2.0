@@ -819,43 +819,43 @@
 
 /obj/structure/fluff/iconsign/zizosign
 	icon_state = "signdeath"
-	name = "inverted psycross sign"
-	desc = "A sign with a inverted psycross."
+	name = "倒置普赛圣十字标牌"
+	desc = "一块绘有倒置普赛圣十字的标牌。"
 
 /obj/structure/fluff/iconsign/psycrosssign
 	icon_state = "signlife"
-	name = "psycross sign"
-	desc = "A sign with a psycross."
+	name = "普赛圣十字标牌"
+	desc = "一块绘有普赛圣十字的标牌。"
 
 /obj/structure/fluff/iconsign/eaglesign
 	icon_state = "signeagle"
-	name = "eagle sign"
-	desc = "A sign with a heraldic eagle on it."
+	name = "雄鹰标牌"
+	desc = "一块绘有纹章雄鹰的标牌。"
 
 /obj/structure/fluff/iconsign/spidersign
 	icon_state ="signspider"
-	name = "spider sign"
-	desc = "A sign with a spider on it."
+	name = "蜘蛛标牌"
+	desc = "一块绘有蜘蛛的标牌。"
 
 /obj/structure/fluff/iconsign/smithsign
 	icon_state = "signdwarf"
-	name = "hammer sign"
-	desc = "A sign with a hammer on it."
+	name = "锤子标牌"
+	desc = "一块绘有锤子的标牌。"
 
 /obj/structure/fluff/iconsign/innsign
 	icon_state = "signmug"
-	name = "mug sign"
-	desc = "A sign with a cup on it."
+	name = "酒杯标牌"
+	desc = "一块绘有杯子的标牌。"
 
 /obj/structure/fluff/iconsign/elksign
 	icon_state = "signelk"
-	name = "elk sign"
-	desc = "A sign with an elk on it."
+	name = "麋鹿标牌"
+	desc = "一块绘有麋鹿的标牌。"
 
 /obj/structure/fluff/iconsign/skullsign
 	icon_state = "signskull"
-	name = "skull sign"
-	desc = "A sign with a skull on it."
+	name = "骷髅标牌"
+	desc = "一块绘有骷髅的标牌。"
 
 // it should be noted that icon signs may be able to be written on but hopefully this'll prevent that
 
@@ -1380,7 +1380,7 @@
 	chance2hear = 10
 
 /obj/structure/fluff/psycross/crafted/necra
-	name = "necran pantheon cross"
+	name = "内克拉十神十字架"
 	icon_state = "cross_necra"
 	max_integrity = 120
 
@@ -1547,11 +1547,11 @@
 							marriage = TRUE
 						else
 							A.become_rotten()
-							to_chat(user, span_danger("艾欧拉拒斥这场结合！苹果在你掌中腐烂。被逐出教门之人不得由教会主持婚礼。"))
+							to_chat(user, span_danger("伊欧拉拒斥这场结合！苹果在你掌中腐烂。被逐出教门之人不得由教会主持婚礼。"))
 							if(thegroom)
-								to_chat(thegroom, span_danger("艾欧拉拒斥这场结合！你已被逐出教门，无法由教会主持婚礼。"))
+								to_chat(thegroom, span_danger("伊欧拉拒斥这场结合！你已被逐出教门，无法由教会主持婚礼。"))
 							if(thebride)
-								to_chat(thebride, span_danger("艾欧拉拒斥这场结合！你已被逐出教门，无法由教会主持婚礼。"))
+								to_chat(thebride, span_danger("伊欧拉拒斥这场结合！你已被逐出教门，无法由教会主持婚礼。"))
 							// Do not qdel(A) here so the rotten apple remains
 							return
 					if(!marriage)
@@ -1605,13 +1605,13 @@
 		"Trident" = CALLBACK(src, PROC_REF(summon_and_equip_spear), user)
 	)
 
-	var/result = tgui_input_list(user, "Choose a martyr weapon to summon:", "Martyr Weapon", weapon_choices)
+	var/result = tgui_input_list(user, "选择要召唤的殉道者武器：", "Martyr Weapon", weapon_choices)
 
 	if(result && weapon_choices[result])
 		var/datum/callback/selected_callback = weapon_choices[result]
 		selected_callback.Invoke()
 	else
-		to_chat(user, span_warning("No weapon was chosen."))
+		to_chat(user, span_warning("没有选择武器。"))
 
 /obj/structure/fluff/psycross/proc/summon_and_equip_sword(mob/user)
 	var/obj/item/rogueweapon/sword/long/martyr/I = SSroguemachine.martyrweapon
@@ -1622,9 +1622,9 @@
 	I = new /obj/item/rogueweapon/sword/long/martyr(src.loc)
 
 	if(user.put_in_hands(I))
-		to_chat(user, span_notice("The martyr sword appears in your hand."))
+		to_chat(user, span_notice("殉道者之剑出现在你手中。"))
 	else
-		to_chat(user, span_warning("Your hands are full! The sword falls to the ground."))
+		to_chat(user, span_warning("你的双手已满！剑掉到了地上。"))
 
 	return I
 
@@ -1637,9 +1637,9 @@
 	I = new /obj/item/rogueweapon/greataxe/steel/doublehead/martyr(src.loc)
 
 	if(user.put_in_hands(I))
-		to_chat(user, span_notice("The martyr axe appears in your hand."))
+		to_chat(user, span_notice("殉道者之斧出现在你手中。"))
 	else
-		to_chat(user, span_warning("Your hands are full! The axe falls to the ground."))
+		to_chat(user, span_warning("你的双手已满！斧头掉到了地上。"))
 
 	return I
 
@@ -1652,9 +1652,9 @@
 	I = new /obj/item/rogueweapon/mace/goden/martyr(src.loc)
 
 	if(user.put_in_hands(I))
-		to_chat(user, span_notice("The martyr mace appears in your hand."))
+		to_chat(user, span_notice("殉道者钉头锤出现在你手中。"))
 	else
-		to_chat(user, span_warning("Your hands are full! The mace falls to the ground."))
+		to_chat(user, span_warning("你的双手已满！钉头锤掉到了地上。"))
 
 	return I
 
@@ -1667,9 +1667,9 @@
 	I = new /obj/item/rogueweapon/spear/partizan/martyr(src.loc)
 
 	if(user.put_in_hands(I))
-		to_chat(user, span_notice("The martyr trident appears in your hand."))
+		to_chat(user, span_notice("殉道者三叉戟出现在你手中。"))
 	else
-		to_chat(user, span_warning("Your hands are full! The spear falls to the ground."))
+		to_chat(user, span_warning("你的双手已满！长矛掉到了地上。"))
 
 	return I
 

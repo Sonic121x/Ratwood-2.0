@@ -88,7 +88,7 @@
 		"素盔" 	= /obj/item/clothing/head/roguetown/helmet,
 		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
 		"尖顶盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
-		"萨莱特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
 		"翼盔" 	= /obj/item/clothing/head/roguetown/helmet/winged,
 		"护顶盔"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 		"无"
