@@ -66,12 +66,12 @@
 
 /datum/outfit/job/roguetown/psydoniantemplar/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/helmets = list("巴布塔盔", "萨莱特盔", "阿米特盔", "桶盔", "大翎羽阿米特盔", "狼首尖顶盔")
+	var/helmets = list("巴尔布特盔", "萨雷特盔", "阿米特盔", "桶盔", "大翎羽阿米特盔", "狼首尖顶盔")
 	var/helmet_choice = input(H,"选择你的头盔。", "戴上普赛顿的圣盔。") as anything in helmets
 	switch(helmet_choice)
-		if("巴布塔盔")
+		if("巴尔布特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute, SLOT_HEAD, TRUE)
-		if("萨莱特盔")
+		if("萨雷特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psysallet, SLOT_HEAD, TRUE)
 		if("阿米特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm, SLOT_HEAD, TRUE)

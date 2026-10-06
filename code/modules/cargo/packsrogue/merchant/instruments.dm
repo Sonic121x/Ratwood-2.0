@@ -86,6 +86,6 @@
 	contains = list(/obj/item/rogue/instrument/bagpipe)
 
 /datum/supply_pack/rogue/instruments/psyalter
-	name = "索尔特里琴"
+	name = "圣咏琴"
 	cost = 30
 	contains = list(/obj/item/rogue/instrument/psyaltery)

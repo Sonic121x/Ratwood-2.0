@@ -9,7 +9,7 @@
 //////////
 
 /datum/supply_pack/rogue/Sellsword/visoredsallet
-	name = "面罩萨莱盔"
+	name = "面罩萨雷特盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
@@ -410,7 +410,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
 
 /datum/supply_pack/rogue/Sellsword/sallet
-	name = "沙漠骑手萨莱盔"
+	name = "沙漠骑手萨雷特盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/zyb)
 
@@ -439,7 +439,7 @@
 ///////////////////////
 
 /datum/supply_pack/rogue/Sellsword/wolfhelm
-	name = "死士先锋沃尔夫板甲盔"
+	name = "死士先锋沃尔夫钢盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 

@@ -183,7 +183,7 @@
 
 /obj/item/fishingrod/decrepit
 	name = "衰朽钓竿"
-	desc = "很久以前，西昂彗星的撞击曾淹没整个世界。浪潮早已退去，但祂最伟大的造物仍深埋海底，不见天日。"
+	desc = "很久以前，彗星西昂的撞击曾淹没整个世界。浪潮早已退去，但祂最伟大的造物仍深埋海底，不见天日。"
 	icon_state = "arod"
 	color = "#bb9696"
 	sellprice = 15

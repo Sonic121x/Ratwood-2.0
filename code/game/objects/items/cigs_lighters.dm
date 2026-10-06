@@ -596,7 +596,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	list_reagents = list(/datum/reagent/drug/nicotine = 25)
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
-	name = "\improper 科伊巴罗布斯托雪茄"
+	name = "\proper 科伊巴罗布斯托雪茄"
 	desc = ""
 	icon_state = "cigar2off"
 	icon_on = "cigar2on"
@@ -770,7 +770,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 //ZIPPO//
 /////////
 /obj/item/lighter
-	name = "\improper Zippo 打火机"
+	name = "\proper Zippo 打火机"
 	desc = ""
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "zippo"

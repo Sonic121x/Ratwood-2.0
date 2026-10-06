@@ -49,7 +49,7 @@
 	if(HAS_TRAIT(user, TRAIT_DREAMWALKER) && !("Rune of Stirring" in ritechoices))
 		ritechoices+="Rune of Stirring"
 
-	var/runeselection = input(user, "我要刻下哪一道符文？", src) as null|anything in ritechoices
+	var/runeselection = tgui_input_list(user, "我要刻下哪一道符文？", "[src]", ritechoices, strict_modern = TRUE)
 	var/turf/step_turf = get_step(get_turf(user), user.dir)
 	switch(runeselection)
 		if("Rune of Sun")
