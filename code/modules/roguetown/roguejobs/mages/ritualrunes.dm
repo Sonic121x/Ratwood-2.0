@@ -719,7 +719,7 @@ GLOBAL_LIST(teleport_runes)
 		fail_invoke()
 		return
 
-	var/input_rune_key = input(user, "Rune to teleport to", "Teleportation Target") as null|anything in potential_runes //we know what key they picked
+	var/input_rune_key = input(user, "选择要传送到的符文", "传送目标") as null|anything in potential_runes //we know what key they picked
 	if(isnull(input_rune_key))
 		return
 	if(isnull(potential_runes[input_rune_key]))
@@ -768,7 +768,7 @@ GLOBAL_LIST(teleport_runes)
 		else
 			to_chat(user, span_cult("你[moveuserlater ? "眼前短暂模糊了一下，但什么都没发生":"试着将符文上方的一切送走，但传送失败了"]。"))
 		if(movesuccess)
-			target.visible_message(span_warning("There is a boom of outrushing air as something appears above the rune!"), null, "<i>You hear a boom.</i>")
+			target.visible_message(span_warning("气流轰然涌出，一个物体出现在符文上方！"), null, "<i>你听到一声轰响。</i>")
 		for(var/atom/invoker in invokers)
 			if(!isliving(invoker))
 				continue
@@ -858,7 +858,7 @@ GLOBAL_LIST(teleport_runes)
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/proc/clear_obstacles(mob/living/user)
 	for(var/turf/closed/wall/anticheese in range(loc, runesize))
-		anticheese.visible_message(span_warning("[anticheese] crumbles under the force of the releasing wards."))
+		anticheese.visible_message(span_warning("[anticheese]在结界释放的力量下崩碎。"))
 		anticheese.ChangeTurf(/turf/open/floor/rogue/blocks)
 		continue
 

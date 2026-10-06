@@ -232,12 +232,12 @@
 			if(drilltime >= 50)
 				src.say("公国已收到警报。")
 				playsound(src, 'sound/misc/jawbankanguish.ogg', 100, FALSE, -1)
-				send_ooc_note("A parasite of the Freefolk is breaking [src]! Location: [alert_location]", job = alert_jobs)
+				send_ooc_note("自由民中的败类正在破坏[src]！位置：[alert_location]", job = alert_jobs)
 				has_reported = TRUE
 		else
 			src.say("公国已收到警报。")
 			playsound(src, 'sound/misc/jawbankanguish.ogg', 100, FALSE, -1)
-			send_ooc_note("A parasite of the Freefolk is breaking [src]! Location: [alert_location]", job = alert_jobs)
+			send_ooc_note("自由民中的败类正在破坏[src]！位置：[alert_location]", job = alert_jobs)
 			has_reported = TRUE
 
 	playsound(src, 'sound/misc/TheDrill.ogg', 50, TRUE)
@@ -263,7 +263,7 @@
 	. = ..()
 	var/datum/fund/F = get_linked_fund()
 	if(!F)
-		to_chat(user, span_warning("[src] sits inert - its coffers are unbound. Notify staff."))
+		to_chat(user, span_warning("[src]没有反应，尚未绑定金库。请通知管理员。"))
 		return
 
 	if(istype(I, /obj/item/coveter))
@@ -274,14 +274,14 @@
 		if(F.balance < 50)
 			to_chat(user, "<font color='red'>这些傻瓜彻底破产了。我们从中捞不到任何好处……</font>")
 			return
-		user.visible_message(span_warning("[user] is mounting the Crown onto [src]!"))
+		user.visible_message(span_warning("[user]正在将王冠安装到[src]上！"))
 		if(!do_after(user, 5 SECONDS))
 			return
 		if(F.balance >= 3000 | !has_reported | !knockedoffbefore)
 			loc.visible_message(span_notice("国库里的钱币数量拖慢了[src]的反应速度！"))
 		if(drilling)
 			return
-		user.visible_message(span_warning("[user] mounts the Crown atop [src]!"))
+		user.visible_message(span_warning("[user]将王冠安装到了[src]顶部！"))
 		icon_state = "[initial(icon_state)]_crown"
 		has_reported = FALSE
 		drilling = TRUE
@@ -336,7 +336,7 @@
 	var/bashable = max(0, F.balance - bash_floor)
 	if(bashable <= 0)
 		playsound(src, 'sound/misc/machineno.ogg', 70, TRUE)
-		src.say("YOU'VE TAKEN ENOUGH.")
+		src.say("你已经拿得够多了。")
 		return
 
 	var/extorted = round(I.force * MAMMON_PER_FORCE * rand(60, 140) / 100)
@@ -365,7 +365,7 @@
 		playsound(src, 'sound/misc/coindispense.ogg', 70, TRUE)
 		anguish()
 		announce_robbery(lumpsum)
-		send_ooc_note("Someone knocked a lump-sum loose from [src] at [alert_location]!", job = alert_jobs)
+		send_ooc_note("有人从[alert_location]的[src]中砸出了一大笔钱！", job = alert_jobs)
 
 	update_icon()
 
@@ -821,11 +821,11 @@
 	return amount <= get_withdraw_remaining(user)
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_withdraw_rule_text()
-	var/text = "Workers of the Bathhouse may draw up to [SStreasury.bathhouse_worker_daily_withdraw_limit]m per dae from these coffers; its agents up to [SStreasury.bathhouse_agent_daily_withdraw_limit]m. The Bathmaster's hand is unbound."
+	var/text = "澡堂雇员每天最多可从金库支取[SStreasury.bathhouse_worker_daily_withdraw_limit]m，代理人最多可支取[SStreasury.bathhouse_agent_daily_withdraw_limit]m，浴场主管不受限制。"
 	if(SStreasury.bathhouse_worker_withdrawals_suspended)
-		text += " Payments to workers stand suspended."
+		text += " 已暂停向雇员付款。"
 	if(SStreasury.bathhouse_agent_withdrawals_suspended)
-		text += " Payments to agents stand suspended."
+		text += " 已暂停向代理人付款。"
 	return text
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_authority_label()
@@ -837,21 +837,21 @@
 		return
 	var/datum/fund/F = get_linked_fund()
 	if(!F)
-		to_chat(user, span_warning("[src] sits inert - its coffers are unbound. Notify staff."))
+		to_chat(user, span_warning("[src]没有反应，尚未绑定金库。请通知管理员。"))
 		return
 	var/amount = round(text2num("[params["amount"]]"))
 	if(isnull(amount) || amount <= 0)
-		to_chat(user, span_warning("Name a positive sum."))
+		to_chat(user, span_warning("请输入大于零的金额。"))
 		return
 	if(!can_withdraw(user, amount))
 		if(are_withdrawals_suspended_for(user))
-			to_chat(user, span_warning("[F.name] sits quiet - the Bathmaster has suspended payments to [is_bathhouse_worker(user) ? "her workers" : "her agents"] for now."))
+			to_chat(user, span_warning("[F.name]没有反应，浴场主管暂时停止向[is_bathhouse_worker(user) ? "雇员" : "代理人"]付款。"))
 		else
-			to_chat(user, span_warning("[F.name] withholds that sum - I may draw only [get_withdraw_remaining(user)]m more this dae."))
+			to_chat(user, span_warning("[F.name]拒绝支付这笔款项，我今天只能再支取[get_withdraw_remaining(user)]m。"))
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(F.balance < amount)
-		to_chat(user, span_warning("[F.name] cannot honor a withdrawal of [amount]m."))
+		to_chat(user, span_warning("[F.name]无法支付[amount]m的取款。"))
 		return
 	if(!SStreasury.burn(F, amount, "NERVELOCK withdrawal by [user.real_name]"))
 		return
@@ -861,7 +861,7 @@
 		SStreasury.record_bathhouse_withdrawal(user, amount)
 	budget2change(amount, user)
 	playsound(src, 'sound/misc/coindispense.ogg', 60, FALSE, -1)
-	say("[amount]m drawn by [user.real_name].")
+	say("[user.real_name]已支取[amount]m。")
 	log_admin("WITHDRAW: [key_name(user)] drew [amount]m from [F.name].")
 
 /// Lets the Bathmaster and agents move coin from their personal nervelock account into the
@@ -870,28 +870,28 @@
 	if(!istype(user))
 		return
 	if(!can_view(user))
-		to_chat(user, span_warning("You are not employed by the Bathhouse."))
+		to_chat(user, span_warning("你不是澡堂的雇员。"))
 		return
 	var/datum/fund/F = get_linked_fund()
 	if(!F)
-		to_chat(user, span_warning("[src] sits inert - its coffers are unbound. Notify staff."))
+		to_chat(user, span_warning("[src]没有反应，尚未绑定金库。请通知管理员。"))
 		return
 	var/amount = round(text2num("[params["amount"]]"))
 	if(isnull(amount) || amount <= 0)
-		to_chat(user, span_warning("Name a positive sum."))
+		to_chat(user, span_warning("请输入大于零的金额。"))
 		return
 	var/datum/fund/account = SStreasury.get_account(user)
 	if(!account)
-		to_chat(user, span_warning("You have no Nervelock account to draw from."))
+		to_chat(user, span_warning("你没有可供支取资金的神经锁账户。"))
 		return
 	if(account.balance < amount)
-		to_chat(user, span_warning("Your account cannot cover a deposit of [amount]m."))
+		to_chat(user, span_warning("你的账户余额不足以存入[amount]m。"))
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(!SStreasury.transfer(account, F, amount, "Bathhouse deposit by [user.real_name]"))
 		return
 	playsound(src, 'sound/misc/coininsert.ogg', 60, FALSE, -1)
-	say("[amount]m rendered unto the Bathhouse by [user.real_name].")
+	say("[user.real_name]已向澡堂缴入[amount]m。")
 	log_admin("DEPOSIT: [key_name(user)] deposited [amount]m into [F.name].")
 
 /obj/structure/roguemachine/vaultbank/bathhouse/get_patronage_writ_path()

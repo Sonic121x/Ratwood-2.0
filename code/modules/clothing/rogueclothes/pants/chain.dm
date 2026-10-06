@@ -88,8 +88,8 @@
 	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt/bronze
-	name = "bronze chain skirt"
-	desc = "A knee-length maille skirt, made with hundreds of small bronze rings. It wards cuts against the thighs without slowing the feet."
+	name = "青铜锁甲裙"
+	desc = "由数百枚小青铜环编成的及膝锁甲裙，能保护大腿免受斩击，却不会拖慢步伐。"
 	icon_state = "chain_skirt"
 	item_state = "chain_skirt"
 	color = "#f9d690"

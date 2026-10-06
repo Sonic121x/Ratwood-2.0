@@ -303,7 +303,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 				var/obj/item/natural/stone/current_stone = src
 				while(current_stone)
 					playsound(current_stone.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
-					user.visible_message("<span class='info'>[user] chisels the stone into a block.</span>")
+					user.visible_message("<span class='info'>[user]将石头凿成石块。</span>")
 					if(!do_after(user, work_time, target = current_stone))
 						return
 					new /obj/item/natural/stoneblock(get_turf(current_stone.loc))

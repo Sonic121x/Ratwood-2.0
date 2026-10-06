@@ -358,7 +358,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/partiallyrefinedbarrel
-	name = "Partially refined barrel (3 iron ingot + rough iron barrel)"
+	name = "初步精炼的铁炮管（3 铁锭 + 粗糙铁炮管）"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_roughbarrel)
 	created_item = /obj/item/bombard_partiallyrefinedbarrel
@@ -374,7 +374,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/repairedsandedbarrel
-	name = "Repair Sanded Barrel (+3 iron, +1 Sanded Iron Barrel)"
+	name = "修复打磨过的炮管（+3 铁锭，+1 打磨过的铁炮管）"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_sandedbarrel)
 	created_item = /obj/item/bombard_sandedrepairedbarrel
@@ -382,7 +382,7 @@
 	skill_level = 5
 
 /datum/artificer_recipe/contraptions/bombardbarrel
-	name = "Bombard Barrel (+5 iron ingot + 1 repaired sanded barrel)"
+	name = "射石炮炮管（+5 铁锭，+1 修复过的打磨炮管）"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_sandedrepairedbarrel)
 	created_item = /obj/item/bombard_barrel
