@@ -324,23 +324,23 @@
 /proc/get_centcom_access_desc(A)
 	switch(A)
 		if(ACCESS_CENT_GENERAL)
-			return "Code Grey"
+			return "灰色代号"
 		if(ACCESS_CENT_THUNDER)
-			return "Code Yellow"
+			return "黄色代号"
 		if(ACCESS_CENT_STORAGE)
-			return "Code Orange"
+			return "橙色代号"
 		if(ACCESS_CENT_LIVING)
-			return "Code Green"
+			return "绿色代号"
 		if(ACCESS_CENT_MEDICAL)
-			return "Code White"
+			return "白色代号"
 		if(ACCESS_CENT_TELEPORTER)
-			return "Code Blue"
+			return "蓝色代号"
 		if(ACCESS_CENT_SPECOPS)
-			return "Code Black"
+			return "黑色代号"
 		if(ACCESS_CENT_CAPTAIN)
-			return "Code Gold"
+			return "金色代号"
 		if(ACCESS_CENT_BAR)
-			return "Code Scotch"
+			return "苏格兰威士忌代号"
 
 /proc/get_all_jobs()
 	return list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
