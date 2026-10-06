@@ -37,7 +37,7 @@
 	craftdiff = 0
 
 /datum/anvil_recipe/engineering/roughbarrel
-	name = "Rough Iron Barrel (+5 iron)"
+	name = "粗制铁炮管 (+5 铁)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/bombard_roughbarrel
@@ -45,7 +45,7 @@
 	craftdiff = 5
 
 /datum/anvil_recipe/engineering/sandedbarrel
-	name = "Sanded Iron Barrel (+3 sand, +2 stone dust, +1 partially refined barrel)"
+	name = "磨砂铁炮管 (+3 沙子, +2 石粉, +1 半精制炮管)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/dirtclod/sand, /obj/item/natural/dirtclod/sand, /obj/item/natural/dirtclod/sand, /obj/item/alch/stonedust, /obj/item/alch/stonedust, /obj/item/bombard_partiallyrefinedbarrel)
 	created_item = /obj/item/bombard_sandedbarrel
@@ -53,7 +53,7 @@
 	craftdiff = 5
 
 /datum/anvil_recipe/engineering/repairedsandedbarrel
-	name = "Repair Sanded Barrel (+4 iron, +1 Sanded Iron Barrel)"
+	name = "修理磨砂炮管 (+4 铁, +1 磨砂铁炮管)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_sandedbarrel)
 	created_item = /obj/item/bombard_sandedrepairedbarrel

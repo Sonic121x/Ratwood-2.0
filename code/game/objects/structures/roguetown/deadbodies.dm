@@ -71,7 +71,7 @@
 
 /obj/structure/deadbody/adventurer_leather
 	name = "冒险者的尸体"
-	desc = "为追逐荣耀而来。看样子他们确实找到了，还顺带见到了死神Necra。"
+	desc = "为追逐荣耀而来。看样子他们确实找到了，还顺带见到了死神内克拉。"
 	pose_states = list("adventurer_leather", "adl10", "adl20", "adl30", "adl40")
 	loot_table = list(
 		/obj/item/storage/belt/rogue/pouch/coins/poor                     = 30,
@@ -161,7 +161,7 @@
 
 /obj/structure/deadbody/warden
 	name = "守望者的尸体"
-	desc = "死在了他们曾发誓守住的岗位上，死在了Rockhill与恐惧沼泽之间的防线上。"
+	desc = "死在了他们曾发誓守住的岗位上，死在了岩丘与恐惧沼泽之间的防线上。"
 	pose_states = list(
 		"warden", "wa10", "wa20", "wa30", "wa40",
 		"warden_skele", "wsk10", "wsk20", "wsk30", "wsk40",
@@ -275,7 +275,7 @@
 
 /obj/structure/deadbody/greater_skeleton
 	name = "军团士兵的尸体"
-	desc = "Zizo 众多战士中的一个。它多半死于她统治之前、期间，或者之后。"
+	desc = "齐佐众多战士中的一个。它多半死于她统治之前、期间，或者之后。"
 	pose_states = list(
 		"gsk10", "gsk20", "gsk30", "gsk40", "gsk50",
 		"gske10", "gske20", "gske30", "gske40", "gske50",

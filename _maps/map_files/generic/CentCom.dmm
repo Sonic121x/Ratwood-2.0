@@ -676,8 +676,8 @@
 "bz" = (
 /obj/structure/fluff/statue/knight/r,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0;
 	pixel_y = 6
 	},
@@ -724,8 +724,8 @@
 "cK" = (
 /obj/structure/fluff/statue/knight/r,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/water/pond,
@@ -978,7 +978,7 @@
 	lockid = "dungeon";
 	dir = 4;
 	max_integrity = 5000;
-	name = "Punishment"
+	name = "惩戒室"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/dietroyt)
@@ -1102,9 +1102,9 @@
 	},
 /obj/effect/wisp/prestidigitation{
 	color = "#ff0d00";
-	desc = "An ominous manifestation of latent ambient magick";
+	desc = "环境中潜藏的魔力凝成的不祥之物。";
 	light_color = "#ff0d00";
-	name = "Infernal Wisp";
+	name = "炼狱鬼火";
 	pixel_x = 1;
 	pixel_y = -8
 	},
@@ -1147,9 +1147,9 @@
 "kI" = (
 /obj/effect/wisp/prestidigitation{
 	color = "#ff370f";
-	desc = "A peculiar natural phenomena, seemingly related to the roiling lava below";
+	desc = "奇异的自然现象，似乎与下方翻滚的熔岩有关。";
 	light_color = "#ff5630";
-	name = "Odd Wisp"
+	name = "奇异鬼火"
 	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/indoors/deathsedge)
@@ -1535,8 +1535,8 @@
 /area/rogue/outdoors)
 "tL" = (
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/underworld/space/sparkle_quiet,
@@ -1612,7 +1612,7 @@
 	lockid = "dungeon";
 	dir = 8;
 	max_integrity = 5000;
-	name = "Pillory"
+	name = "枷刑台"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/dietroyt)
@@ -1639,7 +1639,7 @@
 	lockid = "dungeon";
 	dir = 1;
 	max_integrity = 5000;
-	name = "Keep"
+	name = "城堡"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/dietroyt)
@@ -1749,7 +1749,7 @@
 "zd" = (
 /obj/structure/lever/wall{
 	redstone_id = "troytpillory";
-	name = "inner passage"
+	name = "内侧通道"
 	},
 /turf/closed/wall/mineral/rogue/stone/unbreakable,
 /area/rogue/dietroyt)
@@ -1760,8 +1760,8 @@
 "zr" = (
 /obj/structure/fluff/statue/knight,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0;
 	pixel_y = 6
 	},
@@ -1888,8 +1888,8 @@
 	dir = 8
 	},
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0;
 	pixel_y = 6
 	},
@@ -1919,8 +1919,8 @@
 "Cy" = (
 /obj/structure/fluff/statue/knight,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/water/pond,
@@ -2248,9 +2248,9 @@
 /area/rogue/indoors/ravoxarena)
 "Kt" = (
 /obj/structure/fluff/statue{
-	desc = "A worn looking statue sculpted in Necra's image.";
+	desc = "一尊看起来颇为破旧的内克拉雕像。";
 	layer = 9;
-	name = "Idol of Necra";
+	name = "内克拉神像";
 	pixel_x = -1;
 	pixel_y = 24
 	},
@@ -2318,9 +2318,9 @@
 "Mm" = (
 /obj/effect/wisp/prestidigitation{
 	color = "#ff0d00";
-	desc = "An ominous manifestation of latent ambient magick";
+	desc = "环境中潜藏的魔力凝成的不祥之物。";
 	light_color = "#ff0d00";
-	name = "Infernal Wisp";
+	name = "炼狱鬼火";
 	pixel_x = 1;
 	pixel_y = -8
 	},
@@ -2421,7 +2421,7 @@
 "Pk" = (
 /obj/structure/lever/wall{
 	redstone_id = "troytpillory_exit";
-	name = "outer passage"
+	name = "外侧通道"
 	},
 /turf/closed/wall/mineral/rogue/stone/unbreakable,
 /area/rogue/dietroyt)
@@ -2715,7 +2715,7 @@
 	lockid = "dungeon";
 	dir = 1;
 	max_integrity = 5000;
-	name = "Dungeoneer's Quarters"
+	name = "地城探险者住处"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/dietroyt)

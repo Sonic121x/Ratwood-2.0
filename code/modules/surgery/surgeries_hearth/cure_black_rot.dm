@@ -44,7 +44,7 @@
 	if(target.remove_status_effect(/datum/status_effect/black_rot))
 		display_results(user, target, span_notice("The black rot corruption recedes."),
 			"[user] finishes purifying the area. The black coloration recedes from [target]'s flesh.",
-			"[user] uses the [tool] to cauterize and purify [target]'s chest.")
+			"[user]用[tool]烧灼并净化[target]的胸部。")
 	else
 		display_results(user, target, span_warning("The heat fails to purge the lingering rot!"),
 			"[user] attempts to cauterize the wound, but the corruption resists.",

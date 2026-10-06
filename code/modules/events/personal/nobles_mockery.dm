@@ -40,8 +40,8 @@
 	var/datum/objective/mock/noble/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("Xylix demands entertainment! Viciously mock [new_objective.required_count] nobles to prove your wit and earn Xylix's favor!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_notice("赛利克斯渴求乐趣！狠狠嘲弄[new_objective.required_count]位贵族，证明你的机智，赢得赛利克斯的青睐！"))
 	chosen_one.playsound_local(chosen_one, 'sound/vo/male/evil/laugh (1).ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

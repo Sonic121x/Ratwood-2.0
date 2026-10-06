@@ -9,7 +9,7 @@
 	req_trait = TRAIT_DWARF_REPAIR
 
 /datum/anvil_recipe/armor/dwarven/plate
-	name = "负怨者矮人板甲 (+3 钢, +1 青铜, +1 熟皮)"
+	name = "负怨者矮人板甲 (+3 钢, +1 青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
@@ -33,13 +33,13 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/dwarven/gauntlets
-	name = "负怨者矮人臂铠 (+1 钢, +1 青铜, +1 熟皮)"
+	name = "负怨者矮人臂铠 (+1 钢, +1 青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/gloves/roguetown/plate/dwarven
 	display_category = ITEM_CAT_ARMOR_GLOVES
 
 /datum/anvil_recipe/armor/dwarven/boots
-	name = "负怨者矮人战靴 (+1 钢, +1 青铜, +1 熟皮)"
+	name = "负怨者矮人战靴 (+1 钢, +1 青铜, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/bronze, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/shoes/roguetown/boots/armor/dwarven
 	display_category = ITEM_CAT_ARMOR_BOOTS

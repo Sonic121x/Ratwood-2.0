@@ -72,7 +72,7 @@
 	update_icon()
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
-	name = "格伦泽尔霍夫绗缝裤"
+	name = "格伦泽尔霍夫特绗缝裤"
 	desc = "带垫长裤，提供额外舒适与防护，并装点着鲜亮色彩。"
 	icon_state = "grenzelpants"
 	item_state = "grenzelpants"

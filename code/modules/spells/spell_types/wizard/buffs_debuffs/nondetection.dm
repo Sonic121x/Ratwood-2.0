@@ -17,7 +17,7 @@
 	cost = 1
 
 /obj/item/melee/touch_attack/nondetection
-	name = "\improper 奥术焦点"
+	name = "\proper 奥术焦点"
 	desc = "触碰一名生物，为其覆上一层持续 1 小时的反占视帷幕，并会消耗一些灰烬作为媒介。"
 	catchphrase = null
 	possible_item_intents = list(INTENT_HELP)

@@ -545,7 +545,7 @@ SUBSYSTEM_DEF(gamemode)
 		var/datum/storyteller/initialized_storyteller = storytellers[storyteller_name]
 		if(initialized_storyteller?.ascendant)
 			to_chat(world, "<br>")
-			to_chat(world, span_reallybig("[initialized_storyteller.name] is ascendant!"))
+			to_chat(world, span_reallybig("[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Dendor" = "登多尔", "Eora" = "伊欧拉", "Malum" = "玛勒姆", "Noc" = "诺克", "Xylix" = "赛利克斯", "Ravox" = "拉沃克斯", "Zizo" = "齐佐", "Graggar" = "格拉加尔", "Baotha" = "巴奥莎", "Abyssor" = "阿比索尔", "Matthios" = "马西奥斯")[initialized_storyteller.name]]已崛起！"))
 			to_chat(world, "<br>")
 
 	pick_most_influential(TRUE)
@@ -601,13 +601,13 @@ SUBSYSTEM_DEF(gamemode)
 
 	if(SSmapping.retainer.head_rebel_decree)
 		if(reb_end_time == 0)
-			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
+			to_chat(world, span_boldannounce("农民起义军夺取了王座，向新的共同体致敬！"))
 			if(ttime >= INITIAL_ROUND_TIMER)
 				reb_end_time = ttime + 15 MINUTES
-				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
+				to_chat(world, span_boldwarning("本轮将在15分钟后结束。"))
 			else
 				reb_end_time = INITIAL_ROUND_TIMER
-				to_chat(world, span_boldwarning("The round will end at the 2:45 hour mark."))
+				to_chat(world, span_boldwarning("本轮将在开始后2小时45分钟时结束。"))
 		if(ttime >= reb_end_time)
 			return TRUE
 
@@ -715,7 +715,7 @@ SUBSYSTEM_DEF(gamemode)
 	GLOB.featured_stats[FEATURED_STATS_STORYTELLERS]["entries"][initial(chosen_storyteller.name)] = chosen_storyteller.times_chosen
 	current_storyteller = chosen_storyteller
 	if(!secret_storyteller)
-		send_to_playing_players(span_notice("<b>Storyteller is [current_storyteller.name]!</b>"))
+		send_to_playing_players(span_notice("<b>叙述者是[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Dendor" = "登多尔", "Eora" = "伊欧拉", "Malum" = "玛勒姆", "Noc" = "诺克", "Xylix" = "赛利克斯", "Ravox" = "拉沃克斯", "Zizo" = "齐佐", "Graggar" = "格拉加尔", "Baotha" = "巴奥莎", "Abyssor" = "阿比索尔", "Matthios" = "马西奥斯")[current_storyteller.name]]！</b>"))
 		send_to_playing_players(span_notice("[current_storyteller.welcome_text]"))
 		storyteller_name = current_storyteller.name
 	else

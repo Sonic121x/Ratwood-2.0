@@ -769,7 +769,7 @@
 		return
 	if(!istype(src, /obj/item/bodypart/head/))
 		if(crit_message)
-			var/message = "<span class='crit'><b>Critical hit!</b> The [src] melts apart into goop!</span>"
+			var/message = "<span class='crit'><b>暴击！</b> [src]融化成了一滩黏液！</span>"
 			if(message)
 				owner.next_attack_msg += " [message]"
 		src.dismember()

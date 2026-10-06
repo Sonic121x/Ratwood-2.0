@@ -71,13 +71,13 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/hemostat/first //Three different types now to allow multiple surgical sites at once.
-	name = "\improper 塔尔西斯钳"
+	name = "\proper 塔尔西斯钳"
 
 /obj/item/rogueweapon/surgery/hemostat/second
-	name = "\improper 西斯拉特钳"
+	name = "\proper 西斯拉特钳"
 
 /obj/item/rogueweapon/surgery/hemostat/third
-	name = "\improper 梅德拉钳"
+	name = "\proper 梅德拉钳"
 
 /obj/item/rogueweapon/surgery/retractor
 	name = "扩张器"

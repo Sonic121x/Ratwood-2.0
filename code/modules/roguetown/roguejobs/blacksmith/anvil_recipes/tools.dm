@@ -195,59 +195,59 @@
 // right now just dolabra and the neufood cookware recipes for existing bronze cookware
 
 /datum/anvil_recipe/tools/bronze/pick
-	name = "Dolabra, Bronze (+1 Stick, +1 Bronze)"
+	name = "镐斧, 青铜 (+1 木棍, +1 青铜)"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/ingot/bronze)
 	created_item = /obj/item/rogueweapon/pick/bronze
 	display_category = ITEM_CAT_TOOLS_FIELD
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/bronze/pan
-	name = "Frypan, Bronze"
+	name = "煎锅, 青铜"
 	created_item = /obj/item/cooking/pan/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/pot
-	name = "Cooking Pot, Bronze"
+	name = "烹饪锅, 青铜"
 	created_item = /obj/item/reagent_containers/glass/bucket/pot/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/gobs
-	name = "Goblet, Bronze (x2)"
+	name = "高脚杯, 青铜 (x2)"
 	created_item = /obj/item/reagent_containers/glass/cup/bronzegob
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 
 /datum/anvil_recipe/tools/bronze/amugs
-	name = "Mug, Bronze (x2)"
+	name = "马克杯, 青铜 (x2)"
 	created_item = /obj/item/reagent_containers/glass/cup/bronzemug
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/platter
-	name = "Platter, Bronze (x2)"
+	name = "餐盘, 青铜 (x2)"
 	created_item = /obj/item/cooking/platter/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/bowl
-	name = "Bowl, Bronze"
+	name = "碗, 青铜"
 	created_item = /obj/item/reagent_containers/glass/bowl/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/fork
-	name = "Fork, Bronze (x2)"
+	name = "餐叉, 青铜 (x2)"
 	created_item = /obj/item/kitchen/fork/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/spoon
-	name = "Spoon, Bronze (x2)"
+	name = "汤匙, 青铜 (x2)"
 	created_item = /obj/item/kitchen/spoon/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
@@ -261,7 +261,7 @@
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/iron/surgerytools
-	name = "外科包 (+1 铁, +1 熟皮)"
+	name = "外科包 (+1 铁, +1 鞣制皮革)"
 	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide/cured)
 	created_item = /obj/item/storage/belt/rogue/surgery_bag/full
 	display_category = ITEM_CAT_SMITHING_MISC
@@ -443,7 +443,7 @@
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/steel/metalrepairkit
-	name = "护甲板 (修理包) (x2) (+1 钢，+1 铁，+1 熟皮)"
+	name = "护甲板 (修理包) (x2) (+1 钢，+1 铁，+1 鞣制皮革)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/iron, /obj/item/natural/hide/cured)
 	created_item = /obj/item/repair_kit/metal

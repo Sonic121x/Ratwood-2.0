@@ -65,8 +65,8 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/gloves/roguetown/otavan
-	name = "奥塔凡皮手套"
-	desc = "一副沉重的奥塔凡皮手套，常为击剑手所用，以品质著称。"
+	name = "奥塔万皮手套"
+	desc = "一副沉重的奥塔万皮手套，常为击剑手所用，以品质著称。"
 	icon_state = "fencergloves"
 	item_state = "fencergloves"
 	armor = ARMOR_MAILLE

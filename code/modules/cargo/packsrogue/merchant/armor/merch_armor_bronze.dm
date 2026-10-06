@@ -99,7 +99,7 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/skullcap_helmet
-	name = "头盔，巴布特"
+	name = "头盔，巴尔布特盔"
 	cost = 50
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bronze)
 
