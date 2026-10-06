@@ -1,5 +1,5 @@
 /datum/language/piratespeak
-	name = "Piratespeak"
+	name = "海盗黑话"
 	desc = ""
 	speech_verb = "说道"
 	ask_verb = "问道"

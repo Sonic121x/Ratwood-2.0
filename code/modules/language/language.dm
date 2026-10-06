@@ -5,7 +5,7 @@
 */
 
 /datum/language
-	var/name = "an unknown language"  // Fluff name of language if any.
+	var/name = "未知语言"  // Fluff name of language if any.
 	var/desc = ""          // Short description for 'Check Languages'.
 	var/speech_verb = "说道"          // 'says', 'hisses', 'farts'.
 	var/ask_verb = "问道"             // Used when sentence ends in a ?

@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(dwarfskeleton_aggro, world.file2list("strings/rt/dskeletonaggro
 		QDEL_NULL(src.charflaw)
 	mob_biotypes = MOB_UNDEAD
 	job = "Dwarf Skeleton"
-	real_name = "Dwarven Skeleton"
+	real_name = "矮人骷髅"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)

@@ -3,8 +3,8 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 /mob/living/carbon/human/species/construct/metal/zizoconstruct
 
 	race = /datum/species/construct/metal
-	name_override = "Bronze Construct"
-	desc = "A bio-mechanical construct given life by dubious magics. This one is made almost entirely of bronze. It seems poorly made."
+	name_override = "青铜构装体"
+	desc = "被诡秘魔法赋予生命的生体机械构装体。它几乎完全由青铜制成，看起来做工粗劣。"
 	faction = list("dundead")
 	var/zc_outfit = /datum/outfit/job/roguetown/human/species/construct/metal/zizoconstruct
 	ambushable = FALSE
@@ -54,9 +54,9 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 	skin_tone = "e2a670"
 
 	if(gender == FEMALE)
-		real_name = pick("Bronze Construct")
+		real_name = pick("青铜构装体")
 	else
-		real_name = pick("Bronze Construct")
+		real_name = pick("青铜构装体")
 	update_body()
 	if(zc_outfit)
 		var/datum/outfit/OU = new zc_outfit
@@ -80,8 +80,8 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 
 /obj/item/rogueweapon/knuckles/bronzeknuckles/zizoconstruct //I have no unarmed and I must parry. More interesting than defprob and gives construct PC a fun item to loot and use
-	name = "construct knuckles"
-	desc = "A vicous pair of bronze knuckles designed specifically for constructs. There is a terrifying, hollow spike in the center of the grip. There doesn't seem to be a way to wield it without impaling yourself."
+	name = "构装体指虎"
+	desc = "专为构装体设计的一副凶狠青铜指虎。握柄中央有根骇人的空心尖刺，使用时似乎无论如何都会刺穿自己的手。"
 	wdefense = 11
 	color = "#5f1414"
 	max_integrity = 500
@@ -89,14 +89,14 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 
 /obj/item/rogueweapon/knuckles/bronzeknuckles/zizoconstruct/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_BLOODLOSS_IMMUNE))
-		to_chat(user, "<font color='purple'> You attempt to wield the knuckles. The spike sinks deeply into your hand, piercing it and drinking deep of your vital energies!</font>")
+		to_chat(user, "<font color='purple'> 你试图使用这副指虎。尖刺深深扎入你的手，刺穿血肉并汲取你的生命能量！</font>")
 		user.adjustBruteLoss(15)
 		user.Stun(40)
 		playsound(get_turf(user), 'sound/misc/drink_blood.ogg', 100)
 	..()
 /obj/item/clothing/suit/roguetown/armor/skin_armor/zizoconstructarmor //ww armor but for construct
 	slot_flags = SHIRT_LAYER
-	name = "construct plating"
+	name = "构装体装甲板"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY

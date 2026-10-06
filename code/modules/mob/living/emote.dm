@@ -18,8 +18,8 @@
 	stat_allowed = list(CONSCIOUS, UNCONSCIOUS)
 
 /mob/living/carbon/human/verb/emote_pray()
-	set name = "Pray"
-	set category = "Emotes"
+	set name = "祈祷"
+	set category = "表情动作"
 
 	emote("pray", intentional = TRUE)
 
@@ -73,8 +73,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_meditate()
-	set name = "Meditate"
-	set category = "Emotes"
+	set name = "冥想"
+	set category = "表情动作"
 
 	emote("meditate", intentional = TRUE)
 
@@ -106,8 +106,8 @@
 			L.add_stress(/datum/stressevent/bowedasnoble)
 
 /mob/living/carbon/human/verb/emote_bow()
-	set name = "Bow"
-	set category = "Emotes"
+	set name = "鞠躬"
+	set category = "表情动作"
 
 	emote("bow", intentional = TRUE, targetted = TRUE)
 
@@ -120,8 +120,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_burp()
-	set name = "Burp"
-	set category = "Noises"
+	set name = "打嗝"
+	set category = "发声"
 
 	emote("burp", intentional = TRUE)
 
@@ -134,8 +134,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_choke()
-	set name = "Choke"
-	set category = "Noises"
+	set name = "噎住"
+	set category = "发声"
 
 	emote("choke", intentional = TRUE)
 
@@ -147,8 +147,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_crossarms()
-	set name = "Cross Arms"
-	set category = "Emotes"
+	set name = "抱臂"
+	set category = "表情动作"
 
 	emote("crossarms", intentional = TRUE)
 
@@ -190,8 +190,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_cough()
-	set name = "Cough"
-	set category = "Noises"
+	set name = "咳嗽"
+	set category = "发声"
 
 	emote("cough", intentional = TRUE)
 
@@ -204,8 +204,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_clearthroat()
-	set name = "Clear Throat"
-	set category = "Noises"
+	set name = "清嗓"
+	set category = "发声"
 
 	emote("clearthroat", intentional = TRUE)
 
@@ -217,8 +217,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_dance()
-	set name = "Dance"
-	set category = "Emotes"
+	set name = "跳舞"
+	set category = "表情动作"
 
 	emote("dance", intentional = TRUE)
 
@@ -249,8 +249,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_drool()
-	set name = "Drool"
-	set category = "Emotes"
+	set name = "流口水"
+	set category = "表情动作"
 
 	emote("drool", intentional = TRUE)
 
@@ -261,8 +261,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_faint()
-	set name = "Faint"
-	set category = "Emotes"
+	set name = "昏倒"
+	set category = "表情动作"
 
 	emote("faint", intentional = TRUE)
 
@@ -302,8 +302,8 @@
 	message = "皱了皱眉。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_frown()
-	set name = "Frown"
-	set category = "Emotes"
+	set name = "皱眉"
+	set category = "表情动作"
 
 	emote("frown", intentional = TRUE)
 
@@ -316,8 +316,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_gag()
-	set name = "Gag"
-	set category = "Noises"
+	set name = "干呕"
+	set category = "发声"
 
 	emote("gag", intentional = TRUE)
 
@@ -331,8 +331,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_gasp()
-	set name = "Gasp"
-	set category = "Noises"
+	set name = "倒吸气"
+	set category = "发声"
 
 	emote("gasp", intentional = TRUE)
 
@@ -365,8 +365,8 @@
 				to_chat(H, span_info("这阵笑声让我露出微笑，也为我的脚步带来好运！"))
 
 /mob/living/carbon/human/verb/emote_giggle()
-	set name = "Giggle"
-	set category = "Noises"
+	set name = "咯咯笑"
+	set category = "发声"
 
 	emote("giggle", intentional = TRUE)
 
@@ -391,8 +391,8 @@
 				to_chat(H, span_info("这阵轻笑让我露出微笑，也为我的脚步带来好运！"))
 
 /mob/living/carbon/human/verb/emote_chuckle()
-	set name = "Chuckle"
-	set category = "Noises"
+	set name = "轻笑"
+	set category = "发声"
 
 	emote("chuckle", intentional = TRUE)
 
@@ -404,8 +404,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_glare()
-	set name = "Glare"
-	set category = "Emotes"
+	set name = "怒视"
+	set category = "表情动作"
 
 	emote("glare", intentional = TRUE)
 
@@ -415,8 +415,8 @@
 	message = "咧嘴笑了。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_grin()
-	set name = "Grin"
-	set category = "Emotes"
+	set name = "咧嘴笑"
+	set category = "表情动作"
 
 	emote("grin", intentional = TRUE)
 
@@ -430,8 +430,8 @@
 	needs_emotion = TRUE
 
 /mob/living/carbon/human/verb/emote_groan()
-	set name = "Groan"
-	set category = "Noises"
+	set name = "低声呻吟"
+	set category = "发声"
 
 	emote("groan", intentional = TRUE)
 
@@ -441,8 +441,8 @@
 	message = "龇牙咧嘴。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_grimace()
-	set name = "Grimace"
-	set category = "Emotes"
+	set name = "龇牙咧嘴"
+	set category = "表情动作"
 
 	emote("grimace", intentional = TRUE)
 
@@ -468,8 +468,8 @@
 	use_params_for_runechat = TRUE
 
 /mob/living/carbon/human/verb/emote_kiss()
-	set name = "Kiss"
-	set category = "Emotes"
+	set name = "亲吻"
+	set category = "表情动作"
 
 	emote("kiss", intentional = TRUE, targetted = TRUE)
 
@@ -527,8 +527,8 @@
 	use_params_for_runechat = TRUE
 
 /mob/living/carbon/human/verb/emote_lick()
-	set name = "Lick"
-	set category = "Emotes"
+	set name = "舔舐"
+	set category = "表情动作"
 	emote("lick", intentional = TRUE, targetted = TRUE)
 
 /datum/emote/living/lick/adjacentaction(mob/user, mob/target)
@@ -575,8 +575,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_spit()
-	set name = "Spit"
-	set category = "Emotes"
+	set name = "吐口水"
+	set category = "表情动作"
 
 	emote("spit", intentional = TRUE, targetted = TRUE)
 
@@ -611,8 +611,8 @@
 	restraint_check = TRUE
 
 /mob/living/carbon/human/verb/emote_hug()
-	set name = "Hug"
-	set category = "Emotes"
+	set name = "拥抱"
+	set category = "表情动作"
 
 	emote("hug", intentional = TRUE, targetted = TRUE)
 
@@ -632,8 +632,8 @@
 	message = null
 
 /mob/living/carbon/human/verb/emote_hold()
-	set name = "Hold Breath"
-	set category = "Emotes"
+	set name = "屏息"
+	set category = "表情动作"
 	emote("hold", intentional = TRUE)
 
 /datum/emote/living/holdbreath/can_run_emote(mob/living/user, status_check = TRUE, intentional)
@@ -678,8 +678,8 @@
 	restraint_check = TRUE
 
 /mob/living/carbon/human/verb/emote_pat()
-	set name = "Pat"
-	set category = "Emotes"
+	set name = "轻拍"
+	set category = "表情动作"
 
 	emote("pat", intentional = TRUE, targetted = TRUE)
 
@@ -735,8 +735,8 @@
 	..()
 
 /mob/living/carbon/human/verb/emote_slap()
-	set name = "Slap"
-	set category = "Emotes"
+	set name = "扇耳光"
+	set category = "表情动作"
 
 	emote("slap", intentional = TRUE, targetted = TRUE)
 
@@ -767,8 +767,8 @@
 		H.fullscreen_redflash("redflash1")
 
 /mob/living/carbon/human/verb/emote_pinch()
-	set name = "Pinch"
-	set category = "Emotes"
+	set name = "捏"
+	set category = "表情动作"
 
 	emote("pinch", intentional = TRUE, targetted = TRUE)
 
@@ -806,8 +806,8 @@
 				to_chat(H, span_info("这阵大笑让我露出微笑，也为我的脚步带来好运！"))
 
 /mob/living/carbon/human/verb/emote_laugh()
-	set name = "Laugh"
-	set category = "Noises"
+	set name = "大笑"
+	set category = "发声"
 
 	emote("laugh", intentional = TRUE)
 
@@ -824,8 +824,8 @@
 	message_param = "朝%t点了点头。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_nod()
-	set name = "Nod"
-	set category = "Emotes"
+	set name = "点头"
+	set category = "表情动作"
 
 	emote("nod", intentional = TRUE)
 
@@ -867,8 +867,8 @@
 	needs_emotion = TRUE
 
 /mob/living/carbon/human/verb/emote_scream()
-	set name = "Scream"
-	set category = "Noises"
+	set name = "尖叫"
+	set category = "发声"
 
 	emote("scream", intentional = TRUE)
 
@@ -1060,8 +1060,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_rage()
-	set name = "Rage"
-	set category = "Noises"
+	set name = "暴怒"
+	set category = "发声"
 
 	emote("rage", intentional = TRUE)
 
@@ -1078,8 +1078,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_attnwhistle()
-	set name = "Attnwhistle"
-	set category = "Noises"
+	set name = "招呼哨"
+	set category = "发声"
 
 	emote("attnwhistle", intentional = TRUE)
 
@@ -1104,8 +1104,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_shakehead()
-	set name = "Shake Head"
-	set category = "Emotes"
+	set name = "摇头"
+	set category = "表情动作"
 
 	emote("shakehead", intentional = TRUE)
 
@@ -1117,8 +1117,8 @@
 	show_runechat = TRUE
 
 /mob/living/carbon/human/verb/emote_shiver()
-	set name = "Shiver"
-	set category = "Noises"
+	set name = "发抖"
+	set category = "发声"
 
 	emote("shiver", intentional = TRUE)
 
@@ -1141,8 +1141,8 @@
 	mute_time = 5 SECONDS
 
 /mob/living/carbon/human/verb/emote_spin()
-	set name = "Spin"
-	set category = "Emotes"
+	set name = "转圈"
+	set category = "表情动作"
 	emote("spin", intentional = TRUE)
 
 /datum/emote/spin/can_run_emote(mob/living/carbon/user, status_check = TRUE, intentional)
@@ -1167,8 +1167,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_sigh()
-	set name = "Sigh"
-	set category = "Noises"
+	set name = "叹气"
+	set category = "发声"
 
 	emote("sigh", intentional = TRUE)
 
@@ -1181,8 +1181,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_whistle()
-	set name = "Whistle"
-	set category = "Noises"
+	set name = "吹口哨"
+	set category = "发声"
 
 	emote("whistle", intentional = TRUE)
 
@@ -1195,8 +1195,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_hmm()
-	set name = "Hmm"
-	set category = "Noises"
+	set name = "沉吟"
+	set category = "发声"
 
 	emote("hmm", intentional = TRUE)
 
@@ -1209,8 +1209,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_huh()
-	set name = "Huh"
-	set category = "Noises"
+	set name = "疑惑出声"
+	set category = "发声"
 
 	emote("huh", intentional = TRUE)
 
@@ -1223,8 +1223,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_hum()
-	set name = "Hum"
-	set category = "Noises"
+	set name = "哼唱"
+	set category = "发声"
 
 	emote("hum", intentional = TRUE)
 
@@ -1234,8 +1234,8 @@
 	message = "微笑着。"
 	emote_type = EMOTE_VISIBLE
 /mob/living/carbon/human/verb/emote_smile()
-	set name = "Smile"
-	set category = "Emotes"
+	set name = "微笑"
+	set category = "表情动作"
 
 	emote("smile", intentional = TRUE)
 
@@ -1264,8 +1264,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_shh()
-	set name = "Shh"
-	set category = "Noises"
+	set name = "示意安静"
+	set category = "发声"
 
 	emote("shh", intentional = TRUE)
 
@@ -1337,8 +1337,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_warcry()
-	set name = "Warcry"
-	set category = "Noises"
+	set name = "战吼"
+	set category = "发声"
 
 	emote("warcry", intentional = TRUE)
 
@@ -1357,8 +1357,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_whimper()
-	set name = "Whimper"
-	set category = "Noises"
+	set name = "呜咽"
+	set category = "发声"
 
 	emote("whimper", intentional = TRUE)
 
@@ -1376,8 +1376,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_yawn()
-	set name = "Yawn"
-	set category = "Noises"
+	set name = "打哈欠"
+	set category = "发声"
 
 	emote("yawn", intentional = TRUE)
 
@@ -1515,8 +1515,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_shake()
-	set name = "Shake Head"
-	set category = "Emotes"
+	set name = "摇头"
+	set category = "表情动作"
 
 	emote("shake", intentional = TRUE)
 
@@ -1527,8 +1527,8 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_squint()
-	set name = "Squint"
-	set category = "Emotes"
+	set name = "眯眼"
+	set category = "表情动作"
 
 	emote("squint", intentional = TRUE)
 
@@ -1663,8 +1663,8 @@
 
 /mob/living/carbon/human/verb/emote_meow()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Meow"
-		set category = "Noises"
+		set name = "猫叫"
+		set category = "发声"
 		emote("meow", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1682,8 +1682,8 @@
 
 /mob/living/carbon/human/verb/emote_caw()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Caw"
-		set category = "Noises"
+		set name = "鸦鸣"
+		set category = "发声"
 		emote("caw", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1701,8 +1701,8 @@
 
 /mob/living/carbon/human/verb/emote_peep()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Peep"
-		set category = "Noises"
+		set name = "啾鸣"
+		set category = "发声"
 		emote("peep", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1720,8 +1720,8 @@
 
 /mob/living/carbon/human/verb/emote_hoot()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Hoot"
-		set category = "Noises"
+		set name = "枭鸣"
+		set category = "发声"
 		emote("hoot", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1739,8 +1739,8 @@
 
 /mob/living/carbon/human/verb/emote_squeak()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Squeak"
-		set category = "Noises"
+		set name = "吱叫"
+		set category = "发声"
 		emote("squeak", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1758,8 +1758,8 @@
 
 /mob/living/carbon/human/verb/emote_chirp()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Chirp"
-		set category = "Noises"
+		set name = "鸟啼"
+		set category = "发声"
 		emote("chirp", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1777,8 +1777,8 @@
 
 /mob/living/carbon/human/verb/emote_warble()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Warble"
-		set category = "Noises"
+		set name = "婉转啼鸣"
+		set category = "发声"
 		emote("warble", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1796,8 +1796,8 @@
 
 /mob/living/carbon/human/verb/emote_dove()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Dove"
-		set category = "Noises"
+		set name = "鸽鸣"
+		set category = "发声"
 		emote("dove", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1815,8 +1815,8 @@
 
 /mob/living/carbon/human/verb/emote_loudcaw()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Loudcaw"
-		set category = "Noises"
+		set name = "高声鸦鸣"
+		set category = "发声"
 		emote("loudcaw", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1835,8 +1835,8 @@
 
 /mob/living/carbon/human/verb/emote_raptor()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Raptor"
-		set category = "Noises"
+		set name = "猛禽鸣叫"
+		set category = "发声"
 		emote("raptor", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1854,12 +1854,12 @@
 
 /mob/living/carbon/human/verb/emote_hiss()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Hiss"
-		set category = "Noises"
+		set name = "嘶声"
+		set category = "发声"
 		emote("hiss", intentional = TRUE, animal = TRUE)
 	else if (istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
-		set name = "Hiss"
-		set category = "Noises"
+		set name = "嘶声"
+		set category = "发声"
 		emote("hiss", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1877,12 +1877,12 @@
 
 /mob/living/carbon/human/verb/emote_phiss()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "PHiss"
-		set category = "Noises"
+		set name = "嘶嘶声"
+		set category = "发声"
 		emote("phiss", intentional = TRUE, animal = TRUE)
 	else if (istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
-		set name = "PHiss"
-		set category = "Noises"
+		set name = "嘶嘶声"
+		set category = "发声"
 		emote("hiss", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1899,8 +1899,8 @@
 
 /mob/living/carbon/human/verb/emote_roar()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Roar"
-		set category = "Noises"
+		set name = "咆哮"
+		set category = "发声"
 		emote("roar", intentional = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1918,8 +1918,8 @@
 
 /mob/living/carbon/human/verb/emote_howl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Howl"
-		set category = "Noises"
+		set name = "嚎叫"
+		set category = "发声"
 		emote("howl", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1937,8 +1937,8 @@
 
 /mob/living/carbon/human/verb/emote_cackle()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Cackle"
-		set category = "Noises"
+		set name = "怪笑"
+		set category = "发声"
 		emote("cackle", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1956,8 +1956,8 @@
 
 /mob/living/carbon/human/verb/emote_whine()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Whine"
-		set category = "Noises"
+		set name = "哀鸣"
+		set category = "发声"
 		emote("whine", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1975,8 +1975,8 @@
 
 /mob/living/carbon/human/verb/emote_trill()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Trill"
-		set category = "Noises"
+		set name = "颤鸣"
+		set category = "发声"
 		emote("trill", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -1990,8 +1990,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_snap()
-	set name = "Snap"
-	set category = "Noises"
+	set name = "打响指"
+	set category = "发声"
 
 	emote("snap", intentional = TRUE)
 
@@ -2003,8 +2003,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_blink()
-	set name = "Blink"
-	set category = "Noises"
+	set name = "眨眼"
+	set category = "发声"
 
 	emote("blink", intentional = TRUE)
 
@@ -2016,8 +2016,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_stomp()
-	set name = "Stomp"
-	set category = "Noises"
+	set name = "跺脚"
+	set category = "发声"
 
 	emote("stomp", intentional = TRUE)
 
@@ -2029,8 +2029,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_snap2()
-	set name = "Snap2"
-	set category = "Noises"
+	set name = "打两次响指"
+	set category = "发声"
 
 	emote("snap2", intentional = TRUE)
 
@@ -2042,8 +2042,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_snap3()
-	set name = "Snap3"
-	set category = "Noises"
+	set name = "打三次响指"
+	set category = "发声"
 
 	emote("snap3", intentional = TRUE)
 
@@ -2059,8 +2059,8 @@
 
 /mob/living/carbon/human/verb/emote_purr()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Purr"
-		set category = "Noises"
+		set name = "呼噜"
+		set category = "发声"
 		emote("purr", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2078,8 +2078,8 @@
 
 /mob/living/carbon/human/verb/emote_moo()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Moo"
-		set category = "Noises"
+		set name = "牛叫"
+		set category = "发声"
 		emote("moo", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2097,8 +2097,8 @@
 
 /mob/living/carbon/human/verb/emote_bark()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Bark"
-		set category = "Noises"
+		set name = "吠叫"
+		set category = "发声"
 		emote("bark", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2116,8 +2116,8 @@
 
 /mob/living/carbon/human/verb/emote_growl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Growl"
-		set category = "Noises"
+		set name = "低吼"
+		set category = "发声"
 		emote("growl", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2135,8 +2135,8 @@
 
 /mob/living/carbon/human/verb/emote_bleat()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Bleat"
-		set category = "Noises"
+		set name = "咩叫"
+		set category = "发声"
 		emote("bleat", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2154,12 +2154,12 @@
 
 /mob/living/carbon/human/verb/emote_chitter()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
-		set name = "Chitter"
-		set category = "Noises"
+		set name = "吱吱叫"
+		set category = "发声"
 		emote("chitter", intentional = TRUE, animal = TRUE)
 	else if (istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
-		set name = "Chitter"
-		set category = "Noises"
+		set name = "吱吱叫"
+		set category = "发声"
 		emote("chitter", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2174,8 +2174,8 @@
 
 /mob/living/carbon/human/verb/emote_flutter()
 	if(istype(usr.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth))
-		set name = "Flutter"
-		set category = "Noises"
+		set name = "扑翅"
+		set category = "发声"
 		emote("flutter", intentional = TRUE)
 	else
 		to_chat(usr, span_warning("我的背部做不出这种动作。"))
@@ -2194,8 +2194,8 @@
 		user.play_overhead_indicator('icons/mob/overhead_effects.dmi', "stress", 15, MUTATIONS_LAYER, private = user.patron.type, soundin = 'sound/magic/holyshield.ogg', y_offset = 32)
 
 /mob/living/carbon/human/verb/emote_fsalute()
-	set name = "Faith Salute"
-	set category = "Emotes"
+	set name = "信仰礼"
+	set category = "表情动作"
 
 	emote("fsalute", intentional =  TRUE)
 
@@ -2211,8 +2211,8 @@
 		. = ..()
 
 /mob/living/carbon/human/proc/emote_ffsalute()
-	set name = "Fake Faith Salute"
-	set category = "Emotes"
+	set name = "伪装信仰礼"
+	set category = "表情动作"
 
 	emote("ffsalute", intentional =  TRUE)
 
@@ -2226,8 +2226,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/yip()
-	set name = "Yip"
-	set category = "Noises"
+	set name = "短促吠叫"
+	set category = "发声"
 
 	emote("yip", intentional = TRUE)
 
@@ -2240,14 +2240,14 @@
 	is_animal = TRUE
 	show_runechat = FALSE
 /mob/living/carbon/human/verb/yap()
-	set name = "Yap"
-	set category = "Noises"
+	set name = "尖声吠叫"
+	set category = "发声"
 	emote("yap", intentional = TRUE)
 
 /* Vomit emote */
 /mob/living/carbon/human/verb/emote_vomit()
-	set name = "Vomit"
-	set category = "Emotes"
+	set name = "呕吐"
+	set category = "表情动作"
 
 	emote("vomit", intentional = TRUE)
 
@@ -2269,8 +2269,8 @@
 	show_runechat = TRUE
 
 /mob/living/carbon/human/verb/gulp()
-	set name = "Gulp"
-	set category = "Noises"
+	set name = "吞咽"
+	set category = "发声"
 
 	emote("gulp", intentional = TRUE)
 
@@ -2282,8 +2282,8 @@
 	show_runechat = TRUE
 
 /mob/living/carbon/human/verb/crack()
-	set name = "Knuckles"
-	set category = "Noises"
+	set name = "掰响指节"
+	set category = "发声"
 
 	emote("crack", intentional = TRUE)
 
@@ -2295,8 +2295,8 @@
 	show_runechat = TRUE
 
 /mob/living/carbon/human/verb/facepalm()
-	set name = "Facepalm"
-	set category = "Noises"
+	set name = "捂脸"
+	set category = "发声"
 
 	emote("facepalms", intentional = TRUE)
 
@@ -2308,8 +2308,8 @@
 	show_runechat = TRUE
 
 /mob/living/carbon/human/verb/eye_roll()
-	set name = "Eye Roll"
-	set category = "Emotes"
+	set name = "翻白眼"
+	set category = "表情动作"
 
 	emote("eye_roll", intentional = TRUE)
 
@@ -2321,8 +2321,8 @@
 	show_runechat = TRUE
 
 /mob/living/carbon/human/verb/salute()
-	set name = "Salute"
-	set category = "Noises"
+	set name = "敬礼"
+	set category = "发声"
 
 	emote("salute", intentional = TRUE)
 
@@ -2350,8 +2350,8 @@
 	return H.dna && H.dna.species && H.dna.species.can_flick_ears(user)
 
 /mob/living/carbon/human/verb/emote_eflick()
-	set name = "Ear Flick"
-	set category = "Emotes"
+	set name = "抖耳朵"
+	set category = "表情动作"
 
 	emote("eflick", intentional = TRUE)
 
@@ -2428,8 +2428,8 @@
 	return istype(get_area(src), /area/rogue/indoors/town/bath)
 
 /mob/living/carbon/human/verb/emote_bjiggle()
-	set name = "Jiggle"
-	set category = "Emotes"
+	set name = "抖动胸部"
+	set category = "表情动作"
 
 	var/obj/item/organ/breasts/B = getorganslot(ORGAN_SLOT_BREASTS)
 	if(B?.is_jiggling)
@@ -2445,8 +2445,8 @@
 	show_runechat = TRUE
 
 /mob/living/carbon/human/verb/sniff()
-	set name = "Sniff"
-	set category = "Noises"
+	set name = "嗅闻"
+	set category = "发声"
 
 	emote("sniff", intentional = TRUE)
 
@@ -2561,8 +2561,8 @@
 	)
 
 /mob/living/carbon/human/verb/emote_strength_roll()
-	set name = "Roll Strength"
-	set category = "Emotes"
+	set name = "力量掷骰"
+	set category = "表情动作"
 
 	emote("strength", intentional = TRUE)
 
@@ -2588,8 +2588,8 @@
 	)
 
 /mob/living/carbon/human/verb/emote_perception_roll()
-	set name = "Roll Perception"
-	set category = "Emotes"
+	set name = "感知掷骰"
+	set category = "表情动作"
 
 	emote("perception", intentional = TRUE)
 
@@ -2616,8 +2616,8 @@
 	)
 
 /mob/living/carbon/human/verb/emote_intelligence_roll()
-	set name = "Roll Intelligence"
-	set category = "Emotes"
+	set name = "智力掷骰"
+	set category = "表情动作"
 
 	emote("intelligence", intentional = TRUE)
 
@@ -2643,8 +2643,8 @@
 	)
 
 /mob/living/carbon/human/verb/emote_constitution_roll()
-	set name = "Roll Constitution"
-	set category = "Emotes"
+	set name = "体质掷骰"
+	set category = "表情动作"
 
 	emote("constitution", intentional = TRUE)
 
@@ -2670,8 +2670,8 @@
 	)
 
 /mob/living/carbon/human/verb/emote_willpower_roll()
-	set name = "Roll Willpower"
-	set category = "Emotes"
+	set name = "意志掷骰"
+	set category = "表情动作"
 
 	emote("willpower", intentional = TRUE)
 
@@ -2697,8 +2697,8 @@
 	)
 
 /mob/living/carbon/human/verb/emote_speed_roll()
-	set name = "Roll Speed"
-	set category = "Emotes"
+	set name = "速度掷骰"
+	set category = "表情动作"
 
 	emote("speed", intentional = TRUE)
 
@@ -2724,8 +2724,8 @@
 	)
 
 /mob/living/carbon/human/verb/emote_fortune_roll()
-	set name = "Roll Fortune"
-	set category = "Emotes"
+	set name = "幸运掷骰"
+	set category = "表情动作"
 
 	emote("fortune", intentional = TRUE)
 
@@ -2738,8 +2738,8 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_praysuicide()
-	set name = "Suicidal pray"
-	set category = "Emotes"
+	set name = "求死祷告"
+	set category = "表情动作"
 	emote("praysuicide", intentional = TRUE)
 
 /datum/emote/living/praysuicide/run_emote(mob/user, params, type_override, intentional)
@@ -2774,8 +2774,8 @@
 
 /mob/living/carbon/human/verb/emote_arf()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Arf"
-		set category = "Noises"
+		set name = "轻吠"
+		set category = "发声"
 		emote("arf", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2793,8 +2793,8 @@
 
 /mob/living/carbon/human/verb/emote_awuff()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Awuff"
-		set category = "Noises"
+		set name = "低声汪叫"
+		set category = "发声"
 		emote("awuff", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2812,8 +2812,8 @@
 
 /mob/living/carbon/human/verb/emote_dcomplain()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Dog Complain"
-		set category = "Noises"
+		set name = "犬类抱怨声"
+		set category = "发声"
 		emote("dcomplain", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2831,8 +2831,8 @@
 
 /mob/living/carbon/human/verb/emote_dgrowl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Dog Growl"
-		set category = "Noises"
+		set name = "犬类低吼"
+		set category = "发声"
 		emote("dgrowl", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
@@ -2850,8 +2850,8 @@
 
 /mob/living/carbon/human/verb/emote_dwhine()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Dog Whine"
-		set category = "Noises"
+		set name = "犬类哀鸣"
+		set category = "发声"
 		emote("dwhine", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()

@@ -11,15 +11,15 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/eyes/moth
-	name = "Fluvian Eyes"
+	name = "弗卢维安眼"
 	icon_state = "moth"
 
 /datum/sprite_accessory/eyes/humanoid
-	name = "Humanoid Eyes"
+	name = "类人眼"
 	icon_state = "human"
 
 /datum/sprite_accessory/eyes/humanoid_glow
-	name = "Humanoid Glowing"
+	name = "类人发光眼"
 	icon_state = "human_glow"
 
 /datum/sprite_accessory/eyes/humanoid_cyber

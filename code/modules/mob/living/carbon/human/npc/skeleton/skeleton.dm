@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/skeleton
-	name = "skeleton"
+	name = "骷髅"
 
 	race = /datum/species/human/northern
 	gender = MALE
@@ -46,8 +46,8 @@
 	if(src.charflaw)
 		QDEL_NULL(src.charflaw)
 	faction |= list("undead")
-	name = "Skeleton"
-	real_name = "Skeleton"
+	name = "骷髅"
+	real_name = "骷髅"
 	voice_type = VOICE_TYPE_MASC //So that "Unknown Man" properly substitutes in with face cover
 	set_bark(pick("sans", "papyrus")) // Hilarious
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
