@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Brigand
 	group = "悍匪" // English: Brigand
-	crate_name = "Gifts of Strength"
+	crate_name = "力量的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////
@@ -58,7 +58,7 @@
 //////////
 
 /datum/supply_pack/rogue/Brigand/coif/steel
-	name = "钢锁子头巾"
+	name = "锁链护头巾"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
@@ -68,7 +68,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/full)
 
 /datum/supply_pack/rogue/Brigand/coif/hpcoif
-	name = "重型衬垫头巾"
+	name = "厚实衬垫护头巾"
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/coif/heavypadding)
 
@@ -107,12 +107,12 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
 
 /datum/supply_pack/rogue/Brigand/leather/hcoat
-	name = "硬化皮外套"
+	name = "硬化皮大衣"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 
 /datum/supply_pack/rogue/Brigand/hgambeson
-	name = "重型棉甲"
+	name = "加厚绗缝护甲衣"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
@@ -414,7 +414,7 @@
 	contains = list(/obj/item/rogueweapon/greatsword/grenz/flamberge)
 
 /datum/supply_pack/rogue/Brigand/greatsword
-	name = "巨剑"
+	name = "大剑"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/greatsword)
 

@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Clothing
 	group = "衣物" // English: Clothing
-	crate_name = "Gifts of Disguise"
+	crate_name = "伪装的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////////
@@ -14,7 +14,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/roguehood)
 
 /datum/supply_pack/rogue/Clothing/hhood
-	name = "重型兜帽"
+	name = "厚实兜帽"
 	cost = 5 // Not actually armored
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood)
 
@@ -24,17 +24,17 @@
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/reinforced)
 
 /datum/supply_pack/rogue/Clothing/bandithood
-	name = "Bandit Hood"
+	name = "麻袋兜帽"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/menacing/bandit)
 
 /datum/supply_pack/rogue/Clothing/keffiyeh
-	name = "库菲耶头巾"
+	name = "库菲亚头巾"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
 
 /datum/supply_pack/rogue/Clothing/hijab
-	name = "希贾布头巾"
+	name = "库菲亚头巾"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
 

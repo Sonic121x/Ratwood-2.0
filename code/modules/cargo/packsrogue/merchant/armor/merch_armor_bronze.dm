@@ -4,37 +4,37 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/armor_bronze/chainmail_bronze
-	name = "锁子短甲"
+	name = "青铜锁子短甲"
 	cost = 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/hauberkbronze
-	name = "锁子甲"
+	name = "青铜锁子甲"
 	cost = 40
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/chaincoifbronze
-	name = "锁子头巾"
+	name = "青铜锁链护头巾"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/gorgetbronze
-	name = "护颈"
+	name = "青铜护颈"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/bevorbronze
-	name = "护喉"
+	name = "青铜护喉甲"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/bevor/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/lightplatebronze
-	name = "护心甲"
+	name = "青铜护心甲"
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/bronze/light)
 
 /datum/supply_pack/rogue/armor_bronze/breastplatebronze
-	name = "胸甲"
+	name = "青铜胸甲"
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/bronze)
 
@@ -44,32 +44,32 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/halfplate
-	name = "甲胄套装，半身"
+	name = "青铜全装甲组件"
 	cost = 180 // Uhhh I don't think I should be selling them for 65 LOL
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bronze/alt)
 
 /datum/supply_pack/rogue/armor_bronze/fullplate
-	name = "甲胄套装，全身"
+	name = "青铜全装板甲"
 	cost = 220 // Uhhh I don't think I should be selling them for 80
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/bracers
-	name = "板臂甲"
+	name = "青铜护腕"
 	cost = 25
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/jackchains
-	name = "臂甲，锁链袖"
+	name = "青铜锁链袖套"
 	cost = 20
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/chain/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/chainglovesbronze
-	name = "锁链手甲"
+	name = "青铜锁甲护手"
 	cost = 20
 	contains = list(/obj/item/clothing/gloves/roguetown/chain/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/kilt
-	name = "锁裙，青铜"
+	name = "青铜锁甲裙铠"
 	cost = 25
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/kilt/bronze)
 
