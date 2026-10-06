@@ -92,7 +92,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	if(loudmouth_listening)
-		to_chat(user, span_info("我压下了Loudmouth在SCOM石上的聒噪。若有需要，仍可将其彻底静音。"))
+		to_chat(user, span_info("我压下了传讯石上金口者的聒噪。若有需要，仍可将其彻底静音。"))
 		loudmouth_listening = FALSE
 	else
 		listening = !listening

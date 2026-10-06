@@ -167,7 +167,7 @@ with edits to work for roguecode */
 		var/datum/reagent/reagent_ingredient = valid_type
 		if(istype(reagent_ingredient))
 			var/amount = initial(cur_recipe.reqs[reagent_ingredient])
-			string_ingredient_list += "[amount] unit[amount > 1 ? "s" : ""] of [initial(reagent_ingredient.name)]\n"
+			string_ingredient_list += "[amount] 单位[initial(reagent_ingredient.name)]\n"
 
 		var/atom/ingredient = valid_type
 		var/amount = initial(cur_recipe.reqs[ingredient])
@@ -178,7 +178,7 @@ with edits to work for roguecode */
 				amount--
 			else
 				continue
-		string_ingredient_list += "[amount > 1 ? ("[amount]" + " of") : "a"] [initial(ingredient.name)]\n"
+		string_ingredient_list += "[amount] 份[initial(ingredient.name)]\n"
 
 	// If we did find ingredients then add them onto the list.
 	if(length(string_ingredient_list))
