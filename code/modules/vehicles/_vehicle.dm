@@ -34,15 +34,15 @@
 /obj/vehicle/examine(mob/user)
 	. = ..()
 	if(resistance_flags & ON_FIRE)
-		. += span_warning("It's on fire!")
+		. += span_warning("它着火了！")
 	var/healthpercent = obj_integrity/max_integrity * 100
 	switch(healthpercent)
 		if(50 to 99)
-			. += "It looks slightly damaged."
+			. += "它看起来略有损坏。"
 		if(25 to 50)
-			. += "It appears heavily damaged."
+			. += "它看起来损坏严重。"
 		if(0 to 25)
-			. += span_warning("It's falling apart!")
+			. += span_warning("它快要散架了！")
 
 /obj/vehicle/proc/is_key(obj/item/I)
 	return I? (key_type_exact? (I.type == key_type) : istype(I, key_type)) : FALSE
@@ -113,7 +113,7 @@
 
 /obj/vehicle/proc/driver_move(mob/user, direction)
 	if(key_type && !is_key(inserted_key))
-		to_chat(user, span_warning("[src] has no key inserted!"))
+		to_chat(user, span_warning("[src]还没有插入钥匙！"))
 		return FALSE
 	if(!default_driver_move)
 		return
