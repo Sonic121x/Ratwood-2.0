@@ -23,8 +23,8 @@
 	hud_type = /datum/hud/eye
 
 /mob/dead/observer/rogue/arcaneeye/proc/scry_tele()
-	set category = "Arcane Eye"
-	set name = "Teleport"
+	set category = "奥术之眼"
+	set name = "传送"
 	set desc= "传送至某处"
 	set hidden = 0
 
@@ -64,8 +64,8 @@
 	grant_all_languages()
 
 /mob/dead/observer/rogue/arcaneeye/proc/cancel_scry()
-	set category = "Arcane Eye"
-	set name = "Cancel Eye"
+	set category = "奥术之眼"
+	set name = "返回躯体"
 	set desc= "返回躯体"
 
 	if(vampirelord)
@@ -90,8 +90,8 @@
 			return
 
 /mob/dead/observer/rogue/arcaneeye/proc/vampire_telepathy()
-	set name = "Telepathy"
-	set category = "Arcane Eye"
+	set name = "心灵传讯"
+	set category = "奥术之眼"
 
 	var/msg = sanitize(input("发送一条消息。", "传讯") as text|null)
 	if(!msg)
@@ -104,15 +104,15 @@
 		to_chat(A, span_boldnotice("来自[src.real_name]的消息：[msg]"))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_up()
-	set category = "Arcane Eye"
-	set name = "Move Up"
+	set category = "奥术之眼"
+	set name = "向上移动"
 
 	if(zMove(UP, TRUE))
 		to_chat(src, span_notice("我向上移动。"))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_down()
-	set category = "Arcane Eye"
-	set name = "Move Down"
+	set category = "奥术之眼"
+	set name = "向下移动"
 
 	if(zMove(DOWN, TRUE))
 		to_chat(src, span_notice("我向下移动。"))

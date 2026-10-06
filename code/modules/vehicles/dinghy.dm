@@ -2,8 +2,8 @@
 //a ridable boat so players can traverse water tiles without drowning
 
 /obj/vehicle/ridden/dinghy
-	name = "dinghy"
-	desc = "An unpretentious craft of pitch-sealed planks."
+	name = "小艇"
+	desc = "一艘用沥青密封木板缝隙的朴素小船。"
 	icon = 'icons/obj/boat.dmi'
 	icon_state = "dinghy"
 	can_buckle = TRUE
@@ -49,10 +49,10 @@
 	. = ..()
 
 	if(stored_oar)
-		. += span_notice("An oar is secured to the side of the dinghy.")
-		. += span_notice("Right-click the dinghy to retrieve it.")
+		. += span_notice("小艇侧面固定着一支船桨。")
+		. += span_notice("右键点击小艇即可取下。")
 	else
-		. += span_notice("An oar can be secured to the side by clicking the dinghy with one.")
+		. += span_notice("手持船桨点击小艇，可将船桨固定在侧面。")
 
 /obj/vehicle/ridden/dinghy/relaymove(mob/user, direction)
 	if(user?.buckled != src)
@@ -83,12 +83,12 @@
 			return
 
 		if(!stored_oar)
-			to_chat(user, span_warning("There isn't an oar stored on [src]."))
+			to_chat(user, span_warning("[src]上没有存放船桨。"))
 			return TRUE
 
 		stored_oar.forceMove(drop_location())
 		user.put_in_hands(stored_oar)
-		to_chat(user, span_notice("I retrieve the oar from [src]."))
+		to_chat(user, span_notice("我从[src]上取下船桨。"))
 		stored_oar = null
 		return TRUE
 	if(modifiers["ctrl"])
@@ -107,15 +107,15 @@
 /obj/vehicle/ridden/dinghy/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/mace/oar))
 		if(stored_oar)
-			to_chat(user, span_warning("There's already an oar secured to [src]."))
+			to_chat(user, span_warning("[src]上已经固定了一支船桨。"))
 			return TRUE
 
 		if(!user.transferItemToLoc(I, src))
-			to_chat(user, span_warning("I can't secure [I] to [src]."))
+			to_chat(user, span_warning("我无法将[I]固定到[src]上。"))
 			return TRUE
 
 		stored_oar = I
-		to_chat(user, span_notice("I secure [I] to [src]."))
+		to_chat(user, span_notice("我将[I]固定到[src]上。"))
 		return TRUE
 
 	return ..()
@@ -129,8 +129,8 @@
 	REMOVE_TRAIT(M, TRAIT_ON_BOAT, "BOAT_TRAIT")
 
 /obj/item/rogueweapon/mace/oar
-	name = "oar"
-	desc = "A wooden club with a flattened head for paddling boats about."
+	name = "船桨"
+	desc = "一根末端扁平的木杆，用来划船。"
 	icon = 'icons/obj/boat_accessories.dmi'
 	icon_state = "oar"
 	gripped_intents = null

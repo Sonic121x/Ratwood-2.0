@@ -1,6 +1,6 @@
 /datum/coven/quietus
-	name = "Quietus"
-	desc = "Live in the shadows striking only when needed. Poisons, mass-confusion and fire."
+	name = "寂灭"
+	desc = "潜伏于阴影，仅在必要时出手。掌控毒素、群体惑乱与火焰。"
 	icon_state = "daimonion"
 	power_type = /datum/coven_power/quietus
 	clan_restricted = FALSE
@@ -11,8 +11,8 @@
 
 //SILENCE OF DEATH
 /datum/coven_power/quietus/silence_of_death
-	name = "Silence of Death"
-	desc = "Create an area of pure silence around you, confusing those within it."
+	name = "死亡静域"
+	desc = "在周围创造一片绝对寂静的区域，使其中的人陷入混乱。"
 
 	level = 1
 	research_cost = 0
@@ -141,8 +141,8 @@
 	return ..()
 
 /datum/coven_power/quietus/scorpions_touch
-	name = "Scorpion's Touch"
-	desc = "Utilize your vitae to cause blood to ooze out faster, and for wounds to become more painful."
+	name = "毒蝎之触"
+	desc = "利用命髓加剧流血，并使伤口更加疼痛。"
 
 	level = 2
 	research_cost = 1
@@ -157,8 +157,8 @@
 
 //SCORPION'S TOUCH
 /obj/item/melee/touch_attack/quietus
-	name = "\improper poison touch"
-	desc = "Vile, black vitae dribbling down a hand, ready to seep into a wound."
+	name = "\improper 剧毒之触"
+	desc = "污秽的黑色命髓沿着手掌滴落，随时准备渗入伤口。"
 	icon = 'icons/mob/roguehudgrabs.dmi'
 	icon_state = "grabbing_greyscale"
 	color = COLOR_ALMOST_BLACK
@@ -181,13 +181,13 @@
 	if(target.get_bleed_rate() <= bleed_before)
 		return
 	target.apply_status_effect(/datum/status_effect/debuff/blackvitae)
-	target.visible_message(span_warning("[target]'s wounds begin to fester and rot!"))
-	to_chat(target, span_danger("WHAT ACHES NOW SEETHES WITH AGONY! EVERYTHING HURTS <span class='italics'>MORE</span>!"))
+	target.visible_message(span_warning("[target]的伤口开始溃烂腐败！"))
+	to_chat(target, span_danger("原本的疼痛如今化为剧痛！浑身上下都<span class='italics'>更痛了</span>！"))
 
 //BAAL'S CARESS
 /datum/coven_power/quietus/baals_caress
-	name = "Baal's Caress"
-	desc = "Transmute your vitae into a toxin that destroys all flesh it touches."
+	name = "巴尔的爱抚"
+	desc = "将命髓转化为毒素，摧毁一切接触到的血肉。"
 
 	level = 3
 	research_cost = 2
@@ -206,12 +206,12 @@
 	var/obj/item/rogueweapon/target_weapon = target
 	if(!istype(target_weapon))
 		if(alert)
-			to_chat(owner, span_warning("[src] can only be used on weapons!"))
+			to_chat(owner, span_warning("[src]只能用于武器！"))
 		return FALSE
 
 	if(!target_weapon.sharpness)
 		if(alert)
-			to_chat(owner, span_warning("[src] can only be used on bladed weapons!"))
+			to_chat(owner, span_warning("[src]只能用于带刃武器！"))
 		return FALSE
 
 	return .
@@ -221,8 +221,8 @@
 	target.AddElement(/datum/element/one_time_poison, list(/datum/reagent/bloodacid = 2))
 
 /datum/coven_power/quietus/taste_of_death
-	name = "Taste of Death"
-	desc = "Spit a glob of caustic blood at your enemies."
+	name = "死亡之味"
+	desc = "向敌人吐出一团腐蚀性血液。"
 
 	level = 4
 	research_cost = 3
@@ -254,8 +254,8 @@
 
 //DAGON'S CALL
 /datum/coven_power/quietus/dagons_call
-	name = "Dagon's Call"
-	desc = "Curse the last person you attacked to drown in their own blood."
+	name = "达贡的呼唤"
+	desc = "诅咒你最后攻击的人，使其溺死于自己的鲜血。"
 
 	level = 5
 	research_cost = 4
@@ -270,8 +270,8 @@
 		lastattacker.adjustStaminaLoss(80)
 		lastattacker.adjust_fire_stacks(6)
 		lastattacker.adjustFireLoss(10)
-		to_chat(owner, "You send your curse on [lastattacker], the last creature you attacked.")
+		to_chat(owner, "你向最后攻击的生物[lastattacker]施下了诅咒。")
 	else
-		to_chat(owner, "You don't seem to have last attacked soul earlier...")
+		to_chat(owner, "你似乎还没有攻击过任何生灵……")
 		return
 
