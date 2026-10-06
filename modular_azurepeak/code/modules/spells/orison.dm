@@ -250,7 +250,7 @@
 		L.adjust_fire_stacks(2)
 		L.ignite_mob()
 		L.emote("scream")
-		L.visible_message(span_warning("[L] erupts into angry fizzling and hissing!"), span_warning("BLESSED WATER!!! IT BURNS!!!"))
+		L.visible_message(span_warning("[L]身上滋滋作响，发出愤怒的嘶叫！"), span_warning("圣水！！！烧死我了！！！"))
 
 /datum/reagent/water/blessed/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if (!istype(M))
@@ -259,7 +259,7 @@
 	if (method == TOUCH)
 		if (M.mob_biotypes & MOB_UNDEAD)
 			M.adjustFireLoss(2*reac_volume, 0)
-			M.visible_message(span_warning("[M] erupts into angry fizzling and hissing!"), span_warning("BLESSED WATER!!! IT BURNS!!!"))
+			M.visible_message(span_warning("[M]身上滋滋作响，发出愤怒的嘶叫！"), span_warning("圣水！！！烧死我了！！！"))
 			M.emote("scream")
 
 	return ..()
