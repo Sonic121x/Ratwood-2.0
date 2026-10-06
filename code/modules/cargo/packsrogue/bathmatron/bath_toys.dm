@@ -2,7 +2,7 @@
 
 /datum/supply_pack/rogue/bath_toys
 	group = "玩具" // English: Toys
-	crate_name = "'specialty toys'"
+	crate_name = "“特制玩具”"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/bath_toys/dildo/wood

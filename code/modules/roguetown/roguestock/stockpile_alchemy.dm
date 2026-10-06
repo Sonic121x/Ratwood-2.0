@@ -35,8 +35,8 @@
 	category = "Alchemy"
 
 /datum/roguestock/stockpile/lumber_essence
-	name = "Essence of Lumber"
-	desc = "Heartwood of the forest"
+	name = "木材精华"
+	desc = "森林的心木。"
 	item_type = /obj/item/grown/log/tree/small/essence
 	trade_good_id = TRADE_GOOD_LUMBER_ESSENCE
 	importexport_amt = 3

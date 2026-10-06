@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue/drugs
 	group = "药物" // English: Drugs
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/drugs/ozium
@@ -89,7 +89,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/fermented_crab)
 
 /datum/supply_pack/rogue/drugs/shhig
-	name = "Shhig牌卷烟（6支装）"
+	name = "嘘蛇牌香烟（6支装）"
 	cost = 35
 	contains = list(/obj/item/storage/fancy/shhig)
 
@@ -99,16 +99,16 @@
 	contains = list(/obj/item/alch/transisdust)
 
 /datum/supply_pack/rogue/drugs/swampleaf
-	name = "Swampweeed leaf (dried)"
+	name = "沼泽干烟叶"
 	cost = 5
 	contains = list(/obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry)
 
 /datum/supply_pack/rogue/drugs/pipeleaf
-	name = "Pipeweed leaf (dried)"
+	name = "西池干烟叶"
 	cost = 2
 	contains = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry)
 
 /datum/supply_pack/rogue/drugs/hookah
-	name = "Shisha Pipe (Handheld)"
+	name = "手持水烟斗"
 	cost = 50
 	contains = list(/obj/item/portable_hookah)
