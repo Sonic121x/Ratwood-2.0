@@ -1,5 +1,5 @@
 /datum/surgery/debride_frostbite
-	name = "Frostbite debridement"
+	name = "冻伤清创"
 	target_mobtypes = list(/mob/living/carbon/human)
 
 	possible_locs = list(
@@ -24,7 +24,7 @@
 	)
 
 /datum/surgery_step/debride_frostbite
-	name = "Debride frostbitten tissue"
+	name = "清除冻伤组织"
 	time = 8 SECONDS
 	accept_hand = FALSE
 
@@ -53,23 +53,23 @@
 		has_frostbite = TRUE
 
 	if(!has_frostbite)
-		to_chat(user, span_warning("There is no frostbite to remove on [target]'s [parse_zone(target_zone)]."))
+		to_chat(user, span_warning("[target]的[parse_zone(target_zone)]上没有需要清除的冻伤组织。"))
 
 	return has_frostbite
 
 /datum/surgery_step/debride_frostbite/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target,
-		span_notice("I begin removing dead frostbitten tissue from [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins removing frostbitten tissue from [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins removing frostbitten tissue from [target]'s [parse_zone(target_zone)].")
+		span_notice("我开始清除[target][parse_zone(target_zone)]上冻伤坏死的组织……"),
+		span_notice("[user]开始清除[target][parse_zone(target_zone)]上的冻伤组织。"),
+		span_notice("[user]开始清除[target][parse_zone(target_zone)]上的冻伤组织。")
 	)
 	return TRUE
 
 /datum/surgery_step/debride_frostbite/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target,
-		span_notice("I successfully remove the frostbitten tissue from [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] removes frostbitten tissue from [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] removes frostbitten tissue from [target]'s [parse_zone(target_zone)]!")
+		span_notice("我成功清除了[target][parse_zone(target_zone)]上的冻伤组织。"),
+		span_notice("[user]清除了[target][parse_zone(target_zone)]上的冻伤组织！"),
+		span_notice("[user]清除了[target][parse_zone(target_zone)]上的冻伤组织！")
 	)
 
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))

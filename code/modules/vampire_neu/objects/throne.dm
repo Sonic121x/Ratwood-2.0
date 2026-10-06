@@ -1,6 +1,6 @@
 /obj/structure/vampthrone
-	name = "The Blood Throne"
-	desc = "A big ominous throne."
+	name = "鲜血王座"
+	desc = "一座庞大而不祥的王座。"
 	icon = 'icons/roguetown/misc/vthrone.dmi'
 	icon_state = "throne"
 	density = FALSE

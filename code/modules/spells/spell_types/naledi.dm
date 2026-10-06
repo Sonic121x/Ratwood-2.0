@@ -206,7 +206,7 @@
 	if(target?.stat == DEAD)
 		if(!self.has_status_effect(/datum/status_effect/debuff/devitalised))
 			if(target.timeofdeath && (world.time - target.timeofdeath) <= 1 MINUTES)
-				if(alert(user, "[target]刚刚逝去。要牺牲你的 Lux，将其灵魂回溯至生前吗？", "本源复苏", "使其复苏", "任其逝去") == "使其复苏")
+				if(alert(user, "[target]刚刚逝去。要牺牲你的灵辉，将其灵魂回溯至生前吗？", "本源复苏", "使其复苏", "任其逝去") == "使其复苏")
 					var/obj/effect/temp_visual/origin_restoration/V = new
 					target.vis_contents += V
 					var/turf/user_turf = get_turf(user)
@@ -224,7 +224,7 @@
 						if(target.mind)
 							target.mind.remove_antag_datum(/datum/antagonist/zombie)
 						target.apply_status_effect(/datum/status_effect/debuff/revived)
-						target.visible_message(span_blue("[user]的 Lux 被强行撕离，[target]的灵魂随时间回溯重返躯体！"),	span_blue("遥远的黑暗松开了对我的束缚。我再次醒来，感受到一缕濒熄之光的余温……"))
+						target.visible_message(span_blue("[user]的灵辉被强行撕离，[target]的灵魂随时间回溯重返躯体！"),	span_blue("遥远的黑暗松开了对我的束缚。我再次醒来，感受到一缕濒熄之光的余温……"))
 						return TRUE
 					else
 						revert_cast()

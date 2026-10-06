@@ -12,7 +12,7 @@
 		else if (query != null)
 			src << link(wikiurl)
 	else
-		to_chat(src, span_danger("The wiki URL is not set in the server configuration."))
+		to_chat(src, span_danger("服务器配置中尚未设置维基网址。"))
 	return
 
 /client/verb/discord()
@@ -22,11 +22,11 @@
 	set hidden = 1
 	var/discordurl = CONFIG_GET(string/discordurl)
 	if(discordurl)
-		if(alert("This will open the discord. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("即将打开 Discord。你确定吗？",,"是","否")!="是")
 			return
 		src << link(discordurl)
 	else
-		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
+		to_chat(src, span_danger("服务器配置中尚未设置论坛网址。"))
 	return
 
 /client/verb/rules()
@@ -36,11 +36,11 @@
 	set hidden = 1
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)
-		if(alert("This will open the rules in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("即将在浏览器中打开规则。你确定吗？",,"是","否")!="是")
 			return
 		src << link(rulesurl)
 	else
-		to_chat(src, span_danger("The rules URL is not set in the server configuration."))
+		to_chat(src, span_danger("服务器配置中尚未设置规则网址。"))
 	return
 
 /client/verb/github()
@@ -50,11 +50,11 @@
 	set hidden = 1
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
-		if(alert("This will open the Github repository in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(alert("即将在浏览器中打开 GitHub 仓库。你确定吗？",,"是","否")!="是")
 			return
 		src << link(githuburl)
 	else
-		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
+		to_chat(src, span_danger("服务器配置中尚未设置 GitHub 网址。"))
 	return
 
 /client/verb/mentorhelp()
@@ -62,21 +62,21 @@
 	set desc = ""
 	set category = "-Admin-"
 	if(mob)
-		var/msg = input("Submit your question to the Voices:", "Mentorhelp Input") as text|null
+		var/msg = input("向低语提出你的问题：", "导师求助") as text|null
 		if(msg)
 			mob.schizohelp(msg)
 	else
-		to_chat(src, span_danger("You can't currently use Mentorhelp in the main menu."))
+		to_chat(src, span_danger("你目前无法在主菜单中使用导师求助。"))
 
 /client/verb/reportissue()
 	set name = "Report Issue"
 	set desc = ""
 	set category = "-Admin-"
-	var/message = "This will open the Github issue tracker in your browser. Are you sure?"
+	var/message = "即将在浏览器中打开 GitHub 问题追踪页面。你确定吗？"
 	if(GLOB.revdata.testmerge.len)
-		message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
+		message += "<br>以下实验性改动正在生效，可能是新出现或突发问题的原因。如有可能，请寻找与你的问题相关的专门讨论帖，而非直接提交到通用问题追踪页面：<br>"
 		message += GLOB.revdata.GetTestMergeInfo(FALSE)
-	if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
+	if(tgalert(src, message, "报告问题","是","否")!="是")
 		return
 	DIRECT_OUTPUT(src, link("https://github.com/Rotwood-Vale/Ratwood-2.0/issues"))
 	return
@@ -84,9 +84,9 @@
 /client/verb/recent_changelog()
 	set name = "Recent Changes"
 	set category = "OOC"
-	to_chat(src, "<a href='byond://?command=open-changelog' style='display:inline-block;padding:4px 10px;border:1px solid #6f8f5f;border-radius:4px;background:#22331d;color:#d8f0c8;text-decoration:none;'><b>Open Changelog</b></a>")
+	to_chat(src, "<a href='byond://?command=open-changelog' style='display:inline-block;padding:4px 10px;border:1px solid #6f8f5f;border-radius:4px;background:#22331d;color:#d8f0c8;text-decoration:none;'><b>打开更新日志</b></a>")
 	if(GLOB.changelog.len)
-		to_chat(src, "Recent Changes:")
+		to_chat(src, "近期改动：")
 		for(var/change in GLOB.changelog)
 			to_chat(src, span_info("- [change]"))
 
@@ -105,39 +105,39 @@
 
 /mob/proc/hotkey_help()
 	var/hotkey_mode = {"<font color='purple'>
-Hotkey-Mode: (hotkey-mode must be on)
-\tTAB = toggle hotkey-mode
-\tw = north
-\ta = west
-\ts = south
-\td = east
-\tq = left hand
-\te = right hand
-\tr = throw
-\tf = fixed eye (strafing mode)
-\tSHIFT + f = look up
-\tz = drop
-\tx = cancel / resist grab
-\tc = parry/dodge
-\tv = stand up / lay down
-\t1 thru 4 = change intent (current hand)
-\tmouse wheel = change aim height
-\tg = give
-\t<B></B>h = bite
-\tj = jump
-\tk = kick
-\tl = steal
-\tt = say something
-\tALT = sprint
-\tCTRL + ALT = sneak
-\tLMB = Use intent/Interact (Hold to channel)
-\tRMB = Special Interaction
-\tMMB = give/kick/jump/steal/spell
-\tMMB (no intent) = Special Interaction
-\tSHIFT + LMB = Examine something
-\tSHIFT + RMB = Focus
-\tALT + RMB = TileAtomList
-\tCTRL + RMB = Point at something
+快捷键模式：（需先开启快捷键模式）
+\tTAB = 切换快捷键模式
+\tw = 向北
+\ta = 向西
+\ts = 向南
+\td = 向东
+\tq = 左手
+\te = 右手
+\tr = 投掷
+\tf = 固定视线（横移模式）
+\tSHIFT + f = 向上看
+\tz = 丢弃
+\tx = 取消／挣脱抓取
+\tc = 招架／闪避
+\tv = 站起／躺下
+\t1 至 4 = 切换意图（当前手）
+\t鼠标滚轮 = 调整瞄准高度
+\tg = 给予
+\t<B></B>h = 啃咬
+\tj = 跳跃
+\tk = 踢踹
+\tl = 偷窃
+\tt = 说话
+\tALT = 冲刺
+\tCTRL + ALT = 潜行
+\t鼠标左键 = 使用意图／交互（按住以持续施展）
+\t鼠标右键 = 特殊交互
+\t鼠标中键 = 给予／踢踹／跳跃／偷窃／施法
+\t鼠标中键（无意图）= 特殊交互
+\tSHIFT + 鼠标左键 = 检视
+\tSHIFT + 鼠标右键 = 聚焦
+\tALT + 鼠标右键 = 查看地块物体列表
+\tCTRL + 鼠标右键 = 指向
 </font>"}
 
 	to_chat(src, hotkey_mode)
@@ -147,10 +147,10 @@ Hotkey-Mode: (hotkey-mode must be on)
 	set category = "Options"
 
 	if(winget(src, "mapwindow.map", "icon-size") == "64")
-		to_chat(src, "Stretch-to-fit... OK")
+		to_chat(src, "已切换为拉伸适应窗口。")
 		winset(src, "mapwindow.map", "icon-size=0")
 	else
-		to_chat(src, "64x... OK")
+		to_chat(src, "已切换为64像素图标。")
 		winset(src, "mapwindow.map", "icon-size=64")
 
 /client/verb/set_stretch()
@@ -158,14 +158,14 @@ Hotkey-Mode: (hotkey-mode must be on)
 	set category = "Options"
 	if(prefs)
 		if(prefs.crt == TRUE)
-			to_chat(src, "CRT mode is on.")
+			to_chat(src, "CRT 显示模式已开启。")
 			winset(src, "mapwindow.map", "zoom-mode=blur")
 			return
 	if(winget(src, "mapwindow.map", "zoom-mode") == "normal")
-		to_chat(src, "Pixel-perfect... OK")
+		to_chat(src, "已切换为像素精确缩放。")
 		winset(src, "mapwindow.map", "zoom-mode=distort")
 	else
-		to_chat(src, "Anti-aliased... OK")
+		to_chat(src, "已切换为抗锯齿缩放。")
 		winset(src, "mapwindow.map", "zoom-mode=normal")
 
 /client/verb/crtmode()
@@ -178,14 +178,14 @@ Hotkey-Mode: (hotkey-mode must be on)
 		winset(src, "mapwindow.map", "zoom-mode=normal")
 		prefs.crt = FALSE
 		prefs.save_preferences()
-		to_chat(src, "CRT... OFF")
+		to_chat(src, "CRT 显示模式已关闭。")
 		for(var/atom/movable/screen/scannies/S in screen)
 			S.alpha = 0
 	else
 		winset(src, "mapwindow.map", "zoom-mode=blur")
 		prefs.crt = TRUE
 		prefs.save_preferences()
-		to_chat(src, "CRT... ON")
+		to_chat(src, "CRT 显示模式已开启。")
 		for(var/atom/movable/screen/scannies/S in screen)
 			S.alpha = 70
 
@@ -198,13 +198,13 @@ Hotkey-Mode: (hotkey-mode must be on)
 	if(prefs.grain == TRUE)
 		prefs.grain = FALSE
 		prefs.save_preferences()
-		to_chat(src, "Grain is <font color='gray'>OFF.</font>")
+		to_chat(src, "画面颗粒效果<font color='gray'>已关闭。</font>")
 		for(var/atom/movable/screen/grain/S in screen)
 			S.alpha = 0
 	else
 		prefs.grain = TRUE
 		prefs.save_preferences()
-		to_chat(src, "Grain is <font color='#007fff'>ON.</font>")
+		to_chat(src, "画面颗粒效果<font color='#007fff'>已开启。</font>")
 		for(var/atom/movable/screen/grain/S in screen)
 			S.alpha = 55
 
@@ -229,25 +229,25 @@ Hotkey-Mode: (hotkey-mode must be on)
 		if(LAZYACCESS(GLOB.roleplay_ads,C.mobid))
 			to_chat(C, span_info(LAZYACCESS(GLOB.roleplay_ads,C.mobid)))
 			has_old_ad = TRUE
-		var/msg = input("Set an advertisement for what kind of roleplay you are looking to engage in. Others will be able to see it with the Roleplay Ad (View) command. Do not abuse this. Leave empty and press OK to remove your roleplay ad.", "I LOVE TO ROLEPLAY") as message|null
+		var/msg = input("发布一则告示，说明你想参与哪种角色扮演。其他人可通过 Roleplay Ad (View) 命令查看。请勿滥用此功能。留空并确认即可移除告示。", "我热爱角色扮演") as message|null
 		if(msg)
 			LAZYSET(GLOB.roleplay_ads,C.mobid,"<b>[C.real_name]</b> - [html_encode(msg)]<BR>")
-			to_chat(C, span_info("Roleplay ad set."))
+			to_chat(C, span_info("角色扮演告示已发布。"))
 			log_game("[C] has set their Roleplay Ad to '[msg]'.")
 			for(var/client/advertisee in (GLOB.clients - src))
 				if(!(advertisee.prefs.toggles & ROLEPLAY_ADS))
 					continue
-				to_chat(advertisee, span_info("[C.real_name] has set a roleplay ad."))
+				to_chat(advertisee, span_info("[C.real_name]发布了一则角色扮演告示。"))
 		else if(has_old_ad)
 			LAZYREMOVE(GLOB.roleplay_ads,C.mobid)
-			to_chat(C, span_info("Roleplay ad removed."))
+			to_chat(C, span_info("角色扮演告示已移除。"))
 
 /client/verb/changefps()
 	set category = "Options"
 	set name = "ChangeFPS"
 	if(!prefs)
 		return
-	var/newfps = input(usr, "Enter new FPS", "New FPS", 100) as null|num
+	var/newfps = input(usr, "输入新的帧率", "新帧率", 100) as null|num
 	if (!isnull(newfps))
 		prefs.clientfps = clamp(newfps, 1, 1000)
 		fps = prefs.clientfps
@@ -262,9 +262,9 @@ Hotkey-Mode: (hotkey-mode must be on)
 		prefs.chatheadshot = !prefs.chatheadshot
 		prefs.save_preferences()
 		if(prefs.chatheadshot)
-			to_chat(src, "Headshot in chat Enabled")
+			to_chat(src, "聊天头像已启用。")
 		else
-			to_chat(src, "Headshot in chat Disabled")
+			to_chat(src, "聊天头像已禁用。")
 
 /client/verb/changelog()
 	set name = "Changelog"
