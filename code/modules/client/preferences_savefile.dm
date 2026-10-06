@@ -72,7 +72,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(current_version < 29)
 		key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
 		parent.update_movement_keys()
-		to_chat(parent, span_danger("Empty keybindings, setting default to [hotkeys ? "Hotkey" : "Classic"] mode"))
+		to_chat(parent, span_danger("按键绑定为空，已设为默认[hotkeys ? "热键" : "经典"]模式"))
 	if(current_version < 31) // RAISE THIS TO SAVEFILE_VERSION_MAX (and make sure to add +1 to the version) EVERY TIME YOU ADD SERVER-CHANGING KEYBINDS LIKE CHANGING HOW SAY WORKS!!
 		force_reset_keybindings_direct(TRUE)
 		addtimer(CALLBACK(src, PROC_REF(force_reset_keybindings)), 30)
@@ -393,17 +393,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// End
 
 /client/verb/export_savefile()
-	set name = "Export Preferences"
-	set desc = "Export your preferences to a file."
+	set name = "导出偏好设置"
+	set desc = "将你的偏好设置导出至文件。"
 	set category = "OOC"
 	if(!prefs.path)
 		return
 
-	if(alert("Are you sure you want to export your preferences? This will create a file on your computer that contains your preferences.", "Export Preferences", "Yes", "No") == "No")
+	if(alert("确定导出偏好设置吗？这会在你的计算机上创建一个包含偏好设置的文件。", "导出偏好设置", "是", "否") == "否")
 		return
 
 	if(!fexists(prefs.path))
-		to_chat(src, span_warning("No savefile, what?!"))
+		to_chat(src, span_warning("找不到存档文件！"))
 		return
 
 	var/file_name = "[ckey].sav"
@@ -916,15 +916,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	if(istype(familiar_prefs))
 		if(!familiar_prefs.load_familiar_prefs(S))
-			to_chat(parent, span_warning("Couldn't load familiar prefs!"))
+			to_chat(parent, span_warning("无法载入魔宠偏好！"))
 	else
-		to_chat(parent, span_warning("Couldn't load familiar prefs!"))
+		to_chat(parent, span_warning("无法载入魔宠偏好！"))
 
 	if(istype(gnoll_prefs))
 		if(!gnoll_prefs.load_gnoll_prefs(S))
-			to_chat(parent, span_warning("Couldn't load gnoll prefs!"))
+			to_chat(parent, span_warning("无法载入豺狼人偏好！"))
 	else
-		to_chat(parent, span_warning("Couldn't load gnoll prefs!"))
+		to_chat(parent, span_warning("无法载入豺狼人偏好！"))
 
 	var/patron_typepath
 	S["selected_patron"]	>> patron_typepath
@@ -1294,15 +1294,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	if(istype(familiar_prefs))
 		if(!familiar_prefs.save_familiar_prefs(S))
-			to_chat(parent, span_warning("Couldn't save familiar prefs!"))
+			to_chat(parent, span_warning("无法保存魔宠偏好！"))
 	else
-		to_chat(parent, span_warning("Couldn't save familiar prefs!"))
+		to_chat(parent, span_warning("无法保存魔宠偏好！"))
 
 	if(istype(gnoll_prefs))
 		if(!gnoll_prefs.save_gnoll_prefs(S))
-			to_chat(parent, span_warning("Couldn't save gnoll prefs!"))
+			to_chat(parent, span_warning("无法保存豺狼人偏好！"))
 	else
-		to_chat(parent, span_warning("Couldn't save gnoll prefs!"))
+		to_chat(parent, span_warning("无法保存豺狼人偏好！"))
 
 	return TRUE
 

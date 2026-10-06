@@ -195,10 +195,10 @@
 	var/symbol_chosen = FALSE
 	if(design == "徽记")
 		design = null
-		design = input(user, "选择一个徽记。","罩袍样式") as null|anything in list("chalice","psy","peace","z","imp","skull","widow","arrow")
+		design = input(user, "选择一个徽记。","罩袍样式") as null|anything in list("圣杯","普赛顿之印","和平之印","齐佐之印","小恶魔","骷髅","蜘蛛","箭头")
 		if(!design)
 			return
-		design = "_[design]"
+		design = "_[list("圣杯" = "chalice", "普赛顿之印" = "psy", "和平之印" = "peace", "齐佐之印" = "z", "小恶魔" = "imp", "骷髅" = "skull", "蜘蛛" = "widow", "箭头" = "arrow")[design]]"
 		symbol_chosen = TRUE
 	var/colorone = input(user, "选择主色。","罩袍样式") as null|anything in CLOTHING_COLOR_NAMES
 	if(!colorone)

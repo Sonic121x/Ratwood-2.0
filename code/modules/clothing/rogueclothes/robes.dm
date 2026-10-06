@@ -56,7 +56,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/priest/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CHOSEN, "VESTMENTS")
+	AddComponent(/datum/component/cursed_item, TRAIT_CHOSEN, "法衣")
 
 /obj/item/clothing/suit/roguetown/shirt/robe/priest/equipped(mob/living/user, slot)
 	..()

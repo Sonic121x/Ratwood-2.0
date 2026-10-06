@@ -124,7 +124,7 @@
 	var/skim = min(amount, banditry_debt)
 	banditry_debt -= skim
 	force_set_round_statistic(STATS_BANDITRY_DEBT_OUTSTANDING, banditry_debt)
-	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, "Banditry debt repayment"))
+	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, "偿还匪患债务"))
 	return amount - skim
 
 /datum/controller/subsystem/treasury/proc/skim_for_treasury_debt(datum/fund/to_fund, amount)
@@ -141,11 +141,11 @@
 	record_round_statistic(STATS_TREASURY_DEBT_REPAID, skim)
 	var/reason
 	if(treasury_state == TREASURY_BANKRUPTCY)
-		reason = "Sequestration debt - Ferentian Trading Company"
+		reason = "接管债务——费伦提亚贸易公司"
 	else if(treasury_state == TREASURY_IN_ARREARS)
-		reason = "Arrears repayment - Burghers of Rotwood Vale"
+		reason = "偿还欠款——腐木谷市民"
 	else
-		reason = "FTC loan repayment"
+		reason = "偿还费伦提亚贸易公司贷款"
 	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, reason))
 	if(treasury_debt <= 0)
 		treasury_debt = 0
@@ -186,8 +186,8 @@
 		log_fund_entry(new /datum/treasury_entry("micro", source, to_fund, entry["amount"], entry["reason"]))
 	to_fund.pending_micro = list()
 	if(remainder > 0)
-		to_fund.pending_micro += list(list("amount" = remainder, "source" = null, "reason" = "carryover"))
-	mint(to_fund, whole, "Fractional remit ([whole]m from [contributors] pending entries)")
+		to_fund.pending_micro += list(list("amount" = remainder, "source" = null, "reason" = "结转余款"))
+	mint(to_fund, whole, "零星汇款（[contributors]笔待结算款项合计[whole]m）")
 	return whole
 
 /datum/controller/subsystem/treasury/proc/burn(datum/fund/from_fund, amount, reason)
@@ -306,7 +306,7 @@
 	var/skim = FLOOR(concordat_tithe_debt, 1)
 	if(skim <= 0)
 		return
-	if(transfer(discretionary_fund, church_fund, skim, "Concordat tithe ([tax_category])"))
+	if(transfer(discretionary_fund, church_fund, skim, "协约什一税（[tax_category]）"))
 		concordat_tithe_debt -= skim
 
 /// Books the mammon a charter shielded from the Crown, by category, for the Chronicle.

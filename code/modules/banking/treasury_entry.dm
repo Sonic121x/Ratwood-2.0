@@ -22,9 +22,9 @@
 	var/suffix = reason ? " ([reason])" : ""
 	switch(kind)
 		if("mint")
-			return "+[amount] to [to_name][suffix]"
+			return "向[to_name]入账+[amount][suffix]"
 		if("burn")
-			return "-[amount] from [from_name][suffix]"
+			return "从[from_name]扣款-[amount][suffix]"
 		if("transfer")
-			return "[amount] from [from_name] to [to_name][suffix]"
-	return "[kind] [amount][suffix]"
+			return "从[from_name]向[to_name]转账[amount][suffix]"
+	return "[kind == "micro" ? "零星汇款" : kind] [amount][suffix]"

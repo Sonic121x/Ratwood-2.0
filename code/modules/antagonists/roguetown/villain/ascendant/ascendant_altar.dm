@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 			user.fullscreen_redflash("redflash3")
 			user.emote("agony", forced = TRUE)
 			sleep(20)
-			to_chat(user, span_userdanger("这世W界并不真实。我的呼吸消失了。我的心脏几乎不再跳动。我的血脉空空如也。"))
+			to_chat(user, span_userdanger("这世世界并不真实。我的呼吸消失了。我的心脏几乎不再跳动。我的血脉空空如也。"))
 			sleep(50)
 			to_chat(user, span_userdanger("我是神。 我是神。 我是神。 我是神。 我是神。 我是神。 我是神。 我是神。 我是神。 我是神。 我是神。 我是神。"))
 			sleep(30)
@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 			heavensaysdanger() //Roger, our deal is honored; you will be rewarded in heaven.
 			addomen(ASCEND_ASCENDANT)
 			sleep(15 SECONDS)
-			to_chat(user, span_mind_control("我必S须前往王O座。王座。王座。我的王国在等待。普赛多尼亚 已死。我必须升 asc "))
+			to_chat(user, span_mind_control("我必必须前往王王座。王座。王座。我的王国在等待。普赛多尼亚 已死。我必须飞 飞升 "))
 
 			qdel(src)
 
@@ -217,6 +217,6 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 	to_chat(user, span_userdanger("我已经收集了 [ascend_stage] 块基石与 [ascendpoints] 件圣物。"))
 
 /obj/structure/ascendant_altar/proc/heavensaysdanger()
-	priority_announce("梦者 已然升格 - MAJOR ARCANA : T$yh3 TOW##ER, RE v3RSED", "神要来了", 'sound/villain/ascendant_intro.ogg')
+	priority_announce("梦者 已然升格 - 大阿卡纳：高$高##塔，逆 逆位", "神要来了", 'sound/villain/ascendant_intro.ogg')
 	sleep(15 SECONDS)
 	to_chat(world, span_danger("王座下方的大地在震动。天空正在裂开。"))
