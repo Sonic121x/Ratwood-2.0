@@ -12,7 +12,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "manor";
-	name = "Holding Cell"
+	name = "拘留室"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
@@ -87,9 +87,9 @@
 /area/rogue/under/cave)
 "acU" = (
 /obj/structure/arcyne_wall{
-	desc = "A wall of pure arcyne force. Powerful covetous magic protects the dragon's hoard.";
+	desc = "一道由纯粹奥术力量凝成的屏障。强大的贪欲魔法保护着巨龙的宝藏。";
 	max_integrity = 9999;
-	name = "Wall of Greed"
+	name = "贪婪之墙"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/banditcamp/byos)
@@ -142,7 +142,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	redstone_id = "inq_ship_shit";
-	name = "latrine";
+	name = "茅厕";
 	pixel_y = 19
 	},
 /turf/open/transparent/openspace,
@@ -190,7 +190,7 @@
 /area/rogue/indoors/town/shop)
 "ahk" = (
 /obj/structure/fluff/customsign{
-	name = "|| Greed fills the purse, then empties the soul."
+	name = "|| 贪婪填满钱袋，随后掏空灵魂。"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
@@ -363,7 +363,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "tribal";
-	name = "Holding Cell"
+	name = "拘留室"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/tribeden)
@@ -389,7 +389,7 @@
 /obj/structure/closet/crate/chest{
 	lockid = "physician";
 	locked = 1;
-	name = "Physician's Supplies";
+	name = "医师用品";
 	masterkey = 1
 	},
 /obj/item/reagent_containers/glass/mortar,
@@ -1250,7 +1250,7 @@
 	layer = 4.1;
 	locked = 1;
 	lockid = "nightman";
-	name = "Dressing Closet"
+	name = "更衣柜"
 	},
 /obj/item/clothing/neck/roguetown/collar/leather,
 /obj/item/rogueweapon/whip{
@@ -1430,7 +1430,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedchallenge3"
 	},
 /turf/open/transparent/openspace,
@@ -1444,7 +1444,7 @@
 "bHa" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden{
 	color = "#ffe100";
-	name = "Gold Golem";
+	name = "黄金魔像";
 	faction = list("elemental", "mimic")
 	},
 /turf/open/floor/rogue/cobble/mossy,
@@ -1733,7 +1733,7 @@
 /area/rogue/indoors/town/tavern)
 "ccx" = (
 /obj/structure/roguemachine/lottery_roguetown{
-	name = "Mouth of Greed"
+	name = "贪婪之口"
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave)
@@ -1775,7 +1775,7 @@
 	pixel_y = 8
 	},
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield";
+	name = "新王田旗帜";
 	pixel_y = 32
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/wine{
@@ -1836,7 +1836,7 @@
 /area/rogue/under/cavewet/byos/banditcove)
 "cfz" = (
 /obj/structure/roguethrone{
-	name = "Throne of Rockhill"
+	name = "岩丘王座"
 	},
 /obj/item/reagent_containers/food/snacks/egg{
 	pixel_x = -5
@@ -1904,8 +1904,8 @@
 	icon_state = "tablewood2"
 	},
 /obj/item/reagent_containers/glass/cup/skull{
-	name = "Forbidden Chalice";
-	desc = "Rumor has it if you steal it, a voice will tell you to give it back or else you'll be cursed."
+	name = "禁忌圣杯";
+	desc = "据说偷走它时，会有声音要求你归还，否则你将遭到诅咒。"
 	},
 /turf/open/floor/rogue/dirt/desert,
 /area/rogue/outdoors/beach/byos)
@@ -1944,7 +1944,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Challenge of Greed - Route Two";
+	name = "贪婪试炼——路线二";
 	redstone_id = "greedchallenge2"
 	},
 /turf/open/floor/rogue/cobblerock,
@@ -1975,7 +1975,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	redstone_id = "inq_ship";
-	name = "Ship's hold"
+	name = "船舱"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "vertw"
@@ -2615,7 +2615,7 @@
 "cZC" = (
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	max_integrity = 1600;
-	name = "reinforced roof"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat)
 "cZJ" = (
@@ -2741,8 +2741,8 @@
 /area/rogue/under/cave)
 "dhp" = (
 /obj/structure/fluff/customsign{
-	name = "|| Temple of Greed";
-	desc = "Intruders beware, you are in for a scare."
+	name = "|| 贪婪神殿";
+	desc = "入侵者当心，惊吓正等着你。"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
@@ -2843,7 +2843,7 @@
 "dks" = (
 /obj/structure/trap/chill,
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Ancient Crypt"
+	name = "远古墓穴"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
@@ -3137,15 +3137,15 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedexit"
 	},
 /obj/item/rogueweapon/sword/rapier/lord,
 /obj/item/roguekey{
 	icon_state = "bosskey";
 	lockid = "greed";
-	name = "Key of Greed";
-	desc = "It's golden-perfect sheen almost make it look like it's glowing."
+	name = "贪婪之钥";
+	desc = "它完美的金色光泽几乎让人以为它正在发光。"
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave)
@@ -3250,7 +3250,7 @@
 /area/rogue/indoors/town/shop)
 "dKu" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Gluttony";
+	name = "暴食之门";
 	locked = 1;
 	lockid = "gluttony";
 	masterkey = 0;
@@ -4224,8 +4224,8 @@
 /area/rogue/under/cavewet/byos/banditcove)
 "eRq" = (
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/water/river{
@@ -4250,7 +4250,7 @@
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Absolver's Chambers"
+	name = "赦罪者居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/inq/boat)
@@ -4354,10 +4354,10 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
 	lockid = "manor";
-	name = "Lord's Apartment"
+	name = "领主居所"
 	},
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield";
+	name = "新王田旗帜";
 	pixel_y = 32
 	},
 /turf/open/floor/rogue/carpet/lord/center,
@@ -4401,7 +4401,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "tribalchief";
-	name = "Riches";
+	name = "财富";
 	dir = 8
 	},
 /turf/open/floor/rogue/cobble,
@@ -4507,7 +4507,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "shop";
-	name = "Merchant";
+	name = "商人";
 	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -4691,7 +4691,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Vault";
+	name = "金库";
 	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -4893,7 +4893,7 @@
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 8;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat/office)
 "fBm" = (
@@ -5057,7 +5057,7 @@
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 8;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat)
 "fME" = (
@@ -5298,7 +5298,7 @@
 /obj/structure/lever/wall{
 	dir = 4;
 	pixel_x = 5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedexit3"
 	},
 /turf/open/floor/rogue/cobblerock,
@@ -5448,7 +5448,7 @@
 "geN" = (
 /obj/structure/closet/crate/chest{
 	lockid = "crafterguild";
-	name = "Building Supplies"
+	name = "建筑材料"
 	},
 /obj/item/natural/stone,
 /obj/item/natural/stone,
@@ -5496,13 +5496,13 @@
 /area/rogue/under/cave)
 "gfF" = (
 /obj/structure/arcyne_wall{
-	desc = "A wall of pure arcyne force. Powerful covetous magic protects the dragon's hoard.";
+	desc = "一道由纯粹奥术力量凝成的屏障。强大的贪欲魔法保护着巨龙的宝藏。";
 	max_integrity = 9999;
-	name = "Wall of Greed"
+	name = "贪婪之墙"
 	},
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/woodturned,
@@ -5653,8 +5653,8 @@
 /area/rogue)
 "gmZ" = (
 /obj/structure/fluff/statue{
-	desc = "A worn looking statue sculpted in Necra's image.";
-	name = "Ancient Idol";
+	desc = "一尊看起来颇为破旧的内克拉雕像。";
+	name = "远古神像";
 	pixel_x = -1;
 	pixel_y = 10
 	},
@@ -5744,7 +5744,7 @@
 /area/rogue/outdoors/mountains)
 "gtT" = (
 /obj/structure/winch{
-	name = "Crane winch"
+	name = "起重绞盘"
 	},
 /obj/structure/bars/grille,
 /turf/open/water/ocean/deep,
@@ -5796,7 +5796,7 @@
 "gxL" = (
 /obj/structure/table/vtable,
 /obj/item/listenstone{
-	name = "Choker of Queens"
+	name = "女王颈环"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/tribeden)
@@ -5928,7 +5928,7 @@
 /area/rogue/under/cave)
 "gCZ" = (
 /obj/structure/fluff/customsign{
-	name = "|| The lever grants what thou deserves, not what thou desires."
+	name = "|| 拉杆赐予你应得之物，而非渴求之物。"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
@@ -6142,7 +6142,7 @@
 /area/rogue/outdoors/town/byos)
 "gOB" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Chief's Room";
+	name = "首领居室";
 	locked = 1;
 	lockid = "tribalchief";
 	masterkey = 0
@@ -6402,7 +6402,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Interrogation Room";
+	name = "审讯室";
 	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -6477,7 +6477,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Challenge of Greed - Route One";
+	name = "贪婪试炼——路线一";
 	redstone_id = "greedchallenge"
 	},
 /turf/open/floor/rogue/cobble,
@@ -6671,7 +6671,7 @@
 /area/rogue/under/cave/tribeden)
 "hux" = (
 /obj/structure/fluff/customsign{
-	name = "|| What thou takest in haste, the maze takes in turn."
+	name = "|| 你匆忙夺取之物，迷宫终将收回。"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
@@ -6760,7 +6760,7 @@
 "hBH" = (
 /obj/structure/lever/wall{
 	dir = 4;
-	name = "Merchant Shutters - North";
+	name = "商铺百叶窗——北侧";
 	pixel_y = -4;
 	redstone_id = "shutter_merchant"
 	},
@@ -6819,7 +6819,7 @@
 "hEh" = (
 /obj/structure/table/vtable/v2,
 /obj/item/clothing/neck/roguetown/talkstone{
-	name = "Amulet of Kings"
+	name = "国王护符"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/tribeden)
@@ -6980,7 +6980,7 @@
 /area/rogue/outdoors/mountains)
 "hLP" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Ancient Crypt"
+	name = "远古墓穴"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/under/cave)
@@ -7058,8 +7058,8 @@
 /obj/item/rogueweapon/sword/decorated,
 /obj/item/roguecoin/gold/pile,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/woodturned,
@@ -7158,7 +7158,7 @@
 "hWJ" = (
 /obj/structure/closet/crate/chest{
 	lockid = "crafterguild";
-	name = "Building Supplies"
+	name = "建筑材料"
 	},
 /obj/item/customlock,
 /obj/item/customlock,
@@ -7212,7 +7212,7 @@
 "hXH" = (
 /obj/structure/mineral_door/wood{
 	lockid = "physician";
-	name = "Surgeon Room"
+	name = "外科医师居室"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
@@ -7362,7 +7362,7 @@
 "ieQ" = (
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	max_integrity = 1600;
-	name = "reinforced roof"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat/office)
 "ifv" = (
@@ -8025,7 +8025,7 @@
 /area/rogue/outdoors/beach/byos)
 "iRy" = (
 /obj/structure/closet/crate/chest{
-	name = "Prisoner Clothes"
+	name = "囚犯衣物"
 	},
 /obj/item/storage/belt/rogue/surgery_bag/empty,
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw,
@@ -8062,9 +8062,9 @@
 /area/rogue/indoors/town/tavern)
 "iTx" = (
 /obj/structure/fluff/walldeco/steward{
-	desc = "Bits n' Bobs for sale, if ye have the coin.";
+	desc = "只要你有钱，这里就有各类小玩意出售。";
 	dir = 1;
-	name = "Trading Hub";
+	name = "交易中心";
 	pixel_x = 3
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -8235,7 +8235,7 @@
 /area/rogue/under/cave)
 "jgu" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Sloth";
+	name = "懒惰之门";
 	locked = 1;
 	lockid = "sloth";
 	masterkey = 0;
@@ -8270,7 +8270,7 @@
 /area/rogue/indoors/inq/boat/office)
 "jgO" = (
 /obj/structure/mineral_door/wood/donjon{
-	name = "Armory";
+	name = "军械库";
 	locked = 1;
 	lockid = "tribal";
 	masterkey = 0
@@ -8687,12 +8687,12 @@
 /area/rogue/indoors/inq/boat)
 "jEa" = (
 /obj/structure/fluff/statue/pillar{
-	name = "Steering Pole";
+	name = "舵杆";
 	pixel_x = -10
 	},
 /obj/structure/chair/bench/church/smallbench{
 	dir = 8;
-	name = "Steering Base";
+	name = "舵座";
 	pixel_x = -13
 	},
 /obj/item/roguegear{
@@ -8754,8 +8754,8 @@
 /obj/item/roguekey{
 	icon_state = "bosskey";
 	lockid = "pride";
-	name = "Key of Pride";
-	desc = "It depicts an etched face, grinning like a madman.";
+	name = "傲慢之钥";
+	desc = "上面刻着一张如疯子般咧嘴笑着的脸。";
 	pixel_x = -10
 	},
 /turf/open/floor/rogue/church,
@@ -8808,7 +8808,7 @@
 	dir = 8;
 	locked = 1;
 	lockid = "tribal";
-	name = "Bad Room"
+	name = "坏房间"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/tribeden)
@@ -8829,7 +8829,7 @@
 	layer = 2.81
 	},
 /obj/structure/bars/passage/shutter{
-	name = "Merchant";
+	name = "商人";
 	redstone_id = "shutter_merchant"
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -8843,7 +8843,7 @@
 "jLY" = (
 /obj/structure/closet/crate/chest{
 	lockid = "crafterguild";
-	name = "Building Supplies"
+	name = "建筑材料"
 	},
 /obj/item/natural/bundle/plank{
 	amount = 6
@@ -8946,7 +8946,7 @@
 	dir = 4;
 	locked = 1;
 	lockid = "inquisition";
-	name = "Inquisitorial Manor"
+	name = "审判庭庄园"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/inq/boat/office)
@@ -8974,7 +8974,7 @@
 /obj/item/book/rogue/law{
 	pixel_x = 3;
 	pixel_y = -3;
-	name = "No ERP"
+	name = "禁止色情角色扮演"
 	},
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/under/cave)
@@ -9179,7 +9179,7 @@
 /area/rogue/under/cave)
 "kec" = (
 /obj/structure/bed/rogue/inn/double{
-	name = "Love Nest"
+	name = "爱巢"
 	},
 /obj/item/bedsheet/rogue/fabric_double,
 /turf/open/floor/carpet/red,
@@ -9230,7 +9230,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedexit4"
 	},
 /turf/open/floor/rogue/cobble,
@@ -9674,7 +9674,7 @@
 /obj/structure/closet/crate/chest{
 	locked = 1;
 	lockid = "steward";
-	name = "Vault Supplies";
+	name = "金库用品";
 	masterkey = 1
 	},
 /obj/item/roguecoin/gold/pile,
@@ -9786,7 +9786,7 @@
 	dir = 4;
 	lockid = "bandit";
 	masterkey = 0;
-	desc = "A sturdy, well-made door. You aren't going to break it down in this lyfe-time."
+	desc = "一扇坚固、做工精良的门。你这辈子都别想将它撞开。"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/banditcamp/byos)
@@ -9802,7 +9802,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Foreign import";
+	name = "外国进口货";
 	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -9818,7 +9818,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedexit2"
 	},
 /turf/open/floor/rogue/cobblerock,
@@ -9831,7 +9831,7 @@
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Orthodixist's Chamber"
+	name = "正统教士居室"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/inq/boat)
@@ -9870,7 +9870,7 @@
 	},
 /obj/structure/lever/wall{
 	dir = 4;
-	name = "Take Your Chance";
+	name = "试试运气";
 	redstone_id = "greedchallenge5";
 	pixel_x = 5
 	},
@@ -10060,8 +10060,8 @@
 /obj/item/roguekey{
 	icon_state = "vampkey";
 	lockid = "lust";
-	name = "Key of Lust";
-	desc = "It's smooth and sensual to the touch."
+	name = "色欲之钥";
+	desc = "触感光滑，令人浮想联翩。"
 	},
 /obj/item/clothing/neck/roguetown/collar/catbell,
 /obj/item/clothing/neck/roguetown/cursed_collar,
@@ -10185,7 +10185,7 @@
 /area/rogue/under/cave)
 "lbe" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Pride";
+	name = "傲慢之门";
 	locked = 1;
 	lockid = "pride";
 	masterkey = 0;
@@ -10204,7 +10204,7 @@
 /obj/structure/closet/crate/chest{
 	lockid = "tower";
 	locked = 1;
-	name = "Mage's Supplies";
+	name = "法师用品";
 	masterkey = 1
 	},
 /obj/item/clothing/gloves/roguetown/nomagic,
@@ -10413,32 +10413,32 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/roguekey/walls{
 	lockid = "bandit";
-	name = "old key";
+	name = "旧钥匙";
 	pixel_x = -9
 	},
 /obj/item/roguekey/walls{
 	lockid = "bandit";
-	name = "old key";
+	name = "旧钥匙";
 	pixel_x = -9
 	},
 /obj/item/roguekey/walls{
 	lockid = "bandit";
-	name = "old key";
+	name = "旧钥匙";
 	pixel_x = -9
 	},
 /obj/item/roguekey/walls{
 	lockid = "bandit";
-	name = "old key";
+	name = "旧钥匙";
 	pixel_x = -9
 	},
 /obj/item/roguekey/walls{
 	lockid = "bandit";
-	name = "old key";
+	name = "旧钥匙";
 	pixel_x = -9
 	},
 /obj/item/roguekey/walls{
 	lockid = "bandit";
-	name = "old key";
+	name = "旧钥匙";
 	pixel_x = -9
 	},
 /obj/structure/fluff/railing/border{
@@ -10456,7 +10456,7 @@
 /area/rogue/outdoors/mountains)
 "lnB" = (
 /obj/structure/far_travel{
-	name = "teleport home";
+	name = "传送回家";
 	icon = 'icons/roguetown/misc/structure.dmi';
 	icon_state = "underworldportal"
 	},
@@ -10515,7 +10515,7 @@
 /area/rogue/under/cave/tribeden)
 "lrU" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Lust";
+	name = "色欲之门";
 	locked = 1;
 	lockid = "lust";
 	masterkey = 0;
@@ -10676,7 +10676,7 @@
 /area/rogue/indoors)
 "lyD" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Seer's Room";
+	name = "先知居室";
 	lockid = "tribal";
 	masterkey = 0
 	},
@@ -10723,7 +10723,7 @@
 "lzO" = (
 /obj/structure/well/fountain/mana{
 	max_integrity = 600;
-	name = "Fountain of Arcana"
+	name = "奥术之泉"
 	},
 /turf/open/floor/rogue/grasscold,
 /area/rogue/under/cave)
@@ -10782,7 +10782,7 @@
 "lCo" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne{
-	name = "Ritual Dagger"
+	name = "仪式匕首"
 	},
 /obj/item/roguegem/diamond{
 	pixel_y = 8;
@@ -10841,7 +10841,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "bandit";
-	name = "Cell";
+	name = "牢房";
 	masterkey = 0
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -10879,7 +10879,7 @@
 /obj/structure/closet/crate/chest{
 	pixel_x = 2;
 	pixel_y = 5;
-	name = "Farmer's Supplies";
+	name = "农夫用品";
 	lockid = "farm";
 	masterkey = 1
 	},
@@ -11174,7 +11174,7 @@
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE2";
 	aportalid = "BYOSPIRATESHIP2";
-	name = "sail to the island"
+	name = "航行至岛屿"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -11250,8 +11250,8 @@
 /area/rogue/outdoors/byos)
 "mcH" = (
 /obj/structure/fluff/statue/spider{
-	desc = "They watch you breed from the corners of the room.";
-	name = "Broodmother"
+	desc = "它们在房间角落里注视着你繁衍。";
+	name = "育母者"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave)
@@ -11278,7 +11278,7 @@
 /area/rogue/indoors/inq/boat/basement)
 "mdE" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Envy";
+	name = "嫉妒之门";
 	locked = 1;
 	lockid = "envy";
 	masterkey = 0;
@@ -11674,7 +11674,7 @@
 /obj/structure/lever/wall{
 	dir = 4;
 	pixel_x = 5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedexit6"
 	},
 /turf/open/floor/rogue/cobble/mossy,
@@ -11690,7 +11690,7 @@
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE2";
 	aportalid = "BYOSPIRATESHIP2";
-	name = "sail to the island"
+	name = "航行至岛屿"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -11960,7 +11960,7 @@
 /area/rogue/under/cave)
 "mQw" = (
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield"
+	name = "新王田旗帜"
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/beach/byos)
@@ -12022,7 +12022,7 @@
 /area/rogue/indoors/banditcamp/byos)
 "mTP" = (
 /obj/structure/fluff/customsign{
-	name = "|| The hand that pulls for gold may grasp its grave."
+	name = "|| 为黄金拉动机关的手，或将攥住自己的坟墓。"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
@@ -12065,7 +12065,7 @@
 /obj/structure/fluff/statue/gargoyle{
 	opacity = 1;
 	color = "ff0000";
-	name = "Mysterious Statue"
+	name = "神秘雕像"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
@@ -12119,7 +12119,7 @@
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 4;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat/office)
 "mZk" = (
@@ -12168,7 +12168,7 @@
 	locked = 1;
 	lockid = "shop";
 	masterkey = 0;
-	name = "Shophands Quarters"
+	name = "店员住处"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -12359,7 +12359,7 @@
 	},
 /obj/structure/lever/wall{
 	dir = 4;
-	name = "Take Your Chance";
+	name = "试试运气";
 	redstone_id = "greedchallenge1";
 	pixel_x = 5
 	},
@@ -12526,7 +12526,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedchallenge9"
 	},
 /turf/open/transparent/openspace,
@@ -12564,7 +12564,7 @@
 "nzH" = (
 /obj/structure/handcart,
 /obj/item/reagent_containers/food/snacks/smallrat{
-	name = "smoll rat"
+	name = "小老鼠"
 	},
 /obj/machinery/light/roguestreet/orange/walllamp{
 	dir = 4
@@ -12768,7 +12768,7 @@
 	layer = 2.81
 	},
 /obj/structure/bars/passage/shutter{
-	name = "Merchant";
+	name = "商人";
 	redstone_id = "shutter_merchant"
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -12811,7 +12811,7 @@
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Vine cabinet"
+	name = "藤柜"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/inq/boat)
@@ -13054,8 +13054,8 @@
 /area/rogue/under/cavewet)
 "obl" = (
 /obj/structure/winch{
-	desc = "The centerpiece of any ship. You're not going anywhere without it.";
-	name = "nautical wheel";
+	desc = "船只的核心部件。没有它，你哪儿也去不了。";
+	name = "船舵";
 	pixel_x = -3
 	},
 /obj/structure/fluff/walldeco/church/line{
@@ -13114,7 +13114,7 @@
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 4;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat)
 "oer" = (
@@ -13451,7 +13451,7 @@
 	keylock = 1;
 	locked = 1;
 	lockid = "keep_barracks";
-	name = "Armory"
+	name = "军械库"
 	},
 /obj/item/clothing/cloak/tabard/knight/guard,
 /obj/item/clothing/cloak/stabard/surcoat/guard,
@@ -13659,7 +13659,7 @@
 	},
 /obj/structure/lever/wall{
 	dir = 4;
-	name = "Take Your Chance";
+	name = "试试运气";
 	redstone_id = "greedchallenge8";
 	pixel_x = 5
 	},
@@ -13829,7 +13829,7 @@
 /area/rogue/indoors/town/tavern)
 "oMx" = (
 /obj/structure/fluff/customsign{
-	name = "|| He who wants all shall lose the one thing he needs."
+	name = "|| 渴求一切者，必将失去唯一所需之物。"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
@@ -14025,14 +14025,14 @@
 /area/rogue/under/cave)
 "oWN" = (
 /mob/living/simple_animal/pet/cat/inn{
-	name = "Bintu"
+	name = "宾图"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "oXq" = (
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/water/river{
@@ -14518,8 +14518,8 @@
 /obj/item/roguekey{
 	icon_state = "spikekey";
 	lockid = "envy";
-	name = "Key of Envy";
-	desc = "It's covered in small spikes. It hurts to hold."
+	name = "嫉妒之钥";
+	desc = "它遍布细小的尖刺，握着很疼。"
 	},
 /turf/open/floor/rogue/dirt/desert,
 /area/rogue/under/cave)
@@ -14643,7 +14643,7 @@
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Storage"
+	name = "储藏室"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
@@ -14698,7 +14698,7 @@
 /area/rogue/outdoors/jungle)
 "pzb" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Temple of Pride"
+	name = "傲慢神殿"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave)
@@ -14805,7 +14805,7 @@
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE1";
 	aportalid = "BYOSPIRATESHIP1";
-	name = "sail to the island"
+	name = "航行至岛屿"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -14844,7 +14844,7 @@
 /area/rogue/under/town/basement)
 "pEY" = (
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield";
+	name = "新王田旗帜";
 	pixel_y = -32
 	},
 /turf/open/floor/rogue/ruinedwood,
@@ -15487,12 +15487,12 @@
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 1;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat)
 "qud" = (
 /obj/structure/mineral_door/wood/deadbolt{
-	name = "Kitchen";
+	name = "厨房";
 	dir = 8;
 	lockid = "gobbo";
 	masterkey = 0
@@ -15582,7 +15582,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedchallenge6"
 	},
 /turf/open/transparent/openspace,
@@ -15676,7 +15676,7 @@
 "qBU" = (
 /obj/structure/lever{
 	redstone_id = "hoard";
-	name = "Trial of Sins Gateway";
+	name = "罪孽试炼之门";
 	pixel_y = 8
 	},
 /obj/machinery/light/rogue/torchholder/c,
@@ -15963,7 +15963,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Proscribed Items"
+	name = "违禁物品"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors/inq/boat/basement)
@@ -15975,7 +15975,7 @@
 "qUJ" = (
 /obj/structure/mineral_door/wood/donjon{
 	lockid = "tribal";
-	name = "Guard's Quarters"
+	name = "卫兵住处"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/tribeden)
@@ -16072,7 +16072,7 @@
 	locked = 1;
 	lockid = "merchant";
 	masterkey = 0;
-	name = "Merchants Quarters"
+	name = "商人住处"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
@@ -16243,7 +16243,7 @@
 	},
 /obj/structure/lever/wall{
 	dir = 4;
-	name = "Take Your Chance";
+	name = "试试运气";
 	redstone_id = "greedchallenge7";
 	pixel_x = 5
 	},
@@ -16394,7 +16394,7 @@
 "rph" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/flashlight/lantern/shrunken{
-	name = "Lamp of the Ensouled"
+	name = "有魂者之灯"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
@@ -16612,7 +16612,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Holding Cell"
+	name = "拘留室"
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors/inq/boat/basement)
@@ -16786,8 +16786,8 @@
 /obj/item/roguekey{
 	icon_state = "vampkey";
 	lockid = "gluttony";
-	name = "Key of Gluttony";
-	desc = "It's covered in a thick flesh-like substance.";
+	name = "暴食之钥";
+	desc = "上面覆着一层厚厚的血肉状物质。";
 	color = "#751f09"
 	},
 /turf/open/floor/rogue/concrete,
@@ -16880,8 +16880,8 @@
 "rQq" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/woodturned,
@@ -16916,7 +16916,7 @@
 /area/rogue/under/town/basement)
 "rRX" = (
 /obj/structure/fluff/statue/pillar{
-	name = "Steering Pole";
+	name = "舵杆";
 	pixel_x = -10
 	},
 /obj/item/roguegear/bronze{
@@ -16924,7 +16924,7 @@
 	},
 /obj/structure/chair/bench/church/smallbench{
 	dir = 8;
-	name = "Steering Base";
+	name = "舵座";
 	pixel_x = -13
 	},
 /turf/open/floor/rogue/woodturned,
@@ -17027,8 +17027,8 @@
 /area/rogue/outdoors/mountains)
 "rWL" = (
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/water/pond,
@@ -17039,7 +17039,7 @@
 /area/rogue/outdoors/jungle)
 "rXH" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Ancient Crypt"
+	name = "远古墓穴"
 	},
 /obj/structure/trap/chill,
 /turf/open/floor/rogue/naturalstone,
@@ -17059,7 +17059,7 @@
 /area/rogue/under/cave/tribeden)
 "rYw" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Pride";
+	name = "傲慢之门";
 	locked = 1;
 	lockid = "pride"
 	},
@@ -17067,7 +17067,7 @@
 /area/rogue/outdoors/mountains)
 "rZM" = (
 /obj/structure/bed/rogue/inn/double{
-	name = "Love Nest"
+	name = "爱巢"
 	},
 /obj/item/bedsheet/rogue/fabric_double,
 /turf/open/floor/carpet/red,
@@ -17359,9 +17359,9 @@
 	},
 /obj/effect/wisp/prestidigitation{
 	color = "#ffff00";
-	desc = "A small, fiery ball of light made up of mystical energy.";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
 	light_color = "#33ff00";
-	name = "Will-o'-the-wisp";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/carpet,
@@ -17383,7 +17383,7 @@
 /obj/structure/lever/wall{
 	dir = 4;
 	pixel_x = 5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedexit5"
 	},
 /turf/open/floor/rogue/cobble,
@@ -17410,7 +17410,7 @@
 /obj/structure/closet/crate/chest{
 	lockid = "tavern";
 	locked = 1;
-	name = "Cook's Supplies";
+	name = "厨师用品";
 	masterkey = 1
 	},
 /obj/item/reagent_containers/food/snacks/butter,
@@ -17470,7 +17470,7 @@
 	},
 /obj/structure/lever/wall{
 	dir = 4;
-	name = "Take Your Chance";
+	name = "试试运气";
 	redstone_id = "greedchallenge4";
 	pixel_x = 5
 	},
@@ -17698,9 +17698,9 @@
 /area/rogue/outdoors/beach/byos)
 "sCI" = (
 /obj/structure/arcyne_wall{
-	desc = "A wall of pure arcyne force. Powerful covetous magic protects the dragon's hoard.";
+	desc = "一道由纯粹奥术力量凝成的屏障。强大的贪欲魔法保护着巨龙的宝藏。";
 	max_integrity = 9999;
-	name = "Wall of Greed"
+	name = "贪婪之墙"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -17738,7 +17738,7 @@
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 4;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat/office)
 "sEz" = (
@@ -17827,7 +17827,7 @@
 /obj/structure/closet/crate/chest{
 	locked = 1;
 	lockid = "church";
-	name = "Church Supplies"
+	name = "教会用品"
 	},
 /obj/item/clothing/neck/roguetown/psicross/pestra{
 	pixel_x = -7
@@ -17880,7 +17880,7 @@
 /obj/structure/lever/wall{
 	dir = 8;
 	pixel_x = -5;
-	name = "Exit";
+	name = "出口";
 	redstone_id = "greedchallenge2"
 	},
 /turf/open/transparent/openspace,
@@ -18208,7 +18208,7 @@
 /area/rogue/indoors/vampire_manor)
 "sXL" = (
 /obj/structure/fluff/customsign{
-	name = "|| Step not for gain alone, lest thy shadow walk back richer than thee."
+	name = "|| 莫只为利益而前行，以免归途的影子比你更富有。"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
@@ -18452,7 +18452,7 @@
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 1;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat/office)
 "tla" = (
@@ -18542,7 +18542,7 @@
 /area/rogue/indoors/town/church)
 "toC" = (
 /obj/structure/fluff/customsign{
-	name = "|| Greed is a lantern: it shows the path, but draws the volfs."
+	name = "|| 贪婪是一盏灯：照亮道路，也引来狼群。"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
@@ -18665,7 +18665,7 @@
 /obj/structure/closet/crate/chest{
 	pixel_x = 2;
 	pixel_y = 5;
-	name = "Smith's Supplies";
+	name = "铁匠用品";
 	lockid = "crafterguild";
 	locked = 1;
 	masterkey = 1
@@ -19002,8 +19002,8 @@
 /obj/item/roguecoin/gold/pile,
 /obj/item/roguegem/green,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/woodturned,
@@ -19120,7 +19120,7 @@
 /obj/structure/mineral_door/bars{
 	locked = 1;
 	lockid = "inquisition";
-	name = "Holding Cell"
+	name = "拘留室"
 	},
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/rogue/metal,
@@ -19165,7 +19165,7 @@
 /area/rogue/under/cave)
 "tYC" = (
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield"
+	name = "新王田旗帜"
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors)
@@ -19649,7 +19649,7 @@
 /obj/structure/closet/crate/chest{
 	pixel_x = 2;
 	pixel_y = 5;
-	name = "Farmer's Supplies";
+	name = "农夫用品";
 	lockid = "farm";
 	masterkey = 1
 	},
@@ -19957,13 +19957,13 @@
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 1;
 	max_integrity = 1600;
-	name = "reinforced roofing"
+	name = "加固屋顶"
 	},
 /area/rogue/indoors/inq/boat/office)
 "uQf" = (
 /obj/structure/winch{
-	desc = "The ship's anchor winch. You're not going anywhere with it lowered.";
-	name = "anchor winch"
+	desc = "船上的锚绞盘。锚还放着时，你哪儿也去不了。";
+	name = "锚绞盘"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/inq/boat)
@@ -20302,8 +20302,8 @@
 "vlK" = (
 /obj/structure/flora/ausbushes/reedbush,
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/water/cleanshallow,
@@ -20367,7 +20367,7 @@
 /area/rogue/outdoors/mountains)
 "vpR" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Greed";
+	name = "贪婪之门";
 	locked = 1;
 	lockid = "greed";
 	masterkey = 0;
@@ -20543,7 +20543,7 @@
 /area/rogue/under/cave)
 "vxZ" = (
 /obj/structure/fluff/customsign{
-	name = "|| One coin more has cost many a man his name."
+	name = "|| 只为多得一枚钱币，多少人丢掉了名声。"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
@@ -20597,7 +20597,7 @@
 	},
 /obj/item/clothing/shoes/roguetown/boots/nobleboot,
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield";
+	name = "新王田旗帜";
 	pixel_y = -32
 	},
 /obj/item/rogueweapon/mace/parasol/noble,
@@ -20712,7 +20712,7 @@
 /area/rogue/under/cavewet)
 "vDB" = (
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield";
+	name = "新王田旗帜";
 	pixel_y = 32
 	},
 /turf/open/floor/rogue/ruinedwood,
@@ -20955,7 +20955,7 @@
 "vTy" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden{
 	color = "#ffe100";
-	name = "Gold Golem";
+	name = "黄金魔像";
 	faction = list("elemental", "mimic")
 	},
 /turf/open/floor/rogue/cobble,
@@ -21103,7 +21103,7 @@
 /obj/structure/closet/crate/chest{
 	pixel_x = 2;
 	pixel_y = 5;
-	name = "Farmer's Supplies";
+	name = "农夫用品";
 	lockid = "farm";
 	masterkey = 1
 	},
@@ -21281,7 +21281,7 @@
 	layer = 4.1;
 	locked = 1;
 	lockid = "nightman";
-	name = "Dressing Closet"
+	name = "更衣柜"
 	},
 /obj/item/clothing/neck/roguetown/collar/leather,
 /obj/item/dildo/wood{
@@ -21319,8 +21319,8 @@
 /obj/item/roguekey{
 	icon_state = "eyekey";
 	lockid = "wrath";
-	name = "Key of Wrath";
-	desc = "It's eye glares at you intensely."
+	name = "愤怒之钥";
+	desc = "它的眼睛恶狠狠地瞪着你。"
 	},
 /obj/item/clothing/suit/roguetown/armor/plate/ancient/artificer,
 /turf/open/floor/rogue/naturalstone,
@@ -21657,7 +21657,7 @@
 /area/rogue/under/cave)
 "wFU" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Door of Wrath";
+	name = "愤怒之门";
 	locked = 1;
 	lockid = "wrath";
 	masterkey = 0;
@@ -21705,7 +21705,7 @@
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE1";
 	aportalid = "BYOSPIRATESHIP1";
-	name = "sail to the island"
+	name = "航行至岛屿"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -21776,9 +21776,9 @@
 	},
 /obj/effect/wisp/prestidigitation{
 	color = "#ffff00";
-	desc = "A small, fiery ball of light made up of mystical energy.";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
 	light_color = "#33ff00";
-	name = "Will-o'-the-wisp";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/carpet,
@@ -21852,7 +21852,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	max_integrity = 99999;
-	name = "Mountain Pass to Elsewhere"
+	name = "通往远方的山口"
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/beach/byos)
@@ -22055,8 +22055,8 @@
 /obj/item/roguekey{
 	icon_state = "greenkey";
 	lockid = "sloth";
-	name = "Key of Sloth";
-	desc = "Whoever forged this key put barely any effort into it."
+	name = "怠惰之钥";
+	desc = "锻造这把钥匙的人几乎没花什么心思。"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
@@ -22285,8 +22285,8 @@
 /area/rogue/indoors/town/shop)
 "xvV" = (
 /obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
+	desc = "由神秘能量凝聚而成的小小炽热光球。";
+	name = "鬼火";
 	pixel_x = 0
 	},
 /turf/open/water/cleanshallow,
@@ -22324,7 +22324,7 @@
 /area/rogue/under/cave)
 "xyd" = (
 /obj/structure/fluff/customsign{
-	name = "|| Not all treasure lies in chests; nor all curses in runes."
+	name = "|| 并非所有宝藏都在箱中，也并非所有诅咒都在符文里。"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
@@ -22354,11 +22354,11 @@
 	dir = 8
 	},
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield";
+	name = "新王田旗帜";
 	pixel_y = -32
 	},
 /obj/structure/fluff/walldeco/customflag{
-	name = "Flag of New Kingsfield";
+	name = "新王田旗帜";
 	pixel_y = 32
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -22515,8 +22515,8 @@
 	},
 /obj/item/reagent_containers/glass/cup/golden{
 	pixel_y = 5;
-	name = "Goblet of Greed";
-	desc = "He who drinks from this will be forever thirsty."
+	name = "贪婪之杯";
+	desc = "饮此杯者将永远口渴。"
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/under/cave)
@@ -22575,11 +22575,11 @@
 "xKO" = (
 /obj/structure/chair/bench/church/smallbench{
 	dir = 8;
-	name = "Steering Base";
+	name = "舵座";
 	pixel_x = -13
 	},
 /obj/structure/fluff/statue/pillar{
-	name = "Steering Pole";
+	name = "舵杆";
 	pixel_x = -10
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -22777,7 +22777,7 @@
 	locked = 1;
 	lockid = "merchant";
 	masterkey = 0;
-	name = "Merchants Quarters"
+	name = "商人住处"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;

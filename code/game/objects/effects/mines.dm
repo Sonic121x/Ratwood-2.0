@@ -70,7 +70,7 @@
 
 
 /obj/effect/mine/gas/n2o
-	name = "\improper 笑气地雷"
+	name = "\proper 笑气地雷"
 	gas_type = "n2o"
 
 

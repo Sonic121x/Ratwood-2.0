@@ -43,8 +43,8 @@
 	var/datum/objective/ravox_duel/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("Ravox wants you to challenge others to honor duels! Win [new_objective.duels_required] duels to prove your worth! Duels end when a fighter yields or is knocked unconscious."))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_notice("拉沃克斯要你向他人发起荣誉决斗！赢得[new_objective.duels_required]场决斗，证明你的价值！一方认输或被击昏时，决斗便会结束。"))
 	chosen_one.playsound_local(chosen_one, 'sound/vo/male/knight/rage (6).ogg', 70)
 
 	chosen_one.mind.announce_personal_objectives()

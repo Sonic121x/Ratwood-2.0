@@ -1,17 +1,17 @@
 /datum/decree/magna_carta
 	id = DECREE_MAGNA_CARTA
-	name = "The Magna Carta"
+	name = "大宪章"
 	category = DECREE_CATEGORY_NEW
-	mechanical_text = "Zeroes every Crown levy and poll tax. Fines remain. The Crown collects only voluntary tribute."
+	mechanical_text = "取消王室的所有征税与人头税，保留罚款。王室仅收取自愿进贡。"
 	active = FALSE
-	flavor_text = {"%RULER_NAME%, by the grace of Astrata, %RULER% of the Vale, Count of Kingsfield, Blackholt, and Saltwick, Overlord of Rosawood, %REGION_ROCKHILL%, and Daftsmarch, Protector of Bleakcoast, Northfort, and Heartfelt, Defender of the Ten, to his archbishops, priests, templars, inquisitors, dukes, princes, consorts, hands, stewards, councillors, clerks, marshals, knights, sergeants, men-at-arms, wardens, squires, court magicians, archivists, apothecaries, head physicians, merchants, innkeepers, bathmasters, guildsmen, burghers, residents, peasants, farmers, cooks, tapsters, bathmaids, servants, soilsons, mercenaries, adventurers, pilgrims, and to all his officials and loyal subjects, Greeting.
+	flavor_text = {"蒙阿斯特拉塔恩典，谷地%RULER%、王田、黑林与盐镇伯爵、玫瑰林、%REGION_ROCKHILL%与愚沼宗主、荒凉海岸、北堡与赤心保护者、十神捍卫者%RULER_NAME%，向其大主教、祭司、圣堂武士、审判官、公爵、王子、配偶、首相、总管、议员、书记员、元帅、骑士、军士、武装侍从、守卫、扈从、宫廷法师、档案员、药剂师、首席医师、商人、旅店老板、浴场主人、行会成员、市民、居民、农夫、农人、厨师、酒保、浴女、仆役、土之子、雇佣兵、冒险者、朝圣者，以及一切官员与忠诚臣民致以问候。
 
-Know ye, that for the health of our soul, for the common benefit of the Realm, to the honour of the Ten, the exaltation of the holy Church, and the better ordering of our kingdom, we have granted unto every subject of the Vale, of whatsoever rank, station, or origin, that they shall bear no tax, no levy, no tariff, no duty, nor any fiscal imposition whatsoever upon their persons, estates, goods, labours, or callings, nor upon the instruments thereof, neither in coin nor in kind.
+兹告天下：为我等灵魂的安康、王国的共同福祉、十神的荣耀、神圣教会的兴隆，以及王国秩序的完善，我等恩准谷地每一位臣民，无论等级、身份或出身，其人身、地产、货物、劳作、职业及所用器具，皆不承担任何税款、征收、关税或其他财政负担，无论以钱币还是实物缴纳。
 
-In return, the subjects of the Vale shall remember the Crown in their private thoughts, speak well of its name when it becometh them to do so, and furnish such revenue as conscience may prompt and good weather allow, in such quantity and at such times as each subject shall deem fitting unto themselves.
+作为回报，谷地臣民应在心中记念王室，于合宜之时赞扬其名，并在良心促使、天候允许之时，各按自己认为适宜的数额与时间奉上收入。
 
-Yeven under the seal of %RULER_NAME%, %RULER% of this yeer, who shall be remembered for it."}
-	revoke_text = "Hear ye, hear ye. %RULER_NAME%, by the grace of Astrata, %RULER% of the Vale, Count of Kingsfield, Blackholt, and Saltwick, Overlord of Rosawood, %REGION_ROCKHILL%, and Daftsmarch, Protector of Bleakcoast, Northfort, and Heartfelt, Defender of the Ten, hath this day set aside the Magna Carta. The Realm's subjects are hereby restored to their accustomed fiscal obligations, and the Crown's revenue is restored in kind. Let the record reflect the reconsideration of %RULER_NAME%."
+钤本年%RULER%%RULER_NAME%之印颁行，后世当以此记念其人。"}
+	revoke_text = "诸位听令。蒙阿斯特拉塔恩典，谷地%RULER%、王田、黑林与盐镇伯爵、玫瑰林、%REGION_ROCKHILL%与愚沼宗主、荒凉海岸、北堡与赤心保护者、十神捍卫者%RULER_NAME%，今日废止《大宪章》。王国臣民恢复原有财政义务，王室收入亦相应恢复。此事应载入记录，以示%RULER_NAME%的重新裁定。"
 	// restore_text intentionally unset - broadcast_state_change is overridden below so that
 	// restoring the Carta reads the full charter aloud, ruler's name and all. That's the joke.
 	/// Pre-Carta tax rates, snapshotted the first time the charter is restored so that

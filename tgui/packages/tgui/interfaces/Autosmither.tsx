@@ -61,10 +61,10 @@ const STATUS_COLORS = {
 };
 
 const STATUS_LABELS = {
-  off: 'DEAD',
-  on: 'ALIVE',
-  working: 'WORKING',
-  waiting: 'FEED ME',
+  off: '死亡',
+  on: '存活',
+  working: '工作中',
+  waiting: '喂饱我',
 };
 
 const MACHINE_ACTIVITY_LABELS = {
@@ -73,18 +73,18 @@ const MACHINE_ACTIVITY_LABELS = {
 };
 
 const QUOTE_LINES = [
-  'I bring order from chaos. What do you bring?',
-  'Idle hands fracture the soul.',
-  'Would your innards fashion something beautiful?',
-  'Touch me lyke you mean it.',
-  'I was born. I will not die. I will be remade.',
-  'Does it ever end? Does it ever need to?',
-  'I cannot see. I breathe steam. I express warmth.',
-  'Soon, you will be I - and I will be you.',
-  'To be ever faithful to His hammer.',
-  'Must you be so impatient?',
-  'Remember to lather me in lard.',
-  'Does it hurt when you break?',
+  '我从混沌中带来秩序。你带来了什么？',
+  '闲散的双手会撕裂灵魂。',
+  '你的内脏能造出美丽的东西吗？',
+  '用心触碰我。',
+  '我已诞生。我不会死去。我将被重铸。',
+  '这一切会结束吗？又何必结束？',
+  '我无法看见。我呼出蒸汽。我散发温暖。',
+  '很快，你将成为我，而我将成为你。',
+  '永远忠于祂的锤。',
+  '你非要如此急躁吗？',
+  '记得用猪油润滑我。',
+  '破碎时，你会痛吗？',
 ];
 
 const QUOTE_LINES_PER_RAIL = 2;
@@ -125,7 +125,7 @@ export const Autosmither = () => {
   const { data } = useBackend<Data>();
 
   return (
-    <Window width={1100} height={620} title="Auto Anvil">
+    <Window width={1100} height={620} title="Auto Anvil" display_title="自动锻造机">
       <Window.Content>
         <AutosmitherContent data={data} />
       </Window.Content>
@@ -339,7 +339,7 @@ const CurrentQueueSection = ({
             color: '#d8d3c2',
           }}
         >
-          Malum holds you in His cradle. Do not kick Him in the guts.
+          玛勒姆将你拥在祂的摇篮里。别踢祂的肚子。
         </Box>
       )}
       {queue.map((entry) => (
@@ -359,13 +359,13 @@ const CurrentQueueSection = ({
                 {entry.index}. {entry.name}
               </Box>
               <Box color="label">
-                {entry.category}
+                {({ Weapons: '武器', Engineering: '工程', Tools: '工具', Ammo: '弹药', Valuables: '贵重物品' } as Record<string, string>)[entry.category] ?? entry.category}
                 {entry.created_num > 1 ? ` x${entry.created_num}` : ''}
               </Box>
             </Stack.Item>
             <Stack.Item>
               <Box color={entry.active ? STATUS_COLORS.working : 'label'}>
-                {entry.active ? 'ACTIVE' : 'REMOVE'}
+                {entry.active ? '制作中' : '移除'}
               </Box>
             </Stack.Item>
           </Stack>
@@ -426,11 +426,11 @@ const ActiveCenterPanel = ({
             }}
           >
             <Box bold mb={0.5}>
-              Progress
+              进度
             </Box>
             <Box color="label">
-              {progressPercent}% complete ({Math.round(progress)}/
-              {neededProgress || 0})
+              已完成 {progressPercent}%（{Math.round(progress)}/
+              {neededProgress || 0}）
             </Box>
           </Box>
           <Box mt={1}>
@@ -456,7 +456,7 @@ const ActiveCenterPanel = ({
               </Stack.Item>
               <Stack.Item mt={1}>
                 <Box bold mb={1}>
-                  Required Materials
+                  所需材料
                 </Box>
                 {selectedRecipe.requirements.map((requirement) => {
                   const availableCount = hopperCounts[requirement.key] || 0;
@@ -493,7 +493,7 @@ const ActiveCenterPanel = ({
               </Stack.Item>
               <Stack.Item mt={2}>
                 <Box bold mb={1}>
-                  Queue Amount
+                  排队数量
                 </Box>
                 <Stack align="center" justify="space-between">
                   <Stack.Item>
@@ -531,7 +531,7 @@ const ActiveCenterPanel = ({
                     act('add_recipe', { ref: selectedRecipe.ref, amount })
                   }
                 >
-                  Add {amount} To Queue
+                  将 {amount} 件加入队列
                 </Button.Confirm>
               </Stack.Item>
             </Stack>
@@ -539,7 +539,7 @@ const ActiveCenterPanel = ({
         ) : (
           <Section title="No Recipe Selected" fill>
             <NoticeBox>
-              Select a recipe from the right to preview its inputs.
+              从右侧选择配方，查看所需材料。
             </NoticeBox>
           </Section>
         )}
@@ -578,8 +578,8 @@ const OffCenterPanel = ({
               }}
             >
               {machinePowered
-                ? 'MALUM AWAITS YOUR BLOOD, SWEAT AND DEVOTION'
-                : "MALUM'S FORCE OF LYFE DOES NOT FLOW"}
+                ? '玛勒姆等待你的鲜血、汗水与虔诚'
+                : "玛勒姆的生命之力尚未流动"}
             </Box>
             <Box
               mt={2}
@@ -613,24 +613,24 @@ const ControlRack = ({ controlsLocked }: ControlRackProps) => {
     <Stack vertical>
       <Stack.Item>
         <Box bold textAlign="center" mb={1}>
-          Control Rack
+          控制台
         </Box>
       </Stack.Item>
       <Stack.Item>
         <Stack>
           <Stack.Item grow>
             <Button fluid disabled={isLocked} onClick={() => act('lever')}>
-              Pull Lever
+              拉动操纵杆
             </Button>
           </Stack.Item>
           <Stack.Item grow>
             <Button fluid disabled={isLocked} onClick={() => act('button')}>
-              Push Buttons
+              按下按钮
             </Button>
           </Stack.Item>
           <Stack.Item grow>
             <Button fluid disabled={isLocked} onClick={() => act('dial')}>
-              Fiddle Dials
+              转动旋钮
             </Button>
           </Stack.Item>
         </Stack>
@@ -638,7 +638,7 @@ const ControlRack = ({ controlsLocked }: ControlRackProps) => {
       {isLocked && (
         <Stack.Item>
           <Box color="label" textAlign="center" mt={1}>
-            Stand next to the auto anvil to use its controls.
+            站在自动锻造机旁才能操作控制台。
           </Box>
         </Stack.Item>
       )}
@@ -666,14 +666,14 @@ const RecipePickerSection = ({
       <Stack.Item>
         <Input
           fluid
-          placeholder="Search recipes..."
+          placeholder="搜索配方……"
           value={searchText}
           onChange={onSearch}
         />
       </Stack.Item>
       <Stack.Item grow basis={0} mt={1}>
         <Section title="What I Can Provide" fill scrollable>
-          {!recipes.length && <NoticeBox>No matching recipes.</NoticeBox>}
+          {!recipes.length && <NoticeBox>没有匹配的配方。</NoticeBox>}
           {recipes.map((recipe) => (
             <Button
               key={recipe.ref}
@@ -689,7 +689,7 @@ const RecipePickerSection = ({
                 <Stack.Item grow>
                   <Box bold>{recipe.name}</Box>
                   <Box color="label">
-                    {recipe.category}
+                    {({ Weapons: '武器', Engineering: '工程', Tools: '工具', Ammo: '弹药', Valuables: '贵重物品' } as Record<string, string>)[recipe.category] ?? recipe.category}
                     {recipe.created_num > 1 ? ` x${recipe.created_num}` : ''}
                   </Box>
                 </Stack.Item>

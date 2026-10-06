@@ -1,15 +1,15 @@
 /datum/decree/great_writ
 	id = DECREE_GREAT_WRIT
-	name = "The Great Writ of Ferentia"
+	name = "费伦提亚大敕令"
 	category = DECREE_CATEGORY_ANCIENT
-	mechanical_text = "Nobles pay no taxes nor fines."
-	flavor_text = {"This Great Writ of Ferentia, pronounced under Astrata's Sun and with Ravox as witness, declareth that the titled nobility of this land, being of lineage blessed by Astrata's grace, shall bear no tax nor levy upon their persons or estates. Untitled blood and the blue blood of foreign realms sojourning within it enjoy no such exemption, and shall render unto the Crown as any other subject.
+	mechanical_text = "贵族免缴所有税款与罚款。"
+	flavor_text = {"本《费伦提亚大诏》，于阿斯特拉塔的太阳之下宣告，以拉沃克斯为见证，规定：本地拥有头衔的贵族，其血脉蒙阿斯特拉塔恩典赐福，人身与地产皆免于税负与征收。无头衔者及暂居于此的外国贵族不享有此豁免，应与其他臣民一样向王室缴纳。
 
-In return, the nobles of The Realm shall undertake the duty of arms - to defend the Realm in their own person and with their retainers, to answer the Crown's call to war in whatsoever hour it cometh, and to render unto the throne the fealty that is owed by blood and by oath.
+作为回报，王国贵族应承担武备之责，亲自率领家臣保卫王国，无论何时都响应王室的战争召集，并向王座献上血脉与誓言所要求的忠诚。
 
-Yeven under the seal of the Crown, in witness of the Ten."}
-	revoke_text = "The %RULER% has set aside the Great Writ. The nobility of The Realm shall contribute to the Crown, in both blood and gold - let no lineage be too blessed to pay."
-	restore_text = "The %RULER% has renewed the Great Writ. The blue blood of The Realm is freed again from the levy, that the nobility may serve the Realm in arms, not in coin."
+于十神见证之下，钤王室之印颁行。"}
+	revoke_text = "%RULER%已废止《大敕令》。王国贵族须向王室献上鲜血与黄金，任何血统都不得以受福为由免于缴纳。"
+	restore_text = "%RULER%已续订《大敕令》。王国贵族再次免于征税，得以用武力而非钱币为王国效力。"
 
 /datum/decree/great_writ/roll_initial_year()
 	return CALENDAR_EPOCH_YEAR - rand(100, 200)

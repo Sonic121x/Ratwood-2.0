@@ -143,7 +143,7 @@
 		if(L.defaulted)
 			REMOVE_TRAIT(debtor, TRAIT_DEBTOR, TRAIT_GENERIC)
 			REMOVE_TRAIT(debtor, L.get_faction_debtor_trait(), TRAIT_GENERIC)
-			to_chat(debtor, span_notice("The stigma of default is lifted. Your debt to [destination.name] is paid in full."))
+			to_chat(debtor, span_notice("违约的污名已被洗清。你欠[destination.name]的债务已全部偿还。"))
 		loans -= L
 		qdel(L)
 	return amount
@@ -240,11 +240,11 @@
 	var/target_label = indenture_faction_label(target)
 	var/msg
 	if(istype(source, /datum/fund/church))
-		msg = "The Church has called its loan to [target_label] and finds the coffers wanting. Astrata's generosity has been squandered. [seized]m forfeit, [still_owed]m unsettled."
+		msg = "教会要求[target_label]偿还贷款，却发现其金库空虚。阿斯特拉塔的慷慨被挥霍殆尽。已没收[seized]m，尚欠[still_owed]m。"
 	else if(istype(source, /datum/fund/merchant))
-		msg = "The Merchant Guild has called its loan to [target_label] and finds the coffers wanting. The Burghers are outraged. There is no wealth without trust, and no realm without wealth. [seized]m forfeit, [still_owed]m unsettled."
+		msg = "商人公会向[target_label]追讨贷款，却发现金库空虚。市民愤怒不已。没有信任便没有财富，没有财富便没有王国。已没收[seized]m，仍欠[still_owed]m。"
 	else if(istype(source, /datum/fund/bathhouse))
-		msg = "The Bathhouse has called its loan to [target_label] and finds the coffers wanting. Her generosity abused! Her love disgraced! To lend from the bathhouse is one shame, to not pay back, a greater one. [seized]m forfeit, [still_owed]m unsettled."
+		msg = "澡堂向[target_label]追讨贷款，却发现金库空虚。祂的慷慨遭到滥用！祂的爱受到羞辱！向澡堂借钱已是耻辱，不还钱更是耻辱。已没收[seized]m，仍欠[still_owed]m。"
 	else
-		msg = "The Stewardry has called its loan to [target_label] and finds the coffers wanting. The Crown is owed its due, and shall make known its prerogative. [seized]m forfeit, [still_owed]m unsettled."
+		msg = "总管府向[target_label]追讨贷款，却发现金库空虚。王室应得的款项必须归还，王室将昭示其权威。已没收[seized]m，仍欠[still_owed]m。"
 	priority_announce(msg, "Indenture Defaulted", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)

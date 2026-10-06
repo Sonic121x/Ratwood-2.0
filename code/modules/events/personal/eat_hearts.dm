@@ -51,10 +51,10 @@
 	var/obj/effect/proc_holder/spell/invoked/extract_heart/heart_spell = new()
 	chosen_one.mind.AddSpell(heart_spell)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_biginfo("Graggar hungers! [new_objective.explanation_text]"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_biginfo("格拉加尔饥渴难耐！[new_objective.explanation_text]"))
 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
 
-	to_chat(chosen_one, span_notice("Graggar grants you a power to extract hearts from the dead!"))
+	to_chat(chosen_one, span_notice("格拉加尔赐予你从死者体内挖取心脏的力量！"))
 
 	chosen_one.mind.announce_personal_objectives()

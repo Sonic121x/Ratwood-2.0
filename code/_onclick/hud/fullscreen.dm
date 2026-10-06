@@ -173,7 +173,7 @@
 /atom/movable/screen/fullscreen/crit/zeth
 	icon = 'icons/mob/z.dmi'
 	icon_state = "zeth"
-	name = "NECRA"
+	name = "内克拉"
 	layer = CRIT_LAYER
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 1
@@ -185,7 +185,7 @@
 	var/mob/living/L = usr
 	if(L.stat == DEAD)
 		return
-	if(alert("Are you done living?", "", "Yes", "No") == "No")
+	if(alert("你已不想再活下去了吗？", "", "Yes", "No") == "No")
 		return
 	L.succumb(reaper = TRUE)
 

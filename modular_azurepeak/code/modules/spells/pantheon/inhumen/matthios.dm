@@ -409,7 +409,7 @@
 	// Find the component to show the live debt count
 	var/datum/component/debt_collector/DC = user.GetComponent(/datum/component/debt_collector)
 	if(DC)
-		inspec += "<br><span class='boldwarning'>当前债务：[DC.debt_remaining]玛蒙。</span>"
+		inspec += "<br><span class='boldwarning'>当前债务：[DC.debt_remaining]玛门。</span>"
 
 	// Stat penalties logic from the base proc
 	for(var/S in attached_effect?.effectedstats)

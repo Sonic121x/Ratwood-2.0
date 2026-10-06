@@ -10,7 +10,7 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "你是苏丹军中最富经验的战士，统领耶尼切里维持秩序，处理宫廷无暇顾及的各种威胁与罪行。 \
-				照看好你的部下，填补铁甲骑兵留下的空缺。听从执法官和苏丹的命令。"
+				照看好你的部下，填补铁甲骑士留下的空缺。听从执法官和苏丹的命令。"
 	display_order = JDO_SERGEANT
 	whitelist_req = TRUE
 	round_contrib_points = 3
@@ -54,7 +54,7 @@
 /datum/advclass/janissarysergeant/janissarysergeant
 	name = "军士长"
 	tutorial = "你是苏丹军中最富经验的战士，统领耶尼切里维持秩序，处理宫廷无暇顾及的各种威胁与罪行。 \
-				照看好你的部下，填补铁甲骑兵留下的空缺。听从执法官和苏丹的命令。"
+				照看好你的部下，填补铁甲骑士留下的空缺。听从执法官和苏丹的命令。"
 	outfit = /datum/outfit/job/roguetown/janissarysergeant/janissarysergeant
 
 	category_tags = list(CTAG_JANISSARYSERGEANT)

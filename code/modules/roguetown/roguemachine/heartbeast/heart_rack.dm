@@ -64,7 +64,7 @@
 				break
 
 		if(!slot_number)
-			to_chat(user, span_warning("架子上没有可用的[canister_type]槽位了。"))
+			to_chat(user, span_warning("架子上没有可用的[canister_type == "archetype" ? "原型" : canister_type == "trait" ? "特性" : canister_type == "quirk" ? "怪癖" : canister_type]槽位了。"))
 			return TRUE
 
 		// Insert the canister
@@ -131,9 +131,9 @@
 			if(!has_canisters)
 				. += span_notice("其中装有：")
 				has_canisters = TRUE
-			. += span_notice("- [slot_types[i]]槽位中放着[canister.name]")
+			. += span_notice("- [slot_types[i] == "archetype" ? "原型" : slot_types[i] == "trait" ? "特性" : slot_types[i] == "quirk" ? "怪癖" : slot_types[i]]槽位中放着[canister.name]")
 		else
-			. += span_notice("- [slot_types[i]]槽位为空")
+			. += span_notice("- [slot_types[i] == "archetype" ? "原型" : slot_types[i] == "trait" ? "特性" : slot_types[i] == "quirk" ? "怪癖" : slot_types[i]]槽位为空")
 
 	if(!has_canisters)
 		. += span_notice("所有槽位都是空的。")

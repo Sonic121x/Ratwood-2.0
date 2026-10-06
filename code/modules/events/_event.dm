@@ -396,14 +396,14 @@ GLOBAL_LIST_INIT(badomens, list())
 	var/used
 	switch(eventreason)
 		if(OMEN_ROUNDSTART)
-			used = "Zizo."
+			used = "齐佐。"
 		if(OMEN_NOPRIEST)
-			used = "The Bishop has perished! The Ten are weakened..."
+			used = "主教已死！十神的力量削弱了……"
 		if(OMEN_SKELETONSIEGE)
-			used = "Unwelcome visitors!"
+			used = "不速之客！"
 		if(OMEN_NOLORD)
-			used = "The Duke is dead! We need a new ruler."
+			used = "公爵已死！我们需要新的统治者。"
 		if(OMEN_SUNSTEAL)
-			used = "The Sun, she is wounded!"
+			used = "太阳，祂受伤了！"
 	if(eventreason && used)
 		priority_announce(used, "Bad Omen", 'sound/misc/evilevent.ogg')
