@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/goblin
-	name = "goblin"
+	name = "哥布林"
 
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	icon_state = "goblin"
@@ -33,7 +33,7 @@
 	attack_speed = 2
 
 /mob/living/carbon/human/species/goblin/hell
-	name = "hell goblin"
+	name = "地狱哥布林"
 	race = /datum/species/goblin/hell
 
 /mob/living/carbon/human/species/goblin/npc/hell
@@ -49,10 +49,10 @@
 
 /datum/species/goblin/hell/spec_death(gibbed, mob/living/carbon/human/H)
 	new /obj/item/alch/infernaldust(get_turf(H))
-	H.visible_message("<span class='blue'>Infernal dust falls from [H]!</span>")
+	H.visible_message("<span class='blue'>地狱尘从[H]身上落下！</span>")
 
 /mob/living/carbon/human/species/goblin/cave
-	name = "cave goblin"
+	name = "洞穴哥布林"
 	race = /datum/species/goblin/cave
 
 /mob/living/carbon/human/species/goblin/npc/cave
@@ -66,7 +66,7 @@
 	raceicon = "goblin_cave"
 
 /mob/living/carbon/human/species/goblin/sea
-	name = "sea goblin"
+	name = "海洋哥布林"
 	race = /datum/species/goblin/sea
 /mob/living/carbon/human/species/goblin/npc/sea
 	race = /datum/species/goblin/sea
@@ -77,7 +77,7 @@
 	id = "goblin_sea"
 
 /mob/living/carbon/human/species/goblin/moon
-	name = "moon goblin"
+	name = "月辉哥布林"
 	race = /datum/species/goblin/moon
 /mob/living/carbon/human/species/goblin/npc/moon
 	race = /datum/species/goblin/moon
@@ -89,7 +89,7 @@
 
 /datum/species/goblin/moon/spec_death(gibbed, mob/living/carbon/human/H)
 	new /obj/item/reagent_containers/powder/moondust_purest(get_turf(H))
-	H.visible_message("<span class='blue'>Moondust falls from [H]!</span>")
+	H.visible_message("<span class='blue'>月尘从[H]身上落下！</span>")
 //	qdel(H)
 
 /obj/item/bodypart/chest/goblin
@@ -237,8 +237,8 @@
 		QDEL_NULL(src.charflaw)
 	update_body()
 	faction = list("orcs")
-	name = "goblin"
-	real_name = "goblin"
+	name = "哥布林"
+	real_name = "哥布林"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
@@ -373,7 +373,7 @@
 //////////////////   INVADER ZIM	//////////////////
 
 /obj/structure/gob_portal
-	name = "Gob Portal"
+	name = "哥布林传送门"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shitportal"
 	max_integrity = 200
@@ -399,7 +399,7 @@
 	if(!in_range(src, user))
 		return
 	if(gobs >= (maxgobs+1))
-		to_chat(user, "<span class='danger'>Too many Gobs.</span>")
+		to_chat(user, "<span class='danger'>哥布林太多了。</span>")
 		return
 	gobs++
 	var/mob/living/carbon/human/species/goblin/npc/N = new (get_turf(src))
@@ -443,21 +443,21 @@
 	QDEL_NULL(soundloop)
 	. = ..()
 GLOBAL_LIST_INIT(large_goblin_aggro, list(
-	"ME BIGGEST GOBLIN!",
-	"CRUSH TINY HUMAN!",
-	"YOU SMALL! ME BIG!",
-	"GOBLIN KING SEND ME!",
-	"HAHA! YOU SCARED!",
-	"ME SMASH!",
-	"BIG GOBLIN EAT YOU!",
-	"NO RUN! COME BACK!",
-	"ME NOT LIKE OTHER GOBLIN! ME BETTER!",
-	"WHY YOU HIT ME?! NOW ME HIT YOU HARDER!",
+	"俺是最大哥布林！",
+	"碾碎小人类！",
+	"你小！俺大！",
+	"哥布林王派俺来！",
+	"哈哈！你怕啦！",
+	"俺砸！",
+	"大哥布林吃了你！",
+	"别跑！回来！",
+	"俺不像别的哥布林！俺更强！",
+	"你为啥打俺？！现在俺打你更狠！",
 ))
 
 /mob/living/carbon/human/species/goblin/npc/large
 	threat_point = THREAT_ELITE
-	name = "unusually large goblin"
+	name = "硕大的哥布林"
 	gob_outfit = /datum/outfit/job/roguetown/npc/mini_boss/large_goblin
 	dodgetime = 20
 	d_intent = INTENT_PARRY

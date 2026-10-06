@@ -190,7 +190,7 @@
 	var/datum/antagonist/zombie/zombie_antag = zombie_check()	//Only grant the antag datum once the infection roll actually succeeds.
 	if(!zombie_antag)
 		return
-	to_chat(src, span_danger("I feel horrible... REALLY horrible..."))
+	to_chat(src, span_danger("我感觉糟透了……真的糟透了……"))
 	mob_timers["puke"] = world.time
 	vomit(1, blood = TRUE, stun = FALSE)
 	src.infected = TRUE //Is this in use? Just in case it is
@@ -202,7 +202,7 @@
 	if(!zombie_antag || zombie_antag.has_turned)
 		return FALSE
 	fullscreen_redflash("redflash3")
-	to_chat(src, span_danger("It hurts... Is this really the end for me?"))
+	to_chat(src, span_danger("好痛……难道我真的要就此结束了吗？"))
 	emote("scream") // heres your warning to others bro
 	Knockdown(1)
 	drop_all_held_items()
