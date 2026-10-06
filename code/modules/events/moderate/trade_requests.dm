@@ -47,7 +47,7 @@
 
 
 /obj/item/paper/scroll/trade_requests
-	name = "trade requests"
+	name = "贸易委托"
 	icon_state = "contractsigned"
 
 	var/list/requests
@@ -65,26 +65,26 @@
 		name = initial(name)
 	else
 		icon_state = "scroll_closed"
-		name = "scroll"
+		name = "卷轴"
 
 
 /obj/item/paper/scroll/trade_requests/proc/rebuild_info()
 	info = null
 	info += "<div style='vertical-align:top'>"
-	info += "<h2 style='color:#06080F;font-family:\"Segoe Script\"'>Trade Request</h2>"
+	info += "<h2 style='color:#06080F;font-family:\"Segoe Script\"'>贸易委托</h2>"
 	info += "<hr/>"
 
 	if(LAZYLEN(requests))
 		info += "<ul>"
 		for(var/datum/trade_request/request in requests)
-			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[request.input_name]x[request.input_amount] for [request.output_name]x[request.output_amount]</li><br/>"
-			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>Limit of [request.start_total_trade] Trades.</li><br/>"
+			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[request.input_name]x[request.input_amount]兑换[request.output_name]x[request.output_amount]</li><br/>"
+			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>限交易[request.start_total_trade]次。</li><br/>"
 			info += "<br>"
 		info += "</ul>"
 
 	info += "<br/></font>"
 
-	info += "<font size=\"2\" face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[writers_name] Shipwright of [pick("Heartfelt", "Zybantine", "Grenzelhoft", "Kingsfield")]</font>"
+	info += "<font size=\"2\" face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[pick("赤心", "兹班图", "格伦泽尔霍夫特", "王田")]船匠[writers_name]</font>"
 
 	info += "</div>"
 

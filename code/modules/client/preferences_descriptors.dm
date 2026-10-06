@@ -56,7 +56,7 @@
 			for(var/desc_type in choice.descriptors)
 				var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
 				picklist[descriptor.name] = desc_type
-			var/picked_descriptor_name = input(user, "Describe my [LOWER_TEXT(choice.name)]", "Describe myself") as null|anything in picklist
+			var/picked_descriptor_name = input(user, "描述我的[LOWER_TEXT(choice.name)]", "描述自己") as null|anything in picklist
 
 			if(!picked_descriptor_name)
 				return
@@ -78,15 +78,15 @@
 			var/list/input_list = is_article_only ? article_input : full_input
 			var/current_prefix_text = translation["[custom_entry.prefix_type]"]
 			if(!current_prefix_text)
-				current_prefix_text = is_article_only ? "a" : "Has a"
-			var/new_prefix_text = input(user, "Choose the prefix", "Describe myself", current_prefix_text) as null|anything in input_list
+				current_prefix_text = is_article_only ? "一个（a）" : "有一个（a）"
+			var/new_prefix_text = input(user, "选择前缀", "描述自己", current_prefix_text) as null|anything in input_list
 			if(!new_prefix_text)
 				return
 			custom_entry.prefix_type = input_list[new_prefix_text]
 		if("custom_descriptor_content")
 			var/index = text2num(href_list["index"])
 			var/datum/custom_descriptor_entry/custom_entry = custom_descriptors[index]
-			var/new_content = input(user, "Describe the feature", "Describe myself") as text|null
+			var/new_content = input(user, "描述这一特征", "描述自己") as text|null
 			if(!new_content)
 				return
 			new_content = STRIP_HTML_SIMPLE(LOWER_TEXT(new_content), CUSTOM_DESCRIPTOR_TEXT_LENGTH)
@@ -110,8 +110,8 @@
 		if(custom_data)
 			dat += custom_data
 
-	dat += "<br><br><center>Descriptors can vary based on gender<br>Some don't appear if you don't match a requirement<center>"
-	dat += "<br><center><a href='?_src_=prefs;preference=preview_descriptors;task=change_descriptor'><b>Preview All Descriptors</b></a></center>"
+	dat += "<br><br><center>描述词可能因性别而异<br>不满足条件时，部分描述不会显示<center>"
+	dat += "<br><center><a href='?_src_=prefs;preference=preview_descriptors;task=change_descriptor'><b>预览所有描述</b></a></center>"
 	return dat
 
 /datum/preferences/proc/print_custom_descriptor_customization(index)
@@ -138,7 +138,7 @@
 /datum/preferences/proc/show_descriptors_ui(mob/user)
 	var/list/dat = list()
 	dat += print_descriptors_page()
-	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>Describe myself</div>", 350, 510)
+	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>描述自己</div>", 350, 510)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 
@@ -152,10 +152,10 @@
 
 /datum/preferences/proc/preview_descriptors(mob/user)
 	if(!COOLDOWN_FINISHED(src, descriptor_preview))
-		to_chat(user, span_warning("You must wait before previewing descriptors again."))
+		to_chat(user, span_warning("请稍等片刻再预览描述。"))
 		return
 	COOLDOWN_START(src, descriptor_preview, 5 SECONDS)
-	to_chat(user, span_notice("-- Preview of [real_name]'s descriptors --"))
+	to_chat(user, span_notice("-- [real_name]的描述预览 --"))
 
 	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 	copy_to(mannequin, FALSE, TRUE, TRUE)
@@ -163,13 +163,13 @@
 
 	// Calculate speaking name
 	to_chat(user, \
-		"[SPAN_TOOLTIP("This will be displayed when you speak when your face is hidden or out of view range.", span_notice("Anonymous Speaking Name"))]: \
+		"[SPAN_TOOLTIP("当你的面容被遮挡或超出视野时，说话会显示此名称。", span_notice("匿名说话名称"))]: \
 		<font color='[voice_color]'>[get_speaking_name_preview(mannequin)]</font>")
 
 	// Calculate visible name
 	var/list/descriptors = mannequin.get_mob_descriptors(FALSE, null)
 	to_chat(user, \
-		"[SPAN_TOOLTIP("This will be displayed when you emote or are examined when your face is hidden.", span_notice("Anonymous Visible Name"))]: \
+		"[SPAN_TOOLTIP("当你的面容被遮挡时，表情动作和查看信息会显示此名称。", span_notice("匿名外观名称"))]: \
 		<font color='[voice_color]'>[get_visible_name_preview(mannequin, descriptors.Copy())]</font>")
 
 	// Calculate descriptor blurb
@@ -177,7 +177,7 @@
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 
 	// Output blurb
-	to_chat(user, span_notice("<b>Details</b>"))
+	to_chat(user, span_notice("<b>详细描述</b>"))
 	for(var/line in desc_lines)
 		to_chat(user, span_info(line))
 
@@ -185,15 +185,15 @@
 /datum/preferences/proc/get_speaking_name_preview(mob/living/carbon/human/mannequin)
 	var/datum/mob_descriptor/voice/voice_descriptor = mannequin.get_descriptor_type(/datum/mob_descriptor/voice)
 	if(!voice_descriptor)
-		return "Unknown Person"
-	var/voice_gender = "Person"
+		return "不明人士"
+	var/voice_gender = "人"
 	switch(voice_type)
 		if(VOICE_TYPE_FEM)
-			voice_gender = "Woman"
+			voice_gender = "女人"
 		if(VOICE_TYPE_MASC)
-			voice_gender = "Man"
+			voice_gender = "男人"
 		if(VOICE_TYPE_ANDR)
-			voice_gender = "Person"
+			voice_gender = "人"
 	return voice_descriptor.get_speaking_name(voice_gender, src)
 
 // This should mirror /mob/living/carbon/human/get_visible_name()

@@ -105,7 +105,7 @@
 
 /datum/vine_mutation/toxicity/on_cross(obj/structure/vine/holder, mob/living/crosser)
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
-		to_chat(crosser, "<span class='alert'>I accidentally touch the vine and feel a strange sensation.</span>")
+		to_chat(crosser, "<span class='alert'>我不小心碰到藤蔓，感到一阵异样。</span>")
 		crosser.adjustToxLoss(5)
 
 /datum/vine_mutation/toxicity/on_eat(obj/structure/vine/holder, mob/living/eater)
@@ -183,13 +183,13 @@
 	if(prob(severity) && istype(crosser) && !isvineimmune(holder))
 		var/mob/living/M = crosser
 		M.adjustBruteLoss(5)
-		to_chat(M, "<span class='alert'>I cut myself on the thorny vines.</span>")
+		to_chat(M, "<span class='alert'>带刺的藤蔓划伤了我。</span>")
 
 /datum/vine_mutation/thorns/on_hit(obj/structure/vine/holder, mob/living/hitter, obj/item/I, expected_damage)
 	if(prob(severity) && istype(hitter) && !isvineimmune(holder))
 		var/mob/living/M = hitter
 		M.adjustBruteLoss(5)
-		to_chat(M, "<span class='alert'>I cut myself on the thorny vines.</span>")
+		to_chat(M, "<span class='alert'>带刺的藤蔓划伤了我。</span>")
 	. =	expected_damage
 
 /datum/vine_mutation/woodening
@@ -211,7 +211,7 @@
 
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/vine
-	name = "weepvine"
+	name = "泣藤"
 	desc = ""
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "Light1"
@@ -312,7 +312,7 @@
 			M.mobility_flags &= ~MOBILITY_MOVE
 			addtimer(CALLBACK(src, PROC_REF(release_vine_stuck), M), stuck_time)
 			M.adjustBruteLoss(5)
-			to_chat(M, "<span class='warning'>I nick myself on the thorny vines.</span>")
+			to_chat(M, "<span class='warning'>带刺的藤蔓擦伤了我。</span>")
 			return
 
 		if(isvineimmune(crosser))
@@ -327,7 +327,7 @@
 
 		if(prob(23) || (M.buckled) || (M.m_intent == MOVE_INTENT_RUN)) // buckled mobs & runners avoid slowdown due to how buckling works, but gets guaranteed damage instead
 			M.adjustBruteLoss(5)
-			to_chat(M, "<span class='warning'>I nick myself on the thorny vines.</span>")
+			to_chat(M, "<span class='warning'>带刺的藤蔓擦伤了我。</span>")
 
 
 
@@ -354,12 +354,12 @@
 	if(!isvineimmune(crosser))
 		if(HAS_TRAIT(crosser, TRAIT_CURSE_DENDOR))
 			if(crosser.apply_damage(50, BRUTE))
-				to_chat(crosser, span_alert("The thorny vines are whipping me!"))
+				to_chat(crosser, span_alert("带刺的藤蔓正在抽打我！"))
 				crosser.emote("scream")
 				return
 		else
 			if(crosser.apply_damage(10, BRUTE))
-				to_chat(crosser, span_alert("I cut myself on the thorny vines."))
+				to_chat(crosser, span_alert("带刺的藤蔓划伤了我。"))
 				return
 /datum/vine_mutation/proc/can_cross(obj/structure/vine/holder, mob/living/crosser)
 	return TRUE
@@ -367,12 +367,12 @@
 /datum/vine_mutation/earthy/can_cross(obj/structure/vine/holder, mob/living/crosser)
 	if(HAS_TRAIT(crosser, TRAIT_CURSE_DENDOR))
 		if(prob(60) && !isvineimmune(crosser))
-			to_chat(crosser, span_warning("The thorny vines are grabbing me!"))
+			to_chat(crosser, span_warning("带刺的藤蔓正在缠住我！"))
 			crosser.emote("scream")
 			return FALSE
 	else
 		if(prob(30) && !isvineimmune(crosser))
-			to_chat(crosser, span_warning("I feel stuck on the vines."))
+			to_chat(crosser, span_warning("我感觉被藤蔓困住了。"))
 			return FALSE
 		return TRUE
 
@@ -539,7 +539,7 @@
 	for(var/datum/vine_mutation/SM in mutations)
 		SM.on_buckle(src, V)
 	if((V.stat != DEAD) && (V.buckled != src)) //not dead or captured
-		to_chat(V, "<span class='danger'>The vines [pick("wind", "tangle", "tighten")] around me!</span>")
+		to_chat(V, "<span class='danger'>藤蔓在我身上[pick("盘绕", "缠绕", "收紧")]！</span>")
 		buckle_mob(V, 1)
 	V.adjustOxyLoss(10)
 
