@@ -30,7 +30,7 @@ export const Anvil = (props) => {
 
   if (!data.hingot_type) {
     return (
-      <Window width={400} height={400}>
+      <Window width={400} height={400} display_title="铁砧">
         <Window.Content>
           <LonelyAnvil />
         </Window.Content>
@@ -39,7 +39,7 @@ export const Anvil = (props) => {
   }
 
   return (
-    <Window width={600} height={400}>
+    <Window width={600} height={400} display_title="铁砧">
       <Window.Content>
         <RecipeDisplay />
       </Window.Content>
@@ -52,7 +52,7 @@ export const LonelyAnvil = (props) => {
     <Stack align="center" justify="center" fill>
       <Stack.Item>
         <Stack vertical align="center" justify="center">
-          <Stack.Item fontSize={2}>This Anvil Sits Idle.</Stack.Item>
+          <Stack.Item fontSize={2}>这座铁砧正闲置着。</Stack.Item>
           <Stack.Item>
             <DmIcon
               icon="icons/roguetown/misc/forge.dmi"
@@ -116,7 +116,7 @@ export const RecipeDisplay = (props) => {
               <Box className={recipe.icon} mr={2} inline />
             </Stack.Item>
             <Stack.Item>
-              {recipe.category} - {recipe.name}
+              {({ Weapons: '武器', Engineering: '工程', Tools: '工具', Ammo: '弹药', Valuables: '贵重物品' } as Record<string, string>)[recipe.category] ?? recipe.category} - {recipe.name}
             </Stack.Item>
           </Stack>
         </Button>

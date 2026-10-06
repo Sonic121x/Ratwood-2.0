@@ -264,7 +264,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	name = "格伦泽尔霍夫长摆衬衣"
+	name = "格伦泽尔霍夫特长摆衬衣"
 	desc = "为额外舒适与防护而制的加垫衬衣，并饰以鲜艳色彩。"
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	icon_state = "grenzelshirt"

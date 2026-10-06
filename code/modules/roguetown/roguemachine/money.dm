@@ -91,7 +91,7 @@ GLOBAL_VAR(moneymaster)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	var/inputt = alert(user,"Gold, Silver, or Bronze?",,"BRONZE","SILVER","GOLD")
 	if(inputt && Adjacent(user))
-		to_chat(user, span_info("I pull on the [inputt] tongue."))
+		to_chat(user, span_info("我拉动了[inputt == "GOLD" ? "金色" : (inputt == "SILVER" ? "银色" : "青铜色")]的舌头。"))
 		if(inputt == "BRONZE" && budget >= 50)
 			budget2change(budget, user, inputt)
 			budget = 0

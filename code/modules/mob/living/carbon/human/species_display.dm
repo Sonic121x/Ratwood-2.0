@@ -213,7 +213,7 @@
 		"Drema" = "德雷玛", "Chir" = "奇尔", "Vesyl" = "维希尔", "Krosec" = "克罗塞克", "Asza" = "阿莎", "Krizzsha" = "克里兹莎",
 		"Tosiz" = "托西兹", "Velothel" = "维洛瑟尔", "Ashol" = "阿索尔", "Pyris" = "皮里斯",
 		"Archon" = "神使", "Deva" = "天使", "Planetar" = "行星天使", "Solar" = "炽天使", "Empyrea" = "至高天", "Cultor" = "耕耘者",
-		"Spiritus" = "圣灵", "Gaeia" = "盖娅", "Celestial" = "天界", "Olympia" = "奥林匹亚", "Necral" = "冥界",
+		"Spiritus" = "圣灵", "Gaeia" = "盖娅", "Celestial" = "天界", "Olympia" = "奥林匹亚", "Necral" = "冥界", "Dendorite Construct" = "登多尔构装体", "Pestran Construct" = "佩斯特拉构装体", "astratan crown Crest" = "阿斯特拉塔王冠饰纹",
 		"Vakran" = "瓦克兰", "Lanarain" = "拉纳莱恩", "Frostfell" = "霜原", "Varghelm" = "瓦格海姆", "Dawnbreak" = "破晓", "Bloodmoon" = "血月",
 		"Felsaad" = "费尔萨德", "Hizmut" = "希兹穆特", "Langqan" = "朗钦", "Hun'sek" = "洪塞克",
 		"Orange" = "橙色", "Light grey" = "浅灰色", "Dark grey" = "深灰色", "Light orange" = "浅橙色", "Light brown" = "浅棕色", "White brown" = "棕白色", "Dark brown" = "深棕色", "Black" = "黑色",

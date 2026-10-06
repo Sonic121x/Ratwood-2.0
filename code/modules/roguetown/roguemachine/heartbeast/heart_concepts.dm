@@ -11,7 +11,7 @@
 		3 = list("受苦有意义吗？", "痛苦会教导人吗？", "痛苦如何改变我们？"),
 		4 = list("剧痛会揭示什么真相？", "成长一定需要受苦吗？", "痛苦如何塑造意识？")
 	)
-	answer_keywords = list("hurt", "pain", "suffering", "agony", "ache", "torment", "anguish")
+	answer_keywords = list("受伤", "疼痛", "痛苦", "剧痛", "酸痛", "折磨", "煎熬")
 
 /datum/flesh_concept/blood
 	name = "血液"
@@ -21,7 +21,7 @@
 		3 = list("血液会承载记忆吗？", "血液神圣吗？", "血管里流淌的是什么？"),
 		4 = list("血液中流淌着怎样的祖辈知识？", "血液是血脉的长河吗？", "血液会记住心智遗忘的东西吗？")
 	)
-	answer_keywords = list("blood", "bleed", "veins", "life", "red", "flow", "sacrifice")
+	answer_keywords = list("血液", "流血", "血管", "生命", "红色", "流动", "牺牲")
 
 /datum/flesh_concept/fear
 	name = "恐惧"
@@ -31,7 +31,7 @@
 		3 = list("恐惧是在保护我们，还是囚禁我们？", "恐惧之下隐藏着什么？", "恐惧是一种警告吗？"),
 		4 = list("畏惧会揭开什么真相？", "恐惧是求生的阴影吗？", "惊骇会揭露隐藏的真实吗？")
 	)
-	answer_keywords = list("fear", "scared", "afraid", "terror", "dread", "panic", "anxiety")
+	answer_keywords = list("恐惧", "惊吓", "害怕", "惊恐", "畏惧", "恐慌", "焦虑")
 
 /datum/flesh_concept/hunger
 	name = "饥饿"
@@ -41,7 +41,7 @@
 		3 = list("饥饿不只是身体上的感觉吗？", "我们真正渴求的是什么？", "饥饿会驱动创造吗？"),
 		4 = list("饥饿象征着怎样的存在空洞？", "对血肉的渴求是存在的引擎吗？", "究竟是什么样的饥饿在驱使我们？")
 	)
-	answer_keywords = list("hunger", "food", "eat", "crave", "starve", "appetite", "desire")
+	answer_keywords = list("饥饿", "食物", "吃", "渴求", "挨饿", "食欲", "欲望")
 
 /datum/flesh_concept/love
 	name = "爱"
@@ -51,7 +51,7 @@
 		3 = list("爱是一种联结之力吗？", "爱会带来改变吗？", "爱要求怎样的牺牲？"),
 		4 = list("我们真的需要爱，还是那只是内心的自欺？", "爱是联结灵魂的织线吗？", "爱究竟是一种怎样的神圣疯狂？")
 	)
-	answer_keywords = list("love", "care", "affection", "devotion", "passion", "connection", "bond")
+	answer_keywords = list("爱", "关心", "温情", "奉献", "激情", "联结", "纽带")
 
 /datum/flesh_concept/death
 	name = "死亡"
@@ -61,7 +61,7 @@
 		3 = list("死亡是终结，还是转化？", "帷幕后等待着什么？", "死亡会赋予生命意义吗？"),
 		4 = list("宏大寂静中藏着怎样的奥秘？", "死亡是最终的老师吗？", "崩解之后迎来的是什么样的重生？")
 	)
-	answer_keywords = list("death", "die", "dead", "end", "afterlife", "mortality", "rebirth")
+	answer_keywords = list("死亡", "死去", "亡者", "终结", "来世", "必死", "重生")
 
 /datum/flesh_concept/time
 	name = "时间"
@@ -71,7 +71,7 @@
 		3 = list("时间会治愈，还是侵蚀？", "过去是否仍活在我们体内？", "片刻究竟有多重？"),
 		4 = list("什么样的永恒当下容纳了一切时间？", "记忆是时间的锚点吗？", "在每个瞬间的缝隙之间，有什么在起舞？")
 	)
-	answer_keywords = list("time", "past", "future", "now", "moment", "memory", "eternity")
+	answer_keywords = list("时间", "过去", "未来", "现在", "瞬间", "记忆", "永恒")
 
 /datum/flesh_concept/dreams
 	name = "梦境"
@@ -81,7 +81,7 @@
 		3 = list("梦会显露隐藏的真相吗？", "闭上眼后，那里存在着怎样的世界？", "在梦里，我们会变得不一样吗？"),
 		4 = list("沉睡的心智会游荡到什么样的国度？", "梦会连接集体无意识吗？", "梦境里沉睡着怎样的预言？")
 	)
-	answer_keywords = list("dream", "sleep", "vision", "nightmare", "unconscious", "fantasy", "prophecy")
+	answer_keywords = list("梦境", "睡眠", "幻象", "噩梦", "潜意识", "幻想", "预言")
 
 /datum/flesh_concept/memory
 	name = "记忆"
@@ -91,7 +91,7 @@
 		3 = list("记忆会塑造现实吗？", "有什么被遗忘了，却仍能被感受到？", "我们就是自己的记忆吗？"),
 		4 = list("祖辈记忆中残留着怎样的回声？", "记忆存在于时间之外吗？", "被遗忘之物握着怎样的真相？")
 	)
-	answer_keywords = list("memory", "remember", "forget", "past", "recall", "nostalgia", "echo")
+	answer_keywords = list("记忆", "记得", "遗忘", "过去", "回想", "怀旧", "回声")
 
 /datum/flesh_concept/truth
 	name = "真相"
@@ -101,7 +101,7 @@
 		3 = list("真相会有很多个吗？", "事实背后藏着怎样的谎言？", "真相会改变吗？"),
 		4 = list("表象真相之下，隐藏着怎样的绝对现实？", "真相是一种主观体验吗？", "当一切谎言被剥离后，剩下的是什么？")
 	)
-	answer_keywords = list("truth", "real", "true", "fact", "honest", "reality", "authentic")
+	answer_keywords = list("真相", "真实", "确实", "事实", "诚实", "现实", "真切")
 
 /datum/flesh_concept/lies
 	name = "谎言"
@@ -111,7 +111,7 @@
 		3 = list("谎言会保护人，还是伤害人？", "欺骗里藏着怎样的真相？", "有些谎言是必要的吗？"),
 		4 = list("塑造现实的根本欺骗是什么？", "谎言会造就新的真相吗？", "虚妄帷幕之后藏着什么？")
 	)
-	answer_keywords = list("lie", "false", "deceive", "illusion", "trick", "untrue", "fiction")
+	answer_keywords = list("谎言", "虚假", "欺骗", "幻觉", "诡计", "不实", "虚构")
 
 /datum/flesh_concept/power
 	name = "力量"
@@ -121,7 +121,7 @@
 		3 = list("力量会腐化人，还是揭示人？", "真正的强大是什么？", "力量可以分享吗？"),
 		4 = list("宇宙中的哪些力量以权能的形式显现？", "力量意味着责任，还是自由？", "什么样的终极权威统御着存在？")
 	)
-	answer_keywords = list("power", "strong", "control", "authority", "dominance", "influence", "might")
+	answer_keywords = list("力量", "强大", "控制", "权威", "支配", "影响", "威力")
 
 /datum/flesh_concept/weakness
 	name = "软弱"
@@ -131,7 +131,7 @@
 		3 = list("脆弱本身也是力量吗？", "局限之中会长出什么？", "软弱会教会我们怜悯吗？"),
 		4 = list("脆弱中会浮现怎样深刻的真相？", "屈服有时也是胜利吗？", "接纳之中栖居着怎样的力量？")
 	)
-	answer_keywords = list("weak", "vulnerable", "fragile", "helpless", "limited", "frail", "dependent")
+	answer_keywords = list("软弱", "易受伤", "脆弱", "无助", "有限", "虚弱", "依赖")
 
 /datum/flesh_concept/creation
 	name = "创造"
@@ -141,7 +141,7 @@
 		3 = list("创造一定需要毁灭吗？", "是什么火花开启了创造？", "一切艺术都诞生于痛苦吗？"),
 		4 = list("驱动创造的神圣冲动是什么？", "宇宙会借造物者做梦吗？", "潜能的虚空里会诞生什么？")
 	)
-	answer_keywords = list("create", "make", "build", "form", "art", "invent", "generate")
+	answer_keywords = list("创造", "制作", "建造", "塑形", "艺术", "发明", "生成")
 
 /datum/flesh_concept/destruction
 	name = "毁灭"
@@ -151,7 +151,7 @@
 		3 = list("毁灭会为创造腾出空间吗？", "废墟中存在怎样的美？", "终结是必要的吗？"),
 		4 = list("怎样的宇宙循环需要崩解？", "毁灭会显露事物的本质形态吗？", "我们要重新开始，就必须先让一切终结吗？")
 	)
-	answer_keywords = list("destroy", "break", "ruin", "end", "demolish", "shatter", "obliterate")
+	answer_keywords = list("毁灭", "破坏", "毁坏", "终结", "拆毁", "粉碎", "抹除")
 
 /datum/flesh_concept/order
 	name = "秩序"
@@ -161,7 +161,7 @@
 		3 = list("秩序是在限制我们，还是保护我们？", "什么样的规律统御着现实？", "混沌是秩序的敌人吗？"),
 		4 = list("维系存在的宇宙结构是什么？", "秩序会从混沌中诞生吗？", "支配万物的神圣数学是什么？")
 	)
-	answer_keywords = list("order", "pattern", "system", "structure", "arrange", "organize", "method")
+	answer_keywords = list("秩序", "规律", "系统", "结构", "排列", "组织", "方法")
 
 /datum/flesh_concept/chaos
 	name = "混沌"
@@ -171,7 +171,7 @@
 		3 = list("混沌会创造自由吗？", "随机之中会浮现怎样的秩序？", "混沌是新奇的源头吗？"),
 		4 = list("无序中栖息着怎样的无限可能？", "混沌会孕育新的现实吗？", "法则之间的缝隙里，有什么在起舞？")
 	)
-	answer_keywords = list("chaos", "random", "disorder", "confusion", "unpredictable", "entropy", "anarchy")
+	answer_keywords = list("混沌", "随机", "无序", "混乱", "不可预测", "熵", "无政府")
 
 /datum/flesh_concept/beauty
 	name = "美"
@@ -181,7 +181,7 @@
 		3 = list("美是主观的，还是普遍的？", "究竟是什么让一件事物变得美丽？", "美一定需要不完美吗？"),
 		4 = list("以美显现的神圣和谐是什么？", "美会揭示真相吗？", "表象之美之下，存在着怎样的永恒形态？")
 	)
-	answer_keywords = list("beauty", "beautiful", "pretty", "lovely", "aesthetic", "harmony", "grace")
+	answer_keywords = list("美", "秀丽", "漂亮", "可爱", "雅致", "和谐", "优雅")
 
 /datum/flesh_concept/ugliness
 	name = "丑陋"
@@ -191,7 +191,7 @@
 		3 = list("丑陋也有属于自己的美吗？", "令人不适的形态里藏着什么真相？", "丑陋是必要的吗？"),
 		4 = list("以丑陋显现的深层现实是什么？", "恐怖之中也自有敬畏吗？", "哪些神圣真相戴着令人厌恶的面具？")
 	)
-	answer_keywords = list("ugly", "unpleasant", "grotesque", "hideous", "repulsive", "disfigured", "monstrous")
+	answer_keywords = list("丑陋", "不适", "怪诞", "可怖", "恶心", "毁容", "骇人")
 
 /datum/flesh_concept/sacrifice
 	name = "牺牲"
@@ -201,7 +201,7 @@
 		3 = list("牺牲会创造意义吗？", "怎样的转变需要献出代价？", "有所获得之前，一定要先失去吗？"),
 		4 = list("怎样的交换必然要求牺牲？", "付出会带来丰盛吗？", "支配奉献的神圣秩序是什么？")
 	)
-	answer_keywords = list("sacrifice", "offer", "give", "lose", "surrender", "offerings", "devotion")
+	answer_keywords = list("牺牲", "献出", "给予", "失去", "舍弃", "祭品", "奉献")
 
 /datum/flesh_concept/greed
 	name = "贪婪"
@@ -211,7 +211,7 @@
 		3 = list("贪婪会推动进步吗？", "怎样的空虚造就了欲求？", "不断累积其实也是一种贫乏吗？"),
 		4 = list("以贪婪显现的存在匮乏是什么？", "无尽欲望造就了有限的生灵吗？", "占有欲试图填补的是怎样的空洞？")
 	)
-	answer_keywords = list("greed", "want", "desire", "possess", "accumulate", "hoard", "covet")
+	answer_keywords = list("贪婪", "想要", "欲望", "占有", "积累", "囤积", "觊觎")
 
 /datum/flesh_concept/justice
 	name = "正义"
@@ -221,7 +221,7 @@
 		3 = list("正义是绝对的，还是相对的？", "复仇会维护正义吗？", "仁慈也能是正义的吗？"),
 		4 = list("以正义显现的平衡是什么？", "普世法则需要均衡吗？", "衡量行为的天平是什么？")
 	)
-	answer_keywords = list("justice", "fair", "right", "law", "balance", "equity", "retribution")
+	answer_keywords = list("正义", "公平", "正当", "法律", "平衡", "公正", "报应")
 
 /datum/flesh_concept/mercy
 	name = "仁慈"
@@ -231,7 +231,7 @@
 		3 = list("仁慈是力量，还是软弱？", "宽恕会带来怎样的治愈？", "仁慈会同时改变施予者与受领者吗？"),
 		4 = list("以仁慈显现的恩典是什么？", "怜悯会超越正义吗？", "流淌于存在中的善意是什么？")
 	)
-	answer_keywords = list("mercy", "forgive", "compassion", "kindness", "pity", "clemency", "grace")
+	answer_keywords = list("仁慈", "原谅", "慈悲", "善意", "怜悯", "宽恕", "恩典")
 
 /datum/flesh_concept/loneliness
 	name = "孤独"
@@ -241,7 +241,7 @@
 		3 = list("独处和孤独是一回事吗？", "什么样的连接能缓解隔绝感？", "孤独会揭示我们对他人的需求吗？"),
 		4 = list("怎样的存在分离造就了孤独？", "灵魂会渴望联结吗？", "在孤立中，我们会忆起怎样的神圣统一？")
 	)
-	answer_keywords = list("lonely", "alone", "isolated", "solitude", "abandoned", "empty", "separation")
+	answer_keywords = list("孤独", "独自", "隔绝", "独处", "遗弃", "空虚", "分离")
 
 /datum/flesh_concept/companionship
 	name = "陪伴"
@@ -251,7 +251,7 @@
 		3 = list("联结会定义自我吗？", "什么样的纽带会改变个体？", "成长一定需要陪伴吗？"),
 		4 = list("若世间再无活物，一个存在仍能获得陪伴吗？", "灵魂会认出彼此吗？", "众生之间存在着怎样的共鸣？")
 	)
-	answer_keywords = list("companion", "friend", "together", "bond", "connection", "relationship", "unity")
+	answer_keywords = list("陪伴", "朋友", "一起", "纽带", "联结", "关系", "团结")
 
 /datum/flesh_concept/hope
 	name = "希望"
@@ -261,7 +261,7 @@
 		3 = list("希望会塑造现实吗？", "黑暗中是什么支撑着希望？", "希望是一种选择，还是一种感受？"),
 		4 = list("以希望显现的潜能是什么？", "希望能瞥见未来的可能性吗？", "是什么样的承诺点燃了期待？")
 	)
-	answer_keywords = list("hope", "optimism", "expect", "faith", "belief", "anticipation", "possibility")
+	answer_keywords = list("希望", "乐观", "期望", "信仰", "信念", "期待", "可能")
 
 /datum/flesh_concept/despair
 	name = "绝望"
@@ -271,7 +271,7 @@
 		3 = list("绝望会揭示真相吗？", "无望之中会生出怎样的成长？", "绝望是一种必要的深度吗？"),
 		4 = list("以绝望显现的存在真相是什么？", "当你凝视深渊时，深渊也会回望吗？", "彻底放弃之中会诞生怎样的启示？")
 	)
-	answer_keywords = list("despair", "hopeless", "desperate", "defeat", "sorrow", "anguish", "misery")
+	answer_keywords = list("绝望", "无望", "走投无路", "失败", "悲伤", "煎熬", "苦难")
 
 /datum/flesh_concept/courage
 	name = "勇气"
@@ -281,7 +281,7 @@
 		3 = list("勇气一定需要恐惧衬托吗？", "什么样的行为才算勇敢？", "勇气是一种选择，还是一种特质？"),
 		4 = list("以勇气显现的力量是什么？", "英勇会超越自我保全吗？", "是什么战胜了恐惧？")
 	)
-	answer_keywords = list("courage", "brave", "fearless", "bold", "valor", "heroism", "fortitude")
+	answer_keywords = list("勇气", "勇敢", "无畏", "大胆", "英勇", "英雄", "坚毅")
 
 /datum/flesh_concept/cowardice
 	name = "怯懦"
@@ -291,7 +291,7 @@
 		3 = list("怯懦会保全性命吗？", "谨慎里藏着怎样的智慧？", "恐惧有时也是明智的吗？"),
 		4 = list("以怯懦显现的求生本能是什么？", "审慎会伪装成恐惧吗？", "是什么感觉驱使人后退？")
 	)
-	answer_keywords = list("coward", "fearful", "timid", "afraid", "hesitant", "retreat", "caution")
+	answer_keywords = list("怯懦", "恐惧", "胆怯", "害怕", "犹豫", "退缩", "谨慎")
 
 /datum/flesh_concept/wisdom
 	name = "智慧"
@@ -301,7 +301,7 @@
 		3 = list("智慧来自经验吗？", "智慧能被传授吗？", "智慧和知识不一样吗？"),
 		4 = list("以智慧显现的领悟是什么？", "真理会在岁月中回响吗？", "贤者能看见怎样的永恒规律？")
 	)
-	answer_keywords = list("wisdom", "wise", "knowledge", "understanding", "insight", "enlightenment", "sagacity")
+	answer_keywords = list("智慧", "明智", "知识", "理解", "洞察", "启迪", "睿智")
 
 /datum/flesh_concept/ignorance
 	name = "无知"
@@ -311,7 +311,7 @@
 		3 = list("无知是在保护我们，还是限制我们？", "不知情会带来怎样的自由？", "有些无知真的是幸福吗？"),
 		4 = list("以无知显现的必要帷幕是什么？", "不知会为惊奇留出空间吗？", "哪些奥秘必须建立在不知之上？")
 	)
-	answer_keywords = list("ignorance", "ignore", "unknowing", "unaware", "naive", "innocent", "uninformed")
+	answer_keywords = list("无知", "忽视", "不知", "未察觉", "天真", "单纯", "缺乏了解")
 
 /datum/flesh_concept/freedom
 	name = "自由"
@@ -321,7 +321,7 @@
 		3 = list("自由需要承担责任吗？", "一个人独处也能自由吗？", "绝对的自由可能存在吗？"),
 		4 = list("以自由显现的解放是什么？", "灵魂会渴望无拘无束的存在吗？", "存在之下的神圣自主是什么？")
 	)
-	answer_keywords = list("freedom", "free", "liberty", "autonomy", "independence", "unbound", "release")
+	answer_keywords = list("自由", "自在", "解放", "自主", "独立", "无拘无束", "释放")
 
 /datum/flesh_concept/bondage
 	name = "束缚"
@@ -331,7 +331,7 @@
 		3 = list("限制会创造意义吗？", "约束之中存在怎样的自由？", "所有存在都会以某种方式被束缚吗？"),
 		4 = list("以束缚显现的必要结构是什么？", "形式一定需要限制吗？", "约束存在的神圣法则是什么？")
 	)
-	answer_keywords = list("bondage", "bound", "trapped", "restricted", "prison", "captive", "constrained")
+	answer_keywords = list("束缚", "捆绑", "受困", "限制", "牢狱", "囚禁", "约束")
 
 /datum/flesh_concept/growth
 	name = "成长"
@@ -341,7 +341,7 @@
 		3 = list("成长一定伴随着不适吗？", "哪些转变是必要的？", "成长能被强迫吗？"),
 		4 = list("以成长显现的演化是什么？", "存在会在不断成为中展开吗？", "什么神圣潜能正寻求显现？")
 	)
-	answer_keywords = list("growth", "grow", "develop", "evolve", "mature", "progress", "transform")
+	answer_keywords = list("成长", "生长", "发展", "演化", "成熟", "进步", "转变")
 
 /datum/flesh_concept/decay
 	name = "衰朽"
@@ -351,7 +351,7 @@
 		3 = list("佩斯特拉的衰朽会为新生命腾出空间吗？", "腐坏之中存在怎样的美？", "终结也是循环的一部分吗？"),
 		4 = list("佩斯特拉最伟大的赠礼是什么？", "佩斯特拉的消融是在服务新生吗？", "佩斯特拉要求回归本源的古老规律是什么？")
 	)
-	answer_keywords = list("decay", "rot", "decompose", "deteriorate", "wither", "fade", "corrupt", "pestra")
+	answer_keywords = list("衰朽", "腐烂", "分解", "恶化", "枯萎", "消退", "腐化", "佩斯特拉")
 
 /datum/flesh_concept/transformation
 	name = "转化"
@@ -361,7 +361,7 @@
 		3 = list("转化一定需要毁灭吗？", "在改变之中，什么保持不变？", "经历转化之后，我们还是原来的自己吗？"),
 		4 = list("以转化显现的蜕变是什么？", "存在会在不同形态之间起舞吗？", "什么永恒本质披着暂时的形状？")
 	)
-	answer_keywords = list("transform", "change", "become", "metamorphosis", "evolve", "shift", "alter")
+	answer_keywords = list("转化", "改变", "成为", "蜕变", "演化", "转移", "变更")
 
 /datum/flesh_concept/identity
 	name = "身份"
@@ -371,7 +371,7 @@
 		3 = list("我们是由记忆定义，还是由行为定义？", "是什么定义了一个人？", "身份会独立存在吗？"),
 		4 = list("以身份显现的永恒自我是什么？", "意识会戴上暂时的面具吗？", "驱动存在的神圣火花是什么？")
 	)
-	answer_keywords = list("identity", "self", "who", "person", "individual", "essence", "soul")
+	answer_keywords = list("身份", "自我", "谁", "人", "个体", "本质", "灵魂")
 
 /datum/flesh_concept/unity
 	name = "统一"
@@ -381,4 +381,4 @@
 		3 = list("统一一定需要多样性吗？", "是什么连接着万物？", "统一之中还能保有个体性吗？"),
 		4 = list("以统一显现的一体性是什么？", "分离能否被阻止，不让它带来毁灭？", "容纳一切部分的神圣整体是什么？")
 	)
-	answer_keywords = list("unity", "one", "together", "whole", "united", "connected", "harmony")
+	answer_keywords = list("统一", "一体", "一起", "整体", "团结", "联结", "和谐")

@@ -49,9 +49,9 @@
 	var/datum/objective/build_zizo_shrine/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_biginfo("Zizo wants you to spread corruption! Construct [new_objective.target_count] profane shrines using your newly gained knowledge to complete Zizo's will!"))
-	to_chat(chosen_one, span_notice("You can construct unholy shrines with one small log, two stones and three wooden stakes."))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_biginfo("齐佐要你散播腐化！运用你新获得的知识建造[new_objective.target_count]座亵渎神龛，完成齐佐的意志！"))
+	to_chat(chosen_one, span_notice("你可以用一根小原木、两块石头和三根木桩建造亵渎神龛。"))
 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

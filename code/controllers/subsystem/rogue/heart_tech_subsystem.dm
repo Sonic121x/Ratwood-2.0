@@ -82,18 +82,18 @@ SUBSYSTEM_DEF(chimeric_tech)
 	var/datum/chimeric_tech_node/node = all_tech_nodes[string_id]
 
 	if(!node)
-		return "Error: Node not found."
+		return "错误：未找到研究节点。"
 	if(node.unlocked)
-		return "Already unlocked."
+		return "该研究已解锁。"
 
 	// Sanity check
 	if(beast_component.language_tier < node.required_tier || beast_component.tech_points < node.cost)
-		return "Requirements not met."
+		return "尚未满足研究条件。"
 
 	// Sanity check
 	for(var/required_node_path in node.prerequisites)
 		if(!get_node_status(required_node_path))
-			return "Missing prerequisite: [required_node_path]"
+			return "缺少前置研究：[required_node_path]"
 
 	beast_component.tech_points -= node.cost
 	node.unlocked = TRUE
@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(chimeric_tech)
 	if(node.is_recipe_node)
 		update_recipes_for_tech(string_id)
 
-	return "Successfully unlocked [node.name]!"
+	return "成功解锁[node.name]！"
 
 /datum/controller/subsystem/chimeric_tech/proc/update_recipes_for_tech(tech_id)
 	var/list/recipes_to_unlock = tech_recipe_index[tech_id]

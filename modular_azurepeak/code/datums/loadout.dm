@@ -1694,7 +1694,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 3
 
 /datum/loadout_item/tri_fencing_gambeson
-	name = "击剑棉甲（奥塔凡）"
+	name = "击剑棉甲（奥塔万）"
 	path = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan
 	triumph_cost = 3
 
@@ -1819,7 +1819,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	requires_nobility = TRUE
 
 /datum/loadout_item/tri_otavan_gambeson
-	name = "奥塔凡棉甲"
+	name = "奥塔万棉甲"
 	path = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan
 	triumph_cost = 3
 
@@ -1912,7 +1912,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 2
 
 /datum/loadout_item/tri_otavan_gloves
-	name = "奥塔凡手套"
+	name = "奥塔万手套"
 	path = /obj/item/clothing/gloves/roguetown/otavan
 	triumph_cost = 2
 
@@ -1938,7 +1938,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 
 
 /datum/loadout_item/tri_otavan_boots
-	name = "奥塔凡靴"
+	name = "奥塔万靴"
 	path = /obj/item/clothing/shoes/roguetown/boots/otavan
 
 
@@ -1974,12 +1974,12 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 2
 
 /datum/loadout_item/tri_otavan_pants
-	name = "奥塔凡长裤"
+	name = "奥塔万长裤"
 	path = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
 	triumph_cost = 2
 
 /datum/loadout_item/tri_otavan_generic_pants
-	name = "奥塔凡长裤（通用）"
+	name = "奥塔万长裤（通用）"
 	path = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/generic
 	triumph_cost = 2
 
@@ -2473,7 +2473,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/caparison/astrata
 
 /datum/loadout_item/caparison/eora
-	name = "伊奥拉坐骑披衣"
+	name = "伊欧拉坐骑披衣"
 	path = /obj/item/caparison/eora
 
 /datum/loadout_item/caparison/azure

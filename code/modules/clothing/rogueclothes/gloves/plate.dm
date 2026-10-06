@@ -74,7 +74,7 @@
 
 
 /obj/item/clothing/gloves/roguetown/plate/zizo
-	name = "阿万廷板甲护手"
+	name = "阿凡泰因板甲护手"
 	desc = "<font color='A50021'><i>「看看祂的杰作吧，尔等强者，然后绝望！」</i></font>"
 	icon_state = "zizogauntlets"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
@@ -91,7 +91,7 @@
 	qdel(src)
 
 /obj/item/clothing/gloves/roguetown/plate/medium/zizo
-	name = "阿万廷护手"
+	name = "阿凡泰因护手"
 	desc = "<font color='A50021'><i>「看看祂的杰作吧，尔等强者，然后绝望！」</i></font>"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_SIDE_ANTAG

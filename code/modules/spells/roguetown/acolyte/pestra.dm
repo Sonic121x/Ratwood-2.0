@@ -577,7 +577,7 @@
 		action.UpdateButtonIcon(FALSE, TRUE)
 
 /obj/effect/proc_holder/spell/invoked/divine_rebirth
-	name = "神圣重育"
+	name = "神圣重生"
 	desc = "奇迹般的治疗，甚至能恢复最严重的伤势与缺失肢体。但必须在虫灾充能达到上限时才能施放。没有任何力量能抗拒这道奇迹。"
 	overlay_icon = 'icons/mob/actions/pestramiracles.dmi'
 	action_icon = 'icons/mob/actions/pestramiracles.dmi'

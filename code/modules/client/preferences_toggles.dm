@@ -79,87 +79,87 @@
 		return data
 
 	var/list/graphics_entries = list(
-		list("id" = "fullscreen", "label" = "Fullscreen", "enabled" = !!(owner.prefs.toggles & TOGGLE_FULLSCREEN), "desc" = "Use fullscreen mode for the game window."),
-		list("id" = "crt", "label" = "CRT Effect", "enabled" = !!owner.prefs.crt, "desc" = "Apply CRT-style blur/scanline look to the map."),
-		list("id" = "grain", "label" = "Grain Effect", "enabled" = !!owner.prefs.grain, "desc" = "Overlay a subtle film grain effect."),
-		list("id" = "tgui_multiline", "label" = "TGUI Multiline", "enabled" = !!owner.mob?.tgui_multiline, "desc" = "Use multiline TGUI input where supported."),
+		list("id" = "fullscreen", "label" = "全屏", "enabled" = !!(owner.prefs.toggles & TOGGLE_FULLSCREEN), "desc" = "以全屏模式显示游戏窗口。"),
+		list("id" = "crt", "label" = "显像管效果", "enabled" = !!owner.prefs.crt, "desc" = "为地图添加显像管式模糊与扫描线效果。"),
+		list("id" = "grain", "label" = "颗粒效果", "enabled" = !!owner.prefs.grain, "desc" = "叠加轻微的胶片颗粒效果。"),
+		list("id" = "tgui_multiline", "label" = "多行输入", "enabled" = !!owner.mob?.tgui_multiline, "desc" = "在支持的界面中使用多行输入。"),
 	)
 	var/list/graphics_selects = list(
 		list(
 			"id" = "hud_colorblind_palette",
-			"label" = "HUD Colorblind Palette",
+			"label" = "状态栏色盲配色",
 			"value" = owner.prefs.hud_colorblind_palette,
-			"desc" = "Swap the Rogue HUD and heat HUD icons to a higher-contrast colorblind palette.",
+			"desc" = "将角色状态栏与热量图标切换为对比度更高的色盲配色。",
 			"options" = hud_colorblind_palette_options(),
 		),
 	)
 
 	var/list/character_entries = list(
-		list("id" = "masked_examine", "label" = "Masked Examine", "enabled" = !!owner.prefs.masked_examine, "desc" = "Allow your character info to be seen while masked."),
-		list("id" = "top_examine", "label" = "Examine Info At Top", "enabled" = !!owner.prefs.top_examine, "desc" = "Show the headshot, name, and other main examine info at the top of the examine block instead of the bottom."),
-		list("id" = "wildshape_name", "label" = "Show Wildshape Name", "enabled" = !!owner.prefs.wildshape_name, "desc" = "Show your character name while in wildshape."),
-		list("id" = "nsfw_examine", "label" = "Always Show NSFW Examine", "enabled" = !!owner.prefs.nsfw_examine_always, "desc" = "Always display NSFW examine info, even when clothed."),
+		list("id" = "masked_examine", "label" = "蒙面时可检视", "enabled" = !!owner.prefs.masked_examine, "desc" = "允许蒙面时显示角色信息。"),
+		list("id" = "top_examine", "label" = "检视信息置顶", "enabled" = !!owner.prefs.top_examine, "desc" = "将头像、姓名等主要检视信息显示在检视区顶部。"),
+		list("id" = "wildshape_name", "label" = "兽形时显示姓名", "enabled" = !!owner.prefs.wildshape_name, "desc" = "处于野性变身时显示角色姓名。"),
+		list("id" = "nsfw_examine", "label" = "始终显示成人检视信息", "enabled" = !!owner.prefs.nsfw_examine_always, "desc" = "即使穿着衣物，也显示成人检视信息。"),
 	)
 
 	var/list/visual_entries = list(
-		list("id" = "screen_shake", "label" = "Screen Shake", "enabled" = !!owner.prefs.shake, "desc" = "Enable camera shake during impactful events."),
-		list("id" = "no_redflash", "label" = "Anti-Eyestrain Mode", "enabled" = !!owner.prefs.no_redflash, "desc" = "Disables red & white overlays flashing on screen from pain or other events."),
-		list("id" = "chat_headshot", "label" = "Headshot in Chat", "enabled" = !!owner.prefs.chatheadshot, "desc" = "Show character headshot images next to chat when available."),
-		list("id" = "mouseover_role", "label" = "Show Mouseover Role", "enabled" = !!owner.prefs.show_mouseover_role, "desc" = "Show role text under player names on mouseover."),
-		list("id" = "examine_blocks", "label" = "Hide Examine Blocks", "enabled" = !!owner.prefs.no_examine_blocks, "desc" = "Hide inspect details for items inside containers."),
-		list("id" = "language_fonts", "label" = "Disable Language Fonts", "enabled" = !!owner.prefs.no_language_fonts, "desc" = "Use normal fonts instead of stylized language fonts."),
-		list("id" = "language_icon", "label" = "Disable Language Icon", "enabled" = !!owner.prefs.no_language_icon, "desc" = "Hide language icon prefixes in chat."),
-		list("id" = "floating_text", "label" = "Show Floating Text", "enabled" = !!(owner.prefs.floating_text_toggles & FLOATING_TEXT), "desc" = "Show floating combat/feedback text popups."),
-		list("id" = "xp_text", "label" = "Show XP Text", "enabled" = !!(owner.prefs.floating_text_toggles & XP_TEXT), "desc" = "Show floating XP gain popups."),
+		list("id" = "screen_shake", "label" = "画面震动", "enabled" = !!owner.prefs.shake, "desc" = "在产生冲击的事件中启用镜头震动。"),
+		list("id" = "no_redflash", "label" = "护眼模式", "enabled" = !!owner.prefs.no_redflash, "desc" = "关闭疼痛等事件引起的红白画面闪烁。"),
+		list("id" = "chat_headshot", "label" = "聊天头像", "enabled" = !!owner.prefs.chatheadshot, "desc" = "有头像时，在聊天旁显示角色头像。"),
+		list("id" = "mouseover_role", "label" = "悬停显示职业", "enabled" = !!owner.prefs.show_mouseover_role, "desc" = "鼠标悬停时在玩家姓名下显示职业。"),
+		list("id" = "examine_blocks", "label" = "隐藏容器内物品详情", "enabled" = !!owner.prefs.no_examine_blocks, "desc" = "隐藏容器内物品的检视详情。"),
+		list("id" = "language_fonts", "label" = "禁用语言字体", "enabled" = !!owner.prefs.no_language_fonts, "desc" = "使用普通字体代替各语言的特殊字体。"),
+		list("id" = "language_icon", "label" = "禁用语言图标", "enabled" = !!owner.prefs.no_language_icon, "desc" = "隐藏聊天中的语言图标前缀。"),
+		list("id" = "floating_text", "label" = "显示浮动文字", "enabled" = !!(owner.prefs.floating_text_toggles & FLOATING_TEXT), "desc" = "显示浮动的战斗与反馈文字。"),
+		list("id" = "xp_text", "label" = "显示经验文字", "enabled" = !!(owner.prefs.floating_text_toggles & XP_TEXT), "desc" = "显示获得经验时的浮动文字。"),
 	)
 
 	var/list/gameplay_entries = list(
-		list("id" = "autoconsume", "label" = "AutoConsume", "enabled" = !!owner.prefs.autoconsume, "desc" = "Repeat consume/feed interactions automatically."),
-		list("id" = "autowoodcut", "label" = "AutoWoodcut", "enabled" = !!owner.prefs.autowoodcut, "desc" = "Automatically continue chopping a tree after the first swing."),
-		list("id" = "autopicking", "label" = "AutoPicking", "enabled" = !!owner.prefs.autopicking, "desc" = "Automatically continue mining after clicking or bumping a rock wall with a pickaxe in hand."),
-		list("id" = "show_rolls", "label" = "Show Rolls", "enabled" = !!owner.prefs.showrolls, "desc" = "Show combat and check roll details in chat."),
-		list("id" = "combat_strip", "label" = "Combat Mode Stripping", "enabled" = !!(owner.prefs.toggles & CMODE_STRIPPING), "desc" = "Allow opening strip menu while in combat mode."),
-		list("id" = "hide_unavailable_emotes", "label" = "Hide Unavailable Noises", "enabled" = !!owner.prefs.hide_unavailable_emotes, "desc" = "Hide anatomy-specific noise verbs your current body cannot use."),
-		list("id" = "vocal_barks", "label" = "Hear Vocal Barks", "enabled" = !!owner.prefs.hear_barks, "desc" = "Enable hearing vocal bark sounds."),
-		list("id" = "compliance_notifs", "label" = "Compliance Notifications", "enabled" = !!owner.prefs.compliance_notifs, "desc" = "Show chat notices when compliance mode changes."),
-		list("id" = "skillcap_notifs", "label" = "Skillcap Notifications", "enabled" = !!owner.prefs.skillcap_notifs, "desc" = "Notify when a skill reaches its XP cap."),
-		list("id" = "autopunctuation", "label" = "Disable Autopunctuation", "enabled" = !!owner.prefs.no_autopunctuate, "desc" = "Prevent automatic punctuation in your chat messages."),
-		list("id" = "deadchat", "label" = "Show Deadchat", "enabled" = !!(owner.prefs.chat_toggles & CHAT_DSAY), "desc" = "Receive deadchat messages."),
-		list("id" = "legacy_craft", "label" = "Enable Legacy Craft", "enabled" = !!owner.legacycraft, "desc" = "Use legacy crafting UI/behavior."),
-		list("id" = "roleplay_ads", "label" = "Receive Roleplay Ads", "enabled" = !!(owner.prefs.toggles & ROLEPLAY_ADS), "desc" = "Receive notifications for new roleplay ads."),
-		list("id" = "voting_popup", "label" = "Enable Voting UI Popup", "enabled" = !!owner.prefs.voting_popup, "desc" = "Allow a popup of the voting-ui."),
+		list("id" = "autoconsume", "label" = "自动进食", "enabled" = !!owner.prefs.autoconsume, "desc" = "自动重复进食或喂食操作。"),
+		list("id" = "autowoodcut", "label" = "自动伐木", "enabled" = !!owner.prefs.autowoodcut, "desc" = "首次挥砍后自动继续砍树。"),
+		list("id" = "autopicking", "label" = "自动采矿", "enabled" = !!owner.prefs.autopicking, "desc" = "手持镐点击或撞上岩壁后，自动继续采矿。"),
+		list("id" = "show_rolls", "label" = "显示掷骰", "enabled" = !!owner.prefs.showrolls, "desc" = "在聊天中显示战斗与检定的掷骰详情。"),
+		list("id" = "combat_strip", "label" = "战斗时可打开脱衣菜单", "enabled" = !!(owner.prefs.toggles & CMODE_STRIPPING), "desc" = "允许在战斗模式中打开脱衣菜单。"),
+		list("id" = "hide_unavailable_emotes", "label" = "隐藏不可用发声", "enabled" = !!owner.prefs.hide_unavailable_emotes, "desc" = "隐藏当前身体结构无法使用的发声动作。"),
+		list("id" = "vocal_barks", "label" = "听见语音短音", "enabled" = !!owner.prefs.hear_barks, "desc" = "启用简短语音音效。"),
+		list("id" = "compliance_notifs", "label" = "顺从状态通知", "enabled" = !!owner.prefs.compliance_notifs, "desc" = "顺从模式改变时在聊天中提示。"),
+		list("id" = "skillcap_notifs", "label" = "技能上限通知", "enabled" = !!owner.prefs.skillcap_notifs, "desc" = "技能经验达到上限时通知。"),
+		list("id" = "autopunctuation", "label" = "禁用自动标点", "enabled" = !!owner.prefs.no_autopunctuate, "desc" = "不为聊天消息自动添加标点。"),
+		list("id" = "deadchat", "label" = "显示亡者聊天", "enabled" = !!(owner.prefs.chat_toggles & CHAT_DSAY), "desc" = "接收亡者聊天消息。"),
+		list("id" = "legacy_craft", "label" = "启用旧版制作", "enabled" = !!owner.legacycraft, "desc" = "使用旧版制作界面与操作方式。"),
+		list("id" = "roleplay_ads", "label" = "接收角色扮演招募", "enabled" = !!(owner.prefs.toggles & ROLEPLAY_ADS), "desc" = "接收新的角色扮演招募通知。"),
+		list("id" = "voting_popup", "label" = "启用投票弹窗", "enabled" = !!owner.prefs.voting_popup, "desc" = "允许投票界面弹出。"),
 	
 	)
 
 	var/list/audio_entries = list(
-		list("id" = "lobby_music", "label" = "Lobby Music", "enabled" = !!(owner.prefs.toggles & SOUND_LOBBY), "desc" = "Play music while in the lobby."),
-		list("id" = "hear_instruments", "label" = "Hear Instruments", "enabled" = !!(owner.prefs.toggles & SOUND_INSTRUMENTS), "desc" = "Hear bard instruments, jukeboxes, and boomboxes."),
+		list("id" = "lobby_music", "label" = "大厅音乐", "enabled" = !!(owner.prefs.toggles & SOUND_LOBBY), "desc" = "在大厅中播放音乐。"),
+		list("id" = "hear_instruments", "label" = "听见乐器", "enabled" = !!(owner.prefs.toggles & SOUND_INSTRUMENTS), "desc" = "听见吟游诗人乐器、点唱机和音响。"),
 	)
 
 	var/list/content_entries = list(
-		list("id" = "animal_emotes", "label" = "Animal Noise Emotes", "enabled" = !!(!owner.prefs.mute_animal_emotes), "desc" = "Play animal emote sound effects."),
-		list("id" = "erp_panel", "label" = "Enable ERP Panel Interactions", "enabled" = !!owner.prefs.sexable, "desc" = "Allow others to use ERP panel interactions on you."),
-		list("id" = "erp_visuals", "label" = "Enable ERP Visual Effects", "enabled" = !!owner.prefs.erp_visuals, "desc" = "Enable visual effects like hearts and screen overlays during ERP."),
-		list("id" = "chastity", "label" = "Enable Chastity Content", "enabled" = !!owner.prefs.chastenable, "desc" = "Show and allow chastity-related content."),
-		list("id" = "permanent_binding", "label" = "Enable Permanent Binding", "enabled" = (owner.prefs.chastity_hardmode == CHASTITY_HARDMODE_ENABLED), "desc" = "Enable irreversible key-only chastity lock behavior."),
-		list("id" = "extreme_erp", "label" = "Enable Extreme ERP Content", "enabled" = !!owner.prefs.extreme_erp, "desc" = "Allow extreme ERP content categories."),
-		list("id" = "edging", "label" = "Enable Edging Content", "enabled" = !!owner.prefs.edging, "desc" = "Allow edging-related ERP content."),
-		list("id" = "free_use_default", "label" = "Toggle Free Use Default", "enabled" = !!owner.prefs.free_use_default, "desc" = "Start with Free Use enabled by default. You can manually disable it at any point in the ERP panel."),
-		list("id" = "facial_branding", "label" = "Enable Facial Branding", "enabled" = !!owner.prefs.facial_brands, "desc" = "Allow others to brand your face."),
-		list("id" = "sensitive_branding", "label" = "Enable Sensitive Branding", "enabled" = !!owner.prefs.sensitive_brands, "desc" = "Allow others to brand your genital & breast organs (if present)."),
-		list("id" = "pubes", "label" = "Enable Pubic Hair Descriptors", "enabled" = !!owner.prefs.pubes, "desc" = "See pubic hair descriptors on examining someone with exposed pubic hair (if present)."),
-		list("id" = "pits", "label" = "Enable Armpit Hair Descriptors", "enabled" = !!owner.prefs.pits, "desc" = "See armpit hair descriptors on examining someone with exposed underarms (if present)."),
-		list("id" = "descriptor_color", "label" = "Enable Colored Descriptors", "enabled" = !!owner.prefs.descriptor_color, "desc" = "Color genital descriptors based on arousal and body hair descriptors based on hair color."),
-		list("id" = "cursed_collars", "label" = "Enable Cursed Collars", "enabled" = !!owner.prefs.cursed_collarable, "desc" = "Allow others to equip a cursed collar on you."),
+		list("id" = "animal_emotes", "label" = "动物发声音效", "enabled" = !!(!owner.prefs.mute_animal_emotes), "desc" = "播放动物表情动作的音效。"),
+		list("id" = "erp_panel", "label" = "启用成人互动面板", "enabled" = !!owner.prefs.sexable, "desc" = "允许他人通过成人互动面板与你互动。"),
+		list("id" = "erp_visuals", "label" = "启用成人互动视觉效果", "enabled" = !!owner.prefs.erp_visuals, "desc" = "启用成人互动中的爱心及画面叠加等视觉效果。"),
+		list("id" = "chastity", "label" = "启用贞操相关内容", "enabled" = !!owner.prefs.chastenable, "desc" = "显示并允许贞操相关内容。"),
+		list("id" = "permanent_binding", "label" = "启用永久束缚", "enabled" = (owner.prefs.chastity_hardmode == CHASTITY_HARDMODE_ENABLED), "desc" = "启用不可逆、仅能用钥匙开启的贞操锁机制。"),
+		list("id" = "extreme_erp", "label" = "启用极端成人互动", "enabled" = !!owner.prefs.extreme_erp, "desc" = "允许极端成人互动内容。"),
+		list("id" = "edging", "label" = "启用高潮边缘控制", "enabled" = !!owner.prefs.edging, "desc" = "允许高潮边缘控制相关的成人互动。"),
+		list("id" = "free_use_default", "label" = "默认允许自由使用", "enabled" = !!owner.prefs.free_use_default, "desc" = "默认开启自由使用。可随时在成人互动面板中手动关闭。"),
+		list("id" = "facial_branding", "label" = "启用面部烙印", "enabled" = !!owner.prefs.facial_brands, "desc" = "允许他人在你的脸上烙印。"),
+		list("id" = "sensitive_branding", "label" = "启用敏感部位烙印", "enabled" = !!owner.prefs.sensitive_brands, "desc" = "允许他人在你的生殖器与乳房上烙印（若有）。"),
+		list("id" = "pubes", "label" = "启用阴毛描述", "enabled" = !!owner.prefs.pubes, "desc" = "检视裸露阴毛的角色时显示阴毛描述（若有）。"),
+		list("id" = "pits", "label" = "启用腋毛描述", "enabled" = !!owner.prefs.pits, "desc" = "检视裸露腋下的角色时显示腋毛描述（若有）。"),
+		list("id" = "descriptor_color", "label" = "启用彩色描述", "enabled" = !!owner.prefs.descriptor_color, "desc" = "按兴奋程度为生殖器描述着色，并按毛色为体毛描述着色。"),
+		list("id" = "cursed_collars", "label" = "启用诅咒项圈", "enabled" = !!owner.prefs.cursed_collarable, "desc" = "允许他人为你戴上诅咒项圈。"),
 	)
 
 	data["categories"] = list(
-		list("name" = "Character", "entries" = character_entries),
-		list("name" = "Graphics", "entries" = graphics_entries, "selects" = graphics_selects),
-		list("name" = "Visuals", "entries" = visual_entries),
-		list("name" = "Gameplay", "entries" = gameplay_entries),
-		list("name" = "Audio", "entries" = audio_entries),
-		list("name" = "Content", "entries" = content_entries),
+		list("name" = "角色", "entries" = character_entries),
+		list("name" = "画面", "entries" = graphics_entries, "selects" = graphics_selects),
+		list("name" = "视觉效果", "entries" = visual_entries),
+		list("name" = "游戏操作", "entries" = gameplay_entries),
+		list("name" = "音频", "entries" = audio_entries),
+		list("name" = "内容", "entries" = content_entries),
 	)
 	return data
 
@@ -306,9 +306,9 @@
 		prefs.shake = !prefs.shake
 		prefs.save_preferences()
 		if(prefs.shake)
-			to_chat(src, "Screen shake enabled.")
+			to_chat(src, "已启用屏幕震动。")
 		else
-			to_chat(src, "Screen shake disabled.")
+			to_chat(src, "已禁用屏幕震动。")
 
 /client/verb/toggle_redflash()
 	set category = "Options"
@@ -318,9 +318,9 @@
 		prefs.no_redflash = !prefs.no_redflash
 		prefs.save_preferences()
 		if(prefs.no_redflash)
-			to_chat(src, "Your screen will no longer flash red or white from pain or other events.")
+			to_chat(src, "屏幕不再因疼痛或其他事件闪烁红光或白光。")
 		else
-			to_chat(src, "Your screen will now flash red or white from pain or other events.")
+			to_chat(src, "屏幕现在会因疼痛或其他事件闪烁红光或白光。")
 	mob.update_redflash_pref(prefs.no_redflash)
 
 /client/verb/masked_examine()
@@ -331,9 +331,9 @@
 		prefs.masked_examine = !prefs.masked_examine
 		prefs.save_preferences()
 		if(prefs.masked_examine)
-			to_chat(src, "Your character information will be viewable when masked.")
+			to_chat(src, "蒙面时仍可查看你的角色信息。")
 		else
-			to_chat(src, "Your character information will no longer be viewable when masked.")
+			to_chat(src, "蒙面时不再能查看你的角色信息。")
 
 /client/verb/toggle_topexamine()
 	set category = "Options"
@@ -342,7 +342,7 @@
 	if(prefs)
 		prefs.top_examine = !prefs.top_examine
 		prefs.save_preferences()
-		to_chat(src, "Main examine text will now be shown at the [prefs.top_examine ? "top" : "bottom"] of the examine block.")
+		to_chat(src, "主要检视文本现在显示于检视区块的[prefs.top_examine ? "顶部" : "底部"]。")
 
 /client/verb/toggle_mouseover_role()
 	set category = "Options"
@@ -352,9 +352,9 @@
 		prefs.show_mouseover_role = !prefs.show_mouseover_role
 		prefs.save_preferences()
 		if(prefs.show_mouseover_role)
-			to_chat(src, "Role text will now be shown under player mouseover names.")
+			to_chat(src, "鼠标悬停时，玩家姓名下方将显示职业。")
 		else
-			to_chat(src, "Role text will no longer be shown under player mouseover names.")
+			to_chat(src, "鼠标悬停时，玩家姓名下方不再显示职业。")
 
 /client/verb/nsfw_examine_always()
 	set category = "Options"
@@ -364,9 +364,9 @@
 		prefs.nsfw_examine_always = !prefs.nsfw_examine_always
 		prefs.save_preferences()
 		if(prefs.nsfw_examine_always)
-			to_chat(src, "Your character NSFW information will always be visible.")
+			to_chat(src, "你的角色成人信息将始终可见。")
 		else
-			to_chat(src, "Your character NSFW information will only be visible when nude.")
+			to_chat(src, "你的角色成人信息仅在裸体时可见。")
 
 /client/verb/mute_animal_emotes()
 	set category = "Options"
@@ -376,9 +376,9 @@
 		prefs.mute_animal_emotes = !prefs.mute_animal_emotes
 		prefs.save_preferences()
 		if(prefs.mute_animal_emotes)
-			to_chat(src, "You can no longer hear animal sound emotes.")
+			to_chat(src, "你不再能听到动物叫声。")
 		else
-			to_chat(src, "You will now hear animal sound emotes.")
+			to_chat(src, "你现在能听到动物叫声。")
 
 /client/verb/autoconsume()
 	set category = "Options"
@@ -388,9 +388,9 @@
 		prefs.autoconsume = !prefs.autoconsume
 		prefs.save_preferences()
 		if(prefs.autoconsume)
-			to_chat(src, "You will now try to repeatedly consume/feed food/drinks")
+			to_chat(src, "你现在会连续尝试进食、饮用或喂食。")
 		else
-			to_chat(src, "You will no longer try to repeatedly consume/feed food/drinks")
+			to_chat(src, "你不再会连续尝试进食、饮用或喂食。")
 
 /client/verb/toggle_autowoodcut()
 	set category = "Options"
@@ -400,9 +400,9 @@
 		prefs.autowoodcut = !prefs.autowoodcut
 		prefs.save_preferences()
 		if(prefs.autowoodcut)
-			to_chat(src, "You will now automatically continue chopping trees.")
+			to_chat(src, "你现在会自动继续伐木。")
 		else
-			to_chat(src, "You will no longer automatically continue chopping trees.")
+			to_chat(src, "你不再会自动继续伐木。")
 
 /client/verb/toggle_autopicking()
 	set category = "Options"
@@ -412,9 +412,9 @@
 		prefs.autopicking = !prefs.autopicking
 		prefs.save_preferences()
 		if(prefs.autopicking)
-			to_chat(src, "You will now automatically continue mining rock walls.")
+			to_chat(src, "你现在会自动继续挖掘岩壁。")
 		else
-			to_chat(src, "You will no longer automatically continue mining rock walls.")
+			to_chat(src, "你不再会自动继续挖掘岩壁。")
 
 /client/verb/toggle_hide_unavailable_emotes()
 	set category = "Options"
@@ -427,9 +427,9 @@
 			var/mob/living/carbon/human/H = mob
 			H.update_tongue_noise_verbs()
 		if(prefs.hide_unavailable_emotes)
-			to_chat(src, "Unavailable noise verbs are now hidden.")
+			to_chat(src, "已隐藏不可用的叫声动作。")
 		else
-			to_chat(src, "Unavailable noise verbs are now visible.")
+			to_chat(src, "现在显示不可用的叫声动作。")
 
 /client/verb/toggle_ERP() // Alters if other people can use the ERP panel ON you.
 	set category = "Options"
@@ -439,9 +439,9 @@
 		prefs.sexable = !prefs.sexable
 		prefs.save_preferences()
 		if(prefs.sexable)
-			to_chat(src, "Others can play with you.")
+			to_chat(src, "其他人现在可以与你进行成人互动。")
 		else
-			to_chat(src, "Others can't touch you.")
+			to_chat(src, "其他人现在无法对你进行成人触碰。")
 
 /client/verb/toggle_ERP_visuals()
 	set category = "Options"
@@ -451,9 +451,9 @@
 		prefs.erp_visuals = !prefs.erp_visuals
 		prefs.save_preferences()
 		if(prefs.erp_visuals)
-			to_chat(src, "ERP visual effects enabled.")
+			to_chat(src, "已启用成人角色扮演视觉效果。")
 		else
-			to_chat(src, "ERP visual effects disabled.")
+			to_chat(src, "已禁用成人角色扮演视觉效果。")
 			var/mob/living/carbon/human/H = mob
 			if(istype(H) && H.sexcon)
 				H.sexcon.update_pink_screen()
@@ -466,11 +466,11 @@
 		prefs.chastenable = !prefs.chastenable
 		prefs.save_preferences()
 		if(prefs.chastenable)
-			to_chat(src, "Chastity content enabled.")
+			to_chat(src, "已启用贞操锁内容。")
 		else
 			if(hascall(src, "modular_handle_chastity_toggle_disable"))
 				call(src, "modular_handle_chastity_toggle_disable")()
-			to_chat(src, "Chastity content disabled.")
+			to_chat(src, "已禁用贞操锁内容。")
 
 /client/verb/toggle_Chastity_Hardmode()
 	set category = "Options"
@@ -483,21 +483,21 @@
 	// Enabling hard mode requires confirmation
 	if(prefs.chastity_hardmode == CHASTITY_HARDMODE_DISABLED)
 		var/confirm = alert(src, 
-			"PERMANENT CHASTITY BINDING:\n\n\
-			• Only the device's unique key can unlock it\n\
-			• Keys can be lost, stolen, or destroyed forever\n\
-			• Divine intervention will not free you\n\
-			• Lockpicks and tools will fail\n\
-			• Even the Duke's master key holds no power\n\
-			• Physical removal is impossible\n\
-			• You will remain bound until the key releases you\n\n\
-			Do you accept these terms of permanent binding?",
+			"永久贞洁束缚：\n\n\
+			• 唯有装置独一无二的钥匙可以将其解锁\n\
+			• 钥匙可能遗失、遭窃或被永久摧毁\n\
+			• 神明干预也无法释放你\n\
+			• 开锁器和工具均会失效\n\
+			• 即使公爵的万能钥匙也无能为力\n\
+			• 无法强行拆除\n\
+			• 在钥匙将你释放之前，你将一直受缚\n\n\
+			你是否接受这些永久束缚条款？",
 			"Permanent Chastity Binding",
 			"I accept the binding",
 			"I refuse")
 		
 		if(confirm != "I accept the binding")
-			to_chat(src, span_notice("You decline the permanent binding."))
+			to_chat(src, span_notice("你拒绝了永久束缚。"))
 			return
 		
 		prefs.chastity_hardmode = CHASTITY_HARDMODE_ENABLED
@@ -505,28 +505,28 @@
 		if(ishuman(mob))
 			var/mob/living/carbon/human/H = mob
 			H.chastity_device?.sync_generated_key_metadata(H, mob)
-		to_chat(src, span_boldwarning("You have accepted the terms of PERMANENT BINDING. Only keys shall grant freedom."))
+		to_chat(src, span_boldwarning("你已接受永久束缚的条款。唯有钥匙才能带来自由。"))
 		log_game("[key_name(src)] enabled permanent chastity binding.")
 		message_admins("[key_name_admin(src)] enabled permanent chastity binding.")
 	else
 		// Disabling requires the humiliation prayer
-		to_chat(src, span_notice("To disable permanent binding, you must recite the Prayer of Foolish Repentance to Eora."))
+		to_chat(src, span_notice("要解除永久束缚，你必须向伊欧拉诵念愚者悔罪祷文。"))
 		var/sacred_prayer = "Dear Eora, I embraced this binding in foolish haste because I'm a dullard and I'm sorry, so so so sorry for being such a stupid stupid stupid person and I'm begging you please please please free my loins."
 		var/encoded_sacred_prayer = html_encode(sacred_prayer)
-		var/prayer_prompt = "Recite the Prayer of Foolish Repentance EXACTLY as written:\n\n\"[sacred_prayer]\"\n\n(You must type this yourself - copying is forbidden by divine law)"
+		var/prayer_prompt = "逐字诵念下列愚者悔罪祷文：\n\n\"[sacred_prayer]\"\n\n（必须亲手输入——神律禁止复制）"
 		// multiline=TRUE so the wrapping textarea is readable; bigmodal=TRUE for a large window that shows the full prompt.
 		// disable_paste=TRUE enforces hand-typing; max_length locks out anything longer than the prayer itself.
 		var/prayer_attempt = tgui_input_text(src, prayer_prompt, "Prayer of Foolish Repentance", default = "", max_length = length(encoded_sacred_prayer), multiline = TRUE, encode = TRUE, ui_state = GLOB.tgui_always_state, bigmodal = TRUE, disable_paste = TRUE)
 
 		if(!prayer_attempt)
-			to_chat(src, span_warning("Eora does not hear your silence."))
+			to_chat(src, span_warning("伊欧拉听不见你的沉默。"))
 			return
 
 		// tgui_input_text() html-encodes player input, so compare against the prayer normalized the same way.
 		if(prayer_attempt != encoded_sacred_prayer)
-			to_chat(src, span_warning("Eora rejects your imperfect prayer. You must recite it EXACTLY as written."))
-			to_chat(src, span_notice("You wrote: \"[prayer_attempt]\""))
-			to_chat(src, span_notice("Required: \"[sacred_prayer]\""))
+			to_chat(src, span_warning("伊欧拉拒绝了你不完整的祷文。你必须逐字照原文诵念。"))
+			to_chat(src, span_notice("你输入了：\"[prayer_attempt]\""))
+			to_chat(src, span_notice("所需祷文：\"[sacred_prayer]\""))
 			log_game("[key_name(src)] failed the humiliation prayer (incorrect text).")
 			return
 
@@ -536,8 +536,8 @@
 		if(ishuman(mob))
 			var/mob/living/carbon/human/H = mob
 			H.chastity_device?.sync_generated_key_metadata(H)
-		to_chat(src, span_boldnotice("Eora hears your pathetic plea and takes pity upon you. The permanent binding is lifted."))
-		to_chat(src, span_notice("You have revoked the permanent binding. Mortal means may now test the lock once more."))
+		to_chat(src, span_boldnotice("伊欧拉听到了你可怜的恳求，怜悯了你。永久束缚已被解除。"))
+		to_chat(src, span_notice("你已撤销永久束缚。现在可以再次用凡俗手段尝试解锁。"))
 		log_game("[key_name(src)] disabled permanent chastity binding via humiliation prayer.")
 		message_admins("[key_name_admin(src)] disabled permanent chastity binding by reciting the humiliation prayer.")
 
@@ -549,11 +549,11 @@
 		prefs.extreme_erp = !prefs.extreme_erp
 		prefs.save_preferences()
 		if(prefs.extreme_erp)
-			to_chat(src, "Extreme ERP content enabled in the ERP panel.")
+			to_chat(src, "成人角色扮演面板中的极端内容已启用。")
 		else
 			if(hascall(src, "modular_handle_extreme_erp_toggle_disable"))
 				call(src, "modular_handle_extreme_erp_toggle_disable")()
-			to_chat(src, "Extreme ERP content disabled in the ERP panel.")
+			to_chat(src, "成人角色扮演面板中的极端内容已禁用。")
 
 /client/verb/toggle_facial_brands()
 	set category = "Options"
@@ -563,9 +563,9 @@
 		prefs.facial_brands = !prefs.facial_brands
 		prefs.save_preferences()
 		if(prefs.facial_brands)
-			to_chat(src, "Your head area can now be branded by others.")
+			to_chat(src, "其他人现在可以在你的头部烙印。")
 		else
-			to_chat(src, "Your head area can no longer be branded by others.")
+			to_chat(src, "其他人不再可以在你的头部烙印。")
 
 /client/verb/toggle_sensitive_brands()
 	set category = "Options"
@@ -575,9 +575,9 @@
 		prefs.sensitive_brands = !prefs.sensitive_brands
 		prefs.save_preferences()
 		if(prefs.sensitive_brands)
-			to_chat(src, "Your genital and breast organs can now be branded by others.")
+			to_chat(src, "其他人现在可以在你的生殖器和乳房上烙印。")
 		else
-			to_chat(src, "Your genital and breast organs can no longer be branded by others.")
+			to_chat(src, "其他人不再可以在你的生殖器和乳房上烙印。")
 
 /client/verb/toggle_pubes()
 	set category = "Options"
@@ -587,9 +587,9 @@
 		prefs.pubes = !prefs.pubes
 		prefs.save_preferences()
 		if(prefs.pubes)
-			to_chat(src, "Pubic hair descriptors are now visible when examining exposed players.")
+			to_chat(src, "检视裸露的玩家时，现在显示阴毛描述。")
 		else
-			to_chat(src, "You will no longer see pubic hair descriptions when examining exposed players.")
+			to_chat(src, "检视裸露的玩家时，不再显示阴毛描述。")
 
 /client/verb/toggle_pits()
 	set category = "Options"
@@ -599,9 +599,9 @@
 		prefs.pits = !prefs.pits
 		prefs.save_preferences()
 		if(prefs.pits)
-			to_chat(src, "Armpit hair descriptors are now visible when examining exposed players.")
+			to_chat(src, "检视裸露的玩家时，现在显示腋毛描述。")
 		else
-			to_chat(src, "You will no longer see armpit hair descriptors when examining players.")
+			to_chat(src, "检视玩家时，不再显示腋毛描述。")
 
 /client/verb/toggle_descriptor_color()
 	set category = "Options"
@@ -611,9 +611,9 @@
 		prefs.descriptor_color = !prefs.descriptor_color
 		prefs.save_preferences()
 		if(prefs.descriptor_color)
-			to_chat(src, "Genital and body hair descriptor colors are now visible.")
+			to_chat(src, "现在显示生殖器与体毛描述的颜色。")
 		else
-			to_chat(src, "Genital and body hair descriptor colors are no longer visible.")
+			to_chat(src, "不再显示生殖器与体毛描述的颜色。")
 
 /client/verb/toggle_edging() // Toggles edging content in the ERP panel, for psydonites who clearly can't ENDURE.
 	set category = "Options"
@@ -623,9 +623,9 @@
 		prefs.edging = !prefs.edging
 		prefs.save_preferences()
 		if(prefs.edging)
-			to_chat(src, "You ENDVRE through orgasms.")
+			to_chat(src, "你将坚忍承受高潮。")
 		else
-			to_chat(src, "You will no longer ENDVRE through orgasms.")
+			to_chat(src, "你不再会坚忍承受高潮。")
 
 /client/verb/toggle_free_use_default()
 	set category = "Options"
@@ -635,9 +635,9 @@
 		prefs.free_use_default = !prefs.free_use_default
 		prefs.save_preferences()
 		if(prefs.free_use_default)
-			to_chat(src, "You will now start with Free Use enabled by default.")
+			to_chat(src, "你将在开局时默认启用自由使用。")
 		else
-			to_chat(src, "You will no longer start with Free Use enabled by default.")
+			to_chat(src, "你不再会在开局时默认启用自由使用。")
 
 /client/verb/toggle_voting_popup()
 	set category = "Options"
@@ -649,9 +649,9 @@
 	prefs.voting_popup = !prefs.voting_popup
 	prefs.save_preferences()
 	if(prefs.voting_popup)
-		to_chat(src, "You will see a popup of the voting ui as a vote is called.")
+		to_chat(src, "发起投票时将弹出投票界面。")
 	else
-		to_chat(src, "You will no longer see a popup of the voting ui as a vote is called.")
+		to_chat(src, "发起投票时不再弹出投票界面。")
 
 	
 /client/verb/toggle_cursed_collars() // Toggles cursed collars. Will drop existing collars if toggled off while wearing one
@@ -663,9 +663,9 @@
 	prefs.cursed_collarable = !prefs.cursed_collarable
 	prefs.save_preferences()
 	if(prefs.cursed_collarable)
-		to_chat(src, "You can now be collared.")
+		to_chat(src, "你现在可以被戴上项圈。")
 		return
-	to_chat(src, "You are no longer able to be collared")
+	to_chat(src, "你不再可以被戴上项圈。")
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/human_user = usr
@@ -682,9 +682,9 @@
 		prefs.compliance_notifs = !prefs.compliance_notifs
 		prefs.save_preferences()
 		if(prefs.compliance_notifs)
-			to_chat(src, "You will receive chat notifications when enabling or disabling Compliance Mode.")
+			to_chat(src, "启用或禁用顺从模式时，你会收到聊天通知。")
 		else
-			to_chat(src, "You will no longer be notified in chat when toggling Compliance Mode.")
+			to_chat(src, "切换顺从模式时，你不再会收到聊天通知。")
 
 /client/verb/toggle_skillcap_notifs()
 	set category = "Options"
@@ -694,9 +694,9 @@
 		prefs.skillcap_notifs = !prefs.skillcap_notifs
 		prefs.save_preferences()
 		if(prefs.skillcap_notifs)
-			to_chat(src, "You will receive notifications when hitting your character's experience cap in a skill.")
+			to_chat(src, "角色达到某项技能的经验上限时，你会收到通知。")
 		else
-			to_chat(src, "You will no longer be notified in chat when hitting your character's experience cap in a skill.")
+			to_chat(src, "角色达到某项技能的经验上限时，你不再会收到聊天通知。")
 
 /client/verb/toggle_examine_blocks()
 	set category = "Options"
@@ -706,9 +706,9 @@
 		prefs.no_examine_blocks = !prefs.no_examine_blocks
 		prefs.save_preferences()
 		if(prefs.no_examine_blocks)
-			to_chat(src, "You will no longer see examined items in boxes.")
+			to_chat(src, "检视物品时不再显示边框。")
 		else
-			to_chat(src, "You will now see examined items in boxes.")
+			to_chat(src, "检视物品时现在显示边框。")
 
 /client/verb/toggle_wildshape_name()
 	set category = "Options"
@@ -718,9 +718,9 @@
 		prefs.wildshape_name = !prefs.wildshape_name
 		prefs.save_preferences()
 		if(prefs.wildshape_name)
-			to_chat(src, "You will show your character's name when wildshaping as a Druid.")
+			to_chat(src, "德鲁伊进行荒野变形时，将显示角色姓名。")
 		else
-			to_chat(src, "You will hide your character's name when wildshaping as a Druid and appear solely as your animal form.")
+			to_chat(src, "德鲁伊进行荒野变形时，将隐藏角色姓名，仅显示动物形态。")
 
 /client/verb/toggle_autopunctuation()
 	set category = "Options"
@@ -730,9 +730,9 @@
 		prefs.no_autopunctuate = !prefs.no_autopunctuate
 		prefs.save_preferences()
 		if(prefs.no_autopunctuate)
-			to_chat(src, "Your messages will no longer be automatically punctuated.")
+			to_chat(src, "你的发言不再自动添加标点。")
 		else
-			to_chat(src, "Your messages will now be automatically punctuated.")
+			to_chat(src, "你的发言现在会自动添加标点。")
 
 /client/verb/toggle_language_fonts()
 	set category = "Options"
@@ -742,9 +742,9 @@
 		prefs.no_language_fonts = !prefs.no_language_fonts
 		prefs.save_preferences()
 		if(prefs.no_language_fonts)
-			to_chat(src, "You will no longer see languages in their stylized fonts.")
+			to_chat(src, "不再使用各语言的特殊字体。")
 		else
-			to_chat(src, "You will now see languages in their stylized fonts.")
+			to_chat(src, "现在使用各语言的特殊字体。")
 
 /client/verb/toggle_language_icon()
 	set category = "Options"
@@ -754,9 +754,9 @@
 		prefs.no_language_icon = !prefs.no_language_icon
 		prefs.save_preferences()
 		if(prefs.no_language_icon)
-			to_chat(src, "You will no longer see the language icon in front of a language.")
+			to_chat(src, "不再在语言前显示语言图标。")
 		else
-			to_chat(src, "You will now see the language icon in front of a language.")
+			to_chat(src, "现在在语言前显示语言图标。")
 
 /client/verb/toggle_lobby_music()
 	set name = "Toggle Lobby Music"
@@ -767,11 +767,11 @@
 		prefs.toggles ^= SOUND_LOBBY
 		prefs.save_preferences()
 	if(prefs.toggles & SOUND_LOBBY)
-		to_chat(src, "You will now hear music in the lobby.")
+		to_chat(src, "你现在能听到大厅音乐。")
 		if(isnewplayer(usr))
 			playtitlemusic()
 	else
-		to_chat(src, "You will no longer hear music in the lobby.")
+		to_chat(src, "你不再能听到大厅音乐。")
 		mob.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 
 /client/verb/toggle_roleplay_ads()
@@ -783,9 +783,9 @@
 		prefs.toggles ^= ROLEPLAY_ADS
 		prefs.save_preferences()
 	if(prefs.toggles & ROLEPLAY_ADS)
-		to_chat(src, "You will now be notified of new roleplay ads.")
+		to_chat(src, "你现在会收到新的角色扮演招募通知。")
 	else
-		to_chat(src, "You will no longer be notified of new roleplay ads.")
+		to_chat(src, "你不再会收到新的角色扮演招募通知。")
 
 /client/verb/stop_sounds_rogue()
 	set name = "StopSounds"
@@ -802,7 +802,7 @@
 	if(prefs)
 		prefs.toggles ^= CMODE_STRIPPING
 		prefs.save_preferences()
-	to_chat(src, "You will [prefs.toggles & CMODE_STRIPPING ? "" : "not"] be able to open the strip menu in combat mode.")
+	to_chat(src, "你将[prefs.toggles & CMODE_STRIPPING ? "可以" : "无法"]在战斗模式下打开脱衣菜单。")
 
 /client/verb/vocal_barks()
 	set name = "Hear Vocal Barks"
@@ -812,7 +812,7 @@
 	if(prefs)
 		prefs.hear_barks = !prefs.hear_barks
 		prefs.save_preferences()
-	to_chat(src, "You will [prefs.hear_barks ? "" : "not "]hear vocal barks.")
+	to_chat(src, "你将[prefs.hear_barks ? "听到" : "不再听到"]发言音效。")
 
 /client/verb/toggle_xptext() // Whether the user can see the balloon XP pop ups.
 	set category = "Options"
@@ -821,7 +821,7 @@
 	if(prefs)
 		prefs.floating_text_toggles ^= XP_TEXT
 		prefs.save_preferences()
-	to_chat(src, "You will[prefs.floating_text_toggles & XP_TEXT ? "" : " not"] see XP pop ups.")
+	to_chat(src, "你将[prefs.floating_text_toggles & XP_TEXT ? "看到" : "不再看到"]经验浮动提示。")
 
 /client/verb/toggle_floatingtext() // Whether the user can see the balloon pop ups at all.
 	set category = "Options"
@@ -830,18 +830,18 @@
 	if(prefs)
 		prefs.floating_text_toggles ^= FLOATING_TEXT
 		prefs.save_preferences()
-	to_chat(src, "You will [prefs.floating_text_toggles & FLOATING_TEXT ? "see" : "not see any"] floating text.")
+	to_chat(src, "你将[prefs.floating_text_toggles & FLOATING_TEXT ? "看到" : "不再看到"]浮动文本。")
 
 /client/verb/toggle_deadchat() // Whether the user can see DSAY or not.
 	set name = "Show/Hide Deadchat"
 	set category = "Options"
-	set desc ="Toggles seeing deadchat"
+	set desc ="切换是否显示亡者聊天"
 	set hidden = 1
 
 	if(prefs)
 		prefs.chat_toggles ^= CHAT_DSAY
 		prefs.save_preferences()
-	to_chat(src, "You will [(prefs.chat_toggles & CHAT_DSAY) ? "now" : "no longer"] see deadchat.")
+	to_chat(src, "你将[(prefs.chat_toggles & CHAT_DSAY) ? "看到" : "不再看到"]死者频道。")
 	if(holder)
 		SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Deadchat Visibility", "[prefs.chat_toggles & CHAT_DSAY ? "Enabled" : "Disabled"]"))
 
@@ -856,7 +856,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_ears)(
 	set desc = ""
 	set hidden = 1
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTEARS
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"].")
+	to_chat(usr, "作为幽灵，你将[(usr.client.prefs.chat_toggles & CHAT_GHOSTEARS) ? "看到世界中的所有发言" : "仅看到附近角色的发言"]。")
 	usr.client.prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Ears", "[usr.client.prefs.chat_toggles & CHAT_GHOSTEARS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_ears/Get_checked(client/C)
@@ -868,7 +868,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_sight)
 	set desc = ""
 	set hidden = 1
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTSIGHT
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"].")
+	to_chat(usr, "作为幽灵，你将[(usr.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) ? "看到世界中的所有动作" : "仅看到附近角色的动作"]。")
 	usr.client.prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Sight", "[usr.client.prefs.chat_toggles & CHAT_GHOSTSIGHT ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_sight/Get_checked(client/C)
@@ -880,7 +880,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_whispe
 	set desc = ""
 	set hidden = 1
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTWHISPER
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTWHISPER) ? "see all whispers in the world" : "only see whispers from nearby mobs"].")
+	to_chat(usr, "作为幽灵，你将[(usr.client.prefs.chat_toggles & CHAT_GHOSTWHISPER) ? "看到世界中的所有耳语" : "仅看到附近角色的耳语"]。")
 	usr.client.prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Whispers", "[usr.client.prefs.chat_toggles & CHAT_GHOSTWHISPER ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_whispers/Get_checked(client/C)
@@ -892,7 +892,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_radio)
 	set desc = ""
 	set hidden = 1
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTRADIO
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTRADIO) ? "see radio chatter" : "not see radio chatter"].")
+	to_chat(usr, "作为幽灵，你将[(usr.client.prefs.chat_toggles & CHAT_GHOSTRADIO) ? "看到无线电通讯" : "不再看到无线电通讯"]。")
 	usr.client.prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Radio", "[usr.client.prefs.chat_toggles & CHAT_GHOSTRADIO ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc! //social experiment, increase the generation whenever you copypaste this shamelessly GENERATION 1
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_radio/Get_checked(client/C)
@@ -904,7 +904,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_pda)()
 	set desc = ""
 	set hidden = 1
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTPDA
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTPDA) ? "see all pda messages in the world" : "only see pda messages from nearby mobs"].")
+	to_chat(usr, "作为幽灵，你将[(usr.client.prefs.chat_toggles & CHAT_GHOSTPDA) ? "看到世界中的所有PDA消息" : "仅看到附近角色的PDA消息"]。")
 	usr.client.prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost PDA", "[usr.client.prefs.chat_toggles & CHAT_GHOSTPDA ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_pda/Get_checked(client/C)
@@ -921,7 +921,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox/Events, toggle_death
 	set hidden = 1
 	usr.client.prefs.toggles ^= DISABLE_DEATHRATTLE
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.toggles & DISABLE_DEATHRATTLE) ? "no longer" : "now"] get messages when a sentient mob dies.")
+	to_chat(usr, "有智慧生物死亡时，你将[(usr.client.prefs.toggles & DISABLE_DEATHRATTLE) ? "不再收到" : "收到"]消息。")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Deathrattle", "[!(usr.client.prefs.toggles & DISABLE_DEATHRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should spend some time reading the comments.
 /datum/verbs/menu/Settings/Ghost/chatterbox/Events/toggle_deathrattle/Get_checked(client/C)
 	return !(C.prefs.toggles & DISABLE_DEATHRATTLE)
@@ -932,7 +932,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox/Events, toggle_arriv
 	set desc = ""
 	set hidden = 1
 	usr.client.prefs.toggles ^= DISABLE_ARRIVALRATTLE
-	to_chat(usr, "You will [(usr.client.prefs.toggles & DISABLE_ARRIVALRATTLE) ? "no longer" : "now"] get messages when someone joins the station.")
+	to_chat(usr, "有玩家加入时，你将[(usr.client.prefs.toggles & DISABLE_ARRIVALRATTLE) ? "不再收到" : "收到"]消息。")
 	usr.client.prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Arrivalrattle", "[!(usr.client.prefs.toggles & DISABLE_ARRIVALRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should rethink where your life went so wrong.
 /datum/verbs/menu/Settings/Ghost/chatterbox/Events/toggle_arrivalrattle/Get_checked(client/C)
@@ -945,7 +945,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost, togglemidroundantag)()
 	set hidden = 1
 	usr.client.prefs.toggles ^= MIDROUND_ANTAG
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.toggles & MIDROUND_ANTAG) ? "now" : "no longer"] be considered for midround antagonist positions.")
+	to_chat(usr, "你将[(usr.client.prefs.toggles & MIDROUND_ANTAG) ? "被纳入" : "不再被纳入"]轮次中途反派角色的候选名单。")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Midround Antag", "[usr.client.prefs.toggles & MIDROUND_ANTAG ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/togglemidroundantag/Get_checked(client/C)
 	return C.prefs.toggles & MIDROUND_ANTAG*/
@@ -958,11 +958,11 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggletitlemusic)()
 	usr.client.prefs.toggles ^= SOUND_LOBBY
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_LOBBY)
-		to_chat(usr, "You will now hear music in the lobby.")
+		to_chat(usr, "你现在能听到大厅音乐。")
 		if(isnewplayer(usr))
 			usr.client.playtitlemusic()
 	else
-		to_chat(usr, "You will no longer hear music in the lobby.")
+		to_chat(usr, "你不再能听到大厅音乐。")
 		usr.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Lobby Music", "[usr.client.prefs.toggles & SOUND_LOBBY ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/toggletitlemusic/Get_checked(client/C)
@@ -977,9 +977,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, togglemidis)()
 	usr.client.prefs.toggles ^= SOUND_MIDI
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_MIDI)
-		to_chat(usr, "You will now hear any sounds uploaded by admins.")
+		to_chat(usr, "你现在能听到管理员上传的声音。")
 	else
-		to_chat(usr, "You will no longer hear sounds uploaded by admins")
+		to_chat(usr, "你不再能听到管理员上传的声音。")
 		usr.stop_sound_channel(CHANNEL_ADMIN)
 		var/client/C = usr.client
 		if(C && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
@@ -999,9 +999,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_instruments)()
 	usr.client.update_sounds()
 	usr.client.sync_instrument_audio_toggle()
 	if(usr.client.prefs.toggles & SOUND_INSTRUMENTS)
-		to_chat(usr, "You will now hear people playing musical instruments.")
+		to_chat(usr, "你现在能听到他人演奏乐器。")
 	else
-		to_chat(usr, "You will no longer hear musical instruments.")
+		to_chat(usr, "你不再能听到乐器演奏。")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Instruments", "[usr.client.prefs.toggles & SOUND_INSTRUMENTS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/toggle_instruments/Get_checked(client/C)
 	return C.prefs.toggles & SOUND_INSTRUMENTS
@@ -1015,9 +1015,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, Toggle_Soundscape)()
 	usr.client.prefs.toggles ^= SOUND_AMBIENCE
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_AMBIENCE)
-		to_chat(usr, "You will now hear ambient sounds.")
+		to_chat(usr, "你现在能听到环境音。")
 	else
-		to_chat(usr, "You will no longer hear ambient sounds.")
+		to_chat(usr, "你不再能听到环境音。")
 		usr.stop_sound_channel(CHANNEL_AMBIENCE)
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ambience", "[usr.client.prefs.toggles & SOUND_AMBIENCE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/Toggle_Soundscape/Get_checked(client/C)
@@ -1032,9 +1032,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_ship_ambience)()
 	usr.client.prefs.toggles ^= SOUND_SHIP_AMBIENCE
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
-		to_chat(usr, "You will now hear ship ambience.")
+		to_chat(usr, "你现在能听到船只环境音。")
 	else
-		to_chat(usr, "You will no longer hear ship ambience.")
+		to_chat(usr, "你不再能听到船只环境音。")
 		usr.client.ambience_playing = 0
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ship Ambience", "[usr.client.prefs.toggles & SOUND_SHIP_AMBIENCE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, I bet you read this comment expecting to see the same thing :^)
 /datum/verbs/menu/Settings/Sound/toggle_ship_ambience/Get_checked(client/C)
@@ -1047,7 +1047,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_announcement_sound)()
 	set desc = ""
 	set hidden = 1
 	usr.client.prefs.toggles ^= SOUND_ANNOUNCEMENTS
-	to_chat(usr, "You will now [(usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS) ? "hear announcement sounds" : "no longer hear announcements"].")
+	to_chat(usr, "你将[(usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS) ? "听到公告声音" : "不再听到公告声音"]。")
 	usr.client.prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Announcement Sound", "[usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/toggle_announcement_sound/Get_checked(client/C)
@@ -1072,7 +1072,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_ooc)()
 	set hidden = 1
 	usr.client.prefs.chat_toggles ^= CHAT_OOC
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.chat_toggles & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel.")
+	to_chat(usr, "你将[(usr.client.prefs.chat_toggles & CHAT_OOC) ? "看到" : "不再看到"]OOC频道消息。")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Seeing OOC", "[usr.client.prefs.chat_toggles & CHAT_OOC ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/listen_ooc/Get_checked(client/C)
 	return C.prefs.chat_toggles & CHAT_OOC
@@ -1084,7 +1084,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_bank_card)()
 	set hidden = 1
 	usr.client.prefs.chat_toggles ^= CHAT_BANKCARD
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.chat_toggles & CHAT_BANKCARD) ? "now" : "no longer"] be notified when you get paid.")
+	to_chat(usr, "收到工资时，你将[(usr.client.prefs.chat_toggles & CHAT_BANKCARD) ? "收到" : "不再收到"]通知。")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Income Notifications", "[(usr.client.prefs.chat_toggles & CHAT_BANKCARD) ? "Enabled" : "Disabled"]"))
 /datum/verbs/menu/Settings/listen_bank_card/Get_checked(client/C)
 	return C.prefs.chat_toggles & CHAT_BANKCARD*/
@@ -1097,9 +1097,9 @@ GLOBAL_LIST_INIT(ghost_forms, sortList(list("ghost","ghostking","ghostian2","ske
 							"ghost_mellow","ghost_rainbow","ghost_camo","ghost_fire", "catghost")))
 /client/proc/pick_form()
 	if(!is_content_unlocked())
-		alert("This setting is for accounts with BYOND premium only.")
+		alert("此设置仅供 BYOND 高级会员账号使用。")
 		return
-	var/new_form = input(src, "Thanks for supporting BYOND - Choose your ghostly form:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
+	var/new_form = input(src, "感谢支持 BYOND——请选择幽灵外形：","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
 	if(new_form)
 		prefs.ghost_form = new_form
 		prefs.save_preferences()
@@ -1111,9 +1111,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 
 /client/proc/pick_ghost_orbit()
 	if(!is_content_unlocked())
-		alert("This setting is for accounts with BYOND premium only.")
+		alert("此设置仅供 BYOND 高级会员账号使用。")
 		return
-	var/new_orbit = input(src, "Thanks for supporting BYOND - Choose your ghostly orbit:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_orbits
+	var/new_orbit = input(src, "感谢支持 BYOND——请选择幽灵环绕轨迹：","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_orbits
 	if(new_orbit)
 		prefs.ghost_orbit = new_orbit
 		prefs.save_preferences()
@@ -1122,7 +1122,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 			O.ghost_orbit = new_orbit
 
 /client/proc/pick_ghost_accs()
-	var/new_ghost_accs = alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,"full accessories", "only directional sprites", "default sprites")
+	var/new_ghost_accs = alert("你希望幽灵尽可能显示完整配饰，隐藏配饰但保留方向外观，还是忽略方向并使用默认外观？",,"full accessories", "only directional sprites", "default sprites")
 	if(new_ghost_accs)
 		switch(new_ghost_accs)
 			if("full accessories")
@@ -1144,7 +1144,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!holder)
 		return
 	if(is_content_unlocked())
-		switch(alert("Which setting do you want to change?",,"Ghost Form","Ghost Orbit","Ghost Accessories"))
+		switch(alert("你想更改幽灵外形、环绕轨迹还是配饰设置？",,"Ghost Form","Ghost Orbit","Ghost Accessories"))
 			if("Ghost Form")
 				pick_form()
 			if("Ghost Orbit")
@@ -1161,7 +1161,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set hidden = 1
 	if(!holder)
 		return
-	var/new_ghost_others = alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,"Their Setting", "Default Sprites", "White Ghost")
+	var/new_ghost_others = alert("其他玩家的幽灵应按其个人设置显示、使用其默认外观，还是始终显示为默认白色幽灵？",,"Their Setting", "Default Sprites", "White Ghost")
 	if(new_ghost_others)
 		switch(new_ghost_others)
 			if("Their Setting")
@@ -1183,7 +1183,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!holder)
 		return
 	prefs.toggles ^= INTENT_STYLE
-	to_chat(src, "[(prefs.toggles & INTENT_STYLE) ? "Clicking directly on intents selects them." : "Clicking on intents rotates selection clockwise."]")
+	to_chat(src, "[(prefs.toggles & INTENT_STYLE) ? "点击意图按钮可直接选中对应意图。" : "点击意图按钮将按顺时针顺序切换意图。"]")
 	prefs.save_preferences()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Intent Selection", "[prefs.toggles & INTENT_STYLE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1195,7 +1195,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!holder)
 		return
 	prefs.ghost_hud = !prefs.ghost_hud
-	to_chat(src, "Ghost HUD will now be [prefs.ghost_hud ? "visible" : "hidden"].")
+	to_chat(src, "幽灵HUD现在[prefs.ghost_hud ? "显示" : "隐藏"]。")
 	prefs.save_preferences()
 	if(isobserver(mob))
 		mob.hud_used.show_hud()

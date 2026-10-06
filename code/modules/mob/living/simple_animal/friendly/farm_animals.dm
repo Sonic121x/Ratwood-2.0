@@ -181,7 +181,7 @@
 			span_revennotice("[internal]"))
 
 /mob/living/simple_animal/chick
-	name = "\improper 雏鸡"
+	name = "\proper 雏鸡"
 	desc = ""
 	icon_state = "chick"
 	icon_living = "chick"
@@ -236,7 +236,7 @@
 	amount_grown = 0
 
 /mob/living/simple_animal/chicken
-	name = "\improper 鸡"
+	name = "\proper 鸡"
 	desc = ""
 	gender = FEMALE
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST

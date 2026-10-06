@@ -116,9 +116,9 @@
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sheath, SLOT_BELT_R, TRUE)
 
 		var/helmets = list(
-			"靛纹精灵巴布塔盔" = /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
-			"精灵巴布塔盔"	= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak,
-			"翼纹精灵巴布塔盔" = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
+			"靛纹精灵巴尔布特盔" = /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
+			"精灵巴尔布特盔"	= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak,
+			"翼纹精灵巴尔布特盔" = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "执盔") as anything in helmets
 		head = helmets[helmchoice]

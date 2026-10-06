@@ -73,10 +73,10 @@
 	H.energy = H.max_energy //Just in case.
 	REMOVE_TRAIT(H, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	to_chat(H, span_danger("你是自死亡中归来的远古战士，不是什么滑稽骷髅。请以威严与压迫感来扮演，而非靠搞笑。"))
-	var/helmets = list("巴布塔盔 - 带面罩", "蛙嘴盔 - 强化护颈", "尖顶盔", "狼面盔 - 带面罩")
+	var/helmets = list("巴尔布特盔 - 带面罩", "蛙嘴盔 - 强化护颈", "尖顶盔", "狼面盔 - 带面罩")
 	var/helmet_choice = input(H, "选择你的头盔。", "来自女士的庇护") as anything in helmets
 	switch(helmet_choice)
-		if("巴布塔盔 - 带面罩")
+		if("巴尔布特盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
 		if("蛙嘴盔 - 强化护颈")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo

@@ -99,7 +99,7 @@
 
 /obj/item/candle/eora
 	icon = 'icons/roguetown/items/lighting.dmi'
-	name = "艾欧拉之烛"
+	name = "伊欧拉之烛"
 	desc = "一支相当可爱的蜡烛，泛着淡淡红晕。"
 	color = "#f858b5ff"
 	light_color = "#ff13d8ff"

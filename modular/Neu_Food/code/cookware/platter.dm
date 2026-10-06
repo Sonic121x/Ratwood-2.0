@@ -16,7 +16,7 @@
 /obj/item/cooking/platter/get_mechanics_examine(mob/user)
 	. = ..()
 	. += span_info("左键点击装有食物的托盘来“摆盘”。摆盘后还可以有效防止食物腐烂。")
-	. += span_info("可以用羽毛笔重命名。但摆盘或完成食物时会覆盖名称。")
+	. += span_info("可以用羽毛重命名。但摆盘或完成食物时会覆盖名称。")
 	. += span_info("摆盘食物受贵族青睐。用叉子左键点击摆盘食物可以更优雅地食用。")
 
 /*

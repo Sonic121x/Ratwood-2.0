@@ -238,8 +238,8 @@
 			return
 
 /obj/item/book/rogue/bibble/psy
-	name = "普西顿圣典"
-	desc = "'而祂哭泣。不是为你，不是为我，而是为这一切。' </br>一本皮面典籍，记述着正教会所奉持的信条；这是世上最大的普西顿教派。奥塔瓦神职者近来发明的“哈劳斯印刷机”，确保普西多尼亚的每一处角落都能沐于祂的教诲之光。书中分为三部圣约，各以天鹅绒束带标记。</br>诗篇 - 神职智慧之圣约，昭示诠释。 </br>创世 - 普西多尼亚起源之圣约，记述往昔。 </br>祷文 - 意志之圣约，用以驱邪与咏唱。"
+	name = "普赛顿圣典"
+	desc = "'而祂哭泣。不是为你，不是为我，而是为这一切。' </br>一本皮面典籍，记述着正教会所奉持的信条；这是世上最大的普赛顿教派。奥塔瓦神职者近来发明的“哈劳斯印刷机”，确保普赛多尼亚的每一处角落都能沐于祂的教诲之光。书中分为三部圣约，各以天鹅绒束带标记。</br>诗篇 - 神职智慧之圣约，昭示诠释。 </br>创世 - 普赛多尼亚起源之圣约，记述往昔。 </br>祷文 - 意志之圣约，用以驱邪与咏唱。"
 	icon_state = "psyble_0"
 	base_icon_state = "psyble"
 	title = "psyble"
@@ -268,7 +268,7 @@
 			if(m)
 				if(prob(1) && sect == "sect1")
 					user.playsound_local(user, 'sound/misc/psydong.ogg', 100, FALSE)
-					user.say("PSY 23:4……于是 ZEZUS 哭泣了；因为他已被 JVDAS 的镀银标枪击倒，而 JVDAS 正是 PSYDON 最虔诚的信徒。")
+					user.say("PSY 23:4……于是 ZEZUS 哭泣了；因为他已被 JVDAS 的镀银标枪击倒，而 JVDAS 正是普赛顿最虔诚的信徒。")
 					user.psydo_nyte()
 				else
 					user.say(m)
@@ -387,7 +387,7 @@
 	bookfile = "tales5.json"
 
 /obj/item/book/rogue/blackmountain
-	name = "《Zabrekalrek：黑山传奇》第一部"
+	name = "《扎布雷卡尔雷克：黑山传奇》第一部"
 	desc = "著者：戈雷克·撰史者，译者：哈格里德·代言人。"
 	icon_state ="book6_0"
 	base_icon_state = "book6"

@@ -155,7 +155,7 @@
 		if("lizard") return "蜥蜴人"
 		if("goblin") return "哥布林"
 		if("kobold") return "狗头人"
-		if("aasimar") return "亚斯玛"
+		if("aasimar") return "亚斯玛尔"
 		if("halfkin") return "半身人"
 		if("wildkin") return "兽裔"
 		if("critter") return "小兽裔"

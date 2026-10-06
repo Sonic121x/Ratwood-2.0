@@ -38,8 +38,8 @@
 	var/datum/objective/literacy/new_objective = new(owner = chosen_illiterate.mind)
 	chosen_illiterate.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_illiterate, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_illiterate, span_notice("Noc demands you get literate! Learn to read to earn Noc's favor!"))
+	to_chat(chosen_illiterate, span_userdanger("你是神的选民！"))
+	to_chat(chosen_illiterate, span_notice("诺克要你学会识字！学习阅读，赢得诺克的青睐！"))
 	chosen_illiterate.playsound_local(chosen_illiterate, 'sound/ambience/noises/mystical (4).ogg', 100)
 
 	chosen_illiterate.mind.announce_personal_objectives()

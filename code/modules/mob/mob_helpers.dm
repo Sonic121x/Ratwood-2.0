@@ -899,11 +899,11 @@
 		if((brute_heal > 0 && affecting.brute_dam > 0) || (burn_heal > 0 && affecting.burn_dam > 0))
 			if(affecting.heal_damage(brute_heal, burn_heal, 0, BODYPART_ROBOTIC))
 				H.update_damage_overlays()
-			user.visible_message(span_notice("[user] has fixed some of the [dam ? "dents on" : "burnt wires in"] [H]'s [affecting.name]."), \
-			span_notice("I fix some of the [dam ? "dents on" : "burnt wires in"] [H == user ? "your" : "[H]'s"] [affecting.name]."))
+			user.visible_message(span_notice("[user]修好了[H]的[affecting.name]上的一些[dam ? "凹痕" : "烧坏的线路"]。"), \
+			span_notice("我修好了[H == user ? "自己" : "[H]"]的[affecting.name]上的一些[dam ? "凹痕" : "烧坏的线路"]。"))
 			return 1 //successful heal
 		else
-			to_chat(user, span_warning("[affecting] is already in good condition!"))
+			to_chat(user, span_warning("[affecting]已经完好无损了！"))
 
 ///Is the passed in mob an admin ghost
 /proc/IsAdminGhost(mob/user)
@@ -925,11 +925,11 @@
  * Automatic logging and uses pollCandidatesForMob, how convenient
  */
 /proc/offer_control(mob/M)
-	to_chat(M, "Control of your mob has been offered to dead players.")
+	to_chat(M, "你的角色控制权已向死亡玩家开放认领。")
 	if(usr)
 		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
 		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
-	var/poll_message = "Do you want to play as [M.real_name]?"
+	var/poll_message = "你想扮演[M.real_name]吗？"
 	if(M.mind && M.mind.assigned_role)
 		poll_message = "[poll_message] Job:[M.mind.assigned_role]."
 	if(M.mind && M.mind.special_role)
@@ -942,7 +942,7 @@
 
 	if(LAZYLEN(candidates))
 		var/mob/C = pick(candidates)
-		to_chat(M, "Your mob has been taken over by a ghost!")
+		to_chat(M, "一名幽灵已接管你的角色！")
 		message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(M)])")
 		M.ghostize(0,drawskip=TRUE)
 		M.key = C.key
@@ -950,7 +950,7 @@
 			qdel(C)
 		return TRUE
 	else
-		to_chat(M, "There were no ghosts willing to take control.")
+		to_chat(M, "没有幽灵愿意接管你的角色。")
 		message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")
 		return FALSE
 
