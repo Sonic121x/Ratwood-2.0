@@ -1,5 +1,5 @@
 /obj/item/clothing/head/roguetown/helmet/heavy
-	name = "巴布塔盔"
+	name = "巴尔布特盔"
 	desc = "一顶朴素的头盔，面甲呈 Y 字形。"
 	body_parts_covered = FULL_HEAD
 	icon_state = "barbute"
@@ -19,7 +19,7 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_MAGEDEXTERITY)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/bronze
-	name = "青铜巴布塔盔"
+	name = "青铜巴尔布特盔"
 	desc = "一顶青铜大盔，其护鼻与护颊板让佩戴者的面容笼罩在黑暗中。往昔的英雄早已逝去， \
 	但他们的血脉仍流淌在普赛多尼亚子民的体内；你也不例外。在它的盔顶插上一根羽毛， \
 	便可自豪地展示你的效忠。"
@@ -58,7 +58,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/ancient
-	name = "远古巴布塔盔"
+	name = "远古巴尔布特盔"
 	desc = "抛光的吉尔青铜板片经锻打制成带面甲的头盔。齐佐号令野心，而野心号令牺牲；让这些支离破碎的军团士兵再度崛起，为那些蒙昧蠢货洒下鲜血。盔缘顶端盘踞着一个螺旋形插孔，等待羽饰插入。"
 	icon_state = "ancientbarbute"
 	smeltresult = /obj/item/ingot/aaslag
@@ -86,7 +86,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/ancient/decrepit
-	name = "破旧巴布塔盔"
+	name = "破旧巴尔布特盔"
 	desc = "磨损的青铜板被锻打成一顶带面甲的头盔。弯曲的护板上满是刮痕与凹陷，那是数百年失修风化留下的痕迹。盔缘上还挂着残破羽饰留下的短茬。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_DECREPIT
 	color = "#bb9696"
@@ -132,7 +132,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard/ancient
 	name = "远古萨伏依盔"
-	desc = "打磨光亮的吉尔青铜护板塑成堡垒般的大盔。普赛顿彗星的灼目光芒仿佛永远烙进了这份合金之中，让人得以瞥见普赛顿沉眠、齐佐苏醒之前那个早已腐朽的旧世界。"
+	desc = "打磨光亮的吉尔青铜护板塑成堡垒般的大盔。彗星西昂的灼目光芒仿佛永远烙进了这份合金之中，让人得以瞥见普赛顿沉眠、齐佐苏醒之前那个早已腐朽的旧世界。"
 	icon_state = "ancientsavoyard"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -172,7 +172,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/gold
 	name = "黄金头盔"
-	desc = "一顶华美的巴布塔盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
+	desc = "一顶华美的巴尔布特盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
 	即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
 	icon_state = "goldbarbute"
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
@@ -187,7 +187,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/gold/king
 	name = "王室黄金头盔"
-	desc = "一顶华美的巴布塔盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
+	desc = "一顶华美的巴尔布特盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
 	额上那顶缀饰王冠昭示着权威，无论其来路不正，还是名正言顺。"
 	icon_state = "goldbarbute_crown"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
@@ -529,8 +529,8 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
-	name = "普赛顿式巴布塔盔"
-	desc = "一顶仪式用巴布塔盔，精工锻造而成，用以象征普赛顿的神圣权威。圣玛勒姆教团的工匠将这副多叉圣容雕进了多得超乎你想象的雕像之中。"
+	name = "普赛顿式巴尔布特盔"
+	desc = "一顶仪式用巴尔布特盔，精工锻造而成，用以象征普赛顿的神圣权威。圣玛勒姆教团的工匠将这副多叉圣容雕进了多得超乎你想象的雕像之中。"
 	icon_state = "psydonbarbute"
 	item_state = "psydonbarbute"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
@@ -969,7 +969,7 @@
 	to_chat(H, span_warning("[name]抗拒了我的触碰，唯有树父的忠诚信徒才配承受这份礼物！"))
 
 /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light
-	name = "林纹精灵巴布塔盔"
+	name = "林纹精灵巴尔布特盔"
 	desc = "一顶由交织木质拼构而成的头盔，靠古老歌谣维系生机，并冠以永不凋零的鲜活枝叶。它比那顶更厚实的同类更轻盈、更柔韧，会随佩戴者的意志弯折，从未真正与活着的林地断绝联系。"
 	body_parts_covered = HEAD|HAIR|NOSE|EARS|NECK
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
@@ -1035,7 +1035,7 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo
-	name = "阿万廷蛙嘴盔"
+	name = "阿凡泰因蛙嘴盔"
 	desc = "<font color='A50021'>在一片古老的土地上，两条巨大的、无躯干的石腿矗立在沙漠之中。</font>"
 	icon_state = "zizofrogmouth"
 	item_state = "zizofrogmouth"
@@ -1095,7 +1095,7 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "VISAGE")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo
-	name = "阿万廷巴布塔盔"
+	name = "阿凡泰因巴尔布特盔"
 	desc = "<font color='A50021'>在一片古老的土地上，两条巨大的、无躯干的石腿矗立在沙漠之中。</font>"
 	adjustable = CAN_CADJUST
 	icon_state = "zizobarbute"
@@ -1112,7 +1112,7 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo
-	name = "阿万廷护鼻盔"
+	name = "阿凡泰因护鼻盔"
 	desc = "<font color='A50021'>在一片古老的土地上，两条巨大的、无躯干的石腿矗立在沙漠之中。</font>"
 	adjustable = CANT_CADJUST
 	icon_state = "zizobascinet"
@@ -1130,7 +1130,7 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo
-	name = "阿万廷狼面护鼻盔"
+	name = "阿凡泰因狼面护鼻盔"
 	desc = "<font color='A50021'>在一片古老的土地上，两条巨大的、无躯干的石腿矗立在沙漠之中。</font>"
 	adjustable = CAN_CADJUST
 	icon_state = "volfplate_avantyne"
@@ -1163,7 +1163,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/captain
 	name = "队长头盔"
-	desc = "一顶优雅的巴布塔盔，装配着贵族风格的金边与抛光金属。"
+	desc = "一顶优雅的巴尔布特盔，装配着贵族风格的金边与抛光金属。"
 	icon = 'icons/roguetown/clothing/special/captain.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/captain.dmi'
 	icon_state = "capbarbute"

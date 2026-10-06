@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	if(!challenger)
 		return
 
-	priority_announce("[challenger.name] challenges Astrata's leadership! The outcome of this conflict will be decided in less than 2 daes by a sheer number of their alive supporters. [challenger.name] promises great rewards to the faithful if victorious, while Astrata swears revenge to any who dare to defy her. Choose your side, or stand aside...", "Schism within the Ten", 'sound/magic/marked.ogg')
+	priority_announce("[challenger.name]挑战阿斯特拉塔的领导地位！这场冲突将在不到2天内，以双方存活支持者的数量决定胜负。[challenger.name]承诺获胜后重赏信徒，而阿斯特拉塔誓言报复一切胆敢违抗祂的人。选择你的阵营，或置身事外……", "Schism within the Ten", 'sound/magic/marked.ogg')
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		setup_mob(H)
 
@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	if(!challenger || !H)
 		return
 
-	to_chat(H, span_notice("There is an active schism within the Ten! [challenger.name] has challenged Astrata's leadership!"))
+	to_chat(H, span_notice("十神内部分裂正在发生！[challenger.name]挑战了阿斯特拉塔的领导地位！"))
 	setup_mob(H)
 
 /datum/tennite_schism/proc/setup_mob(mob/living/carbon/human/H)
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/choose_schism_side)
 	if(!is_tennite(H))
-		to_chat(H, span_notice("Even though you are not a tennite and won't matter in the ultimate resolution of this conflict, you may pretend to be one and use the schism to further your own goals..."))
+		to_chat(H, span_notice("你虽不是十神信徒，不会影响这场冲突的最终结果，却可以假扮信徒，借分裂实现自己的目的……"))
 
 /datum/tennite_schism/proc/process_winner()
 	var/datum/patron/challenger = challenger_god.resolve()
@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			challenger_count++
 
 	if(astrata_count >= challenger_count)
-		priority_announce("Astrata's light prevails over the challenge of [challenger.name]! The Sun Queen confirms her status as a true heir of Psydon!", "Astrata is VICTORIOUS!", 'sound/magic/ahh2.ogg')
+		priority_announce("阿斯特拉塔的光辉战胜了[challenger.name]的挑战！太阳女王证明了自己是普赛顿真正的继承者！", "Astrata is VICTORIOUS!", 'sound/magic/ahh2.ogg')
 		adjust_storyteller_influence("Astrata", 200)
 		adjust_storyteller_influence(challenger.name, -50)
 
@@ -81,24 +81,24 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			if(supporter && supporter.patron == astrata)
 				for(var/obj/effect/proc_holder/spell/self/choose_schism_side/spell in supporter.mind.spell_list)
 					if(spell.chose_early)
-						to_chat(supporter, span_notice("Astrata's light prevails! Your steadfast devotion is rewarded with many triumphs."))
+						to_chat(supporter, span_notice("阿斯特拉塔的光辉获胜了！你坚定的虔诚换来了许多凯旋点。"))
 						supporter.adjust_triumphs(3)
 					else
-						to_chat(supporter, span_notice("Astrata's light prevails, but your late support goes unrewarded."))
+						to_chat(supporter, span_notice("阿斯特拉塔的光辉获胜了，但你迟来的支持无法获得奖赏。"))
 					break
 			else if(supporter)
-				to_chat(supporter, span_notice("Astrata's light prevails over the challenge of [challenger.name]! The Sun Queen expected no less than your total support."))
+				to_chat(supporter, span_notice("阿斯特拉塔的光辉战胜了[challenger.name]的挑战！太阳女王要求你全力支持祂。"))
 
 		for(var/datum/weakref/supporter_ref in supporters_challenger)
 			var/mob/living/carbon/human/supporter = supporter_ref.resolve()
 			if(supporter)
-				to_chat(supporter, span_userdanger("NEVER DEFY ME AGAIN!"))
+				to_chat(supporter, span_userdanger("永远别再违抗我！"))
 				supporter.electrocute_act(5, astrata)
 
 		cleanup_schism()
 
 	else if(challenger_count > astrata_count)
-		priority_announce("[challenger.name]'s challenge succeeds against Astrata's tyranny! The Sun Queen is grudgingly forced to share power with [challenger.name]...", "[challenger.name] RULES!", 'sound/magic/inspire_02.ogg')
+		priority_announce("[challenger.name]成功挑战了阿斯特拉塔的暴政！太阳女王被迫不情愿地与[challenger.name]分享权力……", "[challenger.name] RULES!", 'sound/magic/inspire_02.ogg')
 		adjust_storyteller_influence(challenger.name, 200)
 		adjust_storyteller_influence("Astrata", -50)
 
@@ -107,23 +107,23 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			if(supporter && supporter.patron == challenger)
 				for(var/obj/effect/proc_holder/spell/self/choose_schism_side/spell in supporter.mind.spell_list)
 					if(spell.chose_early)
-						to_chat(supporter, span_notice("[challenger.name]'s challenge succeeds! Your persistent faith is rewarded with triumphs."))
+						to_chat(supporter, span_notice("[challenger.name]的挑战成功了！你坚定的信仰换来了凯旋点奖赏。"))
 						supporter.adjust_triumphs(2)
 					else
-						to_chat(supporter, span_notice("[challenger.name] succeeds, but your late support goes unrewarded."))
+						to_chat(supporter, span_notice("[challenger.name]获胜了，但你迟来的支持无法获得奖赏。"))
 					break
 			else if(supporter)
 				for(var/obj/effect/proc_holder/spell/self/choose_schism_side/spell in supporter.mind.spell_list)
 					if(spell.chose_early)
-						to_chat(supporter, span_notice("[challenger.name]'s challenge succeeds against Astrata's tyranny! Your support is rewarded with a triumph."))
+						to_chat(supporter, span_notice("[challenger.name]成功挑战了阿斯特拉塔的暴政！你的支持换来了一点凯旋点。"))
 						supporter.adjust_triumphs(1)
 					else
-						to_chat(supporter, span_notice("[challenger.name]'s challenge succeeds, but your late support goes unrewarded."))
+						to_chat(supporter, span_notice("[challenger.name]的挑战成功了，但你迟来的支持无法获得奖赏。"))
 					break
 		for(var/datum/weakref/supporter_ref in supporters_astrata)
 			var/mob/living/carbon/human/supporter = supporter_ref.resolve()
 			if(supporter)
-				to_chat(supporter, span_userdanger("INCOMPETENT IMBECILES!"))
+				to_chat(supporter, span_userdanger("无能的蠢货！"))
 				supporter.electrocute_act(5, astrata)
 
 		if(GLOB.todoverride == null)
@@ -132,7 +132,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 		addtimer(CALLBACK(src, PROC_REF(select_and_announce_vice_priest), challenger), 30 SECONDS)
 
 /datum/tennite_schism/proc/astrata_scorn()
-		priority_announce("You don't deserve my holy light, you ungrateful swines!", "Astrata's Scorn", 'sound/magic/fireball.ogg')
+		priority_announce("你们不配沐浴我的圣光，忘恩负义的猪猡！", "Astrata's Scorn", 'sound/magic/fireball.ogg')
 		GLOB.todoverride = "night"
 		settod()
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reset_tod_override)), 20 MINUTES)
@@ -172,15 +172,15 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 		//selected_priest.verbs |= /mob/living/carbon/human/proc/churchcurse	- Add this back seperate later in a seperate PR. Good feature, PR too big tho.
 		selected_priest.verbs |= /mob/living/carbon/human/proc/churchannouncement
 
-		priority_announce("[challenger.name] has selected [selected_priest.real_name] as a new Bishop! Power sharing begins!", "Bishop rises", 'sound/magic/inspire_02.ogg')
+		priority_announce("[challenger.name]选定[selected_priest.real_name]为新任主教！权力共享开始了！", "Bishop rises", 'sound/magic/inspire_02.ogg')
 
 		if(was_supporter)
-			to_chat(selected_priest, span_green("[challenger.name] smiles upon you! Your faithful support during the schism has been rewarded with the position of a Vice Bishop!"))
+			to_chat(selected_priest, span_green("[challenger.name]向你投以微笑！你在分裂期间忠诚的支持，为你赢得了副主教之位！"))
 		else
-			to_chat(selected_priest, span_green("Though you did not openly support [challenger.name] during the schism, you have been chosen to serve as a Vice Bishop!"))
+			to_chat(selected_priest, span_green("虽然你在分裂期间并未公开支持[challenger.name]，你仍被选中担任副主教！"))
 
 		if(D)
-			to_chat(selected_priest, span_notice("You have gained a passive devotion gain and powers to announce, excommunicate or curse!"))
+			to_chat(selected_priest, span_notice("你获得了持续增长的虔诚，以及发布公告与执行绝罚的权能！"))
 
 	cleanup_schism()
 
@@ -214,9 +214,9 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			challenger_count++
 
 	if(astrata_count >= challenger_count)
-		priority_announce("Astrata is leading in the schism! She will have her revenge soon enough...", "Schism Rages On", 'sound/magic/marked.ogg')
+		priority_announce("阿斯特拉塔在分裂中领先！祂很快便会施行报复……", "Schism Rages On", 'sound/magic/marked.ogg')
 	else if(challenger_count > astrata_count)
-		priority_announce("[challenger.name] is leading in the schism! Astrata will soon be forced to yield...", "Schism Rages On", 'sound/magic/marked.ogg')
+		priority_announce("[challenger.name]在分裂中领先！阿斯特拉塔很快便会被迫让步……", "Schism Rages On", 'sound/magic/marked.ogg')
 
 	halfway_passed = TRUE
 
@@ -228,15 +228,15 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	switch(new_side)
 		if("astrata")
 			supporters_astrata += WEAKREF(user)
-			to_chat(user, span_notice("You have declared your allegiance to Astrata!"))
+			to_chat(user, span_notice("你已宣布效忠阿斯特拉塔！"))
 		if("challenger")
 			supporters_challenger += WEAKREF(user)
 			var/datum/patron/challenger = challenger_god.resolve()
 			if(challenger)
-				to_chat(user, span_notice("You have declared your allegiance to [challenger.name]!"))
+				to_chat(user, span_notice("你已宣布效忠[challenger.name]！"))
 		if("neutral")
 			neutrals += WEAKREF(user)
-			to_chat(user, span_notice("You have declared neutrality in the schism."))
+			to_chat(user, span_notice("你已宣布在分裂中保持中立。"))
 
 /obj/effect/proc_holder/spell/self/choose_schism_side
 	name = "Choose your side"
@@ -247,22 +247,22 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 
 /obj/effect/proc_holder/spell/self/choose_schism_side/cast(mob/living/carbon/human/user)
 	if(!length(GLOB.tennite_schisms))
-		to_chat(user, span_warning("There is no active schism to participate in."))
+		to_chat(user, span_warning("当前没有可参与的分裂。"))
 		return
 
 	var/datum/tennite_schism/current_schism = GLOB.tennite_schisms[1]
 	var/datum/patron/challenger = current_schism.challenger_god.resolve()
 
 	if(uses_remaining <= 0)
-		to_chat(user, span_warning("You've already finalized your allegiance in the schism."))
+		to_chat(user, span_warning("你已确定在分裂中的最终阵营。"))
 		return
 
 	var/list/options = list()
-	options["Astrata"] = "astrata"
-	options["Neutral"] = "neutral"
+	options["阿斯特拉塔"] = "astrata"
+	options["中立"] = "neutral"
 	if(challenger)
 		options["[challenger.name]"] = "challenger"
-	var/choice = input(user, "Choose your allegiance in the schism, you can change your side [uses_remaining] more time\s", "Choose your side") as null|anything in options
+	var/choice = input(user, "选择你在分裂中的阵营，你还可以改变[uses_remaining]次立场", "Choose your side") as null|anything in options
 	if(!choice || !current_schism)
 		return
 
@@ -276,7 +276,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 		current_side = "neutral"
 
 	if(options[choice] == current_side)
-		to_chat(user, span_notice("You're already supporting this side!"))
+		to_chat(user, span_notice("你已经支持这个阵营了！"))
 		return
 
 	uses_remaining--
@@ -288,7 +288,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	if(uses_remaining <= 0)
 		if(action)
 			action.UpdateButtonIcon()
-		to_chat(user, span_boldnotice("Your allegiance in the schism is now final."))
+		to_chat(user, span_boldnotice("你在分裂中的阵营现已最终确定。"))
 	return TRUE
 
 /datum/round_event_control/schism_within_ten
@@ -340,7 +340,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 			continue
 
 		if(human_mob.patron == strongest_challenger)
-			to_chat(human_mob, span_notice("You hear a divine calling from your patron - the time has come to challenge Astrata's authority! Prepare for the coming schism!"))
+			to_chat(human_mob, span_notice("你听到了守护神的神圣召唤——挑战阿斯特拉塔权威的时刻已到！准备迎接即将到来的分裂！"))
 			human_mob.playsound_local(human_mob, 'sound/magic/marked.ogg', 100)
 
 	new /datum/tennite_schism(strongest_challenger)

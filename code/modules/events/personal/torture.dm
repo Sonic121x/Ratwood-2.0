@@ -46,10 +46,10 @@
 
 	chosen_one.verbs |= /mob/living/carbon/human/proc/revelations
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_biginfo("Zizo demands suffering! Extract information through pain to earn Zizo's favor!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_biginfo("齐佐渴求苦难！用痛苦逼取情报，赢得齐佐的青睐！"))
 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
 
-	to_chat(chosen_one, span_notice("You have gained an ability to <b>torture</b> others!"))
+	to_chat(chosen_one, span_notice("你获得了<b>折磨</b>他人的能力！"))
 
 	chosen_one.mind.announce_personal_objectives()

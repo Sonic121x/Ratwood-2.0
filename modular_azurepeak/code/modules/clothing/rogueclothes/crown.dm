@@ -3,7 +3,7 @@
 /obj/item/clothing/head/roguetown/crown/serpcrown
 	no_loot_taint = TRUE
 	name = "王国之冠"
-	article = "the"
+	article = ""
 	desc = "欲戴此冠，必承其重。"
 	icon_state = "serpcrown"
 	//dropshrink = 0

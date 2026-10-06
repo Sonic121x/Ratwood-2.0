@@ -1479,7 +1479,7 @@
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge
 	name = "钢制焰形剑"
-	desc = "这是格伦泽尔霍夫式“双手剑”的近亲，深受奥塔瓦贵族青睐。其名源自那独特的火焰形剑身；这种工艺唯有普赛顿最出色的武匠方能驾驭。"
+	desc = "这是格伦泽尔霍夫特式“双手剑”的近亲，深受奥塔瓦贵族青睐。其名源自那独特的火焰形剑身；这种工艺唯有普赛顿最出色的武匠方能驾驭。"
 	icon_state = "steelflamberge"
 	max_blade_int = 200
 	max_integrity = 180
@@ -1691,7 +1691,7 @@
 				return list("shrink" = 0.6,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/woodstaff/naledi
-	name = "纳勒迪战杖"
+	name = "纳莱迪战杖"
 	desc = "这根法杖上承载着普赛顿智慧的新月徽记，以及战学者所用的黑金纹章。"
 	icon_state = "naledistaff"
 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)
@@ -1711,8 +1711,8 @@
 
 // Decorative Naledi staff for loadout - regular staff with Naledi appearance
 /obj/item/rogueweapon/woodstaff/decorative
-	name = "装饰纳勒迪法杖"
-	desc = "这根法杖仿照战学者的新月式样打造。虽然外观上颇有纳勒迪战杖的神韵，却缺少真品那种精妙平衡与奥术调谐。"
+	name = "装饰纳莱迪法杖"
+	desc = "这根法杖仿照战学者的新月式样打造。虽然外观上颇有纳莱迪战杖的神韵，却缺少真品那种精妙平衡与奥术调谐。"
 	icon_state = "naledistaff"
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood)
@@ -1789,7 +1789,7 @@
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/silver
 	name = "银头长杖"
-	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳勒迪战学者常携带的战杖。人们说它结实到连阿凡泰因砍在杖身上都不会崩出一根木刺。"
+	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳莱迪战学者常携带的战杖。人们说它结实到连阿凡泰因砍在杖身上都不会崩出一根木刺。"
 	force = 20
 	force_wielded = 27
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
@@ -1810,7 +1810,7 @@
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/psy
 	name = "普赛顿长杖"
-	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳勒迪战学者常携带的战杖。人们说它结实到连阿凡泰因砍在杖身上都不会崩出一根木刺。"
+	desc = "一根以银制端头加固的长杖。这是相当新的设计，据说灵感来自纳莱迪战学者常携带的战杖。人们说它结实到连阿凡泰因砍在杖身上都不会崩出一根木刺。"
 	force = 20
 	force_wielded = 27
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
@@ -1988,7 +1988,7 @@
 
 /obj/item/rogueweapon/spear/lance/blacksteel
 	name = "黑钢骑枪"
-	desc = "一柄华丽的黑钢骑枪，专为骑乘赛加兽进行马上比武而设计。即便如此，在格伦泽尔霍夫，身着黑钢甲胄的骑士们步战时将其作为长矛使用也并不罕见。\
+	desc = "一柄华丽的黑钢骑枪，专为骑乘赛加兽进行马上比武而设计。即便如此，在格伦泽尔霍夫特，身着黑钢甲胄的骑士们步战时将其作为长矛使用也并不罕见。\
 	在柄上裹一段布料以展示你的纹章。"
 	icon_state = "bs_lance"
 	force = 20
@@ -2054,7 +2054,7 @@
 
 /obj/item/rogueweapon/spear/assegai/iron
 	name = "铁制阿塞盖"
-	desc = "一种源自纳勒迪南方地区的长矛。居住在比洛马里大河沿岸的平民自幼便会学习使用阿塞盖，以便抵御精怪的侵袭。"
+	desc = "一种源自纳莱迪南方地区的长矛。居住在比洛马里大河沿岸的平民自幼便会学习使用阿塞盖，以便抵御精怪的侵袭。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	max_integrity = 150
 	max_blade_int = 150
@@ -2063,7 +2063,7 @@
 
 /obj/item/rogueweapon/spear/assegai
 	name = "钢制阿塞盖"
-	desc = "一种源自纳勒迪南方地区的长矛。居住在比洛马里大河沿岸的平民自幼便会学习使用阿塞盖，以便抵御精怪的侵袭。"
+	desc = "一种源自纳莱迪南方地区的长矛。居住在比洛马里大河沿岸的平民自幼便会学习使用阿塞盖，以便抵御精怪的侵袭。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	max_integrity = 250
 	max_blade_int = 200

@@ -1,7 +1,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken
 	icon = 'icons/roguetown/mob/monster/chicken.dmi'
-	name = "\improper 鸡"
+	name = "\proper 鸡"
 	desc = ""
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"

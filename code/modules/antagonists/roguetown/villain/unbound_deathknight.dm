@@ -176,7 +176,7 @@
 		"栅栏盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/black,
 		"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket/black,
 		"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/black,
-		"带面罩萨莱盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/black,
+		"带面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/black,
 		"阿梅特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/black,
 		"犬面猪鼻盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull/black,
 		"伊特鲁里亚盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/black,

@@ -27,11 +27,11 @@
 	desc = "尸鬼动物将频繁复起，并取代普通动物出现。"
 
 /datum/world_trait/abyssor_rage
-	name = "阿比索之怒"
+	name = "阿比索尔之怒"
 	desc = "溺水会更加致命。"
 
 /datum/world_trait/malum_diligence
-	name = "马卢姆的勤勉"
+	name = "玛勒姆的勤勉"
 	desc = "开采岩石时会有额外产出。"
 /*	- Unused for now
 /datum/world_trait/noc_wisdom

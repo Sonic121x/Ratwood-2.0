@@ -324,7 +324,7 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_MAGEDEXTERITY)
 
 /obj/item/clothing/neck/roguetown/bevor/zizo
-	name = "阿万廷护颚"
+	name = "阿凡泰因护颚"
 	desc = "<font color='A50021'>在它们近旁，沙地之上，半埋着一张碎裂的面容。</font>"
 	icon_state = "zizobevor"
 	item_state = "zizobevor"
@@ -485,7 +485,7 @@
 
 /obj/item/clothing/neck/roguetown/gorget/steel/kazengun
 	name = "卡曾郡护喉"
-	desc = "一圈圈相互咬合的金属环围住咽喉。卡曾郡的甲士佩戴它的理由，与普西多尼亚的骑士们别无二致。"
+	desc = "一圈圈相互咬合的金属环围住咽喉。卡曾郡的甲士佩戴它的理由，与普赛多尼亚的骑士们别无二致。"
 	icon_state = "kazengunneckguard"
 
 /obj/item/clothing/neck/roguetown/gorget/cursed_collar // minor flavor swap so people know it's a scam shitty knockoff.
@@ -599,7 +599,7 @@
 	icon_state = "noc_b"
 
 /obj/item/clothing/neck/roguetown/psicross/abyssor
-	name = "阿比索护符"
+	name = "阿比索尔护符"
 	desc = "畏惧未知，便是背离了最伟大的奥秘。"
 	icon_state = "abyssor"
 	salvage_result = /obj/item/pearl/blue
@@ -726,7 +726,7 @@
 /obj/item/clothing/neck/roguetown/psicross/bpearl
 	name = "蓝色珍珠护符"
 	icon_state = "bpearlcross"
-	desc = "一枚由稀有蓝珍珠制成的护符，通常由祭司与阿比索信徒佩戴，也会被船长当作幸运护身符。"
+	desc = "一枚由稀有蓝珍珠制成的护符，通常由祭司与阿比索尔信徒佩戴，也会被船长当作幸运护身符。"
 	sellprice = 220
 	salvage_result = /obj/item/pearl/blue
 	salvage_amount = 3 // Pearls are easy to cut off from an amulet
@@ -734,7 +734,7 @@
 /obj/item/clothing/neck/roguetown/psicross/shell
 	name = "牡蛎贝壳项链"
 	icon_state = "oyster_necklace"
-	desc = "一串由海贝穿成的项链，它们相互碰撞时发出的平静声响，让人联想到甲壳类挥动的螯肢。它提醒着你，尽管人类早已不再生活于水中，阿比索却始终记得我们的起源。"
+	desc = "一串由海贝穿成的项链，它们相互碰撞时发出的平静声响，让人联想到甲壳类挥动的螯肢。它提醒着你，尽管人类早已不再生活于水中，阿比索尔却始终记得我们的起源。"
 	sellprice = 25
 	salvage_result = /obj/item/oystershell
 	salvage_amount = 5
@@ -742,7 +742,7 @@
 /obj/item/clothing/neck/roguetown/psicross/shell/bracelet
 	name = "贝壳手环"
 	icon_state = "oyster_bracelet"
-	desc = "一只由海贝串成的手环，粗糙的外壳与光亮的内里提醒着你，阿比索的子嗣总会把最好的馈赠藏在海浪之下最深的地方。"
+	desc = "一只由海贝串成的手环，粗糙的外壳与光亮的内里提醒着你，阿比索尔的子嗣总会把最好的馈赠藏在海浪之下最深的地方。"
 	sellprice = 15
 	slot_flags = ITEM_SLOT_WRISTS
 	salvage_result = /obj/item/oystershell
@@ -1024,7 +1024,7 @@
 	. = ..()
 	if(slot == SLOT_NECK)
 		active_item = TRUE
-		to_chat(user, span_red("当你戴上这枚教十字时，锁链如铁钳般骤然勒紧你的脖颈！可怕的痛苦感将你彻底吞没，仿佛人类的一切苦难都被强塞进了你的灵魂！你的胸口冰冷彻骨，血液却沸腾得比熔岩更炽热！普西多尼亚的恶徒或许残暴无情，但你将比他们更甚！</br>你陷入狂暴了！"))
+		to_chat(user, span_red("当你戴上这枚教十字时，锁链如铁钳般骤然勒紧你的脖颈！可怕的痛苦感将你彻底吞没，仿佛人类的一切苦难都被强塞进了你的灵魂！你的胸口冰冷彻骨，血液却沸腾得比熔岩更炽热！普赛多尼亚的恶徒或许残暴无情，但你将比他们更甚！</br>你陷入狂暴了！"))
 		user.change_stat(STATKEY_STR, 3)
 		user.change_stat(STATKEY_CON, -3)
 		user.change_stat(STATKEY_WIL, 3)

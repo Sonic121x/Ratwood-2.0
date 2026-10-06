@@ -19,7 +19,7 @@
 //Actually nah plate heavy armour should be heavier than that...
 /obj/item/clothing/suit/roguetown/armor/plate/cataphract
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "铁甲骑兵甲"
+	name = "铁甲骑士甲"
 	desc = "金属甲片精妙交织而成，提供灵活防护！"
 	icon = 'modular_deserttown/icons/clothing/armor.dmi'
 	mob_overlay_icon = 'modular_deserttown/icons/clothing/onmob/armor.dmi'
@@ -78,7 +78,7 @@
 //armorhelmets
 
 /obj/item/clothing/head/roguetown/helmet/heavy/cataphract
-	name = "铁甲骑兵头盔"
+	name = "铁甲骑士头盔"
 	desc = "一顶面容狰狞的头盔。"
 	icon_state = "cathelm"
 	item_state = "cathelm"
@@ -531,8 +531,8 @@
 
 //cloak
 /obj/item/clothing/cloak/catcloak
-	name = "铁甲骑兵披风"
-	desc = "兹班图铁甲骑兵的尊贵红色披风"
+	name = "铁甲骑士披风"
+	desc = "兹班图铁甲骑士的尊贵红色披风"
 	icon = 'modular_deserttown/icons/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_deserttown/icons/clothing/onmob/cloaks.dmi'
 	icon_state = "catcloak"

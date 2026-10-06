@@ -27,27 +27,27 @@
 /datum/surgery_step/infuse_lux/validate_target(mob/user, mob/living/carbon/target, target_zone, datum/intent/intent)
 	. = ..()
 	if(target.stat < DEAD)
-		to_chat(user, "They're not dead!")
+		to_chat(user, "对方还没死！")
 		return FALSE
 	var/obj/item/organ/heart/H = target.getorganslot(ORGAN_SLOT_HEART)
 	if(!H)
-		to_chat(user, "[target] is missing their heart!")
+		to_chat(user, "[target]没有心脏！")
 		return FALSE
 	if(!target.check_revive(user))
 		return FALSE
 
 /datum/surgery_step/infuse_lux/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to revive [target]... will their heart respond?"),
-		span_notice("[user] begins to work lux into [target]'s heart."),
-		span_notice("[user] begins to work lux into [target]'s heart."))
+	display_results(user, target, span_notice("我开始复活[target]……对方的心脏会回应吗？"),
+		span_notice("[user]开始将灵辉注入[target]的心脏。"),
+		span_notice("[user]开始将灵辉注入[target]的心脏。"))
 	return TRUE
 
 /datum/surgery_step/infuse_lux/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/revive_pq = PQ_GAIN_REVIVE
 	if(target.mob_biotypes & MOB_UNDEAD)
-		display_results(user, target, span_notice("You cannot infuse life into the undead! The rot must be cured first."),
-			"[user] works the lux into [target]'s innards.",
-			"[user] works the lux into [target]'s innards.")
+		display_results(user, target, span_notice("无法将生命注入不死者！必须先治愈腐化。"),
+			"[user]将灵辉注入[target]的脏腑。",
+			"[user]将灵辉注入[target]的脏腑。")
 		return FALSE
 	if(istype(user, /mob/living)) 
 		var/mob/living/LU = user
@@ -60,16 +60,16 @@
 				break
 		if(ispath(LU.patron?.type, /datum/patron/divine) && excomm_found)
 			display_results(user, target,
-				span_warning("The lux recoils! Necra is not willing to return [target]'s soul."),
-				"[user] tries to infuse [target] with lux, but it refuses to take.",
-				"[user] tries to infuse [target] with lux, but it refuses to take.")
-			target.visible_message(span_danger("[target]'s body convulses violently, rejecting the light!"), span_warning("Something is terribly wrong..."))
+				span_warning("灵辉退缩了！内克拉不愿归还[target]的灵魂。"),
+				"[user]尝试向[target]注入灵辉，却遭到了排斥。",
+				"[user]尝试向[target]注入灵辉，却遭到了排斥。")
+			target.visible_message(span_danger("[target]的身体剧烈抽搐，排斥着光芒！"), span_warning("情况很不对劲……"))
 			return FALSE
 	target.adjustOxyLoss(-target.getOxyLoss()) //Ye Olde CPR
 	if(!target.revive(full_heal = FALSE))
-		display_results(user, target, span_notice("The lux refuses to meld with [target]'s heart. Their damage must be too severe still."),
-			"[user] works the lux into [target]'s innards, but nothing happens.",
-			"[user] works the lux into [target]'s innards, but nothing happens.")
+		display_results(user, target, span_notice("灵辉不愿与[target]的心脏融合。对方的伤势恐怕仍然太重。"),
+			"[user]将灵辉注入[target]的脏腑，却没有任何反应。",
+			"[user]将灵辉注入[target]的脏腑，却没有任何反应。")
 		return FALSE
 	var/mob/dead/observer/spirit = target.get_spirit()
 	//GET OVER HERE!
@@ -79,18 +79,18 @@
 		ghost.mind.transfer_to(target, TRUE)
 	target.grab_ghost(force = FALSE)
 	if (!target.mind.active)
-		display_results(user, target, span_notice("[target]'s heart refuses the lux. They're only in sweet dreams, now."),
-			"[user] works the lux into [target]'s innards, but nothing happens.",
-			"[user] works the lux into [target]'s innards, but nothing happens.")
+		display_results(user, target, span_notice("[target]的心脏排斥灵辉。如今对方只愿沉浸于美梦。"),
+			"[user]将灵辉注入[target]的脏腑，却没有任何反应。",
+			"[user]将灵辉注入[target]的脏腑，却没有任何反应。")
 		return FALSE
-	display_results(user, target, span_notice("You succeed in restarting [target]'s heart with the infusion of lux."),
-		"[user] works the lux into [target]'s innards.",
-		"[user] works the lux into [target]'s innards.")
+	display_results(user, target, span_notice("你注入灵辉，成功让[target]的心脏重新跳动。"),
+		"[user]将灵辉注入[target]的脏腑。",
+		"[user]将灵辉注入[target]的脏腑。")
 	target.emote("breathgasp")
 	target.Jitter(100)
 	record_round_statistic(STATS_LUX_REVIVALS)
 	target.update_body()
-	target.visible_message(span_notice("[target] is dragged back from Necra's hold!"), span_green("I awake from the void."))
+	target.visible_message(span_notice("[target]被从内克拉的掌中拉回！"), span_green("我从虚无中醒来。"))
 	qdel(tool)
 	if(target.mind)
 		if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
@@ -101,7 +101,7 @@
 	return TRUE
 
 /datum/surgery_step/infuse_lux/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	display_results(user, target, span_warning("I screwed up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] works the lux into [target]'s innards."), TRUE)
+	display_results(user, target, span_warning("我搞砸了！"),
+		span_warning("[user]搞砸了！"),
+		span_notice("[user]将灵辉注入[target]的脏腑。"), TRUE)
 	return TRUE

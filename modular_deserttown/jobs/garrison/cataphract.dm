@@ -1,6 +1,6 @@
 /datum/job/roguetown/cataphract
 	title = "Cataphract"
-	display_title = "铁甲骑兵"
+	display_title = "铁甲骑士"
 	flag = CATAPHRACT
 	department_flag = GARRISON
 	faction = "Station"
@@ -9,7 +9,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	tutorial = "你是受过精英训练的铁甲骑兵；出身小贵族，自幼作为侍从长大，如今护卫着王室，听命于他们，在这黑暗时代中作为骑士精神的最后灯塔。 \
+	tutorial = "你是受过精英训练的铁甲骑士；出身小贵族，自幼作为侍从长大，如今护卫着王室，听命于他们，在这黑暗时代中作为骑士精神的最后灯塔。 \
 	你全然效忠于在位摄政及其安危。切勿辜负使命。"
 	display_order = JDO_KNIGHT
 	whitelist_req = TRUE
@@ -344,7 +344,7 @@
 
 /datum/advclass/cataphract/dervish
 	name = "皇家达尔维什"
-	tutorial = "你的武艺对铁甲骑兵而言并不寻常。 \
+	tutorial = "你的武艺对铁甲骑士而言并不寻常。 \
 	你的敏捷身法与精湛技巧令贵族贵妇无不赞叹，而你更偏爱敏捷优雅的刀剑。 \
 	虽然你穿中等护甲时已是有效战力，但唯有换上更轻便的防护，你的闪避技巧才能真正大放异彩。"
 	outfit = /datum/outfit/job/roguetown/cataphract/dervish

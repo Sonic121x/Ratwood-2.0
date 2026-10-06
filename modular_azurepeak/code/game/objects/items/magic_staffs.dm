@@ -128,7 +128,7 @@
 	sellprice = 230
 
 /obj/item/rogueweapon/woodstaff/riddle_of_steel
-	name = "\improper 谜钢法杖"
+	name = "\proper 谜钢法杖"
 	desc = "火焰在这柄强大法杖的聚焦宝石中起舞，其节奏与烈度皆与\
 	持杖法师相呼应。"
 	icon = 'modular_azurepeak/icons/obj/items/staffs.dmi'
@@ -140,7 +140,7 @@
 	sellprice = 400
 
 /obj/item/rogueweapon/woodstaff/riddle_of_steel/magos
-	name = "\improper 宫廷魔导士法杖"
+	name = "\proper 宫廷魔导士法杖"
 	icon_state = "courtstaff"
 
 /obj/item/rogueweapon/woodstaff/naledi

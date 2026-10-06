@@ -33,7 +33,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/etrusca/etruscan_bascinet
-	name = "伊特鲁斯卡巴西内盔"
+	name = "伊特鲁斯卡盆盔"
 	cost = 130
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/etruscan)
 	ship_qty_min = 1

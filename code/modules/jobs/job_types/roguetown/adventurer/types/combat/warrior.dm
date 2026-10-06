@@ -354,9 +354,9 @@
 	if(H.mind)
 		to_chat(H, span_warning("你将信赖寄托于坚实甲胄之上。最好的进攻，往往就是最好的防御。"))
 		var/helmets = list(
-			"沙勒盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
-			"带面罩沙勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron,
-			"长吻面罩沙勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron/snouted,
+			"萨雷特盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
+			"带面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron,
+			"长吻面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron/snouted,
 			"圆面护鼻盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron,
 			"长吻圆面护鼻盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron/snouted,
 			"锅盔"		= /obj/item/clothing/head/roguetown/helmet/kettle/iron,
@@ -592,14 +592,14 @@
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 				belt = /obj/item/storage/belt/rogue/leather/black
-				var/helmets = list("清教武帽", "带面罩沙勒盔", "长吻带面罩沙勒盔", "狼首尖盔", "沟槽阿米特盔")
+				var/helmets = list("清教武帽", "带面罩萨雷特盔", "长吻带面罩萨雷特盔", "狼首尖盔", "沟槽阿米特盔")
 				var/helmet_choice = input(H, "选择你的面貌。", "鼓起精神。") as anything in helmets
 				switch(helmet_choice)
 					if("清教武帽")
 						head = /obj/item/clothing/head/roguetown/puritan/armored
-					if("带面罩沙勒盔")
+					if("带面罩萨雷特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-					if("长吻带面罩沙勒盔")
+					if("长吻带面罩萨雷特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 					if("狼首尖盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/puritan
