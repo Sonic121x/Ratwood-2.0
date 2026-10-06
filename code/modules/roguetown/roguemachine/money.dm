@@ -1,7 +1,7 @@
 GLOBAL_VAR(moneymaster)
 
 /obj/structure/roguemachine/money
-	name = "machine"
+	name = "机器"
 	desc = ""
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "money1"
@@ -23,11 +23,11 @@ GLOBAL_VAR(moneymaster)
 			if(izmaster)
 				return ..()
 			if(!GLOB.moneymaster)
-				say("The masters have perished?")
+				say("主人们已经逝去了吗？")
 				playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 				return
 			if(P.get_real_price() > 100)
-				say("This must be traded to a Guildmaster.")
+				say("这件物品必须交给行会会长交易。")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				return
 			var/obj/structure/roguemachine/money/twins/T = GLOB.moneymaster
@@ -38,12 +38,12 @@ GLOBAL_VAR(moneymaster)
 					budget += amtofsale
 					update_icon()
 				else
-					say("The masters cannot afford...")
+					say("主人们付不起……")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 			P.forceMove(T.loc)
 			playsound(T.loc, 'sound/misc/hiss.ogg', 100, TRUE, -1)
-			say("Item accepted for [amtofsale] mammon.")
+			say("已按[amtofsale]玛门收购物品。")
 			playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 			playsound(T, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 
@@ -77,9 +77,9 @@ GLOBAL_VAR(moneymaster)
 /obj/structure/roguemachine/money/attack_hand(mob/living/user)
 	. = ..()
 	user.changeNext_move(CLICK_CD_INTENTCAP)
-	to_chat(user, span_info("I rub the machine clockwise."))
+	to_chat(user, span_info("我顺时针摩擦机器。"))
 	if(budget > 0)
-		say("[budget] MAMMON ARE MINE...")
+		say("[budget]玛门归我所有……")
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 		playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	update_icon()
@@ -89,10 +89,10 @@ GLOBAL_VAR(moneymaster)
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_INTENTCAP)
-	var/inputt = alert(user,"Gold, Silver, or Bronze?",,"BRONZE","SILVER","GOLD")
+	var/inputt = alert(user,"选择黄金、白银还是青铜？",,"青铜","白银","黄金")
 	if(inputt && Adjacent(user))
-		to_chat(user, span_info("我拉动了[inputt == "GOLD" ? "金色" : (inputt == "SILVER" ? "银色" : "青铜色")]的舌头。"))
-		if(inputt == "BRONZE" && budget >= 50)
+		to_chat(user, span_info("我拉动了[inputt == "黄金" ? "金色" : (inputt == "白银" ? "银色" : "青铜色")]的舌头。"))
+		if(inputt == "青铜" && budget >= 50)
 			budget2change(budget, user, inputt)
 			budget = 0
 			if(isliving(user))
@@ -100,21 +100,21 @@ GLOBAL_VAR(moneymaster)
 				L.emote("scream")
 				L.Paralyze(50)
 				L.Stun(50)
-				L.visible_message(span_danger("[user] is buried under a mountain of coins!"))
+				L.visible_message(span_danger("[user]被堆积如山的硬币埋住了！"))
 		else
 			budget2change(budget, user, inputt)
 			switch(inputt)
-				if("GOLD")
+				if("黄金")
 					var/zenars = budget/10
 					if(zenars >= 1)
 						for(var/i in 1 to zenars)
 							budget -= 10
-				if("SILVER")
+				if("白银")
 					var/zenars = budget/5
 					if(zenars >= 1)
 						for(var/i in 1 to zenars)
 							budget -= 5
-				if("BRONZE")
+				if("青铜")
 					if(budget >= 1)
 						for(var/i in 1 to budget)
 							budget -= 1
@@ -135,13 +135,13 @@ GLOBAL_VAR(moneymaster)
 	var/zenars_to_put
 	if(specify)
 		switch(specify)
-			if("GOLD")
+			if("GOLD", "黄金")
 				zenars_to_put = budget/10
 				type_to_put = /obj/item/roguecoin/gold
-			if("SILVER")
+			if("SILVER", "白银")
 				zenars_to_put = budget/5
 				type_to_put = /obj/item/roguecoin/silver
-			if("BRONZE")
+			if("BRONZE", "青铜")
 				zenars_to_put = budget
 				type_to_put = /obj/item/roguecoin/copper
 			if("MARQUE")
@@ -206,26 +206,26 @@ GLOBAL_VAR(moneymaster)
 /obj/structure/roguemachine/proc/withdrawbudget(mob/user)
 	var/amt = budget
 	if(!amt)
-		say("Your balance is nothing.")
+		say("你的余额为零。")
 		return
 	if(amt < 0)
-		say("Your balance is NEGATIVE.")
+		say("你的余额为负数。")
 		return
 	var/list/choicez = list()
 	if(amt > 10)
-		choicez += "GOLD"
+		choicez += "黄金"
 	if(amt > 5)
-		choicez += "SILVER"
-	choicez += "BRONZE"
-	var/selection = input(user, "Make a Selection", src) as null|anything in choicez
+		choicez += "白银"
+	choicez += "青铜"
+	var/selection = input(user, "请选择硬币材质", src) as null|anything in choicez
 	if(!selection)
 		return
 	var/mod = 1
-	if(selection == "GOLD")
+	if(selection == "黄金")
 		mod = 10
-	if(selection == "SILVER")
+	if(selection == "白银")
 		mod = 5
-	var/coin_amt = input(user, "There is [budget] mammon in the bydget. You may withdraw [floor(amt/mod)] [selection] COINS from this machine.", src) as null|num
+	var/coin_amt = input(user, "现有[budget]玛门。你最多可从这台机器取出[floor(amt/mod)]枚[selection]硬币。", src) as null|num
 	coin_amt = round(coin_amt)
 	if(coin_amt < 1)
 		return
@@ -233,7 +233,7 @@ GLOBAL_VAR(moneymaster)
 	// Check maximum coin limit before deducting balance
 	var/max_coins = 20
 	if(coin_amt > max_coins)
-		to_chat(user, span_warning("Maximum withdrawal limit exceeded. You can only withdraw up to [max_coins] coins at once."))
+		to_chat(user, span_warning("超过单次取款上限，每次最多只能取出[max_coins]枚硬币。"))
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(!Adjacent(user))
@@ -275,8 +275,8 @@ GLOBAL_VAR(moneymaster)
 	return ..()
 
 /obj/structure/roguemachine/money/twins
-	name = "janus twins"
-	desc = "They may hold money for you."
+	name = "双面守财像"
+	desc = "它们可以替你保管钱财。"
 	icon_state = "twins"
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	budget = 0
