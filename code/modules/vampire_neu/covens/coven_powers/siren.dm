@@ -1,6 +1,6 @@
 /datum/coven/siren
-	name = "Siren Blessing"
-	desc = "Typically found in vampires who frequent the seas of Enigma, they've developed the ability to adapt much like sirens."
+	name = "海妖赐福"
+	desc = "常见于往来恩尼格玛海域的血族，他们发展出了如海妖般的适应能力。"
 	icon_state = "melpominee"
 	power_type = /datum/coven_power/siren
 
@@ -10,8 +10,8 @@
 
 //THE MISSING VOICE
 /datum/coven_power/siren/the_missing_voice
-	name = "The Missing Voice"
-	desc = "Throw your voice to any place you can see."
+	name = "离身之声"
+	desc = "将你的声音投向视野中的任何位置。"
 
 	level = 1
 	research_cost = 0
@@ -23,18 +23,18 @@
 
 /datum/coven_power/siren/the_missing_voice/activate(atom/movable/target)
 	. = ..()
-	var/new_say = input(owner, "What will [target] say?") as null|text
+	var/new_say = input(owner, "让[target]说什么？") as null|text
 	if(!new_say)
 		return
 
 	//prevent forceful emoting and whatnot
 	new_say = trim(copytext_char(sanitize(new_say), 1, MAX_MESSAGE_LEN))
 	if (findtext(new_say, "*"))
-		to_chat(owner, span_danger("You can't force others to perform emotes!"))
+		to_chat(owner, span_danger("你不能强迫他人做出表情动作！"))
 		return
 
 	if (CHAT_FILTER_CHECK(new_say))
-		to_chat(owner, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[new_say]\"</span>"))
+		to_chat(owner, span_warning("这条消息含有角色内聊天禁止使用的词语！请查阅服务器规则。\n<span replaceRegex='show_filtered_ic_chat'>\"[new_say]\"</span>"))
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, LOWER_TEXT(config.ic_filter_regex.match))
 		return
 
@@ -63,14 +63,14 @@
 			difficulty_malus += 2
 		if (hearer.stat_roll(STATKEY_PER, 20 -( base_difficulty + difficulty_malus)))
 			if (masked)
-				to_chat(hearer, span_warning("[target]'s jaw isn't moving to match [target.p_their()] words."))
+				to_chat(hearer, span_warning("[target]说话时下颌却没有相应地活动。"))
 			else
-				to_chat(hearer, span_warning("[target]'s lips aren't moving to match [target.p_their()] words."))
+				to_chat(hearer, span_warning("[target]说话时嘴唇却没有相应地活动。"))
 
 //PHANTOM SPEAKER
 /datum/coven_power/siren/phantom_speaker
-	name = "Phantom Speaker"
-	desc = "Project your voice to anyone you've met, speaking to them from afar."
+	name = "幻音传声"
+	desc = "向你见过的任何人投送声音，从远方与其交谈。"
 
 	level = 2
 	research_cost = 1
@@ -81,18 +81,18 @@
 
 /datum/coven_power/siren/phantom_speaker/activate()
 	. = ..()
-	var/mob/living/target = input(owner, "Who will you project your voice to?") as null|mob in (GLOB.player_list - owner)
+	var/mob/living/target = input(owner, "你要向谁投送声音？") as null|mob in (GLOB.player_list - owner)
 	if(!target)
 		return
 
-	var/input_message = input(owner, "What message will you project to them?") as null|text
+	var/input_message = input(owner, "你要向对方传达什么？") as null|text
 	if (!input_message)
 		return
 
 	//sanitisation!
 	input_message = trim(copytext_char(sanitize(input_message), 1, MAX_MESSAGE_LEN))
 	if(CHAT_FILTER_CHECK(input_message))
-		to_chat(owner, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[input_message]\"</span>"))
+		to_chat(owner, span_warning("这条消息含有角色内聊天禁止使用的词语！请查阅服务器规则。\n<span replaceRegex='show_filtered_ic_chat'>\"[input_message]\"</span>"))
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, LOWER_TEXT(config.ic_filter_regex.match))
 		return
 
@@ -107,20 +107,20 @@
 	if(!length(available_languages))
 		return
 
-	var/choice = input(owner, "Choose language for projected voice") as null|anything in available_languages
+	var/choice = input(owner, "选择传声所用的语言") as null|anything in available_languages
 	if(!choice)
 		return
 
 	var/datum/language/language = available_languages[choice]
 	var/message = owner.compose_message(owner, language, input_message, , list())
-	to_chat(target, "<span class='purple'><i>You hear someone's voice in your head...</i></span>")
+	to_chat(target, "<span class='purple'><i>你听见某人的声音在脑海中响起……</i></span>")
 	target.Hear(message, target, language, input_message, , , )
-	to_chat(owner, span_notice("You project your voice to [target]'s ears in [initial(language.name)]."))
+	to_chat(owner, span_notice("你用[initial(language.name)]将声音传入[target]耳中。"))
 
 //MADRIGAL
 /datum/coven_power/siren/madrigal
-	name = "Madrigal"
-	desc = "Sing a siren song, calling all nearby to you."
+	name = "海妖牧歌"
+	desc = "唱响海妖之歌，将附近所有人唤至身边。"
 
 	level = 3
 	research_cost = 2
@@ -154,8 +154,8 @@
 
 //SIREN'S BECKONING
 /datum/coven_power/siren/sirens_beckoning
-	name = "Siren's Beckoning"
-	desc = "Sing an unearthly song to stun those around you."
+	name = "海妖之召"
+	desc = "唱响超凡之歌，震慑周围的人。"
 
 	level = 4
 	research_cost = 3
@@ -189,8 +189,8 @@
 
 //SHATTERING CRESCENDO
 /datum/coven_power/siren/shattering_crescendo
-	name = "Shattering Crescendo"
-	desc = "Scream at an unnatural pitch, shattering the bodies of your enemies."
+	name = "碎躯强音"
+	desc = "以超乎寻常的音高尖啸，震碎敌人的躯体。"
 
 	level = 5
 	research_cost = 4

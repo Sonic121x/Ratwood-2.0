@@ -129,5 +129,5 @@
 	if(type == "lenwarn")
 		var/mlen = payload["length"]
 		var/maxlen = payload["maxlength"]
-		to_chat(client, span_warning(span_bold("Warning") + ": Message with [mlen] exceeded the maximum length of [maxlen]."))
+		to_chat(client, span_warning(span_bold("警告") + "：消息长度为[mlen]，超过了[maxlen]的上限。"))
 	return FALSE

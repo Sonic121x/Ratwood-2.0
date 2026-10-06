@@ -5,7 +5,7 @@ This datum stores a declarative description of clans, in order to make an instan
 And it also helps for the character set panel
 */
 /datum/clan
-	var/name = "Caitiff"
+	var/name = "无氏族者"
 	var/desc = "无氏族者。乌合之众。无足轻重。"
 	var/clanicon
 
@@ -47,7 +47,7 @@ And it also helps for the character set panel
 	var/datum/clan_hierarchy_node/hierarchy_root
 	var/list/datum/clan_hierarchy_node/all_positions = list()
 
-	var/curse = "None."
+	var/curse = "无。"
 
 	var/clane_curse //There should be a reference here.
 	///The Clan's unique body sprite
@@ -202,12 +202,12 @@ And it also helps for the character set panel
 	H.clan = src
 	on_gain(H, is_vampire = FALSE)
 
-	to_chat(H, "<span class='notice'>你已以[non_vampire_title]的身份加入[name]！</span>")
+	to_chat(H, "<span class='notice'>你已以[non_vampire_title == "Slave" ? "奴隶" : non_vampire_title]的身份加入[name]！</span>")
 
 	// Announce to clan
 	for(var/mob/living/carbon/human/member in clan_members)
 		if(member != H)
-			to_chat(member, "<span class='notice'>[H.real_name]已以[non_vampire_title]的身份加入[name]。</span>")
+			to_chat(member, "<span class='notice'>[H.real_name]已以[non_vampire_title == "Slave" ? "奴隶" : non_vampire_title]的身份加入[name]。</span>")
 
 	return TRUE
 
@@ -221,11 +221,11 @@ And it also helps for the character set panel
 		leader.lord_title = leader_title
 		leader.make_new_leader(H)
 		clan_leader = H
-		to_chat(H, "<span class='notice'>你已被任命为[name]的[leader_title]！</span>")
+		to_chat(H, "<span class='notice'>你已被任命为[name]的[leader_title == "Vampire Lord" ? "血族领主" : leader_title]！</span>")
 		return
 
 	// Otherwise, they join as an unassigned member
-	var/member_type = is_vampire ? "vampire" : non_vampire_title
+	var/member_type = is_vampire ? "血族" : non_vampire_title == "Slave" ? "奴隶" : non_vampire_title
 	to_chat(H, "<span class='notice'>你已以[member_type]的身份加入[name]！请与领袖交谈，安排你的职位。</span>")
 
 /datum/clan/proc/initialize_hierarchy()
@@ -378,12 +378,12 @@ And it also helps for the character set panel
 		hierarchy_root.assign_member(new_leader)
 		leader.make_new_leader(new_leader)
 
-		to_chat(new_leader, "<span class='notice'>你已晋升为[name]的[leader_title]！</span>")
+		to_chat(new_leader, "<span class='notice'>你已晋升为[name]的[leader_title == "Vampire Lord" ? "血族领主" : leader_title]！</span>")
 
 		// Announce to clan
 		for(var/mob/living/carbon/human/member in clan_members)
 			if(member != new_leader)
-				to_chat(member, "<span class='notice'>[new_leader.real_name]已成为[name]的新任[leader_title]。</span>")
+				to_chat(member, "<span class='notice'>[new_leader.real_name]已成为[name]的新任[leader_title == "Vampire Lord" ? "血族领主" : leader_title]。</span>")
 
 
 /datum/clan/proc/get_frenzy_messages()

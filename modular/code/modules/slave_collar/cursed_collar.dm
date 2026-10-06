@@ -96,7 +96,7 @@
 		applying = FALSE
 		return
 
-	if(tgui_alert(target, "要向这只项圈的控制屈服吗？", "Cursed Collar", list("Yes!", "No")) != "Yes!")
+	if(tgui_alert(target, "要向这只项圈的控制屈服吗？", "诅咒项圈", list("愿意！", "不")) != "愿意！")
 		user.visible_message(span_warning("[target]抗拒了项圈的控制。"))
 		to_chat(target, span_warning("你反抗的意志阻止了项圈绑定到你身上！"))
 		applying = FALSE

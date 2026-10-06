@@ -1,6 +1,6 @@
 /obj/structure/ichor_stone
-	name = "Bloodstained Stone"
-	desc = "Pedestal for your Ichor Fang. It can also recall it!"
+	name = "染血石台"
+	desc = "用于安放脓血之牙的基座，也能将它召回！"
 	max_integrity = 999999
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "stonebig2"
@@ -20,11 +20,11 @@
 		return
 
 	if(user.get_bloodpool() < 500)
-		to_chat(user, span_warning("You need 500 vitae to summon your sword."))
+		to_chat(user, span_warning("你需要500命髓才能召回你的剑。"))
 		return
 
-	var/choice = alert(user, "Would you like to summon your Ichor Fang for 500 vitae?", "CRIMSON STONE", "MAKE IT SO", "I RESCIND")
-	if(choice != "MAKE IT SO")
+	var/choice = alert(user, "要消耗500命髓召回脓血之牙吗？", "染血石台", "召回", "取消")
+	if(choice != "召回")
 		return
 
 	user.adjust_bloodpool(-500)
