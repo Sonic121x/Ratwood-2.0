@@ -171,7 +171,7 @@
 
 	part_to_bonify.skeletonize(FALSE)
 	user.update_body_parts()
-	user.visible_message(span_warning("微弱的符文在[user]皮肤下闪烁，随后[user.p_their()] [part_to_bonify.name]上的血肉骤然从骨头上滑落！"), span_notice("我感到奥术力量在这脆弱的凡躯中奔涌，而Rituos正从我的[part_to_bonify.name]上索取它可怖的代价。"))
+	user.visible_message(span_warning("微弱的符文在[user]皮肤下闪烁，随后[user.p_their()] [part_to_bonify.name]上的血肉骤然从骨头上滑落！"), span_notice("我感到奥术力量在这脆弱的凡躯中奔涌，而仪式术正从我的[part_to_bonify.name]上索取它可怖的代价。"))
 
 	user.mind.has_rituos = TRUE
 	rituos_counter++
@@ -565,7 +565,7 @@
 		if(have < needed) {
 			var/obj/item/I = item_type
 			var/amount_needed = needed - have
-			missing_items += "[amount_needed] [initial(I.name)][amount_needed > 1 ? "s" : ""] "
+			missing_items += "[amount_needed] 份[initial(I.name)] "
 		}
 
 	if(length(missing_items))

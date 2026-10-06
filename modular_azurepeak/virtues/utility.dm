@@ -206,7 +206,7 @@
 	)
 
 /datum/virtue/utility/homesteader
-	name = "朝圣者（-3 TRI）"
+	name = "朝圣者（-3 凯旋）"
 	added_traits = list(TRAIT_HOMESTEAD_EXPERT)
 	desc= "正如人们所说，“心安之处即为家园”。你深谙生活劳作之道，也早已藏好重新开始所需的一切：猎刀、趁手的锄头，以及一袋杂项补给。"
 	triumph_cost = 3
