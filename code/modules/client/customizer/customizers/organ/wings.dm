@@ -79,9 +79,9 @@
 			dat += "<br>自然颜色: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=natural_gradient_color''><span class='color_holder_box' style='background-color:[wings_entry.natural_color]'></span></a>"
 	if(allows_dye_gradient)
 		var/datum/hair_gradient/gradient = HAIR_GRADIENT(wings_entry.dye_gradient)
-		dat += "<br>Dye Gradient: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=dye_gradient'>[gradient.name]</a>"
+		dat += "<br>染色渐变: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=dye_gradient'>[gradient.name]</a>"
 		if(wings_entry.dye_gradient != /datum/hair_gradient/none)
-			dat += "<br>Dye Color: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=dye_gradient_color''><span class='color_holder_box' style='background-color:[wings_entry.dye_color]'></span></a>"
+			dat += "<br>染色颜色: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=dye_gradient_color''><span class='color_holder_box' style='background-color:[wings_entry.dye_color]'></span></a>"
 
 /datum/customizer_choice/organ/wings/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
@@ -96,7 +96,7 @@
 			if(!allows_natural_gradient)
 				return
 			var/list/choice_list = hair_gradient_name_to_type_list()
-			var/chosen_input = input(user, "Choose your natural gradient:", "Character Preference")  as null|anything in choice_list
+			var/chosen_input = input(user, "选择你的自然渐变:", "角色偏好")  as null|anything in choice_list
 			if(!chosen_input)
 				return
 			wings_entry.natural_gradient = choice_list[chosen_input]

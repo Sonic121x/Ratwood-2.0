@@ -15,7 +15,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/baotha/Initialize(mapload)
 	. = ..()
 	// ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "护甲")
 	// AddComponent(/datum/component/item_equipped_movement_rustle, null)
 
 // /obj/item/clothing/suit/roguetown/armor/plate/baotha/dropped(mob/living/carbon/human/user)
@@ -38,7 +38,7 @@
 /obj/item/clothing/under/roguetown/platelegs/baotha/Initialize(mapload)
 	. = ..()
 	// ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "护甲")
 	// AddComponent(/datum/component/item_equipped_movement_rustle, null)
 
 // /obj/item/clothing/under/roguetown/platelegs/baotha/dropped(mob/living/carbon/human/user)
@@ -67,7 +67,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/baotha/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "BRACER")
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "护臂")
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/baotha
 	name = "巴奥莎束带"
@@ -88,7 +88,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/baotha/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "WRAPPING")
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "束带")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/baotha
 	name = "欲望之盔"
@@ -108,7 +108,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/baotha/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "VISAGE")
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "面甲")
 
 /datum/outfit/job/roguetown/baothaarmor/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -242,4 +242,4 @@
 
 /obj/item/rogueweapon/whip/baotha/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "WHIP")
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "鞭")

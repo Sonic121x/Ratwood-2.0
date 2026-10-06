@@ -39,7 +39,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight)
 
 /datum/supply_pack/rogue/Knight/armet
-	name = "阿梅特盔"
+	name = "阿米特盔"
 	cost = 40
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/armet)
 
@@ -54,7 +54,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth)
 
 /datum/supply_pack/rogue/Knight/mblkstelarmet
-	name = "黑钢阿梅特盔"
+	name = "黑钢阿米特盔"
 	cost = 500
 	contains = list(/obj/item/clothing/head/roguetown/helmet/blacksteel/modern/armet)
 

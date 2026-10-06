@@ -55,7 +55,7 @@
 		)
 
 /datum/customizer/bodypart_feature/accessory
-	name = "Accessory"
+	name = "配饰"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/accessory)
 	allows_disabling = TRUE
 	default_disabled = TRUE
@@ -80,7 +80,7 @@
 		)
 
 /datum/customizer/bodypart_feature/legwear
-	name = "Legwear"
+	name = "腿部衣饰"
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/legwear)
 	allows_disabling = TRUE
 	default_disabled = TRUE

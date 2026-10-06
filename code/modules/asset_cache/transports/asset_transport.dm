@@ -127,7 +127,7 @@
 
 	if (unreceived.len)
 		if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
-			to_chat(client, span_info("Sending Resources..."))
+			to_chat(client, span_info("正在发送资源……"))
 
 		for (var/asset_name in unreceived)
 			var/new_asset_name = asset_name

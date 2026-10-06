@@ -205,19 +205,19 @@
 		</style>
 		<body>
 			<div class="header">
-				<h1>⚔ Loadout Selection ⚔</h1>
+				<h1>⚔ 配装选择 ⚔</h1>
 				<div class="triumph-counter">
-					<span class="triumph-available">Available Triumphs: [remaining_triumphs]</span> | 
-					<span class="triumph-spent">Spent: [spent_triumphs]</span> / 
-					<span>Total: [total_triumphs]</span>
+					<span class="triumph-available">可用凯旋点: [remaining_triumphs]</span> |
+					<span class="triumph-spent">已用: [spent_triumphs]</span> /
+					<span>总计: [total_triumphs]</span>
 				</div>
 			</div>
 			
 			<div class="info-box">
-				<h3>⚠ Loadout Item Modifications ⚠</h3>
-				<p><b>ARMOR & HELMETS:</b> Armor rating reduced by 90% • Crit prevention removed</p>
-				<p><b>WEAPONS:</b> Damage reduced by 25%</p>
-				<p><b>ALL ITEMS:</b> Sell price set to 0</p>
+				<h3>⚠ 配装物品调整 ⚠</h3>
+				<p><b>护甲与头盔:</b> 护甲值降低90% • 移除防重伤效果</p>
+				<p><b>武器:</b> 伤害降低25%</p>
+				<p><b>所有物品:</b> 售价设为0</p>
 			</div>
 			
 			<div class="loadout-grid">
@@ -233,10 +233,10 @@
 		
 		html += "<div class='loadout-slot'>"
 		html += "<div class='slot-header'>"
-		html += "<span class='slot-number'>Slot [i]</span>"
+		html += "<span class='slot-number'>栏位 [i]</span>"
 		
 		if(current_item && current_item.triumph_cost)
-			html += "<span class='slot-cost'>[current_item.triumph_cost] Triumphs</span>"
+			html += "<span class='slot-cost'>[current_item.triumph_cost]凯旋点</span>"
 		
 		html += "</div>"
 		
@@ -266,26 +266,26 @@
 			html += "<div class='item-desc'>[custom_desc ? custom_desc : (item_desc ? item_desc : current_item.desc)]</div>"
 			
 			if(custom_name || custom_desc)
-				html += "<div class='custom-text'>✎ Customized</div>"
+				html += "<div class='custom-text'>✎ 已自定义</div>"
 			
 			if(item_color)
-				html += "<div class='custom-text' style='color:[item_color]'>● Color: [item_color]</div>"
+				html += "<div class='custom-text' style='color:[item_color]'>● 颜色: [item_color]</div>"
 			
 			html += "</div>"
 			html += "</div>"
 			
 			html += "<div class='actions'>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=change;slot=[i]'>Change Item</a>"
-			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=rename;slot=[i]'>Rename</a>"
-			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=describe;slot=[i]'>Description</a>"
-			html += "<a class='btn btn-color' href='byond://?src=\ref[src];loadout_action=color;slot=[i]'>Color</a>"
-			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];loadout_action=clear;slot=[i]'>Clear</a>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=change;slot=[i]'>更换物品</a>"
+			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=rename;slot=[i]'>重命名</a>"
+			html += "<a class='btn btn-customize' href='byond://?src=\ref[src];loadout_action=describe;slot=[i]'>描述</a>"
+			html += "<a class='btn btn-color' href='byond://?src=\ref[src];loadout_action=color;slot=[i]'>颜色</a>"
+			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];loadout_action=clear;slot=[i]'>清除</a>"
 			html += "</div>"
 		else
 			// Empty slot
 			html += "<div class='empty-slot'>"
-			html += "Empty Slot<br><br>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=select;slot=[i]'>Select Item</a>"
+			html += "空栏位<br><br>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];loadout_action=select;slot=[i]'>选择物品</a>"
 			html += "</div>"
 		
 		html += "</div>"
