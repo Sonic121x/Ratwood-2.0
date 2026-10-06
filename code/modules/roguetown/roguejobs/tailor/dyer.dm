@@ -1,57 +1,57 @@
 GLOBAL_LIST_INIT(colorlist, list(
-	"Swan White"="#ffffff",
-	"Chalk White" = "#f4ecde",
-	"Cream" = "#fffdd0",
-	"Light Grey" = "#999999",
-	"Dunked in Water" = "#bbbbbb",
-	"Mage Grey" = "#6c6c6c",
-	"Sow's skin"="#CE929F",
-	"Salmon Pink"="#FF91A4",
-	"Cherry Blossom"="#FF6699",
-	"Knight's Red"="#933030",
-	"Royal Red"="#8b2323",
-	"Red Ochre" = "#913831",
-	"Maroon" = "#550000",
-	"Scarlet" = "#bb0a1e",
-	"Royal Orange" = "#df8405",
-	"Madroot Red"="#AD4545",
-	"Marigold Orange"="#E2A844",
-	"Chestnut" = "#613613",
-	"Dirt" = "#7c6d5c",
-	"Peasant Brown" = "#685542",
-	"Russet" = "#7f461b",
-	"Yellow Weld" = "#f4c430",
-	"Yarrow" = "#f0cb76",
-	"Yellow Ochre" = "#cb9d06",
-	"Mage Yellow" = "#c1b144",
+	"天鹅白"="#ffffff",
+	"白垩白" = "#f4ecde",
+	"奶油色" = "#fffdd0",
+	"浅灰" = "#999999",
+	"水浸灰" = "#bbbbbb",
+	"法师灰" = "#6c6c6c",
+	"猪皮粉"="#CE929F",
+	"鲑鱼粉"="#FF91A4",
+	"樱花粉"="#FF6699",
+	"骑士红"="#933030",
+	"王室红"="#8b2323",
+	"赭红" = "#913831",
+	"栗红" = "#550000",
+	"猩红" = "#bb0a1e",
+	"王室橙" = "#df8405",
+	"茜根红"="#AD4545",
+	"金盏橙"="#E2A844",
+	"栗褐" = "#613613",
+	"泥土色" = "#7c6d5c",
+	"农民棕" = "#685542",
+	"赤褐" = "#7f461b",
+	"木樨草黄" = "#f4c430",
+	"蓍草黄" = "#f0cb76",
+	"赭黄" = "#cb9d06",
+	"法师黄" = "#c1b144",
 	"阿斯特拉塔之黄"="#ffe333",
-	"Pale Gold"="#FFFD8D",
-	"Olive" = "#98bf64",
-	"Royal Green" = "#264d26",
-	"Forest Green" = "#428138",
-	"Mage Green" = "#759259",
-	"Bog Green"="#375B48",
-	"Seafoam Green"="#49938B",
-	"Royal Teal" = "#249589",
-	"Watchman Blue" = "#557d8f",
-	"Cornflower Blue"="#749EE8",
-	"Royal Blue" = "#173266",
-	"Woad Blue"="#395480",
-	"Mage Blue" = "#4756d8",
-	"Periwinkle Blue" = "#8f99fb",
-	"Lavender"="#865c9c",
-	"Royal Purple"="#5E4687",
-	"Midnight Violet"="#402c56",
-	"Orchil" = "#66023C",
-	"Wine Rouge"="#752B55",
-	"Royal Magenta" = "#962e5c",
-	"Blacksteel Grey"="#404040",
-	"Dark Grey" = "#505050",
-	"Darkest Night" = "#414143",
+	"淡金"="#FFFD8D",
+	"橄榄绿" = "#98bf64",
+	"王室绿" = "#264d26",
+	"森林绿" = "#428138",
+	"法师绿" = "#759259",
+	"沼泽绿"="#375B48",
+	"海沫绿"="#49938B",
+	"王室青" = "#249589",
+	"守望蓝" = "#557d8f",
+	"矢车菊蓝"="#749EE8",
+	"王室蓝" = "#173266",
+	"菘蓝"="#395480",
+	"法师蓝" = "#4756d8",
+	"长春花蓝" = "#8f99fb",
+	"薰衣草紫"="#865c9c",
+	"王室紫"="#5E4687",
+	"午夜紫"="#402c56",
+	"地衣紫" = "#66023C",
+	"酒红"="#752B55",
+	"王室品红" = "#962e5c",
+	"黑钢灰"="#404040",
+	"深灰" = "#505050",
+	"至暗夜色" = "#414143",
 ))
 
 GLOBAL_LIST_INIT(pridelist, list(
-	"RAINBOW" = "#fcfcfc"
+	"彩虹" = "#fcfcfc"
 ))
 
 // DYE BIN
@@ -142,10 +142,10 @@ GLOBAL_LIST_INIT(pridelist, list(
 	if(!is_operational())
 		return ..()
 	user.set_machine(src)
-	var/datum/browser/menu = new(user, "colormate","Dye Station", 500, 600, src)
-	var/list/dat = list("<TITLE>Dye Bin</TITLE><BR>")
+	var/datum/browser/menu = new(user, "colormate","染色台", 500, 600, src)
+	var/list/dat = list("<TITLE>染缸</TITLE><BR>")
 	if(!inserted)
-		dat += "No item inserted."
+		dat += "尚未放入物品。"
 		menu.set_content("<html>[dat.Join("")]</html>")
 		menu.open()
 		return
@@ -378,7 +378,7 @@ GLOBAL_LIST_INIT(pridelist, list(
 			if(choice == "公爵配色")
 				ducal_scheme_detail = TRUE
 				activecolor_detail = GLOB.lordsecondary ? GLOB.lordsecondary : "#2b292e"
-			else if(choice == "Barony Scheme")
+			else if(choice == "男爵配色")
 				barony_scheme_detail = TRUE
 				activecolor_detail = GLOB.baronsecondary ? GLOB.baronsecondary : "#505050"
 			else
@@ -419,7 +419,7 @@ GLOBAL_LIST_INIT(pridelist, list(
 			if(choice == "公爵配色")
 				ducal_scheme_altdetail = TRUE
 				activecolor_altdetail = GLOB.lordsecondary ? GLOB.lordsecondary : "#2b292e"
-			else if(choice == "Barony Scheme")
+			else if(choice == "男爵配色")
 				barony_scheme_altdetail = TRUE
 				activecolor_altdetail = GLOB.baronsecondary ? GLOB.baronsecondary : "#505050"
 			else

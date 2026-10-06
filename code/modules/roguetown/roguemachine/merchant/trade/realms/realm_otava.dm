@@ -5,28 +5,28 @@
 	demanded_categories = list(NAVIGATOR_BUCKET_POTIONS_REAGENTS, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_VALUABLES_LOOTED, NAVIGATOR_BUCKET_CARVED, NAVIGATOR_BUCKET_TROPHIES, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
 	ship_name_words = list(
-		"Belle", "Coeur", "Lis", "Rose", "Etoile",
-		"Faucon", "Lion", "Couronne", "Dame", "Chevalier",
-		"Aurore", "Soleil", "Fleur", "Vent", "Vague",
+		"佳人", "心", "百合", "玫瑰", "星辰",
+		"猎隼", "雄狮", "王冠", "女士", "骑士",
+		"晨曦", "太阳", "花朵", "风", "波涛",
 	)
 	proper_names = list(
-		list("name" = "Astrata", "gender" = "f"),
-		list("name" = "Eora", "gender" = "f"),
-		list("name" = "Necra", "gender" = "f"),
-		list("name" = "Pestra", "gender" = "f"),
-		list("name" = "Noc", "gender" = "m"),
-		list("name" = "Abyssor", "gender" = "m"),
-		list("name" = "Ravox", "gender" = "m"),
-		list("name" = "Malum", "gender" = "m"),
+		list("name" = "阿斯特拉塔", "gender" = "f"),
+		list("name" = "伊欧拉", "gender" = "f"),
+		list("name" = "奈克拉", "gender" = "f"),
+		list("name" = "佩斯特拉", "gender" = "f"),
+		list("name" = "诺克", "gender" = "m"),
+		list("name" = "阿比索尔", "gender" = "m"),
+		list("name" = "拉沃克斯", "gender" = "m"),
+		list("name" = "马鲁姆", "gender" = "m"),
 	)
 	captain_first_names = list(
-		"Henri", "Guillaume", "Charles", "Robert", "Aimery",
-		"Jehan", "Thibault", "Gace", "Hugues", "Renaud",
-		"Mahaut", "Jehanne", "Alix", "Aelis", "Sybille",
+		"亨利", "纪尧姆", "查理", "罗贝尔", "艾默里",
+		"让", "蒂博", "加斯", "于格", "雷诺",
+		"玛奥", "让娜", "阿莉克丝", "艾莉丝", "西比尔",
 	)
 	captain_last_names = list(
-		"Lefèvre", "Fournier", "Mercier", "Tisserand", "Chevalier",
-		"d'Esperance", "Bouchard", "Chastain", "Marchand", "le Vallouisard",
+		"勒费弗尔", "富尔尼耶", "梅尔西耶", "蒂斯朗", "骑士",
+		"德埃斯佩朗斯", "布沙尔", "沙斯坦", "马尔尚", "瓦卢伊萨尔",
 	)
 	ship_types = list(
 		list("name" = "卡拉维尔帆船", "tonnage" = 70, "weight" = 20),
@@ -37,16 +37,16 @@
 	)
 	name_prefixes = list(
 		list(
-			"text_male" = "Saint-",
-			"text_female" = "Sainte-",
+			"text_male" = "圣·",
+			"text_female" = "圣·",
 			"chance" = 55,
 			"requires_proper_name" = TRUE,
 		),
-		list("text_female" = "Notre-Dame de ", "chance" = 10, "requires_proper_name" = TRUE),
+		list("text_female" = "圣母·", "chance" = 10, "requires_proper_name" = TRUE),
 	)
 	city_tags = list(
-		"Esperance-Capitale", "Vallouise-sur-Mer", "Falaises-Rouges", "Verquent", "Noireau",
-		"Vates", "Atagne", "Pais-Occitanie", "Lasquennes",
+		"埃斯佩朗斯首都", "滨海瓦卢伊兹", "红崖", "韦尔康", "努瓦罗",
+		"瓦特斯", "阿塔涅", "奥克西塔尼之乡", "拉斯凯讷",
 	)
 	city_tag_chance = 30
 	cultural_goods = list()

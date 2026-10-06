@@ -451,14 +451,14 @@
 	var/fund_id = "[params["fund_id"]]"
 	var/obj/structure/roguemachine/vaultbank/V = SStreasury.find_jawbank_for_fund_id(fund_id)
 	if(!V)
-		to_chat(H, span_warning("That institution has no coffers to render unto."))
+		to_chat(H, span_warning("该机构没有可供存款的库银。"))
 		return
 	if(!istype(V, /obj/structure/roguemachine/vaultbank/bathhouse))
-		to_chat(H, span_warning("[V.get_faction_label()] does not accept deposits through this panel."))
+		to_chat(H, span_warning("[V.get_faction_label()]不接受通过此面板存款。"))
 		return
 	var/obj/structure/roguemachine/vaultbank/bathhouse/B = V
 	if(!B.can_view(H))
-		to_chat(H, span_warning("You are not employed by the Bathhouse."))
+		to_chat(H, span_warning("你并未受雇于浴场。"))
 		return
 	B.deposit_to_fund(H, params)
 
@@ -466,7 +466,7 @@
 /// their own, chosen via the "group" param.
 /obj/structure/roguemachine/atm/proc/handle_set_bathhouse_limit(mob/living/carbon/human/H, list/params)
 	if(H.job != "Bathmaster")
-		to_chat(H, span_warning("Only the Bathmaster may set the terms of employment."))
+		to_chat(H, span_warning("只有浴场主才能设定雇佣条款。"))
 		return
 	var/group = "[params["group"]]"
 	if(group != "worker" && group != "agent")
@@ -477,10 +477,10 @@
 	limit = min(limit, 10000)
 	if(group == "worker")
 		SStreasury.bathhouse_worker_daily_withdraw_limit = limit
-		say("Workers of the Bathhouse may now draw up to [limit]m per dae.")
+		say("浴场员工现在每日最多可提取[limit]玛门。")
 	else
 		SStreasury.bathhouse_agent_daily_withdraw_limit = limit
-		say("Agents of the Bathhouse may now draw up to [limit]m per dae.")
+		say("浴场代理人现在每日最多可提取[limit]玛门。")
 	playsound(src, 'sound/misc/beep.ogg', 60, FALSE, -1)
 	log_admin("BATHHOUSE LIMIT: [key_name(H)] set the [group] daily withdrawal limit to [limit]m.")
 	message_admins("[key_name_admin(H)] set the Bathhouse [group] daily withdrawal limit to [limit]m.")
@@ -490,7 +490,7 @@
 /// payments simply stop until resumed.
 /obj/structure/roguemachine/atm/proc/handle_toggle_bathhouse_suspension(mob/living/carbon/human/H, list/params)
 	if(H.job != "Bathmaster")
-		to_chat(H, span_warning("Only the Bathmaster may set the terms of employment."))
+		to_chat(H, span_warning("只有浴场主才能设定雇佣条款。"))
 		return
 	var/group = "[params["group"]]"
 	if(group != "worker" && group != "agent")
@@ -503,7 +503,7 @@
 		SStreasury.bathhouse_agent_withdrawals_suspended = !SStreasury.bathhouse_agent_withdrawals_suspended
 		state = SStreasury.bathhouse_agent_withdrawals_suspended ? "suspended" : "resumed"
 	playsound(src, 'sound/misc/beep.ogg', 60, FALSE, -1)
-	say("Payments to Bathhouse [group]s [state].")
+	say("浴场[group == "worker" ? "员工" : "代理人"]的款项发放已[state == "suspended" ? "暂停" : "恢复"]。")
 	log_admin("BATHHOUSE SUSPENSION: [key_name(H)] [state] [group] withdrawals.")
 	message_admins("[key_name_admin(H)] [state] Bathhouse [group] withdrawals.")
 

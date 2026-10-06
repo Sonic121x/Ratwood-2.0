@@ -4,18 +4,18 @@
 	roll_weight = TRADE_REALM_WEIGHT_NEIGHBOR
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_VALUABLES_LOOTED, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
-		"Yarlsnik", "Koprivka", "Diethelm", "Tomorzh", "Khairin",
-		"Wardenpact", "Hetman", "Saiga", "Bloodaxe", "Ironmask",
-		"Potentate", "Astrava", "Ravox", "Zogiin", "Hussar",
+		"雅尔斯尼克", "科普里夫卡", "迪特赫尔姆", "托莫日", "海林",
+		"守林之约", "盖特曼", "赛加", "血斧", "铁面",
+		"权贵", "阿斯特拉瓦", "拉沃克斯", "佐金", "骠骑兵",
 	)
 	captain_first_names = list(
-		"Bjorn", "Yakiv", "Tomasz", "Lubomir", "Radek",
-		"Szabolcs", "Aleksy", "Miron", "Branislav", "Kazimir",
-		"Yelena", "Magda", "Zofia", "Liliana", "Vasylyna",
+		"比约恩", "雅基夫", "托马什", "卢博米尔", "拉德克",
+		"萨博尔奇", "阿莱克西", "米龙", "布拉尼斯拉夫", "卡齐米尔",
+		"叶莲娜", "玛格达", "佐菲娅", "莉莉安娜", "瓦西琳娜",
 	)
 	captain_last_names = list(
-		"Yakivin", "Trunfelov", "Koprivchak", "Astravich", "Drogomir",
-		"Hetmanov", "Szabrik", "Ironwald", "Bloodgrip", "Khairov",
+		"雅基文", "特伦费洛夫", "科普里夫恰克", "阿斯特拉维奇", "德罗戈米尔",
+		"盖特曼诺夫", "萨布里克", "铁林", "血握", "海罗夫",
 	)
 	ship_types = list(
 		list("name" = "抗冰帆船", "tonnage" = 50, "weight" = 25),
@@ -24,11 +24,11 @@
 		list("name" = "权贵霍尔克船", "tonnage" = 500, "weight" = 15),
 	)
 	name_prefixes = list(
-		list("text" = "Hetman ", "chance" = 10),
-		list("text" = "Free ", "chance" = 5),
+		list("text" = "盖特曼 ", "chance" = 10),
+		list("text" = "自由 ", "chance" = 5),
 	)
 	city_tags = list(
-		"Tomorzurkh", "Dalainkhair", "Enkhjarlgal", "Koprivkolov", "Free Szöréndnížina",
+		"托莫尔祖尔赫", "达莱恩海尔", "恩赫雅尔加尔", "科普里夫科洛夫", "自由瑟伦德尼日纳",
 	)
 	city_tag_chance = 35
 	cultural_goods = list()
