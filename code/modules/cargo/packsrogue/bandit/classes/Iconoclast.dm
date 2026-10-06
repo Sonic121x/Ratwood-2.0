@@ -9,17 +9,17 @@
 //////////
 
 /datum/supply_pack/rogue/Iconoclast/wolfhelm
-	name = "沃尔夫板甲盔"
+	name = "沃尔夫钢盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 
 /datum/supply_pack/rogue/Iconoclast/sallet
-	name = "萨莱盔"
+	name = "萨雷特盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
 /datum/supply_pack/rogue/Iconoclast/visoredsallet
-	name = "面罩萨莱盔"
+	name = "面罩萨雷特盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 

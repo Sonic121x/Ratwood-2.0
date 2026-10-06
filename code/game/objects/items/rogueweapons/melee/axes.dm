@@ -331,7 +331,7 @@
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient/decrepit
 	name = "破旧斧"
-	desc = "一把磨损青铜短斧。它来自普赛顿彗星坠落之前的时代；那时人类锻造金属不是为了流血，而是为了更好地依照祂的形象塑造世界。"
+	desc = "一把磨损青铜短斧。它来自彗星西昂坠落之前的时代；那时人类锻造金属不是为了流血，而是为了更好地依照祂的形象塑造世界。"
 	force = 17
 	force_wielded = 20
 	max_integrity = 180

@@ -7,7 +7,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/timesoldier/ferenchow
 	name = "费伦提亚军粮罐头"
-	desc = "<span class='yellow'><i>在王田大批量生产，管饱，而且出乎意料地好吃。里面装的是人人喜爱、受伊奥拉祝福的炖肉。</i></span>"
+	desc = "<span class='yellow'><i>在王田大批量生产，管饱，而且出乎意料地好吃。里面装的是人人喜爱、受伊欧拉祝福的炖肉。</i></span>"
 	icon = 'modular/timesoldier/sprites/stuff.dmi'
 	icon_state = "ferenchow"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
@@ -59,7 +59,7 @@
 
 /obj/item/timesoldier/radio
 	name = "野战收发器"
-	desc = "<span class='yellow'><i>我还记得我们用它们替换旧传讯戒指的时候。即使相隔遥远，我们也能接到命令。它们由奥术魔法驱动，而这一台里面特别装了一块彗星碎片。他们告诉我，这样就能跨越'时间'通信。</span><br><br>你能感受到其中蕴藏着SYON彗星的力量……里面一定有一块极小的彗星碎片。"
+	desc = "<span class='yellow'><i>我还记得我们用它们替换旧传讯戒指的时候。即使相隔遥远，我们也能接到命令。它们由奥术魔法驱动，而这一台里面特别装了一块彗星碎片。他们告诉我，这样就能跨越'时间'通信。</span><br><br>你能感受到其中蕴藏着彗星西昂的力量……里面一定有一块极小的彗星碎片。"
 	icon = 'modular/timesoldier/sprites/radio.dmi'
 	icon_state = "HEART"
 	var/broadcasting = FALSE

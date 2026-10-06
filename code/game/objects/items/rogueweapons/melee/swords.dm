@@ -435,7 +435,7 @@
 /obj/item/rogueweapon/sword/long
 	name = "长剑"
 	desc = "一件致命而平衡完美的武器。长剑是流传于整个普赛多尼亚无数传说与神话中的主角，常见于贵族之手，也仍被数量日渐稀少的大师决斗家所持。\
-		它在格伦泽霍夫与厄特鲁斯卡诸帝国中具有极高文化意义，许多传奇剑士都在那里开创并完善了沿用至今的战技。"
+		它在格伦泽尔霍夫特与伊特鲁斯卡诸帝国中具有极高文化意义，许多传奇剑士都在那里开创并完善了沿用至今的战技。"
 	force = 25
 	force_wielded = 30
 	possible_item_intents = LONGSWORD_STOCK_INTENTS
@@ -1780,7 +1780,7 @@
 /obj/item/rogueweapon/sword/rapier
 	name = "刺剑"
 	desc = "一种几乎可以说是全新问世的剑型，拥有笔直、纤长且尖锐的剑刃，专为单手持用而设计。\
-		它起源于厄特鲁斯卡群岛，其名来自“spada ropera”（字面意为“礼服剑”），因为它最初首先是一种配饰。\
+		它起源于伊特鲁斯卡群岛，其名来自“spada ropera”（字面意为“礼服剑”），因为它最初首先是一种配饰。\
 		与此同时，群岛上也正发展出一门尚且年轻的配套技艺，因其讲究巧劲而被称作“Destreza”。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "rapier"
@@ -1806,7 +1806,7 @@
 
 /obj/item/rogueweapon/sword/rapier/vaquero
 	name = "杯护手刺剑"
-	desc = "一种特殊的厄特鲁斯卡刺剑变体。它的杯形护手相比当下刺剑的传统设计更易制造，同时也更能护手。"
+	desc = "一种特殊的伊特鲁斯卡刺剑变体。它的杯形护手相比当下刺剑的传统设计更易制造，同时也更能护手。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "cup_hilt_rapier"
 	wdefense = 8
@@ -1970,7 +1970,7 @@
 
 /obj/item/rogueweapon/sword/rapier/psy
 	name = "普赛顿刺剑"
-	desc = "一把篮形护手刺剑，装配着纯银细刃。如此华美的兵器不仅能穿透异教徒锁甲的缝隙，也象征着奥塔凡外交使节的权威。"
+	desc = "一把篮形护手刺剑，装配着纯银细刃。如此华美的兵器不仅能穿透异教徒锁甲的缝隙，也象征着奥塔万外交使节的权威。"
 	icon_state = "silverrapier"
 	sheathe_icon = "rapier"
 	max_integrity = 225
@@ -2006,7 +2006,7 @@
 
 /obj/item/rogueweapon/sword/rapier/psy/relic
 	name = "“圣餐”"
-	desc = "厄特鲁斯卡的剑型，落入奥塔凡工艺之手。圣玛勒姆的铁匠打造出一柄独一无二的纤薄剑刃，能迅速刺穿那些多数人声称原本并不存在的缝隙，将不洁者与恶徒一并钉穿。<b>浸银钢刃加冕于篮形护手之上，使正义之手免遭伤害。</b>"
+	desc = "伊特鲁斯卡的剑型，落入奥塔万工艺之手。圣玛勒姆的铁匠打造出一柄独一无二的纤薄剑刃，能迅速刺穿那些多数人声称原本并不存在的缝隙，将不洁者与恶徒一并钉穿。<b>浸银钢刃加冕于篮形护手之上，使正义之手免遭伤害。</b>"
 	icon_state = "psyrapier"
 	sheathe_icon = "psyrapier"
 	max_integrity = 300
@@ -2041,7 +2041,7 @@
 
 /obj/item/rogueweapon/sword/rapier/eora
 	name = "“心弦”"
-	desc = "一把专为侍奉艾欧拉女士而打造的比尔博柄刺剑。留给那些温言已无用武之地、唯有刺穿人心的时刻。"
+	desc = "一把专为侍奉伊欧拉女士而打造的比尔博柄刺剑。留给那些温言已无用武之地、唯有刺穿人心的时刻。"
 	icon = 'icons/roguetown/weapons/swords32.dmi'
 	icon_state = "eorarapier"
 	sheathe_icon = "eorarapier"
@@ -2500,7 +2500,7 @@
 /obj/item/rogueweapon/sword/long/kriegmesser
 	name = "双手大刀"
 	desc = "一把大型双手剑，拥有单刃剑身、十字护手与近似刀柄的握把。\
-	它注定要以双手挥舞，也是格伦泽霍夫雇佣兵之间颇受欢迎的武器。"
+	它注定要以双手挥舞，也是格伦泽尔霍夫特雇佣兵之间颇受欢迎的武器。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "kriegmesser"
 	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/rend/krieg, /datum/intent/sword/strike)

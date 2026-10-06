@@ -30,7 +30,7 @@
 		return
 
 	var/withdrawal_amount = calculate_withdrawal_amount(beast.language_tier)
-	var/success = SStreasury.burn(SStreasury.discretionary_fund, withdrawal_amount, "Heartbeast hoarder theft")
+	var/success = SStreasury.burn(SStreasury.discretionary_fund, withdrawal_amount, "心兽囤积癖盗窃")
 
 	if(success)
 		convert_mammon_to_coins(withdrawal_amount, beast)

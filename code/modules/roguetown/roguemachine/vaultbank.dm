@@ -1,7 +1,7 @@
 #define MAMMON_PER_FORCE 1
 
 /obj/structure/roguemachine/vaultbank
-	name = "\improper 颌口金库"
+	name = "\proper 颌口金库"
 	desc = "收集并保管谷地大公国的国库财物。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "jawbank"
@@ -387,7 +387,7 @@
 // ============================================================================
 
 /obj/structure/roguemachine/vaultbank/proc/get_authority_label()
-	return "总管、书记官、大公或摄政"
+	return "宫廷总管、书记官、大公或摄政"
 
 /obj/structure/roguemachine/vaultbank/proc/get_faction_label()
 	return "王权"
@@ -642,7 +642,7 @@
 // ============================================================================
 
 /obj/structure/roguemachine/vaultbank/church
-	name = "\improper 教会颌口金库"
+	name = "\proper 教会颌口金库"
 	desc = "一座生物机械方尖碑，保管着教会信徒的施舍与什一税。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Bishop", "Martyr", "Acolyte")
 	alert_location = "the Church"
@@ -706,7 +706,7 @@
 // ============================================================================
 
 /obj/structure/roguemachine/vaultbank/merchant
-	name = "\improper 商人颌口金库"
+	name = "\proper 商人颌口金库"
 	desc = "一座生物机械方尖碑，守护着费伦提亚贸易公司的金柜。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Merchant", "Shophand")
 	alert_location = "the Merchant's quarter"
@@ -750,7 +750,7 @@
 // ============================================================================
 
 /obj/structure/roguemachine/vaultbank/bathhouse
-	name = "\improper 浴场颌口金库"
+	name = "\proper 浴场颌口金库"
 	desc = "一座生物机械方尖碑，守护着浴场的收入。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Bathmaster", "Bathhouse Attendant")
 	alert_location = "the Bathhouse"
@@ -917,7 +917,7 @@
 // ============================================================================
 
 /obj/structure/roguemachine/vaultbank/innkeeper
-	name = "\improper 酒馆颌口金库"
+	name = "\proper 酒馆颌口金库"
 	desc = "一座生物机械方尖碑，囤积着酒馆的收入。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Innkeeper", "Tapster", "Cook")
 	alert_location = "the Tavern"

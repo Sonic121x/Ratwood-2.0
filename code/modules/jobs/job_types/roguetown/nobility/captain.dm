@@ -114,8 +114,8 @@
 /datum/outfit/job/roguetown/captain/infantry/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/visages = list(
-		"巴布特盔"			= /obj/item/clothing/head/roguetown/helmet/heavy/captain,
-		"长吻萨莱特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/captain/sallet,
+		"巴尔布特盔"			= /obj/item/clothing/head/roguetown/helmet/heavy/captain,
+		"长吻萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/captain/sallet,
 		"长吻尖盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/captain/bascinet,
 	)
 	var/visage_choice = input(H, "选择头盔的面罩样式。", "戴上头盔") as anything in visages

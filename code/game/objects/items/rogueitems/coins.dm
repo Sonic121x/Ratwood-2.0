@@ -209,12 +209,12 @@
 
 //OTAVAN MARQUE - WORTHLESS TO ANYONE BUT INQ.
 /obj/item/roguecoin/inqcoin
-	name = "奥塔凡马克"
-	desc = "一枚受祝福的银币，表面覆有独特的黑色染层，铸着后王国时代的灵十字。金斯菲尔德在被问及时否认此币存在，因此传闻这类钱币仅供奥塔凡宗教裁判所内部使用。"
+	name = "奥塔万马克"
+	desc = "一枚受祝福的银币，表面覆有独特的黑色染层，铸着后王国时代的灵十字。金斯菲尔德在被问及时否认此币存在，因此传闻这类钱币仅供奥塔万宗教裁判所内部使用。"
 	icon_state = "i1"
 	sellprice = 0
 	base_type = CTYPE_ICOIN
-	plural_name = "奥塔凡马克"	
+	plural_name = "奥塔万马克"	
 
 //GOLD
 /obj/item/roguecoin/gold

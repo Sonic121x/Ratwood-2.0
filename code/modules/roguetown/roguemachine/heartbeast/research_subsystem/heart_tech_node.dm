@@ -53,8 +53,8 @@
 
 // CRAFTING RECIPE TECHS
 /datum/chimeric_tech_node/residual_frankenbrew
-	name = "不纯 lux 过滤"
-	description = "允许从不纯 lux 中提炼出少量供 fulmenor 椅使用的复生药剂。"
+	name = "不纯灵辉过滤"
+	description = "允许从不纯灵辉中提炼出少量供富尔门诺椅使用的复生药剂。"
 	string_id = "LUX_FILTRATION"
 	required_tier = 1
 	cost = 5
@@ -63,7 +63,7 @@
 
 /datum/chimeric_tech_node/meat_decoy
 	name = "肉诱饵"
-	description = "允许用新鲜肉块制作血肉诱饵，以分散敌对、低智 creechurs 的注意力。"
+	description = "允许用新鲜肉块制作血肉诱饵，以分散敌对、低智怪物的注意力。"
 	string_id = "FLESH_DECOYS"
 	required_tier = 1
 	cost = 5
@@ -82,7 +82,7 @@
 
 /datum/chimeric_tech_node/black_rose
 	name = "黑玫瑰合成"
-	description = "允许用腐化血肉与兽血制作黑玫瑰。人们相信，heartbeasts 某种程度上正是由 佩斯特拉 亲手塑造，以压制这些玫瑰中潜伏的黑腐。"
+	description = "允许用腐化血肉与兽血制作黑玫瑰。人们相信，心兽某种程度上正是由佩斯特拉亲手塑造，以压制这些玫瑰中潜伏的黑腐。"
 	string_id = "BLACK_ROSE"
 	required_tier = 4
 	cost = 100
@@ -92,7 +92,7 @@
 
 /datum/chimeric_tech_node/corpse_ticks
 	name = "尸蜱"
-	description = "允许 leechticks 附着在尸体上，抽取其中的 lux。"
+	description = "允许水蛭蜱附着在尸体上，抽取其中的灵辉。"
 	string_id = "CORPSE_TICKS"
 	required_tier = 1
 	cost = 5
@@ -117,8 +117,8 @@
 	prerequisites = list("INFESTATION_TIER1")
 
 /datum/chimeric_tech_node/infestation_capacity_3
-	name = "揭示 佩斯特拉 的神赐"
-	description = "将感染的最大充能提升至 10。达到 10 层充能时，高阶 佩斯特拉 信徒可获得 Divine Rebirth。"
+	name = "揭示佩斯特拉的神赐"
+	description = "将感染的最大充能提升至 10。达到 10 层充能时，高阶佩斯特拉信徒可获得神圣重生。"
 	string_id = "INFESTATION_TIER3"
 	required_tier = 3
 	cost = 50
@@ -135,7 +135,7 @@
 
 /datum/chimeric_tech_node/infestation_rot_multiple_1
 	name = "扩散污染"
-	description = "当感染施加在零食上时，现在会额外影响附近 1 个食物。"
+	description = "对食物施加感染时，处理数量上限提升至 2，最多额外影响附近 1 个食物。"
 	string_id = "INFESTATION_ROT_MULTIPLE_1"
 	required_tier = 2
 	cost = 25
@@ -144,7 +144,7 @@
 
 /datum/chimeric_tech_node/infestation_rot_multiple_2
 	name = "群体污染"
-	description = "当感染施加在零食上时，现在会额外影响附近 3 个食物。"
+	description = "对食物施加感染时，处理数量上限提升至 4，最多额外影响附近 3 个食物。"
 	string_id = "INFESTATION_ROT_MULTIPLE_2"
 	required_tier = 3
 	cost = 40
@@ -153,7 +153,7 @@
 
 /datum/chimeric_tech_node/infestation_attack_vector
 	name = "毒烈之刃"
-	description = "Pestilent blade 现在在成功命中时有小概率触发，即使目标尚未被感染。"
+	description = "疫刃附魔成功命中尚未感染的目标时，有 20% 的概率触发瘟疫效果。"
 	string_id = "INFESTATION_ATTACK_VECTOR"
 	required_tier = 1
 	cost = 5

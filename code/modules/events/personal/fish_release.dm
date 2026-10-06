@@ -48,8 +48,8 @@
 	var/datum/objective/release_fish/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("Abyssor demands respite for the creatures of the deep! Any rare fish returned to the water will please him!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_notice("阿比索尔要让深水中的生灵得到喘息！将任何稀有鱼放归水中，都会令祂欣悦！"))
 	chosen_one.playsound_local(chosen_one, 'sound/items/bucket_transfer (2).ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

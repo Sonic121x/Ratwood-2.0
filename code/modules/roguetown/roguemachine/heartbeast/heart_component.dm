@@ -301,8 +301,8 @@
 	var/list/quirk_effects = apply_language_quirks(speaker, message, response_time)
 
 	var/score = 0
-	var/word_count = length(splittext(message, " "))
-	var/last_char = copytext(message, -1)
+	var/word_count = length_char(replacetext(replacetext(html_decode(message), regex(@"[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*", "g"), "a"), regex(@"[^a\u3007\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\U020000-\U03FFFF]", "g"), ""))
+	var/last_char = replacetext(replacetext(replacetext(replacetext(copytext_char(message, -1), "？", "?"), "！", "!"), "。", "."), "．", ".")
 
 	// Check word count
 	if(word_count >= task.min_words && word_count <= task.max_words)

@@ -16,7 +16,7 @@
 	. += span_info("空手左键点击，可查看呕食厅的仓储。储存的玛门可用于购买种类繁多的材料，这些材料随后会被售卖出来供人使用。")
 	. += span_info("手持物品左键点击机器，会将其存入仓储，并给予你相应的钱币作为回报。请务必先在神经锁上注册账户，否则你将收不到任何钱币。")
 	. += span_info("右键点击机器，会自动将周围所有物品一次性存入仓储。")
-	. += span_info("呕食厅的仓储会随时间自然补货。存入的物品会累加进仓储数量，之后可供他人购买，或由总管出口以赚取利润。")
+	. += span_info("呕食厅的仓储会随时间自然补货。存入的物品会累加进仓储数量，之后可供他人购买，或由宫廷总管出口以赚取利润。")
 
 /obj/structure/roguemachine/stockpile/Initialize(mapload)
 	. = ..()
@@ -166,7 +166,7 @@
 		return
 	SStreasury.royal_custom_unlocked = TRUE
 	SStreasury.royal_custom_active = TRUE
-	scom_announce("总管府已统计到 [SStreasury.royal_custom_threshold] 玛门的贸易额。依古老特许状，王权的超额关税权就此生效 - 原本付给中间人的抽成，如今转而流入王权的金库。总管可在总管府设定税率。")
+	scom_announce("总管府已统计到 [SStreasury.royal_custom_threshold] 玛门的贸易额。依古老特许状，王权的超额关税权就此生效 - 原本付给中间人的抽成，如今转而流入王权的金库。宫廷总管可在总管府设定税率。")
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(!H.client || !H.mind)
 			continue

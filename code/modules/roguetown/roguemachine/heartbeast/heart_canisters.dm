@@ -350,7 +350,7 @@
 			if(islist(T.preferred_approaches))
 				var/list/approach_map = T.preferred_approaches
 				for(var/key in approach_map)
-					UNTYPED_LIST_ADD(approach_summaries, "[key]: [approach_map[key]]")
+					UNTYPED_LIST_ADD(approach_summaries, "[key == "min_words" ? "最少字/词数" : key == "max_words" ? "最多字/词数" : key == "punctuation" ? "句末标点" : key]：[approach_map[key]]")
 			aspect_data["preferred_approaches_summary"] = approach_summaries.Join(", ")
 
 			var/list/conflicting_names = list()

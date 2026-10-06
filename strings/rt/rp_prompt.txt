@@ -1,24 +1,24 @@
-<b>The year is 1513.</b> There is a Grand Duchy built on traditional elven homelands, and in that Duchy there is the capital of Rotwood Vale, and it is the end of the world.
+<b>现在是1513年。</b>一座大公国建立在精灵祖传的家园之上，腐木谷的首府坐落其中，而世界末日已然来临。
 <br>
 <br>
-Thousands of years ago, Psydon sent down the Comet Syon to defeat the rampaging Archdevil Vheslyn that scoured and pillaged the holy world of Psydonia. The Archdevil was slain, sent back to her home-plane- but Psydon was wounded, and fell into a deep, deep slumber (or into a shallow death?) from which he did not stir. The impact shattered him into his Ten children- Ten shards of him that guided humenity and the other races from the primordial era they were birthed from.
+数千年前，普赛顿降下彗星西昂，击败横行肆虐、劫掠神圣普赛多尼亚的大魔君维斯林。大魔君被杀，遣回自己的位面；普赛顿却也负伤，陷入极深的沉眠（或是浅浅的死亡？），此后再未苏醒。冲击将祂分裂为十位子嗣——祂的十块碎片，自人类与其他种族诞生的原初时代起，便一直引领着他们。
 <br>
-But times change.
-<br>
-<br>
-The Age of Enlightenment was a great period in the mortal races' years, where the Empire of the Holy Celestia, guided by the blessings of the Ten, brought there was unprecedented peace and prosperity across Psydonia. As the mortals expanded their power and understanding of the world around them, the Ten fell into the background, perhaps being overtaken by the same gradual sleep that plied Psydon. Great Wonders were built, and the mortal races learned. And the mortal races Ascended. In 1311, the archmage Zaelorion Crynsaris, proudest of the snow elves, ascended to Divinity. Mortals learned they could play Gods.
+然而，时代终会改变。
 <br>
 <br>
-And Mortals learned that they could ascend; that they could play Gods. And so ZIZO rose to the front of the Ascendants- mortals that had, in their own right, ascended to True Divinity. And so, the Age of Enlightenment ended with fire- the Snow Elf race exterminated, the holy Empire of the Ten extinguished, the advancements and knowledge of the eras so-shattered.
+启蒙时代是凡间诸族历史中的伟大时期。神圣天穹帝国在十神赐福的指引下，为普赛多尼亚带来前所未有的和平与繁荣。凡人逐渐增强力量，深化对周围世界的认知，十神则退居幕后，也许同普赛顿一样渐渐沉入睡眠。宏伟奇观拔地而起，凡间诸族不断求知，继而飞升。1311年，雪精灵中最为骄傲的大法师扎洛里昂·克林萨里斯飞升为神。凡人明白了，他们亦可扮演神明。
 <br>
 <br>
-Psydonia rots. Psydonia decays; scent of shit and pus and maggot-filth in the air. The Holy See controls diocese around the world that worship The Ten ever-so-faithfully...but trouble brews. Two-hundred years ago, the Church underwent a harsh schism in the dying embers of the Age of Enlightenment and of the fracturing of the empire. The Holy Ecclesial split, preaching the Ascendant. The Ten were weak, they said- and the Ascendant were what would save mortals upon this dying coil.
+凡人明白了，他们能够飞升，能够成为神明。于是齐佐登上飞升者的前列——这些凡人凭自身之力，达到了真正的神性。启蒙时代由此终结于烈火：雪精灵一族遭到灭绝，十神的神圣帝国覆灭，历代积累的进步与知识尽皆破碎。
 <br>
 <br>
-<b>Children of the Ten, Psydonia is under attack by the Inhumen Ascendant and ever-creeping Archdevils-</b> will you lose your faith in the Ten that have guided and nurtured you?
+普赛多尼亚正在腐烂，正在衰败；空气中充斥着粪便、脓液与蛆虫污秽的气味。圣座统辖世界各地的教区，虔诚地敬奉十神……然而祸乱正在酝酿。两百年前，启蒙时代余烬将熄、帝国分崩离析之际，教会经历了严重的分裂。神圣教团脱离教会，转而宣扬飞升者。他们声称十神软弱，唯有飞升者才能在这个垂死的世界拯救凡人。
 <br>
-<b>Glorious Ecclestials, Worshipper of Ascendants, the Ten are weak and the church is corrupt-</b> will you rise up and rewrite a world in your image, stronger and more resilient?
 <br>
-<b>Holy Lamb, Sacrificial Hero, Blessed Idiot, PSYDON endures-</b> will you yet endure as stoically and wilfully as he does, for all of humenkind?
+<b>十神的儿女啊，普赛多尼亚正遭到异民飞升者与步步逼近的大魔君侵袭——</b>你会失去对那些引领、养育你的十神的信仰吗？
 <br>
-<b>Lowly fool- will you save your world?</b>
+<b>荣耀的教团成员、飞升者的信徒啊，十神软弱，教会腐败——</b>你会奋起，按自己的意志重塑世界，使它更强大、更坚韧吗？
+<br>
+<b>神圣的羔羊、献身的英雄、蒙福的愚者，普赛顿始终坚忍——</b>你会为了全体人类，像祂一样坚定而坚忍地坚持下去吗？
+<br>
+<b>卑微的愚者啊——你会拯救自己的世界吗？</b>
