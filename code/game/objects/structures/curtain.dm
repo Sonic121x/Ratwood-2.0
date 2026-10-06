@@ -102,11 +102,11 @@
 		return
 	var/obj/item/dye_brush/brush = dyingbrush
 	if(!brush.dye)
-		to_chat(user, span_warning("The dye brush has no dye loaded."))
+		to_chat(user, span_warning("染色刷上没有染料。"))
 		return
 	if(do_after(user, 2 SECONDS, target = src))
-		user.visible_message(span_notice("[user] finishes <font color=[brush.dye]>painting</font> [src]."), \
-			span_notice("I finish <font color=[brush.dye]>painting</font> [src].")
+		user.visible_message(span_notice("[user]完成了对[src]的<font color=[brush.dye]>染色</font>。"), \
+			span_notice("我完成了对[src]的<font color=[brush.dye]>染色</font>。")
 		)
 		playsound(loc, "sound/foley/scrubbing[pick(1,2)].ogg", 60, TRUE)
 		color = brush.dye

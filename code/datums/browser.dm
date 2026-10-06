@@ -361,7 +361,7 @@
 	var/icon/preview_icon = null
 	var/datum/callback/preview_update
 
-/datum/browser/modal/preflikepicker/New(User,Message,Title,Button1="Ok",Button2,Button3,StealFocus = 1, Timeout = FALSE,list/settings,inputtype="checkbox", width = 600, height, slidecolor)
+/datum/browser/modal/preflikepicker/New(User,Message,Title,Button1="确定",Button2,Button3,StealFocus = 1, Timeout = FALSE,list/settings,inputtype="checkbox", width = 600, height, slidecolor)
 	if (!User)
 		return
 	src.settings = settings

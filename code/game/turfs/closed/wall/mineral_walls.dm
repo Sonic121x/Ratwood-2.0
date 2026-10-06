@@ -1,5 +1,5 @@
 /turf/closed/wall/mineral
-	name = "mineral wall"
+	name = "矿物墙"
 	desc = ""
 	icon_state = ""
 	var/last_event = 0

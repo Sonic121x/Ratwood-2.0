@@ -22,7 +22,7 @@
 /datum/hud/var/atom/movable/screen/action_bar/clickdelay/cdmid
 
 /atom/movable/screen/action_bar/clickdelay
-	name = "click delay"
+	name = "点击冷却"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = ""
 	mouse_opacity = 0
@@ -54,7 +54,7 @@
 /datum/hud/var/atom/movable/screen/action_bar/resistdelay/resistdelay
 
 /atom/movable/screen/action_bar/resistdelay
-	name = "resist delay"
+	name = "挣脱冷却"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = ""
 

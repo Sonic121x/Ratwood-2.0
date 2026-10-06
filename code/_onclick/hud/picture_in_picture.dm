@@ -1,5 +1,5 @@
 /atom/movable/screen/movable/pic_in_pic
-	name = "Picture-in-picture"
+	name = "画中画"
 	screen_loc = "CENTER"
 	plane = FLOOR_PLANE
 	var/atom/center
@@ -57,7 +57,7 @@
 	if(!button_x)
 		button_x = new /atom/movable/screen/component_button(null, src)
 		var/mutable_appearance/MA = new /mutable_appearance()
-		MA.name = "close"
+		MA.name = "关闭"
 		MA.icon = 'icons/misc/pic_in_pic.dmi'
 		MA.icon_state = "x"
 		MA.plane = HUD_PLANE
@@ -70,7 +70,7 @@
 	if(!button_expand)
 		button_expand = new /atom/movable/screen/component_button(null, src)
 		var/mutable_appearance/MA = new /mutable_appearance()
-		MA.name = "expand"
+		MA.name = "展开"
 		MA.icon = 'icons/misc/pic_in_pic.dmi'
 		MA.icon_state = "expand"
 		MA.plane = HUD_PLANE
@@ -83,7 +83,7 @@
 	if(!button_shrink)
 		button_shrink = new /atom/movable/screen/component_button(null, src)
 		var/mutable_appearance/MA = new /mutable_appearance()
-		MA.name = "shrink"
+		MA.name = "缩小"
 		MA.icon = 'icons/misc/pic_in_pic.dmi'
 		MA.icon_state = "shrink"
 		MA.plane = HUD_PLANE

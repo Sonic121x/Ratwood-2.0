@@ -7,15 +7,15 @@
 /mob/living/carbon/UnarmedAttack(atom/A, proximity, params)
 
 	if(!has_active_hand()) //can't attack without a hand.
-		to_chat(src, span_warning("I lack working hands."))
+		to_chat(src, span_warning("我的双手无法使用。"))
 		return
 
 	if(!has_hand_for_held_index(used_hand)) //can't attack without a hand.
-		to_chat(src, span_warning("I can't move this hand."))
+		to_chat(src, span_warning("我动不了这只手。"))
 		return
 
 	if(check_arm_grabbed(used_hand))
-		to_chat(src, span_warning("Someone is grabbing my arm!"))
+		to_chat(src, span_warning("有人抓住了我的胳膊！"))
 		return
 
 	// Special glove functions:
@@ -50,8 +50,8 @@
 					ignite_mob()
 				else
 					if(prob(30))
-						to_chat(src, span_warning("The Undermaiden protects me!"))
-						to_chat(L, span_warning("The foul blessing of the Undermaiden hurts us!"))
+						to_chat(src, span_warning("冥下侍女护佑着我！"))
+						to_chat(L, span_warning("冥下侍女邪恶的赐福伤害了我们！"))
 				adjust_blurriness(2)
 				adjustBruteLoss(rand(5, 10))
 				apply_status_effect(/datum/status_effect/churned, L)
@@ -81,10 +81,10 @@
 				if(istype(AM) && !AM.anchored)
 					var/jadded = max(100-(STASTR*10),5)
 					if(stamina_add(jadded))
-						visible_message(span_info("[src] pushes [AM]."))
+						visible_message(span_info("[src]推开了[AM]。"))
 						PushAM(AM, MOVE_FORCE_STRONG)
 					else
-						visible_message(span_warning("[src] pushes [AM]."))
+						visible_message(span_warning("[src]推开了[AM]。"))
 					changeNext_move(CLICK_CD_MELEE)
 					return
 		A.attack_hand(src, params)
@@ -94,15 +94,15 @@
 		return
 
 	if(!has_active_hand()) //can't attack without a hand.
-		to_chat(src, span_warning("I lack working hands."))
+		to_chat(src, span_warning("我的双手无法使用。"))
 		return
 
 	if(!has_hand_for_held_index(used_hand)) //can't attack without a hand.
-		to_chat(src, span_warning("I can't move this hand."))
+		to_chat(src, span_warning("我动不了这只手。"))
 		return
 
 	if(check_arm_grabbed(used_hand))
-		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
+		to_chat(src, span_warning("[pulledby]正束缚着我的胳膊！"))
 		return
 
 	A.attack_right(src, params)
@@ -154,11 +154,11 @@
 		if(offered_item == item_to_offer)
 			user.cancel_offering_item()
 		else
-			to_chat(user, span_notice("I'm already offering \the [item_to_offer]!"))
+			to_chat(user, span_notice("我已经在递出\the [item_to_offer]了！"))
 		return
 
 	if(HAS_TRAIT(item_to_offer, TRAIT_NODROP))
-		to_chat(user, span_warning("I can't offer this."))
+		to_chat(user, span_warning("我无法递出这个。"))
 		return
 	user.offer_item(src, item_to_offer)
 
@@ -203,7 +203,7 @@
 	if(!user.can_interact_with(src))
 		return FALSE
 	if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !user.IsAdvancedToolUser())
-		to_chat(user, span_warning("I don't have the dexterity to do this!"))
+		to_chat(user, span_warning("我没有足够灵巧的双手来做这件事！"))
 		return FALSE
 	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED) && user.incapacitated((interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED), !(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB)))
 		return FALSE
@@ -274,10 +274,10 @@
 			if(istype(AM) && !AM.anchored)
 				var/jadded = max(100-(STASTR*10),5)
 				if(stamina_add(jadded))
-					visible_message(span_info("[src] pushes [AM]."))
+					visible_message(span_info("[src]推开了[AM]。"))
 					PushAM(AM, MOVE_FORCE_STRONG)
 				else
-					visible_message(span_warning("[src] pushes [AM]."))
+					visible_message(span_warning("[src]推开了[AM]。"))
 				return
 	A.attack_animal(src)
 

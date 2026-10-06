@@ -356,15 +356,15 @@ GLOBAL_VAR(restart_counter)
 	var/players = GLOB.clients.len
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		new_status += "<br>GAME STATUS: <b>IN LOBBY</b><br>"
+		new_status += "<br>游戏状态：<b>大厅等待中</b><br>"
 	else
-		new_status += "<br>GAME STATUS: <b>PLAYING</b><br>"
+		new_status += "<br>游戏状态：<b>进行中</b><br>"
 
 	if (SSticker.HasRoundStarted())
-		new_status += "Round Time: <b>[time2text(STATION_TIME_PASSED(), "hh:mm", 0)]</b>"
+		new_status += "回合时间：<b>[time2text(STATION_TIME_PASSED(), "hh:mm", 0)]</b>"
 	else
-		new_status += "Round Time: <b>NEW ROUND STARTING</b>"
-	new_status += "<br>Player[players == 1 ? "": "s"]: <b>[players]</b>"
+		new_status += "回合时间：<b>新回合即将开始</b>"
+	new_status += "<br>玩家人数：<b>[players]</b>"
 
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"

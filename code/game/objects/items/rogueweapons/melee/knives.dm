@@ -450,7 +450,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "DAGGER")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "匕首")
 
 /obj/item/rogueweapon/huntingknife/combat/messer/graggar
 	name = "凶暴赛克斯"
@@ -464,7 +464,7 @@
 
 /obj/item/rogueweapon/huntingknife/combat/messer/graggar/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "DAGGER")
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "匕首")
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/matthios //Master-of-none weapon. Heavier cut, higher WDEF, and a serviceable throwforce. 
 	name = "鎏金匕首"
@@ -483,7 +483,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/matthios/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "DAGGER")
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "匕首")
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/rondel/baotha
 	name = "蜜糖穿甲匕首"
@@ -498,7 +498,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/rondel/baotha/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "DAGGER")
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "匕首")
 
 //
 

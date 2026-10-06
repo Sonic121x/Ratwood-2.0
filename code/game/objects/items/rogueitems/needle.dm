@@ -208,7 +208,7 @@
 	if(iscarbon(patient))
 		//OV edit
 		if(isooze(patient))
-			to_chat(doctor, span_warning("You can't sew an Ooze, their wounds must be burned closed."))
+			to_chat(doctor, span_warning("你无法缝合软泥的伤口，必须烧灼使其闭合。"))
 			return FALSE
 		//OV edit end
 		affecting = patient.get_bodypart(check_zone(doctor.zone_selected))
