@@ -75,7 +75,7 @@
 					localarea_display = "工艺公会"
 					rolestonotify = list("Guildmaster", "Guildsman")
 				if("Steward")
-					localarea_display = "总管处"
+					localarea_display = "宫廷总管处"
 					rolestonotify = list("Steward", "Clerk")
 				if("Baths")
 					localarea_display = "浴场"

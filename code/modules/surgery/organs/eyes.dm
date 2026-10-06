@@ -255,7 +255,7 @@
 	owner.flash_act(visual = 1)
 
 /obj/item/organ/eyes/robotic/xray
-	name = "\improper X射线眼"
+	name = "\proper X射线眼"
 	desc = ""
 	eye_color = "000"
 	see_in_dark = 8

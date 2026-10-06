@@ -73,7 +73,7 @@
 				if(!istype(tongs.hingot, /obj/item/rogueore) && tongs.hingot?.smelted) // Burning items to ash won't level smelting.
 					var/mob/living/L = user
 					user.mind.add_sleep_experience(/datum/skill/craft/smelting, L.STAINT * 2, FALSE)// Smelting is already a timesink, this is justified to accelerate levelling
-			user.visible_message(span_info("[user] retrieves \the [item_to_remove] from \the [src]."), span_info("你从[src]中取出了[item_to_remove]。"))
+			user.visible_message(span_info("[user]从\the [src]中取出了\the [item_to_remove]。"), span_info("你从[src]中取出了[item_to_remove]。"))
 			if(on)
 				var/tyme = world.time
 				tongs.hott = tyme
@@ -282,7 +282,7 @@
 				qdel(item)
 
 	playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
-	visible_message(span_notice("\The [src] finished smelting."))
+	visible_message(span_notice("\The [src]完成了熔炼。"))
 	max_contained_items = initial(max_contained_items)
 	smelting_progress = smelting_ticks + 1
 	actively_smelting = FALSE
@@ -335,7 +335,7 @@
 				qdel(item)
 
 	playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
-	visible_message(span_notice("\The [src] finished smelting."))
+	visible_message(span_notice("\The [src]完成了熔炼。"))
 	max_contained_items = initial(max_contained_items)
 	smelting_progress = smelting_ticks + 1
 	actively_smelting = FALSE

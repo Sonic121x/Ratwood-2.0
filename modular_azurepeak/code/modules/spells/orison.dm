@@ -19,7 +19,7 @@
 	hand_path = /obj/item/melee/touch_attack/orison
 
 /obj/item/melee/touch_attack/orison
-	name = "\improper 次级祈祷"
+	name = "\proper 次级祈祷"
 	desc = "神学的基本教义涌回你的脑海：\n \
 		<b>Fill</b>: 向你的神祇恳求，在你触碰的容器中创造少量水，消耗一定的信仰值。\n \
 		<b>Touch</b>: 将一丝神圣奇术引入自身，使你下次开口时声音变得洪亮。据说有时能吓到 SCOM 管线里的老鼠。可以远程用于光源，使其闪烁。\n \

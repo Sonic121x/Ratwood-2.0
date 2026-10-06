@@ -56,8 +56,8 @@
 	var/datum/objective/retainer/new_objective = new(owner = noble.mind)
 	noble.mind.add_personal_objective(new_objective)
 
-	to_chat(noble, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(noble, span_notice("Astrata wants you to demonstrate your ability to lead as a proper noble! Recruit at least one retainer to serve you!"))
+	to_chat(noble, span_userdanger("你是神的选民！"))
+	to_chat(noble, span_notice("阿斯特拉塔要你展现一位真正贵族应有的领导能力！招募至少一位家臣为你效力！"))
 	noble.playsound_local(noble, 'sound/magic/bless.ogg', 100)
 
 	noble.mind.announce_personal_objectives()

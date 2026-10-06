@@ -133,7 +133,7 @@
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "beer"
 	list_reagents = list(/datum/reagent/consumable/ethanol/hagwoodbitter = 50)
-	desc = "一只带有鬼木苦酒瓶塞的酒瓶。这大概是从被格伦泽尔霍夫占领的佐恩地区出口的东西里，最不苦的一样。"
+	desc = "一只带有鬼木苦酒瓶塞的酒瓶。这大概是从被格伦泽尔霍夫特占领的佐恩地区出口的东西里，最不苦的一样。"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/aurorian
 	name = "奥罗瑞安草本啤酒瓶"
@@ -184,11 +184,11 @@
 	fancy = TRUE
 
 /obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine
-	name = "格伦泽尔霍夫酸酒瓶"
+	name = "格伦泽尔霍夫特酸酒瓶"
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "red_wine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/sourwine = 50)
-	desc = "一瓶带有黑墨瓶塞的格伦泽尔霍夫经典酒品。里面是以矿泉水稀释过的极酸葡萄酒。"
+	desc = "一瓶带有黑墨瓶塞的格伦泽尔霍夫特经典酒品。里面是以矿泉水稀释过的极酸葡萄酒。"
 
 /obj/item/reagent_containers/glass/bottle/rogue/redwine
 	name = "奥塔万红酒瓶"
@@ -236,14 +236,14 @@
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "red_wine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/jagdtrunk = 50)
-	desc = "一只带有赛加雄鹿瓶塞的酒瓶。这种深色液体是目前能弄到的、产自格伦泽尔霍夫最烈的酒。草本烈酒，足以把任何病都烧出去。"
+	desc = "一只带有赛加雄鹿瓶塞的酒瓶。这种深色液体是目前能弄到的、产自格伦泽尔霍夫特最烈的酒。草本烈酒，足以把任何病都烧出去。"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/apfelweinheim
 	name = "阿普费尔魏因海姆苹果酒瓶"
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "ale"
 	list_reagents = list(/datum/reagent/consumable/ethanol/apfelweinheim = 50)
-	desc = "一只带有阿普费尔魏因海姆瓶塞的酒瓶。里面是来自格伦泽尔霍夫城镇阿普费尔魏因海姆的苹果酒，因加入了梨子并搭配脆甜苹果而备受欢迎。"
+	desc = "一只带有阿普费尔魏因海姆瓶塞的酒瓶。里面是来自格伦泽尔霍夫特城镇阿普费尔魏因海姆的苹果酒，因加入了梨子并搭配脆甜苹果而备受欢迎。"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/rtoper
 	name = "岩丘苹果酒瓶"

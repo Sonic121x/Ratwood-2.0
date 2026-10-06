@@ -3,7 +3,7 @@
 //==============================================================================
 
 /atom/movable/screen/alert/status_effect/buff/dendor_vigil
-	name = "Dendor 的守望"
+	name = "登多尔的守望"
 	desc = "树父的祝福使我步履更轻，并庇护我免受自然障碍所困。"
 	icon_state = "buff"
 
@@ -358,7 +358,7 @@
 
 /obj/structure/flora/roguetree/wise/sanctified/proc/get_ritual_display_name(category)
 	switch(category)
-		if("cat1") return "Dendor 的丰收"
+		if("cat1") return "登多尔的丰收"
 		if("cat2") return "菌灵守望"
 		if("cat3") return "妖精编织"
 		if("cat12") return "林木什一"
@@ -437,7 +437,7 @@
 		if("vital_item") return "筋腱、内脏、骨粉或头骨"
 		if("ash") return "灰烬"
 		if("compost") return "堆肥"
-		if("zizobane") return "Zizo克星蘑菇"
+		if("zizobane") return "齐佐克星蘑菇"
 		if("runed_artifact") return "符文造物"
 		if("druid_armor") return "德鲁伊护甲"
 		if("volf_head") return "狼头"
@@ -449,7 +449,7 @@
 		if("lux") return "Lux"
 		if("leechtick") return "膨胀的水蛭蜱"
 		if("bones") return "骨头"
-		if("wedding_flower") return "Eora和平花"
+		if("wedding_flower") return "伊欧拉和平花"
 		if("boulder_only") return "一块大巨石"
 		if("magic_stone_or_essence") return "附魔石头（魔力 5+）、荒野精华或木材精华"
 		if("blessed_powder") return "受祝圣的种粉"
@@ -832,7 +832,7 @@
 		/obj/item/seeds/treesap        = 85
 	))
 	new tree_type(T)
-	to_chat(user, span_green("种子自树根间簌簌落下，Dendor 的收成一如既往地慷慨。"))
+	to_chat(user, span_green("种子自树根间簌簌落下，登多尔的收成一如既往地慷慨。"))
 
 /// Cat 2 — Fungal Vigil: kneestinger ring + 30-min vigil buff to nearby mobs (repeatable).
 /// Offerings: 10 mana blooms OR crystalized mana.
@@ -912,7 +912,7 @@
 		return
 	tree_data.wedding_active = TRUE
 	tree_data.wedding_officiant_ckey = user.ckey
-	visible_message(span_green("一朵和平花飘落至[src.name]树根旁，Dendor 与 Eora 的祝福同时被唤起。如今，两道灵魂已可献上共同咬过的苹果，在此树下缔结婚约。"))
+	visible_message(span_green("一朵和平花飘落至[src.name]树根旁，登多尔与伊欧拉的祝福同时被唤起。如今，两道灵魂已可献上共同咬过的苹果，在此树下缔结婚约。"))
 	to_chat(user, span_notice("仪式已经开始。两位伴侣都要各自咬同一个苹果一口，再把它交给树来完成婚誓。交出苹果的人将决定共同姓氏。"))
 
 /// Cat 9 — Harvest Bloomstone: a 20-use blessed seed powder stone (once per tree).
@@ -1276,7 +1276,7 @@
 	thegroom.adjust_triumphs(1)
 	thebride.adjust_triumphs(1)
 
-	visible_message(span_green("[src.name]迸发出灿金光辉，Dendor 与 Eora 一同为这场结合赐福！"))
+	visible_message(span_green("[src.name]迸发出灿金光辉，登多尔与伊欧拉一同为这场结合赐福！"))
 	playsound(get_turf(src), 'sound/misc/bell.ogg', 80, FALSE)
 	qdel(A)
 	tree_data.wedding_active = FALSE
@@ -1296,14 +1296,14 @@
 	. += span_info("[src]从附近 [tree_count] 棵活树中汲取力量，获得了 [integrity_bonus] 点额外耐久。")
 	. += span_info("耐久度：[round(obj_integrity)]/[max_integrity]")
 	if(show_ritual_hints)
-		. += span_info("将 Dendor 护符贴在这棵树上，可开启任意德鲁伊仪式，或发起“自然结合”婚礼；订婚者各自咬同一个苹果一口后，将其献给树木即可缔结誓约。")
+		. += span_info("将登多尔护符贴在这棵树上，可开启任意德鲁伊仪式，或发起“自然结合”婚礼；订婚者各自咬同一个苹果一口后，将其献给树木即可缔结誓约。")
 	if(!istype(user, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = user
 	if(H.patron?.type != /datum/patron/divine/dendor)
 		return
 	if(show_ritual_hints)
-		. += span_notice("把 Dendor 护符贴在这棵树上，可开始或取消一次树父悬赏。")
+		. += span_notice("把登多尔护符贴在这棵树上，可开始或取消一次树父悬赏。")
 		. += span_notice("或者，在佩戴护符时空手用接触意图触碰树木，也能打开仪式菜单。")
 		. += span_notice("若悬赏已激活，则手持所需供品点击树木即可献上。")
 	if(show_ritual_hints && tree_data?.active_ritual)
@@ -1336,7 +1336,7 @@
 									istype(H.get_item_by_slot(SLOT_GLOVES), /obj/item/clothing/neck/roguetown/psicross/dendor)
 			if(has_dendor_amulet)
 				if(H.patron?.type != /datum/patron/divine/dendor)
-					to_chat(H, span_warning("唯有 Dendor 的信徒才能与这棵圣树沟通。"))
+					to_chat(H, span_warning("唯有登多尔的信徒才能与这棵圣树沟通。"))
 					return
 				open_ritual_menu(H)
 				return
@@ -1358,7 +1358,7 @@
 			return
 		var/mob/living/carbon/human/H = user
 		if(H.patron?.type != /datum/patron/divine/dendor)
-			to_chat(user, span_warning("唯有 Dendor 的信徒才能与这棵圣树沟通。"))
+			to_chat(user, span_warning("唯有登多尔的信徒才能与这棵圣树沟通。"))
 			return
 		open_ritual_menu(user)
 		return
@@ -1386,7 +1386,7 @@
 //==============================================================================
 /obj/structure/flora/roguetree/wise/sanctified/wise
 	name = "圣化睿木"
-	desc = "一棵由 Dendor 侍徒直接祝圣的古老神木。树父的力量沿着根系奔流，既向外散发治愈之光，也排斥所有想要亵渎林苑之人，但它更深层的奥秘仍被封锁着。"
+	desc = "一棵由登多尔侍徒直接祝圣的古老神木。树父的力量沿着根系奔流，既向外散发治愈之光，也排斥所有想要亵渎林苑之人，但它更深层的奥秘仍被封锁着。"
 	examine_plays_music = TRUE
 	show_ritual_hints = FALSE
 

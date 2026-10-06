@@ -74,7 +74,7 @@
 				r_hand = /obj/item/rogueweapon/eaglebeak
 /datum/advclass/foreigner/fencerguy
 	name = "异乡剑客"
-	tutorial = "你是一位四处游历的武器行家，曾在格伦泽尔霍夫的剑术学校受训。你随身带着武器、本领和自尊……坦白说，除此之外也没多少东西了。"
+	tutorial = "你是一位四处游历的武器行家，曾在格伦泽尔霍夫特的剑术学校受训。你随身带着武器、本领和自尊……坦白说，除此之外也没多少东西了。"
 	extra_context = "这是一个玩法自由的职业，体验类似自由剑士。与其他职业相比，你的装备和技能较为有限，这是有意为之的设计；不过，你开局就有出色的武器。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -99,7 +99,7 @@
 
 /datum/outfit/job/roguetown/adventurer/fencerguy/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是一位四处游历的武器行家，曾在格伦泽尔霍夫的剑术学校受训，随身带着武器、本领和自尊。"))
+	to_chat(H, span_warning("你是一位四处游历的武器行家，曾在格伦泽尔霍夫特的剑术学校受训，随身带着武器、本领和自尊。"))
 	H.set_blindness(0)
 	if(H.mind)
 		var/weapons = list("平衡长剑","长矛与拳刃","军刀")

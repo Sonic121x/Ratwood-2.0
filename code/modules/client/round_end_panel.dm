@@ -76,16 +76,16 @@
 	else
 		if(most_influential == most_frequent && max_influence > 0)
 			data += "<div style='font-size: 1.2em; font-weight: bold; margin-bottom: 12px;'>"
-			data += "最具统治力的神祇是<span style='color:[most_influential.color_theme];'>[most_influential.name]</span>"
+			data += "最具统治力的神祇是<span style='color:[most_influential.color_theme];'>[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Dendor" = "登多尔", "Eora" = "伊欧拉", "Malum" = "玛勒姆", "Noc" = "诺克", "Xylix" = "赛利克斯", "Ravox" = "拉沃克斯", "Zizo" = "齐佐", "Graggar" = "格拉加尔", "Baotha" = "巴奥莎", "Abyssor" = "阿比索尔", "Matthios" = "马西奥斯")[most_influential.name]]</span>"
 			data += "</div>"
 		else
 			if(max_influence > 0)
 				data += "<div style='font-size: 1.2em; font-weight: bold; margin-bottom: 12px;'>"
-				data += "最具影响力的神祇是<span style='color:[most_influential.color_theme];'>[most_influential.name]</span>"
+				data += "最具影响力的神祇是<span style='color:[most_influential.color_theme];'>[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Dendor" = "登多尔", "Eora" = "伊欧拉", "Malum" = "玛勒姆", "Noc" = "诺克", "Xylix" = "赛利克斯", "Ravox" = "拉沃克斯", "Zizo" = "齐佐", "Graggar" = "格拉加尔", "Baotha" = "巴奥莎", "Abyssor" = "阿比索尔", "Matthios" = "马西奥斯")[most_influential.name]]</span>"
 				data += "</div>"
 			if(max_chosen > 0)
 				data += "<div style='font-size: 1.2em; font-weight: bold; margin-bottom: 12px;'>"
-				data += "统治最久的神祇是<span style='color:[most_frequent.color_theme];'>[most_frequent.name]</span>"
+				data += "统治最久的神祇是<span style='color:[most_frequent.color_theme];'>[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Dendor" = "登多尔", "Eora" = "伊欧拉", "Malum" = "玛勒姆", "Noc" = "诺克", "Xylix" = "赛利克斯", "Ravox" = "拉沃克斯", "Zizo" = "齐佐", "Graggar" = "格拉加尔", "Baotha" = "巴奥莎", "Abyssor" = "阿比索尔", "Matthios" = "马西奥斯")[most_frequent.name]]</span>"
 				data += "</div>"
 
 	data += "<div style='border-top: 1.5px solid #444; margin: 15px auto; width: 100%;'></div>"
@@ -928,7 +928,7 @@
 	var/psydon_influence = (psydon_followers * 20) + (GLOB.confessors.len * 20) + (GLOB.azure_round_stats[STATS_HUMEN_DEATHS] * -10) + (GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS] * -20) + (psydonite_monarch ? (psydonite_monarch * 500) : -250) + (largest_religion? (largest_religion * 500) : -250) + (GLOB.azure_round_stats[STATS_PSYCROSS_USERS] * 10) + (apostasy_followers * -20) + (GLOB.azure_round_stats[STATS_LUX_HARVESTED] * -50) + (psydonite_user ? 10000 : -10000)
 
 	data += "<div style='width: 42.5%; margin: 0 auto 30px; border: 2px solid #99b2b1; background: #47636d; color: #d0d0d0; max-height: 420px;'>"
-	data += "<div style='text-align: center; font-size: 1.3em; padding: 12px;'><b>PSYDON</b></div>"
+	data += "<div style='text-align: center; font-size: 1.3em; padding: 12px;'><b>普赛顿</b></div>"
 	data += "<div style='padding: 0 15px 15px 15px;'>"
 	data += "<div style='background: #1b1b2a; border-radius: 4px; padding: 12px;'>"
 	data += "<div style='display: flex;'>"
@@ -964,38 +964,38 @@
 	data += "<div style='display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-bottom: 30px;'>"
 
 	// Astrata
-	data += god_ui_block("ASTRATA", "#e7a962", "#642705", /datum/storyteller/astrata, debug)
+	data += god_ui_block("阿斯特拉塔", "#e7a962", "#642705", /datum/storyteller/astrata, debug)
 
 	// Dendor
-	data += god_ui_block("DENDOR", "#412938", "#66745c", /datum/storyteller/dendor, debug)
+	data += god_ui_block("登多尔", "#412938", "#66745c", /datum/storyteller/dendor, debug)
 
 	// Ravox
-	data += god_ui_block("RAVOX", "#2c232d", "#710f0f", /datum/storyteller/ravox, debug)
+	data += god_ui_block("拉沃克斯", "#2c232d", "#710f0f", /datum/storyteller/ravox, debug)
 
 	// Eora
-	data += god_ui_block("EORA", "#a95063", "#e7c3da", /datum/storyteller/eora, debug)
+	data += god_ui_block("伊欧拉", "#a95063", "#e7c3da", /datum/storyteller/eora, debug)
 
 	// Necra
-	data += god_ui_block("NECRA", "#2a2459", "#4c82a8", /datum/storyteller/necra, debug)
+	data += god_ui_block("内克拉", "#2a2459", "#4c82a8", /datum/storyteller/necra, debug)
 
 	data += "</div>"
 
 	data += "<div style='display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;'>"
 
 	// Noc
-	data += god_ui_block("NOC", "#4e72a1", "#282137", /datum/storyteller/noc, debug)
+	data += god_ui_block("诺克", "#4e72a1", "#282137", /datum/storyteller/noc, debug)
 
 	// Abyssor
-	data += god_ui_block("ABYSSOR", "#50090f", "#bbace0", /datum/storyteller/abyssor, debug)
+	data += god_ui_block("阿比索尔", "#50090f", "#bbace0", /datum/storyteller/abyssor, debug)
 
 	// Malum
-	data += god_ui_block("MALUM", "#3d4139", "#955454", /datum/storyteller/malum, debug)
+	data += god_ui_block("玛勒姆", "#3d4139", "#955454", /datum/storyteller/malum, debug)
 
 	// Xylix
-	data += god_ui_block("XYLIX", "#7e632c", "#f6feff", /datum/storyteller/xylix, debug)
+	data += god_ui_block("赛利克斯", "#7e632c", "#f6feff", /datum/storyteller/xylix, debug)
 
 	// Pestra
-	data += god_ui_block("PESTRA", "#517b27", "#1b2a2a", /datum/storyteller/pestra, debug)
+	data += god_ui_block("佩斯特拉", "#517b27", "#1b2a2a", /datum/storyteller/pestra, debug)
 
 	data += "</div></div>"
 
@@ -1008,16 +1008,16 @@
 	data += "<div style='display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr; gap: 20px; margin-bottom: 20px;'>"
 
 	// Matthios
-	data += god_ui_block("MATTHIOS", "#20202e", "#99b2b1", /datum/storyteller/matthios, debug)
+	data += god_ui_block("马西奥斯", "#20202e", "#99b2b1", /datum/storyteller/matthios, debug)
 
 	// Baotha
-	data += god_ui_block("BAOTHA", "#46254a", "#e2abee", /datum/storyteller/baotha, debug)
+	data += god_ui_block("巴奥莎", "#46254a", "#e2abee", /datum/storyteller/baotha, debug)
 
 	// Graggar
-	data += god_ui_block("GRAGGAR", "#3b5e51", "#99bbc7", /datum/storyteller/graggar, debug)
+	data += god_ui_block("格拉加尔", "#3b5e51", "#99bbc7", /datum/storyteller/graggar, debug)
 
 	// Zizo
-	data += god_ui_block("ZIZO", "#661239", "#ed9da3", /datum/storyteller/zizo, debug)
+	data += god_ui_block("齐佐", "#661239", "#ed9da3", /datum/storyteller/zizo, debug)
 
 	data += "</div></div>"
 

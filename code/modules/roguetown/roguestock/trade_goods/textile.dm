@@ -46,7 +46,7 @@
 
 /datum/trade_good/cured_leather
 	id = TRADE_GOOD_CURED_LEATHER
-	name = "熟皮"
+	name = "鞣制皮革"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_INTERMEDIARY
 	base_price = SELLPRICE_CURED_LEATHER

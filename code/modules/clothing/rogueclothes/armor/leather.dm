@@ -144,7 +144,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/psyaltrist
 	name = "煮革甲"
-	desc = "经处理、水煮并以复合层压工艺制成的优质奥塔凡皮甲。"
+	desc = "经处理、水煮并以复合层压工艺制成的优质奥塔万皮甲。"
 	icon_state = "cuirbouilli"
 	item_state = "cuirbouilli"
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 25

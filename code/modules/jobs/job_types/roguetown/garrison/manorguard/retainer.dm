@@ -90,7 +90,7 @@
 		"中头盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
 		"轻盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
 		"翼盔" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-		"颅骨盔"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+		"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 		"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "执盔") as anything in helmets
