@@ -75,7 +75,7 @@
 		if(findtext(icon_s, "mattcoin_"))
 			istates += replacetext(icon_s, "mattcoin_", "")
 
-	var/picked_name = input(user, "选择一种伪装", "ROGUETOWN") as null|anything in sortList(istates)
+	var/picked_name = input(user, "选择一种伪装", "罗格镇") as null|anything in sortList(istates)
 	if(!picked_name)
 		return
 

@@ -3,15 +3,15 @@
 // into the BRASSFACE's Hoard ledger, and the hoard pays interest on the vault's
 // contents via the BMtreasury subsystem.
 /obj/structure/roguemachine/headeater/treasureseeker
-	name = "TREASURE SEEKER"
-	desc = "A kin of the HEADEATER, its brass gullet re-tuned by the Bathhouse for gentler appetites. Feed it any trinket and the prize is whisked away to the Nightmistress's vault - where the hoard remembers its worth. Its jaws open only for the Bathhouse's own."
+	name = "寻宝机"
+	desc = "食首机的同类，黄铜喉管经浴场改装后，口味也温和了些。喂它一件饰物，宝贝就会被送往夜主的宝库，宝藏会记下它的价值。它只为浴场的人张嘴。"
 
 /obj/structure/roguemachine/headeater/treasureseeker/examine_extra(mob/user)
 	. = list()
-	. += span_info("Left-click with an item to consign it to the Nightmistress's vault. Right-click to consign every item on the tile beneath its maw.")
-	. += span_smallnotice("Its jaws open only for the Bathhouse - the Nightmistress, her workers and her sworn agents.")
-	. += span_smallnotice("Each consignment is entered into the BRASSFACE's Hoard ledger, and the hoard pays interest on the vault's treasures.")
-	. += span_smallnotice("Dross is refused - it swallows only what the hoard can turn a profit on, leaving worthless trinkets, loose coin and containers behind.")
+	. += span_info("手持物品左键点击，将其送往夜主的宝库。右键点击则送走它嘴下那一格中的所有物品。")
+	. += span_smallnotice("它只为浴场张嘴——夜主、她的员工和宣誓效忠的代理人。")
+	. += span_smallnotice("每次寄存都会记入黄铜面的宝藏账册，宝库中的财宝会产生利息。")
+	. += span_smallnotice("它拒绝废物——只吞下能为宝藏带来收益的物品，将无价值的饰物、散钱和容器留在原处。")
 
 /// Only the Bathhouse's own may consign to the hoard: the Nightmistress and her
 /// bathworkers by employment, and sworn agents by their patronage writ.
@@ -50,44 +50,44 @@
 	if(!destination)
 		return
 	for(var/mob/M in hearers(7, destination))
-		to_chat(M, span_notice("[I] suddenly appears in a golden flash upon the ground of the vault."))
+		to_chat(M, span_notice("一道金光闪过，[I]突然出现在宝库的地面上。"))
 
 /// Same as above but for multiple items at once to stop message spam
 /obj/structure/roguemachine/headeater/treasureseeker/proc/announce_bulk_arrival(turf/destination, count)
 	if(!destination || count <= 0)
 		return
 	for(var/mob/M in hearers(7, destination))
-		to_chat(M, span_notice("[count] items of treasure suddenly appear in a golden flash upon the ground of the vault."))
+		to_chat(M, span_notice("一道金光闪过，[count]件财宝突然出现在宝库的地面上。"))
 
 /obj/structure/roguemachine/headeater/treasureseeker/attackby(obj/item/I, mob/user, params)
 	var/mob/living/L = user
 	if(istype(L) && L.used_intent && L.used_intent.type == INTENT_HARM)
 		return // Harm intent bashes the machine; heads and dross alike are refused.
 	if(!is_bathhouse_consignor(user))
-		to_chat(user, span_warning("[src] stays shut, its brass jaws sealed - the hoard answers only to the Bathhouse."))
+		to_chat(user, span_warning("[src]紧闭着黄铜大嘴——宝藏只听命于浴场。"))
 		return TRUE
 	if(!SSBMtreasury.generates_profit(I))
-		to_chat(user, span_warning("[src] sniffs at [I] and turns its brass nose up - the hoard has no taste for such dross."))
+		to_chat(user, span_warning("[src]嗅了嗅[I]，不屑地抬起黄铜鼻子——宝藏对这种废物毫无兴趣。"))
 		return TRUE
 	var/list/turfs = get_vault_turfs()
 	if(!length(turfs))
-		to_chat(user, span_warning("[src] rattles hollowly - the Nightmistress's vault cannot be reached."))
+		to_chat(user, span_warning("[src]发出空洞的咔嗒声——无法通往夜主的宝库。"))
 		return TRUE
 	var/turf/destination = pick(turfs)
 	if(!user.transferItemToLoc(I, destination))
-		to_chat(user, span_warning("[I] is stuck to your hand!"))
+		to_chat(user, span_warning("[I]粘在你的手上了！"))
 		return TRUE
 	log_consignment(I, user)
 	announce_arrival(I, destination)
 	playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
-	to_chat(user, span_danger("[src] gulps down [I], whisking it away to the Nightmistress's vault."))
+	to_chat(user, span_danger("[src]一口吞下[I]，将它送往夜主的宝库。"))
 	return TRUE
 
 /obj/structure/roguemachine/headeater/treasureseeker/attack_right(mob/user)
 	// The sprite is pixel-shifted over its base turf (as the headeater's is), so the
 	// parent sweeps get_turf(src) - do the same rather than stepping off by dir.
 	if(!is_bathhouse_consignor(user))
-		to_chat(user, span_warning("[src] stays shut, its brass jaws sealed - the hoard answers only to the Bathhouse."))
+		to_chat(user, span_warning("[src]紧闭着黄铜大嘴——宝藏只听命于浴场。"))
 		return
 	var/turf/front = get_turf(src)
 	if(!front)
@@ -103,13 +103,13 @@
 		to_ship += I
 	if(!length(to_ship))
 		if(rejected)
-			to_chat(user, span_warning("[src] turns its brass nose up at the dross before it - nothing there would fatten the hoard."))
+			to_chat(user, span_warning("[src]对面前的废物抬起黄铜鼻子——这里没有能增加宝藏收益的东西。"))
 		else
-			to_chat(user, span_info("Nothing glitters upon the tile before [src]."))
+			to_chat(user, span_info("[src]面前的地上没有任何闪亮的财宝。"))
 		return
 	var/list/turfs = get_vault_turfs()
 	if(!length(turfs))
-		to_chat(user, span_warning("[src] rattles hollowly - the Nightmistress's vault cannot be reached."))
+		to_chat(user, span_warning("[src]发出空洞的咔嗒声——无法通往夜主的宝库。"))
 		return
 	var/shipped = 0
 	var/turf/last_destination
@@ -139,6 +139,6 @@
 		announce_bulk_arrival(last_destination, shipped)
 	if(shipped)
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
-		to_chat(user, span_danger("[src] gulps down [shipped] treasure[shipped > 1 ? "s" : ""], whisking them away to the Nightmistress's vault."))
+		to_chat(user, span_danger("[src]一口吞下[shipped]件财宝，将它们送往夜主的宝库。"))
 		if(rejected)
-			to_chat(user, span_warning("[src] leaves [rejected] trifle[rejected > 1 ? "s" : ""] untouched - the hoard has no taste for such dross."))
+			to_chat(user, span_warning("[src]将[rejected]件杂物留在原处——宝藏对这种废物毫无兴趣。"))

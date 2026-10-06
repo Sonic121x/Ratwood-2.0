@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/song/discordant_dirge
 	name = "不谐哀歌"
-	desc = "奏响一首不谐的哀歌，减缓敌人的速度。降低附近非听众目标的SPD。"
+	desc = "奏响一首不谐的哀歌，减缓敌人的速度。降低附近非听众目标的速度属性。"
 	invocations = list("奏起刺耳而不和谐的旋律。空气变得沉重而凝滞。")
 	invocation_type = "emote"
 	overlay_state = "dirge_t1_base"

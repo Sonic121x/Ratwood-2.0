@@ -4,18 +4,18 @@
 	roll_weight = TRADE_REALM_WEIGHT_DISTANT
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_GARMENT_COMMON, NAVIGATOR_BUCKET_ENCHANTMENTS, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_TROPHIES, NAVIGATOR_BUCKET_VALUABLES_LOOTED, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
-		"Psydon", "Bilomari", "Veralun", "Olindar", "Veranda",
-		"Repentance", "Mercy", "Vigil", "Pilgrim", "Endurance",
-		"Bluebell", "Ocotillo", "Lily", "Ember", "Lantern",
+		"普赛顿", "比洛马里", "维拉伦", "奥林达", "维兰达",
+		"忏悔", "慈悲", "守夜", "朝圣者", "坚忍",
+		"蓝铃花", "刺烛树", "百合", "余烬", "灯笼",
 	)
 	captain_first_names = list(
-		"Arindele", "Nasir", "Tariq", "Yusuf", "Kamau",
-		"Jelani", "Hamadi", "Bashir", "Faraj", "Idris",
-		"Amalara", "Selima", "Yusra", "Amara", "Nadira",
+		"阿林德莱", "纳西尔", "塔里克", "优素福", "卡毛",
+		"杰拉尼", "哈马迪", "巴希尔", "法拉杰", "伊德里斯",
+		"阿玛拉拉", "塞莉玛", "尤斯拉", "阿玛拉", "纳迪拉",
 	)
 	captain_last_names = list(
-		"Arivale", "Ndalasi", "al-Veranda", "Bilomari", "Olindari",
-		"Kamenji", "Ravalan", "Tessanda", "ibn-Asari", "Veshani",
+		"阿里瓦莱", "恩达拉西", "阿尔维兰达", "比洛马里", "奥林达里",
+		"卡门吉", "拉瓦兰", "特桑达", "伊本阿萨里", "维沙尼",
 	)
 	ship_types = list(
 		list("name" = "三角帆船", "tonnage" = 60, "weight" = 30),
@@ -24,11 +24,11 @@
 		list("name" = "镀金卡拉克帆船", "tonnage" = 600, "weight" = 15),
 	)
 	name_prefixes = list(
-		list("text" = "Shah ", "chance" = 8),
-		list("text" = "the ", "chance" = 10),
+		list("text" = "沙阿 ", "chance" = 8),
+		list("text" = "", "chance" = 10),
 	)
 	city_tags = list(
-		"Veralun", "Olindar", "Veranda", "the Glass Dunes",
+		"维拉伦", "奥林达", "维兰达", "琉璃沙丘",
 	)
 	city_tag_chance = 35
 	cultural_goods = list()

@@ -5,18 +5,18 @@
 	demanded_categories = list(NAVIGATOR_BUCKET_GARMENT_COMMON, NAVIGATOR_BUCKET_ARMOR_HEAVY, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
 	ship_name_words = list(
-		"Æthel", "Beorht", "Hammer", "Anvil", "Grim",
-		"Wulf", "Stan", "Hild", "Mæst",
-		"Fyr", "Dæg", "Gold",
+		"贵胄", "光辉", "铁锤", "铁砧", "冷峻",
+		"狼", "磐石", "战火", "桅杆",
+		"烈焰", "白昼", "黄金",
 	)
 	captain_first_names = list(
-		"Wulfstan", "Godric", "Leofric", "Beorn", "Cuthwine",
-		"Oswin", "Eadwulf", "Cynehelm", "Beornræd", "Deorwine",
-		"Wynflæd", "Eadgyth", "Mildþryth", "Beorhtflæd", "Cyneburg",
+		"伍尔夫斯坦", "戈德里克", "莱奥弗里克", "比约恩", "库斯温",
+		"奥斯温", "埃德伍尔夫", "基内赫尔姆", "比约恩雷德", "德奥尔温",
+		"温弗莱德", "埃德吉斯", "米尔德斯里思", "贝奥尔特弗莱德", "基内堡",
 	)
 	captain_last_names = list(
-		"Hammerson", "Stanforge", "Grimaxe", "Coldhammer", "Ironbeard",
-		"Ætheling", "Wulfing", "se Reada", "Eorling", "Stoneward",
+		"锤之子", "石锻", "冷斧", "寒锤", "铁须",
+		"王裔", "狼裔", "赤发", "伯爵后裔", "磐石守卫",
 	)
 	ship_types = list(
 		list("name" = "克纳尔货船", "tonnage" = 25, "weight" = 10),
@@ -26,13 +26,13 @@
 		list("name" = "巨型帆船", "tonnage" = 700, "weight" = 10),
 	)
 	name_prefixes = list(
-		list("text" = "Eorl ", "chance" = 4),
-		list("text" = "Cyne ", "chance" = 3),
-		list("text" = "the ", "chance" = 60),
+		list("text" = "伯爵 ", "chance" = 4),
+		list("text" = "王家 ", "chance" = 3),
+		list("text" = "", "chance" = 60),
 	)
 	city_tags = list(
-		"Norwardine", "Quicksilver Hold", "Granite Fort", "Walnut Grove",
-		"the Bán", "the Mountainhomes",
+		"诺尔瓦丁", "水银堡", "花岗岩堡", "胡桃林",
+		"班恩", "山中家园",
 	)
 	city_tag_chance = 30
 	cultural_goods = list()

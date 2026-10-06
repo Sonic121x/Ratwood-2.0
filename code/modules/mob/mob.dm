@@ -620,7 +620,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * This actually gets the mind datums notes
  */
 /mob/verb/memory()
-	set name = "Notes"
+	set name = "笔记"
 	set category = "IC"
 	set desc = ""
 	if(mind)
@@ -632,7 +632,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Add a note to the mind datum
  */
 /mob/verb/add_memory(msg as message)
-	set name = "AddNote"
+	set name = "添加笔记"
 	set category = "IC"
 	if(mind)
 		if (world.time < memory_throttle_time)
@@ -1407,7 +1407,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 
 ///Show the language menu for this mob
 /mob/verb/open_language_menu()
-	set name = "Open Language Menu"
+	set name = "打开语言菜单"
 	set category = "IC"
 	set hidden = 0
 

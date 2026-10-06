@@ -5,18 +5,18 @@
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
 	ship_name_words = list(
-		"Tsuru", "Hayabusa", "Akatsuki", "Tsuki", "Ame",
-		"Sora", "Kaze", "Yume", "Hoshi", "Suzu",
-		"Sakura", "Take", "Yuki", "Nami",
+		"鹤", "隼", "晓", "月", "雨",
+		"空", "风", "梦", "星", "铃",
+		"樱", "竹", "雪", "浪",
 	)
 	captain_first_names = list(
-		"Masakatsu", "Yoshitaka", "Kagetora", "Tadanaga", "Hidemori",
-		"Naomasa", "Tomoe", "Kaoruko", "Chiyo", "Sen",
-		"Kikyō", "Tsuneyori", "Sadanobu", "Harukage", "Yorinaga",
+		"正胜", "义隆", "景虎", "忠长", "秀盛",
+		"直政", "巴", "薰子", "千代", "千",
+		"桔梗", "常赖", "定信", "晴景", "赖长",
 	)
 	captain_last_names = list(
-		"Niwa", "Sakuma", "Kasai", "Asakura", "Andō",
-		"Kurogane", "Yamashiro", "Tsukinami", "Koganei", "Akizuki",
+		"丹羽", "佐久间", "葛西", "朝仓", "安藤",
+		"黑铁", "山城", "月浪", "小金井", "秋月",
 	)
 	ship_types = list(
 		list("name" = "关船", "tonnage" = 90, "weight" = 35),
@@ -25,11 +25,11 @@
 		list("name" = "安宅船", "tonnage" = 600, "weight" = 10),
 	)
 	name_suffixes = list(
-		list("text" = "-Maru", "chance" = 75),
+		list("text" = "丸", "chance" = 75),
 	)
 	city_tags = list(
-		"Iwoto", "Tamiro", "Kukui", "Matsuhama", "Aisataiji",
-		"Bijai", "Mitihara", "Tatseshira",
+		"岩户", "塔米罗", "库库伊", "松滨", "艾萨泰寺",
+		"比贾伊", "三原", "立白",
 	)
 	city_tag_chance = 30
 	cultural_goods = list()
