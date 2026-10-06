@@ -204,7 +204,7 @@
 	experience_needed = round(experience_needed * experience_multiplier)
 
 	if(owner)
-		to_chat(owner, "<span class='boldannounce'>Your [name] has reached level [level]!</span>")
+		to_chat(owner, "<span class='boldannounce'>你的[name]已达到[level]级！</span>")
 
 /datum/coven/proc/unlock_power_from_tree(research_type)
 	if(!owner)
@@ -280,28 +280,28 @@
 			// Powers learned through research might have reduced costs
 			new_power.vitae_cost = max(1, round(new_power.vitae_cost * 0.9))
 			if(!silent && owner)
-				to_chat(owner, "<span class='boldnotice'>Through careful study, you have mastered [new_power.name]!</span>")
+				to_chat(owner, "<span class='boldnotice'>经过仔细研习，你掌握了[new_power.name]！</span>")
 
 		if("discovery")
 			// Powers discovered through experimentation might have unique properties
 			new_power.range += 1
 			if(!silent && owner)
-				to_chat(owner, "<span class='boldannounce'>Your experimentation has revealed the secrets of [new_power.name]!</span>")
+				to_chat(owner, "<span class='boldannounce'>你的尝试揭示了[new_power.name]的秘密！</span>")
 
 		if("teaching")
 			// Powers learned from others might have social bonuses
 			new_power.cooldown_length = max(0, round(new_power.cooldown_length * 0.8))
 			if(!silent && owner)
-				to_chat(owner, "<span class='boldnotice'>Through the guidance of another, you have learned [new_power.name]!</span>")
+				to_chat(owner, "<span class='boldnotice'>在他人的指导下，你学会了[new_power.name]！</span>")
 
 		if("special")
 			// Special powers might have enhanced effects
 			if(!silent && owner)
-				to_chat(owner, "<span class='boldannounce'>You have unlocked the forbidden knowledge of [new_power.name]!</span>")
+				to_chat(owner, "<span class='boldannounce'>你解锁了[new_power.name]的禁忌知识！</span>")
 
 		else // level_unlock or unknown
 			if(!silent && owner)
-				to_chat(owner, "<span class='boldnotice'>You have learned [new_power.name]!</span>")
+				to_chat(owner, "<span class='boldnotice'>你学会了[new_power.name]！</span>")
 
 	// Apply post-gain effects
 	new_power.post_gain()
@@ -409,14 +409,14 @@
 	gain_experience_from_source(discovery_xp, "discovery")
 
 	if(owner)
-		to_chat(owner, "<span class='boldnotice'>Your understanding of [name] deepens through discovery!</span>")
+		to_chat(owner, "<span class='boldnotice'>新的发现加深了你对[name]的理解！</span>")
 
 // Called when player teaches someone else
 /datum/coven/proc/on_teaching_event(mob/student, datum/coven_power/power_taught)
 	gain_experience_from_source(teaching_xp, "teaching")
 
 	if(owner)
-		to_chat(owner, "<span class='notice'>Sharing your knowledge of [power_taught.name] has deepened your own understanding.</span>")
+		to_chat(owner, "<span class='notice'>传授[power_taught.name]的知识加深了你自己的理解。</span>")
 
 // Called during meditation or study actions
 /datum/coven/proc/on_meditation_complete(duration_minutes)

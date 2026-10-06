@@ -12,32 +12,32 @@
 			wins += 1
 	if(crits > brokes)
 		if(rollviewer)
-			to_chat(rollviewer, "<b>Critical [span_nicegreen("hit")]!</b>")
+			to_chat(rollviewer, "<b>大[span_nicegreen("成功")]！</b>")
 			return DICE_CRIT_WIN
 	if(crits < brokes)
 		if(rollviewer)
-			to_chat(rollviewer, "<b>Critical [span_danger("failure")]!</b>")
+			to_chat(rollviewer, "<b>大[span_danger("失败")]！</b>")
 			return DICE_CRIT_FAILURE
 	if(crits == brokes && !wins)
 		if(rollviewer)
-			to_chat(rollviewer, span_danger("Failed"))
+			to_chat(rollviewer, span_danger("失败"))
 			return DICE_FAILURE
 	if(wins)
 		switch(wins)
 			if(1)
-				to_chat(rollviewer, span_tinynotice("Maybe"))
+				to_chat(rollviewer, span_tinynotice("勉强"))
 				return DICE_WIN
 			if(2)
-				to_chat(rollviewer, span_smallnotice("Okay"))
+				to_chat(rollviewer, span_smallnotice("尚可"))
 				return DICE_WIN
 			if(3)
-				to_chat(rollviewer, span_notice("Good"))
+				to_chat(rollviewer, span_notice("良好"))
 				return DICE_WIN
 			if(4)
-				to_chat(rollviewer, span_notice("Lucky"))
+				to_chat(rollviewer, span_notice("幸运"))
 				return DICE_WIN
 			else
-				to_chat(rollviewer, span_boldnotice("Phenomenal"))
+				to_chat(rollviewer, span_boldnotice("非凡"))
 				return DICE_WIN
 
 /mob/living/carbon/proc/rollfrenzy()
@@ -131,7 +131,7 @@
 						if(!H.mouth) // Only bite if mouth is free
 							if(L.pulledby != src)
 								L.grabbedby(src)
-							L.visible_message("<span class='warning'><b>[src] bites [L]'s neck!</b></span>", "<span class='warning'><b>[src] bites your neck!</b></span>")
+							L.visible_message("<span class='warning'><b>[src]咬住了[L]的脖子！</b></span>", "<span class='warning'><b>[src]咬住了你的脖子！</b></span>")
 							face_atom(L)
 							H.drinksomeblood(L, BODY_ZONE_PRECISE_NECK)
 							if(CheckEyewitness(L, src, 7, FALSE))

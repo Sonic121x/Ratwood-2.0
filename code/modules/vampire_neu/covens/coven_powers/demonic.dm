@@ -1,6 +1,6 @@
 /datum/coven/demonic
-	name = "Demonic"
-	desc = "Get a help from the Hell creatures, resist THE FIRE, transform into an imp. Violates Masquerade."
+	name = "魔裔"
+	desc = "寻求地狱生物的帮助、抵御烈火，并化身小恶魔。使用会违反避世戒律。"
 	icon_state = "daimonion"
 	clan_restricted = FALSE
 	power_type = /datum/coven_power/demonic
@@ -11,8 +11,8 @@
 
 //SENSE THE SIN
 /datum/coven_power/demonic/sense_the_sin
-	name = "Sense the Sin"
-	desc = "Become supernaturally resistant to fire."
+	name = "感知罪孽"
+	desc = "获得超自然的火焰抗性。"
 
 	level = 1
 	research_cost = 0
@@ -33,8 +33,8 @@
 	REMOVE_TRAIT(owner, TRAIT_NOFIRE, VAMPIRE_TRAIT)
 
 /datum/coven_power/demonic/fear_of_the_void_below
-	name = "Fear of the Void"
-	desc = "Short burst of speed and resilience."
+	name = "虚空之惧"
+	desc = "短暂提升速度与韧性。"
 
 	level = 2
 	research_cost = 1
@@ -58,8 +58,8 @@
 
 //CONFLAGRATION
 /datum/coven_power/demonic/conflagration
-	name = "Conflagration"
-	desc = "Turn your hands into deadly claws."
+	name = "焚灭"
+	desc = "将双手化为致命利爪。"
 
 	level = 3
 	research_cost = 2
@@ -101,8 +101,8 @@
 
 //PSYCHOMACHIA
 /datum/coven_power/demonic/psychomachia
-	name = "Psychomachia"
-	desc = "Set your foes on fire with a fireball."
+	name = "灵魂之战"
+	desc = "用火球点燃你的敌人。"
 
 	level = 4
 	research_cost = 3
@@ -124,8 +124,8 @@
 		granted_spell = null
 
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/baali
-	name = "Infernal Fireball"
-	desc = "This spell fires an explosive fireball at a target."
+	name = "炼狱火球"
+	desc = "向目标发射一颗会爆炸的火球。"
 	school = "evocation"
 	recharge_time = 60 SECONDS
 	invocation_type = "whisper"
@@ -135,8 +135,8 @@
 
 //CONDEMNTATION
 /datum/coven_power/demonic/wall_of_fire
-	name = "Wall of Fire"
-	desc = "Firebolt? Fireball? No. Wall of Fire!"
+	name = "火墙"
+	desc = "火焰箭？火球？不，是火墙！"
 	level = 5
 	research_cost = 4
 	check_flags = COVEN_CHECK_CONSCIOUS | COVEN_CHECK_CAPABLE | COVEN_CHECK_IMMOBILE
@@ -174,7 +174,7 @@
 		sleep(0.5 SECONDS)
 
 /obj/item/rogueweapon/gangrel
-	name = "claws"
+	name = "利爪"
 	desc = ""
 	item_state = null
 	lefthand_file = null

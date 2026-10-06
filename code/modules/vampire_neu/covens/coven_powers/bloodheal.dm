@@ -1,7 +1,7 @@
 #define HEAL_MULTIPLIER 3.8
 /datum/coven/bloodheal
-	name = "Bloodheal"
-	desc = "Use the power of your Vitae to slowly regenerate your flesh."
+	name = "血愈"
+	desc = "借助命髓的力量缓慢再生血肉。"
 	icon_state = "bloodheal"
 	power_type = /datum/coven_power/bloodheal
 	max_level = 5
@@ -51,8 +51,8 @@
 
 //BLOODHEAL 1
 /datum/coven_power/bloodheal/one
-	name = "Minor Bloodheal"
-	desc = "Slowly regenerate minor wounds using your vitae."
+	name = "初级血愈"
+	desc = "利用命髓缓慢修复轻伤。"
 
 	level = 1
 	research_cost = 0
@@ -63,8 +63,8 @@
 
 //BLOODHEAL 2
 /datum/coven_power/bloodheal/two
-	name = "Bloodheal"
-	desc = "Regenerate wounds at a steady pace."
+	name = "血愈"
+	desc = "以稳定的速度修复伤口。"
 
 	level = 2
 	research_cost = 1
@@ -74,8 +74,8 @@
 
 //BLOODHEAL 3
 /datum/coven_power/bloodheal/three
-	name = "Quick Bloodheal"
-	desc = "Regenerate wounds with visible speed."
+	name = "迅速血愈"
+	desc = "以肉眼可见的速度修复伤口。"
 
 	level = 3
 	research_cost = 2
@@ -85,8 +85,8 @@
 
 //BLOODHEAL 4
 /datum/coven_power/bloodheal/four
-	name = "Major Bloodheal"
-	desc = "Rapidly regenerate even serious injuries."
+	name = "高级血愈"
+	desc = "即使是重伤也能迅速再生。"
 
 	level = 4
 	research_cost = 3
@@ -96,8 +96,8 @@
 
 //BLOODHEAL 5
 /datum/coven_power/bloodheal/five
-	name = "Greater Bloodheal"
-	desc = "Regenerate injuries and restore damaged organs."
+	name = "强效血愈"
+	desc = "修复损伤并恢复受损的器官。"
 
 	level = 5
 	research_cost = 4
