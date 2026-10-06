@@ -1,5 +1,5 @@
 /datum/language/beachbum
-	name = "Beachtongue"
+	name = "沙滩俚语"
 	desc = ""
 	speech_verb = "含糊地说"
 	ask_verb = "追问"

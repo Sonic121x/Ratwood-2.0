@@ -72,7 +72,7 @@
 		return "male_leotard"
 
 /datum/sprite_accessory/underwear/athletic_leotard
-	name = "Athletic Leotard"
+	name = "运动连体衣"
 	icon_state = "female_sleeved_leotard"
 	underwear_type = /obj/item/undies/athletic_leotard
 	hides_breasts = TRUE
@@ -100,7 +100,7 @@
 /datum/sprite_accessory/legwear
 	abstract_type = /datum/sprite_accessory/legwear
 	icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/stockings.dmi'
-	color_key_name = "Legwear"
+	color_key_name = "腿部衣物"
 	layer = LEGWEAR_LAYER
 	var/legwear_type
 	//Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
@@ -132,7 +132,7 @@
 	legwear_type = /obj/item/legwears
 
 /datum/sprite_accessory/legwear/stockings/silk
-	name = "silk stockings"
+	name = "丝袜"
 	icon_state = "silk"
 	legwear_type = /obj/item/legwears/silk
 //Fishnets

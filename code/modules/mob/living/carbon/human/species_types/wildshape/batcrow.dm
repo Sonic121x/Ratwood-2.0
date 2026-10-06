@@ -40,14 +40,14 @@
 			to_chat(src, span_notice("我被抓住了，无法飞走！"))
 
 /mob/living/carbon/human/species/wildshape/bat/proc/fly_up()
-	set category = "Winged Form"
-	set name = "Fly Up"
+	set category = "飞行形态"
+	set name = "向上飞行"
 
 	winged_form_fly(UP)
 
 /mob/living/carbon/human/species/wildshape/bat/proc/fly_down()
-	set category = "Winged Form"
-	set name = "Fly Down"
+	set category = "飞行形态"
+	set name = "向下飞行"
 
 	winged_form_fly(DOWN)
 
@@ -182,27 +182,27 @@
 	regenerate_icons()
 
 /mob/living/carbon/human/species/wildshape/crow/proc/fly_up()
-	set category = "Winged Form"
-	set name = "Fly Up"
+	set category = "飞行形态"
+	set name = "向上飞行"
 
 	winged_form_fly(UP)
 
 /mob/living/carbon/human/species/wildshape/crow/proc/fly_down()
-	set category = "Winged Form"
-	set name = "Fly Down"
+	set category = "飞行形态"
+	set name = "向下飞行"
 
 	winged_form_fly(DOWN)
 
 /mob/living/carbon/human/species/wildshape/crow/proc/change_stance()
-	set category = "Winged Form"
-	set name = "Change Stance"
+	set category = "飞行形态"
+	set name = "切换姿态"
 
 	sitting = !sitting
 	update_crow_stance()
 
 /mob/living/carbon/human/species/wildshape/crow/proc/crow_caw()
-	set category = "Winged Form"
-	set name = "Caw"
+	set category = "飞行形态"
+	set name = "鸦鸣"
 
 	emote("caw", intentional = TRUE, animal = TRUE)
 
