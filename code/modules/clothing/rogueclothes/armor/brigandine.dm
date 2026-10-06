@@ -2,7 +2,7 @@
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "板甲衣"
-	desc = "遵循伊特鲁斯坎传统制成的复合护甲。它是优质的弧形板片胸甲，以染色皮革缝合，并配有宽下摆以遮护腹股沟。"
+	desc = "遵循伊特鲁斯卡传统制成的复合护甲。它是优质的弧形板片胸甲，以染色皮革缝合，并配有宽下摆以遮护腹股沟。"
 	icon_state = "brigandine"
 	blocksound = SOFTHIT
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS

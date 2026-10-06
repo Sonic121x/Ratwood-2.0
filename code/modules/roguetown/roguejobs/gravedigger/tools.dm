@@ -412,8 +412,8 @@
 
 /obj/item/rogueweapon/shovel/blacksteel
 	force = 27
-	name = "blacksteel shovel"
-	desc = "So much for being served on a silver platter."
+	name = "黑钢铲"
+	desc = "看来这回可没有银盘盛上来的优待。"
 	icon_state = "blacksteelshovel"
 	smeltresult = /obj/item/ingot/blacksteel
 	max_blade_int = 450
@@ -664,9 +664,9 @@
 
 //This is effectively an iron quarterstaff, with silver quality, arc intent and chopping. It's a weird thing, but fluff and soulful for Necrans.
 /obj/item/rogueweapon/shovel/mort_staff
-	name = "\improper 殓尸人法杖"
-	desc = "一只沉重的银铲头，配上一根银与 boswellia 木制成的长杆。\
-	依照诸多 Necran 教派的惯常做法，它已受香炉烟灰涂抹祝圣，因此能作为施法焦点。"
+	name = "\proper 殓尸人法杖"
+	desc = "一只沉重的银铲头，配上一根银与乳香木制成的长杆。\
+	依照诸多内克拉教派的惯常做法，它已受香炉烟灰涂抹祝圣，因此能作为施法焦点。"
 	force = 16//Iron quarterstaff level.
 	force_wielded = 22//See above.
 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)//One hand lets you arc divine blast and such.

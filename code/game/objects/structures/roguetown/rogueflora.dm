@@ -157,7 +157,7 @@
 	var/cooldown = FALSE
 	var/retaliation_messages = list(
 		"别再伤害森林了！",
-		"Dendor 庇护此地！",
+		"登多尔庇护此地！",
 		"自然之怒！",
 		"滚开，闯入者！"
 	)
@@ -346,7 +346,7 @@
 				new /obj/item/grown/log/tree/small/essence(get_turf(src))
 				if(!essense_sound_played)
 					essense_sound_played = TRUE
-					to_chat(user, span_warning("Dendor 正看顾着我们……"))
+					to_chat(user, span_warning("登多尔正看顾着我们……"))
 					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 			else
 				new lumber(get_turf(src))
@@ -811,7 +811,7 @@
 
 	// Non-carbon mobs just take basic thorn damage. Another size check since the previous doesnt catch damage for some reason.
 	if(!iscarbon(L))
-		to_chat(L, span_warning("I'm cut on a thorn!"))
+		to_chat(L, span_warning("我被荆棘划伤了！"))
 		L.apply_damage(5, BRUTE)
 		return
 
@@ -833,11 +833,11 @@
 	// Riding movestop and extra damage since it sidesteps stun. Galloping through thorn bushes shouldnt be the play. Riding skill gives a chance to escape this fate
 	if(H.buckled)
 		var/obj/item/bodypart/BP = pick(H.bodyparts)
-		to_chat(H, span_warning("My [BP.name] snags on a thorn."))
+		to_chat(H, span_warning("我的[BP.name]被荆棘勾住了。"))
 		BP.receive_damage(10)
 		var/riding_level = H.get_skill_level(/datum/skill/misc/riding)
 		if(prob(100 - (riding_level * 5)))
-			to_chat(H, span_danger("My mount goes mad with pain!"))
+			to_chat(H, span_danger("我的坐骑痛得发狂了！"))
 			H.unbuckle_mob()
 			H.Paralyze(10)
 
@@ -855,7 +855,7 @@
 
 	// Otherwise, just take a normal cut.
 	var/obj/item/bodypart/BP = pick(H.bodyparts)
-	to_chat(H, span_warning("A thorn [pick("slices", "cuts", "nicks")] my [BP.name]."))
+	to_chat(H, span_warning("荆棘[pick("划伤", "割伤", "擦伤")]了我的[BP.name]。"))
 	BP.receive_damage(10)
 
 
@@ -1070,7 +1070,7 @@
 /obj/structure/flora/rogueshroom/unhappy/white
 	name = "骨髓盖菇"
 	icon_state = "scarymush1"
-	desc = "你发誓这些蘑菇以前没这么邪门，简直像是 Baotha 亲手掀开了某层遮蔽。"
+	desc = "你发誓这些蘑菇以前没这么邪门，简直像是巴奥莎亲手掀开了某层遮蔽。"
 	mush_light_range = 4
 	mush_light_power = 2
 	mush_light_color = "#e2e2e2"

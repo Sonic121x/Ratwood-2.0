@@ -1,17 +1,17 @@
 /datum/decree/guild_charter_of_arms
 	id = DECREE_GUILD_CHARTER_OF_ARMS
-	name = "The Guild Charter of Arms"
+	name = "武备行会宪章"
 	category = DECREE_CATEGORY_NEW
-	mechanical_text = "Mercenaries get a capped poll tax at 15m; Guild remits a daily tribute to the Burgher Pledge."
-	flavor_text = {"This Guild Charter of Arms, drawn under Ravox's banner and entered unto between the Crown of the Vale and the Guild of Arms, witnesseth that the Crown recognizeth the Guild as a chartered foreign body, self-governing in its own affairs and answerable only to its own captains. Its sworn mercenaries shall bear no common levy save the lightest head-count upon them.
+	mechanical_text = "雇佣兵的人头税上限为15m；行会每日向市民誓约基金进贡。"
+	flavor_text = {"本《武装行会特许状》，于拉沃克斯旗帜之下，由谷地王室与武装行会订立，规定：王室承认行会为获得特许的外国团体，自理内部事务，仅向自己的队长负责。其立誓效力的雇佣兵，除最低人头税外，不承担普通征收。
 
-The Crown commandeth no oath of service from the Guild, and oweth it no service in return. The Crown shall not intervene in the contracts the Guild undertaketh, and shall protect its adherents' right to bear arms and to intervene in private warfare as they see fit, so long as the peace of the Realm be not disturbed thereby, and so long as they undertake no contracts of piracy, brigandry, nor such as directly threaten the Crown's interests.
+王室不要求行会立誓效忠，亦不欠其服务。王室不得干涉行会承接的契约，并应保障其成员携带武器、酌情参与私人战争的权利，前提是不扰乱王国和平，且不得承接海盗、劫掠或直接威胁王室利益的契约。
 
-In recognition of this standing, the Guild's treasury, collected from amongst its members as a fee, shall remit a daily tribute unto the Burgher Pledge as a gesture of good will and contribution toward the common wealth of the Realm, as bearers of arms and agents of Ravox for the dispensation of justice therein. And should an outlaw be found wearing the Guild's colours, the Guild answereth for none of it, and the Crown's justice against that individual proceedeth unimpeded.
+为回报此地位，行会财库从成员处收取费用，每日向市民公约基金进贡，以示善意、贡献王国共同财富，并作为武装者与拉沃克斯的使者在此施行正义。若发现法外之徒穿戴行会标志，行会不为其负责，王室可不受阻碍地对该人执行司法。
 
-Yeven under the seal of the Crown and the mark of the Guild."}
-	revoke_text = "The %RULER% has suspended the Guild Charter of Arms. The mercenaries of the Vale now bear the Crown's common levy in full - and the Guild's tribute to the Pledge ceases until the compact is renewed."
-	restore_text = "The %RULER% has affirmed the Guild Charter of Arms. The Guild's recognition is restored, and its tribute to the Pledge resumes."
+钤王室之印与行会之记颁行。"}
+	revoke_text = "%RULER%已暂停《武备行会宪章》。谷地雇佣兵现须全额承担王室的常规征税；在协约续订之前，行会停止向誓约基金进贡。"
+	restore_text = "%RULER%已重申《武备行会宪章》。行会恢复获认可的地位，并重新向誓约基金进贡。"
 
 /datum/decree/guild_charter_of_arms/roll_initial_year()
 	return CALENDAR_EPOCH_YEAR - rand(30, 80)

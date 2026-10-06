@@ -8,7 +8,7 @@
 
 /obj/structure/roguemachine/steward
 	name = "总务中枢"
-	desc = "总管最可靠的伙伴。"
+	desc = "宫廷总管最可靠的伙伴。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "steward_machine"
 	density = TRUE
@@ -276,7 +276,7 @@
 		if(!X)
 			return
 		if(!has_fiscal_authority(usr))
-			say("只有总管、书记官或统治者才能征收罚款。")
+			say("只有宫廷总管、书记官或统治者才能征收罚款。")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		for(var/mob/living/A in SStreasury.bank_accounts)
@@ -304,7 +304,7 @@
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
 		if(world.time < residency_print_cooldown)
-			say("机器仍在暖它的羽毛笔。")
+			say("机器仍在给书写用的羽毛预热。")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		var/mob/living/carbon/human/H = usr
@@ -393,7 +393,7 @@
 					is_authorized = TRUE
 
 				if(!is_authorized)
-					say("只有总管、书记官或统治者可以停发工资。")
+					say("只有宫廷总管、书记官或统治者可以停发工资。")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 
