@@ -2897,7 +2897,7 @@
 // Drow weapons
 
 /datum/intent/sword/disarm/range
-	name = "reaching disarm"
+	name = "远距缴械"
 	reach = 2
 
 /datum/intent/sword/cut/sabre/slow
