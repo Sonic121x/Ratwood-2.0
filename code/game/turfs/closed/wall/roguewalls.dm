@@ -156,8 +156,8 @@
 	damage_deflection = 20 
 
 /turf/closed/wall/mineral/rogue/stonebrick/stonebricklight
-	name = "lit stone brick wall"
-	desc = "Rows of overlapping bricks form this wall, this one glows with a soft light."
+	name = "发光石砖墙"
+	desc = "交错排列的石砖砌成了这面墙，散发着柔和的光芒。"
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "stonebricklight"
 	light_outer_range = 4

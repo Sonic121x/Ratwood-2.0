@@ -48,11 +48,11 @@
 	voice_of_god(message, owner, list("colossus","yell"), 2.5, include_owner, FALSE)
 
 /datum/brain_trauma/special/bluespace_prophet
-	name = "Bluespace 预兆"
+	name = "蓝空间预兆"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='notice'>我感到 Bluespace 正在我周围脉动……</span>"
-	lose_text = "<span class='warning'>Bluespace 那微弱的脉动渐渐归于寂静。</span>"
+	gain_text = "<span class='notice'>我感到蓝空间正在我周围脉动……</span>"
+	lose_text = "<span class='warning'>蓝空间那微弱的脉动渐渐归于寂静。</span>"
 	var/next_portal = 0
 
 /datum/brain_trauma/special/bluespace_prophet/on_life()
@@ -91,7 +91,7 @@
 		second.seer = owner
 
 /obj/effect/hallucination/simple/bluespace_stream
-	name = "Bluespace 流"
+	name = "蓝空间流"
 	desc = ""
 	image_icon = 'icons/effects/effects.dmi'
 	image_state = "bluestream"
@@ -112,7 +112,7 @@
 		"被卷进了一道无形的漩涡，消失在视野中")
 	var/slip_out_message = pick("无声地渐渐显现出来", "凭空一跃而出","忽然出现了", "从一道看不见的门中走了出来",\
 		"从时空的褶皱中滑了出来")
-	to_chat(user, "<span class='notice'>我试着与这道 Bluespace 流对齐……</span>")
+	to_chat(user, "<span class='notice'>我试着与这道蓝空间流对齐……</span>")
 	if(do_after(user, 20, target = src))
 		new /obj/effect/temp_visual/bluespace_fissure(get_turf(src))
 		new /obj/effect/temp_visual/bluespace_fissure(get_turf(linked_to))
@@ -253,7 +253,7 @@
 		return
 	if(get_dist(owner, beepsky) <= 1)
 		owner.playsound_local(owner, 'sound/blank.ogg', 50)
-		owner.visible_message("<span class='warning'>[owner]的身体猛地一抽，像是被电击了一般。</span>", "<span class='danger'>我感受到了 LAW 的铁拳。</span>")
+		owner.visible_message("<span class='warning'>[owner]的身体猛地一抽，像是被电击了一般。</span>", "<span class='danger'>我感受到了法律的铁拳。</span>")
 		owner.take_bodypart_damage(0,0,rand(40, 70))
 		QDEL_NULL(beepsky)
 	if(prob(20) && get_dist(owner, beepsky) <= 8)
@@ -261,14 +261,14 @@
 	..()
 
 /obj/effect/hallucination/simple/securitron
-	name = "Securitron"
+	name = "保安机器人"
 	desc = ""
 	image_icon = 'icons/mob/aibots.dmi'
 	image_state = "secbot-c"
 	var/victim
 
 /obj/effect/hallucination/simple/securitron/New()
-	name = pick ( "officer Beepsky", "officer Johnson", "officer Pingsky")
+	name = pick ( "比普斯基警官", "约翰逊警官", "平斯基警官")
 	START_PROCESSING(SSfastprocess,src)
 	..()
 

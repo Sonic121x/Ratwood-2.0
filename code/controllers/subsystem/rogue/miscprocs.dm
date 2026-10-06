@@ -230,8 +230,8 @@
 	return TRUE
 
 /mob/living/carbon/human/proc/devotionreport()
-	set name = "Check Devotion"
-	set category = "Cleric"
+	set name = "查看虔诚"
+	set category = "神职者"
 
 	if(!devotion)
 		return FALSE
@@ -240,8 +240,8 @@
 	return TRUE
 
 /mob/living/carbon/human/proc/clericpray()
-	set name = "Give Prayer"
-	set category = "Cleric"
+	set name = "祈祷"
+	set category = "神职者"
 
 	if(!devotion)
 		return FALSE
@@ -294,7 +294,7 @@
 	return TRUE
 
 /mob/living/carbon/human/proc/changevoice()
-	set name = "Change Second Voice (Can only use Once!)"
+	set name = "更改第二种声音（仅限一次！）"
 	set category = "IC"
 
 	var/newcolor = input(src, "选择角色第二种声音的颜色：", "美德","#a0a0a0") as color|null
@@ -306,7 +306,7 @@
 		return FALSE
 
 /mob/living/carbon/human/proc/swapvoice()
-	set name = "Swap Voice"
+	set name = "切换声音"
 	set category = "IC"
 
 	if(!second_voice)
@@ -322,7 +322,7 @@
 	return TRUE
 
 /mob/living/carbon/human/proc/toggleblindness()
-	set name = "Toggle Colorblindness"
+	set name = "切换色盲视觉"
 	set category = "IC"
 
 	if(!get_client_color(/datum/client_colour/monochrome))
@@ -331,7 +331,7 @@
 		remove_client_colour(/datum/client_colour/monochrome)
 
 /mob/living/carbon/human/proc/togglecombatawareness()
-	set name = "Toggle Combat Awareness"
+	set name = "切换战斗感知"
 	set category = "IC"
 
 	if(HAS_TRAIT(src, TRAIT_COMBAT_AWARE))

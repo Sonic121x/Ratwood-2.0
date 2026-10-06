@@ -70,9 +70,9 @@
 						pref_label = "低"
 						pref_color = "orange"
 						next_level = 2
-				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.title]</font></a>（[J.total_positions] 个名额） - <a href='byond://?src=[REF(src)];villain_pref=[J.title];level=[next_level]'><font color=[pref_color]>[pref_label]</font></a><br>"
+				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.display_title || J.title]</font></a>（[J.total_positions] 个名额） - <a href='byond://?src=[REF(src)];villain_pref=[J.title];level=[next_level]'><font color=[pref_color]>[pref_label]</font></a><br>"
 			else
-				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.title]</font></a><a href='byond://?src=[REF(src)];SelectedJob=[J.title]'>（[J.current_positions]/[J.total_positions]）</a><a href='?src=[REF(J)];jobsubclassinfo=1'><b><font color = '#6b6743'>(!)</font></b></a><br>"
+				dat += "<a href='?src=[REF(J)];explainjob=1'><font>[J.display_title || J.title]</font></a><a href='byond://?src=[REF(src)];SelectedJob=[J.title]'>（[J.current_positions]/[J.total_positions]）</a><a href='?src=[REF(J)];jobsubclassinfo=1'><b><font color = '#6b6743'>(!)</font></b></a><br>"
 
 		if(!found)
 			dat += "本轮没有反派职位。"

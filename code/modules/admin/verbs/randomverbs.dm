@@ -37,7 +37,7 @@
 	if(usr)
 		if (usr.client)
 			if(usr.client.holder)
-				to_chat(M, "<i>I hear a voice in my head...\n<b>[msg]</i></b>")
+				to_chat(M, "<i>我的脑海中响起一个声音……\n<b>[msg]</i></b>")
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	msg = span_adminnotice("<b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]")
@@ -285,7 +285,7 @@
 		log_admin("SPAM AUTOMUTE: [muteunmute] [key_name(whom)] from [mute_string]")
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(whom)] from [mute_string].")
 		if(C)
-			to_chat(C, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
+			to_chat(C, "防刷屏系统已将你自动禁言，频道：[list("IC (say and emote)" = "角色内（发言与表情动作）", "pray" = "祈祷", "adminhelp, admin PM and ASAY" = "管理员求助、私信与聊天", "deadchat and DSAY" = "亡者聊天", "everything" = "所有频道")[mute_string] || mute_string]。请联系管理员。")
 		SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Auto Mute [feedback_string]", "1")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return
 
@@ -299,7 +299,7 @@
 	log_admin("[key_name(usr)] has [muteunmute] [key_name(whom)] from [mute_string]")
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(whom)] from [mute_string].")
 	if(C)
-		to_chat(C, "You have been [muteunmute] from [mute_string] by [key_name(usr, include_name = FALSE)].")
+		to_chat(C, "[key_name(usr, include_name = FALSE)]已对你[ muteunmute == "unmuted" ? "解除禁言" : "实施禁言"]，频道：[list("IC (say and emote)" = "角色内（发言与表情动作）", "pray" = "祈祷", "adminhelp, admin PM and ASAY" = "管理员求助、私信与聊天", "deadchat and DSAY" = "亡者聊天", "everything" = "所有频道")[mute_string] || mute_string]。")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Mute [feedback_string]", "[P.muted & mute_type]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /*
@@ -385,7 +385,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins(msg)
 	admin_ticket_log(new_character, msg)
 
-	to_chat(new_character, "You have been fully respawned. Enjoy the game.")
+	to_chat(new_character, "你已完全重生。祝你游戏愉快。")
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Respawn Character") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return new_character
@@ -408,7 +408,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/msg = span_danger("Admin [key_name_admin(usr)] healed / revived [ADMIN_LOOKUPFLW(M)]!")
 	message_admins(msg)
 	// Friendlier ticket-log line for the player
-	admin_ticket_log(M, "<font color='green'>[key_name_admin(usr)] has fully healed you in relation to this ticket.</font>")
+	admin_ticket_log(M, "<font color='green'>[key_name_admin(usr)]已针对此次求助为你完全治疗。</font>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Rejuvinate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/admin_spawn_cake(mob/living/M in GLOB.mob_list)
@@ -450,8 +450,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/msg = span_adminnotice("[key_name_admin(usr)] gave a cake slice to [ADMIN_LOOKUPFLW(M)].")
 	message_admins(msg)
 	// Tell the player (and ticket) in a friendly way
-	to_chat(M, span_notice("[key_name_admin(usr)] has given you a cake slice. How nice!"))
-	admin_ticket_log(M, "<font color='green'>[key_name_admin(usr)] has given you a cake slice. How nice!</font>")
+	to_chat(M, span_notice("[key_name_admin(usr)]送了你一块蛋糕。真好！"))
+	admin_ticket_log(M, "<font color='green'>[key_name_admin(usr)]送了你一块蛋糕。真好！</font>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Give Cake Slice") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_create_centcom_report()
@@ -778,7 +778,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				var/mob/living/carbon/human/H = target
 				H.electrocution_animation(40)
 			record_round_statistic(STATS_PEOPLE_SMITTEN)
-			to_chat(target, span_danger("The gods have punished you for your sins!"))
+			to_chat(target, span_danger("诸神因我的罪行而降下惩罚！"))
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
 			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
 		if(ADMIN_PUNISHMENT_PSYDON)
@@ -840,7 +840,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				if (!next_tile)
 					break
 				target_tile = next_tile
-			to_chat(target,span_warning("You are flung by a mysterious force..."))
+			to_chat(target,span_warning("我被一股神秘力量抛飞了……"))
 			target.throw_at(target = target_tile, range = 10, speed = 3, thrower = target, spin = 9, diagonals_first = FALSE, callback = null, force = 20)
 		if(ADMIN_PUNISHMENT_LIAM)
 			if(!ishuman(target))
@@ -859,16 +859,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			humie.regenerate_icons()
 			humie.SetSleeping(25 SECONDS)
 			humie.add_stress(/datum/stressevent/maniac_woke_up)
-			to_chat(humie, span_deadsay("<span class='reallybig'>... WHERE AM I? ...</span>"))
+			to_chat(humie, span_deadsay("<span class='reallybig'>……我在哪儿？……</span>"))
 			var/static/list/slop_lore = list(
-				span_deadsay("... Rockhill? No ... It doesn't exist ..."),
-				span_deadsay("... My name is Trey. Trey Liam, Liamtific Troverseer ..."),
-				span_deadsay("... I'm on NT Liam, a self Treystaining ship, used to Treyserve what Liamains of roguemanity ..."),
-				span_deadsay("... Launched into the Grim Darkness, War and Grim Darkness preserves their grimness ... Their edge ..."),
-				span_deadsay("... Keeps them alive in the grimdark future, where there is only war  ..."),
-				span_deadsay("... There is no hope left. Only the Space Station 13 (TRADEMARK TITLE DROP) lets me live in the Trey Liam ..."),
-				span_deadsay("... What have I done!? ..."),
-				span_reallybig("... OH SHIT WHY IS THERE A TALKING DOG?! ..."),
+				span_deadsay("……岩丘？不……它根本不存在……"),
+				span_deadsay("……我叫特雷。特雷·利亚姆，利亚姆提菲克·特罗维希尔……"),
+				span_deadsay("……我在纳米“利亚姆”号上，这是一艘自给自足的船，用来保存人类最后的遗存……"),
+				span_deadsay("……驶入残酷的黑暗，战争与黑暗维系着他们的残酷……他们的锋芒……"),
+				span_deadsay("……让他们在只有战争的黑暗未来中活下去……"),
+				span_deadsay("……希望已经消失。只有十三号空间站（商标名点题）让我还能活在特雷·利亚姆的世界里……"),
+				span_deadsay("……我都做了些什么！？……"),
+				span_reallybig("……该死，为什么这里有条会说话的狗？！……"),
 		)
 			for(var/slop in slop_lore)
 				to_chat(humie, slop)
