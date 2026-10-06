@@ -147,7 +147,7 @@
 		for(var/drink in 1 to 25)
 			if(drink_mana(user, L))
 				return
-		to_chat(user, span_warning("I've had enough."))
+		to_chat(user, span_warning("我受够了。"))
 		return
 	..()
 

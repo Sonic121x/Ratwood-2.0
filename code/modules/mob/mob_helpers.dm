@@ -194,9 +194,9 @@
 				newletter=" SIE "
 		if(prob(25))
 			if(newletter==" ")
-				newletter=" no hope... "
+				newletter=" 毫无希望…… "
 			if(newletter=="H")
-				newletter=" IT COMES... "
+				newletter=" 它来了…… "
 
 		switch(rand(1,15))
 			if(1)
@@ -931,13 +931,13 @@
 		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
 	var/poll_message = "你想扮演[M.real_name]吗？"
 	if(M.mind && M.mind.assigned_role)
-		poll_message = "[poll_message] Job:[M.mind.assigned_role]."
+		poll_message = "[poll_message] 职业：[M.mind.assigned_role]。"
 	if(M.mind && M.mind.special_role)
-		poll_message = "[poll_message] Status:[M.mind.special_role]."
+		poll_message = "[poll_message] 身份：[M.mind.special_role]。"
 	else if(M.mind)
 		var/datum/antagonist/A = M.mind.has_antag_datum(/datum/antagonist/)
 		if(A)
-			poll_message = "[poll_message] Status:[A.name]."
+			poll_message = "[poll_message] 身份：[A.name]。"
 	var/list/mob/candidates = pollCandidatesForMob(poll_message, ROLE_PAI, null, FALSE, 100, M)
 
 	if(LAZYLEN(candidates))

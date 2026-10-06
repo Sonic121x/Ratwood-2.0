@@ -271,8 +271,8 @@
 
 //t3, possible t4 if I put in land surf, summon mossback
 /obj/effect/proc_holder/spell/invoked/call_mossback
-	name = "召唤 Mossback"
-	desc = "召来一只对你友善、并会听从你命令的 Mossback。"
+	name = "召唤苔背兽"
+	desc = "召来一只对你友善、并会听从你命令的苔背兽。"
 	overlay_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	action_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	overlay_state = "crab"
@@ -304,12 +304,12 @@
 		summoned = new /mob/living/simple_animal/hostile/retaliate/rogue/mossback(T, user, townercrab)
 		return TRUE
 	else
-		to_chat(user, span_warning("目标位置被阻挡了，我的呼唤没能引来 Mossback。"))
+		to_chat(user, span_warning("目标位置被阻挡了，我的呼唤没能引来苔背兽。"))
 		return FALSE
 
 /obj/effect/proc_holder/spell/invoked/call_dreamfiend
-	name = "召来 Dreamfiend"
-	desc = "召唤一只 Dreamfiend 去纠缠你的目标。"
+	name = "召来梦魇魔"
+	desc = "召唤一只梦魇魔去纠缠你的目标。"
 	overlay_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	action_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	overlay_state = "dreamfiend"
@@ -348,7 +348,7 @@
 		include_dense = FALSE,
 		include_teleport_restricted = FALSE
 	))
-		to_chat(user, span_warning("附近没有合适的位置让 Dreamfiend 显现！"))
+		to_chat(user, span_warning("附近没有合适的位置让梦魇魔显现！"))
 		revert_cast()
 		return FALSE
 

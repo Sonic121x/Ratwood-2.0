@@ -4,18 +4,18 @@
 	roll_weight = TRADE_REALM_WEIGHT_DISTANT
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_HEAVY, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
-		"Fjord", "Iskarn", "Volf", "Beorn", "Ravn",
-		"Skuld", "Storm", "Aurora", "Glacier", "Ulfr",
-		"Drage", "Frosti", "Hrim", "Norn", "Saiga",
+		"峡湾", "伊斯卡恩", "沃尔夫", "比约恩", "渡鸦",
+		"斯库尔德", "风暴", "极光", "冰川", "狼",
+		"巨龙", "霜冻", "白霜", "命运女神", "赛加",
 	)
 	captain_first_names = list(
-		"Oarri", "Niillas", "Aslak", "Mikkel", "Ánte",
-		"Heaika", "Sammol", "Ivvár", "Biera", "Hánsa",
-		"Risten", "Máret", "Elle", "Sárá", "Inga",
+		"奥阿里", "尼拉斯", "阿斯拉克", "米克尔", "安特",
+		"海卡", "萨莫尔", "伊瓦尔", "比耶拉", "汉萨",
+		"里斯滕", "玛蕾特", "埃勒", "萨拉", "英加",
 	)
 	captain_last_names = list(
-		"Iskarn", "Volfsson", "Saigahorn", "Glacierborn", "Stormbringer",
-		"Ravnstrid", "Frostbearer", "Drageaette", "Norrsker", "Hrimskogr",
+		"伊斯卡恩", "沃尔夫之子", "赛加角", "冰川之裔", "风暴使者",
+		"鸦战", "负霜者", "龙裔", "诺尔斯克", "霜林",
 	)
 	ship_types = list(
 		list("name" = "克纳尔货船", "tonnage" = 30, "weight" = 15),
@@ -25,8 +25,8 @@
 		list("name" = "芬里尔", "tonnage" = 700, "weight" = 5),
 	)
 	city_tags = list(
-		"the Fjall", "Iskarn-By", "Volfshaven", "Saigahold",
-		"Ravnskar",
+		"菲亚尔", "伊斯卡恩镇", "沃尔夫港", "赛加堡",
+		"渡鸦岩",
 	)
 	city_tag_chance = 30
 	cultural_goods = list()

@@ -4,18 +4,18 @@
 	roll_weight = TRADE_REALM_WEIGHT_NEIGHBOR
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_HEAVY, NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_VALUABLES_LOOTED, NAVIGATOR_BUCKET_CARVED, NAVIGATOR_BUCKET_TROPHIES, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
-		"Aurelia", "Mirella", "Esperanza", "Fortuna", "Vittoria",
-		"Stella", "Corona", "Leone", "Tormenta", "Onore",
-		"Armada", "Caravelle", "Sirena", "Falco", "Orso",
+		"奥蕾莉娅", "米蕾拉", "希望", "幸运", "胜利",
+		"星辰", "王冠", "雄狮", "风暴", "荣耀",
+		"舰队", "卡拉维尔", "海妖", "鹰隼", "巨熊",
 	)
 	captain_first_names = list(
-		"Rodrigo", "Esteban", "Lorenzo", "Diego", "Matteo",
-		"Cesare", "Alvaro", "Hernando", "Salvatore", "Vincenzo",
-		"Isabela", "Catalina", "Bianca", "Elena", "Lucrezia",
+		"罗德里戈", "埃斯特班", "洛伦佐", "迭戈", "马泰奥",
+		"切萨雷", "阿尔瓦罗", "埃尔南多", "萨尔瓦托雷", "温琴佐",
+		"伊莎贝拉", "卡塔利娜", "比安卡", "埃莱娜", "卢克蕾齐娅",
 	)
 	captain_last_names = list(
-		"Zaragoza", "del Mar", "Velasquez", "Aldobrandi", "Cortes",
-		"di Montecarina", "de Navarno", "Vellano", "Castellanos", "Lazaretto",
+		"萨拉戈萨", "德尔马尔", "贝拉斯克斯", "阿尔多布兰迪", "科尔特斯",
+		"迪蒙特卡里纳", "德纳瓦尔诺", "韦拉诺", "卡斯特利亚诺斯", "拉扎雷托",
 	)
 	ship_types = list(
 		list("name" = "卡拉维尔帆船", "tonnage" = 70, "weight" = 25),
@@ -24,14 +24,14 @@
 		list("name" = "舰队远洋帆船", "tonnage" = 700, "weight" = 15),
 	)
 	name_prefixes = list(
-		list("text" = "Don ", "chance" = 5, "requires_proper_name" = FALSE),
-		list("text" = "Santa ", "chance" = 10),
+		list("text" = "阁下 ", "chance" = 5, "requires_proper_name" = FALSE),
+		list("text" = "圣 ", "chance" = 10),
 	)
 	city_tags = list(
-		"Gran Zafiro", "Porto del Re", "Portosegreto", "San Vellano",
-		"Santa Mirella", "Marenova", "Velasca", "Portavigna",
-		"San Rodrigo", "Santa Aurelia", "Puerto Leon", "Miralago",
-		"Montejaral", "Alcazora",
+		"大蓝宝石城", "王港", "隐港", "圣韦拉诺",
+		"圣米蕾拉", "新海城", "韦拉斯卡", "葡萄园港",
+		"圣罗德里戈", "圣奥蕾莉娅", "狮港", "湖景城",
+		"蒙特哈拉尔", "阿尔卡索拉",
 	)
 	city_tag_chance = 35
 	cultural_goods = list()

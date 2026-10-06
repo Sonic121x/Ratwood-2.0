@@ -93,27 +93,27 @@
 		return FALSE
 	if(!link.allow_summons)
 		if(requester)
-			to_chat(requester, span_warning("The zadcote does not accept summons on this zadlink."))
+			to_chat(requester, span_warning("鸟舍不接受通过这条扎德鸟连结发起召唤。"))
 		return FALSE
 	var/obj/item/zadcage/cage = link.resolve_cage()
 	if(!cage)
 		return FALSE
 	if(link.resolve_flight())
 		if(requester)
-			to_chat(requester, span_warning("A flight is already on this zadlink."))
+			to_chat(requester, span_warning("这条扎德鸟连结已有鸟群在飞行中。"))
 		return FALSE
 	if(cage.current_occupancy)
 		if(requester)
-			to_chat(requester, span_warning("This zadcage is already occupied."))
+			to_chat(requester, span_warning("这个扎德鸟笼已经被占用了。"))
 		return FALSE
 	zad_count = clamp(zad_count, ZAD_CAPACITY_TIER_1, ZAD_CAPACITY_TIER_3)
 	if(reserve < zad_count)
 		if(requester)
-			to_chat(requester, span_warning("Only [reserve] zads remain in the cote."))
+			to_chat(requester, span_warning("鸟舍里只剩[reserve]只扎德鸟了。"))
 		return FALSE
 	if(flight_count() >= ZADCOTE_FLIGHT_CAP)
 		if(requester)
-			to_chat(requester, span_warning("Too many flights in the air. Try again shortly."))
+			to_chat(requester, span_warning("正在飞行的鸟群太多。稍后再试。"))
 		return FALSE
 	consume_reserve(zad_count)
 	var/datum/zad_flight/flight = new(src, link, zad_count, "", null, 0)
@@ -123,7 +123,7 @@
 	link.pending_flight = WEAKREF(flight)
 	playsound(loc, 'sound/vo/mobs/bird/birdfly.ogg', 65, TRUE, 2)
 	playsound(loc, pick('sound/vo/mobs/bird/CROW_01.ogg','sound/vo/mobs/bird/CROW_02.ogg','sound/vo/mobs/bird/CROW_03.ogg'), 55, TRUE, 2)
-	visible_message(span_notice("[zad_count] zad\s leap from [src], summoned away."))
+	visible_message(span_notice("[zad_count]只扎德鸟从[src]跃出，应召飞走。"))
 	play_zad_ascend(src, zad_count)
 	log_sent(link.slot_index, link.get_label(), "", list(), zad_count, 0, TRUE)
 	return TRUE
@@ -156,12 +156,12 @@
 	var/datum/zadlink/link = find_free_slot()
 	if(!link)
 		if(user)
-			to_chat(user, span_warning("[src] is full - no free slot to bond this zadcage."))
+			to_chat(user, span_warning("[src]的栏位已满——没有空位可以连结这个扎德鸟笼。"))
 		return FALSE
 	link.attach_cage(cage)
 	cage.bind_to_link(src, link)
 	if(user)
-		to_chat(user, span_notice("The zadcote chirps as the zadcage clicks into bond on slot [link.slot_index]."))
+		to_chat(user, span_notice("扎德鸟笼咔嗒一声连结到第[link.slot_index]号栏位，鸟舍传出鸣叫。"))
 	return TRUE
 
 /obj/item/roguemachine/zadcote/proc/sever_link(datum/zadlink/link, mob/operator)
@@ -169,7 +169,7 @@
 		return FALSE
 	link.sever()
 	if(operator)
-		to_chat(operator, span_notice("The bond on slot [link.slot_index] withers. The zads will return what is owed, then no more."))
+		to_chat(operator, span_notice("第[link.slot_index]号栏位的连结正在消散。扎德鸟会送回尚未归还的东西，此后便不再往来。"))
 	return TRUE
 
 /obj/item/roguemachine/zadcote/proc/consume_reserve(amount)
@@ -194,7 +194,7 @@
 	if(!anchored)
 		return ..()
 	if(!is_operator(user))
-		to_chat(user, span_warning("The zadcote ignores you. Only its owners may operate it."))
+		to_chat(user, span_warning("扎德鸟舍不理会你。只有它的主人才能操作。"))
 		return
 	ui_interact(user)
 
@@ -290,7 +290,7 @@
 	if(!H.canUseTopic(src, BE_CLOSE))
 		return TRUE
 	if(!is_operator(H))
-		to_chat(H, span_warning("Only the zadcote's faction may operate it."))
+		to_chat(H, span_warning("只有扎德鸟舍所属势力的人才能操作它。"))
 		return TRUE
 	switch(action)
 		if("help")
@@ -376,12 +376,12 @@
 	if(!allows_voyeur)
 		return FALSE
 	if(voyeur_fund <= 0)
-		to_chat(operator, span_warning("The scrying basin is empty."))
+		to_chat(operator, span_warning("窥视盆已经空了。"))
 		return FALSE
 	var/amount = voyeur_fund
 	voyeur_fund = 0
 	payout_coins(amount, operator)
-	to_chat(operator, span_notice("You drain [amount]m from [src]'s scrying basin."))
+	to_chat(operator, span_notice("你从[src]的窥视盆中取出[amount]玛门。"))
 	playsound(loc, 'sound/misc/gold_misc.ogg', 60, FALSE, -1)
 	return TRUE
 
@@ -389,35 +389,35 @@
 	if(istype(I, /obj/item/zadcage))
 		var/obj/item/zadcage/cage = I
 		if(!is_operator(user))
-			to_chat(user, span_warning("You have no authority to bond a zadcage to this zadcote."))
+			to_chat(user, span_warning("你无权将扎德鸟笼连结到这座鸟舍。"))
 			return
 		if(!cage.is_unbound())
-			to_chat(user, span_warning("This zadcage is already bonded elsewhere."))
+			to_chat(user, span_warning("这个扎德鸟笼已经连结到别处了。"))
 			return
 		attach_cage(cage, user)
 		return
 	if(istype(I, /obj/item/bomb))
 		if(!is_operator(user))
-			to_chat(user, span_warning("Only the zadcote's owners may use it."))
+			to_chat(user, span_warning("只有扎德鸟舍的主人才能使用它。"))
 			return
 		if(bomb_stock >= ZADCOTE_BOMB_STOCK_CAP)
-			to_chat(user, span_warning("The zadcote's bomb crate is full."))
+			to_chat(user, span_warning("扎德鸟舍的炸弹箱已经满了。"))
 			return
 		bomb_stock++
-		to_chat(user, span_notice("You feed a bottlebomb into [src]'s crate. ([bomb_stock] / [ZADCOTE_BOMB_STOCK_CAP])"))
+		to_chat(user, span_notice("你将一枚瓶装炸弹投入[src]的箱子中。([bomb_stock] / [ZADCOTE_BOMB_STOCK_CAP])"))
 		playsound(loc, 'sound/items/firelight.ogg', 40, FALSE, -1)
 		qdel(I)
 		return
 	if(istype(I, /obj/item/roguecoin))
 		if(!allows_voyeur)
-			to_chat(user, span_warning("This zadcote has no scrying basin to feed."))
+			to_chat(user, span_warning("这座扎德鸟舍没有可供投入钱币的窥视盆。"))
 			return
 		var/obj/item/roguecoin/C = I
 		var/added = C.sellprice * C.quantity
 		if(added <= 0)
 			return
 		voyeur_fund += added
-		to_chat(user, span_notice("You feed [C] into [src]'s scrying basin. ([voyeur_fund]m stored.)"))
+		to_chat(user, span_notice("你将[C]投入[src]的窥视盆中。（已存[voyeur_fund]玛门。）"))
 		playsound(loc, 'sound/misc/gold_misc.ogg', 60, FALSE, -1)
 		qdel(C)
 		return
