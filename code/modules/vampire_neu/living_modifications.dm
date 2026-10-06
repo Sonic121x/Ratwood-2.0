@@ -116,8 +116,8 @@
 
 /mob/living/proc/set_bloodpool(newblood)
 	bloodpool = CLAMP(newblood, 0, maxbloodpool)
-	hud_used?.bloodpool?.name = "Bloodpool: [bloodpool]"
-	hud_used?.bloodpool?.desc = "Bloodpool: [bloodpool]/[maxbloodpool]"
+	hud_used?.bloodpool?.name = "血池：[bloodpool]"
+	hud_used?.bloodpool?.desc = "血池：[bloodpool]/[maxbloodpool]"
 	hud_used?.bloodpool?.set_value((100 / (maxbloodpool / bloodpool)) / 100, 1 SECONDS)
 
 /mob/living/proc/adjust_bloodpool(adjust, visible = TRUE)
@@ -125,8 +125,8 @@
 	if(!visible)
 		return
 
-	hud_used?.bloodpool?.name = "Bloodpool: [bloodpool]"
-	hud_used?.bloodpool?.desc = "Bloodpool: [bloodpool]/[maxbloodpool]"
+	hud_used?.bloodpool?.name = "血池：[bloodpool]"
+	hud_used?.bloodpool?.desc = "血池：[bloodpool]/[maxbloodpool]"
 	if(bloodpool <= 0)
 		hud_used?.bloodpool?.set_value(0, 1 SECONDS)
 	else
@@ -173,11 +173,11 @@
 			if(value < 0)
 				if(masquerade > 0)
 					masquerade = max(0, masquerade+value)
-					to_chat(src, "<span class='userdanger'><b>MASQUERADE VIOLATION!</b></span>")
+					to_chat(src, "<span class='userdanger'><b>违反避世戒律！</b></span>")
 			if(value > 0)
 				if(masquerade < 5)
 					masquerade = min(5, masquerade+value)
-					to_chat(src, "<span class='userhelp'><b>MASQUERADE REINFORCED!</b></span>")
+					to_chat(src, "<span class='userhelp'><b>避世戒律得到巩固！</b></span>")
 
 	if(src in GLOB.coven_breakers_list)
 		if(masquerade > 2)
@@ -276,7 +276,7 @@
 	covens -= coven_name
 
 	if(!silent)
-		to_chat(src, "<span class='boldwarning'>You have lost your knowledge of [target_coven.name].</span>")
+		to_chat(src, "<span class='boldwarning'>你失去了[target_coven.name]的知识。</span>")
 
 	QDEL_NULL(target_coven)
 	return TRUE
@@ -307,10 +307,10 @@
  */
 /mob/living/carbon/human/proc/open_clan_menu()
 	if(!clan)
-		to_chat(src, "<span class='warning'>You have no clan!</span>")
+		to_chat(src, "<span class='warning'>你没有氏族！</span>")
 		return
 	if(!covens || !length(covens))
-		to_chat(src, "<span class='warning'>You have no covens to manage!</span>")
+		to_chat(src, "<span class='warning'>你没有可管理的盟会！</span>")
 		return
 
 	// Clean up existing interface
@@ -335,13 +335,13 @@
 	var/obj/structure/closet/crate/coffin/coffin = loc
 	if(istype(coffin) && total_damage && (src in coffin.contents))
 		if(!HAS_TRAIT(src, TRAIT_DEATHCOMA))
-			to_chat(src, span_notice("You enter the horrible slumber of deathless Torpor. You will heal until you are renewed."))
+			to_chat(src, span_notice("你陷入了不死者可怖的休眠。你将持续恢复，直至重获生机。"))
 			ADD_TRAIT(src, TRAIT_DEATHCOMA, VAMPIRE_TRAIT)
 		heal_overall_damage(5, 5)
 		adjust_bloodpool(-2)
 	if(HAS_TRAIT(src, TRAIT_DEATHCOMA) && (total_damage <= 0 || (!istype(coffin) || !(src in coffin.contents))))
 		REMOVE_TRAIT(src, TRAIT_DEATHCOMA, VAMPIRE_TRAIT)
-		to_chat(src, span_warning("You have recovered from Torpor."))
+		to_chat(src, span_warning("你已从休眠中苏醒。"))
 
 /mob/living/carbon/human/proc/handle_bloodpool_effects()
 	// Apply thirst effects based on bloodpool levels
@@ -374,11 +374,11 @@
 
 	var/examine_text = ""
 
-	examine_text += "<span class='info'><b>Clan Position:</b> [clan_position.name]</span>\n"
+	examine_text += "<span class='info'><b>氏族职位：</b>[clan_position.name]</span>\n"
 
 	if(clan_position.superior && clan_position.superior.assigned_member)
 		var/mob/living/carbon/human/superior = clan_position.superior.assigned_member
-		examine_text += "<span class='info'><b>Reports to:</b> [superior.real_name] ([clan_position.superior.name])</span>\n"
+		examine_text += "<span class='info'><b>直属上级：</b>[superior.real_name] ([clan_position.superior.name])</span>\n"
 
 	if(examiner.clan_position && (examiner.clan_position.can_assign_positions || examiner.clan_position.is_superior_to(clan_position)))
 		if(length(clan_position.subordinates))

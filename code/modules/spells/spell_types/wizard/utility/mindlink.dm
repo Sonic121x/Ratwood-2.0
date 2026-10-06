@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/mindlink
 	name = "心灵链接"
-	desc = "与一名盟友建立持续三分钟的心灵链接。发言前输入 ,y 即可进行心灵交流。"
+	desc = "与一名盟友建立持续三分钟的心灵链接。发言前输入 ,m 即可进行心灵交流。"
 	clothes_req = FALSE
 	overlay_state = "mindlink"
 	associated_skill = /datum/skill/magic/arcane
@@ -41,7 +41,7 @@
 	if(user.client)
 		possible_targets = list(user.real_name) + possible_targets // Oohhhhhh this looks bad. But this is supposed to append ourselves at the start of the ordered list.
 
-	user.emote("me", 1, "'s eyes briefly glow with an otherworldly light.", TRUE, custom_me = TRUE)
+	user.emote("me", 1, "的眼中短暂闪过超凡的光芒。", TRUE, custom_me = TRUE)
 
 	var/first_target_name = input(user, "选择第一个链接对象", "心灵链接") as null|anything in possible_targets
 

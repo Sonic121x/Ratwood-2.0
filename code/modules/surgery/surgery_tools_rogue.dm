@@ -229,7 +229,7 @@
 		var/choice = tgui_input_list(user, "你想对这个烙印铁做些什么？", "烙印铁", options, null, 10 SECONDS)
 		switch(choice)
 			if("设置符号")
-				var/inputty = stripped_input(user, "你想设置什么烙印？\n例如：一幅小型的鲁斯头部图画", "输入烙印描述", null, 64)
+				var/inputty = stripped_input(user, "你想设置什么烙印？\n例如：一幅小小的大鼠头像", "输入烙印描述", null, 64)
 				if(inputty)
 					setbranding = inputty
 					to_chat(user, span_warning("我更换了[!branding_low_quality ? "铁制" : "煤炭"]尖端，它将印下[setbranding]。"))
@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 
 	if(length(zone_options))
 		zone_options = zone_options.Copy()
-		zone_options += "Cancel"
+		zone_options += "取消"
 	else // failsafe
 		if(covered)
 			to_chat(user, span_warning("那个部位被遮挡了！"))
@@ -595,7 +595,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 		if(!length(removable_options))
 			to_chat(user, span_warning("所有可触及的身体部位上都没有可移除的烙印。"))
 			return TRUE
-		removable_options += "Cancel"
+		removable_options += "取消"
 		zone_options = removable_options
 
 	var/branding_text = remove_existing_brand ? null : setbranding // No switcheroos partway through.
@@ -604,7 +604,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	// Prompt before do_after
 	final_answer = tgui_alert(user, "你想要[remove_existing_brand ? "移除" : "烙印"]什么？", "请于[DisplayTimeText(10 SECONDS)]内选择！", zone_options, 10 SECONDS)
 
-	if(!final_answer || final_answer == "Cancel")
+	if(!final_answer || final_answer == "取消")
 		return TRUE
 
 	// Reject branding if disallowed by prefs. Doing it here hides less away from the user.
@@ -617,7 +617,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 					return TRUE
 				if(!target.client.prefs?.sensitive_brands)
 					to_chat(user, span_warning("[target]已禁用敏感部位烙印。"))
-					to_chat(target, span_warning("一次对我[LOWER_TEXT(final_answer)]的烙印尝试被偏好设置阻止了。"))
+					to_chat(target, span_warning("一次对我[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印尝试被偏好设置阻止了。"))
 					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 			if("Head")
@@ -627,7 +627,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 					return TRUE
 				if(!target.client.prefs?.facial_brands)
 					to_chat(user, span_warning("[target]已禁用面部烙印。"))
-					to_chat(target, span_warning("一次对我[LOWER_TEXT(final_answer)]的烙印尝试被偏好设置阻止了。"))
+					to_chat(target, span_warning("一次对我[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印尝试被偏好设置阻止了。"))
 					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 
