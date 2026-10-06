@@ -3,7 +3,7 @@
 
 /datum/supply_pack/rogue/bath_rogue
 	group = "盗贼用品" // English: Roguery
-	crate_name = "merchant guild's crate"
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 // Same as merchant
