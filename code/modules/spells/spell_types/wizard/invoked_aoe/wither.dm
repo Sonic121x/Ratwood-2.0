@@ -35,7 +35,7 @@
 	var/turf/source_turf = get_turf(user)
 
 	if(T.z != user.z)
-		to_chat(user, span_warning("我无法对不同 z 层施放这个法术！"))
+		to_chat(user, span_warning("我无法对不同空间层的目标施放这个法术！"))
 		return FALSE
 
 	var/list/affected_turfs = getline(source_turf, T)

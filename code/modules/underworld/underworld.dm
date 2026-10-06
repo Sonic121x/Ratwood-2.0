@@ -1,6 +1,6 @@
 /obj/item/flashlight/lantern/shrunken
-	name = "shrunken lamp"
-	desc = "A beacon."
+	name = "干瘪提灯"
+	desc = "一盏引路明灯。"
 	icon_state = "shrunkenlamp"
 	item_state = "shrunkenlamp"
 	lefthand_file = 'icons/roguetown/underworld/enigma_husks.dmi'
@@ -17,8 +17,8 @@
 	set_light_on(on)
 
 /obj/structure/underworld/carriageman
-	name = "The Carriageman"
-	desc = "The dead pay tolls. The living may yet bargain. They will take the reigns and lead the way. But only if the price I can pay."
+	name = "车夫"
+	desc = "死者须付渡资，生者尚可议价。车夫会执起缰绳，为我引路——只要我付得起代价。"
 	icon = 'icons/roguetown/underworld/enigma_carriageman.dmi'
 	icon_state = "carriageman"
 	layer = ABOVE_MOB_LAYER
@@ -33,59 +33,59 @@
 /obj/structure/underworld/carriageman/attack_hand(mob/living/user)
 	if(!istype(user, /mob/living/carbon/spirit))
 		if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE)&& toll)
-			to_chat(user, "<br><font color=purple><span class='bold'>HANDS EXCHANGE PAY AND OATHS GIVE WAY, BE ON YOUR WAY</span></font>")
+			to_chat(user, "<br><font color=purple><span class='bold'>渡资易手，誓约退让，且自前行。</span></font>")
 			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 			toll = FALSE
 			if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
 				user.remove_status_effect(/datum/status_effect/debuff/ritesexpended)
 			return
 		if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE)&& !toll)
-			to_chat(user, "<br><font color=purple><span class='bold'>RITES ARE A FICKLE THING, SWORN ONCE A DAY- <br> PAY THE TOLL, AND OATHS GIVE WAY</span></font>")
+			to_chat(user, "<br><font color=purple><span class='bold'>仪式难测，一日一誓——<br>交付渡资，誓约便退让。</span></font>")
 			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 			return
-		to_chat(user, span_warning("The carriageman does not acknowledge the living."))
+		to_chat(user, span_warning("车夫不理会活人。"))
 		return
 	var/mob/living/carbon/spirit/ghost = user
 	if(!ghost.paid)
 		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
-		to_chat(user, "<br><font color=purple><span class='bold'>FETCH THE TOLL AND YOU MAY BOARD</span></font>")
+		to_chat(user, "<br><font color=purple><span class='bold'>取来渡资，方可登车。</span></font>")
 	else
-		to_chat(user, "<br><font color=purple><span class='bold'>HANDS EXCHANGE PAY, BE ON YOUR WAY</span></font>")
+		to_chat(user, "<br><font color=purple><span class='bold'>渡资易手，且自前行。</span></font>")
 		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 
 /obj/structure/underworld/carriageman/attackby(obj/item/W, mob/living/user)
 	if(!istype(user, /mob/living/carbon/spirit)&& !toll && HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(istype(W, /obj/item/thetoll))
 			qdel(W)
-			to_chat(user, "<br><font color=purple><span class='bold'>THE TOLL IS PAID, A TRANSACTION MADE.</span></font>")
+			to_chat(user, "<br><font color=purple><span class='bold'>渡资已付，交易已成。</span></font>")
 			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 			toll = TRUE
 			return
 	if(!istype(user, /mob/living/carbon/spirit)&& toll && HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(istype(W, /obj/item/thetoll))
-			to_chat(user, "<br><font color=purple><span class='bold'>ONE TRANSACTION AT A TIME.</span></font>")
+			to_chat(user, "<br><font color=purple><span class='bold'>一次只做一笔交易。</span></font>")
 			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 			return
 	if(!istype(user, /mob/living/carbon/spirit) && !HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
-		to_chat(user, span_warning("The carriageman does not acknowledge the living."))
+		to_chat(user, span_warning("车夫不理会活人。"))
 	var/mob/living/carbon/spirit/ghost = user
 	if(istype(W, /obj/item/underworld/coin))
 		if(!ghost.paid)
 			qdel(W)
-			to_chat(ghost, "<br><font color=purple><span class='bold'>THE TOLL IS PAID, THROUGH THE CARRIAGE THE UNDERMAIDEN WAITS.</span></font>")
+			to_chat(ghost, "<br><font color=purple><span class='bold'>渡资已付，登上马车，冥下侍女正在彼端等候。</span></font>")
 			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 			ghost.paid = TRUE
 			return
 		if(ghost.paid)
-			to_chat(ghost, "<br><font color=purple><span class='bold'>FURTHER PAYMENT WILL NOT CHANGE HER JUDGEMENT.</span></font>")
+			to_chat(ghost, "<br><font color=purple><span class='bold'>再多的渡资也无法改变她的裁决。</span></font>")
 			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 	else
-		to_chat(ghost, "<br><font color=purple><span class='bold'>ONLY THE TOLL WILL I ACCEPT</span></font>")
+		to_chat(ghost, "<br><font color=purple><span class='bold'>我只收渡资。</span></font>")
 		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 
 /obj/structure/underworld/barrier //Blocks sprite locations
-	name = "DONT STAND HERE"
-	desc = "The Undermaiden awaits."
+	name = "不要站在这里"
+	desc = "冥下侍女正在等候。"
 	icon = 'icons/roguetown/underworld/underworld.dmi'
 	icon_state = "spiritpart"
 	density = TRUE
@@ -105,7 +105,7 @@
 
 /obj/structure/underworld/carriage
 	name = "马车"
-	desc = "冥女在等待。"
+	desc = "冥下侍女正在等候。"
 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
 	icon_state = "carriage_lit"
 	layer = ABOVE_MOB_LAYER
@@ -120,20 +120,20 @@
 
 /obj/structure/underworld/carriage/attack_hand(mob/living/carbon/spirit/user)
 	if(user.paid)
-		switch(alert("Are you ready to be judged?",,"Yes","No"))
-			if("Yes")
+		switch(alert("你准备好接受裁决了吗？",,"是","否"))
+			if("是")
 				playsound(user, 'sound/misc/deadbell.ogg', 50, TRUE, -2, ignore_walls = TRUE)
 				user.returntolobby()
-			if("No")
-				usr << "You delay fate."
+			if("否")
+				usr << "你延缓了命运的到来。"
 	else
-		to_chat(user, "<B><font size=3 color=red>It's LOCKED.</font></B>")
+		to_chat(user, "<B><font size=3 color=red>门锁着。</font></B>")
 
 GLOBAL_VAR_INIT(underworld_coins, 0)
 
 /obj/item/underworld/coin
-	name = "The Toll"
-	desc = "This is more than just a coin."
+	name = "渡资"
+	desc = "这不仅仅是一枚硬币。"
 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
 	icon_state = "soultoken_floor"
 	var/should_track = TRUE
@@ -171,7 +171,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 			new /obj/item/underworld/coin(B.loc)
 
 /obj/item/detroyt_toll
-	name = "Ticket"
-	desc = "This is more than just compressed salt."
+	name = "车票"
+	desc = "这不仅仅是一块压实的盐。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "ticket_detroyt"
