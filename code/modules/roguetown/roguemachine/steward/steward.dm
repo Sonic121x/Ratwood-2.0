@@ -363,19 +363,19 @@
 		amount_to_pay = CLAMP(amount_to_pay, 0, 999)
 		if(wage_floor > 0 && amount_to_pay < wage_floor)
 			amount_to_pay = wage_floor
-			say("依特许状，[job_to_pay] 的薪资不得低于 [wage_floor]m。薪资已设为下限。")
+			say("依特许状，[SSjob.GetJob(job_to_pay)?.display_title || job_to_pay] 的薪资不得低于 [wage_floor]m。薪资已设为下限。")
 		if(amount_to_pay == 0)
 			daily_payments -= job_to_pay
 			say("[job_to_pay] 的每日薪资已移除。")
 		else
 			daily_payments[job_to_pay] = amount_to_pay
-			say("[job_to_pay] 的每日薪资已设为 [amount_to_pay]m。")
+			say("[SSjob.GetJob(job_to_pay)?.display_title || job_to_pay] 的每日薪资已设为 [amount_to_pay]m。")
 	if(href_list["removedailypay"])
 		var/job_to_remove = href_list["removedailypay"]
 		var/removal_floor = SStreasury.get_wage_floor(job_to_remove)
 		if(removal_floor > 0)
 			daily_payments[job_to_remove] = removal_floor
-			say("依特许状，[job_to_remove] 的薪资无法移除。薪资保持在 [removal_floor]m 的下限。")
+			say("依特许状，[SSjob.GetJob(job_to_remove)?.display_title || job_to_remove] 的薪资无法移除。薪资保持在 [removal_floor]m 的下限。")
 		else
 			daily_payments -= job_to_remove
 			say("[job_to_remove] 的每日薪资已移除。")

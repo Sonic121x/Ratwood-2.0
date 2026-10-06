@@ -363,14 +363,14 @@
 		if(!H.check_revive(user))
 			revert_cast()
 			return FALSE
-		if(alert(user, "要伸手将其拉回来吗？", "其中已无 Lux", "否", "是") != "是")
+		if(alert(user, "要伸手将其拉回来吗？", "其中已无灵辉", "否", "是") != "是")
 			revert_cast()
 			return FALSE
 		to_chat(user, span_warning("我试图以“赦免”将 [H] 拉回人世！"))
 		// Dramatic effect
 		user.visible_message(span_danger("[user]一把抓住了[H]的手腕，银色的灵辉之线自其手中倾泻而出！"))
 
-		if(alert(H, "对方想要赦免你。你愿意吗？", "ABSOLUTION", "我愿接受", "我拒绝") != "我愿接受")
+		if(alert(H, "对方想要赦免你。你愿意吗？", "赦免", "我愿接受", "我拒绝") != "我愿接受")
 			H.visible_message(span_notice("什么也没有发生。"))
 			return FALSE
 		// Create visual effects
@@ -485,7 +485,7 @@
 	var/clone_transfer = H.getCloneLoss()
 
 	if (oxy_transfer >= 150)
-		if (alert(user, "对方面如死灰、呼吸停滞。施展“分担”可能会立刻害死你，受印者。还要继续吗？", "自保", "YES", "NO") != "YES")
+		if (alert(user, "对方面如死灰、呼吸停滞。施展“分担”可能会立刻害死你，受印者。还要继续吗？", "自保", "是", "否") != "是")
 			revert_cast()
 			return
 	

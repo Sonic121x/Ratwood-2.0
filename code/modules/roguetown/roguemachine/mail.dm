@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/mail
 	name = "赫尔墨斯"
-	desc = "自从这种液压气动邮递系统问世后，ZAD告示台的传信方式就严重过时了。投币槽会启动机关，分发羊皮纸（一枚泽尼）和羽毛（一枚兹利夸）。"
+	desc = "自从这种液压气动邮递系统问世后，扎德告示台的传信方式就严重过时了。投币槽会启动机关，分发羊皮纸（一枚泽尼）和羽毛（一枚兹利夸）。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "mail"
 	density = FALSE
@@ -134,10 +134,10 @@
 	if(inqcoins)
 		to_chat(user, span_warning("机器没有反应。"))
 		return
-	var/send2place = sanitize(input(user, "寄往何处？（人名或 #编号）", "ROGUETOWN", null))
+	var/send2place = sanitize(input(user, "寄往何处？（人名或 #编号）", "罗格镇", null))
 	if(!send2place)
 		return
-	var/sentfrom = sanitize(input(user, "这封信是谁寄出的？", "ROGUETOWN", null))
+	var/sentfrom = sanitize(input(user, "这封信是谁寄出的？", "罗格镇", null))
 	if(!sentfrom)
 		sentfrom = "匿名"
 	var/sender_ckey = user.ckey
@@ -147,7 +147,7 @@
 			if(H.real_name == send2place)
 				recipient_ckey = H.ckey
 				break
-	var/t = stripped_multiline_input("书写你的信件", "ROGUETOWN", no_trim=TRUE)
+	var/t = stripped_multiline_input("书写你的信件", "罗格镇", no_trim=TRUE)
 	if(t)
 		if(length(t) > 2000)
 			to_chat(user, span_warning("太长了。请重试。"))
@@ -546,8 +546,8 @@
 			to_chat(user, span_warning("机器没有反应。"))
 			return
 		if(alert(user, "寄送邮件？",,"是","否") == "是")
-			var/send2place = sanitize(input(user, "寄往何处？（人名或 #编号）", "ROGUETOWN", null))
-			var/sentfrom = sanitize(input(user, "这是谁寄来的？（留空则匿名寄出）", "ROGUETOWN", null))
+			var/send2place = sanitize(input(user, "寄往何处？（人名或 #编号）", "罗格镇", null))
+			var/sentfrom = sanitize(input(user, "这是谁寄来的？（留空则匿名寄出）", "罗格镇", null))
 			if(!sentfrom)
 				sentfrom = "匿名"
 			var/sender_ckey = user.ckey
