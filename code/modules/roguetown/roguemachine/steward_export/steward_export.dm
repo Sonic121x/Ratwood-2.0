@@ -5,8 +5,8 @@ GLOBAL_LIST_EMPTY(steward_export_machines)
 /// machine - confined to a 3x3 footprint per machine to avoid world-wide scans.
 /// Mapped invisible/indestructible; mappers drop one per warehouse cluster.
 /obj/structure/roguemachine/steward_export
-	name = "steward's export machine"
-	desc = "A machine near where Crown-hired clerks tally exports. Wares left within reach of this machine are counted toward Crown standing orders."
+	name = "宫廷总管出口机"
+	desc = "一台安置在王室文书统计出口货物之处附近的机器。放在机器收取范围内的货物会计入王室常设订单。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "ballooner"
 	density = FALSE

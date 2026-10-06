@@ -4,18 +4,18 @@
 	roll_weight = TRADE_REALM_WEIGHT_NEIGHBOR
 	demanded_categories = list(NAVIGATOR_BUCKET_POTIONS_REAGENTS, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_CARVED, NAVIGATOR_BUCKET_POTTERY, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	ship_name_words = list(
-		"Eisernen", "Sturm", "Adler", "Wolf", "Drache",
-		"Schwert", "Bruder", "Krone", "Burg", "Wappen",
-		"Hammer", "Nordlicht", "Falken", "Reiter", "Greif",
+		"钢铁", "风暴", "雄鹰", "狼", "巨龙",
+		"利剑", "兄弟", "王冠", "城堡", "纹章",
+		"铁锤", "北极光", "猎隼", "骑手", "狮鹫",
 	)
 	captain_first_names = list(
-		"Heinrich", "Konrad", "Dietrich", "Ulrich", "Gerhard",
-		"Hartmann", "Albrecht", "Reinhart", "Hermann", "Sigmund",
-		"Adelheid", "Mechthild", "Hedwig", "Irmgard", "Kunigunde",
+		"海因里希", "康拉德", "迪特里希", "乌尔里希", "格哈德",
+		"哈特曼", "阿尔布雷希特", "赖因哈特", "赫尔曼", "西格蒙德",
+		"阿德尔海德", "梅希蒂尔德", "海德维希", "伊尔姆加德", "库尼贡德",
 	)
 	captain_last_names = list(
-		"Faber", "Krummhorn", "Wolfsbein", "Hartwald", "von Apfelweinheim",
-		"Eisenberg", "Falkenried", "Sturmwacht", "von Zenitstadt", "von Hochburg",
+		"法伯", "曲角", "狼腿", "哈特瓦尔德", "冯苹果酒庄",
+		"铁山", "隼泽", "风暴守望", "冯天顶城", "冯高堡",
 	)
 	ship_types = list(
 		list("name" = "沿岸货船", "tonnage" = 30, "weight" = 15),
@@ -24,8 +24,8 @@
 		list("name" = "卡拉克帆船", "tonnage" = 500, "weight" = 10),
 	)
 	city_tags = list(
-		"Apfelweinheim", "Zenitstadt", "Eisenhafen", "Silbergrund",
-		"Hochburg", "Sterneberg", "Sankt Averial",
+		"苹果酒庄", "天顶城", "铁港", "银谷",
+		"高堡", "星山", "圣阿维里亚尔",
 	)
 	city_tag_chance = 35
 	cultural_goods = list()

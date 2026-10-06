@@ -9,7 +9,7 @@
 	set category = "IC"
 	
 	display_typing_indicator()
-	var/message = input(usr, "", "say") as text|null
+	var/message = input(usr, "", "说话") as text|null
 	// If they don't type anything just drop the message.
 	clear_typing_indicator(length(message) ? "sent" : "closed input")
 	if(!length(message))
@@ -24,7 +24,7 @@
 	if(!length(message))
 		return
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>管理员暂时禁用了发言。</span>")
 		return
 	clear_typing_indicator("sent")		// clear it immediately!
 
@@ -37,7 +37,7 @@
 	set hidden = 1
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("管理员暂时禁用了发言。"))
 		return
 	whisper(message)
 
@@ -52,7 +52,7 @@
 	set category = "IC"
 
 	display_typing_indicator()
-	var/message = input(usr, "", "me") as text|null
+	var/message = input(usr, "", "动作描写") as text|null
 	// If they don't type anything just drop the message.
 	clear_typing_indicator(length(message) ? "sent" : "closed input")		// clear it immediately!
 	if(!length(message))
@@ -72,7 +72,7 @@
 	if(!length(message))
 		return
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("管理员暂时禁用了发言。"))
 		return
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 	message = accent_emote_quotes(message, usr)
@@ -87,7 +87,7 @@
 	set hidden = 1
 
 	display_typing_indicator()
-	var/message = input(usr, "", "me") as message|null
+	var/message = input(usr, "", "动作描写") as message|null
 	// If they don't type anything just drop the message.
 	clear_typing_indicator(length(message) ? "sent" : "closed input")
 	if(!length(message))
@@ -107,7 +107,7 @@
 	if(!length(message))
 		return
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("管理员暂时禁用了发言。"))
 		return
 
 	message = replacetext(message, regex("\\r", "g"), "")
@@ -126,12 +126,12 @@
 #ifndef MATURESERVER
 	return
 #endif
-	var/message = input(usr, "", "subtle") as text|null
+	var/message = input(usr, "", "细微动作") as text|null
 	// If they don't type anything just drop the message.
 	if(!length(message))
 		return
 	if(GLOB.say_disabled)
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("管理员暂时禁用了发言。"))
 		return
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 	message = accent_emote_quotes(message, usr)
@@ -148,12 +148,12 @@
 #ifndef MATURESERVER
 	return
 #endif
-	var/message = input(usr, "", "subtle") as message|null
+	var/message = input(usr, "", "细微动作") as message|null
 	// If they don't type anything just drop the message.
 	if(!length(message))
 		return
 	if(GLOB.say_disabled)
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("管理员暂时禁用了发言。"))
 		return
 
 	message = trim(copytext_char(html_encode(message), 1, MAX_MESSAGE_LEN))
