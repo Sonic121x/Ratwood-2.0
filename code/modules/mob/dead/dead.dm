@@ -75,26 +75,26 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	// UPDATE TIMER -- Script in html\lobby\lobby.html / .js
 	var/timer_text
 	if (time_remaining > 0)
-		timer_text = "Time To Start: [round(time_remaining/10)]s"
+		timer_text = "距离开局：[round(time_remaining/10)]秒"
 	else if (time_remaining == -10)
-		timer_text = "Time To Start: DELAYED"
+		timer_text = "距离开局：已延迟"
 	else
-		timer_text = "Time To Start: SOON"
+		timer_text = "距离开局：即将开始"
 		client << browse(null, "window=lobby_window")
 		return
 	client << output(timer_text, "lobby_window.browser:update_timer")
 
 	// Update players ready!!
 	client << output(
-	"Total players ready: [SSticker.totalPlayersReady]",
+	"已准备玩家总数：[SSticker.totalPlayersReady]",
 	"lobby_window.browser:update_ready_count"
 	)
 	// Ready bonus
 	var/bonus_html
 	if (src.ready)
-		bonus_html = span_good("Ready Bonus!")
+		bonus_html = span_good("已获得准备奖励！")
 	else
-		bonus_html = span_highlight("No bonus! Ready up!")
+		bonus_html = span_highlight("尚无奖励！请准备！")
 	client << output(bonus_html, "lobby_window.browser:update_ready_bonus")
 	client << output(actor_list, "lobby_window.browser:update_jobs")
 
@@ -108,7 +108,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 /mob/dead/proc/server_hop()
 	set category = "OOC"
 	set name = "Server Hop!"
-	set desc= "Jump to the other server"
+	set desc= "前往其他服务器"
 	set hidden = 1
 	if(notransform)
 		return
@@ -117,22 +117,22 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	switch(csa.len)
 		if(0)
 			verbs -= /mob/dead/proc/server_hop
-			to_chat(src, span_notice("Server Hop has been disabled."))
+			to_chat(src, span_notice("服务器跳转已停用。"))
 		if(1)
 			pick = csa[1]
 		else
-			pick = input(src, "Pick a server to jump to", "Server Hop") as null|anything in csa
+			pick = input(src, "选择要前往的服务器", "服务器跳转") as null|anything in csa
 
 	if(!pick)
 		return
 
 	var/addr = csa[pick]
 
-	if(alert(src, "Jump to server [pick] ([addr])?", "Server Hop", "Yes", "No") != "Yes")
+	if(alert(src, "前往服务器[pick]（[addr]）？", "服务器跳转", "是", "否") != "是")
 		return
 
 	var/client/C = client
-	to_chat(C, span_notice("Sending you to [pick]."))
+	to_chat(C, span_notice("正在将你送往[pick]。"))
 	new /atom/movable/screen/splash(C)
 
 	notransform = TRUE

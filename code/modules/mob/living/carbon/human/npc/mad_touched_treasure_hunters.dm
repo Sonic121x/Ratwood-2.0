@@ -116,13 +116,13 @@
 	H.real_name = pick(world.file2list("strings/rt/names/human/mad_touched_names.txt"))
 
 /obj/item/clothing/head/roguetown/menacing/mad_touched_treasure_hunter //its here so it doesnt wind up on some class' loadout.
-	name = "sack hood"
-	desc = "A ragged hood of thick jute fibres. The itchiness is unbearable."
+	name = "麻袋头罩"
+	desc = "用粗厚黄麻纤维制成的破烂头罩，痒得令人难以忍受。"
 	color = "#999999"
 	armor = ARMOR_LEATHER
 
 /obj/item/clothing/mask/rogue/facemask/ancient/mad_touched
-	name = "eerie ancient mask"
+	name = "诡异的古老面具"
 
 /obj/item/clothing/mask/rogue/facemask/ancient/mad_touched/equipped(mob/user, slot)
 	. = ..()
