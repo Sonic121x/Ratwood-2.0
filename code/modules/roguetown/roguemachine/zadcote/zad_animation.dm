@@ -49,7 +49,7 @@
 /obj/effect/temp_visual/zad_tracked/zad_flight
 	icon = 'icons/roguetown/mob/monster/crow.dmi'
 	icon_state = "crow_flying"
-	name = "zads in flight"
+	name = "飞行中的扎德鸟"
 	duration = ZAD_ASCEND_DURATION
 
 /obj/effect/temp_visual/zad_tracked/zad_flight/ascend
@@ -247,7 +247,7 @@
 		return
 	var/obj/effect/temp_visual/zad_tracked/zad_payload/parcel = new(get_turf(host))
 	parcel.appearance = I.appearance
-	parcel.name = "[I.name] in flight"
+	parcel.name = "飞行中的[I.name]"
 	parcel.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	parcel.alpha = 200
 	parcel.transform = matrix() * 0.6
@@ -314,7 +314,7 @@
 /obj/effect/temp_visual/zad_tracked/zad_bomb_overlay
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "bbomb-lit"
-	name = "armed bottlebomb"
+	name = "已点燃的瓶装炸弹"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER
 	duration = ZAD_BOMB_DESCEND_DURATION_VAR_MAX
@@ -326,7 +326,7 @@
 
 /obj/effect/temp_visual/zad_tracked/zad_bomb_overlay/unlit
 	icon_state = "bbomb"
-	name = "bottlebomb"
+	name = "瓶装炸弹"
 	duration = ZAD_ASCEND_DURATION
 
 /proc/zad_overlay_offset(index, total)

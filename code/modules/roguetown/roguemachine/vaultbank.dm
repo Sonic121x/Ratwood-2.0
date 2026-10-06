@@ -14,7 +14,7 @@
 	COOLDOWN_DECLARE(patronage_writ_cooldown)
 	var/fund_warned = FALSE
 	var/alert_jobs = list("Grand Duke", "Steward", "Clerk")
-	var/alert_location = "The Vault"
+	var/alert_location = "宝库"
 	var/supports_loans = TRUE
 	var/bash_floor = 1500
 	var/hits_since_lump = 0
@@ -645,7 +645,7 @@
 	name = "\proper 教会颌口金库"
 	desc = "一座生物机械方尖碑，保管着教会信徒的施舍与什一税。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Bishop", "Martyr", "Acolyte")
-	alert_location = "the Church"
+	alert_location = "教会"
 	bash_floor = 500
 	lump_payout = 100
 
@@ -709,7 +709,7 @@
 	name = "\proper 商人颌口金库"
 	desc = "一座生物机械方尖碑，守护着费伦提亚贸易公司的金柜。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Merchant", "Shophand")
-	alert_location = "the Merchant's quarter"
+	alert_location = "商人区"
 	bash_floor = 500
 	lump_payout = 100
 
@@ -753,7 +753,7 @@
 	name = "\proper 浴场颌口金库"
 	desc = "一座生物机械方尖碑，守护着浴场的收入。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Bathmaster", "Bathhouse Attendant")
-	alert_location = "the Bathhouse"
+	alert_location = "浴场"
 	bash_floor = 500
 	lump_payout = 100
 
@@ -920,7 +920,7 @@
 	name = "\proper 酒馆颌口金库"
 	desc = "一座生物机械方尖碑，囤积着酒馆的收入。敲击它，就能震落属于你的那一份。"
 	alert_jobs = list("Innkeeper", "Tapster", "Cook")
-	alert_location = "the Tavern"
+	alert_location = "酒馆"
 	bash_floor = INNKEEPER_BASH_FLOOR
 	lump_payout = INNKEEPER_LUMP_PAYOUT
 	supports_loans = FALSE

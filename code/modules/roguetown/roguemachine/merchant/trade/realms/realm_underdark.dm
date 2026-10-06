@@ -6,18 +6,18 @@
 	demanded_categories = list(NAVIGATOR_BUCKET_WEAPONS, NAVIGATOR_BUCKET_ARMOR_LIGHT, NAVIGATOR_BUCKET_GARMENT_FINELUX, NAVIGATOR_BUCKET_POTIONS_REAGENTS, NAVIGATOR_BUCKET_ENCHANTMENTS, NAVIGATOR_BUCKET_INSTRUMENTS, NAVIGATOR_BUCKET_SEAFOOD, NAVIGATOR_BUCKET_VALUABLES_CRAFTED, NAVIGATOR_BUCKET_MISCELLANEOUS)
 	single_word_base = TRUE
 	ship_name_words = list(
-		"Duskfang", "Gloomroot", "Emberweb", "Nightspire", "Chitinfall",
-		"Voidcarve", "Ashwick", "Hollowfen", "Cinderweb", "Grimtide",
-		"Bonelight", "Shadowspur", "Fungalreach", "Mirewake", "Deepglass",
+		"暮牙", "幽根", "余烬蛛网", "夜尖塔", "甲壳瀑",
+		"虚空刻痕", "灰烬灯芯", "空洞沼泽", "煤烬蛛网", "阴潮",
+		"骨光", "影刺", "菌域", "沼泽航迹", "深渊琉璃",
 	)
 	captain_first_names = list(
-		"Xylvaeth", "Serathil", "Nyxandra", "Veshtal", "Ilyndra",
-		"Threnos", "Saevrin", "Mordeth", "Quilara", "Zyrenne",
-		"Orruth", "Kaelith", "Vantrys", "Aelune", "Draskiel",
+		"希尔维斯", "塞拉希尔", "尼克桑德拉", "维什塔尔", "伊琳德拉",
+		"斯雷诺斯", "塞夫林", "莫德斯", "奎拉拉", "齐蕾讷",
+		"奥鲁斯", "凯利斯", "万特里斯", "艾露恩", "德拉斯基尔",
 	)
 	captain_last_names = list(
-		"Ixar", "Sevari", "Naxir", "Ghaun", "Ssarn",
-		"Draeth", "Kaelis", "Orryn", "Vhoral", "Myrren",
+		"伊克萨尔", "塞瓦里", "纳克西尔", "高恩", "萨恩",
+		"德雷斯", "凯利斯", "奥林", "沃拉尔", "米伦",
 	)
 	ship_types = list(
 		list("name" = "甲壳轻舟", "tonnage" = 80, "weight" = 20),

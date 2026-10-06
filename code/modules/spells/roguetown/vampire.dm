@@ -35,7 +35,7 @@
 	convert_damage = FALSE
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/crow
-	name = "Zad 形态"
+	name = "扎德鸟形态"
 	overlay_state = "zad"
 	desc = ""
 	gesture_required = TRUE
