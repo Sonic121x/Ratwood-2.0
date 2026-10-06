@@ -40,7 +40,7 @@
 		return null
 	var/ruler_type = SSticker?.rulertype || "Lord"
 	var/mob/living/ruler_mob = SSticker?.rulermob
-	var/ruler_name = (ruler_mob && !QDELETED(ruler_mob)) ? ruler_mob.real_name : "the Lord"
+	var/ruler_name = (ruler_mob && !QDELETED(ruler_mob)) ? ruler_mob.real_name : "领主"
 	var/text = replacetext(template, "%RULER%", ruler_type)
 	text = replacetext(text, "%RULER_NAME%", ruler_name)
 	for(var/region_id in GLOB.economic_regions)

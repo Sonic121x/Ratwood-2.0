@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/invoked/song/dirge_fortune
 	name = "厄运挽歌"
-	desc = "奏出一曲降下厄运的哀歌。附近不属于听众的人会受到 `-2 LUCK`。"
+	desc = "奏出一曲降下厄运的哀歌。附近不属于听众的人会受到 `-2 幸运`。"
 	invocations = list("奏起世间最悲伤的曲子。周围的一切仿佛都郁郁寡欢。") 
 	invocation_type = "emote"
 	overlay_state = "dirge_t1_base"

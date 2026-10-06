@@ -366,7 +366,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/jarhelm
-	name = "rather large jar"
+	name = "大陶罐"
 	craftdiff = 5
 	base_time = 55
 	result_type = /obj/item/natural/clay/jarhelm
@@ -482,5 +482,5 @@
 	result_type = /obj/item/natural/clay/porcelain/bauble
 
 /datum/pottery_wheel_recipe/porcelain/advanced/rungu
-	name = "瓷 rungu"
+	name = "瓷伦古棍"
 	result_type = /obj/item/natural/clay/porcelain/rungu
