@@ -2477,7 +2477,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 	for(var/res in required_resources)
 		if(required_resources[res] > 0)
 			var/obj/item/temp = res
-			missing += "[initial(temp.name)]: [required_resources[res]] pcs. "
+			missing += "[initial(temp.name)]：[required_resources[res]] 份。 "
 
 	if(missing != "")
 		. += span_warning("缺少材料：[missing]")
@@ -2567,7 +2567,7 @@ GLOBAL_LIST_INIT(blueprint_buildable_types, init_blueprint_buildable_types())
 		for(var/res in required_resources)
 			if(required_resources[res] > 0)
 				var/obj/item/temp = res
-				missing += "[initial(temp.name)]: [required_resources[res]] pcs. "
+				missing += "[initial(temp.name)]：[required_resources[res]] 份。 "
 
 		if(missing != "")
 			to_chat(user, span_warning("缺少材料！请将以下材料放在附近地面上：[missing]"))
