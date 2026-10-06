@@ -21,7 +21,7 @@
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
 /datum/supply_pack/rogue/substances/shhig
-	name = "Shhig牌烟卷（6支装）"
+	name = "嘘蛇牌香烟（6支装）"
 	cost = 40
 	contains = list(/obj/item/storage/fancy/shhig)
 

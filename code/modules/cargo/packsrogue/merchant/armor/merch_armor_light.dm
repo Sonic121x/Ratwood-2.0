@@ -7,22 +7,22 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/light_armor/padded_gambeson
-	name = "衬垫棉甲"
+	name = "加厚绗缝护甲衣"
 	cost = 40 // Base sellprice of 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 /datum/supply_pack/rogue/light_armor/leather_gorget
-	name = "皮护喉"
+	name = "硬化皮革护喉"
 	cost = 20 // Base sellprice of 10
 	contains = list(/obj/item/clothing/neck/roguetown/leather)
 
 /datum/supply_pack/rogue/light_armor/leather_bracers
-	name = "硬皮臂甲"
+	name = "硬化皮臂甲"
 	cost = 20 // Base sellprice of 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
 /datum/supply_pack/rogue/light_armor/heavy_leather_pants
-	name = "硬皮裤"
+	name = "硬化皮裤"
 	cost = 30 // Base sellprice of 20
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
 
@@ -32,7 +32,7 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/hide)
 
 /datum/supply_pack/rogue/light_armor/heavy_leather_armor
-	name = "硬皮甲"
+	name = "硬化皮甲"
 	cost = 30 // Base sellprice of 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
 
@@ -42,22 +42,22 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/light_armor/heavy_leather_coat
-	name = "硬皮外套"
+	name = "硬化皮大衣"
 	cost = 35 // Base sellprice of 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 
 /datum/supply_pack/rogue/light_armor/heavy_leather_jacket
-	name = "硬皮夹克"
+	name = "硬化皮夹克"
 	cost = 35 // Base sellprice of 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket)
 
 /datum/supply_pack/rogue/light_armor/heavy_leather_gloves
-	name = "厚皮手套"
+	name = "重型皮手套"
 	cost = 20 // No one buying this lmao it costs 1 fur
 	contains = list(/obj/item/clothing/gloves/roguetown/angle)
 
 /datum/supply_pack/rogue/light_armor/heavy_padded_coif
-	name = "厚衬垫头巾"
+	name = "厚实衬垫护头巾"
 	cost = 35 // Equivalent to a padded gambeson on the head, so pricier
 	contains = list(/obj/item/clothing/neck/roguetown/coif/heavypadding)
 
@@ -68,12 +68,12 @@
 					/obj/item/clothing/head/roguetown/roguehood/reinforced)
 
 /datum/supply_pack/rogue/light_armor/padded_leather_hood
-	name = "衬垫皮兜帽" // The newer version of the hood that fits around the neck like a coif.
+	name = "衬垫皮革兜帽" // The newer version of the hood that fits around the neck like a coif.
 	cost = 40
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/leather/armorhood)
 
 /datum/supply_pack/rogue/light_armor/studded_leather_hood
-	name = "铆钉皮兜帽"
+	name = "铆钉皮革兜帽"
 	cost = 50
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced,)
