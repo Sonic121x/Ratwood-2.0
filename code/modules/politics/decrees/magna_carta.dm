@@ -63,4 +63,4 @@
 	var/body = get_display_flavor_text()
 	if(!body)
 		return ..()
-	priority_announce(body, "BY LORDLY MERCY", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
+	priority_announce(body, "蒙领主恩典", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
