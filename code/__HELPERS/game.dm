@@ -424,24 +424,24 @@
 //	SEND_SOUND(M, 'sound/misc/roundstart.ogg') //Alerting them to their consideration
 	if(flashwindow)
 		window_flash(M.client)
-	switch(ignore_category ? askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No","Never for this round", StealFocus=0, Timeout=poll_time, Width=poll_width, Height=poll_height) : askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No", StealFocus=0, Timeout=poll_time, Width=poll_width, Height=poll_height))
+	switch(ignore_category ? askuser(M,Question,"请在[DisplayTimeText(poll_time, chinese=TRUE)]内回答！","是","否","本回合不再询问", StealFocus=0, Timeout=poll_time, Width=poll_width, Height=poll_height) : askuser(M,Question,"请在[DisplayTimeText(poll_time, chinese=TRUE)]内回答！","是","否", StealFocus=0, Timeout=poll_time, Width=poll_width, Height=poll_height))
 		if(1)
-			to_chat(M, span_notice("Choice registered: Yes."))
+			to_chat(M, span_notice("已记录选择：是。"))
 			if(time_passed + poll_time <= world.time)
-				to_chat(M, span_danger("Sorry, you answered too late to be considered!"))
+				to_chat(M, span_danger("很遗憾，你回答得太晚，无法参与本次选择！"))
 				SEND_SOUND(M, 'sound/blank.ogg')
 				candidates -= M
 			else
 				candidates += M
 		if(2)
-			to_chat(M, span_danger("Choice registered: No."))
+			to_chat(M, span_danger("已记录选择：否。"))
 			candidates -= M
 		if(3)
 			var/list/L = GLOB.poll_ignore[ignore_category]
 			if(!L)
 				GLOB.poll_ignore[ignore_category] = list()
 			GLOB.poll_ignore[ignore_category] += M.ckey
-			to_chat(M, span_danger("Choice registered: Never for this round."))
+			to_chat(M, span_danger("已记录选择：本回合不再询问。"))
 			candidates -= M
 		else
 			candidates -= M
@@ -463,7 +463,7 @@
 /proc/pollCandidates(Question, jobbanType, gametypeCheck, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE, list/group = null, poll_width = 350, poll_height = 150)
 	var/time_passed = world.time
 	if (!Question)
-		Question = "Would you like to be a special role?"
+		Question = "你想扮演特殊角色吗？"
 	var/list/result = list()
 	for(var/m in group)
 		var/mob/M = m

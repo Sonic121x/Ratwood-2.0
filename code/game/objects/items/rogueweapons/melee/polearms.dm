@@ -648,7 +648,7 @@
 
 /obj/item/rogueweapon/spear/billhook/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "POLEARM")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "长柄武器")
 
 /obj/item/rogueweapon/spear/improvisedbillhook
 	force = 12
@@ -1443,7 +1443,7 @@
 
 /obj/item/rogueweapon/greatsword/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "GREATSWORD")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "巨剑")
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge/ravox
 	name = "箴罚"

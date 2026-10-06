@@ -508,7 +508,7 @@
 			if(!M.client)
 				to_chat(usr, span_danger("Error: [M] no longer has a client!"))
 				return
-			to_chat(M, span_danger("I have been kicked from the server by [usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."))
+			to_chat(M, span_danger("你已被[usr.client.holder.fakekey ? "管理员" : "[usr.client.key]"]踢出服务器。"))
 			log_admin("[key_name(usr)] kicked [key_name(M)].")
 			message_admins(span_adminnotice("[key_name_admin(usr)] kicked [key_name_admin(M)]."))
 			qdel(M.client)
@@ -691,7 +691,7 @@
 		GLOB.master_mode = href_list["c_mode2"]
 		log_admin("[key_name(usr)] set the mode as [GLOB.master_mode].")
 		message_admins(span_adminnotice("[key_name_admin(usr)] set the mode as [GLOB.master_mode]."))
-		to_chat(world, span_adminnotice("<b>The mode is now: [GLOB.master_mode]</b>"))
+		to_chat(world, span_adminnotice("<b>当前模式：[GLOB.master_mode]</b>"))
 		Game() // updates the main game menu
 		if (askuser(usr, "Would you like to save this as the default mode for the server?", "Save mode", "Yes", "No", Timeout = null) == 1)
 			SSticker.save_mode(GLOB.master_mode)
@@ -754,7 +754,7 @@
 			return
 
 		M.forceMove(pick(GLOB.prisonwarp))
-		to_chat(M, span_adminnotice("I have been sent to Prison!"))
+		to_chat(M, span_adminnotice("我被送进监狱了！"))
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to Prison!")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to Prison!")
@@ -1607,7 +1607,7 @@
 		adjust_playerquality(amt2change, mob_client.ckey, usr.ckey, raisin)
 		for(var/client/C in GLOB.clients) // I hate this, but I'm not refactoring the cancer above this point.
 			if(LOWER_TEXT(C.key) == LOWER_TEXT(mob_client.ckey))
-				to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [usr.key] for reason: [raisin]</span></span>")
+				to_chat(C, "<span class=\"admin\"><span class=\"prefix\">管理员记录：</span> <span class=\"message linkify\">[usr.key]将你的玩家质量分（PQ）调整了[amt2change]，原因：[raisin]</span></span>")
 				return
 	else if(href_list["showpq"])
 		if(!check_rights(R_BAN))

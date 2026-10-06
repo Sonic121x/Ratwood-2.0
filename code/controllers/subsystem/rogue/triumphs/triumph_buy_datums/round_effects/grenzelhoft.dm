@@ -1,6 +1,6 @@
 /datum/triumph_buy/grenzelhoft_maximum
 	triumph_buy_id = "Grenzelhoftmaxx"
-	desc = "Everyone is a human from Grenzelhoft!"
+	desc = "所有人都是来自格伦泽尔霍夫特的人类！"
 	triumph_cost = 60
 	category = TRIUMPH_CAT_ROUND_EFX
 	pre_round_only = TRUE

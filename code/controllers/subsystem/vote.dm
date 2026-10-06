@@ -457,7 +457,7 @@ SUBSYSTEM_DEF(vote)
 
 	// Give them the vote action button
 	var/datum/action/vote/voting_action = new()
-	voting_action.name = "投票：[current_vote.override_question || current_vote.name]"
+	voting_action.name = "投票：[current_vote.override_question || list("Custom" = "自定义", "endround" = "结束本轮", "Map" = "地图", "Restart" = "重启回合", "chaos" = "回合类型")[current_vote.name] || current_vote.name]"
 	voting_action.Grant(C.mob)
 
 	C.player_details.player_actions += voting_action
@@ -469,9 +469,9 @@ SUBSYSTEM_DEF(vote)
 	// Notify them in chat
 	var/remaining_time = max(0, current_vote.time_remaining) * 10
 
-	to_chat(C, "<font color='purple'><b>A vote is currently in progress!</b><br>\
-	Type <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to vote.<br>\
-	You have [DisplayTimeText(remaining_time)] remaining.</font>")
+	to_chat(C, "<font color='purple'><b>目前有投票正在进行！</b><br>\
+	输入 <b>vote</b> 或点击<a href='byond://winset?command=vote'>这里</a>参与投票。<br>\
+	还剩[DisplayTimeText(remaining_time)]。</font>")
 
 /datum/controller/subsystem/vote/ui_close(mob/user)
 	voting -= user.client?.ckey

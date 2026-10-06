@@ -44,7 +44,7 @@
 
 	if(is_type_in_list(H.mind?.assigned_role, vip)) //are they a VIP?
 		if(findtext(message2recognize, "help"))
-			send_speech(span_purple("'say phrase'... 'set phrase'..."), speaking_distance, src, message_language = lang, message_mode = MODE_WHISPER)
+			send_speech(span_purple("说出口令：'say phrase'……设置口令：'set phrase'……"), speaking_distance, src, message_language = lang, message_mode = MODE_WHISPER)
 			return TRUE
 		if(findtext(message2recognize, "say phrase"))
 			send_speech(span_purple("[open_phrase]..."), speaking_distance, src, message_language = lang, message_mode = MODE_WHISPER)
@@ -201,18 +201,18 @@
 
 /proc/flavor_name()
 	var/list/flavor_name = list(
-		"my friend",
-		"love",
-		"my love",
-		"honey",
-		"darling",
-		"stranger",
-		"companion",
-		"mate",
-		"you harlot",
-		"comrade",
-		"fellow",
-		"chum",
-		"bafoon"
+		"我的朋友",
+		"亲爱的",
+		"我的爱人",
+		"甜心",
+		"宝贝",
+		"陌生人",
+		"同伴",
+		"伙伴",
+		"你这浪荡鬼",
+		"战友",
+		"伙计",
+		"老友",
+		"傻瓜"
 		)
 	return pick(flavor_name)

@@ -16,7 +16,7 @@
 				level = 2
 			else
 				level = 1
-	to_chat(world, span_notice("<b>[winner]!</b>"))
+	to_chat(world, span_notice("<b>[list("Adventure" = "冒险", "Chaos" = "混乱")[winner] || winner]！</b>"))
 	roll_round_modifiers()
 
 /datum/controller/subsystem/gamemode/proc/roll_round_modifiers()
@@ -83,9 +83,9 @@
 		J.spawn_positions += slots[job_title]
 
 	if(!length(active_modifiers))
-		to_chat(world, span_notice("<b>Nothing.</b>"))
+		to_chat(world, span_notice("<b>无。</b>"))
 		return
-	to_chat(world, span_boldnotice("Modifiers:"))
+	to_chat(world, span_boldnotice("回合修正项："))
 	for(var/datum/round_modifier/M in active_modifiers)
 		if(!M.hidden)
 			to_chat(world, span_notice("<b>[M.name]</b> - [M.desc]"))

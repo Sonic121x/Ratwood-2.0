@@ -104,8 +104,8 @@
 /datum/keybinding/carbon/guard
 	hotkey_keys = list("G")
 	name = "guard"
-	full_name = "Guard"
-	description = "Enter a defensive stance while in combat mode, guaranteeing the next hit is defended against. Works without going through the Defend RMB stance first."
+	full_name = "防守"
+	description = "在战斗模式下进入防守姿态，保证挡住下一次攻击。无需先通过右键切换至防御姿态。"
 	category = CATEGORY_CARBON
 
 /datum/keybinding/carbon/guard/down(client/user)
@@ -113,7 +113,7 @@
 		return FALSE
 	var/mob/living/carbon/human/H = user.mob
 	if(!H.cmode)
-		H.balloon_alert(H, "<font color = '#ffffff'>Turn on combat mode!</font>")
+		H.balloon_alert(H, "<font color = '#ffffff'>先开启战斗模式！</font>")
 		return FALSE
 	H.try_guard()
 	return TRUE

@@ -166,22 +166,22 @@
 /datum/config_entry/flag/arrivals_shuttle_require_safe_latejoin	//Require the arrivals shuttle to be operational in order for latejoiners to join
 
 /datum/config_entry/string/alert_green
-	config_entry_value = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
+	config_entry_value = "空间站面临的所有威胁均已解除。安保人员不得公开携带武器，隐私法规再次全面生效。"
 
 /datum/config_entry/string/alert_blue_upto
-	config_entry_value = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
+	config_entry_value = "空间站收到可靠情报，站内可能存在敌对活动。安保人员可以公开携带武器，并获准进行随机搜查。"
 
 /datum/config_entry/string/alert_blue_downto
-	config_entry_value = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
+	config_entry_value = "眼前的威胁已解除。安保人员不得再一直将武器握在手中，但仍可公开携带。随机搜查仍获准进行。"
 
 /datum/config_entry/string/alert_red_upto
-	config_entry_value = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
+	config_entry_value = "空间站正面临迫在眉睫的严重威胁。安保人员可以一直拔出武器，并获准且建议进行随机搜查。"
 
 /datum/config_entry/string/alert_red_downto
-	config_entry_value = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
+	config_entry_value = "空间站的毁灭已被阻止，但仍面临迫在眉睫的严重威胁。安保人员可以一直拔出武器，并获准且建议进行随机搜查。"
 
 /datum/config_entry/string/alert_delta
-	config_entry_value = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	config_entry_value = "空间站即将毁灭。全体船员必须遵从部门主管的一切指令。违令者可被处以死刑。这不是演习。"
 
 /datum/config_entry/flag/revival_pod_plants
 

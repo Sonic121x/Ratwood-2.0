@@ -50,7 +50,7 @@
 		<body>
 			<div id='top_container_div'>
 				<div id='triumph_quantity_div'>
-					I have [SStriumphs.get_triumphs(linked_client.ckey)] Triumphs
+					我有[SStriumphs.get_triumphs(linked_client.ckey)]点凯旋
 				</div>
 			</div> 
 			<div style='width:100%;float:left'>
@@ -64,9 +64,9 @@
 	data += "<hr class='fadeout_line'>"
 	for(var/cat_key in SStriumphs.central_state_data)
 		if(cat_key == current_category)
-			data += "<a class='triumph_categories_selected' href='?src=\ref[src];select_a_category=[cat_key]'><span class='bigunder_back'><span class='bigunder'></span>[cat_key]</span></a>"
+			data += "<a class='triumph_categories_selected' href='?src=\ref[src];select_a_category=[cat_key]'><span class='bigunder_back'><span class='bigunder'></span>[list(TRIUMPH_CAT_ROUND_EFX = "回合效果", TRIUMPH_CAT_CHARACTER = "角色", TRIUMPH_CAT_MISC = "杂项", TRIUMPH_CAT_ACTIVE_DATUMS = "已生效")[cat_key] || cat_key]</span></a>"
 			continue
-		data += "<a class='triumph_categories_normal' href='?src=\ref[src];select_a_category=[cat_key]'>[cat_key]</a>"
+		data += "<a class='triumph_categories_normal' href='?src=\ref[src];select_a_category=[cat_key]'>[list(TRIUMPH_CAT_ROUND_EFX = "回合效果", TRIUMPH_CAT_CHARACTER = "角色", TRIUMPH_CAT_MISC = "杂项", TRIUMPH_CAT_ACTIVE_DATUMS = "已生效")[cat_key] || cat_key]</a>"
 	data += "<hr class='fadeout_line'>"
 
 	data += {"
@@ -74,9 +74,9 @@
 			<table>
 				<thead>
 					<tr>
-						<th class='triumph_text_head'>Description</th>
-						<th class='triumph_text_head'>Cost</th>
-						<th class='triumph_text_head_redeem'>Redeem</th>
+						<th class='triumph_text_head'>说明</th>
+						<th class='triumph_text_head'>价格</th>
+						<th class='triumph_text_head_redeem'>兑换</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -92,13 +92,13 @@
 					continue
 				data += {"
 					<tr class='triumph_text_row'>
-						<td class='triumph_text_desc'>[auugh.desc] | Bought by: [auugh.key_of_buyer]</td>
+						<td class='triumph_text_desc'>[auugh.desc] | 购买者：[auugh.key_of_buyer]</td>
 						<td class='triumph_cost_wrapper'>[auugh.triumph_cost]</td>
 				"}
 				if(SSticker.HasRoundStarted() && auugh.pre_round_only)
-					data += "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[auugh];'><span class='strikethru_back'>ROUND STARTED</span></a></td>"
+					data += "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[auugh];'><span class='strikethru_back'>回合已开始</span></a></td>"
 				else
-					data += "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[auugh];'>UNBUY</a></td>"
+					data += "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[auugh];'>撤销购买</a></td>"
 				
 				data += "</tr>"
 
@@ -108,9 +108,9 @@
 		if(!found_one_blank_sloppy_toppy) // We didn't find anything that could be visible, so cram in the mssage
 			data += {"
 				<tr class='triumph_text_row'>
-					<td class='triumph_text_desc'>CURRENTLY NOTHING</td>
-					<td class='triumph_cost_wrapper'>ACTIVELY</td>
-					<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];'>HERE</a></td>
+					<td class='triumph_text_desc'>当前没有</td>
+					<td class='triumph_cost_wrapper'>已生效的</td>
+					<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];'>购买效果</a></td>
 				</tr>
 			"}
 
@@ -122,13 +122,13 @@
 					<td class='triumph_cost_wrapper'>[current_check.triumph_cost]</td>
 				"}
 
-			var/string = "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'>BUY</a></td>"
+			var/string = "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'>购买</a></td>"
 			if(SSticker.HasRoundStarted() && current_check.pre_round_only)
-				string = "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'><span class='strikethru_back'>CONFLICT</span></a></td>"
+				string = "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'><span class='strikethru_back'>冲突</span></a></td>"
 			else
 				for(var/datum/triumph_buy/conflict_check in SStriumphs.active_triumph_buy_queue)
 					if(current_check.type in conflict_check.conflicts_with) // We are in an active datum's conflicts with
-						string = "<td class='triumph_filler_cells'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'><span class='strikethru_back'>CONFLICT</span></a></td>"
+						string = "<td class='triumph_filler_cells'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'><span class='strikethru_back'>冲突</span></a></td>"
 
 			data += string
 			data += "</tr>"
