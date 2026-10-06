@@ -13,12 +13,12 @@
 		if(counted)
 			record_round_statistic(STATS_TRIUMPHS_AWARDED, amt)
 		if(current)
-			to_chat(current, "\n<font color='purple'>[amt] TRIUMPH(S) awarded.</font>")
+			to_chat(current, "\n<font color='purple'>获得了[amt]点凯旋。</font>")
 	else if(amt < 0)
 		if(counted)
 			record_round_statistic(STATS_TRIUMPHS_STOLEN, amt)
 		if(current)
-			to_chat(current, "\n<font color='purple'>[amt*-1] TRIUMPH(S) lost.</font>")
+			to_chat(current, "\n<font color='purple'>失去了[amt*-1]点凯旋。</font>")
 
 
 
@@ -36,11 +36,11 @@
 	if(amt > 0)
 		if(counted)
 			record_round_statistic(STATS_TRIUMPHS_AWARDED, amt)
-		to_chat(src, "\n<font color='purple'>[amt] TRIUMPH(S) awarded.</font>")
+		to_chat(src, "\n<font color='purple'>获得了[amt]点凯旋。</font>")
 	else if(amt < 0)
 		if(counted)
 			record_round_statistic(STATS_TRIUMPHS_STOLEN, amt)
-		to_chat(src, "\n<font color='purple'>[amt*-1] TRIUMPH(S) lost.</font>")
+		to_chat(src, "\n<font color='purple'>失去了[amt*-1]点凯旋。</font>")
 
 /*
 	mobs also got ckeys p simple
@@ -55,8 +55,8 @@
 	if(amt > 0)
 		if(counted)
 			record_round_statistic(STATS_TRIUMPHS_AWARDED, amt)
-		to_chat(src, "\n<font color='purple'>[amt] TRIUMPH(S) awarded.</font>")
+		to_chat(src, "\n<font color='purple'>获得了[amt]点凯旋。</font>")
 	else if(amt < 0)
 		if(counted)
 			record_round_statistic(STATS_TRIUMPHS_STOLEN, amt)
-		to_chat(src, "\n<font color='purple'>[amt*-1] TRIUMPH(S) lost.</font>")
+		to_chat(src, "\n<font color='purple'>失去了[amt*-1]点凯旋。</font>")

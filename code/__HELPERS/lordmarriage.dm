@@ -9,12 +9,12 @@
 	if(!client)
 		addtimer(CALLBACK(src, PROC_REF(lord_marriage_choice)), 50)
 		return
-	var/marriage_choice = list("Married (Consort)","Single (Suitors)")
-	var/choice = input(src, "I am...", "ROGUETOWN - Marriage Options") as anything in marriage_choice
+	var/marriage_choice = list("已婚（王配）","单身（求婚贵胄）")
+	var/choice = input(src, "我的婚姻状况是……", "罗格镇 - 婚姻选项") as anything in marriage_choice
 	switch(choice)
-		if("Married (Consort)")
+		if("已婚（王配）")
 			consort_job.total_positions = 1
 			consort_job.spawn_positions = 1
-		if("Single (Suitors)")
+		if("单身（求婚贵胄）")
 			suitor_job.total_positions = 3
 			suitor_job.spawn_positions = 3

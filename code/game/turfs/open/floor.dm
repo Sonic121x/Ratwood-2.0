@@ -261,15 +261,15 @@ GLOBAL_VAR_INIT(heat_count, 0)
 	if(!living_user.has_status_effect(/datum/status_effect/debuff/climbing_lfwb))
 		return
 	if(is_blocked_turf())
-		to_chat(living_user, span_notice("can't move here!"))
+		to_chat(living_user, span_notice("无法移动到这里！"))
 		return
 	if(!do_after(living_user, 1 SECONDS, target = src))
 		return
 	living_user.forceMove(src)
 
 /turf/open/floor/dune
-	name = "dune"
-	desc = "A high bank of sand blocks the view beyond it. Reach its top to see across, traveler"
+	name = "沙丘"
+	desc = "高耸的沙丘挡住了另一侧的景色。旅人，登上顶端才能看见远方。"
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "sand"
 	density = FALSE

@@ -39,7 +39,7 @@
 		return
 	if((istype(over_object, /atom/movable/screen/movable/action_button) && !istype(over_object, /atom/movable/screen/movable/action_button/hide_toggle)))
 		if(locked)
-			to_chat(usr, span_warning("Action button \"[name]\" is locked, unlock it first."))
+			to_chat(usr, span_warning("动作按钮\"[name]\"已锁定，请先解锁。"))
 			return
 		var/atom/movable/screen/movable/action_button/B = over_object
 		var/list/actions = usr.actions
@@ -61,7 +61,7 @@
 		if(rebinding)		// No matter what I did it kept opening up two windows when I clicked one button so we're doing this instead
 			return TRUE		// THE PROC IS LOCKED
 		rebinding = TRUE 	// Lock the proc variable
-		var/new_slot = input(linked_action.owner, "Enter action slot number (1-9):", "Rebind Action", linked_action.slot) as num|null
+		var/new_slot = input(linked_action.owner, "输入动作栏位编号（1-9）：", "重新绑定动作", linked_action.slot) as num|null
 		if(new_slot && new_slot >= 1 && new_slot <= 9)
 			for(var/datum/action/A in linked_action.owner.actions)
 				if(A.slot == new_slot)
@@ -71,14 +71,14 @@
 		return TRUE
 	if(modifiers["alt"])
 		if(locked)
-			to_chat(usr, span_warning("Action button \"[name]\" is locked, unlock it first."))
+			to_chat(usr, span_warning("动作按钮\"[name]\"已锁定，请先解锁。"))
 			return TRUE
 		moved = 0
 		usr.update_action_buttons() //redraw buttons that are no longer considered "moved"
 		return TRUE
 	if(modifiers["ctrl"])
 		locked = !locked
-		to_chat(usr, span_notice("Action button \"[name]\" [locked ? "" : "un"]locked."))
+		to_chat(usr, span_notice("动作按钮\"[name]\"[locked ? "已锁定" : "已解锁"]。"))
 		if(id && usr.client) //try to (un)remember position
 			usr.client.prefs.action_buttons_screen_locs["[name]_[id]"] = locked ? moved : null
 		return TRUE
@@ -88,7 +88,7 @@
 			SA.examine(usr)
 		else
 			examine_ui(usr)
-		to_chat(usr, "[span_medradio("Alt-click: Reset Position | Ctrl-click: Toggle lock | Middle-click: Rebind slot")]") // Yes I just stole the medical_radio color
+		to_chat(usr, "[span_medradio("Alt点击：重置位置 | Ctrl点击：切换锁定 | 中键点击：重新绑定栏位")]") // Yes I just stole the medical_radio color
 		return TRUE
 	if(usr.next_click > world.time)
 		return
@@ -135,14 +135,14 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"])
 		if(locked)
-			to_chat(usr, span_warning("Action button \"[name]\" is locked, unlock it first."))
+			to_chat(usr, span_warning("动作按钮\"[name]\"已锁定，请先解锁。"))
 			return TRUE
 		moved = FALSE
 		usr.update_action_buttons(TRUE)
 		return TRUE
 	if(modifiers["ctrl"])
 		locked = !locked
-		to_chat(usr, span_notice("Action button \"[name]\" [locked ? "" : "un"]locked."))
+		to_chat(usr, span_notice("动作按钮\"[name]\"[locked ? "已锁定" : "已解锁"]。"))
 		if(id && usr.client) //try to (un)remember position
 			usr.client.prefs.action_buttons_screen_locs["[name]_[id]"] = locked ? moved : null
 		return TRUE
@@ -159,7 +159,7 @@
 		if(id && usr.client)
 			usr.client.prefs.action_buttons_screen_locs["[name]_[id]"] = null
 		usr.update_action_buttons(TRUE)
-		to_chat(usr, span_notice("Action button positions have been reset."))
+		to_chat(usr, span_notice("动作按钮位置已重置。"))
 		return TRUE
 	usr.hud_used.action_buttons_hidden = !usr.hud_used.action_buttons_hidden
 
@@ -179,7 +179,7 @@
 	if(moved)
 		moved = FALSE
 	user.update_action_buttons(TRUE)
-	to_chat(user, span_notice("Action button positions have been reset."))
+	to_chat(user, span_notice("动作按钮位置已重置。"))
 
 
 /atom/movable/screen/movable/action_button/hide_toggle/proc/InitialiseIcon(datum/hud/owner_hud)
@@ -301,7 +301,7 @@
 		var/secs = round(seconds_left) % 60
 		maptext = MAPTEXT("[mins]:[secs < 10 ? "0[secs]" : "[secs]"]")
 	else
-		maptext = MAPTEXT("[seconds_left]s")
+		maptext = MAPTEXT("[seconds_left]秒")
 	color = color_cd
 
 #undef AB_MAX_COLUMNS

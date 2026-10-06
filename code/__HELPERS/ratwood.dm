@@ -106,5 +106,5 @@
 	if(job)
 		return job
 	if(unknown_class_if_empty)
-		return "Unknown Class"
+		return "未知职业"
 	return ""

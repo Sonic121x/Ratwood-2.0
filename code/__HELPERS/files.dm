@@ -32,7 +32,7 @@
 		if(path != root)
 			choices.Insert(1,"/")
 
-		var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in sortList(choices)
+		var/choice = input(src,"选择要访问的文件：","下载",null) as null|anything in sortList(choices)
 		switch(choice)
 			if(null)
 				return
@@ -50,7 +50,7 @@
 		extensions += "[i]"
 	var/regex/valid_ext = new("\\.([extensions])$", "i")
 	if( !fexists(path) || !(valid_ext.Find(path)) )
-		to_chat(src, "<font color='red'>Error: browse_files(): File not found/Invalid file([path]).</font>")
+		to_chat(src, "<font color='red'>错误：browse_files()：找不到文件或文件无效（[path]）。</font>")
 		return
 
 	return path
@@ -65,7 +65,7 @@
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: file_spam_check(): Spam. Please wait [DisplayTimeText(time_to_wait)].</font>")
+		to_chat(src, "<font color='red'>错误：file_spam_check()：请求过于频繁，请等待[DisplayTimeText(time_to_wait, chinese=TRUE)]。</font>")
 		return 1
 	var/delay = FTPDELAY
 	if(holder)

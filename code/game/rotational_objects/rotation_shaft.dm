@@ -1,5 +1,5 @@
 /obj/structure/rotation_piece
-	name = "shaft"
+	name = "传动轴"
 	icon = 'icons/roguetown/misc/shafts_cogs.dmi'
 	icon_state = "shaft"
 	layer = ABOVE_MOB_LAYER
@@ -11,13 +11,13 @@
 	AddComponent(/datum/component/simple_rotation, ROTATION_REQUIRE_WRENCH|ROTATION_IGNORE_ANCHORED)
 
 /obj/structure/rotation_piece/cog
-	name = "cogwheel"
+	name = "齿轮"
 	icon_state = "1"
 	cog_size = COG_SMALL
 	stress_use = 3
 
 /obj/structure/rotation_piece/cog/large
-	name = "large cogwheel"
+	name = "大型齿轮"
 	icon_state = "l1"
 	cog_size = COG_LARGE
 	stress_use = 6

@@ -225,9 +225,9 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 #define GHOST_ACCS_DIR		50
 #define GHOST_ACCS_FULL		100
 
-#define GHOST_ACCS_NONE_NAME		"default sprites"
-#define GHOST_ACCS_DIR_NAME			"only directional sprites"
-#define GHOST_ACCS_FULL_NAME		"full accessories"
+#define GHOST_ACCS_NONE_NAME		"默认外观"
+#define GHOST_ACCS_DIR_NAME			"仅显示方向外观"
+#define GHOST_ACCS_FULL_NAME		"完整饰品"
 
 #define GHOST_ACCS_DEFAULT_OPTION	GHOST_ACCS_FULL
 
@@ -237,9 +237,9 @@ GLOBAL_LIST_INIT(ghost_accs_options, list(GHOST_ACCS_NONE, GHOST_ACCS_DIR, GHOST
 #define GHOST_OTHERS_DEFAULT_SPRITE		50
 #define GHOST_OTHERS_THEIR_SETTING 		100
 
-#define GHOST_OTHERS_SIMPLE_NAME 			"white ghost"
-#define GHOST_OTHERS_DEFAULT_SPRITE_NAME 	"default sprites"
-#define GHOST_OTHERS_THEIR_SETTING_NAME 	"their setting"
+#define GHOST_OTHERS_SIMPLE_NAME 			"白色幽灵"
+#define GHOST_OTHERS_DEFAULT_SPRITE_NAME 	"默认外观"
+#define GHOST_OTHERS_THEIR_SETTING_NAME 	"对方的设置"
 
 #define GHOST_OTHERS_DEFAULT_OPTION			GHOST_OTHERS_THEIR_SETTING
 

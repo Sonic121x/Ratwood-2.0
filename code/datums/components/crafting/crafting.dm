@@ -831,7 +831,7 @@
 /client/verb/toggle_legacycraft()
 	set name = "切换旧版制作界面"
 	set category = "选项"
-	set desc = "在旧版制作界面与 MiaCraft 界面之间切换"
+	set desc = "在旧版制作界面与新版制作界面之间切换"
 	set hidden = 1
 	usr.client.legacycraft = !legacycraft
 

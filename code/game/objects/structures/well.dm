@@ -73,13 +73,13 @@
 	if(istype(I, /obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/W = I
 		if(W.reagents.holder_full())
-			to_chat(user, span_warning("[W] is full."))
+			to_chat(user, span_warning("[W]已经装满了。"))
 			return
 		playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 		if(do_after(user, 1 SECONDS, target = src))
 			var/list/waterl = list(/datum/reagent/water = 250)
 			W.reagents.add_reagent_list(waterl)
-			to_chat(user, "<span class='notice'>I fill [W] from [src].</span>")			
+			to_chat(user, "<span class='notice'>我从[src]取水装满[W]。</span>")
 			return
 	else ..()
 
@@ -97,7 +97,7 @@
 		for(var/drink in 1 to 30)
 			if(drink_act(user, L))
 				return
-		to_chat(user, span_warning("I've had enough."))
+		to_chat(user, span_warning("我已经喝够了。"))
 		return
 	..()
 
@@ -128,13 +128,13 @@
 	if(istype(I, /obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/W = I
 		if(W.reagents.holder_full())
-			to_chat(user, span_warning("[W] is full."))
+			to_chat(user, span_warning("[W]已经装满了。"))
 			return
 		playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 		if(do_after(user, 1 SECONDS, target = src))
 			var/list/waterl = list(/datum/reagent/water/gross = 250)
 			W.reagents.add_reagent_list(waterl)
-			to_chat(user, "<span class='notice'>I fill [W] from [src].</span>")			
+			to_chat(user, "<span class='notice'>我从[src]取水装满[W]。</span>")
 			return
 	else ..()
 

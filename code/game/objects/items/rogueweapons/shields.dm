@@ -277,7 +277,7 @@
 
 /obj/item/rogueweapon/shield/tower/metal/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SHIELD")
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "盾")
 
 /obj/item/rogueweapon/shield/tower/metal/ancient/decrepit
 	name = "破旧盾"

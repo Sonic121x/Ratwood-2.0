@@ -142,7 +142,7 @@ SUBSYSTEM_DEF(triumphs)
 						triumph_adjust(refund_amount, ckey_cur_owna)
 
 						if(GLOB.directory[ckey_cur_owna]) // If they are still logged into the game, inform them they got refunded
-							to_chat(GLOB.directory[ckey_cur_owna], span_redtext("You were refunded [refund_amount] triumphs due to CONFLICTS."))
+							to_chat(GLOB.directory[ckey_cur_owna], span_redtext("因购买效果冲突，已退还你[refund_amount]点凯旋。"))
 
 						// Cleanup Time
 						active_datum.on_removal()
@@ -165,7 +165,7 @@ SUBSYSTEM_DEF(triumphs)
 		triumph_adjust(refund_amount, ckey_prev_owna)
 
 		if(GLOB.directory[ckey_prev_owna]) // If they are still logged into the game, inform them they got refunded
-			to_chat(GLOB.directory[ckey_prev_owna], span_redtext("You were refunded [refund_amount] triumphs due to a UNBUY."))
+			to_chat(GLOB.directory[ckey_prev_owna], span_redtext("因撤销购买，已退还你[refund_amount]点凯旋。"))
 
 		pull_it_out.on_removal()
 
@@ -221,7 +221,7 @@ SUBSYSTEM_DEF(triumphs)
 	We save everything when its time for reboot
 */
 /datum/controller/subsystem/triumphs/proc/end_triumph_saving_time()
-	to_chat(world, span_boldannounce(" Recording VICTORIES to the WORLD END MACHINE. "))
+	to_chat(world, span_boldannounce(" 正在将胜利记录至终焉机器。 "))
 	//for(var/target_ckey in triumph_amount_cache)
 	//	var/list/saving_data = list()
 	//	// this will be for example "data/player_saves/a/ass/triumphs.json" if their ckey was ass
@@ -340,8 +340,8 @@ SUBSYSTEM_DEF(triumphs)
 // Display leaderboard browser popup
 /datum/controller/subsystem/triumphs/proc/show_triumph_leaderboard(client/C)
 
-	var/webpagu = "<B>CHAMPIONS OF THE VALE</B><br>"
-	webpagu += "Current Season: [GLOB.triumph_wipe_season]"
+	var/webpagu = "<B>谷地冠军</B><br>"
+	webpagu += "当前赛季：[GLOB.triumph_wipe_season]"
 	webpagu += "<hr><br>"
 
 	if(triumph_leaderboard.len)
@@ -352,7 +352,7 @@ SUBSYSTEM_DEF(triumphs)
 			if(position_number >= triumph_leaderboard_positions_tracked)
 				break
 	else
-		webpagu += "The hall of triumphs is quite empty, Yes?"
+		webpagu += "凯旋殿堂真是空荡荡的，不是吗？"
 
 	C << browse(webpagu, "window=triumph_leaderboard;size=300x500")
 
