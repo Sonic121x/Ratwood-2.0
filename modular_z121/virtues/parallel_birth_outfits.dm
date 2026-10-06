@@ -1788,7 +1788,7 @@
 
 		if("码头工")
 			H.mind.cosmetic_class_title = "码头工"
-			to_chat(H, span_warning("你年轻时响应了阿比索的召唤，却走上了歧途，劫掠所有途经你面前的人。如今船长金盆洗手，你也随之安定下来。不过，陆地上仍有赚钱的机会。"))
+			to_chat(H, span_warning("你年轻时响应了阿比索尔的召唤，却走上了歧途，劫掠所有途经你面前的人。如今船长金盆洗手，你也随之安定下来。不过，陆地上仍有赚钱的机会。"))
 			H.set_blindness(0)
 
 			H.z121_birth_trait(TRAIT_STEELHEARTED, TRAIT_GENERIC)
