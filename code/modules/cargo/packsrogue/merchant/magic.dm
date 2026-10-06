@@ -11,7 +11,7 @@
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
 /datum/supply_pack/rogue/magic/silverpsicross
-	name = "银质 Psycross"
+	name = "银教十字"
 	cost = 120
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 

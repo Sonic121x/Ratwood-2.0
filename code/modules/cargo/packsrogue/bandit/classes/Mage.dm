@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Mage
 	group = "野法师" // English: Mage
-	crate_name = "Gifts of Knowledge"
+	crate_name = "知识的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////
@@ -33,7 +33,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/iron)
 
 /datum/supply_pack/rogue/Mage/coif/steel
-	name = "钢锁子头巾"
+	name = "锁链护头巾"
 	cost = 40
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
@@ -57,12 +57,12 @@
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe)
 
 /datum/supply_pack/rogue/Mage/gambeson
-	name = "棉甲"
+	name = "绗缝护甲衣"
 	cost = 10
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/Mage/hgambeson
-	name = "重型棉甲"
+	name = "加厚绗缝护甲衣"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
@@ -82,7 +82,7 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
 
 /datum/supply_pack/rogue/Mage/leather/hcoat
-	name = "硬化皮外套"
+	name = "硬化皮大衣"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 

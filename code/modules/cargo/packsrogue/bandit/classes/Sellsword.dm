@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Sellsword
 	group = "佣兵剑客" // English: Sellsword
-	crate_name = "Gifts of Coinspillers"
+	crate_name = "佣兵的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////
@@ -18,7 +18,7 @@
 //////////
 
 /datum/supply_pack/rogue/Sellsword/coif/steel
-	name = "钢锁子头巾"
+	name = "锁链护头巾"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
@@ -28,7 +28,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/full)
 
 /datum/supply_pack/rogue/Sellsword/coif/hpcoif
-	name = "重型衬垫头巾"
+	name = "厚实衬垫护头巾"
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/coif/heavypadding)
 
@@ -67,7 +67,7 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
 
 /datum/supply_pack/rogue/Sellsword/hgambeson
-	name = "重型棉甲"
+	name = "加厚绗缝护甲衣"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
