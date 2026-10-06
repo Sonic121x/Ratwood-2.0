@@ -157,7 +157,7 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, world.file2list("strings/rt/hedgeknightaggro
 	skin_tone = "5f5f70"
 
 	if(prob(1))
-		real_name = "Taras Mura"
+		real_name = "塔拉斯·穆拉"
 	update_hair()
 	update_body()
 

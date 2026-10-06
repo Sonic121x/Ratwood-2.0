@@ -11,7 +11,7 @@
 	possible_locs = list(BODY_ZONE_CHEST)
 
 /datum/surgery_step/infuse_tick
-	name = "Infuse Leechtick"
+	name = "注入水蛭蜱"
 	implements = list(
 		/obj/item/leechtick_bloated = 80,
 	)

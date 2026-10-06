@@ -436,7 +436,7 @@
 	animate(I, pixel_y = pixel_y + 32, alpha = 0, time = duration)
 
 /obj/effect/temp_visual/pleasant_scent
-	name = "pleasant scent"
+	name = "芬芳气息"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "mob_smell"
 	duration = 15
