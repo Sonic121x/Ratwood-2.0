@@ -197,7 +197,7 @@
 				return
 		stage++
 		customized = TRUE
-		to_chat(user, span_notice("书已经准备好了。右键打开，使用羽毛笔书写。"))
+		to_chat(user, span_notice("书已经准备好了。右键打开，使用羽毛书写。"))
 		return
 
 	..()

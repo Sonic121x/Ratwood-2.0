@@ -364,7 +364,7 @@
 
 /obj/effect/proc_holder/spell/invoked/bless_food
 	name = "祝福食物"
-	desc = "祝福一件食物。进食耗时越久的食物，治疗速度越慢。熟练的教士能更频繁地祝福食物。越精致的食物治疗效果越强。Eora 的大师甚至能令食物染上金辉。"
+	desc = "祝福一件食物。进食耗时越久的食物，治疗速度越慢。熟练的教士能更频繁地祝福食物。越精致的食物治疗效果越强。伊欧拉的大师甚至能令食物染上金辉。"
 	overlay_icon = 'icons/mob/actions/eoramiracles.dmi'
 	action_icon = 'icons/mob/actions/eoramiracles.dmi'
 	invocations = list("伊欧拉，请滋养这份供品！")

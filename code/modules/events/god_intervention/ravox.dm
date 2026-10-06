@@ -41,5 +41,5 @@
 	weakest.change_stat(STATKEY_STR, 1)
 	weakest.change_stat(STATKEY_WIL, 1)
 	weakest.change_stat(STATKEY_CON, 1)
-	to_chat(weakest, span_green("You may be weak compared to your fellow warriors of justice, but still you persevere. Ravox honors those who fight even when victory seems impossible. Let his gift of strength be your whetstone — now strike!"))
+	to_chat(weakest, span_green("与其他正义战士相比，你或许弱小，却仍然坚持不懈。拉沃克斯敬重那些即使看似无法获胜也仍奋战的人。以祂赐下的力量为磨刀石——现在，出击吧！"))
 	weakest.playsound_local(weakest, 'sound/vo/male/knight/rage (6).ogg', 70)

@@ -252,12 +252,12 @@
 		if(/datum/patron/old_god)
 			cloak = /obj/item/clothing/cloak/psydontabard
 			if(H.mind)
-				var/helmets = list("巴布塔盔", "沙勒盔", "阿米特盔", "桶盔", "狼颅护鼻盔")
+				var/helmets = list("巴尔布特盔", "萨雷特盔", "阿米特盔", "桶盔", "狼颅护鼻盔")
 				var/helmet_choice = input(H, "选择你的头盔。", "行于祂的光中") as anything in helmets
 				switch(helmet_choice)
-					if("巴布塔盔")
+					if("巴尔布特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
-					if("沙勒盔")
+					if("萨雷特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/psysallet
 					if("阿米特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
@@ -268,12 +268,12 @@
 		if(/datum/patron/divine/astrata)
 			cloak = /obj/item/clothing/cloak/templar/astrata
 			if(H.mind)
-				var/helmets = list("巴布塔盔", "带面罩巴布塔盔", "桶盔")
+				var/helmets = list("巴尔布特盔", "带面罩巴尔布特盔", "桶盔")
 				var/helmet_choice = input(H, "选择你的头盔。", "行于她的光中。") as anything in helmets
 				switch(helmet_choice)
-					if("巴布塔盔")
+					if("巴尔布特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-					if("带面罩巴布塔盔")
+					if("带面罩巴尔布特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm/visor
 					if("桶盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan

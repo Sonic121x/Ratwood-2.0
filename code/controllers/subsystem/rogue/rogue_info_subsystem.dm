@@ -21,60 +21,60 @@ GLOBAL_DATUM_INIT(rogue_info, /datum/rogue_info, new)
 
 	var/list/role_data = list(
 		"blacksmith" = list(
-			"desc" = "The guild blacksmith, adept at forging armor, weaponry, tools and other metal objects. They can also repair goods.",
-			"note" = "No custom notes."
+			"desc" = "公会铁匠擅长锻造护甲、武器、工具及其他金属物品，也能修理装备。",
+			"note" = "暂无自定义备注。"
 		),
 		"artificer" = list(
-			"desc" = "The guild artificer, expert in magicraft and mechanics. crossbows, cogs and such.",
-			"note" = "No custom notes."
+			"desc" = "公会匠师精通魔法制造与机械，能制作弩、齿轮等物品。",
+			"note" = "暂无自定义备注。"
 		),
 		"steward" = list(
-			"desc" = "The town steward, responsible for the stockpile, handing out adventurer contracts and hiring new personnel for the keep. May buy valuables.",
-			"note" = "No custom notes."
+			"desc" = "宫廷总管管理库存、发放冒险者契约，并为要塞招募人员，也可能收购贵重物品。",
+			"note" = "暂无自定义备注。"
 		),
 		"duke" = list(
-			"desc" = "The duke of our glorious duchy is currently taking petitions.",
-			"note" = "No custom notes."
+			"desc" = "我们光荣公国的公爵目前正在受理请愿。",
+			"note" = "暂无自定义备注。"
 		),
 		"apothecary" = list(
-			"desc" = "A practitioner of herbalism and alchemy, capable of creating medicines, balms, and curative tinctures. Get your wounds cured and the dead revived here.",
-			"note" = "No custom notes."
+			"desc" = "精通草药学与炼金术，能制作药物、药膏和治疗酊剂。可在此治疗伤口、复活死者。",
+			"note" = "暂无自定义备注。"
 		),
 		"church" = list(
-			"desc" = "The spiritual center of the town, providing guidance, funeral rites, healing and reviving the dead. Don't miss mass, you heretic.",
-			"note" = "No custom notes."
+			"desc" = "城镇的精神中心，提供指引、葬礼、治疗与复活服务。别错过弥撒，异端。",
+			"note" = "暂无自定义备注。"
 		),
 		"fisher" = list(
-			"desc" = "The primary provider of aquatic resources, working the docks to the east to supply the town with fresh fish.",
-			"note" = "No custom notes."
+			"desc" = "主要的水产供应者，在东侧码头劳作，为城镇提供鲜鱼。",
+			"note" = "暂无自定义备注。"
 		),
 		"university" = list(
-			"desc" = "The academic hub of the town, dedicated to the study of history, science, and arcane theory. Often offers enchanting services or combat-capable mages.",
-			"note" = "No custom notes."
+			"desc" = "城镇的学术中心，研究历史、科学与奥术理论，常提供附魔服务或能参与战斗的法师。",
+			"note" = "暂无自定义备注。"
 		),
 		"innkeeper" = list(
-			"desc" = "Proprietor of the local tavern, keeping the peace (through alcohol) while offering lodging, supper and spirits to travellers.",
-			"note" = "No custom notes."
+			"desc" = "当地酒馆的老板，用酒维持和平，为旅人提供住宿、晚餐与烈酒。",
+			"note" = "暂无自定义备注。"
 		),
 		"tailor" = list(
-			"desc" = "A master of textiles, clothing, and fabrics, capable of repairing garments and crafting new finery.",
-			"note" = "No custom notes."
+			"desc" = "精通纺织、服装与布料，能够修补衣物、制作新装。",
+			"note" = "暂无自定义备注。"
 		),
 		"bathhouse" = list(
-			"desc" = "The sanctuary of Eoran cleanliness, offering public sanitation and relaxation for the weary townsfolk. Unwind as our skilled attendants see to your every need.",
-			"note" = "No custom notes."
+			"desc" = "崇尚伊欧拉洁净之道的圣所，为疲惫的镇民提供公共洗浴与休憩服务。放松身心，让熟练的侍者照顾您的每一项需求。",
+			"note" = "暂无自定义备注。"
 		),
 		"merchant" = list(
-			"desc" = "A tradesperson specializing in the import and distribution of rare goods, artifacts, and general stock. Will, at times, buy rare goods as well. May buy valuables.",
-			"note" = "No custom notes."
+			"desc" = "专门进口并分销稀有货物、古物与日常物资的商人，有时也会收购稀有或贵重物品。",
+			"note" = "暂无自定义备注。"
 		),
 		"freeform1" = list(
-			"desc" = "A secondary role or faction operating within the town limits.",
-			"note" = "No custom notes."
+			"desc" = "在城镇范围内活动的其他职业或势力。",
+			"note" = "暂无自定义备注。"
 		),
 		"freeform2" = list(
-			"desc" = "A secondary role or faction operating within the town limits.",
-			"note" = "No custom notes."
+			"desc" = "在城镇范围内活动的其他职业或势力。",
+			"note" = "暂无自定义备注。"
 		),
 	)
 

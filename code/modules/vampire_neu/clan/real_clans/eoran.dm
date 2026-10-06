@@ -6,9 +6,9 @@
 	lord_title = "Elder"
 
 /datum/clan/eoran
-	name = "Vitabella Family"
-	desc = "Eora, moved by your relentless pursuit of art and beauty, has bestowed her blessing upon your cursed bloodline. Yet, in her admiration, she has overlooked the darker facets of your nature: your twisted notion of love and your delusions of grandeur. "
-	curse = "Obsession with vanity, need to be loved"
+	name = "维塔贝拉家族"
+	desc = "伊欧拉被你对艺术与美的不懈追求打动，为你受诅咒的血脉赐下祝福。然而，祂的赞赏让祂忽略了你本性中更阴暗的部分：扭曲的爱情观，以及妄自尊大的幻想。 "
+	curse = "沉迷虚荣，渴望被爱"
 	clanicon = "eoran"
 	blood_preference = BLOOD_PREFERENCE_ALL
 	extra_clan_traits = list(
@@ -26,19 +26,19 @@
 	covens_to_select = 0
 
 /datum/clan/eoran/get_blood_preference_string()
-	return "Regular blood, blood of your loved ones"
+	return "普通血液，以及所爱之人的血液"
 
 /datum/clan/eoran/get_downside_string()
-	return "You are perfect, you do not have any downsides."
+	return "你是完美的，没有任何弱点。"
 
 /datum/clan/eoran/apply_clan_components(mob/living/carbon/human/H)
 	H.AddComponent(/datum/component/vampire_disguise)
 
 /datum/clan/eoran/get_frenzy_messages()
 	return list(
-		"Their beauty [span_danger("maddens")] me - I want to possess it, drink it in.",
-		"To be adored is not enough. The Beast wants them [span_danger("ruined")] and mine.",
-		"My composure cracks like porcelain, and something [span_danger("ugly")] grins through.",
-		"Eora's gift curdles to [span_userdanger("obsession")]; I must have their everything.",
-		"Vanity and [span_danger("hunger")] braid together until I cannot tell them apart.",
+		"他们的美让我[span_danger("疯狂")]——我要占有它，将它饮尽。",
+		"被崇拜还不够。野兽想要他们[span_danger("毁坏")]，并属于我。",
+		"我的镇定如瓷器般碎裂，某种[span_danger("丑恶")]之物从裂隙中咧嘴而笑。",
+		"伊欧拉的馈赠变质为[span_userdanger("执念")]；我必须占有对方的一切。",
+		"虚荣与[span_danger("饥渴")]交织，直到我再也分不清它们。",
 	)

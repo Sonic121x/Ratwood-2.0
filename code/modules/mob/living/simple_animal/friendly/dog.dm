@@ -75,7 +75,7 @@
 //Corgis and pugs are now under one dog subtype
 
 /mob/living/simple_animal/pet/dog/corgi
-	name = "\improper 柯基"
+	name = "\proper 柯基"
 	real_name = "柯基"
 	desc = ""
 	icon_state = "corgi"
@@ -109,7 +109,7 @@
 
 
 /mob/living/simple_animal/pet/dog/pug
-	name = "\improper 哈巴狗"
+	name = "\proper 哈巴狗"
 	real_name = "哈巴狗"
 	desc = ""
 	icon = 'icons/mob/pets.dmi'
@@ -521,7 +521,7 @@
 
 
 /mob/living/simple_animal/pet/dog/corgi/puppy
-	name = "\improper 柯基幼犬"
+	name = "\proper 柯基幼犬"
 	real_name = "柯基"
 	desc = ""
 	icon_state = "puppy"
@@ -540,7 +540,7 @@
 
 
 /mob/living/simple_animal/pet/dog/corgi/puppy/void		//Tribute to the corgis born in nullspace
-	name = "\improper 虚空幼犬"
+	name = "\proper 虚空幼犬"
 	real_name = "虚空"
 	desc = ""
 	icon_state = "void_puppy"

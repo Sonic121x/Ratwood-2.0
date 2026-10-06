@@ -172,6 +172,6 @@
 	if(buckled && istype(buckled, /mob/living/carbon/human))
 		var/mob/living/carbon/human/mount = buckled
 		if(HAS_TRAIT(mount, TRAIT_PONYGIRL_RIDEABLE))
-			visible_message(span_warning("The [P] is redirected to [mount]!"))
+			visible_message(span_warning("[P]被转移到了[mount]身上！"))
 			return mount.bullet_act(P)
 	return ..()

@@ -2,7 +2,7 @@
 #define NON_TOWNER_BROADCAST_COST 5
 
 /obj/structure/broadcast_horn
-	name = "\improper 街巷传声筒"
+	name = "\proper 街巷传声筒"
 	desc = "也被称作“人民之口”，前提是人民掏得起喂鼠的饲料钱。"
 	icon_state = "broadcaster_crass"
 	icon = 'icons/roguetown/misc/machines.dmi'
@@ -83,7 +83,7 @@
 		playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 
 /obj/structure/broadcast_horn/loudmouth
-	name = "\improper 金尊之口"
+	name = "\proper 金尊之口"
 	desc = "金口者专用的闪亮号角，表面镌刻着公爵纹章。"
 	icon_state = "broadcaster"
 	speech_color = COLOR_ASSEMBLY_GOLD
@@ -98,14 +98,14 @@
 	toggle_horn()
 
 /obj/structure/broadcast_horn/loudmouth/guest
-	name = "\improper 银舌"
+	name = "\proper 银舌"
 	desc = "宾客用的号角。虽不如金口者本人那般浮华，但依旧是件做工精良的器物。"
 	broadcaster_tag = "银舌"
 	icon_state = "broadcaster_crass"
 	speech_color = COLOR_ASSEMBLY_GURKHA
 
 /obj/structure/broadcast_horn/paid
-	name = "\improper 街巷传声筒"
+	name = "\proper 街巷传声筒"
 	desc = "也被称作“人民之口”，前提是人民掏得起喂鼠的饲料钱。"
 	icon_state = "broadcaster_crass"
 	icon = 'icons/roguetown/misc/machines.dmi'

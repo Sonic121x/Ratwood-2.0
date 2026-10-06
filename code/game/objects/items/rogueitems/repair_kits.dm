@@ -78,7 +78,7 @@
 
 				user.visible_message(span_info("[user]修理了[I]!"))
 				if(I.body_parts_covered != I.body_parts_covered_dynamic)
-					user.visible_message(span_info("[user]修复了[I]的覆盖!"))
+					user.visible_message(span_info("[user]修复了[I]的覆盖部位！"))
 					I.repair_coverage()
 				if(XP_ON_SUCCESS > 0)
 					if(I.anvilrepair)

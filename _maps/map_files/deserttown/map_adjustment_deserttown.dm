@@ -18,7 +18,7 @@
 		/datum/job/roguetown/prince = list(display_title = "埃米尔", f_title = "阿米拉"),
 		// /datum/job/roguetown/marshal = list(display_title = "Mayor"),
 		/datum/job/roguetown/priest =  list(display_title = "大祭司", f_title = "大祭司"),
-		/datum/job/roguetown/captain = list(display_title = "铁甲骑兵队长"),
+		/datum/job/roguetown/captain = list(display_title = "铁甲骑士队长"),
 		/datum/job/roguetown/physician = list(display_title = "宫廷医师"),
 		/datum/job/roguetown/villager = list(display_title = "村民"),
 		/datum/job/roguetown/magician = list(display_title = "宫廷法师"),
@@ -28,7 +28,7 @@
 	)
 	tutorial_adjust = list(
 		// /datum/job/roguetown/marshal = "CHANGE THIS LATER. Manage the town outside of the palace. Hang out in the mayor building!!!",
-		/datum/job/roguetown/marshal = "稍后修改。你受苏丹托付，成为最高军事权威。待在你那气派的房子里。充当各方武力支柱之间的主要中间人与协调者——铁甲骑兵队长（及其铁甲骑兵）、耶尼切里军士长（及其耶尼切里）与阿塞卜阿迦（及其阿塞卜）",
+		/datum/job/roguetown/marshal = "稍后修改。你受苏丹托付，成为最高军事权威。待在你那气派的房子里。充当各方武力支柱之间的主要中间人与协调者——铁甲骑士队长（及其铁甲骑士）、耶尼切里军士长（及其耶尼切里）与阿塞卜阿迦（及其阿塞卜）",
 		/datum/job/roguetown/physician = "你是一位医术大师，受苏丹本人信任，为王室、宫廷、其护卫及其子民提供专业照护。 \
 		虽然你主要居住在城堡中宫殿的医疗翼，你能使用集市中的本地诊所， \
 		 那里持有次级执照的药剂师在你的偶尔路过指点下行医。",
@@ -194,7 +194,7 @@
 			"restore_text" = "%RULER%已确认雇佣兵特许状。行会的承认得以恢复，其对认捐的贡金也随之恢复。",
 		),
 		/datum/decree/magna_carta = list(
-			"flavor_text" = {"%RULER_NAME%，蒙普赛顿恩典，阿尔-阿舒尔之%RULER%，沙赫田、卡拉霍尔特与萨尔塔巴德的总督，罗萨巴格、罗克泰佩与达夫特斯马兹的霸主，布利克塔拉萨、诺斯德兹与哈特坎德的保护者，古老信仰的捍卫者，致他的大祭司、牧师、圣堂武士、审判官、埃米尔、谢赫、维齐尔、执政之手、总管、参议、文书官、执法官、铁甲骑兵、耶尼切里、阿塞卜、马穆鲁克、侍从、宫廷法师、档案官、药剂师、宫廷医师、商人、旅店主人、浴场主、行会工匠、市民、居民、游牧民、农夫、厨子、酒馆伙计、浴场侍者、仆役、奴隶、农人、佣兵、冒险者、朝圣者，以及他所有的官员与忠诚臣民，谨致问候。
+			"flavor_text" = {"%RULER_NAME%，蒙普赛顿恩典，阿尔-阿舒尔之%RULER%，沙赫田、卡拉霍尔特与萨尔塔巴德的总督，罗萨巴格、罗克泰佩与达夫特斯马兹的霸主，布利克塔拉萨、诺斯德兹与哈特坎德的保护者，古老信仰的捍卫者，致他的大祭司、牧师、圣堂武士、审判官、埃米尔、谢赫、维齐尔、执政之手、宫廷总管、参议、文书官、执法官、铁甲骑士、耶尼切里、阿塞卜、马穆鲁克、侍从、宫廷法师、档案官、药剂师、宫廷医师、商人、旅店主人、浴场主、行会工匠、市民、居民、游牧民、农夫、厨子、酒馆伙计、浴场侍者、仆役、奴隶、农人、佣兵、冒险者、朝圣者，以及他所有的官员与忠诚臣民，谨致问候。
 须知，在普赛顿面前，为了我们灵魂的健康，也为了我们祖先与继承者灵魂的健康，为了古老信仰的荣耀与我等国度更好的治理，我们已授予并确认下列写明的种种自由。"},
 			"revoke_text" = "听好了，听好了。%RULER_NAME%，蒙普赛顿恩典，阿尔-阿舒尔之%RULER%，沙赫田、卡拉霍尔特与萨尔塔巴德的总督，罗萨巴格、罗克泰佩与达夫特斯马兹的霸主，布利克塔拉萨、诺斯德兹与哈特坎德的保护者，古老信仰的捍卫者，于今日废止大宪章。国度的子民就此恢复其惯常的财政义务，王权的岁入也如数恢复。且让记录载明%RULER_NAME%的这番重新考量。",
 		),

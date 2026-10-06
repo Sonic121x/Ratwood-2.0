@@ -462,7 +462,7 @@
 	name = "远古灯笼"
 	icon_state = "bronzelamp"
 	item_state = "bronzelamp"
-	desc = "一件工程奇作，散发着诡异的青碧色辉光。这一盏带有与 Malum 相关的徽记，其上还刻着一段铭文。上面写道：'持我迎敌，创造之力自会庇你免受伤害。'"
+	desc = "一件工程奇作，散发着诡异的青碧色辉光。这一盏带有与玛勒姆相关的徽记，其上还刻着一段铭文。上面写道：'持我迎敌，创造之力自会庇你免受伤害。'"
 	light_outer_range = 8
 	light_color = "#2bd0d6"
 	color = "#2bd0d6"

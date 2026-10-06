@@ -81,7 +81,7 @@
 	return {"
 	<div style='margin-bottom: 8px;'>
 		<div style='display: flex; align-items: center; gap: 8px;'>
-			<div style='width: 80px; margin-left: 40px; color: [color_theme];'>[god_name]</div>
+			<div style='width: 80px; margin-left: 40px; color: [color_theme];'>[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Dendor" = "登多尔", "Eora" = "伊欧拉", "Malum" = "玛勒姆", "Noc" = "诺克", "Xylix" = "赛利克斯", "Ravox" = "拉沃克斯", "Zizo" = "齐佐", "Graggar" = "格拉加尔", "Baotha" = "巴奥莎", "Abyssor" = "阿比索尔", "Matthios" = "马西奥斯")[god_name]]</div>
 			<div style='flex-grow: 1; background: #333; height: 20px;'>
 				<div style='width: [percentage]%; height: 100%; background: [color_theme];'></div>
 			</div>

@@ -727,9 +727,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<b>不可复活:</b> <a href='?_src_=prefs;preference=dnr;task=input'>[dnr_pref ? "是" : "否"]</a><BR>"
 
-			dat += "<b>成为魔宠:</b><a href='?_src_=prefs;preference=familiar_prefs;task=input'>Familiar Preferences</a><br>"
+			dat += "<b>成为魔宠:</b><a href='?_src_=prefs;preference=familiar_prefs;task=input'>魔宠偏好</a><br>"
 
-			dat += "<b>偏好地图:</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[preferred_map || "No Preference"]</a><br>"
+			dat += "<b>偏好地图:</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[preferred_map || "无偏好"]</a><br>"
 
 			dat += "<br><b>豺狼人自定义:</b><a href='?_src_=prefs;preference=gnoll_prefs;task=input'>豺狼人偏好</a>"
 
@@ -771,7 +771,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(job_preferences[job] > highest_pref)
 					highest_pref = SSjob.GetJob(job)
 			if(!isnull(highest_pref) && !istype(highest_pref, /datum/job/roguetown/jester))
-				dat += "<div style='text-align: center'><br>子职业预览:<br> <a href='?_src_=prefs;preference=subclassoutfit;task=input'>[preview_subclass ? "[preview_subclass.name]" : "无"]</a></div>"
+				dat += "<div style='text-align: center'><br>子职业预览:<br> <a href='?_src_=prefs;preference=subclassoutfit;task=input'>[preview_subclass ? "[istype(preview_subclass, /datum/advclass/steward) ? "宫廷总管" : preview_subclass.name]" : "无"]</a></div>"
 			else
 				preview_subclass = null
 			var/arousal_preview_label
@@ -877,7 +877,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>Ghost Form:</b> <a href='?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
 				dat += "<B>Ghost Orbit: </B> <a href='?_src_=prefs;task=input;preference=ghostorbit'>[ghost_orbit]</a><br>"
 
-			var/button_name = "If you see this something went wrong."
+			var/button_name = "若显示此文本，说明发生了错误。"
 			switch(ghost_accs)
 				if(GHOST_ACCS_FULL)
 					button_name = GHOST_ACCS_FULL_NAME
@@ -899,7 +899,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
 			dat += "<br>"
 
-			dat += "<b>Income Updates:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
+			dat += "<b>收入通知:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "开启" : "静音"]</a><br>"
 			dat += "<br>"
 */
 			dat += "<b>帧率 (FPS):</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
@@ -909,11 +909,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if (PARALLAX_LOW)
 					dat += "Low"
 				if (PARALLAX_MED)
-					dat += "Medium"
+					dat += "中等"
 				if (PARALLAX_INSANE)
-					dat += "Insane"
+					dat += "极高"
 				if (PARALLAX_DISABLE)
-					dat += "Disabled"
+					dat += "禁用"
 				else
 					dat += "High"
 			dat += "</a><br>"
@@ -1049,7 +1049,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				for (var/i in kb_categories[category])
 					var/datum/keybinding/kb = i
 					if(!length(user_binds[kb.name]))
-						dat += "<label>[kb.full_name]</label> <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=["Unbound"]'>Unbound</a>"
+						dat += "<label>[kb.full_name]</label> <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=["Unbound"]'>未绑定</a>"
 //						var/list/default_keys = hotkeys ? kb.hotkey_keys : kb.classic_keys
 //						if(LAZYLEN(default_keys))
 //							dat += "| Default: [default_keys.Join(", ")]"
@@ -1344,14 +1344,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 <div class="tutorialhover"> [job.class_setup_examine ? "<a href='?src=[REF(job)];explainjob=1'><font>[job_display]</font></a>" : "<font>[job_display]</font>"]</span>
 <span class="tutorial">[job.tutorial]<br>
-Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contrib_points]" : ""]</span>
+名额：[job.spawn_positions] [job.round_contrib_points ? "回合贡献点：+[job.round_contrib_points]" : ""]</span>
 </div>
 
 			"}
 
 			HTML += "</td><td width='40%'>"
 
-			var/prefLevelLabel = "ERROR"
+			var/prefLevelLabel = "错误"
 			var/prefLevelColor = "pink"
 			var/prefUpperLevel = -1 // level to assign on left click
 			var/prefLowerLevel = -1 // level to assign on right click
@@ -1894,7 +1894,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						for(var/adv in highest_pref.job_subclasses)
 							var/datum/advclass/advpath = adv
 							var/datum/advclass/advref = SSrole_class_handler.get_advclass_by_name(initial(advpath.name))
-							choices[advref.name] = advref
+							choices[istype(advref, /datum/advclass/steward) ? "宫廷总管" : advref.name] = advref
 					if(length(choices))
 						var/new_choice = input(user, "选择装备预览：", "装备预览")  as anything in choices|null
 						if(new_choice && new_choice != "无")
@@ -1927,7 +1927,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							if (AGE_MIDDLEAGED)
 								to_chat(user, "肌肉酸痛，关节开始迟缓，永生的魔爪开始落在您的肩上。（-1 速度，+1 意志）")
 							if (AGE_OLD)
-								to_chat(user, "在像 PSYDONIA 这样致命的地方，老年人堪称奇迹……或者是惯常特权阶层的受益者。（-1 力量，-2 速度，-1 感知，-2 体质，+2 智力，+1 坚韧）")
+								to_chat(user, "在像普赛多尼亚这样致命的地方，老年人堪称奇迹……或者是惯常特权阶层的受益者。（-1 力量，-2 速度，-1 感知，-2 体质，+2 智力，+1 坚韧）")
 						// LETHALSTONE EDIT END
 						ResetJobs()
 						family = FAMILY_NONE
@@ -2058,7 +2058,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					)
 					if(selected_track)
 						combat_music = selected_track
-						to_chat(user, span_notice("已选择曲目： <b>[selected_track.name]</b>."))
+						to_chat(user, span_notice("已选择曲目： <b>[selected_track.shortname || selected_track.name]</b>。"))
 						if(combat_music.desc)
 							to_chat(user, "<i>[combat_music.desc]</i>")
 						if(combat_music.credits)
@@ -2681,13 +2681,13 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 /*
 				if("color_ethereal")
-					var/new_etherealcolor = input(user, "Choose your ethereal color", "Character Preference") as null|anything in GLOB.color_list_ethereal
+					var/new_etherealcolor = input(user, "选择你的以太颜色", "Character Preference") as null|anything in GLOB.color_list_ethereal
 					if(new_etherealcolor)
 						features["ethcolor"] = GLOB.color_list_ethereal[new_etherealcolor]
 
 				if("legs")
 					var/new_legs
-					new_legs = input(user, "Choose your character's legs:", "Character Preference") as null|anything in GLOB.legs_list
+					new_legs = input(user, "选择角色的腿部：", "Character Preference") as null|anything in GLOB.legs_list
 					if(new_legs)
 						features["legs"] = new_legs
 */

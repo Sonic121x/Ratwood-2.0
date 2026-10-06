@@ -20,13 +20,13 @@
 	base_icon_state = "chest3"
 
 /obj/structure/closet/crate/chest/inqreliquary
-	name = "奥塔凡圣匣"
+	name = "奥塔万圣匣"
 	desc = "一只令人不安的红色匣柜，锁孔结构异常繁复，似乎只适配某一把特定钥匙。可得慎选。"
 	icon_state = "chestweird1"
 	base_icon_state = "chestweird1"
 
 /obj/structure/closet/crate/chest/inqcrate
-	name = "奥塔凡宝箱"
+	name = "奥塔万宝箱"
 	desc = "一只令人不安的红色宝箱，镶着被黑染浸过的银饰。"
 	icon_state = "chestweird2"
 	base_icon_state = "chestweird2"	

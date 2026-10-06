@@ -26,27 +26,27 @@
 /datum/surgery_step/infuse_tick/validate_target(mob/user, mob/living/carbon/target, target_zone, datum/intent/intent)
 	. = ..()
 	if(target.stat < DEAD)
-		to_chat(user, "They're not dead!")
+		to_chat(user, "对方还没死！")
 		return FALSE
 	var/obj/item/organ/heart/H = target.getorganslot(ORGAN_SLOT_HEART)
 	if(!H)
-		to_chat(user, "[target] is missing their heart!")
+		to_chat(user, "[target]没有心脏！")
 		return FALSE
 	if(!target.check_revive(user))
 		return FALSE
 
 /datum/surgery_step/infuse_tick/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to revive [target]... will their heart respond?"),
-		span_notice("[user] begins to work leechtick into [target]'s heart."),
-		span_notice("[user] begins to work leechtick into [target]'s heart."))
+	display_results(user, target, span_notice("我开始复活[target]……对方的心脏会回应吗？"),
+		span_notice("[user]开始将水蛭蜱注入[target]的心脏。"),
+		span_notice("[user]开始将水蛭蜱注入[target]的心脏。"))
 	return TRUE
 
 /datum/surgery_step/infuse_tick/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/revive_pq = PQ_GAIN_REVIVE
 	if(target.mob_biotypes & MOB_UNDEAD)
-		display_results(user, target, span_notice("You cannot infuse life into the undead! The rot must be cured first."),
-			"[user] works the leechtick into [target]'s innards.",
-			"[user] works the leechtick into [target]'s innards.")
+		display_results(user, target, span_notice("无法将生命注入不死者！必须先治愈腐化。"),
+			"[user]将水蛭蜱注入[target]的脏腑。",
+			"[user]将水蛭蜱注入[target]的脏腑。")
 		return FALSE
 	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 	if(underworld_spirit)
@@ -55,22 +55,22 @@
 		ghost.mind.transfer_to(target, TRUE)
 	target.grab_ghost(force = TRUE)
 	if(!target.mind.active)
-		to_chat(user, "Necra is not done with [target], yet.")
+		to_chat(user, "内克拉还不愿放开[target]。")
 		return
 	target.adjustOxyLoss(-target.getOxyLoss()) //Ye Olde CPR
 	if(!target.revive(full_heal = FALSE))
-		display_results(user, target, span_notice("The leechtick refuses to meld with [target]'s heart. Their damage must be too severe still."),
-			"[user] works the leechtick into [target]'s innards, but nothing happens.",
-			"[user] works the leechtick into [target]'s innards, but nothing happens.")
+		display_results(user, target, span_notice("水蛭蜱不愿与[target]的心脏融合。对方的伤势恐怕仍然太重。"),
+			"[user]将水蛭蜱注入[target]的脏腑，却没有任何反应。",
+			"[user]将水蛭蜱注入[target]的脏腑，却没有任何反应。")
 		return FALSE
-	display_results(user, target, span_notice("You succeed in restarting [target]'s heart with the infusion of the leechtick's viscera."),
-		"[user] works the leechtick into [target]'s innards.",
-		"[user] works the leechtick into [target]'s innards.")
+	display_results(user, target, span_notice("你注入水蛭蜱的内脏，成功让[target]的心脏重新跳动。"),
+		"[user]将水蛭蜱注入[target]的脏腑。",
+		"[user]将水蛭蜱注入[target]的脏腑。")
 	target.emote("breathgasp")
 	target.Jitter(100)
 	record_round_statistic(STATS_LUX_REVIVALS)
 	target.update_body()
-	target.visible_message(span_notice("[target] is dragged back from Necra's hold!"), span_green("I awake from the void."))
+	target.visible_message(span_notice("[target]被从内克拉的掌中拉回！"), span_green("我从虚无中醒来。"))
 	qdel(tool)
 	if(target.mind)
 		if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
@@ -81,7 +81,7 @@
 	return TRUE
 
 /datum/surgery_step/infuse_tick/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	display_results(user, target, span_warning("I screwed up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] works the leechtick into [target]'s innards. It squishes in a disgusting fashion."), TRUE)
+	display_results(user, target, span_warning("我搞砸了！"),
+		span_warning("[user]搞砸了！"),
+		span_notice("[user]将水蛭蜱注入[target]的脏腑，发出令人作呕的挤压声。"), TRUE)
 	return TRUE
