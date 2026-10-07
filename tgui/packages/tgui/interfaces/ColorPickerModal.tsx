@@ -299,10 +299,10 @@ const ColorSelector: React.FC<ColorSelectorProps> = React.memo(
             </Stack.Item>
             <Stack.Item>
               <Box inline width="100px" height="20px" textAlign="center">
-                Current
+                当前颜色
               </Box>
               <Box inline width="100px" height="20px" textAlign="center">
-                Previous
+                原始颜色
               </Box>
               <br />
               <Tooltip content={hexColor} position="bottom">
@@ -340,7 +340,7 @@ const ColorSelector: React.FC<ColorSelectorProps> = React.memo(
               <Stack.Item>
                 <Stack>
                   <Stack.Item>
-                    <Box textColor="label">Hex:</Box>
+                    <Box textColor="label">色值：</Box>
                   </Stack.Item>
                   <Stack.Item grow height="24px">
                     <HexColorInput
@@ -655,7 +655,7 @@ const SaturationValue: React.FC<SaturationValueProps> = React.memo(
         <Interactive
           onMove={handleMove}
           onKey={handleKey}
-          aria-label="Color"
+          aria-label="颜色"
           aria-valuetext={`Saturation ${Math.round(
             hsva.s,
           )}%, Brightness ${Math.round(hsva.v)}%`}
@@ -694,7 +694,7 @@ const Hue: React.FC<HueProps> = React.memo(({ className, hue, onChange }) => {
       <Interactive
         onMove={handleMove}
         onKey={handleKey}
-        aria-label="Hue"
+        aria-label="色相"
         aria-valuenow={Math.round(hue)}
         aria-valuemax={360}
         aria-valuemin={0}
@@ -744,7 +744,7 @@ const Saturation: React.FC<SaturationProps> = React.memo(
           style={{ background }}
           onMove={handleMove}
           onKey={handleKey}
-          aria-label="Saturation"
+          aria-label="饱和度"
           aria-valuenow={Math.round(color.s)}
           aria-valuemax={100}
           aria-valuemin={0}
@@ -804,7 +804,7 @@ const Value: React.FC<ValueProps> = React.memo(
           }}
           onMove={handleMove}
           onKey={handleKey}
-          aria-label="Value"
+          aria-label="明度"
           aria-valuenow={Math.round(color.v)}
           aria-valuemax={100}
           aria-valuemin={0}

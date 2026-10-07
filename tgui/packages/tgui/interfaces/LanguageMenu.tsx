@@ -1,6 +1,6 @@
-import { Button, Section, Stack, Table } from 'tgui-core/components';
+import { Button, Stack, Table } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
-
+import { Section } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -29,7 +29,7 @@ export const LanguageMenu = (props) => {
   const { admin_mode } = data;
 
   return (
-    <Window width={600}>
+    <Window width={600} display_title="语言">
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item grow>
@@ -52,19 +52,19 @@ export const KnownLanguages = (props) => {
   const { languages, admin_mode } = data;
 
   return (
-    <Section title="Known Languages" fill scrollable>
+    <Section title="Known Languages" display_title="已掌握的语言" fill scrollable>
       <Table>
         <Table.Row header>
-          <Table.Cell header>Name</Table.Cell>
+          <Table.Cell header>名称</Table.Cell>
           <Table.Cell header collapsing textAlign="right">
-            Key
+            按键
           </Table.Cell>
           <Table.Cell header collapsing textAlign="center">
-            Default?
+            默认？
           </Table.Cell>
           {admin_mode ? (
             <Table.Cell header collapsing textAlign="center">
-              Del
+              删除
             </Table.Cell>
           ) : null}
         </Table.Row>
@@ -97,7 +97,7 @@ export const KnownLanguageRow = (props: { lang: KnownLanguage }) => {
           <Button
             onClick={() => act('remove_language', { language_name: lang.name })}
           >
-            Del
+            删除
           </Button>
         </Table.Cell>
       ) : null}
@@ -112,10 +112,10 @@ export const AdminMenu = (props) => {
 
   return (
     <Section
-      title="Unknown Languages"
+      title="Unknown Languages" display_title="未掌握的语言"
       buttons={
         <Button selected={omnitongue} onClick={() => act('toggle_omnitongue')}>
-          Omnitongue: {omnitongue ? 'On' : 'Off'}
+          通晓万语：{omnitongue ? '开启' : '关闭'}
         </Button>
       }
       fill
@@ -123,12 +123,12 @@ export const AdminMenu = (props) => {
     >
       <Table>
         <Table.Row header>
-          <Table.Cell header>Name</Table.Cell>
+          <Table.Cell header>名称</Table.Cell>
           <Table.Cell header collapsing>
-            Key
+            按键
           </Table.Cell>
           <Table.Cell header collapsing textAlign="center">
-            Add
+            添加
           </Table.Cell>
         </Table.Row>
         {unknown_languages.map((lang) => (
@@ -141,7 +141,7 @@ export const AdminMenu = (props) => {
                   act('grant_language', { language_name: lang.name })
                 }
               >
-                Add
+                添加
               </Button>
             </Table.Cell>
           </Table.Row>
