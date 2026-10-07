@@ -273,7 +273,7 @@
 
 /datum/admins/proc/admin_heal(mob/living/M in GLOB.mob_list)
 	set name = "显示健康面板"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -765,7 +765,7 @@
 
 /datum/admins/proc/admin_show_inventory(mob/living/M in GLOB.mob_list)
 	set name = "显示物品栏面板"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -776,7 +776,7 @@
 	holder?.show_inventory_panel(M)
 
 /datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "显示玩家面板"
 	set desc="编辑玩家（重生、封禁、治疗等）"
 
@@ -791,7 +791,7 @@
 /datum/admins/proc/admin_revive(mob/living/M in GLOB.mob_list)
 	set name = "生物 - 复活"
 	set desc = "使生物复苏"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 
 	if(!check_rights())
 		return
@@ -817,7 +817,7 @@
 /datum/admins/proc/admin_sleep(mob/living/M in GLOB.mob_list)
 	set name = "切换睡眠"
 	set desc = "切换生物的睡眠状态"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 
 	if(!check_rights())
 		return
@@ -857,7 +857,7 @@
 /datum/admins/proc/adjustpq(mob/living/M in GLOB.mob_list)
 	set name = "调整任意目标的玩家质量分（PQ）"
 	set desc = "调整玩家质量分（PQ）"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set hidden = 1
 
 	if(!check_rights())
@@ -1123,7 +1123,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
 /datum/admins/proc/spawn_atom(object as text)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set desc = ""
 	set name = "生成..."
 
@@ -1402,7 +1402,7 @@
 
 /datum/admins/proc/sleep_view()
 	set name = "视野内生物入睡"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set hidden = FALSE
 
 	if(!check_rights(R_ADMIN))
@@ -1417,7 +1417,7 @@
 
 /datum/admins/proc/wake_view()
 	set name = "唤醒视野内生物"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set hidden = FALSE
 
 	if(!check_rights(R_ADMIN))

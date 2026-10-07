@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(events)
 // REEEEEEEEE
 /client/proc/forceEvent()
 	set name = "触发事件"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	if(!holder ||!check_rights(R_FUN))
 		return
 	holder.forceEvent(usr)
@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(events)
 
 /client/proc/forceGamemode()
 	set name = "打开说书人面板"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	if(!holder ||!check_rights(R_FUN))
 		return
 	holder.forceGamemode(usr)
