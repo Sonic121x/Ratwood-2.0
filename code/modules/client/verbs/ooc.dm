@@ -249,7 +249,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/proc/set_ooc(newColor as color)
 	set name = "设置玩家场外聊天颜色"
 	set desc = ""
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set hidden = 1
 	if(!holder)
 		return
@@ -260,7 +260,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/proc/reset_ooc()
 	set name = "重置玩家场外聊天颜色"
 	set desc = ""
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set hidden = 1
 	if(!holder)
 		return
