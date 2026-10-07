@@ -1,7 +1,7 @@
 
 /client/verb/who()
 	set name = "在线玩家"
-	set category = "Options"
+	set category = "选项"
 
 	var/msg = ""
 
@@ -9,7 +9,7 @@
 
 	var/wled = 0
 	if(holder)
-		to_chat(src, span_info("Loading Whom, please wait..."))
+		to_chat(src, span_info("正在加载玩家名单，请稍候……"))
 //		if (check_rights(R_ADMIN,0) )//If they have +ADMIN and are a ghost they can see players IC names and statuses.
 //			var/mob/dead/observer/G = src.mob
 //			if(!G.started_as_observer)//If you aghost to do this, KorPhaeron will deadmin you in your sleep.
@@ -17,29 +17,29 @@
 		for(var/client/C in GLOB.clients)
 			var/entry = "<span class='info'>\t[C.key]"
 			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
+				entry += " <i>（化名：[C.holder.fakekey]）</i>"
 			if (isnewplayer(C.mob))
-				entry += " - <font color='darkgray'><b>In Lobby</b></font>"
+				entry += " - <font color='darkgray'><b>在大厅</b></font>"
 				if(C.ckey in GLOB.anonymize)
-					entry += " (as [get_fake_key(C.ckey)])"
+					entry += " （化名：[get_fake_key(C.ckey)]）"
 			else
 				if(ishuman(C.mob))
 					var/mob/living/carbon/human/H = C.mob
-					entry += " - Playing as [C.mob.real_name][H.job ? " ([H.job])" : ""]"
+					entry += " - 扮演 [C.mob.real_name][H.job ? " ([H.job])" : ""]"
 				else
-					entry += " - Playing as [C.mob.real_name]"
+					entry += " - 扮演 [C.mob.real_name]"
 				switch(C.mob.stat)
 					if(UNCONSCIOUS)
-						entry += " - <font color='darkgray'><b>UNCON</b></font>"
+						entry += " - <font color='darkgray'><b>昏迷</b></font>"
 					if(DEAD)
 						if(isobserver(C.mob))
 							var/mob/dead/observer/O = C.mob
 							if(O.started_as_observer)
-								entry += " - <font color='gray'>Observing</font>"
+								entry += " - <font color='gray'>旁观中</font>"
 							else
-								entry += " - <b>GHOST</b>"
+								entry += " - <b>幽灵</b>"
 						else
-							entry += " - <b>DEAD</b>"
+							entry += " - <b>死亡</b>"
 				if(C.mob.mind)
 					if(C.mob.mind.special_role)
 						entry += " - <b><font color='red'>[C.mob.mind.special_role]</font></b>"
@@ -48,7 +48,7 @@
 			// entry += " ([CheckIPCountry(C.address)])"
 			if(C.whitelisted())
 				wled++
-				entry += "(WL)"
+				entry += "（白名单）"
 			entry += "</span>"
 			Lines += entry
 /*		else//If they don't have +ADMIN
@@ -93,31 +93,31 @@
 //		msg += "[line]\n"
 	msg += "<b>在席玩家:</b> [length(Lines)]"
 	if(holder)
-		msg += "<br><b>Whitelisted players:</b> [wled]"
+		msg += "<br><b>白名单玩家：</b> [wled]"
 	to_chat(src, msg)
 
 /client/verb/adminwho()
-	set category = "-Admin-"
-	set name = "Adminwho"
+	set category = "-管理-"
+	set name = "在线管理员"
 	set desc = "列出当前在线的所有管理员。"
 
 	var/msg = "<b>当前在线管理员:</b>\n"
 	if(holder)
 		for(var/client/C in GLOB.admins)
-			msg += "\t[C] is a [C.holder.rank]"
+			msg += "\t[C]的权限组为[C.holder.rank]"
 
 			if(C.holder.fakekey)
-				msg += " <i>(as [C.holder.fakekey])</i>"
+				msg += " <i>（化名：[C.holder.fakekey]）</i>"
 
 			if(isobserver(C.mob))
-				msg += " - Observing"
+				msg += " - 旁观中"
 			else if(isnewplayer(C.mob))
-				msg += " - Lobby"
+				msg += " - 在大厅"
 			else
-				msg += " - Playing"
+				msg += " - 游戏中"
 
 			if(C.is_afk())
-				msg += " (AFK)"
+				msg += " （暂离）"
 			msg += "\n"
 	else
 		for(var/client/C in GLOB.admins)

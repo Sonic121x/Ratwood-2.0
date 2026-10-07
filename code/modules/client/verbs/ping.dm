@@ -18,6 +18,6 @@
 	to_chat(src, span_notice("[thingy]ms"))
 
 /client/verb/ping()
-	set name = "Ping"
-	set category = "Options"
+	set name = "网络延迟"
+	set category = "选项"
 	winset(src, null, "command=.display_ping+[world.time+world.tick_lag*TICK_USAGE_REAL/100]")

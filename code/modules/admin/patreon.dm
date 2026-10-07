@@ -194,8 +194,8 @@ GLOBAL_LIST_EMPTY(hiderole)
 GLOBAL_LIST_EMPTY(anonymize)
 
 /mob/dead/new_player/verb/anonymize()
-	set category = "Options"
-	set name = "Anonymize"
+	set category = "选项"
+	set name = "匿名模式"
 	if(!client)
 		return
 	if(get_playerquality(client.ckey) <= -5)

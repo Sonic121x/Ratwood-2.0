@@ -85,8 +85,8 @@ SUBSYSTEM_DEF(events)
 // > Not in modules/admin
 // REEEEEEEEE
 /client/proc/forceEvent()
-	set name = "Trigger Event"
-	set category = "-GameMaster-"
+	set name = "触发事件"
+	set category = "-主持-"
 	if(!holder ||!check_rights(R_FUN))
 		return
 	holder.forceEvent(usr)
@@ -95,8 +95,8 @@ SUBSYSTEM_DEF(events)
 	SSgamemode.event_panel(user)
 
 /client/proc/forceGamemode()
-	set name = "Open Storyteller Panel"
-	set category = "-GameMaster-"
+	set name = "打开说书人面板"
+	set category = "-主持-"
 	if(!holder ||!check_rights(R_FUN))
 		return
 	holder.forceGamemode(usr)

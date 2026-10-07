@@ -3,10 +3,10 @@ import {
   Box,
   Button,
   Input,
-  Section,
+
   Stack,
   Tabs,
-} from 'tgui-core/components';
+} from 'tgui-core/components'; import { Section } from '../components/Localized';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
@@ -134,36 +134,36 @@ export const AdminTicketPanel = (props) => {
   const tickets = getTickets();
 
   return (
-    <Window width={1200} height={800} title={`Admin Ticket Panel (${active_tickets.length} active)`}>
+    <Window width={1200} height={800} title={`Admin Ticket Panel (${active_tickets.length} active)`} display_title={`管理员求助面板（${active_tickets.length} 条待处理）`}>
       <Window.Content>
         <Stack fill>
           {/* Left Panel - Ticket List */}
           <Stack.Item width="350px">
-            <Section fill scrollable title="Tickets">
+            <Section fill scrollable title="Tickets" display_title="工单">
               <Tabs>
                 <Tabs.Tab
                   selected={tabIndex === 0}
                   onClick={() => setTabIndex(0)}
                 >
-                  Active ({active_tickets.length})
+                  待处理 ({active_tickets.length})
                 </Tabs.Tab>
                 <Tabs.Tab
                   selected={tabIndex === 1}
                   onClick={() => setTabIndex(1)}
                 >
-                  Closed ({closed_tickets.length})
+                  已关闭 ({closed_tickets.length})
                 </Tabs.Tab>
                 <Tabs.Tab
                   selected={tabIndex === 2}
                   onClick={() => setTabIndex(2)}
                 >
-                  Resolved ({resolved_tickets.length})
+                  已解决 ({resolved_tickets.length})
                 </Tabs.Tab>
               </Tabs>
               <Box mt={1}>
                 {tickets.length === 0 ? (
                   <Box color="label" italic>
-                    No tickets in this category
+                    此分类下没有求助
                   </Box>
                 ) : (
                   tickets.map((ticket) => (
@@ -192,11 +192,11 @@ export const AdminTicketPanel = (props) => {
                         </Stack.Item>
                         <Stack.Item>
                           <Box color={getStatusColor(ticket.state)}>
-                            {ticket.state}
+                            {{ ACTIVE: '待处理', CLOSED: '已关闭', RESOLVED: '已解决' }[ticket.state] || ticket.state}
                           </Box>
                           {!ticket.initiator_connected && (
                             <Box color="bad" fontSize="0.8em">
-                              [DC]
+                              [已断线]
                             </Box>
                           )}
                         </Stack.Item>
@@ -220,7 +220,7 @@ export const AdminTicketPanel = (props) => {
                       <Stack>
                         <Stack.Item>
                           <Box bold fontSize="1.2em">
-                            Ticket #{selected_ticket.ticket_id}
+                            求助 #{selected_ticket.ticket_id}
                           </Box>
                           <Box color="label">{selected_ticket.ticket_name}</Box>
                         </Stack.Item>
@@ -232,97 +232,97 @@ export const AdminTicketPanel = (props) => {
                           <Stack.Item>
                             <Button
                               compact
-                              tooltip="PP (Player Panel) - Open the player panel for this mob."
+                              tooltip="玩家面板（PP）- 打开此角色的玩家面板。"
                               onClick={() =>
                                 act('ticket_pp', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              PP
+                              玩家面板
                             </Button>
                             <Button
                               compact
-                              tooltip="VV (View Variables) - Open View Variables for this mob."
+                              tooltip="查看变量（VV）- 打开此角色的变量查看器。"
                               onClick={() =>
                                 act('ticket_vv', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              VV
+                              查看变量
                             </Button>
                             <Button
                               compact
-                              tooltip="SM (Subtle Message) - Send a subtle IC message to this player's mind."
+                              tooltip="隐秘消息（SM）- 向此玩家的意识发送一条角色内消息。"
                               onClick={() =>
                                 act('ticket_sm', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              SM
+                              隐秘消息
                             </Button>
                             <Button
                               compact
-                              tooltip="FLW (Follow) - Ghost-follow this mob as an observer."
+                              tooltip="跟随（FLW）- 以观察者幽灵的身份跟随此角色。"
                               onClick={() =>
                                 act('ticket_flw', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              FLW
+                              跟随
                             </Button>
                             <Button
                               compact
-                              tooltip="TP (Traitor Panel) - Open the traitor panel for this mob."
+                              tooltip="反派面板（TP）- 打开此角色的反派面板。"
                               onClick={() =>
                                 act('ticket_tp', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              TP
+                              反派面板
                             </Button>
                             <Button
                               compact
                               color="bad"
-                              tooltip="Smite - Divine Retribution! Use very rarely."
+                              tooltip="神罚 - 降下神明的惩罚！请尽量少用。"
                               onClick={() =>
                                 act('ticket_smite', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              Smite
+                              神罚
                             </Button>
                             <Button
                               compact
-                              tooltip="Cake - Give the player a (random) slice of cake."
+                              tooltip="蛋糕 - 给玩家一块随机口味的蛋糕。"
                               onClick={() =>
                                 act('ticket_cake', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              Cake
+                              蛋糕
                             </Button>
                             <Button
                               compact
                               color="good"
-                              tooltip="Aheal - Quickly revive and fully heal the player."
+                              tooltip="管理员治疗 - 迅速复活并完全治愈玩家。"
                               onClick={() =>
                                 act('ticket_aheal', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              Aheal
+                              管理员治疗
                             </Button>
                             <Button
                               compact
-                              tooltip="PQ (Check Player Quality) - Open the PQ panel for this player."
+                              tooltip="玩家质量分（PQ）- 打开此玩家的质量分面板。"
                               onClick={() =>
                                 act('ticket_pq', {
                                   ticket_id: selected_ticket.ticket_id,
@@ -333,47 +333,47 @@ export const AdminTicketPanel = (props) => {
                             </Button>
                             <Button
                               compact
-                              tooltip="GM (Get Mob) - Teleport this mob to you."
+                              tooltip="拉取角色（GM）- 将此角色传送到你身边。"
                               onClick={() =>
                                 act('ticket_gm', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              GM
+                              拉取角色
                             </Button>
                             <Button
                               compact
-                              tooltip="JM (Jump Mob) - Jump to this mob's location."
+                              tooltip="前往角色（JM）- 传送到此角色所在位置。"
                               onClick={() =>
                                 act('ticket_jm', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              JM
+                              前往角色
                             </Button>
                             <Button
                               compact
-                              tooltip="ND (Narrate Directly) - Send a direct narrative message to this player."
+                              tooltip="直接旁白（ND）- 向此玩家发送一条旁白消息。"
                               onClick={() =>
                                 act('ticket_nd', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              ND
+                              直接旁白
                             </Button>
                             <Button
                               compact
-                              tooltip="AP (AtomProc) - Call an arbitrary proc on this mob. Use with care."
+                              tooltip="对象过程调用（AP）- 在此角色上调用指定过程。请谨慎使用。"
                               onClick={() =>
                                 act('ticket_ap', {
                                   ticket_id: selected_ticket.ticket_id,
                                 })
                               }
                             >
-                              AP
+                              过程调用
                             </Button>
                           </Stack.Item>
                         </Stack>
@@ -390,7 +390,7 @@ export const AdminTicketPanel = (props) => {
                               })
                             }
                           >
-                            Reject
+                            拒绝
                           </Button>
                           <Button
                             icon="gamepad"
@@ -402,7 +402,7 @@ export const AdminTicketPanel = (props) => {
                               })
                             }
                           >
-                            IC Issue
+                            角色内问题
                           </Button>
                           <Button
                             icon="times"
@@ -414,7 +414,7 @@ export const AdminTicketPanel = (props) => {
                               })
                             }
                           >
-                            Close
+                            关闭
                           </Button>
                           <Button
                             icon="check"
@@ -426,7 +426,7 @@ export const AdminTicketPanel = (props) => {
                               })
                             }
                           >
-                            Resolve
+                            解决
                           </Button>
                           <Button
                             icon="hand-paper"
@@ -438,7 +438,7 @@ export const AdminTicketPanel = (props) => {
                               })
                             }
                           >
-                            Handle
+                            接手
                           </Button>
                           {selected_ticket.ticket_state !== 'ACTIVE' && (
                             <Button
@@ -450,7 +450,7 @@ export const AdminTicketPanel = (props) => {
                                 })
                               }
                             >
-                              Reopen
+                              重新打开
                             </Button>
                           )}
                           <Button
@@ -461,7 +461,7 @@ export const AdminTicketPanel = (props) => {
                               })
                             }
                           >
-                            Retitle
+                            更改标题
                           </Button>
                         </Stack.Item>
                       </Stack>
@@ -471,12 +471,12 @@ export const AdminTicketPanel = (props) => {
                   {/* Conversation view + input */}
                   <>
                       <Stack.Item grow>
-                        <Section fill scrollable title="Conversation">
+                        <Section fill scrollable title="Conversation" display_title="对话">
                           <Stack vertical>
                             {selected_ticket.messages.length === 0 ? (
                               <Stack.Item>
                                 <Box color="label" italic>
-                                  No messages yet
+                                  暂无消息
                                 </Box>
                               </Stack.Item>
                             ) : (
@@ -519,7 +519,7 @@ export const AdminTicketPanel = (props) => {
                                     msg.embed_url ? (
                                       <img
                                         src={msg.embed_url}
-                                        alt="Embedded image"
+                                        alt="嵌入图片"
                                         style={{
                                           maxWidth: '100%',
                                           maxHeight: '400px',
@@ -561,7 +561,7 @@ export const AdminTicketPanel = (props) => {
                                 <textarea
                                   ref={chatTextareaRef}
                                   className="Input TextArea Input--fluid"
-                                  placeholder="Type your response... (Shift+Enter for newline)"
+                                  placeholder="输入回复……（Shift+Enter 换行）"
                                   value={inputText}
                                   rows={inputRows}
                                   onChange={(e) => {
@@ -593,12 +593,12 @@ export const AdminTicketPanel = (props) => {
                                   }
                                   onClick={handleSend}
                                 >
-                                  Send
+                                  发送
                                 </Button>
                                 <Button
                                   icon="image"
                                   color="blue"
-                                  tooltip="Embed an image URL into the ticket (https only)"
+                                  tooltip="在求助中嵌入图片链接（仅限 https）"
                                   disabled={!selected_ticket.can_send}
                                   selected={showEmbedInput === 'image'}
                                   onClick={() =>
@@ -609,12 +609,12 @@ export const AdminTicketPanel = (props) => {
                                     )
                                   }
                                 >
-                                  Img
+                                  图片
                                 </Button>
                                 <Button
                                   icon="film"
                                   color="purple"
-                                  tooltip="Embed a video URL into the ticket (https only)"
+                                  tooltip="在求助中嵌入视频链接（仅限 https）"
                                   disabled={!selected_ticket.can_send}
                                   selected={showEmbedInput === 'video'}
                                   onClick={() =>
@@ -625,7 +625,7 @@ export const AdminTicketPanel = (props) => {
                                     )
                                   }
                                 >
-                                  Vid
+                                  视频
                                 </Button>
                               </Stack.Item>
                             </Stack>
@@ -635,7 +635,7 @@ export const AdminTicketPanel = (props) => {
                                   <Stack.Item grow>
                                     <Input
                                       fluid
-                                      placeholder={`Paste ${showEmbedInput} URL (must start with https://)...`}
+                                      placeholder={`粘贴${showEmbedInput === 'image' ? '图片' : '视频'}链接（必须以 https:// 开头）……`}
                                       value={embedUrl}
                                       onChange={setEmbedUrl}
                                       onEnter={handleEmbedSend}
@@ -651,7 +651,7 @@ export const AdminTicketPanel = (props) => {
                                       }
                                       onClick={handleEmbedSend}
                                     >
-                                      Embed {showEmbedInput}
+                                      嵌入{showEmbedInput === 'image' ? '图片' : '视频'}
                                     </Button>
                                     <Button
                                       onClick={() => {
@@ -659,7 +659,7 @@ export const AdminTicketPanel = (props) => {
                                         setEmbedUrl('');
                                       }}
                                     >
-                                      Cancel
+                                      取消
                                     </Button>
                                   </Stack.Item>
                                 </Stack>
@@ -675,29 +675,29 @@ export const AdminTicketPanel = (props) => {
                                   }}
                                 >
                                   <Box bold color="white" mb={0.3}>
-                                    How to embed media
+                                    如何嵌入媒体
                                   </Box>
                                   <Box>
-                                    1. Find a{' '}
+                                    1. 找到一个{' '}
                                     {showEmbedInput === 'image'
-                                      ? 'direct image link'
-                                      : 'direct video link'}{' '}
-                                    — right-click the{' '}
+                                      ? '图片直链'
+                                      : '视频直链'}{' '}
+                                    ——右键点击网页上的{' '}
                                     {showEmbedInput === 'image'
-                                      ? 'image'
-                                      : 'video'}{' '}
-                                    on a website and choose{' '}
+                                      ? '图片'
+                                      : '视频'}{' '}
+                                    并选择{' '}
                                     <Box
                                       as="span"
                                       bold
                                       color="white"
                                     >
-                                      &quot;Copy image address&quot;
+                                      &quot;复制媒体地址&quot;
                                     </Box>
-                                    .
+                                    。
                                   </Box>
                                   <Box mt={0.3}>
-                                    2. The URL must start with{' '}
+                                    2. 链接必须以{' '}
                                     <Box
                                       as="span"
                                       bold
@@ -705,29 +705,29 @@ export const AdminTicketPanel = (props) => {
                                     >
                                       https://
                                     </Box>{' '}
-                                    and end with the file extension (e.g.{' '}
+                                    开头，并以文件扩展名结尾（例如{' '}
                                     {showEmbedInput === 'image'
                                       ? '.png, .jpg, .gif, .webp'
                                       : '.mp4, .webm, .ogg'}
-                                    ).
+                                    ）。
                                   </Box>
                                   <Box mt={0.3}>
-                                    3. Paste the URL above and click{' '}
+                                    3. 将链接粘贴到上方，然后点击{' '}
                                     <Box as="span" bold color="white">
-                                      Embed {showEmbedInput}
+                                      嵌入{showEmbedInput === 'image' ? '图片' : '视频'}
                                     </Box>
-                                    . Both you and the player will see it.
+                                    。你和玩家都能看到该媒体。
                                   </Box>
                                   {showEmbedInput === 'image' && (
                                     <Box mt={0.3} color="average">
-                                      Tip: Imgur, Discord CDN, or direct GitHub
-                                      raw links work well.
+                                      提示：可以使用 Imgur、Discord CDN，或 GitHub
+                                      原始文件的直接链接。
                                     </Box>
                                   )}
                                   {showEmbedInput === 'video' && (
                                     <Box mt={0.3} color="average">
-                                      Tip: YouTube/Twitch clips won&apos;t work
-                                      — use a direct .mp4 or .webm URL instead.
+                                      提示：不支持 YouTube/Twitch 视频页面，
+                                      请使用 .mp4 或 .webm 文件的直接链接。
                                     </Box>
                                   )}
                                 </Box>
@@ -739,7 +739,7 @@ export const AdminTicketPanel = (props) => {
                                 mt={0.5}
                                 fontSize="0.9em"
                               >
-                                This ticket is closed
+                                此求助已关闭
                               </Box>
                             )}
                           </Section>
@@ -755,7 +755,7 @@ export const AdminTicketPanel = (props) => {
                     <Stack fill vertical align="center" justify="center">
                       <Stack.Item>
                         <Box fontSize="1.5em" color="label">
-                          Select a ticket to view details
+                          选择一条求助以查看详情
                         </Box>
                       </Stack.Item>
                     </Stack>

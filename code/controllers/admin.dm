@@ -1,6 +1,6 @@
 // Clickable stat() button.
 /obj/effect/statclick
-	name = "Initializing..."
+	name = "正在初始化……"
 	var/target
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
@@ -42,13 +42,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 			class = "unknown"
 
 	usr.client.debug_variables(target)
-	message_admins("Admin [key_name_admin(usr)] is debugging the [target] [class].")
+	message_admins("管理员 [key_name_admin(usr)] 正在调试 [target]（[class]）。")
 
 
 // Debug verbs.
 /client/proc/restart_controller(controller in list("Master", "Failsafe"))
-	set category = "Debug"
-	set name = "Restart Controller"
+	set category = "调试"
+	set name = "重启控制器"
 	set desc = ""
 
 	if(!holder)
@@ -61,4 +61,4 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 			new /datum/controller/failsafe()
 			SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
 
-	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
+	message_admins("管理员 [key_name_admin(usr)] 已重启 [controller] 控制器。")

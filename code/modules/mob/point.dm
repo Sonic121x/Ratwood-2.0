@@ -14,7 +14,7 @@
  * overridden here and in /mob/dead/observer for different point span classes and sanity checks
  */
 /mob/verb/pointed(atom/pointed_atom as mob|obj|turf in view())
-	set name = "Point To"
+	set name = "指向"
 	set category = null
 	set hidden = 1
 

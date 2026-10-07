@@ -59,7 +59,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>蠢货</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
-			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
+			message_admins("[key_name_admin(src)] 尝试在 OOC 频道发布广告：[msg]")
 			return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
@@ -180,7 +180,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>蠢货</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
-			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
+			message_admins("[key_name_admin(src)] 尝试在 OOC 频道发布广告：[msg]")
 			return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
@@ -235,7 +235,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			return
 	else //otherwise just toggle it
 		GLOB.ooc_allowed = !GLOB.ooc_allowed
-	message_admins("<B>The OOC channel has been globally [GLOB.ooc_allowed ? "enabled" : "disabled"].</B>")
+	message_admins("<B>OOC 频道已全局[GLOB.ooc_allowed ? "启用" : "禁用"]。</B>")
 
 /proc/toggle_dooc(toggle = null)
 	if(toggle != null)
@@ -247,9 +247,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		GLOB.dooc_allowed = !GLOB.dooc_allowed
 
 /client/proc/set_ooc(newColor as color)
-	set name = "Set Player OOC Color"
+	set name = "设置玩家场外聊天颜色"
 	set desc = ""
-	set category = "-GameMaster-"
+	set category = "-主持-"
 	set hidden = 1
 	if(!holder)
 		return
@@ -258,9 +258,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		return
 
 /client/proc/reset_ooc()
-	set name = "Reset Player OOC Color"
+	set name = "重置玩家场外聊天颜色"
 	set desc = ""
-	set category = "-GameMaster-"
+	set category = "-主持-"
 	set hidden = 1
 	if(!holder)
 		return
@@ -268,8 +268,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(!check_rights(0))
 		return
 /client/verb/colorooc()
-	set name = "Set Your OOC Color"
-	set category = "Preferences"
+	set name = "设置自己的场外聊天颜色"
+	set category = "偏好设置"
 	set hidden = 1
 	if(!holder)
 		return
@@ -279,7 +279,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(!is_content_unlocked())
 			return
 
-	var/new_ooccolor = input(src, "请选择你的 OOC 颜色。", "OOC color", prefs.ooccolor) as color|null
+	var/new_ooccolor = input(src, "请选择你的 OOC 颜色。", "场外聊天颜色", prefs.ooccolor) as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = sanitize_ooccolor(new_ooccolor)
 		prefs.save_preferences()
@@ -287,9 +287,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	return
 
 /client/verb/resetcolorooc()
-	set name = "Reset Your OOC Color"
+	set name = "重置自己的场外聊天颜色"
 	set desc = ""
-	set category = "Preferences"
+	set category = "偏好设置"
 	set hidden = 1
 	if(!holder)
 		return
@@ -319,8 +319,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 //Checks admin notice
 /client/verb/admin_notice()
-	set name = "Adminnotice"
-	set category = "-Admin-"
+	set name = "管理员公告"
+	set category = "-管理-"
 	set desc ="查看已发布的管理员公告"
 	set hidden = 1
 	if(!holder)
@@ -333,16 +333,16 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		to_chat(src, span_notice("目前没有管理员公告。"))
 #ifdef TESTSERVER
 /client/verb/smiteselfverily()
-	set name = "KillSelf"
-	set category = "DEBUGTEST"
+	set name = "自尽"
+	set category = "调试测试"
 /*
 	set hidden = 1
 	if(!check_rights(0))
 		return*/
-	var/confirm = alert(src, "我真的要自尽吗？", "Feed the crows", "Yes", "No")
-	if(confirm == "Yes")
+	var/confirm = alert(src, "我真的要自尽吗？", "喂食乌鸦", "是", "否")
+	if(confirm == "是")
 		log_admin("[key_name(usr)] used killself.")
-		message_admins(span_adminnotice("[key_name_admin(usr)] used killself."))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 使用了自尽指令。"))
 		mob.death()
 #endif
 
@@ -395,15 +395,15 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 //			return "0"
 
 /client/verb/html_chat()
-	set name = "{Old Chat}"
-	set category = "Options"
+	set name = "{旧版聊天}"
+	set category = "选项"
 	set hidden = FALSE
 
 	to_chat(src, "正在切换回旧版聊天界面。")
 	winset(src, "outputwindow.legacy_output_selector", "left=output_legacy")
 
 /client/verb/motd()
-	set name = "MOTD"
+	set name = "每日公告"
 	set category = "OOC"
 	set desc ="查看每日公告"
 	set hidden = 1
@@ -457,8 +457,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	prefs.save_preferences()
 
 /client/verb/select_ignore()
-	set name = "Ignore"
-	set category = "Options"
+	set name = "屏蔽玩家"
+	set category = "选项"
 	set desc ="屏蔽一名玩家在 OOC 频道中的消息"
 	set hidden = 1
 	if(!holder)
@@ -477,7 +477,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		else
 			choices[displayed_choicename] = C
 	choices = sortList(choices)
-	var/selection = input("请选择一名玩家！", "Ignore", null, null) as null|anything in choices
+	var/selection = input("请选择一名玩家！", "屏蔽玩家", null, null) as null|anything in choices
 	if(!selection || !(selection in choices))
 		return
 	displayed_choicename = selection // ckey string
@@ -495,8 +495,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	SSticker.show_roundend_report(src, TRUE)
 
 /client/verb/fit_viewport()
-	set name = "Fit Viewport"
-	set category = "Options"
+	set name = "适配视口"
+	set category = "选项"
 	set desc = ""
 	set hidden = 1
 	if(!holder)
@@ -544,7 +544,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/combat_music() // if you touch this, touch the option in game preferences too
 	set name = "战斗模式音乐"
-	set category = "Options"
+	set category = "选项"
 	set desc = ""
 	if(!isliving(mob))
 		to_chat(src, span_warning("你尚未进入活着的角色，请在游戏偏好中设置此项。"))
@@ -617,7 +617,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/verb/runm()
 	set name = "奔跑模式"
 	set desc = "切换持续奔跑，或在转向时停止奔跑"
-	set category = "Options"
+	set category = "选项"
 	prefs.runmode = !prefs.runmode
 	if(prefs.runmode)
 		to_chat(usr, "奔跑模式已切换（转向时停止）。")
@@ -626,7 +626,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	prefs.save_preferences()
 
 /client/verb/policy()
-	set name = "Show Policy"
+	set name = "查看规则"
 	set desc = ""
 	set category = "OOC"
 	set hidden = 1
