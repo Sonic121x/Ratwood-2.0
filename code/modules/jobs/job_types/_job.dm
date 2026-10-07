@@ -628,11 +628,11 @@
 			if(subclass.maximum_possible_slots != -1)
 				dat += "[subclass.name] — <b>"
 				if(subclass.total_slots_occupied >= subclass.maximum_possible_slots)
-					dat += "FULL!"
+					dat += "已满！"
 				else
 					dat += "[subclass.total_slots_occupied] / [subclass.maximum_possible_slots]"
 				dat += "</b><br>"
-		var/datum/browser/popup = new(usr, "subclassslots", "<div style='text-align: center'>[title]</div>", nwidth = 200, nheight = 300)
+		var/datum/browser/popup = new(usr, "subclassslots", "<div style='text-align: center'>[display_title || title]</div>", nwidth = 200, nheight = 300)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		if(winexists(usr, "subclassslots"))
@@ -647,7 +647,7 @@
 			dat += "<font color = '#e4e1e1'><b>[subname]</b></font><br>"
 			for(var/pick in blocked[subname])
 				dat += "[pick]<br>"
-		var/datum/browser/popup = new(usr, "subclassslots", "<div style='text-align: center'>Subclass Incompatibilities</div>", nwidth = 200, nheight = 300)
+		var/datum/browser/popup = new(usr, "subclassslots", "<div style='text-align: center'>子职业互斥条件</div>", nwidth = 200, nheight = 300)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		if(winexists(usr, "subclassslots"))

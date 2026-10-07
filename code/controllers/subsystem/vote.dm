@@ -235,8 +235,8 @@ SUBSYSTEM_DEF(vote)
 
 	log_vote(to_display)
 	to_chat(world, span_infoplain(vote_font("\n[span_bold(to_display)]\n\
-		Type <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\n\
-		You have [DisplayTimeText(duration)] to vote.")))
+		输入 <b>vote</b> 或点击<a href='byond://winset?command=vote'>这里</a>参与投票。\n\
+		你有[DisplayTimeText(duration)]的时间参与投票。")))
 
 	// And now that it's going, give everyone a voter action
 	for(var/client/new_voter as anything in GLOB.clients)
@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(vote)
 		if(current_vote != to_vote)
 			break
 		var/datum/action/vote/voting_action = new()
-		voting_action.name = "投票：[to_vote.override_question || to_vote.name]"
+		voting_action.name = "投票：[to_vote.override_question || list("Custom" = "自定义", "endround" = "结束本轮", "Map" = "地图", "Restart" = "重启回合", "chaos" = "回合类型")[to_vote.name] || to_vote.name]"
 		voting_action.Grant(new_voter.mob)
 
 		new_voter.player_details.player_actions += voting_action

@@ -1031,7 +1031,7 @@
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/eoran_aril
-	name = "伊欧拉 果粒"
+	name = "伊欧拉果粒"
 	desc = "一枚来自 伊欧拉 果实的发光种子。它正随着神圣能量轻轻搏动。"
 	icon = 'modular_azurepeak/icons/obj/items/eora_pom.dmi'
 	dropshrink = 0.7
@@ -1145,7 +1145,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/eora_grace
 
 /atom/movable/screen/alert/status_effect/eora_grace
-	name = "伊欧拉 的恩宠"
+	name = "伊欧拉的恩宠"
 	desc = "你感到自己美得动人。"
 
 /datum/status_effect/buff/eora_grace/on_apply()
@@ -1438,6 +1438,6 @@
 	return ..()
 
 /atom/movable/screen/alert/status_effect/buff/eora_blessing
-	name = "伊欧拉 的宁静"
+	name = "伊欧拉的宁静"
 	desc = "一阵令人神清气爽的安宁。你的烦恼仿佛都被冲刷殆尽。为什么不能永远如此呢？"
 	icon_state = "eora_bless"
