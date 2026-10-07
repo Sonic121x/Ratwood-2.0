@@ -225,7 +225,7 @@
 
 /obj/effect/proc_holder/spell/invoked/blood_heal
 	name = "鲜血转移奇迹"
-	desc = "以神圣魔法将我的血液转移给目标。转移比例随神圣技能等级提升。"
+	desc = "以神圣魔法将我的血液转移给目标。转移比例随神迹技能等级提升。"
 	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
 	overlay_state = "bloodheal"
 	action_icon_state = "bloodheal"
