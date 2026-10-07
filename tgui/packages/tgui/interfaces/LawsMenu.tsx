@@ -18,7 +18,7 @@ type Data = {
 
 export const LawsMenu = () => {
   return (
-    <Window width={560} height={640}>
+    <Window width={560} height={640} display_title="制定法律">
       <Window.Content>
         <LawsDisplay />
       </Window.Content>
@@ -48,7 +48,7 @@ const LawEntry = (props: {
             fluid
             maxLength={MAX_LAW_LENGTH}
             height="75px"
-            placeholder={`Law ${index + 1}...`}
+            placeholder={`第 ${index + 1} 条法律……`}
             value={value}
             onChange={(val: string) => onChange(val)}
             dontUseTabForIndent
@@ -62,7 +62,7 @@ const LawEntry = (props: {
             <Button
               icon="times"
               color="bad"
-              tooltip="Remove this law"
+              tooltip="删除此条法律"
               onClick={onRemove}
             />
           ) : (
@@ -86,7 +86,7 @@ const PurgeButton = (props: { onPurge: () => void; lawCount: number }) => {
     return (
       <Box inline>
         <Box inline color="bad" bold mr={1}>
-          Clear all fields?
+          清空所有条文？
         </Box>
         <Button
           icon="trash"
@@ -96,10 +96,10 @@ const PurgeButton = (props: { onPurge: () => void; lawCount: number }) => {
             setConfirming(false);
           }}
         >
-          Yes
+          是
         </Button>
         <Button ml={0.5} onClick={() => setConfirming(false)}>
-          Cancel
+          取消
         </Button>
       </Box>
     );
@@ -107,7 +107,7 @@ const PurgeButton = (props: { onPurge: () => void; lawCount: number }) => {
 
   return (
     <Button icon="trash" color="bad" onClick={() => setConfirming(true)}>
-      Clear All
+      全部清空
     </Button>
   );
 };
@@ -165,11 +165,11 @@ const LawsDisplay = () => {
       <Stack.Item>
         <Box px={1} pt={0.5} pb={0.3}>
           <Box bold fontSize={1.15}>
-            SET LAWS
+            制定法律
           </Box>
           <Box color="label" fontSize={0.85} mt={0.3}>
-            Draft the laws by which your subjects shall abide. Changes take
-            effect when enacted. Up to <b>{max_laws}</b> laws permitted.
+            起草臣民应当遵守的法律。修改须经
+            颁布后生效，最多可制定 <b>{max_laws}</b> 条法律。
           </Box>
         </Box>
       </Stack.Item>
@@ -192,7 +192,7 @@ const LawsDisplay = () => {
           {laws.length < max_laws ? (
             <Box textAlign="center" mt={0.5} mb={1}>
               <Button icon="plus" onClick={addLaw}>
-                Add New Law ({laws.length}/{max_laws})
+                添加法律（{laws.length}/{max_laws}）
               </Button>
             </Box>
           ) : (
@@ -203,7 +203,7 @@ const LawsDisplay = () => {
               mt={0.5}
               mb={1}
             >
-              Maximum of {max_laws} laws reached.
+              已达到 {max_laws} 条法律的上限。
             </Box>
           )}
         </Section>
@@ -218,11 +218,11 @@ const LawsDisplay = () => {
             </Stack.Item>
             <Stack.Item grow>
               <Box inline color="label" fontSize={0.85}>
-                {nonEmptyLaws.length} law
-                {nonEmptyLaws.length !== 1 && 's'} drafted
+                已起草 {nonEmptyLaws.length} 条
+                法律
                 {hasChanges && (
                   <Box inline color="average" ml={1}>
-                    (unsaved changes)
+                    （有未保存的修改）
                   </Box>
                 )}
               </Box>
@@ -235,14 +235,14 @@ const LawsDisplay = () => {
                 disabled={!hasChanges && nonEmptyLaws.length > 0}
                 tooltip={
                   !hasChanges && nonEmptyLaws.length > 0
-                    ? 'No changes to enact'
+                    ? '没有待颁布的修改'
                     : nonEmptyLaws.length === 0
-                      ? 'This will purge all existing laws!'
+                      ? '这将废除全部现行法律！'
                       : undefined
                 }
                 onClick={submitLaws}
               >
-                ENACT LAWS
+                颁布法律
               </Button>
             </Stack.Item>
           </Stack>

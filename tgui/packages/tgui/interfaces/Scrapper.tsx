@@ -74,7 +74,7 @@ const PriceCapEditor = (props: {
         disabled={priceDraft === row.price}
         onClick={() => act('set_price', { path: row.path, value: priceDraft })}
       >
-        Price
+        价格
       </button>
       <NumberInput
         value={capDraft}
@@ -91,7 +91,7 @@ const PriceCapEditor = (props: {
         disabled={capDraft === row.cap}
         onClick={() => act('set_cap', { path: row.path, value: capDraft })}
       >
-        Cap
+        上限
       </button>
     </div>
   );
@@ -106,7 +106,7 @@ const MaterialRowView = (props: {
   const advertising = !!row.advertise;
   const enabled = !!row.enabled;
   const capText =
-    row.cap > 0 ? `${row.left} of ${row.cap}` : 'no cap';
+    row.cap > 0 ? `剩余 ${row.left} / ${row.cap}` : '无上限';
   const full = row.cap > 0 && row.left === 0;
   return (
     <div
@@ -131,7 +131,7 @@ const MaterialRowView = (props: {
               }}
             >
               {' '}
-              - disabled
+              - 已停用
             </span>
           )}
         </div>
@@ -139,7 +139,7 @@ const MaterialRowView = (props: {
           <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
             {row.price}m
           </span>{' '}
-          each
+          每件
           {' - '}
           <span style={{ color: full ? SEAL_RED : INK_SOFT }}>
             {capText}
@@ -147,7 +147,7 @@ const MaterialRowView = (props: {
           {advertising && enabled && (
             <span style={{ color: SEAL_GREEN }}>
               {' '}
-              - advertised
+              - 正在宣传
             </span>
           )}
         </div>
@@ -162,7 +162,7 @@ const MaterialRowView = (props: {
               act('toggle_enable', { path: row.path })
             }
           >
-            {enabled ? 'Disable' : 'Enable'}
+            {enabled ? '停用' : '启用'}
           </button>
           <button
             type="button"
@@ -172,7 +172,7 @@ const MaterialRowView = (props: {
               act('toggle_advertise', { path: row.path })
             }
           >
-            {advertising ? 'Quiet' : 'Advertise'}
+            {advertising ? '停止宣传' : '宣传'}
           </button>
           {row.items > 0 && (
             <button
@@ -180,7 +180,7 @@ const MaterialRowView = (props: {
               style={inkButtonStyle()}
               onClick={() => act('dump_held', { path: row.path })}
             >
-              Empty ({row.items})
+              清空（{row.items}）
             </button>
           )}
         </>
@@ -193,13 +193,13 @@ export const Scrapper = () => {
   const { act, data } = useBackend<Data>();
   const isKeyholder = !!data.is_keyholder;
   return (
-    <Window width={isKeyholder ? 780 : 480} height={620} theme="parchment">
+    <Window width={isKeyholder ? 780 : 480} height={620} theme="parchment" display_title="废料回收机">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>The Scrapper</div>
+          <div style={titleStyle}>废料回收机</div>
           <div style={subtitleStyle}>
-            Bring rag and broken stock. The scrapper weighs, pays, and melts
-            down. The proprietor sets the rate.
+            送来破布和损坏的货物，回收机会称重、付款并将其
+            熔解。收购价格由经营者设定。
           </div>
           <div style={rulerStyle} />
 
@@ -220,7 +220,7 @@ export const Scrapper = () => {
                   color: SEAL_AMBER,
                 }}
               >
-                Coffer
+                钱箱
               </div>
               <div
                 style={{
@@ -241,7 +241,7 @@ export const Scrapper = () => {
                   textAlign: 'right',
                 }}
               >
-                Drop coins into the machine to fund payouts.
+                向机器投入硬币，充作收购资金。
               </div>
             )}
             {isKeyholder && (
@@ -251,7 +251,7 @@ export const Scrapper = () => {
                 disabled={data.budget <= 0}
                 onClick={() => act('withdraw')}
               >
-                Withdraw
+                提取
               </button>
             )}
             {isKeyholder && (
@@ -261,12 +261,12 @@ export const Scrapper = () => {
                 disabled={data.total_items <= 0}
                 onClick={() => act('dump_all')}
               >
-                Empty All ({data.total_items})
+                全部清空（{data.total_items}）
               </button>
             )}
           </div>
 
-          <div style={sectionHeaderStyle}>Materials Bought</div>
+          <div style={sectionHeaderStyle}>收购材料</div>
           {data.materials.length === 0 ? (
             <div
               style={{
@@ -275,7 +275,7 @@ export const Scrapper = () => {
                 color: INK_SOFT,
               }}
             >
-              No materials configured.
+              尚未设置收购材料。
             </div>
           ) : (
             data.materials.map((row) => (

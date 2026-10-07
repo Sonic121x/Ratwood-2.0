@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NumberInput } from 'tgui-core/components';
-
+import { NativeInput } from '../../components/Localized';
 import {
   cardStyle,
   fieldRowStyle,
@@ -92,10 +92,10 @@ const MaterialRow = (props: {
         opacity: enabled ? 1 : 0.5,
       }}
     >
-      <input
+      <NativeInput
         type="checkbox"
         checked={enabled}
-        title={enabled ? 'Disable this material' : 'Enable this material'}
+        title={enabled ? 'Disable this material' : 'Enable this material'} display_title={enabled ? '停用此材料' : '启用此材料'}
         onChange={() => act('toggle_material', { path: material.path })}
         style={{ cursor: 'pointer' }}
       />

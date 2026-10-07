@@ -44,73 +44,73 @@ export const MESSAGE_TYPES = [
   // Always-on types
   {
     type: MESSAGE_TYPE_SYSTEM,
-    name: 'System Messages',
-    description: 'Messages from your client, always enabled',
+    name: '系统消息',
+    description: '来自客户端的消息，始终启用',
     selector: '.boldannounce',
     important: true,
   },
   // Basic types
   {
     type: MESSAGE_TYPE_LOCALCHAT,
-    name: 'Local',
-    description: 'In-character local messages (say, emote, etc)',
+    name: '附近聊天',
+    description: '附近的角色内消息（说话、动作等）',
     selector: '.say, .emote',
   },
   {
     type: MESSAGE_TYPE_RADIO,
-    name: 'Radio',
-    description: 'All departments of radio messages',
+    name: '通讯',
+    description: '所有部门的通讯消息',
     selector:
       '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .resonate, .abductor, .alien, .changeling',
   },
   {
     type: MESSAGE_TYPE_ENTERTAINMENT,
-    name: 'Entertainment',
-    description: 'Entertainment and newscaster broadcasts',
+    name: '娱乐',
+    description: '娱乐与新闻广播',
     selector: '.enteradio, .newscaster',
   },
   {
     type: MESSAGE_TYPE_INFO,
-    name: 'Info',
-    description: 'Non-urgent messages from the game and items',
+    name: '提示',
+    description: '游戏与物品发出的非紧急提示',
     selector:
       '.notice:not(.pm), .adminnotice, .info, .sinister, .cult, .infoplain, .announce, .hear, .smallnotice, .holoparasite, .boldnotice',
   },
   {
     type: MESSAGE_TYPE_WARNING,
-    name: 'Warnings',
-    description: 'Urgent messages from the game and items',
+    name: '警告',
+    description: '游戏与物品发出的紧急消息',
     selector:
       '.warning:not(.pm), .critical, .userdanger, .italics, .alertsyndie, .warningplain',
   },
   {
     type: MESSAGE_TYPE_DEADCHAT,
-    name: 'Deadchat',
-    description: 'All of deadchat',
+    name: '亡者聊天',
+    description: '全部亡者聊天消息',
     selector: '.deadsay, .ghostalert',
   },
   {
     type: MESSAGE_TYPE_OOC,
-    name: 'OOC',
-    description: 'The bluewall of global OOC messages',
+    name: '场外聊天',
+    description: '全服场外聊天的蓝色消息',
     selector: '.ooc, .adminooc, .adminobserverooc, .oocplain',
   },
   {
     type: MESSAGE_TYPE_ADMINPM,
-    name: 'Admin PMs',
-    description: 'Messages to/from admins (adminhelp)',
+    name: '管理员私信',
+    description: '与管理员之间的求助消息',
     selector: '.pm, .adminhelp',
   },
   {
     type: MESSAGE_TYPE_COMBAT,
-    name: 'Combat Log',
-    description: 'Urist McTraitor has stabbed you with a knife!',
+    name: '战斗记录',
+    description: '例如：某人用刀刺中了你！',
     selector: '.danger',
   },
   {
     type: MESSAGE_TYPE_UNKNOWN,
-    name: 'Unsorted',
-    description: 'Everything we could not sort, always enabled',
+    name: '未分类',
+    description: '无法分类的消息，始终启用',
   },
   // Admin stuff
   {
