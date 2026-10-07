@@ -198,7 +198,7 @@
 
 /datum/advclass/mercenary/grenzelhoft/mage
 	name = "战阵学者"
-	tutorial = "你是一名战阵学者——也就是「战阵学者」——出身于声名显赫的天穹魔导学院的经验丰富的法师。你的同窗或许钻研的是召唤、附魔之类的学术方向。但你呢？你研习的是攻城之术。而且你还练得炉火纯青。"
+	tutorial = "你是一名战阵学者——一位出身于声名显赫的天穹魔导学院、经验丰富的法师。你的同窗或许钻研的是召唤、附魔之类的学术方向。但你呢？你研习的是攻城之术。而且你还练得炉火纯青。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_mage
@@ -232,7 +232,7 @@
 
 /datum/outfit/job/roguetown/mercenary/grenzelhoft_mage/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("你是一名战阵学者——也就是「战阵学者」——出身于声名显赫的天穹魔导学院的经验丰富的法师。你的同窗或许钻研的是召唤、附魔之类的学术方向。但你呢？你研习的是攻城之术。而且你还练得炉火纯青。"))
+	to_chat(H, span_warning("你是一名战阵学者——一位出身于声名显赫的天穹魔导学院、经验丰富的法师。你的同窗或许钻研的是召唤、附魔之类的学术方向。但你呢？你研习的是攻城之术。而且你还练得炉火纯青。"))
 	belt = /obj/item/storage/belt/rogue/leather/battleskirt
 	backl = /obj/item/rogueweapon/woodstaff/gefechtsgelehrter
 	cloak = /obj/item/clothing/cloak/stabard/grenzelmage

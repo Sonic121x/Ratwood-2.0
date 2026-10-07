@@ -4,7 +4,7 @@
 
 /obj/effect/proc_holder/spell/invoked/avert
 	name = "借来时光"
-	desc = "为同伴挡住冥下少女的注视，只要你的信仰与体力尚能支撑，便可阻止他们滑入死亡。"
+	desc = "为同伴挡住冥下侍女的注视，只要你的信仰与体力尚能支撑，便可阻止他们滑入死亡。"
 	overlay_icon = 'icons/mob/actions/necramiracles.dmi'
 	action_icon = 'icons/mob/actions/necramiracles.dmi'
 	overlay_state = "borrowtime"
@@ -33,7 +33,7 @@
 		return FALSE
 
 	// add the no-death trait to them....
-	user.visible_message(span_notice("当[user]将手伸向[living_target]近旁时，低语般的光点自[user]指间缓缓凝出，冥下少女的经文也从[user.p_their()]唇边流泻而出......"), span_notice("我立于[living_target]身旁，低诵那永世代求的神圣词句，再多拖住她的手片刻......"))
+	user.visible_message(span_notice("当[user]将手伸向[living_target]近旁时，低语般的光点自[user]指间缓缓凝出，冥下侍女的经文也从[user.p_their()]唇边流泻而出......"), span_notice("我立于[living_target]身旁，低诵那永世代求的神圣词句，再多拖住她的手片刻......"))
 	to_chat(user, span_small("我必须保持静止，守在[living_target]身边......"))
 	to_chat(living_target, span_warning("一种奇异的感觉在我胸口绽开，寒冷而陌生......"))
 
@@ -79,7 +79,7 @@
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/churn.ogg'
 	associated_skill = /datum/skill/magic/holy
-	invocations = list("冥下少女厌弃你们！")
+	invocations = list("冥下侍女厌弃你们！")
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	miracle = TRUE
 	devotion_cost = 20
@@ -202,7 +202,7 @@
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/churn.ogg'
 	associated_skill = /datum/skill/magic/holy
-	invocations = list("冥下少女护佑。")
+	invocations = list("冥下侍女护佑。")
 	invocation_type = "shout"
 	miracle = TRUE
 	devotion_cost = 100
@@ -267,7 +267,7 @@
 	recharge_time = 10 SECONDS
 	warnie = "spellwarning"
 	invocation_type = "whisper"
-	invocations = list("冥下少女，请引导我的目光......")
+	invocations = list("冥下侍女，请引导我的目光......")
 	associated_skill = /datum/skill/magic/holy
 	overlay_state = "necraeye"
 	action_icon_state = "necraeye"
@@ -496,7 +496,7 @@
 	overlay_state = "vengeful_spirit"
 	action_icon_state = "vengeful_spirit"
 	action_icon = 'icons/mob/actions/necramiracles.dmi'
-	invocations = list("冥下少女啊，让您黑翼的侍从回应我的呼唤吧！！")
+	invocations = list("冥下侍女啊，让您黑翼的侍从回应我的呼唤吧！！")
 	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/necra_crows/cast(list/targets, mob/living/user)
