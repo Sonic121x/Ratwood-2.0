@@ -412,7 +412,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Rejuvinate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/admin_spawn_cake(mob/living/M in GLOB.mob_list)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "赠送蛋糕切片"
 
 	if(!check_rights(R_ADMIN))
@@ -492,7 +492,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("[key_name(src)] has changed the Central Command name to: [input]")
 
 /client/proc/cmd_admin_delete(atom/A as obj|mob|turf in world)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "删除..."
 
 	if(!check_rights(R_SPAWN|R_DEBUG))
@@ -598,7 +598,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 /client/proc/cmd_admin_gib_self()
 	set name = "自身碎尸"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 
 	var/confirm = alert(src, "确定吗？", "确认", "是", "否")
 	if(confirm == "是")
@@ -682,7 +682,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 
 /client/proc/run_weather()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "触发天气"
 	set desc = ""
 	set hidden = 1 //Replaced by particle weather
@@ -747,7 +747,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 /client/proc/smite(mob/living/target as mob)
 	set name = "神罚"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 	var/static/list/punishment_list = list(

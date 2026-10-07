@@ -26,7 +26,7 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 /client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "变为简单动物"
 
 	if(!SSticker.HasRoundStarted())
@@ -211,7 +211,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	cmd_admin_areatest(FALSE)
 
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "选择职业配置"
 	if(!(ishuman(M) || isobserver(M)))
 		alert("生物无效")

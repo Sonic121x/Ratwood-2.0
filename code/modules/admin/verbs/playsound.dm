@@ -1,5 +1,5 @@
 /client/proc/play_sound(S as sound)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "声音 - 全域"
 	if(!check_rights(R_SOUND))
 		return
@@ -234,7 +234,7 @@
 */
 
 /client/proc/play_local_sound(S as sound)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "声音 - 附近"
 	if(!check_rights(R_SOUND))
 		return
@@ -245,7 +245,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_local_sound_variable(S as sound)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "声音 - 自定义范围"
 	if(!check_rights(R_SOUND))
 		return
@@ -261,7 +261,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_web_sound()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "声音 - 网络"
 	if(!check_rights(R_SOUND))
 		return
@@ -374,7 +374,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Internet Sound")
 
 /client/proc/play_music_global_url()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "音乐 - 全域网址"
 	if(!check_rights(R_SOUND))
 		return
@@ -443,7 +443,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Global Music URL")
 
 /client/proc/play_music_local_url()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "音乐 - 附近网址"
 	if(!check_rights(R_SOUND))
 		return
@@ -522,7 +522,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Music URL")
 
 /client/proc/play_music_direct_url(mob/M)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "音乐 - 指定玩家网址"
 	if(!check_rights(R_SOUND))
 		return
@@ -597,7 +597,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Direct Music URL")
 
 /client/proc/set_round_end_sound(S as sound)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "声音 - 回合结束"
 	if(!check_rights(R_SOUND))
 		return
@@ -609,7 +609,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Round End Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/stop_sounds()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "声音 - 停止所有播放"
 	if(!src.holder)
 		return

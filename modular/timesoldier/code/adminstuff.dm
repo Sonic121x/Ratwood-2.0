@@ -9,7 +9,7 @@
 #define TIMESOLDIER_SPAWN_CANCEL "Cancel"
 
 /client/proc/timesoldier_start_broadcast()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "未来广播 - 开始"
 	set desc = "通过所有时空士兵的收发器开始广播。"
 
@@ -49,7 +49,7 @@
 
 
 /client/proc/timesoldier_broadcast_message()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "未来广播 - 发送消息"
 	set desc = "通过正在广播的时空士兵收发器发送消息。"
 
@@ -85,7 +85,7 @@
 
 
 /client/proc/timesoldier_end_broadcast()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "未来广播 - 结束"
 	set desc = "结束当前的时空士兵收发器广播。"
 
@@ -138,7 +138,7 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 
 
 /client/proc/timesoldier_spawn()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "生成时空士兵"
 	set desc = "在你的管理员幽灵所在位置生成一名时空士兵。"
 

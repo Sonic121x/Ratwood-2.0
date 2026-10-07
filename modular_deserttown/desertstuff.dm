@@ -568,7 +568,7 @@
 
 /client/proc/admin_move_oasis()
 	set name = "移动幻景绿洲"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set desc = "立即将幻景绿洲强制移动至一个随机标记处"
 
 	if(!GLOB.mirage_controller)
