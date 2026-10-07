@@ -51,7 +51,7 @@ export function SettingsGeneral(props) {
             </Stack.Item>
           </Stack>
         </LabeledList.Item> */}
-        <LabeledList.Item label="Font style">
+        <LabeledList.Item label="字体样式">
           <Stack.Item>
             {!freeFont ? (
               <Collapsible
@@ -65,7 +65,7 @@ export function SettingsGeneral(props) {
                       setFreeFont(!freeFont);
                     }}
                   >
-                    Custom font
+                    自定义字体
                   </Button>
                 }
               >
@@ -83,7 +83,7 @@ export function SettingsGeneral(props) {
                       )
                     }
                   >
-                    {FONT}
+                    {FONT === 'Default' ? '默认' : FONT}
                   </Button>
                 ))}
               </Collapsible>
@@ -108,13 +108,13 @@ export function SettingsGeneral(props) {
                     setFreeFont(!freeFont);
                   }}
                 >
-                  Custom font
+                  自定义字体
                 </Button>
               </Stack>
             )}
           </Stack.Item>
         </LabeledList.Item>
-        <LabeledList.Item label="Font size" verticalAlign="middle">
+        <LabeledList.Item label="字号" verticalAlign="middle">
           <Stack textAlign="center">
             <Stack.Item grow>
               <Slider
@@ -133,7 +133,7 @@ export function SettingsGeneral(props) {
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
-        <LabeledList.Item label="Line height">
+        <LabeledList.Item label="行高">
           <Slider
             width="100%"
             step={0.01}
@@ -156,38 +156,38 @@ export function SettingsGeneral(props) {
         <Stack.Item mt={0.15}>
           <Button
             icon="compact-disc"
-            tooltip="Export chat settings"
+            tooltip="导出聊天设置"
             onClick={() => dispatch(exportSettings())}
           >
-            Export settings
+            导出设置
           </Button>
         </Stack.Item>
         <Stack.Item mt={0.15}>
           <Button.File
             accept=".json"
-            tooltip="Import chat settings"
+            tooltip="导入聊天设置"
             icon="arrow-up-from-bracket"
             onSelectFiles={(files) => importChatSettings(files)}
           >
-            Import settings
+            导入设置
           </Button.File>
         </Stack.Item>
         <Stack.Item grow mt={0.15}>
           <Button
             icon="save"
-            tooltip="Export current tab history into HTML file"
+            tooltip="将当前标签页的聊天记录导出为 HTML 文件"
             onClick={() => dispatch(saveChatToDisk())}
           >
-            Save chat log
+            保存聊天记录
           </Button>
         </Stack.Item>
         <Stack.Item mt={0.15}>
           <Button.Confirm
             icon="trash"
-            tooltip="Erase current tab history"
+            tooltip="清空当前标签页的聊天记录"
             onClick={() => dispatch(clearChat())}
           >
-            Clear chat
+            清空聊天
           </Button.Confirm>
         </Stack.Item>
       </Stack>

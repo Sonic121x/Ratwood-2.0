@@ -114,7 +114,7 @@ export const CheckboxInput = (props) => {
           </Stack.Item>
           <Stack m={1}>
             <Stack.Item>
-              <Tooltip content="Search" position="bottom">
+              <Tooltip content="搜索" position="bottom">
                 <Icon name="search" mt={0.5} />
               </Tooltip>
             </Stack.Item>

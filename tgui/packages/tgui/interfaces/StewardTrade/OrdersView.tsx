@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-
+import { NativeButton, NativeDiv } from '../../components/Localized';
 import { useBackend } from '../../backend';
 import {
   badgeStyle,
@@ -183,7 +183,7 @@ const OrderCard = (props: CardProps) => {
         })}
       </div>
       {!!o.has_warehouse && (
-        <div
+        <NativeDiv display_title={'相对于基准价格的品质倍率：\n  捡来的 25%\n  损毁的 20%\n  糟糕的 35%\n  粗制的 65%\n  粗糙的 85%\n  （标准）100%\n  精良的 110%\n  无瑕的 120%\n  杰作 135%'}
           style={{
             marginTop: '4px',
             color: INK_FAINT,
@@ -192,8 +192,8 @@ const OrderCard = (props: CardProps) => {
           }}
           title={QUALITY_TIER_TOOLTIP}
         >
-          仓库货物的报酬根据交付物品的品质调整 -80% 至 +35%.
-        </div>
+          仓库货物的报酬根据交付物品的品质调整 -80% 至 +35%。
+        </NativeDiv>
       )}
       <div style={{ marginTop: '8px' }}>
         <FulfillButton
@@ -289,14 +289,14 @@ const FulfillButton = (props: {
   }
   if (o.can_partial) {
     return (
-      <button
+      <NativeButton display_title={`部分结算：已交付价值占 ${o.partial_pct}%，按已交付部分的 85% 支付。缺少：${o.shortfall_text}`}
         type="button"
         onClick={props.onFulfill}
         title={`Settle short - ${o.partial_pct}% of value covered, paid at 85% of the delivered share. Missing: ${o.shortfall_text}`}
         style={inkButtonStyle({ color: SEAL_AMBER })}
       >
         部分交付 &mdash; {o.partial_pct}% ({o.partial_payout_preview}m)
-      </button>
+      </NativeButton>
     );
   }
   return (

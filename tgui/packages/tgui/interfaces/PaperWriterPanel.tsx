@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Box,
   Button,
-  Section,
   Stack,
 } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -129,59 +129,59 @@ export const PaperWriterPanel = () => {
   const remaining = Math.max(0, maxlen - draft.length);
 
   return (
-    <Window width={760} height={680} title="Letter Editor">
+    <Window width={760} height={680} title="Letter Editor" display_title="信件编辑器">
       <Window.Content scrollable>
         <Stack vertical fill>
           <Stack.Item>
-            <Section title="Input">
+            <Section title="Input" display_title="编辑">
               <Stack mb={1} wrap>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('**', '**')}>Bold</Button>
+                  <Button onClick={() => insertToken('**', '**')}>粗体</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('*', '*')}>Italics</Button>
+                  <Button onClick={() => insertToken('*', '*')}>斜体</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('# ')}>Header</Button>
+                  <Button onClick={() => insertToken('# ')}>标题</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('((', '))')}>Small</Button>
+                  <Button onClick={() => insertToken('((', '))')}>小字</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('\n---\n')}>Rule</Button>
+                  <Button onClick={() => insertToken('\n---\n')}>分隔线</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('\n* item')}>Bullet List</Button>
+                  <Button onClick={() => insertToken('\n* 条目')}>项目列表</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('\n1. item')}>Numbered List</Button>
+                  <Button onClick={() => insertToken('\n1. 条目')}>编号列表</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertToken('%f')}>Field</Button>
+                  <Button onClick={() => insertToken('%f')}>填写栏</Button>
                 </Stack.Item>
               </Stack>
 
               <Stack mb={1} wrap align="center">
                 <Stack.Item>
-                  <Box color="label">Color:</Box>
+                  <Box color="label">墨色：</Box>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertColorBlock('862F20')}>Red Ink</Button>
+                  <Button onClick={() => insertColorBlock('862F20')}>红墨水</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertColorBlock('14103F')}>Blue Ink</Button>
+                  <Button onClick={() => insertColorBlock('14103F')}>蓝墨水</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertColorBlock('1A3A1A')}>Green</Button>
+                  <Button onClick={() => insertColorBlock('1A3A1A')}>绿色</Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={() => insertColorBlock('8B6914')}>Gold</Button>
+                  <Button onClick={() => insertColorBlock('8B6914')}>金色</Button>
                 </Stack.Item>
               </Stack>
 
               <Box mb={1}>
                 <label>
-                  Font:{' '}
+                  字体：{' '}
                   <select
                     value={font}
                     onChange={(event) =>
@@ -191,7 +191,7 @@ export const PaperWriterPanel = () => {
                     {(fonts || []).map((fontName) => (
                       <option key={fontName} value={fontName}>
                         {fontName === 'default'
-                          ? `Standard (${standard_font || 'legacy pen'})`
+                          ? `标准（${standard_font || '旧式笔迹'}）`
                           : fontName}
                       </option>
                     ))}
@@ -200,7 +200,7 @@ export const PaperWriterPanel = () => {
               </Box>
 
               <Box mt={1} mb={1} color={remaining < 50 ? 'bad' : 'label'}>
-                Draft characters: {draft.length}/{maxlen}
+                草稿字数：{draft.length}/{maxlen}
               </Box>
               <Box mb={1}>
                 <Stack wrap>
@@ -209,14 +209,14 @@ export const PaperWriterPanel = () => {
                       icon="sync"
                       color={previewDirty ? 'average' : undefined}
                       onClick={updatePreview}>
-                      Update Preview
+                      更新预览
                     </Button>
                   </Stack.Item>
                   <Stack.Item>
                     <Button
                       icon="question-circle"
                       onClick={() => act('help')}>
-                      Help
+                      帮助
                     </Button>
                   </Stack.Item>
                 </Stack>
@@ -232,13 +232,13 @@ export const PaperWriterPanel = () => {
                 onChange={(event) => pushDraft(event.target.value)}
                 onFocus={() => { isFocused.current = true; }}
                 onBlur={() => { isFocused.current = false; }}
-                placeholder="Write your letter..."
+                placeholder="在此书写信件……"
               />
             </Section>
           </Stack.Item>
 
           <Stack.Item>
-            <Section title="Preview">
+            <Section title="Preview" display_title="预览">
               <Box
                 style={{
                   background: '#fdf6e3',
@@ -268,7 +268,7 @@ export const PaperWriterPanel = () => {
                     setPreviewDirty(false);
                     act('sign', { draft, font, seq: nextActionSeq() });
                   }}>
-                  Done
+                  完成
                 </Button>
               </Stack.Item>
               <Stack.Item>
@@ -284,7 +284,7 @@ export const PaperWriterPanel = () => {
                     setPreviewDirty(false);
                     act('clear', { seq: nextActionSeq() });
                   }}>
-                  Clear
+                  清空
                 </Button>
               </Stack.Item>
               <Stack.Item>
@@ -292,7 +292,7 @@ export const PaperWriterPanel = () => {
                   color="bad"
                   icon="times"
                   onClick={() => act('close')}>
-                  Close
+                  关闭
                 </Button>
               </Stack.Item>
             </Stack>

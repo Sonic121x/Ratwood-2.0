@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box, Button, Section, Stack } from 'tgui-core/components';
+import { Box, Button, Stack } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
-
+import { Section } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -76,7 +76,7 @@ export const AdminHelpChat = (props) => {
     <Window
       width={600}
       height={700}
-      title={`Admin Help - Ticket #${ticket_id}`}
+      title={`Admin Help - Ticket #${ticket_id}`} display_title={`管理员求助 - 工单 #${ticket_id}`}
     >
       <Window.Content scrollable>
         <Stack vertical fill>
@@ -89,13 +89,13 @@ export const AdminHelpChat = (props) => {
                   </Box>
                   {!is_admin && (
                     <Box color="label" fontSize="0.9em" mt={0.5}>
-                      Your conversation with the admin team
+                      你与管理团队的对话
                     </Box>
                   )}
                 </Stack.Item>
                 <Stack.Item>
                   <Box color={getStatusColor()} bold>
-                    {ticket_state}
+                    {({ ACTIVE: '处理中', CLOSED: '已关闭', RESOLVED: '已解决' } as Record<string, string>)[ticket_state] ?? ticket_state}
                   </Box>
                 </Stack.Item>
               </Stack>
@@ -103,14 +103,14 @@ export const AdminHelpChat = (props) => {
           </Stack.Item>
 
           <Stack.Item grow>
-            <Section fill scrollable title="Messages">
+            <Section fill scrollable title="Messages" display_title="消息">
               <Stack vertical>
                 {messages.length === 0 ? (
                   <Stack.Item>
                     <Box color="label" italic p={2} textAlign="center">
                       {is_admin
-                        ? 'No messages yet. Send a message to start the conversation.'
-                        : 'Your message has been sent to the admin team. Please wait for a response.'}
+                        ? '暂无消息。发送消息以开始对话。'
+                        : '你的消息已发送给管理团队，请等待回复。'}
                     </Box>
                   </Stack.Item>
                 ) : (
@@ -150,7 +150,7 @@ export const AdminHelpChat = (props) => {
                         {msg.embed_type === 'image' && msg.embed_url ? (
                           <img
                             src={msg.embed_url}
-                            alt="Embedded image"
+                            alt="嵌入的图片"
                             style={{
                               maxWidth: '100%',
                               maxHeight: '400px',
@@ -194,8 +194,8 @@ export const AdminHelpChat = (props) => {
                     className="Input TextArea Input--fluid"
                     placeholder={
                       can_send
-                        ? 'Type your message... (Shift+Enter for newline)'
-                        : 'This ticket is closed'
+                        ? '输入消息……（Shift+Enter 换行）'
+                        : '此工单已关闭'
                     }
                     value={inputText}
                     rows={inputRows}
@@ -225,19 +225,19 @@ export const AdminHelpChat = (props) => {
                     disabled={!can_send || !inputText.trim()}
                     onClick={handleSend}
                   >
-                    Send
+                    发送
                   </Button>
                 </Stack.Item>
               </Stack>
               {!can_send && (
                 <Box color="bad" mt={0.5} fontSize="0.9em">
-                  This ticket is {ticket_state.toLowerCase()}. Use the adminhelp
-                  verb to open a new ticket if needed.
+                  此工单{({ ACTIVE: '正在处理', CLOSED: '已关闭', RESOLVED: '已解决' } as Record<string, string>)[ticket_state] ?? ticket_state}。如需再次求助，请使用管理员求助
+                  指令创建新工单。
                 </Box>
               )}
               {can_send && !is_admin && (
                 <Box color="label" mt={0.5} fontSize="0.85em" italic>
-                  Please be patient. An admin will respond as soon as possible.
+                  请耐心等待，管理员会尽快回复。
                 </Box>
               )}
             </Section>

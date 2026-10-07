@@ -4,9 +4,9 @@ import {
   Button,
   Input,
   NoticeBox,
-  Section,
   Stack,
 } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -62,7 +62,7 @@ export const ChimericTechWeb = (props) => {
   return (
     <Window width={600} height={500} title="Chimeric Tech Web" display_title="嵌合科技树">
       <Window.Content>
-        <Section title="Current Status">
+        <Section title="Current Status" display_title="当前状态">
           <Stack>
             <Stack.Item grow>
                 <Box bold color="label">科技点：</Box> {points}
@@ -74,7 +74,7 @@ export const ChimericTechWeb = (props) => {
         </Section>
 
         <Section
-          title="Available Research"
+          title="Available Research" display_title="可进行的研究"
           fill
           scrollable
           buttons={<SearchBar search={search} setSearch={setSearch} />}

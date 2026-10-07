@@ -1688,5 +1688,5 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				entry["health_percent"] = round(clamp((L.health / L.maxHealth) * 100, 0, 100))
 		if(istype(M, /mob/living/carbon/human/species/npc/deadite))
 			entry["role"] = "尸鬼NPC"
-
+		entry["display_role"] = entry["role"] == "尸鬼NPC" ? entry["role"] : (SSjob.GetJob(entry["role"] || entry["job"])?.display_title || entry["role"] || entry["job"])
 	return entry
