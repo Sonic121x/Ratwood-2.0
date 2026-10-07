@@ -65,7 +65,7 @@ export const ExaminePanel = (props) => {
           {!!is_vet}
           <Button
             icon={collapsed ? 'chevron-right' : 'chevron-left'}
-            tooltip={collapsed ? 'Expand' : 'Collapse'}
+            tooltip={collapsed ? '展开' : '收起'}
             tooltipPosition="bottom-start"
             selected={collapsed}
             onClick={toggleCollapse}
@@ -73,7 +73,7 @@ export const ExaminePanel = (props) => {
           <Button
             color="green"
             icon="music"
-            tooltip="Music player"
+            tooltip="音乐播放器"
             tooltipPosition="bottom-start"
             onClick={() => act('toggle')}
             disabled={!has_song}
@@ -96,7 +96,7 @@ export const ExaminePanel = (props) => {
                   page={Page.FlavorText}
                   setPage={setCurrentPage}
                 >
-                  Flavor Text
+                  角色描述
                 </PageButton>
               </Stack.Item>
               <Stack.Item grow>
@@ -105,7 +105,7 @@ export const ExaminePanel = (props) => {
                   page={Page.ImageGallery}
                   setPage={setCurrentPage}
                 >
-                  Image Gallery
+                  图片集
                 </PageButton>
               </Stack.Item>
             </Stack>

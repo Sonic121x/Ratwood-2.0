@@ -29,7 +29,7 @@ export function LoadingScreen(props: LoadingScreenProps) {
       <Stack.Item>
         <Icon color="blue" name="toolbox" spin size={4} />
       </Stack.Item>
-      <Stack.Item>{props.label || 'Please wait...'}</Stack.Item>
+      <Stack.Item>{props.label || '请稍候……'}</Stack.Item>
     </Stack>
   );
 }

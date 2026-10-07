@@ -6,11 +6,11 @@ import {
   Icon,
   LabeledList,
   NoticeBox,
-  Section,
   Stack,
   Tooltip,
 } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -65,7 +65,7 @@ type Data = {
   VoteCD: number;
   deadVoteEnabled: BooleanLike;
 };
-
+const displayVoteName = (name: string) => ({ Custom: '自定义', endround: '结束本轮', Map: '地图', Restart: '重启回合', chaos: '回合类型' })[name] || name;
 export const VotePanel = (props) => {
   const { act, data } = useBackend<Data>();
   const { currentVote, user, LastVoteTime, VoteCD } = data;
@@ -80,12 +80,12 @@ export const VotePanel = (props) => {
   }
 
   return (
-    <Window title={windowTitle} width={400} height={500}>
+    <Window title={windowTitle} display_title={`投票${currentVote ? `：${currentVote.question || displayVoteName(currentVote.vote.name)}` : ''}`} width={400} height={500}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
             <Section
-              title="New Vote"
+              title="New Vote" display_title="发起投票"
               buttons={
                 !!user.isLowerAdmin && (
                   <Stack>
@@ -95,7 +95,7 @@ export const VotePanel = (props) => {
                         disabled={LastVoteTime + VoteCD <= 0}
                         onClick={() => act('resetCooldown')}
                       >
-                        Reset cooldown
+                        重置冷却时间
                       </Button>
                     </Stack.Item>
                     <Stack.Item>
@@ -105,7 +105,7 @@ export const VotePanel = (props) => {
                         checked={!data.deadVoteEnabled}
                         color="primary"
                       >
-                        Dead votes
+                        亡者投票
                       </Button.Checkbox>
                     </Stack.Item>
                   </Stack>
@@ -116,7 +116,7 @@ export const VotePanel = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item grow>
-            <Section fill scrollable title="Active Vote">
+            <Section fill scrollable title="Active Vote" display_title="正在进行的投票">
               <ChoicesPanel />
             </Section>
           </Stack.Item>
@@ -139,9 +139,9 @@ const VoteOptionDimmer = (props) => {
     <Dimmer>
       <Box textAlign="center">
         <Box fontSize={2} bold>
-          Vote Cooldown
+          投票冷却中
         </Box>
-        <Box fontSize={1.5}>{Math.floor((VoteCD + LastVoteTime) / 10)}s</Box>
+        <Box fontSize={1.5}>{Math.floor((VoteCD + LastVoteTime) / 10)}秒</Box>
       </Box>
     </Dimmer>
   );
@@ -171,7 +171,7 @@ const VoteOptions = (props) => {
                     }
                     tooltip={
                       option.config === VoteConfig.None
-                        ? 'This vote cannot be disabled.'
+                        ? '此投票不可禁用。'
                         : null
                     }
                     onClick={() =>
@@ -180,7 +180,7 @@ const VoteOptions = (props) => {
                       })
                     }
                   >
-                    Active
+                    启用
                   </Button.Checkbox>
                 </Stack.Item>
               )}
@@ -198,7 +198,7 @@ const VoteOptions = (props) => {
               <Stack.Item>
                 <Tooltip content={option.message}>
                   <BlockQuote style={{ lineHeight: '1.7em' }}>
-                    {option.name} Vote
+                    {displayVoteName(option.name)}投票
                   </BlockQuote>
                 </Tooltip>
               </Stack.Item>
@@ -217,7 +217,7 @@ const ChoicesPanel = (props) => {
   return (
     <>
       {currentVote && currentVote.countMethod === VoteSystem.VOTE_SINGLE ? (
-        <NoticeBox success>Select one option</NoticeBox>
+        <NoticeBox success>请选择一项</NoticeBox>
       ) : null}
       {currentVote &&
       currentVote.choices.length !== 0 &&
@@ -231,7 +231,7 @@ const ChoicesPanel = (props) => {
                 buttons={
                   <Button
                     tooltip={
-                      user.isGhost && 'Ghost voting was disabled by an admin.'
+                      user.isGhost && '管理员已禁止幽灵投票。'
                     }
                     disabled={
                       user.singleSelection === choice.name || user.isGhost
@@ -240,7 +240,7 @@ const ChoicesPanel = (props) => {
                       act('voteSingle', { voteOption: choice.name });
                     }}
                   >
-                    Vote
+                    投票
                   </Button>
                 }
               >
@@ -248,7 +248,7 @@ const ChoicesPanel = (props) => {
                   choice.name === user.singleSelection && (
                     <Icon align="right" mr={2} color="green" name="vote-yea" />
                   )}
-                {currentVote.displayStatistics ? `${choice.votes} Votes` : null}
+                {currentVote.displayStatistics ? `${choice.votes} 票` : null}
               </LabeledList.Item>
               <LabeledList.Divider />
             </Box>
@@ -256,7 +256,7 @@ const ChoicesPanel = (props) => {
         </LabeledList>
       ) : null}
       {currentVote && currentVote.countMethod === VoteSystem.VOTE_MULTI ? (
-        <NoticeBox success>Select any number of options</NoticeBox>
+        <NoticeBox success>可选择任意数量的选项</NoticeBox>
       ) : null}
       {currentVote &&
       currentVote.choices.length !== 0 &&
@@ -270,14 +270,14 @@ const ChoicesPanel = (props) => {
                 buttons={
                   <Button
                     tooltip={
-                      user.isGhost && 'Ghost voting was disabled by an admin.'
+                      user.isGhost && '管理员已禁止幽灵投票。'
                     }
                     disabled={user.isGhost}
                     onClick={() => {
                       act('voteMulti', { voteOption: choice.name });
                     }}
                   >
-                    Vote
+                    投票
                   </Button>
                 }
               >
@@ -285,14 +285,14 @@ const ChoicesPanel = (props) => {
                 user.multiSelection[user.ckey.concat(choice.name)] === 1 ? (
                   <Icon align="right" mr={2} color="blue" name="vote-yea" />
                 ) : null}
-                {choice.votes} Votes
+                {choice.votes} 票
               </LabeledList.Item>
               <LabeledList.Divider />
             </Box>
           ))}
         </LabeledList>
       ) : null}
-      {currentVote ? null : <NoticeBox>No vote active!</NoticeBox>}
+      {currentVote ? null : <NoticeBox>当前没有进行中的投票！</NoticeBox>}
     </>
   );
 };
@@ -306,8 +306,8 @@ const TimePanel = (props) => {
       <Stack justify="space-between">
         <Box fontSize={1.5}>
           {currentVote
-            ? `Time remaining: ${currentVote.timeRemaining}s`
-            : 'No current vote'}
+            ? `剩余时间：${currentVote.timeRemaining}秒`
+            : '当前没有投票'}
         </Box>
         {!!user.isLowerAdmin && (
           <Stack>
@@ -318,7 +318,7 @@ const TimePanel = (props) => {
                 onClick={() => act('endNow')}
                 style={{ lineHeight: '1.8em' }}
               >
-                End Now
+                立即结束
               </Button>
             </Stack.Item>
             <Stack.Item>
@@ -328,7 +328,7 @@ const TimePanel = (props) => {
                 onClick={() => act('cancel')}
                 style={{ lineHeight: '1.8em' }}
               >
-                Cancel
+                取消
               </Button>
             </Stack.Item>
           </Stack>
