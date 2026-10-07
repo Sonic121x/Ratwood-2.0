@@ -1,7 +1,7 @@
 //intent datums ฅ^•ﻌ•^ฅ
 
 /datum/intent/priest_smite
-	name = "electrocute"
+	name = "电击"
 	blade_class = null
 	desc = "Shock a target. Only works inside the Church."
 	icon_state = "inuse"
@@ -9,8 +9,8 @@
 	noaa = TRUE
 
 /datum/intent/priest_silence
-	name = "silence"
-	desc = "Sometimes desperate measures are required for intelligent conversation."
+	name = "缄默"
+	desc = "有时候，为了进行一场明智的交谈，不得不采取些极端手段。"
 	blade_class = null
 	icon_state = "inuse"
 	tranged = TRUE
@@ -434,7 +434,7 @@
 		var/mob/living/carbon/human/HU = user
 
 		if(HU.job != "Bishop")
-			to_chat(user, "<font color='yellow'>THIS IS NOT YOURS.</font>")
+			to_chat(user, "<font color='yellow'>这不属于你。</font>")
 			return
 
 		if(ishuman(target))
@@ -442,35 +442,35 @@
 			var/area/rogue/target_area = get_area(H)
 
 			if(!target_area.holy_area)
-				to_chat(user, span_danger("The staff cannot be used on targets outside of the church!"))
+				to_chat(user, span_danger("这根法杖不能对教堂外的目标使用！"))
 				return
 
 			if(H == HU)
 				return
 
 			if(!COOLDOWN_FINISHED(src, scepter))
-				to_chat(user, span_danger("The [src] is not ready yet! [round(COOLDOWN_TIMELEFT(src, scepter) / 10, 1)] seconds left!"))
+				to_chat(user, span_danger("[src]还没准备好！还剩 [round(COOLDOWN_TIMELEFT(src, scepter) / 10, 1)] 秒！"))
 				return
 
 			if(!(H in SStreasury.bank_accounts))
-				to_chat(user, span_danger("The target must have a Nervelock account!")) //no stunlocking antags sorry buddy
+				to_chat(user, span_danger("目标必须拥有神经锁账户！")) //no stunlocking antags sorry buddy
 				return
 
 			if(istype(user.used_intent, /datum/intent/priest_smite))
-				HU.visible_message(span_warning("[HU] smites [H] with the [src]!"))
+				HU.visible_message(span_warning("[HU]用[src]惩击了[H]！"))
 				user.Beam(target,icon_state="lightning[rand(1,12)]",time=5)
 				H.electrocute_act(5, src)
 				COOLDOWN_START(src, scepter, 10 SECONDS)
 				H.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
 				H.ignite_mob()
-				to_chat(H, span_danger("I'm smote by divine power!"))
+				to_chat(H, span_danger("我遭到了神力的惩击！"))
 				return
 
 			if(istype(user.used_intent, /datum/intent/priest_silence))
-				HU.visible_message("<span class='warning'>[HU] silences [H] with \the [src].</span>")
+				HU.visible_message("<span class='warning'>[HU]用\the [src]让[H]失声了。</span>")
 				H.set_silence(20 SECONDS)
 				COOLDOWN_START(src, scepter, 5 SECONDS)
-				to_chat(H, "<span class='danger'>I'm silenced by divine power!</span>")
+				to_chat(H, "<span class='danger'>神力令我噤声！</span>")
 				return
 
 /obj/item/rogueweapon/woodstaff/aries/getonmobprop(tag)

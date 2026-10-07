@@ -39,7 +39,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/blowingdust
 	name = "醉心迷尘"
-	desc = "朝目标吹去一种强效止痛药粉。"
+	desc = "朝目标吹去一种强效止痛药粉，反复使用可能导致药物过量。"
 	overlay_icon = 'icons/mob/actions/baothamiracles.dmi'
 	action_icon = 'icons/mob/actions/baothamiracles.dmi'
 	overlay_state = "powder"
