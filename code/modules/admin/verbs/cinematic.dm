@@ -1,6 +1,6 @@
 /client/proc/cinematic()
 	set name = "过场动画"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set desc = ""	// Intended for testing but I thought it might be nice for events on the rare occasion Feel free to comment it out if it's not wanted.
 	set hidden = 1
 	if(!SSticker)
