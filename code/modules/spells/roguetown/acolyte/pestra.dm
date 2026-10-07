@@ -393,7 +393,7 @@
 	var/is_lethal = FALSE
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/priest
-	desc = "借 阿斯特拉塔 之意焚尽腐坏。"
+	desc = "借阿斯特拉塔之意焚尽腐坏。"
 	is_lethal = FALSE
 	recharge_time = 2 MINUTES
 	devotion_cost = 30
@@ -498,7 +498,7 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/pestra_heal
-	name = "重育"
+	name = "重生"
 	desc = "强力治疗，对受重度腐坏影响者更有效。施放需要虫灾充能。"
 	overlay_icon = 'icons/mob/actions/pestramiracles.dmi'
 	action_icon = 'icons/mob/actions/pestramiracles.dmi'
