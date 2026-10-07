@@ -19,15 +19,15 @@ GLOBAL_PROTECT(agevetted_list)
 	return FALSE
 
 /client/proc/agevet_player()
-	set category = "-Server-"
-	set name = "BC - Add Age Vetted"
+	set category = "-服务器-"
+	set name = "准入管理 - 添加年龄认证"
 
 	if(!check_rights())
 		return
 
-	var/selection = input("Who would you like to verify?", "CKEY", "") as text|null
+	var/selection = input("要为谁进行认证？", "玩家账号（CKEY）", "") as text|null
 	if(selection)
-		if(alert(src, "Confirm: [selection] as being ID verified?", "Age Vetting", "Yes!", "No") == "Yes!")
+		if(alert(src, "确认 [selection] 已通过身份证明认证？", "年龄认证", "是！", "否") == "是！")
 			add_agevet(selection, ckey, src) // keep the client ref to save us a duplicate list call
 
 /proc/add_agevet(target_ckey, admin_ckey = "SYSTEM", clientref)
@@ -38,12 +38,12 @@ GLOBAL_PROTECT(agevetted_list)
 		return
 
 	if(LAZYACCESS(GLOB.agevetted_list, target_ckey))
-		to_chat(clientref, span_warning("The ckey \"[target_ckey]\" has already been ID vetted."))
+		to_chat(clientref, span_warning("账号 \"[target_ckey]\" 已通过身份证明认证。"))
 		return
 
 	target_ckey = ckey(target_ckey)
 	GLOB.agevetted_list[target_ckey] = admin_ckey
-	message_admins("ID VETTING: Added [target_ckey] to the agevetted list[admin_ckey? " by [admin_ckey]":""]")
+	message_admins("身份证明认证：已将 [target_ckey] 加入年龄认证名单[admin_ckey? "，操作者：[admin_ckey]":""]")
 	log_admin("ID VETTING: Added [target_ckey] to the agevetted list[admin_ckey? " by [admin_ckey]":""]")
 	save_agevets_to_file()
 	log_agevet_to_csv(target_ckey, admin_ckey)
@@ -51,7 +51,7 @@ GLOBAL_PROTECT(agevetted_list)
 	// if they're online, notify
 	var/recipient = LAZYACCESS(GLOB.directory, target_ckey)
 	if(recipient)
-		to_chat(recipient, span_notice("Good news! You are now ID verified."))
+		to_chat(recipient, span_notice("好消息！你已通过身份证明认证。"))
 
 // Read/write the assoc list. Player ckey maps to vetting admin ckey.
 /proc/load_agevets_from_file()

@@ -358,7 +358,7 @@
 	return TRUE
 
 /client/proc/run_particle_weather()
-	set category = "-GameMaster-"
+	set category = "-主持-"
 	set name = "天气 - 粒子"
 	set desc = "触发一场粒子天气"
 
@@ -372,12 +372,12 @@
 
 	SSParticleWeather.run_weather(weather_type, TRUE)
 
-	message_admins("[key_name_admin(usr)] started weather of type [weather_type].")
+	message_admins("[key_name_admin(usr)] 启动了 [weather_type] 类型的天气。")
 	log_admin("[key_name(usr)] started weather of type [weather_type].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Particle Weather")
 
 /client/proc/run_custom_particle_weather()
-	set category = "-GameMaster-"
+	set category = "-主持-"
 	set name = "天气 - 彩色粒子"
 	set desc = "触发一场粒子天气"
 
@@ -401,13 +401,13 @@
 	"Gold" = "#f9a602"
 	)
 
-	var/color = input("选择天气颜色", "天气")  as null|anything in selectable_colors
+	var/color = list("基础雨色" = "Base Rain", "基础雪色" = "Base Snow", "黑色" = "Black", "橄榄色" = "Olive", "绿色" = "Green", "品红色" = "Magenta", "红色" = "Red", "金色" = "Gold")[input("选择天气颜色", "天气") as null|anything in list("基础雨色", "基础雪色", "黑色", "橄榄色", "绿色", "品红色", "红色", "金色")]
 	if(!color )
 		color = "#ccffff" //base rain color
 
 	SSParticleWeather.run_weather(weather_type, TRUE, color)
 
-	message_admins("[key_name_admin(usr)] started weather of type [weather_type].")
+	message_admins("[key_name_admin(usr)] 启动了 [weather_type] 类型的天气。")
 	log_admin("[key_name(usr)] started weather of type [weather_type].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Custom Particle Weather")
 

@@ -108,14 +108,14 @@
 	var/panel_height = 620
 	if(edit_id)
 		panel_height = 240
-	var/datum/browser/panel = new(usr, "banpanel", "Banning Panel", 910, panel_height)
+	var/datum/browser/panel = new(usr, "banpanel", "封禁面板", 910, panel_height)
 	panel.add_stylesheet("admin_panelscss", 'html/admin/admin_panels.css')
 	panel.add_stylesheet("banpanelcss", 'html/admin/banpanel.css')
 	panel.add_stylesheet("admin_panelscss3", 'html/admin/admin_panels_css3.css')
 	panel.add_script("banpaneljs", 'html/admin/banpanel.js')
 	var/list/output = list("<form method='get' action='?src=[REF(src)]'>[HrefTokenFormField()]")
 	output += {"<input type='hidden' name='src' value='[REF(src)]'>
-	<label class='inputlabel checkbox'>Key:
+	<label class='inputlabel checkbox'>账号：
 	<input type='checkbox' id='keycheck' name='keycheck' value='1'[player_key ? " checked": ""]>
 	<div class='inputbox'></div></label>
 	<input type='text' name='keytext' size='26' value='[player_key]'>
@@ -128,75 +128,75 @@
 	<div class='inputbox'></div></label>
 	<input type='text' name='cidtext' size='14' value='[player_cid]'>
 	<br>
-	<label class='inputlabel checkbox'>Use IP and CID from last connection of key
+	<label class='inputlabel checkbox'>使用该账号上次连接时的 IP 和 CID
 	<input type='checkbox' id='lastconn' name='lastconn' value='1' [(isnull(duration) && !player_ip) || (!player_cid) ? " checked": ""]>
 	<div class='inputbox'></div></label>
-	<label class='inputlabel checkbox'>Applies to Admins
+	<label class='inputlabel checkbox'>同样适用于管理员
 	<input type='checkbox' id='applyadmins' name='applyadmins' value='1'[applies_to_admins ? " checked": ""]>
 	<div class='inputbox'></div></label>
-	<input type='submit' value='Submit'>
+	<input type='submit' value='提交'>
 	<br>
 	<div class='row'>
 		<div class='column left'>
-			Duration type
+			时限类型
 			<br>
-			<label class='inputlabel radio'>Permanent
+			<label class='inputlabel radio'>永久
 			<input type='radio' id='permanent' name='radioduration' value='permanent'[isnull(duration) ? " checked" : ""]>
 			<div class='inputbox'></div></label>
 			<br>
-			<label class='inputlabel radio'>Temporary
+			<label class='inputlabel radio'>临时
 			<input type='radio' id='temporary' name='radioduration' value='temporary'[duration ? " checked" : ""]>
 			<div class='inputbox'></div></label>
 			<input type='text' name='duration' size='7' value='[duration]'>
 			<div class="select">
 				<select name='intervaltype'>
-					<option value='SECOND'>Seconds</option>
-					<option value='MINUTE' selected>Minutes</option>
-					<option value='HOUR'>Hours</option>
-					<option value='DAY'>Days</option>
-					<option value='WEEK'>Weeks</option>
-					<option value='MONTH'>Months</option>
-					<option value='YEAR'>Years</option>
+					<option value='SECOND'>秒</option>
+					<option value='MINUTE' selected>分钟</option>
+					<option value='HOUR'>小时</option>
+					<option value='DAY'>天</option>
+					<option value='WEEK'>周</option>
+					<option value='MONTH'>月</option>
+					<option value='YEAR'>年</option>
 				</select>
 			</div>
 		</div>
 		<div class='column middle'>
-			Ban type
+			封禁类型
 			<br>
-			<label class='inputlabel radio'>Server
+			<label class='inputlabel radio'>服务器
 			<input type='radio' id='server' name='radioban' value='server'[role == "Server" ? " checked" : ""][edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
 			<br>
-			<label class='inputlabel radio'>Role
+			<label class='inputlabel radio'>角色
 			<input type='radio' id='role' name='radioban' value='role'[role == "Server" ? "" : " checked"][edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
 		</div>
 		<div class='column right'>
-			Severity
+			严重程度
 			<br>
-			<label class='inputlabel radio'>None
+			<label class='inputlabel radio'>无
 			<input type='radio' id='none' name='radioseverity' value='none'[edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
-			<label class='inputlabel radio'>Medium
+			<label class='inputlabel radio'>中等
 			<input type='radio' id='medium' name='radioseverity' value='medium'[edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
 			<br>
-			<label class='inputlabel radio'>Minor
+			<label class='inputlabel radio'>轻微
 			<input type='radio' id='minor' name='radioseverity' value='minor'[edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
-			<label class='inputlabel radio'>High
+			<label class='inputlabel radio'>严重
 			<input type='radio' id='high' name='radioseverity' value='high'[edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
 		</div>
 		<div class='column'>
-			Reason
+			原因
 			<br>
 			<textarea class='reason' name='reason'>[reason]</textarea>
 		</div>
 	</div>
 	"}
 	if(edit_id)
-		output += {"<label class='inputlabel checkbox'>Mirror edits to matching bans
+		output += {"<label class='inputlabel checkbox'>同步修改匹配的封禁
 		<input type='checkbox' id='mirroredit' name='mirroredit' value='1'>
 		<div class='inputbox'></div></label>
 		<input type='hidden' name='editid' value='[edit_id]'>
@@ -209,7 +209,7 @@
 		<input type='hidden' name='page' value='[page]'>
 		<input type='hidden' name='adminkey' value='[admin_key]'>
 		<br>
-		When ticked, edits here will also affect bans created with matching ckey, IP, CID and time. Use this to edit all role bans which were made at the same time.
+		勾选后，此处的修改也会应用于 ckey、IP、CID 和创建时间相同的封禁，可用于同时修改同批创建的所有角色封禁。
 		"}
 	else
 		output += "<input type='hidden' name='roleban_delimiter' value='1'>"
@@ -284,7 +284,7 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/list/error_state = list()
 	var/player_key
@@ -311,7 +311,7 @@
 	if(href_list["keycheck"])
 		player_key = href_list["keytext"]
 		if(!player_key)
-			error_state += "Key was ticked but none was provided."
+			error_state += "已勾选账号，但未填写账号。"
 	if(href_list["ipcheck"])
 		ip_check = TRUE
 	if(href_list["cidcheck"])
@@ -323,15 +323,15 @@
 		if(ip_check)
 			player_ip = href_list["iptext"]
 			if(!player_ip && !use_last_connection)
-				error_state += "IP was ticked but none was provided."
+				error_state += "已勾选 IP，但未填写 IP。"
 		if(cid_check)
 			player_cid = href_list["cidtext"]
 			if(!player_cid && !use_last_connection)
-				error_state += "CID was ticked but none was provided."
+				error_state += "已勾选 CID，但未填写 CID。"
 	if(!use_last_connection && !player_ip && !player_cid && !player_key)
-		error_state += "At least a key, IP or CID must be provided."
+		error_state += "必须至少提供账号、IP 或 CID 中的一项。"
 	if(use_last_connection && !ip_check && !cid_check)
-		error_state += "Use last connection was ticked, but neither IP nor CID was."
+		error_state += "已勾选使用上次连接信息，但未勾选 IP 或 CID。"
 	if(href_list["applyadmins"])
 		applies_to_admins = TRUE
 	switch(href_list["radioduration"])
@@ -341,12 +341,12 @@
 			duration = href_list["duration"]
 			interval = href_list["intervaltype"]
 			if(!duration)
-				error_state += "Temporary ban was selected but no duration was provided."
+				error_state += "已选择临时封禁，但未填写时长。"
 		else
-			error_state += "No duration was selected."
+			error_state += "未选择封禁时限。"
 	reason = href_list["reason"]
 	if(!reason)
-		error_state += "No reason was provided."
+		error_state += "未提供原因。"
 	if(href_list["editid"])
 		edit_id = href_list["editid"]
 		if(href_list["mirroredit"])
@@ -370,27 +370,27 @@
 		if(reason != href_list["oldreason"])
 			changes += list("Reason" = "[href_list["oldreason"]]<br>to<br>[reason]")
 		if(!changes.len)
-			error_state += "No changes were detected."
+			error_state += "未检测到修改。"
 	else
 		severity = href_list["radioseverity"]
 		if(!severity)
-			error_state += "No severity was selected."
+			error_state += "未选择严重程度。"
 		switch(href_list["radioban"])
 			if("server")
 				roles_to_ban += "Server"
 			if("role")
 				href_list.Remove("Command", "Security", "Engineering", "Medical", "Science", "Supply", "Silicon", "Abstract", "Service", "Ghost and Other Roles", "Antagonist Positions") //remove the role banner hidden input values
 				if(href_list[href_list.len] == "roleban_delimiter")
-					error_state += "Role ban was selected but no roles to ban were selected."
+					error_state += "已选择角色封禁，但未选择要封禁的角色。"
 				else
 					var/delimiter_pos = href_list.Find("roleban_delimiter")
 					href_list.Cut(1, delimiter_pos+1)//remove every list element before and including roleban_delimiter so we have a list of only the roles to ban
 					for(var/key in href_list) //flatten into a list of only unique keys
 						roles_to_ban |= key
 			else
-				error_state += "No ban type was selected."
+				error_state += "未选择封禁类型。"
 	if(error_state.len)
-		to_chat(usr, span_danger("Ban not [edit_id ? "edited" : "created"] because the following errors were present:\n[error_state.Join("\n")]"))
+		to_chat(usr, span_danger("由于以下错误，未能[edit_id ? "修改" : "创建"]封禁：\n[error_state.Join("\n")]"))
 		return
 	if(edit_id)
 		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes)
@@ -401,7 +401,7 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/player_ckey = ckey(player_key)
 	if(player_ckey)
@@ -420,11 +420,11 @@
 					player_cid = query_create_ban_get_player.item[3]
 		else
 			if(use_last_connection)
-				if(alert(usr, "[player_key]/([player_ckey]) has not been seen before, unable to use IP and CID from last connection. Are you sure you want to create a ban for them?", "Unknown key", "Yes", "No", "Cancel") != "Yes")
+				if(alert(usr, "没有 [player_key]/([player_ckey]) 的历史记录，无法读取上次连接的 IP 和 CID。确定为其创建封禁吗？", "未知账号", "是", "否", "取消") != "是")
 					qdel(query_create_ban_get_player)
 					return
 			else
-				if(alert(usr, "[player_key]/([player_ckey]) has not been seen before, are you sure you want to create a ban for them?", "Unknown key", "Yes", "No", "Cancel") != "Yes")
+				if(alert(usr, "没有 [player_key]/([player_ckey]) 的历史记录，确定为其创建封禁吗？", "未知账号", "是", "否", "取消") != "是")
 					qdel(query_create_ban_get_player)
 					return
 		qdel(query_create_ban_get_player)
@@ -448,7 +448,7 @@
 			if(R_EVERYTHING && !(R_EVERYTHING & rank.can_edit_rights)) //edit rights are a more effective way to check hierarchical rank since many non-headmins have R_PERMISSIONS now
 				max_adminbans = MAX_ADMINBANS_PER_HEADMIN
 			if(adminban_count >= max_adminbans)
-				to_chat(usr, span_danger("You've already logged [max_adminbans] admin ban(s) or more. Do not abuse this function!"))
+				to_chat(usr, span_danger("你已记录至少 [max_adminbans] 次针对管理员的封禁，请勿滥用此功能！"))
 				qdel(query_check_adminban_count)
 				return
 		qdel(query_check_adminban_count)
@@ -457,10 +457,10 @@
 	duration = text2num(duration)
 	if (!(interval in list("SECOND", "MINUTE", "HOUR", "DAY", "WEEK", "MONTH", "YEAR")))
 		interval = "MINUTE"
-	var/time_message = "[duration] [LOWER_TEXT(interval)]" //no DisplayTimeText because our duration is of variable interval type
+	var/time_message = "[duration] [list("SECOND" = "秒", "MINUTE" = "分钟", "HOUR" = "小时", "DAY" = "天", "WEEK" = "周", "MONTH" = "个月", "YEAR" = "年")[interval]]" //no DisplayTimeText because our duration is of variable interval type
 	if(duration > 1) //pluralize the interval if necessary
-		time_message += "s"
-	var/note_reason = "Banned from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"] [isnull(duration) ? "permanently" : "for [time_message]"] - [reason]"
+		time_message += ""
+	var/note_reason = "[isnull(duration) ? "永久封禁" : "封禁 [time_message]"]，范围：[roles_to_ban[1] == "Server" ? "服务器" : "角色：[roles_to_ban.Join(", ")]"] - [reason]"
 	var/list/clients_online = GLOB.clients.Copy()
 	var/list/admins_online = list()
 	for(var/client/C in clients_online)
@@ -500,16 +500,16 @@
 	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
 		return
 	var/target = ban_target_string(player_key, player_ip, player_cid)
-	var/msg = "has created a [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][roles_to_ban[1] == "Server" ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]."
+	var/msg = "对 [target] 创建了[isnull(duration) ? "永久" : "临时（[time_message]）"][applies_to_admins ? "、同样适用于管理员的" : ""]封禁，范围：[roles_to_ban[1] == "Server" ? "服务器" : "[roles_to_ban.len] 个角色"]。"
 	log_admin_private("[kn] [msg][roles_to_ban[1] == "Server" ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
-	message_admins("[kna] [msg][roles_to_ban[1] == "Server" ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
+	message_admins("[kna] 对 [target] 创建了[isnull(duration) ? "永久" : "临时（[time_message]）"][applies_to_admins ? "、同样适用于管理员的" : ""]封禁：[roles_to_ban[1] == "Server" ? "服务器" : "角色：[roles_to_ban.Join("\n")]"]。\n原因：[reason]")
 	if(applies_to_admins)
 		send2irc("BAN ALERT","[kn] [msg]")
 	if(player_ckey)
 		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, 0, severity)
 	var/client/C = GLOB.directory[player_ckey]
 	var/datum/admin_help/AH = admin_ticket_log(player_ckey, "[kna] [msg]")
-	var/appeal_url = "No ban appeal url set!"
+	var/appeal_url = "尚未设置封禁申诉网址！"
 	appeal_url = CONFIG_GET(string/banappeals)
 	var/is_admin = FALSE
 	if(C)
@@ -534,18 +534,18 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
-	var/datum/browser/unban_panel = new(usr, "unbanpanel", "Unbanning Panel", 850, 600)
+	var/datum/browser/unban_panel = new(usr, "unbanpanel", "解除封禁面板", 850, 600)
 	unban_panel.add_stylesheet("unbanpanelcss", 'html/admin/unbanpanel.css')
 	var/list/output = list("<div class='searchbar'>")
 	output += {"<form method='get' action='?src=[REF(src)]'>[HrefTokenFormField()]
 	<input type='hidden' name='src' value='[REF(src)]'>
-	Key:<input type='text' name='searchunbankey' size='18' value='[player_key]'>
-	Admin Key:<input type='text' name='searchunbanadminkey' size='18' value='[admin_key]'>
+	账号：<input type='text' name='searchunbankey' size='18' value='[player_key]'>
+	管理员账号：<input type='text' name='searchunbanadminkey' size='18' value='[admin_key]'>
 	IP:<input type='text' name='searchunbanip' size='12' value='[player_ip]'>
 	CID:<input type='text' name='searchunbancid' size='10' value='[player_cid]'>
-	<input type='submit' value='Search'>
+	<input type='submit' value='搜索'>
 	</form>
 	</div>
 	<div class='main'>
@@ -575,7 +575,7 @@
 			bancount = text2num(query_unban_count_bans.item[1])
 		qdel(query_unban_count_bans)
 		if(bancount > bansperpage)
-			output += "<b>Page: </b>"
+			output += "<b>页码：</b>"
 			var/pagecount = 1
 			var/list/pagelist = list()
 			while(bancount > 0)
@@ -639,7 +639,7 @@
 			var/ban_round_id  = query_unban_search_bans.item[3]
 			var/role = query_unban_search_bans.item[4]
 			//make the href for unban here so only the search parameters are passed
-			var/unban_href = "<a href='?_src_=holder;[HrefToken()];unbanid=[ban_id];unbankey=[player_key];unbanadminkey=[admin_key];unbanip=[player_ip];unbancid=[player_cid];unbanrole=[role];unbanpage=[page]'>Unban</a>"
+			var/unban_href = "<a href='?_src_=holder;[HrefToken()];unbanid=[ban_id];unbankey=[player_key];unbanadminkey=[admin_key];unbanip=[player_ip];unbancid=[player_cid];unbanrole=[role];unbanpage=[page]'>解封</a>"
 			var/expiration_time = query_unban_search_bans.item[5]
 			//we don't cast duration as num because if the duration is large enough to be converted to scientific notation by byond then the + character gets lost when passed through href causing SQL to interpret '4.321e 007' as '4'
 			var/duration = query_unban_search_bans.item[6]
@@ -655,18 +655,18 @@
 			var/unban_key = query_unban_search_bans.item[16]
 			var/unban_round_id = query_unban_search_bans.item[17]
 			var/target = ban_target_string(player_key, player_ip, player_cid)
-			output += "<div class='banbox'><div class='header [unban_datetime ? "unbanned" : "banned"]'><b>[target]</b>[applies_to_admins ? " <b>ADMIN</b>" : ""] banned by <b>[admin_key]</b> from <b>[role]</b> on <b>[ban_datetime]</b> during round <b>#[ban_round_id]</b>.<br>"
+			output += "<div class='banbox'><div class='header [unban_datetime ? "unbanned" : "banned"]'><b>[target]</b>[applies_to_admins ? " <b>适用于管理员</b>" : ""]被 <b>[admin_key]</b> 封禁，范围：<b>[role]</b>，时间：<b>[ban_datetime]</b>，回合：<b>#[ban_round_id]</b>。<br>"
 			if(!expiration_time)
-				output += "<b>Permanent ban</b>."
+				output += "<b>永久封禁</b>。"
 			else
-				output += "Duration of <b>[DisplayTimeText(text2num(duration) MINUTES)]</b>, <b>[expired ? "expired" : "expires"]</b> on <b>[expiration_time]</b>."
+				output += "时长 <b>[DisplayTimeText(text2num(duration) MINUTES)]</b>，<b>[expired ? "已过期" : "将过期"]</b>，过期时间：<b>[expiration_time]</b>。"
 			if(unban_datetime)
-				output += "<br>Unbanned by <b>[unban_key]</b> on <b>[unban_datetime]</b> during round <b>#[unban_round_id]</b>."
+				output += "<br>由 <b>[unban_key]</b> 于 <b>[unban_datetime]</b> 解封，回合：<b>#[unban_round_id]</b>。"
 			output += "</div><div class='container'><div class='reason'>[reason]</div><div class='edit'>"
 			if(!expired && !unban_datetime)
-				output += "<a href='?_src_=holder;[HrefToken()];editbanid=[ban_id];editbankey=[player_key];editbanip=[player_ip];editbancid=[player_cid];editbanrole=[role];editbanduration=[duration];editbanadmins=[applies_to_admins];editbanreason=[url_encode(reason)];editbanpage=[page];editbanadminkey=[admin_key]'>Edit</a><br>[unban_href]"
+				output += "<a href='?_src_=holder;[HrefToken()];editbanid=[ban_id];editbankey=[player_key];editbanip=[player_ip];editbancid=[player_cid];editbanrole=[role];editbanduration=[duration];editbanadmins=[applies_to_admins];editbanreason=[url_encode(reason)];editbanpage=[page];editbanadminkey=[admin_key]'>编辑</a><br>[unban_href]"
 			if(edits)
-				output += "<br><a href='?_src_=holder;[HrefToken()];unbanlog=[ban_id]'>Edit log</a>"
+				output += "<br><a href='?_src_=holder;[HrefToken()];unbanlog=[ban_id]'>编辑记录</a>"
 			output += "</div></div></div>"
 		qdel(query_unban_search_bans)
 		output += "</div>"
@@ -677,10 +677,10 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/target = ban_target_string(player_key, player_ip, player_cid)
-	if(alert(usr, "Please confirm unban of [target] from [role].", "Unban confirmation", "Yes", "No") == "No")
+	if(alert(usr, "确认解除 [target] 的 [role] 封禁。", "确认解封", "是", "否") == "否")
 		return
 	var/kn = key_name(usr)
 	var/kna = key_name_admin(usr)
@@ -698,7 +698,7 @@
 		return
 	qdel(query_unban)
 	log_admin_private("[kn] has unbanned [target] from [role].")
-	message_admins("[kna] has unbanned [target] from [role].")
+	message_admins("[kna] 解除了 [target] 的 [role] 封禁。")
 	var/client/C = GLOB.directory[player_key]
 	if(C)
 		build_ban_cache(C)
@@ -713,7 +713,7 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/player_ckey = ckey(player_key)
 	var/bantime
@@ -740,11 +740,11 @@
 					player_cid = query_edit_ban_get_player.item[4]
 		else
 			if(use_last_connection)
-				if(alert(usr, "[player_key]/([player_ckey]) has not been seen before, unable to use IP and CID from last connection. Are you sure you want to edit a ban for them?", "Unknown key", "Yes", "No", "Cancel") != "Yes")
+				if(alert(usr, "没有 [player_key]/([player_ckey]) 的历史记录，无法读取上次连接的 IP 和 CID。确定修改其封禁吗？", "未知账号", "是", "否", "取消") != "是")
 					qdel(query_edit_ban_get_player)
 					return
 			else
-				if(alert(usr, "[player_key]/([player_ckey]) has not been seen before, are you sure you want to edit a ban for them?", "Unknown key", "Yes", "No", "Cancel") != "Yes")
+				if(alert(usr, "没有 [player_key]/([player_ckey]) 的历史记录，确定修改其封禁吗？", "未知账号", "是", "否", "取消") != "是")
 					qdel(query_edit_ban_get_player)
 					return
 		qdel(query_edit_ban_get_player)
@@ -766,7 +766,7 @@
 			if(R_EVERYTHING && !(R_EVERYTHING & rank.can_edit_rights)) //edit rights are a more effective way to check hierarchical rank since many non-headmins have R_PERMISSIONS now
 				max_adminbans = MAX_ADMINBANS_PER_HEADMIN
 			if(adminban_count >= max_adminbans)
-				to_chat(usr, span_danger("You've already logged [max_adminbans] admin ban(s) or more. Do not abuse this function!"))
+				to_chat(usr, span_danger("你已记录至少 [max_adminbans] 次针对管理员的封禁，请勿滥用此功能！"))
 				qdel(query_check_adminban_count)
 				return
 		qdel(query_check_adminban_count)
@@ -779,7 +779,7 @@
 	for(var/i in changes)
 		changes_text += "[i]: [changes[i]]"
 		changes_keys += i
-	var/change_message = "[usr.client.key] edited the following [jointext(changes_text, ", ")]<hr>"
+	var/change_message = "[usr.client.key] 修改了以下内容：[jointext(changes_text, ", ")]<hr>"
 
 	var/list/arguments = list(
 		"duration" = duration || null,
@@ -828,7 +828,7 @@
 	var/kn = key_name(usr)
 	var/kna = key_name_admin(usr)
 	log_admin_private("[kn] has edited the [changes_keys_text] of a ban for [old_key ? "[old_key]" : "[old_ip]-[old_cid]"].") //if a ban doesn't have a key it must have an ip and/or a cid to have reached this point normally
-	message_admins("[kna] has edited the [changes_keys_text] of a ban for [old_key ? "[old_key]" : "[old_ip]-[old_cid]"].")
+	message_admins("[kna] 修改了 [old_key ? "[old_key]" : "[old_ip]-[old_cid]"] 的封禁字段：[changes_keys_text]。")
 	if(changes["Applies to admins"])
 		send2irc("BAN ALERT","[kn] has edited a ban for [old_key ? "[old_key]" : "[old_ip]-[old_cid]"] to [applies_to_admins ? "" : "not"]affect admins")
 	var/client/C = GLOB.directory[old_key]
@@ -845,7 +845,7 @@
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/datum/DBQuery/query_get_ban_edits = SSdbcore.NewQuery({"
 		SELECT edits FROM [format_table_name("ban")] WHERE id = :ban_id
@@ -855,7 +855,7 @@
 		return
 	if(query_get_ban_edits.NextRow())
 		var/edits = query_get_ban_edits.item[1]
-		var/datum/browser/edit_log = new(usr, "baneditlog", "Ban edit log")
+		var/datum/browser/edit_log = new(usr, "baneditlog", "封禁编辑日志")
 		edit_log.set_content(edits)
 		edit_log.open()
 	qdel(query_get_ban_edits)

@@ -63,7 +63,7 @@
 
 /datum/SDQL_parser/proc/parse_error(error_message)
 	error = 1
-	to_chat(usr, span_warning("SQDL2 Parsing Error: [error_message]"))
+	to_chat(usr, span_warning("SDQL2 解析错误：[error_message]"))
 	return query.len + 1
 
 /datum/SDQL_parser/proc/parse()
@@ -104,12 +104,12 @@
 /datum/SDQL_parser/proc/option_assignment(i, list/node, list/assignment_list = list())
 	var/type = tokenl(i)
 	if(!(type in SDQL2_VALID_OPTION_TYPES))
-		parse_error("Invalid option type: [type]")
+		parse_error("无效的选项类型：[type]")
 	if(!(token(i + 1) == "="))
-		parse_error("Invalid option assignment symbol: [token(i + 1)]")
+		parse_error("无效的选项赋值符号：[token(i + 1)]")
 	var/val = tokenl(i + 2)
 	if(!(val in SDQL2_VALID_OPTION_VALUES))
-		parse_error("Invalid optoin value: [val]")
+		parse_error("无效的选项值：[val]")
 	assignment_list[type] = val
 	return (i + 3)
 
@@ -172,7 +172,7 @@
 	node["update"] = select
 
 	if(tokenl(i) != "set")
-		i = parse_error("UPDATE has misplaced SET")
+		i = parse_error("UPDATE 中的 SET 位置错误")
 
 	var/list/set_assignments = list()
 	i = assignments(i + 1, set_assignments)
@@ -190,7 +190,7 @@
 	node["call"] = func
 
 	if(tokenl(i) != "on")
-		return parse_error("You need to specify what to call ON.")
+		return parse_error("必须指定 ON 后的调用目标。")
 
 	var/list/select = list()
 	i = object_selectors(i + 1, select)
@@ -264,7 +264,7 @@
 		i = object_type(i, node)
 
 	else
-		i = parse_error("Expected '*' or type path for select item")
+		i = parse_error("选择项应为 '*' 或类型路径")
 
 	return i
 
@@ -286,7 +286,7 @@
 			node["where"] = where
 			continue
 
-		parse_error("Expected either FROM, IN or WHERE token, found [token(i)] instead.")
+		parse_error("应为 FROM、IN 或 WHERE，实际为 [token(i)]。")
 		return i + 1
 
 	if (!node.Find("from"))
@@ -335,7 +335,7 @@
 		i = expression(i + 2, exp_list)
 
 	else
-		parse_error("Assignment expected, but no = found")
+		parse_error("应为赋值表达式，但未找到 =")
 
 	return i
 
@@ -350,7 +350,7 @@
 		i += 2
 
 		if(token(i) != "}")
-			parse_error("Missing } at end of pointer.")
+			parse_error("指针末尾缺少 }。")
 
 	else if(token(i) == "(") // not a proc but an expression
 		var/list/sub_expression = list()
@@ -358,7 +358,7 @@
 		i = expression(i + 1, sub_expression)
 
 		if(token(i) != ")")
-			parse_error("Missing ) at end of expression.")
+			parse_error("表达式末尾缺少 )。")
 
 		L[++L.len] = sub_expression
 
@@ -368,7 +368,7 @@
 			var/list/index_expression = list()
 			i = expression(i + 2, index_expression)
 			if(token(i) != "]")
-				return parse_error("Missing ] at the end of list access.")
+				return parse_error("列表访问表达式末尾缺少 ]。")
 
 			L += "\["
 			L[++L.len] = index_expression
@@ -393,11 +393,11 @@
 /datum/SDQL_parser/proc/object_type(i, list/node)
 
 	if (copytext(token(i), 1, 2) != "/")
-		return parse_error("Expected type, but it didn't begin with /")
+		return parse_error("应为类型，但其未以 / 开头")
 
 	var/path = text2path(token(i))
 	if (path == null)
-		return parse_error("Nonexistant type path: [token(i)]")
+		return parse_error("类型路径不存在：[token(i)]")
 
 	node += path
 
@@ -411,7 +411,7 @@
 		node += token(i)
 
 	else
-		parse_error("Unknown comparitor [token(i)]")
+		parse_error("未知的比较运算符 [token(i)]")
 
 	return i + 1
 
@@ -423,7 +423,7 @@
 		node += token(i)
 
 	else
-		parse_error("Unknown comparitor [token(i)]")
+		parse_error("未知的比较运算符 [token(i)]")
 
 	return i + 1
 
@@ -435,7 +435,7 @@
 		node += token(i)
 
 	else
-		parse_error("Expected string but found '[token(i)]'")
+		parse_error("应为字符串，实际为 '[token(i)]'")
 
 	return i + 1
 
@@ -443,7 +443,7 @@
 /datum/SDQL_parser/proc/array(i, list/node)
 	// Arrays get turned into this: list("[", list(exp_1a = exp_1b, ...), ...), "[" is to mark the next node as an array.
 	if(copytext(token(i), 1, 2) != "\[")
-		parse_error("Expected an array but found '[token(i)]'")
+		parse_error("应为数组，实际为 '[token(i)]'")
 		return i + 1
 
 	node += token(i) // Add the "["
@@ -458,7 +458,7 @@
 			tok = token(i)
 			if (tok == "," || tok == ":")
 				if (temp_expression_list == null)
-					parse_error("Found ',' or ':' without expression in an array.")
+					parse_error("数组中出现 ',' 或 ':'，但没有对应表达式。")
 					return i + 1
 
 				expression_list[++expression_list.len] = temp_expression_list
@@ -473,7 +473,7 @@
 						if (tok == "]")
 							break
 
-						parse_error("Expected ',' or ']' after array assoc value, but found '[token(i)]'")
+						parse_error("数组关联值后应为 ',' 或 ']'，实际为 '[token(i)]'")
 						return i
 
 
@@ -501,11 +501,11 @@
 			i = object_selectors(i, select)
 			node[++node.len] = select
 			if(token(i) != "]")
-				parse_error("Expected ']' to close selector array, but found '[token(i)]'")
+				parse_error("应以 ']' 结束选择器数组，实际为 '[token(i)]'")
 		else
-			parse_error("Selector array expected a selector, but found nothing")
+			parse_error("选择器数组缺少选择器")
 	else
-		parse_error("Expected '@\[' but found '[token(i)]'")
+		parse_error("应为 '@\['，实际为 '[token(i)]'")
 
 	return i + 1
 
@@ -518,7 +518,7 @@
 			procname = "global."
 		node += procname + token(i++)
 		if(token(i) != "(")
-			parse_error("Expected ( but found '[token(i)]'")
+			parse_error("应为 (，实际为 '[token(i)]'")
 
 		else if(token(i + 1) != ")")
 			var/list/temp_expression_list = list()
@@ -535,7 +535,7 @@
 		else
 			i++
 	else
-		parse_error("Expected a function but found nothing")
+		parse_error("缺少函数")
 	return i + 1
 
 
@@ -583,7 +583,7 @@
 
 
 	else
-		parse_error("Expected unary operator but found '[token(i)]'")
+		parse_error("应为一元运算符，实际为 '[token(i)]'")
 
 	return i
 
@@ -595,7 +595,7 @@
 		node += token(i)
 
 	else
-		parse_error("Unknown binary operator [token(i)]")
+		parse_error("未知的二元运算符 [token(i)]")
 
 	return i + 1
 

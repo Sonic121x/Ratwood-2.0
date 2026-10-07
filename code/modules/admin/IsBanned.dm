@@ -41,8 +41,8 @@ GLOBAL_VAR(last_connection)
 			if (admin)
 				log_admin("The admin [key] has been allowed to bypass the whitelist")
 				if (message)
-					message_admins(span_adminnotice("The admin [key] has been allowed to bypass the whitelist"))
-					addclientmessage(ckey,span_adminnotice("I have been allowed to bypass the whitelist"))
+					message_admins(span_adminnotice("管理员 [key] 获准绕过白名单限制"))
+					addclientmessage(ckey,span_adminnotice("我获准绕过白名单限制"))
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
 				return list("reason"="whitelist", "desc" = "\n请申请加入白名单！discord.gg/NCFXUAgCPT")
@@ -110,11 +110,11 @@ GLOBAL_VAR(last_connection)
 						if (message)
 							message_admins(msg)
 					else
-						var/msg = "Admin [key] has been allowed to bypass a matching non-admin ban on [i["key"]] [i["ip"]]-[i["computerid"]]."
+						var/msg = "管理员 [key] 获准绕过与 [i["key"]] [i["ip"]]-[i["computerid"]] 匹配的非管理员封禁。"
 						log_admin(msg)
 						if (message)
 							message_admins(msg)
-							addclientmessage(ckey,span_adminnotice("Admin [key] has been allowed to bypass a matching non-admin ban on [i["key"]] [i["ip"]]-[i["computerid"]]."))
+							addclientmessage(ckey,span_adminnotice("管理员 [key] 获准绕过与 [i["key"]] [i["ip"]]-[i["computerid"]] 匹配的非管理员封禁。"))
 						continue
 				var/expires = "这是永久封禁。"
 				if(i["expiration_time"])
@@ -207,7 +207,7 @@ GLOBAL_VAR(last_connection)
 
 				//we always report this
 				log_game("Stickyban on [bannedckey] detected as rogue, [action]")
-				message_admins("Stickyban on [bannedckey] detected as rogue, [action]")
+				message_admins("检测到 [bannedckey] 的关联封禁异常，[ban["fromdb"] ? "本回合暂时停用该封禁" : "正在恢复为回合开始时的状态"]")
 				//do not convert to timer.
 				spawn (5)
 					world.SetConfig("ban", bannedckey, null)
@@ -246,8 +246,8 @@ GLOBAL_VAR(last_connection)
 		if (admin)
 			log_admin("The admin [key] has been allowed to bypass a matching host/sticky ban on [bannedckey]")
 			if (message)
-				message_admins(span_adminnotice("The admin [key] has been allowed to bypass a matching host/sticky ban on [bannedckey]"))
-				addclientmessage(ckey,span_adminnotice("I have been allowed to bypass a matching host/sticky ban on [bannedckey]"))
+				message_admins(span_adminnotice("管理员 [key] 获准绕过与 [bannedckey] 匹配的主机封禁或关联封禁"))
+				addclientmessage(ckey,span_adminnotice("我获准绕过与 [bannedckey] 匹配的主机封禁或关联封禁"))
 			return null
 
 		if (C) //user is already connected!.

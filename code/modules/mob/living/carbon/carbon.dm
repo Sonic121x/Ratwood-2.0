@@ -284,7 +284,7 @@
 		if(istype(thrown_thing, /obj/item/roguecoin))
 			var/obj/item/roguecoin/coin = thrown_thing
 			var/coin_text = coin.quantity > 1 ? "[coin.quantity] [coin.name]" : coin.name
-			message_admins("[ADMIN_LOOKUPFLW(src)] has thrown [coin_text] at [target] ([AREACOORD(target)])")
+			message_admins("[ADMIN_LOOKUPFLW(src)] 向 [target]（[AREACOORD(target)]）投掷了 [coin_text]")
 			log_admin("[key_name(src)] has thrown [coin_text] at [target] ([AREACOORD(target)])")
 
 		if(!thrown_speed)
@@ -1300,19 +1300,19 @@
 /mob/living/carbon/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_MODIFY_BODYPART, "Modify bodypart")
-	VV_DROPDOWN_OPTION(VV_HK_MODIFY_ORGANS, "Modify organs")
-	VV_DROPDOWN_OPTION(VV_HK_HALLUCINATION, "Hallucinate")
-	VV_DROPDOWN_OPTION(VV_HK_MARTIAL_ART, "Give Martial Arts")
-	VV_DROPDOWN_OPTION(VV_HK_GIVE_TRAUMA, "Give Brain Trauma")
-	VV_DROPDOWN_OPTION(VV_HK_CURE_TRAUMA, "Cure Brain Traumas")
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_BODYPART, "修改身体部位")
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_ORGANS, "修改器官")
+	VV_DROPDOWN_OPTION(VV_HK_HALLUCINATION, "引发幻觉")
+	VV_DROPDOWN_OPTION(VV_HK_MARTIAL_ART, "授予武术")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_TRAUMA, "施加脑部创伤")
+	VV_DROPDOWN_OPTION(VV_HK_CURE_TRAUMA, "治愈脑部创伤")
 
 /mob/living/carbon/vv_do_topic(list/href_list)
 	. = ..()
 	if(href_list[VV_HK_MODIFY_BODYPART])
 		if(!check_rights(R_SPAWN))
 			return
-		var/edit_action = input(usr, "What would you like to do?","Modify Body Part") as null|anything in list("add","remove", "augment")
+		var/edit_action = list("添加" = "add", "移除" = "remove", "改造" = "augment")[input(usr, "要执行什么操作？","修改身体部位") as null|anything in list("添加","移除", "改造")]
 		if(!edit_action)
 			return
 		var/list/limb_list = list()
@@ -1325,7 +1325,7 @@
 			limb_list = list(BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/obj/item/bodypart/B as anything in bodyparts)
 				limb_list -= B.body_zone
-		var/result = input(usr, "Please choose which body part to [edit_action]","[capitalize(edit_action)] Body Part") as null|anything in sortList(limb_list)
+		var/result = input(usr, "请选择要[list("add" = "添加", "remove" = "移除", "augment" = "改造")[edit_action]]的身体部位","修改身体部位") as null|anything in sortList(limb_list)
 		if(result)
 			var/obj/item/bodypart/BP = get_bodypart(result)
 			switch(edit_action)
@@ -1333,22 +1333,22 @@
 					if(BP)
 						BP.drop_limb()
 					else
-						to_chat(usr, "<span class='boldwarning'>[src] doesn't have such bodypart.</span>")
+						to_chat(usr, "<span class='boldwarning'>[src] 没有该身体部位。</span>")
 				if("add")
 					if(BP)
-						to_chat(usr, "<span class='boldwarning'>[src] already has such bodypart.</span>")
+						to_chat(usr, "<span class='boldwarning'>[src] 已有该身体部位。</span>")
 					else
 						if(!regenerate_limb(result))
-							to_chat(usr, "<span class='boldwarning'>[src] cannot have such bodypart.</span>")
+							to_chat(usr, "<span class='boldwarning'>[src] 无法拥有该身体部位。</span>")
 				if("augment")
 					if(ishuman(src))
 						if(BP)
 							BP.change_bodypart_status(BODYPART_ROBOTIC, TRUE, TRUE)
 						else
-							to_chat(usr, "<span class='boldwarning'>[src] doesn't have such bodypart.</span>")
+							to_chat(usr, "<span class='boldwarning'>[src] 没有该身体部位。</span>")
 					else
-						to_chat(usr, "<span class='boldwarning'>Only humans can be augmented.</span>")
-		admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src]")
+						to_chat(usr, "<span class='boldwarning'>只有人形生物能接受改造。</span>")
+		admin_ticket_log("[key_name_admin(usr)] 修改了 [src] 的身体部位")
 	if(href_list[VV_HK_MODIFY_ORGANS])
 		if(!check_rights(NONE))
 			return
@@ -1361,49 +1361,49 @@
 		for(var/i in artpaths)
 			var/datum/martial_art/M = i
 			artnames[initial(M.name)] = M
-		var/result = input(usr, "Choose the martial art to teach","JUDO CHOP") as null|anything in sortNames(artnames)
+		var/result = input(usr, "选择要传授的武术","传授武术") as null|anything in sortNames(artnames)
 		if(!usr)
 			return
 		if(QDELETED(src))
-			to_chat(usr, "<span class='boldwarning'>Mob doesn't exist anymore.</span>")
+			to_chat(usr, "<span class='boldwarning'>生物已不存在。</span>")
 			return
 		if(result)
 			var/chosenart = artnames[result]
 			var/datum/martial_art/MA = new chosenart
 			MA.teach(src)
 			log_admin("[key_name(usr)] has taught [MA] to [key_name(src)].")
-			message_admins("<span class='notice'>[key_name_admin(usr)] has taught [MA] to [key_name_admin(src)].</span>")
+			message_admins("<span class='notice'>[key_name_admin(usr)] 向 [key_name_admin(src)] 传授了 [MA]。</span>")
 	if(href_list[VV_HK_GIVE_TRAUMA])
 		if(!check_rights(NONE))
 			return
 		var/list/traumas = subtypesof(/datum/brain_trauma)
-		var/result = input(usr, "Choose the brain trauma to apply","Traumatize") as null|anything in sortList(traumas, GLOBAL_PROC_REF(cmp_typepaths_asc))
+		var/result = input(usr, "选择要施加的脑部创伤","施加脑部创伤") as null|anything in sortList(traumas, GLOBAL_PROC_REF(cmp_typepaths_asc))
 		if(!usr)
 			return
 		if(QDELETED(src))
-			to_chat(usr, "Mob doesn't exist anymore")
+			to_chat(usr, "生物已不存在")
 			return
 		if(!result)
 			return
 		var/datum/brain_trauma/BT = gain_trauma(result)
 		if(BT)
 			log_admin("[key_name(usr)] has traumatized [key_name(src)] with [BT.name]")
-			message_admins("<span class='notice'>[key_name_admin(usr)] has traumatized [key_name_admin(src)] with [BT.name].</span>")
+			message_admins("<span class='notice'>[key_name_admin(usr)] 向 [key_name_admin(src)] 施加了 [BT.name]。</span>")
 	if(href_list[VV_HK_CURE_TRAUMA])
 		if(!check_rights(NONE))
 			return
 		cure_all_traumas(TRAUMA_RESILIENCE_ABSOLUTE)
 		log_admin("[key_name(usr)] has cured all traumas from [key_name(src)].")
-		message_admins("<span class='notice'>[key_name_admin(usr)] has cured all traumas from [key_name_admin(src)].</span>")
+		message_admins("<span class='notice'>[key_name_admin(usr)] 治愈了 [key_name_admin(src)] 的全部脑部创伤。</span>")
 	if(href_list[VV_HK_HALLUCINATION])
 		if(!check_rights(NONE))
 			return
 		var/list/hallucinations = subtypesof(/datum/hallucination)
-		var/result = input(usr, "Choose the hallucination to apply","Send Hallucination") as null|anything in sortList(hallucinations, GLOBAL_PROC_REF(cmp_typepaths_asc))
+		var/result = input(usr, "选择要施加的幻觉","施加幻觉") as null|anything in sortList(hallucinations, GLOBAL_PROC_REF(cmp_typepaths_asc))
 		if(!usr)
 			return
 		if(QDELETED(src))
-			to_chat(usr, "Mob doesn't exist anymore")
+			to_chat(usr, "生物已不存在")
 			return
 		if(result)
 			new result(src, TRUE)

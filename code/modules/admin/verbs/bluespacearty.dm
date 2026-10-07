@@ -5,7 +5,7 @@
 	var/mob/living/target = M
 
 	if(!isliving(target))
-		to_chat(usr, "This can only be used on instances of type /mob/living")
+		to_chat(usr, "此指令只能用于 /mob/living 类型的实例")
 		return
 
 	explosion(target.loc, 0, 0, 0, 0)

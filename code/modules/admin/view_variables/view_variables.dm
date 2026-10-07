@@ -1,11 +1,11 @@
 /client/proc/debug_variables(datum/D in world)
-	set category = "-Special Verbs-"
-	set name = "View Variables"
+	set category = "-特殊指令-"
+	set name = "查看变量"
 	//set src in world
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
 	if(!usr.client || !usr.client.holder)		//This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.
-		to_chat(usr, span_danger("I need to be an administrator to access this."))
+		to_chat(usr, span_danger("我需要管理员权限才能使用此功能。"))
 		return
 
 	if(!D)
@@ -36,7 +36,7 @@
 
 	var/sprite_text
 	if(sprite)
-		sprite_text = no_icon? "\[NO ICON\]" : "<img src='vv[hash].png'></td><td>"
+		sprite_text = no_icon? "\[无图标\]" : "<img src='vv[hash].png'></td><td>"
 	var/list/header = islist(D)? list("<b>/list</b>") : D.vv_get_header()
 
 	var/marked_line
@@ -53,12 +53,12 @@
 	if (islist)
 		dropdownoptions = list(
 			"---",
-			"Add Item" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ADD),
-			"Remove Nulls" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_NULLS),
-			"Remove Dupes" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_DUPES),
-			"Set len" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_SET_LENGTH),
-			"Shuffle" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_SHUFFLE),
-			"Show VV To Player" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_EXPOSE),
+			"添加条目" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ADD),
+			"移除空值" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_NULLS),
+			"移除重复项" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_DUPES),
+			"设置列表长度" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_SET_LENGTH),
+			"打乱顺序" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_SHUFFLE),
+			"向玩家展示变量查看器" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_EXPOSE),
 			"---"
 			)
 		for(var/i in 1 to length(dropdownoptions))
@@ -225,12 +225,12 @@
 					<td width='50%'>
 						<div align='center'>
 							<a id='refresh_link' href='?_src_=vars;
-datumrefresh=[refid];[HrefToken()]'>Refresh</a>
+datumrefresh=[refid];[HrefToken()]'>刷新</a>
 							<form>
 								<select name="file" size="1"
 									onchange="handle_dropdown(this)"
 									onmouseclick="this.focus()">
-									<option value selected>Select option</option>
+									<option value selected>选择操作</option>
 									[dropdownoptions.Join()]
 								</select>
 							</form>
@@ -241,16 +241,16 @@ datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 		</div>
 		<hr>
 		<font size='1'>
-			<b>E</b> - Edit, tries to determine the variable type by itself.<br>
-			<b>C</b> - Change, asks you for the var type first.<br>
-			<b>M</b> - Mass modify: changes this variable for all objects of this type.<br>
+			<b>E</b> - 编辑：尝试自动判断变量类型。<br>
+			<b>C</b> - 更改：先询问变量类型。<br>
+			<b>M</b> - 批量修改：更改此类型所有对象的该变量。<br>
 		</font>
 		<hr>
 		<table width='100%'>
 			<tr>
 				<td width='20%'>
 					<div align='center'>
-						<b>Search:</b>
+						<b>搜索：</b>
 					</div>
 				</td>
 				<td width='80%'>

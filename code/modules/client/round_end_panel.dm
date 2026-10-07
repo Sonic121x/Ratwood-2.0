@@ -1095,6 +1095,6 @@
 /// Global proc to show debug version of gods influences
 /client/proc/debug_influences()
 	set name = "调试诸神影响力"
-	set category = "Debug"
+	set category = "调试"
 
 	show_influences()
