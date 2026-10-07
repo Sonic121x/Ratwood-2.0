@@ -5,9 +5,9 @@ import {
   DmIcon,
   Input,
   NoticeBox,
-  Section,
   Stack,
 } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -317,7 +317,7 @@ const CurrentQueueSection = ({
 
   return (
     <Section
-      title="What Churns Inside"
+      title="What Churns Inside" display_title="炉内运转"
       fill
       scrollable
       buttons={
@@ -405,7 +405,7 @@ const ActiveCenterPanel = ({
   return (
     <Stack vertical fill>
       <Stack.Item>
-        <Section title="MY MOOD">
+        <Section title="MY MOOD" display_title="我的心情">
           <Box
             textAlign="center"
             bold
@@ -537,7 +537,7 @@ const ActiveCenterPanel = ({
             </Stack>
           </Section>
         ) : (
-          <Section title="No Recipe Selected" fill>
+          <Section title="No Recipe Selected" display_title="未选择配方" fill>
             <NoticeBox>
               从右侧选择配方，查看所需材料。
             </NoticeBox>
@@ -672,7 +672,7 @@ const RecipePickerSection = ({
         />
       </Stack.Item>
       <Stack.Item grow basis={0} mt={1}>
-        <Section title="What I Can Provide" fill scrollable>
+        <Section title="What I Can Provide" display_title="我能打造的东西" fill scrollable>
           {!recipes.length && <NoticeBox>没有匹配的配方。</NoticeBox>}
           {recipes.map((recipe) => (
             <Button

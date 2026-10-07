@@ -15,7 +15,7 @@ import { selectSettings } from './selectors';
 
 const TabsViews = ['default', 'classic', 'scrollable'];
 const LinkedToChat = () => (
-  <NoticeBox color="red">Unlink Stat Panel from chat!</NoticeBox>
+  <NoticeBox color="red">请先解除状态面板与聊天界面的关联！</NoticeBox>
 );
 
 export function SettingsStatPanel(props) {
@@ -28,7 +28,7 @@ export function SettingsStatPanel(props) {
       <Stack fill vertical>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Tabs" verticalAlign="middle">
+            <LabeledList.Item label="标签页" verticalAlign="middle">
               {TabsViews.map((view) => (
                 <Button
                   key={view}
@@ -38,11 +38,11 @@ export function SettingsStatPanel(props) {
                     dispatch(updateSettings({ statTabsStyle: view }))
                   }
                 >
-                  {capitalize(view)}
+                  {({ default: '默认', classic: '经典', scrollable: '可滚动' } as Record<string, string>)[view] ?? capitalize(view)}
                 </Button>
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Font size">
+            <LabeledList.Item label="字号">
               <Stack.Item grow>
                 {statLinked ? (
                   <LinkedToChat />
@@ -75,7 +75,7 @@ export function SettingsStatPanel(props) {
               dispatch(updateSettings({ statLinked: !statLinked }))
             }
           >
-            {statLinked ? 'Unlink from chat' : 'Link to chat'}
+            {statLinked ? '解除与聊天界面的关联' : '关联至聊天界面'}
           </Button>
         </Stack.Item>
       </Stack>

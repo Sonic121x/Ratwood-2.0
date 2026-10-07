@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Input } from 'tgui-core/components';
-
+import { NativeButton } from '../../components/Localized';
 import {
   badgeStyle,
   cardStyle,
@@ -218,14 +218,14 @@ const OrderCard = (props: {
               放弃接单
             </button>
             {hasProgress && (
-              <button
+              <NativeButton
                 type="button"
                 style={inkButtonStyle({ color: SEAL_AMBER })}
                 onClick={() => act('settle_partial', { ref: order.ref })}
-                title="Collect pro-rata pay for delivered items (20% haircut, rest refunds to commissioner)"
+                title="Collect pro-rata pay for delivered items (20% haircut, rest refunds to commissioner)" display_title="按已交付物品领取报酬，扣除 20%，其余未交付部分的款项退还委托人"
               >
                 部分结算
-              </button>
+              </NativeButton>
             )}
             <button
               type="button"
@@ -252,24 +252,24 @@ const OrderCard = (props: {
         {isGuildmaster &&
           order.status === 'claimed' &&
           !isSmith && (
-            <button
+            <NativeButton
               type="button"
               style={inkButtonStyle({ color: SEAL_AMBER })}
               onClick={() => act('force_release_order', { ref: order.ref })}
-              title="Guildmaster override: release this stalled claim"
+              title="Guildmaster override: release this stalled claim" display_title="行会会长权限：解除这份停滞订单的接单状态"
             >
               强制解除接单
-            </button>
+            </NativeButton>
           )}
         {canReject && (
-          <button
+          <NativeButton
             type="button"
             style={inkButtonStyle({ color: SEAL_RED })}
             onClick={() => setRejectOpen((v) => !v)}
-            title="Refuse this commission. Deposit returns to the commissioner's deposit pool."
+            title="Refuse this commission. Deposit returns to the commissioner's deposit pool." display_title="拒绝此委托。押金将退回委托人的押金余额。"
           >
             拒绝订单
-          </button>
+          </NativeButton>
         )}
       </div>
 

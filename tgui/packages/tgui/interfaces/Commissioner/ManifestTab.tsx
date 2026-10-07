@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Input } from 'tgui-core/components';
-
+import { NativeButton } from '../../components/Localized';
 import {
   cardStyle,
   fieldRowStyle,
@@ -182,14 +182,14 @@ export const ManifestTab = (props: {
             >
               {line.line_total}m
             </div>
-            <button
+            <NativeButton
               type="button"
               style={inkButtonStyle()}
               onClick={() => act('manifest_remove', { ref: line.ref })}
-              title="Remove this line"
+              title="Remove this line" display_title="移除此条目"
             >
               x
-            </button>
+            </NativeButton>
           </div>
         ))}
       </div>
