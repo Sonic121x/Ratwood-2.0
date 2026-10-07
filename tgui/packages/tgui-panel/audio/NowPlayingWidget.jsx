@@ -5,9 +5,9 @@
  */
 
 import { useDispatch, useSelector } from 'tgui/backend';
-import { Button, Collapsible, Flex, Knob, Section } from 'tgui-core/components';
+import { Button, Flex, Knob, Section } from 'tgui-core/components';
 import { toFixed } from 'tgui-core/math';
-
+import { Collapsible } from 'tgui/components/Localized';
 import { useSettings } from '../settings';
 import { selectAudio } from './selectors';
 
@@ -42,32 +42,32 @@ export const NowPlayingWidget = (props) => {
           }}
         >
           {
-            <Collapsible title={title || 'Unknown Track'} color={'blue'}>
+            <Collapsible title={title || 'Unknown Track'} display_title={title || '未知曲目'} color={'blue'}>
               <Section>
                 {URL !== 'Song Link Hidden' && (
                   <Flex.Item grow={1} color="label">
-                    URL: {URL}
+                    链接：{URL}
                   </Flex.Item>
                 )}
                 {duration !== 'Song Duration Hidden' && (
                   <Flex.Item grow={1} color="label">
-                    Duration: {duration}
+                    时长：{duration}
                   </Flex.Item>)}
                 {Artist !== 'Song Artist Hidden' &&
                   Artist !== 'Unknown Artist' && (
                     <Flex.Item grow={1} color="label">
-                      Artist: {Artist}
+                      艺术家：{Artist}
                     </Flex.Item>
                   )}
                 {album !== 'Song Album Hidden' && album !== 'Unknown Album' && (
                   <Flex.Item grow={1} color="label">
-                    Album: {album}
+                    专辑：{album}
                   </Flex.Item>
                 )}
                 {upload_date !== 'Song Upload Date Hidden' &&
                   upload_date !== 'Unknown Date' && (
                     <Flex.Item grow={1} color="label">
-                      Uploaded: {date}
+                      上传日期：{date}
                     </Flex.Item>
                   )}
               </Section>
@@ -76,13 +76,13 @@ export const NowPlayingWidget = (props) => {
         </Flex.Item>
       )) || (
         <Flex.Item grow={1} color="label">
-          Nothing to play.
+          暂无播放内容。
         </Flex.Item>
       )}
       {audio.playing && (
         <Flex.Item mx={0.5} fontSize="0.9em">
           <Button
-            tooltip="Stop"
+            tooltip="停止"
             icon="stop"
             onClick={() =>
               dispatch({

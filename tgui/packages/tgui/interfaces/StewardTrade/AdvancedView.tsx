@@ -12,7 +12,7 @@ import {
   sectionHeaderStyle,
 } from '../common/parchment';
 import type { Data } from './types';
-
+import { NativeButton } from '../../components/Localized';
 export const AdvancedView = (props: { data: Data }) => {
   const { act } = useBackend<Data>();
   const { data } = props;
@@ -44,7 +44,7 @@ export const AdvancedView = (props: { data: Data }) => {
           marginBottom: '8px',
         }}
       >
-        <button
+        <NativeButton display_title={aldermanActing ? '仅限宫廷总管职权。' : '禁止自动出口所有当前短缺的货物，避免每日结算出售短缺货物或缩短短缺期。'}
           type="button"
           style={inkButtonStyle({
             color: SEAL_RED,
@@ -59,8 +59,8 @@ export const AdvancedView = (props: { data: Data }) => {
           }
         >
           禁止自动出口短缺货物 ({shortageOpen})
-        </button>
-        <button
+        </NativeButton>
+        <NativeButton display_title={aldermanActing ? '仅限宫廷总管职权。' : '解除整个仓库所有货物的自动出口禁令。'}
           type="button"
           style={inkButtonStyle({
             color: SEAL_GREEN,
@@ -75,7 +75,7 @@ export const AdvancedView = (props: { data: Data }) => {
           }
         >
           允许自动出口全部货物
-        </button>
+        </NativeButton>
         <span style={{ color: barred > 0 ? SEAL_AMBER : INK_SOFT }}>
           {barred} 项已禁止
         </span>

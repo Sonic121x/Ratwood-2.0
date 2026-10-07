@@ -1,13 +1,13 @@
 import { memo, useCallback, useMemo, useState } from 'react';
 import {
   Button,
-  Collapsible,
   Icon,
   Input,
   NoticeBox,
-  Section,
   Stack,
 } from 'tgui-core/components';
+import { Collapsible, Section } from '../components/Localized';
+import { displayOrbitGroup } from './common/orbitDisplayNames';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -17,7 +17,7 @@ type OrbitTarget = {
   ref: string;
   orbiters?: number;
   job?: string;
-  role?: string;
+  role?: string; display_role?: string;
   subclass?: string;
   department?: string;
   antag_role?: string;
@@ -298,7 +298,7 @@ function withSubclass(roleText: string, item: OrbitTarget) {
 }
 
 function getTooltipRoleText(item: OrbitTarget) {
-  const baseRoleText = withSubclass(getBaseRoleText(item), item);
+  const baseRoleText = withSubclass(item.display_role || displayOrbitGroup(getBaseRoleText(item)), item);
   if (!item.antag_role || item.antag_role === baseRoleText) {
     return baseRoleText;
   }
@@ -351,7 +351,7 @@ function buildItemTooltip(
 
   const roleText = getTooltipRoleText(item);
   const healthText = `${item.health_percent ?? '?'}%`;
-  return `${fullName} | ${roleText} | ${healthText} health`;
+  return `${fullName} | ${roleText} | 健康：${healthText}`;
 }
 
 function buildIndexedTarget(
@@ -373,7 +373,7 @@ function buildIndexedTarget(
     displayName,
     tooltip: buildItemTooltip(item.full_name, item, sectionKey),
     roleLabel,
-    roleDisplay: withSubclass(roleLabel, item),
+    roleDisplay: withSubclass(item.antag_role || item.display_role || displayOrbitGroup(roleLabel), item),
     roleLabelLower: roleLabel.toLowerCase(),
     groupKey,
     healthStateColor,
@@ -499,7 +499,7 @@ export const Orbit = () => {
   }, [indexedData, normalizedQuery]);
 
   return (
-    <Window title="Orbit" width={460} height={560}>
+    <Window title="Orbit" display_title="跟随观察" width={460} height={560}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
@@ -512,21 +512,21 @@ export const Orbit = () => {
                   <Input
                     autoFocus
                     fluid
-                    placeholder="Search..."
+                    placeholder="搜索……"
                     value={query}
                     onChange={setQuery}
                   />
                 </Stack.Item>
                 <Stack.Item>
-                  <Button icon="sync-alt" onClick={handleRefresh} tooltip="Refresh" />
+                  <Button icon="sync-alt" onClick={handleRefresh} tooltip="刷新" />
                 </Stack.Item>
                 <Stack.Item>
                   <Button
                     color={autoObserve ? 'good' : 'transparent'}
                     icon={autoObserve ? 'toggle-on' : 'toggle-off'}
                     onClick={toggleAutoObserve}
-                    tooltip="Toggle Auto-Observe. When active, orbiting someone also
-                    shows you their screen, their vision and their inventory."
+                    tooltip="切换自动观察。启用后，跟随某人时也会
+                    显示其屏幕、视野和物品栏。"
                     tooltipPosition="bottom-start"
                   />
                 </Stack.Item>
@@ -536,11 +536,11 @@ export const Orbit = () => {
                     onClick={toggleColorMode}
                     tooltip={
                       isRoleColorMode
-                        ? 'Switch to health-state colors'
-                        : 'Switch to role colors'
+                        ? '切换为健康状态配色'
+                        : '切换为职业配色'
                     }
                   >
-                    {isRoleColorMode ? 'Role Colors' : 'Health Colors'}
+                    {isRoleColorMode ? '职业配色' : '健康状态配色'}
                   </Button>
                 </Stack.Item>
               </Stack>
@@ -550,11 +550,11 @@ export const Orbit = () => {
           <Stack.Item grow>
             <Section fill scrollable>
               {sections.length === 0 && (
-                <NoticeBox>No orbit targets match your search.</NoticeBox>
+                <NoticeBox>没有与搜索条件匹配的跟随目标。</NoticeBox>
               )}
 
               {sections.map((section) => (
-                <Collapsible key={section.key} title={`${section.title} - (${section.items.length})`}>
+                <Collapsible key={section.key} title={`${section.title} - (${section.items.length})`} display_title={`${section.key === 'alive' ? '存活' : section.key === 'dead' ? '死亡' : '幽灵'} - (${section.items.length})`}>
                   {section.key === 'ghosts' ? (
                     <Stack wrap>
                       {section.items.map((item) => (
@@ -574,7 +574,7 @@ export const Orbit = () => {
                       {section.roleGroups.map((group) => (
                         <Stack.Item key={`${section.key}-${group.label}`}>
                           <Section
-                            title={`${group.label} - (${group.items.length})`}
+                            title={`${group.label} - (${group.items.length})`} display_title={`${displayOrbitGroup(group.label, group.items[0]?.antag_role ? undefined : group.items[0]?.display_role, group.items[0]?.roleLabel)} - (${group.items.length})`}
                           >
                             <Stack wrap>
                               {group.items.map((item) => (
