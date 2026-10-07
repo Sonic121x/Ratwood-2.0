@@ -6,20 +6,20 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	))
 
 /client/proc/ghost_up()
-	set category = "Spirit"
-	set name = "GhostUp"
+	set category = "灵魂"
+	set name = "幽灵上升"
 	if(isobserver(mob))
 		mob.ghost_up()
 
 /client/proc/ghost_down()
-	set category = "Spirit"
-	set name = "GhostDown"
+	set category = "灵魂"
+	set name = "幽灵下降"
 	if(isobserver(mob))
 		mob.ghost_down()
 
 /client/proc/descend()
 	set name = "前往冥界"
-	set category = "Spirit"
+	set category = "灵魂"
 
 	switch(alert("进入冥界吗？",,"是","否"))
 		if("是")
@@ -45,15 +45,15 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 			usr << "你改变了主意。"
 
 /client/proc/reenter_corpse()
-	set category = "Spirit"
+	set category = "灵魂"
 	set name = "返回尸体"
 	if(isobserver(mob))
 		var/mob/dead/observer/O = mob
 		O.reenter_corpse()
 
 /mob/verb/returntolobby()
-	set name = "{RETURN TO LOBBY}"
-	set category = "Options"
+	set name = "{返回大厅}"
+	set category = "选项"
 	set hidden = 1
 
 	if(key)

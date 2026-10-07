@@ -1,11 +1,11 @@
 /client/proc/cmd_admin_drop_everything(mob/M in GLOB.mob_list)
 	set category = null
-	set name = "Drop Everything"
+	set name = "丢下所有物品"
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/confirm = alert(src, "Make [M] drop everything?", "Message", "Yes", "No")
-	if(confirm != "Yes")
+	var/confirm = alert(src, "让 [M] 丢下所有物品吗？", "消息", "是", "否")
+	if(confirm != "是")
 		return
 
 	for(var/obj/item/W in M)
@@ -14,25 +14,25 @@
 			M.regenerate_icons()
 
 	log_admin("[key_name(usr)] made [key_name(M)] drop everything!")
-	var/msg = "[key_name_admin(usr)] made [ADMIN_LOOKUPFLW(M)] drop everything!"
+	var/msg = "[key_name_admin(usr)] 让 [ADMIN_LOOKUPFLW(M)] 丢下了所有物品！"
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Everything") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list)
-	set category = "-Special Verbs-"
-	set name = "Subtle Message"
+	set category = "-特殊指令-"
+	set name = "心声私信"
 
 	if(!ismob(M))
 		return
 	if(!check_rights(R_ADMIN))
 		return
 
-	message_admins("[key_name_admin(src)] has started answering [ADMIN_LOOKUPFLW(M)]'s prayer.")
-	var/msg = input("Message:", text("Subtle PM to [M.key]")) as text|null
+	message_admins("[key_name_admin(src)] 开始回应 [ADMIN_LOOKUPFLW(M)] 的祈祷。")
+	var/msg = input("消息：", text("向 [M.key] 传递心声")) as text|null
 
 	if(!msg)
-		message_admins("[key_name_admin(src)] decided not to answer [ADMIN_LOOKUPFLW(M)]'s prayer")
+		message_admins("[key_name_admin(src)] 决定不回应 [ADMIN_LOOKUPFLW(M)] 的祈祷")
 		return
 	if(usr)
 		if (usr.client)
@@ -40,14 +40,14 @@
 				to_chat(M, "<i>我的脑海中响起一个声音……\n<b>[msg]</i></b>")
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	msg = span_adminnotice("<b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]")
+	msg = span_adminnotice("<b> 心声私信：[key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]")
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_mod_antag_rep(client/C in GLOB.clients, operation)
-	set category = "-Special Verbs-"
-	set name = "Modify Antagonist Reputation"
+	set category = "-特殊指令-"
+	set name = "修改反派声望"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -59,12 +59,12 @@
 		log_text = "Set to 0"
 		SSpersistence.antag_rep -= C.ckey
 	else
-		var/prompt = "Please enter the amount of reputation to [operation]:"
+		var/prompt = "请输入要[operation == "add" ? "增加" : operation == "subtract" ? "扣除" : operation]的声望数值："
 
 		if(operation == "set")
-			prompt = "Please enter the new reputation value:"
+			prompt = "请输入新的声望数值："
 
-		msg = input("Message:", prompt) as num|null
+		msg = input("消息：", prompt) as num|null
 
 		if (!msg)
 			return
@@ -72,28 +72,28 @@
 		var/ANTAG_REP_MAXIMUM = CONFIG_GET(number/antag_rep_maximum)
 
 		if(operation == "set")
-			log_text = "Set to [num2text(msg)]"
+			log_text = "设为 [num2text(msg)]"
 			SSpersistence.antag_rep[C.ckey] = max(0, min(msg, ANTAG_REP_MAXIMUM))
 		else if(operation == "add")
-			log_text = "Added [num2text(msg)]"
+			log_text = "增加 [num2text(msg)]"
 			SSpersistence.antag_rep[C.ckey] = min(SSpersistence.antag_rep[C.ckey]+msg, ANTAG_REP_MAXIMUM)
 		else if(operation == "subtract")
-			log_text = "Subtracted [num2text(msg)]"
+			log_text = "扣除 [num2text(msg)]"
 			SSpersistence.antag_rep[C.ckey] = max(SSpersistence.antag_rep[C.ckey]-msg, 0)
 		else
-			to_chat(src, "Invalid operation for antag rep modification: [operation] by user [key_name(usr)]")
+			to_chat(src, "反派声望修改操作无效：[operation]，操作者：[key_name(usr)]")
 			return
 
 		if(SSpersistence.antag_rep[C.ckey] <= 0)
 			SSpersistence.antag_rep -= C.ckey
 
 	log_admin("[key_name(usr)]: Modified [key_name(C)]'s antagonist reputation [log_text]")
-	message_admins(span_adminnotice("[key_name_admin(usr)]: Modified [key_name(C)]'s antagonist reputation ([log_text])"))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 修改了 [key_name(C)] 的反派声望（[log_text]）"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Antagonist Reputation") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_mod_triumphs(mob/M in GLOB.mob_list, operation)
-	set category = "-Special Verbs-"
-	set name = "Adjust Triumphs..."
+	set category = "-特殊指令-"
+	set name = "调整凯旋点..."
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -102,9 +102,9 @@
 	var/log_text = ""
 	var/old_triumphs = M.get_triumphs()
 
-	var/prompt = "Please enter the amount of triumphs to add/remove:"
+	var/prompt = "请输入要增加或扣除的凯旋点："
 
-	msg = input("Message:", prompt) as num|null
+	msg = input("消息：", prompt) as num|null
 
 	if (!msg)
 		return
@@ -113,12 +113,12 @@
 	log_text = "by [msg], from [old_triumphs] to [old_triumphs + msg]"
 
 	log_admin("[key_name(usr)]: Modified [M.ckey]'s Triumphs [log_text]")
-	message_admins(span_adminnotice("[key_name_admin(usr)]: Modified [M.ckey]'s Triumphs ([log_text])"))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 将 [M.ckey] 的凯旋点从 [old_triumphs] 调整为 [old_triumphs + msg]（变动：[msg]）"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Triumphs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_mod_pq(mob/M in GLOB.mob_list, operation)
-	set category = "-Special Verbs-"
-	set name = "Adjust PQ"
+	set category = "-特殊指令-"
+	set name = "调整玩家质量分（PQ）"
 	set hidden = 1
 
 	if(!check_rights(R_ADMIN))
@@ -126,17 +126,17 @@
 
 	var/amt = ""
 	var/reason = ""
-	var/prompt = "Please enter the amount of PQ to add/remove:"
+	var/prompt = "请输入要增加或扣除的玩家质量分（PQ）："
 
-	amt = input("Message:", prompt) as num|null
+	amt = input("消息：", prompt) as num|null
 
 	if(!amt)
 		return
 
-	prompt = "Please specify a reason for the adjustment:"
-	reason = input("Message:", prompt) as text|null
+	prompt = "请说明调整原因："
+	reason = input("消息：", prompt) as text|null
 	if(!reason)
-		reason = "Player Panel Adjustment"
+		reason = "玩家面板调整"
 
 	adjust_playerquality(amt, M.ckey, usr, reason)
 
@@ -144,78 +144,78 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Player Quality") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_world_narrate()
-	set category = "-Special Verbs-"
-	set name = "Narrate - Global"
+	set category = "-特殊指令-"
+	set name = "旁白 - 全域"
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text|null
+	var/msg = input("消息：", text("输入要向所有人显示的文字：")) as text|null
 
 	if (!msg)
 		return
 	to_chat(world, "[msg]")
 	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
-	message_admins(span_adminnotice("[key_name_admin(usr)] Sent a global narrate"))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 发送了全域旁白"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Global Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_direct_narrate(mob/M)
-	set category = "-Special Verbs-"
-	set name = "Narrate - Direct"
+	set category = "-特殊指令-"
+	set name = "旁白 - 指定目标"
 
 	if(!check_rights(R_ADMIN))
 		return
 
 	if(!M)
-		M = input("Direct narrate to whom?", "Active Players") as null|anything in GLOB.player_list
+		M = input("向谁发送旁白？", "在线玩家") as null|anything in GLOB.player_list
 
 	if(!M)
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to your target:")) as text|null
+	var/msg = input("消息：", text("输入要向目标显示的文字：")) as text|null
 
 	if( !msg )
 		return
 
 	to_chat(M, msg)
 	log_admin("DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
-	msg = span_adminnotice("<b> DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]):</b> [msg]<BR>")
+	msg = span_adminnotice("<b> 指定目标旁白：[key_name(usr)] 发给 ([M.name]/[M.key]):</b> [msg]<BR>")
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Direct Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_local_narrate(atom/A)
-	set category = "-Special Verbs-"
-	set name = "Narrate - Local"
+	set category = "-特殊指令-"
+	set name = "旁白 - 附近"
 
 	if(!check_rights(R_ADMIN))
 		return
 	if(!A)
 		return
-	var/range = input("Range:", "Narrate to mobs within how many tiles:", 7) as num|null
+	var/range = input("范围：", "向多少格内的生物发送旁白：", 7) as num|null
 	if(!range)
 		return
-	var/msg = input("Message:", text("Enter the text you wish to appear to everyone within view:")) as text|null
+	var/msg = input("消息：", text("输入要向视野内所有人显示的文字：")) as text|null
 	if (!msg)
 		return
 	for(var/mob/M in view(range,A))
 		to_chat(M, msg)
 
 	log_admin("LocalNarrate: [key_name(usr)] at [AREACOORD(A)]: [msg]")
-	message_admins(span_adminnotice("<b> LocalNarrate: [key_name_admin(usr)] at [ADMIN_VERBOSEJMP(A)]:</b> [msg]<BR>"))
+	message_admins(span_adminnotice("<b> 附近旁白：[key_name_admin(usr)] 在 [ADMIN_VERBOSEJMP(A)]:</b> [msg]<BR>"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Local Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_godmode(mob/M in GLOB.mob_list)
-	set category = "-Special Verbs-"
-	set name = "Godmode"
+	set category = "-特殊指令-"
+	set name = "无敌模式"
 	if(!check_rights(R_ADMIN))
 		return
 
 	M.status_flags ^= GODMODE
-	to_chat(usr, span_adminnotice("Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]"))
+	to_chat(usr, span_adminnotice("已[(M.status_flags & GODMODE) ? "开启" : "关闭"]"))
 
 	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]")
-	var/msg = "[key_name_admin(usr)] has toggled [ADMIN_LOOKUPFLW(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]"
+	var/msg = "[key_name_admin(usr)] 已为 [ADMIN_LOOKUPFLW(M)][(M.status_flags & GODMODE) ? "开启" : "关闭"]免伤"
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Godmode", "[M.status_flags & GODMODE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -283,7 +283,7 @@
 		muteunmute = "auto-muted"
 		P.muted |= mute_type
 		log_admin("SPAM AUTOMUTE: [muteunmute] [key_name(whom)] from [mute_string]")
-		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(whom)] from [mute_string].")
+		message_admins("防刷屏自动禁言：已禁言 [key_name_admin(whom)]，频道：[list("IC (say and emote)" = "角色内（发言与表情动作）", "pray" = "祈祷", "adminhelp, admin PM and ASAY" = "管理员求助、私信与聊天", "deadchat and DSAY" = "亡者聊天", "everything" = "所有频道")[mute_string] || mute_string]。")
 		if(C)
 			to_chat(C, "防刷屏系统已将你自动禁言，频道：[list("IC (say and emote)" = "角色内（发言与表情动作）", "pray" = "祈祷", "adminhelp, admin PM and ASAY" = "管理员求助、私信与聊天", "deadchat and DSAY" = "亡者聊天", "everything" = "所有频道")[mute_string] || mute_string]。请联系管理员。")
 		SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Auto Mute [feedback_string]", "1")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -297,7 +297,7 @@
 		P.muted |= mute_type
 
 	log_admin("[key_name(usr)] has [muteunmute] [key_name(whom)] from [mute_string]")
-	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(whom)] from [mute_string].")
+	message_admins("[key_name_admin(usr)] 已对 [key_name_admin(whom)][muteunmute == "unmuted" ? "解除禁言" : "实施禁言"]，频道：[list("IC (say and emote)" = "角色内（发言与表情动作）", "pray" = "祈祷", "adminhelp, admin PM and ASAY" = "管理员求助、私信与聊天", "deadchat and DSAY" = "亡者聊天", "everything" = "所有频道")[mute_string] || mute_string]。")
 	if(C)
 		to_chat(C, "[key_name(usr, include_name = FALSE)]已对你[ muteunmute == "unmuted" ? "解除禁言" : "实施禁言"]，频道：[list("IC (say and emote)" = "角色内（发言与表情动作）", "pray" = "祈祷", "adminhelp, admin PM and ASAY" = "管理员求助、私信与聊天", "deadchat and DSAY" = "亡者聊天", "everything" = "所有频道")[mute_string] || mute_string]。")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Mute [feedback_string]", "[P.muted & mute_type]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -308,13 +308,13 @@ Works kind of like entering the game with a new character. Character receives a 
 Traitors and the like can also be revived with the previous role mostly intact.
 /N */
 /client/proc/respawn_character()
-	set category = "Debug"
-	set name = "Respawn Character"
+	set category = "调试"
+	set name = "重生角色"
 	set desc = ""
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = ckey(input(src, "Please specify which key will be respawned.", "Key", ""))
+	var/input = ckey(input(src, "请指定要重生的账号。", "账号", ""))
 	if(!input)
 		return
 
@@ -325,7 +325,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			break
 
 	if(!G_found)//If a ghost was not found.
-		to_chat(usr, "<font color='red'>There is no active key like that in the game or the person is not currently a ghost.</font>")
+		to_chat(usr, "<font color='red'>游戏中没有该在线账号，或该玩家当前不是幽灵。</font>")
 		return
 
 	//Ok, it's not a xeno or a monkey. So, spawn a human.
@@ -381,7 +381,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
 
-	var/msg = span_adminnotice("[admin] has respawned [player_key] as [new_character.real_name].")
+	var/msg = span_adminnotice("[admin] 让 [player_key] 以 [new_character.real_name] 的身份重生。")
 	message_admins(msg)
 	admin_ticket_log(new_character, msg)
 
@@ -391,8 +391,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	return new_character
 
 /client/proc/cmd_admin_rejuvenate(mob/living/M in GLOB.mob_list)
-	set category = "-Special Verbs-"
-	set name = "Rejuvenate"
+	set category = "-特殊指令-"
+	set name = "完全治疗与复活"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -400,20 +400,20 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!mob)
 		return
 	if(!istype(M))
-		alert("Cannot revive a ghost")
+		alert("无法复活幽灵")
 		return
 	M.revive(full_heal = TRUE, admin_revive = TRUE)
 
 	log_admin("[key_name(usr)] healed / revived [key_name(M)]")
-	var/msg = span_danger("Admin [key_name_admin(usr)] healed / revived [ADMIN_LOOKUPFLW(M)]!")
+	var/msg = span_danger("管理员 [key_name_admin(usr)] 治愈／复活了 [ADMIN_LOOKUPFLW(M)]！")
 	message_admins(msg)
 	// Friendlier ticket-log line for the player
 	admin_ticket_log(M, "<font color='green'>[key_name_admin(usr)]已针对此次求助为你完全治疗。</font>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Rejuvinate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/admin_spawn_cake(mob/living/M in GLOB.mob_list)
-	set category = "-GameMaster-"
-	set name = "Give Cake Slice"
+	set category = "-主持-"
+	set name = "赠送蛋糕切片"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -447,7 +447,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	new cake_type(T)
 
 	log_admin("[key_name(usr)] gave a cake slice ([cake_type]) to [key_name(M)].")
-	var/msg = span_adminnotice("[key_name_admin(usr)] gave a cake slice to [ADMIN_LOOKUPFLW(M)].")
+	var/msg = span_adminnotice("[key_name_admin(usr)] 送给 [ADMIN_LOOKUPFLW(M)] 一块蛋糕。")
 	message_admins(msg)
 	// Tell the player (and ticket) in a friendly way
 	to_chat(M, span_notice("[key_name_admin(usr)]送了你一块蛋糕。真好！"))
@@ -455,45 +455,45 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Give Cake Slice") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_create_centcom_report()
-	set category = "-Server-"
-	set name = "Create Command Report"
+	set category = "-服务器-"
+	set name = "创建指挥部报告"
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = input(usr, "Enter a Command Report. Ensure it makes sense IC.", "What?", "") as message|null
+	var/input = input(usr, "输入指挥部报告，确保符合角色内语境。", "报告内容", "") as message|null
 	if(!input)
 		return
 
-	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No", "Cancel")
+	var/confirm = alert(src, "要向全体成员公告报告内容吗？", "公告", "是", "否", "取消")
 	switch(confirm)
-		if("Yes")
+		if("是")
 			priority_announce(input, null, 'sound/blank.ogg')
-		if("Cancel")
+		if("取消")
 			return
 
 	log_admin("[key_name(src)] has created a command report: [input]")
-	message_admins("[key_name_admin(src)] has created a command report")
+	message_admins("[key_name_admin(src)] 创建了指挥部报告")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_change_command_name()
-	set category = "-Special Verbs-"
-	set name = "Change Command Name"
+	set category = "-特殊指令-"
+	set name = "更改指挥部名称"
 	set hidden = 1 // May have uses?
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = input(usr, "Please input a new name for Central Command.", "What?", "") as text|null
+	var/input = input(usr, "请输入中央司令部的新名称。", "新名称", "") as text|null
 	if(!input)
 		return
 	change_command_name(input)
-	message_admins("[key_name_admin(src)] has changed Central Command's name to [input]")
+	message_admins("[key_name_admin(src)] 将中央司令部名称改为 [input]")
 	log_admin("[key_name(src)] has changed the Central Command name to: [input]")
 
 /client/proc/cmd_admin_delete(atom/A as obj|mob|turf in world)
-	set category = "-GameMaster-"
-	set name = "Delete..."
+	set category = "-主持-"
+	set name = "删除..."
 
 	if(!check_rights(R_SPAWN|R_DEBUG))
 		return
@@ -501,8 +501,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	admin_delete(A)
 
 /client/proc/cmd_admin_list_open_jobs()
-	set category = "-Server-"
-	set name = "Manage Job Slots"
+	set category = "-服务器-"
+	set name = "管理职业名额"
 
 	if(!check_rights(R_DEBUG))
 		return
@@ -510,52 +510,52 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Manage Job Slots") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_explosion(atom/O as obj|mob|turf in world)
-	set category = "-Special Verbs-"
-	set name = "Explosion"
+	set category = "-特殊指令-"
+	set name = "爆炸"
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/devastation = input("Range of total devastation. -1 to none", text("Input"))  as num|null
+	var/devastation = input("完全毁灭的范围。-1 表示无", text("输入"))  as num|null
 	if(devastation == null)
 		return
-	var/heavy = input("Range of heavy impact. -1 to none", text("Input"))  as num|null
+	var/heavy = input("重度冲击的范围。-1 表示无", text("输入"))  as num|null
 	if(heavy == null)
 		return
-	var/light = input("Range of light impact. -1 to none", text("Input"))  as num|null
+	var/light = input("轻度冲击的范围。-1 表示无", text("输入"))  as num|null
 	if(light == null)
 		return
-	var/flash = input("Range of flash. -1 to none", text("Input"))  as num|null
+	var/flash = input("闪光的范围。-1 表示无", text("输入"))  as num|null
 	if(flash == null)
 		return
-	var/flames = input("Range of flames. -1 to none", text("Input"))  as num|null
+	var/flames = input("火焰的范围。-1 表示无", text("输入"))  as num|null
 	if(flames == null)
 		return
 
 	if ((devastation != -1) || (heavy != -1) || (light != -1) || (flash != -1) || (flames != -1))
 		if ((devastation > 20) || (heavy > 20) || (light > 20) || (flames > 20))
-			if (alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
+			if (alert(src, "确定要这样做吗？这会造成严重卡顿。", "确认", "是", "否") == "否")
 				return
 
 		explosion(O, devastation, heavy, light, flash, null, null,flames)
 		log_admin("[key_name(usr)] created an explosion ([devastation],[heavy],[light],[flames]) at [AREACOORD(O)]")
-		message_admins("[key_name_admin(usr)] created an explosion ([devastation],[heavy],[light],[flames]) at [AREACOORD(O)]")
+		message_admins("[key_name_admin(usr)] 在 [AREACOORD(O)] 制造了爆炸 ([devastation],[heavy],[light],[flames])")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Explosion") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return
 	else
 		return
 
 /client/proc/cmd_admin_emp(atom/O as obj|mob|turf in world)
-	set category = "-Special Verbs-"
-	set name = "EM Pulse"
+	set category = "-特殊指令-"
+	set name = "电磁脉冲"
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
+	var/heavy = input("强脉冲范围。", text("输入"))  as num|null
 	if(heavy == null)
 		return
-	var/light = input("Range of light pulse.", text("Input"))  as num|null
+	var/light = input("弱脉冲范围。", text("输入"))  as num|null
 	if(light == null)
 		return
 
@@ -563,7 +563,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 		empulse(O, heavy, light)
 		log_admin("[key_name(usr)] created an EM Pulse ([heavy],[light]) at [AREACOORD(O)]")
-		message_admins("[key_name_admin(usr)] created an EM Pulse ([heavy],[light]) at [AREACOORD(O)]")
+		message_admins("[key_name_admin(usr)] 在 [AREACOORD(O)] 制造了电磁脉冲 ([heavy],[light])")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "EM Pulse") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 		return
@@ -571,45 +571,45 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 /client/proc/cmd_admin_gib(mob/M in GLOB.mob_list)
-	set category = "-Special Verbs-"
-	set name = "Gib..."
+	set category = "-特殊指令-"
+	set name = "碎尸..."
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/confirm = alert(src, "Drop a brain?", "Confirm", "Yes", "No","Cancel")
-	if(confirm == "Cancel")
+	var/confirm = alert(src, "留下大脑吗？", "确认", "是", "否","取消")
+	if(confirm == "取消")
 		return
 	//Due to the delay here its easy for something to have happened to the mob
 	if(!M)
 		return
 
 	log_admin("[key_name(usr)] has gibbed [key_name(M)]")
-	message_admins("[key_name_admin(usr)] has gibbed [key_name_admin(M)]")
+	message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 碎尸")
 
 	if(isobserver(M))
 		new /obj/effect/gibspawner/generic(get_turf(M))
 		return
-	if(confirm == "Yes")
+	if(confirm == "是")
 		M.gib()
 	else
 		M.gib(1)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Gib") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_gib_self()
-	set name = "Gibself"
-	set category = "-GameMaster-"
+	set name = "自身碎尸"
+	set category = "-主持-"
 
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-	if(confirm == "Yes")
+	var/confirm = alert(src, "确定吗？", "确认", "是", "否")
+	if(confirm == "是")
 		log_admin("[key_name(usr)] used gibself.")
-		message_admins(span_adminnotice("[key_name_admin(usr)] used gibself."))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 使用了自身碎尸指令。"))
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Gib Self") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		mob.gib(1, 1, 1)
 
 /client/proc/cmd_admin_check_contents(mob/living/M in GLOB.mob_list)
-	set category = "-Special Verbs-"
-	set name = "Check Contents"
+	set category = "-特殊指令-"
+	set name = "查看内容物"
 
 	var/list/L = M.get_contents()
 	for(var/t in L)
@@ -617,12 +617,12 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Check Contents") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_view_range()
-	set category = "-Special Verbs-"
-	set name = "Change View Range"
+	set category = "-特殊指令-"
+	set name = "更改视野范围"
 	set desc = ""
 
 	if(view == CONFIG_GET(string/default_view))
-		change_view(input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128))
+		change_view(input("选择视野范围：", "视野范围", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128))
 	else
 		change_view(CONFIG_GET(string/default_view))
 
@@ -634,23 +634,23 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 
 /client/proc/toggle_random_events()
-	set category = "-Server-"
-	set name = "Toggle random events on/off"
+	set category = "-服务器-"
+	set name = "切换随机事件"
 	set desc = ""
 	var/new_are = !CONFIG_GET(flag/allow_random_events)
 	CONFIG_SET(flag/allow_random_events, new_are)
 	if(new_are)
-		to_chat(usr, "Random events enabled")
-		message_admins("Admin [key_name_admin(usr)] has enabled random events.")
+		to_chat(usr, "已启用随机事件")
+		message_admins("管理员 [key_name_admin(usr)] 启用了随机事件。")
 	else
-		to_chat(usr, "Random events disabled")
-		message_admins("Admin [key_name_admin(usr)] has disabled random events.")
+		to_chat(usr, "已禁用随机事件")
+		message_admins("管理员 [key_name_admin(usr)] 禁用了随机事件。")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Random Events", "[new_are ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
 /client/proc/toggle_combo_hud()
-	set category = "-Admin-"
-	set name = "Toggle Combo HUD"
+	set category = "-管理-"
+	set name = "切换综合状态栏"
 	set desc = ""
 	set hidden = 1 // If somebody loves this, I'm sorry, you can unhide it
 
@@ -670,8 +670,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	mob.update_sight()
 
-	to_chat(usr, "You toggled your admin combo HUD [adding_hud ? "ON" : "OFF"].")
-	message_admins("[key_name_admin(usr)] toggled their admin combo HUD [adding_hud ? "ON" : "OFF"].")
+	to_chat(usr, "你已[adding_hud ? "开启" : "关闭"]管理员综合状态栏。")
+	message_admins("[key_name_admin(usr)] 已[adding_hud ? "开启" : "关闭"]管理员综合状态栏。")
 	log_admin("[key_name(usr)] toggled their admin combo HUD [adding_hud ? "ON" : "OFF"].")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Combo HUD", "[adding_hud ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -682,39 +682,39 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 
 /client/proc/run_weather()
-	set category = "-GameMaster-"
-	set name = "Run Weather"
+	set category = "-主持-"
+	set name = "触发天气"
 	set desc = ""
 	set hidden = 1 //Replaced by particle weather
 
 	if(!holder)
 		return
 
-	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sortList(subtypesof(/datum/weather), GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/weather_type = input("选择一种天气", "天气")  as null|anything in sortList(subtypesof(/datum/weather), GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!weather_type)
 		return
 
 	var/turf/T = get_turf(mob)
-	var/z_level = input("Z-Level to target?", "Z-Level", T?.z) as num|null
+	var/z_level = input("目标Z层级？", "Z层级", T?.z) as num|null
 	if(!isnum(z_level))
 		return
 
 	SSweather.run_weather(weather_type, z_level)
 
-	message_admins("[key_name_admin(usr)] started weather of type [weather_type] on the z-level [z_level].")
+	message_admins("[key_name_admin(usr)] 在Z层级 [z_level] 触发了 [weather_type] 天气。")
 	log_admin("[key_name(usr)] started weather of type [weather_type] on the z-level [z_level].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Weather")
 
 /client/proc/show_tip()
-	set category = "-Admin-"
-	set name = "Show Tip"
-	set desc = "Sends a tip (that you specify) to all players. After all \
-		you're the experienced player here."
+	set category = "-管理-"
+	set name = "发送提示"
+	set desc = "向所有玩家发送你编写的提示。毕竟，\
+		你才是这里经验丰富的玩家。"
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/input = input(usr, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
+	var/input = input(usr, "请输入要发给玩家的提示。", "提示", "") as message|null
 	if(!input)
 		return
 
@@ -728,48 +728,48 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		SSticker.send_tip_of_the_round()
 
 
-	message_admins("[key_name_admin(usr)] sent a tip of the round.")
+	message_admins("[key_name_admin(usr)] 发送了本回合提示。")
 	log_admin("[key_name(usr)] sent \"[input]\" as the Tip of the Round.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Tip")
 
 /client/proc/toggle_hub()
-	set category = "-Server-"
-	set name = "Toggle Hub"
+	set category = "-服务器-"
+	set name = "切换服务器大厅可见性"
 
 	world.update_hub_visibility(!GLOB.hub_visibility)
 
 	log_admin("[key_name(usr)] has toggled the server's hub status for the round, it is now [(GLOB.hub_visibility?"on":"off")] the hub.")
-	message_admins("[key_name_admin(usr)] has toggled the server's hub status for the round, it is now [(GLOB.hub_visibility?"on":"off")] the hub.")
+	message_admins("[key_name_admin(usr)] 切换了本回合服务器大厅可见性，现已[(GLOB.hub_visibility?"显示":"隐藏")]。")
 	if (GLOB.hub_visibility && !world.reachable)
-		message_admins("WARNING: The server will not show up on the hub because byond is detecting that a filewall is blocking incoming connections.")
+		message_admins("警告：BYOND 检测到防火墙阻止传入连接，服务器不会出现在大厅中。")
 
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggled Hub Visibility", "[GLOB.hub_visibility ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/smite(mob/living/target as mob)
-	set name = "Smite"
-	set category = "-GameMaster-"
+	set name = "神罚"
+	set category = "-主持-"
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 	var/static/list/punishment_list = list(
-		ADMIN_PUNISHMENT_LIGHTNING,
-		ADMIN_PUNISHMENT_BRAINDAMAGE,
-		ADMIN_PUNISHMENT_GIB,
-		ADMIN_PUNISHMENT_BSA,
-		ADMIN_PUNISHMENT_CBT,
-		ADMIN_PUNISHMENT_NECKSNAP,
-		ADMIN_PUNISHMENT_LIAM,
-		ADMIN_PUNISHMENT_THROWMOB,
-		ADMIN_PUNISHMENT_CRIPPLE,
-		ADMIN_PUNISHMENT_PSYDON,
-		ADMIN_PUNISHMENT_DIVINE_WRATH,
+		"雷击" = ADMIN_PUNISHMENT_LIGHTNING,
+		"脑损伤" = ADMIN_PUNISHMENT_BRAINDAMAGE,
+		"爆体" = ADMIN_PUNISHMENT_GIB,
+		"蓝空间火炮" = ADMIN_PUNISHMENT_BSA,
+		"生殖器创伤（CBT）" = ADMIN_PUNISHMENT_CBT,
+		"折断脖颈" = ADMIN_PUNISHMENT_NECKSNAP,
+		"变为特雷·利亚姆" = ADMIN_PUNISHMENT_LIAM,
+		"抛飞生物" = ADMIN_PUNISHMENT_THROWMOB,
+		"四肢骨折" = ADMIN_PUNISHMENT_CRIPPLE,
+		"普赛顿圣罚" = ADMIN_PUNISHMENT_PSYDON,
+		"神圣之怒" = ADMIN_PUNISHMENT_DIVINE_WRATH,
 	)
 
-	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in sortList(punishment_list)
+	var/punishment = input("选择一种惩罚", "神罚") as null|anything in sortList(punishment_list)
 
 	if(QDELETED(target) || !punishment)
 		return
 
-	switch(punishment)
+	switch(punishment_list[punishment])
 		if(ADMIN_PUNISHMENT_LIGHTNING)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
@@ -799,27 +799,27 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			bluespace_artillery(target)
 		if(ADMIN_PUNISHMENT_CBT)
 			if(!ishuman(target))
-				to_chat(usr,span_warning("Target must be human!"))
+				to_chat(usr,span_warning("目标必须是人形角色！"))
 				return
 			var/mob/living/carbon/human/humie = target
 			var/obj/item/bodypart/affecting = humie.get_bodypart(BODY_ZONE_CHEST)
 			if(!affecting)
-				to_chat(usr,span_warning("Target must have a chest!"))
+				to_chat(usr,span_warning("目标必须有胸部！"))
 				return
 			affecting.add_wound(/datum/wound/cbt/permanent)
 		if(ADMIN_PUNISHMENT_NECKSNAP)
 			if(!ishuman(target))
-				to_chat(usr,span_warning("Target must be human!"))
+				to_chat(usr,span_warning("目标必须是人形角色！"))
 				return
 			var/mob/living/carbon/human/humie = target
 			var/obj/item/bodypart/affecting = humie.get_bodypart(BODY_ZONE_HEAD)
 			if(!affecting)
-				to_chat(usr,span_warning("Target must have a head!"))
+				to_chat(usr,span_warning("目标必须有头部！"))
 				return
 			affecting.add_wound(/datum/wound/fracture/neck)
 		if(ADMIN_PUNISHMENT_CRIPPLE)
 			if(!ishuman(target))
-				to_chat(usr,span_warning("Target must be human!"))
+				to_chat(usr,span_warning("目标必须是人形角色！"))
 				return
 			var/limbs_to_cripple = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
 			var/mob/living/carbon/human/humie = target
@@ -829,10 +829,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				limb_to_cripple.add_wound(/datum/wound/fracture)
 		if(ADMIN_PUNISHMENT_THROWMOB)
 			if(!ismob(target))
-				to_chat(usr,span_warning("Target must be a mob!"))
+				to_chat(usr,span_warning("目标必须是生物！"))
 				return
-			var/list/directions = list("North" = NORTH, "South" = SOUTH, "East" = EAST, "West" = WEST, "Northeast" = NORTHEAST, "Northwest" = NORTHWEST, "Southeast" = SOUTHEAST, "Southwest" = SOUTHWEST)
-			var/direction = input("Which direction?") in directions
+			var/list/directions = list("北" = NORTH, "南" = SOUTH, "东" = EAST, "西" = WEST, "东北" = NORTHEAST, "西北" = NORTHWEST, "东南" = SOUTHEAST, "西南" = SOUTHWEST)
+			var/direction = input("哪个方向？") in directions
 			direction = directions[direction]
 			var/target_tile = target.loc
 			for (var/i = 0; i < 10; i++)
@@ -844,7 +844,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			target.throw_at(target = target_tile, range = 10, speed = 3, thrower = target, spin = 9, diagonals_first = FALSE, callback = null, force = 20)
 		if(ADMIN_PUNISHMENT_LIAM)
 			if(!ishuman(target))
-				to_chat(usr,span_warning("NO...IT COULDN'T BE... (Needs to be a carbon!)"))
+				to_chat(usr,span_warning("不……这不可能……（目标必须是碳基生物！）"))
 				return
 			var/mob/living/carbon/human/humie = target
 			playsound(humie, 'sound/villain/dreamer_win.ogg', 100, FALSE, -1)
@@ -875,29 +875,29 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				sleep(3 SECONDS)
 		if(ADMIN_PUNISHMENT_DIVINE_WRATH)
 			if(!ishuman(target))
-				to_chat(usr,span_warning("Target must be human!"))
+				to_chat(usr,span_warning("目标必须是人形角色！"))
 				return
 			divine_wrath(target)
-	punish_log(target, punishment)
+	punish_log(target, punishment_list[punishment])
 
 /client/proc/punish_log(whom, punishment)
-	var/msg = "[key_name_admin(usr)] punished [key_name_admin(whom)] with [punishment]."
+	var/msg = "[key_name_admin(usr)] 对 [key_name_admin(whom)] 施加了 [list(ADMIN_PUNISHMENT_LIGHTNING = "雷击", ADMIN_PUNISHMENT_BRAINDAMAGE = "脑损伤", ADMIN_PUNISHMENT_GIB = "爆体", ADMIN_PUNISHMENT_BSA = "蓝空间火炮", ADMIN_PUNISHMENT_CBT = "生殖器创伤（CBT）", ADMIN_PUNISHMENT_NECKSNAP = "折断脖颈", ADMIN_PUNISHMENT_LIAM = "变为特雷·利亚姆", ADMIN_PUNISHMENT_THROWMOB = "抛飞生物", ADMIN_PUNISHMENT_CRIPPLE = "四肢骨折", ADMIN_PUNISHMENT_PSYDON = "普赛顿圣罚", ADMIN_PUNISHMENT_DIVINE_WRATH = "神圣之怒")[punishment] || punishment] 惩罚。"
 	message_admins(msg)
 	admin_ticket_log(whom, msg)
 	log_admin("[key_name(usr)] punished [key_name(whom)] with [punishment].")
 
 /client/proc/cmd_admin_check_player_exp()	//Allows admins to determine who the newer players are.
-	set category = "-Server-"
-	set name = "Player Playtime"
+	set category = "-服务器-"
+	set name = "玩家游玩时长"
 	if(!check_rights(R_ADMIN))
 		return
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, span_warning("Tracking is disabled in the server configuration file."))
+		to_chat(usr, span_warning("服务器配置文件已禁用时长追踪。"))
 		return
 
 	var/list/msg = list()
-	msg += "<html><head><title>Playtime Report</title></head><body>Playtime:<BR><UL>"
+	msg += "<html><head><title>游玩时长报告</title></head><body>游玩时长：<BR><UL>"
 	for(var/client/C in GLOB.clients)
 		msg += "<LI> - [key_name_admin(C)]: <A href='?_src_=holder;[HrefToken()];getplaytimewindow=[REF(C.mob)]'>" + C.get_exp_living() + "</a></LI>"
 	msg += "</UL></BODY></HTML>"
@@ -907,16 +907,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 	if(!C)
-		to_chat(usr, span_danger("ERROR: Client not found."))
+		to_chat(usr, span_danger("错误：未找到客户端。"))
 		return
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, span_warning("Tracking is disabled in the server configuration file."))
+		to_chat(usr, span_warning("服务器配置文件已禁用时长追踪。"))
 		return
 
 	var/list/body = list()
-	body += "<html><head><title>Playtime for [C.key]</title></head><BODY><BR>Playtime:"
+	body += "<html><head><title>[C.key] 的游玩时长</title></head><BODY><BR>游玩时长："
 	body += C.get_exp_report()
-	body += "<A href='?_src_=holder;[HrefToken()];toggleexempt=[REF(C)]'>Toggle Exempt status</a>"
+	body += "<A href='?_src_=holder;[HrefToken()];toggleexempt=[REF(C)]'>切换时长要求豁免</a>"
 	body += "</BODY></HTML>"
 	usr << browse(body.Join(), "window=playerplaytime[C.ckey];size=550x615")
 
@@ -924,11 +924,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 	if(!C)
-		to_chat(usr, span_danger("ERROR: Client not found."))
+		to_chat(usr, span_danger("错误：未找到客户端。"))
 		return
 
 	if(!C.set_db_player_flags())
-		to_chat(usr, span_danger("ERROR: Unable read player flags from database. Please check logs."))
+		to_chat(usr, span_danger("错误：无法从数据库读取玩家标记。请查看日志。"))
 	var/dbflags = C.prefs.db_flags
 	var/newstate = FALSE
 	if(dbflags & DB_FLAG_EXEMPT)
@@ -937,9 +937,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		newstate = TRUE
 
 	if(C.update_flag_db(DB_FLAG_EXEMPT, newstate))
-		to_chat(usr, span_danger("ERROR: Unable to update player flags. Please check logs."))
+		to_chat(usr, span_danger("错误：无法更新玩家标记。请查看日志。"))
 	else
-		message_admins("[key_name_admin(usr)] has [newstate ? "activated" : "deactivated"] job exp exempt status on [key_name_admin(C)]")
+		message_admins("[key_name_admin(usr)] 已为 [key_name_admin(C)][newstate ? "启用" : "禁用"]职业时长要求豁免")
 		log_admin("[key_name(usr)] has [newstate ? "activated" : "deactivated"] job exp exempt status on [key_name(C)]")
 
 /// Every trait in the game listed as a checkbox, checked ones being the traits the datum ends up with
@@ -961,11 +961,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(trait in items)
 			continue
 		items += trait
-		descriptions[trait] = "Unlisted trait."
+		descriptions[trait] = "未收录的特质。"
 		checked += trait
 	items = sortList(checked) + sortList(items - checked) //what it already has goes on top
 
-	var/list/chosen = tgui_input_checkboxes(usr, "Checked traits are the ones [D] will end up with.", "Modify Traits of [D]", items, min_checked = 0, max_checked = length(items), default_checked = checked, descriptions = descriptions, strict_modern = TRUE, window_width = 600, window_height = 700)
+	var/list/chosen = tgui_input_checkboxes(usr, "勾选的特质将成为 [D] 最终拥有的特质。", "修改 [D] 的特质", items, min_checked = 0, max_checked = length(items), default_checked = checked, descriptions = descriptions, strict_modern = TRUE, window_width = 600, window_height = 700)
 	if(isnull(chosen) || QDELETED(D))
 		return
 
@@ -984,7 +984,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			REMOVE_TRAIT(D, trait, source)
 
 	log_admin("[key_name(usr)] modified the traits of [D] ([D.type]): added [english_list(added)], removed [english_list(removed)]")
-	message_admins("[key_name_admin(usr)] modified the traits of [D] ([D.type]): added [english_list(added)], removed [english_list(removed)]")
+	message_admins("[key_name_admin(usr)] 修改了 [D] ([D.type]) 的特质：新增 [english_list(added)]，移除 [english_list(removed)]")
 
 /// "TRAIT_DEFINE - what the trait does", for the trait modification menu
 /proc/trait_menu_description(trait, define_name)

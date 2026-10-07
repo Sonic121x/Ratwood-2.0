@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 #ifdef TESTSERVER
 
 /client/verb/output_inhands()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "输出变量"
 	set desc = ""
 
@@ -258,7 +258,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 			to_chat(mob, "[tegst.Join()]")
 
 /client/verb/inhand_xplus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "横向+1"
 
 	if(!isliving(mob))
@@ -309,7 +309,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_xminus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "横向-1"
 
 	if(!isliving(mob))
@@ -360,7 +360,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_yplus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "纵向+1"
 
 	if(!isliving(mob))
@@ -411,7 +411,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_yminus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "纵向-1"
 
 	if(!isliving(mob))
@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_flip()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "翻转"
 
 	if(!isliving(mob))
@@ -526,7 +526,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_turnplus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "旋转+1"
 
 	if(!isliving(mob))
@@ -579,7 +579,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_turnminus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "旋转-1"
 
 	if(!isliving(mob))
@@ -632,7 +632,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_scaleplus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "缩放+0.1"
 
 	if(!isliving(mob))
@@ -670,7 +670,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_scaleminus()
-	set category = "INHANDS"
+	set category = "手持物品"
 	set name = "缩放-0.1"
 
 	if(!isliving(mob))
@@ -708,7 +708,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/give_me_money()
-	set category = "DEBUGTEST"
+	set category = "调试指令"
 	set name = "给我钱"
 	if(mob)
 		var/turf/T = get_turf(mob)
@@ -727,7 +727,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 */
 
 /client/verb/zoomtest()
-	set category = "DEBUGTEST"
+	set category = "调试指令"
 	set name = "缩放测试"
 	if(mob)
 		if(iscarbon(mob))
@@ -741,7 +741,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 				animate(transform = -newmatrix, time = 5, easing = QUAD_EASING)
 
 /client/verb/zoomteststop()
-	set category = "DEBUGTEST"
+	set category = "调试指令"
 	set name = "结束缩放测试"
 	if(mob)
 		if(iscarbon(mob))
@@ -753,7 +753,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 
 #ifdef TESTING
 /client/verb/door_test_button()
-	set category = "DEBUGTEST"
+	set category = "调试指令"
 	set name = "门测试按钮"
 	if(mob)
 		var/mob/M = mob

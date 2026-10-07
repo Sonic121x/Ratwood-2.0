@@ -8,26 +8,26 @@
 GLOBAL_LIST_EMPTY(stress_test_mobs)
 
 /client/proc/performance_stress_test()
-	set name = "Performance Stress Test"
-	set category = "Debug"
+	set name = "性能压力测试"
+	set category = "调试"
 
 	if(!check_rights(R_DEBUG))
 		return
 
-	var/mob_count = input(usr, "How many test mobs to spawn?", "Stress Test", 300) as num|null
+	var/mob_count = input(usr, "要生成多少个测试角色？", "压力测试", 300) as num|null
 	if(!mob_count || mob_count <= 0)
 		return
 
-	var/auto_cleanup = alert(usr, "Automatically delete mobs after test?", "Cleanup", "Yes", "No") == "Yes"
+	var/auto_cleanup = alert(usr, "测试后自动删除角色？", "清理", "是", "否") == "是"
 
 	var/radius = round(sqrt(mob_count) / 2) + 5
 	var/turf/center = get_turf(mob)
 
 	if(!center)
-		to_chat(src, span_warning("You must be in a valid location to run this test."))
+		to_chat(src, span_warning("必须位于有效位置才能运行此测试。"))
 		return
 
-	to_chat(src, span_notice("Starting performance stress test with [mob_count] mobs..."))
+	to_chat(src, span_notice("开始使用 [mob_count] 个角色进行性能压力测试……"))
 
 	var/list/spawned_mobs = list()
 	var/start_time = world.timeofday
@@ -57,13 +57,13 @@ GLOBAL_LIST_EMPTY(stress_test_mobs)
 			apply_random_damage_state(H)
 
 			if(spawned % 50 == 0)
-				to_chat(src, span_notice("Spawned [spawned]/[mob_count] test subjects..."))
+				to_chat(src, span_notice("已生成 [spawned]/[mob_count] 个测试对象……"))
 
 			CHECK_TICK
 
 	var/spawn_time = world.timeofday - start_time
-	to_chat(src, span_notice("Spawned [length(spawned_mobs)] mobs in [spawn_time/10] seconds."))
-	to_chat(src, span_notice("Beginning damage update cycles..."))
+	to_chat(src, span_notice("已生成 [length(spawned_mobs)] 个角色，耗时 [spawn_time/10] 秒。"))
+	to_chat(src, span_notice("开始伤害更新循环……"))
 
 	addtimer(CALLBACK(src, PROC_REF(stress_test_damage_wave), spawned_mobs, 1), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(stress_test_damage_wave), spawned_mobs, 2), 15 SECONDS)
@@ -72,14 +72,14 @@ GLOBAL_LIST_EMPTY(stress_test_mobs)
 	if(auto_cleanup)
 		addtimer(CALLBACK(src, PROC_REF(stress_test_cleanup), spawned_mobs), 45 SECONDS)
 	else
-		to_chat(src, span_warning("Test mobs will remain spawned. Use 'Cleanup Stress Test' verb to remove them later."))
+		to_chat(src, span_warning("测试角色将会保留。稍后可使用“清理压力测试角色”指令移除它们。"))
 		GLOB.stress_test_mobs = spawned_mobs
 
 /client/proc/stress_test_damage_wave(list/mobs, wave_number)
 	if(!mobs || !length(mobs))
 		return
 
-	to_chat(src, span_boldnotice("=== DAMAGE WAVE [wave_number] ==="))
+	to_chat(src, span_boldnotice("=== 第 [wave_number] 轮伤害 ==="))
 	var/start_time = world.timeofday
 
 	for(var/mob/living/carbon/human/H as anything in mobs)
@@ -99,14 +99,14 @@ GLOBAL_LIST_EMPTY(stress_test_mobs)
 		H.update_damage_overlays()
 
 	var/update_time = world.timeofday - start_time
-	to_chat(src, span_notice("Wave [wave_number] complete. Updated [length(mobs)] mobs in [update_time/10] seconds."))
+	to_chat(src, span_notice("第 [wave_number] 轮完成。已更新 [length(mobs)] 个角色，耗时 [update_time/10] 秒。"))
 
 /client/proc/stress_test_cleanup(list/mobs)
 	if(!mobs)
 		return
 
-	to_chat(src, span_boldnotice("=== STRESS TEST COMPLETE ==="))
-	to_chat(src, span_notice("Cleaning up [length(mobs)] test subjects..."))
+	to_chat(src, span_boldnotice("=== 压力测试完成 ==="))
+	to_chat(src, span_notice("正在清理 [length(mobs)] 个测试对象……"))
 
 	var/cleaned = 0
 	for(var/mob/living/carbon/human/H as anything in mobs)
@@ -114,8 +114,8 @@ GLOBAL_LIST_EMPTY(stress_test_mobs)
 			qdel(H)
 			cleaned++
 
-	to_chat(src, span_notice("Stress test cleanup complete. Deleted [cleaned] mobs."))
-	to_chat(src, span_notice("Check server profiler for performance data."))
+	to_chat(src, span_notice("压力测试清理完成。已删除 [cleaned] 个角色。"))
+	to_chat(src, span_notice("请在服务器性能分析器中查看性能数据。"))
 
 /client/proc/equip_stress_test_clothing(mob/living/carbon/human/H)
 
@@ -243,21 +243,21 @@ GLOBAL_LIST_EMPTY(stress_test_mobs)
 
 
 /client/proc/cleanup_stress_test_mobs()
-	set name = "Cleanup Stress Test"
-	set category = "Debug"
+	set name = "清理压力测试角色"
+	set category = "调试"
 
 	if(!check_rights(R_DEBUG))
 		return
 
 	if(!GLOB.stress_test_mobs || !length(GLOB.stress_test_mobs))
-		to_chat(src, span_warning("No stress test mobs found to clean up."))
+		to_chat(src, span_warning("未找到需要清理的压力测试角色。"))
 		return
 
 	var/mob_count = length(GLOB.stress_test_mobs)
-	if(alert(usr, "Delete [mob_count] stress test mobs?", "Confirm Cleanup", "Yes", "No") != "Yes")
+	if(alert(usr, "删除 [mob_count] 个压力测试角色？", "确认清理", "是", "否") != "是")
 		return
 
-	to_chat(src, span_notice("Cleaning up [mob_count] stress test mobs..."))
+	to_chat(src, span_notice("正在清理 [mob_count] 个压力测试角色……"))
 
 	var/cleaned = 0
 	for(var/mob/living/carbon/human/H as anything in GLOB.stress_test_mobs)
@@ -266,4 +266,4 @@ GLOBAL_LIST_EMPTY(stress_test_mobs)
 			cleaned++
 
 	GLOB.stress_test_mobs = list()
-	to_chat(src, span_notice("Cleanup complete. Deleted [cleaned] mobs."))
+	to_chat(src, span_notice("清理完成。已删除 [cleaned] 个角色。"))
