@@ -62,32 +62,32 @@
 /datum/round_event_control/proc/return_failure_string(players_amt)
 	var/string
 	if(roundstart && (world.time-SSticker.round_start_time >= 2 MINUTES))
-		string += "Roundstart"
+		string += "仅限回合开始"
 	if(length(allowed_storytellers) && !(SSgamemode.current_storyteller.type in allowed_storytellers))
 		if(string)
 			string += ","
-		string += "Wrong God"
+		string += "神祇不符"
 	if(length(todreq) && !(GLOB.tod in todreq))
 		if(string)
 			string += ","
-		string += "Wrong Time of Day"
+		string += "时段不符"
 	if(occurrences >= max_occurrences)
 		if(string)
 			string += ","
-		string += "Cap Reached"
+		string += "已达次数上限"
 	if(earliest_start >= world.time-SSticker.round_start_time)
 		if(string)
 			string += ","
-		string +="Too Soon"
+		string +="尚未到达最早时间"
 	if(players_amt < min_players)
 		if(string)
 			string += ","
-		string += "Lack of players"
+		string += "玩家人数不足"
 	if(checks_antag_cap)
 		if(!roundstart && !SSgamemode.can_inject_antags())
 			if(string)
 				string += ","
-			string += "Too Many Villians"
+			string += "反派过多"
 	return string
 
 /datum/round_event_control/New()
@@ -133,11 +133,11 @@
 
 	triggering = TRUE
 	if (alert_observers)
-		message_admins("Random Event triggering in 10 seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("随机事件将在 10 秒后触发：[name]（<a href='?src=[REF(src)];cancel=1'>取消</a>）")
 		sleep(100)
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!canSpawnEvent(players_amt, null, fake_check = TRUE))
-			message_admins("Second pre-condition check for [name] failed, skipping...")
+			message_admins("[name] 的第二次前置条件检查失败，正在跳过……")
 			return EVENT_INTERRUPTED
 
 	if(!triggering)
@@ -157,10 +157,10 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, span_admin("I are too late to cancel that event"))
+			to_chat(usr, span_admin("已来不及取消该事件"))
 			return
 		triggering = FALSE
-		message_admins("[key_name_admin(usr)] cancelled event [name].")
+		message_admins("[key_name_admin(usr)] 取消了事件 [name]。")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
 
@@ -346,15 +346,15 @@
 	if(SSticker.HasRoundStarted())
 		if(roundstart)
 			if(!can_run_post_roundstart)
-				return "<a class='linkOff'>Fire</a> <a class='linkOff'>Schedule</a>"
-			return "<a href='byond://?src=[REF(src)];action=fire'>Fire</a> <a href='byond://?src=[REF(src)];action=schedule'>Schedule</a>"
+				return "<a class='linkOff'>触发</a> <a class='linkOff'>安排</a>"
+			return "<a href='byond://?src=[REF(src)];action=fire'>触发</a> <a href='byond://?src=[REF(src)];action=schedule'>安排</a>"
 		else
-			return "<a href='byond://?src=[REF(src)];action=fire'>Fire</a> <a href='byond://?src=[REF(src)];action=schedule'>Schedule</a> <a href='byond://?src=[REF(src)];action=force_next'>Force Next</a>"
+			return "<a href='byond://?src=[REF(src)];action=fire'>触发</a> <a href='byond://?src=[REF(src)];action=schedule'>安排</a> <a href='byond://?src=[REF(src)];action=force_next'>强制下一事件</a>"
 	else
 		if(roundstart)
-			return "<a href='byond://?src=[REF(src)];action=schedule'>Add Roundstart</a> <a href='byond://?src=[REF(src)];action=force_next'>Force Roundstart</a>"
+			return "<a href='byond://?src=[REF(src)];action=schedule'>加入回合开始事件</a> <a href='byond://?src=[REF(src)];action=force_next'>强制回合开始事件</a>"
 		else
-			return "<a class='linkOff'>Fire</a> <a class='linkOff'>Schedule</a> <a class='linkOff'>Force Next</a>"
+			return "<a class='linkOff'>触发</a> <a class='linkOff'>安排</a> <a class='linkOff'>强制下一事件</a>"
 
 
 /datum/round_event_control/Topic(href, href_list)
@@ -363,15 +363,15 @@
 		return
 	switch(href_list["action"])
 		if("schedule")
-			message_admins("[key_name_admin(usr)] scheduled event [src.name].")
+			message_admins("[key_name_admin(usr)] 安排了事件 [src.name]。")
 			log_admin_private("[key_name(usr)] scheduled [src.name].")
 			SSgamemode.current_storyteller.buy_event(src, src.track)
 		if("force_next")
-			message_admins("[key_name_admin(usr)] forced scheduled event [src.name].")
+			message_admins("[key_name_admin(usr)] 强制安排了事件 [src.name]。")
 			log_admin_private("[key_name(usr)] forced scheduled event [src.name].")
 			SSgamemode.forced_next_events[src.track] = src
 		if("fire")
-			message_admins("[key_name_admin(usr)] fired event [src.name].")
+			message_admins("[key_name_admin(usr)] 触发了事件 [src.name]。")
 			log_admin_private("[key_name(usr)] fired event [src.name].")
 			runEvent(random = FALSE, admin_forced = TRUE)
 

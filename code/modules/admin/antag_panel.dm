@@ -41,50 +41,50 @@ GLOBAL_VAR(antag_prototypes)
 	return parts.Join("<br>")
 
 /datum/antagonist/proc/antag_panel_objectives()
-	var/result = "<i><b>Objectives</b></i>:<br>"
+	var/result = "<i><b>目标</b></i>：<br>"
 	if (objectives.len == 0)
-		result += "EMPTY<br>"
+		result += "无目标<br>"
 	else
 		var/obj_count = 1
 		for(var/datum/objective/objective in objectives)
-			result += "<B>[obj_count]</B>: [objective.explanation_text] <a href='?src=[REF(owner)];obj_edit=[REF(objective)]'>Edit</a> <a href='?src=[REF(owner)];obj_delete=[REF(objective)]'>Delete</a> <a href='?src=[REF(owner)];obj_completed=[REF(objective)]'><font color=[objective.completed ? "green" : "red"]>[objective.completed ? "Mark as incomplete" : "Mark as complete"]</font></a><br>"
+			result += "<B>[obj_count]</B>：[objective.explanation_text] <a href='?src=[REF(owner)];obj_edit=[REF(objective)]'>编辑</a> <a href='?src=[REF(owner)];obj_delete=[REF(objective)]'>删除</a> <a href='?src=[REF(owner)];obj_completed=[REF(objective)]'><font color=[objective.completed ? "green" : "red"]>[objective.completed ? "标记为未完成" : "标记为已完成"]</font></a><br>"
 			obj_count++
-	result += "<a href='?src=[REF(owner)];obj_add=1;target_antag=[REF(src)]'>Add objective</a><br>"
-	result += "<a href='?src=[REF(owner)];obj_announce=1'>Announce objectives</a><br>"
+	result += "<a href='?src=[REF(owner)];obj_add=1;target_antag=[REF(src)]'>添加目标</a><br>"
+	result += "<a href='?src=[REF(owner)];obj_announce=1'>公布目标</a><br>"
 	return result
 
 /datum/antagonist/proc/antag_panel_memory()
-	var/out = "<b>Memory:</b><br>"
+	var/out = "<b>记忆：</b><br>"
 	out += antag_memory
-	out += "<br><a href='?src=[REF(src)];memory_edit=1'>Edit memory</a><br>"
+	out += "<br><a href='?src=[REF(src)];memory_edit=1'>编辑记忆</a><br>"
 	return out
 
 /datum/mind/proc/get_common_admin_commands()
-	var/common_commands = "<span>Common Commands:</span>"
+	var/common_commands = "<span>常用指令：</span>"
 	if(ishuman(current))
-		common_commands += "<a href='?src=[REF(src)];common=undress'>undress</a>"
+		common_commands += "<a href='?src=[REF(src)];common=undress'>脱下衣物</a>"
 	return common_commands
 
 /datum/mind/proc/get_special_statuses()
 	var/list/result = list()
 	if(!current)
-		result += span_bad("No body!")
+		result += span_bad("没有身体！")
 	if(current && HAS_TRAIT(current, TRAIT_MINDSHIELD))
-		result += span_good("Mindshielded")
+		result += span_good("心智受到保护")
 	return result.Join(" | ")
 
 /datum/mind/proc/traitor_panel()
 	if(!SSticker.HasRoundStarted())
-		alert("Not before round-start!", "Alert")
+		alert("回合开始前无法使用！", "提示")
 		return
 	if(QDELETED(src))
-		alert("This mind doesn't have a mob, or is deleted! For some reason!", "Edit Memory")
+		alert("此心智没有关联生物，或因某种原因已被删除！", "编辑记忆")
 		return
 
-	var/out = "<B>[name]</B>[(current && (current.real_name!=name))?" (as [current.real_name])":""]<br>"
-	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
-	out += "Assigned role: [assigned_role]. <a href='?src=[REF(src)];role_edit=1'>Edit</a><br>"
-	out += "Faction and special role: <b><font color='red'>[special_role]</font></b><br>"
+	var/out = "<B>[name]</B>[(current && (current.real_name!=name))?"（当前角色：[current.real_name]）":""]<br>"
+	out += "心智当前所属账号：[key] [active?"（已同步）":"（未同步）"]<br>"
+	out += "分配职业：[assigned_role]。<a href='?src=[REF(src)];role_edit=1'>编辑</a><br>"
+	out += "阵营与特殊身份：<b><font color='red'>[special_role]</font></b><br>"
 
 	var/special_statuses = get_special_statuses()
 	if(length(special_statuses))
@@ -132,7 +132,7 @@ GLOBAL_VAR(antag_prototypes)
 
 		if(!current_antag) //Show antagging options
 			if(possible_admin_antags.len)
-				antag_header_parts += span_highlight("None")
+				antag_header_parts += span_highlight("无")
 				antag_header_parts += possible_admin_antags
 			else
 				//If there's no antags to show in this category skip the section completely
@@ -140,7 +140,7 @@ GLOBAL_VAR(antag_prototypes)
 		else //Show removal and current one
 			priority_sections |= antag_category
 			antag_header_parts += span_bad("[current_antag.name]")
-			antag_header_parts += "<a href='?src=[REF(src)];remove_antag=[REF(current_antag)]'>Remove</a>"
+			antag_header_parts += "<a href='?src=[REF(src)];remove_antag=[REF(current_antag)]'>移除</a>"
 
 
 		//We aren't antag of this category, grab first prototype to check the prefs (This is pretty vague but really not sure how else to do this)
@@ -152,7 +152,7 @@ GLOBAL_VAR(antag_prototypes)
 				pref_source = prototype
 				break
 		if(pref_source.job_rank)
-			antag_header_parts += pref_source.enabled_in_preferences(src) ? "Enabled in Prefs" : "Disabled in Prefs"
+			antag_header_parts += pref_source.enabled_in_preferences(src) ? "偏好中已启用" : "偏好中已禁用"
 
 		//Traitor : None | Traitor | IAA
 		//	Command1 | Command2 | Command3
@@ -175,9 +175,9 @@ GLOBAL_VAR(antag_prototypes)
 	out += "<br>"
 
 	//Common Memory
-	var/common_memory = "<span>Common Memory:</span>"
+	var/common_memory = "<span>通用记忆：</span>"
 	common_memory += memory
-	common_memory += "<a href='?src=[REF(src)];memory_edit=1'>Edit Memory</a>"
+	common_memory += "<a href='?src=[REF(src)];memory_edit=1'>编辑记忆</a>"
 	out += common_memory + "<br>"
 	//Other stuff
 	out += get_common_admin_commands()

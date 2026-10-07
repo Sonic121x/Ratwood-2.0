@@ -18,7 +18,7 @@
 			else
 				// ...so display an appropriate "name" rather than removing the entry.
 				// We want these arrays to be the same length!
-				object_name_list.Add("(NO NAME)")
+				object_name_list.Add("（无名称）")
 		objectnames = jointext(object_name_list, ";")
 		objectnames = replacetext(objectnames, "\"", "\\\"") // Some names have quotation marks in them, so escape them...
 
@@ -34,7 +34,7 @@
 	/obj/item, /obj/item/clothing, /obj/item,
 	/obj/item/reagent_containers, /obj/item/gun)
 
-	var/path = input("Select the path of the object you wish to create.", "Path", /obj) in sortList(create_object_forms, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/path = input("选择要生成的对象路径。", "路径", /obj) in sortList(create_object_forms, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	var/html_form = create_object_forms[path]
 
 	if (!html_form)
@@ -49,12 +49,12 @@
 			else
 				// ...so display an appropriate "name" rather than removing the entry.
 				// We want these arrays to be the same length!
-				object_name_list.Add("(NO NAME)")
+				object_name_list.Add("（无名称）")
 		objectnames = jointext(object_name_list, ";")
 		objectnames = replacetext(objectnames, "\"", "\\\"") // Some names have quotation marks in them, so escape them...
 
 		html_form = file2text('html/create_object.html')
-		html_form = replacetext(html_form, "Create Object", "Create [path]")
+		html_form = replacetext(html_form, "Create Object", "生成 [path]")
 		html_form = replacetext(html_form, "null /* object types */", "\"[objectjs]\"")
 		html_form = replacetext(html_form, "null /* object names */", "\"[objectnames]\"")
 		create_object_forms[path] = html_form

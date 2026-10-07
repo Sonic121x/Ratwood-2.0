@@ -9,54 +9,54 @@
 #define TIMESOLDIER_SPAWN_CANCEL "Cancel"
 
 /client/proc/timesoldier_start_broadcast()
-	set category = "-GameMaster-"
-	set name = "Future Broadcast - Start"
-	set desc = "Begin a transmission throuh all Time Soldier radios."
+	set category = "-主持-"
+	set name = "未来广播 - 开始"
+	set desc = "通过所有时空士兵的收发器开始广播。"
 
 	if(!check_rights(R_FUN))
 		return
 	
 	var/list/voice_options = list(
-		FUTURE_VOICE_MALE_GENERIC,
-		FUTURE_VOICE_FEMALE
+		"普通男声" = FUTURE_VOICE_MALE_GENERIC,
+		"女声" = FUTURE_VOICE_FEMALE
 	)
 
 	var/list/language_options = list(
-		FUTURE_LANGUAGE_IMPERIAL,
-		FUTURE_LANGUAGE_NEW_IMPERIAL
+		"帝国语" = FUTURE_LANGUAGE_IMPERIAL,
+		"新帝国语" = FUTURE_LANGUAGE_NEW_IMPERIAL
 	)
 
-	var/selected_language = input(usr, "Select the Broadcast Language", "WHAT ARE WE SAYING?") as null|anything in language_options
+	var/selected_language = input(usr, "选择广播语言", "广播语言") as null|anything in language_options
 	if(!selected_language)
 		return
 
-	var/selected_voice = input(usr, "Select The Voice Type.", "GIVE ME A VOICE") as null|anything in voice_options
+	var/selected_voice = input(usr, "选择声音类型。", "广播声音") as null|anything in voice_options
 	if(!selected_voice)
 		return
 	
 	var/radios_found = 0
 
 	for(var/obj/item/timesoldier/radio/R in world)
-		R.start_broadcast(selected_voice, selected_language)
+		R.start_broadcast(voice_options[selected_voice], language_options[selected_language])
 		radios_found++
 	
 	if(!radios_found)
-		to_chat(usr, span_warning("There are no field transceivers in the world! Cancelling..."))
+		to_chat(usr, span_warning("世界中没有野战收发器！正在取消……"))
 		return
 	
 	log_admin("[key_name(usr)] begun a Future Broadcast using the [selected_voice] voice in [selected_language].")
-	message_admins(span_adminnotice("[key_name_admin(usr)] started a Future Broadcast using the [selected_voice] voice in [selected_language]."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 开始了未来广播，使用[selected_voice]，语言为[selected_language]。"))
 
 
 /client/proc/timesoldier_broadcast_message()
-	set category = "-GameMaster-"
-	set name = "Future Broadcast - Message"
-	set desc = "Send a message through active Time Soldier radios."
+	set category = "-主持-"
+	set name = "未来广播 - 发送消息"
+	set desc = "通过正在广播的时空士兵收发器发送消息。"
 
 	if(!check_rights(R_FUN))
 		return
 
-	var/message = input(usr, "What do we transmit?", "YOUR MESSAGE,MILORD") as text|null
+	var/message = input(usr, "要广播什么内容？", "广播消息") as text|null
 	if(!message)
 		return
 	
@@ -73,21 +73,21 @@
 		radios_active++
 	
 	if(!radios_found)
-		to_chat(usr, span_warning("There are no field transceivers in the world! Cancelling..."))
+		to_chat(usr, span_warning("世界中没有野战收发器！正在取消……"))
 		return
 	
 	if(!radios_active)
-		to_chat(usr, span_warning("The field transceivers are not currently broadcasting. Turn them on!"))
+		to_chat(usr, span_warning("野战收发器目前没有广播。请先开启广播！"))
 		return
 	
 	log_admin("[key_name(usr)] sent a Future Broadcast: \"[message]\"")
-	message_admins(span_adminnotice("[key_name_admin(usr)] sent a Future Broadcast: \"[message]\""))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 发送了未来广播：\"[message]\""))
 
 
 /client/proc/timesoldier_end_broadcast()
-	set category = "-GameMaster-"
-	set name = "Future Broadcast - End"
-	set desc = "End the current Time Soldier radio transmission."
+	set category = "-主持-"
+	set name = "未来广播 - 结束"
+	set desc = "结束当前的时空士兵收发器广播。"
 
 	if(!check_rights(R_FUN))
 		return
@@ -104,15 +104,15 @@
 		radios_active++
 
 	if(!radios_found)
-		to_chat(usr, span_warning("There are no field transceivers in the world! Cancelling..."))
+		to_chat(usr, span_warning("世界中没有野战收发器！正在取消……"))
 		return
 
 	if(!radios_active)
-		to_chat(usr, span_warning("The field transceivers are not currently broadcasting. Turn them on!"))
+		to_chat(usr, span_warning("野战收发器目前没有广播。请先开启广播！"))
 		return
 
 	log_admin("[key_name(usr)] ended the Future Broadcast.")
-	message_admins(span_adminnotice("[key_name_admin(usr)] ended the Future Broadcast."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 结束了未来广播。"))
 
 
 // i dont want to edit the core admin modules to register the verbs from here and want to keep it modular, so i'll just do it here
@@ -138,29 +138,29 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 
 
 /client/proc/timesoldier_spawn()
-	set category = "-GameMaster-"
-	set name = "Spawn Time Soldier"
-	set desc = "Spawn a Time Soldier beneath your admin ghost."
+	set category = "-主持-"
+	set name = "生成时空士兵"
+	set desc = "在你的管理员幽灵所在位置生成一名时空士兵。"
 
 	if(!check_rights(R_FUN))
 		return
 
 	if(!isobserver(mob))
-		to_chat(src, span_warning("I need to be an admin ghost to use this.")) // sorry bud no bussing.
+		to_chat(src, span_warning("我需要处于管理员幽灵状态才能使用此指令。")) // sorry bud no bussing.
 		return
 
 	var/turf/spawn_turf = get_turf(mob)
 
 	if(!spawn_turf)
-		to_chat(src, span_warning("I couldn't find a valid turf beneath myself.")) // somehow.
+		to_chat(src, span_warning("无法在我所在的位置找到有效地块。")) // somehow.
 		return
 
 
 	// what flavor we feelin
 	var/list/soldier_types = list(
-		TIMESOLDIER_TEMPERANCE,
-		TIMESOLDIER_ARSONIST,
-		TIMESOLDIER_INTERWAR
+		"节制型" = TIMESOLDIER_TEMPERANCE,
+		"纵火者" = TIMESOLDIER_ARSONIST,
+		"嗷呜按钮" = TIMESOLDIER_INTERWAR
 	)
 
 	var/selected_type
@@ -168,8 +168,8 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 	while(TRUE)
 		selected_type = input(
 			src,
-			"What kind of Time Soldier should be spawned?",
-			"TIME SOLDIER"
+			"要生成哪种时空士兵？",
+			"时空士兵"
 		) as null|anything in soldier_types
 
 		// Cancelled the window.
@@ -177,7 +177,7 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 			return
 
 		// the illusion of choice.
-		switch(selected_type)
+		switch(soldier_types[selected_type])
 			if(TIMESOLDIER_TEMPERANCE, TIMESOLDIER_ARSONIST)
 				break
 
@@ -194,27 +194,27 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 
 	// How are we giving control of them?
 	var/list/spawn_options = list(
-		TIMESOLDIER_SPAWN_CKEY,
-		TIMESOLDIER_SPAWN_GHOST,
-		TIMESOLDIER_SPAWN_SELF,
-		TIMESOLDIER_SPAWN_OFFER,
-		TIMESOLDIER_SPAWN_CANCEL
+		"指定 ckey" = TIMESOLDIER_SPAWN_CKEY,
+		"选择幽灵" = TIMESOLDIER_SPAWN_GHOST,
+		"自己控制" = TIMESOLDIER_SPAWN_SELF,
+		"征集幽灵志愿者" = TIMESOLDIER_SPAWN_OFFER,
+		"取消" = TIMESOLDIER_SPAWN_CANCEL
 	)
 
 	var/spawn_method = input(
 		src,
-		"How should the [selected_type] Time Soldier be controlled?",
-		"TIME SOLDIER"
+		"由谁控制这名[selected_type]时空士兵？",
+		"时空士兵"
 	) as null|anything in spawn_options
 
-	if(!spawn_method || spawn_method == TIMESOLDIER_SPAWN_CANCEL)
+	if(!spawn_method || spawn_options[spawn_method] == TIMESOLDIER_SPAWN_CANCEL)
 		return
 
 
 	var/client/target_client
 
 
-	switch(spawn_method)
+	switch(spawn_options[spawn_method])
 
 		// SPECIFIC CKEY
 
@@ -223,8 +223,8 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 
 			var/target_ckey = ckey(input(
 				src,
-				"Enter the ckey of the player who should control the Time Soldier.",
-				"TIME SOLDIER"
+				"输入将控制时空士兵的玩家 ckey。",
+				"时空士兵"
 			) as text|null)
 
 			if(!target_ckey)
@@ -233,7 +233,7 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 			target_client = GLOB.directory[target_ckey]
 
 			if(!target_client)
-				to_chat(src, span_warning("I couldn't find an online client with the ckey '[target_ckey]'."))
+				to_chat(src, span_warning("找不到 ckey 为 '[target_ckey]' 的在线玩家。"))
 				return
 
 
@@ -250,13 +250,13 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 				ghost_options["[G.ckey]"] = G.client
 
 			if(!length(ghost_options))
-				to_chat(src, span_warning("There are no ghosts available."))
+				to_chat(src, span_warning("没有可供选择的幽灵。"))
 				return
 
 			var/selected_ghost = input(
 				src,
-				"Which ghost should control the Time Soldier?",
-				"TIME SOLDIER"
+				"由哪名幽灵控制时空士兵？",
+				"时空士兵"
 			) as null|anything in ghost_options
 
 			if(!selected_ghost)
@@ -285,13 +285,13 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 			)
 
 			if(!length(candidates))
-				to_chat(src, span_warning("Nobody volunteered to play the Time Soldier."))
+				to_chat(src, span_warning("没有人自愿扮演时空士兵。"))
 				return
 
 			var/mob/dead/observer/chosen_ghost = pick(candidates)
 
 			if(!chosen_ghost?.client)
-				to_chat(src, span_warning("The selected volunteer is no longer available."))
+				to_chat(src, span_warning("选中的志愿者已无法参与。"))
 				return
 
 			target_client = chosen_ghost.client
@@ -303,23 +303,23 @@ GLOBAL_DATUM_INIT(timesoldier_admin_verb_registrar, /datum/timesoldier_admin_ver
 
 	// make sure they didn't disconnect while we were clicking through menus.
 	if(QDELETED(target_client))
-		to_chat(src, span_warning("That client is no longer available."))
+		to_chat(src, span_warning("该玩家已断开连接。"))
 		return
 
 
 	var/mob/living/carbon/human/H = create_time_soldier(
 		target_client,
 		spawn_turf,
-		selected_type
+		soldier_types[selected_type]
 	)
 
 	if(!H)
-		to_chat(src, span_warning("Failed to create the Time Soldier."))
+		to_chat(src, span_warning("创建时空士兵失败。"))
 		return
 
 
 	log_admin("[key_name(src)] spawned [key_name(H)] as a [selected_type] Time Soldier at [AREACOORD(H)].")
-	message_admins(span_adminnotice("[key_name_admin(src)] spawned [ADMIN_LOOKUPFLW(H)] as a [selected_type] Time Soldier at [ADMIN_VERBOSEJMP(H)]."))
+	message_admins(span_adminnotice("[key_name_admin(src)] 在 [ADMIN_VERBOSEJMP(H)] 将 [ADMIN_LOOKUPFLW(H)] 生成为[selected_type]时空士兵。"))
 
 
 /proc/create_time_soldier(

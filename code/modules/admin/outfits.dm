@@ -1,8 +1,8 @@
 GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 /client/proc/outfit_manager()
-	set category = "Debug"
-	set name = "Outfit Manager"
+	set category = "调试"
+	set name = "装备套装管理"
 	set hidden = 1 //Not currently functional on RT codebase
 
 	if(!check_rights(R_DEBUG))
@@ -16,10 +16,10 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		var/datum/outfit/varedit/VO = O
 		if(istype(VO))
 			vv = length(VO.vv_values)
-		dat += "<li>[O.name][vv ? "(VV)" : ""]</li> <a href='?_src_=holder;[HrefToken()];save_outfit=1;chosen_outfit=[REF(O)]'>Save</a> <a href='?_src_=holder;[HrefToken()];delete_outfit=1;chosen_outfit=[REF(O)]'>Delete</a>"
+		dat += "<li>[O.name][vv ? "(VV)" : ""]</li> <a href='?_src_=holder;[HrefToken()];save_outfit=1;chosen_outfit=[REF(O)]'>保存</a> <a href='?_src_=holder;[HrefToken()];delete_outfit=1;chosen_outfit=[REF(O)]'>删除</a>"
 	dat += "</ul>"
-	dat += "<a href='?_src_=holder;[HrefToken()];create_outfit_menu=1'>Create</a><br>"
-	dat += "<a href='?_src_=holder;[HrefToken()];load_outfit=1'>Load from file</a>"
+	dat += "<a href='?_src_=holder;[HrefToken()];create_outfit_menu=1'>创建</a><br>"
+	dat += "<a href='?_src_=holder;[HrefToken()];load_outfit=1'>从文件加载</a>"
 	admin << browse(dat.Join(),"window=outfitmanager")
 
 /datum/admins/proc/save_outfit(mob/admin,datum/outfit/O)
@@ -29,25 +29,25 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 /datum/admins/proc/delete_outfit(mob/admin,datum/outfit/O)
 	GLOB.custom_outfits -= O
 	qdel(O)
-	to_chat(admin,span_notice("Outfit deleted."))
+	to_chat(admin,span_notice("已删除装备套装。"))
 	outfit_manager(admin)
 
 /datum/admins/proc/load_outfit(mob/admin)
-	var/outfit_file = input("Pick outfit json file:", "File") as null|file
+	var/outfit_file = input("选择装备套装 JSON 文件：", "文件") as null|file
 	if(!outfit_file)
 		return
 	var/filedata = file2text(outfit_file)
 	var/json = json_decode(filedata)
 	if(!json)
-		to_chat(admin,span_warning("JSON decode error."))
+		to_chat(admin,span_warning("JSON 解码错误。"))
 		return
 	var/otype = text2path(json["outfit_type"])
 	if(!ispath(otype,/datum/outfit))
-		to_chat(admin,span_warning("Malformed/Outdated file."))
+		to_chat(admin,span_warning("文件格式错误或已过时。"))
 		return
 	var/datum/outfit/O = new otype
 	if(!O.load_from(json))
-		to_chat(admin,span_warning("Malformed/Outdated file."))
+		to_chat(admin,span_warning("文件格式错误或已过时。"))
 		return
 	GLOB.custom_outfits += O
 	outfit_manager(admin)
@@ -61,147 +61,147 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	var/list/glasses = typesof(/obj/item/clothing/glasses)
 	var/list/masks = typesof(/obj/item/clothing/mask)
 
-	var/uniform_select = "<select name=\"outfit_uniform\"><option value=\"\">None</option>"
+	var/uniform_select = "<select name=\"outfit_uniform\"><option value=\"\">无</option>"
 	for(var/path in uniforms)
 		uniform_select += "<option value=\"[path]\">[path]</option>"
 	uniform_select += "</select>"
 
-	var/suit_select = "<select name=\"outfit_suit\"><option value=\"\">None</option>"
+	var/suit_select = "<select name=\"outfit_suit\"><option value=\"\">无</option>"
 	for(var/path in suits)
 		suit_select += "<option value=\"[path]\">[path]</option>"
 	suit_select += "</select>"
 
-	var/gloves_select = "<select name=\"outfit_gloves\"><option value=\"\">None</option>"
+	var/gloves_select = "<select name=\"outfit_gloves\"><option value=\"\">无</option>"
 	for(var/path in gloves)
 		gloves_select += "<option value=\"[path]\">[path]</option>"
 	gloves_select += "</select>"
 
-	var/shoes_select = "<select name=\"outfit_shoes\"><option value=\"\">None</option>"
+	var/shoes_select = "<select name=\"outfit_shoes\"><option value=\"\">无</option>"
 	for(var/path in shoes)
 		shoes_select += "<option value=\"[path]\">[path]</option>"
 	shoes_select += "</select>"
 
-	var/head_select = "<select name=\"outfit_head\"><option value=\"\">None</option>"
+	var/head_select = "<select name=\"outfit_head\"><option value=\"\">无</option>"
 	for(var/path in headwear)
 		head_select += "<option value=\"[path]\">[path]</option>"
 	head_select += "</select>"
 
-	var/glasses_select = "<select name=\"outfit_glasses\"><option value=\"\">None</option>"
+	var/glasses_select = "<select name=\"outfit_glasses\"><option value=\"\">无</option>"
 	for(var/path in glasses)
 		glasses_select += "<option value=\"[path]\">[path]</option>"
 	glasses_select += "</select>"
 
-	var/mask_select = "<select name=\"outfit_mask\"><option value=\"\">None</option>"
+	var/mask_select = "<select name=\"outfit_mask\"><option value=\"\">无</option>"
 	for(var/path in masks)
 		mask_select += "<option value=\"[path]\">[path]</option>"
 	mask_select += "</select>"
 
 	var/dat = {"
-	<html><head><title>Create Outfit</title></head><body>
+	<html><head><title>创建装备套装</title></head><body>
 	<form name="outfit" action="byond://?src=[REF(src)];[HrefToken()]" method="get">
 	<input type="hidden" name="src" value="[REF(src)]">
 	[HrefTokenFormField()]
 	<input type="hidden" name="create_outfit_finalize" value="1">
 	<table>
 		<tr>
-			<th>Name:</th>
+			<th>名称：</th>
 			<td>
-				<input type="text" name="outfit_name" value="Custom Outfit">
+				<input type="text" name="outfit_name" value="自定义装备套装">
 			</td>
 		</tr>
 		<tr>
-			<th>Uniform:</th>
+			<th>制服：</th>
 			<td>
 			[uniform_select]
 			</td>
 		</tr>
 		<tr>
-			<th>Suit:</th>
+			<th>外套：</th>
 			<td>
 				[suit_select]
 			</td>
 		</tr>
 		<tr>
-			<th>Back:</th>
+			<th>背部：</th>
 			<td>
 				<input type="text" name="outfit_back" value="">
 			</td>
 		</tr>
 		<tr>
-			<th>Belt:</th>
+			<th>腰带：</th>
 			<td>
 				<input type="text" name="outfit_belt" value="">
 			</td>
 		</tr>
 		<tr>
-			<th>Gloves:</th>
+			<th>手套：</th>
 			<td>
 				[gloves_select]
 			</td>
 		</tr>
 		<tr>
-			<th>Shoes:</th>
+			<th>鞋子：</th>
 			<td>
 				[shoes_select]
 			</td>
 		</tr>
 		<tr>
-			<th>Head:</th>
+			<th>头部：</th>
 			<td>
 				[head_select]
 			</td>
 		</tr>
 		<tr>
-			<th>Mask:</th>
+			<th>面罩：</th>
 			<td>
 				[mask_select]
 			</td>
 		</tr>
 		<tr>
-			<th>Ears:</th>
+			<th>耳部：</th>
 			<td>
 				<input type="text" name="outfit_ears" value="">
 			</td>
 		</tr>
 		<tr>
-			<th>Glasses:</th>
+			<th>眼镜：</th>
 			<td>
 				[glasses_select]
 			</td>
 		</tr>
 		<tr>
-			<th>Left Pocket:</th>
+			<th>左口袋：</th>
 			<td>
 				<input type="text" name="outfit_l_pocket" value="">
 			</td>
 		</tr>
 		<tr>
-			<th>Right Pocket:</th>
+			<th>右口袋：</th>
 			<td>
 				<input type="text" name="outfit_r_pocket" value="">
 			</td>
 		</tr>
 		<tr>
-			<th>Suit Store:</th>
+			<th>外套储物位：</th>
 			<td>
 				<input type="text" name="outfit_s_store" value="">
 			</td>
 		</tr>
 		<tr>
-			<th>Right Hand:</th>
+			<th>右手：</th>
 			<td>
 				<input type="text" name="outfit_r_hand" value="">
 			</td>
 		</tr>
 		<tr>
-			<th>Left Hand:</th>
+			<th>左手：</th>
 			<td>
 				<input type="text" name="outfit_l_hand" value="">
 			</td>
 		</tr>
 	</table>
 	<br>
-	<input type="submit" value="Save">
+	<input type="submit" value="保存">
 	</form></body></html>
 	"}
 	admin << browse(dat, "window=dressup;size=550x600")
@@ -229,4 +229,4 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	O.ears = text2path(href_list["outfit_ears"])
 
 	GLOB.custom_outfits.Add(O)
-	message_admins("[key_name(usr)] created \"[O.name]\" outfit!")
+	message_admins("[key_name(usr)] 创建了装备套装 \"[O.name]\"！")

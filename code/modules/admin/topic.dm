@@ -4,9 +4,9 @@
 	if(.)
 		return
 	var/msg = !auth ? "no" : "a bad"
-	message_admins("[key_name_admin(usr)] clicked an href with [msg] authorization key!")
+	message_admins("[key_name_admin(usr)] 点击了授权密钥[!auth ? "缺失" : "无效"]的链接！")
 	if(CONFIG_GET(flag/debug_admin_hrefs))
-		message_admins("Debug mode enabled, call not blocked. Please ask my coders to review this round's logs.")
+		message_admins("调试模式已启用，此调用未被阻止。请让开发者检查本回合日志。")
 		log_world("UAH: [href]")
 		return TRUE
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
@@ -15,7 +15,7 @@
 	..()
 
 	if(usr.client != src.owner || !check_rights(0))
-		message_admins("[usr.key] has attempted to override the admin panel!")
+		message_admins("[usr.key] 试图越权使用管理面板！")
 		log_admin("[key_name(usr)] tried to use the admin panel without authorization.")
 		return
 
@@ -45,7 +45,7 @@
 		var/mob/living/M = locate(href_list["heal_target"])
 		if(M)
 			M.fully_heal(admin_revive = TRUE)
-			message_admins("[key_name_admin(usr)] fully healed [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] 完全治愈了 [key_name_admin(M)]。")
 			log_admin("[key_name(usr)] fully healed [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -54,7 +54,7 @@
 		var/mob/living/M = locate(href_list["heal_revive"])
 		if(M)
 			M.revive(full_heal = FALSE, admin_revive = TRUE)
-			message_admins("[key_name_admin(usr)] revived [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] 复活了 [key_name_admin(M)]。")
 			log_admin("[key_name(usr)] revived [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -77,7 +77,7 @@
 		if(M && ishuman(M))
 			var/mob/living/carbon/human/H = M
 			H.set_blood_volume(min(H.get_blood_volume() + 100, BLOOD_VOLUME_MAXIMUM))
-			message_admins("[key_name_admin(usr)] added 100 blood to [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] 为 [key_name_admin(M)] 增加了 100 血量。")
 			log_admin("[key_name(usr)] added 100 blood to [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -87,7 +87,7 @@
 		if(M && ishuman(M))
 			var/mob/living/carbon/human/H = M
 			H.set_blood_volume(min(H.get_blood_volume() + 50, BLOOD_VOLUME_MAXIMUM))
-			message_admins("[key_name_admin(usr)] added 50 blood to [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] 为 [key_name_admin(M)] 增加了 50 血量。")
 			log_admin("[key_name(usr)] added 50 blood to [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -97,7 +97,7 @@
 		if(M && ishuman(M))
 			var/mob/living/carbon/human/H = M
 			H.set_blood_volume(max(H.get_blood_volume() - 50, 0))
-			message_admins("[key_name_admin(usr)] removed 50 blood from [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 的血量减少了 50。")
 			log_admin("[key_name(usr)] removed 50 blood from [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -107,7 +107,7 @@
 		if(M && ishuman(M))
 			var/mob/living/carbon/human/H = M
 			H.set_blood_volume(max(H.get_blood_volume() - 100, 0))
-			message_admins("[key_name_admin(usr)] removed 100 blood from [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 的血量减少了 100。")
 			log_admin("[key_name(usr)] removed 100 blood from [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -116,10 +116,10 @@
 		var/mob/living/M = locate(href_list["heal_blood_set"])
 		if(M && ishuman(M))
 			var/mob/living/carbon/human/H = M
-			var/new_amount = input(usr, "Set blood volume to:", "Blood Volume", H.get_blood_volume()) as num|null
+			var/new_amount = input(usr, "将血量设为：", "血量", H.get_blood_volume()) as num|null
 			if(new_amount != null)
 				H.set_blood_volume(clamp(new_amount, 0, BLOOD_VOLUME_MAXIMUM))
-				message_admins("[key_name_admin(usr)] set [key_name_admin(M)]'s blood volume to [new_amount].")
+				message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 的血量设为 [new_amount]。")
 				log_admin("[key_name(usr)] set [key_name(M)]'s blood volume to [new_amount].")
 				show_heal_panel(M)
 		return
@@ -138,7 +138,7 @@
 			else if(damage_type == "oxy")
 				current_value = M.getOxyLoss()
 
-			var/new_value = input(usr, "Set [damage_type] damage:", "Edit Damage", current_value) as num|null
+			var/new_value = input(usr, "设置 [damage_type] 伤害：", "修改伤害", current_value) as num|null
 			if(new_value != null)
 				new_value = max(0, new_value)
 				if(damage_type == "brute")
@@ -149,7 +149,7 @@
 					M.adjustToxLoss(new_value - current_value)
 				else if(damage_type == "oxy")
 					M.adjustOxyLoss(new_value - current_value)
-				message_admins("[key_name_admin(usr)] set [damage_type] damage to [new_value] on [key_name_admin(M)].")
+				message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 的 [damage_type] 伤害设为 [new_value]。")
 				log_admin("[key_name(usr)] set [damage_type] damage to [new_value] on [key_name(M)].")
 				show_heal_panel(M)
 		return
@@ -165,14 +165,14 @@
 			else if(damage_type == "oxy")
 				current_value = H.getOxyLoss()
 
-			var/new_value = input(usr, "Set [damage_type] damage:", "Edit Damage", current_value) as num|null
+			var/new_value = input(usr, "设置 [damage_type] 伤害：", "修改伤害", current_value) as num|null
 			if(new_value != null)
 				new_value = max(0, new_value)
 				if(damage_type == "toxin")
 					H.setToxLoss(new_value)
 				else if(damage_type == "oxy")
 					H.setOxyLoss(new_value)
-				message_admins("[key_name_admin(usr)] set [damage_type] damage to [new_value] on [key_name_admin(M)].")
+				message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 的 [damage_type] 伤害设为 [new_value]。")
 				log_admin("[key_name(usr)] set [damage_type] damage to [new_value] on [key_name(M)].")
 				show_heal_panel(M)
 		return
@@ -188,7 +188,7 @@
 			else if(damage_type == "burn")
 				current_value = BP.burn_dam
 
-			var/new_value = input(usr, "Set [damage_type] damage for [BP.name]:", "Edit Damage", current_value) as num|null
+			var/new_value = input(usr, "设置 [BP.name] 的 [damage_type] 伤害：", "修改伤害", current_value) as num|null
 			if(new_value != null)
 				new_value = max(0, new_value)
 				if(damage_type == "brute")
@@ -196,7 +196,7 @@
 				else if(damage_type == "burn")
 					BP.burn_dam = new_value
 				BP.update_limb()
-				message_admins("[key_name_admin(usr)] set [BP.name] [damage_type] damage to [new_value] on [key_name_admin(M)].")
+				message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 的 [BP.name] 的 [damage_type] 伤害设为 [new_value]。")
 				log_admin("[key_name(usr)] set [BP.name] [damage_type] damage to [new_value] on [key_name(M)].")
 				show_heal_panel(M)
 		return
@@ -208,7 +208,7 @@
 			BP.brute_dam = 0
 			BP.burn_dam = 0
 			BP.update_limb()
-			message_admins("[key_name_admin(usr)] healed [BP.name] on [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] 治愈了 [key_name_admin(M)] 的 [BP.name]。")
 			log_admin("[key_name(usr)] healed [BP.name] on [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -218,30 +218,30 @@
 		var/obj/item/bodypart/BP = locate(href_list["bodypart"])
 		if(M && BP && ishuman(M))
 			var/list/wound_types = list(
-				"Fracture" = /datum/wound/fracture,
-				"Slash" = /datum/wound/slash,
-				"Puncture" = /datum/wound/puncture,
-				"Burn" = /datum/wound/burn,
-				"Bruise" = /datum/wound/bruise,
-				"Artery" = /datum/wound/artery,
-				"Bite" = /datum/wound/bite,
-				"Dislocation" = /datum/wound/dislocation
+				"骨折" = /datum/wound/fracture,
+				"割伤" = /datum/wound/slash,
+				"刺伤" = /datum/wound/puncture,
+				"烧伤" = /datum/wound/burn,
+				"挫伤" = /datum/wound/bruise,
+				"动脉损伤" = /datum/wound/artery,
+				"咬伤" = /datum/wound/bite,
+				"脱臼" = /datum/wound/dislocation
 			)
-			var/wound_choice = input(usr, "Select wound type:", "Add Wound") as null|anything in wound_types
+			var/wound_choice = input(usr, "选择伤口类型：", "添加伤口") as null|anything in wound_types
 			if(wound_choice)
 				var/wound_path = wound_types[wound_choice]
 				// Apply body-part-specific wound variants
-				if(wound_choice == "Fracture")
+				if(wound_choice == "骨折")
 					if(BP.body_zone == BODY_ZONE_HEAD)
 						wound_path = /datum/wound/fracture/head
 					else if(BP.body_zone == BODY_ZONE_CHEST)
 						wound_path = /datum/wound/fracture/chest
-				else if(wound_choice == "Artery")
+				else if(wound_choice == "动脉损伤")
 					if(BP.body_zone == BODY_ZONE_HEAD)
 						wound_path = /datum/wound/artery/neck
 					else if(BP.body_zone == BODY_ZONE_CHEST)
 						wound_path = /datum/wound/artery/chest
-				else if(wound_choice == "Dislocation")
+				else if(wound_choice == "脱臼")
 					if(BP.body_zone == BODY_ZONE_HEAD)
 						wound_path = /datum/wound/dislocation/neck
 
@@ -255,7 +255,7 @@
 
 				// If there are subtypes, let the user choose
 				if(wound_subtypes.len > 0)
-					var/subtype_choice = input(usr, "Select wound severity:", "Wound Tier") as null|anything in wound_subtypes
+					var/subtype_choice = input(usr, "选择伤口严重程度：", "伤口等级") as null|anything in wound_subtypes
 					if(subtype_choice)
 						wound_path = wound_subtypes[subtype_choice]
 					else
@@ -265,7 +265,7 @@
 				BP.add_wound(wound_path)
 				var/datum/wound/applied_wound = wound_path
 				var/wound_display_name = initial(applied_wound:name)
-				message_admins("[key_name_admin(usr)] added [wound_display_name] wound to [BP.name] on [key_name_admin(M)].")
+				message_admins("[key_name_admin(usr)] 在 [key_name_admin(M)] 的 [BP.name] 上添加了 [wound_display_name]。")
 				log_admin("[key_name(usr)] added [wound_display_name] wound to [BP.name] on [key_name(M)].")
 			show_heal_panel(M)
 		return
@@ -276,35 +276,35 @@
 		if(M && BP && ishuman(M))
 			// Special case for chest - just gib them
 			if(BP.body_zone == BODY_ZONE_CHEST)
-				var/confirm = alert(usr, "Removing the chest will gib [M.name], leaving behind all body parts except the chest. Continue?", "Gib Mob", "Yes", "Cancel")
-				if(confirm == "Yes")
-					message_admins("[key_name_admin(usr)] gibbed [key_name_admin(M)] by removing the chest.")
+				var/confirm = alert(usr, "移除胸部会使 [M.name] 爆体，仅留下胸部以外的身体部位。继续吗？", "使生物爆体", "是", "取消")
+				if(confirm == "是")
+					message_admins("[key_name_admin(usr)] 通过移除胸部使 [key_name_admin(M)] 爆体。")
 					log_admin("[key_name(usr)] gibbed [key_name(M)] by removing the chest.")
 					M.gib(no_brain = FALSE, no_organs = FALSE, no_bodyparts = FALSE)
 				return
 			// Special case for head - properly remove it
 			else if(BP.body_zone == BODY_ZONE_HEAD)
-				var/removal_type = alert(usr, "How to remove [BP.name]?", "Remove Bodypart", "Chop", "Safely Amputate", "Cancel")
-				if(removal_type == "Chop")
+				var/removal_type = alert(usr, "如何移除 [BP.name]？", "移除身体部位", "砍断", "安全截肢", "取消")
+				if(removal_type == "砍断")
 					BP.drop_limb()
-					message_admins("[key_name_admin(usr)] chopped off [BP.name] from [key_name_admin(M)].")
+					message_admins("[key_name_admin(usr)] 砍断了 [key_name_admin(M)] 的 [BP.name]。")
 					log_admin("[key_name(usr)] chopped off [BP.name] from [key_name(M)].")
-				else if(removal_type == "Safely Amputate")
+				else if(removal_type == "安全截肢")
 					BP.drop_limb()
-					message_admins("[key_name_admin(usr)] safely amputated [BP.name] from [key_name_admin(M)].")
+					message_admins("[key_name_admin(usr)] 安全截除了 [key_name_admin(M)] 的 [BP.name]。")
 					log_admin("[key_name(usr)] safely amputated [BP.name] from [key_name(M)].")
 				show_heal_panel(M)
 			// All other limbs
 			else
-				var/removal_type = alert(usr, "How to remove [BP.name]?", "Remove Bodypart", "Chop", "Safely Amputate", "Cancel")
-				if(removal_type == "Chop")
+				var/removal_type = alert(usr, "如何移除 [BP.name]？", "移除身体部位", "砍断", "安全截肢", "取消")
+				if(removal_type == "砍断")
 					// Use admin-only dismember that bypasses all armor checks
 					BP.admin_dismember()
-					message_admins("[key_name_admin(usr)] chopped off [BP.name] from [key_name_admin(M)].")
+					message_admins("[key_name_admin(usr)] 砍断了 [key_name_admin(M)] 的 [BP.name]。")
 					log_admin("[key_name(usr)] chopped off [BP.name] from [key_name(M)].")
-				else if(removal_type == "Safely Amputate")
+				else if(removal_type == "安全截肢")
 					BP.drop_limb()
-					message_admins("[key_name_admin(usr)] safely amputated [BP.name] from [key_name_admin(M)].")
+					message_admins("[key_name_admin(usr)] 安全截除了 [key_name_admin(M)] 的 [BP.name]。")
 					log_admin("[key_name(usr)] safely amputated [BP.name] from [key_name(M)].")
 				show_heal_panel(M)
 		return
@@ -317,7 +317,7 @@
 			for(var/obj/item/bodypart/BP in H.bodyparts)
 				if(W in BP.wounds)
 					BP.remove_wound(W)
-					message_admins("[key_name_admin(usr)] removed wound [W.name] from [key_name_admin(M)].")
+					message_admins("[key_name_admin(usr)] 移除了 [key_name_admin(M)] 的伤口 [W.name]。")
 					log_admin("[key_name(usr)] removed wound [W.name] from [key_name(M)].")
 					break
 			show_heal_panel(M)
@@ -344,7 +344,7 @@
 		if(AH)
 			AH.Action(href_list["ahelp_action"])
 		else
-			to_chat(usr, "Ticket [ahelp_ref] has been deleted!")
+			to_chat(usr, "工单 [ahelp_ref] 已被删除！")
 
 	else if(href_list["ahelp_tickets"])
 		if(!check_rights(R_AHELP))
@@ -359,7 +359,7 @@
 			return
 		var/mob/M = locate(href_list["getplaytimewindow"]) in GLOB.mob_list
 		if(!M)
-			to_chat(usr, span_danger("ERROR: Mob not found."))
+			to_chat(usr, span_danger("错误：未找到生物。"))
 			return
 		cmd_show_exp_panel(M.client)
 
@@ -368,7 +368,7 @@
 			return
 		var/client/C = locate(href_list["toggleexempt"]) in GLOB.clients
 		if(!C)
-			to_chat(usr, span_danger("ERROR: Client not found."))
+			to_chat(usr, span_danger("错误：未找到客户端。"))
 			return
 		toggle_exempt_status(C)
 
@@ -381,17 +381,17 @@
 			var/datum/round_event/event = E.runEvent()
 			if(event.announceWhen>0)
 				event.processing = FALSE
-				var/prompt = alert(usr, "Would you like to alert the crew?", "Alert", "Yes", "No", "Cancel")
+				var/prompt = alert(usr, "是否向玩家发布事件预警？", "预警", "是", "否", "取消")
 				switch(prompt)
-					if("Yes")
+					if("是")
 						event.announceChance = 100
-					if("Cancel")
+					if("取消")
 						event.kill()
 						return
-					if("No")
+					if("否")
 						event.announceChance = 0
 				event.processing = TRUE
-			message_admins("[key_name_admin(usr)] has triggered an event. ([E.name])")
+			message_admins("[key_name_admin(usr)] 触发了事件。（[E.name]）")
 			log_admin("[key_name(usr)] has triggered an event. ([E.name])")
 		return
 
@@ -422,18 +422,18 @@
 		if(!check_rights(R_SERVER))
 			return
 		if(!SSticker.delay_end)
-			SSticker.admin_delay_notice = input(usr, "Enter a reason for delaying the round end", "Round Delay Reason") as null|text
+			SSticker.admin_delay_notice = input(usr, "请输入推迟回合结束的原因", "推迟回合结束的原因") as null|text
 			if(isnull(SSticker.admin_delay_notice))
 				return
 		else
-			if(alert(usr, "Really cancel current round end delay? The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Undelay round end", "Yes", "No") != "Yes")
+			if(alert(usr, "确定取消当前的回合结束延迟吗？当前延迟原因为：\"[SSticker.admin_delay_notice]\"", "取消回合结束延迟", "是", "否") != "是")
 				return
 			SSticker.admin_delay_notice = null
 		SSticker.delay_end = !SSticker.delay_end
 		var/reason = SSticker.delay_end ? "for reason: [SSticker.admin_delay_notice]" : "."//laziness
 		var/msg = "[SSticker.delay_end ? "delayed" : "undelayed"] the round end [reason]"
 		log_admin("[key_name(usr)] [msg]")
-		message_admins("[key_name_admin(usr)] [msg]")
+		message_admins("[key_name_admin(usr)] [SSticker.delay_end ? "推迟了回合结束，原因：[SSticker.admin_delay_notice]" : "取消了回合结束延迟。"]")
 		if(SSticker.ready_for_reboot && !SSticker.delay_end) //we undelayed after standard reboot would occur
 			SSticker.standard_reboot()
 
@@ -441,16 +441,16 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		message_admins(span_adminnotice("[key_name_admin(usr)] is considering ending the round."))
-		if(alert(usr, "This will end the round, are you SURE you want to do this?", "Confirmation", "Yes", "No") == "Yes")
-			if(alert(usr, "Final Confirmation: End the round NOW?", "Confirmation", "Yes", "No") == "Yes")
-				message_admins(span_adminnotice("[key_name_admin(usr)] has ended the round."))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 正在考虑结束回合。"))
+		if(alert(usr, "此操作会结束回合，确定继续吗？", "确认", "是", "否") == "是")
+			if(alert(usr, "最后确认：立即结束回合？", "确认", "是", "否") == "是")
+				message_admins(span_adminnotice("[key_name_admin(usr)] 结束了回合。"))
 				SSticker.force_ending = 1 //Yeah there we go APC destroyed mission accomplished
 				return
 			else
-				message_admins(span_adminnotice("[key_name_admin(usr)] decided against ending the round."))
+				message_admins(span_adminnotice("[key_name_admin(usr)] 决定取消结束回合。"))
 		else
-			message_admins(span_adminnotice("[key_name_admin(usr)] decided against ending the round."))
+			message_admins(span_adminnotice("[key_name_admin(usr)] 决定取消结束回合。"))
 
 	else if(href_list["simplemake"])
 		if(!check_rights(R_SPAWN))
@@ -458,19 +458,19 @@
 
 		var/mob/M = locate(href_list["mob"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "此操作仅适用于 /mob 类型的实例。")
 			return
 
 		var/delmob = TRUE
 		if(!isobserver(M))
-			switch(alert("Delete old mob?","Message","Yes","No","Cancel"))
-				if("Cancel")
+			switch(alert("删除原生物？","提示","是","否","取消"))
+				if("取消")
 					return
-				if("No")
+				if("否")
 					delmob = FALSE
 
 		log_admin("[key_name(usr)] has used rudimentary transformation on [key_name(M)]. Transforming to [href_list["simplemake"]].; deletemob=[delmob]")
-		message_admins("<span class='adminnotice'>[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]].; deletemob=[delmob]</span>")
+		message_admins("<span class='adminnotice'>[key_name_admin(usr)] 对 [key_name_admin(M)] 使用了基础变形，变为 [href_list["simplemake"]]；删除原生物=[delmob]</span>")
 		switch(href_list["simplemake"])
 			if("observer")
 				M.change_mob_type( /mob/dead/observer , null, null, delmob )
@@ -498,19 +498,19 @@
 		var/mob/M = locate(href_list["boot2"])
 		if(ismob(M))
 			if(!check_if_greater_rights_than(M.client))
-				to_chat(usr, span_danger("Error: They have more rights than you do."))
+				to_chat(usr, span_danger("错误：对方的权限高于你。"))
 				return
-			if(alert(usr, "Kick [key_name(M)]?", "Confirm", "Yes", "No") != "Yes")
+			if(alert(usr, "踢出 [key_name(M)]？", "确认", "是", "否") != "是")
 				return
 			if(!M)
-				to_chat(usr, span_danger("Error: [M] no longer exists!"))
+				to_chat(usr, span_danger("错误：[M] 已不存在！"))
 				return
 			if(!M.client)
-				to_chat(usr, span_danger("Error: [M] no longer has a client!"))
+				to_chat(usr, span_danger("错误：[M] 已没有客户端！"))
 				return
 			to_chat(M, span_danger("你已被[usr.client.holder.fakekey ? "管理员" : "[usr.client.key]"]踢出服务器。"))
 			log_admin("[key_name(usr)] kicked [key_name(M)].")
-			message_admins(span_adminnotice("[key_name_admin(usr)] kicked [key_name_admin(M)]."))
+			message_admins(span_adminnotice("[key_name_admin(usr)] 踢出了 [key_name_admin(M)]。"))
 			qdel(M.client)
 
 	else if(href_list["addmessage"])
@@ -554,16 +554,16 @@
 	else if(href_list["deletemessage"])
 		if(!check_rights(R_BAN))
 			return
-		var/safety = alert("Delete message/note?",,"Yes","No");
-		if (safety == "Yes")
+		var/safety = alert("删除消息或备注？",,"是","否");
+		if (safety == "是")
 			var/message_id = href_list["deletemessage"]
 			delete_message(message_id)
 
 	else if(href_list["deletemessageempty"])
 		if(!check_rights(R_BAN))
 			return
-		var/safety = alert("Delete message/note?",,"Yes","No");
-		if (safety == "Yes")
+		var/safety = alert("删除消息或备注？",,"是","否");
+		if (safety == "是")
 			var/message_id = href_list["deletemessageempty"]
 			delete_message(message_id, browse = TRUE)
 
@@ -663,7 +663,7 @@
 		if(query_get_message_edits.NextRow())
 			var/edit_log = query_get_message_edits.item[1]
 			if(!QDELETED(usr))
-				var/datum/browser/browser = new(usr, "Note edits", "Note edits")
+				var/datum/browser/browser = new(usr, "Note edits", "备注编辑记录")
 				browser.set_content(jointext(edit_log, ""))
 				browser.open()
 		qdel(query_get_message_edits)
@@ -684,16 +684,16 @@
 			return
 
 		if (SSticker.HasRoundStarted())
-			if (askuser(usr, "The game has already started. Would you like to save this as the default mode effective next round?", "Save mode", "Yes", "Cancel", Timeout = null) == 1)
+			if (askuser(usr, "游戏已开始。是否将此模式保存为下回合起生效的默认模式？", "保存模式", "是", "取消", Timeout = null) == 1)
 				SSticker.save_mode(href_list["c_mode2"])
 			HandleCMode()
 			return
 		GLOB.master_mode = href_list["c_mode2"]
 		log_admin("[key_name(usr)] set the mode as [GLOB.master_mode].")
-		message_admins(span_adminnotice("[key_name_admin(usr)] set the mode as [GLOB.master_mode]."))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 将模式设为 [GLOB.master_mode]。"))
 		to_chat(world, span_adminnotice("<b>当前模式：[GLOB.master_mode]</b>"))
 		Game() // updates the main game menu
-		if (askuser(usr, "Would you like to save this as the default mode for the server?", "Save mode", "Yes", "No", Timeout = null) == 1)
+		if (askuser(usr, "是否将此模式保存为服务器默认模式？", "保存模式", "是", "否", Timeout = null) == 1)
 			SSticker.save_mode(GLOB.master_mode)
 		HandleCMode()
 
@@ -702,12 +702,12 @@
 			return
 
 		if(SSticker.HasRoundStarted())
-			return alert(usr, "The game has already started.", null, null, null, null)
+			return alert(usr, "游戏已开始。", null, null, null, null)
 		if(GLOB.master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
+			return alert(usr, "游戏模式必须为 secret！", null, null, null, null)
 		GLOB.secret_force_mode = href_list["f_secret2"]
 		log_admin("[key_name(usr)] set the forced secret mode as [GLOB.secret_force_mode].")
-		message_admins(span_adminnotice("[key_name_admin(usr)] set the forced secret mode as [GLOB.secret_force_mode]."))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 将强制 secret 模式设为 [GLOB.secret_force_mode]。"))
 		Game() // updates the main game menu
 		HandleFSecret()
 
@@ -717,11 +717,11 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["corgione"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "此操作仅适用于 /mob/living/carbon/human 类型的实例。")
 			return
 
 		log_admin("[key_name(usr)] attempting to corgize [key_name(H)].")
-		message_admins(span_adminnotice("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]."))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 正在尝试将 [key_name_admin(H)] 变为柯基犬。"))
 		H.corgize()
 
 
@@ -731,15 +731,15 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "this can only be used on instances of type /mob.")
+			to_chat(usr, "此操作仅适用于 /mob 类型的实例。")
 
-		var/speech = input("What will [key_name(M)] say?", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		var/speech = input("让 [key_name(M)] 说什么？", "强制发言", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
 			return
 		M.say(speech, forced = "admin speech")
 		speech = sanitize(speech) // Nah, we don't trust them
 		log_admin("[key_name(usr)] forced [key_name(M)] to say: [speech]")
-		message_admins(span_adminnotice("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]"))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 强制 [key_name_admin(M)] 发言：[speech]"))
 
 	else if(href_list["sendtoprison"])
 		if(!check_rights(R_BAN))
@@ -747,17 +747,17 @@
 
 		var/mob/M = locate(href_list["sendtoprison"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "此操作仅适用于 /mob 类型的实例。")
 			return
 
-		if(alert(usr, "Send [key_name(M)] to Prison?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "将 [key_name(M)] 送进监狱？", "提示", "是", "否") != "是")
 			return
 
 		M.forceMove(pick(GLOB.prisonwarp))
 		to_chat(M, span_adminnotice("我被送进监狱了！"))
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to Prison!")
-		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to Prison!")
+		message_admins("[key_name_admin(usr)] 将 [key_name_admin(M)] 送进了监狱！")
 
 	else if(href_list["sendbacktolobby"])
 		if(!check_rights(R_ADMIN))
@@ -765,23 +765,23 @@
 
 		var/mob/M = locate(href_list["sendbacktolobby"])
 
-		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "将 [key_name(M)] 送回大厅？", "提示", "是", "否") != "是")
 			return
 		var/living = isliving(M)
 		if(living)
-			if(alert(usr, "[key_name(M)] is a LIVING MOB. Are you sure you want to send him back?", "Message", "Yes", "No") != "Yes")
+			if(alert(usr, "[key_name(M)] 的角色还活着。确定要将其送回大厅吗？", "提示", "是", "否") != "是")
 				return
 		if(!M.client)
-			to_chat(usr, span_warning("[M] doesn't seem to have an active client."))
+			to_chat(usr, span_warning("[M] 似乎没有在线的客户端。"))
 			return
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 		if(living)
 			var/mob/living/carbon/human/H = M
 			if(!istype(H))
-				to_chat(usr, span_warning("Only human living mobs can be sent back to the lobby."))
+				to_chat(usr, span_warning("活着的生物中，只有人类可以被送回大厅。"))
 				return
 			var/delete_character = FALSE
-			if(alert(usr, "Would you like to also delete the living mob [key_name(M)]?", "Message", "Yes", "No") == "Yes")
+			if(alert(usr, "是否同时删除活着的角色 [key_name(M)]？", "提示", "是", "否") == "是")
 				log_admin("[key_name(usr)] has chosen to delete the [M] mob while sending the client to lobby.")
 				delete_character = TRUE
 			H.admin_send_back_to_lobby(usr, delete_character)
@@ -799,15 +799,15 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["ssd_sendbacktolobby"])
 		if(!istype(H))
-			to_chat(usr, span_warning("This can only be used on instances of type /mob/living/carbon/human."))
+			to_chat(usr, span_warning("此操作仅适用于 /mob/living/carbon/human 类型的实例。"))
 			return
 		if(H.client || !H.last_logout_time)
-			to_chat(usr, span_warning("[H] is no longer in a deep slumber."))
+			to_chat(usr, span_warning("[H] 已不再处于深度沉睡状态。"))
 			return
-		if(alert(usr, "Fartravel slumbering [key_name(H)] and delete their character?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "让沉睡中的 [key_name(H)] 远行并删除其角色？", "提示", "是", "否") != "是")
 			return
 		log_admin("[key_name(usr)] has fartraveled slumbering [key_name(H)] after [DisplayTimeText(world.time - H.last_logout_time, 1)] in a deep slumber.")
-		message_admins(span_adminnotice("[key_name_admin(usr)] has fartraveled slumbering [key_name_admin(H)] after [DisplayTimeText(world.time - H.last_logout_time, 1)] in a deep slumber."))
+		message_admins(span_adminnotice("[key_name_admin(usr)] 让深度沉睡了 [DisplayTimeText(world.time - H.last_logout_time, 1)] 的 [key_name_admin(H)] 远行。"))
 		H.admin_send_back_to_lobby(usr, TRUE)
 
 	else if(href_list["revive"])
@@ -816,11 +816,11 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-			to_chat(usr, "This can only be used on instances of type /mob/living.")
+			to_chat(usr, "此操作仅适用于 /mob/living 类型的实例。")
 			return
 
 		L.revive(full_heal = TRUE, admin_revive = TRUE)
-		message_admins(span_danger("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 治愈或复活了 [key_name_admin(L)]！"))
 		log_admin("[key_name(usr)] healed / Revived [key_name(L)].")
 
 	else if(href_list["makeanimal"])
@@ -829,7 +829,7 @@
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(isnewplayer(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/dead/new_player.")
+			to_chat(usr, "此操作不适用于 /mob/dead/new_player 类型的实例。")
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -880,7 +880,7 @@
 	else if(href_list["adminmoreinfo"])
 		var/mob/M = locate(href_list["adminmoreinfo"]) in GLOB.mob_list
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "此操作仅适用于 /mob 类型的实例。")
 			return
 
 		var/location_description = ""
@@ -892,15 +892,15 @@
 		//Location
 		if(isturf(T))
 			if(isarea(T.loc))
-				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z] in area <b>[T.loc]</b>)"
+				location_description = "（[M.loc == T ? "坐标" : "位于 [M.loc] 内，坐标"] [T.x], [T.y], [T.z]，区域 <b>[T.loc]</b>）"
 			else
-				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z])"
+				location_description = "（[M.loc == T ? "坐标" : "位于 [M.loc] 内，坐标"] [T.x], [T.y], [T.z]）"
 
 		//Job + antagonist
 		if(M.mind)
-			special_role_description = "Role: <b>[M.mind.assigned_role]</b>; Antagonist: <font color='red'><b>[M.mind.special_role]</b></font>"
+			special_role_description = "职业：<b>[M.mind.assigned_role]</b>；反派：<font color='red'><b>[M.mind.special_role]</b></font>"
 		else
-			special_role_description = "Role: <i>Mind datum missing</i> Antagonist: <i>Mind datum missing</i>"
+			special_role_description = "职业：<i>缺少心智数据</i> 反派：<i>缺少心智数据</i>"
 
 		//Health
 		if(isliving(M))
@@ -908,17 +908,17 @@
 			var/status
 			switch (M.stat)
 				if(CONSCIOUS)
-					status = "Alive"
+					status = "存活"
 				if(SOFT_CRIT)
-					status = "<font color='orange'><b>Dying</b></font>"
+					status = "<font color='orange'><b>濒死</b></font>"
 				if(UNCONSCIOUS)
-					status = "<font color='orange'><b>[L.InCritical() ? "Unconscious and Dying" : "Unconscious"]</b></font>"
+					status = "<font color='orange'><b>[L.InCritical() ? "昏迷且濒死" : "昏迷"]</b></font>"
 				if(DEAD)
-					status = "<font color='red'><b>Dead</b></font>"
-			health_description = "Status = [status]"
-			health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getOrganLoss(ORGAN_SLOT_BRAIN)] - Stamina: [L.getStaminaLoss()]"
+					status = "<font color='red'><b>死亡</b></font>"
+			health_description = "状态 = [status]"
+			health_description += "<BR>缺氧：[L.getOxyLoss()] - 毒素：[L.getToxLoss()] - 烧伤：[L.getFireLoss()] - 蛮力：[L.getBruteLoss()] - 克隆损伤：[L.getCloneLoss()] - 脑损伤：[L.getOrganLoss(ORGAN_SLOT_BRAIN)] - 耐力损耗：[L.getStaminaLoss()]"
 		else
-			health_description = "This mob type has no health to speak of."
+			health_description = "此生物类型没有生命值。"
 
 		//Gender
 		switch(M.gender)
@@ -927,10 +927,10 @@
 			else
 				gender_description = "<font color='red'><b>[M.gender]</b></font>"
 
-		to_chat(src.owner, "<b>Info about [M.name]:</b> ")
-		to_chat(src.owner, "Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]")
-		to_chat(src.owner, "Name = <b>[M.name]</b>; Real_name = [M.real_name]; Mind_name = [M.mind?"[M.mind.name]":""]; Key = <b>[M.key]</b>;")
-		to_chat(src.owner, "Location = [location_description];")
+		to_chat(src.owner, "<b>[M.name] 的信息：</b> ")
+		to_chat(src.owner, "生物类型 = [M.type]；性别 = [gender_description] 伤害 = [health_description]")
+		to_chat(src.owner, "名称 = <b>[M.name]</b>；真实姓名 = [M.real_name]；心智姓名 = [M.mind?"[M.mind.name]":""]；账号 = <b>[M.key]</b>；")
+		to_chat(src.owner, "位置 = [location_description]；")
 		to_chat(src.owner, "[special_role_description]")
 		to_chat(src.owner, ADMIN_FULLMONTY_NONAME(M))
 
@@ -957,9 +957,9 @@
 		for(var/datum/job/job in SSjob.occupations)
 			if(job.title == Add)
 				var/newtime = null
-				newtime = input(usr, "How many jebs do you want?", "Add wanted posters", "[newtime]") as num|null
+				newtime = input(usr, "需要多少个职业名额？", "设置职业名额", "[newtime]") as num|null
 				if(!newtime)
-					to_chat(src.owner, "Setting to amount of positions filled for the job")
+					to_chat(src.owner, "将名额设为该职业当前已占用的名额数")
 					job.total_positions = job.current_positions
 					break
 				job.total_positions = newtime
@@ -1011,7 +1011,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["adminsmite"]) in GLOB.mob_list
 		if(!H || !istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "此操作仅适用于 /mob/living/carbon/human 类型的实例。")
 			return
 
 		usr.client.smite(H)
@@ -1048,7 +1048,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "确认操作？", "提示", "是", "否") != "是")
 			return
 		var/mob/M = locate(href_list["getmob"])
 		usr.client.Getmob(M)
@@ -1057,7 +1057,7 @@
 		var/mob/M = locate(href_list["increase_skill"])
 		var/datum/skill/skill = href_list["skill"]
 		M.adjust_skillrank(text2path(skill), 1)
-		message_admins(span_danger("Admin [key_name_admin(usr)] increased [key_name_admin(M)]'s [skill]"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 提高了 [key_name_admin(M)] 的 [skill] 技能等级"))
 		log_admin("[usr] increased [M]'s [initial(skill.name)] skill.")
 		show_player_panel_next(M, "skills")
 
@@ -1065,7 +1065,7 @@
 		var/mob/M = locate(href_list["decrease_skill"])
 		var/datum/skill/skill = href_list["skill"]
 		M.adjust_skillrank(text2path(skill), -1)
-		message_admins(span_danger("Admin [key_name_admin(usr)] decreased [key_name_admin(M)]'s [skill]"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 降低了 [key_name_admin(M)] 的 [skill] 技能等级"))
 		log_admin("[usr] decreased [M]'s [initial(skill.name)] skill.")
 		show_player_panel_next(M, "skills")
 
@@ -1074,13 +1074,13 @@
 		var/skill_path = text2path(href_list["skill"])
 		var/datum/skill/skill = GetSkillRef(skill_path)
 		var/current_level = M.get_skill_level(skill_path)
-		var/new_level = input(usr, "Set [skill.name] to (0-6):", "Set Skill", current_level) as num|null
+		var/new_level = input(usr, "设置 [skill.name] 等级（0-6）：", "设置技能", current_level) as num|null
 		if(new_level != null && M)
 			new_level = clamp(new_level, 0, 6)
 			var/difference = new_level - current_level
 			if(difference != 0)
 				M.adjust_skillrank(skill_path, difference, TRUE)
-				message_admins(span_danger("Admin [key_name_admin(usr)] set [key_name_admin(M)]'s [skill.name] to [new_level] (was [current_level])"))
+				message_admins(span_danger("管理员 [key_name_admin(usr)] 将 [key_name_admin(M)] 的 [skill.name] 设为 [new_level]（原为 [current_level]）"))
 				log_admin("[usr] set [M]'s [skill.name] skill to [new_level] (was [current_level]).")
 			show_player_panel_next(M, "skills")
 
@@ -1088,7 +1088,7 @@
 		var/mob/M = locate(href_list["add_language"])
 		var/datum/language/lang = text2path(href_list["language"])
 		M.grant_language(lang)
-		message_admins(span_danger("Admin [key_name_admin(usr)] added [lang] to [key_name_admin(M)]"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 为 [key_name_admin(M)] 添加了语言 [lang]"))
 		log_admin("[usr] added [lang] to [M].")
 		show_player_panel_next(M, "languages")
 
@@ -1096,14 +1096,14 @@
 		var/mob/M = locate(href_list["remove_language"])
 		var/datum/language/lang = text2path(href_list["language"])
 		M.remove_language(lang, source = LANGUAGE_SOURCE_ALL)
-		message_admins(span_danger("Admin [key_name_admin(usr)] removed [lang] from [key_name_admin(M)]"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 移除了 [key_name_admin(M)] 的语言 [lang]"))
 		log_admin("[usr] removed [lang] to [M].")
 		show_player_panel_next(M, "languages")
 
 	else if(href_list["add_stat"])
 		var/mob/living/M = locate(href_list["add_stat"])
 		var/statkey = href_list["stat"]
-		message_admins(span_danger("Admin [key_name_admin(usr)] added [statkey] to [key_name_admin(M)]"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 提高了 [key_name_admin(M)] 的 [statkey] 属性"))
 		M.change_stat(statkey, 1)
 		log_admin("[usr] increased [M]'s [statkey].")
 		show_player_panel_next(M, "stats")
@@ -1111,7 +1111,7 @@
 	else if(href_list["lower_stat"])
 		var/mob/living/M = locate(href_list["lower_stat"])
 		var/statkey = href_list["stat"]
-		message_admins(span_danger("Admin [key_name_admin(usr)] lowered [statkey] from [key_name_admin(M)]"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 降低了 [key_name_admin(M)] 的 [statkey] 属性"))
 		M.change_stat(statkey, -1)
 		log_admin("[usr] decreased [M]'s [statkey].")
 		show_player_panel_next(M, "stats")
@@ -1120,12 +1120,12 @@
 		var/mob/living/M = locate(href_list["set_stat"])
 		var/statkey = href_list["stat"]
 		var/current_value = M.get_stat(statkey)
-		var/new_value = input(usr, "Set [statkey] to:", "Set Stat", current_value) as num|null
+		var/new_value = input(usr, "设置 [statkey] 属性值：", "设置属性", current_value) as num|null
 		if(new_value != null && M)
 			var/difference = new_value - current_value
 			if(difference != 0)
 				M.change_stat(statkey, difference)
-				message_admins(span_danger("Admin [key_name_admin(usr)] set [key_name_admin(M)]'s [statkey] to [new_value] (was [current_value])"))
+				message_admins(span_danger("管理员 [key_name_admin(usr)] 将 [key_name_admin(M)] 的 [statkey] 设为 [new_value]（原为 [current_value]）"))
 				log_admin("[usr] set [M]'s [statkey] to [new_value] (was [current_value]).")
 			show_player_panel_next(M, "stats")
 
@@ -1134,7 +1134,7 @@
 			return
 		var/mob/living/M = locate(href_list["set_patron"])
 		if(!isliving(M))
-			to_chat(usr, span_warning("Target must be a living mob."))
+			to_chat(usr, span_warning("目标必须是活着的生物。"))
 			return
 		var/patron_type = text2path(href_list["patron"])
 		if(!patron_type)
@@ -1171,7 +1171,7 @@
 				// Update the level to trigger spell granting
 				H.devotion.try_add_spells(silent = FALSE)
 
-		message_admins(span_danger("Admin [key_name_admin(usr)] changed [key_name_admin(M)]'s patron to [initial(M.patron.name)]"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 将 [key_name_admin(M)] 的信仰神祇改为 [initial(M.patron.name)]"))
 		log_admin("[usr] changed [M]'s patron to [initial(M.patron.name)].")
 		show_player_panel_next(M, "patron")
 
@@ -1202,7 +1202,7 @@
 
 		var/mob/M = locate(href_list["individuallog"]) in GLOB.mob_list
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "此操作仅适用于 /mob 类型的实例。")
 			return
 
 		//a highlight toggle pinged from the POV page's javascript, record it and do not re-render
@@ -1222,7 +1222,7 @@
 
 		var/mob/M = locate(href_list["languagemenu"]) in GLOB.mob_list
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "此操作仅适用于 /mob 类型的实例。")
 			return
 		var/datum/language_holder/H = M.get_language_holder()
 		H.open_language_menu(usr)
@@ -1232,14 +1232,14 @@
 			return
 
 		if(!SSticker.HasRoundStarted())
-			alert("The game hasn't started yet!")
+			alert("游戏尚未开始！")
 			return
 
 		var/mob/M = locate(href_list["traitor"])
 		if(!ismob(M))
 			var/datum/mind/D = M
 			if(!istype(D))
-				to_chat(usr, "This can only be used on instances of type /mob and /mind")
+				to_chat(usr, "此操作仅适用于 /mob 和 /mind 类型的实例。")
 				return
 			else
 				D.traitor_panel()
@@ -1251,7 +1251,7 @@
 			return
 		var/mob/M = locate(href_list["initmind"])
 		if(!ismob(M) || M.mind)
-			to_chat(usr, "This can only be used on instances on mindless mobs")
+			to_chat(usr, "此操作仅适用于没有心智的生物。")
 			return
 		M.mind_initialize()
 
@@ -1303,10 +1303,10 @@
 			paths += path
 
 		if(!paths)
-			alert("The path list you sent is empty.")
+			alert("提交的路径列表为空。")
 			return
 		if(length(paths) > 5)
-			alert("Select fewer object types, (max 5).")
+			alert("请减少对象类型数量（最多 5 种）。")
 			return
 
 		var/list/offset = splittext(href_list["offset"],",")
@@ -1338,7 +1338,7 @@
 		switch(where)
 			if("inhand")
 				if (!iscarbon(usr))
-					to_chat(usr, "Can only spawn in hand when you're a carbon mob or cyborg.")
+					to_chat(usr, "只有碳基生物或机器人可以将物品生成在手中。")
 					where = "onfloor"
 				target = usr
 
@@ -1350,10 +1350,10 @@
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
 			if("inmarked")
 				if(!marked_datum)
-					to_chat(usr, "You don't have any object marked. Abandoning spawn.")
+					to_chat(usr, "未标记任何对象，已取消生成。")
 					return
 				else if(!istype(marked_datum, /atom))
-					to_chat(usr, "The object you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
+					to_chat(usr, "标记的对象无法作为目标，目标必须为 /atom 类型。已取消生成。")
 					return
 				else
 					target = marked_datum
@@ -1410,10 +1410,10 @@
 
 		if (number == 1)
 			log_admin("[key_name(usr)] created a [english_list(paths)]")
-			spawn_message_admins("[key_name_admin(usr)] created a [english_list(paths)]")
+			spawn_message_admins("[key_name_admin(usr)] 生成了一个 [english_list(paths)]")
 		else
 			log_admin("[key_name(usr)] created [number]ea [english_list(paths)]")
-			spawn_message_admins("[key_name_admin(usr)] created [number]ea [english_list(paths)]")
+			spawn_message_admins("[key_name_admin(usr)] 生成了各 [number] 个 [english_list(paths)]")
 		return
 
 	else if(href_list["secrets"])
@@ -1428,7 +1428,7 @@
 		if(!check_rights(R_BAN))
 			return
 		if(!SSticker.HasRoundStarted())
-			alert("The game hasn't started yet!")
+			alert("游戏尚未开始！")
 			return
 		usr.client.holder.check_hunted_targets()
 
@@ -1437,18 +1437,18 @@
 			return
 		if(SSticker.IsRoundInProgress())
 			var/afkonly = text2num(href_list["afkonly"])
-			if(alert("Are you sure you want to kick all [afkonly ? "AFK" : ""] clients from the lobby??","Message","Yes","Cancel") != "Yes")
-				to_chat(usr, "Kick clients from lobby aborted")
+			if(alert("确定踢出大厅中的[afkonly ? "所有挂机" : "所有"]玩家吗？","提示","是","取消") != "是")
+				to_chat(usr, "已取消踢出大厅玩家")
 				return
-			var/list/listkicked = kick_clients_in_lobby(span_danger("I were kicked from the lobby by [usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."), afkonly)
+			var/list/listkicked = kick_clients_in_lobby(span_danger("我被[usr.client.holder.fakekey ? "管理员" : "[usr.client.key]"]踢出了大厅。"), afkonly)
 
 			var/strkicked = ""
 			for(var/name in listkicked)
 				strkicked += "[name], "
-			message_admins("[key_name_admin(usr)] has kicked [afkonly ? "all AFK" : "all"] clients from the lobby. [length(listkicked)] clients kicked: [strkicked ? strkicked : "--"]")
+			message_admins("[key_name_admin(usr)] 踢出了大厅中的[afkonly ? "所有挂机" : "所有"]玩家，共 [length(listkicked)] 人：[strkicked ? strkicked : "--"]")
 			log_admin("[key_name(usr)] has kicked [afkonly ? "all AFK" : "all"] clients from the lobby. [length(listkicked)] clients kicked: [strkicked ? strkicked : "--"]")
 		else
-			to_chat(usr, "You may only use this when the game is running.")
+			to_chat(usr, "此操作仅可在游戏进行时使用。")
 
 	else if(href_list["create_outfit_finalize"])
 		if(!check_rights(R_ADMIN))
@@ -1476,7 +1476,7 @@
 	else if(href_list["viewruntime"])
 		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
 		if(!istype(error_viewer))
-			to_chat(usr, span_warning("That runtime viewer no longer exists."))
+			to_chat(usr, span_warning("该运行时错误查看器已不存在。"))
 			return
 
 		if(href_list["viewruntime_backto"])
@@ -1496,7 +1496,7 @@
 		thing_to_check = splittext(thing_to_check, ", ")
 
 
-		var/list/dat = list("Related accounts by [uppertext(href_list["showrelatedacc"])]:")
+		var/list/dat = list("按 [uppertext(href_list["showrelatedacc"])] 查找的关联账号：")
 		dat += thing_to_check
 
 		usr << browse(dat.Join("<br>"), "window=related_[C];size=420x300")
@@ -1530,8 +1530,8 @@
 		var/answer = href_list["slowquery"]
 		if(answer == "yes")
 			log_query_debug("[usr.key] | Reported a server hang")
-			if(alert(usr, "Had you just press any admin buttons?", "Query server hang report", "Yes", "No") == "Yes")
-				var/response = input(usr,"What were you just doing?","Query server hang report") as null|text
+			if(alert(usr, "刚才是否点击过管理按钮？", "查询导致的服务器卡顿报告", "是", "否") == "是")
+				var/response = input(usr,"刚才进行了什么操作？","查询导致的服务器卡顿报告") as null|text
 				if(response)
 					log_query_debug("[usr.key] | [response]")
 		else if(answer == "no")
@@ -1540,10 +1540,10 @@
 	else if(href_list["rebootworld"])
 		if(!check_rights(R_ADMIN))
 			return
-		var/confirm = alert("Are you sure you want to reboot the server?", "Confirm Reboot", "Yes", "No")
-		if(confirm == "No")
+		var/confirm = alert("确定重启服务器吗？", "确认重启", "是", "否")
+		if(confirm == "否")
 			return
-		if(confirm == "Yes")
+		if(confirm == "是")
 			restart()
 
 	else if(href_list["check_teams"])
@@ -1598,10 +1598,10 @@
 			return
 		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
 		var/client/mob_client = M.client
-		var/amt2change = input("How much to modify the PQ by? ([!check_rights(R_BAN,0) ? "-20 to 20, or " : ""]0 to just add a note)") as null|num
+		var/amt2change = input("玩家质量分（PQ）调整多少？（[!check_rights(R_BAN,0) ? "范围为 -20 至 20；" : ""]输入 0 仅添加备注）") as null|num
 		if(!check_rights(R_BAN,0))
 			amt2change = CLAMP(amt2change, -20, 20)
-		var/raisin = stripped_input("State a short reason for this change", "Game Master", "", null)
+		var/raisin = stripped_input("简要说明此次调整的原因", "游戏主持", "", null)
 		if(!amt2change && !raisin)
 			return
 		adjust_playerquality(amt2change, mob_client.ckey, usr.ckey, raisin)
@@ -1621,17 +1621,17 @@
 			return
 		var/mob/M = (locate(href_list["mob"]) in GLOB.mob_list)
 		if(!M?.key)
-			alert(usr, "[M] does not have a key.")
+			alert(usr, "[M] 没有关联的账号。")
 			return
 
-		var/amt2change = input(usr, "How much to modify the Triumphs by? (100 to -100)") as null|num
+		var/amt2change = input(usr, "凯旋点调整多少？（-100 至 100）") as null|num
 		amt2change = clamp(amt2change, -100, 100)
 		if(!amt2change)
 			return
 
-		var/raisin = stripped_input(usr, "State a short reason for this change", "Game Master", null, null)
+		var/raisin = stripped_input(usr, "简要说明此次调整的原因", "游戏主持", null, null)
 		M.adjust_triumphs(amt2change, FALSE, raisin)
-		message_admins("[usr.key] adjusted [M.key]'s triumphs by [amt2change] with [!raisin ? "no reason given" : "reason: [raisin]"].")
+		message_admins("[usr.key] 将 [M.key] 的凯旋点调整了 [amt2change]，[!raisin ? "未提供原因" : "原因：[raisin]"]。")
 		log_admin("[usr.key] adjusted [M.key]'s triumphs by [amt2change] with [!raisin ? "no reason given" : "reason: [raisin]"].")
 
 	else if(href_list["newbankey"])
@@ -1767,7 +1767,7 @@
 		if(!json)
 			json = list()
 
-		var/popup = "<center><b>Curses for [the_key]</b><br><br>"
+		var/popup = "<center><b>[the_key] 的诅咒</b><br><br>"
 
 		// detect if any valid entries exist
 		var/has_any = FALSE
@@ -1777,9 +1777,9 @@
 				break
 
 		if(!has_any)
-			popup += "<i>No curses found.</i><br>"
+			popup += "<i>未找到诅咒。</i><br>"
 		else
-			popup += "<b>Active Curses:</b><br>"
+			popup += "<b>生效中的诅咒：</b><br>"
 			for(var/curse_name in json)
 				if(!json[curse_name])
 					continue
@@ -1790,13 +1790,13 @@
 
 		popup += "<br><hr><br>"
 
-		popup += "<a href='?_src_=holder;[HrefToken()];addcurse=[the_key]'><b>Add New Curse</b></a><br><br>"
+		popup += "<a href='?_src_=holder;[HrefToken()];addcurse=[the_key]'><b>添加新诅咒</b></a><br><br>"
 
-		popup += "<a href='?_src_=holder;[HrefToken()];clearallcurses=[the_key]'><font color='red'>Clear ALL curses</font></a>"
+		popup += "<a href='?_src_=holder;[HrefToken()];clearallcurses=[the_key]'><font color='red'>清除所有诅咒</font></a>"
 
 		popup += "</center>"
 
-		var/datum/browser/noclose/B = new(usr, "cursecheck", "Curses", 380, 350)
+		var/datum/browser/noclose/B = new(usr, "cursecheck", "诅咒", 380, 350)
 		B.set_content(popup)
 		B.open()
 		return
@@ -1811,7 +1811,7 @@
 				break
 
 		if(!M)
-			usr << "<span class='warning'>Player not online.</span>"
+			usr << "<span class='warning'>玩家不在线。</span>"
 			return
 
 		usr.client.curse_player_popup(M)
@@ -1826,13 +1826,13 @@
 		var/key = href_list["key"]
 
 		if(!key || !curse_name)
-			usr << "<span class='warning'>Invalid removal request.</span>"
+			usr << "<span class='warning'>移除请求无效。</span>"
 			return
 
 		if(remove_player_curse(key, curse_name))
-			usr << "<span class='notice'>Removed curse <b>[curse_name]</b> from [key].</span>"
+			usr << "<span class='notice'>已移除 [key] 的诅咒 <b>[curse_name]</b>。</span>"
 		else
-			usr << "<span class='warning'>Failed to remove curse <b>[curse_name]</b> from [key].</span>"
+			usr << "<span class='warning'>无法移除 [key] 的诅咒 <b>[curse_name]</b>。</span>"
 
 		src.player_panel_new()
 		return
@@ -1847,7 +1847,7 @@
 		// refresh live state if online
 		refresh_player_curses_for_key(key)
 
-		usr << "<span class='notice'>Cleared ALL curses from [key].</span>"
+		usr << "<span class='notice'>已清除 [key] 的所有诅咒。</span>"
 
 		src.player_panel_new()
 		return
@@ -1858,7 +1858,7 @@
 		var/key = href_list["key"]
 
 		if(!key || !curse_name)
-			usr << "<span class='warning'>Invalid curse selection.</span>"
+			usr << "<span class='warning'>所选诅咒无效。</span>"
 			return
 
 		var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/curses.json")
@@ -1867,35 +1867,35 @@
 
 		var/list/json = json_decode(file2text(json_file))
 		if(!json || !json[curse_name])
-			usr << "<span class='warning'>Curse not found.</span>"
+			usr << "<span class='warning'>未找到诅咒。</span>"
 			return
 
 		var/list/C = json[curse_name]
 
-		var/text = "<b><u>Curse:</u></b> [curse_name]<br><hr>"
-
+		var/text = "<b><u>诅咒：</u></b> [curse_name]<br><hr>"
+		var/list/curse_field_labels = list("expires" = "到期日", "flavor" = "风格", "chance" = "触发概率（%）", "cooldown" = "冷却时间（秒）", "last_trigger" = "上次触发时间", "trigger" = "触发条件", "effect" = "效果", "effect_args" = "效果参数", "admin" = "施加者", "reason" = "原因", "character_name" = "绑定角色名", "trait" = "特质", "debuff_id" = "状态效果类型", "reagent_type" = "试剂类型", "amount" = "数量", "mob_type" = "生物类型")
 		for(var/field in C)
 			var/value = C[field]
 
 			if(islist(value))
-				text += "<b>[field]:</b><br>"
+				text += "<b>[curse_field_labels[field] || field]：</b><br>"
 				for(var/subfield in value)
-					text += "&nbsp;&nbsp;<b>[subfield]:</b> [value[subfield]]<br>"
+					text += "&nbsp;&nbsp;<b>[curse_field_labels[subfield] || subfield]：</b> [value[subfield]]<br>"
 			else
-				text += "<b>[field]:</b> [value]<br>"
+				text += "<b>[curse_field_labels[field] || field]：</b> [value]<br>"
 
 		if(C["expires"])
 			var/days_left = C["expires"] - now_days()
 			if(days_left < 0) days_left = 0
-			text += "<br><b>Days Remaining:</b> [days_left]<br>"
+			text += "<br><b>剩余天数：</b>[days_left]<br>"
 
 		if(C["cooldown"])
-			text += "<b>Cooldown (seconds):</b> [C["cooldown"]]<br>"
+			text += "<b>冷却时间（秒）：</b>[C["cooldown"]]<br>"
 
 		if(C["last_trigger"])
-			text += "<b>Last Trigger Timestamp:</b> [C["last_trigger"]]<br>"
+			text += "<b>上次触发时间戳：</b>[C["last_trigger"]]<br>"
 
-		var/datum/browser/noclose/inspect = new(usr, "curseinfo", "Curse Details", 400, 360)
+		var/datum/browser/noclose/inspect = new(usr, "curseinfo", "诅咒详情", 400, 360)
 		inspect.set_content("<center>[text]</center>")
 		inspect.open()
 		return
@@ -1905,12 +1905,12 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/dat = {"<B>What mode do you wish to play?</B><HR>"}
+	var/dat = {"<B>选择要游玩的模式：</B><HR>"}
 	for(var/mode in config.modes)
 		dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
-	dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=secret'>Secret</A><br>"}
-	dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=random'>Random</A><br>"}
-	dat += {"Now: [GLOB.master_mode]"}
+	dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=secret'>秘密模式</A><br>"}
+	dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=random'>随机模式</A><br>"}
+	dat += {"当前：[GLOB.master_mode]"}
 	usr << browse(dat, "window=c_mode")
 
 /datum/admins/proc/HandleFSecret()
@@ -1918,12 +1918,12 @@
 		return
 
 	if(SSticker.HasRoundStarted())
-		return alert(usr, "The game has already started.", null, null, null, null)
+		return alert(usr, "游戏已开始。", null, null, null, null)
 	if(GLOB.master_mode != "secret")
-		return alert(usr, "The game mode has to be secret!", null, null, null, null)
-	var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
+		return alert(usr, "游戏模式必须为 secret！", null, null, null, null)
+	var/dat = {"<B>要强制秘密模式使用哪种游戏模式？此功能会修改实际模式，同时向玩家显示为秘密模式。仅在当前模式为秘密模式时可用。</B><HR>"}
 	for(var/mode in config.modes)
 		dat += {"<A href='?src=[REF(src)];[HrefToken()];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
-	dat += {"<A href='?src=[REF(src)];[HrefToken()];f_secret2=secret'>Random (default)</A><br>"}
-	dat += {"Now: [GLOB.secret_force_mode]"}
+	dat += {"<A href='?src=[REF(src)];[HrefToken()];f_secret2=secret'>随机（默认）</A><br>"}
+	dat += {"当前：[GLOB.secret_force_mode]"}
 	usr << browse(dat, "window=f_secret")

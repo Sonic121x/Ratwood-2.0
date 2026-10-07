@@ -514,7 +514,7 @@ BLIND     // can't see anything
 		GLOB.dismembered_clothing_icons[index] = dismembered
 
 /obj/item/clothing/under/verb/toggle()
-	set name = "Adjust Suit Sensors"
+	set name = "调整衣物传感器"
 	set hidden = 1
 	set src in usr
 	if(!usr.client.holder)
