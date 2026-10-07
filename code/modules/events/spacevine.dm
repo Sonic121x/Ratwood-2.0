@@ -414,12 +414,12 @@
 
 /datum/vine_controller/vv_get_dropdown()
 	. = ..()
-	VV_DROPDOWN_OPTION(VV_HK_SPACEVINE_PURGE, "Delete Vines")
+	VV_DROPDOWN_OPTION(VV_HK_SPACEVINE_PURGE, "删除藤蔓")
 
 /datum/vine_controller/vv_do_topic(href_list)
 	. = ..()
 	if(href_list[VV_HK_SPACEVINE_PURGE])
-		if(alert(usr, "Are you sure you want to delete this spacevine cluster?", "Delete Vines", "Yes", "No") == "Yes")
+		if(alert(usr, "确定删除这片泣藤吗？", "删除藤蔓", "是", "否") == "是")
 			DeleteVines()
 
 /datum/vine_controller/proc/DeleteVines()	//this is kill

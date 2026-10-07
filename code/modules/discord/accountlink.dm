@@ -1,7 +1,7 @@
 // Verb to link discord accounts to BYOND accounts
 /client/verb/linkdiscord()
 	set category = "OOC"
-	set name = "Link Discord Account"
+	set name = "绑定 Discord 账号"
 	set desc = ""
 	set hidden = 1
 	// Safety checks

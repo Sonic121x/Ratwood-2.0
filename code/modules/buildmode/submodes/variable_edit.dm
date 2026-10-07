@@ -11,9 +11,9 @@
 
 /datum/buildmode_mode/varedit/show_help(client/c)
 	to_chat(c, span_notice("***********************************************************"))
-	to_chat(c, span_notice("Right Mouse Button on buildmode button = Select var(type) & value"))
-	to_chat(c, span_notice("Left Mouse Button on turf/obj/mob      = Set var(type) & value"))
-	to_chat(c, span_notice("Right Mouse Button on turf/obj/mob     = Reset var's value"))
+	to_chat(c, span_notice("右键点击建造模式按钮 = 选择变量（类型）及数值"))
+	to_chat(c, span_notice("左键点击地块/物体/生物 = 设置变量（类型）及数值"))
+	to_chat(c, span_notice("右键点击地块/物体/生物 = 重置变量值"))
 	to_chat(c, span_notice("***********************************************************"))
 
 /datum/buildmode_mode/varedit/Reset()
@@ -22,7 +22,7 @@
 	valueholder = null
 
 /datum/buildmode_mode/varedit/change_settings(client/c)
-	varholder = input(c, "Enter variable name:" ,"Name", "name")
+	varholder = input(c, "输入变量名：" ,"名称", "name")
 
 	if(!vv_varname_lockcheck(varholder))
 		return
@@ -30,7 +30,7 @@
 	var/temp_value = c.vv_get_value()
 	if(isnull(temp_value["class"]))
 		Reset()
-		to_chat(c, span_notice("Variable unset."))
+		to_chat(c, span_notice("已取消变量设置。"))
 		return
 	valueholder = temp_value["value"]
 
@@ -40,23 +40,23 @@
 	var/right_click = pa.Find("right")
 
 	if(isnull(varholder))
-		to_chat(c, span_warning("Choose a variable to modify first."))
+		to_chat(c, span_warning("请先选择要修改的变量。"))
 		return
 	if(left_click)
 		if(object.vars.Find(varholder))
 			if(object.vv_edit_var(varholder, valueholder) == FALSE)
-				to_chat(c, span_warning("My edit was rejected by the object."))
+				to_chat(c, span_warning("对象拒绝了此次修改。"))
 				return
 			log_admin("Build Mode: [key_name(c)] modified [object.name]'s [varholder] to [valueholder]")
 		else
-			to_chat(c, span_warning("[initial(object.name)] does not have a var called '[varholder]'"))
+			to_chat(c, span_warning("[initial(object.name)] 没有名为 '[varholder]' 的变量"))
 	if(right_click)
 		if(object.vars.Find(varholder))
 			var/reset_value = initial(object.vars[varholder])
 			if(object.vv_edit_var(varholder, reset_value) == FALSE)
-				to_chat(c, span_warning("My edit was rejected by the object."))
+				to_chat(c, span_warning("对象拒绝了此次修改。"))
 				return
 			log_admin("Build Mode: [key_name(c)] modified [object.name]'s [varholder] to [reset_value]")
 		else
-			to_chat(c, span_warning("[initial(object.name)] does not have a var called '[varholder]'"))
+			to_chat(c, span_warning("[initial(object.name)] 没有名为 '[varholder]' 的变量"))
 

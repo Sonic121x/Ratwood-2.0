@@ -40,9 +40,9 @@
 /datum/scheduled_event/proc/get_href_actions()
 	var/round_started = SSticker.HasRoundStarted()
 	if(round_started)
-		return "<a href='byond://?src=[REF(src)];action=fire'>Fire</a> <a href='byond://?src=[REF(src)];action=reschedule'>Reschedule</a> <a href='byond://?src=[REF(src)];action=cancel'>Cancel</a> <a href='byond://?src=[REF(src)];action=refund'>Refund</a></td>"
+		return "<a href='byond://?src=[REF(src)];action=fire'>触发</a> <a href='byond://?src=[REF(src)];action=reschedule'>重新安排</a> <a href='byond://?src=[REF(src)];action=cancel'>取消</a> <a href='byond://?src=[REF(src)];action=refund'>退还点数</a></td>"
 	else
-		return "<a href='byond://?src=[REF(src)];action=cancel'>Cancel</a>"
+		return "<a href='byond://?src=[REF(src)];action=cancel'>取消</a>"
 
 /// Try and fire off the scheduled event
 /datum/scheduled_event/proc/try_fire()
@@ -51,12 +51,12 @@
 
 	///If we can't spawn the scheduled event, refund it.
 	if(!ignores_checks && !event.canSpawnEvent(1000)) //FALSE argument to ignore popchecks, to prevent scheduled events from failing from people dying/cryoing etc.
-		message_admins("Scheduled Event: [event] was unable to run and has been refunded.")
+		message_admins("计划事件：[event] 无法执行，已退还点数。")
 		SSgamemode.refund_scheduled_event(src)
 		return
 
 	///Trigger the event and remove the scheduled datum
-	message_admins("Scheduled Event: [event] successfully triggered.")
+	message_admins("计划事件：[event] 已成功触发。")
 	SSgamemode.TriggerEvent(event, ignores_checks)
 	SSgamemode.remove_scheduled_event(src)
 
@@ -72,23 +72,23 @@
 	var/round_started = SSticker.HasRoundStarted()
 	switch(href_list["action"])
 		if("cancel")
-			message_admins("[key_name_admin(usr)] cancelled scheduled event [event.name].")
+			message_admins("[key_name_admin(usr)] 取消了计划事件 [event.name]。")
 			log_admin_private("[key_name(usr)] cancelled scheduled event [event.name].")
 			SSgamemode.remove_scheduled_event(src)
 		if("refund")
-			message_admins("[key_name_admin(usr)] refunded scheduled event [event.name].")
+			message_admins("[key_name_admin(usr)] 退还了计划事件 [event.name] 的点数。")
 			log_admin_private("[key_name(usr)] refunded scheduled event [event.name].")
 			SSgamemode.refund_scheduled_event(src)
 		if("reschedule")
-			var/new_schedule = input(usr, "New schedule time (in seconds):", "Reschedule Event") as num|null
+			var/new_schedule = input(usr, "距离新的计划时间还有多少秒：", "重新安排事件") as num|null
 			if(isnull(new_schedule) || QDELETED(src))
 				return
 			start_time = world.time + new_schedule * 1 SECONDS
-			message_admins("[key_name_admin(usr)] rescheduled event [event.name] to [new_schedule] seconds.")
+			message_admins("[key_name_admin(usr)] 将事件 [event.name] 重新安排至 [new_schedule] 秒后。")
 			log_admin_private("[key_name(usr)] rescheduled event [event.name] to [new_schedule] seconds.")
 		if("fire")
 			if(!round_started)
 				return
-			message_admins("[key_name_admin(usr)] has fired scheduled event [event.name].")
+			message_admins("[key_name_admin(usr)] 触发了计划事件 [event.name]。")
 			log_admin_private("[key_name(usr)] has fired scheduled event [event.name].")
 			try_fire()

@@ -1,12 +1,12 @@
 /proc/create_message(type, target_key, admin_ckey, text, timestamp, server, secret, logged = 1, browse, expiry, note_severity)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	if(!type)
 		return
 	var/target_ckey = ckey(target_key)
 	if(!target_key && (type == "note" || type == "message" || type == "watchlist entry"))
-		var/new_key = input(usr,"Who would you like to create a [type] for?","Enter a key or ckey",null) as null|text
+		var/new_key = input(usr,"要为哪位玩家创建记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）？","输入账号或 ckey",null) as null|text
 		if(!new_key)
 			return
 		var/new_ckey = ckey(new_key)
@@ -18,7 +18,7 @@
 			qdel(query_find_ckey)
 			return
 		if(!query_find_ckey.NextRow())
-			if(alert(usr, "[new_key]/([new_ckey]) has not been seen before, are you sure you want to create a [type] for them?", "Unknown ckey", "Yes", "No", "Cancel") != "Yes")
+			if(alert(usr, "没有 [new_key]/([new_ckey]) 的历史记录，确定为其创建记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）吗？", "未知 ckey", "是", "否", "取消") != "是")
 				qdel(query_find_ckey)
 				return
 		qdel(query_find_ckey)
@@ -35,7 +35,7 @@
 	if(!target_ckey)
 		target_ckey = admin_ckey
 	if(!text)
-		text = input(usr,"Write your [type]","Create [type]") as null|message
+		text = input(usr,"填写记录内容（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）","创建记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）") as null|message
 		if(!text)
 			return
 	if(!timestamp)
@@ -45,16 +45,16 @@
 		if (ssqlname)
 			server = ssqlname
 	if(isnull(secret))
-		switch(alert("Hide note from being viewed by players?", "Secret note?","Yes","No","Cancel"))
-			if("Yes")
+		switch(alert("是否对玩家隐藏此备注？", "隐藏备注？","是","否","取消"))
+			if("是")
 				secret = 1
-			if("No")
+			if("否")
 				secret = 0
 			else
 				return
 	if(isnull(expiry))
-		if(alert(usr, "Set an expiry time? Expired messages are hidden like deleted ones.", "Expiry time?", "Yes", "No", "Cancel") == "Yes")
-			var/expire_time = input("Set expiry time for [type] as format YYYY-MM-DD HH:MM:SS. All times in server time. HH:MM:SS is optional and 24-hour. Must be later than current time for obvious reasons.", "Set expiry time", SQLtime()) as null|text
+		if(alert(usr, "是否设置过期时间？过期记录会像已删除的记录一样隐藏。", "过期时间？", "是", "否", "取消") == "是")
+			var/expire_time = input("设置记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）的过期时间，格式为 YYYY-MM-DD HH:MM:SS，使用服务器时间。时分秒可省略，采用 24 小时制。必须晚于当前时间。", "设置过期时间", SQLtime()) as null|text
 			if(!expire_time)
 				return
 			var/datum/DBQuery/query_validate_expire_time = SSdbcore.NewQuery(
@@ -67,13 +67,13 @@
 			if(query_validate_expire_time.NextRow())
 				var/checktime = text2num(query_validate_expire_time.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.")
+					to_chat(usr, "输入的日期时间格式错误，或不晚于当前服务器时间。")
 					qdel(query_validate_expire_time)
 					return
 				expiry = query_validate_expire_time.item[1]
 			qdel(query_validate_expire_time)
 	if(type == "note" && isnull(note_severity))
-		note_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("High", "Medium", "Minor", "None")
+		note_severity = list("严重" = "High", "中等" = "Medium", "轻微" = "Minor", "无" = "None")[input("设置备注严重程度：", "严重程度", null, null) as null|anything in list("严重", "中等", "轻微", "无")]
 		if(!note_severity)
 			return
 	var/datum/DBQuery/query_create_message = SSdbcore.NewQuery({"
@@ -94,7 +94,7 @@
 		"note_severity" = note_severity,
 	))
 	var/pm = "[key_name(usr)] has created a [type][(type == "note" || type == "message" || type == "watchlist entry") ? " for [target_key]" : ""]: [text]"
-	var/header = "[key_name_admin(usr)] has created a [type][(type == "note" || type == "message" || type == "watchlist entry") ? " for [target_key]" : ""]"
+	var/header = "[key_name_admin(usr)] [(type == "note" || type == "message" || type == "watchlist entry") ? "为 [target_key] " : ""]创建了记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）"
 	if(!query_create_message.warn_execute())
 		qdel(query_create_message)
 		return
@@ -111,7 +111,7 @@
 
 /proc/delete_message(message_id, logged = 1, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -144,7 +144,7 @@
 	qdel(query_del_message)
 	if(logged)
 		var/m1 = "[user_key_name] has deleted a [type][(type == "note" || type == "message" || type == "watchlist entry") ? " for" : " made by"] [target_key]: [text]"
-		var/m2 = "[user_name_admin] has deleted a [type][(type == "note" || type == "message" || type == "watchlist entry") ? " for" : " made by"] [target_key]:<br>[text]"
+		var/m2 = "[user_name_admin] 删除了[(type == "note" || type == "message" || type == "watchlist entry") ? "关于 [target_key] 的" : "由 [target_key] 创建的"]记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）：<br>[text]"
 		log_admin_private(m1)
 		message_admins(m2)
 		if(browse)
@@ -154,7 +154,7 @@
 
 /proc/edit_message(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -180,11 +180,11 @@
 		var/target_key = query_find_edit_message.item[2]
 		var/admin_key = query_find_edit_message.item[3]
 		var/old_text = query_find_edit_message.item[4]
-		var/new_text = input("Input new [type]", "New [type]", "[old_text]") as null|message
+		var/new_text = input("输入新的记录内容（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）", "新记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）", "[old_text]") as null|message
 		if(!new_text)
 			qdel(query_find_edit_message)
 			return
-		var/edit_text = "Edited by [editor_key] on [SQLtime()] from<br>[old_text]<br>to<br>[new_text]<hr>"
+		var/edit_text = "[editor_key] 于 [SQLtime()] 将内容从<br>[old_text]<br>改为<br>[new_text]<hr>"
 		var/datum/DBQuery/query_edit_message = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("messages")]
 			SET text = :text, lasteditor = :lasteditor, edits = CONCAT(IFNULL(edits,''),:edit_text)
@@ -195,7 +195,7 @@
 			return
 		qdel(query_edit_message)
 		log_admin_private("[kn] has edited a [type] [(type == "note" || type == "message" || type == "watchlist entry") ? " for [target_key]" : ""] made by [admin_key] from [old_text] to [new_text]")
-		message_admins("[kna] has edited a [type] [(type == "note" || type == "message" || type == "watchlist entry") ? " for [target_key]" : ""] made by [admin_key] from<br>[old_text]<br>to<br>[new_text]")
+		message_admins("[kna] 修改了 [admin_key] 创建的[(type == "note" || type == "message" || type == "watchlist entry") ? "关于 [target_key] 的" : ""]记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]），从<br>[old_text]<br>改为<br>[new_text]")
 		if(browse)
 			browse_messages("[type]")
 		else
@@ -204,7 +204,7 @@
 
 /proc/edit_message_expiry(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -231,7 +231,7 @@
 		var/admin_key = query_find_edit_expiry_message.item[3]
 		var/old_expiry = query_find_edit_expiry_message.item[4]
 		var/new_expiry
-		var/expire_time = input("Set expiry time for [type] as format YYYY-MM-DD HH:MM:SS. All times in server time. HH:MM:SS is optional and 24-hour. Must be later than current time for obvious reasons. Enter -1 to remove expiry time.", "Set expiry time", old_expiry) as null|text
+		var/expire_time = input("设置记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）的过期时间，格式为 YYYY-MM-DD HH:MM:SS，使用服务器时间。时分秒可省略，采用 24 小时制。必须晚于当前时间。输入 -1 移除过期时间。", "设置过期时间", old_expiry) as null|text
 		if(!expire_time)
 			qdel(query_find_edit_expiry_message)
 			return
@@ -248,13 +248,13 @@
 			if(query_validate_expire_time_edit.NextRow())
 				var/checktime = text2num(query_validate_expire_time_edit.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.")
+					to_chat(usr, "输入的日期时间格式错误，或不晚于当前服务器时间。")
 					qdel(query_validate_expire_time_edit)
 					qdel(query_find_edit_expiry_message)
 					return
 				new_expiry = query_validate_expire_time_edit.item[1]
 			qdel(query_validate_expire_time_edit)
-		var/edit_text = "Expiration time edited by [editor_key] on [SQLtime()] from [old_expiry] to [new_expiry]<hr>"
+		var/edit_text = "[editor_key] 于 [SQLtime()] 将过期时间从 [old_expiry] 改为 [new_expiry]<hr>"
 		var/datum/DBQuery/query_edit_message_expiry = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("messages")]
 			SET expire_timestamp = :expire_time, lasteditor = :lasteditor, edits = CONCAT(IFNULL(edits,''),:edit_text)
@@ -266,7 +266,7 @@
 			return
 		qdel(query_edit_message_expiry)
 		log_admin_private("[kn] has edited the expiration time of a [type] [(type == "note" || type == "message" || type == "watchlist entry") ? " for [target_key]" : ""] made by [admin_key] from [old_expiry] to [new_expiry]")
-		message_admins("[kna] has edited the expiration time of a [type] [(type == "note" || type == "message" || type == "watchlist entry") ? " for [target_key]" : ""] made by [admin_key] from [old_expiry] to [new_expiry]")
+		message_admins("[kna] 修改了 [admin_key] 创建的[(type == "note" || type == "message" || type == "watchlist entry") ? "关于 [target_key] 的" : ""]记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]），将过期时间从 [old_expiry] 改为 [new_expiry]")
 		if(browse)
 			browse_messages("[type]")
 		else
@@ -275,7 +275,7 @@
 
 /proc/edit_message_severity(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -303,12 +303,12 @@
 			old_severity = "NA"
 		var/editor_key = usr.key
 		var/editor_ckey = usr.ckey
-		var/new_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("high", "medium", "minor", "none") //lowercase for edit log consistency
+		var/new_severity = list("严重" = "high", "中等" = "medium", "轻微" = "minor", "无" = "none")[input("设置备注严重程度：", "严重程度", null, null) as null|anything in list("严重", "中等", "轻微", "无")] //lowercase for edit log consistency
 		if(!new_severity)
 			qdel(query_find_edit_note_severity)
 			return
-		new_severity = new_severity
-		var/edit_text = "Note severity edited by [editor_key] on [SQLtime()] from [old_severity] to [new_severity]<hr>"
+		var/list/severity_labels = list("high" = "严重", "medium" = "中等", "minor" = "轻微", "none" = "无", "na" = "未设置")
+		var/edit_text = "[editor_key] 于 [SQLtime()] 将备注严重程度从 [severity_labels[lowertext(old_severity)] || old_severity] 改为 [severity_labels[new_severity]]<hr>"
 		var/datum/DBQuery/query_edit_note_severity = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("messages")]
 			SET severity = :severity, lasteditor = :lasteditor, edits = CONCAT(IFNULL(edits,''),:edit_text)
@@ -320,13 +320,13 @@
 			return
 		qdel(query_edit_note_severity)
 		log_admin_private("[kn] has edited the severity of a [type] for [target_key] made by [admin_key] from [old_severity] to [new_severity]")
-		message_admins("[kna] has edited the severity time of a [type] for [target_key] made by [admin_key] from [old_severity] to [new_severity]")
+		message_admins("[kna] 修改了 [admin_key] 为 [target_key] 创建的记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]），将严重程度从 [severity_labels[lowertext(old_severity)] || old_severity] 改为 [severity_labels[new_severity]]")
 		browse_messages(target_ckey = ckey(target_key), agegate = TRUE)
 	qdel(query_find_edit_note_severity)
 
 /proc/toggle_message_secrecy(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -352,7 +352,7 @@
 		var/target_key = query_find_message_secret.item[2]
 		var/admin_key = query_find_message_secret.item[3]
 		var/secret = text2num(query_find_message_secret.item[4])
-		var/edit_text = "Made [secret ? "not secret" : "secret"] by [editor_key] on [SQLtime()]<hr>"
+		var/edit_text = "[editor_key] 于 [SQLtime()] 将记录设为[secret ? "公开" : "隐藏"]<hr>"
 		var/datum/DBQuery/query_message_secret = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("messages")]
 			SET secret = NOT secret, lasteditor = :lasteditor, edits = CONCAT(IFNULL(edits,''),:edit_text)
@@ -364,38 +364,38 @@
 			return
 		qdel(query_message_secret)
 		log_admin_private("[kn] has toggled [target_key]'s [type] made by [admin_key] to [secret ? "not secret" : "secret"]")
-		message_admins("[kna] has toggled [target_key]'s [type] made by [admin_key] to [secret ? "not secret" : "secret"]")
+		message_admins("[kna] 将 [admin_key] 为 [target_key] 创建的记录（[list("note" = "备注", "message" = "消息", "watchlist entry" = "关注名单记录", "memo" = "备忘录")[type] || type]）设为[secret ? "公开" : "隐藏"]")
 		browse_messages(target_ckey = ckey(target_key), agegate = TRUE)
 	qdel(query_find_message_secret)
 
 /proc/browse_messages(type, target_ckey, index, linkless = FALSE, filter, agegate = FALSE)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/list/output = list()
 	var/ruler = "<hr style='background:#000000; border:0; height:3px'>"
-	var/list/navbar = list("<a href='?_src_=holder;[HrefToken()];nonalpha=1'>All</a><a href='?_src_=holder;[HrefToken()];nonalpha=2'>#</a>")
+	var/list/navbar = list("<a href='?_src_=holder;[HrefToken()];nonalpha=1'>全部</a><a href='?_src_=holder;[HrefToken()];nonalpha=2'>#</a>")
 	for(var/letter in GLOB.alphabet)
 		navbar += "<a href='?_src_=holder;[HrefToken()];showmessages=[letter]'>[letter]</a>"
-	navbar += "<a href='?_src_=holder;[HrefToken()];showmemo=1'>Memos</a><a href='?_src_=holder;[HrefToken()];showwatch=1'>Watchlist</a>"
+	navbar += "<a href='?_src_=holder;[HrefToken()];showmemo=1'>备忘录</a><a href='?_src_=holder;[HrefToken()];showwatch=1'>关注名单</a>"
 	navbar += "<br><form method='GET' name='search' action='?'>\
 	<input type='hidden' name='_src_' value='holder'>\
 	[HrefTokenFormField()]\
 	<input type='text' name='searchmessages' value='[index]'>\
-	<input type='submit' value='Search'></form>"
+	<input type='submit' value='搜索'></form>"
 	if(!linkless)
 		output = navbar
 	if(type == "memo" || type == "watchlist entry")
 		if(type == "memo")
-			output += "<h2><center>Admin memos</h2>"
-			output += "<a href='?_src_=holder;[HrefToken()];addmemo=1'>Add memo</a></center>"
+			output += "<h2><center>管理员备忘录</h2>"
+			output += "<a href='?_src_=holder;[HrefToken()];addmemo=1'>添加备忘录</a></center>"
 		else if(type == "watchlist entry")
-			output += "<h2><center>Watchlist entries</h2>"
-			output += "<a href='?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a>"
+			output += "<h2><center>关注名单记录</h2>"
+			output += "<a href='?_src_=holder;[HrefToken()];addwatchempty=1'>添加关注名单记录</a>"
 			if(filter)
-				output += "<a href='?_src_=holder;[HrefToken()];showwatch=1'>Unfilter clients</a></center>"
+				output += "<a href='?_src_=holder;[HrefToken()];showwatch=1'>取消玩家筛选</a></center>"
 			else
-				output += "<a href='?_src_=holder;[HrefToken()];showwatchfilter=1'>Filter offline clients</a></center>"
+				output += "<a href='?_src_=holder;[HrefToken()];showwatchfilter=1'>隐藏离线玩家</a></center>"
 		output += ruler
 		var/datum/DBQuery/query_get_type_messages = SSdbcore.NewQuery({"
 			SELECT
@@ -433,13 +433,13 @@
 				output += "[t_key] | "
 			output += "[timestamp] | [server] | [admin_key]"
 			if(expire_timestamp)
-				output += " | Expires [expire_timestamp]"
+				output += " | 过期时间：[expire_timestamp]"
 			output += "</b>"
-			output += " <a href='?_src_=holder;[HrefToken()];editmessageexpiryempty=[id]'>Change Expiry Time</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];deletemessageempty=[id]'>Delete</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];editmessageempty=[id]'>Edit</a>"
+			output += " <a href='?_src_=holder;[HrefToken()];editmessageexpiryempty=[id]'>修改过期时间</a>"
+			output += " <a href='?_src_=holder;[HrefToken()];deletemessageempty=[id]'>删除</a>"
+			output += " <a href='?_src_=holder;[HrefToken()];editmessageempty=[id]'>编辑</a>"
 			if(editor_key)
-				output += " <font size='2'>Last edit by [editor_key] <a href='?_src_=holder;[HrefToken()];messageedits=[id]'>(Click here to see edit log)</a></font>"
+				output += " <font size='2'>最后编辑者：[editor_key] <a href='?_src_=holder;[HrefToken()];messageedits=[id]'>（点击查看编辑记录）</a></font>"
 			output += "<br>[text]<hr style='background:#000000; border:0; height:1px'>"
 		qdel(query_get_type_messages)
 	if(target_ckey)
@@ -503,28 +503,28 @@
 			var/list/data = list("<div style='margin:0px;[alphatext]'><p class='severity'>")
 			if(severity)
 				data += "<img src='[severity]_button.png' height='24' width='24'></img> "
-			data += "<b>[timestamp] | [server] | [admin_key][secret ? " | <i>- Secret</i>" : ""]"
+			data += "<b>[timestamp] | [server] | [admin_key][secret ? " | <i>- 隐藏</i>" : ""]"
 			if(expire_timestamp)
-				data += " | Expires [expire_timestamp]"
+				data += " | 过期时间：[expire_timestamp]"
 			data += "</b></p><center>"
 			if(!linkless)
 				if(type == "note")
 					if(severity)
-						data += "<a href='?_src_=holder;[HrefToken()];editmessageseverity=[id]'>[severity=="none" ? "No" : "[capitalize(severity)]"] Severity</a>"
+						data += "<a href='?_src_=holder;[HrefToken()];editmessageseverity=[id]'>严重程度：[list("none" = "无", "minor" = "轻微", "medium" = "中等", "high" = "严重")[lowertext(severity)] || severity]</a>"
 					else
-						data += "<a href='?_src_=holder;[HrefToken()];editmessageseverity=[id]'>N/A Severity</a>"
-				data += " <a href='?_src_=holder;[HrefToken()];editmessageexpiry=[id]'>Change Expiry Time</a>"
-				data += " <a href='?_src_=holder;[HrefToken()];deletemessage=[id]'>Delete</a>"
+						data += "<a href='?_src_=holder;[HrefToken()];editmessageseverity=[id]'>严重程度：未设置</a>"
+				data += " <a href='?_src_=holder;[HrefToken()];editmessageexpiry=[id]'>修改过期时间</a>"
+				data += " <a href='?_src_=holder;[HrefToken()];deletemessage=[id]'>删除</a>"
 				if(type == "note")
-					data += " <a href='?_src_=holder;[HrefToken()];secretmessage=[id]'>[secret ? "<b>Secret</b>" : "Not secret"]</a>"
+					data += " <a href='?_src_=holder;[HrefToken()];secretmessage=[id]'>[secret ? "<b>隐藏</b>" : "公开"]</a>"
 				if(type == "message sent")
-					data += " <font size='2'>Message has been sent</font>"
+					data += " <font size='2'>消息已发送</font>"
 					if(editor_key)
 						data += "|"
 				else
-					data += " <a href='?_src_=holder;[HrefToken()];editmessage=[id]'>Edit</a>"
+					data += " <a href='?_src_=holder;[HrefToken()];editmessage=[id]'>编辑</a>"
 				if(editor_key)
-					data += " <font size='2'>Last edit by [editor_key] <a href='?_src_=holder;[HrefToken()];messageedits=[id]'>(Click here to see edit log)</a></font>"
+					data += " <font size='2'>最后编辑者：[editor_key] <a href='?_src_=holder;[HrefToken()];messageedits=[id]'>（点击查看编辑记录）</a></font>"
 			data += "</div></center>"
 			data += "<p style='[alphatext]'>[text]</p><hr style='background:#000000; border:0; height:1px; [alphatext]'>"
 			switch(type)
@@ -549,33 +549,33 @@
 			qdel(query_get_message_key)
 		output += "<h2><center>[target_key]</center></h2><center>"
 		if(!linkless)
-			output += "<a href='?_src_=holder;[HrefToken()];addnote=[target_key]'>Add note</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];addmessage=[target_key]'>Add message</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];addwatch=[target_key]'>Add to watchlist</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>Refresh page</a></center>"
+			output += "<a href='?_src_=holder;[HrefToken()];addnote=[target_key]'>添加备注</a>"
+			output += " <a href='?_src_=holder;[HrefToken()];addmessage=[target_key]'>添加消息</a>"
+			output += " <a href='?_src_=holder;[HrefToken()];addwatch=[target_key]'>加入关注名单</a>"
+			output += " <a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>刷新页面</a></center>"
 		else
-			output += " <a href='?_src_=holder;[HrefToken()];showmessageckeylinkless=[target_ckey]'>Refresh page</a></center>"
+			output += " <a href='?_src_=holder;[HrefToken()];showmessageckeylinkless=[target_ckey]'>刷新页面</a></center>"
 		output += ruler
 		if(messagedata)
-			output += "<h2>Messages</h2>"
+			output += "<h2>消息</h2>"
 			output += messagedata
 		if(watchdata)
-			output += "<h2>Watchlist</h2>"
+			output += "<h2>关注名单</h2>"
 			output += watchdata
 		if(notedata)
-			output += "<h2>Notes</h2>"
+			output += "<h2>备注</h2>"
 			output += notedata
 			if(!linkless)
 				if (agegate)
 					if (skipped) //the first skipped message is still shown so that we can put this link over it.
-						output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1' style='position: relative; top: -3em;'>Show [skipped] hidden messages</a></center>"
+						output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1' style='position: relative; top: -3em;'>显示 [skipped] 条隐藏记录</a></center>"
 					else
-						output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1'>Show All</a></center>"
+						output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1'>显示全部</a></center>"
 				else
-					output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>Hide Old</a></center>"
+					output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>隐藏旧记录</a></center>"
 	if(index)
 		var/search
-		output += "<center><a href='?_src_=holder;[HrefToken()];addmessageempty=1'>Add message</a><a href='?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a><a href='?_src_=holder;[HrefToken()];addnoteempty=1'>Add note</a></center>"
+		output += "<center><a href='?_src_=holder;[HrefToken()];addmessageempty=1'>添加消息</a><a href='?_src_=holder;[HrefToken()];addwatchempty=1'>添加关注名单记录</a><a href='?_src_=holder;[HrefToken()];addnoteempty=1'>添加备注</a></center>"
 		output += ruler
 		switch(index)
 			if(1)
@@ -608,15 +608,15 @@
 			output += "<a href='?_src_=holder;[HrefToken()];showmessageckey=[index_ckey]'>[index_key]</a><br>"
 		qdel(query_list_messages)
 	else if(!type && !target_ckey && !index)
-		output += "<center><a href='?_src_=holder;[HrefToken()];addmessageempty=1'>Add message</a><a href='?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a><a href='?_src_=holder;[HrefToken()];addnoteempty=1'>Add note</a></center>"
+		output += "<center><a href='?_src_=holder;[HrefToken()];addmessageempty=1'>添加消息</a><a href='?_src_=holder;[HrefToken()];addwatchempty=1'>添加关注名单记录</a><a href='?_src_=holder;[HrefToken()];addnoteempty=1'>添加备注</a></center>"
 		output += ruler
-	var/datum/browser/browser = new(usr, "Note panel", "Manage player notes", 1000, 500)
+	var/datum/browser/browser = new(usr, "Note panel", "管理玩家备注", 1000, 500)
 	browser.set_content(jointext(output, ""))
 	browser.open()
 
 /proc/get_message_output(type, target_ckey)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	if(!type)
 		return
@@ -645,7 +645,7 @@
 		var/editor_key = query_get_message_output.item[5]
 		switch(type)
 			if("message")
-				output += "<font color='red' size='3'><b>Admin message left by <span class='prefix'>[admin_key]</span> on [timestamp]</b></font>"
+				output += "<font color='red' size='3'><b><span class='prefix'>[admin_key]</span> 于 [timestamp] 留下的管理消息</b></font>"
 				output += "<br><font color='red'>[text]</font><br>"
 				var/datum/DBQuery/query_message_read = SSdbcore.NewQuery(
 					"UPDATE [format_table_name("messages")] SET type = 'message sent' WHERE id = :id",
@@ -657,12 +657,12 @@
 					return
 				qdel(query_message_read)
 			if("watchlist entry")
-				message_admins("<font color='red'><B>Notice: </B></font><font color='blue'>[key_name_admin(target_ckey)] has been on the watchlist since [timestamp] and has just connected - Reason: [text]</font>")
+				message_admins("<font color='red'><B>注意：</B></font><font color='blue'>[key_name_admin(target_ckey)] 自 [timestamp] 起被列入关注名单，刚刚连接了服务器。原因：[text]</font>")
 //				send2tgs_adminless_only("Watchlist", "[key_name(target_ckey)] is on the watchlist and has just connected - Reason: [text]")
 			if("memo")
-				output += "<span class='memo'>Memo by <span class='prefix'>[admin_key]</span> on [timestamp]"
+				output += "<span class='memo'><span class='prefix'>[admin_key]</span> 于 [timestamp] 留下的备忘录"
 				if(editor_key)
-					output += "<br><span class='memoedit'>Last edit by [editor_key] <A href='?_src_=holder;[HrefToken()];messageedits=[message_id]'>(Click here to see edit log)</A></span>"
+					output += "<br><span class='memoedit'>最后编辑者：[editor_key] <A href='?_src_=holder;[HrefToken()];messageedits=[message_id]'>（点击查看编辑记录）</A></span>"
 				output += "<br>[text]</span><br>"
 	qdel(query_get_message_output)
 	return output

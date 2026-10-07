@@ -6,12 +6,12 @@ import {
   Input,
   LabeledList,
   NumberInput,
-  Section,
+
   Stack,
   Table,
   Tabs,
 } from 'tgui-core/components';
-
+import { Section } from '../components/Localized';
 type EconomicPanelTab =
   | 'dashboard'
   | 'solvency'
@@ -24,15 +24,15 @@ type EconomicPanelTab =
   | 'debug';
 
 const TAB_LABELS: Record<EconomicPanelTab, string> = {
-  dashboard: 'Dashboard',
-  solvency: 'Solvency',
-  players: 'Players',
-  charters: 'Charters',
-  assembly: 'Assembly',
-  internal: 'Internal',
-  foreign: 'Foreign',
-  ledger: 'Ledger',
-  debug: 'Debug',
+  dashboard: '总览',
+  solvency: '偿付能力',
+  players: '玩家',
+  charters: '特许状',
+  assembly: '市民议会',
+  internal: '国内',
+  foreign: '对外贸易',
+  ledger: '账簿',
+  debug: '调试',
 };
 
 const TAB_ORDER: EconomicPanelTab[] = [
@@ -76,7 +76,7 @@ type Dashboard = {
 type PlayerRow = {
   ref: string;
   name: string;
-  job: string;
+  job: string; display_job?: string;
   category: string | null;
   category_name: string;
   rate: number;
@@ -158,7 +158,7 @@ type SuspendedCharter = {
 };
 
 type DailyPayrollRow = {
-  job: string;
+  job: string; display_job?: string;
   amount: number;
   headcount: number;
   suspended_count: number;
@@ -213,27 +213,27 @@ type Data = {
 };
 
 const STATUS_LABELS: Record<string, string> = {
-  all: 'All',
-  arrears: 'In Arrears',
-  advance: 'In Advance',
-  debtor: 'Debtor',
-  low_balance: 'Low Balance (<50m)',
-  exempt: 'Charter-Exempt',
+  all: '全部',
+  arrears: '欠税',
+  advance: '已预缴',
+  debtor: '债务人',
+  low_balance: '余额不足（低于 50m）',
+  exempt: '特许状豁免',
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
-  all: 'All Categories',
-  poll_noble: 'Noble',
-  poll_clergy: 'Clergy',
-  poll_inquisition: 'Inquisition',
-  poll_courtier: 'Courtier',
-  poll_garrison: 'Garrison',
-  poll_guilds: 'Guilds',
-  poll_merchant: 'Merchant',
-  poll_burgher: 'Burgher',
-  poll_adventurer: 'Adventurer',
-  poll_mercenary: 'Mercenary',
-  poll_peasant: 'Peasant',
+  all: '全部类别',
+  poll_noble: '贵族',
+  poll_clergy: '神职人员',
+  poll_inquisition: '宗教审判所',
+  poll_courtier: '廷臣',
+  poll_garrison: '驻军',
+  poll_guilds: '行会',
+  poll_merchant: '商人',
+  poll_burgher: '市民',
+  poll_adventurer: '冒险者',
+  poll_mercenary: '佣兵',
+  poll_peasant: '农民',
 };
 
 export const EconomicPanel = () => {
@@ -379,7 +379,7 @@ export const EconomicPanel = () => {
   const [atcLoanAmount, setAtcLoanAmount] = useState(bankruptcy.atc_loan_min);
 
   return (
-    <Window width={1080} height={780}>
+    <Window width={1080} height={780} display_title="经济管理面板">
       <Window.Content scrollable>
         <Stack vertical>
           <Stack.Item>
@@ -399,7 +399,7 @@ export const EconomicPanel = () => {
           {tab === 'solvency' && (
           <Stack.Item>
             <Section
-              title={
+              display_title={`偿付能力 - ${bankruptcy.state_label}`} title={
                 <span>
                   Solvency &mdash;{' '}
                   <span style={{ color: stateColor }}>
@@ -411,21 +411,21 @@ export const EconomicPanel = () => {
               <Stack>
                 <Stack.Item grow>
                   <LabeledList>
-                    <LabeledList.Item label="State">
+                    <LabeledList.Item label="状态">
                       <b style={{ color: stateColor }}>
                         {bankruptcy.state_label}
                       </b>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Outstanding Debt">
+                    <LabeledList.Item label="未偿债务">
                       <b style={{ color: stateColor }}>
                         {bankruptcy.debt}m
                       </b>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Bankruptcies This Round">
+                    <LabeledList.Item label="本回合破产次数">
                       {bankruptcy.bankruptcy_count}
                     </LabeledList.Item>
                     {bankruptcy.concession_picks > 0 && (
-                      <LabeledList.Item label="Concession Picks Remaining">
+                      <LabeledList.Item label="剩余让步选择次数">
                         <b style={{ color: '#5cb85c' }}>
                           {bankruptcy.concession_picks}
                         </b>
@@ -435,23 +435,23 @@ export const EconomicPanel = () => {
                 </Stack.Item>
                 <Stack.Item grow>
                   <LabeledList>
-                    <LabeledList.Item label="Arrears Loan Floor">
+                    <LabeledList.Item label="欠款贷款底线">
                       {bankruptcy.arrears_loan_floor}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Sequestration Floor">
+                    <LabeledList.Item label="接管底线">
                       {bankruptcy.operating_floor}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Recovery Reset">
+                    <LabeledList.Item label="恢复重置金额">
                       {bankruptcy.recovery_reset}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Sequestration Auto-Export">
+                    <LabeledList.Item label="接管期间自动出口比例">
                       {bankruptcy.autoexport_override}%
                     </LabeledList.Item>
-                    <LabeledList.Item label="FTC Loans This Round">
+                    <LabeledList.Item label="本回合 FTC 贷款次数">
                       {bankruptcy.atc_loans_drawn}
                       {!!bankruptcy.atc_loan_arrears_consumed && (
                         <span style={{ color: '#e07b39', marginLeft: '6px' }}>
-                          - arrears grace forfeit
+                          - 已失去欠款宽限
                         </span>
                       )}
                     </LabeledList.Item>
@@ -461,7 +461,7 @@ export const EconomicPanel = () => {
               <Box mt={1} mb={1}>
                 <Stack align="center">
                   <Stack.Item>
-                    <b>ATC Emergency Loan:</b>
+                    <b>ATC 紧急贷款：</b>
                   </Stack.Item>
                   <Stack.Item>
                     <NumberInput
@@ -479,14 +479,14 @@ export const EconomicPanel = () => {
                       disabled={!bankruptcy.atc_loan_available}
                       tooltip={
                         bankruptcy.atc_loan_available
-                          ? `Borrow ${atcLoanAmount}m from the ATC. Consumes the arrears grace.`
-                          : `Loan unavailable: ${bankruptcy.atc_loan_blocker}`
+                          ? `向 ATC 借入 ${atcLoanAmount}m，将消耗欠款宽限。`
+                          : `无法贷款：${bankruptcy.atc_loan_blocker}`
                       }
                       onClick={() =>
                         act('take_atc_loan', { amount: atcLoanAmount })
                       }
                     >
-                      Draw Loan
+                      借款
                     </Button.Confirm>
                   </Stack.Item>
                   <Stack.Item color="gray" italic>
@@ -501,7 +501,7 @@ export const EconomicPanel = () => {
                     disabled={bankruptcy.state !== 0}
                     onClick={() => act('force_arrears')}
                   >
-                    Force Arrears
+                    强制进入欠款状态
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
@@ -509,7 +509,7 @@ export const EconomicPanel = () => {
                     disabled={bankruptcy.state === 2}
                     onClick={() => act('force_bankruptcy')}
                   >
-                    Force Bankruptcy
+                    强制破产
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
@@ -517,31 +517,31 @@ export const EconomicPanel = () => {
                     disabled={bankruptcy.state === 0}
                     onClick={() => act('force_recovery')}
                   >
-                    Force Recovery
+                    强制恢复
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
               {bankruptcy.daily_payroll.length > 0 && (
                 <Box mt={1}>
                   <Box mb={1}>
-                    <b>Daily Payroll</b> -{' '}
+                    <b>每日薪资</b> -{' '}
                     {bankruptcy.state === 2 ? (
                       <span style={{ color: '#c0392b', fontWeight: 'bold' }}>
-                        SUSPENDED (sequestration)
+                        已暂停（接管中）
                       </span>
                     ) : (
                       <span style={{ color: '#888' }}>
-                        {bankruptcy.daily_payroll_total}m total / dawn
+                        每次黎明共 {bankruptcy.daily_payroll_total}m
                       </span>
                     )}
                   </Box>
                   <Table>
                     <Table.Row header>
-                      <Table.Cell>Job</Table.Cell>
-                      <Table.Cell collapsing>Wage</Table.Cell>
-                      <Table.Cell collapsing>Heads</Table.Cell>
-                      <Table.Cell collapsing>Suspended</Table.Cell>
-                      <Table.Cell collapsing>Pays</Table.Cell>
+                      <Table.Cell>职业</Table.Cell>
+                      <Table.Cell collapsing>薪资</Table.Cell>
+                      <Table.Cell collapsing>人数</Table.Cell>
+                      <Table.Cell collapsing>停薪人数</Table.Cell>
+                      <Table.Cell collapsing>支出</Table.Cell>
                     </Table.Row>
                     {bankruptcy.daily_payroll.map((row) => {
                       const sequestered = bankruptcy.state === 2;
@@ -559,7 +559,7 @@ export const EconomicPanel = () => {
                               : undefined,
                           }}
                         >
-                          <Table.Cell>{row.job}</Table.Cell>
+                          <Table.Cell>{row.display_job || row.job}</Table.Cell>
                           <Table.Cell collapsing>{row.amount}m</Table.Cell>
                           <Table.Cell collapsing>{row.headcount}</Table.Cell>
                           <Table.Cell collapsing>
@@ -577,7 +577,7 @@ export const EconomicPanel = () => {
                                   fontWeight: 'bold',
                                 }}
                               >
-                                suspended
+                                已暂停
                               </span>
                             ) : (
                               `${row.row_total}m`
@@ -592,9 +592,9 @@ export const EconomicPanel = () => {
               {bankruptcy.suspended_charters.length > 0 && (
                 <Box mt={1}>
                   <Box italic color="gray" mb={1}>
-                    Suspended by Sequestration (
-                    {bankruptcy.concession_picks} concession pick
-                    {bankruptcy.concession_picks === 1 ? '' : 's'} remaining):
+                    因接管而暂停（
+                    剩余 {bankruptcy.concession_picks} 次让步
+                    {bankruptcy.concession_picks === 1 ? '' : ''}选择）：
                   </Box>
                   <Stack wrap>
                     {bankruptcy.suspended_charters.map((c) => (
@@ -603,14 +603,14 @@ export const EconomicPanel = () => {
                           disabled={bankruptcy.concession_picks <= 0}
                           tooltip={
                             bankruptcy.concession_picks <= 0
-                              ? 'No concession picks remaining'
-                              : `Restore ${c.name} without cooldown`
+                              ? '已无剩余的让步选择次数'
+                              : `恢复 ${c.name}，无需冷却`
                           }
                           onClick={() =>
                             act('concession_restore', { decree_id: c.id })
                           }
                         >
-                          Restore: {c.name}
+                          恢复：{c.name}
                         </Button>
                       </Stack.Item>
                     ))}
@@ -623,51 +623,51 @@ export const EconomicPanel = () => {
 
           {tab === 'dashboard' && (
           <Stack.Item>
-            <Section title={`Dashboard  -  Day ${day}`}>
+            <Section title={`Dashboard  -  Day ${day}`} display_title={`总览 - 第 ${day} 天`}>
               <Stack>
                 <Stack.Item grow>
                   <LabeledList>
-                    <LabeledList.Item label="Crown's Purse">
+                    <LabeledList.Item label="王室金库">
                       {dashboard.discretionary}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Burgher Pledge">
+                    <LabeledList.Item label="市民认捐">
                       {dashboard.burgher_pledge}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Total Bank Coin">
-                      {dashboard.total_bank}m over {dashboard.held_accounts} accounts
+                    <LabeledList.Item label="银行货币总额">
+                      共 {dashboard.held_accounts} 个账户，合计 {dashboard.total_bank}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Avg Balance">
+                    <LabeledList.Item label="平均余额">
                       {dashboard.avg_balance}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Under 50m">
+                    <LabeledList.Item label="余额低于 50m">
                       {dashboard.under_50m}
                     </LabeledList.Item>
                   </LabeledList>
                 </Stack.Item>
                 <Stack.Item grow>
                   <LabeledList>
-                    <LabeledList.Item label="In Advance">
+                    <LabeledList.Item label="已预缴人数">
                       {dashboard.in_advance}
                     </LabeledList.Item>
-                    <LabeledList.Item label="In Arrears">
+                    <LabeledList.Item label="欠款人数">
                       {dashboard.in_arrears}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Debtors">
+                    <LabeledList.Item label="债务人数">
                       {dashboard.debtor_count}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Loans Outstanding">
-                      {dashboard.loans_outstanding} ({dashboard.loan_exposure}m exposure)
+                    <LabeledList.Item label="未结清贷款">
+                      {dashboard.loans_outstanding}（风险敞口 {dashboard.loan_exposure}m）
                     </LabeledList.Item>
-                    <LabeledList.Item label="Expected Rural Revenue">
-                      {dashboard.expected_rural_revenue}m / day
+                    <LabeledList.Item label="预计乡村收入">
+                      每日 {dashboard.expected_rural_revenue}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Expected Wage Outlay">
-                      {dashboard.expected_wage_outlay}m / day
+                    <LabeledList.Item label="预计薪资支出">
+                      每日 {dashboard.expected_wage_outlay}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Rural Tax YTD">
+                    <LabeledList.Item label="年初至今乡村税收">
                       {dashboard.rural_tax_total}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Noble Income YTD">
+                    <LabeledList.Item label="年初至今贵族收入">
                       {dashboard.noble_income_total}m
                     </LabeledList.Item>
                   </LabeledList>
@@ -681,35 +681,35 @@ export const EconomicPanel = () => {
           {tab === 'ledger' && (
           <Stack.Item>
             <Section
-              title={`Treasury Ledger  -  ${ledger_total} entries this round`}
+              title={`Treasury Ledger  -  ${ledger_total} entries this round`} display_title={`国库账簿 - 本回合 ${ledger_total} 条记录`}
             >
               <Stack mb={1}>
                 <Stack.Item grow>
                   <LabeledList>
-                    <LabeledList.Item label="Round Inflow (mint)">
+                    <LabeledList.Item label="本回合流入（铸币）">
                       <b style={{ color: '#5cb85c' }}>{ledger_full_minted}m</b>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Round Outflow (burn)">
+                    <LabeledList.Item label="本回合流出（销毁）">
                       <b style={{ color: '#e07b39' }}>{ledger_full_burned}m</b>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Round Net">
+                    <LabeledList.Item label="本回合净额">
                       <b>{ledger_full_minted - ledger_full_burned}m</b>
                     </LabeledList.Item>
                   </LabeledList>
                 </Stack.Item>
                 <Stack.Item grow>
                   <LabeledList>
-                    <LabeledList.Item label="Filtered Inflow">
+                    <LabeledList.Item label="筛选后流入">
                       <b style={{ color: '#5cb85c' }}>
                         {ledgerWindowTotals.minted}m
                       </b>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Filtered Outflow">
+                    <LabeledList.Item label="筛选后流出">
                       <b style={{ color: '#e07b39' }}>
                         {ledgerWindowTotals.burned}m
                       </b>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Filtered Net">
+                    <LabeledList.Item label="筛选后净额">
                       <b>
                         {ledgerWindowTotals.minted - ledgerWindowTotals.burned}m
                       </b>
@@ -718,68 +718,68 @@ export const EconomicPanel = () => {
                 </Stack.Item>
               </Stack>
               <Stack align="center" wrap mb={1}>
-                <Stack.Item>Kind:</Stack.Item>
+                <Stack.Item>类型：</Stack.Item>
                 {(['all', 'mint', 'burn', 'transfer'] as const).map((k) => (
                   <Stack.Item key={k}>
                     <Button
                       selected={ledgerKind === k}
                       onClick={() => setLedgerKindAndReset(k)}
                     >
-                      {k}
+                      {{ all: '全部', mint: '铸币', burn: '销毁', transfer: '转账' }[k]}
                     </Button>
                   </Stack.Item>
                 ))}
-                <Stack.Item ml={2}>Fund:</Stack.Item>
+                <Stack.Item ml={2}>资金：</Stack.Item>
                 <Stack.Item>
                   <Input
                     value={ledgerFund}
                     onChange={(v: string) => setLedgerFundAndReset(v)}
-                    placeholder="e.g. Crown's Purse"
+                    placeholder="例如：王室金库"
                   />
                 </Stack.Item>
-                <Stack.Item ml={2}>Reason:</Stack.Item>
+                <Stack.Item ml={2}>原因：</Stack.Item>
                 <Stack.Item grow>
                   <Input
                     fluid
                     value={ledgerReason}
                     onChange={(v: string) => setLedgerReasonAndReset(v)}
-                    placeholder="e.g. Standing Order, Manual Import, Payroll"
+                    placeholder="例如：常设命令、手动导入、薪资"
                   />
                 </Stack.Item>
                 <Stack.Item>
                   <Button
                     selected={ledgerGroup}
-                    tooltip="Collapse rows that share kind, source, destination, and reason."
+                    tooltip="合并类型、来源、去向和原因相同的记录。"
                     onClick={toggleLedgerGroup}
                   >
-                    Group similar
+                    合并相似记录
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <Button onClick={clearLedgerFilters}>Clear</Button>
+                  <Button onClick={clearLedgerFilters}>清除</Button>
                 </Stack.Item>
               </Stack>
               {ledger_total > ledger_cap && (
                 <Box italic color="gray" mb={1}>
-                  Showing the most recent {ledger_cap} of {ledger_total} entries.
-                  Aggregations above cover the full round.
+                  共 {ledger_total} 条记录，显示最近 {ledger_cap} 条。
+                  上方汇总包含整个回合。
                 </Box>
               )}
               <Box height="540px" mb={1} style={{ overflowY: 'auto' }}>
                 {pageRows.length === 0 ? (
                   <Box italic color="gray">
-                    No entries match the current filter.
+                    没有符合当前筛选条件的记录。
                   </Box>
                 ) : (
                   <Table>
                     <Table.Row header>
-                      <Table.Cell>Time</Table.Cell>
-                      <Table.Cell>Kind</Table.Cell>
-                      <Table.Cell>From</Table.Cell>
-                      <Table.Cell>To</Table.Cell>
-                      <Table.Cell>Amount</Table.Cell>
-                      {ledgerGroup && <Table.Cell>Count</Table.Cell>}
-                      <Table.Cell>Reason</Table.Cell>
+                      <Table.Cell>时间</Table.Cell>
+                      <Table.Cell>类型</Table.Cell>
+                      <Table.Cell>来源</Table.Cell>
+                      <Table.Cell>去向</Table.Cell>
+                      <Table.Cell>金额</Table.Cell>
+                      {ledgerGroup && <Table.Cell>次数</Table.Cell>}
+                      <Table.Cell>原因</Table.Cell>
                     </Table.Row>
                     {pageRows.map((e, idx) => (
                       <Table.Row key={safePage * LEDGER_PAGE_SIZE + idx}>
@@ -795,7 +795,7 @@ export const EconomicPanel = () => {
                                     : undefined,
                             }}
                           >
-                            {e.kind}
+                            {{ mint: '铸币', burn: '销毁', transfer: '转账' }[e.kind] || e.kind}
                           </span>
                         </Table.Cell>
                         <Table.Cell>{e.from}</Table.Cell>
@@ -820,11 +820,11 @@ export const EconomicPanel = () => {
                   <Stack align="center" mt={1}>
                     <Stack.Item grow>
                       <Box italic color="gray">
-                        Page {safePage + 1} / {totalPages} -{' '}
+                        第 {safePage + 1} / {totalPages} 页 -{' '}
                         {displayRows.length}{' '}
-                        {ledgerGroup ? 'groups' : 'rows'}
+                        {ledgerGroup ? '组' : '行'}
                         {ledgerGroup
-                          ? ` (from ${filteredLedger.length} entries)`
+                          ? `（合并自 ${filteredLedger.length} 条记录）`
                           : ''}
                       </Box>
                     </Stack.Item>
@@ -833,7 +833,7 @@ export const EconomicPanel = () => {
                         icon="angle-double-left"
                         disabled={safePage === 0}
                         onClick={() => setLedgerPage(0)}
-                        tooltip="First page"
+                        tooltip="首页"
                       />
                     </Stack.Item>
                     <Stack.Item>
@@ -842,7 +842,7 @@ export const EconomicPanel = () => {
                         disabled={safePage === 0}
                         onClick={() => setLedgerPage(safePage - 1)}
                       >
-                        Prev
+                        上一页
                       </Button>
                     </Stack.Item>
                     <Stack.Item>
@@ -851,7 +851,7 @@ export const EconomicPanel = () => {
                         disabled={safePage >= totalPages - 1}
                         onClick={() => setLedgerPage(safePage + 1)}
                       >
-                        Next
+                        下一页
                       </Button>
                     </Stack.Item>
                     <Stack.Item>
@@ -859,7 +859,7 @@ export const EconomicPanel = () => {
                         icon="angle-double-right"
                         disabled={safePage >= totalPages - 1}
                         onClick={() => setLedgerPage(totalPages - 1)}
-                        tooltip="Last page"
+                        tooltip="末页"
                       />
                     </Stack.Item>
                   </Stack>
@@ -878,51 +878,51 @@ export const EconomicPanel = () => {
 
           {tab === 'solvency' && (
           <Stack.Item>
-            <Section title="Tick Actions">
+            <Section title="Tick Actions" display_title="结算操作">
               <Stack wrap>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('advance_day')}>
-                    Advance Day
+                    推进一天
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_rural_tick')}>
-                    Fire Rural Tick
+                    执行乡村结算
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_poll_tick')}>
-                    Fire Poll Tick
+                    执行人头税结算
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_loan_tick')}>
-                    Fire Loan Tick
+                    执行贷款结算
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_pledge_tick')}>
-                    Fire Pledge Tick
+                    执行认捐结算
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_estate_incomes')}>
-                    Distribute Estates
+                    分配地产收入
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_payroll')}>
-                    Fire Payroll
+                    发放薪资
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_economy_tick')}>
-                    Fire Economy Tick
+                    执行经济结算
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_brassface_tick')}>
-                    Fire BRASSFACE Tick
+                    执行黄铜面结算
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
@@ -933,16 +933,16 @@ export const EconomicPanel = () => {
 
           {tab === 'solvency' && (
           <Stack.Item>
-            <Section title="Simulated Population (economy pop scaling)">
+            <Section title="Simulated Population (economy pop scaling)" display_title="模拟人口（经济人口缩放）">
               <Box mb={1} color="label">
-                Live active players: <b>{live_player_count}</b>.
-                Effective count used by economy pop scaling:{' '}
+                实时活跃玩家：<b>{live_player_count}</b>。
+                经济人口缩放使用的有效人数：{' '}
                 <b>{effective_player_count}</b>
-                {simulated_player_scalar > 0 ? ' (admin override)' : ' (live)'}.
-                Set 0 to use the live count.
+                {simulated_player_scalar > 0 ? '（管理员覆盖）' : '（实时）'}。
+                设为 0 使用实时人数。
               </Box>
               <Stack align="center">
-                <Stack.Item>Simulated:</Stack.Item>
+                <Stack.Item>模拟人数：</Stack.Item>
                 <Stack.Item>
                   <NumberInput
                     step={1}
@@ -958,7 +958,7 @@ export const EconomicPanel = () => {
                       act('set_simulated_population', { amount: simPop })
                     }
                   >
-                    Apply
+                    应用
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
@@ -968,7 +968,7 @@ export const EconomicPanel = () => {
                       act('set_simulated_population', { amount: 0 });
                     }}
                   >
-                    Clear override
+                    清除覆盖
                   </Button>
                 </Stack.Item>
               </Stack>
@@ -979,21 +979,21 @@ export const EconomicPanel = () => {
 
           {tab === 'internal' && (
           <Stack.Item>
-            <Section title={`Blockades (${blockades.length} active)`}>
+            <Section title={`Blockades (${blockades.length} active)`} display_title={`封锁（${blockades.length} 处生效）`}>
               <Stack wrap mb={1} align="center">
                 <Stack.Item>
                   <Button.Confirm onClick={() => act('fire_blockade_roll')}>
-                    Fire Blockade Roll
+                    执行封锁判定
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
                   <Dropdown
                     width="11em"
-                    placeholder="Region..."
+                    placeholder="地区……"
                     selected={blockadeRegion}
                     options={blockade_region_options.map((o) => ({
                       value: o.id,
-                      displayText: o.blockaded ? `${o.name} (blockaded)` : o.name,
+                      displayText: o.blockaded ? `${o.name}（已封锁）` : o.name,
                     }))}
                     onSelected={(value) => setBlockadeRegion(value)}
                   />
@@ -1001,10 +1001,10 @@ export const EconomicPanel = () => {
                 <Stack.Item>
                   <Dropdown
                     width="11em"
-                    placeholder="Faction (auto)..."
+                    placeholder="势力（自动）……"
                     selected={blockadeFaction}
                     options={[
-                      { value: '', displayText: 'Auto (by region)' },
+                      { value: '', displayText: '自动（按地区）' },
                       ...blockade_faction_options.map((o) => ({
                         value: o.id,
                         displayText: o.name,
@@ -1023,22 +1023,22 @@ export const EconomicPanel = () => {
                       })
                     }
                   >
-                    Blockade Region
+                    封锁地区
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
               {blockades.length === 0 ? (
                 <Box italic color="gray">
-                  No blockades active. Trade roads run clear.
+                  当前没有封锁，商路畅通。
                 </Box>
               ) : (
                 <Table>
                   <Table.Row header>
-                    <Table.Cell>Region</Table.Cell>
-                    <Table.Cell>Threat</Table.Cell>
-                    <Table.Cell>Faction</Table.Cell>
-                    <Table.Cell>Day</Table.Cell>
-                    <Table.Cell>Writ?</Table.Cell>
+                    <Table.Cell>地区</Table.Cell>
+                    <Table.Cell>威胁</Table.Cell>
+                    <Table.Cell>势力</Table.Cell>
+                    <Table.Cell>天数</Table.Cell>
+                    <Table.Cell>有文书？</Table.Cell>
                     <Table.Cell>&nbsp;</Table.Cell>
                   </Table.Row>
                   {blockades.map((b) => (
@@ -1046,8 +1046,8 @@ export const EconomicPanel = () => {
                       <Table.Cell>{b.region_name}</Table.Cell>
                       <Table.Cell>{b.threat_region}</Table.Cell>
                       <Table.Cell>{b.faction_name}</Table.Cell>
-                      <Table.Cell>D{b.day_started}</Table.Cell>
-                      <Table.Cell>{b.has_active_scroll ? 'yes' : '-'}</Table.Cell>
+                      <Table.Cell>第 {b.day_started} 天</Table.Cell>
+                      <Table.Cell>{b.has_active_scroll ? '是' : '-'}</Table.Cell>
                       <Table.Cell>
                         <Button.Confirm
                           color="bad"
@@ -1055,7 +1055,7 @@ export const EconomicPanel = () => {
                             act('clear_blockade', { ref: b.ref })
                           }
                         >
-                          Force Clear
+                          强制清除
                         </Button.Confirm>
                       </Table.Cell>
                     </Table.Row>
@@ -1075,24 +1075,24 @@ export const EconomicPanel = () => {
           {tab === 'assembly' && (
           <Stack.Item>
             <Section
-              title={`City Assembly  -  Session #${assembly.session_number || 0}`}
+              title={`City Assembly  -  Session #${assembly.session_number || 0}`} display_title={`市民议会 - 第 ${assembly.session_number || 0} 届会期`}
             >
               <Stack>
                 <Stack.Item grow>
                   <LabeledList>
-                    <LabeledList.Item label="Alderman">
-                      {assembly.alderman_name || '(vacant)'}
+                    <LabeledList.Item label="市政长老">
+                      {assembly.alderman_name || '（空缺）'}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Trade Warrant">
+                    <LabeledList.Item label="贸易授权">
                       {assembly.trade_remaining ?? 0}m / {assembly.trade_cap ?? 0}m
                     </LabeledList.Item>
-                    <LabeledList.Item label="Defense Warrant">
+                    <LabeledList.Item label="防务授权">
                       {assembly.defense_remaining ?? 0}p / {assembly.defense_cap ?? 0}p
                     </LabeledList.Item>
-                    <LabeledList.Item label="Censured">
+                    <LabeledList.Item label="受谴责人数">
                       {assembly.censured_count ?? 0}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Sessions Resolved">
+                    <LabeledList.Item label="已结算会期">
                       {assembly.history_count ?? 0}
                     </LabeledList.Item>
                   </LabeledList>
@@ -1103,31 +1103,31 @@ export const EconomicPanel = () => {
                       <Button.Confirm
                         onClick={() => act('assembly_resolve')}
                       >
-                        Resolve Now (silent)
+                        立即结算（静默）
                       </Button.Confirm>
                       <Button.Confirm
                         ml={1}
                         onClick={() => act('assembly_resolve_skip_quorum')}
                       >
-                        Resolve, Skip Quorum
+                        结算并跳过法定人数
                       </Button.Confirm>
                       <Button.Confirm
                         ml={1}
                         onClick={() => act('assembly_divine_complete')}
                       >
-                        Divine Intervention
+                        神明干预
                       </Button.Confirm>
                     </Stack.Item>
                     <Stack.Item>
                       <Button onClick={() => act('assembly_refresh_warrant')}>
-                        Refresh Warrant
+                        刷新授权
                       </Button>
                       <Button.Confirm
                         ml={1}
                         color="bad"
                         onClick={() => act('assembly_drain_warrant')}
                       >
-                        Drain Warrant
+                        耗尽授权
                       </Button.Confirm>
                     </Stack.Item>
                     {assembly.alderman_ckey ? (
@@ -1136,7 +1136,7 @@ export const EconomicPanel = () => {
                           color="bad"
                           onClick={() => act('assembly_demote_alderman')}
                         >
-                          Demote Alderman
+                          罢免市政长老
                         </Button.Confirm>
                       </Stack.Item>
                     ) : null}
@@ -1144,7 +1144,7 @@ export const EconomicPanel = () => {
                 </Stack.Item>
               </Stack>
               <Stack align="center" mt={1}>
-                <Stack.Item>Trade cap:</Stack.Item>
+                <Stack.Item>贸易上限：</Stack.Item>
                 <Stack.Item>
                   <NumberInput
                     step={50}
@@ -1160,10 +1160,10 @@ export const EconomicPanel = () => {
                       act('assembly_set_trade_cap', { amount: assemblyTradeCap })
                     }
                   >
-                    Set
+                    设置
                   </Button>
                 </Stack.Item>
-                <Stack.Item>Defense cap:</Stack.Item>
+                <Stack.Item>防务上限：</Stack.Item>
                 <Stack.Item>
                   <NumberInput
                     step={50}
@@ -1179,13 +1179,13 @@ export const EconomicPanel = () => {
                       act('assembly_set_defense_cap', { amount: assemblyDefenseCap })
                     }
                   >
-                    Set
+                    设置
                   </Button>
                 </Stack.Item>
               </Stack>
               <Box italic color="gray" mt={1}>
-                To promote or censure a specific player, select them in the player
-                list below and use the Alderman buttons in the detail pane.
+                要任命或谴责某位玩家，请在下方玩家列表中选择，
+                然后使用详情面板中的市政长老按钮。
               </Box>
             </Section>
           </Stack.Item>
@@ -1194,9 +1194,9 @@ export const EconomicPanel = () => {
 
           {tab === 'dashboard' && (
           <Stack.Item>
-            <Section title="Crown's Purse Mint / Burn">
+            <Section title="Crown's Purse Mint / Burn" display_title="王室金库铸币/销毁">
               <Stack align="center">
-                <Stack.Item>Mint:</Stack.Item>
+                <Stack.Item>铸币：</Stack.Item>
                 <Stack.Item>
                   <NumberInput
                     step={10}
@@ -1210,10 +1210,10 @@ export const EconomicPanel = () => {
                   <Button.Confirm
                     onClick={() => act('mint_discretionary', { amount: mintAmount })}
                   >
-                    Mint
+                    铸币
                   </Button.Confirm>
                 </Stack.Item>
-                <Stack.Item ml={3}>Burn:</Stack.Item>
+                <Stack.Item ml={3}>销毁：</Stack.Item>
                 <Stack.Item>
                   <NumberInput
                     step={10}
@@ -1227,7 +1227,7 @@ export const EconomicPanel = () => {
                   <Button.Confirm
                     onClick={() => act('burn_discretionary', { amount: burnAmount })}
                   >
-                    Burn
+                    销毁
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
@@ -1238,9 +1238,9 @@ export const EconomicPanel = () => {
 
           {tab === 'dashboard' && (
           <Stack.Item>
-            <Section title="Merchant Favor (testing)">
+            <Section title="Merchant Favor (testing)" display_title="商人好感（调试）">
               <Stack align="center">
-                <Stack.Item>Amount:</Stack.Item>
+                <Stack.Item>数量：</Stack.Item>
                 <Stack.Item>
                   <NumberInput
                     step={100}
@@ -1255,7 +1255,7 @@ export const EconomicPanel = () => {
                     color="good"
                     onClick={() => act('adjust_merchant_favor', { amount: favorAmount })}
                   >
-                    Grant
+                    授予
                   </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item>
@@ -1263,7 +1263,7 @@ export const EconomicPanel = () => {
                     color="bad"
                     onClick={() => act('adjust_merchant_favor', { amount: -favorAmount })}
                   >
-                    Revoke
+                    撤销
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
@@ -1274,7 +1274,7 @@ export const EconomicPanel = () => {
 
           {tab === 'charters' && (
           <Stack.Item>
-            <Section title="Charters">
+            <Section title="Charters" display_title="特许状">
               <Stack vertical>
                 {charters.map((c) => (
                   <Stack.Item key={c.id}>
@@ -1283,7 +1283,7 @@ export const EconomicPanel = () => {
                       color={c.active ? 'good' : 'bad'}
                       onClick={() => act('toggle_charter', { decree_id: c.id })}
                     >
-                      {c.name}: {c.active ? 'ACTIVE' : 'SUSPENDED'}
+                      {c.name}: {c.active ? '生效' : '暂停'}
                     </Button.Confirm>
                   </Stack.Item>
                 ))}
@@ -1295,9 +1295,9 @@ export const EconomicPanel = () => {
 
           {tab === 'players' && (
           <Stack.Item>
-            <Section title="Filter">
+            <Section title="Filter" display_title="筛选">
               <Stack align="center" wrap>
-                <Stack.Item>Category:</Stack.Item>
+                <Stack.Item>类别：</Stack.Item>
                 {filter_options.categories.map((cat) => (
                   <Stack.Item key={cat}>
                     <Button
@@ -1310,7 +1310,7 @@ export const EconomicPanel = () => {
                 ))}
               </Stack>
               <Stack align="center" mt={1} wrap>
-                <Stack.Item>Status:</Stack.Item>
+                <Stack.Item>状态：</Stack.Item>
                 {filter_options.statuses.map((s) => (
                   <Stack.Item key={s}>
                     <Button
@@ -1323,18 +1323,18 @@ export const EconomicPanel = () => {
                 ))}
               </Stack>
               <Stack align="center" mt={1}>
-                <Stack.Item>Search:</Stack.Item>
+                <Stack.Item>搜索：</Stack.Item>
                 <Stack.Item grow>
                   <Input
                     fluid
                     value={searchDraft}
                     onChange={(v: string) => setSearchDraft(v)}
-                    placeholder="Substring match on name..."
+                    placeholder="按姓名中的文字搜索……"
                   />
                 </Stack.Item>
                 <Stack.Item>
                   <Button onClick={() => applyFilter({ search: searchDraft })}>
-                    Apply
+                    应用
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
@@ -1344,7 +1344,7 @@ export const EconomicPanel = () => {
                       act('set_filter', { category: 'all', status: 'all', search: '' });
                     }}
                   >
-                    Clear
+                    清除
                   </Button>
                 </Stack.Item>
               </Stack>
@@ -1355,25 +1355,25 @@ export const EconomicPanel = () => {
 
           {tab === 'players' && (
           <Stack.Item>
-            <Section title={`Players (${players.length} matching filter)`}>
+            <Section title={`Players (${players.length} matching filter)`} display_title={`玩家（${players.length} 人符合筛选）`}>
               {players.length === 0 ? (
                 <Box italic color="gray">
-                  No players match the current filter. Widen the filter or select
-                  a category/status above.
+                  没有符合当前筛选条件的玩家。请放宽条件，或在上方
+                  选择其他类别或状态。
                 </Box>
               ) : (
                 <>
                   <Table>
                     <Table.Row header>
-                      <Table.Cell>Name</Table.Cell>
-                      <Table.Cell>Job</Table.Cell>
-                      <Table.Cell>Category</Table.Cell>
-                      <Table.Cell>Rate</Table.Cell>
-                      <Table.Cell>Balance</Table.Cell>
-                      <Table.Cell>Advance</Table.Cell>
-                      <Table.Cell>Owed</Table.Cell>
-                      <Table.Cell>Overdue</Table.Cell>
-                      <Table.Cell>Flags</Table.Cell>
+                      <Table.Cell>姓名</Table.Cell>
+                      <Table.Cell>职业</Table.Cell>
+                      <Table.Cell>类别</Table.Cell>
+                      <Table.Cell>税率</Table.Cell>
+                      <Table.Cell>余额</Table.Cell>
+                      <Table.Cell>预缴</Table.Cell>
+                      <Table.Cell>欠款</Table.Cell>
+                      <Table.Cell>逾期天数</Table.Cell>
+                      <Table.Cell>标记</Table.Cell>
                       <Table.Cell>&nbsp;</Table.Cell>
                     </Table.Row>
                     {players.map((p) => {
@@ -1383,23 +1383,23 @@ export const EconomicPanel = () => {
                         <Table.Cell>
                           {isSelected ? <b>{'> '}{p.name}</b> : p.name}
                         </Table.Cell>
-                        <Table.Cell>{p.job}</Table.Cell>
+                        <Table.Cell>{p.display_job || p.job}</Table.Cell>
                         <Table.Cell>{p.category_name}</Table.Cell>
                         <Table.Cell>
-                          {p.rate}m{p.raw_rate !== p.rate ? ` (raw ${p.raw_rate}m)` : ''}
+                          {p.rate}m{p.raw_rate !== p.rate ? `（原始税率 ${p.raw_rate}m）` : ''}
                         </Table.Cell>
                         <Table.Cell>{p.balance}m</Table.Cell>
                         <Table.Cell>{p.advance}</Table.Cell>
                         <Table.Cell>{p.owed}m</Table.Cell>
                         <Table.Cell>{p.overdue}</Table.Cell>
                         <Table.Cell>
-                          {p.exempt ? 'E ' : ''}
-                          {p.is_debtor ? 'D ' : ''}
-                          {p.has_loan ? 'L ' : ''}
+                          {p.exempt ? '免税 ' : ''}
+                          {p.is_debtor ? '债务 ' : ''}
+                          {p.has_loan ? '贷款 ' : ''}
                         </Table.Cell>
                         <Table.Cell>
                           <Button onClick={() => act('select', { ref: p.ref })}>
-                            Select
+                            选择
                           </Button>
                         </Table.Cell>
                       </Table.Row>
@@ -1413,7 +1413,7 @@ export const EconomicPanel = () => {
                         color="bad"
                         onClick={() => act('bulk_clear_debt')}
                       >
-                        Bulk: Clear debt for all {players.length} filtered
+                        批量清除筛选出的 {players.length} 人的欠税
                       </Button.Confirm>
                     </Stack.Item>
                     <Stack.Item>
@@ -1431,7 +1431,7 @@ export const EconomicPanel = () => {
                           act('bulk_add_advance', { days: bulkAdvanceDays })
                         }
                       >
-                        Bulk: +{bulkAdvanceDays} advance days to all filtered
+                        为筛选出的所有人增加 {bulkAdvanceDays} 天预缴
                       </Button.Confirm>
                     </Stack.Item>
                   </Stack>
@@ -1444,41 +1444,41 @@ export const EconomicPanel = () => {
           {tab === 'players' && selected && (
             <Stack.Item>
               <Section
-                title={`Detail: ${selected.name} (${selected.job})`}
+                title={`Detail: ${selected.name} (${selected.job})`} display_title={`详情：${selected.name}（${selected.display_job || selected.job}）`}
                 buttons={
-                  <Button onClick={() => act('clear_selection')}>Close</Button>
+                  <Button onClick={() => act('clear_selection')}>关闭</Button>
                 }
               >
                 <LabeledList>
-                  <LabeledList.Item label="Category">
+                  <LabeledList.Item label="类别">
                     {selected.category_name}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Effective Rate">
-                    {selected.rate}m / day
+                  <LabeledList.Item label="实际税率">
+                    每日 {selected.rate}m
                     {selected.raw_rate !== selected.rate
-                      ? ` (raw ${selected.raw_rate}m, modified by charter/cap)`
+                      ? `（原始税率 ${selected.raw_rate}m，受特许状或上限调整）`
                       : ''}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Charter-Exempt">
-                    {selected.exempt ? 'Yes' : 'No'}
+                  <LabeledList.Item label="特许状豁免">
+                    {selected.exempt ? '是' : '否'}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Account Balance">
+                  <LabeledList.Item label="账户余额">
                     {selected.balance}m
                   </LabeledList.Item>
-                  <LabeledList.Item label="On-Person Coin">
+                  <LabeledList.Item label="随身货币">
                     {selected.on_person}m
                   </LabeledList.Item>
-                  <LabeledList.Item label="Advance Days">
+                  <LabeledList.Item label="预缴天数">
                     {selected.advance}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Arrears">
-                    {selected.owed}m over {selected.overdue} day(s)
+                  <LabeledList.Item label="欠税">
+                    {selected.owed}m，逾期 {selected.overdue} 天
                   </LabeledList.Item>
-                  <LabeledList.Item label="Debtor Flag">
-                    {selected.is_debtor ? 'YES' : 'no'}
+                  <LabeledList.Item label="债务人标记">
+                    {selected.is_debtor ? '是' : '否'}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Active Loan">
-                    {selected.has_loan ? 'Yes' : 'No'}
+                  <LabeledList.Item label="当前贷款">
+                    {selected.has_loan ? '是' : '否'}
                   </LabeledList.Item>
                 </LabeledList>
 
@@ -1489,7 +1489,7 @@ export const EconomicPanel = () => {
                         act('player_clear_debt', { ref: selected.ref })
                       }
                     >
-                      Clear poll-tax arrears
+                      清除人头税欠款
                     </Button.Confirm>
                   </Stack.Item>
                   <Stack.Item>
@@ -1498,7 +1498,7 @@ export const EconomicPanel = () => {
                         act('player_toggle_debtor', { ref: selected.ref })
                       }
                     >
-                      Toggle TRAIT_DEBTOR
+                      切换债务人特性（TRAIT_DEBTOR）
                     </Button.Confirm>
                   </Stack.Item>
                 </Stack>
@@ -1510,7 +1510,7 @@ export const EconomicPanel = () => {
                         act('assembly_promote_alderman', { ref: selected.ref })
                       }
                     >
-                      Appoint Alderman
+                      任命市政长老
                     </Button.Confirm>
                   </Stack.Item>
                   <Stack.Item>
@@ -1520,7 +1520,7 @@ export const EconomicPanel = () => {
                         act('assembly_censure', { ref: selected.ref })
                       }
                     >
-                      Censure
+                      谴责
                     </Button.Confirm>
                   </Stack.Item>
                   <Stack.Item>
@@ -1529,13 +1529,13 @@ export const EconomicPanel = () => {
                         act('assembly_clear_censure', { ref: selected.ref })
                       }
                     >
-                      Clear Censure
+                      撤销谴责
                     </Button.Confirm>
                   </Stack.Item>
                 </Stack>
 
                 <Stack mt={1} align="center">
-                  <Stack.Item>Advance days:</Stack.Item>
+                  <Stack.Item>预缴天数：</Stack.Item>
                   <Stack.Item>
                     <NumberInput
                       step={1}
@@ -1554,7 +1554,7 @@ export const EconomicPanel = () => {
                         })
                       }
                     >
-                      Add
+                      增加
                     </Button.Confirm>
                   </Stack.Item>
                   <Stack.Item>
@@ -1566,13 +1566,13 @@ export const EconomicPanel = () => {
                         })
                       }
                     >
-                      Remove
+                      减少
                     </Button.Confirm>
                   </Stack.Item>
                 </Stack>
 
                 <Stack mt={1} align="center">
-                  <Stack.Item>Mint / Burn to account:</Stack.Item>
+                  <Stack.Item>账户铸币/销毁：</Stack.Item>
                   <Stack.Item>
                     <NumberInput
                       step={10}
@@ -1591,7 +1591,7 @@ export const EconomicPanel = () => {
                         })
                       }
                     >
-                      Mint
+                      铸币
                     </Button.Confirm>
                   </Stack.Item>
                   <Stack.Item>
@@ -1604,21 +1604,21 @@ export const EconomicPanel = () => {
                         })
                       }
                     >
-                      Burn
+                      销毁
                     </Button.Confirm>
                   </Stack.Item>
                 </Stack>
 
                 <Stack mt={1} align="center">
-                  <Stack.Item>Indebted flaw:</Stack.Item>
+                  <Stack.Item>负债缺陷：</Stack.Item>
                   <Stack.Item>
                     <Button.Confirm
                       onClick={() =>
                         act('player_fire_indebted', { ref: selected.ref })
                       }
-                      tooltip="Forces an immediate alimony tick on the selected player. Requires the Indebted flaw."
+                      tooltip="立即对所选玩家执行赡养费结算，需要负债缺陷。"
                     >
-                      Fire Indebted Tick
+                      执行负债结算
                     </Button.Confirm>
                   </Stack.Item>
                 </Stack>

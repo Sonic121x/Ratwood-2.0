@@ -736,10 +736,10 @@
 /mob/living/carbon/human/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_REAPPLY_PREFS, "Reapply Preferences")
-	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
-	VV_DROPDOWN_OPTION(VV_HK_PURGE_PARTOF_SLOT, "Purge Part of Slot")
-	VV_DROPDOWN_OPTION(VV_HK_PURGE_SLOT, "Purge Slot")
+	VV_DROPDOWN_OPTION(VV_HK_REAPPLY_PREFS, "重新应用偏好设置")
+	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "设置种族")
+	VV_DROPDOWN_OPTION(VV_HK_PURGE_PARTOF_SLOT, "清除栏位中的指定部分")
+	VV_DROPDOWN_OPTION(VV_HK_PURGE_SLOT, "清除栏位")
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
@@ -748,9 +748,9 @@
 			return
 		if(!client || !client.prefs)
 			return
-		if(alert(usr,"This will irreversibly purge an INDIVIDUAL PORTION of this slot. Is this what you want?","DON'T FATFINGER THIS","PURGE","Nevermind") == "PURGE")
-			if(alert(usr,"The next prompt will not have a Nevermind option. Are you sure you want this?","ITS NOT REVERSIBLE","Yes","Nevermind") == "Yes")
-				var/choice = alert(usr,"What would you like to purge?","ITS TOO LATE NOW","Flavor","Notes","Extra")
+		if(alert(usr,"此操作将不可逆地清除该角色栏位中的某一部分。确定继续吗？","请勿误操作","清除","取消") == "清除")
+			if(alert(usr,"下一步将无法取消。确定继续吗？","此操作无法撤销","是","取消") == "是")
+				var/choice = list("角色描述" = "Flavor", "备注" = "Notes", "额外信息" = "Extra")[alert(usr,"要清除哪部分？","此时已无法取消","角色描述","备注","额外信息")]
 				if(choice)
 					var/datum/mind/purge_mind = mind || last_mind
 					purge_mind?.player_card?.vv_purge(choice)
@@ -792,8 +792,8 @@
 			return
 		if(!client || !client.prefs)
 			return
-		if(alert(usr,"This will irreversibly purge this ENTIRE character's slot (OOC, FT, OOC Ex.)","PURGE","PURGE","Nevermind") == "PURGE")
-			if(alert(usr,"This cannot be undone. Are you sure?","DON'T FATFINGER THIS","Yes","No") == "Yes")
+		if(alert(usr,"此操作将不可逆地清除整个角色栏位的场外信息、角色描述和场外额外信息。","清除角色栏位","清除","取消") == "清除")
+			if(alert(usr,"此操作无法撤销。确定继续吗？","请勿误操作","是","否") == "是")
 				var/datum/mind/purge_mind = mind || last_mind
 				purge_mind?.player_card?.vv_purge("All")
 				flavortext = null
@@ -825,9 +825,9 @@
 					client.prefs?.nsfw_img_gallery = list()
 					client.prefs?.save_preferences()
 					client.prefs?.save_character()
-					to_chat(usr, span_warn("Slot purged successfully."))
+					to_chat(usr, span_warn("角色栏位已成功清除。"))
 				else
-					to_chat(usr, span_warn("Slot purged partially. (Client inaccessible -- likely disconnected)"))
+					to_chat(usr, span_warn("角色栏位仅部分清除。（无法访问客户端，可能已断开连接）"))
 	if(href_list[VV_HK_REAPPLY_PREFS])
 		if(!check_rights(R_SPAWN))
 			return
@@ -844,10 +844,10 @@
 	if(href_list[VV_HK_SET_SPECIES])
 		if(!check_rights(R_SPAWN))
 			return
-		var/result = input(usr, "Please choose a new species","Species") as null|anything in GLOB.species_list
+		var/result = input(usr, "请选择新的种族","种族") as null|anything in GLOB.species_list
 		if(result)
 			var/newtype = GLOB.species_list[result]
-			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src] to [result]")
+			admin_ticket_log("[key_name_admin(usr)] 将 [src] 的身体部位修改为 [result]")
 			set_species(newtype)
 
 /mob/living/carbon/human/MouseDrop_T(atom/dragged, mob/living/user)

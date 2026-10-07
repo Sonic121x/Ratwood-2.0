@@ -53,7 +53,7 @@
 	if(winning_option == CHOICE_RESTART)
 		if(admins_present())
 			to_chat(world, span_boldannounce("提醒：有处于活动状态的管理员在线，重启投票不会自动重启服务器。"))
-			message_admins("A restart vote has passed, but there are active admins on with +SERVER, so it has been canceled. If you wish, you may restart the server.")
+			message_admins("重启投票已通过，但有持有 +SERVER 权限的管理员正在值勤，因此已取消自动重启。你可以酌情手动重启服务器。")
 			return
 
 		// If there was a previous map vote, we revert the change.

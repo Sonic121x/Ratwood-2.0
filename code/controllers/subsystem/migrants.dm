@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(migrants)
 	spawned_waves[used_wave_type] += 1
 
 	reset_wave_contributions(wave)
-	message_admins("MIGRANTS: Spawned wave: [wave.name] (players: [assignments.len]) at [ADMIN_VERBOSEJMP(spawn_location)]")
+	message_admins("移民：已在 [ADMIN_VERBOSEJMP(spawn_location)] 生成批次：[wave.name]（玩家：[assignments.len] 人）")
 
 	return TRUE
 
@@ -473,7 +473,7 @@ SUBSYSTEM_DEF(migrants)
 	to_chat(player, span_notice("你已为“[wave.name]”贡献 [amount] 点凯旋点。总贡献：[wave.triumph_total]/[wave.triumph_threshold]"))
 
 	if(wave.triumph_total >= wave.triumph_threshold)
-		message_admins("TRIUMPH: Wave '[wave.name]' has reached its triumph threshold ([wave.triumph_total]/[wave.triumph_threshold]) and will be prioritized!")
+		message_admins("凯旋点：移民批次‘[wave.name]’已达到凯旋点门槛（[wave.triumph_total]/[wave.triumph_threshold]），将被优先选择！")
 		log_game("TRIUMPH: Wave '[wave.name]' reached triumph threshold via player contributions")
 
 	return TRUE
@@ -621,17 +621,17 @@ SUBSYSTEM_DEF(migrants)
 	return migrants
 
 /client/proc/admin_force_next_migrant_wave()
-	set category = "-Server-"
-	set name = "Force Migrant Wave"
+	set category = "-服务器-"
+	set name = "强制生成移民批次"
 	if(!holder)
 		return
 	. = TRUE
 	var/mob/user = usr
-	message_admins("Admin [key_name_admin(user)] is forcing the next migrant wave.")
-	var/picked_wave_type = input(user, "Choose migrant wave to force:", "Migrants")  as null|anything in GLOB.migrant_waves
+	message_admins("管理员 [key_name_admin(user)] 正在强制生成下一批移民。")
+	var/picked_wave_type = input(user, "选择要强制生成的移民批次：", "移民")  as null|anything in GLOB.migrant_waves
 	if(!picked_wave_type)
 		return
-	message_admins("Admin [key_name_admin(user)] forced next migrant wave: [picked_wave_type]")
+	message_admins("管理员 [key_name_admin(user)] 强制生成了下一批移民：[picked_wave_type]")
 	log_game("Admin [key_name_admin(user)] forced next migrant wave: [picked_wave_type]")
 	var/datum/migrant_wave/wave = MIGRANT_WAVE(picked_wave_type)
 	SSmigrants.begin_forming(wave.track, picked_wave_type, forced = TRUE)
