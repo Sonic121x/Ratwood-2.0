@@ -29,62 +29,62 @@
 /datum/vote/custom_vote/create_vote(mob/vote_creator)
 	var/custom_count_method = tgui_input_list(
 		user = vote_creator,
-		message = "Single or multiple choice?",
+		message = "使用单选还是多选？",
 		title = "Choice Method",
-		items = list("Single", "Multiple"),
-		default = "Single",
+		items = list("单选", "多选"),
+		default = "单选",
 	)
 	switch(custom_count_method)
-		if("Single")
+		if("单选")
 			count_method = VOTE_COUNT_METHOD_SINGLE
-		if("Multiple")
+		if("多选")
 			count_method = VOTE_COUNT_METHOD_MULTI
 		if(null)
 			return FALSE
 		else
 			stack_trace("Got '[custom_count_method]' in create_vote() for custom voting.")
-			to_chat(vote_creator, span_boldwarning("Unknown choice method. Contact a coder."))
+			to_chat(vote_creator, span_boldwarning("未知的选项选择方式，请联系开发者。"))
 			return FALSE
 
 	var/custom_win_method = tgui_input_list(
 		user = vote_creator,
-		message = "How should the vote winner be determined?",
+		message = "如何确定投票胜出选项？",
 		title = "Winner Method",
-		items = list("Simple", "Weighted Random", "No Winner"),
-		default = "Simple",
+		items = list("最高票数", "按票数加权随机", "不选出胜出项"),
+		default = "最高票数",
 	)
 	switch(custom_win_method)
-		if("Simple")
+		if("最高票数")
 			winner_method = VOTE_WINNER_METHOD_SIMPLE
-		if("Weighted Random")
+		if("按票数加权随机")
 			winner_method = VOTE_WINNER_METHOD_WEIGHTED_RANDOM
-		if("No Winner")
+		if("不选出胜出项")
 			winner_method = VOTE_WINNER_METHOD_NONE
 		if(null)
 			return FALSE
 		else
 			stack_trace("Got '[custom_win_method]' in create_vote() for custom voting.")
-			to_chat(vote_creator, span_boldwarning("Unknown winner method. Contact a coder."))
+			to_chat(vote_creator, span_boldwarning("未知的胜出判定方式，请联系开发者。"))
 			return FALSE
 
 	var/display_stats = tgui_alert(
 		vote_creator,
-		"Should voting statistics be public?",
-		"Show voting stats?",
-		list("Yes", "No"),
+		"是否公开投票统计？",
+		"显示投票统计？",
+		list("是", "否"),
 	)
 
 	if(isnull(display_stats))
 		return FALSE
-	display_statistics = display_stats == "Yes"
+	display_statistics = display_stats == "是"
 
-	override_question = tgui_input_text(vote_creator, "What is the vote for?", "Custom Vote")
+	override_question = tgui_input_text(vote_creator, "此次投票的主题是什么？", "自定义投票")
 	if(!override_question)
 		return FALSE
 
 	default_choices = list()
 	for(var/i in 1 to MAX_CUSTOM_VOTE_OPTIONS)
-		var/option = tgui_input_text(vote_creator, "Please enter an option, or hit cancel to finish. [MAX_CUSTOM_VOTE_OPTIONS] max.", "Options", max_length = MAX_NAME_LEN)
+		var/option = tgui_input_text(vote_creator, "输入一个选项，或点击取消以结束。最多 [MAX_CUSTOM_VOTE_OPTIONS] 项。", "选项", max_length = MAX_NAME_LEN)
 		if(!vote_creator?.client)
 			return FALSE
 		if(!option)

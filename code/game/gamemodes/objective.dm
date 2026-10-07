@@ -43,7 +43,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 
 //Shared by few objective types
 /datum/objective/proc/admin_simple_target_pick(mob/admin)
-	var/list/possible_targets = list("Free objective","Random")
+	var/list/possible_targets = list("自由目标","随机")
 	var/def_value
 	for(var/datum/mind/possible_target in SSticker.minds)
 		if ((possible_target != src) && ishuman(possible_target.current))
@@ -53,13 +53,13 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	if(target && target.current)
 		def_value = target.current
 
-	var/mob/new_target = input(admin,"Select target:", "Objective target", def_value) as null|anything in sortNames(possible_targets)
+	var/mob/new_target = input(admin,"选择目标：", "任务目标", def_value) as null|anything in sortNames(possible_targets)
 	if (!new_target)
 		return
 
-	if (new_target == "Free objective")
+	if (new_target == "自由目标")
 		target = null
-	else if (new_target == "Random")
+	else if (new_target == "随机")
 		find_target()
 	else
 		target = new_target.mind
@@ -483,17 +483,17 @@ GLOBAL_LIST_EMPTY(possible_items)
 
 /datum/objective/steal/admin_edit(mob/admin)
 	var/list/possible_items_all = GLOB.possible_items
-	var/new_target = input(admin,"Select target:", "Objective target", steal_target) as null|anything in sortNames(possible_items_all)+"custom"
+	var/new_target = input(admin,"选择目标：", "任务目标", steal_target) as null|anything in sortNames(possible_items_all)+"自定义"
 	if (!new_target)
 		return
 
-	if (new_target == "custom") //Can set custom items.
-		var/custom_path = input(admin,"Search for target item type:","Type") as null|text
+	if (new_target == "自定义") //Can set custom items.
+		var/custom_path = input(admin,"搜索目标物品类型：","类型") as null|text
 		if (!custom_path)
 			return
 		var/obj/item/custom_target = pick_closest_path(custom_path, make_types_fancy(subtypesof(/obj/item)))
 		var/custom_name = initial(custom_target.name)
-		custom_name = stripped_input(admin,"Enter target name:", "Objective target", custom_name)
+		custom_name = stripped_input(admin,"输入目标名称：", "任务目标", custom_name)
 		if (!custom_name)
 			return
 		steal_target = custom_target
@@ -537,7 +537,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 	explanation_text = "用能量网捕获 [target_amount] 个生命体。活体与稀有样本价值更高。"
 
 /datum/objective/capture/admin_edit(mob/admin)
-	var/count = input(admin,"How many mobs to capture ?","capture",target_amount) as num|null
+	var/count = input(admin,"要捕获多少个生物？","捕获",target_amount) as num|null
 	if(count)
 		target_amount = count
 	update_explanation_text()
@@ -590,7 +590,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 	name = "自定义"
 
 /datum/objective/custom/admin_edit(mob/admin)
-	var/expl = stripped_input(admin, "Custom objective:", "Objective", explanation_text)
+	var/expl = stripped_input(admin, "自定义目标：", "目标", explanation_text)
 	if(expl)
 		explanation_text = expl
 

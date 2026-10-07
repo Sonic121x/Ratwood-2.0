@@ -567,24 +567,24 @@
 	icon_state = "slab_5"
 
 /client/proc/admin_move_oasis()
-	set name = "Move Mirage Oasis"
-	set category = "-GameMaster-"
-	set desc = "Force the mirage oasis to relocate to a random marker now"
+	set name = "移动幻景绿洲"
+	set category = "-主持-"
+	set desc = "立即将幻景绿洲强制移动至一个随机标记处"
 
 	if(!GLOB.mirage_controller)
-		to_chat(usr, span_warning("No mirage controller exists - has one been initialized this round?"))
+		to_chat(usr, span_warning("没有幻景控制器。本回合是否已初始化过控制器？"))
 		return
 
 	if(!GLOB.mirage_markers.len)
-		to_chat(usr, span_warning("No mirage markers found on this map."))
+		to_chat(usr, span_warning("此地图上未找到幻景标记。"))
 		return
 
 	var/success = GLOB.mirage_controller.MoveOasis()
 	if(success)
-		message_admins("[key_name(usr)] forced the mirage oasis to relocate.")
+		message_admins("[key_name(usr)] 强制移动了幻景绿洲。")
 		log_admin("[key_name(usr)] forced the mirage oasis to relocate.")
 	else
-		to_chat(usr, span_warning("Couldn't find a clear marker to relocate to - all candidates may be occupied."))
+		to_chat(usr, span_warning("找不到可供移动的空闲标记，所有候选位置可能均被占用。"))
 
 /// Quicksand
 

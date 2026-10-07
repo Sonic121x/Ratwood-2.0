@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(gamemode)
 		else if(!sch_event.alerted_admins && world.time >= sch_event.start_time - 1 MINUTES)
 			///Alert admins 1 minute before running and allow them to cancel or refund the event, once again.
 			sch_event.alerted_admins = TRUE
-			message_admins("Scheduled Event: [sch_event.event] will run in [(sch_event.start_time - world.time) / 10] seconds. (<a href='byond://?src=[REF(sch_event)];action=cancel'>CANCEL</a>) (<a href='byond://?src=[REF(sch_event)];action=refund'>REFUND</a>)")
+			message_admins("计划事件：[sch_event.event] 将在 [(sch_event.start_time - world.time) / 10] 秒后执行。（<a href='byond://?src=[REF(sch_event)];action=cancel'>取消</a>）（<a href='byond://?src=[REF(sch_event)];action=refund'>退还点数</a>）")
 
 	if(!halted_storyteller && next_storyteller_process <= world.time && current_storyteller)
 		// We update crew information here to adjust population scalling and event thresholds for the storyteller.
@@ -448,7 +448,7 @@ SUBSYSTEM_DEF(gamemode)
 	if(current_storyteller?.disable_distribution)
 		return
 	if(halted_storyteller)
-		message_admins("WARNING: Didn't roll roundstart events (including antagonists) due to the storyteller being halted.")
+		message_admins("警告：叙述者已暂停，因此未生成回合开始事件（包括反派）。")
 		return
 	while(TRUE)
 		if(!current_storyteller.handle_tracks())
@@ -471,9 +471,9 @@ SUBSYSTEM_DEF(gamemode)
 	var/datum/scheduled_event/scheduled = new (passed_event, world.time + passed_time, passed_cost, passed_ignore, passed_announce)
 	var/round_started = SSticker.HasRoundStarted()
 	if(round_started)
-		message_admins("Event: [passed_event] has been scheduled to run in [passed_time / 10] seconds. (<a href='byond://?src=[REF(scheduled)];action=cancel'>CANCEL</a>) (<a href='byond://?src=[REF(scheduled)];action=refund'>REFUND</a>)")
+		message_admins("事件：[passed_event] 已安排在 [passed_time / 10] 秒后执行。（<a href='byond://?src=[REF(scheduled)];action=cancel'>取消</a>）（<a href='byond://?src=[REF(scheduled)];action=refund'>退还点数</a>）")
 	else //Only roundstart events can be scheduled before round start
-		message_admins("Event: [passed_event] has been scheduled to run on roundstart. (<a href='byond://?src=[REF(scheduled)];action=cancel'>CANCEL</a>)")
+		message_admins("事件：[passed_event] 已安排在回合开始时执行。（<a href='byond://?src=[REF(scheduled)];action=cancel'>取消</a>）")
 	scheduled_events += scheduled
 
 /datum/controller/subsystem/gamemode/proc/update_crew_infos()
@@ -707,7 +707,7 @@ SUBSYSTEM_DEF(gamemode)
 
 /datum/controller/subsystem/gamemode/proc/set_storyteller(passed_type)
 	if(!storytellers[passed_type])
-		message_admins("Attempted to set an invalid storyteller type: [passed_type], force setting to guide instead.")
+		message_admins("尝试设置无效的叙述者类型：[passed_type]，改为强制设置为引导者。")
 		current_storyteller = storytellers[/datum/storyteller/astrata] //if we dont have any then we brick, lets not do that
 		CRASH("Attempted to set an invalid storyteller type: [passed_type].")
 	var/datum/storyteller/chosen_storyteller = storytellers[passed_type]
@@ -726,64 +726,64 @@ SUBSYSTEM_DEF(gamemode)
 	update_crew_infos()
 	var/round_started = SSticker.HasRoundStarted()
 	var/list/dat = list()
-	dat += "Storyteller: [current_storyteller ? "[current_storyteller.name]" : "None"] "
-	dat += " <a href='byond://?src=[REF(src)];panel=main;action=halt_storyteller' [halted_storyteller ? "class='linkOn'" : ""]>HALT Storyteller</a> <a href='byond://?src=[REF(src)];panel=main;action=open_stats'>Event Panel</a> <a href='byond://?src=[REF(src)];panel=main;action=set_storyteller'>Set Storyteller</a> <a href='byond://?src=[REF(user.client)];panel=main;viewinfluences=1'>View Influences</a> <a href='byond://?src=[REF(src)];panel=main'>Refresh</a>"
-	dat += "<BR><font color='#888888'><i>Storyteller determines points gained, event chances, and is the entity responsible for rolling events.</i></font>"
-	dat += "<BR>Active Players: [active_players]   (Royalty: [royalty], Garrison: [garrison], Town Workers: [constructor], Holy Warriors: [holy_warrior])"
-	dat += "<BR>Effective Population: [effective_pop] (Total: [active_players] + Garrison Bonus: [garrison * 2] + Holy Warrior Bonus: [holy_warrior * 2])"
-	dat += "<BR>Antagonist Count vs Maximum: [get_antag_count()] / [get_antag_cap()]"
-	var/chaos_name = "Medium"
+	dat += "叙述者：[current_storyteller ? (list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Noc" = "诺克", "Ravox" = "拉沃克斯", "Abyssor" = "阿比索尔", "Xylix" = "赛利克斯", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Malum" = "玛勒姆", "Eora" = "伊欧拉", "Dendor" = "登多尔", "Zizo" = "齐佐", "Baotha" = "巴奥莎", "Graggar" = "格拉加尔", "Matthios" = "马西奥斯")[current_storyteller.name] || current_storyteller.name) : "无"] "
+	dat += " <a href='byond://?src=[REF(src)];panel=main;action=halt_storyteller' [halted_storyteller ? "class='linkOn'" : ""]>暂停/恢复叙述者</a> <a href='byond://?src=[REF(src)];panel=main;action=open_stats'>事件面板</a> <a href='byond://?src=[REF(src)];panel=main;action=set_storyteller'>设置叙述者</a> <a href='byond://?src=[REF(user.client)];panel=main;viewinfluences=1'>查看影响力</a> <a href='byond://?src=[REF(src)];panel=main'>刷新</a>"
+	dat += "<BR><font color='#888888'><i>叙述者决定点数获取、事件概率，并负责随机生成事件。</i></font>"
+	dat += "<BR>活跃玩家：[active_players]   （王室：[royalty]，驻军：[garrison]，城镇工人：[constructor]，圣战士：[holy_warrior]）"
+	dat += "<BR>有效人口：[effective_pop]（总人数：[active_players] + 驻军加成：[garrison * 2] + 圣战士加成：[holy_warrior * 2]）"
+	dat += "<BR>反派人数/上限：[get_antag_count()] / [get_antag_cap()]"
+	var/chaos_name = "中"
 	switch(level)
 		if(1)
-			chaos_name = "Low"
+			chaos_name = "低"
 		if(3)
-			chaos_name = "High"
-	dat += "<BR>Chaos Level: [chaos_name]"
+			chaos_name = "高"
+	dat += "<BR>混乱等级：[chaos_name]"
 	var/list/modifier_names = list()
 	for(var/datum/round_modifier/M in active_modifiers)
-		modifier_names += "[M.name][M.hidden ? " (hidden)" : ""]"
-	dat += "<BR>Round Modifiers: [length(modifier_names) ? modifier_names.Join(", ") : "None"]"
+		modifier_names += "[M.name][M.hidden ? "（隐藏）" : ""]"
+	dat += "<BR>回合修正项：[length(modifier_names) ? modifier_names.Join(", ") : "无"]"
 	dat += "<HR>"
-	dat += "<a href='byond://?src=[REF(src)];panel=main;action=tab;tab=[GAMEMODE_PANEL_MAIN]' [panel_page == GAMEMODE_PANEL_MAIN ? "class='linkOn'" : ""]>Main</a>"
-	dat += " <a href='byond://?src=[REF(src)];panel=main;action=tab;tab=[GAMEMODE_PANEL_VARIABLES]' [panel_page == GAMEMODE_PANEL_VARIABLES ? "class='linkOn'" : ""]>Variables</a>"
+	dat += "<a href='byond://?src=[REF(src)];panel=main;action=tab;tab=[GAMEMODE_PANEL_MAIN]' [panel_page == GAMEMODE_PANEL_MAIN ? "class='linkOn'" : ""]>主页</a>"
+	dat += " <a href='byond://?src=[REF(src)];panel=main;action=tab;tab=[GAMEMODE_PANEL_VARIABLES]' [panel_page == GAMEMODE_PANEL_VARIABLES ? "class='linkOn'" : ""]>变量</a>"
 	dat += "<HR>"
 	switch(panel_page)
 		if(GAMEMODE_PANEL_VARIABLES)
-			dat += "<a href='byond://?src=[REF(src)];panel=main;action=reload_config_vars'>Reload Config Vars</a> <font color='#888888'><i>Configs located in game_options.txt.</i></font>"
-			dat += "<BR><b>Point Gains Multipliers (only over time):</b>"
-			dat += "<BR><font color='#888888'><i>This affects points gained over time towards scheduling new events of the tracks.</i></font>"
+			dat += "<a href='byond://?src=[REF(src)];panel=main;action=reload_config_vars'>重新加载配置变量</a> <font color='#888888'><i>配置位于 game_options.txt。</i></font>"
+			dat += "<BR><b>点数获取倍率（仅影响随时间获取）：</b>"
+			dat += "<BR><font color='#888888'><i>影响各事件轨道随时间积累、用于安排新事件的点数。</i></font>"
 			for(var/track in event_tracks)
 				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=pts_multiplier;track=[track]'>[point_gain_multipliers[track]]</a>"
 			dat += "<HR>"
 
-			dat += "<b>Roundstart Points Multipliers:</b>"
-			dat += "<BR><font color='#888888'><i>This affects points generated for roundstart events and antagonists.</i></font>"
+			dat += "<b>回合开始点数倍率：</b>"
+			dat += "<BR><font color='#888888'><i>影响为回合开始事件和反派生成的点数。</i></font>"
 			for(var/track in event_tracks)
 				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=roundstart_pts;track=[track]'>[roundstart_point_multipliers[track]]</a>"
 			dat += "<HR>"
 
-			dat += "<b>Minimum Population for Tracks:</b>"
-			dat += "<BR><font color='#888888'><i>This are the minimum population caps for events to be able to run.</i></font>"
+			dat += "<b>各事件轨道的最低人数：</b>"
+			dat += "<BR><font color='#888888'><i>事件能够执行所需的最低人数。</i></font>"
 			for(var/track in event_tracks)
 				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=min_pop;track=[track]'>[min_pop_thresholds[track]]</a>"
 			dat += "<HR>"
 
-			dat += "<b>Point Thresholds:</b>"
-			dat += "<BR><font color='#888888'><i>Those are thresholds the tracks require to reach with points to make an event.</i></font>"
+			dat += "<b>点数阈值：</b>"
+			dat += "<BR><font color='#888888'><i>各事件轨道的点数达到此阈值时会生成事件。</i></font>"
 			for(var/track in event_tracks)
 				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=pts_threshold;track=[track]'>[point_thresholds[track]]</a>"
 
 		if(GAMEMODE_PANEL_MAIN)
 			var/even = TRUE
-			dat += "<h2>Event Tracks:</h2>"
-			dat += "<font color='#888888'><i>Every track represents progression towards scheduling an event of it's severity</i></font>"
+			dat += "<h2>事件轨道：</h2>"
+			dat += "<font color='#888888'><i>每条轨道表示安排对应严重程度事件的进度</i></font>"
 			dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 			dat += "<tr style='vertical-align:top'>"
-			dat += "<td width=25%><b>Track</b></td>"
-			dat += "<td width=20%><b>Progress</b></td>"
-			dat += "<td width=10%><b>Next</b></td>"
-			dat += "<td width=10%><b>Forced</b></td>"
-			dat += "<td width=35%><b>Actions</b></td>"
+			dat += "<td width=25%><b>轨道</b></td>"
+			dat += "<td width=20%><b>进度</b></td>"
+			dat += "<td width=10%><b>下一事件</b></td>"
+			dat += "<td width=10%><b>强制事件</b></td>"
+			dat += "<td width=35%><b>操作</b></td>"
 			dat += "</tr>"
 			for(var/track in event_tracks)
 				even = !even
@@ -796,23 +796,23 @@ SUBSYSTEM_DEF(gamemode)
 				if(last_points)
 					next = round(((upper - lower) / last_points / STORYTELLER_WAIT_TIME))
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
-				dat += "<td>[track] - [last_points] per process.</td>" //Track
+				dat += "<td>[track] - 每次处理 [last_points] 点。</td>" //Track
 				dat += "<td>[percent]% ([lower]/[upper])</td>" //Progress
-				dat += "<td>~[next] seconds</td>" //Next
+				dat += "<td>约 [next] 秒</td>" //Next
 				var/datum/round_event_control/forced_event = forced_next_events[track]
 				var/forced = forced_event ? "[forced_event.name] <a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=remove_forced;track=[track]'>X</a>" : ""
 				dat += "<td>[forced]</td>" //Forced
-				dat += "<td><a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=set_pts;track=[track]'>Set Pts.</a> <a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=next_event;track=[track]'>Next Event</a></td>" //Actions
+				dat += "<td><a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=set_pts;track=[track]'>设置点数</a> <a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=next_event;track=[track]'>下一事件</a></td>" //Actions
 				dat += "</tr>"
 			dat += "</table>"
 
-			dat += "<h2>Scheduled Events:</h2>"
+			dat += "<h2>计划事件：</h2>"
 			dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 			dat += "<tr style='vertical-align:top'>"
-			dat += "<td width=30%><b>Name</b></td>"
-			dat += "<td width=17%><b>Severity</b></td>"
-			dat += "<td width=12%><b>Time</b></td>"
-			dat += "<td width=41%><b>Actions</b></td>"
+			dat += "<td width=30%><b>名称</b></td>"
+			dat += "<td width=17%><b>严重程度</b></td>"
+			dat += "<td width=12%><b>时间</b></td>"
+			dat += "<td width=41%><b>操作</b></td>"
 			dat += "</tr>"
 			var/sorted_scheduled = list()
 			for(var/datum/scheduled_event/scheduled as anything in scheduled_events)
@@ -825,17 +825,17 @@ SUBSYSTEM_DEF(gamemode)
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 				dat += "<td>[scheduled.event.name]</td>" //Name
 				dat += "<td>[scheduled.event.track]</td>" //Severity
-				var/time = (scheduled.event.roundstart && !round_started) ? "ROUNDSTART" : "[(scheduled.start_time - world.time) / (1 SECONDS)] s."
+				var/time = (scheduled.event.roundstart && !round_started) ? "回合开始" : "[(scheduled.start_time - world.time) / (1 SECONDS)] 秒"
 				dat += "<td>[time]</td>" //Time
 				dat += "<td>[scheduled.get_href_actions()]</td>" //Actions
 				dat += "</tr>"
 			dat += "</table>"
 
-			dat += "<h2>Running Events:</h2>"
+			dat += "<h2>正在执行的事件：</h2>"
 			dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 			dat += "<tr style='vertical-align:top'>"
-			dat += "<td width=30%><b>Name</b></td>"
-			dat += "<td width=70%><b>Actions</b></td>"
+			dat += "<td width=30%><b>名称</b></td>"
+			dat += "<td width=70%><b>操作</b></td>"
 			dat += "</tr>"
 			even = TRUE
 			for(var/datum/round_event/event as anything in running)
@@ -843,11 +843,11 @@ SUBSYSTEM_DEF(gamemode)
 				var/background_cl = even ? "#17191C" : "#23273C"
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 				dat += "<td>[event.control.name]</td>" //Name
-				dat += "<td>-TBA-</td>" //Actions
+				dat += "<td>-待实现-</td>" //Actions
 				dat += "</tr>"
 			dat += "</table>"
 
-	var/datum/browser/noclose/popup = new(user, "gamemode_admin_panel", "Gamemode Panel", 670, 650)
+	var/datum/browser/noclose/popup = new(user, "gamemode_admin_panel", "游戏模式面板", 670, 650)
 	popup.set_content(dat.Join())
 	popup.open()
 
@@ -855,22 +855,22 @@ SUBSYSTEM_DEF(gamemode)
 /datum/controller/subsystem/gamemode/proc/event_panel(mob/user)
 	var/list/dat = list()
 	if(current_storyteller)
-		dat += "Storyteller: [current_storyteller.name]"
-		dat += "<BR>Repetition penalty multiplier: [current_storyteller.event_repetition_multiplier]"
-		dat += "<BR>Cost variance: [current_storyteller.cost_variance]"
+		dat += "叙述者：[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Noc" = "诺克", "Ravox" = "拉沃克斯", "Abyssor" = "阿比索尔", "Xylix" = "赛利克斯", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Malum" = "玛勒姆", "Eora" = "伊欧拉", "Dendor" = "登多尔", "Zizo" = "齐佐", "Baotha" = "巴奥莎", "Graggar" = "格拉加尔", "Matthios" = "马西奥斯")[current_storyteller.name] || current_storyteller.name]"
+		dat += "<BR>重复事件惩罚倍率：[current_storyteller.event_repetition_multiplier]"
+		dat += "<BR>成本变动幅度：[current_storyteller.cost_variance]"
 		if(current_storyteller.tag_multipliers)
-			dat += "<BR>Tag multipliers:"
+			dat += "<BR>标签倍率："
 			for(var/tag in current_storyteller.tag_multipliers)
 				dat += "[tag]:[current_storyteller.tag_multipliers[tag]] | "
 		current_storyteller.calculate_weights(statistics_track_page)
 	else
-		dat += "Storyteller: None<BR>Weight and chance statistics will be inaccurate due to the present lack of a storyteller."
-	dat += "<BR><a href='byond://?src=[REF(src)];panel=stats;action=set_roundstart'[roundstart_event_view ? "class='linkOn'" : ""]>Roundstart Events</a> Forced Roundstart events will use rolled points, and are guaranteed to trigger (even if the used points are not enough)"
-	dat += "<BR>Avg. event intervals: "
+		dat += "叙述者：无<BR>当前没有叙述者，因此权重和概率统计不准确。"
+	dat += "<BR><a href='byond://?src=[REF(src)];panel=stats;action=set_roundstart'[roundstart_event_view ? "class='linkOn'" : ""]>回合开始事件</a> 强制回合开始事件将使用随机生成的点数，且保证触发（即使点数不足）"
+	dat += "<BR>平均事件间隔： "
 	for(var/track in event_tracks)
 		if(last_point_gains[track])
 			var/est_time = round(point_thresholds[track] / last_point_gains[track] / STORYTELLER_WAIT_TIME * 40 / 6) / 10
-			dat += "[track]: ~[est_time] m. | "
+			dat += "[track]：约 [est_time] 分钟 | "
 	dat += "<HR>"
 	for(var/track in EVENT_PANEL_TRACKS)
 		dat += "<a href='byond://?src=[REF(src)];panel=stats;action=set_cat;cat=[track]'[(statistics_track_page == track) ? "class='linkOn'" : ""]>[track]</a>"
@@ -878,16 +878,16 @@ SUBSYSTEM_DEF(gamemode)
 	/// Create event info and stats table
 	dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 	dat += "<tr style='vertical-align:top'>"
-	dat += "<td width=17%><b>Name</b></td>"
-	dat += "<td width=16%><b>Tags</b></td>"
-	dat += "<td width=8%><b>Occurences</b></td>"
-	dat += "<td width=8%><b>Max Occurences</b></td>"
-	dat += "<td width=5%><b>M.Pop</b></td>"
-	dat += "<td width=5%><b>M.Time</b></td>"
-	dat += "<td width=7%><b>Can Occur</b></td>"
-	dat += "<td width=7%><b>Failure Reason</b></td>"
-	dat += "<td width=16%><b>Weight</b></td>"
-	dat += "<td width=26%><b>Actions</b></td>"
+	dat += "<td width=17%><b>名称</b></td>"
+	dat += "<td width=16%><b>标签</b></td>"
+	dat += "<td width=8%><b>已发生次数</b></td>"
+	dat += "<td width=8%><b>最多发生次数</b></td>"
+	dat += "<td width=5%><b>最低人数</b></td>"
+	dat += "<td width=5%><b>最早时间</b></td>"
+	dat += "<td width=7%><b>能否发生</b></td>"
+	dat += "<td width=7%><b>失败原因</b></td>"
+	dat += "<td width=16%><b>权重</b></td>"
+	dat += "<td width=26%><b>操作</b></td>"
 	dat += "</tr>"
 	var/even = TRUE
 	var/total_weight = 0
@@ -921,15 +921,15 @@ SUBSYSTEM_DEF(gamemode)
 		dat += "</td>"
 		var/occurence_string = "[event.occurrences]"
 		if(event.shared_occurence_type)
-			occurence_string += " (shared: [event.get_occurences()])"
+			occurence_string += "（共享次数：[event.get_occurences()]）"
 		var/max_occurence_string = "[event.max_occurrences]"
 		dat += "<td>[occurence_string]</td>" //Occurences
 		dat += "<td>[max_occurence_string]</td>" //Max Occurences
 		dat += "<td>[event.min_players]</td>" //Minimum pop
-		dat += "<td>[event.earliest_start / (1 MINUTES)] m.</td>" //Minimum time
-		dat += "<td>[assoc_spawn_weight[event] ? "Yes" : "No"]</td>" //Can happen?
+		dat += "<td>[event.earliest_start / (1 MINUTES)] 分钟</td>" //Minimum time
+		dat += "<td>[assoc_spawn_weight[event] ? "是" : "否"]</td>" //Can happen?
 		dat += "<td>[event.return_failure_string(active_players)]</td>" //Why can't happen?
-		var/weight_string = "(new.[event.calculated_weight] /raw.[event.weight])"
+		var/weight_string = "（计算后 [event.calculated_weight] / 原始 [event.weight]）"
 		if(assoc_spawn_weight[event])
 			var/percent = round((event.calculated_weight / total_weight) * 100)
 			weight_string = "[percent]% - [weight_string]"
@@ -937,7 +937,7 @@ SUBSYSTEM_DEF(gamemode)
 		dat += "<td>[event.get_href_actions()]</td>" //Actions
 		dat += "</tr>"
 	dat += "</table>"
-	var/datum/browser/noclose/popup = new(user, "gamemode_event_panel", "Event Panel", 1100, 600)
+	var/datum/browser/noclose/popup = new(user, "gamemode_event_panel", "事件面板", 1100, 600)
 	popup.set_content(dat.Join())
 	popup.open()
 
@@ -950,50 +950,50 @@ SUBSYSTEM_DEF(gamemode)
 		if("main")
 			switch(href_list["action"])
 				if("set_storyteller")
-					message_admins("[key_name_admin(usr)] is picking a new Storyteller.")
+					message_admins("[key_name_admin(usr)] 正在选择新的叙述者。")
 					var/list/name_list = list()
 					for(var/storyteller_type in storytellers)
 						var/datum/storyteller/storyboy = storytellers[storyteller_type]
-						name_list[storyboy.name] = storyboy.type
-					var/new_storyteller_name = input(usr, "Choose new storyteller (circumvents voted one):", "Storyteller")  as null|anything in name_list
+						name_list[list("Psydon" = "普赛顿", "Astrata" = "阿斯特拉塔", "Noc" = "诺克", "Ravox" = "拉沃克斯", "Abyssor" = "阿比索尔", "Xylix" = "赛利克斯", "Necra" = "内克拉", "Pestra" = "佩斯特拉", "Malum" = "玛勒姆", "Eora" = "伊欧拉", "Dendor" = "登多尔", "Zizo" = "齐佐", "Baotha" = "巴奥莎", "Graggar" = "格拉加尔", "Matthios" = "马西奥斯")[storyboy.name] || storyboy.name] = storyboy.type
+					var/new_storyteller_name = input(usr, "选择新的叙述者（覆盖投票结果）：", "叙述者")  as null|anything in name_list
 					if(!new_storyteller_name)
-						message_admins("[key_name_admin(usr)] has cancelled picking a Storyteller.")
+						message_admins("[key_name_admin(usr)] 取消了选择叙述者。")
 						return
-					message_admins("[key_name_admin(usr)] has chosen [new_storyteller_name] as the new Storyteller.")
+					message_admins("[key_name_admin(usr)] 选择 [new_storyteller_name] 作为新的叙述者。")
 					var/new_storyteller_type = name_list[new_storyteller_name]
 					set_storyteller(new_storyteller_type)
 				if("halt_storyteller")
 					halted_storyteller = !halted_storyteller
-					message_admins("[key_name_admin(usr)] has [halted_storyteller ? "HALTED" : "un-halted"] the Storyteller.")
+					message_admins("[key_name_admin(usr)] 已[halted_storyteller ? "暂停" : "恢复"]叙述者。")
 				if("vars")
 					var/track = href_list["track"]
 					switch(href_list["var"])
 						if("pts_multiplier")
-							var/new_value = input(usr, "New value:", "Set new value") as num|null
+							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] set point gain multiplier for [track] track to [new_value].")
+							message_admins("[key_name_admin(usr)] 将 [track] 轨道的点数获取倍率设为 [new_value]。")
 							point_gain_multipliers[track] = new_value
 						if("roundstart_pts")
-							var/new_value = input(usr, "New value:", "Set new value") as num|null
+							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] set roundstart pts multiplier for [track] track to [new_value].")
+							message_admins("[key_name_admin(usr)] 将 [track] 轨道的回合开始点数倍率设为 [new_value]。")
 							roundstart_point_multipliers[track] = new_value
 						if("min_pop")
-							var/new_value = input(usr, "New value:", "Set new value") as num|null
+							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] set minimum population for [track] track to [new_value].")
+							message_admins("[key_name_admin(usr)] 将 [track] 轨道的最低人数设为 [new_value]。")
 							min_pop_thresholds[track] = new_value
 						if("pts_threshold")
-							var/new_value = input(usr, "New value:", "Set new value") as num|null
+							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] set point threshold of [track] track to [new_value].")
+							message_admins("[key_name_admin(usr)] 将 [track] 轨道的点数阈值设为 [new_value]。")
 							point_thresholds[track] = new_value
 				if("reload_config_vars")
-					message_admins("[key_name_admin(usr)] reloaded gamemode config vars.")
+					message_admins("[key_name_admin(usr)] 重新加载了游戏模式配置变量。")
 					load_config_vars()
 				if("tab")
 					var/tab = href_list["tab"]
@@ -1009,17 +1009,17 @@ SUBSYSTEM_DEF(gamemode)
 						if("remove_forced")
 							if(forced_next_events[track])
 								var/datum/round_event_control/event = forced_next_events[track]
-								message_admins("[key_name_admin(usr)] removed forced event [event.name] from track [track].")
+								message_admins("[key_name_admin(usr)] 从 [track] 轨道移除了强制事件 [event.name]。")
 								forced_next_events -= track
 						if("set_pts")
-							var/set_pts = input(usr, "New point amount ([point_thresholds[track]]+ invokes event):", "Set points for [track]") as num|null
+							var/set_pts = input(usr, "新的点数（达到 [point_thresholds[track]] 或以上会触发事件）：", "设置 [track] 的点数") as num|null
 							if(isnull(set_pts))
 								return
 							event_track_points[track] = set_pts
-							message_admins("[key_name_admin(usr)] set points of [track] track to [set_pts].")
+							message_admins("[key_name_admin(usr)] 将 [track] 轨道的点数设为 [set_pts]。")
 							log_admin_private("[key_name(usr)] set points of [track] track to [set_pts].")
 						if("next_event")
-							message_admins("[key_name_admin(usr)] invoked next event for [track] track.")
+							message_admins("[key_name_admin(usr)] 触发了 [track] 轨道的下一事件。")
 							log_admin_private("[key_name(usr)] invoked next event for [track] track.")
 							event_track_points[track] = point_thresholds[track]
 							if(current_storyteller)

@@ -1,16 +1,16 @@
 /client/proc/Debug2()
-	set category = "Debug"
-	set name = "Debug-Game"
+	set category = "调试"
+	set name = "游戏调试"
 	if(!check_rights(R_DEBUG))
 		return
 
 	if(GLOB.Debug2)
 		GLOB.Debug2 = 0
-		message_admins("[key_name(src)] toggled debugging off.")
+		message_admins("[key_name(src)] 关闭了调试。")
 		log_admin("[key_name(src)] toggled debugging off.")
 	else
 		GLOB.Debug2 = 1
-		message_admins("[key_name(src)] toggled debugging on.")
+		message_admins("[key_name(src)] 开启了调试。")
 		log_admin("[key_name(src)] toggled debugging on.")
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Debug Two") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -26,19 +26,19 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 /client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
-	set category = "-GameMaster-"
-	set name = "Make Simple Animal"
+	set category = "-主持-"
+	set name = "变为简单动物"
 
 	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
+		alert("请等到游戏开始")
 		return
 
 	if(!M)
-		alert("That mob doesn't seem to exist, close the panel and try again.")
+		alert("该生物似乎不存在，请关闭面板重试。")
 		return
 
 	if(isnewplayer(M))
-		alert("The mob must not be a new_player.")
+		alert("目标不能是大厅玩家（new_player）。")
 		return
 
 	log_admin("[key_name(src)] has animalized [M.key].")
@@ -46,8 +46,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all(object as text)
-	set category = "Debug"
-	set name = "Del-All"
+	set category = "调试"
+	set name = "删除所有同类对象"
 
 	var/list/matches = get_fancy_list_of_atom_types()
 	if (!isnull(object) && object!="")
@@ -55,7 +55,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	if(matches.len==0)
 		return
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in sortList(matches)
+	var/hsbitem = input(usr, "选择要删除的对象。", "删除：") as null|anything in sortList(matches)
 	if(hsbitem)
 		hsbitem = matches[hsbitem]
 		var/counter = 0
@@ -65,21 +65,21 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				qdel(O)
 			CHECK_TICK
 		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
-		message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [hsbitem].")
+		message_admins("[key_name_admin(src)] 删除了 [hsbitem] 的全部实例（共 [counter] 个）。")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
-	set category = "-Admin-"
-	set name = "Direct control..."
+	set category = "-管理-"
+	set name = "直接控制..."
 	set desc = ""
 
 	if(M.ckey)
-		if(alert("This mob is being controlled by [M.key]. Are you sure you wish to assume control of it? [M.key] will be made a ghost.",,"Yes","No") != "Yes")
+		if(alert("该生物由 [M.key] 控制。确定要接管吗？[M.key] 将变成幽灵。",,"是","否") != "是")
 			return
 		else
 			var/mob/dead/observer/ghost = new/mob/dead/observer(M,1)
 			ghost.ckey = M.ckey
-	message_admins(span_adminnotice("[key_name_admin(usr)] assumed direct control of [M]."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 直接接管了 [M]。"))
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob
 	M.ckey = src.ckey
@@ -88,8 +88,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Assume Direct Control") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_areatest(on_station)
-	set category = "Mapping"
-	set name = "Test Areas"
+	set category = "地图制作"
+	set name = "检查区域"
 
 	var/list/dat = list()
 	var/list/areas_all = list()
@@ -104,17 +104,17 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/list/station_areas_blacklist = typecacheof(list())
 
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		to_chat(usr, "Game still loading, please hold!")
+		to_chat(usr, "游戏仍在加载，请稍候！")
 		return
 
 	var/log_message
 	if(on_station)
-		dat += "<b>Only checking areas on station z-levels.</b><br><br>"
+		dat += "<b>仅检查站点 Z 层级上的区域。</b><br><br>"
 		log_message = "station z-levels"
 	else
 		log_message = "all z-levels"
 
-	message_admins(span_adminnotice("[key_name_admin(usr)] used the Test Areas debug command checking [log_message]."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 使用检查区域调试指令检查了 [on_station ? "站点 Z 层级" : "所有 Z 层级"]。"))
 	log_admin("[key_name(usr)] used the Test Areas debug command checking [log_message].")
 
 	for(var/area/A in world)
@@ -130,7 +130,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(var/obj/machinery/light/L in GLOB.machines)
 		var/area/A = get_area(L)
 		if(!A)
-			dat += "Skipped over [L] in invalid location, [L.loc].<br>"
+			dat += "已跳过位置无效的 [L]，位置：[L.loc]。<br>"
 			continue
 		if(!(A.type in areas_with_light))
 			areas_with_light.Add(A.type)
@@ -145,76 +145,76 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/list/areas_without_camera = areas_all - areas_with_camera
 
 	if(areas_without_APC.len)
-		dat += "<h1>AREAS WITHOUT AN APC:</h1>"
+		dat += "<h1>没有区域电力控制器的区域：</h1>"
 		for(var/areatype in areas_without_APC)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(areas_with_multiple_APCs.len)
-		dat += "<h1>AREAS WITH MULTIPLE APCS:</h1>"
+		dat += "<h1>有多个区域电力控制器的区域：</h1>"
 		for(var/areatype in areas_with_multiple_APCs)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(areas_without_air_alarm.len)
-		dat += "<h1>AREAS WITHOUT AN AIR ALARM:</h1>"
+		dat += "<h1>没有空气警报器的区域：</h1>"
 		for(var/areatype in areas_without_air_alarm)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(areas_without_RC.len)
-		dat += "<h1>AREAS WITHOUT A REQUEST CONSOLE:</h1>"
+		dat += "<h1>没有请求控制台的区域：</h1>"
 		for(var/areatype in areas_without_RC)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(areas_without_light.len)
-		dat += "<h1>AREAS WITHOUT ANY LIGHTS:</h1>"
+		dat += "<h1>没有灯具的区域：</h1>"
 		for(var/areatype in areas_without_light)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(areas_without_LS.len)
-		dat += "<h1>AREAS WITHOUT A LIGHT SWITCH:</h1>"
+		dat += "<h1>没有灯光开关的区域：</h1>"
 		for(var/areatype in areas_without_LS)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(areas_without_intercom.len)
-		dat += "<h1>AREAS WITHOUT ANY INTERCOMS:</h1>"
+		dat += "<h1>没有对讲机的区域：</h1>"
 		for(var/areatype in areas_without_intercom)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(areas_without_camera.len)
-		dat += "<h1>AREAS WITHOUT ANY CAMERAS:</h1>"
+		dat += "<h1>没有摄像头的区域：</h1>"
 		for(var/areatype in areas_without_camera)
 			dat += "[areatype]<br>"
 			CHECK_TICK
 
 	if(!(areas_with_APC.len || areas_with_multiple_APCs.len || areas_with_air_alarm.len || areas_with_RC.len || areas_with_light.len || areas_with_LS.len || areas_with_intercom.len || areas_with_camera.len))
-		dat += "<b>No problem areas!</b>"
+		dat += "<b>未发现有问题的区域！</b>"
 
-	var/datum/browser/popup = new(usr, "testareas", "Test Areas", 500, 750)
+	var/datum/browser/popup = new(usr, "testareas", "检查区域", 500, 750)
 	popup.set_content(dat.Join())
 	popup.open()
 
 
 /client/proc/cmd_admin_areatest_station()
-	set category = "Mapping"
-	set name = "Test Areas (STATION Z)"
+	set category = "地图制作"
+	set name = "检查区域（站点Z层级）"
 	cmd_admin_areatest(TRUE)
 
 /client/proc/cmd_admin_areatest_all()
-	set category = "Mapping"
-	set name = "Test Areas (ALL)"
+	set category = "地图制作"
+	set name = "检查区域（全部）"
 	cmd_admin_areatest(FALSE)
 
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
-	set category = "-GameMaster-"
-	set name = "Select Loadout"
+	set category = "-主持-"
+	set name = "选择职业配置"
 	if(!(ishuman(M) || isobserver(M)))
-		alert("Invalid mob")
+		alert("生物无效")
 		return
 
 	var/mob/living/carbon/human/H
@@ -233,7 +233,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(!H)
 		return
 	
-	var/body = "<html><head><title>Loadout Manager - [H.name]</title>"
+	var/body = "<html><head><title>职业配置管理 - [H.name]</title>"
 	body += "<style>"
 	body += "table { border-collapse: collapse; width: 100%; }"
 	body += "th, td { border: 1px solid black; padding: 5px; text-align: left; }"
@@ -242,11 +242,11 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	body += "</head>"
 	body += "<body>"
 	
-	body += "<b>Loadout Manager: [H.name]</b><br><br>"
+	body += "<b>职业配置管理：[H.name]</b><br><br>"
 	
 	// Current job display
 	var/selected_job_path = GLOB.loadout_selected_jobs[REF(H)]
-	var/selected_job_title = "None"
+	var/selected_job_title = "无"
 	if(selected_job_path)
 		// Check if it's a migrant role or regular job
 		if(ispath(selected_job_path, /datum/migrant_role))
@@ -254,33 +254,33 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			selected_job_title = initial(MR.name)
 		else
 			var/datum/job/J = selected_job_path
-			selected_job_title = initial(J.title)
+			selected_job_title = initial(J.display_title) || initial(J.title)
 	var/selected_advclass_path = GLOB.loadout_selected_advclasses[REF(H)]
-	var/selected_advclass_name = "None"
+	var/selected_advclass_name = "无"
 	if(selected_advclass_path)
 		var/datum/advclass/AC = selected_advclass_path
 		selected_advclass_name = initial(AC.name)
 	
-	body += "Selected Job: <b>[selected_job_title]</b><br>"
-	body += "Selected Advclass: <b>[selected_advclass_name]</b><br>"
+	body += "已选职业：<b>[selected_job_title]</b><br>"
+	body += "已选子职业：<b>[selected_advclass_name]</b><br>"
 	body += "<br>"
 	
 	// Job selection
-	body += "<b>Job Selection:</b><br>"
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=select_job;target=[REF(H)]'>Select Job</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=select_advclass;target=[REF(H)]'>Select Advclass</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=copy_from_mob;target=[REF(H)]'>Copy From...</A>"
+	body += "<b>职业选择：</b><br>"
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=select_job;target=[REF(H)]'>选择职业</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=select_advclass;target=[REF(H)]'>选择子职业</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=copy_from_mob;target=[REF(H)]'>复制自...</A>"
 	body += "<br><br>"
 	
 	// Application section
-	body += "<b>Apply Components:</b><br>"
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_stats;target=[REF(H)]'>Apply Stats</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_equipment_spells;target=[REF(H)]'>Apply Equipment/Spells</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_skills;target=[REF(H)]'>Apply Skills</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_traits;target=[REF(H)]'>Apply Traits</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_examine_title;target=[REF(H)]'>Apply Examine Title</A><br>"
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_all;target=[REF(H)]'>Apply All</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=clean_slate;target=[REF(H)]'>Clean Slate</A>"
+	body += "<b>应用配置：</b><br>"
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_stats;target=[REF(H)]'>应用属性</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_equipment_spells;target=[REF(H)]'>应用装备／法术</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_skills;target=[REF(H)]'>应用技能</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_traits;target=[REF(H)]'>应用特质</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_examine_title;target=[REF(H)]'>应用检视称号</A><br>"
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_all;target=[REF(H)]'>全部应用</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=clean_slate;target=[REF(H)]'>完全重置</A>"
 	
 	body += "</body></html>"
 	
@@ -299,7 +299,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	var/mob/living/carbon/human/H = locate(href_list["target"])
 	if(!H || !ishuman(H))
-		to_chat(usr, span_warning("Target no longer exists or is not human!"))
+		to_chat(usr, span_warning("目标已不存在或不是人类！"))
 		return TRUE
 	
 	switch(href_list["loadout_action"])
@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				var/list/job_subclasses = initial(J.job_subclasses)
 				// Include jobs with outfit OR jobs with advclass system
 				if(job_title && (job_outfit || job_subclasses))
-					job_list[job_title] = job_type
+					job_list[initial(J.display_title) || job_title] = job_type
 			
 			// Add all migrant roles
 			for(var/migrant_type in subtypesof(/datum/migrant_role))
@@ -323,18 +323,18 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				var/migrant_advclass = initial(MR.advclass_cat_rolls)
 				// Include migrant roles with outfit OR advclass system
 				if(migrant_name && (migrant_outfit || migrant_advclass) && migrant_name != "MIGRANT ROLE")
-					job_list["[migrant_name] (Migrant)"] = migrant_type
+					job_list["[migrant_name]（移民）"] = migrant_type
 			
 			// Sort jobs, then add Search at the top
-			var/list/all_jobs = list("Search..." = "search") + sortList(job_list)
-			var/selected_title = input("Select job:", "Job Selection") as null|anything in all_jobs
+			var/list/all_jobs = list("搜索……" = "search") + sortList(job_list)
+			var/selected_title = input("选择职业：", "职业选择") as null|anything in all_jobs
 			if(!selected_title)
 				show_loadout_panel(H)
 				return TRUE
 			
 			// If "Search..." was selected, show search dialog
 			if(all_jobs[selected_title] == "search")
-				var/search_term = input("Enter job name or search term:", "Job Search") as text|null
+				var/search_term = input("输入职业名称或搜索词：", "职业搜索") as text|null
 				if(!search_term)
 					show_loadout_panel(H)
 					return TRUE
@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 					var/list/job_subclasses = initial(J.job_subclasses)
 					// Include jobs with outfit OR jobs with advclass system
 					if(job_title && (job_outfit || job_subclasses))
-						searchable_jobs[job_title] = job_type
+						searchable_jobs[initial(J.display_title) || job_title] = job_type
 				
 				// Add all migrant roles
 				for(var/migrant_type in subtypesof(/datum/migrant_role))
@@ -358,7 +358,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 					var/migrant_advclass = initial(MR.advclass_cat_rolls)
 					// Include migrant roles with outfit OR advclass system
 					if(migrant_name && (migrant_outfit || migrant_advclass) && migrant_name != "MIGRANT ROLE")
-						searchable_jobs["[migrant_name] (Migrant)"] = migrant_type
+						searchable_jobs["[migrant_name]（移民）"] = migrant_type
 				
 				// Filter by search term
 				var/list/matching_jobs = list()
@@ -367,11 +367,11 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 						matching_jobs[job_title] = searchable_jobs[job_title]
 				
 				if(!matching_jobs.len)
-					to_chat(usr, span_warning("No jobs found matching '[search_term]'."))
+					to_chat(usr, span_warning("未找到与 '[search_term]' 匹配的职业。"))
 					show_loadout_panel(H)
 					return TRUE
 				
-				selected_title = input("Select job (found [matching_jobs.len] matches):", "Job Search Results") as null|anything in sortList(matching_jobs)
+				selected_title = input("选择职业（找到 [matching_jobs.len] 个匹配项）：", "职业搜索结果") as null|anything in sortList(matching_jobs)
 				if(!selected_title)
 					show_loadout_panel(H)
 					return TRUE
@@ -380,11 +380,11 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				GLOB.loadout_selected_jobs[REF(H)] = job_type_path
 				// Clear advclass when new job is selected
 				GLOB.loadout_selected_advclasses[REF(H)] = null
-				to_chat(usr, span_notice("Job selected: [selected_title]"))
+				to_chat(usr, span_notice("已选择职业：[selected_title]"))
 				// Also set the assigned role
 				if(!H.mind)
 					H.mind_initialize()
-				H.mind.assigned_role = selected_title
+				H.mind.assigned_role = ispath(job_type_path, /datum/job) ? initial(job_type_path:title) : "[initial(job_type_path:name)] (Migrant)"
 				
 				// Auto-select advclass if job has only one, or open selection if multiple
 				// Check if it's a migrant role with advclass_cat_rolls
@@ -398,18 +398,18 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 								advclass_choices[advclass_instance.name] = advclass_instance.type
 						
 						if(length(advclass_choices) == 0)
-							to_chat(usr, span_warning("No advclasses found for this migrant role."))
+							to_chat(usr, span_warning("未找到此移民角色的进阶职业。"))
 						else if(length(advclass_choices) == 1)
 							var/only_choice_name = advclass_choices[1]
 							var/only_choice = advclass_choices[only_choice_name]
 							GLOB.loadout_selected_advclasses[REF(H)] = only_choice
-							to_chat(usr, span_notice("Auto-selected advclass: [only_choice_name]"))
+							to_chat(usr, span_notice("已自动选择进阶职业：[only_choice_name]"))
 						else
 							// Multiple advclasses - open selection automatically
-							var/selected = input("Select advclass:", "Advclass Selection") as null|anything in sortList(advclass_choices)
+							var/selected = input("选择进阶职业：", "进阶职业选择") as null|anything in sortList(advclass_choices)
 							if(selected)
 								GLOB.loadout_selected_advclasses[REF(H)] = advclass_choices[selected]
-								to_chat(usr, span_notice("Advclass selected: [selected]"))
+								to_chat(usr, span_notice("已选择进阶职业：[selected]"))
 					qdel(migrant_datum)
 				else
 					var/datum/job/job_datum = new job_type_path()
@@ -417,7 +417,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 						if(length(job_datum.job_subclasses) == 1)
 							GLOB.loadout_selected_advclasses[REF(H)] = job_datum.job_subclasses[1]
 							var/datum/advclass/AC = job_datum.job_subclasses[1]
-							to_chat(usr, span_notice("Auto-selected advclass: [initial(AC.name)]"))
+							to_chat(usr, span_notice("已自动选择进阶职业：[initial(AC.name)]"))
 						else
 							// Multiple advclasses - open selection automatically
 							var/list/advclass_choices = list()
@@ -425,10 +425,10 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 								var/datum/advclass/AC = advclass_path
 								advclass_choices[initial(AC.name)] = advclass_path
 							
-							var/selected = input("Select advclass:", "Advclass Selection") as null|anything in sortList(advclass_choices)
+							var/selected = input("选择进阶职业：", "进阶职业选择") as null|anything in sortList(advclass_choices)
 							if(selected)
 								GLOB.loadout_selected_advclasses[REF(H)] = advclass_choices[selected]
-								to_chat(usr, span_notice("Advclass selected: [selected]"))
+								to_chat(usr, span_notice("已选择进阶职业：[selected]"))
 					qdel(job_datum)
 			else
 				// Regular job selected
@@ -436,11 +436,11 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				GLOB.loadout_selected_jobs[REF(H)] = job_type_path
 				// Clear advclass when new job is selected
 				GLOB.loadout_selected_advclasses[REF(H)] = null
-				to_chat(usr, span_notice("Job selected: [selected_title]"))
+				to_chat(usr, span_notice("已选择职业：[selected_title]"))
 				// Also set the assigned role
 				if(!H.mind)
 					H.mind_initialize()
-				H.mind.assigned_role = selected_title
+				H.mind.assigned_role = ispath(job_type_path, /datum/job) ? initial(job_type_path:title) : "[initial(job_type_path:name)] (Migrant)"
 				
 				// Auto-select advclass if job has only one, or open selection if multiple
 				// Check if it's a migrant role with advclass_cat_rolls
@@ -454,18 +454,18 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 								advclass_choices[advclass_instance.name] = advclass_instance.type
 						
 						if(length(advclass_choices) == 0)
-							to_chat(usr, span_warning("No advclasses found for this migrant role."))
+							to_chat(usr, span_warning("未找到此移民角色的进阶职业。"))
 						else if(length(advclass_choices) == 1)
 							var/only_choice_name = advclass_choices[1]
 							var/only_choice = advclass_choices[only_choice_name]
 							GLOB.loadout_selected_advclasses[REF(H)] = only_choice
-							to_chat(usr, span_notice("Auto-selected advclass: [only_choice_name]"))
+							to_chat(usr, span_notice("已自动选择进阶职业：[only_choice_name]"))
 						else
 							// Multiple advclasses - open selection automatically
-							var/selected = input("Select advclass:", "Advclass Selection") as null|anything in sortList(advclass_choices)
+							var/selected = input("选择进阶职业：", "进阶职业选择") as null|anything in sortList(advclass_choices)
 							if(selected)
 								GLOB.loadout_selected_advclasses[REF(H)] = advclass_choices[selected]
-								to_chat(usr, span_notice("Advclass selected: [selected]"))
+								to_chat(usr, span_notice("已选择进阶职业：[selected]"))
 					qdel(migrant_datum)
 				else
 					var/datum/job/job_datum = new job_type_path()
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 						if(length(job_datum.job_subclasses) == 1)
 							GLOB.loadout_selected_advclasses[REF(H)] = job_datum.job_subclasses[1]
 							var/datum/advclass/AC = job_datum.job_subclasses[1]
-							to_chat(usr, span_notice("Auto-selected advclass: [initial(AC.name)]"))
+							to_chat(usr, span_notice("已自动选择进阶职业：[initial(AC.name)]"))
 						else
 							// Multiple advclasses - open selection automatically
 							var/list/advclass_choices = list()
@@ -481,10 +481,10 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 								var/datum/advclass/AC = advclass_path
 								advclass_choices[initial(AC.name)] = advclass_path
 							
-							var/selected = input("Select advclass:", "Advclass Selection") as null|anything in sortList(advclass_choices)
+							var/selected = input("选择进阶职业：", "进阶职业选择") as null|anything in sortList(advclass_choices)
 							if(selected)
 								GLOB.loadout_selected_advclasses[REF(H)] = advclass_choices[selected]
-								to_chat(usr, span_notice("Advclass selected: [selected]"))
+								to_chat(usr, span_notice("已选择进阶职业：[selected]"))
 					qdel(job_datum)
 			
 			show_loadout_panel(H)
@@ -492,7 +492,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		if("select_advclass")
 			var/job_type_path = GLOB.loadout_selected_jobs[REF(H)]
 			if(!job_type_path)
-				to_chat(usr, span_warning("No job selected! Select a job first to see its advclasses."))
+				to_chat(usr, span_warning("未选择职业！请先选择职业以查看其进阶职业。"))
 				show_loadout_panel(H)
 				return TRUE
 			
@@ -500,7 +500,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			if(ispath(job_type_path, /datum/migrant_role))
 				var/datum/migrant_role/migrant_datum = new job_type_path()
 				if(!migrant_datum.advclass_cat_rolls || !length(migrant_datum.advclass_cat_rolls))
-					to_chat(usr, span_warning("This migrant role has no advclasses available."))
+					to_chat(usr, span_warning("此移民角色没有可用的进阶职业。"))
 					qdel(migrant_datum)
 					show_loadout_panel(H)
 					return TRUE
@@ -514,14 +514,14 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				qdel(migrant_datum)
 				
 				if(!length(advclass_choices))
-					to_chat(usr, span_warning("No advclasses found for this migrant role."))
+					to_chat(usr, span_warning("未找到此移民角色的进阶职业。"))
 					show_loadout_panel(H)
 					return TRUE
 				
-				var/selected = input("Select advclass:", "Advclass Selection") as null|anything in sortList(advclass_choices)
+				var/selected = input("选择进阶职业：", "进阶职业选择") as null|anything in sortList(advclass_choices)
 				if(selected)
 					GLOB.loadout_selected_advclasses[REF(H)] = advclass_choices[selected]
-					to_chat(usr, span_notice("Advclass selected: [selected]"))
+					to_chat(usr, span_notice("已选择进阶职业：[selected]"))
 			else
 				// Regular job
 				var/datum/job/selected_job
@@ -531,7 +531,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 						break
 				
 				if(!selected_job || !selected_job.job_subclasses || !length(selected_job.job_subclasses))
-					to_chat(usr, span_warning("This job has no advclasses available."))
+					to_chat(usr, span_warning("此职业没有可用的进阶职业。"))
 					show_loadout_panel(H)
 					return TRUE
 				
@@ -540,10 +540,10 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 					var/datum/advclass/AC = advclass_path
 					advclass_choices[initial(AC.name)] = advclass_path
 				
-				var/selected = input("Select advclass:", "Advclass Selection") as null|anything in sortList(advclass_choices)
+				var/selected = input("选择进阶职业：", "进阶职业选择") as null|anything in sortList(advclass_choices)
 				if(selected)
 					GLOB.loadout_selected_advclasses[REF(H)] = advclass_choices[selected]
-				to_chat(usr, span_notice("Advclass selected: [selected]"))
+				to_chat(usr, span_notice("已选择进阶职业：[selected]"))
 			show_loadout_panel(H)
 		
 		if("copy_from_mob")
@@ -553,83 +553,83 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		if("apply_stats")
 			var/job_path = GLOB.loadout_selected_jobs[REF(H)]
 			if(!job_path)
-				to_chat(usr, span_warning("No job selected! Use 'Select Job' first."))
+				to_chat(usr, span_warning("未选择职业！请先使用“选择职业”。"))
 				return TRUE
 			// Check if advclass is required
 			var/datum/job/J = job_path
 			var/list/subclasses = initial(J.job_subclasses)
 			if(subclasses && !GLOB.loadout_selected_advclasses[REF(H)])
-				to_chat(usr, span_warning("This job requires an advclass! Use 'Select Advclass' first."))
+				to_chat(usr, span_warning("此职业需要进阶职业！请先使用“选择进阶职业”。"))
 				return TRUE
 			// Ask for confirmation
-			var/confirm = alert(usr, "Reset stats to baseline (with racial/stat-pack bonuses) before applying job stats?", "Apply Stats", "Reset First", "Add to Current", "Cancel")
-			if(confirm == "Cancel")
+			var/confirm = alert(usr, "应用职业属性前，先将属性重置为基础值（包括种族／属性组合加成）？", "应用属性", "先重置", "叠加到当前值", "取消")
+			if(confirm == "取消")
 				return TRUE
-			var/delete_existing = (confirm == "Reset First")
+			var/delete_existing = (confirm == "先重置")
 			apply_job_stats(H, job_path, delete_existing)
 			show_loadout_panel(H)
 		
 		if("apply_equipment_spells")
 			var/job_path = GLOB.loadout_selected_jobs[REF(H)]
 			if(!job_path)
-				to_chat(usr, span_warning("No job selected! Use 'Select Job' first."))
+				to_chat(usr, span_warning("未选择职业！请先使用“选择职业”。"))
 				return TRUE
 			// Check if advclass is required
 			var/datum/job/J = job_path
 			var/list/subclasses = initial(J.job_subclasses)
 			if(subclasses && !GLOB.loadout_selected_advclasses[REF(H)])
-				to_chat(usr, span_warning("This job requires an advclass! Use 'Select Advclass' first."))
+				to_chat(usr, span_warning("此职业需要进阶职业！请先使用“选择进阶职业”。"))
 				return TRUE
 			// Ask for confirmation with clear explanation
-			var/confirm = alert(usr, "Delete all current equipment and spells before applying?\n\nNote: Some outfits may grant spells as part of their equipment process.", "Apply Equipment/Spells", "Yes", "No", "Cancel")
-			if(confirm == "Cancel")
+			var/confirm = alert(usr, "应用前删除当前所有装备和法术？\n\n注意：部分套装会在装备过程中授予法术。", "应用装备／法术", "是", "否", "取消")
+			if(confirm == "取消")
 				return TRUE
-			var/delete_existing = (confirm == "Yes")
+			var/delete_existing = (confirm == "是")
 			apply_job_equipment_and_spells(H, job_path, delete_existing)
 			show_loadout_panel(H)
 		
 		if("apply_skills")
 			var/job_path = GLOB.loadout_selected_jobs[REF(H)]
 			if(!job_path)
-				to_chat(usr, span_warning("No job selected! Use 'Select Job' first."))
+				to_chat(usr, span_warning("未选择职业！请先使用“选择职业”。"))
 				return TRUE
 			// Check if advclass is required
 			var/datum/job/J = job_path
 			var/list/subclasses = initial(J.job_subclasses)
 			if(subclasses && !GLOB.loadout_selected_advclasses[REF(H)])
-				to_chat(usr, span_warning("This job requires an advclass! Use 'Select Advclass' first."))
+				to_chat(usr, span_warning("此职业需要进阶职业！请先使用“选择进阶职业”。"))
 				return TRUE
 			// Ask for confirmation
-			var/confirm = alert(usr, "Delete all current skills before applying?", "Apply Skills", "Yes", "No", "Cancel")
-			if(confirm == "Cancel")
+			var/confirm = alert(usr, "应用前删除当前所有技能？", "应用技能", "是", "否", "取消")
+			if(confirm == "取消")
 				return TRUE
-			var/delete_existing = (confirm == "Yes")
+			var/delete_existing = (confirm == "是")
 			apply_job_skills(H, job_path, delete_existing)
 			show_loadout_panel(H)
 		
 		if("apply_traits")
 			var/job_path = GLOB.loadout_selected_jobs[REF(H)]
 			if(!job_path)
-				to_chat(usr, span_warning("No job selected! Use 'Select Job' first."))
+				to_chat(usr, span_warning("未选择职业！请先使用“选择职业”。"))
 				return TRUE
 			// Check if advclass is required
 			var/datum/job/J = job_path
 			var/list/subclasses = initial(J.job_subclasses)
 			if(subclasses && !GLOB.loadout_selected_advclasses[REF(H)])
-				to_chat(usr, span_warning("This job requires an advclass! Use 'Select Advclass' first."))
+				to_chat(usr, span_warning("此职业需要进阶职业！请先使用“选择进阶职业”。"))
 				return TRUE
 			// Ask for confirmation
-			var/confirm = alert(usr, "Delete all current job traits before applying?", "Apply Traits", "Yes", "No", "Cancel")
-			if(confirm == "Cancel")
+			var/confirm = alert(usr, "应用前删除当前所有职业特质？", "应用特质", "是", "否", "取消")
+			if(confirm == "取消")
 				return TRUE
-			var/delete_existing = (confirm == "Yes")
+			var/delete_existing = (confirm == "是")
 			apply_job_traits(H, job_path, delete_existing)
 			show_loadout_panel(H)
 		
 		if("apply_examine_title")
 			var/job_path = GLOB.loadout_selected_jobs[REF(H)]
 			if(!job_path)
-				to_chat(usr, span_warning("No job selected! Use 'Select Job' first."))
+				to_chat(usr, span_warning("未选择职业！请先使用“选择职业”。"))
 				return TRUE
 			// No need for delete confirmation - this just overwrites
 			apply_job_examine_title(H, job_path)
@@ -638,16 +638,16 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		if("apply_all")
 			var/job_path = GLOB.loadout_selected_jobs[REF(H)]
 			if(!job_path)
-				to_chat(usr, span_warning("No job selected! Use 'Select Job' first."))
+				to_chat(usr, span_warning("未选择职业！请先使用“选择职业”。"))
 				return TRUE
 			// Check if advclass is required
 			var/datum/job/J = job_path
 			var/list/subclasses = initial(J.job_subclasses)
 			if(subclasses && !GLOB.loadout_selected_advclasses[REF(H)])
-				to_chat(usr, span_warning("This job requires an advclass! Use 'Select Advclass' first."))
+				to_chat(usr, span_warning("此职业需要进阶职业！请先使用“选择进阶职业”。"))
 				return TRUE
 			// Ask to delete current equipment
-			if(alert(usr, "Delete all current equipment?", "Confirm", "Yes", "No") == "Yes")
+			if(alert(usr, "删除当前所有装备？", "确认", "是", "否") == "是")
 				for(var/obj/item/I in H.get_equipped_items(TRUE))
 					qdel(I)
 				for(var/obj/item/I in H.held_items)
@@ -656,7 +656,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			show_loadout_panel(H)
 		
 		if("clean_slate")
-			if(alert(usr, "This will reset [H.name] to a blank state, removing all equipment, skills, examine title, traits, and resetting stats. Continue?", "Confirm Clean Slate", "Yes", "No") == "Yes")
+			if(alert(usr, "这会将 [H.name] 重置为空白状态，移除所有装备、技能、查看称号和特质，并重置属性。继续？", "确认完全重置", "是", "否") == "是")
 				clean_slate_mob(H)
 				show_loadout_panel(H)
 	
@@ -664,7 +664,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 /client/proc/robust_dress_shop()
 
-	var/list/baseoutfits = list("Naked","Custom", "As Roguetown Job...", "Search Jobs...")
+	var/list/baseoutfits = list("裸装","自定义", "按岩丘职业选择……", "搜索职业……")
 	var/list/outfits = list()
 	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job)  - typesof(/datum/outfit/job/roguetown)
 
@@ -673,24 +673,24 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		if(initial(O.can_be_admin_equipped))
 			outfits[initial(O.name)] = path
 
-	var/dresscode = input("Select outfit", "Robust quick dress shop") as null|anything in baseoutfits + sortList(outfits)
+	var/dresscode = input("选择装备套装", "快捷换装") as null|anything in baseoutfits + sortList(outfits)
 	if (isnull(dresscode))
 		return
 
 	if (outfits[dresscode])
 		dresscode = outfits[dresscode]
 
-	if (dresscode == "Custom")
+	if (dresscode == "自定义")
 		var/list/custom_names = list()
 		for(var/datum/outfit/D in GLOB.custom_outfits)
 			custom_names[D.name] = D
-		var/selected_name = input("Select outfit", "Robust quick dress shop") as null|anything in sortList(custom_names)
+		var/selected_name = input("选择装备套装", "快捷换装") as null|anything in sortList(custom_names)
 		dresscode = custom_names[selected_name]
 		if(isnull(dresscode))
 			return
 	
-	if (dresscode == "Search Jobs...")
-		var/search_term = input("Search for a job (enter keywords):", "Job Search") as text|null
+	if (dresscode == "搜索职业……")
+		var/search_term = input("搜索职业（输入关键词）：", "职业搜索") as text|null
 		if(!search_term)
 			return
 		
@@ -705,15 +705,15 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 					matching_jobs["[path]"] = path
 		
 		if(!matching_jobs.len)
-			to_chat(usr, span_warning("No jobs found matching '[search_term]'."))
+			to_chat(usr, span_warning("未找到与 '[search_term]' 匹配的职业。"))
 			return
 		
-		dresscode = input("Select job (found [matching_jobs.len] matches)", "Job Search Results") as null|anything in sortList(matching_jobs)
+		dresscode = input("选择职业（找到 [matching_jobs.len] 个匹配项）", "职业搜索结果") as null|anything in sortList(matching_jobs)
 		dresscode = matching_jobs[dresscode]
 		if(isnull(dresscode))
 			return
 
-	if (dresscode == "As Roguetown Job...")
+	if (dresscode == "按岩丘职业选择……")
 		var/list/roguejob_paths = subtypesof(/datum/outfit/job/roguetown)
 		var/list/roguejob_outfits = list()
 		for(var/path in roguejob_paths)
@@ -722,13 +722,13 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			if(initial(O.can_be_admin_equipped))
 				roguejob_outfits["[path]"] = path
 
-		dresscode = input("Select job equipment", "Robust quick dress shop") as null|anything in sortList(roguejob_outfits)
+		dresscode = input("选择职业装备", "快捷换装") as null|anything in sortList(roguejob_outfits)
 		dresscode = roguejob_outfits[dresscode]
 		if(isnull(dresscode))
 			return
 
 
-	return dresscode
+	return dresscode == "裸装" ? "Naked" : dresscode
 
 // Apply full job loadout including stats, skills, traits, and spells
 /client/proc/apply_full_job_loadout(mob/living/carbon/human/H, job_type_path)
@@ -758,7 +758,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			if(advclass_datum.outfit)
 				actual_outfit = advclass_datum.outfit
 		else if(MR.advclass_cat_rolls)
-			to_chat(usr, span_warning("No advclass selected for this migrant role. Use the Advclass button to select one."))
+			to_chat(usr, span_warning("尚未为此移民角色选择进阶职业。请使用“进阶职业”按钮进行选择。"))
 		qdel(MR)
 	else
 		// Get outfit from job type
@@ -778,7 +778,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	if(actual_outfit)
 		H.equipOutfit(actual_outfit)
 	else
-		to_chat(usr, span_warning("No outfit available for this [is_migrant ? "migrant role" : "job"]."))
+		to_chat(usr, span_warning("此[is_migrant ? "移民角色" : "职业"]没有可用的装备套装。"))
 	
 	// Find the corresponding job datum to apply stats/skills (only for regular jobs)
 	var/datum/job/job_datum = null
@@ -882,7 +882,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		var/datum/migrant_role/MR = job_type_path
 		H.job = initial(MR.name)
 		H.advjob = null
-		to_chat(H, span_notice("Examine title set to: [initial(MR.name)]"))
+		to_chat(H, span_notice("查看称号已设为：[initial(MR.name)]"))
 	else if(job_datum)
 		// Determine the appropriate gendered title
 		var/title = job_datum.title
@@ -893,8 +893,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			var/datum/advclass/adv_for_title = new advclass_path()
 			H.advjob = adv_for_title.name
 	
-	to_chat(H, span_notice("Full job loadout applied! Stats, skills, and traits have been configured."))
-	message_admins("[key_name_admin(usr)] applied full job loadout [actual_outfit] to [ADMIN_LOOKUPFLW(H)].")
+	to_chat(H, span_notice("已应用完整职业配置！属性、技能和特质已设置完成。"))
+	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了完整职业配置 [actual_outfit]。")
 	log_admin("[key_name(usr)] applied full job loadout [actual_outfit] to [key_name(H)].")
 
 // Individual application functions
@@ -904,7 +904,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	if(!H.mind)
 		H.mind_initialize()
-		to_chat(usr, span_notice("Initialized mind for target."))
+		to_chat(usr, span_notice("已为目标初始化意识。"))
 	
 	// Determine if this is a migrant role or regular job
 	var/is_migrant = FALSE
@@ -929,7 +929,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			if(advclass_datum.outfit)
 				actual_outfit = advclass_datum.outfit
 		else if(MR.advclass_cat_rolls)
-			to_chat(usr, span_warning("No advclass selected for this migrant role. Use the Advclass button to select one."))
+			to_chat(usr, span_warning("尚未为此移民角色选择进阶职业。请使用“进阶职业”按钮进行选择。"))
 		qdel(MR)
 	else
 		// Get outfit from job type
@@ -986,11 +986,11 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				H.mind.adjust_spellpoints(advclass_datum.subclass_spellpoints)
 	
 	if(actual_outfit)
-		to_chat(H, span_notice("Equipment and spells applied[is_migrant ? " from migrant role" : ""]!"))
-		message_admins("[key_name_admin(usr)] applied equipment and spells from [actual_outfit] to [ADMIN_LOOKUPFLW(H)].")
+		to_chat(H, span_notice("已应用[is_migrant ? "移民角色的" : ""]装备和法术！"))
+		message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [actual_outfit] 的装备和法术。")
 		log_admin("[key_name(usr)] applied equipment and spells from [actual_outfit] to [key_name(H)].")
 	else
-		to_chat(usr, span_warning("No outfit available for this [is_migrant ? "migrant role" : "job"]."))
+		to_chat(usr, span_warning("此[is_migrant ? "移民角色" : "职业"]没有可用的装备套装。"))
 
 /client/proc/apply_job_stats(mob/living/carbon/human/H, job_type_path, delete_existing = FALSE)
 	if(!ishuman(H))
@@ -1026,8 +1026,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			for(var/stat in advclass_datum.subclass_stats)
 				H.change_stat(stat, advclass_datum.subclass_stats[stat])
 	
-	to_chat(H, span_notice("Stats applied from job[advclass_path ? " and advclass" : ""]!"))
-	message_admins("[key_name_admin(usr)] applied stats from [outfit_path] to [ADMIN_LOOKUPFLW(H)].")
+	to_chat(H, span_notice("已应用职业[advclass_path ? "及进阶职业" : ""]的属性！"))
+	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [outfit_path] 的属性。")
 	log_admin("[key_name(usr)] applied stats from [outfit_path] to [key_name(H)].")
 
 /client/proc/apply_job_skills(mob/living/carbon/human/H, job_type_path, delete_existing = FALSE)
@@ -1061,8 +1061,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			for(var/skill in advclass_datum.subclass_skills)
 				H.adjust_skillrank(skill, advclass_datum.subclass_skills[skill], TRUE)
 	
-	to_chat(H, span_notice("Skills applied[advclass_path ? " from advclass" : ""]!"))
-	message_admins("[key_name_admin(usr)] applied skills from [outfit_path] to [ADMIN_LOOKUPFLW(H)].")
+	to_chat(H, span_notice("已应用[advclass_path ? "进阶职业的" : ""]技能！"))
+	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [outfit_path] 的技能。")
 	log_admin("[key_name(usr)] applied skills from [outfit_path] to [key_name(H)].")
 
 /client/proc/apply_job_traits(mob/living/carbon/human/H, job_type_path, delete_existing = FALSE)
@@ -1105,8 +1105,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			for(var/trait in advclass_datum.traits_applied)
 				ADD_TRAIT(H, trait, JOB_TRAIT)
 	
-	to_chat(H, span_notice("Traits applied from job[advclass_path ? " and advclass" : ""]!"))
-	message_admins("[key_name_admin(usr)] applied traits from [outfit_path] to [ADMIN_LOOKUPFLW(H)].")
+	to_chat(H, span_notice("已应用职业[advclass_path ? "及进阶职业" : ""]的特质！"))
+	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [outfit_path] 的特质。")
 	log_admin("[key_name(usr)] applied traits from [outfit_path] to [key_name(H)].")
 
 /client/proc/apply_job_examine_title(mob/living/carbon/human/H, job_type_path)
@@ -1130,8 +1130,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		var/title = migrant_datum.name
 		H.job = title
 		H.advjob = null
-		to_chat(H, span_notice("Examine title set to: [title]"))
-		message_admins("[key_name_admin(usr)] set examine title for [ADMIN_LOOKUPFLW(H)] to [title].")
+		to_chat(H, span_notice("查看称号已设为：[title]"))
+		message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 的查看称号设为 [title]。")
 		log_admin("[key_name(usr)] set examine title for [key_name(H)] to [title].")
 		qdel(migrant_datum)
 	else
@@ -1141,7 +1141,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		var/advclass_path = GLOB.loadout_selected_advclasses[REF(H)]
 		
 		if(!job_datum)
-			to_chat(usr, span_warning("Could not find job datum."))
+			to_chat(usr, span_warning("找不到职业数据对象。"))
 			return
 		
 		// Determine the appropriate title based on gender
@@ -1156,8 +1156,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		if(advclass_path)
 			var/datum/advclass/advclass_datum = new advclass_path()
 			H.advjob = advclass_datum.name
-			to_chat(H, span_notice("Examine title set to: [advclass_datum.examine_name || advclass_datum.name]"))
-			message_admins("[key_name_admin(usr)] set examine title for [ADMIN_LOOKUPFLW(H)] to [advclass_datum.examine_name || advclass_datum.name].")
+			to_chat(H, span_notice("查看称号已设为：[advclass_datum.examine_name || advclass_datum.name]"))
+			message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 的查看称号设为 [advclass_datum.examine_name || advclass_datum.name]。")
 			log_admin("[key_name(usr)] set examine title for [key_name(H)] to [advclass_datum.examine_name || advclass_datum.name].")
 		else
 			// For jobs with advjob_examine = TRUE, set H.advjob to the appropriate title
@@ -1165,8 +1165,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				H.advjob = title
 			// Get display title if available
 			var/display_title = job_datum.display_title || title
-			to_chat(H, span_notice("Examine title set to: [display_title]"))
-			message_admins("[key_name_admin(usr)] set examine title for [ADMIN_LOOKUPFLW(H)] to [display_title].")
+			to_chat(H, span_notice("查看称号已设为：[display_title]"))
+			message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 的查看称号设为 [display_title]。")
 			log_admin("[key_name(usr)] set examine title for [key_name(H)] to [display_title].")
 
 /client/proc/clean_slate_mob(mob/living/carbon/human/H)
@@ -1220,14 +1220,14 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	H.regenerate_icons()
 	
-	to_chat(H, span_warning("You have been reset to a blank slate!"))
-	message_admins("[key_name_admin(usr)] reset [ADMIN_LOOKUPFLW(H)] to a clean slate.")
+	to_chat(H, span_warning("你已被完全重置为空白状态！"))
+	message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 完全重置为空白状态。")
 	log_admin("[key_name(usr)] reset [key_name(H)] to a clean slate.")
 
 // Copy loadout from one mob to another
 /client/proc/copy_loadout_from_mob(mob/living/carbon/human/target)
 	if(!ishuman(target))
-		to_chat(usr, span_warning("Target must be a human!"))
+		to_chat(usr, span_warning("目标必须是人类！"))
 		return
 	
 	var/list/possible_sources = list()
@@ -1238,30 +1238,30 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			if(H.ckey)
 				display_name += " ([H.ckey])"
 			else
-				display_name += " (Disconnected)"
+				display_name += "（已断线）"
 			possible_sources[display_name] = H
 	
 	if(!possible_sources.len)
-		to_chat(usr, span_warning("No valid humanoid mobs found!"))
+		to_chat(usr, span_warning("未找到有效的人形角色！"))
 		return
 	
-	var/source_name = input("Select character to copy from:", "Copy From...") as null|anything in sortList(possible_sources)
+	var/source_name = input("选择要复制配置的来源角色：", "复制来源……") as null|anything in sortList(possible_sources)
 	if(!source_name)
 		return
 	
 	var/mob/living/carbon/human/source = possible_sources[source_name]
 	if(!source || QDELETED(source))
-		to_chat(usr, span_warning("Source mob no longer exists!"))
+		to_chat(usr, span_warning("来源角色已不存在！"))
 		return
 	
 	// Confirm what to copy
-	var/list/copy_options = list("Equipment Only", "Equipment + Skills", "Equipment + Skills + Stats", "Everything (Equipment + Skills + Stats + Traits)")
-	var/copy_choice = input("What should be copied?", "Copy Options") as null|anything in copy_options
+	var/list/copy_options = list("仅装备", "装备 + 技能", "装备 + 技能 + 属性", "全部（装备 + 技能 + 属性 + 特质）")
+	var/copy_choice = input("要复制哪些内容？", "复制选项") as null|anything in copy_options
 	if(!copy_choice)
 		return
 	
 	// Clear target's equipment first
-	if(alert("Clear target's current equipment?", "Confirm", "Yes", "No") == "Yes")
+	if(alert("清除目标当前的装备？", "确认", "是", "否") == "是")
 		for(var/obj/item/I in target.get_equipped_items(TRUE))
 			qdel(I)
 	
@@ -1269,20 +1269,20 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	copy_equipment(source, target)
 	
 	// Copy skills if requested
-	if(copy_choice in list("Equipment + Skills", "Equipment + Skills + Stats", "Everything (Equipment + Skills + Stats + Traits)"))
+	if(copy_choice in list("装备 + 技能", "装备 + 技能 + 属性", "全部（装备 + 技能 + 属性 + 特质）"))
 		copy_skills(source, target)
 	
 	// Copy stats if requested
-	if(copy_choice in list("Equipment + Skills + Stats", "Everything (Equipment + Skills + Stats + Traits)"))
+	if(copy_choice in list("装备 + 技能 + 属性", "全部（装备 + 技能 + 属性 + 特质）"))
 		copy_stats(source, target)
 	
 	// Copy traits if requested  
-	if(copy_choice == "Everything (Equipment + Skills + Stats + Traits)")
+	if(copy_choice == "全部（装备 + 技能 + 属性 + 特质）")
 		copy_traits(source, target)
 	
 	target.regenerate_icons()
-	to_chat(usr, span_notice("Loadout copied from [source.name] to [target.name]!"))
-	message_admins("[key_name_admin(usr)] copied loadout from [ADMIN_LOOKUPFLW(source)] to [ADMIN_LOOKUPFLW(target)] ([copy_choice]).")
+	to_chat(usr, span_notice("已将 [source.name] 的配置复制给 [target.name]！"))
+	message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(source)] 的配置复制给了 [ADMIN_LOOKUPFLW(target)]（[copy_choice]）。")
 	log_admin("[key_name(usr)] copied loadout from [key_name(source)] to [key_name(target)] ([copy_choice]).")
 
 /client/proc/copy_equipment(mob/living/carbon/human/source, mob/living/carbon/human/target)
@@ -1400,49 +1400,49 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	to_chat(target, span_notice("职业特质已复制，种族特质保持不变。"))
 
 /client/proc/cmd_debug_mob_lists()
-	set category = "Debug"
-	set name = "Debug Mob Lists"
+	set category = "调试"
+	set name = "调试生物列表"
 	set desc = ""
 
-	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs","Clients","Joined Clients"))
-		if("Players")
+	switch(input("哪个列表？") in list("玩家","管理员","生物","存活生物","死亡生物","客户端","已入场玩家"))
+		if("玩家")
 			to_chat(usr, jointext(GLOB.player_list,","))
-		if("Admins")
+		if("管理员")
 			to_chat(usr, jointext(GLOB.admins,","))
-		if("Mobs")
+		if("生物")
 			to_chat(usr, jointext(GLOB.mob_list,","))
-		if("Living Mobs")
+		if("存活生物")
 			to_chat(usr, jointext(GLOB.alive_mob_list,","))
-		if("Dead Mobs")
+		if("死亡生物")
 			to_chat(usr, jointext(GLOB.dead_mob_list,","))
-		if("Clients")
+		if("客户端")
 			to_chat(usr, jointext(GLOB.clients,","))
-		if("Joined Clients")
+		if("已入场玩家")
 			to_chat(usr, jointext(GLOB.joined_player_list,","))
 
 /client/proc/cmd_display_del_log()
-	set category = "Debug"
-	set name = "Display del() Log"
+	set category = "调试"
+	set name = "显示 del() 日志"
 	set desc = ""
 
-	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
+	var/list/dellog = list("<B>本回合经过 qdel 的对象列表</B><BR><BR><ol>")
 	sortTim(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
 		if (I.failures)
-			dellog += "<li>Failures: [I.failures]</li>"
-		dellog += "<li>qdel() Count: [I.qdels]</li>"
-		dellog += "<li>Destroy() Cost: [I.destroy_time]ms</li>"
+			dellog += "<li>失败次数：[I.failures]</li>"
+		dellog += "<li>qdel() 次数：[I.qdels]</li>"
+		dellog += "<li>Destroy() 耗时：[I.destroy_time]ms</li>"
 		if (I.hard_deletes)
-			dellog += "<li>Total Hard Deletes [I.hard_deletes]</li>"
-			dellog += "<li>Time Spent Hard Deleting: [I.hard_delete_time]ms</li>"
+			dellog += "<li>硬删除总次数：[I.hard_deletes]</li>"
+			dellog += "<li>硬删除耗时：[I.hard_delete_time]ms</li>"
 		if (I.slept_destroy)
-			dellog += "<li>Sleeps: [I.slept_destroy]</li>"
+			dellog += "<li>休眠次数：[I.slept_destroy]</li>"
 		if (I.no_respect_force)
-			dellog += "<li>Ignored force: [I.no_respect_force]</li>"
+			dellog += "<li>忽略强制参数：[I.no_respect_force]</li>"
 		if (I.no_hint)
-			dellog += "<li>No hint: [I.no_hint]</li>"
+			dellog += "<li>未返回删除提示：[I.no_hint]</li>"
 		dellog += "</ul></li>"
 
 	dellog += "</ol>"
@@ -1450,22 +1450,22 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	usr << browse(dellog.Join(), "window=dellog")
 
 /client/proc/cmd_display_overlay_log()
-	set category = "Debug"
-	set name = "Display overlay Log"
+	set category = "调试"
+	set name = "显示叠加图层日志"
 	set desc = ""
 
 	render_stats(SSoverlays.stats, src)
 
 /client/proc/cmd_display_init_log()
-	set category = "Debug"
-	set name = "Display Initialize() Log"
+	set category = "调试"
+	set name = "显示 Initialize() 日志"
 	set desc = ""
 
 	usr << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
 
 /client/proc/debug_huds(i as num)
-	set category = "Debug"
-	set name = "Debug HUDs"
+	set category = "调试"
+	set name = "调试状态栏"
 	set desc = ""
 
 	if(!holder)
@@ -1473,8 +1473,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	debug_variables(GLOB.huds[i])
 
 /client/proc/jump_to_ruin()
-	set category = "Debug"
-	set name = "Jump to Ruin"
+	set category = "调试"
+	set name = "跳转至遗迹"
 	set desc = ""
 	if(!holder)
 		return
@@ -1493,7 +1493,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 		names[name] = ruin_landmark
 
-	var/ruinname = input("Select ruin", "Jump to Ruin") as null|anything in sortList(names)
+	var/ruinname = input("选择遗迹", "跳转至遗迹") as null|anything in sortList(names)
 
 
 	var/obj/effect/landmark/ruin/landmark = names[ruinname]
@@ -1505,8 +1505,8 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		to_chat(usr, span_italics("[template.description]"))
 
 /client/proc/toggle_medal_disable()
-	set category = "Debug"
-	set name = "Toggle Medal Disable"
+	set category = "调试"
+	set name = "切换奖章禁用状态"
 	set desc = ""
 
 	if(!check_rights(R_DEBUG))
@@ -1514,13 +1514,13 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 	SSachievements.hub_enabled = !SSachievements.hub_enabled
 
-	message_admins(span_adminnotice("[key_name_admin(src)] [SSachievements.hub_enabled ? "disabled" : "enabled"] the medal hub lockout."))
+	message_admins(span_adminnotice("[key_name_admin(src)] 已[SSachievements.hub_enabled ? "解除" : "启用"]奖章大厅锁定。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Medal Disable") // If...
 	log_admin("[key_name(src)] [SSachievements.hub_enabled ? "disabled" : "enabled"] the medal hub lockout.")
 
 /client/proc/view_runtimes()
-	set category = "Debug"
-	set name = "View Runtimes"
+	set category = "调试"
+	set name = "查看运行时错误"
 	set desc = ""
 
 	if(!holder)
@@ -1529,61 +1529,61 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	GLOB.error_cache.show_to(src)
 
 /client/proc/pump_random_event()
-	set category = "Debug"
-	set name = "Pump Random Event"
+	set category = "调试"
+	set name = "提前触发随机事件"
 	set desc = ""
 	if(!holder)
 		return
 
 	SSevents.scheduled = world.time
 
-	message_admins(span_adminnotice("[key_name_admin(src)] pumped a random event."))
+	message_admins(span_adminnotice("[key_name_admin(src)] 提前触发了随机事件。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Pump Random Event")
 	log_admin("[key_name(src)] pumped a random event.")
 
 /client/proc/start_line_profiling()
-	set category = "Profile"
-	set name = "Start Line Profiling"
+	set category = "性能分析"
+	set name = "开始逐行性能分析"
 	set desc = ""
 
 	LINE_PROFILE_START
 
-	message_admins(span_adminnotice("[key_name_admin(src)] started line by line profiling."))
+	message_admins(span_adminnotice("[key_name_admin(src)] 开始了逐行性能分析。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Line Profiling")
 	log_admin("[key_name(src)] started line by line profiling.")
 
 /client/proc/stop_line_profiling()
-	set category = "Profile"
-	set name = "Stops Line Profiling"
+	set category = "性能分析"
+	set name = "停止逐行性能分析"
 	set desc = ""
 
 	LINE_PROFILE_STOP
 
-	message_admins(span_adminnotice("[key_name_admin(src)] stopped line by line profiling."))
+	message_admins(span_adminnotice("[key_name_admin(src)] 停止了逐行性能分析。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop Line Profiling")
 	log_admin("[key_name(src)] stopped line by line profiling.")
 
 /client/proc/show_line_profiling()
-	set category = "Profile"
-	set name = "Show Line Profiling"
+	set category = "性能分析"
+	set name = "显示逐行性能分析"
 	set desc = ""
 
 	var/sortlist = list(
-		"Avg time"		=	/proc/cmp_profile_avg_time_dsc,
-		"Total Time"	=	/proc/cmp_profile_time_dsc,
-		"Call Count"	=	/proc/cmp_profile_count_dsc
+		"平均耗时"		=	/proc/cmp_profile_avg_time_dsc,
+		"总耗时"	=	/proc/cmp_profile_time_dsc,
+		"调用次数"	=	/proc/cmp_profile_count_dsc
 	)
-	var/sort = input(src, "Sort type?", "Sort Type", "Avg time") as null|anything in sortlist
+	var/sort = input(src, "排序方式？", "排序方式", "平均耗时") as null|anything in sortlist
 	if (!sort)
 		return
 	sort = sortlist[sort]
 	profile_show(src, sort)
 
 /client/proc/reload_configuration()
-	set category = "Debug"
-	set name = "Reload Configuration"
+	set category = "调试"
+	set name = "重新加载配置"
 	set desc = ""
 	if(!check_rights(R_DEBUG))
 		return
-	if(alert(usr, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modificatoins?", "Really reset?", "No", "Yes") == "Yes")
+	if(alert(usr, "确定要从磁盘默认路径重新加载配置，并清除本回合的所有配置改动吗？", "确定重置？", "否", "是") == "是")
 		config.admin_reload()

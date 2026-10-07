@@ -480,7 +480,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	creator.faction |= current.faction
 
 	if(creator.mind.special_role)
-		message_admins("[ADMIN_LOOKUPFLW(current)] has been created by [ADMIN_LOOKUPFLW(creator)], an antagonist.")
+		message_admins("[ADMIN_LOOKUPFLW(current)] 由反派 [ADMIN_LOOKUPFLW(creator)] 创造。")
 		to_chat(current, span_danger("无论我造物主当下效忠何方，我真正的主人始终是[creator.real_name]。若其忠诚改变，我也会随之改变。除非造物主的肉身被毁，这一点永远不会改变。"))
 
 /datum/mind/proc/show_memory(mob/recipient, window=1)
@@ -602,18 +602,18 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(href_list["remove_antag"])
 		var/datum/antagonist/A = locate(href_list["remove_antag"]) in antag_datums
 		if(!istype(A))
-			to_chat(usr,span_warning("Invalid antagonist ref to be removed."))
+			to_chat(usr,span_warning("要移除的反派引用无效。"))
 			return
 		A.admin_remove(usr)
 
 	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
+		var/new_role = input("选择新角色", "已分配角色", assigned_role) as null|anything in sortList(get_all_jobs())
 		if (!new_role)
 			return
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
+		var/new_memo = copytext(sanitize(input("编写新记忆", "记忆", memory) as null|message),1,MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
@@ -633,7 +633,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 					objective_pos = A.objectives.Find(old_objective)
 					break
 			if(!old_objective)
-				to_chat(usr,"Invalid objective.")
+				to_chat(usr,"目标无效。")
 				return
 		else
 			if(href_list["target_antag"])
@@ -647,10 +647,10 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = input("Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
+						var/datum/antagonist/target = input("将目标分配给哪个反派：", "反派", "（新建自定义反派）") as null|anything in sortList(antag_datums) + "（新建自定义反派）"
 						if (QDELETED(target))
 							return
-						else if(target == "(new custom antag)")
+						else if(target == "（新建自定义反派）")
 							target_antag = add_antag_datum(/datum/antagonist/custom)
 						else
 							target_antag = target
@@ -662,7 +662,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			if(old_objective.name in GLOB.admin_objective_list)
 				def_value = old_objective.name
 
-		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.admin_objective_list
+		var/selected_type = input("选择目标类型：", "目标类型", def_value) as null|anything in GLOB.admin_objective_list
 		selected_type = GLOB.admin_objective_list[selected_type]
 		if (!selected_type)
 			return
@@ -673,7 +673,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			new_objective.owner = src
 			new_objective.admin_edit(usr)
 			target_antag.objectives += new_objective
-			message_admins("[key_name_admin(usr)] added a new objective for [current]: [new_objective.explanation_text]")
+			message_admins("[key_name_admin(usr)] 为 [current] 添加了新目标：[new_objective.explanation_text]")
 			log_admin("[key_name(usr)] added a new objective for [current]: [new_objective.explanation_text]")
 		else
 			if(old_objective.type == selected_type)
@@ -687,7 +687,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				new_objective.admin_edit(usr)
 				target_antag.objectives -= old_objective
 				target_antag.objectives.Insert(objective_pos, new_objective)
-			message_admins("[key_name_admin(usr)] edited [current]'s objective to [new_objective.explanation_text]")
+			message_admins("[key_name_admin(usr)] 将 [current] 的目标改为 [new_objective.explanation_text]")
 			log_admin("[key_name(usr)] edited [current]'s objective to [new_objective.explanation_text]")
 
 	else if (href_list["obj_delete"])
@@ -698,10 +698,10 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				A.objectives -= objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"目标无效。")
 			return
 		//qdel(objective) Needs cleaning objective destroys
-		message_admins("[key_name_admin(usr)] removed an objective for [current]: [objective.explanation_text]")
+		message_admins("[key_name_admin(usr)] 移除了 [current] 的目标：[objective.explanation_text]")
 		log_admin("[key_name(usr)] removed an objective for [current]: [objective.explanation_text]")
 
 	else if(href_list["obj_completed"])
@@ -712,7 +712,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				objective = objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"目标无效。")
 			return
 		objective.completed = !objective.completed
 		log_admin("[key_name(usr)] toggled the win state for [current]'s objective: [objective.explanation_text]")

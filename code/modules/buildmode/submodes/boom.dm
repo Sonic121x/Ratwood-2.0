@@ -9,24 +9,24 @@
 
 /datum/buildmode_mode/boom/show_help(client/c)
 	to_chat(c, span_notice("***********************************************************"))
-	to_chat(c, span_notice("Mouse Button on obj  = Kaboom"))
-	to_chat(c, span_notice("NOTE: Using the \"Config/Launch Supplypod\" verb allows you to do this in an IC way (i.e., making a cruise missile come down from the sky and explode wherever you click!)"))
+	to_chat(c, span_notice("点击物体 = 引发爆炸"))
+	to_chat(c, span_notice("提示：使用“配置/发射补给舱”指令可让爆炸以角色内的方式发生（例如让巡航导弹从天而降，在点击处爆炸！）"))
 	to_chat(c, span_notice("***********************************************************"))
 
 /datum/buildmode_mode/boom/change_settings(client/c)
-	devastation = input(c, "Range of total devastation. -1 to none", text("Input")) as num|null
+	devastation = input(c, "毁灭范围，-1 表示无", text("输入")) as num|null
 	if(devastation == null)
 		devastation = -1
-	heavy = input(c, "Range of heavy impact. -1 to none", text("Input")) as num|null
+	heavy = input(c, "重度冲击范围，-1 表示无", text("输入")) as num|null
 	if(heavy == null)
 		heavy = -1
-	light = input(c, "Range of light impact. -1 to none", text("Input")) as num|null
+	light = input(c, "轻度冲击范围，-1 表示无", text("输入")) as num|null
 	if(light == null)
 		light = -1
-	flash = input(c, "Range of flash. -1 to none", text("Input")) as num|null
+	flash = input(c, "闪光范围，-1 表示无", text("输入")) as num|null
 	if(flash == null)
 		flash = -1
-	flames = input(c, "Range of flames. -1 to none", text("Input")) as num|null
+	flames = input(c, "火焰范围，-1 表示无", text("输入")) as num|null
 	if(flames == null)
 		flames = -1
 

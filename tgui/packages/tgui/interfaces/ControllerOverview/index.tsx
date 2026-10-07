@@ -11,7 +11,7 @@ import { SortType, SubsystemData } from './types';
 
 export const ControllerOverview = (props) => {
   return (
-    <Window title="Controller Overview" height={600} width={500}>
+    <Window title="Controller Overview" display_title="控制器总览" height={600} width={500}>
       <Window.Content>
         <ControllerContent />
       </Window.Content>
@@ -76,7 +76,7 @@ export const ControllerContent = (props) => {
                     onInput={(e, value) =>
                       dispatch({ type: FilterAction.Query, payload: value })
                     }
-                    placeholder="By name"
+                    placeholder="按名称搜索"
                     value={state.query}
                     width="85%"
                   />
@@ -85,7 +85,7 @@ export const ControllerContent = (props) => {
                   <Button
                     disabled={!inDeciseconds}
                     selected={state.smallValues}
-                    tooltip="Hide values under 1"
+                    tooltip="隐藏小于 1 的数值"
                     icon={state.smallValues ? 'eye-slash' : 'eye'}
                     onClick={() =>
                       dispatch({
@@ -94,11 +94,11 @@ export const ControllerContent = (props) => {
                       })
                     }
                   >
-                    Small
+                    小数值
                   </Button>
                   <Button
                     icon={state.inactive ? 'eye-slash' : 'eye'}
-                    tooltip="Hide offline/paused"
+                    tooltip="隐藏离线或暂停的子系统"
                     selected={state.inactive}
                     onClick={() =>
                       dispatch({
@@ -107,7 +107,7 @@ export const ControllerContent = (props) => {
                       })
                     }
                   >
-                    Inactive
+                    未运行
                   </Button>
                 </Stack.Item>
               </Stack>
@@ -132,7 +132,7 @@ export const ControllerContent = (props) => {
                       })
                     }
                   >
-                    Ascending
+                    升序
                   </Button>
                   <Button
                     selected={!state.ascending}
@@ -143,7 +143,7 @@ export const ControllerContent = (props) => {
                       })
                     }
                   >
-                    Descending
+                    降序
                   </Button>
                 </Stack.Item>
               </Stack>
