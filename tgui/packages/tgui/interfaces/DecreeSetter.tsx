@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { BooleanLike } from 'tgui-core/react';
-
+import { NativeButton } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import {
@@ -52,13 +52,13 @@ const formatCooldown = (seconds: number): string => {
   if (seconds <= 0) return '';
   const m = Math.floor(seconds / 60);
   const s = seconds % 60;
-  if (m > 0) return `${m}m ${s}s`;
-  return `${s}s`;
+  if (m > 0) return `${m}分 ${s}秒`;
+  return `${s}秒`;
 };
 
 const CATEGORY_LABELS: Record<DecreeCategory, string> = {
-  ancient: 'Ancient Charters',
-  new: 'New Charters',
+  ancient: '古老特许状',
+  new: '新特许状',
 };
 
 const cardHeaderStyle: React.CSSProperties = {
@@ -146,9 +146,9 @@ const DecreeCard = (props: DecreeCardProps) => {
           : 'Restore this decree';
 
   const statusColor = active ? SEAL_GREEN : SEAL_RED;
-  const statusLabel = active ? 'In force' : 'Suspended';
-  const baseLabel = active ? 'Suspend' : 'Restore';
-  const buttonLabel = armed ? `Confirm ${baseLabel}?` : baseLabel;
+  const statusLabel = active ? '生效中' : '已暂停';
+  const baseLabel = active ? '暂停' : '恢复';
+  const buttonLabel = armed ? `确认${baseLabel}？` : baseLabel;
   const buttonColor = active ? SEAL_RED : SEAL_GREEN;
 
   useEffect(() => {
@@ -190,24 +190,24 @@ const DecreeCard = (props: DecreeCardProps) => {
     <div style={cardStyle}>
       <div style={cardHeaderStyle}>
         <span style={cardTitleStyle}>{decree.name}</span>
-        <span style={cardYearStyle}>of {decree.year}</span>
+        <span style={cardYearStyle}>{decree.year}年</span>
         <span style={badgeStyle(statusColor)}>{statusLabel}</span>
-        <button
+        <NativeButton
           type="button"
           style={inkButtonStyle({ color: buttonColor, disabled })}
           disabled={disabled}
-          title={tooltip}
+          title={tooltip} display_title={onCooldown ? `冷却中：${formatCooldown(cooldownLeft)}` : slotUsed ? (active ? '今日已颁布过废止令。' : '今日已颁布过恢复令。') : armed ? '再次点击确认，3 秒后自动取消。' : active ? '暂停此法令' : '恢复此法令'}
           onClick={handleClick}
         >
           {buttonLabel}
-        </button>
+        </NativeButton>
       </div>
       {decree.mechanical && (
         <div style={mechanicalStyle}>{decree.mechanical}</div>
       )}
       {onCooldown && (
         <div style={{ fontSize: FONT_BODY, color: SEAL_AMBER }}>
-          Cooldown: {formatCooldown(cooldownLeft)}
+          冷却时间：{formatCooldown(cooldownLeft)}
         </div>
       )}
       {decree.flavor && (
@@ -216,7 +216,7 @@ const DecreeCard = (props: DecreeCardProps) => {
             style={flavorToggleStyle}
             onClick={() => setExpanded((v) => !v)}
           >
-            {expanded ? '▼ Hide charter text' : '▶ Read charter text'}
+            {expanded ? '▼ 收起特许状正文' : '▶ 阅读特许状正文'}
           </span>
           {expanded && <div style={flavorBodyStyle}>{decree.flavor}</div>}
         </>
@@ -244,22 +244,22 @@ export const DecreeSetter = () => {
     <Window
       width={620}
       height={720}
-      title="Charters of the Realm"
+      title="Charters of the Realm" display_title="领地特许状"
       theme="parchment"
     >
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>Charters of the Realm</div>
+          <div style={titleStyle}>领地特许状</div>
           <div style={subtitleStyle}>
-            Speak by ancient writ, or proclaim a new charter.
+            援引古老文书，或颁布新的特许状。
           </div>
           <hr style={rulerStyle} />
 
           {(revokeUsed || restoreUsed) && (
             <div style={proclamationNoteStyle}>
-              {revokeUsed && 'A revocation has been proclaimed today. '}
-              {restoreUsed && 'A restoration has been proclaimed today. '}
-              Further proclamations of that kind must await the dawn.
+              {revokeUsed && '今日已颁布过废止令。 '}
+              {restoreUsed && '今日已颁布过恢复令。 '}
+              同类法令须待明日方可再次颁布。
             </div>
           )}
 
@@ -280,7 +280,7 @@ export const DecreeSetter = () => {
                 padding: '20px',
               }}
             >
-              No charters in this category.
+              此类别暂无特许状。
             </div>
           ) : (
             visible.map((d) => (
