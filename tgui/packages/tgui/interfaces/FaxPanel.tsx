@@ -4,11 +4,11 @@ import {
   Button,
   Divider,
   LabeledList,
-  Section,
+
   Stack,
   Tabs,
   TextArea,
-} from 'tgui-core/components';
+} from 'tgui-core/components'; import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -34,24 +34,24 @@ type Data = {
 };
 
 const STAMPS = [
-  { key: 'none', label: 'None' },
-  { key: 'royal', label: '✦ Royal Seal' },
-  { key: 'inquisitor', label: '✠ Otavan Inquisition' },
-  { key: 'merchant', label: '⚖ Guild Merchant' },
-  { key: 'steward', label: '❧ Steward of Roguetown' },
-  { key: 'kingsfield', label: '⚜ Kingsfield' },
-  { key: 'kf_academy', label: '✦ Kingsfield Academy' },
-  { key: 'kf_army', label: '⚔ Kingsfield Army' },
-  { key: 'kf_tax', label: '⚖ Taxation Office' },
-  { key: 'kf_council', label: '★ High Council' },
+  { key: 'none', label: '无' },
+  { key: 'royal', label: '✦ 王室印章' },
+  { key: 'inquisitor', label: '✠ 奥塔万宗教审判所' },
+  { key: 'merchant', label: '⚖ 行会商人' },
+  { key: 'steward', label: '❧ 岩丘宫廷总管' },
+  { key: 'kingsfield', label: '⚜ 王田' },
+  { key: 'kf_academy', label: '✦ 王田学院' },
+  { key: 'kf_army', label: '⚔ 王田军队' },
+  { key: 'kf_tax', label: '⚖ 税务署' },
+  { key: 'kf_council', label: '★ 最高议会' },
 ];
 
 const RIMS = [
-  { key: 'none', label: 'None' },
-  { key: 'simple', label: 'Simple' },
-  { key: 'ornate', label: 'Ornate (Gold)' },
-  { key: 'royal', label: 'Royal (Purple)' },
-  { key: 'inquisition', label: 'Inquisition (Crimson)' },
+  { key: 'none', label: '无' },
+  { key: 'simple', label: '简朴' },
+  { key: 'ornate', label: '华丽（金色）' },
+  { key: 'royal', label: '王室（紫色）' },
+  { key: 'inquisition', label: '宗教审判所（绯红色）' },
 ];
 
 const STAMP_PREVIEW_STYLE: Record<string, React.CSSProperties> = {
@@ -110,15 +110,15 @@ const STAMP_PREVIEW_STYLE: Record<string, React.CSSProperties> = {
 };
 
 const STAMP_LABELS: Record<string, React.ReactNode> = {
-  royal: '✦ ROYAL ✦',
-  inquisitor: '✠ OTAVAN ✠',
-  merchant: '⚖ GUILD ⚖',
-  steward: '❧ STEWARD ❧',
-  kingsfield: <><span>CITY OF</span><span>KINGSFIELD</span></>,
-  kf_academy: <><span>KINGSFIELD</span><span>ACADEMY</span></>,
-  kf_army: <><span>KINGSFIELD</span><span>ARMY</span></>,
-  kf_tax: <><span>KINGSFIELD</span><span>TAXATION</span><span>OFFICE</span></>,
-  kf_council: <><span>HIGH</span><span>COUNCIL</span></>,
+  royal: '✦ 王室 ✦',
+  inquisitor: '✠ 奥塔万 ✠',
+  merchant: '⚖ 行会 ⚖',
+  steward: '❧ 宫廷总管 ❧',
+  kingsfield: <><span>王田</span><span>城</span></>,
+  kf_academy: <><span>王田</span><span>学院</span></>,
+  kf_army: <><span>王田</span><span>军队</span></>,
+  kf_tax: <><span>王田</span><span>税务</span><span>署</span></>,
+  kf_council: <><span>最高</span><span>议会</span></>,
 };
 
 const RIM_PREVIEW_STYLE: Record<string, React.CSSProperties> = {
@@ -190,7 +190,7 @@ export const FaxPanel = (props) => {
   const previewHtml = useMemo(() => previewBody.replace(/\n/g, '<br>'), [previewBody]);
 
   return (
-    <Window width={900} height={760} title="Admin Fax Panel">
+    <Window width={900} height={760} title="Admin Fax Panel" display_title="管理员信件面板">
       <Window.Content scrollable>
         <Stack vertical fill>
           <Stack.Item>
@@ -199,27 +199,27 @@ export const FaxPanel = (props) => {
                 selected={activePage === 'send'}
                 onClick={() => setActivePage('send')}
               >
-                Send Letter
+                发送信件
               </Tabs.Tab>
               <Tabs.Tab
                 selected={activePage === 'archive'}
                 onClick={() => setActivePage('archive')}
               >
-                Letter Archive
+                信件档案
               </Tabs.Tab>
             </Tabs>
           </Stack.Item>
 
           {activePage === 'archive' ? (
             <Stack.Item>
-              <Section title="Player Letter Archive">
+              <Section title="Player Letter Archive" display_title="玩家信件档案">
                 <Button icon="sync" onClick={() => act('refresh')}>
-                  Refresh
+                  刷新
                 </Button>
                 <Box mt={1}>
                   {!letter_history || letter_history.length === 0 ? (
                     <Box color="label" italic>
-                      No player letters have been sent yet.
+                      尚无已发送的玩家信件。
                     </Box>
                   ) : (
                     letter_history.map((entry, index) => (
@@ -236,16 +236,16 @@ export const FaxPanel = (props) => {
                         }}
                       >
                         <Box bold>
-                          From: {entry.sender || 'Anonymous'}
+                          寄件人：{entry.sender || '匿名'}
                         </Box>
                         <Box color="label" fontSize="0.85em">
-                          Sender ckey: {entry.sender_ckey || 'unknown'}
+                          寄件人 ckey：{entry.sender_ckey || '未知'}
                         </Box>
                         <Box bold>
-                          To: {entry.recipient || 'Unknown'}
+                          收件人：{entry.recipient || '未知'}
                         </Box>
                         <Box color="label" fontSize="0.85em">
-                          Recipient ckey: {entry.recipient_ckey || 'unknown'}
+                          收件人 ckey：{entry.recipient_ckey || '未知'}
                         </Box>
                         <Box mt={1}>
                           <Button
@@ -253,7 +253,7 @@ export const FaxPanel = (props) => {
                             icon="file-alt"
                             onClick={() => setPreviewIndex(previewIndex === index ? null : index)}
                           >
-                            {previewIndex === index ? 'Hide Preview' : 'Preview Letter'}
+                            {previewIndex === index ? '隐藏预览' : '预览信件'}
                           </Button>
                         </Box>
                         {previewIndex === index && (
@@ -277,11 +277,11 @@ export const FaxPanel = (props) => {
                                   marginBottom: '6px',
                                 }}
                               >
-                                From: {entry.sender || 'Anonymous'}
+                                寄件人：{entry.sender || '匿名'}
                               </Box>
                               <Box
                                 dangerouslySetInnerHTML={{
-                                  __html: (entry.body || '(empty letter)').replace(/\r?\n/g, '<br>'),
+                                  __html: (entry.body || '（空信件）').replace(/\r?\n/g, '<br>'),
                                 }}
                               />
                             </Box>
@@ -296,12 +296,12 @@ export const FaxPanel = (props) => {
           ) : (
             <>
               <Stack.Item>
-                <Section title="Sender">
+                <Section title="Sender" display_title="寄件人">
                   <LabeledList>
-                    <LabeledList.Item label="From">
+                    <LabeledList.Item label="寄件人">
                       <input
                         style={{ width: '100%', padding: '2px 4px' }}
-                        placeholder="e.g. The Grand Duke, Anonymous..."
+                        placeholder="例如：大公、匿名……"
                         value={sender}
                         onChange={(e) => setSender((e.target as HTMLInputElement).value)}
                       />
@@ -311,14 +311,14 @@ export const FaxPanel = (props) => {
               </Stack.Item>
 
               <Stack.Item>
-                <Section title="Recipient">
+                <Section title="Recipient" display_title="收件人">
                   <Stack>
                     <Stack.Item>
                       <Button
                         selected={sendMode === 'player'}
                         onClick={() => setSendMode('player')}
                       >
-                        By Player Name
+                        按角色姓名
                       </Button>
                     </Stack.Item>
                     <Stack.Item>
@@ -326,12 +326,12 @@ export const FaxPanel = (props) => {
                         selected={sendMode === 'hermes'}
                         onClick={() => setSendMode('hermes')}
                       >
-                        By HERMES #
+                        按赫尔墨斯编号
                       </Button>
                     </Stack.Item>
                     <Stack.Item>
                       <Button icon="sync" onClick={() => act('refresh')}>
-                        Refresh
+                        刷新
                       </Button>
                     </Stack.Item>
                   </Stack>
@@ -355,10 +355,10 @@ export const FaxPanel = (props) => {
                             ))}
                           </select>
                         ) : (
-                          <Box color="average">No players online.</Box>
+                          <Box color="average">没有在线玩家。</Box>
                         )
                       ) : (
-                        <Box color="bad">Master mailer is offline — cannot send by name.</Box>
+                        <Box color="bad">邮件总机离线，无法按姓名寄送。</Box>
                       )
                     ) : hermes_list?.length > 0 ? (
                       <select
@@ -378,20 +378,20 @@ export const FaxPanel = (props) => {
                         ))}
                       </select>
                     ) : (
-                      <Box color="bad">No HERMES machines on this map.</Box>
+                      <Box color="bad">此地图没有赫尔墨斯邮件机。</Box>
                     )}
                   </Box>
                 </Section>
               </Stack.Item>
 
               <Stack.Item>
-                <Section title="Letter Body">
+                <Section title="Letter Body" display_title="信件正文">
                   <Box mb={1}>
                     <Button
                       icon="sync"
                       color={previewDirty ? 'average' : undefined}
                       onClick={updatePreview}>
-                      Update Preview
+                      更新预览
                     </Button>
                   </Box>
                   <TextArea
@@ -400,7 +400,7 @@ export const FaxPanel = (props) => {
                     style={{ display: 'block', boxSizing: 'border-box' }}
                     value={body}
                     onChange={(value: string) => setBody(value)}
-                    placeholder="Write your letter here. HTML is supported: &lt;b&gt;bold&lt;/b&gt;, &lt;i&gt;italic&lt;/i&gt;, &lt;br&gt;. Shift+Enter for new lines."
+                    placeholder="在此撰写信件。支持 HTML：&lt;b&gt;粗体&lt;/b&gt;、&lt;i&gt;斜体&lt;/i&gt;、&lt;br&gt;。按 Shift+Enter 换行。"
                   />
                 </Section>
               </Stack.Item>
@@ -408,7 +408,7 @@ export const FaxPanel = (props) => {
               <Stack.Item>
                 <Stack>
                   <Stack.Item grow>
-                    <Section title="Wax Stamp">
+                    <Section title="Wax Stamp" display_title="蜡封印章">
                       <Stack vertical>
                         {STAMPS.map((s) => (
                           <Stack.Item key={s.key}>
@@ -425,7 +425,7 @@ export const FaxPanel = (props) => {
                     </Section>
                   </Stack.Item>
                   <Stack.Item grow>
-                    <Section title="Letter Rim">
+                    <Section title="Letter Rim" display_title="信纸边框">
                       <Stack vertical>
                         {RIMS.map((r) => (
                           <Stack.Item key={r.key}>
@@ -445,7 +445,7 @@ export const FaxPanel = (props) => {
               </Stack.Item>
 
               <Stack.Item>
-                <Section title="Preview">
+                <Section title="Preview" display_title="预览">
                   <Box style={rim !== 'none' ? RIM_PREVIEW_STYLE[rim] : {}}>
                     <Box
                       style={{
@@ -465,7 +465,7 @@ export const FaxPanel = (props) => {
                             marginBottom: '6px',
                           }}
                         >
-                          From: {sender}
+                          寄件人：{sender}
                         </Box>
                       )}
                       {body && (
@@ -484,7 +484,7 @@ export const FaxPanel = (props) => {
                       )}
                       {!sender && !body && stamp === 'none' && (
                         <Box color="grey" italic>
-                          Nothing to preview.
+                          暂无可预览内容。
                         </Box>
                       )}
                     </Box>
@@ -493,52 +493,52 @@ export const FaxPanel = (props) => {
               </Stack.Item>
 
               <Stack.Item>
-                <Section title="Parcel Item (Optional)">
+                <Section title="Parcel Item (Optional)" display_title="包裹物品（可选）">
                   <LabeledList>
-                    <LabeledList.Item label="Item Path">
+                    <LabeledList.Item label="物品路径">
                       <input
                         style={{ width: '100%', padding: '2px 4px', fontFamily: 'monospace' }}
-                        placeholder="e.g. /obj/item/coin/gold"
+                        placeholder="例如：/obj/item/coin/gold"
                         value={itemPath}
                         onChange={(e) => setItemPath((e.target as HTMLInputElement).value)}
                       />
                     </LabeledList.Item>
                     {trimmedItemPath && (
                       <>
-                        <LabeledList.Item label="Item Name">
+                        <LabeledList.Item label="物品名称">
                           <input
                             style={{ width: '100%', padding: '2px 4px' }}
-                            placeholder="Override item name (blank = keep default)"
+                            placeholder="覆盖物品名称（留空保留默认值）"
                             value={itemName}
                             onChange={(e) => setItemName((e.target as HTMLInputElement).value)}
                           />
                         </LabeledList.Item>
-                        <LabeledList.Item label="Item Desc">
+                        <LabeledList.Item label="物品描述">
                           <input
                             style={{ width: '100%', padding: '2px 4px' }}
-                            placeholder="Override item description (blank = keep default)"
+                            placeholder="覆盖物品描述（留空保留默认值）"
                             value={itemDesc}
                             onChange={(e) => setItemDesc((e.target as HTMLInputElement).value)}
                           />
                         </LabeledList.Item>
-                        <LabeledList.Item label="Package Size">
+                        <LabeledList.Item label="包裹尺寸">
                           <select
                             style={{ padding: '2px' }}
                             value={packageSize}
                             onChange={(e) => setPackageSize(Number((e.target as HTMLSelectElement).value))}
                           >
-                            <option value={0}>Auto (from item)</option>
-                            <option value={1}>1 — Tiny</option>
-                            <option value={2}>2 — Small</option>
-                            <option value={3}>3 — Normal</option>
-                            <option value={4}>4 — Bulky</option>
-                            <option value={5}>5 — Huge</option>
-                            <option value={6}>6 — Gigantic</option>
+                            <option value={0}>自动（根据物品）</option>
+                            <option value={1}>1 — 微小</option>
+                            <option value={2}>2 — 小型</option>
+                            <option value={3}>3 — 普通</option>
+                            <option value={4}>4 — 大型</option>
+                            <option value={5}>5 — 巨大</option>
+                            <option value={6}>6 — 庞大</option>
                           </select>
                         </LabeledList.Item>
                         <LabeledList.Item label="">
                           <Box color="average">
-                            The letter (if any) will be attached as a readable note inside the package.
+                            若填写了信件，将作为可阅读的纸条随包裹附送。
                           </Box>
                         </LabeledList.Item>
                       </>
@@ -569,7 +569,7 @@ export const FaxPanel = (props) => {
                     })
                   }
                 >
-                  {trimmedItemPath ? 'Send Parcel' : 'Send Letter'}
+                  {trimmedItemPath ? '发送包裹' : '发送信件'}
                 </Button>
               </Stack.Item>
             </>

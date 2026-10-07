@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 ///Say verb
 /mob/dead/new_player/say_verb(message as text)
-	set name = "Say"
+	set name = "说话"
 	set category = "IC"
 	set hidden = 1
 
@@ -330,7 +330,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		vote_on_poll_handler(poll, href_list)
 
 /mob/dead/new_player/verb/do_rp_prompt()
-	set name = "Lore Primer"
+	set name = "世界观入门"
 	set category = "IC"
 	var/list/dat = list()
 	dat += GLOB.roleplay_readme
@@ -858,7 +858,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		ready = PLAYER_NOT_READY
 		if(has_antags)
 			log_admin("[src.ckey] just got booted back to lobby with no jobs, but antags enabled.")
-			message_admins("[src.ckey] just got booted back to lobby with no jobs enabled, but antag rolling enabled. Likely antag rolling abuse.")
+			message_admins("[src.ckey] 未启用任何职业，却启用了反派抽选，刚被退回大厅。可能在反复抽选反派以滥用该机制。")
 
 		return FALSE //This is the only case someone should actually be completely blocked from antag rolling as well
 	return TRUE

@@ -16,11 +16,11 @@
 					if("ckey")
 						var/mob/living/L = target
 						if(istype(L))
-							vv_update_display(target, "ckey", L.ckey || "No ckey")
+							vv_update_display(target, "ckey", L.ckey || "无 ckey")
 					if("real_name")
 						var/mob/living/L = target
 						if(istype(L))
-							vv_update_display(target, "real_name", L.real_name || "No real name")
+							vv_update_display(target, "real_name", L.real_name || "无真实姓名")
 			if(href_list[VV_HK_BASIC_CHANGE])
 				modify_variables(target, target_var, 0)
 			if(href_list[VV_HK_BASIC_MASSEDIT])
@@ -34,9 +34,9 @@
 			if (!C)
 				return
 			if(!target)
-				to_chat(usr, span_warning("The object you tried to expose to [C] no longer exists (nulled or hard-deled)"))
+				to_chat(usr, span_warning("要向 [C] 展示的对象已不存在（已置空或强制删除）"))
 				return
-			message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;datumrefresh=[REF(target)]'>VV window</a>")
+			message_admins("[key_name_admin(usr)] 向 [key_name_admin(C)] 展示了一个<a href='?_src_=vars;datumrefresh=[REF(target)]'>变量查看窗口</a>")
 			log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [target]")
 			to_chat(C, "[holder.fakekey ? "管理员" : "[usr.client.key]"]已授予你查看变量窗口的权限")
 			C.debug_variables(target)
@@ -52,15 +52,15 @@
 			return
 		var/list/names = list()
 		var/list/componentsubtypes = sortList(subtypesof(/datum/component), GLOBAL_PROC_REF(cmp_typepaths_asc))
-		names += "---Components---"
+		names += "---组件---"
 		names += componentsubtypes
-		names += "---Elements---"
+		names += "---元素---"
 		names += sortList(subtypesof(/datum/element), GLOBAL_PROC_REF(cmp_typepaths_asc))
-		var/result = input(usr, "Choose a component/element to add","better know what ur fuckin doin pal") as null|anything in names
-		if(!usr || !result || result == "---Components---" || result == "---Elements---")
+		var/result = input(usr, "选择要添加的组件或元素","请确保你了解此操作的影响") as null|anything in names
+		if(!usr || !result || result == "---组件---" || result == "---元素---")
 			return
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!")
+			to_chat(usr, "该对象已不存在！")
 			return
 		var/list/lst = get_callproc_args()
 		if(!lst)
@@ -74,6 +74,6 @@
 			datumname = "element"
 			target._AddElement(arglist(lst))
 		log_admin("[key_name(usr)] has added [result] [datumname] to [key_name(src)].")
-		message_admins(span_notice("[key_name_admin(usr)] has added [result] [datumname] to [key_name_admin(src)]."))
+		message_admins(span_notice("[key_name_admin(usr)] 向 [key_name_admin(src)] 添加了[datumname == "component" ? "组件" : "元素"] [result]。"))
 	if(href_list[VV_HK_CALLPROC])
 		usr.client.callproc_datum(target)

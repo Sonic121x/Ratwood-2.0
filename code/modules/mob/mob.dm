@@ -500,7 +500,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * for why this isn't atom/verb/examine()
  */
 /mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
-	set name = "Examine"
+	set name = "查看"
 	set category = "IC"
 	set hidden = 1
 
@@ -602,7 +602,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Calls attack self on the item and updates the inventory hud for hands
  */
 /mob/verb/mode()
-	set name = "Activate Held Object"
+	set name = "使用手持物品"
 	set hidden = 1
 	set src = usr
 
@@ -653,8 +653,8 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Only works if flag/norespawn is allowed in config
  */
 /mob/verb/abandon_mob()
-	set name = "{ABANDON MOB}"
-	set category = "Options"
+	set name = "{放弃角色}"
+	set category = "选项"
 	set hidden = 1
 	if(!check_rights(0))
 		return
@@ -692,7 +692,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Sometimes helps if the user is stuck in another perspective or camera
  */
 /mob/verb/cancel_camera()
-	set name = "{RESET CAMERA}"
+	set name = "{重置视角}"
 	set hidden = TRUE
 	set category = null
 	reset_perspective(null)
@@ -1343,15 +1343,15 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
-	VV_DROPDOWN_OPTION(VV_HK_GIVE_SPELL, "Give Spell")
-	VV_DROPDOWN_OPTION(VV_HK_REMOVE_SPELL, "Remove Spell")
-	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "Toggle Godmode")
-	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop Everything")
-	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "Regenerate Icons")
-	VV_DROPDOWN_OPTION(VV_HK_PLAYER_PANEL, "Show player panel")
-	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
-	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
+	VV_DROPDOWN_OPTION(VV_HK_GIB, "炸成碎块")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_SPELL, "授予法术")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_SPELL, "移除法术")
+	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "切换无敌模式")
+	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "丢下所有物品")
+	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "重新生成图标")
+	VV_DROPDOWN_OPTION(VV_HK_PLAYER_PANEL, "显示玩家面板")
+	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "直接接管")
+	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "向幽灵开放控制权")
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()

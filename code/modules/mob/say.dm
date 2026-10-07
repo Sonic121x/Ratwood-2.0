@@ -17,7 +17,7 @@
 	return say_verb(message)
 
 /mob/verb/say_verb(message as text)
-	set name = "Say"
+	set name = "说话"
 	set category = "IC"
 	set hidden = 1
 
@@ -32,7 +32,7 @@
 
 ///Whisper verb
 /mob/verb/whisper_verb(message as text)
-	set name = "Whisper"
+	set name = "耳语"
 	set category = "IC"
 	set hidden = 1
 
@@ -61,7 +61,7 @@
 
 ///The me emote verb
 /mob/verb/me_verb(message as text)
-	set name = "Me"
+	set name = "动作描写"
 	set category = "IC"
 	set hidden = 1
 #ifndef MATURESERVER
@@ -96,7 +96,7 @@
 
 ///The me emote verb
 /mob/verb/me_big_verb(message as message)
-	set name = "Me(big)"
+	set name = "动作描写（多行）"
 	set category = "IC"
 	set hidden = 1
 #ifndef MATURESERVER
@@ -120,7 +120,7 @@
 
 ///The subtle emote verb
 /mob/verb/subtle_verb()
-	set name = "Subtle"
+	set name = "细微动作"
 	set category = "IC"
 	set hidden = 1
 #ifndef MATURESERVER
@@ -142,7 +142,7 @@
 
 ///The subtle emote verb
 /mob/verb/subtle_big_verb()
-	set name = "Subtle(big)"
+	set name = "细微动作（多行）"
 	set category = "IC"
 	set hidden = 1
 #ifndef MATURESERVER

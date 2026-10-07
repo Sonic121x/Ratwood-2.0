@@ -1,4 +1,4 @@
-import { Button, Section, Stack, Table } from 'tgui-core/components';
+import { Button, Stack, Table } from 'tgui-core/components'; import { Section } from '../../components/Localized';
 
 import { useBackend, useLocalState } from '../../backend';
 import { SORTING_TYPES } from './contants';
@@ -80,7 +80,7 @@ export const SubsystemViews = (props: Props) => {
     <Section
       fill
       scrollable
-      title="Subsystem Overview"
+      title="Subsystem Overview" display_title="子系统总览"
       buttons={
         <Stack align="center">
           <Stack.Item color="label">
@@ -93,7 +93,7 @@ export const SubsystemViews = (props: Props) => {
               onClick={() => setBars(!bars)}
               selected={bars}
             >
-              Bars
+              条形图
             </Button>
           </Stack.Item>
         </Stack>

@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(memory_stats)
 		out += "rss_mb=[rss]"
 		out += "rss_bytes=[num2text(rss_bytes, 12)]"
 		if(last_rss_mb && rss - last_rss_mb > 250)
-			message_admins("MEMORY: process RSS jumped [round(rss - last_rss_mb)]MB in [wait / (1 SECONDS)]s (now [rss]MB)")
+			message_admins("内存：进程驻留内存在 [wait / (1 SECONDS)] 秒内增加了 [round(rss - last_rss_mb)] MB（现为 [rss] MB）")
 		last_rss_mb = rss
 		last_rss_bytes = rss_bytes
 
@@ -114,9 +114,9 @@ SUBSYSTEM_DEF(memory_stats)
 	WRITE_LOG(GLOB.world_mem_log, "MEMSTAT: [out.Join(" ")]")
 
 /client/proc/dump_memory_stats()
-	set category = "Debug"
-	set name = "Dump Memory Stats"
+	set category = "调试"
+	set name = "导出内存统计"
 	if(!check_rights(R_DEBUG))
 		return
 	SSmemory_stats.log_memory_stats()
-	to_chat(usr, span_notice("Memory stats dumped to memory_stats.log (rss: [SSmemory_stats.last_rss_mb]MB / [num2text(SSmemory_stats.last_rss_bytes, 12)] bytes)."))
+	to_chat(usr, span_notice("内存统计已导出至 memory_stats.log（驻留内存：[SSmemory_stats.last_rss_mb]MB / [num2text(SSmemory_stats.last_rss_bytes, 12)] 字节）。"))

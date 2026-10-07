@@ -1,11 +1,11 @@
 /client/proc/play_sound(S as sound)
-	set category = "-GameMaster-"
-	set name = "Sound - Global"
+	set category = "-主持-"
+	set name = "声音 - 全域"
 	if(!check_rights(R_SOUND))
 		return
 
 	var/freq = 1
-	var/vol = input(usr, "What volume would you like the sound to play at?",, 100) as null|num
+	var/vol = input(usr, "要以多大音量播放声音？",, 100) as null|num
 	if(!vol)
 		return
 	vol = CLAMP(vol, 1, 100)
@@ -20,15 +20,15 @@
 	admin_sound.status = SOUND_STREAM
 	admin_sound.volume = vol
 
-	var/res = alert(usr, "Show the title of this song to the players?",, "Yes","No", "Cancel")
+	var/res = alert(usr, "向玩家显示这首歌的名称吗？",, "是","否", "取消")
 	switch(res)
-		if("Yes")
+		if("是")
 			to_chat(world, span_boldannounce("管理员播放了：[S]"))
-		if("Cancel")
+		if("取消")
 			return
 
 	log_admin("[key_name(src)] played sound [S]")
-	message_admins("[key_name_admin(src)] played sound [S]")
+	message_admins("[key_name_admin(src)] 播放了声音 [S]")
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.client.prefs.toggles & SOUND_MIDI)
@@ -40,8 +40,8 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Global Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/verb/change_music_vol()
-	set category = "Options"
-	set name = "ChangeMusicPower"
+	set category = "选项"
+	set name = "调整音乐音量"
 	set hidden = 1
 
 	if(prefs)
@@ -54,7 +54,7 @@
 			mob.update_music_volume(CHANNEL_LOBBYMUSIC, prefs.musicvol)
 			mob.update_music_volume(CHANNEL_ADMIN, prefs.musicvol)
 		else*/
-		var/vol = input(usr, "Current music power: [prefs.musicvol]",, 100) as null|num
+		var/vol = input(usr, "当前音乐音量：[prefs.musicvol]",, 100) as null|num
 		if(!vol)
 			if(vol != 0)
 				return
@@ -66,8 +66,8 @@
 		mob.update_music_volume(CHANNEL_ADMIN, prefs.musicvol)
 
 /client/verb/volume_power_menu()
-	set category = "Options"
-	set name = "Volume Power"
+	set category = "选项"
+	set name = "音量设置"
 
 	if(!prefs)
 		return
@@ -126,7 +126,7 @@
 /datum/volume_power_menu/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "VolumePowerMenu", "Volume Power")
+		ui = new(user, src, "VolumePowerMenu", "音量设置")
 		ui.set_state(GLOB.always_state)
 		ui.open()
 
@@ -160,25 +160,25 @@
 
 
 /client/verb/show_rolls()
-	set category = "Options"
-	set name = "ShowRolls"
+	set category = "选项"
+	set name = "显示掷骰"
 	set hidden = 1
 
 	if(prefs)
 		prefs.showrolls = !prefs.showrolls
 		prefs.save_preferences()
 		if(prefs.showrolls)
-			to_chat(src, "ShowRolls Enabled")
+			to_chat(src, "已开启掷骰显示")
 		else
-			to_chat(src, "ShowRolls Disabled")
+			to_chat(src, "已关闭掷骰显示")
 
 /client/verb/change_master_vol()
-	set category = "Options"
-	set name = "ChangeVolPower"
+	set category = "选项"
+	set name = "调整音效音量"
 	set hidden = 1
 
 	if(prefs)
-		var/vol = input(usr, "Current master volume power (affects all sounds except music and ambience): [prefs.mastervol]",, 100) as null|num
+		var/vol = input(usr, "当前音效音量（影响音乐与环境声以外的所有声音）：[prefs.mastervol]",, 100) as null|num
 		if(!vol)
 			if(vol != 0)
 				return
@@ -187,12 +187,12 @@
 		prefs.save_preferences()
 
 /client/verb/change_ambience_vol()
-	set category = "Options"
-	set name = "ChangeAmbiencePower"
+	set category = "选项"
+	set name = "调整环境声音量"
 	set hidden = 1
 
 	if(prefs)
-		var/vol = input(usr, "Current ambience power: [prefs.ambiencevol]",, 100) as null|num
+		var/vol = input(usr, "当前环境声音量：[prefs.ambiencevol]",, 100) as null|num
 		if(!vol)
 			if(vol != 0)
 				return
@@ -204,12 +204,12 @@
 		mob.update_channel_volume(CHANNEL_RAIN, prefs.ambiencevol)
 
 /client/verb/change_lobby_music_vol()
-	set category = "Options"
-	set name = "ChangeLobbyMusicPower"
+	set category = "选项"
+	set name = "调整大厅音乐音量"
 	set hidden = 1
 
 	if(prefs)
-		var/vol = input(usr, "Current lobby music power: [prefs.lobbymusicvol]",, 100) as null|num
+		var/vol = input(usr, "当前大厅音乐音量：[prefs.lobbymusicvol]",, 100) as null|num
 		if(!vol)
 			if(vol != 0)
 				return
@@ -234,44 +234,44 @@
 */
 
 /client/proc/play_local_sound(S as sound)
-	set category = "-GameMaster-"
-	set name = "Sound - Local"
+	set category = "-主持-"
+	set name = "声音 - 附近"
 	if(!check_rights(R_SOUND))
 		return
 
 	log_admin("[key_name(src)] played a local sound [S]")
-	message_admins("[key_name_admin(src)] played a local sound [S]")
+	message_admins("[key_name_admin(src)] 在附近播放了声音 [S]")
 	playsound(get_turf(src.mob), S, 50, FALSE, FALSE)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_local_sound_variable(S as sound)
-	set category = "-GameMaster-"
-	set name = "Sound - Variable Dist"
+	set category = "-主持-"
+	set name = "声音 - 自定义范围"
 	if(!check_rights(R_SOUND))
 		return
 
-	var/dist = input(usr, "How far do you want this sound to extend?",, 50) as null|num
+	var/dist = input(usr, "要让声音传播多远？",, 50) as null|num
 	if(!dist)
 		return
 	dist = CLAMP(dist, 1, 100)
 
 	log_admin("[key_name(src)] played a local sound [S]")
-	message_admins("[key_name_admin(src)] played a local sound [S]")
+	message_admins("[key_name_admin(src)] 在附近播放了声音 [S]")
 	playsound(get_turf(src.mob), S, dist, FALSE, FALSE)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_web_sound()
-	set category = "-GameMaster-"
-	set name = "Sound - Internet"
+	set category = "-主持-"
+	set name = "声音 - 网络"
 	if(!check_rights(R_SOUND))
 		return
 
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(src, span_boldwarning("Youtube-dl was not configured, action unavailable")) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(src, span_boldwarning("未配置 Youtube-dl，无法使用此功能")) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
-	var/web_sound_input = input("Enter content URL (supported sites only, leave blank to stop playing)", "PASS THE AUX CORD, MILORD.") as text|null
+	var/web_sound_input = input("输入内容网址（仅限支持的网站，留空停止播放）", "大人，请选曲。") as text|null
 	if(istext(web_sound_input))
 		var/web_sound_url = ""
 		var/stop_web_sounds = FALSE
@@ -280,8 +280,8 @@
 
 			web_sound_input = trim(web_sound_input)
 			if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-				to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."))
-				to_chat(src, span_warning("For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website."))
+				to_chat(src, span_boldwarning("不允许使用非 HTTP(S) 地址。"))
+				to_chat(src, span_warning("请使用网站上的完整网址，不能使用 ytsearch: 等 youtube-dl 快捷指令。"))
 				return
 			var/shell_scrubbed_input = shell_url_scrub(web_sound_input)
 			var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height<=360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_scrubbed_input]\"")
@@ -293,7 +293,7 @@
 				try
 					data = json_decode(stdout)
 				catch(var/exception/e)
-					to_chat(src, span_boldwarning("Youtube-dl JSON parsing FAILED:"))
+					to_chat(src, span_boldwarning("Youtube-dl JSON 解析失败："))
 					to_chat(src, span_warning("[e]: [stdout]"))
 					return
 
@@ -324,13 +324,13 @@
 					if(upload_date)
 						music_extra_data["upload_date"] = upload_date
 					if(isnum(duration_value))
-						music_extra_data["duration"] = "[duration_value] seconds"
+						music_extra_data["duration"] = "[duration_value] 秒"
 
-					var/res = alert(usr, "Show the title of and link to this song to the players?\n[title]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
+					var/res = alert(usr, "向玩家显示这首歌的名称和链接吗？\n[title]", "大人，请选曲。", "否", "是", "取消")
 					switch(res)
-						if("Yes")
+						if("是")
 							to_chat(world, span_boldannounce("管理员播放了：[webpage_url]"))
-						if("No")
+						if("否")
 							// Hide detailed metadata in the chat media widget while still playing the song
 							music_extra_data["title"] = null
 							music_extra_data["link"] = "Song Link Hidden"
@@ -338,25 +338,25 @@
 							music_extra_data["artist"] = "Song Artist Hidden"
 							music_extra_data["album"] = "Song Album Hidden"
 							music_extra_data["upload_date"] = "Song Upload Date Hidden"
-						if("Cancel")
+						if("取消")
 							return
 
 					SSblackbox.record_feedback("nested tally", "played_url", 1, list("[ckey]", "[web_sound_input]"))
 					log_admin("[key_name(src)] played web sound: [web_sound_input]")
-					message_admins("[key_name(src)] played web sound: [web_sound_input]")
+					message_admins("[key_name(src)] 播放了网络声音：[web_sound_input]")
 			else
-				to_chat(src, span_boldwarning("Youtube-dl URL retrieval FAILED:"))
+				to_chat(src, span_boldwarning("Youtube-dl 获取网址失败："))
 				to_chat(src, span_warning("[stderr]"))
 
 		else //pressed ok with blank
 			log_admin("[key_name(src)] stopped web sound")
-			message_admins("[key_name(src)] stopped web sound")
+			message_admins("[key_name(src)] 停止了网络声音")
 			web_sound_url = null
 			stop_web_sounds = TRUE
 
 		if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-			to_chat(src, span_boldwarning("BLOCKED: Content URL not using http(s) protocol"))
-			to_chat(src, span_warning("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"))
+			to_chat(src, span_boldwarning("已阻止：内容网址未使用 HTTP(S) 协议"))
+			to_chat(src, span_warning("媒体提供方返回的内容网址未使用 HTTP 或 HTTPS 协议"))
 			return
 		if(web_sound_url || stop_web_sounds)
 			for(var/m in GLOB.player_list)
@@ -374,12 +374,12 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Internet Sound")
 
 /client/proc/play_music_global_url()
-	set category = "-GameMaster-"
-	set name = "Music - Global URL"
+	set category = "-主持-"
+	set name = "音乐 - 全域网址"
 	if(!check_rights(R_SOUND))
 		return
 
-	var/web_sound_input = input("Enter direct HTTPS audio URL (leave blank to stop playing)", "PASS THE AUX CORD, MILORD.") as text|null
+	var/web_sound_input = input("输入 HTTPS 音频直链（留空停止播放）", "大人，请选曲。") as text|null
 	if(isnull(web_sound_input))
 		return
 
@@ -390,44 +390,44 @@
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
 		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."))
+			to_chat(src, span_boldwarning("不允许使用非 HTTP(S) 地址。"))
 			return
 
 		web_sound_url = web_sound_input
 
-		var/title = input(usr, "Optional: song title to display (leave blank for Unknown Track)", "Song Title") as null|text
-		var/artist = input(usr, "Optional: song artist to display (leave blank to hide)", "Song Artist") as null|text
+		var/title = input(usr, "可选：要显示的歌曲名称（留空显示未知曲目）", "歌曲名称") as null|text
+		var/artist = input(usr, "可选：要显示的演唱者（留空隐藏）", "歌曲演唱者") as null|text
 
 		music_extra_data["title"] = title
 		music_extra_data["link"] = web_sound_input
 		if(artist)
 			music_extra_data["artist"] = artist
 
-		var/res = alert(usr, "Show the title and link of this song to the players?\n[title ? title : web_sound_input]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
+		var/res = alert(usr, "向玩家显示这首歌的名称和链接吗？\n[title ? title : web_sound_input]", "大人，请选曲。", "否", "是", "取消")
 		switch(res)
-			if("Yes")
+			if("是")
 				to_chat(world, span_boldannounce("管理员播放了：[title ? title : web_sound_input]"))
-			if("No")
+			if("否")
 				music_extra_data["title"] = null
 				music_extra_data["link"] = "Song Link Hidden"
 				music_extra_data["duration"] = "Song Duration Hidden"
 				music_extra_data["artist"] = "Song Artist Hidden"
 				music_extra_data["album"] = "Song Album Hidden"
 				music_extra_data["upload_date"] = "Song Upload Date Hidden"
-			if("Cancel")
+			if("取消")
 				return
 	else
 		log_admin("[key_name(src)] stopped global URL music")
-		message_admins("[key_name_admin(src)] stopped global URL music")
+		message_admins("[key_name_admin(src)] 停止了全域网址音乐")
 		stop_web_sounds = TRUE
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, span_boldwarning("BLOCKED: Content URL not using http(s) protocol"))
+		to_chat(src, span_boldwarning("已阻止：内容网址未使用 HTTP(S) 协议"))
 		return
 
 	if(web_sound_url || stop_web_sounds)
 		log_admin("[key_name(src)] played global URL music: [web_sound_input]")
-		message_admins("[key_name(src)] played global URL music: [web_sound_input]")
+		message_admins("[key_name(src)] 播放了全域网址音乐：[web_sound_input]")
 		for(var/mob/M in GLOB.player_list)
 			var/client/C = M.client
 			if(!C)
@@ -443,12 +443,12 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Global Music URL")
 
 /client/proc/play_music_local_url()
-	set category = "-GameMaster-"
-	set name = "Music - Local URL"
+	set category = "-主持-"
+	set name = "音乐 - 附近网址"
 	if(!check_rights(R_SOUND))
 		return
 
-	var/web_sound_input = input("Enter direct HTTPS audio URL (leave blank to stop playing)", "Play Local Music (URL)") as text|null
+	var/web_sound_input = input("输入 HTTPS 音频直链（留空停止播放）", "在附近播放音乐（网址）") as text|null
 	if(isnull(web_sound_input))
 		return
 
@@ -460,49 +460,49 @@
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
 		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."))
+			to_chat(src, span_boldwarning("不允许使用非 HTTP(S) 地址。"))
 			return
 
 		web_sound_url = web_sound_input
 
-		dist = input(usr, "How far do you want this music to extend?",, 50) as null|num
+		dist = input(usr, "要让音乐传播多远？",, 50) as null|num
 		if(!dist)
 			return
 		dist = CLAMP(dist, 1, 100)
 
-		var/title = input(usr, "Optional: song title to display (leave blank for Unknown Track)", "Song Title") as null|text
-		var/artist = input(usr, "Optional: song artist to display (leave blank to hide)", "Song Artist") as null|text
+		var/title = input(usr, "可选：要显示的歌曲名称（留空显示未知曲目）", "歌曲名称") as null|text
+		var/artist = input(usr, "可选：要显示的演唱者（留空隐藏）", "歌曲演唱者") as null|text
 
 		music_extra_data["title"] = title
 		music_extra_data["link"] = web_sound_input
 		if(artist)
 			music_extra_data["artist"] = artist
 
-		var/res = alert(usr, "Show the title and link of this song to nearby players?\n[title ? title : web_sound_input]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
+		var/res = alert(usr, "向附近玩家显示这首歌的名称和链接吗？\n[title ? title : web_sound_input]", "大人，请选曲。", "否", "是", "取消")
 		switch(res)
-			if("Yes")
+			if("是")
 				to_chat(world, span_boldannounce("管理员在附近播放了：[title ? title : web_sound_input]"))
-			if("No")
+			if("否")
 				music_extra_data["title"] = null
 				music_extra_data["link"] = "Song Link Hidden"
 				music_extra_data["duration"] = "Song Duration Hidden"
 				music_extra_data["artist"] = "Song Artist Hidden"
 				music_extra_data["album"] = "Song Album Hidden"
 				music_extra_data["upload_date"] = "Song Upload Date Hidden"
-			if("Cancel")
+			if("取消")
 				return
 	else
 		log_admin("[key_name(src)] stopped local URL music")
-		message_admins("[key_name_admin(src)] stopped local URL music")
+		message_admins("[key_name_admin(src)] 停止了附近网址音乐")
 		stop_web_sounds = TRUE
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, span_boldwarning("BLOCKED: Content URL not using http(s) protocol"))
+		to_chat(src, span_boldwarning("已阻止：内容网址未使用 HTTP(S) 协议"))
 		return
 
 	if(web_sound_url || stop_web_sounds)
 		log_admin("[key_name(src)] played local URL music: [web_sound_input]")
-		message_admins("[key_name(src)] played local URL music: [web_sound_input]")
+		message_admins("[key_name(src)] 播放了附近网址音乐：[web_sound_input]")
 		var/turf/source_turf = get_turf(src.mob)
 		for(var/mob/M in GLOB.player_list + GLOB.dead_mob_list)
 			var/client/C = M.client
@@ -522,13 +522,13 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Music URL")
 
 /client/proc/play_music_direct_url(mob/M)
-	set category = "-GameMaster-"
-	set name = "Music - Direct URL"
+	set category = "-主持-"
+	set name = "音乐 - 指定玩家网址"
 	if(!check_rights(R_SOUND))
 		return
 
 	if(!M)
-		M = input("Play to whom?", "Active Players") as null|anything in (GLOB.player_list + GLOB.dead_mob_list)
+		M = input("向谁播放？", "在线玩家") as null|anything in (GLOB.player_list + GLOB.dead_mob_list)
 
 	if(!M)
 		return
@@ -537,7 +537,7 @@
 	if(!C)
 		return
 
-	var/web_sound_input = input("Enter direct HTTPS audio URL (leave blank to stop playing)", "PASS THE AUX CORD, MILORD.") as text|null
+	var/web_sound_input = input("输入 HTTPS 音频直链（留空停止播放）", "大人，请选曲。") as text|null
 	if(isnull(web_sound_input))
 		return
 
@@ -548,44 +548,44 @@
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
 		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."))
+			to_chat(src, span_boldwarning("不允许使用非 HTTP(S) 地址。"))
 			return
 
 		web_sound_url = web_sound_input
 
-		var/title = input(usr, "Optional: song title to display (leave blank for Unknown Track)", "Song Title") as null|text
-		var/artist = input(usr, "Optional: song artist to display (leave blank to hide)", "Song Artist") as null|text
+		var/title = input(usr, "可选：要显示的歌曲名称（留空显示未知曲目）", "歌曲名称") as null|text
+		var/artist = input(usr, "可选：要显示的演唱者（留空隐藏）", "歌曲演唱者") as null|text
 
 		music_extra_data["title"] = title
 		music_extra_data["link"] = web_sound_input
 		if(artist)
 			music_extra_data["artist"] = artist
 
-		var/res = alert(usr, "Show the title and link of this song to [M]?\n[title ? title : web_sound_input]", "PASS THE AUX CORD, MILORD.", "No", "Yes", "Cancel")
+		var/res = alert(usr, "向 [M] 显示这首歌的名称和链接吗？\n[title ? title : web_sound_input]", "大人，请选曲。", "否", "是", "取消")
 		switch(res)
-			if("Yes")
+			if("是")
 				to_chat(M, span_boldannounce("管理员播放了：[title ? title : web_sound_input]"))
-			if("No")
+			if("否")
 				music_extra_data["title"] = null
 				music_extra_data["link"] = "Song Link Hidden"
 				music_extra_data["duration"] = "Song Duration Hidden"
 				music_extra_data["artist"] = "Song Artist Hidden"
 				music_extra_data["album"] = "Song Album Hidden"
 				music_extra_data["upload_date"] = "Song Upload Date Hidden"
-			if("Cancel")
+			if("取消")
 				return
 	else
 		log_admin("[key_name(src)] stopped direct URL music for [M]")
-		message_admins("[key_name_admin(src)] stopped direct URL music for [M]")
+		message_admins("[key_name_admin(src)] 停止了向 [M] 播放的网址音乐")
 		stop_web_sounds = TRUE
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, span_boldwarning("BLOCKED: Content URL not using http(s) protocol"))
+		to_chat(src, span_boldwarning("已阻止：内容网址未使用 HTTP(S) 协议"))
 		return
 
 	if(web_sound_url || stop_web_sounds)
 		log_admin("[key_name(src)] played direct URL music for [M]: [web_sound_input]")
-		message_admins("[key_name(src)] played direct URL music for [M]: [web_sound_input]")
+		message_admins("[key_name(src)] 向 [M] 播放了网址音乐：[web_sound_input]")
 		if(C.prefs.toggles & SOUND_MIDI)
 			SEND_SOUND(C, sound(null, channel = CHANNEL_LOBBYMUSIC))
 			SEND_SOUND(C, sound(null, channel = CHANNEL_ADMIN))
@@ -597,25 +597,25 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Direct Music URL")
 
 /client/proc/set_round_end_sound(S as sound)
-	set category = "-GameMaster-"
-	set name = "Sound - Round End"
+	set category = "-主持-"
+	set name = "声音 - 回合结束"
 	if(!check_rights(R_SOUND))
 		return
 
 	SSticker.SetRoundEndSound(S)
 
 	log_admin("[key_name(src)] set the round end sound to [S]")
-	message_admins("[key_name_admin(src)] set the round end sound to [S]")
+	message_admins("[key_name_admin(src)] 将回合结束声音设为 [S]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Round End Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/stop_sounds()
-	set category = "-GameMaster-"
-	set name = "Sound - Stop All Playing"
+	set category = "-主持-"
+	set name = "声音 - 停止所有播放"
 	if(!src.holder)
 		return
 
 	log_admin("[key_name(src)] stopped all currently playing sounds.")
-	message_admins("[key_name_admin(src)] stopped all currently playing sounds.")
+	message_admins("[key_name_admin(src)] 停止了所有正在播放的声音。")
 	for(var/mob/M in GLOB.player_list)
 		SEND_SOUND(M, sound(null))
 		var/client/C = M.client

@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 			var/response = tgui_alert(owner.current, "你被选为了[name]。你接受这个身份吗？", "反派确认", list("接受", "拒绝"), timeout = 30 SECONDS)
 			if(response != "接受")
 				log_admin("[key_name(owner)] declined the [name] antagonist role.")
-				message_admins("[key_name_admin(owner)] declined the [name] antagonist role.")
+				message_admins("[key_name_admin(owner)] 拒绝了 [name] 反派身份。")
 				on_removal()
 				return
 //		if(!silent)
@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		to_chat(owner, "你的角色已被幽灵接管！如果你以后想避免这种情况，请申诉你的岗位封禁！")
-		message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(owner)]) to replace a jobbanned player.")
+		message_admins("[key_name_admin(C)] 接管了 ([key_name_admin(owner)])，以替换被岗位封禁的玩家。")
 		owner.current.ghostize(0)
 		owner.current.key = C.key
 
@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 //Called when using admin tools to give antag status
 /datum/antagonist/proc/admin_add(datum/mind/new_owner,mob/admin)
-	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into [name].")
+	message_admins("[key_name_admin(admin)] 将 [key_name_admin(new_owner)] 设为 [name]。")
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
 	new_owner.add_antag_datum(datum_type_or_instance = src, team = null, admin_panel = TRUE)
 
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/proc/admin_remove(mob/user)
 	if(!user)
 		return
-	message_admins("[key_name_admin(user)] has removed [name] antagonist status from [key_name_admin(owner)].")
+	message_admins("[key_name_admin(user)] 移除了 [key_name_admin(owner)] 的 [name] 反派身份。")
 	log_admin("[key_name(user)] has removed [name] antagonist status from [key_name(owner)].")
 	on_removal()
 

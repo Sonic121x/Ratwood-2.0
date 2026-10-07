@@ -120,7 +120,7 @@
 #ifdef TESTSERVER
 
 /client/verb/bloodnda()
-	set category = "DEBUGTEST"
+	set category = "调试指令"
 	set name = "血液 DNA"
 	set desc = ""
 
