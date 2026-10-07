@@ -1,5 +1,5 @@
 /client/proc/local_lightsout()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "熄灭附近灯光"
 
 	if(!check_rights(R_ADMIN))

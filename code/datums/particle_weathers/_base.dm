@@ -358,7 +358,7 @@
 	return TRUE
 
 /client/proc/run_particle_weather()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "天气 - 粒子"
 	set desc = "触发一场粒子天气"
 
@@ -377,7 +377,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Particle Weather")
 
 /client/proc/run_custom_particle_weather()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "天气 - 彩色粒子"
 	set desc = "触发一场粒子天气"
 

@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 
 /client/proc/mass_direct()
 	set name = "指挥生物"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	if(holder)
 		holder.mass_direct_mobs()
 
