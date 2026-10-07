@@ -48,7 +48,7 @@ export const InputButtons = (props: InputButtonsProps) => {
       textAlign="center"
       tooltip={large_buttons ? message : undefined}
     >
-      MAKE IT SO
+      确定
     </Button>
   );
   const cancelButton = (
@@ -62,7 +62,7 @@ export const InputButtons = (props: InputButtonsProps) => {
       pt={large_buttons ? 0.33 : 0}
       textAlign="center"
     >
-      I RESCIND
+      取消
     </Button>
   );
 

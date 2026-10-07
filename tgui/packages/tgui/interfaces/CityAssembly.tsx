@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { TextArea } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
-
+import { NativeButton } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import {
@@ -254,14 +254,14 @@ export const CityAssembly = () => {
       <Window.Content scrollable>
         <div style={pageStyle}>
           {/* Ratwood deviation: the Assembly is reached from the Noticeboard TGUI - give a way back. */}
-          <button
+          <NativeButton
             type="button"
             style={inkButtonStyle({ color: INK })}
             onClick={() => act('back_to_noticeboard')}
-            title="Return to the Noticeboard."
+            title="Return to the Noticeboard." display_title="返回告示板。"
           >
             &#9668; 返回公告板
-          </button>
+          </NativeButton>
           <div style={titleStyle}>城市议会</div>
           <div style={subtitleStyle}>
             腐木谷体面市民的代言人
@@ -402,14 +402,14 @@ const AldermanStrip = (props: {
         </span>
       </div>
       <div style={{ marginTop: '6px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-        <button
+        <NativeButton
           type="button"
           style={inkButtonStyle({
             color: canTrade ? SEAL_AMBER : INK_FAINT,
             disabled: !canTrade,
           })}
           disabled={!canTrade}
-          onClick={props.onTrade}
+          onClick={props.onTrade} display_title={canTrade ? '凭市政长老的授权打开神经主贸易面板，使用贸易授权额度，不动用王室金库。' : '市民议会尚未授予你贸易额度，或今日额度已用尽。'}
           title={
             canTrade
               ? "Open the Nerve Master's trade panel under the Alderman's writ. Draws from the trade warrant, not the Crown's Purse."
@@ -417,7 +417,7 @@ const AldermanStrip = (props: {
           }
         >
           市政长老 — 贸易
-        </button>
+        </NativeButton>
         <button
           type="button"
           style={inkButtonStyle({ color: SEAL_RED })}

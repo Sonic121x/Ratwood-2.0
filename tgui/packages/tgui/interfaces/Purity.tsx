@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
-
+import { NativeButton } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import {
@@ -65,7 +65,7 @@ const SecretsCard = (props: {
           marginBottom: '6px',
         }}
       >
-        {starsIfIlliterate('Secrets', canRead)}
+        {starsIfIlliterate('秘密', canRead)}
       </div>
       <div
         style={{
@@ -75,11 +75,11 @@ const SecretsCard = (props: {
         }}
       >
         <span style={{ color: INK_SOFT }}>
-          {starsIfIlliterate('Mammon Washing:', canRead)} {data.recent_payments}
+          {starsIfIlliterate('洗钱金额：', canRead)} {data.recent_payments}
         </span>
         <span style={{ color: INK_FAINT, margin: '0 6px' }}>·</span>
         <span style={{ color: SEAL_AMBER }}>
-          {starsIfIlliterate('Your cut, Master!', canRead)} {data.secret_budget}
+          {starsIfIlliterate('主人，这是您的分成！', canRead)} {data.secret_budget}
           m ({data.cut_pct}%)
         </span>
       </div>
@@ -91,9 +91,9 @@ const SecretsCard = (props: {
           marginTop: '2px',
         }}
       >
-        <span style={{ color: SEAL_GREEN }}>Paid: {data.tariff_paid}m</span>
+        <span style={{ color: SEAL_GREEN }}>已缴税：{data.tariff_paid}m</span>
         <span style={{ color: INK_FAINT, margin: '0 6px' }}>·</span>
-        <span style={{ color: SEAL_RED }}>Evaded: {data.tariff_evaded}m</span>
+        <span style={{ color: SEAL_RED }}>逃税额：{data.tariff_evaded}m</span>
       </div>
       <div
         style={{
@@ -104,50 +104,50 @@ const SecretsCard = (props: {
           flexWrap: 'wrap',
         }}
       >
-        <button
+        <NativeButton
           type="button"
           style={inkButtonStyle({ disabled: noCut })}
           disabled={noCut}
-          title={`Deposit ${data.withdraw_net}m into your account - the Crown keeps ${data.withdraw_tax}m in duty`}
+          title={`Deposit ${data.withdraw_net}m into your account - the Crown keeps ${data.withdraw_tax}m in duty`} display_title={`向账户存入 ${data.withdraw_net}m，王室扣留 ${data.withdraw_tax}m 作为税款`}
           onClick={() => act('withdraw_cut', { mode: 'bank' })}
         >
-          To Bank ({data.withdraw_net}m after duty)
-        </button>
-        <button
+          存入银行（税后 {data.withdraw_net}m）
+        </NativeButton>
+        <NativeButton
           type="button"
           style={inkButtonStyle({ disabled: noCut })}
           disabled={noCut}
-          title={`Withdraw the full ${data.secret_budget}m as coin - no duty paid, counted as tax evaded`}
+          title={`Withdraw the full ${data.secret_budget}m as coin - no duty paid, counted as tax evaded`} display_title={`将全部 ${data.secret_budget}m 提取为硬币；未缴税款，将计作逃税`}
           onClick={() => act('withdraw_cut', { mode: 'direct' })}
         >
-          Direct (Untaxed)
-        </button>
+          直接提取（未缴税）
+        </NativeButton>
         <button
           type="button"
           style={inkButtonStyle()}
           onClick={() => act('toggle_tax')}
         >
-          {data.dodging ? 'Enable Paying Taxes' : 'Stop Paying Taxes'}
+          {data.dodging ? '恢复缴税' : '停止缴税'}
         </button>
         {!data.upgrade_a_unlocked && (
-          <button
+          <NativeButton
             type="button"
             style={inkButtonStyle()}
-            title="Raise your laundering cut from 10% to 25%"
+            title="Raise your laundering cut from 10% to 25%" display_title="将洗钱分成从 10% 提高至 25%"
             onClick={() => act('unlock_cut', { level: 'a' })}
           >
-            Unlock 25% Cut ({data.upgrade_a_cost})
-          </button>
+            解锁 25% 分成（{data.upgrade_a_cost}）
+          </NativeButton>
         )}
         {!!data.upgrade_a_unlocked && !data.upgrade_b_unlocked && (
-          <button
+          <NativeButton
             type="button"
             style={inkButtonStyle()}
-            title="Raise your laundering cut from 25% to 50%"
+            title="Raise your laundering cut from 25% to 50%" display_title="将洗钱分成从 25% 提高至 50%"
             onClick={() => act('unlock_cut', { level: 'b' })}
           >
-            Unlock 50% Cut ({data.upgrade_b_cost})
-          </button>
+            解锁 50% 分成（{data.upgrade_b_cost}）
+          </NativeButton>
         )}
       </div>
     </div>
@@ -165,15 +165,15 @@ export const Purity = () => {
     : data.items;
 
   return (
-    <Window width={560} height={720} theme="parchment">
+    <Window width={560} height={720} theme="parchment" display_title="纯净">
       <Window.Content scrollable>
         <div style={pageStyle}>
           <div style={titleStyle}>{starsIfIlliterate(data.motto, canRead)}</div>
           <div style={subtitleStyle}>
-            Crown Import Tariff: <b>{data.tariff_rate_pct}%</b>
+            王室进口关税：<b>{data.tariff_rate_pct}%</b>
             {isProprietor && !!data.dodging && (
               <span style={{ color: SEAL_RED, marginLeft: '8px' }}>
-                <b>(TAX DODGING)</b>
+                <b>（逃税中）</b>
               </span>
             )}
           </div>
@@ -187,7 +187,7 @@ export const Purity = () => {
                 marginRight: '12px',
               }}
             >
-              {starsIfIlliterate('Mammon Loaded', canRead)}
+              {starsIfIlliterate('已存入玛门币', canRead)}
             </div>
             <div style={{ ...fieldValueStyle, fontWeight: 'bold' }}>
               {data.budget}m
@@ -198,7 +198,7 @@ export const Purity = () => {
               disabled={data.budget <= 0}
               onClick={() => act('change')}
             >
-              Withdraw as Coin
+              提取硬币
             </button>
           </div>
           <div
@@ -216,12 +216,12 @@ export const Purity = () => {
                 color: INK_SOFT,
               }}
             >
-              Search:
+              搜索：
             </span>
             <Input
               value={search}
               onChange={setSearch}
-              placeholder="Type to filter the stock..."
+              placeholder="输入文字筛选库存……"
               width="240px"
             />
             {!!search && (
@@ -230,7 +230,7 @@ export const Purity = () => {
                 style={inkButtonStyle()}
                 onClick={() => setSearch('')}
               >
-                Clear
+                清空
               </button>
             )}
           </div>
@@ -242,7 +242,7 @@ export const Purity = () => {
                 color: INK_SOFT,
               }}
             >
-              {needle ? `Nothing matches "${search}".` : 'Nothing stocked.'}
+              {needle ? `没有与“${search}”匹配的商品。` : '暂无库存。'}
             </div>
           ) : (
             <div

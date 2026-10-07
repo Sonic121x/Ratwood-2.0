@@ -7,12 +7,12 @@
 import { useDispatch, useSelector } from 'tgui/backend';
 import {
   Button,
-  Collapsible,
   Divider,
   Input,
-  Section,
   Stack,
 } from 'tgui-core/components';
+import { Collapsible, Section } from 'tgui/components/Localized';
+
 
 import {
   moveChatPageLeft,
@@ -36,7 +36,7 @@ export function ChatPageSettings(props) {
             <Button
               color="blue"
               icon="angles-left"
-              tooltip="Reorder tab to the left"
+              tooltip="将标签页左移"
               onClick={() =>
                 dispatch(
                   moveChatPageLeft({
@@ -66,7 +66,7 @@ export function ChatPageSettings(props) {
             <Button
               color="blue"
               icon="angles-right"
-              tooltip="Reorder tab to the right"
+              tooltip="将标签页右移"
               onClick={() =>
                 dispatch(
                   moveChatPageRight({
@@ -81,7 +81,7 @@ export function ChatPageSettings(props) {
           <Button.Checkbox
             checked={page.hideUnreadCount}
             icon={page.hideUnreadCount ? 'bell-slash' : 'bell'}
-            tooltip="Disables unread counter"
+            tooltip="关闭未读消息计数"
             onClick={() =>
               dispatch(
                 updateChatPage({
@@ -91,7 +91,7 @@ export function ChatPageSettings(props) {
               )
             }
           >
-            Mute
+            静音
           </Button.Checkbox>
         </Stack.Item>
         {!page.isMain && (
@@ -107,13 +107,13 @@ export function ChatPageSettings(props) {
                 )
               }
             >
-              Remove
+              移除
             </Button>
           </Stack.Item>
         )}
       </Stack>
       <Divider />
-      <Section title="Messages to display">
+      <Section title="Messages to display" display_title="显示的消息类型">
         {MESSAGE_TYPES.filter(
           (typeDef) => !typeDef.important && !typeDef.admin,
         ).map((typeDef) => (
@@ -132,7 +132,7 @@ export function ChatPageSettings(props) {
             {typeDef.name}
           </Button.Checkbox>
         ))}
-        <Collapsible mt={1} color="transparent" title="Admin stuff">
+        <Collapsible mt={1} color="transparent" title="Admin stuff" display_title="管理相关">
           {MESSAGE_TYPES.filter(
             (typeDef) => !typeDef.important && typeDef.admin,
           ).map((typeDef) => (

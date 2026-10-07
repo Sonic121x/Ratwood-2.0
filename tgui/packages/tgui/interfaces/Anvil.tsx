@@ -4,9 +4,9 @@ import {
   Button,
   DmIcon,
   Input,
-  Section,
   Stack,
 } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -100,7 +100,7 @@ export const RecipeDisplay = (props) => {
 
   return (
     <Section
-      title="Recipes"
+      title="Recipes" display_title="锻造配方"
       fill
       scrollable
       buttons={<SearchBar search={search} setSearch={setSearch} />}
