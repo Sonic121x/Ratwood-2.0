@@ -36,7 +36,7 @@
 	return container
 
 /datum/admins/proc/beaker_panel()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "生成试剂容器"
 	if(!check_rights())
 		return
