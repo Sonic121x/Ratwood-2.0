@@ -259,8 +259,8 @@
 // -----------------------------------------------------------------------------
 /client/proc/cleanup_world()
 	set category = "-GameMaster-"
-	set name = "Clean up the world"
-	set desc = "Announce a 60-second warning, then delete loose organs, equipment, heads, skulls, limbs, butchering materials, remains, and non-player corpses from the ground."
+	set name = "清理世界"
+	set desc = "提前 60 秒发布公告，随后删除散落地面的器官、装备、头颅、颅骨、肢体、屠宰材料、残骸和非玩家尸体。"
 
 	// 权限校验：只有具备管理员权限者可执行，防止越权调用。
 	if(!check_rights(R_ADMIN))
@@ -269,12 +269,12 @@
 	// 二次确认对话框：给管理员一个“优雅取消”的入口（满足可取消的要求）。
 	// 选择 Cancel 或直接关闭弹窗（返回值非 "Yes"）都会安全中止。
 	var/confirm = alert(src,
-		"This will broadcast a server-wide warning and, in 60 seconds, delete loose organs, equipment, heads, skulls, limbs, butchering materials, remains, and non-player corpses from every ground tile. Items and remains on tables, racks/shelves, or inside open chests/closets are spared. Proceed?",
-		"Clean up the world",
-		"Yes", "Cancel")
-	if(confirm != "Yes")
+		"这会向全服发布预警，并在 60 秒后删除所有地块上散落的器官、装备、头颅、颅骨、肢体、屠宰材料、残骸和非玩家尸体。桌子、货架或敞开的箱柜中的物品和残骸会保留。继续？",
+		"清理世界",
+		"是", "取消")
+	if(confirm != "是")
 		// 明确告知已取消，避免管理员误以为指令已生效。
-		to_chat(src, span_notice("World cleanup cancelled. No announcement was made and nothing will be deleted."))
+		to_chat(src, span_notice("世界清理已取消。未发布公告，也不会删除任何内容。"))
 		return
 
 	// 发布全服醒目公告：使用 priority_announce 弹出带标题的高亮通知并播放提示音，
@@ -287,9 +287,9 @@
 		sound = 'sound/misc/bell.ogg')
 
 	// 即时反馈给触发者本人 + 写入管理日志/管理频道，形成操作留痕。
-	to_chat(src, span_notice("World cleanup announced. Ground items, remains and non-player corpses will be purged in 60 seconds."))
+	to_chat(src, span_notice("已发布世界清理公告。地面物品、残骸和非玩家尸体将在 60 秒后清除。"))
 	log_admin("[key_name(usr)] started a world cleanup; the ground purge will run in 60 seconds.")
-	message_admins(span_adminnotice("[key_name_admin(usr)] started a world cleanup; the ground purge will run in 60 seconds."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 发起了世界清理；地面清理将在 60 秒后执行。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Clean up the world")
 
 	// 排程 60 秒后执行真正的删除逻辑。使用 addtimer 异步回调全局 proc，

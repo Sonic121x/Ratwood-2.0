@@ -234,18 +234,18 @@
 
 	// 为什么提前判断空列表：没有任何可选目标时给出明确反馈并退出，避免弹出空菜单。
 	if(!length(name_to_mob))                                                   // No valid targets exist...
-		to_chat(src, span_warning("There are no living player characters available to bless.")) // ...inform the admin.
+		to_chat(src, span_warning("没有可接受赐福的存活玩家角色。")) // ...inform the admin.
 		return null                                                           // Signal "cancel/abort" to the caller.
 
 	// 为什么用 null|anything：让管理员可以直接关闭对话框取消（返回 null 即取消）。
-	var/chosen_name = input(src, "Select the character to bless:", "Bless - Target") as null|anything in sortList(name_to_mob) // Prompt by name.
+	var/chosen_name = input(src, "选择接受赐福的角色：", "赐福 - 目标") as null|anything in sortList(name_to_mob) // Prompt by name.
 	if(!chosen_name)                                                          // Admin pressed cancel / closed the dialog...
 		return null                                                           // ...abort gracefully.
 
 	// 为什么再校验一次：弹窗期间目标可能登出/被删，需重新确认 mob 仍然有效。
 	var/mob/living/target = name_to_mob[chosen_name]                          // Resolve the chosen name back to a mob.
 	if(!istype(target) || QDELETED(target))                                   // If the target vanished while the menu was open...
-		to_chat(src, span_warning("That character is no longer available.")) // ...report the failure.
+		to_chat(src, span_warning("该角色已不可用。")) // ...report the failure.
 		return null                                                           // ...and abort.
 
 	return target                                                            // Hand the validated target back to bless().
@@ -260,8 +260,8 @@
 // ----------------------------------------------------------------------------
 /client/proc/bless()
 	set category = "-GameMaster-"                                              // Place this verb under the GameMaster admin tab.
-	set name = "Bless"                                                         // Verb name shown to admins.
-	set desc = "Choose one of three blessings, then apply it to a selected character."  // Updated description.
+	set name = "赐福"                                                         // Verb name shown to admins.
+	set desc = "从三种赐福中选择一种，施加于所选角色。"  // Updated description.
 
 	// 为什么先校验权限：这是管理指令，必须确保调用者拥有管理员权限。
 	if(!check_rights(R_ADMIN))                                                 // Reject anyone without admin rights.
@@ -270,20 +270,20 @@
 	// 为什么用静态关联列表：把 "可读的效果名" 映射到对应的状态效果类型，
 	//   既能给 input() 展示友好名称，又能直接拿到类型路径；static 避免每次重建。
 	var/static/list/blessing_options = list(
-		"God's Blessings (3 min: minor healing, some pain relief, less fatigue)" = /datum/status_effect/buff/gods_blessings, // Effect 1 (adjusted to a milder buff).
-		"Divine Vigor (10 min health recovery + all attributes +1)" = /datum/status_effect/buff/divine_vigor,        // Effect 2 (new).
-		"Avatar of War (5 min: no bleed/pain, infinite stamina, +4 STR/SPD/CON/WIL, then 3 min sleep)" = /datum/status_effect/buff/avatar_of_war, // Effect 3 (new).
+		"诸神祝福（3 分钟：轻微治疗、部分减痛、减轻疲劳）" = /datum/status_effect/buff/gods_blessings, // Effect 1 (adjusted to a milder buff).
+		"神圣活力（10 分钟生命恢复，所有属性 +1）" = /datum/status_effect/buff/divine_vigor,        // Effect 2 (new).
+		"战神附体（5 分钟：无流血与疼痛、无限耐力，力量/速度/体质/意志 +4，结束后沉睡 3 分钟）" = /datum/status_effect/buff/avatar_of_war, // Effect 3 (new).
 	)
 
 	// 为什么先选效果：需求要求 "Choosing bless now should provide three effects to choose from"。
-	var/chosen_label = input(src, "Choose a blessing to grant:", "Bless - Effect") as null|anything in blessing_options // Show the 3-option menu.
+	var/chosen_label = input(src, "选择要授予的赐福：", "赐福 - 效果") as null|anything in blessing_options // Show the 3-option menu.
 	if(!chosen_label)                                                         // Admin cancelled the effect menu...
 		return                                                                // ...abort the whole command.
 
 	// 为什么用映射取类型：把用户看到的标签转换成实际要应用的状态效果类型路径。
 	var/effect_type = blessing_options[chosen_label]                          // Resolve label -> status effect typepath.
 	if(!effect_type)                                                          // Defensive: should never happen, but guard anyway...
-		to_chat(src, span_warning("Invalid blessing selection."))            // ...report the inconsistency.
+		to_chat(src, span_warning("选择的赐福无效。"))            // ...report the inconsistency.
 		return                                                                // ...and abort.
 
 	// 为什么后选目标：需求要求选完效果后 "select the target ... using the player character's name"。
@@ -293,7 +293,7 @@
 
 	// 为什么要求存活：三种祝福都依赖治疗/属性/睡眠等机制，对尸体施加既无效又易出错。
 	if(target.stat == DEAD)                                                   // If the chosen character is dead...
-		to_chat(src, span_warning("[target] must be alive to receive a blessing.")) // ...explain why it can't be applied.
+		to_chat(src, span_warning("[target] 必须存活才能接受赐福。")) // ...explain why it can't be applied.
 		return                                                                // ...and abort.
 
 	// 为什么记录 already_blessed：状态基类是 REFRESH 型，重复施加会刷新时长；
@@ -304,7 +304,7 @@
 	//   说明效果未生效，需要立即向管理员报错而不是谎报成功。
 	var/datum/status_effect/applied = target.apply_status_effect(effect_type) // Apply (or refresh) the chosen blessing.
 	if(!applied && !already_blessed)                                         // Apply failed and there was no prior instance to refresh...
-		to_chat(src, span_warning("Failed to apply the blessing to [target]. The effect may have been rejected."))  // ...report failure.
+		to_chat(src, span_warning("未能向 [target] 施加赐福，效果可能被拒绝。"))  // ...report failure.
 		return                                                                // ...and abort before logging a false success.
 
 	// 为什么提取可读名：日志与聊天反馈里展示效果名比展示类型路径更清晰。
@@ -315,17 +315,17 @@
 
 	// 为什么区分刷新/首次：给管理员、目标、以及管理日志提供精确的行为描述。
 	if(already_blessed)                                                       // The blessing was already active and just got refreshed...
-		to_chat(src, span_notice("Refreshed '[chosen_label]' on [target]."))                 // Admin feedback.
+		to_chat(src, span_notice("已刷新 [target] 的‘[chosen_label]’。"))                 // Admin feedback.
 		to_chat(target, span_notice("熟悉的赐福再次降临于我。"))               // Target feedback.
 		log_admin("[key_name(usr)] refreshed blessing [effect_name] on [key_name(target)].")  // Plain admin log.
-		message_admins(span_adminnotice("[key_name_admin(usr)] refreshed blessing [effect_name] on [key_name_admin(target)].")) // Broadcast to admins.
-		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has refreshed a blessing ([effect_name]) on you.</font>") // Ticket trail.
+		message_admins(span_adminnotice("[key_name_admin(usr)] 刷新了 [key_name_admin(target)] 的赐福（[chosen_label]）。")) // Broadcast to admins.
+		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] 刷新了你的赐福（[chosen_label]）。</font>") // Ticket trail.
 	else                                                                      // The blessing was freshly granted...
-		to_chat(src, span_notice("Granted '[chosen_label]' to [target]."))                    // Admin feedback.
+		to_chat(src, span_notice("已向 [target] 授予‘[chosen_label]’。"))                    // Admin feedback.
 		to_chat(target, span_notice("神圣的赐福降临于我。"))                    // Target feedback.
 		log_admin("[key_name(usr)] granted blessing [effect_name] to [key_name(target)].")    // Plain admin log.
-		message_admins(span_adminnotice("[key_name_admin(usr)] granted blessing [effect_name] to [key_name_admin(target)].")) // Broadcast to admins.
-		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has blessed you ([effect_name]).</font>") // Ticket trail.
+		message_admins(span_adminnotice("[key_name_admin(usr)] 向 [key_name_admin(target)] 授予了赐福（[chosen_label]）。")) // Broadcast to admins.
+		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] 为你赐福（[chosen_label]）。</font>") // Ticket trail.
 
 	// 为什么记录统计：保留原版的管理动作统计埋点，便于后台分析使用频率。
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Bless")            // Tally one use of the Bless verb.

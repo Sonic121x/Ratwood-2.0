@@ -434,7 +434,7 @@ SUBSYSTEM_DEF(god_blessings)
 // ============================================================================
 /client/proc/toggle_god_blessings()
 	set category = "-GameMaster-"
-	set name = "Toggle God Blessings"
+	set name = "切换神明赐福"
 	set desc = "启用或停用神明的赐福事件。"
 
 	// 权限校验：这是管理指令，必须具备管理员权限。
@@ -451,7 +451,7 @@ SUBSYSTEM_DEF(god_blessings)
 
 	// 弹出“启用 / 停用”二选一菜单（菜单标题里附带当前状态）；
 	// 用 null|anything 让管理员可直接关闭对话框以取消。
-	var/choice = input(src, "神明赐福事件当前为：[currently_on ? "已启用" : "已停用"]。请选择：", "Toggle God Blessings") as null|anything in list("启用", "停用")
+	var/choice = input(src, "神明赐福事件当前为：[currently_on ? "已启用" : "已停用"]。请选择：", "切换神明赐福") as null|anything in list("启用", "停用")
 	if(!choice) // 管理员取消/关闭了对话框。
 		return
 
@@ -470,6 +470,6 @@ SUBSYSTEM_DEF(god_blessings)
 	var/state_text = want_on ? "启用" : "停用"
 	to_chat(src, span_notice("你已[state_text]神明的赐福事件。"))
 	log_admin("[key_name(usr)] [want_on ? "enabled" : "disabled"] the God Blessings event.")
-	message_admins(span_adminnotice("[key_name_admin(usr)] [want_on ? "enabled" : "disabled"] the God Blessings event."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] [want_on ? "启用" : "停用"]了神明赐福事件。"))
 	// 统计埋点，便于后台分析该指令的使用情况。
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle God Blessings")

@@ -45,8 +45,8 @@
 
 /client/proc/god()
 	set category = "-GameMaster-"
-	set name = "God"
-	set desc = "Grant the God trait to a selected player and perfect their stats and skills."
+	set name = "授予神明特性"
+	set desc = "向选中的玩家授予神明特性，并将其属性和技能提升至完美。"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -57,21 +57,21 @@
 
 	var/already_god = HAS_TRAIT(target, TRAIT_ADMIN_GOD)
 	if(!admin_god_apply(target))
-		to_chat(src, span_warning("Failed to grant the God trait to [target]."))
+		to_chat(src, span_warning("未能向 [target] 授予神明特性。"))
 		return
 
 	if(already_god)
-		to_chat(src, span_notice("Reapplied the God trait to [target] and restored all stats and skills to their divine maximum."))
+		to_chat(src, span_notice("已向 [target] 重新施加神明特性，将全部属性和技能恢复至神明的极限。"))
 		to_chat(target, span_notice("神力再次涌入我的体内。神明特性让我的属性与技能重归完美。"))
 		log_admin("[key_name(usr)] reapplied the God trait to [key_name(target)] and restored all stats and skills to their maximum.")
-		message_admins(span_adminnotice("[key_name_admin(usr)] reapplied the God trait to [key_name_admin(target)] and restored all stats and skills to their maximum."))
-		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has reapplied the God trait to you and restored all stats and skills to their maximum.</font>")
+		message_admins(span_adminnotice("[key_name_admin(usr)] 向 [key_name_admin(target)] 重新施加了神明特性，将全部属性和技能恢复至上限。"))
+		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] 向你重新施加了神明特性，将全部属性和技能恢复至上限。</font>")
 	else
-		to_chat(src, span_notice("Granted the God trait to [target]. Their stats are now 20 and all skills are capped and set to 6."))
+		to_chat(src, span_notice("已向 [target] 授予神明特性。全部属性已设为 20，全部技能的等级和上限已设为 6。"))
 		to_chat(target, span_notice("我获得了神明特性。我的属性已臻完美，所有技能都已达到传奇境界。"))
 		log_admin("[key_name(usr)] granted the God trait to [key_name(target)], setting all stats to 20 and all skill caps and levels to 6.")
-		message_admins(span_adminnotice("[key_name_admin(usr)] granted the God trait to [key_name_admin(target)], setting all stats to 20 and all skill caps and levels to 6."))
-		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has granted you the God trait, setting all stats to 20 and all skill caps and levels to 6.</font>")
+		message_admins(span_adminnotice("[key_name_admin(usr)] 向 [key_name_admin(target)] 授予了神明特性，将全部属性设为 20，全部技能的等级和上限设为 6。"))
+		admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] 向你授予了神明特性，将全部属性设为 20，全部技能的等级和上限设为 6。</font>")
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "God")
 
