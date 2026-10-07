@@ -1,5 +1,5 @@
 /client/proc/map_template_load()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "地图模板 - 放置"
 
 	var/datum/map_template/template
@@ -27,7 +27,7 @@
 	images -= preview
 
 /client/proc/map_template_upload()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "地图模板 - 上传"
 
 	var/map = input(src, "选择要上传到模板库的地图模板","上传地图模板") as null|file

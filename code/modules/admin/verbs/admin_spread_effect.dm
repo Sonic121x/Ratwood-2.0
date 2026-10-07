@@ -1,6 +1,6 @@
 /client/proc/admin_spread_effect()
 	set name = "扩散效果"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 
 	if(!check_rights(R_ADMIN))
 		return
