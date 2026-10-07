@@ -529,7 +529,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 /client/proc/check_antagonists()
 	set name = "查看反派"
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	if(holder)
 		holder.check_antagonists()
 		log_admin("[key_name(usr)] checked antagonists.")	//for tsar~
@@ -667,7 +667,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stealth Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/drop_bomb()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "爆炸..."
 	set desc = ""
 
@@ -709,7 +709,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Bomb") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/drop_dynex_bomb()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "爆炸 - 动态爆炸..."
 	set desc = ""
 
@@ -756,7 +756,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	message_admins("[key_name_admin(usr)] 将动态爆炸系数改为：[ex_scale]")
 
 /client/proc/give_spell(mob/T in GLOB.mob_list)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "授予法术"
 	set desc = ""
 
@@ -780,7 +780,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		message_admins(span_danger("授予无心智生物的法术不会随心智交换或克隆转移！"))
 
 /client/proc/remove_spell(mob/T in GLOB.mob_list)
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "移除法术"
 	set desc = ""
 
@@ -908,7 +908,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	to_chat(src, span_interface("大厅场外聊天现已[show_lobby_ooc ? "显示" : "隐藏"]。"))
 
 /client/proc/end_party()
-	set category = "-主持-"
+	set category = "-GameMaster-"
 	set name = "结束试玩"
 	set hidden = 1
 	if(!holder)
