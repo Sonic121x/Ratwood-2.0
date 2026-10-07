@@ -1,5 +1,5 @@
 import type { BooleanLike } from 'tgui-core/react';
-
+import { NativeButton, NativeDiv, NativeSpan } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import {
@@ -129,7 +129,7 @@ const LineRow = (props: { line: DemandLine; cutPercent: number }) => {
     : line.offered_price;
   const producerPayout = Math.round(effectivePrice * (1 - cutPercent / 100));
   return (
-    <div
+    <NativeDiv display_title={hasKin ? `每件 ${effectivePrice}m（亲缘加成：在基础价 ${line.offered_price}m 上增加 ${effectivePrice - line.offered_price}m）` : undefined}
       style={{
         display: 'flex',
         alignItems: 'baseline',
@@ -184,7 +184,7 @@ const LineRow = (props: { line: DemandLine; cutPercent: number }) => {
       >
         你可得 {producerPayout}m
       </span>
-    </div>
+    </NativeDiv>
   );
 };
 
@@ -250,8 +250,8 @@ const ManifestSection = (props: {
           {manifest.realm_id}
         </span>
         {!!manifest.is_kin && (
-          <span
-            title="Kin ship - bulk demand payouts get the Kinship bonus"
+          <NativeSpan
+            title="Kin ship - bulk demand payouts get the Kinship bonus" display_title="同乡船只：大宗需求的报酬享有亲缘加成"
             style={{
               marginLeft: '6px',
               padding: '0 6px',
@@ -265,7 +265,7 @@ const ManifestSection = (props: {
             }}
           >
             同乡
-          </span>
+          </NativeSpan>
         )}
       </div>
       {!!manifest.typical_provisions && (
@@ -365,14 +365,14 @@ export const ShipFulfillment = () => {
     <Window display_title="船舶履约货箱" width={620} height={680} theme="parchment">
       <Window.Content scrollable>
         <div style={{ ...pageStyle, position: 'relative' }}>
-          <button
+          <NativeButton
             type="button"
-            title="Open the economy guidebook"
+            title="Open the economy guidebook" display_title="打开经济指南"
             style={{ ...inkButtonStyle({}), position: 'absolute', top: 8, right: 8 }}
             onClick={() => act('help')}
           >
             ?
-          </button>
+          </NativeButton>
           <div style={titleStyle}>大宗需求清单</div>
           <div style={subtitleStyle}>
             将符合需求的货物交给货箱即可履约。商人将收取{' '}

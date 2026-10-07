@@ -34,30 +34,30 @@ export const BathhouseFundSection = ({ data, act }: TabProps) => {
 
   return (
     <>
-      <div style={sectionHeaderStyle}>Employment Terms</div>
+      <div style={sectionHeaderStyle}>雇佣条款</div>
       <div style={{ color: INK_FAINT, marginBottom: 8, fontSize: FONT_BODY }}>
         <div>
-          Workers of the Bathhouse may draw up to{' '}
-          {data.bathhouse_worker_withdraw_limit}m per dae
-          {!!data.bathhouse_worker_suspended && ' (payments suspended)'}.
+          浴场雇员每日最多可提取{' '}
+          {data.bathhouse_worker_withdraw_limit}m
+          {!!data.bathhouse_worker_suspended && '（已暂停发放）'}。
         </div>
         <div>
-          Agents of the Bathhouse may draw up to{' '}
-          {data.bathhouse_agent_withdraw_limit}m per dae
-          {!!data.bathhouse_agent_suspended && ' (payments suspended)'}.
+          浴场代理人每日最多可提取{' '}
+          {data.bathhouse_agent_withdraw_limit}m
+          {!!data.bathhouse_agent_suspended && '（已暂停发放）'}。
         </div>
       </div>
       {!data.is_bathmaster && (
         <div style={{ color: INK_FAINT, marginBottom: 8, fontSize: FONT_BODY }}>
           {data.bathhouse_viewer_suspended
-            ? 'The Nightmistress has suspended your payments until she resumes them.'
-            : `You have ${data.bathhouse_withdraw_remaining}m remaining this dae.`}
+            ? '夜主已暂停向你发放款项，须待她恢复。'
+            : `你今日还可提取 ${data.bathhouse_withdraw_remaining}m。`}
         </div>
       )}
 
-      <div style={sectionHeaderStyle}>Render Coin</div>
+      <div style={sectionHeaderStyle}>上缴钱款</div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Amount</div>
+        <div style={fieldLabelStyle}>金额</div>
         <div style={fieldValueStyle}>
           <input
             type="number"
@@ -68,7 +68,7 @@ export const BathhouseFundSection = ({ data, act }: TabProps) => {
             style={{ ...inkInputStyle, width: 110 }}
           />
           <span style={{ marginLeft: 6, color: INK_FAINT }}>
-            mammon (of {data.account_balance}m)
+            玛门币（账户余额 {data.account_balance}m）
           </span>
         </div>
       </div>
@@ -85,15 +85,15 @@ export const BathhouseFundSection = ({ data, act }: TabProps) => {
             setDeposit('');
           }}
         >
-          Render unto the Bathhouse
+          上缴至浴场
         </button>
       </div>
 
       {!!data.is_bathmaster && (
         <>
-          <div style={sectionHeaderStyle}>Daily Withdrawal Limits</div>
+          <div style={sectionHeaderStyle}>每日提款上限</div>
           <GroupLimitControls
-            label="Workers"
+            label="雇员"
             limit={workerLimit}
             setLimit={setWorkerLimit}
             limitNum={workerLimitNum}
@@ -109,7 +109,7 @@ export const BathhouseFundSection = ({ data, act }: TabProps) => {
             }
           />
           <GroupLimitControls
-            label="Agents"
+            label="代理人"
             limit={agentLimit}
             setLimit={setAgentLimit}
             limitNum={agentLimitNum}
@@ -157,7 +157,7 @@ const GroupLimitControls = (props: {
           style={{ ...inkInputStyle, width: 110 }}
         />
         <span style={{ marginLeft: 6, color: INK_FAINT }}>
-          mammon per head, per dae
+          玛门币／人／日
         </span>
       </div>
     </div>
@@ -171,14 +171,14 @@ const GroupLimitControls = (props: {
         disabled={props.limitNum < 0}
         onClick={props.onSet}
       >
-        Set Limit
+        设定上限
       </button>
       <button
         type="button"
         style={inkButtonStyle({})}
         onClick={props.onToggleSuspend}
       >
-        {props.suspended ? 'Resume Payments' : 'Suspend Payments'}
+        {props.suspended ? '恢复发放' : '暂停发放'}
       </button>
     </div>
   </div>
