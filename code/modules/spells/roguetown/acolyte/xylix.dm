@@ -189,7 +189,7 @@
 	icon_state = "mockery"
 
 /obj/effect/proc_holder/spell/self/xylixslip
-	name = "赛利克斯 滑步"
+	name = "赛利克斯滑步"
 	desc = "让你跃至最远 3 格外。"
 	overlay_icon = 'icons/mob/actions/xylixmiracles.dmi'
 	action_icon = 'icons/mob/actions/xylixmiracles.dmi'
@@ -685,7 +685,7 @@
 	return ..()
 
 /obj/effect/proc_holder/spell/invoked/slick_trick_small/miracle
-	name = "赛利克斯 滑域"
+	name = "赛利克斯滑域"
 	desc = "创造一小片神圣湿滑区域，绊倒疏于防备者。"
 	overlay_icon = 'icons/mob/actions/xylixmiracles.dmi'
 	action_icon = 'icons/mob/actions/xylixmiracles.dmi'
@@ -698,7 +698,7 @@
 	recharge_time = 30 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/slick_trick/miracle
-	name = "巨型 赛利克斯 滑域"
+	name = "巨型赛利克斯滑域"
 	desc = "让大片区域覆满神圣滑面，将受害者掀翻在地。"
 	overlay_icon = 'icons/mob/actions/xylixmiracles.dmi'
 	action_icon = 'icons/mob/actions/xylixmiracles.dmi'
@@ -745,7 +745,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/xylix_blessed_luck
-	name = "赛利克斯 赐福之运"
+	name = "赛利克斯赐福之运"
 	desc = "即便你没有真正赢得他的恩宠，他依旧眷顾着你。"
 	icon_state = "status"
 
@@ -796,7 +796,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/astrata_favor
-	name = "阿斯特拉塔 的恩泽"
+	name = "阿斯特拉塔的恩泽"
 	desc = "虽然这份恩泽来之不易，但 赛利克斯 还是动用了它。你几乎如同不朽。"
 	icon_state = "status"
 
@@ -819,7 +819,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/noc_favor
-	name = "诺克 的恩泽"
+	name = "诺克的恩泽"
 	desc = "诺克 的知识、光与影笼罩着你。"
 	icon_state = "status"
 
@@ -840,7 +840,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/zizo_unfavor
-	name = "齐佐 的介入"
+	name = "齐佐的介入"
 	desc = "你的庇护者不够专注，引来了 齐佐 的注意。你感到自己变弱了。"
 	icon_state = "status"
 
@@ -861,7 +861,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/ravox_favor
-	name = "拉沃克斯 的恩泽"
+	name = "拉沃克斯的恩泽"
 	desc = "拉沃克斯 的力量支撑着你。"
 	icon_state = "status"
 
@@ -906,7 +906,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/baotha_favor
-	name = "巴奥莎 的恩泽"
+	name = "巴奥莎的恩泽"
 	desc = "你感到欣快、敏捷，浑身燥热而微醺。"
 	icon_state = "status"
 
@@ -934,7 +934,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/graggar_favor
-	name = "格拉加尔 的恩泽"
+	name = "格拉加尔的恩泽"
 	desc = "暴力转而向内。鲜血与痛苦都降临在你身上！"
 	icon_state = "status"
 
@@ -966,7 +966,7 @@
 	icon_state = "status"
 
 /atom/movable/screen/alert/status_effect/buff/malum_favor
-	name = "玛勒姆 的恩泽"
+	name = "玛勒姆的恩泽"
 	desc = "玛勒姆 将他持久的力量与意志借给了你。"
 	icon_state = "status"
 
@@ -994,7 +994,7 @@
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/eora_favor
-	name = "伊欧拉 的恩泽"
+	name = "伊欧拉的恩泽"
 	desc = "伊欧拉 以她的爱包裹着你，抚平你的伤口，并令你焕发神性的美丽。"
 	icon_state = "status"
 
@@ -1035,7 +1035,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/necra_favor
-	name = "内克拉 的恩泽"
+	name = "内克拉的恩泽"
 	desc = "内克拉 香炉中的烟雾缠绕在你的步履之间，净化着你周围的地面。"
 	icon_state = "status"
 
@@ -1064,7 +1064,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/pestra_favor
-	name = "佩斯特拉 的恩泽"
+	name = "佩斯特拉的恩泽"
 	desc = "水蛭般的净除与爬行的慈悲缓解了毒素，并将你的伤口缝合。"
 	icon_state = "status"
 
@@ -1089,7 +1089,7 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/dendor_favor
-	name = "登多尔 的恩泽"
+	name = "登多尔的恩泽"
 	desc = "登多尔 的祝福如针刺般电过你的身体，暂时将你的步伐从大地的束缚中解放。"
 	icon_state = "status"
 
@@ -1123,12 +1123,12 @@
 	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/abyssor_favor
-	name = "阿比索尔 的恩泽"
+	name = "阿比索尔的恩泽"
 	desc = "你唤醒了本不该唤醒之物。它会夺走你的呼吸，或者赐你第二口气。"
 	icon_state = "status"
 
 /obj/effect/proc_holder/spell/invoked/xylixlian_luck
-	name = "赛利克斯 的赌运"
+	name = "赛利克斯的赌运"
 	desc = "向你的运气与庇护者发起挑战。"
 	overlay_icon = 'icons/mob/actions/xylixmiracles.dmi'
 	action_icon = 'icons/mob/actions/xylixmiracles.dmi'
