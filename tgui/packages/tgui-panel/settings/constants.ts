@@ -7,16 +7,16 @@
 export const SETTINGS_TABS = [
   {
     id: 'general',
-    name: 'General',
+    name: '常规',
   },
 
   {
     id: 'textHighlight',
-    name: 'Text Highlights',
+    name: '文本高亮',
   },
   {
     id: 'chatPage',
-    name: 'Chat Tabs',
+    name: '聊天标签页',
   },
   // {
   //   id: 'statPanel',

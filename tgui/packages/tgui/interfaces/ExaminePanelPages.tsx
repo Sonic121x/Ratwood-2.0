@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, Image, Section, Stack } from 'tgui-core/components';
-
+import { Box, Button, Image, Stack } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { ExaminePanelData } from './ExaminePanelData';
@@ -101,7 +101,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
               <Section
                 scrollable
                 fill
-                title="OOC Notes"
+                title="OOC Notes" display_title="场外备注"
                 preserveWhitespace
                 buttons={
                   <>
@@ -113,7 +113,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                     />
                     <Button
                       icon={showHeadshot ? 'chevron-up' : 'chevron-down'}
-                      tooltip={showHeadshot ? 'Hide headshot' : 'Show headshot'}
+                      tooltip={showHeadshot ? '隐藏头像' : '显示头像'}
                       selected={!showHeadshot}
                       onClick={() => setShowHeadshot(!showHeadshot)}
                     />
@@ -124,7 +124,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                       textAlign="center"
                       minWidth="60px"
                     >
-                      SFW
+                      普通
                     </Button>
                     <Button
                       selected={oocNotesIndex === 'NSFW'}
@@ -134,7 +134,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                       textAlign="center"
                       minWidth="60px"
                     >
-                      NSFW
+                      成人
                     </Button>
                   </>
                 }
@@ -144,7 +144,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                     style={{ zoom: oocEm.SFW }}
                     dangerouslySetInnerHTML={chatHtml(
                       ooc_notes,
-                      '<i>No OOC notes provided.</i>',
+                      '<i>尚未填写场外备注。</i>',
                     )}
                   />
                 )}
@@ -165,7 +165,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
             scrollable
             fill
             preserveWhitespace
-            title="Flavor Text"
+            title="Flavor Text" display_title="角色描述"
             buttons={
               <>
                 <EmButtons
@@ -176,7 +176,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                 />
                 <Button
                   icon={hideLeft ? 'chevron-right' : 'chevron-left'}
-                  tooltip={hideLeft ? 'Show left section' : 'Hide left section'}
+                  tooltip={hideLeft ? '显示左侧区域' : '隐藏左侧区域'}
                   selected={hideLeft}
                   onClick={() => setHideLeft(!hideLeft)}
                 />
@@ -187,7 +187,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                   textAlign="center"
                   width="60px"
                 >
-                  SFW
+                  普通
                 </Button>
                 <Button
                   selected={flavorTextIndex === 'NSFW'}
@@ -199,7 +199,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                   textAlign="center"
                   width="60px"
                 >
-                  NSFW
+                  成人
                 </Button>
               </>
             }
@@ -209,7 +209,7 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                 <Box
                   dangerouslySetInnerHTML={chatHtml(
                     flavor_text,
-                    '<i>No flavor text provided.</i>',
+                    '<i>尚未填写角色描述。</i>',
                   )}
                 />
                 {ooc_extra_image && (
@@ -251,7 +251,7 @@ export const ImageGalleryPage = () => {
 
   return (
     <Section
-      title="Image Gallery"
+      title="Image Gallery" display_title="图片集"
       fill
       scrollable
       buttons={
@@ -263,7 +263,7 @@ export const ImageGalleryPage = () => {
             textAlign="center"
             minWidth="60px"
           >
-            SFW
+            普通
           </Button>
           <Button
             selected={galleryMode === 'NSFW'}
@@ -273,14 +273,14 @@ export const ImageGalleryPage = () => {
             textAlign="center"
             minWidth="60px"
           >
-            NSFW
+            成人
           </Button>
         </>
       }
     >
       {images.length === 0 ? (
         <Box align="center" color="gray">
-          No images available.
+          暂无图片。
         </Box>
       ) : (
         <Stack fill justify="space-evenly">

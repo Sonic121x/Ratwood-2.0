@@ -3,9 +3,9 @@ import {
   Box,
   Button,
   Input,
-  Section,
   Stack,
 } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -25,7 +25,7 @@ export const Carving = (props) => {
 
   if (!data.carvings) {
     return (
-      <Window width={320} height={400}>
+      <Window width={320} height={400} display_title="雕刻">
         <Window.Content>
           <Carveless />
         </Window.Content>
@@ -34,7 +34,7 @@ export const Carving = (props) => {
   }
 
   return (
-    <Window width={320} height={400}>
+    <Window width={320} height={400} display_title="雕刻">
       <Window.Content>
         <CarvingDisplay />
       </Window.Content>
@@ -47,8 +47,8 @@ export const Carveless = (props) => {
     <Stack align="center" justify="center" fill>
       <Stack.Item>
         <Stack vertical align="center" justify="center">
-          <Stack.Item fontSize={2}>Woe is you, there is nothing to carve.</Stack.Item>
-          <Stack.Item fontSize={1}>You shouldn't be seeing this!</Stack.Item>
+          <Stack.Item fontSize={2}>真遗憾，没有可雕刻的东西。</Stack.Item>
+          <Stack.Item fontSize={1}>你本不该看到这个界面！</Stack.Item>
         </Stack>
       </Stack.Item>
     </Stack>
@@ -85,7 +85,7 @@ export const CarvingDisplay = (props) => {
 
   return (
     <Section
-      title="Carvings"
+      title="Carvings" display_title="雕刻制品"
       fill
       scrollable
       buttons={<SearchBar search={search} setSearch={setSearch} />}
