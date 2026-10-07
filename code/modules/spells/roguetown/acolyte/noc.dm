@@ -97,7 +97,7 @@
 
 /obj/effect/proc_holder/spell/invoked/invisibility/miracle
 	miracle = TRUE
-	desc = "令自己或他人暂时隐形。持续时间随神圣技艺提升而增加；施法、攻击或受击都会打断效果。"
+	desc = "令自己或他人暂时隐形。持续时间随神迹技能提升而增加；施法、攻击或受击都会打断效果。"
 	devotion_cost = 25
 	chargetime = 0
 	chargedrain = 0
