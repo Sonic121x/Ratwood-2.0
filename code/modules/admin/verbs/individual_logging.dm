@@ -88,13 +88,13 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 	//Add client links
 	var/list/dat = list()
 	if(M.client)
-		dat += "<center><p>Client</p></center>"
+		dat += "<center><p>客户端</p></center>"
 		dat += individual_logging_panel_row(M, LOGSRC_CLIENT, source, ntype, TRUE)
 	else
-		dat += "<p> No client attached to mob </p>"
+		dat += "<p> 此生物未连接客户端 </p>"
 
 	dat += "<hr style='background:#000000; border:0; height:1px'>"
-	dat += "<center><p>Mob</p></center>"
+	dat += "<center><p>生物</p></center>"
 	//Add the links for the mob specific log
 	dat += individual_logging_panel_row(M, LOGSRC_MOB, source, ntype, FALSE)
 
@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 		var/would_build = pov_mode && (!LAZYACCESS(admin?.pov_log_cache, cache_key) || (pov_fresh && !pov_paging))
 		var/cooldown_left = admin ? max(0, admin.last_pov_log_generation + POV_LOG_COOLDOWN - world.time) : 0
 		if(would_build && cooldown_left)
-			to_chat(usr, span_warning("You generated a POV log moments ago. Try again in [DisplayTimeText(cooldown_left)]."))
+			to_chat(usr, span_warning("刚刚生成过视角日志，请在 [DisplayTimeText(cooldown_left)] 后重试。"))
 			// keep showing what is already built; the generate buttons would only serve the same cache back
 			pov_fresh = FALSE
 			if(!LAZYACCESS(admin?.pov_log_cache, cache_key))
@@ -135,8 +135,8 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 			var/list/cache_entry = LAZYACCESS(admin?.pov_log_cache, cache_key)
 			var/built = LAZYACCESS(cache_entry, "built")
 			if(built && !pov_paging)
-				dat += "<center><font size='1'>Timeline generated [DisplayTimeText(world.time - built)] ago. \
-					<a href='?_src_=holder;[HrefToken()];individuallog=[REF(M)];log_type=[ntype];log_src=[source];pov_mode=[pov_mode];pov_fresh=1'>Rebuild fresh</a></font></center>"
+				dat += "<center><font size='1'>时间线生成于 [DisplayTimeText(world.time - built)] 前。 \
+					<a href='?_src_=holder;[HrefToken()];individuallog=[REF(M)];log_type=[ntype];log_src=[source];pov_mode=[pov_mode];pov_fresh=1'>重新生成</a></font></center>"
 		else
 			dat += pov_generate_prompt(M, ntype, source, cooldown_left, pov_tail, pov_focus, page_len)
 	else
@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 			dat += concatenated_logs.Join("<br>")
 			dat += "</font>"
 
-	var/datum/browser/popup = new(usr, "window=invidual_logging_[key_name(M)]", "Individual Logs", 600, 600)
+	var/datum/browser/popup = new(usr, "window=invidual_logging_[key_name(M)]", "个人日志", 600, 600)
 	popup.set_content(dat.Join())
 	popup.open()
 
@@ -189,13 +189,13 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 	if(page_len)
 		generate_href += ";page_len=[page_len]"
 	. = list(
-		"<center><i>The POV log is assembled on demand and this action is logged.</i><br>",
-		"<a href='[generate_href];pov_mode=players'>Generate (Players Only)</a>",
-		" | <a href='[generate_href];pov_mode=all'>Generate (All Mobs)</a></center>",
-		"<center><i>All Mobs adds what nearby NPCs did, but a mob's log dies with it, so gibbed or deleted NPCs are missing.</i></center>"
+		"<center><i>视角日志按需生成，此操作会被记录。</i><br>",
+		"<a href='[generate_href];pov_mode=players'>生成（仅玩家）</a>",
+		" | <a href='[generate_href];pov_mode=all'>生成（所有生物）</a></center>",
+		"<center><i>所有生物模式会加入附近 NPC 的行动，但生物被删除时日志也会消失，因此不包含已碎尸或删除的 NPC。</i></center>"
 	)
 	if(cooldown_left)
-		. += "<center><font color='#ff6b6b'>Another POV log was built moments ago. Generating works again in [DisplayTimeText(cooldown_left)].</font></center>"
+		. += "<center><font color='#ff6b6b'>刚刚生成过另一份视角日志。请在 [DisplayTimeText(cooldown_left)] 后再次生成。</font></center>"
 
 /// One timeline's identity. The entries cache, the highlights and the filters all key off this.
 /proc/pov_cache_key(mob/M, source, pov_mode)
@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 	if(admin)
 		admin.last_pov_log_generation = world.time
 		log_admin("[key_name(admin)] generated the [all_mobs ? "all mobs" : "players only"] POV log of [key_name(M)]")
-		message_admins("[key_name_admin(admin)] generated the [all_mobs ? "all mobs" : "players only"] POV log of [key_name_admin(M)]")
+		message_admins("[key_name_admin(admin)] 生成了 [key_name_admin(M)] 的[all_mobs ? "所有生物" : "仅玩家"]视角日志")
 	. = build_pov_entries(M, log_source, all_mobs, actor_labels)
 	if(!length(.))
 		return
@@ -520,7 +520,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 	if(pages > 1)
 		. += pov_page_nav(page, pages, first, last, total, page_href, entries_per_page)
 	if(focused)
-		. += "<center><a href='[base_href]'>Back to the full timeline</a></center>"
+		. += "<center><a href='[base_href]'>返回完整时间线</a></center>"
 	. += pov_legend(M, focused, pov_mode)
 	. += pov_highlight_controls(subject_class, base_href)
 
@@ -551,36 +551,36 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 
 /// Only shown once the timeline runs past a single page.
 /proc/pov_page_nav(page, pages, first, last, total, page_href, entries_per_page)
-	. = list("<center>Entries [first] to [last] of [total]")
+	. = list("<center>第 [first] 至 [last] 条，共 [total] 条")
 	if(page > 1)
-		. += " | <a href='[page_href];page_len=[entries_per_page];log_page=[page - 1]'>Previous</a>"
+		. += " | <a href='[page_href];page_len=[entries_per_page];log_page=[page - 1]'>上一页</a>"
 	if(page < pages)
-		. += " | <a href='[page_href];page_len=[entries_per_page];log_page=[page + 1]'>Next</a>"
+		. += " | <a href='[page_href];page_len=[entries_per_page];log_page=[page + 1]'>下一页</a>"
 	. += "</center>"
 
 /// How to read the page, and what not to conclude from it.
 /proc/pov_legend(mob/M, focused, pov_mode)
-	var/focus_hint = focused ? " This is the focused view, [POV_FOCUS_PAGE_LEN] entries around one moment with their full log keys." : " <b>&raquo;</b> reads around an entry."
-	var/colour_key = "<b>Colours.</b> [M] gold on black, everyone else blue on grey. In someone else's block, a bright attack row landed on [M] and a faded one landed on somebody else.\
-		<br><b>Grey marks</b> sit before the message and describe how [M] perceived it. &#8648; &#8650; a floor above or below. An arrow points off screen toward it, so a grey &#8592; means it happened to the west. ~ edge of earshot. (N) tiles away. After a witness name, those same marks place that witness instead.\
-		<br><b>Red arrows</b> sit after the grey ones and mark a hit landing. &#8592; is a hit [M] took. &#8606; is a hit somebody else took from off screen: [M] could see them, but not what struck them.\
-		<br><b>Rows.</b> Grey lines show where the action moved. Hover any row for its full entry. &#8644; beside a name opens their own POV at this moment.[focus_hint]\
-		<br><b>Witnesses.</b> The count on a row opens the list of who was close enough to perceive it, which is not proof that they did.\
-		<br><b>Names.</b> Click a name to follow them like a second subject, up to [POV_HIGHLIGHT_MAX], and again to clear. <b>Their own blocks box bright, and every hit they took stripes dull inside the block of whoever landed it.</b> [M] is the exception: hits taken are full rows in their own thread instead.\
-		<br><b>Filters.</b> Each box hides one thing: attacks, speech and emotes, everyone not highlighted, faded rows, or ckeys. Hiding ckeys leaves a * so players still read apart from mobs, handy before a screenshot. Headers always stay, so you can still see who else was there."
-	var/all_mobs_caveat = "All Mobs: a mob's log dies with it, so gibbed or deleted NPCs are missing here, which can shift where a \" &raquo; \" link lands."
+	var/focus_hint = focused ? " 此处为聚焦视图，显示某一时刻附近的 [POV_FOCUS_PAGE_LEN] 条记录及其完整日志标识。" : " <b>&raquo;</b> 可查看某条记录附近的内容。"
+	var/colour_key = "<b>颜色。</b>[M] 为黑底金字，其他人为灰底蓝字。在其他人的区块中，明亮的攻击行表示命中了 [M]，淡化行表示命中了其他人。\
+		<br><b>灰色标记</b>位于消息之前，说明 [M] 如何感知此事。&#8648; &#8650; 表示上层或下层。箭头指向屏幕外的事发方向，灰色 &#8592; 表示发生在西边。~ 表示听力范围边缘。(N) 表示相距的格数。在目击者姓名后，同类标记表示该目击者的位置。\
+		<br><b>红色箭头</b>位于灰色标记后，表示命中。&#8592; 表示 [M] 被命中。&#8606; 表示其他人被屏幕外的攻击命中：[M] 能看见受害者，但看不见攻击来源。\
+		<br><b>记录行。</b>灰色行表示行动发生的位置变化。将鼠标悬停在任意行上可查看完整记录。姓名旁的 &#8644; 可打开该人物在此刻的视角。[focus_hint]\
+		<br><b>目击者。</b>点击行上的人数可查看距离足够近、可能感知此事的人；这不证明他们确实察觉到了。\
+		<br><b>姓名。</b>点击姓名可额外追踪此人，最多 [POV_HIGHLIGHT_MAX] 人，再次点击可取消。<b>他们自己的区块边框会亮起，而他们受到的每次命中会在攻击者区块内显示暗色条纹。</b>[M] 除外：其受到的命中会在自身时间线中显示为完整记录行。\
+		<br><b>筛选。</b>各复选框分别隐藏攻击、发言和动作、未高亮人物、淡化行或账号。隐藏账号后以 * 标记玩家，便于与 NPC 区分，适合截图前使用。标题始终保留，仍可查看当时在场的其他人。"
+	var/all_mobs_caveat = "所有生物模式：生物被删除时日志也会消失，因此不包含已碎尸或删除的 NPC，可能导致 \" &raquo; \" 链接跳转的位置发生变化。"
 
 	// bruh, ya'll better read this
-	var/caution ="<b>Absence is not evidence.</b> A great deal of harm records nothing at all, including spells and miracles, traps, explosions, falls, strangling, drowning, fire and poison. A missing line does not mean it did not happen.\
-		<br><b>Witness lists</b> are who stood close enough to perceive something, not who did. Blindness, facing away and language are not accounted for.\
-		<br><b>Off-screen hits</b> show only when their victim had been clearly in [M]'s view around that moment. A victim who never acted nearby leaves no proof they were visible, so their hit stays out.\
-		<br><b>Speech</b> reads as it came out: accents, slurring and all, which also means what a garbled speaker actually typed is not recorded. Distance stars are not reproduced.\
-		<br><b>Typing</b> appears only in [M]'s own rows. It records no witnesses, so nobody else's bubble reaches this page even though it was visible in game.\
-		<br><b>This timeline is a snapshot</b> taken when it was generated, and a clientless mob's log dies with the mob."
+	var/caution ="<b>没有记录不代表没有发生。</b>许多伤害完全不会留下记录，包括法术、奇迹、陷阱、爆炸、坠落、勒杀、溺水、火焰和毒素。缺少某条记录并不表示事件没有发生。\
+		<br><b>目击者列表</b>只表示距离足够近、可能感知此事的人，不代表实际目击。失明、背对事发方向和语言障碍均未纳入判断。\
+		<br><b>屏幕外命中</b>仅在受害者于事发前后明确处于 [M] 视野内时显示。如果受害者未在附近行动，便无法证明其可见，因此不会列出该次命中。\
+		<br><b>发言</b>按实际呈现的内容记录，包括口音和含糊不清的表达，因此不会记录说话者在发言被变形前实际输入的原文。不会重现距离造成的星号。\
+		<br><b>正在输入</b>仅出现在 [M] 自己的记录行中。它不记录目击者，因此即使游戏中能看见其他人的输入气泡，本页也不会显示。\
+		<br><b>此时间线是生成时的快照</b>，未连接客户端的生物被删除时，其日志也会消失。"
 
 	// both are read once then in the way, so they sit behind toggles. The All Mobs caveat stays visible
-	. = list("<center><span style='color:#7fb2d9; text-decoration:underline;' onclick=\"var e=document.getElementById('povlegend');e.style.display=(e.style.display=='none')?'block':'none';\">Legend</span>\
-		&nbsp; <span style='color:#ff6b6b; text-decoration:underline;' onclick=\"var e=document.getElementById('povcaution');e.style.display=(e.style.display=='none')?'block':'none';\">Caution</span>\
+	. = list("<center><span style='color:#7fb2d9; text-decoration:underline;' onclick=\"var e=document.getElementById('povlegend');e.style.display=(e.style.display=='none')?'block':'none';\">图例</span>\
+		&nbsp; <span style='color:#ff6b6b; text-decoration:underline;' onclick=\"var e=document.getElementById('povcaution');e.style.display=(e.style.display=='none')?'block':'none';\">注意事项</span>\
 		<div id='povlegend' style='display:none; text-align:left; padding:2px 8px;'>[colour_key]</div>\
 		<div id='povcaution' style='display:none; text-align:left; padding:2px 8px; color:#ffc957;'>[caution]</div></center>")
 	if(pov_mode == "all")
@@ -615,7 +615,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 		if(prev_time && prev_time - cur_time > POV_SCENE_GAP)
 			if(have_block)
 				. += "</div>"
-			. += "<div style='text-align:center; color:#8a8a8a; font-size:11px; padding:3px;'>&#8212;&#8212; [DisplayTimeText(prev_time - cur_time, 1)] apart &#8212;&#8212;</div>"
+			. += "<div style='text-align:center; color:#8a8a8a; font-size:11px; padding:3px;'>&#8212;&#8212; 相隔 [DisplayTimeText(prev_time - cur_time, 1)] &#8212;&#8212;</div>"
 			have_block = FALSE
 			last_place = null // time passed, so the scene after the break restates where it happens
 		prev_time = cur_time
@@ -699,7 +699,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 /// A row's text: kind prefix, then tint, then receipt italics, then the ckey mask over the lot.
 /// A seen copy is already treated, so only log_talk's quotes go on here
 /proc/pov_row_message(list/wrapper, is_receipt, prose_ckey)
-	var/static/list/kind_prefixes = list("[LOG_WHISPER]" = "(whisper) ", "[LOG_EMOTE]" = "(emote) ")
+	var/static/list/kind_prefixes = list("[LOG_WHISPER]" = "（低语） ", "[LOG_EMOTE]" = "（动作） ")
 	var/stored = wrapper["entry"]
 	// one colour over the lot, prefix included. A tint outranks the stored colour
 	var/color = wrapper["tint"] || log_entry_field(stored, "color")
@@ -829,12 +829,12 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 /// The ckey box, the filter checkboxes and the chip row. Script first: every handler below is defined in it.
 /proc/pov_highlight_controls(subject_class, base_href)
 	. = pov_highlight_script(subject_class, base_href)
-	. += "<center>Highlight a CKEY: <input type='text' id='povkey' style='width:130px;'> <span style='color:#7fb2d9; text-decoration:underline;' onclick='povHLKey()'>Highlight</span></center>"
-	. += "<center>Hide: <label><input type='checkbox' id='povhatk' onclick='povFilterSet()'> attacks</label> \
-		&nbsp; <label><input type='checkbox' id='povhcht' onclick='povFilterSet()'> say/emote</label> \
-		&nbsp; <label><input type='checkbox' id='povhlit' onclick='povFilterSet()'> non-highlighted</label> \
-		&nbsp; <label><input type='checkbox' id='povhdim' onclick='povFilterSet()'> faded</label> \
-		&nbsp; <label><input type='checkbox' id='povhck' onclick='povFilterSet()'> ckeys</label><span id='povmsg' style='color:#ff6b6b;'></span></center>"
+	. += "<center>高亮账号：<input type='text' id='povkey' style='width:130px;'> <span style='color:#7fb2d9; text-decoration:underline;' onclick='povHLKey()'>高亮</span></center>"
+	. += "<center>隐藏：<label><input type='checkbox' id='povhatk' onclick='povFilterSet()'> 攻击</label> \
+		&nbsp; <label><input type='checkbox' id='povhcht' onclick='povFilterSet()'> 发言/动作</label> \
+		&nbsp; <label><input type='checkbox' id='povhlit' onclick='povFilterSet()'> 未高亮人物</label> \
+		&nbsp; <label><input type='checkbox' id='povhdim' onclick='povFilterSet()'> 淡化行</label> \
+		&nbsp; <label><input type='checkbox' id='povhck' onclick='povFilterSet()'> 账号</label><span id='povmsg' style='color:#ff6b6b;'></span></center>"
 	. += "<div id='povchips' style='text-align:center;'></div>"
 
 /// Highlighting and filtering, done in the browser so nothing rebuilds. Hooray for technology.
@@ -930,7 +930,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 		}
 		var msg = document.getElementById('povmsg');
 		if(msg){
-			var warn = visible_rows == 0 ? ' every row on this page is filtered out' : '';
+			var warn = visible_rows == 0 ? ' 本页所有记录均已被筛选隐藏' : '';
 			if(msg.innerHTML != warn){ msg.innerHTML = warn; }
 		}
 	}
@@ -942,7 +942,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 			// the class rides in the id, so the handler reads it back rather than nesting another layer of quotes
 			html += '<span id="chip_' + row_class + '" onclick="povHL(this.id.substring(5))" style="color:#7fb2d9; text-decoration:underline; margin-right:6px;">' + povLit\[row_class\] + ' &times;</span>';
 		}
-		chip_box.innerHTML = html ? 'Highlighted: ' + html : '';
+		chip_box.innerHTML = html ? '已高亮：' + html : '';
 	}
 	function povHL(row_class, label){
 		var warning = document.getElementById('povmsg');
@@ -950,7 +950,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 			delete povLit\[row_class\];
 		} else {
 			if(povCount() >= povMax){
-				if(warning) warning.innerHTML = ' Limit of ' + povMax + ' reached.';
+				if(warning) warning.innerHTML = ' 已达到 ' + povMax + ' 项的上限。';
 				return;
 			}
 			povSet(row_class, label);
@@ -1014,7 +1014,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 			pov_log_highlights -= cache_key
 		return
 	if(length(highlights) >= POV_HIGHLIGHT_MAX)
-		to_chat(src, span_warning("POV highlight limit of [POV_HIGHLIGHT_MAX] reached. Remove one first."))
+		to_chat(src, span_warning("已达到 [POV_HIGHLIGHT_MAX] 项视角日志高亮的上限，请先移除一项。"))
 		return
 	highlights += hl_class
 	pov_touch_prefs(pov_log_highlights, cache_key)
@@ -1066,7 +1066,7 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 /// ckey filter, their caller must stop passing plain or the filter will silently skip witness names
 /proc/pov_witness_html(list/witnesses, element_id, plain = FALSE)
 	if(!length(witnesses)) // nobody to expand, so it says its piece here or nowhere
-		return " (<font color='[SEEN_LOG_WITNESS_COLOR]'>Witnesses: nobody</font>)"
+		return " (<font color='[SEEN_LOG_WITNESS_COLOR]'>目击者：无</font>)"
 	var/static/list/marks = list("^" = "&#8648;", "v" = "&#8650;", "~" = "~")
 	var/list/shown = list()
 	for(var/witness_key in witnesses)
@@ -1079,20 +1079,20 @@ GLOBAL_LIST_EMPTY(pov_player_keys)
 			shown_name += " <font color='#8a8a8a'>[mark]</font>"
 		shown += shown_name
 	var/toggle = "<span style='color:#7fb2d9; text-decoration:underline;' onclick=\"var e=document.getElementById('[element_id]');e.style.display=(e.style.display=='none')?'inline':'none';\">(+[length(shown)])</span>"
-	return " (<font color='[SEEN_LOG_WITNESS_COLOR]'>Witnesses: [toggle]<span id='[element_id]' style='display:none'> [shown.Join(", ")]</span></font>)"
+	return " (<font color='[SEEN_LOG_WITNESS_COLOR]'>目击者：[toggle]<span id='[element_id]' style='display:none'> [shown.Join(", ")]</span></font>)"
 
 /// One row of log tabs. The mob row omits OOC, which only ever exists on a client record
 /proc/individual_logging_panel_row(mob/M, log_src, source, ntype, include_ooc)
 	var/static/list/tabs = list(
-		"[INDIVIDUAL_ATTACK_LOG]" = "Attack Log",
-		"[INDIVIDUAL_SAY_LOG]" = "Say Log",
-		"[INDIVIDUAL_EMOTE_LOG]" = "Emote Log",
-		"[INDIVIDUAL_COMMS_LOG]" = "Comms Log",
-		"[INDIVIDUAL_OOC_LOG]" = "OOC Log",
-		"[INDIVIDUAL_LOOC_LOG]" = "LOOC Log",
-		"[INDIVIDUAL_SEEN_LOG]" = "Seen By Log",
-		"[INDIVIDUAL_POV_LOG]" = "POV Log",
-		"[INDIVIDUAL_SHOW_ALL_LOG]" = "Show All",
+		"[INDIVIDUAL_ATTACK_LOG]" = "攻击日志",
+		"[INDIVIDUAL_SAY_LOG]" = "发言日志",
+		"[INDIVIDUAL_EMOTE_LOG]" = "动作日志",
+		"[INDIVIDUAL_COMMS_LOG]" = "通讯日志",
+		"[INDIVIDUAL_OOC_LOG]" = "OOC 日志",
+		"[INDIVIDUAL_LOOC_LOG]" = "LOOC 日志",
+		"[INDIVIDUAL_SEEN_LOG]" = "目击日志",
+		"[INDIVIDUAL_POV_LOG]" = "视角日志",
+		"[INDIVIDUAL_SHOW_ALL_LOG]" = "显示全部",
 	)
 	var/list/links = list()
 	for(var/log_type in tabs)

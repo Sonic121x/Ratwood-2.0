@@ -1,5 +1,5 @@
 /client/proc/cmd_admin_set_ic_date()
-	set category = "Admin.Special"
+	set category = "管理.特殊"
 	set name = "设置角色日期"
 
 	if(!check_rights(R_ADMIN))

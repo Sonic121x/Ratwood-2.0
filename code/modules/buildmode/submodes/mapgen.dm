@@ -6,8 +6,8 @@
 
 /datum/buildmode_mode/mapgen/show_help(client/c)
 	to_chat(c, "<span class='notice'>***********************************************************</span>")
-	to_chat(c, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Select corner</span>")
-	to_chat(c, "<span class='notice'>Right Mouse Button on buildmode button = Select generator</span>")
+	to_chat(c, "<span class='notice'>左键点击地块/物体/生物 = 选择角点</span>")
+	to_chat(c, "<span class='notice'>右键点击建造模式按钮 = 选择生成器</span>")
 	to_chat(c, "<span class='notice'>***********************************************************</span>")
 
 /datum/buildmode_mode/mapgen/change_settings(client/c)
@@ -16,7 +16,7 @@
 	for(var/path in gen_paths)
 		var/datum/mapGenerator/MP = path
 		options[initial(MP.buildmode_name)] = path
-	var/type = input(c,"Select Generator Type","Type") as null|anything in options
+	var/type = input(c,"选择生成器类型","类型") as null|anything in options
 	if(!type)
 		return
 
@@ -25,7 +25,7 @@
 
 /datum/buildmode_mode/mapgen/handle_click(client/c, params, obj/object)
 	if(isnull(generator_path))
-		to_chat(c, span_warning("Select generator type first."))
+		to_chat(c, span_warning("请先选择生成器类型。"))
 		deselect_region()
 		return
 	..()
@@ -37,7 +37,7 @@
 		var/datum/mapGenerator/G = new generator_path
 		G.defineRegion(cornerA, cornerB, 1)
 		highlight_region(G.map)
-		var/confirm = alert("Are you sure you want to run the map generator?", "Run generator", "Yes", "No")
-		if(confirm == "Yes")
+		var/confirm = alert("确定要运行地图生成器吗？", "运行生成器", "是", "否")
+		if(confirm == "是")
 			G.generate()
 		log_admin("Build Mode: [key_name(c)] ran the map generator '[G.buildmode_name]' in the region from [AREACOORD(cornerA)] to [AREACOORD(cornerB)]")

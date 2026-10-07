@@ -195,8 +195,8 @@
 /obj/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---")
-	VV_DROPDOWN_OPTION(VV_HK_MASS_DEL_TYPE, "Delete all of type")
-	VV_DROPDOWN_OPTION(VV_HK_OSAY, "Object Say")
+	VV_DROPDOWN_OPTION(VV_HK_MASS_DEL_TYPE, "删除此类型的所有对象")
+	VV_DROPDOWN_OPTION(VV_HK_OSAY, "让物品说话")
 
 /obj/vv_do_topic(list/href_list)
 	if(!(. = ..()))
@@ -229,7 +229,7 @@
 						to_chat(usr, "不存在这个类型的对象。")
 						return
 					log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
-					message_admins("<span class='notice'>[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) </span>")
+					message_admins("<span class='notice'>[key_name(usr)] 删除了类型为 [O_type] 的全部物体（共删除 [i] 个）</span>")
 				if("类型与子类型")
 					var/i = 0
 					for(var/obj/Obj in world)
@@ -241,7 +241,7 @@
 						to_chat(usr, "不存在这个类型的对象。")
 						return
 					log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
-					message_admins("<span class='notice'>[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) </span>")
+					message_admins("<span class='notice'>[key_name(usr)] 删除了类型为 [O_type] 及其子类型的全部物体（共删除 [i] 个）</span>")
 
 /obj/examine(mob/user)
 	. = ..()

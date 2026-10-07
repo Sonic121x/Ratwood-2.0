@@ -6,28 +6,28 @@
 
 /datum/buildmode_mode/fill/show_help(client/c)
 	to_chat(c, span_notice("***********************************************************"))
-	to_chat(c, span_notice("Left Mouse Button on turf/obj/mob      = Select corner"))
-	to_chat(c, span_notice("Left Mouse Button + Alt on turf/obj/mob = Delete region"))
-	to_chat(c, span_notice("Right Mouse Button on buildmode button = Select object type"))
+	to_chat(c, span_notice("左键点击地块/物体/生物 = 选择角点"))
+	to_chat(c, span_notice("Alt + 左键点击地块/物体/生物 = 删除区域"))
+	to_chat(c, span_notice("右键点击建造模式按钮 = 选择对象类型"))
 	to_chat(c, span_notice("***********************************************************"))
 
 /datum/buildmode_mode/fill/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:" ,"Typepath","/obj/structure/closet")
+	var/target_path = input(c, "输入类型路径：" ,"类型路径","/obj/structure/closet")
 	objholder = text2path(target_path)
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			alert("No path has been selected.")
+			alert("未选择路径。")
 			return
 		else if(ispath(objholder, /area))
 			objholder = null
-			alert("Area paths are not supported for this mode, use the area edit mode instead.")
+			alert("此模式不支持区域路径，请使用区域编辑模式。")
 			return
 	deselect_region()
 
 /datum/buildmode_mode/fill/handle_click(client/c, params, obj/object)
 	if(isnull(objholder))
-		to_chat(c, span_warning("Select an object type first."))
+		to_chat(c, span_warning("请先选择对象类型。"))
 		deselect_region()
 		return
 	..()

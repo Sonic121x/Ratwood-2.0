@@ -141,8 +141,8 @@
 	return TRUE // no doing underlying actions
 
 /proc/togglebuildmode(mob/M as mob in GLOB.player_list)
-	set name = "Toggle Build Mode"
-	set category = "Event"
+	set name = "切换建造模式"
+	set category = "事件"
 
 	if(M.client)
 		if(istype(M.client.click_intercept,/datum/buildmode))
@@ -151,7 +151,7 @@
 			log_admin("[key_name(usr)] has left build mode.")
 		else
 			new /datum/buildmode(M.client)
-			message_admins("[key_name_admin(usr)] has entered build mode.")
+			message_admins("[key_name_admin(usr)] 进入了建造模式。")
 			log_admin("[key_name(usr)] has entered build mode.")
 
 #undef BM_SWITCHSTATE_NONE
