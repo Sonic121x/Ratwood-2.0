@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	var/datum/schizohelp/ticket = new(src)
 	var/display_name = get_schizo_name()
 	var/message = span_info("<i>[display_name]正在冥想……</i>\n[msg]")
-	var/message_admins = span_info("<i>[display_name] ([key || "NO KEY"]) [ADMIN_FLW(src)] [ADMIN_SM(src)] meditates...</i>\n[msg]")
+	var/message_admins = span_info("<i>[display_name]（[key || "无账号"]）[ADMIN_FLW(src)] [ADMIN_SM(src)] 正在冥想……</i>\n[msg]")
 	for(var/client/voice in (GLOB.clients - client))
 		if(!(voice.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
 			continue
@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	for(var/client/admin in GLOB.admins)
 		if(!(admin.prefs.chat_toggles & CHAT_PRAYER))
 			continue
-		var/answer_button = span_info("(<a href='?src=[admin];schizohelp=[REF(ticket)];'>ANSWER</a>)")
+		var/answer_button = span_info("(<a href='?src=[admin];schizohelp=[REF(ticket)];'>回应</a>)")
 		to_chat(admin, type = MESSAGE_TYPE_PRAYER, html = "[message_admins] [answer_button]")
 	COOLDOWN_START(src, schizohelp_cooldown, 1 MINUTES)
 	// Comes out as... GAME: MENTOR HELP: GreedyPelican42/(Lord Featherton the Great) asked : How do I fly?
@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		if(listener in GLOB.admins)
 			if(!(listener.prefs.chat_toggles & CHAT_PRAYER))
 				continue
-			to_chat(listener, span_info("<i>[voice] ([voice.key || "NO KEY"]) [ADMIN_FLW(owner)] [ADMIN_SM(owner)] answered [owner] ([owner.key || "NO KEY"])'s [ADMIN_FLW(owner)] [ADMIN_SM(owner)] meditation:</i>\n[answer]"))
+			to_chat(listener, span_info("<i>[voice]（[voice.key || "无账号"]）[ADMIN_FLW(owner)] [ADMIN_SM(owner)] 回应了 [owner]（[owner.key || "无账号"]）的 [ADMIN_FLW(owner)] [ADMIN_SM(owner)] 冥想：</i>\n[answer]"))
 		else
 			if(!(listener.prefs.toggles & SCHIZO_VOICE))
 				continue

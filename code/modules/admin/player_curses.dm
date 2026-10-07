@@ -316,7 +316,7 @@
 		if("gib")
 			if(!L)
 				return
-			message_admins(span_adminnotice("[key_name_admin(owner)] gibbed due to curse."))
+			message_admins(span_adminnotice("[key_name_admin(owner)] 因诅咒炸成了碎块。"))
 			SSblackbox.record_feedback("tally", "curse", 1, "Gib Curse") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, gib), 1, 1, 1), 2)
 			notify_player_of_effect(arg)
@@ -622,8 +622,8 @@
 	trigger = null,
 	effect_proc = null,
 	list/effect_args = null,
-	admin_name = "unknown",
-	reason = "No reason supplied.",
+	admin_name = "未知",
+	reason = "未提供原因。",
 	extra = null
 )
 	if(!key || !curse)
@@ -810,18 +810,18 @@
 
 /client/proc/curse_player_popup(mob/target)
 	if(!target || !target.ckey)
-		usr << "Invalid target."
+		usr << "目标无效。"
 		return
 
 	// ---- Curse binding type ----
-	var/list/binding_choices = list("ckey curse", "character curse")
+	var/list/binding_choices = list("账号诅咒" = "ckey curse", "角色诅咒" = "character curse")
 
 	var/binding = input(
 		src,
-		"Apply this curse to the player's account, or only this specific character?",
-		"Curse Binding Type"
+		"将此诅咒绑定到玩家账号，还是仅绑定到当前角色？",
+		"诅咒绑定类型"
 	) as null|anything in binding_choices
-
+	binding = binding_choices[binding]
 	if(!binding)
 		return
 
@@ -834,46 +834,46 @@
 	// ---- Trigger Selection ----
 	//commented out do not currently have signals
 	var/list/trigger_list = list(
-		"on spawn",
-		"on death",
-		"on beheaded",
-		"on dismembered",
-		"on sleep",
-		"on attack",
-		"on receive damage",
-		"on cast spell",
-		"on spell or miracle target",
+		"生成时" = "on spawn",
+		"死亡时" = "on death",
+		"被斩首时" = "on beheaded",
+		"被断肢时" = "on dismembered",
+		"入睡时" = "on sleep",
+		"攻击时" = "on attack",
+		"受到伤害时" = "on receive damage",
+		"施法时" = "on cast spell",
+		"成为法术或神迹目标时" = "on spell or miracle target",
 		//"on break wall/door/window",
-		"on cut tree",
+		"伐树时" = "on cut tree",
 		//"on craft",
-		"on kiss",
-		"on kissed",
-		"on orgasm",
+		"亲吻时" = "on kiss",
+		"被亲吻时" = "on kissed",
+		"高潮时" = "on orgasm",
 		//"on bite",
 		//"on jump",
 		//"on climb",
 		//"on swim",
-		"on move",
-		"on dawn",
-		"on day",
-		"on dusk",
-		"on night"
+		"移动时" = "on move",
+		"黎明时" = "on dawn",
+		"白昼时" = "on day",
+		"黄昏时" = "on dusk",
+		"夜晚时" = "on night"
 	)
 
 	var/trigger = input(
 		src,
-		"Choose a trigger event for this curse:",
-		"Trigger Selection"
+		"选择此诅咒的触发事件：",
+		"选择触发条件"
 	) as null|anything in trigger_list
-
+	trigger = trigger_list[trigger]
 	if(!trigger)
 		return
 
 	// ---- Chance ----
 	var/chance = input(
 		src,
-		"Percent chance (1 to 100):",
-		"Chance",
+		"触发概率百分比（1 至 100）：",
+		"触发概率",
 		100
 	) as null|num
 
@@ -883,39 +883,39 @@
 
 	// ---- Effect Selection ----
 	var/list/effect_list = list(
-		"buff or debuff",
-		"remove trait",
-		"add trait",
-		"scream",
-		"cry",
-		"add reagent",
-		"add arousal",
-		"orgasm",
-		"shrink sex organs",
-		"enlarge sex organs",
-		"add nausea",
-		"clothesplosion",
-		"slip",
-		"arcyne prison",
-		"make deadite",
+		"施加增益或减益" = "buff or debuff",
+		"移除特质" = "remove trait",
+		"添加特质" = "add trait",
+		"尖叫" = "scream",
+		"哭泣" = "cry",
+		"添加试剂" = "add reagent",
+		"增加性兴奋" = "add arousal",
+		"高潮" = "orgasm",
+		"缩小性器官" = "shrink sex organs",
+		"增大性器官" = "enlarge sex organs",
+		"增加恶心程度" = "add nausea",
+		"装备爆散" = "clothesplosion",
+		"滑倒" = "slip",
+		"奥术牢笼" = "arcyne prison",
+		"转变为尸鬼" = "make deadite",
 		/*"make vampire",
 		"make werewolf",*/
-		"shock",
-		"add fire stack",
-		"cbt",
+		"电击" = "shock",
+		"增加燃烧层数" = "add fire stack",
+		"下体酷刑" = "cbt",
 		//"easy ambush",
 		//"difficult ambush",
-		"explode",
-		"shapeshift",
-		"gib"
+		"爆炸" = "explode",
+		"变形" = "shapeshift",
+		"炸成碎块" = "gib"
 	)
 
 	var/effect_proc = input(
 		src,
-		"Choose the effect this curse will apply:",
-		"Effect Selection"
+		"选择此诅咒施加的效果：",
+		"选择效果"
 	) as null|anything in effect_list
-
+	effect_proc = effect_list[effect_proc]
 	if(!effect_proc)
 		return
 
@@ -925,12 +925,12 @@
 	if(effect_proc == "add trait" || effect_proc == "remove trait")
 		var/list/trait_choices = GLOB.roguetraits.Copy()
 
-		var/action = (effect_proc == "add trait" ? "add" : "remove")
+		var/action = (effect_proc == "add trait" ? "添加" : "移除")
 
 		var/trait_id = input(
 			src,
-			"Select the trait to [action]:",
-			"Trait Selection"
+			"选择要[action]的特质：",
+			"选择特质"
 		) as null|anything in trait_choices
 
 		if(!trait_id)
@@ -942,8 +942,8 @@
 	if(effect_proc == "buff or debuff")
 		var/debuff_id = input(
 			src,
-			"Select the effect to apply:",
-			"Effect Selection"
+			"选择要施加的效果：",
+			"选择效果"
 		) as null|anything in subtypesof(/datum/status_effect)
 
 		if(!debuff_id)
@@ -957,8 +957,8 @@
 	if(effect_proc == "add reagent")
 		var/reagent_type = input(
 			src,
-			"Select the reagent to add (typepath):",
-			"Reagent Selection"
+			"选择要添加的试剂（类型路径）：",
+			"选择试剂"
 		) as null|anything in subtypesof(/datum/reagent)
 
 		if(!reagent_type)
@@ -1045,8 +1045,8 @@
 	if(effect_proc in list("shapeshift", "easy ambush", "difficult ambush"))
 		var/mob_type = input(
 			src,
-			"Select the mob to spawn/give:",
-			"Mob Selection"
+			"选择要生成或赋予的生物：",
+			"选择生物"
 		) as null|anything in sortList(mob_list)
 
 		if(!mob_type)
@@ -1060,8 +1060,8 @@
 	if(effect_proc in list("add reagent", "add arousal", "add nausea"))
 		var/amount = input(
 			src,
-			"Amount:",
-			"Amount",
+			"数量：",
+			"数量",
 			10
 		) as null|num
 
@@ -1076,8 +1076,8 @@
 	// ---- Duration ----
 	var/duration = input(
 		src,
-		"Duration (REAL WORLD DAYS):",
-		"Duration",
+		"持续时间（现实天数）：",
+		"持续时间",
 		3
 	) as null|num
 
@@ -1087,8 +1087,8 @@
 	// ---- Cooldown ----
 	var/cooldown = input(
 		src,
-		"Cooldown between activations (seconds):",
-		"Cooldown",
+		"两次触发之间的冷却时间（秒）：",
+		"冷却时间",
 		1
 	) as null|num
 
@@ -1098,26 +1098,26 @@
 	// ---- Reason ----
 	var/reason = input(
 		src,
-		"Reason for curse (admin note):",
-		"Reason",
-		"Change me or you are shitmin"
+		"施加诅咒的原因（管理员备注）：",
+		"原因",
+		"请填写具体原因"
 	) as null|text
 
 	var/list/flavor_list = list(
-		"divine",
-		"demonic",
-		"witchcraft",
-		"fey",
-		"mutation"
+		"神圣" = "divine",
+		"恶魔" = "demonic",
+		"巫术" = "witchcraft",
+		"妖精" = "fey",
+		"变异" = "mutation"
 	)
 
 	// ---- Flavor ----
 	var/flavor = input(
 		src,
-		"Flavor of curse (effects player notifications):",
-		"Flavor"
+		"选择诅咒风格（决定玩家收到的提示）：",
+		"诅咒风格"
 	) as null|anything in flavor_list
-
+	flavor = flavor_list[flavor]
 	if(!flavor)
 		return
 
@@ -1146,10 +1146,10 @@
 		extra
 	)
 	if(success)
-		src << "<span class='notice'>Applied curse <b>[curse_name]</b> to [target].</span>"
-		target << "<span class='warning'>A strange curse settles upon you…</span>"
+		src << "<span class='notice'>已向 [target] 施加诅咒 <b>[curse_name]</b>。</span>"
+		target << "<span class='warning'>一种诡异的诅咒降临在我身上……</span>"
 	else
-		src << "<span class='warning'>Failed to apply curse.</span>"
+		src << "<span class='warning'>施加诅咒失败。</span>"
 
 ////////////////////////////
 //// Special helpers

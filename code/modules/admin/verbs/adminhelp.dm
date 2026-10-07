@@ -83,7 +83,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //opens the ticket listings for one of the 3 states
 /datum/admin_help_tickets/proc/BrowseTickets(state)
 	if(!check_rights(R_AHELP))
-		to_chat(usr, "<font color='red'>Error: You do not have permission to view tickets.</font>")
+		to_chat(usr, "<font color='red'>错误：你没有查看求助记录的权限。</font>")
 		return
 	
 	// Redirect to TGUI panel instead of old HTML browser
@@ -92,7 +92,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //Tickets statpanel
 /datum/admin_help_tickets/proc/stat_entry()
 	SHOULD_CALL_PARENT(TRUE)
-	var/label = "Open Ticket Manager ([active_tickets.len] active)"
+	var/label = "打开求助管理（[active_tickets.len] 条待处理）"
 	stat(null, astatclick.update(label))
 
 //Reassociate still open ticket if one exists
@@ -124,7 +124,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help_tickets/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AdminTicketPanel", "Admin Ticket Panel")
+		ui = new(user, src, "AdminTicketPanel", "管理员求助面板")
 		ui.open()
 
 /datum/admin_help_tickets/ui_data(mob/user)
@@ -221,7 +221,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 				return FALSE
 
 
-			ticket.AddInteraction("<font color='blue'>PM from [key_name_ahelp(user)]: [message]</font>")
+			ticket.AddInteraction("<font color='blue'>来自 [key_name_ahelp(user)] 的私信: [message]</font>")
 
 			// Send to player if connected
 			if(ticket.initiator)
@@ -233,7 +233,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			var/log_msg = replacetext(message, "<br>", "\n")
 			log_admin_private("Ticket #[ticket.id]: [key_name(user)] -> [ticket.initiator_key_name]: [log_msg]")
 			// Notify other admins in chat with real identity
-			message_admins(span_adminnotice("<font color='blue'>Ticket #[ticket.id] [ticket.TicketHref("Show Ticket")] - [key_name_admin(user)] replied to [ticket.initiator_key_name]: [log_msg]</font>"))
+			message_admins(span_adminnotice("<font color='blue'>求助 #[ticket.id] [ticket.TicketHref("查看求助")] - [key_name_admin(user)] 回复了 [ticket.initiator_key_name]：[log_msg]</font>"))
 
 			return TRUE
 		
@@ -478,13 +478,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			if(embed_type != "image" && embed_type != "video")
 				return FALSE
 			var/prefix = embed_type == "image" ? "EMBED_IMAGE:" : "EMBED_VIDEO:"
-			ticket.AddInteraction("<font color='blue'>PM from [key_name_ahelp(user)]: [prefix][url]</font>")
+			ticket.AddInteraction("<font color='blue'>来自 [key_name_ahelp(user)] 的私信: [prefix][url]</font>")
 			// Notify the player if connected
 			if(ticket.initiator)
 				to_chat(ticket.initiator, span_adminhelp("<b>[key_name_ahelp(user)]在你的求助记录中嵌入了[list("image" = "图片", "video" = "视频")[embed_type] || "媒体"]。</b>"))
 			log_admin_private("Ticket #[ticket.id]: [key_name(user)] embedded [embed_type]: [url]")
 			// Notify other admins in chat with a placeholder - no raw URLs to prevent flashbanging
-			message_admins(span_adminnotice("<font color='blue'>Ticket #[ticket.id] [ticket.TicketHref("Show Ticket")] - [key_name_admin(user)] sent [ticket.initiator_key_name] an (embedded [embed_type]).</font>"))
+			message_admins(span_adminnotice("<font color='blue'>求助 #[ticket.id] [ticket.TicketHref("查看求助")] - [key_name_admin(user)] 向 [ticket.initiator_key_name] 发送了嵌入[list("image" = "图片", "video" = "视频")[embed_type]]。</font>"))
 			return TRUE
 	
 	return FALSE
@@ -557,7 +557,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket)	//This is a bug
 		stack_trace("Multiple ahelp current_tickets")
-		initiator.current_ticket.AddInteraction("Ticket erroneously left open by code")
+		initiator.current_ticket.AddInteraction("代码错误导致此求助未关闭")
 		initiator.current_ticket.Close()
 	initiator.current_ticket = src
 
@@ -567,8 +567,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	_interactions = list()
 
 	if(is_bwoink)
-		AddInteraction("<font color='blue'>PM from [key_name_ahelp(usr)]: [msg]</font>")
-		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
+		AddInteraction("<font color='blue'>来自 [key_name_ahelp(usr)] 的私信: [msg]</font>")
+		message_admins("<font color='blue'>已创建求助 [TicketHref("#[id]")]</font>")
 	else
 		// Add a clean initial message for the player's view
 		AddInteraction("<font color='green'>求助已创建。你的消息已发送给管理员团队。</font>")
@@ -576,7 +576,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		MessageNoRecipient(msg)
 
 		//send it to irc if nobody is on and tell us how many were on
-		var/admin_number_present = send2irc_adminless_only(initiator_ckey, "Ticket #[id]: [name]")
+		var/admin_number_present = send2irc_adminless_only(initiator_ckey, "求助 #[id]：[name]")
 		log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 		if(admin_number_present <= 0)
 			to_chat(C, span_notice("目前没有在线值勤的管理员，你的求助已发送至管理员IRC频道。"))
@@ -599,7 +599,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/AddInteraction(formatted_message)
 	if(heard_by_no_admins && usr && usr.ckey != initiator_ckey)
 		heard_by_no_admins = FALSE
-		send2irc(initiator_ckey, "Ticket #[id]: Answered by [key_name(usr)]")
+		send2irc(initiator_ckey, "求助 #[id]：由 [key_name(usr)] 回复")
 	_interactions += "[time_stamp()]: [formatted_message]"
 	// Update any open TGUI windows
 	SStgui.update_uis(src)
@@ -621,11 +621,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
 		ref_src = "[REF(src)]"
-	. = " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
+	. = " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=reject'>拒绝</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>关闭</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>解决</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=handleissue'>接手</A>)"
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -647,7 +647,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	// Truncate the displayed name in the inline notification to keep the header readable
 	var/display_name = length_char(name) > 60 ? "[copytext_char(name, 1, 61)]..." : name
 	// Simplified message to be sent to all admins, including title and action links
-	var/admin_msg = span_adminnotice("<font color='#c87941'><b>Ticket #[id]: [display_name] ([initiator_ckey]) - [TicketHref("Show Ticket", ref_src)][ClosureLinks(ref_src)]</b><br><span class='linkify' style='font-weight:normal;color:#c87941'>[msg]</span></font>")
+	var/admin_msg = span_adminnotice("<font color='#c87941'><b>求助 #[id]：[display_name] ([initiator_ckey]) - [TicketHref("查看求助", ref_src)][ClosureLinks(ref_src)]</b><br><span class='linkify' style='font-weight:normal;color:#c87941'>[msg]</span></font>")
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 
@@ -667,11 +667,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //Reopen a closed ticket
 /datum/admin_help/proc/Reopen()
 	if(state == AHELP_ACTIVE)
-		to_chat(usr, span_warning("This ticket is already open."))
+		to_chat(usr, span_warning("此求助已处于待处理状态。"))
 		return
 
 	if(GLOB.ahelp_tickets.CKey2ActiveTicket(initiator_ckey))
-		to_chat(usr, span_warning("This user already has an active ticket, cannot reopen this one."))
+		to_chat(usr, span_warning("此玩家已有待处理的求助，无法重新打开此条。"))
 		return
 
 	statclick = new(null, src)
@@ -688,8 +688,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(initiator)
 		initiator.current_ticket = src
 
-	AddInteraction("<font color='purple'>Reopened by [key_name_ahelp(usr)]</font>")
-	var/msg = span_adminhelp("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
+	AddInteraction("<font color='purple'>[key_name_ahelp(usr)] 重新打开了此次求助</font>")
+	var/msg = span_adminhelp("[key_name_admin(usr)] 重新打开了求助 [TicketHref("#[id]")]。")
 	message_admins(msg)
 	log_admin_private(msg)
 	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "reopened")
@@ -716,7 +716,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	AddInteraction("<font color='purple'>[display_name]已关闭此次求助。</font>")
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "closed")
-		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name]."
+		var/msg = "[key_name] 关闭了求助 [TicketHref("#[id]")]。"
 		message_admins(msg)
 		log_admin_private(msg)
 
@@ -731,10 +731,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 50)
 
 	AddInteraction("<font color='green'>[display_name]已解决此次求助。</font>")
-	to_chat(initiator, span_adminhelp("[display_name]已解决你的求助。Adminhelp求助命令将很快恢复可用。"))
+	to_chat(initiator, span_adminhelp("[display_name]已解决你的求助。管理员求助命令将很快恢复可用。"))
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
-		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
+		var/msg = "[key_name] 解决了求助 [TicketHref("#[id]")]"
 		message_admins(msg)
 		log_admin_private(msg)
 
@@ -749,11 +749,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		SEND_SOUND(initiator, sound('sound/adminhelp.ogg'))
 
 		to_chat(initiator, "<font color='red' size='4'><b>- [display_name]拒绝了此次求助！-</b></font>")
-		to_chat(initiator, "<font color='red'><b>你的求助已被拒绝。</b>Adminhelp求助命令已恢复，你可以重新提交。</font>")
+		to_chat(initiator, "<font color='red'><b>你的求助已被拒绝。</b>管理员求助命令已恢复，你可以重新提交。</font>")
 		to_chat(initiator, "求助时请保持冷静，清楚、详细地描述问题。不要假定管理员已经见过相关事件，并明确写出你举报的玩家姓名。")
 
 	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "rejected")
-	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
+	var/msg = "[key_name] 拒绝了求助 [TicketHref("#[id]")]"
 	message_admins(msg)
 	log_admin_private(msg)
 	AddInteraction("[display_name]拒绝了此次求助。")
@@ -770,7 +770,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		to_chat(initiator, msg)
 
 	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "IC")
-	msg = "Ticket [TicketHref("#[id]")] marked as IC by [key_name]"
+	msg = "[key_name] 将求助 [TicketHref("#[id]")] 标为角色内问题"
 	message_admins(msg)
 	log_admin_private(msg)
 	AddInteraction("[display_name]将此次求助标记为角色内问题")
@@ -787,7 +787,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		to_chat(initiator, msg)
 
 	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "handling")
-	msg = "Ticket [TicketHref("#[id]")] is being handled by [key_name]"
+	msg = "[key_name] 正在处理求助 [TicketHref("#[id]")]"
 	message_admins(msg)
 	log_admin_private(msg)
 	AddInteraction("[display_name]正在处理此次求助")
@@ -803,14 +803,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		// The TGUI will handle rendering the selected ticket
 
 /datum/admin_help/proc/Retitle()
-	var/new_title = input(usr, "Enter a title for the ticket", "Rename Ticket", name) as text|null
+	var/new_title = input(usr, "输入求助标题", "重命名求助", name) as text|null
 	if(new_title)
 		name = new_title
 		//not saying the original name cause it could be a long ass message
-		var/msg = "Ticket [TicketHref("#[id]")] titled [name] by [key_name_admin(usr)]"
+		var/msg = "[key_name_admin(usr)] 将求助 [TicketHref("#[id]")] 的标题改为 [name]"
 		message_admins(msg)
 		log_admin_private(msg)
-		AddInteraction("Retitled by [key_name_ahelp(usr)]")
+		AddInteraction("[key_name_ahelp(usr)] 更改了标题")
 
 //Forwarded action from admin/Topic
 /datum/admin_help/proc/Action(action)
@@ -842,7 +842,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AdminHelpChat", "Admin Help")
+		ui = new(user, src, "AdminHelpChat", "管理员求助")
 		ui.open()
 
 /datum/admin_help/ui_data(mob/user)
@@ -925,13 +925,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 				msg_data["message"] = trim(copytext(clean_text, colon_pos + 2))
 			else
 				msg_data["message"] = trim(clean_text)
-		else if(findtext(rest, "<font color='blue'>") || findtext(rest, "PM from"))
+		else if(findtext(rest, "<font color='blue'>") || findtext(rest, "PM from") || findtext(rest, " 的私信: "))
 			msg_data["is_admin"] = TRUE
-			msg_data["author"] = "Admin"
+			msg_data["author"] = "管理员"
 			var/search_from = 1 // Again, like the admin shit, we want to ensure we start looking from the FIRST colon. So, we can properly truncate the incoming text field
-			if(findtext(clean_text, "PM from"))
-				var/name_start = findtext(clean_text, "PM from") + 8
-				var/name_end = findtext(clean_text, ":", name_start)
+			if(findtext(clean_text, "PM from") || findtext(clean_text, "来自 "))
+				var/name_start = findtext(clean_text, "PM from") ? findtext(clean_text, "PM from") + 8 : findtext(clean_text, "来自 ") + length("来自 ")
+				var/name_end = findtext(clean_text, "PM from") ? findtext(clean_text, ":", name_start) : findtext(clean_text, " 的私信: ", name_start)
 				if(name_end)
 					msg_data["author"] = trim(copytext(clean_text, name_start, name_end))
 					search_from = name_end
@@ -943,12 +943,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		else if(findtext(rest, "<font color='green'>"))
 			// System message (positive/info)
 			msg_data["is_admin"] = FALSE
-			msg_data["author"] = "System"
+			msg_data["author"] = "系统"
 			msg_data["message"] = trim(clean_text)
 		else
 			// Other system messages
 			msg_data["is_admin"] = FALSE
-			msg_data["author"] = "System"
+			msg_data["author"] = "系统"
 			msg_data["message"] = trim(clean_text)
 
 		// Detect embedded media — EMBED_IMAGE: and EMBED_VIDEO: are 12 chars each,
@@ -1007,7 +1007,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			if(embed_type != "image" && embed_type != "video")
 				return FALSE
 			var/prefix = embed_type == "image" ? "EMBED_IMAGE:" : "EMBED_VIDEO:"
-			AddInteraction("<font color='blue'>PM from [key_name_ahelp(usr)]: [prefix][url]</font>")
+			AddInteraction("<font color='blue'>来自 [key_name_ahelp(usr)] 的私信: [prefix][url]</font>")
 			if(initiator)
 				to_chat(initiator, span_adminhelp("<b>[key_name_ahelp(usr)]在你的求助记录中嵌入了[list("image" = "图片", "video" = "视频")[embed_type] || "媒体"]。</b>"))
 			log_admin_private("Ticket #[id]: [key_name(usr)] embedded [embed_type]: [url]")
@@ -1058,8 +1058,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	adminhelp(msg)
 
 /client/verb/adminhelp(msg as message)
-	set category = "-Admin-"
-	set name = "Adminhelp"
+	set category = "-管理-"
+	set name = "管理员求助"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, span_danger("管理员暂时禁用了发言。"))
@@ -1093,14 +1093,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			else
 				to_chat(usr, span_warning("未找到求助记录，正在创建新求助……"))
 		else
-			current_ticket.AddInteraction("[key_name_ahelp(usr)] opened a new ticket.")
+			current_ticket.AddInteraction("[key_name_ahelp(usr)] 创建了新的求助。")
 			current_ticket.Close()
 
 	new /datum/admin_help(msg, src, FALSE)
 
 /client/verb/reopenticket()
-	set category = "-Admin-"
-	set name = "View Ticket"
+	set category = "-管理-"
+	set name = "查看求助"
 	set desc = "重新打开管理员求助聊天窗口"
 	
 	if(!current_ticket)
@@ -1162,9 +1162,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/list/powerlessmins = adm["noflags"]
 		var/list/allmins = adm["total"]
 		if(!afkmins.len && !stealthmins.len && !powerlessmins.len)
-			final = "[msg] - No admins online"
+			final = "[msg] - 没有管理员在线"
 		else
-			final = "[msg] - All admins stealthed\[[english_list(stealthmins)]\], AFK\[[english_list(afkmins)]\], or lacks +BAN\[[english_list(powerlessmins)]\]! Total: [allmins.len] "
+			final = "[msg] - 所有管理员均处于隐身\[[english_list(stealthmins)]\]、挂机\[[english_list(afkmins)]\]或缺少 +BAN 权限\[[english_list(powerlessmins)]\]状态！共 [allmins.len] 人 "
 		send2irc(source,final)
 		send2otherserver(source,final)
 
@@ -1191,11 +1191,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 
 /proc/ircadminwho()
-	var/list/message = list("Admins: ")
+	var/list/message = list("管理员：")
 	var/list/admin_keys = list()
 	for(var/adm in GLOB.admins)
 		var/client/C = adm
-		admin_keys += "[C][C.holder.fakekey ? "(Stealth)" : ""][C.is_afk() ? "(AFK)" : ""]"
+		admin_keys += "[C][C.holder.fakekey ? "（隐身）" : ""][C.is_afk() ? "（挂机）" : ""]"
 
 	for(var/admin in admin_keys)
 		if(LAZYLEN(message) > 1)
@@ -1260,13 +1260,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 						var/is_antag = 0
 						if(found.mind && found.mind.special_role)
 							is_antag = 1
-						founds += "Name: [found.name]([found.real_name]) Key: [found.key] Ckey: [found.ckey] [is_antag ? "(Antag)" : null] "
+						founds += "姓名：[found.name]（[found.real_name]）账号：[found.key] Ckey：[found.ckey] [is_antag ? "（反派）" : null] "
 						msg += "[original_word]<font size='1' color='[is_antag ? "red" : "black"]'>(<A HREF='?_src_=holder;[HrefToken(TRUE)];adminmoreinfo=[REF(found)]'>?</A>|<A HREF='?_src_=holder;[HrefToken(TRUE)];adminplayerobservefollow=[REF(found)]'>F</A>)</font> "
 						continue
 		msg += "[original_word] "
 	if(irc)
 		if(founds == "")
-			return "Search Failed"
+			return "搜索失败"
 		else
 			return founds
 
@@ -1277,8 +1277,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //
 
 /client/proc/open_ticket_panel()
-	set category = "Admin"
-	set name = "Open Ticket Panel"
+	set category = "管理"
+	set name = "打开求助面板"
 	
 	if(!check_rights(R_AHELP))
 		return

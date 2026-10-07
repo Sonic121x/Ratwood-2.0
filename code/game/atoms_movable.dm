@@ -1031,8 +1031,8 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 
 /atom/movable/vv_get_dropdown()
 	. = ..()
-	. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(src)]'>Follow</option>"
-	. += "<option value='?_src_=holder;[HrefToken()];admingetmovable=[REF(src)]'>Get</option>"
+	. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(src)]'>跟随</option>"
+	. += "<option value='?_src_=holder;[HrefToken()];admingetmovable=[REF(src)]'>拉取到身边</option>"
 
 /atom/movable/proc/ex_check(ex_id)
 	if(!ex_id)

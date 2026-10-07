@@ -113,9 +113,9 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	log_world("Shutdown complete")
 
 /client/proc/cmd_controller_view_ui()
-	set category = "Debug"
-	set name = "Controller Overview"
-	set desc = "View the current states of the Subsystem Controllers."
+	set category = "调试"
+	set name = "控制器概览"
+	set desc = "查看各子系统控制器的当前状态。"
 	if(!check_rights(R_SERVER|R_DEBUG))
 		return
 	Master.ui_interact(usr)
@@ -198,7 +198,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		if("view_variables")
 			var/datum/controller/subsystem/subsystem = locate(params["ref"]) in subsystems
 			if(isnull(subsystem))
-				to_chat(ui.user, span_warning("Failed to locate subsystem."))
+				to_chat(ui.user, span_warning("未找到子系统。"))
 				return
 			ui.user.client.debug_variables(subsystem)
 			return TRUE
@@ -371,7 +371,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	var/rtn2 = Recreate_MC()
 	if (rtn2 <= 0)
 		log_game("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
-		message_admins("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
+		message_admins("重建主控制器失败（错误代码：[rtn2]），现交由故障恢复机制处理")
 		Failsafe.defcon = 2
 
 // Main loop.

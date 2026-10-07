@@ -296,7 +296,7 @@ SUBSYSTEM_DEF(vote)
 	CONFIG_SET(flag/no_dead_vote, switch_deadvote_config)
 	var/text_verb = !switch_deadvote_config ? "enabled" : "disabled"
 	log_admin("[key_name(toggle_initiator)] [text_verb] Dead Vote.")
-	message_admins("[key_name_admin(toggle_initiator)] [text_verb] Dead Vote.")
+	message_admins("[key_name_admin(toggle_initiator)] 已[!switch_deadvote_config ? "开启" : "关闭"]亡者投票。")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Dead Vote", text_verb))
 
 /datum/controller/subsystem/vote/ui_state()
@@ -382,31 +382,31 @@ SUBSYSTEM_DEF(vote)
 	switch(action)
 		if("cancel")
 			if(!voter.client?.holder)
-				message_admins("[key_name(voter)] tried to cancel the current vote while having no admin holder, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] 没有管理员身份却试图取消当前投票，\
+					可能正在恶意利用漏洞，请留意。")
 				return
 
 			voter.log_message("cancelled a vote.", LOG_ADMIN)
-			message_admins("[key_name_admin(voter)] has cancelled the current vote.")
+			message_admins("[key_name_admin(voter)] 已取消当前投票。")
 			SStgui.close_uis(src)
 			reset()
 			return TRUE
 
 		if("endNow")
 			if(!voter.client?.holder)
-				message_admins("[key_name(voter)] tried to end the current vote while having no admin holder, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] 没有管理员身份却试图结束当前投票，\
+					可能正在恶意利用漏洞，请留意。")
 				return
 
 			voter.log_message("ended the current vote early", LOG_ADMIN)
-			message_admins("[key_name_admin(voter)] has ended the current vote.")
+			message_admins("[key_name_admin(voter)] 已结束当前投票。")
 			end_vote()
 			return TRUE
 
 		if("toggleDeadVote")
 			if(!check_rights_for(voter.client, R_ADMIN))
-				message_admins("[key_name(voter)] tried to toggle vote abillity for ghosts while having improper rights, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] 权限不足却试图切换幽灵投票权限，\
+					可能正在恶意利用漏洞，请留意。")
 				return
 
 			toggle_dead_voting(voter)
@@ -417,8 +417,8 @@ SUBSYSTEM_DEF(vote)
 			if(!istype(selected))
 				return
 			if(!check_rights_for(voter.client, R_ADMIN))
-				message_admins("[key_name(voter)] tried to toggle vote availability while having improper rights, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] 权限不足却试图切换投票可用状态，\
+					可能正在恶意利用漏洞，请留意。")
 				return
 
 			return selected.toggle_votable()
@@ -445,8 +445,8 @@ SUBSYSTEM_DEF(vote)
 
 		if("resetCooldown")
 			if(!voter.client.holder)
-				message_admins("[key_name(voter)] tried to reset the vote cooldown while having no admin holder, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] 没有管理员身份却试图重置投票冷却时间，\
+					可能正在恶意利用漏洞，请留意。")
 				return
 
 			last_vote_time = -INFINITY
@@ -481,7 +481,7 @@ SUBSYSTEM_DEF(vote)
 /// Mob level verb that allows players to vote on the current vote.
 /mob/verb/vote()
 	set category = "OOC"
-	set name = "Vote"
+	set name = "投票"
 
 	if(!SSvote.initialized)
 		to_chat(usr, span_notice("<i>投票功能尚未就绪！</i>"))

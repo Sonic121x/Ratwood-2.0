@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(hellspawns)
 			isinhell = TRUE
 
 /mob/dead/observer/say_verb(message as text)
-	set name = "Say"
+	set name = "说话"
 	set category = "IC"
 	set hidden = 1
 

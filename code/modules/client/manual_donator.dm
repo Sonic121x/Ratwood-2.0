@@ -62,27 +62,27 @@ GLOBAL_VAR_INIT(donatorLoaded, 0)
 
 // Procs goes here
 /datum/admins/proc/admin_add_donator_verb()
-	set name = "BC - Add Donator Ckey"
-	set category = "-Server-"
+	set name = "BC - 添加赞助者 ckey"
+	set category = "-服务器-"
 
-	var/key = input("CKey to Add", "Add Donator CKey") as null|text
+	var/key = input("要添加的 ckey", "添加赞助者 ckey") as null|text
 
 	if(key)
-		var/confirm = alert("Add [key] to the donator list? (They need to reconnect to update status)", , "Yes", "No")
-		if(confirm == "Yes")
-			message_admins("[key_name(usr)] added [key] to the donator list.")
+		var/confirm = alert("将 [key] 加入赞助者名单？（对方需要重新连接以更新状态）", , "是", "否")
+		if(confirm == "是")
+			message_admins("[key_name(usr)] 将 [key] 加入了赞助者名单。")
 			log_admin("[key_name(usr)] added [key] to the donator list.")
 			donator_addkey(key)
 
 /datum/admins/proc/admin_remove_donator_verb()
-	set name = "BC - Remove Donator Ckey"
-	set category = "-Server-"
+	set name = "BC - 移除赞助者 ckey"
+	set category = "-服务器-"
 
-	var/key = input("CKey to Remove", "Remove Donator CKey") as null|anything in GLOB.donatorCkeys
+	var/key = input("要移除的 ckey", "移除赞助者 ckey") as null|anything in GLOB.donatorCkeys
 
 	if(key)
-		var/confirm = alert("Remove [key] from the donator list?", , "Yes", "No")
-		if(confirm == "Yes")
-			message_admins("[key_name(usr)] removed [key] from the donator list.")
+		var/confirm = alert("将 [key] 从赞助者名单中移除？", , "是", "否")
+		if(confirm == "是")
+			message_admins("[key_name(usr)] 将 [key] 从赞助者名单中移除了。")
 			log_admin("[key_name(usr)] removed [key] from the donator list.")
 			donator_removekey(key)
