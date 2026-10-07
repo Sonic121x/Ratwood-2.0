@@ -36,8 +36,8 @@
 	return container
 
 /datum/admins/proc/beaker_panel()
-	set category = "-GameMaster-"
-	set name = "Spawn reagent container"
+	set category = "-主持-"
+	set name = "生成试剂容器"
 	if(!check_rights())
 		return
 
@@ -175,12 +175,12 @@
 					  	var reagentname = $(this).contents().filter(function(){ return this.nodeType == 3; })\[0\].nodeValue.toLowerCase().replace(/\\W/g, '');
 					    ret.push(reagentname+"="+$(this).find('input').val());
 					    });
-					  prompt("Copy this value", ret.join(';'));
+					  prompt("复制此值", ret.join(';'));
 
 					});
 
 					$('.import-reagents').click(function() {
-						var macro = prompt("Enter a chemistry macro", "");
+						var macro = prompt("输入化学宏", "");
 					  var parts = macro.split(';');
 					  var container = $(this).parents('div.container-control')\[0\];
 					  var ul = $(container).find("ul");
@@ -200,7 +200,7 @@
 
 					function addReagent(ul, reagentType, reagentName, amount)
 					{
-						$('<li class="reagent" data-type="'+reagentType+'">'+reagentName+'<div><input class="reagent" value="'+amount+'" />&nbsp;&nbsp;<button class="remove-reagent"><i class="far fa-trash-alt"></i>&nbsp;Remove</button></div></li>').insertBefore($(ul).children('li').last());
+						$('<li class="reagent" data-type="'+reagentType+'">'+reagentName+'<div><input class="reagent" value="'+amount+'" />&nbsp;&nbsp;<button class="remove-reagent"><i class="far fa-trash-alt"></i>&nbsp;移除</button></div></li>').insertBefore($(ul).children('li').last());
 					  $(ul).children('li').last().prev().find('button').click(function() { $(this).parents('li').remove(); });
 					}
 
@@ -230,21 +230,21 @@
 			</head>
 			<body scroll=auto>
 				<div class='uiWrapper'>
-					<div class='uiTitleWrapper'><div class='uiTitle'><tt>Beaker panel</tt></div></div>
+					<div class='uiTitleWrapper'><div class='uiTitle'><tt>试剂容器面板</tt></div></div>
 					<div class='uiContent'>
 
 		<div class="width: 100%">
 		<button id="spawn-grenade">
-		<i class="fas fa-bomb"></i>&nbsp;Spawn grenade
+		<i class="fas fa-bomb"></i>&nbsp;生成手榴弹
 		</button>
-			<label for="grenade-type">Grenade type: </label>
+			<label for="grenade-type">手榴弹类型：</label>
 		<select id="grenade-type">
-			<option value="normal">Normal</option>
+			<option value="normal">普通</option>
 		</select>
 		<div class="grenade-data normal">
 		</div>
 			<br />
-<small>note: beakers recommended, other containers may have issues</small>
+<small>注意：推荐使用烧杯，其他容器可能出现问题</small>
 		</div>
 
 	"}
@@ -252,24 +252,24 @@
 		dat += {"
 			<div class="container-control">
 			<h4>
-			Container [i]:
+			容器 [i]：
 			</h4>
 			<br />
-			<label for="beaker[i]type">Container type</label>
+			<label for="beaker[i]type">容器类型</label>
 			<select name="containertype" id="beaker[i]type"></select>
 			<br />
 			<br />
 			<div>
 			<button class="spawn-container">
-			<i class="fas fa-cog"></i>&nbsp;Spawn
+			<i class="fas fa-cog"></i>&nbsp;生成
 				</button>
 				&nbsp;&nbsp;&nbsp;
 				<button class="import-reagents">
-			<i class="fas fa-file-import"></i>&nbsp;Import
+			<i class="fas fa-file-import"></i>&nbsp;导入
 				</button>
 				&nbsp;&nbsp;&nbsp;
 				<button class="export-reagents">
-			<i class="fas fa-file-export"></i>&nbsp;Export
+			<i class="fas fa-file-export"></i>&nbsp;导出
 				</button>
 
 			</div>
@@ -277,7 +277,7 @@
 				<li>
 
 					<select class="select-new-reagent"></select><div class="reagent-div"><input style="width: 50%" type="text" name="newreagent" value="40" />&nbsp;&nbsp;<button class="add-reagent">
-				<i class="fas fa-plus"></i>&nbsp;Add
+				<i class="fas fa-plus"></i>&nbsp;添加
 				</button>
 
 				</div>

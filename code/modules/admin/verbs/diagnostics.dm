@@ -1,6 +1,6 @@
 /client/proc/fix_next_move()
-	set category = "Debug"
-	set name = "Unfreeze Everyone"
+	set category = "调试"
+	set name = "解除所有人行动冻结"
 	var/largest_move_time = 0
 	var/largest_click_time = 0
 	var/mob/largest_move_mob = null
@@ -23,27 +23,27 @@
 		log_admin("DEBUG: [key_name(M)]  next_move = [M.next_move]  lastDblClick = [M.next_click]  world.time = [world.time]")
 		M.next_move = 1
 		M.next_click = 0
-	message_admins("[ADMIN_LOOKUPFLW(largest_move_mob)] had the largest move delay with [largest_move_time] frames / [DisplayTimeText(largest_move_time)]!")
-	message_admins("[ADMIN_LOOKUPFLW(largest_click_mob)] had the largest click delay with [largest_click_time] frames / [DisplayTimeText(largest_click_time)]!")
+	message_admins("[ADMIN_LOOKUPFLW(largest_move_mob)] 的移动延迟最长，为 [largest_move_time] 帧／[DisplayTimeText(largest_move_time)]！")
+	message_admins("[ADMIN_LOOKUPFLW(largest_click_mob)] 的点击延迟最长，为 [largest_click_time] 帧／[DisplayTimeText(largest_click_time)]！")
 	message_admins("world.time = [world.time]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Unfreeze Everyone") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/radio_report()
-	set category = "Debug"
-	set name = "Radio report"
+	set category = "调试"
+	set name = "无线电报告"
 
-	var/output = "<b>Radio Report</b><hr>"
+	var/output = "<b>无线电报告</b><hr>"
 	for (var/fq in SSradio.frequencies)
-		output += "<b>Freq: [fq]</b><br>"
+		output += "<b>频率：[fq]</b><br>"
 		var/datum/radio_frequency/fqs = SSradio.frequencies[fq]
 		if (!fqs)
-			output += "&nbsp;&nbsp;<b>ERROR</b><br>"
+			output += "&nbsp;&nbsp;<b>错误</b><br>"
 			continue
 		for (var/filter in fqs.devices)
 			var/list/f = fqs.devices[filter]
 			if (!f)
-				output += "&nbsp;&nbsp;[filter]: ERROR<br>"
+				output += "&nbsp;&nbsp;[filter]：错误<br>"
 				continue
 			output += "&nbsp;&nbsp;[filter]: [f.len]<br>"
 			for (var/device in f)
@@ -57,31 +57,31 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Radio Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/reload_admins()
-	set name = "Reload Admins"
-	set category = "-Server-"
+	set name = "重新加载管理员"
+	set category = "-服务器-"
 
 	if(!src.holder)
 		return
 
-	var/confirm = alert(src, "Are you sure you want to reload all admins?", "Confirm", "Yes", "No")
-	if(confirm !="Yes")
+	var/confirm = alert(src, "确定要重新加载所有管理员吗？", "确认", "是", "否")
+	if(confirm !="是")
 		return
 
 	load_admins()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reload All Admins") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	message_admins("[key_name_admin(usr)] manually reloaded admins")
+	message_admins("[key_name_admin(usr)] 手动重新加载了管理员")
 
 /client/proc/reload_whitelist()
-	set name = "Reload Whitelist"
-	set category = "-Server-"
+	set name = "重新加载白名单"
+	set category = "-服务器-"
 
 	if(!src.holder)
 		return
 
-	var/confirm = alert(src, "Are you sure you want to reload the whitelist?", "Confirm", "Yes", "No")
-	if(confirm !="Yes")
+	var/confirm = alert(src, "确定要重新加载白名单吗？", "确认", "是", "否")
+	if(confirm !="是")
 		return
 
 	load_whitelist()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reload Whitelist") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	message_admins("[key_name_admin(usr)] manually reloaded whitelist")
+	message_admins("[key_name_admin(usr)] 手动重新加载了白名单")

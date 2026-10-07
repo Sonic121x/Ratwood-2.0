@@ -8,8 +8,8 @@
 		create_mob_html = replacetext(create_mob_html, "Create Object", "Create Mob")
 		create_mob_html = replacetext(create_mob_html, "null /* object types */", "\"[mobjs]\"")
 
-		var/taint_block = {"<input type="checkbox" name="taints_loot" value="1" checked> Taint loot (worn gear sells for 25%)<br><br>
-<input type="submit" value="spawn">"}
+		var/taint_block = {"<input type="checkbox" name="taints_loot" value="1" checked> 污染战利品（穿戴装备只能卖出原价的 25%）<br><br>
+<input type="submit" value="生成">"}
 		create_mob_html = replacetext(create_mob_html, "<input type=\"submit\" value=\"spawn\">", taint_block)
 
 	user << browse(create_panel_helper(create_mob_html), "window=create_mob;size=550x500")

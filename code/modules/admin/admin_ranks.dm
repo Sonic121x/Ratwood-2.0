@@ -116,7 +116,7 @@ GLOBAL_PROTECT(protected_ranks)
 	set waitfor = FALSE
 
 	if(IsAdminAdvancedProcCall())
-		to_chat(usr, span_adminprefix("Admin rank DB Sync blocked: Advanced ProcCall detected."))
+		to_chat(usr, span_adminprefix("已阻止管理员职级数据库同步：检测到高级过程调用。"))
 		return
 
 	var/list/sql_ranks = list()
@@ -127,7 +127,7 @@ GLOBAL_PROTECT(protected_ranks)
 //load our rank - > rights associations
 /proc/load_admin_ranks(dbfail, no_update)
 	if(IsAdminAdvancedProcCall())
-		to_chat(usr, span_adminprefix("Admin Reload blocked: Advanced ProcCall detected."))
+		to_chat(usr, span_adminprefix("已阻止管理员重载：检测到高级过程调用。"))
 		return
 	GLOB.admin_ranks.Cut()
 	GLOB.protected_ranks.Cut()
@@ -154,7 +154,7 @@ GLOBAL_PROTECT(protected_ranks)
 		else
 			var/datum/DBQuery/query_load_admin_ranks = SSdbcore.NewQuery("SELECT `rank`, flags, exclude_flags, can_edit_flags FROM [format_table_name("admin_ranks")]")
 			if(!query_load_admin_ranks.Execute())
-				message_admins("Error loading admin ranks from database. Loading from backup.")
+				message_admins("从数据库加载管理等级时出错，正在从备份加载。")
 				log_sql("Error loading admin ranks from database. Loading from backup.")
 				dbfail = 1
 			else
@@ -206,7 +206,7 @@ GLOBAL_PROTECT(protected_ranks)
 /proc/load_admins(no_update)
 	var/dbfail
 	if(!CONFIG_GET(flag/admin_legacy_system) && !SSdbcore.Connect())
-		message_admins("Failed to connect to database while loading admins. Loading from backup.")
+		message_admins("加载管理员时无法连接数据库，正在从备份加载。")
 		log_sql("Failed to connect to database while loading admins. Loading from backup.")
 		dbfail = 1
 	//clear the datums references
@@ -233,7 +233,7 @@ GLOBAL_PROTECT(protected_ranks)
 	if(!CONFIG_GET(flag/admin_legacy_system) || dbfail)
 		var/datum/DBQuery/query_load_admins = SSdbcore.NewQuery("SELECT ckey, `rank` FROM [format_table_name("admin")] ORDER BY `rank`")
 		if(!query_load_admins.Execute())
-			message_admins("Error loading admins from database. Loading from backup.")
+			message_admins("从数据库加载管理员时出错，正在从备份加载。")
 			log_sql("Error loading admins from database. Loading from backup.")
 			dbfail = 1
 		else
@@ -242,7 +242,7 @@ GLOBAL_PROTECT(protected_ranks)
 				var/admin_rank = query_load_admins.item[2]
 				var/skip
 				if(rank_names[admin_rank] == null)
-					message_admins("[admin_ckey] loaded with invalid admin rank [admin_rank].")
+					message_admins("[admin_ckey] 加载的管理员等级 [admin_rank] 无效。")
 					skip = 1
 				if(GLOB.admin_datums[admin_ckey] || GLOB.deadmins[admin_ckey])
 					skip = 1

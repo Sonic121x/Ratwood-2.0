@@ -53,16 +53,16 @@
 
 //Debug procs
 /client/proc/test_movable_UI()
-	set category = "Debug"
-	set name = "Spawn Movable UI Object"
+	set category = "调试"
+	set name = "生成可移动界面对象"
 
 	var/atom/movable/screen/movable/M = new()
-	M.name = "Movable UI Object"
+	M.name = "可移动界面对象"
 	M.icon_state = "block"
-	M.maptext = "Movable"
+	M.maptext = "可移动"
 	M.maptext_width = 64
 
-	var/screen_l = input(usr,"Where on the screen? (Formatted as 'X,Y' e.g: '1,1' for bottom left)","Spawn Movable UI Object") as text|null
+	var/screen_l = input(usr,"放在屏幕何处？（格式为 'X,Y'，例如 '1,1' 表示左下角）","生成可移动界面对象") as text|null
 	if(!screen_l)
 		return
 
@@ -72,16 +72,16 @@
 
 
 /client/proc/test_snap_UI()
-	set category = "Debug"
-	set name = "Spawn Snap UI Object"
+	set category = "调试"
+	set name = "生成吸附界面对象"
 
 	var/atom/movable/screen/movable/snap/S = new()
-	S.name = "Snap UI Object"
+	S.name = "吸附界面对象"
 	S.icon_state = "block"
-	S.maptext = "Snap"
+	S.maptext = "吸附"
 	S.maptext_width = 64
 
-	var/screen_l = input(usr,"Where on the screen? (Formatted as 'X,Y' e.g: '1,1' for bottom left)","Spawn Snap UI Object") as text|null
+	var/screen_l = input(usr,"放在屏幕何处？（格式为 'X,Y'，例如 '1,1' 表示左下角）","生成吸附界面对象") as text|null
 	if(!screen_l)
 		return
 

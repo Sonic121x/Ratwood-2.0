@@ -22,16 +22,16 @@
 
 /datum/buildmode_mode/area_edit/show_help(client/c)
 	to_chat(c, span_notice("***********************************************************"))
-	to_chat(c, span_notice("Left Mouse Button on obj/turf/mob  = Paint area"))
-	to_chat(c, span_notice("Right Mouse Button on obj/turf/mob = Select area to paint"))
-	to_chat(c, span_notice("Right Mouse Button on buildmode button = Create new area"))
+	to_chat(c, span_notice("左键点击物体/地块/生物 = 涂抹区域"))
+	to_chat(c, span_notice("右键点击物体/地块/生物 = 选择要涂抹的区域"))
+	to_chat(c, span_notice("右键点击建造模式按钮 = 创建新区域"))
 	to_chat(c, span_notice("***********************************************************"))
 
 /datum/buildmode_mode/area_edit/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:", "Typepath", "/area")
+	var/target_path = input(c, "输入类型路径：", "类型路径", "/area")
 	var/areatype = text2path(target_path)
 	if(ispath(areatype,/area))
-		var/areaname = input(c, "Enter area name:", "Area name", "Area")
+		var/areaname = input(c, "输入区域名称：", "区域名称", "区域")
 		if(!areaname || !length(areaname))
 			return
 		storedarea = new areatype
@@ -49,7 +49,7 @@
 
 	if(left_click)
 		if(!storedarea)
-			to_chat(c, span_warning("Configure or select the area you want to paint first!"))
+			to_chat(c, span_warning("请先配置或选择要涂抹的区域！"))
 			return
 		var/turf/T = get_turf(object)
 		if(get_area(T) != storedarea)

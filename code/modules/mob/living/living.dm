@@ -638,7 +638,7 @@
 //mob verbs are a lot faster than object verbs
 //for more info on why this is not atom/pull, see examinate() in mob.dm
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
-	set name = "Pull"
+	set name = "拖动"
 	set hidden = 1
 
 	if(istype(AM) && Adjacent(AM))
@@ -684,7 +684,7 @@
 
 
 /mob/living/verb/stop_pulling1()
-	set name = "Stop Pulling"
+	set name = "停止拖动"
 	set category = "IC"
 	set hidden = 1
 	stop_pulling()
@@ -751,7 +751,7 @@
 // MOB PROCS //END
 
 /mob/living/proc/mob_sleep()
-	set name = "Sleep"
+	set name = "睡觉"
 	set category = "IC"
 	set hidden = 1
 	if(IsSleeping())
@@ -767,7 +767,7 @@
 
 
 /mob/living/proc/lay_down()
-	set name = "Lay down"
+	set name = "躺下"
 	set category = "IC"
 	set hidden = 1
 	if(stat)
@@ -779,7 +779,7 @@
 		set_resting(TRUE, FALSE)
 
 /mob/living/proc/stand_up()
-	set name = "Stand up"
+	set name = "站起"
 	set category = "IC"
 	set hidden = 1
 	if(stat)
@@ -798,7 +798,7 @@
 			return FALSE
 
 /mob/living/proc/toggle_rest()
-	set name = "Rest/Stand"
+	set name = "躺下／站起"
 	set category = "IC"
 	set hidden = 1
 	if(stat)
@@ -1159,7 +1159,7 @@
 	return !((next_move > world.time) || incapacitated(ignore_restraints = TRUE, ignore_stasis = TRUE))
 
 /mob/living/verb/resist()
-	set name = "Resist"
+	set name = "挣脱"
 	set category = "IC"
 	set hidden = 1
 	//giving up on a struggle must not wait on the breakout cooldown that same struggle charged up front
@@ -1220,7 +1220,7 @@
 			return
 
 /mob/living/proc/submit(instant = FALSE)
-	set name = "Yield"
+	set name = "投降"
 	set category = "IC"
 	set hidden = 1
 	if(surrendering || stat == DEAD)
@@ -1253,7 +1253,7 @@
 	log_combat(src, src, "stopped surrendering")
 
 /mob/living/proc/toggle_compliance()
-	set name = "Toggle Compliance"
+	set name = "切换顺从状态"
 	set category = "IC"
 	set hidden = 1
 

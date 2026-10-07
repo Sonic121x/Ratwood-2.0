@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(explosions)
 	var/max_range = max(devastation_range, heavy_impact_range, light_impact_range, flame_range)
 
 	if(adminlog)
-		message_admins("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in [ADMIN_VERBOSEJMP(epicenter)]")
+		message_admins("[ADMIN_VERBOSEJMP(epicenter)] 发生爆炸，范围为（[devastation_range]、[heavy_impact_range]、[light_impact_range]、[flame_range]）")
 		log_game("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in [loc_name(epicenter)]")
 
 	var/x0 = epicenter.x
@@ -333,10 +333,10 @@ GLOBAL_LIST_EMPTY(explosions)
 	return ..()
 
 /client/proc/check_bomb_impacts()
-	set name = "Check Bomb Impact"
-	set category = "Debug"
+	set name = "检查爆炸影响"
+	set category = "调试"
 
-	var/newmode = alert("Use reactionary explosions?","Check Bomb Impact", "Yes", "No")
+	var/newmode = alert("使用考虑障碍物阻挡的爆炸算法？","检查爆炸影响", "是", "否")
 	var/turf/epicenter = get_turf(mob)
 	if(!epicenter)
 		return
@@ -344,27 +344,27 @@ GLOBAL_LIST_EMPTY(explosions)
 	var/dev = 0
 	var/heavy = 0
 	var/light = 0
-	var/list/choices = list("Small Bomb","Medium Bomb","Big Bomb","Custom Bomb")
-	var/choice = input("Bomb Size?") in choices
+	var/list/choices = list("小型炸弹","中型炸弹","大型炸弹","自定义炸弹")
+	var/choice = input("炸弹规模？") in choices
 	switch(choice)
 		if(null)
 			return 0
-		if("Small Bomb")
+		if("小型炸弹")
 			dev = 1
 			heavy = 2
 			light = 3
-		if("Medium Bomb")
+		if("中型炸弹")
 			dev = 2
 			heavy = 3
 			light = 4
-		if("Big Bomb")
+		if("大型炸弹")
 			dev = 3
 			heavy = 5
 			light = 7
-		if("Custom Bomb")
-			dev = input("Devastation range (Tiles):") as num
-			heavy = input("Heavy impact range (Tiles):") as num
-			light = input("Light impact range (Tiles):") as num
+		if("自定义炸弹")
+			dev = input("毁灭范围（格）：") as num
+			heavy = input("重度冲击范围（格）：") as num
+			light = input("轻度冲击范围（格）：") as num
 
 	var/max_range = max(dev, heavy, light)
 	var/x0 = epicenter.x
@@ -374,7 +374,7 @@ GLOBAL_LIST_EMPTY(explosions)
 		wipe_colours += T
 		var/dist = cheap_hypotenuse(T.x, T.y, x0, y0)
 
-		if(newmode == "Yes")
+		if(newmode == "是")
 			var/turf/TT = T
 			while(TT != epicenter)
 				TT = get_step_towards(TT,epicenter)
@@ -387,13 +387,13 @@ GLOBAL_LIST_EMPTY(explosions)
 
 		if(dist < dev)
 			T.color = "red"
-			T.maptext = "Dev"
+			T.maptext = "毁灭"
 		else if (dist < heavy)
 			T.color = "yellow"
-			T.maptext = "Heavy"
+			T.maptext = "重度"
 		else if (dist < light)
 			T.color = "blue"
-			T.maptext = "Light"
+			T.maptext = "轻度"
 		else
 			continue
 

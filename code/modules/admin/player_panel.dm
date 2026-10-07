@@ -67,24 +67,24 @@
 
 					body += "</td><td align='center'>";
 
-					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>Real name "+real_name+"</b><br><b>Played by "+key+" ("+ip+")</b><br><b>Old names :"+old_names+"</b></font>";
+					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>真实姓名："+real_name+"</b><br><b>扮演者："+key+" ("+ip+")</b><br><b>曾用名："+old_names+"</b></font>";
 
 					body += "</td><td align='center'>";
 
-					body += "<a href='?_src_=holder;[HrefToken()];adminplayeropts="+ref+"'>PP</a> - "
-					body += "<a href='?_src_=holder;[HrefToken()];showmessageckey="+ckey+"'>N</a> - "
-					body += "<a href='?_src_=vars;[HrefToken()];Vars="+ref+"'>VV</a> - "
-					body += "<a href='?_src_=holder;[HrefToken()];traitor="+ref+"'>TP</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];adminplayeropts="+ref+"'>玩家面板</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];showmessageckey="+ckey+"'>备注</a> - "
+					body += "<a href='?_src_=vars;[HrefToken()];Vars="+ref+"'>变量</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];traitor="+ref+"'>反派面板</a> - "
 					if (job == "Cyborg")
-						body += "<a href='?_src_=holder;[HrefToken()];borgpanel="+ref+"'>BP</a> - "
-					body += "<a href='?priv_msg="+ckey+"'>PM</a> - "
-					body += "<a href='?_src_=holder;[HrefToken()];subtlemessage="+ref+"'>SM</a> - "
-					body += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow="+ref+"'>FLW</a> - "
-					body += "<a href='?_src_=holder;[HrefToken()];cursemenu="+ckey+"'>CRS</a> - "
-					body += "<a href='?_src_=holder;[HrefToken()];individuallog="+ref+"'>LOGS</a><br>"
+						body += "<a href='?_src_=holder;[HrefToken()];borgpanel="+ref+"'>电子人面板</a> - "
+					body += "<a href='?priv_msg="+ckey+"'>私信</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];subtlemessage="+ref+"'>隐秘消息</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow="+ref+"'>跟随</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];cursemenu="+ckey+"'>诅咒</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];individuallog="+ref+"'>日志</a><br>"
 
 					if(antagonist > 0)
-						body += "<font size='2'><a href='?_src_=holder;[HrefToken()];check_antagonist=1'><font color='red'><b>Antagonist</b></font></a></font>";
+						body += "<font size='2'><a href='?_src_=holder;[HrefToken()];check_antagonist=1'><font color='red'><b>反派</b></font></a></font>";
 
 					body += "</td></tr></table>";
 
@@ -143,7 +143,7 @@
 						return;
 					locked_tabs.push(id);
 					var notice_span = document.getElementById(notice_span_id);
-					notice_span.innerHTML = "<font color='red'>Locked</font> ";
+					notice_span.innerHTML = "<font color='red'>已锁定</font> ";
 				}
 
 				function attempt(ab){
@@ -189,14 +189,14 @@
 		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
 			<tr id='title_tr'>
 				<td align='center'>
-					<font size='5'><b>Player panel</b></font><br>
-					Hover over a line to see more information - <a href='?_src_=holder;[HrefToken()];check_antagonist=1'>Check antagonists</a> - Kick <a href='?_src_=holder;[HrefToken()];kick_all_from_lobby=1;afkonly=0'>everyone</a>/<a href='?_src_=holder;[HrefToken()];kick_all_from_lobby=1;afkonly=1'>AFKers</a> in lobby
+					<font size='5'><b>玩家面板</b></font><br>
+					鼠标悬停可查看更多信息 - <a href='?_src_=holder;[HrefToken()];check_antagonist=1'>检查反派</a> - 将大厅中的<a href='?_src_=holder;[HrefToken()];kick_all_from_lobby=1;afkonly=0'>所有玩家</a>/<a href='?_src_=holder;[HrefToken()];kick_all_from_lobby=1;afkonly=1'>挂机玩家</a>踢出
 					<p>
 				</td>
 			</tr>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Search:</b> <input type='text' id='filter' value='' style='width:300px;'>
+					<b>搜索：</b> <input type='text' id='filter' value='' style='width:300px;'>
 				</td>
 			</tr>
 	</table>
@@ -226,26 +226,26 @@
 					if(ishuman(M))
 						M_job = M.get_role_title()
 					else
-						M_job = "Carbon-based"
+						M_job = "碳基生物"
 
 				else if(isanimal(M)) //simple animals
 					if(iscorgi(M))
-						M_job = "Corgi"
+						M_job = "柯基犬"
 					else
-						M_job = "Animal"
+						M_job = "动物"
 
 				else
-					M_job = "Living"
+					M_job = "存活生物"
 
 			else if(isnewplayer(M))
-				M_job = "New player"
+				M_job = "大厅玩家"
 
 			else if(isobserver(M))
 				var/mob/dead/observer/O = M
 				if(O.started_as_observer)//Did they get BTFO or are they just not trying?
-					M_job = "Observer"
+					M_job = "观察者"
 				else
-					M_job = "Ghost"
+					M_job = "幽灵"
 
 			M_job = html_encode(M_job) // Encode so name like Magician's Apprentice don't break player panel
 			var/M_name = html_encode(M.name)

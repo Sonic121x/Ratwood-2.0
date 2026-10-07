@@ -1,6 +1,6 @@
 /client/proc/local_lightsout()
-	set category = "-GameMaster-"
-	set name = "Local Lightsout"
+	set category = "-主持-"
+	set name = "熄灭附近灯光"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -11,4 +11,4 @@
 			var/obj/machinery/light/roguestreet/streetlamp = O
 			streetlamp.lights_out()
 	var/turf/loc = usr.loc
-	message_admins(span_adminnotice("[key_name_admin(usr)] turned the lights out at [loc.x], [loc.y], [loc.z]"))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 熄灭了 [loc.x], [loc.y], [loc.z] 附近的灯光"))

@@ -1,6 +1,6 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
 /client/verb/wiki(query as text)
-	set name = "wiki"
+	set name = "维基"
 	set desc = ""
 	set category = "OOC"
 	set hidden = 1
@@ -30,7 +30,7 @@
 	return
 
 /client/verb/rules()
-	set name = "rules"
+	set name = "规则"
 	set desc = ""
 	set category = "OOC"
 	set hidden = 1
@@ -58,9 +58,9 @@
 	return
 
 /client/verb/mentorhelp()
-	set name = "Mentorhelp"
+	set name = "导师求助"
 	set desc = ""
-	set category = "-Admin-"
+	set category = "-管理-"
 	if(mob)
 		var/msg = input("向低语提出你的问题：", "导师求助") as text|null
 		if(msg)
@@ -69,9 +69,9 @@
 		to_chat(src, span_danger("你目前无法在主菜单中使用导师求助。"))
 
 /client/verb/reportissue()
-	set name = "Report Issue"
+	set name = "报告问题"
 	set desc = ""
-	set category = "-Admin-"
+	set category = "-管理-"
 	var/message = "即将在浏览器中打开 GitHub 问题追踪页面。你确定吗？"
 	if(GLOB.revdata.testmerge.len)
 		message += "<br>以下实验性改动正在生效，可能是新出现或突发问题的原因。如有可能，请寻找与你的问题相关的专门讨论帖，而非直接提交到通用问题追踪页面：<br>"
@@ -82,7 +82,7 @@
 	return
 
 /client/verb/recent_changelog()
-	set name = "Recent Changes"
+	set name = "近期改动"
 	set category = "OOC"
 	to_chat(src, "<a href='byond://?command=open-changelog' style='display:inline-block;padding:4px 10px;border:1px solid #6f8f5f;border-radius:4px;background:#22331d;color:#d8f0c8;text-decoration:none;'><b>打开更新日志</b></a>")
 	if(GLOB.changelog.len)
@@ -98,7 +98,7 @@
 		GLOB.changelog_tgui.ui_interact(mob)
 
 /client/verb/hotkeys_help()
-	set name = "_Help-Controls"
+	set name = "_帮助-操作指南"
 	set category = "OOC"
 	mob.hotkey_help()
 
@@ -143,8 +143,8 @@
 	to_chat(src, hotkey_mode)
 
 /client/verb/set_fixed()
-	set name = "IconSize"
-	set category = "Options"
+	set name = "图标大小"
+	set category = "选项"
 
 	if(winget(src, "mapwindow.map", "icon-size") == "64")
 		to_chat(src, "已切换为拉伸适应窗口。")
@@ -154,8 +154,8 @@
 		winset(src, "mapwindow.map", "icon-size=64")
 
 /client/verb/set_stretch()
-	set name = "IconScaling"
-	set category = "Options"
+	set name = "图标缩放"
+	set category = "选项"
 	if(prefs)
 		if(prefs.crt == TRUE)
 			to_chat(src, "CRT 显示模式已开启。")
@@ -169,8 +169,8 @@
 		winset(src, "mapwindow.map", "zoom-mode=normal")
 
 /client/verb/crtmode()
-	set category = "Options"
-	set name = "ToggleCRT"
+	set category = "选项"
+	set name = "切换显像管效果"
 	set hidden = 1
 	if(!prefs)
 		return
@@ -190,8 +190,8 @@
 			S.alpha = 70
 
 /client/verb/grainfilter()
-	set category = "Options"
-	set name = "ToggleGrain"
+	set category = "选项"
+	set name = "切换颗粒效果"
 	set hidden = 1
 	if(!prefs)
 		return
@@ -210,17 +210,17 @@
 
 /client/verb/triggercommend()
 	set category = "OOC"
-	set name = "Commend Someone"
+	set name = "称赞玩家"
 	commendsomeone()
 
 /client/verb/roleplay_ad_view()
 	set category = "OOC"
-	set name = "Roleplay Ad (View)"
+	set name = "角色扮演告示（查看）"
 	view_roleplay_ads()
 
 /client/verb/roleplay_ad_set()
 	set category = "OOC"
-	set name = "Roleplay Ad (Set)"
+	set name = "角色扮演告示（设置）"
 	if(mob)
 		if(!ishuman(mob))
 			return
@@ -229,7 +229,7 @@
 		if(LAZYACCESS(GLOB.roleplay_ads,C.mobid))
 			to_chat(C, span_info(LAZYACCESS(GLOB.roleplay_ads,C.mobid)))
 			has_old_ad = TRUE
-		var/msg = input("发布一则告示，说明你想参与哪种角色扮演。其他人可通过 Roleplay Ad (View) 命令查看。请勿滥用此功能。留空并确认即可移除告示。", "我热爱角色扮演") as message|null
+		var/msg = input("发布一则告示，说明你想参与哪种角色扮演。其他人可通过“角色扮演告示（查看）”命令查看。请勿滥用此功能。留空并确认即可移除告示。", "我热爱角色扮演") as message|null
 		if(msg)
 			LAZYSET(GLOB.roleplay_ads,C.mobid,"<b>[C.real_name]</b> - [html_encode(msg)]<BR>")
 			to_chat(C, span_info("角色扮演告示已发布。"))
@@ -243,8 +243,8 @@
 			to_chat(C, span_info("角色扮演告示已移除。"))
 
 /client/verb/changefps()
-	set category = "Options"
-	set name = "ChangeFPS"
+	set category = "选项"
+	set name = "修改帧率"
 	if(!prefs)
 		return
 	var/newfps = input(usr, "输入新的帧率", "新帧率", 100) as null|num
@@ -254,8 +254,8 @@
 		prefs.save_preferences()
 
 /client/verb/set_picinchat()
-	set name = "Headshot in Chat"
-	set category = "Options"
+	set name = "聊天头像"
+	set category = "选项"
 	set hidden = 1
 
 	if(prefs)
@@ -267,7 +267,7 @@
 			to_chat(src, "聊天头像已禁用。")
 
 /client/verb/changelog()
-	set name = "Changelog"
+	set name = "更新日志"
 	set category = "OOC"
 
 	if(!GLOB.changelog_tgui)
