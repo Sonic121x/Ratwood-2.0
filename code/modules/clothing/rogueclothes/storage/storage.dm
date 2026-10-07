@@ -60,9 +60,9 @@
 	)
 
 /datum/intent/whip/belt/tip
-	name = "belt lash"
+	name = "腰带鞭打"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes", "cracks")
+	attack_verb = list("抽打", "鞭击")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 5
@@ -73,9 +73,9 @@
 	item_d_type = "slash"
 
 /datum/intent/whip/belt/buckle
-	name = "buckle strike"
+	name = "带扣打击"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes", "cracks")
+	attack_verb = list("抽打", "鞭击")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 5

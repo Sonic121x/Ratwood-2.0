@@ -1,6 +1,6 @@
 //t1, the bends
 /obj/effect/proc_holder/spell/invoked/abyssor_bends
-	name = "深渊压弯"
+	name = "深渊绞痛"
 	desc = "抽空目标的体力，除非其同样信奉 阿比索尔。还会令其头晕目眩、视野模糊。"
 	overlay_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	action_icon = 'icons/mob/actions/abyssormiracles.dmi'

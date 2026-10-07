@@ -1,7 +1,7 @@
 // Druid
 /obj/effect/proc_holder/spell/targeted/blesscrop
 	name = "祝福庄稼"
-	desc = "为目标土壤、树木赐福。德鲁伊技艺会提高储存充能。可复苏枯死植物，在缺乏时补充养分与水分，并加速其生长。持有祝福种粉时，还可一次耗尽全部充能，最多同时祝福附近五块已种植的土壤。"
+	desc = "为目标土壤、树木赐福。德鲁伊秘术会提高储存充能。可复苏枯死植物，在缺乏时补充养分与水分，并加速其生长。持有祝福种粉时，还可一次耗尽全部充能，最多同时祝福附近五块已种植的土壤。"
 	overlay_icon = 'icons/mob/actions/dendormiracles.dmi'
 	action_icon = 'icons/mob/actions/dendormiracles.dmi'
 	overlay_state = "blesscrop"

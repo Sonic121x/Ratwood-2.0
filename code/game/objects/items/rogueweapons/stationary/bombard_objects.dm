@@ -95,7 +95,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 /obj/item/bombard_partiallyrefinedbarrel
 	name = "\proper 初步精炼的炮管"
 	desc = "一根经过初步处理的铁制炮管，内壁却依旧粗糙，仍需打磨，<br>\
-	<small>你觉得可以把它带到铁砧上进一步精炼。</small>"
+	<small>你觉得可以把它带到工匠台进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
 	icon_state = "kit_barrel"
 	w_class = WEIGHT_CLASS_BULKY
@@ -105,7 +105,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 /obj/item/bombard_sandedbarrel
 	name = "\proper 打磨过的臼炮炮管"
 	desc = "一根经过打磨处理的铁炮管，但内部仍有缺口需要修补，<br>\
-	<small> 你觉得可以把它带到铁砧处进一步精炼。</small>"
+	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
 	icon_state = "kit_barrel"
 	w_class = WEIGHT_CLASS_BULKY

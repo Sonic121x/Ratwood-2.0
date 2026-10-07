@@ -146,7 +146,7 @@
 		owner.adjustCloneLoss(-healing_strength, 0)
 
 /atom/movable/screen/alert/status_effect/buff/pestra_care
-	name = "佩斯特拉 的拥抱"
+	name = "佩斯特拉的拥抱"
 	desc = "我体内仿佛有什么在蠕动，可那感觉却让我逐渐好转……"
 	icon_state = "divine_heal"
 
@@ -479,5 +479,5 @@
 	examine_text = "SUBJECTPRONOUN 周身萦绕着一股不祥的病疫气息。"
 
 /atom/movable/screen/alert/status_effect/black_rot_carrier
-	name = "佩斯特拉 的赐福"
+	name = "佩斯特拉的赐福"
 	desc = "佩斯特拉 的赐福正寄宿于我体内，旁人最好避开我的碰触。"
