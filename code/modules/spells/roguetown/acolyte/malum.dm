@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(anvil_recipe_prices, initialize_anvil_recipe_prices())
 	// Add any other recipe types if needed
 
 /obj/effect/proc_holder/spell/invoked/malum_flame_rogue
-	name = "玛勒姆 之火"
+	name = "玛勒姆之火"
 	desc = "点燃目标。"
 	overlay_icon = 'icons/mob/actions/malummiracles.dmi'
 	action_icon = 'icons/mob/actions/malummiracles.dmi'

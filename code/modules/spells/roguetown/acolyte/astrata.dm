@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/ignition
-	name = "火焰圣枪"
-	desc = "对目标造成伤害并点燃其身，对亡灵造成额外伤害。"
+	name = "点燃"
+	desc = "远程点燃一个可燃物体。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "ignite"
@@ -140,8 +140,8 @@
 
 //T0. Removes cone vision for a dynamic duration.
 /obj/effect/proc_holder/spell/self/astrata_gaze
-	name = "阿斯特拉塔 之视"
-	desc = "暂时解除你的视野限制，让你连身后也能看见；在白昼持续更久，并为精于神圣技艺者提供感知加成。"
+	name = "阿斯特拉塔之视"
+	desc = "暂时解除你的视野限制，让你连身后也能看见；在白昼持续更久，并为精于神迹技能者提供感知加成。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "gaze"
@@ -167,7 +167,7 @@
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/astrata_gaze
-	name = "阿斯特拉塔 之视"
+	name = "阿斯特拉塔之视"
 	desc = "她的光辉穿过我身，照亮一切不义。"
 	icon_state = "astrata_gaze"
 
@@ -433,7 +433,7 @@
 
 /atom/movable/screen/alert/status_effect/immolation
 	name = "圣焰焚身"
-	desc = "神圣烈焰正在吞噬你！任何靠近的人都会被其斩伤。"
+	desc = "神圣烈焰正在吞噬你！任何靠近的人都会被其灼伤。"
 	icon_state = "immolation"
 
 /datum/status_effect/immolation/on_creation(mob/living/new_owner, light_ablaze)
