@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Box, Button, Icon, Input, Modal, Section, Stack, Tabs } from 'tgui-core/components';
-
+import { Box, Button, Icon, Input, Modal, Stack, Tabs } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -494,7 +494,7 @@ export const BlueprintPlanner = () => {
     <Window title="Architectural Blueprint Planner" display_title="建筑蓝图规划器" width={1100} height={720}>
       {isPublishModalOpen && (
         <Modal>
-          <Section title="Save to Persistent Library">
+          <Section title="Save to Persistent Library" display_title="保存至永久蓝图库">
             <Stack vertical>
               <Stack.Item mb={1}>
                 为这份蓝图输入名称。蓝图将永久保存，可跨回合使用。（已用额度：{mySavedCount}/3份蓝图）。
@@ -537,7 +537,7 @@ export const BlueprintPlanner = () => {
 
       {isImportModalOpen && (
         <Modal>
-          <Section title="Paste Blueprint String">
+          <Section title="Paste Blueprint String" display_title="粘贴蓝图字符串">
             <Stack vertical>
               <Stack.Item mb={1}>
                 粘贴蓝图字符串（以<b>BP:...</b>开头），即可直接导入编辑器：
@@ -736,7 +736,7 @@ export const BlueprintPlanner = () => {
             <Stack.Item grow>
               <Stack fill>
                 <Stack.Item width="340px">
-                  <Section title="Structures & Furniture" fill>
+                  <Section title="Structures & Furniture" display_title="建筑与家具" fill>
                     <Stack vertical fill>
                       <Stack.Item mb={1}>
                         <Input
@@ -869,7 +869,7 @@ export const BlueprintPlanner = () => {
 
                 <Stack.Item grow>
                   <Section
-                    title="Workspace (RMB to rotate furniture)"
+                    title="Workspace (RMB to rotate furniture)" display_title="工作区（右键旋转家具）"
                     fill
                     buttons={
                       <Stack align="center">

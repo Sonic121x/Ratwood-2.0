@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { BooleanLike } from 'tgui-core/react';
-
+import { NativeButton } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import {
@@ -72,7 +72,7 @@ const SecretsCard = (props: {
           marginBottom: '6px',
         }}
       >
-        {starsIfIlliterate('Secrets', canRead)}
+        {starsIfIlliterate('秘密', canRead)}
       </div>
       <div
         style={{
@@ -83,7 +83,7 @@ const SecretsCard = (props: {
           flexWrap: 'wrap',
         }}
       >
-        <button
+        <NativeButton
           type="button"
           style={inkButtonStyle()}
           title={
@@ -91,10 +91,10 @@ const SecretsCard = (props: {
               ? 'Resume paying the Crown import tariff on sales'
               : 'Stop paying the Crown import tariff on sales - dodged duty is counted as tax evaded'
           }
-          onClick={() => act('toggle_tax')}
+          onClick={() => act('toggle_tax')} display_title={data.dodging ? '恢复缴纳销售所得的王室进口关税' : '停止缴纳销售所得的王室进口关税；未缴金额将计作逃税'}
         >
-          {data.dodging ? 'Enable Paying Taxes' : 'Stop Paying Taxes'}
-        </button>
+          {data.dodging ? '恢复缴税' : '停止缴税'}
+        </NativeButton>
       </div>
     </div>
   );
@@ -127,7 +127,7 @@ const HoardRow = (props: { entry: HoardEntry }) => {
       >
         {isPayout
           ? entry.text
-          : `${entry.text}${entry.who ? ` - consigned by ${entry.who}` : ''}`}
+          : `${entry.text}${entry.who ? ` - 寄售人：${entry.who}` : ''}`}
       </span>
       <span style={{ textAlign: 'right', color, fontWeight: 'bold' }}>
         {isPayout ? `+${entry.amount}m` : `${entry.amount}m`}
@@ -141,11 +141,11 @@ const HoardTab = (props: { entries: HoardEntry[]; canRead: boolean }) => {
   return (
     <div style={{ marginTop: '8px' }}>
       <div style={{ ...sectionHeaderStyle, marginTop: '4px' }}>
-        {starsIfIlliterate(`Hoard Ledger (${entries.length})`, canRead)}
+        {starsIfIlliterate(`囤货账簿（${entries.length}）`, canRead)}
       </div>
       {entries.length === 0 ? (
         <div style={{ ...cardStyle, textAlign: 'center', color: INK_SOFT }}>
-          {starsIfIlliterate('The hoard keeps no records yet.', canRead)}
+          {starsIfIlliterate('囤货账簿尚无记录。', canRead)}
         </div>
       ) : (
         entries.map((entry, i) => <HoardRow key={i} entry={entry} />)
@@ -163,7 +163,7 @@ export const Brassface = () => {
   const hasCategory = !!data.current_category;
 
   return (
-    <Window width={840} height={760} theme="parchment">
+    <Window width={840} height={760} theme="parchment" display_title="黄铜面">
       <Window.Content scrollable>
         <div style={pageStyle}>
           <TariffHeader
@@ -180,13 +180,13 @@ export const Brassface = () => {
               style={tabStyle(tab === 'shop')}
               onClick={() => setTab('shop')}
             >
-              Shop
+              商店
             </div>
             <div
               style={tabStyle(tab === 'hoard')}
               onClick={() => setTab('hoard')}
             >
-              Hoard
+              囤货
             </div>
           </div>
           {tab === 'shop' && (
@@ -200,7 +200,7 @@ export const Brassface = () => {
                     marginRight: '12px',
                   }}
                 >
-                  {starsIfIlliterate('Mammon Loaded', canRead)}
+                  {starsIfIlliterate('已存入玛门币', canRead)}
                 </div>
                 <div style={{ ...fieldValueStyle, fontWeight: 'bold' }}>
                   {data.budget}m
@@ -211,7 +211,7 @@ export const Brassface = () => {
                   disabled={data.budget <= 0}
                   onClick={() => act('change')}
                 >
-                  Withdraw as Coin
+                  提取硬币
                 </button>
               </div>
               <SearchBar serverSearch={data.search} act={act} />
@@ -231,7 +231,7 @@ export const Brassface = () => {
                       style={inkButtonStyle()}
                       onClick={() => act('changecat', { category: '' })}
                     >
-                      ← All Categories
+                      ← 所有类别
                     </button>
                   ) : (
                     data.categories.map((cat) => (

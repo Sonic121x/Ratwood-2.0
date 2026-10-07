@@ -1,11 +1,11 @@
 import {
   Button,
   LabeledList,
-  Section,
   TimeDisplay,
   Box,
   Stack,
 } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -18,7 +18,7 @@ enum PrefToColorEnum {
 }
 
 enum PrefToTextEnum {
-  null = 'NEVER',
+  null = '从不',
   'low' = '+',
   'medium' = '++',
   'high' = '+++',
@@ -41,12 +41,12 @@ export const VampireVote = (props: any, context: any) => {
   const { data, act } = useBackend<Data>();
 
   return (
-    <Window width={690} height={590}>
+    <Window width={690} height={590} display_title="血族氏族投票">
       <Window.Content>
         <Section
           fill
           scrollable
-          title={'Clan vote'}
+          title={'Clan vote'} display_title="氏族投票"
           buttons={<TimeDisplay value={data.timeLeft} />}
         >
           <LabeledList>

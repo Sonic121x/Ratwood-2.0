@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, NumberInput } from 'tgui-core/components';
-
+import { NativeDiv } from '../../components/Localized';
 import { useBackend } from '../../backend';
 import {
   bannerStyle,
@@ -83,7 +83,7 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
         </div>
       )}
       {!!atc_loan.available && (
-        <div
+        <NativeDiv display_title={aldermanActing ? '市政长老的授权不包括以王室名义借贷。' : undefined}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -118,7 +118,7 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
           >
             向书记官申请
           </Button.Confirm>
-        </div>
+        </NativeDiv>
       )}
     </div>
   );
