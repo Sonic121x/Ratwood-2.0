@@ -75,7 +75,7 @@ const PollProjectionPanel = (props: { projection: PollProjection }) => {
   const net = projection.net;
   const netColor = net > 0 ? SEAL_GREEN : net < 0 ? SEAL_RED : INK_SOFT;
   const netLabel =
-    net > 0 ? `+${net}m / tick` : net < 0 ? `${net}m / tick` : '0m / tick';
+    net > 0 ? `+${net}m / 每期` : net < 0 ? `${net}m / 每期` : '0m / 每期';
   return (
     <div
       style={{
@@ -94,7 +94,7 @@ const PollProjectionPanel = (props: { projection: PollProjection }) => {
         }}
       >
         <span style={{ color: INK_SOFT, letterSpacing: '1px' }}>
-          Projected per tick
+          每期预计收支
         </span>
         <span style={{ color: netColor, fontWeight: 'bold' }}>{netLabel}</span>
       </div>
@@ -108,19 +108,19 @@ const PollProjectionPanel = (props: { projection: PollProjection }) => {
         }}
       >
         <span>
-          Income:{' '}
+          收入：{' '}
           <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
             {projection.income}m
           </span>
         </span>
         <span>
-          Subsidy:{' '}
+          补贴：{' '}
           <span style={{ color: SEAL_RED_SOFT, fontWeight: 'bold' }}>
             -{projection.subsidy}m
           </span>
         </span>
         <span style={{ color: INK_FAINT, marginLeft: 'auto' }}>
-          {projection.headcount} head{projection.headcount === 1 ? '' : 's'}
+          {projection.headcount} 人
         </span>
       </div>
       <div
@@ -129,7 +129,7 @@ const PollProjectionPanel = (props: { projection: PollProjection }) => {
           color: INK_SOFT,
         }}
       >
-        Gross projection from rate × eligible heads. Ignores balance, advance, arrears.
+        按税额 × 应缴人数估算，未计入余额、预缴和欠税。
       </div>
     </div>
   );
@@ -179,7 +179,7 @@ export const TaxSetter = (props: any, context: any) => {
   const projection = data.pollProjection;
 
   return (
-    <Window width={760} height={640} title="Tax Roll" theme="parchment">
+    <Window width={760} height={640} title="Tax Roll" display_title="税册" theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
           <div
@@ -190,7 +190,7 @@ export const TaxSetter = (props: any, context: any) => {
               marginBottom: '10px',
             }}
           >
-            Tax rates may only be changed once per day - choose wisely.
+            税率每日只能调整一次，请慎重决定。
           </div>
 
           {(levyCooldown || pollCooldown) && (
@@ -206,7 +206,7 @@ export const TaxSetter = (props: any, context: any) => {
                 marginBottom: '10px',
               }}
             >
-              Rates adjusted today - locked until tomorrow.
+              今日已调整税率，须待明日方可再次修改。
             </div>
           )}
 
@@ -219,7 +219,7 @@ export const TaxSetter = (props: any, context: any) => {
           >
             {/* Left column: Crown Levies */}
             <div style={{ flex: '0 0 300px' }}>
-              <div style={sectionHeaderStyle}>Crown Levies</div>
+              <div style={sectionHeaderStyle}>王室征税</div>
               {data.categoryRates?.map((c) => (
                 <div key={c.category} style={rowStyle}>
                   <span style={labelStyle}>{c.category}</span>
@@ -246,14 +246,14 @@ export const TaxSetter = (props: any, context: any) => {
                     !levyCooldown && act('set_rates', { categoryRates: payload })
                   }
                 >
-                  Make It So
+                  确定
                 </button>
               </div>
             </div>
 
             {/* Right column: Poll Tax */}
             <div style={{ flex: '1 1 auto', minWidth: 0 }}>
-              <div style={sectionHeaderStyle}>Poll Tax</div>
+              <div style={sectionHeaderStyle}>人头税</div>
               <div
                 style={{
                   fontSize: FONT_BODY,
@@ -261,9 +261,9 @@ export const TaxSetter = (props: any, context: any) => {
                   marginBottom: '8px',
                 }}
               >
-                Per category, per tick. Negative values pay the subject from the
-                Crown&apos;s Purse each tick (subsidy); positive values collect.
-                Subsidies reach charter-protected classes; taxes do not.
+                按阶层每期结算。负数表示每期从
+                王室金库向臣民发放补贴；正数表示征税。
+                特许状保护的阶层可领取补贴，但免于缴税。
               </div>
               {projection && <PollProjectionPanel projection={projection} />}
               {data.pollTaxRates?.map((c) => (
@@ -293,7 +293,7 @@ export const TaxSetter = (props: any, context: any) => {
                     act('set_poll_rates', { pollTaxRates: pollPayload })
                   }
                 >
-                  Set Poll Taxes
+                  设定人头税
                 </button>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { NativeButton, NativeDiv, NativeInput } from '../../components/Localized';
 import { useBackend } from '../../backend';
 import { groupByCategory } from './helpers';
 import {
@@ -82,7 +82,7 @@ export const AutoImportView = (props: { data: Data }) => {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ color: INK_FAINT, fontSize: FONT_BODY }}>金库保留金额:</span>
-            <input
+            <NativeInput display_title={aldermanActing ? '仅限宫廷总管职权，市政长老无权干预王室库存。' : undefined}
               type="number"
               value={floorDraft}
               min={0}
@@ -101,7 +101,7 @@ export const AutoImportView = (props: { data: Data }) => {
               title={aldermanActing ? aldermanBlockTitle : undefined}
               onChange={(e) => setFloorDraft(e.target.value)}
             />
-            <button
+            <NativeButton display_title={aldermanActing ? '仅限宫廷总管职权，市政长老无权干预王室库存。' : undefined}
               type="button"
               style={inkButtonStyle({ color: SEAL_BLUE, disabled: aldermanActing })}
               disabled={aldermanActing}
@@ -113,8 +113,8 @@ export const AutoImportView = (props: { data: Data }) => {
               title={aldermanActing ? aldermanBlockTitle : undefined}
             >
               设置
-            </button>
-            <button
+            </NativeButton>
+            <NativeButton display_title={aldermanActing ? '仅限宫廷总管职权，市政长老无权干预王室库存。' : '立即取消账簿上的所有常设进口计划。'}
               type="button"
               style={inkButtonStyle({ color: SEAL_RED, disabled: aldermanActing })}
               disabled={aldermanActing}
@@ -126,7 +126,7 @@ export const AutoImportView = (props: { data: Data }) => {
               }
             >
               全部取消
-            </button>
+            </NativeButton>
           </div>
         </div>
       </div>
@@ -241,7 +241,7 @@ const ToggleRow = (props: {
   const { row, name, floorTarget, disabled, disabledTitle, onToggle } = props;
   const low = row.stock < floorTarget;
   return (
-    <div
+    <NativeDiv display_title={disabled ? '仅限宫廷总管职权，市政长老无权干预王室库存。' : undefined}
       style={{
         ...cardStyle,
         display: 'flex',
@@ -275,6 +275,6 @@ const ToggleRow = (props: {
         </span>{' '}
         / 目标 {floorTarget}
       </div>
-    </div>
+    </NativeDiv>
   );
 };

@@ -278,7 +278,7 @@ const NanoMapZoomer = (props: NanoMapZoomerProps) => {
   return (
     <Box className="NanoMap__zoomer">
       <LabeledList>
-        <LabeledList.Item label="Zoom">
+        <LabeledList.Item label="缩放">
           <Slider
             tickWhileDragging
             minValue={1}
@@ -289,7 +289,7 @@ const NanoMapZoomer = (props: NanoMapZoomerProps) => {
             onChange={(e, v) => props.onZoom(e, v)}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Z-Level">
+        <LabeledList.Item label="楼层">
           {data.map_levels
             .sort((a, b) => Number(a) - Number(b))
             .map((level) => (

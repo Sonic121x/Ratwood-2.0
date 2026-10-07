@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-
+import { NativeButton } from '../../components/Localized';
 import { useBackend } from '../../backend';
 import {
   badgeStyle,
@@ -371,7 +371,7 @@ export const TradeModal = (props: TradeModalProps) => {
           >
             »
           </button>
-          <button
+          <NativeButton display_title={!quote ? '计算中……' : batchCapacity < 1 ? '今日容量已用尽。' : !canFill ? (isImport ? '资金不足以购买一件货物。' : '库存中没有可出售的货物。') : atFill ? `数量已设为 ${fillTarget}，这是达到饱和前的最后一件。` : `将数量设为 ${fillTarget}，这是达到饱和前最多可${isImport ? '购买' : '出售'}的数量。`}
             type="button"
             style={{
               ...stepperButtonStyle(!canFill || atFill),
@@ -385,7 +385,7 @@ export const TradeModal = (props: TradeModalProps) => {
             onClick={() => setQuantity(fillTarget)}
           >
             填满 {canFill ? fillTarget : '-'}
-          </button>
+          </NativeButton>
         </div>
 
         <div
@@ -561,7 +561,7 @@ export const TradeModal = (props: TradeModalProps) => {
           >
             取消
           </button>
-          <button
+          <NativeButton display_title={!quote ? '计算中……' : !quote.ok ? quote.reason : shortStock ? `库存中只有 ${stockpile} 件货物。` : isImport && !quote.can_afford ? '王室金库不足以支付此次交易。' : !quote.warrant_ok ? '贸易授权额度不足以支付此次交易。' : ''}
             type="button"
             style={inkButtonStyle({
               color: isImport ? SEAL_BLUE : SEAL_GREEN,
@@ -572,7 +572,7 @@ export const TradeModal = (props: TradeModalProps) => {
             onClick={confirm}
           >
             确认{sideLabel}
-          </button>
+          </NativeButton>
         </div>
       </div>
     </div>
