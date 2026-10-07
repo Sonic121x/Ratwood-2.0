@@ -42,18 +42,18 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 /datum/fax_panel/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "FaxPanel", "Admin Letter Panel")
+		ui = new(user, src, "FaxPanel", "管理员信件面板")
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /datum/fax_panel/proc/register_player_letter(sender, recipient, body, sender_ckey = null, recipient_ckey = null)
-	var/clean_sender = sanitize(copytext(sender || "Anonymous", 1, MAX_NAME_LEN))
+	var/clean_sender = sanitize(copytext(sender || "匿名", 1, MAX_NAME_LEN))
 	if(!clean_sender)
-		clean_sender = "Anonymous"
+		clean_sender = "匿名"
 
-	var/clean_recipient = sanitize(copytext(recipient || "Unknown", 1, MAX_NAME_LEN))
+	var/clean_recipient = sanitize(copytext(recipient || "未知", 1, MAX_NAME_LEN))
 	if(!clean_recipient)
-		clean_recipient = "Unknown"
+		clean_recipient = "未知"
 
 	var/clean_sender_ckey = sanitize(copytext(sender_ckey || "unknown", 1, MAX_NAME_LEN))
 	if(!clean_sender_ckey)
@@ -121,7 +121,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 			var/package_size=max(1, min(6, text2num(params["package_size"]) || 0))
 
 			if(!sender)
-				sender = "Anonymous"
+				sender = "匿名"
 			if(!body && !stamp && !item_path_str)
 				return TRUE
 
@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 			if(item_path_str)
 				var/parcel_type = text2path(item_path_str)
 				if(!parcel_type || !ispath(parcel_type, /obj/item))
-					to_chat(user, span_warning("Invalid item path: '[item_path_str]'"))
+					to_chat(user, span_warning("物品路径无效：‘[item_path_str]’"))
 					return TRUE
 				if(send_mode == "hermes")
 					return fax_send_parcel_to_hermes(user, note_content, rim_css, sender, parcel_type, hermes_num, item_name_override, item_desc_override, package_size)
@@ -151,7 +151,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	var/inner = ""
 
 	// Sender header
-	inner += "<p style='margin:0 0 6px 0;font-style:italic;color:#5a3e1b;border-bottom:1px solid #c8aa7a;padding-bottom:4px;'>From: [sender]</p>"
+	inner += "<p style='margin:0 0 6px 0;font-style:italic;color:#5a3e1b;border-bottom:1px solid #c8aa7a;padding-bottom:4px;'>寄件人：[sender]</p>"
 
 	// Body
 	if(body)
@@ -180,23 +180,23 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 /datum/fax_panel/proc/fax_stamp_html(stamp)
 	switch(stamp)
 		if("royal")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #4a1a6e;background:#f9f3e3;line-height:66px;font-size:9px;font-weight:bold;color:#4a1a6e;letter-spacing:1px;'>** ROYAL **</div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #4a1a6e;background:#f9f3e3;line-height:66px;font-size:9px;font-weight:bold;color:#4a1a6e;letter-spacing:1px;'>** 王室 **</div></div>"
 		if("inquisitor")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #6b0000;background:#fff8f5;line-height:66px;font-size:9px;font-weight:bold;color:#6b0000;'>+ OTAVAN +</div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #6b0000;background:#fff8f5;line-height:66px;font-size:9px;font-weight:bold;color:#6b0000;'>+ 奥塔万 +</div></div>"
 		if("merchant")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #8b6914;background:#fdfbe8;line-height:66px;font-size:9px;font-weight:bold;color:#8b6914;'>~ GUILD ~</div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #8b6914;background:#fdfbe8;line-height:66px;font-size:9px;font-weight:bold;color:#8b6914;'>~ 行会 ~</div></div>"
 		if("steward")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #1a3a1a;background:#f5fdf5;line-height:66px;font-size:9px;font-weight:bold;color:#1a3a1a;'>~ STEWARD ~</div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-block;width:72px;height:72px;border-radius:50%;border:3px solid #1a3a1a;background:#f5fdf5;line-height:66px;font-size:9px;font-weight:bold;color:#1a3a1a;'>~ 宫廷总管 ~</div></div>"
 		if("kingsfield")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:3px solid #1a2e4a;background:#eef4ff;flex-direction:column;align-items:center;justify-content:center;font-size:8px;font-weight:bold;color:#1a2e4a;'><span>CITY OF</span><span>KINGSFIELD</span></div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:3px solid #1a2e4a;background:#eef4ff;flex-direction:column;align-items:center;justify-content:center;font-size:8px;font-weight:bold;color:#1a2e4a;'><span>王田</span><span>城</span></div></div>"
 		if("kf_academy")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:3px double #2a0a6e;background:#f4f0ff;flex-direction:column;align-items:center;justify-content:center;font-size:7px;font-weight:bold;color:#2a0a6e;box-shadow:inset 0 0 8px #8060d0;'><span>KINGSFIELD</span><span>ACADEMY</span></div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:3px double #2a0a6e;background:#f4f0ff;flex-direction:column;align-items:center;justify-content:center;font-size:7px;font-weight:bold;color:#2a0a6e;box-shadow:inset 0 0 8px #8060d0;'><span>王田</span><span>学院</span></div></div>"
 		if("kf_army")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:3px solid #1c1c1c;background:#e8e8ec;flex-direction:column;align-items:center;justify-content:center;font-size:7px;font-weight:bold;color:#1c1c1c;letter-spacing:1px;'><span>KINGSFIELD</span><span>ARMY</span></div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:3px solid #1c1c1c;background:#e8e8ec;flex-direction:column;align-items:center;justify-content:center;font-size:7px;font-weight:bold;color:#1c1c1c;letter-spacing:1px;'><span>王田</span><span>军队</span></div></div>"
 		if("kf_tax")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:2px solid #6b4400;background:#fffae8;flex-direction:column;align-items:center;justify-content:center;font-size:6px;font-weight:bold;color:#6b4400;line-height:1.5;'><span>KINGSFIELD</span><span>TAXATION</span><span>OFFICE</span></div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:72px;height:72px;border-radius:50%;border:2px solid #6b4400;background:#fffae8;flex-direction:column;align-items:center;justify-content:center;font-size:6px;font-weight:bold;color:#6b4400;line-height:1.5;'><span>王田</span><span>税务</span><span>署</span></div></div>"
 		if("kf_council")
-			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:88px;height:88px;border-radius:50%;border:4px double #8b6914;background:#fffdf0;flex-direction:column;align-items:center;justify-content:center;font-size:9px;font-weight:bold;color:#7a5500;box-shadow:inset 0 0 12px #e0b840,0 0 6px #c9a84c;'><span>HIGH</span><span>COUNCIL</span></div></div>"
+			return "<div style='text-align:center;margin-top:12px;'><div style='display:inline-flex;width:88px;height:88px;border-radius:50%;border:4px double #8b6914;background:#fffdf0;flex-direction:column;align-items:center;justify-content:center;font-size:9px;font-weight:bold;color:#7a5500;box-shadow:inset 0 0 12px #e0b840,0 0 6px #c9a84c;'><span>最高</span><span>议会</span></div></div>"
 	return ""
 
 /// Routes a fax directly to a HERMES machine by number.
@@ -210,15 +210,15 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 			P.mailer = sender
 			P.mailedto = "#[hermes_num][X.mailtag ? " ([X.mailtag])" : ""]"
 			P.update_icon()
-			X.say("New mail!")
+			X.say("有新邮件！")
 			playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 			found = TRUE
 			break
 	if(!found)
-		to_chat(user, span_warning("HERMES #[hermes_num] not found."))
+		to_chat(user, span_warning("未找到赫尔墨斯 #[hermes_num]。"))
 		return FALSE
 	log_admin("[key_name(user)] sent admin letter to HERMES #[hermes_num] from '[sender]'.")
-	message_admins("[key_name_admin(user)] sent an admin letter to HERMES #[hermes_num] from '[sender]'.")
+	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向赫尔墨斯 #[hermes_num] 发送了管理信件。")
 	return TRUE
 
 /// Routes a fax to a player by name through the mastermail.
@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	if(!recipient)
 		return FALSE
 	if(!SSroguemachine.hermailermaster)
-		to_chat(user, span_warning("The master mailer doesn't exist. Can't send by name."))
+		to_chat(user, span_warning("邮件总机不存在，无法按姓名寄送。"))
 		return FALSE
 	var/obj/item/roguemachine/mastermail/X = SSroguemachine.hermailermaster
 	var/obj/item/paper/P = new(X.loc)
@@ -239,14 +239,14 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	STR.handle_item_insertion(P, prevent_warning=TRUE)
 	X.new_mail = TRUE
 	X.update_icon()
-	send_ooc_note("New letter from <b>[sender].</b>", name = recipient)
+	send_ooc_note("收到来自 <b>[sender]</b> 的新信件。", name = recipient)
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.real_name == recipient)
 			H.apply_status_effect(/datum/status_effect/ugotmail)
 			H.playsound_local(H, 'sound/misc/mail.ogg', 100, FALSE, -1)
 			break
 	log_admin("[key_name(user)] sent admin letter to '[recipient]' from '[sender]'.")
-	message_admins("[key_name_admin(user)] sent an admin letter to '[recipient]' from '[sender]'.")
+	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向‘[recipient]’发送了管理信件。")
 	return TRUE
 
 /datum/fax_panel/ui_state(mob/user)
@@ -265,7 +265,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 			if(item_desc_override)
 				I.desc = item_desc_override
 			var/size = package_size ? package_size : max(1, min(5, round(I.w_class)))
-			D.name = "[weightclass2text(min(size,5))] package"
+			D.name = "[weightclass2text(min(size,5))]包裹"
 			D.w_class = size
 			D.icon_state = "deliverypackage[min(size,5)]"
 			I.forceMove(D)
@@ -278,15 +278,15 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 				D.note = note
 			D.mailer = sender
 			D.mailedto = "#[hermes_num][X.mailtag ? " ([X.mailtag])" : ""]"
-			X.say("New mail!")
+			X.say("有新邮件！")
 			playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 			found = TRUE
 			break
 	if(!found)
-		to_chat(user, span_warning("HERMES #[hermes_num] not found."))
+		to_chat(user, span_warning("未找到赫尔墨斯 #[hermes_num]。"))
 		return FALSE
 	log_admin("[key_name(user)] sent admin parcel ([item_type]) to HERMES #[hermes_num] from '[sender]'.")
-	message_admins("[key_name_admin(user)] sent an admin parcel ([item_type]) to HERMES #[hermes_num] from '[sender]'.")
+	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向赫尔墨斯 #[hermes_num] 发送了管理包裹（[item_type]）。")
 	return TRUE
 
 /// Sends a parcel (item + optional letter note) to a player through the mastermail.
@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	if(!recipient)
 		return FALSE
 	if(!SSroguemachine.hermailermaster)
-		to_chat(user, span_warning("The master mailer doesn't exist. Can't send by name."))
+		to_chat(user, span_warning("邮件总机不存在，无法按姓名寄送。"))
 		return FALSE
 	var/obj/item/roguemachine/mastermail/X = SSroguemachine.hermailermaster
 	var/turf/T = get_turf(X)
@@ -305,7 +305,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	if(item_desc_override)
 		I.desc = item_desc_override
 	var/size = package_size ? package_size : max(1, min(5, round(I.w_class)))
-	D.name = "[weightclass2text(min(size,5))] package"
+	D.name = "[weightclass2text(min(size,5))]包裹"
 	D.w_class = size
 	D.icon_state = "deliverypackage[min(size,5)]"
 	I.forceMove(D)
@@ -322,20 +322,20 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	STR.handle_item_insertion(D, prevent_warning=TRUE)
 	X.new_mail = TRUE
 	X.update_icon()
-	send_ooc_note("New parcel from <b>[sender].</b>", name = recipient)
+	send_ooc_note("收到来自 <b>[sender]</b> 的新包裹。", name = recipient)
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.real_name == recipient)
 			H.apply_status_effect(/datum/status_effect/ugotmail)
 			H.playsound_local(H, 'sound/misc/mail.ogg', 100, FALSE, -1)
 			break
 	log_admin("[key_name(user)] sent admin parcel ([item_type]) to '[recipient]' from '[sender]'.")
-	message_admins("[key_name_admin(user)] sent an admin parcel ([item_type]) to '[recipient]' from '[sender]'.")
+	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向‘[recipient]’发送了管理包裹（[item_type]）。")
 	return TRUE
 
 // Admin verb
 /client/proc/open_fax_panel()
-	set category = "-Admin-"
-	set name = "Letter Panel"
+	set category = "-管理-"
+	set name = "信件面板"
 	if(!check_rights(R_ADMIN))
 		return
 	GLOB.fax_panel.ui_interact(mob)

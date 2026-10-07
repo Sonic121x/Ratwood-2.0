@@ -1,5 +1,5 @@
 /obj/effect/fun_balloon
-	name = "fun balloon"
+	name = "趣味气球"
 	desc = ""
 	icon_state = ""
 	anchored = TRUE
@@ -34,37 +34,37 @@
 /obj/effect/fun_balloon/attack_ghost(mob/user)
 	if(!user.client || !user.client.holder || popped)
 		return
-	var/confirmation = alert("Pop [src]?","Fun Balloon","Yes","No")
-	if(confirmation == "Yes" && !popped)
+	var/confirmation = alert("戳破 [src]？","趣味气球","是","否")
+	if(confirmation == "是" && !popped)
 		popped = TRUE
 		effect()
 		pop()
 
 /obj/effect/fun_balloon/sentience
-	name = "sentience fun balloon"
+	name = "赋予意识的趣味气球"
 	desc = ""
 	var/effect_range = 3
-	var/group_name = "a bunch of giant spiders"
+	var/group_name = "一群巨型蜘蛛"
 
 /obj/effect/fun_balloon/sentience/effect()
 	var/list/bodies = list()
 	for(var/mob/living/M in range(effect_range, get_turf(src)))
 		bodies += M
 
-	var/question = "Would you like to be [group_name]?"
+	var/question = "是否愿意成为[group_name]中的一员？"
 	var/list/candidates = pollCandidatesForMobs(question, ROLE_ASPIRANT, null, FALSE, 100, bodies)
 	while(LAZYLEN(candidates) && LAZYLEN(bodies))
 		var/mob/dead/observer/C = pick_n_take(candidates)
 		var/mob/living/body = pick_n_take(bodies)
 
-		to_chat(body, "<span class='warning'>My mob has been taken over by a ghost!</span>")
-		message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(body)])")
+		to_chat(body, "<span class='warning'>我的身体被幽灵接管了！</span>")
+		message_admins("[key_name_admin(C)] 接管了（[key_name_admin(body)]）")
 		body.ghostize(0)
 		body.key = C.key
 		new /obj/effect/temp_visual/gravpush(get_turf(body))
 
 /obj/effect/fun_balloon/scatter
-	name = "scatter fun balloon"
+	name = "散布传送趣味气球"
 	desc = ""
 	var/effect_range = 5
 

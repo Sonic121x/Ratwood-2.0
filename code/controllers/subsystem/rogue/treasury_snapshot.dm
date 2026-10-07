@@ -127,7 +127,7 @@
 		out += list(list(
 			"ref" = "\ref[owner]",
 			"name" = owner.real_name,
-			"job" = owner.job,
+			"job" = owner.job, "display_job" = SSjob.GetJob(owner.job)?.display_title || owner.job,
 			"category" = category,
 			"category_name" = category ? get_poll_tax_category_pretty_name(category) : "None",
 			"rate" = rate,

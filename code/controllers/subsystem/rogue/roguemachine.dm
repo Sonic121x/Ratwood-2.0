@@ -73,11 +73,11 @@ PROCESSING_SUBSYSTEM_DEF(roguemachine)
 
 #ifdef TESTING
 /mob/living/verb/maxzcdec()
-	set category = "DEBUGTEST"
-	set name = "IsInRoguetown"
+	set category = "调试指令"
+	set name = "检查是否位于岩丘"
 	set desc = ""
 	if(is_in_roguetown(src))
-		to_chat(src, "\n<font color='purple'>IS IN</font>")
+		to_chat(src, "\n<font color='purple'>位于岩丘</font>")
 	else
-		to_chat(src, "\n<font color='purple'>IS NOT IN</font>")
+		to_chat(src, "\n<font color='purple'>不在岩丘</font>")
 #endif

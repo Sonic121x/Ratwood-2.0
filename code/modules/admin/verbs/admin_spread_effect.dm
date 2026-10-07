@@ -1,6 +1,6 @@
 /client/proc/admin_spread_effect()
-	set name = "Spread Effect"
-	set category = "-GameMaster-"
+	set name = "扩散效果"
+	set category = "-主持-"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -11,11 +11,11 @@
 	for(var/type in effect_types)
 		effect_names[type] = "[type]"
 
-	var/selected_type = input("Select an effect to spread:", "Choose Effect") as null|anything in effect_names
+	var/selected_type = input("选择要扩散的效果：", "选择效果") as null|anything in effect_names
 	if(!selected_type)
 		return
 
-	var/new_radius = input("Enter effect radius (1-10):", "Set Effect Radius", 2) as num|null
+	var/new_radius = input("输入效果半径（1-10）：", "设置效果半径", 2) as num|null
 	if(!new_radius)
 		return
 	new_radius = clamp(new_radius, 1, 10)
@@ -25,5 +25,5 @@
 	S.set_up(new_radius, T)
 	S.start()
 
-	to_chat(usr, span_notice("[selected_type] effect deployed at ([T.x], [T.y], [T.z]) with radius [new_radius]."))
+	to_chat(usr, span_notice("已在 ([T.x], [T.y], [T.z]) 施放 [selected_type] 效果，半径为 [new_radius]。"))
 //can be expanded the other effects later
