@@ -14,12 +14,12 @@
 		if(player_mob.client)
 			keys += player_mob.client
 
-	var/client/selection = input("Please, select a player!", "Admin Spell", null, null) as null|anything in sortKey(keys)
+	var/client/selection = input("请选择一名玩家！", "管理员法术", null, null) as null|anything in sortKey(keys)
 	if(!selection)
 		return null
 
 	if(!isliving(selection.mob))
-		to_chat(src, span_warning("The selected player does not have a living character to receive spells."))
+		to_chat(src, span_warning("选中的玩家没有可接收法术的存活角色。"))
 		return null
 
 	return selection.mob
@@ -34,8 +34,8 @@
 
 /client/proc/adminspell()
 	set category = "-GameMaster-"
-	set name = "AdminSpell"
-	set desc = "Grant the admin spell package to a selected player."
+	set name = "授予管理员法术"
+	set desc = "向选中的玩家授予管理员法术组合。"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -56,28 +56,28 @@
 			target.mind.AddSpell(new_spell, target)
 		else
 			target.AddSpell(new_spell)
-			message_admins(span_danger("AdminSpell granted spells to a mindless mob; they will not transfer with mind swaps or cloning."))
+			message_admins(span_danger("管理员法术已授予没有意识数据的角色；这些法术不会随意识交换或克隆转移。"))
 
 		granted_names += initial(new_spell.name)
 
 	if(!granted_names.len)
-		to_chat(src, span_notice("[target] already knows the full admin spell package."))
+		to_chat(src, span_notice("[target] 已掌握全部管理员法术。"))
 		return
 
 	var/spell_summary = english_list(granted_names)
-	to_chat(src, span_notice("Granted [spell_summary] to [target]."))
+	to_chat(src, span_notice("已向 [target] 授予 [spell_summary]。"))
 	to_chat(target, span_notice("你获得了以下法术：[spell_summary]。"))
 
 	log_admin("[key_name(usr)] granted the admin spell package ([spell_summary]) to [key_name(target)].")
-	var/msg = span_adminnotice("[key_name_admin(usr)] granted the admin spell package ([spell_summary]) to [key_name_admin(target)].")
+	var/msg = span_adminnotice("[key_name_admin(usr)] 向 [key_name_admin(target)] 授予了管理员法术组合（[spell_summary]）。")
 	message_admins(msg)
-	admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has granted you the admin spell package ([spell_summary]).</font>")
+	admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] 向你授予了管理员法术组合（[spell_summary]）。</font>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "AdminSpell")
 
 /client/proc/removeadminspell()
 	set category = "-GameMaster-"
-	set name = "RemoveAdminSpell"
-	set desc = "Remove the admin spell package from a selected player."
+	set name = "移除管理员法术"
+	set desc = "移除选中玩家的管理员法术组合。"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -104,15 +104,15 @@
 			break
 
 	if(!removed_names.len)
-		to_chat(src, span_notice("[target] does not have any admin spell package spells."))
+		to_chat(src, span_notice("[target] 没有管理员法术组合中的任何法术。"))
 		return
 
 	var/spell_summary = english_list(removed_names)
-	to_chat(src, span_notice("Removed [spell_summary] from [target]."))
+	to_chat(src, span_notice("已从 [target] 身上移除 [spell_summary]。"))
 	to_chat(target, span_notice("你失去了以下法术：[spell_summary]。"))
 
 	log_admin("[key_name(usr)] removed the admin spell package ([spell_summary]) from [key_name(target)].")
-	var/msg = span_adminnotice("[key_name_admin(usr)] removed the admin spell package ([spell_summary]) from [key_name_admin(target)].")
+	var/msg = span_adminnotice("[key_name_admin(usr)] 从 [key_name_admin(target)] 身上移除了管理员法术组合（[spell_summary]）。")
 	message_admins(msg)
-	admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] has removed the admin spell package ([spell_summary]) from you.</font>")
+	admin_ticket_log(target, "<font color='green'>[key_name_admin(usr)] 从你身上移除了管理员法术组合（[spell_summary]）。</font>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "RemoveAdminSpell")

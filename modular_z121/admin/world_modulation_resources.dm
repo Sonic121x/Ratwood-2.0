@@ -192,15 +192,15 @@
 /datum/devotion/update_devotion(dev_amt, prog_amt, silent = FALSE)
 	z121_world_sync_max()
 	devotion = clamp(devotion + dev_amt, 0, max_devotion)
-	holder?.hud_used?.bloodpool?.name = "Devotion: [devotion]"
-	holder?.hud_used?.bloodpool?.desc = "Devotion: [devotion]/[max_devotion]"
+	holder?.hud_used?.bloodpool?.name = "虔诚：[devotion]"
+	holder?.hud_used?.bloodpool?.desc = "虔诚：[devotion]/[max_devotion]"
 	if(devotion <= 0)
 		holder?.hud_used?.bloodpool?.set_value(0, 1 SECONDS)
 	else
 		holder?.hud_used?.bloodpool?.set_value((100 / (max_devotion / devotion)) / 100, 1 SECONDS)
 
 	if((devotion >= max_devotion) && !silent)
-		to_chat(holder, span_warning("I have reached the limit of my devotion..."))
+		to_chat(holder, span_warning("我的虔诚已达到上限……"))
 	if(!prog_amt)
 		return TRUE
 	progression = clamp(progression + prog_amt, 0, max_progression)
