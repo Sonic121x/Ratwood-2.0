@@ -61,22 +61,22 @@ GLOBAL_PROTECT(admin_verbs_debug_mapping)
 GLOBAL_LIST_EMPTY(dirty_vars)
 
 /client/proc/see_dirty_varedits()
-	set category = "Mapping"
-	set name = "Dirty Varedits"
+	set category = "地图制作"
+	set name = "未保存的变量编辑"
 
 	var/list/dat = list()
-	dat += "<h3>Abandon all hope ye who enter here</h3><br><br>"
+	dat += "<h3>踏入此地者，放弃一切希望</h3><br><br>"
 	for(var/thing in GLOB.dirty_vars)
 		dat += "[thing]<br>"
 		CHECK_TICK
-	var/datum/browser/popup = new(usr, "dirty_vars", "Dirty Varedits", 900, 750)
+	var/datum/browser/popup = new(usr, "dirty_vars", "未保存的变量编辑", 900, 750)
 	popup.set_content(dat.Join())
 	popup.open()
 #endif
 
 /client/proc/intercom_view()
-	set category = "Mapping"
-	set name = "Intercom Range Display"
+	set category = "地图制作"
+	set name = "显示对讲机范围"
 
 	var/static/intercom_range_display_status = FALSE
 	intercom_range_display_status = !intercom_range_display_status //blame cyberboss if this breaks something
@@ -87,12 +87,12 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Intercom Range") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_show_at_list()
-	set category = "Mapping"
-	set name = "Show roundstart AT list"
+	set category = "地图制作"
+	set name = "显示开局活跃地块列表"
 	set desc = ""
 
-	var/dat = {"<b>Coordinate list of Active Turfs at Roundstart</b>
-	<br>Real-time Active Turfs list you can see in Air Subsystem at active_turfs var<br>"}
+	var/dat = {"<b>开局活跃地块坐标列表</b>
+	<br>实时活跃地块列表可在空气子系统的 active_turfs 变量中查看<br>"}
 
 	for(var/t in GLOB.active_turfs_startlist)
 		var/turf/T = t
@@ -104,8 +104,8 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Roundstart Active Turfs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_show_at_markers()
-	set category = "Mapping"
-	set name = "Show roundstart AT markers"
+	set category = "地图制作"
+	set name = "显示开局活跃地块标记"
 	set desc = ""
 
 	var/count = 0
@@ -114,18 +114,18 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 		count++
 
 	if(count)
-		to_chat(usr, "[count] AT markers removed.")
+		to_chat(usr, "已移除 [count] 个活跃地块标记。")
 	else
 		for(var/t in GLOB.active_turfs_startlist)
 			new /obj/effect/abstract/marker/at(t)
 			count++
-		to_chat(usr, "[count] AT markers placed.")
+		to_chat(usr, "已放置 [count] 个活跃地块标记。")
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Roundstart Active Turf Markers")
 
 /client/proc/enable_debug_verbs()
-	set category = "Debug"
-	set name = "Debug verbs - Enable"
+	set category = "调试"
+	set name = "调试指令 - 启用"
 	if(!check_rights(R_DEBUG))
 		return
 	verbs -= /client/proc/enable_debug_verbs
@@ -133,16 +133,16 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Enable Debug Verbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/disable_debug_verbs()
-	set category = "Debug"
-	set name = "Debug verbs - Disable"
+	set category = "调试"
+	set name = "调试指令 - 禁用"
 	verbs.Remove(/client/proc/disable_debug_verbs, GLOB.admin_verbs_debug_mapping)
 	verbs += /client/proc/enable_debug_verbs
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Disable Debug Verbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/count_objects_on_z_level()
-	set category = "Mapping"
-	set name = "Count Objects On Level"
-	var/level = input("Which z-level?","Level?") as text|null
+	set category = "地图制作"
+	set name = "统计层级内对象"
+	var/level = input("哪个Z层级？","层级？") as text|null
 	if(!level)
 		return
 	var/num_level = text2num(level)
@@ -151,7 +151,7 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	if(!isnum(num_level))
 		return
 
-	var/type_text = input("Which type path?","Path?") as text|null
+	var/type_text = input("哪个类型路径？","路径？") as text|null
 	if(!type_text)
 		return
 	var/type_path = text2path(type_text)
@@ -175,14 +175,14 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 					count++
 					atom_list += A
 
-	to_chat(world, "There are [count] objects of type [type_path] on z-level [num_level]")
+	to_chat(world, "Z层级 [num_level] 有 [count] 个 [type_path] 类型的对象")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Count Objects Zlevel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/count_objects_all()
-	set category = "Mapping"
-	set name = "Count Objects All"
+	set category = "地图制作"
+	set name = "统计全部对象"
 
-	var/type_text = input("Which type path?","") as text|null
+	var/type_text = input("哪个类型路径？","") as text|null
 	if(!type_text)
 		return
 	var/type_path = text2path(type_text)
@@ -195,26 +195,26 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 		if(istype(A,type_path))
 			count++
 
-	to_chat(world, "There are [count] objects of type [type_path] in the game world")
+	to_chat(world, "游戏世界中有 [count] 个 [type_path] 类型的对象")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Count Objects All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
 //This proc is intended to detect lag problems relating to communication procs
 GLOBAL_VAR_INIT(say_disabled, FALSE)
 /client/proc/disable_communication()
-	set category = "Mapping"
-	set name = "Disable all communication verbs"
+	set category = "地图制作"
+	set name = "禁用所有交流指令"
 
 	GLOB.say_disabled = !GLOB.say_disabled
 	if(GLOB.say_disabled)
-		message_admins("[key] used 'Disable all communication verbs', killing all communication methods.")
+		message_admins("[key] 使用了“禁用所有交流指令”，所有交流方式均已禁用。")
 	else
-		message_admins("[key] used 'Disable all communication verbs', restoring all communication methods.")
+		message_admins("[key] 使用了“禁用所有交流指令”，所有交流方式均已恢复。")
 
 //This generates the icon states for job starting location landmarks.
 /client/proc/create_mapping_job_icons()
-	set name = "Generate job landmarks icons"
-	set category = "Mapping"
+	set name = "生成职业出生点图标"
+	set category = "地图制作"
 	var/icon/final = icon()
 	var/mob/living/carbon/human/dummy/D = new(locate(1,1,1)) //spawn on 1,1,1 so we don't have runtimes when items are deleted
 	D.setDir(SOUTH)
@@ -233,12 +233,12 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 	fcopy(final, "icons/mob/landmarks.dmi")
 
 /client/proc/debug_z_levels()
-	set name = "Debug Z-Levels"
-	set category = "Mapping"
+	set name = "调试Z层级"
+	set category = "地图制作"
 
 	var/list/z_list = SSmapping.z_list
 	var/list/messages = list()
-	messages += "<b>World</b>: [world.maxx] x [world.maxy] x [world.maxz]<br>"
+	messages += "<b>世界</b>: [world.maxx] x [world.maxy] x [world.maxz]<br>"
 
 	var/list/linked_levels = list()
 	var/min_x = INFINITY
@@ -248,35 +248,35 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 
 	for(var/z in 1 to max(world.maxz, z_list.len))
 		if (z > z_list.len)
-			messages += "<b>[z]</b>: Unmanaged (out of bounds)<br>"
+			messages += "<b>[z]</b>: 未管理（越界）<br>"
 			continue
 		var/datum/space_level/S = z_list[z]
 		if (!S)
-			messages += "<b>[z]</b>: Unmanaged (null)<br>"
+			messages += "<b>[z]</b>: 未管理（空值）<br>"
 			continue
 		var/linkage
 		switch (S.linkage)
 			if (UNAFFECTED)
-				linkage = "no linkage"
+				linkage = "无连接"
 			if (SELFLOOPING)
-				linkage = "self-looping"
+				linkage = "自循环"
 			if (CROSSLINKED)
-				linkage = "linked at ([S.xi], [S.yi])"
+				linkage = "连接于 ([S.xi], [S.yi])"
 				linked_levels += S
 				min_x = min(min_x, S.xi)
 				min_y = min(min_y, S.yi)
 				max_x = max(max_x, S.xi)
 				max_y = max(max_y, S.yi)
 			else
-				linkage = "unknown linkage '[S.linkage]'"
+				linkage = "未知连接方式 '[S.linkage]'"
 
-		messages += "<b>[z]</b>: [S.name], [linkage], traits: [json_encode(S.traits)]<br>"
+		messages += "<b>[z]</b>: [S.name], [linkage], 特性：[json_encode(S.traits)]<br>"
 		if (S.z_value != z)
-			messages += "-- z_value is [S.z_value], should be [z]<br>"
+			messages += "-- z_value 为 [S.z_value]，应为 [z]<br>"
 		if (S.name == initial(S.name))
-			messages += "-- name not set<br>"
+			messages += "-- 未设置名称<br>"
 		if (z > world.maxz)
-			messages += "-- exceeds max z"
+			messages += "-- 超过最大Z层级"
 
 	var/grid[max_x - min_x + 1][max_y - min_y + 1]
 	for(var/datum/space_level/S in linked_levels)

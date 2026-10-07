@@ -25,17 +25,17 @@
 
 			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
 			if(!istype(M))
-				to_chat(usr, "This can only be used on instances of type /mob")
+				to_chat(usr, "此操作仅适用于 /mob 类型的实例。")
 				return
 
-			var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
+			var/new_name = stripped_input(usr,"要将此生物命名为什么？","输入名称",M.real_name,MAX_NAME_LEN)
 			if( !new_name || !M )
 				return
 
-			message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
+			message_admins("管理员 [key_name_admin(usr)] 将 [key_name_admin(M)] 重命名为 [new_name]。")
 			M.fully_replace_character_name(M.real_name,new_name)
 			vv_update_display(M, "name", new_name)
-			vv_update_display(M, "real_name", M.real_name || "No real name")
+			vv_update_display(M, "real_name", M.real_name || "无真实姓名")
 
 		else if(href_list["rotatedatum"])
 			if(!check_rights(NONE))
@@ -43,7 +43,7 @@
 
 			var/atom/A = locate(href_list["rotatedatum"])
 			if(!istype(A))
-				to_chat(usr, "This can only be done to instances of type /atom")
+				to_chat(usr, "此操作仅适用于 /atom 类型的实例。")
 				return
 
 			switch(href_list["rotatedir"])
@@ -63,13 +63,13 @@
 
 			var/Text = href_list["adjustDamage"]
 
-			var/amount =  input("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0) as num|null
+			var/amount =  input("对生物造成多少伤害？（负数会治疗）","调整 [Text] 伤害",0) as num|null
 
 			if (isnull(amount))
 				return
 
 			if(!L)
-				to_chat(usr, "Mob doesn't exist anymore")
+				to_chat(usr, "该生物已不存在")
 				return
 
 			var/newamt
@@ -96,14 +96,14 @@
 					L.adjustStaminaLoss(amount)
 					newamt = L.getStaminaLoss()
 				else
-					to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]")
+					to_chat(usr, "操作出错。调试信息：Text:[Text] Mob:[L]")
 					return
 
 			if(amount != 0)
 				var/log_msg = "[key_name(usr)] dealt [amount] amount of [Text] damage to [key_name(L)]"
-				message_admins("[key_name(usr)] dealt [amount] amount of [Text] damage to [ADMIN_LOOKUPFLW(L)]")
+				message_admins("[key_name(usr)] 对 [ADMIN_LOOKUPFLW(L)] 造成了 [amount] 点 [Text] 伤害")
 				log_admin(log_msg)
-				admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
+				admin_ticket_log(L, "<font color='blue'>[key_name(usr)] 对 [key_name(L)] 造成了 [amount] 点 [Text] 伤害</font>")
 				vv_update_display(L, Text, "[newamt]")
 
 

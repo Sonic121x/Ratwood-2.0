@@ -1,8 +1,8 @@
 GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 
 /client/proc/mass_direct()
-	set name = "Direct Mobs"
-	set category = "-GameMaster-"
+	set name = "指挥生物"
+	set category = "-主持-"
 	if(holder)
 		holder.mass_direct_mobs()
 
@@ -33,74 +33,74 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 			}
 		</script>
 	</head><body>
-	<b>Direct Mobs</b><br><br>
+	<b>指挥生物</b><br><br>
 	<table>
-		<tr><td>Radius:</td><td><a href='byond://?src=[REF(src)];mass_direct=set_radius;radius=[radius];faction=[faction];command_mode=[command_mode];[HrefToken()]'>[radius]</a></td></tr>
-		<tr class='alt'><td>Faction:</td><td>
+		<tr><td>半径：</td><td><a href='byond://?src=[REF(src)];mass_direct=set_radius;radius=[radius];faction=[faction];command_mode=[command_mode];[HrefToken()]'>[radius]</a></td></tr>
+		<tr class='alt'><td>阵营：</td><td>
 			<form>
 				<select name="faction" size="1" onchange="handle_dropdown(this)" onmouseclick="this.focus()">
-					<option value selected>Select Faction</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=orcs;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "orcs" ? " selected" : ""]>orcs</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=undead;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "undead" ? " selected" : ""]>undead</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=caves;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "caves" ? " selected" : ""]>caves</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=wolfs;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "wolfs" ? " selected" : ""]>wolfs</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=rats;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "rats" ? " selected" : ""]>rats</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=spiders;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "spiders" ? " selected" : ""]>spiders</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=crabs;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "crabs" ? " selected" : ""]>crabs</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=deepone;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "deepone" ? " selected" : ""]>deepone</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=infernal;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "infernal" ? " selected" : ""]>infernal</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=dream;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "dream" ? " selected" : ""]>dream</option>
-					<option value="?src=[REF(src)];mass_direct=set_faction;faction=trolls;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "trolls" ? " selected" : ""]>trolls</option>
-					<option value="?src=[REF(src)];mass_direct=custom_faction_input;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction && !(faction in list("orcs", "undead", "caves", "wolfs", "rats", "spiders", "crabs", "deepone", "infernal", "dream", "trolls")) ? " selected" : ""]>Custom...</option>
+					<option value selected>选择阵营</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=orcs;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "orcs" ? " selected" : ""]>兽人（orcs）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=undead;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "undead" ? " selected" : ""]>亡灵（undead）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=caves;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "caves" ? " selected" : ""]>洞穴（caves）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=wolfs;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "wolfs" ? " selected" : ""]>狼群（wolfs）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=rats;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "rats" ? " selected" : ""]>鼠群（rats）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=spiders;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "spiders" ? " selected" : ""]>蜘蛛（spiders）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=crabs;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "crabs" ? " selected" : ""]>螃蟹（crabs）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=deepone;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "deepone" ? " selected" : ""]>深潜者（deepone）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=infernal;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "infernal" ? " selected" : ""]>炼狱（infernal）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=dream;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "dream" ? " selected" : ""]>梦境（dream）</option>
+					<option value="?src=[REF(src)];mass_direct=set_faction;faction=trolls;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction == "trolls" ? " selected" : ""]>巨魔（trolls）</option>
+					<option value="?src=[REF(src)];mass_direct=custom_faction_input;radius=[radius];command_mode=[command_mode];[HrefToken()]"[faction && !(faction in list("orcs", "undead", "caves", "wolfs", "rats", "spiders", "crabs", "deepone", "infernal", "dream", "trolls")) ? " selected" : ""]>自定义……</option>
 				</select>
 			</form>
 		</td></tr>
-		<tr><td>Command Mode:</td><td>[command_mode]</td></tr>"}
+		<tr><td>指挥模式：</td><td>[list("move" = "移动", "attack" = "攻击", "follow" = "跟随", "passive" = "被动")[command_mode] || command_mode]</td></tr>"}
 	
 	var/list/nearby_mobs = list()
 	if(faction)
 		for(var/mob/living/M in range(radius, usr.loc))
 			if(!M.client && M.faction && (faction in M.faction))
 				nearby_mobs += M
-		dat += "<tr class='alt'><td>Found Mobs:</td><td>[nearby_mobs.len]</td></tr>"
+		dat += "<tr class='alt'><td>找到的生物：</td><td>[nearby_mobs.len]</td></tr>"
 	
 	dat += "</table><br>"
 	
-	dat += "<a href='byond://?src=[REF(src)];mass_direct=refresh;radius=[radius];faction=[faction];command_mode=[command_mode];[HrefToken()]'><b>Refresh</b></a><br><br>"
+	dat += "<a href='byond://?src=[REF(src)];mass_direct=refresh;radius=[radius];faction=[faction];command_mode=[command_mode];[HrefToken()]'><b>刷新</b></a><br><br>"
 	
-	dat += "<b>Command Modes:</b><br>"
-	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=move;[HrefToken()]'>[command_mode == "move" ? "<b>Move</b>" : "Move"]</a> | "
-	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=attack;[HrefToken()]'>[command_mode == "attack" ? "<b>Attack</b>" : "Attack"]</a> | "
-	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=follow;[HrefToken()]'>[command_mode == "follow" ? "<b>Follow</b>" : "Follow"]</a> | "
-	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=passive;[HrefToken()]'>[command_mode == "passive" ? "<b>Passive</b>" : "Passive"]</a><br><br>"
+	dat += "<b>指挥模式：</b><br>"
+	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=move;[HrefToken()]'>[command_mode == "move" ? "<b>移动</b>" : "移动"]</a> | "
+	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=attack;[HrefToken()]'>[command_mode == "attack" ? "<b>攻击</b>" : "攻击"]</a> | "
+	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=follow;[HrefToken()]'>[command_mode == "follow" ? "<b>跟随</b>" : "跟随"]</a> | "
+	dat += "<a href='byond://?src=[REF(src)];mass_direct=set_command_mode;radius=[radius];faction=[faction];command_mode=passive;[HrefToken()]'>[command_mode == "passive" ? "<b>被动</b>" : "被动"]</a><br><br>"
 	
 	if(faction)
-		dat += "<a href='byond://?src=[REF(src)];mass_direct=begin_targeting;radius=[radius];faction=[faction];command_mode=[command_mode];[HrefToken()]'><b>Direct</b></a><br><br>"
+		dat += "<a href='byond://?src=[REF(src)];mass_direct=begin_targeting;radius=[radius];faction=[faction];command_mode=[command_mode];[HrefToken()]'><b>开始指挥</b></a><br><br>"
 		
 		if(length(nearby_mobs) > 0)
-			dat += "<b>Nearby [faction] Mobs:</b><br>"
+			dat += "<b>附近属于 [faction] 阵营的生物：</b><br>"
 			for(var/mob/living/M in nearby_mobs)
-				var/mob_stance = "Aggressive"
+				var/mob_stance = "主动攻击"
 				// If we're currently in Follow mode, reflect that explicitly
 				if(command_mode == "follow")
-					mob_stance = "Following"
+					mob_stance = "跟随中"
 				else
 					// Otherwise, check passive status for different mob types
 					if("neutral" in M.faction)
-						mob_stance = "Passive"
+						mob_stance = "被动"
 					else if(istype(M, /mob/living/carbon/human))
 						var/mob/living/carbon/human/H = M
 						if(!isnull(H.mode) && H.aggressive == 0)
-							mob_stance = "Passive"
+							mob_stance = "被动"
 					else if(istype(M, /mob/living/carbon/human/species/skeleton/npc/summoned))
 						var/mob/living/carbon/human/species/skeleton/npc/summoned/skel = M
 						if(skel.aggressive == 0)
-							mob_stance = "Passive"
+							mob_stance = "被动"
 				dat += "[M.name] - [mob_stance]<br>"
 		else
-			dat += "<b>No [faction] mobs found within radius [radius]</b><br>"
+			dat += "<b>半径 [radius] 内未找到属于 [faction] 阵营的生物</b><br>"
 	else
-		dat += "<b>Please select a faction</b><br>"
+		dat += "<b>请选择阵营</b><br>"
 	
 	dat += "</body></html>"
 	
@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 	
 	switch(href_list["mass_direct"])
 		if("set_radius")
-			var/new_radius = input("Enter new radius (1-50):", "Set Radius", radius) as num|null
+			var/new_radius = input("输入新半径（1-50）：", "设置半径", radius) as num|null
 			if(new_radius)
 				radius = clamp(new_radius, 1, 50)
 		
@@ -141,7 +141,7 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 				faction = new_faction
 		
 		if("custom_faction_input")
-			var/custom_faction = input(usr, "Enter custom faction:", "Custom Faction") as text|null
+			var/custom_faction = input(usr, "输入自定义阵营标识：", "自定义阵营") as text|null
 			if(custom_faction && custom_faction != "")
 				faction = custom_faction
 		
@@ -157,20 +157,20 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 			// If already directing, auto-start the new mode
 			if(was_directing)
 				if(!faction)
-					to_chat(usr, span_warning("No faction selected!"))
+					to_chat(usr, span_warning("尚未选择阵营！"))
 					mass_direct_mobs(radius, faction, command_mode)
 					return TRUE
 				
 				var/instruction = ""
 				switch(command_mode)
 					if("move")
-						instruction = "Click on locations to direct mobs to move there. Right click to stop."
+						instruction = "点击位置以指挥生物前往。右键点击停止指挥。"
 					if("attack")
-						instruction = "Click on any target (mobs, objects, etc.) to command mobs to attack it. Right click to stop."
+						instruction = "点击任意目标（生物、物体等）以命令生物攻击。右键点击停止指挥。"
 					if("follow")
-						instruction = "Click on a mob or yourself to command mobs to follow. Right click to stop."
+						instruction = "点击生物或自己以命令生物跟随。右键点击停止指挥。"
 					if("passive")
-						instruction = "Click anywhere to toggle all [faction] mobs in radius between passive and active. Right click to stop."
+						instruction = "点击任意位置，切换范围内所有 [faction] 阵营生物的被动／主动状态。右键点击停止指挥。"
 				
 				to_chat(usr, span_notice(instruction))
 				var/datum/mass_direct_click_intercept/click_handler = new(usr.client, src, radius, faction, command_mode)
@@ -179,20 +179,20 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 			// If already directing, auto-start the new mode
 			if(usr.client?.click_intercept && istype(usr.client.click_intercept, /datum/mass_direct_click_intercept))
 				if(!faction)
-					to_chat(usr, span_warning("No faction selected!"))
+					to_chat(usr, span_warning("尚未选择阵营！"))
 					mass_direct_mobs(radius, faction, command_mode)
 					return TRUE
 				
 				var/instruction = ""
 				switch(command_mode)
 					if("move")
-						instruction = "Click on locations to direct mobs to move there. Right click to stop."
+						instruction = "点击位置以指挥生物前往。右键点击停止指挥。"
 					if("attack")
-						instruction = "Click on any target (mobs, objects, etc.) to command mobs to attack it. Right click to stop."
+						instruction = "点击任意目标（生物、物体等）以命令生物攻击。右键点击停止指挥。"
 					if("follow")
-						instruction = "Click on a mob or yourself to command mobs to follow. Right click to stop."
+						instruction = "点击生物或自己以命令生物跟随。右键点击停止指挥。"
 					if("passive")
-						instruction = "Click anywhere to toggle all [faction] mobs in radius between passive and active. Right click to stop."
+						instruction = "点击任意位置，切换范围内所有 [faction] 阵营生物的被动／主动状态。右键点击停止指挥。"
 				
 				to_chat(usr, span_notice(instruction))
 				var/datum/mass_direct_click_intercept/click_handler = new(usr.client, src, radius, faction, command_mode)
@@ -201,20 +201,20 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 		
 		if("begin_targeting")
 			if(!faction)
-				to_chat(usr, span_warning("No faction selected!"))
+				to_chat(usr, span_warning("尚未选择阵营！"))
 				mass_direct_mobs(radius, faction, command_mode)
 				return TRUE
 			
 			var/instruction = ""
 			switch(command_mode)
 				if("move")
-					instruction = "Click on locations to direct mobs to move there."
+					instruction = "点击位置以指挥生物前往。"
 				if("attack")
-					instruction = "Click on any target (mobs, objects, etc.) to command mobs to attack it."
+					instruction = "点击任意目标（生物、物体等）以命令生物攻击。"
 				if("follow")
-					instruction = "Click on a mob or yourself to command mobs to follow."
+					instruction = "点击生物或自己以命令生物跟随。"
 				if("passive")
-					instruction = "Click anywhere to toggle all [faction] mobs in radius between passive and active."
+					instruction = "点击任意位置，切换范围内所有 [faction] 阵营生物的被动／主动状态。"
 			
 			to_chat(usr, span_notice(instruction))
 			var/datum/mass_direct_click_intercept/click_handler = new(usr.client, src, radius, faction, command_mode)
@@ -225,7 +225,7 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 			if(usr.client?.click_intercept && istype(usr.client.click_intercept, /datum/mass_direct_click_intercept))
 				var/datum/mass_direct_click_intercept/intercept = usr.client.click_intercept
 				intercept.cleanup()
-				to_chat(usr, span_notice("Stopped directing mobs."))
+				to_chat(usr, span_notice("已停止指挥生物。"))
 		
 		if("refresh")
 			// Just refresh the window
@@ -292,7 +292,7 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 		owner.click_intercept = null
 		owner.mouse_pointer_icon = null
 		owner.mob.update_mouse_pointer()
-	to_chat(user, span_notice("Command executed."))
+	to_chat(user, span_notice("命令已执行。"))
 	
 	return TRUE
 
@@ -372,16 +372,16 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 			skipped++
 	
 	if(count > 0)
-		to_chat(user, span_notice("Directed [count] [faction] mob[count > 1 ? "s" : ""] to move to [AREACOORD(T)]."))
+		to_chat(user, span_notice("已命令 [count] 个 [faction] 阵营的生物前往 [AREACOORD(T)]。"))
 		if(skipped > 0)
-			to_chat(user, span_warning("[skipped] mob[skipped > 1 ? "s" : ""] skipped (old NPC AI, not controllable)."))
-		message_admins("[key_name_admin(user)] directed [count] [faction] mobs to [AREACOORD(T)].")
+			to_chat(user, span_warning("已跳过 [skipped] 个生物（使用旧版 NPC 人工智能，无法控制）。"))
+		message_admins("[key_name_admin(user)] 命令 [count] 个 [faction] 阵营的生物前往 [AREACOORD(T)]。")
 		log_admin("[key_name(user)] directed [count] [faction] mobs to [AREACOORD(T)].")
 	else
 		if(skipped > 0)
-			to_chat(user, span_warning("Found [skipped] [faction] mob[skipped > 1 ? "s" : ""] but they use old NPC AI and cannot be controlled!"))
+			to_chat(user, span_warning("找到了 [skipped] 个 [faction] 阵营的生物，但它们使用旧版 NPC 人工智能，无法控制！"))
 		else
-			to_chat(user, span_warning("No [faction] mobs found within radius [radius]!"))
+			to_chat(user, span_warning("半径 [radius] 内未找到属于 [faction] 阵营的生物！"))
 	
 	return TRUE
 
@@ -453,16 +453,16 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 			skipped++
 	
 	if(count > 0)
-		to_chat(user, span_notice("Directed [count] [faction] mob[count > 1 ? "s" : ""] to attack [target]."))
+		to_chat(user, span_notice("已命令 [count] 个 [faction] 阵营的生物攻击 [target]。"))
 		if(skipped > 0)
-			to_chat(user, span_warning("[skipped] mob[skipped > 1 ? "s" : ""] skipped (old NPC AI, not controllable)."))
-		message_admins("[key_name_admin(user)] directed [count] [faction] mobs to attack [target].")
+			to_chat(user, span_warning("已跳过 [skipped] 个生物（使用旧版 NPC 人工智能，无法控制）。"))
+		message_admins("[key_name_admin(user)] 命令 [count] 个 [faction] 阵营的生物攻击 [target]。")
 		log_admin("[key_name(user)] directed [count] [faction] mobs to attack [target].")
 	else
 		if(skipped > 0)
-			to_chat(user, span_warning("Found [skipped] [faction] mob[skipped > 1 ? "s" : ""] but they use old NPC AI and cannot be controlled!"))
+			to_chat(user, span_warning("找到了 [skipped] 个 [faction] 阵营的生物，但它们使用旧版 NPC 人工智能，无法控制！"))
 		else
-			to_chat(user, span_warning("No [faction] mobs found within radius [radius]!"))
+			to_chat(user, span_warning("半径 [radius] 内未找到属于 [faction] 阵营的生物！"))
 	
 	// Refresh the window
 	owner.mob << browse(null, "window=mass_direct")
@@ -515,9 +515,9 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 				stopped++
 		// User feedback and refresh
 		if(stopped > 0)
-			to_chat(user, span_notice("Stopped following for [stopped] [faction] mob[stopped > 1 ? "s" : ""]."))
+			to_chat(user, span_notice("已令 [stopped] 个 [faction] 阵营的生物停止跟随。"))
 		else
-			to_chat(user, span_warning("No [faction] mobs found within radius [radius] to stop following."))
+			to_chat(user, span_warning("半径 [radius] 内没有可停止跟随的 [faction] 阵营生物。"))
 
 		// Refresh window
 		owner.mob << browse(null, "window=mass_direct")
@@ -528,7 +528,7 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 	
 	var/mob/living/follow_target = target
 	if(!follow_target || QDELETED(follow_target))
-		to_chat(user, span_warning("Invalid follow target!"))
+		to_chat(user, span_warning("跟随目标无效！"))
 		return TRUE
 	
 	var/count = 0
@@ -602,16 +602,16 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 			skipped++
 	
 	if(count > 0)
-		to_chat(user, span_notice("Directed [count] [faction] mob[count > 1 ? "s" : ""] to follow [follow_target]."))
+		to_chat(user, span_notice("已命令 [count] 个 [faction] 阵营的生物跟随 [follow_target]。"))
 		if(skipped > 0)
-			to_chat(user, span_warning("[skipped] mob[skipped > 1 ? "s" : ""] skipped (old NPC AI, not controllable)."))
-		message_admins("[key_name_admin(user)] directed [count] [faction] mobs to follow [follow_target].")
+			to_chat(user, span_warning("已跳过 [skipped] 个生物（使用旧版 NPC 人工智能，无法控制）。"))
+		message_admins("[key_name_admin(user)] 命令 [count] 个 [faction] 阵营的生物跟随 [follow_target]。")
 		log_admin("[key_name(user)] directed [count] [faction] mobs to follow [follow_target].")
 	else
 		if(skipped > 0)
-			to_chat(user, span_warning("Found [skipped] [faction] mob[skipped > 1 ? "s" : ""] but they use old NPC AI and cannot be controlled!"))
+			to_chat(user, span_warning("找到了 [skipped] 个 [faction] 阵营的生物，但它们使用旧版 NPC 人工智能，无法控制！"))
 		else
-			to_chat(user, span_warning("No [faction] mobs found within radius [radius]!"))
+			to_chat(user, span_warning("半径 [radius] 内未找到属于 [faction] 阵营的生物！"))
 	
 	// Refresh the window
 	owner.mob << browse(null, "window=mass_direct")
@@ -743,20 +743,20 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 	
 	if(count > 0)
 		if(made_passive > 0)
-			to_chat(user, span_notice("Made [made_passive] [faction] mob[made_passive > 1 ? "s" : ""] passive within radius [radius]."))
-			message_admins("[key_name_admin(user)] made [made_passive] [faction] mobs passive.")
+			to_chat(user, span_notice("已将半径 [radius] 内 [made_passive] 个 [faction] 阵营的生物设为被动状态。"))
+			message_admins("[key_name_admin(user)] 将 [made_passive] 个 [faction] 阵营的生物设为被动状态。")
 			log_admin("[key_name(user)] made [made_passive] [faction] mobs passive.")
 		if(made_active > 0)
-			to_chat(user, span_notice("Made [made_active] [faction] mob[made_active > 1 ? "s" : ""] active within radius [radius]."))
-			message_admins("[key_name_admin(user)] made [made_active] [faction] mobs active.")
+			to_chat(user, span_notice("已将半径 [radius] 内 [made_active] 个 [faction] 阵营的生物设为主动状态。"))
+			message_admins("[key_name_admin(user)] 将 [made_active] 个 [faction] 阵营的生物设为主动状态。")
 			log_admin("[key_name(user)] made [made_active] [faction] mobs active.")
 		if(skipped > 0)
-			to_chat(user, span_warning("[skipped] mob[skipped > 1 ? "s" : ""] skipped (not controllable)."))
+			to_chat(user, span_warning("已跳过 [skipped] 个生物（无法控制）。"))
 	else
 		if(skipped > 0)
-			to_chat(user, span_warning("Found [skipped] [faction] mob[skipped > 1 ? "s" : ""] but they cannot be controlled!"))
+			to_chat(user, span_warning("找到了 [skipped] 个 [faction] 阵营的生物，但无法控制它们！"))
 		else
-			to_chat(user, span_warning("No [faction] mobs found within radius [radius]!"))
+			to_chat(user, span_warning("半径 [radius] 内未找到属于 [faction] 阵营的生物！"))
 	
 	// Refresh the window
 	owner.mob << browse(null, "window=mass_direct")

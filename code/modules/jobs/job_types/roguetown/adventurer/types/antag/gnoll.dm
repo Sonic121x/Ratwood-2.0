@@ -242,7 +242,7 @@
 
 /mob/living/carbon/human/proc/gnoll_view_tracked_char()
 	set name = "回忆猎物"
-	set category = "Gnoll"
+	set category = "豺狼人"
 	set desc = "查看追踪目标的角色描述面板。"
 	var/datum/antagonist/gnoll/gnoll_antag = mind?.has_antag_datum(/datum/antagonist/gnoll)
 	if(!gnoll_antag)

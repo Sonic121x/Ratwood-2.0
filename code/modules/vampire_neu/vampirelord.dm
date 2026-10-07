@@ -72,7 +72,7 @@
 // NEW VERBS
 /mob/living/carbon/human/proc/demand_submission()
 	set name = "要求臣服"
-	set category = "VAMPIRE"
+	set category = "吸血鬼"
 	if(SSmapping.retainer.king_submitted)
 		to_chat(src, span_warning("我已经是[SSmapping.current_map.map_name]的主人。"))
 		return
@@ -96,7 +96,7 @@
 
 /mob/living/carbon/human/proc/punish_spawn()
 	set name = "惩戒仆从"
-	set category = "VAMPIRE"
+	set category = "吸血鬼"
 
 	if(!clan_position)
 		to_chat(src, span_warning("你没有可惩戒的下属。"))

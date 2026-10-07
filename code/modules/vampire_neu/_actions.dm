@@ -1,6 +1,6 @@
 /mob/living/carbon/human/proc/disguise_verb()
 	set name = "伪装"
-	set category = "VAMPIRE"
+	set category = "吸血鬼"
 
 	var/datum/component/vampire_disguise/disguise_comp = GetComponent(/datum/component/vampire_disguise)
 	if(!disguise_comp)

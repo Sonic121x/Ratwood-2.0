@@ -27,7 +27,7 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/New(datum/admin_rank/R, ckey, force_active = FALSE, protected)
 	if(IsAdminAdvancedProcCall())
-		var/msg = " has tried to elevate permissions!"
+		var/msg = " 尝试提升权限！"
 		message_admins("[key_name_admin(usr)][msg]")
 		log_admin("[key_name(usr)][msg]")
 		if (!target) //only del if this is a true creation (and not just a New() proc call), other wise trialmins/coders could abuse this to deadmin other admins
@@ -57,7 +57,7 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/Destroy()
 	if(IsAdminAdvancedProcCall())
-		var/msg = " has tried to elevate permissions!"
+		var/msg = " 尝试提升权限！"
 		message_admins("[key_name_admin(usr)][msg]")
 		log_admin("[key_name(usr)][msg]")
 		return QDEL_HINT_LETMELIVE
@@ -65,7 +65,7 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/proc/activate()
 	if(IsAdminAdvancedProcCall())
-		var/msg = " has tried to elevate permissions!"
+		var/msg = " 尝试提升权限！"
 		message_admins("[key_name_admin(usr)][msg]")
 		log_admin("[key_name(usr)][msg]")
 		return
@@ -78,7 +78,7 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/proc/deactivate()
 	if(IsAdminAdvancedProcCall())
-		var/msg = " has tried to elevate permissions!"
+		var/msg = " 尝试提升权限！"
 		message_admins("[key_name_admin(usr)][msg]")
 		log_admin("[key_name(usr)][msg]")
 		return
@@ -92,14 +92,14 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/proc/associate(client/C)
 	if(IsAdminAdvancedProcCall())
-		var/msg = " has tried to elevate permissions!"
+		var/msg = " 尝试提升权限！"
 		message_admins("[key_name_admin(usr)][msg]")
 		log_admin("[key_name(usr)][msg]")
 		return
 
 	if(istype(C))
 		if(C.ckey != target)
-			var/msg = " has attempted to associate with [target]'s admin datum"
+			var/msg = " 尝试关联到 [target] 的管理员数据对象"
 			message_admins("[key_name_admin(C)][msg]")
 			log_admin("[key_name(C)][msg]")
 			return
@@ -113,7 +113,7 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/proc/disassociate()
 	if(IsAdminAdvancedProcCall())
-		var/msg = " has tried to elevate permissions!"
+		var/msg = " 尝试提升权限！"
 		message_admins("[key_name_admin(usr)][msg]")
 		log_admin("[key_name(usr)][msg]")
 		return
@@ -164,7 +164,7 @@ you will have to do something like if(client.rights & R_ADMIN) myself.
 			return 1
 		else
 			if(show_msg)
-				to_chat(usr, "<font color='red'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</font>")
+				to_chat(usr, "<font color='red'>错误：权限不足。你需要至少一项以下权限：[rights2text(rights_required," ")]。</font>")
 	return 0
 
 //probably a bit iffy - will hopefully figure out a better solution

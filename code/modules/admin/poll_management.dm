@@ -71,22 +71,22 @@
  *
  */
 /datum/admins/proc/poll_list_panel()
-	var/list/output = list("Current and future polls<br>Note when editing polls or their options changes are not saved until you press Submit Poll.<br><a href='?_src_=holder;[HrefToken()];newpoll=1'>New Poll</a><a href='?_src_=holder;[HrefToken()];reloadpolls=1'>Reload Polls</a><hr>")
+	var/list/output = list("当前及尚未开始的投票<br>编辑投票或选项后，须点击提交投票才能保存更改。<br><a href='?_src_=holder;[HrefToken()];newpoll=1'>新建投票</a><a href='?_src_=holder;[HrefToken()];reloadpolls=1'>重新加载投票</a><hr>")
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
 		output += {"[poll.question]
-		<a href='?_src_=holder;[HrefToken()];editpoll=[REF(poll)]'> Edit</a>
-		<a href='?_src_=holder;[HrefToken()];deletepoll=[REF(poll)]'> Delete</a>
+		<a href='?_src_=holder;[HrefToken()];editpoll=[REF(poll)]'> 编辑</a>
+		<a href='?_src_=holder;[HrefToken()];deletepoll=[REF(poll)]'> 删除</a>
 		"}
 		if(poll.subtitle)
 			output += "<br>[poll.subtitle]"
-		output += "<br>[poll.future_poll ? "Starts" : "Started"] at [poll.start_datetime] | Ends at [poll.end_datetime]"
+		output += "<br>[poll.future_poll ? "开始时间" : "已开始于"]：[poll.start_datetime] | 结束时间：[poll.end_datetime]"
 		if(poll.admin_only)
-			output += " | Admin only"
+			output += " | 仅限管理员"
 		if(poll.dont_show)
-			output += " | Hidden from tracking until complete"
-		output += " | [poll.poll_votes] players have [poll.poll_type == POLLTYPE_TEXT ? "responded" : "voted"]<hr style='background:#000000; border:0; height:3px'>"
-	var/datum/browser/panel = new(usr, "plpanel", "Poll list Panel", 700, 400)
+			output += " | 结束前隐藏统计结果"
+		output += " | 已有 [poll.poll_votes] 位玩家[poll.poll_type == POLLTYPE_TEXT ? "回复" : "投票"]<hr style='background:#000000; border:0; height:3px'>"
+	var/datum/browser/panel = new(usr, "plpanel", "投票列表", 700, 400)
 	panel.set_content(jointext(output, ""))
 	panel.open()
 
@@ -96,78 +96,78 @@
  */
 /datum/admins/proc/poll_management_panel(datum/poll_question/poll)
 	var/list/output = list("<form method='get' action='?src=[REF(src)]'>[HrefTokenFormField()]")
-	output += {"<input type='hidden' name='src' value='[REF(src)]'>Poll type
+	output += {"<input type='hidden' name='src' value='[REF(src)]'>投票类型
 	<div class="select">
 		<select name='polltype' [poll ? " disabled": ""]>
-			<option value='[POLLTYPE_OPTION]'[poll?.poll_type == POLLTYPE_OPTION ? " selected" : ""]>Single Option</option>
-			<option value='[POLLTYPE_TEXT]'[poll?.poll_type == POLLTYPE_TEXT ? " selected" : ""]>Text Reply</option>
-			<option value='[POLLTYPE_RATING]'[poll?.poll_type == POLLTYPE_RATING ? " selected" : ""]>Rating</option>
-			<option value='[POLLTYPE_MULTI]'[poll?.poll_type == POLLTYPE_MULTI ? " selected" : ""]>Multiple Choice</option>
-			<option value='[POLLTYPE_IRV]'[poll?.poll_type == POLLTYPE_IRV ? " selected" : ""]>Instant Runoff</option>
+			<option value='[POLLTYPE_OPTION]'[poll?.poll_type == POLLTYPE_OPTION ? " selected" : ""]>单选</option>
+			<option value='[POLLTYPE_TEXT]'[poll?.poll_type == POLLTYPE_TEXT ? " selected" : ""]>文字回复</option>
+			<option value='[POLLTYPE_RATING]'[poll?.poll_type == POLLTYPE_RATING ? " selected" : ""]>评分</option>
+			<option value='[POLLTYPE_MULTI]'[poll?.poll_type == POLLTYPE_MULTI ? " selected" : ""]>多选</option>
+			<option value='[POLLTYPE_IRV]'[poll?.poll_type == POLLTYPE_IRV ? " selected" : ""]>排序复选制</option>
 		</select>
 	</div>
-	Question
+	问题
 	<input type='text' name='question' size='34' value='[poll?.question]'>
-	Multiple-choice options allowed
+	多选时允许选择的选项数
 	<input type='text' name='optionsallowed' size='2' value='[poll?.options_allowed]'>
 	<br>
 	<label class='inputlabel checkbox'>
-		Admin only
+		仅限管理员
 		<input type='checkbox' id='adminonly' name='adminonly' value='1'[poll?.admin_only ? " checked" : ""]>
 		<div class='inputbox'></div>
 	</label>
 	<label class='inputlabel checkbox'>
-		Hide results before completion
+		结束前隐藏结果
 		<input type='checkbox' id='dontshow' name='dontshow' value='1'[poll?.dont_show ? " checked" : ""]>
 		<div class='inputbox'></div>
 	</label>
 	<label class='inputlabel checkbox'>
-		Allow re-voting
+		允许重新投票
 		<input type='checkbox' id='allowrevoting' name='allowrevoting' value='1'[poll?.allow_revoting ? " checked" : ""]>
 		<div class='inputbox'></div>
 	</label>
 	<br>
 	<div class='row'>
 		<div class='column left'>
-			Duration
+			持续时间
 			<br>
 			<label class='inputlabel radio'>
-				Run for
+				持续
 				<input type='radio' id='runfor' name='radioduration' value='runfor'[poll?.interval ? " checked" : ""]>
 				<div class='inputbox'></div>
 			</label>
 			<input type='text' name='duration' size='7'[poll?.interval ? " value='[poll?.duration]''" : ""]'>
 			<div class="select">
 				<select name='durationtype'>
-					<option value='SECOND'[poll?.interval == "SECOND" ? " selected" : ""]>Seconds</option>
-					<option value='MINUTE'[poll?.interval == "MINUTE" ? " selected" : ""]>Minutes</option>
-					<option value='HOUR'[poll?.interval == "HOUR" ? " selected" : ""]>Hours</option>
-					<option value='DAY'[(!poll?.interval || poll?.interval == "DAY") ? " selected" : ""]>Days</option>
-					<option value='WEEK'[poll?.interval == "WEEK" ? " selected" : ""]>Weeks</option>
-					<option value='MONTH'[poll?.interval == "MONTH" ? " selected" : ""]>Months</option>
-					<option value='YEAR'[poll?.interval == "YEAR" ? " selected" : ""]>Years</option>
+					<option value='SECOND'[poll?.interval == "SECOND" ? " selected" : ""]>秒</option>
+					<option value='MINUTE'[poll?.interval == "MINUTE" ? " selected" : ""]>分钟</option>
+					<option value='HOUR'[poll?.interval == "HOUR" ? " selected" : ""]>小时</option>
+					<option value='DAY'[(!poll?.interval || poll?.interval == "DAY") ? " selected" : ""]>天</option>
+					<option value='WEEK'[poll?.interval == "WEEK" ? " selected" : ""]>周</option>
+					<option value='MONTH'[poll?.interval == "MONTH" ? " selected" : ""]>月</option>
+					<option value='YEAR'[poll?.interval == "YEAR" ? " selected" : ""]>年</option>
 				</select>
 			</div>
 			<br>
 			<label class='inputlabel radio'>
-				Run until
+				持续至
 				<input type='radio' id='rununtil' name='radioduration' value='rununtil' [!poll?.interval ? " checked" : ""]>
 				<div class='inputbox'></div>
 			</label>
 			<input type='text' name='enddatetimetext' size='24' value='[poll?.end_datetime ? "[poll.end_datetime]" : "YYYY-MM-DD HH:MM:SS"]'>
 		</div>
 		<div class='column'>
-			Start
+			开始时间
 			<br>
 			<label class='inputlabel radio'>
-				Now
+				立即
 				<input type='radio' id='startnow' name='radiostart' value='startnow'[!poll?.start_datetime ? " checked" : ""]>
 				<div class='inputbox'></div>
 			</label>
 			</div>
 			<br>
 			<label class='inputlabel radio'>
-				At datetime
+				指定日期时间
 				<input type='radio' id='startdatetime' name='radiostart' value='startdatetime'[poll?.start_datetime ? " checked" : ""]>
 				<div class='inputbox'></div>
 			</label>
@@ -175,7 +175,7 @@
 		</div></div>
 		<div class='row'>
 		<div class='column left'>
-			Subtitle (Optional)
+			副标题（可选）
 			<br>
 			<textarea class='textbox' name='subtitle'>[poll?.subtitle]</textarea>
 		</div>
@@ -184,50 +184,50 @@
 	var/option_count = 0
 	if(!poll)
 		output += {"<input type='hidden' name='initializepoll' value='1'>
-		<input type='submit' value='Initialize Question'>
+		<input type='submit' value='初始化问题'>
 		</div></div>
 		</form>
 		<hr>
-		First enter the poll question details and press Initialize Question.
+		首先填写投票问题详情，然后点击初始化问题。
 		<br>
-		Then add poll options and press Submit Poll to save and create the question and options. No options are required for Text Reply polls.
+		随后添加选项，点击提交投票以保存并创建问题和选项。文字回复投票无需选项。
 		<br>
-		<a href='[CONFIG_GET(string/wikiurl)]/Guide_to_poll_types'>Which poll type should I use?</a>
+		<a href='[CONFIG_GET(string/wikiurl)]/Guide_to_poll_types'>应该选择哪种投票类型？</a>
 		"}
 	else
-		output += "<input type='hidden' name='submitpoll' value='[REF(poll)]'><input type='submit' value='Submit poll'>"
+		output += "<input type='hidden' name='submitpoll' value='[REF(poll)]'><input type='submit' value='提交投票'>"
 		if(poll.edit_ready)
-			output += {"<label class='inputlabel checkbox'>Clear votes on edit
+			output += {"<label class='inputlabel checkbox'>编辑时清除投票记录
 			<input type='checkbox' id='clearvotesedit' name='clearvotesedit' value='1' checked>
 			<div class='inputbox'></div>
 			</label></form>
 			<br>
 			"}
 			if(poll.poll_type == POLLTYPE_TEXT)
-				output += "<a href='?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>Clear poll responses</a> [poll.poll_votes] players have responded"
+				output += "<a href='?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>清除投票回复</a> 已有 [poll.poll_votes] 位玩家回复"
 			else
-				output += "<a href='?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>Clear poll votes</a> [poll.poll_votes] players have voted"
+				output += "<a href='?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>清除投票记录</a> 已有 [poll.poll_votes] 位玩家投票"
 		if(poll.poll_type == POLLTYPE_TEXT)
 			output += "</div></div>"
 		else
-			output += "</div></div><hr><a href='?_src_=holder;[HrefToken()];addpolloption=[REF(poll)]'>Add Option</a><br>"
+			output += "</div></div><hr><a href='?_src_=holder;[HrefToken()];addpolloption=[REF(poll)]'>添加选项</a><br>"
 			if(length(poll.options))
 				for(var/o in poll.options)
 					var/datum/poll_option/option = o
 					option_count++
-					output += {"Option [option_count]
-					<a href='?_src_=holder;[HrefToken()];editpolloption=[REF(option)];parentpoll=[REF(poll)]'> Edit</a>
-					<a href='?_src_=holder;[HrefToken()];deletepolloption=[REF(option)]'> Delete</a>
+					output += {"选项 [option_count]
+					<a href='?_src_=holder;[HrefToken()];editpolloption=[REF(option)];parentpoll=[REF(poll)]'> 编辑</a>
+					<a href='?_src_=holder;[HrefToken()];deletepolloption=[REF(option)]'> 删除</a>
 					<br>[option.text]
 					"}
 					if(poll.poll_type == POLLTYPE_RATING)
-						output += {"<br>Minimum value: [option.min_val] | Maximum value: [option.max_val]
-						<br>Minimum description: [option.desc_min]
-						<br>Middle description: [option.desc_mid]
-						<br>Maximum description: [option.desc_max]
+						output += {"<br>最小值：[option.min_val] | 最大值：[option.max_val]
+						<br>最小值说明：[option.desc_min]
+						<br>中间值说明：[option.desc_mid]
+						<br>最大值说明：[option.desc_max]
 						"}
 					output += "<hr style='background:#000000; border:0; height:3px'>"
-	var/datum/browser/panel = new(usr, "pmpanel", "Poll Management Panel", 780, 640)
+	var/datum/browser/panel = new(usr, "pmpanel", "投票管理面板", 780, 640)
 	panel.add_stylesheet("admin_panelscss", 'html/admin/admin_panels.css')
 	panel.add_stylesheet("admin_panelscss3", 'html/admin/admin_panels_css3.css')
 	panel.set_content(jointext(output, ""))
@@ -244,7 +244,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/list/error_state = list()
 	var/new_poll = FALSE
@@ -265,7 +265,7 @@
 				if(new_poll)
 					poll.end_datetime = poll.duration
 	if(!poll.duration)
-		error_state += "No duration was provided."
+		error_state += "未提供持续时间。"
 	switch(href_list["radiostart"])
 		if("startnow")
 			poll.start_datetime = null
@@ -273,11 +273,11 @@
 			if(href_list["startdatetimetext"] && href_list["startdatetimetext"] != "YYYY-MM-DD HH:MM:SS")
 				poll.start_datetime = href_list["startdatetimetext"]
 			else
-				error_state += "Start datetime was selected but none was provided."
+				error_state += "已选择指定开始日期时间，但未填写具体时间。"
 	if(href_list["question"])
 		poll.question = href_list["question"]
 	else
-		error_state += "No question was provided."
+		error_state += "未填写问题。"
 	poll.subtitle = href_list["subtitle"]
 	if(href_list["adminonly"])
 		poll.admin_only = TRUE
@@ -299,18 +299,18 @@
 		if(text2num(href_list["optionsallowed"]))
 			poll.options_allowed = text2num(href_list["optionsallowed"])
 			if(poll.options_allowed == 1)
-				error_state += "Multiple choice polls require more than one option allowed, use a standard option poll for singlular voting."
+				error_state += "多选投票必须允许选择多个选项，单选请使用单选投票。"
 			if(poll.options_allowed < 0)
-				error_state += "Multiple choice options allowed cannot be negative."
+				error_state += "允许选择的选项数不能为负数。"
 		else
-			error_state += "Multiple choice poll was selected but no number of allowed options was provided."
+			error_state += "已选择多选投票，但未填写允许选择的选项数。"
 	if(submit_ready && poll.poll_type != POLLTYPE_TEXT && !length(poll.options))
-		error_state += "This poll type requires at least one option."
+		error_state += "此投票类型至少需要一个选项。"
 	if(error_state.len)
 		if(poll.edit_ready)
-			to_chat(usr, span_danger("Not all edits were applied because the following errors were present:\n[error_state.Join("\n")]"))
+			to_chat(usr, span_danger("存在以下错误，部分更改未能应用：\n[error_state.Join("\n")]"))
 		else
-			to_chat(usr, span_danger("Poll not [new_poll ? "initialized" : "submitted"] because the following errors were present:\n[error_state.Join("\n")]"))
+			to_chat(usr, span_danger("存在以下错误，投票未能[new_poll ? "初始化" : "提交"]：\n[error_state.Join("\n")]"))
 			if(new_poll)
 				qdel(poll)
 		return
@@ -353,7 +353,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/datum/DBQuery/query_delete_poll = SSdbcore.NewQuery(
 		"CALL set_poll_deleted(:poll_id)",
@@ -382,7 +382,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/new_poll = !poll_id
 	if(poll_type != POLLTYPE_MULTI)
@@ -428,7 +428,7 @@
 	if(clear_votes)
 		clear_poll_votes()
 	edit_ready = TRUE
-	var/msg = "has [new_poll ? "created a new" : "edited a"][admin_only ? " admin only" : ""] server poll. Question: [question]"
+	var/msg = "[new_poll ? "创建" : "编辑"]了[admin_only ? "仅限管理员的" : ""]服务器投票。问题：[question]"
 	if(admin_only)
 		log_admin_private("[kn] [msg]")
 	else
@@ -445,7 +445,7 @@
  */
 /datum/poll_question/proc/save_all_options()
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	for(var/o in options)
 		var/datum/poll_option/option = o
@@ -459,7 +459,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/table = "poll_vote"
 	if(poll_type == POLLTYPE_TEXT)
@@ -473,7 +473,7 @@
 		return
 	qdel(query_clear_poll_votes)
 	poll_votes = 0
-	to_chat(usr, span_danger("Poll [poll_type == POLLTYPE_TEXT ? "responses" : "votes"] cleared."))
+	to_chat(usr, span_danger("投票[poll_type == POLLTYPE_TEXT ? "回复" : "记录"]已清除。"))
 
 /**
  * Show the options for creating a poll option or editing its parameters.
@@ -481,27 +481,27 @@
  */
 /datum/admins/proc/poll_option_panel(datum/poll_question/poll, datum/poll_option/option)
 	var/list/output = list("<form method='get' action='?src=[REF(src)]'>[HrefTokenFormField()]")
-	output += {"<input type='hidden' name='src' value='[REF(src)]'>	Option for poll [poll.question]
+	output += {"<input type='hidden' name='src' value='[REF(src)]'>	投票 [poll.question] 的选项
 	<br>
 	<textarea class='textbox' name='optiontext'>[option?.text]</textarea>
 	<br>
 	"}
 	if(poll.poll_type == POLLTYPE_RATING)
-		output += {"Minimum value
+		output += {"最小值
 		<input type='text' name='minval' size='3' value='[option?.min_val]'>
-		Maximum Value
+		最大值
 		<input type='text' name='maxval' size='3' value='[option?.max_val]'>
 		<div class='row'>
 			<div class='column left'>
-				<label class='inputlabel checkbox'>Minimum description
+				<label class='inputlabel checkbox'>最小值说明
 				<input type='checkbox' id='descmincheck' name='descmincheck' value='1'[option?.desc_min ? " checked": ""]>
 				<div class='inputbox'></div></label>
 				<br>
-				<label class='inputlabel checkbox'>Middle description
+				<label class='inputlabel checkbox'>中间值说明
 				<input type='checkbox' id='descmidcheck' name='descmidcheck' value='1'[option?.desc_mid ? " checked": ""]>
 				<div class='inputbox'></div></label>
 				<br>
-				<label class='inputlabel checkbox'>Maximum description
+				<label class='inputlabel checkbox'>最大值说明
 				<input type='checkbox' id='descmaxcheck' name='descmaxcheck' value='1'[option?.desc_max ? " checked": ""]>
 				<div class='inputbox'></div></label>
 			</div>
@@ -514,17 +514,17 @@
 			</div>
 		</div>
 		"}
-	output += {"<label class='inputlabel checkbox'>Include option in poll's results percentage calculation
+	output += {"<label class='inputlabel checkbox'>将此选项纳入投票结果百分比计算
 	<input type='checkbox' id='defpercalc' name='defpercalc' value='1'[option?.default_percentage_calc ? " checked": ""]>
 	<div class='inputbox'></div></label><br>
 	<input type='hidden' name='submitoption' value='[REF(option)]'>
 	<input type='hidden' name='submitoptionpoll' value='[REF(poll)]'>
-	<input type='submit' value='Add option'>
+	<input type='submit' value='添加选项'>
 	"}
 	var/panel_height = 180
 	if(poll.poll_type == POLLTYPE_RATING)
 		panel_height = 320
-	var/datum/browser/panel = new(usr, "popanel", "Poll Option Panel", 370, panel_height)
+	var/datum/browser/panel = new(usr, "popanel", "投票选项面板", 370, panel_height)
 	panel.add_stylesheet("admin_panelscss", 'html/admin/admin_panels.css')
 	panel.add_stylesheet("admin_panelscss3", 'html/admin/admin_panels_css3.css')
 	panel.set_content(jointext(output, ""))
@@ -541,7 +541,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/list/error_state = list()
 	var/new_option = FALSE
@@ -551,7 +551,7 @@
 	if(href_list["optiontext"])
 		option.text = href_list["optiontext"]
 	else
-		error_state += "No option text was provided."
+		error_state += "未填写选项文字。"
 	if(href_list["defpercalc"])
 		option.default_percentage_calc = TRUE
 	else
@@ -562,47 +562,47 @@
 			if(ISINRANGE(value_in_range, -2147483647, 2147483647))
 				option.min_val = value_in_range
 			else
-				error_state += "Minimum value out of range."
+				error_state += "最小值超出范围。"
 		else
-			error_state += "No minimum value was provided."
+			error_state += "未填写最小值。"
 		value_in_range = text2num(href_list["maxval"])
 		if(href_list["maxval"])
 			if(ISINRANGE(value_in_range, -2147483647, 2147483647))
 				if(value_in_range < option.min_val)
-					error_state += "Maximum value is less than minimum value."
+					error_state += "最大值小于最小值。"
 				else
 					option.max_val = value_in_range
 			else
-				error_state += "Maximum value out of range."
+				error_state += "最大值超出范围。"
 		else
-			error_state += "No maximum value was provided."
+			error_state += "未填写最大值。"
 		if(href_list["descmincheck"])
 			if(href_list["descmintext"])
 				option.desc_min = href_list["descmintext"]
 			else
-				error_state += "Minimum value description was selected but not provided."
+				error_state += "已勾选最小值说明，但未填写内容。"
 		else
 			option.desc_min = null
 		if(href_list["descmidcheck"])
 			if(href_list["descmidtext"])
 				option.desc_mid = href_list["descmidtext"]
 			else
-				error_state += "Middle value description was selected but not provided."
+				error_state += "已勾选中间值说明，但未填写内容。"
 		else
 			option.desc_mid = null
 		if(href_list["descmaxcheck"])
 			if(href_list["descmaxtext"])
 				option.desc_max = href_list["descmaxtext"]
 			else
-				error_state += "Maximum value description was selected but not provided."
+				error_state += "已勾选最大值说明，但未填写内容。"
 		else
 			option.desc_max = null
 	if(error_state.len)
 		if(new_option)
-			to_chat(usr, span_danger("Option not added because the following errors were present:\n[error_state.Join("\n")]"))
+			to_chat(usr, span_danger("存在以下错误，选项未能添加：\n[error_state.Join("\n")]"))
 			qdel(option)
 		else
-			to_chat(usr, span_danger("Not all edits were applied because the following errors were present:\n[error_state.Join("\n")]"))
+			to_chat(usr, span_danger("存在以下错误，部分更改未能应用：\n[error_state.Join("\n")]"))
 		return
 	if(new_option)
 		poll.options += option
@@ -639,7 +639,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 
 	var/list/values = list("text" = text, "default_percentage_calc" = default_percentage_calc, "pollid" = parent_poll.poll_id, "id" = option_id)
@@ -675,7 +675,7 @@
 	. = parent_poll
 	if(option_id)
 		if(!SSdbcore.Connect())
-			to_chat(usr, span_danger("Failed to establish database connection."))
+			to_chat(usr, span_danger("无法连接数据库。"))
 			return
 		var/datum/DBQuery/query_delete_poll_option = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("poll_option")] AS o INNER JOIN [format_table_name("poll_vote")] AS v ON o.id = v.optionid SET o.deleted = 1, v.deleted = 1 WHERE o.id = :option_id",
@@ -693,7 +693,7 @@
  */
 /proc/load_poll_data()
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法连接数据库。"))
 		return
 	var/datum/DBQuery/query_load_polls = SSdbcore.NewQuery("SELECT id, polltype, starttime, endtime, question, subtitle, adminonly, multiplechoiceoptions, dontshow, allow_revoting, IF(polltype='TEXT',(SELECT COUNT(ckey) FROM [format_table_name("poll_textreply")] AS t WHERE t.pollid = q.id AND deleted = 0), (SELECT COUNT(DISTINCT ckey) FROM [format_table_name("poll_vote")] AS v WHERE v.pollid = q.id AND deleted = 0)), IFNULL((SELECT byond_key FROM [format_table_name("player")] AS p WHERE p.ckey = q.createdby_ckey), createdby_ckey), IF(starttime > NOW(), 1, 0) FROM [format_table_name("poll_question")] AS q WHERE NOW() < endtime AND deleted = 0")
 	if(!query_load_polls.Execute())

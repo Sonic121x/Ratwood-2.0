@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 
 /mob/living/carbon/human/proc/coronate_lord()
 	set name = "加冕"
-	set category = "Priest"
+	set category = "祭司"
 	to_chat (src, span_warning("为新统治者加冕，并将其灵魂与山谷王座绑定，是一项极其沉重的仪式。任何刚被加冕的高贵领主都将无法再被复活。你最好事先说清这一点。"))
 	if(!mind)
 		return
@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 
 /mob/living/carbon/human/proc/churchannouncement()
 	set name = "布告"
-	set category = "Priest"
+	set category = "祭司"
 
 	if(stat)
 		return
@@ -319,7 +319,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 
 /mob/living/carbon/human/proc/completesermon()
 	set name = "布道"
-	set category = "Priest"
+	set category = "祭司"
 
 	if (!mind)
 		return
@@ -376,7 +376,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 
 /mob/living/carbon/human/proc/churcheapostasy(mob/living/carbon/human/H in GLOB.player_list)
 	set name = "判为叛教"
-	set category = "Priest"
+	set category = "祭司"
 
 	if (stat)
 		return
@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 	if (inputty in GLOB.apostasy_players)
 		GLOB.apostasy_players -= inputty
 		priority_announce("[real_name] 已宽恕 [inputty]。其信奉的神祇再次聆听到了他们的祈祷！", title = "叛教解除", sound = 'sound/misc/bell.ogg')
-		message_admins("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
+		message_admins("叛教：[real_name]（[ckey]）为 [H.real_name]（[H.ckey]）赦免了叛教之罪")
 		log_game("APOSTASY: [real_name] ([ckey]) has used forgiven apostasy at [H.real_name] ([H.ckey])")
 
 		if (H.real_name == inputty)
@@ -434,7 +434,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 			to_chat(H, span_warning("一阵神圣的寂静降临在你身上……"))
 
 		priority_announce("[real_name] 已将羞辱之印加诸 [inputty] 之身。他们的祈祷再也无人聆听。", title = "叛教", sound = 'sound/misc/excomm.ogg')
-		message_admins("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
+		message_admins("叛教：[real_name]（[ckey]）将 [H.real_name]（[H.ckey]）判为叛教者")
 		log_game("APOSTASY: [real_name] ([ckey]) has used apostasy at [H.real_name] ([H.ckey])")
 		return TRUE
 
@@ -445,7 +445,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 
 /mob/living/carbon/human/proc/churchexcommunicate(mob/living/carbon/human/H in GLOB.player_list)
 	set name = "逐出教门"
-	set category = "Priest"
+	set category = "祭司"
 
 	if (stat)
 		return
@@ -470,7 +470,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 	if (inputty in GLOB.excommunicated_players)
 		GLOB.excommunicated_players -= inputty
 		priority_announce("[real_name] 已使 [inputty] 与教会重归于好。他们再一次成为羊群中的一员！", title = "重归教门", sound = 'sound/misc/bell.ogg')
-		message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
+		message_admins("逐出教门：[real_name]（[ckey]）准许 [H.real_name]（[H.ckey]）重归教门")
 		log_game("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
 
 		if (H.real_name == inputty)
@@ -506,7 +506,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 
 	GLOB.excommunicated_players += inputty
 	priority_announce("[real_name] 已将 [inputty] 逐出教门！蒙羞吧！", title = "逐出教门", sound = 'sound/misc/excomm.ogg')
-	message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
+	message_admins("逐出教门：[real_name]（[ckey]）将 [H.real_name]（[H.ckey]）逐出教门")
 	log_game("EXCOMMUNICATION: [real_name] ([ckey]) has excommunicated [H.real_name] ([H.ckey])")
 
 	return
@@ -515,7 +515,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep that updated if this gets any changes.*/
 /mob/living/carbon/human/proc/churchpriestcurse(mob/living/carbon/human/H in GLOB.player_list)
 	set name = "神罚诅咒"
-	set category = "Priest"
+	set category = "祭司"
 
 	if (stat)
 		return
@@ -561,12 +561,12 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 		if (H.is_cursed(temp))
 			H.remove_curse(temp)
 			priority_announce("[real_name] 已从 [H.real_name] 身上解除 [curse_pick]！他们再一次成为羊群中的一员！", title = "赎免", sound = 'sound/misc/bell.ogg')
-			message_admins("DIVINE CURSE: [real_name] ([ckey]) has removed [curse_pick] from [H.real_name]) ") //[ADMIN_LOOKUPFLW(user)] Maybe add this here if desirable but dunno.
+			message_admins("神罚：[real_name]（[ckey]）移除了 [H.real_name] 的 [curse_pick] ") //[ADMIN_LOOKUPFLW(user)] Maybe add this here if desirable but dunno.
 			log_game("DIVINE CURSE: [real_name] ([ckey]) has removed [curse_pick] from [H.real_name])")
 		else
 			if (length(H.curses) >= 1)
 				to_chat(src, span_syndradio("[H.real_name] 已经遭受了另一种诅咒。"))
-				message_admins("DIVINE CURSE: [real_name] ([ckey]) has attempted to strike [H.real_name] ([H.ckey] with [curse_pick])")
+				message_admins("神罚：[real_name]（[ckey]）试图对 [H.real_name]（[H.ckey]）施加 [curse_pick]")
 				log_game("DIVINE CURSE: [real_name] ([ckey]) has attempted to strike [H.real_name] ([H.ckey] with [curse_pick])")
 				return
 
@@ -582,14 +582,14 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 			H.add_curse(curse_type)
 
 			priority_announce("[real_name] 已以 [curse_pick] 击中 [H.real_name]！蒙羞吧！", title = "神判", sound = 'sound/misc/excomm.ogg')
-			message_admins("DIVINE CURSE: [real_name] ([ckey]) has stricken [H.real_name] ([H.ckey] with [curse_pick])")
+			message_admins("神罚：[real_name]（[ckey]）对 [H.real_name]（[H.ckey]）施加了 [curse_pick]")
 			log_game("DIVINE CURSE: [real_name] ([ckey]) has stricken [H.real_name] ([H.ckey] with [curse_pick])")
 
 		return
 
 /mob/living/carbon/human/proc/change_patron()
 	set name = "改易信奉"
-	set category = "Priest"
+	set category = "祭司"
 
 	if(!mind)
 		return
@@ -708,7 +708,7 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 
 	var/announcement_text = "[user.real_name] 已将 [target.real_name] 带回教会的羊群之中！[target.real_name] 现在信奉 [user.patron.name]！"
 	priority_announce(announcement_text, title = "救赎", sound = 'sound/misc/bell.ogg')
-	message_admins("HERETIC CONVERSION: [user.real_name] ([user.ckey]) has converted [target.real_name] ([target.ckey]) to [user.patron.name]")
+	message_admins("异端改信：[user.real_name]（[user.ckey]）使 [target.real_name]（[target.ckey]）改信了 [user.patron.name]")
 	log_game("HERETIC CONVERSION: [user.real_name] ([user.ckey]) converted [target.real_name] ([target.ckey]) to [user.patron.name]")
 	to_chat(user, span_danger("你已使 [target.name] 改而信奉 [user.patron.name]！"))
 	to_chat(target, span_danger("当你拥抱 [user.patron.name] 时，你感到异端之重正从灵魂中悄然剥落！"))

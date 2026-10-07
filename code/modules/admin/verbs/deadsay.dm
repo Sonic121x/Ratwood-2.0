@@ -16,7 +16,7 @@
 		to_chat(src, span_danger("只有幽灵才能使用亡者聊天！"))
 		return
 
-	var/msg = input(src, null, "dsay \"text\"") as text|null
+	var/msg = input(src, null, "dsay \"文本\"") as text|null
 
 	if (isnull(msg))
 		return
