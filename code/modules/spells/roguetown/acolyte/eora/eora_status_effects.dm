@@ -283,7 +283,7 @@
 		owner.set_blood_volume(max(10, owner.get_blood_volume() - 10))
 
 /atom/movable/screen/alert/status_effect/pomegranate_aura
-	name = "伊欧拉 的祝福"
+	name = "伊欧拉的祝福"
 	desc = "你在这棵圣树附近感到一阵安宁。"
 	icon_state = "pom_peace"
 
