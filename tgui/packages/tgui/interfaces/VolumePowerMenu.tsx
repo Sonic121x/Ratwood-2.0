@@ -1,7 +1,7 @@
 import { useBackend } from 'tgui/backend';
 import { Window } from 'tgui/layouts';
-import { NumberInput, Section, Stack } from 'tgui-core/components';
-
+import { NumberInput, Stack } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 type Data = {
   master: number;
   music: number;
@@ -64,38 +64,38 @@ export const VolumePowerMenu = () => {
   const lobbyValue = lobby ?? 100;
 
   return (
-    <Window width={470} height={390}>
+    <Window width={470} height={390} display_title="音量设置">
       <Window.Content>
-        <Section title="Volume Levels" fill>
+        <Section title="Volume Levels" display_title="音量" fill>
           <VolumeRow
-            label="Master"
+            label="音效"
             value={masterValue}
             id="master"
-            description="Non-music and non-ambience sounds."
+            description="音乐与环境声以外的音效。"
           />
           <VolumeRow
-            label="Music"
+            label="音乐"
             value={musicValue}
             id="music"
-            description="Non-combat music and admin music."
+            description="非战斗音乐与管理员播放的音乐。"
           />
           <VolumeRow
-            label="Combat Music"
+            label="战斗音乐"
             value={combatValue}
             id="combat"
-            description="Combat and combat-adjacent music channels."
+            description="战斗及相关音乐频道。"
           />
           <VolumeRow
-            label="Ambience"
+            label="环境声"
             value={ambienceValue}
             id="ambience"
-            description="Ambient and environmental loop channels."
+            description="氛围音与循环环境声频道。"
           />
           <VolumeRow
-            label="Lobby Music"
+            label="大厅音乐"
             value={lobbyValue}
             id="lobby"
-            description="Title/lobby music playback volume."
+            description="标题界面与大厅音乐的播放音量。"
           />
         </Section>
       </Window.Content>

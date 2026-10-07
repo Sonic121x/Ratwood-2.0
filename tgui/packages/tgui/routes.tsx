@@ -18,12 +18,12 @@ const routingError =
         <Window.Content scrollable>
           {type === 'notFound' && (
             <div>
-              Interface <b>{name}</b> was not found.
+              未找到界面 <b>{name}</b>。
             </div>
           )}
           {type === 'missingExport' && (
             <div>
-              Interface <b>{name}</b> is missing an export.
+              界面 <b>{name}</b> 缺少导出组件。
             </div>
           )}
         </Window.Content>
@@ -43,7 +43,7 @@ function SuspendedWindow() {
 // Displays a loading screen with a spinning icon
 function RefreshingWindow() {
   return (
-    <Window title="Loading">
+    <Window title="Loading" display_title="加载中">
       <Window.Content>
         <LoadingScreen />
       </Window.Content>

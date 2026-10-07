@@ -5,10 +5,10 @@ import {
   Input,
   LabeledList,
   NoticeBox,
-  Section,
   Stack,
   Table,
 } from 'tgui-core/components';
+import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -86,7 +86,7 @@ const PetSelection = () => {
   const { act, data } = useBackend<Data>();
   return (
     <Section
-      title={`Pets (${data.selected_count} selected)`}
+      title={`Pets (${data.selected_count} selected)`} display_title={`宠物（已选 ${data.selected_count}）`}
       style={{ maxHeight: '300px' }}
       buttons={
         <>
@@ -148,7 +148,7 @@ const SelectedPetInfo = (props: { selectedPets: PetEntry[] }) => {
   const { selectedPets } = props;
 
   return (
-    <Section title={`Pet Information (${selectedPets.length} selected)`}>
+    <Section title={`Pet Information (${selectedPets.length} selected)`} display_title={`宠物信息（已选 ${selectedPets.length}）`}>
       {!selectedPets.length ? (
         <Box color="label">请至少选择一名宠物以查看详情。</Box>
       ) : (
@@ -314,10 +314,10 @@ const ControlPanel = () => {
   const cursedActionDisabled = !!reasonForCursedAction;
 
   return (
-    <Section fill scrollable title="Control Panel">
+    <Section fill scrollable title="Control Panel" display_title="控制面板">
       <Stack vertical>
       <Stack.Item>
-        <Section title="Status">
+        <Section title="Status" display_title="状态">
           <LabeledList>
             <LabeledList.Item label="主人">
               {data.master_name}
@@ -335,7 +335,7 @@ const ControlPanel = () => {
       </Stack.Item>
 
       <Stack.Item grow>
-        <Section title={commandSectionTitle} fill>
+        <Section title={commandSectionTitle} display_title={commandSectionTitle === 'Collar Commands' ? '项圈指令' : commandSectionTitle === 'Cage Commands' ? '贞操笼指令' : '项圈／贞操笼指令'} fill>
           <Stack>
             <Stack.Item basis="50%" grow>
               <Stack vertical>
@@ -447,7 +447,7 @@ const ControlPanel = () => {
       </Stack.Item>
 
       <Stack.Item>
-        <Section title="Message">
+        <Section title="Message" display_title="消息">
           <Stack>
             <Stack.Item grow>
               <Input
@@ -477,7 +477,7 @@ const ControlPanel = () => {
       </Stack.Item>
 
       <Stack.Item>
-        <Section title="Force Action">
+        <Section title="Force Action" display_title="强制动作">
           <Stack>
             <Stack.Item grow>
               <Input
@@ -507,7 +507,7 @@ const ControlPanel = () => {
       </Stack.Item>
 
       <Stack.Item>
-        <Section title="Impose Will">
+        <Section title="Impose Will" display_title="施加意志">
           <Stack>
             <Stack.Item grow>
               <Input
@@ -537,7 +537,7 @@ const ControlPanel = () => {
       </Stack.Item>
 
       <Stack.Item>
-        <Section title="Cursed Chastity">
+        <Section title="Cursed Chastity" display_title="诅咒贞操装置">
           <CursedChastityControls
             selectedPets={selectedPets}
             cursedActionDisabled={cursedActionDisabled}
