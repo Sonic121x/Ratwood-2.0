@@ -17,44 +17,44 @@
 		return the_pq
 	else
 		if(the_pq >= 500)
-			return "<span style='color: #FFD700;'>ASCENDANT</span>"
+			return "<span style='color: #FFD700;'>登峰造极</span>"
 		if(the_pq >= 440)
-			return "<span style='color: #B0C4DE;'>UNDYING</span>"
+			return "<span style='color: #B0C4DE;'>不朽</span>"
 		if(the_pq >= 375)
-			return "<span style='color: #9B59B6;'>DIVINE</span>"
+			return "<span style='color: #9B59B6;'>神圣</span>"
 		if(the_pq >= 310)
-			return "<span style='color: #E8D44D;'>EXALTED</span>"
+			return "<span style='color: #E8D44D;'>崇高</span>"
 		if(the_pq >= 250)
-			return "<span style='color: #5DADE2;'>RENOWNED</span>"
+			return "<span style='color: #5DADE2;'>声名远扬</span>"
 		if(the_pq >= 200)
-			return "<span style='color: #52BE80;'>FABLED</span>"
+			return "<span style='color: #52BE80;'>传奇</span>"
 		if(the_pq >= 160)
-			return "<span style='color: #45B39D;'>STORIED</span>"
+			return "<span style='color: #45B39D;'>久负盛名</span>"
 		if(the_pq >= 130)
-			return "<span style='color: #4CAF50;'>PROVEN</span>"
+			return "<span style='color: #4CAF50;'>备受认可</span>"
 		if(the_pq >= 100)
-			return "<span style='color: #617C46;'>VALE DWELLER</span>"
+			return "<span style='color: #617C46;'>谷地居民</span>"
 		if(the_pq >= 70)
-			return "<span style='color: #00ff00;'>Magnificent!</span>"
+			return "<span style='color: #00ff00;'>卓绝！</span>"
 		if(the_pq >= 50)
-			return "<span style='color: #00ff00;'>Exceptional!</span>"
+			return "<span style='color: #00ff00;'>杰出！</span>"
 		if(the_pq >= 30)
-			return "<span style='color: #47b899;'>Great!</span>"
+			return "<span style='color: #47b899;'>优秀！</span>"
 		if(the_pq >= 10)
-			return "<span style='color: #69c975;'>Good!</span>"
+			return "<span style='color: #69c975;'>良好！</span>"
 		if(the_pq >= 5)
-			return "<span style='color: #58a762;'>Nice</span>"
+			return "<span style='color: #58a762;'>不错</span>"
 		if(the_pq >= -4)
-			return "Normal"
+			return "普通"
 		if(the_pq >= -30)
-			return "<span style='color: #be6941;'>Poor</span>"
+			return "<span style='color: #be6941;'>较差</span>"
 		if(the_pq >= -70)
-			return "<span style='color: #cd4232;'>Terrible</span>"
+			return "<span style='color: #cd4232;'>糟糕</span>"
 		if(the_pq >= -99)
-			return "<span style='color: #e2221d;'>Abysmal</span>"
+			return "<span style='color: #e2221d;'>极差</span>"
 		if(the_pq <= -100)
-			return "<span style='color: #ff00ff;'>Shitter</span>"
-		return "Normal"
+			return "<span style='color: #ff00ff;'>恶劣玩家</span>"
+		return "普通"
 
 /proc/adjust_playerquality(amt, key, admin, reason)
 	var/curpq = 0
@@ -103,39 +103,39 @@
 			msg += " - GM: [admin]"
 		if(reason)
 			msg += " - RSN: [reason]"
-		message_admins("[admin] adjusted [key]'s PQ by [amt] for reason: [reason]")
+		message_admins("[admin] 将 [key] 的玩家质量分（PQ）调整了 [amt]，原因：[reason]")
 		log_admin("[admin] adjusted [key]'s PQ by [amt] for reason: [reason]")
 
 /client/proc/check_pq()
-	set category = "-Special Verbs-"
-	set name = "PQ - Check"
+	set category = "-特殊指令-"
+	set name = "玩家质量分（PQ） - 查看"
 	if(!holder)
 		return
-	var/selection = alert(src, "Check VIA...", "Check PQ", "Character List", "Player List", "Player Name")
+	var/selection = alert(src, "选择查找方式：", "查看玩家质量分（PQ）", "角色列表", "玩家列表", "玩家账号")
 	if(!selection)
 		return
 	var/list/selections = list()
 	var/theykey
-	if(selection == "Character List")
+	if(selection == "角色列表")
 		for(var/mob/living/H in GLOB.player_list)
 			selections[H.real_name] = H.ckey
 		if(!selections.len)
-			to_chat(src, span_boldwarning("No characters found."))
+			to_chat(src, span_boldwarning("未找到角色。"))
 			return
-		selection = input("Which Character?") as null|anything in sortList(selections)
+		selection = input("选择角色：") as null|anything in sortList(selections)
 		if(!selection)
 			return
 		theykey = selections[selection]
-	if(selection == "Player List")
+	if(selection == "玩家列表")
 		for(var/client/C in GLOB.clients)
 			var/usedkey = C.ckey
 			selections[usedkey] = C.ckey
-		selection = input("Which Player?") as null|anything in sortList(selections)
+		selection = input("选择玩家：") as null|anything in sortList(selections)
 		if(!selection)
 			return
 		theykey = selections[selection]
-	if(selection == "Player Name")
-		selection = input("Which Player?", "CKEY", "") as text|null
+	if(selection == "玩家账号")
+		selection = input("输入玩家账号：", "CKEY", "") as text|null
 		if(!selection)
 			return
 		theykey = selection
@@ -143,20 +143,20 @@
 
 /proc/check_pq_menu(ckey)
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
-		to_chat(usr, span_boldwarning("User does not exist."))
+		to_chat(usr, span_boldwarning("玩家不存在。"))
 		return
 	var/popup_window_data = "<center>[ckey]</center>"
 	popup_window_data += "<center>PQ: [get_playerquality(ckey, TRUE, TRUE)] ([get_playerquality(ckey, FALSE, TRUE)])</center>"
 
 //	dat += "<table width=100%><tr><td width=33%><div style='text-align:left'><a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]</div></td><td width=34%><center><a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]</center></td><td width=33%></td></tr></table>"
-	popup_window_data += "<center><a href='?_src_=holder;[HrefToken()];cursemenu=[ckey]'>CURSES</a></center>"
+	popup_window_data += "<center><a href='?_src_=holder;[HrefToken()];cursemenu=[ckey]'>诅咒</a></center>"
 	popup_window_data += "<table width=100%><tr><td width=33%><div style='text-align:left'>"
-	popup_window_data += "Commends: <a href='?_src_=holder;[HrefToken()];readcommends=[ckey]'>[get_commends(ckey)]</a></div></td>"
-	popup_window_data += "<td width=34%><center>Round Contributor Points: [get_roundpoints(ckey)]</center></td>"
-	popup_window_data += "<td width=33%><div style='text-align:right'>Rounds Survived: [get_roundsplayed(ckey)]</div></td></tr></table>"
+	popup_window_data += "赞许：<a href='?_src_=holder;[HrefToken()];readcommends=[ckey]'>[get_commends(ckey)]</a></div></td>"
+	popup_window_data += "<td width=34%><center>回合贡献点：[get_roundpoints(ckey)]</center></td>"
+	popup_window_data += "<td width=33%><div style='text-align:right'>存活回合数：[get_roundsplayed(ckey)]</div></td></tr></table>"
 	var/list/listy = world.file2list("data/player_saves/[copytext(ckey,1,2)]/[ckey]/playerquality.txt")
 	if(!listy.len)
-		popup_window_data += span_info("No data on record. Create some.")
+		popup_window_data += span_info("暂无记录，可添加记录。")
 	else
 		for(var/i = listy.len to 1 step -1)
 			var/ya = listy[i]
@@ -167,46 +167,46 @@
 	popup.open()
 
 /client/proc/adjust_pq()
-	set category = "-Special Verbs-"
-	set name = "PQ - Adjust"
+	set category = "-特殊指令-"
+	set name = "玩家质量分（PQ） - 调整"
 	if(!holder)
 		return
-	var/selection = alert(src, "Adjust VIA...", "MODIFY PQ", "Character List", "Player List", "Player Name")
+	var/selection = alert(src, "选择查找方式：", "调整玩家质量分（PQ）", "角色列表", "玩家列表", "玩家账号")
 	var/list/selections = list()
 	var/theykey
-	if(selection == "Character List")
+	if(selection == "角色列表")
 		for(var/mob/living/H in GLOB.player_list)
 			selections[H.real_name] = H.ckey
 		if(!selections.len)
-			to_chat(src, span_boldwarning("No characters found."))
+			to_chat(src, span_boldwarning("未找到角色。"))
 			return
-		selection = input("Which Character?") as null|anything in sortList(selections)
+		selection = input("选择角色：") as null|anything in sortList(selections)
 		if(!selection)
 			return
 		theykey = selections[selection]
-	if(selection == "Player List")
+	if(selection == "玩家列表")
 		for(var/client/C in GLOB.clients)
 			var/usedkey = C.ckey
 //			if(!check_rights(R_ADMIN,0))
 //				if(C.ckey in GLOB.anonymize)
 //					usedkey = get_fake_key(C.ckey)
 			selections[usedkey] = C.ckey
-		selection = input("Which Player?") as null|anything in sortList(selections)
+		selection = input("选择玩家：") as null|anything in sortList(selections)
 		if(!selection)
 			return
 		theykey = selections[selection]
-	if(selection == "Player Name")
-		selection = input("Which Player?", "CKEY", "") as text|null
+	if(selection == "玩家账号")
+		selection = input("输入玩家账号：", "CKEY", "") as text|null
 		if(!selection)
 			return
 		theykey = selection
 	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[theykey]/preferences.sav"))
-		to_chat(src, span_boldwarning("User does not exist."))
+		to_chat(src, span_boldwarning("玩家不存在。"))
 		return
-	var/amt2change = input("How much to modify the PQ by? ([!check_rights(R_ADMIN,0) ? "-20 to 20, or " : ""]0 to just add a note)") as null|num
+	var/amt2change = input("玩家质量分（PQ）调整多少？（[!check_rights(R_ADMIN,0) ? "范围为 -20 至 20；" : ""]输入 0 仅添加备注）") as null|num
 	if(!check_rights(R_ADMIN,0))
 		amt2change = CLAMP(amt2change, -20, 20)
-	var/raisin = stripped_input("State a short reason for this change", "Game Master", "", null)
+	var/raisin = stripped_input("简要说明此次调整的原因", "游戏主持", "", null)
 	if(!amt2change && !raisin)
 		return
 	adjust_playerquality(amt2change, theykey, src.ckey, raisin)
@@ -323,12 +323,12 @@
 	return bonus
 
 /client/proc/recalc_pq_bulk()
-	set category = "-Special Verbs-"
-	set name = "PQ - Recalc From Commends (Bulk)"
+	set category = "-特殊指令-"
+	set name = "玩家质量分（PQ） - 依据赞许重算（批量）"
 	set waitfor = FALSE
 	if(!holder || !check_rights(R_ADMIN, 0))
 		return
-	if(alert(src, "This will scan every player save and grant missing PQ from existing commends using the rework formula. Only players already at PQ 100+ are affected. Each ckey is processed once. Continue?", "PQ Bulk Recalc", "Yes", "No") != "Yes")
+	if(alert(src, "此操作会扫描全部玩家存档，按新版公式补发已有赞许应得的玩家质量分（PQ）。仅处理 PQ 已达 100 的玩家，每个 ckey 处理一次。继续吗？", "批量重算 PQ", "是", "否") != "是")
 		return
 	var/total_players = 0
 	var/total_bonus = 0
@@ -348,33 +348,33 @@
 				total_players++
 				total_bonus += granted
 			CHECK_TICK
-	var/bulk_msg = "[src.ckey] ran PQ bulk recalc from commends: [scanned] scanned, [total_players] adjusted, +[round(total_bonus, 0.01)] PQ total."
-	to_chat(world, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">[bulk_msg]</span></span>")
+	var/bulk_msg = "[src.ckey] 按赞许批量重算了 PQ：扫描 [scanned] 人，调整 [total_players] 人，共补发 [round(total_bonus, 0.01)] PQ。"
+	to_chat(world, "<span class=\"admin\"><span class=\"prefix\">管理员记录：</span> <span class=\"message linkify\">[bulk_msg]</span></span>")
 	message_admins(bulk_msg)
 	log_admin(bulk_msg)
 
 /client/proc/recalc_pq_single()
-	set category = "-Special Verbs-"
-	set name = "PQ - Recalc From Commends (Single)"
+	set category = "-特殊指令-"
+	set name = "玩家质量分（PQ） - 依据赞许重算（单人）"
 	if(!holder || !check_rights(R_ADMIN, 0))
 		return
-	var/the_ckey = ckey(stripped_input(src, "Which ckey?", "PQ Recalc", ""))
+	var/the_ckey = ckey(stripped_input(src, "输入 ckey：", "重算 PQ", ""))
 	if(!the_ckey)
 		return
 	if(!fexists("data/player_saves/[copytext(the_ckey,1,2)]/[the_ckey]/preferences.sav"))
-		to_chat(src, span_boldwarning("User does not exist."))
+		to_chat(src, span_boldwarning("玩家不存在。"))
 		return
 	var/marker = "data/player_saves/[copytext(the_ckey,1,2)]/[the_ckey]/pq_recalc_v1.json"
-	if(fexists(marker) && alert(src, "[the_ckey] has already been recalc'd. Force again? (this will double-pay them)", "PQ Recalc", "No", "Yes") != "Yes")
+	if(fexists(marker) && alert(src, "[the_ckey] 已重算过。强制再次重算吗？（会重复发放奖励）", "重算 PQ", "否", "是") != "是")
 		return
 	if(fexists(marker))
 		fdel(marker)
 	var/granted = recalc_pq_from_commends(the_ckey, src.ckey)
 	if(granted <= 0)
-		to_chat(src, span_boldwarning("No PQ granted to [the_ckey] (sub-100, no commends, or already processed)."))
+		to_chat(src, span_boldwarning("未向 [the_ckey] 发放 PQ（低于 100、没有赞许或已处理）。"))
 		return
-	var/single_msg = "[src.ckey] recalc'd [the_ckey]'s PQ from commends: +[round(granted, 0.01)]."
-	to_chat(world, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">[single_msg]</span></span>")
-	message_admins("[src.ckey] recalc'd [the_ckey]'s PQ from commends: +[round(granted, 0.01)].")
+	var/single_msg = "[src.ckey] 按赞许重算了 [the_ckey] 的 PQ：+[round(granted, 0.01)]。"
+	to_chat(world, "<span class=\"admin\"><span class=\"prefix\">管理员记录：</span> <span class=\"message linkify\">[single_msg]</span></span>")
+	message_admins("[src.ckey] 按赞许重算了 [the_ckey] 的 PQ：+[round(granted, 0.01)]。")
 	log_admin("[src.ckey] recalc'd [the_ckey]'s PQ from commends: +[round(granted, 0.01)].")
 

@@ -5,8 +5,8 @@
  * call sites are responsible when the live timer count keeps climbing.
  */
 /client/proc/check_timer_sources()
-	set category = "Debug"
-	set name = "Check Timer Sources"
+	set category = "调试"
+	set name = "检查计时器来源"
 	if(!check_rights(R_DEBUG))
 		return
 
@@ -27,7 +27,7 @@
 		[generate_timer_source_output(SSsound_loops.clienttime_timers)]
 	"}
 
-	var/datum/browser/browser = new(usr, "check_timer_sources", "Timer Sources", 700, 700)
+	var/datum/browser/browser = new(usr, "check_timer_sources", "计时器来源", 700, 700)
 	browser.set_content(output)
 	browser.open()
 
@@ -43,7 +43,7 @@
 		// to where it started, and this verb is run when timers are already misbehaving.
 		var/anti_loop_check = 1000
 		do
-			var/source_key = event.source || "(no source recorded)"
+			var/source_key = event.source || "（未记录来源）"
 			if (per_source[source_key] == null)
 				per_source[source_key] = 1
 			else

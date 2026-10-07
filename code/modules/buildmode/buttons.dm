@@ -13,7 +13,7 @@
 	return ..()
 
 /atom/movable/screen/buildmode/mode
-	name = "Toggle Mode"
+	name = "切换模式"
 	icon_state = "buildmode_basic"
 	screen_loc = "NORTH,WEST"
 
@@ -33,7 +33,7 @@
 /atom/movable/screen/buildmode/help
 	icon_state = "buildhelp"
 	screen_loc = "NORTH,WEST+1"
-	name = "Buildmode Help"
+	name = "建造模式帮助"
 
 /atom/movable/screen/buildmode/help/Click(location, control, params)
 	bd.mode.show_help(usr.client)
@@ -42,7 +42,7 @@
 /atom/movable/screen/buildmode/bdir
 	icon_state = "build"
 	screen_loc = "NORTH,WEST+2"
-	name = "Change Dir"
+	name = "改变方向"
 
 /atom/movable/screen/buildmode/bdir/update_icon()
 	dir = bd.build_dir
@@ -60,7 +60,7 @@
 /atom/movable/screen/buildmode/modeswitch/New(bld, mt)
 	modetype = mt
 	icon_state = "buildmode_[initial(modetype.key)]"
-	name = initial(modetype.key)
+	name = list("basic" = "基础建造", "advanced" = "高级建造", "areaedit" = "区域编辑", "boom" = "爆炸", "copy" = "复制", "fill" = "填充", "mapgen" = "地图生成", "throw" = "投掷", "edit" = "变量编辑")[initial(modetype.key)] || initial(modetype.key)
 	return ..(bld)
 
 /atom/movable/screen/buildmode/modeswitch/Click()
@@ -83,7 +83,7 @@
 /atom/movable/screen/buildmode/quit
 	icon_state = "buildquit"
 	screen_loc = "NORTH,WEST+3"
-	name = "Quit Buildmode"
+	name = "退出建造模式"
 
 /atom/movable/screen/buildmode/quit/Click()
 	bd.quit()

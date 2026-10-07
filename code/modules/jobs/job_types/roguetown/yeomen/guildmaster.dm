@@ -111,7 +111,7 @@
 
 /mob/living/carbon/human/proc/guild_announcement()
 	set name = "行会公告"
-	set category = "GUILDMASTER"
+	set category = "行会会长"
 	if(stat)
 		return
 	var/announcementinput = input("向谷地高声宣告", "发布公告") as text|null

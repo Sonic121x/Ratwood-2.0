@@ -72,9 +72,9 @@
 	if(!check_enemies())
 		if(.)
 			. += ", "
-		. += "No Enemies"
+		. += "没有所需敌人"
 	if(!check_required())
 		if(.)
 			. += ", "
-		. += "No Required"
+		. += "缺少必需角色"
 	return .

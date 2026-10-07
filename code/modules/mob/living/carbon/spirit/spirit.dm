@@ -122,8 +122,8 @@
 	return
 
 /mob/living/carbon/spirit/returntolobby()
-	set name = "{RETURN TO LOBBY}"
-	set category = "Options"
+	set name = "{返回大厅}"
+	set category = "选项"
 	set hidden = 1
 
 	if(key)

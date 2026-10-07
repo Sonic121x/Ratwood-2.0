@@ -8,8 +8,8 @@
 #ifdef TESTSERVER
 
 /client/verb/textperp()
-	set category = "PAPER"
-	set name = "textper+"
+	set category = "纸张"
+	set name = "增加每页文字量"
 	set desc = ""
 
 	var/obj/item/I
@@ -25,8 +25,8 @@
 			P.read(mob)
 
 /client/verb/textperm()
-	set category = "PAPER"
-	set name = "textper-"
+	set category = "纸张"
+	set name = "减少每页文字量"
 	set desc = ""
 
 	var/obj/item/I

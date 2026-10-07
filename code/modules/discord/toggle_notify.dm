@@ -1,7 +1,7 @@
 // Verb to toggle restart notifications
 /client/verb/notify_restart()
 	set category = "OOC"
-	set name = "Notify Restart"
+	set name = "重启通知"
 	set desc = ""
 	set hidden = 1
 	// Safety checks
@@ -19,7 +19,7 @@
 
 	var/stored_id = SSdiscord.lookup_id(usr.ckey)
 	if(!stored_id) // Account is not linked
-		to_chat(src, span_warning("请先使用\"Link Discord Account\"命令绑定Discord账号。"))
+		to_chat(src, span_warning("请先使用\"绑定 Discord 账号\"命令绑定Discord账号。"))
 		return
 
 	else // Linked

@@ -9,8 +9,8 @@
 
 /datum/buildmode_mode/throwing/show_help(client/c)
 	to_chat(c, span_notice("***********************************************************"))
-	to_chat(c, span_notice("Left Mouse Button on turf/obj/mob      = Select"))
-	to_chat(c, span_notice("Right Mouse Button on turf/obj/mob     = Throw"))
+	to_chat(c, span_notice("左键点击地块/物体/生物 = 选择"))
+	to_chat(c, span_notice("右键点击地块/物体/生物 = 投掷"))
 	to_chat(c, span_notice("***********************************************************"))
 
 /datum/buildmode_mode/throwing/handle_click(client/c, params, obj/object)
@@ -22,7 +22,7 @@
 		if(isturf(object))
 			return
 		throw_atom = object
-		to_chat(c, "Selected object '[throw_atom]'")
+		to_chat(c, "已选择对象 '[throw_atom]'")
 	if(right_click)
 		if(throw_atom)
 			throw_atom.throw_at(object, 10, 1, c.mob)

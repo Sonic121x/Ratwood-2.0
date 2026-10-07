@@ -107,7 +107,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	)
 /mob/dead/proc/server_hop()
 	set category = "OOC"
-	set name = "Server Hop!"
+	set name = "切换服务器！"
 	set desc= "前往其他服务器"
 	set hidden = 1
 	if(notransform)
