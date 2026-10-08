@@ -360,13 +360,13 @@
 	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/tail/tiefling/tailmaw
-	name = "Tiefling (Tailmaw)"
+	name = "提夫林（尾口）"
 
 /datum/sprite_accessory/tail/tiefling/heart/tailmaw
-	name = "Succubus (Tailmaw)"
+	name = "魅魔（尾口）"
 
 /datum/sprite_accessory/tail/tiefling/spade/tailmaw
-	name = "Spade (Tailmaw)"
+	name = "铲形（尾口）"
 
 /datum/sprite_accessory/tail/dullahan
 	name = "亡魂"

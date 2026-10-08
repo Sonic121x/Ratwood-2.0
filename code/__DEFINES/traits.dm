@@ -444,7 +444,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ARMOUR_LIKED = span_greentext("我正穿着与自己风格更相称的护甲。"),
 	TRAIT_ARMOUR_DISLIKED = span_warning("我正穿着令我感到累赘的护甲。"),
 	TRAIT_FENCERDEXTERITY = span_info("我的一生都在钻研无甲击剑之道，因此身着极轻护甲时能拥有无与伦比的速度。在其他情况下我则非常挑剔。"),
-	TRAIT_MAGEDEXTERITY = span_info("金属与硬皮革那种僵硬、吝啬的触感，妨碍了我施法手势的流畅——能避开的话，我绝不穿它们。呸！既已拥有奥术的无尽智慧，谁还需要护甲？"),
+	TRAIT_MAGEDEXTERITY = span_info("金属与硬皮革带来的僵硬束缚感，妨碍了我施法手势的流畅——能避开的话，我绝不穿它们。呸！既已拥有奥术的无尽智慧，谁还需要护甲？"),
 	TRAIT_SKILLBLESSED = span_greentext("我与一位旧友重逢。一切都好。"),
 	TRAIT_LONGSWORDSMAN = span_info("「任何与我为敌者，我必将其碾碎。我身负王族血脉，我伸张正义、弘扬善道、殄灭邪恶。凡习得我剑路者，我必赐予其兵刃格斗之术的赫赫声名。」——当我手持传统长剑时，我的武艺如同大师，也懂得如何以之施展大师剑招。"),	TRAIT_SABRIST = span_info("我已穷尽对南方弧刃的一切所知。当我使用 szöréndnížine 军刀时，我的武艺如同大师。瞄准手部与手臂挥砍时，我的攻击天生更为精准。"),
 	TRAIT_MEDIUMARMOR = span_info("我能在中甲中自如行动。"),
