@@ -942,7 +942,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/list/book_titles = SSlibrarian.pull_player_book_titles()
 	if(!book_titles)
 		return
-	var/dat = ""
+	var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>"
 	for(var/I in book_titles)
 		dat += "[I]<br>"
 	src << browse(dat, "window=reading;size=250x500;can_close=1;can_minimize=1;can_maximize=1;can_resize=1;titlebar=1")

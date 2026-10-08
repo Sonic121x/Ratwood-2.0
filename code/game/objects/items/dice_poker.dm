@@ -942,7 +942,7 @@
 	name = "骰子扑克骰袋"
 	desc = "一个用来玩骰子扑克的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/dice_poker_game/active_game
-	var/static/dice_poker_rules_text = {"<div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/dice_poker_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>骰子扑克</h2>
 <br>
 <b>目标：</b>在三局两胜中，以更强的牌型赢下 2 局。<br>

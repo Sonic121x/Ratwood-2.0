@@ -340,7 +340,7 @@ SUBSYSTEM_DEF(triumphs)
 // Display leaderboard browser popup
 /datum/controller/subsystem/triumphs/proc/show_triumph_leaderboard(client/C)
 
-	var/webpagu = "<B>谷地冠军</B><br>"
+	var/webpagu = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>谷地冠军</B><br>"
 	webpagu += "当前赛季：[GLOB.triumph_wipe_season]"
 	webpagu += "<hr><br>"
 
