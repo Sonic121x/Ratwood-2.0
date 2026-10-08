@@ -92,8 +92,8 @@ GLOBAL_LIST_INIT(manticore_plain_tailmaw_accessories, list(
 		return
 	if(is_plain_tailmaw())
 		if(maw_engorged)
-			return "The maw at [owner.p_their()] tail's tip blooms open, feelers writhing visibly and slick with sweet-smelling nectar."
-		return "The bulbous tip of [owner.p_their()] tail is sealed tightly shut around its maw, with only a faint bead of fluid visible at the seam."
+			return "[owner.p_their()]尾尖的巨口绽开，里面的触须清晰可见，扭动着，沾满了散发甜香的蜜液。"
+		return "[owner.p_their()]球状尾尖上的巨口紧紧闭合，缝隙间只能隐约看见一滴液体。"
 	if(maw_engorged)
 		return "[owner.p_their()]尾口大张，里面的触须清晰可见，扭动着，沾满了散发甜香的蜜液。"
 	return "[owner.p_their()]尾尖的骨质板片紧紧闭合，缝隙间只能隐约看见一滴液体。"

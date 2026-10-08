@@ -22,7 +22,7 @@
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
 /datum/supply_pack/rogue/light_armor/basic_leather_bracers
-	name = "Leather Bracers"
+	name = "皮臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
@@ -32,7 +32,7 @@
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
 
 /datum/supply_pack/rogue/light_armor/leather_trousers
-	name = "Leather Trousers"
+	name = "皮裤"
 	cost = 15
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
 
@@ -42,17 +42,17 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/hide)
 
 /datum/supply_pack/rogue/light_armor/leather_cuirass
-	name = "Leather Cuirass"
+	name = "皮胸甲"
 	cost = 15
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/cuirass)
 
 /datum/supply_pack/rogue/light_armor/leather_armor
-	name = "Leather Armor"
+	name = "皮甲"
 	cost = 15
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/light_armor/leather_helmet
-	name = "Leather Helmet"
+	name = "皮革头盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
@@ -82,17 +82,17 @@
 	contains = list(/obj/item/clothing/gloves/roguetown/angle)
 
 /datum/supply_pack/rogue/light_armor/fingerless_leather_gloves
-	name = "Fingerless Leather Gloves"
+	name = "露指皮手套"
 	cost = 20
 	contains = list(/obj/item/clothing/gloves/roguetown/fingerless_leather)
 
 /datum/supply_pack/rogue/light_armor/leather_gloves
-	name = "Leather Gloves"
+	name = "皮手套"
 	cost = 15
 	contains = list(/obj/item/clothing/gloves/roguetown/leather)
 
 /datum/supply_pack/rogue/light_armor/padded_arming_cap
-	name = "Padded Arming Cap"
+	name = "衬垫帽"
 	cost = 15
 	contains = list(/obj/item/clothing/head/roguetown/paddedcap)
 
