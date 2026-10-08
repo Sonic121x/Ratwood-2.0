@@ -1,4 +1,8 @@
 #include "spells/_registry.dm"
+// 庖厨食典：成品饮食配方、肉类来源、基础食材及获得渠道。
+#include "books/cookbook_catalog.dm"
+#include "books/cookbook_sources.dm"
+#include "books/cookbook.dm"
 #include "bootstrap/custom_bootstrap.dm"
 #include "bootstrap/preferences_vice_conflicts.dm"
 #include "changelog/entries.dm"

@@ -32,7 +32,7 @@
 // 用 #define 把所有“数值旋钮”集中在顶部，便于平衡性调整时一眼找到、统一修改。
 #define WEATHER_MANA_COST     5             // 法力 / 法术点消耗（cost）——T3 适中
 #define WEATHER_CHANNEL_TIME  (6 SECONDS)   // do_after 引导时长（蓄力 6 秒）
-#define WEATHER_COOLDOWN      (300 SECONDS) // 成功施放后的冷却（5 分钟，避免天气被反复刷屏）
+#define WEATHER_COOLDOWN      (24 MINUTES)  // 成功施放后的基础冷却，可受现有冷却修正影响
 #define WEATHER_FATIGUE_DRAIN 40            // 每次施放消耗的疲劳 / 耐力（releasedrain）
 
 // “晴天 / 放晴”这一项的菜单显示文本 + 其在天气总表里对应的“哨兵值”。
@@ -57,8 +57,9 @@
 	releasedrain = WEATHER_FATIGUE_DRAIN   // 每次施放抽取的疲劳 / 耐力
 	chargedrain = 0                        // 引导期间不额外持续抽取资源
 	chargetime = WEATHER_CHANNEL_TIME      // 引导时长（get_chargetime() 返回它来驱动 do_after）
-	recharge_time = WEATHER_COOLDOWN       // 冷却 = 5 分钟（由 charge_check 强制执行）
-	cooldown_min = WEATHER_COOLDOWN        // 即便被“加速”，冷却也不会低于 5 分钟
+	recharge_time = WEATHER_COOLDOWN       // 基础冷却为 24 分钟
+	cooldown_min = WEATHER_COOLDOWN        // 沿用现有冷却配置，不限制智力、地脉或管理员倍率修正
+	is_cdr_exempt = FALSE                  // 参与通用冷却修正
 	charge_type = "recharge"               // 使用“充能”式冷却（默认）
 	human_req = TRUE                       // 只有人类施法者能施放
 	warnie = "spellwarning"                // 施法警告图标态
@@ -122,7 +123,7 @@
 // ---------------------------------------------------------------------------
 // cast：引导成功后真正执行的逻辑。弹出 3 选 1 菜单并分发到对应天气效果。
 // 返回值约定：
-//   - 返回 TRUE  -> perform() 会调用 start_recharge()，进入 5 分钟冷却（天气已改变）。
+//   - 返回 TRUE  -> perform() 会调用 start_recharge()，进入基础 24 分钟的可修正冷却（天气已改变）。
 //   - 返回 FALSE -> 各效果分支内部已调用 revert_cast() 退还冷却（取消 / 失败）。
 // ---------------------------------------------------------------------------
 /obj/effect/proc_holder/spell/self/weather_control/cast(list/targets, mob/living/user = usr)
@@ -210,7 +211,7 @@
 	// 错误处理 / 友好反馈：当前与排队中都没有天气时，说明天已经是晴的，无需消耗这次施法。
 	if(!running && !queued)
 		to_chat(user, span_notice("此刻本就是晴空万里，无需再做改变。"))
-		revert_cast() // 没有产生任何改变，退还冷却，避免“空放”浪费 5 分钟
+		revert_cast() // 没有产生任何改变，退还冷却，避免空放
 		return FALSE
 
 	// 结束当前正在运行的天气（若有）。end() 会停粒子、停声音并清空子系统引用。

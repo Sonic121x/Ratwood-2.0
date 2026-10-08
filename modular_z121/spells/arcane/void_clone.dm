@@ -41,6 +41,8 @@
 	var/mob/living/carbon/human/original_body
 	var/mob/living/carbon/human/clone_body
 	var/datum/mind/owner_mind
+	var/datum/devotion/shared_devotion
+	var/critical_transfer_timer
 	var/cleanup_started = FALSE
 	var/next_check = 0
 
@@ -52,6 +54,7 @@
 	if(original_body)
 		original_body.void_clone_link_custom = src
 		RegisterSignal(original_body, COMSIG_QDELETING, PROC_REF(on_body_deleting))
+		RegisterSignal(original_body, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(on_original_health_update))
 	if(clone_body)
 		clone_body.void_clone_link_custom = src
 		RegisterSignal(clone_body, COMSIG_QDELETING, PROC_REF(on_body_deleting))
@@ -64,6 +67,10 @@
 
 /datum/void_clone_link/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
+	cancel_critical_transfer()
+	clear_shared_devotion()
+	if(original_body)
+		UnregisterSignal(original_body, COMSIG_LIVING_HEALTH_UPDATE)
 	for(var/datum/participant as anything in list(original_body, clone_body, owner_mind))
 		if(participant)
 			UnregisterSignal(participant, COMSIG_QDELETING)
@@ -86,6 +93,62 @@
 /datum/void_clone_link/proc/on_owner_deleting(datum/source)
 	SIGNAL_HANDLER
 	cleanup_clone(FALSE)
+
+/datum/void_clone_link/proc/on_original_health_update(datum/source)
+	SIGNAL_HANDLER
+	queue_critical_transfer()
+
+/datum/void_clone_link/proc/can_transfer_from_critical()
+	if(QDELETED(src) || cleanup_started || !has_valid_owner())
+		return FALSE
+	var/datum/mind/M = get_linked_mind()
+	if(M.current != original_body || original_body.stat == DEAD || !original_body.InCritical())
+		return FALSE
+	return can_enter_body(clone_body) && clone_body.health > HEALTH_THRESHOLD_DEAD && !should_force_collapse()
+
+/datum/void_clone_link/proc/queue_critical_transfer()
+	if(critical_transfer_timer || !can_transfer_from_critical())
+		return
+	// 合并健康更新请求，等本次伤害处理结束后再转移意识。
+	critical_transfer_timer = addtimer(CALLBACK(src, PROC_REF(transfer_from_critical)), 0, TIMER_STOPPABLE)
+
+/datum/void_clone_link/proc/cancel_critical_transfer()
+	if(critical_transfer_timer)
+		deltimer(critical_transfer_timer)
+		critical_transfer_timer = null
+
+/datum/void_clone_link/proc/transfer_from_critical()
+	critical_transfer_timer = null
+	// 延迟期间身体、意识归属或分身状态可能变化，必须重新确认。
+	if(!can_transfer_from_critical())
+		return
+	var/datum/mind/M = get_linked_mind()
+	M.transfer_to(clone_body)
+	sync_current_body_spell_access()
+	to_chat(clone_body, span_userdanger("本体濒临死亡，虚空中的联系将我的意识猛地拽入了分身！"))
+
+/datum/void_clone_link/proc/clear_shared_devotion()
+	if(!shared_devotion)
+		return
+	UnregisterSignal(shared_devotion, COMSIG_QDELETING)
+	// 分身只借用本体的虔诚容器，解除连接不能销毁本体资源。
+	if(clone_body?.devotion == shared_devotion)
+		clone_body.devotion = null
+	shared_devotion = null
+
+/datum/void_clone_link/proc/on_shared_devotion_deleting(datum/source)
+	SIGNAL_HANDLER
+	clear_shared_devotion()
+
+/datum/void_clone_link/proc/sync_shared_devotion()
+	var/datum/devotion/original_devotion = QDELETED(original_body.devotion) ? null : original_body.devotion
+	if(shared_devotion != original_devotion)
+		clear_shared_devotion()
+		shared_devotion = original_devotion
+		if(shared_devotion)
+			RegisterSignal(shared_devotion, COMSIG_QDELETING, PROC_REF(on_shared_devotion_deleting))
+	// 共用同一容器和原有恢复流程，不因切换复制或刷新虔诚。
+	clone_body.devotion = shared_devotion
 
 /datum/void_clone_link/process()
 	if(cleanup_started)
@@ -150,12 +213,12 @@
 	var/mob/living/carbon/human/idle_body = M.current == original_body ? clone_body : original_body
 	return !idle_body.mind && !idle_body.key
 
-/datum/void_clone_link/proc/can_enter_body(mob/living/carbon/human/body, forced = FALSE)
+/datum/void_clone_link/proc/can_enter_body(mob/living/carbon/human/body)
 	if(QDELETED(body) || body.stat == DEAD || (body.mind && body.mind != owner_mind))
 		return FALSE
 	if(body.key && body.mind != owner_mind)
 		return FALSE
-	return forced || (body.stat == CONSCIOUS && !body.InCritical())
+	return TRUE
 
 /datum/void_clone_link/proc/ensure_switch_spell()
 	var/datum/mind/M = get_linked_mind()
@@ -172,6 +235,10 @@
 		M.RemoveSpell(switch_spell)
 
 /datum/void_clone_link/proc/sync_current_body_spell_access()
+	if(cleanup_started || !has_valid_owner())
+		return
+	sync_shared_devotion()
+	queue_critical_transfer()
 	var/datum/mind/M = get_linked_mind()
 	if(!M || !M.current)
 		return
@@ -203,12 +270,16 @@
 	if(cleanup_started)
 		return
 	cleanup_started = TRUE
+	cancel_critical_transfer()
+	clear_shared_devotion()
+	if(original_body)
+		UnregisterSignal(original_body, COMSIG_LIVING_HEALTH_UPDATE)
 
 	var/datum/mind/M = get_linked_mind()
 	var/mob/living/carbon/human/old_clone = clone_body
 	var/mob/living/carbon/human/old_original = original_body
 
-	if(force_return && M && can_enter_body(old_original, TRUE) && M.current == old_clone && old_clone?.mind == M)
+	if(force_return && M && can_enter_body(old_original) && M.current == old_clone && old_clone?.mind == M)
 		M.transfer_to(old_original)
 		to_chat(old_original, span_userdanger("濒临崩溃的虚空分身把我的意识猛地拽回了本体！"))
 
@@ -526,7 +597,7 @@
 
 	var/mob/living/carbon/human/target_body = (user == link.original_body) ? link.clone_body : link.original_body
 	if(!link.can_enter_body(target_body) || (target_body == link.clone_body && link.should_force_collapse()))
-		to_chat(user, span_warning("另一具身体已无法清醒地承载我的意识。"))
+		to_chat(user, span_warning("另一具身体已无法承载我的意识。"))
 		revert_cast(user)
 		return FALSE
 
