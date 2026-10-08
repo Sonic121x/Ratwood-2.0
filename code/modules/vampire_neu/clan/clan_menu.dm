@@ -269,7 +269,7 @@
 	var/datum/antagonist/vampire/vampire = user.mind?.has_antag_datum(/datum/antagonist/vampire)
 	var/html = {"
 	<html>
-	<head>
+	<head><meta charset='UTF-8'><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 		<style>
 			.hierarchy-container {
 				display: flex;
