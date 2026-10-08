@@ -33,7 +33,7 @@
 	set category = "调试"
 	set name = "无线电报告"
 
-	var/output = "<b>无线电报告</b><hr>"
+	var/output = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><b>无线电报告</b><hr>"
 	for (var/fq in SSradio.frequencies)
 		output += "<b>频率：[fq]</b><br>"
 		var/datum/radio_frequency/fqs = SSradio.frequencies[fq]

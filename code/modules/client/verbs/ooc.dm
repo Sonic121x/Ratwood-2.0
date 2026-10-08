@@ -442,7 +442,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		return
 
 	var/list/body = list()
-	body += "<html><head><title>[key]的游玩时长</title></head><BODY><BR>游玩时长："
+	body += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[key]的游玩时长</title></head><BODY><BR>游玩时长："
 	body += get_exp_report()
 	body += "</BODY></HTML>"
 	usr << browse(body.Join(), "window=playerplaytime[ckey];size=550x615")
@@ -636,7 +636,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	//Collect keywords
 	var/list/keywords = mob.get_policy_keywords()
 	var/header = get_policy(POLICY_VERB_HEADER)
-	var/list/policytext = list(header,"<hr>")
+	var/list/policytext = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>", header,"<hr>")
 	var/anything = FALSE
 
 	for(var/keyword in keywords)

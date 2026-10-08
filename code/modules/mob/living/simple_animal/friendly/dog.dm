@@ -148,7 +148,7 @@
 	user.set_machine(src)
 
 
-	var/dat = 	"<div align='center'><b>[name]的背包</b></div><p>"
+	var/dat = 	"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div align='center'><b>[name]的背包</b></div><p>"
 	dat += "<br><B>头部：</B> <A href='?src=[REF(src)];[inventory_head ? "remove_inv=head'>[inventory_head]" : "add_inv=head'>空"]</A>"
 	dat += "<br><B>背部：</B> <A href='?src=[REF(src)];[inventory_back ? "remove_inv=back'>[inventory_back]" : "add_inv=back'>空"]</A>"
 
