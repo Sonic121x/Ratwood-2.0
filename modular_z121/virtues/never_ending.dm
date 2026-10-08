@@ -17,7 +17,7 @@
 
 // 入场流程尚可能进行职业选择，必须等角色实际就绪后建立初始存档。
 /datum/component/z121_return_entry
-	dupe_mode = COMPONENT_DUPE_UNIQUE
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 
 /datum/component/z121_return_entry/Initialize()
 	if(!ishuman(parent))
@@ -49,20 +49,29 @@
 	var/game_time = (world.time - SSticker.round_start_time) * SSticker.station_time_rate_multiplier + SSticker.gametime_offset
 	return FLOOR((game_time - SSnightshift.nightshift_dawn_start - 1) / 864000, 1)
 
-// 控制器属于灵魂，躯体删除不会删除存档和已用次数。
+// 控制器属于灵魂，快照与触发次数不依赖尸体生命周期。
+#define Z121_RETURN_INVALID 0
+#define Z121_RETURN_READY 1
+#define Z121_RETURN_RUNNING 2
+#define Z121_RETURN_USED 3
+
 /datum/component/z121_death_return
-	dupe_mode = COMPONENT_DUPE_UNIQUE
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	var/mob/living/carbon/human/body
 	var/datum/z121_return_snapshot/saved
 	var/datum/z121_return_snapshot/pending_save
-	var/save_day
-	var/used_day = -INFINITY
-	var/pending_day
-	var/pending = FALSE
+	var/datum/z121_return_identity/identity
+	var/state = Z121_RETURN_INVALID
+	var/snapshot_id = 0
+	var/pending_snapshot_id = 0
+	var/return_generation = 0
+	var/observed_day
+	var/deferred_dawn = FALSE
+	var/deferred_dawn_alive = FALSE
 	var/restoring = FALSE
 	var/destroying_body = FALSE
 	var/enabled = TRUE
-	var/was_dying = FALSE
+	var/reported_missing_destination = FALSE
 	var/mob/living/carbon/human/return_origin
 	var/mob/living/brain/transfer_brain
 	var/list/deferred_deletions = list()
@@ -71,6 +80,7 @@
 	if(!istype(parent, /datum/mind) || !istype(H))
 		return COMPONENT_INCOMPATIBLE
 	bind_body(H)
+	observed_day = z121_return_day()
 	refresh_save()
 	START_PROCESSING(SSprocessing, src)
 
@@ -78,7 +88,6 @@
 	if(body)
 		UnregisterSignal(body, list(COMSIG_LIVING_HEALTH_UPDATE, COMSIG_LIVING_DEATH, COMSIG_MOB_DAWNED, COMSIG_PREQDELETED, COMSIG_MIND_TRANSFER, SIGNAL_REMOVETRAIT(TRAIT_Z121_DEATH_RETURN)))
 	body = H
-	was_dying = FALSE
 	if(!body)
 		return
 	RegisterSignal(body, COMSIG_LIVING_DEATH, PROC_REF(on_death))
@@ -89,94 +98,113 @@
 	RegisterSignal(body, SIGNAL_REMOVETRAIT(TRAIT_Z121_DEATH_RETURN), PROC_REF(on_removed))
 
 /datum/component/z121_death_return/process()
-	if(enabled && !restoring && !pending && save_day != z121_return_day())
-		refresh_save()
-	// 补查未经过健康更新信号的状态变更，持续濒死不会重复触发。
-	check_dying()
+	sync_day()
+	check_condition()
 
 /datum/component/z121_death_return/proc/on_dawn()
 	SIGNAL_HANDLER
-	if(enabled && !restoring && !pending && save_day != z121_return_day())
-		refresh_save()
+	sync_day()
+
+/datum/component/z121_death_return/proc/sync_day()
+	if(!enabled || observed_day == z121_return_day())
+		return
+	observed_day = z121_return_day()
+	if(state == Z121_RETURN_RUNNING)
+		// 跨清晨时只记录当时生死，不用恢复到一半的身体覆盖锁定快照。
+		deferred_dawn = TRUE
+		deferred_dawn_alive = !QDELETED(body) && body.stat != DEAD
+		return
+	refresh_save()
 
 /datum/component/z121_death_return/proc/refresh_save()
-	save_day = z121_return_day()
 	QDEL_NULL(saved)
+	state = Z121_RETURN_INVALID
 	var/datum/mind/M = parent
 	if(!enabled || QDELETED(body) || body.stat == DEAD || M.current != body || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN) || !get_turf(body))
 		return
 	saved = new(body)
+	snapshot_id++
+	state = Z121_RETURN_READY
 
 /datum/component/z121_death_return/proc/on_removed()
 	SIGNAL_HANDLER
+	// 还原特性来源时的增删不代表玩家失去美德。
 	if(restoring)
 		return
 	enabled = FALSE
-	pending = FALSE
+	state = Z121_RETURN_INVALID
+	return_generation++
 	release_deletions()
 	QDEL_NULL(saved)
 	QDEL_NULL(pending_save)
+	QDEL_NULL(identity)
 
 /datum/component/z121_death_return/proc/on_transfer(datum/source, mob/new_body)
 	SIGNAL_HANDLER
 	if(restoring)
 		return
-	// 毁体过程中大脑可能先接管灵魂，仍归属于当前的死亡事件。
-	if(pending && istype(new_body, /mob/living/brain))
+	if(istype(new_body, /mob/living/brain) && (state == Z121_RETURN_RUNNING || body?.stat == DEAD || body?.InCritical()))
 		unbind_brain()
 		transfer_brain = new_body
 		RegisterSignal(transfer_brain, COMSIG_PREQDELETED, PROC_REF(on_brain_deleting))
 		RegisterSignal(transfer_brain, COMSIG_MIND_TRANSFER, PROC_REF(on_transfer))
+		// 大脑暂时接管不等于整具身体已销毁，能复用的原身体仍保留现有物品。
+		begin_return()
 		return
-	// 已经独立转生或被其他躯体接管的灵魂不能被旧存档夺回。
+	// 外部转生已接管灵魂时，不允许旧身体把玩家夺回。
 	on_removed()
 
 /datum/component/z121_death_return/proc/on_health_update()
 	SIGNAL_HANDLER
-	check_dying()
+	sync_day()
+	check_condition()
 
-/datum/component/z121_death_return/proc/check_dying()
-	if(!enabled || restoring || pending || QDELETED(body))
+/datum/component/z121_death_return/proc/check_condition()
+	if(state != Z121_RETURN_READY || !enabled || QDELETED(body))
 		return
-	// 与引擎濒死判定一致，普通睡眠或昏迷不触发，直接死亡也不另行读档。
-	var/dying = body.InCritical()
-	var/entered_dying = dying && !was_dying
-	was_dying = dying
-	if(!entered_dying)
-		return
+	if(body.stat == DEAD || body.InCritical())
+		begin_return()
+
+/datum/component/z121_death_return/proc/begin_return(destroy_body = FALSE)
+	if(!enabled)
+		return FALSE
+	sync_day()
+	if(state == Z121_RETURN_RUNNING)
+		destroying_body = destroying_body || destroy_body
+		return TRUE
 	var/datum/mind/M = parent
-	if(!saved || M.current != body || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN))
-		return
-	var/day = z121_return_day()
-	if(save_day != day || used_day == day)
-		return
-	pending = TRUE
-	return_origin = body
-	destroying_body = FALSE
-	pending_day = day
-	// 转交快照所有权，避免清晨覆盖已经触发的回归。
+	if(state != Z121_RETURN_READY || !saved || QDELETED(body) || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN) || (M.current != body && M.current != transfer_brain))
+		return FALSE
+	// 先锁定本次机会并废止旧遗言，再安排恢复；信号内不执行可能休眠的恢复操作。
+	state = Z121_RETURN_RUNNING
+	return_generation++
+	pending_snapshot_id = snapshot_id
 	pending_save = saved
 	saved = null
-	// 等本次伤害与状态更新结束后读档，避免后续处理覆盖恢复结果。
-	addtimer(CALLBACK(src, PROC_REF(return_from_dying)), 0)
+	return_origin = body
+	destroying_body = destroy_body
+	reported_missing_destination = FALSE
+	identity = new(body)
+	addtimer(CALLBACK(src, PROC_REF(perform_return), pending_snapshot_id), 0)
+	return TRUE
 
 /datum/component/z121_death_return/proc/on_death(datum/source, gibbed)
 	SIGNAL_HANDLER
-	// 死亡仅补记已经触发的濒死回归是否发生毁体，不创建新的回归。
-	if(pending && !restoring && source == return_origin && gibbed)
-		destroying_body = TRUE
+	if(!restoring && source == body)
+		begin_return(gibbed)
 
 /datum/component/z121_death_return/proc/on_body_deleting(datum/source, force)
 	SIGNAL_HANDLER
-	if(pending && source == return_origin)
+	if(!restoring && source == body)
+		begin_return(TRUE)
+	if(state == Z121_RETURN_RUNNING && source == return_origin)
 		destroying_body = TRUE
-		// 信号内只暂缓删除，由本次调用链结束后的回归任务接管灵魂。
 		deferred_deletions[source] = force || deferred_deletions[source]
 		return TRUE
 
 /datum/component/z121_death_return/proc/on_brain_deleting(datum/source, force)
 	SIGNAL_HANDLER
-	if(pending && source == transfer_brain)
+	if(state == Z121_RETURN_RUNNING && source == transfer_brain)
 		destroying_body = TRUE
 		deferred_deletions[source] = force || deferred_deletions[source]
 		return TRUE
@@ -189,51 +217,50 @@
 /datum/component/z121_death_return/proc/release_deletions()
 	unbind_brain()
 	return_origin = null
-	// 成功、失败、移除能力和删除控制器都必须补做原删除请求。
-	// 使用全局回调，避免控制器自身销毁后清理任务失效。
+	// 全局回调不依赖控制器存活，取消回归或删除组件也不会遗留不灭的尸体。
 	for(var/datum/target as anything in deferred_deletions)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), target, deferred_deletions[target]), 0)
 	deferred_deletions.Cut()
 
-/datum/component/z121_death_return/proc/return_from_dying()
-	if(!pending || restoring || !enabled || !pending_save)
+/datum/component/z121_death_return/proc/perform_return(expected_snapshot)
+	if(!enabled || restoring || state != Z121_RETURN_RUNNING || !pending_save || expected_snapshot != pending_snapshot_id)
 		return
+	sync_day()
 	var/datum/mind/M = parent
 	var/mob/living/old_current = M.current
-	if(QDELETED(body) || !HAS_TRAIT(body, TRAIT_Z121_DEATH_RETURN) || (old_current != body && !istype(old_current, /mob/living/brain)))
-		finish_return()
+	if(old_current && !QDELETED(old_current) && old_current != return_origin && old_current != transfer_brain)
+		on_removed()
 		return
-	// 濒死后在同一调用链内死亡仍完成已锁定的回归；被救出濒死则取消。
-	if(!destroying_body && body.stat != DEAD && !body.InCritical())
-		finish_return()
-		return
-	var/turf/destination = pending_save.find_destination(body)
+	var/turf/destination = pending_save.find_destination()
 	if(!destination)
-		log_game("死亡回归：[key_name(body)] 的存档没有有效落点。")
-		finish_return()
+		// 坐标所在地图层暂时不存在时保留锁定机会；不更换落点，也不消耗存档。
+		if(!reported_missing_destination)
+			log_game("死亡回归：存档 [expected_snapshot] 的原坐标暂不可用，等待地图恢复。")
+			reported_missing_destination = TRUE
+		addtimer(CALLBACK(src, PROC_REF(perform_return), expected_snapshot), 1 SECONDS)
 		return
 	restoring = TRUE
 	var/mob/living/carbon/human/returned = body
-	if(destroying_body)
-		returned = new /mob/living/carbon/human(destination)
-		// 社会身份与账户采用死亡时的数据，不从清晨回滚，也不重发职业物品。
-		z121_return_transfer_identity(body, returned)
+	if(destroying_body || QDELETED(returned))
+		// 重建先在空位置完成，避免新身体的默认状态在落点触发伤害。
+		returned = new /mob/living/carbon/human(null)
+		identity.apply(returned)
 		ADD_TRAIT(returned, TRAIT_Z121_DEATH_RETURN, TRAIT_VIRTUE)
-		unbind_brain()
 		M.transfer_to(returned, force_key_move = TRUE)
+		if(!QDELETED(identity.skills))
+			identity.skills.set_current(returned)
 		bind_body(returned)
-	else
-		if(old_current != returned)
-			unbind_brain()
-			M.transfer_to(returned, force_key_move = TRUE)
-		if(returned.buckled)
-			returned.buckled.unbuckle_mob(returned, force = TRUE)
-		returned.stop_pulling()
-		returned.pulledby?.stop_pulling()
-		returned.forceMove(destination)
+	else if(old_current != returned)
+		M.transfer_to(returned, force_key_move = TRUE)
+	if(returned.buckled)
+		returned.buckled.unbuckle_mob(returned, force = TRUE)
+	returned.stop_pulling()
+	returned.pulledby?.stop_pulling()
 	pending_save.restore(returned)
 	if(returned.stat == DEAD)
-		returned.become_alive(CONSCIOUS, bypass_foreign_brain_check = TRUE)
+		returned.become_alive(pending_save.saved_stat, bypass_foreign_brain_check = TRUE)
+	if(returned.get_bodypart(BODY_ZONE_HEAD))
+		M.severed_head_ref = null
 	returned.set_suicide(FALSE)
 	returned.remove_client_colour(/datum/client_colour/monochrome)
 	qdel(returned.GetComponent(/datum/component/rot))
@@ -249,49 +276,80 @@
 	returned.update_sight()
 	returned.regenerate_icons()
 	returned.update_action_buttons_icon()
-	used_day = pending_day
+	// 强制原坐标，不因墙壁、占位者或危险地形而改选落点。
+	returned.forceMove(destination)
 	to_chat(returned, span_notice("晨光仿佛又一次落在你的肩上。你记得那之后的一切。"))
 	finish_return()
 
 /datum/component/z121_death_return/proc/finish_return()
+	// 恢复过程中触发的健康更新不能开启第二次回归。
+	sync_day()
+	state = Z121_RETURN_USED
 	restoring = FALSE
-	pending = FALSE
 	destroying_body = FALSE
-	was_dying = !QDELETED(body) && body.InCritical()
 	release_deletions()
-	if(save_day == z121_return_day())
-		QDEL_NULL(saved)
-		saved = pending_save
-		pending_save = null
-	else
-		QDEL_NULL(pending_save)
-		refresh_save()
+	QDEL_NULL(pending_save)
+	QDEL_NULL(identity)
+	if(deferred_dawn)
+		deferred_dawn = FALSE
+		if(deferred_dawn_alive)
+			refresh_save()
+		else
+			state = Z121_RETURN_INVALID
+		deferred_dawn_alive = FALSE
 
 /datum/component/z121_death_return/Destroy(force, silent)
 	STOP_PROCESSING(SSprocessing, src)
 	enabled = FALSE
-	pending = FALSE
+	state = Z121_RETURN_INVALID
 	release_deletions()
 	bind_body(null)
 	QDEL_NULL(saved)
 	QDEL_NULL(pending_save)
+	QDEL_NULL(identity)
 	return ..()
 
-/proc/z121_return_transfer_identity(mob/living/carbon/human/old_body, mob/living/carbon/human/new_body)
+// 这是触发时的身份交接资料，不是清晨存档；保留当前身份、账户与任务。
+/datum/z121_return_identity
+	var/mob/living/carbon/human/original
+	var/list/values = list()
+	var/list/accounts = list()
+	var/datum/skill_holder/skills
+	var/datum/component/rpg_journal/journal
+
+/datum/z121_return_identity/New(mob/living/carbon/human/H)
+	original = H
+	skills = H.ensure_skills()
+	journal = H.GetComponent(/datum/component/rpg_journal)
 	var/list/fields = list("real_name", "name", "job", "account_id", "faction", "patron", "origin", "statpack", "marriedto", "family_datum", "family_member_datum", "devotion", "inspiration", "charflaw", "flavortext", "ooc_notes", "ooc_extra", "headshot_link", "islatejoin", "allmig_reward", "received_resident_key")
 	for(var/field in fields)
-		if(field in old_body.vars)
-			var/value = old_body.vars[field]
+		if(field in H.vars)
+			var/value = H.vars[field]
 			if(islist(value))
-				var/list/values = value
-				value = values.Copy()
-			new_body.vars[field] = value
-	for(var/list/accounts as anything in list(SStreasury.bank_accounts, SStreasury.noble_incomes, SStreasury.poll_tax_advance_days, SStreasury.poll_tax_owed, SStreasury.poll_tax_debt_days))
-		if(old_body in accounts)
-			accounts[new_body] = accounts[old_body]
-			accounts -= old_body
+				var/list/items = value
+				value = items.Copy()
+			values[field] = value
+	for(var/list/bank as anything in list(SStreasury.bank_accounts, SStreasury.noble_incomes, SStreasury.poll_tax_advance_days, SStreasury.poll_tax_owed, SStreasury.poll_tax_debt_days))
+		accounts += list(list(bank, H in bank, bank[H]))
+
+/datum/z121_return_identity/proc/apply(mob/living/carbon/human/H)
+	for(var/field in values)
+		H.vars[field] = values[field]
+	for(var/list/entry as anything in accounts)
+		var/list/bank = entry[1]
+		if(original && (original in bank))
+			bank[H] = bank[original]
+			bank -= original
+		else if(entry[2])
+			bank[H] = entry[3]
 	SStreasury.poll_projection_dirty = TRUE
-	// 当前任务和领取记录随人迁移，避免回归重新抽取任务或重复领取奖励。
-	var/datum/component/rpg_journal/journal = old_body.GetComponent(/datum/component/rpg_journal)
-	if(journal)
-		new_body.TakeComponent(journal)
+	if(!QDELETED(journal))
+		H.TakeComponent(journal)
+
+/datum/z121_return_identity/Destroy()
+	original = null
+	skills = null
+	journal = null
+	values = null
+	accounts = null
+	return ..()

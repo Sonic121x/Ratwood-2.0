@@ -269,6 +269,7 @@
 // 自定义美德：死亡回归，按清晨保存身体、特性与积分，每日一次。
 #include "virtues/never_ending.dm"
 #include "virtues/death_return_snapshot.dm"
+#include "virtues/death_return_dialogues.dm"
 // 自定义特质：超级受虐狂，保留受虐狂效果，将流血与剧痛转为正面心情。
 #include "quirks/super_masochist.dm"
 // 自定义美德：魅魔血脉（限女性身体、消耗 24 凯旋点；获得 魅魔血脉/美貌/传奇情人 三特性。
