@@ -34,7 +34,7 @@
 #define SEW_EXP_FINISH 5
 
 /obj/item/needle
-	name = "针"
+	name = "缝合针"
 	icon_state = "needle"
 	desc = "这根锋利的针可以缝合伤口、修补衣物，若你走投无路，也能拿来扎人。"
 	icon = 'icons/roguetown/items/misc.dmi'
@@ -284,7 +284,7 @@
 	infinite = TRUE
 
 /obj/item/needle/decrepit
-	name = "破旧的针"
+	name = "破旧缝合针"
 	icon_state = "needle" // "aneedle" // currently missing the sprite
 	desc = "这根破旧的老针看起来派不上什么大用场。"
 	stringamt = 5
