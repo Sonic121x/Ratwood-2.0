@@ -3,7 +3,7 @@
  *
  */
 /mob/dead/new_player/proc/handle_player_polling()
-	var/list/output = list("<div align='center'><B>玩家投票</B><hr><table>")
+	var/list/output = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div align='center'><B>玩家投票</B><hr><table>")
 	var/rs = REF(src)
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
@@ -53,7 +53,7 @@
 	if(query_option_get_voted.NextRow())
 		voted_option_id = text2num(query_option_get_voted.item[1])
 	qdel(query_option_get_voted)
-	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
+	var/list/output = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
 	output += "<font size='2'>投票时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
@@ -97,7 +97,7 @@
 	if(query_text_get_replytext.NextRow())
 		reply_text = query_text_get_replytext.item[1]
 	qdel(query_text_get_replytext)
-	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
+	var/list/output = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
 	output += "<font size='2'>意见征集时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
@@ -134,7 +134,7 @@
 	while(query_rating_get_votes.NextRow())
 		voted_ratings += list("[query_rating_get_votes.item[1]]" = query_rating_get_votes.item[2])
 	qdel(query_rating_get_votes)
-	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
+	var/list/output = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
 	output += "<font size='2'>投票时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"
@@ -189,7 +189,7 @@
 	while(query_multi_get_votes.NextRow())
 		voted_for += text2num(query_multi_get_votes.item[1])
 	qdel(query_multi_get_votes)
-	var/list/output = list("<div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
+	var/list/output = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div align='center'><B>玩家投票</B><hr><b>问题：[poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
 	output += "最多可选择[poll.options_allowed]项。若超出数量，只保存前[poll.options_allowed]项。<br><font size='2'>投票时间：<b>[poll.start_datetime]</b>至<b>[poll.end_datetime]</b></font><br>"

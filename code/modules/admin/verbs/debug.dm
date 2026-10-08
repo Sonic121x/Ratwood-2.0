@@ -233,7 +233,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(!H)
 		return
 	
-	var/body = "<html><head><title>职业配置管理 - [H.name]</title>"
+	var/body = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>职业配置管理 - [H.name]</title>"
 	body += "<style>"
 	body += "table { border-collapse: collapse; width: 100%; }"
 	body += "th, td { border: 1px solid black; padding: 5px; text-align: left; }"
@@ -1425,7 +1425,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	set name = "显示 del() 日志"
 	set desc = ""
 
-	var/list/dellog = list("<B>本回合经过 qdel 的对象列表</B><BR><BR><ol>")
+	var/list/dellog = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>本回合经过 qdel 的对象列表</B><BR><BR><ol>")
 	sortTim(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
@@ -1461,7 +1461,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	set name = "显示 Initialize() 日志"
 	set desc = ""
 
-	usr << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
+	usr << browse("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>" + replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
 
 /client/proc/debug_huds(i as num)
 	set category = "调试"

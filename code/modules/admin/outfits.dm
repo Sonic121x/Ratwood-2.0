@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	holder.outfit_manager(usr)
 
 /datum/admins/proc/outfit_manager(mob/admin)
-	var/list/dat = list("<ul>")
+	var/list/dat = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><ul>")
 	for(var/datum/outfit/O in GLOB.custom_outfits)
 		var/vv = FALSE
 		var/datum/outfit/varedit/VO = O
@@ -97,7 +97,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	mask_select += "</select>"
 
 	var/dat = {"
-	<html><head><title>创建装备套装</title></head><body>
+	<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>创建装备套装</title></head><body>
 	<form name="outfit" action="byond://?src=[REF(src)];[HrefToken()]" method="get">
 	<input type="hidden" name="src" value="[REF(src)]">
 	[HrefTokenFormField()]

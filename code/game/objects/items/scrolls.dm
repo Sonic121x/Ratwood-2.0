@@ -18,7 +18,7 @@
 
 /obj/item/teleportation_scroll/attack_self(mob/user)
 	user.set_machine(src)
-	var/dat = "<B>传送卷轴：</B><BR>"
+	var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>传送卷轴：</B><BR>"
 	dat += "剩余使用次数：[src.uses]<BR>"
 	dat += "<HR>"
 	dat += "<B>共有四次机会，请谨慎使用：</B><BR>"
