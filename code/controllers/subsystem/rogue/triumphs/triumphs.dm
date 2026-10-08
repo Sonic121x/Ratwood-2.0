@@ -340,7 +340,7 @@ SUBSYSTEM_DEF(triumphs)
 // Display leaderboard browser popup
 /datum/controller/subsystem/triumphs/proc/show_triumph_leaderboard(client/C)
 
-	var/webpagu = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>谷地冠军</B><br>"
+	var/webpagu = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body><B>谷地冠军</B><br>"
 	webpagu += "当前赛季：[GLOB.triumph_wipe_season]"
 	webpagu += "<hr><br>"
 
@@ -354,7 +354,7 @@ SUBSYSTEM_DEF(triumphs)
 	else
 		webpagu += "凯旋殿堂真是空荡荡的，不是吗？"
 
-	C << browse(webpagu, "window=triumph_leaderboard;size=300x500")
+	C << browse("[webpagu]</body></html>", "window=triumph_leaderboard;file=triumph_leaderboard.html;size=300x500")
 
 // PREP THE BOARD
 /datum/controller/subsystem/triumphs/proc/prep_the_triumphs_leaderboard()
