@@ -98,9 +98,9 @@
 	if(!HAS_TRAIT(M, required_trait))
 		return
 	if(positive)
-		to_chat(M, span_green("[parent] suits me. ([required_trait])"))
+		to_chat(M, span_green("[parent]很合我的心意。 ([required_trait])"))
 		return
-	to_chat(M, span_red("[parent] does not suit me. ([required_trait])"))
+	to_chat(M, span_red("[parent]不合我的心意。 ([required_trait])"))
 
 /datum/component/armour_filtering/proc/handle_boons(mob/living/carbon/human/user, equip)
 	if(equip)
