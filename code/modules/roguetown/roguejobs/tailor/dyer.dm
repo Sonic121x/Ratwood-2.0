@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(pridelist, list(
 			var/mob/living/carbon/human/H = user
 			var/obj/item/bodypart/taur/taur = H.get_taur_tail()
 			if(taur?.taur_clothing_category && taur.has_barding_tassets)
-				dat += "<b>兽身甲裙甲片</b><BR>"
+				dat += "<b>半人兽护甲裙片</b><BR>"
 
 				var/icon/tasset1_preview = new /icon()
 				tasset1_preview.Insert(new /icon('icons/roguetown/clothing/special/onmob/taur_clothing.dmi', "plate-tasset1_[taur.taur_clothing_category]"), "", SOUTH, 0)
