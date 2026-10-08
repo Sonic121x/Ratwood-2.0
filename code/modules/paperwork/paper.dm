@@ -651,7 +651,7 @@
 
 
 /obj/item/paper/proc/openhelp(mob/user)
-	user << browse({"<HTML><HEAD><TITLE>纸张帮助</TITLE></HEAD>
+	user << browse({"<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>纸张帮助</TITLE></HEAD>
 	<BODY>
 		你可以使用反斜杠 (\\) 转义特殊字符。<br>
 		<br>

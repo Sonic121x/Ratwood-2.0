@@ -24,7 +24,7 @@
 	message_admins("[key_name_admin(src)] 访问了文件：[path]")
 	switch(alert("查看（游戏内）、打开（系统文本编辑器）还是下载？", path, "查看", "打开", "下载"))
 		if ("查看")
-			src << browse("<pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>", list2params(list("window" = "viewfile.[path]")))
+			src << browse("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>", list2params(list("window" = "viewfile.[path]")))
 		if ("打开")
 			src << run(file(path))
 		if ("下载")

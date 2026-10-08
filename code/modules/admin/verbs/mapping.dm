@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	set name = "显示开局活跃地块列表"
 	set desc = ""
 
-	var/dat = {"<b>开局活跃地块坐标列表</b>
+	var/dat = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><b>开局活跃地块坐标列表</b>
 	<br>实时活跃地块列表可在空气子系统的 active_turfs 变量中查看<br>"}
 
 	for(var/t in GLOB.active_turfs_startlist)
