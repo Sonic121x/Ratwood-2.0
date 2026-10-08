@@ -282,7 +282,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/horse
-	name = "赛加羚羊下身"
+	name = "赛加羚羊躯体"
 	offset_x = -16
 	taur_icon_state = "saiga_s"
 	taur_clothing_category = "s"

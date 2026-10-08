@@ -407,7 +407,7 @@
 
 /obj/item/rogueweapon/woodstaff/aries
 	name = "牧者权杖"
-	desc = "羊群最好由坚定之手引导。坚定、且能射出电流的手。仅在教会内生效。"
+	desc = "羊群最好由坚定之手引导。坚定、且能射出电流的手。仅在教堂内生效。"
 	force = 25
 	force_wielded = 28
 	icon_state = "aries"
@@ -467,7 +467,7 @@
 				return
 
 			if(istype(user.used_intent, /datum/intent/priest_silence))
-				HU.visible_message("<span class='warning'>[HU]用\the [src]让[H]失声了。</span>")
+				HU.visible_message("<span class='warning'>[HU]用[src]让[H]失声了。</span>")
 				H.set_silence(20 SECONDS)
 				COOLDOWN_START(src, scepter, 5 SECONDS)
 				to_chat(H, "<span class='danger'>神力令我噤声！</span>")
