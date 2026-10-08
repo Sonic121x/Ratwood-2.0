@@ -41,6 +41,7 @@
 #include "spells/arcane/mini_magic_missile.dm"
 #include "spells/arcane/moonlight_greatsword_spells.dm"
 #include "spells/arcane/pain.dm"
+#include "spells/arcane/portal_spell.dm"
 #include "spells/arcane/restore_pristine.dm"
 #include "spells/arcane/sectumsempra.dm"
 #include "spells/arcane/sensory_sharing.dm"
