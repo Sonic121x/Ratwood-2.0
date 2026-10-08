@@ -34,7 +34,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 
 	if(!hsbinfo)
-		hsbinfo = "<center><b>沙盒面板</b></center><hr>"
+		hsbinfo = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><center><b>沙盒面板</b></center><hr>"
 		if(admin)
 			hsbinfo += "<b>管理选项</b><br>"
 			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbtobj'>切换物体生成</a><br>"
@@ -97,7 +97,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				if(!GLOB.hsboxspawn) return
 
 				if(!clothinfo)
-					clothinfo = "<b>服装</b> <a href='?[REF(src)];hsb=hsbreag'>(试剂容器)</a> <a href='?[REF(src)];hsb=hsbobj'>(其他物品)</a><hr><br>"
+					clothinfo = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><b>服装</b> <a href='?[REF(src)];hsb=hsbreag'>(试剂容器)</a> <a href='?[REF(src)];hsb=hsbobj'>(其他物品)</a><hr><br>"
 					var/list/all_items = subtypesof(/obj/item/clothing)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
@@ -111,7 +111,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				if(!GLOB.hsboxspawn) return
 
 				if(!reaginfo)
-					reaginfo = "<b>试剂容器</b> <a href='?[REF(src)];hsb=hsbcloth'>(服装)</a> <a href='?[REF(src)];hsb=hsbobj'>(其他物品)</a><hr><br>"
+					reaginfo = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><b>试剂容器</b> <a href='?[REF(src)];hsb=hsbcloth'>(服装)</a> <a href='?[REF(src)];hsb=hsbobj'>(其他物品)</a><hr><br>"
 					var/list/all_items = subtypesof(/obj/item/reagent_containers)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
@@ -125,7 +125,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				if(!GLOB.hsboxspawn) return
 
 				if(!objinfo)
-					objinfo = "<b>其他物品</b> <a href='?[REF(src)];hsb=hsbcloth'>(服装)</a> <a href='?[REF(src)];hsb=hsbreag'>(试剂容器)</a><hr><br>"
+					objinfo = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><b>其他物品</b> <a href='?[REF(src)];hsb=hsbcloth'>(服装)</a> <a href='?[REF(src)];hsb=hsbreag'>(试剂容器)</a><hr><br>"
 					var/list/all_items = subtypesof(/obj/item/) - typesof(/obj/item/clothing) - typesof(/obj/item/reagent_containers)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)

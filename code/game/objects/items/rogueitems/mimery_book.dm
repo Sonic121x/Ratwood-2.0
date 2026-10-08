@@ -5,7 +5,7 @@
 
 /obj/item/book/mimery/attack_self(mob/user,)
 	user.set_machine(src)
-	var/dat = "<B>高深拟态戏法指南</B><BR>"
+	var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>高深拟态戏法指南</B><BR>"
 	dat += "教授三种经典默剧套路之一，让熟练的默剧演员能够将无形之物具现为实体。<BR>"
 	dat += "一旦你掌握了自己的套路，这本书便再无更多可教。<BR>"
 	dat += "<HR>"
