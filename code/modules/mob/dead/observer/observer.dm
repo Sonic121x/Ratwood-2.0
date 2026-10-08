@@ -917,7 +917,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!check_rights(R_WATCH))
 		return
 	var/dat
-	dat += "<h4>Crew Manifest</h4>"
+	dat += "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><h4>Crew Manifest</h4>"
 	dat += GLOB.data_core.get_manifest()
 
 	src << browse(dat, "window=manifest;size=387x420;can_close=1")

@@ -290,7 +290,7 @@
 	name = "骰子战争骰袋"
 	desc = "一个用来玩骰子战争的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/dice_war_game/active_game
-	var/static/dice_war_rules_text = {"<div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/dice_war_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>骰子战争</h2>
 <br>
 <b>目标：</b>将对手的生命降到 0。<br>

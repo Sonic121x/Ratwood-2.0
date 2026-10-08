@@ -459,7 +459,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			return 0
 	else if (byond_version < cwv)	//We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>我的BYOND版本可能已过时：</b><br>"
+			var/msg = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><b>我的BYOND版本可能已过时：</b><br>"
 			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
 			msg += "你的版本：[byond_version]<br>"
 			msg += "不再显示此提示所需的版本：[cwv]或更高版本<br>"
