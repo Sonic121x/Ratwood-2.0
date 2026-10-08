@@ -2,7 +2,7 @@
 	if(!check_rights(0))
 		return
 
-	var/list/dat = list("<B>滥用管理权限的第一条规矩：绝口不提滥用管理权限。</B><HR>")
+	var/list/dat = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>滥用管理权限的第一条规矩：绝口不提滥用管理权限。</B><HR>")
 
 	dat +={"
 			<B>通用秘密功能</B><BR>
@@ -93,7 +93,7 @@
 	var/ok = 0
 	switch(item)
 		if("admin_log")
-			var/dat = "<B>管理日志<HR></B>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>管理日志<HR></B>"
 			for(var/l in GLOB.admin_log)
 				dat += "<li>[l]</li>"
 			if(!GLOB.admin_log.len)
@@ -101,7 +101,7 @@
 			usr << browse(dat, "window=admin_log")
 
 		if("show_admins")
-			var/dat = "<B>当前管理员：</B><HR>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>当前管理员：</B><HR>"
 			if(GLOB.admin_datums)
 				for(var/ckey in GLOB.admin_datums)
 					var/datum/admins/D = GLOB.admin_datums[ckey]
@@ -147,7 +147,7 @@
 		if("list_bombers")
 			if(!check_rights(R_ADMIN))
 				return
-			var/dat = "<B>爆炸记录</B><HR>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>爆炸记录</B><HR>"
 			for(var/l in GLOB.bombers)
 				dat += text("[l]<BR>")
 			usr << browse(dat, "window=bombers")
@@ -155,7 +155,7 @@
 		if("list_signalers")
 			if(!check_rights(R_ADMIN))
 				return
-			var/dat = "<B>最近 [length(GLOB.lastsignalers)] 条信号记录。</B><HR>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>最近 [length(GLOB.lastsignalers)] 条信号记录。</B><HR>"
 			for(var/sig in GLOB.lastsignalers)
 				dat += "[sig]<BR>"
 			usr << browse(dat, "window=lastsignalers;size=800x500")
@@ -163,7 +163,7 @@
 		if("list_lawchanges")
 			if(!check_rights(R_ADMIN))
 				return
-			var/dat = "<B>最近 [length(GLOB.lawchanges)] 次法则变更。</B><HR>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>最近 [length(GLOB.lawchanges)] 次法则变更。</B><HR>"
 			for(var/sig in GLOB.lawchanges)
 				dat += "[sig]<BR>"
 			usr << browse(dat, "window=lawchanges;size=800x500")
@@ -177,7 +177,7 @@
 		if("manifest")
 			if(!check_rights(R_ADMIN))
 				return
-			var/dat = "<B>人员名单。</B><HR>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>人员名单。</B><HR>"
 			dat += "<table cellspacing=5><tr><th>姓名</th><th>职位</th></tr>"
 			for(var/datum/data/record/t in GLOB.data_core.general)
 				dat += "<tr><td>[t.fields["name"]]</td><td>[t.fields["rank"]]</td></tr>"
@@ -186,7 +186,7 @@
 		if("DNA")
 			if(!check_rights(R_ADMIN))
 				return
-			var/dat = "<B>血液 DNA 列表。</B><HR>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>血液 DNA 列表。</B><HR>"
 			dat += "<table cellspacing=5><tr><th>姓名</th><th>DNA</th><th>血型</th></tr>"
 			for(var/i in GLOB.human_list)
 				var/mob/living/carbon/human/H = i
@@ -197,7 +197,7 @@
 		if("fingerprints")
 			if(!check_rights(R_ADMIN))
 				return
-			var/dat = "<B>指纹列表。</B><HR>"
+			var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>指纹列表。</B><HR>"
 			dat += "<table cellspacing=5><tr><th>姓名</th><th>指纹</th></tr>"
 			for(var/i in GLOB.human_list)
 				var/mob/living/carbon/human/H = i

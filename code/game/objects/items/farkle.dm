@@ -452,7 +452,7 @@
 /obj/item/storage/pill_bottle/dice/farkle
 	desc = "六颗用于法克尔的骰子。手持激活（Z）即可开始或加入游戏！"
 	var/datum/farkle_game/active_game
-	var/static/farkle_rules_text = {"<div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/farkle_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>法克尔</h2>
 <br>
 <b>目标：</b>成为总分超过 10000 后分数最高的玩家。<br>

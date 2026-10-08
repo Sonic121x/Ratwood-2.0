@@ -39,4 +39,4 @@
 	if(!fexists(F))
 		to_chat(src, span_danger("未找到 [selected] 日志文件。"))
 		return
-	src << browse(F,"window=investigate[selected];size=800x300")
+	src << browse("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>[file2text(F)]","window=investigate[selected];size=800x300")

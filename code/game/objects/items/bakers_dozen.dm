@@ -354,7 +354,7 @@
 	name = "面包师十三骰袋"
 	desc = "一套用于“面包师十三”的骰子。手持时激活（Z）即可开始或加入一局游戏。"
 	var/datum/bakers_dozen_game/active_game
-	var/static/bakers_dozen_rules_text = {"<div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/bakers_dozen_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 <h2 style='text-align:center;margin:0 0 6px 0;'>面包师十三</h2>
 <br>
 <b>目标：</b> 一种适合 1 到 4 名玩家的类黑杰克6面骰游戏，目标是尽可能接近 13 点。<br>
