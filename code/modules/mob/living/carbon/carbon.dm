@@ -316,7 +316,7 @@
 /mob/living/carbon/show_inv(mob/user)
 	user.set_machine(src)
 	var/dat = {"
-	<HR>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
 	<B><FONT size=3>[name]</FONT></B>
 	<HR>
 	<BR><B>头部：</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head.name : "无"]</A>"}

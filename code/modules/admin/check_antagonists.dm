@@ -136,7 +136,7 @@
 	if(!SSticker.HasRoundStarted())
 		alert("游戏尚未开始！")
 		return
-	var/list/dat = list("<html><head><title>Round Status</title></head><body><h1><B>回合状态</B></h1>")
+	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Round Status</title></head><body><h1><B>回合状态</B></h1>")
 	dat += "<a href='?_src_=holder;[HrefToken()];gamemode_panel=1'>游戏模式面板</a><br>"
 	dat += "回合时长：<B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B><BR>"
 	dat += "<BR>"
@@ -277,7 +277,7 @@
 
 	var/subclass_slots_display = subclass_slot_lines.Join("<br>")
 
-	var/list/dat = list("<html><head><title>Gnoll Information</title></head><body><h1><B>豺狼人信息</B></h1>")
+	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Gnoll Information</title></head><body><h1><B>豺狼人信息</B></h1>")
 	dat += "<a href='?_src_=holder;[HrefToken()];check_hunted_targets=1'>刷新</a><br>"
 	dat += "<br><b>选择模式：</b> [active_source]"
 	dat += "<br><b>豺狼人生成：</b> "

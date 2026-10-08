@@ -406,7 +406,7 @@
 	name = "三去无踪骰袋"
 	desc = "一个用来游玩三去无踪的骰袋。手持激活（Z）即可开始或加入一局游戏。"
 	var/datum/threes_away_game/active_game
-	var/static/threes_away_rules_text = {"<div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/threes_away_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>三去无踪</h2>
 <br>
 <b>目标：</b>取得最低分。<br>

@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(mass_direct_intercepts)
 	if(!check_rights(R_ADMIN))
 		return
 	
-	var/dat = {"<html><head>
+	var/dat = {"<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 		<style>
 			body { font-family: Verdana, Arial, sans-serif; font-size: 13px; background: #f0f0f0; margin: 5px; }
 			table { border-collapse: collapse; width: 100%; }
