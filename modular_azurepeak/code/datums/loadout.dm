@@ -763,7 +763,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
 
 /datum/loadout_item/tailcoat
-	name = "Tailcoat"
+	name = "燕尾服"
 	path = /obj/item/clothing/armor/gambeson/tailcoat
 
 /datum/loadout_item/leathervest
@@ -1813,7 +1813,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 3
 
 /datum/loadout_item/tri_ornate_tailcoat
-	name = "Ornate Tailcoat"
+	name = "华丽燕尾服"
 	path = /obj/item/clothing/suit/roguetown/shirt/coat/steward
 	triumph_cost = 3
 	requires_nobility = TRUE
