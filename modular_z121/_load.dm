@@ -13,6 +13,7 @@
 #include "spells/admin/admin_spells.dm"
 #include "spells/admin/admin_learning.dm"
 #include "spells/druid/wildshape_dragon.dm"
+#include "spells/druid/goodberry.dm"
 #include "rites/eldritch_ritechalk.dm"
 #include "rites/sacrifice_circles.dm"
 #include "rites/malicious_skill.dm"
