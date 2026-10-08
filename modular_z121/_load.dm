@@ -1,4 +1,8 @@
 #include "spells/_registry.dm"
+// 庖厨食典：成品饮食配方、肉类来源、基础食材及获得渠道。
+#include "books/cookbook_catalog.dm"
+#include "books/cookbook_sources.dm"
+#include "books/cookbook.dm"
 #include "bootstrap/custom_bootstrap.dm"
 #include "bootstrap/preferences_vice_conflicts.dm"
 #include "changelog/entries.dm"
@@ -13,6 +17,7 @@
 #include "spells/admin/admin_spells.dm"
 #include "spells/admin/admin_learning.dm"
 #include "spells/druid/wildshape_dragon.dm"
+#include "spells/druid/goodberry.dm"
 #include "rites/eldritch_ritechalk.dm"
 #include "rites/sacrifice_circles.dm"
 #include "rites/malicious_skill.dm"
@@ -40,6 +45,7 @@
 #include "spells/arcane/mini_magic_missile.dm"
 #include "spells/arcane/moonlight_greatsword_spells.dm"
 #include "spells/arcane/pain.dm"
+#include "spells/arcane/portal_spell.dm"
 #include "spells/arcane/restore_pristine.dm"
 #include "spells/arcane/sectumsempra.dm"
 #include "spells/arcane/sensory_sharing.dm"
@@ -263,6 +269,7 @@
 // 自定义美德：死亡回归，按清晨保存身体、特性与积分，每日一次。
 #include "virtues/never_ending.dm"
 #include "virtues/death_return_snapshot.dm"
+#include "virtues/death_return_dialogues.dm"
 // 自定义特质：超级受虐狂，保留受虐狂效果，将流血与剧痛转为正面心情。
 #include "quirks/super_masochist.dm"
 // 自定义美德：魅魔血脉（限女性身体、消耗 24 凯旋点；获得 魅魔血脉/美貌/传奇情人 三特性。

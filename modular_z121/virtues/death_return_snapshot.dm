@@ -23,10 +23,16 @@
 	var/saved_type
 	var/source_ref
 	var/list/values = list()
+	var/list/saved_traits
+	var/list/bodily_timers = list()
 
 /datum/z121_return_record/New(datum/source, list/fields)
 	saved_type = source.type
 	source_ref = REF(source)
+	saved_traits = z121_return_copy(source.status_traits)
+	for(var/datum/timedevent/T as anything in source.active_timers)
+		if(z121_return_bodily_timer(T))
+			bodily_timers += list(list(T.callBack.delegate, z121_return_copy(T.callBack.arguments), max(0, T.timeToRun - world.time)))
 	// 默认只供纯数据的伤口、外观和生理数据使用；原子必须明确列出可恢复字段。
 	if(!fields)
 		fields = source.vars.Copy()
@@ -45,6 +51,25 @@
 		if(field in target.vars)
 			target.vars[field] = z121_return_copy(values[field])
 
+// 只重建身体自身的解除症状计时，不复制遗言、交易或施法回调。
+/proc/z121_return_bodily_timer(datum/timedevent/T)
+	if(QDELETED(T) || T.spent || !T.callBack || (T.flags & TIMER_CLIENT_TIME))
+		return FALSE
+	return T.callBack.delegate in list(TYPE_PROC_REF(/mob/living, cure_blind), TYPE_PROC_REF(/obj/item/bodypart, remove_crit_paralysis), TYPE_PROC_REF(/datum/wound/heatstroke, cure_heatstroke))
+
+/datum/z121_return_record/proc/restore_timers(datum/target)
+	for(var/datum/timedevent/T as anything in target.active_timers?.Copy())
+		if(z121_return_bodily_timer(T))
+			qdel(T)
+	for(var/list/entry as anything in bodily_timers)
+		var/list/callback_args = list(target, entry[1])
+		callback_args += z121_return_copy(entry[2])
+		var/datum/callback/CB = new(arglist(callback_args))
+		var/timer_id = addtimer(CB, entry[3], TIMER_STOPPABLE)
+		if(istype(target, /datum/wound/heatstroke))
+			var/datum/wound/heatstroke/W = target
+			W.cure_timer = timer_id
+
 // 肢体与器官字段显式列出，避免覆盖位置、拥有者、处理队列或缓存引用。
 /proc/z121_return_limb_fields()
 	return list("body_zone", "aux_zone", "held_index", "status", "disabled", "brute_dam", "burn_dam", "stamina_dam", "max_stamina_damage", "max_damage", "max_pain_damage", "cremation_progress", "brute_reduction", "burn_reduction", "skin_tone", "body_gender", "species_id", "species_color", "mutation_color", "species_icon", "use_digitigrade", "should_draw_gender", "should_draw_greyscale", "no_update", "rotted", "skeletonized", "fingers", "organ_slowdown", "is_prosthetic", "limb_material", "markings", "aux_markings", "brainkill", "hair_color", "hairstyle", "hair_alpha", "facial_hair_color", "facial_hairstyle", "lip_style", "lip_color", "branded_writing_on_neck", "unlimited_bleeding", "two_stage_death", "grievously_wounded", "branded_writing", "enslavement_mark", "brand_owner_name")
@@ -53,7 +78,7 @@
 	return list("name", "slot", "zone", "zone_checked", "organ_flags", "maxHealth", "damage", "prev_damage", "healing_factor", "decay_factor", "low_threshold", "high_threshold", "low_threshold_passed", "high_threshold_passed", "now_failing", "now_fixed", "high_threshold_cleared", "low_threshold_cleared", "accessory_type", "accessory_colors", "visible_organ", "bodypart_icon", "bodypart_icon_state", "enslavement_mark", "brand_owner_name", "brain_death", "suicided", "damage_delta", "beat", "heartattack", "eye_color", "heterochromia", "second_color", "sight_flags", "see_in_dark", "eye_blind", "eye_damage", "penis_size", "functional", "sheath_type", "ball_size", "virility", "breast_size", "lactating", "milk_max", "fertility", "wings_color", "wing_natural_gradient", "wing_natural_color", "wing_dye_gradient", "wing_dye_color")
 
 /proc/z121_return_body_fields()
-	return list("gender", "age", "hair_color", "hairstyle", "facial_hair_color", "facial_hairstyle", "eye_color", "voice_color", "voice_pitch", "detail_color", "skin_tone", "lip_style", "lip_color", "shavelevel", "has_stubble", "socks", "accessory", "detail", "marking", "resize", "health", "max_stamina", "maxHealth", "crit_threshold", "nutrition", "hydration", "bodytemperature", "stamina", "energy", "max_energy", "drunkenness", "druggy", "hallucination", "dizziness", "drowsyness", "jitteriness", "stuttering", "slurring", "confused", "disgust", "losebreath", "breath_tick", "silent", "eye_blind", "eye_blurry", "fire_stacks", "on_fire", "STASTR", "STAPER", "STAINT", "STACON", "STAWIL", "STASPD", "STALUC", "BUFSTR", "BUFPER", "BUFINT", "BUFCON", "BUFEND", "BUFSPE", "BUFLUC", "statbuf", "statindex")
+	return list("gender", "age", "hair_color", "hairstyle", "facial_hair_color", "facial_hairstyle", "eye_color", "voice_color", "voice_pitch", "detail_color", "skin_tone", "lip_style", "lip_color", "shavelevel", "has_stubble", "socks", "accessory", "detail", "marking", "resize", "health", "max_stamina", "maxHealth", "crit_threshold", "nutrition", "hydration", "bodytemperature", "stamina", "energy", "max_energy", "drunkenness", "druggy", "hallucination", "dizziness", "drowsyness", "jitteriness", "stuttering", "slurring", "confused", "disgust", "losebreath", "breath_tick", "failed_last_breath", "resting", "stam_paralyzed", "bloodpool", "silent", "eye_blind", "eye_blurry", "fire_stacks", "on_fire", "STASTR", "STAPER", "STAINT", "STACON", "STAWIL", "STASPD", "STALUC", "BUFSTR", "BUFPER", "BUFINT", "BUFCON", "BUFEND", "BUFSPE", "BUFLUC", "statbuf", "statindex")
 
 /datum/z121_return_snapshot
 	var/body_ref
@@ -61,6 +86,8 @@
 	var/saved_y
 	var/saved_z
 	var/species_type
+	var/saved_stat
+	var/stamina_regen_delay
 	var/datum/z121_return_record/body_values
 	var/datum/z121_return_record/dna_values
 	var/datum/z121_return_record/physiology_values
@@ -92,6 +119,8 @@
 	saved_y = T.y
 	saved_z = T.z
 	species_type = H.dna.species.type
+	saved_stat = H.stat
+	stamina_regen_delay = max(0, H.stam_regen_start_time - world.time)
 	body_values = new(H, z121_return_body_fields())
 	dna_values = new(H.dna, list("unique_enzymes", "uni_identity", "blood_type", "features", "body_markings", "current_body_size", "real_name", "stability", "scrambled"))
 	physiology_values = new(H.physiology)
@@ -103,11 +132,15 @@
 	for(var/obj/item/bodypart/B as anything in H.bodyparts)
 		limbs[B.body_zone] = new /datum/z121_return_record(B, z121_return_limb_fields())
 		for(var/datum/bodypart_feature/F as anything in B.bodypart_features)
+			if(z121_return_item_feature(F))
+				continue
 			features += list(list(B.body_zone, new /datum/z121_return_record(F)))
 	for(var/obj/item/organ/O as anything in H.internal_organs)
 		organs[O.slot] = new /datum/z121_return_record(O, z121_return_organ_fields())
 	for(var/datum/wound/W as anything in H.get_wounds())
-		wounds += list(list(W.bodypart_owner?.body_zone, new /datum/z121_return_record(W)))
+		var/datum/z121_return_record/R = new(W)
+		R.values["should_persist_effects"] = W.should_persist_effects
+		wounds += list(list(W.bodypart_owner?.body_zone, R))
 	var/obj/item/organ/brain/brain = H.getorganslot(ORGAN_SLOT_BRAIN)
 	for(var/datum/brain_trauma/trauma as anything in brain?.traumas)
 		traumas += new /datum/z121_return_record(trauma)
@@ -136,31 +169,9 @@
 	var/datum/component/rpg_journal/journal = H.GetComponent(/datum/component/rpg_journal)
 	rpg_growth = journal ? journal.growth_data() : null
 
-/datum/z121_return_snapshot/proc/find_destination(mob/living/carbon/human/H)
-	var/turf/origin = locate(saved_x, saved_y, saved_z)
-	if(z121_return_open_turf(origin, H))
-		return origin
-	// 逐圈搜索同层最近的可进入地块；坐标对应的地块被替换仍可正常定位。
-	for(var/radius in 1 to max(world.maxx, world.maxy))
-		for(var/px in max(1, saved_x - radius) to min(world.maxx, saved_x + radius))
-			for(var/py in list(saved_y - radius, saved_y + radius))
-				var/turf/T = locate(px, py, saved_z)
-				if(z121_return_open_turf(T, H))
-					return T
-		for(var/py in max(1, saved_y - radius + 1) to min(world.maxy, saved_y + radius - 1))
-			for(var/px in list(saved_x - radius, saved_x + radius))
-				var/turf/T = locate(px, py, saved_z)
-				if(z121_return_open_turf(T, H))
-					return T
-	return null
-
-/proc/z121_return_open_turf(turf/T, mob/living/H)
-	if(!istype(T, /turf/open) || istype(T, /turf/open/transparent/openspace) || T.density)
-		return FALSE
-	for(var/atom/movable/A in T)
-		if(A != H && A.density)
-			return FALSE
-	return TRUE
+/datum/z121_return_snapshot/proc/find_destination()
+	// 地块替换后重新按坐标查找，不检查密度、不搜索替代位置。
+	return locate(saved_x, saved_y, saved_z)
 
 /datum/z121_return_snapshot/proc/restore(mob/living/carbon/human/H)
 	var/list/source_map = list()
@@ -171,6 +182,7 @@
 			qdel(E)
 	for(var/datum/wound/W as anything in H.get_wounds())
 		qdel(W)
+	H.clear_fullscreen("heatstroke")
 	H.reagents.clear_reagents()
 	if(H.dna.species.type != species_type)
 		H.set_species(species_type, icon_update = FALSE)
@@ -187,10 +199,24 @@
 		var/datum/wound/W = new R.saved_type
 		R.apply(W)
 		source_map[R.source_ref] = REF(W)
+		// 直接重建已有伤口的归属；重播受伤回调会再次扣血、击晕甚至杀死角色。
+		W.owner = H
 		if(entry[1])
-			W.apply_to_bodypart(H.get_bodypart(entry[1]), silent = TRUE)
+			var/obj/item/bodypart/B = H.get_bodypart(entry[1])
+			W.bodypart_owner = B
+			LAZYADD(B.wounds, W)
+			B.bleeding += W.bleed_rate
+			if(istype(W, /datum/wound/dislocation))
+				if(B.body_zone == BODY_ZONE_R_LEG)
+					H.add_movespeed_modifier(MOVESPEED_ID_DISLOCATION_RIGHT_LEG, multiplicative_slowdown = DISLOCATED_ADD_SLOWDOWN)
+				if(B.body_zone == BODY_ZONE_L_LEG)
+					H.add_movespeed_modifier(MOVESPEED_ID_DISLOCATION_LEFT_LEG, multiplicative_slowdown = DISLOCATED_ADD_SLOWDOWN)
 		else
-			W.apply_to_mob(H, silent = TRUE)
+			LAZYADD(H.simple_wounds, W)
+			H.simple_bleeding += W.bleed_rate
+		if(istype(W, /datum/wound/heatstroke))
+			H.overlay_fullscreen("heatstroke", /atom/movable/screen/fullscreen/heatstroke)
+		R.restore_timers(W)
 	for(var/datum/z121_return_record/R as anything in reagents)
 		H.reagents.add_reagent(R.saved_type, R.values["volume"], z121_return_copy(R.values["data"]), chem_temp, no_react = TRUE)
 		var/datum/reagent/restored = H.reagents.has_reagent(R.saved_type)
@@ -208,7 +234,13 @@
 		R.apply(addiction)
 		H.reagents.addiction_list += addiction
 	for(var/datum/z121_return_record/R as anything in statuses)
-		var/datum/status_effect/E = H.apply_status_effect(R.saved_type, R.values["duration"])
+		var/datum/status_effect/E
+		if(ispath(R.saved_type, /datum/status_effect/fire_handler))
+			E = H.apply_status_effect(R.saved_type, R.values["stacks"], TRUE)
+		else if(ispath(R.saved_type, /datum/status_effect/debuff/stinky_contact))
+			E = H.apply_status_effect(R.saved_type, R.values["scent_type"], R.values["scent"])
+		else
+			E = H.apply_status_effect(R.saved_type, R.values["duration"])
 		if(!QDELETED(E))
 			R.apply(E)
 			if(E.duration != -1)
@@ -220,6 +252,12 @@
 	physiology_values.apply(H.physiology)
 	armor_values.apply(H.physiology.armor)
 	restore_traits(H, source_map)
+	for(var/datum/status_effect/fire_handler/F as anything in H.status_effects)
+		F.cache_stacks()
+		if(istype(F, /datum/status_effect/fire_handler/fire_stacks))
+			var/datum/status_effect/fire_handler/fire_stacks/fire = F
+			if(fire.on_fire)
+				fire.ignite(TRUE)
 	H.setToxLoss(losses[1], FALSE, TRUE)
 	// 核心的缺氧赋值仍会检查无敌标记，暂时解除以完整恢复保存的缺氧值。
 	var/previous_status_flags = H.status_flags
@@ -229,6 +267,8 @@
 	H.setCloneLoss(losses[3], FALSE, TRUE)
 	H.setStaminaLoss(losses[4], FALSE, TRUE)
 	H.set_blood_volume(blood)
+	H.stam_regen_start_time = world.time + stamina_regen_delay
+	body_values.restore_timers(H)
 	var/datum/skill_holder/skills = H.ensure_skills()
 	skills.known_skills = known_skills.Copy()
 	skills.skill_experience = skill_experience.Copy()
@@ -243,8 +283,17 @@
 	// 直接还原伤害数值不会刷新挫伤、烧伤等级，必须重算后再重建贴图。
 	// 按存档伤势生成外观，不能把清晨已有的伤痕一并清除。
 	for(var/obj/item/bodypart/B as anything in H.bodyparts)
+		var/datum/z121_return_record/R = limbs[B.body_zone]
+		if(R)
+			z121_return_restore_trait_sources(B, R.saved_traits, source_map)
+		if(length(B.wounds) > 1)
+			sortTim(B.wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
 		B.update_bodypart_damage_state()
 		B.invalidate_limb_cache()
+	for(var/obj/item/organ/O as anything in H.internal_organs)
+		var/datum/z121_return_record/R = organs[O.slot]
+		if(R)
+			z121_return_restore_trait_sources(O, R.saved_traits, source_map)
 	H.body_overlay_cache_key = null
 	H.damage_overlay_cache_key = null
 	H.update_damage_overlays_real()
@@ -267,7 +316,12 @@
 			B.attach_limb(H, TRUE)
 		R.apply(B)
 		B.bleeding = 0
-		B.bodypart_features = list()
+		R.restore_timers(B)
+		// 当前衣物对应的外观随实物保留，不能从存档复制出内衣或装具。
+		for(var/datum/bodypart_feature/F as anything in B.bodypart_features.Copy())
+			if(!z121_return_item_feature(F))
+				B.remove_bodypart_feature(F)
+				qdel(F)
 		source_map[R.source_ref] = REF(B)
 	for(var/list/entry as anything in features)
 		var/datum/z121_return_record/R = entry[2]
@@ -305,7 +359,10 @@
 			source_map[R.source_ref] = REF(trauma)
 
 /datum/z121_return_snapshot/proc/restore_traits(mob/living/carbon/human/H, list/source_map)
-	var/list/desired = z121_return_copy(traits)
+	z121_return_restore_trait_sources(H, traits, source_map)
+
+/proc/z121_return_restore_trait_sources(datum/target, list/saved_sources, list/source_map)
+	var/list/desired = z121_return_copy(saved_sources)
 	for(var/trait in desired)
 		var/list/sources = desired[trait]
 		for(var/source in sources.Copy())
@@ -313,15 +370,18 @@
 				sources -= source
 				sources |= source_map[source]
 	// 按来源进行差异更新，触发标准增删信号，而不是直接覆盖特性表。
-	for(var/trait in H.status_traits?.Copy())
-		var/list/sources = H.status_traits[trait]
+	for(var/trait in target.status_traits?.Copy())
+		var/list/sources = target.status_traits[trait]
 		var/list/wanted = desired[trait]
 		for(var/source in sources.Copy())
 			if(!(source in wanted))
-				REMOVE_TRAIT(H, trait, source)
+				REMOVE_TRAIT(target, trait, source)
 	for(var/trait in desired)
 		for(var/source in desired[trait])
-			ADD_TRAIT(H, trait, source)
+			ADD_TRAIT(target, trait, source)
+
+/proc/z121_return_item_feature(datum/bodypart_feature/F)
+	return istype(F, /datum/bodypart_feature/underwear) || istype(F, /datum/bodypart_feature/legwear) || istype(F, /datum/bodypart_feature/chastity)
 
 /datum/z121_return_snapshot/proc/restore_rpg(mob/living/carbon/human/H)
 	// 成长点与属性、技能、特性一同回滚，不触发升级奖励。
@@ -361,6 +421,8 @@
 
 // 只回滚身体本身的异常；职业、施法冷却、任务与外部契约不能借读档刷新。
 /proc/z121_return_bodily_status(datum/status_effect/E)
+	if(istype(E, /datum/status_effect/fire_handler))
+		return TRUE
 	if(istype(E, /datum/status_effect/incapacitating))
 		return TRUE
 	if(istype(E, /datum/status_effect/freon) || istype(E, /datum/status_effect/neck_slice) || istype(E, /datum/status_effect/spasms) || istype(E, /datum/status_effect/trance))
