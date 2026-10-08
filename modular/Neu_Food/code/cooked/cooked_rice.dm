@@ -3,7 +3,7 @@
 	name = "熟米饭"
 	desc = "朴素的熟米饭，是许多文化中的主食。"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_rice.dmi'
-	icon_state = "米饭香"
+	icon_state = "rice"
 	faretype = FARE_POOR
 	bitesize = 3
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_HALF_MEAL)
