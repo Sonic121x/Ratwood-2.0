@@ -4,7 +4,7 @@
 	set desc = "显示所有与身体分离的玩家头颅、其中的意识及其位置。"
 	if(!check_rights(R_ADMIN))
 		return
-	var/dat = "<B>玩家断头列表。</B><HR>"
+	var/dat = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>玩家断头列表。</B><HR>"
 	dat += "<table cellspacing=5><tr><th>角色</th><th>账号</th><th>占据者</th><th>位置</th></tr>"
 	var/found = 0
 	for(var/datum/mind/M in SSticker.minds)

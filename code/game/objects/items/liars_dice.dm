@@ -530,7 +530,7 @@
 	name = "吹牛骰骰袋"
 	desc = "一个用来玩吹牛骰的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/liars_dice_game/active_game
-	var/static/liars_dice_rules_text = {"<div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/liars_dice_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>吹牛骰</h2>
 <br>
 <b>目标：</b>成为最后一名仍至少持有一颗骰子的玩家。<br>
