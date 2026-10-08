@@ -1496,7 +1496,7 @@
 		thing_to_check = splittext(thing_to_check, ", ")
 
 
-		var/list/dat = list("按 [uppertext(href_list["showrelatedacc"])] 查找的关联账号：")
+		var/list/dat = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>按 [uppertext(href_list["showrelatedacc"])] 查找的关联账号：")
 		dat += thing_to_check
 
 		usr << browse(dat.Join("<br>"), "window=related_[C];size=420x300")
@@ -1905,7 +1905,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/dat = {"<B>选择要游玩的模式：</B><HR>"}
+	var/dat = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>选择要游玩的模式：</B><HR>"}
 	for(var/mode in config.modes)
 		dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 	dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=secret'>秘密模式</A><br>"}
@@ -1921,7 +1921,7 @@
 		return alert(usr, "游戏已开始。", null, null, null, null)
 	if(GLOB.master_mode != "secret")
 		return alert(usr, "游戏模式必须为 secret！", null, null, null, null)
-	var/dat = {"<B>要强制秘密模式使用哪种游戏模式？此功能会修改实际模式，同时向玩家显示为秘密模式。仅在当前模式为秘密模式时可用。</B><HR>"}
+	var/dat = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><B>要强制秘密模式使用哪种游戏模式？此功能会修改实际模式，同时向玩家显示为秘密模式。仅在当前模式为秘密模式时可用。</B><HR>"}
 	for(var/mode in config.modes)
 		dat += {"<A href='?src=[REF(src)];[HrefToken()];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
 	dat += {"<A href='?src=[REF(src)];[HrefToken()];f_secret2=secret'>随机（默认）</A><br>"}

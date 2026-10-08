@@ -897,7 +897,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/list/msg = list()
-	msg += "<html><head><title>游玩时长报告</title></head><body>游玩时长：<BR><UL>"
+	msg += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>游玩时长报告</title></head><body>游玩时长：<BR><UL>"
 	for(var/client/C in GLOB.clients)
 		msg += "<LI> - [key_name_admin(C)]: <A href='?_src_=holder;[HrefToken()];getplaytimewindow=[REF(C.mob)]'>" + C.get_exp_living() + "</a></LI>"
 	msg += "</UL></BODY></HTML>"
@@ -914,7 +914,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/list/body = list()
-	body += "<html><head><title>[C.key] 的游玩时长</title></head><BODY><BR>游玩时长："
+	body += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[C.key] 的游玩时长</title></head><BODY><BR>游玩时长："
 	body += C.get_exp_report()
 	body += "<A href='?_src_=holder;[HrefToken()];toggleexempt=[REF(C)]'>切换时长要求豁免</a>"
 	body += "</BODY></HTML>"
