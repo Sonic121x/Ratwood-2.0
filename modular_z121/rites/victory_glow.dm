@@ -1,41 +1,5 @@
-// ============================================================================
-// 胜利荣光（Victory Glow）—— 隶属于拉沃克斯献祭法阵的一项仪式
-// ----------------------------------------------------------------------------
-// 在【已存在的】拉沃克斯献祭法阵
-//（`/obj/structure/ritualcircle/sacrifice/ravox`，定义于 sacrifice_circles.dm）
-// 之上新增一项仪式。DM 会跨文件合并同一类型的定义，因此在这里重新打开该类型即可
-// 挂上新仪式，而【无需】改动那个共享的法阵文件。
-//
-// 该仪式要求法阵格子上放置三颗“悬赏首级”。成功时消耗这三颗首级，并赋予主持者一段
-// 10 分钟的“胜利荣光”增益。在增益持续期间，每当主持者【进入战斗姿态（cmode）】时：
-//   · 耐力消耗 -10%
-//   · 力量 STR +1、敏捷 SPD +1、体质 CON +1
-//   · 转换率 +5%
-//   · 闪避率 +5%
-// 离开战斗姿态时，这些战斗加成会自动撤除；再次进入又会恢复，直到增益到期。
-//
-// 实现说明（“确保各效果实际生效 / 提供挂钩或桩”）：
-//   - STR/SPD/CON +1 通过 change_stat 真实施加（SPD 即移动速度属性，CON 还能提高
-//     冲刺时不掉耐力的概率，因此这三项本身就实质性地兼顾了“转换/移动”与“耐力”）。
-//   - 闪避率 +5% 通过授予真实存在、且被战斗系统读取的 TRAIT_DODGEEXPERT 实现
-//     （先例：starsugar 增益正是这样临时授予该特质）。
-//   - 耐力消耗 -10% 与 转换率 +5% 这两项百分比修正，没有可直接写入的单一系数变量，
-//     因此以一个自定义标记特质 TRAIT_VICTORY_GLOW + 一组带注释的百分比常量作为
-//     “集成挂钩”：相应战斗子系统可读取该标记与常量来施加修正（此即题目允许的桩/挂钩）。
-//
-// 遵循项目规则：仅存放于 modular_z121 之下，面向玩家的文本一律使用中文，
-// 每一处过程、变量与逻辑块上方都以中文注释解释其“为何如此”。
-//
-// 依赖项（均已在构建中，未作改动）：
-//   - 仪式基础框架：modular_z121\rites\sacrifice_circles.dm
-//   - 悬赏首级：/obj/item/bodypart/head（人形断头，赏金机所认）或
-//       /obj/item/natural/head（兽类悬赏首级，使用 bounty_heads.dmi）
-//   - 战斗姿态标志 mob.cmode（code\modules\mob\mob_defines.dm）
-//   - change_stat / STATKEY_*（code\modules\mob\living\stats.dm, __DEFINES\mobs.dm）
-//   - 真实闪避特质 TRAIT_DODGEEXPERT（code\__DEFINES\traits.dm）
-// 需在 modular_z121\_load.dm 中登记（置于 sacrifice_circles.dm 之后）。
-// ============================================================================
-
+// 胜利荣光持续十分钟；战斗姿态下属性各加一，正向疲劳增长降低一成。
+// 闪避和招架的五个百分点加成由人形战斗覆写在倍率之后、概率裁剪之前计算。
 // --- 可调常量 ---------------------------------------------------------------
 // 在仪式选择菜单中显示、并在分派 switch 中用于匹配的标签文本；用 define 保存，
 // 使二者永远保持一致、不会悄然出现偏差。
@@ -50,14 +14,6 @@
 #define VICTORY_GLOW_STR_BONUS 1
 #define VICTORY_GLOW_SPD_BONUS 1
 #define VICTORY_GLOW_CON_BONUS 1
-// 百分比修正常量（供集成挂钩与提示文本引用）：耐力消耗 -10%、转换率 +5%、闪避率 +5%。
-#define VICTORY_GLOW_ENDURANCE_MOD 10
-#define VICTORY_GLOW_SHIFT_MOD 5
-#define VICTORY_GLOW_DODGE_MOD 5
-// 自定义标记特质：作为“耐力消耗 -10% / 转换率 +5%”的集成挂钩。特质本质就是字符串，
-// 在此自定义即可（不改动 code/ 下的特质定义文件）。
-#define TRAIT_VICTORY_GLOW "victory_glow"
-
 // 重新打开拉沃克斯献祭法阵以登记我们的仪式。基类 attack_hand()
 //（在 sacrifice_circles.dm 中）已经强制校验 patron == Ravox、TRAIT_RITUALIST 特质、
 // 每次歇息只能一次的“仪式已耗尽”冷却，并弹出选择菜单——因此我们只需提供菜单标题与仪式列表。
@@ -114,7 +70,7 @@
 	// do_after() 若被打断（移动/眩晕）会返回 FALSE；每一阶段都重新确认首级仍在，
 	// 因此走开（或被人顺走首级）都会干净地中止、不消耗任何东西。
 	// 台词呼应拉沃克斯的领域：正义、武勇与对宿敌的胜利。
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("拉沃克斯啊，正义之锋，守护弱者的护佑者！请垂顾你的战士。")
 	playsound(altar, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
@@ -123,7 +79,7 @@
 	if(length(get_bounty_heads(altar)) < VICTORY_GLOW_REQUIRED_HEADS)
 		to_chat(H, span_warning("法阵上的首级不足，仪式随之中断。"))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("我将这些伏诛之敌的首级献于你前，作为我武勇与裁决的明证！")
 	playsound(altar, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
@@ -131,18 +87,18 @@
 	if(length(get_bounty_heads(altar)) < VICTORY_GLOW_REQUIRED_HEADS)
 		to_chat(H, span_warning("法阵上的首级不足，仪式随之中断。"))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("请以胜利的荣光加持于我，让我在每一场战斗中所向披靡！")
 	to_chat(H, span_danger("一股炽烈的暖流自心口奔涌而出，仿佛凯旋的号角正在血脉中长鸣……"))
 
 	// 收尾前最后一段较短的停顿，让高潮显得郑重而有意为之。
-	if(!do_after(H, 30, target = src))
+	if(!wait_for_rite(H, 30))
 		return FALSE
 
 	// --- 最终校验 + 消耗三颗首级。--------------------------------
 	// 在拿取任何东西之前进行权威校验，使消耗绝不会在数量不足时执行。
-	if(length(get_bounty_heads(altar)) < VICTORY_GLOW_REQUIRED_HEADS)
+	if(!rite_session_valid(H) || H.has_status_effect(/datum/status_effect/buff/victory_glow) || length(get_bounty_heads(altar)) < VICTORY_GLOW_REQUIRED_HEADS)
 		return FALSE
 	// 销毁恰好 3 颗首级；若以某种方式失败，则中止后续效果。
 	if(!consume_bounty_heads(altar))
@@ -182,7 +138,7 @@
 		return heads
 	// 遍历格子上的物品，凡属上述两类首级者皆收入列表。
 	for(var/obj/item/candidate in altar)
-		if(istype(candidate, /obj/item/bodypart/head) || istype(candidate, /obj/item/natural/head))
+		if(!QDELETED(candidate) && (istype(candidate, /obj/item/bodypart/head) || istype(candidate, /obj/item/natural/head)))
 			heads += candidate
 	return heads
 
@@ -217,7 +173,7 @@
 // ============================================================================
 /datum/status_effect/buff/victory_glow
 	// 稳定的 id，使 has_status_effect()/remove_status_effect() 能找到它；
-	// 同时用作 ADD_TRAIT/REMOVE_TRAIT 的来源标签，使特质增减一一对应。
+	// 防御和疲劳接口只读取此状态，不授予闪避专家特质。
 	id = "victory_glow"
 	// 规格要求的总时长：10 分钟。
 	duration = VICTORY_GLOW_DURATION
@@ -237,7 +193,7 @@
 // 持有该增益期间显示的 HUD 提示图标。
 /atom/movable/screen/alert/status_effect/buff/victory_glow
 	name = "胜利荣光"
-	desc = "拉沃克斯的荣光与我同在。每当我进入战斗姿态，便会更强、更快、更难被击倒。"
+	desc = "战斗姿态下力量、速度、体质各增加一点；疲劳增长降低一成，闪避和招架各增加五个百分点，仍受原有上限限制。"
 	icon_state = "call_to_arms"
 
 // 主持者此刻是否处于战斗姿态？荣光的战斗加成只在战斗姿态下生效。
@@ -254,11 +210,6 @@
 	// 真实施加 STR/SPD/CON 加成（SPD 即移动速度，CON 还提升冲刺保耐力的概率）。
 	for(var/stat in combat_stats)
 		owner.change_stat(stat, combat_stats[stat])
-	// 真实的闪避增强：授予战斗系统实际读取的 TRAIT_DODGEEXPERT，作为“闪避率 +[VICTORY_GLOW_DODGE_MOD]%”的实现。
-	ADD_TRAIT(owner, TRAIT_DODGEEXPERT, id)
-	// 集成挂钩：标记“耐力消耗 -[VICTORY_GLOW_ENDURANCE_MOD]% / 转换率 +[VICTORY_GLOW_SHIFT_MOD]%”。
-	// 相应战斗子系统可据此标记与上述常量施加对应百分比修正。
-	ADD_TRAIT(owner, TRAIT_VICTORY_GLOW, id)
 	combat_active = TRUE
 	to_chat(owner, span_nicegreen("胜利的荣光在你周身燃起——力量、迅捷与坚韧涌入四肢，疲惫也仿佛被驱散了几分！"))
 
@@ -270,8 +221,6 @@
 	if(!QDELETED(owner))
 		for(var/stat in combat_stats)
 			owner.change_stat(stat, -combat_stats[stat])
-		REMOVE_TRAIT(owner, TRAIT_DODGEEXPERT, id)
-		REMOVE_TRAIT(owner, TRAIT_VICTORY_GLOW, id)
 		to_chat(owner, span_warning("你退出了战斗姿态，胜利的荣光也随之黯淡下来。"))
 	combat_active = FALSE
 
@@ -316,7 +265,3 @@
 #undef VICTORY_GLOW_STR_BONUS
 #undef VICTORY_GLOW_SPD_BONUS
 #undef VICTORY_GLOW_CON_BONUS
-#undef VICTORY_GLOW_ENDURANCE_MOD
-#undef VICTORY_GLOW_SHIFT_MOD
-#undef VICTORY_GLOW_DODGE_MOD
-#undef TRAIT_VICTORY_GLOW

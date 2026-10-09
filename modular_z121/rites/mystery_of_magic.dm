@@ -92,7 +92,7 @@
 	// 若使用者移动/被打断，do_after() 会返回 FALSE；每一阶段都重新确认遗物仍在，
 	// 因此走开（或被人顺走遗物）都会干净地中止、不消耗任何东西。
 	// 这些台词呼应诺克的领域：秘密、明月与隐匿的知识。
-	if(!do_after(user, 50, target = src))
+	if(!wait_for_rite(user, 50))
 		return FALSE
 	user.say("诺克啊，秘密之父，长夜与明月的守望者！请垂听我的祈求。")
 	playsound(altar, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
@@ -100,7 +100,7 @@
 	if(!count_runed_artifacts(altar)) // 重新校验（世界状态可能已经改变）。
 		to_chat(user, span_warning("符文遗物已不在法阵之上，仪式随之中断。"))
 		return FALSE
-	if(!do_after(user, 50, target = src))
+	if(!wait_for_rite(user, 50))
 		return FALSE
 	user.say("我献上这些镌刻着古老符文的遗物，愿你为我揭开其中沉睡的奥秘。")
 	playsound(altar, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
@@ -108,43 +108,31 @@
 	if(!count_runed_artifacts(altar))
 		to_chat(user, span_warning("符文遗物已不在法阵之上，仪式随之中断。"))
 		return FALSE
-	if(!do_after(user, 50, target = src))
+	if(!wait_for_rite(user, 50))
 		return FALSE
 	user.say("将隐匿于符文之下的知识，倾注入我的心神之中吧！")
 	to_chat(user, span_danger("无数细碎的低语涌入脑海，古老的符文在你眼前缓缓亮起又熄灭……"))
 
 	// 收尾前最后一段较短的停顿，让高潮显得郑重而有意为之。
-	if(!do_after(user, 30, target = src))
+	if(!wait_for_rite(user, 30))
 		return FALSE
 
-	// --- 最终校验 + 消耗法阵上的【每一件】遗物。-------------
-	// 在消耗的那一刻进行权威计数；若它在上次检查与此刻之间不知怎么跌到了零，则中止。
-	var/consumed = consume_runed_artifacts(altar)
-	if(consumed <= 0)
-		to_chat(user, span_warning("祭品在最后一刻散落，仪式功亏一篑。"))
+	// 扣除遗物前重新构建候选池，避免等待期间学会相同法术或心智转移。
+	if(!rite_session_valid(user))
 		return FALSE
-
-	// 防御性处理：法术池是在吟唱之前构建的。重新检查它仍然非空
-	//（仪式进行中它通常不会改变，但绝不从“空无一物”里授予法术）。
-	if(!length(pool_by_tier))
-		to_chat(user, span_warning("奥秘从指间溜走，没有任何法术被习得。"))
-		return FALSE
-
-	// --- 掷点并授予所提取的法术。-----------------------------------
-	// extract_spell() 会按所消耗遗物的数量为层级掷点加权，再从所选层级中抽出一道具体法术。
+	pool_by_tier = build_spell_pool(user)
+	var/consumed = count_runed_artifacts(altar)
 	var/chosen_path = extract_spell(pool_by_tier, consumed)
-	if(!ispath(chosen_path, /obj/effect/proc_holder/spell))
-		// 理应不可能（法术池非空），但万一如此也要安全地失败。
-		to_chat(user, span_warning("奥秘在成形前崩解，没有任何法术被习得。"))
+	if(consumed <= 0 || !ispath(chosen_path, /obj/effect/proc_holder/spell) || user.mind.has_spell(chosen_path))
+		to_chat(user, span_warning("符文中已无新的奥秘可供汲取，献祭就此中止。"))
 		return FALSE
-
-	// 实例化该法术并将其赋予主持者的心智。其方式与 learnspell.dm 授予一道可习得法术
-	// 相同（AddSpell 会接好施法动作）。
 	var/obj/effect/proc_holder/spell/new_spell = new chosen_path
 	if(QDELETED(new_spell))
-		to_chat(user, span_warning("奥秘在成形前崩解，没有任何法术被习得。"))
 		return FALSE
-	user.mind.AddSpell(new_spell)
+	if(!rite_session_valid(user) || user.mind.has_spell(chosen_path) || consume_runed_artifacts(altar, consumed) != consumed)
+		qdel(new_spell)
+		return FALSE
+	user.mind.AddSpell(new_spell, user)
 
 	// --- 仪式成功的视觉与气氛表现。----------------------------
 	icon_state = "noc_active" // 魔法生效期间点亮符文。
@@ -173,14 +161,15 @@
 	var/count = 0
 	// istype 会匹配 /obj/item/magic/artifact 及其任意子类型，因此符文遗物的每个变体都会被计入。
 	for(var/obj/item/magic/artifact/A in altar)
-		count++
+		if(!QDELETED(A))
+			count++
 	return count
 
 // ----------------------------------------------------------------------------
 // 辅助：销毁法阵格子上的【每一件】符文遗物，并报告消耗了多少件。
 // 返回数量，使调用方能据此为法术掷点加权，并给出如实的反馈。
 // ----------------------------------------------------------------------------
-/obj/structure/ritualcircle/sacrifice/noc/proc/consume_runed_artifacts(turf/altar)
+/obj/structure/ritualcircle/sacrifice/noc/proc/consume_runed_artifacts(turf/altar, expected_count)
 	if(!altar)
 		return 0
 	var/consumed = 0
@@ -188,7 +177,10 @@
 	// 因此先收集，再 qdel。
 	var/list/to_consume = list()
 	for(var/obj/item/magic/artifact/A in altar)
-		to_consume += A
+		if(!QDELETED(A))
+			to_consume += A
+	if(!isnull(expected_count) && length(to_consume) != expected_count)
+		return 0
 	for(var/obj/item/magic/artifact/A in to_consume)
 		if(QDELETED(A))
 			continue
@@ -206,21 +198,21 @@
 	var/list/pool_by_tier = list()
 	// GLOB.learnable_spells 是一份法术【类型路径】列表（法师法术池，外加并入的
 	// 自定义法术）。我们以与 learnspell.dm 相同的方式读取每个路径的编译期默认值：
-	// 把路径赋给一个有类型的变量，再读取其变量。
+	// 把路径赋给有类型的变量，再用 initial() 读取默认值。
 	for(var/spell_path in GLOB.learnable_spells)
 		// 跳过任何并非法术路径的条目（针对法术池中可能存在的畸形条目作防御）。
 		if(!ispath(spell_path, /obj/effect/proc_holder/spell))
 			continue
 		var/obj/effect/proc_holder/spell/template = spell_path
 		// 按要求仅取【非奇迹】法术（奇迹是神职的恩赐，并非奥术）。
-		if(template.miracle)
+		if(initial(template.miracle))
 			continue
 		// 排除邪恶/异端专属的“zizo”法术：那些法术在 learnspell 中以“是否为异端”作门槛，
 		// 不应从一项通用仪式中外泄出去。
-		if(template.zizo_spell)
+		if(initial(template.zizo_spell))
 			continue
 		// 执行 T3 上限，并忽略任何不合理的负数层级。
-		var/tier = template.spell_tier
+		var/tier = initial(template.spell_tier)
 		if(tier < 0 || tier > MYSTERY_OF_MAGIC_MAX_TIER)
 			continue
 		// 不提供主持者已经掌握的法术——那会是一次无效操作。

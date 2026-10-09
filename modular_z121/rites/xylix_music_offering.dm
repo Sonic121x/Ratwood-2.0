@@ -120,12 +120,12 @@ GLOBAL_LIST_INIT(xylix_music_pieces, list(
 	// --- 开场吟唱。----------------------------------------------------
 	// do_after() 若被打断（移动/眩晕）会返回 FALSE，使开场即中止、且不花费冷却。
 	// 台词呼应赛利克斯的领域：诡计、戏谑与舞台表演。
-	if(!do_after(H, 30, target = src))
+	if(!wait_for_rite(H, 30))
 		return FALSE
 	H.say("赛利克斯啊，千面之主，戏谑与诡计的庇佑者！请赏光听我一曲。")
 	playsound(altar, 'sound/misc/clownedhehe.ogg', 80, FALSE, -1)
 
-	if(!do_after(H, 30, target = src))
+	if(!wait_for_rite(H, 30))
 		return FALSE
 	H.say("请为我点一支曲子吧——我愿在你的法阵之上倾力献演！")
 	playsound(altar, 'sound/misc/clownedhohoho.ogg', 80, FALSE, -1)
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(xylix_music_pieces, list(
 	// 随机选一种乐器类型，并把路径赋给有类型的变量以读取其显示名（initial(name)）。
 	var/instrument_type = pick(GLOB.xylix_music_instruments)
 	var/obj/item/rogue/instrument/sample = instrument_type
-	var/instrument_name = sample.name
+	var/instrument_name = initial(sample.name)
 	// 随机选一支曲目（纯氛围文本）。若曲目池意外为空则给个兜底名，避免空串。
 	var/piece_name = length(GLOB.xylix_music_pieces) ? pick(GLOB.xylix_music_pieces) : "一支即兴小调"
 	// 随机抽取所要求的音乐技能等级（含端点）。
@@ -158,27 +158,40 @@ GLOBAL_LIST_INIT(xylix_music_pieces, list(
 	// 记录截止时刻，并立即进行第一次轮询；之后由 run_performance_window() 自行续期，
 	// 直到成功或超时。所有状态都通过回调参数传递，因此即便同一法阵被多人同时使用也互不干扰。
 	var/deadline = world.time + XYLIX_MUSIC_TIME_LIMIT
-	run_performance_window(H, instrument_type, required_level, piece_name, deadline, altar)
+	var/datum/z121_sacrifice_session/session = H.z121_sacrifice_session
+	session.performance_active = TRUE
+	run_performance_window(H, instrument_type, required_level, piece_name, deadline, altar, session)
 	return TRUE
 
 // ----------------------------------------------------------------------------
 // 限时窗口的轮询心跳：每 XYLIX_MUSIC_POLL_INTERVAL 被调用一次。
 // 满足条件 -> 发奖并结束；参与者失效 -> 静默中止；超时 -> 失败提示；否则续约下一次轮询。
 // ----------------------------------------------------------------------------
-/obj/structure/ritualcircle/sacrifice/xylix/proc/run_performance_window(mob/living/user, instrument_type, required_level, piece_name, deadline, turf/altar)
-	// 成功：在法阵附近、正用指定乐器演奏、且技能达标。
+/obj/structure/ritualcircle/sacrifice/xylix/proc/run_performance_window(mob/living/user, instrument_type, required_level, piece_name, deadline, turf/altar, datum/z121_sacrifice_session/session)
+	try
+		check_performance_window(user, instrument_type, required_level, piece_name, deadline, altar, session)
+	catch(var/exception/error)
+		qdel(session)
+		throw error
+
+/obj/structure/ritualcircle/sacrifice/xylix/proc/check_performance_window(mob/living/user, instrument_type, required_level, piece_name, deadline, turf/altar, datum/z121_sacrifice_session/session)
+	// 表演期间保留占用；冷却已在开场支付，不再以冷却阻止本次表演。
+	if(QDELETED(session))
+		return
+	if(QDELETED(src) || QDELETED(user) || QDELETED(altar) || get_turf(src) != altar || session.cancelled || user.mind != session.original_mind || !valid_rite_user(user, session.selection, session, FALSE))
+		qdel(session)
+		return
+	// 截止时间先于成功判定，避免末次轮询越过期限发奖。
+	if(world.time >= deadline)
+		to_chat(user, span_warning("约定的时限已经结束，赛利克斯收回了期待的目光。"))
+		qdel(session)
+		return
 	if(xylix_performance_satisfied(user, instrument_type, required_level, altar))
 		xylix_music_reward(user, piece_name)
-		return
-	// 参与者已不存在（登出/被删除等）——无人可奖，静默收场。
-	if(QDELETED(user))
-		return
-	// 超时：限时已过，本次表演未达赛利克斯之意。
-	if(world.time >= deadline)
-		to_chat(user, span_warning("约定的时限悄然流逝……赛利克斯耸了耸肩，对这场演奏不置可否。"))
+		qdel(session)
 		return
 	// 仍在窗口期内——安排下一次轮询。
-	addtimer(CALLBACK(src, PROC_REF(run_performance_window), user, instrument_type, required_level, piece_name, deadline, altar), XYLIX_MUSIC_POLL_INTERVAL)
+	addtimer(CALLBACK(src, PROC_REF(run_performance_window), user, instrument_type, required_level, piece_name, deadline, altar, session), XYLIX_MUSIC_POLL_INTERVAL)
 
 // ----------------------------------------------------------------------------
 // 判定：此刻参与者是否满足全部表演条件？
@@ -192,7 +205,8 @@ GLOBAL_LIST_INIT(xylix_music_pieces, list(
 	if(user.stat != CONSCIOUS)
 		return FALSE
 	// 必须在法阵之上（或紧邻）进行表演。
-	if(get_dist(get_turf(user), altar) > XYLIX_MUSIC_PERFORM_RANGE)
+	var/turf/standing = get_turf(user)
+	if(!standing || !isturf(user.loc) || standing.z != altar.z || get_dist(standing, altar) < 0 || get_dist(standing, altar) > XYLIX_MUSIC_PERFORM_RANGE)
 		return FALSE
 	// 必须正处于“演奏中”状态——演奏乐器会赋予 playing_music 增益。
 	if(!user.has_status_effect(/datum/status_effect/buff/playing_music))

@@ -85,7 +85,7 @@
 	// do_after() 若被打断（移动/眩晕）会返回 FALSE；每一阶段都重新确认祭品仍在，
 	// 因此走开（或被人顺走祭品）都会干净地中止、不消耗任何东西。
 	// 台词呼应佩斯特拉的领域：腐朽、瘟疫、苍蝇之群与“以病疫净化不洁”。
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("佩斯特拉啊，腐朽与瘟疫的女王，苍蝇之群的母亲！请垂听我的祈求。")
 	playsound(altar, 'sound/misc/fliesloop.ogg', 80, FALSE, -1)
@@ -93,20 +93,20 @@
 	// 继续之前重新校验（等待期间世界状态可能已经改变）。
 	if(!has_required_offerings(altar, H))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("我献上心兽之血、灰烬、活蛭与治腐之药——以生与死、净与秽，喂养你的疫群。")
 	playsound(altar, 'sound/misc/fliesloop.ogg', 80, FALSE, -1)
 
 	if(!has_required_offerings(altar, H))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("让不敬十神的渎神者，皆在你的腐朽中溃烂、在你的瘟疫中颤栗吧！")
 	to_chat(H, span_danger("一股腐臭自法阵中蒸腾而起，无数嗡鸣的虫翼仿佛就在耳畔扇动……"))
 
 	// 收尾前最后一段较短的停顿，让高潮显得郑重而有意为之。
-	if(!do_after(H, 30, target = src))
+	if(!wait_for_rite(H, 30))
 		return FALSE
 
 	// --- 最终校验 + 消耗祭品。--------------------------------
@@ -114,6 +114,8 @@
 	if(!has_required_offerings(altar, H))
 		return FALSE
 	// 原子化地各移除一样祭品；若以某种方式失败，则中止后续效果。
+	if(!rite_session_valid(H))
+		return FALSE
 	if(!consume_required_offerings(altar))
 		to_chat(H, span_warning("祭品在最后一刻散落，仪式功亏一篑。"))
 		return FALSE
@@ -181,8 +183,8 @@
 		missing += "灰烬"
 	if(!leech_item)
 		missing += "水蛭"
-	if(!rotcure_item)
-		missing += "治腐药剂"
+	if(!rotcure_item?.reagents || rotcure_item.reagents.get_reagent_amount(/datum/reagent/rotcure) < 20)
+		missing += "含至少20单位治腐试剂的药剂瓶"
 
 	// 有任何缺失 -> 视情况说明，然后报告失败。
 	if(length(missing))
@@ -208,7 +210,7 @@
 	var/obj/item/natural/worms/leech/leech_item = locate() in altar
 	var/obj/item/reagent_containers/glass/bottle/alchemical/rogue/rotcure/rotcure_item = locate() in altar
 	// 此刻若有任何一样已不存在，便拒绝消耗其余的。
-	if(!heartblood || !ash_item || !leech_item || !rotcure_item)
+	if(!heartblood || !ash_item || !leech_item || !rotcure_item?.reagents || rotcure_item.reagents.get_reagent_amount(/datum/reagent/rotcure) < 20)
 		return FALSE
 	// 全部齐备 -> 各销毁一样。qdel 会干净地将它们从格子上移除。
 	qdel(heartblood)
