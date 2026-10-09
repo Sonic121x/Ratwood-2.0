@@ -22,23 +22,26 @@
 /obj/structure/ritualcircle/sacrifice/attack_hand(mob/living/user)
 	if(!..())
 		return
-	if(patron_type && (user.patron?.type != patron_type))
-		to_chat(user, span_smallred("我不知该如何向这道法阵献祭。"))
-		return
-	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
-		to_chat(user, span_smallred("我不知该如何向这道法阵献祭。"))
-		return
-	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
-		to_chat(user, span_smallred("我今日已经完成了足够多的仪式，必须先休息。"))
+	if(!valid_rite_user(user))
+		to_chat(user, span_smallred("我必须清醒地站在法阵旁，具备对应信仰与仪式知识，且不在仪式冷却或其他献祭之中。"))
 		return
 	if(!sacrifice_rites?.len)
 		to_chat(user, span_notice("这道献祭法阵此刻没有回应我的仪式请求。"))
 		return
 
+	var/datum/mind/selection_mind = user.mind
 	var/riteselection = input(user, ritual_title, src) as null|anything in sacrifice_rites
-	if(!riteselection)
+	// 选单会等待玩家回答，因此不能沿用打开选单时的权限与位置。
+	if(!riteselection || !valid_rite_user(user, riteselection) || user.mind != selection_mind)
 		return
-	perform_sacrifice_rite(riteselection, user)
+	var/datum/z121_sacrifice_session/session = new(src, user, riteselection)
+	try
+		perform_sacrifice_rite(riteselection, user)
+	catch(var/exception/error)
+		qdel(session)
+		throw error
+	if(!QDELETED(session) && !session.performance_active)
+		qdel(session)
 
 /obj/structure/ritualcircle/sacrifice/proc/perform_sacrifice_rite(riteselection, mob/living/user)
 	to_chat(user, span_notice("这道献祭法阵暂时还没有可以完成的仪式。"))
@@ -91,17 +94,19 @@
 		to_chat(H, span_smallred("我必须手持一枚虚空石，才能唤来龙魂的回应。"))
 		return FALSE
 
-	if(!do_after(H, 50))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("树父啊，请聆听我的献祭！")
 	playsound(loc, 'sound/vo/mobs/vw/idle (1).ogg', 100, FALSE, -1)
 
-	if(!do_after(H, 50))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("我献上虚空之核，恳请你赐我龙魂！")
 	playsound(loc, 'sound/vo/mobs/vw/idle (4).ogg', 100, FALSE, -1)
 
-	if(!do_after(H, 30))
+	if(!wait_for_rite(H, 30))
+		return FALSE
+	if(!rite_session_valid(H) || !z121_is_dragon_wildshape_eligible(H))
 		return FALSE
 
 	var/obj/item/magic/voidstone/offering = z121_find_dragon_voidstone(H)

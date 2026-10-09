@@ -430,11 +430,14 @@
 		I.do_special_attack_effect(user, null, null, src, null)
 
 /mob/living/carbon/human/attempt_parry(datum/intent/intenty, mob/living/attacker)
-	if(!has_status_effect(/datum/status_effect/z121_highwayman_flaws) || !z121_highwayman_armor_allowed(src))
+	// 荣光独立于强盗的装备条件，强盗倍率仍只在原条件成立时应用。
+	var/highwayman_bonus = has_status_effect(/datum/status_effect/z121_highwayman_flaws) && z121_highwayman_armor_allowed(src)
+	var/glory_bonus = z121_victory_glow_active() ? 5 : 0
+	if(!highwayman_bonus && !glory_bonus)
 		return ..()
 	if(!intenty.parriable_intent)
 		return FALSE
-	if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) || HAS_TRAIT(src, TRAIT_NODEF) || !mob_can_parry)
+	if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) || HAS_TRAIT(src, TRAIT_NODEF) || !mob_can_parry || (!highwayman_bonus && !length(held_items)))
 		return FALSE
 	if(pulledby || pulling)
 		return FALSE
@@ -557,7 +560,7 @@
 		if(HAS_TRAIT(attacker, TRAIT_FENCERDEXTERITY))
 			prob2defend -= 5
 
-	prob2defend = clamp(prob2defend * 1.3, 5, 90)
+	prob2defend = clamp(prob2defend * (highwayman_bonus ? 1.3 : 1) + glory_bonus, 5, 90)
 	if(HAS_TRAIT(attacker, TRAIT_HARDSHELL) && client)
 		prob2defend = clamp(prob2defend, 5, 70)
 	if(!check_armor_skill())
@@ -707,7 +710,9 @@
 		return TRUE
 
 /mob/living/carbon/human/do_dodge(mob/living/attacker, turf/turfy)
-	if(!has_status_effect(/datum/status_effect/z121_highwayman_counter) || !z121_highwayman_armor_allowed(src))
+	var/highwayman_bonus = has_status_effect(/datum/status_effect/z121_highwayman_counter) && z121_highwayman_armor_allowed(src)
+	var/glory_bonus = z121_victory_glow_active() ? 5 : 0
+	if(!highwayman_bonus && !glory_bonus)
 		return ..()
 	if(dodge_sanity)
 		return FALSE
@@ -736,7 +741,7 @@
 		prob2defend = prob2defend - (attacker.get_skill_level(attacking_item.associated_skill) * 10)
 
 	if(!human_dodger)
-		prob2defend = clamp(prob2defend + 20, 5, 90)
+		prob2defend = clamp(prob2defend + (highwayman_bonus ? 20 : 0) + glory_bonus, 5, 90)
 		if(client?.prefs.showrolls)
 			to_chat(src, span_info("闪避判定……[prob2defend]%"))
 		if(!prob(prob2defend))
@@ -780,7 +785,7 @@
 		if(HAS_TRAIT(attacker, TRAIT_ARMOUR_LIKED))
 			if(HAS_TRAIT(attacker, TRAIT_FENCERDEXTERITY))
 				prob2defend -= 10
-		prob2defend = clamp(prob2defend + 20, 5, 90)
+		prob2defend = clamp(prob2defend + (highwayman_bonus ? 20 : 0) + glory_bonus, 5, 90)
 
 		var/attacker_dualw
 		var/defender_dualw
@@ -842,6 +847,9 @@
 		log_combat(src, attacker, "dodged", null, defense_log_note(attacker))
 	dodge_sanity = TRUE
 	playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
+	// 只有原本的强盗反击维持原地闪避，普通荣光角色仍执行闪避位移。
+	if(!highwayman_bonus)
+		throw_at(turfy, 1, 2, src, FALSE)
 
 	if(drained > 0)
 		visible_message(span_warning("<b>[src]</b>躲过了[attacker]的攻击！"))

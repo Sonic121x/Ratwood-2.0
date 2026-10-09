@@ -91,7 +91,7 @@
 	// 若使用者移动/被打断，do_after() 会返回 FALSE；每一阶段都重新确认宝石仍在，
 	// 因此走开（或被人顺走一颗宝石）都会干净地中止、不消耗任何东西。
 	// 这些台词呼应阿斯特拉塔的领域：白昼、太阳与绝对秩序。
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("阿斯特拉塔啊，白昼与太阳的至高之主！请垂顾你的仆从。")
 	playsound(altar, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
@@ -99,20 +99,20 @@
 	// 继续之前重新校验（等待期间世界状态可能已经改变）。
 	if(!has_required_offerings(altar, H))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("我献上红宝石、蓝宝石与钻石，愿它们如群星般在你的日光中燃尽。")
 	playsound(altar, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
 
 	if(!has_required_offerings(altar, H))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("请将白昼的伟力倾注于我，让我的意志与体魄沐浴于你的荣光！")
 	to_chat(H, span_danger("一股温暖的金光自头顶倾泻而下，渗入你的四肢百骸……"))
 
 	// 收尾前最后一段较短的停顿，让高潮显得郑重而有意为之。
-	if(!do_after(H, 30, target = src))
+	if(!wait_for_rite(H, 30))
 		return FALSE
 
 	// --- 最终检查 + 消耗祭品。--------------------------------
@@ -120,6 +120,8 @@
 	if(!has_required_offerings(altar, H))
 		return FALSE
 	// 原子化地各移除一颗宝石；若以某种方式失败，则中止授予。
+	if(!rite_session_valid(H) || H.has_status_effect(/datum/status_effect/buff/gift_of_the_sun))
+		return FALSE
 	if(!consume_required_offerings(altar))
 		to_chat(H, span_warning("祭品在最后一刻散落，仪式功亏一篑。"))
 		return FALSE

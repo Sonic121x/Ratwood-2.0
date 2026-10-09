@@ -95,7 +95,7 @@
 	// 若使用者移动、被击晕，或动作以其它方式被打断，do_after() 会返回 FALSE；
 	// 每一阶段都会重新确认祭品仍在此处，因此走开（或被人顺走某块锭料）都会
 	// 干净利落地中止、且不消耗任何东西。这些台词呼应玛勒姆的领域：工艺、烈焰、毁灭、巧思。
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("玛勒姆啊，工艺与烈焰之主！请垂听这场献祭。")
 	playsound(altar, 'sound/items/bsmithfail.ogg', 100, FALSE, -1)
@@ -103,20 +103,20 @@
 	// 继续之前重新校验：等待期间世界状态可能已经改变。
 	if(!has_required_offerings(altar, H))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("收下这铜、铁、银、金与圣钢，将它们的奥义熔炼进我的血脉！")
 	playsound(altar, 'sound/items/bsmithfail.ogg', 100, FALSE, -1)
 
 	if(!has_required_offerings(altar, H))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("纵使这技艺生来怀着恶意，我也甘愿背负——赐我无可匹敌的锻造之手！")
 	to_chat(H, span_danger("一股灼热自胸膛奔涌而出，仿佛炉火正在你的骨髓里熊熊燃烧……"))
 
 	// 收尾前最后一段较短的停顿，让高潮显得郑重而有意为之。
-	if(!do_after(H, 30, target = src))
+	if(!wait_for_rite(H, 30))
 		return FALSE
 
 	// --- 最终检查 + 消耗祭品。----------------------------------------
@@ -125,6 +125,8 @@
 		return FALSE
 	// 原子化地各移除一块所需锭料。如果在上述所有守卫之下消耗仍以某种方式失败，
 	// 我们就中止，且不授予任何奖励。
+	if(!rite_session_valid(H) || already_fully_empowered(H))
+		return FALSE
 	if(!consume_required_offerings(altar))
 		to_chat(H, span_warning("祭品在最后一刻散落，仪式功亏一篑。"))
 		return FALSE

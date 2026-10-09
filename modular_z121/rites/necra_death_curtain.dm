@@ -90,7 +90,7 @@
 	// 若使用者移动/被打断，do_after() 会返回 FALSE；每一阶段都重新确认 LUX 仍在，
 	// 因此走开（或被人顺走 LUX）都会干净地中止、不消耗任何东西。
 	// 这些台词呼应内克拉的领域：死亡、彼岸的幽冥少女与生死之间的帷幕。
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("内克拉啊，幽冥少女，长眠与彼岸的执掌者！请垂听我的祈求。")
 	playsound(altar, 'sound/magic/churn.ogg', 80, FALSE, -1)
@@ -99,7 +99,7 @@
 	if(!has_required_lux(altar))
 		to_chat(H, span_warning("灵辉已不在法阵之上，仪式随之中断。"))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("我献上这一缕生命之灵辉，恳请你为我留一道返回人世的缝隙。")
 	playsound(altar, 'sound/magic/churn.ogg', 80, FALSE, -1)
@@ -107,13 +107,13 @@
 	if(!has_required_lux(altar))
 		to_chat(H, span_warning("灵辉已不在法阵之上，仪式随之中断。"))
 		return FALSE
-	if(!do_after(H, 50, target = src))
+	if(!wait_for_rite(H, 50))
 		return FALSE
 	H.say("当死亡前来叩门，请以你的帷幕将我轻轻送回！")
 	to_chat(H, span_danger("一阵彻骨的寒意缠绕上你的脊背，仿佛有一层无形的薄纱披覆于身……"))
 
 	// 收尾前最后一段较短的停顿，让高潮显得郑重而有意为之。
-	if(!do_after(H, 30, target = src))
+	if(!wait_for_rite(H, 30))
 		return FALSE
 
 	// --- 最终校验 + 消耗 LUX。--------------------------------
@@ -121,6 +121,8 @@
 	if(!has_required_lux(altar))
 		return FALSE
 	// 移除恰好一份 LUX；若以某种方式失败，则中止授予。
+	if(!rite_session_valid(H) || H.has_status_effect(/datum/status_effect/buff/necra_death_curtain))
+		return FALSE
 	if(!consume_required_lux(altar))
 		to_chat(H, span_warning("灵辉在最后一刻消散，仪式功亏一篑。"))
 		return FALSE
