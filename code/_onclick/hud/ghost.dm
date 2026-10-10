@@ -87,7 +87,9 @@
 //重生按钮
 /atom/movable/screen/ghost/bigassuselessbutton/Click()
 	var/mob/dead/observer/G = usr
-	G.descend()
+	if(!istype(G) || !G.client)
+		return
+	G.client.descend()
 
 /atom/movable/screen/ghost/movedown/Click()
 	var/mob/dead/observer/G = usr
