@@ -252,15 +252,15 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 	musicpath = list('sound/music/combat_grenzelhoft.ogg')
 
 /datum/combat_music/rogue
-	name = "Rogue Adventurer"
-	desc = "Try and die with some dignity.."
-	shortname = "Rogue Adv"
+	name = "冒险者（游荡者）"
+	desc = "至少试着死得有点尊严……"
+	shortname = "游荡者"
 	musicpath = list('sound/music/cmode/adventurer/CombatRogue.ogg')
 
 /datum/combat_music/monk
-	name = "Monk"
-	desc = "HOOYIAH!"
-	shortname = "Monk Adv"
+	name = "武僧"
+	desc = "喝呀！"
+	shortname = "武僧冒险者"
 	musicpath = list('sound/music/cmode/adventurer/CombatMonk.ogg')
 
 /datum/combat_music/heretic_zizo

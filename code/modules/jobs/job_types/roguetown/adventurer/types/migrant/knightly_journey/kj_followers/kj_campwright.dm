@@ -1,6 +1,6 @@
 /datum/advclass/kj_follower/campwright
-	name = "Campwright"
-	tutorial = "You set up camp wherever your knight stops for the night. With enough logs or stone, you can put up proper walls if they stay a while."
+	name = "营地工匠"
+	tutorial = "骑士在哪里过夜，你就在哪里扎营。只要木料或石材充足，若他准备多住些时日，你甚至能筑起像样的围墙。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/kj_follower/campwright
