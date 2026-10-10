@@ -221,9 +221,9 @@ GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 		if(SStreasury.get_balance(poster) < cost)
 			to_chat(poster, span_warning("余额不足。发布此项需要 [cost] 枚玛门。"))
 			return
-		// Ratwood deviation: integer player ledger, not AP's fund accounts. Debit the poster
+		// Debit the poster's fund account through the treasury API
 		// and mint the fee into the Crown's Purse; the refund below mirrors this.
-		SStreasury.bank_accounts[poster] -= cost
+		SStreasury.burn(SStreasury.get_account(poster), cost, "镇民契约发布([chosen_type])")
 		SStreasury.mint(SStreasury.discretionary_fund, cost, "镇民契约发布([chosen_type])")
 
 	var/to_hand = (params["delivery"] == "hand")
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(towner_posting_descriptors, list(
 		if(crown_funded)
 			SStreasury.mint(SStreasury.discretionary_fund, cost, "王室镇民委托退款(签发失败)")
 		else
-			SStreasury.bank_accounts[poster] += cost
+			SStreasury.mint(SStreasury.get_account(poster), cost, "镇民契约发布退款(签发失败)")
 			SStreasury.burn(SStreasury.discretionary_fund, cost, "镇民契约发布退款(签发失败)")
 		to_chat(poster, span_warning("没有地标能够承载该契约。款项已退还。"))
 		return
