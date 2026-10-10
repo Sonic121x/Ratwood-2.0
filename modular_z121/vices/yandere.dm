@@ -623,7 +623,7 @@
 
 
 // 覆写全游戏统一的性行为结算入口，挂接病娇的两条缺陷判定。
-/datum/sex_controller/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving)
+/datum/sex_controller/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving, obj/item/organ/penis/involved_penis = null)
 	. = ..()                                                                   // 先执行原版性结算，绝不破坏既有行为。
 	// user 为发起方、action_target 为承受方；交给统一调度过程做病娇相关判定。
 	yandere_handle_sex_action(user, action_target)

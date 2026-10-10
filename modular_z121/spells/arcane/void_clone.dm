@@ -5,7 +5,49 @@
 	var/datum/void_clone_link/void_clone_link_custom
 
 /mob/living/carbon/human/proc/is_void_clone()
-	return void_clone_link_custom?.clone_body == src
+	var/datum/void_clone_link/link = void_clone_link_custom
+	return link && (link.clone_body == src || link.clone_form == src)
+
+/mob/living/carbon/human/wildshape_transformation(shapepath)
+	var/datum/void_clone_link/link = void_clone_link_custom
+	if(!link || link.clone_body != src || link.cleanup_started)
+		return ..()
+	// 原分身会被收进兽形，变形完成前暂缓连接检查。
+	link.form_transition = TRUE
+	. = ..()
+	if(QDELETED(link) || link.cleanup_started)
+		return
+	link.form_transition = FALSE
+	var/mob/living/carbon/human/form = link.get_clone_body()
+	if(form != src && istype(form, /mob/living/carbon/human/species/wildshape))
+		link.set_clone_form(form)
+	link.sync_current_body_spell_access()
+
+/mob/living/carbon/human/wildshape_untransform(dead, gibbed)
+	var/datum/void_clone_link/link = void_clone_link_custom
+	if(!link || link.clone_form != src || link.cleanup_started)
+		return ..()
+	if(!link.has_valid_owner())
+		link.cleanup_clone(TRUE)
+		return
+	var/datum/mind/M = link.get_linked_mind()
+	var/return_to_original = M.current == link.original_body
+	if(return_to_original && !link.can_enter_body(link.original_body))
+		link.cleanup_clone(FALSE)
+		return
+	// 正常还原会删除兽形，但原分身和连接仍然有效。
+	link.form_transition = TRUE
+	if(return_to_original)
+		// 原版还原流程需要心智；暂借拥有者完成还原，再立即送回本体。
+		link.transfer_linked_mind(src)
+	. = ..()
+	if(QDELETED(link) || link.cleanup_started)
+		return
+	link.set_clone_form(null)
+	link.form_transition = FALSE
+	if(return_to_original && M?.current == link.clone_body && link.can_enter_body(link.original_body))
+		link.transfer_linked_mind(link.original_body)
+	link.sync_current_body_spell_access()
 
 /obj/effect/proc_holder/spell/self/learnspell/cast(list/targets, mob/living/user = usr)
 	if(ishuman(user))
@@ -40,6 +82,10 @@
 /datum/void_clone_link
 	var/mob/living/carbon/human/original_body
 	var/mob/living/carbon/human/clone_body
+	var/mob/living/carbon/human/species/wildshape/clone_form
+	var/list/clone_form_skills
+	var/list/clone_form_experience
+	var/form_transition = FALSE
 	var/datum/mind/owner_mind
 	var/datum/devotion/shared_devotion
 	var/critical_transfer_timer
@@ -69,6 +115,7 @@
 	STOP_PROCESSING(SSfastprocess, src)
 	cancel_critical_transfer()
 	clear_shared_devotion()
+	set_clone_form(null)
 	if(original_body)
 		UnregisterSignal(original_body, COMSIG_LIVING_HEALTH_UPDATE)
 	for(var/datum/participant as anything in list(original_body, clone_body, owner_mind))
@@ -87,8 +134,60 @@
 
 /datum/void_clone_link/proc/on_body_deleting(datum/source)
 	SIGNAL_HANDLER
-	// QDELETING fires before Destroy clears the body's mind, skills and inventory.
-	cleanup_clone(source == clone_body, source)
+	if(source == clone_form && form_transition)
+		return
+	// 删除信号早于身体清理，仍可从兽形或原分身取回意识。
+	cleanup_clone(source == clone_body || source == clone_form, source)
+
+/datum/void_clone_link/proc/get_clone_body()
+	if(clone_form)
+		return clone_form
+	// 兼顾变形过程中尚未登记的兽形，只认实际包裹原分身的身体。
+	if(istype(clone_body?.loc, /mob/living/carbon/human/species/wildshape))
+		var/mob/living/carbon/human/species/wildshape/form = clone_body.loc
+		if(form.stored_mob == clone_body)
+			return form
+	return clone_body
+
+/datum/void_clone_link/proc/set_clone_form(mob/living/carbon/human/species/wildshape/form)
+	if(clone_form == form)
+		return
+	if(clone_form)
+		UnregisterSignal(clone_form, COMSIG_QDELETING)
+		if(clone_form.void_clone_link_custom == src)
+			clone_form.void_clone_link_custom = null
+		if(shared_devotion && clone_form.devotion == shared_devotion)
+			clone_form.devotion = null
+	clone_form = form
+	clone_form_skills = null
+	clone_form_experience = null
+	if(!clone_form)
+		return
+	clone_form.void_clone_link_custom = src
+	RegisterSignal(clone_form, COMSIG_QDELETING, PROC_REF(on_body_deleting))
+	// 兽形自带的独立容器不能与本体虔诚同时恢复；兽形也只借用本体资源。
+	var/datum/devotion/form_devotion = clone_form.devotion
+	if(form_devotion && form_devotion != shared_devotion && form_devotion.holder == clone_form)
+		qdel(form_devotion)
+
+/datum/void_clone_link/proc/transfer_linked_mind(mob/living/carbon/human/target)
+	var/datum/mind/M = get_linked_mind()
+	if(!M || !M.current)
+		return
+	// 两具身体共用技能容器；暂离兽形时保存兽形技能并恢复人形技能。
+	if(clone_form && M.current == clone_form && target != clone_form)
+		clone_form_skills = M.current.skills?.known_skills.Copy()
+		clone_form_experience = M.current.skills?.skill_experience.Copy()
+		if(M.current.skills && clone_form.stored_skills && clone_form.stored_experience)
+			M.current.skills.known_skills = clone_form.stored_skills.Copy()
+			M.current.skills.skill_experience = clone_form.stored_experience.Copy()
+	else if(clone_form && target == clone_form && clone_form_skills && clone_form_experience)
+		clone_form.stored_skills = M.current.skills?.known_skills.Copy()
+		clone_form.stored_experience = M.current.skills?.skill_experience.Copy()
+		if(M.current.skills)
+			M.current.skills.known_skills = clone_form_skills.Copy()
+			M.current.skills.skill_experience = clone_form_experience.Copy()
+	M.transfer_to(target)
 
 /datum/void_clone_link/proc/on_owner_deleting(datum/source)
 	SIGNAL_HANDLER
@@ -99,12 +198,13 @@
 	queue_critical_transfer()
 
 /datum/void_clone_link/proc/can_transfer_from_critical()
-	if(QDELETED(src) || cleanup_started || !has_valid_owner())
+	if(QDELETED(src) || cleanup_started || form_transition || !has_valid_owner())
 		return FALSE
 	var/datum/mind/M = get_linked_mind()
 	if(M.current != original_body || original_body.stat == DEAD || !original_body.InCritical())
 		return FALSE
-	return can_enter_body(clone_body) && clone_body.health > HEALTH_THRESHOLD_DEAD && !should_force_collapse()
+	var/mob/living/carbon/human/body = get_clone_body()
+	return can_enter_body(body) && body.health > HEALTH_THRESHOLD_DEAD && !should_force_collapse()
 
 /datum/void_clone_link/proc/queue_critical_transfer()
 	if(critical_transfer_timer || !can_transfer_from_critical())
@@ -122,10 +222,9 @@
 	// 延迟期间身体、意识归属或分身状态可能变化，必须重新确认。
 	if(!can_transfer_from_critical())
 		return
-	var/datum/mind/M = get_linked_mind()
-	M.transfer_to(clone_body)
+	transfer_linked_mind(get_clone_body())
 	sync_current_body_spell_access()
-	to_chat(clone_body, span_userdanger("本体濒临死亡，虚空中的联系将我的意识猛地拽入了分身！"))
+	to_chat(get_clone_body(), span_userdanger("本体濒临死亡，虚空中的联系将我的意识猛地拽入了分身！"))
 
 /datum/void_clone_link/proc/clear_shared_devotion()
 	if(!shared_devotion)
@@ -134,6 +233,8 @@
 	// 分身只借用本体的虔诚容器，解除连接不能销毁本体资源。
 	if(clone_body?.devotion == shared_devotion)
 		clone_body.devotion = null
+	if(clone_form?.devotion == shared_devotion)
+		clone_form.devotion = null
 	shared_devotion = null
 
 /datum/void_clone_link/proc/on_shared_devotion_deleting(datum/source)
@@ -149,9 +250,11 @@
 			RegisterSignal(shared_devotion, COMSIG_QDELETING, PROC_REF(on_shared_devotion_deleting))
 	// 共用同一容器和原有恢复流程，不因切换复制或刷新虔诚。
 	clone_body.devotion = shared_devotion
+	if(clone_form)
+		clone_form.devotion = shared_devotion
 
 /datum/void_clone_link/process()
-	if(cleanup_started)
+	if(cleanup_started || form_transition)
 		return
 	if(world.time < next_check)
 		return
@@ -169,7 +272,8 @@
 		cleanup_clone(TRUE)
 		return
 
-	if((clone_body.stat == DEAD) || (clone_body.health <= HEALTH_THRESHOLD_DEAD) || should_force_collapse())
+	var/mob/living/carbon/human/body = get_clone_body()
+	if(QDELETED(body) || (body.stat == DEAD) || (body.health <= HEALTH_THRESHOLD_DEAD) || should_force_collapse())
 		cleanup_clone(TRUE)
 		return
 
@@ -189,13 +293,14 @@
 		learn_spell.action.Grant(body)
 
 /datum/void_clone_link/proc/should_force_collapse()
-	if(!clone_body || QDELETED(clone_body))
+	var/mob/living/carbon/human/body = get_clone_body()
+	if(QDELETED(body))
 		return FALSE
-	if(clone_body.InCritical())
+	if(body.InCritical())
 		return TRUE
 
-	var/total_damage = clone_body.getBruteLoss() + clone_body.getFireLoss() + clone_body.getToxLoss() + clone_body.getOxyLoss() + clone_body.getCloneLoss()
-	if(total_damage >= clone_body.maxHealth)
+	var/total_damage = body.getBruteLoss() + body.getFireLoss() + body.getToxLoss() + body.getOxyLoss() + body.getCloneLoss()
+	if(total_damage >= body.maxHealth)
 		return TRUE
 	return FALSE
 
@@ -206,11 +311,16 @@
 	var/datum/mind/M = get_linked_mind()
 	if(!M || QDELETED(original_body) || QDELETED(clone_body))
 		return FALSE
-	if(M.current != original_body && M.current != clone_body)
+	if(clone_form && !form_transition && (clone_form.stored_mob != clone_body || clone_body.loc != clone_form))
+		return FALSE
+	var/mob/living/carbon/human/body = get_clone_body()
+	if(QDELETED(body) || (body != clone_body && (clone_body.mind || clone_body.key)))
+		return FALSE
+	if(M.current != original_body && M.current != body)
 		return FALSE
 	if(M.current.mind != M)
 		return FALSE
-	var/mob/living/carbon/human/idle_body = M.current == original_body ? clone_body : original_body
+	var/mob/living/carbon/human/idle_body = M.current == original_body ? body : original_body
 	return !idle_body.mind && !idle_body.key
 
 /datum/void_clone_link/proc/can_enter_body(mob/living/carbon/human/body)
@@ -235,7 +345,7 @@
 		M.RemoveSpell(switch_spell)
 
 /datum/void_clone_link/proc/sync_current_body_spell_access()
-	if(cleanup_started || !has_valid_owner())
+	if(cleanup_started || form_transition || !has_valid_owner())
 		return
 	sync_shared_devotion()
 	queue_critical_transfer()
@@ -246,17 +356,17 @@
 	var/mob/living/current_body = M.current
 	var/obj/effect/proc_holder/spell/clone_spell = M.get_spell(/obj/effect/proc_holder/spell/self/void_clone, TRUE)
 	if(clone_spell && clone_spell.action)
-		if(current_body == clone_body)
+		if(current_body != original_body)
 			if(clone_spell.action.owner == current_body)
 				clone_spell.action.Remove(current_body)
 		else if(clone_spell.action.owner != current_body)
 			clone_spell.action.Grant(current_body)
 
 	var/obj/effect/proc_holder/spell/learn_spell = M.get_spell(/obj/effect/proc_holder/spell/self/learnspell)
-	if(learn_spell && current_body == clone_body)
+	if(learn_spell && current_body != original_body)
 		SStgui.close_user_uis(current_body, learn_spell)
 	if(learn_spell && learn_spell.action)
-		if(current_body == clone_body)
+		if(current_body != original_body)
 			if(learn_spell.action.owner == current_body)
 				learn_spell.action.Remove(current_body)
 		else if(learn_spell.action.owner != current_body)
@@ -278,40 +388,50 @@
 	var/datum/mind/M = get_linked_mind()
 	var/mob/living/carbon/human/old_clone = clone_body
 	var/mob/living/carbon/human/old_original = original_body
+	var/mob/living/carbon/human/active_clone = get_clone_body()
+	var/mob/living/carbon/human/species/wildshape/old_form = active_clone != old_clone ? active_clone : null
 
-	if(force_return && M && can_enter_body(old_original) && M.current == old_clone && old_clone?.mind == M)
-		M.transfer_to(old_original)
+	if(force_return && M && can_enter_body(old_original) && M.current == active_clone && active_clone?.mind == M)
+		transfer_linked_mind(old_original)
 		to_chat(old_original, span_userdanger("濒临崩溃的虚空分身把我的意识猛地拽回了本体！"))
 
 	remove_switch_spell()
-	if(M && !QDELETED(M.current) && M.current != old_clone && M.current.mind == M)
+	if(M && !QDELETED(M.current) && M.current != old_clone && M.current != old_form && M.current.mind == M)
 		restore_primary_spell_access(M.current)
 
-	if(old_clone && (!QDELETED(old_clone) || deleting_body == old_clone))
-		// Never transfer a third party's mind into the caster's original body.
-		// If return is impossible, preserve the occupant's skills and spells for their ghost.
-		var/datum/mind/occupant = old_clone.mind
-		if(!QDELETED(occupant) && occupant.current == old_clone)
-			if(old_clone.skills?.current == old_clone)
-				occupant.void_clone_saved_skills = old_clone.skills
-				old_clone.skills.set_current(null)
-				old_clone.skills = null
+	// 兽形和原分身都要清理，不能只删除藏在兽形中的还原目标。
+	if(old_form)
+		old_form.stored_mob = null
+		if(!QDELETED(old_clone) && old_clone.loc == old_form)
+			var/turf/drop_turf = get_turf(old_form)
+			if(drop_turf)
+				old_clone.forceMove(drop_turf)
+	for(var/mob/living/carbon/human/shell as anything in list(old_form, old_clone))
+		if(!shell || (QDELETED(shell) && deleting_body != shell))
+			continue
+		// 不能将第三方意识送入本体；无法回归时保留其技能并交还观察者。
+		var/datum/mind/occupant = shell.mind
+		if(!QDELETED(occupant) && occupant.current == shell)
+			if(shell.skills?.current == shell)
+				occupant.void_clone_saved_skills = shell.skills
+				shell.skills.set_current(null)
+				shell.skills = null
 			for(var/obj/effect/proc_holder/spell/S as anything in occupant.spell_list)
-				if(S.action?.owner == old_clone)
-					S.action.Remove(old_clone)
-			var/mob/dead/observer/ghost = old_clone.ghostize(FALSE)
-			if(!ghost && old_clone.key)
-				ghost = new /mob/dead/observer/rogue/nodraw(old_clone)
+				if(S.action?.owner == shell)
+					S.action.Remove(shell)
+			var/mob/dead/observer/ghost = shell.ghostize(FALSE)
+			if(!ghost && shell.key)
+				ghost = new /mob/dead/observer/rogue/nodraw(shell)
 				ghost.can_reenter_corpse = FALSE
-				ghost.key = old_clone.key
-			old_clone.mind = null
+				ghost.key = shell.key
+			shell.mind = null
 			occupant.set_current(null)
-		drop_clone_inventory(old_clone)
-		old_clone.visible_message(span_warning("[old_clone] 的虚空躯壳开始寸寸崩裂，最后像碎裂的傀儡般塌陷消散！"))
-		if(old_original && !QDELETED(old_original))
-			to_chat(old_original, span_warning("我与虚空分身之间的联系彻底断裂了。"))
-		if(!QDELETED(old_clone))
-			qdel(old_clone)
+		drop_clone_inventory(shell)
+		shell.visible_message(span_warning("[shell] 的虚空躯壳开始寸寸崩裂，最后像碎裂的傀儡般塌陷消散！"))
+		if(!QDELETED(shell))
+			qdel(shell)
+	if(old_original && !QDELETED(old_original))
+		to_chat(old_original, span_warning("我与虚空分身之间的联系彻底断裂了。"))
 
 	qdel(src)
 
@@ -595,14 +715,14 @@
 		revert_cast(user)
 		return FALSE
 
-	var/mob/living/carbon/human/target_body = (user == link.original_body) ? link.clone_body : link.original_body
-	if(!link.can_enter_body(target_body) || (target_body == link.clone_body && link.should_force_collapse()))
+	var/mob/living/carbon/human/target_body = (user == link.original_body) ? link.get_clone_body() : link.original_body
+	if(!link.can_enter_body(target_body) || (target_body != link.original_body && link.should_force_collapse()))
 		to_chat(user, span_warning("另一具身体已无法承载我的意识。"))
 		revert_cast(user)
 		return FALSE
 
 	user.visible_message(span_notice("[user] 的双眼短暂失焦，意识仿佛被一根看不见的丝线猛地拽向了别处。"))
-	M.transfer_to(target_body)
+	link.transfer_linked_mind(target_body)
 	link.sync_current_body_spell_access()
 	to_chat(target_body, span_notice("我的意识顺着虚空中的暗线，切换到了另一具身体。"))
 	return TRUE

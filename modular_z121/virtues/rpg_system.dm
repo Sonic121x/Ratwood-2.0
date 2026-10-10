@@ -575,22 +575,29 @@
 	if(action != "buy_spell_point" && (!isnum(index) || index != round(index) || index < 1))
 		return
 	purchase_busy = TRUE
-	switch(action)
-		if("buy_item")
-			do_buy_item(usr, current_tab, index, ("quantity" in params) ? params["quantity"] : 1)
-		if("buy_trait")
-			if(current_tab == "trait")
-				do_buy_trait(usr, index)
-		if("enhance_stat")
-			if(current_tab == "stat")
-				do_enhance_attribute(usr, index)
-		if("enhance_skill")
-			if(current_tab == "skill")
-				do_enhance_skill(usr, index)
-		if("buy_spell_point")
-			if(current_tab == "magic")
-				do_buy_spell_point(usr)
+	var/exception/purchase_error
+	try
+		switch(action)
+			if("buy_item")
+				do_buy_item(usr, current_tab, index, ("quantity" in params) ? params["quantity"] : 1)
+			if("buy_trait")
+				if(current_tab == "trait")
+					do_buy_trait(usr, index)
+			if("enhance_stat")
+				if(current_tab == "stat")
+					do_enhance_attribute(usr, index)
+			if("enhance_skill")
+				if(current_tab == "skill")
+					do_enhance_skill(usr, index)
+			if("buy_spell_point")
+				if(current_tab == "magic")
+					do_buy_spell_point(usr)
+	catch(var/exception/error)
+		purchase_error = error
+	// 先释放购买锁，再记录异常，避免装备或清理回调报错后整个界面永久禁用。
 	purchase_busy = FALSE
+	if(purchase_error)
+		log_runtime("RPG兑换操作异常（[action]）：[purchase_error]")
 	return TRUE
 
 /datum/component/rpg_system/proc/do_buy_spell_point(mob/living/carbon/human/user)
@@ -1063,14 +1070,65 @@
 /obj/effect/rpg_purchase_staging/Destroy()
 	// 连初始化抛错、尚未来得及记入清单的物品也一并回收。
 	for(var/atom/movable/item in contents)
-		qdel(item)
+		z121_rpg_discard_purchase_atom(item)
 	return ..()
 
+// 仅用于本次购买生成的对象；单件物品的销毁异常不能阻断其余回收和退款。
+/proc/z121_rpg_discard_purchase_atom(atom/movable/purchased)
+	if(QDELETED(purchased))
+		return
+	try
+		qdel(purchased)
+	catch(var/exception/error)
+		// 销毁已中断，直接移除残留对象，防止退款后仍留下可用商品。
+		del(purchased)
+		log_runtime("RPG兑换物品回收异常：[error]")
+
+// 装备、落地回调可能在实际移动之后报错；根据位置判定交付，避免误删已收到的头盔等物品。
+/datum/component/rpg_system/proc/deliver_purchase_item(mob/living/carbon/human/user, obj/item/bought, return_generation)
+	var/placement_interrupted = FALSE
+	try
+		user.put_in_hands(bought)
+	catch(var/exception/placement_error)
+		placement_interrupted = TRUE
+		log_runtime("RPG兑换物品交付回调异常（[bought?.type]）：[placement_error]")
+	if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || QDELETED(bought))
+		return FALSE
+	if(bought.loc == user && user.is_holding(bought))
+		if(placement_interrupted)
+			// 入手回调报错可能跳过手部界面刷新，物品已经在手中时补做显示更新。
+			try
+				user.update_inv_hands()
+			catch(var/exception/refresh_error)
+				log_runtime("RPG兑换手部显示刷新异常：[refresh_error]")
+		return TRUE
+	var/turf/destination = get_turf(user)
+	if(!destination)
+		return FALSE
+	// 满手或入手失败时明确落在脚下；不能把仍在暂存区的物品视为交付成功。
+	if(bought.loc != destination)
+		try
+			bought.forceMove(destination)
+			bought.layer = initial(bought.layer)
+			bought.plane = initial(bought.plane)
+			bought.dropped(user)
+		catch(var/exception/drop_error)
+			log_runtime("RPG兑换物品落地回调异常（[bought?.type]）：[drop_error]")
+	if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || QDELETED(bought))
+		return FALSE
+	if(bought.loc != destination)
+		return FALSE
+	// 移动回调中断时也要恢复地面图层，避免物品已落地却仍使用手持界面的图层。
+	bought.layer = initial(bought.layer)
+	bought.plane = initial(bought.plane)
+	return TRUE
+
 /datum/component/rpg_system/proc/deliver_item_batch(mob/living/carbon/human/user, list/item_paths, cost, return_generation)
-	var/obj/effect/rpg_purchase_staging/staging = new
+	var/obj/effect/rpg_purchase_staging/staging
 	var/list/bought_items = list()
 	var/failed = FALSE
 	try
+		staging = new
 		for(var/item_path in item_paths)
 			if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || QDELETED(staging))
 				failed = TRUE
@@ -1092,20 +1150,27 @@
 				if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user) || !get_turf(user) || QDELETED(bought))
 					failed = TRUE
 					break
-				user.put_in_hands(bought)
+				if(!deliver_purchase_item(user, bought, return_generation))
+					failed = TRUE
+					break
 		else
 			failed = TRUE
 	catch(var/exception/error)
 		failed = TRUE
-		stack_trace("RPG物品兑换失败：[error]")
+		log_runtime("RPG物品兑换失败：[error]")
+	// 后续物品的回调也可能删除先前物品，提交事务前检查整批是否仍然存在。
+	if(!failed)
+		for(var/obj/item/bought in bought_items)
+			if(QDELETED(bought) || bought.loc == staging)
+				failed = TRUE
+				break
 	// 最后一件物品的装备信号也可能触发死亡回溯，不能遗漏这次校验。
 	if(QDELETED(src) || return_generation != z121_return_generation || !can_use_system(user))
 		failed = TRUE
 	if(failed)
 		for(var/obj/item/bought in bought_items)
-			if(!QDELETED(bought))
-				qdel(bought)
-	qdel(staging)
+			z121_rpg_discard_purchase_atom(bought)
+	z121_rpg_discard_purchase_atom(staging)
 	// 回溯已经恢复了积分快照，旧事务不得向新世代退款或继续发货。
 	if(QDELETED(src) || return_generation != z121_return_generation)
 		return
