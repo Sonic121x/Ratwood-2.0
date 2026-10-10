@@ -1,6 +1,6 @@
 /datum/advclass/kj_follower/chirurgeon
-	name = "Chirurgeon"
-	tutorial = "For yils you've patched your knight up after every fight, pulling arrowheads, setting bones and stitching wounds. On quiet days you still cut their hair."
+	name = "随军外科医师"
+	tutorial = "多年来，每逢战斗结束，你都会替骑士拔除箭头、接骨缝伤。太平日子里，你还会为他理发。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/kj_follower/chirurgeon

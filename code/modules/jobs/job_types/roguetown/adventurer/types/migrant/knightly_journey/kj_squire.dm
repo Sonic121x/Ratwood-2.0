@@ -1,8 +1,8 @@
 // SQUIRE-AT-ARMS - medium armor, a melee weapon and usually a shield
 
 /datum/advclass/kj_squire
-	name = "Squire-at-Arms"
-	tutorial = "You fight on foot beside your knight with your shield raised, and you keep their armor in good repair. Serve them well long enough and you may be knighted yourself."
+	name = "武装侍从"
+	tutorial = "你举盾步战，守在骑士身旁，也负责维护他的甲胄。只要尽心侍奉足够久，你也有望获封骑士。"
 	outfit = /datum/outfit/job/roguetown/adventurer/kj_squire
 	category_tags = list(CTAG_KJ_SQUIRE)
 	subclass_social_rank = SOCIAL_RANK_PEASANT
@@ -65,56 +65,56 @@
 	. = ..()
 
 	var/helmets = list(
-		"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
-		"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-		"Bascinet Helmet"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
-		"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"None"
+		"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
+		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+		"盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+		"无"
 	)
-	var/helmchoice = input(H, "Choose your helm.", "TAKE UP HELMS") as anything in helmets
+	var/helmchoice = input(H, "选择你的头盔。", "戴盔备战") as anything in helmets
 	var/helm = helmets[helmchoice]
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
-	var/cloaks = list("Surcoat", "Tabard", "Jupon")
-	var/cloaks_choice = input(H, "Choose your cloak.", "BEAR YOUR MASTER'S HERALDRY.") as anything in cloaks
+	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks_choice = input(H, "选择你的披风。", "披上主人的纹章") as anything in cloaks
 	switch(cloaks_choice)
-		if("Surcoat")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
-		if("Tabard")
+		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("Jupon")
+		if("朱蓬")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
-	var/arms_choice = input(H, "Chivalry is not yet dead. Choose your arms.", "TAKE UP ARMS") as anything in list("Arming Sword & Shield", "Mace", "Flail & Shield", "Messer & Buckler", "Battle Axe")
+	var/arms_choice = input(H, "骑士精神尚未消亡。选择你的武器。", "执兵而起") as anything in list("武装剑与盾牌", "钉头锤", "连枷与盾牌", "梅塞尔刀与小圆盾", "战斧")
 	switch(arms_choice)
-		if("Arming Sword & Shield")
+		if("武装剑与盾牌")
 			H.put_in_hands(new /obj/item/rogueweapon/sword(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/shield/heater(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
-		if("Mace")
+		if("钉头锤")
 			H.put_in_hands(new /obj/item/rogueweapon/mace/steel(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-		if("Flail & Shield")
+		if("连枷与盾牌")
 			H.put_in_hands(new /obj/item/rogueweapon/flail(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/shield/heater(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
-		if("Messer & Buckler")
+		if("梅塞尔刀与小圆盾")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/short/messer(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/shield/buckler(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
-		if("Battle Axe")
+		if("战斧")
 			H.put_in_hands(new /obj/item/rogueweapon/stoneaxe/battle(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 
 // HOBELAR - medium armor, a polearm and a horse
 
 /datum/advclass/kj_squire_hobelar
-	name = "Hobelar"
-	tutorial = "You fight from horseback with a polearm and look after your own mount once the day is done. You're a fair hand in the saddle, whether your knight rides or walks."
+	name = "轻骑侍从"
+	tutorial = "你在马背上以长柄兵器作战，待一天结束后照料自己的坐骑。无论你的骑士策马还是步行，你的骑术都颇为娴熟。"
 	outfit = /datum/outfit/job/roguetown/adventurer/kj_squire_hobelar
 	category_tags = list(CTAG_KJ_SQUIRE)
 	subclass_social_rank = SOCIAL_RANK_PEASANT
@@ -180,43 +180,43 @@
 	. = ..()
 
 	var/helmets = list(
-		"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
-		"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-		"Bascinet Helmet"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
-		"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"None"
+		"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
+		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+		"盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+		"无"
 	)
-	var/helmchoice = input(H, "Choose your helm.", "TAKE UP HELMS") as anything in helmets
+	var/helmchoice = input(H, "选择你的头盔。", "戴盔备战") as anything in helmets
 	var/helm = helmets[helmchoice]
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
-	var/cloaks = list("Surcoat", "Tabard", "Jupon")
-	var/cloaks_choice = input(H, "Choose your cloak.", "BEAR YOUR MASTER'S HERALDRY.") as anything in cloaks
+	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks_choice = input(H, "选择你的披风。", "披上主人的纹章") as anything in cloaks
 	switch(cloaks_choice)
-		if("Surcoat")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
-		if("Tabard")
+		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("Jupon")
+		if("朱蓬")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
-	var/arms_choice = input(H, "Chivalry is not yet dead. Choose your arms.", "TAKE UP ARMS") as anything in list("Halberd", "Billhook", "Spear & Javelins", "Lance & Buckler")
+	var/arms_choice = input(H, "骑士精神尚未消亡。选择你的武器。", "执兵而起") as anything in list("长戟", "钩镰", "长矛与标枪", "骑枪与小圆盾")
 	switch(arms_choice)
-		if("Halberd")
+		if("长戟")
 			H.put_in_hands(new /obj/item/rogueweapon/halberd(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
-		if("Billhook")
+		if("钩镰")
 			H.put_in_hands(new /obj/item/rogueweapon/spear/billhook(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
-		if("Spear & Javelins")
+		if("长矛与标枪")
 			H.put_in_hands(new /obj/item/rogueweapon/spear(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/javelin/iron(H), SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
-		if("Lance & Buckler")
+		if("骑枪与小圆盾")
 			H.put_in_hands(new /obj/item/rogueweapon/spear/lance(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/buckler(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
@@ -225,8 +225,8 @@
 // BIDOWER - light armor, a bow and quick feet
 
 /datum/advclass/kj_squire_bidower
-	name = "Bidower"
-	tutorial = "You travel light and fight from the back with bow, crossbow or sling, thinning out the enemy before your knight charges in."
+	name = "射手侍从"
+	tutorial = "你轻装旅行，在后方以弓、弩或投石索作战，在骑士冲锋之前削减敌军。"
 	outfit = /datum/outfit/job/roguetown/adventurer/kj_squire_bidower
 	category_tags = list(CTAG_KJ_SQUIRE)
 	subclass_social_rank = SOCIAL_RANK_PEASANT
@@ -289,46 +289,46 @@
 	. = ..()
 
 	var/helmets = list(
-		"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
-		"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-		"Bascinet Helmet"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
-		"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"None"
+		"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
+		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+		"盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+		"无"
 	)
-	var/helmchoice = input(H, "Choose your helm.", "TAKE UP HELMS") as anything in helmets
+	var/helmchoice = input(H, "选择你的头盔。", "戴盔备战") as anything in helmets
 	var/helm = helmets[helmchoice]
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
-	var/cloaks = list("Surcoat", "Tabard", "Jupon")
-	var/cloaks_choice = input(H, "Choose your cloak.", "BEAR YOUR MASTER'S HERALDRY.") as anything in cloaks
+	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks_choice = input(H, "选择你的披风。", "披上主人的纹章") as anything in cloaks
 	switch(cloaks_choice)
-		if("Surcoat")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
-		if("Tabard")
+		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("Jupon")
+		if("朱蓬")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
-	var/arms_choice = input(H, "Chivalry is not yet dead. Choose your arms.", "TAKE UP ARMS") as anything in list("Crossbow", "Bow", "Sling", "Javelins & Dagger")
+	var/arms_choice = input(H, "骑士精神尚未消亡。选择你的武器。", "执兵而起") as anything in list("弩", "弓", "投石索", "标枪与匕首")
 	switch(arms_choice)
-		if("Crossbow")
+		if("弩")
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/bolts(H), SLOT_BELT_R, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
-		if("Bow")
+		if("弓")
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/bodkin(H), SLOT_BELT_R, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
-		if("Sling")
+		if("投石索")
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/sling(H), SLOT_BELT_L, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/sling/iron(H), SLOT_BELT_R, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/sword(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/huntingknife(H), SLOT_IN_BACKPACK, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_EXPERT, TRUE)
-		if("Javelins & Dagger")
+		if("标枪与匕首")
 			H.equip_to_slot_or_del(new /obj/item/quiver/javelin/iron(H), SLOT_BELT_R, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
