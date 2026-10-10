@@ -10,29 +10,28 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		session = new(member)
 	return session
 
-// 熟人姓名只用于查找候选对象，后续选择与权限检查均使用实际对象。
-// 只接入玩家熟人；离线玩家通过当前身体所属思维的账号标识保留资格，纯 NPC 不列入。
+// 候选仅来自施法者自身实际视野，筛选之前不得向界面暴露隐藏身份。
 /proc/group_mindlink_candidates(mob/living/user)
 	var/list/result = list()
-	if(QDELETED(user) || !user.mind)
+	if(QDELETED(user) || !user.client || user.client.eye != user || user.group_mindlink_view || user.stat != CONSCIOUS || user.IsUnconscious())
 		return result
-	for(var/mob/living/carbon/human/member as anything in GLOB.human_list)
-		if(member == user || QDELETED(member) || member.stat == DEAD)
+	for(var/mob/living/carbon/human/member in view(user.client.view, user))
+		if(member == user || QDELETED(member) || !member.client || QDELETED(member.mind) || member.mind.current != member || member.stat != CONSCIOUS || member.IsUnconscious())
 			continue
-		if(!member.client && (QDELETED(member.mind) || !member.mind.key || member.mind.current != member))
+		if(!length(member.real_name) || member.get_face_name("") != member.real_name || member.get_visible_name() != member.real_name)
 			continue
-		if(member.real_name in user.mind.known_people)
+		if(group_mindlink_visible(user, member))
 			result[REF(member)] = member
 	return result
 
-/proc/group_mindlink_people_data(list/people)
+/proc/group_mindlink_people_data(list/people, datum/group_mindlink_custom/link)
 	var/list/result = list()
 	var/list/counts = list()
 	var/list/ordinals = list()
 	for(var/mob/living/member as anything in people)
-		counts[member.real_name]++
+		counts[link ? link.member_name(member) : member.get_visible_name()]++
 	for(var/mob/living/member as anything in people)
-		var/label = member.real_name
+		var/label = link ? link.member_name(member) : member.get_visible_name()
 		if(counts[label] > 1)
 			ordinals[label]++
 			label = "[label]（同名 [ordinals[label]]）"
@@ -43,8 +42,10 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 /datum/group_mindlink_custom
 	var/mob/living/owner
 	var/list/participants = list()
+	var/list/member_names = list()
+	var/initializing = TRUE
 	var/list/rooms = list()
-	var/list/vision_permissions = list()
+	var/list/vision_contexts = list()
 	var/datum/group_mindlink_room/main_room
 	var/active = TRUE
 	var/expires_at
@@ -58,14 +59,15 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	rooms += main_room
 	for(var/mob/living/member as anything in members)
 		add_member(member)
-	main_room.system_message("心灵链接已建立。每位成员都可以发起私聊或创建小房间。")
+	initializing = FALSE
+	main_room.system_message("心灵链接已建立。成员可以私聊、创建小房间或直接视听旁观彼此；主链接不能中途追加成员。")
 	expiry_timer = addtimer(CALLBACK(src, PROC_REF(end_link), "十五分钟已到，心灵链接逐渐消散。"), (15 MINUTES), TIMER_STOPPABLE)
 
 /datum/group_mindlink_custom/Destroy()
 	active = FALSE
-	for(var/datum/group_mindlink_vision_permission/permission as anything in vision_permissions.Copy())
-		qdel(permission)
-	vision_permissions.Cut()
+	for(var/datum/group_mindlink_vision_context/context as anything in vision_contexts.Copy())
+		qdel(context)
+	vision_contexts.Cut()
 	if(expiry_timer)
 		deltimer(expiry_timer)
 	for(var/datum/group_mindlink_room/room as anything in rooms.Copy())
@@ -77,6 +79,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 			session.refresh()
 			session.cleanup_if_unused()
 	participants.Cut()
+	member_names.Cut()
 	rooms.Cut()
 	owner = null
 	main_room = null
@@ -91,9 +94,13 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 			to_chat(member, span_notice("\[心灵链接\] [reason]"))
 	qdel(src)
 
+/datum/group_mindlink_custom/proc/member_name(mob/living/member)
+	return member_names[member] || "已离开的成员"
+
 /datum/group_mindlink_custom/proc/add_member(mob/living/member)
-	if(!active || world.time >= expires_at || !istype(member) || QDELETED(member) || member.stat == DEAD || (member in participants))
+	if(!initializing || length(participants) >= 6 || !active || world.time >= expires_at || !istype(member) || QDELETED(member) || member.stat == DEAD || (member in participants))
 		return FALSE
+	member_names[member] = member.get_visible_name()
 	participants += member
 	var/datum/group_mindlink_session/session = group_mindlink_session(member)
 	var/first_link = !length(session.links)
@@ -102,7 +109,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	main_room.add_member(member)
 	if(first_link)
 		session.current_room = main_room
-	to_chat(member, span_notice("你已加入[html_encode(owner.real_name)]建立的心灵链接。请在 IC 分类下点击「群体心灵链接」打开心灵链接窗口；输入 ,m 可向当前选中的会话发言。"))
+	to_chat(member, span_notice("你已加入[html_encode(member_name(owner))]建立的心灵链接。请在 IC 分类下点击「群体心灵链接」打开心灵链接窗口；输入 ,m 可向当前选中的会话发言。"))
 	refresh()
 	return TRUE
 
@@ -117,6 +124,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		if(member in room.members)
 			room.remove_member(member)
 	participants -= member
+	member_names -= member
 	var/datum/group_mindlink_session/session = group_mindlink_session(member, FALSE)
 	if(session)
 		session.links -= src
@@ -131,7 +139,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		var/datum/group_mindlink_session/session = group_mindlink_session(member, FALSE)
 		session?.refresh()
 
-// 加入序号隔离历史；离开后重新加入会得到新的起始序号。
+// 房间加入序号隔离历史；主链接只允许创建时加入，小房间重新加入则重新计序。
 /datum/group_mindlink_room
 	var/datum/group_mindlink_custom/link
 	var/mob/living/creator
@@ -170,7 +178,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	if(kind == "dm")
 		for(var/mob/living/member as anything in members)
 			if(member != viewer)
-				return "与[member.real_name]私聊"
+				return "与[link.member_name(member)]私聊"
 	return title
 
 /datum/group_mindlink_room/proc/add_member(mob/living/member)
@@ -178,7 +186,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		return FALSE
 	members[member] = sequence + 1
 	read_sequence[member] = sequence
-	system_message("[member.real_name]加入了会话。")
+	system_message("[link.member_name(member)]加入了会话。")
 	return TRUE
 
 /datum/group_mindlink_room/proc/remove_member(mob/living/member)
@@ -194,7 +202,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		session.current_room = null
 		session.feedback = "你已离开当前会话，请重新选择发送目标。"
 	if(!QDELETED(member))
-		system_message("[member.real_name]离开了会话。")
+		system_message("[link.member_name(member)]离开了会话。")
 	link.refresh()
 
 /datum/group_mindlink_room/proc/close_room()
@@ -210,14 +218,14 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 
 /datum/group_mindlink_room/proc/append_message(mob/living/speaker, message)
 	sequence++
-	var/list/entry = list("seq" = sequence, "name" = speaker ? speaker.real_name : "系统", "speaker" = speaker ? REF(speaker) : null, "text" = message, "time" = station_time_timestamp(), "system" = !speaker)
+	var/list/entry = list("seq" = sequence, "name" = speaker ? link.member_name(speaker) : "系统", "speaker" = speaker ? REF(speaker) : null, "text" = message, "time" = station_time_timestamp(), "system" = !speaker)
 	messages += list(entry)
 	if(length(messages) > GML_HISTORY_LIMIT)
 		messages.Cut(1, length(messages) - GML_HISTORY_LIMIT + 1)
 	if(speaker)
 		for(var/mob/living/member as anything in members)
 			if(can_access(member))
-				to_chat(member, span_purple("\[心灵链接 · [html_encode(display_title(member))]\] [html_encode(speaker.real_name)]：[html_encode(message)]"))
+				to_chat(member, span_purple("\[心灵链接 · [html_encode(display_title(member))]\] [html_encode(link.member_name(speaker))]：[html_encode(message)]"))
 	link.refresh()
 
 /datum/group_mindlink_room/proc/visible_messages(mob/living/viewer)
@@ -244,11 +252,10 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/datum/group_mindlink_room/current_room
 	var/obj/effect/proc_holder/spell/self/group_mindlink/selection_spell
 	var/list/selection = list()
-	var/feedback = "选择熟人建立链接，或选择已有会话。"
+	var/feedback = "选择视野内最多五名玩家邀请加入链接，或选择已有会话。"
 	var/last_send_at = -10
 	var/list/ack = list()
 	var/cleaning_up = FALSE
-	var/last_vision_request = -50
 
 /datum/group_mindlink_session/New(mob/living/user)
 	. = ..()
@@ -259,6 +266,8 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	RegisterSignal(user, COMSIG_MOB_LOGOUT, PROC_REF(vision_logout))
 
 /datum/group_mindlink_session/Destroy()
+	if(selection_spell?.cast_request)
+		selection_spell.cast_request.cancel()
 	if(holder?.group_mindlink_view)
 		qdel(holder.group_mindlink_view)
 	SStgui.close_uis(src)
@@ -307,7 +316,9 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		ui.open()
 
 /datum/group_mindlink_session/ui_close(mob/user)
-	// 聊天窗口与旁观状态独立；关闭窗口后仍可通过 IC 动词返回自身视角。
+	// 等待邀请时关闭施法窗口即取消；已建立的聊天窗口与旁观状态独立。
+	if(selection_spell?.inviting)
+		selection_spell.cancel_invites()
 	if(!selection_spell?.casting)
 		selection_spell = null
 		selection.Cut()
@@ -334,7 +345,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 /datum/group_mindlink_session/ui_data(mob/user)
 	if(cleaning_up || user != holder || QDELETED(holder) || holder.stat == DEAD)
 		return list()
-	var/list/data = list("self" = REF(holder), "feedback" = feedback, "selecting" = !QDELETED(selection_spell), "busy" = !!selection_spell?.casting, "selection" = selection.Copy(), "ack" = ack.Copy(), "groups" = list(), "active" = null, "candidates" = list())
+	var/list/data = list("self" = REF(holder), "feedback" = feedback, "selecting" = !QDELETED(selection_spell), "busy" = !!selection_spell?.casting, "waiting" = !!selection_spell?.inviting, "selection" = selection.Copy(), "ack" = ack.Copy(), "groups" = list(), "active" = null, "candidates" = list())
 	data["vision"] = vision_data()
 	var/list/groups = data["groups"]
 	for(var/datum/group_mindlink_custom/link as anything in links)
@@ -344,26 +355,25 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		for(var/datum/group_mindlink_room/room as anything in link.rooms)
 			if(room.can_access(holder))
 				room_data += list(list("id" = REF(room), "name" = room.display_title(holder), "kind" = room.kind, "unread" = room.unread_count(holder)))
-		groups += list(list("id" = REF(link), "name" = "[link.owner.real_name]的链接", "remaining" = max(0, round((link.expires_at - world.time) / 10)), "rooms" = room_data))
+		groups += list(list("id" = REF(link), "name" = "[link.member_name(link.owner)]的链接", "remaining" = max(0, round((link.expires_at - world.time) / 10)), "rooms" = room_data))
 	if(!QDELETED(current_room) && current_room.can_access(holder))
 		var/datum/group_mindlink_custom/link = current_room.link
-		var/list/active = list("id" = REF(current_room), "name" = current_room.display_title(holder), "kind" = current_room.kind, "creator" = REF(current_room.creator), "owner" = REF(link.owner), "members" = group_mindlink_people_data(current_room.members), "people" = group_mindlink_people_data(link.participants), "messages" = current_room.visible_messages(holder), "sequence" = current_room.sequence)
+		var/list/active = list("id" = REF(current_room), "name" = current_room.display_title(holder), "kind" = current_room.kind, "creator" = REF(current_room.creator), "owner" = REF(link.owner), "members" = group_mindlink_people_data(current_room.members, link), "people" = group_mindlink_people_data(link.participants, link), "messages" = current_room.visible_messages(holder), "sequence" = current_room.sequence)
 		data["active"] = active
 		active["link"] = REF(link)
-		if(link.owner == holder)
-			var/list/candidates = group_mindlink_candidates(holder)
-			var/list/available = list()
-			for(var/id in candidates)
-				var/mob/living/member = candidates[id]
-				if(!(member in link.participants))
-					available += member
-			data["candidates"] = group_mindlink_people_data(available)
 	if(!QDELETED(selection_spell))
 		var/list/candidates = group_mindlink_candidates(holder)
 		var/list/available = list()
 		for(var/id in candidates)
 			available += candidates[id]
 		data["candidates"] = group_mindlink_people_data(available)
+		var/list/visible_selection = list()
+		for(var/id in selection)
+			if(istext(id) && candidates[id])
+				visible_selection += id
+		data["selection"] = visible_selection
+		if(!selection_spell.casting)
+			selection = visible_selection.Copy()
 	return data
 
 /datum/group_mindlink_session/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -374,21 +384,26 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		return FALSE
 	if(findtext(action, "vision_") == 1)
 		return vision_action(action, params)
+	if(action == "cancel_selection" && selection_spell?.inviting)
+		selection_spell.cancel_invites()
+		return TRUE
 	if(selection_spell?.casting)
 		return FALSE
 	if(action == "toggle_person" && selection_spell)
 		var/list/candidates = group_mindlink_candidates(holder)
 		var/id = params["id"]
-		if(id in candidates)
+		if(istext(id) && (id in candidates))
 			if(id in selection)
 				selection -= id
-			else
+			else if(length(selection) < 5)
 				selection += id
 		return TRUE
 	if(action == "select_all" && selection_spell)
 		selection.Cut()
 		var/list/candidates = group_mindlink_candidates(holder)
 		for(var/id in candidates)
+			if(length(selection) >= 5)
+				break
 			selection += id
 		return TRUE
 	if(action == "clear_selection")
@@ -410,6 +425,12 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 			selection.Cut()
 			feedback = "当前发送目标：[room.display_title(holder)]。"
 		return TRUE
+	if(action == "leave_link")
+		for(var/datum/group_mindlink_custom/link as anything in links.Copy())
+			if(REF(link) == params["link"] && (holder in link.participants))
+				link.remove_member(holder)
+				return TRUE
+		return FALSE
 	var/datum/group_mindlink_room/room = find_room(params["room"])
 	if(!room || room != current_room)
 		notice("会话已失效或发送目标已改变，请重新选择。")
@@ -442,18 +463,6 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 					link.remove_member(member)
 				else if(room.kind == "room" && room.creator == holder)
 					room.remove_member(member)
-		if("add_known")
-			if(link.owner == holder)
-				var/list/candidates = group_mindlink_candidates(holder)
-				var/list/ids = params["ids"]
-				if(islist(ids))
-					for(var/id in ids)
-						// 数字索引会被 DM 当作列表位置，必须拒绝，避免绕过对象标识解析。
-						if(!istext(id))
-							continue
-						var/mob/living/member = candidates[id]
-						if(member)
-							link.add_member(member)
 		if("add_room_members")
 			if(room.kind == "room" && room.creator == holder)
 				var/list/ids = params["ids"]
@@ -484,7 +493,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 				return
 	var/title = istext(room_name) ? trim(copytext_char(room_name, 1, 41)) : ""
 	if(!length(title))
-		title = "[holder.real_name]的小房间"
+		title = "[link.member_name(holder)]的小房间"
 	var/datum/group_mindlink_room/new_room = new(link, holder, direct ? "dm" : "room", title)
 	link.rooms += new_room
 	for(var/mob/living/member as anything in chosen)
@@ -525,7 +534,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 /obj/effect/proc_holder/spell/self/group_mindlink
 	name = "群体心灵链接"
 	school = "divination"
-	desc = "选择任意数量的熟人，吟唱后建立持续十五分钟的心灵链接。成员可以在主群交流、单独私聊或创建小房间。发言前输入 ,m 会发送到当前选中的会话；使用 IC 下的群体心灵链接可重新打开窗口。"
+	desc = "邀请自身视野内最多五名面容与真名公开的玩家，经同意及五秒引导建立十五分钟的心灵链接。成员可以聊天、私聊、创建小房间并直接视听旁观彼此。主链接不可中途追加成员；输入 ,m 向当前会话发言，使用 IC 下的群体心灵链接重开窗口。"
 	associated_skill = /datum/skill/magic/arcane
 	cost = 5
 	xp_gain = TRUE
@@ -546,6 +555,9 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	miracle = FALSE
 	human_req = TRUE
 	var/casting = FALSE
+	var/inviting = FALSE
+	var/charge_reserved = FALSE
+	var/datum/group_mindlink_cast_request/cast_request
 	var/mob/living/casting_user
 	var/list/pending_members = list()
 
@@ -561,59 +573,88 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/datum/group_mindlink_session/session = group_mindlink_session(user)
 	session.selection_spell = src
 	session.selection.Cut()
-	session.feedback = "勾选至少一名熟人后确认施法；施法者自动加入。"
+	session.feedback = "选择视野内一至五名玩家；对方同意加入后开始五秒引导，施法者自动加入。"
 	session.ui_interact(user)
 
 /obj/effect/proc_holder/spell/self/group_mindlink/charge_check(mob/user)
 	// 引导后的条件复查只豁免本次已预留的冷却，其他施法条件仍由父类检查。
-	if(casting && user == casting_user)
+	if(casting && charge_reserved && user == casting_user)
 		return TRUE
 	return ..()
+
+/obj/effect/proc_holder/spell/self/group_mindlink/proc/cancel_invites()
+	if(inviting && !QDELETED(cast_request))
+		cast_request.cancel()
 
 /obj/effect/proc_holder/spell/self/group_mindlink/proc/begin_cast(datum/group_mindlink_session/session)
 	if(casting || QDELETED(session) || session.selection_spell != src)
 		return
-	if(session.holder?.group_mindlink_view)
+	var/mob/living/user = session.holder
+	if(!user?.client || user.group_mindlink_view || user.client.eye != user)
 		session.notice("请先返回自身视角，再开始施法。")
 		return
-	var/mob/living/user = session.holder
-	var/datum/mind/original_mind = user.mind
-	var/list/candidates = group_mindlink_candidates(user)
-	pending_members.Cut()
-	for(var/id in session.selection)
-		if(candidates[id])
-			pending_members |= candidates[id]
-	if(!length(pending_members))
-		session.notice("没有有效的已选熟人，请重新选择。")
+	if(length(session.selection) < 1 || length(session.selection) > 5)
+		session.notice("每次只能邀请一至五名玩家。")
 		return
-	if(!cast_check(FALSE, user))
-		pending_members.Cut()
+	var/list/candidates = group_mindlink_candidates(user)
+	var/list/chosen = list()
+	for(var/id in session.selection)
+		if(istext(id) && candidates[id])
+			chosen |= candidates[id]
+	if(!length(chosen))
+		session.notice("已选对象均已失效，请重新选择视野内面容与真名公开的玩家。")
+		return
+	// 先做无消耗检查，邀请阶段不预留冷却；至少一人同意后才正式引导。
+	if(!cast_check(TRUE, user))
 		return
 	casting = TRUE
 	casting_user = user
-	session.feedback = "正在引导心灵链接……"
+	inviting = TRUE
+	cast_request = new(src, session, chosen)
+	var/datum/group_mindlink_cast_request/request = cast_request
+	session.feedback = "正在等待加入确认，最多二十秒；可以取消。"
 	session.refresh()
-	invocation(user)
-	user.visible_message(span_notice("[user]闭目凝神，牵引着熟识之人的心念……"))
-	var/success = do_after(user, get_chargetime(), target = user, progress = TRUE)
+	request.open_invitations()
+	while(!QDELETED(src) && !QDELETED(request) && !request.cancelled && request.caster_valid() && world.time < request.deadline && !request.all_answered())
+		sleep(1)
 	if(QDELETED(src))
 		return
-	if(success && !QDELETED(user) && user.client && user.mind == original_mind && !QDELETED(session) && session.selection_spell == src)
-		success = cast_check(TRUE, user)
-	else
-		success = FALSE
-	if(success)
-		// 咒文已在引导开始时念出，正常结算仍使用 perform 的消耗与经验流程。
-		var/list/saved_invocations = invocations
-		invocations = null
-		success = perform(null, user = user)
-		invocations = saved_invocations
+	var/success = FALSE
+	if(!QDELETED(request))
+		request.close_invitations()
+		pending_members = request.accepted_members()
+		if(length(pending_members) && cast_check(FALSE, user))
+			charge_reserved = TRUE
+			inviting = FALSE
+			session.feedback = "已确认有效成员，正在引导心灵链接……"
+			session.refresh()
+			invocation(user)
+			user.visible_message(span_notice("[user]闭目凝神，牵引着愿意回应之人的心念……"))
+			success = do_after(user, get_chargetime(), target = user, progress = TRUE)
+			if(QDELETED(src))
+				return
+			if(success && !QDELETED(request) && request.caster_valid())
+				success = cast_check(TRUE, user)
+			else
+				success = FALSE
+			if(success)
+				// 咒文已在引导开始时念出，仍由原有流程结算成功消耗及经验。
+				var/list/saved_invocations = invocations
+				invocations = null
+				success = perform(null, user = user)
+				invocations = saved_invocations
 	if(!success && !QDELETED(user))
-		revert_cast(user)
+		if(charge_reserved)
+			revert_cast(user)
 		if(!QDELETED(session))
-			session.notice("链接未能成形，冷却已恢复；请重新选择或再次尝试。")
+			session.notice("链接未能成形：无人有效同意、已取消或引导中断。未结算成功消耗，本次预留冷却已恢复。")
 	casting = FALSE
+	inviting = FALSE
+	charge_reserved = FALSE
 	casting_user = null
+	cast_request = null
+	if(!QDELETED(request))
+		qdel(request)
 	pending_members.Cut()
 	if(!QDELETED(session))
 		if(success || !SStgui.get_open_ui(user, session))
@@ -623,24 +664,25 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		session.cleanup_if_unused()
 
 /obj/effect/proc_holder/spell/self/group_mindlink/cast(list/targets, mob/living/user = usr)
-	if(!casting || user != casting_user || QDELETED(user) || !user.mind)
+	if(!casting || inviting || user != casting_user || QDELETED(cast_request) || !cast_request.caster_valid())
 		return FALSE
-	var/list/candidates = group_mindlink_candidates(user)
+	var/list/accepted = cast_request.accepted_members()
 	var/list/members = list(user)
-	var/list/missing = list()
 	for(var/mob/living/member as anything in pending_members)
-		if(!QDELETED(member) && candidates[REF(member)] == member)
+		if(member in accepted)
 			members |= member
-		else
-			missing += QDELETED(member) ? "已失效的对象" : member.real_name
-	if(length(missing))
-		to_chat(user, span_notice("以下对象无法接入：[html_encode(english_list(missing))]。"))
-	if(length(members) < 2)
+	if(length(members) < 2 || length(members) > 6)
 		return FALSE
+	if(length(members) != length(pending_members) + 1)
+		to_chat(user, span_notice("部分已同意对象已不满足接入条件，已跳过失效对象。"))
 	new /datum/group_mindlink_custom(user, members)
 	return ..()
 
 /obj/effect/proc_holder/spell/self/group_mindlink/Destroy()
+	if(!QDELETED(cast_request))
+		cast_request.cancel()
+		qdel(cast_request)
+	cast_request = null
 	for(var/mob/living/member as anything in GLOB.active_group_mindlinks.Copy())
 		var/datum/group_mindlink_session/session = group_mindlink_session(member, FALSE)
 		if(session?.selection_spell == src)

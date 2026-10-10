@@ -207,7 +207,17 @@
 		selection_pending = FALSE
 		update_selection_action()
 		return FALSE
-	var/confirmation = tgui_alert(H, "确定将 [target.name] 指定为爱慕对象吗？对象只能指定一次，确定后无法更改。\n剩余 [selection_time_text()]。", "指定爱慕对象", list("确定", "取消"), timeout = selection_deadline - world.time)
+	var/confirmation_message = "确定将 [target.name] 指定为爱慕对象吗？对象只能指定一次，确定后无法更改。\n剩余 [selection_time_text()]。"
+	var/confirmation
+	if(!H.client?.prefs.tgui_pref)
+		confirmation = tgui_alert(H, confirmation_message, "指定爱慕对象", list("确定", "取消"), timeout = selection_deadline - world.time)
+	else
+		var/datum/tgui_alert/yandere_crush_confirm/prompt = new(H, confirmation_message, "指定爱慕对象", list("确定", "取消"), selection_deadline - world.time, TRUE, GLOB.tgui_always_state)
+		prompt.ui_interact(H)
+		prompt.wait()
+		if(!QDELETED(prompt))
+			confirmation = prompt.choice
+			qdel(prompt)
 	if(QDELETED(src))
 		return FALSE
 	selection_pending = FALSE
@@ -215,6 +225,13 @@
 	if(confirmation != "确定" || !can_choose_target(H, target))
 		return FALSE
 	return designate_crush(H, target)
+
+// 独立的大尺寸确认界面，沿用通用弹窗的选择、关闭和超时处理。
+/datum/tgui_alert/yandere_crush_confirm/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "YandereCrushConfirm", title)
+		ui.open()
 
 /datum/action/yandere_designate_crush
 	name = "指定爱慕对象"

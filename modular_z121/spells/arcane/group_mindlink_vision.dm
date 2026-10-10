@@ -1,150 +1,91 @@
-// 授权属于主链接，观看状态属于观看者；关闭镜头不会顺带撤销已同意的授权。
+// 加入主链接即允许成员互相旁观；上下文只记录一次正在进行的旁观及其所属链接。
 /mob/living
 	var/datum/group_mindlink_view/group_mindlink_view
 
-/datum/group_mindlink_custom/proc/find_vision_permission(mob/living/viewer, mob/living/target)
-	for(var/datum/group_mindlink_vision_permission/permission as anything in vision_permissions)
-		if(!QDELETED(permission) && permission.viewer == viewer && permission.target == target)
-			return permission
-
 /datum/group_mindlink_custom/proc/clear_member_vision(mob/living/member)
-	for(var/datum/group_mindlink_vision_permission/permission as anything in vision_permissions.Copy())
-		if(permission.viewer == member || permission.target == member)
-			qdel(permission)
+	for(var/datum/group_mindlink_vision_context/context as anything in vision_contexts.Copy())
+		if(context.viewer == member || context.target == member)
+			qdel(context)
 
 /datum/group_mindlink_session/proc/vision_logout()
 	SIGNAL_HANDLER
-	// 断线保留聊天成员资格，但不能保留需要本人确认的视觉授权。
+	if(selection_spell?.cast_request)
+		selection_spell.cast_request.cancel()
+	// 断线保留聊天成员资格，当前旁观必须停止；重连后可从现有链接重新开始。
 	for(var/datum/group_mindlink_custom/link as anything in links.Copy())
 		link.clear_member_vision(holder)
 
 /datum/group_mindlink_session/proc/vision_data()
-	var/list/result = list("current" = null, "incoming" = list(), "outgoing" = list())
+	var/list/result = list("current" = null, "watchers" = list())
 	var/datum/group_mindlink_view/view = holder.group_mindlink_view
-	if(!QDELETED(view))
-		result["current"] = list("id" = REF(view.permission), "name" = view.target.real_name)
+	if(!QDELETED(view) && view.context.valid(TRUE))
+		result["current"] = list("link" = REF(view.context.link), "person" = REF(view.target), "name" = view.context.link.member_name(view.target))
 	for(var/datum/group_mindlink_custom/link as anything in links)
-		for(var/datum/group_mindlink_vision_permission/permission as anything in link.vision_permissions)
-			if(!permission.valid() || (permission.viewer != holder && permission.target != holder))
+		for(var/datum/group_mindlink_vision_context/context as anything in link.vision_contexts)
+			if(context.target != holder || !context.valid(TRUE))
 				continue
-			var/incoming = permission.target == holder
-			var/mob/living/other = incoming ? permission.viewer : permission.target
-			var/list/entries = result[incoming ? "incoming" : "outgoing"]
-			entries += list(list("id" = REF(permission), "link" = REF(link), "link_name" = "[link.owner.real_name]的链接", "person" = REF(other), "name" = other.real_name, "approved" = permission.approved, "watching" = other == permission.viewer ? other.group_mindlink_view?.permission == permission : holder.group_mindlink_view?.permission == permission))
+			var/list/watchers = result["watchers"]
+			watchers += list(list("id" = REF(context), "link" = REF(link), "link_name" = "[link.member_name(link.owner)]的链接", "name" = link.member_name(context.viewer)))
 	return result
-
-/datum/group_mindlink_session/proc/find_vision_permission(id)
-	for(var/datum/group_mindlink_custom/link as anything in links)
-		for(var/datum/group_mindlink_vision_permission/permission as anything in link.vision_permissions)
-			if(REF(permission) == id && (permission.viewer == holder || permission.target == holder) && permission.valid())
-				return permission
 
 /datum/group_mindlink_session/proc/vision_action(action, list/params)
 	if(action == "vision_stop")
 		if(holder.group_mindlink_view)
 			qdel(holder.group_mindlink_view)
 		return TRUE
-	if(action == "vision_revoke_all")
-		for(var/datum/group_mindlink_custom/link as anything in links.Copy())
-			for(var/datum/group_mindlink_vision_permission/permission as anything in link.vision_permissions.Copy())
-				if(permission.target == holder)
-					qdel(permission)
-		return TRUE
-	if(action == "vision_request")
-		if(holder.IsUnconscious())
-			notice("清醒时才能发起视角请求。")
-			return TRUE
-		for(var/datum/group_mindlink_custom/link as anything in links)
-			if(REF(link) != params["link"] || !link.active || world.time >= link.expires_at || !(holder in link.participants))
+	// 旧的邀请、接受及撤销操作不再提供任何权限。
+	if(action != "vision_start" || selection_spell?.casting)
+		return FALSE
+	for(var/datum/group_mindlink_custom/link as anything in links)
+		if(REF(link) != params["link"] || !link.active || world.time >= link.expires_at || !(holder in link.participants))
+			continue
+		for(var/mob/living/target as anything in link.participants)
+			if(REF(target) != params["person"] || target == holder)
 				continue
-			for(var/mob/living/target as anything in link.participants)
-				if(REF(target) != params["person"] || target == holder)
-					continue
-				if(QDELETED(target) || !target.client || target.stat != CONSCIOUS || target.IsUnconscious())
-					notice("对方需要在线且清醒，才能本人同意视角请求。")
-					return TRUE
-				if(link.find_vision_permission(holder, target))
-					notice("已有待处理请求或有效授权，请查看视角面板。")
-					return TRUE
-				// 同一对角色在其他主链接中的待处理邀请也不能重复弹出。
-				for(var/datum/group_mindlink_custom/other_link as anything in links)
-					var/datum/group_mindlink_vision_permission/pending = other_link.find_vision_permission(holder, target)
-					if(pending && !pending.approved)
-						notice("对方尚有你的视角请求待处理，请先等待或取消。")
-						return TRUE
-				if(world.time < last_vision_request + 5 SECONDS)
-					notice("每五秒最多发起一次视角请求，请稍候。")
-					return TRUE
-				last_vision_request = world.time
-				var/datum/group_mindlink_vision_permission/permission = new(link, holder, target)
-				notice("已请求观看[target.real_name]的视角，等待对方同意。")
-				INVOKE_ASYNC(permission, TYPE_PROC_REF(/datum/group_mindlink_vision_permission, ui_interact), target)
+			if(holder.group_mindlink_view?.context?.link == link && holder.group_mindlink_view.target == target)
 				return TRUE
-		return TRUE
-	var/datum/group_mindlink_vision_permission/permission = find_vision_permission(params["id"])
-	if(!permission)
-		notice("这份视角请求或授权已经失效。")
-		return TRUE
-	switch(action)
-		if("vision_accept", "vision_decline")
-			if(permission.target == holder && !permission.approved)
-				permission.respond(holder, action == "vision_accept")
-		if("vision_revoke")
-			if(permission.target == holder)
-				qdel(permission)
-		if("vision_cancel")
-			if(permission.viewer == holder && !permission.approved)
-				qdel(permission)
-		if("vision_start")
-			if(permission.viewer == holder)
-				permission.start_view()
+			var/datum/group_mindlink_vision_context/context = new(link, holder, target)
+			if(!context.start_view())
+				qdel(context)
+			return TRUE
+	notice("当前链接或目标成员已失效。")
 	return TRUE
 
-// 请求对象使用专用的大尺寸确认界面，保留超时和身份校验，避免中文说明挤出按钮。
-/datum/group_mindlink_vision_permission
+/datum/group_mindlink_vision_context
 	var/datum/group_mindlink_custom/link
 	var/mob/living/viewer
 	var/mob/living/target
 	var/client/viewer_client
 	var/client/target_client
-	var/approved = FALSE
-	var/deadline
-	var/request_timer
+	var/datum/mind/viewer_mind
+	var/datum/mind/target_mind
 
-/datum/group_mindlink_vision_permission/New(datum/group_mindlink_custom/parent_link, mob/living/requester, mob/living/subject)
+/datum/group_mindlink_vision_context/New(datum/group_mindlink_custom/parent_link, mob/living/requester, mob/living/subject)
 	. = ..()
 	link = parent_link
 	viewer = requester
 	target = subject
 	viewer_client = viewer.client
 	target_client = target.client
-	deadline = world.time + 20 SECONDS
-	link.vision_permissions += src
-	request_timer = addtimer(CALLBACK(src, PROC_REF(expire_request)), 20 SECONDS, TIMER_STOPPABLE)
-	START_PROCESSING(SSprocessing, src)
-	refresh_pair()
+	viewer_mind = viewer.mind
+	target_mind = target.mind
+	link.vision_contexts += src
 
-/datum/group_mindlink_vision_permission/Destroy()
-	STOP_PROCESSING(SSprocessing, src)
-	if(request_timer)
-		deltimer(request_timer)
-	SStgui.close_uis(src)
-	if(viewer?.group_mindlink_view?.permission == src)
+/datum/group_mindlink_vision_context/Destroy()
+	if(!QDELETED(viewer?.group_mindlink_view) && viewer.group_mindlink_view.context == src)
 		qdel(viewer.group_mindlink_view)
-	link?.vision_permissions.Remove(src)
-	var/reason = approved ? "视角授权已撤销或随链接失效，再次观看需要重新同意。" : "视角请求未获同意、已取消或已经失效。"
-	for(var/mob/living/member as anything in list(viewer, target))
-		if(!QDELETED(member))
-			to_chat(member, span_notice("\[心灵视角\] [reason]"))
+	link?.vision_contexts.Remove(src)
 	refresh_pair()
 	link = null
 	viewer = null
 	target = null
 	viewer_client = null
 	target_client = null
+	viewer_mind = null
+	target_mind = null
 	return ..()
 
-/datum/group_mindlink_vision_permission/proc/valid(require_awake = FALSE)
+/datum/group_mindlink_vision_context/proc/valid(require_awake = FALSE)
 	if(QDELETED(src) || QDELETED(link) || !link.active || world.time >= link.expires_at)
 		return FALSE
 	if(QDELETED(viewer) || QDELETED(target) || viewer == target || viewer.stat == DEAD || target.stat == DEAD)
@@ -153,91 +94,33 @@
 		return FALSE
 	if(!viewer.client || !target.client || viewer.client != viewer_client || target.client != target_client)
 		return FALSE
+	if(viewer.mind != viewer_mind || target.mind != target_mind || viewer_mind?.current != viewer || target_mind?.current != target)
+		return FALSE
 	if(require_awake && (viewer.stat != CONSCIOUS || target.stat != CONSCIOUS || viewer.IsUnconscious() || target.IsUnconscious()))
 		return FALSE
 	return TRUE
 
-/datum/group_mindlink_vision_permission/process()
-	if(!valid(!approved))
-		qdel(src)
-
-/datum/group_mindlink_vision_permission/proc/expire_request()
-	if(!approved)
-		qdel(src)
-
-/datum/group_mindlink_vision_permission/proc/refresh_pair()
+/datum/group_mindlink_vision_context/proc/refresh_pair()
 	var/datum/group_mindlink_session/viewer_session = group_mindlink_session(viewer, FALSE)
 	var/datum/group_mindlink_session/target_session = group_mindlink_session(target, FALSE)
 	viewer_session?.refresh()
 	target_session?.refresh()
 
-/datum/group_mindlink_vision_permission/ui_state(mob/user)
-	return GLOB.always_state
-
-/datum/group_mindlink_vision_permission/ui_status(mob/user, datum/ui_state/state)
-	return user == target && !approved && world.time < deadline && valid(TRUE) ? UI_INTERACTIVE : UI_CLOSE
-
-/datum/group_mindlink_vision_permission/ui_interact(mob/user, datum/tgui/ui)
-	if(ui_status(user) != UI_INTERACTIVE)
-		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "GroupMindlinkVisionRequest", "心灵视角请求")
-		ui.open()
-
-/datum/group_mindlink_vision_permission/ui_data(mob/user)
-	if(user != target || !valid(TRUE))
-		return list()
-	return list("title" = "心灵视听旁观请求", "message" = "[viewer.real_name]请求借用你的视角和听觉，听到你周围的声音与说话，并检视你能看见的物品。对方不能操作你的身体或物品，也不会获得你的私聊及系统通知。这是单向授权，仅在[link.owner.real_name]创建的本次主链接内有效，允许反复旁观。关闭聊天窗口不会停止旁观，你可随时在群体心灵链接窗口撤销授权。是否同意？", "buttons" = list("拒绝", "同意"), "autofocus" = FALSE, "large_buttons" = FALSE, "swapped_buttons" = FALSE, "timeout" = clamp((deadline - world.time) / (20 SECONDS), 0, 1))
-
-/datum/group_mindlink_vision_permission/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-	if(ui.user != target || usr != target || ui_status(target) != UI_INTERACTIVE)
-		return FALSE
-	if(action == "choose" && (params["choice"] in list("同意", "拒绝")))
-		respond(target, params["choice"] == "同意")
-		return TRUE
-	if(action == "cancel")
-		respond(target, FALSE)
-		return TRUE
-
-/datum/group_mindlink_vision_permission/ui_close(mob/user)
-	if(!approved && !QDELETED(src))
-		qdel(src)
-
-/datum/group_mindlink_vision_permission/proc/respond(mob/user, accept)
-	if(user != target || approved)
-		return
-	if(!accept || world.time >= deadline || !valid(TRUE))
-		qdel(src)
-		return
-	approved = TRUE
-	if(request_timer)
-		deltimer(request_timer)
-		request_timer = null
-	SStgui.close_uis(src)
-	to_chat(viewer, span_notice("\[心灵视角\] [html_encode(target.real_name)]已同意，可在窗口中主动选择『观看视角』。"))
-	to_chat(target, span_notice("\[心灵视角\] 你已授权[html_encode(viewer.real_name)]在本次主链接内观看你的视角，可随时撤销。"))
-	refresh_pair()
-
-/datum/group_mindlink_vision_permission/proc/start_view()
+/datum/group_mindlink_vision_context/proc/start_view()
 	var/datum/group_mindlink_session/session = group_mindlink_session(viewer, FALSE)
-	if(!approved || !valid(TRUE))
-		session?.notice("当前没有有效授权，或双方未处于在线清醒状态。")
-		return
-	if(viewer.group_mindlink_view?.permission == src)
-		return
+	if(!valid(TRUE))
+		session?.notice("双方需要仍在同一主链接内，且在线、清醒。")
+		return FALSE
 	if(target.group_mindlink_view || target.client.eye != target || viewer.group_mindlink_has_watchers())
 		session?.notice("不能转播他人的视角，也不能在自己被观看时借用其他视角。")
-		return
+		return FALSE
 	if((!viewer.group_mindlink_view && viewer.client.eye != viewer) || viewer.remote_control || viewer.control_object || session?.selection_spell?.casting)
 		session?.notice("请先结束其他远程视角、控制或正在进行的施法。")
-		return
+		return FALSE
 	if(viewer.group_mindlink_view)
 		qdel(viewer.group_mindlink_view)
 	new /datum/group_mindlink_view(src)
+	return TRUE
 
 /mob/living/proc/group_mindlink_has_watchers(include_sensory = TRUE)
 	if(include_sensory && sensory_share_link_custom?.active)
@@ -248,20 +131,20 @@
 	if(!session)
 		return FALSE
 	for(var/datum/group_mindlink_custom/link as anything in session.links)
-		for(var/datum/group_mindlink_vision_permission/permission as anything in link.vision_permissions)
-			if(permission.target == src && permission.viewer?.group_mindlink_view?.permission == permission)
+		for(var/datum/group_mindlink_vision_context/context as anything in link.vision_contexts)
+			if(context.target == src && context.viewer?.group_mindlink_view?.context == context)
 				return TRUE
 	return FALSE
 
-// 只在镜头和授权都仍属于本功能时接管视觉；其他系统改镜头后立即交还控制。
+// 只在镜头和成员资格都仍属于本功能时接管视觉；其他系统改镜头后立即交还控制。
 /mob/living/proc/group_mindlink_borrowed_eye()
 	var/datum/group_mindlink_view/view = group_mindlink_view
-	if(QDELETED(view) || !client || client.eye != view.target || !view.permission?.valid(TRUE) || view.target.client.eye != view.target)
+	if(QDELETED(view) || !client || client.eye != view.target || !view.context?.valid(TRUE) || view.target.client.eye != view.target)
 		return null
 	return view.target
 
 /datum/group_mindlink_view
-	var/datum/group_mindlink_vision_permission/permission
+	var/datum/group_mindlink_vision_context/context
 	var/mob/living/viewer
 	var/mob/living/target
 	var/client/view_client
@@ -270,18 +153,18 @@
 	var/last_visual_state
 	var/list/blocked_actions = list()
 
-/datum/group_mindlink_view/New(datum/group_mindlink_vision_permission/authorization)
+/datum/group_mindlink_view/New(datum/group_mindlink_vision_context/watch_context)
 	. = ..()
-	permission = authorization
-	viewer = permission.viewer
-	target = permission.target
+	context = watch_context
+	viewer = context.viewer
+	target = context.target
 	view_client = viewer.client
 	viewer.stop_attack()
 	viewer.group_mindlink_view = src
 	viewer.verbs |= /mob/living/proc/group_mindlink_return_view
 	// 暂停客户端主动移动，不修改定身状态，外力拖拽和强制位移仍正常发生。
 	previous_move_delay = view_client.move_delay
-	held_move_delay = max(previous_move_delay, permission.link.expires_at + 1 SECONDS)
+	held_move_delay = max(previous_move_delay, context.link.expires_at + 1 SECONDS)
 	view_client.move_delay = held_move_delay
 	RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(viewer_moved))
 	RegisterSignal(viewer, COMSIG_MOB_STATCHANGE, PROC_REF(state_changed))
@@ -292,9 +175,9 @@
 	start_senses()
 	block_actions()
 	START_PROCESSING(SSfastprocess, src)
-	to_chat(viewer, span_notice("\[心灵视角\] 正在旁观[html_encode(target.real_name)]，可检视可见物品并聆听对方周围的声音，身体暂时不能主动行动。关闭窗口会继续旁观；请使用 IC →『返回自身视角』退出，也可重开 Group Mindlink 点击返回按钮。"))
-	to_chat(target, span_notice("\[心灵视角\] [html_encode(viewer.real_name)]开始观看你的视角。"))
-	permission.refresh_pair()
+	to_chat(viewer, span_notice("\[心灵视角\] 正在旁观[html_encode(context.link.member_name(target))]，可检视可见物品并聆听对方周围的声音，身体暂时不能主动行动。关闭窗口会继续旁观；请使用 IC →『返回自身视角』退出，也可重开 Group Mindlink 点击返回按钮。"))
+	to_chat(target, span_notice("\[心灵视角\] [html_encode(context.link.member_name(viewer))]开始观看你的视角。"))
+	context.refresh_pair()
 
 /datum/group_mindlink_view/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
@@ -323,9 +206,11 @@
 	if(target)
 		UnregisterSignal(target, COMSIG_MOB_STATCHANGE)
 		if(!QDELETED(target) && !QDELETED(viewer))
-			to_chat(target, span_notice("\[心灵视角\] [html_encode(viewer.real_name)]已停止观看你的视角。"))
-	permission?.refresh_pair()
-	permission = null
+			to_chat(target, span_notice("\[心灵视角\] [html_encode(context.link.member_name(viewer))]已停止观看你的视角。"))
+	context?.refresh_pair()
+	if(!QDELETED(context))
+		qdel(context)
+	context = null
 	viewer = null
 	target = null
 	view_client = null
@@ -337,17 +222,17 @@
 
 /datum/group_mindlink_view/proc/state_changed()
 	SIGNAL_HANDLER
-	if(!permission.valid(TRUE))
+	if(!context.valid(TRUE))
 		qdel(src)
 
 /datum/group_mindlink_view/process()
-	if(!permission.valid(TRUE) || viewer.client != view_client || view_client.eye != target || target.client.eye != target || target.group_mindlink_view || viewer.remote_control || viewer.control_object)
+	if(!context.valid(TRUE) || viewer.client != view_client || view_client.eye != target || target.client.eye != target || target.group_mindlink_view || viewer.remote_control || viewer.control_object)
 		qdel(src)
 		return
 	// 外部系统若另设移动延迟，保存其新值；清理时不会撤销其他来源的延迟。
 	if(view_client.move_delay != held_move_delay)
 		previous_move_delay = view_client.move_delay
-		held_move_delay = max(previous_move_delay, permission.link.expires_at + 1 SECONDS)
+		held_move_delay = max(previous_move_delay, context.link.expires_at + 1 SECONDS)
 		view_client.move_delay = held_move_delay
 	block_actions()
 	sync_vision()

@@ -25,8 +25,8 @@
 	return !QDELETED(src) && viewer?.group_mindlink_borrowed_eye() == target && !target.group_mindlink_view
 
 // 与视野锥遮挡规则一致，但也接受物品和地板，不能仅检查人物。
-/datum/group_mindlink_view/proc/can_examine(atom/subject)
-	if(!senses_valid() || QDELETED(subject) || istype(subject, /atom/movable/screen))
+/proc/group_mindlink_visible(mob/living/target, atom/subject)
+	if(QDELETED(target) || !target.client || QDELETED(subject) || istype(subject, /atom/movable/screen))
 		return FALSE
 	if(!isturf(subject) && !isturf(subject.loc))
 		return FALSE
@@ -63,6 +63,9 @@
 		if(subject.InCone(target, direction))
 			return FALSE
 	return TRUE
+
+/datum/group_mindlink_view/proc/can_examine(atom/subject)
+	return senses_valid() && group_mindlink_visible(target, subject)
 
 /datum/group_mindlink_view/proc/examine_visible(atom/subject)
 	if(examining || world.time < next_examine)
@@ -173,7 +176,7 @@
 	var/clean_message = html_encode(group_mindlink_plain_text(raw_message))
 	var/list/own_spans = viewer.handle_language_spans(spans?.Copy())
 	var/rendered = viewer.lang_treat(speaker, message_language, clean_message, own_spans, message_mode)
-	to_chat(viewer, "<span class='notice'>\[心灵听觉 · [html_encode(target.real_name)]\]</span> <span class='name'>[html_encode(speaker_name)]</span> [rendered]")
+	to_chat(viewer, "<span class='notice'>\[心灵听觉 · [html_encode(context.link.member_name(target))]\]</span> <span class='name'>[html_encode(speaker_name)]</span> [rendered]")
 
 /datum/group_mindlink_view/proc/start_senses()
 	LAZYADD(target.group_mindlink_sense_watchers, src)

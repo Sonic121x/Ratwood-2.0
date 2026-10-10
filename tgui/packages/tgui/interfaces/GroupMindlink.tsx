@@ -29,20 +29,18 @@ type ActiveRoom = Room & {
   messages: Message[];
   sequence: number;
 };
-type VisionPermission = {
+type VisionWatcher = {
   id: string;
   link: string;
   link_name: string;
-  person: string;
   name: string;
-  approved: BooleanLike;
-  watching: BooleanLike;
 };
 type Data = {
   self: string;
   feedback: string;
   selecting: BooleanLike;
   busy: BooleanLike;
+  waiting: BooleanLike;
   selection: string[];
   candidates: Person[];
   groups: {
@@ -54,9 +52,8 @@ type Data = {
   active: ActiveRoom | null;
   ack: { nonce?: string; room?: string };
   vision: {
-    current: { id: string; name: string } | null;
-    incoming: VisionPermission[];
-    outgoing: VisionPermission[];
+    current: { link: string; person: string; name: string } | null;
+    watchers: VisionWatcher[];
   };
 };
 
@@ -64,41 +61,31 @@ const kindLabel = { main: '主群', dm: '私聊', room: '小房间' };
 
 const VisionButton = ({ person, link }: { person: Person; link: string }) => {
   const { act, data } = useBackend<Data>();
-  const permission = data.vision.outgoing.find(
-    (entry) => entry.link === link && entry.person === person.id,
-  );
-  const watching = !!permission && data.vision.current?.id === permission.id;
+  const watching =
+    data.vision.current?.link === link &&
+    data.vision.current.person === person.id;
   return (
     <Button
       icon="eye"
-      disabled={!person.online || (!!permission && !permission.approved)}
-      tooltip={!person.online ? '对方需要在线且清醒，才能本人同意' : undefined}
+      disabled={!person.online || !!data.busy}
+      tooltip={!person.online ? '对方需要在线且清醒' : undefined}
       onClick={() => {
         if (watching) {
           act('vision_stop');
-        } else if (permission?.approved) {
-          act('vision_start', { id: permission.id });
         } else {
-          act('vision_request', { link, person: person.id });
+          act('vision_start', { link, person: person.id });
         }
       }}
     >
-      {watching
-        ? '返回自身'
-        : permission?.approved
-          ? '观看视角'
-          : permission
-            ? '等待同意'
-            : '请求视角'}
+      {watching ? '返回自身' : '观看视角'}
     </Button>
   );
 };
 
 const VisionPanel = () => {
   const { act, data } = useBackend<Data>();
-  const { current, incoming, outgoing } = data.vision;
+  const { current, watchers } = data.vision;
   const [expanded, setExpanded] = useState(false);
-  const pending = incoming.filter((entry) => !entry.approved).length;
   return (
     <Section title="心灵视角">
       <Stack align="center">
@@ -106,7 +93,7 @@ const VisionPanel = () => {
           <Box color={current ? 'good' : 'label'}>
             {current
               ? `正在视听旁观：${current.name} · 身体暂时不能主动行动`
-              : '当前为自身视角 · 借用他人视角须先征得同意'}
+              : '当前为自身视角 · 同一主链接成员可直接互相旁观'}
           </Box>
         </Stack.Item>
         {!!current && (
@@ -122,92 +109,37 @@ const VisionPanel = () => {
         )}
         <Stack.Item>
           <Button onClick={() => setExpanded(!expanded)}>
-            {expanded ? '收起授权' : '管理授权'}
-            {pending > 0 && `（${pending} 个请求）`}
+            {expanded ? '收起旁观信息' : '旁观信息'}
+            {watchers.length > 0 && `（${watchers.length} 人正在观看我）`}
           </Button>
         </Stack.Item>
       </Stack>
       {expanded && (
         <Box mt={1} maxHeight="180px" overflowY="auto">
-          <Box bold mb={0.5}>
-            谁可以观看我
-          </Box>
-          {!incoming.length && <Box color="label">尚未授权任何人。</Box>}
-          {incoming.map((entry) => (
-            <Stack key={entry.id} align="center" mb={0.5}>
-              <Stack.Item grow>
-                {entry.name} · {entry.link_name} ·{' '}
-                {entry.watching
-                  ? '正在观看我'
-                  : entry.approved
-                    ? '已授权'
-                    : '等待我同意'}
-              </Stack.Item>
-              {!entry.approved && (
-                <Stack.Item>
-                  <Button
-                    color="good"
-                    onClick={() => act('vision_accept', { id: entry.id })}
-                  >
-                    同意
-                  </Button>
-                </Stack.Item>
-              )}
-              <Stack.Item>
-                <Button
-                  color="bad"
-                  onClick={() =>
-                    act(entry.approved ? 'vision_revoke' : 'vision_decline', {
-                      id: entry.id,
-                    })
-                  }
-                >
-                  {entry.approved ? '撤销授权' : '拒绝'}
-                </Button>
-              </Stack.Item>
-            </Stack>
-          ))}
-          {incoming.length > 0 && (
-            <Button color="bad" mb={1} onClick={() => act('vision_revoke_all')}>
-              撤销全部授权与待处理请求
-            </Button>
-          )}
-          <Box bold mt={1} mb={0.5}>
-            我可以观看谁
-          </Box>
-          {!outgoing.length && (
-            <Box color="label">在右侧成员列表中请求视角。</Box>
-          )}
-          {outgoing.map((entry) => (
-            <Stack key={entry.id} align="center" mb={0.5}>
-              <Stack.Item grow>
-                {entry.name} · {entry.link_name} ·{' '}
-                {entry.approved ? '对方已同意' : '等待对方同意'}
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  icon={entry.approved ? 'eye' : 'xmark'}
-                  disabled={current?.id === entry.id}
-                  onClick={() =>
-                    act(entry.approved ? 'vision_start' : 'vision_cancel', {
-                      id: entry.id,
-                    })
-                  }
-                >
-                  {current?.id === entry.id
-                    ? '正在观看'
-                    : entry.approved
-                      ? '观看视角'
-                      : '取消请求'}
-                </Button>
-              </Stack.Item>
-            </Stack>
+          {!watchers.length && <Box color="label">当前无人观看我。</Box>}
+          {watchers.map((entry) => (
+            <Box key={entry.id} mb={0.5}>
+              {entry.name} · {entry.link_name} · 正在观看我
+            </Box>
           ))}
           <Box color="label" mt={1} fontSize="11px">
-            授权包含视角、周围声音及可见物品检视，仅在对应主链接内有效。
-            关闭窗口会继续旁观；请使用 IC →
-            返回自身视角退出。对方可随时撤销授权。
+            加入主链接即允许群内互相共享视角、周围声音及可见物品检视。
+            关闭窗口会继续旁观；请使用 IC → 返回自身视角退出旁观。
+            退出所属主链接可终止该链接的旁观权限，退出后不能重新加入。
           </Box>
+          {data.groups.map((group) => (
+            <Button.Confirm
+              key={group.id}
+              color="bad"
+              mt={1}
+              mr={1}
+              disabled={!!data.busy}
+              confirmContent="确认退出主链接"
+              onClick={() => act('leave_link', { link: group.id })}
+            >
+              退出{group.name}
+            </Button.Confirm>
+          ))}
         </Box>
       )}
     </Section>
@@ -219,9 +151,10 @@ const PeoplePicker = (props: {
   selected: string[];
   toggle: (id: string) => void;
   disabled?: boolean;
+  maxSelected?: number;
 }) => {
   const [query, setQuery] = useState('');
-  const { people, selected, toggle, disabled } = props;
+  const { people, selected, toggle, disabled, maxSelected } = props;
   const matches = people.filter((person) => person.name.includes(query.trim()));
   return (
     <>
@@ -232,7 +165,12 @@ const PeoplePicker = (props: {
             key={person.id}
             fluid
             checked={selected.includes(person.id)}
-            disabled={disabled}
+            disabled={
+              disabled ||
+              (!!maxSelected &&
+                selected.length >= maxSelected &&
+                !selected.includes(person.id))
+            }
             onClick={() => toggle(person.id)}
           >
             {person.name}
@@ -248,7 +186,6 @@ const PeoplePicker = (props: {
 const MemberActions = ({ room }: { room: ActiveRoom }) => {
   const { act, data } = useBackend<Data>();
   const [selected, setSelected] = useState<string[]>([]);
-  const [known, setKnown] = useState<string[]>([]);
   const [name, setName] = useState('');
   const toggle = (id: string) =>
     setSelected((ids) =>
@@ -257,9 +194,6 @@ const MemberActions = ({ room }: { room: ActiveRoom }) => {
   const eligible = room.people.filter((person) => person.id !== data.self);
   const validSelected = selected.filter((id) =>
     eligible.some((person) => person.id === id),
-  );
-  const validKnown = known.filter((id) =>
-    data.candidates.some((person) => person.id === id),
   );
   const canManage =
     (room.kind === 'main' && room.owner === data.self) ||
@@ -381,39 +315,13 @@ const MemberActions = ({ room }: { room: ActiveRoom }) => {
           </Button>
         )}
       </Section>
-      {room.owner === data.self && (
-        <Section title="追加熟人到主链接">
-          <PeoplePicker
-            people={data.candidates}
-            selected={validKnown}
-            toggle={(id) =>
-              setKnown((ids) =>
-                ids.includes(id)
-                  ? ids.filter((entry) => entry !== id)
-                  : [...ids, id],
-              )
-            }
-          />
-          <Button
-            fluid
-            mt={1}
-            disabled={!validKnown.length}
-            onClick={() => {
-              act('add_known', { room: room.id, ids: validKnown });
-              setKnown([]);
-            }}
-          >
-            加入主链接（不延长时间）
-          </Button>
-        </Section>
-      )}
     </>
   );
 };
 
 export const GroupMindlink = () => {
   const { act, data } = useBackend<Data>();
-  const { active, selecting, busy } = data;
+  const { active, selecting, busy, waiting } = data;
   // 仅保存在本地窗口状态中，不使用会向其他客户端共享的状态接口。
   const [drafts, setDrafts] = useLocalState<Record<string, string>>(
     `group-mindlink-drafts-${data.self}`,
@@ -536,19 +444,21 @@ export const GroupMindlink = () => {
               </Stack.Item>
               {!!selecting && (
                 <Stack.Item grow>
-                  <Section fill scrollable title="选择熟人建立链接">
+                  <Section fill scrollable title="邀请视野内玩家加入链接">
                     <Box mb={2} color="label">
-                      施法者自动加入。确认后引导五秒，链接持续十五分钟。
-                      未在线的熟人也可加入，在线后可重开窗口交流。
+                      施法者自动加入，最多邀请五名在线、清醒且面容与真名公开的玩家。
+                      对方同意后引导五秒，链接持续十五分钟，不能中途追加成员。
+                      加入即允许同一主链接成员直接互相视听旁观。
                     </Box>
                     <PeoplePicker
                       people={data.candidates}
                       selected={data.selection}
+                      maxSelected={5}
                       disabled={!!busy}
                       toggle={(id) => act('toggle_person', { id })}
                     />
                     <Box my={2}>
-                      已选 {data.selection.length} 人
+                      已选 {data.selection.length}/5 人
                       <Button
                         ml={1}
                         disabled={!!busy}
@@ -568,10 +478,14 @@ export const GroupMindlink = () => {
                       disabled={!!busy || !data.selection.length}
                       onClick={() => act('cast')}
                     >
-                      {busy ? '正在引导……' : '确认施法'}
+                      {waiting
+                        ? '等待加入确认……'
+                        : busy
+                          ? '正在引导……'
+                          : '发送加入邀请'}
                     </Button>
                     <Button
-                      disabled={!!busy}
+                      disabled={!!busy && !waiting}
                       onClick={() => act('cancel_selection')}
                     >
                       取消

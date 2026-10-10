@@ -39,6 +39,7 @@
 #include "spells/arcane/flight.dm"
 #include "spells/arcane/group_buffs.dm"
 #include "spells/arcane/group_mindlink.dm"
+#include "spells/arcane/group_mindlink_invitation.dm"
 #include "spells/arcane/group_mindlink_vision.dm"
 #include "spells/arcane/group_mindlink_senses.dm"
 #include "spells/arcane/arcane_archery.dm"
