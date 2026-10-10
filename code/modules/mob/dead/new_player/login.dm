@@ -53,8 +53,8 @@
 		to_chat(src, span_info("赞助等级：[shown_patreon_level]"))
 	client.changelog()
 
-	var/primary_server = "byond://ratwood.rip:22096"
-	var/secondary_server = "byond://ratwood.rip:22099"
+	var/primary_server = "byond://103.40.13.27:25388"
+	var/secondary_server = "byond://222.187.254.125:25388"
 	var/link_style = "color:#638500;text-decoration:underline;"
 
 	if(world.port == 22096)
