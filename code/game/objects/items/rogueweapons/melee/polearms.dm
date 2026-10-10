@@ -3,7 +3,7 @@
 /datum/intent/priest_smite
 	name = "电击"
 	blade_class = null
-	desc = "Shock a target. Only works inside the Church."
+	desc = "电击目标。仅在教堂内生效。"
 	icon_state = "inuse"
 	tranged = TRUE
 	noaa = TRUE
@@ -21,7 +21,7 @@
 	blade_class = BCLASS_STAB
 	attack_verb = list("突刺")
 	animname = "stab"
-	desc = "Stab someone. Must be at a range of two tiles to penetrate properly."
+	desc = "刺击目标。必须相距两格才能发挥应有的穿透力。"
 	icon_state = "instab"
 	reach = 2
 	clickcd = CLICK_CD_CHARGED
@@ -37,7 +37,7 @@
 	reach = 1
 	swingdelay = 4
 	penfactor = 45
-	desc = "Stab a target. With only one hand, you aren't using the spear to its full power."
+	desc = "刺击目标。单手持矛无法发挥长矛的全部威力。"
 	clickcd = CLICK_CD_RESIST
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
@@ -86,7 +86,7 @@
 /datum/intent/spear/bash/eaglebeak
 	name = "鹰喙猛砸"
 	damfactor = 1
-	desc = "Smash someone over the head. Effective at two tiles."
+	desc = "猛击目标的头部。相距两格时有效。"
 	reach = 2
 	blunt_chipping = TRUE
 	blunt_chip_strength = BLUNT_CHIP_STRONG
@@ -100,7 +100,7 @@
 	attack_verb = list("切开", "挥砍")
 	icon_state = "incut"
 	damfactor = 0.8
-	desc = "Poorly hack at someone with your speartip. Works at two-tile range without penalty."
+	desc = "用矛尖笨拙地劈砍目标。相距两格时没有攻击惩罚。"
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	reach = 2
 	item_d_type = "slash"
@@ -112,12 +112,12 @@
 	sharpness_penalty = 2
 
 /datum/intent/spear/cut/halberd
-	desc = "Use the awe-inspiring power of a combined sharp thing and pointy thing to cut someone. Two tile range. Hurts more than a normal cut."
+	desc = "将利刃与尖头合为一体，以令人敬畏的威力劈砍目标。攻击距离为两格，伤害高于普通劈砍。"
 	damfactor = 1.2
 
 /datum/intent/spear/cut/scythe
 	reach = 3
-	desc = "Reap. Effective at two tiles or above."
+	desc = "收割。相距两格或更远时有效。"
 	damfactor = 1
 	effective_range = 2
 	effective_range_type = EFF_RANGE_ABOVE
@@ -136,7 +136,7 @@
 	blade_class = BCLASS_CHOP
 	attack_verb = list("劈砍", "猛劈")
 	animname = "chop"
-	desc = "A cleave that cuts through a second target behind the first. Weakly penetrative."
+	desc = "一记劈斩，会连第一个目标身后的第二个目标一并斩开。穿透力较弱。"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 35
 	item_d_type = "slash"
@@ -178,11 +178,11 @@
 	desc = "一记横扫，会斩开身前的所有目标。"
 
 /datum/intent/sword/cut/zwei
-	desc = "It's like cutting, but your sword is huge."
+	desc = "如同普通劈砍，只不过你挥舞的是一把巨剑。"
 	reach = 2
 
 /datum/intent/sword/thrust/zwei
-	desc = "Stab, but with range."
+	desc = "攻击距离更远的刺击。"
 	reach = 2
 
 /datum/intent/sword/cut/zwei/cleave
@@ -220,7 +220,7 @@
 	attack_verb = list("突进刺击")
 	animname = "stab"
 	blade_class = BCLASS_STAB
-	desc = "A two-tile stab. You won't penetrate armor well."
+	desc = "攻击距离为两格的刺击。难以有效穿透护甲。"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	reach = 2
 	damfactor = 1.3	//Zwei will still deal ~7-10 more damage at the same range, depending on user's STR.
@@ -230,7 +230,7 @@
 
 /datum/intent/sword/lunge/estoc
 	damfactor = 1.2
-	desc = "Stab at range. You'll rip through leather, but not metal."
+	desc = "从远处刺击。能刺穿皮革，却无法穿透金属。"
 	penfactor = 37//25 base, +5, at 67. More for applying bleed through armour, since it's a needle.
 	swingdelay = 0
 	clickcd = CLICK_CD_CHARGED
@@ -238,7 +238,7 @@
 /datum/intent/sword/bash
 	name = "十字护手砸击"
 	blade_class = BCLASS_BLUNT
-	desc = "Smash someone with the crossguard of your sword."
+	desc = "用剑的十字护手猛击目标。"
 	icon_state = "inbash"
 	attack_verb = list("猛砸", "打击")
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -257,7 +257,7 @@
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
-	desc = "Devastate exposed flesh. Barely damages armor, and ruins your weapon's sharpness."
+	desc = "重创裸露的血肉。几乎无法损伤护甲，还会严重磨损武器的锋刃。"
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 2.5
 	clickcd = CLICK_CD_CHARGED
@@ -272,7 +272,7 @@
 	name = "长距撕裂"
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	misscost = 5
-	desc = "Rip apart exposed flesh at range. Only effective at exactly two tiles."
+	desc = "从远处撕裂裸露的血肉。仅在恰好相距两格时有效。"
 	clickcd = CLICK_CD_HEAVY
 	damfactor = 2
 	reach = 2
@@ -283,7 +283,7 @@
 	name = "撕裂突刺"
 	attack_verb = list("刺穿")
 	blade_class = BCLASS_STAB
-	desc = "Impale exposed flesh. Useless against armor."
+	desc = "贯穿裸露的血肉。对护甲毫无作用。"
 	damfactor = 1.8//It's a heavy stab. Not a chop.
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	item_d_type = "stab"
