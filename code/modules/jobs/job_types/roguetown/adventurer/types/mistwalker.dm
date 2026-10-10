@@ -37,7 +37,7 @@
 	subclass_stashed_items = list(
 		"缝纫工具包" =  /obj/item/repair_kit, //I am sure you'll find a way to repair your bracers
 	)
-	extra_context = "This subclass gains additional stat points from weapon selection, and is race-limited from: Constructs and Ooze."
+	extra_context = "此子职业会根据所选武器获得额外属性点，构装体与软泥无法选择此子职业。"
 	adv_stat_ceiling = list(STAT_STRENGTH = 14, STAT_INTELLIGENCE = 14) //grapplebeast/feintbeast protection. stat stacking was being obscenely abused to run builds with 15 in every stat.
 
 /datum/advclass/wretch/mistwalker/check_requirements(mob/living/carbon/human/H)

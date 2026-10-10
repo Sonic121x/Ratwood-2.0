@@ -1,12 +1,12 @@
 /datum/antagonist/ukj_dark_itinerant
-	name = "Dark Itinerant"
-	roundend_category = "Dark Itinerant"
+	name = "黑暗行者"
+	roundend_category = "黑暗行者"
 	antagpanel_category = "Dark Itinerant"
 	job_rank = ROLE_DARK_ITINERANT
 	confess_lines = list(
-		"PSYDON IS THE DEMIURGE!",
-		"THE TEN ARE WORTHLESS COWARDS!",
-		"THE TEN ARE DECEIVERS!",
+		"普赛顿就是造物伪神！",
+		"十神都是一无是处的懦夫！",
+		"十神都是骗子！",
 	)
 	rogue_enabled = TRUE
 
@@ -21,20 +21,20 @@
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
 			H.faction = list("undead")
-			to_chat(owner, span_danger("ENOUGH IS NEVER ENOUGH. The Pale Lady whispers from below, and I SHALL ANSWER."))
+			to_chat(owner, span_danger("永远都不够。苍白女士在下方低语，而我必将回应。"))
 		if(/datum/patron/inhumen/matthios)
-			to_chat(owner, span_danger("NO LORD OWNS ME. The Manyfaced whispers from the shadows, and I SHALL TAKE WHAT IS OWED."))
+			to_chat(owner, span_danger("没有领主能支配我。千面者在阴影中低语，而我必将夺回应得之物。"))
 		if(/datum/patron/inhumen/baotha)
-			to_chat(owner, span_danger("WHY DENY MYSELF ANYTHING? The Lady of Debauchery whispers sweetly, and I SHALL ANSWER."))
+			to_chat(owner, span_danger("何必压抑自己的欲望？放纵之女甜蜜地低语，而我必将回应。"))
 		if(/datum/patron/inhumen/graggar)
-			to_chat(owner, span_danger("THE WEAK EXIST TO BE CONQUERED. The Gorebound Star howls for blood, and I SHALL WREAK HAVOC."))
+			to_chat(owner, span_danger("弱者生来就是为了被征服。缚血之星嘶吼着渴求鲜血，而我必将掀起浩劫。"))
 
 /datum/antagonist/ukj_dark_itinerant/varlet
-	name = "Varlet"
-	roundend_category = "Varlet"
+	name = "扈从"
+	roundend_category = "扈从"
 	antagpanel_category = "Varlet"
 
 /datum/antagonist/ukj_dark_itinerant/dark_chaplain
-	name = "Wordbearer"
-	roundend_category = "Wordbearer"
+	name = "传道者"
+	roundend_category = "传道者"
 	antagpanel_category = "Wordbearer"

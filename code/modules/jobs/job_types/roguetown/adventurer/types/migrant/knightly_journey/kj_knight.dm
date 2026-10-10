@@ -1,8 +1,8 @@
 // BANNERET - heavy plate and a big weapon
 
 /datum/advclass/kj_knight
-	name = "Knight Banneret"
-	tutorial = "A veteran of many tourneys and more than a few true wars, you ride far from your house's lands with a squire you have been training for some yils. You know your chosen arm of war well."
+	name = "方旗骑士"
+	tutorial = "你历经无数比武，也参加过不少真正的战争。如今，你带着已训练数年的侍从，策马远离家族领地。你对自己选定的兵器早已驾轻就熟。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/adventurer/kj_knight
@@ -58,110 +58,110 @@
 	. = ..()
 
 	var/helmets = list(
-		"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-		"Savoyard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-		"Barred Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
-		"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
-		"Knight Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-		"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-		"Snouted Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
-		"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-		"Snouted Armet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-		"Hounskull Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-		"Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-		"Snouted Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-		"Etruscan Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-		"Slitted Kettle"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
-		"Froggemund Helmet"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
-		"Volf-Plate Helm"	= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
-		"None"
+		"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+		"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+		"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+		"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
+		"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
+		"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+		"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+		"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
+		"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+		"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+		"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+		"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+		"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+		"开缝锅盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
+		"蛙嘴盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
+		"沃尔夫面甲头盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
+		"无"
 	)
-	var/helmchoice = input(H, "Choose your helm.", "TAKE UP HELMS") as anything in helmets
+	var/helmchoice = input(H, "选择你的头盔。", "戴盔备战") as anything in helmets
 	var/helm = helmets[helmchoice]
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
 	var/armors = list(
-		"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
-		"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
-		"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-		"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
-		"Full Plate"		= /obj/item/clothing/suit/roguetown/armor/plate/full,
-		"Fluted Plate"		= /obj/item/clothing/suit/roguetown/armor/plate/full/fluted,
+		"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
+		"板片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+		"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
+		"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+		"全身板甲"		= /obj/item/clothing/suit/roguetown/armor/plate/full,
+		"沟槽板甲"		= /obj/item/clothing/suit/roguetown/armor/plate/full/fluted,
 	)
-	var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
+	var/armorchoice = input(H, "选择你的护甲。", "披甲备战") as anything in armors
 	var/picked_armor = armors[armorchoice]
 	if(picked_armor)
 		H.equip_to_slot_or_del(new picked_armor(H), SLOT_ARMOR, TRUE)
 
-	var/cloaks = list("Surcoat", "Tabard", "Jupon")
-	var/cloaks_choice = input(H, "Choose your cloak.", "BEAR YOUR HOUSE'S HERALDRY.") as anything in cloaks
+	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks_choice = input(H, "选择你的披风。", "披上家族的纹章") as anything in cloaks
 	switch(cloaks_choice)
-		if("Surcoat")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
-		if("Tabard")
+		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("Jupon")
+		if("朱蓬")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
-	var/weapons = list("Greatsword", "Flamberge", "Zweihander", "Kriegsmesser", "Great Mace", "Partizan", "Glaive", "Mace", "Longsword + Shield", "Greataxe", "Warhammer + Shield", "Battle Axe")
-	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	var/weapons = list("巨剑", "焰形剑", "双手剑", "双手大刀", "巨型钉头锤", "阔刃矛", "长柄刃", "钉头锤", "长剑 + 盾牌", "巨斧", "战锤 + 盾牌", "战斧")
+	var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 	switch(weapon_choice)
-		if("Greatsword")
+		if("巨剑")
 			H.put_in_hands(new /obj/item/rogueweapon/greatsword(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Flamberge")
+		if("焰形剑")
 			H.put_in_hands(new /obj/item/rogueweapon/greatsword/grenz/flamberge(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Zweihander")
+		if("双手剑")
 			H.put_in_hands(new /obj/item/rogueweapon/greatsword/grenz(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Kriegsmesser")
+		if("双手大刀")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/kriegmesser(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword(H), SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Great Mace")
+		if("巨型钉头锤")
 			H.put_in_hands(new /obj/item/rogueweapon/mace/goden/steel(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
-		if("Partizan")
+		if("阔刃矛")
 			H.put_in_hands(new /obj/item/rogueweapon/spear/partizan(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
-		if("Glaive")
+		if("长柄刃")
 			H.put_in_hands(new /obj/item/rogueweapon/halberd/glaive(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
-		if("Mace")
+		if("钉头锤")
 			H.put_in_hands(new /obj/item/rogueweapon/mace/steel(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
-		if("Longsword + Shield")
+		if("长剑 + 盾牌")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword/noble(H), SLOT_BELT_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/tower/metal(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-		if("Greataxe")
+		if("巨斧")
 			H.put_in_hands(new /obj/item/rogueweapon/greataxe/steel(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_MASTER, TRUE)
-		if("Warhammer + Shield")
+		if("战锤 + 盾牌")
 			H.put_in_hands(new /obj/item/rogueweapon/mace/warhammer/steel(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/tower/metal(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-		if("Battle Axe")
+		if("战斧")
 			H.put_in_hands(new /obj/item/rogueweapon/stoneaxe/battle(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_MASTER, TRUE)
 
 // OUTRIDER - medium armor, a horse and a bow
 
 /datum/advclass/kj_knight_outrider
-	name = "Knight Outrider"
-	tutorial = "You've spent most of your life in the saddle, scouting ahead and running down stragglers. You ride out ahead of your squire, strike from horseback and rely on speed rather than heavy armor."
+	name = "前哨骑士"
+	tutorial = "你一生大半时间都在马背上度过，探查前路，追击掉队之敌。你策马行在侍从前方，从马背上发动攻击，依靠速度而非重甲。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/adventurer/kj_knight_outrider
@@ -221,100 +221,100 @@
 	. = ..()
 
 	var/helmets = list(
-		"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-		"Savoyard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-		"Barred Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
-		"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
-		"Knight Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-		"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-		"Snouted Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
-		"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-		"Snouted Armet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-		"Hounskull Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-		"Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-		"Snouted Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-		"Etruscan Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-		"Slitted Kettle"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
-		"Froggemund Helmet"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
-		"Volf-Plate Helm"	= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
-		"None"
+		"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+		"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+		"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+		"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
+		"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
+		"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+		"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+		"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
+		"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+		"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+		"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+		"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+		"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+		"开缝锅盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
+		"蛙嘴盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
+		"沃尔夫面甲头盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
+		"无"
 	)
-	var/helmchoice = input(H, "Choose your helm.", "TAKE UP HELMS") as anything in helmets
+	var/helmchoice = input(H, "选择你的头盔。", "戴盔备战") as anything in helmets
 	var/helm = helmets[helmchoice]
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
 	var/armors = list(
-		"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
-		"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-		"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
-		"Scalemail"			= /obj/item/clothing/suit/roguetown/armor/plate/scale,
+		"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
+		"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
+		"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+		"鳞甲"			= /obj/item/clothing/suit/roguetown/armor/plate/scale,
 	)
-	var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
+	var/armorchoice = input(H, "选择你的护甲。", "披甲备战") as anything in armors
 	var/picked_armor = armors[armorchoice]
 	if(picked_armor)
 		H.equip_to_slot_or_del(new picked_armor(H), SLOT_ARMOR, TRUE)
 
-	var/cloaks = list("Surcoat", "Tabard", "Jupon")
-	var/cloaks_choice = input(H, "Choose your cloak.", "BEAR YOUR HOUSE'S HERALDRY.") as anything in cloaks
+	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks_choice = input(H, "选择你的披风。", "披上家族的纹章") as anything in cloaks
 	switch(cloaks_choice)
-		if("Surcoat")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
-		if("Tabard")
+		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("Jupon")
+		if("朱蓬")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
-	var/weapons = list("Longsword + Crossbow", "Billhook + Recurve Bow", "Sabre + Recurve Bow", "Lance + Kite Shield", "Rapier + Longbow", "Estoc + Recurve Bow", "Sabre + Buckler", "Whip + Crossbow", "Urumi + Buckler")
-	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	var/weapons = list("长剑 + 弩", "钩镰 + 反曲弓", "军刀 + 反曲弓", "骑枪 + 鸢盾", "刺剑 + 长弓", "刺击剑 + 反曲弓", "军刀 + 小圆盾", "鞭子 + 弩", "软剑 + 小圆盾")
+	var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 	switch(weapon_choice)
-		if("Longsword + Crossbow")
+		if("长剑 + 弩")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword/noble(H), SLOT_BELT_L, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/bolts(H), SLOT_BELT_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Billhook + Recurve Bow")
+		if("钩镰 + 反曲弓")
 			H.put_in_hands(new /obj/item/rogueweapon/spear/billhook(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve(H), SLOT_BELT_L, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/arrows(H), SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
-		if("Sabre + Recurve Bow")
+		if("军刀 + 反曲弓")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/sabre(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword/noble(H), SLOT_BELT_L, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/arrows(H), SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Lance + Kite Shield")
+		if("骑枪 + 鸢盾")
 			H.put_in_hands(new /obj/item/rogueweapon/spear/lance(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/tower/metal(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-		if("Rapier + Longbow")
+		if("刺剑 + 长弓")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword/noble(H), SLOT_BELT_L, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/arrows(H), SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Estoc + Recurve Bow")
+		if("刺击剑 + 反曲弓")
 			H.put_in_hands(new /obj/item/rogueweapon/estoc(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve(H), SLOT_BELT_L, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/arrows(H), SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-		if("Sabre + Buckler")
+		if("军刀 + 小圆盾")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/sabre(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword/noble(H), SLOT_BELT_L, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/buckler(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-		if("Whip + Crossbow")
+		if("鞭子 + 弩")
 			H.put_in_hands(new /obj/item/rogueweapon/whip(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(H), SLOT_BACK_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/bolts(H), SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
-		if("Urumi + Buckler")
+		if("软剑 + 小圆盾")
 			H.put_in_hands(new /obj/item/rogueweapon/whip/urumi(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/buckler(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
