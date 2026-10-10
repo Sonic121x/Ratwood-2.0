@@ -1,6 +1,6 @@
 /datum/advclass/kj_follower/servitor
-	name = "Servitor"
-	tutorial = "You cook your knight's meals, mend their clothes and carry whatever they can't be bothered to. They'd be lost on the road without you, even if they rarely say so."
+	name = "仆役"
+	tutorial = "你为骑士做饭、补衣，替他搬运一切懒得自己拿的东西。旅途中若是没了你，他便会不知所措，尽管他很少承认。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	outfit = /datum/outfit/job/roguetown/kj_follower/servitor
