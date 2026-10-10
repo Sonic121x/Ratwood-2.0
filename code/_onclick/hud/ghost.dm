@@ -84,6 +84,11 @@
 	screen_loc = "WEST-4,SOUTH+6"
 	nomouseover = FALSE
 
+//重生按钮
+/atom/movable/screen/ghost/bigassuselessbutton/Click()
+	var/mob/dead/observer/G = usr
+	G.descend()
+
 /atom/movable/screen/ghost/movedown/Click()
 	var/mob/dead/observer/G = usr
 	G.ghost_down()
