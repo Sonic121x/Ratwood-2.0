@@ -1493,13 +1493,13 @@
 			thing_to_check = C.related_accounts_cid
 		else
 			thing_to_check = C.related_accounts_ip
-		thing_to_check = splittext(thing_to_check, ", ")
+		thing_to_check = splittext(replacetext(thing_to_check, "Requires database", "需要数据库支持"), ", ")
 
 
-		var/list/dat = list("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>按 [uppertext(href_list["showrelatedacc"])] 查找的关联账号：")
+		var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>按 [uppertext(href_list["showrelatedacc"])] 查找的关联账号：")
 		dat += thing_to_check
 
-		usr << browse(dat.Join("<br>"), "window=related_[C];size=420x300")
+		usr << browse(dat.Join("<br>") + "</body></html>", "window=related_[C];file=related_[REF(C)].html;size=420x300")
 
 	else if(href_list["modantagrep"])
 		if(!check_rights(R_ADMIN))
