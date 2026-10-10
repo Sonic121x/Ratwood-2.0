@@ -307,8 +307,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		ui.open()
 
 /datum/group_mindlink_session/ui_close(mob/user)
-	if(holder?.group_mindlink_view)
-		qdel(holder.group_mindlink_view)
+	// 聊天窗口与旁观状态独立；关闭窗口后仍可通过 IC 动词返回自身视角。
 	if(!selection_spell?.casting)
 		selection_spell = null
 		selection.Cut()

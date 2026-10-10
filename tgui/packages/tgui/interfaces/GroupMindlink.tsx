@@ -105,7 +105,7 @@ const VisionPanel = () => {
         <Stack.Item grow>
           <Box color={current ? 'good' : 'label'}>
             {current
-              ? `正在观看：${current.name} · 身体暂时不能主动行动`
+              ? `正在视听旁观：${current.name} · 身体暂时不能主动行动`
               : '当前为自身视角 · 借用他人视角须先征得同意'}
           </Box>
         </Stack.Item>
@@ -204,7 +204,9 @@ const VisionPanel = () => {
             </Stack>
           ))}
           <Box color="label" mt={1} fontSize="11px">
-            授权仅在对应主链接内有效。关闭聊天窗口会返回自身视角，授权仍可由对方随时撤销。
+            授权包含视角、周围声音及可见物品检视，仅在对应主链接内有效。
+            关闭窗口会继续旁观；请使用 IC →
+            返回自身视角退出。对方可随时撤销授权。
           </Box>
         </Box>
       )}

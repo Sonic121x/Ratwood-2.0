@@ -188,7 +188,7 @@
 /datum/group_mindlink_vision_permission/ui_data(mob/user)
 	if(user != target || !valid(TRUE))
 		return list()
-	return list("title" = "心灵视角请求", "message" = "[viewer.real_name]请求观看你的视角。这是单向授权，仅在[link.owner.real_name]创建的本次主链接内有效，允许反复观看。你可随时在群体心灵链接窗口撤销。是否同意？", "buttons" = list("拒绝", "同意"), "autofocus" = FALSE, "large_buttons" = FALSE, "swapped_buttons" = FALSE, "timeout" = clamp((deadline - world.time) / (20 SECONDS), 0, 1))
+	return list("title" = "心灵视听旁观请求", "message" = "[viewer.real_name]请求借用你的视角和听觉，听到你周围的声音与说话，并检视你能看见的物品。对方不能操作你的身体或物品，也不会获得你的私聊及系统通知。这是单向授权，仅在[link.owner.real_name]创建的本次主链接内有效，允许反复旁观。关闭聊天窗口不会停止旁观，你可随时在群体心灵链接窗口撤销授权。是否同意？", "buttons" = list("拒绝", "同意"), "autofocus" = FALSE, "large_buttons" = FALSE, "swapped_buttons" = FALSE, "timeout" = clamp((deadline - world.time) / (20 SECONDS), 0, 1))
 
 /datum/group_mindlink_vision_permission/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -289,14 +289,16 @@
 	viewer.update_mobility()
 	viewer.reset_perspective(target)
 	sync_vision()
+	start_senses()
 	block_actions()
 	START_PROCESSING(SSfastprocess, src)
-	to_chat(viewer, span_notice("\[心灵视角\] 正在观看[html_encode(target.real_name)]，身体暂时不能主动行动。可在窗口或 IC 动词中返回自身视角。"))
+	to_chat(viewer, span_notice("\[心灵视角\] 正在旁观[html_encode(target.real_name)]，可检视可见物品并聆听对方周围的声音，身体暂时不能主动行动。关闭窗口会继续旁观；请使用 IC →『返回自身视角』退出，也可重开 Group Mindlink 点击返回按钮。"))
 	to_chat(target, span_notice("\[心灵视角\] [html_encode(viewer.real_name)]开始观看你的视角。"))
 	permission.refresh_pair()
 
 /datum/group_mindlink_view/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
+	stop_senses()
 	if(view_client && view_client.move_delay == held_move_delay)
 		view_client.move_delay = previous_move_delay
 	for(var/datum/action/action as anything in blocked_actions)
@@ -349,6 +351,7 @@
 		view_client.move_delay = held_move_delay
 	block_actions()
 	sync_vision()
+	process_senses()
 
 /datum/group_mindlink_view/proc/block_actions()
 	for(var/datum/action/action as anything in viewer.actions)
@@ -378,6 +381,9 @@
 
 /mob/living/carbon/check_click_intercept(params, A)
 	if(!QDELETED(group_mindlink_view))
+		var/list/modifiers = params2list(params)
+		if(modifiers["shift"] && !modifiers["ctrl"] && !modifiers["alt"] && !modifiers["right"] && !modifiers["middle"])
+			group_mindlink_view.examine_visible(A)
 		return TRUE
 	return ..()
 
