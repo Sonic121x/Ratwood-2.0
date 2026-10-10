@@ -1,8 +1,8 @@
 // WORDBEARER - big miracles and a staff, preaching for the ascendants
 
 /datum/advclass/ukj_dark_chaplain
-	name = "Wordbearer"
-	tutorial = "You turned your back on the Ten for gods that actually answer. Now you follow a forsworn knight from village to village and preach to anyone who will listen. Preachers tend to the camp and its chores, while Shepards take up the iron staff to guard the faithful."
+	name = "传道者"
+	tutorial = "你背弃十神，转而侍奉真正会回应你的神明。如今你跟随一位叛誓骑士穿行村落，向每个愿意聆听的人传道。布道者照料营地及其杂务，牧者则举起铁杖守护信众。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/ukj_dark_chaplain
@@ -31,7 +31,7 @@
 		/datum/skill/craft/carpentry = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/labor/lumberjacking = SKILL_LEVEL_NOVICE,
 	)
-	extra_context = "This subclass is given access to the strongest miracles in Ferentian lands, at the cost of suffering elsewhere."
+	extra_context = "此子职业可施展费伦提亚境内最强大的神迹，代价是其他方面的能力有所欠缺。"
 
 /datum/outfit/job/roguetown/ukj_dark_chaplain
 	has_loadout = TRUE
@@ -85,16 +85,16 @@
 /datum/outfit/job/roguetown/ukj_dark_chaplain/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
 
-	var/weapons = list("Path of the Preacher", "Path of the Shepard")
-	var/weapon_choice = input(H, "Choose your path.", "CHOOSE YOUR DISCIPLINE.") as anything in weapons
+	var/weapons = list("布道者之路", "牧者之路")
+	var/weapon_choice = input(H, "选择你的道路。", "选择你的修行") as anything in weapons
 	switch(weapon_choice)
-		if("Path of the Preacher")//Discount homesteader. No trait so you can't level these skills up, nor do you have starting tools.
+		if("布道者之路")//Discount homesteader. No trait so you can't level these skills up, nor do you have starting tools.
 			H.put_in_hands(new /obj/item/rogueweapon/woodstaff(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/craft/masonry, 1, TRUE)//just so you can make pretty floors easier
 			H.adjust_skillrank_up_to(/datum/skill/craft/sewing, 3, TRUE)
-		if("Path of the Shepard")//The "combat" variant. The core stat spread should keep this class from ever overshadowing the others, but it's worth keeping an eye out anyway.
+		if("牧者之路")//The "combat" variant. The core stat spread should keep this class from ever overshadowing the others, but it's worth keeping an eye out anyway.
 			H.put_in_hands(new /obj/item/rogueweapon/woodstaff/quarterstaff/iron(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
