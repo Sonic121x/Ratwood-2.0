@@ -1,8 +1,8 @@
 // MISSIONARY - big miracles and a staff
 
 /datum/advclass/kj_chaplain
-	name = "Sworn Missionary"
-	tutorial = "You've looked after your knight's soul for yils, and you preach wherever the road takes you. There's always someone along the way who needs to hear it. Preachers focus on homesteading while Shepards preach through example and protecting their would-be flock."
+	name = "誓约传教士"
+	tutorial = "多年来，你一直照看骑士的灵魂，沿途传道。路上总有人需要聆听你的教诲。布道者专注于营生与建设，而牧者则以身作则，保护那些可能成为信众的人。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/kj_chaplain
@@ -32,10 +32,10 @@
 		/datum/skill/labor/lumberjacking = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
-		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
+		"十圣诗篇与圣行" = /obj/item/book/rogue/bibble,
+		"普赛顿圣典" = /obj/item/book/rogue/bibble/psy
 	)
-	extra_context = "This subclass is given access to the strongest miracles in Ferentian lands, at the cost of suffering elsewhere."
+	extra_context = "此子职业可施展费伦提亚境内最强大的神迹，代价是其他方面的能力有所欠缺。"
 
 /datum/outfit/job/roguetown/adventurer/kj_chaplain
 	allowed_patrons = ALL_PALADIN_PATRONS
@@ -107,16 +107,16 @@
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, devotion_limit = CLERIC_REQ_3)//Only T4 NOT to start maxed, with a devotion cap.
 	C.update_devotion(C.max_devotion / 4 - 50, C.max_devotion / 4 - 50, silent = TRUE) // Start at ~25% of devotion cap
 	if(H.mind)
-		var/weapons = list("Path of the Preacher", "Path of the Shepard")
-		var/weapon_choice = input(H, "Choose your path.", "CHOOSE YOUR DISCIPLINE.") as anything in weapons
+		var/weapons = list("布道者之路", "牧者之路")
+		var/weapon_choice = input(H, "选择你的道路。", "选择你的修行") as anything in weapons
 		switch(weapon_choice)
-			if("Path of the Preacher")//Discount homesteader. No trait so you can't level these skills up, nor do you have starting tools.
+			if("布道者之路")//Discount homesteader. No trait so you can't level these skills up, nor do you have starting tools.
 				r_hand = /obj/item/rogueweapon/woodstaff
 				H.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/craft/masonry, 1, TRUE)//just so you can make pretty floors easier
 				H.adjust_skillrank_up_to(/datum/skill/craft/sewing, 3, TRUE)
-			if("Path of the Shepard")//The "combat" variant. The core stat spread should keep this class from ever overshadowing the others, but it's worth keeping an eye out anyway.
+			if("牧者之路")//The "combat" variant. The core stat spread should keep this class from ever overshadowing the others, but it's worth keeping an eye out anyway.
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
@@ -157,8 +157,8 @@
 // STIGMATA - a psydonite pacifist who takes on wounds
 
 /datum/advclass/kj_chaplain_stigmata
-	name = "Sworn Stigmata"
-	tutorial = "PSYDON weeps. Your knight takes the blows meant for others, and you take their wounds in turn. You will not raise a hand in anger. You will suffer. You will endure."
+	name = "誓约圣痕者"
+	tutorial = "普赛顿在哭泣。你的骑士替他人承受打击，而你替骑士承受伤痛。你不会因愤怒而举手伤人。你将受苦。你将坚忍。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/adventurer/kj_chaplain_stigmata
@@ -193,9 +193,9 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
+		"普赛顿圣典" = /obj/item/book/rogue/bibble/psy
 	)
-	extra_context = "This is a psydonite only subclass, it will force you to be one if it is not set. You will be a pacifist and are able to draw upon a weaker version of the abilities known by a Psydonic Absolver."
+	extra_context = "此子职业仅限普赛顿信徒；若尚未选择该信仰，将自动改信普赛顿。你将成为和平主义者，并能使用普赛顿赦罪师所掌握能力的较弱版本。"
 
 /datum/outfit/job/roguetown/adventurer/kj_chaplain_stigmata
 	allowed_patrons = list(/datum/patron/old_god)

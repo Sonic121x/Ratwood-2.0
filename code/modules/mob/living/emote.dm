@@ -2863,17 +2863,17 @@
 /datum/emote/living/neigh
 	key = "neigh"
 	key_third_person = "neighs!"
-	message = "neighs!"
+	message = "嘶鸣了一声！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled neigh!"
+	message_muffled = "发出一声闷闷的嘶鸣！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
 
 /mob/living/carbon/human/verb/emote_neigh()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Neigh"
-		set category = "Noises"
+		set name = "嘶鸣"
+		set category = "发声"
 		emote("neigh", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()

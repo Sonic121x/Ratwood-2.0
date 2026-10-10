@@ -994,9 +994,9 @@
 	if (owner.stat > 0 && (!owner.get_blood_volume() || owner.health < owner.crit_threshold))
 		// OH SHIT. SHE'S CASHING IN ON THE VOW!!! YOU'RE FUCKED!!!
 		if (!oh_god_it_hurts)
-			to_chat(owner, span_boldwarning("The everblack settles around you. Oblivion. Then, you hear it. You hear <i>HER</i>."))
-			to_chat(owner, span_crit("<B>\"MINE.\"</B>"))
-			owner.visible_message(span_warning("[owner]'s unconscious form suddenly arches back into a silent, rictus scream, blue motes spilling from their mouth!"))
+			to_chat(owner, span_boldwarning("永恒的黑暗笼罩了你。一切归于虚无。随后，你听见了。你听见了<i>祂</i>的声音。"))
+			to_chat(owner, span_crit("<B>\"你属于我。\"</B>"))
+			owner.visible_message(span_warning("昏迷的[owner]突然向后弓起身体，面容扭曲，发出无声的尖叫，蓝色光点从口中涌出！"))
 			oh_god_it_hurts = TRUE
 		
 		owner.adjustOxyLoss(healing_on_tick) // this is the part where she kills you.
@@ -1005,7 +1005,7 @@
 		return
 	else if (oh_god_it_hurts)
 		oh_god_it_hurts = FALSE
-		to_chat(owner, span_warning("The vice-like grip around your mortal coil eases, reluctantly. Yet, you feel hollow, all the same..."))
+		to_chat(owner, span_warning("紧箍着你肉身的铁钳般的力量不情愿地松开了。可你依然感到空洞……"))
 		qdel(src) // clear the vow if someone somehow saves us
 		return
 	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))

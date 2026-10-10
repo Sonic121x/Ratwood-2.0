@@ -534,7 +534,7 @@
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
 		M.energy_add(-10) //a quarter of the power of weak stamina poison
 	if(prob(20))
-		to_chat(M, span_danger("I feel like i'm going to pass out!"))
+		to_chat(M, span_danger("我感觉快要昏过去了！"))
 	if(M.health > 80)
 		M.adjustToxLoss(1*REM, 0)
 	if(current_cycle >= 22)
