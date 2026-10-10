@@ -86,12 +86,12 @@
 	marquescost = 2
 
 /datum/inqports/supplies/skullcrackerbolts
-	name = "1 Quiver of Heavy Blunt Bolts (Not for the sauterelle)"
+	name = "1 箭袋重型钝头弩矢（不适用于蚱蜢弩 Sauterelle）"
 	item_type = /obj/item/quiver/bluntbolts
 	marquescost = 4
 
 /datum/inqports/supplies/heavyholybolts
-	name = "5 Blessed Heavy Bolts"
+	name = "5 支祝圣重型弩矢"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/heavyholybolts
 	marquescost = 5
 
@@ -104,7 +104,7 @@
 	new /obj/item/ammo_casing/caseless/rogue/heavy_bolt/holy(src)
 
 /datum/inqports/supplies/silverblessedslingbullet
-	name = "10 Silver Blessed Psysling Bullets & Sling"
+	name = "10 颗祝圣银制投石弹与投石索"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/silverblessedslingbullet
 	marquescost = 5 //this shit hurts a surprising amount
 
@@ -174,7 +174,7 @@
 	new /obj/item/reagent_containers/glass/bottle/alchemical/strongmanapot(src)
 
 /datum/inqports/supplies/revivalpotion
-	name = "Saint Eora's Elixr of Lyfe"
+	name = "圣伊欧拉生命灵膏"
 	item_type = /obj/item/reagent_containers/glass/bottle/revival
 	marquescost = 10
 
@@ -224,7 +224,7 @@
 	marquescost = 3
 
 /datum/inqports/supplies/blastsandsticks
-	name = "3 Blastsand Sticks"
+	name = "3 根爆粉棒"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/tntstick
 	marquescost = 6
 
@@ -241,7 +241,7 @@
 	new /obj/item/bomb(src)
 
 /datum/inqports/supplies/mutegas
-	name = "3 Silencing Gas Bombs"
+	name = "3 枚静默气弹"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/mutegas
 	marquescost = 6
 
@@ -339,7 +339,7 @@
 // ✤ EQUIPMENT ✤ BELONGS HERE! JUST BELOW!
 
 /datum/inqports/equipment/holymonkrobes
-	name = "1 Holy Monk Robes"
+	name = "1 件圣洁僧侣法衣"
 	item_type = /obj/item/clothing/suit/roguetown/shirt/robe/monk/holy
 	marquescost = 8
 

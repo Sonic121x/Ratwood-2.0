@@ -85,7 +85,7 @@
 	subclass_virtues = list(
 		/datum/virtue/utility/riding
 	)
-	subclass_stashed_items = list("Caparison (Heartfelt)" = /obj/item/caparison/heartfelt)
+	subclass_stashed_items = list("赤心鞍饰毯" = /obj/item/caparison/heartfelt)
 
 /datum/outfit/job/heartfelt/knight/pre_equip(mob/living/carbon/human/H)
 	..()
