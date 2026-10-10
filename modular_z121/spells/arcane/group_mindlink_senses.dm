@@ -104,9 +104,7 @@
 	return view(user)
 
 /mob/living/carbon/examinate(atom/subject as mob|obj|turf in group_mindlink_examine_choices(usr))
-	set name = "查看"
-	set category = "IC"
-	set hidden = 1
+	// 沿用父级检视指令的名称、分类及隐藏设置，避免重复定义指令属性。
 	if(!QDELETED(group_mindlink_view))
 		group_mindlink_view.examine_visible(subject)
 		return
@@ -180,7 +178,7 @@
 /datum/group_mindlink_view/proc/start_senses()
 	LAZYADD(target.group_mindlink_sense_watchers, src)
 	RegisterSignal(target, COMSIG_MOVABLE_HEAR, PROC_REF(hear_target))
-	had_ambience_timer = view_client in SSambience.ambience_listening_clients
+	had_ambience_timer = (view_client in SSambience.ambience_listening_clients)
 	saved_ambience_time = SSambience.ambience_listening_clients[view_client]
 	SSambience.remove_ambience_client(view_client)
 	// 只停止已由场景音效入口记录的声音，不能误停直接发送的系统提示或私有音效。
