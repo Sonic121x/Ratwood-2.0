@@ -12,16 +12,18 @@ type Data = {
   title: string;
 };
 
-export const GroupMindlinkVisionRequest = () => {
+export const GroupMindlinkJoinRequest = () => {
   const { act, data } = useBackend<Data>();
   const { message = '', timeout, title } = data;
-  // 宽高均至少为原双按钮弹窗的 1.5 倍，较长姓名也保留足够的说明空间。
-  const height = Math.max(
-    320,
-    Math.ceil(
-      (120 + (message.length > 30 ? Math.ceil(message.length / 4) : 0)) * 1.5,
-    ),
-  );
+  // 按每行二十二个全角字保守预留正文高度，并为标题和固定按钮额外留白。
+  const contentLines = message
+    .split('\n')
+    .reduce(
+      (total, line) =>
+        total + Math.max(1, Math.ceil(Array.from(line).length / 22)),
+      0,
+    );
+  const height = Math.max(460, 180 + contentLines * 26);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (isEscape(event.key)) {
@@ -37,7 +39,10 @@ export const GroupMindlinkVisionRequest = () => {
         <Stack fill vertical>
           <Stack.Item grow minHeight={0}>
             <Section fill scrollable>
-              <Box color="label" style={{ overflowWrap: 'anywhere' }}>
+              <Box
+                color="label"
+                style={{ overflowWrap: 'anywhere', lineHeight: 1.6 }}
+              >
                 {message}
               </Box>
             </Section>

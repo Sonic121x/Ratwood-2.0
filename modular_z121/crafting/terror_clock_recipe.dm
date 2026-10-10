@@ -1,8 +1,12 @@
-// 恐怖之钟：通用分类中消耗一块钢锭建造，保留原有技能与难度设置。
+// 恐怖之钟：消耗一颗心脏、一颗头颅和五个骨头建造，保留原有技能与难度设置。
 /datum/crafting_recipe/roguetown/structure/terror_clock
 	name = "恐怖之钟"
 	result = /obj/structure/terror_clock
-	reqs = list(/obj/item/ingot/steel = 1)
+	reqs = list(
+		/obj/item/organ/heart = 1,
+		/obj/item/bodypart/head = 1,
+		/obj/item/natural/bone = 5
+	)
 	category = "通用"
 	always_availible = TRUE
 	skillcraft = null
