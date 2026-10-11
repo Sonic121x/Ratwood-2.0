@@ -7,7 +7,8 @@
 	name = "缩小术"
 	desc = "以魔力使一具身躯变得娇小轻盈，步履灵巧，行踪难辨，约莫维持一分钟。天生矮小的族裔不会变得更小；已然娇小或拥有巨人体魄者不受此术影响。"
 	cost = 2
-	overlay_state = "rune1"
+	action_icon = 'modular_z121/icon/custompell.dmi'
+	overlay_state = "shrink"
 	releasedrain = 35
 	chargedrain = 1
 	chargetime = 1 SECONDS
@@ -43,7 +44,7 @@
 	name = "群体缩小术"
 	desc = "让缩小的魔力环绕自身，使身旁近处的众生变得娇小轻盈，步履灵巧，行踪难辨，约莫维持两分钟。天生矮小的族裔不会变得更小；已然娇小或拥有巨人体魄者不受此术影响。"
 	cost = 4
-	overlay_state = "enlarge"
+	overlay_state = "shrink"
 	releasedrain = 70
 	chargetime = 2 SECONDS
 	recharge_time = 4 MINUTES
