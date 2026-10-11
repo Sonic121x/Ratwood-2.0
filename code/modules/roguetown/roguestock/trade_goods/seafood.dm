@@ -7,13 +7,13 @@
 
 /datum/trade_good/seafood/fish_filet
 	id = TRADE_GOOD_FISH_FILET
-	name = "鱼片"
+	name = "鱼柳"
 	base_price = SELLPRICE_FISH_FILET
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fish
 
 /datum/trade_good/seafood/fish_mince
 	id = TRADE_GOOD_FISH_MINCE
-	name = "鱼糜"
+	name = "碎鱼糜"
 	base_price = SELLPRICE_FISH_MINCE
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 
@@ -37,7 +37,7 @@
 
 /datum/trade_good/seafood/bass
 	id = TRADE_GOOD_BASS
-	name = "海鲈"
+	name = "海鲈鱼"
 	base_price = SELLPRICE_BASS
 	item_type = /obj/item/reagent_containers/food/snacks/fish/bass
 

@@ -1,6 +1,6 @@
 /datum/trade_good/wood
 	id = TRADE_GOOD_WOOD
-	name = "木料"
+	name = "小原木"
 	category = TRADE_CATEGORY_ARTISAN
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_WOOD
@@ -36,7 +36,7 @@
 
 /datum/trade_good/sinew
 	id = TRADE_GOOD_SINEW
-	name = "筋腱"
+	name = "肌腱"
 	category = TRADE_CATEGORY_ANIMAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_SINEW

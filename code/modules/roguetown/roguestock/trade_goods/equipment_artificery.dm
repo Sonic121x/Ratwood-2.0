@@ -4,7 +4,7 @@
 
 /datum/trade_good/equipment/crafted/mess_kit
 	id = TRADE_GOOD_MESS_KIT
-	name = "野战餐具"
+	name = "行军炊具"
 	item_type = /obj/item/storage/gadget/messkit
 
 // ============================================================================
@@ -42,7 +42,7 @@
 
 /datum/trade_good/equipment/crafted/voltic_gauntlets
 	id = TRADE_GOOD_VOLTIC_GAUNTLETS
-	name = "伏打机关护手"
+	name = "伏电机关护手"
 	item_type = /obj/item/clothing/gloves/roguetown/contraption/voltic
 
 /datum/trade_good/equipment/crafted/artificed_halfplate

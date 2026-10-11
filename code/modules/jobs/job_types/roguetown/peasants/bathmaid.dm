@@ -142,7 +142,7 @@
 
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/massage)
-		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","咏声护符")
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = input(H, "选择你的乐器。", "拿起家伙") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -176,7 +176,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("咏声护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 /datum/advclass/nightmaiden/dominatrix
@@ -294,7 +294,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short
 
 	if(H.mind)
-		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","咏声护符")
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = input(H, "选择你的乐器。", "拿起家伙") as anything in weapons
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/massage)
 		H.set_blindness(0)
@@ -329,7 +329,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("咏声护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 /obj/item/soap/bath

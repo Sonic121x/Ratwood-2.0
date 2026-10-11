@@ -49,40 +49,40 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("弩","弓","投石索")
+		var/weapons = list("十字弩","反曲弓","投石索")
 		var/weapon_choice = input(H, "选择你的武器：", "拿起武器") as anything in weapons
-		var/armor_options = list("轻甲", "中甲")
+		var/armor_options = list("巨颚兽鳞甲大衣（轻甲）", "耶尼切里锁子甲（中甲）")
 		var/armor_choice = input(H, "选择你的护甲：", "拿起武器") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("弩")
+			if("十字弩")
 				beltr = /obj/item/quiver/bolts
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("弓") // They can head down to the armory to sideshift into one of the other bows.
+			if("反曲弓") // They can head down to the armory to sideshift into one of the other bows.
 				beltr = /obj/item/quiver/arrows
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			if("投石索")
 				beltr = /obj/item/quiver/sling/iron
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling // Both are belt slots and it's not worth setting where the cugel goes for everyone else, sad.
 				
-		var/weapons2 = list("弯刀","鞭","软剑","棍棒")
+		var/weapons2 = list("铁军刀","皮鞭","软剑","警棍")
 		var/weapon_choice2 = input(H, "选择你的副武器。", "拿起武器") as anything in weapons2
 		switch(weapon_choice2)
-			if("弯刀")
+			if("铁军刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/sabre/iron
-			if("鞭") // They can head down to the armory to sideshift into one of the other bows.
+			if("皮鞭") // They can head down to the armory to sideshift into one of the other bows.
 				beltl = /obj/item/rogueweapon/whip
 			if("软剑")
 				beltl = /obj/item/rogueweapon/whip/urumi
-			if("棍棒")
+			if("警棍")
 				beltl = /obj/item/rogueweapon/mace/cudgel
 
 		switch(armor_choice)
-			if("轻甲")
+			if("巨颚兽鳞甲大衣（轻甲）")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/zyb
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			if("中甲")
+			if("耶尼切里锁子甲（中甲）")
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/janissary
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 

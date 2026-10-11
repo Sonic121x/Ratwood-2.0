@@ -42,20 +42,20 @@
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("战锤与盾","斧与盾","戟","双手巨斧")
+		var/weapons = list("战锤与铁盾","钢斧与铁盾","戟斧","巨斧")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("战锤与盾")
+			if("战锤与铁盾")
 				beltr = /obj/item/rogueweapon/mace/warhammer
 				backl = /obj/item/rogueweapon/shield/iron
-			if("斧与盾")
+			if("钢斧与铁盾")
 				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				backl = /obj/item/rogueweapon/shield/iron
-			if("戟")
+			if("戟斧")
 				r_hand = /obj/item/rogueweapon/halberd
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("双手巨斧")
+			if("巨斧")
 				r_hand = /obj/item/rogueweapon/greataxe
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 	backpack_contents = list(
@@ -68,29 +68,29 @@
 	H.verbs |= /mob/proc/haltyell
 
 	if(H.mind)
-		var/armor_options = list("锁片甲套装", "锁子甲套装")
+		var/armor_options = list("轻型板甲衣套装", "鳞甲套装")
 		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
 
 		switch(armor_choice)
-			if("锁片甲套装")
+			if("轻型板甲衣套装")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				wrists = /obj/item/clothing/wrists/roguetown/splintarms
 				pants = /obj/item/clothing/under/roguetown/splintlegs
 
-			if("锁子甲套装")
+			if("鳞甲套装")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 
 		var/helmets = list(
-		"素盔" 	= /obj/item/clothing/head/roguetown/helmet,
+		"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
 		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-		"尖顶盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
 		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"翼盔" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-		"护顶盔"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+		"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+		"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 		"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "戴上头盔") as anything in helmets

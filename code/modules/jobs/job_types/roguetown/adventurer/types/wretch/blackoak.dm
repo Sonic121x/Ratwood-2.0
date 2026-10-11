@@ -72,21 +72,21 @@
 		wretch_select_bounty(H)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/darkvision)
 
-		var/weapons = list("精灵剑矛", "精灵弯刃", "精灵反曲弓")
+		var/weapons = list("精灵枪刃", "精灵弯刃", "靛纹反曲弓")
 		var/weapon_choice = input(H, "选择你的武器。", "可见的威胁") as anything in weapons
 		H.set_blindness(0)
-		if(weapon_choice == "精灵剑矛" || weapon_choice == "精灵弯刃") //stuff to be shared on the non ranger variants
+		if(weapon_choice == "精灵枪刃" || weapon_choice == "精灵弯刃") //stuff to be shared on the non ranger variants
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/conjure_weapon)
 		switch(weapon_choice)
-			if("精灵剑矛")
+			if("精灵枪刃")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/naginata/elf
 			if("精灵弯刃")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/greatsword/elf
-			if("精灵反曲弓")
+			if("靛纹反曲弓")
 				H.change_stat(STATKEY_PER, 2)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/longstrider)
@@ -96,7 +96,7 @@
 				backpack_contents[/obj/item/rogueweapon/huntingknife/idagger/steel/elvish] = 1
 
 		var/sidearm = list("精灵长剑", "精灵短剑", "精灵军刀", "精灵匕首")
-		if(weapon_choice == "精灵反曲弓") //nuh uh uh
+		if(weapon_choice == "靛纹反曲弓") //nuh uh uh
 			sidearm -= "精灵长剑"
 			sidearm -= "精灵短剑"
 		var/sidearm_choice = input(H, "选择你的副手武器。", "隐藏之刺") as anything in sidearm
@@ -116,9 +116,9 @@
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sheath, SLOT_BELT_R, TRUE)
 
 		var/helmets = list(
-			"靛纹精灵巴尔布特盔" = /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
+			"林纹精灵巴尔布特盔" = /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
 			"精灵巴尔布特盔"	= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak,
-			"翼纹精灵巴尔布特盔" = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
+			"翼饰精灵巴尔布特盔" = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "执盔") as anything in helmets
 		head = helmets[helmchoice]

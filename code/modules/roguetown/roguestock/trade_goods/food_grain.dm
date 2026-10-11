@@ -5,7 +5,7 @@
 
 /datum/trade_good/grain/wheat
 	id = TRADE_GOOD_GRAIN
-	name = "谷物"
+	name = "小麦谷粒"
 	base_price = SELLPRICE_GRAIN
 	source_region_id = TRADE_REGION_KINGSFIELD
 	item_type = /obj/item/reagent_containers/food/snacks/grown/wheat
@@ -19,7 +19,7 @@
 
 /datum/trade_good/grain/rice
 	id = TRADE_GOOD_RICE
-	name = "稻米"
+	name = "米粒"
 	base_price = SELLPRICE_RICE
 	source_region_id = TRADE_REGION_KINGSFIELD
 	item_type = /obj/item/reagent_containers/food/snacks/grown/rice

@@ -69,14 +69,14 @@
 		// 		beltr = /obj/item/quiver/bullet/grapeshot
 		// 		r_hand = /obj/item/gun/ballistic/firearm/blunderbuss
 
-		var/weapons2 = list("弯刀","鞭","棍棒")
+		var/weapons2 = list("铁军刀","皮鞭","警棍")
 		var/weapon_choice2 = input(H, "选择你的副武器。", "拿起武器") as anything in weapons2
 		switch(weapon_choice2)
-			if("弯刀")
+			if("铁军刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/sabre/iron
-			if("鞭")
+			if("皮鞭")
 				beltl = /obj/item/rogueweapon/whip
-			if("棍棒")
+			if("警棍")
 				beltl = /obj/item/rogueweapon/mace/cudgel
 		H.verbs |= /mob/proc/haltyell

@@ -25,7 +25,7 @@
 	masterkey = TRUE
 
 /datum/crown_import/redpotion
-	name = "治疗药水箱"
+	name = "生命药水箱"
 	desc = "救人性命的红色药水。"
 	item_type = /obj/structure/closet/crate/chest/steward/redpotion
 	base_cost = 100
@@ -41,8 +41,8 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 
 /datum/crown_import/rotpotion
-	name = "祛腐药水箱"
-	desc = "一箱稀有而抢手的祛腐药水。"
+	name = "腐坏解药箱"
+	desc = "一箱稀有而抢手的腐坏解药。"
 	item_type = /obj/structure/closet/crate/chest/steward/rotpotion
 	base_cost = 400		//Expensive, 200 each roughly. Four uses total, as only 5u needed to reverse rot. Each bottle is 10u.
 	source_region_id = TRADE_REGION_ROCKHILL
@@ -75,8 +75,8 @@
 	new /obj/item/rogueweapon/sword/long(src)
 
 /datum/crown_import/warden
-	name = "看守装备箱"
-	desc = "新任看守的起始装备。"
+	name = "守林人装备箱"
+	desc = "新任守林人的起始装备。"
 	item_type = /obj/structure/closet/crate/chest/steward/warden
 	base_cost = 250
 	import_amt = 1
@@ -128,8 +128,8 @@
 	new /obj/item/quiver/bolts(src)
 
 /datum/crown_import/saigabuck
-	name = "雄赛加羚"
-	desc = "一头驯服并配有异乡马鞍的雄赛加羚。"
+	name = "鞍装雄赛加羚羊"
+	desc = "一头驯服并配有异乡马鞍的雄赛加羚羊。"
 	item_type = /obj/structure/closet/crate/chest/steward/saigabuck
 	base_cost = 100
 	import_amt = 1
@@ -197,7 +197,7 @@
 	pony.transform = pony.transform.Scale(0.7, 0.7)
 
 /datum/crown_import/cow
-	name = "奶牛"
+	name = "母牛"
 	desc = "农夫最好的伙伴，稳定提供牛奶和肉。"
 	item_type = /obj/structure/closet/crate/chest/steward/cow
 	base_cost = 100
@@ -275,7 +275,7 @@
 
 /datum/crown_import/blacksmith
 	name = "铁匠箱"
-	desc = "石头、煤炭、铁锭、木料箱，还有装着锤子和铁钳的桶。"
+	desc = "石头、煤炭、铁锭、木桶、水桶，以及锤和钳子。"
 	item_type = /obj/structure/closet/crate/chest/steward/blacksmith
 	base_cost = 100
 	source_region_id = TRADE_REGION_DAFTSMARCH
@@ -316,7 +316,7 @@
 
 /datum/crown_import/craftsman
 	name = "工匠箱"
-	desc = "手锯、凿子、锤子。"
+	desc = "手锯、凿子、木槌。"
 	item_type = /obj/structure/closet/crate/chest/steward/craftsman
 	base_cost = 60
 	source_region_id = TRADE_REGION_ROSAWOOD

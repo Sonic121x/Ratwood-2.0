@@ -12,7 +12,7 @@
 	contains = list(/obj/item/reagent_containers/powder/ozium)
 
 /datum/supply_pack/rogue/medicine/suidust
-	name = "易容之尘（仅性别）"
+	name = "碎晶粉（仅变性）"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)
 
@@ -22,12 +22,12 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/antidote)
 	
 /datum/supply_pack/rogue/medicine/healthpot
-	name = "治疗药水"
+	name = "生命药水"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 	
 /datum/supply_pack/rogue/medicine/healthvial
-	name = "治疗药剂"
+	name = "强效生命药水"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpotnew)
 
@@ -38,11 +38,11 @@
 	contains = list(/obj/item/natural/bundle/cloth/bandage/full)
 
 /datum/supply_pack/rogue/medicine/needles
-	name = "针"
+	name = "缝合针"
 	cost = 8
 	contains = list(/obj/item/needle)
 
 /datum/supply_pack/rogue/medicine/surgeonsbag
-	name = "满配外科包"
+	name = "外科医生包（满配）"
 	cost = 80
 	contains = list(/obj/item/storage/belt/rogue/surgery_bag)

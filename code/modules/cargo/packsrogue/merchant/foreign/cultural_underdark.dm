@@ -5,35 +5,35 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/underdark/saber
-	name = "幽暗地域军刀"
+	name = "潜猎者军刀"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/sword/sabre/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/dagger
-	name = "幽暗地域匕首"
+	name = "黑暗精灵匕首"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/slurbow
-	name = "幽暗地域轻弩"
+	name = "卓尔弩"
 	cost = 150
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker/lesser)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/underdark/fangeddagger
-	name = "幽暗地域獠牙匕首"
+	name = "獠牙匕首"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/dirk)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/underdark/poisondagger
-	name = "幽暗地域毒匕首"
+	name = "腐蚀匕首"
 	cost = 250
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/corroded)
 	ship_qty_min = 1

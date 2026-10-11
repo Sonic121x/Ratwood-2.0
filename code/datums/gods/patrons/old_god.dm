@@ -227,7 +227,7 @@
 		psyhealing += psicross_bonus
 
 		if(HAS_TRAIT(user, TRAIT_LUX_FREAK) && zcross_trigger) // LUX ABOMINATIONS WONT STOP SO EASLY!!!
-			user.visible_message(span_warning("[user] shudders as their eyes briefly wash over with a sickly shade of silver!"), span_userdanger("Ice shoots up my spine as the ARCHENEMY's laughter resonates in my skull! I will ENDURE this trial!"))
+			user.visible_message(span_warning("[user]浑身一颤，双眼短暂地泛起病态的银光！"), span_userdanger("一股冰冷窜上我的脊背，大敌的狂笑在我脑中回荡！我定要挺过这场试炼！"))
 			zcross_trigger = FALSE
 
 		if (conditional_buff & !zcross_trigger)

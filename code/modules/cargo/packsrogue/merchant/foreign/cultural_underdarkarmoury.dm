@@ -33,14 +33,14 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_greatsabre
-	name = "大军刀"
+	name = "卓尔大军刀"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/sword/long/elf/stalker)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_longsword
-	name = "刺击长剑"
+	name = "卓尔长剑"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/sword/long/stalker)
 	ship_qty_min = 1
@@ -89,7 +89,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/spider_greatflail
-	name = "卓尔重型巨型连枷"
+	name = "卓尔巨型连枷"
 	cost = 190
 	contains = list(/obj/item/rogueweapon/flail/peasantwarflail/stalker/alt)
 	ship_qty_min = 1
@@ -117,14 +117,14 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/scourge_helm
-	name = "蛛牙骑兵头盔"
+	name = "卓尔骑兵头盔"
 	cost = 130
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/shadowplate)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/smiling_helm
-	name = "笑面头盔"
+	name = "笑面盆盔"
 	cost = 90
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/shadowplate)
 	ship_qty_min = 2
@@ -138,14 +138,14 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/underdark/skirmisher_gloves
-	name = "散兵手套"
+	name = "露指手套"
 	cost = 25
 	contains = list(/obj/item/clothing/gloves/roguetown/fingerless/shadowgloves)
 	ship_qty_min = 2
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/war_mask
-	name = "蛛牙战面具"
+	name = "蛛骑士面具"
 	cost = 60
 	contains = list(/obj/item/clothing/mask/rogue/facemask/shadowfacemask)
 	ship_qty_min = 2
@@ -166,21 +166,21 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/underdark/spidersilk_webbing
-	name = "蛛丝织物（裤）"
+	name = "蛛丝下装"
 	cost = 40
 	contains = list(/obj/item/clothing/under/roguetown/webs)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/spidersilk_shirt
-	name = "蛛丝织物（衣）"
+	name = "蛛丝上衣"
 	cost = 40
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/webs)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/underdark/crossbow
-	name = "潜猎者斯勒弩"
+	name = "镀金卓尔弩"
 	cost = 190//has slightly better stats than slurbow so way more expensive, whoever heard of a generous drow?
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker)
 	ship_qty_min = 1

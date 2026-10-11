@@ -7,7 +7,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/adventure_supplies/bedroll
-	name = "卷铺"
+	name = "卷起的铺盖卷"
 	cost = 13
 	contains = list(/obj/item/bedroll)
 
@@ -27,7 +27,7 @@
 	contains = list(/obj/item/storage/backpack/rogue/satchel)
 
 /datum/supply_pack/rogue/adventure_supplies/satchelshort
-	name = "短款挎包"
+	name = "短挂挎包"
 	cost = 13
 	contains = list(/obj/item/storage/backpack/rogue/satchel/short)
 
@@ -37,7 +37,7 @@
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
 /datum/supply_pack/rogue/adventure_supplies/pouches
-	name = "小袋"
+	name = "束口袋"
 	cost = 8
 	contains = list(
 					/obj/item/storage/belt/rogue/pouch,
@@ -54,21 +54,21 @@
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/sheath
-	name = "刀鞘"
+	name = "匕首套"
 	cost = 12
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sheath
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/scabbard
-	name = "剑鞘"
+	name = "简易剑鞘"
 	cost = 15
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sword
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/gwstrap
-	name = "巨兵背带"
+	name = "巨型武器背带"
 	cost = 25
 	contains = list(
 					/obj/item/rogueweapon/scabbard/gwstrap
@@ -89,7 +89,7 @@
 	contains = list(/obj/item/rogueweapon/woodstaff)
 
 /datum/supply_pack/rogue/adventure_supplies/quarterstaff
-	name = "八尺长杆"
+	name = "木制长杖"
 	cost = 12
 	contains = list(/obj/item/rogueweapon/woodstaff/quarterstaff)
 
@@ -100,7 +100,7 @@
 
 // If adding more, make new category for maps.
 /datum/supply_pack/rogue/adventure_supplies/stag_map
-	name = "白鹿地图"
+	name = "白鹿传说（地图）"
 	cost = 250
 	contains = list(/obj/item/hunting_map/white_stag)
 
@@ -110,30 +110,30 @@
 	contains = list(/obj/item/folding_table_stored)
 
 /datum/supply_pack/rogue/adventure_supplies/folding_alchstation
-	name = "炼金台套件"
+	name = "炼金站工具包"
 	cost = 45
 	contains = list(/obj/item/folding_table_stored/alchstation)
 
 /datum/supply_pack/rogue/adventure_supplies/folding_alchcauldron
-	name = "折叠坩埚"
+	name = "折叠坩埚架"
 	cost = 45
 	contains = list(/obj/item/folding_table_stored/alchcauldron)
 
 
 /datum/supply_pack/rogue/adventure_supplies/mess_kit
-	name = "行军餐具"
+	name = "行军炊具"
 	cost = 60
 	contains = list(/obj/item/storage/gadget/messkit)
 
 /datum/supply_pack/rogue/adventure_supplies/needles
-	name = "针具"
+	name = "缝合针"
 	cost = 15
 	contains = list(/obj/item/needle,
 					/obj/item/needle,
 					/obj/item/needle)
 
 /datum/supply_pack/rogue/adventure_supplies/rationpaper
-	name = "口粮包"
+	name = "口粮包裹纸"
 	cost = 20
 	contains = list(
 					/obj/item/ration,
@@ -151,17 +151,17 @@
 	contains = list(/obj/item/tent_kit)
 
 /datum/supply_pack/rogue/adventure_supplies/ger
-	name = "格尔毡帐套件"
+	name = "格尔帐篷套件"
 	cost = 100
 	contains = list(/obj/item/tent_kit/ger)
 
 /datum/supply_pack/rogue/adventure_supplies/yurt
-	name = "尤尔特毡帐套件"
+	name = "尤尔特帐篷套件"
 	cost = 200
 	contains = list(/obj/item/tent_kit/yurt)
 
 /datum/supply_pack/rogue/adventure_supplies/boar_map
-	name = "野猪地图"
+	name = "野猪踪迹图"
 	cost = 90
 	contains = list(/obj/item/hunting_map/boars)
 
