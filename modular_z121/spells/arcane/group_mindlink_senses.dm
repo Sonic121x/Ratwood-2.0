@@ -3,6 +3,27 @@
 	var/list/group_mindlink_sense_watchers
 	var/list/group_mindlink_scene_channels
 
+// sound() 的首参是音频文件，不能把声音对象当作文件来复制；每位听者使用独立对象。
+/proc/group_mindlink_copy_sound(sound/template)
+	if(!istype(template))
+		return null
+	var/sound/result = sound(template.file, template.repeat, template.wait, template.channel, template.volume)
+	result.frequency = template.frequency
+	result.pitch = template.pitch
+	result.pan = template.pan
+	result.priority = template.priority
+	result.status = template.status
+	result.offset = template.offset
+	result.x = template.x
+	result.y = template.y
+	result.z = template.z
+	result.falloff = template.falloff
+	var/list/environment = template.environment
+	result.environment = islist(environment) ? environment.Copy() : environment
+	var/list/echo = template.echo
+	result.echo = islist(echo) ? echo.Copy() : echo
+	return result
+
 /datum/group_mindlink_view
 	var/examining = FALSE
 	var/next_examine = 0
@@ -256,11 +277,13 @@
 	if(!scene_sound || !client || !can_hear())
 		return ..()
 	// 防止共享的 sound 对象被父过程修改后，下一位观看者继承错误音量或方位。
-	var/sound/played_sound = S || sound(get_sfx(soundin))
+	var/sound/played_sound = S
+	if(!played_sound)
+		played_sound = istype(soundin, /sound) ? group_mindlink_copy_sound(soundin) : sound(get_sfx(soundin))
 	var/sound/raw_sound
 	if(length(group_mindlink_sense_watchers))
-		raw_sound = sound(played_sound)
-		played_sound = sound(raw_sound)
+		raw_sound = group_mindlink_copy_sound(played_sound)
+		played_sound = group_mindlink_copy_sound(raw_sound)
 	. = ..(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, played_sound, repeat, muffled)
 	if(.)
 		LAZYINITLIST(group_mindlink_scene_channels)
@@ -289,7 +312,7 @@
 			muffled = istype(species.my_head.loc, /obj/structure/closet) || istype(species.my_head.loc, /obj/item/storage)
 	if(!listener_turf)
 		return null
-	var/sound/result = sound(template)
+	var/sound/result = group_mindlink_copy_sound(template)
 	result.status = 0
 	result.wait = 0
 	result.repeat = FALSE
@@ -354,7 +377,7 @@
 		remove_loop(loop)
 		return
 	if(template)
-		loop_templates[loop] = sound(template)
+		loop_templates[loop] = group_mindlink_copy_sound(template)
 	else
 		template = loop_templates[loop] || loop.cursound
 	if(!istype(template))
@@ -414,16 +437,21 @@
 			var/key = "[environment.channel]"
 			present += key
 			var/sound/previous = ambient_sounds[key]
-			var/sound/received = sound(environment)
+			var/sound/received = group_mindlink_copy_sound(environment)
 			if(!ambient_channels[key])
 				ambient_channels[key] = SSsounds.reserve_sound_channel(src)
 			if(!ambient_channels[key])
 				continue
 			received.channel = ambient_channels[key]
 			received.status = previous?.file == received.file ? SOUND_UPDATE : 0
-			var/own_volume = environment.channel == CHANNEL_WEATHER ? view_client.prefs.mastervol : view_client.prefs.ambiencevol
-			var/other_volume = environment.channel == CHANNEL_WEATHER ? target.client.prefs.mastervol : target.client.prefs.ambiencevol
-			received.volume = other_volume > 0 ? clamp(environment.volume * own_volume / other_volume, 0, 100) : own_volume
+			// SoundQuery 不提供实际播放音量，环境声直接遵循观看者设置，不能按查询默认值反推。
+			received.volume = clamp(view_client.prefs.ambiencevol, 0, 100)
+			if(environment.channel == CHANNEL_WEATHER)
+				received.volume = clamp(view_client.prefs.mastervol, 0, 100)
+				for(var/datum/looping_sound/weather as anything in target.client.played_loops)
+					if(weather.direct && weather.channel == CHANNEL_WEATHER)
+						received.volume = clamp(weather.volume * view_client.prefs.mastervol * 0.01, 0, 100)
+						break
 			ambient_sounds[key] = received
 			SEND_SOUND(view_client, received)
 	for(var/key in ambient_sounds.Copy())

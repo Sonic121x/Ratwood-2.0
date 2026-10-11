@@ -267,6 +267,7 @@
 #include "admin/grandcaster.dm"
 #include "admin/god.dm"
 #include "admin/cleanup_world.dm"
+#include "admin/integrated_commands.dm"
 #include "admin/world_modulation.dm"
 #include "admin/world_modulation_catalog.dm"
 #include "admin/world_modulation_presets.dm"
