@@ -12,27 +12,27 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/gronn/gronnarmor
-	name = "格隆恩硬化皮甲"
+	name = "掠袭者披肩"
 	cost = 60
 	contains = list (/obj/item/clothing/suit/roguetown/armor/leather/heavy/gronn)
 
 /datum/supply_pack/rogue/gronn/gronnpants
-	name = "游牧民硬化皮裤"
+	name = "游牧长裤"
 	cost = 50
 	contains = list (/obj/item/clothing/under/roguetown/heavy_leather_pants/nomadpants)
 
 /datum/supply_pack/rogue/gronn/gronnpantsalt
-	name = "格隆恩皮裤"
+	name = "毛皮裤（格隆恩）"
 	cost = 40
 	contains = list (/obj/item/clothing/under/roguetown/trou/leather/gronn)
 
 /datum/supply_pack/rogue/gronn/gronnglovesleather
-	name = "格隆恩毛衬重型皮手套"
+	name = "毛衬皮手套（格隆恩）"
 	cost = 40
 	contains = list (/obj/item/clothing/gloves/roguetown/angle/gronn)
 
 /datum/supply_pack/rogue/gronn/owl_helmet
-	name = "猫头鹰盔"
+	name = "鸮形盔"
 	cost = 150
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/atgervi)
 	ship_qty_min = 1
@@ -53,7 +53,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/shamanic_coat
-	name = "萨满大衣"
+	name = "萨满外袍"
 	cost = 110
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi)
 	ship_qty_min = 1
@@ -81,14 +81,14 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/gronn/beast_claws
-	name = "兽爪护手"
+	name = "兽爪拳甲"
 	cost = 140
 	contains = list(/obj/item/clothing/gloves/roguetown/plate/atgervi)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/fur_pants
-	name = "格隆恩毛皮裤"
+	name = "毛皮裤（格隆恩）"
 	cost = 50
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/atgervi)
 	ship_qty_min = 2
@@ -132,7 +132,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/gronn/spider_honey
-	name = "梦者之蜜"
+	name = "蛛蜜"
 	cost = 60
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/honey/spider,
@@ -143,7 +143,7 @@
 	ship_qty_max = 6
 
 /datum/supply_pack/rogue/gronn/cured_megafauna
-	name = "腌制暮角兽肉"
+	name = "风干肉条"
 	cost = 50
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
@@ -168,7 +168,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/gronnic_brigandine
-	name = "格隆恩板甲衣"
+	name = "拜林锁子甲"
 	cost = 200
 	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine/gronn)
 	ship_qty_min = 1

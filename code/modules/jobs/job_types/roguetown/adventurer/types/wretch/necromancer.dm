@@ -74,26 +74,26 @@
 	H.grant_language(/datum/language/undead)
 
 	var/staffs = list(
-		"隆兹石法杖",
-		"布洛兹石法杖",
-		"蓝晶法杖",
-		"翠晶法杖",
-		"紫水晶法杖",
-		"托珀石法杖",
+		"隆兹石聚焦法杖",
+		"布洛兹石聚焦法杖",
+		"蓝晶聚焦法杖",
+		"翠晶聚焦法杖",
+		"紫水晶聚焦法杖",
+		"托珀石聚焦法杖",
 	)
 	var/staffchoice = input(H, H, "选择你的法杖", "可选法杖") as anything in staffs
 	switch(staffchoice)
-		if("隆兹石法杖")
+		if("隆兹石聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/ruby
-		if("布洛兹石法杖")
+		if("布洛兹石聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/quartz
-		if("蓝晶法杖")
+		if("蓝晶聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/sapphire
-		if("翠晶法杖")
+		if("翠晶聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/emerald
-		if("紫水晶法杖")
+		if("紫水晶聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/amethyst
-		if("托珀石法杖")
+		if("托珀石聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/toper
 
 /datum/mind

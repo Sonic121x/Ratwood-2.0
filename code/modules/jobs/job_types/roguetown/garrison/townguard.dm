@@ -104,11 +104,11 @@
 	..()
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("震慑钉头锤与盾","卢塞恩锤", "大槌 - +力量/+体质，-速度/-感知/-智力", "弩 - +速度/+感知，-力量/-体质")
+		var/weapons = list("震击钉头锤与铁盾","卢塞恩锤", "大槌 - +力量/+体质，-速度/-感知/-智力", "十字弩 - +速度/+感知，-力量/-体质")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("震慑钉头锤与盾")
+			if("震击钉头锤与铁盾")
 				r_hand = /obj/item/rogueweapon/mace/stunmace
 				backl = /obj/item/rogueweapon/shield/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
@@ -128,7 +128,7 @@
 				H.change_stat(STATKEY_SPD, -1)
 				H.change_stat(STATKEY_PER, -1)
 				H.change_stat(STATKEY_INT, -1)
-			if("弩 - +速度/+感知，-力量/-体质")
+			if("十字弩 - +速度/+感知，-力量/-体质")
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				backl = /obj/item/quiver/heavybluntbolts
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)

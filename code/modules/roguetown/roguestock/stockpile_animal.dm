@@ -4,7 +4,7 @@
 // SStreasury.stockpile_datums in definition order with istype(), same reason hide/cured
 // precedes hide in stockpile_rawmat.dm.
 /datum/roguestock/stockpile/volf
-	name = "丛林肉"
+	name = "生沃尔夫肉"
 	desc = "从沃尔夫身上取得的勉强能吃的肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf
 	trade_good_id = TRADE_GOOD_MEAT_EXOTIC
@@ -16,7 +16,7 @@
 	category = "Animal"
 
 /datum/roguestock/stockpile/meat
-	name = "肉"
+	name = "生肉排"
 	desc = "从动物身上取得的可食用肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	trade_good_id = TRADE_GOOD_MEAT
@@ -26,8 +26,8 @@
 	category = "Animal"
 
 /datum/roguestock/stockpile/spider
-	name = "沼泽肉"
-	desc = "从泥伏兽身上取得的勉强能吃的肉。"
+	name = "蜘蛛肉"
+	desc = "从蜘蛛身上取得的勉强能吃的肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider
 	trade_good_id = TRADE_GOOD_MEAT_EXOTIC
 	importexport_amt = 5
@@ -48,7 +48,7 @@
 	category = "Seafood"
 
 /datum/roguestock/stockpile/poultry
-	name = "禽肉"
+	name = "褪毛禽肉"
 	desc = "从鸟类身上取得的可食用肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry
 	trade_good_id = TRADE_GOOD_POULTRY
@@ -58,7 +58,7 @@
 	category = "Animal"
 
 /datum/roguestock/stockpile/rabbit
-	name = "兔兽肉"
+	name = "生卡比特肉"
 	desc = "从兔兽身上取得的可食用肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit
 	trade_good_id = TRADE_GOOD_RABBIT
@@ -68,7 +68,7 @@
 	category = "Animal"
 
 /datum/roguestock/stockpile/pork
-	name = "猪肉"
+	name = "生猪肉"
 	desc = "从猪身上取得的可食用肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fatty
 	trade_good_id = TRADE_GOOD_PORK
@@ -98,7 +98,7 @@
 	category = "Animal"
 
 /datum/roguestock/stockpile/tallow
-	name = "牛脂"
+	name = "板油"
 	desc = "便于储藏的脂肪组织。"
 	item_type = /obj/item/reagent_containers/food/snacks/tallow
 	trade_good_id = TRADE_GOOD_TALLOW
@@ -137,7 +137,7 @@
 	category = "Animal"
 
 /datum/roguestock/stockpile/cheese
-	name = "奶酪"
+	name = "鲜奶酪"
 	desc = "牛奶与盐的产物。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/cheese
 	trade_good_id = TRADE_GOOD_CHEESE
@@ -147,7 +147,7 @@
 	category = "Animal"
 
 /datum/roguestock/stockpile/salumoi
-	name = "萨卢莫伊"
+	name = "烟熏香肠"
 	desc = "矮人烟熏香肠，经腌制可存放十年不腐。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	trade_good_id = TRADE_GOOD_SALUMOI

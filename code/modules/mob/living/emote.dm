@@ -648,7 +648,7 @@
 
 	var/mob/living/carbon/human/H = user
 	if(H.getOxyLoss() > 50)
-		to_chat(H, span_notice("I don't have enough breath to hold..."))
+		to_chat(H, span_notice("我已经喘不过气，没法再屏息了……"))
 		return
 
 	var/is_holding = HAS_TRAIT(H, TRAIT_HOLDBREATH)

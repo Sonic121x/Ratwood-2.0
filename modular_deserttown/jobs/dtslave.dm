@@ -123,7 +123,7 @@
 
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/massage)
-		var/weapons = list("竖琴","鲁特琴","手风琴","吉他","绞弦琴","维奥尔琴","歌唱护符","长笛", "圣咏琴")
+		var/weapons = list("竖琴","鲁特琴","手风琴","吉他","手摇琴","中提琴","歌者护符","长笛", "圣咏琴")
 		var/weapon_choice = input(H, "选择你的乐器：", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -135,11 +135,11 @@
 				backr = /obj/item/rogue/instrument/accord
 			if("吉他")
 				backr = /obj/item/rogue/instrument/guitar
-			if("绞弦琴")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
-			if("维奥尔琴")
+			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌唱护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 			if("长笛")
 				backr = /obj/item/rogue/instrument/flute

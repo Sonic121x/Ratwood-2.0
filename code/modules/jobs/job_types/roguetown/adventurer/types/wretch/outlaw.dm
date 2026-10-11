@@ -64,19 +64,19 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 		)
 	if(H.mind)
-		var/weapons = list("刺剑","匕首", "鞭", "软剑")
+		var/weapons = list("刺剑","钢短刀", "皮鞭", "软剑")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("细剑")
+			if("刺剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/rapier
-			if("匕首")
+			if("钢短刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special // Why were they spawning with an elven dagger in the first place??? Please LMK.
-			if ("长鞭")
+			if ("皮鞭")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/whip
 			if ("软剑")
@@ -143,35 +143,35 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 		)
 	if(H.mind)
-		var/weapons = list("单持鸢盾","匕首加弩", "民兵战镐加鸢盾", "民兵长矛加鸢盾", "民兵战斧", "民兵古登达格棍", "链枷加鸢盾")
+		var/weapons = list("单持铁盾","钢匕首加十字弩", "民兵钢制长战镐加铁盾", "民兵战矛加熨斗盾", "民兵长柄战斧", "民兵古登棒", "铁连枷（钢制）加熨斗盾")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("单持鸢盾")
+			if("单持铁盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				backr = /obj/item/rogueweapon/shield/iron
-			if("匕首加弩")
+			if("钢匕首加十字弩")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				beltr = /obj/item/quiver/bolts
-			if ("民兵战镐加鸢盾")
+			if ("民兵钢制长战镐加铁盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/pick/militia/steel		//this one has axe skill. Other one had MINING.
 				backr = /obj/item/rogueweapon/shield/iron
-			if ("民兵长矛加鸢盾")
+			if ("民兵战矛加熨斗盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/spear/militia
 				backr = /obj/item/rogueweapon/shield/heater
-			if ("民兵战斧")
+			if ("民兵长柄战斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/greataxe/militia
-			if ("民兵古登达格棍")
+			if ("民兵古登棒")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/woodstaff/militia
-			if ("链枷加鸢盾")
+			if ("铁连枷（钢制）加熨斗盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/flail/sflail
 				backr = /obj/item/rogueweapon/shield/heater

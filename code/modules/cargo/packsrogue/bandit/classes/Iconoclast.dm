@@ -9,7 +9,7 @@
 //////////
 
 /datum/supply_pack/rogue/Iconoclast/wolfhelm
-	name = "沃尔夫钢盔"
+	name = "沃尔夫面甲头盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 
@@ -19,17 +19,17 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
 /datum/supply_pack/rogue/Iconoclast/visoredsallet
-	name = "面罩萨雷特盔"
+	name = "带面罩萨勒盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
 /datum/supply_pack/rogue/Iconoclast/savoyard
-	name = "萨伏依盔"
+	name = "钢萨伏依盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/guard)
 
 /datum/supply_pack/rogue/Iconoclast/barhelmet
-	name = "栅面头盔"
+	name = "栅栏头盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/sheriff)
 
@@ -48,7 +48,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
 /datum/supply_pack/rogue/Iconoclast/Bevor
-	name = "贝沃护喉"
+	name = "护颚"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/bevor)
 
@@ -67,27 +67,27 @@
 ///////////
 
 /datum/supply_pack/rogue/Iconoclast/Haubergeon
-	name = "短身锁子甲"
+	name = "锁子短甲"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail)
 
 /datum/supply_pack/rogue/Iconoclast/hauberk
-	name = "长身锁子甲"
+	name = "锁子甲"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
 
 /datum/supply_pack/rogue/Iconoclast/hgambeson
-	name = "衬垫棉甲"
+	name = "加厚绗缝护甲衣"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 /datum/supply_pack/rogue/Iconoclast/halfplate
-	name = "半身板甲"
+	name = "钢制半身板甲"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate)
 
 /datum/supply_pack/rogue/Iconoclast/brigandine
-	name = "布面甲"
+	name = "板甲衣"
 	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine)
 
@@ -101,12 +101,12 @@
 ///////////////////
 
 /datum/supply_pack/rogue/Iconoclast/bracers
-	name = "钢护臂"
+	name = "臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 /datum/supply_pack/rogue/Iconoclast/plategaunt
-	name = "板甲手套"
+	name = "板甲护手"
 	cost = 20
 	contains = list(/obj/item/clothing/gloves/roguetown/plate)
 
@@ -115,22 +115,22 @@
 ///////////////
 
 /datum/supply_pack/rogue/Iconoclast/chainlegs
-	name = "钢锁腿"
+	name = "钢制锁甲腿铠"
 	cost = 20
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
 
 /datum/supply_pack/rogue/Iconoclast/splintlegs
-	name = "布面甲腿甲"
+	name = "板条腿铠"
 	cost = 20
 	contains = list(/obj/item/clothing/under/roguetown/splintlegs)
 
 /datum/supply_pack/rogue/Iconoclast/platechausses
-	name = "板甲腿甲"
+	name = "钢制板甲腿铠"
 	cost = 40
 	contains = list(/obj/item/clothing/under/roguetown/platelegs)
 
 /datum/supply_pack/rogue/Iconoclast/boots
-	name = "钢靴"
+	name = "板甲靴"
 	cost = 10
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
@@ -139,12 +139,12 @@
 /////////////
 
 /datum/supply_pack/rogue/Iconoclast/katar
-	name = "卡塔拳刃"
+	name = "拳刃"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/katar)
 
 /datum/supply_pack/rogue/Iconoclast/punchdagger
-	name = "拳刃匕首"
+	name = "冲拳匕首"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/katar/punchdagger)
 
@@ -154,27 +154,27 @@
 	contains = list(/obj/item/rogueweapon/knuckles)
 
 /datum/supply_pack/rogue/Iconoclast/mace
-	name = "铁钉锤"
+	name = "钉头锤（铁制）"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/mace)
 
 /datum/supply_pack/rogue/Iconoclast/steelmace
-	name = "钢钉锤"
+	name = "钢钉头锤"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/mace/steel)
 
 /datum/supply_pack/rogue/Iconoclast/cudgel
-	name = "棍棒"
+	name = "警棍"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/mace/cudgel)
 
 /datum/supply_pack/rogue/Iconoclast/billhook
-	name = "钩镰"
+	name = "钩镰枪"
 	cost = 15
 	contains = list(/obj/item/rogueweapon/spear/billhook)
 
 /datum/supply_pack/rogue/Iconoclast/halberd
-	name = "戟"
+	name = "戟斧"
 	cost = 15
 	contains = list(/obj/item/rogueweapon/halberd)
 

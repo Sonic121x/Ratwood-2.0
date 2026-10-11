@@ -19,7 +19,7 @@
 	contains = list(/obj/item/rope)
 
 /datum/supply_pack/rogue/Supplies/chain
-	name = "锁链"
+	name = "铁链"
 	cost = 5
 	contains = list(/obj/item/rope/chain)
 
@@ -59,12 +59,12 @@
 	contains = list(/obj/item/natural/feather)
 
 /datum/supply_pack/rogue/Supplies/hardtack
-	name = "硬饼干"
+	name = "硬饼"
 	cost = 10
 	contains = list(/obj/item/reagent_containers/food/snacks/rogue/crackerscooked)
 
 /datum/supply_pack/rogue/Supplies/needle
-	name = "针"
+	name = "缝合针"
 	cost = 5
 	contains = list(/obj/item/needle)
 
@@ -74,17 +74,17 @@
 	contains = list(/obj/item/flashlight/flare/torch/lantern)
 
 /datum/supply_pack/rogue/Supplies/gwstrap
-	name = "巨兵器背带"
+	name = "巨型武器背带"
 	cost = 15
 	contains = list(/obj/item/rogueweapon/scabbard/gwstrap)
 
 /datum/supply_pack/rogue/Supplies/scabbard
-	name = "剑鞘"
+	name = "简易剑鞘"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/scabbard/sword)
 
 /datum/supply_pack/rogue/Supplies/sheath
-	name = "匕首鞘"
+	name = "匕首套"
 	cost = 5
 	contains = list(/obj/item/rogueweapon/scabbard/sheath)
 
@@ -109,7 +109,7 @@
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver)
 
 /datum/supply_pack/rogue/Supplies/Waterskin
-	name = "水袋"
+	name = "水囊"
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/waterskin)
 
@@ -124,7 +124,7 @@
 	contains = list(/obj/item/chalk)
 
 /datum/supply_pack/rogue/Supplies/bedroll
-	name = "铺盖卷"
+	name = "卷起的铺盖卷"
 	cost = 5
 	contains = list(/obj/item/bedroll)
 
@@ -138,7 +138,7 @@
 //////////////
 
 /datum/supply_pack/rogue/Supplies/rubyband
-	name = "马西奥斯传讯石"
+	name = "朗兹戒指"
 	cost = 20
 	contains = list(/obj/item/mattcoin)
 
@@ -153,12 +153,12 @@
 	contains = list(/obj/item/bomb/smoke)
 
 /datum/supply_pack/rogue/Supplies/bomb
-	name = "火焰弹"
+	name = "瓶装炸弹"
 	cost =	60
 	contains = list(/obj/item/bomb)
 
 /datum/supply_pack/rogue/Supplies/leathercollar
-	name = "皮项圈"
+	name = "皮革颈圈"
 	cost =	20
 	contains = list(/obj/item/clothing/neck/roguetown/collar/leather)
 
@@ -168,17 +168,17 @@
 	contains = list(/obj/item/clothing/neck/roguetown/cursed_collar)
 
 /datum/supply_pack/rogue/Supplies/chainleash
-	name = "锁链牵绳"
+	name = "链式牵绳"
 	cost =	20
 	contains = list(/obj/item/leash/chain)
 
 /datum/supply_pack/rogue/Supplies/lockpicks
-	name = "开锁器"
+	name = "撬锁工具环"
 	cost = 25	// More expensive if your class doesn't have them.
 	contains = list(/obj/item/lockpickring/mundane)
 
 /datum/supply_pack/rogue/Supplies/grapplinghook
-	name =	"抓钩"
+	name =	"青铜抓钩发射器"
 	cost =	1000	// You're better off stealing this.
 	contains = list(/obj/item/grapplinghook)
 

@@ -8,7 +8,7 @@
 	category = "Alchemy"
 
 /datum/roguestock/stockpile/sinew
-	name = "筋腱"
+	name = "肌腱"
 	desc = "坚韧的动物肌腱，在炼金与制作上有些用处。"
 	item_type = /obj/item/alch/sinew
 	trade_good_id = TRADE_GOOD_SINEW

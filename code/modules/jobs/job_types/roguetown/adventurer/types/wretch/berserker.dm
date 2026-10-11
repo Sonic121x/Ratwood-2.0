@@ -57,7 +57,7 @@
 		)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	if(H.mind)
-		var/weapons = list("武修徒手","拳刃","指虎","冲拳匕首","战斧","巨锤","法尔克斯弯刃")
+		var/weapons = list("武修徒手","拳刃","指虎","冲拳匕首","战斧","巨型钉头锤","法尔克斯弯刀")
 		var/weapon_choice = input(H, "选择你的武器。", "掏出他们的内脏。") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -76,11 +76,11 @@
 			if("战斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/stoneaxe/battle
-			if("巨锤")
+			if("巨型钉头锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
-			if("法尔克斯弯刃")
+			if("法尔克斯弯刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/falx
@@ -97,12 +97,12 @@
 			if("头槌 - 易伤减益")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 
-		var/helmets = list("狂战士狼颅护鼻盔","钢锅盔加荒卫面具")
+		var/helmets = list("沃尔夫头骨盆盔","锅盔加荒野守卫")
 		var/helmet_choice = input(H, "选择你的头盔。", "武装自己。") as anything in helmets
 		switch(helmet_choice)
-			if("狂战士狼颅盆盔")
+			if("沃尔夫头骨盆盔")
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/berserker //Pseudoantagonistic-exclusive. Light AC with an on-wear trait for HELMBITING.
-			if("钢锅盔加荒卫面具")
+			if("锅盔加荒野守卫")
 				head = /obj/item/clothing/head/roguetown/helmet/kettle
 				mask = /obj/item/clothing/mask/rogue/wildguard
 		wretch_select_bounty(H)

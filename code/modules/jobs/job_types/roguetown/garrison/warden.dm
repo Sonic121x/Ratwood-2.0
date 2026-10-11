@@ -121,10 +121,10 @@
 
 	if(H.mind)
 		var/helmets = list(
-			"羚角之冠" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/antler,
-			"狼首之盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf,
-			"公羊颅盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat,
-			"熊首之盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear,
+			"守林人头盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/antler,
+			"守林人狼首骨盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf,
+			"守林人羊首骨盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat,
+			"守林人熊首骨盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "头盔选择") as anything in helmets
@@ -132,8 +132,8 @@
 			head = helmets[helmchoice]
 
 		var/hoods = list(
-			"寻常罩帽" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
-			"鹿角罩帽"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
+			"守林人兜帽" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
+			"守林人鹿角兜帽"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
 			"无"
 		)
 		var/hoodchoice = input(H, "选择你的兜帽。", "兜帽选择") as anything in hoods
@@ -199,12 +199,12 @@
 	H.set_blindness(0)
 
 	if(H.mind)
-		var/weapons = list("斧头", "剑与盾")
+		var/weapons = list("守望者之斧", "钢猎剑与铁盾")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		switch(weapon_choice)
-			if("斧头")
+			if("守望者之斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
-			if("剑与盾")
+			if("钢猎剑与铁盾")
 				backl = /obj/item/rogueweapon/shield/iron
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/short/messer
@@ -218,10 +218,10 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 
 		var/helmets = list(
-			"羚角之冠"   = /obj/item/clothing/head/roguetown/helmet/bascinet/antler/melee,
-			"狼首之盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf/melee,
-			"公羊颅盔"          = /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat/melee,
-			"熊首之盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee,
+			"守林人鹿角盔"   = /obj/item/clothing/head/roguetown/helmet/bascinet/antler/melee,
+			"守林人狼首骨盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf/melee,
+			"守林人羊首骨盔"          = /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat/melee,
+			"守林人熊首骨盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "头盔选择") as anything in helmets
@@ -229,8 +229,8 @@
 			head = helmets[helmchoice]
 
 		var/hoods = list(
-			"寻常罩帽" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
-			"鹿角罩帽"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
+			"守林人兜帽" 	= /obj/item/clothing/head/roguetown/roguehood/warden,
+			"守林人鹿角兜帽"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
 			"无"
 		)
 		var/hoodchoice = input(H, "选择你的兜帽。", "兜帽选择") as anything in hoods

@@ -60,12 +60,12 @@
 
 	if(H.mind)
 		var/molds = list(
-			"铁剑模具" = /obj/item/mold/sword,
-			"铁斧模具" = /obj/item/mold/axe,
-			"铁锤模具" = /obj/item/mold/mace,
-			"铁刀模具" = /obj/item/mold/knife,
-			"铁杆武器模具" = /obj/item/mold/polearm,
-			"铁板模具" = /obj/item/mold/plate
+			"剑刃模具" = /obj/item/mold/sword,
+			"斧刃模具" = /obj/item/mold/axe,
+			"锤头模具" = /obj/item/mold/mace,
+			"刀片模具" = /obj/item/mold/knife,
+			"长柄刃模具" = /obj/item/mold/polearm,
+			"甲片模具" = /obj/item/mold/plate
 		)
 		var/mold_names = list()
 		for (var/name in molds)

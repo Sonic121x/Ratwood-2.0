@@ -167,53 +167,53 @@
 
 /datum/outfit/job/roguetown/templar/crusader/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("长剑","连枷","钉锤","战斧", "长矛", "十字弩 + 短剑")
+	var/weapons = list("圣座长剑","铁连枷（钢制）","钢钉头锤","战斧", "圣座长矛", "十字弩 + 钢短剑")
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata) //Unique patron weapons, more can be added here if wanted.
-			weapons += list("日耀裁决", "蚀辉长剑")
-			weapons -= "长剑"//优先使用蚀辉长剑。
+			weapons += list("“曜日审判”", "蚀辉长剑")
+			weapons -= "圣座长剑"//优先使用蚀辉长剑。
 		if(/datum/patron/divine/noc)
-			weapons += list("月光镰刃刀", "蚀辉长剑")
-			weapons -= "长剑"//优先使用蚀辉长剑。
+			weapons += list("月辉寇派什弯剑", "蚀辉长剑")
+			weapons -= "圣座长剑"//优先使用蚀辉长剑。
 		if(/datum/patron/divine/necra)
-			weapons += list("迅终", "安歇")
-			weapons -= list("连枷", "战斧")//First to have two wildly different weapons.
+			weapons += list("“迅捷旅途”", "喘息")
+			weapons -= list("铁连枷（钢制）", "战斧")//First to have two wildly different weapons.
 		if(/datum/patron/divine/pestra)
-			weapons += "瘟疫使者双镰"
+			weapons += "瘟灾之镰（双持）"
 		if(/datum/patron/divine/malum)
 			weapons += "卡尔格伦德巨槌"
-			weapons -= "钉锤"//优先使用卡尔格伦德巨槌。
+			weapons -= "钢钉头锤"//优先使用卡尔格伦德巨槌。
 		if(/datum/patron/divine/dendor)
-			weapons += "盛夏长镰"
-			weapons -= "长矛"//Scythe takes priority.
+			weapons += "盛夏镰戟"
+			weapons -= "圣座长矛"//Scythe takes priority.
 		if(/datum/patron/divine/xylix)
-			weapons += "狂笑鞭"
+			weapons += "咯笑之鞭"
 		if(/datum/patron/divine/ravox)
-			weapons += "谴戒"
-			weapons -= "长剑"//Censure takes priority.
+			weapons += "箴罚"
+			weapons -= "圣座长剑"//Censure takes priority.
 		if(/datum/patron/divine/eora)
-			weapons += list("心弦", "近拥", "竖琴弓（长）", "竖琴弓（短）")
-			weapons -= "长剑"//Heartstring takes priority.
+			weapons += list("心弦", "“贴身轻抚”", "伊欧拉竖琴弓（长）", "伊欧拉竖琴弓（短）")
+			weapons -= "圣座长剑"//Heartstring takes priority.
 		if(/datum/patron/divine/abyssor)
-			weapons += list("裂潮", "深压创伤")
+			weapons += list("潮裂者", "“气压创伤”")
 			weapons -= "战斧"//Tidecleaver takes priority.
 	var/weapon_choice = input(H,"选择你的武器。", "整备武装") as anything in weapons
 	switch(weapon_choice)
 //Generic weapons here.
-		if("长剑")
+		if("圣座长剑")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/church(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE) //Halfplate, not fullplate.
-		if("长矛")
+		if("圣座长矛")
 			H.put_in_hands(new /obj/item/rogueweapon/spear/holysee(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), FALSE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("连枷")
+		if("铁连枷（钢制）")
 			H.put_in_hands(new /obj/item/rogueweapon/flail/sflail(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("钉锤")
+		if("钢钉头锤")
 			H.put_in_hands(new /obj/item/rogueweapon/mace/steel(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
@@ -222,19 +222,19 @@
 			H.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
 //Actual patron specific weapons below.
-		if("日耀裁决")
+		if("“曜日审判”")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/exe/astrata(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("月光镰刃刀")
+		if("月辉寇派什弯剑")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/sabre/nockhopesh(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("迅终")
+		if("“迅捷旅途”")
 			H.put_in_hands(new /obj/item/rogueweapon/flail/sflail/necraflail(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("瘟疫使者双镰")
+		if("瘟灾之镰（双持）")
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE) // actually makes them usable for the templar.
@@ -244,16 +244,16 @@
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), FALSE)
 			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("盛夏长镰")
+		if("盛夏镰戟")
 			H.put_in_hands(new /obj/item/rogueweapon/halberd/bardiche/scythe(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), FALSE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE) // again, needs skill to actually use the weapon
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("狂笑鞭")
+		if("咯笑之鞭")
 			H.put_in_hands(new /obj/item/rogueweapon/whip/xylix(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("谴戒")
+		if("箴罚")
 			H.put_in_hands(new /obj/item/rogueweapon/greatsword/grenz/flamberge/ravox(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), FALSE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -262,11 +262,11 @@
 			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/eora(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("裂潮")
+		if("潮裂者")
 			H.put_in_hands(new /obj/item/rogueweapon/stoneaxe/battle/abyssoraxe(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("安歇")
+		if("喘息")
 			H.put_in_hands(new /obj/item/rogueweapon/greataxe/steel/necran(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), FALSE)
 			H.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
@@ -275,7 +275,7 @@
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/holysee_lesser(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("竖琴弓（长）")
+		if("伊欧拉竖琴弓（长）")
 			H.equip_to_slot_or_del(new /obj/item/quiver/arrows, SLOT_BELT_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/half, SLOT_ARMOR, TRUE) //Cuirass, not halfplate. Slightly reduced starting armor.
 			H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/eora(H), TRUE)
@@ -287,7 +287,7 @@
 			H.change_stat(STATKEY_STR, -1)
 			H.change_stat(STATKEY_WIL, -1)
 			H.change_stat(STATKEY_CON, -1)
-		if("竖琴弓（短）")
+		if("伊欧拉竖琴弓（短）")
 			H.equip_to_slot_or_del(new /obj/item/quiver/arrows, SLOT_BELT_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/half, SLOT_ARMOR, TRUE) //Cuirass, not halfplate. Slightly reduced starting armor.
 			H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/eora(H), TRUE)
@@ -300,18 +300,18 @@
 			H.change_stat(STATKEY_WIL, -1)
 			H.change_stat(STATKEY_CON, -1)
 //Unarmed specific stuff is locked to patrons who have it. RAAAAAAA!!!!!! HEAVY ARMOUR BRUISERS!!!!!!
-		if("近拥")
+		if("“贴身轻抚”")
 			H.put_in_hands(new /obj/item/rogueweapon/knuckles/eora(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
-		if("深压创伤")
+		if("“气压创伤”")
 			H.put_in_hands(new /obj/item/rogueweapon/katar/abyssor(H), TRUE)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate, SLOT_ARMOR, TRUE)
 //Unusual loadouts, such as a crossbow.
-		if("十字弩 + 短剑")
+		if("十字弩 + 钢短剑")
 			H.equip_to_slot_or_del(new /obj/item/quiver/bolts, SLOT_BELT_R, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/half, SLOT_ARMOR, TRUE) //Cuirass, not halfplate. Slightly reduced starting armor.
 			H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(H), TRUE)
@@ -325,26 +325,26 @@
 //Helmets. This BLOWS with how it checks, but I'm lazy and it works.
 //TODO: Remove this for a universal helmet select, once we have sprites for the others.
 	if(H.patron.name == "Astrata" || H.patron.name == "Necra" || H.patron.name == "Eora" || H.patron.name == "Ravox")
-		var/helmets = list("面罩盔 / 萨拉德盔", "头盔")
+		var/helmets = list(H.patron.type == /datum/patron/divine/astrata ? "羽饰阿斯特拉塔头盔" : H.patron.type == /datum/patron/divine/necra ? "兜帽内克拉头盔" : H.patron.type == /datum/patron/divine/eora ? "伊欧拉头盔（萨雷特盔）" : "羽饰拉沃克斯头盔", H.patron.type == /datum/patron/divine/astrata ? "阿斯特拉塔头盔" : H.patron.type == /datum/patron/divine/necra ? "内克拉头盔" : H.patron.type == /datum/patron/divine/eora ? "伊欧拉头盔（重盔）" : "正义之鹰盔")
 		var/selected_helmet = input(H, "选择一顶头盔……", "头盔") as anything in helmets
 		switch(H.patron?.type)
 			if(/datum/patron/divine/astrata)
-				if(selected_helmet == "面罩盔 / 萨拉德盔")
+				if(selected_helmet == "羽饰阿斯特拉塔头盔")
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm/visor(H), SLOT_HEAD)
 				else
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/astratan(H), SLOT_HEAD)
 			if(/datum/patron/divine/necra)
-				if(selected_helmet == "面罩盔 / 萨拉德盔")
+				if(selected_helmet == "兜帽内克拉头盔")
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm/hooded(H), SLOT_HEAD)
 				else
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/necran(H), SLOT_HEAD)
 			if(/datum/patron/divine/eora)
-				if(selected_helmet == "面罩盔 / 萨拉德盔")
+				if(selected_helmet == "伊欧拉头盔（萨雷特盔）")
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/sallet/eoran(H), SLOT_HEAD)
 				else
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/eoran(H), SLOT_HEAD)
 			if(/datum/patron/divine/ravox)
-				if(selected_helmet == "面罩盔 / 萨拉德盔")
+				if(selected_helmet == "羽饰拉沃克斯头盔")
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/ravox_visor(H), SLOT_HEAD)
 				else
 					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/ravoxhelm(H), SLOT_HEAD)

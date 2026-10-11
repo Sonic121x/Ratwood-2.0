@@ -68,7 +68,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/alchemy/qsabsolution
-	name = "净罪银"
+	name = "赦罪银"
 	category = "转化"
 	req_table = FALSE
 	result = list(/obj/item/quicksilver/luxinfused = 1)

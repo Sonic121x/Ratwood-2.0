@@ -59,10 +59,10 @@
 				H.change_stat(STATKEY_PER, 1)
 				H.change_stat(STATKEY_WIL, -1)
 				H.change_stat(STATKEY_SPD, -1)
-		var/weapons = list("受祝普赛顿匕首", "普赛顿手锤", "普赛顿短剑")
+		var/weapons = list("普赛顿匕首", "普赛顿手锤", "普赛顿短剑")
 		var/weapon_choice = input(H,"选择你的武器。", "执起普赛顿的兵刃。") as anything in weapons
 		switch(weapon_choice)
-			if("受祝普赛顿匕首")
+			if("普赛顿匕首")
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
 				r_hand = /obj/item/rogueweapon/scabbard/sheath
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
@@ -73,12 +73,12 @@
 				l_hand = /obj/item/rogueweapon/sword/short/psy
 				r_hand = /obj/item/rogueweapon/scabbard/sword
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-		var/quivers = list("弩矢 - 钢尖", "裂甲弩矢 - 银尖，伤害减半")
+		var/quivers = list("箭袋（弩矢 - 铁制）", "箭袋（裂灭弩矢 - 银尖，伤害减半）")
 		var/bolt_choice = input(H,"选择你的弹药。", "执起 普赛顿 的飞矢。") as anything in quivers
 		switch(bolt_choice)
-			if("弩矢 - 钢尖")
+			if("箭袋（弩矢 - 铁制）")
 				beltl = /obj/item/quiver/bolts
-			if("裂甲弩矢 - 银尖，伤害减半")
+			if("箭袋（裂灭弩矢 - 银尖，伤害减半）")
 				beltl = /obj/item/quiver/holybolts
 
 	head = /obj/item/clothing/head/roguetown/roguehood/psydon/confessor

@@ -5,12 +5,12 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/merc_weapons/saildagger
-	name = "航海匕首"
+	name = "船帆匕首"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero)
 
 /datum/supply_pack/rogue/merc_weapons/erapier
-	name = "伊特鲁斯卡刺剑"
+	name = "杯护手刺剑"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/sword/rapier/vaquero)
 
@@ -20,7 +20,7 @@
 	contains = list(/obj/item/rogueweapon/sword/sabre/shamshir)
 
 /datum/supply_pack/rogue/merc_weapons/beardedaxe
-	name = "胡须斧"
+	name = "胡须战斧"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/steel/atgervi)
 
@@ -45,7 +45,7 @@
 	contains = list(/obj/item/rogueweapon/spear/naginata)
 
 /datum/supply_pack/rogue/merc_weapons/kanabo
-	name = "风郡金棒（巨棍）"
+	name = "铁包棒（巨棍）"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/mace/goden/kanabo)
 
@@ -60,12 +60,12 @@
 	contains = list(/obj/item/rogueweapon/sword/sabre/mulyeog)
 
 /datum/supply_pack/rogue/merc_weapons/kazengunkodachi
-	name = "风郡小太刀（短剑）"
+	name = "钢小太刀（短剑）"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/sword/short/kazengun)
 
 /datum/supply_pack/rogue/merc_weapons/kazengundagger
-	name = "风郡短刀（匕首）"
+	name = "钢短刀（匕首）"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun)
 
@@ -75,17 +75,17 @@
 	contains = list(/obj/item/rogueweapon/sword/sabre/hook)
 
 /datum/supply_pack/rogue/merc_weapons/kazengunscabbard
-	name = "风郡剑鞘（加固）"
+	name = "简式风军剑鞘（加固）"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/scabbard/sword/kazengun)
 
 /datum/supply_pack/rogue/merc_weapons/kazengunscabbard_noparry
-	name = "风郡剑鞘（仪礼）"
+	name = "仪式剑鞘"
 	cost = 40
 	contains = list(/obj/item/rogueweapon/scabbard/sword/kazengun/noparry/loadout)
 
 /datum/supply_pack/rogue/merc_weapons/kazengunsheath
-	name = "小漆鞘"
+	name = "素漆刀套"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/scabbard/sheath/kazengun)
 
@@ -95,26 +95,26 @@
 	contains = list(/obj/item/rogueweapon/whip/nagaika)
 
 /datum/supply_pack/rogue/merc_weapons/glaive
-	name = "长柄刃"
+	name = "偃月刀"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/halberd/glaive)
 
 /datum/supply_pack/rogue/merc_weapons/etruscanlongsword
-	name = "伊特鲁斯卡长剑"
+	name = "篮护长剑"
 	cost = 1409 // 1409 because the Flos Duellatorum was written between 1400-1409 & Fiore is part of the reason frei gets an etruscan class
 	contains = list(/obj/item/rogueweapon/sword/long/etruscan)
 
 /datum/supply_pack/rogue/merc_weapons/handclaw_iron
-	name = "格隆恩铁爪"
+	name = "铁猎犬爪"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/handclaw)
 
 /datum/supply_pack/rogue/merc_weapons/handclaw_steel
-	name = "格隆恩钢爪"
+	name = "钢螳螂爪"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/handclaw/steel)
 
 /datum/supply_pack/rogue/merc_weapons/grenzelstaff
-	name = "格伦泽尔霍夫特黑钢杖"
+	name = "黑钢法杖"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/woodstaff/emerald/blacksteelstaff)

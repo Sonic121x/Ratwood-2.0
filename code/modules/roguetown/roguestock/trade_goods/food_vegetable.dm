@@ -26,7 +26,7 @@
 
 /datum/trade_good/vegetable/potato
 	id = TRADE_GOOD_POTATO
-	name = "马铃薯"
+	name = "土豆"
 	base_price = SELLPRICE_POTATO
 	source_region_id = TRADE_REGION_KINGSFIELD
 	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
@@ -75,7 +75,7 @@
 
 /datum/trade_good/vegetable/rocknut
 	id = TRADE_GOOD_ROCKNUT
-	name = "岩果"
+	name = "石果"
 	base_price = SELLPRICE_ROCKNUT
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/reagent_containers/food/snacks/grown/nut

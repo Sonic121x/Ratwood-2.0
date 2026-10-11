@@ -6,7 +6,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/steel_weapons/dagger
-	name = "匕首"
+	name = "钢匕首"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -14,7 +14,7 @@
 
 
 /datum/supply_pack/rogue/steel_weapons/katar
-	name = "卡塔尔拳刃"
+	name = "拳刃"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/katar
@@ -72,21 +72,21 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/flail
-	name = "连枷"
+	name = "铁连枷（钢制）"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/flail/sflail,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/warhammer
-	name = "战锤"
+	name = "钢战锤"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/mace/warhammer/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/quarterstaff
-	name = "钢头长杖"
+	name = "钢制四分杖"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/woodstaff/quarterstaff/steel,
@@ -107,7 +107,7 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/kriegmesser
-	name = "战刀"
+	name = "双手大刀"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/kriegmesser,
@@ -121,7 +121,7 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/mace
-	name = "钉头锤"
+	name = "钢钉头锤"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/mace/steel,
@@ -156,35 +156,35 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greataxe
-	name = "巨斧"
+	name = "钢巨斧"
 	cost = 75 // 2 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/greataxe/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greataxedoublehead
-	name = "双头巨斧"
+	name = "双头钢巨斧"
 	cost = 110 // 3 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/greataxe/steel/doublehead,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/billhook
-	name = "钩镰"
+	name = "钩镰枪"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/spear/billhook,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/halberd
-	name = "戟"
+	name = "戟斧"
 	cost = 75 // 2 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/halberd,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/eaglebeak
-	name = "卢塞恩锤"
+	name = "钢制卢塞恩锤"
 	cost = 75 // 2 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/eaglebeak,
@@ -224,13 +224,13 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/fishingspear
-	name = "捕鱼矛"
+	name = "渔叉"
 	cost = 75 // 2 Steel Ingot, 1 Small Log.
 	contains = list(
 					/obj/item/rogueweapon/fishspear,
 				)
 /datum/supply_pack/rogue/steel_weapons/rhomphaia
-	name = "罗姆法亚长刃"
+	name = "罗姆法亚弯剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/rhomphaia,

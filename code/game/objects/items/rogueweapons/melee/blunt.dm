@@ -468,7 +468,7 @@
 
 /obj/item/rogueweapon/mace/goden/steel/ancient
 	name = "远古巨型钉头锤"
-	desc = "一柄以抛光吉尔青铜锻成的扭曲长柄战锤。你以为这一切究竟是为了什么？这些毁灭、这些战争、这些牺牲，都是为了让人类迎来真正的飞升。"
+	desc = "一柄以抛光吉尔青铜锻成的扭曲卢塞恩锤。你以为这一切究竟是为了什么？这些毁灭、这些战争、这些牺牲，都是为了让人类迎来真正的飞升。"
 	icon_state = "ancient_supermace"
 	smeltresult = /obj/item/ingot/aaslag
 

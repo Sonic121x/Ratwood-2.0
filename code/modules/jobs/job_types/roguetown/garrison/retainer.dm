@@ -69,30 +69,30 @@
 	backpack_contents = list(/obj/item/roguekey/baron = 1, /obj/item/storage/keyring/baronretainer = 1, /obj/item/flashlight/flare/torch/lantern = 1, /obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rogueweapon/scabbard/sheath = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1,)
 	H.verbs |= list(/mob/proc/haltyell)
 	if(H.mind)
-		var/weapons = list("长柄武器", "钝器", "大钉锤", "剑盾", "链枷与盾", "双手大剑")
+		var/weapons = list("戟斧", "大槌", "巨型钉头锤", "单手剑与铁盾", "铁连枷（钢制）与铁盾", "钢制双手剑")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
-			if("长柄武器")
+			if("戟斧")
 				r_hand = /obj/item/rogueweapon/halberd
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
-			if("钝器")
+			if("大槌")
 				r_hand = /obj/item/rogueweapon/mace/maul
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-			if("大钉锤")
+			if("巨型钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-			if("剑盾")
+			if("单手剑与铁盾")
 				r_hand = /obj/item/rogueweapon/sword
 				l_hand = /obj/item/rogueweapon/shield/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-			if("链枷与盾")
+			if("铁连枷（钢制）与铁盾")
 				r_hand = /obj/item/rogueweapon/flail/sflail
 				l_hand = /obj/item/rogueweapon/shield/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
-			if("双手大剑")
+			if("钢制双手剑")
 				r_hand = /obj/item/rogueweapon/greatsword/grenz
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
@@ -133,7 +133,7 @@
 
 /datum/outfit/job/roguetown/baron_retainer/duelist/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("野兽（行刑剑）", "费伦提亚长剑", "狐狸（刺剑）", "阿夫尼克（什什卡军刀）", "穆巴里尊（沙拉尔）", "剑士（战刀）", "流浪者（环刀）")
+	var/weapons = list("野兽（行刑剑）", "费伦提亚（长剑）", "狐狸（杯护手刺剑）", "阿夫尼克（阿夫尼克的沙什卡）", "穆巴里尊（沙拉尔弯刀）", "剑士（双手大刀）", "流浪者（环刀）")
 	var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 	switch(weapon_choice)
 		if("野兽（行刑剑）")
@@ -142,26 +142,26 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/longcoat, SLOT_CLOAK, TRUE)
 			H.change_stat(STATKEY_STR, 2)
 			H.change_stat(STATKEY_SPD, -2)
-		if("费伦提亚长剑")
+		if("费伦提亚（长剑）")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/duelistcape, SLOT_CLOAK, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/duelisthat, SLOT_HEAD, TRUE)
-		if("狐狸（刺剑）")
+		if("狐狸（杯护手刺剑）")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/vaquero, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/duelmask, SLOT_WEAR_MASK, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/duelistcape, SLOT_CLOAK, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/duelisthat, SLOT_HEAD, TRUE)
-		if("阿夫尼克（什什卡军刀）")
+		if("阿夫尼克（阿夫尼克的沙什卡）")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/sabre/steppesman, TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/shield/buckler, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/facemask/steel/steppesman, SLOT_WEAR_MASK, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/papakha, SLOT_HEAD, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/raincloak/furcloak, SLOT_CLOAK, TRUE)
-		if("穆巴里尊（沙拉尔）")
+		if("穆巴里尊（沙拉尔弯刀）")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/marlin, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/cape/red, SLOT_CLOAK, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/zyb, SLOT_HEAD, TRUE)
-		if("剑士（战刀）")
+		if("剑士（双手大刀）")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/kriegmesser, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/caplessgrenzelhofthat, SLOT_HEAD, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/grenzelhoft, SLOT_CLOAK, TRUE)
@@ -206,7 +206,7 @@
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/warden_machete
 	backpack_contents = list(/obj/item/roguekey/baron = 1, /obj/item/storage/keyring/baronretainer = 1, /obj/item/flashlight/flare/torch/lantern = 1, /obj/item/rogueweapon/scabbard/sheath = 1)
 	if(H.mind)
-		var/helmets = list("守林人熊首骨盔", "守林人羊首骨盔", "守林人狼首骨盔", "钉皮兜帽与猎犬面具")
+		var/helmets = list("守林人熊首骨盔", "守林人羊首骨盔", "守林人狼首骨盔", "铆钉皮革兜帽与钢猎犬面具")
 		var/helmet_choice = input(H, "选择你的装束", "披挂上阵") as anything in helmets
 		switch(helmet_choice)
 			if("守林人熊首骨盔")
@@ -221,12 +221,12 @@
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf
 				mask = /obj/item/clothing/head/roguetown/roguehood/warden
 				cloak = /obj/item/clothing/cloak/wardencloak
-			if("钉皮兜帽与猎犬面具")
+			if("铆钉皮革兜帽与钢猎犬面具")
 				head = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
 				mask = /obj/item/clothing/mask/rogue/facemask/steel/hound
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			
-		var/weapons = list("十字弩", "黑角长弓", "反曲弓", "速射弩")
+		var/weapons = list("十字弩", "黑角长弓", "黑角弓", "轻弩")
 		var/weapon_choice = input(H, "选择你的武器", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
 			if("十字弩")
@@ -237,11 +237,11 @@
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden
 				beltr = /obj/item/quiver/poisonarrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
-			if("反曲弓")
+			if("黑角弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden
 				beltr = /obj/item/quiver/poisonarrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
-			if("速射弩")
+			if("轻弩")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
 				beltr = /obj/item/quiver/bolts
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)

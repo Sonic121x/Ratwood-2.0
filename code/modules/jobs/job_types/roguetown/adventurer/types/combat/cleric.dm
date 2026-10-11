@@ -79,24 +79,24 @@
 	C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_DEVOTEE, devotion_limit = CLERIC_REQ_1)
 
 	if(H.mind)
-		var/weapons = list("戒律 - 徒手","拳刃","指虎","长棍")
+		var/weapons = list("戒律 - 徒手","青铜拳刃",HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战指虎" : "青铜指虎","铁头长杖")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
 			if("戒律 - 徒手")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist//Just this and disciple, effectively.
-			if("拳刃")
+			if("青铜拳刃")
 				beltl = /obj/item/rogueweapon/katar/bronze
 				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("指虎")
+			if("耐战指虎", "青铜指虎")
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltl = /obj/item/rogueweapon/knuckles/psydon/old
 					gloves = /obj/item/clothing/gloves/roguetown/bandages
 				else
 					beltl = /obj/item/rogueweapon/knuckles/bronzeknuckles
 					gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("长棍")
+			if("铁头长杖")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/iron
 				l_hand = /obj/item/rogueweapon/scabbard/gwstrap
@@ -252,30 +252,30 @@
 		if(/datum/patron/old_god)
 			cloak = /obj/item/clothing/cloak/psydontabard
 			if(H.mind)
-				var/helmets = list("巴尔布特盔", "萨雷特盔", "阿米特盔", "桶盔", "狼颅护鼻盔")
+				var/helmets = list("普赛顿式巴尔布特盔", "普赛顿式萨雷特盔", "普赛顿式阿米特盔", "普赛顿式桶盔", "普赛顿式沃尔夫头骨盆盔")
 				var/helmet_choice = input(H, "选择你的头盔。", "行于祂的光中") as anything in helmets
 				switch(helmet_choice)
-					if("巴尔布特盔")
+					if("普赛顿式巴尔布特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
-					if("萨雷特盔")
+					if("普赛顿式萨雷特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/psysallet
-					if("阿米特盔")
+					if("普赛顿式阿米特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
-					if("桶盔")
+					if("普赛顿式桶盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/psybucket
-					if("狼颅护鼻盔")
+					if("普赛顿式沃尔夫头骨盆盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/psydonic
 		if(/datum/patron/divine/astrata)
 			cloak = /obj/item/clothing/cloak/templar/astrata
 			if(H.mind)
-				var/helmets = list("巴尔布特盔", "带面罩巴尔布特盔", "桶盔")
+				var/helmets = list("阿斯特拉塔头盔（巴尔布特盔）", "羽饰阿斯特拉塔头盔", "阿斯特拉塔头盔（桶盔）")
 				var/helmet_choice = input(H, "选择你的头盔。", "行于她的光中。") as anything in helmets
 				switch(helmet_choice)
-					if("巴尔布特盔")
+					if("阿斯特拉塔头盔（巴尔布特盔）")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-					if("带面罩巴尔布特盔")
+					if("羽饰阿斯特拉塔头盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm/visor
-					if("桶盔")
+					if("阿斯特拉塔头盔（桶盔）")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 		if(/datum/patron/divine/noc)
@@ -330,32 +330,32 @@
 					H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_APPRENTICE, TRUE)
 					beltl = /obj/item/reagent_containers/glass/bottle/rogue/healthpot //No needles or cloth, but a basic potion of lifeblood - similar to the Sorcerer's manna potion. Take the 'Physician's Apprentice' virtue for that, uncapped skills, and more.
 				if("十字军之路 - 白银武器")
-					var/crusaderweapon = list("白银长剑", "白银钉锤", "白银连枷", "白银大连枷（需 13 力量）", "白银长矛", "白银斧", "白银长鞭", "白银软剑")
+					var/crusaderweapon = list("白银长剑", "白银钉头锤", "白银晨星连枷", "白银巨型连枷（需 13 力量）", "银矛", "白银战斧", "银鞭", "银软剑")
 					var/crusaderweapon_choice = input(H, "选择你的白银武器，十字军！") as anything in crusaderweapon
 					switch(crusaderweapon_choice)
 						if("白银长剑")
 							H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							l_hand = /obj/item/rogueweapon/sword/long/silver //Turns the Paladin into a pre-Exorcist version of the Monster Hunter. Differences are +1 CON / -1 INT, access to minor miracles, and more limb coverage.
 							beltl = /obj/item/rogueweapon/scabbard/sword //Functionally, inflicts silverbane at the cost of -5 damage. Likely won't be a balancing issue, unless we start seeing +5-10 Clerics overnight.
-						if("白银钉锤")
+						if("白银钉头锤")
 							H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							beltl = /obj/item/rogueweapon/mace/steel/silver
-						if("白银连枷")
+						if("白银晨星连枷")
 							H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							beltl = /obj/item/rogueweapon/flail/sflail/silver
-						if("白银大连枷（需 13 力量）")
+						if("白银巨型连枷（需 13 力量）")
 							H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							l_hand = /obj/item/rogueweapon/flail/peasantwarflail/silver
-						if("白银长矛")
+						if("银矛")
 							H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							l_hand = /obj/item/rogueweapon/spear/silver
-						if("白银斧")
+						if("白银战斧")
 							H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							l_hand = /obj/item/rogueweapon/stoneaxe/woodcut/silver
-						if("白银长鞭")
+						if("银鞭")
 							H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							l_hand = /obj/item/rogueweapon/whip/silver // Die, monster! You don't belong in this world!
-						if("白银软剑")
+						if("银软剑")
 							H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							l_hand = /obj/item/rogueweapon/whip/urumi/silver // Die, monster! You don't belong in this world!
 		else
@@ -372,35 +372,35 @@
 					H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_APPRENTICE, TRUE)
 					ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) //Basically a bit more flavourful Knight Errant, so may as very well give HEAVYARMOR
 					armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate
-	var/weapons = list("长剑","钉锤","连枷","鞭","软剑","长矛","斧")
+	var/weapons = list(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战长剑" : "长剑",HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战手锤" : "钉头锤","铁连枷","皮鞭",HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "坚忍软剑" : "软剑",HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "坚忍长矛与小圆盾" : "长矛与小圆盾","伐木斧")
 	var/weapon_choice = input(H, "选择你的武器。", "执起神赐兵刃。") as anything in weapons
 	switch(weapon_choice)
-		if("长剑")
+		if("长剑", "耐战长剑")
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 				beltr = /obj/item/rogueweapon/sword/long/oldpsysword
 			else
 				beltr = /obj/item/rogueweapon/sword/long
 			r_hand = /obj/item/rogueweapon/scabbard/sword
-		if("钉锤")
+		if("钉头锤", "耐战手锤")
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 				beltr = /obj/item/rogueweapon/mace/cudgel/psy/old
 			else
 				beltr = /obj/item/rogueweapon/mace
-		if("连枷")
+		if("铁连枷")
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			beltr = /obj/item/rogueweapon/flail
-		if("鞭")
+		if("皮鞭")
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			beltr = /obj/item/rogueweapon/whip
-		if("软剑")
+		if("软剑", "坚忍软剑")
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 				beltr = /obj/item/rogueweapon/whip/urumi/silver/psydonic/old
 			else
 				beltr = /obj/item/rogueweapon/whip/urumi
-		if("长矛")
+		if("长矛与小圆盾", "坚忍长矛与小圆盾")
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 				r_hand = /obj/item/rogueweapon/spear/psyspear/old
@@ -408,7 +408,7 @@
 				r_hand = /obj/item/rogueweapon/spear
 			backr = /obj/item/rogueweapon/scabbard/gwstrap
 			beltr = /obj/item/rogueweapon/shield/buckler
-		if("斧")
+		if("伐木斧")
 			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
 	H.set_blindness(0)
@@ -543,7 +543,7 @@
 		else
 			cloak = /obj/item/clothing/cloak/cape/crusader
 	if(H.mind)
-		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇风琴","口簧琴","鲁特琴","诗琴","三味线","小号","中提琴","歌声护符")
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = tgui_input_list(H, "选择你的乐器。", "执起乐器", weapons)
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -563,13 +563,13 @@
 				backr = /obj/item/rogue/instrument/harmonica
 			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("手摇风琴")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
 			if("口簧琴")
 				backr = /obj/item/rogue/instrument/jawharp
 			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("诗琴")
+			if("圣咏琴")
 				backr = /obj/item/rogue/instrument/psyaltery
 			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
@@ -577,7 +577,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌声护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 	switch(H.patron?.type)
