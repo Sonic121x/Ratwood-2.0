@@ -20,6 +20,8 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	. = ..()
 	// 接入所有玩家的账号提示存档、角色登录与检视信号。
 	register_z121_ooc_examine()
+	// 将美德和缩小术共用的娇小特性加入玩家自检列表。
+	register_z121_petite_trait()
 	if(!islist(GLOB.learnable_spells))
 		GLOB.learnable_spells = list()
 	if(GLOB.custom_learnable_spells?.len)

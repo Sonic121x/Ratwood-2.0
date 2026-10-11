@@ -119,7 +119,7 @@
 
 /obj/effect/proc_holder/spell/invoked/group_enlarge
 	name = "群体巨化术"
-	desc = "暂时将施法者与周围 1 格内的活物放大成高大魁梧的巨型姿态。"
+	desc = "暂时将自身与身旁近处的活物放大成高大魁梧的巨型姿态。本就魁梧如巨人或身形娇小者不受影响。"
 	cost = 4
 	overlay_state = "enlarge"
 	releasedrain = 70
@@ -143,7 +143,7 @@
 /obj/effect/proc_holder/spell/invoked/group_enlarge/cast(list/targets, mob/user = usr)
 	var/affected_any = FALSE
 	for(var/mob/living/carbon/target in range(1, user))
-		if(HAS_TRAIT(target, TRAIT_BIGGUY))
+		if(HAS_TRAIT(target, TRAIT_BIGGUY) || HAS_TRAIT(target, TRAIT_PETITE))
 			continue
 		ADD_TRAIT(target, TRAIT_BIGGUY, MAGIC_TRAIT)
 		ADD_TRAIT(target, TRAIT_DEATHBYSNUSNU, MAGIC_TRAIT)

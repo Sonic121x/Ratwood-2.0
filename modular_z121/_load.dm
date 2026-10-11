@@ -1,3 +1,5 @@
+// 先加载共用娇小特性，供缩小与巨化的互斥检查使用。
+#include "virtues/small_size.dm"
 #include "spells/_registry.dm"
 // 庖厨食典：成品饮食配方、肉类来源、基础食材及获得渠道。
 #include "books/cookbook_catalog.dm"
@@ -38,6 +40,7 @@
 #include "spells/arcane/anti_spoil.dm"
 #include "spells/arcane/flight.dm"
 #include "spells/arcane/group_buffs.dm"
+#include "spells/arcane/shrink.dm"
 #include "spells/arcane/group_mindlink.dm"
 #include "spells/arcane/group_mindlink_invitation.dm"
 #include "spells/arcane/group_mindlink_vision.dm"
