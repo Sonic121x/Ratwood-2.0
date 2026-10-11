@@ -13,32 +13,32 @@
 
 /datum/trade_good/equipment/crafted/arming_sword
 	id = TRADE_GOOD_STEEL_ARMING_SWORD
-	name = "钢制骑士剑"
+	name = "单手剑"
 	item_type = /obj/item/rogueweapon/sword
 
 /datum/trade_good/equipment/crafted/shortsword
 	id = TRADE_GOOD_STEEL_SHORTSWORD
-	name = "钢制短剑"
+	name = "钢短剑"
 	item_type = /obj/item/rogueweapon/sword/short
 
 /datum/trade_good/equipment/crafted/falchion
 	id = TRADE_GOOD_STEEL_FALCHION
-	name = "钢制弯刀"
+	name = "单手剑"
 	item_type = /obj/item/rogueweapon/sword/falchion
 
 /datum/trade_good/equipment/crafted/messer
 	id = TRADE_GOOD_STEEL_MESSER
-	name = "钢制大砍刀"
+	name = "钢猎剑"
 	item_type = /obj/item/rogueweapon/sword/short/messer
 
 /datum/trade_good/equipment/crafted/sabre
 	id = TRADE_GOOD_STEEL_SABRE
-	name = "钢制军刀"
+	name = "军刀"
 	item_type = /obj/item/rogueweapon/sword/sabre
 
 /datum/trade_good/equipment/crafted/mace
 	id = TRADE_GOOD_STEEL_MACE
-	name = "钢制钉锤"
+	name = "钢钉头锤"
 	item_type = /obj/item/rogueweapon/mace/steel
 
 /datum/trade_good/equipment/crafted/flanged_mace
@@ -48,7 +48,7 @@
 
 /datum/trade_good/equipment/crafted/flail
 	id = TRADE_GOOD_STEEL_FLAIL
-	name = "钢制连枷"
+	name = "铁连枷（钢制）"
 	item_type = /obj/item/rogueweapon/flail/sflail
 
 // ============================================================================
@@ -57,7 +57,7 @@
 
 /datum/trade_good/equipment/crafted/longsword
 	id = TRADE_GOOD_STEEL_LONGSWORD
-	name = "钢制长剑"
+	name = "长剑"
 	item_type = /obj/item/rogueweapon/sword/long
 
 /datum/trade_good/equipment/crafted/broadsword
@@ -67,7 +67,7 @@
 
 /datum/trade_good/equipment/crafted/warhammer
 	id = TRADE_GOOD_STEEL_WARHAMMER
-	name = "钢制战锤"
+	name = "钢战锤"
 	item_type = /obj/item/rogueweapon/mace/warhammer/steel
 
 /datum/trade_good/equipment/crafted/battleaxe
@@ -86,17 +86,17 @@
 
 /datum/trade_good/equipment/crafted/greatsword
 	id = TRADE_GOOD_STEEL_GREATSWORD
-	name = "巨剑"
+	name = "大剑"
 	item_type = /obj/item/rogueweapon/greatsword
 
 /datum/trade_good/equipment/crafted/halberd
 	id = TRADE_GOOD_STEEL_HALBERD
-	name = "戟"
+	name = "戟斧"
 	item_type = /obj/item/rogueweapon/halberd
 
 /datum/trade_good/equipment/crafted/eaglebeak
 	id = TRADE_GOOD_STEEL_EAGLEBEAK
-	name = "卢塞恩锤"
+	name = "钢制卢塞恩锤"
 	item_type = /obj/item/rogueweapon/eaglebeak
 
 // ============================================================================

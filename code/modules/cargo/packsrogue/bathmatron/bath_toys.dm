@@ -6,37 +6,37 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/bath_toys/dildo/wood
-	name = "假阳具（雕刻）"
+	name = "木制假阳具（可定制）"
 	cost = 8
 	contains = list(/obj/item/dildo/wood)
 
 /datum/supply_pack/rogue/bath_toys/dildo/steel
-	name = "假阳具（不锈钢）"
+	name = "钢制假阳具（可定制）"
 	cost = 20
 	contains = list(/obj/item/dildo/steel)
 
 /datum/supply_pack/rogue/bath_toys/dildo/silver
-	name = "假阳具（镀银）"
+	name = "银制假阳具（可定制）"
 	cost = 120
 	contains = list(/obj/item/dildo/silver)
 
 /datum/supply_pack/rogue/bath_toys/dildo/gold
-	name = "假阳具（镀金）"
+	name = "金制假阳具（可定制）"
 	cost = 150
 	contains = list(/obj/item/dildo/gold)
 
 /datum/supply_pack/rogue/bath_toys/leash/leather
-	name = "牵绳（皮革）"
+	name = "皮制牵绳"
 	cost = 10
 	contains = list(/obj/item/leash/leather)
 
 /datum/supply_pack/rogue/bath_toys/leash/chain
-	name = "牵绳（链条）"
+	name = "链式牵绳"
 	cost = 15
 	contains = list(/obj/item/leash/chain)
 
 /datum/supply_pack/rogue/bath_toys/lube
-	name = "润滑剂（天然）"
+	name = "黄油（天然润滑剂）"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/food/snacks/butter)
 
@@ -46,12 +46,12 @@
 	contains = list(/obj/item/candle)
 
 /datum/supply_pack/rogue/bath_toys/eroancandle
-	name = "伊欧拉蜡烛"
+	name = "伊欧拉之烛"
 	cost = 15
 	contains = list(/obj/item/candle/eora)
 
 /datum/supply_pack/rogue/bath_toys/herbalsoap
-	name = "香皂（草本）"
+	name = "草本香皂"
 	cost = 10
 	contains = list(/obj/item/soap/bath)
 
@@ -61,7 +61,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/cursed_collar)
 
 /datum/supply_pack/rogue/bath_toys/cursedcollarlesser
-	name = "次级诅咒项圈"
+	name = "次级诅咒颈圈"
 	cost = 100
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/cursed_collar)
 
@@ -73,71 +73,71 @@
 	contains = list(/obj/item/chastity/chastity_cage)
 
 /datum/supply_pack/rogue/bath_toys/chastity_cage/anal
-	name = "带肛盾的贞操笼"
+	name = "带肛门护盾的贞操笼"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_cage/anal)
 
 /datum/supply_pack/rogue/bath_toys/chastity_cage/spiked
-	name = "贞操笼（尖刺）"
+	name = "尖刺贞操笼"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_cage/spiked)
 
 /datum/supply_pack/rogue/bath_toys/chastity_cage/spiked_anal
-	name = "带肛盾的贞操笼（尖刺）"
+	name = "带肛门护盾的尖刺贞操笼"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_cage/spiked_anal)
 
 /datum/supply_pack/rogue/bath_toys/chastity_cage/flat
-	name = "贞操笼（平口）"
+	name = "扁平贞操笼"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_cage/flat)
 
 /datum/supply_pack/rogue/bath_toys/chastity_cage/flat/anal
-	name = "带肛盾的贞操笼（平口）"
+	name = "带肛门护盾的扁平贞操笼"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_cage/flat/anal)
 
 /datum/supply_pack/rogue/bath_toys/chastity_cage/flat/spiked
-	name = "贞操笼（平口，尖刺）"
+	name = "尖刺扁平贞操笼"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_cage/flat/spiked)
 
 /datum/supply_pack/rogue/bath_toys/chastity_cage/flat/spiked_anal
-	name = "带肛盾的贞操笼（平口，尖刺）"
+	name = "带肛门护盾的尖刺扁平贞操笼"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_cage/flat/spiked_anal)
 
 /datum/supply_pack/rogue/bath_toys/chastity_belt
-	name = "插入式贞操器"
+	name = "内置贞操带"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_belt)
 
 /datum/supply_pack/rogue/bath_toys/chastity_belt/anal
-	name = "带肛盾的插入式贞操器"
+	name = "带肛门护盾的内置贞操带"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_belt/anal)
 
 /datum/supply_pack/rogue/bath_toys/chastity_belt/spiked
-	name = "插入式贞操器（尖刺）"
+	name = "尖刺内置贞操带"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_belt/spiked)
 
 /datum/supply_pack/rogue/bath_toys/chastity_belt/spiked_anal
-	name = "带肛盾的插入式贞操器（尖刺）"
+	name = "带肛门护盾的尖刺内置贞操带"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/chastity_belt/spiked_anal)
 
 /datum/supply_pack/rogue/bath_toys/intersex
-	name = "贞操器（双性）"
+	name = "双性贞操装置"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/intersex)
 
 /datum/supply_pack/rogue/bath_toys/intersex/spiked
-	name = "贞操器（双性，尖刺）"
+	name = "尖刺双性贞操装置"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/intersex/spiked)
 
 /datum/supply_pack/rogue/bath_toys/cursed
-	name = "贞操器（诅咒）"
+	name = "诅咒贞操装置"
 	cost = PRICE_CHASTITY_CAGE
 	contains = list(/obj/item/chastity/cursed)

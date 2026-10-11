@@ -77,26 +77,26 @@
 			if("失势守林人") //Warden's antlered shroud and warden's cloak. Marginally better protection but makes you look a lot more suspicious.
 				head = /obj/item/clothing/head/roguetown/roguehood/poacher
 				cloak = /obj/item/clothing/cloak/poachercloak
-		var/weapons = list("匕首", "斧头", "短棍")
+		var/weapons = list("钢匕首", "伐木斧", "警棍")
 		var/weapon_choice = input(H, "选择你的近战武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
-			if("匕首")
+			if("钢匕首")
 				beltr = /obj/item/rogueweapon/scabbard/sheath
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel //Poacher already has Expert in Knives, but as a compensation you get a steel-tier dagger, whereas with Axe and Cudgel you get iron-tier weapons.
-			if("斧头")
+			if("伐木斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
 				beltr = /obj/item/rogueweapon/stoneaxe/woodcut
-			if ("短棍")
+			if ("警棍")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 				beltr = /obj/item/rogueweapon/mace/cudgel
-		var/rangedweapons = list("反曲弓", "弩", "投石索")
+		var/rangedweapons = list("反曲弓", "十字弩", "投石索")
 		var/rangedweapon_choice = input(H, "选择你的远程武器。", "披甲执兵") as anything in rangedweapons
 		switch(rangedweapon_choice)
 			if("反曲弓")
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, 5, TRUE)
 				beltl = /obj/item/quiver/arrows
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			if("弩")
+			if("十字弩")
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)
 				beltl = /obj/item/quiver/bolts
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow

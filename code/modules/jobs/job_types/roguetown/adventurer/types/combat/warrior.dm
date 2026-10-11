@@ -35,28 +35,28 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("长剑","钉锤","钩镰枪","大连枷（需 12 力量）","战斧","短剑与铁盾","铁军刀与木盾")
+		var/weapons = list("长剑","钉头锤","钩镰枪","巨型连枷（需 12 力量）","战斧","铁短剑与铁盾","铁军刀与木盾")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
 			if("长剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/sword/long
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("钉锤")
+			if("钉头锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/mace
 			if("钩镰枪")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/billhook
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("大连枷（需 12 力量）")
+			if("巨型连枷（需 12 力量）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail/steel
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 			if("战斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 				backr = /obj/item/rogueweapon/stoneaxe/battle
-			if("短剑与铁盾")
+			if("铁短剑与铁盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				backr = /obj/item/rogueweapon/shield/iron
@@ -68,10 +68,10 @@
 				r_hand = /obj/item/rogueweapon/sword/sabre/iron
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/wood
-		var/armors = list("锁甲套装","铁胸甲","棉甲与头盔","轻型 Zybantu 护甲")
+		var/armors = list("铁制锁子短甲套装","铁胸甲","绗缝护甲衣与锅盔","加垫沙漠长衣套装")
 		var/armor_choice = input(H, "选择你的护甲。", "整装备战") as anything in armors
 		switch(armor_choice)
-			if("锁甲套装")
+			if("铁制锁子短甲套装")
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random//giving them something to wear under their armors
 				pants = /obj/item/clothing/under/roguetown/chainlegs/iron
@@ -85,7 +85,7 @@
 				pants = /obj/item/clothing/under/roguetown/splintlegs/iron
 				gloves = /obj/item/clothing/gloves/roguetown/angle
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			if("棉甲与头盔")
+			if("绗缝护甲衣与锅盔")
 				armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 				neck = /obj/item/clothing/neck/roguetown/coif/padded//neck cover
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random
@@ -93,7 +93,7 @@
 				pants = /obj/item/clothing/under/roguetown/trou/leather
 				head = /obj/item/clothing/head/roguetown/helmet/kettle
 				gloves = /obj/item/clothing/gloves/roguetown/angle
-			if("轻型 Zybantu 护甲")
+			if("加垫沙漠长衣套装")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/zyb
 				pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb
 				head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab
@@ -140,36 +140,36 @@
 	to_chat(H, span_warning("你是一名受人尊敬的剑士，宁肯舍弃甲胄，也要换来更轻捷灵活的战斗方式。"))
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("刺剑与招架匕首","军刀与圆盾","单刃刀与圆盾","匕首与招架匕首","双持短剑","重型匕首与徒手强化","双持软剑")
+		var/weapons = list("刺剑与钢制格挡匕首","军刀与小圆盾","决斗猎剑与小圆盾","钢匕首与钢制格挡匕首","双持钢短剑","赛克斯短刀与徒手强化","双持软剑")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
-			if("刺剑与招架匕首")
+			if("刺剑与钢制格挡匕首")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)//So it actually parries with said dagger.
 				l_hand = /obj/item/rogueweapon/sword/rapier
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 				backr = /obj/item/rogueweapon/scabbard/sword
-			if("军刀与圆盾")
+			if("军刀与小圆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/sword/sabre
 				r_hand = /obj/item/rogueweapon/shield/buckler
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("单刃刀与圆盾")
+			if("决斗猎剑与小圆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/sword/short/messer/iron/virtue
 				r_hand = /obj/item/rogueweapon/shield/buckler
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("匕首与招架匕首")
+			if("钢匕首与钢制格挡匕首")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 				beltr = /obj/item/rogueweapon/scabbard/sheath
-			if("重型匕首与徒手强化")
+			if("赛克斯短刀与徒手强化")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				l_hand = /obj/item/rogueweapon/huntingknife/combat
 				beltr = /obj/item/rogueweapon/scabbard/sheath
-			if("双持短剑")
+			if("双持钢短剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				l_hand = /obj/item/rogueweapon/sword/short
@@ -243,7 +243,7 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("青铜拳刃","青铜剑","青铜斧","青铜钉锤","青铜矛","修习 - 猎鞭者","修习 - 软剑","修习 - 徒手")
+		var/weapons = list("青铜拳刃","青铜单手剑","青铜斧","青铜钉头锤","青铜矛","修习 - 青铜鞭","修习 - 青铜软剑","修习 - 徒手")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起。") as anything in weapons
 		switch(weapon_choice)
 			if("青铜拳刃")
@@ -256,13 +256,13 @@
 				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/bronze
 				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("青铜剑")
+			if("青铜单手剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/bronze
 				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("青铜钉锤")
+			if("青铜钉头锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 				r_hand = /obj/item/rogueweapon/mace/bronze
@@ -274,7 +274,7 @@
 				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 				r_hand = /obj/item/rogueweapon/spear/bronze
 				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("修习 - 猎鞭者")
+			if("修习 - 青铜鞭")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				head = /obj/item/clothing/head/roguetown/headband/monk/barbarian
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
@@ -282,7 +282,7 @@
 				gloves = /obj/item/clothing/gloves/roguetown/bandages
 				H.change_stat(STATKEY_SPD, -1) //Little more protection, little less speed.
 				H.change_stat(STATKEY_PER, 1) //Allows for more critical usage of the Whip's strengths.
-			if("修习 - 软剑")
+			if("修习 - 青铜软剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				head = /obj/item/clothing/head/roguetown/headband/monk/barbarian
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
@@ -355,16 +355,16 @@
 	if(H.mind)
 		to_chat(H, span_warning("你将信赖寄托于坚实甲胄之上。最好的进攻，往往就是最好的防御。"))
 		var/helmets = list(
-			"萨雷特盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
-			"带面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron,
-			"长吻面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron/snouted,
-			"圆面护鼻盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron,
-			"长吻圆面护鼻盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron/snouted,
-			"锅盔"		= /obj/item/clothing/head/roguetown/helmet/kettle/iron,
-			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket/iron,
-			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/iron,
-			"阿米特盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/iron,
-			"长吻阿米特盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/iron/snouted,
+			"铁萨勒盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
+			"铁带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron,
+			"带吻部面罩铁制萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/iron/snouted,
+			"铁制圆面盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron,
+			"带吻部铁制圆面盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/iron/snouted,
+			"铁锅盔"		= /obj/item/clothing/head/roguetown/helmet/kettle/iron,
+			"铁桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket/iron,
+			"铁骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/iron,
+			"铁制阿米特盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/iron,
+			"带吻部铁制阿米特盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/iron/snouted,
 			"蛙嘴盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
 			"无"
 			)
@@ -373,21 +373,21 @@
 			head = helmets[helmchoice]
 
 		var/armors = list(
-			"胸甲加锁子外衣",
-			"半身板甲加轻棉甲"
+			"铁胸甲加铁制锁子甲",
+			"铁制半身板甲加轻型绗缝护甲衣"
 			)
 		var/armorchoice = input(H, "选择你的护甲。", "整装备战") as anything in armors
 		switch(armorchoice)
-			if("胸甲加锁子外衣")
+			if("铁胸甲加铁制锁子甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/iron
-			if("半身板甲加轻棉甲")
+			if("铁制半身板甲加轻型绗缝护甲衣")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/iron
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 
 		var/legs = list(
-			"锁甲护腿"	= /obj/item/clothing/under/roguetown/chainlegs/iron,
-			"锁甲裙甲"		= /obj/item/clothing/under/roguetown/chainlegs/iron/kilt
+			"铁制锁甲腿铠"	= /obj/item/clothing/under/roguetown/chainlegs/iron,
+			"铁制锁甲裙铠"		= /obj/item/clothing/under/roguetown/chainlegs/iron/kilt
 			)
 		var/legschoice = input(H, "选择你的下装。", "整备护腿") as anything in legs
 		pants = legs[legschoice]
@@ -405,23 +405,23 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("行刑剑","战锤与盾","连枷与盾","大战连枷","卢塞恩锤","巨斧","防御就是一切")
+		var/weapons = list("行刑剑","战锤与铁盾","铁连枷与铁盾","民兵长连枷","卢塞恩锤","巨斧","防御就是一切（鸢盾）")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
 			if("行刑剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				backr = /obj/item/rogueweapon/sword/long/exe
-			if("战锤与盾")
+			if("战锤与铁盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/rogueweapon/mace/warhammer
 				backr = /obj/item/rogueweapon/shield/iron
-			if("连枷与盾")
+			if("铁连枷与铁盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/rogueweapon/flail
 				backr = /obj/item/rogueweapon/shield/iron
-			if("大战连枷")
+			if("民兵长连枷")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
@@ -433,7 +433,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/greataxe
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("防御就是一切")
+			if("防御就是一切（鸢盾）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/shield/atgervi
 
@@ -470,46 +470,46 @@
 	H.verbs |= /mob/living/carbon/human/proc/faith_test //Allows the Exorcist to interrogate others for their faith. Trait's agnostically worded, to allow more flexiable usage by Pantheoneers and Ascendants in this role.
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim //Not as scary as it sounds. Mostly. Okay, just a little bit.
 	if(H.mind)
-		var/silver = list("银匕首","银短剑","银骑士剑","银刺剑","银长剑","银阔剑","银行刑剑","银钉锤","银战锤","银晨星锤","银大战连枷，最低13力量","银鞭","银软剑","银战斧","银长柄斧","银长矛","银四分杖")
+		var/silver = list("银匕首","白银短剑","白银单手剑","白银刺剑","白银长剑","白银阔剑","银制行刑剑","白银钉头锤","白银战锤","白银晨星连枷","白银巨型连枷，最低13力量","银鞭","银软剑","白银战斧","白银长柄斧","银矛","银头长杖")
 		var/silver_choice = input(H, "选择你的武器。", "整备兵刃。") as anything in silver //Trim down to five or six choices, later? See what's the most popular, first. Gives people a chance to experiment with all of the new silver weapons.
 		switch(silver_choice)
 			if("银匕首")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/silver
 				beltr = /obj/item/rogueweapon/scabbard/sheath
-			if("银短剑")
+			if("白银短剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/short/silver
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("银骑士剑")
+			if("白银单手剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/silver
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("银刺剑")
+			if("白银刺剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/rapier/silver
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("银长剑")
+			if("白银长剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/silver
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("银阔剑")
+			if("白银阔剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/silver
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("银行刑剑")
+			if("银制行刑剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/exe/silver
-			if("银钉锤")
+			if("白银钉头锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/steel/silver
-			if("银战锤")
+			if("白银战锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/warhammer/steel/silver
-			if("银晨星锤")
+			if("白银晨星连枷")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/flail/sflail/silver
-			if("银大战连枷，最低13力量")
+			if("白银巨型连枷，最低13力量")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail/silver
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
@@ -519,47 +519,47 @@
 			if("银软剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/whip/urumi/silver
-			if("银战斧")
+			if("白银战斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/silver
-			if("银长柄斧")
+			if("白银长柄斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/greataxe/silver
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("银长矛")
+			if("银矛")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/silver
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("银四分杖")
+			if("银头长杖")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/silver
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 
-		var/sidearm = list("匕首", "招架匕首", "萨克斯短刃", "祝圣银桩", "祝圣银铲", "巨盾")
+		var/sidearm = list("钢匕首", "钢制格挡匕首", "赛克斯短刀", "银尖木桩（祝圣）", "银铲（祝圣）", "鸢盾")
 		var/sidearm_choice = input(H, "选择你的副武器。", "先祈祷，再出手。") as anything in sidearm
 		switch(sidearm_choice)
-			if("匕首")
+			if("钢匕首")
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("招架匕首")
+			if("钢制格挡匕首")
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("萨克斯短刃")
+			if("赛克斯短刀")
 				l_hand = /obj/item/rogueweapon/huntingknife/combat
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("祝圣银桩")
+			if("银尖木桩（祝圣）")
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/stake/preblessed
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("祝圣银铲")
+			if("银铲（祝圣）")
 				l_hand = /obj/item/rogueweapon/shovel/silver/preblessed //Unlocks the secret 'Shovel Knight' subclass. No dagger skills if you take this. Doesn't scale off anything, I think. Raw style.
-			if("巨盾")
+			if("鸢盾")
 				l_hand = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-		var/discipline = list("守旧派 - 邪魅炼金与锁甲外衣", "改革派 - 闪避专家与短锁甲", "正统派 - 板甲训练与胸甲")
+		var/discipline = list("守旧派 - 邪魅炼金与锁子甲", "改革派 - 闪避专家与锁子短甲", "正统派 - 板甲训练与沟槽胸甲")
 		var/discipline_choice = input(H, "选择你的修习路线。", "直面你的梦魇。") as anything in discipline
 		switch(discipline_choice)
-			if("守旧派 - 邪魅炼金与锁甲外衣")
+			if("守旧派 - 邪魅炼金与锁子甲")
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC) //'Witcher' archetype. Weaponized alchemy gifts both immunity to nitebeastly curses and a self-suppliable +3 statboost. Well-rounded in almost every facet, but leaves less to chance.
 				H.change_stat(STATKEY_INT, 1)
@@ -577,7 +577,7 @@
 					/obj/item/reagent_containers/glass/bottle/alchemical/intpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/lucpot,
 					)
-			if("改革派 - 闪避专家与短锁甲")
+			if("改革派 - 闪避专家与锁子短甲")
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) //'Puritan' archetype. Closer to the Roguetown-era Inquisitor in portrayal. No armor training, but overprepared with silver throwing daggers and excellent evasive maneuvers.
 				H.change_stat(STATKEY_SPD, 1)
 				H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -585,7 +585,7 @@
 				armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 				belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/silver
-			if("正统派 - 板甲训练与胸甲")
+			if("正统派 - 板甲训练与沟槽胸甲")
 				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_ZOMBIE_IMMUNE, TRAIT_GENERIC) //'Templar' archetype. Blessings protect from the Rot, while opening the opportunity for heavy armor usage. Well-protected and resilient, but slower and visibly identifiable as a prioritable threat.
 				H.change_stat(STATKEY_CON, 1)
@@ -593,18 +593,18 @@
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 				belt = /obj/item/storage/belt/rogue/leather/black
-				var/helmets = list("清教武帽", "带面罩萨雷特盔", "长吻带面罩萨雷特盔", "狼首尖盔", "沟槽阿米特盔")
+				var/helmets = list("清修者帽子", "带面罩萨勒盔", "带吻部面罩萨雷特盔", "沃尔夫头骨盆盔", "褶纹阿米特盔")
 				var/helmet_choice = input(H, "选择你的面貌。", "鼓起精神。") as anything in helmets
 				switch(helmet_choice)
-					if("清教武帽")
+					if("清修者帽子")
 						head = /obj/item/clothing/head/roguetown/puritan/armored
-					if("带面罩萨雷特盔")
+					if("带面罩萨勒盔")
 						head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-					if("长吻带面罩萨雷特盔")
+					if("带吻部面罩萨雷特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
-					if("狼首尖盔")
+					if("沃尔夫头骨盆盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/puritan
-					if("沟槽阿米特盔")
+					if("褶纹阿米特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/fluted
 
 	backl = /obj/item/storage/backpack/rogue/satchel

@@ -5,7 +5,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/livestock/saiga
-	name = "赛加羚羊"
+	name = "鞍装雄赛加羚羊"
 	cost = 150
 	contains = list(
 					/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled,
@@ -20,14 +20,14 @@
 				)
 
 /datum/supply_pack/rogue/livestock/cow
-	name = "牛"
+	name = "母牛"
 	cost = 80
 	contains = list(
 					/mob/living/simple_animal/hostile/retaliate/rogue/cow,
 				)
 
 /datum/supply_pack/rogue/livestock/goat
-	name = "山羊"
+	name = "母山羊"
 	cost = 80
 	contains = list(
 					/mob/living/simple_animal/hostile/retaliate/rogue/goat,
@@ -48,7 +48,7 @@
 				)
 
 /datum/supply_pack/rogue/livestock/swine
-	name = "猪"
+	name = "母猪"
 	cost = 100
 	contains = list(
 					/mob/living/simple_animal/hostile/retaliate/rogue/swine,

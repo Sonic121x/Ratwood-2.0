@@ -5,7 +5,7 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/otava/morningstar
-	name = "钢制晨星锤"
+	name = "钢钉头锤"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/mace/steel/morningstar)
 	ship_qty_min = 1
@@ -19,42 +19,42 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/otava/falchion
-	name = "弯刃刀"
+	name = "单手剑"
 	cost = 90
 	contains = list(/obj/item/rogueweapon/sword/falchion)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/otava/lucerne
-	name = "钢制战锤"
+	name = "钢战锤"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/mace/warhammer/steel)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/otava/half_plate
-	name = "奥塔万半身甲"
+	name = "奥塔万半身板甲"
 	cost = 320
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/otavan)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/otava/full_plate
-	name = "奥塔万全身甲"
+	name = "板甲（奥塔瓦）"
 	cost = 520
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/otava/klappvisier
-	name = "奥塔万克拉普面甲"
+	name = "奥塔瓦头盔"
 	cost = 110
 	contains = list(/obj/item/clothing/head/roguetown/helmet/otavan)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/otava/heavy_gambeson
-	name = "奥塔万剑术棉甲"
+	name = "击剑绗缝护甲衣"
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan)
 	ship_qty_min = 1
@@ -68,7 +68,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/otava/boots
-	name = "奥塔万皮靴"
+	name = "奥塔瓦皮靴"
 	cost = 50
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/otavan)
 	ship_qty_min = 2
@@ -119,7 +119,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/otava/cheese
-	name = "帕伊斯奶酪轮"
+	name = "鲜奶酪（帕伊斯）"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheese,

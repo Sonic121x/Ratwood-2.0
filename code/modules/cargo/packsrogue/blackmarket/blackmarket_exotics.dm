@@ -4,12 +4,12 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/blackmarket_exotics/scrying
-	name = "占卜宝珠"
+	name = "占卜球"
 	cost = 750
 	contains = list(/obj/item/scrying)
 
 /datum/supply_pack/rogue/blackmarket_exotics/nomag
-	name = "无魔戒指"
+	name = "反魔之戒"
 	cost = 300
 	contains = list(/obj/item/clothing/ring/active/nomag)
 

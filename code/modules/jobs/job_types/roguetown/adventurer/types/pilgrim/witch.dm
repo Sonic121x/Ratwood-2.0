@@ -52,8 +52,8 @@
 		H.adjust_skillrank_up_to(/datum/skill/craft/alchemy, 6, TRUE)
 
 	var/hats = list(
-		"女巫帽" 		= /obj/item/clothing/head/roguetown/witchhat,
-		"女巫帽（旧）"	= /obj/item/clothing/head/roguetown/witchhat/old,
+		"女巫帽子" 		= /obj/item/clothing/head/roguetown/witchhat,
+		"破旧女巫帽子"	= /obj/item/clothing/head/roguetown/witchhat/old,
 		"不戴"
 	)
 	var/hatchoice = input(H, "选择你的帽子。", "女巫装束") as anything in hats

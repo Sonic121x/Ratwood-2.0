@@ -11,12 +11,12 @@
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
 /datum/supply_pack/rogue/substances/msigs
-	name = "薄荷烟卷"
+	name = "薄荷卷烟"
 	cost = 5
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/mentha)
 
 /datum/supply_pack/rogue/substances/swampzig
-	name = "沼叶烟卷"
+	name = "沼叶卷烟"
 	cost = 15
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
@@ -41,6 +41,6 @@
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/substances/suidust
-	name = "易容之尘（仅性别）"
+	name = "碎晶粉（仅变性）"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)

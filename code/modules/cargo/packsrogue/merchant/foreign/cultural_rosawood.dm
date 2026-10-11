@@ -2,12 +2,12 @@
 // quiver do not exist. Their packs are omitted until those items are ported.
 /datum/supply_pack/rogue/rosawood
 	group = "文化货物" // English: Cultural Stock
-	crate_name = "罗莎木货箱"
+	crate_name = "玫瑰林货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/rosawood/woad_helm
-	name = "靛纹精灵头盔"
+	name = "林纹精灵头盔"
 	cost = 95
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/elven_helm)
 	ship_qty_min = 1
@@ -21,7 +21,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/rosawood/elven_gloves
-	name = "靛纹精灵手套"
+	name = "染纹精灵手套"
 	cost = 30
 	contains = list(/obj/item/clothing/gloves/roguetown/elven_gloves)
 	ship_qty_min = 1
@@ -35,7 +35,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/rosawood/woad_furcloak
-	name = "守林人毛皮斗篷"
+	name = "靛纹斗篷"
 	cost = 55
 	contains = list(/obj/item/clothing/cloak/raincloak/furcloak/woad)
 	ship_qty_min = 2
@@ -72,7 +72,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/rosawood/honey
-	name = "罐装蜂蜜"
+	name = "蜂蜜"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/honey,
@@ -94,7 +94,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/rosawood/apples
-	name = "罗莎木苹果"
+	name = "苹果（玫瑰林）"
 	cost = 20
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/grown/apple,
@@ -108,7 +108,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/rosawood/pears
-	name = "罗莎木梨"
+	name = "梨（玫瑰林）"
 	cost = 20
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/pear,
@@ -121,7 +121,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/rosawood/berries
-	name = "罗莎木杰克莓"
+	name = "杰克莓（玫瑰林）"
 	cost = 20
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
@@ -160,14 +160,14 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/rosawood/elfswordspear
-	name = "精灵剑矛"
+	name = "精灵枪刃"
 	cost = 100
 	contains = list(/obj/item/rogueweapon/spear/naginata/elf)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/rosawood/elfcurveblade
-	name = "精灵曲刃剑"
+	name = "精灵弯刃"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/greatsword/elf)
 	ship_qty_min = 1

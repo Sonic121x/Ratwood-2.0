@@ -5,21 +5,21 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/grenzelhoft/zweihander
-	name = "双手剑"
+	name = "钢制双手剑"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/greatsword/grenz)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/kriegmesser
-	name = "战刀"
+	name = "双手大刀"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/sword/long/kriegmesser)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/halberd
-	name = "戟"
+	name = "戟斧"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/halberd)
 	ship_qty_min = 1
@@ -33,14 +33,14 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/seax
-	name = "格伦泽尔霍夫特赛克斯"
+	name = "赛克斯短刀（格伦泽尔霍夫特）"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/huntingknife/combat)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/kampfmesser
-	name = "战斗短刀"
+	name = "赛克斯短刀"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/huntingknife/combat)
 	ship_qty_min = 2
@@ -54,7 +54,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/grenzelhoft/heavy_gambeson
-	name = "格伦泽尔霍夫特重型加垫甲"
+	name = "格伦泽尔霍夫特长摆衬衣"
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft)
 	ship_qty_min = 1
@@ -82,14 +82,14 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/grenzelhoft/pants
-	name = "格伦泽尔霍夫特蓬裤"
+	name = "格伦泽尔霍夫特绗缝裤"
 	cost = 50
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/grenzelhoft/merc_tabard
-	name = "圣佣兵罩袍"
+	name = "格伦泽尔霍夫特佣兵罩袍"
 	cost = 70
 	contains = list(/obj/item/clothing/cloak/stabard/grenzelhoft)
 	ship_qty_min = 1
@@ -138,7 +138,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/grenzelhoft/salami
-	name = "哈特瓦尔德萨拉米肠"
+	name = "烟熏香肠（哈特瓦尔德）"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
@@ -149,7 +149,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/grenzelhoft/hardybread
-	name = "硬海饼干"
+	name = "硬饼"
 	cost = 25
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,

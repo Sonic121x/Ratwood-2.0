@@ -44,35 +44,35 @@
 	if(H.mind)
 		if(H.mind.current)
 			H.mind.current.faction += "[H.name]_faction"
-		var/weapons = list("长剑", "钉锤", "链枷", "战斧", "钩镰枪")
+		var/weapons = list(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战长剑" : "长剑", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战钉头锤" : "钢钉头锤", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战连枷" : "铁连枷（钢制）", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战战斧" : "钢斧", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "坚忍长矛" : "钩镰枪")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
-			if("长剑")
+			if("长剑", "耐战长剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					r_hand = /obj/item/rogueweapon/sword/long/oldpsysword
 				else
 					r_hand = /obj/item/rogueweapon/sword/long
-			if("钉锤")
+			if("钢钉头锤", "耐战钉头锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					r_hand = /obj/item/rogueweapon/mace/goden/psy/old
 				else
 					r_hand = /obj/item/rogueweapon/mace/steel
-			if("链枷")
+			if("铁连枷（钢制）", "耐战连枷")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltr = /obj/item/rogueweapon/flail/sflail/psyflail/old
 				else
 					beltr = /obj/item/rogueweapon/flail/sflail
-			if("战斧")
+			if("钢斧", "耐战战斧")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltr = /obj/item/rogueweapon/stoneaxe/battle/psyaxe/old
 				else
 					beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
-			if("钩镰枪")
+			if("钩镰枪", "坚忍长矛")
 				l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
@@ -207,18 +207,18 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/chain/psydon, SLOT_GLOVES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/psydonboots, SLOT_SHOES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/cloak/psydontabard, SLOT_CLOAK, TRUE)
-					var/helmets = list("巴尔布特盔", "萨雷特盔", "阿米特盔", "桶盔", "狼颅护鼻盔")
+					var/helmets = list("普赛顿式巴尔布特盔", "普赛顿式萨雷特盔", "普赛顿式阿米特盔", "普赛顿式桶盔", "普赛顿式沃尔夫头骨盆盔")
 					var/helmet_choice = input(H,"选择你的普赛顿头盔。", "披挂普赛顿之盔") as anything in helmets
 					switch(helmet_choice)
-						if("巴尔布特盔")
+						if("普赛顿式巴尔布特盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute, SLOT_HEAD, TRUE)
-						if("萨雷特盔")
+						if("普赛顿式萨雷特盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psysallet, SLOT_HEAD, TRUE)
-						if("阿米特盔")
+						if("普赛顿式阿米特盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm, SLOT_HEAD, TRUE)
-						if("桶盔")
+						if("普赛顿式桶盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/psybucket, SLOT_HEAD, TRUE)
-						if("狼颅护鼻盔")
+						if("普赛顿式沃尔夫头骨盆盔")
 							H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/psydonic, SLOT_HEAD, TRUE)
 				if("改革派") //You look like as if somebody dressed Freifechter into a lot of armour. Better chestpiece, but worse gloves and boots, and worse padded gambeson.
 					to_chat(H, span_warning ("普赛顿 在与伟大邪恶的战斗后陨落了。但祂仍借由我们而长存，活在我们的记忆与流血的心中。只要我们还活着，祂也将借由我们而长存。万事都应如祂所定，如祂所行，皆以祂之名。"))
@@ -300,34 +300,34 @@
 	if(H.mind)
 		if(H.mind.current)
 			H.mind.current.faction += "[H.name]_faction"
-		var/weapons = list("刺剑","匕首", "弓", "弩", "斯勒弩" , "鞭", "软剑")
+		var/weapons = list("刺剑","钢短刀", "反曲弓", "十字弩", "轻弩" , "皮鞭", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "坚忍软剑" : "软剑")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("细剑")
+			if("刺剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/rapier
-			if("匕首")
+			if("钢短刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special
-			if("弓")
+			if("反曲弓")
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltl = /obj/item/quiver/arrows
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			if("弩")
+			if("十字弩")
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_JOURNEYMAN, TRUE) //have to specifically go into bows/crossbows unlike outlaw
 				beltr = /obj/item/quiver/bolts
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("斯勒弩") //If Knaves can have one, then so can you. Normal crossbow is a more optimal choice for Heretic Spy.
+			if("轻弩") //If Knaves can have one, then so can you. Normal crossbow is a more optimal choice for Heretic Spy.
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/quiver/bolts
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
-			if("鞭子") //For baothans.
+			if("皮鞭") //For baothans.
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/whip
-			if("软剑")
+			if("软剑", "坚忍软剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltr = /obj/item/rogueweapon/whip/urumi/silver/psydonic/old
@@ -579,7 +579,7 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 				shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots
 				cloak = /obj/item/clothing/cloak/psydontabard/alt
-		var/monkweapons = list("徒手", "长刀", "四分杖", "剑", "信仰")
+		var/monkweapons = list("徒手", style_choice == "东方守护者" ? "薙刀" : "偃月刀", "钢制四分杖", style_choice == "东方守护者" ? "环刀" : (style_choice == "蒙羞门徒（天生护甲）" ? "耐战长剑" : "钢猎剑"), "信仰")
 		var/monkweapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in monkweapons
 		switch(monkweapon_choice)
 			if("徒手")
@@ -592,7 +592,7 @@
 						beltr = /obj/item/rogueweapon/knuckles/psydon/old //Worse than steel or bronze knuckledusters, that's the price you pay for the drip and the natural armor.
 					else
 						beltr = /obj/item/rogueweapon/knuckles
-			if("长刀")
+			if("薙刀", "偃月刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				switch(style_choice)
@@ -600,10 +600,10 @@
 						l_hand = /obj/item/rogueweapon/spear/naginata
 					else
 						l_hand = /obj/item/rogueweapon/halberd/glaive
-			if("四分杖")
+			if("钢制四分杖")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/woodstaff/quarterstaff/steel
-			if("剑") //Gimmicky choice. Heretic Spy called, they want their sword back.
+			if("环刀", "耐战长剑", "钢猎剑") //Gimmicky choice. Heretic Spy called, they want their sword back.
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 				switch(style_choice)
 					if("东方守护者")

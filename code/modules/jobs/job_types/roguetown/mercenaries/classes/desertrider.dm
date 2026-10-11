@@ -51,24 +51,24 @@
 		/obj/item/rogueweapon/scabbard/sheath,
 		/obj/item/storage/belt/rogue/pouch/coins/poor
 		)
-	var/weapons = list("钉锤与盾","弯刀与盾","长矛与盾","斧与盾")
+	var/weapons = list("钢钉头锤与骑盾","沙姆希尔弯刀与骑盾","长矛与骑盾","伐木斧与骑盾")
 	if(H.mind)
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("钉锤与盾")
+			if("钢钉头锤与骑盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 				backl = /obj/item/rogueweapon/shield/tower/zyb
 				beltr = /obj/item/rogueweapon/mace/steel
-			if("弯刀与盾")
+			if("沙姆希尔弯刀与骑盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 				backl = /obj/item/rogueweapon/shield/tower/zyb
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("长矛与盾")
+			if("长矛与骑盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				r_hand = /obj/item/rogueweapon/spear
 				backl = /obj/item/rogueweapon/shield/tower/zyb
-			if("斧与盾")
+			if("伐木斧与骑盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)	//lets see if people pick it!
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
 				backl = /obj/item/rogueweapon/shield/tower/zyb
@@ -129,18 +129,18 @@
 		/obj/item/flashlight/flare/torch,
 		/obj/item/storage/belt/rogue/pouch/coins/poor
 		)
-	var/weapons = list("弯刀与标枪","长鞭与匕首", "反曲弓")
+	var/weapons = list("沙姆希尔弯刀与标枪袋（铁标枪）","皮鞭与钢制格挡匕首", "反曲弓")
 	if(H.mind)
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("弯刀与标枪")
+			if("沙姆希尔弯刀与标枪袋（铁标枪）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 				backl = /obj/item/quiver/javelin/iron
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("长鞭与匕首")	///They DO enslave people after all
+			if("皮鞭与钢制格挡匕首")	///They DO enslave people after all
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/whip

@@ -91,14 +91,14 @@
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
-	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks = list("士兵罩袍", "罩袍", "战袍")
 	var/cloaks_choice = input(H, "选择你的披风。", "披上主人的色彩") as anything in cloaks
 	switch(cloaks_choice)
-		if("战袍")
+		if("士兵罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
 		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("朱蓬")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
 	var/arms_choice = input(H, "选择你的武器。", "为神明执兵而起") as anything in list("武装剑与盾牌", "钉头锤", "连枷与盾牌", "梅塞尔刀与小圆盾", "战斧")
@@ -222,14 +222,14 @@
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
-	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks = list("士兵罩袍", "罩袍", "战袍")
 	var/cloaks_choice = input(H, "选择你的披风。", "披上主人的色彩") as anything in cloaks
 	switch(cloaks_choice)
-		if("战袍")
+		if("士兵罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
 		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("朱蓬")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
 	var/arms_choice = input(H, "选择你的武器。", "为神明执兵而起") as anything in list("长戟", "钩镰", "长矛与标枪", "骑枪与小圆盾")
@@ -347,14 +347,14 @@
 	if(helm)
 		H.equip_to_slot_or_del(new helm(H), SLOT_HEAD, TRUE)
 
-	var/cloaks = list("战袍", "罩袍", "朱蓬")
+	var/cloaks = list("士兵罩袍", "罩袍", "战袍")
 	var/cloaks_choice = input(H, "选择你的披风。", "披上主人的色彩") as anything in cloaks
 	switch(cloaks_choice)
-		if("战袍")
+		if("士兵罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard(H), SLOT_CLOAK, TRUE)
 		if("罩袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard(H), SLOT_CLOAK, TRUE)
-		if("朱蓬")
+		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
 	var/arms_choice = input(H, "选择你的武器。", "为神明执兵而起") as anything in list("弩", "弓", "投石索", "标枪与匕首")

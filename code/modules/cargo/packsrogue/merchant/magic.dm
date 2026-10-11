@@ -6,7 +6,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/magic/swampzig
-	name = "沼叶烟卷"
+	name = "沼叶卷烟"
 	cost = 15
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
@@ -16,17 +16,17 @@
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 
 /datum/supply_pack/rogue/magic/silverdagger
-	name = "奥术银匕首"
+	name = "奥术银匕"
 	cost = 130 //used in level 3/4 enchantments
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/arcyne)
 
 /datum/supply_pack/rogue/magic/nomag
-	name = "反魔法戒指"
+	name = "反魔之戒"
 	cost = 300
 	contains = list(/obj/item/clothing/ring/active/nomag)
 
 /datum/supply_pack/rogue/magic/scrying
-	name = "占视宝珠"
+	name = "占卜球"
 	cost = 300
 	contains = list(/obj/item/scrying)
 
@@ -59,7 +59,7 @@
 			)
 
 /datum/supply_pack/rogue/magic/manacrystal
-	name = "法力水晶"
+	name = "结晶化魔力"
 	cost = 55
 	contains = list(
 			/obj/item/magic/manacrystal,
@@ -73,6 +73,6 @@
 	contains = list(/obj/item/lovepotion)
 
 /datum/supply_pack/rogue/magic/suidust
-	name = "易容之尘（仅性别）"
+	name = "碎晶粉（仅变性）"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)

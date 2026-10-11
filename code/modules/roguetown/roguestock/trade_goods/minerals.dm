@@ -27,7 +27,7 @@
 
 /datum/trade_good/coal
 	id = TRADE_GOOD_COAL
-	name = "煤"
+	name = "煤炭"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_COAL
@@ -54,7 +54,7 @@
 
 /datum/trade_good/cinnabar
 	id = TRADE_GOOD_CINNABAR
-	name = "朱砂"
+	name = "辰砂"
 	category = TRADE_CATEGORY_BASIC_MINERAL
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_CINNABAR

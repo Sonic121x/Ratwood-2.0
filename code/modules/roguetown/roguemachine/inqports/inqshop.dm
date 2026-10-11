@@ -48,12 +48,12 @@
 	new /obj/item/roguecoin/silver/inqpile(src)
 
 /datum/inqports/supplies/stampstuff
-	name = "1 块红脂"
+	name = "1 块审判庭板油"
 	item_type = /obj/item/reagent_containers/food/snacks/tallow/red
 	marquescost = 1
 
 /datum/inqports/supplies/medical
-	name = "5 卷布与针"
+	name = "4 卷绷带与5 根缝合针"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/medical
 	marquescost = 1
 
@@ -76,7 +76,7 @@
 	new /obj/item/natural/bundle/cloth/bandage/full(src)
 
 /datum/inqports/supplies/chains
-	name = "2 段锁链"
+	name = "2 段铁链"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/chains
 	marquescost = 1
 
@@ -130,7 +130,7 @@
 	new /obj/item/rope/chain(src)
 
 /datum/inqports/supplies/redpotions
-	name = "3 瓶红药"
+	name = "3 瓶生命药水"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/redpots
 	marquescost = 3
 
@@ -141,7 +141,7 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 
 /datum/inqports/supplies/lifebloodvials
-	name = "3 瓶强效红药"
+	name = "3 瓶强效生命药水"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/sredvials
 	marquescost = 6
 
@@ -152,7 +152,7 @@
 	new /obj/item/reagent_containers/glass/bottle/alchemical/healthpotnew(src)
 
 /datum/inqports/supplies/bluepotions
-	name = "3 瓶蓝药"
+	name = "3 瓶魔力药水"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/bluepots
 	marquescost = 3
 
@@ -163,7 +163,7 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/manapot(src)
 
 /datum/inqports/supplies/strongbluevials
-	name = "3 瓶强效蓝药"
+	name = "3 瓶强效魔力药水"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/sbluevials
 	marquescost = 6
 
@@ -241,7 +241,7 @@
 	new /obj/item/bomb(src)
 
 /datum/inqports/supplies/mutegas
-	name = "3 枚静默气弹"
+	name = "3 个静默喷气器"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/mutegas
 	marquescost = 6
 
@@ -269,23 +269,23 @@
 // ✤ ARTICLES ✤ RIGHT HERE! THAT'S RIGHT!
 
 /datum/inqports/articles/quicksilver
-	name = "1 份应急药膏"
+	name = "1 份速银敷膏"
 	item_type = /obj/item/quicksilver
 	maximum = 1
 	marquescost = 10
 
 /datum/inqports/articles/psycrosssilver
-	name = "1 枚银制普赛圣十字"
+	name = "1 枚银教十字"
 	item_type = /obj/item/clothing/neck/roguetown/psicross/silver
 	marquescost = 6
 
 /datum/inqports/articles/psycross
-	name = "1 枚普赛圣十字"
+	name = "1 枚教十字"
 	item_type = /obj/item/clothing/neck/roguetown/psicross
 	marquescost = 2
 
 /datum/inqports/articles/indexaccused
-	name = "3 个 编目机、3 份控诉书"
+	name = "3 根索引针、3 份控告状"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/indexaccused
 	marquescost = 3
 
@@ -299,7 +299,7 @@
 	new /obj/item/paper/inqslip/accusation(src)
 
 /datum/inqports/articles/confessions
-	name = "3 份供词"
+	name = "3 份供述状"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/confessions
 	marquescost = 5
 
@@ -310,7 +310,7 @@
 	new /obj/item/paper/inqslip/confession(src)
 
 /datum/inqports/articles/psybles
-	name = "3 本普赛登圣书"
+	name = "3 本普赛顿圣典"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/articles/psybles
 	marquescost = 2
 
@@ -326,12 +326,12 @@
 	marquescost = 6
 
 /datum/inqports/articles/listener
-	name = "1 只留神之耳"
+	name = "1 只窃听耳"
 	item_type = /obj/item/listeningdevice
 	marquescost = 3
 
 /datum/inqports/articles/whisperer
-	name = "1 个密语低语器"
+	name = "1 个密语者"
 	item_type = /obj/item/speakerinq
 	marquescost = 3
 
@@ -344,7 +344,7 @@
 	marquescost = 8
 
 /datum/inqports/equipment/psydonthorns
-	name = "1 副普赛登荆棘腕甲"
+	name = "1 副普赛顿荆棘腕甲"
 	item_type = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 	marquescost = 12
 
@@ -354,17 +354,17 @@
 	marquescost = 4
 
 /datum/inqports/equipment/strangemask
-	name = "1 张告解面具"
+	name = "1 张古怪面具"
 	item_type = /obj/item/clothing/mask/rogue/facemask/steel/confessor
 	marquescost = 8
 
 /datum/inqports/equipment/otavansatchel
-	name = "1 个奥塔瓦皮挎包"
+	name = "1 个奥塔万皮挎包"
 	item_type = /obj/item/storage/backpack/rogue/satchel/otavan
 	marquescost = 2
 
 /datum/inqports/equipment/psysack
-	name = "1 个身份遮蔽器"
+	name = "1 个普赛顿麻袋面具"
 	item_type = /obj/item/clothing/mask/rogue/sack/psy
 	marquescost = 2
 
@@ -391,7 +391,7 @@
 
 
 /datum/inqports/equipment/psydonhelms
-	name = "普赛登头盔组"
+	name = "普赛顿头盔组"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/psydonhelms
 	marquescost = 10
 	maximum = 2
@@ -405,7 +405,7 @@
 	new /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/psydonic(src)
 
 /datum/inqports/equipment/crankbox
-	name = "摇柄匣"
+	name = "忧郁手摇匣"
 	item_type = /obj/structure/closet/crate/chest/inqreliquary/relic/crankbox/
 	marquescost = 16
 	maximum = 1
@@ -415,7 +415,7 @@
 	new /obj/item/psydonmusicbox(src)
 
 /datum/inqports/equipment/nocshades
-	name = "1 副夜影镜片"
+	name = "1 副奥塔瓦夜影镜片"
 	item_type = /obj/item/clothing/mask/rogue/spectacles/inq
 	marquescost = 10
 
@@ -482,7 +482,7 @@
 	new /obj/item/clothing/shoes/roguetown/boots/otavan/inqboots(src)
 
 /datum/inqports/wardrobe/fencersthree
-	name = "击剑师护身棉甲三件套"
+	name = "击剑绗缝护甲衣三件套"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/fencersthree
 	marquescost = 8
 
@@ -505,7 +505,7 @@
 	new /obj/item/clothing/shoes/roguetown/boots/psydonboots(src)
 
 /datum/inqports/wardrobe/nobledressup
-	name = "贵族代价箱"
+	name = "贵族礼服套装箱"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/nobledressup
 	marquescost = 14
 

@@ -5,14 +5,14 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/hammerhold/dwarven_maul
-	name = "矮人重槌"
+	name = "大槌"
 	cost = 240
 	contains = list(/obj/item/rogueweapon/mace/maul/steel)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/hammerhold/spiked_maul
-	name = "尖刺重槌"
+	name = "钉头锤"
 	cost = 260
 	contains = list(/obj/item/rogueweapon/mace/maul/spiked)
 	ship_qty_min = 1
@@ -26,14 +26,14 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/hammerhold/iron_fullplate
-	name = "铁锤堡铁甲"
+	name = "板甲（铁锤堡）"
 	cost = 380
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/iron)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/hammerhold/snow_cloak
-	name = "诺瓦丁林地卫手斗篷"
+	name = "雪斗篷"
 	cost = 60
 	contains = list(/obj/item/clothing/cloak/forrestercloak/snow)
 	ship_qty_min = 1
@@ -57,7 +57,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/hammerhold/smoked_sausage
-	name = "烟熏高地香肠"
+	name = "香肠（铁锤堡）"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked,
@@ -68,7 +68,7 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/hammerhold/bacon
-	name = "山居培根"
+	name = "生培根（铁锤堡）"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/bacon,
@@ -79,14 +79,14 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/hammerhold/slayer_axe
-	name = "屠戮者战斧"
+	name = "钢斧"
 	cost = 600
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/steel)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/hammerhold/slayer_greataxe
-	name = "屠戮者巨斧"
+	name = "战斧"
 	cost = 750
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
 	ship_qty_min = 1
@@ -100,7 +100,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/hammerhold/dwarven_warpick
-	name = "矮人战镐"
+	name = "民兵钢制长战镐"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/pick/militia/steel)
 	ship_qty_min = 1

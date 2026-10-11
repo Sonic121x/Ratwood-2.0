@@ -48,7 +48,7 @@
 	contains = list(/obj/item/alch/silverdust)
 
 /datum/supply_pack/rogue/rawmats/cloth
-	name = "布料"
+	name = "布"
 	cost = 60
 	contains = list(/obj/item/natural/cloth,
 	/obj/item/natural/cloth,
@@ -60,7 +60,7 @@
 	/obj/item/natural/cloth)
 
 /datum/supply_pack/rogue/rawmats/stones
-	name = "石料"
+	name = "石头"
 	cost = 30
 	contains = list(/obj/item/natural/stone,
 	/obj/item/natural/stone,
@@ -74,7 +74,7 @@
 	/obj/item/natural/stone,)
 
 /datum/supply_pack/rogue/rawmats/lumber
-	name = "木材"
+	name = "小原木"
 	cost = 30
 	contains = list(/obj/item/grown/log/tree/small,
 	/obj/item/grown/log/tree/small,

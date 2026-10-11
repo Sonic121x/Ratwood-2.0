@@ -51,7 +51,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/zybantine/paddedgambeson
-	name = "加厚沙漠长衣"
+	name = "巨颚兽鳞甲大衣"
 	cost = 80
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/zyb)
 	ship_qty_min = 1
@@ -65,7 +65,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/zybantine/zybtrou
-	name = "宽松硬化皮沙漠裤"
+	name = "宽松沙漠裤"
 	cost = 60 // Base sellprice of 20
 	contains = list (/obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb)
 
@@ -98,21 +98,21 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/grand_mace
-	name = "钢制巨型钉头锤"
+	name = "巨型钉头锤"
 	cost = 110
 	contains = list(/obj/item/rogueweapon/mace/goden/steel)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/zybantine/spear
-	name = "耶尼切里巴迪什斧"
+	name = "长柄战斧"
 	cost = 60
 	contains = list(/obj/item/rogueweapon/halberd/bardiche)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/whip
-	name = "泽贝克鞭"
+	name = "皮鞭"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/whip)
 	ship_qty_min = 1
@@ -126,35 +126,35 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/zybantine/javelins
-	name = "标枪箭袋"
+	name = "标枪袋，内含铁标枪"
 	cost = 50
 	contains = list(/obj/item/quiver/javelin/iron)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/headscarf
-	name = "加厚头巾"
+	name = "希贾布头巾"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal/hijab)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/shalal_hood
-	name = "沙拉尔兜帽"
+	name = "库菲亚头巾"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/shalal_scarf
-	name = "沙拉尔围巾"
+	name = "沙漠骑手徽章"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/shalal)
 	ship_qty_min = 2
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/zybantine/copper_gorget
-	name = "铜护颈"
+	name = "护颈"
 	cost = 55
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/copper)
 	ship_qty_min = 2
@@ -189,14 +189,14 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/gladius
-	name = "短罗马剑"
+	name = "短剑"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/sword/short/gladius)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/makhaira
-	name = "马凯拉短剑"
+	name = "钢猎剑"
 	cost = 75
 	contains = list(/obj/item/rogueweapon/sword/short/messer/bronze)
 	ship_qty_min = 2

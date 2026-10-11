@@ -67,11 +67,11 @@
 
 /datum/outfit/job/roguetown/mercenary/forlorn/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("战锤", // The OG
+	var/weapons = list("钢战锤", // The OG
 	"十字弩", )
 	var/weapon_choice = input(H, "选择你的武器。", "修会军备") as anything in weapons
 	switch(weapon_choice)
-		if("战锤")
+		if("钢战锤")
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/mace/warhammer/steel, SLOT_BELT_L)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/heater, SLOT_BACK_L)
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT)

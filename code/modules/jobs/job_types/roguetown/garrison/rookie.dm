@@ -102,15 +102,15 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("剑与盾","棍棒与盾","长矛")
+		var/weapons = list("铁短剑与铁盾","警棍与铁盾","长矛")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("剑与盾")
+			if("铁短剑与铁盾")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/short/iron
 				backl = /obj/item/rogueweapon/shield/iron
-			if("棍棒与盾")
+			if("警棍与铁盾")
 				r_hand = /obj/item/rogueweapon/mace/cudgel
 				backl = /obj/item/rogueweapon/shield/iron
 			if("长矛")
@@ -174,16 +174,16 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("十字弩","弓","投石索")
+		var/weapons = list("十字弩","反曲弓","投石索")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
-		var/armor_options = list("轻甲", "中甲")
+		var/armor_options = list("皮甲（轻甲）", "铁胸甲（中甲）")
 		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("十字弩")
 				beltr = /obj/item/quiver/bolts
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("弓")
+			if("反曲弓")
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			if("投石索")
@@ -191,9 +191,9 @@
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 
 		switch(armor_choice)
-			if("轻甲")
+			if("皮甲（轻甲）")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			if("中甲")
+			if("铁胸甲（中甲）")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

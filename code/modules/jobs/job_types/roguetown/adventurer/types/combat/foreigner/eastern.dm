@@ -43,7 +43,7 @@
 		)
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("薙刀","长杖","环刀")
+		var/weapons = list("薙刀","钢制四分杖","环刀")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
 			if("薙刀")
@@ -51,7 +51,7 @@
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
-			if("长杖")
+			if("钢制四分杖")
 				backr = /obj/item/rogueweapon/woodstaff/quarterstaff/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
@@ -103,21 +103,21 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("短刀","小太刀")
+		var/weapons = list("钢短刀","钢小太刀")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
-			if("短刀")
+			if("钢短刀")
 				beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/kazengun
 				beltl = /obj/item/rogueweapon/scabbard/sheath/kazengun
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			if("小太刀")
+			if("钢小太刀")
 				beltr = /obj/item/rogueweapon/sword/short/kazengun
 				beltl = /obj/item/rogueweapon/scabbard/sword/kazengun/kodachi
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-		var/masks = list("鬼面","狐面")
+		var/masks = list("鬼面具","狐面具")
 		var/mask_choice = input(H, "选择你的面具。", "藏起真容") as anything in masks
 		switch(mask_choice)
-			if("鬼面")
+			if("鬼面具")
 				mask = /obj/item/clothing/mask/rogue/facemask/yoruku_oni
-			if("狐面")
+			if("狐面具")
 				mask = /obj/item/clothing/mask/rogue/facemask/yoruku_kitsune
