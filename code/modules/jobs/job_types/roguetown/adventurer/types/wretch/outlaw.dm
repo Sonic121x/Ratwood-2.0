@@ -143,7 +143,7 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 		)
 	if(H.mind)
-		var/weapons = list("单持铁盾","钢匕首加十字弩", "民兵钢制长战镐加铁盾", "民兵战矛加熨斗盾", "民兵长柄战斧", "民兵古登棒", "铁连枷（钢制）加熨斗盾")
+		var/weapons = list("单持铁盾","钢匕首加十字弩", "民兵钢制长战镐加铁盾", "民兵战矛加熨斗盾", "民兵长柄战斧", "民兵古登棒", "铁连枷加熨斗盾")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -171,7 +171,7 @@
 			if ("民兵古登棒")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/woodstaff/militia
-			if ("铁连枷（钢制）加熨斗盾")
+			if ("铁连枷加熨斗盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/flail/sflail
 				backr = /obj/item/rogueweapon/shield/heater

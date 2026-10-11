@@ -3,7 +3,7 @@
 	id = "frost"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/frost
 	duration = 25 SECONDS
-	effectedstats = list("speed" = -1)
+	effectedstats = list(STATKEY_SPD = -1)
 
 /atom/movable/screen/alert/status_effect/buff/frost
 	name = "战栗"
@@ -25,7 +25,7 @@
 	id = "frostbite"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
 	duration = 6 SECONDS
-	effectedstats = list("speed" = -2)
+	effectedstats = list(STATKEY_SPD = -2)
 
 /atom/movable/screen/alert/status_effect/buff/frostbite
 	name = "冻僵"

@@ -73,12 +73,12 @@
 				l_hand = /obj/item/rogueweapon/sword/short/psy
 				r_hand = /obj/item/rogueweapon/scabbard/sword
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-		var/quivers = list("箭袋（弩矢 - 铁制）", "箭袋（裂灭弩矢 - 银尖，伤害减半）")
+		var/quivers = list("铁弩矢箭袋", "银尖裂灭弩矢箭袋 — 伤害减半")
 		var/bolt_choice = input(H,"选择你的弹药。", "执起 普赛顿 的飞矢。") as anything in quivers
 		switch(bolt_choice)
-			if("箭袋（弩矢 - 铁制）")
+			if("铁弩矢箭袋")
 				beltl = /obj/item/quiver/bolts
-			if("箭袋（裂灭弩矢 - 银尖，伤害减半）")
+			if("银尖裂灭弩矢箭袋 — 伤害减半")
 				beltl = /obj/item/quiver/holybolts
 
 	head = /obj/item/clothing/head/roguetown/roguehood/psydon/confessor

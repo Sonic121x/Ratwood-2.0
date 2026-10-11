@@ -85,10 +85,10 @@
 		if("阿凡泰因狼面护鼻盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo
 
-	var/armors = list("阿凡泰因全身板甲（重甲）", "阿凡泰因织纹锁甲（中甲）")
+	var/armors = list("重甲：阿凡泰因全身板甲", "中甲：阿凡泰因织纹锁甲")
 	var/armors_choice = input(H, "选择你的护甲。", "来自女士的庇护") as anything in armors
 	switch(armors_choice)
-		if("阿凡泰因全身板甲（重甲）")
+		if("重甲：阿凡泰因全身板甲")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/zizo
 			gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
@@ -96,7 +96,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
-		if("阿凡泰因织纹锁甲（中甲）")
+		if("中甲：阿凡泰因织纹锁甲")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/medium/zizo
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo
@@ -140,13 +140,13 @@
 		var/path_choice = input(H, "你生前最擅长什么？", "以她之名。") as anything in paths
 		switch(path_choice)
 			if("力量之路（全属性+1）") //Omnistat for maximum bounty. You are already supervalid.
-				H.change_stat("strength", 1)
-				H.change_stat("perception", 1)
-				H.change_stat("intelligence", 1)
-				H.change_stat("constitution", 1)
-				H.change_stat("willpower", 1)
-				H.change_stat("speed", 1)
-				H.change_stat("fortune", 1)
+				H.change_stat(STATKEY_STR, 1)
+				H.change_stat(STATKEY_PER, 1)
+				H.change_stat(STATKEY_INT, 1)
+				H.change_stat(STATKEY_CON, 1)
+				H.change_stat(STATKEY_WIL, 1)
+				H.change_stat(STATKEY_SPD, 1)
+				H.change_stat(STATKEY_LCK, 1)
 			if("魔法之路（更多法术）") //Silence & Raise Deadite, plus choice between Bolt of Lightning and Ensnare.
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/silence)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_deadite)

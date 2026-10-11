@@ -34,13 +34,13 @@
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			F.rotprocess = null
 			if(I.w_class >= WEIGHT_CLASS_NORMAL)
-				name = "大型口粮包（[food.name]）"
+				name = "[food.name]大型口粮包"
 				desc = "一个包含[food.name]的大型口粮包。"
 				icon_state = "ration_large"
 				dropshrink = 1
 				// No need to change grid size cuz cakes are 1x1 huh??
 			else
-				name = "小型口粮包（[food.name]）"
+				name = "[food.name]小型口粮包"
 				desc = "一个包含[food.name]的小型口粮包。"
 				icon_state = "ration_small"
 				dropshrink = 1

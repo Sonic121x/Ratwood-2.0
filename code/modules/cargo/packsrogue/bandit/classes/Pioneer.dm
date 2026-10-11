@@ -206,7 +206,7 @@
 //Wild grenades.
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_explosion
-	name = "碰炸手雷（爆炸）"
+	name = "碰炸手雷"
 	cost = 50
 	contains = list(/obj/item/impact_grenade/explosion)
 
@@ -258,39 +258,39 @@
 //WMDs, but shells for the above!!!!
 //Smoke bombard charges.
 /datum/supply_pack/rogue/Pioneer/bombard_charge_smoke
-	name = "臼炮装药（烟幕）"
+	name = "烟幕臼炮装药"
 	cost = 20
 	contains = list(/obj/item/cannonball/smoke)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_poison
-	name = "臼炮装药（毒烟）"
+	name = "毒烟臼炮装药"
 	cost = 100
 	contains = list(/obj/item/cannonball/smoke_poison)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_custom
-	name = "臼炮装药（混装）"
+	name = "混装臼炮装药"
 	cost = 110
 	contains = list(/obj/item/cannonball/smoke_custom)
 
 //Dangerous bombard charges.
 /datum/supply_pack/rogue/Pioneer/bombard_charge_canister
-	name = "臼炮装药（榴霰）"
+	name = "榴霰臼炮装药"
 	cost = 100
 	contains = list(/obj/item/cannonball/canister)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_explosive
-	name = "臼炮装药（高爆）"
+	name = "高爆臼炮装药"
 	cost = 250
 	contains = list(/obj/item/cannonball/explosive)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_incendiary
-	name = "臼炮装药（燃烧）"
+	name = "燃烧臼炮装药"
 	cost = 150
 	contains = list(/obj/item/cannonball/incendiary)
 
 //Misc bombard charges.
 /datum/supply_pack/rogue/Pioneer/bombard_charge_flare
-	name = "臼炮装药（照明）"
+	name = "照明臼炮装药"
 	cost = 20
 	contains = list(/obj/item/cannonball/flare)
 

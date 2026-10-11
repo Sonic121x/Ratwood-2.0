@@ -48,7 +48,7 @@
 
 /datum/trade_good/equipment/crafted/flail
 	id = TRADE_GOOD_STEEL_FLAIL
-	name = "铁连枷（钢制）"
+	name = "铁连枷"
 	item_type = /obj/item/rogueweapon/flail/sflail
 
 // ============================================================================

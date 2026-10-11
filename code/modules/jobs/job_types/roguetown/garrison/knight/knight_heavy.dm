@@ -36,11 +36,11 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("巨剑","钢制双手剑","巨型钉头锤","战斧","钢巨斧","穿甲刺剑","钢制卢塞恩锤","帕提赞长戟")
+		var/weapons = list("大剑","钢制双手剑","巨型钉头锤","战斧","钢巨斧","穿甲刺剑","钢制卢塞恩锤","帕提赞长戟")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("巨剑")
+			if("大剑")
 				r_hand = /obj/item/rogueweapon/greatsword
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)

@@ -53,7 +53,7 @@
 // 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/peasantry/goedendag
-	name = "民兵古登达格棍"
+	name = "民兵古登棒"
 	result = /obj/item/rogueweapon/woodstaff/militia
 	reqs = list(
 		/obj/item/rogueweapon/woodstaff = 1,
@@ -63,7 +63,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/peasantry/waraxe
-	name = "民兵铲斧"
+	name = "民兵长柄战斧"
 	result = /obj/item/rogueweapon/greataxe/militia
 	reqs = list(
 		/obj/item/rogueweapon/shovel = 1,
@@ -73,7 +73,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/peasantry/waraxe/silver
-	name = "银制民兵铲斧"
+	name = "银制民兵铲战斧"
 	result = /obj/item/rogueweapon/greataxe/militia/silver
 	reqs = list(
 		/obj/item/rogueweapon/shovel/silver = 1,
@@ -83,7 +83,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/peasantry/waraxe/silver/preblessed
-	name = "银制民兵铲斧（预祝圣）"
+	name = "祝圣银制民兵铲战斧"
 	result = /obj/item/rogueweapon/greataxe/militia/silver/preblessed
 	reqs = list(
 		/obj/item/rogueweapon/shovel/silver/preblessed = 1,
@@ -112,7 +112,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/peasantry/warpick
-	name = "民兵战镐"
+	name = "民兵长战镐"
 	result = /obj/item/rogueweapon/pick/militia
 	reqs = list(
 		/obj/item/rogueweapon/pick = 1,
@@ -121,7 +121,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/peasantry/warpick_steel
-	name = "民兵钢战镐 "
+	name = "民兵钢制长战镐"
 	result = /obj/item/rogueweapon/pick/militia/steel
 	reqs = list(
 		/obj/item/rogueweapon/pick/steel = 1,
@@ -167,7 +167,7 @@
 		)
 
 /datum/crafting_recipe/roguetown/survival/stonetongs
-	name = "石钳"
+	name = "石制钳子"
 	category = "工具"
 	result = /obj/item/rogueweapon/tongs/stone
 	reqs = list(
@@ -223,7 +223,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/survival/billhook
-	name = "简易钩镰"
+	name = "简制钩镰枪"
 	category = "工具"
 	result = /obj/item/rogueweapon/spear/improvisedbillhook
 	reqs = list(
@@ -235,7 +235,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/goedendag
-	name = "古登达格棍"
+	name = "古登达格棒"
 	category = "工具"
 	result = /obj/item/rogueweapon/mace/goden
 	reqs = list(
@@ -251,7 +251,7 @@
 	sellprice = 8
 
 /datum/crafting_recipe/roguetown/survival/woodstaff
-	name = "木杖（x3）"
+	name = "木杖 ×3"
 	category = "工具"
 	result = list(
 		/obj/item/rogueweapon/woodstaff,
@@ -321,7 +321,7 @@
 	)
 
 /datum/crafting_recipe/roguetown/survival/woodsword
-	name = "木剑（x2）"
+	name = "木剑 ×2"
 	category = "工具"
 	result = list(
 		/obj/item/rogueweapon/mace/wsword,
@@ -335,7 +335,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/wooddagger
-	name = "木匕首（x3）"
+	name = "木匕首 ×3"
 	category = "工具"
 	result = list(
 		/obj/item/rogueweapon/huntingknife/idagger/wood,
@@ -361,7 +361,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/heatershield
-	name = "鸢形盾"
+	name = "熨斗盾"
 	category = "工具"
 	result = /obj/item/rogueweapon/shield/heater/crafted
 	reqs = list(
@@ -399,7 +399,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/woodspade
-	name = "木铲"
+	name = "手铲"
 	category = "工具"
 	result = /obj/item/rogueweapon/shovel/small
 	reqs = list(
@@ -410,7 +410,7 @@
 	sellprice = 5
 
 /datum/crafting_recipe/roguetown/survival/rod
-	name = "鱼竿"
+	name = "钓竿"
 	category = "工具"
 	result = /obj/item/fishingrod/crafted
 	reqs = list(
@@ -433,7 +433,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/strucrepairkit
-	name = "建筑修理包"
+	name = "建筑修理工具包"
 	category = "工具"
 	result = /obj/item/construction/repairkit/structure
 	reqs = list(/obj/item/construction/nail = 3,

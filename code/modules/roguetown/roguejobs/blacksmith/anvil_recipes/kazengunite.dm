@@ -14,23 +14,23 @@
 
 
 /datum/anvil_recipe/kazengunite/kabuto
-	name = "胴丸盔 (+1 钢, +1 鞣制皮革)"
+	name = "胴丸盔，另需1块钢锭、1张鞣制皮革"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/kabuto
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/kazengunite/halfmask
-	name = "士兵半面甲"
+	name = "士兵半面具"
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel/kazengun
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/kazengunite/gorget
-	name = "风钢岩 护喉"
+	name = "卡曾郡护喉"
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/kazengun
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/kazengunite/samsibsa
-	name = "三十四鳞板甲 (+1 半身板甲, 钢, +1 钢, +2 鞣制皮革)"
+	name = "三十四鳞板甲，另需1件钢胸甲、1块钢锭、2张鞣制皮革"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
@@ -59,13 +59,13 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/kazengunite/armoredsandals
-	name = "铠甲凉鞋 (+1 鞣制皮革)"
+	name = "甲片凉鞋，另需1张鞣制皮革"
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/kazengun
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/anvil_recipe/kazengunite/kabuto
-	name = "阵笠 (+1 布料)"
+	name = "阵笠，另需1块布料"
 	additional_items = list(/obj/item/natural/cloth)
 	created_item = /obj/item/clothing/head/roguetown/helmet/kettle/jingasa
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -79,13 +79,13 @@
 	display_category = ITEM_CAT_WEAPONS_DAGGERS
 
 /datum/anvil_recipe/kazengunite/haraate
-	name = "韩心海胸甲 (+1 钢, +2 布料)"
+	name = "韩心海胸甲，另需1块钢锭、2块布料"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/cloth, /obj/item/natural/cloth)
 	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/haraate
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/kazengunite/naginata
-	name = "薙刀 (+1 大原木)"
+	name = "薙刀，另需1根大原木"
 	additional_items = list(/obj/item/grown/log/tree/)
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"
@@ -94,7 +94,7 @@
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
 /datum/anvil_recipe/kazengunite/kanabo
-	name = "铁包棒 (+1 钢, +2 小原木)"
+	name = "铁包棒，另需1块钢锭、1根大原木、1根小原木"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/, /obj/item/grown/log/tree/small)
 	i_type = "Weapons"
@@ -111,7 +111,7 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/kazengunite/hook
-	name = "钩剑, 钢"
+	name = "钩剑"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"
 	req_blade = /obj/item/blade/steel_sword
@@ -119,6 +119,6 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/kazengunite/ogremask
-	name = "鬼面甲"
+	name = "食人魔面具"
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel/kazengun/full
 	display_category = ITEM_CAT_ARMOR_MASKS

@@ -259,40 +259,40 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/whip
 				l_hand = /obj/item/rogueweapon/shield/wood
-		var/armors = list("硬化皮甲（+2 速度）", "加厚绗缝护甲衣（+2 速度）", "铆钉皮甲（+2 速度）", "锁子短甲（+2 力量）", "铁制锁子甲（+2 力量）", "铁胸甲（+2 力量）")
+		var/armors = list("硬化皮甲 — 速度+2", "加厚绗缝护甲衣 — 速度+2", "铆钉皮甲 — 速度+2", "锁子短甲 — 力量+2", "铁制锁子甲 — 力量+2", "铁胸甲 — 力量+2")
 		var/armor_choice = input(H, "选择你的护甲。", "整装备战") as anything in armors
 		switch(armor_choice)
-			if("硬化皮甲（+2 速度）")
+			if("硬化皮甲 — 速度+2")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				H.change_stat(STATKEY_SPD, 2)
-			if("加厚绗缝护甲衣（+2 速度）")
+			if("加厚绗缝护甲衣 — 速度+2")
 				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 				pants = /obj/item/clothing/under/roguetown/trou/leather
 				gloves = /obj/item/clothing/gloves/roguetown/leather
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				H.change_stat(STATKEY_SPD, 2)
-			if("铆钉皮甲（+2 速度）")
+			if("铆钉皮甲 — 速度+2")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/nomadpants
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				H.change_stat(STATKEY_SPD, 2)
-			if("锁子短甲（+2 力量）")
+			if("锁子短甲 — 力量+2")
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 				pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 				gloves = /obj/item/clothing/gloves/roguetown/chain/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 				H.change_stat(STATKEY_STR, 2)
-			if("铁制锁子甲（+2 力量）")
+			if("铁制锁子甲 — 力量+2")
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/iron
 				pants = /obj/item/clothing/under/roguetown/chainlegs/iron/kilt
 				gloves = /obj/item/clothing/gloves/roguetown/chain/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 				H.change_stat(STATKEY_STR, 2)
-			if("铁胸甲（+2 力量）")
+			if("铁胸甲 — 力量+2")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 				gloves = /obj/item/clothing/gloves/roguetown/chain/iron

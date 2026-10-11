@@ -1,5 +1,5 @@
 /obj/item/legwears
-	name = "长袜（内穿）"
+	name = "内穿长袜"
 	desc = "纯为美观而制的腿部衣物，在宫廷和妓院里都很流行。"
 	icon = 'modular_hearthstone/icons/obj/items/clothes/stockings.dmi'
 	icon_state = "stockings"
@@ -186,35 +186,35 @@
 // Craft
 
 /datum/crafting_recipe/roguetown/sewing/stockings_white
-	name = "长袜（1纤维，1布料）"
+	name = "内穿长袜，需1份纤维、1块布料"
 	result = list(/obj/item/legwears/white)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/stockings_thigh_white
-	name = "长袜-过膝（1纤维，1布料）"
+	name = "过膝长袜，需1份纤维、1块布料"
 	result = list(/obj/item/legwears/thigh_high/white)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/stockings_knee_white
-	name = "长袜-及膝（1纤维，1布料）"
+	name = "及膝长袜，需1份纤维、1块布料"
 	result = list(/obj/item/legwears/knee_high)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/stockings_white_silk
-	name = "丝绸长袜（1纤维，1丝绸）"
+	name = "丝绸长袜，需1份纤维、1块丝绸"
 	result = list(/obj/item/legwears/silk/white)
 	reqs = list(/obj/item/natural/silk = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/sewing/stockings_white_fishnet
-	name = "网袜（2纤维）"
+	name = "网袜，需2份纤维"
 	result = list(/obj/item/legwears/fishnet/white)
 	reqs = list(/obj/item/natural/fibers = 2)
 	craftdiff = 3

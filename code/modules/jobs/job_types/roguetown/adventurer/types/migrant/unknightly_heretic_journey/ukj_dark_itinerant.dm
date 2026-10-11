@@ -131,10 +131,10 @@
 		if("战袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/stabard/surcoat(H), SLOT_CLOAK, TRUE)
 
-	var/weapons = list("巨剑", "钢制焰形剑", "钢制双手剑", "双手大刀", "巨型钉头锤", "帕提赞长戟", "偃月刀", "钢钉头锤", "长剑 + 鸢盾", "钢巨斧", "钢战锤 + 鸢盾", "战斧")
+	var/weapons = list("大剑", "钢制焰形剑", "钢制双手剑", "双手大刀", "巨型钉头锤", "帕提赞长戟", "偃月刀", "钢钉头锤", "长剑 + 鸢盾", "钢巨斧", "钢战锤 + 鸢盾", "战斧")
 	var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 	switch(weapon_choice)
-		if("巨剑")
+		if("大剑")
 			H.put_in_hands(new /obj/item/rogueweapon/greatsword(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap(H), SLOT_BACK_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)

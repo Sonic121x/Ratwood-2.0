@@ -605,7 +605,7 @@
 	item_state = "sashgrey"
 
 /datum/crafting_recipe/roguetown/sewing/zybsash
-	name = "腰带（兹班图式）"
+	name = "简单兹班图腰带"
 	result = list(/obj/item/storage/belt/rogue/leather/cloth/sash)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 2
@@ -639,7 +639,7 @@
 	sellprice = 5
 
 /datum/crafting_recipe/roguetown/sewing/zybnoblesash
-	name = "腰带（兹班图贵族式）"
+	name = "兹班图贵族腰带"
 	result = list(/obj/item/storage/belt/rogue/leather/noblesash)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
@@ -669,7 +669,7 @@
 	item_state = "exoticsilkskirt2"
 
 /datum/crafting_recipe/roguetown/sewing/skirtgreen
-	name = "异域丝绸腰带（绿色）"
+	name = "绿色异域丝绸裙"
 	result = list(/obj/item/storage/belt/rogue/leather/exoticsilkbelt/skirtgreen)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
@@ -683,7 +683,7 @@
 	item_state = "exoticsilkskirt"
 
 /datum/crafting_recipe/roguetown/sewing/skirtred
-	name = "异域丝绸腰带（红色）"
+	name = "红色异域丝绸裙"
 	result = list(/obj/item/storage/belt/rogue/leather/exoticsilkbelt/skirtred)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
@@ -698,7 +698,7 @@
 	dropshrink = null
 
 /datum/crafting_recipe/roguetown/sewing/bragreen
-	name = "异域丝绸胸衣（绿色）"
+	name = "绿色异域丝绸胸衣"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra/green)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
@@ -712,7 +712,7 @@
 	dropshrink = null
 
 /datum/crafting_recipe/roguetown/sewing/brared
-	name = "异域丝绸胸衣（红色）"
+	name = "红色异域丝绸胸衣"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra/red)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
@@ -725,7 +725,7 @@
 	dropshrink = null
 
 /datum/crafting_recipe/roguetown/sewing/maskgreen
-	name = "异域丝绸面纱（绿色）"
+	name = "绿色异域丝绸面纱"
 	result = list(/obj/item/clothing/mask/rogue/exoticsilkmask/green)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
@@ -737,7 +737,7 @@
 	item_state = "exoticsilkmaskr"
 
 /datum/crafting_recipe/roguetown/sewing/maskred
-	name = "异域丝绸面纱（红色）"
+	name = "红色异域丝绸面纱"
 	result = list(/obj/item/clothing/mask/rogue/exoticsilkmask/red)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
