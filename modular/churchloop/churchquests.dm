@@ -1519,7 +1519,7 @@ var/global/list/Q_WITNESS_EFFECTS = list(
 /datum/status_effect/buff/parish_boon
 	id = "parish_boon"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/parish_boon
-	effectedstats = list("perception" = 1, "intelligence" = 1)
+	effectedstats = list(STATKEY_PER = 1, STATKEY_INT = 1)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/parish_boon
@@ -1530,7 +1530,7 @@ var/global/list/Q_WITNESS_EFFECTS = list(
 /datum/status_effect/debuff/parish_scorn
 	id = "parish_scorn"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/parish_scorn
-	effectedstats = list("perception" = -1, "intelligence" = -1)
+	effectedstats = list(STATKEY_PER = -1, STATKEY_INT = -1)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/parish_scorn

@@ -103,7 +103,7 @@
 
 // Rice and Cheese + Egg -> Rice with Egg and Cheese (alternative path)
 /datum/food_recipe/rice/cheese_egg
-	name = "鸡蛋奶酪饭（备选）"
+	name = "鸡蛋奶酪饭 — 备选配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/ricecheese
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/egg

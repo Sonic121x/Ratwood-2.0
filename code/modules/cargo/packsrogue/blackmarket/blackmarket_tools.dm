@@ -49,27 +49,27 @@
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
 /datum/supply_pack/rogue/blackmarket_tools/prarml
-	name = "木制义臂（左）"
+	name = "木制左义臂"
 	cost = 40
 	contains = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
 
 /datum/supply_pack/rogue/blackmarket_tools/prarmr
-	name = "木制义臂（右）"
+	name = "木制右义臂"
 	cost = 40
 	contains = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
 
 /datum/supply_pack/rogue/blackmarket_tools/prlegl
-	name = "木制义腿（左）"
+	name = "木制左义腿"
 	cost = 15
 	contains = list(/obj/item/bodypart/l_leg/prosthetic)
 
 /datum/supply_pack/rogue/blackmarket_tools/prlegr
-	name = "木制义腿（右）"
+	name = "木制右义腿"
 	cost = 15
 	contains = list(/obj/item/bodypart/r_leg/prosthetic)
 
 /datum/supply_pack/rogue/blackmarket_tools/prarmlbrz
-	name = "青铜义肢（部位可选）"
+	name = "可选部位青铜义肢"
 	cost = 200
 	contains = list(/obj/item/contraption/bronzeprosthetic)
 
@@ -79,6 +79,6 @@
 	contains = list(/obj/item/grapplinghook)
 
 /datum/supply_pack/rogue/blackmarket_tools/golem_skillcore
-	name ="改装构装体技能拓展器（自助式）"
+	name ="自助式改装构装体技能拓展器"
 	cost = 50
 	contains = list(/obj/item/construct_skill_core/blackmarket)

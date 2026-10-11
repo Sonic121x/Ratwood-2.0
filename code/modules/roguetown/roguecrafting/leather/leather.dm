@@ -7,7 +7,7 @@
 	display_category = ITEM_CAT_ARMOR_LIGHT
 
 /datum/crafting_recipe/roguetown/leather/bedroll
-	name = "床铺卷"
+	name = "卷起的铺盖卷"
 	result = /obj/item/bedroll
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/rope = 1)
@@ -55,7 +55,7 @@
 	display_category = ITEM_CAT_ARMOR_GLOVES
 
 /datum/crafting_recipe/roguetown/leather/heavygloves
-	name = "厚皮手套"
+	name = "重型皮手套"
 	result = /obj/item/clothing/gloves/roguetown/angle
 	reqs = list(/obj/item/natural/hide/cured = 2)
 	sellprice = 20
@@ -104,7 +104,7 @@
 	display_category = ITEM_CAT_ARMOR_LIGHT
 
 /datum/crafting_recipe/roguetown/leather/bikini
-	name = "皮比基尼甲"
+	name = "皮胸衣"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
 	reqs = list(/obj/item/natural/hide/cured = 2)
 	sellprice = 26
@@ -112,7 +112,7 @@
 	display_category = ITEM_CAT_ARMOR_LIGHT
 
 /datum/crafting_recipe/roguetown/leather/hidebikini
-	name = "兽皮比基尼甲"
+	name = "兽皮胸衣"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fur = 1)
@@ -136,7 +136,7 @@
 	display_category = ITEM_CAT_TAILOR_MISC
 
 /datum/crafting_recipe/roguetown/leather/cloakfur
-	name = "毛皮披风"
+	name = "毛皮斗篷"
 	result = /obj/item/clothing/cloak/raincloak/furcloak/crafted
 	reqs = list(/obj/item/natural/hide/cured = 1,/obj/item/natural/fur = 2)
 	craftdiff = 2
@@ -156,7 +156,7 @@
 	sellprice = 10
 
 /datum/crafting_recipe/roguetown/leather/saddle
-	name = "马鞍"
+	name = "鞍具"
 	result = /obj/item/natural/saddle
 	reqs = list(/obj/item/natural/hide/cured = 2)
 	craftdiff = 2
@@ -178,7 +178,7 @@
 	display_category = ITEM_CAT_TAILOR_MISC
 
 /datum/crafting_recipe/roguetown/leather/vest/sailor
-	name = "海员皮夹克"
+	name = "水手夹克"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	reqs = list(/obj/item/natural/hide/cured = 2)
 	craftdiff = 1
@@ -221,7 +221,7 @@
 	display_category = ITEM_CAT_ARMOR_LEGS
 
 /datum/crafting_recipe/roguetown/leather/neck/leather_leash
-	name = "皮制牵引绳"
+	name = "皮制牵绳"
 	result = /obj/item/leash/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	tools = list(/obj/item/needle)

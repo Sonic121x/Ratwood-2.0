@@ -139,7 +139,7 @@
 	contains = list(/obj/item/rogueweapon/woodstaff)
 
 /datum/supply_pack/rogue/Mage/leather/qstaff
-	name = "木制长杖（铁头）"
+	name = "铁头长杖"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/woodstaff/quarterstaff/iron)
 
@@ -163,7 +163,7 @@
 ///////////
 
 /datum/supply_pack/rogue/Mage/magebagempty
-	name = "学者药囊（空）"
+	name = "空学者药囊"
 	cost = 5
 	contains = list(/obj/item/storage/magebag)
 

@@ -1,5 +1,5 @@
 /datum/crafting_recipe/roguetown/survival/net
-	name = "网"
+	name = "捕网"
 	category = "远程"
 	result = /obj/item/net
 	craftdiff = 2
@@ -19,7 +19,7 @@
 	verbage = "搓制"
 
 /datum/crafting_recipe/roguetown/survival/bowpartial
-	name = "未上弦短弓"
+	name = "粗制弓胚"
 	category = "远程"
 	result = /obj/item/grown/log/tree/bowpartial
 	reqs = list(/obj/item/grown/log/tree/small = 1)
@@ -28,7 +28,7 @@
 	verbage = "雕刻"
 
 /datum/crafting_recipe/roguetown/survival/bow
-	name = "木弓"
+	name = "短弓"
 	category = "远程"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	reqs = list(
@@ -40,7 +40,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/recurvepartial
-	name = "未上弦反曲弓"
+	name = "反曲弓胚"
 	category = "远程"
 	result = /obj/item/grown/log/tree/bowpartial/recurve
 	reqs = list(
@@ -67,7 +67,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/longbowpartial
-	name = "未上弦长弓"
+	name = "长弓弓胚"
 	category = "远程"
 	result = /obj/item/grown/log/tree/bowpartial/longbow
 	reqs = list(
@@ -82,7 +82,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/survival/longbow
-	name = "长弓"
+	name = "紫杉长弓"
 	category = "远程"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	reqs = list(
@@ -116,7 +116,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/stonearrow_five
-	name = "石箭（x5）"
+	name = "石箭 ×5"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/stone,
@@ -142,7 +142,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/bluntarrow_five
-	name = "钝头箭（x5）"
+	name = "钝头箭 ×5"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/blunt,
@@ -168,7 +168,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/blessedbolt
-	name = "圣水弩箭"
+	name = "裂灭弩矢"
 	category = "远程"
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/holy
 	reqs = list(
@@ -188,7 +188,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow_five //Arrows and bolts can be smithed in batches of five. Makes sense for them to be dipped in batches of five, too
-	name = "毒箭（x5）"
+	name = "毒箭 ×5"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/poison,
@@ -205,7 +205,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow_five_stone
-	name = "毒石箭（x5）"
+	name = "毒石箭 ×5"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/stone/poison,
@@ -223,7 +223,7 @@
 
 
 /datum/crafting_recipe/roguetown/survival/waterbolt_ten
-	name = "水弩箭（x10）"
+	name = "水弩矢 ×10"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,
@@ -246,7 +246,7 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/survival/waterbolt_twenty
-	name = "水弩箭（x20）"
+	name = "水弩矢 ×20"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,
@@ -280,7 +280,7 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/survival/waterarrow_ten
-	name = "水箭（x10）"
+	name = "水箭 ×10"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/water,
@@ -303,7 +303,7 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/survival/waterarrow_twenty
-	name = "水箭（x20）"
+	name = "水箭 ×20"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow/water,
@@ -357,7 +357,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/stonebullets
-	name = "投石索石弹（x2）"
+	name = "投石索石弹 ×2"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
@@ -369,7 +369,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/stonebullets10x
-	name = "投石索石弹（x10）"
+	name = "投石索石弹 ×10"
 	category = "远程"
 	result = list(
 		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,

@@ -10,11 +10,11 @@
 /datum/status_effect/buff/dendor_vigil
 	id = "dendor_vigil"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dendor_vigil
-	effectedstats = list("perception" = 2, "speed" = 1)
+	effectedstats = list(STATKEY_PER = 2, STATKEY_SPD = 1)
 	duration = 30 MINUTES
 
 /datum/status_effect/buff/dendor_vigil/dendorite
-	effectedstats = list("perception" = 2, "speed" = 2, "willpower" = 1)
+	effectedstats = list(STATKEY_PER = 2, STATKEY_SPD = 2, STATKEY_WIL = 1)
 
 /datum/status_effect/buff/dendor_vigil/on_apply()
 	. = ..()
@@ -1086,7 +1086,7 @@
 /datum/status_effect/debuff/sanctified_tree_slow
 	id = "sanctified_tree_slow"
 	duration = 8 SECONDS
-	effectedstats = list("speed" = -4, "strength" = -2)
+	effectedstats = list(STATKEY_SPD = -4, STATKEY_STR = -2)
 
 /datum/status_effect/debuff/sanctified_tree_slow/on_apply()
 	. = ..()
@@ -1104,7 +1104,7 @@
 /datum/status_effect/debuff/soulbind_broken
 	id = "soulbind_broken"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/soulbind_broken
-	effectedstats = list("strength" = -4, "speed" = -4, "perception" = -4, "intelligence" = -4, "constitution" = -4)
+	effectedstats = list(STATKEY_STR = -4, STATKEY_SPD = -4, STATKEY_PER = -4, STATKEY_INT = -4, STATKEY_CON = -4)
 	duration = -1
 
 /datum/status_effect/debuff/soulbind_broken/on_apply()

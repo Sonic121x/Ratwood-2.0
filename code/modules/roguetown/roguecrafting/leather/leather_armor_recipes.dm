@@ -3,7 +3,7 @@
 	category = "护甲"
 
 /datum/crafting_recipe/roguetown/leather/armor/lgorget
-	name = "硬化皮护喉"
+	name = "硬化皮革护喉"
 	result = /obj/item/clothing/neck/roguetown/leather
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
@@ -11,7 +11,7 @@
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/crafting_recipe/roguetown/leather/armor/heavybracers
-	name = "硬化皮护臂"
+	name = "硬化皮臂甲"
 	result = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
@@ -19,7 +19,7 @@
 	display_category = ITEM_CAT_ARMOR_BRACERS
 
 /datum/crafting_recipe/roguetown/leather/armor/bracers
-	name = "皮护臂"
+	name = "皮臂甲"
 	result = /obj/item/clothing/wrists/roguetown/bracers/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	sellprice = 10
@@ -43,7 +43,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/crafting_recipe/roguetown/leather/armor/volfmantle
-	name = "沃尔夫 披肩"
+	name = "沃尔夫披肩"
 	result = /obj/item/clothing/cloak/volfmantle
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
@@ -83,7 +83,7 @@
 	display_category = ITEM_CAT_ARMOR_LEGS
 
 /datum/crafting_recipe/roguetown/leather/armor/helmet/advanced
-	name = "硬化皮头盔"
+	name = "硬化皮革头盔"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/advanced
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1,
@@ -124,7 +124,7 @@
 	display_category = ITEM_CAT_ARMOR_LIGHT
 
 /datum/crafting_recipe/roguetown/leather/armor/freivest
-	name = "击剑短上衣"	//Expensive on purpose.
+	name = "击剑夹克"	//Expensive on purpose.
 	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
 	reqs = list(
 		/obj/item/natural/hide/cured = 4,
@@ -135,7 +135,7 @@
 	display_category = ITEM_CAT_ARMOR_LIGHT
 
 /datum/crafting_recipe/roguetown/leather/armor/heavy_leather_armor/coat
-	name = "硬化皮外套"
+	name = "硬化皮大衣"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	reqs = list(
 		/obj/item/natural/hide/cured = 4,
@@ -155,14 +155,14 @@
 	display_category = ITEM_CAT_ARMOR_LIGHT
 
 /datum/crafting_recipe/roguetown/leather/armor/helmet
-	name = "皮头盔"
+	name = "皮革头盔"
 	result = /obj/item/clothing/head/roguetown/helmet/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/crafting_recipe/roguetown/leather/studhood
-	name = "加垫皮兜帽"
+	name = "衬垫皮革兜帽"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/armorhood
 	reqs = list(/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/fibers = 1)
@@ -170,7 +170,7 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/crafting_recipe/roguetown/leather/armor/duelcoat
-	name = "皮外套"
+	name = "皮大衣"
 	result = /obj/item/clothing/armor/leather/jacket/leathercoat/duelcoat
 	reqs = list(
 		/obj/item/natural/hide/cured = 4,

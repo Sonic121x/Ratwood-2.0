@@ -92,7 +92,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/etrusca/salami
-	name = "烟熏香肠（维拉斯卡）"
+	name = "维拉斯卡烟熏香肠"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
@@ -103,7 +103,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/etrusca/cheese
-	name = "鲜奶酪（蒙特卡里纳）"
+	name = "蒙特卡里纳鲜奶酪"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheese,

@@ -4,7 +4,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/luxury/fancyteaset
-	name = "精美茶具套装（1 茶壶，4 茶杯）"
+	name = "精美茶具套装：1把茶壶、4只茶杯"
 	cost = 100
 	no_name_quantity = TRUE
 	contains = list(/obj/item/reagent_containers/glass/bucket/pot/teapot/fancy,
@@ -90,7 +90,7 @@
 	contains = list(/obj/item/rogueweapon/mace/parasol/noble)
 
 /datum/supply_pack/rogue/luxury/suidust
-	name = "碎晶粉（仅变性）"
+	name = "变性用碎晶粉"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)
 

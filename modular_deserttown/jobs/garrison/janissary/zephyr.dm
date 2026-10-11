@@ -51,7 +51,7 @@
 	if(H.mind)
 		var/weapons = list("十字弩","反曲弓","投石索")
 		var/weapon_choice = input(H, "选择你的武器：", "拿起武器") as anything in weapons
-		var/armor_options = list("巨颚兽鳞甲大衣（轻甲）", "耶尼切里锁子甲（中甲）")
+		var/armor_options = list("轻甲：巨颚兽鳞甲大衣", "中甲：耶尼切里锁子甲")
 		var/armor_choice = input(H, "选择你的护甲：", "拿起武器") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -79,10 +79,10 @@
 				beltl = /obj/item/rogueweapon/mace/cudgel
 
 		switch(armor_choice)
-			if("巨颚兽鳞甲大衣（轻甲）")
+			if("轻甲：巨颚兽鳞甲大衣")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/zyb
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			if("耶尼切里锁子甲（中甲）")
+			if("中甲：耶尼切里锁子甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/janissary
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 

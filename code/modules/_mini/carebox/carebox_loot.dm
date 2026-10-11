@@ -24,14 +24,14 @@
 	)
 
 /datum/carebox_loot/wretch/steel_ingot
-	name = "钢锭（2）"
+	name = "钢锭 ×2"
 	loot = list(
 		/obj/item/ingot/steel,
 		/obj/item/ingot/steel,
 	)
 
 /datum/carebox_loot/wretch/iron_ingot
-	name = "铁锭（3）"
+	name = "铁锭 ×3"
 	loot = list(
 		/obj/item/ingot/iron,
 		/obj/item/ingot/iron,
@@ -100,7 +100,7 @@
 	)
 
 /datum/carebox_loot/wretch/chain_rope
-	name = "锁链（2），绳索（1）"
+	name = "锁链 ×2、绳索 ×1"
 	loot = list(
 		/obj/item/rope/chain,
 		/obj/item/rope/chain,
@@ -121,7 +121,7 @@
 	)
 
 /datum/carebox_loot/wretch/bottle_bomb
-	name = "瓶装炸弹（2）"
+	name = "瓶装炸弹 ×2"
 	loot = list(
 		/obj/item/bomb,
 		/obj/item/bomb,
@@ -130,7 +130,7 @@
 //These are otherwise unobtanium outside of some very specific loot tables and the loadout.
 //Needed for heretic revelations for the antipope, too.
 /datum/carebox_loot/wretch/zizite_cross
-	name = "远古齐佐十字（2）"
+	name = "远古齐佐十字 ×2"
 	loot = list(
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/ancient,
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/ancient,

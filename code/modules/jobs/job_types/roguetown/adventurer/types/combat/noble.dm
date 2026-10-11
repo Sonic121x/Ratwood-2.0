@@ -94,7 +94,7 @@
 	virtue_restrictions = list(
 		/datum/virtue/utility/riding
 	)
-	subclass_stashed_items = list("鞍衣（赛加羚羊）" = /obj/item/caparison, "鞍衣（雾兽）" = /obj/item/caparison/fogbeast)
+	subclass_stashed_items = list("赛加羚鞍饰毯" = /obj/item/caparison, "雾兽鞍饰毯" = /obj/item/caparison/fogbeast)
 	extra_context = "该子职业的随身物资中会获得一件鞍衣。根据你的坐骑，选择赛加羚羊版或雾兽版。"
 
 /datum/outfit/job/roguetown/adventurer/knighte/pre_equip(mob/living/carbon/human/H)
@@ -236,16 +236,16 @@
 		/obj/item/rogueweapon/scabbard/sheath,
 	)
 	if(H.mind)
-		var/armors = list("皮甲（轻甲）","铁胸甲（中甲）")
+		var/armors = list("轻甲：皮甲","中甲：铁胸甲")
 		var/armor_choice = input(H, "选择你的护甲。", "你将披着何等甲胄赴死") as anything in armors
 		switch(armor_choice)
-			if("皮甲（轻甲）")
+			if("轻甲：皮甲")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				armor = /obj/item/clothing/suit/roguetown/armor/leather
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			if("铁胸甲（中甲）")
+			if("中甲：铁胸甲")
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				pants = /obj/item/clothing/under/roguetown/chainlegs/iron

@@ -197,7 +197,7 @@
 
 /datum/trade_good/equipment/crafted/carved_cameo
 	id = TRADE_GOOD_CARVED_CAMEO
-	name = "宝石雕刻浮雕（任意石料）"
+	name = "宝石雕刻浮雕 — 任意石料"
 	item_type = /obj/item/carvedgem/jade/cameo
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/cameo,
@@ -211,7 +211,7 @@
 
 /datum/trade_good/equipment/crafted/carved_figurine
 	id = TRADE_GOOD_CARVED_FIGURINE
-	name = "宝石雕刻小雕像（任意石料）"
+	name = "宝石雕刻小雕像 — 任意石料"
 	item_type = /obj/item/carvedgem/jade/figurine
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/figurine,
@@ -225,7 +225,7 @@
 
 /datum/trade_good/equipment/crafted/carved_vase
 	id = TRADE_GOOD_CARVED_VASE
-	name = "宝石雕刻花瓶（任意石料）"
+	name = "宝石雕刻花瓶 — 任意石料"
 	item_type = /obj/item/carvedgem/jade/vase
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/vase,
@@ -239,7 +239,7 @@
 
 /datum/trade_good/equipment/crafted/carved_fancy_vase
 	id = TRADE_GOOD_CARVED_FANCY_VASE
-	name = "宝石雕刻华美花瓶（任意石料）"
+	name = "宝石雕刻华美花瓶 — 任意石料"
 	item_type = /obj/item/carvedgem/jade/fancyvase
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/fancyvase,
@@ -253,7 +253,7 @@
 
 /datum/trade_good/equipment/crafted/carved_bust
 	id = TRADE_GOOD_CARVED_BUST
-	name = "宝石雕刻半身像（任意石料）"
+	name = "宝石雕刻半身像 — 任意石料"
 	item_type = /obj/item/carvedgem/jade/bust
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/bust,
@@ -267,7 +267,7 @@
 
 /datum/trade_good/equipment/crafted/carved_statue
 	id = TRADE_GOOD_CARVED_STATUE
-	name = "宝石雕刻雕像（任意石料）"
+	name = "宝石雕刻雕像 — 任意石料"
 	item_type = /obj/item/carvedgem/jade/statue
 	alt_item_types = list(
 		/obj/item/carvedgem/shell/statue,

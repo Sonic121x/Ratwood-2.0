@@ -488,7 +488,7 @@
 	id = "knot_tied"
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/knot_tied
-	effectedstats = list("strength" = -1, "willpower" = -2, "speed" = -2, "intelligence" = -3)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_WIL = -2, STATKEY_SPD = -2, STATKEY_INT = -3)
 
 /atom/movable/screen/alert/status_effect/knot_tied
 	name = "被结住"
@@ -499,7 +499,7 @@
 	duration = 2 MINUTES
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/knot_fucked_stupid
-	effectedstats = list("intelligence" = -10)
+	effectedstats = list(STATKEY_INT = -10)
 
 /atom/movable/screen/alert/status_effect/knot_fucked_stupid
 	name = "被操傻了"
@@ -512,7 +512,7 @@
 	tick_interval = 100 // every 10 seconds
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/knot_gaped
-	effectedstats = list("strength" = -1, "speed" = -2, "intelligence" = -1)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_SPD = -2, STATKEY_INT = -1)
 	var/last_loc
 	var/contents_to_drip = /datum/reagent/erpjuice/cum
 
