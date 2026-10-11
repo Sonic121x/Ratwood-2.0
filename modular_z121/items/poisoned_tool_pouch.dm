@@ -129,7 +129,7 @@
 	if(!master)                                                 // 极端兜底：有体积却取不到名字
 		name = pouch_base_name
 		return
-	name = "[pouch_base_name]（[master]）"                       // 例：涂毒工具袋（毒药）
+	name = "[master]·[pouch_base_name]"                       // 例：涂毒工具袋（毒药）
 
 // ===========================================================================
 // examine：查看袋子时给出内容物与用法提示，降低上手门槛。
