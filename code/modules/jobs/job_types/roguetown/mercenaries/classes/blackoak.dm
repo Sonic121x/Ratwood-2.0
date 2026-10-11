@@ -64,11 +64,11 @@
 		)
 
 	if(H.mind)
-		var/weapons = list("精灵剑矛", "精灵弯刃",)
+		var/weapons = list("精灵枪刃", "精灵弯刃",)
 		var/weapon_choice = input(H, "选择你的武器。", "可见的威胁") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("精灵剑矛")
+			if("精灵枪刃")
 				r_hand = /obj/item/rogueweapon/spear/naginata/elf
 			if("精灵弯刃")
 				r_hand = /obj/item/rogueweapon/greatsword/elf
@@ -153,18 +153,18 @@
 			H.put_in_hands(new /obj/item/rogueweapon/sword/short/elf)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
 
-	var/armors = list("靛蓝精灵锁甲", "毛皮衬里战利品长袍")
+	var/armors = list("靛纹精灵锁甲", "鞣制战利皮毛袍")
 	var/armor_choice = input(H, "选择你的护甲。", "森林庇护着你") as anything in armors
 	switch(armor_choice)
-		if("靛蓝精灵锁甲")
+		if("靛纹精灵锁甲")
 			REMOVE_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/elven_plate/light, SLOT_ARMOR, TRUE)
-		if("毛皮衬里战利品长袍")
+		if("鞣制战利皮毛袍")
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/elven, SLOT_ARMOR, TRUE)
-	var/helmets = list("靛蓝精灵巴尔布特盔", "精灵巴尔布特盔", "翼饰精灵巴尔布特盔")
+	var/helmets = list("林纹精灵巴尔布特盔", "精灵巴尔布特盔", "翼饰精灵巴尔布特盔")
 	var/helmet_choice = input(H, "选择你的头盔。", "绿叶覆于钢铁之上") as anything in helmets
 	switch(helmet_choice)
-		if("靛蓝精灵巴尔布特盔")
+		if("林纹精灵巴尔布特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light, SLOT_HEAD, TRUE)
 		if("精灵巴尔布特盔")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak, SLOT_HEAD, TRUE)

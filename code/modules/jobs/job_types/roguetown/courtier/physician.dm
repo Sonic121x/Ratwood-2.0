@@ -68,8 +68,8 @@
 /datum/advclass/physician/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	var/list/mask_options = list(
-		"经典瘟疫面具" = /obj/item/clothing/mask/rogue/physician,
-		"首席医师瘟疫面具" = /obj/item/clothing/mask/rogue/physician/head,
+		"瘟疫面具" = /obj/item/clothing/mask/rogue/physician,
+		"首席医师面具" = /obj/item/clothing/mask/rogue/physician/head,
 		"两者都要（佩戴首席医师面具）" = "both",
 	)
 	var/mask_choice = input(H, "选择你的瘟疫面具。", "首席医师") as null|anything in mask_options

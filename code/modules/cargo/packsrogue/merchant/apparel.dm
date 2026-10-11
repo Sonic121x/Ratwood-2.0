@@ -4,7 +4,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/apparel/hoods
-	name = "披肩兜帽"
+	name = "兜帽"
 	cost = 25
 	contains = list(
 					/obj/item/clothing/head/roguetown/roguehood/random,
@@ -13,7 +13,7 @@
 				)
 
 /datum/supply_pack/rogue/apparel/crosses/silver
-	name = "银十字架"
+	name = "银教十字"
 	cost = 150
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 
@@ -79,13 +79,13 @@
 					/obj/item/clothing/neck/roguetown/psicross/xylix,)
 
 /datum/supply_pack/rogue/apparel/crosses/divinepantheonten
-	name = "无分护符"
+	name = "圣座护符"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/neck/roguetown/psicross/undivided,)
 
 /datum/supply_pack/rogue/apparel/crosses/psicross
-	name = "普赛圣十字"
+	name = "教十字"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/psicross)
 
@@ -126,7 +126,7 @@
 				)
 
 /datum/supply_pack/rogue/apparel/shirts/tunic
-	name = "衬衣"
+	name = "束腰衫"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/tunic,
@@ -135,7 +135,7 @@
 				)
 
 /datum/supply_pack/rogue/apparel/shirts
-	name = "内衫"
+	name = "衬衣"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/random,

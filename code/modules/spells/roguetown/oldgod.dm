@@ -21,19 +21,19 @@
 
 /obj/effect/proc_holder/spell/invoked/psydonlux_tamper/cast(list/targets, mob/living/user)
 	if(!ishuman(targets[1]))
-		to_chat(user, span_warning("对方的 Lux 无需净化。"))
+		to_chat(user, span_warning("对方的灵辉无需净化。"))
 		revert_cast()
 		return FALSE
 
 	var/mob/living/carbon/human/H = targets[1]
 
 	if(H == user)
-		to_chat(user, span_warning("我自身的 Lux 仍维持着纯净。"))
+		to_chat(user, span_warning("我自身的灵辉仍维持着纯净。"))
 		revert_cast()
 		return FALSE
 
 	if(H.stat == DEAD)
-		to_chat(user, span_warning("[H] 的 Lux 已经离去。我已无能为力。"))
+		to_chat(user, span_warning("[H] 的灵辉已经离去。我已无能为力。"))
 		user.emote("cry")
 		revert_cast()
 		return FALSE
@@ -49,7 +49,7 @@
 
 		if(tw_List.len)
 			playsound(get_turf(user), 'sound/magic/psydonbleeds.ogg', 50, TRUE)
-			C_caster.visible_message(span_warning("一缕银色 Lux 从[C_caster]身上延伸而出，连上[C_target]，散发着柔和的光芒……"), span_warning("你开始将自己的 Lux 与[C_target]的 Lux 交织，将对方的伤口转移到自己身上……"))
+			C_caster.visible_message(span_warning("一缕银色灵辉从[C_caster]身上延伸而出，连上[C_target]，散发着柔和的光芒……"), span_warning("你开始将自己的灵辉与[C_target]的灵辉交织，将对方的伤口转移到自己身上……"))
 			var/static/list/disallowed_wounds = typecacheof(list(/datum/wound/dismemberment, /datum/wound/facial, /datum/wound/fracture/head, /datum/wound/fracture/neck, /datum/wound/cbt/permanent, /datum/wound/grievous/pre_decapitation, /datum/wound/grievous/pre_skullshatter))
 			for(var/datum/wound/targetwound in tw_List)
 				if(disallowed_wounds[targetwound.type])
@@ -186,7 +186,7 @@
 	to_chat(H, span_info("我稍作停顿，收束心神……"))
 
 	if(HAS_TRAIT(user, TRAIT_LUX_FREAK) && zcross_trigger) // LUX ABOMINATIONS WONT STOP SO EASLY!!!
-		user.visible_message(span_warning("[user]浑身一颤，但双眼闪过银光，随即继续前行。"), span_userdanger("一阵寒意贯穿我的脊背，黑暗的狂笑回荡不止，但我凝神于自己的灵辉，硬撑了下来。"))
+		user.visible_message(span_warning("[user]浑身一颤，但双眼闪过银光，随即继续施术。"), span_userdanger("一阵寒意贯穿我的脊背，黑暗的狂笑回荡不止，但我凝神于自己的灵辉，硬撑了下来。"))
 		zcross_trigger = FALSE
 
 	if(zcross_trigger)
@@ -297,7 +297,7 @@
 	to_chat(H, span_info("我凝神于自己体内，开始将血肉重新编织起来。")) // Why is he better then other psydonites? He is a lux freak that knows exactly what he is doing instead of just immitating miracles
 
 	if(HAS_TRAIT(user, TRAIT_LUX_FREAK) && zcross_trigger) // LUX ABOMINATIONS WONT STOP SO EASLY!!! Kind of redoundant here since this is absolver special and he alwys has it, but futureprofing
-		user.visible_message(span_warning("[user]浑身一颤，但双眼闪过银光，随即继续前行。"), span_userdanger("一阵寒意贯穿我的脊背，黑暗的狂笑回荡不止，但我凝神于自己的灵辉，硬撑了下来。"))
+		user.visible_message(span_warning("[user]浑身一颤，但双眼闪过银光，随即继续施术。"), span_userdanger("一阵寒意贯穿我的脊背，黑暗的狂笑回荡不止，但我凝神于自己的灵辉，硬撑了下来。"))
 		zcross_trigger = FALSE
 	
 	if(zcross_trigger)
@@ -504,7 +504,7 @@
 	user.adjustCloneLoss(clone_transfer)
 
 	// Visual effects
-	user.visible_message(span_danger("银色的灵辉之线自[user]身上射出，击中[H]，修补了其苦痛！"))
+	user.visible_message(span_danger("银色的灵辉之线自[user]身上射出，击中[H]，分担了其苦痛！"))
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717") 
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717") 
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717") 
@@ -516,7 +516,7 @@
 	// Notify the user and target
 	to_chat(user, span_warning("我牵动[H]的灵辉，修补了他们的伤势！"))
 	if(HAS_TRAIT(H, TRAIT_INQUISITION)) // inqusition is used to it
-		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]修补了你的苦痛。"))
+		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]分担了你的苦痛。"))
 	else
 		to_chat(H, span_danger("你感到一阵可怕的撕裂，灵魂的一部分被银线生生扯走！")) // someone just torn away something from your lux, that isn't calm
 		to_chat(H, span_notice("你的伤口似乎神秘地消失了，你的负担也随之减轻。"))

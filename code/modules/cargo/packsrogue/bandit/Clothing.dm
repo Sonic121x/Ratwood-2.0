@@ -44,17 +44,17 @@
 	contains = list(/obj/item/clothing/head/roguetown/fancyhat)
 
 /datum/supply_pack/rogue/Clothing/furhat
-	name = "毛皮帽"
+	name = "毛皮帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/hatfur)
 
 /datum/supply_pack/rogue/Clothing/chaperon
-	name = "查普龙帽"
+	name = "头巾帽"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/chaperon)
 
 /datum/supply_pack/rogue/Clothing/chaperonnoble
-	name = "贵族查普龙帽"
+	name = "贵族头巾帽"
 	cost = 10
 	contains = list(/obj/item/clothing/head/roguetown/chaperon/noble)
 
@@ -78,17 +78,17 @@
 	contains = list(/obj/item/clothing/cloak)
 
 /datum/supply_pack/rogue/Clothing/tabard
-	name = "战袍"
+	name = "罩袍"
 	cost = 5
 	contains = list(/obj/item/clothing/cloak/tabard)
 
 /datum/supply_pack/rogue/Clothing/surcoat
-	name = "罩袍"
+	name = "士兵罩袍"
 	cost = 5
 	contains = list(/obj/item/clothing/cloak/stabard)
 
 /datum/supply_pack/rogue/Clothing/jupon
-	name = "朱蓬袍"
+	name = "战袍"
 	cost = 5
 	contains = list(/obj/item/clothing/cloak/stabard/surcoat)
 
@@ -103,7 +103,7 @@
 	contains = list(/obj/item/clothing/cloak/apron/blacksmith)
 
 /datum/supply_pack/rogue/Clothing/rcloak
-	name = "雨披"
+	name = "兜帽（雨披配套）"
 	cost = 5
 	contains = list(/obj/item/clothing/head/hooded/rainhood)
 
@@ -113,12 +113,12 @@
 	contains = list(/obj/item/clothing/cloak/raincloak/furcloak)
 
 /datum/supply_pack/rogue/Clothing/hcloak
-	name = "半披风"
+	name = "半斗篷"
 	cost = 5
 	contains = list(/obj/item/clothing/cloak/half)
 
 /datum/supply_pack/rogue/Clothing/wickercloak
-	name = "柳编斗篷"
+	name = "柳枝斗篷"
 	cost = 5
 	contains = list(/obj/item/clothing/cloak/wickercloak)
 
@@ -132,7 +132,7 @@
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/undershirt)
 
 /datum/supply_pack/rogue/Clothing/tunic
-	name = "短上衣"
+	name = "束腰衫"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/tunic)
 
@@ -142,12 +142,12 @@
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat)
 
 /datum/supply_pack/rogue/Clothing/chemise
-	name = "女式衬裙"
+	name = "丝质长裙"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkdress)
 
 /datum/supply_pack/rogue/Clothing/silkdress
-	name = "丝质连衣裙"
+	name = "柔缎长裙"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkydress)	
 
@@ -156,22 +156,22 @@
 ////////////////////
 
 /datum/supply_pack/rogue/Clothing/cookhat
-	name = "厨帽"
+	name = "厨师帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/cookhat)
 
 /datum/supply_pack/rogue/Clothing/chefhat
-	name = "主厨帽"
+	name = "主厨帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/chef)
 
 /datum/supply_pack/rogue/Clothing/maidband
-	name = "女仆头饰"
+	name = "女仆头带"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/maidband)
 
 /datum/supply_pack/rogue/Clothing/maiddress
-	name = "女仆装"
+	name = "女仆裙装"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/maid)
 
@@ -181,27 +181,27 @@
 	contains = list(/obj/item/clothing/cloak/apron/maid)
 
 /datum/supply_pack/rogue/Clothing/wizhat
-	name = "巫师帽"
+	name = "法师帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/wizhat)
 
 /datum/supply_pack/rogue/Clothing/wizrobe
-	name = "巫师长袍"
+	name = "法师长袍"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
 
 /datum/supply_pack/rogue/Clothing/witchhat
-	name = "女巫帽"
+	name = "女巫帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/witchhat)
 
 /datum/supply_pack/rogue/Clothing/jesterhat
-	name = "弄臣帽"
+	name = "弄臣帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/jester)
 
 /datum/supply_pack/rogue/Clothing/jestertunic
-	name = "弄臣短上衣"
+	name = "弄臣戏衣"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/jester)
 

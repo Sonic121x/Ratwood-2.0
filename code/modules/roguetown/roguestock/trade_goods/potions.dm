@@ -16,28 +16,28 @@
 
 /datum/trade_good/potion/healthpot
 	id = TRADE_GOOD_HEALTH_POTION
-	name = "治疗药水 - 30dr 瓶"
+	name = "生命药水 - 30dr 瓶"
 	base_price = SELLPRICE_HEALTH_POTION
 	reagent_type = /datum/reagent/medicine/healthpot
 	required_volume = 30
 
 /datum/trade_good/potion/stronghealth
 	id = TRADE_GOOD_STRONG_HEALTH_POTION
-	name = "强效治疗药水 - 30dr 瓶"
+	name = "强效生命药水 - 30dr 瓶"
 	base_price = SELLPRICE_STRONG_HEALTH_POTION
 	reagent_type = /datum/reagent/medicine/stronghealth
 	required_volume = 30
 
 /datum/trade_good/potion/manapot
 	id = TRADE_GOOD_MANA_POTION
-	name = "法力药水 - 30dr 瓶"
+	name = "魔力药水 - 30dr 瓶"
 	base_price = SELLPRICE_MANA_POTION
 	reagent_type = /datum/reagent/medicine/manapot
 	required_volume = 30
 
 /datum/trade_good/potion/stampot
 	id = TRADE_GOOD_STAM_POTION
-	name = "体力药水 - 30dr 瓶"
+	name = "耐力药水 - 30dr 瓶"
 	base_price = SELLPRICE_STAM_POTION
 	reagent_type = /datum/reagent/medicine/stampot
 	required_volume = 30
@@ -51,14 +51,14 @@
 
 /datum/trade_good/potion/strongmana
 	id = TRADE_GOOD_STRONG_MANA_POTION
-	name = "强效法力药水 - 30dr 瓶"
+	name = "强效魔力药水 - 30dr 瓶"
 	base_price = SELLPRICE_STRONG_MANA_POTION
 	reagent_type = /datum/reagent/medicine/strongmana
 	required_volume = 30
 
 /datum/trade_good/potion/strongstam
 	id = TRADE_GOOD_STRONG_STAM_POTION
-	name = "强效体力药水 - 30dr 瓶"
+	name = "强效耐力药水 - 30dr 瓶"
 	base_price = SELLPRICE_STRONG_STAM_POTION
 	reagent_type = /datum/reagent/medicine/strongstam
 	required_volume = 30

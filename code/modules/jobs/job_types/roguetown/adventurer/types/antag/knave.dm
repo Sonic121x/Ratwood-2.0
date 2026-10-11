@@ -52,12 +52,12 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	id = /obj/item/mattcoin
 	H.adjust_blindness(-3)
-	var/weapons = list("十字弩与匕首", "弓与剑")
+	var/weapons = list("十字弩与鎏金匕首", "反曲弓与钢短剑")
 	if(H.mind)
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("十字弩与匕首") //Rogue
+			if("十字弩与鎏金匕首") //Rogue
 				backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
 				beltr = /obj/item/quiver/bolts
 				cloak = /obj/item/clothing/cloak/raincloak/mortus //cool cloak
@@ -70,7 +70,7 @@
 							/obj/item/flashlight/flare/torch = 1,
 							/obj/item/rogueweapon/scabbard/sheath = 1
 							) //rogue gets lockpicks
-			if("弓与剑") //Poacher
+			if("反曲弓与钢短剑") //Poacher
 				backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 				l_hand = /obj/item/rogueweapon/sword/short
 				r_hand = /obj/item/restraints/legcuffs/beartrap

@@ -98,20 +98,20 @@
 			)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("震慑钉头锤与大盾","震慑钉头锤与弩","震慑钉头锤与卢塞恩锤")	//A better shield or an extra spare stunmace
+		var/weapons = list("震击钉头锤与鸢盾","震击钉头锤与十字弩","震击钉头锤与钢制卢塞恩锤")	//A better shield or an extra spare stunmace
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("震慑钉头锤与大盾")
+			if("震击钉头锤与鸢盾")
 				r_hand = /obj/item/rogueweapon/mace/stunmace
 				backl = /obj/item/rogueweapon/shield/tower/metal
-			if("震慑钉头锤与弩")
+			if("震击钉头锤与十字弩")
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				backl = /obj/item/quiver/bolts
 				H.change_stat(STATKEY_SPD, 1)
 				H.change_stat(STATKEY_STR, -1)
 				beltr = /obj/item/rogueweapon/mace/stunmace
-			if("震慑钉头锤与卢塞恩锤")
+			if("震击钉头锤与钢制卢塞恩锤")
 				r_hand = /obj/item/rogueweapon/eaglebeak
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				beltr = /obj/item/rogueweapon/mace/stunmace

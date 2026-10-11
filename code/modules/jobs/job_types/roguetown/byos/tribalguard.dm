@@ -93,11 +93,11 @@
 		H.grant_language(/datum/language/draconic)
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("弓","投石索","长矛与标枪")
+		var/weapons = list("反曲弓","投石索","远古长矛与标枪袋（远古标枪）")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("弓")
+			if("反曲弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 				beltr = /obj/item/quiver/arrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
@@ -107,7 +107,7 @@
 				beltr = /obj/item/quiver/sling/ancient
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/slings, 4, TRUE)
-			if("长矛与标枪") 
+			if("远古长矛与标枪袋（远古标枪）")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/spear/ancient
 				beltr = /obj/item/quiver/javelin/ancient
@@ -173,31 +173,31 @@
 	H.faction += list("orcs", "tribe")
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("远古长柄战斧","远古巨权杖","远古长矛与盾", "远古标枪与盾")
+		var/weapons = list("远古长柄战斧","远古巨型钉头锤","远古长矛", "标枪袋（远古标枪）与塔盾")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("远古长柄战斧")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/halberd/bardiche/ancient
-			if("远古巨权杖") 
+			if("远古巨型钉头锤")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/mace/goden/steel/ancient
-			if("远古长矛与盾") 
+			if("远古长矛")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/spear/ancient
-			if("远古标枪与盾")
+			if("标枪袋（远古标枪）与塔盾")
 				beltr = /obj/item/quiver/javelin/ancient
 				backl = /obj/item/rogueweapon/shield/tower
 				
-		var/weapons2 = list("棍棒","钉头锤","手斧")
+		var/weapons2 = list("贝壳棍","远古钉头锤","远古斧")
 		var/weapon_choice2 = input(H, "选择你的副武器。", "拿起武器") as anything in weapons2
 		switch(weapon_choice2)
-			if("棍棒")
+			if("贝壳棍")
 				beltl = /obj/item/rogueweapon/mace/cudgel/shellrungu
-			if("手斧")
+			if("远古斧")
 				beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient
-			if("钉头锤")
+			if("远古钉头锤")
 				beltl = /obj/item/rogueweapon/mace/steel/ancient
 
 /datum/advclass/tribalguard/savage
@@ -262,17 +262,17 @@
 	H.faction += list("orcs", "tribe")
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("远古长柄战斧","远古巨权杖", "远古标枪与盾", "大槌 - 力量/体质提升，速度/感知/智力下降")
+		var/weapons = list("远古长柄战斧","远古巨型钉头锤", "标枪袋（远古标枪）与塔盾", "大槌 - 力量/体质提升，速度/感知/智力下降")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("远古长柄战斧")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/halberd/bardiche/ancient
-			if("远古巨权杖") 
+			if("远古巨型钉头锤")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/mace/goden/steel/ancient
-			if("远古标枪与盾")
+			if("标枪袋（远古标枪）与塔盾")
 				beltr = /obj/item/quiver/javelin/ancient
 				backl = /obj/item/rogueweapon/shield/tower
 			if("大槌 - 力量/体质提升，速度/感知/智力下降")
@@ -284,12 +284,12 @@
 				H.change_stat(STATKEY_PER, -1)
 				H.change_stat(STATKEY_INT, -1)
 				
-		var/weapons2 = list("棍棒","钉头锤","手斧")
+		var/weapons2 = list("贝壳棍","远古钉头锤","远古斧")
 		var/weapon_choice2 = input(H, "选择你的副武器。", "拿起武器") as anything in weapons2
 		switch(weapon_choice2)
-			if("棍棒")
+			if("贝壳棍")
 				beltl = /obj/item/rogueweapon/mace/cudgel/shellrungu
-			if("手斧")
+			if("远古斧")
 				beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient
-			if("钉头锤")
+			if("远古钉头锤")
 				beltl = /obj/item/rogueweapon/mace/steel/ancient

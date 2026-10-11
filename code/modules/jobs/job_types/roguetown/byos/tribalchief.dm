@@ -72,31 +72,31 @@
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	if(H.mind)
-		var/weapons = list("远古长柄战斧","远古巨权杖","远古长矛与盾", "远古标枪与盾")
+		var/weapons = list("远古长柄战斧","远古巨型钉头锤","远古长矛", "标枪袋（远古标枪）与塔盾")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("远古长柄战斧")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/halberd/bardiche/ancient
-			if("远古巨权杖") 
+			if("远古巨型钉头锤")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/mace/goden/steel/ancient
-			if("远古长矛与盾") 
+			if("远古长矛")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/spear/ancient
-			if("远古标枪与盾")
+			if("标枪袋（远古标枪）与塔盾")
 				beltr = /obj/item/quiver/javelin/ancient
 				backr = /obj/item/rogueweapon/shield/tower // Both are belt slots and it's not worth setting where the cugel goes for everyone else, sad.
 				
-		var/weapons2 = list("棍棒","钉头锤","手斧")
+		var/weapons2 = list("贝壳棍","远古钉头锤","远古斧")
 		var/weapon_choice2 = input(H, "选择你的副武器。", "整备武装") as anything in weapons2
 		switch(weapon_choice2)
-			if("棍棒")
+			if("贝壳棍")
 				beltl = /obj/item/rogueweapon/mace/cudgel/shellrungu
-			if("手斧")
+			if("远古斧")
 				beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient
-			if("钉头锤")
+			if("远古钉头锤")
 				beltl = /obj/item/rogueweapon/mace/steel/ancient
 
 /datum/advclass/tribalchieftain/warrior

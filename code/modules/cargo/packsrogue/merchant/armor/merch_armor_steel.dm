@@ -127,12 +127,12 @@
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/chain)
 
 /datum/supply_pack/rogue/armor_steel/helmet_nasal
-	name = "头盔，鼻护款"
+	name = "头盔，简易头盔"
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet)
 
 /datum/supply_pack/rogue/armor_steel/helmet_winged
-	name = "头盔，翼饰款"
+	name = "头盔，翼饰帽"
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/winged)
 
@@ -147,7 +147,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
 /datum/supply_pack/rogue/armor_steel/helmet_sallet_visor
-	name = "头盔，带面罩萨雷特盔"
+	name = "头盔，带面罩萨勒盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
@@ -157,17 +157,17 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bucket)
 
 /datum/supply_pack/rogue/armor_steel/helmet_pigface
-	name = "头盔，猪面盔"
+	name = "头盔，猪面盆盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface)
 
 /datum/supply_pack/rogue/armor_steel/helmet_hounskull
-	name = "头盔，猎犬颅盔"
+	name = "头盔，犬首盆盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull)
 
 /datum/supply_pack/rogue/armor_steel/helmet_volfplate
-	name = "头盔，沃尔夫钢盔"
+	name = "头盔，沃尔夫面甲头盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 
@@ -182,7 +182,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/etruscan)
 
 /datum/supply_pack/rogue/armor_steel/helmet_knight
-	name = "头盔，骑士款"
+	name = "头盔，骑士头盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight)
 
@@ -192,17 +192,17 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/armet)
 
 /datum/supply_pack/rogue/armor_steel/helmet_savoyard
-	name = "头盔，萨伏依"
+	name = "头盔，钢萨伏依盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/guard)
 
 /datum/supply_pack/rogue/armor_steel/helmet_barred
-	name = "头盔，栅面款"
+	name = "头盔，栅栏头盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/sheriff)
 
 /datum/supply_pack/rogue/armor_steel/helmet_beak
-	name = "头盔，鸟喙款"
+	name = "头盔，鸟喙头盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/beakhelm)
 
@@ -217,7 +217,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/steel)
 
 /datum/supply_pack/rogue/armor_steel/boots_steel
-	name = "甲靴"
+	name = "板甲靴"
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
@@ -227,7 +227,7 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/maille)
 
 /datum/supply_pack/rogue/armor_steel/mask_steel
-	name = "面甲"
+	name = "钢面具"
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel)
 

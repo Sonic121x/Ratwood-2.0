@@ -114,9 +114,9 @@
 /datum/outfit/job/roguetown/captain/infantry/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/visages = list(
-		"巴尔布特盔"			= /obj/item/clothing/head/roguetown/helmet/heavy/captain,
-		"长吻萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/captain/sallet,
-		"长吻尖盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/captain/bascinet,
+		"队长头盔"			= /obj/item/clothing/head/roguetown/helmet/heavy/captain,
+		"队长带吻部萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/captain/sallet,
+		"队长带吻部盆盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/captain/bascinet,
 	)
 	var/visage_choice = input(H, "选择头盔的面罩样式。", "戴上头盔") as anything in visages
 	head = visages[visage_choice]
@@ -144,18 +144,18 @@
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list(
-			"马刀",
-			"关刀",
+			"“法理”（军刀）",
+			"“裁决者”（偃月刀）",
 			)
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("马刀")
+			if("“法理”（军刀）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/capsabre
 				l_hand = /obj/item/rogueweapon/shield/capbuckler
 				beltr = /obj/item/rogueweapon/scabbard/sword/royal
-			if("关刀")
+			if("“裁决者”（偃月刀）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
 				r_hand = /obj/item/rogueweapon/halberd/capglaive
 				backl = /obj/item/rogueweapon/scabbard/gwstrap

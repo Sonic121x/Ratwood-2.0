@@ -41,34 +41,34 @@
 	..()
 	to_chat(H, span_warning("战斗经验与武艺可付不起食宿，真能买单的是马蒙。你只是看起来像个骑士，于是投身佣兵行会，把自己这副持剑卖力的身板卖给出价最高的人。"))
 	if(H.mind)
-		var/weapons = list("巨剑", "长剑与盾", "细剑与小圆盾")
+		var/weapons = list("巨剑", "长剑与鸢盾", "刺剑与小圆盾")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
 			if("巨剑")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/greatsword
-			if("长剑与盾")
+			if("长剑与鸢盾")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long
 				backl = /obj/item/rogueweapon/shield/tower/metal
-			if("细剑与小圆盾")
+			if("刺剑与小圆盾")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/rapier
 				backl = /obj/item/rogueweapon/shield/buckler
 		var/helmets = list(
-			"猪面护鼻盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"格栅头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
 			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
 			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"带面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"长吻面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
 			"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"长吻阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"犬面护鼻盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"长吻圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"伊特鲁斯卡护鼻盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+			"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
 			"开缝锅盔" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 			"蛙嘴盔" = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
 			"无"
@@ -124,24 +124,24 @@
 	..()
 	to_chat(H, span_warning("像你这样无名而众多的人，正塞满了整座佣兵行会。锁子甲与长柄武器既适合未经细训的人使用，也同样足够有效。"))
 	if(H.mind)
-		var/weapons = list("戟斧", "战戟", "卢塞恩锤", "钩镰枪")
+		var/weapons = list("戟斧", "帕提赞长戟", "钢制卢塞恩锤", "钩镰枪")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
 			if("戟斧")
 				r_hand = /obj/item/rogueweapon/halberd
-			if("战戟")
+			if("帕提赞长戟")
 				r_hand = /obj/item/rogueweapon/spear/partizan
-			if("卢塞恩锤")
+			if("钢制卢塞恩锤")
 				r_hand = /obj/item/rogueweapon/eaglebeak
 			if("钩镰枪")
 				r_hand =/obj/item/rogueweapon/spear/billhook
 		var/helmets = list(
-			"简盔" 	= /obj/item/clothing/head/roguetown/helmet,
+			"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
 			"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-			"尖顶盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
-			"萨拉德盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-			"翼盔" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-			"铁帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+			"盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
+			"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+			"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+			"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "整备头盔") as anything in helmets
@@ -199,14 +199,14 @@
 	..()
 	to_chat(H, span_warning("你既精于刀刃，又步伐轻捷，像你这样的人在佣兵行会里算得上少见。可一旦融入阴影，为他人干那些见不得光的脏活时，你依旧高效得可怕，出手又快又致命。"))
 	if(H.mind)
-		var/weapons = list("细剑", "匕首")
+		var/weapons = list("刺剑", "钢匕首")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("细剑")
+			if("刺剑")
 				r_hand = /obj/item/rogueweapon/sword/rapier
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-			if("匕首")
+			if("钢匕首")
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
@@ -260,13 +260,13 @@
 	..()
 	to_chat(H, span_warning("佣兵行会里挤满了像你这样吃壮了身板、只会靠一把子蛮力挣马蒙的莽汉。头脑简单这词用来形容你最贴切，但你也确实拥有蛮横的力气和一根沉重棍棒。有时候，解决问题就只需要这些。"))
 	if(H.mind)
-		var/weapons = list("钉锤", "战锤", "要什么棍棒？老子有这双手！")
+		var/weapons = list("钢钉头锤", "钢战锤", "要什么棍棒？老子有这双手！")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("钉锤")
+			if("钢钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-			if("战锤")
+			if("钢战锤")
 				r_hand = /obj/item/rogueweapon/mace/warhammer/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 			if("要什么棍棒？老子有这双手！")
@@ -335,20 +335,20 @@
 	..()
 	to_chat(H, span_warning("也许你曾是某支卫队的一员，接受过棍棒与十字弩的训练，如今则以 费伦提亚 人中常见却可靠的远程战力身份，为佣兵行会效劳。"))
 	if(H.mind)
-		var/armor_options = list("轻型布面甲", "铆钉皮背心")
+		var/armor_options = list("轻型板甲衣", "铆钉皮甲")
 		var/armor_choice = input(H, "选择你的护甲。", "整备着装") as anything in armor_options
 		switch(armor_choice)
-			if("轻型布面甲")
+			if("轻型板甲衣")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
-			if("铆钉皮背心")
+			if("铆钉皮甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 		var/helmets = list(
-			"简盔" 	= /obj/item/clothing/head/roguetown/helmet,
+			"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
 			"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-			"尖顶盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
-			"萨拉德盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-			"翼盔" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-			"铁帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+			"盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
+			"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+			"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+			"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "整备头盔") as anything in helmets
@@ -412,13 +412,13 @@
 	..()
 	to_chat(H, span_warning("你自幼便在林间持弓猎兽，对森林的熟悉程度不下于你对野生赛加羚要害的了解。在佣兵行会里，把土匪看成两条腿的赛加羚并不算难。"))
 	if(H.mind)
-		var/weapons = list("斧", "匕首")
+		var/weapons = list("普拉斯基斧", "钢匕首")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("斧")
+			if("普拉斯基斧")
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/pick
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("匕首")
+			if("钢匕首")
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)

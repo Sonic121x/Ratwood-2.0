@@ -9,7 +9,7 @@
 
 /datum/trade_good/cloth
 	id = TRADE_GOOD_CLOTH
-	name = "布料"
+	name = "布"
 	category = TRADE_CATEGORY_CLOTH
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_CLOTH
@@ -18,7 +18,7 @@
 
 /datum/trade_good/silk
 	id = TRADE_GOOD_SILK
-	name = "丝绸"
+	name = "蛛丝"
 	category = TRADE_CATEGORY_CLOTH
 	behavior = TRADE_BEHAVIOR_RAW
 	base_price = SELLPRICE_SILK

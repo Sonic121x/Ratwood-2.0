@@ -54,32 +54,32 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/brotherhood)
 
 		var/weapons = list(
-			"刺剑",
-			"钉锤加盾",
-			"链枷加盾",
-			"长剑加盾",
+			"穿甲刺剑",
+			"钢钉头锤加鸢盾",
+			"铁连枷（钢制）加鸢盾",
+			"长剑加鸢盾",
 			"卢塞恩锤",
 			"战斧",
-			"骑枪加风筝盾",
-			"弯刀",		//WHO MISPELLED IT BRO
+			"骑枪加鸢盾",
+			"沙姆希尔弯刀",		//WHO MISPELLED IT BRO
 		)
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("刺剑")
+			if("穿甲刺剑")
 				r_hand = /obj/item/rogueweapon/estoc
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("长剑加盾")
+			if("长剑加鸢盾")
 				beltr = /obj/item/rogueweapon/scabbard/sword/noble
 				r_hand = /obj/item/rogueweapon/sword/long
 				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("钉锤加盾")
+			if("钢钉头锤加鸢盾")
 				beltr = /obj/item/rogueweapon/mace/steel
 				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
-			if("链枷加盾")
+			if("铁连枷（钢制）加鸢盾")
 				beltr = /obj/item/rogueweapon/flail/sflail
 				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
@@ -90,32 +90,32 @@
 			if("战斧")
 				backr = /obj/item/rogueweapon/stoneaxe/battle
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_MASTER, TRUE)
-			if("骑枪加风筝盾")
+			if("骑枪加鸢盾")
 				r_hand = /obj/item/rogueweapon/spear/lance
 				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
-			if("弯刀")
+			if("沙姆希尔弯刀")
 				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 		var/helmets = list(
-			"猪面护鼻盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"卫兵头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"格栅头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
 			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
 			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"带面罩萨雷特盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"长吻面罩萨雷特盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"带面罩萨勒盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
 			"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"长吻阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"犬面护鼻盔" 		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"长吻圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"伊特鲁斯卡护鼻盔" 		= /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"带吻部阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔" 		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+			"伊特鲁斯卡盆盔" 		= /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
 			"开缝锅盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 			"蛙嘴盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
-			"库拉胡德盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/zyb,
-			"奥塔万头盔" = /obj/item/clothing/head/roguetown/helmet/otavan,
-			"具装骑兵盔" = /obj/item/clothing/head/roguetown/helmet/heavy/cataphract,
+			"库拉赫德"	= /obj/item/clothing/head/roguetown/helmet/sallet/zyb,
+			"奥塔瓦头盔" = /obj/item/clothing/head/roguetown/helmet/otavan,
+			"铁甲骑士头盔" = /obj/item/clothing/head/roguetown/helmet/heavy/cataphract,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "披挂头盔") as anything in helmets
@@ -123,12 +123,12 @@
 			head = helmets[helmchoice]
 
 		var/armors = list(
-			"锁子布面甲"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
-			"板片罩衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+			"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
+			"板片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
 			"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-			"纵槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+			"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
 			"鳞甲"		= /obj/item/clothing/suit/roguetown/armor/plate/scale,
-			"具装骑兵甲"	= /obj/item/clothing/suit/roguetown/armor/plate/cataphract,
+			"铁甲骑士甲"	= /obj/item/clothing/suit/roguetown/armor/plate/cataphract,
 		)
 		var/armorchoice = input(H, "选择你的护甲。", "披挂甲胄") as anything in armors
 		armor = armors[armorchoice]
@@ -189,18 +189,18 @@
 /datum/outfit/job/roguetown/wretch/desertermaa/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		var/weapons = list("战锤与盾","军刀与盾","战斧与盾","钩镰枪","巨斧","戟斧","弩","软剑与盾")
+		var/weapons = list("战锤与铁盾","军刀与木盾","钢斧与铁盾","钩镰枪","巨斧","戟斧","十字弩","软剑与铁盾")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("战锤与盾")
+			if("战锤与铁盾")
 				beltr = /obj/item/rogueweapon/mace/warhammer
 				backl = /obj/item/rogueweapon/shield/iron
-			if("军刀与盾")
+			if("军刀与木盾")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/sabre
 				backl = /obj/item/rogueweapon/shield/wood
-			if("战斧与盾")
+			if("钢斧与铁盾")
 				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				backl = /obj/item/rogueweapon/shield/iron
 			if("钩镰枪")
@@ -209,13 +209,13 @@
 			if("戟斧")
 				r_hand = /obj/item/rogueweapon/halberd
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("弩")
+			if("十字弩")
 				beltr = /obj/item/quiver/bolts
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			if("巨斧")
 				r_hand = /obj/item/rogueweapon/greataxe
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("软剑与盾")
+			if("软剑与铁盾")
 				r_hand = /obj/item/rogueweapon/whip/urumi
 				backl = /obj/item/rogueweapon/shield/iron
 	H.verbs |= list(/mob/living/carbon/human/mind/proc/setorderswretch)
@@ -230,13 +230,13 @@
 		"锅盔" 		 = /obj/item/clothing/head/roguetown/helmet/kettle,
 		"盆盔" 		 = /obj/item/clothing/head/roguetown/helmet/bascinet,
 		"萨雷特盔" 		 = /obj/item/clothing/head/roguetown/helmet/sallet,
-		"翼盔" 		 = /obj/item/clothing/head/roguetown/helmet/winged,
-		"护顶盔"				 = /obj/item/clothing/head/roguetown/helmet/skullcap,
-		"格隆恩欧内尔头盔" 	 = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel,
-		"钢制希沙克盔" 		 = /obj/item/clothing/head/roguetown/helmet/sallet/shishak,
+		"翼饰帽" 		 = /obj/item/clothing/head/roguetown/helmet/winged,
+		"骷髅帽"				 = /obj/item/clothing/head/roguetown/helmet/skullcap,
+		"欧内尔头盔" 	 = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel,
+		"钢希沙克盔" 		 = /obj/item/clothing/head/roguetown/helmet/sallet/shishak,
 		"游牧头盔" 			 = /obj/item/clothing/head/roguetown/helmet/nomadhelmet,
 		"格伦泽尔霍夫特羽饰帽"  = /obj/item/clothing/head/roguetown/grenzelhofthat,
-		"近卫军盔"  = /obj/item/clothing/head/roguetown/helmet/janissaryhelm,
+		"耶尼切里头盔"  = /obj/item/clothing/head/roguetown/helmet/janissaryhelm,
 		"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "披挂头盔") as anything in helmets
@@ -244,21 +244,21 @@
 			head = helmets[helmchoice]
 
 		var/masks = list(
-		"钢面甲" 			= /obj/item/clothing/mask/rogue/facemask/steel,
-		"钢制猎犬面甲" 		= /obj/item/clothing/mask/rogue/facemask/steel/hound,
-		"荒卫面具" 			= /obj/item/clothing/mask/rogue/wildguard,
-		"草原战面" 	= /obj/item/clothing/mask/rogue/facemask/steel/steppesman,
-		"草原兽面"	= /obj/item/clothing/mask/rogue/facemask/steel/steppesman/anthro,
+		"钢面具" 			= /obj/item/clothing/mask/rogue/facemask/steel,
+		"钢猎犬面具" 		= /obj/item/clothing/mask/rogue/facemask/steel/hound,
+		"荒野守卫" 			= /obj/item/clothing/mask/rogue/wildguard,
+		"草原人战面具" 	= /obj/item/clothing/mask/rogue/facemask/steel/steppesman,
+		"草原人兽面具"	= /obj/item/clothing/mask/rogue/facemask/steel/steppesman/anthro,
 		"无"
 		)
 		var/maskchoice = input(H, "选择你的面具。", "面具！面具！面具！") as anything in masks // Run from it. MASK. MASK. MASK.
 		if(maskchoice != "无")
 			mask = masks[maskchoice]
 
-		var/armor_options = list("锁子布面甲套装", "锁子甲套装", "胸甲套装", "铁锤堡套装", "草原套装", "格隆恩套装", "格伦泽尔霍夫特套装", "奥塔瓦套装")
+		var/armor_options = list("板甲衣套装", "锁子甲套装", "沟槽胸甲套装", "铁锤堡套装", "草原套装", "格隆恩套装", "格伦泽尔霍夫特套装", "奥塔瓦套装")
 		var/armor_choice = input(H, "选择你的护甲。", "时髦赴死") as anything in armor_options
 		switch(armor_choice)
-			if("锁子布面甲套装")
+			if("板甲衣套装")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine
 				pants = /obj/item/clothing/under/roguetown/splintlegs
@@ -274,7 +274,7 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				gloves = /obj/item/clothing/gloves/roguetown/chain
 				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("胸甲套装")
+			if("沟槽胸甲套装")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted
 				pants = /obj/item/clothing/under/roguetown/chainlegs

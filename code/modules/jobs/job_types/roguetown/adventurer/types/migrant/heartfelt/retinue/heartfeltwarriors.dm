@@ -56,14 +56,14 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
 
 	H.adjust_blindness(-3)
-	var/weapons = list("战锤与盾","战斧与盾","戟斧","巨斧")
+	var/weapons = list("战锤与铁盾","钢斧与铁盾","戟斧","巨斧")
 	var/weapon_choice = input("选择你的武器。", "披甲执兵") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("战锤与盾")
+		if("战锤与铁盾")
 			beltr = /obj/item/rogueweapon/mace/warhammer
 			backl = /obj/item/rogueweapon/shield/iron
-		if("战斧与盾")
+		if("钢斧与铁盾")
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 			backl = /obj/item/rogueweapon/shield/iron
 		if("戟斧")
@@ -84,16 +84,16 @@
 	)
 	H.verbs |= /mob/proc/haltyell
 
-	var/helmet = list("伊特鲁斯卡护鼻盔","沃尔夫钢盔","带面罩萨雷特盔","长吻面罩萨雷特盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼盔",)
+	var/helmet = list("伊特鲁斯卡盆盔","沃尔夫面甲头盔","带面罩萨勒盔","带吻部面罩萨雷特盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼饰帽",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
-		if("伊特鲁斯卡护鼻盔")
+		if("伊特鲁斯卡盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("沃尔夫钢盔")
+		if("沃尔夫面甲头盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩萨雷特盔")
+		if("带面罩萨勒盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻面罩萨雷特盔")
+		if("带吻部面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		if("开缝锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle
@@ -103,7 +103,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if("萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet
-		if("翼盔")
+		if("翼饰帽")
 			head = /obj/item/clothing/head/roguetown/helmet/winged
 		else //In case they DC or don't choose close the panel, etc
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
@@ -161,15 +161,15 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
 
 	H.adjust_blindness(-3)
-	var/weapons = list("弩","弓","投石索")
+	var/weapons = list("十字弩","反曲弓","投石索")
 	var/weapon_choice = input("选择你的武器。", "披甲执兵") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("弩")
+		if("十字弩")
 			beltr = /obj/item/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			H.change_stat(STATKEY_STR, 1)
-		if("弓")
+		if("反曲弓")
 			beltr = /obj/item/quiver/arrows
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			H.change_stat(STATKEY_PER, 1)
@@ -191,16 +191,16 @@
 	)
 	H.verbs |= /mob/proc/haltyell
 
-	var/helmet = list("伊特鲁斯卡护鼻盔","沃尔夫钢盔","带面罩萨雷特盔","长吻面罩萨雷特盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼盔",)
+	var/helmet = list("伊特鲁斯卡盆盔","沃尔夫面甲头盔","带面罩萨勒盔","带吻部面罩萨雷特盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼饰帽",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
-		if("伊特鲁斯卡护鼻盔")
+		if("伊特鲁斯卡盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("沃尔夫钢盔")
+		if("沃尔夫面甲头盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩萨雷特盔")
+		if("带面罩萨勒盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻面罩萨雷特盔")
+		if("带吻部面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		if("开缝锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle
@@ -210,7 +210,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if("萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet
-		if("翼盔")
+		if("翼饰帽")
 			head = /obj/item/clothing/head/roguetown/helmet/winged
 		else //In case they DC or don't choose close the panel, etc
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
@@ -286,42 +286,42 @@
 		/obj/item/flashlight/flare/torch/lantern = 1,
 	)
 
-	var/weapons = list("剑与盾","钉头锤与盾","矛与盾","弩", "弓")
+	var/weapons = list("单手剑与铁盾","钢钉头锤与铁盾","猎猪矛与铁盾","十字弩", "反曲弓")
 	var/weapon_choice = input("选择你的武器。", "披甲执兵") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("剑与盾")
+		if("单手剑与铁盾")
 			l_hand = /obj/item/rogueweapon/sword
 			beltr = /obj/item/rogueweapon/scabbard/sword
 			backl = /obj/item/rogueweapon/shield/iron
-		if("钉头锤与盾")
+		if("钢钉头锤与铁盾")
 			beltr = /obj/item/rogueweapon/mace/steel
 			backl = /obj/item/rogueweapon/shield/iron
-		if("矛与盾")
+		if("猎猪矛与铁盾")
 			r_hand = /obj/item/rogueweapon/spear/boar
 			backl = /obj/item/rogueweapon/shield/iron
-		if("弩")
+		if("十字弩")
 			beltr = /obj/item/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-		if("弓")
+		if("反曲弓")
 			beltr = /obj/item/quiver/arrows
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 		else
 			beltr = /obj/item/rogueweapon/sword
 			backl = /obj/item/rogueweapon/shield/iron
 
-	var/helmet = list("伊特鲁斯卡护鼻盔","带面罩萨雷特盔","长吻面罩萨雷特盔","狼首板甲盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼盔",)
+	var/helmet = list("伊特鲁斯卡盆盔","带面罩萨勒盔","带吻部面罩萨雷特盔","沃尔夫面甲头盔","开缝锅盔","简易头盔","锅盔","萨雷特盔","翼饰帽",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
-		if("伊特鲁斯卡护鼻盔")
+		if("伊特鲁斯卡盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("带面罩萨雷特盔")
+		if("带面罩萨勒盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻面罩萨雷特盔")
+		if("带吻部面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
-		if("狼首板甲盔")
+		if("沃尔夫面甲头盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩萨雷特盔")
+		if("带面罩萨勒盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 		if("开缝锅盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle
@@ -331,7 +331,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if("萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet
-		if("翼盔")
+		if("翼饰帽")
 			head = /obj/item/clothing/head/roguetown/helmet/winged
 		else //In case they DC or don't choose close the panel, etc
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan

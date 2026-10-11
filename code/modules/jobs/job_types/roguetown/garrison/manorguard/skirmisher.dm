@@ -42,16 +42,16 @@
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("十字弩","弓","投石索")
+		var/weapons = list("十字弩","反曲弓","投石索")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
-		var/armor_options = list("轻甲", "中甲")
+		var/armor_options = list("绗缝护甲衣（轻甲）", "铁制锁子短甲（中甲）")
 		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("十字弩")
 				beltr = /obj/item/quiver/bolts
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("弓") // They can head down to the armory to sideshift into one of the other bows.
+			if("反曲弓") // They can head down to the armory to sideshift into one of the other bows.
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			if("投石索")
@@ -59,10 +59,10 @@
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling // Both are belt slots and it's not worth setting where the cugel goes for everyone else, sad.
 
 		switch(armor_choice)
-			if("轻甲")
+			if("绗缝护甲衣（轻甲）")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			if("中甲")
+			if("铁制锁子短甲（中甲）")
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
@@ -78,12 +78,12 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/skirmisher_trap)
 
 		var/helmets = list(
-		"素盔" 	= /obj/item/clothing/head/roguetown/helmet,
+		"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
 		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-		"尖顶盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
 		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"翼盔" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-		"护顶盔"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+		"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+		"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 		"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "戴上头盔") as anything in helmets

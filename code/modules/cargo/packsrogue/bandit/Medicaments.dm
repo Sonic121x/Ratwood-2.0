@@ -18,12 +18,12 @@
 /////////////
 
 /datum/supply_pack/rogue/Medicaments/healthpot
-	name = "治疗药水"
+	name = "生命药水"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 
 /datum/supply_pack/rogue/Medicaments/manapot
-	name = "法力药水"
+	name = "魔力药水"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/manapot)
 
@@ -33,22 +33,22 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/stampot)
 
 /datum/supply_pack/rogue/Medicaments/healthpotnew
-	name = "高级治疗药剂"
+	name = "强效生命药水"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/healthpotnew)
 
 /datum/supply_pack/rogue/Medicaments/manapotnew
-	name = "高级法力药剂"
+	name = "强效魔力药水"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/strongmanapot)
 
 /datum/supply_pack/rogue/Medicaments/stampotnew
-	name = "高级耐力药水"
+	name = "强效耐力药水"
 	cost = 40
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/strongstampot)
 
 /datum/supply_pack/rogue/Medicaments/rotcure
-	name = "腐烂治疗药水"
+	name = "腐坏解药"
 	cost = 200
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/rogue/rotcure)
 
@@ -67,12 +67,12 @@
 ///////////
 
 /datum/supply_pack/rogue/Medicaments/westleach
-	name = "西池牌烟卷"
+	name = "卷烟（西池烟草）"
 	cost = 2
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
 /datum/supply_pack/rogue/Medicaments/swampweed
-	name = "沼麻烟卷"
+	name = "沼叶卷烟"
 	cost = 5
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
@@ -87,12 +87,12 @@
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
 /datum/supply_pack/rogue/Medicaments/spice
-	name = "香料粉"
+	name = "香料"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/Medicaments/suidust
-	name = "绥尘"
+	name = "碎晶粉（仅变性）"
 	cost = 20
 	contains = list(/obj/item/alch/transisdust)
 
@@ -101,7 +101,7 @@
 /////////////////
 
 /datum/supply_pack/rogue/Medicaments/bronzeprosthetic
-	name = "青铜义体"
+	name = "青铜义肢"
 	cost = 150
 	contains = list(/obj/item/contraption/bronzeprosthetic)
 

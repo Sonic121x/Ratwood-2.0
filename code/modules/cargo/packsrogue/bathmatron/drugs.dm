@@ -19,7 +19,7 @@
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
 /datum/supply_pack/rogue/drugs/pdust
-	name = "至纯月尘"
+	name = "月尘（至纯）"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/powder/moondust_purest)
 
@@ -29,12 +29,12 @@
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/drugs/swampzig
-	name = "沼泽草卷烟"
+	name = "沼叶卷烟"
 	cost = 5
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
 /datum/supply_pack/rogue/drugs/pipezig
-	name = "烟斗草卷烟"
+	name = "卷烟（西池烟草）"
 	cost = 2
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 /*
@@ -59,27 +59,27 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/nocshine)
 
 /datum/supply_pack/rogue/drugs/whipwine
-	name = "魔法鞭酒"
+	name = "魔鞭酒"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/whipwine)
 	
 /datum/supply_pack/rogue/drugs/emberwine
-	name = "烬酒"
+	name = "余烬酒"
 	cost = 80
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/emberwine)
 
 /datum/supply_pack/rogue/drugs/zigbox
-	name = "烟盒（空）"
+	name = "烟卷盒（空）"
 	cost = 5
 	contains = list(/obj/item/quiver/zigs)
 
 /datum/supply_pack/rogue/drugs/zigbox_pipezig
-	name = "烟盒（烟斗草）"
+	name = "烟卷盒（西池烟草）"
 	cost = 25
 	contains = list(/obj/item/quiver/zigs/nicotine)
 
 /datum/supply_pack/rogue/drugs/zigbox_swampzig
-	name = "烟盒（沼泽草）"
+	name = "烟卷盒（沼泽烟草）"
 	cost = 45
 	contains = list(/obj/item/quiver/zigs/cannabis)
 
@@ -94,7 +94,7 @@
 	contains = list(/obj/item/storage/fancy/shhig)
 
 /datum/supply_pack/rogue/drugs/suidust
-	name = "易容之尘（仅性别）"
+	name = "碎晶粉（仅变性）"
 	cost = 60
 	contains = list(/obj/item/alch/transisdust)
 

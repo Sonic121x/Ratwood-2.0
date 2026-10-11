@@ -62,7 +62,7 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/psydonic_inspire)//CtA, but blood cost and... kind of worse.
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/psydonic_sacrosanctity)//To get your blood back, m'lord.
-		var/instruments = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇风琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌咏护符")
+		var/instruments = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/instrument_choice = tgui_input_list(H, "选择你的乐器。", "拿起家伙", instruments)
 		H.set_blindness(0)
 		switch(instrument_choice)
@@ -82,7 +82,7 @@
 				backr = /obj/item/rogue/instrument/harmonica
 			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("手摇风琴")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
 			if("口簧琴")
 				backr = /obj/item/rogue/instrument/jawharp
@@ -96,19 +96,19 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌咏护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
-		var/weapons = list("普赛顿式鞭", "普赛顿式刺剑", "普赛顿式软剑（需 11 力量）")
+		var/weapons = list("普赛顿长鞭", "普赛顿刺剑", "普赛顿软剑（需 11 力量）")
 		var/weapon_choice = tgui_input_list(H, "选择你的武器。", "执起普赛顿的兵刃。", weapons)
 		switch(weapon_choice)
-			if("普赛顿式鞭")
+			if("普赛顿长鞭")
 				H.put_in_hands(new /obj/item/rogueweapon/whip/psywhip_lesser(get_turf(H)), forced = TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
-			if("普赛顿式刺剑")
+			if("普赛顿刺剑")
 				H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/psy(get_turf(H)), del_on_fail = FALSE, forced = TRUE)
 				H.put_in_hands(new /obj/item/rogueweapon/scabbard/sword(get_turf(H)), del_on_fail = FALSE, forced = TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-			if("普赛顿式软剑（需 11 力量）")
+			if("普赛顿软剑（需 11 力量）")
 				H.put_in_hands(new /obj/item/rogueweapon/whip/urumi/silver/psydonic(get_turf(H)), forced = TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
 

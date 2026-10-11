@@ -1,6 +1,6 @@
 /datum/roguestock/stockpile/fishmince
 	generation_price = 2 // Ratwood passive import
-	name = "鱼肉糜"
+	name = "碎鱼糜"
 	desc = "去鳞并绞碎的鱼肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	trade_good_id = TRADE_GOOD_FISH_MINCE
@@ -20,7 +20,7 @@
 	category = "Seafood"
 
 /datum/roguestock/stockpile/dried_fish
-	name = "干鱼片"
+	name = "风干鱼柳"
 	desc = "盐腌鱼，适合舰队远航。"
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/driedfishfilet
 	trade_good_id = TRADE_GOOD_DRIED_FISH
@@ -80,7 +80,7 @@
 
 /datum/roguestock/stockpile/crab
 	generation_price = 4 // Ratwood passive import
-	name = "蟹肉"
+	name = "螃蟹"
 	desc = "整块蟹肉。"
 	item_type = /obj/item/reagent_containers/food/snacks/fish/crab
 	trade_good_id = TRADE_GOOD_CRAB
