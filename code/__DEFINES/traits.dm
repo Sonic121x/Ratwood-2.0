@@ -361,8 +361,8 @@
 #define TRAIT_EFFICIENT_WEAVER "Efficient Weaver"
 
 // Hunting Traits
-#define TRAIT_MASTERFUL_HUNTER "Masterful Hunter"
-#define TRAIT_EXPERT_HUNTER "Expert Hunter"
+#define TRAIT_MASTERFUL_HUNTER "狩猎大师"
+#define TRAIT_EXPERT_HUNTER "狩猎专家"
 #define TRAIT_DEATHLESS "Deathless"
 
 // Weaponry Traits
