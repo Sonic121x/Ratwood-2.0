@@ -41,7 +41,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/honey/proc/set_reagent(reagent)
 	var/datum/reagent/R = GLOB.chemical_reagents_list[reagent]
 	if(istype(R))
-		name = "蜜脾（[R.name]）"
+		name = "[R.name]蜜脾"
 		honey_color = R.color
 		reagents.add_reagent(R.type,5)
 	else

@@ -55,7 +55,7 @@
 	verbage = "解开"
 
 /datum/crafting_recipe/roguetown/survival/clothsash
-	name = "精致绶带"
+	name = "精制腰带"
 	result = /obj/item/storage/belt/rogue/leather/sash
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
@@ -78,14 +78,14 @@
 	verbage = "解开"
 
 /datum/crafting_recipe/roguetown/survival/rope
-	name = "绳子"
+	name = "绳索"
 	result = /obj/item/rope
 	reqs = list(/obj/item/natural/fibers = 3)
 	verbage_simple = "编织"
 	verbage = "编织"
 
 /datum/crafting_recipe/roguetown/survival/rope_leash
-	name = "绳制牵引绳"
+	name = "绳制牵绳"
 	result = /obj/item/leash
 	reqs = list(/obj/item/rope = 1)
 	tools = list(/obj/item/needle)
@@ -95,7 +95,7 @@
 	always_availible = TRUE
 
 /datum/crafting_recipe/roguetown/survival/chain_leash
-	name = "锁链牵引绳"
+	name = "链式牵绳"
 	result = /obj/item/leash/chain
 	reqs = list(/obj/item/rope/chain = 1)
 	verbage_simple = "制作"
@@ -133,7 +133,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/pestle
-	name = "石杵"
+	name = "研杵"
 	result = /obj/item/pestle
 	reqs = list(/obj/item/natural/stone = 1)
 	craftdiff = 1
@@ -193,7 +193,7 @@
 	verbage = "组装"
 
 /datum/crafting_recipe/roguetown/survival/paperscroll
-	name = "羊皮纸卷轴（x3）"
+	name = "羊皮纸卷轴 ×3"
 	result = list(
 		/obj/item/paper/scroll,
 		/obj/item/paper/scroll,
@@ -207,28 +207,28 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/prosthetic/woodleftarm
-	name = "木臂（左）"
+	name = "木制左义臂"
 	result = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/prosthetic/woodrightarm
-	name = "木臂（右）"
+	name = "木制右义臂"
 	result = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/prosthetic/woodleftleft
-	name = "木腿（左）"
+	name = "木制左义腿"
 	result = list(/obj/item/bodypart/l_leg/prosthetic)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/prosthetic/woodrightleg
-	name = "木腿（右）"
+	name = "木制右义腿"
 	result = list(/obj/item/bodypart/r_leg/prosthetic)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/crafting
@@ -248,7 +248,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/tarot_deck_majorarcana
-	name = "塔罗牌组（大阿卡那）"
+	name = "大阿卡那塔罗牌组"
 	result = list(/obj/item/toy/cards/deck/tarot/majorarcana)
 	reqs = list(
 		/obj/item/paper/scroll = 3,
@@ -276,49 +276,49 @@
 // DIE
 
 /datum/crafting_recipe/roguetown/survival/d4
-	name = "骨骰（d4）"
+	name = "骨制4面骰"
 	result = /obj/item/dice/d4
 	reqs = list(/obj/item/natural/bone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/d6
-	name = "骨骰（d6）"
+	name = "骨制6面骰"
 	result = /obj/item/dice/d6
 	reqs = list(/obj/item/natural/bone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/d8
-	name = "骨骰（d8）"
+	name = "骨制8面骰"
 	result = /obj/item/dice/d8
 	reqs = list(/obj/item/natural/bone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/d10
-	name = "骨骰（d10）"
+	name = "骨制10面骰"
 	result = /obj/item/dice/d10
 	reqs = list(/obj/item/natural/bone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/d12
-	name = "骨骰（d12）"
+	name = "骨制12面骰"
 	result = /obj/item/dice/d12
 	reqs = list(/obj/item/natural/bone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/d20
-	name = "骨骰（d20）"
+	name = "骨制20面骰"
 	result = /obj/item/dice/d20
 	reqs = list(/obj/item/natural/bone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/dye_brush
-	name = "染色刷"
+	name = "染刷"
 	result = /obj/item/dye_brush
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 2,
@@ -337,7 +337,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/rucksack
-	name = "背囊"
+	name = "行囊"
 	result = /obj/item/storage/backpack/rogue/backpack/bagpack
 	reqs = list(
 		/obj/item/storage/roguebag = 1,
@@ -369,7 +369,7 @@
 
 // Improvised surgey tools. They go here for now (TM)
 /datum/crafting_recipe/roguetown/survival/improvisedsaw
-	name = "简易手术锯"
+	name = "简易骨锯"
 	result = /obj/item/rogueweapon/surgery/saw/improv
 	reqs = list(
 		/obj/item/natural/fibers = 1,
@@ -379,7 +379,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/improvisedclamp
-	name = "简易牵开器"
+	name = "简易扩张器"
 	result = /obj/item/rogueweapon/surgery/retractor/improv
 	reqs = list(
 		/obj/item/natural/fibers = 1,
@@ -388,7 +388,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/improvisedhemo
-	name = "简易夹钳"
+	name = "简易夹具"
 	result = /obj/item/rogueweapon/surgery/hemostat/improv
 	reqs = list(
 		/obj/item/natural/fibers = 1,
@@ -414,7 +414,7 @@
 // Servant w/ high int can also make it, but it is a bit harder. Or just be middle aged / old instead lol
 // For 1 fat, 1 log (48 reagents), you get 4 tallow + 6 piece of paper yielding 12 ration wrappers with 1 tallow leftover.
 /datum/crafting_recipe/roguetown/survival/ration_wrapper
-	name = "口粮包装纸（x2）"
+	name = "口粮包装纸 ×2"
 	result = list(
 		/obj/item/ration,
 		/obj/item/ration,
@@ -452,7 +452,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/purify_lux_vials
-	name = "提纯灵辉（小瓶）"
+	name = "提纯灵辉 — 小瓶配方"
 	result = list(
 		/obj/item/reagent_containers/lux,
 		/obj/item/heart_blood_vial,
@@ -467,7 +467,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/purify_lux_compress
-	name = "提纯灵辉（压缩）"
+	name = "压缩提纯灵辉"
 	result = list(
 		/obj/item/reagent_containers/lux,
 		)
@@ -478,7 +478,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/survival/bandage
-	name = "绷带（医疗）"
+	name = "医疗绷带"
 	result = list(
 		/obj/item/natural/cloth/bandage
 	)
@@ -499,7 +499,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/ironore/advanced
-	name = "铁矿石（进阶）"
+	name = "铁矿石 — 进阶配方"
 	reqs = list(
 		/obj/item/alch/irondust = 2,
 		)
@@ -518,7 +518,7 @@
 
 ///Repair Kits///
 /datum/crafting_recipe/roguetown/survival/repairkitclothbad
-	name = "织物补片(修理包)" //9 fiber
+	name = "织物补片" //9 fiber
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 	result = /obj/item/repair_kit/bad
 	reqs = list(
@@ -529,7 +529,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/repairkitmetalingot
-	name = "空金属套件(铁锭)"
+	name = "空金属套件 — 铁锭配方"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 	result = /obj/item/armorkit_empty
 	reqs = list(
@@ -538,7 +538,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/repairkitmetalscrap
-	name = "空金属套件(修理包)(铁废料)"
+	name = "空金属套件 — 铁废料配方"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 	result = /obj/item/armorkit_empty
 	reqs = list(
@@ -547,7 +547,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/repairkitcloth
-	name = "缝纫套件(修理包)"
+	name = "缝纫套件"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 	result = /obj/item/repair_kit
 	reqs = list(

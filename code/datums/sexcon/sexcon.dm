@@ -1804,7 +1804,7 @@
 	duration = 30 SECONDS
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/quivering
-	effectedstats = list("speed" = -2)
+	effectedstats = list(STATKEY_SPD = -2)
 
 /atom/movable/screen/alert/status_effect/quivering
 	name = "发颤"

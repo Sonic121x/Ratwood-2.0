@@ -9,7 +9,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 */
 //This is a 'solid shot'. Does nothing, as of now.
 /obj/item/cannonball
-	name = "\proper 臼炮装药（实心）"
+	name = "\proper 实心臼炮装药"
 	desc = "一枚沉重的臼炮装药，前端封着实心弹头。"
 	icon = 'icons/roguetown/weapons/stationary/bombard_projectiles.dmi'
 	icon_state = "basic"
@@ -20,7 +20,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 
 //HE charge. This WILL delimb and cause many issues.
 /obj/item/cannonball/explosive
-	name = "\proper 臼炮装药（高爆）"
+	name = "\proper 高爆臼炮装药"
 	desc = "一枚沉重的臼炮装药，前端封着平头弹帽。"
 	icon_state = "explosive"
 
@@ -31,7 +31,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 //Flare charge. Blinds in a wide radius.
 //Intended to alert to number of players in area, but I'll do that later.
 /obj/item/cannonball/flare
-	name = "\proper 臼炮装药（照明）"
+	name = "\proper 照明臼炮装药"
 	desc = "一枚沉重的臼炮装药，表面缠着铜箍，前端封着奇异的弹帽。"
 	icon_state = "flare"
 
@@ -44,7 +44,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 
 //Incendiary charge. Drops a huge blanket of flame across a wide area.
 /obj/item/cannonball/incendiary
-	name = "\proper 臼炮装药（燃烧）"
+	name = "\proper 燃烧臼炮装药"
 	desc = "一枚沉重的臼炮装药，尾端正渗出某种可燃物。\
 	你得在发射前先用火把把它点燃。动作要快！"
 	icon_state = "incendiary"
@@ -94,7 +94,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 //SMOKE CHARGES
 //The normal sort.
 /obj/item/cannonball/smoke
-	name = "\proper 臼炮装药（烟幕）"
+	name = "\proper 烟幕臼炮装药"
 	desc = "一枚沉重的臼炮装药，前端封着平头弹帽。"
 	icon_state = "basic"
 
@@ -107,7 +107,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 
 //The poison sort.
 /obj/item/cannonball/smoke_poison
-	name = "\proper 臼炮装药（毒烟）"
+	name = "\proper 毒烟臼炮装药"
 	desc = "一枚沉重的臼炮装药，前端封着平头弹帽。"
 	icon_state = "poison"
 
@@ -120,7 +120,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 
 //The emberwine sort.
 /obj/item/cannonball/smoke_emberwine
-	name = "\proper 臼炮装药（烬酒烟）"
+	name = "\proper 烬酒烟臼炮装药"
 	desc = "一枚沉重的臼炮装药，前端封着尖锥弹帽，还草草裹了几层破布。\
 	里头装的东西最好别放出来，而你也最好离它远些。"
 	icon_state = "emberwine"
@@ -141,7 +141,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 
 //The custom sort.
 /obj/item/cannonball/smoke_custom
-	name = "\proper 臼炮装药（混装）"
+	name = "\proper 混装臼炮装药"
 	desc = "一枚沉重的臼炮装药，前端封着平头弹帽，设计上可在发射前装入额外载荷。\
 	若没有装入载荷，它内部也自带一份不算大的烟幕药剂。"
 	icon_state = "anychem_empty"
@@ -180,7 +180,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 //CANISTER CHARGES
 //The actual proper canister charge, which disperses a huge chunk of shrapnel.
 /obj/item/cannonball/canister
-	name = "\proper 臼炮装药（榴霰）"
+	name = "\proper 榴霰臼炮装药"
 	desc = "一枚沉重的臼炮装药，装着带凹槽、敲起来近乎空心的弹帽。\
 	这是种恶毒玩意，在任何还算讲理的国度里都属禁物……"
 	icon_state = "braced"
@@ -196,7 +196,7 @@ Additionally, these differ from the concepts, because I wish to see them in prac
 
 //A secondary type of 'canister' charge. Small explosions on all turfs in view.
 /obj/item/cannonball/cluster
-	name = "\proper 臼炮装药（集束）"
+	name = "\proper 集束臼炮装药"
 	desc = "一枚沉重的臼炮装药，前端不是普通弹帽，而是一束小型碰炸榴弹。\
 	这是种恶毒玩意，在任何还算讲理的国度里都属禁物……"
 	icon_state = "cluster"

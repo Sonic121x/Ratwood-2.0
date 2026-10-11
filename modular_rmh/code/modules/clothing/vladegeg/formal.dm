@@ -42,7 +42,7 @@
 	sellprice = 10
 
 /datum/crafting_recipe/roguetown/sewing/skirt_knee_colored
-	name = "及膝裙（可染色）"
+	name = "可染色及膝裙"
 	result = list(/obj/item/clothing/under/roguetown/skirt/knee/colored)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 2)
@@ -61,5 +61,5 @@
 	path = /obj/item/clothing/under/roguetown/skirt/knee
 
 /datum/loadout_item/skirt_knee_colored
-	name = "及膝裙（可染色）"
+	name = "可染色及膝裙"
 	path = /obj/item/clothing/under/roguetown/skirt/knee/colored

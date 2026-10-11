@@ -154,7 +154,7 @@
 	contains = list(/obj/item/rogueweapon/knuckles)
 
 /datum/supply_pack/rogue/Iconoclast/mace
-	name = "钉头锤（铁制）"
+	name = "铁制钉头锤"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/mace)
 

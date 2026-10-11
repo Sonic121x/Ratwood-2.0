@@ -178,9 +178,9 @@
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.change_stat("speed", -1)
-		H.change_stat("intelligence", 1)
-		H.change_stat("perception", 1)
+		H.change_stat(STATKEY_SPD, -1)
+		H.change_stat(STATKEY_INT, 1)
+		H.change_stat(STATKEY_PER, 1)
 		H?.mind.adjust_spellpoints(6)
 
 /datum/advclass/heartfelt/lord/chief

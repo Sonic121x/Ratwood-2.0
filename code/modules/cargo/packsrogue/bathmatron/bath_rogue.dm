@@ -56,7 +56,7 @@
 	)
 
 /datum/supply_pack/rogue/bath_rogue/waterbolts
-	name = "水弩矢与水箭（1支弩矢、9支箭）"
+	name = "水弩矢与水箭套装：1支弩矢、9支箭"
 	cost = 20
 	contains = list (
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,

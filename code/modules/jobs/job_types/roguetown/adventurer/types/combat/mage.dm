@@ -70,8 +70,8 @@
 				H.adjust_skillrank_up_to(/datum/skill/craft/sewing, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/labor/butchering, 2, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/labor/farming, 2, TRUE)
-				H.change_stat("perception", 1)
-				H.change_stat("intelligence", 1)
+				H.change_stat(STATKEY_PER, 1)
+				H.change_stat(STATKEY_INT, 1)
 				ADD_TRAIT(H, TRAIT_ALCHEMY_EXPERT, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 			if("咒法使")
@@ -82,7 +82,7 @@
 				H.mind?.adjust_spellpoints(6)
 				ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_MAGEDEXTERITY, TRAIT_GENERIC)
-				H.change_stat("willpower", 2)
+				H.change_stat(STATKEY_WIL, 2)
 
 /datum/advclass/mage/spellblade
 	name = "魔剑士"

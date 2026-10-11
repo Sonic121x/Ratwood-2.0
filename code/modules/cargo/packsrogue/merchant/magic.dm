@@ -73,6 +73,6 @@
 	contains = list(/obj/item/lovepotion)
 
 /datum/supply_pack/rogue/magic/suidust
-	name = "碎晶粉（仅变性）"
+	name = "变性用碎晶粉"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)

@@ -44,7 +44,7 @@
 	if(H.mind)
 		var/weapons = list("十字弩","反曲弓","投石索")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
-		var/armor_options = list("绗缝护甲衣（轻甲）", "铁制锁子短甲（中甲）")
+		var/armor_options = list("轻甲：绗缝护甲衣", "中甲：铁制锁子短甲")
 		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -59,10 +59,10 @@
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling // Both are belt slots and it's not worth setting where the cugel goes for everyone else, sad.
 
 		switch(armor_choice)
-			if("绗缝护甲衣（轻甲）")
+			if("轻甲：绗缝护甲衣")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			if("铁制锁子短甲（中甲）")
+			if("中甲：铁制锁子短甲")
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 

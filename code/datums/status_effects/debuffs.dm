@@ -678,7 +678,7 @@
 	duration = 7 MINUTES // This effect is really nasty but is deliberately one of the worst mishap effects, so it has a fairly long duration.
 	status_type = STATUS_EFFECT_REFRESH
 	// Won't necessarily force intelligence to 1, if we're really smart and have buffs
-	effectedstats = list("intelligence" = -20, "speed" = -5)
+	effectedstats = list(STATKEY_INT = -20, STATKEY_SPD = -5)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_feeblemind
 	var/datum/language_holder/owner_language_holder
 	var/datum/language_holder/old_languages
@@ -712,7 +712,7 @@
 	id = "dimwitted"
 	duration = 10 MINUTES
 	status_type = STATUS_EFFECT_REFRESH
-	effectedstats = list("intelligence" = -6, "speed" = -3) // 50% worse than the Nimrod special at the time of implementation (for 10 minutes)
+	effectedstats = list(STATKEY_INT = -6, STATKEY_SPD = -3) // 50% worse than the Nimrod special at the time of implementation (for 10 minutes)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_dimwitted
 
 /datum/status_effect/debuff/mishap_dimwitted/on_apply()
@@ -733,7 +733,7 @@
 	id = "arcane_high"
 	duration = 5 MINUTES
 	status_type = STATUS_EFFECT_REFRESH
-	effectedstats = list("intelligence" = -4, "perception" = -4)
+	effectedstats = list(STATKEY_INT = -4, STATKEY_PER = -4)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_arcane_high
 
 /datum/status_effect/debuff/mishap_arcane_high/on_apply()
@@ -858,7 +858,7 @@
 	id = "arcane_blindness"
 	duration = 2 MINUTES // Another nasty effect - victim will need to be led around until it expires.
 	status_type = STATUS_EFFECT_REFRESH
-	effectedstats = list("perception" = -100) // Blind, can't see
+	effectedstats = list(STATKEY_PER = -100) // Blind, can't see
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_blindness
 	var/const/blindness_amount = 20 // 20 should be plenty to keep the victim blind between tick()s
 

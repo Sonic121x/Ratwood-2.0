@@ -124,7 +124,7 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 
 //And the recipe in which we hold it hostage. It shouldn't be survival, but, whatever.
 /datum/crafting_recipe/roguetown/survival/bombard
-	name = "便携臼炮（炮管与炮架）"
+	name = "便携臼炮组件"
 	result = /obj/structure/bombard
 	category = "Ranged"
 	reqs = list(

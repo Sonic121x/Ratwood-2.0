@@ -259,7 +259,7 @@
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero)
 
 /datum/supply_pack/rogue/Brigand/mace
-	name = "钉头锤（铁制）"
+	name = "铁制钉头锤"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/mace)
 
@@ -304,7 +304,7 @@
 	contains = list(/obj/item/rogueweapon/flail)
 
 /datum/supply_pack/rogue/Brigand/steelflail
-	name = "铁连枷（钢制）"
+	name = "铁连枷"
 	cost = 20
 	contains =  list(/obj/item/rogueweapon/flail/sflail)
 

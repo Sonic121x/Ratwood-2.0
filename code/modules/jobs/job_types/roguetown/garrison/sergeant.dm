@@ -109,7 +109,7 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("罗姆法亚弯剑","铁连枷（钢制）与塔盾","戟斧","军刀与十字弩")	//Bit more unique than footsman, you are a jack-of-all-trades + slightly more 'elite'.
+		var/weapons = list("罗姆法亚弯剑","铁连枷与塔盾","戟斧","军刀与十字弩")	//Bit more unique than footsman, you are a jack-of-all-trades + slightly more 'elite'.
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -117,7 +117,7 @@
 				backl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/long/rhomphaia
 				beltr = /obj/item/rogueweapon/mace/cudgel
-			if("铁连枷（钢制）与塔盾")	//Tower-shield, higher durability wood shield w/ more coverage. Plus a steel flail; maybe.. less broken that a steel mace?
+			if("铁连枷与塔盾")	//Tower-shield, higher durability wood shield w/ more coverage. Plus a steel flail; maybe.. less broken that a steel mace?
 				beltr = /obj/item/rogueweapon/flail/sflail
 				backl = /obj/item/rogueweapon/shield/tower
 			if("戟斧")			//Halberd - basically exact same as MAA. It's a really valid build. Spear thrust + sword chop + bash.

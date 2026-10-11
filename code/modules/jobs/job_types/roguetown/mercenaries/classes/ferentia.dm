@@ -41,10 +41,10 @@
 	..()
 	to_chat(H, span_warning("战斗经验与武艺可付不起食宿，真能买单的是马蒙。你只是看起来像个骑士，于是投身佣兵行会，把自己这副持剑卖力的身板卖给出价最高的人。"))
 	if(H.mind)
-		var/weapons = list("巨剑", "长剑与鸢盾", "刺剑与小圆盾")
+		var/weapons = list("大剑", "长剑与鸢盾", "刺剑与小圆盾")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("巨剑")
+			if("大剑")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/greatsword
 			if("长剑与鸢盾")

@@ -12,7 +12,7 @@
 	contains = list(/obj/item/reagent_containers/powder/ozium)
 
 /datum/supply_pack/rogue/medicine/suidust
-	name = "碎晶粉（仅变性）"
+	name = "变性用碎晶粉"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)
 
@@ -43,6 +43,6 @@
 	contains = list(/obj/item/needle)
 
 /datum/supply_pack/rogue/medicine/surgeonsbag
-	name = "外科医生包（满配）"
+	name = "满配外科医生包"
 	cost = 80
 	contains = list(/obj/item/storage/belt/rogue/surgery_bag)

@@ -51,13 +51,13 @@
 	icon_state = "zybantinecushion"
 
 /datum/crafting_recipe/roguetown/sewing/zybcushion1
-	name = "沙漠坐垫（黄色）"
+	name = "黄色沙漠坐垫"
 	result = list(/obj/item/cushion/desert1)
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/zybcushion2
-	name = "沙漠坐垫（灰色）"
+	name = "灰色沙漠坐垫"
 	result = list(/obj/item/cushion/desert2)
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 2
@@ -95,7 +95,7 @@
 	icon_state = "fancypot1"
 
 /datum/crafting_recipe/roguetown/structure/fancypot
-	name = "沙陶罐（精致款）"
+	name = "精致陶罐"
 	result = /obj/structure/fermentation_keg/fancypot
 	reqs = list(/obj/item/natural/clay = 1)
 	verbage_simple = "制作"

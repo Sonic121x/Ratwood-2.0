@@ -84,53 +84,53 @@
 // Craft
 
 /datum/crafting_recipe/roguetown/sewing/loinclothunder
-	name = "小号缠裆布（1布）"
+	name = "小号缠裆布，需1块布料"
 	result = list(/obj/item/undies/loinclothunder)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/loinclothadjusttwo
-	name = "把小号缠裆布改松（裤装）"
+	name = "将小号缠裆布改成裤装"
 	result = list(/obj/item/clothing/under/roguetown/loincloth)
 	reqs = list(/obj/item/undies/loinclothunder = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/undies
-	name = "短裤（1纤维，1布）"
+	name = "短裤，需1份纤维、1块布料"
 	result = list(/obj/item/undies)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/bikini
-	name = "比基尼（1纤维，2布）"
+	name = "比基尼，需1份纤维、2块布料"
 	result = list(/obj/item/undies/bikini)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/panties
-	name = "内裤（1布）"
+	name = "内裤，需1块布料"
 	result = list(/obj/item/undies/panties)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/leotard
-	name = "紧身衣（1纤维，1丝绸）"
+	name = "紧身衣，需1份纤维、1块丝绸"
 	result = list(/obj/item/undies/leotard)
 	reqs = list(/obj/item/natural/silk = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/athletic_leotard
-	name = "运动紧身衣（1纤维，1丝绸）"
+	name = "运动紧身衣，需1份纤维、1块丝绸"
 	result = list(/obj/item/undies/athletic_leotard)
 	reqs = list(/obj/item/natural/silk = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/braies
-	name = "亚麻衬裤（1布）"
+	name = "亚麻衬裤，需1块布料"
 	result = list(/obj/item/undies/braies)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 2

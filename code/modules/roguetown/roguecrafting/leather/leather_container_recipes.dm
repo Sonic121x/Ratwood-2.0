@@ -13,7 +13,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/container/magepouch
-	name = "召唤师小袋"
+	name = "学者药囊"
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/fibers = 1,
@@ -22,7 +22,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/leather/container/meatbag
-	name = "猎物挎包"
+	name = "猎获挎袋"
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/cloth = 1,
@@ -38,7 +38,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/satchelshort
-	name = "短挎包"
+	name = "短挂挎包"
 	result = /obj/item/storage/backpack/rogue/satchel/short
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
@@ -53,7 +53,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/leather/container/waterskin
-	name = "水囊"
+	name = "水袋"
 	result = /obj/item/reagent_containers/glass/bottle/waterskin
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 2)
@@ -72,25 +72,25 @@
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/gwstrap
-	name = "重武器背带"
+	name = "巨型武器背带"
 	result = /obj/item/rogueweapon/scabbard/gwstrap
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/twstrap
-	name = "飞刀弹带"
+	name = "飞刀挎带"
 	result = /obj/item/twstrap
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/hurlstrap
-	name = "投掷棍弹带"
+	name = "投斧挎带"
 	result = /obj/item/hurlstrap
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/bmbstrap
-	name = "炸弹弹带"
+	name = "炸弹挎带"
 	result = /obj/item/bmbstrap
 	reqs = list(/obj/item/natural/hide/cured = 5,
 				/obj/item/rope = 2)
@@ -109,18 +109,18 @@
 	verbage = "解开"
 
 /datum/crafting_recipe/roguetown/leather/container/belt/black
-	name = "黑皮腰带"
+	name = "黑腰带"
 	result = /obj/item/storage/belt/rogue/leather/black
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/belt/knifebelt
-	name = "投刃腰带"
+	name = "飞刃腰带"
 	result = /obj/item/storage/belt/rogue/leather/knifebelt
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2)
 
 /datum/crafting_recipe/roguetown/leather/container/belt/double
-	name = "双联腰带"
+	name = "双腰带"
 	result = /obj/item/storage/belt/rogue/leather/double
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2)
@@ -136,7 +136,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/belt/suspenders_colored
-	name = "吊裤带 (可染色)"
+	name = "可染色背带"
 	result = /obj/item/storage/belt/rogue/leather/suspenders/butler/colored
 	reqs = list(
 		/obj/item/natural/hide/cured = 1,

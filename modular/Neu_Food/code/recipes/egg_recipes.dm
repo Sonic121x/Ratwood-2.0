@@ -54,7 +54,7 @@
 
 // Wiener Egg + Bacon -> Wiener Egg with Bacon (alternative path)
 /datum/food_recipe/eggs/wiener_egg_bacon_alt
-	name = "培根香肠煎蛋（备选）"
+	name = "培根香肠煎蛋 — 备选配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried

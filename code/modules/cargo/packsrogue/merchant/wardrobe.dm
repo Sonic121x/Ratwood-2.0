@@ -104,7 +104,7 @@
 				)
 
 /datum/supply_pack/rogue/wardrobe/pants/formal
-	name = "紧身裤（黑色）"
+	name = "黑色紧身裤"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/black,

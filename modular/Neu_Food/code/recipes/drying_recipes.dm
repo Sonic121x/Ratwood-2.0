@@ -41,7 +41,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/brothbriquealt
-	name = "汤砖（备选）"
+	name = "汤砖 — 备选配方"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
@@ -384,7 +384,7 @@
     time = 10 SECONDS
 
 /datum/crafting_recipe/roguetown/cooking/jacksberriespoisondry
-    name = "杰克莓雪茄（有毒）"
+    name = "有毒杰克莓雪茄"
     result = /obj/item/clothing/mask/cigarette/rollie/jacksberriespoison/cheroot
     reqs = list(
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
@@ -474,7 +474,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarrocknutalt
-	name = "糖渍石果（备选）"
+	name = "糖渍石果 — 备选配方"
 	display_category = ITEM_CAT_FOODSTUFF_PRESERVED
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,

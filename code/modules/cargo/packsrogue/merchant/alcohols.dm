@@ -90,7 +90,7 @@
 
 //AZURE DRINKS
 /datum/supply_pack/rogue/alcohol/jagdtrunk
-	name = "烈酒瓶（猎饮草本烈酒）"
+	name = "瓶装猎饮草本烈酒"
 	cost = 60
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/jagdtrunk)
 
@@ -142,6 +142,6 @@
 // Zhongese
 
 /datum/supply_pack/rogue/alcohol/shejiu
-	name = "蛇酒（中原蛇酒）"
+	name = "中原蛇酒"
 	cost = 120
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/shejiu)
