@@ -3,6 +3,8 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/obj/effect/proc_holder/spell/invoked/flight,
 	/obj/effect/proc_holder/spell/invoked/group_darkvision,
 	/obj/effect/proc_holder/spell/invoked/group_enlarge,
+	/obj/effect/proc_holder/spell/invoked/shrink,
+	/obj/effect/proc_holder/spell/invoked/group_shrink,
 	/obj/effect/proc_holder/spell/invoked/group_fortitude_spell,
 	/obj/effect/proc_holder/spell/invoked/group_guidance,
 	/obj/effect/proc_holder/spell/invoked/group_haste,
