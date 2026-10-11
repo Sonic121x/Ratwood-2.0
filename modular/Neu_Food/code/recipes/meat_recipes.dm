@@ -27,7 +27,7 @@
 
 // Fried Bacon + Wiener Egg -> Wiener Egg with Bacon
 /datum/food_recipe/bacon_wiener_egg
-	name = "培根香肠煎蛋（培根制）"
+	name = "培根香肠煎蛋 — 培根配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage
@@ -81,7 +81,7 @@
 
 // Frybird + Fried Potato -> Frybird Tato (alt)
 /datum/food_recipe/frybird_tato_meat_alt
-	name = "炸鸟排配土豆（备选）"
+	name = "炸鸟排配土豆 — 备选配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
@@ -117,7 +117,7 @@
 
 // Cooked Sausage + Fried Egg -> Wiener Egg
 /datum/food_recipe/wiener_egg_sausage
-	name = "香肠煎蛋（香肠制）"
+	name = "香肠煎蛋 — 香肠配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg/fried

@@ -736,7 +736,7 @@
 
 /datum/status_effect/xylix_blessed_luck/on_apply()
 	var/random_luck = rand(2,4)
-	effectedstats = list("fortune" = random_luck)
+	effectedstats = list(STATKEY_LCK = random_luck)
 	. = ..()
 
 /datum/status_effect/xylix_blessed_luck/on_remove()
@@ -776,7 +776,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/astrata_favor
 
 /datum/status_effect/astrata_favor/on_apply()
-	effectedstats = list("constitution" = rand(1, 3), "willpower" = rand(1, 3))
+	effectedstats = list(STATKEY_CON = rand(1, 3), STATKEY_WIL = rand(1, 3))
 	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_STEELHEARTED, TRAIT_STATUS_EFFECT(id))
@@ -808,7 +808,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/noc_favor
 
 /datum/status_effect/noc_favor/on_apply()
-	effectedstats = list("intelligence" = rand(1, 3), "speed" = rand(1, 3))
+	effectedstats = list(STATKEY_INT = rand(1, 3), STATKEY_SPD = rand(1, 3))
 	owner.alpha = 127
 	. = ..()
 
@@ -831,7 +831,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/zizo_unfavor
 
 /datum/status_effect/zizo_unfavor/on_apply()
-	effectedstats = list("strength" = -rand(1, 5), "perception" = -rand(1, 5), "intelligence" = -rand(1, 5), "constitution" = -rand(1, 5), "willpower" = -rand(1, 5), "speed" = -rand(1, 5))
+	effectedstats = list(STATKEY_STR = -rand(1, 5), STATKEY_PER = -rand(1, 5), STATKEY_INT = -rand(1, 5), STATKEY_CON = -rand(1, 5), STATKEY_WIL = -rand(1, 5), STATKEY_SPD = -rand(1, 5))
 	. = ..()
 
 /datum/status_effect/zizo_unfavor/on_remove()
@@ -852,7 +852,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/ravox_favor
 
 /datum/status_effect/ravox_favor/on_apply()
-	effectedstats = list("strength" = rand(1, 3), "speed" = rand(1, 3), "willpower" = rand(1, 3))
+	effectedstats = list(STATKEY_STR = rand(1, 3), STATKEY_SPD = rand(1, 3), STATKEY_WIL = rand(1, 3))
 	. = ..()
 
 /datum/status_effect/ravox_favor/on_remove()
@@ -873,7 +873,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/malum_favor
 
 /datum/status_effect/malum_favor/on_apply()
-	effectedstats = list("constitution" = 1, "willpower" = rand(1, 5))
+	effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = rand(1, 5))
 	. = ..()
 
 /datum/status_effect/malum_favor/on_remove()
@@ -889,7 +889,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/baotha_favor
 
 /datum/status_effect/baotha_favor/on_apply()
-	effectedstats = list("speed" = rand(2, 3))
+	effectedstats = list(STATKEY_SPD = rand(2, 3))
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
 		C.drunkenness = max(C.drunkenness, 30)

@@ -21,7 +21,7 @@
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
 /datum/supply_pack/rogue/substances/shhig
-	name = "嘘蛇牌香烟（6支装）"
+	name = "六支装嘘蛇牌香烟"
 	cost = 40
 	contains = list(/obj/item/storage/fancy/shhig)
 
@@ -41,6 +41,6 @@
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/substances/suidust
-	name = "碎晶粉（仅变性）"
+	name = "变性用碎晶粉"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)

@@ -4,7 +4,7 @@
 	craft_xp_override = 1
 
 /datum/crafting_recipe/roguetown/hunting/bait
-	name = "诱饵"
+	name = "饵料袋"
 	result = /obj/item/bait
 	reqs = list(
 		/obj/item/storage/roguebag = 1,
@@ -14,7 +14,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/hunting/sbaita
-	name = "甜诱饵（苹果）"
+	name = "甜饵袋 — 苹果配方"
 	result = /obj/item/bait/sweet
 	reqs = list(
 		/obj/item/storage/roguebag = 1,
@@ -24,7 +24,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/hunting/sbait
-	name = "甜诱饵（浆果）"
+	name = "甜饵袋 — 浆果配方"
 	result = /obj/item/bait/sweet
 	reqs = list(
 		/obj/item/storage/roguebag = 1,
@@ -34,7 +34,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/hunting/bloodbait
-	name = "血诱饵"
+	name = "血饵袋"
 	result = /obj/item/bait/bloody
 	reqs = list(
 		/obj/item/storage/roguebag = 1,

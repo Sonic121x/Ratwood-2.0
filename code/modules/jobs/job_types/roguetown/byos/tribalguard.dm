@@ -93,7 +93,7 @@
 		H.grant_language(/datum/language/draconic)
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("反曲弓","投石索","远古长矛与标枪袋（远古标枪）")
+		var/weapons = list("反曲弓","投石索","远古长矛与远古标枪袋")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -107,7 +107,7 @@
 				beltr = /obj/item/quiver/sling/ancient
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/slings, 4, TRUE)
-			if("远古长矛与标枪袋（远古标枪）")
+			if("远古长矛与远古标枪袋")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/spear/ancient
 				beltr = /obj/item/quiver/javelin/ancient

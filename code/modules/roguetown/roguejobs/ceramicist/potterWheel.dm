@@ -321,7 +321,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_1
-	name = "陶像（款式 I）"
+	name = "I式陶像"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design1
@@ -330,7 +330,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_2
-	name = "陶像（款式 II）"
+	name = "II式陶像"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design2
@@ -339,7 +339,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_3
-	name = "陶像（款式 III）"
+	name = "III式陶像"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design3
@@ -348,7 +348,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_4
-	name = "陶像（款式 IV）"
+	name = "IV式陶像"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design4
@@ -357,7 +357,7 @@
 	required_clay_type = /obj/item/natural/clay/kneaded
 
 /datum/pottery_wheel_recipe/basic/statue_5
-	name = "陶像（款式 V）"
+	name = "V式陶像"
 	craftdiff = 0
 	base_time = 55
 	result_type = /obj/item/natural/clay/claystatue/design5

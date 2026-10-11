@@ -16,7 +16,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots_heavy
-	name = "厚皮靴"
+	name = "硬化皮靴"
 	result = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 1)
@@ -30,14 +30,14 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots_heavy_footwrap
-	name = "硬皮裹脚布"
+	name = "硬化皮革脚缠布"
 	result = /obj/item/clothing/shoes/roguetown/boots/footwraps/hleather
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/furlinedboots
-	name = "毛里靴"
+	name = "毛衬长靴"
 	result = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 1)
@@ -50,20 +50,20 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/dark
-	name = "暗色靴"
+	name = "深色长靴"
 	result = /obj/item/clothing/shoes/roguetown/boots
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/noble
-	name = "贵族靴"
+	name = "贵族长靴"
 	result = /obj/item/clothing/shoes/roguetown/boots/nobleboot
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/fur = 1)
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/thigh
-	name = "过膝长靴"
+	name = "大腿长靴"
 	result = /obj/item/clothing/shoes/roguetown/boots/hand/thigh
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/cloth = 1) ///Padding for comfort ya know?

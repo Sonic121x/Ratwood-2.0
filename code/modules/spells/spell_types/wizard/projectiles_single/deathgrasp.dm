@@ -28,7 +28,7 @@
 	id = "deathgrasped"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/deathgrasped
 	duration = 10 SECONDS
-	effectedstats = list("speed" = -4) //Skillcheck for dodgemaxxers: if they switch from Dodge to Parry, they'll live.
+	effectedstats = list(STATKEY_SPD = -4) //Skillcheck for dodgemaxxers: if they switch from Dodge to Parry, they'll live.
 
 /atom/movable/screen/alert/status_effect/buff/deathgrasped
 	name = "遭到攫握"

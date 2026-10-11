@@ -45,7 +45,7 @@
 	contains = list(/obj/item/legwears/fishnet/white)
 
 /datum/supply_pack/rogue/bath_clothes/stockings_normal
-	name = "长袜（内穿）"
+	name = "内穿长袜"
 	cost = 10
 	contains = list(/obj/item/legwears/white)
 
@@ -116,7 +116,7 @@
 
 // Just a recolored cloth belt lol
 /datum/supply_pack/rogue/bath_clothes/belt
-	name = "布腰带（女士款）"
+	name = "女士布腰带"
 	cost = 10
 	contains = list(/obj/item/storage/belt/rogue/leather/cloth/lady)
 

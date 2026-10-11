@@ -40,32 +40,32 @@
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/navaja)
 
 /datum/supply_pack/rogue/merc_weapons/naginata
-	name = "风郡薙刀（长柄武器）"
+	name = "风郡薙刀"
 	cost = 140
 	contains = list(/obj/item/rogueweapon/spear/naginata)
 
 /datum/supply_pack/rogue/merc_weapons/kanabo
-	name = "铁包棒（巨棍）"
+	name = "铁包棒"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/mace/goden/kanabo)
 
 /datum/supply_pack/rogue/merc_weapons/ssangsudo
-	name = "风郡双手刀（巨剑）"
+	name = "风郡双手刀"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo)
 
 /datum/supply_pack/rogue/merc_weapons/katana
-	name = "风郡环刀（剑）"
+	name = "风郡环刀"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/sword/sabre/mulyeog)
 
 /datum/supply_pack/rogue/merc_weapons/kazengunkodachi
-	name = "钢小太刀（短剑）"
+	name = "钢小太刀"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/sword/short/kazengun)
 
 /datum/supply_pack/rogue/merc_weapons/kazengundagger
-	name = "钢短刀（匕首）"
+	name = "钢短刀"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun)
 
@@ -75,7 +75,7 @@
 	contains = list(/obj/item/rogueweapon/sword/sabre/hook)
 
 /datum/supply_pack/rogue/merc_weapons/kazengunscabbard
-	name = "简式风军剑鞘（加固）"
+	name = "加固简式风军剑鞘"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/scabbard/sword/kazengun)
 

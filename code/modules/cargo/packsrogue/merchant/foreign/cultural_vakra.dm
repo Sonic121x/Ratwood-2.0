@@ -12,7 +12,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/vakra/helmet
-	name = "沃尔夫面甲头盔（瓦克兰）"
+	name = "瓦克兰沃尔夫面甲头盔"
 	cost = 70
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 	ship_qty_min = 1
@@ -26,7 +26,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/vakra/shield
-	name = "熨斗盾（瓦克兰）"
+	name = "瓦克兰熨斗盾"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/shield/heater)
 	ship_qty_min = 1
