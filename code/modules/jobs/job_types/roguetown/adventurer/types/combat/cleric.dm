@@ -268,14 +268,14 @@
 		if(/datum/patron/divine/astrata)
 			cloak = /obj/item/clothing/cloak/templar/astrata
 			if(H.mind)
-				var/helmets = list("阿斯特拉塔头盔（巴尔布特盔）", "羽饰阿斯特拉塔头盔", "阿斯特拉塔头盔（桶盔）")
+				var/helmets = list("阿斯特拉塔巴尔布特盔", "羽饰阿斯特拉塔头盔", "阿斯特拉塔桶盔")
 				var/helmet_choice = input(H, "选择你的头盔。", "行于她的光中。") as anything in helmets
 				switch(helmet_choice)
-					if("阿斯特拉塔头盔（巴尔布特盔）")
+					if("阿斯特拉塔巴尔布特盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 					if("羽饰阿斯特拉塔头盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm/visor
-					if("阿斯特拉塔头盔（桶盔）")
+					if("阿斯特拉塔桶盔")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 		if(/datum/patron/divine/noc)
@@ -330,7 +330,7 @@
 					H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_APPRENTICE, TRUE)
 					beltl = /obj/item/reagent_containers/glass/bottle/rogue/healthpot //No needles or cloth, but a basic potion of lifeblood - similar to the Sorcerer's manna potion. Take the 'Physician's Apprentice' virtue for that, uncapped skills, and more.
 				if("十字军之路 - 白银武器")
-					var/crusaderweapon = list("白银长剑", "白银钉头锤", "白银晨星连枷", "白银巨型连枷（需 13 力量）", "银矛", "白银战斧", "银鞭", "银软剑")
+					var/crusaderweapon = list("白银长剑", "白银钉头锤", "白银晨星连枷", "白银巨型连枷 — 需13力量", "银矛", "白银战斧", "银鞭", "银软剑")
 					var/crusaderweapon_choice = input(H, "选择你的白银武器，十字军！") as anything in crusaderweapon
 					switch(crusaderweapon_choice)
 						if("白银长剑")
@@ -343,7 +343,7 @@
 						if("白银晨星连枷")
 							H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							beltl = /obj/item/rogueweapon/flail/sflail/silver
-						if("白银巨型连枷（需 13 力量）")
+						if("白银巨型连枷 — 需13力量")
 							H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 							l_hand = /obj/item/rogueweapon/flail/peasantwarflail/silver
 						if("银矛")

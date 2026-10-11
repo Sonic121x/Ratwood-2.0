@@ -27,7 +27,7 @@
 
 // Fried Potato + Sausage -> Wiener Potato (alt)
 /datum/food_recipe/wiener_potato_alt
-	name = "土豆香肠（备选）"
+	name = "土豆香肠 — 备选配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
@@ -36,7 +36,7 @@
 
 // Fried Potato + Fried Poultry Cutlet -> Frybird Tato (alt)
 /datum/food_recipe/frybird_tato_alt
-	name = "炸鸟排配土豆（备选）"
+	name = "炸鸟排配土豆 — 备选配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried

@@ -22,12 +22,12 @@
 	contains = list (/obj/item/clothing/under/roguetown/heavy_leather_pants/nomadpants)
 
 /datum/supply_pack/rogue/gronn/gronnpantsalt
-	name = "毛皮裤（格隆恩）"
+	name = "格隆恩毛皮裤"
 	cost = 40
 	contains = list (/obj/item/clothing/under/roguetown/trou/leather/gronn)
 
 /datum/supply_pack/rogue/gronn/gronnglovesleather
-	name = "毛衬皮手套（格隆恩）"
+	name = "格隆恩毛衬皮手套"
 	cost = 40
 	contains = list (/obj/item/clothing/gloves/roguetown/angle/gronn)
 
@@ -88,7 +88,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/gronn/fur_pants
-	name = "毛皮裤（格隆恩）"
+	name = "格隆恩毛皮裤"
 	cost = 50
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/atgervi)
 	ship_qty_min = 2

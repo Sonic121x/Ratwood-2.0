@@ -72,7 +72,7 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/flail
-	name = "铁连枷（钢制）"
+	name = "铁连枷"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/flail/sflail,

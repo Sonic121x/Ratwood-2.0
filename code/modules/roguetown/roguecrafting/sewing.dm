@@ -129,7 +129,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/sewing/lowcut_shirt
-	name = "低领束衣"
+	name = "低胸束腰衫"
 	reqs = list(
 		/obj/item/natural/cloth = 2,
 		/obj/item/natural/fibers = 1)
@@ -271,13 +271,13 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/gbandages
-	name = "绑带（需手套）"
+	name = "绑带，需手套"
 	result = list(/obj/item/clothing/gloves/roguetown/bandages)
 	reqs = list(/obj/item/natural/cloth = 3)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/sewing/scarf
-	name = "围巾（1 纤维，1 布料）"
+	name = "围巾，需1份纤维、1块布料"
 	result = list(/obj/item/clothing/head/roguetown/scarf)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
@@ -360,20 +360,20 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/gweightedbandagesalt
-	name = "绑带制成加重绑带（需手套）"
+	name = "绑带制成加重绑带，需手套"
 	result = list(/obj/item/clothing/gloves/roguetown/bandages/weighted)
 	reqs = list(/obj/item/clothing/gloves/roguetown/bandages = 1,
 				/obj/item/natural/cloth = 2)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/bandage
-	name = "绑带（缝纺）"
+	name = "缝纺绑带"
 	result = list(/obj/item/natural/cloth/bandage)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/cloth = 1)
 
 /datum/crafting_recipe/roguetown/sewing/gweightedbandages
-	name = "加重绑带（需手套）"
+	name = "加重绑带，需手套"
 	result = list(/obj/item/clothing/gloves/roguetown/bandages/weighted)
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 1)
@@ -403,7 +403,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/whitetabard
-	name = "战袍（另款）"
+	name = "另一款战袍"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/tabardwhite)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
@@ -554,7 +554,7 @@
 	result = list(/obj/item/clothing/cloak/stabard/guardhood)
 
 /datum/crafting_recipe/roguetown/sewing/poncho
-	name = "布料披风"
+	name = "布制披衫"
 	result = /obj/item/clothing/cloak/poncho
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1,)
@@ -665,7 +665,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/gambeson
 	display_category = ITEM_CAT_ARMOR_LIGHT
-	name = "棉甲"
+	name = "绗缝护甲衣"
 	result = /obj/item/clothing/suit/roguetown/armor/gambeson
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 2)
@@ -675,7 +675,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/armingjacket
 	display_category = ITEM_CAT_ARMOR_LIGHT
-	name = "战斗短衣"
+	name = "武装短衣"
 	result = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 1)
@@ -684,7 +684,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/paddedcap
 	display_category = ITEM_CAT_ARMOR_HELMETS
-	name = "加衬帽"
+	name = "衬垫帽"
 	result = /obj/item/clothing/head/roguetown/paddedcap
 	reqs = list(/obj/item/natural/fibers = 5)
 	tools = list(/obj/item/needle)
@@ -779,7 +779,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/hgambeson/fencer
 	display_category = ITEM_CAT_ARMOR_LIGHT
-	name = "击剑衬衣"
+	name = "加垫击剑衬衣"
 	result = /obj/item/clothing/suit/roguetown/shirt/freifechter
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/silk = 2)
@@ -1144,7 +1144,7 @@
 	sellprice = 5
 
 /datum/crafting_recipe/roguetown/sewing/sailorshirt_colored
-	name = "条纹衬衫 (可染色)"
+	name = "可染色条纹衬衣"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/colored)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
@@ -1389,7 +1389,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/silkydress
 	display_category = ITEM_CAT_GARMENT_FINE
-	name = "丝绸连衣裙"
+	name = "柔缎长裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/silkydress
 	reqs = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 3)
@@ -1399,7 +1399,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/weaving/springgown
 	display_category = ITEM_CAT_GARMENT_FINE
-	name = "礼袍（春）"
+	name = "春日礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 4)
@@ -1408,7 +1408,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/weaving/summergown
 	display_category = ITEM_CAT_GARMENT_FINE
-	name = "礼袍（夏）"
+	name = "夏日礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/summergown
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/cloth = 1,
@@ -1418,7 +1418,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/weaving/fallgown
 	display_category = ITEM_CAT_GARMENT_FINE
-	name = "礼袍（秋，丝质）"
+	name = "秋日礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown
 	reqs = list(/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 2,
@@ -1428,7 +1428,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/weaving/wintergown
 	display_category = ITEM_CAT_GARMENT_FINE
-	name = "礼袍（冬）"
+	name = "冬日礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/wintergown
 	reqs = list(/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 2,
@@ -1472,7 +1472,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/strapless_dress_alt
-	name = "无肩带连衣裙（另款）"
+	name = "另一款抹胸连衣裙"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
@@ -1505,7 +1505,7 @@
 
 // -- Barding
 /datum/crafting_recipe/roguetown/sewing/barding
-	name = "衬垫坐骑甲 (赛加羚羊)"
+	name = "赛加羚衬垫坐骑甲"
 	category = "Misc"
 	result = list(/obj/item/clothing/barding)
 	reqs = list(/obj/item/natural/cloth = 4,
@@ -1515,7 +1515,7 @@
 	sellprice = 20
 
 /datum/crafting_recipe/roguetown/sewing/barding/fogbeast
-	name = "衬垫坐骑甲 (雾兽)"
+	name = "雾兽衬垫坐骑甲"
 	result = list(/obj/item/clothing/barding/fogbeast)
 
 /datum/crafting_recipe/roguetown/sewing/paperparasol

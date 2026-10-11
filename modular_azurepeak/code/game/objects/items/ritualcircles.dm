@@ -1375,10 +1375,10 @@
 		if("阿凡泰因狼面护鼻盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo
 
-	var/armors = list("阿凡泰因全身板甲（重甲）", "阿凡泰因织纹锁甲（中甲）")
+	var/armors = list("重甲：阿凡泰因全身板甲", "中甲：阿凡泰因织纹锁甲")
 	var/armors_choice = input(H, "选择你的护甲。", "来自那位女士的庇护") as anything in armors
 	switch(armors_choice)
-		if("阿凡泰因全身板甲（重甲）")
+		if("重甲：阿凡泰因全身板甲")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/zizo
 			gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
@@ -1386,7 +1386,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
-		if("阿凡泰因织纹锁甲（中甲）")
+		if("中甲：阿凡泰因织纹锁甲")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/medium/zizo
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo

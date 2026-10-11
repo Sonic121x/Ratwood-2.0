@@ -277,7 +277,7 @@
 	var/recipe_icon_state = "glassBatch"
 
 /datum/glass_blow_recipe/statue_1
-	name = "玻璃雕像（款式 I）"
+	name = "I式玻璃雕像"
 	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design1
@@ -285,7 +285,7 @@
 	recipe_icon_state = "statueglass1"
 
 /datum/glass_blow_recipe/statue_2
-	name = "玻璃雕像（款式 II）"
+	name = "II式玻璃雕像"
 	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design2
@@ -293,7 +293,7 @@
 	recipe_icon_state = "statueglass2"
 
 /datum/glass_blow_recipe/statue_3
-	name = "玻璃雕像（款式 III）"
+	name = "III式玻璃雕像"
 	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design3
@@ -301,7 +301,7 @@
 	recipe_icon_state = "statueglass3"
 
 /datum/glass_blow_recipe/statue_4
-	name = "玻璃雕像（款式 IV）"
+	name = "IV式玻璃雕像"
 	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design4
@@ -309,7 +309,7 @@
 	recipe_icon_state = "statueglass4"
 
 /datum/glass_blow_recipe/statue_5
-	name = "玻璃雕像（款式 V）"
+	name = "V式玻璃雕像"
 	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design5

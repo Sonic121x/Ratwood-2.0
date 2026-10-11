@@ -35,7 +35,7 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("长剑","铁连枷（钢制）","钢战锤","军刀")
+		var/weapons = list("长剑","铁连枷","钢战锤","军刀")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -43,7 +43,7 @@
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				l_hand = /obj/item/rogueweapon/sword/long
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("铁连枷（钢制）")
+			if("铁连枷")
 				l_hand = /obj/item/rogueweapon/flail/sflail
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
 			if("钢战锤")

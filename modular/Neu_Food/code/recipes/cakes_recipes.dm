@@ -94,7 +94,7 @@
 
 // Frosted Cake + Raw Carrot -> Carrot Cake (alternative)
 /datum/food_recipe/cake/carrot_cake_alt
-	name = "胡萝卜蛋糕（生胡萝卜）"
+	name = "胡萝卜蛋糕 — 生胡萝卜配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/frostedcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/carrot
@@ -194,7 +194,7 @@
 
 // Rocknut Cake + Apple -> Applenut Cake (alternative path)
 /datum/food_recipe/cake/applenut_cake_alt
-	name = "苹果坚果蛋糕（石果制）"
+	name = "苹果坚果蛋糕 — 石果配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/rocknutcake
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/grown/apple

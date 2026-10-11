@@ -84,7 +84,7 @@
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/woodstaff
-	name = "六尺长杆（木杖）"
+	name = "六尺木杖"
 	cost = 6
 	contains = list(/obj/item/rogueweapon/woodstaff)
 
@@ -100,7 +100,7 @@
 
 // If adding more, make new category for maps.
 /datum/supply_pack/rogue/adventure_supplies/stag_map
-	name = "白鹿传说（地图）"
+	name = "白鹿传说地图"
 	cost = 250
 	contains = list(/obj/item/hunting_map/white_stag)
 
@@ -166,11 +166,11 @@
 	contains = list(/obj/item/hunting_map/boars)
 
 /datum/supply_pack/rogue/adventure_supplies/sewingkit
-	name = "缝纫套件(修理包)"
+	name = "缝纫套件"
 	cost = 40
 	contains = list(/obj/item/repair_kit)
 
 /datum/supply_pack/rogue/adventure_supplies/metalkit
-	name = "护甲板(修理包)"
+	name = "护甲板"
 	cost = 50
 	contains = list(/obj/item/repair_kit/metal)

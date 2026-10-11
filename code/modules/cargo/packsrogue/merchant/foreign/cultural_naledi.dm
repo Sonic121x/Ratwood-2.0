@@ -122,7 +122,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/naledi/gold_finery
-	name = "金戒指（维拉伦）"
+	name = "维拉伦金戒指"
 	cost = 180
 	contains = list(
 		/obj/item/clothing/ring/gold,

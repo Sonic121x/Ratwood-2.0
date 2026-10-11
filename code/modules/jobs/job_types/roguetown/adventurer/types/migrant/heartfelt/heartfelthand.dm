@@ -250,8 +250,8 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/heartfelt)
 
 	if(H.age == AGE_OLD)
-		H.change_stat("speed", -1)
-		H.change_stat("strength", -1)
-		H.change_stat("intelligence", 1)
-		H.change_stat("perception", 1)
+		H.change_stat(STATKEY_SPD, -1)
+		H.change_stat(STATKEY_STR, -1)
+		H.change_stat(STATKEY_INT, 1)
+		H.change_stat(STATKEY_PER, 1)
 		H?.mind.adjust_spellpoints(3)

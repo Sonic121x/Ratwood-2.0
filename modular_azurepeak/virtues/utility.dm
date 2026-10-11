@@ -237,7 +237,7 @@
 	custom_text = "- 右键点击痕迹后，你可标记留下它的人<i>（需要专家技能，且并非该美德独占）</i>。\n- 之后发现的同一目标痕迹会自动高亮；若其当前未潜行或隐形，目标本人也会一并高亮。\n- 缩短追踪冷却，可立即检查痕迹，且移动不再打断追踪。\n- 额外地，无论<i>你自己</i>是否具有贵族身份，都能阅读他人的贵族流言。"
 
 /datum/virtue/utility/bronzearm_r
-	name = "青铜臂（右）"
+	name = "青铜右义臂"
 	desc = "凭借人脉或财富，我的一只手臂被替换成了由青铜与齿轮构成的义肢，能够抓握并持物。也因此，我顺带学会了一点工程学。"
 	custom_text = "将你的右臂替换为青铜义肢。与“木臂（右）”癖性不兼容。"
 	added_skills = list(list(/datum/skill/craft/engineering, 1, 6))
@@ -258,7 +258,7 @@
 			L.attach_limb(recipient)
 
 /datum/virtue/utility/bronzearm_l
-	name = "青铜臂（左）"
+	name = "青铜左义臂"
 	desc = "凭借人脉或财富，我的一只手臂被替换成了由青铜与齿轮构成的义肢，能够抓握并持物。也因此，我顺带学会了一点工程学。"
 	custom_text = "将你的左臂替换为青铜义肢。与“木臂（左）”癖性不兼容。"
 	added_skills = list(list(/datum/skill/craft/engineering, 1, 6))

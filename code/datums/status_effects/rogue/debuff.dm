@@ -745,7 +745,7 @@
 
 /datum/status_effect/debuff/emberwine
 	id = "emberwine"
-	effectedstats = list("strength" = -1, "willpower" = -2, "speed" = -2, "intelligence" = -3)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_WIL = -2, STATKEY_SPD = -2, STATKEY_INT = -3)
 	duration = 1 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/emberwine
 

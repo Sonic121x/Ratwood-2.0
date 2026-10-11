@@ -38,7 +38,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/jacksberry
-	name = "浆果种子（杰克莓）"
+	name = "杰克莓种子"
 	cost = 3
 	contains = list(
 					/obj/item/seeds/berryrogue,

@@ -35,7 +35,7 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("长剑","钉头锤","钩镰枪","巨型连枷（需 12 力量）","战斧","铁短剑与铁盾","铁军刀与木盾")
+		var/weapons = list("长剑","钉头锤","钩镰枪","巨型连枷 — 需12力量","战斧","铁短剑与铁盾","铁军刀与木盾")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
 			if("长剑")
@@ -49,7 +49,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/billhook
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("巨型连枷（需 12 力量）")
+			if("巨型连枷 — 需12力量")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail/steel
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
@@ -405,7 +405,7 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("行刑剑","战锤与铁盾","铁连枷与铁盾","民兵长连枷","卢塞恩锤","巨斧","防御就是一切（鸢盾）")
+		var/weapons = list("行刑剑","战锤与铁盾","铁连枷与铁盾","民兵长连枷","卢塞恩锤","巨斧","鸢盾 — 防御就是一切")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
 			if("行刑剑")
@@ -433,7 +433,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/greataxe
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("防御就是一切（鸢盾）")
+			if("鸢盾 — 防御就是一切")
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/shield/atgervi
 
@@ -535,7 +535,7 @@
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/silver
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 
-		var/sidearm = list("钢匕首", "钢制格挡匕首", "赛克斯短刀", "银尖木桩（祝圣）", "银铲（祝圣）", "鸢盾")
+		var/sidearm = list("钢匕首", "钢制格挡匕首", "赛克斯短刀", "祝圣银尖木桩", "祝圣银铲", "鸢盾")
 		var/sidearm_choice = input(H, "选择你的副武器。", "先祈祷，再出手。") as anything in sidearm
 		switch(sidearm_choice)
 			if("钢匕首")
@@ -547,10 +547,10 @@
 			if("赛克斯短刀")
 				l_hand = /obj/item/rogueweapon/huntingknife/combat
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("银尖木桩（祝圣）")
+			if("祝圣银尖木桩")
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/stake/preblessed
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("银铲（祝圣）")
+			if("祝圣银铲")
 				l_hand = /obj/item/rogueweapon/shovel/silver/preblessed //Unlocks the secret 'Shovel Knight' subclass. No dagger skills if you take this. Doesn't scale off anything, I think. Raw style.
 			if("鸢盾")
 				l_hand = /obj/item/rogueweapon/shield/tower/metal
@@ -668,9 +668,9 @@
 			H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.set_blindness(0)
-			H.change_stat("speed", 3)
-			H.change_stat("willpower", 1)
-			H.change_stat("strength", 1)
+			H.change_stat(STATKEY_SPD, 3)
+			H.change_stat(STATKEY_WIL, 1)
+			H.change_stat(STATKEY_STR, 1)
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
@@ -725,9 +725,9 @@
 			H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.set_blindness(0)
-			H.change_stat("speed", 3)
-			H.change_stat("willpower", 1)
-			H.change_stat("strength", 1)
+			H.change_stat(STATKEY_SPD, 3)
+			H.change_stat(STATKEY_WIL, 1)
+			H.change_stat(STATKEY_STR, 1)
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
@@ -781,9 +781,9 @@
 			H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.set_blindness(0)
-			H.change_stat("speed", 2)
-			H.change_stat("willpower", 1)
-			H.change_stat("strength", 2)
+			H.change_stat(STATKEY_SPD, 2)
+			H.change_stat(STATKEY_WIL, 1)
+			H.change_stat(STATKEY_STR, 2)
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 			pants = /obj/item/clothing/under/roguetown/tights/black
@@ -834,9 +834,9 @@
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
 			H.set_blindness(0)
-			H.change_stat("strength", 2)
-			H.change_stat("willpower", 2)
-			H.change_stat("constitution", 1)
+			H.change_stat(STATKEY_STR, 2)
+			H.change_stat(STATKEY_WIL, 2)
+			H.change_stat(STATKEY_CON, 1)
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/bikini
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -846,10 +846,10 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			var/weapons = list("巨剑","卢塞恩锤","战斧","老娘赤手空拳就够了！！！")
+			var/weapons = list("大剑","卢塞恩锤","战斧","老娘赤手空拳就够了！！！")
 			var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 			switch(weapon_choice)
-				if("巨剑")
+				if("大剑")
 					H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/greatsword
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
@@ -881,9 +881,9 @@
 			H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			H.set_blindness(0)
-			H.change_stat("strength", 3)
-			H.change_stat("constitution", 3)
-			H.change_stat("speed", -1)
+			H.change_stat(STATKEY_STR, 3)
+			H.change_stat(STATKEY_CON, 3)
+			H.change_stat(STATKEY_SPD, -1)
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 			pants = /obj/item/clothing/under/roguetown/trou/leather

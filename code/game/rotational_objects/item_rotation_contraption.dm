@@ -114,7 +114,7 @@
 		var/suffix = "件"
 		if(copytext(base, length(base)) in list("s", "x", "z")) // "gearboxes", not "gearboxs"
 			suffix = "件"
-		name = "[base]（[in_stack][suffix]）"
+		name = "[base] ×[in_stack][suffix]"
 	else
 		name = item_name || (initial(placed_type.name) + "部件")
 
