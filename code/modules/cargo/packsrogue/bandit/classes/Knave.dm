@@ -267,7 +267,7 @@
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/steel)
 
 /datum/supply_pack/rogue/Knave/Warrows
-	name = "水箭（x5）"
+	name = "水箭 ×5"
 	cost = 1
 	contains = list(
 	/obj/item/ammo_casing/caseless/rogue/arrow/water,
@@ -278,7 +278,7 @@
 	)
 
 /datum/supply_pack/rogue/Knave/Wbolts
-	name = "水弩矢（x5）"
+	name = "水弩矢 ×5"
 	cost = 1
 	contains = list(
 	/obj/item/ammo_casing/caseless/rogue/bolt/water,

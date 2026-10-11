@@ -117,7 +117,7 @@
 	// IT WORKS :TM: still gives them a helm and grandmace, just not the choice
 	
 	H.adjust_blindness(-3)
-	var/weapons = list("华饰长剑加鸢盾","钢制双手剑","巨剑","巨型钉头锤","战斧","钢巨斧","穿甲刺剑","卢塞恩锤", "帕提赞长戟", "偃月刀")
+	var/weapons = list("华饰长剑加鸢盾","钢制双手剑","大剑","巨型钉头锤","战斧","钢巨斧","穿甲刺剑","卢塞恩锤", "帕提赞长戟", "偃月刀")
 	var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -127,7 +127,7 @@
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
 		if("钢制双手剑")
 			r_hand = /obj/item/rogueweapon/greatsword/grenz
-		if("巨剑")
+		if("大剑")
 			r_hand = /obj/item/rogueweapon/greatsword
 		if("巨型钉头锤")
 			r_hand = /obj/item/rogueweapon/mace/goden/steel

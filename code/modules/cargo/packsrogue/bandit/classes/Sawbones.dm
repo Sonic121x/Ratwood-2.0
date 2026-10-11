@@ -143,7 +143,7 @@
 	contains = list(/obj/item/bomb)
 
 /datum/supply_pack/rogue/Sawbones/surgery_bag
-	name = "外科医生包（满配）"
+	name = "满配外科医生包"
 	cost = 30
 	contains = list(/obj/item/storage/belt/rogue/surgery_bag/full/physician)
 

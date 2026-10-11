@@ -134,7 +134,7 @@
 	if(H.mind)
 		var/primary = list("沙姆希尔弯刀","钢索特尔弯刀","雷彭塔·恩","守望者之斧")
 		var/primary_choice = input(H, "选择你的武器。", "拿起武器") as anything in primary
-		var/secondary = list("偃月刀","标枪袋（钢标枪）与黄铜盾","黑角长弓","手炮")
+		var/secondary = list("偃月刀","钢标枪袋与黄铜盾","黑角长弓","手炮")
 		var/secondary_choice = input(H, "选择你的武器。", "拿起武器") as anything in secondary
 		H.set_blindness(0)
 		switch(primary_choice)
@@ -153,7 +153,7 @@
 			if("偃月刀")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				l_hand = /obj/item/rogueweapon/halberd/glaive
-			if("标枪袋（钢标枪）与黄铜盾")
+			if("钢标枪袋与黄铜盾")
 				beltr = /obj/item/quiver/javelin/steel
 				backl = /obj/item/rogueweapon/shield/iron/zybantine
 			if("黑角长弓")

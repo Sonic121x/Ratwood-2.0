@@ -77,7 +77,7 @@
 	if(do_after(user, 2 SECONDS, target = src))
 		user.transferItemToLoc(I, src)
 		contained_items += I
-		name = "包裹（[I.name]）"
+		name = "包裹：[I.name]"
 		desc = "一个包裹严实的邮包，里面装着 [I.name]。"
 		icon_state = I.w_class >= WEIGHT_CLASS_NORMAL ? "ration_large" : "ration_small"
 		dropshrink = 1

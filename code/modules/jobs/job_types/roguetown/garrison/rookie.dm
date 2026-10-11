@@ -176,7 +176,7 @@
 	if(H.mind)
 		var/weapons = list("十字弩","反曲弓","投石索")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
-		var/armor_options = list("皮甲（轻甲）", "铁胸甲（中甲）")
+		var/armor_options = list("轻甲：皮甲", "中甲：铁胸甲")
 		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -191,9 +191,9 @@
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 
 		switch(armor_choice)
-			if("皮甲（轻甲）")
+			if("轻甲：皮甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			if("铁胸甲（中甲）")
+			if("中甲：铁胸甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

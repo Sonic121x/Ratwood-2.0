@@ -44,7 +44,7 @@
 	if(H.mind)
 		if(H.mind.current)
 			H.mind.current.faction += "[H.name]_faction"
-		var/weapons = list(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战长剑" : "长剑", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战钉头锤" : "钢钉头锤", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战连枷" : "铁连枷（钢制）", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战战斧" : "钢斧", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "坚忍长矛" : "钩镰枪")
+		var/weapons = list(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战长剑" : "长剑", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战钉头锤" : "钢钉头锤", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战连枷" : "铁连枷", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "耐战战斧" : "钢斧", HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT) ? "坚忍长矛" : "钩镰枪")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		switch(weapon_choice)
 			if("长剑", "耐战长剑")
@@ -60,7 +60,7 @@
 					r_hand = /obj/item/rogueweapon/mace/goden/psy/old
 				else
 					r_hand = /obj/item/rogueweapon/mace/steel
-			if("铁连枷（钢制）", "耐战连枷")
+			if("铁连枷", "耐战连枷")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					beltr = /obj/item/rogueweapon/flail/sflail/psyflail/old

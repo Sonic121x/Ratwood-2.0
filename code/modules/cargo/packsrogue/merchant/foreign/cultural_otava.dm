@@ -40,7 +40,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/otava/full_plate
-	name = "板甲（奥塔瓦）"
+	name = "奥塔瓦板甲"
 	cost = 520
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)
 	ship_qty_min = 1
@@ -119,7 +119,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/otava/cheese
-	name = "鲜奶酪（帕伊斯）"
+	name = "帕伊斯鲜奶酪"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheese,

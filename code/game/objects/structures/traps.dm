@@ -573,7 +573,7 @@
 	. = ..()
 
 /obj/structure/trap/bogtrap/freeze
-	name = "捕人夹（霜冻）"
+	name = "霜冻捕人夹"
 
 /obj/structure/trap/bogtrap/freeze/trap_effect(mob/living/L)
 	to_chat(L, span_danger("<B>我被彻底冻僵了！</B>"))
@@ -583,7 +583,7 @@
 
 
 /obj/structure/trap/bogtrap/bomb
-	name = "捕人夹（爆裂）"
+	name = "爆裂捕人夹"
 
 /obj/structure/trap/bogtrap/bomb/trap_effect(mob/living/L)
 	to_chat(L, span_danger("<B>地下炸药轰然引爆！</B>"))
@@ -593,7 +593,7 @@
 //kneestingers
 
 /obj/structure/trap/bogtrap/kneestingers
-	name = "捕人夹（刺膝草）"
+	name = "刺膝草捕人夹"
 	desc = "一种隐藏机关，会炸出一片刺膝草。"
 	charges = 1
 
@@ -612,7 +612,7 @@
 //Poison tr*p
 
 /obj/structure/trap/bogtrap/poison
-	name = "捕人夹（毒雾）"
+	name = "毒雾捕人夹"
 	charges = 1
 
 /obj/structure/trap/bogtrap/poison/trap_effect(mob/living/L)
@@ -624,7 +624,7 @@
 //Rous nest. Spawns a rather large rous.
 
 /obj/structure/trap/bogtrap/rous
-	name = "捕人夹（鼠巢）"
+	name = "鼠巢捕人夹"
 	charges = 1
 	retinue_planted = TRUE
 
@@ -639,7 +639,7 @@
 //A better, RP friendly blind gas.
 
 /obj/structure/trap/bogtrap/flare_trap
-	name = "捕人夹（信号弹）"
+	name = "信号弹捕人夹"
 	charges = 1
 	retinue_planted = TRUE
 

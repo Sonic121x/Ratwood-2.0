@@ -94,7 +94,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/rosawood/apples
-	name = "苹果（玫瑰林）"
+	name = "玫瑰林苹果"
 	cost = 20
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/grown/apple,
@@ -108,7 +108,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/rosawood/pears
-	name = "梨（玫瑰林）"
+	name = "玫瑰林梨"
 	cost = 20
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/pear,
@@ -121,7 +121,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/rosawood/berries
-	name = "杰克莓（玫瑰林）"
+	name = "玫瑰林杰克莓"
 	cost = 20
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,

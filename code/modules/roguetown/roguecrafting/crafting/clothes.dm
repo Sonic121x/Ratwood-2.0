@@ -1,6 +1,6 @@
 /datum/crafting_recipe/roguetown/survival/skullmask
 	display_category = ITEM_CAT_CLOTH_MASK
-	name = "头骨面具"
+	name = "骷髅面具"
 	category = "服饰"
 	result = /obj/item/clothing/mask/rogue/skullmask
 	reqs = list(
@@ -31,7 +31,7 @@
 
 /datum/crafting_recipe/roguetown/survival/tribalrags
 	display_category = ITEM_CAT_GARMENT_COMMON
-	name = "部族破衣"
+	name = "部族破布衣"
 	category = "服饰"
 	result = /obj/item/clothing/suit/roguetown/shirt/tribalrag
 	reqs = list(
@@ -47,7 +47,7 @@
 
 /datum/crafting_recipe/roguetown/leather/neck/leather_collar
 	display_category = ITEM_CAT_ARMOR_NECK
-	name = "皮项圈"
+	name = "皮革颈圈"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/collar/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
@@ -59,7 +59,7 @@
 
 /datum/crafting_recipe/roguetown/leather/neck/catbell_collar
 	display_category = ITEM_CAT_ARMOR_NECK
-	name = "猫铃项圈"
+	name = "猫铃颈圈"
 	result = /obj/item/clothing/neck/roguetown/collar/catbell
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell = 1)
 	tools = list(/obj/item/needle)
@@ -70,7 +70,7 @@
 
 /datum/crafting_recipe/roguetown/leather/neck/cowbell_collar
 	display_category = ITEM_CAT_ARMOR_NECK
-	name = "牛铃项圈"
+	name = "牛铃颈圈"
 	result = /obj/item/clothing/neck/roguetown/collar/cowbell
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell/cow = 1)
 	tools = list(/obj/item/needle)
@@ -81,7 +81,7 @@
 
 /datum/crafting_recipe/roguetown/leather/neck/leather_leash
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "皮制牵引绳"
+	name = "皮制牵绳"
 	result = /obj/item/leash/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	tools = list(/obj/item/needle)
@@ -92,7 +92,7 @@
 
 /datum/crafting_recipe/roguetown/survival/goodluckcharm
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "卡比特脚幸运符"
+	name = "幸运护符"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/luckcharm // +1 fortune when worn
 	reqs = list(
@@ -147,7 +147,7 @@
 
 /datum/crafting_recipe/roguetown/survival/bouquet_calendula
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "金盏花束"
+	name = "金盏花花束"
 	category = "服饰"
 	result = /obj/item/bouquet/calendula
 	reqs = list(
@@ -210,7 +210,7 @@
 	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_manabloom
-	name = "魔力花花冠"
+	name = "法绽花花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/manabloom
 	reqs = list(
@@ -248,7 +248,7 @@
 // Amulet
 /datum/crafting_recipe/roguetown/survival/pearlcross
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "护符（珍珠）"
+	name = "珍珠护符"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/pearl
 	reqs = list(
@@ -259,7 +259,7 @@
 
 /datum/crafting_recipe/roguetown/survival/bpearlcross
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "护符（蓝珍珠） "
+	name = "蓝色珍珠护符"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/bpearl
 	reqs = list(
@@ -270,7 +270,7 @@
 
 /datum/crafting_recipe/roguetown/survival/shellnecklace
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "贝壳项链"
+	name = "牡蛎贝壳项链"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/shell
 	reqs = list(
@@ -290,7 +290,7 @@
 
 /datum/crafting_recipe/roguetown/survival/abyssoramulet
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "阿比索尔 护符"
+	name = "阿比索尔护符"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/abyssor
 	reqs = list(
@@ -300,7 +300,7 @@
 
 /datum/crafting_recipe/roguetown/survival/woodcross
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "木制 普赛顿 十字架"
+	name = "木制教十字"
 	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/wood
 	reqs = list(
@@ -310,7 +310,7 @@
 
 /datum/crafting_recipe/roguetown/survival/wickercloak
 	display_category = ITEM_CAT_GARMENT_COMMON
-	name = "柳条披风"
+	name = "柳枝斗篷"
 	category = "服饰"
 	result = /obj/item/clothing/cloak/wickercloak
 	reqs = list(
@@ -321,7 +321,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/mentorhat
-	name = "旧竹帽"
+	name = "旧竹笠"
 	category = "服饰"
 	result = /obj/item/clothing/head/roguetown/mentorhat
 	reqs = list(
@@ -333,7 +333,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/decorative_mentorhat
-	name = "饰纹斗笠"
+	name = "装饰竹笠"
 	category = "Clothes"
 	result = /obj/item/clothing/head/roguetown/mentorhat/decorative
 	reqs = list(

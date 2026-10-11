@@ -67,7 +67,7 @@
 ///////////
 
 /datum/supply_pack/rogue/Medicaments/westleach
-	name = "卷烟（西池烟草）"
+	name = "西池烟草卷烟"
 	cost = 2
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
@@ -92,7 +92,7 @@
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/Medicaments/suidust
-	name = "碎晶粉（仅变性）"
+	name = "变性用碎晶粉"
 	cost = 20
 	contains = list(/obj/item/alch/transisdust)
 
@@ -106,21 +106,21 @@
 	contains = list(/obj/item/contraption/bronzeprosthetic)
 
 /datum/supply_pack/rogue/Medicaments/prarml
-	name = "木制义肢臂（左）"
+	name = "木制左义臂"
 	cost = 40
 	contains = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
 
 /datum/supply_pack/rogue/Medicaments/prarmr
-	name = "木制义肢臂（右）"
+	name = "木制右义臂"
 	cost = 40
 	contains = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
 
 /datum/supply_pack/rogue/Medicaments/prlegl
-	name = "木制义肢腿（左）"
+	name = "木制左义腿"
 	cost = 20
 	contains = list(/obj/item/bodypart/l_leg/prosthetic)
 
 /datum/supply_pack/rogue/Medicaments/prlegr
-	name = "木制义肢腿（右）"
+	name = "木制右义腿"
 	cost = 20
 	contains = list(/obj/item/bodypart/r_leg/prosthetic)

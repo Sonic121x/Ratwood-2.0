@@ -26,7 +26,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/hammerhold/iron_fullplate
-	name = "板甲（铁锤堡）"
+	name = "铁锤堡板甲"
 	cost = 380
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)
 	ship_qty_min = 1
@@ -57,7 +57,7 @@
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/hammerhold/smoked_sausage
-	name = "香肠（铁锤堡）"
+	name = "铁锤堡香肠"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked,
@@ -68,7 +68,7 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/hammerhold/bacon
-	name = "生培根（铁锤堡）"
+	name = "铁锤堡生培根"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/bacon,

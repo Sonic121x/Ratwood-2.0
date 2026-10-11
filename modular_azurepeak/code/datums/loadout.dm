@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/toy/cards/deck/tarot
 
 /datum/loadout_item/tarot_deck_majorarcana
-	name = "塔罗牌组（大阿卡那）"
+	name = "大阿卡那塔罗牌组"
 	path = /obj/item/toy/cards/deck/tarot/majorarcana
 
 /datum/loadout_item/custom_book
@@ -303,7 +303,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/head/roguetown/witchhat
 
 /datum/loadout_item/witchhat/old
-	name = "女巫帽（旧式）"
+	name = "破旧女巫帽子"
 	path = /obj/item/clothing/head/roguetown/witchhat/old
 
 /datum/loadout_item/bardhat
@@ -643,7 +643,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 
 /datum/loadout_item/sailorshirt_colorable
-	name = "条纹衬衫（可染色）"
+	name = "可染色条纹衬衣"
 	path = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/colored
 
 /datum/loadout_item/sailorjacket
@@ -719,7 +719,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
 
 /datum/loadout_item/dress/straplessdress/alt
-	name = "抹胸长裙（别式）"
+	name = "抹胸连衣裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt
 
 /datum/loadout_item/dress/silkydress
@@ -885,7 +885,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/storage/belt/rogue/leather/suspenders/butler
 
 /datum/loadout_item/butlersuspenders_colorable
-	name = "吊裤带（可染色）"
+	name = "可染色背带"
 	path = /obj/item/storage/belt/rogue/leather/suspenders/butler/colored
 
 /datum/loadout_item/ragmask
@@ -1178,11 +1178,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/ring/band
 
 /datum/loadout_item/chaperon
-	name = "兜帽帽冠（普通）"
+	name = "普通头巾帽"
 	path = /obj/item/clothing/head/roguetown/chaperon
 
 /datum/loadout_item/chaperon/alt
-	name = "兜帽帽冠（别式）"
+	name = "可染色头巾帽"
 	path = /obj/item/clothing/head/roguetown/chaperon/greyscale
 
 /datum/loadout_item/chaperon/burgher
@@ -1605,7 +1605,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 4
 
 /datum/loadout_item/tri_justice_tabard
-	name = "正义战袍（拉沃克斯）"
+	name = "正义罩袍"
 	path = /obj/item/clothing/cloak/templar/ravox
 
 // CLOTHING - DRESSES & ROBES
@@ -1694,22 +1694,22 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 3
 
 /datum/loadout_item/tri_fencing_gambeson
-	name = "击剑棉甲（奥塔万）"
+	name = "击剑绗缝护甲衣"
 	path = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan
 	triumph_cost = 3
 
 /datum/loadout_item/tri_fencing_shirt
-	name = "击剑衬衣（衬垫）"
+	name = "加垫击剑衬衣"
 	path = /obj/item/clothing/suit/roguetown/shirt/freifechter
 	triumph_cost = 3
 
 /datum/loadout_item/tri_fencing_shirt_shepherd
-	name = "牧羊人衬衫（衬垫）"
+	name = "牧羊人衬衫"
 	path = /obj/item/clothing/suit/roguetown/shirt/freifechter/shepherd
 	triumph_cost = 3
 
 /datum/loadout_item/tri_fencing_vest_shepherd
-	name = "牧羊人背心（衬垫）"
+	name = "牧羊人皮背心"
 	path = /obj/item/clothing/suit/roguetown/armor/leather/heavy/shepherd
 	triumph_cost = 3
 
@@ -1769,12 +1769,12 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 3
 
 /datum/loadout_item/tri_huus_quyaq
-	name = "胡斯夸亚克（北地）"
+	name = "胡斯库亚克"
 	path = /obj/item/clothing/suit/roguetown/armor/leather/Huus_quyaq
 	triumph_cost = 3
 
 /datum/loadout_item/tri_kurche
-	name = "库尔切（格隆恩）"
+	name = "库尔切"
 	path = /obj/item/clothing/suit/roguetown/armor/kurche
 	triumph_cost = 3
 
@@ -1793,7 +1793,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/armor/corset
 
 /datum/loadout_item/tri_moose_hood
-	name = "驼鹿兜帽（萨满）"
+	name = "驼鹿兜帽"
 	path = /obj/item/clothing/head/roguetown/helmet/leather/shaman_hood
 	triumph_cost = 4
 
@@ -1959,12 +1959,12 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 2
 
 /datum/loadout_item/tri_eastern_pants_1
-	name = "东方长裤（黑）"
+	name = "割喉客长裤"
 	path = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
 	triumph_cost = 2
 
 /datum/loadout_item/tri_eastern_pants_2
-	name = "东方长裤（白）"
+	name = "古怪破裤"
 	path = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants2
 	triumph_cost = 2
 
@@ -1979,7 +1979,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 2
 
 /datum/loadout_item/tri_otavan_generic_pants
-	name = "奥塔万长裤（通用）"
+	name = "击剑马裤"
 	path = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/generic
 	triumph_cost = 2
 
@@ -2049,7 +2049,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 
 // POLEARMS & STAVES
 /datum/loadout_item/tri_naledi_staff
-	name = "纳莱迪法杖（装饰）"
+	name = "装饰纳莱迪法杖"
 	path = /obj/item/rogueweapon/woodstaff/decorative
 	triumph_cost = 3
 
@@ -2485,5 +2485,5 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/caparison/fogbeast
 
 /datum/loadout_item/caparison/fogbeast/azure
-	name = "公爵坐骑披衣（雾兽）"
+	name = "雾兽用蔚蓝鞍饰毯"
 	path = /obj/item/caparison/fogbeast/azure

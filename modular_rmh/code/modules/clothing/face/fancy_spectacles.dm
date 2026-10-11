@@ -20,6 +20,6 @@
 	triumph_cost = 2
 
 /datum/loadout_item/fancy_spectaclesd
-	name = "精致眼镜（另一款）"
+	name = "深色精致眼镜"
 	path = /obj/item/clothing/mask/rogue/spectacles/fancy_dark
 	triumph_cost = 2

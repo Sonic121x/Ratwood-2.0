@@ -33,7 +33,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/seax
-	name = "赛克斯短刀（格伦泽尔霍夫特）"
+	name = "格伦泽尔霍夫特赛克斯短刀"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/huntingknife/combat)
 	ship_qty_min = 1
@@ -138,7 +138,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/grenzelhoft/salami
-	name = "烟熏香肠（哈特瓦尔德）"
+	name = "哈特瓦尔德烟熏香肠"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami,

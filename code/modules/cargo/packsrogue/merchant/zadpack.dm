@@ -19,7 +19,7 @@
 	contraband = TRUE
 
 /datum/supply_pack/rogue/zadpack/cheap_bombs
-	name = "瓶装炸弹（批量）"
+	name = "批量瓶装炸弹"
 	cost = 35
 	contains = list(
 		/obj/item/bomb,

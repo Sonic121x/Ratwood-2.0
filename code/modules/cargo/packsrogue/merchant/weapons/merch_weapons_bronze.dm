@@ -102,7 +102,7 @@
 	contains = list(/obj/item/rogueweapon/whip/urumi/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/javelin
-	name = "青铜标枪（x2）"
+	name = "青铜标枪 ×2"
 	cost = 35 // 1 Bronze Ingot + 1 Small Log
 	contains = list(/obj/item/ammo_casing/caseless/rogue/javelin/bronze, /obj/item/ammo_casing/caseless/rogue/javelin/bronze)
 

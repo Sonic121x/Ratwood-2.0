@@ -6,22 +6,22 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/bath_toys/dildo/wood
-	name = "木制假阳具（可定制）"
+	name = "可定制木制假阳具"
 	cost = 8
 	contains = list(/obj/item/dildo/wood)
 
 /datum/supply_pack/rogue/bath_toys/dildo/steel
-	name = "钢制假阳具（可定制）"
+	name = "可定制钢制假阳具"
 	cost = 20
 	contains = list(/obj/item/dildo/steel)
 
 /datum/supply_pack/rogue/bath_toys/dildo/silver
-	name = "银制假阳具（可定制）"
+	name = "可定制银制假阳具"
 	cost = 120
 	contains = list(/obj/item/dildo/silver)
 
 /datum/supply_pack/rogue/bath_toys/dildo/gold
-	name = "金制假阳具（可定制）"
+	name = "可定制金制假阳具"
 	cost = 150
 	contains = list(/obj/item/dildo/gold)
 
@@ -36,7 +36,7 @@
 	contains = list(/obj/item/leash/chain)
 
 /datum/supply_pack/rogue/bath_toys/lube
-	name = "黄油（天然润滑剂）"
+	name = "天然润滑黄油"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/food/snacks/butter)
 
