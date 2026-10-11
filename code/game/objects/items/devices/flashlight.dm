@@ -52,12 +52,12 @@
 			var/obj/item/clothing/mask/cigarette/cig = help_light_cig(M)
 			if(cig)
 				if(cig.lit)
-					to_chat(user, span_warning("[cig.name] is already lit!"))
+					to_chat(user, span_warning("[cig.name]已经点着了！"))
 					return 1
 				if(M == user)
 					cig.attackby(src, user)
 				else
-					cig.light(span_notice("[user] holds [src] out for [M], and lights [cig]."))
+					cig.light(span_notice("[user]将[src]递向[M]，为[M]点着了[cig]。"))
 				return 1
 	return ..()
 

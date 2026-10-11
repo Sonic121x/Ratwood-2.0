@@ -73,22 +73,22 @@
 	H.energy = H.max_energy //Just in case.
 	REMOVE_TRAIT(H, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	to_chat(H, span_danger("你是自死亡中归来的远古战士，不是什么滑稽骷髅。请以威严与压迫感来扮演，而非靠搞笑。"))
-	var/helmets = list("巴尔布特盔 - 带面罩", "蛙嘴盔 - 强化护颈", "尖顶盔", "狼面盔 - 带面罩")
+	var/helmets = list("阿凡泰因巴尔布特盔 - 带面罩", "阿凡泰因蛙嘴盔 - 强化护颈", "阿凡泰因护鼻盔", "阿凡泰因狼面护鼻盔 - 带面罩")
 	var/helmet_choice = input(H, "选择你的头盔。", "来自女士的庇护") as anything in helmets
 	switch(helmet_choice)
-		if("巴尔布特盔 - 带面罩")
+		if("阿凡泰因巴尔布特盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
-		if("蛙嘴盔 - 强化护颈")
+		if("阿凡泰因蛙嘴盔 - 强化护颈")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo
-		if("尖顶盔")
+		if("阿凡泰因护鼻盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo
-		if("狼面盔 - 带面罩")
+		if("阿凡泰因狼面护鼻盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo
 
-	var/armors = list("重型护甲", "中型护甲")
+	var/armors = list("阿凡泰因全身板甲（重甲）", "阿凡泰因织纹锁甲（中甲）")
 	var/armors_choice = input(H, "选择你的护甲。", "来自女士的庇护") as anything in armors
 	switch(armors_choice)
-		if("重型护甲")
+		if("阿凡泰因全身板甲（重甲）")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/zizo
 			gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
@@ -96,7 +96,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
-		if("中型护甲")
+		if("阿凡泰因织纹锁甲（中甲）")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/medium/zizo
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo
@@ -105,31 +105,31 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
 
-	var/weapons = list("赦免 - (巨剑)", "复仇 - (长剑)", "定罪 - (刺剑)", "毁灭 - (战争大砍刀)", "收获 - (钩镰)", "虔诚 - (骑士剑)")
+	var/weapons = list("阿凡泰因大剑", "阿凡泰因长剑", "阿凡泰因刺剑", "阿凡泰因战刀", "阿凡泰因钩镰", "阿凡泰因单手剑")
 	var/weapons_choice = input(H, "选择你的武器。", "来自女士的兵刃") as anything in weapons
 	switch(weapons_choice)
-		if("赦免 - (巨剑)")
+		if("阿凡泰因大剑")
 			r_hand = /obj/item/rogueweapon/greatsword/zizo
 			l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
-		if("复仇 - (长剑)")
+		if("阿凡泰因长剑")
 			r_hand = /obj/item/rogueweapon/sword/long/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
-		if("定罪 - (刺剑)")
+		if("阿凡泰因刺剑")
 			r_hand = /obj/item/rogueweapon/sword/rapier/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
-		if("毁灭 - (战争大砍刀)")
+		if("阿凡泰因战刀")
 			r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
-		if("收获 - (钩镰)")
+		if("阿凡泰因钩镰")
 			r_hand = /obj/item/rogueweapon/spear/billhook/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
 			backr = /obj/item/rogueweapon/scabbard/gwstrap
-		if("虔诚 - (骑士剑)")
+		if("阿凡泰因单手剑")
 			r_hand = /obj/item/rogueweapon/sword/arming/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)	

@@ -38,13 +38,13 @@
 	to_chat(H, span_warning("你是一名 双饷佣兵，也就是所谓的“双饷佣兵”，是由 天顶城 剑术行会训练出的资深前线剑士。"))
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate
 	if(H.mind)
-		var/weapons = list("双手巨剑", "战刀与小圆盾")
+		var/weapons = list("钢制双手剑", "双手大刀与小圆盾")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("双手巨剑")
+			if("钢制双手剑")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/greatsword/grenz
-			if("战刀与小圆盾") // Buckler cuz they have no shield skill.
+			if("双手大刀与小圆盾") // Buckler cuz they have no shield skill.
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser
 				backl = /obj/item/rogueweapon/shield/buckler
@@ -101,14 +101,14 @@
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate
 	if(H.mind)
-		var/weapons = list("戟斧", "战戟", "卢塞恩锤")
+		var/weapons = list("戟斧", "帕提赞长戟", "钢制卢塞恩锤")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		switch(weapon_choice)
 			if("戟斧")
 				r_hand = /obj/item/rogueweapon/halberd
-			if("战戟")
+			if("帕提赞长戟")
 				r_hand = /obj/item/rogueweapon/spear/partizan
-			if("卢塞恩锤")
+			if("钢制卢塞恩锤")
 				r_hand = /obj/item/rogueweapon/eaglebeak
 	//General gear regardless of class.
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -170,12 +170,12 @@
 	beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	if(H.mind)
-		var/armor_options = list("轻型布面甲", "铆钉皮背心")
+		var/armor_options = list("轻型板甲衣", "铆钉皮甲")
 		var/armor_choice = input(H, "选择你的护甲。", "整备着装") as anything in armor_options
 		switch(armor_choice)
-			if("轻型布面甲")
+			if("轻型板甲衣")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light	// find a smithy to fix it
-			if("铆钉皮背心")
+			if("铆钉皮甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded		// or maintain it yourself!
 	//General gear regardless of class.
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

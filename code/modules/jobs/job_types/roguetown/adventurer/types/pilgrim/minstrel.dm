@@ -56,7 +56,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shalal
 		belt = /obj/item/storage/belt/rogue/leather/cloth/sash/random
 	if(H.mind)
-		var/weapons = list("手风琴","风笛","鼓","长笛","吉他","竖琴","手摇风琴","口簧琴","鲁特琴","诗琴","三味线","小号","中提琴","歌声护符")
+		var/weapons = list("手风琴","风笛","鼓","长笛","吉他","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = tgui_input_list(H, "选择你的乐器。", "拿起家伙", weapons)
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -72,13 +72,13 @@
 				backr = /obj/item/rogue/instrument/guitar
 			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("手摇风琴")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
 			if("口簧琴")
 				backr = /obj/item/rogue/instrument/jawharp
 			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("诗琴")
+			if("圣咏琴")
 				backr = /obj/item/rogue/instrument/psyaltery
 			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
@@ -86,7 +86,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌声护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank_up_to(/datum/skill/misc/music, 6, TRUE)

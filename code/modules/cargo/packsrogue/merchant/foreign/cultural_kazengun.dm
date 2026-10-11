@@ -5,28 +5,28 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/kazengun/kanabo
-	name = "金棒"
+	name = "巨型钉头锤"
 	cost = 220
 	contains = list(/obj/item/rogueweapon/mace/goden/steel)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/ssangsudo
-	name = "双手刀"
+	name = "双手大刀"
 	cost = 240
 	contains = list(/obj/item/rogueweapon/sword/long/kriegmesser)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/haraate
-	name = "腹当板甲衣"
+	name = "饰纹道袍"
 	cost = 200
 	contains = list(/obj/item/clothing/suit/roguetown/armor/basiceast/crafteast)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/kazenpants
-	name = "风郡厚皮长裤"
+	name = "衬甲长裤"
 	cost = 40 
 	contains = list (/obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun)
 	ship_qty_min = 1
@@ -40,21 +40,21 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/kazengun/mask_full
-	name = "钢制面具"
+	name = "食人魔面具"
 	cost = 120
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel/kazengun/full)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/mask_half
-	name = "半棒半面具"
+	name = "士兵半面具"
 	cost = 90
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel/kazengun)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/cloak
-	name = "丝绸斗篷"
+	name = "斩云者斗篷"
 	cost = 80
 	contains = list(/obj/item/clothing/cloak/eastcloak1)
 	ship_qty_min = 2
@@ -82,21 +82,21 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/kazengun/kote
-	name = "扎曾纳笼手"
+	name = "时髦手套"
 	cost = 90
 	contains = list(/obj/item/clothing/gloves/roguetown/eastgloves2)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/boots
-	name = "加固足袋"
+	name = "高底凉鞋"
 	cost = 35
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/rumaclan)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/kazengun/trousers
-	name = "棉甲袴"
+	name = "割喉客长裤"
 	cost = 30
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1)
 	ship_qty_min = 2

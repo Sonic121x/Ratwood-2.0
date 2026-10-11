@@ -50,14 +50,14 @@
 
 /datum/trade_good/gem/common/clamshell
 	id = TRADE_GOOD_CLAMSHELL
-	name = "蛤蜊壳"
+	name = "贝壳底坯"
 	base_price = SELLPRICE_CLAMSHELL
 	source_region_id = TRADE_REGION_SALTWICK
 	item_type = /obj/item/carvedgem/shell
 
 /datum/trade_good/gem/common/rosestone
 	id = TRADE_GOOD_ROSESTONE
-	name = "蔷薇石"
+	name = "玫瑰石"
 	base_price = SELLPRICE_ROSESTONE
 	source_region_id = TRADE_REGION_ROCKHILL
 	item_type = /obj/item/carvedgem/rose/rawrose
@@ -74,7 +74,7 @@
 
 /datum/trade_good/gem/rare/blortz
 	id = TRADE_GOOD_BLORTZ
-	name = "布洛兹石"
+	name = "石英"
 	base_price = SELLPRICE_BLORTZ
 	source_region_id = TRADE_REGION_DAFTSMARCH
 	item_type = /obj/item/roguegem/blue

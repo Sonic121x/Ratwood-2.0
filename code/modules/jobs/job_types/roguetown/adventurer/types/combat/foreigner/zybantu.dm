@@ -56,10 +56,10 @@
 							/obj/item/rogueweapon/scabbard/sheath = 1)
 
 	if(H.mind)
-		var/nomad_purpose = list("逃离轮回 | 盾与矛","延续轮回 | 神迹行者")
+		var/nomad_purpose = list("逃离轮回 | 游牧盾与游牧矛","延续轮回 | 神迹行者")
 		var/purpose_choice = input(H, "选择你的道路。", "你为何流浪") as anything in nomad_purpose
 		switch(purpose_choice)
-			if("逃离轮回 | 盾与矛")
+			if("逃离轮回 | 游牧盾与游牧矛")
 				H.change_stat(STATKEY_PER, 2)
 				H.change_stat(STATKEY_STR, 1)//Total of 6 stats, as 1 STR/SPD counts for 2.
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)

@@ -128,7 +128,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/conjure_weapon)
 	H.cmode_music = 'sound/music/cmode/adventurer/combat_outlander3.ogg'
 	if(H.mind)
-		var/weapons = list("长剑", "弯刀与木盾", "单刃刀与木盾", "环刀", "长矛", "鞭", "软剑", "战斧", "钉锤")
+		var/weapons = list("长剑", "法刀与木盾", "猎剑与木盾", "环刀", "长矛", "皮鞭", "软剑", "战斧", "钉头锤")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
 			if("长剑")
@@ -136,14 +136,14 @@
 				r_hand = /obj/item/rogueweapon/sword/long
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("弯刀与木盾")
+			if("法刀与木盾")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/wood
 				r_hand = /obj/item/rogueweapon/sword/short/falchion
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_APPRENTICE, TRUE)
-			if("单刃刀与木盾")
+			if("猎剑与木盾")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/wood
 				r_hand = /obj/item/rogueweapon/sword/short/messer/iron
@@ -160,7 +160,7 @@
 				r_hand = /obj/item/rogueweapon/spear
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("鞭")
+			if("皮鞭")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 				r_hand = /obj/item/rogueweapon/whip
@@ -172,7 +172,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 				backr = /obj/item/rogueweapon/stoneaxe/battle
-			if("钉锤")
+			if("钉头锤")
 				beltr = /obj/item/rogueweapon/mace
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -232,7 +232,7 @@
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/combat_heretic.ogg'
 	if(H.mind)
-		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇风琴","口簧琴","鲁特琴","诗琴","三味线","小号","中提琴","歌声护符")
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = tgui_input_list(H, "选择你的乐器。", "执起乐器", weapons)
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -252,13 +252,13 @@
 				backr = /obj/item/rogue/instrument/harmonica
 			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("手摇风琴")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
 			if("口簧琴")
 				backr = /obj/item/rogue/instrument/jawharp
 			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("诗琴")
+			if("圣咏琴")
 				backr = /obj/item/rogue/instrument/psyaltery
 			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
@@ -266,7 +266,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌声护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 /datum/advclass/mage/spellthief

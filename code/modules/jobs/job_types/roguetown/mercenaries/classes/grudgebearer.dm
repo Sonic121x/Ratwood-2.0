@@ -56,13 +56,13 @@
 			/obj/item/natural/feather,
 			/obj/item/rogueweapon/tongs = 1,
 			)
-		var/weapons = list("巨型权杖", "尖刺重槌")
+		var/weapons = list("巨型钉头锤", "带刺大槌")
 		var/wepchoice = input("选择你的武器。", "可选武器") as anything in weapons
 		switch(wepchoice)
-			if("巨型权杖")
+			if("巨型钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("尖刺重槌")
+			if("带刺大槌")
 				r_hand = /obj/item/rogueweapon/mace/maul/spiked
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 		H.merctype = 8
@@ -111,15 +111,15 @@
 			/obj/item/natural/feather,
 			)
 		if(H.mind)
-			var/weapons = list("战斧", "巨型权杖", "重槌")
+			var/weapons = list("战斧", "巨型钉头锤", "矮人大槌")
 			var/wepchoice = input(H, "选择你的武器。", "可选武器") as anything in weapons
 			switch(wepchoice)
 				if("战斧")
 					backr = /obj/item/rogueweapon/stoneaxe/battle
-				if("巨型权杖")
+				if("巨型钉头锤")
 					r_hand = /obj/item/rogueweapon/mace/goden/steel
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
-				if("重槌")
+				if("矮人大槌")
 					r_hand = /obj/item/rogueweapon/mace/maul/steel
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
 		H.merctype = 8

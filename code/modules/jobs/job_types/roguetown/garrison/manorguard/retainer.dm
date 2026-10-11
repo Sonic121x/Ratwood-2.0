@@ -42,17 +42,17 @@
 	beltl = /obj/item/rogueweapon/sword/decorated
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("战锤与盾","斧与盾","长戟","巨斧")
+		var/weapons = list("战锤与铁盾","钢斧与铁盾","戟斧","巨斧")
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("战锤与盾")
+			if("战锤与铁盾")
 				beltr = /obj/item/rogueweapon/mace/warhammer
 				backl = /obj/item/rogueweapon/shield/iron
-			if("斧与盾")
+			if("钢斧与铁盾")
 				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				backl = /obj/item/rogueweapon/shield/iron
-			if("长戟")
+			if("戟斧")
 				r_hand = /obj/item/rogueweapon/halberd
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 			if("巨斧")
@@ -68,17 +68,17 @@
 	H.verbs |= /mob/proc/haltyell
 
 	if(H.mind)
-		var/armor_options = list("锁子甲套", "链甲套")
+		var/armor_options = list("轻型板甲衣套装", "鳞甲套装")
 		var/armor_choice = input(H, "选择你的护甲。", "披甲执兵") as anything in armor_options
 
 		switch(armor_choice)
-			if("锁子甲套")
+			if("轻型板甲衣套装")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				wrists = /obj/item/clothing/wrists/roguetown/splintarms
 				pants = /obj/item/clothing/under/roguetown/splintlegs
 
-			if("链甲套")
+			if("鳞甲套装")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -86,10 +86,10 @@
 
 		var/helmets = list(
 		"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
-		"壶形盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-		"中头盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
-		"轻盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"翼盔" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+		"盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+		"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
 		"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 		"无"
 		)

@@ -71,54 +71,54 @@ LICH SKELETONS
 	)
 
 	H.adjust_blindness(-3)
-	var/weapons = list("短剑","Khopesh 弯刃剑","短剑式直剑","战斧", "链枷")
+	var/weapons = list("远古短剑（罗马式）","远古寇派什弯剑","远古短剑（直刃）","远古斧", "远古连枷")
 	var/weapons_choice = input(H, "选择你的武器。", "向生者发怒。") as anything in weapons
 	switch(weapons_choice)
-		if("短剑")
+		if("远古短剑（罗马式）")
 			l_hand = /obj/item/rogueweapon/sword/short/gladius/ancient
 			beltl = /obj/item/rogueweapon/scabbard
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-		if("Khopesh 弯刃剑")
+		if("远古寇派什弯剑")
 			l_hand = /obj/item/rogueweapon/sword/sabre/ancient
 			beltl = /obj/item/rogueweapon/scabbard
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-		if("短剑式直剑")
+		if("远古短剑（直刃）")
 			l_hand = /obj/item/rogueweapon/sword/short/ancient
 			beltl = /obj/item/rogueweapon/scabbard
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-		if("战斧")
+		if("远古斧")
 			l_hand = /obj/item/rogueweapon/stoneaxe/woodcut/steel/ancient
 			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
-		if("链枷")
+		if("远古连枷")
 			l_hand = /obj/item/rogueweapon/flail/sflail/ancient
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
-	var/sidearms = list("标枪", "投网", "匕首")
+	var/sidearms = list("标枪袋（远古标枪）", "投网", "远古匕首")
 	var/sidearms_choice = input(H, "选择你的副武器。", "向生者发怒。") as anything in sidearms
 	switch(sidearms_choice)
-		if("标枪")
+		if("标枪袋（远古标枪）")
 			beltr = /obj/item/quiver/javelin/ancient
 		if("投网")
 			beltr = /obj/item/net
-		if("匕首")
+		if("远古匕首")
 			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/ancient
-	var/neckwear = list("锁子头巾", "护喉")
+	var/neckwear = list("远古护头巾", "远古护喉")
 	var/neckwear_choice = input(H, "选择你的护颈。", "守护神圣地脉。") as anything in neckwear
 	switch(neckwear_choice)
-		if("锁子头巾")
+		if("远古护头巾")
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/ancient
-		if("护喉")
+		if("远古护喉")
 			neck = /obj/item/clothing/neck/roguetown/gorget/steel/ancient
-	var/cloaks = list("罩袍", "纹章罩衣", "披风", "肩巾")
+	var/cloaks = list("古旧罩袍", "古旧纹章罩衣", "古旧披风", "古旧肩巾")
 	var/cloaks_choice = input(H, "选择你的披挂。", "彰显你主人的纹章。") as anything in cloaks
 	H.set_blindness(0)
 	switch(cloaks_choice)
-		if("罩袍")
+		if("古旧罩袍")
 			cloak = /obj/item/clothing/cloak/stabard/surcoat/lich
-		if("纹章罩衣")
+		if("古旧纹章罩衣")
 			cloak = /obj/item/clothing/cloak/tabard/lich
-		if("披风")
+		if("古旧披风")
 			cloak = /obj/item/clothing/cloak/half/lich
-		if("肩巾")
+		if("古旧肩巾")
 			cloak = /obj/item/clothing/cloak/thief_cloak/lich
 
 	H.energy = H.max_energy
@@ -173,7 +173,7 @@ LICH SKELETONS
 	)
 
 	H.adjust_blindness(-3)
-	var/weapons = list("反曲弓","紫杉长弓", "十字弩", "投石索")
+	var/weapons = list("反曲弓","紫杉长弓", "远古十字弩", "投石索")
 	var/weapons_choice = input(H, "选择你的武器。", "向生者发怒。") as anything in weapons
 	switch(weapons_choice)
 		if("反曲弓")
@@ -184,7 +184,7 @@ LICH SKELETONS
 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 			beltr = /obj/item/quiver/ancient
 			H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_MASTER, TRUE)
-		if("十字弩")
+		if("远古十字弩")
 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/ancient
 			beltr = /obj/item/quiver/boltsancient
 			H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_MASTER, TRUE)
@@ -192,24 +192,24 @@ LICH SKELETONS
 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 			beltr = /obj/item/quiver/sling/ancient
 			H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_MASTER, TRUE)
-	var/neckwear = list("锁子头巾", "护喉")
+	var/neckwear = list("远古护头巾", "远古护喉")
 	var/neckwear_choice = input(H, "选择你的护颈。", "守护神圣地脉。") as anything in neckwear
 	switch(neckwear_choice)
-		if("锁子头巾")
+		if("远古护头巾")
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/ancient
-		if("护喉")
+		if("远古护喉")
 			neck = /obj/item/clothing/neck/roguetown/gorget/steel/ancient
-	var/cloaks = list("罩袍", "纹章罩衣", "披风", "肩巾")
+	var/cloaks = list("古旧罩袍", "古旧纹章罩衣", "古旧披风", "古旧肩巾")
 	var/cloaks_choice = input(H, "选择你的披挂。", "彰显你主人的纹章。") as anything in cloaks
 	H.set_blindness(0)
 	switch(cloaks_choice)
-		if("罩袍")
+		if("古旧罩袍")
 			cloak = /obj/item/clothing/cloak/stabard/surcoat/lich
-		if("纹章罩衣")
+		if("古旧纹章罩衣")
 			cloak = /obj/item/clothing/cloak/tabard/lich
-		if("披风")
+		if("古旧披风")
 			cloak = /obj/item/clothing/cloak/half/lich
-		if("肩巾")
+		if("古旧肩巾")
 			cloak = /obj/item/clothing/cloak/thief_cloak/lich
 
 	H.energy = H.max_energy
@@ -257,10 +257,10 @@ LICH SKELETONS
 	)
 
 	H.adjust_blindness(-3)
-	var/weapons = list("巨剑 - +2 力量 / +1 速度 / -3 体质", "巨型权杖 - +2 力量 / +1 速度 / -3 体质", "长矛与盾 - +2 感知 / +1 力量 / -1 体质", "长柄战斧 - +2 感知 / +1 力量 / -1 体质","钉锤与盾 - +3 意志 / 重甲", "战锤与盾 - +3 意志 / 重甲")
+	var/weapons = list("远古大剑 - +2 力量 / +1 速度 / -3 体质", "远古巨型钉头锤 - +2 力量 / +1 速度 / -3 体质", "远古长矛与古旧圆盾 - +2 感知 / +1 力量 / -1 体质", "远古长柄战斧 - +2 感知 / +1 力量 / -1 体质","远古钉头锤与远古盾 - +3 意志 / 重甲", "远古战锤与远古盾 - +3 意志 / 重甲")
 	var/weapons_choice = input(H, "选择你的战斗戒律。", "向生者发怒。") as anything in weapons
 	switch(weapons_choice)
-		if("巨剑 - +2 力量 / +1 速度 / -3 体质")
+		if("远古大剑 - +2 力量 / +1 速度 / -3 体质")
 			l_hand = /obj/item/rogueweapon/greatsword/ancient
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/ancient
@@ -270,7 +270,7 @@ LICH SKELETONS
 			H.change_stat(STATKEY_SPD, 1)
 			H.change_stat(STATKEY_CON, -3)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-		if("巨型权杖 - +2 力量 / +1 速度 / -3 体质")
+		if("远古巨型钉头锤 - +2 力量 / +1 速度 / -3 体质")
 			l_hand = /obj/item/rogueweapon/mace/goden/steel/ancient
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/ancient
@@ -280,7 +280,7 @@ LICH SKELETONS
 			H.change_stat(STATKEY_SPD, 1)
 			H.change_stat(STATKEY_CON, -3)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-		if("长矛与盾 - +2 感知 / +1 力量 / -1 体质")
+		if("远古长矛与古旧圆盾 - +2 感知 / +1 力量 / -1 体质")
 			l_hand = /obj/item/rogueweapon/spear/ancient
 			r_hand = /obj/item/rogueweapon/shield/gilbranze
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
@@ -292,7 +292,7 @@ LICH SKELETONS
 			H.change_stat(STATKEY_STR, 1)
 			H.change_stat(STATKEY_CON, -1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-		if("长柄战斧 - +2 感知 / +1 力量 / -1 体质")
+		if("远古长柄战斧 - +2 感知 / +1 力量 / -1 体质")
 			l_hand = /obj/item/rogueweapon/halberd/bardiche/ancient
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/ancient
@@ -302,7 +302,7 @@ LICH SKELETONS
 			H.change_stat(STATKEY_STR, 1)
 			H.change_stat(STATKEY_CON, -1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-		if("钉锤与盾 - +3 意志 / 重甲")
+		if("远古钉头锤与远古盾 - +3 意志 / 重甲")
 			l_hand = /obj/item/rogueweapon/mace/steel/ancient
 			r_hand = /obj/item/rogueweapon/shield/tower/metal/ancient
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/ancient
@@ -311,7 +311,7 @@ LICH SKELETONS
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
 			H.change_stat(STATKEY_WIL, 3)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-		if("战锤与盾 - +3 意志 / 重甲")
+		if("远古战锤与远古盾 - +3 意志 / 重甲")
 			l_hand = /obj/item/rogueweapon/mace/warhammer/steel/ancient
 			r_hand = /obj/item/rogueweapon/shield/tower/metal/ancient
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/ancient
@@ -320,24 +320,24 @@ LICH SKELETONS
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
 			H.change_stat(STATKEY_WIL, 3)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	var/neckwear = list("锁子头巾", "护喉")
+	var/neckwear = list("远古护头巾", "远古护喉")
 	var/neckwear_choice = input(H, "选择你的护颈。", "守护神圣地脉。") as anything in neckwear
 	switch(neckwear_choice)
-		if("锁子头巾")
+		if("远古护头巾")
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/ancient
-		if("护喉")
+		if("远古护喉")
 			neck = /obj/item/clothing/neck/roguetown/gorget/steel/ancient
-	var/cloaks = list("罩袍", "纹章罩衣", "披风", "肩巾")
+	var/cloaks = list("古旧罩袍", "古旧纹章罩衣", "古旧披风", "古旧肩巾")
 	var/cloaks_choice = input(H, "选择你的披挂。", "彰显你主人的纹章。") as anything in cloaks
 	H.set_blindness(0)
 	switch(cloaks_choice)
-		if("罩袍")
+		if("古旧罩袍")
 			cloak = /obj/item/clothing/cloak/stabard/surcoat/lich
-		if("纹章罩衣")
+		if("古旧纹章罩衣")
 			cloak = /obj/item/clothing/cloak/tabard/lich
-		if("披风")
+		if("古旧披风")
 			cloak = /obj/item/clothing/cloak/half/lich
-		if("肩巾")
+		if("古旧肩巾")
 			cloak = /obj/item/clothing/cloak/thief_cloak/lich
 
 	H.energy = H.max_energy
@@ -407,24 +407,24 @@ LICH SKELETONS
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/pick
 	H.adjust_blindness(-3)
-	var/neckwear = list("锁子头巾", "护喉")
+	var/neckwear = list("远古护头巾", "远古护喉")
 	var/neckwear_choice = input(H, "选择你的护颈。", "守护神圣地脉。") as anything in neckwear
 	switch(neckwear_choice)
-		if("锁子头巾")
+		if("远古护头巾")
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/ancient
-		if("护喉")
+		if("远古护喉")
 			neck = /obj/item/clothing/neck/roguetown/gorget/steel/ancient
-	var/cloaks = list("罩袍", "纹章罩衣", "披风", "肩巾")
+	var/cloaks = list("古旧罩袍", "古旧纹章罩衣", "古旧披风", "古旧肩巾")
 	var/cloaks_choice = input(H, "选择你的披挂。", "彰显你主人的纹章。") as anything in cloaks
 	H.set_blindness(0)
 	switch(cloaks_choice)
-		if("罩袍")
+		if("古旧罩袍")
 			cloak = /obj/item/clothing/cloak/stabard/surcoat/lich
-		if("纹章罩衣")
+		if("古旧纹章罩衣")
 			cloak = /obj/item/clothing/cloak/tabard/lich
-		if("披风")
+		if("古旧披风")
 			cloak = /obj/item/clothing/cloak/half/lich
-		if("肩巾")
+		if("古旧肩巾")
 			cloak = /obj/item/clothing/cloak/thief_cloak/lich
 
 	H.energy = H.max_energy
@@ -486,36 +486,36 @@ LICH SKELETONS
 	)
 
 	H.adjust_blindness(-3)
-	var/weapons = list("巨剑", "链枷与巨盾")
+	var/weapons = list("远古大剑", "远古连枷与古旧巨圆盾")
 	var/weapon_choice = input(H, "选择你的武器。", "向生者发怒。") as anything in weapons
 	switch(weapon_choice)
-		if("巨剑")
+		if("远古大剑")
 			l_hand = /obj/item/rogueweapon/greatsword/ancient
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-		if("链枷与巨盾")
+		if("远古连枷与古旧巨圆盾")
 			l_hand = /obj/item/rogueweapon/flail/sflail/ancient
 			r_hand = /obj/item/rogueweapon/shield/gilbranze/great
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-	var/neckwear = list("锁子头巾", "护喉")
+	var/neckwear = list("远古护头巾", "远古护喉")
 	var/neckwear_choice = input(H, "选择你的护颈。", "守护神圣地脉。") as anything in neckwear
 	switch(neckwear_choice)
-		if("锁子头巾")
+		if("远古护头巾")
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/ancient
-		if("护喉")
+		if("远古护喉")
 			neck = /obj/item/clothing/neck/roguetown/gorget/steel/ancient
-	var/cloaks = list("罩袍", "纹章罩衣", "披风", "肩巾")
+	var/cloaks = list("古旧罩袍", "古旧纹章罩衣", "古旧披风", "古旧肩巾")
 	var/cloaks_choice = input(H, "选择你的披挂。", "彰显你主人的纹章。") as anything in cloaks
 	H.set_blindness(0)
 	switch(cloaks_choice)
-		if("罩袍")
+		if("古旧罩袍")
 			cloak = /obj/item/clothing/cloak/stabard/surcoat/lich
-		if("纹章罩衣")
+		if("古旧纹章罩衣")
 			cloak = /obj/item/clothing/cloak/tabard/lich
-		if("披风")
+		if("古旧披风")
 			cloak = /obj/item/clothing/cloak/half/lich
-		if("肩巾")
+		if("古旧肩巾")
 			cloak = /obj/item/clothing/cloak/thief_cloak/lich
 
 //////////////////

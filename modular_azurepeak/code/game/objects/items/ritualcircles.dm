@@ -1363,22 +1363,22 @@
 	H.drop_all_held_items()
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending/lesser)
 
-	var/helmets = list("巴尔布特盔 - 带面罩", "蛙嘴盔 - 强化护颈", "尖顶盔", "狼面盔 - 带面罩")
+	var/helmets = list("阿凡泰因巴尔布特盔 - 带面罩", "阿凡泰因蛙嘴盔 - 强化护颈", "阿凡泰因护鼻盔", "阿凡泰因狼面护鼻盔 - 带面罩")
 	var/helmet_choice = input(H, "选择你的头盔。", "来自那位女士的庇护") as anything in helmets
 	switch(helmet_choice)
-		if("巴尔布特盔 - 带面罩")
+		if("阿凡泰因巴尔布特盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
-		if("蛙嘴盔 - 强化护颈")
+		if("阿凡泰因蛙嘴盔 - 强化护颈")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo
-		if("尖顶盔")
+		if("阿凡泰因护鼻盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo
-		if("狼面盔 - 带面罩")
+		if("阿凡泰因狼面护鼻盔 - 带面罩")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo
 
-	var/armors = list("重型护甲", "中型护甲")
+	var/armors = list("阿凡泰因全身板甲（重甲）", "阿凡泰因织纹锁甲（中甲）")
 	var/armors_choice = input(H, "选择你的护甲。", "来自那位女士的庇护") as anything in armors
 	switch(armors_choice)
-		if("重型护甲")
+		if("阿凡泰因全身板甲（重甲）")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/zizo
 			gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
@@ -1386,7 +1386,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
-		if("中型护甲")
+		if("阿凡泰因织纹锁甲（中甲）")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
 			pants = /obj/item/clothing/under/roguetown/platelegs/medium/zizo
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo
@@ -1395,27 +1395,27 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 			neck = /obj/item/clothing/neck/roguetown/bevor/zizo
 
-	var/weapons = list("赦免 - (巨剑)", "复仇 - (长剑)", "定罪 - (刺剑)", "毁灭 - (战争大砍刀)", "收获 - (钩镰)", "虔诚 - (骑士剑)") // Funny evyl names
+	var/weapons = list("阿凡泰因大剑", "阿凡泰因长剑", "阿凡泰因刺剑", "阿凡泰因战刀", "阿凡泰因钩镰", "阿凡泰因单手剑") // Funny evyl names
 	var/weapons_choice = input(H, "选择你的武器。", "来自那位女士的兵刃") as anything in weapons
 	switch(weapons_choice)
-		if("赦免 - (巨剑)")
+		if("阿凡泰因大剑")
 			r_hand = /obj/item/rogueweapon/greatsword/zizo
 			l_hand = /obj/item/rogueweapon/scabbard/gwstrap
-		if("复仇 - (长剑)")
+		if("阿凡泰因长剑")
 			r_hand = /obj/item/rogueweapon/sword/long/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
-		if("定罪 - (刺剑)")
+		if("阿凡泰因刺剑")
 			r_hand = /obj/item/rogueweapon/sword/rapier/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
-		if("毁灭 - (战争大砍刀)")
+		if("阿凡泰因战刀")
 			r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
-		if("收获 - (钩镰)")
+		if("阿凡泰因钩镰")
 			r_hand = /obj/item/rogueweapon/spear/billhook/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
 			if(HAS_TRAIT(H, TRAIT_RITUALIST))
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
-		if("虔诚 - (骑士剑)")
+		if("阿凡泰因单手剑")
 			r_hand = /obj/item/rogueweapon/sword/arming/zizo
 			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo	
 			
@@ -2139,15 +2139,15 @@
 		loc.visible_message(span_cult("[target]哭泣着。"))
 		target.Stun(80)//Keep them in place, for a bit. Until we're done.
 		if(luxshield)
-			to_chat(target, span_danger("My former patron doesn't approve of my conversion, but something stops their wrath from hurting me.")) // absolver doing the legwork
-			loc.visible_message(span_cult("The silver tears boil and evaporate but [target] stays safe in their new conviction."))
+			to_chat(target, span_danger("我曾信奉的神明不容我改宗，但有某种力量挡住了祂的怒火，使我免受伤害。")) // absolver doing the legwork
+			loc.visible_message(span_cult("银色的泪水沸腾蒸发，[target]却在新信仰的庇护下安然无恙。"))
 		else
-			to_chat(target, span_danger("My former patron doesn't approve of my conversion, but I shall ENDURE their wrath.")) // no unnatural lux abomination to save you here!
+			to_chat(target, span_danger("我曾信奉的神明不容我改宗，但我定会承受住祂的怒火。")) // no unnatural lux abomination to save you here!
 			target.Knockdown(60)
-			to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+			to_chat(target, span_userdanger("难以想象的剧痛！"))
 			target.emote("Agony")
 			target.apply_damage(100, BURN, BODY_ZONE_HEAD)
-			loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as their former patron punishes their defiance."))
+			loc.visible_message(span_cult("[target]在符文上猛烈挣扎，痛苦地扭动着身体，曾信奉的神明正惩罚其背叛。"))
 		addtimer(CALLBACK(src, PROC_REF(psydonconversion_stage2), target), 20)
 	if(prompt == "拒绝")
 		to_chat(target, span_warning("你绷紧身体。为什么要绷紧身体？什么都没有发生。"))

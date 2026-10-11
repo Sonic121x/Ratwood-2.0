@@ -19,12 +19,12 @@
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/blackmarket_drugs/swampzig
-	name = "卷烟，沼泽草"
+	name = "沼叶卷烟"
 	cost = 10
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
 /datum/supply_pack/rogue/blackmarket_drugs/pipezig
-	name = "卷烟，烟斗草"
+	name = "卷烟，西池烟草"
 	cost = 5
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 

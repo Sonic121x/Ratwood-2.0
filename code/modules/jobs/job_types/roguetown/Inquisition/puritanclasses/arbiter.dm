@@ -79,17 +79,17 @@
 
 /datum/outfit/job/roguetown/puritan/arbiter/choose_loadout(mob/living/carbon/human/H)
 	. = ..()//Just as with the stats, this has a mixture of weapon choice between Ordinators and Inspectors. A less-used weapon list.
-	var/weapons = list("普赛顿式阔剑", "破晓（鞭）", "圣痕（长戟）", "圣誓（连枷）")
+	var/weapons = list("普赛顿阔剑", "破晓（鞭）", "圣痕（戟斧）", "圣誓（连枷）")
 	var/weapon_choice = input(H,"寻得你的真理。", "以祂之名执兵。") as anything in weapons
 	switch(weapon_choice)
-		if("普赛顿式阔剑")
+		if("普赛顿阔剑")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/long/kriegmesser/psy/preblessed(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_R, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 		if("破晓（鞭）")
 			H.put_in_hands(new /obj/item/rogueweapon/whip/antique/psywhip(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
-		if("圣痕（长戟）")
+		if("圣痕（戟斧）")
 			H.put_in_hands(new /obj/item/rogueweapon/halberd/psyhalberd/relic(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)

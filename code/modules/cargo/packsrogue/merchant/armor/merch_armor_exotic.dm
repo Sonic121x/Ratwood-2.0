@@ -19,7 +19,7 @@
 		)
 
 /datum/supply_pack/rogue/armor_exotic/hammerhold_pack_medium
-	name = "拜林链甲套装（中型）"
+	name = "拜林锁子甲套装（中型）"
 	cost = 225
 	contains = list(
 		/obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel,
@@ -29,7 +29,7 @@
 		)
 
 /datum/supply_pack/rogue/armor_exotic/hammerhold_pack_heavy
-	name = "诺尔西板甲套装（重型）"
+	name = "怯薛铁板甲套装（重型）"
 	cost = 400
 	contains = list(
 		/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gronn,

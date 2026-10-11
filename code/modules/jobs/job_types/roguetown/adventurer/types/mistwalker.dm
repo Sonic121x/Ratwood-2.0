@@ -74,7 +74,7 @@
 		)
 
 	if(H.mind)
-		var/weapons = list("双手刀 +2 体质", "金棒 +1 力量", "薙刀 +2 感知", "环刀 +2 智力", "小太刀 +1 速度")
+		var/weapons = list("双手刀 +2 体质", "铁包棒 +1 力量", "薙刀 +2 感知", "环刀 +2 智力", "钢小太刀 +1 速度")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -83,7 +83,7 @@
 				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/noparry
 				H.change_stat(STATKEY_CON, 2)
-			if("金棒 +1 力量")
+			if("铁包棒 +1 力量")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/goden/kanabo
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
@@ -98,7 +98,7 @@
 				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
 				H.change_stat(STATKEY_INT, 2)
-			if("小太刀 +1 速度") //SPD you can dodge, probably
+			if("钢小太刀 +1 速度") //SPD you can dodge, probably
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/short/kazengun
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/kodachi

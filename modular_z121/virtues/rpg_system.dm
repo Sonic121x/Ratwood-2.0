@@ -643,7 +643,7 @@
 		"青铜三叉戟"= list(210, /obj/item/rogueweapon/spear/trident),                  // 高级长柄武器
 		"十字弩"    = list(240, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow), // 远程武器（需自备弩矢）
 		"投石索"= list(90, /obj/item/gun/ballistic/revolver/grenadelauncher/sling),      // 廉价远程武器（需自备弹丸）
-		"短弓"   = list(200, /obj/item/gun/ballistic/revolver/grenadelauncher/bow),        // 远程武器（需自备箭矢）
+		"单木弓"   = list(200, /obj/item/gun/ballistic/revolver/grenadelauncher/bow),        // 远程武器（需自备箭矢）
 		"法尔克斯弯刀"  = list(150, /obj/item/rogueweapon/sword/falx),                     // 法尔克斯弯刀，劈砍见长
 		"警棍"   = list(50, /obj/item/rogueweapon/mace/cudgel),                     // 廉价钝器，入门近战
 		"古登达格棒"  = list(260, /obj/item/rogueweapon/mace/goden),                     // 戈登大棒，重型钝击
@@ -655,7 +655,7 @@
 		"草叉"   = list(70, /obj/item/rogueweapon/pitchfork),                       // 长柄农具，可作刺击武器
 		"皮鞭"   = list(90, /obj/item/rogueweapon/whip),                            // 长鞭，远距离软兵
 		"铁镐"     = list(60, /obj/item/rogueweapon/pick),                            // 矿镐，亦可作刺击武器
-		"铁锤"   = list(90, /obj/item/rogueweapon/hammer/iron),                     // 铁锻锤，钝击 / 打铁两用
+		"锤"   = list(90, /obj/item/rogueweapon/hammer/iron),                     // 铁锻锤，钝击 / 打铁两用
 		"大剑"  = list(300, /obj/item/rogueweapon/greatsword),                     // 双手巨剑，高伤害重武器
 	), 2), "weapon")
 
@@ -709,12 +709,12 @@
 		"绷带"     = list(25, /obj/item/natural/cloth/bandage),                            // 包扎止血
 		"面包条"     = list(30, /obj/item/reagent_containers/food/snacks/rogue/bread),       // 充饥的食物
 		"葡萄酒"   = list(25, /obj/item/reagent_containers/glass/bottle/rogue/wine),          // 提神的酒水
-		"体力药水" = list(50, /obj/item/reagent_containers/glass/bottle/rogue/stampot),       // 恢复体力
-		"治疗药水" = list(60, /obj/item/reagent_containers/glass/bottle/rogue/healthpot),     // 回血
+		"耐力药水" = list(50, /obj/item/reagent_containers/glass/bottle/rogue/stampot),       // 恢复体力
+		"生命药水" = list(60, /obj/item/reagent_containers/glass/bottle/rogue/healthpot),     // 回血
 		"魔力药水" = list(60, /obj/item/reagent_containers/glass/bottle/rogue/manapot),       // 回蓝
 		"解毒剂"   = list(70, /obj/item/reagent_containers/glass/bottle/rogue/antidote),      // 解除中毒
-		"强效体力药水" = list(100, /obj/item/reagent_containers/glass/bottle/rogue/strongstampot),  // 大量恢复体力
-		"强效治疗药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/healthpotnew), // 强力回血
+		"强效耐力药水" = list(100, /obj/item/reagent_containers/glass/bottle/rogue/strongstampot),  // 大量恢复体力
+		"强效生命药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/healthpotnew), // 强力回血
 		"强效魔力药水" = list(120, /obj/item/reagent_containers/glass/bottle/rogue/strongmanapot),  // 大量回蓝
 		"强效解毒剂"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/strong_antidote), // 强力解毒
 		// —— 本模块自定义炼金药水（成品瓶，即用型）——
@@ -950,7 +950,7 @@
 		"奶酪酿茄子" = list(120, /obj/item/reagent_containers/food/snacks/rogue/preserved/eggplantstuffedcheese),
 		"铁锤堡式早餐" = list(130, /obj/item/reagent_containers/food/snacks/rogue/friedegg/hammerhold),
 		// —— 佳酿（品质 ≥ 3 的名贵酒水；elfblue 已在上方列出）——
-		"风郡清酒"   = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake),
+		"纯米吟酿酒瓶"   = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake),
 		"风郡烧酎"   = list(140, /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunshochu),
 		"药酒"       = list(130, /obj/item/reagent_containers/glass/bottle/rogue/beer/yaojiu),
 		"蛇酒"       = list(150, /obj/item/reagent_containers/glass/bottle/rogue/beer/shejiu),

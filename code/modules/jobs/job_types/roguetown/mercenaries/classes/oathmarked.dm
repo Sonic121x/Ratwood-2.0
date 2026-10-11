@@ -117,7 +117,7 @@
 /obj/item/rogueweapon/eaglebeak/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>这是一柄誓印者的长杆战锤，诞生于更久远的年代，由 Hadrûnzhar 主导设计。\
+		. += "<small>这是一柄誓印者的卢塞恩锤，诞生于更久远的年代，由哈德伦扎尔主导设计。\
 		那是一位湮没于数百年时光中的领主，也是最初的誓约守护者。它的用途很简单：<br>\
 		用锤击碎乌合之众，用镐诛杀叛徒，用枪尖一并贯穿两者。</small>"
 
@@ -143,7 +143,7 @@
 /obj/item/rogueweapon/greatsword/grenz/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>这是一柄誓印者的焰纹巨剑，诞生于更久远的年代，由 Hadrûnzhar 主导设计。\
+		. += "<small>这是一柄誓印者的焰纹巨剑，诞生于更久远的年代，由哈德伦扎尔主导设计。\
 		那是一位湮没于数百年时光中的领主，也是最初的誓约守护者。它的用途很简单：<br>\
 		这是一柄配得上王者的利刃，代替那位贵胄之手承载誓约的暴烈。</small>"
 
@@ -208,7 +208,7 @@
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>Hadrûnzhar，他家族中最杰出的一位。作为一名龙裔，他超然于诸多族内纷争之上。\
+		. += "<small>哈德伦扎尔，他家族中最杰出的一位。作为一名龙裔，他超然于诸多族内纷争之上。\
 		他曾给予自己的誓印者唯一的使命：<br>\
 		毁灭一切损害阿斯特拉塔高贵秩序之物，将左道魔法的污秽自世间彻底根除。</small>"
 
@@ -223,7 +223,7 @@
 /obj/item/clothing/cloak/cape/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>Hadrûnzhar 以张扬作风与突如其来的暴烈脾性而闻名。\
+		. += "<small>哈德伦扎尔以张扬作风与突如其来的暴烈脾性而闻名。\
 		这件披风本是用来羞辱那些心怀怨恨的誓印者，如今却象征着更宏大的东西。\
 		那便是希望，希望有朝一日他会归来。\
 		正如他当年消失在埃瑞西奥斯领域之中那般，如今所有德拉基安，无论知情与否，都在祈祷他重返人世。</small>"
@@ -239,6 +239,6 @@
 /obj/item/book/rogue/secret/oathmarked/examine(mob/user)
 	. = ..()
 	if(isdracon(user))
-		. += "<small>这本古老秘典，是在 Hadrûnzhar 消失后由他最亲近之人所撰。\
+		. += "<small>这本古老秘典，是在哈德伦扎尔消失后由他最亲近之人所撰。\
 		其中列明了所有誓印者都注定必须遵循的准则。\
-		正如另一个时代里的 Hadrûnzhar 那样，在他从已知世界滑离而去之前。</small>"
+		正如另一个时代里的哈德伦扎尔那样，在他从已知世界滑离而去之前。</small>"

@@ -33,7 +33,7 @@
 	..()
 	to_chat(H, span_warning("帷幕拉开，盾阵集结，千重暗影的目光落在你身上。咆哮的角斗士、狂热的持盾者、盛装的武伶；准备迎接下一场较量吧。"))
 	if(H.mind)
-		var/bronzeweapon = list("斯帕塔长剑与徒手技能 +1","三叉戟与徒手技能 +1","巨斧与徒手技能 +1","多拉布拉鹤嘴锄与徒手技能 +1","翼矛与大盾","阿波菲斯巨镰剑与大盾","短剑与盾牌","科庇斯弯刀与盾牌","马凯拉弯刀与盾牌","镰形剑与盾牌","斧头与盾牌","战棍与盾牌","连枷与盾牌","长矛与盾牌","弧刃拳套与短剑","赤手空拳 - 熟练拳师，力量/意志 +I，智力 -1")
+		var/bronzeweapon = list("斯帕塔长剑与徒手技能 +1","青铜三叉戟与徒手技能 +1","青铜巨斧与徒手技能 +1","军团斧镐与徒手技能 +1","青铜翼矛与霍普隆巨盾","阿波菲斯与霍普隆巨盾","短剑与霍普隆盾","科皮斯与霍普隆盾","马凯拉短剑与霍普隆盾","寇派什弯刀与霍普隆盾","青铜战斧与霍普隆盾","青铜战棍与霍普隆盾","青铜连枷与霍普隆盾","青铜矛与霍普隆盾","阿尔贝洛斯与短剑","赤手空拳 - 熟练拳师，力量/意志 +I，智力 -1")
 		var/bronzeweapon_choice = input(H, "选择你的武器。", "为观众献上好戏") as anything in bronzeweapon
 		switch(bronzeweapon_choice)
 			if("斯帕塔长剑与徒手技能 +1")
@@ -41,77 +41,77 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/broadsword/bronze
 				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("三叉戟与徒手技能 +1")
+			if("青铜三叉戟与徒手技能 +1")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/trident
 				beltr = /obj/item/net
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("巨斧与徒手技能 +1")
+			if("青铜巨斧与徒手技能 +1")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/greataxe/bronze
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("多拉布拉鹤嘴锄与徒手技能 +1")
+			if("军团斧镐与徒手技能 +1")
 				H.adjust_skillrank_up_to(/datum/skill/labor/mining, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/pick/bronze
-			if("翼矛与大盾")
+			if("青铜翼矛与霍普隆巨盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/spear/bronze/winged/strapless
 				backr = /obj/item/rogueweapon/shield/bronze/great
-			if("阿波菲斯巨镰剑与大盾")
+			if("阿波菲斯与霍普隆巨盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/greatkhopesh
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/bronze/great
-			if("短剑与盾牌")
+			if("短剑与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/short/gladius
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/bronze
-			if("马凯拉弯刀与盾牌")
+			if("马凯拉短剑与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/short/messer/bronze
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/bronze
-			if("科庇斯弯刀与盾牌")
+			if("科皮斯与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/falchion/militia/bronze
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/bronze
-			if("镰形剑与盾牌")
+			if("寇派什弯刀与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/sabre/bronzekhopesh
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/bronze
-			if("斧头与盾牌")
+			if("青铜战斧与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/bronzebattleaxe
 				backr = /obj/item/rogueweapon/shield/bronze
-			if("战棍与盾牌")
+			if("青铜战棍与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/warhammer/bronze
 				backr = /obj/item/rogueweapon/shield/bronze
-			if("连枷与盾牌")
+			if("青铜连枷与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/flail/bronze
 				backr = /obj/item/rogueweapon/shield/bronze
-			if("长矛与盾牌")
+			if("青铜矛与霍普隆盾")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				backr = /obj/item/rogueweapon/shield/bronze
 				r_hand = /obj/item/rogueweapon/spear/bronze/strapless
-			if("弧刃拳套与短剑")
+			if("阿尔贝洛斯与短剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/rogueweapon/sword/short/gladius
@@ -127,10 +127,10 @@
 				H.change_stat(STATKEY_WIL, 1)
 				H.change_stat(STATKEY_INT, -1)
 
-		var/bronzesidearm = list("一袋标枪", "投石索与青铜弹丸", "弓与青铜箭矢", "另一把短剑与双持技艺", "另一把马凯拉弯刀与双持技艺", "另一把镰形剑与双持技艺", "另一把斧头与双持技艺")
+		var/bronzesidearm = list("标枪袋（青铜标枪）", "投石索与青铜弹丸", "弓与青铜箭矢", "另一把短剑与双持技艺", "另一把马凯拉短剑与双持技艺", "另一把寇派什弯刀与双持技艺", "另一把青铜战斧与双持技艺")
 		var/bronzesidearm_choice = input(H, "选择你的附加装备。", "准备你的开场演出") as anything in bronzesidearm
 		switch(bronzesidearm_choice)
-			if("一袋标枪")
+			if("标枪袋（青铜标枪）")
 				beltl = /obj/item/quiver/javelin/bronze
 			if("投石索与青铜弹丸")
 				H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -145,17 +145,17 @@
 				l_hand = /obj/item/rogueweapon/sword/short/gladius
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sword
-			if("另一把马凯拉弯刀与双持技艺")//these names may confuse people, but its soulful to display their actual titles rather than "messer"
+			if("另一把马凯拉短剑与双持技艺")//these names may confuse people, but its soulful to display their actual titles rather than "messer"
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				l_hand = /obj/item/rogueweapon/sword/short/messer/bronze
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sword
-			if("另一把镰形剑与双持技艺")
+			if("另一把寇派什弯刀与双持技艺")
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				l_hand = /obj/item/rogueweapon/sword/sabre/bronzekhopesh
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sword
-			if("另一把斧头与双持技艺")
+			if("另一把青铜战斧与双持技艺")
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_APPRENTICE, TRUE)
 				l_hand = /obj/item/rogueweapon/stoneaxe/woodcut/bronzebattleaxe//i hate this objs naming path, just terrible

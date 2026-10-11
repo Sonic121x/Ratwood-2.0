@@ -74,7 +74,7 @@
 
 
 /datum/supply_pack/rogue/blackmarket_diplomacy/leathercollar
-	name = "皮项圈"
+	name = "皮革颈圈"
 	cost = 50	//sense of pride and accomplishment
 	contains = list(/obj/item/clothing/neck/roguetown/collar/leather)
 
@@ -84,22 +84,22 @@
 	contains = list(/obj/item/leash/chain)
 
 /datum/supply_pack/rogue/blackmarket_diplomacy/emberwine
-	name = "烬酒小瓶"
+	name = "余烬酒小瓶"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/emberwine/full)
 
 /datum/supply_pack/rogue/blackmarket_diplomacy/bomb
-	name = "液焰药剂"
+	name = "瓶装炸弹"
 	cost = 30
 	contains = list(/obj/item/bomb)
 
 /datum/supply_pack/rogue/blackmarket_diplomacy/lockpicks
-	name = "开锁针环，III"
+	name = "撬锁工具环，三把撬锁工具"
 	cost = 20
 	contains = list(/obj/item/lockpickring/mundane)
 
 /datum/supply_pack/rogue/blackmarket_diplomacy/lockpick
-	name = "开锁针"
+	name = "撬锁工具"
 	cost = 5
 	contains = list(/obj/item/lockpick)
 

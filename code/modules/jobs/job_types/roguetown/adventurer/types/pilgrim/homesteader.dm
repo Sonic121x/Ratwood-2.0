@@ -420,13 +420,13 @@
 
 	// Daily Tools - basic combination
 	var/daily_tools_combos = list(
-		"青铜斧 + 青铜刀 + 刀鞘" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
-		"简易弓 + 箭袋" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
-		"铁矛 + 备用匕首" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
-		"鱼竿 + 蠕虫" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
-		"镰刀 + 农锄" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
-		"矿镐 + 铜锤" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
-		"棍棒 + 绳索" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
+		"青铜斧 + 青铜匕首 + 刀鞘" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
+		"短弓 + 箭袋" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
+		"长矛 + 青铜匕首" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
+		"钓竿 + 蠕虫" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
+		"镰刀 + 锄头" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
+		"铁镐 + 铜锤" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
+		"警棍 + 绳索" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
 	)
 
 	if(H.mind)
@@ -465,18 +465,18 @@
 
 	// OUTFIT SELECTION
 	var/outfit_styles = list(
-		"苦工 - 工人背心、长裤、靴子",
-		"田间帮手 - 草帽、短衫、长裤",
-		"樵夫 - 兜帽、工装背心、护腕",
-		"渔夫 - 渔帽、短衫、工作背心",
-		"工匠 - 长袍、紧身裤、毛皮披风",
-		"裁缝 - 护裙、白色上衣、布腰带",
-		"旅人 - 半披风、内衬衣、靴子",
-		"乡野人 - 毛帽、短衫、皮靴",
-		"矿工 - 武装帽、长裤、工作背心",
-		"艺人 - 华帽、长衣、半披风",
-		"朴素学者 - 眼镜、学者袍、披肩帽",
-		"乡间人 - 草帽、女式上衣、短靴"
+		"苦工 - 条纹束衣或丝质内裙",
+		"田间帮手 - 草编帽子、短衬衣或丝质内裙",
+		"樵夫 - 兜帽、皮臂甲",
+		"渔夫 - 草编帽子、条纹束衣或丝质内裙",
+		"工匠 - 束腰衫、紧身裤、毛皮斗篷",
+		"裁缝 - 衬垫连衣裙、白色束腰衫、布腰带",
+		"旅人 - 半斗篷、衬衣或丝质内裙",
+		"乡野人 - 毛皮帽子、皮靴",
+		"矿工 - 皮帽、条纹束衣或丝质内裙",
+		"艺人 - 华丽帽子、束腰衫、半斗篷",
+		"朴素学者 - 眼镜、学者长袍、头巾帽",
+		"乡间人 - 草编帽子、短靴"
 	)
 
 	var/outfit_choice = input(H, "选择你的穿着风格。", "服装风格") as anything in outfit_styles
@@ -486,7 +486,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 
 	switch(outfit_choice)
-		if("苦工 - 工人背心、长裤、靴子")
+		if("苦工 - 条纹束衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -498,7 +498,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				head = /obj/item/clothing/head/roguetown/armingcap
 
-		if("田间帮手 - 草帽、短衫、长裤")
+		if("田间帮手 - 草编帽子、短衬衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -508,7 +508,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/strawhat
 
-		if("樵夫 - 兜帽、工装背心、护腕")
+		if("樵夫 - 兜帽、皮臂甲")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -520,7 +520,7 @@
 			head = /obj/item/clothing/head/roguetown/roguehood
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 
-		if("渔夫 - 渔帽、短衫、工作背心")
+		if("渔夫 - 草编帽子、条纹束衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -530,14 +530,14 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/fisherhat
 
-		if("工匠 - 长袍、紧身裤、毛皮披风")
+		if("工匠 - 束腰衫、紧身裤、毛皮斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			head = /obj/item/clothing/head/roguetown/hatblu
 
-		if("裁缝 - 护裙、白色上衣、布腰带")
+		if("裁缝 - 衬垫连衣裙、白色束腰衫、布腰带")
 			armor = /obj/item/clothing/suit/roguetown/armor/armordress
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -545,7 +545,7 @@
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 
-		if("旅人 - 半披风、内衬衣、靴子")
+		if("旅人 - 半斗篷、衬衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -556,7 +556,7 @@
 			cloak = /obj/item/clothing/cloak/half
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 
-		if("乡野人 - 毛帽、短衫、皮靴")
+		if("乡野人 - 毛皮帽子、皮靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -565,7 +565,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/hatfur
 
-		if("矿工 - 武装帽、长裤、工作背心")
+		if("矿工 - 皮帽、条纹束衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/brown
@@ -576,7 +576,7 @@
 			head = /obj/item/clothing/head/roguetown/armingcap
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 
-		if("艺人 - 华帽、长衣、半披风")
+		if("艺人 - 华丽帽子、束腰衫、半斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -584,14 +584,14 @@
 			head = /obj/item/clothing/head/roguetown/fancyhat
 			belt = /obj/item/storage/belt/rogue/leather/cloth
 
-		if("朴素学者 - 眼镜、学者袍、披肩帽")
+		if("朴素学者 - 眼镜、学者长袍、头巾帽")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			head = /obj/item/clothing/head/roguetown/chaperon
 			mask = /obj/item/clothing/mask/rogue/spectacles
 
-		if("乡间人 - 草帽、女式上衣、短靴")
+		if("乡间人 - 草编帽子、短靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else

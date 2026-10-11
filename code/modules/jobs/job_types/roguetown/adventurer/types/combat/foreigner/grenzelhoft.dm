@@ -50,16 +50,16 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 	if(H.mind)
-		var/grenzel_purpose = list("双手剑士","戟兵（长戟）","弩手（弩 + 单刃刀）", "卢塞恩锤")
+		var/grenzel_purpose = list("双手剑士","戟兵（戟斧）","弩手（十字弩 + 双手大刀）", "钢制卢塞恩锤")
 		var/weapon_choice = input(H, "选择你的惯用兵器。", "契约既毁，祸亦随之") as anything in grenzel_purpose
 		switch(weapon_choice)
 			if("双手剑士")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 				r_hand = /obj/item/rogueweapon/greatsword/grenz
-			if("戟兵（长戟）")
+			if("戟兵（戟斧）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				r_hand = /obj/item/rogueweapon/halberd
-			if("弩手（弩 + 单刃刀）")
+			if("弩手（十字弩 + 双手大刀）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/misc/tracking, 3, TRUE)
@@ -69,7 +69,7 @@
 				beltr = /obj/item/rogueweapon/scabbard
 				H.change_stat(STATKEY_STR, -1)
 				H.change_stat(STATKEY_PER, 2) // so the boy can aim his crossbow and see further, maintain +7 stats total.
-			if("卢塞恩锤")
+			if("钢制卢塞恩锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				r_hand = /obj/item/rogueweapon/eaglebeak
 /datum/advclass/foreigner/fencerguy
@@ -102,15 +102,15 @@
 	to_chat(H, span_warning("你是一位四处游历的武器行家，曾在格伦泽尔霍夫特的剑术学校受训，随身带着武器、本领和自尊。"))
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("平衡长剑","长矛与拳刃","军刀")
+		var/weapons = list("格伦泽尔霍夫特长剑","猎猪矛与冲拳匕首","军刀")
 		var/weapon_choice = input(H, "选择你擅长的武器。", "拿起武器") as anything in weapons
 		switch(weapon_choice)
-			if("平衡长剑")
+			if("格伦泽尔霍夫特长剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/sword/long/fencerguy
 				r_hand = /obj/item/rogueweapon/huntingknife/combat
 				backr = /obj/item/rogueweapon/scabbard/sword
-			if("长矛与拳刃")
+			if("猎猪矛与冲拳匕首")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				l_hand = /obj/item/rogueweapon/spear/boar

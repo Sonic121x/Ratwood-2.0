@@ -8,7 +8,7 @@
 
 // Same as merchant
 /datum/supply_pack/rogue/bath_rogue/chains
-	name = "锁链"
+	name = "铁链"
 	cost = 15
 	contains = list(
 		/obj/item/rope/chain,
@@ -56,7 +56,7 @@
 	)
 
 /datum/supply_pack/rogue/bath_rogue/waterbolts
-	name = "水弩矢"
+	name = "水弩矢与水箭（1支弩矢、9支箭）"
 	cost = 20
 	contains = list (
 		/obj/item/ammo_casing/caseless/rogue/bolt/water,
@@ -77,12 +77,12 @@
 	contains = list(/obj/item/quiver)
 
 /datum/supply_pack/rogue/bath_rogue/net
-	name = "网"
+	name = "捕网"
 	cost = 20
 	contains = list(/obj/item/net)
 
 /datum/supply_pack/rogue/bath_rogue/grappler
-	name = "抓钩"
+	name = "青铜抓钩发射器"
 	cost = 200
 	contains = list(/obj/item/grapplinghook)
 
@@ -92,11 +92,11 @@
 	contains = list(/obj/item/clothing/climbing_gear)
 
 /datum/supply_pack/rogue/bath_rogue/whip
-	name = "鞭子"
+	name = "皮鞭"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/whip)
 
 /datum/supply_pack/rogue/bath_rogue/brandiron
-	name = "烙铁"
+	name = "烙印铁"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/surgery/cautery/branding)

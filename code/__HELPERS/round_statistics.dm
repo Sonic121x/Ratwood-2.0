@@ -604,7 +604,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"entries" = list()
 	),
 	FEATURED_STATS_SMOKERS = list(
-		"name" = "TOP Smokers",
+		"name" = "吸烟排行榜",
 		"color" = "#2e201c",
 		"entries" = list()
 	),

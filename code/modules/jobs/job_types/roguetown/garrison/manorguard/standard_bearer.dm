@@ -48,13 +48,13 @@
 	H.verbs |= /mob/proc/haltyell
 
 	if(H.mind)
-		var/weapons = list("长枪","长柄斧")
+		var/weapons = list("公爵战旗（长枪）","公爵战旗（长柄斧）")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("长枪")
+			if("公爵战旗（长枪）")
 				r_hand = /obj/item/rogueweapon/spear/keep_standard
-			if("长柄斧")
+			if("公爵战旗（长柄斧）")
 				r_hand = /obj/item/rogueweapon/spear/keep_standard/poleaxe
 
 //These are really hacky, but it works.

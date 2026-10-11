@@ -54,21 +54,21 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("弯刀与盾","战锤与盾","巴迪什斧","大锤——+力量/体质，-速度/感知/智力")
+		var/weapons = list("法刀与黄铜盾","战锤与黄铜盾","长柄战斧","大槌——+力量/体质，-速度/感知/智力")
 		var/weapon_choice = input(H, "选择你的武器：", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("弯刀与盾")
+			if("法刀与黄铜盾")
 				r_hand = /obj/item/rogueweapon/sword/short/falchion
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backl = /obj/item/rogueweapon/shield/iron/zybantine
-			if("战锤与盾")
+			if("战锤与黄铜盾")
 				r_hand = /obj/item/rogueweapon/mace/warhammer
 				backl = /obj/item/rogueweapon/shield/iron/zybantine
-			if("巴迪什斧")
+			if("长柄战斧")
 				r_hand = /obj/item/rogueweapon/halberd/bardiche
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("大锤——+力量/体质，-速度/感知/智力")
+			if("大槌——+力量/体质，-速度/感知/智力")
 				r_hand = /obj/item/rogueweapon/mace/maul
 				l_hand = /obj/item/reagent_containers/glass/bottle/rogue/beer
 				backl = /obj/item/rogueweapon/scabbard/gwstrap

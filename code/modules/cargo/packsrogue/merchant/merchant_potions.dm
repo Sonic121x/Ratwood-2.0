@@ -9,7 +9,7 @@
 
 //Only two since that's 4 uses total; two sips each. You only need one sip for cure.
 /datum/supply_pack/rogue/potions/rotcure
-	name = "腐坏治疗药水"
+	name = "腐坏解药"
 	cost = 300
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/alchemical/rogue/rotcure,
@@ -17,12 +17,12 @@
 				)
 
 /datum/supply_pack/rogue/potions/healthpot
-	name = "治疗药水"
+	name = "生命药水"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 
 /datum/supply_pack/rogue/potions/manapot
-	name = "法力药水"
+	name = "魔力药水"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/manapot)
 
@@ -47,7 +47,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/perpot)
 
 /datum/supply_pack/rogue/potions/endpot
-	name = "意志药水"
+	name = "坚韧药水"
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/endpot)
 

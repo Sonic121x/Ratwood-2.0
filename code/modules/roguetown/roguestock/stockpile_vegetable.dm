@@ -5,7 +5,7 @@
 // But I live for the consequences of stewards deciding to neglect their local economy.
 //
 /datum/roguestock/stockpile/grain
-	name = "谷物"
+	name = "小麦谷粒"
 	desc = "斯佩耳特小麦。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/wheat
 	trade_good_id = TRADE_GOOD_GRAIN
@@ -25,7 +25,7 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/rice
-	name = "稻米"
+	name = "米粒"
 	desc = "一种用于烹饪的谷物。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/rice
 	trade_good_id = TRADE_GOOD_RICE
@@ -45,7 +45,7 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/potato
-	name = "马铃薯"
+	name = "土豆"
 	desc = "一种有趣的块茎。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	trade_good_id = TRADE_GOOD_POTATO
@@ -155,7 +155,7 @@
 	category = "Vegetable"
 
 /datum/roguestock/stockpile/rocknut
-	name = "岩果"
+	name = "石果"
 	desc = "一种略带兴奋作用的坚果。"
 	item_type = /obj/item/reagent_containers/food/snacks/grown/nut
 	trade_good_id = TRADE_GOOD_ROCKNUT
