@@ -73,20 +73,20 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/huntersyell)
 		H.set_blindness(0)
-		var/ranged_weapons = list("长弓", "反曲弓")
+		var/ranged_weapons = list("紫杉长弓", "反曲弓")
 		var/ranged_choice = input(H, "选择你的远程武器。", "为狩猎做好准备") as anything in ranged_weapons
 		switch(ranged_choice)
-			if("长弓")
+			if("紫杉长弓")
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 				beltr = /obj/item/quiver/arrows
 			if("反曲弓")
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 				beltr = /obj/item/quiver/arrows
 
-		var/sidearms = list("大砍刀", "手斧")
+		var/sidearms = list("猎剑", "手斧")
 		var/sidearm_choice = input(H, "选择你的副武器。", "拿起武器") as anything in sidearms
 		switch(sidearm_choice)
-			if("大砍刀")
+			if("猎剑")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/short/messer/iron
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)

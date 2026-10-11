@@ -47,14 +47,14 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/dagger
-	name = "匕首"
+	name = "铁匕首"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger,
 				)
 
 /datum/supply_pack/rogue/iron_weapons/axe
-	name = "斧"
+	name = "伐木斧"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/stoneaxe/woodcut,
@@ -75,7 +75,7 @@
 				)
 
 /datum/supply_pack/rogue/iron_weapons/flail
-	name = "连枷"
+	name = "铁连枷"
 	cost = 25 // 1 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/flail,
@@ -118,21 +118,21 @@
 
 
 /datum/supply_pack/rogue/iron_weapons/lucerne
-	name = "卢塞恩战锤"
+	name = "卢塞恩锤"
 	cost = 45 // 2 Iron Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/eaglebeak/lucerne,
 				)
 
 /datum/supply_pack/rogue/iron_weapons/goedendag
-	name = "古登达格棍"
+	name = "古登达格棒"
 	cost = 40 // 2 Iron Ingot
 	contains = list(
 					/obj/item/rogueweapon/mace/goden,
 				)
 
 /datum/supply_pack/rogue/iron_weapons/whip
-	name = "鞭"
+	name = "皮鞭"
 	cost = 20 // 2 Leather 1 Stone so, vibe based.
 	contains = list(
 					/obj/item/rogueweapon/whip,

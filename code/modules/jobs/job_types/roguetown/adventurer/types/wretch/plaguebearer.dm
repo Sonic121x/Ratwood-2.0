@@ -8,7 +8,7 @@
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_CICERONE, TRAIT_NOSTINK, TRAIT_MEDICINE_EXPERT, TRAIT_ALCHEMY_EXPERT)
 	maximum_possible_slots = 1 //They spawn with killer's ice lol I'm limiting this shit 
-	extra_context = "该子职业开局可在以下路线中选择：可淬毒匕首加毒箭弓、可淬毒匕首加魔法，或细剑加高超闪避能力。"
+	extra_context = "该子职业开局可在以下路线中选择：腐蚀匕首加反曲弓与毒箭、腐蚀匕首加魔法，或刺剑加高超闪避能力。"
 	subclass_stats = list(
 		STATKEY_INT = 4,
 		STATKEY_PER = 3,
@@ -58,11 +58,11 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	if(H.mind)
-		var/primary_weapons = list("淬毒匕首", "细剑与敏捷")
+		var/primary_weapons = list("腐蚀匕首", "刺剑与敏捷")
 		var/primary_weapon_choice = input(H, "选择你的招牌武器。", "你的行当工具") as anything in primary_weapons
 		H.set_blindness(0)
 		switch(primary_weapon_choice)
-			if("淬毒匕首")
+			if("腐蚀匕首")
 				backpack_contents += /obj/item/rogueweapon/huntingknife/idagger/steel/corroded
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				var/additional_weapons = list("弓术", "魔法")
@@ -77,7 +77,7 @@
 						backr = /obj/item/rogueweapon/woodstaff/toper
 						H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/acidsplash)
-			if("细剑与敏捷")
+			if("刺剑与敏捷")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				beltl = /obj/item/rogueweapon/scabbard/sword

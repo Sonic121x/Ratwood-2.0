@@ -295,7 +295,7 @@
 	desc = "一只带有山口酒坊瓶塞的酒瓶。里面是远方风郡酿造的淡色拉格，并以绿茶精修出独特风味，甚至比精灵酒还要清淡！"
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake
-	name = "阿夫尼克白酒瓶"
+	name = "纯米吟酿酒瓶"
 	icon = 'icons/obj/alcohol.dmi'
 	icon_state = "white_wine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kgunsake = 50)

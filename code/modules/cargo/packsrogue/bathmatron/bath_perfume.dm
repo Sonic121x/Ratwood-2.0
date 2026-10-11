@@ -40,7 +40,7 @@
 	contains = list(/obj/item/perfume/vanilla)
 
 /datum/supply_pack/rogue/bath_perfume/pear
-	name = "梨香水"
+	name = "梨香香水"
 	cost = CHEAP_PERFUME_PRICE
 	contains = list(/obj/item/perfume/pear)
 

@@ -54,7 +54,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 	if(H.mind)
-		var/weapons = list("军刀","鞭")
+		var/weapons = list("军刀","皮鞭")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -62,7 +62,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/rogueweapon/sword/sabre
 				r_hand = /obj/item/rogueweapon/scabbard/sword
-			if("鞭")
+			if("皮鞭")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/rogueweapon/whip
 
@@ -170,7 +170,7 @@
 	var/datum/inspiration/I = new /datum/inspiration(H)
 	I.grant_inspiration(H, bard_tier = BARD_T3)
 	if(H.mind)
-		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇风琴","口簧琴","鲁特琴","诗琴","三味线","小号","中提琴","歌声护符")
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = tgui_input_list(H, "选择你的乐器。", "执起乐器", weapons)
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -190,13 +190,13 @@
 				backr = /obj/item/rogue/instrument/harmonica
 			if("竖琴")
 				backr = /obj/item/rogue/instrument/harp
-			if("手摇风琴")
+			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
 			if("口簧琴")
 				backr = /obj/item/rogue/instrument/jawharp
 			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("诗琴")
+			if("圣咏琴")
 				backr = /obj/item/rogue/instrument/psyaltery
 			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
@@ -204,7 +204,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌声护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 /datum/advclass/rogue/swashbuckler

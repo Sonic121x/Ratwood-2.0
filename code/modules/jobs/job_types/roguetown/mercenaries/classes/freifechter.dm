@@ -49,14 +49,14 @@
 		)
 	if(H.mind)
 		var/weapons = list(
-			"伊特鲁斯卡长剑"	= /obj/item/rogueweapon/sword/long/etruscan,
-			"改革派长剑"	= /obj/item/rogueweapon/sword/long/etruscan/freifechter
+			"篮护长剑"	= /obj/item/rogueweapon/sword/long/etruscan,
+			"普赛顿改革派长剑"	= /obj/item/rogueweapon/sword/long/etruscan/freifechter
 		)
 		var/weaponchoice = input(H, "拔出一柄剑。", "由奥克塔维乌什大师呈交于我……") as anything in weapons
 		r_hand = weapons[weaponchoice]
 		var/armors = list(
-			"击剑胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
-			"击剑外套"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
+			"击剑手胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
+			"击剑夹克"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
 		)
 		var/armorchoice = input(H, "披上你的甲胄。", "要安全，还是要灵活？") as anything in armors
 		armor = armors[armorchoice]
@@ -115,7 +115,7 @@
 		)
 	if(H.mind)
 		var/weapons = list(
-			"毕业长枪"				= /obj/item/rogueweapon/spear/boar/frei,
+			"查尔托基长枪"				= /obj/item/rogueweapon/spear/boar/frei,
 			"瑟伦迪尼日纳的旗帜"		= /obj/item/rogueweapon/spear/boar/frei/pike,
 			"普赛顿改革派的旗帜"	= /obj/item/rogueweapon/spear/boar/frei/pike/reformist
 		)
@@ -177,8 +177,8 @@
 		)
 	if(H.mind)
 		var/armors = list(
-			"击剑胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
-			"击剑外套"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
+			"击剑手胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fencer,
+			"击剑夹克"	= /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
 		)
 		var/armorchoice = input(H, "披上你的甲胄。", "要安全，还是要灵活？") as anything in armors
 		armor = armors[armorchoice]

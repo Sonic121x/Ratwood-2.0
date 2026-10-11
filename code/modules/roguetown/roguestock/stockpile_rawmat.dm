@@ -2,7 +2,7 @@
 	passive_generation = 5 // Ratwood passive import
 	generation_price = 4 // Ratwood passive import
 	remote_limit = 20 // Ratwood passive import
-	name = "木材"
+	name = "小原木"
 	desc = "截短后便于运输的木料。"
 	item_type = /obj/item/grown/log/tree/small
 	trade_good_id = TRADE_GOOD_WOOD
@@ -68,7 +68,7 @@
 /datum/roguestock/stockpile/iron
 	passive_generation = 2 // Ratwood passive import
 	generation_price = 8 // Ratwood passive import
-	name = "粗铁"
+	name = "铁矿石"
 	desc = "用于锻造的铁块。"
 	item_type = /obj/item/rogueore/iron
 	trade_good_id = TRADE_GOOD_IRON_ORE
@@ -79,7 +79,7 @@
 /datum/roguestock/stockpile/copper
 	passive_generation = 1 // Ratwood passive import
 	generation_price = 4 // Ratwood passive import
-	name = "粗铜"
+	name = "铜矿石"
 	desc = "用于锻造和合金冶炼的铜块。"
 	item_type = /obj/item/rogueore/copper
 	trade_good_id = TRADE_GOOD_COPPER_ORE
@@ -90,7 +90,7 @@
 /datum/roguestock/stockpile/tin
 	passive_generation = 1 // Ratwood passive import
 	generation_price = 4 // Ratwood passive import
-	name = "粗锡"
+	name = "锡矿石"
 	desc = "用于锻造和合金冶炼的锡块。"
 	item_type = /obj/item/rogueore/tin
 	trade_good_id = TRADE_GOOD_TIN_ORE
@@ -100,7 +100,7 @@
 
 /datum/roguestock/stockpile/gold
 	generation_price = 80 // Ratwood passive import
-	name = "粗金"
+	name = "金矿石"
 	desc = "未经提炼的金块。"
 	item_type = /obj/item/rogueore/gold
 	trade_good_id = TRADE_GOOD_GOLD_ORE
@@ -110,7 +110,7 @@
 
 /datum/roguestock/stockpile/silver
 	no_passive = TRUE // Ratwood passive import
-	name = "粗银"
+	name = "银矿石"
 	desc = "未经提炼的银块。"
 	item_type = /obj/item/rogueore/silver
 	trade_good_id = TRADE_GOOD_SILVER_ORE
@@ -121,7 +121,7 @@
 /datum/roguestock/stockpile/cinnabar
 	passive_generation = 1 // Ratwood passive import
 	generation_price = 8 // Ratwood passive import
-	name = "朱砂"
+	name = "辰砂"
 	desc = "一种可用于制取水银的红色矿物。"
 	item_type = /obj/item/rogueore/cinnabar
 	trade_good_id = TRADE_GOOD_CINNABAR
@@ -133,7 +133,7 @@
 	passive_generation = 2 // Ratwood passive import
 	generation_price = 3 // Ratwood passive import
 	remote_limit = 15 // Ratwood passive import
-	name = "布料"
+	name = "布"
 	desc = "用于缝纫和裁缝工作的布匹。"
 	item_type = /obj/item/natural/cloth
 	trade_good_id = TRADE_GOOD_CLOTH
@@ -156,7 +156,7 @@
 /datum/roguestock/stockpile/silk
 	passive_generation = 1 // Ratwood passive import
 	generation_price = 2 // Ratwood passive import
-	name = "丝绸"
+	name = "蛛丝"
 	desc = "用于制作异域服饰的蜘蛛丝。"
 	item_type = /obj/item/natural/silk
 	trade_good_id = TRADE_GOOD_SILK

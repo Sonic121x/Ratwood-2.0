@@ -263,18 +263,18 @@
 		H.mind.AddSpell(new/obj/effect/proc_holder/spell/invoked/order/heartfelt/focustarget)
 		H.verbs |= list(/mob/living/carbon/human/mind/proc/setordersheartfelt)
 
-	var/weapons = list("双头巨斧", "巨型钉锤", "战斧加盾", , "战锤加盾")
+	var/weapons = list("双头钢巨斧", "巨型钉头锤", "战斧加鸢盾", , "战锤加鸢盾")
 	var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("双头巨斧")
+		if("双头钢巨斧")
 			r_hand = /obj/item/rogueweapon/greataxe/steel/doublehead
-		if("巨型钉锤")
+		if("巨型钉头锤")
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
-		if("战斧加盾")
+		if("战斧加鸢盾")
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
-		if("战锤加盾")
+		if("战锤加鸢盾")
 			r_hand = /obj/item/rogueweapon/mace/warhammer
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
 		else //In case they DC or don't choose close the panel, etc

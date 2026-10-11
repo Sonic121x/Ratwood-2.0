@@ -58,17 +58,17 @@
 			H.adjust_skillrank_up_to(/datum/skill/labor/fishing, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			var/options = list("平底锅", "指虎", "纳瓦哈刀", "赤手空拳")
+			var/options = list("煎锅", "指虎", "纳瓦哈折刀", "赤手空拳")
 			var/option_choice = input(H, "选择你的家伙。", "拿起武器") as anything in options
 
 			switch(option_choice)
-				if("平底锅")
+				if("煎锅")
 					H.adjust_skillrank_up_to(/datum/skill/craft/cooking, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/cooking/pan
 				if("指虎")
 					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/knuckles
-				if("纳瓦哈刀")
+				if("纳瓦哈折刀")
 					H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/huntingknife/idagger/navaja
 				if("赤手空拳")
@@ -103,11 +103,11 @@
 			H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("石索", "魔法砖块", "撬锁工具")
+			var/options = list("投石索", "魔法砖块", "撬锁工具环")
 			var/option_choice = input(H, "选择你的手段。", "拿起武器") as anything in options
 
 			switch(option_choice)
-				if("石索")
+				if("投石索")
 					H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 					l_hand = /obj/item/quiver/sling
@@ -115,7 +115,7 @@
 					H.adjust_skillrank_up_to(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
 					H.mind?.AddSpell(new /obj/effect/proc_holder/spell/self/magicians_brick)
 					ADD_TRAIT(H, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
-				if("撬锁工具")
+				if("撬锁工具环")
 					H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					H.adjust_skillrank_up_to(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)
 					H.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, SKILL_LEVEL_EXPERT, TRUE)
@@ -147,17 +147,17 @@
 			H.adjust_skillrank_up_to(/datum/skill/labor/mining, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("徒手硬干", "大斧头", "大棒子")
+			var/options = list("徒手硬干", "巨斧", "钉头锤")
 			var/option_choice = input(H, "选择你的家伙。", "拿起武器") as anything in options
 
 			switch(option_choice)
 				if("徒手硬干")
 					ADD_TRAIT(H, TRAIT_BIGGUY, TRAIT_GENERIC)
 					ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-				if("大斧头")
+				if("巨斧")
 					H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/greataxe
-				if("大棒子")
+				if("钉头锤")
 					H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/mace
 			var/techniques = list("飞身踢 - 击退 + 额外伤害", "锁喉摔 - 体力伤害", "眩晕击 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves

@@ -96,18 +96,18 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/heartfelt/forheartfelt)
 		H.mind.AddSpell(new/obj/effect/proc_holder/spell/invoked/order/heartfelt/focustarget)
 		H.verbs |= list(/mob/living/carbon/human/mind/proc/setordersheartfelt)
-	var/helmet = list("伊特鲁斯卡盆盔","狼首板甲盔","鸟喙盔","带面罩萨雷特盔","长吻带面罩萨雷特盔",)
+	var/helmet = list("伊特鲁斯卡盆盔","沃尔夫面甲头盔","鸟喙头盔","带面罩萨勒盔","带吻部面罩萨雷特盔",)
 	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
 		if("伊特鲁斯卡盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("狼首板甲盔") 
+		if("沃尔夫面甲头盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("鸟喙盔") // GUUUUTS NO GUTS NOOOOO
+		if("鸟喙头盔") // GUUUUTS NO GUTS NOOOOO
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/beakhelm
-		if("带面罩萨雷特盔")
+		if("带面罩萨勒盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻带面罩萨雷特盔")
+		if("带吻部面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		else
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan

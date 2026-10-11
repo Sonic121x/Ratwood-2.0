@@ -40,11 +40,11 @@
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("震慑钉头锤与盾","大槌，需至少 14 力量")
+		var/weapons = list("震击钉头锤与铁盾","大槌，需至少 14 力量")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("震慑钉头锤与盾")
+			if("震击钉头锤与铁盾")
 				r_hand = /obj/item/rogueweapon/mace/stunmace
 				backl = /obj/item/rogueweapon/shield/iron
 			if("大槌，需至少 14 力量")
@@ -67,10 +67,10 @@
 //All iron exclusive, as with the armour.
 	if(H.mind)
 		var/helmets = list(
-		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle/iron,
-		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
-		"角盔" 	= /obj/item/clothing/head/roguetown/helmet/horned,
-		"护顶盔"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+		"铁锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle/iron,
+		"铁萨勒盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/iron,
+		"角饰帽" 	= /obj/item/clothing/head/roguetown/helmet/horned,
+		"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
 		"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "戴上头盔") as anything in helmets

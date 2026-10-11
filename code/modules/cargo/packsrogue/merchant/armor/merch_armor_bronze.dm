@@ -69,7 +69,7 @@
 	contains = list(/obj/item/clothing/gloves/roguetown/chain/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/kilt
-	name = "青铜锁甲裙铠"
+	name = "青铜链甲裙"
 	cost = 25
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/kilt/bronze)
 
@@ -79,12 +79,12 @@
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/skirt/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/maskbronze
-	name = "面甲"
+	name = "青铜面具"
 	cost = 25
 	contains = list(/obj/item/clothing/mask/rogue/facemask/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/mask_wildguard
-	name = "面甲，旧式"
+	name = "青铜死亡面具"
 	cost = 25
 	contains = list(/obj/item/clothing/mask/rogue/facemask/bronze/classic)
 
@@ -94,16 +94,16 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/skullcap_helmet
-	name = "头盔，巴尔布特盔"
+	name = "头盔，青铜巴尔布特盔"
 	cost = 50
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/horned
-	name = "头盔，穆尔米洛式"
+	name = "头盔，青铜穆尔米洛盔"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bronzegladiator)
 
 /datum/supply_pack/rogue/armor_bronze/kettle
-	name = "头盔，伊利里亚"
+	name = "头盔，青铜伊利里亚头盔"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bronze)

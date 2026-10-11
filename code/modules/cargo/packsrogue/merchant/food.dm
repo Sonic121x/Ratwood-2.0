@@ -4,7 +4,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/food/meat
-	name = "风干肉"
+	name = "风干肉条"
 	cost = 28
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
@@ -15,7 +15,7 @@
 				)
 
 /datum/supply_pack/rogue/food/hardtack
-	name = "硬饼干"
+	name = "硬饼"
 	cost = 22
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
@@ -36,7 +36,7 @@
 				)
 
 /datum/supply_pack/rogue/food/eggs
-	name = "鸡蛋"
+	name = "蛋"
 	cost = 20
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/egg,
@@ -64,7 +64,7 @@
 				)
 
 /datum/supply_pack/rogue/food/tea
-	name = "茶叶"
+	name = "干茶叶"
 	cost = 25
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_dry,
@@ -177,7 +177,7 @@
 					)
 
 /datum/supply_pack/rogue/food/pepper
-	name = "胡椒"
+	name = "胡椒研磨器"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/peppermill)
 
@@ -200,7 +200,7 @@
 				)
 
 /datum/supply_pack/rogue/food/spiderhoney
-	name = "蜘蛛蜜"
+	name = "蛛蜜"
 	cost = 40
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/honey/spider,
@@ -238,7 +238,7 @@
 				)
 
 /datum/supply_pack/rogue/food/chocolate
-	name = "巧克力"
+	name = "巧克力锭"
 	cost = 30
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/chocolate,

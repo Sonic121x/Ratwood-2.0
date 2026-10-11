@@ -14,12 +14,12 @@
 
 /datum/trade_good/equipment/crafted/hardened_leather_helmet
 	id = TRADE_GOOD_HARDENED_LEATHER_HELMET
-	name = "硬化皮头盔"
+	name = "硬化皮革头盔"
 	item_type = /obj/item/clothing/head/roguetown/helmet/leather/advanced
 
 /datum/trade_good/equipment/crafted/hardened_leather_gorget
 	id = TRADE_GOOD_HARDENED_LEATHER_GORGET
-	name = "硬化皮护喉"
+	name = "硬化皮革护喉"
 	item_type = /obj/item/clothing/neck/roguetown/leather
 
 /datum/trade_good/equipment/crafted/heavy_leather_gloves
@@ -33,17 +33,17 @@
 
 /datum/trade_good/equipment/crafted/steel_chainmail
 	id = TRADE_GOOD_STEEL_CHAINMAIL
-	name = "钢制短身锁子甲"
+	name = "锁子短甲"
 	item_type = /obj/item/clothing/suit/roguetown/armor/chainmail
 
 /datum/trade_good/equipment/crafted/steel_hauberk
 	id = TRADE_GOOD_STEEL_HAUBERK
-	name = "钢制长身锁子甲"
+	name = "锁子甲"
 	item_type = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 
 /datum/trade_good/equipment/crafted/brigandine
 	id = TRADE_GOOD_BRIGANDINE
-	name = "札甲"
+	name = "板甲衣"
 	item_type = /obj/item/clothing/suit/roguetown/armor/brigandine
 
 /datum/trade_good/equipment/crafted/brigandine_heavy
@@ -72,7 +72,7 @@
 
 /datum/trade_good/equipment/crafted/steel_fullplate
 	id = TRADE_GOOD_STEEL_FULLPLATE
-	name = "钢制全身板甲"
+	name = "板甲"
 	item_type = /obj/item/clothing/suit/roguetown/armor/plate/full
 
 // ============================================================================
@@ -86,30 +86,30 @@
 
 /datum/trade_good/equipment/crafted/helm_bascinet
 	id = TRADE_GOOD_STEEL_HELM_BASCINET
-	name = "尖顶盔"
+	name = "盆盔"
 	item_type = /obj/item/clothing/head/roguetown/helmet/bascinet
 
 /datum/trade_good/equipment/crafted/helm_kettle
 	id = TRADE_GOOD_STEEL_HELM_KETTLE
-	name = "钢制圆边盔"
+	name = "锅盔"
 	item_type = /obj/item/clothing/head/roguetown/helmet/kettle
 
 /datum/trade_good/equipment/crafted/steel_mask
 	id = TRADE_GOOD_STEEL_MASK
-	name = "钢制面甲"
+	name = "钢面具"
 	item_type = /obj/item/clothing/mask/rogue/facemask/steel
 
 /datum/trade_good/equipment/crafted/chain_gloves
 	id = TRADE_GOOD_CHAIN_GLOVES
-	name = "链甲手套"
+	name = "锁链护手"
 	item_type = /obj/item/clothing/gloves/roguetown/chain
 
 /datum/trade_good/equipment/crafted/plate_gauntlets
 	id = TRADE_GOOD_PLATE_GAUNTLETS
-	name = "板甲手套"
+	name = "板甲护手"
 	item_type = /obj/item/clothing/gloves/roguetown/plate
 
 /datum/trade_good/equipment/crafted/plate_legs
 	id = TRADE_GOOD_STEEL_PLATE_LEGS
-	name = "钢制板甲腿甲"
+	name = "钢制板甲腿铠"
 	item_type = /obj/item/clothing/under/roguetown/platelegs

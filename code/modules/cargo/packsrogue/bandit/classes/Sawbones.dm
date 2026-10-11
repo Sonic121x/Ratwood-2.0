@@ -9,12 +9,12 @@
 //////////
 
 /datum/supply_pack/rogue/Sawbones/trustworthyhat
-	name = "可信医帽"
+	name = "医生帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/physician)
 
 /datum/supply_pack/rogue/Sawbones/leather/Lhelmet
-	name = "皮盔"
+	name = "皮革头盔"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
@@ -23,7 +23,7 @@
 //////////
 
 /datum/supply_pack/rogue/Sawbones/icoif
-	name = "铁锁子头巾"
+	name = "铁锁链护头巾"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/iron)
 
@@ -47,7 +47,7 @@
 ///////////
 
 /datum/supply_pack/rogue/Sawbones/trustworthyrobes
-	name = "可信医袍"
+	name = "瘟疫医师外衣"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe/physician)
 
@@ -81,12 +81,12 @@
 ///////////////////
 
 /datum/supply_pack/rogue/Sawbones/leather/Lbracers
-	name = "皮护臂"
+	name = "皮臂甲"
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Sawbones/leather/hbracers
-	name = "硬化皮护臂"
+	name = "硬化皮臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
@@ -129,7 +129,7 @@
 	contains = list(/obj/item/rogueweapon/sword/rapier)
 
 /datum/supply_pack/rogue/Sawbones/estoc
-	name = "穿甲剑"
+	name = "穿甲刺剑"
 	cost = 40
 	contains = list(/obj/item/rogueweapon/estoc)
 
@@ -143,7 +143,7 @@
 	contains = list(/obj/item/bomb)
 
 /datum/supply_pack/rogue/Sawbones/surgery_bag
-	name = "手术袋"
+	name = "外科医生包（满配）"
 	cost = 30
 	contains = list(/obj/item/storage/belt/rogue/surgery_bag/full/physician)
 
@@ -152,12 +152,12 @@
 /////////////
 
 /datum/supply_pack/rogue/Sawbones/bedroll
-	name = "铺盖卷"
+	name = "卷起的铺盖卷"
 	cost = 5
 	contains = list(/obj/item/bedroll)
 
 /datum/supply_pack/rogue/Sawbones/gbottle
-	name = "玻璃瓶"
+	name = "瓶子"
 	cost = 5
 	contains = list(/obj/item/reagent_containers/glass/bottle)
 
@@ -200,7 +200,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/conpot)
 
 /datum/supply_pack/rogue/Sawbones/endpot
-	name = "意志药水"
+	name = "坚韧药水"
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/endpot)
 
@@ -215,7 +215,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/lucpot)
 
 /datum/supply_pack/rogue/Sawbones/antidote
-	name = "毒药解毒剂"
+	name = "强效解毒剂"
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/strong_antidote)
 
@@ -225,7 +225,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/emberwine)
 
 /datum/supply_pack/rogue/Sawbones/heartblood
-	name = "心血罐"
+	name = "满装心兽血罐"
 	cost = 5
 	contains = list(/obj/item/heart_blood_canister/filled)
 
@@ -234,6 +234,6 @@
 /////////////////
 
 /datum/supply_pack/rogue/Sawbones/bronzeprosthetic
-	name = "青铜义体"
+	name = "青铜义肢"
 	cost = 10
 	contains = list(/obj/item/contraption/bronzeprosthetic)

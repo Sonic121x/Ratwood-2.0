@@ -66,14 +66,14 @@
 		var/weapons = list(
 			"长剑与十字弩",
 			"钩镰枪与反曲弓",
-			"巨型权杖与长弓", 
+			"巨型钉头锤与紫杉长弓",
 			"军刀与反曲弓",
-			"双手大剑",
-			"重型权杖",
+			"克莱摩大剑",
+			"巨型钉头锤",
 			"战斧",
-			"双刃巨斧",
-			"刺剑",
-			"卢塞恩锤矛",
+			"钢巨斧",
+			"穿甲刺剑",
+			"卢塞恩锤",
 			"帕提赞长戟",
 		)
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
@@ -88,7 +88,7 @@
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			if("巨型权杖与长弓")
+			if("巨型钉头锤与紫杉长弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/rogueweapon/mace/goden/steel
@@ -97,20 +97,20 @@
 				r_hand = /obj/item/rogueweapon/sword/sabre
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			if("双手大剑")
+			if("克莱摩大剑")
 				r_hand = /obj/item/rogueweapon/greatsword/zwei
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("重型权杖")
+			if("巨型钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
 			if("战斧")
 				r_hand = /obj/item/rogueweapon/stoneaxe/battle
-			if("双刃巨斧")
+			if("钢巨斧")
 				r_hand = /obj/item/rogueweapon/greataxe/steel
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("刺剑")
+			if("穿甲刺剑")
 				r_hand = /obj/item/rogueweapon/estoc
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("卢塞恩锤矛")
+			if("卢塞恩锤")
 				r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 			if("帕提赞长戟")
@@ -122,19 +122,19 @@
 
 	if(H.mind)
 		var/helmets = list(
-			"猪面护鼻盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"卫兵头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"格栅头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
 			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
 			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"带面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"长吻面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
 			"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"长吻阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"犬面护鼻盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"长吻圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"伊特鲁斯卡护鼻盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+			"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
 			"开缝锅盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 			"无"
 		)
@@ -143,10 +143,10 @@
 			head = helmets[helmchoice]
 
 		var/armors = list(
-			"布面甲"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
-			"札甲罩衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+			"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
+			"板片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
 			"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-			"纵槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+			"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
 		)
 		var/armorchoice = input(H, "选择你的护甲。", "整备护甲") as anything in armors
 		armor = armors[armorchoice]
