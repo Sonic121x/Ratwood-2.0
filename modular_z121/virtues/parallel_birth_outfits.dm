@@ -98,12 +98,12 @@
 
 	if(H.mind)
 		var/molds = list(
-			"铁剑模具" = /obj/item/mold/sword,
-			"铁斧模具" = /obj/item/mold/axe,
-			"铁锤模具" = /obj/item/mold/mace,
-			"铁刀模具" = /obj/item/mold/knife,
-			"铁制长柄武器模具" = /obj/item/mold/polearm,
-			"铁板模具" = /obj/item/mold/plate
+			"剑刃模具" = /obj/item/mold/sword,
+			"斧刃模具" = /obj/item/mold/axe,
+			"锤头模具" = /obj/item/mold/mace,
+			"刀片模具" = /obj/item/mold/knife,
+			"长柄刃模具" = /obj/item/mold/polearm,
+			"甲片模具" = /obj/item/mold/plate
 		)
 		var/mold_names = list()
 		for (var/name in molds)
@@ -706,13 +706,13 @@
 
 
 	var/daily_tools_combos = list(
-		"青铜斧 + 青铜刀 + 刀鞘" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
-		"简易弓 + 箭袋" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
-		"铁矛 + 备用匕首" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
-		"钓竿 + 蚯蚓" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
-		"镰刀 + 农用锄" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
-		"矿镐 + 铜锤" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
-		"短棍 + 绳索" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
+		"青铜斧 + 青铜匕首 + 刀鞘" = list(/obj/item/rogueweapon/stoneaxe/woodcut/bronze, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/sheath),
+		"短弓 + 箭袋" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow, /obj/item/quiver/arrows),
+		"长矛 + 青铜匕首" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/huntingknife/bronze, /obj/item/rogueweapon/scabbard/gwstrap),
+		"钓竿 + 蠕虫" = list(/obj/item/fishingrod, /obj/item/natural/worms, /obj/item/natural/worms),
+		"镰刀 + 锄头" = list(/obj/item/rogueweapon/sickle, /obj/item/rogueweapon/hoe),
+		"铁镐 + 铜锤" = list(/obj/item/rogueweapon/pick, /obj/item/rogueweapon/hammer/copper),
+		"警棍 + 绳索" = list(/obj/item/rogueweapon/mace/cudgel, /obj/item/rope, /obj/item/rope)
 	)
 
 	if(H.mind)
@@ -751,18 +751,18 @@
 
 
 	var/outfit_styles = list(
-		"劳工——工人背心、长裤、靴子",
-		"农工——草帽、短衫、长裤",
-		"林地居民——兜帽、工人背心、护腕",
-		"渔夫——渔夫帽、短衫、工作背心",
-		"工艺师——束腰外衣、紧身裤、毛皮斗篷",
-		"缝纫师——护甲裙、白色束腰外衣、布腰带",
-		"旅人——短斗篷、内衫、靴子",
-		"乡民——毛皮帽、短衫、皮靴",
-		"矿工——武装帽、长裤、工作背心",
-		"艺人——华丽帽子、束腰外衣、短斗篷",
-		"朴素学者——眼镜、学者长袍、包头帽",
-		"乡村风格——草帽、衬裙、短靴"
+		"劳工——条纹束衣或丝质内裙",
+		"农工——草编帽子、短衬衣或丝质内裙",
+		"林地居民——兜帽、皮臂甲",
+		"渔夫——草编帽子、条纹束衣或丝质内裙",
+		"工艺师——束腰衫、紧身裤、毛皮斗篷",
+		"缝纫师——衬垫连衣裙、白色束腰衫、布腰带",
+		"旅人——半斗篷、衬衣或丝质内裙",
+		"乡民——毛皮帽子、皮靴",
+		"矿工——皮帽、条纹束衣或丝质内裙",
+		"艺人——华丽帽子、束腰衫、半斗篷",
+		"朴素学者——眼镜、学者长袍、头巾帽",
+		"乡村风格——草编帽子、短靴"
 	)
 
 	var/outfit_choice = input(H, "选择你的服装风格。", "服装选择") as anything in outfit_styles
@@ -772,7 +772,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 
 	switch(outfit_choice)
-		if("劳工——工人背心、长裤、靴子")
+		if("劳工——条纹束衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -784,7 +784,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				head = /obj/item/clothing/head/roguetown/armingcap
 
-		if("农工——草帽、短衫、长裤")
+		if("农工——草编帽子、短衬衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -794,7 +794,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/strawhat
 
-		if("林地居民——兜帽、工人背心、护腕")
+		if("林地居民——兜帽、皮臂甲")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -806,7 +806,7 @@
 			head = /obj/item/clothing/head/roguetown/roguehood
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 
-		if("渔夫——渔夫帽、短衫、工作背心")
+		if("渔夫——草编帽子、条纹束衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -816,14 +816,14 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/fisherhat
 
-		if("工艺师——束腰外衣、紧身裤、毛皮斗篷")
+		if("工艺师——束腰衫、紧身裤、毛皮斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			head = /obj/item/clothing/head/roguetown/hatblu
 
-		if("缝纫师——护甲裙、白色束腰外衣、布腰带")
+		if("缝纫师——衬垫连衣裙、白色束腰衫、布腰带")
 			armor = /obj/item/clothing/suit/roguetown/armor/armordress
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -831,7 +831,7 @@
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 
-		if("旅人——短斗篷、内衫、靴子")
+		if("旅人——半斗篷、衬衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -842,7 +842,7 @@
 			cloak = /obj/item/clothing/cloak/half
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 
-		if("乡民——毛皮帽、短衫、皮靴")
+		if("乡民——毛皮帽子、皮靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -851,7 +851,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			head = /obj/item/clothing/head/roguetown/hatfur
 
-		if("矿工——武装帽、长裤、工作背心")
+		if("矿工——皮帽、条纹束衣或丝质内裙")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/brown
@@ -862,7 +862,7 @@
 			head = /obj/item/clothing/head/roguetown/armingcap
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 
-		if("艺人——华丽帽子、束腰外衣、短斗篷")
+		if("艺人——华丽帽子、束腰衫、半斗篷")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -870,14 +870,14 @@
 			head = /obj/item/clothing/head/roguetown/fancyhat
 			belt = /obj/item/storage/belt/rogue/leather/cloth
 
-		if("朴素学者——眼镜、学者长袍、包头帽")
+		if("朴素学者——眼镜、学者长袍、头巾帽")
 			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			head = /obj/item/clothing/head/roguetown/chaperon
 			mask = /obj/item/clothing/mask/rogue/spectacles
 
-		if("乡村风格——草帽、衬裙、短靴")
+		if("乡村风格——草编帽子、短靴")
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 			else
@@ -1041,15 +1041,15 @@
 		H.z121_birth_skill_floor(/datum/skill/craft/tanning, 4, TRUE)
 	if(H.mind)
 		H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/huntersyell)
-		var/weapons = list("砍刀","短柄斧")
+		var/weapons = list("猎剑","手斧")
 		var/weapon_choice = input(H, "选择你的武器。", "选择装备") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("砍刀")
+			if("猎剑")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/short/messer/iron
 				H.z121_birth_skill_floor(/datum/skill/combat/swords, 2, TRUE)
-			if("短柄斧")
+			if("手斧")
 				beltl = /obj/item/rogueweapon/stoneaxe/handaxe
 				H.z121_birth_skill_floor(/datum/skill/combat/axes, 2, TRUE)
 
@@ -1163,7 +1163,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shalal
 		belt = /obj/item/storage/belt/rogue/leather/cloth/sash/random
 	if(H.mind)
-		var/weapons = list("手风琴","风笛","鼓","长笛","吉他","竖琴","手摇琴","口弦琴","鲁特琴","拨弦琴","三味线","小号","中提琴","歌唱护符")
+		var/weapons = list("手风琴","风笛","鼓","长笛","吉他","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = tgui_input_list(H, "选择你的乐器。", "选择装备", weapons)
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -1181,11 +1181,11 @@
 				backr = /obj/item/rogue/instrument/harp
 			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
-			if("口弦琴")
+			if("口簧琴")
 				backr = /obj/item/rogue/instrument/jawharp
 			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("拨弦琴")
+			if("圣咏琴")
 				backr = /obj/item/rogue/instrument/psyaltery
 			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
@@ -1193,7 +1193,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌唱护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 	if(H.age == AGE_OLD)
 		H.z121_birth_skill_floor(/datum/skill/misc/music, 6, TRUE)
@@ -1683,7 +1683,7 @@
 			H.z121_birth_skill_floor(/datum/skill/labor/fishing, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			var/options = list("煎锅", "指虎", "折刀", "赤手空拳")
+			var/options = list("煎锅", "指虎", "纳瓦哈折刀", "赤手空拳")
 			var/option_choice = input(H, "选择你的手段。", "选择装备") as anything in options
 
 			switch(option_choice)
@@ -1693,7 +1693,7 @@
 				if("指虎")
 					H.z121_birth_skill_floor(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/knuckles
-				if("折刀")
+				if("纳瓦哈折刀")
 					H.z121_birth_skill_floor(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/huntingknife/idagger/navaja
 				if("赤手空拳")
@@ -1728,7 +1728,7 @@
 			H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("投石索", "魔法砖块", "开锁工具")
+			var/options = list("投石索", "魔法砖块", "撬锁工具环")
 			var/option_choice = input(H, "选择你的手段。", "选择装备") as anything in options
 
 			switch(option_choice)
@@ -1740,7 +1740,7 @@
 					H.z121_birth_skill_floor(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_spell(new /obj/effect/proc_holder/spell/self/magicians_brick)
 					H.z121_birth_trait(TRAIT_ARCYNE_T1, TRAIT_GENERIC)
-				if("开锁工具")
+				if("撬锁工具环")
 					H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_skill_floor(/datum/skill/misc/lockpicking, SKILL_LEVEL_EXPERT, TRUE)
@@ -1772,17 +1772,17 @@
 			H.z121_birth_skill_floor(/datum/skill/labor/mining, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			H.z121_birth_skill_floor(/datum/skill/labor/lumberjacking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
-			var/options = list("近身搏斗", "大斧", "大棒")
+			var/options = list("近身搏斗", "巨斧", "钉头锤")
 			var/option_choice = input(H, "选择你的手段。", "选择装备") as anything in options
 
 			switch(option_choice)
 				if("近身搏斗")
 					H.z121_birth_trait(TRAIT_BIGGUY, TRAIT_GENERIC)
 					H.z121_birth_trait(TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-				if("大斧")
+				if("巨斧")
 					H.z121_birth_skill_floor(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/greataxe
-				if("大棒")
+				if("钉头锤")
 					H.z121_birth_skill_floor(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					r_hand = /obj/item/rogueweapon/mace
 
@@ -1891,8 +1891,8 @@
 		H.z121_birth_skill_floor(/datum/skill/craft/alchemy, 6, TRUE)
 
 	var/hats = list(
-		"巫师帽" 		= /obj/item/clothing/head/roguetown/witchhat,
-		"旧巫师帽"	= /obj/item/clothing/head/roguetown/witchhat/old,
+		"女巫帽子" 		= /obj/item/clothing/head/roguetown/witchhat,
+		"破旧女巫帽子"	= /obj/item/clothing/head/roguetown/witchhat/old,
 		"无"
 	)
 	var/hatchoice = input(H, "选择你的帽子。", "巫师装束") as anything in hats
@@ -2177,7 +2177,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 	if(H.mind)
-		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口弦琴","鲁特琴","拨弦琴","三味线","小号","中提琴","歌唱护符")
+		var/weapons = list("手风琴","风笛", "班卓琴","鼓","长笛","吉他","口琴","竖琴","手摇琴","口簧琴","鲁特琴","圣咏琴","三味线","小号","中提琴","歌者护符")
 		var/weapon_choice = input(H, "选择你的乐器。", "选择装备") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -2199,11 +2199,11 @@
 				backr = /obj/item/rogue/instrument/harp
 			if("手摇琴")
 				backr = /obj/item/rogue/instrument/hurdygurdy
-			if("口弦琴")
+			if("口簧琴")
 				backr = /obj/item/rogue/instrument/jawharp
 			if("鲁特琴")
 				backr = /obj/item/rogue/instrument/lute
-			if("拨弦琴")
+			if("圣咏琴")
 				backr = /obj/item/rogue/instrument/psyaltery
 			if("三味线")
 				backr = /obj/item/rogue/instrument/shamisen
@@ -2211,7 +2211,7 @@
 				backr = /obj/item/rogue/instrument/trumpet
 			if("中提琴")
 				backr = /obj/item/rogue/instrument/viola
-			if("歌唱护符")
+			if("歌者护符")
 				backr = /obj/item/rogue/instrument/vocals
 
 // 来源：code/modules/jobs/job_types/roguetown/trader/jeweler.dm

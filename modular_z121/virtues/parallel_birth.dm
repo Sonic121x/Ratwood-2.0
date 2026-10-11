@@ -1,7 +1,7 @@
 // 出生时只在选有本美德且客户端已可确认的角色上启用记录。
 /proc/z121_parallel_selected(mob/living/carbon/human/H, client/preference_source)
 	var/datum/preferences/P = preference_source?.prefs || H.client?.prefs
-	return H.GetComponent(/datum/component/martins_morning) || istype(P?.virtue, /datum/virtue/utility/martins_morning) || (P?.statpack?.name == "Virtuous" && istype(P.virtuetwo, /datum/virtue/utility/martins_morning))
+	return H.GetComponent(/datum/component/martins_morning) || istype(P?.virtue, /datum/virtue/utility/martins_morning) || (istype(P?.statpack, /datum/statpack/wildcard/virtuous) && istype(P.virtuetwo, /datum/virtue/utility/martins_morning))
 
 // 初始职业的来源覆盖范围独立于随机候选池，宫廷法师只支持切出，不加入随机池。
 /proc/z121_parallel_birth_outfit_known(outfit_type)
