@@ -35,7 +35,7 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("长剑","连枷","战锤","马刀")
+		var/weapons = list("长剑","铁连枷（钢制）","钢战锤","军刀")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -43,13 +43,13 @@
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				l_hand = /obj/item/rogueweapon/sword/long
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("连枷")
+			if("铁连枷（钢制）")
 				l_hand = /obj/item/rogueweapon/flail/sflail
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
-			if("战锤")
+			if("钢战锤")
 				beltr = /obj/item/rogueweapon/mace/warhammer/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
-			if("马刀")
+			if("军刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				l_hand = /obj/item/rogueweapon/sword/sabre
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
@@ -59,19 +59,19 @@
 	backl = /obj/item/rogueweapon/shield/tower/metal
 	if(H.mind)
 		var/helmets = list(
-			"猪面护鼻盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"格栅头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
 			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
 			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"带面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"长吻面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
 			"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"长吻阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"犬面护鼻盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"长吻圆面护鼻盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"伊特鲁斯卡护鼻盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+			"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
 			"开缝锅盔" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 			"蛙嘴盔" = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
 			"无"
@@ -81,12 +81,12 @@
 			head = helmets[helmchoice]
 
 		var/armors = list(
-			"布面甲"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
-			"甲片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+			"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
+			"板片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
 			"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-			"凹槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
-			"全身板甲"		= /obj/item/clothing/suit/roguetown/armor/plate/full,
-			"华饰全身板甲"	= /obj/item/clothing/suit/roguetown/armor/plate/full/fluted,
+			"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+			"板甲"		= /obj/item/clothing/suit/roguetown/armor/plate/full,
+			"沟槽板甲"	= /obj/item/clothing/suit/roguetown/armor/plate/full/fluted,
 		)
 		var/armorchoice = input(H, "选择你的护甲。", "整备护甲") as anything in armors
 		armor = armors[armorchoice]

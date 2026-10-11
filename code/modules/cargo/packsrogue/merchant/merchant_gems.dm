@@ -25,7 +25,7 @@
 	contains = list(/obj/item/roguegem/violet)
 
 /datum/supply_pack/rogue/gems/blortz
-	name = "布洛兹石"
+	name = "石英"
 	cost = 130
 	contains = list(/obj/item/roguegem/blue)
 
@@ -47,7 +47,7 @@
 //Gemcarving gems. Currently following the 1.6x sell price of the gem format.  This currently makes most gems generally a loss, or at least only minorly profitable, to buy, carve, resell
 
 /datum/supply_pack/rogue/gems/jade
-	name = "玉石"
+	name = "玉"
 	cost = 80
 	contains = list(/obj/item/roguegem/jade)
 
@@ -77,6 +77,6 @@
 	contains = list(/obj/item/roguegem/opal)
 
 /datum/supply_pack/rogue/gems/rose
-	name = "蔷薇石"
+	name = "玫瑰石"
 	cost = 24
 	contains = list(/obj/item/carvedgem/rose/rawrose)

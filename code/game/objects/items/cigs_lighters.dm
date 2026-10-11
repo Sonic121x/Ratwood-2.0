@@ -346,8 +346,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/attack_right(mob/user)
 	if(lit)
-		user.visible_message(span_notice("[user] pinches out [src] with [user.p_their()] fingers."), \
-				span_notice("I pinch out [src] with my fingers."))
+		user.visible_message(span_notice("[user]用手指掐灭了[src]。"), \
+				span_notice("我用手指掐灭了[src]。"))
 		extinguish()
 		return 1
 	return ..()

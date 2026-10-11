@@ -5,7 +5,7 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/etrusca/falchion
-	name = "弯刃刀"
+	name = "单手剑"
 	cost = 90
 	contains = list(/obj/item/rogueweapon/sword/falchion)
 	ship_qty_min = 1
@@ -70,7 +70,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/etrusca/jamon
-	name = "腌制火腿（哈蒙）"
+	name = "烟熏香肠"
 	cost = 45
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
@@ -92,7 +92,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/etrusca/salami
-	name = "维拉斯卡萨拉米肠"
+	name = "烟熏香肠（维拉斯卡）"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
@@ -103,7 +103,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/etrusca/cheese
-	name = "蒙特卡里纳奶酪轮"
+	name = "鲜奶酪（蒙特卡里纳）"
 	cost = 40
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cheese,
@@ -114,7 +114,7 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/etrusca/vaquero_ring
-	name = "牧侠之戒"
+	name = "幸运护符"
 	cost = 150
 	contains = list(/obj/item/clothing/neck/roguetown/luckcharm)
 	ship_qty_min = 1

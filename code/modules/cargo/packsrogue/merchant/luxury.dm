@@ -14,12 +14,12 @@
 	/obj/item/reagent_containers/glass/cup/ceramic/fancy)
 
 /datum/supply_pack/rogue/luxury/silverpsicross
-	name = "银质普赛圣十字"
+	name = "银教十字"
 	cost = 120
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 
 /datum/supply_pack/rogue/luxury/silvertencross
-	name = "十神银护符"
+	name = "银十神护符"
 	cost = 120
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver/undivided)
 
@@ -30,7 +30,7 @@
 	contains = list(/obj/item/polishing_cream, /obj/item/armor_brush)
 
 /datum/supply_pack/rogue/luxury/circlet
-	name = "头环"
+	name = "金色头环"
 	cost = 80
 	contains = list(/obj/item/clothing/head/roguetown/circlet)
 
@@ -40,7 +40,7 @@
 	contains = list(/obj/item/clothing/ring/gold)
 
 /datum/supply_pack/rogue/luxury/signet
-	name = "印戒"
+	name = "金印戒"
 	cost = 220
 	contains = list(/obj/item/clothing/ring/signet)
 
@@ -90,40 +90,40 @@
 	contains = list(/obj/item/rogueweapon/mace/parasol/noble)
 
 /datum/supply_pack/rogue/luxury/suidust
-	name = "易容之尘（仅性别）"
+	name = "碎晶粉（仅变性）"
 	cost = 135
 	contains = list(/obj/item/alch/transisdust)
 
 /datum/supply_pack/rogue/adventure_supplies/scabbard/noble
-	name = "贵族剑鞘"
+	name = "银饰剑鞘"
 	cost = 65
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sword/noble
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/scabbard/royal
-	name = "王室剑鞘"
+	name = "金饰剑鞘"
 	cost = 120
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sword/royal
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/sheath/noble
-	name = "贵族刀鞘"
+	name = "银饰匕首鞘"
 	cost = 65
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sheath/noble
 				)
 
 /datum/supply_pack/rogue/adventure_supplies/sheath/royal
-	name = "王室刀鞘"
+	name = "金饰匕首鞘"
 	cost = 120
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sheath/royal
 				)
 
 /datum/supply_pack/rogue/luxury/sandstormgoggle
-	name = "沙暴护目镜"
+	name = "防沙护目镜"
 	cost = 60
 	contains = list(
 					/obj/item/clothing/mask/rogue/spectacles/goggles

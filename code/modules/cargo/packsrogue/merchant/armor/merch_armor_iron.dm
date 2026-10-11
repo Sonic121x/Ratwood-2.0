@@ -82,17 +82,17 @@
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/iron/kilt)
 
 /datum/supply_pack/rogue/armor_iron/mask_iron
-	name = "面甲"
+	name = "铁面具"
 	cost = 25
 	contains = list(/obj/item/clothing/mask/rogue/facemask)
 
 /datum/supply_pack/rogue/armor_iron/mask_wildguard
-	name = "野卫面甲"
+	name = "荒野守卫"
 	cost = 25
 	contains = list(/obj/item/clothing/mask/rogue/wildguard)
 
 /datum/supply_pack/rogue/armor_iron/boots_iron
-	name = "甲靴"
+	name = "铁板靴"
 	cost = 25
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor/iron)
 
@@ -107,26 +107,26 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/skullcap)
 
 /datum/supply_pack/rogue/armor_iron/horned
-	name = "头盔，角盔"
+	name = "头盔，角饰帽"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 
 /datum/supply_pack/rogue/armor_iron/kettle
-	name = "头盔，锅盔"
+	name = "头盔，铁锅盔"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle/iron)
 
 /datum/supply_pack/rogue/armor_iron/sallet
-	name = "头盔，萨雷特盔"
+	name = "头盔，铁萨勒盔"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/iron)
 
 /datum/supply_pack/rogue/armor_iron/visored
-	name = "头盔，带面罩萨雷特盔"
+	name = "头盔，铁带面罩萨勒盔"
 	cost = 40
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored/iron)
 
 /datum/supply_pack/rogue/armor_iron/knight
-	name = "头盔，骑士款"
+	name = "头盔，铁骑士头盔"
 	cost = 40
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/iron)

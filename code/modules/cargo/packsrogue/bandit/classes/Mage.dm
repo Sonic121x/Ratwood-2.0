@@ -9,17 +9,17 @@
 //////////
 
 /datum/supply_pack/rogue/Mage/coolhat
-	name = "大魔导师之帽"
+	name = "法师帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/wizhat/gen)
 
 /datum/supply_pack/rogue/Mage/witchhat
-	name = "女巫帽"
+	name = "女巫帽子"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/witchhat)
 
 /datum/supply_pack/rogue/Mage/leather/Lhelmet
-	name = "皮盔"
+	name = "皮革头盔"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
@@ -28,7 +28,7 @@
 //////////
 
 /datum/supply_pack/rogue/Mage/icoif
-	name = "铁锁子头巾"
+	name = "铁锁链护头巾"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/iron)
 
@@ -52,7 +52,7 @@
 ///////////
 
 /datum/supply_pack/rogue/Mage/coolrobes
-	name = "大魔导师长袍"
+	name = "长袍"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe)
 
@@ -91,12 +91,12 @@
 ///////////////////
 
 /datum/supply_pack/rogue/Mage/leather/Lbracers
-	name = "皮护臂"
+	name = "皮臂甲"
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Mage/leather/hbracers
-	name = "硬化皮护臂"
+	name = "硬化皮臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
@@ -139,12 +139,12 @@
 	contains = list(/obj/item/rogueweapon/woodstaff)
 
 /datum/supply_pack/rogue/Mage/leather/qstaff
-	name = "铁头长棍"
+	name = "木制长杖（铁头）"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/woodstaff/quarterstaff/iron)
 
 /datum/supply_pack/rogue/Mage/leather/sqstaff
-	name = "钢头长棍"
+	name = "钢制四分杖"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/woodstaff/quarterstaff/steel)
 
@@ -154,7 +154,7 @@
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver)
 
 /datum/supply_pack/rogue/Mage/asdagger
-	name = "奥术银匕首"
+	name = "奥术银匕"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/arcyne)
 
@@ -163,17 +163,17 @@
 ///////////
 
 /datum/supply_pack/rogue/Mage/magebagempty
-	name = "空法师袋"
+	name = "学者药囊（空）"
 	cost = 5
 	contains = list(/obj/item/storage/magebag)
 
 /datum/supply_pack/rogue/Mage/unfinbook
-	name = "未完成的法术书"
+	name = "装订卷轴纸"
 	cost = 10
 	contains = list(/obj/item/spellbook_unfinished)
 
 /datum/supply_pack/rogue/Mage/nomag
-	name = "反魔法之戒"
+	name = "反魔之戒"
 	cost = 200
 	contains = list(/obj/item/clothing/ring/active/nomag)
 
@@ -183,12 +183,12 @@
 	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
 
 /datum/supply_pack/rogue/Mage/serfstone
-	name = "领域谐调仆役石戒"
+	name = "农奴石"
 	cost = 80
 	contains = list(/obj/item/scomstone/bad)
 
 /datum/supply_pack/rogue/Mage/scryorb
-	name = "占视水晶球"
+	name = "占卜球"
 	cost = 150
 	contains = list(/obj/item/scrying)
 
@@ -202,7 +202,7 @@
 	contains = list(/obj/item/paper/scroll)
 
 /datum/supply_pack/rogue/Mage/cinnabar
-	name = "朱砂矿"
+	name = "辰砂"
 	cost = 10
 	contains = list(/obj/item/rogueore/cinnabar = 1)
 
@@ -226,7 +226,7 @@
 	contains = list(/obj/item/roguegem/violet)
 
 /datum/supply_pack/rogue/Mage/Blortz
-	name = "布洛兹石"
+	name = "石英"
 	cost = 120
 	contains = list(/obj/item/roguegem/blue)
 

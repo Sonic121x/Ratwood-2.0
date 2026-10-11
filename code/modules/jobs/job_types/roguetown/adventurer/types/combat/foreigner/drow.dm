@@ -55,34 +55,34 @@
 				beltr =  /obj/item/quiver/bolts/
 			if("剑士")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				var/swords = list("镰剑", "军刀", "大军刀", "肖特尔弯剑", "刺击长剑")
+				var/swords = list("潜猎者镰刃", "潜猎者军刀", "卓尔大军刀", "卓尔绍特尔弯刀", "卓尔长剑")
 				var/sword_choice = input(H, "选择你的武器。", "拿起武器") as anything in swords
 				switch(sword_choice)
-					if("镰剑")
+					if("潜猎者镰刃")
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						r_hand = /obj/item/rogueweapon/sword/falx/stalker
-					if("军刀")
+					if("潜猎者军刀")
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						r_hand = /obj/item/rogueweapon/sword/sabre/stalker
-					if("大军刀")
+					if("卓尔大军刀")
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						r_hand = /obj/item/rogueweapon/sword/long/elf/stalker
-					if("肖特尔弯剑")
+					if("卓尔绍特尔弯刀")
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						r_hand = /obj/item/rogueweapon/sword/long/shotel/stalker
-					if("刺击长剑")
+					if("卓尔长剑")
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						r_hand = /obj/item/rogueweapon/sword/long/stalker
 			if("鞭手")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				var/whips = list("长鞭 - 最低力量 10", "软剑 - 最低力量 10", "巨型连枷 - 最低力量 12")
+				var/whips = list("鞭吻 - 最低力量 10", "卓尔软剑 - 最低力量 10", "卓尔尖刺巨型连枷 - 最低力量 12")
 				var/whip_choice = input(H, "选择你的武器。", "拿起武器") as anything in whips
 				switch(whip_choice)
-					if("长鞭 - 最低力量 10")
+					if("鞭吻 - 最低力量 10")
 						r_hand = /obj/item/rogueweapon/whip/spiderwhip
-					if("软剑 - 最低力量 10")
+					if("卓尔软剑 - 最低力量 10")
 						r_hand = /obj/item/rogueweapon/whip/urumi/spider
-					if("巨型连枷 - 最低力量 12")
+					if("卓尔尖刺巨型连枷 - 最低力量 12")
 						r_hand = /obj/item/rogueweapon/flail/peasantwarflail/stalker
 
 		var/armors = list("闪避专家", "中甲训练")
@@ -129,16 +129,16 @@
 				mask = /obj/item/clothing/mask/rogue/facemask
 				neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
 				backr = /obj/item/rogueweapon/shield/tower
-		var/helmets = list("全覆式链甲头罩", "微笑面罩盔", "面罩萨雷特盔", "铁笠盔", "精灵巴尔布特盔", "翼饰精灵巴尔布特盔")
+		var/helmets = list("全覆式锁链护头巾", "笑面盆盔", "带面罩萨勒盔", "锅盔", "精灵巴尔布特盔", "翼饰精灵巴尔布特盔")
 		var/helmet_choice = input(H, "你要佩戴哪种头盔？", "穿戴装备") as anything in helmets
 		switch(helmet_choice)
-			if("全覆式链甲头罩")
+			if("全覆式锁链护头巾")
 				head = /obj/item/clothing/neck/roguetown/chaincoif/full/black
-			if("微笑面罩盔")
+			if("笑面盆盔")
 				head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/shadowplate
-			if("面罩萨雷特盔")
+			if("带面罩萨勒盔")
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/shadow
-			if("铁笠盔")
+			if("锅盔")
 				head = /obj/item/clothing/head/roguetown/helmet/kettle/shadow
 			if("精灵巴尔布特盔")
 				head = /obj/item/clothing/head/roguetown/helmet/elvenbarbute/shadow

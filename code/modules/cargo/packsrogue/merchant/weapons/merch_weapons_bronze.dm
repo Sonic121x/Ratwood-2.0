@@ -17,7 +17,7 @@
 	contains = list(/obj/item/rogueweapon/katar/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/gladius
-	name = "短罗马剑"
+	name = "短剑"
 	cost = 30 // 1 Bronze Ingot
 	contains = list(/obj/item/rogueweapon/sword/short/gladius)
 

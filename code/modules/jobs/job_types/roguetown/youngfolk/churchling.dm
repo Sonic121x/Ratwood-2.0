@@ -187,28 +187,28 @@
 			cloak = /obj/item/clothing/cloak/templar/pestra
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 
-	var/weapons = list("长剑","锤","链枷","鞭","矛","斧")
+	var/weapons = list("长剑","钉头锤","铁连枷","皮鞭","长矛与小圆盾","伐木斧")
 	var/weapon_choice = input(H, "选择你的武器。", "执起你神祇的兵刃。") as anything in weapons
 	switch(weapon_choice)
 		if("长剑")
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			beltr = /obj/item/rogueweapon/sword/long
 			r_hand = /obj/item/rogueweapon/scabbard/sword
-		if("锤")
+		if("钉头锤")
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			beltr = /obj/item/rogueweapon/mace
-		if("链枷")
+		if("铁连枷")
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			beltr = /obj/item/rogueweapon/flail
-		if("鞭")
+		if("皮鞭")
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			beltr = /obj/item/rogueweapon/whip
-		if("矛")
+		if("长矛与小圆盾")
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			r_hand = /obj/item/rogueweapon/spear
 			backr = /obj/item/rogueweapon/scabbard/gwstrap
 			beltr = /obj/item/rogueweapon/shield/buckler
-		if("斧")
+		if("伐木斧")
 			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
 	H.set_blindness(0)

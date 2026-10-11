@@ -4,22 +4,22 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/ranged_weapons/tossbladeiron
-	name = "飞刀腰带，铁制"
+	name = "飞刃腰带，内含铁制投刃"
 	cost = 25
 	contains = list(/obj/item/storage/belt/rogue/leather/knifebelt/black/iron)
 
 /datum/supply_pack/rogue/ranged_weapons/tossbladesteel
-	name = "飞刀腰带，钢制"
+	name = "飞刃腰带，内含钢制投刃"
 	cost = 45
 	contains = list(/obj/item/storage/belt/rogue/leather/knifebelt/black/steel)
 
 /datum/supply_pack/rogue/ranged_weapons/javeliniron
-	name = "标枪，铁制"
+	name = "标枪袋，内含铁标枪"
 	cost = 40 // 2 Iron Ingots
 	contains = list(/obj/item/quiver/javelin/iron)
 
 /datum/supply_pack/rogue/ranged_weapons/javelinsteel
-	name = "标枪，钢制"
+	name = "标枪袋，内含钢标枪"
 	cost = 80 // 2 Steel Ingots + Small Log
 	contains = list(/obj/item/quiver/javelin/steel)
 
@@ -118,7 +118,7 @@
 				)
 
 /datum/supply_pack/rogue/ranged_weapons/slingandpouch
-	name = "投石索与弹袋"
+	name = "投石索与投石索弹袋"
 	cost = 15
 	no_name_quantity = TRUE
 	contains = list(
@@ -127,21 +127,21 @@
 				)
 
 /datum/supply_pack/rogue/ranged_weapons/slingiron
-	name = "投石弹袋，铁制"
+	name = "投石索弹袋，内含铁制投石弹"
 	cost = 35 // 2 Iron Ingots
 	contains = list(
 					/obj/item/quiver/sling/iron,
 				)
 
 /datum/supply_pack/rogue/ranged_weapons/slingsteel
-	name = "投石弹袋，钢制"
+	name = "投石索弹袋，内含钢制投石弹"
 	cost = 80 // 2 Steel Ingots
 	contains = list(
 					/obj/item/quiver/sling/steel,
 				)
 
 /datum/supply_pack/rogue/ranged_weapons/net
-	name = "网"
+	name = "捕网"
 	cost = 20
 	contains = list(
 					/obj/item/net,

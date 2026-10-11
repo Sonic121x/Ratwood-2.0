@@ -24,7 +24,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface)
 
 /datum/supply_pack/rogue/Brigand/hbascinet
-	name = "犬嘴盆盔"
+	name = "犬首盆盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull)
 
@@ -34,17 +34,17 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
 /datum/supply_pack/rogue/Brigand/visoredsallet
-	name = "面罩萨雷特盔"
+	name = "带面罩萨勒盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
 /datum/supply_pack/rogue/Brigand/wolfhelm
-	name = "沃尔夫钢盔"
+	name = "沃尔夫面甲头盔"
 	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
 
 /datum/supply_pack/rogue/Brigand/wildmask
-	name = "野卫面具"
+	name = "荒野守卫"
 	cost = 10
 	contains = list(/obj/item/clothing/mask/rogue/wildguard)
 
@@ -63,7 +63,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
 /datum/supply_pack/rogue/Brigand/coif/fullsteel
-	name = "全钢锁子头巾"
+	name = "全覆式锁链护头巾"
 	cost = 35
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/full)
 
@@ -73,7 +73,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/coif/heavypadding)
 
 /datum/supply_pack/rogue/Brigand/Bevor
-	name = "贝沃护喉"
+	name = "护颚"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/bevor)
 
@@ -117,12 +117,12 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 /datum/supply_pack/rogue/Brigand/Haubergeon
-	name = "短身锁子甲"
+	name = "锁子短甲"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail)
 
 /datum/supply_pack/rogue/Brigand/hauberk
-	name = "长身锁子甲"
+	name = "锁子甲"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
 
@@ -142,12 +142,12 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale)
 
 /datum/supply_pack/rogue/Brigand/flutedcuirass
-	name = "纹槽胸甲"
+	name = "沟槽胸甲"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/fluted)
 
 /datum/supply_pack/rogue/Brigand/brigandine
-	name = "布面甲"
+	name = "板甲衣"
 	cost = 60
 	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine)
 
@@ -156,12 +156,12 @@
 ///////////////////
 
 /datum/supply_pack/rogue/Brigand/leather/lbracers
-	name = "皮护臂"
+	name = "皮臂甲"
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Brigand/leather/hbracers
-	name = "硬化皮护臂"
+	name = "硬化皮臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
@@ -181,22 +181,22 @@
 	contains = list(/obj/item/clothing/gloves/roguetown/fingerless_leather)
 
 /datum/supply_pack/rogue/Brigand/bracers
-	name = "钢护臂"
+	name = "臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 /datum/supply_pack/rogue/Brigand/splintbracers
-	name = "布面甲上臂甲"
+	name = "板条护臂"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/splintarms)
 
 /datum/supply_pack/rogue/Brigand/chaingauntlets
-	name = "钢锁子手套"
+	name = "锁链护手"
 	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 
 /datum/supply_pack/rogue/Brigand/plategaunt
-	name = "板甲手套"
+	name = "板甲护手"
 	cost = 25
 	contains = list(/obj/item/clothing/gloves/roguetown/plate)
 
@@ -215,27 +215,27 @@
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
 
 /datum/supply_pack/rogue/Brigand/chainlegs
-	name = "钢锁腿"
+	name = "钢制锁甲腿铠"
 	cost = 20
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
 
 /datum/supply_pack/rogue/Brigand/splintlegs
-	name = "布面甲腿甲"
+	name = "板条腿铠"
 	cost = 20
 	contains = list(/obj/item/clothing/under/roguetown/splintlegs)
 
 /datum/supply_pack/rogue/Brigand/splintlegs/iron
-	name = "拼接护腿"
+	name = "拼铁护腿"
 	cost = 15
 	contains = list(/obj/item/clothing/under/roguetown/splintlegs/iron)
 
 /datum/supply_pack/rogue/Brigand/boots
-	name = "钢靴"
+	name = "板甲靴"
 	cost = 15
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
 /datum/supply_pack/rogue/Brigand/reinforcedboots
-	name = "重型皮靴"
+	name = "硬化皮靴"
 	cost = 10
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/leather/reinforced)
 
@@ -244,42 +244,42 @@
 /////////////
 
 /datum/supply_pack/rogue/Brigand/placejapan
-	name = "风郡匕首"
+	name = "钢短刀"
 	cost = 35
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun)
 
 /datum/supply_pack/rogue/Brigand/parrydag
-	name = "招架匕首"
+	name = "钢制格挡匕首"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
 
 /datum/supply_pack/rogue/Brigand/saildagger
-	name = "伊特鲁斯卡水手匕首"
+	name = "船帆匕首"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero)
 
 /datum/supply_pack/rogue/Brigand/mace
-	name = "铁钉锤"
+	name = "钉头锤（铁制）"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/mace)
 
 /datum/supply_pack/rogue/Brigand/steelmace
-	name = "钢钉锤"
+	name = "钢钉头锤"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/mace/steel)
 
 /datum/supply_pack/rogue/Brigand/silvermace
-	name = "银钉锤"
+	name = "白银钉头锤"
 	cost = 60
 	contains = list(/obj/item/rogueweapon/mace/steel/silver)
 
 /datum/supply_pack/rogue/Brigand/cudgel
-	name = "棍棒"
+	name = "警棍"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/mace/cudgel)
 
 /datum/supply_pack/rogue/Brigand/gmace
-	name = "巨型钉锤"
+	name = "巨型钉头锤"
 	cost = 40
 	contains = list(/obj/item/rogueweapon/mace/goden/steel)
 
@@ -294,7 +294,7 @@
 	contains = list(/obj/item/rogueweapon/mace/warhammer/steel)
 
 /datum/supply_pack/rogue/Brigand/silverwarhammer
-	name = "银战锤"
+	name = "白银战锤"
 	cost = 60
 	contains = list(/obj/item/rogueweapon/mace/warhammer/steel/silver)
 
@@ -304,22 +304,22 @@
 	contains = list(/obj/item/rogueweapon/flail)
 
 /datum/supply_pack/rogue/Brigand/steelflail
-	name = "钢连枷"
+	name = "铁连枷（钢制）"
 	cost = 20
 	contains =  list(/obj/item/rogueweapon/flail/sflail)
 
 /datum/supply_pack/rogue/Brigand/silverflail
-	name = "银连枷"
+	name = "白银晨星连枷"
 	cost = 60
 	contains =  list(/obj/item/rogueweapon/flail/sflail/silver)
 
 /datum/supply_pack/rogue/Brigand/axe
-	name = "铁斧"
+	name = "伐木斧"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut)
 
 /datum/supply_pack/rogue/Brigand/Staxe
-	name = "钢战斧"
+	name = "战斧"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
 
@@ -339,12 +339,12 @@
 	contains = list(/obj/item/rogueweapon/greataxe/steel)
 
 /datum/supply_pack/rogue/Brigand/SDGaxe
-	name = "钢双头巨斧"
+	name = "双头钢巨斧"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/greataxe/steel/doublehead)
 
 /datum/supply_pack/rogue/Brigand/silverpoleaxe
-	name = "银长柄斧"
+	name = "白银长柄斧"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/greataxe/silver)
 
@@ -359,17 +359,17 @@
 	contains = list(/obj/item/rogueweapon/mace/maul/grand)
 
 /datum/supply_pack/rogue/Brigand/whip
-	name  = "纳盖卡鞭"
+	name  = "皮鞭"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/whip)
 
 /datum/supply_pack/rogue/Brigand/steelspear
-	name = "钢矛"
+	name = "猎猪矛"
 	cost = 65
 	contains = list(/obj/item/rogueweapon/spear/boar)
 
 /datum/supply_pack/rogue/Brigand/billhook
-	name = "钩镰"
+	name = "钩镰枪"
 	cost = 60
 	contains = list(/obj/item/rogueweapon/spear/billhook)
 
@@ -379,12 +379,12 @@
 	contains = list(/obj/item/rogueweapon/spear/partizan)
 
 /datum/supply_pack/rogue/Brigand/ebeak
-	name = "卢塞恩锤"
+	name = "钢制卢塞恩锤"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/eaglebeak)
 
 /datum/supply_pack/rogue/Brigand/halberd
-	name = "戟"
+	name = "戟斧"
 	cost = 65
 	contains = list(/obj/item/rogueweapon/halberd)
 
@@ -394,22 +394,22 @@
 	contains = list(/obj/item/rogueweapon/sword/long)
 
 /datum/supply_pack/rogue/Brigand/krieg
-	name = "战刀"
+	name = "双手大刀"
 	cost = 45
 	contains = list(/obj/item/rogueweapon/sword/long/kriegmesser)
 
 /datum/supply_pack/rogue/Brigand/Zweihandersword
-	name = "双手剑"
+	name = "克莱摩大剑"
 	cost = 65
 	contains = list(/obj/item/rogueweapon/greatsword/zwei)
 
 /datum/supply_pack/rogue/Brigand/SZweihandersword
-	name = "钢双手剑"
+	name = "钢制双手剑"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/greatsword/grenz)
 
 /datum/supply_pack/rogue/Brigand/SFlamberge
-	name = "钢焰形双手剑"
+	name = "钢制焰形剑"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/greatsword/grenz/flamberge)
 
@@ -419,7 +419,7 @@
 	contains = list(/obj/item/rogueweapon/greatsword)
 
 /datum/supply_pack/rogue/Brigand/estoc
-	name = "穿甲剑"
+	name = "穿甲刺剑"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/estoc)
 
@@ -443,7 +443,7 @@
 /////////////
 
 /datum/supply_pack/rogue/Brigand/heatshield
-	name = "鸢形盾"
+	name = "熨斗盾"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/shield/heater)
 

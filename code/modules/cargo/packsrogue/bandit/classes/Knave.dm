@@ -9,12 +9,12 @@
 //////////
 
 /datum/supply_pack/rogue/Knave/leather/lhelmet
-	name = "皮盔"
+	name = "皮革头盔"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/Knave/leather/hlhelmet
-	name = "硬化皮盔"
+	name = "硬化皮革头盔"
 	cost = 10
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather/advanced)
 
@@ -91,12 +91,12 @@
 ///////////////////
 
 /datum/supply_pack/rogue/Knave/leather/Lbracers
-	name = "皮护臂"
+	name = "皮臂甲"
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Knave/leather/hbracers
-	name = "硬化皮护臂"
+	name = "硬化皮臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
@@ -134,12 +134,12 @@
 /////////////////////
 
 /datum/supply_pack/rogue/Knave/placejapan
-	name = "风郡匕首"
+	name = "钢短刀"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun)
 
 /datum/supply_pack/rogue/Knave/parrydag
-	name = "招架匕首"
+	name = "钢制格挡匕首"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
 
@@ -154,7 +154,7 @@
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/rondel)
 
 /datum/supply_pack/rogue/Knave/saildagger
-	name = "伊特鲁斯卡水手匕首"
+	name = "船帆匕首"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero)
 
@@ -203,7 +203,7 @@
 //////////////////////
 
 /datum/supply_pack/rogue/Knave/bow
-	name = "短弓"
+	name = "单木弓"
 	cost = 10
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow)
 
@@ -233,12 +233,12 @@
 	contains = list(/obj/item/storage/belt/rogue/leather/knifebelt/black/steel)
 
 /datum/supply_pack/rogue/Knave/steeltossblade
-	name = "单把钢飞刀"
+	name = "单把钢制投刃"
 	cost = 5
 	contains = list(/obj/item/rogueweapon/huntingknife/throwingknife/steel)
 
 /datum/supply_pack/rogue/Knave/silvertossblade
-	name = "单把银飞刀"
+	name = "单把银制投刃"
 	cost = 25 // Because I can imagine how annoying these would be. 
 	contains = list(/obj/item/rogueweapon/huntingknife/throwingknife/silver)
 
@@ -313,17 +313,17 @@
 	contains = list(/obj/item/restraints/legcuffs/beartrap)
 
 /datum/supply_pack/rogue/Knave/lockpicks
-	name = "开锁器环"
+	name = "撬锁工具环"
 	cost = 10
 	contains = list(/obj/item/lockpickring/mundane)
 
 /datum/supply_pack/rogue/Knave/stampoison
-	name = "疲乏毒药"
+	name = "耐力毒药"
 	cost = 60
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/stampoison)
 
 /datum/supply_pack/rogue/Knave/strongstampoison
-	name = "强效疲乏毒药"
+	name = "强效耐力毒药"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/strongstampoison)
 

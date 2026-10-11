@@ -117,61 +117,61 @@
 	// IT WORKS :TM: still gives them a helm and grandmace, just not the choice
 	
 	H.adjust_blindness(-3)
-	var/weapons = list("装饰长剑加盾","双手剑","巨剑","巨型钉锤","战斧","巨斧","刺剑","卢塞恩锤", "长戟矛", "关刀")
+	var/weapons = list("华饰长剑加鸢盾","钢制双手剑","巨剑","巨型钉头锤","战斧","钢巨斧","穿甲刺剑","卢塞恩锤", "帕提赞长戟", "偃月刀")
 	var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("装饰长剑加盾")
+		if("华饰长剑加鸢盾")
 			l_hand = /obj/item/rogueweapon/sword/long/dec
 			backl = /obj/item/rogueweapon/shield/tower/metal
 			H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-		if("双手剑")
+		if("钢制双手剑")
 			r_hand = /obj/item/rogueweapon/greatsword/grenz
 		if("巨剑")
 			r_hand = /obj/item/rogueweapon/greatsword
-		if("巨型钉锤")
+		if("巨型钉头锤")
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
 		if("战斧")
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
-		if("巨斧")
+		if("钢巨斧")
 			r_hand = /obj/item/rogueweapon/greataxe/steel
-		if("刺剑")
+		if("穿甲刺剑")
 			r_hand = /obj/item/rogueweapon/estoc
 		if("卢塞恩锤")
 			r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
-		if("长戟矛")
+		if("帕提赞长戟")
 			r_hand = /obj/item/rogueweapon/spear/partizan
-		if("关刀")
+		if("偃月刀")
 			r_hand = /obj/item/rogueweapon/halberd/glaive
 		else //In case they DC or don't choose close the panel, etc
 			r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 
-	var/helmet = list("猪面尖盔","卫兵头盔","格栅头盔","桶盔","骑士头盔","狼首板甲盔" ,"带面罩萨雷特盔","长吻带面罩萨雷特盔","阿米特盔","长吻阿米特盔","猎犬头尖盔", "伊特鲁斯卡尖盔", "开缝锅盔")
+	var/helmet = list("猪面盆盔","钢萨伏依盔","栅栏头盔","桶盔","骑士头盔","沃尔夫面甲头盔" ,"带面罩萨勒盔","带吻部面罩萨雷特盔","阿米特盔","带吻部阿米特盔","犬首盆盔", "伊特鲁斯卡盆盔", "开缝锅盔")
 	var/helmet_choice = input(H, "选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
-		if("猪面尖盔") 
+		if("猪面盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
-		if("卫兵头盔")	
+		if("钢萨伏依盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/guard
-		if("格栅头盔")		
+		if("栅栏头盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/sheriff
 		if("桶盔")		
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 		if("骑士头盔")		
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
-		if("狼首板甲盔") 
+		if("沃尔夫面甲头盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("带面罩萨雷特盔")	
+		if("带面罩萨勒盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("长吻带面罩萨雷特盔")
+		if("带吻部面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		if("阿米特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet
-		if("长吻阿米特盔")
+		if("带吻部阿米特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted
-		if("猎犬头尖盔")
+		if("犬首盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull
-		if("伊特鲁斯卡尖盔")
+		if("伊特鲁斯卡盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
 		if("开缝锅盔") 
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle

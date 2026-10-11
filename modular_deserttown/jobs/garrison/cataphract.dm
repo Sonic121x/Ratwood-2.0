@@ -98,34 +98,34 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("双手阔剑","大战锤","战斧","巨斧","刺击剑","卢塞恩战锤","阔刃矛")
+		var/weapons = list("克莱摩大剑","巨型钉头锤","战斧","钢巨斧","穿甲刺剑","卢塞恩锤","帕提赞长戟")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("双手阔剑")
+			if("克莱摩大剑")
 				r_hand = /obj/item/rogueweapon/greatsword/zwei
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("大战锤")
+			if("巨型钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
 			if("战斧")
 				r_hand = /obj/item/rogueweapon/stoneaxe/battle
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_MASTER, TRUE)
-			if("巨斧")
+			if("钢巨斧")
 				r_hand = /obj/item/rogueweapon/greataxe/steel
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_MASTER, TRUE)
-			if("刺击剑")
+			if("穿甲刺剑")
 				r_hand = /obj/item/rogueweapon/estoc
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("卢塞恩战锤")
+			if("卢塞恩锤")
 				r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
-			if("阔刃矛")
+			if("帕提赞长戟")
 				r_hand = /obj/item/rogueweapon/spear/partizan
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
@@ -184,7 +184,7 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("沙姆希尔弯刀","鞭","软剑","战锤","军刀")
+		var/weapons = list("沙姆希尔弯刀","雷彭塔·恩","软剑","战锤","军刀")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -192,7 +192,7 @@
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				l_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("鞭")
+			if("雷彭塔·恩")
 				l_hand = /obj/item/rogueweapon/whip/antique
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
 			if("软剑")
@@ -381,48 +381,48 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("弯刀与长弓","刺击剑与反曲弓","军刀与盾","鞭与弩")
-		var/armor_options = list("轻皮甲", "轻板甲衣", "鳞甲")
+		var/weapons = list("沙姆希尔弯刀与紫杉长弓","穿甲刺剑与反曲弓","军刀与黄铜盾","皮鞭与十字弩")
+		var/armor_options = list("硬化皮大衣", "轻型板甲衣", "沟槽胸甲")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		var/armor_choice = input(H, "选择你的护甲。", "拿起武器") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("弯刀与长弓")
+			if("沙姆希尔弯刀与紫杉长弓")
 				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 				beltr = /obj/item/quiver/arrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 
-			if("刺击剑与反曲弓")
+			if("穿甲刺剑与反曲弓")
 				r_hand = /obj/item/rogueweapon/estoc
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 
-			if("军刀与盾")
+			if("军刀与黄铜盾")
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				r_hand = /obj/item/rogueweapon/sword/sabre
 				backl = /obj/item/rogueweapon/shield/iron/zybantine
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 
-			if("鞭与弩")
+			if("皮鞭与十字弩")
 				beltl = /obj/item/rogueweapon/whip
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				beltr = /obj/item/quiver/bolts
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
 
 		switch(armor_choice)
-			if("轻皮甲")
+			if("硬化皮大衣")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/zyb
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
-			if("轻板甲衣")
+			if("轻型板甲衣")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/zyb
 				pants = /obj/item/clothing/under/roguetown/splintlegs
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
-			if("鳞甲")
+			if("沟槽胸甲")
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted

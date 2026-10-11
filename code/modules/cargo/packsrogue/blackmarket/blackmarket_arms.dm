@@ -9,7 +9,7 @@
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
 
 /datum/supply_pack/rogue/blackmarket_arms/katar
-	name = "钢拳刃"
+	name = "拳刃"
 	cost =	75
 	contains = list(/obj/item/rogueweapon/katar)
 
@@ -19,7 +19,7 @@
 	contains = list(/obj/item/rogueweapon/knuckles)
 
 /datum/supply_pack/rogue/blackmarket_arms/sword
-	name = "钢武装剑"
+	name = "单手剑"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/sword)
 

@@ -264,15 +264,15 @@
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
 				H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()		//Semi-crazed warrior vibe.
-				var/weapons = list("Lándzsa 长枪", "链枷")
+				var/weapons = list("阿夫尼克长枪", "铁连枷")
 				var/weapon_choice = input("选择你的武器。", "整备武装") as anything in weapons
 				switch(weapon_choice)
-					if("Lándzsa 长枪")//Funny banner weapon & punchdagger, with whip I suppose.
+					if("阿夫尼克长枪")//Funny banner weapon & punchdagger, with whip I suppose.
 						r_hand = /obj/item/rogueweapon/spear/boar/aav
 						l_hand = /obj/item/rogueweapon/katar/punchdagger/aav
 						backl = /obj/item/rogueweapon/scabbard/gwstrap
 						H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)		//Use of the weapon.
-					if("链枷")//Or boring flail and buckler, whip.
+					if("铁连枷")//Or boring flail and buckler, whip.
 						beltl = /obj/item/rogueweapon/flail
 						beltr = /obj/item/rogueweapon/shield/buckler //Doesn't get good shield skill + no armor, so they get this to compensate for no parry on whip.
 						H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)	//Old whip skill.

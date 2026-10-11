@@ -119,16 +119,16 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("双手巨斧","标枪与盾","黑角长弓","手炮")	//competent at both sides of wardenry so it's more a matter of what weapon you start with
+		var/weapons = list("誓约（双手斧）","标枪袋（钢标枪）与塔盾","黑角长弓","手炮")	//competent at both sides of wardenry so it's more a matter of what weapon you start with
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
-		var/armor_options = list("轻甲", "中甲")
+		var/armor_options = list("加厚绗缝护甲衣与硬化皮裤（轻甲）", "锁子短甲与钢制锁甲腿铠（中甲）")
 		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)//feel it'd be nice to have a sword version for a real Jeor Mormont?
-			if("双手巨斧")			
+			if("誓约（双手斧）")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				l_hand = /obj/item/rogueweapon/stoneaxe/oath
-			if("标枪与盾")
+			if("标枪袋（钢标枪）与塔盾")
 				beltr = /obj/item/quiver/javelin/steel
 				backl = /obj/item/rogueweapon/shield/tower/
 			if("黑角长弓")
@@ -139,10 +139,10 @@
 				l_hand = /obj/item/powderflask
 				beltr = /obj/item/quiver/bullet/lead
 		switch(armor_choice)
-			if("轻甲")
+			if("加厚绗缝护甲衣与硬化皮裤（轻甲）")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
-			if("中甲")
+			if("锁子短甲与钢制锁甲腿铠（中甲）")
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 

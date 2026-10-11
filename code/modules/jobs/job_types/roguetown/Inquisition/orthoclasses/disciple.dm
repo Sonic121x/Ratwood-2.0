@@ -49,7 +49,7 @@
 	if(H.has_flaw(/datum/charflaw/addiction/alcoholic))//THE LEADER OF THE EIGHT ENDURING FISTS SWAYED BACK AND FORTH TO TRICK THE HERETICS, DRUNK WITH INTERNAL FIRE. THEY WERE BUT FROGS IN A WELL LOOKING UP AT THE NIGHT SKY THINKING THEY HAD REACHED THE HEAVENS.
 		ADD_TRAIT(H, TRAIT_DRUNK_HEALING, TRAIT_GENERIC)
 	if(H.mind)
-		var/weapons = list("护教者 - 精通拳斗，戒武誓约且无减值", "拳斗士 - 精通运动，痛苦抵抗", "四分杖 - 专家长柄，+1感知/+1智力")
+		var/weapons = list("护教者 - 精通拳斗，戒武誓约且无减值", "拳斗士 - 精通运动，痛苦抵抗", "普赛顿长杖 - 专家长柄，+1感知/+1智力")
 		var/weapon_choice = input(H,"选择你的武器。", "执起普赛顿的兵刃。") as anything in weapons
 		switch(weapon_choice)
 			if("护教者 - 精通拳斗，戒武誓约且无减值")//the enduringest psychud. Weighted 12 stats but no weapons, period.
@@ -71,14 +71,14 @@
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
 				ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-				var/pugtype = list("拳刃", "指虎")
+				var/pugtype = list("普赛顿拳刃", "普赛顿指虎")
 				var/pug_choice = input(H,"选择你的拳斗武器。", "执起普赛顿的兵刃。") as anything in pugtype
 				switch(pug_choice)
-					if("拳刃")
+					if("普赛顿拳刃")
 						r_hand = /obj/item/rogueweapon/katar/psydon
-					if("指虎")
+					if("普赛顿指虎")
 						r_hand = /obj/item/rogueweapon/knuckles/psydon
-			if("四分杖 - 专家长柄，+1感知/+1智力")//stave user but with no int and per malus so they dont get folded.
+			if("普赛顿长杖 - 专家长柄，+1感知/+1智力")//stave user but with no int and per malus so they dont get folded.
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/psy
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted//no pugulist gloves for you sire, you have a staff.

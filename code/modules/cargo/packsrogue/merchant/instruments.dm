@@ -6,7 +6,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/instruments/mbox
-	name = "八音盒"
+	name = "矮人音乐盒"
 	cost = 500
 	contains = list(/obj/item/dmusicbox)
 

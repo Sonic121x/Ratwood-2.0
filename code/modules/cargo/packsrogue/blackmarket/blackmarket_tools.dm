@@ -4,22 +4,22 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/blackmarket_tools/chain
-	name = "一段链条"
+	name = "铁链"
 	cost = 5
 	contains = list(/obj/item/rope/chain)
 
 /datum/supply_pack/rogue/blackmarket_tools/needle
-	name = "缝衣针"
+	name = "缝合针"
 	cost = 5
 	contains = list(/obj/item/needle)
 
 /datum/supply_pack/rogue/blackmarket_tools/woodstaff
-	name = "六尺长杆"
+	name = "木杖"
 	cost = 5
 	contains = list(/obj/item/rogueweapon/woodstaff)
 
 /datum/supply_pack/rogue/blackmarket_tools/pouches
-	name = "小袋"
+	name = "束口袋"
 	cost = 5
 	contains = list(/obj/item/storage/belt/rogue/pouch)
 
@@ -34,7 +34,7 @@
 	contains = list(/obj/item/storage/backpack/rogue/satchel)
 
 /datum/supply_pack/rogue/blackmarket_tools/bedroll
-	name = "铺盖卷"
+	name = "卷起的铺盖卷"
 	cost = 15
 	contains = list(/obj/item/bedroll)
 
@@ -69,16 +69,16 @@
 	contains = list(/obj/item/bodypart/r_leg/prosthetic)
 
 /datum/supply_pack/rogue/blackmarket_tools/prarmlbrz
-	name = "青铜义臂（左）"
+	name = "青铜义肢（部位可选）"
 	cost = 200
 	contains = list(/obj/item/contraption/bronzeprosthetic)
 
 /datum/supply_pack/rogue/blackmarket_tools/grapplinghook
-	name =	"攀爬装置"
+	name =	"青铜抓钩发射器"
 	cost =	250
 	contains = list(/obj/item/grapplinghook)
 
 /datum/supply_pack/rogue/blackmarket_tools/golem_skillcore
-	name ="魔像技能展示器（自助式）"
+	name ="改装构装体技能拓展器（自助式）"
 	cost = 50
 	contains = list(/obj/item/construct_skill_core/blackmarket)
