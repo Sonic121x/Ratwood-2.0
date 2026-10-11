@@ -103,7 +103,7 @@
 	contains = list(/obj/item/clothing/cloak/apron/blacksmith)
 
 /datum/supply_pack/rogue/Clothing/rcloak
-	name = "兜帽（雨披配套）"
+	name = "雨披配套兜帽"
 	cost = 5
 	contains = list(/obj/item/clothing/head/hooded/rainhood)
 

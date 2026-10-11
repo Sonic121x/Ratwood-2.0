@@ -51,5 +51,5 @@
 	path = /obj/item/clothing/suit/roguetown/shirt/leo_robe
 
 /datum/loadout_item/leo_robe_leopard
-	name = "豹纹长袍（豹纹配色）"
+	name = "豹纹配色长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/leo_robe/leopard

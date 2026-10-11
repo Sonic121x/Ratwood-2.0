@@ -71,10 +71,10 @@ LICH SKELETONS
 	)
 
 	H.adjust_blindness(-3)
-	var/weapons = list("远古短剑（罗马式）","远古寇派什弯剑","远古短剑（直刃）","远古斧", "远古连枷")
+	var/weapons = list("罗马式远古短剑","远古寇派什弯剑","直刃远古短剑","远古斧", "远古连枷")
 	var/weapons_choice = input(H, "选择你的武器。", "向生者发怒。") as anything in weapons
 	switch(weapons_choice)
-		if("远古短剑（罗马式）")
+		if("罗马式远古短剑")
 			l_hand = /obj/item/rogueweapon/sword/short/gladius/ancient
 			beltl = /obj/item/rogueweapon/scabbard
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
@@ -82,7 +82,7 @@ LICH SKELETONS
 			l_hand = /obj/item/rogueweapon/sword/sabre/ancient
 			beltl = /obj/item/rogueweapon/scabbard
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-		if("远古短剑（直刃）")
+		if("直刃远古短剑")
 			l_hand = /obj/item/rogueweapon/sword/short/ancient
 			beltl = /obj/item/rogueweapon/scabbard
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
@@ -92,10 +92,10 @@ LICH SKELETONS
 		if("远古连枷")
 			l_hand = /obj/item/rogueweapon/flail/sflail/ancient
 			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
-	var/sidearms = list("标枪袋（远古标枪）", "投网", "远古匕首")
+	var/sidearms = list("远古标枪袋", "投网", "远古匕首")
 	var/sidearms_choice = input(H, "选择你的副武器。", "向生者发怒。") as anything in sidearms
 	switch(sidearms_choice)
-		if("标枪袋（远古标枪）")
+		if("远古标枪袋")
 			beltr = /obj/item/quiver/javelin/ancient
 		if("投网")
 			beltr = /obj/item/net

@@ -112,7 +112,7 @@
 	contains = list(/obj/item/rogueweapon/hoe,)
 
 /datum/supply_pack/rogue/tools/thresher
-	name = "连枷（打谷用）"
+	name = "打谷连枷"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/thresher,)
 
@@ -191,12 +191,12 @@
 	contains = list(/obj/item/roguekey/shop)
 
 /datum/supply_pack/rogue/tools/alch_bottle
-	name = "瓶子（炼金小瓶）"
+	name = "炼金小瓶"
 	cost = 1
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical,)
 
 /datum/supply_pack/rogue/tools/alch_bottles
-	name = "瓶子（炼金小瓶，大宗装）" //Buy 8 now get 1 free!
+	name = "大宗装炼金小瓶" //Buy 8 now get 1 free!
 	cost = 8
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,
 	/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,
@@ -209,7 +209,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle,)
 
 /datum/supply_pack/rogue/tools/alch_bottlesnormal
-	name = "瓶子（大宗装）" //buy 4 get 1 free
+	name = "大宗装瓶子" //buy 4 get 1 free
 	cost = 12
 	contains = list(/obj/item/reagent_containers/glass/bottle/,/obj/item/reagent_containers/glass/bottle/,/obj/item/reagent_containers/glass/bottle/,
 	/obj/item/reagent_containers/glass/bottle/,/obj/item/reagent_containers/glass/bottle/)
@@ -225,7 +225,7 @@
 	contains = list(/obj/item/bottle_kit)
 
 /datum/supply_pack/rogue/tools/surgeonsbag
-	name = "外科医生包（满配）"
+	name = "满配外科医生包"
 	cost = 80
 	contains = list(/obj/item/storage/belt/rogue/surgery_bag)
 

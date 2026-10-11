@@ -103,12 +103,12 @@
 				active_item = TRUE
 				legendaryarcane = FALSE
 				user.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-				user.change_stat("intelligence", 3)
+				user.change_stat(STATKEY_INT, 3)
 				to_chat(user, span_notice("魔力流遍我的全身。"))
 				icon_state ="artificerplate_powered"
 				item_state = "artificerplate_powered"
 			else
-				user.change_stat("intelligence", 3)
+				user.change_stat(STATKEY_INT, 3)
 				legendaryarcane = TRUE
 				active_item = TRUE
 				to_chat(user, span_warning("[src] 微微嗡鸣，但你早已是奥术大师。"))
@@ -130,8 +130,8 @@
 				legendaryathletics = TRUE
 			active_item = TRUE
 			to_chat(user, span_notice("力量流遍我的全身。"))
-			user.change_stat("strength", 2)
-			user.change_stat("willpower", 2)
+			user.change_stat(STATKEY_STR, 2)
+			user.change_stat(STATKEY_WIL, 2)
 			icon_state ="artificerplate_powered"
 			item_state = "artificerplate_powered"
 			return
@@ -148,7 +148,7 @@
 					H.adjust_skillrank(/datum/skill/magic/arcane, -1, TRUE)
 				if(H.get_item_by_slot(SLOT_ARMOR) == src)
 					to_chat(H, span_notice("增强我能力的奥术魔力消散了……"))
-					H.change_stat("intelligence", -3)
+					H.change_stat(STATKEY_INT, -3)
 					active_item = FALSE
 					return
 			else
@@ -160,8 +160,8 @@
 					H.adjust_skillrank(/datum/skill/misc/athletics, -1, TRUE)
 				if(H.get_item_by_slot(SLOT_ARMOR) == src)
 					to_chat(H, span_notice("增强我能力的力量消散了……"))
-					user.change_stat("strength", -2)
-					user.change_stat("willpower", -2)
+					user.change_stat(STATKEY_STR, -2)
+					user.change_stat(STATKEY_WIL, -2)
 					active_item = FALSE
 					return
 			else

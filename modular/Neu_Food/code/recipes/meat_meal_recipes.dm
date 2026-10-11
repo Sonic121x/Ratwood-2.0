@@ -96,7 +96,7 @@
 
 // Onion Steak + Carrot -> Steak Meal
 /datum/food_recipe/steakmeal_carrot
-	name = "牛排餐（胡萝卜）"
+	name = "牛排餐 — 胡萝卜配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/onionsteak
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
@@ -106,7 +106,7 @@
 
 // Carrot Steak + Onion -> Steak Meal
 /datum/food_recipe/steakmeal_onion
-	name = "牛排餐（洋葱）"
+	name = "牛排餐 — 洋葱配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/carrotsteak
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
@@ -116,7 +116,7 @@
 
 // Wiener Potato + Onion -> Wiener Meal
 /datum/food_recipe/wiener_meal_onion
-	name = "土豆洋葱香肠（洋葱）"
+	name = "土豆洋葱香肠 — 洋葱配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/wienerpotato
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
@@ -126,7 +126,7 @@
 
 // Wiener Onions + Potato -> Wiener Meal
 /datum/food_recipe/wiener_meal_potato
-	name = "土豆洋葱香肠（土豆）"
+	name = "土豆洋葱香肠 — 土豆配方"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/wieneronions
 	ingredients = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked

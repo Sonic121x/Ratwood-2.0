@@ -109,7 +109,7 @@
 	. = ..()
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("长剑","军刀","铁连枷（钢制）", "钢制四分杖")
+		var/weapons = list("长剑","军刀","铁连枷", "钢制四分杖")
 		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -123,7 +123,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 6, TRUE)
 				H.put_in_hands(new /obj/item/rogueweapon/sword/sabre)
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L)
-			if("铁连枷（钢制）")
+			if("铁连枷")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 6, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
 				H.put_in_hands(new /obj/item/rogueweapon/flail/sflail)
@@ -299,7 +299,7 @@
 	virtue_restrictions = list(
 		/datum/virtue/utility/riding
 	)
-	subclass_stashed_items = list("鞍饰毯（赛加羚羊）" = /obj/item/caparison, "鞍饰毯（雾兽）" = /obj/item/caparison/fogbeast)
+	subclass_stashed_items = list("赛加羚鞍饰毯" = /obj/item/caparison, "雾兽鞍饰毯" = /obj/item/caparison/fogbeast)
 	extra_context = "该子职业的藏匿物品中有一条鞍饰毯。请根据坐骑选择赛加羚羊或雾兽款式。"
 
 // You get a SAIGA. Saigas are pretty good, you lose out on your legendary weapon skills and you suck more on foot though. Will give Saddleborn once its in.

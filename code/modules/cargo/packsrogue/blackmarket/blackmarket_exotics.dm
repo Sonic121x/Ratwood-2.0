@@ -19,6 +19,6 @@
 	contains = list(/obj/item/riddleofsteel)
 
 /datum/supply_pack/rogue/blackmarket_exotics/luxwine
-	name = "光暗同酿（葡萄酒）"
+	name = "光暗同酿葡萄酒"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/luxwine)

@@ -56,7 +56,7 @@
 		var/weapons = list(
 			"穿甲刺剑",
 			"钢钉头锤加鸢盾",
-			"铁连枷（钢制）加鸢盾",
+			"铁连枷加鸢盾",
 			"长剑加鸢盾",
 			"卢塞恩锤",
 			"战斧",
@@ -79,7 +79,7 @@
 				beltr = /obj/item/rogueweapon/mace/steel
 				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
-			if("铁连枷（钢制）加鸢盾")
+			if("铁连枷加鸢盾")
 				beltr = /obj/item/rogueweapon/flail/sflail
 				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)

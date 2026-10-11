@@ -127,10 +127,10 @@
 				H.change_stat(STATKEY_WIL, 1)
 				H.change_stat(STATKEY_INT, -1)
 
-		var/bronzesidearm = list("标枪袋（青铜标枪）", "投石索与青铜弹丸", "弓与青铜箭矢", "另一把短剑与双持技艺", "另一把马凯拉短剑与双持技艺", "另一把寇派什弯刀与双持技艺", "另一把青铜战斧与双持技艺")
+		var/bronzesidearm = list("青铜标枪袋", "投石索与青铜弹丸", "弓与青铜箭矢", "另一把短剑与双持技艺", "另一把马凯拉短剑与双持技艺", "另一把寇派什弯刀与双持技艺", "另一把青铜战斧与双持技艺")
 		var/bronzesidearm_choice = input(H, "选择你的附加装备。", "准备你的开场演出") as anything in bronzesidearm
 		switch(bronzesidearm_choice)
-			if("标枪袋（青铜标枪）")
+			if("青铜标枪袋")
 				beltl = /obj/item/quiver/javelin/bronze
 			if("投石索与青铜弹丸")
 				H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_JOURNEYMAN, TRUE)

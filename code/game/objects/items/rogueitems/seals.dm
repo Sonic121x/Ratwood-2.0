@@ -99,7 +99,7 @@
 	to_chat(user, span_notice("我雕刻好了 [src]，并设定了它的蜡色。"))
 
 /datum/crafting_recipe/roguetown/survival/custom_seal
-	name = "空白定制印封（1根小原木）"
+	name = "空白定制印封，需1根小原木"
 	result = /obj/item/seal/custom
 	reqs = list(
 		/obj/item/grown/log/tree/small = 1,

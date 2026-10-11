@@ -50,33 +50,33 @@
 
 // --------- Copper -----------
 /datum/anvil_recipe/tools/copper/sickle
-	name = "镰刀, 铜 (+1 木棍)"
+	name = "铜镰刀，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/sickle/copper
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/copper/pick
-	name = "镐, 铜 (+1 木棍)"
+	name = "铜镐，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/copper
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/copper/pitchfork
-	name = "干草叉, 铜 (+2 木棍)"
+	name = "铜草叉，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pitchfork/copper
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/copper/lamptern
-	name = "提灯, 铜"
+	name = "铜灯笼"
 	created_item = /obj/item/flashlight/flare/torch/lantern/copper
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/copper/hammer
-	name = "锤, 铜 (+木棍)"
+	name = "铜锤，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hammer/copper
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
@@ -86,107 +86,107 @@
 // --------- ANCIENT ALLOY -----------
 
 /datum/anvil_recipe/tools/decrepit/thresher
-	name = "脱粒连枷, 衰朽 (+1 木棍)"
+	name = "残破连枷，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/thresher/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/decrepit/hoe
-	name = "锄头, 衰朽 (+2 木棍)"
+	name = "残破锄头，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hoe/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/decrepit/pitchfork
-	name = "干草叉, 衰朽 (+2 木棍)"
+	name = "残破草叉，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pitchfork/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/decrepit/hammer
-	name = "锤, 衰朽 (+1 木棍)"
+	name = "衰朽锤，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hammer/ancient/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/decrepit/sickle
-	name = "镰刀, 衰朽 (+1 木棍)"
+	name = "残破镰刀，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/sickle/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/decrepit/tongs
-	name = "钳子, 衰朽"
+	name = "衰朽钳子"
 	created_item = /obj/item/rogueweapon/tongs/ancient/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/decrepit/pick
-	name = "镐, 衰朽 (+1 木棍)"
+	name = "衰朽镐，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/decrepit/shovel
-	name = "铲, 衰朽 (+2 木棍)"
+	name = "破旧铁锹，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/shovel/decrepit
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/decrepit/sewingneedle
-	name = "针, 衰朽 (x3)"
+	name = "破旧缝合针 ×3"
 	created_item = /obj/item/needle/decrepit
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/decrepit/pan
-	name = "煎锅, 衰朽"
+	name = "破旧煎锅"
 	created_item = /obj/item/cooking/pan/decrepit
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/decrepit/agobs
-	name = "高脚杯 x2"
+	name = "破旧高脚杯 ×2"
 	created_item = /obj/item/reagent_containers/glass/cup/decrepitgob
 	createditem_num = 2
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/decrepit/amugs
-	name = "马克杯, 衰朽 (x3)"
+	name = "破旧马克杯 ×3"
 	created_item = /obj/item/reagent_containers/glass/cup/decrepitmug
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/decrepit/pot
-	name = "炊锅, 衰朽"
+	name = "破旧锅"
 	created_item = /obj/item/reagent_containers/glass/bucket/pot/decrepit
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/decrepit/platter
-	name = "大盘, 衰朽 (x3)"
+	name = "破旧拼盘 ×3"
 	created_item = /obj/item/cooking/platter/decrepit
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/decrepit/bowl
-	name = "碗, 衰朽 (x2)"
+	name = "残旧碗"
 	created_item = /obj/item/reagent_containers/glass/bowl/decrepit
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/decrepit/fork
-	name = "叉，衰朽 (x3)"
+	name = "破旧叉子 ×3"
 	created_item = /obj/item/kitchen/fork/decrepit
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/decrepit/spoon
-	name = "勺, 衰朽 (x3)"
+	name = "破旧勺子 ×3"
 	created_item = /obj/item/kitchen/spoon/decrepit
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
@@ -195,59 +195,59 @@
 // right now just dolabra and the neufood cookware recipes for existing bronze cookware
 
 /datum/anvil_recipe/tools/bronze/pick
-	name = "镐斧, 青铜 (+1 木棍, +1 青铜)"
+	name = "军团斧镐，另需1根木棍、1块青铜锭"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/ingot/bronze)
 	created_item = /obj/item/rogueweapon/pick/bronze
 	display_category = ITEM_CAT_TOOLS_FIELD
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/bronze/pan
-	name = "煎锅, 青铜"
+	name = "青铜煎锅"
 	created_item = /obj/item/cooking/pan/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/pot
-	name = "烹饪锅, 青铜"
+	name = "青铜锅"
 	created_item = /obj/item/reagent_containers/glass/bucket/pot/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/gobs
-	name = "高脚杯, 青铜 (x2)"
+	name = "青铜高脚杯 ×2"
 	created_item = /obj/item/reagent_containers/glass/cup/bronzegob
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 
 /datum/anvil_recipe/tools/bronze/amugs
-	name = "马克杯, 青铜 (x2)"
+	name = "青铜马克杯 ×2"
 	created_item = /obj/item/reagent_containers/glass/cup/bronzemug
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/platter
-	name = "餐盘, 青铜 (x2)"
+	name = "青铜拼盘 ×2"
 	created_item = /obj/item/cooking/platter/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/bowl
-	name = "碗, 青铜"
+	name = "青铜碗"
 	created_item = /obj/item/reagent_containers/glass/bowl/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/fork
-	name = "餐叉, 青铜 (x2)"
+	name = "青铜叉 ×2"
 	created_item = /obj/item/kitchen/fork/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/spoon
-	name = "汤匙, 青铜 (x2)"
+	name = "青铜勺 ×2"
 	created_item = /obj/item/kitchen/spoon/bronze
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 	createditem_num = 2
@@ -261,37 +261,37 @@
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/iron/surgerytools
-	name = "外科包 (+1 铁, +1 鞣制皮革)"
+	name = "满配外科医生包，另需1块铁锭、1张鞣制皮革"
 	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide/cured)
 	created_item = /obj/item/storage/belt/rogue/surgery_bag/full
 	display_category = ITEM_CAT_SMITHING_MISC
 
 /datum/anvil_recipe/tools/iron/torch
-	name = "领地火把 (x5) (+1 煤炭)"
+	name = "铁制壁炬 ×5，另需1块煤炭"
 	additional_items = list(/obj/item/rogueore/coal)
 	created_item = /obj/item/flashlight/flare/torch/metal
 	createditem_num = 5
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/iron/pan
-	name = "煎锅, 铁"
+	name = "煎锅"
 	created_item = /obj/item/cooking/pan
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/iron/tallowpot
-	name = "兽脂锅, 铁 (x2) (+1 铁)"
+	name = "封蜡锅 ×2"
 	created_item = /obj/item/inqarticles/tallowpot
 	createditem_num = 2
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/iron/keyring
-	name = "钥匙环 (x3)"
+	name = "钥匙环 ×3"
 	created_item = /obj/item/storage/keyring
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/iron/sewingneedle
-	name = "针, 铁 (x3)"
+	name = "缝合针 ×3"
 	created_item = /obj/item/needle
 	createditem_num = 3 // They can be refilled with fiber now
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
@@ -309,98 +309,98 @@
 */
 
 /datum/anvil_recipe/tools/iron/branding
-	name = "烙铁"
+	name = "烙印铁"
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/surgery/cautery/branding
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/iron/shovel
-	name = "铲, 铁 (+2 木棍)"
+	name = "铁锹，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/shovel
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/iron/hammer
-	name = "锤, 铁 (+1 木棍)"
+	name = "锤，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hammer/iron
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/iron/handsaw
-	name = "手锯, 铁 (+1 木棍)"
+	name = "手锯，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/handsaw
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/iron/chisel
-	name = "凿子, 铁"
+	name = "凿子"
 	created_item = /obj/item/rogueweapon/chisel
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/iron/tongs
-	name = "钳子, 铁"
+	name = "钳子"
 	created_item = /obj/item/rogueweapon/tongs
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/iron/sickle
-	name = "镰刀, 铁 (+1 木棍)"
+	name = "镰刀，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/sickle
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/iron/pick
-	name = "镐, 铁 (+1 木棍)"
+	name = "铁镐，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/iron/hoe
-	name = "锄头, 铁 (+2 木棍)"
+	name = "锄头，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hoe
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/iron/pitchfork
-	name = "干草叉, 铁 (+2 木棍)"
+	name = "草叉，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pitchfork
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/iron/lamptern
-	name = "提灯, 铁 (x3)"
+	name = "铁灯笼 ×3"
 	created_item = /obj/item/flashlight/flare/torch/lantern
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/iron/cups
-	name = "杯, 铁 (x3)"
+	name = "金属杯 ×3"
 	created_item = /obj/item/reagent_containers/glass/cup
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/iron/thresher
-	name = "脱粒连枷, 铁 (+1 木棍)"
+	name = "连枷，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/thresher
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/iron/headhook
-	name = "头钩, 铁 (+2 纤维)"
+	name = "头颅挂钩，另需2份纤维"
 	additional_items = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
 	created_item = /obj/item/storage/hip/headhook
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/iron/scissors
-	name = "剪刀"
+	name = "铁剪刀"
 	created_item = /obj/item/rogueweapon/huntingknife/scissors
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
@@ -408,20 +408,20 @@
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steel/hammer
-	name = "羊角锤 (+1 木棍)"
+	name = "羊角锤，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hammer/steel
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/steel/pick
-	name = "镐, 钢 (+1 木棍)"
+	name = "钢镐，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/steel
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/steel/cups
-	name = "高脚杯 x2"
+	name = "钢制高脚杯 ×2"
 	created_item = /obj/item/reagent_containers/glass/cup/steel
 	createditem_num = 2
 	display_category = ITEM_CAT_TOOLS_COOKWARE
@@ -437,13 +437,13 @@
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/steel/scissors
-	name = "剪刀"
+	name = "钢剪刀"
 	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/steel/metalrepairkit
-	name = "护甲板 (修理包) (x2) (+1 钢，+1 铁，+1 鞣制皮革)"
+	name = "护甲板 ×2，另需1块钢锭、1块铁锭、1张鞣制皮革"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/iron, /obj/item/natural/hide/cured)
 	created_item = /obj/item/repair_kit/metal
@@ -454,19 +454,19 @@
 // --------- SILVER -----------
 
 /datum/anvil_recipe/tools/silver/cups
-	name = "高脚杯 x2"
+	name = "银制高脚杯 ×2"
 	created_item = /obj/item/reagent_containers/glass/cup/silver
 	createditem_num = 2
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/tools/silver/cups/small
-	name = "杯 x3"
+	name = "银杯 ×3"
 	created_item = /obj/item/reagent_containers/glass/cup/silver/small
 	createditem_num = 3
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/tools/silver/shovel
-	name = "铲, 白银 (+1 白银, +1 小原木)"
+	name = "银铲，另需1块银锭、1根小原木"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/shovel/silver
 	display_category = ITEM_CAT_TOOLS_FIELD
@@ -474,13 +474,13 @@
 // --------- GOLD RECIPES-----------
 
 /datum/anvil_recipe/tools/gold/cups
-	name = "高脚杯 x2"
+	name = "金制高脚杯 ×2"
 	created_item = /obj/item/reagent_containers/glass/cup/golden
 	createditem_num = 2
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/tools/gold/cups/small
-	name = "杯 x3"
+	name = "金杯 ×3"
 	created_item = /obj/item/reagent_containers/glass/cup/golden/small
 	createditem_num = 3
 	display_category = ITEM_CAT_DECORATION
@@ -488,101 +488,101 @@
 // --------- TIN -----------
 
 /datum/anvil_recipe/tools/tin/cups
-	name = "高脚杯 x2"
+	name = "锡制高脚杯 ×2"
 	created_item = /obj/item/reagent_containers/glass/cup/tin
 	createditem_num = 2
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/tin/cups/small
-	name = "杯 x3"
+	name = "锡杯 ×3"
 	created_item = /obj/item/reagent_containers/glass/cup/tin/small
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 // --------- COOKING RECIPES -----------
 /datum/anvil_recipe/tools/iron/pot
-	name = "炊锅, 铁"
+	name = "锅"
 	created_item = /obj/item/reagent_containers/glass/bucket/pot
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/iron/kettle
-	name = "炊壶, 铁"
+	name = "水壶"
 	created_item = /obj/item/reagent_containers/glass/bucket/pot/kettle
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/copper/pot
-	name = "炊锅, 铜"
+	name = "铜锅"
 	created_item = /obj/item/reagent_containers/glass/bucket/pot/copper
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/copper/platter
-	name = "大盘, 铜 (x2)"
+	name = "铜拼盘 ×2"
 	created_item = /obj/item/cooking/platter/copper
 	createditem_num = 2
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/tin/platter
-	name = "大盘, 锡 (x2)"
+	name = "锡拼盘 ×2"
 	created_item = /obj/item/cooking/platter/pewter
 	createditem_num = 2
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/gold/platter
-	name = "大盘, 黄金 (x2)"
+	name = "金拼盘 ×2"
 	created_item = /obj/item/cooking/platter/gold
 	createditem_num = 2
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/tools/silver/platter
-	name = "大盘, 白银 (x2)"
+	name = "银拼盘 ×2"
 	created_item = /obj/item/cooking/platter/silver
 	createditem_num = 2
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/tools/iron/spoon
-	name = "勺, 铁 (x3)"
+	name = "铁勺 ×3"
 	created_item = /obj/item/kitchen/spoon/iron
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/tin/spoon
-	name = "勺, 锡 (x3)"
+	name = "锡勺 ×3"
 	created_item = /obj/item/kitchen/spoon/tin
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/iron/fork
-	name = "叉, 铁 (x3)"
+	name = "铁叉 ×3"
 	created_item = /obj/item/kitchen/fork/iron
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/tin/fork
-	name = "叉, 锡 (x3)"
+	name = "锡叉 ×3"
 	created_item = /obj/item/kitchen/fork/tin
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/silver/fork
-	name = "叉, 白银 (x3)"
+	name = "银叉 ×3"
 	created_item = /obj/item/kitchen/fork/silver
 	createditem_num = 3
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/tools/gold/fork
-	name = "叉，黄金 (x3)"
+	name = "金叉 ×3"
 	created_item = /obj/item/kitchen/fork/gold
 	createditem_num = 3
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/tools/decrepit/fork
-	name = "叉，衰朽 (x3)"
+	name = "破旧叉子 ×3"
 	created_item = /obj/item/kitchen/fork/decrepit
 	createditem_num = 3
 	display_category = ITEM_CAT_TOOLS_COOKWARE
 
 /datum/anvil_recipe/tools/iron/bowl
-	name = "碗，铁 (x2)"
+	name = "铁碗 ×2"
 	created_item = /obj/item/reagent_containers/glass/bowl/iron
 	createditem_num = 2
 	craftdiff = 1
@@ -624,7 +624,7 @@
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/mold_knife
-	name = "刀刃模具"
+	name = "刀片模具"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/mold/knife
 	craftdiff = SKILL_LEVEL_MASTER
@@ -632,7 +632,7 @@
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/mold_mace
-	name = "钉锤头模具"
+	name = "锤头模具"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/mold/mace
 	craftdiff = SKILL_LEVEL_MASTER
@@ -658,24 +658,24 @@
 //black steel tools
 
 /datum/anvil_recipe/tools/blacksteel/hammer
-	name = "黑钢锤 (+1 木棍)"
+	name = "黑钢锤，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hammer/blacksteel
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/blacksteel/pick
-	name = "黑钢 镐 (+1 木棍)"
+	name = "黑钢镐，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/blacksteel
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/blacksteel/tongs
-	name = "黑钢 钳子"
+	name = "黑钢钳子"
 	created_item = /obj/item/rogueweapon/tongs/blacksteel
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/blacksteel/handsaw
-	name = "黑钢手锯 (+1 木棍)"
+	name = "黑钢手锯，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/handsaw/blacksteel
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
@@ -686,35 +686,35 @@
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
 /datum/anvil_recipe/tools/blacksteel/thresher
-	name = "黑钢脱粒器 (+1 木棍)"
+	name = "黑钢连枷，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/thresher/blacksteel
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/blacksteel/hoe
-	name = "黑钢锄头 (+2 木棍)"
+	name = "黑钢锄头，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hoe/blacksteel
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/blacksteel/pitchfork
-	name = "黑钢叉 (+2 木棍)"
+	name = "黑钢草叉，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pitchfork/blacksteel
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/blacksteel/sickle
-	name = "黑钢镰刀 (+1 木棍)"
+	name = "黑钢镰刀，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/sickle/blacksteel
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/blacksteel/shovel
-	name = "黑钢铲子 (+2 木棍)"
+	name = "黑钢铲，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/shovel/blacksteel
 	i_type = "工具"
@@ -722,7 +722,7 @@
 
 // --------- HEARTBEAST TOOLS -----------
 /datum/anvil_recipe/tools/heartbeast_vials
-	name = "血瓶"
+	name = "心兽血小瓶 ×5"
 	req_bar = /obj/item/ingot/copper
 	created_item = /obj/item/heart_blood_vial
 	craftdiff = SKILL_LEVEL_APPRENTICE
@@ -730,7 +730,7 @@
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/heartbeast_canisters
-	name = "血罐"
+	name = "心兽血罐 ×2"
 	req_bar = /obj/item/ingot/copper
 	created_item = /obj/item/heart_blood_canister
 	craftdiff = SKILL_LEVEL_APPRENTICE
@@ -738,7 +738,7 @@
 	display_category = ITEM_CAT_TOOLS_SUNDRIES
 
 /datum/anvil_recipe/tools/aspect_canisters
-	name = "炼金罐"
+	name = "炼金罐 ×3"
 	req_bar = /obj/item/ingot/copper
 	created_item = /obj/item/heart_canister
 	craftdiff = SKILL_LEVEL_APPRENTICE

@@ -129,12 +129,12 @@
 		/obj/item/flashlight/flare/torch,
 		/obj/item/storage/belt/rogue/pouch/coins/poor
 		)
-	var/weapons = list("沙姆希尔弯刀与标枪袋（铁标枪）","皮鞭与钢制格挡匕首", "反曲弓")
+	var/weapons = list("沙姆希尔弯刀与铁标枪袋","皮鞭与钢制格挡匕首", "反曲弓")
 	if(H.mind)
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("沙姆希尔弯刀与标枪袋（铁标枪）")
+			if("沙姆希尔弯刀与铁标枪袋")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 				backl = /obj/item/quiver/javelin/iron
