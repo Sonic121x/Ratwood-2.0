@@ -321,7 +321,11 @@ GLOBAL_LIST_EMPTY(alch_refining_formulas)					// Lazily-filled list of all formu
 	for(var/obj/item/ing in ingredients)
 		qdel(ing)
 	ingredients = list()
-	lastuser?.adjust_experience(/datum/skill/craft/alchemy, amt2raise, FALSE)
+	if(ishuman(lastuser))
+		var/mob/living/carbon/human/H = lastuser
+		H.z121_ethos_failed_experience(/datum/skill/craft/alchemy, amt2raise)
+	else
+		lastuser?.adjust_experience(/datum/skill/craft/alchemy, amt2raise, FALSE)
 
 
 // ============================================================================

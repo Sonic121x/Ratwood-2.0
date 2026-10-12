@@ -108,19 +108,23 @@
 //   确保除"放大经验"外的所有原有行为（升级提示、学徒同步等）保持不变。
 // ----------------------------------------------------------------------------
 /mob/living/carbon/human/adjust_experience(skill, amt, silent = FALSE, check_apprentice = TRUE)
+	amt = z121_ethos_experience(skill, amt)
 	// 仅当：①确实持有【天才】特性；②本次是"正向经验获取"（amt > 0）时才放大。
 	//   为什么要求 amt > 0：adjust_experience 也可能被传入负值用于"扣减/惩罚"经验，
 	//   天才的设定是"学得更快"，不应连带把惩罚也放大（否则越天才被罚得越狠，违背直觉）。
 	//   因此只放大正向收益，负向/零值原样透传。
-	if(amt > 0 && HAS_TRAIT(src, TRAIT_GENIUS))
-		amt *= GENIUS_XP_MULTIPLIER
+	amt = z121_genius_experience(amt)
 
 	// 透传给基类完成真正的经验写入与后续处理（升级提示、学徒同步等均不受影响）。
 	var/datum/skill/skill_ref = GetSkillRef(skill)
-	var/before = z121_profession ? ensure_skills().skill_experience[skill_ref] : 0
+	var/before = ensure_skills().skill_experience[skill_ref]
 	. = ..(skill, amt, silent, check_apprentice)
+	z121_get_ethos()?.experience_settled(skill, before, ensure_skills().skill_experience[skill_ref])
 	// 记录实际结算的损失，不再次应用天才倍率。
 	z121_profession?.experience_settled(skill, before, ensure_skills().skill_experience[skill_ref])
+
+/mob/living/carbon/human/proc/z121_genius_experience(amount)
+	return amount > 0 && HAS_TRAIT(src, TRAIT_GENIUS) ? amount * GENIUS_XP_MULTIPLIER : amount
 
 
 // ----------------------------------------------------------------------------

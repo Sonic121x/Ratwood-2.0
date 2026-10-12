@@ -39,7 +39,11 @@
 			update_icon()
 			return
 	if(istype(I, /obj/item/rogueweapon/hammer))
-		user.changeNext_move(CLICK_CD_RAPID)
+		var/work_delay = 1
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			work_delay = H.z121_ethos_craft_delay()
+		user.changeNext_move(CLICK_CD_RAPID * work_delay)
 		if(!material)
 			return
 		if(!material.artrecipe)
@@ -76,7 +80,11 @@
 			if(prob(max(0, 25 - user.goodluck(2) - (skill * 2))))
 				to_chat(user, span_warning("你的技艺不足，损坏了这件工作件。"))
 				playsound(src, 'sound/combat/hits/onwood/destroyfurniture.ogg', 100, FALSE)
-				user.mind.add_sleep_experience(material.artrecipe.appro_skill, (user.STAINT * material.artrecipe.skill_level))
+				if(ishuman(user))
+					var/mob/living/carbon/human/H = user
+					H.z121_ethos_failed_experience(material.artrecipe.appro_skill, user.STAINT * material.artrecipe.skill_level, TRUE)
+				else
+					user.mind.add_sleep_experience(material.artrecipe.appro_skill, user.STAINT * material.artrecipe.skill_level)
 				qdel(material)
 				material = null
 				return

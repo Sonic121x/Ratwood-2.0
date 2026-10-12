@@ -1,0 +1,52 @@
+// 非肢体伤害也属于有效治疗，只按实际减少量结算，不改变核心治疗数值。
+/mob/living/carbon/human/proc/z121_ethos_healed_damage(before, after, list/providers)
+	if(!QDELETED(src) && !isnull(before) && !isnull(after) && after < before && length(providers))
+		z121_ethos_treated_by(providers)
+
+/mob/living/carbon/human/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getOxyLoss()
+	. = ..()
+	z121_ethos_healed_damage(before, getOxyLoss(), providers)
+
+/mob/living/carbon/human/setOxyLoss(amount, updating_health = TRUE, forced = FALSE)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getOxyLoss()
+	. = ..()
+	z121_ethos_healed_damage(before, getOxyLoss(), providers)
+
+/mob/living/carbon/human/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getToxLoss()
+	. = ..()
+	z121_ethos_healed_damage(before, getToxLoss(), providers)
+
+/mob/living/carbon/human/setToxLoss(amount, updating_health = TRUE, forced = FALSE)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getToxLoss()
+	. = ..()
+	z121_ethos_healed_damage(before, getToxLoss(), providers)
+
+/mob/living/carbon/human/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getCloneLoss()
+	. = ..()
+	z121_ethos_healed_damage(before, getCloneLoss(), providers)
+
+/mob/living/carbon/human/setCloneLoss(amount, updating_health = TRUE, forced = FALSE)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getCloneLoss()
+	. = ..()
+	z121_ethos_healed_damage(before, getCloneLoss(), providers)
+
+/mob/living/carbon/human/adjustOrganLoss(slot, amount, maximum)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getOrganLoss(slot)
+	. = ..()
+	z121_ethos_healed_damage(before, getOrganLoss(slot), providers)
+
+/mob/living/carbon/human/setOrganLoss(slot, amount)
+	var/list/providers = z121_ethos_treatment_providers()
+	var/before = getOrganLoss(slot)
+	. = ..()
+	z121_ethos_healed_damage(before, getOrganLoss(slot), providers)
