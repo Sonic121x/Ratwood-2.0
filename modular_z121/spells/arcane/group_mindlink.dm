@@ -3,6 +3,13 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 
 #define GML_MESSAGE_LIMIT 1024
 #define GML_HISTORY_LIMIT 200
+#define GML_ROOM_LIMIT 12
+#define GML_ROOM_CREATE_INTERVAL (5 SECONDS)
+
+// 客户端级节流不会因关闭窗口、删除个人会话或换身而重置。
+/client
+	var/group_mindlink_next_cast_invite = 0
+	var/group_mindlink_next_join_invite = 0
 
 /proc/group_mindlink_session(mob/living/member, create = TRUE)
 	var/datum/group_mindlink_session/session = GLOB.active_group_mindlinks[member]
@@ -254,6 +261,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/list/selection = list()
 	var/feedback = "选择视野内最多五名玩家邀请加入链接，或选择已有会话。"
 	var/last_send_at = -10
+	var/next_room_create_at = 0
 	var/list/ack = list()
 	var/cleaning_up = FALSE
 
@@ -477,7 +485,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	return TRUE
 
 /datum/group_mindlink_session/proc/create_room(datum/group_mindlink_custom/link, list/ids, direct, room_name)
-	if(!islist(ids) || !(holder in link.participants))
+	if(QDELETED(link) || !link.active || world.time >= link.expires_at || !islist(ids) || !(holder in link.participants))
 		return
 	var/list/chosen = list(holder)
 	for(var/mob/living/member as anything in link.participants)
@@ -491,6 +499,19 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 			if(existing.kind == "dm" && length(existing.members) == 2 && (chosen[1] in existing.members) && (chosen[2] in existing.members))
 				current_room = existing
 				return
+	// 已存在的双人私聊只切换会话；只有真正创建时才占用节流。
+	if(world.time < next_room_create_at)
+		notice("创建会话过快，请等待五秒后再试。")
+		return
+	if(!direct)
+		var/room_count = 0
+		for(var/datum/group_mindlink_room/existing as anything in link.rooms)
+			if(existing.kind == "room")
+				room_count++
+		if(room_count >= GML_ROOM_LIMIT)
+			notice("每条主链接最多保留十二个小房间，请先解散不再使用的房间。")
+			return
+	next_room_create_at = world.time + GML_ROOM_CREATE_INTERVAL
 	var/title = istext(room_name) ? trim(copytext_char(room_name, 1, 41)) : ""
 	if(!length(title))
 		title = "[link.member_name(holder)]的小房间"
@@ -503,7 +524,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	current_room = new_room
 	feedback = "当前发送目标：[new_room.display_title(holder)]。"
 
-/datum/group_mindlink_session/proc/send_to_room(datum/group_mindlink_room/room, raw_text)
+/datum/group_mindlink_session/proc/send_to_room(datum/group_mindlink_room/room, raw_text, speech_checked = FALSE)
 	if(QDELETED(src) || QDELETED(holder) || holder.stat != CONSCIOUS || !holder.client)
 		return FALSE
 	if(QDELETED(room) || room != current_room || !room.can_access(holder))
@@ -517,6 +538,18 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	if(world.time < last_send_at + 1 SECONDS)
 		notice("发送过快，请稍候再试。")
 		return FALSE
+	// 普通发言入口已经执行反刷屏；窗口入口补做同一检查，两者都复查管理员禁言。
+	if(!holder.can_speak_basic(message, ignore_spam = speech_checked))
+		feedback = "发言被 IC 聊天规则阻止，消息未发送。"
+		refresh()
+		return FALSE
+	// 与普通 IC 发言保持相同的过滤方式，不能利用口音转义括号拆分禁词。
+	var/static/regex/escape_brackets = regex(@"\[([^\]]*)\]?", "g")
+	var/filtered_message = findtext(message, "\[") ? replacetext(message, escape_brackets, "$1") : message
+	if(CHAT_FILTER_CHECK(filtered_message))
+		notice("消息包含 IC 聊天中被禁止的词语，消息未发送。")
+		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, LOWER_TEXT(config.ic_filter_regex.match))
+		return FALSE
 	last_send_at = world.time
 	room.append_message(holder, message)
 	feedback = "已发送至[room.display_title(holder)]。"
@@ -529,7 +562,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		return
 	// 先阻止普通发言，再校验目标；异步调用携带原会话，不能临时改投新会话。
 	speech_args[SPEECH_MESSAGE] = null
-	INVOKE_ASYNC(src, PROC_REF(send_to_room), current_room, html_decode(trim(copytext(message, 3))))
+	INVOKE_ASYNC(src, PROC_REF(send_to_room), current_room, html_decode(trim(copytext(message, 3))), TRUE)
 
 /obj/effect/proc_holder/spell/self/group_mindlink
 	name = "群体心灵链接"
@@ -593,6 +626,9 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	if(!user?.client || user.group_mindlink_view || user.client.eye != user)
 		session.notice("请先返回自身视角，再开始施法。")
 		return
+	if(world.time < user.client.group_mindlink_next_cast_invite)
+		session.notice("邀请发起过快，每十秒最多发起一批邀请。")
+		return
 	if(length(session.selection) < 1 || length(session.selection) > 5)
 		session.notice("每次只能邀请一至五名玩家。")
 		return
@@ -600,13 +636,18 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/list/chosen = list()
 	for(var/id in session.selection)
 		if(istext(id) && candidates[id])
-			chosen |= candidates[id]
+			var/mob/living/member = candidates[id]
+			if(world.time >= member.client.group_mindlink_next_join_invite)
+				chosen |= member
 	if(!length(chosen))
-		session.notice("已选对象均已失效，请重新选择视野内面容与真名公开的玩家。")
+		session.notice("已选对象当前无法接收邀请，可能已失效或处于邀请免打扰期间。")
 		return
 	// 先做无消耗检查，邀请阶段不预留冷却；至少一人同意后才正式引导。
 	if(!cast_check(TRUE, user))
 		return
+	user.client.group_mindlink_next_cast_invite = world.time + 10 SECONDS
+	if(length(chosen) < length(session.selection))
+		session.notice("部分已选对象当前无法接收邀请，本次仅邀请其余有效对象。")
 	casting = TRUE
 	casting_user = user
 	inviting = TRUE
@@ -707,3 +748,5 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 
 #undef GML_MESSAGE_LIMIT
 #undef GML_HISTORY_LIMIT
+#undef GML_ROOM_LIMIT
+#undef GML_ROOM_CREATE_INTERVAL

@@ -25,7 +25,6 @@
 	return result
 
 /datum/group_mindlink_view
-	var/examining = FALSE
 	var/next_examine = 0
 	var/restoring_sounds = FALSE
 	var/list/local_loops = list()
@@ -89,25 +88,14 @@
 	return senses_valid() && group_mindlink_visible(target, subject)
 
 /datum/group_mindlink_view/proc/examine_visible(atom/subject)
-	if(examining || world.time < next_examine)
+	if(world.time < next_examine)
 		return
 	next_examine = world.time + 2
 	if(!can_examine(subject))
 		to_chat(viewer, span_notice("只能检视借用视角中实际可见的事物。"))
 		return
-	// 不调用 examinate，避免广播身体正在检视；排除鼻部检查与接触判定。
-	examining = TRUE
-	var/previous_zone = viewer.zone_selected
-	viewer.zone_selected = BODY_ZONE_HEAD
-	var/list/description
-	try
-		description = subject.examine(viewer)
-	catch(var/exception/error)
-		viewer.zone_selected = previous_zone
-		examining = FALSE
-		throw error
-	viewer.zone_selected = previous_zone
-	examining = FALSE
+	// 普通 examine 及其信号、检视效果可能改动世界；远程只调用专用只读接口。
+	var/list/description = subject.group_mindlink_examine(viewer)
 	if(!senses_valid() || !length(description))
 		return
 	// 以纯文本显示，不保留检查、容器、配方或其他可操作的超链接与悬浮组件。
@@ -115,6 +103,93 @@
 	for(var/line in description)
 		plain_lines += html_encode(group_mindlink_plain_text("[line]"))
 	to_chat(viewer, examine_block(plain_lines.Join("<br>")))
+
+// 只读接口仅返回可见描述，不发信号、不调用普通检视、不读取容器内容。
+// 新增专用描述时必须遵守同一约定，不能调用带动作、通知或状态变化的过程。
+/atom/proc/group_mindlink_examine(mob/living/user)
+	. = list("那是[name]。")
+	if(desc)
+		. += desc
+	if(!reagents)
+		return
+	if(reagents.flags & TRANSPARENT)
+		if(!length(reagents.reagent_list))
+			. += "里面什么也没有。"
+		else if(user.can_see_reagents())
+			// 仅使用观看者本人的辨认能力，不把远端邻接当作接触检查。
+			for(var/datum/reagent/reagent as anything in reagents.reagent_list)
+				. += "它包含[round(reagent.volume, 0.1)] [UNIT_FORM_STRING(round(reagent.volume, 0.1))]的[reagent.name]。"
+		else
+			. += "它包含[round(reagents.total_volume, 0.1)] [UNIT_FORM_STRING(round(reagents.total_volume, 0.1))]的某种物质。"
+	else if(reagents.flags & AMOUNT_VISIBLE)
+		. += reagents.total_volume ? "它还剩下[round(reagents.total_volume, 0.1)] [UNIT_FORM_STRING(round(reagents.total_volume, 0.1))]。" : "它是空的。"
+
+/obj/item/group_mindlink_examine(mob/living/user)
+	. = ..()
+	if(original_name && original_name != name)
+		. += "原名：[original_name]"
+	if(max_integrity > 0 && integrity_failure < 1)
+		var/condition = integrity_check()
+		if(condition)
+			. += condition
+	var/list/quality = quality_examine_suffix()
+	if(quality)
+		. += quality["text"]
+	// 只读取现有价格，不调用会随机改价的 get_real_price，也不递归估算容器内容。
+	var/value = sellprice || GLOB.derived_sellprices?[type] || lookup_derived_subtype_price(type)
+	if(looted && value > 0)
+		value = max(1, round(value * LOOTED_SELL_MULT))
+	if(value > 0 && (HAS_TRAIT(user, TRAIT_SEEPRICES) || simpleton_price))
+		. += "物品本身价值：[value] 玛门币。"
+	else if(value > 0 && HAS_TRAIT(user, TRAIT_SEEPRICES_SHITTY))
+		var/static/fumbling_seed = text2num(GLOB.rogue_round_id)
+		var/estimate = max(1, round(value + (value * clamp(noise_hash(value, fumbling_seed) - 0.25, -0.25, 0.25)), 1))
+		. += "物品本身价值：约[estimate] 玛门币（不确定）。"
+	if(user.STAINT >= 9)
+		if(anvilrepair)
+			var/datum/skill/repair_skill = anvilrepair
+			. += "可以使用[initial(repair_skill.name)]和一把锤子修理。"
+		if(sewrepair)
+			. += "可以使用缝纫和一根针修理。"
+
+/obj/item/rogueweapon/group_mindlink_examine(mob/living/user)
+	. = ..()
+	var/blade_condition = get_blade_dulling_text(src)
+	if(blade_condition)
+		. += blade_condition
+
+/mob/living/carbon/human/group_mindlink_examine(mob/living/user)
+	// 不走 on_examine_face，不新增熟人、不施加心情，也不输出头衔或交互链接。
+	var/face_hidden = get_face_name("") != real_name || HAS_TRAIT(user, TRAIT_PROSOPAGNOSIA)
+	var/recognized = !face_hidden && (user == src || (real_name in user.mind?.known_people))
+	. = list(recognized ? "这是[get_visible_name()]。" : "这是一位未知人物。")
+	if(face_hidden)
+		. += build_cool_description_unknown(get_mob_descriptors_unknown(TRUE, user), src, user)
+	else
+		. += build_cool_description(get_mob_descriptors(!recognized, user), src, user)
+	var/list/obscured = check_obscured_slots()
+	var/static/list/visible_slots = list(SLOT_SHIRT, SLOT_PANTS, SLOT_HEAD, SLOT_ARMOR, SLOT_CLOAK, SLOT_BACK_R, SLOT_BACK_L, SLOT_GLOVES, SLOT_BELT, SLOT_BELT_R, SLOT_BELT_L, SLOT_SHOES, SLOT_WEAR_MASK, SLOT_NECK, SLOT_WRISTS, SLOT_MOUTH)
+	for(var/slot in visible_slots)
+		if(slot in obscured)
+			continue
+		var/obj/item/item = get_item_by_slot(slot)
+		if(item)
+			. += "[p_they(TRUE)]佩戴着[item.name]。"
+	for(var/obj/item/item as anything in held_items)
+		if(item)
+			. += "[p_they(TRUE)]手中拿着[item.name]。"
+	if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
+		. += "[p_they(TRUE)]看起来没有生命迹象。"
+	else if(stat != CONSCIOUS)
+		. += "[p_they(TRUE)]看起来失去了意识。"
+
+// 拟态仍显示伪装物的描述，不能由专用接口暴露其真实种类。
+/mob/living/simple_animal/hostile/retaliate/rogue/mimic/group_mindlink_examine(mob/living/user)
+	if(aggressive)
+		return ..()
+	. = list("那是[name]。")
+	if(mimicking_chest::desc)
+		. += mimicking_chest::desc
 
 /proc/group_mindlink_plain_text(text)
 	var/static/regex/tags = regex(@"<[^>]*>", "g")
@@ -132,20 +207,6 @@
 	if(!QDELETED(group_mindlink_view))
 		group_mindlink_view.examine_visible(subject)
 		return
-	return ..()
-
-/mob/living/carbon/Adjacent(atom/neighbor)
-	if(group_mindlink_view?.examining)
-		return FALSE
-	if(isliving(neighbor))
-		var/mob/living/other = neighbor
-		if(other.group_mindlink_view?.examining)
-			return FALSE
-	return ..()
-
-/mob/living/carbon/can_smell()
-	if(group_mindlink_view?.examining)
-		return FALSE
 	return ..()
 
 // 只转发环境中的口头交流，排除无线电、手语和心灵等非环境消息。

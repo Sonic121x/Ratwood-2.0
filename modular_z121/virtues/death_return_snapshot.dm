@@ -261,13 +261,12 @@
 	saved_stress = H.oldstress
 	for(var/event_type in H.stressors)
 		var/datum/stressevent/event = H.stressors[event_type]
-		var/datum/z121_return_record/R = new(event, list("stressadd", "desc", "stacks", "max_stacks", "stressadd_per_extra_stack", "quality_modifier", "z121_ethos_original_timer", "z121_ethos_original_end", "z121_ethos_shortened_end", "z121_ethos_shortened", "z121_ethos_social_timer"))
+		// 七罪七德的心情期限跟随本局角色，不能恢复清晨的旧期限。
+		if(istype(event, /datum/stressevent/z121_ethos))
+			continue
+		var/datum/z121_return_record/R = new(event, list("stressadd", "desc", "stacks", "max_stacks", "stressadd_per_extra_stack", "quality_modifier"))
 		// 压力持续时间是数值字段，不是计时器编号；保存剩余进度，不重播事件。
 		R.values["timer"] = event.timer
-		// 这两个字段也是持续时长，不是计时器编号；不能被通用过滤规则丢弃。
-		for(var/field in list("z121_ethos_original_timer", "z121_ethos_social_timer"))
-			if(field in event.vars)
-				R.values[field] = event.vars[field]
 		R.relative_times["time_added"] = event.time_added - world.time
 		stress_records += R
 
@@ -491,7 +490,8 @@
 		B.bleeding = 0
 		R.restore_timers(B)
 		// 当前衣物对应的外观随实物保留，不能从存档复制出内衣或装具。
-		for(var/datum/bodypart_feature/F as anything in B.bodypart_features.Copy())
+		// 没有外观特征的肢体不会初始化此列表，按空列表处理，避免中断整个回归。
+		for(var/datum/bodypart_feature/F as anything in B.bodypart_features?.Copy())
 			if(!z121_return_item_feature(F))
 				B.remove_bodypart_feature(F)
 				qdel(F)

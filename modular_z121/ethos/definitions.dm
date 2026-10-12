@@ -1,12 +1,4 @@
-// 七罪七德：仅实现日常机制版。所有角色进度由 mind 上的 z121_ethos 保留。
-// 核心覆写过程在编译器中使用原路径，静态检查器要求补齐过程路径段。
-// 两种写法指向同一类型的同一过程，避免退化为按名称调用而再次进入自身覆写。
-#ifdef SPACEMAN_DMM
-#define Z121_ETHOS_OVERRIDE_PROC(parent_type, proc_name) parent_type/proc/proc_name
-#else
-#define Z121_ETHOS_OVERRIDE_PROC(parent_type, proc_name) parent_type/proc_name
-#endif
-
+// 七罪七德：每项只保留一个主要效果；本局记录由 mind 持有。
 /datum/charflaw/z121_sin
 	point_value = 1
 	var/ethos_id
@@ -17,7 +9,6 @@
 		var/mob/living/carbon/human/H = user
 		var/datum/z121_ethos/R = H.z121_get_ethos(TRUE)
 		R.set_sin(ethos_id, TRUE)
-		addtimer(CALLBACK(R, TYPE_PROC_REF(/datum/z121_ethos, finish_envy_initialization)), 0)
 
 /datum/charflaw/z121_sin/on_removal(mob/user)
 	. = ..()
@@ -27,37 +18,37 @@
 
 /datum/charflaw/z121_sin/pride
 	name = "折不得的冠冕〔傲慢〕"
-	desc = "被他人攻击击倒后，压力+4、意志−1，完整持续3分钟，不能提前解除或缩短。每场冲突仅触发一次；60秒未攻击或受攻击后结束冲突。"
+	desc = "击倒状态下压力+3，击倒结束解除；主动躺卧不触发。"
 	ethos_id = "pride"
 
 /datum/charflaw/z121_sin/greed
 	name = "空囊之惧〔贪婪〕"
-	desc = "入场10分钟后，随身钱币不足50玛蒙时压力+3、意志−1；补足立即解除。钱袋和背包内钱币计入，银行与物品估价不计。"
+	desc = "随身真实钱币不足50玛蒙时压力+3，补足解除。背包和钱袋计入，银行与物品估价不计。"
 	ethos_id = "greed"
 
 /datum/charflaw/z121_sin/lust
 	name = "难餍之心〔色欲〕"
-	desc = "清醒活动30分钟未获成人活动满足后，压力+3、感知−1。只能通过实际成人活动中的满足重置；药物、冥想、休息、复活和重登不能缓解。须成年并开启成人功能。"
+	desc = "连续游戏内24小时未高潮时感知−1，任何来源的高潮都会解除并重新计时。睡眠、死亡和离线不暂停计时；关闭成人功能时暂不施加负面。须成年并开启成人功能才能选择。"
 	ethos_id = "lust"
 
 /datum/charflaw/z121_sin/envy
 	name = "他人的光芒〔嫉妒〕"
-	desc = "出生后锁定最高技能，检视该技能高于自己至少2级的玩家后，压力+3、意志−1，持续3分钟。获得该技能经验或独处30秒解除；同一对象冷却10分钟。"
+	desc = "检视另一名玩家，对方任一技能比自己同一技能高至少2级时，压力+3持续3分钟；再次触发只刷新时长。"
 	ethos_id = "envy"
 
 /datum/charflaw/z121_sin/gluttony
 	name = "腹中空洞〔暴食〕"
-	desc = "进食获得的营养减少20%。营养低于700时压力+3，达到800才解除。无需进食的角色不可选择。"
+	desc = "营养低于700时压力+3，达到800后解除。无需进食的角色不可选择。"
 	ethos_id = "gluttony"
 
 /datum/charflaw/z121_sin/wrath
 	name = "一点即燃〔暴怒〕"
-	desc = "遭他人直接攻击，单次实际伤害至少10时，力量+1、感知−2、压力+4，持续20秒，冷却60秒。脱战静坐10秒可提前结束。"
+	desc = "蛮力与烧伤伤害合计达到20时感知−1，低于20解除。"
 	ethos_id = "wrath"
 
 /datum/charflaw/z121_sin/sloth
 	name = "沉重的清晨〔怠惰〕"
-	desc = "清醒活动15分钟后，速度−1、制作动作耗时+15%。坐下或躺卧连续休息45秒重置；移动、攻击或受攻击中断。"
+	desc = "速度−1。"
 	ethos_id = "sloth"
 
 /datum/virtue/z121_virtue
@@ -65,7 +56,7 @@
 
 /datum/virtue/z121_virtue/check_triumphs(mob/living/carbon/human/recipient)
 	if(ethos_id == "chastity" && recipient.z121_get_ethos()?.chastity_lost)
-		to_chat(recipient, span_warning("你已失去本局的自主之誓，不能重新获得。"))
+		to_chat(recipient, span_warning("自主之誓已在本局失效，重新选择也不能恢复增益。"))
 		return FALSE
 	if(recipient.has_flaw(z121_ethos_opposite_sin(ethos_id)) || recipient.z121_get_ethos()?.sins[z121_ethos_paired_id(ethos_id)])
 		return FALSE
@@ -78,57 +69,57 @@
 
 /datum/virtue/z121_virtue/humility
 	name = "低首求学〔谦逊〕"
-	desc = "导师技能高于自己时，教学经验+30%；接受其他玩家有效治疗后，压力−2持续3分钟，冷却5分钟。"
-	custom_text = "导师技能高于自己时，教学经验+30%；接受其他玩家有效治疗后，压力−2持续3分钟，冷却5分钟。"
+	desc = "智力+1。"
+	custom_text = "智力+1。"
 	triumph_cost = 4
 	ethos_id = "humility"
 	incompatible_vices = list(/datum/charflaw/z121_sin/pride)
 
 /datum/virtue/z121_virtue/charity
 	name = "分食者〔慷慨〕"
-	desc = "另一名玩家接受所赠食物、药品或至少20玛蒙后，双方压力−3持续5分钟，冷却10分钟。同一物品或钱币往返不能重复获益。"
-	custom_text = "另一名玩家接受所赠食物、药品或至少20玛蒙后，双方压力−3持续5分钟，冷却10分钟。同一物品或钱币往返不能重复获益。"
+	desc = "通过赠予动作交付食物并被另一名在线、存活玩家接受后，自身压力−2持续3分钟；重复触发只刷新时长。"
+	custom_text = "通过赠予动作交付食物并被另一名在线、存活玩家接受后，自身压力−2持续3分钟；重复触发只刷新时长。"
 	triumph_cost = 4
 	ethos_id = "charity"
 	incompatible_vices = list(/datum/charflaw/z121_sin/greed)
 
 /datum/virtue/z121_virtue/chastity
 	name = "自主之誓〔贞洁〕"
-	desc = "持有20分钟后意志+1，有限时长负面心情缩短15%（傲慢除外）。任何成人活动实际参与，主动、被动、自行均立即永久失去本局美德，不退凯旋；复活、重登均不能恢复。"
-	custom_text = "持有20分钟后意志+1，有限时长负面心情缩短15%（傲慢除外）。任何成人活动实际参与，主动、被动、自行均立即永久失去本局美德，不退凯旋；复活、重登均不能恢复。"
-	triumph_cost = 6
+	desc = "意志+1；持有期间首次高潮后立即失效，本局不能恢复，不退凯旋。任何来源的高潮均计入，复活、重登和重新授予不能恢复增益。"
+	custom_text = "意志+1；持有期间首次高潮后立即失效，本局不能恢复，不退凯旋。任何来源的高潮均计入，复活、重登和重新授予不能恢复增益。"
+	triumph_cost = 4
 	ethos_id = "chastity"
 	incompatible_vices = list(/datum/charflaw/z121_sin/lust)
 
 /datum/virtue/z121_virtue/kindness
 	name = "为你欢喜〔仁爱〕"
-	desc = "为其他玩家完成有效包扎或治疗后，双方压力−2持续5分钟，冷却5分钟；自己产生的正面社交心情持续时间+25%。"
-	custom_text = "为其他玩家完成有效包扎或治疗后，双方压力−2持续5分钟，冷却5分钟；自己产生的正面社交心情持续时间+25%。"
+	desc = "为另一名在线、存活玩家成功包扎正在流血且未包扎的肢体后，自身压力−2持续3分钟；重复触发只刷新时长。"
+	custom_text = "为另一名在线、存活玩家成功包扎正在流血且未包扎的肢体后，自身压力−2持续3分钟；重复触发只刷新时长。"
 	triumph_cost = 4
 	ethos_id = "kindness"
 	incompatible_vices = list(/datum/charflaw/z121_sin/envy)
 
 /datum/virtue/z121_virtue/temperance
 	name = "知足之腹〔节制〕"
-	desc = "营养和水分自然消耗减少20%；营养在350至800时压力−2。不降低疾病、法术等特殊消耗。"
-	custom_text = "营养和水分自然消耗减少20%；营养在350至800时压力−2。不降低疾病、法术等特殊消耗。"
+	desc = "营养在350至800之间（含边界）时压力−2。"
+	custom_text = "营养在350至800之间（含边界）时压力−2。"
 	triumph_cost = 4
 	ethos_id = "temperance"
 	incompatible_vices = list(/datum/charflaw/z121_sin/gluttony)
 
 /datum/virtue/z121_virtue/patience
 	name = "缓息如石〔忍耐〕"
-	desc = "疼痛造成的属性惩罚减轻20%，不改变伤害与伤口。受攻击后10秒未主动攻击，意志+1持续30秒，冷却60秒。"
-	custom_text = "疼痛造成的属性惩罚减轻20%，不改变伤害与伤口。受攻击后10秒未主动攻击，意志+1持续30秒，冷却60秒。"
-	triumph_cost = 6
+	desc = "清醒且主动躺卧休息时压力−2，结束休息解除。"
+	custom_text = "清醒且主动躺卧休息时压力−2，结束休息解除。"
+	triumph_cost = 4
 	ethos_id = "patience"
 	incompatible_vices = list(/datum/charflaw/z121_sin/wrath)
 
 /datum/virtue/z121_virtue/diligence
 	name = "双手不息〔勤勉〕"
-	desc = "制作、采集和修理的正向技能经验+20%；完成有经验的有效劳动后压力−2持续5分钟，不叠加。"
-	custom_text = "制作、采集和修理的正向技能经验+20%；完成有经验的有效劳动后压力−2持续5分钟，不叠加。"
-	triumph_cost = 6
+	desc = "制作类和劳动类技能的正向经验+20%，不区分经验来源或操作成败；零经验和负经验不放大。"
+	custom_text = "制作类和劳动类技能的正向经验+20%，不区分经验来源或操作成败；零经验和负经验不放大。"
+	triumph_cost = 4
 	ethos_id = "diligence"
 	incompatible_vices = list(/datum/charflaw/z121_sin/sloth)
 
@@ -151,6 +142,7 @@
 	for(var/path in subtypesof(/datum/virtue/z121_virtue))
 		var/datum/virtue/z121_virtue/V = GLOB.virtues[path]
 		GLOB.roguetraits[z121_ethos_trait(V.ethos_id)] = V.custom_text
+	GLOB.roguetraits[z121_ethos_chastity_lost_trait()] = "自主之誓已失效：本局不再提供意志加成，凯旋不返还。"
 	if(!GLOB.z121_ethos_service)
 		GLOB.z121_ethos_service = new
 		GLOB.z121_ethos_service.register()

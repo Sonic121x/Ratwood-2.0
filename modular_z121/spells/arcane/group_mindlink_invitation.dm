@@ -57,7 +57,11 @@
 /datum/group_mindlink_cast_request/proc/close_invitations()
 	accepting = FALSE
 	for(var/datum/group_mindlink_join_invitation/invitation as anything in invitations)
-		SStgui.close_uis(invitation)
+		// 未曾成功打开窗口的邀请也必须结算拒绝与免打扰，不能依赖 ui_close。
+		if(!invitation.answered)
+			invitation.respond(FALSE)
+		else
+			SStgui.close_uis(invitation)
 
 /datum/group_mindlink_cast_request/proc/cancel()
 	cancelled = TRUE
@@ -92,6 +96,8 @@
 	target = subject
 	target_mind = subject.mind
 	target_client = subject.client
+	// 同一接收者跨施法者共用节流，避免同时被多批邀请弹窗淹没。
+	target_client.group_mindlink_next_join_invite = world.time + 30 SECONDS
 	RegisterSignal(target, list(COMSIG_QDELETING, COMSIG_LIVING_DEATH, COMSIG_MIND_TRANSFER, COMSIG_MOB_LOGOUT), PROC_REF(target_lost))
 
 /datum/group_mindlink_join_invitation/Destroy()
@@ -158,4 +164,6 @@
 	if(accept && request?.accepting && world.time < request.deadline && identity_valid())
 		var/list/candidates = group_mindlink_candidates(request.caster)
 		accepted = candidates[REF(target)] == target
+	if(!accepted && target_client)
+		target_client.group_mindlink_next_join_invite = max(target_client.group_mindlink_next_join_invite, world.time + 1 MINUTES)
 	SStgui.close_uis(src)
