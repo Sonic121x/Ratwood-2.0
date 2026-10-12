@@ -93,13 +93,10 @@
 			if(/datum/stressevent/painmax)
 				stressors -= event_type
 				return z121_update_masochist_pain_mood()
-	return z121_ethos_adjust_stress(..(event_type))
+	return ..(event_type)
 
 // 原调用方仍使用原事件路径；止血时必须同步移除对应的正面事件。
 /mob/living/carbon/human/remove_stress(event_type)
-	var/datum/z121_ethos/ethos = z121_get_ethos()
-	if(event_type == /datum/stressevent/z121_ethos/pride && ethos?.sins["pride"] && ethos.pride_until > world.time && !ethos.cleaning)
-		return
 	if(HAS_TRAIT(src, TRAIT_Z121_SUPER_MASOCHIST))
 		switch(event_type)
 			if(/datum/stressevent/bleeding)

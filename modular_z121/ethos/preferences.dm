@@ -24,85 +24,25 @@
 			return TRUE
 	return ..()
 
-// 核心钱币文件的局部宏已解除；同步检查同时校验这个容量。
-#define Z121_ETHOS_MAX_COIN_STACK 20
-// 货币拆分和合并不能抹去“已用于慷慨奖励”的来源标记。
-/obj/item/roguecoin
-	var/z121_ethos_rewarded_quantity
+// 菜单反向冲突检查使用实际的恶习槽位键，避免旧键漏掉已经选择的七罪。
+/datum/preferences/check_pick_vice_conflict(pick_type, show_message = FALSE, mob/user = null)
+	var/datum/customization_trait/pick = get_customization_pick(pick_type)
+	for(var/i = 1 to 6)
+		var/datum/charflaw/vice = vars["vice[i]"]
+		if(vice && (vice.type in pick?.incompatible_vices))
+			if(show_message && user)
+				to_chat(user, span_warning("[pick.name]与恶习[vice.name]冲突！"))
+			return TRUE
+	return ..()
 
-/obj/item/roguecoin/proc/z121_ethos_rewarded_coins()
-	// 兼容改动前的整堆标记；新记录按枚数保存。
-	if(isnull(z121_ethos_rewarded_quantity))
-		z121_ethos_rewarded_quantity = z121_ethos_gift_rewarded ? quantity : 0
-	return clamp(z121_ethos_rewarded_quantity, 0, quantity)
-
-/obj/item/roguecoin/proc/z121_ethos_set_coin_rewards(amount)
-	z121_ethos_rewarded_quantity = clamp(amount, 0, quantity)
-	z121_ethos_gift_rewarded = z121_ethos_rewarded_quantity > 0
-
-/obj/item/roguecoin/merge(obj/item/roguecoin/G, mob/user)
-	if(G == src)
-		return
-	if(!G || G.base_type != base_type)
-		return ..()
-	var/amount = min(G.quantity, Z121_ETHOS_MAX_COIN_STACK - quantity)
-	if(amount <= 0)
-		return ..()
-	var/own_rewarded = z121_ethos_rewarded_coins()
-	var/given_rewarded = G.z121_ethos_rewarded_coins()
-	var/moved_rewarded = min(amount, given_rewarded)
-	. = ..()
-	z121_ethos_set_coin_rewards(own_rewarded + moved_rewarded)
-	if(!QDELETED(G))
-		G.z121_ethos_set_coin_rewards(given_rewarded - moved_rewarded)
-
-/obj/item/roguecoin/attack_right(mob/user)
-	if(user.get_active_held_item())
-		return call(src, /atom/proc/attack_right)(user)
-	if(quantity == 1)
-		if(HAS_TRAIT(user, TRAIT_BLACKLEG))
-			switch(alert(user, "你想把下一次掷硬币操纵成什么结果？", "赛利克斯", "正面", "反面", "公平游戏"))
-				if("正面")
-					rigged_outcome = 1
-				if("反面")
-					rigged_outcome = 2
-				if("公平游戏")
-					rigged_outcome = 0
-		return
-	var/obj/item/roguecoin/new_coin = new type()
-	var/rewarded = z121_ethos_rewarded_coins()
-	var/moved_rewarded = min(1, rewarded)
-	new_coin.set_quantity(1)
-	new_coin.z121_ethos_set_coin_rewards(moved_rewarded)
-	set_quantity(quantity - 1)
-	z121_ethos_set_coin_rewards(rewarded - moved_rewarded)
-	new_coin.heads_tails = last_merged_heads_tails
-	user.put_in_hands(new_coin)
-	playsound(loc, 'sound/foley/coinphy (2).ogg', 100, TRUE, -2)
-
-/obj/item/roguecoin/attack_hand(mob/user)
-	if(user.get_inactive_held_item() == src && quantity > 1)
-		var/amt_text = "（1 到 [quantity]）"
-		var/amount = input(user, "要分出多少[plural_name]？[amt_text]", null, round(quantity / 2, 1)) as null|num
-		if(QDELETED(user) || QDELETED(src) || !user.Adjacent(src))
-			return
-		amount = round(clamp(amount, 0, quantity), 1)
-		if(!amount)
-			return
-		if(amount >= quantity)
-			return z121_ethos_pickup(user)
-		var/obj/item/roguecoin/new_coins = new type()
-		var/rewarded = z121_ethos_rewarded_coins()
-		var/moved_rewarded = min(amount, rewarded)
-		new_coins.set_quantity(amount)
-		new_coins.z121_ethos_set_coin_rewards(moved_rewarded)
-		new_coins.heads_tails = last_merged_heads_tails
-		set_quantity(quantity - amount)
-		z121_ethos_set_coin_rewards(rewarded - moved_rewarded)
-		user.put_in_hands(new_coins)
-		playsound(loc, 'sound/foley/coins1.ogg', 100, TRUE, -2)
-		return
-	return z121_ethos_pickup(user)
-
-#undef Z121_ETHOS_MAX_COIN_STACK
+// 改变年龄或种族后，出生前再次校验，不能领取不生效恶习的特质点。
+/datum/preferences/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, skip_normal_prefs = FALSE)
+	for(var/i = 1 to 6)
+		var/datum/charflaw/vice = vars["vice[i]"]
+		if(istype(vice, /datum/charflaw/z121_sin) && check_vice_pick_conflict(vice.type))
+			vars["vice[i]"] = null
+			to_chat(usr, span_warning("[vice.name]不符合当前角色条件，已从恶习选择中移除。"))
+	if(istype(charflaw, /datum/charflaw/z121_sin) && check_vice_pick_conflict(charflaw.type))
+		charflaw = null
+	return ..()
 

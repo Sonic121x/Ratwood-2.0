@@ -119,7 +119,6 @@
 	var/datum/skill/skill_ref = GetSkillRef(skill)
 	var/before = ensure_skills().skill_experience[skill_ref]
 	. = ..(skill, amt, silent, check_apprentice)
-	z121_get_ethos()?.experience_settled(skill, before, ensure_skills().skill_experience[skill_ref])
 	// 记录实际结算的损失，不再次应用天才倍率。
 	z121_profession?.experience_settled(skill, before, ensure_skills().skill_experience[skill_ref])
 
