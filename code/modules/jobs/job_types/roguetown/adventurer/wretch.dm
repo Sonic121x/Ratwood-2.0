@@ -101,6 +101,6 @@
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
 	if (!my_crime)
 		my_crime = "冒犯王权之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster, H) // KUKU
 	to_chat(H, span_danger("你正在扮演一名对抗性角色。既然选择以流寇身份加入，你就应当主动与其他玩家制造冲突。若未能以符合该身份分量的方式进行扮演，可能会因低质量角色扮演而受到处罚。"))
 	H.playsound_local(get_turf(H), 'sound/music/traitor.ogg', 60, FALSE, pressure_affected = FALSE)

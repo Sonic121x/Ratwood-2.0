@@ -181,7 +181,7 @@
 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, target, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
 
 	// Finally create bounty
-	add_bounty(target.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, FALSE, reason, user.real_name)
+	add_bounty(target.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, FALSE, reason, user.real_name, target) // KUKU
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
@@ -191,7 +191,7 @@
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'")
 
-/proc/add_bounty(target_realname, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, bandit_status, reason, employer_name)
+/proc/add_bounty(target_realname, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, bandit_status, reason, employer_name, mob/living/carbon/human/target_mob = null) // KUKU
 	var/datum/bounty/new_bounty = new /datum/bounty
 	new_bounty.amount = amount
 	new_bounty.target = target_realname
@@ -217,10 +217,10 @@
 		new_bounty.target_body_type = "masculine"
 	else
 		new_bounty.target_body_type = "feminine"
-	compose_bounty(new_bounty)
+	compose_bounty(new_bounty, get_bounty_epithet(target_mob, bandit_status)) // KUKU
 	GLOB.head_bounties += new_bounty
 
-/proc/add_bounty_noface(target_realname, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, bandit_status, reason, employer_name)
+/proc/add_bounty_noface(target_realname, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, bandit_status, reason, employer_name, mob/living/carbon/human/target_mob = null) // KUKU
 	var/datum/bounty/new_bounty_noface = new /datum/bounty
 	new_bounty_noface.target_hidden = target_realname
 	new_bounty_noface.amount = amount
@@ -249,10 +249,10 @@
 	new_bounty_noface.reason = reason
 	new_bounty_noface.employer = employer_name
 	//var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), target)
-	compose_bounty_noface(new_bounty_noface)
+	compose_bounty_noface(new_bounty_noface, get_bounty_epithet(target_mob, bandit_status)) // KUKU
 	GLOB.head_bounties += new_bounty_noface
 
-/proc/add_bounty_obscure(target_realname, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, bandit_status, reason, employer_name)
+/proc/add_bounty_obscure(target_realname, race, gender, descriptor_height, descriptor_body, descriptor_voice, amount, bandit_status, reason, employer_name, mob/living/carbon/human/target_mob = null) // KUKU
 	var/datum/bounty/new_bounty_obscure = new /datum/bounty
 	new_bounty_obscure.target_hidden = target_realname
 	new_bounty_obscure.amount = amount
@@ -281,50 +281,50 @@
 	new_bounty_obscure.reason = reason
 	new_bounty_obscure.employer = employer_name
 	//var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), target)
-	compose_bounty_obscure(new_bounty_obscure)
+	compose_bounty_obscure(new_bounty_obscure, get_bounty_epithet(target_mob, bandit_status)) // KUKU
 	GLOB.head_bounties += new_bounty_obscure
-
-///Composes a random bounty banner based on the given bounty info.
-///@param new_bounty:  The bounty datum.
-/proc/compose_bounty(datum/bounty/new_bounty)
+/proc/get_bounty_epithet(mob/living/carbon/human/target_mob, bandit_status = FALSE) // KUKU
+	if(istype(target_mob?.patron, /datum/patron/inhumen)) return "异端" // KUKU
+	return (bandit_status || (target_mob && (target_mob.job == "Bandit" || (FACTION_BANDITS in target_mob.faction) || target_mob.mind?.has_antag_datum(/datum/antagonist/bandit)))) ? "匪徒" : "罪犯" // KUKU
+/proc/compose_bounty(datum/bounty/new_bounty, target_epithet = "罪犯") // KUKU
 	switch(rand(1, 3))
 		if(1)
 			new_bounty.banner += "现对[new_bounty.target]发布严酷悬赏，缘由如下：'[new_bounty.reason]'。<BR>"
-			new_bounty.banner += "此人为[new_bounty.target_race]族裔罪犯，外貌如下：身高[new_bounty.target_height]，体格[new_bounty.target_body_type]，身形[new_bounty.target_body_prefix]。其嗓音[new_bounty.target_voice_prefix]。<BR>"
+			new_bounty.banner += "此人为[new_bounty.target_race]族裔[target_epithet]，外貌如下：身高[new_bounty.target_height]，体格[new_bounty.target_body_type]，身形[new_bounty.target_body_prefix]。其嗓音[new_bounty.target_voice_prefix]。<BR>" // KUKU
 			new_bounty.banner += "委托人[new_bounty.employer]愿为此事支付[new_bounty.amount]玛门。<BR>"
 		if(2)
 			new_bounty.banner += "现悬赏缉拿[new_bounty.target]，罪名为：'[new_bounty.reason]'。<BR>"
-			new_bounty.banner += "此人为[new_bounty.target_race]族的恶徒，外貌如下：身高[new_bounty.target_height]，体格[new_bounty.target_body_type]，身形[new_bounty.target_body_prefix]。其嗓音[new_bounty.target_voice_prefix]。<BR>"
+			new_bounty.banner += "此人为[new_bounty.target_race]族的[target_epithet]，外貌如下：身高[new_bounty.target_height]，体格[new_bounty.target_body_type]，身形[new_bounty.target_body_prefix]。其嗓音[new_bounty.target_voice_prefix]。<BR>" // KUKU
 			new_bounty.banner += "雇主[new_bounty.employer]愿为此事支付[new_bounty.amount]玛门。<BR>"
 		if(3)
 			new_bounty.banner += "[new_bounty.employer]愿支付[new_bounty.amount]玛门，以缉拿[new_bounty.target]。<BR>"
 			new_bounty.banner += "缘由如下：'[new_bounty.reason]'。<BR>"
-			new_bounty.banner += "此人为[new_bounty.target_race]族的异端，外貌如下：身高[new_bounty.target_height]，体格[new_bounty.target_body_type]，身形[new_bounty.target_body_prefix]。其嗓音[new_bounty.target_voice_prefix]。<BR>"
+			new_bounty.banner += "此人为[new_bounty.target_race]族的[target_epithet]，外貌如下：身高[new_bounty.target_height]，体格[new_bounty.target_body_type]，身形[new_bounty.target_body_prefix]。其嗓音[new_bounty.target_voice_prefix]。<BR>" // KUKU
 	new_bounty.banner += "--------------<BR>"
 
-/proc/compose_bounty_noface(datum/bounty/new_bounty_noface)
+/proc/compose_bounty_noface(datum/bounty/new_bounty_noface, target_epithet = "罪犯") // KUKU
 	switch(rand(1, 3))
 		if(1)
-			new_bounty_noface.banner += "现对一名[new_bounty_noface.target_race]族裔的亡命徒发布严酷悬赏。其外貌如下：身高[new_bounty_noface.target_height]，体格[new_bounty_noface.target_body_type]，身形[new_bounty_noface.target_body_prefix]。其嗓音[new_bounty_noface.target_voice_prefix]。其罪名为：'[new_bounty_noface.reason]'。<BR>"
+			new_bounty_noface.banner += "现对一名[new_bounty_noface.target_race]族裔的[target_epithet]发布严酷悬赏。其外貌如下：身高[new_bounty_noface.target_height]，体格[new_bounty_noface.target_body_type]，身形[new_bounty_noface.target_body_prefix]。其嗓音[new_bounty_noface.target_voice_prefix]。其罪名为：'[new_bounty_noface.reason]'。<BR>" // KUKU
 			new_bounty_noface.banner += "委托人[new_bounty_noface.employer]愿为此事支付[new_bounty_noface.amount]玛门。<BR>"
 		if(2)
-			new_bounty_noface.banner += "现缉拿一名[new_bounty_noface.target_race]血统的罪犯。此悬赏由[new_bounty_noface.employer]授权，缘由为：'[new_bounty_noface.reason]'。其外貌如下：身高[new_bounty_noface.target_height]，体格[new_bounty_noface.target_body_type]，身形[new_bounty_noface.target_body_prefix]，其嗓音[new_bounty_noface.target_voice_prefix]。<BR>"
+			new_bounty_noface.banner += "现缉拿一名[new_bounty_noface.target_race]血统的[target_epithet]。此悬赏由[new_bounty_noface.employer]授权，缘由为：'[new_bounty_noface.reason]'。其外貌如下：身高[new_bounty_noface.target_height]，体格[new_bounty_noface.target_body_type]，身形[new_bounty_noface.target_body_prefix]，其嗓音[new_bounty_noface.target_voice_prefix]。<BR>" // KUKU
 			new_bounty_noface.banner += "雇主[new_bounty_noface.employer]愿支付[new_bounty_noface.amount]玛门，无论死活。<BR>"
 		if(3)
-			new_bounty_noface.banner += "[new_bounty_noface.employer]愿支付[new_bounty_noface.amount]玛门，以缉拿一名[new_bounty_noface.target_race]血统的罪犯。其外貌描述为：身高[new_bounty_noface.target_height]，身形[new_bounty_noface.target_body_prefix]，体格[new_bounty_noface.target_body_type]。其声音为[new_bounty_noface.target_voice]。<BR>"
+			new_bounty_noface.banner += "[new_bounty_noface.employer]愿支付[new_bounty_noface.amount]玛门，以缉拿一名[new_bounty_noface.target_race]血统的[target_epithet]。其外貌描述为：身高[new_bounty_noface.target_height]，身形[new_bounty_noface.target_body_prefix]，体格[new_bounty_noface.target_body_type]。其声音为[new_bounty_noface.target_voice]。<BR>" // KUKU
 			new_bounty_noface.banner += "缘由如下：'[new_bounty_noface.reason]'。<BR>"
 	new_bounty_noface.banner += "--------------<BR>"
 
-/proc/compose_bounty_obscure(datum/bounty/new_bounty_obscure)
+/proc/compose_bounty_obscure(datum/bounty/new_bounty_obscure, target_epithet = "罪犯") // KUKU
 	switch(rand(1, 3))
 		if(1)
-			new_bounty_obscure.banner += "现对一名[new_bounty_obscure.target_race]族裔的亡命徒发布严酷悬赏。其外貌如下：身高[new_bounty_obscure.target_height]，体格[new_bounty_obscure.target_body_type]，身形[new_bounty_obscure.target_body_prefix]。其罪名为：'[new_bounty_obscure.reason]'。<BR>"
+			new_bounty_obscure.banner += "现对一名[new_bounty_obscure.target_race]族裔的[target_epithet]发布严酷悬赏。其外貌如下：身高[new_bounty_obscure.target_height]，体格[new_bounty_obscure.target_body_type]，身形[new_bounty_obscure.target_body_prefix]。其罪名为：'[new_bounty_obscure.reason]'。<BR>" // KUKU
 			new_bounty_obscure.banner += "委托人[new_bounty_obscure.employer]愿为此事支付[new_bounty_obscure.amount]玛门。<BR>"
 		if(2)
-			new_bounty_obscure.banner += "现缉拿一名[new_bounty_obscure.target_race]血统的罪犯。此悬赏由[new_bounty_obscure.employer]授权，缘由为：'[new_bounty_obscure.reason]'。其外貌如下：身高[new_bounty_obscure.target_height]，体格[new_bounty_obscure.target_body_type]，身形[new_bounty_obscure.target_body_prefix]。<BR>"
+			new_bounty_obscure.banner += "现缉拿一名[new_bounty_obscure.target_race]血统的[target_epithet]。此悬赏由[new_bounty_obscure.employer]授权，缘由为：'[new_bounty_obscure.reason]'。其外貌如下：身高[new_bounty_obscure.target_height]，体格[new_bounty_obscure.target_body_type]，身形[new_bounty_obscure.target_body_prefix]。<BR>" // KUKU
 			new_bounty_obscure.banner += "雇主[new_bounty_obscure.employer]愿支付[new_bounty_obscure.amount]玛门，无论死活。<BR>"
 		if(3)
-			new_bounty_obscure.banner += "[new_bounty_obscure.employer]愿支付[new_bounty_obscure.amount]玛门，以缉拿一名[new_bounty_obscure.target_race]血统的罪犯。其外貌描述为：身高[new_bounty_obscure.target_height]，身形[new_bounty_obscure.target_body_prefix]，体格[new_bounty_obscure.target_body_type]。<BR>"
+			new_bounty_obscure.banner += "[new_bounty_obscure.employer]愿支付[new_bounty_obscure.amount]玛门，以缉拿一名[new_bounty_obscure.target_race]血统的[target_epithet]。其外貌描述为：身高[new_bounty_obscure.target_height]，身形[new_bounty_obscure.target_body_prefix]，体格[new_bounty_obscure.target_body_type]。<BR>" // KUKU
 			new_bounty_obscure.banner += "缘由如下：'[new_bounty_obscure.reason]'。<BR>"
 	new_bounty_obscure.banner += "--------------<BR>"
 

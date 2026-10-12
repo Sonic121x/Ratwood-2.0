@@ -415,7 +415,7 @@
 			reason = "异端罪"
 		if(7)
 			reason = "打劫贵族"
-	add_bounty(character.real_name, amount, FALSE, reason, employer)
+	add_bounty(character.real_name, character.dna.species, character.gender, build_coalesce_description_nofluff(character.get_mob_descriptors(), character, list(MOB_DESCRIPTOR_SLOT_HEIGHT), "%DESC1%"), build_coalesce_description_nofluff(character.get_mob_descriptors(), character, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%"), build_coalesce_description_nofluff(character.get_mob_descriptors(), character, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%"), amount, FALSE, reason, employer, character) // KUKU
 	if(!silent)
 		to_chat(character, span_notice("不论事情是不是我干的，我都已被指控犯下[reason]，[employer]还悬赏买我的脑袋！"))
 
