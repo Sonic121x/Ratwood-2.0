@@ -135,7 +135,7 @@
 	if(going_up)
 		user.visible_message("<span class='notice'>[user]沿着[src]向上爬去。</span>", "<span class='notice'>我沿着[src]向上爬去。</span>")
 	else if(!going_up && istype(user.get_item_by_slot(SLOT_HEAD), /obj/item/clothing/head/roguetown/helmet/heavy/absolver)) // load bearing feature, trust.
-		user.visible_message("<span class='notice'>[user]沿着[src]向下爬去，他的锥形盔一路磕碰着每一级横档。</span>", "<span class='notice'>我沿着[src]向下爬去。我的锥形盔一路磕碰着每一级横档。</span>")
+		user.visible_message("<span class='notice'>[user]沿着[src]向下爬去，头上的锥形盔一路磕碰着每一级横档。</span>", "<span class='notice'>我沿着[src]向下爬去。我的锥形盔一路磕碰着每一级横档。</span>")
 	else
 		user.visible_message("<span class='notice'>[user]沿着[src]向下爬去。</span>", "<span class='notice'>我沿着[src]向下爬去。</span>")
 // Indestructible away mission ladders which link based on a mapped ID and height value rather than X/Y/Z.
