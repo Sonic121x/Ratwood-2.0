@@ -64,11 +64,11 @@ SUBSYSTEM_DEF(familytree)
 
 /datum/controller/subsystem/familytree/Initialize()
 	ruling_family = new /datum/heritage(null, "Royal", /datum/species/human/northern)
-	//Blank starter families that we can customize for players.
-	for(var/pioneer_household in preset_family_species)
-		for(var/I = 1 to 2)
-			families += new /datum/heritage(null, null, pioneer_household)
-
+	for(var/species_name in get_selectable_species()) // KUKU
+		preset_family_species |= list(GLOB.species_list[species_name]) // KUKU
+	for(var/pioneer_household in preset_family_species) // KUKU
+		for(var/I = 1 to 2) // KUKU
+			families += new /datum/heritage(null, null, pioneer_household) // KUKU
 	return ..()
 
 /datum/controller/subsystem/familytree/proc/GetAgeValue(age_string)
@@ -522,7 +522,7 @@ SUBSYSTEM_DEF(familytree)
 				return
 
 	// Create entirely new house if no match found
-	if(our_race != "Aasimar" && our_race != "Doll" && our_race != "Golem")
+	if(H.dna?.species) // KUKU
 		var/datum/heritage/new_house = new /datum/heritage(H, null, H.dna.species.type)
 		families += new_house
 
