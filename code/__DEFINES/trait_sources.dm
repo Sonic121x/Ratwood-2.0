@@ -40,8 +40,8 @@
 #define TRAIT_SOURCE_CHASTITY "chastity" //source for chastity device traits
 
 // unique trait sources, still defines
-#define TRAIT_GUIDANCE "Guidance"
-#define TRAIT_FORTITUDE "Fortitude"
+#define TRAIT_GUIDANCE "指引"
+#define TRAIT_FORTITUDE "坚毅"
 #define CLONING_POD_TRAIT "cloning-pod"
 #define STATUE_MUTE "statue"
 #define CHANGELING_DRAIN "drain"
