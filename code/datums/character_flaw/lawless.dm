@@ -46,7 +46,7 @@
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
 	if (!my_crime)
 		my_crime = "冒犯王权之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster, H) // KUKU
 	if(HAS_TRAIT(H, TRAIT_NOBLE))
 		REMOVE_TRAIT(H, TRAIT_NOBLE, JOB_TRAIT)
 		REMOVE_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
