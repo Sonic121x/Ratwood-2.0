@@ -332,7 +332,7 @@
 
 	// Determine success
 	linked_rack.advance_calibration()
-	if(score >= 20) // Passing score
+	if(keywords_found > 0 && score >= 20) // Require a relevant answer and a passing score
 		complete_task(score, speaker, quirk_effects)
 	else
 		fail_task(score, speaker)

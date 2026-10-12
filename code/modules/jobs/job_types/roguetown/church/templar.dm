@@ -324,7 +324,7 @@
 
 //Helmets. This BLOWS with how it checks, but I'm lazy and it works.
 //TODO: Remove this for a universal helmet select, once we have sprites for the others.
-	if(H.patron.name == "Astrata" || H.patron.name == "Necra" || H.patron.name == "Eora" || H.patron.name == "Ravox")
+	if(H.patron?.type == /datum/patron/divine/astrata || H.patron?.type == /datum/patron/divine/necra || H.patron?.type == /datum/patron/divine/eora || H.patron?.type == /datum/patron/divine/ravox)
 		var/helmets = list(H.patron.type == /datum/patron/divine/astrata ? "羽饰阿斯特拉塔头盔" : H.patron.type == /datum/patron/divine/necra ? "兜帽内克拉头盔" : H.patron.type == /datum/patron/divine/eora ? "伊欧拉萨雷特盔" : "羽饰拉沃克斯头盔", H.patron.type == /datum/patron/divine/astrata ? "阿斯特拉塔头盔" : H.patron.type == /datum/patron/divine/necra ? "内克拉头盔" : H.patron.type == /datum/patron/divine/eora ? "伊欧拉重盔" : "正义之鹰盔")
 		var/selected_helmet = input(H, "选择一顶头盔……", "头盔") as anything in helmets
 		switch(H.patron?.type)

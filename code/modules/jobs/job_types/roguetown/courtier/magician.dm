@@ -114,16 +114,16 @@
 	id = /obj/item/scomstone/garrison
 	r_hand = /obj/item/rogueweapon/woodstaff/riddle_of_steel/magos
 	backl = /obj/item/storage/backpack/rogue/satchel
-	if(SSmapping.current_map.map_name == "Desert Town")
+	if(SSmapping.current_map.map_name == "Desert Town" || (H.age == AGE_OLD && ishumannorthern(H)))
 		cloak = null
-		head = /obj/item/clothing/head/roguetown/jafar
-		armor = /obj/item/clothing/suit/roguetown/shirt/jafar
-		belt = /obj/item/storage/belt/rogue/leather/jafar
-		pants = /obj/item/clothing/under/roguetown/sirwal
-		shoes = /obj/item/clothing/shoes/roguetown/shalal
-		r_hand = /obj/item/rogueweapon/woodstaff/riddle_of_steel/serpent
+		head = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/clothing/head/roguetown/wizhat : /obj/item/clothing/head/roguetown/jafar
+		armor = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/clothing/suit/roguetown/shirt/robe/wizard : /obj/item/clothing/suit/roguetown/shirt/jafar
+		belt = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/storage/belt/rogue/leather/plaquegold : /obj/item/storage/belt/rogue/leather/jafar
+		pants = SSmapping.current_map.map_name == "Desert Town" ? /obj/item/clothing/under/roguetown/sirwal : pants
+		shoes = SSmapping.current_map.map_name == "Desert Town" ? /obj/item/clothing/shoes/roguetown/shalal : shoes
+		r_hand = SSmapping.current_map.map_name == "Desert Town" ? /obj/item/rogueweapon/woodstaff/riddle_of_steel/serpent : r_hand
 	if(SSmapping.current_map.map_name == "Rockhill")
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/newkeep/magos
+		armor = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/clothing/suit/roguetown/shirt/robe/wizard : /obj/item/clothing/suit/roguetown/armor/leather/newkeep/magos
 		cloak = null
 	backpack_contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/poison,
