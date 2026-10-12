@@ -32,6 +32,15 @@ GLOBAL_DATUM(z121_ethos_service, /datum/z121_ethos_service)
 		var/mob/living/carbon/human/H = mob
 		H.z121_get_ethos()?.sync_effects()
 
+// 出生时先加载恶习、后初始化属性，须先撤销旧增量再应用到新属性上。
+/mob/living/carbon/human/roll_stats()
+	var/datum/z121_ethos/R = z121_get_ethos()
+	if(R)
+		for(var/path in subtypesof(/datum/status_effect/z121_ethos))
+			remove_status_effect(path)
+	. = ..()
+	R?.sync_effects()
+
 // 只认可已交付并被接受的食物，不追踪价值或物品往返。
 /mob/living/carbon/human/accept_offered_item(mob/living/offerer, obj/offered_item, stealthy)
 	. = ..()
@@ -45,7 +54,7 @@ GLOBAL_DATUM(z121_ethos_service, /datum/z121_ethos_service)
 		R.grant_mood(/datum/stressevent/z121_ethos/charity)
 
 // 包扎前确有流血，完成后绷带确实装在原肢体上，才属于有效照料。
-/obj/item/natural/cloth/bandage(mob/living/M, mob/user)
+/obj/item/natural/cloth/attack(mob/living/M, mob/user, def_zone)
 	var/mob/living/carbon/human/patient = ishuman(M) ? M : null
 	var/mob/living/carbon/human/healer = ishuman(user) ? user : null
 	var/obj/item/bodypart/part = patient?.get_bodypart(check_zone(user?.zone_selected))

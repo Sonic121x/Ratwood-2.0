@@ -57,6 +57,8 @@
 	return ..()
 
 /datum/z121_ethos/proc/bind(mob/living/carbon/human/H)
+	if(QDELETED(H))
+		H = null
 	if(transfer_host)
 		UnregisterSignal(transfer_host, COMSIG_MIND_TRANSFER)
 		transfer_host = null
