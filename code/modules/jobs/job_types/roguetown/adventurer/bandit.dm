@@ -96,11 +96,11 @@
 		if("山谷梦魇")
 			bounty_total = rand(500, 600)
 	if(bounty_severity == "小角色")
-		add_bounty_obscure(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster)
+		add_bounty_obscure(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster, H) // KUKU
 	else if(bounty_severity == "拦路匪")
-		add_bounty_noface(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster)
+		add_bounty_noface(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster, H) // KUKU
 	else
-		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster)
+		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster, H) // KUKU
 		var/skillbuff = input(H, "你的阅历为你带来恩惠", "选择一项属性") as anything in list("力量", "感知", "智力", "体质", "意志", "速度")
 		switch(skillbuff)
 			if("力量")
