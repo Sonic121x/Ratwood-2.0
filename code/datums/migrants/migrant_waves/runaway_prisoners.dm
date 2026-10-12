@@ -133,7 +133,7 @@
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭")
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭", H) // KUKU
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
@@ -154,7 +154,7 @@
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭")
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭", H) // KUKU
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
@@ -175,7 +175,7 @@
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭")
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭", H) // KUKU
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
