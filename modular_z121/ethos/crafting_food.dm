@@ -3,7 +3,7 @@
 // 同名核心覆写按原顺序连接，拾取、倒水、进食及其他父类交互不额外延长。
 
 /obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
-	. = call(src, /obj/item/natural/bundle/attackby)(arglist(args))
+	. = call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/natural/bundle, attackby))(arglist(args))
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
@@ -39,7 +39,7 @@
 /obj/item/natural/cloth/proc/z121_ethos_prepare_medicine_cloth(obj/item/I, mob/living/user, params)
 	var/obj/item/reagent_containers/C = I
 	if(!istype(C))
-		return call(src, /obj/item/natural/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/natural, attackby))(arglist(args))
 	if(C.reagents.has_reagent(/datum/reagent/medicine/healthpot, 10) && !medicine_amount)
 		to_chat(user, span_notice("将[src]浸泡在治疗药水中..."))
 		if(do_after(user, (3 SECONDS) * z121_ethos_craft_multiplier(user), target = src))
@@ -106,7 +106,7 @@
 	z121_ethos_prepare_medicine_cloth(arglist(args))
 
 /obj/item/ration/attackby(obj/item/I, mob/user)
-	. = call(src, /obj/item/attackby)(arglist(args))
+	. = call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item, attackby))(arglist(args))
 	if(istype(I, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/F = I
 		if(food)
@@ -132,7 +132,7 @@
 			update_icon()
 
 /obj/item/reagent_containers/attackby(obj/item/I, mob/living/user, params)
-	call(src, /obj/item/attackby)(arglist(args))
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item, attackby))(arglist(args))
 	update_cooktime(user)
 	if(istype(I, /obj/item/reagent_containers/powder/salt))
 		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 15))
@@ -159,7 +159,7 @@
 			qdel(I)
 			qdel(src)
 			return
-	return call(src, /obj/item/reagent_containers/food/snacks/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/butterslice/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -175,7 +175,7 @@
 			return
 		else
 			to_chat(user, span_warning("你得把[src]放到桌上才能处理。"))
-	return call(src, /obj/item/reagent_containers/food/snacks/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/fat/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -192,7 +192,7 @@
 		else
 			to_chat(user, span_warning("你得把[src]放到桌上才能处理。"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/grown/rice/attack_hand(mob/living/user)
 	if(water_added)
@@ -201,7 +201,7 @@
 			user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			new /obj/item/reagent_containers/food/snacks/rogue/ricewet(loc)
 			qdel(src)
-	else call(src, /obj/item/attack_hand)(arglist(args))
+	else call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item, attack_hand))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/grown/rice/wet(obj/item/I, mob/living/user)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -365,7 +365,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能填进巧克力！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -464,7 +464,7 @@
 			else
 				to_chat(user, span_warning("你得先把[src]放到桌上才能切。"))
 	else
-		call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/dough_base/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -481,7 +481,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能继续揉制。"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/dough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -537,7 +537,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/doughslice/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -596,7 +596,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/flatdough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -635,7 +635,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上，才能给擀平面团抹上番茄酱！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -664,7 +664,7 @@
 		else
 			to_chat(user, span_warning("你得把[src]放到桌上才能处理。"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/chickentender/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -694,7 +694,7 @@
 			update_icon()
 			qdel(I)
 			return
-	return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/nitzel/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -724,7 +724,7 @@
 			update_icon()
 			qdel(I)
 			return
-	return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -1163,8 +1163,8 @@
 			update_icon()
 			qdel(I)
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
-	return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/schnitzel/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -1194,7 +1194,7 @@
 			update_icon()
 			qdel(I)
 			return
-	return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/squires_delight/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs))
@@ -1292,7 +1292,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上，才能给它加上配料！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -1309,7 +1309,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上，才能给抹了番茄酱的面团撒上奶酪！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/wienernitzel/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -1339,7 +1339,7 @@
 			update_icon()
 			qdel(I)
 			return
-	return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/attackby(obj/item/I, mob/living/user)
 	update_cooktime(user)
@@ -1355,7 +1355,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能擀压！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/crab/proc/z121_ethos_prepare_crab_meat(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -1371,7 +1371,7 @@
 		else
 			to_chat(user, span_warning("你得先把它放到桌上！"))
 		return TRUE
-	. = call(src, /obj/item/reagent_containers/food/snacks/rogue/meat/attackby)(arglist(args))
+	. = call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue/meat, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/crab/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -1424,7 +1424,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能处理。"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/meat/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue/meat, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/spider/attackby(obj/item/I, mob/living/user)
 	var/obj/structure/table/found_table = locate() in (loc)
@@ -1468,7 +1468,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能擀压！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/meat/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue/meat, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/attackby(obj/item/I, mob/living/user)
 	update_cooktime(user)
@@ -1484,7 +1484,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能擀开！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/meat/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue/meat, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/attackby(obj/item/I, mob/living/user)
 	update_cooktime(user)
@@ -1500,7 +1500,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能擀压！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/meat/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue/meat, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -1514,7 +1514,7 @@
 				qdel(I)
 				qdel(src)
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/meat/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue/meat, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/piedough/prepare_handpie(obj/item/I, mob/living/user, handpie_path)
 	playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
@@ -1730,7 +1730,7 @@
 			process_step = 3
 			qdel(I)
 			return
-	return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/food/snacks/rogue/tartdough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -1824,7 +1824,7 @@
 		else
 			to_chat(user, span_warning("你得先把[src]放到桌上才能压实馅料！"))
 	else
-		return call(src, /obj/item/reagent_containers/food/snacks/rogue/attackby)(arglist(args))
+		return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/food/snacks/rogue, attackby))(arglist(args))
 
 /obj/item/reagent_containers/glass/bucket/proc/z121_ethos_churn_butter(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -1842,7 +1842,7 @@
 			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 15)
 			new /obj/item/reagent_containers/food/snacks/butter(drop_location())
 		return
-	call(src, /obj/item/reagent_containers/glass/attackby)(arglist(args))
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/glass, attackby))(arglist(args))
 
 /obj/item/reagent_containers/glass/bucket/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -1870,10 +1870,10 @@
 			new /obj/item/reagent_containers/glass/bucket/pot/teapot/fancy(get_turf(src))
 			qdel(src)
 		return
-	. = call(src, /obj/item/reagent_containers/glass/bucket/pot/attackby)(arglist(args))
+	. = call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/glass/bucket/pot, attackby))(arglist(args))
 
 /obj/item/reagent_containers/glass/cup/ceramic/attackby(obj/item/I, mob/living/carbon/human/user)
-	. = call(src, /obj/item/reagent_containers/glass/cup/attackby)(arglist(args))
+	. = call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/glass/cup, attackby))(arglist(args))
 	if(istype(I, /obj/item/dye_brush))
 		if(reagents.total_volume)
 			to_chat(user, span_notice("杯子里还有液体时，我没法给它上釉。"))
@@ -1891,7 +1891,7 @@
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			new /obj/item/reagent_containers/food/snacks/rogue/dough_base(loc)
 			qdel(src)
-	else call(src, /obj/item/attack_hand)(arglist(args))
+	else call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item, attack_hand))(arglist(args))
 
 /obj/item/reagent_containers/powder/flour/wet(obj/item/I, mob/living/user)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -1925,7 +1925,7 @@
 	var/obj/item/reagent_containers/R = I
 	if(istype(R) && wet(I, user))
 		return TRUE
-	return call(src, /obj/item/reagent_containers/attackby)(arglist(args))
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers, attackby))(arglist(args))
 
 /obj/item/reagent_containers/powder/mineral/attackby(obj/item/I, mob/user, params)
 	if(water_added)

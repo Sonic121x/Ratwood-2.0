@@ -46,7 +46,7 @@
 			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
 			qdel(src)
 			return
-	call(src, /obj/item/attackby)(I, user, params)
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item, attackby))(I, user, params)
 
 /obj/item/grown/log/tree/stick/attackby(obj/item/I, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
@@ -145,7 +145,7 @@
 			S.set_up(1, 1, front)
 			S.start()
 	else
-		call(src, /obj/item/natural/attackby)(W, user, params)
+		call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/natural, attackby))(W, user, params)
 
 /obj/item/natural/rock/attackby(obj/item/W, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -171,17 +171,17 @@
 		return
 	if(istype(W, /obj/item/rogueweapon/pick))
 		if(!isliving(user))
-			return call(src, /obj/item/natural/attackby)(W, user, params)
+			return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/natural, attackby))(W, user, params)
 		var/mob/living/living_user = user
 		if(!living_user.client || !living_user.client.prefs?.autopicking)
-			return call(src, /obj/item/natural/attackby)(W, user, params)
+			return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/natural, attackby))(W, user, params)
 		user.doing = FALSE
 		while(!QDELETED(src) && user.Adjacent(src))
 			if((living_user.energy <= 0))
 				break
 			if(!do_after(user, CLICK_CD_MELEE, TRUE, src))
 				break
-			call(src, /obj/item/natural/attackby)(W, user, params)
+			call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/natural, attackby))(W, user, params)
 		return
 	if( user.used_intent.type == /datum/intent/chisel )
 		playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
@@ -201,10 +201,10 @@
 		return
 	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
 		to_chat(user, span_warning("你必须用双手来凿方块。"))
-	call(src, /obj/item/natural/attackby)(W, user, params)
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/natural, attackby))(W, user, params)
 
 /obj/structure/roguerock/attackby(obj/item/W, mob/living/user, params)
-	. = call(src, /obj/structure/attackby)(W, user, params)
+	. = call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/structure, attackby))(W, user, params)
 	var/stonetotal = 4
 	if(HAS_TRAIT(user, TRAIT_MASTER_MASON))
 		stonetotal += stonetotal
@@ -341,7 +341,7 @@
 		to_chat(user, "<span class='info'>我把[I]加入到[src]中。</span>")
 		to_grind = I
 		return
-	call(src, /obj/item/reagent_containers/glass/attackby)(I, user, null)
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item/reagent_containers/glass, attackby))(I, user, null)
 
 /obj/machinery/light/rogue/hearth/attack_right(mob/user)
 	var/datum/skill/craft/cooking/cs = user?.get_skill_level(/datum/skill/craft/cooking)
@@ -465,7 +465,7 @@
 							if(produced && !QDELETED(user))
 								add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 							return
-	. = call(src, /obj/machinery/light/rogue/attackby)(W, user, params)
+	. = call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/machinery/light/rogue, attackby))(W, user, params)
 
 /obj/item/reagent_containers/food/snacks/rogue/do_cooking_step(obj/item/I, mob/living/user, req_reagent, req_amt)
 	var/datum/food_recipe/recipe = active_recipe

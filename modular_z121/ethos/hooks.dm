@@ -39,7 +39,8 @@ GLOBAL_DATUM(z121_ethos_service, /datum/z121_ethos_service)
 /mob/living/carbon/human/attack_hand(mob/user)
 	var/mob/saved_user = usr
 	var/datum/z121_ethos_hit/hit
-	if(isliving(user) && user != src && user:used_intent?.type != INTENT_HELP && !(offered_item_ref && user:used_intent?.type != INTENT_HARM))
+	var/mob/living/attacker = isliving(user) ? user : null
+	if(attacker && attacker != src && attacker.used_intent?.type != INTENT_HELP && !(offered_item_ref && attacker.used_intent?.type != INTENT_HARM))
 		hit = new(src, user)
 		usr = user
 	try

@@ -65,7 +65,7 @@
 	return ..()
 
 /datum/charflaw/lawless/set_up(mob/living/carbon/human/H)
-	if(has_bounty(H) || H.job in list("Wretch", "Bandit") || H.advjob == "Wanted")
+	if(has_bounty(H) || (H.job in list("Wretch", "Bandit")) || H.advjob == "Wanted")
 		z121_ethos_random_flaw(H)
 		to_chat(H, span_warning("无法无天带来的刺激已经不够了……命运将我的缺陷改写为：<b>[H.charflaw.name]</b>。"))
 		return

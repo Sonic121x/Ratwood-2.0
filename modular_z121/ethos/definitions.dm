@@ -1,4 +1,12 @@
 // 七罪七德：仅实现日常机制版。所有角色进度由 mind 上的 z121_ethos 保留。
+// 核心覆写过程在编译器中使用原路径，静态检查器要求补齐过程路径段。
+// 两种写法指向同一类型的同一过程，避免退化为按名称调用而再次进入自身覆写。
+#ifdef SPACEMAN_DMM
+#define Z121_ETHOS_OVERRIDE_PROC(parent_type, proc_name) parent_type/proc/proc_name
+#else
+#define Z121_ETHOS_OVERRIDE_PROC(parent_type, proc_name) parent_type/proc_name
+#endif
+
 /datum/charflaw/z121_sin
 	point_value = 1
 	var/ethos_id

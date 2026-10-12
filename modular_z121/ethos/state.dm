@@ -6,6 +6,7 @@
 	var/datum/z121_ethos/z121_ethos_body
 
 /mob/living/carbon/human/proc/z121_get_ethos(create = FALSE)
+	RETURN_TYPE(/datum/z121_ethos)
 	// 清理旧身体时允许原记录完成移除，不能在移除入口再次绑定身体。
 	if(z121_ethos_body?.cleaning)
 		return z121_ethos_body

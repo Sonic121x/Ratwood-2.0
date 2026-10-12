@@ -73,7 +73,7 @@
 
 		return
 
-	call(src, /obj/item/attackby)(arglist(args))
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item, attackby))(arglist(args))
 
 /obj/item/millstone/attackby(obj/item/W, mob/living/user, params)
 	var/datum/skill/craft/cooking/cs = user?.get_skill_level(/datum/skill/craft/cooking)
@@ -82,7 +82,7 @@
 		if(do_after(user, (scaled_grind_time) * z121_ethos_craft_multiplier(user), target = src))
 			new W.mill_result(get_turf(loc))
 			qdel(W)
-	call(src, /obj/item/attackby)(arglist(args))
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/item, attackby))(arglist(args))
 
 /obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
@@ -137,7 +137,7 @@
 		playsound(src, destroy_sound, 100, TRUE)
 		qdel(src)
 		return TRUE
-	call(src, /obj/attacked_by)(arglist(args))
+	call(src, Z121_ETHOS_OVERRIDE_PROC(/obj, attacked_by))(arglist(args))
 
 /obj/item/dye_brush/attack_turf(turf/T, mob/living/user)
 	if(!iswallturf(T))
@@ -222,3 +222,5 @@
 				thing.add_atom_colour("#cccccc", FIXED_COLOUR_PRIORITY)
 
 #undef Z121_ETHOS_BASE_GRIND_TIME
+
+#undef Z121_ETHOS_OVERRIDE_PROC

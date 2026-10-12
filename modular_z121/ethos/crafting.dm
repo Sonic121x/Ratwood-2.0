@@ -302,7 +302,7 @@
 			to_chat(user, span_warning("你固定好了[src]。"))
 		playsound(src,pick('sound/foley/woodclimb.ogg'), 100, TRUE)
 		return
-	return call(src, /obj/machinery/attackby)(I, user, params)
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/machinery, attackby))(I, user, params)
 
 /obj/structure/fluff/grindwheel/attackby(obj/item/I, mob/living/user, params)
 	if(I.max_blade_int)
@@ -327,7 +327,7 @@
 				user.mind.add_sleep_experience(/datum/skill/craft/carpentry, user.STAINT * 0.5)
 			qdel(I)
 			return
-	return call(src, /obj/structure/attackby)(I, user, params)
+	return call(src, Z121_ETHOS_OVERRIDE_PROC(/obj/structure, attackby))(I, user, params)
 
 // 黏土所有揉制步骤共享此纯耗时入口，包括重新润湿后的徒手揉制。
 /obj/item/natural/clay/get_knead_time(mob/living/user, base_time)
