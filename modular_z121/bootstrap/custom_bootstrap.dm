@@ -18,6 +18,7 @@ SUBSYSTEM_DEF(custom_bootstrap)
 
 /datum/controller/subsystem/custom_bootstrap/Initialize(timeofday)
 	. = ..()
+	register_z121_ethos()
 	// 接入所有玩家的账号提示存档、角色登录与检视信号。
 	register_z121_ooc_examine()
 	// 将美德和缩小术共用的娇小特性加入玩家自检列表。

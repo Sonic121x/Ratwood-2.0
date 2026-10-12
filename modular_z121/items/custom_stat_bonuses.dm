@@ -49,6 +49,7 @@
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/mob/living/holder
 	var/list/applied_bonuses = list()
+	var/list/actual_bonuses = list()
 	var/refresh_queued = FALSE
 
 /datum/component/z121_item_stat_bonuses/Initialize()
@@ -79,9 +80,21 @@
 		UnregisterSignal(holder, COMSIG_QDELETING)
 		if(!QDELETED(holder))
 			for(var/stat_key in applied_bonuses)
-				holder.change_stat(stat_key, 0, source_key(stat_key))
+				remove_bonus(stat_key)
 	holder = null
 	applied_bonuses.Cut()
+	actual_bonuses.Cut()
+
+// 人类按实际增量撤销，避免属性缓冲导致重复扣除；其他生物维持原结算入口。
+/datum/component/z121_item_stat_bonuses/proc/remove_bonus(stat_key)
+	var/index = source_key(stat_key)
+	if(ishuman(holder))
+		var/mob/living/carbon/human/H = holder
+		z121_parallel_stat_delta(H, stat_key, -(actual_bonuses[stat_key] || 0))
+		H.statindex -= index
+	else
+		holder.change_stat(stat_key, 0, index)
+	actual_bonuses -= stat_key
 
 // 仅检查实际手持和装备槽，容器内部、口袋及束缚槽不生效。
 /datum/component/z121_item_stat_bonuses/proc/eligible_holder()
@@ -117,9 +130,14 @@
 			amount = 0
 		if(amount == (applied_bonuses[stat_key] || 0))
 			continue
-		holder.change_stat(stat_key, 0, source_key(stat_key))
+		remove_bonus(stat_key)
 		if(amount)
+			var/before = 0
+			if(ishuman(holder))
+				before = z121_parallel_stat_total(holder, stat_key)
 			holder.change_stat(stat_key, amount, source_key(stat_key))
+			if(ishuman(holder))
+				actual_bonuses[stat_key] = z121_parallel_stat_total(holder, stat_key) - before
 			applied_bonuses[stat_key] = amount
 		else
 			applied_bonuses -= stat_key

@@ -172,6 +172,10 @@
 //   随机投骰与一次非阻塞的 apply_status_effect，全程不阻塞，符合 SIGNAL_HANDLER 约束。
 /datum/component/life_potential/proc/on_health_update(datum/source)
 	SIGNAL_HANDLER
+	// 回归正在逐项还原身体时，临时健康值不算一次新的濒死，不能额外投骰或治疗。
+	var/mob/living/carbon/human/returning_host = parent
+	if(returning_host?.z121_is_return_restoring())
+		return
 
 	// 防御：宿主异常则不处理本次更新。
 	if(!ishuman(parent))
@@ -233,7 +237,7 @@
 	id = "life_potential_burst"                                                 // 唯一标识，供 has_status_effect 查询去重。
 	duration = LIFE_POTENTIAL_BURST_DURATION                                    // 持续 3 分钟，到时自动 on_remove。
 	alert_type = /atom/movable/screen/alert/status_effect/buff/life_potential_burst // 关联 HUD 图标与说明。
-	needs_processing = FALSE                                                    // 纯"开始/结束"型效果，无需每 tick 处理，省开销。
+	needs_processing = TRUE                                                     // 状态处理器负责到期撤销，不能关闭。
 	// 爆发期间的属性加成：力量/速度/感知/意志各 +2。
 	// 为什么用 effectedstats：基类 on_apply/on_remove 会自动加/减这些属性，并把任何
 	//   会超过 20 上限的加成自动截断，无需手写边界处理。
@@ -256,6 +260,9 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/host = owner
+	// 回归只重建计时与撤销逻辑；已有伤势和特性由快照还原，不再次治疗或播报。
+	if(host.z121_is_return_restoring())
+		return TRUE
 
 	// ---- 立即止血 ----
 	// 为什么逐一把伤口的流血速率设为 0：需求要求"伤口立即停止流血"。get_wounds()
@@ -306,6 +313,9 @@
 	REMOVE_TRAIT(host, TRAIT_NOPAIN, id)
 	REMOVE_TRAIT(host, TRAIT_NOPAINSTUN, id)
 	REMOVE_TRAIT(host, TRAIT_INFINITE_STAMINA, id)
+	// 替换回归前的效果不属于自然耗尽，不能给存档额外添加十分钟睡眠。
+	if(host.z121_is_return_restoring())
+		return
 
 	// ---- 代价：强制沉睡 10 分钟 ----
 	// 为什么用 SetSleeping 且 ignore_canstun = TRUE："状态结束后强制睡眠 10 分钟"是
