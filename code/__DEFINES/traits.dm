@@ -356,15 +356,15 @@
 #define TRAIT_SELF_SUSTENANCE "自给自足" // Unlocks all gated crafting skills to Jman. Wretches & Antags only.
 
 // To limit the legendary picaxes to specyfic classes. Everything else uncaps to expert max
-#define TRAIT_LEGENDARY_MINER "Trained Miner"
+#define TRAIT_LEGENDARY_MINER "受训矿工"
 
 // Additional trait given to the Tailor job, allowing it to weave cloth on a loom from 1 fibers instead of 2.
-#define TRAIT_EFFICIENT_WEAVER "Efficient Weaver"
+#define TRAIT_EFFICIENT_WEAVER "高效织工"
 
 // Hunting Traits
 #define TRAIT_MASTERFUL_HUNTER "狩猎大师"
 #define TRAIT_EXPERT_HUNTER "狩猎专家"
-#define TRAIT_DEATHLESS "Deathless"
+#define TRAIT_DEATHLESS "不死者"
 
 // Weaponry Traits
 // Intended for very powerful, very specific or gimmicky weapon skills.
@@ -449,7 +449,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_FENCERDEXTERITY = span_info("我的一生都在钻研无甲击剑之道，因此身着极轻护甲时能拥有无与伦比的速度。在其他情况下我则非常挑剔。"),
 	TRAIT_MAGEDEXTERITY = span_info("金属与硬皮革带来的僵硬束缚感，妨碍了我施法手势的流畅——能避开的话，我绝不穿它们。呸！既已拥有奥术的无尽智慧，谁还需要护甲？"),
 	TRAIT_SKILLBLESSED = span_greentext("我与一位旧友重逢。一切都好。"),
-	TRAIT_LONGSWORDSMAN = span_info("「任何与我为敌者，我必将其碾碎。我身负王族血脉，我伸张正义、弘扬善道、殄灭邪恶。凡习得我剑路者，我必赐予其兵刃格斗之术的赫赫声名。」——当我手持传统长剑时，我的武艺如同大师，也懂得如何以之施展大师剑招。"),	TRAIT_SABRIST = span_info("我已穷尽对南方弧刃的一切所知。当我使用 szöréndnížine 军刀时，我的武艺如同大师。瞄准手部与手臂挥砍时，我的攻击天生更为精准。"),
+	TRAIT_LONGSWORDSMAN = span_info("「任何与我为敌者，我必将其碾碎。我身负王族血脉，我伸张正义、弘扬善道、殄灭邪恶。凡习得我剑路者，我必赐予其兵刃格斗之术的赫赫声名。」——当我手持传统长剑时，我的武艺如同大师，也懂得如何以之施展大师剑招。"),	TRAIT_SABRIST = span_info("我已穷尽对南方弧刃的一切所知。当我使用瑟伦德尼日内军刀时，我的武艺如同大师。瞄准手部与手臂挥砍时，我的攻击天生更为精准。"),
 	TRAIT_MEDIUMARMOR = span_info("我能在中甲中自如行动。"),
 	TRAIT_HEAVYARMOR = span_info("我能在重甲中自如行动。"),
 	TRAIT_DODGEEXPERT = span_info("穿着轻甲或不着甲时，我更擅长闪避来袭攻击。至于锁甲、板甲之类的重甲，对我来说仍然太过累赘，难以迅速腾挪。"),
@@ -851,7 +851,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_XENO_IMMUNE		"xeno_immune"//prevents xeno huggies implanting skeletons
 #define TRAIT_DRUQK				"druqk"
 #define TRAIT_BURIED_COIN_GIVEN "buried_coin_given" // prevents a human corpse from being used for a corpse multiple times
-#define TRAIT_BLOODLOSS_IMMUNE "bloodloss_immune" // can bleed, but will never die from blood loss
+#define TRAIT_BLOODLOSS_IMMUNE "失血致死免疫" // can bleed, but will never die from blood loss
 #define TRAIT_NO_BITE "no_bite" //prevents biting
 #define TRAIT_LEGENDARY_ALCHEMIST		"寻草专家"
 #define TRAIT_STUCKITEMS "stuck_items" // Prevents removing items except for hand slots
