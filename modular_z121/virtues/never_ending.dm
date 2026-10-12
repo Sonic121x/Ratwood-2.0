@@ -150,6 +150,8 @@
 		return
 	snapshot_id++
 	state = Z121_RETURN_READY
+	// 仅在快照成功建立后通知持有者，便于确认本次存档已可使用。
+	to_chat(body, span_notice("死亡回归：已记录此刻的状态。"))
 
 /datum/component/z121_death_return/proc/on_removed()
 	SIGNAL_HANDLER

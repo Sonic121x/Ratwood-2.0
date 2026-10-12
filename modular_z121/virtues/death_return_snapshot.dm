@@ -491,7 +491,8 @@
 		B.bleeding = 0
 		R.restore_timers(B)
 		// 当前衣物对应的外观随实物保留，不能从存档复制出内衣或装具。
-		for(var/datum/bodypart_feature/F as anything in B.bodypart_features.Copy())
+		// 没有外观特征的肢体不会初始化此列表，按空列表处理，避免中断整个回归。
+		for(var/datum/bodypart_feature/F as anything in B.bodypart_features?.Copy())
 			if(!z121_return_item_feature(F))
 				B.remove_bodypart_feature(F)
 				qdel(F)
