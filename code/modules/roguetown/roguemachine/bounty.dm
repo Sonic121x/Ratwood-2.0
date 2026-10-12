@@ -198,25 +198,25 @@
 	new_bounty.bandit = bandit_status
 	new_bounty.reason = html_encode(reason)
 	new_bounty.employer = employer_name
-	new_bounty.target_race = race
+	new_bounty.target_race = get_species_display_name(istype(race, /datum/species) ? race:name : race)
 	new_bounty.target_height = LOWER_TEXT(descriptor_height)
 	new_bounty.target_body = LOWER_TEXT(descriptor_body)
 	if(descriptor_body == "Average" || descriptor_body == "Athletic")
-		var/bro_unreal = "an "
+		var/bro_unreal = ""
 		new_bounty.target_body_prefix = LOWER_TEXT(bro_unreal += descriptor_body)
 	else
-		var/bro_real = "a "
+		var/bro_real = ""
 		new_bounty.target_body_prefix = LOWER_TEXT(bro_real += descriptor_body)
 	if(descriptor_voice == "Ordinary" || descriptor_voice == "Androgynous")
-		var/bro_unreal = "an "
+		var/bro_unreal = ""
 		new_bounty.target_voice_prefix = LOWER_TEXT(bro_unreal += descriptor_voice)
 	else
-		var/bro_real = "a "
+		var/bro_real = ""
 		new_bounty.target_voice_prefix = LOWER_TEXT(bro_real += descriptor_voice)
 	if(gender == MALE)
-		new_bounty.target_body_type = "masculine"
+		new_bounty.target_body_type = "男性化"
 	else
-		new_bounty.target_body_type = "feminine"
+		new_bounty.target_body_type = "女性化"
 	compose_bounty(new_bounty, get_bounty_epithet(target_mob, bandit_status)) // KUKU
 	GLOB.head_bounties += new_bounty
 
@@ -224,23 +224,23 @@
 	var/datum/bounty/new_bounty_noface = new /datum/bounty
 	new_bounty_noface.target_hidden = target_realname
 	new_bounty_noface.amount = amount
-	new_bounty_noface.target_race = race
+	new_bounty_noface.target_race = get_species_display_name(istype(race, /datum/species) ? race:name : race)
 	if(gender == MALE)
-		new_bounty_noface.target_body_type = "masculine"
+		new_bounty_noface.target_body_type = "男性化"
 	else
-		new_bounty_noface.target_body_type = "feminine"
+		new_bounty_noface.target_body_type = "女性化"
 	new_bounty_noface.target_height = LOWER_TEXT(descriptor_height)
 	if(descriptor_body == "Average" || descriptor_body == "Athletic")
-		var/bro_unreal = "an "
+		var/bro_unreal = ""
 		new_bounty_noface.target_body_prefix = LOWER_TEXT(bro_unreal += descriptor_body)
 	else
-		var/bro_real = "a "
+		var/bro_real = ""
 		new_bounty_noface.target_body_prefix = LOWER_TEXT(bro_real += descriptor_body)
 	if(descriptor_voice == "Ordinary" || descriptor_voice == "Anrdogynous")
-		var/bro_unreal = "an "
+		var/bro_unreal = ""
 		new_bounty_noface.target_voice_prefix = LOWER_TEXT(bro_unreal += descriptor_voice)
 	else
-		var/bro_real = "a "
+		var/bro_real = ""
 		new_bounty_noface.target_voice_prefix = LOWER_TEXT(bro_real += descriptor_voice)
 	new_bounty_noface.target_voice = LOWER_TEXT(descriptor_voice)
 	new_bounty_noface.target_body = LOWER_TEXT(descriptor_body)
@@ -256,23 +256,23 @@
 	var/datum/bounty/new_bounty_obscure = new /datum/bounty
 	new_bounty_obscure.target_hidden = target_realname
 	new_bounty_obscure.amount = amount
-	new_bounty_obscure.target_race = race
+	new_bounty_obscure.target_race = get_species_display_name(istype(race, /datum/species) ? race:name : race)
 	if(gender == MALE)
-		new_bounty_obscure.target_body_type = "masculine"
+		new_bounty_obscure.target_body_type = "男性化"
 	else
-		new_bounty_obscure.target_body_type = "feminine"
+		new_bounty_obscure.target_body_type = "女性化"
 	new_bounty_obscure.target_height = LOWER_TEXT(descriptor_height)
 	if(descriptor_body == "Average" || descriptor_body == "Athletic")
-		var/bro_unreal = "an "
+		var/bro_unreal = ""
 		new_bounty_obscure.target_body_prefix = LOWER_TEXT(bro_unreal += descriptor_body)
 	else
-		var/bro_real = "a "
+		var/bro_real = ""
 		new_bounty_obscure.target_body_prefix = LOWER_TEXT(bro_real += descriptor_body)
 	if(descriptor_voice == "Ordinary" || descriptor_voice == "Anrdogynous")
-		var/bro_unreal = "an "
+		var/bro_unreal = ""
 		new_bounty_obscure.target_hidden_voice_prefix = LOWER_TEXT(bro_unreal += descriptor_voice)
 	else
-		var/bro_real = "a "
+		var/bro_real = ""
 		new_bounty_obscure.target_hidden_voice_prefix = LOWER_TEXT(bro_real += descriptor_voice)
 	new_bounty_obscure.target_hidden_voice = LOWER_TEXT(descriptor_voice)
 	new_bounty_obscure.target_body = LOWER_TEXT(descriptor_body)
@@ -467,7 +467,7 @@
 		if(HAS_TRAIT(A, TRAIT_OUTLAW)) // TRAIT_OUTLAW_NOFACE
 			var/def_zone = "[(A.active_hand_index == 2) ? "r" : "l" ]_arm"
 			playsound(A, 'sound/combat/hits/bladed/genstab (1).ogg', 100, FALSE, -1)
-			loc.visible_message(span_warning("Castifico 猛地咬向[A]的手！"))
+			loc.visible_message(span_warning("惩戒机猛地咬向[A]的手！"))
 			to_chat(A, span_danger("这台机器要的就是你！"))
 			A.fullscreen_redflash("redflash3")
 			A.Stun(10)
