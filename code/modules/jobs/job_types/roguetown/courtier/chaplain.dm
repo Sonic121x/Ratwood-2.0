@@ -168,7 +168,7 @@
 		H.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 		H.cmode_music = 'sound/music/cmode/church/combat_astrata.ogg'
-		r_hand = /obj/item/storage/belt/rogue/pouch/coins/mid//Astrata blesses you with lots of funding
+		H.put_in_hands(new /obj/item/storage/belt/rogue/pouch/coins/mid(H))//Astrata blesses you with lots of funding
 	if(H.patron?.type == /datum/patron/divine/noc) // Arcyne and Knowledge - Probably good at reading and the other arcyne adjacent stuff. - Might step on the toes of the Court Magician?
 		H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE) // Really good at reading... does this really do anything? No. BUT it's soulful.
 		H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
