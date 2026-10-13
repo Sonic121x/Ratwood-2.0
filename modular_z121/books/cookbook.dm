@@ -1,7 +1,7 @@
 // 独立食典沿用配方书外观，目录缓存由所有副本共享，阅读状态仍属于各本书。
 /obj/item/recipe_book/z121_cookbook
 	name = "庖厨食典"
-	desc = "一本详述成品饮食、肉类来源与基础食材的庖厨参考书，按类别与品质编排。"
+	desc = "一本详述各地饮食、肉类来源与备料技艺的庖厨参考书，既有家常小菜，也有宴席珍馐。"
 	icon_state = "book2_0"
 	base_icon_state = "book2"
 	can_spawn = TRUE
@@ -45,7 +45,7 @@
 		for(var/datum/z121_cookbook_entry/entry in catalog.entries_by_section[category])
 			// 搜索材料时使用纯文本，避免匹配到标签名称或隐藏的技术路径。
 			html += "<a class='entry[entry == current_recipe ? " selected" : ""]' data-search='[entry.search_text]' href='byond://?src=\ref[src];action=view_entry&entry=[entry.id]' onclick='return openEntry(this)'>[entry.title]"
-			if(entry.quality_text)
+			if(entry.quality_text && entry.category != "信义料理")
 				html += " <span class='quality'>（[entry.quality_text]）</span>"
 			html += "</a>"
 		html += "</div>"
@@ -53,12 +53,12 @@
 	if(istype(current_recipe, /datum/z121_cookbook_entry) && (current_recipe in catalog.entries))
 		var/datum/z121_cookbook_entry/entry = current_recipe
 		html += "<h2>[entry.title]</h2><p>栏目：[entry.category]"
-		if(entry.quality_text)
+		if(entry.quality_text && entry.category != "信义料理")
 			html += "　品质：[entry.quality_text]"
 		html += "</p>"
 		html += entry.body_html
 	else
-		html += "<h2>从炉火到餐桌</h2><p>选择左侧栏目，查阅食物、饮品的制作方法，或了解肉类与基础食材的来源。可同时按栏目及名称、材料搜索。</p><p>成品栏目只列完成的饮食；配方中的材料名称可能包括待烹调的坯子。书中不另列半成品制作条目。</p><p>各类成品按品质由高到低编排。食物品质分为奢华、精致、普通、简陋、粗劣；汤品与饮品采用自身的品质等级。未定义品质的条目置于栏目末尾。</p><p>所列耗时为基础值，实际加工速度会受到技能影响。完成加热后及时取出，以免烧焦。</p>"
+		html += "<h2>从炉火到餐桌</h2><p>烹饪之道，始于择料，成于火候。本书分门记下各地饮食、酒酿与食材来处，供庖厨案头翻阅。</p><p>信义一章兼述备料、调味与下锅的先后。其技艺精妙，须先认真研读《风味美食录》，再依食材的性情细细料理。</p><p>无论家常小菜还是宴席珍馐，都宜选用新鲜食材。炉火燃起后须守候照料，及时起锅，莫让好食材焦糊在锅底。</p>"
 	html += {"
 		</div></div><script>
 		function filterEntries() {
