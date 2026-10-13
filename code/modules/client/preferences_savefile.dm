@@ -988,8 +988,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	nsfw_img_gallery = SANITIZE_LIST(nsfw_img_gallery)
 
 	S["char_accent"]		>> char_accent
-	if (!char_accent)
-		char_accent = "No accent"
+	if (!(char_accent in GLOB.character_accents)) // KUKU：读取存档时校验口音，兼容旧英文值及无效数据。
+		char_accent = "无口音" // KUKU：将缺失或非法的存档口音统一为中文无口音值。
 	S["char_mannerism"]			>> char_mannerism
 	if (!char_mannerism)
 		char_mannerism = "No mannerism"

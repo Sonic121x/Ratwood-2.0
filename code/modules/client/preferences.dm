@@ -344,7 +344,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 
-	var/char_accent = "No accent"
+	var/char_accent = "无口音" // KUKU：默认口音使用合法列表中的中文值。
 	var/char_mannerism = "No mannerism"
 
 	// Vocal bark prefs
@@ -3451,10 +3451,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		character.update_hair()
 		character.update_body_parts(redraw = TRUE)
 
-	if (character.char_accent in GLOB.character_accents)
+	if (char_accent in GLOB.character_accents) // KUKU：校验玩家选择的口音，避免预览人偶的旧值清空新选择。
 		character.char_accent = char_accent
 	else
-		char_accent = "No accent"
+		char_accent = "无口音" // KUKU：非法口音回退到合法的中文无口音值。
 		character.char_accent = char_accent
 
 	if (char_mannerism in GLOB.character_mannerisms)
