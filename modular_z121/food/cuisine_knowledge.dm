@@ -31,8 +31,6 @@
 	if(!success || QDELETED(user) || !user.mind || user.get_active_held_item() != src || HAS_TRAIT(user, TRAIT_Z121_CUISINE))
 		return
 	ADD_TRAIT(user, TRAIT_Z121_CUISINE, "z121_cuisine_book")
-	for(var/recipe in subtypesof(/datum/crafting_recipe/roguetown/cooking/z121_cuisine))
-		user.mind.teach_crafting_recipe(recipe)
 	to_chat(user, span_nicegreen("你掌握了美食知识！书中的技艺已铭记于心，泛黄的书页随之散尽。"))
 	qdel(src)
 
@@ -50,50 +48,3 @@
 	desc = "研读十秒后获得美食知识，解锁六种中式料理；成功学习后消耗书籍。"
 	path = /obj/item/book/rogue/z121_cuisine
 	triumph_cost = 3
-
-// 菜单可见性只负责展示，实际备料仍须在服务端检查特性。
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine
-	abstract_type = /datum/crafting_recipe/roguetown/cooking/z121_cuisine
-	category = "中式备料"
-	always_availible = FALSE
-	req_table = TRUE
-	craftdiff = 0
-	subtype_reqs = FALSE
-
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine/TurfCheck(mob/user, turf/T)
-	if(!user || !HAS_TRAIT(user, TRAIT_Z121_CUISINE))
-		to_chat(user, span_warning("你尚未掌握美食知识，无法处理这份料理。"))
-		return FALSE
-	return ..()
-
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine/spring_roll
-	name = "生春卷"
-	result = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/spring_roll
-	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced = 1, /obj/item/reagent_containers/food/snacks/grown/carrot = 1)
-	tools = list(/obj/item/kitchen/rollingpin)
-
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine/hotpot
-	name = "狼肉火锅配料"
-	result = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/hotpot
-	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf = 2, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove = 1)
-
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine/dongpo
-	name = "腌好的东坡肉"
-	result = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/dongpo
-	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/pork_belly = 1, /datum/reagent/consumable/sugar = 5, /datum/reagent/consumable/ethanol/ricewine = 10, /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove = 1)
-
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine/noodles
-	name = "生刀削面"
-	result = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/noodles
-	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife/cleaver)
-
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine/meat_bun
-	name = "生肉包"
-	result = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/meat_bun
-	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1)
-
-/datum/crafting_recipe/roguetown/cooking/z121_cuisine/vegetable_bun
-	name = "生菜包"
-	result = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/vegetable_bun
-	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced = 1, /obj/item/reagent_containers/food/snacks/grown/carrot = 1)
