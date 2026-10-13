@@ -8,9 +8,9 @@
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/examine(mob/user)
 	. = ..()
 	var/datum/reagent/R = liquid_type
-	. += span_notice("需要美食知识。在点燃的炉灶上架好锅，加入至少[liquid_amount]单位[initial(R.name)]并烧热，再手持这份半成品点击炉灶。基础[cuisine_verb]时间为[cuisine_time / 10]秒。")
+	. += span_notice("在炉灶上架好锅，添足[initial(R.name)]，烧热后下料[cuisine_verb]，守在炉边细心照看火候。")
 	if(needs_bowl)
-		. += span_notice("另一只手需要拿着空碗，供出锅时盛面。")
+		. += span_notice("另一只手需要拿着空碗，供出锅时盛装。")
 
 // 普通烤炉和煎锅只能烧坏生坯，不能绕过专用交互生成成品。
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/heating_act(atom/A)
@@ -22,14 +22,18 @@
 	return
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/proc/cuisine_error(mob/living/user, obj/machinery/light/rogue/hearth/H, obj/item/reagent_containers/glass/bucket/pot/P, underway = FALSE)
-	if(QDELETED(user) || user.stat || !HAS_TRAIT(user, TRAIT_Z121_CUISINE))
-		return "只有掌握美食知识的人才能烹饪这份料理。"
+	if(QDELETED(user) || user.stat || (requires_cuisine_knowledge && !HAS_TRAIT(user, TRAIT_Z121_CUISINE)))
+		return "你一时无法专心料理，或还未熟悉这道菜的做法。"
 	if(QDELETED(H) || QDELETED(P) || !H.Adjacent(user) || !H.on || H.attachment != P || P.loc != H)
 		return "需要在身旁点燃的炉灶上架好锅，并一直照看火候。"
 	if((H.z121_cuisine_batch && H.z121_cuisine_batch != src) || (P.z121_cuisine_batch && P.z121_cuisine_batch != src) || (H.food && H.food != src))
 		return "这口锅正在处理别的食物。"
-	if(eat_effect != /datum/status_effect/debuff/uncookedfood || bitecount || !reagents?.total_volume)
-		return "这份半成品已经变质、烧坏或被吃过，不能继续烹饪。"
+	if(!z121_cuisine_fresh(src) || eat_effect != /datum/status_effect/debuff/uncookedfood)
+		return "这份食材已经变质、烧坏或被吃过，不宜再拿来做菜。"
+	if(z121_requires_bowl)
+		var/obj/item/reagent_containers/glass/bowl/B = trash
+		if(!istype(B) || QDELETED(B) || B.loc != src || B.reagents.total_volume)
+			return "盛装食材的碗不在原处，或碗里混入了别的汤水。"
 	if(!P.reagents?.has_reagent(liquid_type, liquid_amount))
 		return "锅里的水或油脂不足。"
 	// 使用单一水或油作为烹饪介质，避免混汤或油水混合后仍被当作正常蒸煮。
@@ -39,9 +43,9 @@
 		return "锅还不够热，请等待水沸腾或油烧热。"
 	if(underway)
 		if(loc != H || H.food != src || H.z121_cuisine_batch != src || P.z121_cuisine_batch != src)
-			return "半成品已经离开了正在烹饪的锅。"
+			return "食材已经离锅，无法继续照料火候。"
 		if(needs_bowl && (QDELETED(cuisine_bowl) || cuisine_bowl.loc != src || cuisine_bowl.reagents.total_volume))
-			return "盛面的空碗已经不在手边。"
+			return "盛装的空碗已经不在手边。"
 	return null
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/proc/cuisine_can_continue(mob/living/user)
@@ -74,7 +78,7 @@
 					cuisine_bowl = B
 				break
 		if(!cuisine_bowl)
-			to_chat(user, span_warning("请用另一只手拿一只空碗来盛面。"))
+			to_chat(user, span_warning("请用另一只手拿一只空碗来盛装。"))
 			return TRUE
 	cuisine_hearth = H
 	cuisine_pot = P
@@ -91,15 +95,12 @@
 	if(QDELETED(src))
 		return TRUE
 	if(!success || !cuisine_can_continue(user))
-		to_chat(user, span_warning("烹饪中断了，半成品与餐具已经取回。"))
+		to_chat(user, span_warning("你停下了烹饪，将食材与餐具放回炉边。"))
 		cuisine_release()
 		return TRUE
-	var/obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/S = new result_type(get_turf(H))
-	// 保留生坯上的调味和污染，仅将营养调整为这道成品的规定值。
-	var/final_nutrition = S.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	reagents.remove_reagent(/datum/reagent/consumable/nutriment, reagents.total_volume)
-	S.reagents.maximum_volume = max(S.reagents.maximum_volume, final_nutrition + reagents.total_volume)
-	reagents.trans_to(S, reagents.total_volume)
+	var/obj/item/reagent_containers/food/snacks/S = new result_type(get_turf(H))
+	// 加热结果可能仍需上桌加工，容器和保质状态继续传递。
+	z121_cuisine_transfer(src, S, TRUE)
 	P.reagents.remove_reagent(liquid_type, liquid_amount)
 	P.update_icon()
 	if(cuisine_bowl)
@@ -112,7 +113,8 @@
 		H.boilloop.stop()
 		P.forceMove(S)
 		S.trash = P
-	add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+	if(user.mind)
+		add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 	to_chat(user, span_nicegreen("[S.name]做好了！"))
 	cuisine_release()
 	qdel(src)

@@ -49,7 +49,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/hotpot_serving
 	name = "一碗狼肉火锅"
-	desc = "一碗热腾腾的狼肉与蔬菜，浓汤带着蒜香。"
+	desc = "一碗热腾腾的狼肉与蔬菜，清汤带着葱姜、蒜与米酒的香气。"
 	icon_state = "hotpot_serving"
 	foodtype = MEAT | VEGETABLES
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL)
@@ -66,6 +66,7 @@
 	tastes = list("浓厚狼肉汤" = 2, "蒜香蔬菜" = 1)
 	var/servings = 4
 	var/serving_busy = FALSE
+	var/serving_type = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/hotpot_serving
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/hotpot/examine(mob/user)
 	. = ..()
@@ -73,7 +74,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/hotpot/canconsume(mob/eater, mob/user, silent = FALSE)
 	if(!silent)
-		to_chat(user, span_notice("请先用空碗分装火锅。"))
+		to_chat(user, span_notice("请先用空碗分装[name]。"))
 	return FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/hotpot/attack_animal(mob/M)
@@ -101,9 +102,10 @@
 	if(!user.transferItemToLoc(B, src))
 		serving_busy = FALSE
 		return TRUE
-	var/obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/hotpot_serving/S = new(get_turf(src))
+	var/obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/S = new serving_type(get_turf(src))
 	// 按剩余份数平分现有试剂，保留调味与污染，不凭空增加营养。
 	S.reagents.clear_reagents()
+	S.reagents.maximum_volume = max(S.reagents.maximum_volume, reagents.total_volume / servings)
 	reagents.trans_to(S, reagents.total_volume / servings)
 	S.warming = warming
 	S.eat_effect = eat_effect
@@ -116,14 +118,14 @@
 	servings--
 	serving_busy = FALSE
 	user.put_in_hands(S)
-	to_chat(user, span_notice("你盛出一碗狼肉火锅，还剩[servings]份。"))
+	to_chat(user, span_notice("你盛出[S.name]，还剩[servings]份。"))
 	if(!servings)
 		generate_trash(get_turf(src))
 		qdel(src)
 	return TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw
-	name = "中式料理半成品"
+	name = "待烹的信义食材"
 	icon = 'modular_z121/icon/food.dmi'
 	experimental_inhand = TRUE
 	grid_width = 32
@@ -145,6 +147,7 @@
 	var/liquid_type = /datum/reagent/water
 	var/liquid_amount = 10
 	var/needs_bowl = FALSE
+	var/requires_cuisine_knowledge = TRUE
 	var/obj/machinery/light/rogue/hearth/cuisine_hearth
 	var/obj/item/reagent_containers/glass/bucket/pot/cuisine_pot
 	var/obj/item/reagent_containers/glass/bowl/cuisine_bowl
@@ -161,7 +164,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/hotpot
 	name = "狼肉火锅配料"
-	desc = "生狼肉与切好的卷心菜、洋葱和蒜瓣，备齐后可炖成四人共享的火锅。"
+	desc = "生狼肉、卷心菜、洋葱和蒜瓣，配好葱姜、米酒和盐，可炖成四人共享的火锅。"
 	icon_state = "raw_hotpot"
 	foodtype = MEAT | VEGETABLES
 	result_type = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/hotpot
@@ -171,7 +174,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/dongpo
 	name = "腌好的东坡肉"
-	desc = "肥瘦分层的五花肉浸过米酒和糖，仍泛着生肉的浅红色，需要耐心焖煮。"
+	desc = "肥瘦分层的五花肉拌入葱姜、糖、米酒和酱油，仍带生肉的浅红色，需要耐心焖煮。"
 	icon_state = "raw_dongpo"
 	foodtype = MEAT
 	result_type = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/dongpo
@@ -191,7 +194,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_raw/meat_bun
 	name = "生肉包"
-	desc = "尚未膨起的面皮捏成褶口，包着肉馅，需隔水蒸熟。"
+	desc = "尚未膨起的面皮捏成褶口，包着葱姜酱油调味的肉馅，需隔水蒸熟。"
 	icon_state = "raw_meat_bun"
 	foodtype = GRAIN | MEAT
 	result_type = /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine/meat_bun
