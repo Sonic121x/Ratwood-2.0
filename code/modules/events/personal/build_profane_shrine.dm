@@ -51,7 +51,7 @@
 
 	to_chat(chosen_one, span_userdanger("你是神的选民！"))
 	to_chat(chosen_one, span_biginfo("齐佐要你散播腐化！运用你新获得的知识建造[new_objective.target_count]座亵渎神龛，完成齐佐的意志！"))
-	to_chat(chosen_one, span_notice("你可以用一根小原木、两块石头和三根木桩建造亵渎神龛。"))
+	to_chat(chosen_one, span_notice("你可以用一根小原木、两块石头和三根尖木棍建造亵渎神龛。"))
 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()
