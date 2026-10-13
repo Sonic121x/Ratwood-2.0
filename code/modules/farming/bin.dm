@@ -202,8 +202,8 @@
 					reagents.add_reagent(/datum/reagent/water/gross, amount_to_dirty)
 
 			// Clear the tongs
-			T.hingot = null
-			T.hott = null
+			T.hingot = QDELETED(ingot) ? null : ingot // KUKU：仅在坯料已消耗时清空夹持引用，失败时保留坯料
+			T.hott = QDELETED(ingot) ? null : T.hott // KUKU：仅在坯料已消耗时清空热度，失败时保留原有热度
 			T.update_icon()
 			update_icon()
 			return
