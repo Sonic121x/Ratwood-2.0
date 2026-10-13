@@ -579,7 +579,7 @@
 	buildsame = TRUE
 
 /datum/crafting_recipe/roguetown/structure/fence
-	name = "栅栏（木桩）"
+	name = "栅栏（尖木棍）"
 	result = /obj/structure/fluff/railing/fence
 	reqs = list(/obj/item/grown/log/tree/stake = 2)
 	ontile = TRUE
