@@ -49,6 +49,7 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	register_z121_super_masochist_trait()
 	// 枪匠权限供所有枪械配方共用，并在角色特质面板显示说明。
 	register_z121_gunsmith_trait()
+	register_z121_cuisine_trait()
 
 	// 登记自定义恶习"涨奶"到可选恶习列表（GLOB.character_flaws）。
 	// 为什么放在这里：与上面的"洁癖""病娇""脸盲症"登记同理——custom_bootstrap 的 Initialize

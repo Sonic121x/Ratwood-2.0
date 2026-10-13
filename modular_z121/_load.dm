@@ -5,6 +5,11 @@
 #include "books/cookbook_catalog.dm"
 #include "books/cookbook_sources.dm"
 #include "books/cookbook.dm"
+// 风味美食录：知识门槛、实体半成品与中式烹饪。
+#include "food/cuisine_knowledge.dm"
+#include "food/cuisine_food.dm"
+#include "food/cuisine_cooking.dm"
+#include "food/cuisine_catalog.dm"
 #include "bootstrap/custom_bootstrap.dm"
 #include "bootstrap/preferences_vice_conflicts.dm"
 #include "changelog/entries.dm"

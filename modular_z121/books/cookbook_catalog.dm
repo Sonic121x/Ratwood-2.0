@@ -34,6 +34,7 @@
 	load_section_17()
 	load_section_18()
 	load_section_19()
+	load_z121_cuisine()
 
 /datum/z121_cookbook_catalog/proc/add_entry(title, category, quality_text, search_text, body_html)
 	var/datum/z121_cookbook_entry/entry = new
