@@ -146,14 +146,14 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/freifechter_boots
-	name = "礼靴"
+	name = "击剑靴"
 	cost = 50
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/grenzelhoft/freifechter)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/aavnr/freifechter_gloves
-	name = "格伦泽尔霍夫特手套"
+	name = "击剑手套"
 	cost = 45
 	contains = list(/obj/item/clothing/gloves/roguetown/angle/grenzelgloves/freifechter)
 	ship_qty_min = 1

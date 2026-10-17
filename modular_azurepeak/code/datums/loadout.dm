@@ -270,7 +270,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
      triumph_cost = 8
 	
 /datum/loadout_item/bedroll
-     name = "Bedroll"
+     name = "卷起的铺盖卷"
      path = /obj/item/bedroll
      triumph_cost = 2
 
@@ -360,11 +360,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
     path = /obj/item/clothing/head/roguetown/necromhood
 
 /datum/loadout_item/turban
-	name = "Turban"
+	name = "头巾"
 	path = /obj/item/clothing/head/roguetown/turban
 
 /datum/loadout_item/fancypurple
-	name = "Fancy Turban"
+	name = "华丽紫色头巾"
 	path = /obj/item/clothing/head/roguetown/turban/fancypurple
 
 /datum/loadout_item/hijab
@@ -684,19 +684,19 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra/red
 
 /datum/loadout_item/bisht
-	name = "Bisht"
+	name = "比什特长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/bisht
 
 /datum/loadout_item/bishtpurple
-	name = "Purple Bisht"
+	name = "紫色比什特长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/bisht/purple
 
 /datum/loadout_item/thawb
-	name = "Thawb"
+	name = "索布长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/thawb
 
 /datum/loadout_item/thawbgold
-	name = "Golden Thawb"
+	name = "金边索布长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/thawb/gold
 	triumph_cost = 1
 
@@ -1106,7 +1106,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/storage/belt/rogue/leather/sash
 
 /datum/loadout_item/jafar
-	name = "Large Sash"
+	name = "兹班图大腰带"
 	path = /obj/item/storage/belt/rogue/leather/jafar
 
 /datum/loadout_item/belt_rope

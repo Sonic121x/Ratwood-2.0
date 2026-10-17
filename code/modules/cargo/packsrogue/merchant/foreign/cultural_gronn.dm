@@ -5,7 +5,7 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/gronn/battleaxe
-	name = "扎伊兰战斧"
+	name = "胡须战斧"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/steel/atgervi)
 	ship_qty_min = 1

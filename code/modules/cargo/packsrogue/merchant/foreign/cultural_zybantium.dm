@@ -196,7 +196,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/zybantine/makhaira
-	name = "钢猎剑"
+	name = "马凯拉短剑"
 	cost = 75
 	contains = list(/obj/item/rogueweapon/sword/short/messer/bronze)
 	ship_qty_min = 2
