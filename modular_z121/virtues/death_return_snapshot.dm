@@ -157,9 +157,6 @@
 	var/list/losses
 	var/blood
 	var/chem_temp
-	var/rpg_present = FALSE
-	var/rpg_points = 0
-	var/list/rpg_growth
 	var/datum/z121_return_profession/profession_values
 	var/saved_stress = 0
 	var/list/stress_records = list()
@@ -252,12 +249,6 @@
 		profession_values.independent_experience[skill] = max(0, profession_values.independent_experience[skill] - removed)
 	losses = list(H.getToxLoss(), H.getOxyLoss(), H.getCloneLoss(), H.getStaminaLoss())
 	blood = H.get_blood_volume()
-	var/datum/component/rpg_system/system = H.GetComponent(/datum/component/rpg_system)
-	rpg_present = !!system
-	if(system)
-		rpg_points = system.points
-	var/datum/component/rpg_journal/journal = H.GetComponent(/datum/component/rpg_journal)
-	rpg_growth = journal ? journal.growth_data() : null
 	saved_stress = H.oldstress
 	for(var/event_type in H.stressors)
 		var/datum/stressevent/event = H.stressors[event_type]
@@ -424,8 +415,6 @@
 		if(record && !record.suspended)
 			record.independent_experience[skill] += equipment_skills[skill]
 			record.observed_experience[skill] = skills.skill_experience[skill]
-	if(!preparing)
-		restore_rpg(H)
 	// 直接写回感知不会经过属性入口，视野派生值必须独立重算。
 	H.see_override = initial(H.see_invisible) + H.STAPER / 3.25
 	H.update_sight()
@@ -582,25 +571,6 @@
 /proc/z121_return_item_feature(datum/bodypart_feature/F)
 	return istype(F, /datum/bodypart_feature/underwear) || istype(F, /datum/bodypart_feature/legwear) || istype(F, /datum/bodypart_feature/chastity)
 
-/datum/z121_return_snapshot/proc/restore_rpg(mob/living/carbon/human/H)
-	// 成长点与属性、技能、特性一同回滚，不触发升级奖励。
-	var/datum/component/rpg_journal/journal = H.GetComponent(/datum/component/rpg_journal)
-	if(!journal && (rpg_present || rpg_growth))
-		journal = H.AddComponent(/datum/component/rpg_journal)
-	if(journal)
-		journal.restore_growth(rpg_growth)
-	var/datum/component/rpg_system/system = H.GetComponent(/datum/component/rpg_system)
-	if(rpg_present)
-		if(!system)
-			system = H.AddComponent(/datum/component/rpg_system)
-		system.z121_return_generation++
-		system.points = rpg_points
-		H.verbs |= /mob/living/carbon/human/proc/open_rpg_system
-		SStgui.update_uis(system)
-	else if(system)
-		qdel(system)
-		H.verbs -= /mob/living/carbon/human/proc/open_rpg_system
-
 /datum/z121_return_snapshot/Destroy()
 	QDEL_NULL(body_values)
 	QDEL_NULL(appearance_values)
@@ -640,13 +610,3 @@
 		return !findtext("[E.type]", "cd") && !istype(E, /datum/status_effect/debuff/apostasy) && !findtext("[E.type]", "harpy_") && !findtext("[E.type]", "climbing") && !findtext("[E.type]", "enchantmenttriggered") && !findtext("[E.type]", "ritesexpended") && !istype(E, /datum/status_effect/debuff/yield_prompt) && !istype(E, /datum/status_effect/debuff/pomegranate_aura) && !istype(E, /datum/status_effect/debuff/divergence)
 	var/static/list/bodily_buffs = list(/datum/status_effect/buff/drunk, /datum/status_effect/buff/murkwine, /datum/status_effect/buff/nocshine, /datum/status_effect/buff/abyss, /datum/status_effect/buff/fermented_crab, /datum/status_effect/buff/healing, /datum/status_effect/buff/originhealing, /datum/status_effect/buff/magicknowledge, /datum/status_effect/buff/magicstrength, /datum/status_effect/buff/magicspeed, /datum/status_effect/buff/magicwillpower, /datum/status_effect/buff/magicconstitution, /datum/status_effect/buff/magicperception, /datum/status_effect/buff/nocblessing, /datum/status_effect/buff/goodloving, /datum/status_effect/buff/massage, /datum/status_effect/buff/goodmassage, /datum/status_effect/buff/greatmassage, /datum/status_effect/buff/refocus, /datum/status_effect/buff/druqks, /datum/status_effect/buff/ozium, /datum/status_effect/buff/moondust, /datum/status_effect/buff/moondust_purest, /datum/status_effect/buff/herozium, /datum/status_effect/buff/starsugar, /datum/status_effect/buff/weed, /datum/status_effect/buff/vitae, /datum/status_effect/buff/snackbuff, /datum/status_effect/buff/greatsnackbuff, /datum/status_effect/buff/mealbuff, /datum/status_effect/buff/greatmealbuff, /datum/status_effect/buff/sweet, /datum/status_effect/buff/featherfall, /datum/status_effect/buff/darkvision, /datum/status_effect/buff/longstrider, /datum/status_effect/buff/magearmor, /datum/status_effect/buff/scalearmor, /datum/status_effect/buff/magic_flight, /datum/status_effect/buff/xray_vision, /datum/status_effect/buff/all_seeing_insight, /datum/status_effect/buff/moonlight_blessing, /datum/status_effect/buff/haste, /datum/status_effect/buff/accel)
 	return is_type_in_list(E, bodily_buffs)
-
-// 正在生成的商店物品不得在读档后给新余额退款或送入回归后的手中。
-/datum/component/rpg_system
-	var/z121_return_generation = 0
-
-// 迁移的是当前日志实例，不恢复清晨的任务进度或每日领取资格。
-/datum/component/rpg_journal/PostTransfer()
-	if(!ishuman(parent))
-		return COMPONENT_INCOMPATIBLE
-	QDEL_NULL(tracker)

@@ -375,19 +375,6 @@
 // immune to every drunkenness debuff (INT loss / slurring / confusion / dizziness / toxin / sleep);
 // once drunk, the Sword-fighting skill is instantly boosted to Legendary until the alcohol wears off.
 #include "virtues/wine_sword_immortal.dm"
-// 自定义美德：RPG系统。收入获得积分及等量经验，积分购买物品，升级获得成长点。
-#include "virtues/rpg_system.dm"
-// 法术弹道与爆炸的击杀来源归属。
-#include "virtues/rpg_system_damage.dm"
-// 等级成长与静态商店扩展。
-#include "virtues/rpg_system_progression.dm"
-#include "virtues/rpg_system_catalogs.dm"
-// 角色独立的每日签到与冒险任务记录。
-#include "virtues/rpg_system_daily.dm"
-// RPG 任务的私人头顶箭头与距离提示。
-#include "virtues/rpg_system_tracking.dm"
-// 账号 KUKULING 登录时自动获得 RPG 系统及初始积分，须在系统定义后加载。
-#include "virtues/rpg_system_kukuling_autogrant.dm"
 // 按账号赠礼：唯一的登录派发器（统一持有 human/Login() 覆写，逐一调用各账号赠礼 proc）
 #include "account_perks/account_perks.dm"
 // 按账号赠礼：账号 Sonic121 进入游戏即自动获得自定义特性【温暖力场】（向周围玩家持续散发情绪增益）

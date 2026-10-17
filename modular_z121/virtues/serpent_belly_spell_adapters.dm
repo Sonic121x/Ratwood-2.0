@@ -92,9 +92,6 @@
 	var/datum/explosion/blast = new /datum/explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, ignorecap, flame_range, silent, smoke, soundin)
 	// 原构造函数在处理地块前先让出执行，因此此处先于所有实际伤害完成。
 	blast.z121_serpent_cast = z121_serpent_cast
-	if(istype(src, /obj/projectile))
-		var/obj/projectile/projectile = src
-		blast.z121_rpg_caster_ref = WEAKREF(projectile.firer)
 	return blast
 
 /mob/living/carbon/human/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
