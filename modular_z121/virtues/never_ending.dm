@@ -408,11 +408,6 @@
 					source_map[R.source_ref] = REF(personality)
 		pending_save.profession_values.restore(returned, source_map)
 		pending_save.restore_traits(returned, source_map)
-		var/datum/component/rpg_journal/journal = returned.GetComponent(/datum/component/rpg_journal)
-		var/grants_before = journal?.rpg_spell_point_grants || 0
-		pending_save.restore_rpg(returned)
-		journal = returned.GetComponent(/datum/component/rpg_journal)
-		M.spell_points -= grants_before - (journal?.rpg_spell_point_grants || 0)
 		// 准备可能经过外部回调，交接前再次核对，不能夺回已远行或独立转生的玩家。
 		if(!enabled || state != Z121_RETURN_RUNNING || expected_snapshot != pending_snapshot_id || !owns_player() || (M.current && !QDELETED(M.current) && M.current != return_origin && M.current != transfer_brain))
 			fail_return("准备期间玩家归属已改变，取消灵魂交接。")
@@ -558,8 +553,6 @@
 	var/list/values = list()
 	var/list/accounts = list()
 	var/datum/skill_holder/skills
-	var/datum/component/rpg_journal/journal
-	var/list/rollback_growth
 	var/list/rollback_profession = list()
 	var/list/rollback_known_skills
 	var/list/rollback_skill_experience
@@ -569,7 +562,6 @@
 	original = H
 	owner_mind = M
 	skills = H.ensure_skills()
-	journal = H.GetComponent(/datum/component/rpg_journal)
 	var/list/fields = list("real_name", "name", "job", "account_id", "faction", "patron", "origin", "statpack", "marriedto", "family_datum", "family_member_datum", "devotion", "inspiration", "charflaw", "flavortext", "ooc_notes", "ooc_extra", "headshot_link", "islatejoin", "allmig_reward", "received_resident_key")
 	for(var/field in fields)
 		if(field in H.vars)
@@ -582,9 +574,6 @@
 		accounts += list(list(bank, H in bank, bank[H]))
 
 /datum/z121_return_identity/proc/apply(mob/living/carbon/human/H)
-	if(!QDELETED(original))
-		journal = original.GetComponent(/datum/component/rpg_journal)
-	rollback_growth = journal?.growth_data()
 	rollback_known_skills = skills.known_skills.Copy()
 	rollback_skill_experience = skills.skill_experience.Copy()
 	rollback_spell_points = owner_mind.spell_points
@@ -607,8 +596,6 @@
 		else if(entry[2])
 			bank[H] = entry[3]
 	SStreasury.poll_projection_dirty = TRUE
-	if(!QDELETED(journal))
-		H.TakeComponent(journal)
 	if(!QDELETED(original))
 		original.z121_return_transfer_identity(H)
 
@@ -617,9 +604,6 @@
 	if(QDELETED(original))
 		return
 	H.z121_return_transfer_identity(original, TRUE)
-	if(journal?.parent == H)
-		original.TakeComponent(journal)
-	journal?.restore_growth(rollback_growth)
 	for(var/list/entry as anything in accounts)
 		var/list/bank = entry[1]
 		if(H in bank)
@@ -639,7 +623,6 @@
 	original = null
 	owner_mind = null
 	skills = null
-	journal = null
 	values = null
 	accounts = null
 	return ..()
