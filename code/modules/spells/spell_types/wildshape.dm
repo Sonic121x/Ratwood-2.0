@@ -37,7 +37,7 @@
 		return FALSE
 
 	if(!ishuman(user))
-		to_chat(user, span_warning("I cannot call upon a beast form while in this shape."))
+		to_chat(user, span_warning("我处于这种形态时，无法施展兽形。"))
 		revert_cast(user)
 		return FALSE
 

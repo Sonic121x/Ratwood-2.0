@@ -108,7 +108,7 @@
 
 /obj/effect/proc_holder/spell/invoked/rituos
 	name = "仪式术"
-	desc = "为齐佐的那位女士施行「小业」，于仪式之间休整。第一道仪式会令你的两肢化为骸骨，并赐予你奥术魔法。第二道会令你余下的四肢与胸膛化为骸骨，授予更进一步的奥术之力。第三道、也是最后一道仪式，会令你的头颅化为骸骨，并额外赐予一点法术点。"
+	desc = "为齐佐女士施行「小业」，于仪式之间休整。第一道仪式会令你的两肢化为骸骨，并赐予你奥术魔法。第二道会令你余下的四肢与胸膛化为骸骨，授予更进一步的奥术之力。第三道、也是最后一道仪式，会令你的头颅化为骸骨，并额外赐予一点法术点。"
 	clothes_req = FALSE
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
@@ -162,14 +162,14 @@
 	else if(rituos_counter == 1)
 		var/obj/item/bodypart/chest/chest = locate(/obj/item/bodypart/chest) in user.bodyparts
 		if(!chest)
-			to_chat(user, span_warning("I have no remaining limbs to offer to the ritual!"))
+			to_chat(user, span_warning("我已经没有可献给仪式的肢体了！"))
 			return FALSE
 		bodyparts_to_bonify = potential_bodyparts
 		bodyparts_to_bonify += chest
 	else
 		var/obj/item/bodypart/head/head = locate(/obj/item/bodypart/head) in user.bodyparts
 		if(!head)
-			to_chat(user, span_warning("我已经没有可献给仪式的肢体了！"))
+			to_chat(user, span_warning("我已经没有可献给仪式的头颅了！"))
 			return FALSE
 		bodyparts_to_bonify += head
 

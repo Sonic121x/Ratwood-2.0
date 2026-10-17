@@ -420,7 +420,7 @@
 	marquescost = 10
 
 /datum/inqports/equipment/inqscomm
-	name = "1 Inquisitorial SCOMgnet Ring"
+	name = "1 枚审判所SCOM传讯印戒"
 	item_type = /obj/item/clothing/ring/signet/silver/inqscomm
 	marquescost = 6
 

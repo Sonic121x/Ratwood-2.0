@@ -2886,17 +2886,17 @@
 /datum/emote/living/ycackle
 	key = "ycackle"
 	key_third_person = "cackles!"
-	message = "cackles!"
+	message = "发出鬣狗般的怪笑！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled cackle!"
+	message_muffled = "发出一阵闷闷的怪笑！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
 
 /mob/living/carbon/human/verb/emote_ycackle()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
-		set name = "Yeen Cackle"
-		set category = "Noises"
+		set name = "鬣狗怪笑"
+		set category = "发声"
 		emote("ycackle", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()

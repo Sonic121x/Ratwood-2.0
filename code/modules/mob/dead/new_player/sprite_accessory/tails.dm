@@ -366,7 +366,7 @@
 	name = "魅魔（尾口）"
 
 /datum/sprite_accessory/tail/tiefling/spadeheart/tailmaw
-	name = "Succubus (Alt) (Tailmaw)"
+	name = "魅魔（异款）（尾口）"
 	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "spadeheart"
 
