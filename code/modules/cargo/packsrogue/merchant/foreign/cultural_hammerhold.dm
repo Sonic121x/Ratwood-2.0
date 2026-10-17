@@ -5,14 +5,14 @@
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/hammerhold/dwarven_maul
-	name = "大槌"
+	name = "矮人大槌"
 	cost = 240
 	contains = list(/obj/item/rogueweapon/mace/maul/steel)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/hammerhold/spiked_maul
-	name = "钉头锤"
+	name = "带刺大槌"
 	cost = 260
 	contains = list(/obj/item/rogueweapon/mace/maul/spiked)
 	ship_qty_min = 1
@@ -26,7 +26,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/hammerhold/iron_fullplate
-	name = "铁锤堡板甲"
+	name = "铁制板甲"
 	cost = 380
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/iron)
 	ship_qty_min = 1
