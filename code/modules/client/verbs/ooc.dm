@@ -403,10 +403,10 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	winset(src, "outputwindow.legacy_output_selector", "left=output_legacy")
 
 /client/verb/motd()
-	set name = "每日公告"
+	set name = "MOTD"
 	set category = "OOC"
 	set desc ="查看每日公告"
-	set hidden = 1
+	set hidden = 0
 	if(!holder)
 		return
 	if(!check_rights(0))
