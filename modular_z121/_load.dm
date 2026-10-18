@@ -260,6 +260,8 @@
 #include "crafting/memory_kiss_token_recipe.dm"
 // 连发燧枪、桌面组装零件及工匠台配方。
 #include "weapons/millicombat_pistol.dm"
+// 玩家切换战斗模式时的附近音效与头顶浮字。
+#include "combat/combat_readiness.dm"
 // 拦路悍匪：武器命中武技、架势、反击与手枪终结技。
 #include "combat/highwayman.dm"
 #include "combat/highwayman_melee.dm"

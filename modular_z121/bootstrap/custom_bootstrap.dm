@@ -20,6 +20,8 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	register_z121_ethos()
 	// 接入所有玩家的账号提示存档、角色登录与检视信号。
 	register_z121_ooc_examine()
+	// 玩家切换战斗模式时的音效与头顶浮字提示。
+	register_z121_combat_readiness()
 	// 将美德和缩小术共用的娇小特性加入玩家自检列表。
 	register_z121_petite_trait()
 	if(!islist(GLOB.learnable_spells))
