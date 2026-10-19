@@ -20,7 +20,7 @@
 	. += span_info("高贵的胃口更偏爱餐具，而非直接用双手吃喝。")
 
 /datum/intent/dagger/thrust/fork
-	penfactor = 20
+	penfactor = PEN_LIGHT
 
 /obj/item/kitchen/fork/decrepit
 	name = "破旧叉子"

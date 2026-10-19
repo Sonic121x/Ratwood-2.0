@@ -80,8 +80,8 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	has_item_quality = TRUE
 	name = "短弓"
-	desc = "这把制作朴素的短弓勉强够用。它虽在弓力与精度上有所欠缺， \
-	但尚算迅捷的开弓速度弥补了这一点。"
+	desc = "这把制作朴素的短弓勉强够用。它虽在弓力与精度上有 \
+	所欠缺，  但尚算迅捷的开弓速度弥补了这一点。"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "bow"
 	item_state = "bow"
@@ -239,7 +239,8 @@
 			perception_modifier = 15
 		if(perception_modifier < 10)
 			perception_modifier = 10
-		BB.damage *= damfactor * (perception_modifier / 10)
+		var/per_scaling = 1 + (min(user.STAPER, RANGED_STAT_SOFTCAP) * RANGED_STAT_MULT) + (max(0, user.STAPER - RANGED_STAT_SOFTCAP) * RANGED_STAT_CAPPEDMULT)
+		BB.damage *= damfactor * per_scaling
 	return ..()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()
@@ -364,8 +365,8 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	name = "紫杉长弓"
-	desc = "一把由整形紫杉弓臂制成的坚固战弓。它不易驾驭，但那份 \
-	威力值得付出这番力气。"
+	desc = "一把由整形紫杉弓臂制成的坚固战弓。它不易 \
+	驾驭，但那份  威力值得付出这番力气。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "longbow"
 	slot_flags = ITEM_SLOT_BACK
@@ -384,7 +385,7 @@
 	randomspread = 0
 	spread = 0
 	force = 12
-	damfactor = 1.2
+	damfactor = 1.3
 	accfactor = 0.9
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/getonmobprop(tag)
@@ -482,16 +483,15 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden
 	name = "黑角弓"
-	desc = "北方的黑角赛加兽一旦年岁足够，便会脱落那对长达两米的巨角。随着时日推移，它们会愈发坚硬，\
-		却仍保有一种甚至胜过紫杉的柔韧。守望者偶尔寻得这种角材时，常会将其收集起来，交由制弓大师削整、上弦、处理。这样的传统至今仍有价值，\
-		于是人们仍能看到谷地的守望者自豪地携着他们那种本地特有的黑角弓。"
+	desc = "北方的黑角赛加兽一旦年岁足够，便会脱落那对长达两米的巨角。随着时日推移，它们会愈发坚硬， 却仍保 \
+		有一种甚至胜过紫杉的柔韧。守望者偶尔寻得这种角材时，常会将其收集起来，交由制弓大师削整、上弦、 \
+		处理。这样的传统至今仍有价值， 于是人们仍能看到谷地的守望者自豪地携着他们那种本地特有的黑角弓。"
 	icon_state = "recurve_warden"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden
 	name = "黑角长弓"
-	desc = "北方的黑角赛加兽一旦年岁足够，便会脱落那对长达两米的巨角。随着时日推移，它们会愈发坚硬，\
-		却仍保有一种甚至胜过紫杉的柔韧。守望者偶尔寻得这种角材时，常会将其收集起来，交由制弓大师削整、上弦、处理。最终成品，\
-		便是眼前这样的战弓。"
+	desc = "北方的黑角赛加兽一旦年岁足够，便会脱落那对长达两米的巨角。随着时日推移，它们会愈发坚硬， 却仍保有一种甚至胜过紫杉 \
+		的柔韧。守望者偶尔寻得这种角材时，常会将其收集起来，交由制弓大师削整、上弦、处理。最终成品， 便是眼前这样的战弓。"
 	icon_state = "longbow_warden"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/steppesman

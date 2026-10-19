@@ -29,7 +29,6 @@
 	var/cooldown = 0
 
 	var/emote_environment = -1
-	var/list/prevent_crits
 
 	var/clothing_flags = NONE
 
@@ -58,6 +57,8 @@
 	var/armor_class = ARMOR_CLASS_NONE
 
 	var/naledicolor = FALSE
+	var/chunkcolor = "#5e5e5e"
+	var/material_category = ARMOR_MAT_LEATHER
 
 	var/snouting = FALSE //do we have the snout-snug sprite toggled?
 	var/adjusted_inv_mask = NONE
@@ -633,6 +634,35 @@ BLIND     // can't see anything
 			return 1
 	return 0
 
+/obj/item/clothing/proc/pick_damage_sound(tier)
+	var/picked_sound
+	switch(material_category)
+		if(ARMOR_MAT_PLATE)
+			switch(tier)
+				if(1)
+					picked_sound = 'sound/combat/armor_degrade_plate1.ogg'
+				if(2)
+					picked_sound = 'sound/combat/armor_degrade_plate2.ogg'
+				if(3)
+					picked_sound = 'sound/combat/armor_degrade_plate3.ogg'
+		if(ARMOR_MAT_CHAINMAIL)
+			switch(tier)
+				if(1)
+					picked_sound = 'sound/combat/armor_degrade_chain1.ogg'
+				if(2)
+					picked_sound = 'sound/combat/armor_degrade_chain2.ogg'
+				if(3)
+					picked_sound = 'sound/combat/armor_degrade_chain3.ogg'
+		if(ARMOR_MAT_LEATHER)
+			switch(tier)
+				if(1)
+					picked_sound = 'sound/combat/armor_degrade_leather1.ogg'
+				if(2)
+					picked_sound = 'sound/combat/armor_degrade_leather2.ogg'
+				if(3)
+					picked_sound = 'sound/combat/armor_degrade_leather3.ogg'
+	return (picked_sound ? picked_sound : FALSE)
+
 /obj/item/clothing/take_damage(damage_amount, damage_type = BRUTE, damage_flag, sound_effect, attack_dir, armor_penetration)
 	var/newdam = run_obj_armor(damage_amount, damage_type, damage_flag, attack_dir, armor_penetration)
 	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
@@ -641,23 +671,33 @@ BLIND     // can't see anything
 	var/ratio_newinteg = (eff_currint - newdam) / eff_maxint
 	var/text
 	var/y_offset
+	var/chunkicon
+	var/sfx
 	if(ratio > 0.75 && ratio_newinteg < 0.75)
 		text = "护甲<br><font color = '#8aaa4d'>出现划痕</font>"
 		y_offset = -5
+		sfx = pick_damage_sound(1)
+		chunkicon = "chunkfall1"
 	if(ratio > 0.5 && ratio_newinteg < 0.5)
 		text = "护甲<br><font color = '#d4d36c'>受损</font>"
 		y_offset = 15
+		sfx = pick_damage_sound(2)
+		chunkicon = "chunkfall2"
 	if(ratio > 0.25 && ratio_newinteg < 0.25)
 		text = "护甲<br><font color = '#a8705a'>碎裂</font>"
 		y_offset = 30
+		sfx = pick_damage_sound(3)
+		chunkicon = "chunkfall3"
 	if(text)
+		new /obj/effect/temp_visual/armor_chunk(get_turf(src), 0.7 SECONDS, chunkcolor, chunkicon)
+		playsound(src, sfx, 100, TRUE)
 		filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, -20, y_offset)
 	. = ..()
 
-/obj/proc/generate_tooltip(examine_text, showcrits)
+/obj/proc/generate_tooltip(examine_text)
 	return examine_text
 
-/obj/item/clothing/generate_tooltip(examine_text, showcrits)
+/obj/item/clothing/generate_tooltip(examine_text)
 	if(!armor)	// No armor
 		return examine_text
 
@@ -665,113 +705,26 @@ BLIND     // can't see anything
 	if(armor.getRating("slash") == 0 && armor.getRating("stab") == 0 && armor.getRating("blunt") == 0 && armor.getRating("piercing") == 0)
 		return examine_text
 
-	var/str = ""
-	str += "[colorgrade_rating("🔨 钝击 ", armor.blunt, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🪓 劈砍 ", armor.slash, elaborate = TRUE)]"
-	str += "<br>"
-	str += "[colorgrade_rating("🗡️ 刺击 ", armor.stab, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🏹 穿刺 ", armor.piercing, elaborate = TRUE)] "
+	var/str
+	str += "<b>ABSORPTION:</b> [colorgrade_rating("🔨 BLUNT", armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
+	str += "<b>BLOCK:</b> "
+	str += "[colorgrade_rating("🪓 SLASH", armor.slash, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🗡️ STAB", armor.stab, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🏹 PIERCE", armor.piercing, elaborate = TRUE)]"
+	str += "<br><b>RESIST:</b> [colorgrade_rating("🔥 FIRE", armor.fire, elaborate = TRUE)]"
+	examine_text = "<font color = '#ffffff'>[examine_text]</font>"
+	return SPAN_TOOLTIP_DANGEROUS_HTML(str, examine_text)
 
-	if(showcrits && prevent_crits)
-		str += "<br>———————————————<br>"
-		str += "<font color = '#afaeae'><text-align: center>可防暴击：<br>"
-		var/linebreak_count = 0
-		var/index = 0
-		for(var/flag in prevent_crits)
-			index++
-			if(flag == BCLASS_PICK) //BCLASS_PICK is named "stab", and "stabbing" is its own damage class. Prevents confusion.
-				flag = "凿击"
-			str += ("[list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[flag] || capitalize(flag)] ")
-			linebreak_count++
-			if(linebreak_count >= 3)
-				str += "<br>"
-				linebreak_count = 0
-			else if(index != length(prevent_crits))
-				str += " | "
-		str += "</font>"
-
-	//This makes it appear darker than the rest of examine text. Draws the cursor to it like to a link.
-	examine_text = "<font color = '#808080'>[examine_text]</font>"
-	// Make the armor info clickable; clicking prints full details to chat
-	return "<a href='byond://?src=\ref[src];show_examine=1'>[str]</a>"
-
-// Build the detailed examine string for chat output
-/obj/item/clothing/proc/build_examine_detail(mob/user, showcrits)
-	if(!armor) // No armor
-		return get_examine_string(user)
-
-	var/str = ""
-	str += "[colorgrade_rating("🔨 钝击  ", armor.blunt, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🪓 劈砍  ", armor.slash, elaborate = TRUE)]"
-	str += "<br>"
-	str += "[colorgrade_rating("🗡️ 刺击   ", armor.stab, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🏹 穿刺 ", armor.piercing, elaborate = TRUE)] "
-
-	if(showcrits && prevent_crits)
-		str += "<br>———————————————<br>"
-		str += "<font color = '#afaeae'><text-align: center>可防暴击：<br>"
-		var/linebreak_count = 0
-		var/index = 0
-		for(var/flag in prevent_crits)
-			index++
-			if(flag == BCLASS_PICK)
-				flag = "凿击"
-			str += ("[list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[flag] || capitalize(flag)] ")
-			linebreak_count++
-			if(linebreak_count >= 3)
-				str += "<br>"
-				linebreak_count = 0
-			else if(index != length(prevent_crits))
-				str += " | "
-		str += "</font>"
-
-	var/examine_text = get_examine_string(user)
-	if(examine_text && length(examine_text))
-		str += "<br><font color = '#808080'>[examine_text]</font>"
-	return str
-
-/obj/item/clothing/show_examine_hover_tooltip()
-	if(..())
-		return TRUE
-	if(slot_flags & ITEM_SLOT_HEAD)
-		return TRUE
-	if(slot_flags & (ITEM_SLOT_BACK | ITEM_SLOT_BACKPACK | ITEM_SLOT_BELT | ITEM_SLOT_HIP | ITEM_SLOT_CLOAK))
-		return FALSE
-	return TRUE
-
-/obj/item/clothing/get_hover_examine_stat_lines(mob/user, self_examine = FALSE)
-	var/list/lines = list()
-	if(armor && (armor.getRating("slash") != 0 || armor.getRating("stab") != 0 || armor.getRating("blunt") != 0 || armor.getRating("piercing") != 0))
-		var/armor_class_text = "无"
-		switch(armor_class)
-			if(ARMOR_CLASS_LIGHT)
-				armor_class_text = "轻型"
-			if(ARMOR_CLASS_MEDIUM)
-				armor_class_text = "中型"
-			if(ARMOR_CLASS_HEAVY)
-				armor_class_text = "重型"
-		lines += "<b>护甲等级：</b> [armor_class_text]"
-		lines += "[colorgrade_rating("🔨 钝击", armor.blunt, TRUE)] | [colorgrade_rating("🪓 劈砍", armor.slash, TRUE)]"
-		lines += "[colorgrade_rating("🗡️ 刺击", armor.stab, TRUE)] | [colorgrade_rating("🏹 穿刺", armor.piercing, TRUE)]"
-	if(length(prevent_crits))
-		var/list/prevents = list()
-		for(var/flag in prevent_crits)
-			var/prevent_text = list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[flag] || "[flag]"
-			if(flag == BCLASS_PICK)
-				prevent_text = "凿击"
-			prevents += capitalize(prevent_text)
-		lines += "<b>防止暴击：</b> [prevents.Join(", ")]"
-	if(self_examine)
-		var/true_durability = get_true_durability_percent_text()
-		if(true_durability)
-			lines += "<b>耐久度：</b> [true_durability]"
-	return lines
-
-// Handle clicks from chat to show the examine details
-/obj/item/clothing/Topic(href, href_list)
-	if(href_list["show_examine"])
-		var/mob/user = usr
-		if(user)
-			to_chat(user, build_examine_detail(user, TRUE))
-		return
-	..()
+/obj/item/clothing/proc/get_armor_integ()
+	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
+	var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
+	var/ratio =	(eff_currint / eff_maxint)
+	switch(ratio)
+		if(0.75 to 1)
+			return null
+		if(0.5 to 0.74)
+			return VISMSG_ARMOR_INT_STAGEONE
+		if(0.25 to 0.49)
+			return VISMSG_ARMOR_INT_STAGETWO
+		if(0 to 0.24)
+			return VISMSG_ARMOR_INT_STAGETHREE

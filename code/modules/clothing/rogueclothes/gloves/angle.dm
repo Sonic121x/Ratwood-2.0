@@ -2,8 +2,7 @@
 	name = "重型皮手套"
 	desc = "一副更厚重、额外加垫的皮手套。看起来很能挨打。近战防护尚可，耐用度也不错。"
 	icon_state = "angle"
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_LEATHER
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER

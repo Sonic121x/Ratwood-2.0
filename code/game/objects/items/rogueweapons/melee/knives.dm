@@ -10,17 +10,17 @@
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = 0
+	penfactor = PEN_NONE
 	chargetime = 0
 	swingdelay = 0
-	clickcd = 10
+	clickcd = CLICK_CD_QUICK
 	item_d_type = "slash"
 
 /// For unusually heavy daggers with a strong cutting edge.
 /datum/intent/dagger/cut/heavy
 	name = "重切"
 	damfactor = 1.2
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	clickcd = 11
 
 /datum/intent/dagger/cut/light
@@ -35,24 +35,27 @@
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 40
+	penfactor = PEN_MEDIUM
 	chargetime = 0
-	clickcd = 8
+	clickcd = CLICK_CD_QUICK
 	item_d_type = "stab"
 
 // A slightly weaker thrust for daggers with a curved blade, or which otherwise aren't very good at stabbing.
 /datum/intent/dagger/thrust/weak
 	name = "偏锋刺"
 	damfactor = 0.8
+	swingdelay = 0.5 SECONDS
+	penfactor = PEN_MEDIUM // Slightly more pen, to compensate in penetration for the lower damage.
+	clickcd = CLICK_CD_QUICK
 
 /datum/intent/dagger/thrust/pick
 	name = "冰镐刺"
 	icon_state = "inpick"
 	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 80
-	clickcd = 14
-	swingdelay = 12
+	penfactor = PEN_BSTEEL
+	clickcd = 1.4 SECONDS
+	swingdelay = 1.2 SECONDS
 	damfactor = 1.1
 	blade_class = BCLASS_PICK
 
@@ -64,7 +67,7 @@
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
 	damfactor = 0.6 // Less damage than a normal attack I don't want this to be better than stabbing
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	clickcd = 14
 	recovery = 10
 	item_d_type = "blunt"
@@ -79,7 +82,7 @@
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = 10
+	penfactor = PEN_LIGHT
 	damfactor = 1.5
 	swingdelay = 5
 	clickcd = 10
@@ -87,7 +90,7 @@
 
 /datum/intent/dagger/chop/cleaver
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 30
+	penfactor = PEN_MEDIUM
 
 //knife and dagger objs ฅ^•ﻌ•^ฅ
 
@@ -200,7 +203,7 @@
 	icon_state = "inpick"
 	attack_verb = list("刺击", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 55
+	penfactor = PEN_MEDIUM
 	clickcd = 12
 	swingdelay = 6 //Halfway point between a 'stab' and 'pick'.
 	damfactor = 1.05
@@ -213,7 +216,7 @@
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = 15
+	penfactor = PEN_LIGHT
 	damfactor = 1.3
 	swingdelay = 5
 	clickcd = 10
@@ -340,7 +343,7 @@
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	damfactor = 0.9
 	chargetime = 0
 	clickcd = 8
@@ -354,7 +357,7 @@
 	blade_class = BCLASS_CHOP
 	reach = 1
 	swingdelay = 10
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 2
 	clickcd = CLICK_CD_CHARGED
 	no_early_release = TRUE
@@ -365,8 +368,8 @@
 
 /obj/item/rogueweapon/huntingknife/combat/messer //Just as Grenzelhoft intended
 	name = "战斗短刀"
-	desc = "一柄尺寸偏小的钢制短刀，勉强能塞进常规匕首鞘里，却是任何猎人的救命稻草。它没有可供突刺的刀尖——但仅凭刃口就足够锋利，能立刻劈开大多数麻烦。 \
-	它虽由格伦泽尔霍夫特移民带来，如今却被视作费伦提亚的常备之物——用对的工具，办对的事。"
+	desc = "一柄尺寸偏小的钢制短刀，勉强能塞进常规匕首鞘里，却是任何猎人的救命稻草。它没有可供突刺的刀尖——但仅凭刃口就足够锋利 \
+	，能立刻劈开大多数麻烦。  它虽由格伦泽尔霍夫特移民带来，如今却被视作费伦提亚的常备之物——用对的工具，办对的事。"
 	possible_item_intents = list(/datum/intent/dagger/cut/rend, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/sucker_punch)
 	icon_state = "minimesser"
 	sheathe_icon = "minimesser"
@@ -386,15 +389,15 @@
 /datum/intent/dagger/thrust/quick
 	name = "迅捷突刺"
 	attack_verb = list("突刺", "捅刺")
-	penfactor = 10
+	penfactor = PEN_LIGHT
 	intent_intdamage_factor = 0.1
 	clickcd = 4 //Halved penetration, doubled attack speed. This is either going to be extremely funny, or extremely evil.
 	misscost = 10
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris
 	name = "波刃匕首"
-	desc = "一把刀身呈独特火焰状的钢制大匕首。阿斯特拉塔的祭司与神职者珍视它，用作仪式器具，尤其是在献祭典礼上； \
-	当然，只是象征意义上的。"
+	desc = "一把刀身呈独特火焰状的钢制大匕首。阿斯特拉塔的祭司与神职者珍视它 \
+	，用作仪式器具，尤其是在献祭典礼上；  当然，只是象征意义上的。"
 	icon_state = "kris"
 	sheathe_icon = "dagger_trainer"
 	possible_item_intents = list(/datum/intent/dagger/cut/light, /datum/intent/dagger/thrust, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/sucker_punch)
@@ -439,8 +442,8 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris/zizo
 	name = "阿凡廷匕首"
-	desc = "是时候让你终于觐见你的主了。 </br> 献祭的那一刻；匕首锋刃与心腔之间那难以察觉的毫厘之差，凝结成 \
-	一把淌血的黑钢手术刀。在祂所信赖的门徒手中，它是对秩序与理智的渎神抗命。"
+	desc = "是时候让你终于觐见你的主了。 </br> 献祭的那一刻；匕首锋刃与心腔之间那难以察觉的毫 \
+	厘之差，凝结成  一把淌血的黑钢手术刀。在祂所信赖的门徒手中，它是对秩序与理智的渎神抗命。"
 	icon_state = "zizodagger"
 	sheathe_icon = "zizodagger"
 	force = 25
@@ -507,12 +510,12 @@
 *
 */
 /datum/intent/dagger/thrust/wood
-	penfactor = 15 //it is still a pointy piece of wood!
+	penfactor = PEN_NONE
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 
 /datum/intent/dagger/thrust/pick/wood
-	penfactor = 35 //it is still a pointy piece of wood!
+	penfactor = PEN_NONE
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 
@@ -569,8 +572,8 @@
 	force = 22 // Slightly more damage than a steel dagger.
 	max_integrity = 130 // Slightly less integrity than a steel dagger.
 	name = "守望者赛克斯"
-	desc = "一把磨损明显的赛克斯短刀，由守望者兄弟会同时当作工具与武器使用。它砍倒人的效率几乎 \
-	和劈开灌木一样高，只是没有更现代的钢制工具那么耐用。相比突刺，它更适合挥砍。"
+	desc = "一把磨损明显的赛克斯短刀，由守望者兄弟会同时当作工具与武器使用。它砍倒人的效率几 \
+	乎  和劈开灌木一样高，只是没有更现代的钢制工具那么耐用。相比突刺，它更适合挥砍。"
 	icon_state = "warden_machete"
 	sheathe_icon = "warden_machete"
 
@@ -651,8 +654,8 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/blacksteel/heavy
 	name = "黑钢穿甲匕首"
-	desc = "一柄华丽的黑钢穿甲匕首。弯曲的握柄据说能在与板甲对手的生死搏斗中，\
-	自然而然地提升瞄准的精准度。"
+	desc = "一柄华丽的黑钢穿甲匕首。弯曲的握柄据说能在与板甲 \
+	对手的生死搏斗中， 自然而然地提升瞄准的精准度。"
 	icon_state = "bs_misericorde"
 	sheathe_icon = "bs_misericorde"
 	force = 25
@@ -687,8 +690,8 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kazengun
 	name = "钢短刀"
-	desc = "一把自风郡群岛进口的钢制短刀。坚实的刀身带着微微弧度，嵌入装饰华美的圆形护手之中。打蜡的 \
-	绞绳缠柄让握持更加稳固。"
+	desc = "一把自风郡群岛进口的钢制短刀。坚实的刀身带着微微弧度，嵌入 \
+	装饰华美的圆形护手之中。打蜡的  绞绳缠柄让握持更加稳固。"
 	icon_state = "eastdagger"
 	sheathe_icon = "tanto"
 	picklvl = 1.2
@@ -861,7 +864,8 @@
 		force = 20
 		force_dynamic = 20
 		wdefense = 6
-		wdefense_dynamic = 6
+		update_force_dynamic()
+		update_wdefense_dynamic()
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
 		icon_state = "navaja_o"
@@ -880,7 +884,7 @@
 		attack_verb = list("顶撞", "戳击")
 		sharpness = IS_BLUNT
 		wdefense = 2
-		wdefense_dynamic = 2
+		update_wdefense_dynamic()
 		equip_delay_self = 0 SECONDS
 		unequip_delay_self = 0 SECONDS
 		inv_storage_delay = 0 SECONDS
@@ -901,7 +905,7 @@
 	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 	if(extended)
 		force = 20
-		force_dynamic = 20
+		update_force_dynamic()
 		wdefense = 7
 		wdefense_dynamic = 7
 		w_class = WEIGHT_CLASS_NORMAL
@@ -915,14 +919,14 @@
 		inv_storage_delay = initial(inv_storage_delay)
 	else
 		force = 5
-		force_dynamic = 5
+		update_force_dynamic()
 		w_class = WEIGHT_CLASS_SMALL
 		throwforce = 5
 		icon_state = "mtnavaja_c"
 		attack_verb = list("顶撞", "戳击")
 		sharpness = IS_BLUNT
 		wdefense = 2
-		wdefense_dynamic = 2
+		update_wdefense_dynamic()
 		equip_delay_self = 0 SECONDS
 		unequip_delay_self = 0 SECONDS
 		inv_storage_delay = 0 SECONDS
@@ -957,8 +961,8 @@
 
 /obj/item/rogueweapon/huntingknife/throwingknife/kazengun
 	name = "东方投刃"
-	desc = "一把由整块金属磨制并开锋而成的四尖投刀。它的设计正是为了解决基础投刃的一项弱点； \
-	更多尖端意味着它更容易尖端先着地。 </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
+	desc = "一把由整块金属磨制并开锋而成的四尖投刀。它的设计正是为了解决基础投刃的一项弱点；  更多 \
+	尖端意味着它更容易尖端先着地。 </br>这把匕首可以藏在靴子里，需要时便能迅速抽出。"
 	icon_state = "easttossblade"
 	picklvl = 0.8
 

@@ -1,322 +1,20 @@
-//intent datums ฅ^•ﻌ•^ฅ
-
-/datum/intent/sword/cut
-	name = "挥斩"
-	icon_state = "incut"
-	attack_verb = list("切开", "挥砍")
-	animname = "cut"
-	blade_class = BCLASS_CUT
-	chargetime = 0
-	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
-	swingdelay = 0
-	damfactor = 1.1
-	item_d_type = "slash"
-
-/datum/intent/sword/cut/long
-	clickcd = CLICK_CD_QUICK // Longsword 2H cut — faster than default, no extra damage
-
-/datum/intent/sword/cut/arming
-	damfactor = 1.2
-	clickcd = CLICK_CD_QUICK // Versatile, this create 26 EDPS instead of 20. But still easily beaten by the Sabre
-
-/datum/intent/sword/cut/militia
-	penfactor = 30
-	damfactor = 1.2
-	chargetime = 0.2
-
-/datum/intent/sword/cut/short
-	clickcd = 9
-	damfactor = 1
-
-/datum/intent/sword/cut/light
-	damfactor = 0.9
-
-/datum/intent/sword/chop/militia
-	penfactor = 50
-	chargetime = 0.5
-	swingdelay = 0
-	damfactor = 1.0
-
-//this is comperable to militia chop, might swap from swing delay to charge since the latter is imo more fun to use and throttles damage output better since it prevents swift intent click reduction
-/datum/intent/sword/chop/heavy
-	penfactor = 50
-	swingdelay = 10
-	damfactor = 1.3
-
-/datum/intent/sword/thrust
-	name = "刺击"
-	icon_state = "instab"
-	attack_verb = list("刺击")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 20
-	chargetime = 0
-	swingdelay = 0
-	item_d_type = "stab"
-
-/datum/intent/sword/thrust/short
-	clickcd = 8
-	damfactor = 1.1
-	penfactor = 30
-
-/datum/intent/sword/chop/sabre//falx chop but better, might slap a charge on this so it's like militia chop
-	damfactor = 1.15
-	penfactor = 40
-
-/datum/intent/sword/thrust/arming
-	clickcd = 10 // Less than rapier
-	penfactor = 35 // 22 + 35 = 57. Beats light leather slightly more than rapier per strike, but less strike
-
-/datum/intent/sword/thrust/heavy
-	name = "重刺"
-	icon_state = "inlunge"
-	penfactor = 60//on azure this is supposed to pen blacksteel so 60 + 30 wielded comes to 90... 
-	damfactor = 1.3
-	swingdelay = 0.9 SECONDS
-
-/datum/intent/sword/thrust/long
-	penfactor = 30 // 2h Longsword already have 30 damage. This let it pierce light armor easily
-	// Their cut is actually pretty decent when 2handed and should be inferior to zwei.
-
-/datum/intent/sword/thrust/heavy
-	name = "重刺"
-	icon_state = "inlunge"
-	penfactor = 50
-	damfactor = 1.3
-	swingdelay = 0.9 SECONDS
-
-/datum/intent/sword/thrust/long/deep
-	name = "深突刺"
-	icon_state = "inlunge"
-	penfactor = 20
-	damfactor = 1.2
-	swingdelay = 1.4 SECONDS
-	misscost = 10
-	clickcd = CLICK_CD_CHARGED
-
-/datum/intent/sword/thrust/krieg
-	damfactor = 0.9
-
-// Freifechter Longsword intents //
-
 // The stock longsword fighting kit. A TRAIT_LONGSWORDSMAN only replaces these with the master intents
 // below, so any /sword/long subtype that redefines these won't work for a frei. Kept as defines so the
 // type below and uses_stock_longsword_kit() don't drift apart.
 #define LONGSWORD_STOCK_INTENTS list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, SWORD_STRIKE)
-#define LONGSWORD_STOCK_GRIPPED_INTENTS list(/datum/intent/sword/cut/long, /datum/intent/sword/thrust/long, /datum/intent/sword/chop/long, /datum/intent/sword/peel)
-
-/datum/intent/sword/cut/master
-	name = "正手斩"
-	icon_state = "incutmaster"
-	desc = "用剑的正刃攻击对手，穿透最轻薄的护甲，但对护甲本身的破坏力较弱。"
-	attack_verb = list("娴熟地切开", "巧妙地割开", "灵巧地挥砍")
-	// You do more damage to exposed areas than stabbing, but your damage to armor is slightly less effective than a normal longsword.
-	// This effectively means you do 1.2x damage to flesh, but 0.9x damage to armor.
-	damfactor = 1.2
-	penfactor = 50
-	intent_intdamage_factor = 0.75
-
-/datum/intent/sword/chop/long/master
-	name = "下劈斩"
-	icon_state = "inchop"
-	desc = "挥剑划出大弧，以正刃劈向对手，但也会暴露自身破绽。对盾牌的破坏力更强，甚至能穿透硬皮甲。"
-	attack_verb = list("狂怒地砍击", "有力地劈开", "凶猛地劈砍")
-	// This is almost x2 slower than a regular longsword's chop, giving the opponent more time to riposte you.
-	// This however will penetrate all Light AC armor except for brigandine parts. Also does x2 damage to shields.
-	damfactor = 1.6
-	penfactor = 40
-	swingdelay = 0.8 SECONDS
-	clickcd = CLICK_CD_CHARGED
-
-/datum/intent/sword/thrust/long/master
-	name = "进步突刺"
-	icon_state = "instabmaster"
-	desc = "摆出长架势，向前进步时借整个上身之力突刺，充分发挥刺击的威力。"
-	attack_verb =  list("娴熟地刺穿", "巧妙地穿刺", "灵巧地刺击")
-	damfactor = 1.35
-
-/datum/intent/sword/thrust/long/deep/master
-	name = "深入突刺"
-	icon_state = "inlunge"
-	desc = "越过对手的武器，精确刺向护甲缝隙，以杀伤对手而非破坏护甲为目的。出招时会暴露自身破绽。"
-	attack_verb = list("谨慎地穿刺", "精准地突刺", "准确地贯穿")
-	// Stab someone directly. 50% damage to armor.
-	// Best used like an estoc.
-	penfactor = 50
-	damfactor = 1.1
-	swingdelay = 0.6 SECONDS
-	intent_intdamage_factor = 0.5
-	clickcd = CLICK_CD_MELEE
-	misscost = 0
-	blade_class = BCLASS_PICK //temporary fix until I introduce halfswording
-
-/datum/intent/effect/daze/longsword/clinch
-	name = "贴身柄击"
-	desc = "贴近对手迫使其缠斗，趁其分心时用十字护手横击面部。适合对付中了诱招或筋疲力尽的对手。"
-	icon_state = "inpunish"
-	attack_verb = list("强行贴身横斩")
-	animname = "strike"
-	target_parts = list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE)
-	blade_class = BCLASS_BLUNT
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	damfactor = 0.7
-	clickcd = 10
-	recovery = 6
-	item_d_type = "blunt"
-	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
-	parriable_intent = FALSE
-	dodgeable_intent = FALSE
-	intent_effect = /datum/status_effect/debuff/dazed/swipe
-
-/datum/intent/sword/thrust/long/halfsword
-	name = "半剑式"
-	icon_state = "inimpale"
-	desc = "用一只手握住长剑未开刃的部分，借力发动精确而有力的刺击，钻入板甲缝隙并穿透锁子甲。"
-	attack_verb = list("摆出半剑架势刺穿", "摆出半剑架势贯穿")
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 80
-	clickcd = 12
-	swingdelay = 16
-	damfactor = 0.9
-	blade_class = BCLASS_PICK
-
-/datum/intent/sword/thrust/long/halfsword/lesser
-	name = "半剑式慢刺"
-	clickcd = 22
-
-/datum/intent/effect/daze/longsword
-	name = "反握柄击"
-	desc = "迅速翻转武器，用钝端猛击对手的喉咙、嘴或鼻子，使其呼吸受阻。出招缓慢，可通过防守动作取消，但能施加持久的削弱效果。"
-	attack_verb = list("娴熟地猛击")
-	intent_effect = /datum/status_effect/debuff/dazed/longsword
-	target_parts = list(BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_NECK)
-	damfactor = 0.3
-	clickcd = 20
-	swingdelay = 1.3 SECONDS
-
-/datum/intent/effect/daze/longsword2h
-	name = "怒击突刺"
-	desc = "挥击架开对手的武器，顺势向前刺向眼睛，严重干扰其视力。只能双手持剑施展。"
-	attack_verb = list("娴熟地戳刺")
-	intent_effect = /datum/status_effect/debuff/dazed/longsword2h
-	target_parts = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE)
-	blade_class = BCLASS_STAB
-	damfactor = 1 //they're stabbing you and it's going to hurt a little
-	clickcd = 20
-	swingdelay = 1 SECONDS
-
-/datum/intent/sword/thrust/blunt
-	blade_class = BCLASS_BLUNT
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	attack_verb = list("戳击", "戳刺")
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	item_d_type = "blunt"
-	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
-
-/datum/intent/sword/strike
-	name = "柄击"
-	icon_state = "instrike"
-	attack_verb = list("猛砸", "敲击")
-	animname = "strike"
-	blade_class = BCLASS_BLUNT
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	swingdelay = 0
-	damfactor = NONBLUNT_BLUNT_DAMFACTOR
-	item_d_type = "blunt"
-	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
-	blunt_chipping = TRUE
-	blunt_chip_strength = BLUNT_CHIP_MINUSCULE
-
-// A weaker strike for sword with high damage so that it don't end up becoming better than mace
-
-// A weaker strike for sword with high damage so that it don't end up becoming better than mace
-/datum/intent/sword/strike/bad
-	damfactor = 0.7
-
-/datum/intent/sword/peel
-	name = "剥甲"
-	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>剥甲攻击</font>")
-	animname = "cut"
-	blade_class = BCLASS_PEEL
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	swingdelay = 0
-	damfactor = 0.01
-	item_d_type = "slash"
-	peel_divisor = 4
-
-/datum/intent/sword/peel/big
-	name = "巨剑剥甲"
-	attack_verb = list("<font color ='#e7e7e7'>无力地剥甲攻击</font>")
-	reach = 2
-	peel_divisor = 5
-
-/datum/intent/sword/peel/weak
-	name = "弱剥甲"
-	peel_divisor = 8
-
-/datum/intent/sword/chop
-	name = "劈砍"
-	icon_state = "inchop"
-	attack_verb = list("砍击", "劈砍")
-	animname = "chop"
-	blade_class = BCLASS_CHOP
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 30
-	swingdelay = 8
-	damfactor = 1.0
-	item_d_type = "slash"
-
-/datum/intent/sword/chop/short
-	damfactor = 0.9
-
-/datum/intent/sword/chop/long
-	damfactor = 1.2
-
-/datum/intent/sword/cut/falx
-	penfactor = 20
-
-/datum/intent/sword/chop/falx
-	penfactor = 40
-
-/datum/intent/sword/cut/krieg
-	damfactor = 1.2
-	clickcd = 10
-
-/datum/intent/sword/chop///falx chop but better, might slap a charge on this so it's like militia chop
-	damfactor = 1.15
-	penfactor = 40
-
-/datum/intent/sword/thrust/krieg
-	damfactor = 0.8
-
-/datum/intent/rend/krieg
-	intent_intdamage_factor = 0.2
-	sharpness_penalty = 2
-
-/datum/intent/rend/krieg/short
-	damfactor = 1.8
-	swingdelay = 2
-
-/datum/intent/rend/apophis
-	damfactor = 2.2//lesser damfactor than rend but lacking the sharp penantly of kriegmesser rend
-	intent_intdamage_factor = 0.2
-
+#define LONGSWORD_STOCK_GRIPPED_INTENTS list(/datum/intent/sword/cut/long, /datum/intent/sword/thrust/long, /datum/intent/sword/chop/long, /datum/intent/sword/thrust/long/deep)
+#define LONGSWORD_STOCK_ALT_GRIPS list(/datum/alt_grip/mordhau/sword, /datum/alt_grip/halfsword)
 //sword objs ฅ^•ﻌ•^ฅ
 
 /obj/item/rogueweapon/sword
 	name = "单手剑"
 	desc = "一柄装有十字护手的长钢剑。数代以来，单手剑一直都是普赛多尼亚最经典的战争兵器。"
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	alt_grips = null
 	force = 22
 	force_wielded = 25
-	possible_item_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike, /datum/intent/sword/peel)
-	gripped_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike)
 	damage_deflection = 14
 	icon_state = "sword1"
 	sheathe_icon = "sword1"
@@ -385,7 +83,7 @@
 	name = "法尔克斯弯刀"
 	desc = "一种由农用镰刀演化而来的奇特弯剑。它的刃口向内弯曲，因此很适合切割与劈砍。"
 	force = 22
-	possible_item_intents = list(/datum/intent/sword/cut/falx,  /datum/intent/sword/chop/falx, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut/falx,  /datum/intent/sword/chop/falx, /datum/intent/sword/strike)
 	icon_state = "falx"
 	max_blade_int = 250
 	max_integrity = 125
@@ -434,13 +132,13 @@
 
 /obj/item/rogueweapon/sword/long
 	name = "长剑"
-	desc = "一件致命而平衡完美的武器。长剑是流传于整个普赛多尼亚无数传说与神话中的主角，常见于贵族之手，也仍被数量日渐稀少的大师决斗家所持。\
-		它在格伦泽尔霍夫特与伊特鲁斯卡诸帝国中具有极高文化意义，许多传奇剑士都在那里开创并完善了沿用至今的战技。"
+	desc = "一件致命而平衡完美的武器。长剑是流传于整个普赛多尼亚无数传说与神话中的主角，常见于贵族之手，也仍被数量日渐稀少的大师 \
+		决斗家所持。 它在格伦泽尔霍夫特与伊特鲁斯卡诸帝国中具有极高文化意义，许多传奇剑士都在那里开创并完善了沿用至今的战技。"
 	force = 25
 	force_wielded = 30
 	possible_item_intents = LONGSWORD_STOCK_INTENTS
 	gripped_intents = LONGSWORD_STOCK_GRIPPED_INTENTS
-	alt_intents = list(/datum/intent/sword/strike, /datum/intent/sword/bash, /datum/intent/effect/daze)
+	alt_grips = LONGSWORD_STOCK_ALT_GRIPS
 	icon_state = "longsword"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	item_state = "longsword"
@@ -459,7 +157,7 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	max_blade_int = 280
+	max_blade_int = 330
 	wdefense_wbonus = 4
 	smeltresult = /obj/item/ingot/steel
 	special = /datum/special_intent/side_sweep
@@ -468,6 +166,7 @@
 	/// Two-handed intents a TRAIT_LONGSWORDSMAN fights with.
 	var/list/master_gripped_intents = list(/datum/intent/sword/cut/master, /datum/intent/sword/thrust/long/master, /datum/intent/sword/chop/long/master, /datum/intent/sword/thrust/long/deep/master)
 	/// Alt grips a TRAIT_LONGSWORDSMAN gets.
+	var/list/master_alt_grips = list(/datum/alt_grip/mordhau/sword/frei, /datum/alt_grip/halfsword/frei)
 	/// Whether this sword is valid for TRAIT_LONGSWORDSMAN
 	var/master_trainable = FALSE
 	/// Flag for if the master intents are active, e.g., this is being held by someone with TRAIT_LONGSWORDSMAN.
@@ -489,6 +188,8 @@
 		return FALSE
 	if(!compare_list(gripped_intents, LONGSWORD_STOCK_GRIPPED_INTENTS))
 		return FALSE
+	if(!compare_list(alt_grips, LONGSWORD_STOCK_ALT_GRIPS))
+		return FALSE
 	return TRUE
 
 /obj/item/rogueweapon/sword/long/equipped(mob/user, slot, initial = FALSE)
@@ -500,6 +201,13 @@
 	if(QDELETED(src))
 		return
 	update_master_training(user, FALSE)
+
+// The trait can be granted after the sword was equipped (e.g. outfits equip before traits are applied),
+// so re-check on every alt grip attempt to make sure the master alt grips are the ones being cycled.
+/obj/item/rogueweapon/sword/long/cycle_altgrip(mob/living/carbon/user, direction = 1)
+	if(user)
+		update_master_training(user, TRUE)
+	return ..()
 
 /// Swaps the master kit in while a TRAIT_LONGSWORDSMAN has the sword in hand, and back out the moment
 /// it leaves their hands - the sword is not special in any way, the fencer is.
@@ -514,17 +222,19 @@
 	if(should_train)
 		possible_item_intents = master_item_intents.Copy()
 		gripped_intents = master_gripped_intents.Copy()
+		alt_grips = length(master_alt_grips) ? master_alt_grips.Copy() : null
 	else
 		// master_trainable is only ever set on a sword still carrying the stock kit so we give it the stock back.
 		possible_item_intents = LONGSWORD_STOCK_INTENTS
 		gripped_intents = LONGSWORD_STOCK_GRIPPED_INTENTS
+		alt_grips = LONGSWORD_STOCK_ALT_GRIPS
 	master_training_active = should_train
 
 /obj/item/rogueweapon/sword/long/broadsword
 	name = "阔剑"
-	desc = "一柄致命而重心均衡的武器。阔剑——人们更常称它为“一手半剑”——自远古以来便忠心侍奉着 \
-	普赛多尼亚的剑士，伴随他们与人与怪物交锋。它是岩丘最伟大的 \
-	文化标志之一，仅次于“一赞尼一杯”的欢乐时段，以及“为鸡毛蒜皮的分歧取人性命”。"
+	desc = "一柄致命而重心均衡的武器。阔剑——人们更常称它为“一手半剑”——自远古以来便忠 \
+	心侍奉着  普赛多尼亚的剑士，伴随他们与人与怪物交锋。它是岩丘最伟大的  文 \
+	化标志之一，仅次于“一赞尼一杯”的欢乐时段，以及“为鸡毛蒜皮的分歧取人性命”。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "broadsword"
 	sheathe_icon = "broadsword"
@@ -534,6 +244,7 @@
 	wdefense_wbonus = 3 // Same defense when one-handed, but slightly reduced wielded defense compared to the longsword.
 	possible_item_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/cut/light, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/cut/light, /datum/intent/sword/strike)
+	alt_grips = list(/datum/alt_grip/mordhau/broadsword)
 	smeltresult = /obj/item/ingot/iron //Sidegrade of the longswords and battle axes - non-blunt attacks hit harder, but are always telegraphed and swing-delayed.
 	special = /datum/special_intent/axe_swing//seemed appropriate
 
@@ -550,9 +261,9 @@
 
 /obj/item/rogueweapon/sword/long/broadsword/steel
 	name = "钢制阔剑"
-	desc = "一柄致命而重心均衡的武器。阔剑——人们更常称它为“一手半剑”——自远古以来便忠心侍奉着 \
-	普赛多尼亚的剑士，伴随他们与人与怪物交锋。瓦洛里亚的守夜人以 \
-	使用这种钢刃版本而闻名：为将不死不休的围城者彻底送入安息，这是一笔昂贵的必要开销。"
+	desc = "一柄致命而重心均衡的武器。阔剑——人们更常称它为“一手半剑”——自远古以来便忠 \
+	心侍奉着  普赛多尼亚的剑士，伴随他们与人与怪物交锋。瓦洛里亚的守夜人以  使用 \
+	这种钢刃版本而闻名：为将不死不休的围城者彻底送入安息，这是一笔昂贵的必要开销。"
 	icon_state = "sbroadsword"
 	sheathe_icon = "sbroadsword"
 	max_blade_int = 330 //Sharper than a longsword, but with reduced defense. The use of steel balances its integrity out with a slight +10 bonus.
@@ -566,16 +277,16 @@
 	force = 5
 	force_wielded = 8
 	sharpness = IS_BLUNT
-	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/sword/thrust/blunt, /datum/intent/sword/peel/weak)
-	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/sword/thrust/blunt, /datum/intent/sword/peel/weak)
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/sword/thrust/blunt)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/sword/thrust/blunt, /datum/intent/sword/strike/penalty, /datum/intent/sword/strike/cancel)
 	icon_state = "feder"
 	throwforce = 5
 	thrown_bclass = BCLASS_BLUNT
 
 /obj/item/rogueweapon/sword/long/blacksteel
 	name = "黑钢长剑"
-	desc = "一柄色泽暗沉、光润如镜的利刃。\
-			剑柄由罗莎木枝雕刻而成。二者相配，便能在破空时吟唱。\
+	desc = "一柄色泽暗沉、光润如镜的利刃。 剑柄由罗莎 \
+			木枝雕刻而成。二者相配，便能在破空时吟唱。  \
 			持此剑者，可在整个普赛多尼亚谱写一曲传奇。"
 	force = 27
 	force_wielded = 33
@@ -839,6 +550,8 @@
 
 /obj/item/rogueweapon/sword/long/getonmobprop(tag)
 	. = ..()
+	if(tag == "altgrip" && .)
+		return .
 	if(tag)
 		switch(tag)
 			if("gen") return list("shrink" = 0.5, "sx" = -14, "sy" = -8, "nx" = 15, "ny" = -7, "wx" = -10, "wy" = -5, "ex" = 7, "ey" = -6, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = -13, "sturn" = 110, "wturn" = -60, "eturn" = -30, "nflip" = 1, "sflip" = 1, "wflip" = 8, "eflip" = 1)
@@ -890,8 +603,8 @@
 
 /obj/item/rogueweapon/sword/arming/zizo
 	name = "阿凡泰因单手剑"
-	desc = "大罪凝作结晶的十字架。以她之名，你的意志将加诸于那些信奉次等神祇之人；而借你 \
-	之手，他们将向野心屈膝。"
+	desc = "大罪凝作结晶的十字架。以她之名，你的意志将加诸于那些 \
+	信奉次等神祇之人；而借你  之手，他们将向野心屈膝。"
 	icon_state = "zizoarming"
 	sheathe_icon = "zizoarming"
 	unenchantable = TRUE
@@ -983,7 +696,7 @@
 	desc = "一把由诡异钢材锻成的不洁长剑。绿色结晶团块覆盖着剑刃与柄首，它的锋口与锯齿比任何大师剑匠锻出的兵刃都更坚硬、更锋利。"
 	force = 40
 	force_wielded = 55
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "vlord"
 	item_state = "vlord"
@@ -1011,8 +724,8 @@
 	desc = "一把尺寸颇大却出奇灵活的双手弯刀。它与普赛多尼亚西北部的长剑材质相近，但明显更加轻盈。"
 	force = 26
 	force_wielded = 31
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/peel)
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/chop, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "marlin"
 	item_state = "marlin"
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
@@ -1038,10 +751,10 @@
 	name = "行刑长剑"
 	desc = "一柄沉重的阔剑，锋刃锐利得令人胆寒，专为将头颅从肩颈上斩落而造。由于它本质上是刑具而非战阵兵器，\
 	它并没有多数制式阔剑那种便于刺击的剑尖。不过，若你有足够的力量挥动这样一柄武器，\
-	那这多半也拦不住你另寻他法。"
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/exe, /datum/intent/sword/peel)
-	gripped_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/sword/cut/exe/cleave, /datum/intent/sword/cut/exe/sweep, /datum/intent/rend)
-	alt_intents = null
+	then that probably won't stop you from finding a way. Wielding the sword in a single hand enables unwieldy, armor-penetrating strikes. Wielding it with two hands enables hefty, flesh-sundering attacks."
+	possible_item_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/cut, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/thrust/exe, /datum/intent/sword/cut/exe/cleave, /datum/intent/sword/cut/exe/sweep,	/datum/intent/sword/cut/rend)
+	alt_grips = null
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "exe"
 	minstr = 12
@@ -1054,7 +767,7 @@
 
 /datum/intent/sword/thrust/exe
 	swingdelay = 4	//Slight delay to stab; big and heavy.
-	penfactor = BLUNT_DEFAULT_PENFACTOR //Flat tip? I don't know, man. This intent is won't penetrate anything but it damages armor more.
+	penfactor = PEN_NONE //Flat tip? I don't know, man. This intent is won't penetrate anything but it damages armor more.
 	intent_intdamage_factor = 1.3 //This is basically like getting hit by a mace.
 
 /datum/intent/sword/cut/exe/cleave
@@ -1077,12 +790,15 @@
 
 /obj/item/rogueweapon/sword/long/exe/astrata
 	name = "“曜日审判”"
-	desc = "一柄极其罕见的行刑长剑，通体覆有黄金与黄铜。两道分离的剑刃向外伸展，并在华饰繁复的护手附近重新汇合。这把武器象征着秩序。"
+	desc = "一柄极其罕见的行刑长剑，通体覆有黄金与黄铜。两道分离的剑刃向 \
+	外伸展，并在华饰繁复的护手附近重新汇合。这把武器象征着秩序。"
 	icon_state = "astratasword"
 	force_wielded = 33//As above.
 
 /obj/item/rogueweapon/sword/long/exe/getonmobprop(tag)
 	. = ..()
+	if(tag == "altgrip" && .)
+		return .
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -1097,8 +813,9 @@
 /obj/item/rogueweapon/sword/long/exe/cloth
 	icon_state = "terminusest"
 	name = "“终焉已至”"
-	desc = "一柄华饰的行刑长剑，饰有黄金剑首与护手。一条染血的布条缠绕在剑根处，始终备着，只为在受刑者迎来最终审判前，让剑刃一尘不染。\
-	粗壮的折角剑身沿脊刻着一行铭文；</br>『吾举此剑，愿罪人得享永生，如主所赐。』"
+	desc = "一柄华饰的行刑长剑，饰有黄金剑首与护手。一条染血的布条缠绕在剑根处， \
+	始终备着，只为在受刑者迎来最终审判前，让剑刃一尘不染。 粗壮的折角剑身 \
+	沿脊刻着一行铭文；</br>『吾举此剑，愿罪人得享永生，如主所赐。』"
 	smeltresult = /obj/item/ingot/gold // It is the most valuable component
 	max_blade_int = 363
 	smelt_bar_num = 2
@@ -1113,8 +830,8 @@
 /obj/item/rogueweapon/sword/long/exe/silver
 	name = "银制行刑剑"
 	desc = "一柄华美耀眼的行刑剑，巨大的银质剑刃安装在精雕细刻的 \
-	握柄之上。尽管柄上的刻纹会硌进你的手掌，据说唯有当镀银的刃锋 \
-	落在无辜者的颈上时，这种磨砺才会见血。"
+	  握柄之上。尽管柄上的刻纹会硌进你的手掌，据说唯有当 \
+	镀银的刃锋  落在无辜者的颈上时，这种磨砺才会见血。"
 	icon_state = "silvexe"
 	force = 22
 	force_wielded = 25
@@ -1135,9 +852,9 @@
 
 /obj/item/rogueweapon/sword/long/exe/psy
 	name = "普赛顿行刑剑"
-	desc = "一柄受过祝圣的行刑剑，巨大的银质剑刃安装在精雕细刻的 \
-	握柄之上。当它被举离行刑砧时，那份沉重便昭示着最神圣的用途：斩穿成群的敌人， \
-	并在及膝的尸骸中跋涉前行，以求赦免。"
+	desc = "一柄受过祝圣的行刑剑，巨大的银质剑刃安装在精雕细刻的  握 \
+	柄之上。当它被举离行刑砧时，那份沉重便昭示着最神圣的用途 \
+	：斩穿成群的敌人，  并在及膝的尸骸中跋涉前行，以求赦免。"
 	icon_state = "psyexe"
 	force = 22
 	force_wielded = 25
@@ -1169,8 +886,8 @@
 
 /obj/item/rogueweapon/sword/long/exe/berserk
 	name = "狂战士之剑"
-	desc = "一堆粗铁被开凿成一柄硕大得令人胆寒的巨斩刀。大多数人根本无从奢望有效地挥舞这样一柄 \
-	费力的巨刃；但少数拥有足够力量者，却能迫使最强悍的对手也踉跄后退。"
+	desc = "一堆粗铁被开凿成一柄硕大得令人胆寒的巨斩刀。大多数人根本无从奢望有效地挥舞这 \
+	样一柄  费力的巨刃；但少数拥有足够力量者，却能迫使最强悍的对手也踉跄后退。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "dragonslayer"
 	possible_item_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/rend, /datum/intent/sword/thrust/exe, /datum/intent/sword/strike)
@@ -1180,42 +897,6 @@
 	wdefense = 9
 	minstr_req = TRUE
 	max_blade_int = 400
-
-/datum/intent/sword/chop/cleave
-	name = "震慑劈砍"
-	icon_state = "incarve"
-	attack_verb = list("劈开", "撕裂", "斩穿")
-	chargedrain = 1.8
-	chargetime = 12
-	swingdelay = 0
-	damfactor = 1.5
-	intent_intdamage_factor = 1.3
-	desc = "一次强力打击，会根据你的力量对目标造成击退与减速。击退量随你的力量提升，从 X（1 格）到 XIII（3 格）。</br>若你的力量低于 X，则无法造成任何击退或减速。</br>无法每 5 秒内对同一目标连续使用一次以上。</br>倒地目标的击退距离减半。</br>未完全蓄力时，击退最多只有 1 格。"
-	var/maxrange = 3
-
-/datum/intent/sword/chop/cleave/spec_on_apply_effect(mob/living/H, mob/living/user, params)
-	var/chungus_khan_str = user.STASTR
-	if(H.has_status_effect(/datum/status_effect/debuff/yeetcd))
-		return // Recently knocked back, cannot be knocked back again yet
-	if(chungus_khan_str < 10)
-		return // Too weak to have any effect
-	var/scaling = CLAMP((chungus_khan_str - 10), 1, maxrange)
-	H.apply_status_effect(/datum/status_effect/debuff/yeetcd)
-	H.Slowdown(scaling)
-	// Copypasta from knockback proc cuz I don't want the math there
-	var/knockback_tiles = scaling // 1 to 4 tiles based on strength
-	if(H.resting)
-		knockback_tiles = max(1, knockback_tiles / 2)
-	if(user?.client?.chargedprog < 100)
-		knockback_tiles = 1 // Minimal knockback on non-charged smash.
-	var/turf/edge_target_turf = get_edge_target_turf(H, get_dir(user, H))
-	if(istype(edge_target_turf))
-		H.safe_throw_at(edge_target_turf, \
-		knockback_tiles, \
-		scaling, \
-		user, \
-		spin = FALSE, \
-		force = H.move_force)
 
 /obj/item/rogueweapon/sword/long/oldpsysword
 	name = "耐战长剑"
@@ -1293,9 +974,9 @@
 	force_wielded = 25
 	minstr = 11
 	wdefense = 6
-	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/rend/krieg, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/krieg, /datum/intent/rend/krieg, /datum/intent/sword/strike)
-	alt_intents = null // Can't mordhau this
+	possible_item_intents = list(/datum/intent/sword/cut/rend, /datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut/rend, /datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/strike)
+	alt_grips = null // Can't mordhau this
 	smeltresult = /obj/item/ingot/silver
 	is_silver = TRUE
 
@@ -1320,9 +1001,9 @@
 	force_wielded = 25
 	minstr = 11
 	wdefense = 6
-	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/rend/krieg, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/krieg, /datum/intent/rend/krieg, /datum/intent/sword/strike)
-	alt_intents = null // Can't mordhau this
+	possible_item_intents = list(/datum/intent/sword/cut/rend, /datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut/rend, /datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/strike)
+	alt_grips = null // Can't mordhau this
 	smeltresult = /obj/item/ingot/silverblessed
 	is_silver = TRUE
 
@@ -1339,8 +1020,8 @@
 
 /obj/item/rogueweapon/sword/long/greatkhopesh
 	name = "阿波菲斯" //Kriegmesser analogue.
-	desc = "寇派什弯刀的兄长。人们或许会误以为它本就是为双手持用而设计的；因为那些 \
-	古代军团兵的力量极为惊人，足以让他们在持着高耸巨盾的同时，还能轻松挥动此剑。"
+	desc = "寇派什弯刀的兄长。人们或许会误以为它本就是为双手持用而设计的；因为那些  古 \
+	代军团兵的力量极为惊人，足以让他们在持着高耸巨盾的同时，还能轻松挥动此剑。"
 	wdefense = 3
 	wdefense_wbonus = 2
 	force = 22
@@ -1374,7 +1055,7 @@
 /obj/item/rogueweapon/sword/short
 	name = "钢短剑"
 	desc = "单手剑更短、也更加古老的兄长。尽管它比今日诸剑古老了数个世纪，仍作为廉价副武器被盾兵与弓手广泛使用。"
-	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
 	icon_state = "swordshort"
 	sheathe_icon = "swordshort"
 	gripped_intents = null
@@ -1418,7 +1099,6 @@
 	possible_item_intents = list(
 		/datum/intent/sword/cut/short,
 		/datum/intent/sword/thrust/short,
-		/datum/intent/sword/peel,
 		/datum/intent/sword/chop/short,
 		)
 	icon_state = "eastshortsword"
@@ -1436,8 +1116,9 @@
 
 /obj/item/rogueweapon/sword/short/gladius
 	name = "短剑"
-	desc = "一柄沉实的青铜剑刃，锋利到仅凭单手之力便能开膛斩首。一千年前，普赛多尼亚的古代英豪曾用这些短剑击退大魔君的魔群；\
-	而如今，终末已悄然逼近，再次威胁生灵。以你先祖的优雅行动吧——双足分立，握紧剑柄，让他们每迈出一步都付出血的代价。"
+	desc = "一柄沉实的青铜剑刃，锋利到仅凭单手之力便能开膛斩首。一千年前，普赛多尼亚的古 \
+	代英豪曾用这些短剑击退大魔君的魔群； 而如今，终末已悄然逼近，再次威胁生灵。 \
+	以你先祖的优雅行动吧——双足分立，握紧剑柄，让他们每迈出一步都付出血的代价。"
 	icon_state = "gladius"
 	sheathe_icon = "gladius"
 	max_integrity = 250
@@ -1453,8 +1134,8 @@
 
 /obj/item/rogueweapon/sword/short/gladius/decorated
 	name = "华丽短罗马剑"
-	desc = "一幅华美的正义图景，饰以繁花与丝绸。剑身上深红的刻纹致敬着拉沃克斯 \
-	升神的上古史诗；正是祂重创了西尼斯特那生满触手的心脏，才迫使大魔君停下脚步——先是难以置信，继而为之着迷。"
+	desc = "一幅华美的正义图景，饰以繁花与丝绸。剑身上深红的刻纹致敬着拉沃克斯  升神的上古史诗；正 \
+	是祂重创了西尼斯特那生满触手的心脏，才迫使大魔君停下脚步——先是难以置信，继而为之着迷。"
 	icon_state = "gladiusdec"
 	sheathe_icon = "decgladius"
 	max_integrity = 300
@@ -1463,8 +1144,8 @@
 
 /obj/item/rogueweapon/sword/sabre/bronzekhopesh
 	name = "寇派什弯刀"
-	desc = "一柄源自纳莱迪的镰形剑，其形制承自古时定居者曾使用的一种战斧——它象征着 \
-	权力与征服。其青铜刃缘上的寒光随每一次凝视而流转，渴望着被早已灭绝的恶徒之血浸得黯淡。"
+	desc = "一柄源自纳莱迪的镰形剑，其形制承自古时定居者曾使用的一种战斧——它象征着  权力 \
+	与征服。其青铜刃缘上的寒光随每一次凝视而流转，渴望着被早已灭绝的恶徒之血浸得黯淡。"
 	icon_state = "bronzekhopesh"
 	force = 22
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop/falx)
@@ -1550,19 +1231,19 @@
 
 /obj/item/rogueweapon/sword/short/messer
 	name = "钢猎剑"
-	desc = "一把据称源自格伦泽的“Großesmesser”，意为“大刀”。这是一种供民用与军用的基础单刃剑，尤其擅长挥砍与劈斩，并以钢打造。\
-	它能完全胜任猎剑的用途，而这一把还更加耐用。"
+	desc = "一把据称源自格伦泽的“Großesmesser”，意为“大刀”。这是一种供民用与军用的基 \
+	础单刃剑，尤其擅长挥砍与劈斩，并以钢打造。 它能完全胜任猎剑的用途，而这一把还更加耐用。"
 	icon_state = "smesser"
 	force = 24	//Hunting sword + 4
 	max_blade_int = 250	//Sword + 50
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/rend/krieg/short, /datum/intent/axe/chop, /datum/intent/sword/peel)	//1.8x rend, similar to partizan
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/axe/chop, /datum/intent/sword/strike)
 	minstr = 6	// Hunting sword +2
 	wdefense = 4	//Hunting sword +2
 
 /obj/item/rogueweapon/sword/short/messer/iron
 	name = "猎剑"
-	desc = "一把基础单刃剑，通常用于了结猎获物。它擅长挥砍与劈斩，由铁制成。\
-	这是一件相当可靠且价格低廉的自卫武器。"
+	desc = "一把基础单刃剑，通常用于了结猎获物。它擅长挥砍与劈斩 \
+	，由铁制成。 这是一件相当可靠且价格低廉的自卫武器。"
 	icon_state = "imesser"
 	minstr = 4
 	wdefense = 2
@@ -1591,9 +1272,9 @@
 
 /obj/item/rogueweapon/sword/short/messer/bronze//this thing is boring, I ought give it some other intents but eh
 	name = "马凯拉短剑"
-	desc = "一柄形制与科皮斯相近的重型短剑，既能斩开枝叶，也能斩开血肉。 </br>它因常出现于 \
-	伊特鲁斯卡与兹班图的角斗场中而恶名昭彰——在那里，皮开肉绽的伤口正是那些被烈酒灌昏了头的 \
-	观众最为钟爱的猩红奇观。"
+	desc = "一柄形制与科皮斯相近的重型短剑，既能斩开枝叶，也能斩开血肉。 </b \
+	r>它因常出现于  伊特鲁斯卡与兹班图的角斗场中而恶名昭彰——在那里 \
+	，皮开肉绽的伤口正是那些被烈酒灌昏了头的  观众最为钟爱的猩红奇观。"
 	icon_state = "makhaira"
 	minstr = 6
 	wdefense = 3
@@ -1606,9 +1287,9 @@
 /obj/item/rogueweapon/sword/short/messer/blacksteel
 	name = "黑钢猎剑"
 	desc = "一柄华丽的黑钢短剑。虽然已脱离了当初催生其诞生的劳作需求， \
-	但它在劈开可能打扰晨间散步的麻烦物方面，依旧毫不逊色。"
+	  但它在劈开可能打扰晨间散步的麻烦物方面，依旧毫不逊色。"
 	force = 27
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/rend/krieg/short, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/axe/chop, /datum/intent/sword/cut/sabre/heavy)
 	smeltresult = /obj/item/ingot/blacksteel
 	icon_state = "bs_messer"
 	sheathe_icon = "bs_messer"
@@ -1620,7 +1301,7 @@
 	desc = "一种极受欢迎的骑兵背刃剑，起源于纳莱迪，随后一路向北传播，在阿夫纳尔被称作“萨布利亚”，并恶名昭彰地成为大统领骠骑兵最偏爱的武器。"
 	icon_state = "saber"
 	sheathe_icon = "saber"
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/sabre, /datum/intent/sword/peel, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/cut/sabre/heavy, /datum/intent/sword/thrust/sabre, /datum/intent/sword/strike)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
@@ -1631,11 +1312,22 @@
 /datum/intent/sword/cut/sabre
 	clickcd = 8		//Faster than sword by 4
 	damfactor = 1.25	//Better than rapier (Base is 1.1 for swords)
-	penfactor = 10		//Very slight buff to pen on cut mode. Still weaker then sword-chop mode.
+	penfactor = PEN_NONE		//Very slight buff to pen on cut mode. Still weaker then sword-chop mode.
 
 /datum/intent/sword/thrust/sabre
 	clickcd = 9			//Fast but still not as fast as rapier n' shittier.
 	damfactor = 0.9		//10% worse	than base
+
+/datum/intent/sword/cut/sabre/heavy
+	name = "precise swing"
+	icon_state = "inhack"
+	blade_class = BCLASS_CHOP
+	damfactor = 1.5
+	penfactor = PEN_MEDIUM
+	swingdelay = 1 SECONDS
+	swingdelay_type = SWINGDELAY_CANCEL
+	parriable_intent = FALSE
+	dodgeable_intent = FALSE
 
 /obj/item/rogueweapon/sword/sabre/dec
 	icon_state = "decsaber"
@@ -1660,7 +1352,8 @@
 
 /obj/item/rogueweapon/sword/sabre/iron
 	name = "铁军刀"
-	desc = "一把为纳莱迪线列步兵量产的军刀。其配件简朴，属于军用品级，但结构结实，刀刃的威胁性丝毫不逊于别的兵刃。"
+	desc = "一把为纳莱迪线列步兵量产的军刀。其配件简朴，属于军用 \
+	品级，但结构结实，刀刃的威胁性丝毫不逊于别的兵刃。"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
 	icon_state = "isaber"
@@ -1680,7 +1373,7 @@
 	attack_verb = list("娴熟地切开", "灵巧地割开", "横弧斩击")
 	clickcd = 7
 	damfactor = 1.25
-	penfactor = 55
+	penfactor = PEN_MEDIUM
 
 /datum/intent/effect/daze/freisabre
 	name = "虚招斩腕"
@@ -1722,7 +1415,7 @@
 	desc = "一把源自纳莱迪的镰形剑，其设计脱胎于古代移民曾使用的一种战斧，象征着权力与征服。尤其这一把还是由发蓝钢锻成。"
 	icon_state = "nockhopesh"
 	force = 25	//Base is 22
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop/falx, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop/falx)
 	max_integrity = 200
 
 /obj/item/rogueweapon/sword/sabre/elf
@@ -1746,7 +1439,7 @@
 	desc = "一把曾经优雅的秘银刀刃，如今在阳光的注视下逐渐黯淡。"
 	icon_state = "spidersaber"
 	sheathe_icon = "spidersaber"
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/sabre, /datum/intent/sword/peel, /datum/intent/dagger/sucker_punch)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/sabre, /datum/intent/dagger/sucker_punch)
 	force = 25 // same as elf sabre
 	force_wielded = 25
 	minstr = 7
@@ -1759,7 +1452,7 @@
 	wdefense = 6 // two more force than sabre so let's consider this a fair tradeoff for the damage buff
 	icon_state = "tabi"
 	icon = 'icons/roguetown/weapons/64.dmi'
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike) // whoever gave this chop as a supposed upside is tripping because it's weaker than sabre cut
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike) // whoever gave this chop as a supposed upside is tripping because it's weaker than sabre cut
 	bigboy = TRUE
 	pixel_y = -16
 	pixel_x = -16
@@ -1780,9 +1473,9 @@
 
 /obj/item/rogueweapon/sword/rapier
 	name = "刺剑"
-	desc = "一种几乎可以说是全新问世的剑型，拥有笔直、纤长且尖锐的剑刃，专为单手持用而设计。\
-		它起源于伊特鲁斯卡群岛，其名来自“spada ropera”（字面意为“礼服剑”），因为它最初首先是一种配饰。\
-		与此同时，群岛上也正发展出一门尚且年轻的配套技艺，因其讲究巧劲而被称作“Destreza”。"
+	desc = "一种几乎可以说是全新问世的剑型，拥有笔直、纤长且尖锐的剑刃，专为单手持用而设计。 它起源于伊特鲁 \
+		斯卡群岛，其名来自“spada ropera”（字面意为“礼服剑”），因为它最初首先是一种配饰 \
+		。 与此同时，群岛上也正发展出一门尚且年轻的配套技艺，因其讲究巧劲而被称作“Destreza”。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "rapier"
 	sheathe_icon = "rapier"
@@ -1792,7 +1485,7 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	dropshrink = 0.75
-	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/thrust/rapier/lunge, /datum/intent/sword/cut/rapier)
 	special = /datum/special_intent/piercing_lunge
 	gripped_intents = null
 	parrysound = list(
@@ -1888,13 +1581,26 @@
 				)
 
 /datum/intent/sword/cut/rapier
-	clickcd = 10
+	clickcd = CLICK_CD_QUICK
 	damfactor = 0.75
 
 /datum/intent/sword/thrust/rapier
 	clickcd = 8
 	damfactor = 1.1
-	penfactor = 30
+	penfactor = PEN_MEDIUM
+
+/datum/intent/sword/thrust/rapier/lunge
+	name = "深突刺"
+	icon_state = "inlunge"
+	damfactor = 1.3
+	penfactor = PEN_BSTEEL
+
+	swingdelay_type = SWINGDELAY_CANCELSLOW
+	parriable_intent = FALSE
+	dodgeable_intent = FALSE
+
+	swingdelay = 0.8 SECONDS
+	clickcd = 1.5 SECONDS
 
 /obj/item/rogueweapon/sword/rapier/dec
 	no_loot_taint = TRUE
@@ -1906,14 +1612,13 @@
 
 /obj/item/rogueweapon/sword/rapier/blacksteel
 	name = "黑钢刺剑"
-	desc = "一柄华丽的黑钢刺剑。尽管它源于先进的剑术技艺与冶金术的结合，它 \
-	实际上并没有真正意义上的开刃。当然，当它能直接刺穿板甲时，这点也就不那么重要了。"
+	desc = "一柄华丽的黑钢刺剑。尽管它源于先进的剑术技艺与冶金术的结合，它  实际上 \
+	并没有真正意义上的开刃。当然，当它能直接刺穿板甲时，这点也就不那么重要了。"
 	force = 27
 	smeltresult = /obj/item/ingot/blacksteel
 	icon_state = "blacksteelrapier"
 	sheathe_icon = "blacksteelrapier"
 	max_blade_int = 400
-	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier, /datum/intent/sword/peel)
 	wdefense = 9 //Absurdly high defense, but no added integrity; for the discerning duelmaster.
 	var/used = FALSE
 	var/list/selection = list(
@@ -2032,7 +1737,9 @@
 
 /obj/item/rogueweapon/sword/rapier/lord
 	name = "疯公之剑"
-	desc = "一件王室传家宝，其螺旋篮形护手上镶嵌着切工精美的宝石。它带着岁月磨出的包浆，那些原本锋锐鲜明的纹样已被无数双手磨得圆钝。古老传闻称，这件武器曾见证那场把疯公城堡夷为废墟、连公爵本人都焚成灰烬的围攻。"
+	desc = "一件王室传家宝，其螺旋篮形护手上镶嵌着切工精美的宝石。它带着岁月磨 \
+	出的包浆，那些原本锋锐鲜明的纹样已被无数双手磨得圆钝。古老传闻称， \
+	这件武器曾见证那场把疯公城堡夷为废墟、连公爵本人都焚成灰烬的围攻。"
 	icon_state = "lordrap"
 	sheathe_icon = "lordrapier"
 	no_loot_taint = TRUE
@@ -2084,7 +1791,7 @@
 	desc = "水手的拿手货：一把短而宽的军刀，略带弧度的刀刃专为劈斩优化。"
 	icon_state = "cutlass"
 	force = 23
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
 	gripped_intents = null
 	wdefense = 6
 	wbalance = WBALANCE_SWIFT
@@ -2216,12 +1923,12 @@
 
 /obj/item/rogueweapon/sword/silver/decorated
 	name = "华丽银制卡德加剑" //While ostensibly a sword, it's functionally identical - if a little weaker - than the Silver War Axe.
-	desc = "为贵族而精心设计，却诞生于卑劣的目的：以祭牲之血满足远古神话中的力量。这柄纳莱迪 \
-	长剑，更常被称作“兰道刀”，如今则用以平息复仇怨灵的恨意——并非通过流血，而是通过斩断。"
+	desc = "为贵族而精心设计，却诞生于卑劣的目的：以祭牲之血满足远古神话中的力量。这柄纳莱迪  长 \
+	剑，更常被称作“兰道刀”，如今则用以平息复仇怨灵的恨意——并非通过流血，而是通过斩断。"
 	icon_state = "ram_dao"
 	sheathe_icon = "scabbard_decsword3"
 	force = 25
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash/battle)
 	gripped_intents = null
 	minstr = 11
 	max_blade_int = 300
@@ -2246,7 +1953,7 @@
 	desc = "一种与法尔克斯相似的古剑，关键区别在于其弧度较浅，因此因兼具精准挥击与刺击能力而令人畏惧。"
 	force = 25
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx)
 	gripped_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx, /datum/intent/sword/cut/zwei/sweep)
 	icon_state = "rhomphaia"
 	smeltresult = /obj/item/ingot/steel
@@ -2254,6 +1961,8 @@
 
 /obj/item/rogueweapon/sword/long/rhomphaia/getonmobprop(tag)
 	. = ..()
+	if(tag == "altgrip" && .)
+		return .
 	if(tag)
 		switch(tag)
 			if("gen") return list(
@@ -2368,6 +2077,8 @@
 
 /obj/item/rogueweapon/sword/long/oathkeeper/getonmobprop(tag)
 	. = ..()
+	if(tag == "altgrip" && .)
+		return .
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -2381,8 +2092,8 @@
 	icon_state = "seeblade"
 	force = 35
 	force_wielded = 50
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/chop)
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver
 	smelt_bar_num = 2
@@ -2500,13 +2211,13 @@
 
 /obj/item/rogueweapon/sword/long/kriegmesser
 	name = "双手大刀"
-	desc = "一把大型双手剑，拥有单刃剑身、十字护手与近似刀柄的握把。\
-	它注定要以双手挥舞，也是格伦泽尔霍夫特雇佣兵之间颇受欢迎的武器。"
+	desc = "一把大型双手剑，拥有单刃剑身、十字护手与近似刀柄的握把。 它 \
+	注定要以双手挥舞，也是格伦泽尔霍夫特雇佣兵之间颇受欢迎的武器。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "kriegmesser"
-	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/rend/krieg, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/krieg, /datum/intent/rend/krieg, /datum/intent/sword/strike)
-	alt_intents = null // Can't mordhau this
+	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/sword/strike, /datum/intent/rend/krieg)
+	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike, /datum/intent/rend/krieg)
+	alt_grips = null // Can't mordhau this
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/kriegmesser/zizo
@@ -2532,13 +2243,13 @@
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "ssangsudo"
 	sheathe_icon = "ssangsudo"
-	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/rend, /datum/intent/sword/strike) // better rend by .05
+	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike, /datum/intent/rend/krieg)
 
 /obj/item/rogueweapon/sword/long/dec
 	no_loot_taint = TRUE
 	name = "华饰长剑"
-	desc = "一把为礼仪排场而打造的华贵长剑，配有上等皮革握柄与精雕细刻的镀金十字护手。\
-	剑身两面各刻有一句铭文，一面写着“愿祢的国降临”，另一面则写着“愿祢的旨意成就”。"
+	desc = "一把为礼仪排场而打造的华贵长剑，配有上等皮革握柄与精雕细刻的镀金十字护手。 剑身 \
+	两面各刻有一句铭文，一面写着“愿祢的国降临”，另一面则写着“愿祢的旨意成就”。"
 	icon_state = "declongsword"
 	no_loot_taint = TRUE
 
@@ -2670,7 +2381,7 @@
 	animname = "strike"
 	blade_class = null	//We don't use a blade class because it has on damage.
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	swingdelay = 2	//Small delay to hook
 	damfactor = 0.1	//No real damage
 	clickcd = 22	//Can't spam this; long delay.
@@ -2774,7 +2485,7 @@
 	icon = 'icons/roguetown/weapons/special/captain.dmi'
 	force = 25 // same as elvish sabre
 	max_integrity = 200 // more integrity because blacksteel, a bit less than the flamberge
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/sabre, /datum/intent/sword/peel, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/sabre, /datum/intent/sword/strike)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
@@ -2787,8 +2498,8 @@
 /obj/item/rogueweapon/sword/gold
 	name = "黄金单手剑"
 	desc = "一柄天界风格的单手剑，金色剑刃与缠丝握柄之间以一道双十字护手相隔。这把武器 \
-	似乎创造性地把普赛多尼亚最古老兵器的致命斩击之能，与一种心理威慑结合了起来——你清楚 \
-	它的持有者多半连车夫本人都能买通，却仍选择亲手杀掉你。"
+	  似乎创造性地把普赛多尼亚最古老兵器的致命斩击之能，与一种心理威慑结合 \
+	了起来——你清楚  它的持有者多半连车夫本人都能买通，却仍选择亲手杀掉你。"
 	icon_state = "goldsword"
 	smeltresult = /obj/item/ingot/gold
 	force = 35
@@ -2803,9 +2514,9 @@
 
 /obj/item/rogueweapon/sword/gold/king
 	name = "王室黄金单手剑"
-	desc = "一柄天界风格的单手剑，金色剑刃与缠丝握柄之间以一道饰有护环的双十字护手相隔。这把武器 \
-	似乎创造性地把普赛多尼亚最古老兵器的致命斩击之能，与一种心理威慑结合了起来——你清楚 \
-	它的持有者多半连车夫本人都能买通，却仍选择亲手杀掉你。"
+	desc = "一柄天界风格的单手剑，金色剑刃与缠丝握柄之间以一道饰有护环的双十字护手相隔。 \
+	这把武器  似乎创造性地把普赛多尼亚最古老兵器的致命斩击之能，与一种心理威慑结 \
+	合了起来——你清楚  它的持有者多半连车夫本人都能买通，却仍选择亲手杀掉你。"
 	icon_state = "goldswordking"
 	max_integrity = 75
 	max_blade_int = 75
@@ -2813,7 +2524,8 @@
 
 /obj/item/rogueweapon/sword/blacksteel
 	name = "黑钢单手剑"
-	desc = "宽刃黑钢剑身，配以玫瑰木握柄，弧度恰到好处地贴合持握者的掌心。它是普赛多尼亚单手剑锻造技艺的巅峰——一位铸剑宗师的毕生杰作，唯有真正的英雄……抑或枭雄中的枭雄，才有资格执握。"
+	desc = "宽刃黑钢剑身，配以玫瑰木握柄，弧度恰到好处地贴合持握者的掌心。它是普赛多尼亚单手剑锻造技 \
+	艺的巅峰——一位铸剑宗师的毕生杰作，唯有真正的英雄……抑或枭雄中的枭雄，才有资格执握。"
 	icon_state = "bs_sword"
 	sheathe_icon = "bs_sword"
 	smeltresult = /obj/item/ingot/blacksteel
@@ -2826,8 +2538,8 @@
 
 /obj/item/rogueweapon/sword/decorated/blacksteel
 	name = "黑钢华饰单手剑"
-	desc = "宽刃黑钢剑身，配以金色剑格，其上精雕细琢着委托人的家族纹章。这件杰作兼具极致的奢华与致命的杀伤力，\
-	或许，这将是你毕生所见最为精良的单手剑。"
+	desc = "宽刃黑钢剑身，配以金色剑格，其上精雕细琢着委托人的家族纹章。这件杰作兼 \
+	具极致的奢华与致命的杀伤力， 或许，这将是你毕生所见最为精良的单手剑。"
 	icon_state = "bs_swordregal"
 	sheathe_icon = "bs_swordregal"
 	wdefense = 7
@@ -2837,7 +2549,7 @@
 /obj/item/rogueweapon/sword/long/shotel
 	name = "钢索特尔弯刀"
 	icon_state = "shotel_steel"
-	icon = 'icons/roguetown/weapons/64.dmi'
+	icon = 'icons/roguetown/weapons/swords64.dmi'
 	desc = "一把具有齐班廷风格的长曲刃。"
 	possible_item_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/long) //Shotels get 2 tile reach.
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/long)
@@ -2858,6 +2570,8 @@
 
 /obj/item/rogueweapon/sword/long/shotel/getonmobprop(tag)
 	. = ..()
+	if(tag == "altgrip" && .)
+		return .
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -2881,6 +2595,8 @@
 
 /obj/item/rogueweapon/sword/long/shotel/iron/getonmobprop(tag)
 	. = ..()
+	if(tag == "altgrip" && .)
+		return .
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -2908,9 +2624,9 @@
 
 /obj/item/rogueweapon/sword/long/rhomphaia/stalker
 	name = "卓尔阿鲁瓦尔刀"
-	desc = "对幽暗地域的异乡人而言，卓尔的锻造术看上去就像一场比拼——看谁能在兵器上装下最多的尖刺与倒钩；\
-	而这把阿鲁瓦尔刀，正是那套哲学的必然归宿。此曲刃拥有一个向后弯折的刀尖、一道背刃上的钩爪，\
-	以及护手镀金处附近的一根穿刺尖刺。"
+	desc = "对幽暗地域的异乡人而言，卓尔的锻造术看上去就像一场比拼——看谁能在兵器上装 \
+	下最多的尖刺与倒钩； 而这把阿鲁瓦尔刀，正是那套哲学的必然归宿。此曲刃拥有 \
+	一个向后弯折的刀尖、一道背刃上的钩爪， 以及护手镀金处附近的一根穿刺尖刺。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "drowaruval"
 	sheathe_icon = "drowaruval"
@@ -2919,20 +2635,20 @@
 	max_integrity = 200//50 more than the standard rhomphaia
 	possible_item_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/thrust/hook, /datum/intent/sword/chop/falx, /datum/intent/sword/disarm)
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/militia, /datum/intent/pick/bad, /datum/intent/sword/disarm/range)//longer range, two hands on sword makes for better chop, if slower. Shitty pick using our weird spikes
-	alt_intents = null 
+	alt_grips = null 
 	wdefense_wbonus = 4
 	bigboy = TRUE
 	special = /datum/special_intent/shin_swipe
 
 /obj/item/rogueweapon/sword/long/shotel/stalker
 	name = "卓尔绍特尔弯刀"
-	desc = "一柄出自卓尔匠人之手、泛着幽暗微光的绍特尔弯刀。它虽令人想起更为常见的卓尔镰刃，\
-	但绍特尔弯刀更远的攻击距离与更轻的重量，使它深受「蛛网之鳄」骑兵的青睐——\
-	他们追求的，是长柄兵器的攻击范围，兼具刀剑的迅捷。"
+	desc = "一柄出自卓尔匠人之手、泛着幽暗微光的绍特尔弯刀。它虽令人想起更为常见的 \
+	卓尔镰刃， 但绍特尔弯刀更远的攻击距离与更轻的重量，使它深受「蛛网之 \
+	鳄」骑兵的青睐—— 他们追求的，是长柄兵器的攻击范围，兼具刀剑的迅捷。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "drowshotel"
 	sheathe_icon = "drowshotel"
-	alt_intents = null 
+	alt_grips = null 
 	possible_item_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/long, /datum/intent/dagger/sucker_punch)
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/long, /datum/intent/dagger/sucker_punch)
 	force = 27
@@ -2943,9 +2659,10 @@
 
 /obj/item/rogueweapon/sword/sabre/hook/stalker
 	name = "卓尔钩镰刀"
-	desc = "一柄出自卓尔匠人之手、泛着幽暗微光的钩镰刀。它虽令人想起更为常见的卓尔镰刃，\
-	但钩镰刀的弧线更具侵略性，使持用者能钩住并夺下敌人手中的武器。\
-	历史上，钩镰刀曾被「蛛网之鳄」骑兵用于镇压奴隶起义，轻易便能击溃那些妄图成为自由人的临时武器。"
+	desc = "一柄出自卓尔匠人之手、泛着幽暗微光的钩镰刀。它虽令人想起更为 \
+	常见的卓尔镰刃， 但钩镰刀的弧线更具侵略性，使持用者能钩住 \
+	并夺下敌人手中的武器。 历史上，钩镰刀曾被「蛛网之鳄」骑兵 \
+	用于镇压奴隶起义，轻易便能击溃那些妄图成为自由人的临时武器。"
 	icon_state = "drowhooksword"
 	sheathe_icon = "drowhook"
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust/hook, /datum/intent/dagger/sucker_punch, /datum/intent/sword/disarm)
@@ -2959,52 +2676,53 @@
 	icon_state = "spiderfalx"
 	sheathe_icon = "spidersaber"
 	wbalance = WBALANCE_SWIFT
-	possible_item_intents = list(/datum/intent/sword/cut/falx,  /datum/intent/sword/chop/falx, /datum/intent/dagger/sucker_punch, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut/falx,  /datum/intent/sword/chop/falx, /datum/intent/dagger/sucker_punch)
 	force = 25 // same as elf sabre
 	wdefense = 5//-1, use it with a shield
 
 /obj/item/rogueweapon/sword/long/elf/stalker
 	name = "卓尔大军刀"
-	desc = "一柄宽大而弯曲的兵刃，仅有单面开刃，钝厚的刀脊上还装有一根穿刺尖刺。\
-	它虽不如其他卓尔兵刃那般精雕细琢，但大军刀那纯粹的力量，使它擅长劈开护甲、甲壳与骨骼。"
+	desc = "一柄宽大而弯曲的兵刃，仅有单面开刃，钝厚的刀脊上还装有一根穿刺尖刺。 它虽不如 \
+	其他卓尔兵刃那般精雕细琢，但大军刀那纯粹的力量，使它擅长劈开护甲、甲壳与骨骼。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "drowsword"
 	sheathe_icon = "drowgreatsabre"
 	force = 25
 	force_wielded = 30
 	max_integrity = 200
-	possible_item_intents = list(/datum/intent/sword/cut/sabre/slow, /datum/intent/sword/thrust/sabre, /datum/intent/sword/peel, /datum/intent/dagger/sucker_punch)// better to use your fist than dent that pretty pommel
+	possible_item_intents = list(/datum/intent/sword/cut/sabre/slow, /datum/intent/sword/thrust/sabre, /datum/intent/dagger/sucker_punch)// better to use your fist than dent that pretty pommel
 	gripped_intents = list(/datum/intent/sword/cut/sabre/slow, /datum/intent/pick/bad, /datum/intent/sword/chop/sabre, /datum/intent/dagger/sucker_punch)//shitty pick using our spiked bit.
-	alt_intents = null // nope!
+	alt_grips = null // nope!
 	bigboy = TRUE
 
 /obj/item/rogueweapon/sword/long/kriegmesser/stalker
 	name = "卓尔战刀"
-	desc = "一柄出自卓尔匠人之手、锋利得骇人的双手剑。虽然没人会承认，但这柄兵刃无疑是受了格伦泽尔霍夫特战刀的启发。\
-	比起地表的表亲，卓尔的版本饰有更多鎏金，还带上了许多卓尔兵刃上常见的凶悍锯齿。"
+	desc = "一柄出自卓尔匠人之手、锋利得骇人的双手剑。虽然没人会承认，但这 \
+	柄兵刃无疑是受了格伦泽尔霍夫特战刀的启发。 比起地表的表亲， \
+	卓尔的版本饰有更多鎏金，还带上了许多卓尔兵刃上常见的凶悍锯齿。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "drowmesser"
 	sheathe_icon = "drowmesser"
 	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/rend/krieg, /datum/intent/dagger/sucker_punch)
 	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/militia, /datum/intent/rend/krieg, /datum/intent/dagger/sucker_punch)
-	alt_intents = null // Can't mordhau this
+	alt_grips = null // Can't mordhau this
 	max_integrity = 175// less integ than the real deal, not near as much as the kazen messers
 	bigboy = TRUE
 	special = /datum/special_intent/axe_swing
 
 /obj/item/rogueweapon/sword/long/stalker//what if estoc but longsword?
 	name = "卓尔长剑"
-	desc = "一柄出自卓尔匠人之手、泛着幽暗微光的长剑。它看上去与制式长剑颇为相似，\
-	用途却远没有那么灵活多变。此类剑拥有笔直刚硬的剑身，这在卓尔匠人的作品中并不常见，主要被当作狩猎工具使用。\
-	无论其原本用途为何，一柄能刺穿地下蛛类甲壳的兵器，同样也能轻易刺穿人类的护甲。"
+	desc = "一柄出自卓尔匠人之手、泛着幽暗微光的长剑。它看上去与制式长剑颇为相似， 用途却远没有那 \
+	么灵活多变。此类剑拥有笔直刚硬的剑身，这在卓尔匠人的作品中并不常见，主要被当作狩猎工具 \
+	使用。 无论其原本用途为何，一柄能刺穿地下蛛类甲壳的兵器，同样也能轻易刺穿人类的护甲。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "drowlongsword"
 	sheathe_icon = "drowlongsword"
 	force = 25
 	force_wielded = 27
 	possible_item_intents = list(/datum/intent/sword/thrust/arming, /datum/intent/sword/cut/rapier, /datum/intent/dagger/sucker_punch)
-	gripped_intents = list(/datum/intent/sword/thrust/estoc, /datum/intent/sword/lunge/estoc, /datum/intent/sword/cut/rapier, /datum/intent/dagger/sucker_punch)
-	alt_intents = null // you wouldn't dare dent that gilded crossguard with a mordhau, would you?
+	gripped_intents = list(/datum/intent/sword/thrust/estoc, /datum/intent/sword/thrust/estoc/lunge, /datum/intent/sword/cut/rapier, /datum/intent/dagger/sucker_punch)
+	alt_grips = null // you wouldn't dare dent that gilded crossguard with a mordhau, would you?
 	bigboy = TRUE
 	special = /datum/special_intent/piercing_lunge
 
@@ -3030,3 +2748,4 @@
 
 #undef LONGSWORD_STOCK_INTENTS
 #undef LONGSWORD_STOCK_GRIPPED_INTENTS
+#undef LONGSWORD_STOCK_ALT_GRIPS

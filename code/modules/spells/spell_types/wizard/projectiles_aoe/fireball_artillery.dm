@@ -1,8 +1,8 @@
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/artillery
 	name = "攻城火球"
-	desc = "一枚可进行弧射的火球，看起来对建筑造成的伤害远比对人更高。\n\
-	对头脑简单的生物伤害提高 100%。\n\
-	若以法师杖或法术书切换至弧射意图，还可越过盟友头顶发射；那样会额外提高 30% 伤害。"
+	desc = "一枚可进行弧射的火球，看起来对建筑造成的伤害远比对人更高。\n  \
+	对头脑简单的生物伤害提高 100%。\n 若以法师杖或法术书切换 \
+	至弧射意图，还可越过盟友头顶发射；那样会额外提高 30% 伤害。"
 	clothes_req = FALSE
 	cost = 6
 	range = 8
@@ -46,7 +46,7 @@
 	npc_simple_damage_mult = 2 // HAHAHA
 	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
 	nodamage = FALSE
-	flag = "magic"
+	flag = "fire"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
 

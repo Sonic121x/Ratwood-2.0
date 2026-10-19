@@ -129,7 +129,7 @@
 			summoner = user.name
 	if (is_summoned || cabal_affine)
 		faction = list("cabal") //No mix undead faction and cabal, summoned skeletons can attack any undead, mark your friends
-	// adds the name of the summoner to the faction, to avoid the hooded "Unknown" bug with Skeleton IDs
+	// adds the name of the summoner to the faction, to avoid the hooded "未知" bug with Skeleton IDs
 	if(user && user.mind && user.mind.current)
 		faction = list("[user.mind.current.real_name]_faction") //if you summon this, he not affected on cabal. This skeletons can attack any undead and other zizo affected characters
 		// lich also gets to have friendlies, as a treat
@@ -191,7 +191,7 @@
 	animname = "cut"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	chargetime = 2
-	penfactor = 5
+	penfactor = PEN_NONE
 	swingdelay = 8
 
 /obj/item/skull

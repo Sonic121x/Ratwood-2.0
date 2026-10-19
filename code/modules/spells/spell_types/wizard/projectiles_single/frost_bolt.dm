@@ -1,8 +1,8 @@
 /obj/effect/proc_holder/spell/invoked/projectile/frostbolt // to do: get scroll icon
 	name = "寒霜箭"
-	desc = "一道冻结能量构成的寒霜射线，会减缓它碰到的第一个目标并造成轻度伤害。\n\
-		对头脑简单的生物伤害提高 100%。\n\
-		若以法师杖或法术书切换至弧射意图，还可越过盟友头顶发射；但那样会少造成 25% 伤害。"
+	desc = "一道冻结能量构成的寒霜射线，会减缓它碰到的第一个目标并造成轻度伤害。 \
+		\n 对头脑简单的生物伤害提高 100%。\n 若以法师杖或法术书 \
+		切换至弧射意图，还可越过盟友头顶发射；但那样会少造成 25% 伤害。"
 	range = 8
 	projectile_type = /obj/projectile/magic/frostbolt
 	overlay_state = "frost_bolt"
@@ -48,7 +48,7 @@
 	damage = 20
 	npc_simple_damage_mult = 2
 	damage_type = BURN
-	flag = "magic"
+	flag = "fire"
 	range = 10
 	speed = 1
 	nodamage = FALSE

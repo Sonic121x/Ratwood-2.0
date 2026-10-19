@@ -109,7 +109,7 @@
 	var/weapons_choice = input(H, "选择你的武器。", "来自女士的兵刃") as anything in weapons
 	switch(weapons_choice)
 		if("阿凡泰因大剑")
-			r_hand = /obj/item/rogueweapon/greatsword/zizo
+			r_hand = /obj/item/rogueweapon/greatsword/avantyne
 			l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 		if("阿凡泰因长剑")

@@ -117,7 +117,7 @@
 	damage_type = BURN
 	nodamage = FALSE
 	speed = 0.3
-	flag = "magic"
+	flag = "fire"
 	light_color = "#ffffff"
 /obj/projectile/magic/baroness/lightning/on_hit(target)
 	. = ..()
@@ -193,19 +193,19 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴巴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "foreleg"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -215,11 +215,11 @@
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "tail"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
 			return "leg"
 		if(BODY_ZONE_L_LEG)
@@ -238,7 +238,7 @@
 	blade_class = BCLASS_CUT
 	hitsound = 'sound/combat/hits/bladed/genchop (1).ogg'
 	chargetime = 15
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	swingdelay = 3
 	item_d_type = "stab"
 

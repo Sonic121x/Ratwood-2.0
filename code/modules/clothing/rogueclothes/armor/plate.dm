@@ -7,7 +7,6 @@
 	icon_state = "halfplate"
 	item_state = "halfplate"
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	nodismemsleeves = TRUE
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL
 	allowed_sex = list(MALE, FEMALE)
@@ -19,8 +18,9 @@
 	equip_delay_self = 4 SECONDS
 	unequip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_HEAVY
-	peel_threshold = 4
 	smelt_bar_num = 3
+	chunkcolor = "#a9c1ca"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/suit/roguetown/armor/plate/ComponentInitialize()
 	. = ..()
@@ -44,6 +44,8 @@
 	icon_state = "ancientplate"
 	item_state = "ancientplate"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/suit/roguetown/armor/plate/ancient/decrepit
 	name = "破败半身板甲"
@@ -189,7 +191,7 @@
 	desc = "一套涌动着与世界同源暴力的沟槽半身板甲。这股内在驱力使它束缚感大为减轻。"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL // We are probably one of the best medium armor sets. At higher integ than most.
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "graggarplate"
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar/Initialize(mapload)
@@ -280,7 +282,7 @@
 	icon_state = "ornateplate"
 	smeltresult = /obj/item/ingot/silverblessed
 
-	max_integrity = ARMOR_INT_CHEST_PLATE_PSYDON
+	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL
 	is_silver = TRUE
 
 	/// Whether the user has the Heavy Armour Trait prior to donning.
@@ -308,8 +310,7 @@
 	desc = "你常听人如此传唱，"
 	icon_state = "matthiosarmor"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
-	peel_threshold = 5	//-Any- weapon will require 5 peel hits to peel coverage off of this armor.
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/matthios/Initialize(mapload)
 	. = ..()
@@ -326,8 +327,9 @@
 	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷发号施令的讥笑，足见那位雕刻者深谙这些情感。</font>"
 	icon_state = "zizoplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
-	peel_threshold = 5	//-Any- weapon will require 5 peel hits to peel coverage off of this armor.
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/zizo/Initialize(mapload)
 	. = ..()
@@ -344,8 +346,7 @@
 	desc = "<font color='A50021'>它那紧蹙的眉头、皱起的嘴唇，以及冷酷发号施令的讥笑，足见那位雕刻者深谙这些情感。</font>"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL // We are probably one of the best medium armor sets. At higher integ than most.
-	peel_threshold = 5	//-Any- weapon will require 5 peel hits to peel coverage off of this armor.
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "zizoplatechest_med"
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo/Initialize(mapload)
@@ -372,7 +373,6 @@
 	icon_state = "heartfelt"
 	item_state = "heartfelt"
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	allowed_sex = list(MALE, FEMALE)
 	nodismemsleeves = TRUE
 	blocking_behavior = null
@@ -458,7 +458,7 @@
 	body_parts_covered = CHEST|GROIN
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
-	armor = ARMOR_CUIRASS // Identical to steel cuirass, but covering the groin instead of the vitals.
+	armor = ARMOR_PLATE // Identical to steel cuirass, but covering the groin instead of the vitals.
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL	// Identical to steel cuirasss. Same steel price.
 	allowed_sex = list(MALE, FEMALE)
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -471,7 +471,7 @@
 	body_parts_covered = COVERAGE_VEST
 	icon_state = "cuirass"
 	item_state = "cuirass"
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
 	blocking_behavior = null
@@ -484,7 +484,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half/fencer
 	name = "击剑手胸甲"
 	desc = "锻造精妙、贴合身形的钢制胸甲，更轻也更灵活。内衬柔软皮革与丝绸，不仅防护出色，穿着也十分奢华。"
-	armor = ARMOR_CUIRASS// Experimental.
+	armor = ARMOR_PLATE// Experimental.
 	armor_class = ARMOR_CLASS_LIGHT
 	max_integrity = ARMOR_INT_CHEST_LIGHT_STEEL //costly to make, competes with Light Brigandine. Compare to it and Studded/Hardened Leather.
 	smelt_bar_num = 1
@@ -508,6 +508,8 @@
 	desc = "抛光的吉尔青铜弯制成胸甲。它不是为不再跳动的心脏而铸，而是献给流经无光骨髓的灵意; 这是她诸多恩赐之一。"
 	icon_state = "ancientcuirass"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/ancient/decrepit
 	name = "破败胸甲"
@@ -527,7 +529,8 @@
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/gold
 	name = "金色胸甲"
 	icon_state = "goldcuirass"
-	desc = "一件璀璨夺目的纯金胸甲，配有垂甲以增加覆盖。它套在丝绸衬里的护甲衣之上，以确保穿戴者的绝对舒适，而神圣徽记则由倾斜的甲片精心拼成。"
+	desc = "一件璀璨夺目的纯金胸甲，配有垂甲以增加覆盖。它套在丝绸衬里的护甲 \
+	衣之上，以确保穿戴者的绝对舒适，而神圣徽记则由倾斜的甲片精心拼成。"
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile, especially against blunt damage.
 	armor_class = ARMOR_CLASS_HEAVY
@@ -541,7 +544,8 @@
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/gold/heroic
 	name = "金色英雄胸甲"
 	icon_state = "heroiccuirass"
-	desc = "一件璀璨夺目的纯金胸甲，配有垂甲以增加覆盖。它由数十片较小的金片精心打磨并组装而成，以重现普赛多尼亚传奇英雄的雕像般体态。"
+	desc = "一件璀璨夺目的纯金胸甲，配有垂甲以增加覆盖。它由数十片较小的 \
+	金片精心打磨并组装而成，以重现普赛多尼亚传奇英雄的雕像般体态。"
 	unenchantable = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/gold/king
@@ -571,7 +575,7 @@
 	desc = "非常简陋粗糙的胸部防具。古代战士也曾用过类似装备，只是质量更好……"
 	icon_state = "copperchest"
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_DECREPIT
-	armor = list("blunt" = 75, "slash" = 75, "stab" = 75, "piercing" = 40, "fire" = 0, "acid" = 0)	//idk what this armor is but I ain't making a define for it
+	armor = ARMOR_PLATE
 	smeltresult = /obj/item/ingot/copper
 	body_parts_covered = CHEST
 	armor_class = ARMOR_CLASS_LIGHT
@@ -604,7 +608,8 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/bronze
 	name = "青铜鳞甲"
-	desc = "一袭由小块青铜片组成的鳞甲，片片相扣，方式颇似锁子甲。与那些把前西昂时代驱除噩梦的赤膊军团兵浪漫化的形象相去甚远，却同样古老而可敬。"
+	desc = "一袭由小块青铜片组成的鳞甲，片片相扣，方式颇似锁子甲。与那些把前西 \
+	昂时代驱除噩梦的赤膊军团兵浪漫化的形象相去甚远，却同样古老而可敬。"
 	icon_state = "blamellar"
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
@@ -626,7 +631,7 @@
 	sewrepair = TRUE
 	equip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_LIGHT
-	armor = ARMOR_LEATHER_STUDDED
+	armor = ARMOR_LEATHER
 	blocksound = SOFTHIT
 	cold_protection = CHEST | ARM_LEFT | ARM_RIGHT
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
@@ -663,7 +668,7 @@
 	equip_delay_self = 4 SECONDS
 	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE
 	armor_class = ARMOR_CLASS_MEDIUM
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 	smelt_bar_num = 2
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
@@ -685,8 +690,8 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/bronze
 	name = "青铜胸甲"
-	desc = "雕刻感十足的青铜胸甲，内衬兽皮以提升穿着舒适。甲片被精心锻造成普赛多尼亚古代英雄般的雕像体态。 \
-	穿上它会令你充满决心。"
+	desc = "雕刻感十足的青铜胸甲，内衬兽皮以提升穿着舒适。甲片被精心锻造 \
+	成普赛多尼亚古代英雄般的雕像体态。  穿上它会令你充满决心。"
 	body_parts_covered = CHEST | VITALS | LEGS
 	icon_state = "bronzecuirass"
 	armor = ARMOR_BRONZE
@@ -698,23 +703,23 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/bronze/light
 	name = "青铜护心甲"
-	desc = "厚重的青铜护板，精心雕塑以贴合穿戴者身形，并守护其心口免遭重创。 \
-	可惜它对情感上的打击几乎毫无还手之力。"
+	desc = "厚重的青铜护板，精心雕塑以贴合穿戴者身形，并守护其心 \
+	口免遭重创。  可惜它对情感上的打击几乎毫无还手之力。"
 	icon_state = "bronzeprotector"
 	item_state = "bronzeprotector"
 	body_parts_covered = CHEST | VITALS
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE //250 INT, or a little above Iron - and +100 INT over the Copper variant.
 	armor_class = ARMOR_CLASS_LIGHT
-	armor = ARMOR_BRONZE
+	armor = ARMOR_PLATE
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bronze
 	name = "青铜全装板甲"
-	desc = "只能被称作“披袍式甲胄”的装备; 厚重青铜板层层叠覆，并以束带彼此连接 \
-	构成一整套分段式板甲。尽管沉重笨拙得惊人，它却注定能扛住迎面而来的任何风暴。 \
-	</br>学者们常将这套护甲称作“全装甲”，据说它本就是为普赛多尼亚最早期的亚斯玛尔体型量身打造。"
+	desc = "只能被称作“披袍式甲胄”的装备; 厚重青铜板层层叠覆，并以束带彼此连接  构成一整套 \
+	分段式板甲。尽管沉重笨拙得惊人，它却注定能扛住迎面而来的任何风暴。  </br>学者 \
+	们常将这套护甲称作“全装甲”，据说它本就是为普赛多尼亚最早期的亚斯玛尔体型量身打造。"
 	icon_state = "bronzeplate"
 	item_state = "bronzeplate"
-	armor = ARMOR_BRONZE
+	armor = ARMOR_PLATE
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL//shittier prot but good dura like the helms
 	armor_class = ARMOR_CLASS_HEAVY
 	smeltresult = /obj/item/ingot/bronze

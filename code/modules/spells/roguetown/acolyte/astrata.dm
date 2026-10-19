@@ -511,8 +511,8 @@
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "spear"
-	desc = "这是源远流长的古老圣迹，由第二纪元那些曾作为阿斯特拉塔武装之臂而战的人不断磨练。\
-	借此，你可以向阿斯特拉塔祈求她的一缕神力。"
+	desc = "这是源远流长的古老圣迹，由第二纪元那些曾作为阿斯特拉塔武装之臂 \
+	而战的人不断磨练。 借此，你可以向阿斯特拉塔祈求她的一缕神力。"
 	clothes_req = FALSE
 	sound = 'sound/magic/blade_burst.ogg'
 	invocations = list("秩序圣女，请引导我的手！")
@@ -621,7 +621,7 @@
 	muzzle_type = null
 	impact_type = null
 	hitscan = TRUE
-	flag = "magic"
+	flag = "fire"
 	light_color = "#a98107"
 	light_outer_range = 7
 	tracer_type = /obj/effect/projectile/tracer/solar_beam

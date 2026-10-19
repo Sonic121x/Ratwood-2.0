@@ -78,7 +78,7 @@
 	icon_state = "inbash"
 	hitsound = list('sound/combat/shieldbash_wood.ogg')
 	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
@@ -117,7 +117,8 @@
 	icon_state = "woodsh"
 	dropshrink = 0.8
 	anvilrepair = /datum/skill/craft/carpentry
-	coverage = 30
+	coverage = 60
+	max_integrity = 120
 	smeltresult = /obj/item/ash
 	dropshrink = 0.8
 
@@ -171,9 +172,9 @@
 	resistance_flags = FLAMMABLE
 	var/swapped = FALSE
 	wdefense = 10
-	coverage = 40
+	coverage = 70
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
-	max_integrity = 300
+	max_integrity = 280
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 
@@ -190,10 +191,10 @@
 	resistance_flags = null
 	flags_1 = CONDUCT_1
 	wdefense = 11
-	coverage = 50
+	coverage = 70
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
-	max_integrity = 330
+	max_integrity = 300
 	smeltresult = /obj/item/ingot/steelholy
 
 /obj/item/rogueweapon/shield/tower/holysee/MiddleClick(mob/user, params)
@@ -231,7 +232,7 @@
 	resistance_flags = null
 	flags_1 = CONDUCT_1
 	wdefense = 12
-	coverage = 60
+	coverage = 70
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	max_integrity = 300
@@ -264,9 +265,9 @@
 
 /obj/item/rogueweapon/shield/tower/metal/zizo
 	name = "阿凡廷黑暗盾"
-	desc = "它是因果那脆弱不堪的洪流中的一名入侵者，由薄片编织而成，用以抵挡那些尚未准备好领悟 \
-	她门徒福音之人。齐佐曾试图庇护她的子嗣免于灭绝，却终究失败；在神圣狂乱的煎熬之中，她终于 \
-	意识到，这个世界已不再值得拯救。"
+	desc = "它是因果那脆弱不堪的洪流中的一名入侵者，由薄片编织而成，用以抵挡那些尚 \
+	未准备好领悟  她门徒福音之人。齐佐曾试图庇护她的子嗣免于灭绝，却终究 \
+	失败；在神圣狂乱的煎熬之中，她终于  意识到，这个世界已不再值得拯救。"
 	unenchantable = TRUE
 	max_integrity = 400
 	force = 25
@@ -290,8 +291,8 @@
 
 /obj/item/rogueweapon/shield/tower/metal/gold
 	name = "黄金盾"
-	desc = "一面华美的鸢形盾，由六块金色板甲拼合而成，它们被一枚熠熠生辉的神圣徽记钩连在一起。高贵或许脆弱， \
-	但只要握柄依旧稳固，便无人能奢望斩断它最薄弱的一环。"
+	desc = "一面华美的鸢形盾，由六块金色板甲拼合而成，它们被一枚熠熠生辉的神圣徽记钩连在 \
+	一起。高贵或许脆弱，  但只要握柄依旧稳固，便无人能奢望斩断它最薄弱的一环。"
 	icon_state = "goldshield"
 	force = 25
 	throwforce = 35
@@ -311,8 +312,8 @@
 
 /obj/item/rogueweapon/shield/tower/metal/gold/king
 	name = "黄金盾"
-	desc = "一面华美的鸢形盾，由六块金色板甲拼合而成，它们被一枚镶有多佩尔石的神圣徽记钩连在一起。高贵或许脆弱， \
-	但只要握柄依旧稳固，便无人能奢望斩断它最薄弱的一环。"
+	desc = "一面华美的鸢形盾，由六块金色板甲拼合而成，它们被一枚镶有多佩尔石的神圣徽记钩连 \
+	在一起。高贵或许脆弱，  但只要握柄依旧稳固，便无人能奢望斩断它最薄弱的一环。"
 	icon_state = "goldshieldking"
 	max_integrity = 75
 	sellprice = 300
@@ -432,15 +433,15 @@
 
 /obj/item/rogueweapon/shield/buckler/ancient
 	name = "远古小圆盾"
-	desc = "它曾领先于时代，如今却已被时代抛下。工匠锤击留下的痕迹仍在斑驳表面上可见，然而 \
-	锈蚀与腐朽连这点记忆都不肯放过。"
+	desc = "它曾领先于时代，如今却已被时代抛下。工匠锤击留下的痕迹仍 \
+	在斑驳表面上可见，然而  锈蚀与腐朽连这点记忆都不肯放过。"
 	icon_state = "ancient_buckler"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/shield/buckler/ancient/decrepit
 	name = "破旧的小圆盾"
-	desc = "它曾领先于时代，如今却已被时代抛下。工匠锤击留下的痕迹仍在斑驳表面上可见，然而 \
-	锈蚀与腐朽连这点记忆都不肯放过。"
+	desc = "它曾领先于时代，如今却已被时代抛下。工匠锤击留下的痕迹仍 \
+	在斑驳表面上可见，然而  锈蚀与腐朽连这点记忆都不肯放过。"
 	force = 12
 	throwforce = 6
 	max_integrity = 40
@@ -452,7 +453,7 @@
 	force = 15
 	throwforce = 10
 	dropshrink = 0.8
-	coverage = 30
+	coverage = 50
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 220
@@ -475,7 +476,7 @@
 	force = 20
 	throwforce = 25 // "I can do this all day."
 	dropshrink = 0.8
-	coverage = 30
+	coverage = 50
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	possible_item_intents = list(SHIELD_SMASH_METAL, SHIELD_BLOCK) // No SHIELD_BASH. Too heavy to swing quickly, or something.
@@ -502,8 +503,8 @@
 
 /obj/item/rogueweapon/shield/iron/nomad
 	name = "游牧盾"
-	desc = "一面纤薄的盾牌，似乎同时以吉尔青铜与铁打造而成。那是种不祥的组合。 \
-	它的工艺仿佛来自另一个时代，自第一纪元后便再未现世。"
+	desc = "一面纤薄的盾牌，似乎同时以吉尔青铜与铁打造而成。那是种不祥的 \
+	组合。  它的工艺仿佛来自另一个时代，自第一纪元后便再未现世。"
 	icon_state = "ironsh_nomad"//Temp, but it works.
 	coverage = 40//+10
 	max_integrity = 200//-20
@@ -576,7 +577,7 @@
 	force = 25
 	throwforce = 30 // DO NOT GIVE ANYTHING; BUT TAKE FROM THEM.. EVERYTHING!
 	dropshrink = 0.8 // Free free to add actual designs to this shield, too, if-or-whenever.
-	coverage = 50//for dealing with persian archers
+	coverage = 60
 	resistance_flags = null
 	flags_1 = CONDUCT_1
 	minstr = 11 //Particularly heavy to use as a melee weapon.
@@ -597,8 +598,8 @@
 
 /obj/item/rogueweapon/shield/bronze/great
 	name = "霍普隆巨盾"
-	desc = "一面沉重的盾牌，比同时代的大多数同类都更高更厚。它挺过了大灾变，熬过了神化，也挡下了大裂解； \
-	而最后一次，它将为这个垂死的世界挡住更为残酷的命运。"
+	desc = "一面沉重的盾牌，比同时代的大多数同类都更高更厚。它挺过了大灾变，熬过了神化 \
+	，也挡下了大裂解；  而最后一次，它将为这个垂死的世界挡住更为残酷的命运。"
 	icon_state = "bronzegreatshield"
 	item_state = "bronzegreatshield"
 	max_integrity = 360 //Highest integrity and passive projectile-blocking chance of most non-unique shields.

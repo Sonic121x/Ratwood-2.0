@@ -10,7 +10,6 @@
 	sleeved = null
 	resistance_flags = FIRE_PROOF
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	clothing_flags = CANT_SLEEP_IN
 	dynamic_hair_suffix = "+generic"
 	bloody_icon_state = "helmetblood"
@@ -24,6 +23,8 @@
 	grid_width = 64
 	experimental_onhip = TRUE
 	experimental_inhand = TRUE
+	chunkcolor = "#8c9599"
+	material_category = ARMOR_MAT_LEATHER
 
 /obj/item/clothing/head/roguetown/helmet/MiddleClick(mob/user)
 	if(!ishuman(user))
@@ -106,6 +107,8 @@
 	desc = "一顶经过打磨的吉尔青铜锅盔，保护着头顶和两侧。当涉及不洁之战时，绝不能阻挡齐佐的凝视。不死弩炮手们践行着一种奇特的方法，将染色的布料系在盔檐周围；难道他们，也能思考和产生联想吗？"
 	icon_state = "ancientkettle"
 	smeltresult = /obj/item/ingot/aaslag
+	material_category = ARMOR_MAT_PLATE
+	chunkcolor = "#532e25"
 
 /obj/item/clothing/head/roguetown/helmet/kettle/ancient/decrepit
 	name = "破旧的锅盔"
@@ -319,8 +322,10 @@
 
 /obj/item/clothing/head/roguetown/helmet/bronze
 	name = "青铜伊利里亚头盔"
-	desc = "一顶青铜头盔，其设计古老得超乎想象。盔顶装有一枚装饰性徽记，千年来一直引发学术争论——它究竟是星辰、漩涡，还是太阳？</br>徽记后方有一处凹槽，用于安装羽饰。插上一根羽毛，就能展示你所属阵营的色彩。"
-	armor = ARMOR_BRONZE
+	desc = "一顶青铜头盔，其设计古老得超乎想象。盔顶装有一枚装饰性徽记，千年来 \
+	一直引发学术争论——它究竟是星辰、漩涡，还是太阳？</br>徽记后方 \
+	有一处凹槽，用于安装羽饰。插上一根羽毛，就能展示你所属阵营的色彩。"
+	armor = ARMOR_PLATE
 	max_integrity = ARMOR_INT_HELMET_HEAVY_BRONZE - 25 //Close, but no cigar.
 	body_parts_covered = HEAD|HAIR|EARS
 	icon_state = "bronzehelmet"
@@ -355,11 +360,11 @@
 
 /obj/item/clothing/head/roguetown/helmet/bronzegladiator
 	name = "青铜穆尔米洛盔"
-	desc = "一顶青铜头盔，以布满孔洞的面罩遮蔽佩戴者的面容；它既是萨雷特盔的远祖，也是萨伏依盔的远祖， \
-	既能提供极佳的防护，又能确保佩戴者不会因为自己喷出的战意热气而窒息。 </br>在所有演艺劳作中，没有什么比 \
-	在乌尔-西昂废墟之巅重演拉沃克斯与格拉加尔的对决更盛大——那传说中并非一尊触须星辰，而是一位高耸的替身斗士； \
-	由大魔君雕凿而成，是一切正义与骑士精神之人的反面。"
-	armor = ARMOR_BRONZE
+	desc = "一顶青铜头盔，以布满孔洞的面罩遮蔽佩戴者的面容；它既是萨雷特盔的远祖，也是萨伏依盔的远祖，  \
+	 既能提供极佳的防护，又能确保佩戴者不会因为自己喷出的战意热气而窒息。 </br>在所有演艺 \
+	劳作中，没有什么比  在乌尔-西昂废墟之巅重演拉沃克斯与格拉加尔的对决更盛大——那传说中并非 \
+	一尊触须星辰，而是一位高耸的替身斗士；  由大魔君雕凿而成，是一切正义与骑士精神之人的反面。"
+	armor = ARMOR_PLATE
 	max_integrity = ARMOR_INT_HELMET_HEAVY_BRONZE - 100
 	armor_class = ARMOR_CLASS_LIGHT
 	body_parts_covered = FULL_HEAD
@@ -880,7 +885,6 @@
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	flags_inv = HIDEHAIR
 	body_parts_covered = HEAD|HAIR|EARS|NOSE|NECK
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_STAB)
 	max_integrity = 250
 	smeltresult = /obj/item/ingot/iron
 	dropshrink = null

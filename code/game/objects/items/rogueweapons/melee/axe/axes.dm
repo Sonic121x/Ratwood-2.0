@@ -1,55 +1,3 @@
-//intent datums ฅ^•ﻌ•^ฅ
-
-/datum/intent/axe/cut
-	name = "劈砍"
-	icon_state = "incut"
-	blade_class = BCLASS_CUT
-	attack_verb = list("切开", "挥砍")
-	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	animname = "劈砍"
-	penfactor = 20
-	chargetime = 0
-	item_d_type = "slash"
-
-/datum/intent/axe/chop
-	name = "砍劈"
-	icon_state = "inchop"
-	blade_class = BCLASS_CHOP
-	attack_verb = list("砍击", "劈砍")
-	animname = "chop"
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 35
-	swingdelay = 10
-	clickcd = 14
-	item_d_type = "slash"
-
-/datum/intent/axe/chop/scythe
-	reach = 2
-
-/datum/intent/axe/chop/stone
-	penfactor = 5
-
-/datum/intent/axe/chop/battle
-	damfactor = 1.2 //36 on battleaxe
-	penfactor = 40
-
-/datum/intent/axe/cut/battle
-	penfactor = 25
-
-/datum/intent/axe/bash
-	name = "猛砸"
-	icon_state = "inbash"
-	attack_verb = list("猛砸", "敲击")
-	animname = "strike"
-	blade_class = BCLASS_BLUNT
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	swingdelay = 5
-	damfactor = NONBLUNT_BLUNT_DAMFACTOR // Not a real blunt weapon, so less damage.
-	item_d_type = "blunt"
-	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
-
 //axe objs ฅ^•ﻌ•^ฅ
 
 /obj/item/rogueweapon/stoneaxe
@@ -71,7 +19,6 @@
 	max_blade_int = 100
 	minstr = 8
 	wdefense = 1
-	demolition_mod = 2
 	w_class = WEIGHT_CLASS_BULKY
 	wlength = WLENGTH_SHORT
 	pickup_sound = 'sound/foley/equip/rummaging-03.ogg'
@@ -94,7 +41,8 @@
 /obj/item/rogueweapon/stoneaxe/battle
 	force = 25
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash/battle)
+	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/chop/heavy, /datum/intent/axe/bash/battle)
 	wlength = WLENGTH_LONG		//It's a big battle-axe.
 	name = "战斧"
 	desc = "一把钢制战斧。锋刃凶恶。"
@@ -102,7 +50,6 @@
 	max_blade_int = 300
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
-	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle, /datum/intent/axe/bash, /datum/intent/sword/peel)
 	minstr = 9
 	wdefense = 4
 
@@ -120,7 +67,7 @@
 /obj/item/rogueweapon/stoneaxe/oath
 	force = 30
 	force_wielded = 40
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash/battle)
 	name = "誓约"
 	desc = "一把沉重的钢锻战斧，遍布无数守望者留下的痕迹。尽管蚀刻风化、握柄磨损，它的刃口依旧被磨得如剃刀般锋利，你甚至能在精细抛光的金属上看见自己的倒影。"
 	icon_state = "oath"
@@ -136,7 +83,7 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	smeltresult = /obj/item/ingot/steel
-	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle, /datum/intent/axe/bash)
+	gripped_intents = list(/datum/intent/axe/cut ,/datum/intent/axe/chop, /datum/intent/axe/bash)
 	minstr = 12
 	wdefense = 5
 
@@ -154,18 +101,18 @@
 	name = "伐木斧"
 	force = 20
 	force_wielded = 26
-	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop,/datum/intent/axe/bash)
 	desc = "一把普通的铁制伐木斧。"
 	icon_state = "axe"
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/iron
-	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/sword/peel)
+	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop,/datum/intent/axe/bash)
 	wdefense = 2
 	is_tool = TRUE//here instead of on stoneaxe so we dont permit battleaxes to be used as tools.
 
 /obj/item/rogueweapon/stoneaxe/hurlbat
 	name = "投掷斧"
-	desc = "它兼具投刃的轻巧流线与战斧的制止力，这种巧妙设计使投掷斧能够以致命效率命中目标。尽管其历史起源众说纷纭，但它常见于瓦兰吉安赏金猎人与残酷的草原民手中。"
+	desc = "With the sleek, lightweight design of a tossblade and the stopping power of a battleaxe, the hurlbat's tricky design allows it to strike its targets with deadly efficiency. Although its historic origin is disputed, it is often-seen amongst Varangian Bounty-Hunters and ruthless Steppesmen."
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_SMALL
@@ -179,7 +126,7 @@
 	throwforce = 32 //You ever had an axe thrown at you?
 	throw_speed = 6 //Batarangs, baby.
 	max_integrity = 50 //Brittle design, hits hard, breaks quickly.
-	armor_penetration = 40 //On-par with steel tossblades.
+	armor_penetration = PEN_HEAVY //On-par with steel tossblades.
 	wdefense = 1
 	icon_state = "hurlbat"
 	embedding = list("embedded_pain_multiplier" = 6, "embed_chance" = 50, "embedded_fall_chance" = 30) //high chance at embed, high chance to fall out on its own.
@@ -201,7 +148,7 @@
 	desc = "一柄华丽的黑钢投战斧，其配重经过精心设计，只需一次精准投掷便能穿透大多数胸甲。"
 	smeltresult = /obj/item/ingot/blacksteel
 	icon_state = "bs_hurlbat"
-	armor_penetration = 60 //this kills the platebeast
+	armor_penetration = PEN_BSTEEL //this kills the platebeast
 	possible_item_intents = list(/datum/intent/axe/chop)
 	force = 24
 	throwforce = 40
@@ -227,7 +174,6 @@
 	wlength = WLENGTH_NORMAL
 	toolspeed = 2
 	max_integrity = 300 //+50, given it has no damage increase like the Warden's. Still not great for mining.
-	demolition_mod = 1.75//75%, +25% over woodcutting. Still not on par with the sapper's 100%.
 
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick
 	name = "守望者之斧"
@@ -253,7 +199,7 @@
 
 /obj/item/rogueweapon/stoneaxe/handaxe
 	force = 18
-	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	name = "手斧"
 	desc = "一把铁制手斧。"
 	icon_state = "hatchet"
@@ -271,13 +217,14 @@
 /obj/item/rogueweapon/stoneaxe/woodcut/bronze
 	name = "青铜斧"
 	icon_state = "bronzeaxe"
-	desc = "一根古老的手杖，装有青铜斧头。这样的工具曾让人类得以从普赛多尼亚的荒野中开辟文明；如今，除死地的游牧蛮族部落外，已很少见到了。"
+	desc = "一根古老的手杖，装有青铜斧头。这样的工具曾让人类得以从普赛多尼亚 \
+	的荒野中开辟文明；如今，除死地的游牧蛮族部落外，已很少见到了。"
 	force = 23 //Basic balance idea. Damage's between iron and steel, but with a sharper edge than steel. Probably not historically accurate, but we're here to have fun.
 	force_wielded = 27
 	max_blade_int = 550
 	smeltresult = /obj/item/ingot/bronze
 	wdefense = 2
-	armor_penetration = 22
+	armor_penetration = PEN_LIGHT
 	throwforce = 32
 	throw_speed = 6
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 33, "embedded_fall_chance" = 2)
@@ -298,17 +245,17 @@
 /obj/item/rogueweapon/stoneaxe/woodcut/bronzebattleaxe
 	name = "青铜战斧"
 	icon_state = "bronzebattleaxe"
-	desc = "一柄古旧的杆状兵器，装有三次楔固的青铜斧头。其刃部形制独特，与霍佩什弯刀相似，确保无论以何种方式握持，每一次 \
-	挥砍都能将持用者的全部力道准确送入落点。"
+	desc = "一柄古旧的杆状兵器，装有三次楔固的青铜斧头。其刃部形制独特，与霍佩什弯刀相似 \
+	，确保无论以何种方式握持，每一次  挥砍都能将持用者的全部力道准确送入落点。"
 	force = 25 // Similar presentation to a battle axe, but same force both one and two handed
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash)
-	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash)
+	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash)
 	force_wielded = 25
 	max_blade_int = 500
 	smeltresult = /obj/item/ingot/bronze
 	minstr = 8
 	wdefense = 4
-	armor_penetration = 22
+	armor_penetration = PEN_LIGHT
 	throwforce = 32
 	throw_speed = 6
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 33, "embedded_fall_chance" = 2)
@@ -340,20 +287,11 @@
 	anvilrepair = null
 	randomize_blade_int_on_init = TRUE
 
-/datum/intent/axe/cut/long
-	reach = 2
-
-/datum/intent/axe/chop/long
-	reach = 2
-
-/datum/intent/axe/cut/long/bronze
-	damfactor = 1.1
-
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/decorated
 	name = "装饰斧"
 	icon_state = "nsapo"
-	desc = "这种装饰华美的斧头传统上被称作“恩萨波”，其根源可追溯至普赛顿文明最早的岁月。 \
-	正因如此，它深受纳莱迪与兹班图两地贵族的喜爱。"
+	desc = "这种装饰华美的斧头传统上被称作“恩萨波”，其根源可追溯至普赛顿文 \
+	明最早的岁月。  正因如此，它深受纳莱迪与兹班图两地贵族的喜爱。"
 	max_integrity = 300
 	smeltresult = /obj/item/ingot/gold
 	wdefense = 5
@@ -364,11 +302,10 @@
 	icon_state = "woodcutter"
 	desc = "一把长柄木斧，握柄经过雕刻，选用优质木材打造。非常适合林业从业者。"
 	max_integrity = 300		//100 higher than normal; basically it's main difference.
-	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/axe/bash, /datum/intent/sword/peel)
-	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/bash, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/axe/bash)
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/bash)
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
-	demolition_mod = 2.5			//Base is 1.25, so 25% extra. Helps w/ caprentry and building kinda.
 	slot_flags = ITEM_SLOT_BACK		//Needs to go on back.
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
@@ -413,7 +350,7 @@
 	desc = "一把以纯银打造的厚重战斧。即便单手握持，只要奋力挥出，也足以一并劈开锁甲与血肉。"
 	icon_state = "silveraxe"
 	force = 25 // Forced to be 1 handed, higher force to compensate
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/chop/heavy, /datum/intent/axe/bash/battle)
 	minstr = 11
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/silver
@@ -477,19 +414,18 @@
 /obj/item/rogueweapon/stoneaxe/battle/steppesman
 	name = "阿夫尼克瓦拉什卡斧"
 	desc = "一把阿夫尼风格的钢斧，将致命武器与手杖结合为一体，因此末端也制成尖刺。它的平头便于握持，既能劈砍也能猛砸。要是你足够用力，大概也能拿它捅人。"
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash, /datum/intent/mace/warhammer/pick)
-	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle, /datum/intent/stab, /datum/intent/mace/warhammer/pick)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/smash)
+	gripped_intents = list(/datum/intent/axe/cut ,/datum/intent/axe/chop, /datum/intent/stab)
 	force_wielded = 28	//No damage changes for wielded/unwielded
 	icon = 'icons/roguetown/weapons/axes32.dmi'
 	icon_state = "valaskapick"
-	demolition_mod = 2.5
 	walking_stick = TRUE
 
 /obj/item/rogueweapon/stoneaxe/battle/steppesman/chupa
 	name = "兹瓦尔特基牧斧"
 	desc = "兹瓦尔特基制的钢斧，兼具致命武器与手杖的用途，因此柄尾带尖。扁平的斧头握起来很舒适，可用于劈砍与砸击，危急时还能钩住对手的武器。斧上饰有瑟伦迪尼日纳的旗色。"
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/cut/battle/lunge, /datum/intent/sword/disarm)
-	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/cut/lunge, /datum/intent/sword/disarm)
+	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/smash, /datum/intent/pick)
 	force = 22
 	force_wielded = 25
 	icon = 'icons/roguetown/weapons/special/freifechter.dmi'
@@ -498,7 +434,6 @@
 	pixel_x = 0
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	demolition_mod = 2
 	bigboy = TRUE
 
 /obj/item/rogueweapon/stoneaxe/battle/steppesman/chupa/getonmobprop(tag)
@@ -512,7 +447,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/datum/intent/axe/cut/battle/lunge
+/datum/intent/axe/cut/lunge
 	name = "牧斧探身斩"
 	desc = "握住牧斧柄的末端，划弧挥击以攻击更远的目标。距离恰当时会造成额外伤害，否则只能用斧柄击中对方。"
 	damfactor = 1.75
@@ -530,12 +465,6 @@
 	clickcd = 14
 	item_d_type = "slash"
 
-/datum/intent/axe/cut/battle/greataxe
-	reach = 2
-
-/datum/intent/axe/chop/battle/greataxe
-	reach = 2
-
 /datum/intent/axe/sweep
 	name = "横扫斩"
 	icon_state = "insweep"
@@ -543,7 +472,7 @@
 	attack_verb = list("横扫", "横斩")
 	animname = "cut"
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1.1
 	clickcd = CLICK_CD_MASSIVE
 	chargetime = 0
@@ -554,8 +483,8 @@
 /obj/item/rogueweapon/greataxe
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/sweep, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/chop/heavy, /datum/intent/axe/sweep)
 	name = "巨斧"
 	desc = "一把铁制巨斧，长柄单刃，专为彻底毁掉别人的一天而生……"
 	icon_state = "igreataxe"
@@ -574,7 +503,6 @@
 	smeltresult = /obj/item/ingot/iron
 	associated_skill = /datum/skill/combat/axes
 	wdefense = 6
-	demolition_mod = 2
 
 /obj/item/rogueweapon/greataxe/getonmobprop(tag)
 	. = ..()
@@ -593,8 +521,8 @@
 /obj/item/rogueweapon/greataxe/steel
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/sweep, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/sweep)
 	name = "钢巨斧"
 	desc = "一把钢制巨斧，长柄单刃，专为彻底毁掉别人的一天而生……"
 	icon_state = "sgreataxe"
@@ -605,14 +533,14 @@
 
 /obj/item/rogueweapon/greataxe/blacksteel
 	name = "黑钢巨斧"
-	desc = "一柄华丽的黑钢巨斧，顶部装有尖刺以逼退恐怖之物。\
-	没人能确定它究竟该叫“长柄斧”还是“巨斧”；然而时至今日，在普通人眼中，这两个称呼大概已经可以混用了。"
+	desc = "一柄华丽的黑钢巨斧，顶部装有尖刺以逼退恐怖之物。 没人能确定它究竟该叫“长柄 \
+	斧”还是“巨斧”；然而时至今日，在普通人眼中，这两个称呼大概已经可以混用了。"
 	icon_state = "bs_greataxe"
 	force = 20
 	force_wielded = 40//on par with blacksteel flamberg
 	smeltresult = /obj/item/ingot/blacksteel
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/strike, SPEAR_BASH)
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/mace/rangedthrust, /datum/intent/axe/sweep)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/mace/strike, /datum/intent/mace/rangedthrust) //Axe-equivalent to the Godendag or Grand Mace.
 	max_blade_int = 500
 	wdefense_wbonus = 3 //Increased defense when wielded.
 	resistance_flags = FIRE_PROOF
@@ -620,8 +548,8 @@
 /obj/item/rogueweapon/greataxe/bronze
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/long/bronze, /datum/intent/axe/chop/long, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/chop/heavy, /datum/intent/axe/sweep)
 	name = "青铜巨斧"
 	desc = "一柄巨大的长杖，木柄上嵌着青铜斧头。它能从远处以致命之力劈砍切削；无论是林木还是肢体，都不在话下。"
 	icon = 'icons/roguetown/weapons/axes64.dmi'
@@ -636,8 +564,8 @@
 
 /obj/item/rogueweapon/greataxe/steel/necran
 	name = "喘息"
-	desc = "一把涂抹过香炉灰、又以麻布缠裹的斧头。它是刽子手的工具，却承载着远比单纯服役更重大的使命。\
-	斧刃锋利，斧柄平衡得当。其上承载着安息的祝福。"
+	desc = "一把涂抹过香炉灰、又以麻布缠裹的斧头。它是刽子手的工具，却承载着远比 \
+	单纯服役更重大的使命。 斧刃锋利，斧柄平衡得当。其上承载着安息的祝福。"
 	icon_state = "necroberd"
 	force = 18//+3, typical of Templar weapons.
 	force_wielded = 33//As above. No peel, unlike Tidecleaver.
@@ -660,12 +588,14 @@
 	clickcd = CLICK_CD_HEAVY // longer because of range
 	blunt_chip_strength = BLUNT_CHIP_STRONG // eagle's beak uses BLUNT_CHIP_ABSURD instead
 
+/datum/intent/mace/strike/poleaxe
+	damfactor = 1.2
+
 /obj/item/rogueweapon/greataxe/silver
 	force = 15
 	force_wielded = 25
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/strike)
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/mace/rangedthrust)
-	alt_intents = list(/datum/intent/spear/bash/poleaxe, /datum/intent/mace/smash/poleaxe, /datum/intent/mace/rangedthrust)
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/mace/strike/poleaxe, /datum/intent/spear/thrust/militia)
 	name = "白银长柄斧"
 	desc = "一把长柄斧，装有加固柄杆与纯银鸟喙斧头。它或许无法阻止黑暗本身，却能拖慢它的脚步，久到让无助者安全撤离。 </br>“越过天际，我看见星辰与旋纹；而在其下，是那些被我斩倒的恐怖。穿过黑暗，我望见我的家园与它美丽的光；只要我仍在战斗，它便会继续闪耀。永远屹立，永远坚守，直到天际归于沉寂，我的灵魂才会踏上归途……”"
 	icon_state = "silverpolearm"
@@ -690,8 +620,7 @@
 
 /obj/item/rogueweapon/greataxe/psy
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/strike)
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/mace/rangedthrust)
-	alt_intents = list(/datum/intent/spear/bash/poleaxe, /datum/intent/mace/smash/poleaxe, /datum/intent/mace/rangedthrust)
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/mace/strike/poleaxe, /datum/intent/spear/thrust/militia)
 	name = "普赛顿长柄斧"
 	desc = "一把长柄斧，装有加固柄杆与合银鸟喙斧头。随着长剑的脆弱性愈发明显，普赛顿教团在灾难性的布拉斯滕吉尔大屠杀后，逐渐转向为圣武士装备更耐久的大型兵器。"
 	icon_state = "silverpolearm"
@@ -728,13 +657,13 @@
 /obj/item/rogueweapon/greataxe/steel/doublehead
 	force = 15
 	force_wielded = 35
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/sweep, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/sweep)
 	name = "双头钢巨斧"
 	desc = "一把带有凶恶双刃斧头的钢制巨斧。无论是把人还是把树砍成残桩，它都很在行……"
 	icon_state = "doublegreataxe"
 	icon = 'icons/roguetown/weapons/64.dmi'
-	max_blade_int = 175
+	max_blade_int = 230
 	minstr = 12
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/graggar
@@ -743,8 +672,9 @@
 	icon_state = "graggargaxe"
 	force = 20
 	force_wielded = 40
-	max_blade_int = 250
+	max_blade_int = 400
 	icon = 'icons/roguetown/weapons/64.dmi'
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/chop/heavy, /datum/intent/axe/sweep)
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/graggar/Initialize(mapload)
 	. = ..()

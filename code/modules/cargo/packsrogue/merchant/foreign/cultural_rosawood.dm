@@ -1,7 +1,7 @@
 // the woad light helm and maille, the blackoak barbutes, the woad recurve bow and the javelin
 // quiver do not exist. Their packs are omitted until those items are ported.
 /datum/supply_pack/rogue/rosawood
-	group = "文化货物" // English: Cultural Stock
+	group = "文化货物"
 	crate_name = "玫瑰林货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
@@ -169,6 +169,7 @@
 /datum/supply_pack/rogue/rosawood/elfcurveblade
 	name = "精灵弯刃"
 	cost = 120
-	contains = list(/obj/item/rogueweapon/greatsword/elf)
+	contains = list(/obj/item/rogueweapon/greatsword/elvish)
 	ship_qty_min = 1
 	ship_qty_max = 2
+

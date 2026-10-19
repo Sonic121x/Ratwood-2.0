@@ -2,7 +2,7 @@
 	name = "抽击"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("抽打", "击打", "猛砸")
-	penfactor = 0 //40
+	penfactor = PEN_NONE
 	chargetime = 5
 	item_d_type = "slash"
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')

@@ -12,7 +12,7 @@
 			summoner = user.mind.current.real_name
 		else
 			summoner = user.name
-	// adds the name of the summoner to the faction, to avoid the hooded "Unknown" bug with Skeleton IDs
+	// adds the name of the summoner to the faction, to avoid the hooded "未知" bug with Skeleton IDs
 	if(user && user.mind && user.mind.current)
 		faction |= "[user.mind.current.real_name]_faction"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
@@ -40,7 +40,7 @@
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
 	chargetime = 0
-	penfactor = 0
+	penfactor = PEN_NONE
 	miss_text = "划破空气"
 	item_d_type = "slash"
 	clickcd = 12

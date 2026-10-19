@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "雷霆矢"
-	desc = "射出一道雷霆电矢，灼烧目标，并使其在 6 秒内难以攻击且行动迟缓。\n\
-	对头脑简单的生物伤害提高 100%。"
+	desc = "射出一道雷霆电矢，灼烧目标，并使其在 6 秒内难以攻击 \
+	且行动迟缓。\n 对头脑简单的生物伤害提高 100%。"
 	clothes_req = FALSE
 	overlay_state = "lightning"
 	sound = 'sound/magic/lightning.ogg'
@@ -37,10 +37,10 @@
 	damage = 40
 	npc_simple_damage_mult = 2 // Good news it is not a trap to shoot at NPC anymore
 	damage_type = BURN
-	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
+	accuracy = 40
 	nodamage = FALSE
 	speed = 0.3
-	flag = "magic"
+	flag = "fire"
 	light_color = "#ffffff"
 	light_outer_range = 7
 	var/bypass_antimagic = FALSE

@@ -68,38 +68,8 @@
 		if(C.body_parts_covered)
 			html += "\n<b>覆盖部位： </b>"
 			html += " | "
-			if(C.body_parts_covered == C.body_parts_covered_dynamic)
-				for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
-					html += "<b>[capitalize(zone)]</b> | "
-			else
-				var/list/zones = list()
-				//We have some part peeled, so we turn the printout into precise mode and highlight the missing coverage.
-				for(var/zoneorg in body_parts_covered2organ_names(C.body_parts_covered, precise = TRUE))
-					zones += zoneorg
-				for(var/zonedyn in body_parts_covered2organ_names(C.body_parts_covered_dynamic, precise = TRUE))
-					html += "<b>[capitalize(zonedyn)]</b> | "
-					if(zonedyn in zones)
-						zones.Remove(zonedyn)
-				for(var/zone in zones)
-					html += "<b><font color = '#470000'>[capitalize(zone)]</font></b> | "
-			html += "<br>"
-		if(C.body_parts_inherent)
-			html += "<b>不可剥离： </b>"
-			var/list/inherentList = body_parts_covered2organ_names(C.body_parts_inherent)
-			if(length(inherentList) == 1)
-				html += "<b><font color = '#000833'>[capitalize(inherentList[1])]</font></b><br>"
-			else
-				html += "| "
-				for(var/zone in inherentList)
-					html += "<b><font color = '#000833'>[capitalize(zone)]</b></font> | "
-			html += "<br>"
-		if(C.prevent_crits)
-			if(length(C.prevent_crits))
-				html += "\n<b>防止重创：</b>"
-				for(var/X in C.prevent_crits)
-					if(X == BCLASS_PICK)	//BCLASS_PICK is named "stab", and "stabbing" is its own damage class. Prevents confusion.
-						X = "凿击"
-					html += ("\n<b>[capitalize(X)]</b><br>")
+			for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
+				html += "<b>[capitalize(zone)]</b> | "
 		html += "耐久： [bookarmor.max_integrity]<br>"
 		if(bookarmor.armor_class == ARMOR_CLASS_HEAVY)
 			html += "<b>护甲等级： </b>重甲<br>"
@@ -136,8 +106,12 @@
 				if(WLENGTH_GREAT)
 					html += "巨型<br>"
 
-		if(bookweapon.alt_intents)
-			html += "\n<b>握持：替代握法（手持时右键）</b><br>"
+		if(bookweapon.has_altgrip_modes())
+			var/alt_grip_names = bookweapon.get_altgrip_names()
+			html += "\n<b>GRIP: ALT-GRIP (Inhand RMB / Hotkey)"
+			if(alt_grip_names)
+				html += ": [alt_grip_names]"
+			html += "</b><br>"
 		if(bookweapon.gripped_intents)
 			html += "\n<b>双手：是</b><br>"
 

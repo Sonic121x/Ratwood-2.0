@@ -11,7 +11,7 @@
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
-	max_integrity = 475
+	max_integrity = 675
 	item_flags = DROPDEL
 	repair_time = 14 SECONDS
 	combat_taggable = TRUE
@@ -25,8 +25,8 @@
 
 /datum/antagonist/gnoll
 	name = "豺狼人"
-	roundend_category = "豺狼人"
-	antagpanel_category = "豺狼人"
+	roundend_category = "Gnolls"
+	antagpanel_category = "Gnolls"
 	job_rank = ROLE_GNOLL
 	var/datum/weakref/tracked_target_ref = null
 
@@ -203,13 +203,13 @@
 	wlength = WLENGTH_SHORT
 
 /datum/intent/simple/werewolf/gnoll
-	name = "利爪"
-	icon_state = "inchop"
-	blade_class = BCLASS_CHOP
-	attack_verb = list("抓挠", "撕咬", "开膛破肚")
-	animname = "chop"
+	name = "裂割爪"
+	icon_state = "incut"
+	animname = "cut"
 	hitsound = "genslash"
-	penfactor = 20
+	penfactor = PEN_LIGHT
+	blade_class = BCLASS_CUT
+	attack_verb = list("cuts", "slashes")
 	miss_text = "扑了个空！"
 	miss_sound = "bluntwooshlarge"
 	item_d_type = "slash"
@@ -220,19 +220,24 @@
 	desc = "以野蛮肌力发动的强力猛击，造成正常伤害，并能依照你的力量击退、减速站立目标。力量低于 10 时无效。减速与击退会随你的力量提高，最高按 15 点计算（1 到 5 格）。同一目标每 5 秒内不能连续使用。倒地目标的击退距离减半。"
 	icon_state = "insmash"
 	chargetime = 1
-	penfactor = 0
+	penfactor = PEN_NONE
 
 /datum/intent/simple/gnoll_cut
-	name = "裂割爪"
+	name = "chopping claw"
 	hitsound = "genslash"
-	penfactor = 60
+	penfactor = PEN_HEAVY
+	icon_state = "inchop"
 	miss_text = "扑了个空！"
 	miss_sound = "bluntwooshlarge"
-	icon_state = "incut"
-	attack_verb = list("切开", "劈裂")
-	animname = "cut"
-	blade_class = BCLASS_CUT
+	icon_state = "inchop"
+	attack_verb = list("claws", "mauls", "eviscerates")
+	animname = "chop"
+	blade_class = BCLASS_CHOP
 	item_d_type = "slash"
+	swingdelay = 1 SECONDS
+	clickcd = CLICK_CD_CHARGED
+	parriable_intent = FALSE
+	swingdelay_type = SWINGDELAY_CANCEL
 
 /datum/intent/mace/strike/gnoll
 	name = "裂甲重击"

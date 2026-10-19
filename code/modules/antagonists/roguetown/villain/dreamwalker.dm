@@ -1,7 +1,7 @@
 /datum/antagonist/dreamwalker
 	name = "梦行者"
-	roundend_category = "梦行者"
-	antagpanel_category = "梦行者"
+	roundend_category = "Dreamwalker"
+	antagpanel_category = "Dreamwalker"
 	job_rank = ROLE_DREAMWALKER
 	confess_lines = list(
 		"我的愿景高于一切！",
@@ -120,8 +120,6 @@
 	var/process_interval = 5 SECONDS
 	/// Time of last processing
 	var/last_process = 0
-	var/next_armor_peel_process = 0
-	var/next_armor_peel_interval = 1 MINUTES
 
 /datum/component/dreamwalker_repair/Initialize()
 	if(!ishuman(parent))
@@ -157,15 +155,6 @@
 			I.update_icon()
 		if(I.blade_int < I.max_blade_int)
 			I.add_bintegrity(min(I.blade_int + I.max_blade_int * 0.01, I.max_blade_int), src.parent) // Sharpen 1% of max sharpness
-
-	if(world.time >= next_armor_peel_process)
-		next_armor_peel_process = world.time + next_armor_peel_interval
-
-		for(var/obj/item/I in repairing_items)
-			if(istype(I, /obj/item/clothing) && I.peel_count > 0)
-				I.peel_count--
-				I.visible_message(span_notice("梦之能量将 [I] 被剥落的一层猛地复原归位。"))
-				break
 
 /datum/component/dreamwalker_repair/proc/on_item_equipped(mob/user, obj/item/source, slot)
 	SIGNAL_HANDLER
@@ -565,9 +554,9 @@
 	item_flags = DREAM_ITEM
 	wbalance = WBALANCE_HEAVY
 	wdefense = 4
-	possible_item_intents = list(/datum/intent/sword/cut,/datum/intent/sword/chop,/datum/intent/stab, /datum/intent/sword/peel)
+	possible_item_intents = list(/datum/intent/sword/cut,/datum/intent/sword/chop,/datum/intent/stab, /datum/intent/stab)
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/lunge, /datum/intent/sword/thrust/estoc)
-	alt_intents = list(/datum/intent/effect/daze, /datum/intent/sword/strike, /datum/intent/sword/bash)
+	alt_grips = list(/datum/alt_grip/mordhau/broadsword/dream_broadsword)
 
 /obj/item/rogueweapon/greatsword/bsword/dreamscape/active
 	name = "异界长剑"
@@ -645,7 +634,6 @@
 	icon_state = "dreamplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	item_flags = DREAM_ITEM
-	peel_threshold = 5
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/dreamwalker/Initialize(mapload)
 	. = ..()
@@ -656,9 +644,8 @@
 	name = "异界腿甲"
 	desc = "奇异而带虹彩的腿甲。它反射光线的样子就像表面覆着一层发亮的油膜。"
 	icon_state = "dreamlegs"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	item_flags = DREAM_ITEM
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
 
 /obj/item/clothing/under/roguetown/platelegs/dreamwalker/Initialize(mapload)
 	. = ..()
@@ -669,7 +656,7 @@
 	name = "异界金属靴"
 	desc = "奇异而带虹彩的金属靴。它反射光线的样子就像表面覆着一层发亮的油膜。"
 	icon_state = "dreamboots"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	item_flags = DREAM_ITEM
 
 /obj/item/clothing/shoes/roguetown/boots/armor/dreamwalker/Initialize(mapload)
@@ -693,7 +680,6 @@
 	adjustable = CAN_CADJUST
 	icon_state = "dreamsquidhelm"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	peel_threshold = 4
 	item_flags = DREAM_ITEM
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/head.dmi'
 	block2add = null

@@ -71,7 +71,7 @@
 			if("精灵枪刃")
 				r_hand = /obj/item/rogueweapon/spear/naginata/elf
 			if("精灵弯刃")
-				r_hand = /obj/item/rogueweapon/greatsword/elf
+				r_hand = /obj/item/rogueweapon/greatsword/elvish
 
 		var/sidearm = list("精灵长剑", "精灵短剑")
 		var/sidearm_choice = input(H, "选择你的副手武器。", "隐藏之刺") as anything in sidearm

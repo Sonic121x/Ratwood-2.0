@@ -6,7 +6,7 @@
 	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1.1
 	swingdelay = 0
 	icon_state = "instrike"
@@ -21,7 +21,7 @@
 	blade_class = BCLASS_SMASH
 	attack_verb = list("猛砸")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1 // It now has CC effective
 	chargedrain = 1 // Slight stamina drain on use
 	chargetime = 5 // Half a second of charge for a bit of a warning.
@@ -75,7 +75,7 @@
 	recovery = 30
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 25
+	penfactor = PEN_MEDIUM
 	damfactor = 0.9
 	item_d_type = "stab"
 	effective_range = 2
@@ -205,8 +205,8 @@
 
 /obj/item/rogueweapon/mace/steel/silver/decorated
 	name = "装饰钉头锤"
-	desc = "一柄华丽的钉头锤，镶银并饰以金色纹章。在纳莱迪贵族之间，它的正式名称是“加达”；这根沉重的权杖 \
-	会逼得任何人屈膝下跪；若非出于敬意，那便是因为被打碎了股骨。"
+	desc = "一柄华丽的钉头锤，镶银并饰以金色纹章。在纳莱迪贵族之间，它的正式名称是“加达”； \
+	这根沉重的权杖  会逼得任何人屈膝下跪；若非出于敬意，那便是因为被打碎了股骨。"
 	icon_state = "gada"
 	smeltresult = /obj/item/ingot/gold
 	smelt_bar_num = 1
@@ -265,11 +265,11 @@
 
 /datum/intent/mace/strike/wood
 	hitsound = list('sound/combat/hits/blunt/woodblunt (1).ogg', 'sound/combat/hits/blunt/woodblunt (2).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 
 /datum/intent/mace/smash/wood
 	hitsound = list('sound/combat/hits/blunt/woodblunt (1).ogg', 'sound/combat/hits/blunt/woodblunt (2).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 
 /datum/intent/mace/smash/wood/ranged
 	reach = 2
@@ -477,6 +477,7 @@
 	desc = "晚安，阁下。"
 	force = 12
 	force_wielded = 22
+	max_integrity = 180
 	blade_dulling = DULLING_SHAFT_CONJURED
 	color = "#bb9696"
 	anvilrepair = null
@@ -665,7 +666,7 @@
 	animname = "stab"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	no_early_release = TRUE
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	damfactor = 0.8
 	item_d_type = "stab"
 
@@ -679,7 +680,7 @@
 	misscost = 1
 	swingdelay = 15
 	clickcd = 15
-	penfactor = 80
+	penfactor = PEN_BSTEEL
 	damfactor = 0.9
 	item_d_type = "stab"
 
@@ -724,7 +725,7 @@
 /obj/item/rogueweapon/mace/maul/grand
 	name = "巨槌"
 	desc = "光是拿这东西轻轻一敲，恐怕都足以把人的脊骨砸裂。 \
-	不过，只有疯子才会扛着这么沉的家伙到处跑。"
+	  不过，只有疯子才会扛着这么沉的家伙到处跑。"
 	icon_state = "cross"
 	force_wielded = 36//+1 compared to grand mace.
 	smeltresult = /obj/item/ingot/steel
@@ -736,7 +737,7 @@
 //Malumite maul. Intended for Templars.
 /obj/item/rogueweapon/mace/maul/grand/malum
 	name = "卡尔格伦德巨槌"
-	desc = "承袭矮人碎岩巨锤的遗泽而铸，这柄大槌因圣钢与神圣符文而拥有惊人威能。 \
+	desc = "承袭矮人碎岩巨锤的遗泽而铸，这柄大槌因圣钢与神圣符文而拥有惊人威能。   \
 	对臂力不足或信仰不坚者来说它沉重难驭，但它的猛击足以同时粉碎岩石与头骨。"
 	icon_state = "malumhammer"
 	is_silver = TRUE
@@ -765,8 +766,8 @@
 //Dwarvish mauls. Unobtanium outside of Grudgebearer. Do not change that.
 /obj/item/rogueweapon/mace/maul/steel
 	name = "矮人大槌"
-	desc = "一把沉重得夸张的超大铁锤。持有者并不是在虚张声势，因为这柄大槌自会替他开口。 \
-	这一把的重心调校得相当出色，让臂力较弱的人也能勉强驾驭。"
+	desc = "一把沉重得夸张的超大铁锤。持有者并不是在虚张声势，因为这柄大槌自会替 \
+	他开口。  这一把的重心调校得相当出色，让臂力较弱的人也能勉强驾驭。"
 	icon_state = "dwarfhammer"
 	smeltresult = /obj/item/ingot/steel
 	minstr = 11//+2STR from Grudgebearer Soldier. Should cover this.
@@ -776,8 +777,8 @@
 
 /obj/item/rogueweapon/mace/maul/spiked
 	name = "带刺大槌"
-	desc = "通体覆满尖刺，这正是矮人工匠钟爱的兵器模样。 \
-	这一把的重心调校得相当出色，让臂力较弱的人也能勉强驾驭。"
+	desc = "通体覆满尖刺，这正是矮人工匠钟爱的兵器模样。  这一 \
+	把的重心调校得相当出色，让臂力较弱的人也能勉强驾驭。"
 	icon_state = "spiky"
 	gripped_intents = list(/datum/intent/maul/spiked, /datum/intent/maul/crush, /datum/intent/mace/sweep, /datum/intent/effect/hobble)
 	wdefense_wbonus = 3//7
@@ -792,7 +793,7 @@
 	attack_verb = list("横扫", "横砸")
 	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	chargetime = 0
 	damfactor = 1.2
 	clickcd = CLICK_CD_GLACIAL
@@ -810,7 +811,7 @@
 	hitsound = list('sound/combat/hits/blunt/shovel_hit3.ogg')
 	swingdelay = 6
 	damfactor = 0.8
-	penfactor = MAUL_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	clickcd = CLICK_CD_HEAVY
 	item_d_type = "blunt"
 	intent_effect = /datum/status_effect/debuff/hobbled
@@ -824,7 +825,7 @@
 	chargetime = 0
 	swingdelay = 0
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
-	penfactor = MAUL_DEFAULT_PENFACTOR//You're getting FULL armour damage with this.
+	penfactor = PEN_NONE
 	clickcd = CLICK_CD_HEAVY//Take a guess.
 	icon_state = "instrike"
 	item_d_type = "blunt"
@@ -838,14 +839,14 @@
 	attack_verb = list("碾压")
 	chargetime = 5
 	damfactor = 1.7
-	intent_intdamage_factor = 1.5//10% more than standard.
+	intent_intdamage_factor = PEN_NONE 
 	//We want chipping, m'lord.
 	blunt_chipping = TRUE
 	blunt_chip_strength = BLUNT_CHIP_ABSURD
 	icon_state = "incrush"
-	desc = "这一击能把站立目标击飞并使其减速。 \
-	对同一目标连续生效有 5 秒冷却，倒地目标的击退距离减半。 \
-	若未完全蓄力，击退距离最多只有 1 格。"
+	desc = "这一击能把站立目标击飞并使其减速。  对同一目 \
+	标连续生效有 5 秒冷却，倒地目标的击退距离减半 \
+	。  若未完全蓄力，击退距离最多只有 1 格。"
 
 //We making it out of the vale with this one. RAAAAAA
 /datum/intent/maul/crush/spec_on_apply_effect(mob/living/H, mob/living/user, params)

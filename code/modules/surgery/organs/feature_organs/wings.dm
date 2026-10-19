@@ -67,6 +67,16 @@
 	desc = "一对毛茸茸的蛾翼。"
 	flight_for_species = list("moth")
 
+/obj/item/organ/wings/moth/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+	. = ..()
+	if(M)
+		ADD_TRAIT(M, TRAIT_BEWINGED, TRAIT_GENERIC)
+
+/obj/item/organ/wings/moth/Remove(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+	. = ..()
+	if(M)
+		REMOVE_TRAIT(M, TRAIT_BEWINGED, TRAIT_GENERIC)
+
 /obj/item/organ/wings/dracon
 	name = "龙裔翅膀"
 	desc = "一对威风凛凛的龙裔翅膀。"

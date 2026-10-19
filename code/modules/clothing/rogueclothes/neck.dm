@@ -94,9 +94,8 @@
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|HAIR|EARS|HEAD
-	armor = ARMOR_PADDED_BAD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_BASE
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	sewrepair = TRUE
@@ -112,7 +111,6 @@
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	armor = ARMOR_PADDED //gambeson for head
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/neck/roguetown/coif/padded/ComponentInitialize()
@@ -128,9 +126,8 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	body_parts_covered = NECK|HAIR|EARS|HEAD|MOUTH
-	armor = ARMOR_PADDED_GOOD //full padded gambeson basically
+	armor = ARMOR_PADDED //full padded gambeson basically
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_CHOP)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/neck/roguetown/coif/heavypadding/ComponentInitialize()
@@ -178,8 +175,7 @@
 	blocksound = SOFTHIT
 	body_parts_covered = NECK
 	body_parts_inherent = NECK
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	sewrepair = TRUE
 	sellprice = 10
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
@@ -201,7 +197,6 @@
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	body_parts_covered = NECK|HAIR|EARS|HEAD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
@@ -218,6 +213,8 @@
 	desc = "打磨光亮的吉尔青铜环彼此相扣，组成一顶翻卷起伏的罩帽。愿拯救这垂死世界的不是荆棘冠冕，而是野心之冠；由束缚的金属与染污的骨骸构成，在齐佐的意志下焕发生机，宣告她迄今为止最伟大的造物即将到来。"
 	icon_state = "achaincoif"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_CHAINMAIL
 
 /obj/item/clothing/neck/roguetown/chaincoif/ancient/decrepit
 	name = "破旧护头巾"
@@ -313,7 +310,6 @@
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK|MOUTH|NOSE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	blocksound = PLATEHIT
@@ -328,10 +324,10 @@
 	desc = "<font color='A50021'>在它们近旁，沙地之上，半埋着一张碎裂的面容。</font>"
 	icon_state = "zizobevor"
 	item_state = "zizobevor"
-	peel_threshold = 5
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
-
+	armor = ARMOR_PLATE_BSTEEL
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/neck/roguetown/bevor/zizo/Initialize(mapload)
 	. = ..()
@@ -348,7 +344,7 @@
 	name = "青铜护喉甲"
 	desc = "一块向外突出的青铜板，传统上装配在整套甲胄之上，用以遮蔽颈部免遭精准打击。 </br>倒地时抬起下巴是一种古老的手势；那是在自愿乞求那份'慈悲之赐'。"
 	icon_state = "bbevor"
-	armor = ARMOR_BRONZE
+	armor = ARMOR_PLATE
 	max_integrity = ARMOR_INT_SIDE_BRONZE + 25//275, -25 compared to bronze neckguard
 	smeltresult = /obj/item/ingot/bronze
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -367,7 +363,6 @@
 	body_parts_inherent = NECK
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
 /obj/item/clothing/neck/roguetown/gorget/ComponentInitialize()
@@ -385,6 +380,8 @@
 	desc = "打磨光亮的吉尔布兰泽护片层层相叠，以守护颈部。脊柱是灵与肉之间的神圣脉络，绝不可断裂，否则她的赐福也将随之失落。"
 	icon_state = "ancientgorget"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_CHAINMAIL
 
 /obj/item/clothing/neck/roguetown/gorget/steel/ancient/decrepit
 	name = "破旧护喉"
@@ -419,13 +416,13 @@
 	icon_state = "bronzegorget"
 	armor = ARMOR_BRONZE
 	smeltresult = /obj/item/ingot/bronze
-	max_integrity = ARMOR_INT_SIDE_BRONZE + ARMOR_INT_SIDE_COVERAGE_BONUS
+	max_integrity = ARMOR_INT_SIDE_BRONZE
 
 /obj/item/clothing/neck/roguetown/gorget/copper
 	name = "护颈"
 	icon_state = "copperneck"
 	desc = "一种古旧而朴素的颈部防具，平民更多把它当成配饰。但再差的防护，也总比没有强。"
-	armor = ARMOR_PLATE_BAD
+	armor = ARMOR_BRONZE
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/clothing/neck/roguetown/fencerguard
@@ -439,7 +436,6 @@
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	detail_tag = "_detail"
@@ -500,7 +496,6 @@
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK
-	prevent_crits = list()
 	blocksound = PLATEHIT
 	leashable = TRUE
 
@@ -566,6 +561,8 @@
 	desc = "'野心。命运。升华。神所颁下、由人完成的诫命。她将我们自现实的边缘召来，又在临终前以嘶哑之息吐露最后的真相：火焰已逝，而世界也将很快步其后尘。'"
 	icon_state = "zcross_a"
 	color = "#bb9696"
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/bronze
 	name = "青铜倒置普赛圣十字"
@@ -575,8 +572,8 @@
 
 /obj/item/clothing/neck/roguetown/psicross/undivided
 	name = "圣座护符"
-	desc = "一枚通常由圣座权势人物佩戴的护符。数百年来始终坚定地对抗黑暗。\
-	既是地位的象征，也是恩典的标记。"
+	desc = "一枚通常由圣座权势人物佩戴的护符。数百年来始终坚 \
+	定地对抗黑暗。 既是地位的象征，也是恩典的标记。"
 	icon_state = "undivided"
 
 /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -655,6 +652,8 @@
 	desc = "'那是一颗足以将人类的一切敌人撕裂殆尽的彗星；祂的力量何其优雅！祂的牺牲又何其高贵！可如今祂却沉眠不醒，不知晓自己的努力最终结出了怎样的果实。祂叹息着，也哭泣着。'"
 	icon_state = "psycross_a"
 	color = "#bb9696"
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/neck/roguetown/psicross/ravox/bronze
 	name = "青铜拉沃克斯护符"
@@ -1010,7 +1009,6 @@
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_WRISTS
 	icon_state = "psicrossblood"
 	max_integrity = 666
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	edelay_type = 1
 	equip_delay_self = 66
 	smeltresult = /obj/item/ingot/weeping
@@ -1135,15 +1133,14 @@
 //Now it self repairs as a funny kind of protection. Provides negatives to those who can't wear it, too.
 /obj/item/clothing/neck/roguetown/dragon_scale
 	name = "龙鳞项链"
-	desc = "一条黑钢链子，串过了十余枚藏宝主的金牙。\
-	它也许是赐予佩戴者的礼物，也许是在疯狂中夺来的纪念，已无关紧要。\
-	只要被认定为值得之人，戴上这条项链便会得到藏宝主的恩赐。<br>\
-	若是不配，那就……"
+	desc = "一条黑钢链子，串过了十余枚藏宝主的金牙。 它也许 \
+	是赐予佩戴者的礼物，也许是在疯狂中夺来的纪念，已 \
+	无关紧要。 只要被认定为值得之人，戴上这条项链便 \
+	会得到藏宝主的恩赐。<br> 若是不配，那就……"
 	icon_state = "bktrinket"
 	max_integrity = 666
-	armor = ARMOR_DRAGONSCALE
+	armor = ARMOR_PLATE_BSTEEL
 	//Provides the full array, since this isn't a +2 to literally everything stat wise now. Although armour does this anyways, I suppose.
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_PIERCE, BCLASS_PICK, BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -1171,12 +1168,12 @@
 			ADD_TRAIT(user, TRAIT_DARKVISION, CULT_TRAIT)//Close enough to a cult. No duplicates beyond dreamer.
 			ADD_TRAIT(user, TRAIT_HARDDISMEMBER, CULT_TRAIT)//Too angry to lose a limb, or something.
 			ADD_TRAIT(user, TRAIT_IGNOREDAMAGESLOWDOWN, CULT_TRAIT)//Can't tag 'em to slow 'em.
-			armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "piercing" = 100, "fire" = 50, "acid" = 0)
+			armor = ARMOR_PLATE_BSTEEL
 		else
 			to_chat(user, span_suicide("这条项链……我听见有个声音在嘲弄我！"))
 			ADD_TRAIT(user, TRAIT_PSYCHOSIS, CULT_TRAIT)
 			user.hallucination = INFINITY
-			armor = getArmor("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
+			armor = ARMOR_CLOTHING
 
 /obj/item/clothing/neck/roguetown/dragon_scale/dropped(mob/living/user)
 	..()
@@ -1340,3 +1337,5 @@
 	desc = "白银为护，永恒为印；以十神之名，我命你滚回地狱！"
 	icon_state = "undivided_s"
 	sellprice = 50
+
+

@@ -6,8 +6,15 @@
 #define BULLET_PENETRATION	100
 
 //parent of all bolts and arrows ฅ^•ﻌ•^ฅ
-/obj/item/ammo_casing/caseless/rogue/
+/obj/item/ammo_casing/caseless/rogue
 	firing_effect_type = null
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	var/ammo_weight = 1 // Weight cost in a quiver. Default 1, heavy ammo costs more.
+
+/obj/item/ammo_casing/caseless/rogue/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Projectiles have maximum and minimum falloff ranges, with particular falloff factors for damage.")
+	. += span_info("If the target is hit between the maximum and minimum tile range, then the full force is delivered.")
 
 //bolts ฅ^•ﻌ•^ฅ
 
@@ -25,7 +32,8 @@
 
 /obj/item/ammo_casing/caseless/rogue/bolt/bronze
 	name = "青铜弩矢"
-	desc = "青铜与木材，手工装配成弩矢的箭身。历经千年试错而臻完善的此设计，飞行时迅疾无比。"
+	desc = "青铜与木材，手工装配成弩矢的箭身。历经千 \
+	年试错而臻完善的此设计，飞行时迅疾无比。"
 	icon_state = "bronzebolt"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/bronze
 
@@ -41,12 +49,6 @@
 	icon_state = "ancientbolt"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/decrepit
 	color = "#bb9696"
-
-/obj/item/ammo_casing/caseless/rogue/bolt/ancient
-	name = "远古弩矢"
-	desc = "一支古老弩矢，尖端为抛光吉尔青铜。那薄如剃刀的矢尖比起箭头更像脱壳穿甲体，大多数合金都难以稳稳承受它的冲击。"
-	icon_state = "ancientbolt"
-	projectile_type = /obj/projectile/bullet/reusable/bolt/ancient
 
 /obj/item/ammo_casing/caseless/rogue/bolt/blunt
 	name = "训练弩矢"
@@ -68,7 +70,7 @@
 	name = "弩矢"
 	damage = 70
 	damage_type = BRUTE
-	armor_penetration = 50
+	armor_penetration = PEN_HEAVY
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
@@ -83,7 +85,7 @@
 //more speed and damage vs NPCs but less pen
 /obj/projectile/bullet/reusable/bolt/bronze
 	damage = 70
-	armor_penetration = 40
+	armor_penetration = PEN_MEDIUM
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/bronze
 	icon_state = "bronzebolt_proj"
 	npc_simple_damage_mult = 3
@@ -91,7 +93,7 @@
 
 /obj/projectile/bullet/reusable/bolt/decrepit
 	damage = 40
-	armor_penetration = 30
+	armor_penetration = PEN_LIGHT
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/decrepit
 
 /obj/projectile/bullet/reusable/bolt/ancient
@@ -99,7 +101,7 @@
 
 /obj/projectile/bullet/reusable/bolt/blunt
 	damage = 25
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 	embedchance = 1//freak accident
 	woundclass = BCLASS_BLUNT
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/blunt
@@ -108,7 +110,7 @@
 
 /obj/projectile/bullet/reusable/bolt/heavyblunt
 	damage = 70
-	armor_penetration = 50
+	armor_penetration = PEN_HEAVY
 	embedchance = 2//freak accident
 	woundclass = BCLASS_BLUNT
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/heavyblunt
@@ -127,7 +129,7 @@
 /obj/projectile/bullet/reusable/bolt/blacksteel
 	name = "黑钢弩矢"
 	damage = 70
-	armor_penetration = 80
+	armor_penetration = PEN_BSTEEL
 	icon_state = "blacksteelbolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/blacksteel
 	embedchance = 80
@@ -154,9 +156,9 @@
 
 /obj/item/ammo_casing/caseless/rogue/arrow
 	name = "箭"
-	desc = "有些造物的本质如此简单，用途如此朴素，\
-	让人几乎觉得它们并非出自凡人之手，\
-	而是自天地之间自然诞生。去问问你的神吧。"
+	desc = "有些造物的本质如此简单，用途如此朴素， \
+	 让人几乎觉得它们并非出自凡人之手， 而 \
+	是自天地之间自然诞生。去问问你的神吧。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow
 	caliber = "arrow"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -176,7 +178,9 @@
 
 /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	name = "石箭"
-	desc = "一根简单箭杆上绑着打制后磨得锋利如剃刀的燧石箭头。民间常说这种箭头比铁制箭头切得更利，但一旦撞上甲胄，也更容易碎裂。"
+	desc = "一根简单箭杆上绑着打制后磨得锋利如剃刀 \
+	的燧石箭头。民间常说这种箭头比铁制箭头切 \
+	得更利，但一旦撞上甲胄，也更容易碎裂。"
 	max_integrity = 5
 	projectile_type = /obj/projectile/bullet/reusable/arrow/stone
 
@@ -190,7 +194,9 @@
 /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	name = "铁阔头箭"
 	icon_state = "ironarrow"
-	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着铁制箭头。系上尾羽后，它就会忠实地飞向射手意志所指之处。"
+	desc = "一根经蒸汽矫直的箭杆，一端开槽， \
+	另一端装着铁制箭头。系上尾羽后，它 \
+	就会忠实地飞向射手意志所指之处。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/iron
 
 /obj/item/ammo_casing/caseless/rogue/arrow/iron/decrepit
@@ -203,7 +209,8 @@
 /obj/item/ammo_casing/caseless/rogue/arrow/steel
 	name = "钢锥头箭"
 	icon_state = "steelarrow"
-	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着钢制箭头。它正是为了对付那些准备更充分的目标而造。"
+	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着钢制 \
+	箭头。它正是为了对付那些准备更充分的目标而造。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/steel
 
 /obj/item/ammo_casing/caseless/rogue/arrow/steel/ancient
@@ -217,7 +224,7 @@
 	damage = 20
 	damage_type = BRUTE
 	npc_simple_damage_mult = 2
-	armor_penetration = 10
+	armor_penetration = PEN_LIGHT
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
@@ -249,7 +256,7 @@
 	name = "钝头箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/blunt
 	damage = 15
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 	embedchance = 0
 	woundclass = BCLASS_BLUNT
 
@@ -263,7 +270,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 
 	damage = 40
-	armor_penetration = 20
+	armor_penetration = PEN_LIGHT
 	embedchance = 30
 	npc_simple_damage_mult = 2
 
@@ -271,7 +278,7 @@
 	name = "破旧阔头箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron/decrepit
 	damage = 20
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 
 /obj/projectile/bullet/reusable/arrow/steel
 	name = "锥头箭"
@@ -279,7 +286,7 @@
 
 	accuracy = 75
 	damage = 25
-	armor_penetration = 45
+	armor_penetration = PEN_HEAVY
 	embedchance = 80
 	speed = 0.6
 	npc_simple_damage_mult = 3
@@ -293,7 +300,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/bronze
 	icon_state = "bronzearrow_proj"
 	damage = 50
-	armor_penetration = 0//buwomp
+	armor_penetration = PEN_NONE//buwomp
 	embedchance = 70
 	npc_simple_damage_mult = 3 //More damage over simplemobs!
 	speed = 0.15 // Faster!
@@ -301,15 +308,15 @@
 /obj/item/ammo_casing/caseless/rogue/arrow/blacksteel
 	name = "黑钢箭"
 	icon_state = "blacksteelarrow"
-	desc = "一支精工锻造的黑钢箭。它撕裂血肉、贯穿铠甲，\
-	并且永远落在射手瞄定之处；完美无瑕，唯独造价高昂得令人却步。"
+	desc = "一支精工锻造的黑钢箭。它撕裂血肉、贯穿铠甲， 并且永 \
+	远落在射手瞄定之处；完美无瑕，唯独造价高昂得令人却步。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/blacksteel
 
 /obj/projectile/bullet/reusable/arrow/blacksteel
 	name = "黑钢箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/blacksteel
 	damage = 50
-	armor_penetration = 45
+	armor_penetration = PEN_HEAVY
 	icon_state = "blacksteelarrow_proj"
 	embedchance = 80
 	npc_simple_damage_mult = 7 //..or 350 damage against a mindless mob.
@@ -320,14 +327,17 @@
 
 /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	name = "毒箭"
-	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着锋利箭头。箭头上开有凹槽，内里灌注着令人昏沉的毒药混合物。"
+	desc = "一根经蒸汽矫直的箭杆，一端开槽，另 \
+	一端装着锋利箭头。箭头上开有凹槽 \
+	，内里灌注着令人昏沉的毒药混合物。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison
 	icon_state = "ironarrow_poison"
 	max_integrity = 10 // same as normal arrow; usually breaks on impact with a mob anyway
 
 /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
 	name = "毒石箭"
-	desc = "一根简单箭杆上绑着磨得锋利如剃刀的燧石箭头，箭头上还开有细槽，用来残留并携带毒物。"
+	desc = "一根简单箭杆上绑着磨得锋利如剃刀的燧石箭 \
+	头，箭头上还开有细槽，用来残留并携带毒物。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/stone
 	icon_state = "arrow_poison"
 
@@ -519,7 +529,7 @@
 /obj/projectile/bullet/reusable/arrow/orc
 	damage = 20
 	damage_type = BRUTE
-	armor_penetration = 25
+	armor_penetration = PEN_LIGHT
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
@@ -533,7 +543,7 @@
 /obj/projectile/bullet/reusable/arrow/ancient
 	damage = 10
 	damage_type = BRUTE
-	armor_penetration = 25
+	armor_penetration = PEN_LIGHT
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
@@ -548,7 +558,7 @@
 	name = "石块"
 	damage = 25
 	damage_type = BRUTE
-	armor_penetration = 30
+	armor_penetration = PEN_MEDIUM
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "stone1"
 	ammo_type = /obj/item/natural/stone
@@ -644,7 +654,7 @@
 	icon_state = "ijavelin"
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
-	armor_penetration = 40					//Redfined because.. it's not a weapon, it's an 'arrow' basically.
+	armor_penetration = PEN_MEDIUM					//Redfined because.. it's not a weapon, it's an 'arrow' basically.
 	max_integrity = 50						//Breaks semi-easy, stops constant re-use.
 	wdefense = 3							//Worse than a spear
 	thrown_bclass = BCLASS_STAB				//Knives are slash, lets try out stab and see if it's too strong in terms of wounding.
@@ -670,7 +680,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/javelin/steel
 	force = 16
-	armor_penetration = 50
+	armor_penetration = PEN_HEAVY
 	name = "钢标枪"
 	desc = "一种自有文字记载以来便沿用数百年的工具。这一支装着钢头，最适合用来刺穿护甲！"
 	icon_state = "javelin"
@@ -688,7 +698,7 @@
 	name = "破旧标枪"
 	desc = "一枚磨损青铜投射体。你眼前的便是你的武器；正是它使人类从泥泞中站起，也令古西昂的诸兽低头。你上次意识到自己还有别的部分是什么时候？你还记得曾以其他方式看待这个世界吗？"
 	force = 9
-	armor_penetration = 30
+	armor_penetration = PEN_MEDIUM
 	max_integrity = 50		
 	throwforce = 20
 	color = "#bb9696"
@@ -700,7 +710,7 @@
 	icon_state = "bjavelin"
 	force = 20
 	throwforce = 36	//Devastating against unarmored foes, but with nearly halved armor penetration.
-	armor_penetration = 20
+	armor_penetration = PEN_LIGHT
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 80, "embedded_fall_chance" = 5)
 	thrown_bclass = BCLASS_PICK
 	smeltresult = null // 1 Ingot = 2 Javelins
@@ -711,7 +721,7 @@
 	icon_state = "sjavelin"
 	is_silver = TRUE
 	throwforce = 25							//Less than steel because it's.. silver. Good at killing vampires/WW's still.
-	armor_penetration = 60
+	armor_penetration = PEN_HEAVY
 	thrown_bclass = BCLASS_PICK				//Bypasses crit protection better than stabbing. Makes it better against heavy-targets.
 	smeltresult = /obj/item/ingot/silver // 2 ingots = 2 javelins so this can smelt.
 
@@ -740,7 +750,7 @@
 	max_integrity = 50						//In-line with other stabbing weapons.
 	force = 18
 	throwforce = 36
-	armor_penetration = 80 //heart crits are funny
+	armor_penetration = PEN_BSTEEL //heart crits are funny
 	thrown_bclass = BCLASS_PICK				
 	embedding = list("embedded_pain_multiplier" = 5, "embed_chance" = 60, "embedded_fall_chance" = 10)
 	smeltresult = null
@@ -837,7 +847,7 @@
 	desc = "如果你能看到这行字：快低头。"
 	damage = 25
 	damage_type = BRUTE
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 	npc_simple_damage_mult = 2
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "stone1"
@@ -869,7 +879,7 @@
 	desc = "如果你能看到这行字：快低头。"
 	damage = 25
 	damage_type = BRUTE
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "stone1"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet
@@ -900,7 +910,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/stone
 	name = "石制投石弹"
 	damage = 30 //proper stones are better
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/stone
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -908,7 +918,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/bronze
 	name = "青铜投石弹"
 	damage = 35
-	armor_penetration = 20 //Slightly more damage, but with -33% AP.
+	armor_penetration = PEN_LIGHT //Slightly more damage, but with -33% AP.
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bronzeslingbullet_proj"
@@ -916,7 +926,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/decrepit
 	name = "破旧投石弹"
 	damage = 15
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/decrepit
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -924,7 +934,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/ancient
 	name = "远古投石弹"
 	damage = 30
-	armor_penetration = 30
+	armor_penetration = PEN_MEDIUM
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/ancient
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -932,7 +942,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/iron
 	name = "铁制投石弹"
 	damage = 30
-	armor_penetration = 30
+	armor_penetration = PEN_MEDIUM
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -940,7 +950,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/steel
 	name = "钢制投石弹"
 	damage = 30
-	armor_penetration = 45 // extra  50% armour pierce over iron
+	armor_penetration = PEN_HEAVY // extra  50% armour pierce over iron
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/steel
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -949,7 +959,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/steelblessed
 	name = "神圣钢制投石弹"
 	damage = 30
-	armor_penetration = 45 // extra  50% armour pierce over iron
+	armor_penetration = PEN_HEAVY // extra  50% armour pierce over iron
 	npc_simple_damage_mult = 4 // Ai doesnt need nice things
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/steelblessed
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -968,7 +978,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/silver
 	name = "银制投石弹"
 	damage = 25   // 5 less damage and 10 less ap, but extra damage on silver weak
-	armor_penetration = 20
+	armor_penetration = PEN_LIGHT
 	npc_simple_damage_mult = 5 // AI doesnt need nice things
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/silver
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -987,7 +997,7 @@
 /obj/projectile/bullet/reusable/sling_bullet/silverblessed
 	name = "祝圣银制投石弹"
 	damage = 35   // better then bronze because divine power
-	armor_penetration = 30
+	armor_penetration = PEN_MEDIUM
 	npc_simple_damage_mult = 6 // AI doesnt need nice things (+ blessed)
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/silverblessed
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -1009,7 +1019,7 @@
 	icon_state = "blacksteelslingbullet_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/blacksteel
 	damage = 50
-	armor_penetration = 35
+	armor_penetration = PEN_HEAVY
 
 /obj/item/ammo_casing/caseless/rogue/bolt/holy
 	name = "裂灭弩矢"
@@ -1027,7 +1037,7 @@
 	name = "裂灭弩矢"
 	damage = 35 //Halved damage, but same penetration.
 	damage_type = BRUTE
-	armor_penetration = 50
+	armor_penetration = PEN_HEAVY
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolthwater_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/holy
@@ -1060,7 +1070,7 @@
 	name = "重型弩矢"
 	damage = 80
 	damage_type = BRUTE
-	armor_penetration = 80
+	armor_penetration = PEN_BSTEEL
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/heavy_bolt
@@ -1093,8 +1103,8 @@
 
 /obj/item/ammo_casing/caseless/rogue/heavy_bolt/tempest
 	name = "风暴弩矢"
-	desc = "缠绕其上的防护术让人感觉<b>沉重</b>。矢头里似乎装着某种载荷。\
-	这东西究竟是拿来做什么的？"
+	desc = "缠绕其上的防护术让人感觉<b>沉重</b>。矢头 \
+	里似乎装着某种载荷。 这东西究竟是拿来做什么的？"
 	projectile_type = /obj/projectile/bullet/reusable/heavy_bolt/tempest
 	icon_state = "tempest_bolt"//Temp sprite.
 	max_integrity = 30

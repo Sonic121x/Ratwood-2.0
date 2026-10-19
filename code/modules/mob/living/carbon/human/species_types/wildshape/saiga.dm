@@ -34,7 +34,7 @@
 
 // SAIGA SPECIES DATUM //
 /datum/species/shapesaiga
-	name = "saiga"
+	name = "赛加羚羊"
 	id = "shapesaiga"
 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
 	inherent_traits = list(
@@ -47,7 +47,6 @@
 		TRAIT_PUSHIMMUNE
 	)
 	inherent_biotypes = MOB_HUMANOID
-	armor = 5
 	no_equip = list(SLOT_SHIRT, SLOT_HEAD, SLOT_WEAR_MASK, SLOT_ARMOR, SLOT_GLOVES, SLOT_SHOES, SLOT_PANTS, SLOT_CLOAK, SLOT_BELT, SLOT_S_STORE)
 	nojumpsuit = 1
 	sexes = 1
@@ -97,7 +96,6 @@
 	body_parts_covered = FULL_BODY
 	body_parts_inherent = FULL_BODY
 	armor = ARMOR_LEATHER //Saiga should be tankier
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_STAB)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
@@ -111,7 +109,7 @@
 	attack_verb = list("撞击", "猛击", "重击")
 	animname = "strike"
 	hitsound = "punch_hard"
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	miss_text = "踢了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "blunt"

@@ -104,20 +104,19 @@
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple
 	name = "门徒之肤"
-	desc = "它远不只是一句誓言。 </br>'永世、普赛顿、阿多奈——熵、众生、神性。三位一体， \
-	既为一，又为三；为众所知，却被时光遗忘。' </br>'一具尸体。 \
-	我正活在一具尸体上。祂便是世界，而世界正在腐烂。 \
-	天堂早已对我们关闭了大门。' </br>'然而，祂的孩子们仍在坚持；只要他们还在，我也必须坚持。 \
-	幸福必须靠战斗去争取。'"
-	armor = ARMOR_LEATHER_STUDDED
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	desc = "它远不只是一句誓言。 </br>'永世、普赛顿、阿多奈——熵、众生 \
+	、神性。三位一体，  既为一，又为三；为众所知，却被时光遗忘。' < \
+	/br>'一具尸体。  我正活在一具尸体上。祂便是世界，而世界正在 \
+	腐烂。  天堂早已对我们关闭了大门。' </br>'然而，祂的孩子们 \
+	仍在坚持；只要他们还在，我也必须坚持。  幸福必须靠战斗去争取。'"
+	armor = ARMOR_PADDED
 	repair_time = 20 SECONDS
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 50//350
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/weak
 	name = "坚韧皮肤"
 	desc = "我的皮肤向来够硬，足以挡下大多数划伤与瘀伤，只要给它时间就会愈合。"
-	armor = list("blunt" = 30, "slash" = 50, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
+	armor = ARMOR_PADDED_BAD
 	max_integrity = 300
 	body_parts_covered = FULL_BODY
 	body_parts_inherent = FULL_BODY

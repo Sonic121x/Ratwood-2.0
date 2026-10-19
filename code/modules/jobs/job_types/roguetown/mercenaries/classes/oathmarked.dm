@@ -103,10 +103,10 @@
 /obj/item/rogueweapon/eaglebeak/oathmarked
 	force = 12//Two-hand this.
 	force_wielded = 32
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/bash/eaglebeak,
+	gripped_intents = list(/datum/intent/spear/thrust/bad, /datum/intent/spear/bash/eaglebeak,
 	/datum/intent/mace/smash/eaglebeak, /datum/intent/mace/warhammer/pick/ranged)
 	name = "誓印卢塞恩锤"
-	desc = "一根加固长杆，前端装着钢制锤头，背面则是专为凿穿板甲而设的尖镐。 \
+	desc = "一根加固长杆，前端装着钢制锤头，背面则是专为凿穿板甲而设的尖镐。   \
 	上方还伸出一枚突刺头。显然，这是一件专为诛杀更高贵敌手而生的武器。"
 	icon_state = "polehammerb"//Temp. A reuse, but unused elsewhere.
 	minstr = 12//+1
@@ -129,9 +129,9 @@
 
 /obj/item/rogueweapon/greatsword/grenz/oathmarked
 	name = "誓印焰纹巨剑"
-	desc = "一柄平衡得惊人的巨刃，按极为高大的身形打造，沉重得近乎超出常理。 \
-	这要么出自名匠之手，要么出自一个闲得过分的人。无论如何，这必是贵胄之刃。"
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/peel/big, /datum/intent/sword/strike/bad)
+	desc = "一柄平衡得惊人的巨刃，按极为高大的身形打造，沉重得近乎超出常理。  这 \
+	要么出自名匠之手，要么出自一个闲得过分的人。无论如何，这必是贵胄之刃。"
+	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike/bad)
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "oathflamberge"//Temp.
 	max_blade_int = 220
@@ -202,8 +202,8 @@
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked
 	name = "阿斯特拉塔 誓印护符"
-	desc = "一枚属于暴君的护符。无论佩戴者是否真心信奉其教义，誓印者终究仍以她之名侍奉。 \
-	而这一枚护符还承载着白银的祝福。"
+	desc = "一枚属于暴君的护符。无论佩戴者是否真心信奉其教义，誓印者 \
+	终究仍以她之名侍奉。  而这一枚护符还承载着白银的祝福。"
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked/examine(mob/user)
 	. = ..()

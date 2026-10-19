@@ -367,7 +367,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				apply_status_effect(/datum/status_effect/buff/mount_apple_healing, 1)
 				if(istype(src, /mob/living/simple_animal/hostile/retaliate))
 					var/mob/living/simple_animal/hostile/retaliate/retaliating_mount = src
-					if(retaliating_mount.enemies.len)
+					if(LAZYLEN(retaliating_mount.enemies))
 						retaliating_mount.clear_enemies()
 						visible_message(span_notice("[src]冷静了下来。"))
 						retaliating_mount.LoseTarget()
@@ -563,7 +563,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/is_shift_middle = modifiers["shift"] || user?.client?.keys_held["Shift"]
 		if(is_shift_middle)
 			if(has_buckled_mobs())
-				to_chat(user, span_warning("有人骑乘时，我无法拆下[src]的马鞍。"))
+				to_chat(user, span_warning("I can't remove [src]'s saddle while someone is mounted."))
 				return
 			user.visible_message(span_notice("[user]开始拆卸[src]的马鞍。"), span_notice("我开始拆卸[src]的马鞍。"))
 			if(do_after(user, 30, target = src))
@@ -597,7 +597,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/is_shift_middle = modifiers["shift"] || user?.client?.keys_held["Shift"]
 		if(is_shift_middle)
 			if(has_buckled_mobs())
-				to_chat(user, span_warning("有人骑乘时无法拆下[src]的马鞍。"))
+				to_chat(user, span_warning("I can't remove [src]'s saddle while someone is mounted."))
 				return
 			user.visible_message(span_notice("[user]开始拆卸[src]的马鞍。"), span_notice("我开始拆卸[src]的马鞍。"))
 			if(do_after(user, 30, target = src))

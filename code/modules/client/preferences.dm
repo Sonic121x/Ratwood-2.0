@@ -344,7 +344,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 
-	var/char_accent = "无口音" // KUKU：默认口音使用合法列表中的中文值。
+	var/char_accent = "无口音"
 	var/char_mannerism = "No mannerism"
 
 	// Vocal bark prefs
@@ -447,6 +447,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/tgui_pref = TRUE
 
 	var/race_bonus
+
+	/// Whether we can see the feint HUD bar.
+	var/feint_hud = FALSE 
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -713,7 +716,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				for(var/datum/quirk/Q in quirks)
 					if(Q.type in pref_species.restricted_quirks)
 						quirks -= Q
-			if(statpack.name != "德能") //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
+			if(statpack.name != "德能")
 				virtuetwo = GLOB.virtues[/datum/virtue/none]
 			dat += "<b>角色自定义:</b> <a href='?_src_=prefs;preference=vices_menu;task=input'>配置全部</a><BR>"
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
@@ -2342,15 +2345,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if("img_gallery")
 
 					if(img_gallery.len >= 3)
-						to_chat(user, "您的图库中已有三张图片！")
+						to_chat(user, "You already have three images in your gallery!")
 						return
 
 					to_chat(user, "<span class='notice'>请使用["<span class='bold'>您角色的图片</span>"]以保持沉浸感。最后，["<span class='bold'>不要使用真实照片或任何不够严肃的图像。</span>"]</span>")
 					to_chat(user, "<span class='notice'>如果照片在游戏内无法正常显示，请确保它是一个可以在浏览器中正常打开的直接图像链接。</span>")
 					to_chat(user, "<span class='notice'>请注意，三张图片并排显示并自适应填充水平矩形。因此，垂直图像效果最佳。</span>")
-					to_chat(user, "<span class='notice'>您的图库中一次最多只能有["<span class='bold'>三张图片</span>"]。</span>")
+					to_chat(user, "<span class='notice'>You can only have a maximum of ["<span class='bold'>THREE IMAGES</span>"] in your gallery at a time.</span>")
 
-					var/new_galleryimg = tgui_input_text(user, "输入图像链接（https，支持的主机：gyazo, lensdump, imgbox, catbox, imgbb, filegarden）：", "图库图像",  encode = FALSE)
+					var/new_galleryimg = tgui_input_text(user, "Input the image link (https, hosts: gyazo, lensdump, imgbox, catbox, imgbb, filegarden):", "图库图像",  encode = FALSE)
 
 					if(new_galleryimg == null)
 						return
@@ -2370,15 +2373,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if("nsfw_img_gallery")
 
 					if(nsfw_img_gallery.len >= 3)
-						to_chat(user, "您的 NSFW 图库中已有三张图片！")
+						to_chat(user, "You already have three images in your gallery!")
 						return
 
 					to_chat(user, "<span class='notice'>请使用["<span class='bold'>您角色的图片</span>"]以保持沉浸感。最后，["<span class='bold'>不要使用真实照片或任何不够严肃的图像。</span>"]</span>")
 					to_chat(user, "<span class='notice'>如果照片在游戏内无法正常显示，请确保它是一个可以在浏览器中正常打开的直接图像链接。</span>")
 					to_chat(user, "<span class='notice'>请注意，三张图片并排显示并自适应填充水平矩形。因此，垂直图像效果最佳。</span>")
-					to_chat(user, "<span class='notice'>您的 NSFW 图库中一次最多只能有["<span class='bold'>三张图片</span>"]。</span>")
+					to_chat(user, "<span class='notice'>You can only have a maximum of ["<span class='bold'>THREE IMAGES</span>"] in your gallery at a time.</span>")
 
-					var/new_galleryimg = tgui_input_text(user, "输入图像链接(https,支持的主机: gyazo, lensdump, imgbox, catbox, imgbb, filegarden):", "图库图像",  encode = FALSE)
+					var/new_galleryimg = tgui_input_text(user, "Input the image link (https, hosts: gyazo, lensdump, imgbox, catbox, imgbb, filegarden):", "图库图像",  encode = FALSE)
 
 					if(new_galleryimg == null)
 						return
@@ -2711,7 +2714,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					var/selectedaccent = tgui_input_list(user, "选择您角色的口音：", "角色偏好", GLOB.character_accents)
 					if(selectedaccent)
 						char_accent = selectedaccent
-						var/test_message = "你好朋友，是的这很好。我的领主带着仆人和士兵骑马经过；队长和中士守卫着教堂，而弓箭手和骑兵守住北方的道路。我的剑和盾很锋利，水流清爽，我们在告别前感谢公爵。"
+						var/test_message = "Hello friend, yes this is good. My Lord rides through the Duchy with servants and soldiers; the captain and sergeant guard the church while archers and cavalry hold the north road. My sword and shield are sharp, the water flows refreshingly, and we thank the Duke before saying goodbye."
 						var/preview = apply_accent_preview(selectedaccent, test_message)
 						var/preview_text
 						if(preview)
@@ -2731,7 +2734,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					var/selected_mannerism = tgui_input_list(user, "选择你角色的说话习惯：", "角色偏好", GLOB.character_mannerisms)
 					if(selected_mannerism)
 						char_mannerism = selected_mannerism
-						var/test_message = "你好，朋友，是的，这很好。我的领主带着仆人和士兵骑马穿过公国；队长和中士守卫着教堂，弓箭手和骑兵把守北方道路。我的剑和盾都很锋利，流水清冽，我们在告别前向公爵致谢。"
+						var/test_message = "Hello friend, yes this is good. My Lord rides through the Duchy with servants and soldiers; the captain and sergeant guard the church while archers and cavalry hold the north road. My sword and shield are sharp, the water flows refreshingly, and we thank the Duke before saying goodbye."
 						var/accent_preview = apply_accent_preview(char_accent, test_message)
 						var/preview_message = accent_preview ? "[accent_preview]" : test_message
 						var/preview_text = apply_mannerism_preview(selected_mannerism, preview_message)
@@ -3389,7 +3392,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	character.headshot_link = headshot_link
 
-	character.origin = origin ? origin.name : "Unknown"
+	character.origin = origin ? origin.name : "未知"
 
 	character.statpack = statpack
 
@@ -3454,7 +3457,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	if (char_accent in GLOB.character_accents) // KUKU：校验玩家选择的口音，避免预览人偶的旧值清空新选择。
 		character.char_accent = char_accent
 	else
-		char_accent = "无口音" // KUKU：非法口音回退到合法的中文无口音值。
+		char_accent = "无口音"
 		character.char_accent = char_accent
 
 	if (char_mannerism in GLOB.character_mannerisms)

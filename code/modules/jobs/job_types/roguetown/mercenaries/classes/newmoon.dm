@@ -3,7 +3,7 @@
 	tutorial = "兹班图的新月咒剑士，是拉尔维斯廷某片未知地域中一座已然覆灭的诺克修道院的幸存者，\
 	那曾是兹班图帝国境内十神最后一处重要据点。\
 	在腐朽之灾的重压下，他们的修院生活与虔诚信念迅速崩塌，被迫从孤绝苦修的日子跌入普通佣兵的生涯；\
-	诺克的赐福，在斩杀怪物与人类时倒是意外地好用。\
+	into that of a common sellsword; Noc�s blessings proving rather useful when slaying monsters and men alike. \
 	无论出于何种缘由，你如今来到了这片地界，向出价最高者献上自己的技艺。知识即力量。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
@@ -86,7 +86,7 @@
 	force = 22//Dropped to 14 when on. Fire damage is a hell of a thing. -8, overall.
 	max_integrity = 200//+50
 	max_blade_int = 150//-50
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	damtype = BRUTE
 	light_color = LIGHT_COLOR_BLUE
 	var/on = FALSE
@@ -112,7 +112,7 @@
 	if(on)
 		on = FALSE
 		damtype = BRUTE
-		possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
+		possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 		force = 22
 	else
 		user.visible_message(span_warning("[user] 的刀刃亮起了幽蓝寒焰。"))
@@ -134,8 +134,7 @@
 	desc = "这件青绿色外袍轻便、华丽，却仍有相当的防护性。它是 新月 圣团的标志装束，胸前中央还缀着一枚 诺克 护符。"
 	icon_state = "newmoon_jacket"
 	item_state = "newmoon_jacket"
-	armor = ARMOR_SPELLSINGER//Better than the old, but, whatever. By a bit.
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon

@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/self/magicians_brick
 	name = "魔术师之砖"
-	desc = "在你手中凝出一块魔法砖头。你的智力越偏离10，它的威力就越强。\n\
-	砖头会一直存在，直到你召出新的，或忘却这道法术。这门法术经过数世纪打磨，专为绕开反魔防护而生。"
+	desc = "在你手中凝出一块魔法砖头。你的智力越偏离10，它的威力就越强。\n 砖头会一直存 \
+	在，直到你召出新的，或忘却这道法术。这门法术经过数世纪打磨，专为绕开反魔防护而生。"
 	overlay_state = "magicians_brick"
 	sound = list('sound/magic/whiteflame.ogg')
 
@@ -37,6 +37,7 @@
 	return TRUE
 
 
+
 /obj/item/rogueweapon/magicbrick
 	name = "魔术师之砖"
 	desc = "一块由奥术能量凝成的砖头。它并不是真正的砖，无法拿去盖房，但无论近战还是投掷都相当致命。"
@@ -46,7 +47,7 @@
 	force = 15 // Copy pasted from real brick + 1 for neat number
 	throwforce = 20 // +2 from real brick for neat scaling
 	throw_speed = 4
-	armor_penetration = 30 // From iron tossblade
+	armor_penetration = PEN_NONE // IT IS A BRICK
 	wdefense = 0
 	wbalance = WBALANCE_NORMAL
 	max_integrity = 50 // Don't parry with it lol

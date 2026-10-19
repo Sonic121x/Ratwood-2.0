@@ -7,7 +7,6 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL
@@ -20,9 +19,9 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/bronze
 	name = "青铜巴尔布特盔"
-	desc = "一顶青铜大盔，其护鼻与护颊板让佩戴者的面容笼罩在黑暗中。往昔的英雄早已逝去， \
-	但他们的血脉仍流淌在普赛多尼亚子民的体内；你也不例外。在它的盔顶插上一根羽毛， \
-	便可自豪地展示你的效忠。"
+	desc = "一顶青铜大盔，其护鼻与护颊板让佩戴者的面容笼罩在黑暗中。往昔的 \
+	英雄早已逝去，  但他们的血脉仍流淌在普赛多尼亚子民的体内；你 \
+	也不例外。在它的盔顶插上一根羽毛，  便可自豪地展示你的效忠。"
 	body_parts_covered = FULL_HEAD
 	icon_state = "bronzebarbute"
 	item_state = "bronzebarbute"
@@ -62,6 +61,8 @@
 	desc = "抛光的吉尔青铜板片经锻打制成带面甲的头盔。齐佐号令野心，而野心号令牺牲；让这些支离破碎的军团士兵再度崛起，为那些蒙昧蠢货洒下鲜血。盔缘顶端盘踞着一个螺旋形插孔，等待羽饰插入。"
 	icon_state = "ancientbarbute"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/ancient/attackby(obj/item/W, mob/living/user, params)
 	..()
@@ -135,6 +136,8 @@
 	desc = "打磨光亮的吉尔青铜护板塑成堡垒般的大盔。彗星西昂的灼目光芒仿佛永远烙进了这份合金之中，让人得以瞥见普赛顿沉眠、齐佐苏醒之前那个早已腐朽的旧世界。"
 	icon_state = "ancientsavoyard"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard/ancient/decrepit
 	name = "破旧萨伏依盔"
@@ -172,8 +175,8 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/gold
 	name = "黄金头盔"
-	desc = "一顶华美的巴尔布特盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
-	即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
+	desc = "一顶华美的巴尔布特盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着 \
+	一顶丝制武装帽。  即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
 	icon_state = "goldbarbute"
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile. To note, this is lower than even Decrepit-tier armor.
@@ -187,8 +190,8 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/gold/king
 	name = "王室黄金头盔"
-	desc = "一顶华美的巴尔布特盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶丝制武装帽。 \
-	额上那顶缀饰王冠昭示着权威，无论其来路不正，还是名正言顺。"
+	desc = "一顶华美的巴尔布特盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着一顶 \
+	丝制武装帽。  额上那顶缀饰王冠昭示着权威，无论其来路不正，还是名正言顺。"
 	icon_state = "goldbarbute_crown"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	unenchantable = TRUE
@@ -251,8 +254,8 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/shadowplate
 	name = "卓尔骑兵头盔"
-	desc = "幽暗地域的蜘蛛骑手常戴的一种大盔。金色翼饰既展现女性的优雅，也彰显女族长的暴虐威权。\
-	虽然没有可调节的面甲，但带翼的冠环与羽饰可以从头盔上拆下，单独佩戴。"
+	desc = "幽暗地域的蜘蛛骑手常戴的一种大盔。金色翼饰既展现女性的优雅，也彰显女族长的暴 \
+	虐威权。 虽然没有可调节的面甲，但带翼的冠环与羽饰可以从头盔上拆下，单独佩戴。"
 	item_state = "gildeddrowhelm"
 	icon_state = "gildeddrowhelm"
 	adjustable = CAN_CADJUST
@@ -301,8 +304,8 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/gold
 	name = "黄金骑士阿米特盔"
-	desc = "一顶华美的阿米特盔，以纯金精工锻造而成。其面甲上布满六芒形的神圣印记刻纹，内侧衬着一顶丝制武装帽。 \
-	即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
+	desc = "一顶华美的阿米特盔，以纯金精工锻造而成。其面甲上布满六芒形的神圣印记刻纹，内侧 \
+	衬着一顶丝制武装帽。  即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
 	icon_state = "goldknight"
 	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile. To note, this is lower than even Decrepit-tier armor.
@@ -342,8 +345,8 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/gold/king
 	name = "王室黄金阿米特盔"
-	desc = "一顶华美的阿米特盔，以纯金精工锻造而成。其面甲上布满六芒形的神圣印记刻纹，内侧衬着一顶丝制武装帽。 \
-	额上那顶缀饰王冠昭示着权威，无论其来路不正，还是名正言顺。"
+	desc = "一顶华美的阿米特盔，以纯金精工锻造而成。其面甲上布满六芒形的神圣印记刻纹，内侧衬 \
+	着一顶丝制武装帽。  额上那顶缀饰王冠昭示着权威，无论其来路不正，还是名正言顺。"
 	icon_state = "goldknight_crown"
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	unenchantable = TRUE
@@ -608,9 +611,9 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/psy/greatplume
 	name = "带大羽饰的普赛顿式阿米特盔"
-	desc = "一顶华美的头盔，其面罩被黑钢锁链束缚封闭。圣伊欧拉教团常以鲜花装饰这些阿米特盔， \
-	不仅把它当作佳人或家人赠予的幸运象征，也将其视作“幸福必须靠战斗争取”的鲜明提醒。 \
-	这顶阿米特盔的冠饰插孔更为宽大，可以容纳大羽饰。"
+	desc = "一顶华美的头盔，其面罩被黑钢锁链束缚封闭。圣伊欧拉教团常以鲜花装饰这些阿 \
+	米特盔，  不仅把它当作佳人或家人赠予的幸运象征，也将其视作“幸福必须靠战 \
+	斗争取”的鲜明提醒。  这顶阿米特盔的冠饰插孔更为宽大，可以容纳大羽饰。"
 	icon_state = "psyknight"
 	item_state = "psyknight"
 	worn_x_dimension = 64
@@ -931,7 +934,6 @@
 	desc = "由交织的木质躯干拼构而成，靠古老歌谣维系生机，如今则为战争与轻蔑而扭曲成形。"
 	body_parts_covered = FULL_HEAD | NECK
 	armor = ARMOR_BLACKOAK //Resistant to blunt & stab, but very weak to slash.
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	icon_state = "welfhead"
@@ -1040,8 +1042,7 @@
 	icon_state = "zizofrogmouth"
 	item_state = "zizofrogmouth"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	armor = ARMOR_ASCENDANT
-	peel_threshold = 5
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo/Initialize(mapload)
 	. = ..()
@@ -1060,14 +1061,14 @@
 	bloody_icon = 'icons/effects/blood64.dmi'
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/head/roguetown/helmet/heavy/graggar
 	name = "凶暴头盔"
 	desc = "一顶粗犷的头盔，其中翻涌着与推动这个世界运转同样的暴烈之力。"
 	icon_state = "graggarplatehelm"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT|HIDEHAIR|HIDEFACIALHAIR
 	var/active_item = FALSE
 
@@ -1100,8 +1101,9 @@
 	adjustable = CAN_CADJUST
 	icon_state = "zizobarbute"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	peel_threshold = 5
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo/Initialize(mapload)
 	. = ..()
@@ -1118,8 +1120,9 @@
 	icon_state = "zizobascinet"
 	item_state = "zizobascinet"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	peel_threshold = 5
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
+	material_category = ARMOR_MAT_PLATE
+	chunkcolor = "#363030"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/zizo/Initialize(mapload)
 	. = ..()
@@ -1136,11 +1139,12 @@
 	icon_state = "volfplate_avantyne"
 	item_state = "volfplate_avantyne"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	armor = ARMOR_ASCENDANT
-	peel_threshold = 5
+	armor = ARMOR_PLATE_BSTEEL
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
-	
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_PLATE
+
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/zizo/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "头盔")
@@ -1167,7 +1171,7 @@
 	icon = 'icons/roguetown/clothing/special/captain.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/captain.dmi'
 	icon_state = "capbarbute"
-	armor = ARMOR_CUIRASS // Unique armor, uniquely good value coverage.
+	armor = ARMOR_PLATE // Unique armor, uniquely good value coverage.
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
 	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL - ARMOR_INT_HELMET_HEAVY_ADJUSTABLE_PENALTY

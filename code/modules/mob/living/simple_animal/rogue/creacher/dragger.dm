@@ -54,19 +54,19 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "hand"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -84,7 +84,7 @@
 		if(BODY_ZONE_PRECISE_L_INHAND)
 			return "body"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
 			return "tail"
 		if(BODY_ZONE_L_LEG)
@@ -154,7 +154,7 @@
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	chargetime = 0
-	penfactor = 10
+	penfactor = PEN_NONE
 	swingdelay = 3
 	clickcd = DRAGGER_ATTACK_SPEED
 

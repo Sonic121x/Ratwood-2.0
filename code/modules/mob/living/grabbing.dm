@@ -455,8 +455,8 @@
 		user.stop_pulling()
 		return
 	var/mob/living/carbon/C = grabbed
-	var/armor_block = C.run_armor_check(limb_grabbed, "slash")
 	var/damage = user.get_punch_dmg()
+	var/armor_block = C.run_armor_check(limb_grabbed, "slash", armor_penetration = PEN_NONE, damage = damage)
 	if(grabbed == user && limb_grabbed.status == BODYPART_ROBOTIC)	//removing ones own prosthetic should not be violent, nor damaging
 		C.visible_message(span_notice("[user]开始扭动自己的[limb_grabbed]，试图将其从接口上卸下！"), span_notice("我开始扭动自己的[limb_grabbed]，准备将其卸下。"))
 		playsound(user, 'sound/misc/blackbag2.ogg', 100)
@@ -486,7 +486,7 @@
 		limb_grabbed.drop_limb(TRUE)
 	if(ishuman(user) && user.mind)
 		var/text = "[bodyzone2readablezone(user.zone_selected)]..."
-		user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
+		user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)
 
 	if(limb_grabbed.body_zone == sublimb_grabbed && isdoll(C))
 		var/mob/living/carbon/human/target = C
@@ -677,7 +677,7 @@
 		user.stop_pulling()
 		return
 	var/mob/living/carbon/C = grabbed
-	var/armor_block = C.run_armor_check(limb_grabbed, d_type, armor_penetration = BLUNT_DEFAULT_PENFACTOR)
+	var/armor_block = C.run_armor_check(limb_grabbed, d_type, armor_penetration = PEN_NONE)
 	var/damage = user.get_punch_dmg()
 	var/unarmed_skill = user.get_skill_level(/datum/skill/combat/unarmed)
 	damage *= (1 + (unarmed_skill / 10))	//1.X multiplier where X is the unarmed skill.
@@ -686,7 +686,7 @@
 		limb_grabbed.bodypart_attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed, crit_message = TRUE)
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
 	else
-		C.next_attack_msg += " <span class='warning'>护甲挡住了伤害。</span>"
+		C.next_attack_msg += VISMSG_ARMOR_BLOCKED
 	C.visible_message(span_danger("[user]将[C]的[limb_grabbed]猛砸向[A]！[C.next_attack_msg.Join()]"), \
 					span_userdanger("[user]将我的[limb_grabbed]猛砸向[A]！[C.next_attack_msg.Join()]"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_warning("我将[C]的[limb_grabbed]猛砸向[A]。[C.next_attack_msg.Join()]"))
@@ -694,7 +694,7 @@
 	log_combat(user, C, "limbsmashed [limb_grabbed] ")
 	if(ishuman(user) && user.mind)
 		var/text = "[bodyzone2readablezone(user.zone_selected)]..."
-		user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
+		user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)
 
 /datum/intent/grab
 	unarmed = TRUE

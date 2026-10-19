@@ -9,7 +9,7 @@
 	除了他们对秘传且看似非人类仪式和礼法的痴迷，\
 	人们对蛾族知之甚少。这些所谓的\"秘士\"很少出现在人类和\
 	兽裔聚落中，但那些来到文明世界的蛾族往往被提升为贵族。<br>\
-	(+1 速度, 黑腿特质)"
+	(+1 Speed, Bewinged Trait)"
 
 	expanded_desc = "弗卢维安人是多种多样的蛾形生灵，生活在格里莫里亚各地稀疏的游牧群落中。\
 	除了他们对秘传且看似非人类仪式和礼法的痴迷，人们对蛾族知之甚少。\
@@ -44,7 +44,7 @@
 	inherent_traits = list(TRAIT_BLACKLEG)
 	race_bonus = list(STAT_SPEED = 1)//This should include fortune. RAAAAAA
 	enflamed_icon = "widefire"
-	attack_verb = "slash"
+	attack_verb = "割伤"
 	attack_sound = 'sound/blank.ogg'
 	miss_sound = 'sound/blank.ogg'
 	organs = list(
@@ -157,9 +157,6 @@
 /datum/species/moth/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-
-/datum/species/moth/get_random_body_markings(list/passed_features)
-	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[pick(body_marking_sets)], passed_features, src)
 
 /datum/species/moth/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

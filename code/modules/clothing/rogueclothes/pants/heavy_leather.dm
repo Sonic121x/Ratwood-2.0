@@ -1,13 +1,12 @@
 /obj/item/clothing/under/roguetown/heavy_leather_pants
 	name = "硬化皮裤"
-	desc = "厚实兽皮裁切缝成一条防护力极强的长裤。致密皮革足以\
-	挡开偏斜而来的劈砍。"
+	desc = "厚实兽皮裁切缝成一条防护力极强的长裤 \
+	。致密皮革足以 挡开偏斜而来的劈砍。"
 	gender = PLURAL
 	icon_state = "roguepants"
 	item_state = "roguepants"
 	sewrepair = TRUE
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	sellprice = 18
 	blocksound = SOFTHIT
 	max_integrity = ARMOR_INT_LEG_HARDLEATHER
@@ -26,10 +25,10 @@
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
 	name = "硬化皮短裤"
-	desc = "一条由厚皮制成的短裤，虽然不如长裤防护周全，却因行动便利而受到一些人喜爱。"
+	desc = "一条由厚皮制成的短裤，虽然不如长裤防 \
+	护周全，却因行动便利而受到一些人喜爱。"
 	icon_state = "rogueshorts"
 	item_state = "rogueshorts"
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	body_parts_covered = GROIN
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1

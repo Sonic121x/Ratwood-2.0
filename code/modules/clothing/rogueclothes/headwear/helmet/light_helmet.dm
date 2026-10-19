@@ -8,7 +8,6 @@
 	body_parts_covered = HEAD|HAIR|EARS
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	armor = ARMOR_PADDED_BAD
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	max_integrity = ARMOR_INT_HELMET_CLOTH
 	color = "#463C2B"
@@ -27,9 +26,8 @@
 	desc = "一顶皮革制成的头盔。"
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	icon_state = "leatherhelm"
-	armor = ARMOR_LEATHER
+	armor = ARMOR_LEATHER_NPC
 	sellprice = 10
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	sewrepair = TRUE
 	anvilrepair = null
 	smeltresult = null
@@ -47,7 +45,7 @@
 	name = "纳莱德便帽"
 	desc = "一顶皮帽，以层层特制甲币加固，每一枚都刻有抵御超自然力量的护符。厚实可闭合的遮面垂片既很实用，能抵御风沙与寒夜，也能确保来自奥塔瓦的援助者不会因露面而触犯纳莱迪的习俗。</br>它与诗史学家阿莉丝·珀蒂及其记述纳莱迪远征的文字歌谣紧密相关，也因此常见于奥塔瓦的冒险吟游者。 "
 	icon_state = "chapnaled"
-	armor = ARMOR_LEATHER_STUDDED//description refrences armored coins, sounds like studded armor to me
+	armor = ARMOR_LEATHER //description refrences armored coins, sounds like studded armor to me
 	var/open_wear = TRUE
 	flags_inv = HIDEHAIR
 	body_parts_covered = HEAD|HAIR|EARS
@@ -88,6 +86,7 @@
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "沃尔夫头盔"
 	desc = "一顶由沃尔夫头颅制成的皮革头盔。"
+	armor = ARMOR_LEATHER
 	body_parts_covered = HEAD|HAIR|EARS
 	icon_state = "volfhead"
 	item_state = "volfhead"
@@ -117,8 +116,7 @@
 	max_integrity = ARMOR_INT_HELMET_HARDLEATHER
 	sellprice = 15
 	body_parts_covered = HEAD|EARS|HAIR|NOSE
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	anvilrepair = null
 	smeltresult = null
@@ -130,8 +128,7 @@
 	desc = "一顶造型古怪、由紧密缝制皮革制成的帽子，常见于咒剑士。"
 	icon_state = "spellcasterhat"
 	item_state = "spellcasterhat"
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
 	worn_x_dimension = 64
@@ -154,8 +151,7 @@
 	dynamic_hair_suffix = ""
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	body_parts_covered = HEAD|HAIR|EARS
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_SPELLSINGER // spellsinger hat stats
+	armor = ARMOR_LEATHER // spellsinger hat stats
 	resistance_flags = FIRE_PROOF
 	var/picked = FALSE
 	color = "#262927"
@@ -212,7 +208,7 @@
 	desc = "一顶经过加固的竹笠。"
 	icon_state = "easthat"
 	item_state = "easthat"
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	blocksound = SOFTHIT
 	flags_inv = HIDEEARS
@@ -247,8 +243,7 @@
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_NECK
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|NECK
 	//Something between leather and metal helmet, worse than metal helmet by far.
-	armor = list("blunt" = 70, "slash" = 65, "stab" = 60, "piercing" = 20, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_LEATHER
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	cold_protection = HEAD
@@ -263,8 +258,7 @@
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_NECK
 	max_integrity = 280
 	//closer to metal helmet but still quite behind, same blunt resist of hardened leather helmet though.
-	armor = ARMOR_LEATHER_STUDDED
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP, BCLASS_SMASH) //studded armor values with stab prot too
+	armor = ARMOR_LEATHER
 
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood/AdjustClothes(mob/user)
 	if(loc == user)

@@ -2,8 +2,8 @@
 //Full anti-magic, with a unique trait to allow the user to cast under the effects of it.
 /obj/effect/proc_holder/spell/self/conjure_armor/barrier
 	name = "召障术"
-	desc = "召出一道奥术屏障，使你长时间免受奥术性质攻击的侵袭。施放此术时，你的护甲位必须空着。\n\
-	这道屏障会持续存在，直到它破碎、你召出新的，或你忘却这道法术。"
+	desc = "召出一道奥术屏障，使你长时间免受奥术性质攻击的侵袭。施放此术时，你的护甲位必 \
+	须空着。\n 这道屏障会持续存在，直到它破碎、你召出新的，或你忘却这道法术。"
 	overlay_state = "barrier"//temp
 	sound = list('sound/misc/murderbeast.ogg')//What they'll do when they get you.
 
@@ -34,8 +34,8 @@
 
 /obj/item/clothing/suit/roguetown/arcyne_barrier
 	name = "奥术屏障"
-	desc = "纳莱迪游修者所掌握的技艺，以偏转取代硬抗。\
-	这道屏障以施术者自身的火花为力，对抗命运之风，绝大多数魔法都无法作用于使用者。"
+	desc = "纳莱迪游修者所掌握的技艺，以偏转取代硬抗。 这道屏障以施术者 \
+	自身的火花为力，对抗命运之风，绝大多数魔法都无法作用于使用者。"
 	max_integrity = 25//Intended to be easy to break.
 	break_sound = 'modular_azurepeak/sound/spellbooks/crystal.ogg'
 	drop_sound = 'modular_azurepeak/sound/spellbooks/glass.ogg'
@@ -49,7 +49,7 @@
 	armor_class = ARMOR_CLASS_NONE
 	blade_dulling = DULLING_BASHCHOP
 	blocksound = PLATEHIT
-	armor = ARMOR_BARRIER//20 across the board, except fire and acid, get 30.
+	armor = ARMOR_PADDED_BAD
 	body_parts_covered = COVERAGE_FULL | COVERAGE_HEAD_NOSE | NECK | HANDS | FEET
 
 /obj/item/clothing/suit/roguetown/arcyne_barrier/equipped(mob/living/user)

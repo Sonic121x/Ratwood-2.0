@@ -10,7 +10,6 @@
 	body_parts_covered = COVERAGE_FULL
 	icon_state = "armordress"
 	armor = ARMOR_LEATHER
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
@@ -55,7 +54,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/armordress/winterdress/monarch //For the duchess nobody else
 	desc = "一件厚实、衬垫充足且舒适的连衣裙，离开城堡时既保暖又安全。"
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 
 /obj/item/clothing/suit/roguetown/armor/armordress/winterdress/monarch/lordcolor(primary,secondary)
 	detail_color = primary

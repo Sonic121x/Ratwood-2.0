@@ -7,7 +7,6 @@
 	icon_state = "gambeson"
 	body_parts_covered = COVERAGE_FULL
 	armor = ARMOR_PADDED
-	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
@@ -21,6 +20,8 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	cold_protection = CHEST | GROIN
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
+	chunkcolor = "#978151"
+	material_category = ARMOR_MAT_LEATHER
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -49,14 +50,12 @@
 	desc = "薄而几乎没有衬垫的绗缝护甲衣，平民常把它当作廉价却体面的全身护甲。或许能挡下一箭。"
 	armor = ARMOR_PADDED_BAD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_BASE
-	prevent_crits = null // It won't help, like, at all.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	name = "加厚绗缝护甲衣"
 	desc = "增加了额外衬层并经硬化处理的绗缝护甲衣，更加耐用。它仍比不上皮革或金属，但多半能挡下一支弩矢，因此通常用来搭配正式护甲。"
 	icon_state = "gambesonp"
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_CHOP)
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	color = "#b49679"
 	r_sleeve_status = SLEEVE_NORMAL
@@ -191,9 +190,8 @@
 	altdetail_tag = "_detailalt"
 	var/shiftable = FALSE
 	var/picked = FALSE
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 35
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_CHOP)
 	sellprice = 25
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -348,7 +346,6 @@
 	desc = "最上乘的皮束衣。为忍耐而制，为审问而制，无论面对异端还是地狱烈焰。"
 	icon_state = "leathertunic"
 	color = null
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_CHOP)
 	armor = ARMOR_PADDED
 	shiftable = FALSE
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
@@ -358,5 +355,5 @@
 	desc = "由虫蛀布料与廉价紫染做成的袍式绗缝衣。任何有自尊的精灵都不会穿它。"
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon_state = "shadowrobe"
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM + 30 //280
