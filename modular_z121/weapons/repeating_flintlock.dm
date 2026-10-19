@@ -130,7 +130,7 @@
 	if(altgripped || wielded)
 		ungrip(user)
 		return
-	if(alt_intents)
+	if(has_altgrip_modes() && !gripped_intents)
 		altgrip(user)
 	if(gripped_intents)
 		wield(user)

@@ -69,21 +69,9 @@
 
 								if(has_armor)
 
-									C.prevent_crits = null
-
 									if(C.armor_class != ARMOR_CLASS_NONE)
 										C.armor_class = ARMOR_CLASS_LIGHT
 
-									var/list/_baseArmor = ARMOR_MIND_PROTECTION
-									var/_percent = rand(-10, 10)
-									var/_scale = 1 + (_percent / 100)
-									var/_ab = round(_baseArmor["blunt"] * _scale)
-									var/_asl = round(_baseArmor["slash"] * _scale)
-									var/_ast = round(_baseArmor["stab"] * _scale)
-									var/_ap = round(_baseArmor["piercing"] * _scale)
-									var/_af = round(_baseArmor["fire"] * _scale)
-									var/_aa = round(_baseArmor["acid"] * _scale)
-									C.armor = getArmor(_ab, _asl, _ast, _ap, _af, _aa, 0)
 
 									var/_base_int = ARMOR_INT_CHEST_LIGHT_BASE
 									var/_variance = round(_base_int * 0.1)
