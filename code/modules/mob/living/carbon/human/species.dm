@@ -1,5 +1,5 @@
 // This code handles different species in the game.
-
+#include "species_display.dm"
 GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species
